@@ -10,6 +10,7 @@ type Parameters []*Parameter
 
 func (pp Parameters) init(ns *Namespace) {
 	pp.fixupArgcArgv()
+	pp.fixupStringLengthParams()
 
 	for _, param := range pp {
 		param.init(ns)
@@ -19,6 +20,30 @@ func (pp Parameters) init(ns *Namespace) {
 			paramIndex := *param.Array.Length
 			pp[paramIndex].arrayLengthFor = param
 		}
+	}
+}
+
+// fixupStringLengthParams attempts to find parameters that are
+// used to provide a length for a string parameter.
+//
+// Any such length parameter is updated with a reference to the
+// string parameter.
+func (pp Parameters) fixupStringLengthParams() {
+	for i, param := range pp {
+		if i == 0 {
+			continue
+		}
+
+		if param.Name != "length" || param.Type == nil || param.Type.Name != "gssize" || param.Direction == "out" {
+			continue
+		}
+
+		prevParam := pp[i-1]
+		if prevParam.Type == nil || prevParam.Type.Name != "utf8" {
+			continue
+		}
+
+		param.stringLengthFor = prevParam
 	}
 }
 

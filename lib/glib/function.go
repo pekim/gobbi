@@ -1356,11 +1356,11 @@ func MarkupErrorQuark() Quark {
 }
 
 // MarkupEscapeText is a wrapper around the C function g_markup_escape_text.
-func MarkupEscapeText(text string, length int64) string {
+func MarkupEscapeText(text string) string {
 	c_text := C.CString(text)
 	defer C.free(unsafe.Pointer(c_text))
 
-	c_length := (C.gssize)(length)
+	c_length := (C.gssize)(len(text))
 
 	retC := C.g_markup_escape_text(c_text, c_length)
 	retGo := C.GoString(retC)

@@ -41,7 +41,7 @@ func main() {
 	window.SetTitle("builder")
 	window.SetDefaultSize(200, 150)
 
-	builder := gtk.BuilderNewFromString(ui, -1)
+	builder := gtk.BuilderNewFromString(ui)
 
 	label3 := gtk.CastToLabel(builder.GetObject("label3"))
 	label3.SetText(label3.GetText() + " - AMENDED")

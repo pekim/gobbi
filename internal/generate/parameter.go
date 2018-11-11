@@ -19,9 +19,10 @@ type Parameter struct {
 	Array             *Array    `xml:"array"`
 	Varargs           *struct{} `xml:"varargs"`
 
-	goVarName      string
-	cVarName       string
-	arrayLengthFor *Parameter
+	goVarName       string
+	cVarName        string
+	arrayLengthFor  *Parameter
+	stringLengthFor *Parameter
 }
 
 func (p *Parameter) init(ns *Namespace) {
@@ -101,6 +102,10 @@ func (p *Parameter) generateFunctionDeclaration(g *jen.Group) {
 		return
 	}
 
+	if p.stringLengthFor != nil {
+		return
+	}
+
 	if p.Array != nil {
 		p.Array.generateDeclaration(g, p.goVarName)
 	} else {
@@ -119,19 +124,25 @@ func (p *Parameter) generateFunctionDeclarationCtype(g *jen.Group) {
 func (p *Parameter) generateCVar(g *jen.Group) {
 	if p.Direction == "out" {
 		p.Type.generator.generateParamOutCVar(g, p.cVarName)
+	} else if p.Array != nil {
+		p.Array.generateParamCVar(g, p.cVarName, p.goVarName, p.TransferOwnership)
+	} else if p.arrayLengthFor != nil {
+		p.Array.generateArrayLenParamCVar(g, p.cVarName, p.arrayLengthFor.goVarName, p.Type.CType)
+	} else if p.stringLengthFor != nil {
+		p.generateCVarForStringLength(g)
 	} else {
-		if p.Array != nil {
-			p.Array.generateParamCVar(g, p.cVarName, p.goVarName, p.TransferOwnership)
-		} else {
-			if p.arrayLengthFor != nil {
-				p.Array.generateArrayLenParamCVar(g, p.cVarName, p.arrayLengthFor.goVarName, p.Type.CType)
-			} else {
-				p.Type.generator.generateParamCVar(g, p.cVarName, p.goVarName, p.TransferOwnership)
-			}
-		}
+		p.Type.generator.generateParamCVar(g, p.cVarName, p.goVarName, p.TransferOwnership)
 	}
 
 	g.Line()
+}
+
+func (p *Parameter) generateCVarForStringLength(g *jen.Group) {
+	g.
+		Id(p.cVarName).
+		Op(":=").
+		Parens(jen.Qual("C", p.Type.CType)).
+		Parens(jen.Len(jen.Id(p.stringLengthFor.goVarName)))
 }
 
 func (p *Parameter) generateGoVar(g *jen.Group) {

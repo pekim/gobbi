@@ -106,11 +106,11 @@ func BuilderNewFromResource(resourcePath string) *Builder {
 }
 
 // BuilderNewFromString is a wrapper around the C function gtk_builder_new_from_string.
-func BuilderNewFromString(string string, length int64) *Builder {
+func BuilderNewFromString(string string) *Builder {
 	c_string := C.CString(string)
 	defer C.free(unsafe.Pointer(c_string))
 
-	c_length := (C.gssize)(length)
+	c_length := (C.gssize)(len(string))
 
 	retC := C.gtk_builder_new_from_string(c_string, c_length)
 	retGo := BuilderNewFromC(unsafe.Pointer(retC))

@@ -3791,11 +3791,11 @@ func (recv *UIManager) AddUiFromFile(filename string) (uint32, error) {
 }
 
 // AddUiFromString is a wrapper around the C function gtk_ui_manager_add_ui_from_string.
-func (recv *UIManager) AddUiFromString(buffer string, length int64) (uint32, error) {
+func (recv *UIManager) AddUiFromString(buffer string) (uint32, error) {
 	c_buffer := C.CString(buffer)
 	defer C.free(unsafe.Pointer(c_buffer))
 
-	c_length := (C.gssize)(length)
+	c_length := (C.gssize)(len(buffer))
 
 	var cThrowableError *C.GError
 

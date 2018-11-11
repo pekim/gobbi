@@ -38,13 +38,13 @@ func ComputeChecksumForData(checksumType ChecksumType, data []uint8) string {
 }
 
 // ComputeChecksumForString is a wrapper around the C function g_compute_checksum_for_string.
-func ComputeChecksumForString(checksumType ChecksumType, str string, length int64) string {
+func ComputeChecksumForString(checksumType ChecksumType, str string) string {
 	c_checksum_type := (C.GChecksumType)(checksumType)
 
 	c_str := C.CString(str)
 	defer C.free(unsafe.Pointer(c_str))
 
-	c_length := (C.gssize)(length)
+	c_length := (C.gssize)(len(str))
 
 	retC := C.g_compute_checksum_for_string(c_checksum_type, c_str, c_length)
 	retGo := C.GoString(retC)

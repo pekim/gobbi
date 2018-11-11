@@ -76,7 +76,7 @@ func ComputeHmacForData(digestType ChecksumType, key []uint8, data []uint8) stri
 }
 
 // ComputeHmacForString is a wrapper around the C function g_compute_hmac_for_string.
-func ComputeHmacForString(digestType ChecksumType, key []uint8, str string, length int64) string {
+func ComputeHmacForString(digestType ChecksumType, key []uint8, str string) string {
 	c_digest_type := (C.GChecksumType)(digestType)
 
 	c_key := &key[0]
@@ -86,7 +86,7 @@ func ComputeHmacForString(digestType ChecksumType, key []uint8, str string, leng
 	c_str := C.CString(str)
 	defer C.free(unsafe.Pointer(c_str))
 
-	c_length := (C.gssize)(length)
+	c_length := (C.gssize)(len(str))
 
 	retC := C.g_compute_hmac_for_string(c_digest_type, (*C.guchar)(unsafe.Pointer(c_key)), c_key_len, c_str, c_length)
 	retGo := C.GoString(retC)

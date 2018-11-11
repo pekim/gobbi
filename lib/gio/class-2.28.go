@@ -708,11 +708,11 @@ func TlsCertificateNewFromFiles(certFile string, keyFile string) (*TlsCertificat
 }
 
 // TlsCertificateNewFromPem is a wrapper around the C function g_tls_certificate_new_from_pem.
-func TlsCertificateNewFromPem(data string, length int64) (*TlsCertificate, error) {
+func TlsCertificateNewFromPem(data string) (*TlsCertificate, error) {
 	c_data := C.CString(data)
 	defer C.free(unsafe.Pointer(c_data))
 
-	c_length := (C.gssize)(length)
+	c_length := (C.gssize)(len(data))
 
 	var cThrowableError *C.GError
 
