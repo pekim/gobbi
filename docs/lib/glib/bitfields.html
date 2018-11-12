@@ -138,32 +138,98 @@
                     <main>
                         <a class="header" href="#glib-bitfields" id="glib-bitfields"><h1><code>glib</code> bitfields</h1></a>
 <a class="header" href="#asciitype" id="asciitype"><h2><code>AsciiType</code></h2></a>
+<ul>
+<li>ASCII_ALNUM = 1</li>
+<li>ASCII_ALPHA = 2</li>
+<li>ASCII_CNTRL = 4</li>
+<li>ASCII_DIGIT = 8</li>
+<li>ASCII_GRAPH = 16</li>
+<li>ASCII_LOWER = 32</li>
+<li>ASCII_PRINT = 64</li>
+<li>ASCII_PUNCT = 128</li>
+<li>ASCII_SPACE = 256</li>
+<li>ASCII_UPPER = 512</li>
+<li>ASCII_XDIGIT = 1024</li>
+</ul>
 <p>C - <code>GAsciiType</code></p>
 <a class="header" href="#filetest" id="filetest"><h2><code>FileTest</code></h2></a>
 <p>A test to perform on a file using g_file_test().</p>
+<ul>
+<li>FILE_TEST_IS_REGULAR = 1</li>
+<li>FILE_TEST_IS_SYMLINK = 2</li>
+<li>FILE_TEST_IS_DIR = 4</li>
+<li>FILE_TEST_IS_EXECUTABLE = 8</li>
+<li>FILE_TEST_EXISTS = 16</li>
+</ul>
 <p>C - <code>GFileTest</code></p>
 <a class="header" href="#formatsizeflags" id="formatsizeflags"><h2><code>FormatSizeFlags</code></h2></a>
 <p>Flags to modify the format of the string returned by g_format_size_full().</p>
+<ul>
+<li>FORMAT_SIZE_DEFAULT = 0</li>
+<li>FORMAT_SIZE_LONG_FORMAT = 1</li>
+<li>FORMAT_SIZE_IEC_UNITS = 2</li>
+<li>FORMAT_SIZE_BITS = 4</li>
+</ul>
 <p>C - <code>GFormatSizeFlags</code></p>
 <a class="header" href="#hookflagmask" id="hookflagmask"><h2><code>HookFlagMask</code></h2></a>
 <p>Flags used internally in the #GHook implementation.</p>
+<ul>
+<li>HOOK_FLAG_ACTIVE = 1</li>
+<li>HOOK_FLAG_IN_CALL = 2</li>
+<li>HOOK_FLAG_MASK = 15</li>
+</ul>
 <p>C - <code>GHookFlagMask</code></p>
 <a class="header" href="#iocondition" id="iocondition"><h2><code>IOCondition</code></h2></a>
 <p>A bitwise combination representing a condition to watch for on an
 event source.</p>
+<ul>
+<li>IO_IN = 1</li>
+<li>IO_OUT = 4</li>
+<li>IO_PRI = 2</li>
+<li>IO_ERR = 8</li>
+<li>IO_HUP = 16</li>
+<li>IO_NVAL = 32</li>
+</ul>
 <p>C - <code>GIOCondition</code></p>
 <a class="header" href="#ioflags" id="ioflags"><h2><code>IOFlags</code></h2></a>
 <p>Specifies properties of a #GIOChannel. Some of the flags can only be
 read with g_io_channel_get_flags(), but not changed with
 g_io_channel_set_flags().</p>
+<ul>
+<li>IO_FLAG_APPEND = 1</li>
+<li>IO_FLAG_NONBLOCK = 2</li>
+<li>IO_FLAG_IS_READABLE = 4</li>
+<li>IO_FLAG_IS_WRITABLE = 8</li>
+<li>IO_FLAG_IS_WRITEABLE = 8</li>
+<li>IO_FLAG_IS_SEEKABLE = 16</li>
+<li>IO_FLAG_MASK = 31</li>
+<li>IO_FLAG_GET_MASK = 31</li>
+<li>IO_FLAG_SET_MASK = 3</li>
+</ul>
 <p>C - <code>GIOFlags</code></p>
 <a class="header" href="#keyfileflags" id="keyfileflags"><h2><code>KeyFileFlags</code></h2></a>
 <p>Flags which influence the parsing.</p>
+<ul>
+<li>KEY_FILE_NONE = 0</li>
+<li>KEY_FILE_KEEP_COMMENTS = 1</li>
+<li>KEY_FILE_KEEP_TRANSLATIONS = 2</li>
+</ul>
 <p>C - <code>GKeyFileFlags</code></p>
 <a class="header" href="#loglevelflags" id="loglevelflags"><h2><code>LogLevelFlags</code></h2></a>
 <p>Flags specifying the level of log messages.</p>
 <p>It is possible to change how GLib treats messages of the various
 levels using g_log_set_handler() and g_log_set_fatal_mask().</p>
+<ul>
+<li>LOG_FLAG_RECURSION = 1</li>
+<li>LOG_FLAG_FATAL = 2</li>
+<li>LOG_LEVEL_ERROR = 4</li>
+<li>LOG_LEVEL_CRITICAL = 8</li>
+<li>LOG_LEVEL_WARNING = 16</li>
+<li>LOG_LEVEL_MESSAGE = 32</li>
+<li>LOG_LEVEL_INFO = 64</li>
+<li>LOG_LEVEL_DEBUG = 128</li>
+<li>LOG_LEVEL_MASK = -4</li>
+</ul>
 <p>C - <code>GLogLevelFlags</code></p>
 <a class="header" href="#markupcollecttype" id="markupcollecttype"><h2><code>MarkupCollectType</code></h2></a>
 <p>A mixed enumerated type and flags field. You must specify one type
@@ -171,35 +237,163 @@ levels using g_log_set_handler() and g_log_set_fatal_mask().</p>
 bitwise OR the type with the flag %G_MARKUP_COLLECT_OPTIONAL.</p>
 <p>It is likely that this enum will be extended in the future to
 support other types.</p>
+<ul>
+<li>MARKUP_COLLECT_INVALID = 0</li>
+<li>MARKUP_COLLECT_STRING = 1</li>
+<li>MARKUP_COLLECT_STRDUP = 2</li>
+<li>MARKUP_COLLECT_BOOLEAN = 3</li>
+<li>MARKUP_COLLECT_TRISTATE = 4</li>
+<li>MARKUP_COLLECT_OPTIONAL = 65536</li>
+</ul>
 <p>C - <code>GMarkupCollectType</code></p>
 <a class="header" href="#markupparseflags" id="markupparseflags"><h2><code>MarkupParseFlags</code></h2></a>
 <p>Flags that affect the behaviour of the parser.</p>
+<ul>
+<li>MARKUP_DO_NOT_USE_THIS_UNSUPPORTED_FLAG = 1</li>
+<li>MARKUP_TREAT_CDATA_AS_TEXT = 2</li>
+<li>MARKUP_PREFIX_ERROR_POSITION = 4</li>
+<li>MARKUP_IGNORE_QUALIFIED = 8</li>
+</ul>
 <p>C - <code>GMarkupParseFlags</code></p>
 <a class="header" href="#optionflags" id="optionflags"><h2><code>OptionFlags</code></h2></a>
 <p>Flags which modify individual options.</p>
+<ul>
+<li>OPTION_FLAG_NONE = 0</li>
+<li>OPTION_FLAG_HIDDEN = 1</li>
+<li>OPTION_FLAG_IN_MAIN = 2</li>
+<li>OPTION_FLAG_REVERSE = 4</li>
+<li>OPTION_FLAG_NO_ARG = 8</li>
+<li>OPTION_FLAG_FILENAME = 16</li>
+<li>OPTION_FLAG_OPTIONAL_ARG = 32</li>
+<li>OPTION_FLAG_NOALIAS = 64</li>
+</ul>
 <p>C - <code>GOptionFlags</code></p>
 <a class="header" href="#regexcompileflags" id="regexcompileflags"><h2><code>RegexCompileFlags</code></h2></a>
 <p>Flags specifying compile-time options.</p>
+<ul>
+<li>REGEX_CASELESS = 1</li>
+<li>REGEX_MULTILINE = 2</li>
+<li>REGEX_DOTALL = 4</li>
+<li>REGEX_EXTENDED = 8</li>
+<li>REGEX_ANCHORED = 16</li>
+<li>REGEX_DOLLAR_ENDONLY = 32</li>
+<li>REGEX_UNGREEDY = 512</li>
+<li>REGEX_RAW = 2048</li>
+<li>REGEX_NO_AUTO_CAPTURE = 4096</li>
+<li>REGEX_OPTIMIZE = 8192</li>
+<li>REGEX_FIRSTLINE = 262144</li>
+<li>REGEX_DUPNAMES = 524288</li>
+<li>REGEX_NEWLINE_CR = 1048576</li>
+<li>REGEX_NEWLINE_LF = 2097152</li>
+<li>REGEX_NEWLINE_CRLF = 3145728</li>
+<li>REGEX_NEWLINE_ANYCRLF = 5242880</li>
+<li>REGEX_BSR_ANYCRLF = 8388608</li>
+<li>REGEX_JAVASCRIPT_COMPAT = 33554432</li>
+</ul>
 <p>C - <code>GRegexCompileFlags</code></p>
 <a class="header" href="#regexmatchflags" id="regexmatchflags"><h2><code>RegexMatchFlags</code></h2></a>
 <p>Flags specifying match-time options.</p>
+<ul>
+<li>REGEX_MATCH_ANCHORED = 16</li>
+<li>REGEX_MATCH_NOTBOL = 128</li>
+<li>REGEX_MATCH_NOTEOL = 256</li>
+<li>REGEX_MATCH_NOTEMPTY = 1024</li>
+<li>REGEX_MATCH_PARTIAL = 32768</li>
+<li>REGEX_MATCH_NEWLINE_CR = 1048576</li>
+<li>REGEX_MATCH_NEWLINE_LF = 2097152</li>
+<li>REGEX_MATCH_NEWLINE_CRLF = 3145728</li>
+<li>REGEX_MATCH_NEWLINE_ANY = 4194304</li>
+<li>REGEX_MATCH_NEWLINE_ANYCRLF = 5242880</li>
+<li>REGEX_MATCH_BSR_ANYCRLF = 8388608</li>
+<li>REGEX_MATCH_BSR_ANY = 16777216</li>
+<li>REGEX_MATCH_PARTIAL_SOFT = 32768</li>
+<li>REGEX_MATCH_PARTIAL_HARD = 134217728</li>
+<li>REGEX_MATCH_NOTEMPTY_ATSTART = 268435456</li>
+</ul>
 <p>C - <code>GRegexMatchFlags</code></p>
 <a class="header" href="#spawnflags" id="spawnflags"><h2><code>SpawnFlags</code></h2></a>
 <p>Flags passed to g_spawn_sync(), g_spawn_async() and g_spawn_async_with_pipes().</p>
+<ul>
+<li>SPAWN_DEFAULT = 0</li>
+<li>SPAWN_LEAVE_DESCRIPTORS_OPEN = 1</li>
+<li>SPAWN_DO_NOT_REAP_CHILD = 2</li>
+<li>SPAWN_SEARCH_PATH = 4</li>
+<li>SPAWN_STDOUT_TO_DEV_NULL = 8</li>
+<li>SPAWN_STDERR_TO_DEV_NULL = 16</li>
+<li>SPAWN_CHILD_INHERITS_STDIN = 32</li>
+<li>SPAWN_FILE_AND_ARGV_ZERO = 64</li>
+<li>SPAWN_SEARCH_PATH_FROM_ENVP = 128</li>
+<li>SPAWN_CLOEXEC_PIPES = 256</li>
+</ul>
 <p>C - <code>GSpawnFlags</code></p>
 <a class="header" href="#testsubprocessflags" id="testsubprocessflags"><h2><code>TestSubprocessFlags</code></h2></a>
 <p>Flags to pass to g_test_trap_subprocess() to control input and output.</p>
 <p>Note that in contrast with g_test_trap_fork(), the default is to
 not show stdout and stderr.</p>
+<ul>
+<li>TEST_SUBPROCESS_INHERIT_STDIN = 1</li>
+<li>TEST_SUBPROCESS_INHERIT_STDOUT = 2</li>
+<li>TEST_SUBPROCESS_INHERIT_STDERR = 4</li>
+</ul>
 <p>C - <code>GTestSubprocessFlags</code></p>
 <a class="header" href="#testtrapflags" id="testtrapflags"><h2><code>TestTrapFlags</code></h2></a>
 <p>Test traps are guards around forked tests.
 These flags determine what traps to set.</p>
+<ul>
+<li>TEST_TRAP_SILENCE_STDOUT = 128</li>
+<li>TEST_TRAP_SILENCE_STDERR = 256</li>
+<li>TEST_TRAP_INHERIT_STDIN = 512</li>
+</ul>
 <p>C - <code>GTestTrapFlags</code></p>
 <a class="header" href="#traverseflags" id="traverseflags"><h2><code>TraverseFlags</code></h2></a>
 <p>Specifies which nodes are visited during several of the tree
 functions, including g_node_traverse() and g_node_find().</p>
+<ul>
+<li>TRAVERSE_LEAVES = 1</li>
+<li>TRAVERSE_NON_LEAVES = 2</li>
+<li>TRAVERSE_ALL = 3</li>
+<li>TRAVERSE_MASK = 3</li>
+<li>TRAVERSE_LEAFS = 1</li>
+<li>TRAVERSE_NON_LEAFS = 2</li>
+</ul>
 <p>C - <code>GTraverseFlags</code></p>
+<p>(int=32)</p>
+<ul>
+<li>SPAWN_FILE_AND_ARGV_ZERO = %!s(int=64)</li>
+<li>SPAWN_SEARCH_PATH_FROM_ENVP = %!s(int=128)</li>
+<li>SPAWN_CLOEXEC_PIPES = %!s(int=256)</li>
+</ul>
+<a class="header" href="#testsubprocessflags-1" id="testsubprocessflags-1"><h2><code>TestSubprocessFlags</code></h2></a>
+<p>Flags to pass to g_test_trap_subprocess() to control input and output.</p>
+<p>Note that in contrast with g_test_trap_fork(), the default is to
+not show stdout and stderr.</p>
+<p>C - <code>GTestSubprocessFlags</code></p>
+<ul>
+<li>TEST_SUBPROCESS_INHERIT_STDIN = %!s(int=1)</li>
+<li>TEST_SUBPROCESS_INHERIT_STDOUT = %!s(int=2)</li>
+<li>TEST_SUBPROCESS_INHERIT_STDERR = %!s(int=4)</li>
+</ul>
+<a class="header" href="#testtrapflags-1" id="testtrapflags-1"><h2><code>TestTrapFlags</code></h2></a>
+<p>Test traps are guards around forked tests.
+These flags determine what traps to set.</p>
+<p>C - <code>GTestTrapFlags</code></p>
+<ul>
+<li>TEST_TRAP_SILENCE_STDOUT = %!s(int=128)</li>
+<li>TEST_TRAP_SILENCE_STDERR = %!s(int=256)</li>
+<li>TEST_TRAP_INHERIT_STDIN = %!s(int=512)</li>
+</ul>
+<a class="header" href="#traverseflags-1" id="traverseflags-1"><h2><code>TraverseFlags</code></h2></a>
+<p>Specifies which nodes are visited during several of the tree
+functions, including g_node_traverse() and g_node_find().</p>
+<p>C - <code>GTraverseFlags</code></p>
+<ul>
+<li>TRAVERSE_LEAVES = %!s(int=1)</li>
+<li>TRAVERSE_NON_LEAVES = %!s(int=2)</li>
+<li>TRAVERSE_ALL = %!s(int=3)</li>
+<li>TRAVERSE_MASK = %!s(int=3)</li>
+<li>TRAVERSE_LEAFS = %!s(int=1)</li>
+<li>TRAVERSE_NON_LEAFS = %!s(int=2)</li>
+</ul>
 
                     </main>
 

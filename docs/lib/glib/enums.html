@@ -139,31 +139,98 @@
                         <a class="header" href="#glib-enums" id="glib-enums"><h1><code>glib</code> enums</h1></a>
 <a class="header" href="#bookmarkfileerror" id="bookmarkfileerror"><h2><code>BookmarkFileError</code></h2></a>
 <p>Error codes returned by bookmark file parsing.</p>
+<ul>
+<li>BOOKMARK_FILE_ERROR_INVALID_URI = 0</li>
+<li>BOOKMARK_FILE_ERROR_INVALID_VALUE = 1</li>
+<li>BOOKMARK_FILE_ERROR_APP_NOT_REGISTERED = 2</li>
+<li>BOOKMARK_FILE_ERROR_URI_NOT_FOUND = 3</li>
+<li>BOOKMARK_FILE_ERROR_READ = 4</li>
+<li>BOOKMARK_FILE_ERROR_UNKNOWN_ENCODING = 5</li>
+<li>BOOKMARK_FILE_ERROR_WRITE = 6</li>
+<li>BOOKMARK_FILE_ERROR_FILE_NOT_FOUND = 7</li>
+</ul>
 <p>C - <code>GBookmarkFileError</code></p>
 <a class="header" href="#checksumtype" id="checksumtype"><h2><code>ChecksumType</code></h2></a>
 <p>The hashing algorithm to be used by #GChecksum when performing the
 digest of some data.</p>
 <p>Note that the #GChecksumType enumeration may be extended at a later
 date to include new hashing algorithm types.</p>
+<ul>
+<li>CHECKSUM_MD5 = 0</li>
+<li>CHECKSUM_SHA1 = 1</li>
+<li>CHECKSUM_SHA256 = 2</li>
+<li>CHECKSUM_SHA512 = 3</li>
+<li>CHECKSUM_SHA384 = 4</li>
+</ul>
 <p>C - <code>GChecksumType</code></p>
 <a class="header" href="#converterror" id="converterror"><h2><code>ConvertError</code></h2></a>
 <p>Error codes returned by character set conversion routines.</p>
+<ul>
+<li>CONVERT_ERROR_NO_CONVERSION = 0</li>
+<li>CONVERT_ERROR_ILLEGAL_SEQUENCE = 1</li>
+<li>CONVERT_ERROR_FAILED = 2</li>
+<li>CONVERT_ERROR_PARTIAL_INPUT = 3</li>
+<li>CONVERT_ERROR_BAD_URI = 4</li>
+<li>CONVERT_ERROR_NOT_ABSOLUTE_PATH = 5</li>
+<li>CONVERT_ERROR_NO_MEMORY = 6</li>
+<li>CONVERT_ERROR_EMBEDDED_NUL = 7</li>
+</ul>
 <p>C - <code>GConvertError</code></p>
 <a class="header" href="#datedmy" id="datedmy"><h2><code>DateDMY</code></h2></a>
 <p>This enumeration isn't used in the API, but may be useful if you need
 to mark a number as a day, month, or year.</p>
+<ul>
+<li>DATE_DAY = 0</li>
+<li>DATE_MONTH = 1</li>
+<li>DATE_YEAR = 2</li>
+</ul>
 <p>C - <code>GDateDMY</code></p>
 <a class="header" href="#datemonth" id="datemonth"><h2><code>DateMonth</code></h2></a>
 <p>Enumeration representing a month; values are #G_DATE_JANUARY,
 #G_DATE_FEBRUARY, etc. #G_DATE_BAD_MONTH is the invalid value.</p>
+<ul>
+<li>DATE_BAD_MONTH = 0</li>
+<li>DATE_JANUARY = 1</li>
+<li>DATE_FEBRUARY = 2</li>
+<li>DATE_MARCH = 3</li>
+<li>DATE_APRIL = 4</li>
+<li>DATE_MAY = 5</li>
+<li>DATE_JUNE = 6</li>
+<li>DATE_JULY = 7</li>
+<li>DATE_AUGUST = 8</li>
+<li>DATE_SEPTEMBER = 9</li>
+<li>DATE_OCTOBER = 10</li>
+<li>DATE_NOVEMBER = 11</li>
+<li>DATE_DECEMBER = 12</li>
+</ul>
 <p>C - <code>GDateMonth</code></p>
 <a class="header" href="#dateweekday" id="dateweekday"><h2><code>DateWeekday</code></h2></a>
 <p>Enumeration representing a day of the week; #G_DATE_MONDAY,
 #G_DATE_TUESDAY, etc. #G_DATE_BAD_WEEKDAY is an invalid weekday.</p>
+<ul>
+<li>DATE_BAD_WEEKDAY = 0</li>
+<li>DATE_MONDAY = 1</li>
+<li>DATE_TUESDAY = 2</li>
+<li>DATE_WEDNESDAY = 3</li>
+<li>DATE_THURSDAY = 4</li>
+<li>DATE_FRIDAY = 5</li>
+<li>DATE_SATURDAY = 6</li>
+<li>DATE_SUNDAY = 7</li>
+</ul>
 <p>C - <code>GDateWeekday</code></p>
 <a class="header" href="#errortype" id="errortype"><h2><code>ErrorType</code></h2></a>
 <p>The possible errors, used in the @v_error field
 of #GTokenValue, when the token is a %G_TOKEN_ERROR.</p>
+<ul>
+<li>ERR_UNKNOWN = 0</li>
+<li>ERR_UNEXP_EOF = 1</li>
+<li>ERR_UNEXP_EOF_IN_STRING = 2</li>
+<li>ERR_UNEXP_EOF_IN_COMMENT = 3</li>
+<li>ERR_NON_DIGIT_IN_CONST = 4</li>
+<li>ERR_DIGIT_RADIX = 5</li>
+<li>ERR_FLOAT_RADIX = 6</li>
+<li>ERR_FLOAT_MALFORMED = 7</li>
+</ul>
 <p>C - <code>GErrorType</code></p>
 <a class="header" href="#fileerror" id="fileerror"><h2><code>FileError</code></h2></a>
 <p>Values corresponding to @errno codes returned from file operations
@@ -177,19 +244,77 @@ of that manual.</p>
 which errors will be returned from a given operation. Some errors
 don't occur on some systems, etc., sometimes there are subtle
 differences in when a system will report a given error, etc.</p>
+<ul>
+<li>FILE_ERROR_EXIST = 0</li>
+<li>FILE_ERROR_ISDIR = 1</li>
+<li>FILE_ERROR_ACCES = 2</li>
+<li>FILE_ERROR_NAMETOOLONG = 3</li>
+<li>FILE_ERROR_NOENT = 4</li>
+<li>FILE_ERROR_NOTDIR = 5</li>
+<li>FILE_ERROR_NXIO = 6</li>
+<li>FILE_ERROR_NODEV = 7</li>
+<li>FILE_ERROR_ROFS = 8</li>
+<li>FILE_ERROR_TXTBSY = 9</li>
+<li>FILE_ERROR_FAULT = 10</li>
+<li>FILE_ERROR_LOOP = 11</li>
+<li>FILE_ERROR_NOSPC = 12</li>
+<li>FILE_ERROR_NOMEM = 13</li>
+<li>FILE_ERROR_MFILE = 14</li>
+<li>FILE_ERROR_NFILE = 15</li>
+<li>FILE_ERROR_BADF = 16</li>
+<li>FILE_ERROR_INVAL = 17</li>
+<li>FILE_ERROR_PIPE = 18</li>
+<li>FILE_ERROR_AGAIN = 19</li>
+<li>FILE_ERROR_INTR = 20</li>
+<li>FILE_ERROR_IO = 21</li>
+<li>FILE_ERROR_PERM = 22</li>
+<li>FILE_ERROR_NOSYS = 23</li>
+<li>FILE_ERROR_FAILED = 24</li>
+</ul>
 <p>C - <code>GFileError</code></p>
 <a class="header" href="#iochannelerror" id="iochannelerror"><h2><code>IOChannelError</code></h2></a>
 <p>Error codes returned by #GIOChannel operations.</p>
+<ul>
+<li>IO_CHANNEL_ERROR_FBIG = 0</li>
+<li>IO_CHANNEL_ERROR_INVAL = 1</li>
+<li>IO_CHANNEL_ERROR_IO = 2</li>
+<li>IO_CHANNEL_ERROR_ISDIR = 3</li>
+<li>IO_CHANNEL_ERROR_NOSPC = 4</li>
+<li>IO_CHANNEL_ERROR_NXIO = 5</li>
+<li>IO_CHANNEL_ERROR_OVERFLOW = 6</li>
+<li>IO_CHANNEL_ERROR_PIPE = 7</li>
+<li>IO_CHANNEL_ERROR_FAILED = 8</li>
+</ul>
 <p>C - <code>GIOChannelError</code></p>
 <a class="header" href="#ioerror" id="ioerror"><h2><code>IOError</code></h2></a>
 <p>#GIOError is only used by the deprecated functions
 g_io_channel_read(), g_io_channel_write(), and g_io_channel_seek().</p>
+<ul>
+<li>IO_ERROR_NONE = 0</li>
+<li>IO_ERROR_AGAIN = 1</li>
+<li>IO_ERROR_INVAL = 2</li>
+<li>IO_ERROR_UNKNOWN = 3</li>
+</ul>
 <p>C - <code>GIOError</code></p>
 <a class="header" href="#iostatus" id="iostatus"><h2><code>IOStatus</code></h2></a>
 <p>Stati returned by most of the #GIOFuncs functions.</p>
+<ul>
+<li>IO_STATUS_ERROR = 0</li>
+<li>IO_STATUS_NORMAL = 1</li>
+<li>IO_STATUS_EOF = 2</li>
+<li>IO_STATUS_AGAIN = 3</li>
+</ul>
 <p>C - <code>GIOStatus</code></p>
 <a class="header" href="#keyfileerror" id="keyfileerror"><h2><code>KeyFileError</code></h2></a>
 <p>Error codes returned by key file parsing.</p>
+<ul>
+<li>KEY_FILE_ERROR_UNKNOWN_ENCODING = 0</li>
+<li>KEY_FILE_ERROR_PARSE = 1</li>
+<li>KEY_FILE_ERROR_NOT_FOUND = 2</li>
+<li>KEY_FILE_ERROR_KEY_NOT_FOUND = 3</li>
+<li>KEY_FILE_ERROR_GROUP_NOT_FOUND = 4</li>
+<li>KEY_FILE_ERROR_INVALID_VALUE = 5</li>
+</ul>
 <p>C - <code>GKeyFileError</code></p>
 <a class="header" href="#logwriteroutput" id="logwriteroutput"><h2><code>LogWriterOutput</code></h2></a>
 <p>Return values from #GLogWriterFuncs to indicate whether the given log entry
@@ -197,9 +322,22 @@ was successfully handled by the writer, or whether there was an error in
 handling it (and hence a fallback writer should be used).</p>
 <p>If a #GLogWriterFunc ignores a log entry, it should return
 %G_LOG_WRITER_HANDLED.</p>
+<ul>
+<li>LOG_WRITER_HANDLED = 1</li>
+<li>LOG_WRITER_UNHANDLED = 0</li>
+</ul>
 <p>C - <code>GLogWriterOutput</code></p>
 <a class="header" href="#markuperror" id="markuperror"><h2><code>MarkupError</code></h2></a>
 <p>Error codes returned by markup parsing.</p>
+<ul>
+<li>MARKUP_ERROR_BAD_UTF8 = 0</li>
+<li>MARKUP_ERROR_EMPTY = 1</li>
+<li>MARKUP_ERROR_PARSE = 2</li>
+<li>MARKUP_ERROR_UNKNOWN_ELEMENT = 3</li>
+<li>MARKUP_ERROR_UNKNOWN_ATTRIBUTE = 4</li>
+<li>MARKUP_ERROR_INVALID_CONTENT = 5</li>
+<li>MARKUP_ERROR_MISSING_ATTRIBUTE = 6</li>
+</ul>
 <p>C - <code>GMarkupError</code></p>
 <a class="header" href="#normalizemode" id="normalizemode"><h2><code>NormalizeMode</code></h2></a>
 <p>Defines how a Unicode string is transformed in a canonical
@@ -207,37 +345,172 @@ form, standardizing such issues as whether a character with
 an accent is represented as a base character and combining
 accent or as a single precomposed character. Unicode strings
 should generally be normalized before comparing them.</p>
+<ul>
+<li>NORMALIZE_DEFAULT = 0</li>
+<li>NORMALIZE_NFD = 0</li>
+<li>NORMALIZE_DEFAULT_COMPOSE = 1</li>
+<li>NORMALIZE_NFC = 1</li>
+<li>NORMALIZE_ALL = 2</li>
+<li>NORMALIZE_NFKD = 2</li>
+<li>NORMALIZE_ALL_COMPOSE = 3</li>
+<li>NORMALIZE_NFKC = 3</li>
+</ul>
 <p>C - <code>GNormalizeMode</code></p>
 <a class="header" href="#numberparsererror" id="numberparsererror"><h2><code>NumberParserError</code></h2></a>
 <p>Error codes returned by functions converting a string to a number.</p>
+<ul>
+<li>NUMBER_PARSER_ERROR_INVALID = 0</li>
+<li>NUMBER_PARSER_ERROR_OUT_OF_BOUNDS = 1</li>
+</ul>
 <p>C - <code>GNumberParserError</code></p>
 <a class="header" href="#oncestatus" id="oncestatus"><h2><code>OnceStatus</code></h2></a>
 <p>The possible statuses of a one-time initialization function
 controlled by a #GOnce struct.</p>
+<ul>
+<li>ONCE_STATUS_NOTCALLED = 0</li>
+<li>ONCE_STATUS_PROGRESS = 1</li>
+<li>ONCE_STATUS_READY = 2</li>
+</ul>
 <p>C - <code>GOnceStatus</code></p>
 <a class="header" href="#optionarg" id="optionarg"><h2><code>OptionArg</code></h2></a>
 <p>The #GOptionArg enum values determine which type of extra argument the
 options expect to find. If an option expects an extra argument, it can
 be specified in several ways; with a short option: <code>-x arg</code>, with a long
 option: <code>--name arg</code> or combined in a single argument: <code>--name=arg</code>.</p>
+<ul>
+<li>OPTION_ARG_NONE = 0</li>
+<li>OPTION_ARG_STRING = 1</li>
+<li>OPTION_ARG_INT = 2</li>
+<li>OPTION_ARG_CALLBACK = 3</li>
+<li>OPTION_ARG_FILENAME = 4</li>
+<li>OPTION_ARG_STRING_ARRAY = 5</li>
+<li>OPTION_ARG_FILENAME_ARRAY = 6</li>
+<li>OPTION_ARG_DOUBLE = 7</li>
+<li>OPTION_ARG_INT64 = 8</li>
+</ul>
 <p>C - <code>GOptionArg</code></p>
 <a class="header" href="#optionerror" id="optionerror"><h2><code>OptionError</code></h2></a>
 <p>Error codes returned by option parsing.</p>
+<ul>
+<li>OPTION_ERROR_UNKNOWN_OPTION = 0</li>
+<li>OPTION_ERROR_BAD_VALUE = 1</li>
+<li>OPTION_ERROR_FAILED = 2</li>
+</ul>
 <p>C - <code>GOptionError</code></p>
 <a class="header" href="#regexerror" id="regexerror"><h2><code>RegexError</code></h2></a>
 <p>Error codes returned by regular expressions functions.</p>
+<ul>
+<li>REGEX_ERROR_COMPILE = 0</li>
+<li>REGEX_ERROR_OPTIMIZE = 1</li>
+<li>REGEX_ERROR_REPLACE = 2</li>
+<li>REGEX_ERROR_MATCH = 3</li>
+<li>REGEX_ERROR_INTERNAL = 4</li>
+<li>REGEX_ERROR_STRAY_BACKSLASH = 101</li>
+<li>REGEX_ERROR_MISSING_CONTROL_CHAR = 102</li>
+<li>REGEX_ERROR_UNRECOGNIZED_ESCAPE = 103</li>
+<li>REGEX_ERROR_QUANTIFIERS_OUT_OF_ORDER = 104</li>
+<li>REGEX_ERROR_QUANTIFIER_TOO_BIG = 105</li>
+<li>REGEX_ERROR_UNTERMINATED_CHARACTER_CLASS = 106</li>
+<li>REGEX_ERROR_INVALID_ESCAPE_IN_CHARACTER_CLASS = 107</li>
+<li>REGEX_ERROR_RANGE_OUT_OF_ORDER = 108</li>
+<li>REGEX_ERROR_NOTHING_TO_REPEAT = 109</li>
+<li>REGEX_ERROR_UNRECOGNIZED_CHARACTER = 112</li>
+<li>REGEX_ERROR_POSIX_NAMED_CLASS_OUTSIDE_CLASS = 113</li>
+<li>REGEX_ERROR_UNMATCHED_PARENTHESIS = 114</li>
+<li>REGEX_ERROR_INEXISTENT_SUBPATTERN_REFERENCE = 115</li>
+<li>REGEX_ERROR_UNTERMINATED_COMMENT = 118</li>
+<li>REGEX_ERROR_EXPRESSION_TOO_LARGE = 120</li>
+<li>REGEX_ERROR_MEMORY_ERROR = 121</li>
+<li>REGEX_ERROR_VARIABLE_LENGTH_LOOKBEHIND = 125</li>
+<li>REGEX_ERROR_MALFORMED_CONDITION = 126</li>
+<li>REGEX_ERROR_TOO_MANY_CONDITIONAL_BRANCHES = 127</li>
+<li>REGEX_ERROR_ASSERTION_EXPECTED = 128</li>
+<li>REGEX_ERROR_UNKNOWN_POSIX_CLASS_NAME = 130</li>
+<li>REGEX_ERROR_POSIX_COLLATING_ELEMENTS_NOT_SUPPORTED = 131</li>
+<li>REGEX_ERROR_HEX_CODE_TOO_LARGE = 134</li>
+<li>REGEX_ERROR_INVALID_CONDITION = 135</li>
+<li>REGEX_ERROR_SINGLE_BYTE_MATCH_IN_LOOKBEHIND = 136</li>
+<li>REGEX_ERROR_INFINITE_LOOP = 140</li>
+<li>REGEX_ERROR_MISSING_SUBPATTERN_NAME_TERMINATOR = 142</li>
+<li>REGEX_ERROR_DUPLICATE_SUBPATTERN_NAME = 143</li>
+<li>REGEX_ERROR_MALFORMED_PROPERTY = 146</li>
+<li>REGEX_ERROR_UNKNOWN_PROPERTY = 147</li>
+<li>REGEX_ERROR_SUBPATTERN_NAME_TOO_LONG = 148</li>
+<li>REGEX_ERROR_TOO_MANY_SUBPATTERNS = 149</li>
+<li>REGEX_ERROR_INVALID_OCTAL_VALUE = 151</li>
+<li>REGEX_ERROR_TOO_MANY_BRANCHES_IN_DEFINE = 154</li>
+<li>REGEX_ERROR_DEFINE_REPETION = 155</li>
+<li>REGEX_ERROR_INCONSISTENT_NEWLINE_OPTIONS = 156</li>
+<li>REGEX_ERROR_MISSING_BACK_REFERENCE = 157</li>
+<li>REGEX_ERROR_INVALID_RELATIVE_REFERENCE = 158</li>
+<li>REGEX_ERROR_BACKTRACKING_CONTROL_VERB_ARGUMENT_FORBIDDEN = 159</li>
+<li>REGEX_ERROR_UNKNOWN_BACKTRACKING_CONTROL_VERB = 160</li>
+<li>REGEX_ERROR_NUMBER_TOO_BIG = 161</li>
+<li>REGEX_ERROR_MISSING_SUBPATTERN_NAME = 162</li>
+<li>REGEX_ERROR_MISSING_DIGIT = 163</li>
+<li>REGEX_ERROR_INVALID_DATA_CHARACTER = 164</li>
+<li>REGEX_ERROR_EXTRA_SUBPATTERN_NAME = 165</li>
+<li>REGEX_ERROR_BACKTRACKING_CONTROL_VERB_ARGUMENT_REQUIRED = 166</li>
+<li>REGEX_ERROR_INVALID_CONTROL_CHAR = 168</li>
+<li>REGEX_ERROR_MISSING_NAME = 169</li>
+<li>REGEX_ERROR_NOT_SUPPORTED_IN_CLASS = 171</li>
+<li>REGEX_ERROR_TOO_MANY_FORWARD_REFERENCES = 172</li>
+<li>REGEX_ERROR_NAME_TOO_LONG = 175</li>
+<li>REGEX_ERROR_CHARACTER_VALUE_TOO_LARGE = 176</li>
+</ul>
 <p>C - <code>GRegexError</code></p>
 <a class="header" href="#seektype" id="seektype"><h2><code>SeekType</code></h2></a>
 <p>An enumeration specifying the base position for a
 g_io_channel_seek_position() operation.</p>
+<ul>
+<li>SEEK_CUR = 0</li>
+<li>SEEK_SET = 1</li>
+<li>SEEK_END = 2</li>
+</ul>
 <p>C - <code>GSeekType</code></p>
 <a class="header" href="#shellerror" id="shellerror"><h2><code>ShellError</code></h2></a>
 <p>Error codes returned by shell functions.</p>
+<ul>
+<li>SHELL_ERROR_BAD_QUOTING = 0</li>
+<li>SHELL_ERROR_EMPTY_STRING = 1</li>
+<li>SHELL_ERROR_FAILED = 2</li>
+</ul>
 <p>C - <code>GShellError</code></p>
 <a class="header" href="#sliceconfig" id="sliceconfig"><h2><code>SliceConfig</code></h2></a>
+<ul>
+<li>SLICE_CONFIG_ALWAYS_MALLOC = 1</li>
+<li>SLICE_CONFIG_BYPASS_MAGAZINES = 2</li>
+<li>SLICE_CONFIG_WORKING_SET_MSECS = 3</li>
+<li>SLICE_CONFIG_COLOR_INCREMENT = 4</li>
+<li>SLICE_CONFIG_CHUNK_SIZES = 5</li>
+<li>SLICE_CONFIG_CONTENTION_COUNTER = 6</li>
+</ul>
 <p>C - <code>GSliceConfig</code></p>
 <a class="header" href="#spawnerror" id="spawnerror"><h2><code>SpawnError</code></h2></a>
 <p>Error codes returned by spawning processes.</p>
+<ul>
+<li>SPAWN_ERROR_FORK = 0</li>
+<li>SPAWN_ERROR_READ = 1</li>
+<li>SPAWN_ERROR_CHDIR = 2</li>
+<li>SPAWN_ERROR_ACCES = 3</li>
+<li>SPAWN_ERROR_PERM = 4</li>
+<li>SPAWN_ERROR_TOO_BIG = 5</li>
+<li>SPAWN_ERROR_2BIG = 5</li>
+<li>SPAWN_ERROR_NOEXEC = 6</li>
+<li>SPAWN_ERROR_NAMETOOLONG = 7</li>
+<li>SPAWN_ERROR_NOENT = 8</li>
+<li>SPAWN_ERROR_NOMEM = 9</li>
+<li>SPAWN_ERROR_NOTDIR = 10</li>
+<li>SPAWN_ERROR_LOOP = 11</li>
+<li>SPAWN_ERROR_TXTBUSY = 12</li>
+<li>SPAWN_ERROR_IO = 13</li>
+<li>SPAWN_ERROR_NFILE = 14</li>
+<li>SPAWN_ERROR_MFILE = 15</li>
+<li>SPAWN_ERROR_INVAL = 16</li>
+<li>SPAWN_ERROR_ISDIR = 17</li>
+<li>SPAWN_ERROR_LIBBAD = 18</li>
+<li>SPAWN_ERROR_FAILED = 19</li>
+</ul>
 <p>C - <code>GSpawnError</code></p>
 <a class="header" href="#testfiletype" id="testfiletype"><h2><code>TestFileType</code></h2></a>
 <p>The type of file to return the filename for, when used with
@@ -254,11 +527,32 @@ always be in the builddir).</p>
 part of the build-from-git process (but then are distributed with the
 tarball) always go in srcdir (even if doing a srcdir != builddir
 build from git) and are considered as distributed files.</p>
+<ul>
+<li>TEST_DIST = 0</li>
+<li>TEST_BUILT = 1</li>
+</ul>
 <p>C - <code>GTestFileType</code></p>
 <a class="header" href="#testlogtype" id="testlogtype"><h2><code>TestLogType</code></h2></a>
+<ul>
+<li>TEST_LOG_NONE = 0</li>
+<li>TEST_LOG_ERROR = 1</li>
+<li>TEST_LOG_START_BINARY = 2</li>
+<li>TEST_LOG_LIST_CASE = 3</li>
+<li>TEST_LOG_SKIP_CASE = 4</li>
+<li>TEST_LOG_START_CASE = 5</li>
+<li>TEST_LOG_STOP_CASE = 6</li>
+<li>TEST_LOG_MIN_RESULT = 7</li>
+<li>TEST_LOG_MAX_RESULT = 8</li>
+<li>TEST_LOG_MESSAGE = 9</li>
+<li>TEST_LOG_START_SUITE = 10</li>
+<li>TEST_LOG_STOP_SUITE = 11</li>
+</ul>
 <p>C - <code>GTestLogType</code></p>
 <a class="header" href="#threaderror" id="threaderror"><h2><code>ThreadError</code></h2></a>
 <p>Possible errors of thread related functions.</p>
+<ul>
+<li>THREAD_ERROR_AGAIN = 0</li>
+</ul>
 <p>C - <code>GThreadError</code></p>
 <a class="header" href="#timetype" id="timetype"><h2><code>TimeType</code></h2></a>
 <p>Disambiguates a given time in two ways.</p>
@@ -267,24 +561,74 @@ build from git) and are considered as distributed files.</p>
 standard time or local daylight time.  This is important for the case
 where the same local time occurs twice (during daylight savings time
 transitions, for example).</p>
+<ul>
+<li>TIME_TYPE_STANDARD = 0</li>
+<li>TIME_TYPE_DAYLIGHT = 1</li>
+<li>TIME_TYPE_UNIVERSAL = 2</li>
+</ul>
 <p>C - <code>GTimeType</code></p>
 <a class="header" href="#tokentype" id="tokentype"><h2><code>TokenType</code></h2></a>
 <p>The possible types of token returned from each
 g_scanner_get_next_token() call.</p>
+<ul>
+<li>TOKEN_EOF = 0</li>
+<li>TOKEN_LEFT_PAREN = 40</li>
+<li>TOKEN_RIGHT_PAREN = 41</li>
+<li>TOKEN_LEFT_CURLY = 123</li>
+<li>TOKEN_RIGHT_CURLY = 125</li>
+<li>TOKEN_LEFT_BRACE = 91</li>
+<li>TOKEN_RIGHT_BRACE = 93</li>
+<li>TOKEN_EQUAL_SIGN = 61</li>
+<li>TOKEN_COMMA = 44</li>
+<li>TOKEN_NONE = 256</li>
+<li>TOKEN_ERROR = 257</li>
+<li>TOKEN_CHAR = 258</li>
+<li>TOKEN_BINARY = 259</li>
+<li>TOKEN_OCTAL = 260</li>
+<li>TOKEN_INT = 261</li>
+<li>TOKEN_HEX = 262</li>
+<li>TOKEN_FLOAT = 263</li>
+<li>TOKEN_STRING = 264</li>
+<li>TOKEN_SYMBOL = 265</li>
+<li>TOKEN_IDENTIFIER = 266</li>
+<li>TOKEN_IDENTIFIER_NULL = 267</li>
+<li>TOKEN_COMMENT_SINGLE = 268</li>
+<li>TOKEN_COMMENT_MULTI = 269</li>
+</ul>
 <p>C - <code>GTokenType</code></p>
 <a class="header" href="#traversetype" id="traversetype"><h2><code>TraverseType</code></h2></a>
 <p>Specifies the type of traveral performed by g_tree_traverse(),
 g_node_traverse() and g_node_find(). The different orders are
 illustrated here:</p>
 <ul>
-<li>In order: A, B, C, D, E, F, G, H, I
-<img src="Sorted_binary_tree_inorder.svg" alt="" /></li>
-<li>Pre order: F, B, A, D, C, E, G, I, H
-<img src="Sorted_binary_tree_preorder.svg" alt="" /></li>
-<li>Post order: A, C, E, D, B, H, I, G, F
-<img src="Sorted_binary_tree_postorder.svg" alt="" /></li>
-<li>Level order: F, B, G, A, D, I, C, E, H
-<img src="Sorted_binary_tree_breadth-first_traversal.svg" alt="" /></li>
+<li>
+<p>In order: A, B, C, D, E, F, G, H, I
+<img src="Sorted_binary_tree_inorder.svg" alt="" /></p>
+</li>
+<li>
+<p>Pre order: F, B, A, D, C, E, G, I, H
+<img src="Sorted_binary_tree_preorder.svg" alt="" /></p>
+</li>
+<li>
+<p>Post order: A, C, E, D, B, H, I, G, F
+<img src="Sorted_binary_tree_postorder.svg" alt="" /></p>
+</li>
+<li>
+<p>Level order: F, B, G, A, D, I, C, E, H
+<img src="Sorted_binary_tree_breadth-first_traversal.svg" alt="" /></p>
+</li>
+<li>
+<p>IN_ORDER = 0</p>
+</li>
+<li>
+<p>PRE_ORDER = 1</p>
+</li>
+<li>
+<p>POST_ORDER = 2</p>
+</li>
+<li>
+<p>LEVEL_ORDER = 3</p>
+</li>
 </ul>
 <p>C - <code>GTraverseType</code></p>
 <a class="header" href="#unicodebreaktype" id="unicodebreaktype"><h2><code>UnicodeBreakType</code></h2></a>
@@ -292,6 +636,51 @@ illustrated here:</p>
 <p>Since new unicode versions may add new types here, applications should be ready
 to handle unknown values. They may be regarded as %G_UNICODE_BREAK_UNKNOWN.</p>
 <p>See <a href="http://www.unicode.org/unicode/reports/tr14/">Unicode Line Breaking Algorithm</a>.</p>
+<ul>
+<li>UNICODE_BREAK_MANDATORY = 0</li>
+<li>UNICODE_BREAK_CARRIAGE_RETURN = 1</li>
+<li>UNICODE_BREAK_LINE_FEED = 2</li>
+<li>UNICODE_BREAK_COMBINING_MARK = 3</li>
+<li>UNICODE_BREAK_SURROGATE = 4</li>
+<li>UNICODE_BREAK_ZERO_WIDTH_SPACE = 5</li>
+<li>UNICODE_BREAK_INSEPARABLE = 6</li>
+<li>UNICODE_BREAK_NON_BREAKING_GLUE = 7</li>
+<li>UNICODE_BREAK_CONTINGENT = 8</li>
+<li>UNICODE_BREAK_SPACE = 9</li>
+<li>UNICODE_BREAK_AFTER = 10</li>
+<li>UNICODE_BREAK_BEFORE = 11</li>
+<li>UNICODE_BREAK_BEFORE_AND_AFTER = 12</li>
+<li>UNICODE_BREAK_HYPHEN = 13</li>
+<li>UNICODE_BREAK_NON_STARTER = 14</li>
+<li>UNICODE_BREAK_OPEN_PUNCTUATION = 15</li>
+<li>UNICODE_BREAK_CLOSE_PUNCTUATION = 16</li>
+<li>UNICODE_BREAK_QUOTATION = 17</li>
+<li>UNICODE_BREAK_EXCLAMATION = 18</li>
+<li>UNICODE_BREAK_IDEOGRAPHIC = 19</li>
+<li>UNICODE_BREAK_NUMERIC = 20</li>
+<li>UNICODE_BREAK_INFIX_SEPARATOR = 21</li>
+<li>UNICODE_BREAK_SYMBOL = 22</li>
+<li>UNICODE_BREAK_ALPHABETIC = 23</li>
+<li>UNICODE_BREAK_PREFIX = 24</li>
+<li>UNICODE_BREAK_POSTFIX = 25</li>
+<li>UNICODE_BREAK_COMPLEX_CONTEXT = 26</li>
+<li>UNICODE_BREAK_AMBIGUOUS = 27</li>
+<li>UNICODE_BREAK_UNKNOWN = 28</li>
+<li>UNICODE_BREAK_NEXT_LINE = 29</li>
+<li>UNICODE_BREAK_WORD_JOINER = 30</li>
+<li>UNICODE_BREAK_HANGUL_L_JAMO = 31</li>
+<li>UNICODE_BREAK_HANGUL_V_JAMO = 32</li>
+<li>UNICODE_BREAK_HANGUL_T_JAMO = 33</li>
+<li>UNICODE_BREAK_HANGUL_LV_SYLLABLE = 34</li>
+<li>UNICODE_BREAK_HANGUL_LVT_SYLLABLE = 35</li>
+<li>UNICODE_BREAK_CLOSE_PARANTHESIS = 36</li>
+<li>UNICODE_BREAK_CONDITIONAL_JAPANESE_STARTER = 37</li>
+<li>UNICODE_BREAK_HEBREW_LETTER = 38</li>
+<li>UNICODE_BREAK_REGIONAL_INDICATOR = 39</li>
+<li>UNICODE_BREAK_EMOJI_BASE = 40</li>
+<li>UNICODE_BREAK_EMOJI_MODIFIER = 41</li>
+<li>UNICODE_BREAK_ZERO_WIDTH_JOINER = 42</li>
+</ul>
 <p>C - <code>GUnicodeBreakType</code></p>
 <a class="header" href="#unicodescript" id="unicodescript"><h2><code>UnicodeScript</code></h2></a>
 <p>The #GUnicodeScript enumeration identifies different writing
@@ -301,11 +690,188 @@ and is interchangeable with #PangoScript.</p>
 <p>Note that new types may be added in the future. Applications
 should be ready to handle unknown values.
 See <a href="http://www.unicode.org/reports/tr24/">Unicode Standard Annex #24: Script names</a>.</p>
+<ul>
+<li>UNICODE_SCRIPT_INVALID_CODE = -1</li>
+<li>UNICODE_SCRIPT_COMMON = 0</li>
+<li>UNICODE_SCRIPT_INHERITED = 1</li>
+<li>UNICODE_SCRIPT_ARABIC = 2</li>
+<li>UNICODE_SCRIPT_ARMENIAN = 3</li>
+<li>UNICODE_SCRIPT_BENGALI = 4</li>
+<li>UNICODE_SCRIPT_BOPOMOFO = 5</li>
+<li>UNICODE_SCRIPT_CHEROKEE = 6</li>
+<li>UNICODE_SCRIPT_COPTIC = 7</li>
+<li>UNICODE_SCRIPT_CYRILLIC = 8</li>
+<li>UNICODE_SCRIPT_DESERET = 9</li>
+<li>UNICODE_SCRIPT_DEVANAGARI = 10</li>
+<li>UNICODE_SCRIPT_ETHIOPIC = 11</li>
+<li>UNICODE_SCRIPT_GEORGIAN = 12</li>
+<li>UNICODE_SCRIPT_GOTHIC = 13</li>
+<li>UNICODE_SCRIPT_GREEK = 14</li>
+<li>UNICODE_SCRIPT_GUJARATI = 15</li>
+<li>UNICODE_SCRIPT_GURMUKHI = 16</li>
+<li>UNICODE_SCRIPT_HAN = 17</li>
+<li>UNICODE_SCRIPT_HANGUL = 18</li>
+<li>UNICODE_SCRIPT_HEBREW = 19</li>
+<li>UNICODE_SCRIPT_HIRAGANA = 20</li>
+<li>UNICODE_SCRIPT_KANNADA = 21</li>
+<li>UNICODE_SCRIPT_KATAKANA = 22</li>
+<li>UNICODE_SCRIPT_KHMER = 23</li>
+<li>UNICODE_SCRIPT_LAO = 24</li>
+<li>UNICODE_SCRIPT_LATIN = 25</li>
+<li>UNICODE_SCRIPT_MALAYALAM = 26</li>
+<li>UNICODE_SCRIPT_MONGOLIAN = 27</li>
+<li>UNICODE_SCRIPT_MYANMAR = 28</li>
+<li>UNICODE_SCRIPT_OGHAM = 29</li>
+<li>UNICODE_SCRIPT_OLD_ITALIC = 30</li>
+<li>UNICODE_SCRIPT_ORIYA = 31</li>
+<li>UNICODE_SCRIPT_RUNIC = 32</li>
+<li>UNICODE_SCRIPT_SINHALA = 33</li>
+<li>UNICODE_SCRIPT_SYRIAC = 34</li>
+<li>UNICODE_SCRIPT_TAMIL = 35</li>
+<li>UNICODE_SCRIPT_TELUGU = 36</li>
+<li>UNICODE_SCRIPT_THAANA = 37</li>
+<li>UNICODE_SCRIPT_THAI = 38</li>
+<li>UNICODE_SCRIPT_TIBETAN = 39</li>
+<li>UNICODE_SCRIPT_CANADIAN_ABORIGINAL = 40</li>
+<li>UNICODE_SCRIPT_YI = 41</li>
+<li>UNICODE_SCRIPT_TAGALOG = 42</li>
+<li>UNICODE_SCRIPT_HANUNOO = 43</li>
+<li>UNICODE_SCRIPT_BUHID = 44</li>
+<li>UNICODE_SCRIPT_TAGBANWA = 45</li>
+<li>UNICODE_SCRIPT_BRAILLE = 46</li>
+<li>UNICODE_SCRIPT_CYPRIOT = 47</li>
+<li>UNICODE_SCRIPT_LIMBU = 48</li>
+<li>UNICODE_SCRIPT_OSMANYA = 49</li>
+<li>UNICODE_SCRIPT_SHAVIAN = 50</li>
+<li>UNICODE_SCRIPT_LINEAR_B = 51</li>
+<li>UNICODE_SCRIPT_TAI_LE = 52</li>
+<li>UNICODE_SCRIPT_UGARITIC = 53</li>
+<li>UNICODE_SCRIPT_NEW_TAI_LUE = 54</li>
+<li>UNICODE_SCRIPT_BUGINESE = 55</li>
+<li>UNICODE_SCRIPT_GLAGOLITIC = 56</li>
+<li>UNICODE_SCRIPT_TIFINAGH = 57</li>
+<li>UNICODE_SCRIPT_SYLOTI_NAGRI = 58</li>
+<li>UNICODE_SCRIPT_OLD_PERSIAN = 59</li>
+<li>UNICODE_SCRIPT_KHAROSHTHI = 60</li>
+<li>UNICODE_SCRIPT_UNKNOWN = 61</li>
+<li>UNICODE_SCRIPT_BALINESE = 62</li>
+<li>UNICODE_SCRIPT_CUNEIFORM = 63</li>
+<li>UNICODE_SCRIPT_PHOENICIAN = 64</li>
+<li>UNICODE_SCRIPT_PHAGS_PA = 65</li>
+<li>UNICODE_SCRIPT_NKO = 66</li>
+<li>UNICODE_SCRIPT_KAYAH_LI = 67</li>
+<li>UNICODE_SCRIPT_LEPCHA = 68</li>
+<li>UNICODE_SCRIPT_REJANG = 69</li>
+<li>UNICODE_SCRIPT_SUNDANESE = 70</li>
+<li>UNICODE_SCRIPT_SAURASHTRA = 71</li>
+<li>UNICODE_SCRIPT_CHAM = 72</li>
+<li>UNICODE_SCRIPT_OL_CHIKI = 73</li>
+<li>UNICODE_SCRIPT_VAI = 74</li>
+<li>UNICODE_SCRIPT_CARIAN = 75</li>
+<li>UNICODE_SCRIPT_LYCIAN = 76</li>
+<li>UNICODE_SCRIPT_LYDIAN = 77</li>
+<li>UNICODE_SCRIPT_AVESTAN = 78</li>
+<li>UNICODE_SCRIPT_BAMUM = 79</li>
+<li>UNICODE_SCRIPT_EGYPTIAN_HIEROGLYPHS = 80</li>
+<li>UNICODE_SCRIPT_IMPERIAL_ARAMAIC = 81</li>
+<li>UNICODE_SCRIPT_INSCRIPTIONAL_PAHLAVI = 82</li>
+<li>UNICODE_SCRIPT_INSCRIPTIONAL_PARTHIAN = 83</li>
+<li>UNICODE_SCRIPT_JAVANESE = 84</li>
+<li>UNICODE_SCRIPT_KAITHI = 85</li>
+<li>UNICODE_SCRIPT_LISU = 86</li>
+<li>UNICODE_SCRIPT_MEETEI_MAYEK = 87</li>
+<li>UNICODE_SCRIPT_OLD_SOUTH_ARABIAN = 88</li>
+<li>UNICODE_SCRIPT_OLD_TURKIC = 89</li>
+<li>UNICODE_SCRIPT_SAMARITAN = 90</li>
+<li>UNICODE_SCRIPT_TAI_THAM = 91</li>
+<li>UNICODE_SCRIPT_TAI_VIET = 92</li>
+<li>UNICODE_SCRIPT_BATAK = 93</li>
+<li>UNICODE_SCRIPT_BRAHMI = 94</li>
+<li>UNICODE_SCRIPT_MANDAIC = 95</li>
+<li>UNICODE_SCRIPT_CHAKMA = 96</li>
+<li>UNICODE_SCRIPT_MEROITIC_CURSIVE = 97</li>
+<li>UNICODE_SCRIPT_MEROITIC_HIEROGLYPHS = 98</li>
+<li>UNICODE_SCRIPT_MIAO = 99</li>
+<li>UNICODE_SCRIPT_SHARADA = 100</li>
+<li>UNICODE_SCRIPT_SORA_SOMPENG = 101</li>
+<li>UNICODE_SCRIPT_TAKRI = 102</li>
+<li>UNICODE_SCRIPT_BASSA_VAH = 103</li>
+<li>UNICODE_SCRIPT_CAUCASIAN_ALBANIAN = 104</li>
+<li>UNICODE_SCRIPT_DUPLOYAN = 105</li>
+<li>UNICODE_SCRIPT_ELBASAN = 106</li>
+<li>UNICODE_SCRIPT_GRANTHA = 107</li>
+<li>UNICODE_SCRIPT_KHOJKI = 108</li>
+<li>UNICODE_SCRIPT_KHUDAWADI = 109</li>
+<li>UNICODE_SCRIPT_LINEAR_A = 110</li>
+<li>UNICODE_SCRIPT_MAHAJANI = 111</li>
+<li>UNICODE_SCRIPT_MANICHAEAN = 112</li>
+<li>UNICODE_SCRIPT_MENDE_KIKAKUI = 113</li>
+<li>UNICODE_SCRIPT_MODI = 114</li>
+<li>UNICODE_SCRIPT_MRO = 115</li>
+<li>UNICODE_SCRIPT_NABATAEAN = 116</li>
+<li>UNICODE_SCRIPT_OLD_NORTH_ARABIAN = 117</li>
+<li>UNICODE_SCRIPT_OLD_PERMIC = 118</li>
+<li>UNICODE_SCRIPT_PAHAWH_HMONG = 119</li>
+<li>UNICODE_SCRIPT_PALMYRENE = 120</li>
+<li>UNICODE_SCRIPT_PAU_CIN_HAU = 121</li>
+<li>UNICODE_SCRIPT_PSALTER_PAHLAVI = 122</li>
+<li>UNICODE_SCRIPT_SIDDHAM = 123</li>
+<li>UNICODE_SCRIPT_TIRHUTA = 124</li>
+<li>UNICODE_SCRIPT_WARANG_CITI = 125</li>
+<li>UNICODE_SCRIPT_AHOM = 126</li>
+<li>UNICODE_SCRIPT_ANATOLIAN_HIEROGLYPHS = 127</li>
+<li>UNICODE_SCRIPT_HATRAN = 128</li>
+<li>UNICODE_SCRIPT_MULTANI = 129</li>
+<li>UNICODE_SCRIPT_OLD_HUNGARIAN = 130</li>
+<li>UNICODE_SCRIPT_SIGNWRITING = 131</li>
+<li>UNICODE_SCRIPT_ADLAM = 132</li>
+<li>UNICODE_SCRIPT_BHAIKSUKI = 133</li>
+<li>UNICODE_SCRIPT_MARCHEN = 134</li>
+<li>UNICODE_SCRIPT_NEWA = 135</li>
+<li>UNICODE_SCRIPT_OSAGE = 136</li>
+<li>UNICODE_SCRIPT_TANGUT = 137</li>
+<li>UNICODE_SCRIPT_MASARAM_GONDI = 138</li>
+<li>UNICODE_SCRIPT_NUSHU = 139</li>
+<li>UNICODE_SCRIPT_SOYOMBO = 140</li>
+<li>UNICODE_SCRIPT_ZANABAZAR_SQUARE = 141</li>
+</ul>
 <p>C - <code>GUnicodeScript</code></p>
 <a class="header" href="#unicodetype" id="unicodetype"><h2><code>UnicodeType</code></h2></a>
 <p>These are the possible character classifications from the
 Unicode specification.
 See <a href="http://www.unicode.org/reports/tr44/#General_Category_Values">Unicode Character Database</a>.</p>
+<ul>
+<li>UNICODE_CONTROL = 0</li>
+<li>UNICODE_FORMAT = 1</li>
+<li>UNICODE_UNASSIGNED = 2</li>
+<li>UNICODE_PRIVATE_USE = 3</li>
+<li>UNICODE_SURROGATE = 4</li>
+<li>UNICODE_LOWERCASE_LETTER = 5</li>
+<li>UNICODE_MODIFIER_LETTER = 6</li>
+<li>UNICODE_OTHER_LETTER = 7</li>
+<li>UNICODE_TITLECASE_LETTER = 8</li>
+<li>UNICODE_UPPERCASE_LETTER = 9</li>
+<li>UNICODE_SPACING_MARK = 10</li>
+<li>UNICODE_ENCLOSING_MARK = 11</li>
+<li>UNICODE_NON_SPACING_MARK = 12</li>
+<li>UNICODE_DECIMAL_NUMBER = 13</li>
+<li>UNICODE_LETTER_NUMBER = 14</li>
+<li>UNICODE_OTHER_NUMBER = 15</li>
+<li>UNICODE_CONNECT_PUNCTUATION = 16</li>
+<li>UNICODE_DASH_PUNCTUATION = 17</li>
+<li>UNICODE_CLOSE_PUNCTUATION = 18</li>
+<li>UNICODE_FINAL_PUNCTUATION = 19</li>
+<li>UNICODE_INITIAL_PUNCTUATION = 20</li>
+<li>UNICODE_OTHER_PUNCTUATION = 21</li>
+<li>UNICODE_OPEN_PUNCTUATION = 22</li>
+<li>UNICODE_CURRENCY_SYMBOL = 23</li>
+<li>UNICODE_MODIFIER_SYMBOL = 24</li>
+<li>UNICODE_MATH_SYMBOL = 25</li>
+<li>UNICODE_OTHER_SYMBOL = 26</li>
+<li>UNICODE_LINE_SEPARATOR = 27</li>
+<li>UNICODE_PARAGRAPH_SEPARATOR = 28</li>
+<li>UNICODE_SPACE_SEPARATOR = 29</li>
+</ul>
 <p>C - <code>GUnicodeType</code></p>
 <a class="header" href="#userdirectory" id="userdirectory"><h2><code>UserDirectory</code></h2></a>
 <p>These are logical ids for special directories which are defined
@@ -314,13 +880,187 @@ to retrieve the full path associated to the logical id.</p>
 <p>The #GUserDirectory enumeration can be extended at later date. Not
 every platform has a directory for every logical id in this
 enumeration.</p>
+<ul>
+<li>USER_DIRECTORY_DESKTOP = 0</li>
+<li>USER_DIRECTORY_DOCUMENTS = 1</li>
+<li>USER_DIRECTORY_DOWNLOAD = 2</li>
+<li>USER_DIRECTORY_MUSIC = 3</li>
+<li>USER_DIRECTORY_PICTURES = 4</li>
+<li>USER_DIRECTORY_PUBLIC_SHARE = 5</li>
+<li>USER_DIRECTORY_TEMPLATES = 6</li>
+<li>USER_DIRECTORY_VIDEOS = 7</li>
+<li>USER_N_DIRECTORIES = 8</li>
+</ul>
 <p>C - <code>GUserDirectory</code></p>
 <a class="header" href="#variantclass" id="variantclass"><h2><code>VariantClass</code></h2></a>
 <p>The range of possible top-level types of #GVariant instances.</p>
+<ul>
+<li>VARIANT_CLASS_BOOLEAN = 98</li>
+<li>VARIANT_CLASS_BYTE = 121</li>
+<li>VARIANT_CLASS_INT16 = 110</li>
+<li>VARIANT_CLASS_UINT16 = 113</li>
+<li>VARIANT_CLASS_INT32 = 105</li>
+<li>VARIANT_CLASS_UINT32 = 117</li>
+<li>VARIANT_CLASS_INT64 = 120</li>
+<li>VARIANT_CLASS_UINT64 = 116</li>
+<li>VARIANT_CLASS_HANDLE = 104</li>
+<li>VARIANT_CLASS_DOUBLE = 100</li>
+<li>VARIANT_CLASS_STRING = 115</li>
+<li>VARIANT_CLASS_OBJECT_PATH = 111</li>
+<li>VARIANT_CLASS_SIGNATURE = 103</li>
+<li>VARIANT_CLASS_VARIANT = 118</li>
+<li>VARIANT_CLASS_MAYBE = 109</li>
+<li>VARIANT_CLASS_ARRAY = 97</li>
+<li>VARIANT_CLASS_TUPLE = 40</li>
+<li>VARIANT_CLASS_DICT_ENTRY = 123</li>
+</ul>
 <p>C - <code>GVariantClass</code></p>
 <a class="header" href="#variantparseerror" id="variantparseerror"><h2><code>VariantParseError</code></h2></a>
 <p>Error codes returned by parsing text-format GVariants.</p>
+<ul>
+<li>VARIANT_PARSE_ERROR_FAILED = 0</li>
+<li>VARIANT_PARSE_ERROR_BASIC_TYPE_EXPECTED = 1</li>
+<li>VARIANT_PARSE_ERROR_CANNOT_INFER_TYPE = 2</li>
+<li>VARIANT_PARSE_ERROR_DEFINITE_TYPE_EXPECTED = 3</li>
+<li>VARIANT_PARSE_ERROR_INPUT_NOT_AT_END = 4</li>
+<li>VARIANT_PARSE_ERROR_INVALID_CHARACTER = 5</li>
+<li>VARIANT_PARSE_ERROR_INVALID_FORMAT_STRING = 6</li>
+<li>VARIANT_PARSE_ERROR_INVALID_OBJECT_PATH = 7</li>
+<li>VARIANT_PARSE_ERROR_INVALID_SIGNATURE = 8</li>
+<li>VARIANT_PARSE_ERROR_INVALID_TYPE_STRING = 9</li>
+<li>VARIANT_PARSE_ERROR_NO_COMMON_TYPE = 10</li>
+<li>VARIANT_PARSE_ERROR_NUMBER_OUT_OF_RANGE = 11</li>
+<li>VARIANT_PARSE_ERROR_NUMBER_TOO_BIG = 12</li>
+<li>VARIANT_PARSE_ERROR_TYPE_ERROR = 13</li>
+<li>VARIANT_PARSE_ERROR_UNEXPECTED_TOKEN = 14</li>
+<li>VARIANT_PARSE_ERROR_UNKNOWN_KEYWORD = 15</li>
+<li>VARIANT_PARSE_ERROR_UNTERMINATED_STRING_CONSTANT = 16</li>
+<li>VARIANT_PARSE_ERROR_VALUE_EXPECTED = 17</li>
+</ul>
 <p>C - <code>GVariantParseError</code></p>
+<p>UNICODE_SCRIPT_SIDDHAM = %!s(int=123)</p>
+<ul>
+<li>UNICODE_SCRIPT_TIRHUTA = %!s(int=124)</li>
+<li>UNICODE_SCRIPT_WARANG_CITI = %!s(int=125)</li>
+<li>UNICODE_SCRIPT_AHOM = %!s(int=126)</li>
+<li>UNICODE_SCRIPT_ANATOLIAN_HIEROGLYPHS = %!s(int=127)</li>
+<li>UNICODE_SCRIPT_HATRAN = %!s(int=128)</li>
+<li>UNICODE_SCRIPT_MULTANI = %!s(int=129)</li>
+<li>UNICODE_SCRIPT_OLD_HUNGARIAN = %!s(int=130)</li>
+<li>UNICODE_SCRIPT_SIGNWRITING = %!s(int=131)</li>
+<li>UNICODE_SCRIPT_ADLAM = %!s(int=132)</li>
+<li>UNICODE_SCRIPT_BHAIKSUKI = %!s(int=133)</li>
+<li>UNICODE_SCRIPT_MARCHEN = %!s(int=134)</li>
+<li>UNICODE_SCRIPT_NEWA = %!s(int=135)</li>
+<li>UNICODE_SCRIPT_OSAGE = %!s(int=136)</li>
+<li>UNICODE_SCRIPT_TANGUT = %!s(int=137)</li>
+<li>UNICODE_SCRIPT_MASARAM_GONDI = %!s(int=138)</li>
+<li>UNICODE_SCRIPT_NUSHU = %!s(int=139)</li>
+<li>UNICODE_SCRIPT_SOYOMBO = %!s(int=140)</li>
+<li>UNICODE_SCRIPT_ZANABAZAR_SQUARE = %!s(int=141)</li>
+</ul>
+<a class="header" href="#unicodetype-1" id="unicodetype-1"><h2><code>UnicodeType</code></h2></a>
+<p>These are the possible character classifications from the
+Unicode specification.
+See <a href="http://www.unicode.org/reports/tr44/#General_Category_Values">Unicode Character Database</a>.</p>
+<p>C - <code>GUnicodeType</code></p>
+<ul>
+<li>UNICODE_CONTROL = %!s(int=0)</li>
+<li>UNICODE_FORMAT = %!s(int=1)</li>
+<li>UNICODE_UNASSIGNED = %!s(int=2)</li>
+<li>UNICODE_PRIVATE_USE = %!s(int=3)</li>
+<li>UNICODE_SURROGATE = %!s(int=4)</li>
+<li>UNICODE_LOWERCASE_LETTER = %!s(int=5)</li>
+<li>UNICODE_MODIFIER_LETTER = %!s(int=6)</li>
+<li>UNICODE_OTHER_LETTER = %!s(int=7)</li>
+<li>UNICODE_TITLECASE_LETTER = %!s(int=8)</li>
+<li>UNICODE_UPPERCASE_LETTER = %!s(int=9)</li>
+<li>UNICODE_SPACING_MARK = %!s(int=10)</li>
+<li>UNICODE_ENCLOSING_MARK = %!s(int=11)</li>
+<li>UNICODE_NON_SPACING_MARK = %!s(int=12)</li>
+<li>UNICODE_DECIMAL_NUMBER = %!s(int=13)</li>
+<li>UNICODE_LETTER_NUMBER = %!s(int=14)</li>
+<li>UNICODE_OTHER_NUMBER = %!s(int=15)</li>
+<li>UNICODE_CONNECT_PUNCTUATION = %!s(int=16)</li>
+<li>UNICODE_DASH_PUNCTUATION = %!s(int=17)</li>
+<li>UNICODE_CLOSE_PUNCTUATION = %!s(int=18)</li>
+<li>UNICODE_FINAL_PUNCTUATION = %!s(int=19)</li>
+<li>UNICODE_INITIAL_PUNCTUATION = %!s(int=20)</li>
+<li>UNICODE_OTHER_PUNCTUATION = %!s(int=21)</li>
+<li>UNICODE_OPEN_PUNCTUATION = %!s(int=22)</li>
+<li>UNICODE_CURRENCY_SYMBOL = %!s(int=23)</li>
+<li>UNICODE_MODIFIER_SYMBOL = %!s(int=24)</li>
+<li>UNICODE_MATH_SYMBOL = %!s(int=25)</li>
+<li>UNICODE_OTHER_SYMBOL = %!s(int=26)</li>
+<li>UNICODE_LINE_SEPARATOR = %!s(int=27)</li>
+<li>UNICODE_PARAGRAPH_SEPARATOR = %!s(int=28)</li>
+<li>UNICODE_SPACE_SEPARATOR = %!s(int=29)</li>
+</ul>
+<a class="header" href="#userdirectory-1" id="userdirectory-1"><h2><code>UserDirectory</code></h2></a>
+<p>These are logical ids for special directories which are defined
+depending on the platform used. You should use g_get_user_special_dir()
+to retrieve the full path associated to the logical id.</p>
+<p>The #GUserDirectory enumeration can be extended at later date. Not
+every platform has a directory for every logical id in this
+enumeration.</p>
+<p>C - <code>GUserDirectory</code></p>
+<ul>
+<li>USER_DIRECTORY_DESKTOP = %!s(int=0)</li>
+<li>USER_DIRECTORY_DOCUMENTS = %!s(int=1)</li>
+<li>USER_DIRECTORY_DOWNLOAD = %!s(int=2)</li>
+<li>USER_DIRECTORY_MUSIC = %!s(int=3)</li>
+<li>USER_DIRECTORY_PICTURES = %!s(int=4)</li>
+<li>USER_DIRECTORY_PUBLIC_SHARE = %!s(int=5)</li>
+<li>USER_DIRECTORY_TEMPLATES = %!s(int=6)</li>
+<li>USER_DIRECTORY_VIDEOS = %!s(int=7)</li>
+<li>USER_N_DIRECTORIES = %!s(int=8)</li>
+</ul>
+<a class="header" href="#variantclass-1" id="variantclass-1"><h2><code>VariantClass</code></h2></a>
+<p>The range of possible top-level types of #GVariant instances.</p>
+<p>C - <code>GVariantClass</code></p>
+<ul>
+<li>VARIANT_CLASS_BOOLEAN = %!s(int=98)</li>
+<li>VARIANT_CLASS_BYTE = %!s(int=121)</li>
+<li>VARIANT_CLASS_INT16 = %!s(int=110)</li>
+<li>VARIANT_CLASS_UINT16 = %!s(int=113)</li>
+<li>VARIANT_CLASS_INT32 = %!s(int=105)</li>
+<li>VARIANT_CLASS_UINT32 = %!s(int=117)</li>
+<li>VARIANT_CLASS_INT64 = %!s(int=120)</li>
+<li>VARIANT_CLASS_UINT64 = %!s(int=116)</li>
+<li>VARIANT_CLASS_HANDLE = %!s(int=104)</li>
+<li>VARIANT_CLASS_DOUBLE = %!s(int=100)</li>
+<li>VARIANT_CLASS_STRING = %!s(int=115)</li>
+<li>VARIANT_CLASS_OBJECT_PATH = %!s(int=111)</li>
+<li>VARIANT_CLASS_SIGNATURE = %!s(int=103)</li>
+<li>VARIANT_CLASS_VARIANT = %!s(int=118)</li>
+<li>VARIANT_CLASS_MAYBE = %!s(int=109)</li>
+<li>VARIANT_CLASS_ARRAY = %!s(int=97)</li>
+<li>VARIANT_CLASS_TUPLE = %!s(int=40)</li>
+<li>VARIANT_CLASS_DICT_ENTRY = %!s(int=123)</li>
+</ul>
+<a class="header" href="#variantparseerror-1" id="variantparseerror-1"><h2><code>VariantParseError</code></h2></a>
+<p>Error codes returned by parsing text-format GVariants.</p>
+<p>C - <code>GVariantParseError</code></p>
+<ul>
+<li>VARIANT_PARSE_ERROR_FAILED = %!s(int=0)</li>
+<li>VARIANT_PARSE_ERROR_BASIC_TYPE_EXPECTED = %!s(int=1)</li>
+<li>VARIANT_PARSE_ERROR_CANNOT_INFER_TYPE = %!s(int=2)</li>
+<li>VARIANT_PARSE_ERROR_DEFINITE_TYPE_EXPECTED = %!s(int=3)</li>
+<li>VARIANT_PARSE_ERROR_INPUT_NOT_AT_END = %!s(int=4)</li>
+<li>VARIANT_PARSE_ERROR_INVALID_CHARACTER = %!s(int=5)</li>
+<li>VARIANT_PARSE_ERROR_INVALID_FORMAT_STRING = %!s(int=6)</li>
+<li>VARIANT_PARSE_ERROR_INVALID_OBJECT_PATH = %!s(int=7)</li>
+<li>VARIANT_PARSE_ERROR_INVALID_SIGNATURE = %!s(int=8)</li>
+<li>VARIANT_PARSE_ERROR_INVALID_TYPE_STRING = %!s(int=9)</li>
+<li>VARIANT_PARSE_ERROR_NO_COMMON_TYPE = %!s(int=10)</li>
+<li>VARIANT_PARSE_ERROR_NUMBER_OUT_OF_RANGE = %!s(int=11)</li>
+<li>VARIANT_PARSE_ERROR_NUMBER_TOO_BIG = %!s(int=12)</li>
+<li>VARIANT_PARSE_ERROR_TYPE_ERROR = %!s(int=13)</li>
+<li>VARIANT_PARSE_ERROR_UNEXPECTED_TOKEN = %!s(int=14)</li>
+<li>VARIANT_PARSE_ERROR_UNKNOWN_KEYWORD = %!s(int=15)</li>
+<li>VARIANT_PARSE_ERROR_UNTERMINATED_STRING_CONSTANT = %!s(int=16)</li>
+<li>VARIANT_PARSE_ERROR_VALUE_EXPECTED = %!s(int=17)</li>
+</ul>
 
                     </main>
 

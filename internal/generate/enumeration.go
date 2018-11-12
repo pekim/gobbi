@@ -92,6 +92,11 @@ func (e *Enumeration) generateDocs(file *DocFile) {
 	file.writeLine(doc)
 	file.writeLine("")
 
+	for _, member := range e.Members {
+		member.generateDocs(file)
+	}
+	file.writeLine("")
+
 	file.writeLinef("C - `%s`", e.CType)
 	file.writeLine("")
 }

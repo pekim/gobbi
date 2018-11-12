@@ -140,6 +140,9 @@
 <a class="header" href="#colorspace" id="colorspace"><h2><code>Colorspace</code></h2></a>
 <p>This enumeration defines the color spaces that are supported by
 the gdk-pixbuf library.  Currently only RGB is supported.</p>
+<ul>
+<li>GDK_COLORSPACE_RGB = 0</li>
+</ul>
 <p>C - <code>GdkColorspace</code></p>
 <a class="header" href="#interptype" id="interptype"><h2><code>InterpType</code></h2></a>
 <p>This enumeration describes the different interpolation modes that
@@ -151,6 +154,12 @@ aren't sure what to choose, it has a good speed/quality balance.</p>
 Cubic filtering is missing from the list; hyperbolic
 interpolation is just as fast and results in higher quality.
 </note></p>
+<ul>
+<li>GDK_INTERP_NEAREST = 0</li>
+<li>GDK_INTERP_TILES = 1</li>
+<li>GDK_INTERP_BILINEAR = 2</li>
+<li>GDK_INTERP_HYPER = 3</li>
+</ul>
 <p>C - <code>GdkInterpType</code></p>
 <a class="header" href="#pixbufalphamode" id="pixbufalphamode"><h2><code>PixbufAlphaMode</code></h2></a>
 <p>These values can be passed to
@@ -161,16 +170,41 @@ the image.  In the future, when the X Window System gets an alpha
 channel extension, it will be possible to do full alpha
 compositing onto arbitrary drawables.  For now both cases fall
 back to a bilevel clipping mask.</p>
+<ul>
+<li>GDK_PIXBUF_ALPHA_BILEVEL = 0</li>
+<li>GDK_PIXBUF_ALPHA_FULL = 1</li>
+</ul>
 <p>C - <code>GdkPixbufAlphaMode</code></p>
 <a class="header" href="#pixbuferror" id="pixbuferror"><h2><code>PixbufError</code></h2></a>
 <p>An error code in the #GDK_PIXBUF_ERROR domain. Many gdk-pixbuf
 operations can cause errors in this domain, or in the #G_FILE_ERROR
 domain.</p>
+<ul>
+<li>GDK_PIXBUF_ERROR_CORRUPT_IMAGE = 0</li>
+<li>GDK_PIXBUF_ERROR_INSUFFICIENT_MEMORY = 1</li>
+<li>GDK_PIXBUF_ERROR_BAD_OPTION = 2</li>
+<li>GDK_PIXBUF_ERROR_UNKNOWN_TYPE = 3</li>
+<li>GDK_PIXBUF_ERROR_UNSUPPORTED_OPERATION = 4</li>
+<li>GDK_PIXBUF_ERROR_FAILED = 5</li>
+<li>GDK_PIXBUF_ERROR_INCOMPLETE_ANIMATION = 6</li>
+</ul>
 <p>C - <code>GdkPixbufError</code></p>
 <a class="header" href="#pixbufrotation" id="pixbufrotation"><h2><code>PixbufRotation</code></h2></a>
 <p>The possible rotations which can be passed to gdk_pixbuf_rotate_simple().
 To make them easier to use, their numerical values are the actual degrees.</p>
+<ul>
+<li>GDK_PIXBUF_ROTATE_NONE = 0</li>
+<li>GDK_PIXBUF_ROTATE_COUNTERCLOCKWISE = 90</li>
+<li>GDK_PIXBUF_ROTATE_UPSIDEDOWN = 180</li>
+<li>GDK_PIXBUF_ROTATE_CLOCKWISE = 270</li>
+</ul>
 <p>C - <code>GdkPixbufRotation</code></p>
+<p>E = %!s(int=0)</p>
+<ul>
+<li>GDK_PIXBUF_ROTATE_COUNTERCLOCKWISE = %!s(int=90)</li>
+<li>GDK_PIXBUF_ROTATE_UPSIDEDOWN = %!s(int=180)</li>
+<li>GDK_PIXBUF_ROTATE_CLOCKWISE = %!s(int=270)</li>
+</ul>
 
                     </main>
 

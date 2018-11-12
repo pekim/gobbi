@@ -149,13 +149,43 @@ on-screen. If %GDK_ANCHOR_RESIZE_X is set, the window can be shrunken
 horizontally to fit.</p>
 <p>In general, when multiple flags are set, flipping should take precedence over
 sliding, which should take precedence over resizing.</p>
+<ul>
+<li>GDK_ANCHOR_FLIP_X = 1</li>
+<li>GDK_ANCHOR_FLIP_Y = 2</li>
+<li>GDK_ANCHOR_SLIDE_X = 4</li>
+<li>GDK_ANCHOR_SLIDE_Y = 8</li>
+<li>GDK_ANCHOR_RESIZE_X = 16</li>
+<li>GDK_ANCHOR_RESIZE_Y = 32</li>
+<li>GDK_ANCHOR_FLIP = 3</li>
+<li>GDK_ANCHOR_SLIDE = 12</li>
+<li>GDK_ANCHOR_RESIZE = 48</li>
+</ul>
 <p>C - <code>GdkAnchorHints</code></p>
 <a class="header" href="#axisflags" id="axisflags"><h2><code>AxisFlags</code></h2></a>
 <p>Flags describing the current capabilities of a device/tool.</p>
+<ul>
+<li>GDK_AXIS_FLAG_X = 2</li>
+<li>GDK_AXIS_FLAG_Y = 4</li>
+<li>GDK_AXIS_FLAG_PRESSURE = 8</li>
+<li>GDK_AXIS_FLAG_XTILT = 16</li>
+<li>GDK_AXIS_FLAG_YTILT = 32</li>
+<li>GDK_AXIS_FLAG_WHEEL = 64</li>
+<li>GDK_AXIS_FLAG_DISTANCE = 128</li>
+<li>GDK_AXIS_FLAG_ROTATION = 256</li>
+<li>GDK_AXIS_FLAG_SLIDER = 512</li>
+</ul>
 <p>C - <code>GdkAxisFlags</code></p>
 <a class="header" href="#dragaction" id="dragaction"><h2><code>DragAction</code></h2></a>
 <p>Used in #GdkDragContext to indicate what the destination
 should do with the dropped data.</p>
+<ul>
+<li>GDK_ACTION_DEFAULT = 1</li>
+<li>GDK_ACTION_COPY = 2</li>
+<li>GDK_ACTION_MOVE = 4</li>
+<li>GDK_ACTION_LINK = 8</li>
+<li>GDK_ACTION_PRIVATE = 16</li>
+<li>GDK_ACTION_ASK = 32</li>
+</ul>
 <p>C - <code>GdkDragAction</code></p>
 <a class="header" href="#eventmask" id="eventmask"><h2><code>EventMask</code></h2></a>
 <p>A set of bit-flags to indicate which events a window is to receive.
@@ -180,11 +210,49 @@ with type %GDK_TOUCH_UPDATE, enclosed by two events with
 type %GDK_TOUCH_BEGIN and %GDK_TOUCH_END (or %GDK_TOUCH_CANCEL).
 gdk_event_get_event_sequence() returns the event sequence for these
 events, so different sequences may be distinguished.</p>
+<ul>
+<li>GDK_EXPOSURE_MASK = 2</li>
+<li>GDK_POINTER_MOTION_MASK = 4</li>
+<li>GDK_POINTER_MOTION_HINT_MASK = 8</li>
+<li>GDK_BUTTON_MOTION_MASK = 16</li>
+<li>GDK_BUTTON1_MOTION_MASK = 32</li>
+<li>GDK_BUTTON2_MOTION_MASK = 64</li>
+<li>GDK_BUTTON3_MOTION_MASK = 128</li>
+<li>GDK_BUTTON_PRESS_MASK = 256</li>
+<li>GDK_BUTTON_RELEASE_MASK = 512</li>
+<li>GDK_KEY_PRESS_MASK = 1024</li>
+<li>GDK_KEY_RELEASE_MASK = 2048</li>
+<li>GDK_ENTER_NOTIFY_MASK = 4096</li>
+<li>GDK_LEAVE_NOTIFY_MASK = 8192</li>
+<li>GDK_FOCUS_CHANGE_MASK = 16384</li>
+<li>GDK_STRUCTURE_MASK = 32768</li>
+<li>GDK_PROPERTY_CHANGE_MASK = 65536</li>
+<li>GDK_VISIBILITY_NOTIFY_MASK = 131072</li>
+<li>GDK_PROXIMITY_IN_MASK = 262144</li>
+<li>GDK_PROXIMITY_OUT_MASK = 524288</li>
+<li>GDK_SUBSTRUCTURE_MASK = 1048576</li>
+<li>GDK_SCROLL_MASK = 2097152</li>
+<li>GDK_TOUCH_MASK = 4194304</li>
+<li>GDK_SMOOTH_SCROLL_MASK = 8388608</li>
+<li>GDK_TOUCHPAD_GESTURE_MASK = 16777216</li>
+<li>GDK_TABLET_PAD_MASK = 33554432</li>
+<li>GDK_ALL_EVENTS_MASK = 67108862</li>
+</ul>
 <p>C - <code>GdkEventMask</code></p>
 <a class="header" href="#frameclockphase" id="frameclockphase"><h2><code>FrameClockPhase</code></h2></a>
 <p>#GdkFrameClockPhase is used to represent the different paint clock
 phases that can be requested. The elements of the enumeration
 correspond to the signals of #GdkFrameClock.</p>
+<ul>
+<li>GDK_FRAME_CLOCK_PHASE_NONE = 0</li>
+<li>GDK_FRAME_CLOCK_PHASE_FLUSH_EVENTS = 1</li>
+<li>GDK_FRAME_CLOCK_PHASE_BEFORE_PAINT = 2</li>
+<li>GDK_FRAME_CLOCK_PHASE_UPDATE = 4</li>
+<li>GDK_FRAME_CLOCK_PHASE_LAYOUT = 8</li>
+<li>GDK_FRAME_CLOCK_PHASE_PAINT = 16</li>
+<li>GDK_FRAME_CLOCK_PHASE_RESUME_EVENTS = 32</li>
+<li>GDK_FRAME_CLOCK_PHASE_AFTER_PAINT = 64</li>
+</ul>
 <p>C - <code>GdkFrameClockPhase</code></p>
 <a class="header" href="#modifiertype" id="modifiertype"><h2><code>ModifierType</code></h2></a>
 <p>A set of bit-flags to indicate the state of modifier keys and mouse buttons
@@ -201,19 +269,79 @@ remove all reserved values.</p>
 <p>Also note that the GDK X backend interprets button press events for button
 4-7 as scroll events, so %GDK_BUTTON4_MASK and %GDK_BUTTON5_MASK will never
 be set.</p>
+<ul>
+<li>GDK_SHIFT_MASK = 1</li>
+<li>GDK_LOCK_MASK = 2</li>
+<li>GDK_CONTROL_MASK = 4</li>
+<li>GDK_MOD1_MASK = 8</li>
+<li>GDK_MOD2_MASK = 16</li>
+<li>GDK_MOD3_MASK = 32</li>
+<li>GDK_MOD4_MASK = 64</li>
+<li>GDK_MOD5_MASK = 128</li>
+<li>GDK_BUTTON1_MASK = 256</li>
+<li>GDK_BUTTON2_MASK = 512</li>
+<li>GDK_BUTTON3_MASK = 1024</li>
+<li>GDK_BUTTON4_MASK = 2048</li>
+<li>GDK_BUTTON5_MASK = 4096</li>
+<li>GDK_MODIFIER_RESERVED_13_MASK = 8192</li>
+<li>GDK_MODIFIER_RESERVED_14_MASK = 16384</li>
+<li>GDK_MODIFIER_RESERVED_15_MASK = 32768</li>
+<li>GDK_MODIFIER_RESERVED_16_MASK = 65536</li>
+<li>GDK_MODIFIER_RESERVED_17_MASK = 131072</li>
+<li>GDK_MODIFIER_RESERVED_18_MASK = 262144</li>
+<li>GDK_MODIFIER_RESERVED_19_MASK = 524288</li>
+<li>GDK_MODIFIER_RESERVED_20_MASK = 1048576</li>
+<li>GDK_MODIFIER_RESERVED_21_MASK = 2097152</li>
+<li>GDK_MODIFIER_RESERVED_22_MASK = 4194304</li>
+<li>GDK_MODIFIER_RESERVED_23_MASK = 8388608</li>
+<li>GDK_MODIFIER_RESERVED_24_MASK = 16777216</li>
+<li>GDK_MODIFIER_RESERVED_25_MASK = 33554432</li>
+<li>GDK_SUPER_MASK = 67108864</li>
+<li>GDK_HYPER_MASK = 134217728</li>
+<li>GDK_META_MASK = 268435456</li>
+<li>GDK_MODIFIER_RESERVED_29_MASK = 536870912</li>
+<li>GDK_RELEASE_MASK = 1073741824</li>
+<li>GDK_MODIFIER_MASK = 1543512063</li>
+</ul>
 <p>C - <code>guint</code></p>
 <a class="header" href="#seatcapabilities" id="seatcapabilities"><h2><code>SeatCapabilities</code></h2></a>
 <p>Flags describing the seat capabilities.</p>
+<ul>
+<li>GDK_SEAT_CAPABILITY_NONE = 0</li>
+<li>GDK_SEAT_CAPABILITY_POINTER = 1</li>
+<li>GDK_SEAT_CAPABILITY_TOUCH = 2</li>
+<li>GDK_SEAT_CAPABILITY_TABLET_STYLUS = 4</li>
+<li>GDK_SEAT_CAPABILITY_KEYBOARD = 8</li>
+<li>GDK_SEAT_CAPABILITY_ALL_POINTING = 7</li>
+<li>GDK_SEAT_CAPABILITY_ALL = 15</li>
+</ul>
 <p>C - <code>GdkSeatCapabilities</code></p>
 <a class="header" href="#wmdecoration" id="wmdecoration"><h2><code>WMDecoration</code></h2></a>
 <p>These are hints originally defined by the Motif toolkit.
 The window manager can use them when determining how to decorate
 the window. The hint must be set before mapping the window.</p>
+<ul>
+<li>GDK_DECOR_ALL = 1</li>
+<li>GDK_DECOR_BORDER = 2</li>
+<li>GDK_DECOR_RESIZEH = 4</li>
+<li>GDK_DECOR_TITLE = 8</li>
+<li>GDK_DECOR_MENU = 16</li>
+<li>GDK_DECOR_MINIMIZE = 32</li>
+<li>GDK_DECOR_MAXIMIZE = 64</li>
+</ul>
 <p>C - <code>GdkWMDecoration</code></p>
 <a class="header" href="#wmfunction" id="wmfunction"><h2><code>WMFunction</code></h2></a>
 <p>These are hints originally defined by the Motif toolkit. The window manager
 can use them when determining the functions to offer for the window. The
 hint must be set before mapping the window.</p>
+<ul>
+<li>GDK_FUNC_ALL = 1</li>
+<li>GDK_FUNC_RESIZE = 2</li>
+<li>GDK_FUNC_MOVE = 4</li>
+<li>GDK_FUNC_MINIMIZE = 8</li>
+<li>GDK_FUNC_MAXIMIZE = 16</li>
+<li>GDK_FUNC_CLOSE = 32</li>
+</ul>
 <p>C - <code>GdkWMFunction</code></p>
 <a class="header" href="#windowattributestype" id="windowattributestype"><h2><code>WindowAttributesType</code></h2></a>
 <p>Used to indicate which fields in the #GdkWindowAttr struct should be honored.
@@ -222,6 +350,16 @@ pass “@GDK_WA_X | @GDK_WA_CURSOR” to gdk_window_new(). Fields in
 #GdkWindowAttr not covered by a bit in this enum are required; for example,
 the @width/@height, @wclass, and @window_type fields are required, they have
 no corresponding flag in #GdkWindowAttributesType.</p>
+<ul>
+<li>GDK_WA_TITLE = 2</li>
+<li>GDK_WA_X = 4</li>
+<li>GDK_WA_Y = 8</li>
+<li>GDK_WA_CURSOR = 16</li>
+<li>GDK_WA_VISUAL = 32</li>
+<li>GDK_WA_WMCLASS = 64</li>
+<li>GDK_WA_NOREDIR = 128</li>
+<li>GDK_WA_TYPE_HINT = 256</li>
+</ul>
 <p>C - <code>GdkWindowAttributesType</code></p>
 <a class="header" href="#windowhints" id="windowhints"><h2><code>WindowHints</code></h2></a>
 <p>Used to indicate which fields of a #GdkGeometry struct should be paid
@@ -232,10 +370,76 @@ automatically by #GtkWindow if you call gtk_window_move().
 @GDK_HINT_USER_POS and @GDK_HINT_USER_SIZE should be set if the user
 specified a size/position using a --geometry command-line argument;
 gtk_window_parse_geometry() automatically sets these flags.</p>
+<ul>
+<li>GDK_HINT_POS = 1</li>
+<li>GDK_HINT_MIN_SIZE = 2</li>
+<li>GDK_HINT_MAX_SIZE = 4</li>
+<li>GDK_HINT_BASE_SIZE = 8</li>
+<li>GDK_HINT_ASPECT = 16</li>
+<li>GDK_HINT_RESIZE_INC = 32</li>
+<li>GDK_HINT_WIN_GRAVITY = 64</li>
+<li>GDK_HINT_USER_POS = 128</li>
+<li>GDK_HINT_USER_SIZE = 256</li>
+</ul>
 <p>C - <code>GdkWindowHints</code></p>
 <a class="header" href="#windowstate" id="windowstate"><h2><code>WindowState</code></h2></a>
 <p>Specifies the state of a toplevel window.</p>
+<ul>
+<li>GDK_WINDOW_STATE_WITHDRAWN = 1</li>
+<li>GDK_WINDOW_STATE_ICONIFIED = 2</li>
+<li>GDK_WINDOW_STATE_MAXIMIZED = 4</li>
+<li>GDK_WINDOW_STATE_STICKY = 8</li>
+<li>GDK_WINDOW_STATE_FULLSCREEN = 16</li>
+<li>GDK_WINDOW_STATE_ABOVE = 32</li>
+<li>GDK_WINDOW_STATE_BELOW = 64</li>
+<li>GDK_WINDOW_STATE_FOCUSED = 128</li>
+<li>GDK_WINDOW_STATE_TILED = 256</li>
+<li>GDK_WINDOW_STATE_TOP_TILED = 512</li>
+<li>GDK_WINDOW_STATE_TOP_RESIZABLE = 1024</li>
+<li>GDK_WINDOW_STATE_RIGHT_TILED = 2048</li>
+<li>GDK_WINDOW_STATE_RIGHT_RESIZABLE = 4096</li>
+<li>GDK_WINDOW_STATE_BOTTOM_TILED = 8192</li>
+<li>GDK_WINDOW_STATE_BOTTOM_RESIZABLE = 16384</li>
+<li>GDK_WINDOW_STATE_LEFT_TILED = 32768</li>
+<li>GDK_WINDOW_STATE_LEFT_RESIZABLE = 65536</li>
+</ul>
 <p>C - <code>GdkWindowState</code></p>
+<p>ize/position using a --geometry command-line argument;
+gtk_window_parse_geometry() automatically sets these flags.</p>
+<p>C - <code>GdkWindowHints</code></p>
+<ul>
+<li>GDK_HINT_POS = %!s(int=1)</li>
+<li>GDK_HINT_MIN_SIZE = %!s(int=2)</li>
+<li>GDK_HINT_MAX_SIZE = %!s(int=4)</li>
+<li>GDK_HINT_BASE_SIZE = %!s(int=8)</li>
+<li>GDK_HINT_ASPECT = %!s(int=16)</li>
+<li>GDK_HINT_RESIZE_INC = %!s(int=32)</li>
+<li>GDK_HINT_WIN_GRAVITY = %!s(int=64)</li>
+<li>GDK_HINT_USER_POS = %!s(int=128)</li>
+<li>GDK_HINT_USER_SIZE = %!s(int=256)</li>
+</ul>
+<a class="header" href="#windowstate-1" id="windowstate-1"><h2><code>WindowState</code></h2></a>
+<p>Specifies the state of a toplevel window.</p>
+<p>C - <code>GdkWindowState</code></p>
+<ul>
+<li>GDK_WINDOW_STATE_WITHDRAWN = %!s(int=1)</li>
+<li>GDK_WINDOW_STATE_ICONIFIED = %!s(int=2)</li>
+<li>GDK_WINDOW_STATE_MAXIMIZED = %!s(int=4)</li>
+<li>GDK_WINDOW_STATE_STICKY = %!s(int=8)</li>
+<li>GDK_WINDOW_STATE_FULLSCREEN = %!s(int=16)</li>
+<li>GDK_WINDOW_STATE_ABOVE = %!s(int=32)</li>
+<li>GDK_WINDOW_STATE_BELOW = %!s(int=64)</li>
+<li>GDK_WINDOW_STATE_FOCUSED = %!s(int=128)</li>
+<li>GDK_WINDOW_STATE_TILED = %!s(int=256)</li>
+<li>GDK_WINDOW_STATE_TOP_TILED = %!s(int=512)</li>
+<li>GDK_WINDOW_STATE_TOP_RESIZABLE = %!s(int=1024)</li>
+<li>GDK_WINDOW_STATE_RIGHT_TILED = %!s(int=2048)</li>
+<li>GDK_WINDOW_STATE_RIGHT_RESIZABLE = %!s(int=4096)</li>
+<li>GDK_WINDOW_STATE_BOTTOM_TILED = %!s(int=8192)</li>
+<li>GDK_WINDOW_STATE_BOTTOM_RESIZABLE = %!s(int=16384)</li>
+<li>GDK_WINDOW_STATE_LEFT_TILED = %!s(int=32768)</li>
+<li>GDK_WINDOW_STATE_LEFT_RESIZABLE = %!s(int=65536)</li>
+</ul>
 
                     </main>
 

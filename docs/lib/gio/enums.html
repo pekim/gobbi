@@ -139,55 +139,213 @@
                         <a class="header" href="#gio-enums" id="gio-enums"><h1><code>gio</code> enums</h1></a>
 <a class="header" href="#bustype" id="bustype"><h2><code>BusType</code></h2></a>
 <p>An enumeration for well-known message buses.</p>
+<ul>
+<li>BUS_TYPE_STARTER = -1</li>
+<li>BUS_TYPE_NONE = 0</li>
+<li>BUS_TYPE_SYSTEM = 1</li>
+<li>BUS_TYPE_SESSION = 2</li>
+</ul>
 <p>C - <code>GBusType</code></p>
 <a class="header" href="#converterresult" id="converterresult"><h2><code>ConverterResult</code></h2></a>
 <p>Results returned from g_converter_convert().</p>
+<ul>
+<li>CONVERTER_ERROR = 0</li>
+<li>CONVERTER_CONVERTED = 1</li>
+<li>CONVERTER_FINISHED = 2</li>
+<li>CONVERTER_FLUSHED = 3</li>
+</ul>
 <p>C - <code>GConverterResult</code></p>
 <a class="header" href="#credentialstype" id="credentialstype"><h2><code>CredentialsType</code></h2></a>
 <p>Enumeration describing different kinds of native credential types.</p>
+<ul>
+<li>CREDENTIALS_TYPE_INVALID = 0</li>
+<li>CREDENTIALS_TYPE_LINUX_UCRED = 1</li>
+<li>CREDENTIALS_TYPE_FREEBSD_CMSGCRED = 2</li>
+<li>CREDENTIALS_TYPE_OPENBSD_SOCKPEERCRED = 3</li>
+<li>CREDENTIALS_TYPE_SOLARIS_UCRED = 4</li>
+<li>CREDENTIALS_TYPE_NETBSD_UNPCBID = 5</li>
+</ul>
 <p>C - <code>GCredentialsType</code></p>
 <a class="header" href="#dbuserror" id="dbuserror"><h2><code>DBusError</code></h2></a>
 <p>Error codes for the %G_DBUS_ERROR error domain.</p>
+<ul>
+<li>DBUS_ERROR_FAILED = 0</li>
+<li>DBUS_ERROR_NO_MEMORY = 1</li>
+<li>DBUS_ERROR_SERVICE_UNKNOWN = 2</li>
+<li>DBUS_ERROR_NAME_HAS_NO_OWNER = 3</li>
+<li>DBUS_ERROR_NO_REPLY = 4</li>
+<li>DBUS_ERROR_IO_ERROR = 5</li>
+<li>DBUS_ERROR_BAD_ADDRESS = 6</li>
+<li>DBUS_ERROR_NOT_SUPPORTED = 7</li>
+<li>DBUS_ERROR_LIMITS_EXCEEDED = 8</li>
+<li>DBUS_ERROR_ACCESS_DENIED = 9</li>
+<li>DBUS_ERROR_AUTH_FAILED = 10</li>
+<li>DBUS_ERROR_NO_SERVER = 11</li>
+<li>DBUS_ERROR_TIMEOUT = 12</li>
+<li>DBUS_ERROR_NO_NETWORK = 13</li>
+<li>DBUS_ERROR_ADDRESS_IN_USE = 14</li>
+<li>DBUS_ERROR_DISCONNECTED = 15</li>
+<li>DBUS_ERROR_INVALID_ARGS = 16</li>
+<li>DBUS_ERROR_FILE_NOT_FOUND = 17</li>
+<li>DBUS_ERROR_FILE_EXISTS = 18</li>
+<li>DBUS_ERROR_UNKNOWN_METHOD = 19</li>
+<li>DBUS_ERROR_TIMED_OUT = 20</li>
+<li>DBUS_ERROR_MATCH_RULE_NOT_FOUND = 21</li>
+<li>DBUS_ERROR_MATCH_RULE_INVALID = 22</li>
+<li>DBUS_ERROR_SPAWN_EXEC_FAILED = 23</li>
+<li>DBUS_ERROR_SPAWN_FORK_FAILED = 24</li>
+<li>DBUS_ERROR_SPAWN_CHILD_EXITED = 25</li>
+<li>DBUS_ERROR_SPAWN_CHILD_SIGNALED = 26</li>
+<li>DBUS_ERROR_SPAWN_FAILED = 27</li>
+<li>DBUS_ERROR_SPAWN_SETUP_FAILED = 28</li>
+<li>DBUS_ERROR_SPAWN_CONFIG_INVALID = 29</li>
+<li>DBUS_ERROR_SPAWN_SERVICE_INVALID = 30</li>
+<li>DBUS_ERROR_SPAWN_SERVICE_NOT_FOUND = 31</li>
+<li>DBUS_ERROR_SPAWN_PERMISSIONS_INVALID = 32</li>
+<li>DBUS_ERROR_SPAWN_FILE_INVALID = 33</li>
+<li>DBUS_ERROR_SPAWN_NO_MEMORY = 34</li>
+<li>DBUS_ERROR_UNIX_PROCESS_ID_UNKNOWN = 35</li>
+<li>DBUS_ERROR_INVALID_SIGNATURE = 36</li>
+<li>DBUS_ERROR_INVALID_FILE_CONTENT = 37</li>
+<li>DBUS_ERROR_SELINUX_SECURITY_CONTEXT_UNKNOWN = 38</li>
+<li>DBUS_ERROR_ADT_AUDIT_DATA_UNKNOWN = 39</li>
+<li>DBUS_ERROR_OBJECT_PATH_IN_USE = 40</li>
+<li>DBUS_ERROR_UNKNOWN_OBJECT = 41</li>
+<li>DBUS_ERROR_UNKNOWN_INTERFACE = 42</li>
+<li>DBUS_ERROR_UNKNOWN_PROPERTY = 43</li>
+<li>DBUS_ERROR_PROPERTY_READ_ONLY = 44</li>
+</ul>
 <p>C - <code>GDBusError</code></p>
 <a class="header" href="#dbusmessagebyteorder" id="dbusmessagebyteorder"><h2><code>DBusMessageByteOrder</code></h2></a>
 <p>Enumeration used to describe the byte order of a D-Bus message.</p>
+<ul>
+<li>DBUS_MESSAGE_BYTE_ORDER_BIG_ENDIAN = 66</li>
+<li>DBUS_MESSAGE_BYTE_ORDER_LITTLE_ENDIAN = 108</li>
+</ul>
 <p>C - <code>GDBusMessageByteOrder</code></p>
 <a class="header" href="#dbusmessageheaderfield" id="dbusmessageheaderfield"><h2><code>DBusMessageHeaderField</code></h2></a>
 <p>Header fields used in #GDBusMessage.</p>
+<ul>
+<li>DBUS_MESSAGE_HEADER_FIELD_INVALID = 0</li>
+<li>DBUS_MESSAGE_HEADER_FIELD_PATH = 1</li>
+<li>DBUS_MESSAGE_HEADER_FIELD_INTERFACE = 2</li>
+<li>DBUS_MESSAGE_HEADER_FIELD_MEMBER = 3</li>
+<li>DBUS_MESSAGE_HEADER_FIELD_ERROR_NAME = 4</li>
+<li>DBUS_MESSAGE_HEADER_FIELD_REPLY_SERIAL = 5</li>
+<li>DBUS_MESSAGE_HEADER_FIELD_DESTINATION = 6</li>
+<li>DBUS_MESSAGE_HEADER_FIELD_SENDER = 7</li>
+<li>DBUS_MESSAGE_HEADER_FIELD_SIGNATURE = 8</li>
+<li>DBUS_MESSAGE_HEADER_FIELD_NUM_UNIX_FDS = 9</li>
+</ul>
 <p>C - <code>GDBusMessageHeaderField</code></p>
 <a class="header" href="#dbusmessagetype" id="dbusmessagetype"><h2><code>DBusMessageType</code></h2></a>
 <p>Message types used in #GDBusMessage.</p>
+<ul>
+<li>DBUS_MESSAGE_TYPE_INVALID = 0</li>
+<li>DBUS_MESSAGE_TYPE_METHOD_CALL = 1</li>
+<li>DBUS_MESSAGE_TYPE_METHOD_RETURN = 2</li>
+<li>DBUS_MESSAGE_TYPE_ERROR = 3</li>
+<li>DBUS_MESSAGE_TYPE_SIGNAL = 4</li>
+</ul>
 <p>C - <code>GDBusMessageType</code></p>
 <a class="header" href="#datastreambyteorder" id="datastreambyteorder"><h2><code>DataStreamByteOrder</code></h2></a>
 <p>#GDataStreamByteOrder is used to ensure proper endianness of streaming data sources
 across various machine architectures.</p>
+<ul>
+<li>DATA_STREAM_BYTE_ORDER_BIG_ENDIAN = 0</li>
+<li>DATA_STREAM_BYTE_ORDER_LITTLE_ENDIAN = 1</li>
+<li>DATA_STREAM_BYTE_ORDER_HOST_ENDIAN = 2</li>
+</ul>
 <p>C - <code>GDataStreamByteOrder</code></p>
 <a class="header" href="#datastreamnewlinetype" id="datastreamnewlinetype"><h2><code>DataStreamNewlineType</code></h2></a>
 <p>#GDataStreamNewlineType is used when checking for or setting the line endings for a given file.</p>
+<ul>
+<li>DATA_STREAM_NEWLINE_TYPE_LF = 0</li>
+<li>DATA_STREAM_NEWLINE_TYPE_CR = 1</li>
+<li>DATA_STREAM_NEWLINE_TYPE_CR_LF = 2</li>
+<li>DATA_STREAM_NEWLINE_TYPE_ANY = 3</li>
+</ul>
 <p>C - <code>GDataStreamNewlineType</code></p>
 <a class="header" href="#drivestartstoptype" id="drivestartstoptype"><h2><code>DriveStartStopType</code></h2></a>
 <p>Enumeration describing how a drive can be started/stopped.</p>
+<ul>
+<li>DRIVE_START_STOP_TYPE_UNKNOWN = 0</li>
+<li>DRIVE_START_STOP_TYPE_SHUTDOWN = 1</li>
+<li>DRIVE_START_STOP_TYPE_NETWORK = 2</li>
+<li>DRIVE_START_STOP_TYPE_MULTIDISK = 3</li>
+<li>DRIVE_START_STOP_TYPE_PASSWORD = 4</li>
+</ul>
 <p>C - <code>GDriveStartStopType</code></p>
 <a class="header" href="#emblemorigin" id="emblemorigin"><h2><code>EmblemOrigin</code></h2></a>
 <p>GEmblemOrigin is used to add information about the origin of the emblem
 to #GEmblem.</p>
+<ul>
+<li>EMBLEM_ORIGIN_UNKNOWN = 0</li>
+<li>EMBLEM_ORIGIN_DEVICE = 1</li>
+<li>EMBLEM_ORIGIN_LIVEMETADATA = 2</li>
+<li>EMBLEM_ORIGIN_TAG = 3</li>
+</ul>
 <p>C - <code>GEmblemOrigin</code></p>
 <a class="header" href="#fileattributestatus" id="fileattributestatus"><h2><code>FileAttributeStatus</code></h2></a>
 <p>Used by g_file_set_attributes_from_info() when setting file attributes.</p>
+<ul>
+<li>FILE_ATTRIBUTE_STATUS_UNSET = 0</li>
+<li>FILE_ATTRIBUTE_STATUS_SET = 1</li>
+<li>FILE_ATTRIBUTE_STATUS_ERROR_SETTING = 2</li>
+</ul>
 <p>C - <code>GFileAttributeStatus</code></p>
 <a class="header" href="#fileattributetype" id="fileattributetype"><h2><code>FileAttributeType</code></h2></a>
 <p>The data types for file attributes.</p>
+<ul>
+<li>FILE_ATTRIBUTE_TYPE_INVALID = 0</li>
+<li>FILE_ATTRIBUTE_TYPE_STRING = 1</li>
+<li>FILE_ATTRIBUTE_TYPE_BYTE_STRING = 2</li>
+<li>FILE_ATTRIBUTE_TYPE_BOOLEAN = 3</li>
+<li>FILE_ATTRIBUTE_TYPE_UINT32 = 4</li>
+<li>FILE_ATTRIBUTE_TYPE_INT32 = 5</li>
+<li>FILE_ATTRIBUTE_TYPE_UINT64 = 6</li>
+<li>FILE_ATTRIBUTE_TYPE_INT64 = 7</li>
+<li>FILE_ATTRIBUTE_TYPE_OBJECT = 8</li>
+<li>FILE_ATTRIBUTE_TYPE_STRINGV = 9</li>
+</ul>
 <p>C - <code>GFileAttributeType</code></p>
 <a class="header" href="#filemonitorevent" id="filemonitorevent"><h2><code>FileMonitorEvent</code></h2></a>
 <p>Specifies what type of event a monitor event is.</p>
+<ul>
+<li>FILE_MONITOR_EVENT_CHANGED = 0</li>
+<li>FILE_MONITOR_EVENT_CHANGES_DONE_HINT = 1</li>
+<li>FILE_MONITOR_EVENT_DELETED = 2</li>
+<li>FILE_MONITOR_EVENT_CREATED = 3</li>
+<li>FILE_MONITOR_EVENT_ATTRIBUTE_CHANGED = 4</li>
+<li>FILE_MONITOR_EVENT_PRE_UNMOUNT = 5</li>
+<li>FILE_MONITOR_EVENT_UNMOUNTED = 6</li>
+<li>FILE_MONITOR_EVENT_MOVED = 7</li>
+<li>FILE_MONITOR_EVENT_RENAMED = 8</li>
+<li>FILE_MONITOR_EVENT_MOVED_IN = 9</li>
+<li>FILE_MONITOR_EVENT_MOVED_OUT = 10</li>
+</ul>
 <p>C - <code>GFileMonitorEvent</code></p>
 <a class="header" href="#filetype" id="filetype"><h2><code>FileType</code></h2></a>
 <p>Indicates the file's on-disk type.</p>
+<ul>
+<li>FILE_TYPE_UNKNOWN = 0</li>
+<li>FILE_TYPE_REGULAR = 1</li>
+<li>FILE_TYPE_DIRECTORY = 2</li>
+<li>FILE_TYPE_SYMBOLIC_LINK = 3</li>
+<li>FILE_TYPE_SPECIAL = 4</li>
+<li>FILE_TYPE_SHORTCUT = 5</li>
+<li>FILE_TYPE_MOUNTABLE = 6</li>
+</ul>
 <p>C - <code>GFileType</code></p>
 <a class="header" href="#filesystempreviewtype" id="filesystempreviewtype"><h2><code>FilesystemPreviewType</code></h2></a>
 <p>Indicates a hint from the file system whether files should be
 previewed in a file manager. Returned as the value of the key
 #G_FILE_ATTRIBUTE_FILESYSTEM_USE_PREVIEW.</p>
+<ul>
+<li>FILESYSTEM_PREVIEW_TYPE_IF_ALWAYS = 0</li>
+<li>FILESYSTEM_PREVIEW_TYPE_IF_LOCAL = 1</li>
+<li>FILESYSTEM_PREVIEW_TYPE_NEVER = 2</li>
+</ul>
 <p>C - <code>GFilesystemPreviewType</code></p>
 <a class="header" href="#ioerrorenum" id="ioerrorenum"><h2><code>IOErrorEnum</code></h2></a>
 <p>Error codes returned by GIO functions.</p>
@@ -204,28 +362,109 @@ if (g_error_matches (error, G_IO_ERROR, G_IO_ERROR_FAILED))
 ]|
 but should instead treat all unrecognized error codes the same as
 #G_IO_ERROR_FAILED.</p>
+<ul>
+<li>IO_ERROR_FAILED = 0</li>
+<li>IO_ERROR_NOT_FOUND = 1</li>
+<li>IO_ERROR_EXISTS = 2</li>
+<li>IO_ERROR_IS_DIRECTORY = 3</li>
+<li>IO_ERROR_NOT_DIRECTORY = 4</li>
+<li>IO_ERROR_NOT_EMPTY = 5</li>
+<li>IO_ERROR_NOT_REGULAR_FILE = 6</li>
+<li>IO_ERROR_NOT_SYMBOLIC_LINK = 7</li>
+<li>IO_ERROR_NOT_MOUNTABLE_FILE = 8</li>
+<li>IO_ERROR_FILENAME_TOO_LONG = 9</li>
+<li>IO_ERROR_INVALID_FILENAME = 10</li>
+<li>IO_ERROR_TOO_MANY_LINKS = 11</li>
+<li>IO_ERROR_NO_SPACE = 12</li>
+<li>IO_ERROR_INVALID_ARGUMENT = 13</li>
+<li>IO_ERROR_PERMISSION_DENIED = 14</li>
+<li>IO_ERROR_NOT_SUPPORTED = 15</li>
+<li>IO_ERROR_NOT_MOUNTED = 16</li>
+<li>IO_ERROR_ALREADY_MOUNTED = 17</li>
+<li>IO_ERROR_CLOSED = 18</li>
+<li>IO_ERROR_CANCELLED = 19</li>
+<li>IO_ERROR_PENDING = 20</li>
+<li>IO_ERROR_READ_ONLY = 21</li>
+<li>IO_ERROR_CANT_CREATE_BACKUP = 22</li>
+<li>IO_ERROR_WRONG_ETAG = 23</li>
+<li>IO_ERROR_TIMED_OUT = 24</li>
+<li>IO_ERROR_WOULD_RECURSE = 25</li>
+<li>IO_ERROR_BUSY = 26</li>
+<li>IO_ERROR_WOULD_BLOCK = 27</li>
+<li>IO_ERROR_HOST_NOT_FOUND = 28</li>
+<li>IO_ERROR_WOULD_MERGE = 29</li>
+<li>IO_ERROR_FAILED_HANDLED = 30</li>
+<li>IO_ERROR_TOO_MANY_OPEN_FILES = 31</li>
+<li>IO_ERROR_NOT_INITIALIZED = 32</li>
+<li>IO_ERROR_ADDRESS_IN_USE = 33</li>
+<li>IO_ERROR_PARTIAL_INPUT = 34</li>
+<li>IO_ERROR_INVALID_DATA = 35</li>
+<li>IO_ERROR_DBUS_ERROR = 36</li>
+<li>IO_ERROR_HOST_UNREACHABLE = 37</li>
+<li>IO_ERROR_NETWORK_UNREACHABLE = 38</li>
+<li>IO_ERROR_CONNECTION_REFUSED = 39</li>
+<li>IO_ERROR_PROXY_FAILED = 40</li>
+<li>IO_ERROR_PROXY_AUTH_FAILED = 41</li>
+<li>IO_ERROR_PROXY_NEED_AUTH = 42</li>
+<li>IO_ERROR_PROXY_NOT_ALLOWED = 43</li>
+<li>IO_ERROR_BROKEN_PIPE = 44</li>
+<li>IO_ERROR_CONNECTION_CLOSED = 44</li>
+<li>IO_ERROR_NOT_CONNECTED = 45</li>
+<li>IO_ERROR_MESSAGE_TOO_LARGE = 46</li>
+</ul>
 <p>C - <code>GIOErrorEnum</code></p>
 <a class="header" href="#iomodulescopeflags" id="iomodulescopeflags"><h2><code>IOModuleScopeFlags</code></h2></a>
 <p>Flags for use with g_io_module_scope_new().</p>
+<ul>
+<li>IO_MODULE_SCOPE_NONE = 0</li>
+<li>IO_MODULE_SCOPE_BLOCK_DUPLICATES = 1</li>
+</ul>
 <p>C - <code>GIOModuleScopeFlags</code></p>
 <a class="header" href="#mountoperationresult" id="mountoperationresult"><h2><code>MountOperationResult</code></h2></a>
 <p>#GMountOperationResult is returned as a result when a request for
 information is send by the mounting operation.</p>
+<ul>
+<li>MOUNT_OPERATION_HANDLED = 0</li>
+<li>MOUNT_OPERATION_ABORTED = 1</li>
+<li>MOUNT_OPERATION_UNHANDLED = 2</li>
+</ul>
 <p>C - <code>GMountOperationResult</code></p>
 <a class="header" href="#networkconnectivity" id="networkconnectivity"><h2><code>NetworkConnectivity</code></h2></a>
 <p>The host's network connectivity state, as reported by #GNetworkMonitor.</p>
+<ul>
+<li>NETWORK_CONNECTIVITY_LOCAL = 1</li>
+<li>NETWORK_CONNECTIVITY_LIMITED = 2</li>
+<li>NETWORK_CONNECTIVITY_PORTAL = 3</li>
+<li>NETWORK_CONNECTIVITY_FULL = 4</li>
+</ul>
 <p>C - <code>GNetworkConnectivity</code></p>
 <a class="header" href="#notificationpriority" id="notificationpriority"><h2><code>NotificationPriority</code></h2></a>
 <p>Priority levels for #GNotifications.</p>
+<ul>
+<li>NOTIFICATION_PRIORITY_NORMAL = 0</li>
+<li>NOTIFICATION_PRIORITY_LOW = 1</li>
+<li>NOTIFICATION_PRIORITY_HIGH = 2</li>
+<li>NOTIFICATION_PRIORITY_URGENT = 3</li>
+</ul>
 <p>C - <code>GNotificationPriority</code></p>
 <a class="header" href="#passwordsave" id="passwordsave"><h2><code>PasswordSave</code></h2></a>
 <p>#GPasswordSave is used to indicate the lifespan of a saved password.</p>
 <p>#Gvfs stores passwords in the Gnome keyring when this flag allows it
 to, and later retrieves it again from there.</p>
+<ul>
+<li>PASSWORD_SAVE_NEVER = 0</li>
+<li>PASSWORD_SAVE_FOR_SESSION = 1</li>
+<li>PASSWORD_SAVE_PERMANENTLY = 2</li>
+</ul>
 <p>C - <code>GPasswordSave</code></p>
 <a class="header" href="#resolvererror" id="resolvererror"><h2><code>ResolverError</code></h2></a>
 <p>An error code used with %G_RESOLVER_ERROR in a #GError returned
 from a #GResolver routine.</p>
+<ul>
+<li>RESOLVER_ERROR_NOT_FOUND = 0</li>
+<li>RESOLVER_ERROR_TEMPORARY_FAILURE = 1</li>
+<li>RESOLVER_ERROR_INTERNAL = 2</li>
+</ul>
 <p>C - <code>GResolverError</code></p>
 <a class="header" href="#resolverrecordtype" id="resolverrecordtype"><h2><code>ResolverRecordType</code></h2></a>
 <p>The type of record that g_resolver_lookup_records() or
@@ -247,25 +486,59 @@ interval as guint32, the retry interval as a guint32, the expire timeout
 as a guint32, and the ttl as a guint32.</p>
 <p>%G_RESOLVER_RECORD_NS records are returned as variants with the signature
 '(s)', representing a string of the hostname of the name server.</p>
+<ul>
+<li>RESOLVER_RECORD_SRV = 1</li>
+<li>RESOLVER_RECORD_MX = 2</li>
+<li>RESOLVER_RECORD_TXT = 3</li>
+<li>RESOLVER_RECORD_SOA = 4</li>
+<li>RESOLVER_RECORD_NS = 5</li>
+</ul>
 <p>C - <code>GResolverRecordType</code></p>
 <a class="header" href="#resourceerror" id="resourceerror"><h2><code>ResourceError</code></h2></a>
 <p>An error code used with %G_RESOURCE_ERROR in a #GError returned
 from a #GResource routine.</p>
+<ul>
+<li>RESOURCE_ERROR_NOT_FOUND = 0</li>
+<li>RESOURCE_ERROR_INTERNAL = 1</li>
+</ul>
 <p>C - <code>GResourceError</code></p>
 <a class="header" href="#socketclientevent" id="socketclientevent"><h2><code>SocketClientEvent</code></h2></a>
 <p>Describes an event occurring on a #GSocketClient. See the
 #GSocketClient::event signal for more details.</p>
 <p>Additional values may be added to this type in the future.</p>
+<ul>
+<li>SOCKET_CLIENT_RESOLVING = 0</li>
+<li>SOCKET_CLIENT_RESOLVED = 1</li>
+<li>SOCKET_CLIENT_CONNECTING = 2</li>
+<li>SOCKET_CLIENT_CONNECTED = 3</li>
+<li>SOCKET_CLIENT_PROXY_NEGOTIATING = 4</li>
+<li>SOCKET_CLIENT_PROXY_NEGOTIATED = 5</li>
+<li>SOCKET_CLIENT_TLS_HANDSHAKING = 6</li>
+<li>SOCKET_CLIENT_TLS_HANDSHAKED = 7</li>
+<li>SOCKET_CLIENT_COMPLETE = 8</li>
+</ul>
 <p>C - <code>GSocketClientEvent</code></p>
 <a class="header" href="#socketfamily" id="socketfamily"><h2><code>SocketFamily</code></h2></a>
 <p>The protocol family of a #GSocketAddress. (These values are
 identical to the system defines %AF_INET, %AF_INET6 and %AF_UNIX,
 if available.)</p>
+<ul>
+<li>SOCKET_FAMILY_INVALID = 0</li>
+<li>SOCKET_FAMILY_UNIX = 1</li>
+<li>SOCKET_FAMILY_IPV4 = 2</li>
+<li>SOCKET_FAMILY_IPV6 = 10</li>
+</ul>
 <p>C - <code>GSocketFamily</code></p>
 <a class="header" href="#socketlistenerevent" id="socketlistenerevent"><h2><code>SocketListenerEvent</code></h2></a>
 <p>Describes an event occurring on a #GSocketListener. See the
 #GSocketListener::event signal for more details.</p>
 <p>Additional values may be added to this type in the future.</p>
+<ul>
+<li>SOCKET_LISTENER_BINDING = 0</li>
+<li>SOCKET_LISTENER_BOUND = 1</li>
+<li>SOCKET_LISTENER_LISTENING = 2</li>
+<li>SOCKET_LISTENER_LISTENED = 3</li>
+</ul>
 <p>C - <code>GSocketListenerEvent</code></p>
 <a class="header" href="#socketprotocol" id="socketprotocol"><h2><code>SocketProtocol</code></h2></a>
 <p>A protocol identifier is specified when creating a #GSocket, which is a
@@ -274,35 +547,79 @@ the particular family/type.</p>
 <p>This enum contains a set of commonly available and used protocols. You
 can also pass any other identifiers handled by the platform in order to
 use protocols not listed here.</p>
+<ul>
+<li>SOCKET_PROTOCOL_UNKNOWN = -1</li>
+<li>SOCKET_PROTOCOL_DEFAULT = 0</li>
+<li>SOCKET_PROTOCOL_TCP = 6</li>
+<li>SOCKET_PROTOCOL_UDP = 17</li>
+<li>SOCKET_PROTOCOL_SCTP = 132</li>
+</ul>
 <p>C - <code>GSocketProtocol</code></p>
 <a class="header" href="#sockettype" id="sockettype"><h2><code>SocketType</code></h2></a>
 <p>Flags used when creating a #GSocket. Some protocols may not implement
 all the socket types.</p>
+<ul>
+<li>SOCKET_TYPE_INVALID = 0</li>
+<li>SOCKET_TYPE_STREAM = 1</li>
+<li>SOCKET_TYPE_DATAGRAM = 2</li>
+<li>SOCKET_TYPE_SEQPACKET = 3</li>
+</ul>
 <p>C - <code>GSocketType</code></p>
 <a class="header" href="#tlsauthenticationmode" id="tlsauthenticationmode"><h2><code>TlsAuthenticationMode</code></h2></a>
 <p>The client authentication mode for a #GTlsServerConnection.</p>
+<ul>
+<li>TLS_AUTHENTICATION_NONE = 0</li>
+<li>TLS_AUTHENTICATION_REQUESTED = 1</li>
+<li>TLS_AUTHENTICATION_REQUIRED = 2</li>
+</ul>
 <p>C - <code>GTlsAuthenticationMode</code></p>
 <a class="header" href="#tlscertificaterequestflags" id="tlscertificaterequestflags"><h2><code>TlsCertificateRequestFlags</code></h2></a>
 <p>Flags for g_tls_interaction_request_certificate(),
 g_tls_interaction_request_certificate_async(), and
 g_tls_interaction_invoke_request_certificate().</p>
+<ul>
+<li>TLS_CERTIFICATE_REQUEST_NONE = 0</li>
+</ul>
 <p>C - <code>GTlsCertificateRequestFlags</code></p>
 <a class="header" href="#tlsdatabaselookupflags" id="tlsdatabaselookupflags"><h2><code>TlsDatabaseLookupFlags</code></h2></a>
 <p>Flags for g_tls_database_lookup_certificate_for_handle(),
 g_tls_database_lookup_certificate_issuer(),
 and g_tls_database_lookup_certificates_issued_by().</p>
+<ul>
+<li>TLS_DATABASE_LOOKUP_NONE = 0</li>
+<li>TLS_DATABASE_LOOKUP_KEYPAIR = 1</li>
+</ul>
 <p>C - <code>GTlsDatabaseLookupFlags</code></p>
 <a class="header" href="#tlserror" id="tlserror"><h2><code>TlsError</code></h2></a>
 <p>An error code used with %G_TLS_ERROR in a #GError returned from a
 TLS-related routine.</p>
+<ul>
+<li>TLS_ERROR_UNAVAILABLE = 0</li>
+<li>TLS_ERROR_MISC = 1</li>
+<li>TLS_ERROR_BAD_CERTIFICATE = 2</li>
+<li>TLS_ERROR_NOT_TLS = 3</li>
+<li>TLS_ERROR_HANDSHAKE = 4</li>
+<li>TLS_ERROR_CERTIFICATE_REQUIRED = 5</li>
+<li>TLS_ERROR_EOF = 6</li>
+</ul>
 <p>C - <code>GTlsError</code></p>
 <a class="header" href="#tlsinteractionresult" id="tlsinteractionresult"><h2><code>TlsInteractionResult</code></h2></a>
 <p>#GTlsInteractionResult is returned by various functions in #GTlsInteraction
 when finishing an interaction request.</p>
+<ul>
+<li>TLS_INTERACTION_UNHANDLED = 0</li>
+<li>TLS_INTERACTION_HANDLED = 1</li>
+<li>TLS_INTERACTION_FAILED = 2</li>
+</ul>
 <p>C - <code>GTlsInteractionResult</code></p>
 <a class="header" href="#tlsrehandshakemode" id="tlsrehandshakemode"><h2><code>TlsRehandshakeMode</code></h2></a>
 <p>When to allow rehandshaking. See
 g_tls_connection_set_rehandshake_mode().</p>
+<ul>
+<li>TLS_REHANDSHAKE_NEVER = 0</li>
+<li>TLS_REHANDSHAKE_SAFELY = 1</li>
+<li>TLS_REHANDSHAKE_UNSAFELY = 2</li>
+</ul>
 <p>C - <code>GTlsRehandshakeMode</code></p>
 <a class="header" href="#unixsocketaddresstype" id="unixsocketaddresstype"><h2><code>UnixSocketAddressType</code></h2></a>
 <p>The type of name used by a #GUnixSocketAddress.
@@ -317,11 +634,88 @@ zeroes; this corresponds to %G_UNIX_SOCKET_ADDRESS_ABSTRACT_PADDED.
 However, many programs instead just use a portion of %sun_path, and
 pass an appropriate smaller length to bind() or connect(). This is
 %G_UNIX_SOCKET_ADDRESS_ABSTRACT.</p>
+<ul>
+<li>UNIX_SOCKET_ADDRESS_INVALID = 0</li>
+<li>UNIX_SOCKET_ADDRESS_ANONYMOUS = 1</li>
+<li>UNIX_SOCKET_ADDRESS_PATH = 2</li>
+<li>UNIX_SOCKET_ADDRESS_ABSTRACT = 3</li>
+<li>UNIX_SOCKET_ADDRESS_ABSTRACT_PADDED = 4</li>
+</ul>
 <p>C - <code>GUnixSocketAddressType</code></p>
 <a class="header" href="#zlibcompressorformat" id="zlibcompressorformat"><h2><code>ZlibCompressorFormat</code></h2></a>
 <p>Used to select the type of data format to use for #GZlibDecompressor
 and #GZlibCompressor.</p>
+<ul>
+<li>ZLIB_COMPRESSOR_FORMAT_ZLIB = 0</li>
+<li>ZLIB_COMPRESSOR_FORMAT_GZIP = 1</li>
+<li>ZLIB_COMPRESSOR_FORMAT_RAW = 2</li>
+</ul>
 <p>C - <code>GZlibCompressorFormat</code></p>
+<p>= %!s(int=0)</p>
+<ul>
+<li>TLS_DATABASE_LOOKUP_KEYPAIR = %!s(int=1)</li>
+</ul>
+<a class="header" href="#tlserror-1" id="tlserror-1"><h2><code>TlsError</code></h2></a>
+<p>An error code used with %G_TLS_ERROR in a #GError returned from a
+TLS-related routine.</p>
+<p>C - <code>GTlsError</code></p>
+<ul>
+<li>TLS_ERROR_UNAVAILABLE = %!s(int=0)</li>
+<li>TLS_ERROR_MISC = %!s(int=1)</li>
+<li>TLS_ERROR_BAD_CERTIFICATE = %!s(int=2)</li>
+<li>TLS_ERROR_NOT_TLS = %!s(int=3)</li>
+<li>TLS_ERROR_HANDSHAKE = %!s(int=4)</li>
+<li>TLS_ERROR_CERTIFICATE_REQUIRED = %!s(int=5)</li>
+<li>TLS_ERROR_EOF = %!s(int=6)</li>
+</ul>
+<a class="header" href="#tlsinteractionresult-1" id="tlsinteractionresult-1"><h2><code>TlsInteractionResult</code></h2></a>
+<p>#GTlsInteractionResult is returned by various functions in #GTlsInteraction
+when finishing an interaction request.</p>
+<p>C - <code>GTlsInteractionResult</code></p>
+<ul>
+<li>TLS_INTERACTION_UNHANDLED = %!s(int=0)</li>
+<li>TLS_INTERACTION_HANDLED = %!s(int=1)</li>
+<li>TLS_INTERACTION_FAILED = %!s(int=2)</li>
+</ul>
+<a class="header" href="#tlsrehandshakemode-1" id="tlsrehandshakemode-1"><h2><code>TlsRehandshakeMode</code></h2></a>
+<p>When to allow rehandshaking. See
+g_tls_connection_set_rehandshake_mode().</p>
+<p>C - <code>GTlsRehandshakeMode</code></p>
+<ul>
+<li>TLS_REHANDSHAKE_NEVER = %!s(int=0)</li>
+<li>TLS_REHANDSHAKE_SAFELY = %!s(int=1)</li>
+<li>TLS_REHANDSHAKE_UNSAFELY = %!s(int=2)</li>
+</ul>
+<a class="header" href="#unixsocketaddresstype-1" id="unixsocketaddresstype-1"><h2><code>UnixSocketAddressType</code></h2></a>
+<p>The type of name used by a #GUnixSocketAddress.
+%G_UNIX_SOCKET_ADDRESS_PATH indicates a traditional unix domain
+socket bound to a filesystem path. %G_UNIX_SOCKET_ADDRESS_ANONYMOUS
+indicates a socket not bound to any name (eg, a client-side socket,
+or a socket created with socketpair()).</p>
+<p>For abstract sockets, there are two incompatible ways of naming
+them; the man pages suggest using the entire <code>struct sockaddr_un</code>
+as the name, padding the unused parts of the %sun_path field with
+zeroes; this corresponds to %G_UNIX_SOCKET_ADDRESS_ABSTRACT_PADDED.
+However, many programs instead just use a portion of %sun_path, and
+pass an appropriate smaller length to bind() or connect(). This is
+%G_UNIX_SOCKET_ADDRESS_ABSTRACT.</p>
+<p>C - <code>GUnixSocketAddressType</code></p>
+<ul>
+<li>UNIX_SOCKET_ADDRESS_INVALID = %!s(int=0)</li>
+<li>UNIX_SOCKET_ADDRESS_ANONYMOUS = %!s(int=1)</li>
+<li>UNIX_SOCKET_ADDRESS_PATH = %!s(int=2)</li>
+<li>UNIX_SOCKET_ADDRESS_ABSTRACT = %!s(int=3)</li>
+<li>UNIX_SOCKET_ADDRESS_ABSTRACT_PADDED = %!s(int=4)</li>
+</ul>
+<a class="header" href="#zlibcompressorformat-1" id="zlibcompressorformat-1"><h2><code>ZlibCompressorFormat</code></h2></a>
+<p>Used to select the type of data format to use for #GZlibDecompressor
+and #GZlibCompressor.</p>
+<p>C - <code>GZlibCompressorFormat</code></p>
+<ul>
+<li>ZLIB_COMPRESSOR_FORMAT_ZLIB = %!s(int=0)</li>
+<li>ZLIB_COMPRESSOR_FORMAT_GZIP = %!s(int=1)</li>
+<li>ZLIB_COMPRESSOR_FORMAT_RAW = %!s(int=2)</li>
+</ul>
 
                     </main>
 

@@ -138,49 +138,325 @@
                     <main>
                         <a class="header" href="#cairo-enums" id="cairo-enums"><h1><code>cairo</code> enums</h1></a>
 <a class="header" href="#status" id="status"><h2><code>Status</code></h2></a>
+<ul>
+<li>CAIRO_STATUS_SUCCESS = 0</li>
+<li>CAIRO_STATUS_NO_MEMORY = 1</li>
+<li>CAIRO_STATUS_INVALID_RESTORE = 2</li>
+<li>CAIRO_STATUS_INVALID_POP_GROUP = 3</li>
+<li>CAIRO_STATUS_NO_CURRENT_POINT = 4</li>
+<li>CAIRO_STATUS_INVALID_MATRIX = 5</li>
+<li>CAIRO_STATUS_INVALID_STATUS = 6</li>
+<li>CAIRO_STATUS_NULL_POINTER = 7</li>
+<li>CAIRO_STATUS_INVALID_STRING = 8</li>
+<li>CAIRO_STATUS_INVALID_PATH_DATA = 9</li>
+<li>CAIRO_STATUS_READ_ERROR = 10</li>
+<li>CAIRO_STATUS_WRITE_ERROR = 11</li>
+<li>CAIRO_STATUS_SURFACE_FINISHED = 12</li>
+<li>CAIRO_STATUS_SURFACE_TYPE_MISMATCH = 13</li>
+<li>CAIRO_STATUS_PATTERN_TYPE_MISMATCH = 14</li>
+<li>CAIRO_STATUS_INVALID_CONTENT = 15</li>
+<li>CAIRO_STATUS_INVALID_FORMAT = 16</li>
+<li>CAIRO_STATUS_INVALID_VISUAL = 17</li>
+<li>CAIRO_STATUS_FILE_NOT_FOUND = 18</li>
+<li>CAIRO_STATUS_INVALID_DASH = 19</li>
+<li>CAIRO_STATUS_INVALID_DSC_COMMENT = 20</li>
+<li>CAIRO_STATUS_INVALID_INDEX = 21</li>
+<li>CAIRO_STATUS_CLIP_NOT_REPRESENTABLE = 22</li>
+<li>CAIRO_STATUS_TEMP_FILE_ERROR = 23</li>
+<li>CAIRO_STATUS_INVALID_STRIDE = 24</li>
+<li>CAIRO_STATUS_FONT_TYPE_MISMATCH = 25</li>
+<li>CAIRO_STATUS_USER_FONT_IMMUTABLE = 26</li>
+<li>CAIRO_STATUS_USER_FONT_ERROR = 27</li>
+<li>CAIRO_STATUS_NEGATIVE_COUNT = 28</li>
+<li>CAIRO_STATUS_INVALID_CLUSTERS = 29</li>
+<li>CAIRO_STATUS_INVALID_SLANT = 30</li>
+<li>CAIRO_STATUS_INVALID_WEIGHT = 31</li>
+<li>CAIRO_STATUS_INVALID_SIZE = 32</li>
+<li>CAIRO_STATUS_USER_FONT_NOT_IMPLEMENTED = 33</li>
+<li>CAIRO_STATUS_DEVICE_TYPE_MISMATCH = 34</li>
+<li>CAIRO_STATUS_DEVICE_ERROR = 35</li>
+<li>CAIRO_STATUS_INVALID_MESH_CONSTRUCTION = 36</li>
+<li>CAIRO_STATUS_DEVICE_FINISHED = 37</li>
+<li>CAIRO_STATUS_JBIG2_GLOBAL_MISSING = 38</li>
+</ul>
 <p>C - <code>cairo_status_t</code></p>
 <a class="header" href="#content" id="content"><h2><code>Content</code></h2></a>
+<ul>
+<li>CAIRO_CONTENT_COLOR = 4096</li>
+<li>CAIRO_CONTENT_ALPHA = 8192</li>
+<li>CAIRO_CONTENT_COLOR_ALPHA = 12288</li>
+</ul>
 <p>C - <code>cairo_content_t</code></p>
 <a class="header" href="#operator" id="operator"><h2><code>Operator</code></h2></a>
+<ul>
+<li>CAIRO_OPERATOR_CLEAR = 0</li>
+<li>CAIRO_OPERATOR_SOURCE = 1</li>
+<li>CAIRO_OPERATOR_OVER = 2</li>
+<li>CAIRO_OPERATOR_IN = 3</li>
+<li>CAIRO_OPERATOR_OUT = 4</li>
+<li>CAIRO_OPERATOR_ATOP = 5</li>
+<li>CAIRO_OPERATOR_DEST = 6</li>
+<li>CAIRO_OPERATOR_DEST_OVER = 7</li>
+<li>CAIRO_OPERATOR_DEST_IN = 8</li>
+<li>CAIRO_OPERATOR_DEST_OUT = 9</li>
+<li>CAIRO_OPERATOR_DEST_ATOP = 10</li>
+<li>CAIRO_OPERATOR_XOR = 11</li>
+<li>CAIRO_OPERATOR_ADD = 12</li>
+<li>CAIRO_OPERATOR_SATURATE = 13</li>
+<li>CAIRO_OPERATOR_MULTIPLY = 14</li>
+<li>CAIRO_OPERATOR_SCREEN = 15</li>
+<li>CAIRO_OPERATOR_OVERLAY = 16</li>
+<li>CAIRO_OPERATOR_DARKEN = 17</li>
+<li>CAIRO_OPERATOR_LIGHTEN = 18</li>
+<li>CAIRO_OPERATOR_COLOR_DODGE = 19</li>
+<li>CAIRO_OPERATOR_COLOR_BURN = 20</li>
+<li>CAIRO_OPERATOR_HARD_LIGHT = 21</li>
+<li>CAIRO_OPERATOR_SOFT_LIGHT = 22</li>
+<li>CAIRO_OPERATOR_DIFFERENCE = 23</li>
+<li>CAIRO_OPERATOR_EXCLUSION = 24</li>
+<li>CAIRO_OPERATOR_HSL_HUE = 25</li>
+<li>CAIRO_OPERATOR_HSL_SATURATION = 26</li>
+<li>CAIRO_OPERATOR_HSL_COLOR = 27</li>
+<li>CAIRO_OPERATOR_HSL_LUMINOSITY = 28</li>
+</ul>
 <p>C - <code>cairo_operator_t</code></p>
 <a class="header" href="#antialias" id="antialias"><h2><code>Antialias</code></h2></a>
+<ul>
+<li>CAIRO_ANTIALIAS_DEFAULT = 0</li>
+<li>CAIRO_ANTIALIAS_NONE = 1</li>
+<li>CAIRO_ANTIALIAS_GRAY = 2</li>
+<li>CAIRO_ANTIALIAS_SUBPIXEL = 3</li>
+<li>CAIRO_ANTIALIAS_FAST = 4</li>
+<li>CAIRO_ANTIALIAS_GOOD = 5</li>
+<li>CAIRO_ANTIALIAS_BEST = 6</li>
+</ul>
 <p>C - <code>cairo_antialias_t</code></p>
 <a class="header" href="#fillrule" id="fillrule"><h2><code>FillRule</code></h2></a>
+<ul>
+<li>CAIRO_FILL_RULE_WINDING = 0</li>
+<li>CAIRO_FILL_RULE_EVEN_ODD = 1</li>
+</ul>
 <p>C - <code>cairo_fill_rule_t</code></p>
 <a class="header" href="#linecap" id="linecap"><h2><code>LineCap</code></h2></a>
+<ul>
+<li>CAIRO_LINE_CAP_BUTT = 0</li>
+<li>CAIRO_LINE_CAP_ROUND = 1</li>
+<li>CAIRO_LINE_CAP_SQUARE = 2</li>
+</ul>
 <p>C - <code>cairo_line_cap_t</code></p>
 <a class="header" href="#linejoin" id="linejoin"><h2><code>LineJoin</code></h2></a>
+<ul>
+<li>CAIRO_LINE_JOIN_MITER = 0</li>
+<li>CAIRO_LINE_JOIN_ROUND = 1</li>
+<li>CAIRO_LINE_JOIN_BEVEL = 2</li>
+</ul>
 <p>C - <code>cairo_line_join_t</code></p>
 <a class="header" href="#textclusterflags" id="textclusterflags"><h2><code>TextClusterFlags</code></h2></a>
+<ul>
+<li>CAIRO_TEXT_CLUSTER_FLAG_BACKWARD = 1</li>
+</ul>
 <p>C - <code>cairo_text_cluster_flags_t</code></p>
 <a class="header" href="#fontslant" id="fontslant"><h2><code>FontSlant</code></h2></a>
+<ul>
+<li>CAIRO_FONT_SLANT_NORMAL = 0</li>
+<li>CAIRO_FONT_SLANT_ITALIC = 1</li>
+<li>CAIRO_FONT_SLANT_OBLIQUE = 2</li>
+</ul>
 <p>C - <code>cairo_font_slant_t</code></p>
 <a class="header" href="#fontweight" id="fontweight"><h2><code>FontWeight</code></h2></a>
+<ul>
+<li>CAIRO_FONT_WEIGHT_NORMAL = 0</li>
+<li>CAIRO_FONT_WEIGHT_BOLD = 1</li>
+</ul>
 <p>C - <code>cairo_font_weight_t</code></p>
 <a class="header" href="#subpixelorder" id="subpixelorder"><h2><code>SubpixelOrder</code></h2></a>
+<ul>
+<li>CAIRO_SUBPIXEL_ORDER_DEFAULT = 0</li>
+<li>CAIRO_SUBPIXEL_ORDER_RGB = 1</li>
+<li>CAIRO_SUBPIXEL_ORDER_BGR = 2</li>
+<li>CAIRO_SUBPIXEL_ORDER_VRGB = 3</li>
+<li>CAIRO_SUBPIXEL_ORDER_VBGR = 4</li>
+</ul>
 <p>C - <code>cairo_subpixel_order_t</code></p>
 <a class="header" href="#hintstyle" id="hintstyle"><h2><code>HintStyle</code></h2></a>
+<ul>
+<li>CAIRO_HINT_STYLE_DEFAULT = 0</li>
+<li>CAIRO_HINT_STYLE_NONE = 1</li>
+<li>CAIRO_HINT_STYLE_SLIGHT = 2</li>
+<li>CAIRO_HINT_STYLE_MEDIUM = 3</li>
+<li>CAIRO_HINT_STYLE_FULL = 4</li>
+</ul>
 <p>C - <code>cairo_hint_style_t</code></p>
 <a class="header" href="#hintmetrics" id="hintmetrics"><h2><code>HintMetrics</code></h2></a>
+<ul>
+<li>CAIRO_HINT_METRICS_DEFAULT = 0</li>
+<li>CAIRO_HINT_METRICS_OFF = 1</li>
+<li>CAIRO_HINT_METRICS_ON = 2</li>
+</ul>
 <p>C - <code>cairo_hint_metrics_t</code></p>
 <a class="header" href="#fonttype" id="fonttype"><h2><code>FontType</code></h2></a>
+<ul>
+<li>CAIRO_FONT_TYPE_TOY = 0</li>
+<li>CAIRO_FONT_TYPE_FT = 1</li>
+<li>CAIRO_FONT_TYPE_WIN32 = 2</li>
+<li>CAIRO_FONT_TYPE_QUARTZ = 3</li>
+<li>CAIRO_FONT_TYPE_USER = 4</li>
+</ul>
 <p>C - <code>cairo_font_type_t</code></p>
 <a class="header" href="#pathdatatype" id="pathdatatype"><h2><code>PathDataType</code></h2></a>
+<ul>
+<li>CAIRO_PATH_MOVE_TO = 0</li>
+<li>CAIRO_PATH_LINE_TO = 1</li>
+<li>CAIRO_PATH_CURVE_TO = 2</li>
+<li>CAIRO_PATH_CLOSE_PATH = 3</li>
+</ul>
 <p>C - <code>cairo_path_data_type_t</code></p>
 <a class="header" href="#devicetype" id="devicetype"><h2><code>DeviceType</code></h2></a>
+<ul>
+<li>CAIRO_DEVICE_TYPE_DRM = 0</li>
+<li>CAIRO_DEVICE_TYPE_GL = 1</li>
+<li>CAIRO_DEVICE_TYPE_SCRIPT = 2</li>
+<li>CAIRO_DEVICE_TYPE_XCB = 3</li>
+<li>CAIRO_DEVICE_TYPE_XLIB = 4</li>
+<li>CAIRO_DEVICE_TYPE_XML = 5</li>
+<li>CAIRO_DEVICE_TYPE_COGL = 6</li>
+<li>CAIRO_DEVICE_TYPE_WIN32 = 7</li>
+<li>CAIRO_DEVICE_TYPE_INVALID = -1</li>
+</ul>
 <p>C - <code>cairo_device_type_t</code></p>
 <a class="header" href="#surfacetype" id="surfacetype"><h2><code>SurfaceType</code></h2></a>
+<ul>
+<li>CAIRO_SURFACE_TYPE_IMAGE = 0</li>
+<li>CAIRO_SURFACE_TYPE_PDF = 1</li>
+<li>CAIRO_SURFACE_TYPE_PS = 2</li>
+<li>CAIRO_SURFACE_TYPE_XLIB = 3</li>
+<li>CAIRO_SURFACE_TYPE_XCB = 4</li>
+<li>CAIRO_SURFACE_TYPE_GLITZ = 5</li>
+<li>CAIRO_SURFACE_TYPE_QUARTZ = 6</li>
+<li>CAIRO_SURFACE_TYPE_WIN32 = 7</li>
+<li>CAIRO_SURFACE_TYPE_BEOS = 8</li>
+<li>CAIRO_SURFACE_TYPE_DIRECTFB = 9</li>
+<li>CAIRO_SURFACE_TYPE_SVG = 10</li>
+<li>CAIRO_SURFACE_TYPE_OS2 = 11</li>
+<li>CAIRO_SURFACE_TYPE_WIN32_PRINTING = 12</li>
+<li>CAIRO_SURFACE_TYPE_QUARTZ_IMAGE = 13</li>
+<li>CAIRO_SURFACE_TYPE_SCRIPT = 14</li>
+<li>CAIRO_SURFACE_TYPE_QT = 15</li>
+<li>CAIRO_SURFACE_TYPE_RECORDING = 16</li>
+<li>CAIRO_SURFACE_TYPE_VG = 17</li>
+<li>CAIRO_SURFACE_TYPE_GL = 18</li>
+<li>CAIRO_SURFACE_TYPE_DRM = 19</li>
+<li>CAIRO_SURFACE_TYPE_TEE = 20</li>
+<li>CAIRO_SURFACE_TYPE_XML = 21</li>
+<li>CAIRO_SURFACE_TYPE_SKIA = 22</li>
+<li>CAIRO_SURFACE_TYPE_SUBSURFACE = 23</li>
+<li>CAIRO_SURFACE_TYPE_COGL = 24</li>
+</ul>
 <p>C - <code>cairo_surface_type_t</code></p>
 <a class="header" href="#format" id="format"><h2><code>Format</code></h2></a>
+<ul>
+<li>CAIRO_FORMAT_INVALID = -1</li>
+<li>CAIRO_FORMAT_ARGB32 = 0</li>
+<li>CAIRO_FORMAT_RGB24 = 1</li>
+<li>CAIRO_FORMAT_A8 = 2</li>
+<li>CAIRO_FORMAT_A1 = 3</li>
+<li>CAIRO_FORMAT_RGB16_565 = 4</li>
+<li>CAIRO_FORMAT_RGB30 = 5</li>
+</ul>
 <p>C - <code>cairo_format_t</code></p>
 <a class="header" href="#patterntype" id="patterntype"><h2><code>PatternType</code></h2></a>
+<ul>
+<li>CAIRO_PATTERN_TYPE_SOLID = 0</li>
+<li>CAIRO_PATTERN_TYPE_SURFACE = 1</li>
+<li>CAIRO_PATTERN_TYPE_LINEAR = 2</li>
+<li>CAIRO_PATTERN_TYPE_RADIAL = 3</li>
+<li>CAIRO_PATTERN_TYPE_MESH = 4</li>
+<li>CAIRO_PATTERN_TYPE_RASTER_SOURCE = 5</li>
+</ul>
 <p>C - <code>cairo_pattern_type_t</code></p>
 <a class="header" href="#extend" id="extend"><h2><code>Extend</code></h2></a>
+<ul>
+<li>CAIRO_EXTEND_NONE = 0</li>
+<li>CAIRO_EXTEND_REPEAT = 1</li>
+<li>CAIRO_EXTEND_REFLECT = 2</li>
+<li>CAIRO_EXTEND_PAD = 3</li>
+</ul>
 <p>C - <code>cairo_extend_t</code></p>
 <a class="header" href="#filter" id="filter"><h2><code>Filter</code></h2></a>
+<ul>
+<li>CAIRO_FILTER_FAST = 0</li>
+<li>CAIRO_FILTER_GOOD = 1</li>
+<li>CAIRO_FILTER_BEST = 2</li>
+<li>CAIRO_FILTER_NEAREST = 3</li>
+<li>CAIRO_FILTER_BILINEAR = 4</li>
+<li>CAIRO_FILTER_GAUSSIAN = 5</li>
+</ul>
 <p>C - <code>cairo_filter_t</code></p>
 <a class="header" href="#regionoverlap" id="regionoverlap"><h2><code>RegionOverlap</code></h2></a>
+<ul>
+<li>CAIRO_REGION_OVERLAP_IN = 0</li>
+<li>CAIRO_REGION_OVERLAP_OUT = 1</li>
+<li>CAIRO_REGION_OVERLAP_PART = 2</li>
+</ul>
 <p>C - <code>cairo_region_overlap_t</code></p>
+<p>%!s(int=15)</p>
+<ul>
+<li>CAIRO_SURFACE_TYPE_RECORDING = %!s(int=16)</li>
+<li>CAIRO_SURFACE_TYPE_VG = %!s(int=17)</li>
+<li>CAIRO_SURFACE_TYPE_GL = %!s(int=18)</li>
+<li>CAIRO_SURFACE_TYPE_DRM = %!s(int=19)</li>
+<li>CAIRO_SURFACE_TYPE_TEE = %!s(int=20)</li>
+<li>CAIRO_SURFACE_TYPE_XML = %!s(int=21)</li>
+<li>CAIRO_SURFACE_TYPE_SKIA = %!s(int=22)</li>
+<li>CAIRO_SURFACE_TYPE_SUBSURFACE = %!s(int=23)</li>
+<li>CAIRO_SURFACE_TYPE_COGL = %!s(int=24)</li>
+</ul>
+<a class="header" href="#format-1" id="format-1"><h2><code>Format</code></h2></a>
+<p>C - <code>cairo_format_t</code></p>
+<ul>
+<li>CAIRO_FORMAT_INVALID = %!s(int=-1)</li>
+<li>CAIRO_FORMAT_ARGB32 = %!s(int=0)</li>
+<li>CAIRO_FORMAT_RGB24 = %!s(int=1)</li>
+<li>CAIRO_FORMAT_A8 = %!s(int=2)</li>
+<li>CAIRO_FORMAT_A1 = %!s(int=3)</li>
+<li>CAIRO_FORMAT_RGB16_565 = %!s(int=4)</li>
+<li>CAIRO_FORMAT_RGB30 = %!s(int=5)</li>
+</ul>
+<a class="header" href="#patterntype-1" id="patterntype-1"><h2><code>PatternType</code></h2></a>
+<p>C - <code>cairo_pattern_type_t</code></p>
+<ul>
+<li>CAIRO_PATTERN_TYPE_SOLID = %!s(int=0)</li>
+<li>CAIRO_PATTERN_TYPE_SURFACE = %!s(int=1)</li>
+<li>CAIRO_PATTERN_TYPE_LINEAR = %!s(int=2)</li>
+<li>CAIRO_PATTERN_TYPE_RADIAL = %!s(int=3)</li>
+<li>CAIRO_PATTERN_TYPE_MESH = %!s(int=4)</li>
+<li>CAIRO_PATTERN_TYPE_RASTER_SOURCE = %!s(int=5)</li>
+</ul>
+<a class="header" href="#extend-1" id="extend-1"><h2><code>Extend</code></h2></a>
+<p>C - <code>cairo_extend_t</code></p>
+<ul>
+<li>CAIRO_EXTEND_NONE = %!s(int=0)</li>
+<li>CAIRO_EXTEND_REPEAT = %!s(int=1)</li>
+<li>CAIRO_EXTEND_REFLECT = %!s(int=2)</li>
+<li>CAIRO_EXTEND_PAD = %!s(int=3)</li>
+</ul>
+<a class="header" href="#filter-1" id="filter-1"><h2><code>Filter</code></h2></a>
+<p>C - <code>cairo_filter_t</code></p>
+<ul>
+<li>CAIRO_FILTER_FAST = %!s(int=0)</li>
+<li>CAIRO_FILTER_GOOD = %!s(int=1)</li>
+<li>CAIRO_FILTER_BEST = %!s(int=2)</li>
+<li>CAIRO_FILTER_NEAREST = %!s(int=3)</li>
+<li>CAIRO_FILTER_BILINEAR = %!s(int=4)</li>
+<li>CAIRO_FILTER_GAUSSIAN = %!s(int=5)</li>
+</ul>
+<a class="header" href="#regionoverlap-1" id="regionoverlap-1"><h2><code>RegionOverlap</code></h2></a>
+<p>C - <code>cairo_region_overlap_t</code></p>
+<ul>
+<li>CAIRO_REGION_OVERLAP_IN = %!s(int=0)</li>
+<li>CAIRO_REGION_OVERLAP_OUT = %!s(int=1)</li>
+<li>CAIRO_REGION_OVERLAP_PART = %!s(int=2)</li>
+</ul>
 
                     </main>
 

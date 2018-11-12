@@ -151,12 +151,31 @@ are interpreted relative to text direction.</p>
 <p>GTK_ALIGN_BASELINE support for it is optional for containers and widgets, and
 it is only supported for vertical alignment.  When its not supported by
 a child or a container it is treated as @GTK_ALIGN_FILL.</p>
+<ul>
+<li>GTK_ALIGN_FILL = 0</li>
+<li>GTK_ALIGN_START = 1</li>
+<li>GTK_ALIGN_END = 2</li>
+<li>GTK_ALIGN_CENTER = 3</li>
+<li>GTK_ALIGN_BASELINE = 4</li>
+</ul>
 <p>C - <code>GtkAlign</code></p>
 <a class="header" href="#arrowplacement" id="arrowplacement"><h2><code>ArrowPlacement</code></h2></a>
 <p>Used to specify the placement of scroll arrows in scrolling menus.</p>
+<ul>
+<li>GTK_ARROWS_BOTH = 0</li>
+<li>GTK_ARROWS_START = 1</li>
+<li>GTK_ARROWS_END = 2</li>
+</ul>
 <p>C - <code>GtkArrowPlacement</code></p>
 <a class="header" href="#arrowtype" id="arrowtype"><h2><code>ArrowType</code></h2></a>
 <p>Used to indicate the direction in which an arrow should point.</p>
+<ul>
+<li>GTK_ARROW_UP = 0</li>
+<li>GTK_ARROW_DOWN = 1</li>
+<li>GTK_ARROW_LEFT = 2</li>
+<li>GTK_ARROW_RIGHT = 3</li>
+<li>GTK_ARROW_NONE = 4</li>
+</ul>
 <p>C - <code>GtkArrowType</code></p>
 <a class="header" href="#assistantpagetype" id="assistantpagetype"><h2><code>AssistantPageType</code></h2></a>
 <p>An enum for determining the page role inside the #GtkAssistant. It's
@@ -166,6 +185,14 @@ used to handle buttons sensitivity and visibility.</p>
 %GTK_ASSISTANT_PAGE_PROGRESS to be correct.</p>
 <p>The Cancel button will only be shown if the page isn’t “committed”.
 See gtk_assistant_commit() for details.</p>
+<ul>
+<li>GTK_ASSISTANT_PAGE_CONTENT = 0</li>
+<li>GTK_ASSISTANT_PAGE_INTRO = 1</li>
+<li>GTK_ASSISTANT_PAGE_CONFIRM = 2</li>
+<li>GTK_ASSISTANT_PAGE_SUMMARY = 3</li>
+<li>GTK_ASSISTANT_PAGE_PROGRESS = 4</li>
+<li>GTK_ASSISTANT_PAGE_CUSTOM = 5</li>
+</ul>
 <p>C - <code>GtkAssistantPageType</code></p>
 <a class="header" href="#baselineposition" id="baselineposition"><h2><code>BaselinePosition</code></h2></a>
 <p>Whenever a container has some form of natural row it may align
@@ -174,20 +201,66 @@ the amount of verical space in the row is taller than the total
 requested height of the baseline-aligned children then it can use a
 #GtkBaselinePosition to select where to put the baseline inside the
 extra availible space.</p>
+<ul>
+<li>GTK_BASELINE_POSITION_TOP = 0</li>
+<li>GTK_BASELINE_POSITION_CENTER = 1</li>
+<li>GTK_BASELINE_POSITION_BOTTOM = 2</li>
+</ul>
 <p>C - <code>GtkBaselinePosition</code></p>
 <a class="header" href="#borderstyle" id="borderstyle"><h2><code>BorderStyle</code></h2></a>
 <p>Describes how the border of a UI element should be rendered.</p>
+<ul>
+<li>GTK_BORDER_STYLE_NONE = 0</li>
+<li>GTK_BORDER_STYLE_SOLID = 1</li>
+<li>GTK_BORDER_STYLE_INSET = 2</li>
+<li>GTK_BORDER_STYLE_OUTSET = 3</li>
+<li>GTK_BORDER_STYLE_HIDDEN = 4</li>
+<li>GTK_BORDER_STYLE_DOTTED = 5</li>
+<li>GTK_BORDER_STYLE_DASHED = 6</li>
+<li>GTK_BORDER_STYLE_DOUBLE = 7</li>
+<li>GTK_BORDER_STYLE_GROOVE = 8</li>
+<li>GTK_BORDER_STYLE_RIDGE = 9</li>
+</ul>
 <p>C - <code>GtkBorderStyle</code></p>
 <a class="header" href="#buildererror" id="buildererror"><h2><code>BuilderError</code></h2></a>
 <p>Error codes that identify various errors that can occur while using
 #GtkBuilder.</p>
+<ul>
+<li>GTK_BUILDER_ERROR_INVALID_TYPE_FUNCTION = 0</li>
+<li>GTK_BUILDER_ERROR_UNHANDLED_TAG = 1</li>
+<li>GTK_BUILDER_ERROR_MISSING_ATTRIBUTE = 2</li>
+<li>GTK_BUILDER_ERROR_INVALID_ATTRIBUTE = 3</li>
+<li>GTK_BUILDER_ERROR_INVALID_TAG = 4</li>
+<li>GTK_BUILDER_ERROR_MISSING_PROPERTY_VALUE = 5</li>
+<li>GTK_BUILDER_ERROR_INVALID_VALUE = 6</li>
+<li>GTK_BUILDER_ERROR_VERSION_MISMATCH = 7</li>
+<li>GTK_BUILDER_ERROR_DUPLICATE_ID = 8</li>
+<li>GTK_BUILDER_ERROR_OBJECT_TYPE_REFUSED = 9</li>
+<li>GTK_BUILDER_ERROR_TEMPLATE_MISMATCH = 10</li>
+<li>GTK_BUILDER_ERROR_INVALID_PROPERTY = 11</li>
+<li>GTK_BUILDER_ERROR_INVALID_SIGNAL = 12</li>
+<li>GTK_BUILDER_ERROR_INVALID_ID = 13</li>
+</ul>
 <p>C - <code>GtkBuilderError</code></p>
 <a class="header" href="#buttonboxstyle" id="buttonboxstyle"><h2><code>ButtonBoxStyle</code></h2></a>
 <p>Used to dictate the style that a #GtkButtonBox uses to layout the buttons it
 contains.</p>
+<ul>
+<li>GTK_BUTTONBOX_SPREAD = 1</li>
+<li>GTK_BUTTONBOX_EDGE = 2</li>
+<li>GTK_BUTTONBOX_START = 3</li>
+<li>GTK_BUTTONBOX_END = 4</li>
+<li>GTK_BUTTONBOX_CENTER = 5</li>
+<li>GTK_BUTTONBOX_EXPAND = 6</li>
+</ul>
 <p>C - <code>GtkButtonBoxStyle</code></p>
 <a class="header" href="#buttonrole" id="buttonrole"><h2><code>ButtonRole</code></h2></a>
 <p>The role specifies the desired appearance of a #GtkModelButton.</p>
+<ul>
+<li>GTK_BUTTON_ROLE_NORMAL = 0</li>
+<li>GTK_BUTTON_ROLE_CHECK = 1</li>
+<li>GTK_BUTTON_ROLE_RADIO = 2</li>
+</ul>
 <p>C - <code>GtkButtonRole</code></p>
 <a class="header" href="#buttonstype" id="buttonstype"><h2><code>ButtonsType</code></h2></a>
 <p>Prebuilt sets of buttons for the dialog. If
@@ -198,23 +271,55 @@ then call gtk_dialog_add_buttons().</p>
 and %GTK_BUTTONS_OK_CANCEL are discouraged by the
 <a href="http://library.gnome.org/devel/hig-book/stable/">GNOME Human Interface Guidelines</a>.</p>
 </blockquote>
+<ul>
+<li>GTK_BUTTONS_NONE = 0</li>
+<li>GTK_BUTTONS_OK = 1</li>
+<li>GTK_BUTTONS_CLOSE = 2</li>
+<li>GTK_BUTTONS_CANCEL = 3</li>
+<li>GTK_BUTTONS_YES_NO = 4</li>
+<li>GTK_BUTTONS_OK_CANCEL = 5</li>
+</ul>
 <p>C - <code>GtkButtonsType</code></p>
 <a class="header" href="#cellrendereraccelmode" id="cellrendereraccelmode"><h2><code>CellRendererAccelMode</code></h2></a>
 <p>Determines if the edited accelerators are GTK+ accelerators. If
 they are, consumed modifiers are suppressed, only accelerators
 accepted by GTK+ are allowed, and the accelerators are rendered
 in the same way as they are in menus.</p>
+<ul>
+<li>GTK_CELL_RENDERER_ACCEL_MODE_GTK = 0</li>
+<li>GTK_CELL_RENDERER_ACCEL_MODE_OTHER = 1</li>
+<li>GTK_CELL_RENDERER_ACCEL_MODE_MODIFIER_TAP = 2</li>
+</ul>
 <p>C - <code>GtkCellRendererAccelMode</code></p>
 <a class="header" href="#cellrenderermode" id="cellrenderermode"><h2><code>CellRendererMode</code></h2></a>
 <p>Identifies how the user can interact with a particular cell.</p>
+<ul>
+<li>GTK_CELL_RENDERER_MODE_INERT = 0</li>
+<li>GTK_CELL_RENDERER_MODE_ACTIVATABLE = 1</li>
+<li>GTK_CELL_RENDERER_MODE_EDITABLE = 2</li>
+</ul>
 <p>C - <code>GtkCellRendererMode</code></p>
 <a class="header" href="#cornertype" id="cornertype"><h2><code>CornerType</code></h2></a>
 <p>Specifies which corner a child widget should be placed in when packed into
 a #GtkScrolledWindow. This is effectively the opposite of where the scroll
 bars are placed.</p>
+<ul>
+<li>GTK_CORNER_TOP_LEFT = 0</li>
+<li>GTK_CORNER_BOTTOM_LEFT = 1</li>
+<li>GTK_CORNER_TOP_RIGHT = 2</li>
+<li>GTK_CORNER_BOTTOM_RIGHT = 3</li>
+</ul>
 <p>C - <code>GtkCornerType</code></p>
 <a class="header" href="#cssprovidererror" id="cssprovidererror"><h2><code>CssProviderError</code></h2></a>
 <p>Error codes for %GTK_CSS_PROVIDER_ERROR.</p>
+<ul>
+<li>GTK_CSS_PROVIDER_ERROR_FAILED = 0</li>
+<li>GTK_CSS_PROVIDER_ERROR_SYNTAX = 1</li>
+<li>GTK_CSS_PROVIDER_ERROR_IMPORT = 2</li>
+<li>GTK_CSS_PROVIDER_ERROR_NAME = 3</li>
+<li>GTK_CSS_PROVIDER_ERROR_DEPRECATED = 4</li>
+<li>GTK_CSS_PROVIDER_ERROR_UNKNOWN_VALUE = 5</li>
+</ul>
 <p>C - <code>GtkCssProviderError</code></p>
 <a class="header" href="#csssectiontype" id="csssectiontype"><h2><code>CssSectionType</code></h2></a>
 <p>The different types of sections indicate parts of a CSS document as
@@ -223,30 +328,88 @@ parsed by GTK’s CSS parser. They are oriented towards the
 but may contain extensions.</p>
 <p>More types might be added in the future as the parser incorporates
 more features.</p>
+<ul>
+<li>GTK_CSS_SECTION_DOCUMENT = 0</li>
+<li>GTK_CSS_SECTION_IMPORT = 1</li>
+<li>GTK_CSS_SECTION_COLOR_DEFINITION = 2</li>
+<li>GTK_CSS_SECTION_BINDING_SET = 3</li>
+<li>GTK_CSS_SECTION_RULESET = 4</li>
+<li>GTK_CSS_SECTION_SELECTOR = 5</li>
+<li>GTK_CSS_SECTION_DECLARATION = 6</li>
+<li>GTK_CSS_SECTION_VALUE = 7</li>
+<li>GTK_CSS_SECTION_KEYFRAMES = 8</li>
+</ul>
 <p>C - <code>GtkCssSectionType</code></p>
 <a class="header" href="#deletetype" id="deletetype"><h2><code>DeleteType</code></h2></a>
 <p>See also: #GtkEntry::delete-from-cursor.</p>
+<ul>
+<li>GTK_DELETE_CHARS = 0</li>
+<li>GTK_DELETE_WORD_ENDS = 1</li>
+<li>GTK_DELETE_WORDS = 2</li>
+<li>GTK_DELETE_DISPLAY_LINES = 3</li>
+<li>GTK_DELETE_DISPLAY_LINE_ENDS = 4</li>
+<li>GTK_DELETE_PARAGRAPH_ENDS = 5</li>
+<li>GTK_DELETE_PARAGRAPHS = 6</li>
+<li>GTK_DELETE_WHITESPACE = 7</li>
+</ul>
 <p>C - <code>GtkDeleteType</code></p>
 <a class="header" href="#directiontype" id="directiontype"><h2><code>DirectionType</code></h2></a>
 <p>Focus movement types.</p>
+<ul>
+<li>GTK_DIR_TAB_FORWARD = 0</li>
+<li>GTK_DIR_TAB_BACKWARD = 1</li>
+<li>GTK_DIR_UP = 2</li>
+<li>GTK_DIR_DOWN = 3</li>
+<li>GTK_DIR_LEFT = 4</li>
+<li>GTK_DIR_RIGHT = 5</li>
+</ul>
 <p>C - <code>GtkDirectionType</code></p>
 <a class="header" href="#dragresult" id="dragresult"><h2><code>DragResult</code></h2></a>
 <p>Gives an indication why a drag operation failed.
 The value can by obtained by connecting to the
 #GtkWidget::drag-failed signal.</p>
+<ul>
+<li>GTK_DRAG_RESULT_SUCCESS = 0</li>
+<li>GTK_DRAG_RESULT_NO_TARGET = 1</li>
+<li>GTK_DRAG_RESULT_USER_CANCELLED = 2</li>
+<li>GTK_DRAG_RESULT_TIMEOUT_EXPIRED = 3</li>
+<li>GTK_DRAG_RESULT_GRAB_BROKEN = 4</li>
+<li>GTK_DRAG_RESULT_ERROR = 5</li>
+</ul>
 <p>C - <code>GtkDragResult</code></p>
 <a class="header" href="#entryiconposition" id="entryiconposition"><h2><code>EntryIconPosition</code></h2></a>
 <p>Specifies the side of the entry at which an icon is placed.</p>
+<ul>
+<li>GTK_ENTRY_ICON_PRIMARY = 0</li>
+<li>GTK_ENTRY_ICON_SECONDARY = 1</li>
+</ul>
 <p>C - <code>GtkEntryIconPosition</code></p>
 <a class="header" href="#eventsequencestate" id="eventsequencestate"><h2><code>EventSequenceState</code></h2></a>
 <p>Describes the state of a #GdkEventSequence in a #GtkGesture.</p>
+<ul>
+<li>GTK_EVENT_SEQUENCE_NONE = 0</li>
+<li>GTK_EVENT_SEQUENCE_CLAIMED = 1</li>
+<li>GTK_EVENT_SEQUENCE_DENIED = 2</li>
+</ul>
 <p>C - <code>GtkEventSequenceState</code></p>
 <a class="header" href="#expanderstyle" id="expanderstyle"><h2><code>ExpanderStyle</code></h2></a>
 <p>Used to specify the style of the expanders drawn by a #GtkTreeView.</p>
+<ul>
+<li>GTK_EXPANDER_COLLAPSED = 0</li>
+<li>GTK_EXPANDER_SEMI_COLLAPSED = 1</li>
+<li>GTK_EXPANDER_SEMI_EXPANDED = 2</li>
+<li>GTK_EXPANDER_EXPANDED = 3</li>
+</ul>
 <p>C - <code>GtkExpanderStyle</code></p>
 <a class="header" href="#filechooseraction" id="filechooseraction"><h2><code>FileChooserAction</code></h2></a>
 <p>Describes whether a #GtkFileChooser is being used to open existing files
 or to save to a possibly new file.</p>
+<ul>
+<li>GTK_FILE_CHOOSER_ACTION_OPEN = 0</li>
+<li>GTK_FILE_CHOOSER_ACTION_SAVE = 1</li>
+<li>GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER = 2</li>
+<li>GTK_FILE_CHOOSER_ACTION_CREATE_FOLDER = 3</li>
+</ul>
 <p>C - <code>GtkFileChooserAction</code></p>
 <a class="header" href="#filechooserconfirmation" id="filechooserconfirmation"><h2><code>FileChooserConfirmation</code></h2></a>
 <p>Used as a return value of handlers for the
@@ -254,27 +417,69 @@ or to save to a possibly new file.</p>
 value determines whether the file chooser will present the stock
 confirmation dialog, accept the user’s choice of a filename, or
 let the user choose another filename.</p>
+<ul>
+<li>GTK_FILE_CHOOSER_CONFIRMATION_CONFIRM = 0</li>
+<li>GTK_FILE_CHOOSER_CONFIRMATION_ACCEPT_FILENAME = 1</li>
+<li>GTK_FILE_CHOOSER_CONFIRMATION_SELECT_AGAIN = 2</li>
+</ul>
 <p>C - <code>GtkFileChooserConfirmation</code></p>
 <a class="header" href="#filechoosererror" id="filechoosererror"><h2><code>FileChooserError</code></h2></a>
 <p>These identify the various errors that can occur while calling
 #GtkFileChooser functions.</p>
+<ul>
+<li>GTK_FILE_CHOOSER_ERROR_NONEXISTENT = 0</li>
+<li>GTK_FILE_CHOOSER_ERROR_BAD_FILENAME = 1</li>
+<li>GTK_FILE_CHOOSER_ERROR_ALREADY_EXISTS = 2</li>
+<li>GTK_FILE_CHOOSER_ERROR_INCOMPLETE_HOSTNAME = 3</li>
+</ul>
 <p>C - <code>GtkFileChooserError</code></p>
 <a class="header" href="#impreeditstyle" id="impreeditstyle"><h2><code>IMPreeditStyle</code></h2></a>
 <p>Style for input method preedit. See also
 #GtkSettings:gtk-im-preedit-style</p>
+<ul>
+<li>GTK_IM_PREEDIT_NOTHING = 0</li>
+<li>GTK_IM_PREEDIT_CALLBACK = 1</li>
+<li>GTK_IM_PREEDIT_NONE = 2</li>
+</ul>
 <p>C - <code>GtkIMPreeditStyle</code></p>
 <a class="header" href="#imstatusstyle" id="imstatusstyle"><h2><code>IMStatusStyle</code></h2></a>
 <p>Style for input method status. See also
 #GtkSettings:gtk-im-status-style</p>
+<ul>
+<li>GTK_IM_STATUS_NOTHING = 0</li>
+<li>GTK_IM_STATUS_CALLBACK = 1</li>
+<li>GTK_IM_STATUS_NONE = 2</li>
+</ul>
 <p>C - <code>GtkIMStatusStyle</code></p>
 <a class="header" href="#iconsize" id="iconsize"><h2><code>IconSize</code></h2></a>
 <p>Built-in stock icon sizes.</p>
+<ul>
+<li>GTK_ICON_SIZE_INVALID = 0</li>
+<li>GTK_ICON_SIZE_MENU = 1</li>
+<li>GTK_ICON_SIZE_SMALL_TOOLBAR = 2</li>
+<li>GTK_ICON_SIZE_LARGE_TOOLBAR = 3</li>
+<li>GTK_ICON_SIZE_BUTTON = 4</li>
+<li>GTK_ICON_SIZE_DND = 5</li>
+<li>GTK_ICON_SIZE_DIALOG = 6</li>
+</ul>
 <p>C - <code>GtkIconSize</code></p>
 <a class="header" href="#iconthemeerror" id="iconthemeerror"><h2><code>IconThemeError</code></h2></a>
 <p>Error codes for GtkIconTheme operations.</p>
+<ul>
+<li>GTK_ICON_THEME_NOT_FOUND = 0</li>
+<li>GTK_ICON_THEME_FAILED = 1</li>
+</ul>
 <p>C - <code>GtkIconThemeError</code></p>
 <a class="header" href="#iconviewdropposition" id="iconviewdropposition"><h2><code>IconViewDropPosition</code></h2></a>
 <p>An enum for determining where a dropped item goes.</p>
+<ul>
+<li>GTK_ICON_VIEW_NO_DROP = 0</li>
+<li>GTK_ICON_VIEW_DROP_INTO = 1</li>
+<li>GTK_ICON_VIEW_DROP_LEFT = 2</li>
+<li>GTK_ICON_VIEW_DROP_RIGHT = 3</li>
+<li>GTK_ICON_VIEW_DROP_ABOVE = 4</li>
+<li>GTK_ICON_VIEW_DROP_BELOW = 5</li>
+</ul>
 <p>C - <code>GtkIconViewDropPosition</code></p>
 <a class="header" href="#imagetype" id="imagetype"><h2><code>ImageType</code></h2></a>
 <p>Describes the image data representation used by a #GtkImage. If you
@@ -284,6 +489,16 @@ gtk_image_get_storage_type() returns #GTK_IMAGE_PIXBUF, then you can
 call gtk_image_get_pixbuf() but not gtk_image_get_stock().  For empty
 images, you can request any storage type (call any of the &quot;get&quot;
 functions), but they will all return %NULL values.</p>
+<ul>
+<li>GTK_IMAGE_EMPTY = 0</li>
+<li>GTK_IMAGE_PIXBUF = 1</li>
+<li>GTK_IMAGE_STOCK = 2</li>
+<li>GTK_IMAGE_ICON_SET = 3</li>
+<li>GTK_IMAGE_ANIMATION = 4</li>
+<li>GTK_IMAGE_ICON_NAME = 5</li>
+<li>GTK_IMAGE_GICON = 6</li>
+<li>GTK_IMAGE_SURFACE = 7</li>
+</ul>
 <p>C - <code>GtkImageType</code></p>
 <a class="header" href="#inputpurpose" id="inputpurpose"><h2><code>InputPurpose</code></h2></a>
 <p>Describes primary purpose of the input widget. This information is
@@ -301,194 +516,598 @@ while the latter also some punctuation (like commas or points, plus,
 minus) and “e” or “E” as in 3.14E+000.</p>
 <p>This enumeration may be extended in the future; input methods should
 interpret unknown values as “free form”.</p>
+<ul>
+<li>GTK_INPUT_PURPOSE_FREE_FORM = 0</li>
+<li>GTK_INPUT_PURPOSE_ALPHA = 1</li>
+<li>GTK_INPUT_PURPOSE_DIGITS = 2</li>
+<li>GTK_INPUT_PURPOSE_NUMBER = 3</li>
+<li>GTK_INPUT_PURPOSE_PHONE = 4</li>
+<li>GTK_INPUT_PURPOSE_URL = 5</li>
+<li>GTK_INPUT_PURPOSE_EMAIL = 6</li>
+<li>GTK_INPUT_PURPOSE_NAME = 7</li>
+<li>GTK_INPUT_PURPOSE_PASSWORD = 8</li>
+<li>GTK_INPUT_PURPOSE_PIN = 9</li>
+</ul>
 <p>C - <code>GtkInputPurpose</code></p>
 <a class="header" href="#justification" id="justification"><h2><code>Justification</code></h2></a>
 <p>Used for justifying the text inside a #GtkLabel widget. (See also
 #GtkAlignment).</p>
+<ul>
+<li>GTK_JUSTIFY_LEFT = 0</li>
+<li>GTK_JUSTIFY_RIGHT = 1</li>
+<li>GTK_JUSTIFY_CENTER = 2</li>
+<li>GTK_JUSTIFY_FILL = 3</li>
+</ul>
 <p>C - <code>GtkJustification</code></p>
 <a class="header" href="#levelbarmode" id="levelbarmode"><h2><code>LevelBarMode</code></h2></a>
 <p>Describes how #GtkLevelBar contents should be rendered.
 Note that this enumeration could be extended with additional modes
 in the future.</p>
+<ul>
+<li>GTK_LEVEL_BAR_MODE_CONTINUOUS = 0</li>
+<li>GTK_LEVEL_BAR_MODE_DISCRETE = 1</li>
+</ul>
 <p>C - <code>GtkLevelBarMode</code></p>
 <a class="header" href="#license" id="license"><h2><code>License</code></h2></a>
 <p>The type of license for an application.</p>
 <p>This enumeration can be expanded at later date.</p>
+<ul>
+<li>GTK_LICENSE_UNKNOWN = 0</li>
+<li>GTK_LICENSE_CUSTOM = 1</li>
+<li>GTK_LICENSE_GPL_2_0 = 2</li>
+<li>GTK_LICENSE_GPL_3_0 = 3</li>
+<li>GTK_LICENSE_LGPL_2_1 = 4</li>
+<li>GTK_LICENSE_LGPL_3_0 = 5</li>
+<li>GTK_LICENSE_BSD = 6</li>
+<li>GTK_LICENSE_MIT_X11 = 7</li>
+<li>GTK_LICENSE_ARTISTIC = 8</li>
+<li>GTK_LICENSE_GPL_2_0_ONLY = 9</li>
+<li>GTK_LICENSE_GPL_3_0_ONLY = 10</li>
+<li>GTK_LICENSE_LGPL_2_1_ONLY = 11</li>
+<li>GTK_LICENSE_LGPL_3_0_ONLY = 12</li>
+<li>GTK_LICENSE_AGPL_3_0 = 13</li>
+<li>GTK_LICENSE_AGPL_3_0_ONLY = 14</li>
+</ul>
 <p>C - <code>GtkLicense</code></p>
 <a class="header" href="#menudirectiontype" id="menudirectiontype"><h2><code>MenuDirectionType</code></h2></a>
 <p>An enumeration representing directional movements within a menu.</p>
+<ul>
+<li>GTK_MENU_DIR_PARENT = 0</li>
+<li>GTK_MENU_DIR_CHILD = 1</li>
+<li>GTK_MENU_DIR_NEXT = 2</li>
+<li>GTK_MENU_DIR_PREV = 3</li>
+</ul>
 <p>C - <code>GtkMenuDirectionType</code></p>
 <a class="header" href="#messagetype" id="messagetype"><h2><code>MessageType</code></h2></a>
 <p>The type of message being displayed in the dialog.</p>
+<ul>
+<li>GTK_MESSAGE_INFO = 0</li>
+<li>GTK_MESSAGE_WARNING = 1</li>
+<li>GTK_MESSAGE_QUESTION = 2</li>
+<li>GTK_MESSAGE_ERROR = 3</li>
+<li>GTK_MESSAGE_OTHER = 4</li>
+</ul>
 <p>C - <code>GtkMessageType</code></p>
 <a class="header" href="#movementstep" id="movementstep"><h2><code>MovementStep</code></h2></a>
+<ul>
+<li>GTK_MOVEMENT_LOGICAL_POSITIONS = 0</li>
+<li>GTK_MOVEMENT_VISUAL_POSITIONS = 1</li>
+<li>GTK_MOVEMENT_WORDS = 2</li>
+<li>GTK_MOVEMENT_DISPLAY_LINES = 3</li>
+<li>GTK_MOVEMENT_DISPLAY_LINE_ENDS = 4</li>
+<li>GTK_MOVEMENT_PARAGRAPHS = 5</li>
+<li>GTK_MOVEMENT_PARAGRAPH_ENDS = 6</li>
+<li>GTK_MOVEMENT_PAGES = 7</li>
+<li>GTK_MOVEMENT_BUFFER_ENDS = 8</li>
+<li>GTK_MOVEMENT_HORIZONTAL_PAGES = 9</li>
+</ul>
 <p>C - <code>GtkMovementStep</code></p>
 <a class="header" href="#notebooktab" id="notebooktab"><h2><code>NotebookTab</code></h2></a>
+<ul>
+<li>GTK_NOTEBOOK_TAB_FIRST = 0</li>
+<li>GTK_NOTEBOOK_TAB_LAST = 1</li>
+</ul>
 <p>C - <code>GtkNotebookTab</code></p>
 <a class="header" href="#numberuplayout" id="numberuplayout"><h2><code>NumberUpLayout</code></h2></a>
 <p>Used to determine the layout of pages on a sheet when printing
 multiple pages per sheet.</p>
+<ul>
+<li>GTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_TOP_TO_BOTTOM = 0</li>
+<li>GTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_BOTTOM_TO_TOP = 1</li>
+<li>GTK_NUMBER_UP_LAYOUT_RIGHT_TO_LEFT_TOP_TO_BOTTOM = 2</li>
+<li>GTK_NUMBER_UP_LAYOUT_RIGHT_TO_LEFT_BOTTOM_TO_TOP = 3</li>
+<li>GTK_NUMBER_UP_LAYOUT_TOP_TO_BOTTOM_LEFT_TO_RIGHT = 4</li>
+<li>GTK_NUMBER_UP_LAYOUT_TOP_TO_BOTTOM_RIGHT_TO_LEFT = 5</li>
+<li>GTK_NUMBER_UP_LAYOUT_BOTTOM_TO_TOP_LEFT_TO_RIGHT = 6</li>
+<li>GTK_NUMBER_UP_LAYOUT_BOTTOM_TO_TOP_RIGHT_TO_LEFT = 7</li>
+</ul>
 <p>C - <code>GtkNumberUpLayout</code></p>
 <a class="header" href="#orientation" id="orientation"><h2><code>Orientation</code></h2></a>
 <p>Represents the orientation of widgets and other objects which can be switched
 between horizontal and vertical orientation on the fly, like #GtkToolbar or
 #GtkGesturePan.</p>
+<ul>
+<li>GTK_ORIENTATION_HORIZONTAL = 0</li>
+<li>GTK_ORIENTATION_VERTICAL = 1</li>
+</ul>
 <p>C - <code>GtkOrientation</code></p>
 <a class="header" href="#packdirection" id="packdirection"><h2><code>PackDirection</code></h2></a>
 <p>Determines how widgets should be packed inside menubars
 and menuitems contained in menubars.</p>
+<ul>
+<li>GTK_PACK_DIRECTION_LTR = 0</li>
+<li>GTK_PACK_DIRECTION_RTL = 1</li>
+<li>GTK_PACK_DIRECTION_TTB = 2</li>
+<li>GTK_PACK_DIRECTION_BTT = 3</li>
+</ul>
 <p>C - <code>GtkPackDirection</code></p>
 <a class="header" href="#packtype" id="packtype"><h2><code>PackType</code></h2></a>
 <p>Represents the packing location #GtkBox children. (See: #GtkVBox,
 #GtkHBox, and #GtkButtonBox).</p>
+<ul>
+<li>GTK_PACK_START = 0</li>
+<li>GTK_PACK_END = 1</li>
+</ul>
 <p>C - <code>GtkPackType</code></p>
 <a class="header" href="#padactiontype" id="padactiontype"><h2><code>PadActionType</code></h2></a>
 <p>The type of a pad action.</p>
+<ul>
+<li>GTK_PAD_ACTION_BUTTON = 0</li>
+<li>GTK_PAD_ACTION_RING = 1</li>
+<li>GTK_PAD_ACTION_STRIP = 2</li>
+</ul>
 <p>C - <code>GtkPadActionType</code></p>
 <a class="header" href="#pageorientation" id="pageorientation"><h2><code>PageOrientation</code></h2></a>
 <p>See also gtk_print_settings_set_orientation().</p>
+<ul>
+<li>GTK_PAGE_ORIENTATION_PORTRAIT = 0</li>
+<li>GTK_PAGE_ORIENTATION_LANDSCAPE = 1</li>
+<li>GTK_PAGE_ORIENTATION_REVERSE_PORTRAIT = 2</li>
+<li>GTK_PAGE_ORIENTATION_REVERSE_LANDSCAPE = 3</li>
+</ul>
 <p>C - <code>GtkPageOrientation</code></p>
 <a class="header" href="#pageset" id="pageset"><h2><code>PageSet</code></h2></a>
 <p>See also gtk_print_job_set_page_set().</p>
+<ul>
+<li>GTK_PAGE_SET_ALL = 0</li>
+<li>GTK_PAGE_SET_EVEN = 1</li>
+<li>GTK_PAGE_SET_ODD = 2</li>
+</ul>
 <p>C - <code>GtkPageSet</code></p>
 <a class="header" href="#pandirection" id="pandirection"><h2><code>PanDirection</code></h2></a>
 <p>Describes the panning direction of a #GtkGesturePan</p>
+<ul>
+<li>GTK_PAN_DIRECTION_LEFT = 0</li>
+<li>GTK_PAN_DIRECTION_RIGHT = 1</li>
+<li>GTK_PAN_DIRECTION_UP = 2</li>
+<li>GTK_PAN_DIRECTION_DOWN = 3</li>
+</ul>
 <p>C - <code>GtkPanDirection</code></p>
 <a class="header" href="#pathprioritytype" id="pathprioritytype"><h2><code>PathPriorityType</code></h2></a>
 <p>Priorities for path lookups.
 See also gtk_binding_set_add_path().</p>
+<ul>
+<li>GTK_PATH_PRIO_LOWEST = 0</li>
+<li>GTK_PATH_PRIO_GTK = 4</li>
+<li>GTK_PATH_PRIO_APPLICATION = 8</li>
+<li>GTK_PATH_PRIO_THEME = 10</li>
+<li>GTK_PATH_PRIO_RC = 12</li>
+<li>GTK_PATH_PRIO_HIGHEST = 15</li>
+</ul>
 <p>C - <code>GtkPathPriorityType</code></p>
 <a class="header" href="#pathtype" id="pathtype"><h2><code>PathType</code></h2></a>
 <p>Widget path types.
 See also gtk_binding_set_add_path().</p>
+<ul>
+<li>GTK_PATH_WIDGET = 0</li>
+<li>GTK_PATH_WIDGET_CLASS = 1</li>
+<li>GTK_PATH_CLASS = 2</li>
+</ul>
 <p>C - <code>GtkPathType</code></p>
 <a class="header" href="#policytype" id="policytype"><h2><code>PolicyType</code></h2></a>
 <p>Determines how the size should be computed to achieve the one of the
 visibility mode for the scrollbars.</p>
+<ul>
+<li>GTK_POLICY_ALWAYS = 0</li>
+<li>GTK_POLICY_AUTOMATIC = 1</li>
+<li>GTK_POLICY_NEVER = 2</li>
+<li>GTK_POLICY_EXTERNAL = 3</li>
+</ul>
 <p>C - <code>GtkPolicyType</code></p>
 <a class="header" href="#popoverconstraint" id="popoverconstraint"><h2><code>PopoverConstraint</code></h2></a>
 <p>Describes constraints to positioning of popovers. More values
 may be added to this enumeration in the future.</p>
+<ul>
+<li>GTK_POPOVER_CONSTRAINT_NONE = 0</li>
+<li>GTK_POPOVER_CONSTRAINT_WINDOW = 1</li>
+</ul>
 <p>C - <code>GtkPopoverConstraint</code></p>
 <a class="header" href="#positiontype" id="positiontype"><h2><code>PositionType</code></h2></a>
 <p>Describes which edge of a widget a certain feature is positioned at, e.g. the
 tabs of a #GtkNotebook, the handle of a #GtkHandleBox or the label of a
 #GtkScale.</p>
+<ul>
+<li>GTK_POS_LEFT = 0</li>
+<li>GTK_POS_RIGHT = 1</li>
+<li>GTK_POS_TOP = 2</li>
+<li>GTK_POS_BOTTOM = 3</li>
+</ul>
 <p>C - <code>GtkPositionType</code></p>
 <a class="header" href="#printduplex" id="printduplex"><h2><code>PrintDuplex</code></h2></a>
 <p>See also gtk_print_settings_set_duplex().</p>
+<ul>
+<li>GTK_PRINT_DUPLEX_SIMPLEX = 0</li>
+<li>GTK_PRINT_DUPLEX_HORIZONTAL = 1</li>
+<li>GTK_PRINT_DUPLEX_VERTICAL = 2</li>
+</ul>
 <p>C - <code>GtkPrintDuplex</code></p>
 <a class="header" href="#printerror" id="printerror"><h2><code>PrintError</code></h2></a>
 <p>Error codes that identify various errors that can occur while
 using the GTK+ printing support.</p>
+<ul>
+<li>GTK_PRINT_ERROR_GENERAL = 0</li>
+<li>GTK_PRINT_ERROR_INTERNAL_ERROR = 1</li>
+<li>GTK_PRINT_ERROR_NOMEM = 2</li>
+<li>GTK_PRINT_ERROR_INVALID_FILE = 3</li>
+</ul>
 <p>C - <code>GtkPrintError</code></p>
 <a class="header" href="#printoperationaction" id="printoperationaction"><h2><code>PrintOperationAction</code></h2></a>
 <p>The @action parameter to gtk_print_operation_run()
 determines what action the print operation should perform.</p>
+<ul>
+<li>GTK_PRINT_OPERATION_ACTION_PRINT_DIALOG = 0</li>
+<li>GTK_PRINT_OPERATION_ACTION_PRINT = 1</li>
+<li>GTK_PRINT_OPERATION_ACTION_PREVIEW = 2</li>
+<li>GTK_PRINT_OPERATION_ACTION_EXPORT = 3</li>
+</ul>
 <p>C - <code>GtkPrintOperationAction</code></p>
 <a class="header" href="#printoperationresult" id="printoperationresult"><h2><code>PrintOperationResult</code></h2></a>
 <p>A value of this type is returned by gtk_print_operation_run().</p>
+<ul>
+<li>GTK_PRINT_OPERATION_RESULT_ERROR = 0</li>
+<li>GTK_PRINT_OPERATION_RESULT_APPLY = 1</li>
+<li>GTK_PRINT_OPERATION_RESULT_CANCEL = 2</li>
+<li>GTK_PRINT_OPERATION_RESULT_IN_PROGRESS = 3</li>
+</ul>
 <p>C - <code>GtkPrintOperationResult</code></p>
 <a class="header" href="#printpages" id="printpages"><h2><code>PrintPages</code></h2></a>
 <p>See also gtk_print_job_set_pages()</p>
+<ul>
+<li>GTK_PRINT_PAGES_ALL = 0</li>
+<li>GTK_PRINT_PAGES_CURRENT = 1</li>
+<li>GTK_PRINT_PAGES_RANGES = 2</li>
+<li>GTK_PRINT_PAGES_SELECTION = 3</li>
+</ul>
 <p>C - <code>GtkPrintPages</code></p>
 <a class="header" href="#printquality" id="printquality"><h2><code>PrintQuality</code></h2></a>
 <p>See also gtk_print_settings_set_quality().</p>
+<ul>
+<li>GTK_PRINT_QUALITY_LOW = 0</li>
+<li>GTK_PRINT_QUALITY_NORMAL = 1</li>
+<li>GTK_PRINT_QUALITY_HIGH = 2</li>
+<li>GTK_PRINT_QUALITY_DRAFT = 3</li>
+</ul>
 <p>C - <code>GtkPrintQuality</code></p>
 <a class="header" href="#printstatus" id="printstatus"><h2><code>PrintStatus</code></h2></a>
 <p>The status gives a rough indication of the completion of a running
 print operation.</p>
+<ul>
+<li>GTK_PRINT_STATUS_INITIAL = 0</li>
+<li>GTK_PRINT_STATUS_PREPARING = 1</li>
+<li>GTK_PRINT_STATUS_GENERATING_DATA = 2</li>
+<li>GTK_PRINT_STATUS_SENDING_DATA = 3</li>
+<li>GTK_PRINT_STATUS_PENDING = 4</li>
+<li>GTK_PRINT_STATUS_PENDING_ISSUE = 5</li>
+<li>GTK_PRINT_STATUS_PRINTING = 6</li>
+<li>GTK_PRINT_STATUS_FINISHED = 7</li>
+<li>GTK_PRINT_STATUS_FINISHED_ABORTED = 8</li>
+</ul>
 <p>C - <code>GtkPrintStatus</code></p>
 <a class="header" href="#propagationphase" id="propagationphase"><h2><code>PropagationPhase</code></h2></a>
 <p>Describes the stage at which events are fed into a #GtkEventController.</p>
+<ul>
+<li>GTK_PHASE_NONE = 0</li>
+<li>GTK_PHASE_CAPTURE = 1</li>
+<li>GTK_PHASE_BUBBLE = 2</li>
+<li>GTK_PHASE_TARGET = 3</li>
+</ul>
 <p>C - <code>GtkPropagationPhase</code></p>
 <a class="header" href="#rctokentype" id="rctokentype"><h2><code>RcTokenType</code></h2></a>
 <p>The #GtkRcTokenType enumeration represents the tokens
 in the RC file. It is exposed so that theme engines
 can reuse these tokens when parsing the theme-engine
 specific portions of a RC file.</p>
+<ul>
+<li>GTK_RC_TOKEN_INVALID = 270</li>
+<li>GTK_RC_TOKEN_INCLUDE = 271</li>
+<li>GTK_RC_TOKEN_NORMAL = 272</li>
+<li>GTK_RC_TOKEN_ACTIVE = 273</li>
+<li>GTK_RC_TOKEN_PRELIGHT = 274</li>
+<li>GTK_RC_TOKEN_SELECTED = 275</li>
+<li>GTK_RC_TOKEN_INSENSITIVE = 276</li>
+<li>GTK_RC_TOKEN_FG = 277</li>
+<li>GTK_RC_TOKEN_BG = 278</li>
+<li>GTK_RC_TOKEN_TEXT = 279</li>
+<li>GTK_RC_TOKEN_BASE = 280</li>
+<li>GTK_RC_TOKEN_XTHICKNESS = 281</li>
+<li>GTK_RC_TOKEN_YTHICKNESS = 282</li>
+<li>GTK_RC_TOKEN_FONT = 283</li>
+<li>GTK_RC_TOKEN_FONTSET = 284</li>
+<li>GTK_RC_TOKEN_FONT_NAME = 285</li>
+<li>GTK_RC_TOKEN_BG_PIXMAP = 286</li>
+<li>GTK_RC_TOKEN_PIXMAP_PATH = 287</li>
+<li>GTK_RC_TOKEN_STYLE = 288</li>
+<li>GTK_RC_TOKEN_BINDING = 289</li>
+<li>GTK_RC_TOKEN_BIND = 290</li>
+<li>GTK_RC_TOKEN_WIDGET = 291</li>
+<li>GTK_RC_TOKEN_WIDGET_CLASS = 292</li>
+<li>GTK_RC_TOKEN_CLASS = 293</li>
+<li>GTK_RC_TOKEN_LOWEST = 294</li>
+<li>GTK_RC_TOKEN_GTK = 295</li>
+<li>GTK_RC_TOKEN_APPLICATION = 296</li>
+<li>GTK_RC_TOKEN_THEME = 297</li>
+<li>GTK_RC_TOKEN_RC = 298</li>
+<li>GTK_RC_TOKEN_HIGHEST = 299</li>
+<li>GTK_RC_TOKEN_ENGINE = 300</li>
+<li>GTK_RC_TOKEN_MODULE_PATH = 301</li>
+<li>GTK_RC_TOKEN_IM_MODULE_PATH = 302</li>
+<li>GTK_RC_TOKEN_IM_MODULE_FILE = 303</li>
+<li>GTK_RC_TOKEN_STOCK = 304</li>
+<li>GTK_RC_TOKEN_LTR = 305</li>
+<li>GTK_RC_TOKEN_RTL = 306</li>
+<li>GTK_RC_TOKEN_COLOR = 307</li>
+<li>GTK_RC_TOKEN_UNBIND = 308</li>
+<li>GTK_RC_TOKEN_LAST = 309</li>
+</ul>
 <p>C - <code>GtkRcTokenType</code></p>
 <a class="header" href="#recentchoosererror" id="recentchoosererror"><h2><code>RecentChooserError</code></h2></a>
 <p>These identify the various errors that can occur while calling
 #GtkRecentChooser functions.</p>
+<ul>
+<li>GTK_RECENT_CHOOSER_ERROR_NOT_FOUND = 0</li>
+<li>GTK_RECENT_CHOOSER_ERROR_INVALID_URI = 1</li>
+</ul>
 <p>C - <code>GtkRecentChooserError</code></p>
 <a class="header" href="#recentmanagererror" id="recentmanagererror"><h2><code>RecentManagerError</code></h2></a>
 <p>Error codes for #GtkRecentManager operations</p>
+<ul>
+<li>GTK_RECENT_MANAGER_ERROR_NOT_FOUND = 0</li>
+<li>GTK_RECENT_MANAGER_ERROR_INVALID_URI = 1</li>
+<li>GTK_RECENT_MANAGER_ERROR_INVALID_ENCODING = 2</li>
+<li>GTK_RECENT_MANAGER_ERROR_NOT_REGISTERED = 3</li>
+<li>GTK_RECENT_MANAGER_ERROR_READ = 4</li>
+<li>GTK_RECENT_MANAGER_ERROR_WRITE = 5</li>
+<li>GTK_RECENT_MANAGER_ERROR_UNKNOWN = 6</li>
+</ul>
 <p>C - <code>GtkRecentManagerError</code></p>
 <a class="header" href="#recentsorttype" id="recentsorttype"><h2><code>RecentSortType</code></h2></a>
 <p>Used to specify the sorting method to be applyed to the recently
 used resource list.</p>
+<ul>
+<li>GTK_RECENT_SORT_NONE = 0</li>
+<li>GTK_RECENT_SORT_MRU = 1</li>
+<li>GTK_RECENT_SORT_LRU = 2</li>
+<li>GTK_RECENT_SORT_CUSTOM = 3</li>
+</ul>
 <p>C - <code>GtkRecentSortType</code></p>
 <a class="header" href="#reliefstyle" id="reliefstyle"><h2><code>ReliefStyle</code></h2></a>
 <p>Indicated the relief to be drawn around a #GtkButton.</p>
+<ul>
+<li>GTK_RELIEF_NORMAL = 0</li>
+<li>GTK_RELIEF_HALF = 1</li>
+<li>GTK_RELIEF_NONE = 2</li>
+</ul>
 <p>C - <code>GtkReliefStyle</code></p>
 <a class="header" href="#resizemode" id="resizemode"><h2><code>ResizeMode</code></h2></a>
+<ul>
+<li>GTK_RESIZE_PARENT = 0</li>
+<li>GTK_RESIZE_QUEUE = 1</li>
+<li>GTK_RESIZE_IMMEDIATE = 2</li>
+</ul>
 <p>C - <code>GtkResizeMode</code></p>
 <a class="header" href="#responsetype" id="responsetype"><h2><code>ResponseType</code></h2></a>
 <p>Predefined values for use as response ids in gtk_dialog_add_button().
 All predefined values are negative; GTK+ leaves values of 0 or greater for
 application-defined response ids.</p>
+<ul>
+<li>GTK_RESPONSE_NONE = -1</li>
+<li>GTK_RESPONSE_REJECT = -2</li>
+<li>GTK_RESPONSE_ACCEPT = -3</li>
+<li>GTK_RESPONSE_DELETE_EVENT = -4</li>
+<li>GTK_RESPONSE_OK = -5</li>
+<li>GTK_RESPONSE_CANCEL = -6</li>
+<li>GTK_RESPONSE_CLOSE = -7</li>
+<li>GTK_RESPONSE_YES = -8</li>
+<li>GTK_RESPONSE_NO = -9</li>
+<li>GTK_RESPONSE_APPLY = -10</li>
+<li>GTK_RESPONSE_HELP = -11</li>
+</ul>
 <p>C - <code>GtkResponseType</code></p>
 <a class="header" href="#revealertransitiontype" id="revealertransitiontype"><h2><code>RevealerTransitionType</code></h2></a>
 <p>These enumeration values describe the possible transitions
 when the child of a #GtkRevealer widget is shown or hidden.</p>
+<ul>
+<li>GTK_REVEALER_TRANSITION_TYPE_NONE = 0</li>
+<li>GTK_REVEALER_TRANSITION_TYPE_CROSSFADE = 1</li>
+<li>GTK_REVEALER_TRANSITION_TYPE_SLIDE_RIGHT = 2</li>
+<li>GTK_REVEALER_TRANSITION_TYPE_SLIDE_LEFT = 3</li>
+<li>GTK_REVEALER_TRANSITION_TYPE_SLIDE_UP = 4</li>
+<li>GTK_REVEALER_TRANSITION_TYPE_SLIDE_DOWN = 5</li>
+</ul>
 <p>C - <code>GtkRevealerTransitionType</code></p>
 <a class="header" href="#scrollstep" id="scrollstep"><h2><code>ScrollStep</code></h2></a>
+<ul>
+<li>GTK_SCROLL_STEPS = 0</li>
+<li>GTK_SCROLL_PAGES = 1</li>
+<li>GTK_SCROLL_ENDS = 2</li>
+<li>GTK_SCROLL_HORIZONTAL_STEPS = 3</li>
+<li>GTK_SCROLL_HORIZONTAL_PAGES = 4</li>
+<li>GTK_SCROLL_HORIZONTAL_ENDS = 5</li>
+</ul>
 <p>C - <code>GtkScrollStep</code></p>
 <a class="header" href="#scrolltype" id="scrolltype"><h2><code>ScrollType</code></h2></a>
 <p>Scrolling types.</p>
+<ul>
+<li>GTK_SCROLL_NONE = 0</li>
+<li>GTK_SCROLL_JUMP = 1</li>
+<li>GTK_SCROLL_STEP_BACKWARD = 2</li>
+<li>GTK_SCROLL_STEP_FORWARD = 3</li>
+<li>GTK_SCROLL_PAGE_BACKWARD = 4</li>
+<li>GTK_SCROLL_PAGE_FORWARD = 5</li>
+<li>GTK_SCROLL_STEP_UP = 6</li>
+<li>GTK_SCROLL_STEP_DOWN = 7</li>
+<li>GTK_SCROLL_PAGE_UP = 8</li>
+<li>GTK_SCROLL_PAGE_DOWN = 9</li>
+<li>GTK_SCROLL_STEP_LEFT = 10</li>
+<li>GTK_SCROLL_STEP_RIGHT = 11</li>
+<li>GTK_SCROLL_PAGE_LEFT = 12</li>
+<li>GTK_SCROLL_PAGE_RIGHT = 13</li>
+<li>GTK_SCROLL_START = 14</li>
+<li>GTK_SCROLL_END = 15</li>
+</ul>
 <p>C - <code>GtkScrollType</code></p>
 <a class="header" href="#scrollablepolicy" id="scrollablepolicy"><h2><code>ScrollablePolicy</code></h2></a>
 <p>Defines the policy to be used in a scrollable widget when updating
 the scrolled window adjustments in a given orientation.</p>
+<ul>
+<li>GTK_SCROLL_MINIMUM = 0</li>
+<li>GTK_SCROLL_NATURAL = 1</li>
+</ul>
 <p>C - <code>GtkScrollablePolicy</code></p>
 <a class="header" href="#selectionmode" id="selectionmode"><h2><code>SelectionMode</code></h2></a>
 <p>Used to control what selections users are allowed to make.</p>
+<ul>
+<li>GTK_SELECTION_NONE = 0</li>
+<li>GTK_SELECTION_SINGLE = 1</li>
+<li>GTK_SELECTION_BROWSE = 2</li>
+<li>GTK_SELECTION_MULTIPLE = 3</li>
+</ul>
 <p>C - <code>GtkSelectionMode</code></p>
 <a class="header" href="#sensitivitytype" id="sensitivitytype"><h2><code>SensitivityType</code></h2></a>
 <p>Determines how GTK+ handles the sensitivity of stepper arrows
 at the end of range widgets.</p>
+<ul>
+<li>GTK_SENSITIVITY_AUTO = 0</li>
+<li>GTK_SENSITIVITY_ON = 1</li>
+<li>GTK_SENSITIVITY_OFF = 2</li>
+</ul>
 <p>C - <code>GtkSensitivityType</code></p>
 <a class="header" href="#shadowtype" id="shadowtype"><h2><code>ShadowType</code></h2></a>
 <p>Used to change the appearance of an outline typically provided by a #GtkFrame.</p>
 <p>Note that many themes do not differentiate the appearance of the
 various shadow types: Either their is no visible shadow (@GTK_SHADOW_NONE),
 or there is (any other value).</p>
+<ul>
+<li>GTK_SHADOW_NONE = 0</li>
+<li>GTK_SHADOW_IN = 1</li>
+<li>GTK_SHADOW_OUT = 2</li>
+<li>GTK_SHADOW_ETCHED_IN = 3</li>
+<li>GTK_SHADOW_ETCHED_OUT = 4</li>
+</ul>
 <p>C - <code>GtkShadowType</code></p>
 <a class="header" href="#shortcuttype" id="shortcuttype"><h2><code>ShortcutType</code></h2></a>
 <p>GtkShortcutType specifies the kind of shortcut that is being described.
 More values may be added to this enumeration over time.</p>
+<ul>
+<li>GTK_SHORTCUT_ACCELERATOR = 0</li>
+<li>GTK_SHORTCUT_GESTURE_PINCH = 1</li>
+<li>GTK_SHORTCUT_GESTURE_STRETCH = 2</li>
+<li>GTK_SHORTCUT_GESTURE_ROTATE_CLOCKWISE = 3</li>
+<li>GTK_SHORTCUT_GESTURE_ROTATE_COUNTERCLOCKWISE = 4</li>
+<li>GTK_SHORTCUT_GESTURE_TWO_FINGER_SWIPE_LEFT = 5</li>
+<li>GTK_SHORTCUT_GESTURE_TWO_FINGER_SWIPE_RIGHT = 6</li>
+<li>GTK_SHORTCUT_GESTURE = 7</li>
+</ul>
 <p>C - <code>GtkShortcutType</code></p>
 <a class="header" href="#sizegroupmode" id="sizegroupmode"><h2><code>SizeGroupMode</code></h2></a>
 <p>The mode of the size group determines the directions in which the size
 group affects the requested sizes of its component widgets.</p>
+<ul>
+<li>GTK_SIZE_GROUP_NONE = 0</li>
+<li>GTK_SIZE_GROUP_HORIZONTAL = 1</li>
+<li>GTK_SIZE_GROUP_VERTICAL = 2</li>
+<li>GTK_SIZE_GROUP_BOTH = 3</li>
+</ul>
 <p>C - <code>GtkSizeGroupMode</code></p>
 <a class="header" href="#sizerequestmode" id="sizerequestmode"><h2><code>SizeRequestMode</code></h2></a>
 <p>Specifies a preference for height-for-width or
 width-for-height geometry management.</p>
+<ul>
+<li>GTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH = 0</li>
+<li>GTK_SIZE_REQUEST_WIDTH_FOR_HEIGHT = 1</li>
+<li>GTK_SIZE_REQUEST_CONSTANT_SIZE = 2</li>
+</ul>
 <p>C - <code>GtkSizeRequestMode</code></p>
 <a class="header" href="#sorttype" id="sorttype"><h2><code>SortType</code></h2></a>
 <p>Determines the direction of a sort.</p>
+<ul>
+<li>GTK_SORT_ASCENDING = 0</li>
+<li>GTK_SORT_DESCENDING = 1</li>
+</ul>
 <p>C - <code>GtkSortType</code></p>
 <a class="header" href="#spinbuttonupdatepolicy" id="spinbuttonupdatepolicy"><h2><code>SpinButtonUpdatePolicy</code></h2></a>
 <p>The spin button update policy determines whether the spin button displays
 values even if they are outside the bounds of its adjustment.
 See gtk_spin_button_set_update_policy().</p>
+<ul>
+<li>GTK_UPDATE_ALWAYS = 0</li>
+<li>GTK_UPDATE_IF_VALID = 1</li>
+</ul>
 <p>C - <code>GtkSpinButtonUpdatePolicy</code></p>
 <a class="header" href="#spintype" id="spintype"><h2><code>SpinType</code></h2></a>
 <p>The values of the GtkSpinType enumeration are used to specify the
 change to make in gtk_spin_button_spin().</p>
+<ul>
+<li>GTK_SPIN_STEP_FORWARD = 0</li>
+<li>GTK_SPIN_STEP_BACKWARD = 1</li>
+<li>GTK_SPIN_PAGE_FORWARD = 2</li>
+<li>GTK_SPIN_PAGE_BACKWARD = 3</li>
+<li>GTK_SPIN_HOME = 4</li>
+<li>GTK_SPIN_END = 5</li>
+<li>GTK_SPIN_USER_DEFINED = 6</li>
+</ul>
 <p>C - <code>GtkSpinType</code></p>
 <a class="header" href="#stacktransitiontype" id="stacktransitiontype"><h2><code>StackTransitionType</code></h2></a>
 <p>These enumeration values describe the possible transitions
 between pages in a #GtkStack widget.</p>
 <p>New values may be added to this enumeration over time.</p>
+<ul>
+<li>GTK_STACK_TRANSITION_TYPE_NONE = 0</li>
+<li>GTK_STACK_TRANSITION_TYPE_CROSSFADE = 1</li>
+<li>GTK_STACK_TRANSITION_TYPE_SLIDE_RIGHT = 2</li>
+<li>GTK_STACK_TRANSITION_TYPE_SLIDE_LEFT = 3</li>
+<li>GTK_STACK_TRANSITION_TYPE_SLIDE_UP = 4</li>
+<li>GTK_STACK_TRANSITION_TYPE_SLIDE_DOWN = 5</li>
+<li>GTK_STACK_TRANSITION_TYPE_SLIDE_LEFT_RIGHT = 6</li>
+<li>GTK_STACK_TRANSITION_TYPE_SLIDE_UP_DOWN = 7</li>
+<li>GTK_STACK_TRANSITION_TYPE_OVER_UP = 8</li>
+<li>GTK_STACK_TRANSITION_TYPE_OVER_DOWN = 9</li>
+<li>GTK_STACK_TRANSITION_TYPE_OVER_LEFT = 10</li>
+<li>GTK_STACK_TRANSITION_TYPE_OVER_RIGHT = 11</li>
+<li>GTK_STACK_TRANSITION_TYPE_UNDER_UP = 12</li>
+<li>GTK_STACK_TRANSITION_TYPE_UNDER_DOWN = 13</li>
+<li>GTK_STACK_TRANSITION_TYPE_UNDER_LEFT = 14</li>
+<li>GTK_STACK_TRANSITION_TYPE_UNDER_RIGHT = 15</li>
+<li>GTK_STACK_TRANSITION_TYPE_OVER_UP_DOWN = 16</li>
+<li>GTK_STACK_TRANSITION_TYPE_OVER_DOWN_UP = 17</li>
+<li>GTK_STACK_TRANSITION_TYPE_OVER_LEFT_RIGHT = 18</li>
+<li>GTK_STACK_TRANSITION_TYPE_OVER_RIGHT_LEFT = 19</li>
+</ul>
 <p>C - <code>GtkStackTransitionType</code></p>
 <a class="header" href="#statetype" id="statetype"><h2><code>StateType</code></h2></a>
 <p>This type indicates the current state of a widget; the state determines how
 the widget is drawn. The #GtkStateType enumeration is also used to
 identify different colors in a #GtkStyle for drawing, so states can be
 used for subparts of a widget as well as entire widgets.</p>
+<ul>
+<li>GTK_STATE_NORMAL = 0</li>
+<li>GTK_STATE_ACTIVE = 1</li>
+<li>GTK_STATE_PRELIGHT = 2</li>
+<li>GTK_STATE_SELECTED = 3</li>
+<li>GTK_STATE_INSENSITIVE = 4</li>
+<li>GTK_STATE_INCONSISTENT = 5</li>
+<li>GTK_STATE_FOCUSED = 6</li>
+</ul>
 <p>C - <code>GtkStateType</code></p>
 <a class="header" href="#textbuffertargetinfo" id="textbuffertargetinfo"><h2><code>TextBufferTargetInfo</code></h2></a>
 <p>These values are used as “info” for the targets contained in the
@@ -496,23 +1115,56 @@ lists returned by gtk_text_buffer_get_copy_target_list() and
 gtk_text_buffer_get_paste_target_list().</p>
 <p>The values counts down from <code>-1</code> to avoid clashes
 with application added drag destinations which usually start at 0.</p>
+<ul>
+<li>GTK_TEXT_BUFFER_TARGET_INFO_BUFFER_CONTENTS = -1</li>
+<li>GTK_TEXT_BUFFER_TARGET_INFO_RICH_TEXT = -2</li>
+<li>GTK_TEXT_BUFFER_TARGET_INFO_TEXT = -3</li>
+</ul>
 <p>C - <code>GtkTextBufferTargetInfo</code></p>
 <a class="header" href="#textdirection" id="textdirection"><h2><code>TextDirection</code></h2></a>
 <p>Reading directions for text.</p>
+<ul>
+<li>GTK_TEXT_DIR_NONE = 0</li>
+<li>GTK_TEXT_DIR_LTR = 1</li>
+<li>GTK_TEXT_DIR_RTL = 2</li>
+</ul>
 <p>C - <code>GtkTextDirection</code></p>
 <a class="header" href="#textextendselection" id="textextendselection"><h2><code>TextExtendSelection</code></h2></a>
 <p>Granularity types that extend the text selection. Use the
 #GtkTextView::extend-selection signal to customize the selection.</p>
+<ul>
+<li>GTK_TEXT_EXTEND_SELECTION_WORD = 0</li>
+<li>GTK_TEXT_EXTEND_SELECTION_LINE = 1</li>
+</ul>
 <p>C - <code>GtkTextExtendSelection</code></p>
 <a class="header" href="#textviewlayer" id="textviewlayer"><h2><code>TextViewLayer</code></h2></a>
 <p>Used to reference the layers of #GtkTextView for the purpose of customized
 drawing with the ::draw_layer vfunc.</p>
+<ul>
+<li>GTK_TEXT_VIEW_LAYER_BELOW = 0</li>
+<li>GTK_TEXT_VIEW_LAYER_ABOVE = 1</li>
+<li>GTK_TEXT_VIEW_LAYER_BELOW_TEXT = 2</li>
+<li>GTK_TEXT_VIEW_LAYER_ABOVE_TEXT = 3</li>
+</ul>
 <p>C - <code>GtkTextViewLayer</code></p>
 <a class="header" href="#textwindowtype" id="textwindowtype"><h2><code>TextWindowType</code></h2></a>
 <p>Used to reference the parts of #GtkTextView.</p>
+<ul>
+<li>GTK_TEXT_WINDOW_PRIVATE = 0</li>
+<li>GTK_TEXT_WINDOW_WIDGET = 1</li>
+<li>GTK_TEXT_WINDOW_TEXT = 2</li>
+<li>GTK_TEXT_WINDOW_LEFT = 3</li>
+<li>GTK_TEXT_WINDOW_RIGHT = 4</li>
+<li>GTK_TEXT_WINDOW_TOP = 5</li>
+<li>GTK_TEXT_WINDOW_BOTTOM = 6</li>
+</ul>
 <p>C - <code>GtkTextWindowType</code></p>
 <a class="header" href="#toolbarspacestyle" id="toolbarspacestyle"><h2><code>ToolbarSpaceStyle</code></h2></a>
 <p>Whether spacers are vertical lines or just blank.</p>
+<ul>
+<li>GTK_TOOLBAR_SPACE_EMPTY = 0</li>
+<li>GTK_TOOLBAR_SPACE_LINE = 1</li>
+</ul>
 <p>C - <code>GtkToolbarSpaceStyle</code></p>
 <a class="header" href="#toolbarstyle" id="toolbarstyle"><h2><code>ToolbarStyle</code></h2></a>
 <p>Used to customize the appearance of a #GtkToolbar. Note that
@@ -520,28 +1172,68 @@ setting the toolbar style overrides the user’s preferences
 for the default toolbar style.  Note that if the button has only
 a label set and GTK_TOOLBAR_ICONS is used, the label will be
 visible, and vice versa.</p>
+<ul>
+<li>GTK_TOOLBAR_ICONS = 0</li>
+<li>GTK_TOOLBAR_TEXT = 1</li>
+<li>GTK_TOOLBAR_BOTH = 2</li>
+<li>GTK_TOOLBAR_BOTH_HORIZ = 3</li>
+</ul>
 <p>C - <code>GtkToolbarStyle</code></p>
 <a class="header" href="#treeviewcolumnsizing" id="treeviewcolumnsizing"><h2><code>TreeViewColumnSizing</code></h2></a>
 <p>The sizing method the column uses to determine its width.  Please note
 that @GTK_TREE_VIEW_COLUMN_AUTOSIZE are inefficient for large views, and
 can make columns appear choppy.</p>
+<ul>
+<li>GTK_TREE_VIEW_COLUMN_GROW_ONLY = 0</li>
+<li>GTK_TREE_VIEW_COLUMN_AUTOSIZE = 1</li>
+<li>GTK_TREE_VIEW_COLUMN_FIXED = 2</li>
+</ul>
 <p>C - <code>GtkTreeViewColumnSizing</code></p>
 <a class="header" href="#treeviewdropposition" id="treeviewdropposition"><h2><code>TreeViewDropPosition</code></h2></a>
 <p>An enum for determining where a dropped row goes.</p>
+<ul>
+<li>GTK_TREE_VIEW_DROP_BEFORE = 0</li>
+<li>GTK_TREE_VIEW_DROP_AFTER = 1</li>
+<li>GTK_TREE_VIEW_DROP_INTO_OR_BEFORE = 2</li>
+<li>GTK_TREE_VIEW_DROP_INTO_OR_AFTER = 3</li>
+</ul>
 <p>C - <code>GtkTreeViewDropPosition</code></p>
 <a class="header" href="#treeviewgridlines" id="treeviewgridlines"><h2><code>TreeViewGridLines</code></h2></a>
 <p>Used to indicate which grid lines to draw in a tree view.</p>
+<ul>
+<li>GTK_TREE_VIEW_GRID_LINES_NONE = 0</li>
+<li>GTK_TREE_VIEW_GRID_LINES_HORIZONTAL = 1</li>
+<li>GTK_TREE_VIEW_GRID_LINES_VERTICAL = 2</li>
+<li>GTK_TREE_VIEW_GRID_LINES_BOTH = 3</li>
+</ul>
 <p>C - <code>GtkTreeViewGridLines</code></p>
 <a class="header" href="#unit" id="unit"><h2><code>Unit</code></h2></a>
 <p>See also gtk_print_settings_set_paper_width().</p>
+<ul>
+<li>GTK_UNIT_NONE = 0</li>
+<li>GTK_UNIT_POINTS = 1</li>
+<li>GTK_UNIT_INCH = 2</li>
+<li>GTK_UNIT_MM = 3</li>
+</ul>
 <p>C - <code>GtkUnit</code></p>
 <a class="header" href="#widgethelptype" id="widgethelptype"><h2><code>WidgetHelpType</code></h2></a>
 <p>Kinds of widget-specific help. Used by the ::show-help signal.</p>
+<ul>
+<li>GTK_WIDGET_HELP_TOOLTIP = 0</li>
+<li>GTK_WIDGET_HELP_WHATS_THIS = 1</li>
+</ul>
 <p>C - <code>GtkWidgetHelpType</code></p>
 <a class="header" href="#windowposition" id="windowposition"><h2><code>WindowPosition</code></h2></a>
 <p>Window placement can be influenced using this enumeration. Note that
 using #GTK_WIN_POS_CENTER_ALWAYS is almost always a bad idea.
 It won’t necessarily work well with all window managers or on all windowing systems.</p>
+<ul>
+<li>GTK_WIN_POS_NONE = 0</li>
+<li>GTK_WIN_POS_CENTER = 1</li>
+<li>GTK_WIN_POS_MOUSE = 2</li>
+<li>GTK_WIN_POS_CENTER_ALWAYS = 3</li>
+<li>GTK_WIN_POS_CENTER_ON_PARENT = 4</li>
+</ul>
 <p>C - <code>GtkWindowPosition</code></p>
 <a class="header" href="#windowtype" id="windowtype"><h2><code>WindowType</code></h2></a>
 <p>A #GtkWindow can be one of these types. Most things you’d consider a
@@ -557,10 +1249,153 @@ widgets such as #GtkMenu or tooltips that you normally don’t think of
 as windows per se. Nearly all windows should be #GTK_WINDOW_TOPLEVEL.
 In particular, do not use #GTK_WINDOW_POPUP just to turn off
 the window borders; use gtk_window_set_decorated() for that.</p>
+<ul>
+<li>GTK_WINDOW_TOPLEVEL = 0</li>
+<li>GTK_WINDOW_POPUP = 1</li>
+</ul>
 <p>C - <code>GtkWindowType</code></p>
 <a class="header" href="#wrapmode" id="wrapmode"><h2><code>WrapMode</code></h2></a>
 <p>Describes a type of line wrapping.</p>
+<ul>
+<li>GTK_WRAP_NONE = 0</li>
+<li>GTK_WRAP_CHAR = 1</li>
+<li>GTK_WRAP_WORD = 2</li>
+<li>GTK_WRAP_WORD_CHAR = 3</li>
+</ul>
 <p>C - <code>GtkWrapMode</code></p>
+<p>t extend the text selection. Use the
+#GtkTextView::extend-selection signal to customize the selection.</p>
+<p>C - <code>GtkTextExtendSelection</code></p>
+<ul>
+<li>GTK_TEXT_EXTEND_SELECTION_WORD = %!s(int=0)</li>
+<li>GTK_TEXT_EXTEND_SELECTION_LINE = %!s(int=1)</li>
+</ul>
+<a class="header" href="#textviewlayer-1" id="textviewlayer-1"><h2><code>TextViewLayer</code></h2></a>
+<p>Used to reference the layers of #GtkTextView for the purpose of customized
+drawing with the ::draw_layer vfunc.</p>
+<p>C - <code>GtkTextViewLayer</code></p>
+<ul>
+<li>GTK_TEXT_VIEW_LAYER_BELOW = %!s(int=0)</li>
+<li>GTK_TEXT_VIEW_LAYER_ABOVE = %!s(int=1)</li>
+<li>GTK_TEXT_VIEW_LAYER_BELOW_TEXT = %!s(int=2)</li>
+<li>GTK_TEXT_VIEW_LAYER_ABOVE_TEXT = %!s(int=3)</li>
+</ul>
+<a class="header" href="#textwindowtype-1" id="textwindowtype-1"><h2><code>TextWindowType</code></h2></a>
+<p>Used to reference the parts of #GtkTextView.</p>
+<p>C - <code>GtkTextWindowType</code></p>
+<ul>
+<li>GTK_TEXT_WINDOW_PRIVATE = %!s(int=0)</li>
+<li>GTK_TEXT_WINDOW_WIDGET = %!s(int=1)</li>
+<li>GTK_TEXT_WINDOW_TEXT = %!s(int=2)</li>
+<li>GTK_TEXT_WINDOW_LEFT = %!s(int=3)</li>
+<li>GTK_TEXT_WINDOW_RIGHT = %!s(int=4)</li>
+<li>GTK_TEXT_WINDOW_TOP = %!s(int=5)</li>
+<li>GTK_TEXT_WINDOW_BOTTOM = %!s(int=6)</li>
+</ul>
+<a class="header" href="#toolbarspacestyle-1" id="toolbarspacestyle-1"><h2><code>ToolbarSpaceStyle</code></h2></a>
+<p>Whether spacers are vertical lines or just blank.</p>
+<p>C - <code>GtkToolbarSpaceStyle</code></p>
+<ul>
+<li>GTK_TOOLBAR_SPACE_EMPTY = %!s(int=0)</li>
+<li>GTK_TOOLBAR_SPACE_LINE = %!s(int=1)</li>
+</ul>
+<a class="header" href="#toolbarstyle-1" id="toolbarstyle-1"><h2><code>ToolbarStyle</code></h2></a>
+<p>Used to customize the appearance of a #GtkToolbar. Note that
+setting the toolbar style overrides the user’s preferences
+for the default toolbar style.  Note that if the button has only
+a label set and GTK_TOOLBAR_ICONS is used, the label will be
+visible, and vice versa.</p>
+<p>C - <code>GtkToolbarStyle</code></p>
+<ul>
+<li>GTK_TOOLBAR_ICONS = %!s(int=0)</li>
+<li>GTK_TOOLBAR_TEXT = %!s(int=1)</li>
+<li>GTK_TOOLBAR_BOTH = %!s(int=2)</li>
+<li>GTK_TOOLBAR_BOTH_HORIZ = %!s(int=3)</li>
+</ul>
+<a class="header" href="#treeviewcolumnsizing-1" id="treeviewcolumnsizing-1"><h2><code>TreeViewColumnSizing</code></h2></a>
+<p>The sizing method the column uses to determine its width.  Please note
+that @GTK_TREE_VIEW_COLUMN_AUTOSIZE are inefficient for large views, and
+can make columns appear choppy.</p>
+<p>C - <code>GtkTreeViewColumnSizing</code></p>
+<ul>
+<li>GTK_TREE_VIEW_COLUMN_GROW_ONLY = %!s(int=0)</li>
+<li>GTK_TREE_VIEW_COLUMN_AUTOSIZE = %!s(int=1)</li>
+<li>GTK_TREE_VIEW_COLUMN_FIXED = %!s(int=2)</li>
+</ul>
+<a class="header" href="#treeviewdropposition-1" id="treeviewdropposition-1"><h2><code>TreeViewDropPosition</code></h2></a>
+<p>An enum for determining where a dropped row goes.</p>
+<p>C - <code>GtkTreeViewDropPosition</code></p>
+<ul>
+<li>GTK_TREE_VIEW_DROP_BEFORE = %!s(int=0)</li>
+<li>GTK_TREE_VIEW_DROP_AFTER = %!s(int=1)</li>
+<li>GTK_TREE_VIEW_DROP_INTO_OR_BEFORE = %!s(int=2)</li>
+<li>GTK_TREE_VIEW_DROP_INTO_OR_AFTER = %!s(int=3)</li>
+</ul>
+<a class="header" href="#treeviewgridlines-1" id="treeviewgridlines-1"><h2><code>TreeViewGridLines</code></h2></a>
+<p>Used to indicate which grid lines to draw in a tree view.</p>
+<p>C - <code>GtkTreeViewGridLines</code></p>
+<ul>
+<li>GTK_TREE_VIEW_GRID_LINES_NONE = %!s(int=0)</li>
+<li>GTK_TREE_VIEW_GRID_LINES_HORIZONTAL = %!s(int=1)</li>
+<li>GTK_TREE_VIEW_GRID_LINES_VERTICAL = %!s(int=2)</li>
+<li>GTK_TREE_VIEW_GRID_LINES_BOTH = %!s(int=3)</li>
+</ul>
+<a class="header" href="#unit-1" id="unit-1"><h2><code>Unit</code></h2></a>
+<p>See also gtk_print_settings_set_paper_width().</p>
+<p>C - <code>GtkUnit</code></p>
+<ul>
+<li>GTK_UNIT_NONE = %!s(int=0)</li>
+<li>GTK_UNIT_POINTS = %!s(int=1)</li>
+<li>GTK_UNIT_INCH = %!s(int=2)</li>
+<li>GTK_UNIT_MM = %!s(int=3)</li>
+</ul>
+<a class="header" href="#widgethelptype-1" id="widgethelptype-1"><h2><code>WidgetHelpType</code></h2></a>
+<p>Kinds of widget-specific help. Used by the ::show-help signal.</p>
+<p>C - <code>GtkWidgetHelpType</code></p>
+<ul>
+<li>GTK_WIDGET_HELP_TOOLTIP = %!s(int=0)</li>
+<li>GTK_WIDGET_HELP_WHATS_THIS = %!s(int=1)</li>
+</ul>
+<a class="header" href="#windowposition-1" id="windowposition-1"><h2><code>WindowPosition</code></h2></a>
+<p>Window placement can be influenced using this enumeration. Note that
+using #GTK_WIN_POS_CENTER_ALWAYS is almost always a bad idea.
+It won’t necessarily work well with all window managers or on all windowing systems.</p>
+<p>C - <code>GtkWindowPosition</code></p>
+<ul>
+<li>GTK_WIN_POS_NONE = %!s(int=0)</li>
+<li>GTK_WIN_POS_CENTER = %!s(int=1)</li>
+<li>GTK_WIN_POS_MOUSE = %!s(int=2)</li>
+<li>GTK_WIN_POS_CENTER_ALWAYS = %!s(int=3)</li>
+<li>GTK_WIN_POS_CENTER_ON_PARENT = %!s(int=4)</li>
+</ul>
+<a class="header" href="#windowtype-1" id="windowtype-1"><h2><code>WindowType</code></h2></a>
+<p>A #GtkWindow can be one of these types. Most things you’d consider a
+“window” should have type #GTK_WINDOW_TOPLEVEL; windows with this type
+are managed by the window manager and have a frame by default (call
+gtk_window_set_decorated() to toggle the frame).  Windows with type
+#GTK_WINDOW_POPUP are ignored by the window manager; window manager
+keybindings won’t work on them, the window manager won’t decorate the
+window with a frame, many GTK+ features that rely on the window
+manager will not work (e.g. resize grips and
+maximization/minimization). #GTK_WINDOW_POPUP is used to implement
+widgets such as #GtkMenu or tooltips that you normally don’t think of
+as windows per se. Nearly all windows should be #GTK_WINDOW_TOPLEVEL.
+In particular, do not use #GTK_WINDOW_POPUP just to turn off
+the window borders; use gtk_window_set_decorated() for that.</p>
+<p>C - <code>GtkWindowType</code></p>
+<ul>
+<li>GTK_WINDOW_TOPLEVEL = %!s(int=0)</li>
+<li>GTK_WINDOW_POPUP = %!s(int=1)</li>
+</ul>
+<a class="header" href="#wrapmode-1" id="wrapmode-1"><h2><code>WrapMode</code></h2></a>
+<p>Describes a type of line wrapping.</p>
+<p>C - <code>GtkWrapMode</code></p>
+<ul>
+<li>GTK_WRAP_NONE = %!s(int=0)</li>
+<li>GTK_WRAP_CHAR = %!s(int=1)</li>
+<li>GTK_WRAP_WORD = %!s(int=2)</li>
+<li>GTK_WRAP_WORD_CHAR = %!s(int=3)</li>
+</ul>
 
                     </main>
 

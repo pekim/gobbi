@@ -17,6 +17,8 @@ type Member struct {
 	CIdentifier string `xml:"http://www.gtk.org/introspection/c/1.0 identifier,attr"`
 	GlibNick    string `xml:"http://www.gtk.org/introspection/glib/1.0 nick,attr"`
 	Doc         *Doc   `xml:"doc"`
+
+	name string
 }
 
 func (m *Member) mergeAddenda(addenda *Member) {
@@ -35,6 +37,7 @@ func (m *Member) generate(g *jen.Group, namePrefix string, goTypeName string) {
 		// Make name a legal Go identifier (cannot start with a digit).
 		name = "_" + name
 	}
+	m.name = name
 
 	// declare a member constant
 	g.
@@ -42,4 +45,8 @@ func (m *Member) generate(g *jen.Group, namePrefix string, goTypeName string) {
 		Id(goTypeName).
 		Op("=").
 		Lit(m.Value)
+}
+
+func (m *Member) generateDocs(file *DocFile) {
+	file.writeLinef("- %s = %d", m.name, m.Value)
 }

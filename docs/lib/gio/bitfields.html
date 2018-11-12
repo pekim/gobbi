@@ -139,104 +139,277 @@
                         <a class="header" href="#gio-bitfields" id="gio-bitfields"><h1><code>gio</code> bitfields</h1></a>
 <a class="header" href="#appinfocreateflags" id="appinfocreateflags"><h2><code>AppInfoCreateFlags</code></h2></a>
 <p>Flags used when creating a #GAppInfo.</p>
+<ul>
+<li>APP_INFO_CREATE_NONE = 0</li>
+<li>APP_INFO_CREATE_NEEDS_TERMINAL = 1</li>
+<li>APP_INFO_CREATE_SUPPORTS_URIS = 2</li>
+<li>APP_INFO_CREATE_SUPPORTS_STARTUP_NOTIFICATION = 4</li>
+</ul>
 <p>C - <code>GAppInfoCreateFlags</code></p>
 <a class="header" href="#applicationflags" id="applicationflags"><h2><code>ApplicationFlags</code></h2></a>
 <p>Flags used to define the behaviour of a #GApplication.</p>
+<ul>
+<li>APPLICATION_FLAGS_NONE = 0</li>
+<li>APPLICATION_IS_SERVICE = 1</li>
+<li>APPLICATION_IS_LAUNCHER = 2</li>
+<li>APPLICATION_HANDLES_OPEN = 4</li>
+<li>APPLICATION_HANDLES_COMMAND_LINE = 8</li>
+<li>APPLICATION_SEND_ENVIRONMENT = 16</li>
+<li>APPLICATION_NON_UNIQUE = 32</li>
+<li>APPLICATION_CAN_OVERRIDE_APP_ID = 64</li>
+</ul>
 <p>C - <code>GApplicationFlags</code></p>
 <a class="header" href="#askpasswordflags" id="askpasswordflags"><h2><code>AskPasswordFlags</code></h2></a>
 <p>#GAskPasswordFlags are used to request specific information from the
 user, or to notify the user of their choices in an authentication
 situation.</p>
+<ul>
+<li>ASK_PASSWORD_NEED_PASSWORD = 1</li>
+<li>ASK_PASSWORD_NEED_USERNAME = 2</li>
+<li>ASK_PASSWORD_NEED_DOMAIN = 4</li>
+<li>ASK_PASSWORD_SAVING_SUPPORTED = 8</li>
+<li>ASK_PASSWORD_ANONYMOUS_SUPPORTED = 16</li>
+</ul>
 <p>C - <code>GAskPasswordFlags</code></p>
 <a class="header" href="#busnameownerflags" id="busnameownerflags"><h2><code>BusNameOwnerFlags</code></h2></a>
 <p>Flags used in g_bus_own_name().</p>
+<ul>
+<li>BUS_NAME_OWNER_FLAGS_NONE = 0</li>
+<li>BUS_NAME_OWNER_FLAGS_ALLOW_REPLACEMENT = 1</li>
+<li>BUS_NAME_OWNER_FLAGS_REPLACE = 2</li>
+<li>BUS_NAME_OWNER_FLAGS_DO_NOT_QUEUE = 4</li>
+</ul>
 <p>C - <code>GBusNameOwnerFlags</code></p>
 <a class="header" href="#busnamewatcherflags" id="busnamewatcherflags"><h2><code>BusNameWatcherFlags</code></h2></a>
 <p>Flags used in g_bus_watch_name().</p>
+<ul>
+<li>BUS_NAME_WATCHER_FLAGS_NONE = 0</li>
+<li>BUS_NAME_WATCHER_FLAGS_AUTO_START = 1</li>
+</ul>
 <p>C - <code>GBusNameWatcherFlags</code></p>
 <a class="header" href="#converterflags" id="converterflags"><h2><code>ConverterFlags</code></h2></a>
 <p>Flags used when calling a g_converter_convert().</p>
+<ul>
+<li>CONVERTER_NO_FLAGS = 0</li>
+<li>CONVERTER_INPUT_AT_END = 1</li>
+<li>CONVERTER_FLUSH = 2</li>
+</ul>
 <p>C - <code>GConverterFlags</code></p>
 <a class="header" href="#dbuscallflags" id="dbuscallflags"><h2><code>DBusCallFlags</code></h2></a>
 <p>Flags used in g_dbus_connection_call() and similar APIs.</p>
+<ul>
+<li>DBUS_CALL_FLAGS_NONE = 0</li>
+<li>DBUS_CALL_FLAGS_NO_AUTO_START = 1</li>
+<li>DBUS_CALL_FLAGS_ALLOW_INTERACTIVE_AUTHORIZATION = 2</li>
+</ul>
 <p>C - <code>GDBusCallFlags</code></p>
 <a class="header" href="#dbuscapabilityflags" id="dbuscapabilityflags"><h2><code>DBusCapabilityFlags</code></h2></a>
 <p>Capabilities negotiated with the remote peer.</p>
+<ul>
+<li>DBUS_CAPABILITY_FLAGS_NONE = 0</li>
+<li>DBUS_CAPABILITY_FLAGS_UNIX_FD_PASSING = 1</li>
+</ul>
 <p>C - <code>GDBusCapabilityFlags</code></p>
 <a class="header" href="#dbusconnectionflags" id="dbusconnectionflags"><h2><code>DBusConnectionFlags</code></h2></a>
 <p>Flags used when creating a new #GDBusConnection.</p>
+<ul>
+<li>DBUS_CONNECTION_FLAGS_NONE = 0</li>
+<li>DBUS_CONNECTION_FLAGS_AUTHENTICATION_CLIENT = 1</li>
+<li>DBUS_CONNECTION_FLAGS_AUTHENTICATION_SERVER = 2</li>
+<li>DBUS_CONNECTION_FLAGS_AUTHENTICATION_ALLOW_ANONYMOUS = 4</li>
+<li>DBUS_CONNECTION_FLAGS_MESSAGE_BUS_CONNECTION = 8</li>
+<li>DBUS_CONNECTION_FLAGS_DELAY_MESSAGE_PROCESSING = 16</li>
+</ul>
 <p>C - <code>GDBusConnectionFlags</code></p>
 <a class="header" href="#dbusinterfaceskeletonflags" id="dbusinterfaceskeletonflags"><h2><code>DBusInterfaceSkeletonFlags</code></h2></a>
 <p>Flags describing the behavior of a #GDBusInterfaceSkeleton instance.</p>
+<ul>
+<li>DBUS_INTERFACE_SKELETON_FLAGS_NONE = 0</li>
+<li>DBUS_INTERFACE_SKELETON_FLAGS_HANDLE_METHOD_INVOCATIONS_IN_THREAD = 1</li>
+</ul>
 <p>C - <code>GDBusInterfaceSkeletonFlags</code></p>
 <a class="header" href="#dbusmessageflags" id="dbusmessageflags"><h2><code>DBusMessageFlags</code></h2></a>
 <p>Message flags used in #GDBusMessage.</p>
+<ul>
+<li>DBUS_MESSAGE_FLAGS_NONE = 0</li>
+<li>DBUS_MESSAGE_FLAGS_NO_REPLY_EXPECTED = 1</li>
+<li>DBUS_MESSAGE_FLAGS_NO_AUTO_START = 2</li>
+<li>DBUS_MESSAGE_FLAGS_ALLOW_INTERACTIVE_AUTHORIZATION = 4</li>
+</ul>
 <p>C - <code>GDBusMessageFlags</code></p>
 <a class="header" href="#dbusobjectmanagerclientflags" id="dbusobjectmanagerclientflags"><h2><code>DBusObjectManagerClientFlags</code></h2></a>
 <p>Flags used when constructing a #GDBusObjectManagerClient.</p>
+<ul>
+<li>DBUS_OBJECT_MANAGER_CLIENT_FLAGS_NONE = 0</li>
+<li>DBUS_OBJECT_MANAGER_CLIENT_FLAGS_DO_NOT_AUTO_START = 1</li>
+</ul>
 <p>C - <code>GDBusObjectManagerClientFlags</code></p>
 <a class="header" href="#dbuspropertyinfoflags" id="dbuspropertyinfoflags"><h2><code>DBusPropertyInfoFlags</code></h2></a>
 <p>Flags describing the access control of a D-Bus property.</p>
+<ul>
+<li>DBUS_PROPERTY_INFO_FLAGS_NONE = 0</li>
+<li>DBUS_PROPERTY_INFO_FLAGS_READABLE = 1</li>
+<li>DBUS_PROPERTY_INFO_FLAGS_WRITABLE = 2</li>
+</ul>
 <p>C - <code>GDBusPropertyInfoFlags</code></p>
 <a class="header" href="#dbusproxyflags" id="dbusproxyflags"><h2><code>DBusProxyFlags</code></h2></a>
 <p>Flags used when constructing an instance of a #GDBusProxy derived class.</p>
+<ul>
+<li>DBUS_PROXY_FLAGS_NONE = 0</li>
+<li>DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES = 1</li>
+<li>DBUS_PROXY_FLAGS_DO_NOT_CONNECT_SIGNALS = 2</li>
+<li>DBUS_PROXY_FLAGS_DO_NOT_AUTO_START = 4</li>
+<li>DBUS_PROXY_FLAGS_GET_INVALIDATED_PROPERTIES = 8</li>
+<li>DBUS_PROXY_FLAGS_DO_NOT_AUTO_START_AT_CONSTRUCTION = 16</li>
+</ul>
 <p>C - <code>GDBusProxyFlags</code></p>
 <a class="header" href="#dbussendmessageflags" id="dbussendmessageflags"><h2><code>DBusSendMessageFlags</code></h2></a>
 <p>Flags used when sending #GDBusMessages on a #GDBusConnection.</p>
+<ul>
+<li>DBUS_SEND_MESSAGE_FLAGS_NONE = 0</li>
+<li>DBUS_SEND_MESSAGE_FLAGS_PRESERVE_SERIAL = 1</li>
+</ul>
 <p>C - <code>GDBusSendMessageFlags</code></p>
 <a class="header" href="#dbusserverflags" id="dbusserverflags"><h2><code>DBusServerFlags</code></h2></a>
 <p>Flags used when creating a #GDBusServer.</p>
+<ul>
+<li>DBUS_SERVER_FLAGS_NONE = 0</li>
+<li>DBUS_SERVER_FLAGS_RUN_IN_THREAD = 1</li>
+<li>DBUS_SERVER_FLAGS_AUTHENTICATION_ALLOW_ANONYMOUS = 2</li>
+</ul>
 <p>C - <code>GDBusServerFlags</code></p>
 <a class="header" href="#dbussignalflags" id="dbussignalflags"><h2><code>DBusSignalFlags</code></h2></a>
 <p>Flags used when subscribing to signals via g_dbus_connection_signal_subscribe().</p>
+<ul>
+<li>DBUS_SIGNAL_FLAGS_NONE = 0</li>
+<li>DBUS_SIGNAL_FLAGS_NO_MATCH_RULE = 1</li>
+<li>DBUS_SIGNAL_FLAGS_MATCH_ARG0_NAMESPACE = 2</li>
+<li>DBUS_SIGNAL_FLAGS_MATCH_ARG0_PATH = 4</li>
+</ul>
 <p>C - <code>GDBusSignalFlags</code></p>
 <a class="header" href="#dbussubtreeflags" id="dbussubtreeflags"><h2><code>DBusSubtreeFlags</code></h2></a>
 <p>Flags passed to g_dbus_connection_register_subtree().</p>
+<ul>
+<li>DBUS_SUBTREE_FLAGS_NONE = 0</li>
+<li>DBUS_SUBTREE_FLAGS_DISPATCH_TO_UNENUMERATED_NODES = 1</li>
+</ul>
 <p>C - <code>GDBusSubtreeFlags</code></p>
 <a class="header" href="#drivestartflags" id="drivestartflags"><h2><code>DriveStartFlags</code></h2></a>
 <p>Flags used when starting a drive.</p>
+<ul>
+<li>DRIVE_START_NONE = 0</li>
+</ul>
 <p>C - <code>GDriveStartFlags</code></p>
 <a class="header" href="#fileattributeinfoflags" id="fileattributeinfoflags"><h2><code>FileAttributeInfoFlags</code></h2></a>
 <p>Flags specifying the behaviour of an attribute.</p>
+<ul>
+<li>FILE_ATTRIBUTE_INFO_NONE = 0</li>
+<li>FILE_ATTRIBUTE_INFO_COPY_WITH_FILE = 1</li>
+<li>FILE_ATTRIBUTE_INFO_COPY_WHEN_MOVED = 2</li>
+</ul>
 <p>C - <code>GFileAttributeInfoFlags</code></p>
 <a class="header" href="#filecopyflags" id="filecopyflags"><h2><code>FileCopyFlags</code></h2></a>
 <p>Flags used when copying or moving files.</p>
+<ul>
+<li>FILE_COPY_NONE = 0</li>
+<li>FILE_COPY_OVERWRITE = 1</li>
+<li>FILE_COPY_BACKUP = 2</li>
+<li>FILE_COPY_NOFOLLOW_SYMLINKS = 4</li>
+<li>FILE_COPY_ALL_METADATA = 8</li>
+<li>FILE_COPY_NO_FALLBACK_FOR_MOVE = 16</li>
+<li>FILE_COPY_TARGET_DEFAULT_PERMS = 32</li>
+</ul>
 <p>C - <code>GFileCopyFlags</code></p>
 <a class="header" href="#filecreateflags" id="filecreateflags"><h2><code>FileCreateFlags</code></h2></a>
 <p>Flags used when an operation may create a file.</p>
+<ul>
+<li>FILE_CREATE_NONE = 0</li>
+<li>FILE_CREATE_PRIVATE = 1</li>
+<li>FILE_CREATE_REPLACE_DESTINATION = 2</li>
+</ul>
 <p>C - <code>GFileCreateFlags</code></p>
 <a class="header" href="#filemeasureflags" id="filemeasureflags"><h2><code>FileMeasureFlags</code></h2></a>
 <p>Flags that can be used with g_file_measure_disk_usage().</p>
+<ul>
+<li>FILE_MEASURE_NONE = 0</li>
+<li>FILE_MEASURE_REPORT_ANY_ERROR = 2</li>
+<li>FILE_MEASURE_APPARENT_SIZE = 4</li>
+<li>FILE_MEASURE_NO_XDEV = 8</li>
+</ul>
 <p>C - <code>GFileMeasureFlags</code></p>
 <a class="header" href="#filemonitorflags" id="filemonitorflags"><h2><code>FileMonitorFlags</code></h2></a>
 <p>Flags used to set what a #GFileMonitor will watch for.</p>
+<ul>
+<li>FILE_MONITOR_NONE = 0</li>
+<li>FILE_MONITOR_WATCH_MOUNTS = 1</li>
+<li>FILE_MONITOR_SEND_MOVED = 2</li>
+<li>FILE_MONITOR_WATCH_HARD_LINKS = 4</li>
+<li>FILE_MONITOR_WATCH_MOVES = 8</li>
+</ul>
 <p>C - <code>GFileMonitorFlags</code></p>
 <a class="header" href="#filequeryinfoflags" id="filequeryinfoflags"><h2><code>FileQueryInfoFlags</code></h2></a>
 <p>Flags used when querying a #GFileInfo.</p>
+<ul>
+<li>FILE_QUERY_INFO_NONE = 0</li>
+<li>FILE_QUERY_INFO_NOFOLLOW_SYMLINKS = 1</li>
+</ul>
 <p>C - <code>GFileQueryInfoFlags</code></p>
 <a class="header" href="#iostreamspliceflags" id="iostreamspliceflags"><h2><code>IOStreamSpliceFlags</code></h2></a>
 <p>GIOStreamSpliceFlags determine how streams should be spliced.</p>
+<ul>
+<li>IO_STREAM_SPLICE_NONE = 0</li>
+<li>IO_STREAM_SPLICE_CLOSE_STREAM1 = 1</li>
+<li>IO_STREAM_SPLICE_CLOSE_STREAM2 = 2</li>
+<li>IO_STREAM_SPLICE_WAIT_FOR_BOTH = 4</li>
+</ul>
 <p>C - <code>GIOStreamSpliceFlags</code></p>
 <a class="header" href="#mountmountflags" id="mountmountflags"><h2><code>MountMountFlags</code></h2></a>
 <p>Flags used when mounting a mount.</p>
+<ul>
+<li>MOUNT_MOUNT_NONE = 0</li>
+</ul>
 <p>C - <code>GMountMountFlags</code></p>
 <a class="header" href="#mountunmountflags" id="mountunmountflags"><h2><code>MountUnmountFlags</code></h2></a>
 <p>Flags used when an unmounting a mount.</p>
+<ul>
+<li>MOUNT_UNMOUNT_NONE = 0</li>
+<li>MOUNT_UNMOUNT_FORCE = 1</li>
+</ul>
 <p>C - <code>GMountUnmountFlags</code></p>
 <a class="header" href="#outputstreamspliceflags" id="outputstreamspliceflags"><h2><code>OutputStreamSpliceFlags</code></h2></a>
 <p>GOutputStreamSpliceFlags determine how streams should be spliced.</p>
+<ul>
+<li>OUTPUT_STREAM_SPLICE_NONE = 0</li>
+<li>OUTPUT_STREAM_SPLICE_CLOSE_SOURCE = 1</li>
+<li>OUTPUT_STREAM_SPLICE_CLOSE_TARGET = 2</li>
+</ul>
 <p>C - <code>GOutputStreamSpliceFlags</code></p>
 <a class="header" href="#resourceflags" id="resourceflags"><h2><code>ResourceFlags</code></h2></a>
 <p>GResourceFlags give information about a particular file inside a resource
 bundle.</p>
+<ul>
+<li>RESOURCE_FLAGS_NONE = 0</li>
+<li>RESOURCE_FLAGS_COMPRESSED = 1</li>
+</ul>
 <p>C - <code>GResourceFlags</code></p>
 <a class="header" href="#resourcelookupflags" id="resourcelookupflags"><h2><code>ResourceLookupFlags</code></h2></a>
 <p>GResourceLookupFlags determine how resource path lookups are handled.</p>
+<ul>
+<li>RESOURCE_LOOKUP_FLAGS_NONE = 0</li>
+</ul>
 <p>C - <code>GResourceLookupFlags</code></p>
 <a class="header" href="#settingsbindflags" id="settingsbindflags"><h2><code>SettingsBindFlags</code></h2></a>
 <p>Flags used when creating a binding. These flags determine in which
 direction the binding works. The default is to synchronize in both
 directions.</p>
+<ul>
+<li>SETTINGS_BIND_DEFAULT = 0</li>
+<li>SETTINGS_BIND_GET = 1</li>
+<li>SETTINGS_BIND_SET = 2</li>
+<li>SETTINGS_BIND_NO_SENSITIVITY = 4</li>
+<li>SETTINGS_BIND_GET_NO_CHANGES = 8</li>
+<li>SETTINGS_BIND_INVERT_BOOLEAN = 16</li>
+</ul>
 <p>C - <code>GSettingsBindFlags</code></p>
 <a class="header" href="#socketmsgflags" id="socketmsgflags"><h2><code>SocketMsgFlags</code></h2></a>
 <p>Flags used in g_socket_receive_message() and g_socket_send_message().
@@ -244,6 +417,12 @@ The flags listed in the enum are some commonly available flags, but the
 values used for them are the same as on the platform, and any other flags
 are passed in/out as is. So to use a platform specific flag, just include
 the right system header and pass in the flag.</p>
+<ul>
+<li>SOCKET_MSG_NONE = 0</li>
+<li>SOCKET_MSG_OOB = 1</li>
+<li>SOCKET_MSG_PEEK = 2</li>
+<li>SOCKET_MSG_DONTROUTE = 4</li>
+</ul>
 <p>C - <code>GSocketMsgFlags</code></p>
 <a class="header" href="#subprocessflags" id="subprocessflags"><h2><code>SubprocessFlags</code></h2></a>
 <p>Flags to define the behaviour of a #GSubprocess.</p>
@@ -253,9 +432,23 @@ corresponding descriptor from the calling process.</p>
 <p>Note that it is a programmer error to mix 'incompatible' flags.  For
 example, you may not request both %G_SUBPROCESS_FLAGS_STDOUT_PIPE and
 %G_SUBPROCESS_FLAGS_STDOUT_SILENCE.</p>
+<ul>
+<li>SUBPROCESS_FLAGS_NONE = 0</li>
+<li>SUBPROCESS_FLAGS_STDIN_PIPE = 1</li>
+<li>SUBPROCESS_FLAGS_STDIN_INHERIT = 2</li>
+<li>SUBPROCESS_FLAGS_STDOUT_PIPE = 4</li>
+<li>SUBPROCESS_FLAGS_STDOUT_SILENCE = 8</li>
+<li>SUBPROCESS_FLAGS_STDERR_PIPE = 16</li>
+<li>SUBPROCESS_FLAGS_STDERR_SILENCE = 32</li>
+<li>SUBPROCESS_FLAGS_STDERR_MERGE = 64</li>
+<li>SUBPROCESS_FLAGS_INHERIT_FDS = 128</li>
+</ul>
 <p>C - <code>GSubprocessFlags</code></p>
 <a class="header" href="#testdbusflags" id="testdbusflags"><h2><code>TestDBusFlags</code></h2></a>
 <p>Flags to define future #GTestDBus behaviour.</p>
+<ul>
+<li>TEST_DBUS_NONE = 0</li>
+</ul>
 <p>C - <code>GTestDBusFlags</code></p>
 <a class="header" href="#tlscertificateflags" id="tlscertificateflags"><h2><code>TlsCertificateFlags</code></h2></a>
 <p>A set of flags describing TLS certification validation. This can be
@@ -263,13 +456,71 @@ used to set which validation steps to perform (eg, with
 g_tls_client_connection_set_validation_flags()), or to describe why
 a particular certificate was rejected (eg, in
 #GTlsConnection::accept-certificate).</p>
+<ul>
+<li>TLS_CERTIFICATE_UNKNOWN_CA = 1</li>
+<li>TLS_CERTIFICATE_BAD_IDENTITY = 2</li>
+<li>TLS_CERTIFICATE_NOT_ACTIVATED = 4</li>
+<li>TLS_CERTIFICATE_EXPIRED = 8</li>
+<li>TLS_CERTIFICATE_REVOKED = 16</li>
+<li>TLS_CERTIFICATE_INSECURE = 32</li>
+<li>TLS_CERTIFICATE_GENERIC_ERROR = 64</li>
+<li>TLS_CERTIFICATE_VALIDATE_ALL = 127</li>
+</ul>
 <p>C - <code>GTlsCertificateFlags</code></p>
 <a class="header" href="#tlsdatabaseverifyflags" id="tlsdatabaseverifyflags"><h2><code>TlsDatabaseVerifyFlags</code></h2></a>
 <p>Flags for g_tls_database_verify_chain().</p>
+<ul>
+<li>TLS_DATABASE_VERIFY_NONE = 0</li>
+</ul>
 <p>C - <code>GTlsDatabaseVerifyFlags</code></p>
 <a class="header" href="#tlspasswordflags" id="tlspasswordflags"><h2><code>TlsPasswordFlags</code></h2></a>
 <p>Various flags for the password.</p>
+<ul>
+<li>TLS_PASSWORD_NONE = 0</li>
+<li>TLS_PASSWORD_RETRY = 2</li>
+<li>TLS_PASSWORD_MANY_TRIES = 4</li>
+<li>TLS_PASSWORD_FINAL_TRY = 8</li>
+</ul>
 <p>C - <code>GTlsPasswordFlags</code></p>
+<p>RIT_FDS = %!s(int=128)</p>
+<a class="header" href="#testdbusflags-1" id="testdbusflags-1"><h2><code>TestDBusFlags</code></h2></a>
+<p>Flags to define future #GTestDBus behaviour.</p>
+<p>C - <code>GTestDBusFlags</code></p>
+<ul>
+<li>TEST_DBUS_NONE = %!s(int=0)</li>
+</ul>
+<a class="header" href="#tlscertificateflags-1" id="tlscertificateflags-1"><h2><code>TlsCertificateFlags</code></h2></a>
+<p>A set of flags describing TLS certification validation. This can be
+used to set which validation steps to perform (eg, with
+g_tls_client_connection_set_validation_flags()), or to describe why
+a particular certificate was rejected (eg, in
+#GTlsConnection::accept-certificate).</p>
+<p>C - <code>GTlsCertificateFlags</code></p>
+<ul>
+<li>TLS_CERTIFICATE_UNKNOWN_CA = %!s(int=1)</li>
+<li>TLS_CERTIFICATE_BAD_IDENTITY = %!s(int=2)</li>
+<li>TLS_CERTIFICATE_NOT_ACTIVATED = %!s(int=4)</li>
+<li>TLS_CERTIFICATE_EXPIRED = %!s(int=8)</li>
+<li>TLS_CERTIFICATE_REVOKED = %!s(int=16)</li>
+<li>TLS_CERTIFICATE_INSECURE = %!s(int=32)</li>
+<li>TLS_CERTIFICATE_GENERIC_ERROR = %!s(int=64)</li>
+<li>TLS_CERTIFICATE_VALIDATE_ALL = %!s(int=127)</li>
+</ul>
+<a class="header" href="#tlsdatabaseverifyflags-1" id="tlsdatabaseverifyflags-1"><h2><code>TlsDatabaseVerifyFlags</code></h2></a>
+<p>Flags for g_tls_database_verify_chain().</p>
+<p>C - <code>GTlsDatabaseVerifyFlags</code></p>
+<ul>
+<li>TLS_DATABASE_VERIFY_NONE = %!s(int=0)</li>
+</ul>
+<a class="header" href="#tlspasswordflags-1" id="tlspasswordflags-1"><h2><code>TlsPasswordFlags</code></h2></a>
+<p>Various flags for the password.</p>
+<p>C - <code>GTlsPasswordFlags</code></p>
+<ul>
+<li>TLS_PASSWORD_NONE = %!s(int=0)</li>
+<li>TLS_PASSWORD_RETRY = %!s(int=2)</li>
+<li>TLS_PASSWORD_MANY_TRIES = %!s(int=4)</li>
+<li>TLS_PASSWORD_FINAL_TRY = %!s(int=8)</li>
+</ul>
 
                     </main>
 
