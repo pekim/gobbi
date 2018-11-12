@@ -1,0 +1,385 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>enums - gobbi</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">var path_to_root = "../../";</script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
+            if (theme === null || theme === undefined) { theme = 'light'; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <ol class="chapter"><li><a href="../../introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li><a href="../../getting-started.html"><strong aria-hidden="true">2.</strong> Getting started</a></li><li><a href="../../application-lifecycle.html"><strong aria-hidden="true">3.</strong> Application lifecycle</a></li><li><a href="../../build-tags.html"><strong aria-hidden="true">4.</strong> Build tags (library versions)</a></li><li><a href="../../casting.html"><strong aria-hidden="true">5.</strong> Casting</a></li><li><a href="../../goroutines.html"><strong aria-hidden="true">6.</strong> Goroutines</a></li><li><a href="../../gvalue.html"><strong aria-hidden="true">7.</strong> gobject.Value</a></li><li><a href="../../signal-handling.html"><strong aria-hidden="true">8.</strong> Signal handling</a></li><li><a href="../../api.html"><strong aria-hidden="true">9.</strong> API</a></li><li><ol class="section"><li><a href="../../lib/atk/package.html"><strong aria-hidden="true">9.1.</strong> atk</a></li><li><ol class="section"><li><a href="../../lib/atk/bitfields.html"><strong aria-hidden="true">9.1.1.</strong> bitfields</a></li><li><a href="../../lib/atk/constant.html"><strong aria-hidden="true">9.1.2.</strong> constants</a></li><li><a href="../../lib/atk/enums.html"><strong aria-hidden="true">9.1.3.</strong> enums</a></li></ol></li><li><a href="../../lib/glib/package.html"><strong aria-hidden="true">9.2.</strong> glib</a></li><li><ol class="section"><li><a href="../../lib/glib/bitfields.html"><strong aria-hidden="true">9.2.1.</strong> bitfields</a></li><li><a href="../../lib/glib/constant.html"><strong aria-hidden="true">9.2.2.</strong> constants</a></li><li><a href="../../lib/glib/enums.html"><strong aria-hidden="true">9.2.3.</strong> enums</a></li></ol></li><li><a href="../../lib/gobject/package.html"><strong aria-hidden="true">9.3.</strong> gobject</a></li><li><ol class="section"><li><a href="../../lib/gobject/bitfields.html"><strong aria-hidden="true">9.3.1.</strong> bitfields</a></li><li><a href="../../lib/gobject/constant.html"><strong aria-hidden="true">9.3.2.</strong> constants</a></li><li><a href="../../lib/gobject/enums.html"><strong aria-hidden="true">9.3.3.</strong> enums</a></li></ol></li><li><a href="../../lib/gdk/package.html"><strong aria-hidden="true">9.4.</strong> gdk</a></li><li><ol class="section"><li><a href="../../lib/gdk/bitfields.html"><strong aria-hidden="true">9.4.1.</strong> bitfields</a></li><li><a href="../../lib/gdk/constant.html"><strong aria-hidden="true">9.4.2.</strong> constants</a></li><li><a href="../../lib/gdk/enums.html"><strong aria-hidden="true">9.4.3.</strong> enums</a></li></ol></li><li><a href="../../lib/gdkpixbuf/package.html"><strong aria-hidden="true">9.5.</strong> gdkpixbuf</a></li><li><ol class="section"><li><a href="../../lib/gdkpixbuf/bitfields.html"><strong aria-hidden="true">9.5.1.</strong> bitfields</a></li><li><a href="../../lib/gdkpixbuf/constant.html"><strong aria-hidden="true">9.5.2.</strong> constants</a></li><li><a href="../../lib/gdkpixbuf/enums.html"><strong aria-hidden="true">9.5.3.</strong> enums</a></li></ol></li><li><a href="../../lib/gio/package.html"><strong aria-hidden="true">9.6.</strong> gio</a></li><li><ol class="section"><li><a href="../../lib/gio/bitfields.html"><strong aria-hidden="true">9.6.1.</strong> bitfields</a></li><li><a href="../../lib/gio/constant.html"><strong aria-hidden="true">9.6.2.</strong> constants</a></li><li><a href="../../lib/gio/enums.html" class="active"><strong aria-hidden="true">9.6.3.</strong> enums</a></li></ol></li><li><a href="../../lib/gtk/package.html"><strong aria-hidden="true">9.7.</strong> gtk</a></li><li><ol class="section"><li><a href="../../lib/gtk/bitfields.html"><strong aria-hidden="true">9.7.1.</strong> bitfields</a></li><li><a href="../../lib/gtk/constant.html"><strong aria-hidden="true">9.7.2.</strong> constants</a></li><li><a href="../../lib/gtk/enums.html"><strong aria-hidden="true">9.7.3.</strong> enums</a></li></ol></li><li><a href="../../lib/pango/package.html"><strong aria-hidden="true">9.8.</strong> pango</a></li><li><ol class="section"><li><a href="../../lib/pango/bitfields.html"><strong aria-hidden="true">9.8.1.</strong> bitfields</a></li><li><a href="../../lib/pango/constant.html"><strong aria-hidden="true">9.8.2.</strong> constants</a></li><li><a href="../../lib/pango/enums.html"><strong aria-hidden="true">9.8.3.</strong> enums</a></li></ol></li><li><a href="../../lib/cairo/package.html"><strong aria-hidden="true">9.9.</strong> cairo</a></li><li><ol class="section"><li><a href="../../lib/cairo/bitfields.html"><strong aria-hidden="true">9.9.1.</strong> bitfields</a></li><li><a href="../../lib/cairo/constant.html"><strong aria-hidden="true">9.9.2.</strong> constants</a></li><li><a href="../../lib/cairo/enums.html"><strong aria-hidden="true">9.9.3.</strong> enums</a></li></ol></li></ol></li></ol>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light <span class="default">(default)</span></button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">gobbi</h1> 
+
+                        <div class="right-buttons">
+                            <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <a class="header" href="#gio-enums" id="gio-enums"><h1><code>gio</code> enums</h1></a>
+<a class="header" href="#bustype" id="bustype"><h2><code>BusType</code></h2></a>
+<p>An enumeration for well-known message buses.</p>
+<p>C - <code>GBusType</code></p>
+<a class="header" href="#converterresult" id="converterresult"><h2><code>ConverterResult</code></h2></a>
+<p>Results returned from g_converter_convert().</p>
+<p>C - <code>GConverterResult</code></p>
+<a class="header" href="#credentialstype" id="credentialstype"><h2><code>CredentialsType</code></h2></a>
+<p>Enumeration describing different kinds of native credential types.</p>
+<p>C - <code>GCredentialsType</code></p>
+<a class="header" href="#dbuserror" id="dbuserror"><h2><code>DBusError</code></h2></a>
+<p>Error codes for the %G_DBUS_ERROR error domain.</p>
+<p>C - <code>GDBusError</code></p>
+<a class="header" href="#dbusmessagebyteorder" id="dbusmessagebyteorder"><h2><code>DBusMessageByteOrder</code></h2></a>
+<p>Enumeration used to describe the byte order of a D-Bus message.</p>
+<p>C - <code>GDBusMessageByteOrder</code></p>
+<a class="header" href="#dbusmessageheaderfield" id="dbusmessageheaderfield"><h2><code>DBusMessageHeaderField</code></h2></a>
+<p>Header fields used in #GDBusMessage.</p>
+<p>C - <code>GDBusMessageHeaderField</code></p>
+<a class="header" href="#dbusmessagetype" id="dbusmessagetype"><h2><code>DBusMessageType</code></h2></a>
+<p>Message types used in #GDBusMessage.</p>
+<p>C - <code>GDBusMessageType</code></p>
+<a class="header" href="#datastreambyteorder" id="datastreambyteorder"><h2><code>DataStreamByteOrder</code></h2></a>
+<p>#GDataStreamByteOrder is used to ensure proper endianness of streaming data sources
+across various machine architectures.</p>
+<p>C - <code>GDataStreamByteOrder</code></p>
+<a class="header" href="#datastreamnewlinetype" id="datastreamnewlinetype"><h2><code>DataStreamNewlineType</code></h2></a>
+<p>#GDataStreamNewlineType is used when checking for or setting the line endings for a given file.</p>
+<p>C - <code>GDataStreamNewlineType</code></p>
+<a class="header" href="#drivestartstoptype" id="drivestartstoptype"><h2><code>DriveStartStopType</code></h2></a>
+<p>Enumeration describing how a drive can be started/stopped.</p>
+<p>C - <code>GDriveStartStopType</code></p>
+<a class="header" href="#emblemorigin" id="emblemorigin"><h2><code>EmblemOrigin</code></h2></a>
+<p>GEmblemOrigin is used to add information about the origin of the emblem
+to #GEmblem.</p>
+<p>C - <code>GEmblemOrigin</code></p>
+<a class="header" href="#fileattributestatus" id="fileattributestatus"><h2><code>FileAttributeStatus</code></h2></a>
+<p>Used by g_file_set_attributes_from_info() when setting file attributes.</p>
+<p>C - <code>GFileAttributeStatus</code></p>
+<a class="header" href="#fileattributetype" id="fileattributetype"><h2><code>FileAttributeType</code></h2></a>
+<p>The data types for file attributes.</p>
+<p>C - <code>GFileAttributeType</code></p>
+<a class="header" href="#filemonitorevent" id="filemonitorevent"><h2><code>FileMonitorEvent</code></h2></a>
+<p>Specifies what type of event a monitor event is.</p>
+<p>C - <code>GFileMonitorEvent</code></p>
+<a class="header" href="#filetype" id="filetype"><h2><code>FileType</code></h2></a>
+<p>Indicates the file's on-disk type.</p>
+<p>C - <code>GFileType</code></p>
+<a class="header" href="#filesystempreviewtype" id="filesystempreviewtype"><h2><code>FilesystemPreviewType</code></h2></a>
+<p>Indicates a hint from the file system whether files should be
+previewed in a file manager. Returned as the value of the key
+#G_FILE_ATTRIBUTE_FILESYSTEM_USE_PREVIEW.</p>
+<p>C - <code>GFilesystemPreviewType</code></p>
+<a class="header" href="#ioerrorenum" id="ioerrorenum"><h2><code>IOErrorEnum</code></h2></a>
+<p>Error codes returned by GIO functions.</p>
+<p>Note that this domain may be extended in future GLib releases. In
+general, new error codes either only apply to new APIs, or else
+replace %G_IO_ERROR_FAILED in cases that were not explicitly
+distinguished before. You should therefore avoid writing code like
+|[<!-- language="C" -->
+if (g_error_matches (error, G_IO_ERROR, G_IO_ERROR_FAILED))
+{
+// Assume that this is EPRINTERONFIRE
+...
+}
+]|
+but should instead treat all unrecognized error codes the same as
+#G_IO_ERROR_FAILED.</p>
+<p>C - <code>GIOErrorEnum</code></p>
+<a class="header" href="#iomodulescopeflags" id="iomodulescopeflags"><h2><code>IOModuleScopeFlags</code></h2></a>
+<p>Flags for use with g_io_module_scope_new().</p>
+<p>C - <code>GIOModuleScopeFlags</code></p>
+<a class="header" href="#mountoperationresult" id="mountoperationresult"><h2><code>MountOperationResult</code></h2></a>
+<p>#GMountOperationResult is returned as a result when a request for
+information is send by the mounting operation.</p>
+<p>C - <code>GMountOperationResult</code></p>
+<a class="header" href="#networkconnectivity" id="networkconnectivity"><h2><code>NetworkConnectivity</code></h2></a>
+<p>The host's network connectivity state, as reported by #GNetworkMonitor.</p>
+<p>C - <code>GNetworkConnectivity</code></p>
+<a class="header" href="#notificationpriority" id="notificationpriority"><h2><code>NotificationPriority</code></h2></a>
+<p>Priority levels for #GNotifications.</p>
+<p>C - <code>GNotificationPriority</code></p>
+<a class="header" href="#passwordsave" id="passwordsave"><h2><code>PasswordSave</code></h2></a>
+<p>#GPasswordSave is used to indicate the lifespan of a saved password.</p>
+<p>#Gvfs stores passwords in the Gnome keyring when this flag allows it
+to, and later retrieves it again from there.</p>
+<p>C - <code>GPasswordSave</code></p>
+<a class="header" href="#resolvererror" id="resolvererror"><h2><code>ResolverError</code></h2></a>
+<p>An error code used with %G_RESOLVER_ERROR in a #GError returned
+from a #GResolver routine.</p>
+<p>C - <code>GResolverError</code></p>
+<a class="header" href="#resolverrecordtype" id="resolverrecordtype"><h2><code>ResolverRecordType</code></h2></a>
+<p>The type of record that g_resolver_lookup_records() or
+g_resolver_lookup_records_async() should retrieve. The records are returned
+as lists of #GVariant tuples. Each record type has different values in
+the variant tuples returned.</p>
+<p>%G_RESOLVER_RECORD_SRV records are returned as variants with the signature
+'(qqqs)', containing a guint16 with the priority, a guint16 with the
+weight, a guint16 with the port, and a string of the hostname.</p>
+<p>%G_RESOLVER_RECORD_MX records are returned as variants with the signature
+'(qs)', representing a guint16 with the preference, and a string containing
+the mail exchanger hostname.</p>
+<p>%G_RESOLVER_RECORD_TXT records are returned as variants with the signature
+'(as)', representing an array of the strings in the text record.</p>
+<p>%G_RESOLVER_RECORD_SOA records are returned as variants with the signature
+'(ssuuuuu)', representing a string containing the primary name server, a
+string containing the administrator, the serial as a guint32, the refresh
+interval as guint32, the retry interval as a guint32, the expire timeout
+as a guint32, and the ttl as a guint32.</p>
+<p>%G_RESOLVER_RECORD_NS records are returned as variants with the signature
+'(s)', representing a string of the hostname of the name server.</p>
+<p>C - <code>GResolverRecordType</code></p>
+<a class="header" href="#resourceerror" id="resourceerror"><h2><code>ResourceError</code></h2></a>
+<p>An error code used with %G_RESOURCE_ERROR in a #GError returned
+from a #GResource routine.</p>
+<p>C - <code>GResourceError</code></p>
+<a class="header" href="#socketclientevent" id="socketclientevent"><h2><code>SocketClientEvent</code></h2></a>
+<p>Describes an event occurring on a #GSocketClient. See the
+#GSocketClient::event signal for more details.</p>
+<p>Additional values may be added to this type in the future.</p>
+<p>C - <code>GSocketClientEvent</code></p>
+<a class="header" href="#socketfamily" id="socketfamily"><h2><code>SocketFamily</code></h2></a>
+<p>The protocol family of a #GSocketAddress. (These values are
+identical to the system defines %AF_INET, %AF_INET6 and %AF_UNIX,
+if available.)</p>
+<p>C - <code>GSocketFamily</code></p>
+<a class="header" href="#socketlistenerevent" id="socketlistenerevent"><h2><code>SocketListenerEvent</code></h2></a>
+<p>Describes an event occurring on a #GSocketListener. See the
+#GSocketListener::event signal for more details.</p>
+<p>Additional values may be added to this type in the future.</p>
+<p>C - <code>GSocketListenerEvent</code></p>
+<a class="header" href="#socketprotocol" id="socketprotocol"><h2><code>SocketProtocol</code></h2></a>
+<p>A protocol identifier is specified when creating a #GSocket, which is a
+family/type specific identifier, where 0 means the default protocol for
+the particular family/type.</p>
+<p>This enum contains a set of commonly available and used protocols. You
+can also pass any other identifiers handled by the platform in order to
+use protocols not listed here.</p>
+<p>C - <code>GSocketProtocol</code></p>
+<a class="header" href="#sockettype" id="sockettype"><h2><code>SocketType</code></h2></a>
+<p>Flags used when creating a #GSocket. Some protocols may not implement
+all the socket types.</p>
+<p>C - <code>GSocketType</code></p>
+<a class="header" href="#tlsauthenticationmode" id="tlsauthenticationmode"><h2><code>TlsAuthenticationMode</code></h2></a>
+<p>The client authentication mode for a #GTlsServerConnection.</p>
+<p>C - <code>GTlsAuthenticationMode</code></p>
+<a class="header" href="#tlscertificaterequestflags" id="tlscertificaterequestflags"><h2><code>TlsCertificateRequestFlags</code></h2></a>
+<p>Flags for g_tls_interaction_request_certificate(),
+g_tls_interaction_request_certificate_async(), and
+g_tls_interaction_invoke_request_certificate().</p>
+<p>C - <code>GTlsCertificateRequestFlags</code></p>
+<a class="header" href="#tlsdatabaselookupflags" id="tlsdatabaselookupflags"><h2><code>TlsDatabaseLookupFlags</code></h2></a>
+<p>Flags for g_tls_database_lookup_certificate_for_handle(),
+g_tls_database_lookup_certificate_issuer(),
+and g_tls_database_lookup_certificates_issued_by().</p>
+<p>C - <code>GTlsDatabaseLookupFlags</code></p>
+<a class="header" href="#tlserror" id="tlserror"><h2><code>TlsError</code></h2></a>
+<p>An error code used with %G_TLS_ERROR in a #GError returned from a
+TLS-related routine.</p>
+<p>C - <code>GTlsError</code></p>
+<a class="header" href="#tlsinteractionresult" id="tlsinteractionresult"><h2><code>TlsInteractionResult</code></h2></a>
+<p>#GTlsInteractionResult is returned by various functions in #GTlsInteraction
+when finishing an interaction request.</p>
+<p>C - <code>GTlsInteractionResult</code></p>
+<a class="header" href="#tlsrehandshakemode" id="tlsrehandshakemode"><h2><code>TlsRehandshakeMode</code></h2></a>
+<p>When to allow rehandshaking. See
+g_tls_connection_set_rehandshake_mode().</p>
+<p>C - <code>GTlsRehandshakeMode</code></p>
+<a class="header" href="#unixsocketaddresstype" id="unixsocketaddresstype"><h2><code>UnixSocketAddressType</code></h2></a>
+<p>The type of name used by a #GUnixSocketAddress.
+%G_UNIX_SOCKET_ADDRESS_PATH indicates a traditional unix domain
+socket bound to a filesystem path. %G_UNIX_SOCKET_ADDRESS_ANONYMOUS
+indicates a socket not bound to any name (eg, a client-side socket,
+or a socket created with socketpair()).</p>
+<p>For abstract sockets, there are two incompatible ways of naming
+them; the man pages suggest using the entire <code>struct sockaddr_un</code>
+as the name, padding the unused parts of the %sun_path field with
+zeroes; this corresponds to %G_UNIX_SOCKET_ADDRESS_ABSTRACT_PADDED.
+However, many programs instead just use a portion of %sun_path, and
+pass an appropriate smaller length to bind() or connect(). This is
+%G_UNIX_SOCKET_ADDRESS_ABSTRACT.</p>
+<p>C - <code>GUnixSocketAddressType</code></p>
+<a class="header" href="#zlibcompressorformat" id="zlibcompressorformat"><h2><code>ZlibCompressorFormat</code></h2></a>
+<p>Used to select the type of data format to use for #GZlibDecompressor
+and #GZlibCompressor.</p>
+<p>C - <code>GZlibCompressorFormat</code></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../../lib/gio/constant.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../../lib/gtk/package.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="../../lib/gio/constant.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="../../lib/gtk/package.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

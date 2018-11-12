@@ -40,4 +40,4 @@ func (aa Aliases) mergeAddenda(addenda Aliases) {
 	}
 }
 
-func (aa Aliases) generateDocs(ns *Namespace) {}
+func (aa Aliases) generateDocs(ns *Namespace, typeName string) {}

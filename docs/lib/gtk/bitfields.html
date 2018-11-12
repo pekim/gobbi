@@ -1,0 +1,302 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>bitfields - gobbi</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">var path_to_root = "../../";</script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
+            if (theme === null || theme === undefined) { theme = 'light'; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <ol class="chapter"><li><a href="../../introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li><a href="../../getting-started.html"><strong aria-hidden="true">2.</strong> Getting started</a></li><li><a href="../../application-lifecycle.html"><strong aria-hidden="true">3.</strong> Application lifecycle</a></li><li><a href="../../build-tags.html"><strong aria-hidden="true">4.</strong> Build tags (library versions)</a></li><li><a href="../../casting.html"><strong aria-hidden="true">5.</strong> Casting</a></li><li><a href="../../goroutines.html"><strong aria-hidden="true">6.</strong> Goroutines</a></li><li><a href="../../gvalue.html"><strong aria-hidden="true">7.</strong> gobject.Value</a></li><li><a href="../../signal-handling.html"><strong aria-hidden="true">8.</strong> Signal handling</a></li><li><a href="../../api.html"><strong aria-hidden="true">9.</strong> API</a></li><li><ol class="section"><li><a href="../../lib/atk/package.html"><strong aria-hidden="true">9.1.</strong> atk</a></li><li><ol class="section"><li><a href="../../lib/atk/bitfields.html"><strong aria-hidden="true">9.1.1.</strong> bitfields</a></li><li><a href="../../lib/atk/constant.html"><strong aria-hidden="true">9.1.2.</strong> constants</a></li><li><a href="../../lib/atk/enums.html"><strong aria-hidden="true">9.1.3.</strong> enums</a></li></ol></li><li><a href="../../lib/glib/package.html"><strong aria-hidden="true">9.2.</strong> glib</a></li><li><ol class="section"><li><a href="../../lib/glib/bitfields.html"><strong aria-hidden="true">9.2.1.</strong> bitfields</a></li><li><a href="../../lib/glib/constant.html"><strong aria-hidden="true">9.2.2.</strong> constants</a></li><li><a href="../../lib/glib/enums.html"><strong aria-hidden="true">9.2.3.</strong> enums</a></li></ol></li><li><a href="../../lib/gobject/package.html"><strong aria-hidden="true">9.3.</strong> gobject</a></li><li><ol class="section"><li><a href="../../lib/gobject/bitfields.html"><strong aria-hidden="true">9.3.1.</strong> bitfields</a></li><li><a href="../../lib/gobject/constant.html"><strong aria-hidden="true">9.3.2.</strong> constants</a></li><li><a href="../../lib/gobject/enums.html"><strong aria-hidden="true">9.3.3.</strong> enums</a></li></ol></li><li><a href="../../lib/gdk/package.html"><strong aria-hidden="true">9.4.</strong> gdk</a></li><li><ol class="section"><li><a href="../../lib/gdk/bitfields.html"><strong aria-hidden="true">9.4.1.</strong> bitfields</a></li><li><a href="../../lib/gdk/constant.html"><strong aria-hidden="true">9.4.2.</strong> constants</a></li><li><a href="../../lib/gdk/enums.html"><strong aria-hidden="true">9.4.3.</strong> enums</a></li></ol></li><li><a href="../../lib/gdkpixbuf/package.html"><strong aria-hidden="true">9.5.</strong> gdkpixbuf</a></li><li><ol class="section"><li><a href="../../lib/gdkpixbuf/bitfields.html"><strong aria-hidden="true">9.5.1.</strong> bitfields</a></li><li><a href="../../lib/gdkpixbuf/constant.html"><strong aria-hidden="true">9.5.2.</strong> constants</a></li><li><a href="../../lib/gdkpixbuf/enums.html"><strong aria-hidden="true">9.5.3.</strong> enums</a></li></ol></li><li><a href="../../lib/gio/package.html"><strong aria-hidden="true">9.6.</strong> gio</a></li><li><ol class="section"><li><a href="../../lib/gio/bitfields.html"><strong aria-hidden="true">9.6.1.</strong> bitfields</a></li><li><a href="../../lib/gio/constant.html"><strong aria-hidden="true">9.6.2.</strong> constants</a></li><li><a href="../../lib/gio/enums.html"><strong aria-hidden="true">9.6.3.</strong> enums</a></li></ol></li><li><a href="../../lib/gtk/package.html"><strong aria-hidden="true">9.7.</strong> gtk</a></li><li><ol class="section"><li><a href="../../lib/gtk/bitfields.html" class="active"><strong aria-hidden="true">9.7.1.</strong> bitfields</a></li><li><a href="../../lib/gtk/constant.html"><strong aria-hidden="true">9.7.2.</strong> constants</a></li><li><a href="../../lib/gtk/enums.html"><strong aria-hidden="true">9.7.3.</strong> enums</a></li></ol></li><li><a href="../../lib/pango/package.html"><strong aria-hidden="true">9.8.</strong> pango</a></li><li><ol class="section"><li><a href="../../lib/pango/bitfields.html"><strong aria-hidden="true">9.8.1.</strong> bitfields</a></li><li><a href="../../lib/pango/constant.html"><strong aria-hidden="true">9.8.2.</strong> constants</a></li><li><a href="../../lib/pango/enums.html"><strong aria-hidden="true">9.8.3.</strong> enums</a></li></ol></li><li><a href="../../lib/cairo/package.html"><strong aria-hidden="true">9.9.</strong> cairo</a></li><li><ol class="section"><li><a href="../../lib/cairo/bitfields.html"><strong aria-hidden="true">9.9.1.</strong> bitfields</a></li><li><a href="../../lib/cairo/constant.html"><strong aria-hidden="true">9.9.2.</strong> constants</a></li><li><a href="../../lib/cairo/enums.html"><strong aria-hidden="true">9.9.3.</strong> enums</a></li></ol></li></ol></li></ol>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light <span class="default">(default)</span></button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">gobbi</h1> 
+
+                        <div class="right-buttons">
+                            <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <a class="header" href="#gtk-bitfields" id="gtk-bitfields"><h1><code>gtk</code> bitfields</h1></a>
+<a class="header" href="#accelflags" id="accelflags"><h2><code>AccelFlags</code></h2></a>
+<p>Accelerator flags used with gtk_accel_group_connect().</p>
+<p>C - <code>GtkAccelFlags</code></p>
+<a class="header" href="#applicationinhibitflags" id="applicationinhibitflags"><h2><code>ApplicationInhibitFlags</code></h2></a>
+<p>Types of user actions that may be blocked by gtk_application_inhibit().</p>
+<p>C - <code>GtkApplicationInhibitFlags</code></p>
+<a class="header" href="#attachoptions" id="attachoptions"><h2><code>AttachOptions</code></h2></a>
+<p>Denotes the expansion properties that a widget will have when it (or its
+parent) is resized.</p>
+<p>C - <code>GtkAttachOptions</code></p>
+<a class="header" href="#calendardisplayoptions" id="calendardisplayoptions"><h2><code>CalendarDisplayOptions</code></h2></a>
+<p>These options can be used to influence the display and behaviour of a #GtkCalendar.</p>
+<p>C - <code>GtkCalendarDisplayOptions</code></p>
+<a class="header" href="#cellrendererstate" id="cellrendererstate"><h2><code>CellRendererState</code></h2></a>
+<p>Tells how a cell is to be rendered.</p>
+<p>C - <code>GtkCellRendererState</code></p>
+<a class="header" href="#debugflag" id="debugflag"><h2><code>DebugFlag</code></h2></a>
+<p>C - <code>GtkDebugFlag</code></p>
+<a class="header" href="#destdefaults" id="destdefaults"><h2><code>DestDefaults</code></h2></a>
+<p>The #GtkDestDefaults enumeration specifies the various
+types of action that will be taken on behalf
+of the user for a drag destination site.</p>
+<p>C - <code>GtkDestDefaults</code></p>
+<a class="header" href="#dialogflags" id="dialogflags"><h2><code>DialogFlags</code></h2></a>
+<p>Flags used to influence dialog construction.</p>
+<p>C - <code>GtkDialogFlags</code></p>
+<a class="header" href="#filefilterflags" id="filefilterflags"><h2><code>FileFilterFlags</code></h2></a>
+<p>These flags indicate what parts of a #GtkFileFilterInfo struct
+are filled or need to be filled.</p>
+<p>C - <code>GtkFileFilterFlags</code></p>
+<a class="header" href="#iconlookupflags" id="iconlookupflags"><h2><code>IconLookupFlags</code></h2></a>
+<p>Used to specify options for gtk_icon_theme_lookup_icon()</p>
+<p>C - <code>GtkIconLookupFlags</code></p>
+<a class="header" href="#inputhints" id="inputhints"><h2><code>InputHints</code></h2></a>
+<p>Describes hints that might be taken into account by input methods
+or applications. Note that input methods may already tailor their
+behaviour according to the #GtkInputPurpose of the entry.</p>
+<p>Some common sense is expected when using these flags - mixing
+@GTK_INPUT_HINT_LOWERCASE with any of the uppercase hints makes no sense.</p>
+<p>This enumeration may be extended in the future; input methods should
+ignore unknown values.</p>
+<p>C - <code>GtkInputHints</code></p>
+<a class="header" href="#junctionsides" id="junctionsides"><h2><code>JunctionSides</code></h2></a>
+<p>Describes how a rendered element connects to adjacent elements.</p>
+<p>C - <code>GtkJunctionSides</code></p>
+<a class="header" href="#placesopenflags" id="placesopenflags"><h2><code>PlacesOpenFlags</code></h2></a>
+<p>These flags serve two purposes.  First, the application can call gtk_places_sidebar_set_open_flags()
+using these flags as a bitmask.  This tells the sidebar that the application is able to open
+folders selected from the sidebar in various ways, for example, in new tabs or in new windows in
+addition to the normal mode.</p>
+<p>Second, when one of these values gets passed back to the application in the
+#GtkPlacesSidebar::open-location signal, it means that the application should
+open the selected location in the normal way, in a new tab, or in a new
+window.  The sidebar takes care of determining the desired way to open the location,
+based on the modifier keys that the user is pressing at the time the selection is made.</p>
+<p>If the application never calls gtk_places_sidebar_set_open_flags(), then the sidebar will only
+use #GTK_PLACES_OPEN_NORMAL in the #GtkPlacesSidebar::open-location signal.  This is the
+default mode of operation.</p>
+<p>C - <code>GtkPlacesOpenFlags</code></p>
+<a class="header" href="#rcflags" id="rcflags"><h2><code>RcFlags</code></h2></a>
+<p>Deprecated</p>
+<p>C - <code>GtkRcFlags</code></p>
+<a class="header" href="#recentfilterflags" id="recentfilterflags"><h2><code>RecentFilterFlags</code></h2></a>
+<p>These flags indicate what parts of a #GtkRecentFilterInfo struct
+are filled or need to be filled.</p>
+<p>C - <code>GtkRecentFilterFlags</code></p>
+<a class="header" href="#regionflags" id="regionflags"><h2><code>RegionFlags</code></h2></a>
+<p>Describes a region within a widget.</p>
+<p>C - <code>GtkRegionFlags</code></p>
+<a class="header" href="#stateflags" id="stateflags"><h2><code>StateFlags</code></h2></a>
+<p>Describes a widget state. Widget states are used to match the widget
+against CSS pseudo-classes. Note that GTK extends the regular CSS
+classes and sometimes uses different names.</p>
+<p>C - <code>GtkStateFlags</code></p>
+<a class="header" href="#stylecontextprintflags" id="stylecontextprintflags"><h2><code>StyleContextPrintFlags</code></h2></a>
+<p>Flags that modify the behavior of gtk_style_context_to_string().
+New values may be added to this enumeration.</p>
+<p>C - <code>GtkStyleContextPrintFlags</code></p>
+<a class="header" href="#targetflags" id="targetflags"><h2><code>TargetFlags</code></h2></a>
+<p>The #GtkTargetFlags enumeration is used to specify
+constraints on a #GtkTargetEntry.</p>
+<p>C - <code>GtkTargetFlags</code></p>
+<a class="header" href="#textsearchflags" id="textsearchflags"><h2><code>TextSearchFlags</code></h2></a>
+<p>Flags affecting how a search is done.</p>
+<p>If neither #GTK_TEXT_SEARCH_VISIBLE_ONLY nor #GTK_TEXT_SEARCH_TEXT_ONLY are
+enabled, the match must be exact; the special 0xFFFC character will match
+embedded pixbufs or child widgets.</p>
+<p>C - <code>GtkTextSearchFlags</code></p>
+<a class="header" href="#toolpalettedragtargets" id="toolpalettedragtargets"><h2><code>ToolPaletteDragTargets</code></h2></a>
+<p>Flags used to specify the supported drag targets.</p>
+<p>C - <code>GtkToolPaletteDragTargets</code></p>
+<a class="header" href="#treemodelflags" id="treemodelflags"><h2><code>TreeModelFlags</code></h2></a>
+<p>These flags indicate various properties of a #GtkTreeModel.</p>
+<p>They are returned by gtk_tree_model_get_flags(), and must be
+static for the lifetime of the object. A more complete description
+of #GTK_TREE_MODEL_ITERS_PERSIST can be found in the overview of
+this section.</p>
+<p>C - <code>GtkTreeModelFlags</code></p>
+<a class="header" href="#uimanageritemtype" id="uimanageritemtype"><h2><code>UIManagerItemType</code></h2></a>
+<p>These enumeration values are used by gtk_ui_manager_add_ui() to determine
+what UI element to create.</p>
+<p>C - <code>GtkUIManagerItemType</code></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../../lib/gtk/package.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../../lib/gtk/constant.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="../../lib/gtk/package.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="../../lib/gtk/constant.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

@@ -1,0 +1,362 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>enums - gobbi</title>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+    </head>
+    <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">var path_to_root = "../../";</script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
+            if (theme === null || theme === undefined) { theme = 'light'; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <ol class="chapter"><li><a href="../../introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li><a href="../../getting-started.html"><strong aria-hidden="true">2.</strong> Getting started</a></li><li><a href="../../application-lifecycle.html"><strong aria-hidden="true">3.</strong> Application lifecycle</a></li><li><a href="../../build-tags.html"><strong aria-hidden="true">4.</strong> Build tags (library versions)</a></li><li><a href="../../casting.html"><strong aria-hidden="true">5.</strong> Casting</a></li><li><a href="../../goroutines.html"><strong aria-hidden="true">6.</strong> Goroutines</a></li><li><a href="../../gvalue.html"><strong aria-hidden="true">7.</strong> gobject.Value</a></li><li><a href="../../signal-handling.html"><strong aria-hidden="true">8.</strong> Signal handling</a></li><li><a href="../../api.html"><strong aria-hidden="true">9.</strong> API</a></li><li><ol class="section"><li><a href="../../lib/atk/package.html"><strong aria-hidden="true">9.1.</strong> atk</a></li><li><ol class="section"><li><a href="../../lib/atk/bitfields.html"><strong aria-hidden="true">9.1.1.</strong> bitfields</a></li><li><a href="../../lib/atk/constant.html"><strong aria-hidden="true">9.1.2.</strong> constants</a></li><li><a href="../../lib/atk/enums.html"><strong aria-hidden="true">9.1.3.</strong> enums</a></li></ol></li><li><a href="../../lib/glib/package.html"><strong aria-hidden="true">9.2.</strong> glib</a></li><li><ol class="section"><li><a href="../../lib/glib/bitfields.html"><strong aria-hidden="true">9.2.1.</strong> bitfields</a></li><li><a href="../../lib/glib/constant.html"><strong aria-hidden="true">9.2.2.</strong> constants</a></li><li><a href="../../lib/glib/enums.html"><strong aria-hidden="true">9.2.3.</strong> enums</a></li></ol></li><li><a href="../../lib/gobject/package.html"><strong aria-hidden="true">9.3.</strong> gobject</a></li><li><ol class="section"><li><a href="../../lib/gobject/bitfields.html"><strong aria-hidden="true">9.3.1.</strong> bitfields</a></li><li><a href="../../lib/gobject/constant.html"><strong aria-hidden="true">9.3.2.</strong> constants</a></li><li><a href="../../lib/gobject/enums.html"><strong aria-hidden="true">9.3.3.</strong> enums</a></li></ol></li><li><a href="../../lib/gdk/package.html"><strong aria-hidden="true">9.4.</strong> gdk</a></li><li><ol class="section"><li><a href="../../lib/gdk/bitfields.html"><strong aria-hidden="true">9.4.1.</strong> bitfields</a></li><li><a href="../../lib/gdk/constant.html"><strong aria-hidden="true">9.4.2.</strong> constants</a></li><li><a href="../../lib/gdk/enums.html" class="active"><strong aria-hidden="true">9.4.3.</strong> enums</a></li></ol></li><li><a href="../../lib/gdkpixbuf/package.html"><strong aria-hidden="true">9.5.</strong> gdkpixbuf</a></li><li><ol class="section"><li><a href="../../lib/gdkpixbuf/bitfields.html"><strong aria-hidden="true">9.5.1.</strong> bitfields</a></li><li><a href="../../lib/gdkpixbuf/constant.html"><strong aria-hidden="true">9.5.2.</strong> constants</a></li><li><a href="../../lib/gdkpixbuf/enums.html"><strong aria-hidden="true">9.5.3.</strong> enums</a></li></ol></li><li><a href="../../lib/gio/package.html"><strong aria-hidden="true">9.6.</strong> gio</a></li><li><ol class="section"><li><a href="../../lib/gio/bitfields.html"><strong aria-hidden="true">9.6.1.</strong> bitfields</a></li><li><a href="../../lib/gio/constant.html"><strong aria-hidden="true">9.6.2.</strong> constants</a></li><li><a href="../../lib/gio/enums.html"><strong aria-hidden="true">9.6.3.</strong> enums</a></li></ol></li><li><a href="../../lib/gtk/package.html"><strong aria-hidden="true">9.7.</strong> gtk</a></li><li><ol class="section"><li><a href="../../lib/gtk/bitfields.html"><strong aria-hidden="true">9.7.1.</strong> bitfields</a></li><li><a href="../../lib/gtk/constant.html"><strong aria-hidden="true">9.7.2.</strong> constants</a></li><li><a href="../../lib/gtk/enums.html"><strong aria-hidden="true">9.7.3.</strong> enums</a></li></ol></li><li><a href="../../lib/pango/package.html"><strong aria-hidden="true">9.8.</strong> pango</a></li><li><ol class="section"><li><a href="../../lib/pango/bitfields.html"><strong aria-hidden="true">9.8.1.</strong> bitfields</a></li><li><a href="../../lib/pango/constant.html"><strong aria-hidden="true">9.8.2.</strong> constants</a></li><li><a href="../../lib/pango/enums.html"><strong aria-hidden="true">9.8.3.</strong> enums</a></li></ol></li><li><a href="../../lib/cairo/package.html"><strong aria-hidden="true">9.9.</strong> cairo</a></li><li><ol class="section"><li><a href="../../lib/cairo/bitfields.html"><strong aria-hidden="true">9.9.1.</strong> bitfields</a></li><li><a href="../../lib/cairo/constant.html"><strong aria-hidden="true">9.9.2.</strong> constants</a></li><li><a href="../../lib/cairo/enums.html"><strong aria-hidden="true">9.9.3.</strong> enums</a></li></ol></li></ol></li></ol>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light <span class="default">(default)</span></button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">gobbi</h1> 
+
+                        <div class="right-buttons">
+                            <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <a class="header" href="#gdk-enums" id="gdk-enums"><h1><code>gdk</code> enums</h1></a>
+<a class="header" href="#axisuse" id="axisuse"><h2><code>AxisUse</code></h2></a>
+<p>An enumeration describing the way in which a device
+axis (valuator) maps onto the predefined valuator
+types that GTK+ understands.</p>
+<p>Note that the X and Y axes are not really needed; pointer devices
+report their location via the x/y members of events regardless. Whether
+X and Y are present as axes depends on the GDK backend.</p>
+<p>C - <code>GdkAxisUse</code></p>
+<a class="header" href="#byteorder" id="byteorder"><h2><code>ByteOrder</code></h2></a>
+<p>A set of values describing the possible byte-orders
+for storing pixel values in memory.</p>
+<p>C - <code>GdkByteOrder</code></p>
+<a class="header" href="#crossingmode" id="crossingmode"><h2><code>CrossingMode</code></h2></a>
+<p>Specifies the crossing mode for #GdkEventCrossing.</p>
+<p>C - <code>GdkCrossingMode</code></p>
+<a class="header" href="#cursortype" id="cursortype"><h2><code>CursorType</code></h2></a>
+<p>Predefined cursors.</p>
+<p>Note that these IDs are directly taken from the X cursor font, and many
+of these cursors are either not useful, or are not available on other platforms.</p>
+<p>The recommended way to create cursors is to use gdk_cursor_new_from_name().</p>
+<p>C - <code>GdkCursorType</code></p>
+<a class="header" href="#devicepadfeature" id="devicepadfeature"><h2><code>DevicePadFeature</code></h2></a>
+<p>A pad feature.</p>
+<p>C - <code>GdkDevicePadFeature</code></p>
+<a class="header" href="#devicetooltype" id="devicetooltype"><h2><code>DeviceToolType</code></h2></a>
+<p>Indicates the specific type of tool being used being a tablet. Such as an
+airbrush, pencil, etc.</p>
+<p>C - <code>GdkDeviceToolType</code></p>
+<a class="header" href="#devicetype" id="devicetype"><h2><code>DeviceType</code></h2></a>
+<p>Indicates the device type. See [above][GdkDeviceManager.description]
+for more information about the meaning of these device types.</p>
+<p>C - <code>GdkDeviceType</code></p>
+<a class="header" href="#dragcancelreason" id="dragcancelreason"><h2><code>DragCancelReason</code></h2></a>
+<p>Used in #GdkDragContext to the reason of a cancelled DND operation.</p>
+<p>C - <code>GdkDragCancelReason</code></p>
+<a class="header" href="#dragprotocol" id="dragprotocol"><h2><code>DragProtocol</code></h2></a>
+<p>Used in #GdkDragContext to indicate the protocol according to
+which DND is done.</p>
+<p>C - <code>GdkDragProtocol</code></p>
+<a class="header" href="#eventtype" id="eventtype"><h2><code>EventType</code></h2></a>
+<p>Specifies the type of the event.</p>
+<p>Do not confuse these events with the signals that GTK+ widgets emit.
+Although many of these events result in corresponding signals being emitted,
+the events are often transformed or filtered along the way.</p>
+<p>In some language bindings, the values %GDK_2BUTTON_PRESS and
+%GDK_3BUTTON_PRESS would translate into something syntactically
+invalid (eg <code>Gdk.EventType.2ButtonPress</code>, where a
+symbol is not allowed to start with a number). In that case, the
+aliases %GDK_DOUBLE_BUTTON_PRESS and %GDK_TRIPLE_BUTTON_PRESS can
+be used instead.</p>
+<p>C - <code>GdkEventType</code></p>
+<a class="header" href="#filterreturn" id="filterreturn"><h2><code>FilterReturn</code></h2></a>
+<p>Specifies the result of applying a #GdkFilterFunc to a native event.</p>
+<p>C - <code>GdkFilterReturn</code></p>
+<a class="header" href="#fullscreenmode" id="fullscreenmode"><h2><code>FullscreenMode</code></h2></a>
+<p>Indicates which monitor (in a multi-head setup) a window should span over
+when in fullscreen mode.</p>
+<p>C - <code>GdkFullscreenMode</code></p>
+<a class="header" href="#glerror" id="glerror"><h2><code>GLError</code></h2></a>
+<p>Error enumeration for #GdkGLContext.</p>
+<p>C - <code>GdkGLError</code></p>
+<a class="header" href="#grabownership" id="grabownership"><h2><code>GrabOwnership</code></h2></a>
+<p>Defines how device grabs interact with other devices.</p>
+<p>C - <code>GdkGrabOwnership</code></p>
+<a class="header" href="#grabstatus" id="grabstatus"><h2><code>GrabStatus</code></h2></a>
+<p>Returned by gdk_device_grab(), gdk_pointer_grab() and gdk_keyboard_grab() to
+indicate success or the reason for the failure of the grab attempt.</p>
+<p>C - <code>GdkGrabStatus</code></p>
+<a class="header" href="#gravity" id="gravity"><h2><code>Gravity</code></h2></a>
+<p>Defines the reference point of a window and the meaning of coordinates
+passed to gtk_window_move(). See gtk_window_move() and the &quot;implementation
+notes&quot; section of the
+<a href="http://www.freedesktop.org/Standards/wm-spec">Extended Window Manager Hints</a>
+specification for more details.</p>
+<p>C - <code>GdkGravity</code></p>
+<a class="header" href="#inputmode" id="inputmode"><h2><code>InputMode</code></h2></a>
+<p>An enumeration that describes the mode of an input device.</p>
+<p>C - <code>GdkInputMode</code></p>
+<a class="header" href="#inputsource" id="inputsource"><h2><code>InputSource</code></h2></a>
+<p>An enumeration describing the type of an input device in general terms.</p>
+<p>C - <code>GdkInputSource</code></p>
+<a class="header" href="#modifierintent" id="modifierintent"><h2><code>ModifierIntent</code></h2></a>
+<p>This enum is used with gdk_keymap_get_modifier_mask()
+in order to determine what modifiers the
+currently used windowing system backend uses for particular
+purposes. For example, on X11/Windows, the Control key is used for
+invoking menu shortcuts (accelerators), whereas on Apple computers
+it’s the Command key (which correspond to %GDK_CONTROL_MASK and
+%GDK_MOD2_MASK, respectively).</p>
+<p>C - <code>GdkModifierIntent</code></p>
+<a class="header" href="#notifytype" id="notifytype"><h2><code>NotifyType</code></h2></a>
+<p>Specifies the kind of crossing for #GdkEventCrossing.</p>
+<p>See the X11 protocol specification of LeaveNotify for
+full details of crossing event generation.</p>
+<p>C - <code>GdkNotifyType</code></p>
+<a class="header" href="#ownerchange" id="ownerchange"><h2><code>OwnerChange</code></h2></a>
+<p>Specifies why a selection ownership was changed.</p>
+<p>C - <code>GdkOwnerChange</code></p>
+<a class="header" href="#propmode" id="propmode"><h2><code>PropMode</code></h2></a>
+<p>Describes how existing data is combined with new data when
+using gdk_property_change().</p>
+<p>C - <code>GdkPropMode</code></p>
+<a class="header" href="#propertystate" id="propertystate"><h2><code>PropertyState</code></h2></a>
+<p>Specifies the type of a property change for a #GdkEventProperty.</p>
+<p>C - <code>guint</code></p>
+<a class="header" href="#scrolldirection" id="scrolldirection"><h2><code>ScrollDirection</code></h2></a>
+<p>Specifies the direction for #GdkEventScroll.</p>
+<p>C - <code>GdkScrollDirection</code></p>
+<a class="header" href="#settingaction" id="settingaction"><h2><code>SettingAction</code></h2></a>
+<p>Specifies the kind of modification applied to a setting in a
+#GdkEventSetting.</p>
+<p>C - <code>GdkSettingAction</code></p>
+<a class="header" href="#status" id="status"><h2><code>Status</code></h2></a>
+<p>C - <code>GdkStatus</code></p>
+<a class="header" href="#subpixellayout" id="subpixellayout"><h2><code>SubpixelLayout</code></h2></a>
+<p>This enumeration describes how the red, green and blue components
+of physical pixels on an output device are laid out.</p>
+<p>C - <code>GdkSubpixelLayout</code></p>
+<a class="header" href="#touchpadgesturephase" id="touchpadgesturephase"><h2><code>TouchpadGesturePhase</code></h2></a>
+<p>Specifies the current state of a touchpad gesture. All gestures are
+guaranteed to begin with an event with phase %GDK_TOUCHPAD_GESTURE_PHASE_BEGIN,
+followed by 0 or several events with phase %GDK_TOUCHPAD_GESTURE_PHASE_UPDATE.</p>
+<p>A finished gesture may have 2 possible outcomes, an event with phase
+%GDK_TOUCHPAD_GESTURE_PHASE_END will be emitted when the gesture is
+considered successful, this should be used as the hint to perform any
+permanent changes.</p>
+<p>Cancelled gestures may be so for a variety of reasons, due to hardware
+or the compositor, or due to the gesture recognition layers hinting the
+gesture did not finish resolutely (eg. a 3rd finger being added during
+a pinch gesture). In these cases, the last event will report the phase
+%GDK_TOUCHPAD_GESTURE_PHASE_CANCEL, this should be used as a hint
+to undo any visible/permanent changes that were done throughout the
+progress of the gesture.</p>
+<p>See also #GdkEventTouchpadSwipe and #GdkEventTouchpadPinch.</p>
+<p>C - <code>GdkTouchpadGesturePhase</code></p>
+<a class="header" href="#visibilitystate" id="visibilitystate"><h2><code>VisibilityState</code></h2></a>
+<p>Specifies the visiblity status of a window for a #GdkEventVisibility.</p>
+<p>C - <code>GdkVisibilityState</code></p>
+<a class="header" href="#visualtype" id="visualtype"><h2><code>VisualType</code></h2></a>
+<p>A set of values that describe the manner in which the pixel values
+for a visual are converted into RGB values for display.</p>
+<p>C - <code>GdkVisualType</code></p>
+<a class="header" href="#windowedge" id="windowedge"><h2><code>WindowEdge</code></h2></a>
+<p>Determines a window edge or corner.</p>
+<p>C - <code>GdkWindowEdge</code></p>
+<a class="header" href="#windowtype" id="windowtype"><h2><code>WindowType</code></h2></a>
+<p>Describes the kind of window.</p>
+<p>C - <code>GdkWindowType</code></p>
+<a class="header" href="#windowtypehint" id="windowtypehint"><h2><code>WindowTypeHint</code></h2></a>
+<p>These are hints for the window manager that indicate what type of function
+the window has. The window manager can use this when determining decoration
+and behaviour of the window. The hint must be set before mapping the window.</p>
+<p>See the <a href="http://www.freedesktop.org/Standards/wm-spec">Extended Window Manager Hints</a>
+specification for more details about window types.</p>
+<p>C - <code>GdkWindowTypeHint</code></p>
+<a class="header" href="#windowwindowclass" id="windowwindowclass"><h2><code>WindowWindowClass</code></h2></a>
+<p>@GDK_INPUT_OUTPUT windows are the standard kind of window you might expect.
+Such windows receive events and are also displayed on screen.
+@GDK_INPUT_ONLY windows are invisible; they are usually placed above other
+windows in order to trap or filter the events. You can’t draw on
+@GDK_INPUT_ONLY windows.</p>
+<p>C - <code>GdkWindowWindowClass</code></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../../lib/gdk/constant.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../../lib/gdkpixbuf/package.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="../../lib/gdk/constant.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="../../lib/gdkpixbuf/package.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+
+        
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

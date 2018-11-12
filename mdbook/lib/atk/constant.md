@@ -57,3 +57,8 @@ using functions deprecated in later releases will not).
 
 C - `ATK_VERSION_MIN_REQUIRED`
 
+describe a given value or a given
+subrange, using atk_value_type_get_localized_name().
+
+C - `AtkValueType`
+

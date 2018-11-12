@@ -48,4 +48,21 @@ func (ee Enumerations) mergeAddenda(addenda Enumerations) {
 	}
 }
 
-func (ee Enumerations) generateDocs(ns *Namespace) {}
+func (ee Enumerations) generateDocs(ns *Namespace, typeName string) {
+	ns.generateDocFile(typeName+"s.md", func(file *DocFile) {
+		file.writeLinef("# `%s` %ss", ns.goPackageName, typeName)
+		file.writeLine("")
+
+		for _, enumeration := range ee {
+			blacklisted, _ := enumeration.blacklisted()
+			supported, _ := enumeration.supported()
+			if blacklisted || !supported {
+				continue
+			}
+
+			enumeration.generateDocs(file)
+		}
+
+		appendDocsSummaryFile(2, typeName+"s", file.path)
+	})
+}

@@ -69,4 +69,4 @@ func (ii Interfaces) mergeAddenda(addenda Interfaces) {
 	}
 }
 
-func (ii Interfaces) generateDocs(ns *Namespace) {}
+func (ii Interfaces) generateDocs(ns *Namespace, typeName string) {}

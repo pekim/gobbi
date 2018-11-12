@@ -48,4 +48,4 @@ func (ff Functions) mergeAddenda(addenda Functions) {
 	}
 }
 
-func (ff Functions) generateDocs(ns *Namespace) {}
+func (ff Functions) generateDocs(ns *Namespace, typeName string) {}

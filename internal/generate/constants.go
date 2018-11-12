@@ -48,7 +48,7 @@ func (cc Constants) mergeAddenda(addenda Constants) {
 	}
 }
 
-func (cc Constants) generateDocs(ns *Namespace) {
+func (cc Constants) generateDocs(ns *Namespace, typeName string) {
 	ns.generateDocFile("constant.md", func(file *DocFile) {
 		file.writeLinef("# `%s` Constants", ns.goPackageName)
 		file.writeLine("")

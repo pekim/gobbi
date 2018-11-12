@@ -88,7 +88,7 @@ func (ns *Namespace) generateGeneratables(typeName string, generatables Generata
 		ns.generateEntityVersionedFile(typeName+"-"+version.value, version, generatables)
 	}
 
-	generatables.generateDocs(ns)
+	generatables.generateDocs(ns, typeName)
 }
 
 // generateEntityVersionedFile generates a file for Generatables that
