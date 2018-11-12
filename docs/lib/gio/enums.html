@@ -139,214 +139,335 @@
                         <a class="header" href="#gio-enums" id="gio-enums"><h1><code>gio</code> enums</h1></a>
 <a class="header" href="#bustype" id="bustype"><h2><code>BusType</code></h2></a>
 <p>An enumeration for well-known message buses.</p>
-<ul>
-<li>BUS_TYPE_STARTER = -1</li>
-<li>BUS_TYPE_NONE = 0</li>
-<li>BUS_TYPE_SYSTEM = 1</li>
-<li>BUS_TYPE_SESSION = 2</li>
-</ul>
 <p>C - <code>GBusType</code></p>
+<a class="header" href="#bus_type_starter---1" id="bus_type_starter---1"><h3>BUS_TYPE_STARTER = -1</h3></a>
+<p>An alias for the message bus that activated the process, if any.</p>
+<a class="header" href="#bus_type_none--0" id="bus_type_none--0"><h3>BUS_TYPE_NONE = 0</h3></a>
+<p>Not a message bus.</p>
+<a class="header" href="#bus_type_system--1" id="bus_type_system--1"><h3>BUS_TYPE_SYSTEM = 1</h3></a>
+<p>The system-wide message bus.</p>
+<a class="header" href="#bus_type_session--2" id="bus_type_session--2"><h3>BUS_TYPE_SESSION = 2</h3></a>
+<p>The login session message bus.</p>
 <a class="header" href="#converterresult" id="converterresult"><h2><code>ConverterResult</code></h2></a>
 <p>Results returned from g_converter_convert().</p>
-<ul>
-<li>CONVERTER_ERROR = 0</li>
-<li>CONVERTER_CONVERTED = 1</li>
-<li>CONVERTER_FINISHED = 2</li>
-<li>CONVERTER_FLUSHED = 3</li>
-</ul>
 <p>C - <code>GConverterResult</code></p>
+<a class="header" href="#converter_error--0" id="converter_error--0"><h3>CONVERTER_ERROR = 0</h3></a>
+<p>There was an error during conversion.</p>
+<a class="header" href="#converter_converted--1" id="converter_converted--1"><h3>CONVERTER_CONVERTED = 1</h3></a>
+<p>Some data was consumed or produced</p>
+<a class="header" href="#converter_finished--2" id="converter_finished--2"><h3>CONVERTER_FINISHED = 2</h3></a>
+<p>The conversion is finished</p>
+<a class="header" href="#converter_flushed--3" id="converter_flushed--3"><h3>CONVERTER_FLUSHED = 3</h3></a>
+<p>Flushing is finished</p>
 <a class="header" href="#credentialstype" id="credentialstype"><h2><code>CredentialsType</code></h2></a>
 <p>Enumeration describing different kinds of native credential types.</p>
-<ul>
-<li>CREDENTIALS_TYPE_INVALID = 0</li>
-<li>CREDENTIALS_TYPE_LINUX_UCRED = 1</li>
-<li>CREDENTIALS_TYPE_FREEBSD_CMSGCRED = 2</li>
-<li>CREDENTIALS_TYPE_OPENBSD_SOCKPEERCRED = 3</li>
-<li>CREDENTIALS_TYPE_SOLARIS_UCRED = 4</li>
-<li>CREDENTIALS_TYPE_NETBSD_UNPCBID = 5</li>
-</ul>
 <p>C - <code>GCredentialsType</code></p>
+<a class="header" href="#credentials_type_invalid--0" id="credentials_type_invalid--0"><h3>CREDENTIALS_TYPE_INVALID = 0</h3></a>
+<p>Indicates an invalid native credential type.</p>
+<a class="header" href="#credentials_type_linux_ucred--1" id="credentials_type_linux_ucred--1"><h3>CREDENTIALS_TYPE_LINUX_UCRED = 1</h3></a>
+<p>The native credentials type is a struct ucred.</p>
+<a class="header" href="#credentials_type_freebsd_cmsgcred--2" id="credentials_type_freebsd_cmsgcred--2"><h3>CREDENTIALS_TYPE_FREEBSD_CMSGCRED = 2</h3></a>
+<p>The native credentials type is a struct cmsgcred.</p>
+<a class="header" href="#credentials_type_openbsd_sockpeercred--3" id="credentials_type_openbsd_sockpeercred--3"><h3>CREDENTIALS_TYPE_OPENBSD_SOCKPEERCRED = 3</h3></a>
+<p>The native credentials type is a struct sockpeercred. Added in 2.30.</p>
+<a class="header" href="#credentials_type_solaris_ucred--4" id="credentials_type_solaris_ucred--4"><h3>CREDENTIALS_TYPE_SOLARIS_UCRED = 4</h3></a>
+<p>The native credentials type is a ucred_t. Added in 2.40.</p>
+<a class="header" href="#credentials_type_netbsd_unpcbid--5" id="credentials_type_netbsd_unpcbid--5"><h3>CREDENTIALS_TYPE_NETBSD_UNPCBID = 5</h3></a>
+<p>The native credentials type is a struct unpcbid.</p>
 <a class="header" href="#dbuserror" id="dbuserror"><h2><code>DBusError</code></h2></a>
 <p>Error codes for the %G_DBUS_ERROR error domain.</p>
-<ul>
-<li>DBUS_ERROR_FAILED = 0</li>
-<li>DBUS_ERROR_NO_MEMORY = 1</li>
-<li>DBUS_ERROR_SERVICE_UNKNOWN = 2</li>
-<li>DBUS_ERROR_NAME_HAS_NO_OWNER = 3</li>
-<li>DBUS_ERROR_NO_REPLY = 4</li>
-<li>DBUS_ERROR_IO_ERROR = 5</li>
-<li>DBUS_ERROR_BAD_ADDRESS = 6</li>
-<li>DBUS_ERROR_NOT_SUPPORTED = 7</li>
-<li>DBUS_ERROR_LIMITS_EXCEEDED = 8</li>
-<li>DBUS_ERROR_ACCESS_DENIED = 9</li>
-<li>DBUS_ERROR_AUTH_FAILED = 10</li>
-<li>DBUS_ERROR_NO_SERVER = 11</li>
-<li>DBUS_ERROR_TIMEOUT = 12</li>
-<li>DBUS_ERROR_NO_NETWORK = 13</li>
-<li>DBUS_ERROR_ADDRESS_IN_USE = 14</li>
-<li>DBUS_ERROR_DISCONNECTED = 15</li>
-<li>DBUS_ERROR_INVALID_ARGS = 16</li>
-<li>DBUS_ERROR_FILE_NOT_FOUND = 17</li>
-<li>DBUS_ERROR_FILE_EXISTS = 18</li>
-<li>DBUS_ERROR_UNKNOWN_METHOD = 19</li>
-<li>DBUS_ERROR_TIMED_OUT = 20</li>
-<li>DBUS_ERROR_MATCH_RULE_NOT_FOUND = 21</li>
-<li>DBUS_ERROR_MATCH_RULE_INVALID = 22</li>
-<li>DBUS_ERROR_SPAWN_EXEC_FAILED = 23</li>
-<li>DBUS_ERROR_SPAWN_FORK_FAILED = 24</li>
-<li>DBUS_ERROR_SPAWN_CHILD_EXITED = 25</li>
-<li>DBUS_ERROR_SPAWN_CHILD_SIGNALED = 26</li>
-<li>DBUS_ERROR_SPAWN_FAILED = 27</li>
-<li>DBUS_ERROR_SPAWN_SETUP_FAILED = 28</li>
-<li>DBUS_ERROR_SPAWN_CONFIG_INVALID = 29</li>
-<li>DBUS_ERROR_SPAWN_SERVICE_INVALID = 30</li>
-<li>DBUS_ERROR_SPAWN_SERVICE_NOT_FOUND = 31</li>
-<li>DBUS_ERROR_SPAWN_PERMISSIONS_INVALID = 32</li>
-<li>DBUS_ERROR_SPAWN_FILE_INVALID = 33</li>
-<li>DBUS_ERROR_SPAWN_NO_MEMORY = 34</li>
-<li>DBUS_ERROR_UNIX_PROCESS_ID_UNKNOWN = 35</li>
-<li>DBUS_ERROR_INVALID_SIGNATURE = 36</li>
-<li>DBUS_ERROR_INVALID_FILE_CONTENT = 37</li>
-<li>DBUS_ERROR_SELINUX_SECURITY_CONTEXT_UNKNOWN = 38</li>
-<li>DBUS_ERROR_ADT_AUDIT_DATA_UNKNOWN = 39</li>
-<li>DBUS_ERROR_OBJECT_PATH_IN_USE = 40</li>
-<li>DBUS_ERROR_UNKNOWN_OBJECT = 41</li>
-<li>DBUS_ERROR_UNKNOWN_INTERFACE = 42</li>
-<li>DBUS_ERROR_UNKNOWN_PROPERTY = 43</li>
-<li>DBUS_ERROR_PROPERTY_READ_ONLY = 44</li>
-</ul>
 <p>C - <code>GDBusError</code></p>
+<a class="header" href="#dbus_error_failed--0" id="dbus_error_failed--0"><h3>DBUS_ERROR_FAILED = 0</h3></a>
+<p>A generic error; &quot;something went wrong&quot; - see the error message for
+more.</p>
+<a class="header" href="#dbus_error_no_memory--1" id="dbus_error_no_memory--1"><h3>DBUS_ERROR_NO_MEMORY = 1</h3></a>
+<p>There was not enough memory to complete an operation.</p>
+<a class="header" href="#dbus_error_service_unknown--2" id="dbus_error_service_unknown--2"><h3>DBUS_ERROR_SERVICE_UNKNOWN = 2</h3></a>
+<p>The bus doesn't know how to launch a service to supply the bus name
+you wanted.</p>
+<a class="header" href="#dbus_error_name_has_no_owner--3" id="dbus_error_name_has_no_owner--3"><h3>DBUS_ERROR_NAME_HAS_NO_OWNER = 3</h3></a>
+<p>The bus name you referenced doesn't exist (i.e. no application owns
+it).</p>
+<a class="header" href="#dbus_error_no_reply--4" id="dbus_error_no_reply--4"><h3>DBUS_ERROR_NO_REPLY = 4</h3></a>
+<p>No reply to a message expecting one, usually means a timeout occurred.</p>
+<a class="header" href="#dbus_error_io_error--5" id="dbus_error_io_error--5"><h3>DBUS_ERROR_IO_ERROR = 5</h3></a>
+<p>Something went wrong reading or writing to a socket, for example.</p>
+<a class="header" href="#dbus_error_bad_address--6" id="dbus_error_bad_address--6"><h3>DBUS_ERROR_BAD_ADDRESS = 6</h3></a>
+<p>A D-Bus bus address was malformed.</p>
+<a class="header" href="#dbus_error_not_supported--7" id="dbus_error_not_supported--7"><h3>DBUS_ERROR_NOT_SUPPORTED = 7</h3></a>
+<p>Requested operation isn't supported (like ENOSYS on UNIX).</p>
+<a class="header" href="#dbus_error_limits_exceeded--8" id="dbus_error_limits_exceeded--8"><h3>DBUS_ERROR_LIMITS_EXCEEDED = 8</h3></a>
+<p>Some limited resource is exhausted.</p>
+<a class="header" href="#dbus_error_access_denied--9" id="dbus_error_access_denied--9"><h3>DBUS_ERROR_ACCESS_DENIED = 9</h3></a>
+<p>Security restrictions don't allow doing what you're trying to do.</p>
+<a class="header" href="#dbus_error_auth_failed--10" id="dbus_error_auth_failed--10"><h3>DBUS_ERROR_AUTH_FAILED = 10</h3></a>
+<p>Authentication didn't work.</p>
+<a class="header" href="#dbus_error_no_server--11" id="dbus_error_no_server--11"><h3>DBUS_ERROR_NO_SERVER = 11</h3></a>
+<p>Unable to connect to server (probably caused by ECONNREFUSED on a
+socket).</p>
+<a class="header" href="#dbus_error_timeout--12" id="dbus_error_timeout--12"><h3>DBUS_ERROR_TIMEOUT = 12</h3></a>
+<p>Certain timeout errors, possibly ETIMEDOUT on a socket.  Note that
+%G_DBUS_ERROR_NO_REPLY is used for message reply timeouts. Warning:
+this is confusingly-named given that %G_DBUS_ERROR_TIMED_OUT also
+exists. We can't fix it for compatibility reasons so just be
+careful.</p>
+<a class="header" href="#dbus_error_no_network--13" id="dbus_error_no_network--13"><h3>DBUS_ERROR_NO_NETWORK = 13</h3></a>
+<p>No network access (probably ENETUNREACH on a socket).</p>
+<a class="header" href="#dbus_error_address_in_use--14" id="dbus_error_address_in_use--14"><h3>DBUS_ERROR_ADDRESS_IN_USE = 14</h3></a>
+<p>Can't bind a socket since its address is in use (i.e. EADDRINUSE).</p>
+<a class="header" href="#dbus_error_disconnected--15" id="dbus_error_disconnected--15"><h3>DBUS_ERROR_DISCONNECTED = 15</h3></a>
+<p>The connection is disconnected and you're trying to use it.</p>
+<a class="header" href="#dbus_error_invalid_args--16" id="dbus_error_invalid_args--16"><h3>DBUS_ERROR_INVALID_ARGS = 16</h3></a>
+<p>Invalid arguments passed to a method call.</p>
+<a class="header" href="#dbus_error_file_not_found--17" id="dbus_error_file_not_found--17"><h3>DBUS_ERROR_FILE_NOT_FOUND = 17</h3></a>
+<p>Missing file.</p>
+<a class="header" href="#dbus_error_file_exists--18" id="dbus_error_file_exists--18"><h3>DBUS_ERROR_FILE_EXISTS = 18</h3></a>
+<p>Existing file and the operation you're using does not silently overwrite.</p>
+<a class="header" href="#dbus_error_unknown_method--19" id="dbus_error_unknown_method--19"><h3>DBUS_ERROR_UNKNOWN_METHOD = 19</h3></a>
+<p>Method name you invoked isn't known by the object you invoked it on.</p>
+<a class="header" href="#dbus_error_timed_out--20" id="dbus_error_timed_out--20"><h3>DBUS_ERROR_TIMED_OUT = 20</h3></a>
+<p>Certain timeout errors, e.g. while starting a service. Warning: this is
+confusingly-named given that %G_DBUS_ERROR_TIMEOUT also exists. We
+can't fix it for compatibility reasons so just be careful.</p>
+<a class="header" href="#dbus_error_match_rule_not_found--21" id="dbus_error_match_rule_not_found--21"><h3>DBUS_ERROR_MATCH_RULE_NOT_FOUND = 21</h3></a>
+<p>Tried to remove or modify a match rule that didn't exist.</p>
+<a class="header" href="#dbus_error_match_rule_invalid--22" id="dbus_error_match_rule_invalid--22"><h3>DBUS_ERROR_MATCH_RULE_INVALID = 22</h3></a>
+<p>The match rule isn't syntactically valid.</p>
+<a class="header" href="#dbus_error_spawn_exec_failed--23" id="dbus_error_spawn_exec_failed--23"><h3>DBUS_ERROR_SPAWN_EXEC_FAILED = 23</h3></a>
+<p>While starting a new process, the exec() call failed.</p>
+<a class="header" href="#dbus_error_spawn_fork_failed--24" id="dbus_error_spawn_fork_failed--24"><h3>DBUS_ERROR_SPAWN_FORK_FAILED = 24</h3></a>
+<p>While starting a new process, the fork() call failed.</p>
+<a class="header" href="#dbus_error_spawn_child_exited--25" id="dbus_error_spawn_child_exited--25"><h3>DBUS_ERROR_SPAWN_CHILD_EXITED = 25</h3></a>
+<p>While starting a new process, the child exited with a status code.</p>
+<a class="header" href="#dbus_error_spawn_child_signaled--26" id="dbus_error_spawn_child_signaled--26"><h3>DBUS_ERROR_SPAWN_CHILD_SIGNALED = 26</h3></a>
+<p>While starting a new process, the child exited on a signal.</p>
+<a class="header" href="#dbus_error_spawn_failed--27" id="dbus_error_spawn_failed--27"><h3>DBUS_ERROR_SPAWN_FAILED = 27</h3></a>
+<p>While starting a new process, something went wrong.</p>
+<a class="header" href="#dbus_error_spawn_setup_failed--28" id="dbus_error_spawn_setup_failed--28"><h3>DBUS_ERROR_SPAWN_SETUP_FAILED = 28</h3></a>
+<p>We failed to setup the environment correctly.</p>
+<a class="header" href="#dbus_error_spawn_config_invalid--29" id="dbus_error_spawn_config_invalid--29"><h3>DBUS_ERROR_SPAWN_CONFIG_INVALID = 29</h3></a>
+<p>We failed to setup the config parser correctly.</p>
+<a class="header" href="#dbus_error_spawn_service_invalid--30" id="dbus_error_spawn_service_invalid--30"><h3>DBUS_ERROR_SPAWN_SERVICE_INVALID = 30</h3></a>
+<p>Bus name was not valid.</p>
+<a class="header" href="#dbus_error_spawn_service_not_found--31" id="dbus_error_spawn_service_not_found--31"><h3>DBUS_ERROR_SPAWN_SERVICE_NOT_FOUND = 31</h3></a>
+<p>Service file not found in system-services directory.</p>
+<a class="header" href="#dbus_error_spawn_permissions_invalid--32" id="dbus_error_spawn_permissions_invalid--32"><h3>DBUS_ERROR_SPAWN_PERMISSIONS_INVALID = 32</h3></a>
+<p>Permissions are incorrect on the setuid helper.</p>
+<a class="header" href="#dbus_error_spawn_file_invalid--33" id="dbus_error_spawn_file_invalid--33"><h3>DBUS_ERROR_SPAWN_FILE_INVALID = 33</h3></a>
+<p>Service file invalid (Name, User or Exec missing).</p>
+<a class="header" href="#dbus_error_spawn_no_memory--34" id="dbus_error_spawn_no_memory--34"><h3>DBUS_ERROR_SPAWN_NO_MEMORY = 34</h3></a>
+<p>Tried to get a UNIX process ID and it wasn't available.</p>
+<a class="header" href="#dbus_error_unix_process_id_unknown--35" id="dbus_error_unix_process_id_unknown--35"><h3>DBUS_ERROR_UNIX_PROCESS_ID_UNKNOWN = 35</h3></a>
+<p>Tried to get a UNIX process ID and it wasn't available.</p>
+<a class="header" href="#dbus_error_invalid_signature--36" id="dbus_error_invalid_signature--36"><h3>DBUS_ERROR_INVALID_SIGNATURE = 36</h3></a>
+<p>A type signature is not valid.</p>
+<a class="header" href="#dbus_error_invalid_file_content--37" id="dbus_error_invalid_file_content--37"><h3>DBUS_ERROR_INVALID_FILE_CONTENT = 37</h3></a>
+<p>A file contains invalid syntax or is otherwise broken.</p>
+<a class="header" href="#dbus_error_selinux_security_context_unknown--38" id="dbus_error_selinux_security_context_unknown--38"><h3>DBUS_ERROR_SELINUX_SECURITY_CONTEXT_UNKNOWN = 38</h3></a>
+<p>Asked for SELinux security context and it wasn't available.</p>
+<a class="header" href="#dbus_error_adt_audit_data_unknown--39" id="dbus_error_adt_audit_data_unknown--39"><h3>DBUS_ERROR_ADT_AUDIT_DATA_UNKNOWN = 39</h3></a>
+<p>Asked for ADT audit data and it wasn't available.</p>
+<a class="header" href="#dbus_error_object_path_in_use--40" id="dbus_error_object_path_in_use--40"><h3>DBUS_ERROR_OBJECT_PATH_IN_USE = 40</h3></a>
+<p>There's already an object with the requested object path.</p>
+<a class="header" href="#dbus_error_unknown_object--41" id="dbus_error_unknown_object--41"><h3>DBUS_ERROR_UNKNOWN_OBJECT = 41</h3></a>
+<p>Object you invoked a method on isn't known. Since 2.42</p>
+<a class="header" href="#dbus_error_unknown_interface--42" id="dbus_error_unknown_interface--42"><h3>DBUS_ERROR_UNKNOWN_INTERFACE = 42</h3></a>
+<p>Interface you invoked a method on isn't known by the object. Since 2.42</p>
+<a class="header" href="#dbus_error_unknown_property--43" id="dbus_error_unknown_property--43"><h3>DBUS_ERROR_UNKNOWN_PROPERTY = 43</h3></a>
+<p>Property you tried to access isn't known by the object. Since 2.42</p>
+<a class="header" href="#dbus_error_property_read_only--44" id="dbus_error_property_read_only--44"><h3>DBUS_ERROR_PROPERTY_READ_ONLY = 44</h3></a>
+<p>Property you tried to set is read-only. Since 2.42</p>
 <a class="header" href="#dbusmessagebyteorder" id="dbusmessagebyteorder"><h2><code>DBusMessageByteOrder</code></h2></a>
 <p>Enumeration used to describe the byte order of a D-Bus message.</p>
-<ul>
-<li>DBUS_MESSAGE_BYTE_ORDER_BIG_ENDIAN = 66</li>
-<li>DBUS_MESSAGE_BYTE_ORDER_LITTLE_ENDIAN = 108</li>
-</ul>
 <p>C - <code>GDBusMessageByteOrder</code></p>
+<a class="header" href="#dbus_message_byte_order_big_endian--66" id="dbus_message_byte_order_big_endian--66"><h3>DBUS_MESSAGE_BYTE_ORDER_BIG_ENDIAN = 66</h3></a>
+<p>The byte order is big endian.</p>
+<a class="header" href="#dbus_message_byte_order_little_endian--108" id="dbus_message_byte_order_little_endian--108"><h3>DBUS_MESSAGE_BYTE_ORDER_LITTLE_ENDIAN = 108</h3></a>
+<p>The byte order is little endian.</p>
 <a class="header" href="#dbusmessageheaderfield" id="dbusmessageheaderfield"><h2><code>DBusMessageHeaderField</code></h2></a>
 <p>Header fields used in #GDBusMessage.</p>
-<ul>
-<li>DBUS_MESSAGE_HEADER_FIELD_INVALID = 0</li>
-<li>DBUS_MESSAGE_HEADER_FIELD_PATH = 1</li>
-<li>DBUS_MESSAGE_HEADER_FIELD_INTERFACE = 2</li>
-<li>DBUS_MESSAGE_HEADER_FIELD_MEMBER = 3</li>
-<li>DBUS_MESSAGE_HEADER_FIELD_ERROR_NAME = 4</li>
-<li>DBUS_MESSAGE_HEADER_FIELD_REPLY_SERIAL = 5</li>
-<li>DBUS_MESSAGE_HEADER_FIELD_DESTINATION = 6</li>
-<li>DBUS_MESSAGE_HEADER_FIELD_SENDER = 7</li>
-<li>DBUS_MESSAGE_HEADER_FIELD_SIGNATURE = 8</li>
-<li>DBUS_MESSAGE_HEADER_FIELD_NUM_UNIX_FDS = 9</li>
-</ul>
 <p>C - <code>GDBusMessageHeaderField</code></p>
+<a class="header" href="#dbus_message_header_field_invalid--0" id="dbus_message_header_field_invalid--0"><h3>DBUS_MESSAGE_HEADER_FIELD_INVALID = 0</h3></a>
+<p>Not a valid header field.</p>
+<a class="header" href="#dbus_message_header_field_path--1" id="dbus_message_header_field_path--1"><h3>DBUS_MESSAGE_HEADER_FIELD_PATH = 1</h3></a>
+<p>The object path.</p>
+<a class="header" href="#dbus_message_header_field_interface--2" id="dbus_message_header_field_interface--2"><h3>DBUS_MESSAGE_HEADER_FIELD_INTERFACE = 2</h3></a>
+<p>The interface name.</p>
+<a class="header" href="#dbus_message_header_field_member--3" id="dbus_message_header_field_member--3"><h3>DBUS_MESSAGE_HEADER_FIELD_MEMBER = 3</h3></a>
+<p>The method or signal name.</p>
+<a class="header" href="#dbus_message_header_field_error_name--4" id="dbus_message_header_field_error_name--4"><h3>DBUS_MESSAGE_HEADER_FIELD_ERROR_NAME = 4</h3></a>
+<p>The name of the error that occurred.</p>
+<a class="header" href="#dbus_message_header_field_reply_serial--5" id="dbus_message_header_field_reply_serial--5"><h3>DBUS_MESSAGE_HEADER_FIELD_REPLY_SERIAL = 5</h3></a>
+<p>The serial number the message is a reply to.</p>
+<a class="header" href="#dbus_message_header_field_destination--6" id="dbus_message_header_field_destination--6"><h3>DBUS_MESSAGE_HEADER_FIELD_DESTINATION = 6</h3></a>
+<p>The name the message is intended for.</p>
+<a class="header" href="#dbus_message_header_field_sender--7" id="dbus_message_header_field_sender--7"><h3>DBUS_MESSAGE_HEADER_FIELD_SENDER = 7</h3></a>
+<p>Unique name of the sender of the message (filled in by the bus).</p>
+<a class="header" href="#dbus_message_header_field_signature--8" id="dbus_message_header_field_signature--8"><h3>DBUS_MESSAGE_HEADER_FIELD_SIGNATURE = 8</h3></a>
+<p>The signature of the message body.</p>
+<a class="header" href="#dbus_message_header_field_num_unix_fds--9" id="dbus_message_header_field_num_unix_fds--9"><h3>DBUS_MESSAGE_HEADER_FIELD_NUM_UNIX_FDS = 9</h3></a>
+<p>The number of UNIX file descriptors that accompany the message.</p>
 <a class="header" href="#dbusmessagetype" id="dbusmessagetype"><h2><code>DBusMessageType</code></h2></a>
 <p>Message types used in #GDBusMessage.</p>
-<ul>
-<li>DBUS_MESSAGE_TYPE_INVALID = 0</li>
-<li>DBUS_MESSAGE_TYPE_METHOD_CALL = 1</li>
-<li>DBUS_MESSAGE_TYPE_METHOD_RETURN = 2</li>
-<li>DBUS_MESSAGE_TYPE_ERROR = 3</li>
-<li>DBUS_MESSAGE_TYPE_SIGNAL = 4</li>
-</ul>
 <p>C - <code>GDBusMessageType</code></p>
+<a class="header" href="#dbus_message_type_invalid--0" id="dbus_message_type_invalid--0"><h3>DBUS_MESSAGE_TYPE_INVALID = 0</h3></a>
+<p>Message is of invalid type.</p>
+<a class="header" href="#dbus_message_type_method_call--1" id="dbus_message_type_method_call--1"><h3>DBUS_MESSAGE_TYPE_METHOD_CALL = 1</h3></a>
+<p>Method call.</p>
+<a class="header" href="#dbus_message_type_method_return--2" id="dbus_message_type_method_return--2"><h3>DBUS_MESSAGE_TYPE_METHOD_RETURN = 2</h3></a>
+<p>Method reply.</p>
+<a class="header" href="#dbus_message_type_error--3" id="dbus_message_type_error--3"><h3>DBUS_MESSAGE_TYPE_ERROR = 3</h3></a>
+<p>Error reply.</p>
+<a class="header" href="#dbus_message_type_signal--4" id="dbus_message_type_signal--4"><h3>DBUS_MESSAGE_TYPE_SIGNAL = 4</h3></a>
+<p>Signal emission.</p>
 <a class="header" href="#datastreambyteorder" id="datastreambyteorder"><h2><code>DataStreamByteOrder</code></h2></a>
 <p>#GDataStreamByteOrder is used to ensure proper endianness of streaming data sources
 across various machine architectures.</p>
-<ul>
-<li>DATA_STREAM_BYTE_ORDER_BIG_ENDIAN = 0</li>
-<li>DATA_STREAM_BYTE_ORDER_LITTLE_ENDIAN = 1</li>
-<li>DATA_STREAM_BYTE_ORDER_HOST_ENDIAN = 2</li>
-</ul>
 <p>C - <code>GDataStreamByteOrder</code></p>
+<a class="header" href="#data_stream_byte_order_big_endian--0" id="data_stream_byte_order_big_endian--0"><h3>DATA_STREAM_BYTE_ORDER_BIG_ENDIAN = 0</h3></a>
+<p>Selects Big Endian byte order.</p>
+<a class="header" href="#data_stream_byte_order_little_endian--1" id="data_stream_byte_order_little_endian--1"><h3>DATA_STREAM_BYTE_ORDER_LITTLE_ENDIAN = 1</h3></a>
+<p>Selects Little Endian byte order.</p>
+<a class="header" href="#data_stream_byte_order_host_endian--2" id="data_stream_byte_order_host_endian--2"><h3>DATA_STREAM_BYTE_ORDER_HOST_ENDIAN = 2</h3></a>
+<p>Selects endianness based on host machine's architecture.</p>
 <a class="header" href="#datastreamnewlinetype" id="datastreamnewlinetype"><h2><code>DataStreamNewlineType</code></h2></a>
 <p>#GDataStreamNewlineType is used when checking for or setting the line endings for a given file.</p>
-<ul>
-<li>DATA_STREAM_NEWLINE_TYPE_LF = 0</li>
-<li>DATA_STREAM_NEWLINE_TYPE_CR = 1</li>
-<li>DATA_STREAM_NEWLINE_TYPE_CR_LF = 2</li>
-<li>DATA_STREAM_NEWLINE_TYPE_ANY = 3</li>
-</ul>
 <p>C - <code>GDataStreamNewlineType</code></p>
+<a class="header" href="#data_stream_newline_type_lf--0" id="data_stream_newline_type_lf--0"><h3>DATA_STREAM_NEWLINE_TYPE_LF = 0</h3></a>
+<p>Selects &quot;LF&quot; line endings, common on most modern UNIX platforms.</p>
+<a class="header" href="#data_stream_newline_type_cr--1" id="data_stream_newline_type_cr--1"><h3>DATA_STREAM_NEWLINE_TYPE_CR = 1</h3></a>
+<p>Selects &quot;CR&quot; line endings.</p>
+<a class="header" href="#data_stream_newline_type_cr_lf--2" id="data_stream_newline_type_cr_lf--2"><h3>DATA_STREAM_NEWLINE_TYPE_CR_LF = 2</h3></a>
+<p>Selects &quot;CR, LF&quot; line ending, common on Microsoft Windows.</p>
+<a class="header" href="#data_stream_newline_type_any--3" id="data_stream_newline_type_any--3"><h3>DATA_STREAM_NEWLINE_TYPE_ANY = 3</h3></a>
+<p>Automatically try to handle any line ending type.</p>
 <a class="header" href="#drivestartstoptype" id="drivestartstoptype"><h2><code>DriveStartStopType</code></h2></a>
 <p>Enumeration describing how a drive can be started/stopped.</p>
-<ul>
-<li>DRIVE_START_STOP_TYPE_UNKNOWN = 0</li>
-<li>DRIVE_START_STOP_TYPE_SHUTDOWN = 1</li>
-<li>DRIVE_START_STOP_TYPE_NETWORK = 2</li>
-<li>DRIVE_START_STOP_TYPE_MULTIDISK = 3</li>
-<li>DRIVE_START_STOP_TYPE_PASSWORD = 4</li>
-</ul>
 <p>C - <code>GDriveStartStopType</code></p>
+<a class="header" href="#drive_start_stop_type_unknown--0" id="drive_start_stop_type_unknown--0"><h3>DRIVE_START_STOP_TYPE_UNKNOWN = 0</h3></a>
+<p>Unknown or drive doesn't support
+start/stop.</p>
+<a class="header" href="#drive_start_stop_type_shutdown--1" id="drive_start_stop_type_shutdown--1"><h3>DRIVE_START_STOP_TYPE_SHUTDOWN = 1</h3></a>
+<p>The stop method will physically
+shut down the drive and e.g. power down the port the drive is
+attached to.</p>
+<a class="header" href="#drive_start_stop_type_network--2" id="drive_start_stop_type_network--2"><h3>DRIVE_START_STOP_TYPE_NETWORK = 2</h3></a>
+<p>The start/stop methods are used
+for connecting/disconnect to the drive over the network.</p>
+<a class="header" href="#drive_start_stop_type_multidisk--3" id="drive_start_stop_type_multidisk--3"><h3>DRIVE_START_STOP_TYPE_MULTIDISK = 3</h3></a>
+<p>The start/stop methods will
+assemble/disassemble a virtual drive from several physical
+drives.</p>
+<a class="header" href="#drive_start_stop_type_password--4" id="drive_start_stop_type_password--4"><h3>DRIVE_START_STOP_TYPE_PASSWORD = 4</h3></a>
+<p>The start/stop methods will
+unlock/lock the disk (for example using the ATA <quote>SECURITY
+UNLOCK DEVICE</quote> command)</p>
 <a class="header" href="#emblemorigin" id="emblemorigin"><h2><code>EmblemOrigin</code></h2></a>
 <p>GEmblemOrigin is used to add information about the origin of the emblem
 to #GEmblem.</p>
-<ul>
-<li>EMBLEM_ORIGIN_UNKNOWN = 0</li>
-<li>EMBLEM_ORIGIN_DEVICE = 1</li>
-<li>EMBLEM_ORIGIN_LIVEMETADATA = 2</li>
-<li>EMBLEM_ORIGIN_TAG = 3</li>
-</ul>
 <p>C - <code>GEmblemOrigin</code></p>
+<a class="header" href="#emblem_origin_unknown--0" id="emblem_origin_unknown--0"><h3>EMBLEM_ORIGIN_UNKNOWN = 0</h3></a>
+<p>Emblem of unknown origin</p>
+<a class="header" href="#emblem_origin_device--1" id="emblem_origin_device--1"><h3>EMBLEM_ORIGIN_DEVICE = 1</h3></a>
+<p>Emblem adds device-specific information</p>
+<a class="header" href="#emblem_origin_livemetadata--2" id="emblem_origin_livemetadata--2"><h3>EMBLEM_ORIGIN_LIVEMETADATA = 2</h3></a>
+<p>Emblem depicts live metadata, such as &quot;readonly&quot;</p>
+<a class="header" href="#emblem_origin_tag--3" id="emblem_origin_tag--3"><h3>EMBLEM_ORIGIN_TAG = 3</h3></a>
+<p>Emblem comes from a user-defined tag, e.g. set by nautilus (in the future)</p>
 <a class="header" href="#fileattributestatus" id="fileattributestatus"><h2><code>FileAttributeStatus</code></h2></a>
 <p>Used by g_file_set_attributes_from_info() when setting file attributes.</p>
-<ul>
-<li>FILE_ATTRIBUTE_STATUS_UNSET = 0</li>
-<li>FILE_ATTRIBUTE_STATUS_SET = 1</li>
-<li>FILE_ATTRIBUTE_STATUS_ERROR_SETTING = 2</li>
-</ul>
 <p>C - <code>GFileAttributeStatus</code></p>
+<a class="header" href="#file_attribute_status_unset--0" id="file_attribute_status_unset--0"><h3>FILE_ATTRIBUTE_STATUS_UNSET = 0</h3></a>
+<p>Attribute value is unset (empty).</p>
+<a class="header" href="#file_attribute_status_set--1" id="file_attribute_status_set--1"><h3>FILE_ATTRIBUTE_STATUS_SET = 1</h3></a>
+<p>Attribute value is set.</p>
+<a class="header" href="#file_attribute_status_error_setting--2" id="file_attribute_status_error_setting--2"><h3>FILE_ATTRIBUTE_STATUS_ERROR_SETTING = 2</h3></a>
+<p>Indicates an error in setting the value.</p>
 <a class="header" href="#fileattributetype" id="fileattributetype"><h2><code>FileAttributeType</code></h2></a>
 <p>The data types for file attributes.</p>
-<ul>
-<li>FILE_ATTRIBUTE_TYPE_INVALID = 0</li>
-<li>FILE_ATTRIBUTE_TYPE_STRING = 1</li>
-<li>FILE_ATTRIBUTE_TYPE_BYTE_STRING = 2</li>
-<li>FILE_ATTRIBUTE_TYPE_BOOLEAN = 3</li>
-<li>FILE_ATTRIBUTE_TYPE_UINT32 = 4</li>
-<li>FILE_ATTRIBUTE_TYPE_INT32 = 5</li>
-<li>FILE_ATTRIBUTE_TYPE_UINT64 = 6</li>
-<li>FILE_ATTRIBUTE_TYPE_INT64 = 7</li>
-<li>FILE_ATTRIBUTE_TYPE_OBJECT = 8</li>
-<li>FILE_ATTRIBUTE_TYPE_STRINGV = 9</li>
-</ul>
 <p>C - <code>GFileAttributeType</code></p>
+<a class="header" href="#file_attribute_type_invalid--0" id="file_attribute_type_invalid--0"><h3>FILE_ATTRIBUTE_TYPE_INVALID = 0</h3></a>
+<p>indicates an invalid or uninitalized type.</p>
+<a class="header" href="#file_attribute_type_string--1" id="file_attribute_type_string--1"><h3>FILE_ATTRIBUTE_TYPE_STRING = 1</h3></a>
+<p>a null terminated UTF8 string.</p>
+<a class="header" href="#file_attribute_type_byte_string--2" id="file_attribute_type_byte_string--2"><h3>FILE_ATTRIBUTE_TYPE_BYTE_STRING = 2</h3></a>
+<p>a zero terminated string of non-zero bytes.</p>
+<a class="header" href="#file_attribute_type_boolean--3" id="file_attribute_type_boolean--3"><h3>FILE_ATTRIBUTE_TYPE_BOOLEAN = 3</h3></a>
+<p>a boolean value.</p>
+<a class="header" href="#file_attribute_type_uint32--4" id="file_attribute_type_uint32--4"><h3>FILE_ATTRIBUTE_TYPE_UINT32 = 4</h3></a>
+<p>an unsigned 4-byte/32-bit integer.</p>
+<a class="header" href="#file_attribute_type_int32--5" id="file_attribute_type_int32--5"><h3>FILE_ATTRIBUTE_TYPE_INT32 = 5</h3></a>
+<p>a signed 4-byte/32-bit integer.</p>
+<a class="header" href="#file_attribute_type_uint64--6" id="file_attribute_type_uint64--6"><h3>FILE_ATTRIBUTE_TYPE_UINT64 = 6</h3></a>
+<p>an unsigned 8-byte/64-bit integer.</p>
+<a class="header" href="#file_attribute_type_int64--7" id="file_attribute_type_int64--7"><h3>FILE_ATTRIBUTE_TYPE_INT64 = 7</h3></a>
+<p>a signed 8-byte/64-bit integer.</p>
+<a class="header" href="#file_attribute_type_object--8" id="file_attribute_type_object--8"><h3>FILE_ATTRIBUTE_TYPE_OBJECT = 8</h3></a>
+<p>a #GObject.</p>
+<a class="header" href="#file_attribute_type_stringv--9" id="file_attribute_type_stringv--9"><h3>FILE_ATTRIBUTE_TYPE_STRINGV = 9</h3></a>
+<p>a %NULL terminated char **. Since 2.22</p>
 <a class="header" href="#filemonitorevent" id="filemonitorevent"><h2><code>FileMonitorEvent</code></h2></a>
 <p>Specifies what type of event a monitor event is.</p>
-<ul>
-<li>FILE_MONITOR_EVENT_CHANGED = 0</li>
-<li>FILE_MONITOR_EVENT_CHANGES_DONE_HINT = 1</li>
-<li>FILE_MONITOR_EVENT_DELETED = 2</li>
-<li>FILE_MONITOR_EVENT_CREATED = 3</li>
-<li>FILE_MONITOR_EVENT_ATTRIBUTE_CHANGED = 4</li>
-<li>FILE_MONITOR_EVENT_PRE_UNMOUNT = 5</li>
-<li>FILE_MONITOR_EVENT_UNMOUNTED = 6</li>
-<li>FILE_MONITOR_EVENT_MOVED = 7</li>
-<li>FILE_MONITOR_EVENT_RENAMED = 8</li>
-<li>FILE_MONITOR_EVENT_MOVED_IN = 9</li>
-<li>FILE_MONITOR_EVENT_MOVED_OUT = 10</li>
-</ul>
 <p>C - <code>GFileMonitorEvent</code></p>
+<a class="header" href="#file_monitor_event_changed--0" id="file_monitor_event_changed--0"><h3>FILE_MONITOR_EVENT_CHANGED = 0</h3></a>
+<p>a file changed.</p>
+<a class="header" href="#file_monitor_event_changes_done_hint--1" id="file_monitor_event_changes_done_hint--1"><h3>FILE_MONITOR_EVENT_CHANGES_DONE_HINT = 1</h3></a>
+<p>a hint that this was probably the last change in a set of changes.</p>
+<a class="header" href="#file_monitor_event_deleted--2" id="file_monitor_event_deleted--2"><h3>FILE_MONITOR_EVENT_DELETED = 2</h3></a>
+<p>a file was deleted.</p>
+<a class="header" href="#file_monitor_event_created--3" id="file_monitor_event_created--3"><h3>FILE_MONITOR_EVENT_CREATED = 3</h3></a>
+<p>a file was created.</p>
+<a class="header" href="#file_monitor_event_attribute_changed--4" id="file_monitor_event_attribute_changed--4"><h3>FILE_MONITOR_EVENT_ATTRIBUTE_CHANGED = 4</h3></a>
+<p>a file attribute was changed.</p>
+<a class="header" href="#file_monitor_event_pre_unmount--5" id="file_monitor_event_pre_unmount--5"><h3>FILE_MONITOR_EVENT_PRE_UNMOUNT = 5</h3></a>
+<p>the file location will soon be unmounted.</p>
+<a class="header" href="#file_monitor_event_unmounted--6" id="file_monitor_event_unmounted--6"><h3>FILE_MONITOR_EVENT_UNMOUNTED = 6</h3></a>
+<p>the file location was unmounted.</p>
+<a class="header" href="#file_monitor_event_moved--7" id="file_monitor_event_moved--7"><h3>FILE_MONITOR_EVENT_MOVED = 7</h3></a>
+<p>the file was moved -- only sent if the
+(deprecated) %G_FILE_MONITOR_SEND_MOVED flag is set</p>
+<a class="header" href="#file_monitor_event_renamed--8" id="file_monitor_event_renamed--8"><h3>FILE_MONITOR_EVENT_RENAMED = 8</h3></a>
+<p>the file was renamed within the
+current directory -- only sent if the %G_FILE_MONITOR_WATCH_MOVES
+flag is set.  Since: 2.46.</p>
+<a class="header" href="#file_monitor_event_moved_in--9" id="file_monitor_event_moved_in--9"><h3>FILE_MONITOR_EVENT_MOVED_IN = 9</h3></a>
+<p>the file was moved into the
+monitored directory from another location -- only sent if the
+%G_FILE_MONITOR_WATCH_MOVES flag is set.  Since: 2.46.</p>
+<a class="header" href="#file_monitor_event_moved_out--10" id="file_monitor_event_moved_out--10"><h3>FILE_MONITOR_EVENT_MOVED_OUT = 10</h3></a>
+<p>the file was moved out of the
+monitored directory to another location -- only sent if the
+%G_FILE_MONITOR_WATCH_MOVES flag is set.  Since: 2.46</p>
 <a class="header" href="#filetype" id="filetype"><h2><code>FileType</code></h2></a>
 <p>Indicates the file's on-disk type.</p>
-<ul>
-<li>FILE_TYPE_UNKNOWN = 0</li>
-<li>FILE_TYPE_REGULAR = 1</li>
-<li>FILE_TYPE_DIRECTORY = 2</li>
-<li>FILE_TYPE_SYMBOLIC_LINK = 3</li>
-<li>FILE_TYPE_SPECIAL = 4</li>
-<li>FILE_TYPE_SHORTCUT = 5</li>
-<li>FILE_TYPE_MOUNTABLE = 6</li>
-</ul>
 <p>C - <code>GFileType</code></p>
+<a class="header" href="#file_type_unknown--0" id="file_type_unknown--0"><h3>FILE_TYPE_UNKNOWN = 0</h3></a>
+<p>File's type is unknown.</p>
+<a class="header" href="#file_type_regular--1" id="file_type_regular--1"><h3>FILE_TYPE_REGULAR = 1</h3></a>
+<p>File handle represents a regular file.</p>
+<a class="header" href="#file_type_directory--2" id="file_type_directory--2"><h3>FILE_TYPE_DIRECTORY = 2</h3></a>
+<p>File handle represents a directory.</p>
+<a class="header" href="#file_type_symbolic_link--3" id="file_type_symbolic_link--3"><h3>FILE_TYPE_SYMBOLIC_LINK = 3</h3></a>
+<p>File handle represents a symbolic link
+(Unix systems).</p>
+<a class="header" href="#file_type_special--4" id="file_type_special--4"><h3>FILE_TYPE_SPECIAL = 4</h3></a>
+<p>File is a &quot;special&quot; file, such as a socket, fifo,
+block device, or character device.</p>
+<a class="header" href="#file_type_shortcut--5" id="file_type_shortcut--5"><h3>FILE_TYPE_SHORTCUT = 5</h3></a>
+<p>File is a shortcut (Windows systems).</p>
+<a class="header" href="#file_type_mountable--6" id="file_type_mountable--6"><h3>FILE_TYPE_MOUNTABLE = 6</h3></a>
+<p>File is a mountable location.</p>
 <a class="header" href="#filesystempreviewtype" id="filesystempreviewtype"><h2><code>FilesystemPreviewType</code></h2></a>
 <p>Indicates a hint from the file system whether files should be
 previewed in a file manager. Returned as the value of the key
 #G_FILE_ATTRIBUTE_FILESYSTEM_USE_PREVIEW.</p>
-<ul>
-<li>FILESYSTEM_PREVIEW_TYPE_IF_ALWAYS = 0</li>
-<li>FILESYSTEM_PREVIEW_TYPE_IF_LOCAL = 1</li>
-<li>FILESYSTEM_PREVIEW_TYPE_NEVER = 2</li>
-</ul>
 <p>C - <code>GFilesystemPreviewType</code></p>
+<a class="header" href="#filesystem_preview_type_if_always--0" id="filesystem_preview_type_if_always--0"><h3>FILESYSTEM_PREVIEW_TYPE_IF_ALWAYS = 0</h3></a>
+<p>Only preview files if user has explicitly requested it.</p>
+<a class="header" href="#filesystem_preview_type_if_local--1" id="filesystem_preview_type_if_local--1"><h3>FILESYSTEM_PREVIEW_TYPE_IF_LOCAL = 1</h3></a>
+<p>Preview files if user has requested preview of &quot;local&quot; files.</p>
+<a class="header" href="#filesystem_preview_type_never--2" id="filesystem_preview_type_never--2"><h3>FILESYSTEM_PREVIEW_TYPE_NEVER = 2</h3></a>
+<p>Never preview files.</p>
 <a class="header" href="#ioerrorenum" id="ioerrorenum"><h2><code>IOErrorEnum</code></h2></a>
 <p>Error codes returned by GIO functions.</p>
 <p>Note that this domain may be extended in future GLib releases. In
@@ -362,110 +483,197 @@ if (g_error_matches (error, G_IO_ERROR, G_IO_ERROR_FAILED))
 ]|
 but should instead treat all unrecognized error codes the same as
 #G_IO_ERROR_FAILED.</p>
-<ul>
-<li>IO_ERROR_FAILED = 0</li>
-<li>IO_ERROR_NOT_FOUND = 1</li>
-<li>IO_ERROR_EXISTS = 2</li>
-<li>IO_ERROR_IS_DIRECTORY = 3</li>
-<li>IO_ERROR_NOT_DIRECTORY = 4</li>
-<li>IO_ERROR_NOT_EMPTY = 5</li>
-<li>IO_ERROR_NOT_REGULAR_FILE = 6</li>
-<li>IO_ERROR_NOT_SYMBOLIC_LINK = 7</li>
-<li>IO_ERROR_NOT_MOUNTABLE_FILE = 8</li>
-<li>IO_ERROR_FILENAME_TOO_LONG = 9</li>
-<li>IO_ERROR_INVALID_FILENAME = 10</li>
-<li>IO_ERROR_TOO_MANY_LINKS = 11</li>
-<li>IO_ERROR_NO_SPACE = 12</li>
-<li>IO_ERROR_INVALID_ARGUMENT = 13</li>
-<li>IO_ERROR_PERMISSION_DENIED = 14</li>
-<li>IO_ERROR_NOT_SUPPORTED = 15</li>
-<li>IO_ERROR_NOT_MOUNTED = 16</li>
-<li>IO_ERROR_ALREADY_MOUNTED = 17</li>
-<li>IO_ERROR_CLOSED = 18</li>
-<li>IO_ERROR_CANCELLED = 19</li>
-<li>IO_ERROR_PENDING = 20</li>
-<li>IO_ERROR_READ_ONLY = 21</li>
-<li>IO_ERROR_CANT_CREATE_BACKUP = 22</li>
-<li>IO_ERROR_WRONG_ETAG = 23</li>
-<li>IO_ERROR_TIMED_OUT = 24</li>
-<li>IO_ERROR_WOULD_RECURSE = 25</li>
-<li>IO_ERROR_BUSY = 26</li>
-<li>IO_ERROR_WOULD_BLOCK = 27</li>
-<li>IO_ERROR_HOST_NOT_FOUND = 28</li>
-<li>IO_ERROR_WOULD_MERGE = 29</li>
-<li>IO_ERROR_FAILED_HANDLED = 30</li>
-<li>IO_ERROR_TOO_MANY_OPEN_FILES = 31</li>
-<li>IO_ERROR_NOT_INITIALIZED = 32</li>
-<li>IO_ERROR_ADDRESS_IN_USE = 33</li>
-<li>IO_ERROR_PARTIAL_INPUT = 34</li>
-<li>IO_ERROR_INVALID_DATA = 35</li>
-<li>IO_ERROR_DBUS_ERROR = 36</li>
-<li>IO_ERROR_HOST_UNREACHABLE = 37</li>
-<li>IO_ERROR_NETWORK_UNREACHABLE = 38</li>
-<li>IO_ERROR_CONNECTION_REFUSED = 39</li>
-<li>IO_ERROR_PROXY_FAILED = 40</li>
-<li>IO_ERROR_PROXY_AUTH_FAILED = 41</li>
-<li>IO_ERROR_PROXY_NEED_AUTH = 42</li>
-<li>IO_ERROR_PROXY_NOT_ALLOWED = 43</li>
-<li>IO_ERROR_BROKEN_PIPE = 44</li>
-<li>IO_ERROR_CONNECTION_CLOSED = 44</li>
-<li>IO_ERROR_NOT_CONNECTED = 45</li>
-<li>IO_ERROR_MESSAGE_TOO_LARGE = 46</li>
-</ul>
 <p>C - <code>GIOErrorEnum</code></p>
+<a class="header" href="#io_error_failed--0" id="io_error_failed--0"><h3>IO_ERROR_FAILED = 0</h3></a>
+<p>Generic error condition for when an operation fails
+and no more specific #GIOErrorEnum value is defined.</p>
+<a class="header" href="#io_error_not_found--1" id="io_error_not_found--1"><h3>IO_ERROR_NOT_FOUND = 1</h3></a>
+<p>File not found.</p>
+<a class="header" href="#io_error_exists--2" id="io_error_exists--2"><h3>IO_ERROR_EXISTS = 2</h3></a>
+<p>File already exists.</p>
+<a class="header" href="#io_error_is_directory--3" id="io_error_is_directory--3"><h3>IO_ERROR_IS_DIRECTORY = 3</h3></a>
+<p>File is a directory.</p>
+<a class="header" href="#io_error_not_directory--4" id="io_error_not_directory--4"><h3>IO_ERROR_NOT_DIRECTORY = 4</h3></a>
+<p>File is not a directory.</p>
+<a class="header" href="#io_error_not_empty--5" id="io_error_not_empty--5"><h3>IO_ERROR_NOT_EMPTY = 5</h3></a>
+<p>File is a directory that isn't empty.</p>
+<a class="header" href="#io_error_not_regular_file--6" id="io_error_not_regular_file--6"><h3>IO_ERROR_NOT_REGULAR_FILE = 6</h3></a>
+<p>File is not a regular file.</p>
+<a class="header" href="#io_error_not_symbolic_link--7" id="io_error_not_symbolic_link--7"><h3>IO_ERROR_NOT_SYMBOLIC_LINK = 7</h3></a>
+<p>File is not a symbolic link.</p>
+<a class="header" href="#io_error_not_mountable_file--8" id="io_error_not_mountable_file--8"><h3>IO_ERROR_NOT_MOUNTABLE_FILE = 8</h3></a>
+<p>File cannot be mounted.</p>
+<a class="header" href="#io_error_filename_too_long--9" id="io_error_filename_too_long--9"><h3>IO_ERROR_FILENAME_TOO_LONG = 9</h3></a>
+<p>Filename is too many characters.</p>
+<a class="header" href="#io_error_invalid_filename--10" id="io_error_invalid_filename--10"><h3>IO_ERROR_INVALID_FILENAME = 10</h3></a>
+<p>Filename is invalid or contains invalid characters.</p>
+<a class="header" href="#io_error_too_many_links--11" id="io_error_too_many_links--11"><h3>IO_ERROR_TOO_MANY_LINKS = 11</h3></a>
+<p>File contains too many symbolic links.</p>
+<a class="header" href="#io_error_no_space--12" id="io_error_no_space--12"><h3>IO_ERROR_NO_SPACE = 12</h3></a>
+<p>No space left on drive.</p>
+<a class="header" href="#io_error_invalid_argument--13" id="io_error_invalid_argument--13"><h3>IO_ERROR_INVALID_ARGUMENT = 13</h3></a>
+<p>Invalid argument.</p>
+<a class="header" href="#io_error_permission_denied--14" id="io_error_permission_denied--14"><h3>IO_ERROR_PERMISSION_DENIED = 14</h3></a>
+<p>Permission denied.</p>
+<a class="header" href="#io_error_not_supported--15" id="io_error_not_supported--15"><h3>IO_ERROR_NOT_SUPPORTED = 15</h3></a>
+<p>Operation (or one of its parameters) not supported</p>
+<a class="header" href="#io_error_not_mounted--16" id="io_error_not_mounted--16"><h3>IO_ERROR_NOT_MOUNTED = 16</h3></a>
+<p>File isn't mounted.</p>
+<a class="header" href="#io_error_already_mounted--17" id="io_error_already_mounted--17"><h3>IO_ERROR_ALREADY_MOUNTED = 17</h3></a>
+<p>File is already mounted.</p>
+<a class="header" href="#io_error_closed--18" id="io_error_closed--18"><h3>IO_ERROR_CLOSED = 18</h3></a>
+<p>File was closed.</p>
+<a class="header" href="#io_error_cancelled--19" id="io_error_cancelled--19"><h3>IO_ERROR_CANCELLED = 19</h3></a>
+<p>Operation was cancelled. See #GCancellable.</p>
+<a class="header" href="#io_error_pending--20" id="io_error_pending--20"><h3>IO_ERROR_PENDING = 20</h3></a>
+<p>Operations are still pending.</p>
+<a class="header" href="#io_error_read_only--21" id="io_error_read_only--21"><h3>IO_ERROR_READ_ONLY = 21</h3></a>
+<p>File is read only.</p>
+<a class="header" href="#io_error_cant_create_backup--22" id="io_error_cant_create_backup--22"><h3>IO_ERROR_CANT_CREATE_BACKUP = 22</h3></a>
+<p>Backup couldn't be created.</p>
+<a class="header" href="#io_error_wrong_etag--23" id="io_error_wrong_etag--23"><h3>IO_ERROR_WRONG_ETAG = 23</h3></a>
+<p>File's Entity Tag was incorrect.</p>
+<a class="header" href="#io_error_timed_out--24" id="io_error_timed_out--24"><h3>IO_ERROR_TIMED_OUT = 24</h3></a>
+<p>Operation timed out.</p>
+<a class="header" href="#io_error_would_recurse--25" id="io_error_would_recurse--25"><h3>IO_ERROR_WOULD_RECURSE = 25</h3></a>
+<p>Operation would be recursive.</p>
+<a class="header" href="#io_error_busy--26" id="io_error_busy--26"><h3>IO_ERROR_BUSY = 26</h3></a>
+<p>File is busy.</p>
+<a class="header" href="#io_error_would_block--27" id="io_error_would_block--27"><h3>IO_ERROR_WOULD_BLOCK = 27</h3></a>
+<p>Operation would block.</p>
+<a class="header" href="#io_error_host_not_found--28" id="io_error_host_not_found--28"><h3>IO_ERROR_HOST_NOT_FOUND = 28</h3></a>
+<p>Host couldn't be found (remote operations).</p>
+<a class="header" href="#io_error_would_merge--29" id="io_error_would_merge--29"><h3>IO_ERROR_WOULD_MERGE = 29</h3></a>
+<p>Operation would merge files.</p>
+<a class="header" href="#io_error_failed_handled--30" id="io_error_failed_handled--30"><h3>IO_ERROR_FAILED_HANDLED = 30</h3></a>
+<p>Operation failed and a helper program has
+already interacted with the user. Do not display any error dialog.</p>
+<a class="header" href="#io_error_too_many_open_files--31" id="io_error_too_many_open_files--31"><h3>IO_ERROR_TOO_MANY_OPEN_FILES = 31</h3></a>
+<p>The current process has too many files
+open and can't open any more. Duplicate descriptors do count toward
+this limit. Since 2.20</p>
+<a class="header" href="#io_error_not_initialized--32" id="io_error_not_initialized--32"><h3>IO_ERROR_NOT_INITIALIZED = 32</h3></a>
+<p>The object has not been initialized. Since 2.22</p>
+<a class="header" href="#io_error_address_in_use--33" id="io_error_address_in_use--33"><h3>IO_ERROR_ADDRESS_IN_USE = 33</h3></a>
+<p>The requested address is already in use. Since 2.22</p>
+<a class="header" href="#io_error_partial_input--34" id="io_error_partial_input--34"><h3>IO_ERROR_PARTIAL_INPUT = 34</h3></a>
+<p>Need more input to finish operation. Since 2.24</p>
+<a class="header" href="#io_error_invalid_data--35" id="io_error_invalid_data--35"><h3>IO_ERROR_INVALID_DATA = 35</h3></a>
+<p>The input data was invalid. Since 2.24</p>
+<a class="header" href="#io_error_dbus_error--36" id="io_error_dbus_error--36"><h3>IO_ERROR_DBUS_ERROR = 36</h3></a>
+<p>A remote object generated an error that
+doesn't correspond to a locally registered #GError error
+domain. Use g_dbus_error_get_remote_error() to extract the D-Bus
+error name and g_dbus_error_strip_remote_error() to fix up the
+message so it matches what was received on the wire. Since 2.26.</p>
+<a class="header" href="#io_error_host_unreachable--37" id="io_error_host_unreachable--37"><h3>IO_ERROR_HOST_UNREACHABLE = 37</h3></a>
+<p>Host unreachable. Since 2.26</p>
+<a class="header" href="#io_error_network_unreachable--38" id="io_error_network_unreachable--38"><h3>IO_ERROR_NETWORK_UNREACHABLE = 38</h3></a>
+<p>Network unreachable. Since 2.26</p>
+<a class="header" href="#io_error_connection_refused--39" id="io_error_connection_refused--39"><h3>IO_ERROR_CONNECTION_REFUSED = 39</h3></a>
+<p>Connection refused. Since 2.26</p>
+<a class="header" href="#io_error_proxy_failed--40" id="io_error_proxy_failed--40"><h3>IO_ERROR_PROXY_FAILED = 40</h3></a>
+<p>Connection to proxy server failed. Since 2.26</p>
+<a class="header" href="#io_error_proxy_auth_failed--41" id="io_error_proxy_auth_failed--41"><h3>IO_ERROR_PROXY_AUTH_FAILED = 41</h3></a>
+<p>Proxy authentication failed. Since 2.26</p>
+<a class="header" href="#io_error_proxy_need_auth--42" id="io_error_proxy_need_auth--42"><h3>IO_ERROR_PROXY_NEED_AUTH = 42</h3></a>
+<p>Proxy server needs authentication. Since 2.26</p>
+<a class="header" href="#io_error_proxy_not_allowed--43" id="io_error_proxy_not_allowed--43"><h3>IO_ERROR_PROXY_NOT_ALLOWED = 43</h3></a>
+<p>Proxy connection is not allowed by ruleset.
+Since 2.26</p>
+<a class="header" href="#io_error_broken_pipe--44" id="io_error_broken_pipe--44"><h3>IO_ERROR_BROKEN_PIPE = 44</h3></a>
+<p>Broken pipe. Since 2.36</p>
+<a class="header" href="#io_error_connection_closed--44" id="io_error_connection_closed--44"><h3>IO_ERROR_CONNECTION_CLOSED = 44</h3></a>
+<p>Connection closed by peer. Note that this
+is the same code as %G_IO_ERROR_BROKEN_PIPE; before 2.44 some
+&quot;connection closed&quot; errors returned %G_IO_ERROR_BROKEN_PIPE, but others
+returned %G_IO_ERROR_FAILED. Now they should all return the same
+value, which has this more logical name. Since 2.44.</p>
+<a class="header" href="#io_error_not_connected--45" id="io_error_not_connected--45"><h3>IO_ERROR_NOT_CONNECTED = 45</h3></a>
+<p>Transport endpoint is not connected. Since 2.44</p>
+<a class="header" href="#io_error_message_too_large--46" id="io_error_message_too_large--46"><h3>IO_ERROR_MESSAGE_TOO_LARGE = 46</h3></a>
+<p>Message too large. Since 2.48.</p>
 <a class="header" href="#iomodulescopeflags" id="iomodulescopeflags"><h2><code>IOModuleScopeFlags</code></h2></a>
 <p>Flags for use with g_io_module_scope_new().</p>
-<ul>
-<li>IO_MODULE_SCOPE_NONE = 0</li>
-<li>IO_MODULE_SCOPE_BLOCK_DUPLICATES = 1</li>
-</ul>
 <p>C - <code>GIOModuleScopeFlags</code></p>
+<a class="header" href="#io_module_scope_none--0" id="io_module_scope_none--0"><h3>IO_MODULE_SCOPE_NONE = 0</h3></a>
+<p>No module scan flags</p>
+<a class="header" href="#io_module_scope_block_duplicates--1" id="io_module_scope_block_duplicates--1"><h3>IO_MODULE_SCOPE_BLOCK_DUPLICATES = 1</h3></a>
+<p>When using this scope to load or
+scan modules, automatically block a modules which has the same base
+basename as previously loaded module.</p>
 <a class="header" href="#mountoperationresult" id="mountoperationresult"><h2><code>MountOperationResult</code></h2></a>
 <p>#GMountOperationResult is returned as a result when a request for
 information is send by the mounting operation.</p>
-<ul>
-<li>MOUNT_OPERATION_HANDLED = 0</li>
-<li>MOUNT_OPERATION_ABORTED = 1</li>
-<li>MOUNT_OPERATION_UNHANDLED = 2</li>
-</ul>
 <p>C - <code>GMountOperationResult</code></p>
+<a class="header" href="#mount_operation_handled--0" id="mount_operation_handled--0"><h3>MOUNT_OPERATION_HANDLED = 0</h3></a>
+<p>The request was fulfilled and the
+user specified data is now available</p>
+<a class="header" href="#mount_operation_aborted--1" id="mount_operation_aborted--1"><h3>MOUNT_OPERATION_ABORTED = 1</h3></a>
+<p>The user requested the mount operation
+to be aborted</p>
+<a class="header" href="#mount_operation_unhandled--2" id="mount_operation_unhandled--2"><h3>MOUNT_OPERATION_UNHANDLED = 2</h3></a>
+<p>The request was unhandled (i.e. not
+implemented)</p>
 <a class="header" href="#networkconnectivity" id="networkconnectivity"><h2><code>NetworkConnectivity</code></h2></a>
 <p>The host's network connectivity state, as reported by #GNetworkMonitor.</p>
-<ul>
-<li>NETWORK_CONNECTIVITY_LOCAL = 1</li>
-<li>NETWORK_CONNECTIVITY_LIMITED = 2</li>
-<li>NETWORK_CONNECTIVITY_PORTAL = 3</li>
-<li>NETWORK_CONNECTIVITY_FULL = 4</li>
-</ul>
 <p>C - <code>GNetworkConnectivity</code></p>
+<a class="header" href="#network_connectivity_local--1" id="network_connectivity_local--1"><h3>NETWORK_CONNECTIVITY_LOCAL = 1</h3></a>
+<p>The host is not configured with a
+route to the Internet; it may or may not be connected to a local
+network.</p>
+<a class="header" href="#network_connectivity_limited--2" id="network_connectivity_limited--2"><h3>NETWORK_CONNECTIVITY_LIMITED = 2</h3></a>
+<p>The host is connected to a network, but
+does not appear to be able to reach the full Internet, perhaps
+due to upstream network problems.</p>
+<a class="header" href="#network_connectivity_portal--3" id="network_connectivity_portal--3"><h3>NETWORK_CONNECTIVITY_PORTAL = 3</h3></a>
+<p>The host is behind a captive portal and
+cannot reach the full Internet.</p>
+<a class="header" href="#network_connectivity_full--4" id="network_connectivity_full--4"><h3>NETWORK_CONNECTIVITY_FULL = 4</h3></a>
+<p>The host is connected to a network, and
+appears to be able to reach the full Internet.</p>
 <a class="header" href="#notificationpriority" id="notificationpriority"><h2><code>NotificationPriority</code></h2></a>
 <p>Priority levels for #GNotifications.</p>
-<ul>
-<li>NOTIFICATION_PRIORITY_NORMAL = 0</li>
-<li>NOTIFICATION_PRIORITY_LOW = 1</li>
-<li>NOTIFICATION_PRIORITY_HIGH = 2</li>
-<li>NOTIFICATION_PRIORITY_URGENT = 3</li>
-</ul>
 <p>C - <code>GNotificationPriority</code></p>
+<a class="header" href="#notification_priority_normal--0" id="notification_priority_normal--0"><h3>NOTIFICATION_PRIORITY_NORMAL = 0</h3></a>
+<p>the default priority, to be used for the
+majority of notifications (for example email messages, software updates,
+completed download/sync operations)</p>
+<a class="header" href="#notification_priority_low--1" id="notification_priority_low--1"><h3>NOTIFICATION_PRIORITY_LOW = 1</h3></a>
+<p>for notifications that do not require
+immediate attention - typically used for contextual background
+information, such as contact birthdays or local weather</p>
+<a class="header" href="#notification_priority_high--2" id="notification_priority_high--2"><h3>NOTIFICATION_PRIORITY_HIGH = 2</h3></a>
+<p>for events that require more attention,
+usually because responses are time-sensitive (for example chat and SMS
+messages or alarms)</p>
+<a class="header" href="#notification_priority_urgent--3" id="notification_priority_urgent--3"><h3>NOTIFICATION_PRIORITY_URGENT = 3</h3></a>
+<p>for urgent notifications, or notifications
+that require a response in a short space of time (for example phone calls
+or emergency warnings)</p>
 <a class="header" href="#passwordsave" id="passwordsave"><h2><code>PasswordSave</code></h2></a>
 <p>#GPasswordSave is used to indicate the lifespan of a saved password.</p>
 <p>#Gvfs stores passwords in the Gnome keyring when this flag allows it
 to, and later retrieves it again from there.</p>
-<ul>
-<li>PASSWORD_SAVE_NEVER = 0</li>
-<li>PASSWORD_SAVE_FOR_SESSION = 1</li>
-<li>PASSWORD_SAVE_PERMANENTLY = 2</li>
-</ul>
 <p>C - <code>GPasswordSave</code></p>
+<a class="header" href="#password_save_never--0" id="password_save_never--0"><h3>PASSWORD_SAVE_NEVER = 0</h3></a>
+<p>never save a password.</p>
+<a class="header" href="#password_save_for_session--1" id="password_save_for_session--1"><h3>PASSWORD_SAVE_FOR_SESSION = 1</h3></a>
+<p>save a password for the session.</p>
+<a class="header" href="#password_save_permanently--2" id="password_save_permanently--2"><h3>PASSWORD_SAVE_PERMANENTLY = 2</h3></a>
+<p>save a password permanently.</p>
 <a class="header" href="#resolvererror" id="resolvererror"><h2><code>ResolverError</code></h2></a>
 <p>An error code used with %G_RESOLVER_ERROR in a #GError returned
 from a #GResolver routine.</p>
-<ul>
-<li>RESOLVER_ERROR_NOT_FOUND = 0</li>
-<li>RESOLVER_ERROR_TEMPORARY_FAILURE = 1</li>
-<li>RESOLVER_ERROR_INTERNAL = 2</li>
-</ul>
 <p>C - <code>GResolverError</code></p>
+<a class="header" href="#resolver_error_not_found--0" id="resolver_error_not_found--0"><h3>RESOLVER_ERROR_NOT_FOUND = 0</h3></a>
+<p>the requested name/address/service was not
+found</p>
+<a class="header" href="#resolver_error_temporary_failure--1" id="resolver_error_temporary_failure--1"><h3>RESOLVER_ERROR_TEMPORARY_FAILURE = 1</h3></a>
+<p>the requested information could not
+be looked up due to a network error or similar problem</p>
+<a class="header" href="#resolver_error_internal--2" id="resolver_error_internal--2"><h3>RESOLVER_ERROR_INTERNAL = 2</h3></a>
+<p>unknown error</p>
 <a class="header" href="#resolverrecordtype" id="resolverrecordtype"><h2><code>ResolverRecordType</code></h2></a>
 <p>The type of record that g_resolver_lookup_records() or
 g_resolver_lookup_records_async() should retrieve. The records are returned
@@ -486,60 +694,83 @@ interval as guint32, the retry interval as a guint32, the expire timeout
 as a guint32, and the ttl as a guint32.</p>
 <p>%G_RESOLVER_RECORD_NS records are returned as variants with the signature
 '(s)', representing a string of the hostname of the name server.</p>
-<ul>
-<li>RESOLVER_RECORD_SRV = 1</li>
-<li>RESOLVER_RECORD_MX = 2</li>
-<li>RESOLVER_RECORD_TXT = 3</li>
-<li>RESOLVER_RECORD_SOA = 4</li>
-<li>RESOLVER_RECORD_NS = 5</li>
-</ul>
 <p>C - <code>GResolverRecordType</code></p>
+<a class="header" href="#resolver_record_srv--1" id="resolver_record_srv--1"><h3>RESOLVER_RECORD_SRV = 1</h3></a>
+<p>lookup DNS SRV records for a domain</p>
+<a class="header" href="#resolver_record_mx--2" id="resolver_record_mx--2"><h3>RESOLVER_RECORD_MX = 2</h3></a>
+<p>lookup DNS MX records for a domain</p>
+<a class="header" href="#resolver_record_txt--3" id="resolver_record_txt--3"><h3>RESOLVER_RECORD_TXT = 3</h3></a>
+<p>lookup DNS TXT records for a name</p>
+<a class="header" href="#resolver_record_soa--4" id="resolver_record_soa--4"><h3>RESOLVER_RECORD_SOA = 4</h3></a>
+<p>lookup DNS SOA records for a zone</p>
+<a class="header" href="#resolver_record_ns--5" id="resolver_record_ns--5"><h3>RESOLVER_RECORD_NS = 5</h3></a>
+<p>lookup DNS NS records for a domain</p>
 <a class="header" href="#resourceerror" id="resourceerror"><h2><code>ResourceError</code></h2></a>
 <p>An error code used with %G_RESOURCE_ERROR in a #GError returned
 from a #GResource routine.</p>
-<ul>
-<li>RESOURCE_ERROR_NOT_FOUND = 0</li>
-<li>RESOURCE_ERROR_INTERNAL = 1</li>
-</ul>
 <p>C - <code>GResourceError</code></p>
+<a class="header" href="#resource_error_not_found--0" id="resource_error_not_found--0"><h3>RESOURCE_ERROR_NOT_FOUND = 0</h3></a>
+<p>no file was found at the requested path</p>
+<a class="header" href="#resource_error_internal--1" id="resource_error_internal--1"><h3>RESOURCE_ERROR_INTERNAL = 1</h3></a>
+<p>unknown error</p>
 <a class="header" href="#socketclientevent" id="socketclientevent"><h2><code>SocketClientEvent</code></h2></a>
 <p>Describes an event occurring on a #GSocketClient. See the
 #GSocketClient::event signal for more details.</p>
 <p>Additional values may be added to this type in the future.</p>
-<ul>
-<li>SOCKET_CLIENT_RESOLVING = 0</li>
-<li>SOCKET_CLIENT_RESOLVED = 1</li>
-<li>SOCKET_CLIENT_CONNECTING = 2</li>
-<li>SOCKET_CLIENT_CONNECTED = 3</li>
-<li>SOCKET_CLIENT_PROXY_NEGOTIATING = 4</li>
-<li>SOCKET_CLIENT_PROXY_NEGOTIATED = 5</li>
-<li>SOCKET_CLIENT_TLS_HANDSHAKING = 6</li>
-<li>SOCKET_CLIENT_TLS_HANDSHAKED = 7</li>
-<li>SOCKET_CLIENT_COMPLETE = 8</li>
-</ul>
 <p>C - <code>GSocketClientEvent</code></p>
+<a class="header" href="#socket_client_resolving--0" id="socket_client_resolving--0"><h3>SOCKET_CLIENT_RESOLVING = 0</h3></a>
+<p>The client is doing a DNS lookup.</p>
+<a class="header" href="#socket_client_resolved--1" id="socket_client_resolved--1"><h3>SOCKET_CLIENT_RESOLVED = 1</h3></a>
+<p>The client has completed a DNS lookup.</p>
+<a class="header" href="#socket_client_connecting--2" id="socket_client_connecting--2"><h3>SOCKET_CLIENT_CONNECTING = 2</h3></a>
+<p>The client is connecting to a remote
+host (either a proxy or the destination server).</p>
+<a class="header" href="#socket_client_connected--3" id="socket_client_connected--3"><h3>SOCKET_CLIENT_CONNECTED = 3</h3></a>
+<p>The client has connected to a remote
+host.</p>
+<a class="header" href="#socket_client_proxy_negotiating--4" id="socket_client_proxy_negotiating--4"><h3>SOCKET_CLIENT_PROXY_NEGOTIATING = 4</h3></a>
+<p>The client is negotiating
+with a proxy to connect to the destination server.</p>
+<a class="header" href="#socket_client_proxy_negotiated--5" id="socket_client_proxy_negotiated--5"><h3>SOCKET_CLIENT_PROXY_NEGOTIATED = 5</h3></a>
+<p>The client has negotiated
+with the proxy server.</p>
+<a class="header" href="#socket_client_tls_handshaking--6" id="socket_client_tls_handshaking--6"><h3>SOCKET_CLIENT_TLS_HANDSHAKING = 6</h3></a>
+<p>The client is performing a
+TLS handshake.</p>
+<a class="header" href="#socket_client_tls_handshaked--7" id="socket_client_tls_handshaked--7"><h3>SOCKET_CLIENT_TLS_HANDSHAKED = 7</h3></a>
+<p>The client has performed a
+TLS handshake.</p>
+<a class="header" href="#socket_client_complete--8" id="socket_client_complete--8"><h3>SOCKET_CLIENT_COMPLETE = 8</h3></a>
+<p>The client is done with a particular
+#GSocketConnectable.</p>
 <a class="header" href="#socketfamily" id="socketfamily"><h2><code>SocketFamily</code></h2></a>
 <p>The protocol family of a #GSocketAddress. (These values are
 identical to the system defines %AF_INET, %AF_INET6 and %AF_UNIX,
 if available.)</p>
-<ul>
-<li>SOCKET_FAMILY_INVALID = 0</li>
-<li>SOCKET_FAMILY_UNIX = 1</li>
-<li>SOCKET_FAMILY_IPV4 = 2</li>
-<li>SOCKET_FAMILY_IPV6 = 10</li>
-</ul>
 <p>C - <code>GSocketFamily</code></p>
+<a class="header" href="#socket_family_invalid--0" id="socket_family_invalid--0"><h3>SOCKET_FAMILY_INVALID = 0</h3></a>
+<p>no address family</p>
+<a class="header" href="#socket_family_unix--1" id="socket_family_unix--1"><h3>SOCKET_FAMILY_UNIX = 1</h3></a>
+<p>the UNIX domain family</p>
+<a class="header" href="#socket_family_ipv4--2" id="socket_family_ipv4--2"><h3>SOCKET_FAMILY_IPV4 = 2</h3></a>
+<p>the IPv4 family</p>
+<a class="header" href="#socket_family_ipv6--10" id="socket_family_ipv6--10"><h3>SOCKET_FAMILY_IPV6 = 10</h3></a>
+<p>the IPv6 family</p>
 <a class="header" href="#socketlistenerevent" id="socketlistenerevent"><h2><code>SocketListenerEvent</code></h2></a>
 <p>Describes an event occurring on a #GSocketListener. See the
 #GSocketListener::event signal for more details.</p>
 <p>Additional values may be added to this type in the future.</p>
-<ul>
-<li>SOCKET_LISTENER_BINDING = 0</li>
-<li>SOCKET_LISTENER_BOUND = 1</li>
-<li>SOCKET_LISTENER_LISTENING = 2</li>
-<li>SOCKET_LISTENER_LISTENED = 3</li>
-</ul>
 <p>C - <code>GSocketListenerEvent</code></p>
+<a class="header" href="#socket_listener_binding--0" id="socket_listener_binding--0"><h3>SOCKET_LISTENER_BINDING = 0</h3></a>
+<p>The listener is about to bind a socket.</p>
+<a class="header" href="#socket_listener_bound--1" id="socket_listener_bound--1"><h3>SOCKET_LISTENER_BOUND = 1</h3></a>
+<p>The listener has bound a socket.</p>
+<a class="header" href="#socket_listener_listening--2" id="socket_listener_listening--2"><h3>SOCKET_LISTENER_LISTENING = 2</h3></a>
+<p>The listener is about to start
+listening on this socket.</p>
+<a class="header" href="#socket_listener_listened--3" id="socket_listener_listened--3"><h3>SOCKET_LISTENER_LISTENED = 3</h3></a>
+<p>The listener is now listening on
+this socket.</p>
 <a class="header" href="#socketprotocol" id="socketprotocol"><h2><code>SocketProtocol</code></h2></a>
 <p>A protocol identifier is specified when creating a #GSocket, which is a
 family/type specific identifier, where 0 means the default protocol for
@@ -547,80 +778,104 @@ the particular family/type.</p>
 <p>This enum contains a set of commonly available and used protocols. You
 can also pass any other identifiers handled by the platform in order to
 use protocols not listed here.</p>
-<ul>
-<li>SOCKET_PROTOCOL_UNKNOWN = -1</li>
-<li>SOCKET_PROTOCOL_DEFAULT = 0</li>
-<li>SOCKET_PROTOCOL_TCP = 6</li>
-<li>SOCKET_PROTOCOL_UDP = 17</li>
-<li>SOCKET_PROTOCOL_SCTP = 132</li>
-</ul>
 <p>C - <code>GSocketProtocol</code></p>
+<a class="header" href="#socket_protocol_unknown---1" id="socket_protocol_unknown---1"><h3>SOCKET_PROTOCOL_UNKNOWN = -1</h3></a>
+<p>The protocol type is unknown</p>
+<a class="header" href="#socket_protocol_default--0" id="socket_protocol_default--0"><h3>SOCKET_PROTOCOL_DEFAULT = 0</h3></a>
+<p>The default protocol for the family/type</p>
+<a class="header" href="#socket_protocol_tcp--6" id="socket_protocol_tcp--6"><h3>SOCKET_PROTOCOL_TCP = 6</h3></a>
+<p>TCP over IP</p>
+<a class="header" href="#socket_protocol_udp--17" id="socket_protocol_udp--17"><h3>SOCKET_PROTOCOL_UDP = 17</h3></a>
+<p>UDP over IP</p>
+<a class="header" href="#socket_protocol_sctp--132" id="socket_protocol_sctp--132"><h3>SOCKET_PROTOCOL_SCTP = 132</h3></a>
+<p>SCTP over IP</p>
 <a class="header" href="#sockettype" id="sockettype"><h2><code>SocketType</code></h2></a>
 <p>Flags used when creating a #GSocket. Some protocols may not implement
 all the socket types.</p>
-<ul>
-<li>SOCKET_TYPE_INVALID = 0</li>
-<li>SOCKET_TYPE_STREAM = 1</li>
-<li>SOCKET_TYPE_DATAGRAM = 2</li>
-<li>SOCKET_TYPE_SEQPACKET = 3</li>
-</ul>
 <p>C - <code>GSocketType</code></p>
+<a class="header" href="#socket_type_invalid--0" id="socket_type_invalid--0"><h3>SOCKET_TYPE_INVALID = 0</h3></a>
+<p>Type unknown or wrong</p>
+<a class="header" href="#socket_type_stream--1" id="socket_type_stream--1"><h3>SOCKET_TYPE_STREAM = 1</h3></a>
+<p>Reliable connection-based byte streams (e.g. TCP).</p>
+<a class="header" href="#socket_type_datagram--2" id="socket_type_datagram--2"><h3>SOCKET_TYPE_DATAGRAM = 2</h3></a>
+<p>Connectionless, unreliable datagram passing.
+(e.g. UDP)</p>
+<a class="header" href="#socket_type_seqpacket--3" id="socket_type_seqpacket--3"><h3>SOCKET_TYPE_SEQPACKET = 3</h3></a>
+<p>Reliable connection-based passing of datagrams
+of fixed maximum length (e.g. SCTP).</p>
 <a class="header" href="#tlsauthenticationmode" id="tlsauthenticationmode"><h2><code>TlsAuthenticationMode</code></h2></a>
 <p>The client authentication mode for a #GTlsServerConnection.</p>
-<ul>
-<li>TLS_AUTHENTICATION_NONE = 0</li>
-<li>TLS_AUTHENTICATION_REQUESTED = 1</li>
-<li>TLS_AUTHENTICATION_REQUIRED = 2</li>
-</ul>
 <p>C - <code>GTlsAuthenticationMode</code></p>
+<a class="header" href="#tls_authentication_none--0" id="tls_authentication_none--0"><h3>TLS_AUTHENTICATION_NONE = 0</h3></a>
+<p>client authentication not required</p>
+<a class="header" href="#tls_authentication_requested--1" id="tls_authentication_requested--1"><h3>TLS_AUTHENTICATION_REQUESTED = 1</h3></a>
+<p>client authentication is requested</p>
+<a class="header" href="#tls_authentication_required--2" id="tls_authentication_required--2"><h3>TLS_AUTHENTICATION_REQUIRED = 2</h3></a>
+<p>client authentication is required</p>
 <a class="header" href="#tlscertificaterequestflags" id="tlscertificaterequestflags"><h2><code>TlsCertificateRequestFlags</code></h2></a>
 <p>Flags for g_tls_interaction_request_certificate(),
 g_tls_interaction_request_certificate_async(), and
 g_tls_interaction_invoke_request_certificate().</p>
-<ul>
-<li>TLS_CERTIFICATE_REQUEST_NONE = 0</li>
-</ul>
 <p>C - <code>GTlsCertificateRequestFlags</code></p>
+<a class="header" href="#tls_certificate_request_none--0" id="tls_certificate_request_none--0"><h3>TLS_CERTIFICATE_REQUEST_NONE = 0</h3></a>
+<p>No flags</p>
 <a class="header" href="#tlsdatabaselookupflags" id="tlsdatabaselookupflags"><h2><code>TlsDatabaseLookupFlags</code></h2></a>
 <p>Flags for g_tls_database_lookup_certificate_for_handle(),
 g_tls_database_lookup_certificate_issuer(),
 and g_tls_database_lookup_certificates_issued_by().</p>
-<ul>
-<li>TLS_DATABASE_LOOKUP_NONE = 0</li>
-<li>TLS_DATABASE_LOOKUP_KEYPAIR = 1</li>
-</ul>
 <p>C - <code>GTlsDatabaseLookupFlags</code></p>
+<a class="header" href="#tls_database_lookup_none--0" id="tls_database_lookup_none--0"><h3>TLS_DATABASE_LOOKUP_NONE = 0</h3></a>
+<p>No lookup flags</p>
+<a class="header" href="#tls_database_lookup_keypair--1" id="tls_database_lookup_keypair--1"><h3>TLS_DATABASE_LOOKUP_KEYPAIR = 1</h3></a>
+<p>Restrict lookup to certificates that have
+a private key.</p>
 <a class="header" href="#tlserror" id="tlserror"><h2><code>TlsError</code></h2></a>
 <p>An error code used with %G_TLS_ERROR in a #GError returned from a
 TLS-related routine.</p>
-<ul>
-<li>TLS_ERROR_UNAVAILABLE = 0</li>
-<li>TLS_ERROR_MISC = 1</li>
-<li>TLS_ERROR_BAD_CERTIFICATE = 2</li>
-<li>TLS_ERROR_NOT_TLS = 3</li>
-<li>TLS_ERROR_HANDSHAKE = 4</li>
-<li>TLS_ERROR_CERTIFICATE_REQUIRED = 5</li>
-<li>TLS_ERROR_EOF = 6</li>
-</ul>
 <p>C - <code>GTlsError</code></p>
+<a class="header" href="#tls_error_unavailable--0" id="tls_error_unavailable--0"><h3>TLS_ERROR_UNAVAILABLE = 0</h3></a>
+<p>No TLS provider is available</p>
+<a class="header" href="#tls_error_misc--1" id="tls_error_misc--1"><h3>TLS_ERROR_MISC = 1</h3></a>
+<p>Miscellaneous TLS error</p>
+<a class="header" href="#tls_error_bad_certificate--2" id="tls_error_bad_certificate--2"><h3>TLS_ERROR_BAD_CERTIFICATE = 2</h3></a>
+<p>A certificate could not be parsed</p>
+<a class="header" href="#tls_error_not_tls--3" id="tls_error_not_tls--3"><h3>TLS_ERROR_NOT_TLS = 3</h3></a>
+<p>The TLS handshake failed because the
+peer does not seem to be a TLS server.</p>
+<a class="header" href="#tls_error_handshake--4" id="tls_error_handshake--4"><h3>TLS_ERROR_HANDSHAKE = 4</h3></a>
+<p>The TLS handshake failed because the
+peer's certificate was not acceptable.</p>
+<a class="header" href="#tls_error_certificate_required--5" id="tls_error_certificate_required--5"><h3>TLS_ERROR_CERTIFICATE_REQUIRED = 5</h3></a>
+<p>The TLS handshake failed because
+the server requested a client-side certificate, but none was
+provided. See g_tls_connection_set_certificate().</p>
+<a class="header" href="#tls_error_eof--6" id="tls_error_eof--6"><h3>TLS_ERROR_EOF = 6</h3></a>
+<p>The TLS connection was closed without proper
+notice, which may indicate an attack. See
+g_tls_connection_set_require_close_notify().</p>
 <a class="header" href="#tlsinteractionresult" id="tlsinteractionresult"><h2><code>TlsInteractionResult</code></h2></a>
 <p>#GTlsInteractionResult is returned by various functions in #GTlsInteraction
 when finishing an interaction request.</p>
-<ul>
-<li>TLS_INTERACTION_UNHANDLED = 0</li>
-<li>TLS_INTERACTION_HANDLED = 1</li>
-<li>TLS_INTERACTION_FAILED = 2</li>
-</ul>
 <p>C - <code>GTlsInteractionResult</code></p>
+<a class="header" href="#tls_interaction_unhandled--0" id="tls_interaction_unhandled--0"><h3>TLS_INTERACTION_UNHANDLED = 0</h3></a>
+<p>The interaction was unhandled (i.e. not
+implemented).</p>
+<a class="header" href="#tls_interaction_handled--1" id="tls_interaction_handled--1"><h3>TLS_INTERACTION_HANDLED = 1</h3></a>
+<p>The interaction completed, and resulting data
+is available.</p>
+<a class="header" href="#tls_interaction_failed--2" id="tls_interaction_failed--2"><h3>TLS_INTERACTION_FAILED = 2</h3></a>
+<p>The interaction has failed, or was cancelled.
+and the operation should be aborted.</p>
 <a class="header" href="#tlsrehandshakemode" id="tlsrehandshakemode"><h2><code>TlsRehandshakeMode</code></h2></a>
 <p>When to allow rehandshaking. See
 g_tls_connection_set_rehandshake_mode().</p>
-<ul>
-<li>TLS_REHANDSHAKE_NEVER = 0</li>
-<li>TLS_REHANDSHAKE_SAFELY = 1</li>
-<li>TLS_REHANDSHAKE_UNSAFELY = 2</li>
-</ul>
 <p>C - <code>GTlsRehandshakeMode</code></p>
+<a class="header" href="#tls_rehandshake_never--0" id="tls_rehandshake_never--0"><h3>TLS_REHANDSHAKE_NEVER = 0</h3></a>
+<p>Never allow rehandshaking</p>
+<a class="header" href="#tls_rehandshake_safely--1" id="tls_rehandshake_safely--1"><h3>TLS_REHANDSHAKE_SAFELY = 1</h3></a>
+<p>Allow safe rehandshaking only</p>
+<a class="header" href="#tls_rehandshake_unsafely--2" id="tls_rehandshake_unsafely--2"><h3>TLS_REHANDSHAKE_UNSAFELY = 2</h3></a>
+<p>Allow unsafe rehandshaking</p>
 <a class="header" href="#unixsocketaddresstype" id="unixsocketaddresstype"><h2><code>UnixSocketAddressType</code></h2></a>
 <p>The type of name used by a #GUnixSocketAddress.
 %G_UNIX_SOCKET_ADDRESS_PATH indicates a traditional unix domain
@@ -634,88 +889,28 @@ zeroes; this corresponds to %G_UNIX_SOCKET_ADDRESS_ABSTRACT_PADDED.
 However, many programs instead just use a portion of %sun_path, and
 pass an appropriate smaller length to bind() or connect(). This is
 %G_UNIX_SOCKET_ADDRESS_ABSTRACT.</p>
-<ul>
-<li>UNIX_SOCKET_ADDRESS_INVALID = 0</li>
-<li>UNIX_SOCKET_ADDRESS_ANONYMOUS = 1</li>
-<li>UNIX_SOCKET_ADDRESS_PATH = 2</li>
-<li>UNIX_SOCKET_ADDRESS_ABSTRACT = 3</li>
-<li>UNIX_SOCKET_ADDRESS_ABSTRACT_PADDED = 4</li>
-</ul>
 <p>C - <code>GUnixSocketAddressType</code></p>
+<a class="header" href="#unix_socket_address_invalid--0" id="unix_socket_address_invalid--0"><h3>UNIX_SOCKET_ADDRESS_INVALID = 0</h3></a>
+<p>invalid</p>
+<a class="header" href="#unix_socket_address_anonymous--1" id="unix_socket_address_anonymous--1"><h3>UNIX_SOCKET_ADDRESS_ANONYMOUS = 1</h3></a>
+<p>anonymous</p>
+<a class="header" href="#unix_socket_address_path--2" id="unix_socket_address_path--2"><h3>UNIX_SOCKET_ADDRESS_PATH = 2</h3></a>
+<p>a filesystem path</p>
+<a class="header" href="#unix_socket_address_abstract--3" id="unix_socket_address_abstract--3"><h3>UNIX_SOCKET_ADDRESS_ABSTRACT = 3</h3></a>
+<p>an abstract name</p>
+<a class="header" href="#unix_socket_address_abstract_padded--4" id="unix_socket_address_abstract_padded--4"><h3>UNIX_SOCKET_ADDRESS_ABSTRACT_PADDED = 4</h3></a>
+<p>an abstract name, 0-padded
+to the full length of a unix socket name</p>
 <a class="header" href="#zlibcompressorformat" id="zlibcompressorformat"><h2><code>ZlibCompressorFormat</code></h2></a>
 <p>Used to select the type of data format to use for #GZlibDecompressor
 and #GZlibCompressor.</p>
-<ul>
-<li>ZLIB_COMPRESSOR_FORMAT_ZLIB = 0</li>
-<li>ZLIB_COMPRESSOR_FORMAT_GZIP = 1</li>
-<li>ZLIB_COMPRESSOR_FORMAT_RAW = 2</li>
-</ul>
 <p>C - <code>GZlibCompressorFormat</code></p>
-<p>= %!s(int=0)</p>
-<ul>
-<li>TLS_DATABASE_LOOKUP_KEYPAIR = %!s(int=1)</li>
-</ul>
-<a class="header" href="#tlserror-1" id="tlserror-1"><h2><code>TlsError</code></h2></a>
-<p>An error code used with %G_TLS_ERROR in a #GError returned from a
-TLS-related routine.</p>
-<p>C - <code>GTlsError</code></p>
-<ul>
-<li>TLS_ERROR_UNAVAILABLE = %!s(int=0)</li>
-<li>TLS_ERROR_MISC = %!s(int=1)</li>
-<li>TLS_ERROR_BAD_CERTIFICATE = %!s(int=2)</li>
-<li>TLS_ERROR_NOT_TLS = %!s(int=3)</li>
-<li>TLS_ERROR_HANDSHAKE = %!s(int=4)</li>
-<li>TLS_ERROR_CERTIFICATE_REQUIRED = %!s(int=5)</li>
-<li>TLS_ERROR_EOF = %!s(int=6)</li>
-</ul>
-<a class="header" href="#tlsinteractionresult-1" id="tlsinteractionresult-1"><h2><code>TlsInteractionResult</code></h2></a>
-<p>#GTlsInteractionResult is returned by various functions in #GTlsInteraction
-when finishing an interaction request.</p>
-<p>C - <code>GTlsInteractionResult</code></p>
-<ul>
-<li>TLS_INTERACTION_UNHANDLED = %!s(int=0)</li>
-<li>TLS_INTERACTION_HANDLED = %!s(int=1)</li>
-<li>TLS_INTERACTION_FAILED = %!s(int=2)</li>
-</ul>
-<a class="header" href="#tlsrehandshakemode-1" id="tlsrehandshakemode-1"><h2><code>TlsRehandshakeMode</code></h2></a>
-<p>When to allow rehandshaking. See
-g_tls_connection_set_rehandshake_mode().</p>
-<p>C - <code>GTlsRehandshakeMode</code></p>
-<ul>
-<li>TLS_REHANDSHAKE_NEVER = %!s(int=0)</li>
-<li>TLS_REHANDSHAKE_SAFELY = %!s(int=1)</li>
-<li>TLS_REHANDSHAKE_UNSAFELY = %!s(int=2)</li>
-</ul>
-<a class="header" href="#unixsocketaddresstype-1" id="unixsocketaddresstype-1"><h2><code>UnixSocketAddressType</code></h2></a>
-<p>The type of name used by a #GUnixSocketAddress.
-%G_UNIX_SOCKET_ADDRESS_PATH indicates a traditional unix domain
-socket bound to a filesystem path. %G_UNIX_SOCKET_ADDRESS_ANONYMOUS
-indicates a socket not bound to any name (eg, a client-side socket,
-or a socket created with socketpair()).</p>
-<p>For abstract sockets, there are two incompatible ways of naming
-them; the man pages suggest using the entire <code>struct sockaddr_un</code>
-as the name, padding the unused parts of the %sun_path field with
-zeroes; this corresponds to %G_UNIX_SOCKET_ADDRESS_ABSTRACT_PADDED.
-However, many programs instead just use a portion of %sun_path, and
-pass an appropriate smaller length to bind() or connect(). This is
-%G_UNIX_SOCKET_ADDRESS_ABSTRACT.</p>
-<p>C - <code>GUnixSocketAddressType</code></p>
-<ul>
-<li>UNIX_SOCKET_ADDRESS_INVALID = %!s(int=0)</li>
-<li>UNIX_SOCKET_ADDRESS_ANONYMOUS = %!s(int=1)</li>
-<li>UNIX_SOCKET_ADDRESS_PATH = %!s(int=2)</li>
-<li>UNIX_SOCKET_ADDRESS_ABSTRACT = %!s(int=3)</li>
-<li>UNIX_SOCKET_ADDRESS_ABSTRACT_PADDED = %!s(int=4)</li>
-</ul>
-<a class="header" href="#zlibcompressorformat-1" id="zlibcompressorformat-1"><h2><code>ZlibCompressorFormat</code></h2></a>
-<p>Used to select the type of data format to use for #GZlibDecompressor
-and #GZlibCompressor.</p>
-<p>C - <code>GZlibCompressorFormat</code></p>
-<ul>
-<li>ZLIB_COMPRESSOR_FORMAT_ZLIB = %!s(int=0)</li>
-<li>ZLIB_COMPRESSOR_FORMAT_GZIP = %!s(int=1)</li>
-<li>ZLIB_COMPRESSOR_FORMAT_RAW = %!s(int=2)</li>
-</ul>
+<a class="header" href="#zlib_compressor_format_zlib--0" id="zlib_compressor_format_zlib--0"><h3>ZLIB_COMPRESSOR_FORMAT_ZLIB = 0</h3></a>
+<p>deflate compression with zlib header</p>
+<a class="header" href="#zlib_compressor_format_gzip--1" id="zlib_compressor_format_gzip--1"><h3>ZLIB_COMPRESSOR_FORMAT_GZIP = 1</h3></a>
+<p>gzip file format</p>
+<a class="header" href="#zlib_compressor_format_raw--2" id="zlib_compressor_format_raw--2"><h3>ZLIB_COMPRESSOR_FORMAT_RAW = 2</h3></a>
+<p>deflate compression with no header</p>
 
                     </main>
 

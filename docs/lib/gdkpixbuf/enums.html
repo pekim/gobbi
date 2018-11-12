@@ -140,10 +140,9 @@
 <a class="header" href="#colorspace" id="colorspace"><h2><code>Colorspace</code></h2></a>
 <p>This enumeration defines the color spaces that are supported by
 the gdk-pixbuf library.  Currently only RGB is supported.</p>
-<ul>
-<li>GDK_COLORSPACE_RGB = 0</li>
-</ul>
 <p>C - <code>GdkColorspace</code></p>
+<a class="header" href="#gdk_colorspace_rgb--0" id="gdk_colorspace_rgb--0"><h3>GDK_COLORSPACE_RGB = 0</h3></a>
+<p>Indicates a red/green/blue additive color space.</p>
 <a class="header" href="#interptype" id="interptype"><h2><code>InterpType</code></h2></a>
 <p>This enumeration describes the different interpolation modes that
 can be used with the scaling functions. @GDK_INTERP_NEAREST is
@@ -154,13 +153,29 @@ aren't sure what to choose, it has a good speed/quality balance.</p>
 Cubic filtering is missing from the list; hyperbolic
 interpolation is just as fast and results in higher quality.
 </note></p>
-<ul>
-<li>GDK_INTERP_NEAREST = 0</li>
-<li>GDK_INTERP_TILES = 1</li>
-<li>GDK_INTERP_BILINEAR = 2</li>
-<li>GDK_INTERP_HYPER = 3</li>
-</ul>
 <p>C - <code>GdkInterpType</code></p>
+<a class="header" href="#gdk_interp_nearest--0" id="gdk_interp_nearest--0"><h3>GDK_INTERP_NEAREST = 0</h3></a>
+<p>Nearest neighbor sampling; this is the fastest
+and lowest quality mode. Quality is normally unacceptable when scaling
+down, but may be OK when scaling up.</p>
+<a class="header" href="#gdk_interp_tiles--1" id="gdk_interp_tiles--1"><h3>GDK_INTERP_TILES = 1</h3></a>
+<p>This is an accurate simulation of the PostScript
+image operator without any interpolation enabled.  Each pixel is
+rendered as a tiny parallelogram of solid color, the edges of which
+are implemented with antialiasing.  It resembles nearest neighbor for
+enlargement, and bilinear for reduction.</p>
+<a class="header" href="#gdk_interp_bilinear--2" id="gdk_interp_bilinear--2"><h3>GDK_INTERP_BILINEAR = 2</h3></a>
+<p>Best quality/speed balance; use this mode by
+default. Bilinear interpolation.  For enlargement, it is
+equivalent to point-sampling the ideal bilinear-interpolated image.
+For reduction, it is equivalent to laying down small tiles and
+integrating over the coverage area.</p>
+<a class="header" href="#gdk_interp_hyper--3" id="gdk_interp_hyper--3"><h3>GDK_INTERP_HYPER = 3</h3></a>
+<p>This is the slowest and highest quality
+reconstruction function. It is derived from the hyperbolic filters in
+Wolberg's &quot;Digital Image Warping&quot;, and is formally defined as the
+hyperbolic-filter sampling the ideal hyperbolic-filter interpolated
+image (the filter is designed to be idempotent for 1:1 pixel mapping).</p>
 <a class="header" href="#pixbufalphamode" id="pixbufalphamode"><h2><code>PixbufAlphaMode</code></h2></a>
 <p>These values can be passed to
 gdk_pixbuf_xlib_render_to_drawable_alpha() to control how the alpha
@@ -170,41 +185,47 @@ the image.  In the future, when the X Window System gets an alpha
 channel extension, it will be possible to do full alpha
 compositing onto arbitrary drawables.  For now both cases fall
 back to a bilevel clipping mask.</p>
-<ul>
-<li>GDK_PIXBUF_ALPHA_BILEVEL = 0</li>
-<li>GDK_PIXBUF_ALPHA_FULL = 1</li>
-</ul>
 <p>C - <code>GdkPixbufAlphaMode</code></p>
+<a class="header" href="#gdk_pixbuf_alpha_bilevel--0" id="gdk_pixbuf_alpha_bilevel--0"><h3>GDK_PIXBUF_ALPHA_BILEVEL = 0</h3></a>
+<p>A bilevel clipping mask (black and white)
+will be created and used to draw the image.  Pixels below 0.5 opacity
+will be considered fully transparent, and all others will be
+considered fully opaque.</p>
+<a class="header" href="#gdk_pixbuf_alpha_full--1" id="gdk_pixbuf_alpha_full--1"><h3>GDK_PIXBUF_ALPHA_FULL = 1</h3></a>
+<p>For now falls back to #GDK_PIXBUF_ALPHA_BILEVEL.
+In the future it will do full alpha compositing.</p>
 <a class="header" href="#pixbuferror" id="pixbuferror"><h2><code>PixbufError</code></h2></a>
 <p>An error code in the #GDK_PIXBUF_ERROR domain. Many gdk-pixbuf
 operations can cause errors in this domain, or in the #G_FILE_ERROR
 domain.</p>
-<ul>
-<li>GDK_PIXBUF_ERROR_CORRUPT_IMAGE = 0</li>
-<li>GDK_PIXBUF_ERROR_INSUFFICIENT_MEMORY = 1</li>
-<li>GDK_PIXBUF_ERROR_BAD_OPTION = 2</li>
-<li>GDK_PIXBUF_ERROR_UNKNOWN_TYPE = 3</li>
-<li>GDK_PIXBUF_ERROR_UNSUPPORTED_OPERATION = 4</li>
-<li>GDK_PIXBUF_ERROR_FAILED = 5</li>
-<li>GDK_PIXBUF_ERROR_INCOMPLETE_ANIMATION = 6</li>
-</ul>
 <p>C - <code>GdkPixbufError</code></p>
+<a class="header" href="#gdk_pixbuf_error_corrupt_image--0" id="gdk_pixbuf_error_corrupt_image--0"><h3>GDK_PIXBUF_ERROR_CORRUPT_IMAGE = 0</h3></a>
+<p>An image file was broken somehow.</p>
+<a class="header" href="#gdk_pixbuf_error_insufficient_memory--1" id="gdk_pixbuf_error_insufficient_memory--1"><h3>GDK_PIXBUF_ERROR_INSUFFICIENT_MEMORY = 1</h3></a>
+<p>Not enough memory.</p>
+<a class="header" href="#gdk_pixbuf_error_bad_option--2" id="gdk_pixbuf_error_bad_option--2"><h3>GDK_PIXBUF_ERROR_BAD_OPTION = 2</h3></a>
+<p>A bad option was passed to a pixbuf save module.</p>
+<a class="header" href="#gdk_pixbuf_error_unknown_type--3" id="gdk_pixbuf_error_unknown_type--3"><h3>GDK_PIXBUF_ERROR_UNKNOWN_TYPE = 3</h3></a>
+<p>Unknown image type.</p>
+<a class="header" href="#gdk_pixbuf_error_unsupported_operation--4" id="gdk_pixbuf_error_unsupported_operation--4"><h3>GDK_PIXBUF_ERROR_UNSUPPORTED_OPERATION = 4</h3></a>
+<p>Don't know how to perform the
+given operation on the type of image at hand.</p>
+<a class="header" href="#gdk_pixbuf_error_failed--5" id="gdk_pixbuf_error_failed--5"><h3>GDK_PIXBUF_ERROR_FAILED = 5</h3></a>
+<p>Generic failure code, something went wrong.</p>
+<a class="header" href="#gdk_pixbuf_error_incomplete_animation--6" id="gdk_pixbuf_error_incomplete_animation--6"><h3>GDK_PIXBUF_ERROR_INCOMPLETE_ANIMATION = 6</h3></a>
+<p>Only part of the animation was loaded.</p>
 <a class="header" href="#pixbufrotation" id="pixbufrotation"><h2><code>PixbufRotation</code></h2></a>
 <p>The possible rotations which can be passed to gdk_pixbuf_rotate_simple().
 To make them easier to use, their numerical values are the actual degrees.</p>
-<ul>
-<li>GDK_PIXBUF_ROTATE_NONE = 0</li>
-<li>GDK_PIXBUF_ROTATE_COUNTERCLOCKWISE = 90</li>
-<li>GDK_PIXBUF_ROTATE_UPSIDEDOWN = 180</li>
-<li>GDK_PIXBUF_ROTATE_CLOCKWISE = 270</li>
-</ul>
 <p>C - <code>GdkPixbufRotation</code></p>
-<p>E = %!s(int=0)</p>
-<ul>
-<li>GDK_PIXBUF_ROTATE_COUNTERCLOCKWISE = %!s(int=90)</li>
-<li>GDK_PIXBUF_ROTATE_UPSIDEDOWN = %!s(int=180)</li>
-<li>GDK_PIXBUF_ROTATE_CLOCKWISE = %!s(int=270)</li>
-</ul>
+<a class="header" href="#gdk_pixbuf_rotate_none--0" id="gdk_pixbuf_rotate_none--0"><h3>GDK_PIXBUF_ROTATE_NONE = 0</h3></a>
+<p>No rotation.</p>
+<a class="header" href="#gdk_pixbuf_rotate_counterclockwise--90" id="gdk_pixbuf_rotate_counterclockwise--90"><h3>GDK_PIXBUF_ROTATE_COUNTERCLOCKWISE = 90</h3></a>
+<p>Rotate by 90 degrees.</p>
+<a class="header" href="#gdk_pixbuf_rotate_upsidedown--180" id="gdk_pixbuf_rotate_upsidedown--180"><h3>GDK_PIXBUF_ROTATE_UPSIDEDOWN = 180</h3></a>
+<p>Rotate by 180 degrees.</p>
+<a class="header" href="#gdk_pixbuf_rotate_clockwise--270" id="gdk_pixbuf_rotate_clockwise--270"><h3>GDK_PIXBUF_ROTATE_CLOCKWISE = 270</h3></a>
+<p>Rotate by 270 degrees.</p>
 
                     </main>
 

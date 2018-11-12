@@ -18,47 +18,98 @@ horizontally to fit.
 In general, when multiple flags are set, flipping should take precedence over
 sliding, which should take precedence over resizing.
 
-- GDK_ANCHOR_FLIP_X = 1
-- GDK_ANCHOR_FLIP_Y = 2
-- GDK_ANCHOR_SLIDE_X = 4
-- GDK_ANCHOR_SLIDE_Y = 8
-- GDK_ANCHOR_RESIZE_X = 16
-- GDK_ANCHOR_RESIZE_Y = 32
-- GDK_ANCHOR_FLIP = 3
-- GDK_ANCHOR_SLIDE = 12
-- GDK_ANCHOR_RESIZE = 48
-
 C - `GdkAnchorHints`
+
+### GDK_ANCHOR_FLIP_X = 1
+allow flipping anchors horizontally
+
+### GDK_ANCHOR_FLIP_Y = 2
+allow flipping anchors vertically
+
+### GDK_ANCHOR_SLIDE_X = 4
+allow sliding window horizontally
+
+### GDK_ANCHOR_SLIDE_Y = 8
+allow sliding window vertically
+
+### GDK_ANCHOR_RESIZE_X = 16
+allow resizing window horizontally
+
+### GDK_ANCHOR_RESIZE_Y = 32
+allow resizing window vertically
+
+### GDK_ANCHOR_FLIP = 3
+allow flipping anchors on both axes
+
+### GDK_ANCHOR_SLIDE = 12
+allow sliding window on both axes
+
+### GDK_ANCHOR_RESIZE = 48
+allow resizing window on both axes
+
 
 ## `AxisFlags`
 
 Flags describing the current capabilities of a device/tool.
 
-- GDK_AXIS_FLAG_X = 2
-- GDK_AXIS_FLAG_Y = 4
-- GDK_AXIS_FLAG_PRESSURE = 8
-- GDK_AXIS_FLAG_XTILT = 16
-- GDK_AXIS_FLAG_YTILT = 32
-- GDK_AXIS_FLAG_WHEEL = 64
-- GDK_AXIS_FLAG_DISTANCE = 128
-- GDK_AXIS_FLAG_ROTATION = 256
-- GDK_AXIS_FLAG_SLIDER = 512
-
 C - `GdkAxisFlags`
+
+### GDK_AXIS_FLAG_X = 2
+X axis is present
+
+### GDK_AXIS_FLAG_Y = 4
+Y axis is present
+
+### GDK_AXIS_FLAG_PRESSURE = 8
+Pressure axis is present
+
+### GDK_AXIS_FLAG_XTILT = 16
+X tilt axis is present
+
+### GDK_AXIS_FLAG_YTILT = 32
+Y tilt axis is present
+
+### GDK_AXIS_FLAG_WHEEL = 64
+Wheel axis is present
+
+### GDK_AXIS_FLAG_DISTANCE = 128
+Distance axis is present
+
+### GDK_AXIS_FLAG_ROTATION = 256
+Z-axis rotation is present
+
+### GDK_AXIS_FLAG_SLIDER = 512
+Slider axis is present
+
 
 ## `DragAction`
 
 Used in #GdkDragContext to indicate what the destination
 should do with the dropped data.
 
-- GDK_ACTION_DEFAULT = 1
-- GDK_ACTION_COPY = 2
-- GDK_ACTION_MOVE = 4
-- GDK_ACTION_LINK = 8
-- GDK_ACTION_PRIVATE = 16
-- GDK_ACTION_ASK = 32
-
 C - `GdkDragAction`
+
+### GDK_ACTION_DEFAULT = 1
+Means nothing, and should not be used.
+
+### GDK_ACTION_COPY = 2
+Copy the data.
+
+### GDK_ACTION_MOVE = 4
+Move the data, i.e. first copy it, then delete
+ it from the source using the DELETE target of the X selection protocol.
+
+### GDK_ACTION_LINK = 8
+Add a link to the data. Note that this is only
+ useful if source and destination agree on what it means.
+
+### GDK_ACTION_PRIVATE = 16
+Special action which tells the source that the
+ destination will do something that the source doesn’t understand.
+
+### GDK_ACTION_ASK = 32
+Ask the user what to do with the data.
+
 
 ## `EventMask`
 
@@ -89,34 +140,87 @@ type %GDK_TOUCH_BEGIN and %GDK_TOUCH_END (or %GDK_TOUCH_CANCEL).
 gdk_event_get_event_sequence() returns the event sequence for these
 events, so different sequences may be distinguished.
 
-- GDK_EXPOSURE_MASK = 2
-- GDK_POINTER_MOTION_MASK = 4
-- GDK_POINTER_MOTION_HINT_MASK = 8
-- GDK_BUTTON_MOTION_MASK = 16
-- GDK_BUTTON1_MOTION_MASK = 32
-- GDK_BUTTON2_MOTION_MASK = 64
-- GDK_BUTTON3_MOTION_MASK = 128
-- GDK_BUTTON_PRESS_MASK = 256
-- GDK_BUTTON_RELEASE_MASK = 512
-- GDK_KEY_PRESS_MASK = 1024
-- GDK_KEY_RELEASE_MASK = 2048
-- GDK_ENTER_NOTIFY_MASK = 4096
-- GDK_LEAVE_NOTIFY_MASK = 8192
-- GDK_FOCUS_CHANGE_MASK = 16384
-- GDK_STRUCTURE_MASK = 32768
-- GDK_PROPERTY_CHANGE_MASK = 65536
-- GDK_VISIBILITY_NOTIFY_MASK = 131072
-- GDK_PROXIMITY_IN_MASK = 262144
-- GDK_PROXIMITY_OUT_MASK = 524288
-- GDK_SUBSTRUCTURE_MASK = 1048576
-- GDK_SCROLL_MASK = 2097152
-- GDK_TOUCH_MASK = 4194304
-- GDK_SMOOTH_SCROLL_MASK = 8388608
-- GDK_TOUCHPAD_GESTURE_MASK = 16777216
-- GDK_TABLET_PAD_MASK = 33554432
-- GDK_ALL_EVENTS_MASK = 67108862
-
 C - `GdkEventMask`
+
+### GDK_EXPOSURE_MASK = 2
+receive expose events
+
+### GDK_POINTER_MOTION_MASK = 4
+receive all pointer motion events
+
+### GDK_POINTER_MOTION_HINT_MASK = 8
+deprecated. see the explanation above
+
+### GDK_BUTTON_MOTION_MASK = 16
+receive pointer motion events while any button is pressed
+
+### GDK_BUTTON1_MOTION_MASK = 32
+receive pointer motion events while 1 button is pressed
+
+### GDK_BUTTON2_MOTION_MASK = 64
+receive pointer motion events while 2 button is pressed
+
+### GDK_BUTTON3_MOTION_MASK = 128
+receive pointer motion events while 3 button is pressed
+
+### GDK_BUTTON_PRESS_MASK = 256
+receive button press events
+
+### GDK_BUTTON_RELEASE_MASK = 512
+receive button release events
+
+### GDK_KEY_PRESS_MASK = 1024
+receive key press events
+
+### GDK_KEY_RELEASE_MASK = 2048
+receive key release events
+
+### GDK_ENTER_NOTIFY_MASK = 4096
+receive window enter events
+
+### GDK_LEAVE_NOTIFY_MASK = 8192
+receive window leave events
+
+### GDK_FOCUS_CHANGE_MASK = 16384
+receive focus change events
+
+### GDK_STRUCTURE_MASK = 32768
+receive events about window configuration change
+
+### GDK_PROPERTY_CHANGE_MASK = 65536
+receive property change events
+
+### GDK_VISIBILITY_NOTIFY_MASK = 131072
+receive visibility change events
+
+### GDK_PROXIMITY_IN_MASK = 262144
+receive proximity in events
+
+### GDK_PROXIMITY_OUT_MASK = 524288
+receive proximity out events
+
+### GDK_SUBSTRUCTURE_MASK = 1048576
+receive events about window configuration changes of
+  child windows
+
+### GDK_SCROLL_MASK = 2097152
+receive scroll events
+
+### GDK_TOUCH_MASK = 4194304
+receive touch events. Since 3.4
+
+### GDK_SMOOTH_SCROLL_MASK = 8388608
+receive smooth scrolling events. Since 3.4
+
+### GDK_TOUCHPAD_GESTURE_MASK = 16777216
+receive touchpad gesture events. Since 3.18
+
+### GDK_TABLET_PAD_MASK = 33554432
+receive tablet pad events. Since 3.22
+
+### GDK_ALL_EVENTS_MASK = 67108862
+the combination of all the above event masks.
+
 
 ## `FrameClockPhase`
 
@@ -124,16 +228,32 @@ C - `GdkEventMask`
 phases that can be requested. The elements of the enumeration
 correspond to the signals of #GdkFrameClock.
 
-- GDK_FRAME_CLOCK_PHASE_NONE = 0
-- GDK_FRAME_CLOCK_PHASE_FLUSH_EVENTS = 1
-- GDK_FRAME_CLOCK_PHASE_BEFORE_PAINT = 2
-- GDK_FRAME_CLOCK_PHASE_UPDATE = 4
-- GDK_FRAME_CLOCK_PHASE_LAYOUT = 8
-- GDK_FRAME_CLOCK_PHASE_PAINT = 16
-- GDK_FRAME_CLOCK_PHASE_RESUME_EVENTS = 32
-- GDK_FRAME_CLOCK_PHASE_AFTER_PAINT = 64
-
 C - `GdkFrameClockPhase`
+
+### GDK_FRAME_CLOCK_PHASE_NONE = 0
+no phase
+
+### GDK_FRAME_CLOCK_PHASE_FLUSH_EVENTS = 1
+corresponds to GdkFrameClock::flush-events. Should not be handled by applications.
+
+### GDK_FRAME_CLOCK_PHASE_BEFORE_PAINT = 2
+corresponds to GdkFrameClock::before-paint. Should not be handled by applications.
+
+### GDK_FRAME_CLOCK_PHASE_UPDATE = 4
+corresponds to GdkFrameClock::update.
+
+### GDK_FRAME_CLOCK_PHASE_LAYOUT = 8
+corresponds to GdkFrameClock::layout.
+
+### GDK_FRAME_CLOCK_PHASE_PAINT = 16
+corresponds to GdkFrameClock::paint.
+
+### GDK_FRAME_CLOCK_PHASE_RESUME_EVENTS = 32
+corresponds to GdkFrameClock::resume-events. Should not be handled by applications.
+
+### GDK_FRAME_CLOCK_PHASE_AFTER_PAINT = 64
+corresponds to GdkFrameClock::after-paint. Should not be handled by applications.
+
 
 ## `ModifierType`
 
@@ -156,54 +276,140 @@ Also note that the GDK X backend interprets button press events for button
 4-7 as scroll events, so %GDK_BUTTON4_MASK and %GDK_BUTTON5_MASK will never
 be set.
 
-- GDK_SHIFT_MASK = 1
-- GDK_LOCK_MASK = 2
-- GDK_CONTROL_MASK = 4
-- GDK_MOD1_MASK = 8
-- GDK_MOD2_MASK = 16
-- GDK_MOD3_MASK = 32
-- GDK_MOD4_MASK = 64
-- GDK_MOD5_MASK = 128
-- GDK_BUTTON1_MASK = 256
-- GDK_BUTTON2_MASK = 512
-- GDK_BUTTON3_MASK = 1024
-- GDK_BUTTON4_MASK = 2048
-- GDK_BUTTON5_MASK = 4096
-- GDK_MODIFIER_RESERVED_13_MASK = 8192
-- GDK_MODIFIER_RESERVED_14_MASK = 16384
-- GDK_MODIFIER_RESERVED_15_MASK = 32768
-- GDK_MODIFIER_RESERVED_16_MASK = 65536
-- GDK_MODIFIER_RESERVED_17_MASK = 131072
-- GDK_MODIFIER_RESERVED_18_MASK = 262144
-- GDK_MODIFIER_RESERVED_19_MASK = 524288
-- GDK_MODIFIER_RESERVED_20_MASK = 1048576
-- GDK_MODIFIER_RESERVED_21_MASK = 2097152
-- GDK_MODIFIER_RESERVED_22_MASK = 4194304
-- GDK_MODIFIER_RESERVED_23_MASK = 8388608
-- GDK_MODIFIER_RESERVED_24_MASK = 16777216
-- GDK_MODIFIER_RESERVED_25_MASK = 33554432
-- GDK_SUPER_MASK = 67108864
-- GDK_HYPER_MASK = 134217728
-- GDK_META_MASK = 268435456
-- GDK_MODIFIER_RESERVED_29_MASK = 536870912
-- GDK_RELEASE_MASK = 1073741824
-- GDK_MODIFIER_MASK = 1543512063
-
 C - `guint`
+
+### GDK_SHIFT_MASK = 1
+the Shift key.
+
+### GDK_LOCK_MASK = 2
+a Lock key (depending on the modifier mapping of the
+ X server this may either be CapsLock or ShiftLock).
+
+### GDK_CONTROL_MASK = 4
+the Control key.
+
+### GDK_MOD1_MASK = 8
+the fourth modifier key (it depends on the modifier
+ mapping of the X server which key is interpreted as this modifier, but
+ normally it is the Alt key).
+
+### GDK_MOD2_MASK = 16
+the fifth modifier key (it depends on the modifier
+ mapping of the X server which key is interpreted as this modifier).
+
+### GDK_MOD3_MASK = 32
+the sixth modifier key (it depends on the modifier
+ mapping of the X server which key is interpreted as this modifier).
+
+### GDK_MOD4_MASK = 64
+the seventh modifier key (it depends on the modifier
+ mapping of the X server which key is interpreted as this modifier).
+
+### GDK_MOD5_MASK = 128
+the eighth modifier key (it depends on the modifier
+ mapping of the X server which key is interpreted as this modifier).
+
+### GDK_BUTTON1_MASK = 256
+the first mouse button.
+
+### GDK_BUTTON2_MASK = 512
+the second mouse button.
+
+### GDK_BUTTON3_MASK = 1024
+the third mouse button.
+
+### GDK_BUTTON4_MASK = 2048
+the fourth mouse button.
+
+### GDK_BUTTON5_MASK = 4096
+the fifth mouse button.
+
+### GDK_MODIFIER_RESERVED_13_MASK = 8192
+A reserved bit flag; do not use in your own code
+
+### GDK_MODIFIER_RESERVED_14_MASK = 16384
+A reserved bit flag; do not use in your own code
+
+### GDK_MODIFIER_RESERVED_15_MASK = 32768
+A reserved bit flag; do not use in your own code
+
+### GDK_MODIFIER_RESERVED_16_MASK = 65536
+A reserved bit flag; do not use in your own code
+
+### GDK_MODIFIER_RESERVED_17_MASK = 131072
+A reserved bit flag; do not use in your own code
+
+### GDK_MODIFIER_RESERVED_18_MASK = 262144
+A reserved bit flag; do not use in your own code
+
+### GDK_MODIFIER_RESERVED_19_MASK = 524288
+A reserved bit flag; do not use in your own code
+
+### GDK_MODIFIER_RESERVED_20_MASK = 1048576
+A reserved bit flag; do not use in your own code
+
+### GDK_MODIFIER_RESERVED_21_MASK = 2097152
+A reserved bit flag; do not use in your own code
+
+### GDK_MODIFIER_RESERVED_22_MASK = 4194304
+A reserved bit flag; do not use in your own code
+
+### GDK_MODIFIER_RESERVED_23_MASK = 8388608
+A reserved bit flag; do not use in your own code
+
+### GDK_MODIFIER_RESERVED_24_MASK = 16777216
+A reserved bit flag; do not use in your own code
+
+### GDK_MODIFIER_RESERVED_25_MASK = 33554432
+A reserved bit flag; do not use in your own code
+
+### GDK_SUPER_MASK = 67108864
+the Super modifier. Since 2.10
+
+### GDK_HYPER_MASK = 134217728
+the Hyper modifier. Since 2.10
+
+### GDK_META_MASK = 268435456
+the Meta modifier. Since 2.10
+
+### GDK_MODIFIER_RESERVED_29_MASK = 536870912
+A reserved bit flag; do not use in your own code
+
+### GDK_RELEASE_MASK = 1073741824
+not used in GDK itself. GTK+ uses it to differentiate
+ between (keyval, modifiers) pairs from key press and release events.
+
+### GDK_MODIFIER_MASK = 1543512063
+a mask covering all modifier types.
+
 
 ## `SeatCapabilities`
 
 Flags describing the seat capabilities.
 
-- GDK_SEAT_CAPABILITY_NONE = 0
-- GDK_SEAT_CAPABILITY_POINTER = 1
-- GDK_SEAT_CAPABILITY_TOUCH = 2
-- GDK_SEAT_CAPABILITY_TABLET_STYLUS = 4
-- GDK_SEAT_CAPABILITY_KEYBOARD = 8
-- GDK_SEAT_CAPABILITY_ALL_POINTING = 7
-- GDK_SEAT_CAPABILITY_ALL = 15
-
 C - `GdkSeatCapabilities`
+
+### GDK_SEAT_CAPABILITY_NONE = 0
+No input capabilities
+
+### GDK_SEAT_CAPABILITY_POINTER = 1
+The seat has a pointer (e.g. mouse)
+
+### GDK_SEAT_CAPABILITY_TOUCH = 2
+The seat has touchscreen(s) attached
+
+### GDK_SEAT_CAPABILITY_TABLET_STYLUS = 4
+The seat has drawing tablet(s) attached
+
+### GDK_SEAT_CAPABILITY_KEYBOARD = 8
+The seat has keyboard(s) attached
+
+### GDK_SEAT_CAPABILITY_ALL_POINTING = 7
+The union of all pointing capabilities
+
+### GDK_SEAT_CAPABILITY_ALL = 15
+The union of all capabilities
+
 
 ## `WMDecoration`
 
@@ -211,15 +417,29 @@ These are hints originally defined by the Motif toolkit.
 The window manager can use them when determining how to decorate
 the window. The hint must be set before mapping the window.
 
-- GDK_DECOR_ALL = 1
-- GDK_DECOR_BORDER = 2
-- GDK_DECOR_RESIZEH = 4
-- GDK_DECOR_TITLE = 8
-- GDK_DECOR_MENU = 16
-- GDK_DECOR_MINIMIZE = 32
-- GDK_DECOR_MAXIMIZE = 64
-
 C - `GdkWMDecoration`
+
+### GDK_DECOR_ALL = 1
+all decorations should be applied.
+
+### GDK_DECOR_BORDER = 2
+a frame should be drawn around the window.
+
+### GDK_DECOR_RESIZEH = 4
+the frame should have resize handles.
+
+### GDK_DECOR_TITLE = 8
+a titlebar should be placed above the window.
+
+### GDK_DECOR_MENU = 16
+a button for opening a menu should be included.
+
+### GDK_DECOR_MINIMIZE = 32
+a minimize button should be included.
+
+### GDK_DECOR_MAXIMIZE = 64
+a maximize button should be included.
+
 
 ## `WMFunction`
 
@@ -227,14 +447,26 @@ These are hints originally defined by the Motif toolkit. The window manager
 can use them when determining the functions to offer for the window. The
 hint must be set before mapping the window.
 
-- GDK_FUNC_ALL = 1
-- GDK_FUNC_RESIZE = 2
-- GDK_FUNC_MOVE = 4
-- GDK_FUNC_MINIMIZE = 8
-- GDK_FUNC_MAXIMIZE = 16
-- GDK_FUNC_CLOSE = 32
-
 C - `GdkWMFunction`
+
+### GDK_FUNC_ALL = 1
+all functions should be offered.
+
+### GDK_FUNC_RESIZE = 2
+the window should be resizable.
+
+### GDK_FUNC_MOVE = 4
+the window should be movable.
+
+### GDK_FUNC_MINIMIZE = 8
+the window should be minimizable.
+
+### GDK_FUNC_MAXIMIZE = 16
+the window should be maximizable.
+
+### GDK_FUNC_CLOSE = 32
+the window should be closable.
+
 
 ## `WindowAttributesType`
 
@@ -245,16 +477,32 @@ pass “@GDK_WA_X | @GDK_WA_CURSOR” to gdk_window_new(). Fields in
 the @width/@height, @wclass, and @window_type fields are required, they have
 no corresponding flag in #GdkWindowAttributesType.
 
-- GDK_WA_TITLE = 2
-- GDK_WA_X = 4
-- GDK_WA_Y = 8
-- GDK_WA_CURSOR = 16
-- GDK_WA_VISUAL = 32
-- GDK_WA_WMCLASS = 64
-- GDK_WA_NOREDIR = 128
-- GDK_WA_TYPE_HINT = 256
-
 C - `GdkWindowAttributesType`
+
+### GDK_WA_TITLE = 2
+Honor the title field
+
+### GDK_WA_X = 4
+Honor the X coordinate field
+
+### GDK_WA_Y = 8
+Honor the Y coordinate field
+
+### GDK_WA_CURSOR = 16
+Honor the cursor field
+
+### GDK_WA_VISUAL = 32
+Honor the visual field
+
+### GDK_WA_WMCLASS = 64
+Honor the wmclass_class and wmclass_name fields
+
+### GDK_WA_NOREDIR = 128
+Honor the override_redirect field
+
+### GDK_WA_TYPE_HINT = 256
+Honor the type_hint field
+
 
 ## `WindowHints`
 
@@ -267,76 +515,95 @@ automatically by #GtkWindow if you call gtk_window_move().
 specified a size/position using a --geometry command-line argument;
 gtk_window_parse_geometry() automatically sets these flags.
 
-- GDK_HINT_POS = 1
-- GDK_HINT_MIN_SIZE = 2
-- GDK_HINT_MAX_SIZE = 4
-- GDK_HINT_BASE_SIZE = 8
-- GDK_HINT_ASPECT = 16
-- GDK_HINT_RESIZE_INC = 32
-- GDK_HINT_WIN_GRAVITY = 64
-- GDK_HINT_USER_POS = 128
-- GDK_HINT_USER_SIZE = 256
-
 C - `GdkWindowHints`
 
-## `WindowState`
+### GDK_HINT_POS = 1
+indicates that the program has positioned the window
 
-Specifies the state of a toplevel window.
+### GDK_HINT_MIN_SIZE = 2
+min size fields are set
 
-- GDK_WINDOW_STATE_WITHDRAWN = 1
-- GDK_WINDOW_STATE_ICONIFIED = 2
-- GDK_WINDOW_STATE_MAXIMIZED = 4
-- GDK_WINDOW_STATE_STICKY = 8
-- GDK_WINDOW_STATE_FULLSCREEN = 16
-- GDK_WINDOW_STATE_ABOVE = 32
-- GDK_WINDOW_STATE_BELOW = 64
-- GDK_WINDOW_STATE_FOCUSED = 128
-- GDK_WINDOW_STATE_TILED = 256
-- GDK_WINDOW_STATE_TOP_TILED = 512
-- GDK_WINDOW_STATE_TOP_RESIZABLE = 1024
-- GDK_WINDOW_STATE_RIGHT_TILED = 2048
-- GDK_WINDOW_STATE_RIGHT_RESIZABLE = 4096
-- GDK_WINDOW_STATE_BOTTOM_TILED = 8192
-- GDK_WINDOW_STATE_BOTTOM_RESIZABLE = 16384
-- GDK_WINDOW_STATE_LEFT_TILED = 32768
-- GDK_WINDOW_STATE_LEFT_RESIZABLE = 65536
+### GDK_HINT_MAX_SIZE = 4
+max size fields are set
 
-C - `GdkWindowState`
+### GDK_HINT_BASE_SIZE = 8
+base size fields are set
 
-ize/position using a --geometry command-line argument;
-gtk_window_parse_geometry() automatically sets these flags.
+### GDK_HINT_ASPECT = 16
+aspect ratio fields are set
 
-C - `GdkWindowHints`
+### GDK_HINT_RESIZE_INC = 32
+resize increment fields are set
 
-- GDK_HINT_POS = %!s(int=1)
-- GDK_HINT_MIN_SIZE = %!s(int=2)
-- GDK_HINT_MAX_SIZE = %!s(int=4)
-- GDK_HINT_BASE_SIZE = %!s(int=8)
-- GDK_HINT_ASPECT = %!s(int=16)
-- GDK_HINT_RESIZE_INC = %!s(int=32)
-- GDK_HINT_WIN_GRAVITY = %!s(int=64)
-- GDK_HINT_USER_POS = %!s(int=128)
-- GDK_HINT_USER_SIZE = %!s(int=256)
+### GDK_HINT_WIN_GRAVITY = 64
+window gravity field is set
+
+### GDK_HINT_USER_POS = 128
+indicates that the window’s position was explicitly set
+ by the user
+
+### GDK_HINT_USER_SIZE = 256
+indicates that the window’s size was explicitly set by
+ the user
+
+
 ## `WindowState`
 
 Specifies the state of a toplevel window.
 
 C - `GdkWindowState`
 
-- GDK_WINDOW_STATE_WITHDRAWN = %!s(int=1)
-- GDK_WINDOW_STATE_ICONIFIED = %!s(int=2)
-- GDK_WINDOW_STATE_MAXIMIZED = %!s(int=4)
-- GDK_WINDOW_STATE_STICKY = %!s(int=8)
-- GDK_WINDOW_STATE_FULLSCREEN = %!s(int=16)
-- GDK_WINDOW_STATE_ABOVE = %!s(int=32)
-- GDK_WINDOW_STATE_BELOW = %!s(int=64)
-- GDK_WINDOW_STATE_FOCUSED = %!s(int=128)
-- GDK_WINDOW_STATE_TILED = %!s(int=256)
-- GDK_WINDOW_STATE_TOP_TILED = %!s(int=512)
-- GDK_WINDOW_STATE_TOP_RESIZABLE = %!s(int=1024)
-- GDK_WINDOW_STATE_RIGHT_TILED = %!s(int=2048)
-- GDK_WINDOW_STATE_RIGHT_RESIZABLE = %!s(int=4096)
-- GDK_WINDOW_STATE_BOTTOM_TILED = %!s(int=8192)
-- GDK_WINDOW_STATE_BOTTOM_RESIZABLE = %!s(int=16384)
-- GDK_WINDOW_STATE_LEFT_TILED = %!s(int=32768)
-- GDK_WINDOW_STATE_LEFT_RESIZABLE = %!s(int=65536)
+### GDK_WINDOW_STATE_WITHDRAWN = 1
+the window is not shown.
+
+### GDK_WINDOW_STATE_ICONIFIED = 2
+the window is minimized.
+
+### GDK_WINDOW_STATE_MAXIMIZED = 4
+the window is maximized.
+
+### GDK_WINDOW_STATE_STICKY = 8
+the window is sticky.
+
+### GDK_WINDOW_STATE_FULLSCREEN = 16
+the window is maximized without
+  decorations.
+
+### GDK_WINDOW_STATE_ABOVE = 32
+the window is kept above other windows.
+
+### GDK_WINDOW_STATE_BELOW = 64
+the window is kept below other windows.
+
+### GDK_WINDOW_STATE_FOCUSED = 128
+the window is presented as focused (with active decorations).
+
+### GDK_WINDOW_STATE_TILED = 256
+the window is in a tiled state, Since 3.10. Since 3.22.23, this
+                         is deprecated in favor of per-edge information.
+
+### GDK_WINDOW_STATE_TOP_TILED = 512
+whether the top edge is tiled, Since 3.22.23
+
+### GDK_WINDOW_STATE_TOP_RESIZABLE = 1024
+whether the top edge is resizable, Since 3.22.23
+
+### GDK_WINDOW_STATE_RIGHT_TILED = 2048
+whether the right edge is tiled, Since 3.22.23
+
+### GDK_WINDOW_STATE_RIGHT_RESIZABLE = 4096
+whether the right edge is resizable, Since 3.22.23
+
+### GDK_WINDOW_STATE_BOTTOM_TILED = 8192
+whether the bottom edge is tiled, Since 3.22.23
+
+### GDK_WINDOW_STATE_BOTTOM_RESIZABLE = 16384
+whether the bottom edge is resizable, Since 3.22.23
+
+### GDK_WINDOW_STATE_LEFT_TILED = 32768
+whether the left edge is tiled, Since 3.22.23
+
+### GDK_WINDOW_STATE_LEFT_RESIZABLE = 65536
+whether the left edge is resizable, Since 3.22.23
+
+

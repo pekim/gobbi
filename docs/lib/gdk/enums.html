@@ -144,183 +144,305 @@ types that GTK+ understands.</p>
 <p>Note that the X and Y axes are not really needed; pointer devices
 report their location via the x/y members of events regardless. Whether
 X and Y are present as axes depends on the GDK backend.</p>
-<ul>
-<li>GDK_AXIS_IGNORE = 0</li>
-<li>GDK_AXIS_X = 1</li>
-<li>GDK_AXIS_Y = 2</li>
-<li>GDK_AXIS_PRESSURE = 3</li>
-<li>GDK_AXIS_XTILT = 4</li>
-<li>GDK_AXIS_YTILT = 5</li>
-<li>GDK_AXIS_WHEEL = 6</li>
-<li>GDK_AXIS_DISTANCE = 7</li>
-<li>GDK_AXIS_ROTATION = 8</li>
-<li>GDK_AXIS_SLIDER = 9</li>
-<li>GDK_AXIS_LAST = 10</li>
-</ul>
 <p>C - <code>GdkAxisUse</code></p>
+<a class="header" href="#gdk_axis_ignore--0" id="gdk_axis_ignore--0"><h3>GDK_AXIS_IGNORE = 0</h3></a>
+<p>the axis is ignored.</p>
+<a class="header" href="#gdk_axis_x--1" id="gdk_axis_x--1"><h3>GDK_AXIS_X = 1</h3></a>
+<p>the axis is used as the x axis.</p>
+<a class="header" href="#gdk_axis_y--2" id="gdk_axis_y--2"><h3>GDK_AXIS_Y = 2</h3></a>
+<p>the axis is used as the y axis.</p>
+<a class="header" href="#gdk_axis_pressure--3" id="gdk_axis_pressure--3"><h3>GDK_AXIS_PRESSURE = 3</h3></a>
+<p>the axis is used for pressure information.</p>
+<a class="header" href="#gdk_axis_xtilt--4" id="gdk_axis_xtilt--4"><h3>GDK_AXIS_XTILT = 4</h3></a>
+<p>the axis is used for x tilt information.</p>
+<a class="header" href="#gdk_axis_ytilt--5" id="gdk_axis_ytilt--5"><h3>GDK_AXIS_YTILT = 5</h3></a>
+<p>the axis is used for y tilt information.</p>
+<a class="header" href="#gdk_axis_wheel--6" id="gdk_axis_wheel--6"><h3>GDK_AXIS_WHEEL = 6</h3></a>
+<p>the axis is used for wheel information.</p>
+<a class="header" href="#gdk_axis_distance--7" id="gdk_axis_distance--7"><h3>GDK_AXIS_DISTANCE = 7</h3></a>
+<p>the axis is used for pen/tablet distance information. (Since: 3.22)</p>
+<a class="header" href="#gdk_axis_rotation--8" id="gdk_axis_rotation--8"><h3>GDK_AXIS_ROTATION = 8</h3></a>
+<p>the axis is used for pen rotation information. (Since: 3.22)</p>
+<a class="header" href="#gdk_axis_slider--9" id="gdk_axis_slider--9"><h3>GDK_AXIS_SLIDER = 9</h3></a>
+<p>the axis is used for pen slider information. (Since: 3.22)</p>
+<a class="header" href="#gdk_axis_last--10" id="gdk_axis_last--10"><h3>GDK_AXIS_LAST = 10</h3></a>
+<p>a constant equal to the numerically highest axis value.</p>
 <a class="header" href="#byteorder" id="byteorder"><h2><code>ByteOrder</code></h2></a>
 <p>A set of values describing the possible byte-orders
 for storing pixel values in memory.</p>
-<ul>
-<li>GDK_LSB_FIRST = 0</li>
-<li>GDK_MSB_FIRST = 1</li>
-</ul>
 <p>C - <code>GdkByteOrder</code></p>
+<a class="header" href="#gdk_lsb_first--0" id="gdk_lsb_first--0"><h3>GDK_LSB_FIRST = 0</h3></a>
+<p>The values are stored with the least-significant byte
+first. For instance, the 32-bit value 0xffeecc would be stored
+in memory as 0xcc, 0xee, 0xff, 0x00.</p>
+<a class="header" href="#gdk_msb_first--1" id="gdk_msb_first--1"><h3>GDK_MSB_FIRST = 1</h3></a>
+<p>The values are stored with the most-significant byte
+first. For instance, the 32-bit value 0xffeecc would be stored
+in memory as 0x00, 0xff, 0xee, 0xcc.</p>
 <a class="header" href="#crossingmode" id="crossingmode"><h2><code>CrossingMode</code></h2></a>
 <p>Specifies the crossing mode for #GdkEventCrossing.</p>
-<ul>
-<li>GDK_CROSSING_NORMAL = 0</li>
-<li>GDK_CROSSING_GRAB = 1</li>
-<li>GDK_CROSSING_UNGRAB = 2</li>
-<li>GDK_CROSSING_GTK_GRAB = 3</li>
-<li>GDK_CROSSING_GTK_UNGRAB = 4</li>
-<li>GDK_CROSSING_STATE_CHANGED = 5</li>
-<li>GDK_CROSSING_TOUCH_BEGIN = 6</li>
-<li>GDK_CROSSING_TOUCH_END = 7</li>
-<li>GDK_CROSSING_DEVICE_SWITCH = 8</li>
-</ul>
 <p>C - <code>GdkCrossingMode</code></p>
+<a class="header" href="#gdk_crossing_normal--0" id="gdk_crossing_normal--0"><h3>GDK_CROSSING_NORMAL = 0</h3></a>
+<p>crossing because of pointer motion.</p>
+<a class="header" href="#gdk_crossing_grab--1" id="gdk_crossing_grab--1"><h3>GDK_CROSSING_GRAB = 1</h3></a>
+<p>crossing because a grab is activated.</p>
+<a class="header" href="#gdk_crossing_ungrab--2" id="gdk_crossing_ungrab--2"><h3>GDK_CROSSING_UNGRAB = 2</h3></a>
+<p>crossing because a grab is deactivated.</p>
+<a class="header" href="#gdk_crossing_gtk_grab--3" id="gdk_crossing_gtk_grab--3"><h3>GDK_CROSSING_GTK_GRAB = 3</h3></a>
+<p>crossing because a GTK+ grab is activated.</p>
+<a class="header" href="#gdk_crossing_gtk_ungrab--4" id="gdk_crossing_gtk_ungrab--4"><h3>GDK_CROSSING_GTK_UNGRAB = 4</h3></a>
+<p>crossing because a GTK+ grab is deactivated.</p>
+<a class="header" href="#gdk_crossing_state_changed--5" id="gdk_crossing_state_changed--5"><h3>GDK_CROSSING_STATE_CHANGED = 5</h3></a>
+<p>crossing because a GTK+ widget changed
+state (e.g. sensitivity).</p>
+<a class="header" href="#gdk_crossing_touch_begin--6" id="gdk_crossing_touch_begin--6"><h3>GDK_CROSSING_TOUCH_BEGIN = 6</h3></a>
+<p>crossing because a touch sequence has begun,
+this event is synthetic as the pointer might have not left the window.</p>
+<a class="header" href="#gdk_crossing_touch_end--7" id="gdk_crossing_touch_end--7"><h3>GDK_CROSSING_TOUCH_END = 7</h3></a>
+<p>crossing because a touch sequence has ended,
+this event is synthetic as the pointer might have not left the window.</p>
+<a class="header" href="#gdk_crossing_device_switch--8" id="gdk_crossing_device_switch--8"><h3>GDK_CROSSING_DEVICE_SWITCH = 8</h3></a>
+<p>crossing because of a device switch (i.e.
+a mouse taking control of the pointer after a touch device), this event
+is synthetic as the pointer didn’t leave the window.</p>
 <a class="header" href="#cursortype" id="cursortype"><h2><code>CursorType</code></h2></a>
 <p>Predefined cursors.</p>
 <p>Note that these IDs are directly taken from the X cursor font, and many
 of these cursors are either not useful, or are not available on other platforms.</p>
 <p>The recommended way to create cursors is to use gdk_cursor_new_from_name().</p>
-<ul>
-<li>GDK_X_CURSOR = 0</li>
-<li>GDK_ARROW = 2</li>
-<li>GDK_BASED_ARROW_DOWN = 4</li>
-<li>GDK_BASED_ARROW_UP = 6</li>
-<li>GDK_BOAT = 8</li>
-<li>GDK_BOGOSITY = 10</li>
-<li>GDK_BOTTOM_LEFT_CORNER = 12</li>
-<li>GDK_BOTTOM_RIGHT_CORNER = 14</li>
-<li>GDK_BOTTOM_SIDE = 16</li>
-<li>GDK_BOTTOM_TEE = 18</li>
-<li>GDK_BOX_SPIRAL = 20</li>
-<li>GDK_CENTER_PTR = 22</li>
-<li>GDK_CIRCLE = 24</li>
-<li>GDK_CLOCK = 26</li>
-<li>GDK_COFFEE_MUG = 28</li>
-<li>GDK_CROSS = 30</li>
-<li>GDK_CROSS_REVERSE = 32</li>
-<li>GDK_CROSSHAIR = 34</li>
-<li>GDK_DIAMOND_CROSS = 36</li>
-<li>GDK_DOT = 38</li>
-<li>GDK_DOTBOX = 40</li>
-<li>GDK_DOUBLE_ARROW = 42</li>
-<li>GDK_DRAFT_LARGE = 44</li>
-<li>GDK_DRAFT_SMALL = 46</li>
-<li>GDK_DRAPED_BOX = 48</li>
-<li>GDK_EXCHANGE = 50</li>
-<li>GDK_FLEUR = 52</li>
-<li>GDK_GOBBLER = 54</li>
-<li>GDK_GUMBY = 56</li>
-<li>GDK_HAND1 = 58</li>
-<li>GDK_HAND2 = 60</li>
-<li>GDK_HEART = 62</li>
-<li>GDK_ICON = 64</li>
-<li>GDK_IRON_CROSS = 66</li>
-<li>GDK_LEFT_PTR = 68</li>
-<li>GDK_LEFT_SIDE = 70</li>
-<li>GDK_LEFT_TEE = 72</li>
-<li>GDK_LEFTBUTTON = 74</li>
-<li>GDK_LL_ANGLE = 76</li>
-<li>GDK_LR_ANGLE = 78</li>
-<li>GDK_MAN = 80</li>
-<li>GDK_MIDDLEBUTTON = 82</li>
-<li>GDK_MOUSE = 84</li>
-<li>GDK_PENCIL = 86</li>
-<li>GDK_PIRATE = 88</li>
-<li>GDK_PLUS = 90</li>
-<li>GDK_QUESTION_ARROW = 92</li>
-<li>GDK_RIGHT_PTR = 94</li>
-<li>GDK_RIGHT_SIDE = 96</li>
-<li>GDK_RIGHT_TEE = 98</li>
-<li>GDK_RIGHTBUTTON = 100</li>
-<li>GDK_RTL_LOGO = 102</li>
-<li>GDK_SAILBOAT = 104</li>
-<li>GDK_SB_DOWN_ARROW = 106</li>
-<li>GDK_SB_H_DOUBLE_ARROW = 108</li>
-<li>GDK_SB_LEFT_ARROW = 110</li>
-<li>GDK_SB_RIGHT_ARROW = 112</li>
-<li>GDK_SB_UP_ARROW = 114</li>
-<li>GDK_SB_V_DOUBLE_ARROW = 116</li>
-<li>GDK_SHUTTLE = 118</li>
-<li>GDK_SIZING = 120</li>
-<li>GDK_SPIDER = 122</li>
-<li>GDK_SPRAYCAN = 124</li>
-<li>GDK_STAR = 126</li>
-<li>GDK_TARGET = 128</li>
-<li>GDK_TCROSS = 130</li>
-<li>GDK_TOP_LEFT_ARROW = 132</li>
-<li>GDK_TOP_LEFT_CORNER = 134</li>
-<li>GDK_TOP_RIGHT_CORNER = 136</li>
-<li>GDK_TOP_SIDE = 138</li>
-<li>GDK_TOP_TEE = 140</li>
-<li>GDK_TREK = 142</li>
-<li>GDK_UL_ANGLE = 144</li>
-<li>GDK_UMBRELLA = 146</li>
-<li>GDK_UR_ANGLE = 148</li>
-<li>GDK_WATCH = 150</li>
-<li>GDK_XTERM = 152</li>
-<li>GDK_LAST_CURSOR = 153</li>
-<li>GDK_BLANK_CURSOR = -2</li>
-<li>GDK_CURSOR_IS_PIXMAP = -1</li>
-</ul>
 <p>C - <code>GdkCursorType</code></p>
+<a class="header" href="#gdk_x_cursor--0" id="gdk_x_cursor--0"><h3>GDK_X_CURSOR = 0</h3></a>
+<p><img src="X_cursor.png" alt="" /></p>
+<a class="header" href="#gdk_arrow--2" id="gdk_arrow--2"><h3>GDK_ARROW = 2</h3></a>
+<p><img src="arrow.png" alt="" /></p>
+<a class="header" href="#gdk_based_arrow_down--4" id="gdk_based_arrow_down--4"><h3>GDK_BASED_ARROW_DOWN = 4</h3></a>
+<p><img src="based_arrow_down.png" alt="" /></p>
+<a class="header" href="#gdk_based_arrow_up--6" id="gdk_based_arrow_up--6"><h3>GDK_BASED_ARROW_UP = 6</h3></a>
+<p><img src="based_arrow_up.png" alt="" /></p>
+<a class="header" href="#gdk_boat--8" id="gdk_boat--8"><h3>GDK_BOAT = 8</h3></a>
+<p><img src="boat.png" alt="" /></p>
+<a class="header" href="#gdk_bogosity--10" id="gdk_bogosity--10"><h3>GDK_BOGOSITY = 10</h3></a>
+<p><img src="bogosity.png" alt="" /></p>
+<a class="header" href="#gdk_bottom_left_corner--12" id="gdk_bottom_left_corner--12"><h3>GDK_BOTTOM_LEFT_CORNER = 12</h3></a>
+<p><img src="bottom_left_corner.png" alt="" /></p>
+<a class="header" href="#gdk_bottom_right_corner--14" id="gdk_bottom_right_corner--14"><h3>GDK_BOTTOM_RIGHT_CORNER = 14</h3></a>
+<p><img src="bottom_right_corner.png" alt="" /></p>
+<a class="header" href="#gdk_bottom_side--16" id="gdk_bottom_side--16"><h3>GDK_BOTTOM_SIDE = 16</h3></a>
+<p><img src="bottom_side.png" alt="" /></p>
+<a class="header" href="#gdk_bottom_tee--18" id="gdk_bottom_tee--18"><h3>GDK_BOTTOM_TEE = 18</h3></a>
+<p><img src="bottom_tee.png" alt="" /></p>
+<a class="header" href="#gdk_box_spiral--20" id="gdk_box_spiral--20"><h3>GDK_BOX_SPIRAL = 20</h3></a>
+<p><img src="box_spiral.png" alt="" /></p>
+<a class="header" href="#gdk_center_ptr--22" id="gdk_center_ptr--22"><h3>GDK_CENTER_PTR = 22</h3></a>
+<p><img src="center_ptr.png" alt="" /></p>
+<a class="header" href="#gdk_circle--24" id="gdk_circle--24"><h3>GDK_CIRCLE = 24</h3></a>
+<p><img src="circle.png" alt="" /></p>
+<a class="header" href="#gdk_clock--26" id="gdk_clock--26"><h3>GDK_CLOCK = 26</h3></a>
+<p><img src="clock.png" alt="" /></p>
+<a class="header" href="#gdk_coffee_mug--28" id="gdk_coffee_mug--28"><h3>GDK_COFFEE_MUG = 28</h3></a>
+<p><img src="coffee_mug.png" alt="" /></p>
+<a class="header" href="#gdk_cross--30" id="gdk_cross--30"><h3>GDK_CROSS = 30</h3></a>
+<p><img src="cross.png" alt="" /></p>
+<a class="header" href="#gdk_cross_reverse--32" id="gdk_cross_reverse--32"><h3>GDK_CROSS_REVERSE = 32</h3></a>
+<p><img src="cross_reverse.png" alt="" /></p>
+<a class="header" href="#gdk_crosshair--34" id="gdk_crosshair--34"><h3>GDK_CROSSHAIR = 34</h3></a>
+<p><img src="crosshair.png" alt="" /></p>
+<a class="header" href="#gdk_diamond_cross--36" id="gdk_diamond_cross--36"><h3>GDK_DIAMOND_CROSS = 36</h3></a>
+<p><img src="diamond_cross.png" alt="" /></p>
+<a class="header" href="#gdk_dot--38" id="gdk_dot--38"><h3>GDK_DOT = 38</h3></a>
+<p><img src="dot.png" alt="" /></p>
+<a class="header" href="#gdk_dotbox--40" id="gdk_dotbox--40"><h3>GDK_DOTBOX = 40</h3></a>
+<p><img src="dotbox.png" alt="" /></p>
+<a class="header" href="#gdk_double_arrow--42" id="gdk_double_arrow--42"><h3>GDK_DOUBLE_ARROW = 42</h3></a>
+<p><img src="double_arrow.png" alt="" /></p>
+<a class="header" href="#gdk_draft_large--44" id="gdk_draft_large--44"><h3>GDK_DRAFT_LARGE = 44</h3></a>
+<p><img src="draft_large.png" alt="" /></p>
+<a class="header" href="#gdk_draft_small--46" id="gdk_draft_small--46"><h3>GDK_DRAFT_SMALL = 46</h3></a>
+<p><img src="draft_small.png" alt="" /></p>
+<a class="header" href="#gdk_draped_box--48" id="gdk_draped_box--48"><h3>GDK_DRAPED_BOX = 48</h3></a>
+<p><img src="draped_box.png" alt="" /></p>
+<a class="header" href="#gdk_exchange--50" id="gdk_exchange--50"><h3>GDK_EXCHANGE = 50</h3></a>
+<p><img src="exchange.png" alt="" /></p>
+<a class="header" href="#gdk_fleur--52" id="gdk_fleur--52"><h3>GDK_FLEUR = 52</h3></a>
+<p><img src="fleur.png" alt="" /></p>
+<a class="header" href="#gdk_gobbler--54" id="gdk_gobbler--54"><h3>GDK_GOBBLER = 54</h3></a>
+<p><img src="gobbler.png" alt="" /></p>
+<a class="header" href="#gdk_gumby--56" id="gdk_gumby--56"><h3>GDK_GUMBY = 56</h3></a>
+<p><img src="gumby.png" alt="" /></p>
+<a class="header" href="#gdk_hand1--58" id="gdk_hand1--58"><h3>GDK_HAND1 = 58</h3></a>
+<p><img src="hand1.png" alt="" /></p>
+<a class="header" href="#gdk_hand2--60" id="gdk_hand2--60"><h3>GDK_HAND2 = 60</h3></a>
+<p><img src="hand2.png" alt="" /></p>
+<a class="header" href="#gdk_heart--62" id="gdk_heart--62"><h3>GDK_HEART = 62</h3></a>
+<p><img src="heart.png" alt="" /></p>
+<a class="header" href="#gdk_icon--64" id="gdk_icon--64"><h3>GDK_ICON = 64</h3></a>
+<p><img src="icon.png" alt="" /></p>
+<a class="header" href="#gdk_iron_cross--66" id="gdk_iron_cross--66"><h3>GDK_IRON_CROSS = 66</h3></a>
+<p><img src="iron_cross.png" alt="" /></p>
+<a class="header" href="#gdk_left_ptr--68" id="gdk_left_ptr--68"><h3>GDK_LEFT_PTR = 68</h3></a>
+<p><img src="left_ptr.png" alt="" /></p>
+<a class="header" href="#gdk_left_side--70" id="gdk_left_side--70"><h3>GDK_LEFT_SIDE = 70</h3></a>
+<p><img src="left_side.png" alt="" /></p>
+<a class="header" href="#gdk_left_tee--72" id="gdk_left_tee--72"><h3>GDK_LEFT_TEE = 72</h3></a>
+<p><img src="left_tee.png" alt="" /></p>
+<a class="header" href="#gdk_leftbutton--74" id="gdk_leftbutton--74"><h3>GDK_LEFTBUTTON = 74</h3></a>
+<p><img src="leftbutton.png" alt="" /></p>
+<a class="header" href="#gdk_ll_angle--76" id="gdk_ll_angle--76"><h3>GDK_LL_ANGLE = 76</h3></a>
+<p><img src="ll_angle.png" alt="" /></p>
+<a class="header" href="#gdk_lr_angle--78" id="gdk_lr_angle--78"><h3>GDK_LR_ANGLE = 78</h3></a>
+<p><img src="lr_angle.png" alt="" /></p>
+<a class="header" href="#gdk_man--80" id="gdk_man--80"><h3>GDK_MAN = 80</h3></a>
+<p><img src="man.png" alt="" /></p>
+<a class="header" href="#gdk_middlebutton--82" id="gdk_middlebutton--82"><h3>GDK_MIDDLEBUTTON = 82</h3></a>
+<p><img src="middlebutton.png" alt="" /></p>
+<a class="header" href="#gdk_mouse--84" id="gdk_mouse--84"><h3>GDK_MOUSE = 84</h3></a>
+<p><img src="mouse.png" alt="" /></p>
+<a class="header" href="#gdk_pencil--86" id="gdk_pencil--86"><h3>GDK_PENCIL = 86</h3></a>
+<p><img src="pencil.png" alt="" /></p>
+<a class="header" href="#gdk_pirate--88" id="gdk_pirate--88"><h3>GDK_PIRATE = 88</h3></a>
+<p><img src="pirate.png" alt="" /></p>
+<a class="header" href="#gdk_plus--90" id="gdk_plus--90"><h3>GDK_PLUS = 90</h3></a>
+<p><img src="plus.png" alt="" /></p>
+<a class="header" href="#gdk_question_arrow--92" id="gdk_question_arrow--92"><h3>GDK_QUESTION_ARROW = 92</h3></a>
+<p><img src="question_arrow.png" alt="" /></p>
+<a class="header" href="#gdk_right_ptr--94" id="gdk_right_ptr--94"><h3>GDK_RIGHT_PTR = 94</h3></a>
+<p><img src="right_ptr.png" alt="" /></p>
+<a class="header" href="#gdk_right_side--96" id="gdk_right_side--96"><h3>GDK_RIGHT_SIDE = 96</h3></a>
+<p><img src="right_side.png" alt="" /></p>
+<a class="header" href="#gdk_right_tee--98" id="gdk_right_tee--98"><h3>GDK_RIGHT_TEE = 98</h3></a>
+<p><img src="right_tee.png" alt="" /></p>
+<a class="header" href="#gdk_rightbutton--100" id="gdk_rightbutton--100"><h3>GDK_RIGHTBUTTON = 100</h3></a>
+<p><img src="rightbutton.png" alt="" /></p>
+<a class="header" href="#gdk_rtl_logo--102" id="gdk_rtl_logo--102"><h3>GDK_RTL_LOGO = 102</h3></a>
+<p><img src="rtl_logo.png" alt="" /></p>
+<a class="header" href="#gdk_sailboat--104" id="gdk_sailboat--104"><h3>GDK_SAILBOAT = 104</h3></a>
+<p><img src="sailboat.png" alt="" /></p>
+<a class="header" href="#gdk_sb_down_arrow--106" id="gdk_sb_down_arrow--106"><h3>GDK_SB_DOWN_ARROW = 106</h3></a>
+<p><img src="sb_down_arrow.png" alt="" /></p>
+<a class="header" href="#gdk_sb_h_double_arrow--108" id="gdk_sb_h_double_arrow--108"><h3>GDK_SB_H_DOUBLE_ARROW = 108</h3></a>
+<p><img src="sb_h_double_arrow.png" alt="" /></p>
+<a class="header" href="#gdk_sb_left_arrow--110" id="gdk_sb_left_arrow--110"><h3>GDK_SB_LEFT_ARROW = 110</h3></a>
+<p><img src="sb_left_arrow.png" alt="" /></p>
+<a class="header" href="#gdk_sb_right_arrow--112" id="gdk_sb_right_arrow--112"><h3>GDK_SB_RIGHT_ARROW = 112</h3></a>
+<p><img src="sb_right_arrow.png" alt="" /></p>
+<a class="header" href="#gdk_sb_up_arrow--114" id="gdk_sb_up_arrow--114"><h3>GDK_SB_UP_ARROW = 114</h3></a>
+<p><img src="sb_up_arrow.png" alt="" /></p>
+<a class="header" href="#gdk_sb_v_double_arrow--116" id="gdk_sb_v_double_arrow--116"><h3>GDK_SB_V_DOUBLE_ARROW = 116</h3></a>
+<p><img src="sb_v_double_arrow.png" alt="" /></p>
+<a class="header" href="#gdk_shuttle--118" id="gdk_shuttle--118"><h3>GDK_SHUTTLE = 118</h3></a>
+<p><img src="shuttle.png" alt="" /></p>
+<a class="header" href="#gdk_sizing--120" id="gdk_sizing--120"><h3>GDK_SIZING = 120</h3></a>
+<p><img src="sizing.png" alt="" /></p>
+<a class="header" href="#gdk_spider--122" id="gdk_spider--122"><h3>GDK_SPIDER = 122</h3></a>
+<p><img src="spider.png" alt="" /></p>
+<a class="header" href="#gdk_spraycan--124" id="gdk_spraycan--124"><h3>GDK_SPRAYCAN = 124</h3></a>
+<p><img src="spraycan.png" alt="" /></p>
+<a class="header" href="#gdk_star--126" id="gdk_star--126"><h3>GDK_STAR = 126</h3></a>
+<p><img src="star.png" alt="" /></p>
+<a class="header" href="#gdk_target--128" id="gdk_target--128"><h3>GDK_TARGET = 128</h3></a>
+<p><img src="target.png" alt="" /></p>
+<a class="header" href="#gdk_tcross--130" id="gdk_tcross--130"><h3>GDK_TCROSS = 130</h3></a>
+<p><img src="tcross.png" alt="" /></p>
+<a class="header" href="#gdk_top_left_arrow--132" id="gdk_top_left_arrow--132"><h3>GDK_TOP_LEFT_ARROW = 132</h3></a>
+<p><img src="top_left_arrow.png" alt="" /></p>
+<a class="header" href="#gdk_top_left_corner--134" id="gdk_top_left_corner--134"><h3>GDK_TOP_LEFT_CORNER = 134</h3></a>
+<p><img src="top_left_corner.png" alt="" /></p>
+<a class="header" href="#gdk_top_right_corner--136" id="gdk_top_right_corner--136"><h3>GDK_TOP_RIGHT_CORNER = 136</h3></a>
+<p><img src="top_right_corner.png" alt="" /></p>
+<a class="header" href="#gdk_top_side--138" id="gdk_top_side--138"><h3>GDK_TOP_SIDE = 138</h3></a>
+<p><img src="top_side.png" alt="" /></p>
+<a class="header" href="#gdk_top_tee--140" id="gdk_top_tee--140"><h3>GDK_TOP_TEE = 140</h3></a>
+<p><img src="top_tee.png" alt="" /></p>
+<a class="header" href="#gdk_trek--142" id="gdk_trek--142"><h3>GDK_TREK = 142</h3></a>
+<p><img src="trek.png" alt="" /></p>
+<a class="header" href="#gdk_ul_angle--144" id="gdk_ul_angle--144"><h3>GDK_UL_ANGLE = 144</h3></a>
+<p><img src="ul_angle.png" alt="" /></p>
+<a class="header" href="#gdk_umbrella--146" id="gdk_umbrella--146"><h3>GDK_UMBRELLA = 146</h3></a>
+<p><img src="umbrella.png" alt="" /></p>
+<a class="header" href="#gdk_ur_angle--148" id="gdk_ur_angle--148"><h3>GDK_UR_ANGLE = 148</h3></a>
+<p><img src="ur_angle.png" alt="" /></p>
+<a class="header" href="#gdk_watch--150" id="gdk_watch--150"><h3>GDK_WATCH = 150</h3></a>
+<p><img src="watch.png" alt="" /></p>
+<a class="header" href="#gdk_xterm--152" id="gdk_xterm--152"><h3>GDK_XTERM = 152</h3></a>
+<p><img src="xterm.png" alt="" /></p>
+<a class="header" href="#gdk_last_cursor--153" id="gdk_last_cursor--153"><h3>GDK_LAST_CURSOR = 153</h3></a>
+<p>last cursor type</p>
+<a class="header" href="#gdk_blank_cursor---2" id="gdk_blank_cursor---2"><h3>GDK_BLANK_CURSOR = -2</h3></a>
+<p>Blank cursor. Since 2.16</p>
+<a class="header" href="#gdk_cursor_is_pixmap---1" id="gdk_cursor_is_pixmap---1"><h3>GDK_CURSOR_IS_PIXMAP = -1</h3></a>
+<p>type of cursors constructed with
+gdk_cursor_new_from_pixbuf()</p>
 <a class="header" href="#devicepadfeature" id="devicepadfeature"><h2><code>DevicePadFeature</code></h2></a>
 <p>A pad feature.</p>
-<ul>
-<li>GDK_DEVICE_PAD_FEATURE_BUTTON = 0</li>
-<li>GDK_DEVICE_PAD_FEATURE_RING = 1</li>
-<li>GDK_DEVICE_PAD_FEATURE_STRIP = 2</li>
-</ul>
 <p>C - <code>GdkDevicePadFeature</code></p>
+<a class="header" href="#gdk_device_pad_feature_button--0" id="gdk_device_pad_feature_button--0"><h3>GDK_DEVICE_PAD_FEATURE_BUTTON = 0</h3></a>
+<p>a button</p>
+<a class="header" href="#gdk_device_pad_feature_ring--1" id="gdk_device_pad_feature_ring--1"><h3>GDK_DEVICE_PAD_FEATURE_RING = 1</h3></a>
+<p>a ring-shaped interactive area</p>
+<a class="header" href="#gdk_device_pad_feature_strip--2" id="gdk_device_pad_feature_strip--2"><h3>GDK_DEVICE_PAD_FEATURE_STRIP = 2</h3></a>
+<p>a straight interactive area</p>
 <a class="header" href="#devicetooltype" id="devicetooltype"><h2><code>DeviceToolType</code></h2></a>
 <p>Indicates the specific type of tool being used being a tablet. Such as an
 airbrush, pencil, etc.</p>
-<ul>
-<li>GDK_DEVICE_TOOL_TYPE_UNKNOWN = 0</li>
-<li>GDK_DEVICE_TOOL_TYPE_PEN = 1</li>
-<li>GDK_DEVICE_TOOL_TYPE_ERASER = 2</li>
-<li>GDK_DEVICE_TOOL_TYPE_BRUSH = 3</li>
-<li>GDK_DEVICE_TOOL_TYPE_PENCIL = 4</li>
-<li>GDK_DEVICE_TOOL_TYPE_AIRBRUSH = 5</li>
-<li>GDK_DEVICE_TOOL_TYPE_MOUSE = 6</li>
-<li>GDK_DEVICE_TOOL_TYPE_LENS = 7</li>
-</ul>
 <p>C - <code>GdkDeviceToolType</code></p>
+<a class="header" href="#gdk_device_tool_type_unknown--0" id="gdk_device_tool_type_unknown--0"><h3>GDK_DEVICE_TOOL_TYPE_UNKNOWN = 0</h3></a>
+<p>Tool is of an unknown type.</p>
+<a class="header" href="#gdk_device_tool_type_pen--1" id="gdk_device_tool_type_pen--1"><h3>GDK_DEVICE_TOOL_TYPE_PEN = 1</h3></a>
+<p>Tool is a standard tablet stylus.</p>
+<a class="header" href="#gdk_device_tool_type_eraser--2" id="gdk_device_tool_type_eraser--2"><h3>GDK_DEVICE_TOOL_TYPE_ERASER = 2</h3></a>
+<p>Tool is standard tablet eraser.</p>
+<a class="header" href="#gdk_device_tool_type_brush--3" id="gdk_device_tool_type_brush--3"><h3>GDK_DEVICE_TOOL_TYPE_BRUSH = 3</h3></a>
+<p>Tool is a brush stylus.</p>
+<a class="header" href="#gdk_device_tool_type_pencil--4" id="gdk_device_tool_type_pencil--4"><h3>GDK_DEVICE_TOOL_TYPE_PENCIL = 4</h3></a>
+<p>Tool is a pencil stylus.</p>
+<a class="header" href="#gdk_device_tool_type_airbrush--5" id="gdk_device_tool_type_airbrush--5"><h3>GDK_DEVICE_TOOL_TYPE_AIRBRUSH = 5</h3></a>
+<p>Tool is an airbrush stylus.</p>
+<a class="header" href="#gdk_device_tool_type_mouse--6" id="gdk_device_tool_type_mouse--6"><h3>GDK_DEVICE_TOOL_TYPE_MOUSE = 6</h3></a>
+<p>Tool is a mouse.</p>
+<a class="header" href="#gdk_device_tool_type_lens--7" id="gdk_device_tool_type_lens--7"><h3>GDK_DEVICE_TOOL_TYPE_LENS = 7</h3></a>
+<p>Tool is a lens cursor.</p>
 <a class="header" href="#devicetype" id="devicetype"><h2><code>DeviceType</code></h2></a>
 <p>Indicates the device type. See [above][GdkDeviceManager.description]
 for more information about the meaning of these device types.</p>
-<ul>
-<li>GDK_DEVICE_TYPE_MASTER = 0</li>
-<li>GDK_DEVICE_TYPE_SLAVE = 1</li>
-<li>GDK_DEVICE_TYPE_FLOATING = 2</li>
-</ul>
 <p>C - <code>GdkDeviceType</code></p>
+<a class="header" href="#gdk_device_type_master--0" id="gdk_device_type_master--0"><h3>GDK_DEVICE_TYPE_MASTER = 0</h3></a>
+<p>Device is a master (or virtual) device. There will
+be an associated focus indicator on the screen.</p>
+<a class="header" href="#gdk_device_type_slave--1" id="gdk_device_type_slave--1"><h3>GDK_DEVICE_TYPE_SLAVE = 1</h3></a>
+<p>Device is a slave (or physical) device.</p>
+<a class="header" href="#gdk_device_type_floating--2" id="gdk_device_type_floating--2"><h3>GDK_DEVICE_TYPE_FLOATING = 2</h3></a>
+<p>Device is a physical device, currently not attached to
+any virtual device.</p>
 <a class="header" href="#dragcancelreason" id="dragcancelreason"><h2><code>DragCancelReason</code></h2></a>
 <p>Used in #GdkDragContext to the reason of a cancelled DND operation.</p>
-<ul>
-<li>GDK_DRAG_CANCEL_NO_TARGET = 0</li>
-<li>GDK_DRAG_CANCEL_USER_CANCELLED = 1</li>
-<li>GDK_DRAG_CANCEL_ERROR = 2</li>
-</ul>
 <p>C - <code>GdkDragCancelReason</code></p>
+<a class="header" href="#gdk_drag_cancel_no_target--0" id="gdk_drag_cancel_no_target--0"><h3>GDK_DRAG_CANCEL_NO_TARGET = 0</h3></a>
+<p>There is no suitable drop target.</p>
+<a class="header" href="#gdk_drag_cancel_user_cancelled--1" id="gdk_drag_cancel_user_cancelled--1"><h3>GDK_DRAG_CANCEL_USER_CANCELLED = 1</h3></a>
+<p>Drag cancelled by the user</p>
+<a class="header" href="#gdk_drag_cancel_error--2" id="gdk_drag_cancel_error--2"><h3>GDK_DRAG_CANCEL_ERROR = 2</h3></a>
+<p>Unspecified error.</p>
 <a class="header" href="#dragprotocol" id="dragprotocol"><h2><code>DragProtocol</code></h2></a>
 <p>Used in #GdkDragContext to indicate the protocol according to
 which DND is done.</p>
-<ul>
-<li>GDK_DRAG_PROTO_NONE = 0</li>
-<li>GDK_DRAG_PROTO_MOTIF = 1</li>
-<li>GDK_DRAG_PROTO_XDND = 2</li>
-<li>GDK_DRAG_PROTO_ROOTWIN = 3</li>
-<li>GDK_DRAG_PROTO_WIN32_DROPFILES = 4</li>
-<li>GDK_DRAG_PROTO_OLE2 = 5</li>
-<li>GDK_DRAG_PROTO_LOCAL = 6</li>
-<li>GDK_DRAG_PROTO_WAYLAND = 7</li>
-</ul>
 <p>C - <code>GdkDragProtocol</code></p>
+<a class="header" href="#gdk_drag_proto_none--0" id="gdk_drag_proto_none--0"><h3>GDK_DRAG_PROTO_NONE = 0</h3></a>
+<p>no protocol.</p>
+<a class="header" href="#gdk_drag_proto_motif--1" id="gdk_drag_proto_motif--1"><h3>GDK_DRAG_PROTO_MOTIF = 1</h3></a>
+<p>The Motif DND protocol. No longer supported</p>
+<a class="header" href="#gdk_drag_proto_xdnd--2" id="gdk_drag_proto_xdnd--2"><h3>GDK_DRAG_PROTO_XDND = 2</h3></a>
+<p>The Xdnd protocol.</p>
+<a class="header" href="#gdk_drag_proto_rootwin--3" id="gdk_drag_proto_rootwin--3"><h3>GDK_DRAG_PROTO_ROOTWIN = 3</h3></a>
+<p>An extension to the Xdnd protocol for
+unclaimed root window drops.</p>
+<a class="header" href="#gdk_drag_proto_win32_dropfiles--4" id="gdk_drag_proto_win32_dropfiles--4"><h3>GDK_DRAG_PROTO_WIN32_DROPFILES = 4</h3></a>
+<p>The simple WM_DROPFILES protocol.</p>
+<a class="header" href="#gdk_drag_proto_ole2--5" id="gdk_drag_proto_ole2--5"><h3>GDK_DRAG_PROTO_OLE2 = 5</h3></a>
+<p>The complex OLE2 DND protocol (not implemented).</p>
+<a class="header" href="#gdk_drag_proto_local--6" id="gdk_drag_proto_local--6"><h3>GDK_DRAG_PROTO_LOCAL = 6</h3></a>
+<p>Intra-application DND.</p>
+<a class="header" href="#gdk_drag_proto_wayland--7" id="gdk_drag_proto_wayland--7"><h3>GDK_DRAG_PROTO_WAYLAND = 7</h3></a>
+<p>Wayland DND protocol.</p>
 <a class="header" href="#eventtype" id="eventtype"><h2><code>EventType</code></h2></a>
 <p>Specifies the type of the event.</p>
 <p>Do not confuse these events with the signals that GTK+ widgets emit.
@@ -332,145 +454,258 @@ invalid (eg <code>Gdk.EventType.2ButtonPress</code>, where a
 symbol is not allowed to start with a number). In that case, the
 aliases %GDK_DOUBLE_BUTTON_PRESS and %GDK_TRIPLE_BUTTON_PRESS can
 be used instead.</p>
-<ul>
-<li>GDK_NOTHING = -1</li>
-<li>GDK_DELETE = 0</li>
-<li>GDK_DESTROY = 1</li>
-<li>GDK_EXPOSE = 2</li>
-<li>GDK_MOTION_NOTIFY = 3</li>
-<li>GDK_BUTTON_PRESS = 4</li>
-<li>GDK_2BUTTON_PRESS = 5</li>
-<li>GDK_DOUBLE_BUTTON_PRESS = 5</li>
-<li>GDK_3BUTTON_PRESS = 6</li>
-<li>GDK_TRIPLE_BUTTON_PRESS = 6</li>
-<li>GDK_BUTTON_RELEASE = 7</li>
-<li>GDK_KEY_PRESS = 8</li>
-<li>GDK_KEY_RELEASE = 9</li>
-<li>GDK_ENTER_NOTIFY = 10</li>
-<li>GDK_LEAVE_NOTIFY = 11</li>
-<li>GDK_FOCUS_CHANGE = 12</li>
-<li>GDK_CONFIGURE = 13</li>
-<li>GDK_MAP = 14</li>
-<li>GDK_UNMAP = 15</li>
-<li>GDK_PROPERTY_NOTIFY = 16</li>
-<li>GDK_SELECTION_CLEAR = 17</li>
-<li>GDK_SELECTION_REQUEST = 18</li>
-<li>GDK_SELECTION_NOTIFY = 19</li>
-<li>GDK_PROXIMITY_IN = 20</li>
-<li>GDK_PROXIMITY_OUT = 21</li>
-<li>GDK_DRAG_ENTER = 22</li>
-<li>GDK_DRAG_LEAVE = 23</li>
-<li>GDK_DRAG_MOTION = 24</li>
-<li>GDK_DRAG_STATUS = 25</li>
-<li>GDK_DROP_START = 26</li>
-<li>GDK_DROP_FINISHED = 27</li>
-<li>GDK_CLIENT_EVENT = 28</li>
-<li>GDK_VISIBILITY_NOTIFY = 29</li>
-<li>GDK_SCROLL = 31</li>
-<li>GDK_WINDOW_STATE = 32</li>
-<li>GDK_SETTING = 33</li>
-<li>GDK_OWNER_CHANGE = 34</li>
-<li>GDK_GRAB_BROKEN = 35</li>
-<li>GDK_DAMAGE = 36</li>
-<li>GDK_TOUCH_BEGIN = 37</li>
-<li>GDK_TOUCH_UPDATE = 38</li>
-<li>GDK_TOUCH_END = 39</li>
-<li>GDK_TOUCH_CANCEL = 40</li>
-<li>GDK_TOUCHPAD_SWIPE = 41</li>
-<li>GDK_TOUCHPAD_PINCH = 42</li>
-<li>GDK_PAD_BUTTON_PRESS = 43</li>
-<li>GDK_PAD_BUTTON_RELEASE = 44</li>
-<li>GDK_PAD_RING = 45</li>
-<li>GDK_PAD_STRIP = 46</li>
-<li>GDK_PAD_GROUP_MODE = 47</li>
-<li>GDK_EVENT_LAST = 48</li>
-</ul>
 <p>C - <code>GdkEventType</code></p>
+<a class="header" href="#gdk_nothing---1" id="gdk_nothing---1"><h3>GDK_NOTHING = -1</h3></a>
+<p>a special code to indicate a null event.</p>
+<a class="header" href="#gdk_delete--0" id="gdk_delete--0"><h3>GDK_DELETE = 0</h3></a>
+<p>the window manager has requested that the toplevel window be
+hidden or destroyed, usually when the user clicks on a special icon in the
+title bar.</p>
+<a class="header" href="#gdk_destroy--1" id="gdk_destroy--1"><h3>GDK_DESTROY = 1</h3></a>
+<p>the window has been destroyed.</p>
+<a class="header" href="#gdk_expose--2" id="gdk_expose--2"><h3>GDK_EXPOSE = 2</h3></a>
+<p>all or part of the window has become visible and needs to be
+redrawn.</p>
+<a class="header" href="#gdk_motion_notify--3" id="gdk_motion_notify--3"><h3>GDK_MOTION_NOTIFY = 3</h3></a>
+<p>the pointer (usually a mouse) has moved.</p>
+<a class="header" href="#gdk_button_press--4" id="gdk_button_press--4"><h3>GDK_BUTTON_PRESS = 4</h3></a>
+<p>a mouse button has been pressed.</p>
+<a class="header" href="#gdk_2button_press--5" id="gdk_2button_press--5"><h3>GDK_2BUTTON_PRESS = 5</h3></a>
+<p>a mouse button has been double-clicked (clicked twice
+within a short period of time). Note that each click also generates a
+%GDK_BUTTON_PRESS event.</p>
+<a class="header" href="#gdk_double_button_press--5" id="gdk_double_button_press--5"><h3>GDK_DOUBLE_BUTTON_PRESS = 5</h3></a>
+<p>alias for %GDK_2BUTTON_PRESS, added in 3.6.</p>
+<a class="header" href="#gdk_3button_press--6" id="gdk_3button_press--6"><h3>GDK_3BUTTON_PRESS = 6</h3></a>
+<p>a mouse button has been clicked 3 times in a short period
+of time. Note that each click also generates a %GDK_BUTTON_PRESS event.</p>
+<a class="header" href="#gdk_triple_button_press--6" id="gdk_triple_button_press--6"><h3>GDK_TRIPLE_BUTTON_PRESS = 6</h3></a>
+<p>alias for %GDK_3BUTTON_PRESS, added in 3.6.</p>
+<a class="header" href="#gdk_button_release--7" id="gdk_button_release--7"><h3>GDK_BUTTON_RELEASE = 7</h3></a>
+<p>a mouse button has been released.</p>
+<a class="header" href="#gdk_key_press--8" id="gdk_key_press--8"><h3>GDK_KEY_PRESS = 8</h3></a>
+<p>a key has been pressed.</p>
+<a class="header" href="#gdk_key_release--9" id="gdk_key_release--9"><h3>GDK_KEY_RELEASE = 9</h3></a>
+<p>a key has been released.</p>
+<a class="header" href="#gdk_enter_notify--10" id="gdk_enter_notify--10"><h3>GDK_ENTER_NOTIFY = 10</h3></a>
+<p>the pointer has entered the window.</p>
+<a class="header" href="#gdk_leave_notify--11" id="gdk_leave_notify--11"><h3>GDK_LEAVE_NOTIFY = 11</h3></a>
+<p>the pointer has left the window.</p>
+<a class="header" href="#gdk_focus_change--12" id="gdk_focus_change--12"><h3>GDK_FOCUS_CHANGE = 12</h3></a>
+<p>the keyboard focus has entered or left the window.</p>
+<a class="header" href="#gdk_configure--13" id="gdk_configure--13"><h3>GDK_CONFIGURE = 13</h3></a>
+<p>the size, position or stacking order of the window has changed.
+Note that GTK+ discards these events for %GDK_WINDOW_CHILD windows.</p>
+<a class="header" href="#gdk_map--14" id="gdk_map--14"><h3>GDK_MAP = 14</h3></a>
+<p>the window has been mapped.</p>
+<a class="header" href="#gdk_unmap--15" id="gdk_unmap--15"><h3>GDK_UNMAP = 15</h3></a>
+<p>the window has been unmapped.</p>
+<a class="header" href="#gdk_property_notify--16" id="gdk_property_notify--16"><h3>GDK_PROPERTY_NOTIFY = 16</h3></a>
+<p>a property on the window has been changed or deleted.</p>
+<a class="header" href="#gdk_selection_clear--17" id="gdk_selection_clear--17"><h3>GDK_SELECTION_CLEAR = 17</h3></a>
+<p>the application has lost ownership of a selection.</p>
+<a class="header" href="#gdk_selection_request--18" id="gdk_selection_request--18"><h3>GDK_SELECTION_REQUEST = 18</h3></a>
+<p>another application has requested a selection.</p>
+<a class="header" href="#gdk_selection_notify--19" id="gdk_selection_notify--19"><h3>GDK_SELECTION_NOTIFY = 19</h3></a>
+<p>a selection has been received.</p>
+<a class="header" href="#gdk_proximity_in--20" id="gdk_proximity_in--20"><h3>GDK_PROXIMITY_IN = 20</h3></a>
+<p>an input device has moved into contact with a sensing
+surface (e.g. a touchscreen or graphics tablet).</p>
+<a class="header" href="#gdk_proximity_out--21" id="gdk_proximity_out--21"><h3>GDK_PROXIMITY_OUT = 21</h3></a>
+<p>an input device has moved out of contact with a sensing
+surface.</p>
+<a class="header" href="#gdk_drag_enter--22" id="gdk_drag_enter--22"><h3>GDK_DRAG_ENTER = 22</h3></a>
+<p>the mouse has entered the window while a drag is in progress.</p>
+<a class="header" href="#gdk_drag_leave--23" id="gdk_drag_leave--23"><h3>GDK_DRAG_LEAVE = 23</h3></a>
+<p>the mouse has left the window while a drag is in progress.</p>
+<a class="header" href="#gdk_drag_motion--24" id="gdk_drag_motion--24"><h3>GDK_DRAG_MOTION = 24</h3></a>
+<p>the mouse has moved in the window while a drag is in
+progress.</p>
+<a class="header" href="#gdk_drag_status--25" id="gdk_drag_status--25"><h3>GDK_DRAG_STATUS = 25</h3></a>
+<p>the status of the drag operation initiated by the window
+has changed.</p>
+<a class="header" href="#gdk_drop_start--26" id="gdk_drop_start--26"><h3>GDK_DROP_START = 26</h3></a>
+<p>a drop operation onto the window has started.</p>
+<a class="header" href="#gdk_drop_finished--27" id="gdk_drop_finished--27"><h3>GDK_DROP_FINISHED = 27</h3></a>
+<p>the drop operation initiated by the window has completed.</p>
+<a class="header" href="#gdk_client_event--28" id="gdk_client_event--28"><h3>GDK_CLIENT_EVENT = 28</h3></a>
+<p>a message has been received from another application.</p>
+<a class="header" href="#gdk_visibility_notify--29" id="gdk_visibility_notify--29"><h3>GDK_VISIBILITY_NOTIFY = 29</h3></a>
+<p>the window visibility status has changed.</p>
+<a class="header" href="#gdk_scroll--31" id="gdk_scroll--31"><h3>GDK_SCROLL = 31</h3></a>
+<p>the scroll wheel was turned</p>
+<a class="header" href="#gdk_window_state--32" id="gdk_window_state--32"><h3>GDK_WINDOW_STATE = 32</h3></a>
+<p>the state of a window has changed. See #GdkWindowState
+for the possible window states</p>
+<a class="header" href="#gdk_setting--33" id="gdk_setting--33"><h3>GDK_SETTING = 33</h3></a>
+<p>a setting has been modified.</p>
+<a class="header" href="#gdk_owner_change--34" id="gdk_owner_change--34"><h3>GDK_OWNER_CHANGE = 34</h3></a>
+<p>the owner of a selection has changed. This event type
+was added in 2.6</p>
+<a class="header" href="#gdk_grab_broken--35" id="gdk_grab_broken--35"><h3>GDK_GRAB_BROKEN = 35</h3></a>
+<p>a pointer or keyboard grab was broken. This event type
+was added in 2.8.</p>
+<a class="header" href="#gdk_damage--36" id="gdk_damage--36"><h3>GDK_DAMAGE = 36</h3></a>
+<p>the content of the window has been changed. This event type
+was added in 2.14.</p>
+<a class="header" href="#gdk_touch_begin--37" id="gdk_touch_begin--37"><h3>GDK_TOUCH_BEGIN = 37</h3></a>
+<p>A new touch event sequence has just started. This event
+type was added in 3.4.</p>
+<a class="header" href="#gdk_touch_update--38" id="gdk_touch_update--38"><h3>GDK_TOUCH_UPDATE = 38</h3></a>
+<p>A touch event sequence has been updated. This event type
+was added in 3.4.</p>
+<a class="header" href="#gdk_touch_end--39" id="gdk_touch_end--39"><h3>GDK_TOUCH_END = 39</h3></a>
+<p>A touch event sequence has finished. This event type
+was added in 3.4.</p>
+<a class="header" href="#gdk_touch_cancel--40" id="gdk_touch_cancel--40"><h3>GDK_TOUCH_CANCEL = 40</h3></a>
+<p>A touch event sequence has been canceled. This event type
+was added in 3.4.</p>
+<a class="header" href="#gdk_touchpad_swipe--41" id="gdk_touchpad_swipe--41"><h3>GDK_TOUCHPAD_SWIPE = 41</h3></a>
+<p>A touchpad swipe gesture event, the current state
+is determined by its phase field. This event type was added in 3.18.</p>
+<a class="header" href="#gdk_touchpad_pinch--42" id="gdk_touchpad_pinch--42"><h3>GDK_TOUCHPAD_PINCH = 42</h3></a>
+<p>A touchpad pinch gesture event, the current state
+is determined by its phase field. This event type was added in 3.18.</p>
+<a class="header" href="#gdk_pad_button_press--43" id="gdk_pad_button_press--43"><h3>GDK_PAD_BUTTON_PRESS = 43</h3></a>
+<p>A tablet pad button press event. This event type
+was added in 3.22.</p>
+<a class="header" href="#gdk_pad_button_release--44" id="gdk_pad_button_release--44"><h3>GDK_PAD_BUTTON_RELEASE = 44</h3></a>
+<p>A tablet pad button release event. This event type
+was added in 3.22.</p>
+<a class="header" href="#gdk_pad_ring--45" id="gdk_pad_ring--45"><h3>GDK_PAD_RING = 45</h3></a>
+<p>A tablet pad axis event from a &quot;ring&quot;. This event type was
+added in 3.22.</p>
+<a class="header" href="#gdk_pad_strip--46" id="gdk_pad_strip--46"><h3>GDK_PAD_STRIP = 46</h3></a>
+<p>A tablet pad axis event from a &quot;strip&quot;. This event type was
+added in 3.22.</p>
+<a class="header" href="#gdk_pad_group_mode--47" id="gdk_pad_group_mode--47"><h3>GDK_PAD_GROUP_MODE = 47</h3></a>
+<p>A tablet pad group mode change. This event type was
+added in 3.22.</p>
+<a class="header" href="#gdk_event_last--48" id="gdk_event_last--48"><h3>GDK_EVENT_LAST = 48</h3></a>
+<p>marks the end of the GdkEventType enumeration. Added in 2.18</p>
 <a class="header" href="#filterreturn" id="filterreturn"><h2><code>FilterReturn</code></h2></a>
 <p>Specifies the result of applying a #GdkFilterFunc to a native event.</p>
-<ul>
-<li>GDK_FILTER_CONTINUE = 0</li>
-<li>GDK_FILTER_TRANSLATE = 1</li>
-<li>GDK_FILTER_REMOVE = 2</li>
-</ul>
 <p>C - <code>GdkFilterReturn</code></p>
+<a class="header" href="#gdk_filter_continue--0" id="gdk_filter_continue--0"><h3>GDK_FILTER_CONTINUE = 0</h3></a>
+<p>event not handled, continue processing.</p>
+<a class="header" href="#gdk_filter_translate--1" id="gdk_filter_translate--1"><h3>GDK_FILTER_TRANSLATE = 1</h3></a>
+<p>native event translated into a GDK event and stored
+in the <code>event</code> structure that was passed in.</p>
+<a class="header" href="#gdk_filter_remove--2" id="gdk_filter_remove--2"><h3>GDK_FILTER_REMOVE = 2</h3></a>
+<p>event handled, terminate processing.</p>
 <a class="header" href="#fullscreenmode" id="fullscreenmode"><h2><code>FullscreenMode</code></h2></a>
 <p>Indicates which monitor (in a multi-head setup) a window should span over
 when in fullscreen mode.</p>
-<ul>
-<li>GDK_FULLSCREEN_ON_CURRENT_MONITOR = 0</li>
-<li>GDK_FULLSCREEN_ON_ALL_MONITORS = 1</li>
-</ul>
 <p>C - <code>GdkFullscreenMode</code></p>
+<a class="header" href="#gdk_fullscreen_on_current_monitor--0" id="gdk_fullscreen_on_current_monitor--0"><h3>GDK_FULLSCREEN_ON_CURRENT_MONITOR = 0</h3></a>
+<p>Fullscreen on current monitor only.</p>
+<a class="header" href="#gdk_fullscreen_on_all_monitors--1" id="gdk_fullscreen_on_all_monitors--1"><h3>GDK_FULLSCREEN_ON_ALL_MONITORS = 1</h3></a>
+<p>Span across all monitors when fullscreen.</p>
 <a class="header" href="#glerror" id="glerror"><h2><code>GLError</code></h2></a>
 <p>Error enumeration for #GdkGLContext.</p>
-<ul>
-<li>GDK_GL_ERROR_NOT_AVAILABLE = 0</li>
-<li>GDK_GL_ERROR_UNSUPPORTED_FORMAT = 1</li>
-<li>GDK_GL_ERROR_UNSUPPORTED_PROFILE = 2</li>
-</ul>
 <p>C - <code>GdkGLError</code></p>
+<a class="header" href="#gdk_gl_error_not_available--0" id="gdk_gl_error_not_available--0"><h3>GDK_GL_ERROR_NOT_AVAILABLE = 0</h3></a>
+<p>OpenGL support is not available</p>
+<a class="header" href="#gdk_gl_error_unsupported_format--1" id="gdk_gl_error_unsupported_format--1"><h3>GDK_GL_ERROR_UNSUPPORTED_FORMAT = 1</h3></a>
+<p>The requested visual format is not supported</p>
+<a class="header" href="#gdk_gl_error_unsupported_profile--2" id="gdk_gl_error_unsupported_profile--2"><h3>GDK_GL_ERROR_UNSUPPORTED_PROFILE = 2</h3></a>
+<p>The requested profile is not supported</p>
 <a class="header" href="#grabownership" id="grabownership"><h2><code>GrabOwnership</code></h2></a>
 <p>Defines how device grabs interact with other devices.</p>
-<ul>
-<li>GDK_OWNERSHIP_NONE = 0</li>
-<li>GDK_OWNERSHIP_WINDOW = 1</li>
-<li>GDK_OWNERSHIP_APPLICATION = 2</li>
-</ul>
 <p>C - <code>GdkGrabOwnership</code></p>
+<a class="header" href="#gdk_ownership_none--0" id="gdk_ownership_none--0"><h3>GDK_OWNERSHIP_NONE = 0</h3></a>
+<p>All other devices’ events are allowed.</p>
+<a class="header" href="#gdk_ownership_window--1" id="gdk_ownership_window--1"><h3>GDK_OWNERSHIP_WINDOW = 1</h3></a>
+<p>Other devices’ events are blocked for the grab window.</p>
+<a class="header" href="#gdk_ownership_application--2" id="gdk_ownership_application--2"><h3>GDK_OWNERSHIP_APPLICATION = 2</h3></a>
+<p>Other devices’ events are blocked for the whole application.</p>
 <a class="header" href="#grabstatus" id="grabstatus"><h2><code>GrabStatus</code></h2></a>
 <p>Returned by gdk_device_grab(), gdk_pointer_grab() and gdk_keyboard_grab() to
 indicate success or the reason for the failure of the grab attempt.</p>
-<ul>
-<li>GDK_GRAB_SUCCESS = 0</li>
-<li>GDK_GRAB_ALREADY_GRABBED = 1</li>
-<li>GDK_GRAB_INVALID_TIME = 2</li>
-<li>GDK_GRAB_NOT_VIEWABLE = 3</li>
-<li>GDK_GRAB_FROZEN = 4</li>
-<li>GDK_GRAB_FAILED = 5</li>
-</ul>
 <p>C - <code>GdkGrabStatus</code></p>
+<a class="header" href="#gdk_grab_success--0" id="gdk_grab_success--0"><h3>GDK_GRAB_SUCCESS = 0</h3></a>
+<p>the resource was successfully grabbed.</p>
+<a class="header" href="#gdk_grab_already_grabbed--1" id="gdk_grab_already_grabbed--1"><h3>GDK_GRAB_ALREADY_GRABBED = 1</h3></a>
+<p>the resource is actively grabbed by another client.</p>
+<a class="header" href="#gdk_grab_invalid_time--2" id="gdk_grab_invalid_time--2"><h3>GDK_GRAB_INVALID_TIME = 2</h3></a>
+<p>the resource was grabbed more recently than the
+specified time.</p>
+<a class="header" href="#gdk_grab_not_viewable--3" id="gdk_grab_not_viewable--3"><h3>GDK_GRAB_NOT_VIEWABLE = 3</h3></a>
+<p>the grab window or the @confine_to window are not
+viewable.</p>
+<a class="header" href="#gdk_grab_frozen--4" id="gdk_grab_frozen--4"><h3>GDK_GRAB_FROZEN = 4</h3></a>
+<p>the resource is frozen by an active grab of another client.</p>
+<a class="header" href="#gdk_grab_failed--5" id="gdk_grab_failed--5"><h3>GDK_GRAB_FAILED = 5</h3></a>
+<p>the grab failed for some other reason. Since 3.16</p>
 <a class="header" href="#gravity" id="gravity"><h2><code>Gravity</code></h2></a>
 <p>Defines the reference point of a window and the meaning of coordinates
 passed to gtk_window_move(). See gtk_window_move() and the &quot;implementation
 notes&quot; section of the
 <a href="http://www.freedesktop.org/Standards/wm-spec">Extended Window Manager Hints</a>
 specification for more details.</p>
-<ul>
-<li>GDK_GRAVITY_NORTH_WEST = 1</li>
-<li>GDK_GRAVITY_NORTH = 2</li>
-<li>GDK_GRAVITY_NORTH_EAST = 3</li>
-<li>GDK_GRAVITY_WEST = 4</li>
-<li>GDK_GRAVITY_CENTER = 5</li>
-<li>GDK_GRAVITY_EAST = 6</li>
-<li>GDK_GRAVITY_SOUTH_WEST = 7</li>
-<li>GDK_GRAVITY_SOUTH = 8</li>
-<li>GDK_GRAVITY_SOUTH_EAST = 9</li>
-<li>GDK_GRAVITY_STATIC = 10</li>
-</ul>
 <p>C - <code>GdkGravity</code></p>
+<a class="header" href="#gdk_gravity_north_west--1" id="gdk_gravity_north_west--1"><h3>GDK_GRAVITY_NORTH_WEST = 1</h3></a>
+<p>the reference point is at the top left corner.</p>
+<a class="header" href="#gdk_gravity_north--2" id="gdk_gravity_north--2"><h3>GDK_GRAVITY_NORTH = 2</h3></a>
+<p>the reference point is in the middle of the top edge.</p>
+<a class="header" href="#gdk_gravity_north_east--3" id="gdk_gravity_north_east--3"><h3>GDK_GRAVITY_NORTH_EAST = 3</h3></a>
+<p>the reference point is at the top right corner.</p>
+<a class="header" href="#gdk_gravity_west--4" id="gdk_gravity_west--4"><h3>GDK_GRAVITY_WEST = 4</h3></a>
+<p>the reference point is at the middle of the left edge.</p>
+<a class="header" href="#gdk_gravity_center--5" id="gdk_gravity_center--5"><h3>GDK_GRAVITY_CENTER = 5</h3></a>
+<p>the reference point is at the center of the window.</p>
+<a class="header" href="#gdk_gravity_east--6" id="gdk_gravity_east--6"><h3>GDK_GRAVITY_EAST = 6</h3></a>
+<p>the reference point is at the middle of the right edge.</p>
+<a class="header" href="#gdk_gravity_south_west--7" id="gdk_gravity_south_west--7"><h3>GDK_GRAVITY_SOUTH_WEST = 7</h3></a>
+<p>the reference point is at the lower left corner.</p>
+<a class="header" href="#gdk_gravity_south--8" id="gdk_gravity_south--8"><h3>GDK_GRAVITY_SOUTH = 8</h3></a>
+<p>the reference point is at the middle of the lower edge.</p>
+<a class="header" href="#gdk_gravity_south_east--9" id="gdk_gravity_south_east--9"><h3>GDK_GRAVITY_SOUTH_EAST = 9</h3></a>
+<p>the reference point is at the lower right corner.</p>
+<a class="header" href="#gdk_gravity_static--10" id="gdk_gravity_static--10"><h3>GDK_GRAVITY_STATIC = 10</h3></a>
+<p>the reference point is at the top left corner of the
+window itself, ignoring window manager decorations.</p>
 <a class="header" href="#inputmode" id="inputmode"><h2><code>InputMode</code></h2></a>
 <p>An enumeration that describes the mode of an input device.</p>
-<ul>
-<li>GDK_MODE_DISABLED = 0</li>
-<li>GDK_MODE_SCREEN = 1</li>
-<li>GDK_MODE_WINDOW = 2</li>
-</ul>
 <p>C - <code>GdkInputMode</code></p>
+<a class="header" href="#gdk_mode_disabled--0" id="gdk_mode_disabled--0"><h3>GDK_MODE_DISABLED = 0</h3></a>
+<p>the device is disabled and will not report any events.</p>
+<a class="header" href="#gdk_mode_screen--1" id="gdk_mode_screen--1"><h3>GDK_MODE_SCREEN = 1</h3></a>
+<p>the device is enabled. The device’s coordinate space
+maps to the entire screen.</p>
+<a class="header" href="#gdk_mode_window--2" id="gdk_mode_window--2"><h3>GDK_MODE_WINDOW = 2</h3></a>
+<p>the device is enabled. The device’s coordinate space
+is mapped to a single window. The manner in which this window
+is chosen is undefined, but it will typically be the same
+way in which the focus window for key events is determined.</p>
 <a class="header" href="#inputsource" id="inputsource"><h2><code>InputSource</code></h2></a>
 <p>An enumeration describing the type of an input device in general terms.</p>
-<ul>
-<li>GDK_SOURCE_MOUSE = 0</li>
-<li>GDK_SOURCE_PEN = 1</li>
-<li>GDK_SOURCE_ERASER = 2</li>
-<li>GDK_SOURCE_CURSOR = 3</li>
-<li>GDK_SOURCE_KEYBOARD = 4</li>
-<li>GDK_SOURCE_TOUCHSCREEN = 5</li>
-<li>GDK_SOURCE_TOUCHPAD = 6</li>
-<li>GDK_SOURCE_TRACKPOINT = 7</li>
-<li>GDK_SOURCE_TABLET_PAD = 8</li>
-</ul>
 <p>C - <code>GdkInputSource</code></p>
+<a class="header" href="#gdk_source_mouse--0" id="gdk_source_mouse--0"><h3>GDK_SOURCE_MOUSE = 0</h3></a>
+<p>the device is a mouse. (This will be reported for the core
+pointer, even if it is something else, such as a trackball.)</p>
+<a class="header" href="#gdk_source_pen--1" id="gdk_source_pen--1"><h3>GDK_SOURCE_PEN = 1</h3></a>
+<p>the device is a stylus of a graphics tablet or similar device.</p>
+<a class="header" href="#gdk_source_eraser--2" id="gdk_source_eraser--2"><h3>GDK_SOURCE_ERASER = 2</h3></a>
+<p>the device is an eraser. Typically, this would be the other end
+of a stylus on a graphics tablet.</p>
+<a class="header" href="#gdk_source_cursor--3" id="gdk_source_cursor--3"><h3>GDK_SOURCE_CURSOR = 3</h3></a>
+<p>the device is a graphics tablet “puck” or similar device.</p>
+<a class="header" href="#gdk_source_keyboard--4" id="gdk_source_keyboard--4"><h3>GDK_SOURCE_KEYBOARD = 4</h3></a>
+<p>the device is a keyboard.</p>
+<a class="header" href="#gdk_source_touchscreen--5" id="gdk_source_touchscreen--5"><h3>GDK_SOURCE_TOUCHSCREEN = 5</h3></a>
+<p>the device is a direct-input touch device, such
+as a touchscreen or tablet. This device type has been added in 3.4.</p>
+<a class="header" href="#gdk_source_touchpad--6" id="gdk_source_touchpad--6"><h3>GDK_SOURCE_TOUCHPAD = 6</h3></a>
+<p>the device is an indirect touch device, such
+as a touchpad. This device type has been added in 3.4.</p>
+<a class="header" href="#gdk_source_trackpoint--7" id="gdk_source_trackpoint--7"><h3>GDK_SOURCE_TRACKPOINT = 7</h3></a>
+<p>the device is a trackpoint. This device type has been
+added in 3.22</p>
+<a class="header" href="#gdk_source_tablet_pad--8" id="gdk_source_tablet_pad--8"><h3>GDK_SOURCE_TABLET_PAD = 8</h3></a>
+<p>the device is a &quot;pad&quot;, a collection of buttons,
+rings and strips found in drawing tablets. This device type has been
+added in 3.22.</p>
 <a class="header" href="#modifierintent" id="modifierintent"><h2><code>ModifierIntent</code></h2></a>
 <p>This enum is used with gdk_keymap_get_modifier_mask()
 in order to determine what modifiers the
@@ -479,93 +714,130 @@ purposes. For example, on X11/Windows, the Control key is used for
 invoking menu shortcuts (accelerators), whereas on Apple computers
 it’s the Command key (which correspond to %GDK_CONTROL_MASK and
 %GDK_MOD2_MASK, respectively).</p>
-<ul>
-<li>GDK_MODIFIER_INTENT_PRIMARY_ACCELERATOR = 0</li>
-<li>GDK_MODIFIER_INTENT_CONTEXT_MENU = 1</li>
-<li>GDK_MODIFIER_INTENT_EXTEND_SELECTION = 2</li>
-<li>GDK_MODIFIER_INTENT_MODIFY_SELECTION = 3</li>
-<li>GDK_MODIFIER_INTENT_NO_TEXT_INPUT = 4</li>
-<li>GDK_MODIFIER_INTENT_SHIFT_GROUP = 5</li>
-<li>GDK_MODIFIER_INTENT_DEFAULT_MOD_MASK = 6</li>
-</ul>
 <p>C - <code>GdkModifierIntent</code></p>
+<a class="header" href="#gdk_modifier_intent_primary_accelerator--0" id="gdk_modifier_intent_primary_accelerator--0"><h3>GDK_MODIFIER_INTENT_PRIMARY_ACCELERATOR = 0</h3></a>
+<p>the primary modifier used to invoke
+menu accelerators.</p>
+<a class="header" href="#gdk_modifier_intent_context_menu--1" id="gdk_modifier_intent_context_menu--1"><h3>GDK_MODIFIER_INTENT_CONTEXT_MENU = 1</h3></a>
+<p>the modifier used to invoke context menus.
+Note that mouse button 3 always triggers context menus. When this modifier
+is not 0, it additionally triggers context menus when used with mouse button 1.</p>
+<a class="header" href="#gdk_modifier_intent_extend_selection--2" id="gdk_modifier_intent_extend_selection--2"><h3>GDK_MODIFIER_INTENT_EXTEND_SELECTION = 2</h3></a>
+<p>the modifier used to extend selections
+using <code>modifier</code>-click or <code>modifier</code>-cursor-key</p>
+<a class="header" href="#gdk_modifier_intent_modify_selection--3" id="gdk_modifier_intent_modify_selection--3"><h3>GDK_MODIFIER_INTENT_MODIFY_SELECTION = 3</h3></a>
+<p>the modifier used to modify selections,
+which in most cases means toggling the clicked item into or out of the selection.</p>
+<a class="header" href="#gdk_modifier_intent_no_text_input--4" id="gdk_modifier_intent_no_text_input--4"><h3>GDK_MODIFIER_INTENT_NO_TEXT_INPUT = 4</h3></a>
+<p>when any of these modifiers is pressed, the
+key event cannot produce a symbol directly. This is meant to be used for
+input methods, and for use cases like typeahead search.</p>
+<a class="header" href="#gdk_modifier_intent_shift_group--5" id="gdk_modifier_intent_shift_group--5"><h3>GDK_MODIFIER_INTENT_SHIFT_GROUP = 5</h3></a>
+<p>the modifier that switches between keyboard
+groups (AltGr on X11/Windows and Option/Alt on OS X).</p>
+<a class="header" href="#gdk_modifier_intent_default_mod_mask--6" id="gdk_modifier_intent_default_mod_mask--6"><h3>GDK_MODIFIER_INTENT_DEFAULT_MOD_MASK = 6</h3></a>
+<p>The set of modifier masks accepted
+as modifiers in accelerators. Needed because Command is mapped to MOD2 on
+OSX, which is widely used, but on X11 MOD2 is NumLock and using that for a
+mod key is problematic at best.
+Ref: https://bugzilla.gnome.org/show_bug.cgi?id=736125.</p>
 <a class="header" href="#notifytype" id="notifytype"><h2><code>NotifyType</code></h2></a>
 <p>Specifies the kind of crossing for #GdkEventCrossing.</p>
 <p>See the X11 protocol specification of LeaveNotify for
 full details of crossing event generation.</p>
-<ul>
-<li>GDK_NOTIFY_ANCESTOR = 0</li>
-<li>GDK_NOTIFY_VIRTUAL = 1</li>
-<li>GDK_NOTIFY_INFERIOR = 2</li>
-<li>GDK_NOTIFY_NONLINEAR = 3</li>
-<li>GDK_NOTIFY_NONLINEAR_VIRTUAL = 4</li>
-<li>GDK_NOTIFY_UNKNOWN = 5</li>
-</ul>
 <p>C - <code>GdkNotifyType</code></p>
+<a class="header" href="#gdk_notify_ancestor--0" id="gdk_notify_ancestor--0"><h3>GDK_NOTIFY_ANCESTOR = 0</h3></a>
+<p>the window is entered from an ancestor or
+left towards an ancestor.</p>
+<a class="header" href="#gdk_notify_virtual--1" id="gdk_notify_virtual--1"><h3>GDK_NOTIFY_VIRTUAL = 1</h3></a>
+<p>the pointer moves between an ancestor and an
+inferior of the window.</p>
+<a class="header" href="#gdk_notify_inferior--2" id="gdk_notify_inferior--2"><h3>GDK_NOTIFY_INFERIOR = 2</h3></a>
+<p>the window is entered from an inferior or
+left towards an inferior.</p>
+<a class="header" href="#gdk_notify_nonlinear--3" id="gdk_notify_nonlinear--3"><h3>GDK_NOTIFY_NONLINEAR = 3</h3></a>
+<p>the window is entered from or left towards
+a window which is neither an ancestor nor an inferior.</p>
+<a class="header" href="#gdk_notify_nonlinear_virtual--4" id="gdk_notify_nonlinear_virtual--4"><h3>GDK_NOTIFY_NONLINEAR_VIRTUAL = 4</h3></a>
+<p>the pointer moves between two windows
+which are not ancestors of each other and the window is part of
+the ancestor chain between one of these windows and their least
+common ancestor.</p>
+<a class="header" href="#gdk_notify_unknown--5" id="gdk_notify_unknown--5"><h3>GDK_NOTIFY_UNKNOWN = 5</h3></a>
+<p>an unknown type of enter/leave event occurred.</p>
 <a class="header" href="#ownerchange" id="ownerchange"><h2><code>OwnerChange</code></h2></a>
 <p>Specifies why a selection ownership was changed.</p>
-<ul>
-<li>GDK_OWNER_CHANGE_NEW_OWNER = 0</li>
-<li>GDK_OWNER_CHANGE_DESTROY = 1</li>
-<li>GDK_OWNER_CHANGE_CLOSE = 2</li>
-</ul>
 <p>C - <code>GdkOwnerChange</code></p>
+<a class="header" href="#gdk_owner_change_new_owner--0" id="gdk_owner_change_new_owner--0"><h3>GDK_OWNER_CHANGE_NEW_OWNER = 0</h3></a>
+<p>some other app claimed the ownership</p>
+<a class="header" href="#gdk_owner_change_destroy--1" id="gdk_owner_change_destroy--1"><h3>GDK_OWNER_CHANGE_DESTROY = 1</h3></a>
+<p>the window was destroyed</p>
+<a class="header" href="#gdk_owner_change_close--2" id="gdk_owner_change_close--2"><h3>GDK_OWNER_CHANGE_CLOSE = 2</h3></a>
+<p>the client was closed</p>
 <a class="header" href="#propmode" id="propmode"><h2><code>PropMode</code></h2></a>
 <p>Describes how existing data is combined with new data when
 using gdk_property_change().</p>
-<ul>
-<li>GDK_PROP_MODE_REPLACE = 0</li>
-<li>GDK_PROP_MODE_PREPEND = 1</li>
-<li>GDK_PROP_MODE_APPEND = 2</li>
-</ul>
 <p>C - <code>GdkPropMode</code></p>
+<a class="header" href="#gdk_prop_mode_replace--0" id="gdk_prop_mode_replace--0"><h3>GDK_PROP_MODE_REPLACE = 0</h3></a>
+<p>the new data replaces the existing data.</p>
+<a class="header" href="#gdk_prop_mode_prepend--1" id="gdk_prop_mode_prepend--1"><h3>GDK_PROP_MODE_PREPEND = 1</h3></a>
+<p>the new data is prepended to the existing data.</p>
+<a class="header" href="#gdk_prop_mode_append--2" id="gdk_prop_mode_append--2"><h3>GDK_PROP_MODE_APPEND = 2</h3></a>
+<p>the new data is appended to the existing data.</p>
 <a class="header" href="#propertystate" id="propertystate"><h2><code>PropertyState</code></h2></a>
 <p>Specifies the type of a property change for a #GdkEventProperty.</p>
-<ul>
-<li>GDK_PROPERTY_NEW_VALUE = 0</li>
-<li>GDK_PROPERTY_DELETE = 1</li>
-</ul>
 <p>C - <code>guint</code></p>
+<a class="header" href="#gdk_property_new_value--0" id="gdk_property_new_value--0"><h3>GDK_PROPERTY_NEW_VALUE = 0</h3></a>
+<p>the property value was changed.</p>
+<a class="header" href="#gdk_property_delete--1" id="gdk_property_delete--1"><h3>GDK_PROPERTY_DELETE = 1</h3></a>
+<p>the property was deleted.</p>
 <a class="header" href="#scrolldirection" id="scrolldirection"><h2><code>ScrollDirection</code></h2></a>
 <p>Specifies the direction for #GdkEventScroll.</p>
-<ul>
-<li>GDK_SCROLL_UP = 0</li>
-<li>GDK_SCROLL_DOWN = 1</li>
-<li>GDK_SCROLL_LEFT = 2</li>
-<li>GDK_SCROLL_RIGHT = 3</li>
-<li>GDK_SCROLL_SMOOTH = 4</li>
-</ul>
 <p>C - <code>GdkScrollDirection</code></p>
+<a class="header" href="#gdk_scroll_up--0" id="gdk_scroll_up--0"><h3>GDK_SCROLL_UP = 0</h3></a>
+<p>the window is scrolled up.</p>
+<a class="header" href="#gdk_scroll_down--1" id="gdk_scroll_down--1"><h3>GDK_SCROLL_DOWN = 1</h3></a>
+<p>the window is scrolled down.</p>
+<a class="header" href="#gdk_scroll_left--2" id="gdk_scroll_left--2"><h3>GDK_SCROLL_LEFT = 2</h3></a>
+<p>the window is scrolled to the left.</p>
+<a class="header" href="#gdk_scroll_right--3" id="gdk_scroll_right--3"><h3>GDK_SCROLL_RIGHT = 3</h3></a>
+<p>the window is scrolled to the right.</p>
+<a class="header" href="#gdk_scroll_smooth--4" id="gdk_scroll_smooth--4"><h3>GDK_SCROLL_SMOOTH = 4</h3></a>
+<p>the scrolling is determined by the delta values
+in #GdkEventScroll. See gdk_event_get_scroll_deltas(). Since: 3.4</p>
 <a class="header" href="#settingaction" id="settingaction"><h2><code>SettingAction</code></h2></a>
 <p>Specifies the kind of modification applied to a setting in a
 #GdkEventSetting.</p>
-<ul>
-<li>GDK_SETTING_ACTION_NEW = 0</li>
-<li>GDK_SETTING_ACTION_CHANGED = 1</li>
-<li>GDK_SETTING_ACTION_DELETED = 2</li>
-</ul>
 <p>C - <code>GdkSettingAction</code></p>
+<a class="header" href="#gdk_setting_action_new--0" id="gdk_setting_action_new--0"><h3>GDK_SETTING_ACTION_NEW = 0</h3></a>
+<p>a setting was added.</p>
+<a class="header" href="#gdk_setting_action_changed--1" id="gdk_setting_action_changed--1"><h3>GDK_SETTING_ACTION_CHANGED = 1</h3></a>
+<p>a setting was changed.</p>
+<a class="header" href="#gdk_setting_action_deleted--2" id="gdk_setting_action_deleted--2"><h3>GDK_SETTING_ACTION_DELETED = 2</h3></a>
+<p>a setting was deleted.</p>
 <a class="header" href="#status" id="status"><h2><code>Status</code></h2></a>
-<ul>
-<li>GDK_OK = 0</li>
-<li>GDK_ERROR = -1</li>
-<li>GDK_ERROR_PARAM = -2</li>
-<li>GDK_ERROR_FILE = -3</li>
-<li>GDK_ERROR_MEM = -4</li>
-</ul>
 <p>C - <code>GdkStatus</code></p>
+<a class="header" href="#gdk_ok--0" id="gdk_ok--0"><h3>GDK_OK = 0</h3></a>
+<a class="header" href="#gdk_error---1" id="gdk_error---1"><h3>GDK_ERROR = -1</h3></a>
+<a class="header" href="#gdk_error_param---2" id="gdk_error_param---2"><h3>GDK_ERROR_PARAM = -2</h3></a>
+<a class="header" href="#gdk_error_file---3" id="gdk_error_file---3"><h3>GDK_ERROR_FILE = -3</h3></a>
+<a class="header" href="#gdk_error_mem---4" id="gdk_error_mem---4"><h3>GDK_ERROR_MEM = -4</h3></a>
 <a class="header" href="#subpixellayout" id="subpixellayout"><h2><code>SubpixelLayout</code></h2></a>
 <p>This enumeration describes how the red, green and blue components
 of physical pixels on an output device are laid out.</p>
-<ul>
-<li>GDK_SUBPIXEL_LAYOUT_UNKNOWN = 0</li>
-<li>GDK_SUBPIXEL_LAYOUT_NONE = 1</li>
-<li>GDK_SUBPIXEL_LAYOUT_HORIZONTAL_RGB = 2</li>
-<li>GDK_SUBPIXEL_LAYOUT_HORIZONTAL_BGR = 3</li>
-<li>GDK_SUBPIXEL_LAYOUT_VERTICAL_RGB = 4</li>
-<li>GDK_SUBPIXEL_LAYOUT_VERTICAL_BGR = 5</li>
-</ul>
 <p>C - <code>GdkSubpixelLayout</code></p>
+<a class="header" href="#gdk_subpixel_layout_unknown--0" id="gdk_subpixel_layout_unknown--0"><h3>GDK_SUBPIXEL_LAYOUT_UNKNOWN = 0</h3></a>
+<p>The layout is not known</p>
+<a class="header" href="#gdk_subpixel_layout_none--1" id="gdk_subpixel_layout_none--1"><h3>GDK_SUBPIXEL_LAYOUT_NONE = 1</h3></a>
+<p>Not organized in this way</p>
+<a class="header" href="#gdk_subpixel_layout_horizontal_rgb--2" id="gdk_subpixel_layout_horizontal_rgb--2"><h3>GDK_SUBPIXEL_LAYOUT_HORIZONTAL_RGB = 2</h3></a>
+<p>The layout is horizontal, the order is RGB</p>
+<a class="header" href="#gdk_subpixel_layout_horizontal_bgr--3" id="gdk_subpixel_layout_horizontal_bgr--3"><h3>GDK_SUBPIXEL_LAYOUT_HORIZONTAL_BGR = 3</h3></a>
+<p>The layout is horizontal, the order is BGR</p>
+<a class="header" href="#gdk_subpixel_layout_vertical_rgb--4" id="gdk_subpixel_layout_vertical_rgb--4"><h3>GDK_SUBPIXEL_LAYOUT_VERTICAL_RGB = 4</h3></a>
+<p>The layout is vertical, the order is RGB</p>
+<a class="header" href="#gdk_subpixel_layout_vertical_bgr--5" id="gdk_subpixel_layout_vertical_bgr--5"><h3>GDK_SUBPIXEL_LAYOUT_VERTICAL_BGR = 5</h3></a>
+<p>The layout is vertical, the order is BGR</p>
 <a class="header" href="#touchpadgesturephase" id="touchpadgesturephase"><h2><code>TouchpadGesturePhase</code></h2></a>
 <p>Specifies the current state of a touchpad gesture. All gestures are
 guaranteed to begin with an event with phase %GDK_TOUCHPAD_GESTURE_PHASE_BEGIN,
@@ -582,169 +854,147 @@ a pinch gesture). In these cases, the last event will report the phase
 to undo any visible/permanent changes that were done throughout the
 progress of the gesture.</p>
 <p>See also #GdkEventTouchpadSwipe and #GdkEventTouchpadPinch.</p>
-<ul>
-<li>GDK_TOUCHPAD_GESTURE_PHASE_BEGIN = 0</li>
-<li>GDK_TOUCHPAD_GESTURE_PHASE_UPDATE = 1</li>
-<li>GDK_TOUCHPAD_GESTURE_PHASE_END = 2</li>
-<li>GDK_TOUCHPAD_GESTURE_PHASE_CANCEL = 3</li>
-</ul>
 <p>C - <code>GdkTouchpadGesturePhase</code></p>
+<a class="header" href="#gdk_touchpad_gesture_phase_begin--0" id="gdk_touchpad_gesture_phase_begin--0"><h3>GDK_TOUCHPAD_GESTURE_PHASE_BEGIN = 0</h3></a>
+<p>The gesture has begun.</p>
+<a class="header" href="#gdk_touchpad_gesture_phase_update--1" id="gdk_touchpad_gesture_phase_update--1"><h3>GDK_TOUCHPAD_GESTURE_PHASE_UPDATE = 1</h3></a>
+<p>The gesture has been updated.</p>
+<a class="header" href="#gdk_touchpad_gesture_phase_end--2" id="gdk_touchpad_gesture_phase_end--2"><h3>GDK_TOUCHPAD_GESTURE_PHASE_END = 2</h3></a>
+<p>The gesture was finished, changes
+should be permanently applied.</p>
+<a class="header" href="#gdk_touchpad_gesture_phase_cancel--3" id="gdk_touchpad_gesture_phase_cancel--3"><h3>GDK_TOUCHPAD_GESTURE_PHASE_CANCEL = 3</h3></a>
+<p>The gesture was cancelled, all
+changes should be undone.</p>
 <a class="header" href="#visibilitystate" id="visibilitystate"><h2><code>VisibilityState</code></h2></a>
 <p>Specifies the visiblity status of a window for a #GdkEventVisibility.</p>
-<ul>
-<li>GDK_VISIBILITY_UNOBSCURED = 0</li>
-<li>GDK_VISIBILITY_PARTIAL = 1</li>
-<li>GDK_VISIBILITY_FULLY_OBSCURED = 2</li>
-</ul>
 <p>C - <code>GdkVisibilityState</code></p>
+<a class="header" href="#gdk_visibility_unobscured--0" id="gdk_visibility_unobscured--0"><h3>GDK_VISIBILITY_UNOBSCURED = 0</h3></a>
+<p>the window is completely visible.</p>
+<a class="header" href="#gdk_visibility_partial--1" id="gdk_visibility_partial--1"><h3>GDK_VISIBILITY_PARTIAL = 1</h3></a>
+<p>the window is partially visible.</p>
+<a class="header" href="#gdk_visibility_fully_obscured--2" id="gdk_visibility_fully_obscured--2"><h3>GDK_VISIBILITY_FULLY_OBSCURED = 2</h3></a>
+<p>the window is not visible at all.</p>
 <a class="header" href="#visualtype" id="visualtype"><h2><code>VisualType</code></h2></a>
 <p>A set of values that describe the manner in which the pixel values
 for a visual are converted into RGB values for display.</p>
-<ul>
-<li>GDK_VISUAL_STATIC_GRAY = 0</li>
-<li>GDK_VISUAL_GRAYSCALE = 1</li>
-<li>GDK_VISUAL_STATIC_COLOR = 2</li>
-<li>GDK_VISUAL_PSEUDO_COLOR = 3</li>
-<li>GDK_VISUAL_TRUE_COLOR = 4</li>
-<li>GDK_VISUAL_DIRECT_COLOR = 5</li>
-</ul>
 <p>C - <code>GdkVisualType</code></p>
+<a class="header" href="#gdk_visual_static_gray--0" id="gdk_visual_static_gray--0"><h3>GDK_VISUAL_STATIC_GRAY = 0</h3></a>
+<p>Each pixel value indexes a grayscale value
+directly.</p>
+<a class="header" href="#gdk_visual_grayscale--1" id="gdk_visual_grayscale--1"><h3>GDK_VISUAL_GRAYSCALE = 1</h3></a>
+<p>Each pixel is an index into a color map that
+maps pixel values into grayscale values. The color map can be
+changed by an application.</p>
+<a class="header" href="#gdk_visual_static_color--2" id="gdk_visual_static_color--2"><h3>GDK_VISUAL_STATIC_COLOR = 2</h3></a>
+<p>Each pixel value is an index into a predefined,
+unmodifiable color map that maps pixel values into RGB values.</p>
+<a class="header" href="#gdk_visual_pseudo_color--3" id="gdk_visual_pseudo_color--3"><h3>GDK_VISUAL_PSEUDO_COLOR = 3</h3></a>
+<p>Each pixel is an index into a color map that
+maps pixel values into rgb values. The color map can be changed by
+an application.</p>
+<a class="header" href="#gdk_visual_true_color--4" id="gdk_visual_true_color--4"><h3>GDK_VISUAL_TRUE_COLOR = 4</h3></a>
+<p>Each pixel value directly contains red, green,
+and blue components. Use gdk_visual_get_red_pixel_details(), etc,
+to obtain information about how the components are assembled into
+a pixel value.</p>
+<a class="header" href="#gdk_visual_direct_color--5" id="gdk_visual_direct_color--5"><h3>GDK_VISUAL_DIRECT_COLOR = 5</h3></a>
+<p>Each pixel value contains red, green, and blue
+components as for %GDK_VISUAL_TRUE_COLOR, but the components are
+mapped via a color table into the final output table instead of
+being converted directly.</p>
 <a class="header" href="#windowedge" id="windowedge"><h2><code>WindowEdge</code></h2></a>
 <p>Determines a window edge or corner.</p>
-<ul>
-<li>GDK_WINDOW_EDGE_NORTH_WEST = 0</li>
-<li>GDK_WINDOW_EDGE_NORTH = 1</li>
-<li>GDK_WINDOW_EDGE_NORTH_EAST = 2</li>
-<li>GDK_WINDOW_EDGE_WEST = 3</li>
-<li>GDK_WINDOW_EDGE_EAST = 4</li>
-<li>GDK_WINDOW_EDGE_SOUTH_WEST = 5</li>
-<li>GDK_WINDOW_EDGE_SOUTH = 6</li>
-<li>GDK_WINDOW_EDGE_SOUTH_EAST = 7</li>
-</ul>
 <p>C - <code>GdkWindowEdge</code></p>
+<a class="header" href="#gdk_window_edge_north_west--0" id="gdk_window_edge_north_west--0"><h3>GDK_WINDOW_EDGE_NORTH_WEST = 0</h3></a>
+<p>the top left corner.</p>
+<a class="header" href="#gdk_window_edge_north--1" id="gdk_window_edge_north--1"><h3>GDK_WINDOW_EDGE_NORTH = 1</h3></a>
+<p>the top edge.</p>
+<a class="header" href="#gdk_window_edge_north_east--2" id="gdk_window_edge_north_east--2"><h3>GDK_WINDOW_EDGE_NORTH_EAST = 2</h3></a>
+<p>the top right corner.</p>
+<a class="header" href="#gdk_window_edge_west--3" id="gdk_window_edge_west--3"><h3>GDK_WINDOW_EDGE_WEST = 3</h3></a>
+<p>the left edge.</p>
+<a class="header" href="#gdk_window_edge_east--4" id="gdk_window_edge_east--4"><h3>GDK_WINDOW_EDGE_EAST = 4</h3></a>
+<p>the right edge.</p>
+<a class="header" href="#gdk_window_edge_south_west--5" id="gdk_window_edge_south_west--5"><h3>GDK_WINDOW_EDGE_SOUTH_WEST = 5</h3></a>
+<p>the lower left corner.</p>
+<a class="header" href="#gdk_window_edge_south--6" id="gdk_window_edge_south--6"><h3>GDK_WINDOW_EDGE_SOUTH = 6</h3></a>
+<p>the lower edge.</p>
+<a class="header" href="#gdk_window_edge_south_east--7" id="gdk_window_edge_south_east--7"><h3>GDK_WINDOW_EDGE_SOUTH_EAST = 7</h3></a>
+<p>the lower right corner.</p>
 <a class="header" href="#windowtype" id="windowtype"><h2><code>WindowType</code></h2></a>
 <p>Describes the kind of window.</p>
-<ul>
-<li>GDK_WINDOW_ROOT = 0</li>
-<li>GDK_WINDOW_TOPLEVEL = 1</li>
-<li>GDK_WINDOW_CHILD = 2</li>
-<li>GDK_WINDOW_TEMP = 3</li>
-<li>GDK_WINDOW_FOREIGN = 4</li>
-<li>GDK_WINDOW_OFFSCREEN = 5</li>
-<li>GDK_WINDOW_SUBSURFACE = 6</li>
-</ul>
 <p>C - <code>GdkWindowType</code></p>
+<a class="header" href="#gdk_window_root--0" id="gdk_window_root--0"><h3>GDK_WINDOW_ROOT = 0</h3></a>
+<p>root window; this window has no parent, covers the entire
+screen, and is created by the window system</p>
+<a class="header" href="#gdk_window_toplevel--1" id="gdk_window_toplevel--1"><h3>GDK_WINDOW_TOPLEVEL = 1</h3></a>
+<p>toplevel window (used to implement #GtkWindow)</p>
+<a class="header" href="#gdk_window_child--2" id="gdk_window_child--2"><h3>GDK_WINDOW_CHILD = 2</h3></a>
+<p>child window (used to implement e.g. #GtkEntry)</p>
+<a class="header" href="#gdk_window_temp--3" id="gdk_window_temp--3"><h3>GDK_WINDOW_TEMP = 3</h3></a>
+<p>override redirect temporary window (used to implement
+#GtkMenu)</p>
+<a class="header" href="#gdk_window_foreign--4" id="gdk_window_foreign--4"><h3>GDK_WINDOW_FOREIGN = 4</h3></a>
+<p>foreign window (see gdk_window_foreign_new())</p>
+<a class="header" href="#gdk_window_offscreen--5" id="gdk_window_offscreen--5"><h3>GDK_WINDOW_OFFSCREEN = 5</h3></a>
+<p>offscreen window (see
+[Offscreen Windows][OFFSCREEN-WINDOWS]). Since 2.18</p>
+<a class="header" href="#gdk_window_subsurface--6" id="gdk_window_subsurface--6"><h3>GDK_WINDOW_SUBSURFACE = 6</h3></a>
+<p>subsurface-based window; This window is visually
+tied to a toplevel, and is moved/stacked with it. Currently this window
+type is only implemented in Wayland. Since 3.14</p>
 <a class="header" href="#windowtypehint" id="windowtypehint"><h2><code>WindowTypeHint</code></h2></a>
 <p>These are hints for the window manager that indicate what type of function
 the window has. The window manager can use this when determining decoration
 and behaviour of the window. The hint must be set before mapping the window.</p>
 <p>See the <a href="http://www.freedesktop.org/Standards/wm-spec">Extended Window Manager Hints</a>
 specification for more details about window types.</p>
-<ul>
-<li>GDK_WINDOW_TYPE_HINT_NORMAL = 0</li>
-<li>GDK_WINDOW_TYPE_HINT_DIALOG = 1</li>
-<li>GDK_WINDOW_TYPE_HINT_MENU = 2</li>
-<li>GDK_WINDOW_TYPE_HINT_TOOLBAR = 3</li>
-<li>GDK_WINDOW_TYPE_HINT_SPLASHSCREEN = 4</li>
-<li>GDK_WINDOW_TYPE_HINT_UTILITY = 5</li>
-<li>GDK_WINDOW_TYPE_HINT_DOCK = 6</li>
-<li>GDK_WINDOW_TYPE_HINT_DESKTOP = 7</li>
-<li>GDK_WINDOW_TYPE_HINT_DROPDOWN_MENU = 8</li>
-<li>GDK_WINDOW_TYPE_HINT_POPUP_MENU = 9</li>
-<li>GDK_WINDOW_TYPE_HINT_TOOLTIP = 10</li>
-<li>GDK_WINDOW_TYPE_HINT_NOTIFICATION = 11</li>
-<li>GDK_WINDOW_TYPE_HINT_COMBO = 12</li>
-<li>GDK_WINDOW_TYPE_HINT_DND = 13</li>
-</ul>
 <p>C - <code>GdkWindowTypeHint</code></p>
+<a class="header" href="#gdk_window_type_hint_normal--0" id="gdk_window_type_hint_normal--0"><h3>GDK_WINDOW_TYPE_HINT_NORMAL = 0</h3></a>
+<p>Normal toplevel window.</p>
+<a class="header" href="#gdk_window_type_hint_dialog--1" id="gdk_window_type_hint_dialog--1"><h3>GDK_WINDOW_TYPE_HINT_DIALOG = 1</h3></a>
+<p>Dialog window.</p>
+<a class="header" href="#gdk_window_type_hint_menu--2" id="gdk_window_type_hint_menu--2"><h3>GDK_WINDOW_TYPE_HINT_MENU = 2</h3></a>
+<p>Window used to implement a menu; GTK+ uses
+this hint only for torn-off menus, see #GtkTearoffMenuItem.</p>
+<a class="header" href="#gdk_window_type_hint_toolbar--3" id="gdk_window_type_hint_toolbar--3"><h3>GDK_WINDOW_TYPE_HINT_TOOLBAR = 3</h3></a>
+<p>Window used to implement toolbars.</p>
+<a class="header" href="#gdk_window_type_hint_splashscreen--4" id="gdk_window_type_hint_splashscreen--4"><h3>GDK_WINDOW_TYPE_HINT_SPLASHSCREEN = 4</h3></a>
+<p>Window used to display a splash
+screen during application startup.</p>
+<a class="header" href="#gdk_window_type_hint_utility--5" id="gdk_window_type_hint_utility--5"><h3>GDK_WINDOW_TYPE_HINT_UTILITY = 5</h3></a>
+<p>Utility windows which are not detached
+toolbars or dialogs.</p>
+<a class="header" href="#gdk_window_type_hint_dock--6" id="gdk_window_type_hint_dock--6"><h3>GDK_WINDOW_TYPE_HINT_DOCK = 6</h3></a>
+<p>Used for creating dock or panel windows.</p>
+<a class="header" href="#gdk_window_type_hint_desktop--7" id="gdk_window_type_hint_desktop--7"><h3>GDK_WINDOW_TYPE_HINT_DESKTOP = 7</h3></a>
+<p>Used for creating the desktop background
+window.</p>
+<a class="header" href="#gdk_window_type_hint_dropdown_menu--8" id="gdk_window_type_hint_dropdown_menu--8"><h3>GDK_WINDOW_TYPE_HINT_DROPDOWN_MENU = 8</h3></a>
+<p>A menu that belongs to a menubar.</p>
+<a class="header" href="#gdk_window_type_hint_popup_menu--9" id="gdk_window_type_hint_popup_menu--9"><h3>GDK_WINDOW_TYPE_HINT_POPUP_MENU = 9</h3></a>
+<p>A menu that does not belong to a menubar,
+e.g. a context menu.</p>
+<a class="header" href="#gdk_window_type_hint_tooltip--10" id="gdk_window_type_hint_tooltip--10"><h3>GDK_WINDOW_TYPE_HINT_TOOLTIP = 10</h3></a>
+<p>A tooltip.</p>
+<a class="header" href="#gdk_window_type_hint_notification--11" id="gdk_window_type_hint_notification--11"><h3>GDK_WINDOW_TYPE_HINT_NOTIFICATION = 11</h3></a>
+<p>A notification - typically a “bubble”
+that belongs to a status icon.</p>
+<a class="header" href="#gdk_window_type_hint_combo--12" id="gdk_window_type_hint_combo--12"><h3>GDK_WINDOW_TYPE_HINT_COMBO = 12</h3></a>
+<p>A popup from a combo box.</p>
+<a class="header" href="#gdk_window_type_hint_dnd--13" id="gdk_window_type_hint_dnd--13"><h3>GDK_WINDOW_TYPE_HINT_DND = 13</h3></a>
+<p>A window that is used to implement a DND cursor.</p>
 <a class="header" href="#windowwindowclass" id="windowwindowclass"><h2><code>WindowWindowClass</code></h2></a>
 <p>@GDK_INPUT_OUTPUT windows are the standard kind of window you might expect.
 Such windows receive events and are also displayed on screen.
 @GDK_INPUT_ONLY windows are invisible; they are usually placed above other
 windows in order to trap or filter the events. You can’t draw on
 @GDK_INPUT_ONLY windows.</p>
-<ul>
-<li>GDK_INPUT_OUTPUT = 0</li>
-<li>GDK_INPUT_ONLY = 1</li>
-</ul>
 <p>C - <code>GdkWindowWindowClass</code></p>
-<p>yState`</p>
-<ul>
-<li>GDK_VISIBILITY_UNOBSCURED = %!s(int=0)</li>
-<li>GDK_VISIBILITY_PARTIAL = %!s(int=1)</li>
-<li>GDK_VISIBILITY_FULLY_OBSCURED = %!s(int=2)</li>
-</ul>
-<a class="header" href="#visualtype-1" id="visualtype-1"><h2><code>VisualType</code></h2></a>
-<p>A set of values that describe the manner in which the pixel values
-for a visual are converted into RGB values for display.</p>
-<p>C - <code>GdkVisualType</code></p>
-<ul>
-<li>GDK_VISUAL_STATIC_GRAY = %!s(int=0)</li>
-<li>GDK_VISUAL_GRAYSCALE = %!s(int=1)</li>
-<li>GDK_VISUAL_STATIC_COLOR = %!s(int=2)</li>
-<li>GDK_VISUAL_PSEUDO_COLOR = %!s(int=3)</li>
-<li>GDK_VISUAL_TRUE_COLOR = %!s(int=4)</li>
-<li>GDK_VISUAL_DIRECT_COLOR = %!s(int=5)</li>
-</ul>
-<a class="header" href="#windowedge-1" id="windowedge-1"><h2><code>WindowEdge</code></h2></a>
-<p>Determines a window edge or corner.</p>
-<p>C - <code>GdkWindowEdge</code></p>
-<ul>
-<li>GDK_WINDOW_EDGE_NORTH_WEST = %!s(int=0)</li>
-<li>GDK_WINDOW_EDGE_NORTH = %!s(int=1)</li>
-<li>GDK_WINDOW_EDGE_NORTH_EAST = %!s(int=2)</li>
-<li>GDK_WINDOW_EDGE_WEST = %!s(int=3)</li>
-<li>GDK_WINDOW_EDGE_EAST = %!s(int=4)</li>
-<li>GDK_WINDOW_EDGE_SOUTH_WEST = %!s(int=5)</li>
-<li>GDK_WINDOW_EDGE_SOUTH = %!s(int=6)</li>
-<li>GDK_WINDOW_EDGE_SOUTH_EAST = %!s(int=7)</li>
-</ul>
-<a class="header" href="#windowtype-1" id="windowtype-1"><h2><code>WindowType</code></h2></a>
-<p>Describes the kind of window.</p>
-<p>C - <code>GdkWindowType</code></p>
-<ul>
-<li>GDK_WINDOW_ROOT = %!s(int=0)</li>
-<li>GDK_WINDOW_TOPLEVEL = %!s(int=1)</li>
-<li>GDK_WINDOW_CHILD = %!s(int=2)</li>
-<li>GDK_WINDOW_TEMP = %!s(int=3)</li>
-<li>GDK_WINDOW_FOREIGN = %!s(int=4)</li>
-<li>GDK_WINDOW_OFFSCREEN = %!s(int=5)</li>
-<li>GDK_WINDOW_SUBSURFACE = %!s(int=6)</li>
-</ul>
-<a class="header" href="#windowtypehint-1" id="windowtypehint-1"><h2><code>WindowTypeHint</code></h2></a>
-<p>These are hints for the window manager that indicate what type of function
-the window has. The window manager can use this when determining decoration
-and behaviour of the window. The hint must be set before mapping the window.</p>
-<p>See the <a href="http://www.freedesktop.org/Standards/wm-spec">Extended Window Manager Hints</a>
-specification for more details about window types.</p>
-<p>C - <code>GdkWindowTypeHint</code></p>
-<ul>
-<li>GDK_WINDOW_TYPE_HINT_NORMAL = %!s(int=0)</li>
-<li>GDK_WINDOW_TYPE_HINT_DIALOG = %!s(int=1)</li>
-<li>GDK_WINDOW_TYPE_HINT_MENU = %!s(int=2)</li>
-<li>GDK_WINDOW_TYPE_HINT_TOOLBAR = %!s(int=3)</li>
-<li>GDK_WINDOW_TYPE_HINT_SPLASHSCREEN = %!s(int=4)</li>
-<li>GDK_WINDOW_TYPE_HINT_UTILITY = %!s(int=5)</li>
-<li>GDK_WINDOW_TYPE_HINT_DOCK = %!s(int=6)</li>
-<li>GDK_WINDOW_TYPE_HINT_DESKTOP = %!s(int=7)</li>
-<li>GDK_WINDOW_TYPE_HINT_DROPDOWN_MENU = %!s(int=8)</li>
-<li>GDK_WINDOW_TYPE_HINT_POPUP_MENU = %!s(int=9)</li>
-<li>GDK_WINDOW_TYPE_HINT_TOOLTIP = %!s(int=10)</li>
-<li>GDK_WINDOW_TYPE_HINT_NOTIFICATION = %!s(int=11)</li>
-<li>GDK_WINDOW_TYPE_HINT_COMBO = %!s(int=12)</li>
-<li>GDK_WINDOW_TYPE_HINT_DND = %!s(int=13)</li>
-</ul>
-<a class="header" href="#windowwindowclass-1" id="windowwindowclass-1"><h2><code>WindowWindowClass</code></h2></a>
-<p>@GDK_INPUT_OUTPUT windows are the standard kind of window you might expect.
-Such windows receive events and are also displayed on screen.
-@GDK_INPUT_ONLY windows are invisible; they are usually placed above other
-windows in order to trap or filter the events. You can’t draw on
-@GDK_INPUT_ONLY windows.</p>
-<p>C - <code>GdkWindowWindowClass</code></p>
-<ul>
-<li>GDK_INPUT_OUTPUT = %!s(int=0)</li>
-<li>GDK_INPUT_ONLY = %!s(int=1)</li>
-</ul>
+<a class="header" href="#gdk_input_output--0" id="gdk_input_output--0"><h3>GDK_INPUT_OUTPUT = 0</h3></a>
+<p>window for graphics and events</p>
+<a class="header" href="#gdk_input_only--1" id="gdk_input_only--1"><h3>GDK_INPUT_ONLY = 1</h3></a>
+<p>window for events only</p>
 
                     </main>
 

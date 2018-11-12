@@ -140,405 +140,723 @@
 <a class="header" href="#coordtype" id="coordtype"><h2><code>CoordType</code></h2></a>
 <p>Specifies how xy coordinates are to be interpreted. Used by functions such
 as atk_component_get_position() and atk_text_get_character_extents()</p>
-<ul>
-<li>ATK_XY_SCREEN = 0</li>
-<li>ATK_XY_WINDOW = 1</li>
-</ul>
 <p>C - <code>AtkCoordType</code></p>
+<a class="header" href="#atk_xy_screen--0" id="atk_xy_screen--0"><h3>ATK_XY_SCREEN = 0</h3></a>
+<p>specifies xy coordinates relative to the screen</p>
+<a class="header" href="#atk_xy_window--1" id="atk_xy_window--1"><h3>ATK_XY_WINDOW = 1</h3></a>
+<p>specifies xy coordinates relative to the widget's
+top-level window</p>
 <a class="header" href="#keyeventtype" id="keyeventtype"><h2><code>KeyEventType</code></h2></a>
 <p>Specifies the type of a keyboard evemt.</p>
-<ul>
-<li>ATK_KEY_EVENT_PRESS = 0</li>
-<li>ATK_KEY_EVENT_RELEASE = 1</li>
-<li>ATK_KEY_EVENT_LAST_DEFINED = 2</li>
-</ul>
 <p>C - <code>AtkKeyEventType</code></p>
+<a class="header" href="#atk_key_event_press--0" id="atk_key_event_press--0"><h3>ATK_KEY_EVENT_PRESS = 0</h3></a>
+<p>specifies a key press event</p>
+<a class="header" href="#atk_key_event_release--1" id="atk_key_event_release--1"><h3>ATK_KEY_EVENT_RELEASE = 1</h3></a>
+<p>specifies a key release event</p>
+<a class="header" href="#atk_key_event_last_defined--2" id="atk_key_event_last_defined--2"><h3>ATK_KEY_EVENT_LAST_DEFINED = 2</h3></a>
+<p>Not a valid value; specifies end of enumeration</p>
 <a class="header" href="#layer" id="layer"><h2><code>Layer</code></h2></a>
 <p>Describes the layer of a component</p>
 <p>These enumerated &quot;layer values&quot; are used when determining which UI
 rendering layer a component is drawn into, which can help in making
 determinations of when components occlude one another.</p>
-<ul>
-<li>ATK_LAYER_INVALID = 0</li>
-<li>ATK_LAYER_BACKGROUND = 1</li>
-<li>ATK_LAYER_CANVAS = 2</li>
-<li>ATK_LAYER_WIDGET = 3</li>
-<li>ATK_LAYER_MDI = 4</li>
-<li>ATK_LAYER_POPUP = 5</li>
-<li>ATK_LAYER_OVERLAY = 6</li>
-<li>ATK_LAYER_WINDOW = 7</li>
-</ul>
 <p>C - <code>AtkLayer</code></p>
+<a class="header" href="#atk_layer_invalid--0" id="atk_layer_invalid--0"><h3>ATK_LAYER_INVALID = 0</h3></a>
+<p>The object does not have a layer</p>
+<a class="header" href="#atk_layer_background--1" id="atk_layer_background--1"><h3>ATK_LAYER_BACKGROUND = 1</h3></a>
+<p>This layer is reserved for the desktop background</p>
+<a class="header" href="#atk_layer_canvas--2" id="atk_layer_canvas--2"><h3>ATK_LAYER_CANVAS = 2</h3></a>
+<p>This layer is used for Canvas components</p>
+<a class="header" href="#atk_layer_widget--3" id="atk_layer_widget--3"><h3>ATK_LAYER_WIDGET = 3</h3></a>
+<p>This layer is normally used for components</p>
+<a class="header" href="#atk_layer_mdi--4" id="atk_layer_mdi--4"><h3>ATK_LAYER_MDI = 4</h3></a>
+<p>This layer is used for layered components</p>
+<a class="header" href="#atk_layer_popup--5" id="atk_layer_popup--5"><h3>ATK_LAYER_POPUP = 5</h3></a>
+<p>This layer is used for popup components, such as menus</p>
+<a class="header" href="#atk_layer_overlay--6" id="atk_layer_overlay--6"><h3>ATK_LAYER_OVERLAY = 6</h3></a>
+<p>This layer is reserved for future use.</p>
+<a class="header" href="#atk_layer_window--7" id="atk_layer_window--7"><h3>ATK_LAYER_WINDOW = 7</h3></a>
+<p>This layer is used for toplevel windows.</p>
 <a class="header" href="#relationtype" id="relationtype"><h2><code>RelationType</code></h2></a>
 <p>Describes the type of the relation</p>
-<ul>
-<li>ATK_RELATION_NULL = 0</li>
-<li>ATK_RELATION_CONTROLLED_BY = 1</li>
-<li>ATK_RELATION_CONTROLLER_FOR = 2</li>
-<li>ATK_RELATION_LABEL_FOR = 3</li>
-<li>ATK_RELATION_LABELLED_BY = 4</li>
-<li>ATK_RELATION_MEMBER_OF = 5</li>
-<li>ATK_RELATION_NODE_CHILD_OF = 6</li>
-<li>ATK_RELATION_FLOWS_TO = 7</li>
-<li>ATK_RELATION_FLOWS_FROM = 8</li>
-<li>ATK_RELATION_SUBWINDOW_OF = 9</li>
-<li>ATK_RELATION_EMBEDS = 10</li>
-<li>ATK_RELATION_EMBEDDED_BY = 11</li>
-<li>ATK_RELATION_POPUP_FOR = 12</li>
-<li>ATK_RELATION_PARENT_WINDOW_OF = 13</li>
-<li>ATK_RELATION_DESCRIBED_BY = 14</li>
-<li>ATK_RELATION_DESCRIPTION_FOR = 15</li>
-<li>ATK_RELATION_NODE_PARENT_OF = 16</li>
-<li>ATK_RELATION_DETAILS = 17</li>
-<li>ATK_RELATION_DETAILS_FOR = 18</li>
-<li>ATK_RELATION_ERROR_MESSAGE = 19</li>
-<li>ATK_RELATION_ERROR_FOR = 20</li>
-<li>ATK_RELATION_LAST_DEFINED = 21</li>
-</ul>
 <p>C - <code>AtkRelationType</code></p>
+<a class="header" href="#atk_relation_null--0" id="atk_relation_null--0"><h3>ATK_RELATION_NULL = 0</h3></a>
+<p>Not used, represens &quot;no relationship&quot; or an error condition.</p>
+<a class="header" href="#atk_relation_controlled_by--1" id="atk_relation_controlled_by--1"><h3>ATK_RELATION_CONTROLLED_BY = 1</h3></a>
+<p>Indicates an object controlled by one or more target objects.</p>
+<a class="header" href="#atk_relation_controller_for--2" id="atk_relation_controller_for--2"><h3>ATK_RELATION_CONTROLLER_FOR = 2</h3></a>
+<p>Indicates an object is an controller for one or more target objects.</p>
+<a class="header" href="#atk_relation_label_for--3" id="atk_relation_label_for--3"><h3>ATK_RELATION_LABEL_FOR = 3</h3></a>
+<p>Indicates an object is a label for one or more target objects.</p>
+<a class="header" href="#atk_relation_labelled_by--4" id="atk_relation_labelled_by--4"><h3>ATK_RELATION_LABELLED_BY = 4</h3></a>
+<p>Indicates an object is labelled by one or more target objects.</p>
+<a class="header" href="#atk_relation_member_of--5" id="atk_relation_member_of--5"><h3>ATK_RELATION_MEMBER_OF = 5</h3></a>
+<p>Indicates an object is a member of a group of one or more target objects.</p>
+<a class="header" href="#atk_relation_node_child_of--6" id="atk_relation_node_child_of--6"><h3>ATK_RELATION_NODE_CHILD_OF = 6</h3></a>
+<p>Indicates an object is a cell in a treetable which is displayed because a cell in the same column is expanded and identifies that cell.</p>
+<a class="header" href="#atk_relation_flows_to--7" id="atk_relation_flows_to--7"><h3>ATK_RELATION_FLOWS_TO = 7</h3></a>
+<p>Indicates that the object has content that flows logically to another
+AtkObject in a sequential way, (for instance text-flow).</p>
+<a class="header" href="#atk_relation_flows_from--8" id="atk_relation_flows_from--8"><h3>ATK_RELATION_FLOWS_FROM = 8</h3></a>
+<p>Indicates that the object has content that flows logically from
+another AtkObject in a sequential way, (for instance text-flow).</p>
+<a class="header" href="#atk_relation_subwindow_of--9" id="atk_relation_subwindow_of--9"><h3>ATK_RELATION_SUBWINDOW_OF = 9</h3></a>
+<p>Indicates a subwindow attached to a component but otherwise has no connection in  the UI heirarchy to that component.</p>
+<a class="header" href="#atk_relation_embeds--10" id="atk_relation_embeds--10"><h3>ATK_RELATION_EMBEDS = 10</h3></a>
+<p>Indicates that the object visually embeds
+another object's content, i.e. this object's content flows around
+another's content.</p>
+<a class="header" href="#atk_relation_embedded_by--11" id="atk_relation_embedded_by--11"><h3>ATK_RELATION_EMBEDDED_BY = 11</h3></a>
+<p>Reciprocal of %ATK_RELATION_EMBEDS, indicates that
+this object's content is visualy embedded in another object.</p>
+<a class="header" href="#atk_relation_popup_for--12" id="atk_relation_popup_for--12"><h3>ATK_RELATION_POPUP_FOR = 12</h3></a>
+<p>Indicates that an object is a popup for another object.</p>
+<a class="header" href="#atk_relation_parent_window_of--13" id="atk_relation_parent_window_of--13"><h3>ATK_RELATION_PARENT_WINDOW_OF = 13</h3></a>
+<p>Indicates that an object is a parent window of another object.</p>
+<a class="header" href="#atk_relation_described_by--14" id="atk_relation_described_by--14"><h3>ATK_RELATION_DESCRIBED_BY = 14</h3></a>
+<p>Reciprocal of %ATK_RELATION_DESCRIPTION_FOR. Indicates that one
+or more target objects provide descriptive information about this object. This relation
+type is most appropriate for information that is not essential as its presentation may
+be user-configurable and/or limited to an on-demand mechanism such as an assistive
+technology command. For brief, essential information such as can be found in a widget's
+on-screen label, use %ATK_RELATION_LABELLED_BY. For an on-screen error message, use
+%ATK_RELATION_ERROR_MESSAGE. For lengthy extended descriptive information contained in
+an on-screen object, consider using %ATK_RELATION_DETAILS as assistive technologies may
+provide a means for the user to navigate to objects containing detailed descriptions so
+that their content can be more closely reviewed.</p>
+<a class="header" href="#atk_relation_description_for--15" id="atk_relation_description_for--15"><h3>ATK_RELATION_DESCRIPTION_FOR = 15</h3></a>
+<p>Reciprocal of %ATK_RELATION_DESCRIBED_BY. Indicates that this
+object provides descriptive information about the target object(s). See also
+%ATK_RELATION_DETAILS_FOR and %ATK_RELATION_ERROR_FOR.</p>
+<a class="header" href="#atk_relation_node_parent_of--16" id="atk_relation_node_parent_of--16"><h3>ATK_RELATION_NODE_PARENT_OF = 16</h3></a>
+<p>Indicates an object is a cell in a treetable and is expanded to display other cells in the same column.</p>
+<a class="header" href="#atk_relation_details--17" id="atk_relation_details--17"><h3>ATK_RELATION_DETAILS = 17</h3></a>
+<p>Reciprocal of %ATK_RELATION_DETAILS_FOR. Indicates that this object
+has a detailed or extended description, the contents of which can be found in the target
+object(s). This relation type is most appropriate for information that is sufficiently
+lengthy as to make navigation to the container of that information desirable. For less
+verbose information suitable for announcement only, see %ATK_RELATION_DESCRIBED_BY. If
+the detailed information describes an error condition, %ATK_RELATION_ERROR_FOR should be
+used instead. @Since: ATK-2.26.</p>
+<a class="header" href="#atk_relation_details_for--18" id="atk_relation_details_for--18"><h3>ATK_RELATION_DETAILS_FOR = 18</h3></a>
+<p>Reciprocal of %ATK_RELATION_DETAILS. Indicates that this object
+provides a detailed or extended description about the target object(s). See also
+%ATK_RELATION_DESCRIPTION_FOR and %ATK_RELATION_ERROR_FOR. @Since: ATK-2.26.</p>
+<a class="header" href="#atk_relation_error_message--19" id="atk_relation_error_message--19"><h3>ATK_RELATION_ERROR_MESSAGE = 19</h3></a>
+<p>Reciprocal of %ATK_RELATION_ERROR_FOR. Indicates that this object
+has one or more errors, the nature of which is described in the contents of the target
+object(s). Objects that have this relation type should also contain %ATK_STATE_INVALID_ENTRY
+in their #AtkStateSet. @Since: ATK-2.26.</p>
+<a class="header" href="#atk_relation_error_for--20" id="atk_relation_error_for--20"><h3>ATK_RELATION_ERROR_FOR = 20</h3></a>
+<p>Reciprocal of %ATK_RELATION_ERROR_MESSAGE. Indicates that this object
+contains an error message describing an invalid condition in the target object(s). @Since:
+ATK_2.26.</p>
+<a class="header" href="#atk_relation_last_defined--21" id="atk_relation_last_defined--21"><h3>ATK_RELATION_LAST_DEFINED = 21</h3></a>
+<p>Not used, this value indicates the end of the enumeration.</p>
 <a class="header" href="#role" id="role"><h2><code>Role</code></h2></a>
 <p>Describes the role of an object</p>
 <p>These are the built-in enumerated roles that UI components can have in
 ATK.  Other roles may be added at runtime, so an AtkRole &gt;=
 ATK_ROLE_LAST_DEFINED is not necessarily an error.</p>
-<ul>
-<li>ATK_ROLE_INVALID = 0</li>
-<li>ATK_ROLE_ACCEL_LABEL = 1</li>
-<li>ATK_ROLE_ALERT = 2</li>
-<li>ATK_ROLE_ANIMATION = 3</li>
-<li>ATK_ROLE_ARROW = 4</li>
-<li>ATK_ROLE_CALENDAR = 5</li>
-<li>ATK_ROLE_CANVAS = 6</li>
-<li>ATK_ROLE_CHECK_BOX = 7</li>
-<li>ATK_ROLE_CHECK_MENU_ITEM = 8</li>
-<li>ATK_ROLE_COLOR_CHOOSER = 9</li>
-<li>ATK_ROLE_COLUMN_HEADER = 10</li>
-<li>ATK_ROLE_COMBO_BOX = 11</li>
-<li>ATK_ROLE_DATE_EDITOR = 12</li>
-<li>ATK_ROLE_DESKTOP_ICON = 13</li>
-<li>ATK_ROLE_DESKTOP_FRAME = 14</li>
-<li>ATK_ROLE_DIAL = 15</li>
-<li>ATK_ROLE_DIALOG = 16</li>
-<li>ATK_ROLE_DIRECTORY_PANE = 17</li>
-<li>ATK_ROLE_DRAWING_AREA = 18</li>
-<li>ATK_ROLE_FILE_CHOOSER = 19</li>
-<li>ATK_ROLE_FILLER = 20</li>
-<li>ATK_ROLE_FONT_CHOOSER = 21</li>
-<li>ATK_ROLE_FRAME = 22</li>
-<li>ATK_ROLE_GLASS_PANE = 23</li>
-<li>ATK_ROLE_HTML_CONTAINER = 24</li>
-<li>ATK_ROLE_ICON = 25</li>
-<li>ATK_ROLE_IMAGE = 26</li>
-<li>ATK_ROLE_INTERNAL_FRAME = 27</li>
-<li>ATK_ROLE_LABEL = 28</li>
-<li>ATK_ROLE_LAYERED_PANE = 29</li>
-<li>ATK_ROLE_LIST = 30</li>
-<li>ATK_ROLE_LIST_ITEM = 31</li>
-<li>ATK_ROLE_MENU = 32</li>
-<li>ATK_ROLE_MENU_BAR = 33</li>
-<li>ATK_ROLE_MENU_ITEM = 34</li>
-<li>ATK_ROLE_OPTION_PANE = 35</li>
-<li>ATK_ROLE_PAGE_TAB = 36</li>
-<li>ATK_ROLE_PAGE_TAB_LIST = 37</li>
-<li>ATK_ROLE_PANEL = 38</li>
-<li>ATK_ROLE_PASSWORD_TEXT = 39</li>
-<li>ATK_ROLE_POPUP_MENU = 40</li>
-<li>ATK_ROLE_PROGRESS_BAR = 41</li>
-<li>ATK_ROLE_PUSH_BUTTON = 42</li>
-<li>ATK_ROLE_RADIO_BUTTON = 43</li>
-<li>ATK_ROLE_RADIO_MENU_ITEM = 44</li>
-<li>ATK_ROLE_ROOT_PANE = 45</li>
-<li>ATK_ROLE_ROW_HEADER = 46</li>
-<li>ATK_ROLE_SCROLL_BAR = 47</li>
-<li>ATK_ROLE_SCROLL_PANE = 48</li>
-<li>ATK_ROLE_SEPARATOR = 49</li>
-<li>ATK_ROLE_SLIDER = 50</li>
-<li>ATK_ROLE_SPLIT_PANE = 51</li>
-<li>ATK_ROLE_SPIN_BUTTON = 52</li>
-<li>ATK_ROLE_STATUSBAR = 53</li>
-<li>ATK_ROLE_TABLE = 54</li>
-<li>ATK_ROLE_TABLE_CELL = 55</li>
-<li>ATK_ROLE_TABLE_COLUMN_HEADER = 56</li>
-<li>ATK_ROLE_TABLE_ROW_HEADER = 57</li>
-<li>ATK_ROLE_TEAR_OFF_MENU_ITEM = 58</li>
-<li>ATK_ROLE_TERMINAL = 59</li>
-<li>ATK_ROLE_TEXT = 60</li>
-<li>ATK_ROLE_TOGGLE_BUTTON = 61</li>
-<li>ATK_ROLE_TOOL_BAR = 62</li>
-<li>ATK_ROLE_TOOL_TIP = 63</li>
-<li>ATK_ROLE_TREE = 64</li>
-<li>ATK_ROLE_TREE_TABLE = 65</li>
-<li>ATK_ROLE_UNKNOWN = 66</li>
-<li>ATK_ROLE_VIEWPORT = 67</li>
-<li>ATK_ROLE_WINDOW = 68</li>
-<li>ATK_ROLE_HEADER = 69</li>
-<li>ATK_ROLE_FOOTER = 70</li>
-<li>ATK_ROLE_PARAGRAPH = 71</li>
-<li>ATK_ROLE_RULER = 72</li>
-<li>ATK_ROLE_APPLICATION = 73</li>
-<li>ATK_ROLE_AUTOCOMPLETE = 74</li>
-<li>ATK_ROLE_EDITBAR = 75</li>
-<li>ATK_ROLE_EMBEDDED = 76</li>
-<li>ATK_ROLE_ENTRY = 77</li>
-<li>ATK_ROLE_CHART = 78</li>
-<li>ATK_ROLE_CAPTION = 79</li>
-<li>ATK_ROLE_DOCUMENT_FRAME = 80</li>
-<li>ATK_ROLE_HEADING = 81</li>
-<li>ATK_ROLE_PAGE = 82</li>
-<li>ATK_ROLE_SECTION = 83</li>
-<li>ATK_ROLE_REDUNDANT_OBJECT = 84</li>
-<li>ATK_ROLE_FORM = 85</li>
-<li>ATK_ROLE_LINK = 86</li>
-<li>ATK_ROLE_INPUT_METHOD_WINDOW = 87</li>
-<li>ATK_ROLE_TABLE_ROW = 88</li>
-<li>ATK_ROLE_TREE_ITEM = 89</li>
-<li>ATK_ROLE_DOCUMENT_SPREADSHEET = 90</li>
-<li>ATK_ROLE_DOCUMENT_PRESENTATION = 91</li>
-<li>ATK_ROLE_DOCUMENT_TEXT = 92</li>
-<li>ATK_ROLE_DOCUMENT_WEB = 93</li>
-<li>ATK_ROLE_DOCUMENT_EMAIL = 94</li>
-<li>ATK_ROLE_COMMENT = 95</li>
-<li>ATK_ROLE_LIST_BOX = 96</li>
-<li>ATK_ROLE_GROUPING = 97</li>
-<li>ATK_ROLE_IMAGE_MAP = 98</li>
-<li>ATK_ROLE_NOTIFICATION = 99</li>
-<li>ATK_ROLE_INFO_BAR = 100</li>
-<li>ATK_ROLE_LEVEL_BAR = 101</li>
-<li>ATK_ROLE_TITLE_BAR = 102</li>
-<li>ATK_ROLE_BLOCK_QUOTE = 103</li>
-<li>ATK_ROLE_AUDIO = 104</li>
-<li>ATK_ROLE_VIDEO = 105</li>
-<li>ATK_ROLE_DEFINITION = 106</li>
-<li>ATK_ROLE_ARTICLE = 107</li>
-<li>ATK_ROLE_LANDMARK = 108</li>
-<li>ATK_ROLE_LOG = 109</li>
-<li>ATK_ROLE_MARQUEE = 110</li>
-<li>ATK_ROLE_MATH = 111</li>
-<li>ATK_ROLE_RATING = 112</li>
-<li>ATK_ROLE_TIMER = 113</li>
-<li>ATK_ROLE_DESCRIPTION_LIST = 114</li>
-<li>ATK_ROLE_DESCRIPTION_TERM = 115</li>
-<li>ATK_ROLE_DESCRIPTION_VALUE = 116</li>
-<li>ATK_ROLE_STATIC = 117</li>
-<li>ATK_ROLE_MATH_FRACTION = 118</li>
-<li>ATK_ROLE_MATH_ROOT = 119</li>
-<li>ATK_ROLE_SUBSCRIPT = 120</li>
-<li>ATK_ROLE_SUPERSCRIPT = 121</li>
-<li>ATK_ROLE_FOOTNOTE = 122</li>
-<li>ATK_ROLE_LAST_DEFINED = 123</li>
-</ul>
 <p>C - <code>AtkRole</code></p>
+<a class="header" href="#atk_role_invalid--0" id="atk_role_invalid--0"><h3>ATK_ROLE_INVALID = 0</h3></a>
+<p>Invalid role</p>
+<a class="header" href="#atk_role_accel_label--1" id="atk_role_accel_label--1"><h3>ATK_ROLE_ACCEL_LABEL = 1</h3></a>
+<p>A label which represents an accelerator</p>
+<a class="header" href="#atk_role_alert--2" id="atk_role_alert--2"><h3>ATK_ROLE_ALERT = 2</h3></a>
+<p>An object which is an alert to the user. Assistive Technologies typically respond to ATK_ROLE_ALERT by reading the entire onscreen contents of containers advertising this role.  Should be used for warning dialogs, etc.</p>
+<a class="header" href="#atk_role_animation--3" id="atk_role_animation--3"><h3>ATK_ROLE_ANIMATION = 3</h3></a>
+<p>An object which is an animated image</p>
+<a class="header" href="#atk_role_arrow--4" id="atk_role_arrow--4"><h3>ATK_ROLE_ARROW = 4</h3></a>
+<p>An arrow in one of the four cardinal directions</p>
+<a class="header" href="#atk_role_calendar--5" id="atk_role_calendar--5"><h3>ATK_ROLE_CALENDAR = 5</h3></a>
+<p>An object that displays a calendar and allows the user to select a date</p>
+<a class="header" href="#atk_role_canvas--6" id="atk_role_canvas--6"><h3>ATK_ROLE_CANVAS = 6</h3></a>
+<p>An object that can be drawn into and is used to trap events</p>
+<a class="header" href="#atk_role_check_box--7" id="atk_role_check_box--7"><h3>ATK_ROLE_CHECK_BOX = 7</h3></a>
+<p>A choice that can be checked or unchecked and provides a separate indicator for the current state</p>
+<a class="header" href="#atk_role_check_menu_item--8" id="atk_role_check_menu_item--8"><h3>ATK_ROLE_CHECK_MENU_ITEM = 8</h3></a>
+<p>A menu item with a check box</p>
+<a class="header" href="#atk_role_color_chooser--9" id="atk_role_color_chooser--9"><h3>ATK_ROLE_COLOR_CHOOSER = 9</h3></a>
+<p>A specialized dialog that lets the user choose a color</p>
+<a class="header" href="#atk_role_column_header--10" id="atk_role_column_header--10"><h3>ATK_ROLE_COLUMN_HEADER = 10</h3></a>
+<p>The header for a column of data</p>
+<a class="header" href="#atk_role_combo_box--11" id="atk_role_combo_box--11"><h3>ATK_ROLE_COMBO_BOX = 11</h3></a>
+<p>A collapsible list of choices the user can select from</p>
+<a class="header" href="#atk_role_date_editor--12" id="atk_role_date_editor--12"><h3>ATK_ROLE_DATE_EDITOR = 12</h3></a>
+<p>An object whose purpose is to allow a user to edit a date</p>
+<a class="header" href="#atk_role_desktop_icon--13" id="atk_role_desktop_icon--13"><h3>ATK_ROLE_DESKTOP_ICON = 13</h3></a>
+<p>An inconifed internal frame within a DESKTOP_PANE</p>
+<a class="header" href="#atk_role_desktop_frame--14" id="atk_role_desktop_frame--14"><h3>ATK_ROLE_DESKTOP_FRAME = 14</h3></a>
+<p>A pane that supports internal frames and iconified versions of those internal frames</p>
+<a class="header" href="#atk_role_dial--15" id="atk_role_dial--15"><h3>ATK_ROLE_DIAL = 15</h3></a>
+<p>An object whose purpose is to allow a user to set a value</p>
+<a class="header" href="#atk_role_dialog--16" id="atk_role_dialog--16"><h3>ATK_ROLE_DIALOG = 16</h3></a>
+<p>A top level window with title bar and a border</p>
+<a class="header" href="#atk_role_directory_pane--17" id="atk_role_directory_pane--17"><h3>ATK_ROLE_DIRECTORY_PANE = 17</h3></a>
+<p>A pane that allows the user to navigate through and select the contents of a directory</p>
+<a class="header" href="#atk_role_drawing_area--18" id="atk_role_drawing_area--18"><h3>ATK_ROLE_DRAWING_AREA = 18</h3></a>
+<p>An object used for drawing custom user interface elements</p>
+<a class="header" href="#atk_role_file_chooser--19" id="atk_role_file_chooser--19"><h3>ATK_ROLE_FILE_CHOOSER = 19</h3></a>
+<p>A specialized dialog that lets the user choose a file</p>
+<a class="header" href="#atk_role_filler--20" id="atk_role_filler--20"><h3>ATK_ROLE_FILLER = 20</h3></a>
+<p>A object that fills up space in a user interface</p>
+<a class="header" href="#atk_role_font_chooser--21" id="atk_role_font_chooser--21"><h3>ATK_ROLE_FONT_CHOOSER = 21</h3></a>
+<p>A specialized dialog that lets the user choose a font</p>
+<a class="header" href="#atk_role_frame--22" id="atk_role_frame--22"><h3>ATK_ROLE_FRAME = 22</h3></a>
+<p>A top level window with a title bar, border, menubar, etc.</p>
+<a class="header" href="#atk_role_glass_pane--23" id="atk_role_glass_pane--23"><h3>ATK_ROLE_GLASS_PANE = 23</h3></a>
+<p>A pane that is guaranteed to be painted on top of all panes beneath it</p>
+<a class="header" href="#atk_role_html_container--24" id="atk_role_html_container--24"><h3>ATK_ROLE_HTML_CONTAINER = 24</h3></a>
+<p>A document container for HTML, whose children represent the document content</p>
+<a class="header" href="#atk_role_icon--25" id="atk_role_icon--25"><h3>ATK_ROLE_ICON = 25</h3></a>
+<p>A small fixed size picture, typically used to decorate components</p>
+<a class="header" href="#atk_role_image--26" id="atk_role_image--26"><h3>ATK_ROLE_IMAGE = 26</h3></a>
+<p>An object whose primary purpose is to display an image</p>
+<a class="header" href="#atk_role_internal_frame--27" id="atk_role_internal_frame--27"><h3>ATK_ROLE_INTERNAL_FRAME = 27</h3></a>
+<p>A frame-like object that is clipped by a desktop pane</p>
+<a class="header" href="#atk_role_label--28" id="atk_role_label--28"><h3>ATK_ROLE_LABEL = 28</h3></a>
+<p>An object used to present an icon or short string in an interface</p>
+<a class="header" href="#atk_role_layered_pane--29" id="atk_role_layered_pane--29"><h3>ATK_ROLE_LAYERED_PANE = 29</h3></a>
+<p>A specialized pane that allows its children to be drawn in layers, providing a form of stacking order</p>
+<a class="header" href="#atk_role_list--30" id="atk_role_list--30"><h3>ATK_ROLE_LIST = 30</h3></a>
+<p>An object that presents a list of objects to the user and allows the user to select one or more of them</p>
+<a class="header" href="#atk_role_list_item--31" id="atk_role_list_item--31"><h3>ATK_ROLE_LIST_ITEM = 31</h3></a>
+<p>An object that represents an element of a list</p>
+<a class="header" href="#atk_role_menu--32" id="atk_role_menu--32"><h3>ATK_ROLE_MENU = 32</h3></a>
+<p>An object usually found inside a menu bar that contains a list of actions the user can choose from</p>
+<a class="header" href="#atk_role_menu_bar--33" id="atk_role_menu_bar--33"><h3>ATK_ROLE_MENU_BAR = 33</h3></a>
+<p>An object usually drawn at the top of the primary dialog box of an application that contains a list of menus the user can choose from</p>
+<a class="header" href="#atk_role_menu_item--34" id="atk_role_menu_item--34"><h3>ATK_ROLE_MENU_ITEM = 34</h3></a>
+<p>An object usually contained in a menu that presents an action the user can choose</p>
+<a class="header" href="#atk_role_option_pane--35" id="atk_role_option_pane--35"><h3>ATK_ROLE_OPTION_PANE = 35</h3></a>
+<p>A specialized pane whose primary use is inside a DIALOG</p>
+<a class="header" href="#atk_role_page_tab--36" id="atk_role_page_tab--36"><h3>ATK_ROLE_PAGE_TAB = 36</h3></a>
+<p>An object that is a child of a page tab list</p>
+<a class="header" href="#atk_role_page_tab_list--37" id="atk_role_page_tab_list--37"><h3>ATK_ROLE_PAGE_TAB_LIST = 37</h3></a>
+<p>An object that presents a series of panels (or page tabs), one at a time, through some mechanism provided by the object</p>
+<a class="header" href="#atk_role_panel--38" id="atk_role_panel--38"><h3>ATK_ROLE_PANEL = 38</h3></a>
+<p>A generic container that is often used to group objects</p>
+<a class="header" href="#atk_role_password_text--39" id="atk_role_password_text--39"><h3>ATK_ROLE_PASSWORD_TEXT = 39</h3></a>
+<p>A text object uses for passwords, or other places where the text content is not shown visibly to the user</p>
+<a class="header" href="#atk_role_popup_menu--40" id="atk_role_popup_menu--40"><h3>ATK_ROLE_POPUP_MENU = 40</h3></a>
+<p>A temporary window that is usually used to offer the user a list of choices, and then hides when the user selects one of those choices</p>
+<a class="header" href="#atk_role_progress_bar--41" id="atk_role_progress_bar--41"><h3>ATK_ROLE_PROGRESS_BAR = 41</h3></a>
+<p>An object used to indicate how much of a task has been completed</p>
+<a class="header" href="#atk_role_push_button--42" id="atk_role_push_button--42"><h3>ATK_ROLE_PUSH_BUTTON = 42</h3></a>
+<p>An object the user can manipulate to tell the application to do something</p>
+<a class="header" href="#atk_role_radio_button--43" id="atk_role_radio_button--43"><h3>ATK_ROLE_RADIO_BUTTON = 43</h3></a>
+<p>A specialized check box that will cause other radio buttons in the same group to become unchecked when this one is checked</p>
+<a class="header" href="#atk_role_radio_menu_item--44" id="atk_role_radio_menu_item--44"><h3>ATK_ROLE_RADIO_MENU_ITEM = 44</h3></a>
+<p>A check menu item which belongs to a group. At each instant exactly one of the radio menu items from a group is selected</p>
+<a class="header" href="#atk_role_root_pane--45" id="atk_role_root_pane--45"><h3>ATK_ROLE_ROOT_PANE = 45</h3></a>
+<p>A specialized pane that has a glass pane and a layered pane as its children</p>
+<a class="header" href="#atk_role_row_header--46" id="atk_role_row_header--46"><h3>ATK_ROLE_ROW_HEADER = 46</h3></a>
+<p>The header for a row of data</p>
+<a class="header" href="#atk_role_scroll_bar--47" id="atk_role_scroll_bar--47"><h3>ATK_ROLE_SCROLL_BAR = 47</h3></a>
+<p>An object usually used to allow a user to incrementally view a large amount of data.</p>
+<a class="header" href="#atk_role_scroll_pane--48" id="atk_role_scroll_pane--48"><h3>ATK_ROLE_SCROLL_PANE = 48</h3></a>
+<p>An object that allows a user to incrementally view a large amount of information</p>
+<a class="header" href="#atk_role_separator--49" id="atk_role_separator--49"><h3>ATK_ROLE_SEPARATOR = 49</h3></a>
+<p>An object usually contained in a menu to provide a visible and logical separation of the contents in a menu</p>
+<a class="header" href="#atk_role_slider--50" id="atk_role_slider--50"><h3>ATK_ROLE_SLIDER = 50</h3></a>
+<p>An object that allows the user to select from a bounded range</p>
+<a class="header" href="#atk_role_split_pane--51" id="atk_role_split_pane--51"><h3>ATK_ROLE_SPLIT_PANE = 51</h3></a>
+<p>A specialized panel that presents two other panels at the same time</p>
+<a class="header" href="#atk_role_spin_button--52" id="atk_role_spin_button--52"><h3>ATK_ROLE_SPIN_BUTTON = 52</h3></a>
+<p>An object used to get an integer or floating point number from the user</p>
+<a class="header" href="#atk_role_statusbar--53" id="atk_role_statusbar--53"><h3>ATK_ROLE_STATUSBAR = 53</h3></a>
+<p>An object which reports messages of minor importance to the user</p>
+<a class="header" href="#atk_role_table--54" id="atk_role_table--54"><h3>ATK_ROLE_TABLE = 54</h3></a>
+<p>An object used to represent information in terms of rows and columns</p>
+<a class="header" href="#atk_role_table_cell--55" id="atk_role_table_cell--55"><h3>ATK_ROLE_TABLE_CELL = 55</h3></a>
+<p>A cell in a table</p>
+<a class="header" href="#atk_role_table_column_header--56" id="atk_role_table_column_header--56"><h3>ATK_ROLE_TABLE_COLUMN_HEADER = 56</h3></a>
+<p>The header for a column of a table</p>
+<a class="header" href="#atk_role_table_row_header--57" id="atk_role_table_row_header--57"><h3>ATK_ROLE_TABLE_ROW_HEADER = 57</h3></a>
+<p>The header for a row of a table</p>
+<a class="header" href="#atk_role_tear_off_menu_item--58" id="atk_role_tear_off_menu_item--58"><h3>ATK_ROLE_TEAR_OFF_MENU_ITEM = 58</h3></a>
+<p>A menu item used to tear off and reattach its menu</p>
+<a class="header" href="#atk_role_terminal--59" id="atk_role_terminal--59"><h3>ATK_ROLE_TERMINAL = 59</h3></a>
+<p>An object that represents an accessible terminal.  @Since: ATK-0.6</p>
+<a class="header" href="#atk_role_text--60" id="atk_role_text--60"><h3>ATK_ROLE_TEXT = 60</h3></a>
+<p>An interactive widget that supports multiple lines of text and
+optionally accepts user input, but whose purpose is not to solicit user input.
+Thus ATK_ROLE_TEXT is appropriate for the text view in a plain text editor
+but inappropriate for an input field in a dialog box or web form. For widgets
+whose purpose is to solicit input from the user, see ATK_ROLE_ENTRY and
+ATK_ROLE_PASSWORD_TEXT. For generic objects which display a brief amount of
+textual information, see ATK_ROLE_STATIC.</p>
+<a class="header" href="#atk_role_toggle_button--61" id="atk_role_toggle_button--61"><h3>ATK_ROLE_TOGGLE_BUTTON = 61</h3></a>
+<p>A specialized push button that can be checked or unchecked, but does not provide a separate indicator for the current state</p>
+<a class="header" href="#atk_role_tool_bar--62" id="atk_role_tool_bar--62"><h3>ATK_ROLE_TOOL_BAR = 62</h3></a>
+<p>A bar or palette usually composed of push buttons or toggle buttons</p>
+<a class="header" href="#atk_role_tool_tip--63" id="atk_role_tool_tip--63"><h3>ATK_ROLE_TOOL_TIP = 63</h3></a>
+<p>An object that provides information about another object</p>
+<a class="header" href="#atk_role_tree--64" id="atk_role_tree--64"><h3>ATK_ROLE_TREE = 64</h3></a>
+<p>An object used to represent hierarchical information to the user</p>
+<a class="header" href="#atk_role_tree_table--65" id="atk_role_tree_table--65"><h3>ATK_ROLE_TREE_TABLE = 65</h3></a>
+<p>An object capable of expanding and collapsing rows as well as showing multiple columns of data.   @Since: ATK-0.7</p>
+<a class="header" href="#atk_role_unknown--66" id="atk_role_unknown--66"><h3>ATK_ROLE_UNKNOWN = 66</h3></a>
+<p>The object contains some Accessible information, but its role is not known</p>
+<a class="header" href="#atk_role_viewport--67" id="atk_role_viewport--67"><h3>ATK_ROLE_VIEWPORT = 67</h3></a>
+<p>An object usually used in a scroll pane</p>
+<a class="header" href="#atk_role_window--68" id="atk_role_window--68"><h3>ATK_ROLE_WINDOW = 68</h3></a>
+<p>A top level window with no title or border.</p>
+<a class="header" href="#atk_role_header--69" id="atk_role_header--69"><h3>ATK_ROLE_HEADER = 69</h3></a>
+<p>An object that serves as a document header. @Since: ATK-1.1.1</p>
+<a class="header" href="#atk_role_footer--70" id="atk_role_footer--70"><h3>ATK_ROLE_FOOTER = 70</h3></a>
+<p>An object that serves as a document footer.  @Since: ATK-1.1.1</p>
+<a class="header" href="#atk_role_paragraph--71" id="atk_role_paragraph--71"><h3>ATK_ROLE_PARAGRAPH = 71</h3></a>
+<p>An object which is contains a paragraph of text content.   @Since: ATK-1.1.1</p>
+<a class="header" href="#atk_role_ruler--72" id="atk_role_ruler--72"><h3>ATK_ROLE_RULER = 72</h3></a>
+<p>An object which describes margins and tab stops, etc. for text objects which it controls (should have CONTROLLER_FOR relation to such).   @Since: ATK-1.1.1</p>
+<a class="header" href="#atk_role_application--73" id="atk_role_application--73"><h3>ATK_ROLE_APPLICATION = 73</h3></a>
+<p>The object is an application object, which may contain @ATK_ROLE_FRAME objects or other types of accessibles.  The root accessible of any application's ATK hierarchy should have ATK_ROLE_APPLICATION.   @Since: ATK-1.1.4</p>
+<a class="header" href="#atk_role_autocomplete--74" id="atk_role_autocomplete--74"><h3>ATK_ROLE_AUTOCOMPLETE = 74</h3></a>
+<p>The object is a dialog or list containing items for insertion into an entry widget, for instance a list of words for completion of a text entry.   @Since: ATK-1.3</p>
+<a class="header" href="#atk_role_editbar--75" id="atk_role_editbar--75"><h3>ATK_ROLE_EDITBAR = 75</h3></a>
+<p>The object is an editable text object in a toolbar.  @Since: ATK-1.5</p>
+<a class="header" href="#atk_role_embedded--76" id="atk_role_embedded--76"><h3>ATK_ROLE_EMBEDDED = 76</h3></a>
+<p>The object is an embedded container within a document or panel.  This role is a grouping &quot;hint&quot; indicating that the contained objects share a context.  @Since: ATK-1.7.2</p>
+<a class="header" href="#atk_role_entry--77" id="atk_role_entry--77"><h3>ATK_ROLE_ENTRY = 77</h3></a>
+<p>The object is a component whose textual content may be entered or modified by the user, provided @ATK_STATE_EDITABLE is present.   @Since: ATK-1.11</p>
+<a class="header" href="#atk_role_chart--78" id="atk_role_chart--78"><h3>ATK_ROLE_CHART = 78</h3></a>
+<p>The object is a graphical depiction of quantitative data. It may contain multiple subelements whose attributes and/or description may be queried to obtain both the quantitative data and information about how the data is being presented. The LABELLED_BY relation is particularly important in interpreting objects of this type, as is the accessible-description property.  @Since: ATK-1.11</p>
+<a class="header" href="#atk_role_caption--79" id="atk_role_caption--79"><h3>ATK_ROLE_CAPTION = 79</h3></a>
+<p>The object contains descriptive information, usually textual, about another user interface element such as a table, chart, or image.  @Since: ATK-1.11</p>
+<a class="header" href="#atk_role_document_frame--80" id="atk_role_document_frame--80"><h3>ATK_ROLE_DOCUMENT_FRAME = 80</h3></a>
+<p>The object is a visual frame or container which contains a view of document content. Document frames may occur within another Document instance, in which case the second document may be said to be embedded in the containing instance. HTML frames are often ROLE_DOCUMENT_FRAME. Either this object, or a singleton descendant, should implement the Document interface.  @Since: ATK-1.11</p>
+<a class="header" href="#atk_role_heading--81" id="atk_role_heading--81"><h3>ATK_ROLE_HEADING = 81</h3></a>
+<p>The object serves as a heading for content which follows it in a document. The 'heading level' of the heading, if availabe, may be obtained by querying the object's attributes.</p>
+<a class="header" href="#atk_role_page--82" id="atk_role_page--82"><h3>ATK_ROLE_PAGE = 82</h3></a>
+<p>The object is a containing instance which encapsulates a page of information. @ATK_ROLE_PAGE is used in documents and content which support a paginated navigation model.  @Since: ATK-1.11</p>
+<a class="header" href="#atk_role_section--83" id="atk_role_section--83"><h3>ATK_ROLE_SECTION = 83</h3></a>
+<p>The object is a containing instance of document content which constitutes a particular 'logical' section of the document. The type of content within a section, and the nature of the section division itself, may be obtained by querying the object's attributes. Sections may be nested. @Since: ATK-1.11</p>
+<a class="header" href="#atk_role_redundant_object--84" id="atk_role_redundant_object--84"><h3>ATK_ROLE_REDUNDANT_OBJECT = 84</h3></a>
+<p>The object is redundant with another object in the hierarchy, and is exposed for purely technical reasons.  Objects of this role should normally be ignored by clients. @Since: ATK-1.11</p>
+<a class="header" href="#atk_role_form--85" id="atk_role_form--85"><h3>ATK_ROLE_FORM = 85</h3></a>
+<p>The object is a container for form controls, for instance as part of a
+web form or user-input form within a document.  This role is primarily a tag/convenience for
+clients when navigating complex documents, it is not expected that ordinary GUI containers will
+always have ATK_ROLE_FORM. @Since: ATK-1.12.0</p>
+<a class="header" href="#atk_role_link--86" id="atk_role_link--86"><h3>ATK_ROLE_LINK = 86</h3></a>
+<p>The object is a hypertext anchor, i.e. a &quot;link&quot; in a
+hypertext document.  Such objects are distinct from 'inline'
+content which may also use the Hypertext/Hyperlink interfaces
+to indicate the range/location within a text object where
+an inline or embedded object lies.  @Since: ATK-1.12.1</p>
+<a class="header" href="#atk_role_input_method_window--87" id="atk_role_input_method_window--87"><h3>ATK_ROLE_INPUT_METHOD_WINDOW = 87</h3></a>
+<p>The object is a window or similar viewport
+which is used to allow composition or input of a 'complex character',
+in other words it is an &quot;input method window.&quot; @Since: ATK-1.12.1</p>
+<a class="header" href="#atk_role_table_row--88" id="atk_role_table_row--88"><h3>ATK_ROLE_TABLE_ROW = 88</h3></a>
+<p>A row in a table.  @Since: ATK-2.1.0</p>
+<a class="header" href="#atk_role_tree_item--89" id="atk_role_tree_item--89"><h3>ATK_ROLE_TREE_ITEM = 89</h3></a>
+<p>An object that represents an element of a tree.  @Since: ATK-2.1.0</p>
+<a class="header" href="#atk_role_document_spreadsheet--90" id="atk_role_document_spreadsheet--90"><h3>ATK_ROLE_DOCUMENT_SPREADSHEET = 90</h3></a>
+<p>A document frame which contains a spreadsheet.  @Since: ATK-2.1.0</p>
+<a class="header" href="#atk_role_document_presentation--91" id="atk_role_document_presentation--91"><h3>ATK_ROLE_DOCUMENT_PRESENTATION = 91</h3></a>
+<p>A document frame which contains a presentation or slide content.  @Since: ATK-2.1.0</p>
+<a class="header" href="#atk_role_document_text--92" id="atk_role_document_text--92"><h3>ATK_ROLE_DOCUMENT_TEXT = 92</h3></a>
+<p>A document frame which contains textual content, such as found in a word processing application.  @Since: ATK-2.1.0</p>
+<a class="header" href="#atk_role_document_web--93" id="atk_role_document_web--93"><h3>ATK_ROLE_DOCUMENT_WEB = 93</h3></a>
+<p>A document frame which contains HTML or other markup suitable for display in a web browser.  @Since: ATK-2.1.0</p>
+<a class="header" href="#atk_role_document_email--94" id="atk_role_document_email--94"><h3>ATK_ROLE_DOCUMENT_EMAIL = 94</h3></a>
+<p>A document frame which contains email content to be displayed or composed either in plain text or HTML.  @Since: ATK-2.1.0</p>
+<a class="header" href="#atk_role_comment--95" id="atk_role_comment--95"><h3>ATK_ROLE_COMMENT = 95</h3></a>
+<p>An object found within a document and designed to present a comment, note, or other annotation. In some cases, this object might not be visible until activated.  @Since: ATK-2.1.0</p>
+<a class="header" href="#atk_role_list_box--96" id="atk_role_list_box--96"><h3>ATK_ROLE_LIST_BOX = 96</h3></a>
+<p>A non-collapsible list of choices the user can select from. @Since: ATK-2.1.0</p>
+<a class="header" href="#atk_role_grouping--97" id="atk_role_grouping--97"><h3>ATK_ROLE_GROUPING = 97</h3></a>
+<p>A group of related widgets. This group typically has a label. @Since: ATK-2.1.0</p>
+<a class="header" href="#atk_role_image_map--98" id="atk_role_image_map--98"><h3>ATK_ROLE_IMAGE_MAP = 98</h3></a>
+<p>An image map object. Usually a graphic with multiple hotspots, where each hotspot can be activated resulting in the loading of another document or section of a document. @Since: ATK-2.1.0</p>
+<a class="header" href="#atk_role_notification--99" id="atk_role_notification--99"><h3>ATK_ROLE_NOTIFICATION = 99</h3></a>
+<p>A transitory object designed to present a message to the user, typically at the desktop level rather than inside a particular application.  @Since: ATK-2.1.0</p>
+<a class="header" href="#atk_role_info_bar--100" id="atk_role_info_bar--100"><h3>ATK_ROLE_INFO_BAR = 100</h3></a>
+<p>An object designed to present a message to the user within an existing window. @Since: ATK-2.1.0</p>
+<a class="header" href="#atk_role_level_bar--101" id="atk_role_level_bar--101"><h3>ATK_ROLE_LEVEL_BAR = 101</h3></a>
+<p>A bar that serves as a level indicator to, for instance, show the strength of a password or the state of a battery.  @Since: ATK-2.7.3</p>
+<a class="header" href="#atk_role_title_bar--102" id="atk_role_title_bar--102"><h3>ATK_ROLE_TITLE_BAR = 102</h3></a>
+<p>A bar that serves as the title of a window or a
+dialog. @Since: ATK-2.12</p>
+<a class="header" href="#atk_role_block_quote--103" id="atk_role_block_quote--103"><h3>ATK_ROLE_BLOCK_QUOTE = 103</h3></a>
+<p>An object which contains a text section
+that is quoted from another source. @Since: ATK-2.12</p>
+<a class="header" href="#atk_role_audio--104" id="atk_role_audio--104"><h3>ATK_ROLE_AUDIO = 104</h3></a>
+<p>An object which represents an audio element. @Since: ATK-2.12</p>
+<a class="header" href="#atk_role_video--105" id="atk_role_video--105"><h3>ATK_ROLE_VIDEO = 105</h3></a>
+<p>An object which represents a video element. @Since: ATK-2.12</p>
+<a class="header" href="#atk_role_definition--106" id="atk_role_definition--106"><h3>ATK_ROLE_DEFINITION = 106</h3></a>
+<p>A definition of a term or concept. @Since: ATK-2.12</p>
+<a class="header" href="#atk_role_article--107" id="atk_role_article--107"><h3>ATK_ROLE_ARTICLE = 107</h3></a>
+<p>A section of a page that consists of a
+composition that forms an independent part of a document, page, or
+site. Examples: A blog entry, a news story, a forum post. @Since:
+ATK-2.12</p>
+<a class="header" href="#atk_role_landmark--108" id="atk_role_landmark--108"><h3>ATK_ROLE_LANDMARK = 108</h3></a>
+<p>A region of a web page intended as a
+navigational landmark. This is designed to allow Assistive
+Technologies to provide quick navigation among key regions within a
+document. @Since: ATK-2.12</p>
+<a class="header" href="#atk_role_log--109" id="atk_role_log--109"><h3>ATK_ROLE_LOG = 109</h3></a>
+<p>A text widget or container holding log content, such
+as chat history and error logs. In this role there is a
+relationship between the arrival of new items in the log and the
+reading order. The log contains a meaningful sequence and new
+information is added only to the end of the log, not at arbitrary
+points. @Since: ATK-2.12</p>
+<a class="header" href="#atk_role_marquee--110" id="atk_role_marquee--110"><h3>ATK_ROLE_MARQUEE = 110</h3></a>
+<p>A container where non-essential information
+changes frequently. Common usages of marquee include stock tickers
+and ad banners. The primary difference between a marquee and a log
+is that logs usually have a meaningful order or sequence of
+important content changes. @Since: ATK-2.12</p>
+<a class="header" href="#atk_role_math--111" id="atk_role_math--111"><h3>ATK_ROLE_MATH = 111</h3></a>
+<p>A text widget or container that holds a mathematical
+expression. @Since: ATK-2.12</p>
+<a class="header" href="#atk_role_rating--112" id="atk_role_rating--112"><h3>ATK_ROLE_RATING = 112</h3></a>
+<p>A widget whose purpose is to display a rating,
+such as the number of stars associated with a song in a media
+player. Objects of this role should also implement
+AtkValue. @Since: ATK-2.12</p>
+<a class="header" href="#atk_role_timer--113" id="atk_role_timer--113"><h3>ATK_ROLE_TIMER = 113</h3></a>
+<p>An object containing a numerical counter which
+indicates an amount of elapsed time from a start point, or the time
+remaining until an end point. @Since: ATK-2.12</p>
+<a class="header" href="#atk_role_description_list--114" id="atk_role_description_list--114"><h3>ATK_ROLE_DESCRIPTION_LIST = 114</h3></a>
+<p>An object that represents a list of
+term-value groups. A term-value group represents a individual
+description and consist of one or more names
+(ATK_ROLE_DESCRIPTION_TERM) followed by one or more values
+(ATK_ROLE_DESCRIPTION_VALUE). For each list, there should not be
+more than one group with the same term name. @Since: ATK-2.12</p>
+<a class="header" href="#atk_role_description_term--115" id="atk_role_description_term--115"><h3>ATK_ROLE_DESCRIPTION_TERM = 115</h3></a>
+<p>An object that represents a term or phrase
+with a corresponding definition. @Since: ATK-2.12</p>
+<a class="header" href="#atk_role_description_value--116" id="atk_role_description_value--116"><h3>ATK_ROLE_DESCRIPTION_VALUE = 116</h3></a>
+<p>An object that represents the
+description, definition or value of a term. @Since: ATK-2.12</p>
+<a class="header" href="#atk_role_static--117" id="atk_role_static--117"><h3>ATK_ROLE_STATIC = 117</h3></a>
+<p>A generic non-container object whose purpose is to display a
+brief amount of information to the user and whose role is known by the
+implementor but lacks semantic value for the user. Examples in which
+ATK_ROLE_STATIC is appropriate include the message displayed in a message box
+and an image used as an alternative means to display text. ATK_ROLE_STATIC
+should not be applied to widgets which are traditionally interactive, objects
+which display a significant amount of content, or any object which has an
+accessible relation pointing to another object. Implementors should expose the
+displayed information through the accessible name of the object. If doing so seems
+inappropriate, it may indicate that a different role should be used. For
+labels which describe another widget, see ATK_ROLE_LABEL. For text views, see
+ATK_ROLE_TEXT. For generic containers, see ATK_ROLE_PANEL. For objects whose
+role is not known by the implementor, see ATK_ROLE_UNKNOWN. @Since: ATK-2.16.</p>
+<a class="header" href="#atk_role_math_fraction--118" id="atk_role_math_fraction--118"><h3>ATK_ROLE_MATH_FRACTION = 118</h3></a>
+<p>An object that represents a mathematical fraction.</p>
+<a class="header" href="#atk_role_math_root--119" id="atk_role_math_root--119"><h3>ATK_ROLE_MATH_ROOT = 119</h3></a>
+<p>An object that represents a mathematical expression
+displayed with a radical. @Since: ATK-2.16.</p>
+<a class="header" href="#atk_role_subscript--120" id="atk_role_subscript--120"><h3>ATK_ROLE_SUBSCRIPT = 120</h3></a>
+<p>An object that contains text that is displayed as a
+subscript. @Since: ATK-2.16.</p>
+<a class="header" href="#atk_role_superscript--121" id="atk_role_superscript--121"><h3>ATK_ROLE_SUPERSCRIPT = 121</h3></a>
+<p>An object that contains text that is displayed as a
+superscript. @Since: ATK-2.16.</p>
+<a class="header" href="#atk_role_footnote--122" id="atk_role_footnote--122"><h3>ATK_ROLE_FOOTNOTE = 122</h3></a>
+<p>An object that contains the text of a footnote. @Since: ATK-2.26.</p>
+<a class="header" href="#atk_role_last_defined--123" id="atk_role_last_defined--123"><h3>ATK_ROLE_LAST_DEFINED = 123</h3></a>
+<p>not a valid role, used for finding end of the enumeration</p>
 <a class="header" href="#statetype" id="statetype"><h2><code>StateType</code></h2></a>
 <p>The possible types of states of an object</p>
-<ul>
-<li>ATK_STATE_INVALID = 0</li>
-<li>ATK_STATE_ACTIVE = 1</li>
-<li>ATK_STATE_ARMED = 2</li>
-<li>ATK_STATE_BUSY = 3</li>
-<li>ATK_STATE_CHECKED = 4</li>
-<li>ATK_STATE_DEFUNCT = 5</li>
-<li>ATK_STATE_EDITABLE = 6</li>
-<li>ATK_STATE_ENABLED = 7</li>
-<li>ATK_STATE_EXPANDABLE = 8</li>
-<li>ATK_STATE_EXPANDED = 9</li>
-<li>ATK_STATE_FOCUSABLE = 10</li>
-<li>ATK_STATE_FOCUSED = 11</li>
-<li>ATK_STATE_HORIZONTAL = 12</li>
-<li>ATK_STATE_ICONIFIED = 13</li>
-<li>ATK_STATE_MODAL = 14</li>
-<li>ATK_STATE_MULTI_LINE = 15</li>
-<li>ATK_STATE_MULTISELECTABLE = 16</li>
-<li>ATK_STATE_OPAQUE = 17</li>
-<li>ATK_STATE_PRESSED = 18</li>
-<li>ATK_STATE_RESIZABLE = 19</li>
-<li>ATK_STATE_SELECTABLE = 20</li>
-<li>ATK_STATE_SELECTED = 21</li>
-<li>ATK_STATE_SENSITIVE = 22</li>
-<li>ATK_STATE_SHOWING = 23</li>
-<li>ATK_STATE_SINGLE_LINE = 24</li>
-<li>ATK_STATE_STALE = 25</li>
-<li>ATK_STATE_TRANSIENT = 26</li>
-<li>ATK_STATE_VERTICAL = 27</li>
-<li>ATK_STATE_VISIBLE = 28</li>
-<li>ATK_STATE_MANAGES_DESCENDANTS = 29</li>
-<li>ATK_STATE_INDETERMINATE = 30</li>
-<li>ATK_STATE_TRUNCATED = 31</li>
-<li>ATK_STATE_REQUIRED = 32</li>
-<li>ATK_STATE_INVALID_ENTRY = 33</li>
-<li>ATK_STATE_SUPPORTS_AUTOCOMPLETION = 34</li>
-<li>ATK_STATE_SELECTABLE_TEXT = 35</li>
-<li>ATK_STATE_DEFAULT = 36</li>
-<li>ATK_STATE_ANIMATED = 37</li>
-<li>ATK_STATE_VISITED = 38</li>
-<li>ATK_STATE_CHECKABLE = 39</li>
-<li>ATK_STATE_HAS_POPUP = 40</li>
-<li>ATK_STATE_HAS_TOOLTIP = 41</li>
-<li>ATK_STATE_READ_ONLY = 42</li>
-<li>ATK_STATE_LAST_DEFINED = 43</li>
-</ul>
 <p>C - <code>AtkStateType</code></p>
+<a class="header" href="#atk_state_invalid--0" id="atk_state_invalid--0"><h3>ATK_STATE_INVALID = 0</h3></a>
+<p>Indicates an invalid state - probably an error condition.</p>
+<a class="header" href="#atk_state_active--1" id="atk_state_active--1"><h3>ATK_STATE_ACTIVE = 1</h3></a>
+<p>Indicates a window is currently the active window, or an object is the active subelement within a container or table. ATK_STATE_ACTIVE should not be used for objects which have ATK_STATE_FOCUSABLE or ATK_STATE_SELECTABLE: Those objects should use ATK_STATE_FOCUSED and ATK_STATE_SELECTED respectively. ATK_STATE_ACTIVE is a means to indicate that an object which is not focusable and not selectable is the currently-active item within its parent container.</p>
+<a class="header" href="#atk_state_armed--2" id="atk_state_armed--2"><h3>ATK_STATE_ARMED = 2</h3></a>
+<p>Indicates that the object is 'armed', i.e. will be activated by if a pointer button-release event occurs within its bounds.  Buttons often enter this state when a pointer click occurs within their bounds, as a precursor to activation. ATK_STATE_ARMED has been deprecated since ATK-2.16 and should not be used in newly-written code.</p>
+<a class="header" href="#atk_state_busy--3" id="atk_state_busy--3"><h3>ATK_STATE_BUSY = 3</h3></a>
+<p>Indicates the current object is busy, i.e. onscreen representation is in the process of changing, or the object is temporarily unavailable for interaction due to activity already in progress.  This state may be used by implementors of Document to indicate that content loading is underway.  It also may indicate other 'pending' conditions; clients may wish to interrogate this object when the ATK_STATE_BUSY flag is removed.</p>
+<a class="header" href="#atk_state_checked--4" id="atk_state_checked--4"><h3>ATK_STATE_CHECKED = 4</h3></a>
+<p>Indicates this object is currently checked, for instance a checkbox is 'non-empty'.</p>
+<a class="header" href="#atk_state_defunct--5" id="atk_state_defunct--5"><h3>ATK_STATE_DEFUNCT = 5</h3></a>
+<p>Indicates that this object no longer has a valid backing widget (for instance, if its peer object has been destroyed)</p>
+<a class="header" href="#atk_state_editable--6" id="atk_state_editable--6"><h3>ATK_STATE_EDITABLE = 6</h3></a>
+<p>Indicates that this object can contain text, and that the
+user can change the textual contents of this object by editing those contents
+directly. For an object which is expected to be editable due to its type, but
+which cannot be edited due to the application or platform preventing the user
+from doing so, that object's #AtkStateSet should lack ATK_STATE_EDITABLE and
+should contain ATK_STATE_READ_ONLY.</p>
+<a class="header" href="#atk_state_enabled--7" id="atk_state_enabled--7"><h3>ATK_STATE_ENABLED = 7</h3></a>
+<p>Indicates that this object is enabled, i.e. that it currently reflects some application state. Objects that are &quot;greyed out&quot; may lack this state, and may lack the STATE_SENSITIVE if direct user interaction cannot cause them to acquire STATE_ENABLED. See also: ATK_STATE_SENSITIVE</p>
+<a class="header" href="#atk_state_expandable--8" id="atk_state_expandable--8"><h3>ATK_STATE_EXPANDABLE = 8</h3></a>
+<p>Indicates this object allows progressive disclosure of its children</p>
+<a class="header" href="#atk_state_expanded--9" id="atk_state_expanded--9"><h3>ATK_STATE_EXPANDED = 9</h3></a>
+<p>Indicates this object its expanded - see ATK_STATE_EXPANDABLE above</p>
+<a class="header" href="#atk_state_focusable--10" id="atk_state_focusable--10"><h3>ATK_STATE_FOCUSABLE = 10</h3></a>
+<p>Indicates this object can accept keyboard focus, which means all events resulting from typing on the keyboard will normally be passed to it when it has focus</p>
+<a class="header" href="#atk_state_focused--11" id="atk_state_focused--11"><h3>ATK_STATE_FOCUSED = 11</h3></a>
+<p>Indicates this object currently has the keyboard focus</p>
+<a class="header" href="#atk_state_horizontal--12" id="atk_state_horizontal--12"><h3>ATK_STATE_HORIZONTAL = 12</h3></a>
+<p>Indicates the orientation of this object is horizontal; used, for instance, by objects of ATK_ROLE_SCROLL_BAR.  For objects where vertical/horizontal orientation is especially meaningful.</p>
+<a class="header" href="#atk_state_iconified--13" id="atk_state_iconified--13"><h3>ATK_STATE_ICONIFIED = 13</h3></a>
+<p>Indicates this object is minimized and is represented only by an icon</p>
+<a class="header" href="#atk_state_modal--14" id="atk_state_modal--14"><h3>ATK_STATE_MODAL = 14</h3></a>
+<p>Indicates something must be done with this object before the user can interact with an object in a different window</p>
+<a class="header" href="#atk_state_multi_line--15" id="atk_state_multi_line--15"><h3>ATK_STATE_MULTI_LINE = 15</h3></a>
+<p>Indicates this (text) object can contain multiple lines of text</p>
+<a class="header" href="#atk_state_multiselectable--16" id="atk_state_multiselectable--16"><h3>ATK_STATE_MULTISELECTABLE = 16</h3></a>
+<p>Indicates this object allows more than one of its children to be selected at the same time, or in the case of text objects, that the object supports non-contiguous text selections.</p>
+<a class="header" href="#atk_state_opaque--17" id="atk_state_opaque--17"><h3>ATK_STATE_OPAQUE = 17</h3></a>
+<p>Indicates this object paints every pixel within its rectangular region.</p>
+<a class="header" href="#atk_state_pressed--18" id="atk_state_pressed--18"><h3>ATK_STATE_PRESSED = 18</h3></a>
+<p>Indicates this object is currently pressed.</p>
+<a class="header" href="#atk_state_resizable--19" id="atk_state_resizable--19"><h3>ATK_STATE_RESIZABLE = 19</h3></a>
+<p>Indicates the size of this object is not fixed</p>
+<a class="header" href="#atk_state_selectable--20" id="atk_state_selectable--20"><h3>ATK_STATE_SELECTABLE = 20</h3></a>
+<p>Indicates this object is the child of an object that allows its children to be selected and that this child is one of those children that can be selected</p>
+<a class="header" href="#atk_state_selected--21" id="atk_state_selected--21"><h3>ATK_STATE_SELECTED = 21</h3></a>
+<p>Indicates this object is the child of an object that allows its children to be selected and that this child is one of those children that has been selected</p>
+<a class="header" href="#atk_state_sensitive--22" id="atk_state_sensitive--22"><h3>ATK_STATE_SENSITIVE = 22</h3></a>
+<p>Indicates this object is sensitive, e.g. to user interaction.
+STATE_SENSITIVE usually accompanies STATE_ENABLED for user-actionable controls,
+but may be found in the absence of STATE_ENABLED if the current visible state of the
+control is &quot;disconnected&quot; from the application state.  In such cases, direct user interaction
+can often result in the object gaining STATE_SENSITIVE, for instance if a user makes
+an explicit selection using an object whose current state is ambiguous or undefined.
+@see STATE_ENABLED, STATE_INDETERMINATE.</p>
+<a class="header" href="#atk_state_showing--23" id="atk_state_showing--23"><h3>ATK_STATE_SHOWING = 23</h3></a>
+<p>Indicates this object, the object's parent, the object's parent's parent, and so on,
+are all 'shown' to the end-user, i.e. subject to &quot;exposure&quot; if blocking or obscuring objects do not interpose
+between this object and the top of the window stack.</p>
+<a class="header" href="#atk_state_single_line--24" id="atk_state_single_line--24"><h3>ATK_STATE_SINGLE_LINE = 24</h3></a>
+<p>Indicates this (text) object can contain only a single line of text</p>
+<a class="header" href="#atk_state_stale--25" id="atk_state_stale--25"><h3>ATK_STATE_STALE = 25</h3></a>
+<p>Indicates that the information returned for this object may no longer be
+synchronized with the application state.  This is implied if the object has STATE_TRANSIENT,
+and can also occur towards the end of the object peer's lifecycle. It can also be used to indicate that
+the index associated with this object has changed since the user accessed the object (in lieu of
+&quot;index-in-parent-changed&quot; events).</p>
+<a class="header" href="#atk_state_transient--26" id="atk_state_transient--26"><h3>ATK_STATE_TRANSIENT = 26</h3></a>
+<p>Indicates this object is transient, i.e. a snapshot which may not emit events when its
+state changes.  Data from objects with ATK_STATE_TRANSIENT should not be cached, since there may be no
+notification given when the cached data becomes obsolete.</p>
+<a class="header" href="#atk_state_vertical--27" id="atk_state_vertical--27"><h3>ATK_STATE_VERTICAL = 27</h3></a>
+<p>Indicates the orientation of this object is vertical</p>
+<a class="header" href="#atk_state_visible--28" id="atk_state_visible--28"><h3>ATK_STATE_VISIBLE = 28</h3></a>
+<p>Indicates this object is visible, e.g. has been explicitly marked for exposure to the user.</p>
+<a class="header" href="#atk_state_manages_descendants--29" id="atk_state_manages_descendants--29"><h3>ATK_STATE_MANAGES_DESCENDANTS = 29</h3></a>
+<p>Indicates that &quot;active-descendant-changed&quot; event
+is sent when children become 'active' (i.e. are selected or navigated to onscreen).
+Used to prevent need to enumerate all children in very large containers, like tables.
+The presence of STATE_MANAGES_DESCENDANTS is an indication to the client.
+that the children should not, and need not, be enumerated by the client.
+Objects implementing this state are expected to provide relevant state
+notifications to listening clients, for instance notifications of visibility
+changes and activation of their contained child objects, without the client
+having previously requested references to those children.</p>
+<a class="header" href="#atk_state_indeterminate--30" id="atk_state_indeterminate--30"><h3>ATK_STATE_INDETERMINATE = 30</h3></a>
+<p>Indicates that the value, or some other quantifiable
+property, of this AtkObject cannot be fully determined. In the case of a large
+data set in which the total number of items in that set is unknown (e.g. 1 of
+999+), implementors should expose the currently-known set size (999) along
+with this state. In the case of a check box, this state should be used to
+indicate that the check box is a tri-state check box which is currently
+neither checked nor unchecked.</p>
+<a class="header" href="#atk_state_truncated--31" id="atk_state_truncated--31"><h3>ATK_STATE_TRUNCATED = 31</h3></a>
+<p>Indicates that an object is truncated, e.g. a text value in a speradsheet cell.</p>
+<a class="header" href="#atk_state_required--32" id="atk_state_required--32"><h3>ATK_STATE_REQUIRED = 32</h3></a>
+<p>Indicates that explicit user interaction with an object is required by the user interface, e.g. a required field in a &quot;web-form&quot; interface.</p>
+<a class="header" href="#atk_state_invalid_entry--33" id="atk_state_invalid_entry--33"><h3>ATK_STATE_INVALID_ENTRY = 33</h3></a>
+<p>Indicates that the object has encountered an error condition due to failure of input validation. For instance, a form control may acquire this state in response to invalid or malformed user input.</p>
+<a class="header" href="#atk_state_supports_autocompletion--34" id="atk_state_supports_autocompletion--34"><h3>ATK_STATE_SUPPORTS_AUTOCOMPLETION = 34</h3></a>
+<p>Indicates that the object in question implements some form of ¨typeahead¨ or
+pre-selection behavior whereby entering the first character of one or more sub-elements
+causes those elements to scroll into view or become selected.  Subsequent character input
+may narrow the selection further as long as one or more sub-elements match the string.
+This state is normally only useful and encountered on objects that implement Selection.
+In some cases the typeahead behavior may result in full or partial ¨completion¨ of
+the data in the input field, in which case these input events may trigger text-changed
+events from the AtkText interface.  This state supplants @ATK_ROLE_AUTOCOMPLETE.</p>
+<a class="header" href="#atk_state_selectable_text--35" id="atk_state_selectable_text--35"><h3>ATK_STATE_SELECTABLE_TEXT = 35</h3></a>
+<p>Indicates that the object in question supports text selection. It should only be exposed on objects which implement the Text interface, in order to distinguish this state from @ATK_STATE_SELECTABLE, which infers that the object in question is a selectable child of an object which implements Selection. While similar, text selection and subelement selection are distinct operations.</p>
+<a class="header" href="#atk_state_default--36" id="atk_state_default--36"><h3>ATK_STATE_DEFAULT = 36</h3></a>
+<p>Indicates that the object is the &quot;default&quot; active component, i.e. the object which is activated by an end-user press of the &quot;Enter&quot; or &quot;Return&quot; key.  Typically a &quot;close&quot; or &quot;submit&quot; button.</p>
+<a class="header" href="#atk_state_animated--37" id="atk_state_animated--37"><h3>ATK_STATE_ANIMATED = 37</h3></a>
+<p>Indicates that the object changes its appearance dynamically as an inherent part of its presentation.  This state may come and go if an object is only temporarily animated on the way to a 'final' onscreen presentation.
+@note some applications, notably content viewers, may not be able to detect
+all kinds of animated content.  Therefore the absence of this state should not
+be taken as definitive evidence that the object's visual representation is
+static; this state is advisory.</p>
+<a class="header" href="#atk_state_visited--38" id="atk_state_visited--38"><h3>ATK_STATE_VISITED = 38</h3></a>
+<p>Indicates that the object (typically a hyperlink) has already been 'activated', and/or its backing data has already been downloaded, rendered, or otherwise &quot;visited&quot;.</p>
+<a class="header" href="#atk_state_checkable--39" id="atk_state_checkable--39"><h3>ATK_STATE_CHECKABLE = 39</h3></a>
+<p>Indicates this object has the potential to be
+checked, such as a checkbox or toggle-able table cell. @Since:
+ATK-2.12</p>
+<a class="header" href="#atk_state_has_popup--40" id="atk_state_has_popup--40"><h3>ATK_STATE_HAS_POPUP = 40</h3></a>
+<p>Indicates that the object has a popup context
+menu or sub-level menu which may or may not be showing. This means
+that activation renders conditional content.  Note that ordinary
+tooltips are not considered popups in this context. @Since: ATK-2.12</p>
+<a class="header" href="#atk_state_has_tooltip--41" id="atk_state_has_tooltip--41"><h3>ATK_STATE_HAS_TOOLTIP = 41</h3></a>
+<p>Indicates this object has a tooltip. @Since: ATK-2.16</p>
+<a class="header" href="#atk_state_read_only--42" id="atk_state_read_only--42"><h3>ATK_STATE_READ_ONLY = 42</h3></a>
+<p>Indicates that a widget which is ENABLED and SENSITIVE
+has a value which can be read, but not modified, by the user. Note that this
+state should only be applied to widget types whose value is normally directly
+user modifiable, such as check boxes, radio buttons, spin buttons, text input
+fields, and combo boxes, as a means to convey that the expected interaction
+with that widget is not possible. When the expected interaction with a
+widget does not include modification by the user, as is the case with
+labels and containers, ATK_STATE_READ_ONLY should not be applied. See also
+ATK_STATE_EDITABLE. @Since: ATK-2-16</p>
+<a class="header" href="#atk_state_last_defined--43" id="atk_state_last_defined--43"><h3>ATK_STATE_LAST_DEFINED = 43</h3></a>
+<p>Not a valid state, used for finding end of enumeration</p>
 <a class="header" href="#textattribute" id="textattribute"><h2><code>TextAttribute</code></h2></a>
 <p>Describes the text attributes supported</p>
-<ul>
-<li>ATK_TEXT_ATTR_INVALID = 0</li>
-<li>ATK_TEXT_ATTR_LEFT_MARGIN = 1</li>
-<li>ATK_TEXT_ATTR_RIGHT_MARGIN = 2</li>
-<li>ATK_TEXT_ATTR_INDENT = 3</li>
-<li>ATK_TEXT_ATTR_INVISIBLE = 4</li>
-<li>ATK_TEXT_ATTR_EDITABLE = 5</li>
-<li>ATK_TEXT_ATTR_PIXELS_ABOVE_LINES = 6</li>
-<li>ATK_TEXT_ATTR_PIXELS_BELOW_LINES = 7</li>
-<li>ATK_TEXT_ATTR_PIXELS_INSIDE_WRAP = 8</li>
-<li>ATK_TEXT_ATTR_BG_FULL_HEIGHT = 9</li>
-<li>ATK_TEXT_ATTR_RISE = 10</li>
-<li>ATK_TEXT_ATTR_UNDERLINE = 11</li>
-<li>ATK_TEXT_ATTR_STRIKETHROUGH = 12</li>
-<li>ATK_TEXT_ATTR_SIZE = 13</li>
-<li>ATK_TEXT_ATTR_SCALE = 14</li>
-<li>ATK_TEXT_ATTR_WEIGHT = 15</li>
-<li>ATK_TEXT_ATTR_LANGUAGE = 16</li>
-<li>ATK_TEXT_ATTR_FAMILY_NAME = 17</li>
-<li>ATK_TEXT_ATTR_BG_COLOR = 18</li>
-<li>ATK_TEXT_ATTR_FG_COLOR = 19</li>
-<li>ATK_TEXT_ATTR_BG_STIPPLE = 20</li>
-<li>ATK_TEXT_ATTR_FG_STIPPLE = 21</li>
-<li>ATK_TEXT_ATTR_WRAP_MODE = 22</li>
-<li>ATK_TEXT_ATTR_DIRECTION = 23</li>
-<li>ATK_TEXT_ATTR_JUSTIFICATION = 24</li>
-<li>ATK_TEXT_ATTR_STRETCH = 25</li>
-<li>ATK_TEXT_ATTR_VARIANT = 26</li>
-<li>ATK_TEXT_ATTR_STYLE = 27</li>
-<li>ATK_TEXT_ATTR_LAST_DEFINED = 28</li>
-</ul>
 <p>C - <code>AtkTextAttribute</code></p>
+<a class="header" href="#atk_text_attr_invalid--0" id="atk_text_attr_invalid--0"><h3>ATK_TEXT_ATTR_INVALID = 0</h3></a>
+<p>Invalid attribute, like bad spelling or grammar.</p>
+<a class="header" href="#atk_text_attr_left_margin--1" id="atk_text_attr_left_margin--1"><h3>ATK_TEXT_ATTR_LEFT_MARGIN = 1</h3></a>
+<p>The pixel width of the left margin</p>
+<a class="header" href="#atk_text_attr_right_margin--2" id="atk_text_attr_right_margin--2"><h3>ATK_TEXT_ATTR_RIGHT_MARGIN = 2</h3></a>
+<p>The pixel width of the right margin</p>
+<a class="header" href="#atk_text_attr_indent--3" id="atk_text_attr_indent--3"><h3>ATK_TEXT_ATTR_INDENT = 3</h3></a>
+<p>The number of pixels that the text is indented</p>
+<a class="header" href="#atk_text_attr_invisible--4" id="atk_text_attr_invisible--4"><h3>ATK_TEXT_ATTR_INVISIBLE = 4</h3></a>
+<p>Either &quot;true&quot; or &quot;false&quot; indicating whether text is visible or not</p>
+<a class="header" href="#atk_text_attr_editable--5" id="atk_text_attr_editable--5"><h3>ATK_TEXT_ATTR_EDITABLE = 5</h3></a>
+<p>Either &quot;true&quot; or &quot;false&quot; indicating whether text is editable or not</p>
+<a class="header" href="#atk_text_attr_pixels_above_lines--6" id="atk_text_attr_pixels_above_lines--6"><h3>ATK_TEXT_ATTR_PIXELS_ABOVE_LINES = 6</h3></a>
+<p>Pixels of blank space to leave above each newline-terminated line.</p>
+<a class="header" href="#atk_text_attr_pixels_below_lines--7" id="atk_text_attr_pixels_below_lines--7"><h3>ATK_TEXT_ATTR_PIXELS_BELOW_LINES = 7</h3></a>
+<p>Pixels of blank space to leave below each newline-terminated line.</p>
+<a class="header" href="#atk_text_attr_pixels_inside_wrap--8" id="atk_text_attr_pixels_inside_wrap--8"><h3>ATK_TEXT_ATTR_PIXELS_INSIDE_WRAP = 8</h3></a>
+<p>Pixels of blank space to leave between wrapped lines inside the same newline-terminated line (paragraph).</p>
+<a class="header" href="#atk_text_attr_bg_full_height--9" id="atk_text_attr_bg_full_height--9"><h3>ATK_TEXT_ATTR_BG_FULL_HEIGHT = 9</h3></a>
+<p>&quot;true&quot; or &quot;false&quot; whether to make the background color for each character the height of the highest font used on the current line, or the height of the font used for the current character.</p>
+<a class="header" href="#atk_text_attr_rise--10" id="atk_text_attr_rise--10"><h3>ATK_TEXT_ATTR_RISE = 10</h3></a>
+<p>Number of pixels that the characters are risen above the baseline</p>
+<a class="header" href="#atk_text_attr_underline--11" id="atk_text_attr_underline--11"><h3>ATK_TEXT_ATTR_UNDERLINE = 11</h3></a>
+<p>&quot;none&quot;, &quot;single&quot;, &quot;double&quot;, &quot;low&quot;, or &quot;error&quot;</p>
+<a class="header" href="#atk_text_attr_strikethrough--12" id="atk_text_attr_strikethrough--12"><h3>ATK_TEXT_ATTR_STRIKETHROUGH = 12</h3></a>
+<p>&quot;true&quot; or &quot;false&quot; whether the text is strikethrough</p>
+<a class="header" href="#atk_text_attr_size--13" id="atk_text_attr_size--13"><h3>ATK_TEXT_ATTR_SIZE = 13</h3></a>
+<p>The size of the characters in points. eg: 10</p>
+<a class="header" href="#atk_text_attr_scale--14" id="atk_text_attr_scale--14"><h3>ATK_TEXT_ATTR_SCALE = 14</h3></a>
+<p>The scale of the characters. The value is a string representation of a double</p>
+<a class="header" href="#atk_text_attr_weight--15" id="atk_text_attr_weight--15"><h3>ATK_TEXT_ATTR_WEIGHT = 15</h3></a>
+<p>The weight of the characters.</p>
+<a class="header" href="#atk_text_attr_language--16" id="atk_text_attr_language--16"><h3>ATK_TEXT_ATTR_LANGUAGE = 16</h3></a>
+<p>The language used</p>
+<a class="header" href="#atk_text_attr_family_name--17" id="atk_text_attr_family_name--17"><h3>ATK_TEXT_ATTR_FAMILY_NAME = 17</h3></a>
+<p>The font family name</p>
+<a class="header" href="#atk_text_attr_bg_color--18" id="atk_text_attr_bg_color--18"><h3>ATK_TEXT_ATTR_BG_COLOR = 18</h3></a>
+<p>The background color. The value is an RGB value of the format &quot;%u,%u,%u&quot;</p>
+<a class="header" href="#atk_text_attr_fg_color--19" id="atk_text_attr_fg_color--19"><h3>ATK_TEXT_ATTR_FG_COLOR = 19</h3></a>
+<p>The foreground color. The value is an RGB value of the format &quot;%u,%u,%u&quot;</p>
+<a class="header" href="#atk_text_attr_bg_stipple--20" id="atk_text_attr_bg_stipple--20"><h3>ATK_TEXT_ATTR_BG_STIPPLE = 20</h3></a>
+<p>&quot;true&quot; if a #GdkBitmap is set for stippling the background color.</p>
+<a class="header" href="#atk_text_attr_fg_stipple--21" id="atk_text_attr_fg_stipple--21"><h3>ATK_TEXT_ATTR_FG_STIPPLE = 21</h3></a>
+<p>&quot;true&quot; if a #GdkBitmap is set for stippling the foreground color.</p>
+<a class="header" href="#atk_text_attr_wrap_mode--22" id="atk_text_attr_wrap_mode--22"><h3>ATK_TEXT_ATTR_WRAP_MODE = 22</h3></a>
+<p>The wrap mode of the text, if any. Values are &quot;none&quot;, &quot;char&quot;, &quot;word&quot;, or &quot;word_char&quot;.</p>
+<a class="header" href="#atk_text_attr_direction--23" id="atk_text_attr_direction--23"><h3>ATK_TEXT_ATTR_DIRECTION = 23</h3></a>
+<p>The direction of the text, if set. Values are &quot;none&quot;, &quot;ltr&quot; or &quot;rtl&quot;</p>
+<a class="header" href="#atk_text_attr_justification--24" id="atk_text_attr_justification--24"><h3>ATK_TEXT_ATTR_JUSTIFICATION = 24</h3></a>
+<p>The justification of the text, if set. Values are &quot;left&quot;, &quot;right&quot;, &quot;center&quot; or &quot;fill&quot;</p>
+<a class="header" href="#atk_text_attr_stretch--25" id="atk_text_attr_stretch--25"><h3>ATK_TEXT_ATTR_STRETCH = 25</h3></a>
+<p>The stretch of the text, if set. Values are &quot;ultra_condensed&quot;, &quot;extra_condensed&quot;, &quot;condensed&quot;, &quot;semi_condensed&quot;, &quot;normal&quot;, &quot;semi_expanded&quot;, &quot;expanded&quot;, &quot;extra_expanded&quot; or &quot;ultra_expanded&quot;</p>
+<a class="header" href="#atk_text_attr_variant--26" id="atk_text_attr_variant--26"><h3>ATK_TEXT_ATTR_VARIANT = 26</h3></a>
+<p>The capitalization variant of the text, if set. Values are &quot;normal&quot; or &quot;small_caps&quot;</p>
+<a class="header" href="#atk_text_attr_style--27" id="atk_text_attr_style--27"><h3>ATK_TEXT_ATTR_STYLE = 27</h3></a>
+<p>The slant style of the text, if set. Values are &quot;normal&quot;, &quot;oblique&quot; or &quot;italic&quot;</p>
+<a class="header" href="#atk_text_attr_last_defined--28" id="atk_text_attr_last_defined--28"><h3>ATK_TEXT_ATTR_LAST_DEFINED = 28</h3></a>
+<p>not a valid text attribute, used for finding end of enumeration</p>
 <a class="header" href="#textboundary" id="textboundary"><h2><code>TextBoundary</code></h2></a>
 <p>Text boundary types used for specifying boundaries for regions of text.
 This enumeration is deprecated since 2.9.4 and should not be used. Use
 AtkTextGranularity with #atk_text_get_string_at_offset instead.</p>
-<ul>
-<li>ATK_TEXT_BOUNDARY_CHAR = 0</li>
-<li>ATK_TEXT_BOUNDARY_WORD_START = 1</li>
-<li>ATK_TEXT_BOUNDARY_WORD_END = 2</li>
-<li>ATK_TEXT_BOUNDARY_SENTENCE_START = 3</li>
-<li>ATK_TEXT_BOUNDARY_SENTENCE_END = 4</li>
-<li>ATK_TEXT_BOUNDARY_LINE_START = 5</li>
-<li>ATK_TEXT_BOUNDARY_LINE_END = 6</li>
-</ul>
 <p>C - <code>AtkTextBoundary</code></p>
+<a class="header" href="#atk_text_boundary_char--0" id="atk_text_boundary_char--0"><h3>ATK_TEXT_BOUNDARY_CHAR = 0</h3></a>
+<p>Boundary is the boundary between characters
+(including non-printing characters)</p>
+<a class="header" href="#atk_text_boundary_word_start--1" id="atk_text_boundary_word_start--1"><h3>ATK_TEXT_BOUNDARY_WORD_START = 1</h3></a>
+<p>Boundary is the start (i.e. first character) of a word.</p>
+<a class="header" href="#atk_text_boundary_word_end--2" id="atk_text_boundary_word_end--2"><h3>ATK_TEXT_BOUNDARY_WORD_END = 2</h3></a>
+<p>Boundary is the end (i.e. last
+character) of a word.</p>
+<a class="header" href="#atk_text_boundary_sentence_start--3" id="atk_text_boundary_sentence_start--3"><h3>ATK_TEXT_BOUNDARY_SENTENCE_START = 3</h3></a>
+<p>Boundary is the first character in a sentence.</p>
+<a class="header" href="#atk_text_boundary_sentence_end--4" id="atk_text_boundary_sentence_end--4"><h3>ATK_TEXT_BOUNDARY_SENTENCE_END = 4</h3></a>
+<p>Boundary is the last (terminal)
+character in a sentence; in languages which use &quot;sentence stop&quot;
+punctuation such as English, the boundary is thus the '.', '?', or
+similar terminal punctuation character.</p>
+<a class="header" href="#atk_text_boundary_line_start--5" id="atk_text_boundary_line_start--5"><h3>ATK_TEXT_BOUNDARY_LINE_START = 5</h3></a>
+<p>Boundary is the initial character of the content or a
+character immediately following a newline, linefeed, or return character.</p>
+<a class="header" href="#atk_text_boundary_line_end--6" id="atk_text_boundary_line_end--6"><h3>ATK_TEXT_BOUNDARY_LINE_END = 6</h3></a>
+<p>Boundary is the linefeed, or return
+character.</p>
 <a class="header" href="#textcliptype" id="textcliptype"><h2><code>TextClipType</code></h2></a>
 <p>Describes the type of clipping required.</p>
-<ul>
-<li>ATK_TEXT_CLIP_NONE = 0</li>
-<li>ATK_TEXT_CLIP_MIN = 1</li>
-<li>ATK_TEXT_CLIP_MAX = 2</li>
-<li>ATK_TEXT_CLIP_BOTH = 3</li>
-</ul>
 <p>C - <code>AtkTextClipType</code></p>
+<a class="header" href="#atk_text_clip_none--0" id="atk_text_clip_none--0"><h3>ATK_TEXT_CLIP_NONE = 0</h3></a>
+<p>No clipping to be done</p>
+<a class="header" href="#atk_text_clip_min--1" id="atk_text_clip_min--1"><h3>ATK_TEXT_CLIP_MIN = 1</h3></a>
+<p>Text clipped by min coordinate is omitted</p>
+<a class="header" href="#atk_text_clip_max--2" id="atk_text_clip_max--2"><h3>ATK_TEXT_CLIP_MAX = 2</h3></a>
+<p>Text clipped by max coordinate is omitted</p>
+<a class="header" href="#atk_text_clip_both--3" id="atk_text_clip_both--3"><h3>ATK_TEXT_CLIP_BOTH = 3</h3></a>
+<p>Only text fully within mix/max bound is retained</p>
 <a class="header" href="#textgranularity" id="textgranularity"><h2><code>TextGranularity</code></h2></a>
 <p>Text granularity types used for specifying the granularity of the region of
 text we are interested in.</p>
-<ul>
-<li>ATK_TEXT_GRANULARITY_CHAR = 0</li>
-<li>ATK_TEXT_GRANULARITY_WORD = 1</li>
-<li>ATK_TEXT_GRANULARITY_SENTENCE = 2</li>
-<li>ATK_TEXT_GRANULARITY_LINE = 3</li>
-<li>ATK_TEXT_GRANULARITY_PARAGRAPH = 4</li>
-</ul>
 <p>C - <code>AtkTextGranularity</code></p>
+<a class="header" href="#atk_text_granularity_char--0" id="atk_text_granularity_char--0"><h3>ATK_TEXT_GRANULARITY_CHAR = 0</h3></a>
+<p>Granularity is defined by the boundaries between characters
+(including non-printing characters)</p>
+<a class="header" href="#atk_text_granularity_word--1" id="atk_text_granularity_word--1"><h3>ATK_TEXT_GRANULARITY_WORD = 1</h3></a>
+<p>Granularity is defined by the boundaries of a word,
+starting at the beginning of the current word and finishing at the beginning of
+the following one, if present.</p>
+<a class="header" href="#atk_text_granularity_sentence--2" id="atk_text_granularity_sentence--2"><h3>ATK_TEXT_GRANULARITY_SENTENCE = 2</h3></a>
+<p>Granularity is defined by the boundaries of a sentence,
+starting at the beginning of the current sentence and finishing at the beginning of
+the following one, if present.</p>
+<a class="header" href="#atk_text_granularity_line--3" id="atk_text_granularity_line--3"><h3>ATK_TEXT_GRANULARITY_LINE = 3</h3></a>
+<p>Granularity is defined by the boundaries of a line,
+starting at the beginning of the current line and finishing at the beginning of
+the following one, if present.</p>
+<a class="header" href="#atk_text_granularity_paragraph--4" id="atk_text_granularity_paragraph--4"><h3>ATK_TEXT_GRANULARITY_PARAGRAPH = 4</h3></a>
+<p>Granularity is defined by the boundaries of a paragraph,
+starting at the beginning of the current paragraph and finishing at the beginning of
+the following one, if present.</p>
 <a class="header" href="#valuetype" id="valuetype"><h2><code>ValueType</code></h2></a>
 <p>Default types for a given value. Those are defined in order to
 easily get localized strings to describe a given value or a given
 subrange, using atk_value_type_get_localized_name().</p>
-<ul>
-<li>ATK_VALUE_VERY_WEAK = 0</li>
-<li>ATK_VALUE_WEAK = 1</li>
-<li>ATK_VALUE_ACCEPTABLE = 2</li>
-<li>ATK_VALUE_STRONG = 3</li>
-<li>ATK_VALUE_VERY_STRONG = 4</li>
-<li>ATK_VALUE_VERY_LOW = 5</li>
-<li>ATK_VALUE_LOW = 6</li>
-<li>ATK_VALUE_MEDIUM = 7</li>
-<li>ATK_VALUE_HIGH = 8</li>
-<li>ATK_VALUE_VERY_HIGH = 9</li>
-<li>ATK_VALUE_VERY_BAD = 10</li>
-<li>ATK_VALUE_BAD = 11</li>
-<li>ATK_VALUE_GOOD = 12</li>
-<li>ATK_VALUE_VERY_GOOD = 13</li>
-<li>ATK_VALUE_BEST = 14</li>
-<li>ATK_VALUE_LAST_DEFINED = 15</li>
-</ul>
 <p>C - <code>AtkValueType</code></p>
-<p>_TEXT_ATTR_FAMILY_NAME = %!s(int=17)</p>
-<ul>
-<li>ATK_TEXT_ATTR_BG_COLOR = %!s(int=18)</li>
-<li>ATK_TEXT_ATTR_FG_COLOR = %!s(int=19)</li>
-<li>ATK_TEXT_ATTR_BG_STIPPLE = %!s(int=20)</li>
-<li>ATK_TEXT_ATTR_FG_STIPPLE = %!s(int=21)</li>
-<li>ATK_TEXT_ATTR_WRAP_MODE = %!s(int=22)</li>
-<li>ATK_TEXT_ATTR_DIRECTION = %!s(int=23)</li>
-<li>ATK_TEXT_ATTR_JUSTIFICATION = %!s(int=24)</li>
-<li>ATK_TEXT_ATTR_STRETCH = %!s(int=25)</li>
-<li>ATK_TEXT_ATTR_VARIANT = %!s(int=26)</li>
-<li>ATK_TEXT_ATTR_STYLE = %!s(int=27)</li>
-<li>ATK_TEXT_ATTR_LAST_DEFINED = %!s(int=28)</li>
-</ul>
-<a class="header" href="#textboundary-1" id="textboundary-1"><h2><code>TextBoundary</code></h2></a>
-<p>Text boundary types used for specifying boundaries for regions of text.
-This enumeration is deprecated since 2.9.4 and should not be used. Use
-AtkTextGranularity with #atk_text_get_string_at_offset instead.</p>
-<p>C - <code>AtkTextBoundary</code></p>
-<ul>
-<li>ATK_TEXT_BOUNDARY_CHAR = %!s(int=0)</li>
-<li>ATK_TEXT_BOUNDARY_WORD_START = %!s(int=1)</li>
-<li>ATK_TEXT_BOUNDARY_WORD_END = %!s(int=2)</li>
-<li>ATK_TEXT_BOUNDARY_SENTENCE_START = %!s(int=3)</li>
-<li>ATK_TEXT_BOUNDARY_SENTENCE_END = %!s(int=4)</li>
-<li>ATK_TEXT_BOUNDARY_LINE_START = %!s(int=5)</li>
-<li>ATK_TEXT_BOUNDARY_LINE_END = %!s(int=6)</li>
-</ul>
-<a class="header" href="#textcliptype-1" id="textcliptype-1"><h2><code>TextClipType</code></h2></a>
-<p>Describes the type of clipping required.</p>
-<p>C - <code>AtkTextClipType</code></p>
-<ul>
-<li>ATK_TEXT_CLIP_NONE = %!s(int=0)</li>
-<li>ATK_TEXT_CLIP_MIN = %!s(int=1)</li>
-<li>ATK_TEXT_CLIP_MAX = %!s(int=2)</li>
-<li>ATK_TEXT_CLIP_BOTH = %!s(int=3)</li>
-</ul>
-<a class="header" href="#textgranularity-1" id="textgranularity-1"><h2><code>TextGranularity</code></h2></a>
-<p>Text granularity types used for specifying the granularity of the region of
-text we are interested in.</p>
-<p>C - <code>AtkTextGranularity</code></p>
-<ul>
-<li>ATK_TEXT_GRANULARITY_CHAR = %!s(int=0)</li>
-<li>ATK_TEXT_GRANULARITY_WORD = %!s(int=1)</li>
-<li>ATK_TEXT_GRANULARITY_SENTENCE = %!s(int=2)</li>
-<li>ATK_TEXT_GRANULARITY_LINE = %!s(int=3)</li>
-<li>ATK_TEXT_GRANULARITY_PARAGRAPH = %!s(int=4)</li>
-</ul>
-<a class="header" href="#valuetype-1" id="valuetype-1"><h2><code>ValueType</code></h2></a>
-<p>Default types for a given value. Those are defined in order to
-easily get localized strings to describe a given value or a given
-subrange, using atk_value_type_get_localized_name().</p>
-<p>C - <code>AtkValueType</code></p>
-<ul>
-<li>ATK_VALUE_VERY_WEAK = %!s(int=0)</li>
-<li>ATK_VALUE_WEAK = %!s(int=1)</li>
-<li>ATK_VALUE_ACCEPTABLE = %!s(int=2)</li>
-<li>ATK_VALUE_STRONG = %!s(int=3)</li>
-<li>ATK_VALUE_VERY_STRONG = %!s(int=4)</li>
-<li>ATK_VALUE_VERY_LOW = %!s(int=5)</li>
-<li>ATK_VALUE_LOW = %!s(int=6)</li>
-<li>ATK_VALUE_MEDIUM = %!s(int=7)</li>
-<li>ATK_VALUE_HIGH = %!s(int=8)</li>
-<li>ATK_VALUE_VERY_HIGH = %!s(int=9)</li>
-<li>ATK_VALUE_VERY_BAD = %!s(int=10)</li>
-<li>ATK_VALUE_BAD = %!s(int=11)</li>
-<li>ATK_VALUE_GOOD = %!s(int=12)</li>
-<li>ATK_VALUE_VERY_GOOD = %!s(int=13)</li>
-<li>ATK_VALUE_BEST = %!s(int=14)</li>
-<li>ATK_VALUE_LAST_DEFINED = %!s(int=15)</li>
-</ul>
+<a class="header" href="#atk_value_very_weak--0" id="atk_value_very_weak--0"><h3>ATK_VALUE_VERY_WEAK = 0</h3></a>
+<a class="header" href="#atk_value_weak--1" id="atk_value_weak--1"><h3>ATK_VALUE_WEAK = 1</h3></a>
+<a class="header" href="#atk_value_acceptable--2" id="atk_value_acceptable--2"><h3>ATK_VALUE_ACCEPTABLE = 2</h3></a>
+<a class="header" href="#atk_value_strong--3" id="atk_value_strong--3"><h3>ATK_VALUE_STRONG = 3</h3></a>
+<a class="header" href="#atk_value_very_strong--4" id="atk_value_very_strong--4"><h3>ATK_VALUE_VERY_STRONG = 4</h3></a>
+<a class="header" href="#atk_value_very_low--5" id="atk_value_very_low--5"><h3>ATK_VALUE_VERY_LOW = 5</h3></a>
+<a class="header" href="#atk_value_low--6" id="atk_value_low--6"><h3>ATK_VALUE_LOW = 6</h3></a>
+<a class="header" href="#atk_value_medium--7" id="atk_value_medium--7"><h3>ATK_VALUE_MEDIUM = 7</h3></a>
+<a class="header" href="#atk_value_high--8" id="atk_value_high--8"><h3>ATK_VALUE_HIGH = 8</h3></a>
+<a class="header" href="#atk_value_very_high--9" id="atk_value_very_high--9"><h3>ATK_VALUE_VERY_HIGH = 9</h3></a>
+<a class="header" href="#atk_value_very_bad--10" id="atk_value_very_bad--10"><h3>ATK_VALUE_VERY_BAD = 10</h3></a>
+<a class="header" href="#atk_value_bad--11" id="atk_value_bad--11"><h3>ATK_VALUE_BAD = 11</h3></a>
+<a class="header" href="#atk_value_good--12" id="atk_value_good--12"><h3>ATK_VALUE_GOOD = 12</h3></a>
+<a class="header" href="#atk_value_very_good--13" id="atk_value_very_good--13"><h3>ATK_VALUE_VERY_GOOD = 13</h3></a>
+<a class="header" href="#atk_value_best--14" id="atk_value_best--14"><h3>ATK_VALUE_BEST = 14</h3></a>
+<a class="header" href="#atk_value_last_defined--15" id="atk_value_last_defined--15"><h3>ATK_VALUE_LAST_DEFINED = 15</h3></a>
 
                     </main>
 

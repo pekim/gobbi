@@ -141,12 +141,13 @@
 <p>A #PangoAlignment describes how to align the lines of a #PangoLayout within the
 available space. If the #PangoLayout is set to justify
 using pango_layout_set_justify(), this only has effect for partial lines.</p>
-<ul>
-<li>PANGO_ALIGN_LEFT = 0</li>
-<li>PANGO_ALIGN_CENTER = 1</li>
-<li>PANGO_ALIGN_RIGHT = 2</li>
-</ul>
 <p>C - <code>PangoAlignment</code></p>
+<a class="header" href="#pango_align_left--0" id="pango_align_left--0"><h3>PANGO_ALIGN_LEFT = 0</h3></a>
+<p>Put all available space on the right</p>
+<a class="header" href="#pango_align_center--1" id="pango_align_center--1"><h3>PANGO_ALIGN_CENTER = 1</h3></a>
+<p>Center the line within the available space</p>
+<a class="header" href="#pango_align_right--2" id="pango_align_right--2"><h3>PANGO_ALIGN_RIGHT = 2</h3></a>
+<p>Put all available space on the left</p>
 <a class="header" href="#attrtype" id="attrtype"><h2><code>AttrType</code></h2></a>
 <p>The #PangoAttrType
 distinguishes between different types of attributes. Along with the
@@ -154,71 +155,119 @@ predefined values, it is possible to allocate additional values
 for custom attributes using pango_attr_type_register(). The predefined
 values are given below. The type of structure used to store the
 attribute is listed in parentheses after the description.</p>
-<ul>
-<li>PANGO_ATTR_INVALID = 0</li>
-<li>PANGO_ATTR_LANGUAGE = 1</li>
-<li>PANGO_ATTR_FAMILY = 2</li>
-<li>PANGO_ATTR_STYLE = 3</li>
-<li>PANGO_ATTR_WEIGHT = 4</li>
-<li>PANGO_ATTR_VARIANT = 5</li>
-<li>PANGO_ATTR_STRETCH = 6</li>
-<li>PANGO_ATTR_SIZE = 7</li>
-<li>PANGO_ATTR_FONT_DESC = 8</li>
-<li>PANGO_ATTR_FOREGROUND = 9</li>
-<li>PANGO_ATTR_BACKGROUND = 10</li>
-<li>PANGO_ATTR_UNDERLINE = 11</li>
-<li>PANGO_ATTR_STRIKETHROUGH = 12</li>
-<li>PANGO_ATTR_RISE = 13</li>
-<li>PANGO_ATTR_SHAPE = 14</li>
-<li>PANGO_ATTR_SCALE = 15</li>
-<li>PANGO_ATTR_FALLBACK = 16</li>
-<li>PANGO_ATTR_LETTER_SPACING = 17</li>
-<li>PANGO_ATTR_UNDERLINE_COLOR = 18</li>
-<li>PANGO_ATTR_STRIKETHROUGH_COLOR = 19</li>
-<li>PANGO_ATTR_ABSOLUTE_SIZE = 20</li>
-<li>PANGO_ATTR_GRAVITY = 21</li>
-<li>PANGO_ATTR_GRAVITY_HINT = 22</li>
-<li>PANGO_ATTR_FONT_FEATURES = 23</li>
-<li>PANGO_ATTR_FOREGROUND_ALPHA = 24</li>
-<li>PANGO_ATTR_BACKGROUND_ALPHA = 25</li>
-</ul>
 <p>C - <code>PangoAttrType</code></p>
+<a class="header" href="#pango_attr_invalid--0" id="pango_attr_invalid--0"><h3>PANGO_ATTR_INVALID = 0</h3></a>
+<p>does not happen</p>
+<a class="header" href="#pango_attr_language--1" id="pango_attr_language--1"><h3>PANGO_ATTR_LANGUAGE = 1</h3></a>
+<p>language (#PangoAttrLanguage)</p>
+<a class="header" href="#pango_attr_family--2" id="pango_attr_family--2"><h3>PANGO_ATTR_FAMILY = 2</h3></a>
+<p>font family name list (#PangoAttrString)</p>
+<a class="header" href="#pango_attr_style--3" id="pango_attr_style--3"><h3>PANGO_ATTR_STYLE = 3</h3></a>
+<p>font slant style (#PangoAttrInt)</p>
+<a class="header" href="#pango_attr_weight--4" id="pango_attr_weight--4"><h3>PANGO_ATTR_WEIGHT = 4</h3></a>
+<p>font weight (#PangoAttrInt)</p>
+<a class="header" href="#pango_attr_variant--5" id="pango_attr_variant--5"><h3>PANGO_ATTR_VARIANT = 5</h3></a>
+<p>font variant (normal or small caps) (#PangoAttrInt)</p>
+<a class="header" href="#pango_attr_stretch--6" id="pango_attr_stretch--6"><h3>PANGO_ATTR_STRETCH = 6</h3></a>
+<p>font stretch (#PangoAttrInt)</p>
+<a class="header" href="#pango_attr_size--7" id="pango_attr_size--7"><h3>PANGO_ATTR_SIZE = 7</h3></a>
+<p>font size in points scaled by %PANGO_SCALE (#PangoAttrInt)</p>
+<a class="header" href="#pango_attr_font_desc--8" id="pango_attr_font_desc--8"><h3>PANGO_ATTR_FONT_DESC = 8</h3></a>
+<p>font description (#PangoAttrFontDesc)</p>
+<a class="header" href="#pango_attr_foreground--9" id="pango_attr_foreground--9"><h3>PANGO_ATTR_FOREGROUND = 9</h3></a>
+<p>foreground color (#PangoAttrColor)</p>
+<a class="header" href="#pango_attr_background--10" id="pango_attr_background--10"><h3>PANGO_ATTR_BACKGROUND = 10</h3></a>
+<p>background color (#PangoAttrColor)</p>
+<a class="header" href="#pango_attr_underline--11" id="pango_attr_underline--11"><h3>PANGO_ATTR_UNDERLINE = 11</h3></a>
+<p>whether the text has an underline (#PangoAttrInt)</p>
+<a class="header" href="#pango_attr_strikethrough--12" id="pango_attr_strikethrough--12"><h3>PANGO_ATTR_STRIKETHROUGH = 12</h3></a>
+<p>whether the text is struck-through (#PangoAttrInt)</p>
+<a class="header" href="#pango_attr_rise--13" id="pango_attr_rise--13"><h3>PANGO_ATTR_RISE = 13</h3></a>
+<p>baseline displacement (#PangoAttrInt)</p>
+<a class="header" href="#pango_attr_shape--14" id="pango_attr_shape--14"><h3>PANGO_ATTR_SHAPE = 14</h3></a>
+<p>shape (#PangoAttrShape)</p>
+<a class="header" href="#pango_attr_scale--15" id="pango_attr_scale--15"><h3>PANGO_ATTR_SCALE = 15</h3></a>
+<p>font size scale factor (#PangoAttrFloat)</p>
+<a class="header" href="#pango_attr_fallback--16" id="pango_attr_fallback--16"><h3>PANGO_ATTR_FALLBACK = 16</h3></a>
+<p>whether fallback is enabled (#PangoAttrInt)</p>
+<a class="header" href="#pango_attr_letter_spacing--17" id="pango_attr_letter_spacing--17"><h3>PANGO_ATTR_LETTER_SPACING = 17</h3></a>
+<p>letter spacing (#PangoAttrInt)</p>
+<a class="header" href="#pango_attr_underline_color--18" id="pango_attr_underline_color--18"><h3>PANGO_ATTR_UNDERLINE_COLOR = 18</h3></a>
+<p>underline color (#PangoAttrColor)</p>
+<a class="header" href="#pango_attr_strikethrough_color--19" id="pango_attr_strikethrough_color--19"><h3>PANGO_ATTR_STRIKETHROUGH_COLOR = 19</h3></a>
+<p>strikethrough color (#PangoAttrColor)</p>
+<a class="header" href="#pango_attr_absolute_size--20" id="pango_attr_absolute_size--20"><h3>PANGO_ATTR_ABSOLUTE_SIZE = 20</h3></a>
+<p>font size in pixels scaled by %PANGO_SCALE (#PangoAttrInt)</p>
+<a class="header" href="#pango_attr_gravity--21" id="pango_attr_gravity--21"><h3>PANGO_ATTR_GRAVITY = 21</h3></a>
+<p>base text gravity (#PangoAttrInt)</p>
+<a class="header" href="#pango_attr_gravity_hint--22" id="pango_attr_gravity_hint--22"><h3>PANGO_ATTR_GRAVITY_HINT = 22</h3></a>
+<p>gravity hint (#PangoAttrInt)</p>
+<a class="header" href="#pango_attr_font_features--23" id="pango_attr_font_features--23"><h3>PANGO_ATTR_FONT_FEATURES = 23</h3></a>
+<p>OpenType font features (#PangoAttrString). Since 1.38</p>
+<a class="header" href="#pango_attr_foreground_alpha--24" id="pango_attr_foreground_alpha--24"><h3>PANGO_ATTR_FOREGROUND_ALPHA = 24</h3></a>
+<p>foreground alpha (#PangoAttrInt). Since 1.38</p>
+<a class="header" href="#pango_attr_background_alpha--25" id="pango_attr_background_alpha--25"><h3>PANGO_ATTR_BACKGROUND_ALPHA = 25</h3></a>
+<p>background alpha (#PangoAttrInt). Since 1.38</p>
 <a class="header" href="#biditype" id="biditype"><h2><code>BidiType</code></h2></a>
 <p>The #PangoBidiType type represents the bidirectional character
 type of a Unicode character as specified by the
 <ulink url="http://www.unicode.org/reports/tr9/">Unicode bidirectional algorithm</ulink>.</p>
-<ul>
-<li>PANGO_BIDI_TYPE_L = 0</li>
-<li>PANGO_BIDI_TYPE_LRE = 1</li>
-<li>PANGO_BIDI_TYPE_LRO = 2</li>
-<li>PANGO_BIDI_TYPE_R = 3</li>
-<li>PANGO_BIDI_TYPE_AL = 4</li>
-<li>PANGO_BIDI_TYPE_RLE = 5</li>
-<li>PANGO_BIDI_TYPE_RLO = 6</li>
-<li>PANGO_BIDI_TYPE_PDF = 7</li>
-<li>PANGO_BIDI_TYPE_EN = 8</li>
-<li>PANGO_BIDI_TYPE_ES = 9</li>
-<li>PANGO_BIDI_TYPE_ET = 10</li>
-<li>PANGO_BIDI_TYPE_AN = 11</li>
-<li>PANGO_BIDI_TYPE_CS = 12</li>
-<li>PANGO_BIDI_TYPE_NSM = 13</li>
-<li>PANGO_BIDI_TYPE_BN = 14</li>
-<li>PANGO_BIDI_TYPE_B = 15</li>
-<li>PANGO_BIDI_TYPE_S = 16</li>
-<li>PANGO_BIDI_TYPE_WS = 17</li>
-<li>PANGO_BIDI_TYPE_ON = 18</li>
-</ul>
 <p>C - <code>PangoBidiType</code></p>
+<a class="header" href="#pango_bidi_type_l--0" id="pango_bidi_type_l--0"><h3>PANGO_BIDI_TYPE_L = 0</h3></a>
+<p>Left-to-Right</p>
+<a class="header" href="#pango_bidi_type_lre--1" id="pango_bidi_type_lre--1"><h3>PANGO_BIDI_TYPE_LRE = 1</h3></a>
+<p>Left-to-Right Embedding</p>
+<a class="header" href="#pango_bidi_type_lro--2" id="pango_bidi_type_lro--2"><h3>PANGO_BIDI_TYPE_LRO = 2</h3></a>
+<p>Left-to-Right Override</p>
+<a class="header" href="#pango_bidi_type_r--3" id="pango_bidi_type_r--3"><h3>PANGO_BIDI_TYPE_R = 3</h3></a>
+<p>Right-to-Left</p>
+<a class="header" href="#pango_bidi_type_al--4" id="pango_bidi_type_al--4"><h3>PANGO_BIDI_TYPE_AL = 4</h3></a>
+<p>Right-to-Left Arabic</p>
+<a class="header" href="#pango_bidi_type_rle--5" id="pango_bidi_type_rle--5"><h3>PANGO_BIDI_TYPE_RLE = 5</h3></a>
+<p>Right-to-Left Embedding</p>
+<a class="header" href="#pango_bidi_type_rlo--6" id="pango_bidi_type_rlo--6"><h3>PANGO_BIDI_TYPE_RLO = 6</h3></a>
+<p>Right-to-Left Override</p>
+<a class="header" href="#pango_bidi_type_pdf--7" id="pango_bidi_type_pdf--7"><h3>PANGO_BIDI_TYPE_PDF = 7</h3></a>
+<p>Pop Directional Format</p>
+<a class="header" href="#pango_bidi_type_en--8" id="pango_bidi_type_en--8"><h3>PANGO_BIDI_TYPE_EN = 8</h3></a>
+<p>European Number</p>
+<a class="header" href="#pango_bidi_type_es--9" id="pango_bidi_type_es--9"><h3>PANGO_BIDI_TYPE_ES = 9</h3></a>
+<p>European Number Separator</p>
+<a class="header" href="#pango_bidi_type_et--10" id="pango_bidi_type_et--10"><h3>PANGO_BIDI_TYPE_ET = 10</h3></a>
+<p>European Number Terminator</p>
+<a class="header" href="#pango_bidi_type_an--11" id="pango_bidi_type_an--11"><h3>PANGO_BIDI_TYPE_AN = 11</h3></a>
+<p>Arabic Number</p>
+<a class="header" href="#pango_bidi_type_cs--12" id="pango_bidi_type_cs--12"><h3>PANGO_BIDI_TYPE_CS = 12</h3></a>
+<p>Common Number Separator</p>
+<a class="header" href="#pango_bidi_type_nsm--13" id="pango_bidi_type_nsm--13"><h3>PANGO_BIDI_TYPE_NSM = 13</h3></a>
+<p>Nonspacing Mark</p>
+<a class="header" href="#pango_bidi_type_bn--14" id="pango_bidi_type_bn--14"><h3>PANGO_BIDI_TYPE_BN = 14</h3></a>
+<p>Boundary Neutral</p>
+<a class="header" href="#pango_bidi_type_b--15" id="pango_bidi_type_b--15"><h3>PANGO_BIDI_TYPE_B = 15</h3></a>
+<p>Paragraph Separator</p>
+<a class="header" href="#pango_bidi_type_s--16" id="pango_bidi_type_s--16"><h3>PANGO_BIDI_TYPE_S = 16</h3></a>
+<p>Segment Separator</p>
+<a class="header" href="#pango_bidi_type_ws--17" id="pango_bidi_type_ws--17"><h3>PANGO_BIDI_TYPE_WS = 17</h3></a>
+<p>Whitespace</p>
+<a class="header" href="#pango_bidi_type_on--18" id="pango_bidi_type_on--18"><h3>PANGO_BIDI_TYPE_ON = 18</h3></a>
+<p>Other Neutrals</p>
 <a class="header" href="#coveragelevel" id="coveragelevel"><h2><code>CoverageLevel</code></h2></a>
 <p>Used to indicate how well a font can represent a particular Unicode
 character point for a particular script.</p>
-<ul>
-<li>PANGO_COVERAGE_NONE = 0</li>
-<li>PANGO_COVERAGE_FALLBACK = 1</li>
-<li>PANGO_COVERAGE_APPROXIMATE = 2</li>
-<li>PANGO_COVERAGE_EXACT = 3</li>
-</ul>
 <p>C - <code>PangoCoverageLevel</code></p>
+<a class="header" href="#pango_coverage_none--0" id="pango_coverage_none--0"><h3>PANGO_COVERAGE_NONE = 0</h3></a>
+<p>The character is not representable with the font.</p>
+<a class="header" href="#pango_coverage_fallback--1" id="pango_coverage_fallback--1"><h3>PANGO_COVERAGE_FALLBACK = 1</h3></a>
+<p>The character is represented in a way that may be
+comprehensible but is not the correct graphical form.
+For instance, a Hangul character represented as a
+a sequence of Jamos, or a Latin transliteration of a Cyrillic word.</p>
+<a class="header" href="#pango_coverage_approximate--2" id="pango_coverage_approximate--2"><h3>PANGO_COVERAGE_APPROXIMATE = 2</h3></a>
+<p>The character is represented as basically the correct
+graphical form, but with a stylistic variant inappropriate for
+the current script.</p>
+<a class="header" href="#pango_coverage_exact--3" id="pango_coverage_exact--3"><h3>PANGO_COVERAGE_EXACT = 3</h3></a>
+<p>The character is represented as the correct graphical form.</p>
 <a class="header" href="#direction" id="direction"><h2><code>Direction</code></h2></a>
 <p>The #PangoDirection type represents a direction in the
 Unicode bidirectional algorithm; not every value in this
@@ -234,29 +283,38 @@ values come from an earlier interpretation of this
 enumeration as the writing direction of a block of
 text and are no longer used; See #PangoGravity for how
 vertical text is handled in Pango.</p>
-<ul>
-<li>PANGO_DIRECTION_LTR = 0</li>
-<li>PANGO_DIRECTION_RTL = 1</li>
-<li>PANGO_DIRECTION_TTB_LTR = 2</li>
-<li>PANGO_DIRECTION_TTB_RTL = 3</li>
-<li>PANGO_DIRECTION_WEAK_LTR = 4</li>
-<li>PANGO_DIRECTION_WEAK_RTL = 5</li>
-<li>PANGO_DIRECTION_NEUTRAL = 6</li>
-</ul>
 <p>C - <code>PangoDirection</code></p>
+<a class="header" href="#pango_direction_ltr--0" id="pango_direction_ltr--0"><h3>PANGO_DIRECTION_LTR = 0</h3></a>
+<p>A strong left-to-right direction</p>
+<a class="header" href="#pango_direction_rtl--1" id="pango_direction_rtl--1"><h3>PANGO_DIRECTION_RTL = 1</h3></a>
+<p>A strong right-to-left direction</p>
+<a class="header" href="#pango_direction_ttb_ltr--2" id="pango_direction_ttb_ltr--2"><h3>PANGO_DIRECTION_TTB_LTR = 2</h3></a>
+<p>Deprecated value; treated the
+same as %PANGO_DIRECTION_RTL.</p>
+<a class="header" href="#pango_direction_ttb_rtl--3" id="pango_direction_ttb_rtl--3"><h3>PANGO_DIRECTION_TTB_RTL = 3</h3></a>
+<p>Deprecated value; treated the
+same as %PANGO_DIRECTION_LTR</p>
+<a class="header" href="#pango_direction_weak_ltr--4" id="pango_direction_weak_ltr--4"><h3>PANGO_DIRECTION_WEAK_LTR = 4</h3></a>
+<p>A weak left-to-right direction</p>
+<a class="header" href="#pango_direction_weak_rtl--5" id="pango_direction_weak_rtl--5"><h3>PANGO_DIRECTION_WEAK_RTL = 5</h3></a>
+<p>A weak right-to-left direction</p>
+<a class="header" href="#pango_direction_neutral--6" id="pango_direction_neutral--6"><h3>PANGO_DIRECTION_NEUTRAL = 6</h3></a>
+<p>No direction specified</p>
 <a class="header" href="#ellipsizemode" id="ellipsizemode"><h2><code>EllipsizeMode</code></h2></a>
 <p>The #PangoEllipsizeMode type describes what sort of (if any)
 ellipsization should be applied to a line of text. In
 the ellipsization process characters are removed from the
 text in order to make it fit to a given width and replaced
 with an ellipsis.</p>
-<ul>
-<li>PANGO_ELLIPSIZE_NONE = 0</li>
-<li>PANGO_ELLIPSIZE_START = 1</li>
-<li>PANGO_ELLIPSIZE_MIDDLE = 2</li>
-<li>PANGO_ELLIPSIZE_END = 3</li>
-</ul>
 <p>C - <code>PangoEllipsizeMode</code></p>
+<a class="header" href="#pango_ellipsize_none--0" id="pango_ellipsize_none--0"><h3>PANGO_ELLIPSIZE_NONE = 0</h3></a>
+<p>No ellipsization</p>
+<a class="header" href="#pango_ellipsize_start--1" id="pango_ellipsize_start--1"><h3>PANGO_ELLIPSIZE_START = 1</h3></a>
+<p>Omit characters at the start of the text</p>
+<a class="header" href="#pango_ellipsize_middle--2" id="pango_ellipsize_middle--2"><h3>PANGO_ELLIPSIZE_MIDDLE = 2</h3></a>
+<p>Omit characters in the middle of the text</p>
+<a class="header" href="#pango_ellipsize_end--3" id="pango_ellipsize_end--3"><h3>PANGO_ELLIPSIZE_END = 3</h3></a>
+<p>Omit characters at the end of the text</p>
 <a class="header" href="#gravity" id="gravity"><h2><code>Gravity</code></h2></a>
 <p>The #PangoGravity type represents the orientation of glyphs in a segment
 of text.  This is useful when rendering vertical text layouts.  In
@@ -267,35 +325,46 @@ Not every value in this enumeration makes sense for every usage of
 pango_context_set_base_gravity() and can only be returned by
 pango_context_get_base_gravity().</p>
 <p>See also: #PangoGravityHint</p>
-<ul>
-<li>PANGO_GRAVITY_SOUTH = 0</li>
-<li>PANGO_GRAVITY_EAST = 1</li>
-<li>PANGO_GRAVITY_NORTH = 2</li>
-<li>PANGO_GRAVITY_WEST = 3</li>
-<li>PANGO_GRAVITY_AUTO = 4</li>
-</ul>
 <p>C - <code>PangoGravity</code></p>
+<a class="header" href="#pango_gravity_south--0" id="pango_gravity_south--0"><h3>PANGO_GRAVITY_SOUTH = 0</h3></a>
+<p>Glyphs stand upright (default)</p>
+<a class="header" href="#pango_gravity_east--1" id="pango_gravity_east--1"><h3>PANGO_GRAVITY_EAST = 1</h3></a>
+<p>Glyphs are rotated 90 degrees clockwise</p>
+<a class="header" href="#pango_gravity_north--2" id="pango_gravity_north--2"><h3>PANGO_GRAVITY_NORTH = 2</h3></a>
+<p>Glyphs are upside-down</p>
+<a class="header" href="#pango_gravity_west--3" id="pango_gravity_west--3"><h3>PANGO_GRAVITY_WEST = 3</h3></a>
+<p>Glyphs are rotated 90 degrees counter-clockwise</p>
+<a class="header" href="#pango_gravity_auto--4" id="pango_gravity_auto--4"><h3>PANGO_GRAVITY_AUTO = 4</h3></a>
+<p>Gravity is resolved from the context matrix</p>
 <a class="header" href="#gravityhint" id="gravityhint"><h2><code>GravityHint</code></h2></a>
 <p>The #PangoGravityHint defines how horizontal scripts should behave in a
 vertical context.  That is, English excerpt in a vertical paragraph for
 example.</p>
 <p>See #PangoGravity.</p>
-<ul>
-<li>PANGO_GRAVITY_HINT_NATURAL = 0</li>
-<li>PANGO_GRAVITY_HINT_STRONG = 1</li>
-<li>PANGO_GRAVITY_HINT_LINE = 2</li>
-</ul>
 <p>C - <code>PangoGravityHint</code></p>
+<a class="header" href="#pango_gravity_hint_natural--0" id="pango_gravity_hint_natural--0"><h3>PANGO_GRAVITY_HINT_NATURAL = 0</h3></a>
+<p>scripts will take their natural gravity based
+on the base gravity and the script.  This is the default.</p>
+<a class="header" href="#pango_gravity_hint_strong--1" id="pango_gravity_hint_strong--1"><h3>PANGO_GRAVITY_HINT_STRONG = 1</h3></a>
+<p>always use the base gravity set, regardless of
+the script.</p>
+<a class="header" href="#pango_gravity_hint_line--2" id="pango_gravity_hint_line--2"><h3>PANGO_GRAVITY_HINT_LINE = 2</h3></a>
+<p>for scripts not in their natural direction (eg.
+Latin in East gravity), choose per-script gravity such that every script
+respects the line progression.  This means, Latin and Arabic will take
+opposite gravities and both flow top-to-bottom for example.</p>
 <a class="header" href="#renderpart" id="renderpart"><h2><code>RenderPart</code></h2></a>
 <p>#PangoRenderPart defines different items to render for such
 purposes as setting colors.</p>
-<ul>
-<li>PANGO_RENDER_PART_FOREGROUND = 0</li>
-<li>PANGO_RENDER_PART_BACKGROUND = 1</li>
-<li>PANGO_RENDER_PART_UNDERLINE = 2</li>
-<li>PANGO_RENDER_PART_STRIKETHROUGH = 3</li>
-</ul>
 <p>C - <code>PangoRenderPart</code></p>
+<a class="header" href="#pango_render_part_foreground--0" id="pango_render_part_foreground--0"><h3>PANGO_RENDER_PART_FOREGROUND = 0</h3></a>
+<p>the text itself</p>
+<a class="header" href="#pango_render_part_background--1" id="pango_render_part_background--1"><h3>PANGO_RENDER_PART_BACKGROUND = 1</h3></a>
+<p>the area behind the text</p>
+<a class="header" href="#pango_render_part_underline--2" id="pango_render_part_underline--2"><h3>PANGO_RENDER_PART_UNDERLINE = 2</h3></a>
+<p>underlines</p>
+<a class="header" href="#pango_render_part_strikethrough--3" id="pango_render_part_strikethrough--3"><h3>PANGO_RENDER_PART_STRIKETHROUGH = 3</h3></a>
+<p>strikethrough lines</p>
 <a class="header" href="#script" id="script"><h2><code>Script</code></h2></a>
 <p>The #PangoScript enumeration identifies different writing
 systems. The values correspond to the names as defined in the
@@ -305,270 +374,350 @@ to handle unknown values.  This enumeration is interchangeable with
 #GUnicodeScript.  See <ulink
 url="http://www.unicode.org/reports/tr24/">Unicode Standard Annex
 #24: Script names</ulink>.</p>
-<ul>
-<li>PANGO_SCRIPT_INVALID_CODE = -1</li>
-<li>PANGO_SCRIPT_COMMON = 0</li>
-<li>PANGO_SCRIPT_INHERITED = 1</li>
-<li>PANGO_SCRIPT_ARABIC = 2</li>
-<li>PANGO_SCRIPT_ARMENIAN = 3</li>
-<li>PANGO_SCRIPT_BENGALI = 4</li>
-<li>PANGO_SCRIPT_BOPOMOFO = 5</li>
-<li>PANGO_SCRIPT_CHEROKEE = 6</li>
-<li>PANGO_SCRIPT_COPTIC = 7</li>
-<li>PANGO_SCRIPT_CYRILLIC = 8</li>
-<li>PANGO_SCRIPT_DESERET = 9</li>
-<li>PANGO_SCRIPT_DEVANAGARI = 10</li>
-<li>PANGO_SCRIPT_ETHIOPIC = 11</li>
-<li>PANGO_SCRIPT_GEORGIAN = 12</li>
-<li>PANGO_SCRIPT_GOTHIC = 13</li>
-<li>PANGO_SCRIPT_GREEK = 14</li>
-<li>PANGO_SCRIPT_GUJARATI = 15</li>
-<li>PANGO_SCRIPT_GURMUKHI = 16</li>
-<li>PANGO_SCRIPT_HAN = 17</li>
-<li>PANGO_SCRIPT_HANGUL = 18</li>
-<li>PANGO_SCRIPT_HEBREW = 19</li>
-<li>PANGO_SCRIPT_HIRAGANA = 20</li>
-<li>PANGO_SCRIPT_KANNADA = 21</li>
-<li>PANGO_SCRIPT_KATAKANA = 22</li>
-<li>PANGO_SCRIPT_KHMER = 23</li>
-<li>PANGO_SCRIPT_LAO = 24</li>
-<li>PANGO_SCRIPT_LATIN = 25</li>
-<li>PANGO_SCRIPT_MALAYALAM = 26</li>
-<li>PANGO_SCRIPT_MONGOLIAN = 27</li>
-<li>PANGO_SCRIPT_MYANMAR = 28</li>
-<li>PANGO_SCRIPT_OGHAM = 29</li>
-<li>PANGO_SCRIPT_OLD_ITALIC = 30</li>
-<li>PANGO_SCRIPT_ORIYA = 31</li>
-<li>PANGO_SCRIPT_RUNIC = 32</li>
-<li>PANGO_SCRIPT_SINHALA = 33</li>
-<li>PANGO_SCRIPT_SYRIAC = 34</li>
-<li>PANGO_SCRIPT_TAMIL = 35</li>
-<li>PANGO_SCRIPT_TELUGU = 36</li>
-<li>PANGO_SCRIPT_THAANA = 37</li>
-<li>PANGO_SCRIPT_THAI = 38</li>
-<li>PANGO_SCRIPT_TIBETAN = 39</li>
-<li>PANGO_SCRIPT_CANADIAN_ABORIGINAL = 40</li>
-<li>PANGO_SCRIPT_YI = 41</li>
-<li>PANGO_SCRIPT_TAGALOG = 42</li>
-<li>PANGO_SCRIPT_HANUNOO = 43</li>
-<li>PANGO_SCRIPT_BUHID = 44</li>
-<li>PANGO_SCRIPT_TAGBANWA = 45</li>
-<li>PANGO_SCRIPT_BRAILLE = 46</li>
-<li>PANGO_SCRIPT_CYPRIOT = 47</li>
-<li>PANGO_SCRIPT_LIMBU = 48</li>
-<li>PANGO_SCRIPT_OSMANYA = 49</li>
-<li>PANGO_SCRIPT_SHAVIAN = 50</li>
-<li>PANGO_SCRIPT_LINEAR_B = 51</li>
-<li>PANGO_SCRIPT_TAI_LE = 52</li>
-<li>PANGO_SCRIPT_UGARITIC = 53</li>
-<li>PANGO_SCRIPT_NEW_TAI_LUE = 54</li>
-<li>PANGO_SCRIPT_BUGINESE = 55</li>
-<li>PANGO_SCRIPT_GLAGOLITIC = 56</li>
-<li>PANGO_SCRIPT_TIFINAGH = 57</li>
-<li>PANGO_SCRIPT_SYLOTI_NAGRI = 58</li>
-<li>PANGO_SCRIPT_OLD_PERSIAN = 59</li>
-<li>PANGO_SCRIPT_KHAROSHTHI = 60</li>
-<li>PANGO_SCRIPT_UNKNOWN = 61</li>
-<li>PANGO_SCRIPT_BALINESE = 62</li>
-<li>PANGO_SCRIPT_CUNEIFORM = 63</li>
-<li>PANGO_SCRIPT_PHOENICIAN = 64</li>
-<li>PANGO_SCRIPT_PHAGS_PA = 65</li>
-<li>PANGO_SCRIPT_NKO = 66</li>
-<li>PANGO_SCRIPT_KAYAH_LI = 67</li>
-<li>PANGO_SCRIPT_LEPCHA = 68</li>
-<li>PANGO_SCRIPT_REJANG = 69</li>
-<li>PANGO_SCRIPT_SUNDANESE = 70</li>
-<li>PANGO_SCRIPT_SAURASHTRA = 71</li>
-<li>PANGO_SCRIPT_CHAM = 72</li>
-<li>PANGO_SCRIPT_OL_CHIKI = 73</li>
-<li>PANGO_SCRIPT_VAI = 74</li>
-<li>PANGO_SCRIPT_CARIAN = 75</li>
-<li>PANGO_SCRIPT_LYCIAN = 76</li>
-<li>PANGO_SCRIPT_LYDIAN = 77</li>
-<li>PANGO_SCRIPT_BATAK = 78</li>
-<li>PANGO_SCRIPT_BRAHMI = 79</li>
-<li>PANGO_SCRIPT_MANDAIC = 80</li>
-<li>PANGO_SCRIPT_CHAKMA = 81</li>
-<li>PANGO_SCRIPT_MEROITIC_CURSIVE = 82</li>
-<li>PANGO_SCRIPT_MEROITIC_HIEROGLYPHS = 83</li>
-<li>PANGO_SCRIPT_MIAO = 84</li>
-<li>PANGO_SCRIPT_SHARADA = 85</li>
-<li>PANGO_SCRIPT_SORA_SOMPENG = 86</li>
-<li>PANGO_SCRIPT_TAKRI = 87</li>
-<li>PANGO_SCRIPT_BASSA_VAH = 88</li>
-<li>PANGO_SCRIPT_CAUCASIAN_ALBANIAN = 89</li>
-<li>PANGO_SCRIPT_DUPLOYAN = 90</li>
-<li>PANGO_SCRIPT_ELBASAN = 91</li>
-<li>PANGO_SCRIPT_GRANTHA = 92</li>
-<li>PANGO_SCRIPT_KHOJKI = 93</li>
-<li>PANGO_SCRIPT_KHUDAWADI = 94</li>
-<li>PANGO_SCRIPT_LINEAR_A = 95</li>
-<li>PANGO_SCRIPT_MAHAJANI = 96</li>
-<li>PANGO_SCRIPT_MANICHAEAN = 97</li>
-<li>PANGO_SCRIPT_MENDE_KIKAKUI = 98</li>
-<li>PANGO_SCRIPT_MODI = 99</li>
-<li>PANGO_SCRIPT_MRO = 100</li>
-<li>PANGO_SCRIPT_NABATAEAN = 101</li>
-<li>PANGO_SCRIPT_OLD_NORTH_ARABIAN = 102</li>
-<li>PANGO_SCRIPT_OLD_PERMIC = 103</li>
-<li>PANGO_SCRIPT_PAHAWH_HMONG = 104</li>
-<li>PANGO_SCRIPT_PALMYRENE = 105</li>
-<li>PANGO_SCRIPT_PAU_CIN_HAU = 106</li>
-<li>PANGO_SCRIPT_PSALTER_PAHLAVI = 107</li>
-<li>PANGO_SCRIPT_SIDDHAM = 108</li>
-<li>PANGO_SCRIPT_TIRHUTA = 109</li>
-<li>PANGO_SCRIPT_WARANG_CITI = 110</li>
-<li>PANGO_SCRIPT_AHOM = 111</li>
-<li>PANGO_SCRIPT_ANATOLIAN_HIEROGLYPHS = 112</li>
-<li>PANGO_SCRIPT_HATRAN = 113</li>
-<li>PANGO_SCRIPT_MULTANI = 114</li>
-<li>PANGO_SCRIPT_OLD_HUNGARIAN = 115</li>
-<li>PANGO_SCRIPT_SIGNWRITING = 116</li>
-</ul>
 <p>C - <code>PangoScript</code></p>
+<a class="header" href="#pango_script_invalid_code---1" id="pango_script_invalid_code---1"><h3>PANGO_SCRIPT_INVALID_CODE = -1</h3></a>
+<p>a value never returned from pango_script_for_unichar()</p>
+<a class="header" href="#pango_script_common--0" id="pango_script_common--0"><h3>PANGO_SCRIPT_COMMON = 0</h3></a>
+<p>a character used by multiple different scripts</p>
+<a class="header" href="#pango_script_inherited--1" id="pango_script_inherited--1"><h3>PANGO_SCRIPT_INHERITED = 1</h3></a>
+<p>a mark glyph that takes its script from the
+base glyph to which it is attached</p>
+<a class="header" href="#pango_script_arabic--2" id="pango_script_arabic--2"><h3>PANGO_SCRIPT_ARABIC = 2</h3></a>
+<p>Arabic</p>
+<a class="header" href="#pango_script_armenian--3" id="pango_script_armenian--3"><h3>PANGO_SCRIPT_ARMENIAN = 3</h3></a>
+<p>Armenian</p>
+<a class="header" href="#pango_script_bengali--4" id="pango_script_bengali--4"><h3>PANGO_SCRIPT_BENGALI = 4</h3></a>
+<p>Bengali</p>
+<a class="header" href="#pango_script_bopomofo--5" id="pango_script_bopomofo--5"><h3>PANGO_SCRIPT_BOPOMOFO = 5</h3></a>
+<p>Bopomofo</p>
+<a class="header" href="#pango_script_cherokee--6" id="pango_script_cherokee--6"><h3>PANGO_SCRIPT_CHEROKEE = 6</h3></a>
+<p>Cherokee</p>
+<a class="header" href="#pango_script_coptic--7" id="pango_script_coptic--7"><h3>PANGO_SCRIPT_COPTIC = 7</h3></a>
+<p>Coptic</p>
+<a class="header" href="#pango_script_cyrillic--8" id="pango_script_cyrillic--8"><h3>PANGO_SCRIPT_CYRILLIC = 8</h3></a>
+<p>Cyrillic</p>
+<a class="header" href="#pango_script_deseret--9" id="pango_script_deseret--9"><h3>PANGO_SCRIPT_DESERET = 9</h3></a>
+<p>Deseret</p>
+<a class="header" href="#pango_script_devanagari--10" id="pango_script_devanagari--10"><h3>PANGO_SCRIPT_DEVANAGARI = 10</h3></a>
+<p>Devanagari</p>
+<a class="header" href="#pango_script_ethiopic--11" id="pango_script_ethiopic--11"><h3>PANGO_SCRIPT_ETHIOPIC = 11</h3></a>
+<p>Ethiopic</p>
+<a class="header" href="#pango_script_georgian--12" id="pango_script_georgian--12"><h3>PANGO_SCRIPT_GEORGIAN = 12</h3></a>
+<p>Georgian</p>
+<a class="header" href="#pango_script_gothic--13" id="pango_script_gothic--13"><h3>PANGO_SCRIPT_GOTHIC = 13</h3></a>
+<p>Gothic</p>
+<a class="header" href="#pango_script_greek--14" id="pango_script_greek--14"><h3>PANGO_SCRIPT_GREEK = 14</h3></a>
+<p>Greek</p>
+<a class="header" href="#pango_script_gujarati--15" id="pango_script_gujarati--15"><h3>PANGO_SCRIPT_GUJARATI = 15</h3></a>
+<p>Gujarati</p>
+<a class="header" href="#pango_script_gurmukhi--16" id="pango_script_gurmukhi--16"><h3>PANGO_SCRIPT_GURMUKHI = 16</h3></a>
+<p>Gurmukhi</p>
+<a class="header" href="#pango_script_han--17" id="pango_script_han--17"><h3>PANGO_SCRIPT_HAN = 17</h3></a>
+<p>Han</p>
+<a class="header" href="#pango_script_hangul--18" id="pango_script_hangul--18"><h3>PANGO_SCRIPT_HANGUL = 18</h3></a>
+<p>Hangul</p>
+<a class="header" href="#pango_script_hebrew--19" id="pango_script_hebrew--19"><h3>PANGO_SCRIPT_HEBREW = 19</h3></a>
+<p>Hebrew</p>
+<a class="header" href="#pango_script_hiragana--20" id="pango_script_hiragana--20"><h3>PANGO_SCRIPT_HIRAGANA = 20</h3></a>
+<p>Hiragana</p>
+<a class="header" href="#pango_script_kannada--21" id="pango_script_kannada--21"><h3>PANGO_SCRIPT_KANNADA = 21</h3></a>
+<p>Kannada</p>
+<a class="header" href="#pango_script_katakana--22" id="pango_script_katakana--22"><h3>PANGO_SCRIPT_KATAKANA = 22</h3></a>
+<p>Katakana</p>
+<a class="header" href="#pango_script_khmer--23" id="pango_script_khmer--23"><h3>PANGO_SCRIPT_KHMER = 23</h3></a>
+<p>Khmer</p>
+<a class="header" href="#pango_script_lao--24" id="pango_script_lao--24"><h3>PANGO_SCRIPT_LAO = 24</h3></a>
+<p>Lao</p>
+<a class="header" href="#pango_script_latin--25" id="pango_script_latin--25"><h3>PANGO_SCRIPT_LATIN = 25</h3></a>
+<p>Latin</p>
+<a class="header" href="#pango_script_malayalam--26" id="pango_script_malayalam--26"><h3>PANGO_SCRIPT_MALAYALAM = 26</h3></a>
+<p>Malayalam</p>
+<a class="header" href="#pango_script_mongolian--27" id="pango_script_mongolian--27"><h3>PANGO_SCRIPT_MONGOLIAN = 27</h3></a>
+<p>Mongolian</p>
+<a class="header" href="#pango_script_myanmar--28" id="pango_script_myanmar--28"><h3>PANGO_SCRIPT_MYANMAR = 28</h3></a>
+<p>Myanmar</p>
+<a class="header" href="#pango_script_ogham--29" id="pango_script_ogham--29"><h3>PANGO_SCRIPT_OGHAM = 29</h3></a>
+<p>Ogham</p>
+<a class="header" href="#pango_script_old_italic--30" id="pango_script_old_italic--30"><h3>PANGO_SCRIPT_OLD_ITALIC = 30</h3></a>
+<p>Old Italic</p>
+<a class="header" href="#pango_script_oriya--31" id="pango_script_oriya--31"><h3>PANGO_SCRIPT_ORIYA = 31</h3></a>
+<p>Oriya</p>
+<a class="header" href="#pango_script_runic--32" id="pango_script_runic--32"><h3>PANGO_SCRIPT_RUNIC = 32</h3></a>
+<p>Runic</p>
+<a class="header" href="#pango_script_sinhala--33" id="pango_script_sinhala--33"><h3>PANGO_SCRIPT_SINHALA = 33</h3></a>
+<p>Sinhala</p>
+<a class="header" href="#pango_script_syriac--34" id="pango_script_syriac--34"><h3>PANGO_SCRIPT_SYRIAC = 34</h3></a>
+<p>Syriac</p>
+<a class="header" href="#pango_script_tamil--35" id="pango_script_tamil--35"><h3>PANGO_SCRIPT_TAMIL = 35</h3></a>
+<p>Tamil</p>
+<a class="header" href="#pango_script_telugu--36" id="pango_script_telugu--36"><h3>PANGO_SCRIPT_TELUGU = 36</h3></a>
+<p>Telugu</p>
+<a class="header" href="#pango_script_thaana--37" id="pango_script_thaana--37"><h3>PANGO_SCRIPT_THAANA = 37</h3></a>
+<p>Thaana</p>
+<a class="header" href="#pango_script_thai--38" id="pango_script_thai--38"><h3>PANGO_SCRIPT_THAI = 38</h3></a>
+<p>Thai</p>
+<a class="header" href="#pango_script_tibetan--39" id="pango_script_tibetan--39"><h3>PANGO_SCRIPT_TIBETAN = 39</h3></a>
+<p>Tibetan</p>
+<a class="header" href="#pango_script_canadian_aboriginal--40" id="pango_script_canadian_aboriginal--40"><h3>PANGO_SCRIPT_CANADIAN_ABORIGINAL = 40</h3></a>
+<p>Canadian Aboriginal</p>
+<a class="header" href="#pango_script_yi--41" id="pango_script_yi--41"><h3>PANGO_SCRIPT_YI = 41</h3></a>
+<p>Yi</p>
+<a class="header" href="#pango_script_tagalog--42" id="pango_script_tagalog--42"><h3>PANGO_SCRIPT_TAGALOG = 42</h3></a>
+<p>Tagalog</p>
+<a class="header" href="#pango_script_hanunoo--43" id="pango_script_hanunoo--43"><h3>PANGO_SCRIPT_HANUNOO = 43</h3></a>
+<p>Hanunoo</p>
+<a class="header" href="#pango_script_buhid--44" id="pango_script_buhid--44"><h3>PANGO_SCRIPT_BUHID = 44</h3></a>
+<p>Buhid</p>
+<a class="header" href="#pango_script_tagbanwa--45" id="pango_script_tagbanwa--45"><h3>PANGO_SCRIPT_TAGBANWA = 45</h3></a>
+<p>Tagbanwa</p>
+<a class="header" href="#pango_script_braille--46" id="pango_script_braille--46"><h3>PANGO_SCRIPT_BRAILLE = 46</h3></a>
+<p>Braille</p>
+<a class="header" href="#pango_script_cypriot--47" id="pango_script_cypriot--47"><h3>PANGO_SCRIPT_CYPRIOT = 47</h3></a>
+<p>Cypriot</p>
+<a class="header" href="#pango_script_limbu--48" id="pango_script_limbu--48"><h3>PANGO_SCRIPT_LIMBU = 48</h3></a>
+<p>Limbu</p>
+<a class="header" href="#pango_script_osmanya--49" id="pango_script_osmanya--49"><h3>PANGO_SCRIPT_OSMANYA = 49</h3></a>
+<p>Osmanya</p>
+<a class="header" href="#pango_script_shavian--50" id="pango_script_shavian--50"><h3>PANGO_SCRIPT_SHAVIAN = 50</h3></a>
+<p>Shavian</p>
+<a class="header" href="#pango_script_linear_b--51" id="pango_script_linear_b--51"><h3>PANGO_SCRIPT_LINEAR_B = 51</h3></a>
+<p>Linear B</p>
+<a class="header" href="#pango_script_tai_le--52" id="pango_script_tai_le--52"><h3>PANGO_SCRIPT_TAI_LE = 52</h3></a>
+<p>Tai Le</p>
+<a class="header" href="#pango_script_ugaritic--53" id="pango_script_ugaritic--53"><h3>PANGO_SCRIPT_UGARITIC = 53</h3></a>
+<p>Ugaritic</p>
+<a class="header" href="#pango_script_new_tai_lue--54" id="pango_script_new_tai_lue--54"><h3>PANGO_SCRIPT_NEW_TAI_LUE = 54</h3></a>
+<p>New Tai Lue. Since 1.10</p>
+<a class="header" href="#pango_script_buginese--55" id="pango_script_buginese--55"><h3>PANGO_SCRIPT_BUGINESE = 55</h3></a>
+<p>Buginese. Since 1.10</p>
+<a class="header" href="#pango_script_glagolitic--56" id="pango_script_glagolitic--56"><h3>PANGO_SCRIPT_GLAGOLITIC = 56</h3></a>
+<p>Glagolitic. Since 1.10</p>
+<a class="header" href="#pango_script_tifinagh--57" id="pango_script_tifinagh--57"><h3>PANGO_SCRIPT_TIFINAGH = 57</h3></a>
+<p>Tifinagh. Since 1.10</p>
+<a class="header" href="#pango_script_syloti_nagri--58" id="pango_script_syloti_nagri--58"><h3>PANGO_SCRIPT_SYLOTI_NAGRI = 58</h3></a>
+<p>Syloti Nagri. Since 1.10</p>
+<a class="header" href="#pango_script_old_persian--59" id="pango_script_old_persian--59"><h3>PANGO_SCRIPT_OLD_PERSIAN = 59</h3></a>
+<p>Old Persian. Since 1.10</p>
+<a class="header" href="#pango_script_kharoshthi--60" id="pango_script_kharoshthi--60"><h3>PANGO_SCRIPT_KHAROSHTHI = 60</h3></a>
+<p>Kharoshthi. Since 1.10</p>
+<a class="header" href="#pango_script_unknown--61" id="pango_script_unknown--61"><h3>PANGO_SCRIPT_UNKNOWN = 61</h3></a>
+<p>an unassigned code point. Since 1.14</p>
+<a class="header" href="#pango_script_balinese--62" id="pango_script_balinese--62"><h3>PANGO_SCRIPT_BALINESE = 62</h3></a>
+<p>Balinese. Since 1.14</p>
+<a class="header" href="#pango_script_cuneiform--63" id="pango_script_cuneiform--63"><h3>PANGO_SCRIPT_CUNEIFORM = 63</h3></a>
+<p>Cuneiform. Since 1.14</p>
+<a class="header" href="#pango_script_phoenician--64" id="pango_script_phoenician--64"><h3>PANGO_SCRIPT_PHOENICIAN = 64</h3></a>
+<p>Phoenician. Since 1.14</p>
+<a class="header" href="#pango_script_phags_pa--65" id="pango_script_phags_pa--65"><h3>PANGO_SCRIPT_PHAGS_PA = 65</h3></a>
+<p>Phags-pa. Since 1.14</p>
+<a class="header" href="#pango_script_nko--66" id="pango_script_nko--66"><h3>PANGO_SCRIPT_NKO = 66</h3></a>
+<p>N'Ko. Since 1.14</p>
+<a class="header" href="#pango_script_kayah_li--67" id="pango_script_kayah_li--67"><h3>PANGO_SCRIPT_KAYAH_LI = 67</h3></a>
+<p>Kayah Li. Since 1.20.1</p>
+<a class="header" href="#pango_script_lepcha--68" id="pango_script_lepcha--68"><h3>PANGO_SCRIPT_LEPCHA = 68</h3></a>
+<p>Lepcha. Since 1.20.1</p>
+<a class="header" href="#pango_script_rejang--69" id="pango_script_rejang--69"><h3>PANGO_SCRIPT_REJANG = 69</h3></a>
+<p>Rejang. Since 1.20.1</p>
+<a class="header" href="#pango_script_sundanese--70" id="pango_script_sundanese--70"><h3>PANGO_SCRIPT_SUNDANESE = 70</h3></a>
+<p>Sundanese. Since 1.20.1</p>
+<a class="header" href="#pango_script_saurashtra--71" id="pango_script_saurashtra--71"><h3>PANGO_SCRIPT_SAURASHTRA = 71</h3></a>
+<p>Saurashtra. Since 1.20.1</p>
+<a class="header" href="#pango_script_cham--72" id="pango_script_cham--72"><h3>PANGO_SCRIPT_CHAM = 72</h3></a>
+<p>Cham. Since 1.20.1</p>
+<a class="header" href="#pango_script_ol_chiki--73" id="pango_script_ol_chiki--73"><h3>PANGO_SCRIPT_OL_CHIKI = 73</h3></a>
+<p>Ol Chiki. Since 1.20.1</p>
+<a class="header" href="#pango_script_vai--74" id="pango_script_vai--74"><h3>PANGO_SCRIPT_VAI = 74</h3></a>
+<p>Vai. Since 1.20.1</p>
+<a class="header" href="#pango_script_carian--75" id="pango_script_carian--75"><h3>PANGO_SCRIPT_CARIAN = 75</h3></a>
+<p>Carian. Since 1.20.1</p>
+<a class="header" href="#pango_script_lycian--76" id="pango_script_lycian--76"><h3>PANGO_SCRIPT_LYCIAN = 76</h3></a>
+<p>Lycian. Since 1.20.1</p>
+<a class="header" href="#pango_script_lydian--77" id="pango_script_lydian--77"><h3>PANGO_SCRIPT_LYDIAN = 77</h3></a>
+<p>Lydian. Since 1.20.1</p>
+<a class="header" href="#pango_script_batak--78" id="pango_script_batak--78"><h3>PANGO_SCRIPT_BATAK = 78</h3></a>
+<p>Batak. Since 1.32</p>
+<a class="header" href="#pango_script_brahmi--79" id="pango_script_brahmi--79"><h3>PANGO_SCRIPT_BRAHMI = 79</h3></a>
+<p>Brahmi. Since 1.32</p>
+<a class="header" href="#pango_script_mandaic--80" id="pango_script_mandaic--80"><h3>PANGO_SCRIPT_MANDAIC = 80</h3></a>
+<p>Mandaic. Since 1.32</p>
+<a class="header" href="#pango_script_chakma--81" id="pango_script_chakma--81"><h3>PANGO_SCRIPT_CHAKMA = 81</h3></a>
+<p>Chakma. Since: 1.32</p>
+<a class="header" href="#pango_script_meroitic_cursive--82" id="pango_script_meroitic_cursive--82"><h3>PANGO_SCRIPT_MEROITIC_CURSIVE = 82</h3></a>
+<p>Meroitic Cursive. Since: 1.32</p>
+<a class="header" href="#pango_script_meroitic_hieroglyphs--83" id="pango_script_meroitic_hieroglyphs--83"><h3>PANGO_SCRIPT_MEROITIC_HIEROGLYPHS = 83</h3></a>
+<p>Meroitic Hieroglyphs. Since: 1.32</p>
+<a class="header" href="#pango_script_miao--84" id="pango_script_miao--84"><h3>PANGO_SCRIPT_MIAO = 84</h3></a>
+<p>Miao. Since: 1.32</p>
+<a class="header" href="#pango_script_sharada--85" id="pango_script_sharada--85"><h3>PANGO_SCRIPT_SHARADA = 85</h3></a>
+<p>Sharada. Since: 1.32</p>
+<a class="header" href="#pango_script_sora_sompeng--86" id="pango_script_sora_sompeng--86"><h3>PANGO_SCRIPT_SORA_SOMPENG = 86</h3></a>
+<p>Sora Sompeng. Since: 1.32</p>
+<a class="header" href="#pango_script_takri--87" id="pango_script_takri--87"><h3>PANGO_SCRIPT_TAKRI = 87</h3></a>
+<p>Takri. Since: 1.32</p>
+<a class="header" href="#pango_script_bassa_vah--88" id="pango_script_bassa_vah--88"><h3>PANGO_SCRIPT_BASSA_VAH = 88</h3></a>
+<p>Bassa. Since: 1.40</p>
+<a class="header" href="#pango_script_caucasian_albanian--89" id="pango_script_caucasian_albanian--89"><h3>PANGO_SCRIPT_CAUCASIAN_ALBANIAN = 89</h3></a>
+<p>Caucasian Albanian. Since: 1.40</p>
+<a class="header" href="#pango_script_duployan--90" id="pango_script_duployan--90"><h3>PANGO_SCRIPT_DUPLOYAN = 90</h3></a>
+<p>Duployan. Since: 1.40</p>
+<a class="header" href="#pango_script_elbasan--91" id="pango_script_elbasan--91"><h3>PANGO_SCRIPT_ELBASAN = 91</h3></a>
+<p>Elbasan. Since: 1.40</p>
+<a class="header" href="#pango_script_grantha--92" id="pango_script_grantha--92"><h3>PANGO_SCRIPT_GRANTHA = 92</h3></a>
+<p>Grantha. Since: 1.40</p>
+<a class="header" href="#pango_script_khojki--93" id="pango_script_khojki--93"><h3>PANGO_SCRIPT_KHOJKI = 93</h3></a>
+<p>Kjohki. Since: 1.40</p>
+<a class="header" href="#pango_script_khudawadi--94" id="pango_script_khudawadi--94"><h3>PANGO_SCRIPT_KHUDAWADI = 94</h3></a>
+<p>Khudawadi, Sindhi. Since: 1.40</p>
+<a class="header" href="#pango_script_linear_a--95" id="pango_script_linear_a--95"><h3>PANGO_SCRIPT_LINEAR_A = 95</h3></a>
+<p>Linear A. Since: 1.40</p>
+<a class="header" href="#pango_script_mahajani--96" id="pango_script_mahajani--96"><h3>PANGO_SCRIPT_MAHAJANI = 96</h3></a>
+<p>Mahajani. Since: 1.40</p>
+<a class="header" href="#pango_script_manichaean--97" id="pango_script_manichaean--97"><h3>PANGO_SCRIPT_MANICHAEAN = 97</h3></a>
+<p>Manichaean. Since: 1.40</p>
+<a class="header" href="#pango_script_mende_kikakui--98" id="pango_script_mende_kikakui--98"><h3>PANGO_SCRIPT_MENDE_KIKAKUI = 98</h3></a>
+<p>Mende Kikakui. Since: 1.40</p>
+<a class="header" href="#pango_script_modi--99" id="pango_script_modi--99"><h3>PANGO_SCRIPT_MODI = 99</h3></a>
+<p>Modi. Since: 1.40</p>
+<a class="header" href="#pango_script_mro--100" id="pango_script_mro--100"><h3>PANGO_SCRIPT_MRO = 100</h3></a>
+<p>Mro. Since: 1.40</p>
+<a class="header" href="#pango_script_nabataean--101" id="pango_script_nabataean--101"><h3>PANGO_SCRIPT_NABATAEAN = 101</h3></a>
+<p>Nabataean. Since: 1.40</p>
+<a class="header" href="#pango_script_old_north_arabian--102" id="pango_script_old_north_arabian--102"><h3>PANGO_SCRIPT_OLD_NORTH_ARABIAN = 102</h3></a>
+<p>Old North Arabian. Since: 1.40</p>
+<a class="header" href="#pango_script_old_permic--103" id="pango_script_old_permic--103"><h3>PANGO_SCRIPT_OLD_PERMIC = 103</h3></a>
+<p>Old Permic. Since: 1.40</p>
+<a class="header" href="#pango_script_pahawh_hmong--104" id="pango_script_pahawh_hmong--104"><h3>PANGO_SCRIPT_PAHAWH_HMONG = 104</h3></a>
+<p>Pahawh Hmong. Since: 1.40</p>
+<a class="header" href="#pango_script_palmyrene--105" id="pango_script_palmyrene--105"><h3>PANGO_SCRIPT_PALMYRENE = 105</h3></a>
+<p>Palmyrene. Since: 1.40</p>
+<a class="header" href="#pango_script_pau_cin_hau--106" id="pango_script_pau_cin_hau--106"><h3>PANGO_SCRIPT_PAU_CIN_HAU = 106</h3></a>
+<p>Pau Cin Hau. Since: 1.40</p>
+<a class="header" href="#pango_script_psalter_pahlavi--107" id="pango_script_psalter_pahlavi--107"><h3>PANGO_SCRIPT_PSALTER_PAHLAVI = 107</h3></a>
+<p>Psalter Pahlavi. Since: 1.40</p>
+<a class="header" href="#pango_script_siddham--108" id="pango_script_siddham--108"><h3>PANGO_SCRIPT_SIDDHAM = 108</h3></a>
+<p>Siddham. Since: 1.40</p>
+<a class="header" href="#pango_script_tirhuta--109" id="pango_script_tirhuta--109"><h3>PANGO_SCRIPT_TIRHUTA = 109</h3></a>
+<p>Tirhuta. Since: 1.40</p>
+<a class="header" href="#pango_script_warang_citi--110" id="pango_script_warang_citi--110"><h3>PANGO_SCRIPT_WARANG_CITI = 110</h3></a>
+<p>Warang Citi. Since: 1.40</p>
+<a class="header" href="#pango_script_ahom--111" id="pango_script_ahom--111"><h3>PANGO_SCRIPT_AHOM = 111</h3></a>
+<p>Ahom. Since: 1.40</p>
+<a class="header" href="#pango_script_anatolian_hieroglyphs--112" id="pango_script_anatolian_hieroglyphs--112"><h3>PANGO_SCRIPT_ANATOLIAN_HIEROGLYPHS = 112</h3></a>
+<p>Anatolian Hieroglyphs. Since: 1.40</p>
+<a class="header" href="#pango_script_hatran--113" id="pango_script_hatran--113"><h3>PANGO_SCRIPT_HATRAN = 113</h3></a>
+<p>Hatran. Since: 1.40</p>
+<a class="header" href="#pango_script_multani--114" id="pango_script_multani--114"><h3>PANGO_SCRIPT_MULTANI = 114</h3></a>
+<p>Multani. Since: 1.40</p>
+<a class="header" href="#pango_script_old_hungarian--115" id="pango_script_old_hungarian--115"><h3>PANGO_SCRIPT_OLD_HUNGARIAN = 115</h3></a>
+<p>Old Hungarian. Since: 1.40</p>
+<a class="header" href="#pango_script_signwriting--116" id="pango_script_signwriting--116"><h3>PANGO_SCRIPT_SIGNWRITING = 116</h3></a>
+<p>Signwriting. Since: 1.40</p>
 <a class="header" href="#stretch" id="stretch"><h2><code>Stretch</code></h2></a>
 <p>An enumeration specifying the width of the font relative to other designs
 within a family.</p>
-<ul>
-<li>PANGO_STRETCH_ULTRA_CONDENSED = 0</li>
-<li>PANGO_STRETCH_EXTRA_CONDENSED = 1</li>
-<li>PANGO_STRETCH_CONDENSED = 2</li>
-<li>PANGO_STRETCH_SEMI_CONDENSED = 3</li>
-<li>PANGO_STRETCH_NORMAL = 4</li>
-<li>PANGO_STRETCH_SEMI_EXPANDED = 5</li>
-<li>PANGO_STRETCH_EXPANDED = 6</li>
-<li>PANGO_STRETCH_EXTRA_EXPANDED = 7</li>
-<li>PANGO_STRETCH_ULTRA_EXPANDED = 8</li>
-</ul>
 <p>C - <code>PangoStretch</code></p>
+<a class="header" href="#pango_stretch_ultra_condensed--0" id="pango_stretch_ultra_condensed--0"><h3>PANGO_STRETCH_ULTRA_CONDENSED = 0</h3></a>
+<p>ultra condensed width</p>
+<a class="header" href="#pango_stretch_extra_condensed--1" id="pango_stretch_extra_condensed--1"><h3>PANGO_STRETCH_EXTRA_CONDENSED = 1</h3></a>
+<p>extra condensed width</p>
+<a class="header" href="#pango_stretch_condensed--2" id="pango_stretch_condensed--2"><h3>PANGO_STRETCH_CONDENSED = 2</h3></a>
+<p>condensed width</p>
+<a class="header" href="#pango_stretch_semi_condensed--3" id="pango_stretch_semi_condensed--3"><h3>PANGO_STRETCH_SEMI_CONDENSED = 3</h3></a>
+<p>semi condensed width</p>
+<a class="header" href="#pango_stretch_normal--4" id="pango_stretch_normal--4"><h3>PANGO_STRETCH_NORMAL = 4</h3></a>
+<p>the normal width</p>
+<a class="header" href="#pango_stretch_semi_expanded--5" id="pango_stretch_semi_expanded--5"><h3>PANGO_STRETCH_SEMI_EXPANDED = 5</h3></a>
+<p>semi expanded width</p>
+<a class="header" href="#pango_stretch_expanded--6" id="pango_stretch_expanded--6"><h3>PANGO_STRETCH_EXPANDED = 6</h3></a>
+<p>expanded width</p>
+<a class="header" href="#pango_stretch_extra_expanded--7" id="pango_stretch_extra_expanded--7"><h3>PANGO_STRETCH_EXTRA_EXPANDED = 7</h3></a>
+<p>extra expanded width</p>
+<a class="header" href="#pango_stretch_ultra_expanded--8" id="pango_stretch_ultra_expanded--8"><h3>PANGO_STRETCH_ULTRA_EXPANDED = 8</h3></a>
+<p>ultra expanded width</p>
 <a class="header" href="#style" id="style"><h2><code>Style</code></h2></a>
 <p>An enumeration specifying the various slant styles possible for a font.</p>
-<ul>
-<li>PANGO_STYLE_NORMAL = 0</li>
-<li>PANGO_STYLE_OBLIQUE = 1</li>
-<li>PANGO_STYLE_ITALIC = 2</li>
-</ul>
 <p>C - <code>PangoStyle</code></p>
+<a class="header" href="#pango_style_normal--0" id="pango_style_normal--0"><h3>PANGO_STYLE_NORMAL = 0</h3></a>
+<p>the font is upright.</p>
+<a class="header" href="#pango_style_oblique--1" id="pango_style_oblique--1"><h3>PANGO_STYLE_OBLIQUE = 1</h3></a>
+<p>the font is slanted, but in a roman style.</p>
+<a class="header" href="#pango_style_italic--2" id="pango_style_italic--2"><h3>PANGO_STYLE_ITALIC = 2</h3></a>
+<p>the font is slanted in an italic style.</p>
 <a class="header" href="#tabalign" id="tabalign"><h2><code>TabAlign</code></h2></a>
 <p>A #PangoTabAlign specifies where a tab stop appears relative to the text.</p>
-<ul>
-<li>PANGO_TAB_LEFT = 0</li>
-</ul>
 <p>C - <code>PangoTabAlign</code></p>
+<a class="header" href="#pango_tab_left--0" id="pango_tab_left--0"><h3>PANGO_TAB_LEFT = 0</h3></a>
+<p>the tab stop appears to the left of the text.</p>
 <a class="header" href="#underline" id="underline"><h2><code>Underline</code></h2></a>
 <p>The #PangoUnderline enumeration is used to specify
 whether text should be underlined, and if so, the type
 of underlining.</p>
-<ul>
-<li>PANGO_UNDERLINE_NONE = 0</li>
-<li>PANGO_UNDERLINE_SINGLE = 1</li>
-<li>PANGO_UNDERLINE_DOUBLE = 2</li>
-<li>PANGO_UNDERLINE_LOW = 3</li>
-<li>PANGO_UNDERLINE_ERROR = 4</li>
-</ul>
 <p>C - <code>PangoUnderline</code></p>
+<a class="header" href="#pango_underline_none--0" id="pango_underline_none--0"><h3>PANGO_UNDERLINE_NONE = 0</h3></a>
+<p>no underline should be drawn</p>
+<a class="header" href="#pango_underline_single--1" id="pango_underline_single--1"><h3>PANGO_UNDERLINE_SINGLE = 1</h3></a>
+<p>a single underline should be drawn</p>
+<a class="header" href="#pango_underline_double--2" id="pango_underline_double--2"><h3>PANGO_UNDERLINE_DOUBLE = 2</h3></a>
+<p>a double underline should be drawn</p>
+<a class="header" href="#pango_underline_low--3" id="pango_underline_low--3"><h3>PANGO_UNDERLINE_LOW = 3</h3></a>
+<p>a single underline should be drawn at a position
+beneath the ink extents of the text being
+underlined. This should be used only for underlining
+single characters, such as for keyboard
+accelerators. %PANGO_UNDERLINE_SINGLE should
+be used for extended portions of text.</p>
+<a class="header" href="#pango_underline_error--4" id="pango_underline_error--4"><h3>PANGO_UNDERLINE_ERROR = 4</h3></a>
+<p>a wavy underline should be drawn below.
+This underline is typically used to indicate
+an error such as a possilble mispelling; in some
+cases a contrasting color may automatically
+be used. This type of underlining is available since Pango 1.4.</p>
 <a class="header" href="#variant" id="variant"><h2><code>Variant</code></h2></a>
 <p>An enumeration specifying capitalization variant of the font.</p>
-<ul>
-<li>PANGO_VARIANT_NORMAL = 0</li>
-<li>PANGO_VARIANT_SMALL_CAPS = 1</li>
-</ul>
 <p>C - <code>PangoVariant</code></p>
+<a class="header" href="#pango_variant_normal--0" id="pango_variant_normal--0"><h3>PANGO_VARIANT_NORMAL = 0</h3></a>
+<p>A normal font.</p>
+<a class="header" href="#pango_variant_small_caps--1" id="pango_variant_small_caps--1"><h3>PANGO_VARIANT_SMALL_CAPS = 1</h3></a>
+<p>A font with the lower case characters
+replaced by smaller variants of the capital characters.</p>
 <a class="header" href="#weight" id="weight"><h2><code>Weight</code></h2></a>
 <p>An enumeration specifying the weight (boldness) of a font. This is a numerical
 value ranging from 100 to 1000, but there are some predefined values:</p>
-<ul>
-<li>PANGO_WEIGHT_THIN = 100</li>
-<li>PANGO_WEIGHT_ULTRALIGHT = 200</li>
-<li>PANGO_WEIGHT_LIGHT = 300</li>
-<li>PANGO_WEIGHT_SEMILIGHT = 350</li>
-<li>PANGO_WEIGHT_BOOK = 380</li>
-<li>PANGO_WEIGHT_NORMAL = 400</li>
-<li>PANGO_WEIGHT_MEDIUM = 500</li>
-<li>PANGO_WEIGHT_SEMIBOLD = 600</li>
-<li>PANGO_WEIGHT_BOLD = 700</li>
-<li>PANGO_WEIGHT_ULTRABOLD = 800</li>
-<li>PANGO_WEIGHT_HEAVY = 900</li>
-<li>PANGO_WEIGHT_ULTRAHEAVY = 1000</li>
-</ul>
 <p>C - <code>PangoWeight</code></p>
+<a class="header" href="#pango_weight_thin--100" id="pango_weight_thin--100"><h3>PANGO_WEIGHT_THIN = 100</h3></a>
+<p>the thin weight (= 100; Since: 1.24)</p>
+<a class="header" href="#pango_weight_ultralight--200" id="pango_weight_ultralight--200"><h3>PANGO_WEIGHT_ULTRALIGHT = 200</h3></a>
+<p>the ultralight weight (= 200)</p>
+<a class="header" href="#pango_weight_light--300" id="pango_weight_light--300"><h3>PANGO_WEIGHT_LIGHT = 300</h3></a>
+<p>the light weight (= 300)</p>
+<a class="header" href="#pango_weight_semilight--350" id="pango_weight_semilight--350"><h3>PANGO_WEIGHT_SEMILIGHT = 350</h3></a>
+<p>the semilight weight (= 350; Since: 1.36.7)</p>
+<a class="header" href="#pango_weight_book--380" id="pango_weight_book--380"><h3>PANGO_WEIGHT_BOOK = 380</h3></a>
+<p>the book weight (= 380; Since: 1.24)</p>
+<a class="header" href="#pango_weight_normal--400" id="pango_weight_normal--400"><h3>PANGO_WEIGHT_NORMAL = 400</h3></a>
+<p>the default weight (= 400)</p>
+<a class="header" href="#pango_weight_medium--500" id="pango_weight_medium--500"><h3>PANGO_WEIGHT_MEDIUM = 500</h3></a>
+<p>the normal weight (= 500; Since: 1.24)</p>
+<a class="header" href="#pango_weight_semibold--600" id="pango_weight_semibold--600"><h3>PANGO_WEIGHT_SEMIBOLD = 600</h3></a>
+<p>the semibold weight (= 600)</p>
+<a class="header" href="#pango_weight_bold--700" id="pango_weight_bold--700"><h3>PANGO_WEIGHT_BOLD = 700</h3></a>
+<p>the bold weight (= 700)</p>
+<a class="header" href="#pango_weight_ultrabold--800" id="pango_weight_ultrabold--800"><h3>PANGO_WEIGHT_ULTRABOLD = 800</h3></a>
+<p>the ultrabold weight (= 800)</p>
+<a class="header" href="#pango_weight_heavy--900" id="pango_weight_heavy--900"><h3>PANGO_WEIGHT_HEAVY = 900</h3></a>
+<p>the heavy weight (= 900)</p>
+<a class="header" href="#pango_weight_ultraheavy--1000" id="pango_weight_ultraheavy--1000"><h3>PANGO_WEIGHT_ULTRAHEAVY = 1000</h3></a>
+<p>the ultraheavy weight (= 1000; Since: 1.24)</p>
 <a class="header" href="#wrapmode" id="wrapmode"><h2><code>WrapMode</code></h2></a>
 <p>A #PangoWrapMode describes how to wrap the lines of a #PangoLayout to the desired width.</p>
-<ul>
-<li>PANGO_WRAP_WORD = 0</li>
-<li>PANGO_WRAP_CHAR = 1</li>
-<li>PANGO_WRAP_WORD_CHAR = 2</li>
-</ul>
 <p>C - <code>PangoWrapMode</code></p>
-<p>CONDENSED = %!s(int=1)</p>
-<ul>
-<li>PANGO_STRETCH_CONDENSED = %!s(int=2)</li>
-<li>PANGO_STRETCH_SEMI_CONDENSED = %!s(int=3)</li>
-<li>PANGO_STRETCH_NORMAL = %!s(int=4)</li>
-<li>PANGO_STRETCH_SEMI_EXPANDED = %!s(int=5)</li>
-<li>PANGO_STRETCH_EXPANDED = %!s(int=6)</li>
-<li>PANGO_STRETCH_EXTRA_EXPANDED = %!s(int=7)</li>
-<li>PANGO_STRETCH_ULTRA_EXPANDED = %!s(int=8)</li>
-</ul>
-<a class="header" href="#style-1" id="style-1"><h2><code>Style</code></h2></a>
-<p>An enumeration specifying the various slant styles possible for a font.</p>
-<p>C - <code>PangoStyle</code></p>
-<ul>
-<li>PANGO_STYLE_NORMAL = %!s(int=0)</li>
-<li>PANGO_STYLE_OBLIQUE = %!s(int=1)</li>
-<li>PANGO_STYLE_ITALIC = %!s(int=2)</li>
-</ul>
-<a class="header" href="#tabalign-1" id="tabalign-1"><h2><code>TabAlign</code></h2></a>
-<p>A #PangoTabAlign specifies where a tab stop appears relative to the text.</p>
-<p>C - <code>PangoTabAlign</code></p>
-<ul>
-<li>PANGO_TAB_LEFT = %!s(int=0)</li>
-</ul>
-<a class="header" href="#underline-1" id="underline-1"><h2><code>Underline</code></h2></a>
-<p>The #PangoUnderline enumeration is used to specify
-whether text should be underlined, and if so, the type
-of underlining.</p>
-<p>C - <code>PangoUnderline</code></p>
-<ul>
-<li>PANGO_UNDERLINE_NONE = %!s(int=0)</li>
-<li>PANGO_UNDERLINE_SINGLE = %!s(int=1)</li>
-<li>PANGO_UNDERLINE_DOUBLE = %!s(int=2)</li>
-<li>PANGO_UNDERLINE_LOW = %!s(int=3)</li>
-<li>PANGO_UNDERLINE_ERROR = %!s(int=4)</li>
-</ul>
-<a class="header" href="#variant-1" id="variant-1"><h2><code>Variant</code></h2></a>
-<p>An enumeration specifying capitalization variant of the font.</p>
-<p>C - <code>PangoVariant</code></p>
-<ul>
-<li>PANGO_VARIANT_NORMAL = %!s(int=0)</li>
-<li>PANGO_VARIANT_SMALL_CAPS = %!s(int=1)</li>
-</ul>
-<a class="header" href="#weight-1" id="weight-1"><h2><code>Weight</code></h2></a>
-<p>An enumeration specifying the weight (boldness) of a font. This is a numerical
-value ranging from 100 to 1000, but there are some predefined values:</p>
-<p>C - <code>PangoWeight</code></p>
-<ul>
-<li>PANGO_WEIGHT_THIN = %!s(int=100)</li>
-<li>PANGO_WEIGHT_ULTRALIGHT = %!s(int=200)</li>
-<li>PANGO_WEIGHT_LIGHT = %!s(int=300)</li>
-<li>PANGO_WEIGHT_SEMILIGHT = %!s(int=350)</li>
-<li>PANGO_WEIGHT_BOOK = %!s(int=380)</li>
-<li>PANGO_WEIGHT_NORMAL = %!s(int=400)</li>
-<li>PANGO_WEIGHT_MEDIUM = %!s(int=500)</li>
-<li>PANGO_WEIGHT_SEMIBOLD = %!s(int=600)</li>
-<li>PANGO_WEIGHT_BOLD = %!s(int=700)</li>
-<li>PANGO_WEIGHT_ULTRABOLD = %!s(int=800)</li>
-<li>PANGO_WEIGHT_HEAVY = %!s(int=900)</li>
-<li>PANGO_WEIGHT_ULTRAHEAVY = %!s(int=1000)</li>
-</ul>
-<a class="header" href="#wrapmode-1" id="wrapmode-1"><h2><code>WrapMode</code></h2></a>
-<p>A #PangoWrapMode describes how to wrap the lines of a #PangoLayout to the desired width.</p>
-<p>C - <code>PangoWrapMode</code></p>
-<ul>
-<li>PANGO_WRAP_WORD = %!s(int=0)</li>
-<li>PANGO_WRAP_CHAR = %!s(int=1)</li>
-<li>PANGO_WRAP_WORD_CHAR = %!s(int=2)</li>
-</ul>
+<a class="header" href="#pango_wrap_word--0" id="pango_wrap_word--0"><h3>PANGO_WRAP_WORD = 0</h3></a>
+<p>wrap lines at word boundaries.</p>
+<a class="header" href="#pango_wrap_char--1" id="pango_wrap_char--1"><h3>PANGO_WRAP_CHAR = 1</h3></a>
+<p>wrap lines at character boundaries.</p>
+<a class="header" href="#pango_wrap_word_char--2" id="pango_wrap_word_char--2"><h3>PANGO_WRAP_WORD_CHAR = 2</h3></a>
+<p>wrap lines at word boundaries, but fall back to character boundaries if there is not
+enough space for a full word.</p>
 
                     </main>
 
