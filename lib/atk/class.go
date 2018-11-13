@@ -73,7 +73,11 @@ func CastToGObjectAccessible(object *gobject.Object) *GObjectAccessible {
 	return GObjectAccessibleNewFromC(object.ToC())
 }
 
-// GetObject is a wrapper around the C function atk_gobject_accessible_get_object.
+// Gets the GObject for which @obj is the accessible object.
+/*
+
+C function : atk_gobject_accessible_get_object
+*/
 func (recv *GObjectAccessible) GetObject() *gobject.Object {
 	retC := C.atk_gobject_accessible_get_object((*C.AtkGObjectAccessible)(recv.native))
 	retGo := gobject.ObjectNewFromC(unsafe.Pointer(retC))
@@ -171,7 +175,11 @@ func hyperlink_linkActivatedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// GetEndIndex is a wrapper around the C function atk_hyperlink_get_end_index.
+// Gets the index with the hypertext document at which this link ends.
+/*
+
+C function : atk_hyperlink_get_end_index
+*/
 func (recv *Hyperlink) GetEndIndex() int32 {
 	retC := C.atk_hyperlink_get_end_index((*C.AtkHyperlink)(recv.native))
 	retGo := (int32)(retC)
@@ -179,7 +187,11 @@ func (recv *Hyperlink) GetEndIndex() int32 {
 	return retGo
 }
 
-// GetNAnchors is a wrapper around the C function atk_hyperlink_get_n_anchors.
+// Gets the number of anchors associated with this hyperlink.
+/*
+
+C function : atk_hyperlink_get_n_anchors
+*/
 func (recv *Hyperlink) GetNAnchors() int32 {
 	retC := C.atk_hyperlink_get_n_anchors((*C.AtkHyperlink)(recv.native))
 	retGo := (int32)(retC)
@@ -187,7 +199,16 @@ func (recv *Hyperlink) GetNAnchors() int32 {
 	return retGo
 }
 
-// GetObject is a wrapper around the C function atk_hyperlink_get_object.
+// Returns the item associated with this hyperlinks nth anchor.
+// For instance, the returned #AtkObject will implement #AtkText
+// if @link_ is a text hyperlink, #AtkImage if @link_ is an image
+// hyperlink etc.
+//
+// Multiple anchors are primarily used by client-side image maps.
+/*
+
+C function : atk_hyperlink_get_object
+*/
 func (recv *Hyperlink) GetObject(i int32) *Object {
 	c_i := (C.gint)(i)
 
@@ -197,7 +218,11 @@ func (recv *Hyperlink) GetObject(i int32) *Object {
 	return retGo
 }
 
-// GetStartIndex is a wrapper around the C function atk_hyperlink_get_start_index.
+// Gets the index with the hypertext document at which this link begins.
+/*
+
+C function : atk_hyperlink_get_start_index
+*/
 func (recv *Hyperlink) GetStartIndex() int32 {
 	retC := C.atk_hyperlink_get_start_index((*C.AtkHyperlink)(recv.native))
 	retGo := (int32)(retC)
@@ -205,7 +230,14 @@ func (recv *Hyperlink) GetStartIndex() int32 {
 	return retGo
 }
 
-// GetUri is a wrapper around the C function atk_hyperlink_get_uri.
+// Get a the URI associated with the anchor specified
+// by @i of @link_.
+//
+// Multiple anchors are primarily used by client-side image maps.
+/*
+
+C function : atk_hyperlink_get_uri
+*/
 func (recv *Hyperlink) GetUri(i int32) string {
 	c_i := (C.gint)(i)
 
@@ -216,7 +248,14 @@ func (recv *Hyperlink) GetUri(i int32) string {
 	return retGo
 }
 
-// IsInline is a wrapper around the C function atk_hyperlink_is_inline.
+// Indicates whether the link currently displays some or all of its
+// content inline.  Ordinary HTML links will usually return
+// %FALSE, but an inline &lt;src&gt; HTML element will return
+// %TRUE.
+/*
+
+C function : atk_hyperlink_is_inline
+*/
 func (recv *Hyperlink) IsInline() bool {
 	retC := C.atk_hyperlink_is_inline((*C.AtkHyperlink)(recv.native))
 	retGo := retC == C.TRUE
@@ -224,7 +263,13 @@ func (recv *Hyperlink) IsInline() bool {
 	return retGo
 }
 
-// IsValid is a wrapper around the C function atk_hyperlink_is_valid.
+// Since the document that a link is associated with may have changed
+// this method returns %TRUE if the link is still valid (with
+// respect to the document it references) and %FALSE otherwise.
+/*
+
+C function : atk_hyperlink_is_valid
+*/
 func (recv *Hyperlink) IsValid() bool {
 	retC := C.atk_hyperlink_is_valid((*C.AtkHyperlink)(recv.native))
 	retGo := retC == C.TRUE
@@ -303,7 +348,12 @@ func CastToNoOpObject(object *gobject.Object) *NoOpObject {
 	return NoOpObjectNewFromC(object.ToC())
 }
 
-// NoOpObjectNew is a wrapper around the C function atk_no_op_object_new.
+// Provides a default (non-functioning stub) #AtkObject.
+// Application maintainers should not use this method.
+/*
+
+C function : atk_no_op_object_new
+*/
 func NoOpObjectNew(obj *gobject.Object) *NoOpObject {
 	c_obj := (*C.GObject)(C.NULL)
 	if obj != nil {
@@ -414,7 +464,12 @@ func CastToNoOpObjectFactory(object *gobject.Object) *NoOpObjectFactory {
 	return NoOpObjectFactoryNewFromC(object.ToC())
 }
 
-// NoOpObjectFactoryNew is a wrapper around the C function atk_no_op_object_factory_new.
+// Creates an instance of an #AtkObjectFactory which generates primitive
+// (non-functioning) #AtkObjects.
+/*
+
+C function : atk_no_op_object_factory_new
+*/
 func NoOpObjectFactoryNew() *NoOpObjectFactory {
 	retC := C.atk_no_op_object_factory_new()
 	retGo := NoOpObjectFactoryNewFromC(unsafe.Pointer(retC))
@@ -599,7 +654,11 @@ func object_visibleDataChangedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// AddRelationship is a wrapper around the C function atk_object_add_relationship.
+// Adds a relationship of the specified type with the specified target.
+/*
+
+C function : atk_object_add_relationship
+*/
 func (recv *Object) AddRelationship(relationship RelationType, target *Object) bool {
 	c_relationship := (C.AtkRelationType)(relationship)
 
@@ -616,7 +675,11 @@ func (recv *Object) AddRelationship(relationship RelationType, target *Object) b
 
 // Unsupported : atk_object_connect_property_change_handler : unsupported parameter handler : no type generator for PropertyChangeHandler (AtkPropertyChangeHandler*) for param handler
 
-// GetDescription is a wrapper around the C function atk_object_get_description.
+// Gets the accessible description of the accessible.
+/*
+
+C function : atk_object_get_description
+*/
 func (recv *Object) GetDescription() string {
 	retC := C.atk_object_get_description((*C.AtkObject)(recv.native))
 	retGo := C.GoString(retC)
@@ -624,7 +687,12 @@ func (recv *Object) GetDescription() string {
 	return retGo
 }
 
-// GetIndexInParent is a wrapper around the C function atk_object_get_index_in_parent.
+// Gets the 0-based index of this accessible in its parent; returns -1 if the
+// accessible does not have an accessible parent.
+/*
+
+C function : atk_object_get_index_in_parent
+*/
 func (recv *Object) GetIndexInParent() int32 {
 	retC := C.atk_object_get_index_in_parent((*C.AtkObject)(recv.native))
 	retGo := (int32)(retC)
@@ -632,7 +700,11 @@ func (recv *Object) GetIndexInParent() int32 {
 	return retGo
 }
 
-// GetLayer is a wrapper around the C function atk_object_get_layer.
+// Gets the layer of the accessible.
+/*
+
+C function : atk_object_get_layer
+*/
 func (recv *Object) GetLayer() Layer {
 	retC := C.atk_object_get_layer((*C.AtkObject)(recv.native))
 	retGo := (Layer)(retC)
@@ -640,7 +712,12 @@ func (recv *Object) GetLayer() Layer {
 	return retGo
 }
 
-// GetMdiZorder is a wrapper around the C function atk_object_get_mdi_zorder.
+// Gets the zorder of the accessible. The value G_MININT will be returned
+// if the layer of the accessible is not ATK_LAYER_MDI.
+/*
+
+C function : atk_object_get_mdi_zorder
+*/
 func (recv *Object) GetMdiZorder() int32 {
 	retC := C.atk_object_get_mdi_zorder((*C.AtkObject)(recv.native))
 	retGo := (int32)(retC)
@@ -648,7 +725,11 @@ func (recv *Object) GetMdiZorder() int32 {
 	return retGo
 }
 
-// GetNAccessibleChildren is a wrapper around the C function atk_object_get_n_accessible_children.
+// Gets the number of accessible children of the accessible.
+/*
+
+C function : atk_object_get_n_accessible_children
+*/
 func (recv *Object) GetNAccessibleChildren() int32 {
 	retC := C.atk_object_get_n_accessible_children((*C.AtkObject)(recv.native))
 	retGo := (int32)(retC)
@@ -656,7 +737,11 @@ func (recv *Object) GetNAccessibleChildren() int32 {
 	return retGo
 }
 
-// GetName is a wrapper around the C function atk_object_get_name.
+// Gets the accessible name of the accessible.
+/*
+
+C function : atk_object_get_name
+*/
 func (recv *Object) GetName() string {
 	retC := C.atk_object_get_name((*C.AtkObject)(recv.native))
 	retGo := C.GoString(retC)
@@ -664,7 +749,18 @@ func (recv *Object) GetName() string {
 	return retGo
 }
 
-// GetParent is a wrapper around the C function atk_object_get_parent.
+// Gets the accessible parent of the accessible. By default this is
+// the one assigned with atk_object_set_parent(), but it is assumed
+// that ATK implementors have ways to get the parent of the object
+// without the need of assigning it manually with
+// atk_object_set_parent(), and will return it with this method.
+//
+// If you are only interested on the parent assigned with
+// atk_object_set_parent(), use atk_object_peek_parent().
+/*
+
+C function : atk_object_get_parent
+*/
 func (recv *Object) GetParent() *Object {
 	retC := C.atk_object_get_parent((*C.AtkObject)(recv.native))
 	retGo := ObjectNewFromC(unsafe.Pointer(retC))
@@ -672,7 +768,11 @@ func (recv *Object) GetParent() *Object {
 	return retGo
 }
 
-// GetRole is a wrapper around the C function atk_object_get_role.
+// Gets the role of the accessible.
+/*
+
+C function : atk_object_get_role
+*/
 func (recv *Object) GetRole() Role {
 	retC := C.atk_object_get_role((*C.AtkObject)(recv.native))
 	retGo := (Role)(retC)
@@ -680,7 +780,14 @@ func (recv *Object) GetRole() Role {
 	return retGo
 }
 
-// Initialize is a wrapper around the C function atk_object_initialize.
+// This function is called when implementing subclasses of #AtkObject.
+// It does initialization required for the new object. It is intended
+// that this function should called only in the ..._new() functions used
+// to create an instance of a subclass of #AtkObject
+/*
+
+C function : atk_object_initialize
+*/
 func (recv *Object) Initialize(data uintptr) {
 	c_data := (C.gpointer)(data)
 
@@ -689,7 +796,14 @@ func (recv *Object) Initialize(data uintptr) {
 	return
 }
 
-// NotifyStateChange is a wrapper around the C function atk_object_notify_state_change.
+// Emits a state-change signal for the specified state.
+//
+// Note that as a general rule when the state of an existing object changes,
+// emitting a notification is expected.
+/*
+
+C function : atk_object_notify_state_change
+*/
 func (recv *Object) NotifyStateChange(state State, value bool) {
 	c_state := (C.AtkState)(state)
 
@@ -701,7 +815,17 @@ func (recv *Object) NotifyStateChange(state State, value bool) {
 	return
 }
 
-// PeekParent is a wrapper around the C function atk_object_peek_parent.
+// Gets the accessible parent of the accessible, if it has been
+// manually assigned with atk_object_set_parent. Otherwise, this
+// function returns %NULL.
+//
+// This method is intended as an utility for ATK implementors, and not
+// to be exposed to accessible tools. See atk_object_get_parent() for
+// further reference.
+/*
+
+C function : atk_object_peek_parent
+*/
 func (recv *Object) PeekParent() *Object {
 	retC := C.atk_object_peek_parent((*C.AtkObject)(recv.native))
 	retGo := ObjectNewFromC(unsafe.Pointer(retC))
@@ -709,7 +833,13 @@ func (recv *Object) PeekParent() *Object {
 	return retGo
 }
 
-// RefAccessibleChild is a wrapper around the C function atk_object_ref_accessible_child.
+// Gets a reference to the specified accessible child of the object.
+// The accessible children are 0-based so the first accessible child is
+// at index 0, the second at index 1 and so on.
+/*
+
+C function : atk_object_ref_accessible_child
+*/
 func (recv *Object) RefAccessibleChild(i int32) *Object {
 	c_i := (C.gint)(i)
 
@@ -719,7 +849,11 @@ func (recv *Object) RefAccessibleChild(i int32) *Object {
 	return retGo
 }
 
-// RefRelationSet is a wrapper around the C function atk_object_ref_relation_set.
+// Gets the #AtkRelationSet associated with the object.
+/*
+
+C function : atk_object_ref_relation_set
+*/
 func (recv *Object) RefRelationSet() *RelationSet {
 	retC := C.atk_object_ref_relation_set((*C.AtkObject)(recv.native))
 	retGo := RelationSetNewFromC(unsafe.Pointer(retC))
@@ -727,7 +861,12 @@ func (recv *Object) RefRelationSet() *RelationSet {
 	return retGo
 }
 
-// RefStateSet is a wrapper around the C function atk_object_ref_state_set.
+// Gets a reference to the state set of the accessible; the caller must
+// unreference it when it is no longer needed.
+/*
+
+C function : atk_object_ref_state_set
+*/
 func (recv *Object) RefStateSet() *StateSet {
 	retC := C.atk_object_ref_state_set((*C.AtkObject)(recv.native))
 	retGo := StateSetNewFromC(unsafe.Pointer(retC))
@@ -735,7 +874,10 @@ func (recv *Object) RefStateSet() *StateSet {
 	return retGo
 }
 
-// RemovePropertyChangeHandler is a wrapper around the C function atk_object_remove_property_change_handler.
+/*
+
+C function : atk_object_remove_property_change_handler
+*/
 func (recv *Object) RemovePropertyChangeHandler(handlerId uint32) {
 	c_handler_id := (C.guint)(handlerId)
 
@@ -744,7 +886,11 @@ func (recv *Object) RemovePropertyChangeHandler(handlerId uint32) {
 	return
 }
 
-// RemoveRelationship is a wrapper around the C function atk_object_remove_relationship.
+// Removes a relationship of the specified type with the specified target.
+/*
+
+C function : atk_object_remove_relationship
+*/
 func (recv *Object) RemoveRelationship(relationship RelationType, target *Object) bool {
 	c_relationship := (C.AtkRelationType)(relationship)
 
@@ -759,7 +905,14 @@ func (recv *Object) RemoveRelationship(relationship RelationType, target *Object
 	return retGo
 }
 
-// SetDescription is a wrapper around the C function atk_object_set_description.
+// Sets the accessible description of the accessible. You can't set
+// the description to NULL. This is reserved for the initial value. In
+// this aspect NULL is similar to ATK_ROLE_UNKNOWN. If you want to set
+// the name to a empty value you can use "".
+/*
+
+C function : atk_object_set_description
+*/
 func (recv *Object) SetDescription(description string) {
 	c_description := C.CString(description)
 	defer C.free(unsafe.Pointer(c_description))
@@ -769,7 +922,14 @@ func (recv *Object) SetDescription(description string) {
 	return
 }
 
-// SetName is a wrapper around the C function atk_object_set_name.
+// Sets the accessible name of the accessible. You can't set the name
+// to NULL. This is reserved for the initial value. In this aspect
+// NULL is similar to ATK_ROLE_UNKNOWN. If you want to set the name to
+// a empty value you can use "".
+/*
+
+C function : atk_object_set_name
+*/
 func (recv *Object) SetName(name string) {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -779,7 +939,11 @@ func (recv *Object) SetName(name string) {
 	return
 }
 
-// SetParent is a wrapper around the C function atk_object_set_parent.
+// Sets the accessible parent of the accessible. @parent can be NULL.
+/*
+
+C function : atk_object_set_parent
+*/
 func (recv *Object) SetParent(parent *Object) {
 	c_parent := (*C.AtkObject)(C.NULL)
 	if parent != nil {
@@ -791,7 +955,11 @@ func (recv *Object) SetParent(parent *Object) {
 	return
 }
 
-// SetRole is a wrapper around the C function atk_object_set_role.
+// Sets the role of the accessible.
+/*
+
+C function : atk_object_set_role
+*/
 func (recv *Object) SetRole(role Role) {
 	c_role := (C.AtkRole)(role)
 
@@ -833,7 +1001,12 @@ func CastToObjectFactory(object *gobject.Object) *ObjectFactory {
 	return ObjectFactoryNewFromC(object.ToC())
 }
 
-// CreateAccessible is a wrapper around the C function atk_object_factory_create_accessible.
+// Provides an #AtkObject that implements an accessibility interface
+// on behalf of @obj
+/*
+
+C function : atk_object_factory_create_accessible
+*/
 func (recv *ObjectFactory) CreateAccessible(obj *gobject.Object) *Object {
 	c_obj := (*C.GObject)(C.NULL)
 	if obj != nil {
@@ -846,7 +1019,11 @@ func (recv *ObjectFactory) CreateAccessible(obj *gobject.Object) *Object {
 	return retGo
 }
 
-// GetAccessibleType is a wrapper around the C function atk_object_factory_get_accessible_type.
+// Gets the GType of the accessible which is created by the factory.
+/*
+
+C function : atk_object_factory_get_accessible_type
+*/
 func (recv *ObjectFactory) GetAccessibleType() gobject.Type {
 	retC := C.atk_object_factory_get_accessible_type((*C.AtkObjectFactory)(recv.native))
 	retGo := (gobject.Type)(retC)
@@ -854,7 +1031,15 @@ func (recv *ObjectFactory) GetAccessibleType() gobject.Type {
 	return retGo
 }
 
-// Invalidate is a wrapper around the C function atk_object_factory_invalidate.
+// Inform @factory that it is no longer being used to create
+// accessibles. When called, @factory may need to inform
+// #AtkObjects which it has created that they need to be re-instantiated.
+// Note: primarily used for runtime replacement of #AtkObjectFactorys
+// in object registries.
+/*
+
+C function : atk_object_factory_invalidate
+*/
 func (recv *ObjectFactory) Invalidate() {
 	C.atk_object_factory_invalidate((*C.AtkObjectFactory)(recv.native))
 
@@ -894,7 +1079,10 @@ func CastToPlug(object *gobject.Object) *Plug {
 	return PlugNewFromC(object.ToC())
 }
 
-// PlugNew is a wrapper around the C function atk_plug_new.
+/*
+
+C function : atk_plug_new
+*/
 func PlugNew() *Plug {
 	retC := C.atk_plug_new()
 	retGo := PlugNewFromC(unsafe.Pointer(retC))
@@ -942,7 +1130,12 @@ func CastToRegistry(object *gobject.Object) *Registry {
 	return RegistryNewFromC(object.ToC())
 }
 
-// GetFactory is a wrapper around the C function atk_registry_get_factory.
+// Gets an #AtkObjectFactory appropriate for creating #AtkObjects
+// appropriate for @type.
+/*
+
+C function : atk_registry_get_factory
+*/
 func (recv *Registry) GetFactory(type_ gobject.Type) *ObjectFactory {
 	c_type := (C.GType)(type_)
 
@@ -952,7 +1145,12 @@ func (recv *Registry) GetFactory(type_ gobject.Type) *ObjectFactory {
 	return retGo
 }
 
-// GetFactoryType is a wrapper around the C function atk_registry_get_factory_type.
+// Provides a #GType indicating the #AtkObjectFactory subclass
+// associated with @type.
+/*
+
+C function : atk_registry_get_factory_type
+*/
 func (recv *Registry) GetFactoryType(type_ gobject.Type) gobject.Type {
 	c_type := (C.GType)(type_)
 
@@ -962,7 +1160,14 @@ func (recv *Registry) GetFactoryType(type_ gobject.Type) gobject.Type {
 	return retGo
 }
 
-// SetFactoryType is a wrapper around the C function atk_registry_set_factory_type.
+// Associate an #AtkObjectFactory subclass with a #GType. Note:
+// The associated @factory_type will thereafter be responsible for
+// the creation of new #AtkObject implementations for instances
+// appropriate for @type.
+/*
+
+C function : atk_registry_set_factory_type
+*/
 func (recv *Registry) SetFactoryType(type_ gobject.Type, factoryType gobject.Type) {
 	c_type := (C.GType)(type_)
 
@@ -1015,7 +1220,11 @@ func CastToRelation(object *gobject.Object) *Relation {
 
 // Unsupported : atk_relation_new : unsupported parameter targets :
 
-// GetRelationType is a wrapper around the C function atk_relation_get_relation_type.
+// Gets the type of @relation
+/*
+
+C function : atk_relation_get_relation_type
+*/
 func (recv *Relation) GetRelationType() RelationType {
 	retC := C.atk_relation_get_relation_type((*C.AtkRelation)(recv.native))
 	retGo := (RelationType)(retC)
@@ -1025,7 +1234,11 @@ func (recv *Relation) GetRelationType() RelationType {
 
 // Unsupported : atk_relation_get_target : no return type
 
-// RemoveTarget is a wrapper around the C function atk_relation_remove_target.
+// Remove the specified AtkObject from the target for the relation.
+/*
+
+C function : atk_relation_remove_target
+*/
 func (recv *Relation) RemoveTarget(target *Object) bool {
 	c_target := (*C.AtkObject)(C.NULL)
 	if target != nil {
@@ -1072,7 +1285,11 @@ func CastToRelationSet(object *gobject.Object) *RelationSet {
 	return RelationSetNewFromC(object.ToC())
 }
 
-// RelationSetNew is a wrapper around the C function atk_relation_set_new.
+// Creates a new empty relation set.
+/*
+
+C function : atk_relation_set_new
+*/
 func RelationSetNew() *RelationSet {
 	retC := C.atk_relation_set_new()
 	retGo := RelationSetNewFromC(unsafe.Pointer(retC))
@@ -1080,7 +1297,15 @@ func RelationSetNew() *RelationSet {
 	return retGo
 }
 
-// Add is a wrapper around the C function atk_relation_set_add.
+// Add a new relation to the current relation set if it is not already
+// present.
+// This function ref's the AtkRelation so the caller of this function
+// should unref it to ensure that it will be destroyed when the AtkRelationSet
+// is destroyed.
+/*
+
+C function : atk_relation_set_add
+*/
 func (recv *RelationSet) Add(relation *Relation) {
 	c_relation := (*C.AtkRelation)(C.NULL)
 	if relation != nil {
@@ -1092,7 +1317,12 @@ func (recv *RelationSet) Add(relation *Relation) {
 	return
 }
 
-// Contains is a wrapper around the C function atk_relation_set_contains.
+// Determines whether the relation set contains a relation that matches the
+// specified type.
+/*
+
+C function : atk_relation_set_contains
+*/
 func (recv *RelationSet) Contains(relationship RelationType) bool {
 	c_relationship := (C.AtkRelationType)(relationship)
 
@@ -1102,7 +1332,13 @@ func (recv *RelationSet) Contains(relationship RelationType) bool {
 	return retGo
 }
 
-// ContainsTarget is a wrapper around the C function atk_relation_set_contains_target.
+// Determines whether the relation set contains a relation that
+// matches the specified pair formed by type @relationship and object
+// @target.
+/*
+
+C function : atk_relation_set_contains_target
+*/
 func (recv *RelationSet) ContainsTarget(relationship RelationType, target *Object) bool {
 	c_relationship := (C.AtkRelationType)(relationship)
 
@@ -1117,7 +1353,11 @@ func (recv *RelationSet) ContainsTarget(relationship RelationType, target *Objec
 	return retGo
 }
 
-// GetNRelations is a wrapper around the C function atk_relation_set_get_n_relations.
+// Determines the number of relations in a relation set.
+/*
+
+C function : atk_relation_set_get_n_relations
+*/
 func (recv *RelationSet) GetNRelations() int32 {
 	retC := C.atk_relation_set_get_n_relations((*C.AtkRelationSet)(recv.native))
 	retGo := (int32)(retC)
@@ -1125,7 +1365,11 @@ func (recv *RelationSet) GetNRelations() int32 {
 	return retGo
 }
 
-// GetRelation is a wrapper around the C function atk_relation_set_get_relation.
+// Determines the relation at the specified position in the relation set.
+/*
+
+C function : atk_relation_set_get_relation
+*/
 func (recv *RelationSet) GetRelation(i int32) *Relation {
 	c_i := (C.gint)(i)
 
@@ -1135,7 +1379,11 @@ func (recv *RelationSet) GetRelation(i int32) *Relation {
 	return retGo
 }
 
-// GetRelationByType is a wrapper around the C function atk_relation_set_get_relation_by_type.
+// Finds a relation that matches the specified type.
+/*
+
+C function : atk_relation_set_get_relation_by_type
+*/
 func (recv *RelationSet) GetRelationByType(relationship RelationType) *Relation {
 	c_relationship := (C.AtkRelationType)(relationship)
 
@@ -1145,7 +1393,13 @@ func (recv *RelationSet) GetRelationByType(relationship RelationType) *Relation 
 	return retGo
 }
 
-// Remove is a wrapper around the C function atk_relation_set_remove.
+// Removes a relation from the relation set.
+// This function unref's the #AtkRelation so it will be deleted unless there
+// is another reference to it.
+/*
+
+C function : atk_relation_set_remove
+*/
 func (recv *RelationSet) Remove(relation *Relation) {
 	c_relation := (*C.AtkRelation)(C.NULL)
 	if relation != nil {
@@ -1191,7 +1445,10 @@ func CastToSocket(object *gobject.Object) *Socket {
 	return SocketNewFromC(object.ToC())
 }
 
-// SocketNew is a wrapper around the C function atk_socket_new.
+/*
+
+C function : atk_socket_new
+*/
 func SocketNew() *Socket {
 	retC := C.atk_socket_new()
 	retGo := SocketNewFromC(unsafe.Pointer(retC))
@@ -1237,7 +1494,11 @@ func CastToStateSet(object *gobject.Object) *StateSet {
 	return StateSetNewFromC(object.ToC())
 }
 
-// StateSetNew is a wrapper around the C function atk_state_set_new.
+// Creates a new empty state set.
+/*
+
+C function : atk_state_set_new
+*/
 func StateSetNew() *StateSet {
 	retC := C.atk_state_set_new()
 	retGo := StateSetNewFromC(unsafe.Pointer(retC))
@@ -1245,7 +1506,17 @@ func StateSetNew() *StateSet {
 	return retGo
 }
 
-// AddState is a wrapper around the C function atk_state_set_add_state.
+// Adds the state of the specified type to the state set if it is not already
+// present.
+//
+// Note that because an #AtkStateSet is a read-only object, this method should
+// be used to add a state to a newly-created set which will then be returned by
+// #atk_object_ref_state_set. It should not be used to modify the existing state
+// of an object. See also #atk_object_notify_state_change.
+/*
+
+C function : atk_state_set_add_state
+*/
 func (recv *StateSet) AddState(type_ StateType) bool {
 	c_type := (C.AtkStateType)(type_)
 
@@ -1255,7 +1526,16 @@ func (recv *StateSet) AddState(type_ StateType) bool {
 	return retGo
 }
 
-// AddStates is a wrapper around the C function atk_state_set_add_states.
+// Adds the states of the specified types to the state set.
+//
+// Note that because an #AtkStateSet is a read-only object, this method should
+// be used to add states to a newly-created set which will then be returned by
+// #atk_object_ref_state_set. It should not be used to modify the existing state
+// of an object. See also #atk_object_notify_state_change.
+/*
+
+C function : atk_state_set_add_states
+*/
 func (recv *StateSet) AddStates(types []StateType) {
 	c_types := &types[0]
 
@@ -1266,7 +1546,12 @@ func (recv *StateSet) AddStates(types []StateType) {
 	return
 }
 
-// AndSets is a wrapper around the C function atk_state_set_and_sets.
+// Constructs the intersection of the two sets, returning %NULL if the
+// intersection is empty.
+/*
+
+C function : atk_state_set_and_sets
+*/
 func (recv *StateSet) AndSets(compareSet *StateSet) *StateSet {
 	c_compare_set := (*C.AtkStateSet)(C.NULL)
 	if compareSet != nil {
@@ -1279,14 +1564,22 @@ func (recv *StateSet) AndSets(compareSet *StateSet) *StateSet {
 	return retGo
 }
 
-// ClearStates is a wrapper around the C function atk_state_set_clear_states.
+// Removes all states from the state set.
+/*
+
+C function : atk_state_set_clear_states
+*/
 func (recv *StateSet) ClearStates() {
 	C.atk_state_set_clear_states((*C.AtkStateSet)(recv.native))
 
 	return
 }
 
-// ContainsState is a wrapper around the C function atk_state_set_contains_state.
+// Checks whether the state for the specified type is in the specified set.
+/*
+
+C function : atk_state_set_contains_state
+*/
 func (recv *StateSet) ContainsState(type_ StateType) bool {
 	c_type := (C.AtkStateType)(type_)
 
@@ -1296,7 +1589,12 @@ func (recv *StateSet) ContainsState(type_ StateType) bool {
 	return retGo
 }
 
-// ContainsStates is a wrapper around the C function atk_state_set_contains_states.
+// Checks whether the states for all the specified types are in the
+// specified set.
+/*
+
+C function : atk_state_set_contains_states
+*/
 func (recv *StateSet) ContainsStates(types []StateType) bool {
 	c_types := &types[0]
 
@@ -1308,7 +1606,11 @@ func (recv *StateSet) ContainsStates(types []StateType) bool {
 	return retGo
 }
 
-// IsEmpty is a wrapper around the C function atk_state_set_is_empty.
+// Checks whether the state set is empty, i.e. has no states set.
+/*
+
+C function : atk_state_set_is_empty
+*/
 func (recv *StateSet) IsEmpty() bool {
 	retC := C.atk_state_set_is_empty((*C.AtkStateSet)(recv.native))
 	retGo := retC == C.TRUE
@@ -1316,7 +1618,11 @@ func (recv *StateSet) IsEmpty() bool {
 	return retGo
 }
 
-// OrSets is a wrapper around the C function atk_state_set_or_sets.
+// Constructs the union of the two sets.
+/*
+
+C function : atk_state_set_or_sets
+*/
 func (recv *StateSet) OrSets(compareSet *StateSet) *StateSet {
 	c_compare_set := (*C.AtkStateSet)(C.NULL)
 	if compareSet != nil {
@@ -1334,7 +1640,16 @@ func (recv *StateSet) OrSets(compareSet *StateSet) *StateSet {
 	return retGo
 }
 
-// RemoveState is a wrapper around the C function atk_state_set_remove_state.
+// Removes the state for the specified type from the state set.
+//
+// Note that because an #AtkStateSet is a read-only object, this method should
+// be used to remove a state to a newly-created set which will then be returned
+// by #atk_object_ref_state_set. It should not be used to modify the existing
+// state of an object. See also #atk_object_notify_state_change.
+/*
+
+C function : atk_state_set_remove_state
+*/
 func (recv *StateSet) RemoveState(type_ StateType) bool {
 	c_type := (C.AtkStateType)(type_)
 
@@ -1344,7 +1659,13 @@ func (recv *StateSet) RemoveState(type_ StateType) bool {
 	return retGo
 }
 
-// XorSets is a wrapper around the C function atk_state_set_xor_sets.
+// Constructs the exclusive-or of the two sets, returning %NULL is empty.
+// The set returned by this operation contains the states in exactly
+// one of the two sets.
+/*
+
+C function : atk_state_set_xor_sets
+*/
 func (recv *StateSet) XorSets(compareSet *StateSet) *StateSet {
 	c_compare_set := (*C.AtkStateSet)(C.NULL)
 	if compareSet != nil {

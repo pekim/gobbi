@@ -15,7 +15,25 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// ShowUriOnWindow is a wrapper around the C function gtk_show_uri_on_window.
+// This is a convenience function for launching the default application
+// to show the uri. The uri must be of a form understood by GIO (i.e. you
+// need to install gvfs to get support for uri schemes such as http://
+// or ftp://, as only local files are handled by GIO itself).
+// Typical examples are
+// - `file:///home/gnome/pict.jpg`
+// - `http://www.gnome.org`
+// - `mailto:me@gnome.org`
+//
+// Ideally the timestamp is taken from the event triggering
+// the gtk_show_uri() call. If timestamp is not known you can take
+// %GDK_CURRENT_TIME.
+//
+// This is the recommended call to be used as it passes information
+// necessary for sandbox helpers to parent their dialogs properly.
+/*
+
+C function : gtk_show_uri_on_window
+*/
 func ShowUriOnWindow(parent *Window, uri string, timestamp uint32) (bool, error) {
 	c_parent := (*C.GtkWindow)(C.NULL)
 	if parent != nil {

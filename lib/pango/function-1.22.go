@@ -8,7 +8,15 @@ package pango
 // #include <stdlib.h>
 import "C"
 
-// AttrTypeGetName is a wrapper around the C function pango_attr_type_get_name.
+// Fetches the attribute type name passed in when registering the type using
+// pango_attr_type_register().
+//
+// The returned value is an interned string (see g_intern_string() for what
+// that means) that should not be modified or freed.
+/*
+
+C function : pango_attr_type_get_name
+*/
 func AttrTypeGetName(type_ AttrType) string {
 	c_type := (C.PangoAttrType)(type_)
 
@@ -18,7 +26,15 @@ func AttrTypeGetName(type_ AttrType) string {
 	return retGo
 }
 
-// BidiTypeForUnichar is a wrapper around the C function pango_bidi_type_for_unichar.
+// Determines the normative bidirectional character type of a
+// character, as specified in the Unicode Character Database.
+//
+// A simplified version of this function is available as
+// pango_unichar_direction().
+/*
+
+C function : pango_bidi_type_for_unichar
+*/
 func BidiTypeForUnichar(ch rune) BidiType {
 	c_ch := (C.gunichar)(ch)
 

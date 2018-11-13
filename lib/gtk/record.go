@@ -1198,7 +1198,12 @@ func (recv *BindingSet) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Activate is a wrapper around the C function gtk_binding_set_activate.
+// Find a key binding matching @keyval and @modifiers within
+// @binding_set and activate the binding on @object.
+/*
+
+C function : gtk_binding_set_activate
+*/
 func (recv *BindingSet) Activate(keyval uint32, modifiers gdk.ModifierType, object *gobject.Object) bool {
 	c_keyval := (C.guint)(keyval)
 
@@ -1215,7 +1220,14 @@ func (recv *BindingSet) Activate(keyval uint32, modifiers gdk.ModifierType, obje
 	return retGo
 }
 
-// AddPath is a wrapper around the C function gtk_binding_set_add_path.
+// This function was used internally by the GtkRC parsing mechanism
+// to assign match patterns to #GtkBindingSet structures.
+//
+// In GTK+ 3, these match patterns are unused.
+/*
+
+C function : gtk_binding_set_add_path
+*/
 func (recv *BindingSet) AddPath(pathType PathType, pathPattern string, priority PathPriorityType) {
 	c_path_type := (C.GtkPathType)(pathType)
 
@@ -1344,7 +1356,11 @@ func (recv *Border) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Copy is a wrapper around the C function gtk_border_copy.
+// Copies a #GtkBorder-struct.
+/*
+
+C function : gtk_border_copy
+*/
 func (recv *Border) Copy() *Border {
 	retC := C.gtk_border_copy((*C.GtkBorder)(recv.native))
 	retGo := BorderNewFromC(unsafe.Pointer(retC))
@@ -1352,7 +1368,11 @@ func (recv *Border) Copy() *Border {
 	return retGo
 }
 
-// Free is a wrapper around the C function gtk_border_free.
+// Frees a #GtkBorder-struct.
+/*
+
+C function : gtk_border_free
+*/
 func (recv *Border) Free() {
 	C.gtk_border_free((*C.GtkBorder)(recv.native))
 
@@ -2076,7 +2096,16 @@ func (recv *CellRendererClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// SetAccessibleType is a wrapper around the C function gtk_cell_renderer_class_set_accessible_type.
+// Sets the type to be used for creating accessibles for cells rendered by
+// cell renderers of @renderer_class. Note that multiple accessibles will
+// be created.
+//
+// This function should only be called from class init functions of cell
+// renderers.
+/*
+
+C function : gtk_cell_renderer_class_set_accessible_type
+*/
 func (recv *CellRendererClass) SetAccessibleType(type_ gobject.Type) {
 	c_type := (C.GType)(type_)
 
@@ -3161,7 +3190,20 @@ func (recv *ContainerClass) ToC() unsafe.Pointer {
 
 // Unsupported : gtk_container_class_find_child_property : return type : Blacklisted record : GParamSpec
 
-// HandleBorderWidth is a wrapper around the C function gtk_container_class_handle_border_width.
+// Modifies a subclass of #GtkContainerClass to automatically add and
+// remove the border-width setting on GtkContainer.  This allows the
+// subclass to ignore the border width in its size request and
+// allocate methods. The intent is for a subclass to invoke this
+// in its class_init function.
+//
+// gtk_container_class_handle_border_width() is necessary because it
+// would break API too badly to make this behavior the default. So
+// subclasses must “opt in” to the parent class handling border_width
+// for them.
+/*
+
+C function : gtk_container_class_handle_border_width
+*/
 func (recv *ContainerClass) HandleBorderWidth() {
 	C.gtk_container_class_handle_border_width((*C.GtkContainerClass)(recv.native))
 
@@ -4679,7 +4721,10 @@ func (recv *Gradient) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ResolveForContext is a wrapper around the C function gtk_gradient_resolve_for_context.
+/*
+
+C function : gtk_gradient_resolve_for_context
+*/
 func (recv *Gradient) ResolveForContext(context *StyleContext) *cairo.Pattern {
 	c_context := (*C.GtkStyleContext)(C.NULL)
 	if context != nil {
@@ -4692,7 +4737,12 @@ func (recv *Gradient) ResolveForContext(context *StyleContext) *cairo.Pattern {
 	return retGo
 }
 
-// ToString is a wrapper around the C function gtk_gradient_to_string.
+// Creates a string representation for @gradient that is suitable
+// for using in GTK CSS files.
+/*
+
+C function : gtk_gradient_to_string
+*/
 func (recv *Gradient) ToString() string {
 	retC := C.gtk_gradient_to_string((*C.GtkGradient)(recv.native))
 	retGo := C.GoString(retC)
@@ -5295,7 +5345,19 @@ func (recv *IconSet) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// IconSetNew is a wrapper around the C function gtk_icon_set_new.
+// Creates a new #GtkIconSet. A #GtkIconSet represents a single icon
+// in various sizes and widget states. It can provide a #GdkPixbuf
+// for a given size and state on request, and automatically caches
+// some of the rendered #GdkPixbuf objects.
+//
+// Normally you would use gtk_widget_render_icon_pixbuf() instead of
+// using #GtkIconSet directly. The one case where you’d use
+// #GtkIconSet is to create application-specific icon sets to place in
+// a #GtkIconFactory.
+/*
+
+C function : gtk_icon_set_new
+*/
 func IconSetNew() *IconSet {
 	retC := C.gtk_icon_set_new()
 	retGo := IconSetNewFromC(unsafe.Pointer(retC))
@@ -5303,7 +5365,15 @@ func IconSetNew() *IconSet {
 	return retGo
 }
 
-// IconSetNewFromPixbuf is a wrapper around the C function gtk_icon_set_new_from_pixbuf.
+// Creates a new #GtkIconSet with @pixbuf as the default/fallback
+// source image. If you don’t add any additional #GtkIconSource to the
+// icon set, all variants of the icon will be created from @pixbuf,
+// using scaling, pixelation, etc. as required to adjust the icon size
+// or make the icon look insensitive/prelighted.
+/*
+
+C function : gtk_icon_set_new_from_pixbuf
+*/
 func IconSetNewFromPixbuf(pixbuf *gdkpixbuf.Pixbuf) *IconSet {
 	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
 	if pixbuf != nil {
@@ -5316,7 +5386,35 @@ func IconSetNewFromPixbuf(pixbuf *gdkpixbuf.Pixbuf) *IconSet {
 	return retGo
 }
 
-// AddSource is a wrapper around the C function gtk_icon_set_add_source.
+// Icon sets have a list of #GtkIconSource, which they use as base
+// icons for rendering icons in different states and sizes. Icons are
+// scaled, made to look insensitive, etc. in
+// gtk_icon_set_render_icon(), but #GtkIconSet needs base images to
+// work with. The base images and when to use them are described by
+// a #GtkIconSource.
+//
+// This function copies @source, so you can reuse the same source immediately
+// without affecting the icon set.
+//
+// An example of when you’d use this function: a web browser’s "Back
+// to Previous Page" icon might point in a different direction in
+// Hebrew and in English; it might look different when insensitive;
+// and it might change size depending on toolbar mode (small/large
+// icons). So a single icon set would contain all those variants of
+// the icon, and you might add a separate source for each one.
+//
+// You should nearly always add a “default” icon source with all
+// fields wildcarded, which will be used as a fallback if no more
+// specific source matches. #GtkIconSet always prefers more specific
+// icon sources to more generic icon sources. The order in which you
+// add the sources to the icon set does not matter.
+//
+// gtk_icon_set_new_from_pixbuf() creates a new icon set with a
+// default icon source based on the given pixbuf.
+/*
+
+C function : gtk_icon_set_add_source
+*/
 func (recv *IconSet) AddSource(source *IconSource) {
 	c_source := (*C.GtkIconSource)(C.NULL)
 	if source != nil {
@@ -5328,7 +5426,11 @@ func (recv *IconSet) AddSource(source *IconSource) {
 	return
 }
 
-// Copy is a wrapper around the C function gtk_icon_set_copy.
+// Copies @icon_set by value.
+/*
+
+C function : gtk_icon_set_copy
+*/
 func (recv *IconSet) Copy() *IconSet {
 	retC := C.gtk_icon_set_copy((*C.GtkIconSet)(recv.native))
 	retGo := IconSetNewFromC(unsafe.Pointer(retC))
@@ -5338,7 +5440,11 @@ func (recv *IconSet) Copy() *IconSet {
 
 // Unsupported : gtk_icon_set_get_sizes : unsupported parameter sizes : output array param sizes
 
-// Ref is a wrapper around the C function gtk_icon_set_ref.
+// Increments the reference count on @icon_set.
+/*
+
+C function : gtk_icon_set_ref
+*/
 func (recv *IconSet) Ref() *IconSet {
 	retC := C.gtk_icon_set_ref((*C.GtkIconSet)(recv.native))
 	retGo := IconSetNewFromC(unsafe.Pointer(retC))
@@ -5346,7 +5452,16 @@ func (recv *IconSet) Ref() *IconSet {
 	return retGo
 }
 
-// RenderIcon is a wrapper around the C function gtk_icon_set_render_icon.
+// Renders an icon using gtk_style_render_icon(). In most cases,
+// gtk_widget_render_icon() is better, since it automatically provides
+// most of the arguments from the current widget settings.  This
+// function never returns %NULL; if the icon can’t be rendered
+// (perhaps because an image file fails to load), a default "missing
+// image" icon will be returned instead.
+/*
+
+C function : gtk_icon_set_render_icon
+*/
 func (recv *IconSet) RenderIcon(style *Style, direction TextDirection, state StateType, size IconSize, widget *Widget, detail string) *gdkpixbuf.Pixbuf {
 	c_style := (*C.GtkStyle)(C.NULL)
 	if style != nil {
@@ -5373,7 +5488,12 @@ func (recv *IconSet) RenderIcon(style *Style, direction TextDirection, state Sta
 	return retGo
 }
 
-// Unref is a wrapper around the C function gtk_icon_set_unref.
+// Decrements the reference count on @icon_set, and frees memory
+// if the reference count reaches 0.
+/*
+
+C function : gtk_icon_set_unref
+*/
 func (recv *IconSet) Unref() {
 	C.gtk_icon_set_unref((*C.GtkIconSet)(recv.native))
 
@@ -5401,7 +5521,38 @@ func (recv *IconSource) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// IconSourceNew is a wrapper around the C function gtk_icon_source_new.
+// Creates a new #GtkIconSource. A #GtkIconSource contains a #GdkPixbuf (or
+// image filename) that serves as the base image for one or more of the
+// icons in a #GtkIconSet, along with a specification for which icons in the
+// icon set will be based on that pixbuf or image file. An icon set contains
+// a set of icons that represent “the same” logical concept in different states,
+// different global text directions, and different sizes.
+//
+// So for example a web browser’s “Back to Previous Page” icon might
+// point in a different direction in Hebrew and in English; it might
+// look different when insensitive; and it might change size depending
+// on toolbar mode (small/large icons). So a single icon set would
+// contain all those variants of the icon. #GtkIconSet contains a list
+// of #GtkIconSource from which it can derive specific icon variants in
+// the set.
+//
+// In the simplest case, #GtkIconSet contains one source pixbuf from
+// which it derives all variants. The convenience function
+// gtk_icon_set_new_from_pixbuf() handles this case; if you only have
+// one source pixbuf, just use that function.
+//
+// If you want to use a different base pixbuf for different icon
+// variants, you create multiple icon sources, mark which variants
+// they’ll be used to create, and add them to the icon set with
+// gtk_icon_set_add_source().
+//
+// By default, the icon source has all parameters wildcarded. That is,
+// the icon source will be used as the base icon for any desired text
+// direction, widget state, or icon size.
+/*
+
+C function : gtk_icon_source_new
+*/
 func IconSourceNew() *IconSource {
 	retC := C.gtk_icon_source_new()
 	retGo := IconSourceNewFromC(unsafe.Pointer(retC))
@@ -5409,7 +5560,11 @@ func IconSourceNew() *IconSource {
 	return retGo
 }
 
-// Copy is a wrapper around the C function gtk_icon_source_copy.
+// Creates a copy of @source; mostly useful for language bindings.
+/*
+
+C function : gtk_icon_source_copy
+*/
 func (recv *IconSource) Copy() *IconSource {
 	retC := C.gtk_icon_source_copy((*C.GtkIconSource)(recv.native))
 	retGo := IconSourceNewFromC(unsafe.Pointer(retC))
@@ -5417,14 +5572,25 @@ func (recv *IconSource) Copy() *IconSource {
 	return retGo
 }
 
-// Free is a wrapper around the C function gtk_icon_source_free.
+// Frees a dynamically-allocated icon source, along with its
+// filename, size, and pixbuf fields if those are not %NULL.
+/*
+
+C function : gtk_icon_source_free
+*/
 func (recv *IconSource) Free() {
 	C.gtk_icon_source_free((*C.GtkIconSource)(recv.native))
 
 	return
 }
 
-// GetDirection is a wrapper around the C function gtk_icon_source_get_direction.
+// Obtains the text direction this icon source applies to. The return
+// value is only useful/meaningful if the text direction is not
+// wildcarded.
+/*
+
+C function : gtk_icon_source_get_direction
+*/
 func (recv *IconSource) GetDirection() TextDirection {
 	retC := C.gtk_icon_source_get_direction((*C.GtkIconSource)(recv.native))
 	retGo := (TextDirection)(retC)
@@ -5432,7 +5598,11 @@ func (recv *IconSource) GetDirection() TextDirection {
 	return retGo
 }
 
-// GetDirectionWildcarded is a wrapper around the C function gtk_icon_source_get_direction_wildcarded.
+// Gets the value set by gtk_icon_source_set_direction_wildcarded().
+/*
+
+C function : gtk_icon_source_get_direction_wildcarded
+*/
 func (recv *IconSource) GetDirectionWildcarded() bool {
 	retC := C.gtk_icon_source_get_direction_wildcarded((*C.GtkIconSource)(recv.native))
 	retGo := retC == C.TRUE
@@ -5440,7 +5610,13 @@ func (recv *IconSource) GetDirectionWildcarded() bool {
 	return retGo
 }
 
-// GetFilename is a wrapper around the C function gtk_icon_source_get_filename.
+// Retrieves the source filename, or %NULL if none is set. The
+// filename is not a copy, and should not be modified or expected to
+// persist beyond the lifetime of the icon source.
+/*
+
+C function : gtk_icon_source_get_filename
+*/
 func (recv *IconSource) GetFilename() string {
 	retC := C.gtk_icon_source_get_filename((*C.GtkIconSource)(recv.native))
 	retGo := C.GoString(retC)
@@ -5448,7 +5624,13 @@ func (recv *IconSource) GetFilename() string {
 	return retGo
 }
 
-// GetIconName is a wrapper around the C function gtk_icon_source_get_icon_name.
+// Retrieves the source icon name, or %NULL if none is set. The
+// icon_name is not a copy, and should not be modified or expected to
+// persist beyond the lifetime of the icon source.
+/*
+
+C function : gtk_icon_source_get_icon_name
+*/
 func (recv *IconSource) GetIconName() string {
 	retC := C.gtk_icon_source_get_icon_name((*C.GtkIconSource)(recv.native))
 	retGo := C.GoString(retC)
@@ -5456,7 +5638,17 @@ func (recv *IconSource) GetIconName() string {
 	return retGo
 }
 
-// GetPixbuf is a wrapper around the C function gtk_icon_source_get_pixbuf.
+// Retrieves the source pixbuf, or %NULL if none is set.
+// In addition, if a filename source is in use, this
+// function in some cases will return the pixbuf from
+// loaded from the filename. This is, for example, true
+// for the GtkIconSource passed to the #GtkStyle render_icon()
+// virtual function. The reference count on the pixbuf is
+// not incremented.
+/*
+
+C function : gtk_icon_source_get_pixbuf
+*/
 func (recv *IconSource) GetPixbuf() *gdkpixbuf.Pixbuf {
 	retC := C.gtk_icon_source_get_pixbuf((*C.GtkIconSource)(recv.native))
 	retGo := gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
@@ -5464,7 +5656,12 @@ func (recv *IconSource) GetPixbuf() *gdkpixbuf.Pixbuf {
 	return retGo
 }
 
-// GetSize is a wrapper around the C function gtk_icon_source_get_size.
+// Obtains the icon size this source applies to. The return value
+// is only useful/meaningful if the icon size is not wildcarded.
+/*
+
+C function : gtk_icon_source_get_size
+*/
 func (recv *IconSource) GetSize() IconSize {
 	retC := C.gtk_icon_source_get_size((*C.GtkIconSource)(recv.native))
 	retGo := (IconSize)(retC)
@@ -5472,7 +5669,11 @@ func (recv *IconSource) GetSize() IconSize {
 	return retGo
 }
 
-// GetSizeWildcarded is a wrapper around the C function gtk_icon_source_get_size_wildcarded.
+// Gets the value set by gtk_icon_source_set_size_wildcarded().
+/*
+
+C function : gtk_icon_source_get_size_wildcarded
+*/
 func (recv *IconSource) GetSizeWildcarded() bool {
 	retC := C.gtk_icon_source_get_size_wildcarded((*C.GtkIconSource)(recv.native))
 	retGo := retC == C.TRUE
@@ -5480,7 +5681,13 @@ func (recv *IconSource) GetSizeWildcarded() bool {
 	return retGo
 }
 
-// GetState is a wrapper around the C function gtk_icon_source_get_state.
+// Obtains the widget state this icon source applies to. The return
+// value is only useful/meaningful if the widget state is not
+// wildcarded.
+/*
+
+C function : gtk_icon_source_get_state
+*/
 func (recv *IconSource) GetState() StateType {
 	retC := C.gtk_icon_source_get_state((*C.GtkIconSource)(recv.native))
 	retGo := (StateType)(retC)
@@ -5488,7 +5695,11 @@ func (recv *IconSource) GetState() StateType {
 	return retGo
 }
 
-// GetStateWildcarded is a wrapper around the C function gtk_icon_source_get_state_wildcarded.
+// Gets the value set by gtk_icon_source_set_state_wildcarded().
+/*
+
+C function : gtk_icon_source_get_state_wildcarded
+*/
 func (recv *IconSource) GetStateWildcarded() bool {
 	retC := C.gtk_icon_source_get_state_wildcarded((*C.GtkIconSource)(recv.native))
 	retGo := retC == C.TRUE
@@ -5496,7 +5707,17 @@ func (recv *IconSource) GetStateWildcarded() bool {
 	return retGo
 }
 
-// SetDirection is a wrapper around the C function gtk_icon_source_set_direction.
+// Sets the text direction this icon source is intended to be used
+// with.
+//
+// Setting the text direction on an icon source makes no difference
+// if the text direction is wildcarded. Therefore, you should usually
+// call gtk_icon_source_set_direction_wildcarded() to un-wildcard it
+// in addition to calling this function.
+/*
+
+C function : gtk_icon_source_set_direction
+*/
 func (recv *IconSource) SetDirection(direction TextDirection) {
 	c_direction := (C.GtkTextDirection)(direction)
 
@@ -5505,7 +5726,19 @@ func (recv *IconSource) SetDirection(direction TextDirection) {
 	return
 }
 
-// SetDirectionWildcarded is a wrapper around the C function gtk_icon_source_set_direction_wildcarded.
+// If the text direction is wildcarded, this source can be used
+// as the base image for an icon in any #GtkTextDirection.
+// If the text direction is not wildcarded, then the
+// text direction the icon source applies to should be set
+// with gtk_icon_source_set_direction(), and the icon source
+// will only be used with that text direction.
+//
+// #GtkIconSet prefers non-wildcarded sources (exact matches) over
+// wildcarded sources, and will use an exact match when possible.
+/*
+
+C function : gtk_icon_source_set_direction_wildcarded
+*/
 func (recv *IconSource) SetDirectionWildcarded(setting bool) {
 	c_setting :=
 		boolToGboolean(setting)
@@ -5515,7 +5748,12 @@ func (recv *IconSource) SetDirectionWildcarded(setting bool) {
 	return
 }
 
-// SetFilename is a wrapper around the C function gtk_icon_source_set_filename.
+// Sets the name of an image file to use as a base image when creating
+// icon variants for #GtkIconSet. The filename must be absolute.
+/*
+
+C function : gtk_icon_source_set_filename
+*/
 func (recv *IconSource) SetFilename(filename string) {
 	c_filename := C.CString(filename)
 	defer C.free(unsafe.Pointer(c_filename))
@@ -5525,7 +5763,12 @@ func (recv *IconSource) SetFilename(filename string) {
 	return
 }
 
-// SetIconName is a wrapper around the C function gtk_icon_source_set_icon_name.
+// Sets the name of an icon to look up in the current icon theme
+// to use as a base image when creating icon variants for #GtkIconSet.
+/*
+
+C function : gtk_icon_source_set_icon_name
+*/
 func (recv *IconSource) SetIconName(iconName string) {
 	c_icon_name := C.CString(iconName)
 	defer C.free(unsafe.Pointer(c_icon_name))
@@ -5535,7 +5778,12 @@ func (recv *IconSource) SetIconName(iconName string) {
 	return
 }
 
-// SetPixbuf is a wrapper around the C function gtk_icon_source_set_pixbuf.
+// Sets a pixbuf to use as a base image when creating icon variants
+// for #GtkIconSet.
+/*
+
+C function : gtk_icon_source_set_pixbuf
+*/
 func (recv *IconSource) SetPixbuf(pixbuf *gdkpixbuf.Pixbuf) {
 	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
 	if pixbuf != nil {
@@ -5547,7 +5795,17 @@ func (recv *IconSource) SetPixbuf(pixbuf *gdkpixbuf.Pixbuf) {
 	return
 }
 
-// SetSize is a wrapper around the C function gtk_icon_source_set_size.
+// Sets the icon size this icon source is intended to be used
+// with.
+//
+// Setting the icon size on an icon source makes no difference
+// if the size is wildcarded. Therefore, you should usually
+// call gtk_icon_source_set_size_wildcarded() to un-wildcard it
+// in addition to calling this function.
+/*
+
+C function : gtk_icon_source_set_size
+*/
 func (recv *IconSource) SetSize(size IconSize) {
 	c_size := (C.GtkIconSize)(size)
 
@@ -5556,7 +5814,22 @@ func (recv *IconSource) SetSize(size IconSize) {
 	return
 }
 
-// SetSizeWildcarded is a wrapper around the C function gtk_icon_source_set_size_wildcarded.
+// If the icon size is wildcarded, this source can be used as the base
+// image for an icon of any size.  If the size is not wildcarded, then
+// the size the source applies to should be set with
+// gtk_icon_source_set_size() and the icon source will only be used
+// with that specific size.
+//
+// #GtkIconSet prefers non-wildcarded sources (exact matches) over
+// wildcarded sources, and will use an exact match when possible.
+//
+// #GtkIconSet will normally scale wildcarded source images to produce
+// an appropriate icon at a given size, but will not change the size
+// of source images that match exactly.
+/*
+
+C function : gtk_icon_source_set_size_wildcarded
+*/
 func (recv *IconSource) SetSizeWildcarded(setting bool) {
 	c_setting :=
 		boolToGboolean(setting)
@@ -5566,7 +5839,17 @@ func (recv *IconSource) SetSizeWildcarded(setting bool) {
 	return
 }
 
-// SetState is a wrapper around the C function gtk_icon_source_set_state.
+// Sets the widget state this icon source is intended to be used
+// with.
+//
+// Setting the widget state on an icon source makes no difference
+// if the state is wildcarded. Therefore, you should usually
+// call gtk_icon_source_set_state_wildcarded() to un-wildcard it
+// in addition to calling this function.
+/*
+
+C function : gtk_icon_source_set_state
+*/
 func (recv *IconSource) SetState(state StateType) {
 	c_state := (C.GtkStateType)(state)
 
@@ -5575,7 +5858,23 @@ func (recv *IconSource) SetState(state StateType) {
 	return
 }
 
-// SetStateWildcarded is a wrapper around the C function gtk_icon_source_set_state_wildcarded.
+// If the widget state is wildcarded, this source can be used as the
+// base image for an icon in any #GtkStateType.  If the widget state
+// is not wildcarded, then the state the source applies to should be
+// set with gtk_icon_source_set_state() and the icon source will
+// only be used with that specific state.
+//
+// #GtkIconSet prefers non-wildcarded sources (exact matches) over
+// wildcarded sources, and will use an exact match when possible.
+//
+// #GtkIconSet will normally transform wildcarded source images to
+// produce an appropriate icon for a given state, for example
+// lightening an image on prelight, but will not modify source images
+// that match exactly.
+/*
+
+C function : gtk_icon_source_set_state_wildcarded
+*/
 func (recv *IconSource) SetStateWildcarded(setting bool) {
 	c_setting :=
 		boolToGboolean(setting)
@@ -7671,7 +7970,11 @@ func (recv *PaperSize) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// IsCustom is a wrapper around the C function gtk_paper_size_is_custom.
+// Returns %TRUE if @size is not a standard paper size.
+/*
+
+C function : gtk_paper_size_is_custom
+*/
 func (recv *PaperSize) IsCustom() bool {
 	retC := C.gtk_paper_size_is_custom((*C.GtkPaperSize)(recv.native))
 	retGo := retC == C.TRUE
@@ -7679,7 +7982,11 @@ func (recv *PaperSize) IsCustom() bool {
 	return retGo
 }
 
-// IsIpp is a wrapper around the C function gtk_paper_size_is_ipp.
+// Returns %TRUE if @size is an IPP standard paper size.
+/*
+
+C function : gtk_paper_size_is_ipp
+*/
 func (recv *PaperSize) IsIpp() bool {
 	retC := C.gtk_paper_size_is_ipp((*C.GtkPaperSize)(recv.native))
 	retGo := retC == C.TRUE
@@ -8975,7 +9282,11 @@ func (recv *Requisition) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Copy is a wrapper around the C function gtk_requisition_copy.
+// Copies a #GtkRequisition.
+/*
+
+C function : gtk_requisition_copy
+*/
 func (recv *Requisition) Copy() *Requisition {
 	retC := C.gtk_requisition_copy((*C.GtkRequisition)(recv.native))
 	retGo := RequisitionNewFromC(unsafe.Pointer(retC))
@@ -8983,7 +9294,11 @@ func (recv *Requisition) Copy() *Requisition {
 	return retGo
 }
 
-// Free is a wrapper around the C function gtk_requisition_free.
+// Frees a #GtkRequisition.
+/*
+
+C function : gtk_requisition_free
+*/
 func (recv *Requisition) Free() {
 	C.gtk_requisition_free((*C.GtkRequisition)(recv.native))
 
@@ -9416,7 +9731,11 @@ func (recv *SelectionData) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Copy is a wrapper around the C function gtk_selection_data_copy.
+// Makes a copy of a #GtkSelectionData-struct and its data.
+/*
+
+C function : gtk_selection_data_copy
+*/
 func (recv *SelectionData) Copy() *SelectionData {
 	retC := C.gtk_selection_data_copy((*C.GtkSelectionData)(recv.native))
 	retGo := SelectionDataNewFromC(unsafe.Pointer(retC))
@@ -9424,7 +9743,12 @@ func (recv *SelectionData) Copy() *SelectionData {
 	return retGo
 }
 
-// Free is a wrapper around the C function gtk_selection_data_free.
+// Frees a #GtkSelectionData-struct returned from
+// gtk_selection_data_copy().
+/*
+
+C function : gtk_selection_data_free
+*/
 func (recv *SelectionData) Free() {
 	C.gtk_selection_data_free((*C.GtkSelectionData)(recv.native))
 
@@ -9437,7 +9761,13 @@ func (recv *SelectionData) Free() {
 
 // Unsupported : gtk_selection_data_set : unsupported parameter type : Blacklisted record : GdkAtom
 
-// SetText is a wrapper around the C function gtk_selection_data_set_text.
+// Sets the contents of the selection from a UTF-8 encoded string.
+// The string is converted to the form determined by
+// @selection_data->target.
+/*
+
+C function : gtk_selection_data_set_text
+*/
 func (recv *SelectionData) SetText(str string, len int32) bool {
 	c_str := C.CString(str)
 	defer C.free(unsafe.Pointer(c_str))
@@ -9450,7 +9780,13 @@ func (recv *SelectionData) SetText(str string, len int32) bool {
 	return retGo
 }
 
-// TargetsIncludeText is a wrapper around the C function gtk_selection_data_targets_include_text.
+// Given a #GtkSelectionData object holding a list of targets,
+// determines if any of the targets in @targets can be used to
+// provide text.
+/*
+
+C function : gtk_selection_data_targets_include_text
+*/
 func (recv *SelectionData) TargetsIncludeText() bool {
 	retC := C.gtk_selection_data_targets_include_text((*C.GtkSelectionData)(recv.native))
 	retGo := retC == C.TRUE
@@ -10226,7 +10562,11 @@ func (recv *StockItem) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Copy is a wrapper around the C function gtk_stock_item_copy.
+// Copies a stock item, mostly useful for language bindings and not in applications.
+/*
+
+C function : gtk_stock_item_copy
+*/
 func (recv *StockItem) Copy() *StockItem {
 	retC := C.gtk_stock_item_copy((*C.GtkStockItem)(recv.native))
 	retGo := StockItemNewFromC(unsafe.Pointer(retC))
@@ -10234,7 +10574,13 @@ func (recv *StockItem) Copy() *StockItem {
 	return retGo
 }
 
-// Free is a wrapper around the C function gtk_stock_item_free.
+// Frees a stock item allocated on the heap, such as one returned by
+// gtk_stock_item_copy(). Also frees the fields inside the stock item,
+// if they are not %NULL.
+/*
+
+C function : gtk_stock_item_free
+*/
 func (recv *StockItem) Free() {
 	C.gtk_stock_item_free((*C.GtkStockItem)(recv.native))
 
@@ -10535,7 +10881,15 @@ func (recv *SymbolicColor) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ToString is a wrapper around the C function gtk_symbolic_color_to_string.
+// Converts the given @color to a string representation. This is useful
+// both for debugging and for serialization of strings. The format of
+// the string may change between different versions of GTK, but it is
+// guaranteed that the GTK css parser is able to read the string and
+// create the same symbolic color from it.
+/*
+
+C function : gtk_symbolic_color_to_string
+*/
 func (recv *SymbolicColor) ToString() string {
 	retC := C.gtk_symbolic_color_to_string((*C.GtkSymbolicColor)(recv.native))
 	retGo := C.GoString(retC)
@@ -10720,7 +11074,11 @@ func (recv *TargetEntry) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TargetEntryNew is a wrapper around the C function gtk_target_entry_new.
+// Makes a new #GtkTargetEntry.
+/*
+
+C function : gtk_target_entry_new
+*/
 func TargetEntryNew(target string, flags uint32, info uint32) *TargetEntry {
 	c_target := C.CString(target)
 	defer C.free(unsafe.Pointer(c_target))
@@ -10735,7 +11093,11 @@ func TargetEntryNew(target string, flags uint32, info uint32) *TargetEntry {
 	return retGo
 }
 
-// Copy is a wrapper around the C function gtk_target_entry_copy.
+// Makes a copy of a #GtkTargetEntry and its data.
+/*
+
+C function : gtk_target_entry_copy
+*/
 func (recv *TargetEntry) Copy() *TargetEntry {
 	retC := C.gtk_target_entry_copy((*C.GtkTargetEntry)(recv.native))
 	retGo := TargetEntryNewFromC(unsafe.Pointer(retC))
@@ -10743,7 +11105,12 @@ func (recv *TargetEntry) Copy() *TargetEntry {
 	return retGo
 }
 
-// Free is a wrapper around the C function gtk_target_entry_free.
+// Frees a #GtkTargetEntry returned from
+// gtk_target_entry_new() or gtk_target_entry_copy().
+/*
+
+C function : gtk_target_entry_free
+*/
 func (recv *TargetEntry) Free() {
 	C.gtk_target_entry_free((*C.GtkTargetEntry)(recv.native))
 
@@ -10779,7 +11146,11 @@ func (recv *TargetList) ToC() unsafe.Pointer {
 
 // Unsupported : gtk_target_list_find : unsupported parameter target : Blacklisted record : GdkAtom
 
-// Ref is a wrapper around the C function gtk_target_list_ref.
+// Increases the reference count of a #GtkTargetList by one.
+/*
+
+C function : gtk_target_list_ref
+*/
 func (recv *TargetList) Ref() *TargetList {
 	retC := C.gtk_target_list_ref((*C.GtkTargetList)(recv.native))
 	retGo := TargetListNewFromC(unsafe.Pointer(retC))
@@ -10789,7 +11160,12 @@ func (recv *TargetList) Ref() *TargetList {
 
 // Unsupported : gtk_target_list_remove : unsupported parameter target : Blacklisted record : GdkAtom
 
-// Unref is a wrapper around the C function gtk_target_list_unref.
+// Decreases the reference count of a #GtkTargetList by one.
+// If the resulting reference count is zero, frees the list.
+/*
+
+C function : gtk_target_list_unref
+*/
 func (recv *TargetList) Unref() {
 	C.gtk_target_list_unref((*C.GtkTargetList)(recv.native))
 
@@ -10987,7 +11363,12 @@ func (recv *TextAttributes) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TextAttributesNew is a wrapper around the C function gtk_text_attributes_new.
+// Creates a #GtkTextAttributes, which describes
+// a set of properties on some text.
+/*
+
+C function : gtk_text_attributes_new
+*/
 func TextAttributesNew() *TextAttributes {
 	retC := C.gtk_text_attributes_new()
 	retGo := TextAttributesNewFromC(unsafe.Pointer(retC))
@@ -10995,7 +11376,11 @@ func TextAttributesNew() *TextAttributes {
 	return retGo
 }
 
-// Copy is a wrapper around the C function gtk_text_attributes_copy.
+// Copies @src and returns a new #GtkTextAttributes.
+/*
+
+C function : gtk_text_attributes_copy
+*/
 func (recv *TextAttributes) Copy() *TextAttributes {
 	retC := C.gtk_text_attributes_copy((*C.GtkTextAttributes)(recv.native))
 	retGo := TextAttributesNewFromC(unsafe.Pointer(retC))
@@ -11003,7 +11388,12 @@ func (recv *TextAttributes) Copy() *TextAttributes {
 	return retGo
 }
 
-// CopyValues is a wrapper around the C function gtk_text_attributes_copy_values.
+// Copies the values from @src to @dest so that @dest has
+// the same values as @src. Frees existing values in @dest.
+/*
+
+C function : gtk_text_attributes_copy_values
+*/
 func (recv *TextAttributes) CopyValues(dest *TextAttributes) {
 	c_dest := (*C.GtkTextAttributes)(C.NULL)
 	if dest != nil {
@@ -11015,7 +11405,11 @@ func (recv *TextAttributes) CopyValues(dest *TextAttributes) {
 	return
 }
 
-// Ref is a wrapper around the C function gtk_text_attributes_ref.
+// Increments the reference count on @values.
+/*
+
+C function : gtk_text_attributes_ref
+*/
 func (recv *TextAttributes) Ref() *TextAttributes {
 	retC := C.gtk_text_attributes_ref((*C.GtkTextAttributes)(recv.native))
 	retGo := TextAttributesNewFromC(unsafe.Pointer(retC))
@@ -11023,7 +11417,12 @@ func (recv *TextAttributes) Ref() *TextAttributes {
 	return retGo
 }
 
-// Unref is a wrapper around the C function gtk_text_attributes_unref.
+// Decrements the reference count on @values, freeing the structure
+// if the reference count reaches 0.
+/*
+
+C function : gtk_text_attributes_unref
+*/
 func (recv *TextAttributes) Unref() {
 	C.gtk_text_attributes_unref((*C.GtkTextAttributes)(recv.native))
 
@@ -11215,7 +11614,14 @@ func (recv *TextIter) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// BackwardChar is a wrapper around the C function gtk_text_iter_backward_char.
+// Moves backward by one character offset. Returns %TRUE if movement
+// was possible; if @iter was the first in the buffer (character
+// offset 0), gtk_text_iter_backward_char() returns %FALSE for convenience when
+// writing loops.
+/*
+
+C function : gtk_text_iter_backward_char
+*/
 func (recv *TextIter) BackwardChar() bool {
 	retC := C.gtk_text_iter_backward_char((*C.GtkTextIter)(recv.native))
 	retGo := retC == C.TRUE
@@ -11223,7 +11629,16 @@ func (recv *TextIter) BackwardChar() bool {
 	return retGo
 }
 
-// BackwardChars is a wrapper around the C function gtk_text_iter_backward_chars.
+// Moves @count characters backward, if possible (if @count would move
+// past the start or end of the buffer, moves to the start or end of
+// the buffer).  The return value indicates whether the iterator moved
+// onto a dereferenceable position; if the iterator didn’t move, or
+// moved onto the end iterator, then %FALSE is returned. If @count is 0,
+// the function does nothing and returns %FALSE.
+/*
+
+C function : gtk_text_iter_backward_chars
+*/
 func (recv *TextIter) BackwardChars(count int32) bool {
 	c_count := (C.gint)(count)
 
@@ -11233,7 +11648,11 @@ func (recv *TextIter) BackwardChars(count int32) bool {
 	return retGo
 }
 
-// BackwardCursorPosition is a wrapper around the C function gtk_text_iter_backward_cursor_position.
+// Like gtk_text_iter_forward_cursor_position(), but moves backward.
+/*
+
+C function : gtk_text_iter_backward_cursor_position
+*/
 func (recv *TextIter) BackwardCursorPosition() bool {
 	retC := C.gtk_text_iter_backward_cursor_position((*C.GtkTextIter)(recv.native))
 	retGo := retC == C.TRUE
@@ -11241,7 +11660,12 @@ func (recv *TextIter) BackwardCursorPosition() bool {
 	return retGo
 }
 
-// BackwardCursorPositions is a wrapper around the C function gtk_text_iter_backward_cursor_positions.
+// Moves up to @count cursor positions. See
+// gtk_text_iter_forward_cursor_position() for details.
+/*
+
+C function : gtk_text_iter_backward_cursor_positions
+*/
 func (recv *TextIter) BackwardCursorPositions(count int32) bool {
 	c_count := (C.gint)(count)
 
@@ -11253,7 +11677,17 @@ func (recv *TextIter) BackwardCursorPositions(count int32) bool {
 
 // Unsupported : gtk_text_iter_backward_find_char : unsupported parameter pred : no type generator for TextCharPredicate (GtkTextCharPredicate) for param pred
 
-// BackwardLine is a wrapper around the C function gtk_text_iter_backward_line.
+// Moves @iter to the start of the previous line. Returns %TRUE if
+// @iter could be moved; i.e. if @iter was at character offset 0, this
+// function returns %FALSE. Therefore if @iter was already on line 0,
+// but not at the start of the line, @iter is snapped to the start of
+// the line and the function returns %TRUE. (Note that this implies that
+// in a loop calling this function, the line number may not change on
+// every iteration, if your first iteration is on line 0.)
+/*
+
+C function : gtk_text_iter_backward_line
+*/
 func (recv *TextIter) BackwardLine() bool {
 	retC := C.gtk_text_iter_backward_line((*C.GtkTextIter)(recv.native))
 	retGo := retC == C.TRUE
@@ -11261,7 +11695,17 @@ func (recv *TextIter) BackwardLine() bool {
 	return retGo
 }
 
-// BackwardLines is a wrapper around the C function gtk_text_iter_backward_lines.
+// Moves @count lines backward, if possible (if @count would move
+// past the start or end of the buffer, moves to the start or end of
+// the buffer).  The return value indicates whether the iterator moved
+// onto a dereferenceable position; if the iterator didn’t move, or
+// moved onto the end iterator, then %FALSE is returned. If @count is 0,
+// the function does nothing and returns %FALSE. If @count is negative,
+// moves forward by 0 - @count lines.
+/*
+
+C function : gtk_text_iter_backward_lines
+*/
 func (recv *TextIter) BackwardLines(count int32) bool {
 	c_count := (C.gint)(count)
 
@@ -11271,7 +11715,14 @@ func (recv *TextIter) BackwardLines(count int32) bool {
 	return retGo
 }
 
-// BackwardSearch is a wrapper around the C function gtk_text_iter_backward_search.
+// Same as gtk_text_iter_forward_search(), but moves backward.
+//
+// @match_end will never be set to a #GtkTextIter located after @iter, even if
+// there is a possible @match_start before or at @iter.
+/*
+
+C function : gtk_text_iter_backward_search
+*/
 func (recv *TextIter) BackwardSearch(str string, flags TextSearchFlags, limit *TextIter) (bool, *TextIter, *TextIter) {
 	c_str := C.CString(str)
 	defer C.free(unsafe.Pointer(c_str))
@@ -11297,7 +11748,15 @@ func (recv *TextIter) BackwardSearch(str string, flags TextSearchFlags, limit *T
 	return retGo, matchStart, matchEnd
 }
 
-// BackwardSentenceStart is a wrapper around the C function gtk_text_iter_backward_sentence_start.
+// Moves backward to the previous sentence start; if @iter is already at
+// the start of a sentence, moves backward to the next one.  Sentence
+// boundaries are determined by Pango and should be correct for nearly
+// any language (if not, the correct fix would be to the Pango text
+// boundary algorithms).
+/*
+
+C function : gtk_text_iter_backward_sentence_start
+*/
 func (recv *TextIter) BackwardSentenceStart() bool {
 	retC := C.gtk_text_iter_backward_sentence_start((*C.GtkTextIter)(recv.native))
 	retGo := retC == C.TRUE
@@ -11305,7 +11764,13 @@ func (recv *TextIter) BackwardSentenceStart() bool {
 	return retGo
 }
 
-// BackwardSentenceStarts is a wrapper around the C function gtk_text_iter_backward_sentence_starts.
+// Calls gtk_text_iter_backward_sentence_start() up to @count times,
+// or until it returns %FALSE. If @count is negative, moves forward
+// instead of backward.
+/*
+
+C function : gtk_text_iter_backward_sentence_starts
+*/
 func (recv *TextIter) BackwardSentenceStarts(count int32) bool {
 	c_count := (C.gint)(count)
 
@@ -11315,7 +11780,17 @@ func (recv *TextIter) BackwardSentenceStarts(count int32) bool {
 	return retGo
 }
 
-// BackwardToTagToggle is a wrapper around the C function gtk_text_iter_backward_to_tag_toggle.
+// Moves backward to the next toggle (on or off) of the
+// #GtkTextTag @tag, or to the next toggle of any tag if
+// @tag is %NULL. If no matching tag toggles are found,
+// returns %FALSE, otherwise %TRUE. Does not return toggles
+// located at @iter, only toggles before @iter. Sets @iter
+// to the location of the toggle, or the start of the buffer
+// if no toggle is found.
+/*
+
+C function : gtk_text_iter_backward_to_tag_toggle
+*/
 func (recv *TextIter) BackwardToTagToggle(tag *TextTag) bool {
 	c_tag := (*C.GtkTextTag)(C.NULL)
 	if tag != nil {
@@ -11328,7 +11803,15 @@ func (recv *TextIter) BackwardToTagToggle(tag *TextTag) bool {
 	return retGo
 }
 
-// BackwardWordStart is a wrapper around the C function gtk_text_iter_backward_word_start.
+// Moves backward to the previous word start. (If @iter is currently on a
+// word start, moves backward to the next one after that.) Word breaks
+// are determined by Pango and should be correct for nearly any
+// language (if not, the correct fix would be to the Pango word break
+// algorithms).
+/*
+
+C function : gtk_text_iter_backward_word_start
+*/
 func (recv *TextIter) BackwardWordStart() bool {
 	retC := C.gtk_text_iter_backward_word_start((*C.GtkTextIter)(recv.native))
 	retGo := retC == C.TRUE
@@ -11336,7 +11819,11 @@ func (recv *TextIter) BackwardWordStart() bool {
 	return retGo
 }
 
-// BackwardWordStarts is a wrapper around the C function gtk_text_iter_backward_word_starts.
+// Calls gtk_text_iter_backward_word_start() up to @count times.
+/*
+
+C function : gtk_text_iter_backward_word_starts
+*/
 func (recv *TextIter) BackwardWordStarts(count int32) bool {
 	c_count := (C.gint)(count)
 
@@ -11346,7 +11833,19 @@ func (recv *TextIter) BackwardWordStarts(count int32) bool {
 	return retGo
 }
 
-// BeginsTag is a wrapper around the C function gtk_text_iter_begins_tag.
+// Returns %TRUE if @tag is toggled on at exactly this point. If @tag
+// is %NULL, returns %TRUE if any tag is toggled on at this point.
+//
+// Note that if gtk_text_iter_begins_tag() returns %TRUE, it means that @iter is
+// at the beginning of the tagged range, and that the
+// character at @iter is inside the tagged range. In other
+// words, unlike gtk_text_iter_ends_tag(), if gtk_text_iter_begins_tag() returns
+// %TRUE, gtk_text_iter_has_tag() will also return %TRUE for the same
+// parameters.
+/*
+
+C function : gtk_text_iter_begins_tag
+*/
 func (recv *TextIter) BeginsTag(tag *TextTag) bool {
 	c_tag := (*C.GtkTextTag)(C.NULL)
 	if tag != nil {
@@ -11359,7 +11858,16 @@ func (recv *TextIter) BeginsTag(tag *TextTag) bool {
 	return retGo
 }
 
-// CanInsert is a wrapper around the C function gtk_text_iter_can_insert.
+// Considering the default editability of the buffer, and tags that
+// affect editability, determines whether text inserted at @iter would
+// be editable. If text inserted at @iter would be editable then the
+// user should be allowed to insert text at @iter.
+// gtk_text_buffer_insert_interactive() uses this function to decide
+// whether insertions are allowed at a given position.
+/*
+
+C function : gtk_text_iter_can_insert
+*/
 func (recv *TextIter) CanInsert(defaultEditability bool) bool {
 	c_default_editability :=
 		boolToGboolean(defaultEditability)
@@ -11370,7 +11878,14 @@ func (recv *TextIter) CanInsert(defaultEditability bool) bool {
 	return retGo
 }
 
-// Compare is a wrapper around the C function gtk_text_iter_compare.
+// A qsort()-style function that returns negative if @lhs is less than
+// @rhs, positive if @lhs is greater than @rhs, and 0 if they’re equal.
+// Ordering is in character offset order, i.e. the first character in the buffer
+// is less than the second character in the buffer.
+/*
+
+C function : gtk_text_iter_compare
+*/
 func (recv *TextIter) Compare(rhs *TextIter) int32 {
 	c_rhs := (*C.GtkTextIter)(C.NULL)
 	if rhs != nil {
@@ -11383,7 +11898,14 @@ func (recv *TextIter) Compare(rhs *TextIter) int32 {
 	return retGo
 }
 
-// Copy is a wrapper around the C function gtk_text_iter_copy.
+// Creates a dynamically-allocated copy of an iterator. This function
+// is not useful in applications, because iterators can be copied with a
+// simple assignment (`GtkTextIter i = j;`). The
+// function is used by language bindings.
+/*
+
+C function : gtk_text_iter_copy
+*/
 func (recv *TextIter) Copy() *TextIter {
 	retC := C.gtk_text_iter_copy((*C.GtkTextIter)(recv.native))
 	retGo := TextIterNewFromC(unsafe.Pointer(retC))
@@ -11391,7 +11913,22 @@ func (recv *TextIter) Copy() *TextIter {
 	return retGo
 }
 
-// Editable is a wrapper around the C function gtk_text_iter_editable.
+// Returns whether the character at @iter is within an editable region
+// of text.  Non-editable text is “locked” and can’t be changed by the
+// user via #GtkTextView. This function is simply a convenience
+// wrapper around gtk_text_iter_get_attributes(). If no tags applied
+// to this text affect editability, @default_setting will be returned.
+//
+// You don’t want to use this function to decide whether text can be
+// inserted at @iter, because for insertion you don’t want to know
+// whether the char at @iter is inside an editable range, you want to
+// know whether a new character inserted at @iter would be inside an
+// editable range. Use gtk_text_iter_can_insert() to handle this
+// case.
+/*
+
+C function : gtk_text_iter_editable
+*/
 func (recv *TextIter) Editable(defaultSetting bool) bool {
 	c_default_setting :=
 		boolToGboolean(defaultSetting)
@@ -11402,7 +11939,18 @@ func (recv *TextIter) Editable(defaultSetting bool) bool {
 	return retGo
 }
 
-// EndsLine is a wrapper around the C function gtk_text_iter_ends_line.
+// Returns %TRUE if @iter points to the start of the paragraph
+// delimiter characters for a line (delimiters will be either a
+// newline, a carriage return, a carriage return followed by a
+// newline, or a Unicode paragraph separator character). Note that an
+// iterator pointing to the \n of a \r\n pair will not be counted as
+// the end of a line, the line ends before the \r. The end iterator is
+// considered to be at the end of a line, even though there are no
+// paragraph delimiter chars there.
+/*
+
+C function : gtk_text_iter_ends_line
+*/
 func (recv *TextIter) EndsLine() bool {
 	retC := C.gtk_text_iter_ends_line((*C.GtkTextIter)(recv.native))
 	retGo := retC == C.TRUE
@@ -11410,7 +11958,14 @@ func (recv *TextIter) EndsLine() bool {
 	return retGo
 }
 
-// EndsSentence is a wrapper around the C function gtk_text_iter_ends_sentence.
+// Determines whether @iter ends a sentence.  Sentence boundaries are
+// determined by Pango and should be correct for nearly any language
+// (if not, the correct fix would be to the Pango text boundary
+// algorithms).
+/*
+
+C function : gtk_text_iter_ends_sentence
+*/
 func (recv *TextIter) EndsSentence() bool {
 	retC := C.gtk_text_iter_ends_sentence((*C.GtkTextIter)(recv.native))
 	retGo := retC == C.TRUE
@@ -11418,7 +11973,18 @@ func (recv *TextIter) EndsSentence() bool {
 	return retGo
 }
 
-// EndsTag is a wrapper around the C function gtk_text_iter_ends_tag.
+// Returns %TRUE if @tag is toggled off at exactly this point. If @tag
+// is %NULL, returns %TRUE if any tag is toggled off at this point.
+//
+// Note that if gtk_text_iter_ends_tag() returns %TRUE, it means that @iter is
+// at the end of the tagged range, but that the character
+// at @iter is outside the tagged range. In other words,
+// unlike gtk_text_iter_starts_tag(), if gtk_text_iter_ends_tag() returns %TRUE,
+// gtk_text_iter_has_tag() will return %FALSE for the same parameters.
+/*
+
+C function : gtk_text_iter_ends_tag
+*/
 func (recv *TextIter) EndsTag(tag *TextTag) bool {
 	c_tag := (*C.GtkTextTag)(C.NULL)
 	if tag != nil {
@@ -11431,7 +11997,14 @@ func (recv *TextIter) EndsTag(tag *TextTag) bool {
 	return retGo
 }
 
-// EndsWord is a wrapper around the C function gtk_text_iter_ends_word.
+// Determines whether @iter ends a natural-language word.  Word breaks
+// are determined by Pango and should be correct for nearly any
+// language (if not, the correct fix would be to the Pango word break
+// algorithms).
+/*
+
+C function : gtk_text_iter_ends_word
+*/
 func (recv *TextIter) EndsWord() bool {
 	retC := C.gtk_text_iter_ends_word((*C.GtkTextIter)(recv.native))
 	retGo := retC == C.TRUE
@@ -11439,7 +12012,15 @@ func (recv *TextIter) EndsWord() bool {
 	return retGo
 }
 
-// Equal is a wrapper around the C function gtk_text_iter_equal.
+// Tests whether two iterators are equal, using the fastest possible
+// mechanism. This function is very fast; you can expect it to perform
+// better than e.g. getting the character offset for each iterator and
+// comparing the offsets yourself. Also, it’s a bit faster than
+// gtk_text_iter_compare().
+/*
+
+C function : gtk_text_iter_equal
+*/
 func (recv *TextIter) Equal(rhs *TextIter) bool {
 	c_rhs := (*C.GtkTextIter)(C.NULL)
 	if rhs != nil {
@@ -11452,7 +12033,17 @@ func (recv *TextIter) Equal(rhs *TextIter) bool {
 	return retGo
 }
 
-// ForwardChar is a wrapper around the C function gtk_text_iter_forward_char.
+// Moves @iter forward by one character offset. Note that images
+// embedded in the buffer occupy 1 character slot, so
+// gtk_text_iter_forward_char() may actually move onto an image instead
+// of a character, if you have images in your buffer.  If @iter is the
+// end iterator or one character before it, @iter will now point at
+// the end iterator, and gtk_text_iter_forward_char() returns %FALSE for
+// convenience when writing loops.
+/*
+
+C function : gtk_text_iter_forward_char
+*/
 func (recv *TextIter) ForwardChar() bool {
 	retC := C.gtk_text_iter_forward_char((*C.GtkTextIter)(recv.native))
 	retGo := retC == C.TRUE
@@ -11460,7 +12051,16 @@ func (recv *TextIter) ForwardChar() bool {
 	return retGo
 }
 
-// ForwardChars is a wrapper around the C function gtk_text_iter_forward_chars.
+// Moves @count characters if possible (if @count would move past the
+// start or end of the buffer, moves to the start or end of the
+// buffer). The return value indicates whether the new position of
+// @iter is different from its original position, and dereferenceable
+// (the last iterator in the buffer is not dereferenceable). If @count
+// is 0, the function does nothing and returns %FALSE.
+/*
+
+C function : gtk_text_iter_forward_chars
+*/
 func (recv *TextIter) ForwardChars(count int32) bool {
 	c_count := (C.gint)(count)
 
@@ -11470,7 +12070,20 @@ func (recv *TextIter) ForwardChars(count int32) bool {
 	return retGo
 }
 
-// ForwardCursorPosition is a wrapper around the C function gtk_text_iter_forward_cursor_position.
+// Moves @iter forward by a single cursor position. Cursor positions
+// are (unsurprisingly) positions where the cursor can appear. Perhaps
+// surprisingly, there may not be a cursor position between all
+// characters. The most common example for European languages would be
+// a carriage return/newline sequence. For some Unicode characters,
+// the equivalent of say the letter “a” with an accent mark will be
+// represented as two characters, first the letter then a "combining
+// mark" that causes the accent to be rendered; so the cursor can’t go
+// between those two characters. See also the #PangoLogAttr-struct and
+// pango_break() function.
+/*
+
+C function : gtk_text_iter_forward_cursor_position
+*/
 func (recv *TextIter) ForwardCursorPosition() bool {
 	retC := C.gtk_text_iter_forward_cursor_position((*C.GtkTextIter)(recv.native))
 	retGo := retC == C.TRUE
@@ -11478,7 +12091,12 @@ func (recv *TextIter) ForwardCursorPosition() bool {
 	return retGo
 }
 
-// ForwardCursorPositions is a wrapper around the C function gtk_text_iter_forward_cursor_positions.
+// Moves up to @count cursor positions. See
+// gtk_text_iter_forward_cursor_position() for details.
+/*
+
+C function : gtk_text_iter_forward_cursor_positions
+*/
 func (recv *TextIter) ForwardCursorPositions(count int32) bool {
 	c_count := (C.gint)(count)
 
@@ -11490,7 +12108,14 @@ func (recv *TextIter) ForwardCursorPositions(count int32) bool {
 
 // Unsupported : gtk_text_iter_forward_find_char : unsupported parameter pred : no type generator for TextCharPredicate (GtkTextCharPredicate) for param pred
 
-// ForwardLine is a wrapper around the C function gtk_text_iter_forward_line.
+// Moves @iter to the start of the next line. If the iter is already on the
+// last line of the buffer, moves the iter to the end of the current line.
+// If after the operation, the iter is at the end of the buffer and not
+// dereferencable, returns %FALSE. Otherwise, returns %TRUE.
+/*
+
+C function : gtk_text_iter_forward_line
+*/
 func (recv *TextIter) ForwardLine() bool {
 	retC := C.gtk_text_iter_forward_line((*C.GtkTextIter)(recv.native))
 	retGo := retC == C.TRUE
@@ -11498,7 +12123,17 @@ func (recv *TextIter) ForwardLine() bool {
 	return retGo
 }
 
-// ForwardLines is a wrapper around the C function gtk_text_iter_forward_lines.
+// Moves @count lines forward, if possible (if @count would move
+// past the start or end of the buffer, moves to the start or end of
+// the buffer).  The return value indicates whether the iterator moved
+// onto a dereferenceable position; if the iterator didn’t move, or
+// moved onto the end iterator, then %FALSE is returned. If @count is 0,
+// the function does nothing and returns %FALSE. If @count is negative,
+// moves backward by 0 - @count lines.
+/*
+
+C function : gtk_text_iter_forward_lines
+*/
 func (recv *TextIter) ForwardLines(count int32) bool {
 	c_count := (C.gint)(count)
 
@@ -11508,7 +12143,19 @@ func (recv *TextIter) ForwardLines(count int32) bool {
 	return retGo
 }
 
-// ForwardSearch is a wrapper around the C function gtk_text_iter_forward_search.
+// Searches forward for @str. Any match is returned by setting
+// @match_start to the first character of the match and @match_end to the
+// first character after the match. The search will not continue past
+// @limit. Note that a search is a linear or O(n) operation, so you
+// may wish to use @limit to avoid locking up your UI on large
+// buffers.
+//
+// @match_start will never be set to a #GtkTextIter located before @iter, even if
+// there is a possible @match_end after or at @iter.
+/*
+
+C function : gtk_text_iter_forward_search
+*/
 func (recv *TextIter) ForwardSearch(str string, flags TextSearchFlags, limit *TextIter) (bool, *TextIter, *TextIter) {
 	c_str := C.CString(str)
 	defer C.free(unsafe.Pointer(c_str))
@@ -11534,7 +12181,15 @@ func (recv *TextIter) ForwardSearch(str string, flags TextSearchFlags, limit *Te
 	return retGo, matchStart, matchEnd
 }
 
-// ForwardSentenceEnd is a wrapper around the C function gtk_text_iter_forward_sentence_end.
+// Moves forward to the next sentence end. (If @iter is at the end of
+// a sentence, moves to the next end of sentence.)  Sentence
+// boundaries are determined by Pango and should be correct for nearly
+// any language (if not, the correct fix would be to the Pango text
+// boundary algorithms).
+/*
+
+C function : gtk_text_iter_forward_sentence_end
+*/
 func (recv *TextIter) ForwardSentenceEnd() bool {
 	retC := C.gtk_text_iter_forward_sentence_end((*C.GtkTextIter)(recv.native))
 	retGo := retC == C.TRUE
@@ -11542,7 +12197,13 @@ func (recv *TextIter) ForwardSentenceEnd() bool {
 	return retGo
 }
 
-// ForwardSentenceEnds is a wrapper around the C function gtk_text_iter_forward_sentence_ends.
+// Calls gtk_text_iter_forward_sentence_end() @count times (or until
+// gtk_text_iter_forward_sentence_end() returns %FALSE). If @count is
+// negative, moves backward instead of forward.
+/*
+
+C function : gtk_text_iter_forward_sentence_ends
+*/
 func (recv *TextIter) ForwardSentenceEnds(count int32) bool {
 	c_count := (C.gint)(count)
 
@@ -11552,14 +12213,31 @@ func (recv *TextIter) ForwardSentenceEnds(count int32) bool {
 	return retGo
 }
 
-// ForwardToEnd is a wrapper around the C function gtk_text_iter_forward_to_end.
+// Moves @iter forward to the “end iterator,” which points one past the last
+// valid character in the buffer. gtk_text_iter_get_char() called on the
+// end iterator returns 0, which is convenient for writing loops.
+/*
+
+C function : gtk_text_iter_forward_to_end
+*/
 func (recv *TextIter) ForwardToEnd() {
 	C.gtk_text_iter_forward_to_end((*C.GtkTextIter)(recv.native))
 
 	return
 }
 
-// ForwardToLineEnd is a wrapper around the C function gtk_text_iter_forward_to_line_end.
+// Moves the iterator to point to the paragraph delimiter characters,
+// which will be either a newline, a carriage return, a carriage
+// return/newline in sequence, or the Unicode paragraph separator
+// character. If the iterator is already at the paragraph delimiter
+// characters, moves to the paragraph delimiter characters for the
+// next line. If @iter is on the last line in the buffer, which does
+// not end in paragraph delimiters, moves to the end iterator (end of
+// the last line), and returns %FALSE.
+/*
+
+C function : gtk_text_iter_forward_to_line_end
+*/
 func (recv *TextIter) ForwardToLineEnd() bool {
 	retC := C.gtk_text_iter_forward_to_line_end((*C.GtkTextIter)(recv.native))
 	retGo := retC == C.TRUE
@@ -11567,7 +12245,17 @@ func (recv *TextIter) ForwardToLineEnd() bool {
 	return retGo
 }
 
-// ForwardToTagToggle is a wrapper around the C function gtk_text_iter_forward_to_tag_toggle.
+// Moves forward to the next toggle (on or off) of the
+// #GtkTextTag @tag, or to the next toggle of any tag if
+// @tag is %NULL. If no matching tag toggles are found,
+// returns %FALSE, otherwise %TRUE. Does not return toggles
+// located at @iter, only toggles after @iter. Sets @iter to
+// the location of the toggle, or to the end of the buffer
+// if no toggle is found.
+/*
+
+C function : gtk_text_iter_forward_to_tag_toggle
+*/
 func (recv *TextIter) ForwardToTagToggle(tag *TextTag) bool {
 	c_tag := (*C.GtkTextTag)(C.NULL)
 	if tag != nil {
@@ -11580,7 +12268,15 @@ func (recv *TextIter) ForwardToTagToggle(tag *TextTag) bool {
 	return retGo
 }
 
-// ForwardWordEnd is a wrapper around the C function gtk_text_iter_forward_word_end.
+// Moves forward to the next word end. (If @iter is currently on a
+// word end, moves forward to the next one after that.) Word breaks
+// are determined by Pango and should be correct for nearly any
+// language (if not, the correct fix would be to the Pango word break
+// algorithms).
+/*
+
+C function : gtk_text_iter_forward_word_end
+*/
 func (recv *TextIter) ForwardWordEnd() bool {
 	retC := C.gtk_text_iter_forward_word_end((*C.GtkTextIter)(recv.native))
 	retGo := retC == C.TRUE
@@ -11588,7 +12284,11 @@ func (recv *TextIter) ForwardWordEnd() bool {
 	return retGo
 }
 
-// ForwardWordEnds is a wrapper around the C function gtk_text_iter_forward_word_ends.
+// Calls gtk_text_iter_forward_word_end() up to @count times.
+/*
+
+C function : gtk_text_iter_forward_word_ends
+*/
 func (recv *TextIter) ForwardWordEnds(count int32) bool {
 	c_count := (C.gint)(count)
 
@@ -11598,14 +12298,32 @@ func (recv *TextIter) ForwardWordEnds(count int32) bool {
 	return retGo
 }
 
-// Free is a wrapper around the C function gtk_text_iter_free.
+// Free an iterator allocated on the heap. This function
+// is intended for use in language bindings, and is not
+// especially useful for applications, because iterators can
+// simply be allocated on the stack.
+/*
+
+C function : gtk_text_iter_free
+*/
 func (recv *TextIter) Free() {
 	C.gtk_text_iter_free((*C.GtkTextIter)(recv.native))
 
 	return
 }
 
-// GetAttributes is a wrapper around the C function gtk_text_iter_get_attributes.
+// Computes the effect of any tags applied to this spot in the
+// text. The @values parameter should be initialized to the default
+// settings you wish to use if no tags are in effect. You’d typically
+// obtain the defaults from gtk_text_view_get_default_attributes().
+//
+// gtk_text_iter_get_attributes() will modify @values, applying the
+// effects of any tags present at @iter. If any tags affected @values,
+// the function returns %TRUE.
+/*
+
+C function : gtk_text_iter_get_attributes
+*/
 func (recv *TextIter) GetAttributes() (bool, *TextAttributes) {
 	var c_values C.GtkTextAttributes
 
@@ -11617,7 +12335,11 @@ func (recv *TextIter) GetAttributes() (bool, *TextAttributes) {
 	return retGo, values
 }
 
-// GetBuffer is a wrapper around the C function gtk_text_iter_get_buffer.
+// Returns the #GtkTextBuffer this iterator is associated with.
+/*
+
+C function : gtk_text_iter_get_buffer
+*/
 func (recv *TextIter) GetBuffer() *TextBuffer {
 	retC := C.gtk_text_iter_get_buffer((*C.GtkTextIter)(recv.native))
 	retGo := TextBufferNewFromC(unsafe.Pointer(retC))
@@ -11625,7 +12347,12 @@ func (recv *TextIter) GetBuffer() *TextBuffer {
 	return retGo
 }
 
-// GetBytesInLine is a wrapper around the C function gtk_text_iter_get_bytes_in_line.
+// Returns the number of bytes in the line containing @iter,
+// including the paragraph delimiters.
+/*
+
+C function : gtk_text_iter_get_bytes_in_line
+*/
 func (recv *TextIter) GetBytesInLine() int32 {
 	retC := C.gtk_text_iter_get_bytes_in_line((*C.GtkTextIter)(recv.native))
 	retGo := (int32)(retC)
@@ -11633,7 +12360,17 @@ func (recv *TextIter) GetBytesInLine() int32 {
 	return retGo
 }
 
-// GetChar is a wrapper around the C function gtk_text_iter_get_char.
+// The Unicode character at this iterator is returned.  (Equivalent to
+// operator* on a C++ iterator.)  If the element at this iterator is a
+// non-character element, such as an image embedded in the buffer, the
+// Unicode “unknown” character 0xFFFC is returned. If invoked on
+// the end iterator, zero is returned; zero is not a valid Unicode character.
+// So you can write a loop which ends when gtk_text_iter_get_char()
+// returns 0.
+/*
+
+C function : gtk_text_iter_get_char
+*/
 func (recv *TextIter) GetChar() rune {
 	retC := C.gtk_text_iter_get_char((*C.GtkTextIter)(recv.native))
 	retGo := (rune)(retC)
@@ -11641,7 +12378,12 @@ func (recv *TextIter) GetChar() rune {
 	return retGo
 }
 
-// GetCharsInLine is a wrapper around the C function gtk_text_iter_get_chars_in_line.
+// Returns the number of characters in the line containing @iter,
+// including the paragraph delimiters.
+/*
+
+C function : gtk_text_iter_get_chars_in_line
+*/
 func (recv *TextIter) GetCharsInLine() int32 {
 	retC := C.gtk_text_iter_get_chars_in_line((*C.GtkTextIter)(recv.native))
 	retGo := (int32)(retC)
@@ -11649,7 +12391,13 @@ func (recv *TextIter) GetCharsInLine() int32 {
 	return retGo
 }
 
-// GetChildAnchor is a wrapper around the C function gtk_text_iter_get_child_anchor.
+// If the location at @iter contains a child anchor, the
+// anchor is returned (with no new reference count added). Otherwise,
+// %NULL is returned.
+/*
+
+C function : gtk_text_iter_get_child_anchor
+*/
 func (recv *TextIter) GetChildAnchor() *TextChildAnchor {
 	retC := C.gtk_text_iter_get_child_anchor((*C.GtkTextIter)(recv.native))
 	retGo := TextChildAnchorNewFromC(unsafe.Pointer(retC))
@@ -11657,7 +12405,14 @@ func (recv *TextIter) GetChildAnchor() *TextChildAnchor {
 	return retGo
 }
 
-// GetLanguage is a wrapper around the C function gtk_text_iter_get_language.
+// A convenience wrapper around gtk_text_iter_get_attributes(),
+// which returns the language in effect at @iter. If no tags affecting
+// language apply to @iter, the return value is identical to that of
+// gtk_get_default_language().
+/*
+
+C function : gtk_text_iter_get_language
+*/
 func (recv *TextIter) GetLanguage() *pango.Language {
 	retC := C.gtk_text_iter_get_language((*C.GtkTextIter)(recv.native))
 	retGo := pango.LanguageNewFromC(unsafe.Pointer(retC))
@@ -11665,7 +12420,13 @@ func (recv *TextIter) GetLanguage() *pango.Language {
 	return retGo
 }
 
-// GetLine is a wrapper around the C function gtk_text_iter_get_line.
+// Returns the line number containing the iterator. Lines in
+// a #GtkTextBuffer are numbered beginning with 0 for the first
+// line in the buffer.
+/*
+
+C function : gtk_text_iter_get_line
+*/
 func (recv *TextIter) GetLine() int32 {
 	retC := C.gtk_text_iter_get_line((*C.GtkTextIter)(recv.native))
 	retGo := (int32)(retC)
@@ -11673,7 +12434,15 @@ func (recv *TextIter) GetLine() int32 {
 	return retGo
 }
 
-// GetLineIndex is a wrapper around the C function gtk_text_iter_get_line_index.
+// Returns the byte index of the iterator, counting
+// from the start of a newline-terminated line.
+// Remember that #GtkTextBuffer encodes text in
+// UTF-8, and that characters can require a variable
+// number of bytes to represent.
+/*
+
+C function : gtk_text_iter_get_line_index
+*/
 func (recv *TextIter) GetLineIndex() int32 {
 	retC := C.gtk_text_iter_get_line_index((*C.GtkTextIter)(recv.native))
 	retGo := (int32)(retC)
@@ -11681,7 +12450,13 @@ func (recv *TextIter) GetLineIndex() int32 {
 	return retGo
 }
 
-// GetLineOffset is a wrapper around the C function gtk_text_iter_get_line_offset.
+// Returns the character offset of the iterator,
+// counting from the start of a newline-terminated line.
+// The first character on the line has offset 0.
+/*
+
+C function : gtk_text_iter_get_line_offset
+*/
 func (recv *TextIter) GetLineOffset() int32 {
 	retC := C.gtk_text_iter_get_line_offset((*C.GtkTextIter)(recv.native))
 	retGo := (int32)(retC)
@@ -11689,7 +12464,15 @@ func (recv *TextIter) GetLineOffset() int32 {
 	return retGo
 }
 
-// GetMarks is a wrapper around the C function gtk_text_iter_get_marks.
+// Returns a list of all #GtkTextMark at this location. Because marks
+// are not iterable (they don’t take up any "space" in the buffer,
+// they are just marks in between iterable locations), multiple marks
+// can exist in the same place. The returned list is not in any
+// meaningful order.
+/*
+
+C function : gtk_text_iter_get_marks
+*/
 func (recv *TextIter) GetMarks() *glib.SList {
 	retC := C.gtk_text_iter_get_marks((*C.GtkTextIter)(recv.native))
 	retGo := glib.SListNewFromC(unsafe.Pointer(retC))
@@ -11697,7 +12480,15 @@ func (recv *TextIter) GetMarks() *glib.SList {
 	return retGo
 }
 
-// GetOffset is a wrapper around the C function gtk_text_iter_get_offset.
+// Returns the character offset of an iterator.
+// Each character in a #GtkTextBuffer has an offset,
+// starting with 0 for the first character in the buffer.
+// Use gtk_text_buffer_get_iter_at_offset() to convert an
+// offset back into an iterator.
+/*
+
+C function : gtk_text_iter_get_offset
+*/
 func (recv *TextIter) GetOffset() int32 {
 	retC := C.gtk_text_iter_get_offset((*C.GtkTextIter)(recv.native))
 	retGo := (int32)(retC)
@@ -11705,7 +12496,13 @@ func (recv *TextIter) GetOffset() int32 {
 	return retGo
 }
 
-// GetPixbuf is a wrapper around the C function gtk_text_iter_get_pixbuf.
+// If the element at @iter is a pixbuf, the pixbuf is returned
+// (with no new reference count added). Otherwise,
+// %NULL is returned.
+/*
+
+C function : gtk_text_iter_get_pixbuf
+*/
 func (recv *TextIter) GetPixbuf() *gdkpixbuf.Pixbuf {
 	retC := C.gtk_text_iter_get_pixbuf((*C.GtkTextIter)(recv.native))
 	retGo := gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
@@ -11713,7 +12510,18 @@ func (recv *TextIter) GetPixbuf() *gdkpixbuf.Pixbuf {
 	return retGo
 }
 
-// GetSlice is a wrapper around the C function gtk_text_iter_get_slice.
+// Returns the text in the given range. A “slice” is an array of
+// characters encoded in UTF-8 format, including the Unicode “unknown”
+// character 0xFFFC for iterable non-character elements in the buffer,
+// such as images.  Because images are encoded in the slice, byte and
+// character offsets in the returned array will correspond to byte
+// offsets in the text buffer. Note that 0xFFFC can occur in normal
+// text as well, so it is not a reliable indicator that a pixbuf or
+// widget is in the buffer.
+/*
+
+C function : gtk_text_iter_get_slice
+*/
 func (recv *TextIter) GetSlice(end *TextIter) string {
 	c_end := (*C.GtkTextIter)(C.NULL)
 	if end != nil {
@@ -11727,7 +12535,14 @@ func (recv *TextIter) GetSlice(end *TextIter) string {
 	return retGo
 }
 
-// GetTags is a wrapper around the C function gtk_text_iter_get_tags.
+// Returns a list of tags that apply to @iter, in ascending order of
+// priority (highest-priority tags are last). The #GtkTextTag in the
+// list don’t have a reference added, but you have to free the list
+// itself.
+/*
+
+C function : gtk_text_iter_get_tags
+*/
 func (recv *TextIter) GetTags() *glib.SList {
 	retC := C.gtk_text_iter_get_tags((*C.GtkTextIter)(recv.native))
 	retGo := glib.SListNewFromC(unsafe.Pointer(retC))
@@ -11735,7 +12550,15 @@ func (recv *TextIter) GetTags() *glib.SList {
 	return retGo
 }
 
-// GetText is a wrapper around the C function gtk_text_iter_get_text.
+// Returns text in the given range.  If the range
+// contains non-text elements such as images, the character and byte
+// offsets in the returned string will not correspond to character and
+// byte offsets in the buffer. If you want offsets to correspond, see
+// gtk_text_iter_get_slice().
+/*
+
+C function : gtk_text_iter_get_text
+*/
 func (recv *TextIter) GetText(end *TextIter) string {
 	c_end := (*C.GtkTextIter)(C.NULL)
 	if end != nil {
@@ -11749,7 +12572,16 @@ func (recv *TextIter) GetText(end *TextIter) string {
 	return retGo
 }
 
-// GetToggledTags is a wrapper around the C function gtk_text_iter_get_toggled_tags.
+// Returns a list of #GtkTextTag that are toggled on or off at this
+// point.  (If @toggled_on is %TRUE, the list contains tags that are
+// toggled on.) If a tag is toggled on at @iter, then some non-empty
+// range of characters following @iter has that tag applied to it.  If
+// a tag is toggled off, then some non-empty range following @iter
+// does not have the tag applied to it.
+/*
+
+C function : gtk_text_iter_get_toggled_tags
+*/
 func (recv *TextIter) GetToggledTags(toggledOn bool) *glib.SList {
 	c_toggled_on :=
 		boolToGboolean(toggledOn)
@@ -11760,7 +12592,14 @@ func (recv *TextIter) GetToggledTags(toggledOn bool) *glib.SList {
 	return retGo
 }
 
-// GetVisibleLineIndex is a wrapper around the C function gtk_text_iter_get_visible_line_index.
+// Returns the number of bytes from the start of the
+// line to the given @iter, not counting bytes that
+// are invisible due to tags with the “invisible” flag
+// toggled on.
+/*
+
+C function : gtk_text_iter_get_visible_line_index
+*/
 func (recv *TextIter) GetVisibleLineIndex() int32 {
 	retC := C.gtk_text_iter_get_visible_line_index((*C.GtkTextIter)(recv.native))
 	retGo := (int32)(retC)
@@ -11768,7 +12607,14 @@ func (recv *TextIter) GetVisibleLineIndex() int32 {
 	return retGo
 }
 
-// GetVisibleLineOffset is a wrapper around the C function gtk_text_iter_get_visible_line_offset.
+// Returns the offset in characters from the start of the
+// line to the given @iter, not counting characters that
+// are invisible due to tags with the “invisible” flag
+// toggled on.
+/*
+
+C function : gtk_text_iter_get_visible_line_offset
+*/
 func (recv *TextIter) GetVisibleLineOffset() int32 {
 	retC := C.gtk_text_iter_get_visible_line_offset((*C.GtkTextIter)(recv.native))
 	retGo := (int32)(retC)
@@ -11776,7 +12622,13 @@ func (recv *TextIter) GetVisibleLineOffset() int32 {
 	return retGo
 }
 
-// GetVisibleSlice is a wrapper around the C function gtk_text_iter_get_visible_slice.
+// Like gtk_text_iter_get_slice(), but invisible text is not included.
+// Invisible text is usually invisible because a #GtkTextTag with the
+// “invisible” attribute turned on has been applied to it.
+/*
+
+C function : gtk_text_iter_get_visible_slice
+*/
 func (recv *TextIter) GetVisibleSlice(end *TextIter) string {
 	c_end := (*C.GtkTextIter)(C.NULL)
 	if end != nil {
@@ -11790,7 +12642,13 @@ func (recv *TextIter) GetVisibleSlice(end *TextIter) string {
 	return retGo
 }
 
-// GetVisibleText is a wrapper around the C function gtk_text_iter_get_visible_text.
+// Like gtk_text_iter_get_text(), but invisible text is not included.
+// Invisible text is usually invisible because a #GtkTextTag with the
+// “invisible” attribute turned on has been applied to it.
+/*
+
+C function : gtk_text_iter_get_visible_text
+*/
 func (recv *TextIter) GetVisibleText(end *TextIter) string {
 	c_end := (*C.GtkTextIter)(C.NULL)
 	if end != nil {
@@ -11804,7 +12662,12 @@ func (recv *TextIter) GetVisibleText(end *TextIter) string {
 	return retGo
 }
 
-// HasTag is a wrapper around the C function gtk_text_iter_has_tag.
+// Returns %TRUE if @iter points to a character that is part of a range tagged
+// with @tag. See also gtk_text_iter_starts_tag() and gtk_text_iter_ends_tag().
+/*
+
+C function : gtk_text_iter_has_tag
+*/
 func (recv *TextIter) HasTag(tag *TextTag) bool {
 	c_tag := (*C.GtkTextTag)(C.NULL)
 	if tag != nil {
@@ -11817,7 +12680,12 @@ func (recv *TextIter) HasTag(tag *TextTag) bool {
 	return retGo
 }
 
-// InRange is a wrapper around the C function gtk_text_iter_in_range.
+// Checks whether @iter falls in the range [@start, @end).
+// @start and @end must be in ascending order.
+/*
+
+C function : gtk_text_iter_in_range
+*/
 func (recv *TextIter) InRange(start *TextIter, end *TextIter) bool {
 	c_start := (*C.GtkTextIter)(C.NULL)
 	if start != nil {
@@ -11835,7 +12703,15 @@ func (recv *TextIter) InRange(start *TextIter, end *TextIter) bool {
 	return retGo
 }
 
-// InsideSentence is a wrapper around the C function gtk_text_iter_inside_sentence.
+// Determines whether @iter is inside a sentence (as opposed to in
+// between two sentences, e.g. after a period and before the first
+// letter of the next sentence).  Sentence boundaries are determined
+// by Pango and should be correct for nearly any language (if not, the
+// correct fix would be to the Pango text boundary algorithms).
+/*
+
+C function : gtk_text_iter_inside_sentence
+*/
 func (recv *TextIter) InsideSentence() bool {
 	retC := C.gtk_text_iter_inside_sentence((*C.GtkTextIter)(recv.native))
 	retGo := retC == C.TRUE
@@ -11843,7 +12719,17 @@ func (recv *TextIter) InsideSentence() bool {
 	return retGo
 }
 
-// InsideWord is a wrapper around the C function gtk_text_iter_inside_word.
+// Determines whether the character pointed by @iter is part of a
+// natural-language word (as opposed to say inside some whitespace).  Word
+// breaks are determined by Pango and should be correct for nearly any language
+// (if not, the correct fix would be to the Pango word break algorithms).
+//
+// Note that if gtk_text_iter_starts_word() returns %TRUE, then this function
+// returns %TRUE too, since @iter points to the first character of the word.
+/*
+
+C function : gtk_text_iter_inside_word
+*/
 func (recv *TextIter) InsideWord() bool {
 	retC := C.gtk_text_iter_inside_word((*C.GtkTextIter)(recv.native))
 	retGo := retC == C.TRUE
@@ -11851,7 +12737,12 @@ func (recv *TextIter) InsideWord() bool {
 	return retGo
 }
 
-// IsCursorPosition is a wrapper around the C function gtk_text_iter_is_cursor_position.
+// See gtk_text_iter_forward_cursor_position() or #PangoLogAttr or
+// pango_break() for details on what a cursor position is.
+/*
+
+C function : gtk_text_iter_is_cursor_position
+*/
 func (recv *TextIter) IsCursorPosition() bool {
 	retC := C.gtk_text_iter_is_cursor_position((*C.GtkTextIter)(recv.native))
 	retGo := retC == C.TRUE
@@ -11859,7 +12750,14 @@ func (recv *TextIter) IsCursorPosition() bool {
 	return retGo
 }
 
-// IsEnd is a wrapper around the C function gtk_text_iter_is_end.
+// Returns %TRUE if @iter is the end iterator, i.e. one past the last
+// dereferenceable iterator in the buffer. gtk_text_iter_is_end() is
+// the most efficient way to check whether an iterator is the end
+// iterator.
+/*
+
+C function : gtk_text_iter_is_end
+*/
 func (recv *TextIter) IsEnd() bool {
 	retC := C.gtk_text_iter_is_end((*C.GtkTextIter)(recv.native))
 	retGo := retC == C.TRUE
@@ -11867,7 +12765,12 @@ func (recv *TextIter) IsEnd() bool {
 	return retGo
 }
 
-// IsStart is a wrapper around the C function gtk_text_iter_is_start.
+// Returns %TRUE if @iter is the first iterator in the buffer, that is
+// if @iter has a character offset of 0.
+/*
+
+C function : gtk_text_iter_is_start
+*/
 func (recv *TextIter) IsStart() bool {
 	retC := C.gtk_text_iter_is_start((*C.GtkTextIter)(recv.native))
 	retGo := retC == C.TRUE
@@ -11875,7 +12778,16 @@ func (recv *TextIter) IsStart() bool {
 	return retGo
 }
 
-// Order is a wrapper around the C function gtk_text_iter_order.
+// Swaps the value of @first and @second if @second comes before
+// @first in the buffer. That is, ensures that @first and @second are
+// in sequence. Most text buffer functions that take a range call this
+// automatically on your behalf, so there’s no real reason to call it yourself
+// in those cases. There are some exceptions, such as gtk_text_iter_in_range(),
+// that expect a pre-sorted range.
+/*
+
+C function : gtk_text_iter_order
+*/
 func (recv *TextIter) Order(second *TextIter) {
 	c_second := (*C.GtkTextIter)(C.NULL)
 	if second != nil {
@@ -11887,7 +12799,13 @@ func (recv *TextIter) Order(second *TextIter) {
 	return
 }
 
-// SetLine is a wrapper around the C function gtk_text_iter_set_line.
+// Moves iterator @iter to the start of the line @line_number.  If
+// @line_number is negative or larger than the number of lines in the
+// buffer, moves @iter to the start of the last line in the buffer.
+/*
+
+C function : gtk_text_iter_set_line
+*/
 func (recv *TextIter) SetLine(lineNumber int32) {
 	c_line_number := (C.gint)(lineNumber)
 
@@ -11896,7 +12814,14 @@ func (recv *TextIter) SetLine(lineNumber int32) {
 	return
 }
 
-// SetLineIndex is a wrapper around the C function gtk_text_iter_set_line_index.
+// Same as gtk_text_iter_set_line_offset(), but works with a
+// byte index. The given byte index must be at
+// the start of a character, it can’t be in the middle of a UTF-8
+// encoded character.
+/*
+
+C function : gtk_text_iter_set_line_index
+*/
 func (recv *TextIter) SetLineIndex(byteOnLine int32) {
 	c_byte_on_line := (C.gint)(byteOnLine)
 
@@ -11905,7 +12830,16 @@ func (recv *TextIter) SetLineIndex(byteOnLine int32) {
 	return
 }
 
-// SetLineOffset is a wrapper around the C function gtk_text_iter_set_line_offset.
+// Moves @iter within a line, to a new character
+// (not byte) offset. The given character offset must be less than or
+// equal to the number of characters in the line; if equal, @iter
+// moves to the start of the next line. See
+// gtk_text_iter_set_line_index() if you have a byte index rather than
+// a character offset.
+/*
+
+C function : gtk_text_iter_set_line_offset
+*/
 func (recv *TextIter) SetLineOffset(charOnLine int32) {
 	c_char_on_line := (C.gint)(charOnLine)
 
@@ -11914,7 +12848,12 @@ func (recv *TextIter) SetLineOffset(charOnLine int32) {
 	return
 }
 
-// SetOffset is a wrapper around the C function gtk_text_iter_set_offset.
+// Sets @iter to point to @char_offset. @char_offset counts from the start
+// of the entire text buffer, starting with 0.
+/*
+
+C function : gtk_text_iter_set_offset
+*/
 func (recv *TextIter) SetOffset(charOffset int32) {
 	c_char_offset := (C.gint)(charOffset)
 
@@ -11923,7 +12862,13 @@ func (recv *TextIter) SetOffset(charOffset int32) {
 	return
 }
 
-// SetVisibleLineIndex is a wrapper around the C function gtk_text_iter_set_visible_line_index.
+// Like gtk_text_iter_set_line_index(), but the index is in visible
+// bytes, i.e. text with a tag making it invisible is not counted
+// in the index.
+/*
+
+C function : gtk_text_iter_set_visible_line_index
+*/
 func (recv *TextIter) SetVisibleLineIndex(byteOnLine int32) {
 	c_byte_on_line := (C.gint)(byteOnLine)
 
@@ -11932,7 +12877,13 @@ func (recv *TextIter) SetVisibleLineIndex(byteOnLine int32) {
 	return
 }
 
-// SetVisibleLineOffset is a wrapper around the C function gtk_text_iter_set_visible_line_offset.
+// Like gtk_text_iter_set_line_offset(), but the offset is in visible
+// characters, i.e. text with a tag making it invisible is not
+// counted in the offset.
+/*
+
+C function : gtk_text_iter_set_visible_line_offset
+*/
 func (recv *TextIter) SetVisibleLineOffset(charOnLine int32) {
 	c_char_on_line := (C.gint)(charOnLine)
 
@@ -11941,7 +12892,15 @@ func (recv *TextIter) SetVisibleLineOffset(charOnLine int32) {
 	return
 }
 
-// StartsLine is a wrapper around the C function gtk_text_iter_starts_line.
+// Returns %TRUE if @iter begins a paragraph,
+// i.e. if gtk_text_iter_get_line_offset() would return 0.
+// However this function is potentially more efficient than
+// gtk_text_iter_get_line_offset() because it doesn’t have to compute
+// the offset, it just has to see whether it’s 0.
+/*
+
+C function : gtk_text_iter_starts_line
+*/
 func (recv *TextIter) StartsLine() bool {
 	retC := C.gtk_text_iter_starts_line((*C.GtkTextIter)(recv.native))
 	retGo := retC == C.TRUE
@@ -11949,7 +12908,14 @@ func (recv *TextIter) StartsLine() bool {
 	return retGo
 }
 
-// StartsSentence is a wrapper around the C function gtk_text_iter_starts_sentence.
+// Determines whether @iter begins a sentence.  Sentence boundaries are
+// determined by Pango and should be correct for nearly any language
+// (if not, the correct fix would be to the Pango text boundary
+// algorithms).
+/*
+
+C function : gtk_text_iter_starts_sentence
+*/
 func (recv *TextIter) StartsSentence() bool {
 	retC := C.gtk_text_iter_starts_sentence((*C.GtkTextIter)(recv.native))
 	retGo := retC == C.TRUE
@@ -11957,7 +12923,14 @@ func (recv *TextIter) StartsSentence() bool {
 	return retGo
 }
 
-// StartsWord is a wrapper around the C function gtk_text_iter_starts_word.
+// Determines whether @iter begins a natural-language word.  Word
+// breaks are determined by Pango and should be correct for nearly any
+// language (if not, the correct fix would be to the Pango word break
+// algorithms).
+/*
+
+C function : gtk_text_iter_starts_word
+*/
 func (recv *TextIter) StartsWord() bool {
 	retC := C.gtk_text_iter_starts_word((*C.GtkTextIter)(recv.native))
 	retGo := retC == C.TRUE
@@ -11965,7 +12938,13 @@ func (recv *TextIter) StartsWord() bool {
 	return retGo
 }
 
-// TogglesTag is a wrapper around the C function gtk_text_iter_toggles_tag.
+// This is equivalent to (gtk_text_iter_starts_tag() ||
+// gtk_text_iter_ends_tag()), i.e. it tells you whether a range with
+// @tag applied to it begins or ends at @iter.
+/*
+
+C function : gtk_text_iter_toggles_tag
+*/
 func (recv *TextIter) TogglesTag(tag *TextTag) bool {
 	c_tag := (*C.GtkTextTag)(C.NULL)
 	if tag != nil {
@@ -12932,7 +13911,16 @@ func (recv *TreeIter) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Copy is a wrapper around the C function gtk_tree_iter_copy.
+// Creates a dynamically allocated tree iterator as a copy of @iter.
+//
+// This function is not intended for use in applications,
+// because you can just copy the structs by value
+// (`GtkTreeIter new_iter = iter;`).
+// You must free this iter with gtk_tree_iter_free().
+/*
+
+C function : gtk_tree_iter_copy
+*/
 func (recv *TreeIter) Copy() *TreeIter {
 	retC := C.gtk_tree_iter_copy((*C.GtkTreeIter)(recv.native))
 	retGo := TreeIterNewFromC(unsafe.Pointer(retC))
@@ -12940,7 +13928,13 @@ func (recv *TreeIter) Copy() *TreeIter {
 	return retGo
 }
 
-// Free is a wrapper around the C function gtk_tree_iter_free.
+// Frees an iterator that has been allocated by gtk_tree_iter_copy().
+//
+// This function is mainly used for language bindings.
+/*
+
+C function : gtk_tree_iter_free
+*/
 func (recv *TreeIter) Free() {
 	C.gtk_tree_iter_free((*C.GtkTreeIter)(recv.native))
 
@@ -13106,7 +14100,12 @@ func (recv *TreePath) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TreePathNew is a wrapper around the C function gtk_tree_path_new.
+// Creates a new #GtkTreePath-struct.
+// This refers to a row.
+/*
+
+C function : gtk_tree_path_new
+*/
 func TreePathNew() *TreePath {
 	retC := C.gtk_tree_path_new()
 	retGo := TreePathNewFromC(unsafe.Pointer(retC))
@@ -13114,7 +14113,13 @@ func TreePathNew() *TreePath {
 	return retGo
 }
 
-// TreePathNewFirst is a wrapper around the C function gtk_tree_path_new_first.
+// Creates a new #GtkTreePath-struct.
+//
+// The string representation of this path is “0”.
+/*
+
+C function : gtk_tree_path_new_first
+*/
 func TreePathNewFirst() *TreePath {
 	retC := C.gtk_tree_path_new_first()
 	retGo := TreePathNewFromC(unsafe.Pointer(retC))
@@ -13122,7 +14127,17 @@ func TreePathNewFirst() *TreePath {
 	return retGo
 }
 
-// TreePathNewFromString is a wrapper around the C function gtk_tree_path_new_from_string.
+// Creates a new #GtkTreePath-struct initialized to @path.
+//
+// @path is expected to be a colon separated list of numbers.
+// For example, the string “10:4:0” would create a path of depth
+// 3 pointing to the 11th child of the root node, the 5th
+// child of that 11th child, and the 1st child of that 5th child.
+// If an invalid path string is passed in, %NULL is returned.
+/*
+
+C function : gtk_tree_path_new_from_string
+*/
 func TreePathNewFromString(path string) *TreePath {
 	c_path := C.CString(path)
 	defer C.free(unsafe.Pointer(c_path))
@@ -13133,7 +14148,13 @@ func TreePathNewFromString(path string) *TreePath {
 	return retGo
 }
 
-// AppendIndex is a wrapper around the C function gtk_tree_path_append_index.
+// Appends a new index to a path.
+//
+// As a result, the depth of the path is increased.
+/*
+
+C function : gtk_tree_path_append_index
+*/
 func (recv *TreePath) AppendIndex(index int32) {
 	c_index_ := (C.gint)(index)
 
@@ -13142,7 +14163,15 @@ func (recv *TreePath) AppendIndex(index int32) {
 	return
 }
 
-// Compare is a wrapper around the C function gtk_tree_path_compare.
+// Compares two paths.
+//
+// If @a appears before @b in a tree, then -1 is returned.
+// If @b appears before @a, then 1 is returned.
+// If the two nodes are equal, then 0 is returned.
+/*
+
+C function : gtk_tree_path_compare
+*/
 func (recv *TreePath) Compare(b *TreePath) int32 {
 	c_b := (*C.GtkTreePath)(C.NULL)
 	if b != nil {
@@ -13155,7 +14184,11 @@ func (recv *TreePath) Compare(b *TreePath) int32 {
 	return retGo
 }
 
-// Copy is a wrapper around the C function gtk_tree_path_copy.
+// Creates a new #GtkTreePath-struct as a copy of @path.
+/*
+
+C function : gtk_tree_path_copy
+*/
 func (recv *TreePath) Copy() *TreePath {
 	retC := C.gtk_tree_path_copy((*C.GtkTreePath)(recv.native))
 	retGo := TreePathNewFromC(unsafe.Pointer(retC))
@@ -13163,21 +14196,33 @@ func (recv *TreePath) Copy() *TreePath {
 	return retGo
 }
 
-// Down is a wrapper around the C function gtk_tree_path_down.
+// Moves @path to point to the first child of the current path.
+/*
+
+C function : gtk_tree_path_down
+*/
 func (recv *TreePath) Down() {
 	C.gtk_tree_path_down((*C.GtkTreePath)(recv.native))
 
 	return
 }
 
-// Free is a wrapper around the C function gtk_tree_path_free.
+// Frees @path. If @path is %NULL, it simply returns.
+/*
+
+C function : gtk_tree_path_free
+*/
 func (recv *TreePath) Free() {
 	C.gtk_tree_path_free((*C.GtkTreePath)(recv.native))
 
 	return
 }
 
-// GetDepth is a wrapper around the C function gtk_tree_path_get_depth.
+// Returns the current depth of @path.
+/*
+
+C function : gtk_tree_path_get_depth
+*/
 func (recv *TreePath) GetDepth() int32 {
 	retC := C.gtk_tree_path_get_depth((*C.GtkTreePath)(recv.native))
 	retGo := (int32)(retC)
@@ -13187,7 +14232,11 @@ func (recv *TreePath) GetDepth() int32 {
 
 // Blacklisted : gtk_tree_path_get_indices
 
-// IsAncestor is a wrapper around the C function gtk_tree_path_is_ancestor.
+// Returns %TRUE if @descendant is a descendant of @path.
+/*
+
+C function : gtk_tree_path_is_ancestor
+*/
 func (recv *TreePath) IsAncestor(descendant *TreePath) bool {
 	c_descendant := (*C.GtkTreePath)(C.NULL)
 	if descendant != nil {
@@ -13200,7 +14249,11 @@ func (recv *TreePath) IsAncestor(descendant *TreePath) bool {
 	return retGo
 }
 
-// IsDescendant is a wrapper around the C function gtk_tree_path_is_descendant.
+// Returns %TRUE if @path is a descendant of @ancestor.
+/*
+
+C function : gtk_tree_path_is_descendant
+*/
 func (recv *TreePath) IsDescendant(ancestor *TreePath) bool {
 	c_ancestor := (*C.GtkTreePath)(C.NULL)
 	if ancestor != nil {
@@ -13213,14 +14266,24 @@ func (recv *TreePath) IsDescendant(ancestor *TreePath) bool {
 	return retGo
 }
 
-// Next is a wrapper around the C function gtk_tree_path_next.
+// Moves the @path to point to the next node at the current depth.
+/*
+
+C function : gtk_tree_path_next
+*/
 func (recv *TreePath) Next() {
 	C.gtk_tree_path_next((*C.GtkTreePath)(recv.native))
 
 	return
 }
 
-// PrependIndex is a wrapper around the C function gtk_tree_path_prepend_index.
+// Prepends a new index to a path.
+//
+// As a result, the depth of the path is increased.
+/*
+
+C function : gtk_tree_path_prepend_index
+*/
 func (recv *TreePath) PrependIndex(index int32) {
 	c_index_ := (C.gint)(index)
 
@@ -13229,7 +14292,12 @@ func (recv *TreePath) PrependIndex(index int32) {
 	return
 }
 
-// Prev is a wrapper around the C function gtk_tree_path_prev.
+// Moves the @path to point to the previous node at the
+// current depth, if it exists.
+/*
+
+C function : gtk_tree_path_prev
+*/
 func (recv *TreePath) Prev() bool {
 	retC := C.gtk_tree_path_prev((*C.GtkTreePath)(recv.native))
 	retGo := retC == C.TRUE
@@ -13237,7 +14305,15 @@ func (recv *TreePath) Prev() bool {
 	return retGo
 }
 
-// ToString is a wrapper around the C function gtk_tree_path_to_string.
+// Generates a string representation of the path.
+//
+// This string is a “:” separated list of numbers.
+// For example, “4:10:0:3” would be an acceptable
+// return value for this string.
+/*
+
+C function : gtk_tree_path_to_string
+*/
 func (recv *TreePath) ToString() string {
 	retC := C.gtk_tree_path_to_string((*C.GtkTreePath)(recv.native))
 	retGo := C.GoString(retC)
@@ -13246,7 +14322,11 @@ func (recv *TreePath) ToString() string {
 	return retGo
 }
 
-// Up is a wrapper around the C function gtk_tree_path_up.
+// Moves the @path to point to its parent node, if it has a parent.
+/*
+
+C function : gtk_tree_path_up
+*/
 func (recv *TreePath) Up() bool {
 	retC := C.gtk_tree_path_up((*C.GtkTreePath)(recv.native))
 	retGo := retC == C.TRUE
@@ -13275,7 +14355,16 @@ func (recv *TreeRowReference) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TreeRowReferenceNew is a wrapper around the C function gtk_tree_row_reference_new.
+// Creates a row reference based on @path.
+//
+// This reference will keep pointing to the node pointed to
+// by @path, so long as it exists. Any changes that occur on @model are
+// propagated, and the path is updated appropriately. If
+// @path isn’t a valid path in @model, then %NULL is returned.
+/*
+
+C function : gtk_tree_row_reference_new
+*/
 func TreeRowReferenceNew(model *TreeModel, path *TreePath) *TreeRowReference {
 	c_model := (*C.GtkTreeModel)(model.ToC())
 
@@ -13290,7 +14379,34 @@ func TreeRowReferenceNew(model *TreeModel, path *TreePath) *TreeRowReference {
 	return retGo
 }
 
-// TreeRowReferenceNewProxy is a wrapper around the C function gtk_tree_row_reference_new_proxy.
+// You do not need to use this function.
+//
+// Creates a row reference based on @path.
+//
+// This reference will keep pointing to the node pointed to
+// by @path, so long as it exists. If @path isn’t a valid
+// path in @model, then %NULL is returned. However, unlike
+// references created with gtk_tree_row_reference_new(), it
+// does not listen to the model for changes. The creator of
+// the row reference must do this explicitly using
+// gtk_tree_row_reference_inserted(), gtk_tree_row_reference_deleted(),
+// gtk_tree_row_reference_reordered().
+//
+// These functions must be called exactly once per proxy when the
+// corresponding signal on the model is emitted. This single call
+// updates all row references for that proxy. Since built-in GTK+
+// objects like #GtkTreeView already use this mechanism internally,
+// using them as the proxy object will produce unpredictable results.
+// Further more, passing the same object as @model and @proxy
+// doesn’t work for reasons of internal implementation.
+//
+// This type of row reference is primarily meant by structures that
+// need to carefully monitor exactly when a row reference updates
+// itself, and is not generally needed by most applications.
+/*
+
+C function : gtk_tree_row_reference_new_proxy
+*/
 func TreeRowReferenceNewProxy(proxy *gobject.Object, model *TreeModel, path *TreePath) *TreeRowReference {
 	c_proxy := (*C.GObject)(C.NULL)
 	if proxy != nil {
@@ -13310,14 +14426,23 @@ func TreeRowReferenceNewProxy(proxy *gobject.Object, model *TreeModel, path *Tre
 	return retGo
 }
 
-// Free is a wrapper around the C function gtk_tree_row_reference_free.
+// Free’s @reference. @reference may be %NULL
+/*
+
+C function : gtk_tree_row_reference_free
+*/
 func (recv *TreeRowReference) Free() {
 	C.gtk_tree_row_reference_free((*C.GtkTreeRowReference)(recv.native))
 
 	return
 }
 
-// GetPath is a wrapper around the C function gtk_tree_row_reference_get_path.
+// Returns a path that the row reference currently points to,
+// or %NULL if the path pointed to is no longer valid.
+/*
+
+C function : gtk_tree_row_reference_get_path
+*/
 func (recv *TreeRowReference) GetPath() *TreePath {
 	retC := C.gtk_tree_row_reference_get_path((*C.GtkTreeRowReference)(recv.native))
 	var retGo (*TreePath)
@@ -13330,7 +14455,12 @@ func (recv *TreeRowReference) GetPath() *TreePath {
 	return retGo
 }
 
-// Valid is a wrapper around the C function gtk_tree_row_reference_valid.
+// Returns %TRUE if the @reference is non-%NULL and refers to
+// a current valid path.
+/*
+
+C function : gtk_tree_row_reference_valid
+*/
 func (recv *TreeRowReference) Valid() bool {
 	retC := C.gtk_tree_row_reference_valid((*C.GtkTreeRowReference)(recv.native))
 	retGo := retC == C.TRUE
@@ -14081,7 +15211,13 @@ func (recv *WidgetPath) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// IterGetName is a wrapper around the C function gtk_widget_path_iter_get_name.
+// Returns the name corresponding to the widget found at
+// the position @pos in the widget hierarchy defined by
+// @path
+/*
+
+C function : gtk_widget_path_iter_get_name
+*/
 func (recv *WidgetPath) IterGetName(pos int32) string {
 	c_pos := (C.gint)(pos)
 
@@ -14091,7 +15227,14 @@ func (recv *WidgetPath) IterGetName(pos int32) string {
 	return retGo
 }
 
-// IterGetSiblingIndex is a wrapper around the C function gtk_widget_path_iter_get_sibling_index.
+// Returns the index into the list of siblings for the element at @pos as
+// returned by gtk_widget_path_iter_get_siblings(). If that function would
+// return %NULL because the element at @pos has no siblings, this function
+// will return 0.
+/*
+
+C function : gtk_widget_path_iter_get_sibling_index
+*/
 func (recv *WidgetPath) IterGetSiblingIndex(pos int32) uint32 {
 	c_pos := (C.gint)(pos)
 
@@ -14101,7 +15244,12 @@ func (recv *WidgetPath) IterGetSiblingIndex(pos int32) uint32 {
 	return retGo
 }
 
-// IterGetSiblings is a wrapper around the C function gtk_widget_path_iter_get_siblings.
+// Returns the list of siblings for the element at @pos. If the element
+// was not added with siblings, %NULL is returned.
+/*
+
+C function : gtk_widget_path_iter_get_siblings
+*/
 func (recv *WidgetPath) IterGetSiblings(pos int32) *WidgetPath {
 	c_pos := (C.gint)(pos)
 

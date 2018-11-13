@@ -17,7 +17,17 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// AcceleratorGetLabelWithKeycode is a wrapper around the C function gtk_accelerator_get_label_with_keycode.
+// Converts an accelerator keyval and modifier mask
+// into a (possibly translated) string that can be displayed to
+// a user, similarly to gtk_accelerator_get_label(), but handling
+// keycodes.
+//
+// This is only useful for system-level components, applications
+// should use gtk_accelerator_parse() instead.
+/*
+
+C function : gtk_accelerator_get_label_with_keycode
+*/
 func AcceleratorGetLabelWithKeycode(display *gdk.Display, acceleratorKey uint32, keycode uint32, acceleratorMods gdk.ModifierType) string {
 	c_display := (*C.GdkDisplay)(C.NULL)
 	if display != nil {
@@ -37,7 +47,15 @@ func AcceleratorGetLabelWithKeycode(display *gdk.Display, acceleratorKey uint32,
 	return retGo
 }
 
-// AcceleratorNameWithKeycode is a wrapper around the C function gtk_accelerator_name_with_keycode.
+// Converts an accelerator keyval and modifier mask
+// into a string parseable by gtk_accelerator_parse_with_keycode(),
+// similarly to gtk_accelerator_name() but handling keycodes.
+// This is only useful for system-level components, applications
+// should use gtk_accelerator_parse() instead.
+/*
+
+C function : gtk_accelerator_name_with_keycode
+*/
 func AcceleratorNameWithKeycode(display *gdk.Display, acceleratorKey uint32, keycode uint32, acceleratorMods gdk.ModifierType) string {
 	c_display := (*C.GdkDisplay)(C.NULL)
 	if display != nil {
@@ -59,7 +77,11 @@ func AcceleratorNameWithKeycode(display *gdk.Display, acceleratorKey uint32, key
 
 // Unsupported : gtk_accelerator_parse_with_keycode : unsupported parameter accelerator_codes : output array param accelerator_codes
 
-// RenderInsertionCursor is a wrapper around the C function gtk_render_insertion_cursor.
+// Draws a text caret on @cr at the specified index of @layout.
+/*
+
+C function : gtk_render_insertion_cursor
+*/
 func RenderInsertionCursor(context *StyleContext, cr *cairo.Context, x float64, y float64, layout *pango.Layout, index int32, direction pango.Direction) {
 	c_context := (*C.GtkStyleContext)(C.NULL)
 	if context != nil {

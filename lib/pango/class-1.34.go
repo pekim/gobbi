@@ -8,7 +8,17 @@ package pango
 // #include <stdlib.h>
 import "C"
 
-// Changed is a wrapper around the C function pango_font_map_changed.
+// Forces a change in the context, which will cause any #PangoContext
+// using this fontmap to change.
+//
+// This function is only useful when implementing a new backend
+// for Pango, something applications won't do. Backends should
+// call this function if they have attached extra data to the context
+// and such data is changed.
+/*
+
+C function : pango_font_map_changed
+*/
 func (recv *FontMap) Changed() {
 	C.pango_font_map_changed((*C.PangoFontMap)(recv.native))
 

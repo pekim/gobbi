@@ -8,7 +8,13 @@ package pango
 // #include <stdlib.h>
 import "C"
 
-// IsSynthesized is a wrapper around the C function pango_font_face_is_synthesized.
+// Returns whether a #PangoFontFace is synthesized by the underlying
+// font rendering engine from another face, perhaps by shearing, emboldening,
+// or lightening it.
+/*
+
+C function : pango_font_face_is_synthesized
+*/
 func (recv *FontFace) IsSynthesized() bool {
 	retC := C.pango_font_face_is_synthesized((*C.PangoFontFace)(recv.native))
 	retGo := retC == C.TRUE

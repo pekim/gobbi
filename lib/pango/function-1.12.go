@@ -8,7 +8,18 @@ package pango
 // #include <stdlib.h>
 import "C"
 
-// QuantizeLineGeometry is a wrapper around the C function pango_quantize_line_geometry.
+// Quantizes the thickness and position of a line, typically an
+// underline or strikethrough, to whole device pixels, that is integer
+// multiples of %PANGO_SCALE. The purpose of this function is to avoid
+// such lines looking blurry.
+//
+// Care is taken to make sure @thickness is at least one pixel when this
+// function returns, but returned @position may become zero as a result
+// of rounding.
+/*
+
+C function : pango_quantize_line_geometry
+*/
 func QuantizeLineGeometry(thickness int32, position int32) {
 	c_thickness := (C.int)(thickness)
 

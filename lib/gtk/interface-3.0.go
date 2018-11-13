@@ -15,7 +15,11 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// GetAppInfo is a wrapper around the C function gtk_app_chooser_get_app_info.
+// Returns the currently selected application.
+/*
+
+C function : gtk_app_chooser_get_app_info
+*/
 func (recv *AppChooser) GetAppInfo() *gio.AppInfo {
 	retC := C.gtk_app_chooser_get_app_info((*C.GtkAppChooser)(recv.native))
 	var retGo (*gio.AppInfo)
@@ -28,7 +32,11 @@ func (recv *AppChooser) GetAppInfo() *gio.AppInfo {
 	return retGo
 }
 
-// GetContentType is a wrapper around the C function gtk_app_chooser_get_content_type.
+// Returns the current value of the #GtkAppChooser:content-type property.
+/*
+
+C function : gtk_app_chooser_get_content_type
+*/
 func (recv *AppChooser) GetContentType() string {
 	retC := C.gtk_app_chooser_get_content_type((*C.GtkAppChooser)(recv.native))
 	retGo := C.GoString(retC)
@@ -37,14 +45,24 @@ func (recv *AppChooser) GetContentType() string {
 	return retGo
 }
 
-// Refresh is a wrapper around the C function gtk_app_chooser_refresh.
+// Reloads the list of applications.
+/*
+
+C function : gtk_app_chooser_refresh
+*/
 func (recv *AppChooser) Refresh() {
 	C.gtk_app_chooser_refresh((*C.GtkAppChooser)(recv.native))
 
 	return
 }
 
-// GetArea is a wrapper around the C function gtk_cell_layout_get_area.
+// Returns the underlying #GtkCellArea which might be @cell_layout
+// if called on a #GtkCellArea or might be %NULL if no #GtkCellArea
+// is used by @cell_layout.
+/*
+
+C function : gtk_cell_layout_get_area
+*/
 func (recv *CellLayout) GetArea() *CellArea {
 	retC := C.gtk_cell_layout_get_area((*C.GtkCellLayout)(recv.native))
 	var retGo (*CellArea)
@@ -57,7 +75,11 @@ func (recv *CellLayout) GetArea() *CellArea {
 	return retGo
 }
 
-// GetHadjustment is a wrapper around the C function gtk_scrollable_get_hadjustment.
+// Retrieves the #GtkAdjustment used for horizontal scrolling.
+/*
+
+C function : gtk_scrollable_get_hadjustment
+*/
 func (recv *Scrollable) GetHadjustment() *Adjustment {
 	retC := C.gtk_scrollable_get_hadjustment((*C.GtkScrollable)(recv.native))
 	retGo := AdjustmentNewFromC(unsafe.Pointer(retC))
@@ -65,7 +87,11 @@ func (recv *Scrollable) GetHadjustment() *Adjustment {
 	return retGo
 }
 
-// GetHscrollPolicy is a wrapper around the C function gtk_scrollable_get_hscroll_policy.
+// Gets the horizontal #GtkScrollablePolicy.
+/*
+
+C function : gtk_scrollable_get_hscroll_policy
+*/
 func (recv *Scrollable) GetHscrollPolicy() ScrollablePolicy {
 	retC := C.gtk_scrollable_get_hscroll_policy((*C.GtkScrollable)(recv.native))
 	retGo := (ScrollablePolicy)(retC)
@@ -73,7 +99,11 @@ func (recv *Scrollable) GetHscrollPolicy() ScrollablePolicy {
 	return retGo
 }
 
-// GetVadjustment is a wrapper around the C function gtk_scrollable_get_vadjustment.
+// Retrieves the #GtkAdjustment used for vertical scrolling.
+/*
+
+C function : gtk_scrollable_get_vadjustment
+*/
 func (recv *Scrollable) GetVadjustment() *Adjustment {
 	retC := C.gtk_scrollable_get_vadjustment((*C.GtkScrollable)(recv.native))
 	retGo := AdjustmentNewFromC(unsafe.Pointer(retC))
@@ -81,7 +111,11 @@ func (recv *Scrollable) GetVadjustment() *Adjustment {
 	return retGo
 }
 
-// GetVscrollPolicy is a wrapper around the C function gtk_scrollable_get_vscroll_policy.
+// Gets the vertical #GtkScrollablePolicy.
+/*
+
+C function : gtk_scrollable_get_vscroll_policy
+*/
 func (recv *Scrollable) GetVscrollPolicy() ScrollablePolicy {
 	retC := C.gtk_scrollable_get_vscroll_policy((*C.GtkScrollable)(recv.native))
 	retGo := (ScrollablePolicy)(retC)
@@ -89,7 +123,11 @@ func (recv *Scrollable) GetVscrollPolicy() ScrollablePolicy {
 	return retGo
 }
 
-// SetHadjustment is a wrapper around the C function gtk_scrollable_set_hadjustment.
+// Sets the horizontal adjustment of the #GtkScrollable.
+/*
+
+C function : gtk_scrollable_set_hadjustment
+*/
 func (recv *Scrollable) SetHadjustment(hadjustment *Adjustment) {
 	c_hadjustment := (*C.GtkAdjustment)(C.NULL)
 	if hadjustment != nil {
@@ -101,7 +139,13 @@ func (recv *Scrollable) SetHadjustment(hadjustment *Adjustment) {
 	return
 }
 
-// SetHscrollPolicy is a wrapper around the C function gtk_scrollable_set_hscroll_policy.
+// Sets the #GtkScrollablePolicy to determine whether
+// horizontal scrolling should start below the minimum width or
+// below the natural width.
+/*
+
+C function : gtk_scrollable_set_hscroll_policy
+*/
 func (recv *Scrollable) SetHscrollPolicy(policy ScrollablePolicy) {
 	c_policy := (C.GtkScrollablePolicy)(policy)
 
@@ -110,7 +154,11 @@ func (recv *Scrollable) SetHscrollPolicy(policy ScrollablePolicy) {
 	return
 }
 
-// SetVadjustment is a wrapper around the C function gtk_scrollable_set_vadjustment.
+// Sets the vertical adjustment of the #GtkScrollable.
+/*
+
+C function : gtk_scrollable_set_vadjustment
+*/
 func (recv *Scrollable) SetVadjustment(vadjustment *Adjustment) {
 	c_vadjustment := (*C.GtkAdjustment)(C.NULL)
 	if vadjustment != nil {
@@ -122,7 +170,13 @@ func (recv *Scrollable) SetVadjustment(vadjustment *Adjustment) {
 	return
 }
 
-// SetVscrollPolicy is a wrapper around the C function gtk_scrollable_set_vscroll_policy.
+// Sets the #GtkScrollablePolicy to determine whether
+// vertical scrolling should start below the minimum height or
+// below the natural height.
+/*
+
+C function : gtk_scrollable_set_vscroll_policy
+*/
 func (recv *Scrollable) SetVscrollPolicy(policy ScrollablePolicy) {
 	c_policy := (C.GtkScrollablePolicy)(policy)
 
@@ -131,7 +185,12 @@ func (recv *Scrollable) SetVscrollPolicy(policy ScrollablePolicy) {
 	return
 }
 
-// GetIconFactory is a wrapper around the C function gtk_style_provider_get_icon_factory.
+// Returns the #GtkIconFactory defined to be in use for @path, or %NULL if none
+// is defined.
+/*
+
+C function : gtk_style_provider_get_icon_factory
+*/
 func (recv *StyleProvider) GetIconFactory(path *WidgetPath) *IconFactory {
 	c_path := (*C.GtkWidgetPath)(C.NULL)
 	if path != nil {
@@ -149,7 +208,12 @@ func (recv *StyleProvider) GetIconFactory(path *WidgetPath) *IconFactory {
 	return retGo
 }
 
-// GetStyle is a wrapper around the C function gtk_style_provider_get_style.
+// Returns the style settings affecting a widget defined by @path, or %NULL if
+// @provider doesn’t contemplate styling @path.
+/*
+
+C function : gtk_style_provider_get_style
+*/
 func (recv *StyleProvider) GetStyle(path *WidgetPath) *StyleProperties {
 	c_path := (*C.GtkWidgetPath)(C.NULL)
 	if path != nil {
@@ -169,7 +233,14 @@ func (recv *StyleProvider) GetStyle(path *WidgetPath) *StyleProperties {
 
 // Unsupported : gtk_style_provider_get_style_property : unsupported parameter pspec : Blacklisted record : GParamSpec
 
-// IterPrevious is a wrapper around the C function gtk_tree_model_iter_previous.
+// Sets @iter to point to the previous node at the current level.
+//
+// If there is no previous @iter, %FALSE is returned and @iter is
+// set to be invalid.
+/*
+
+C function : gtk_tree_model_iter_previous
+*/
 func (recv *TreeModel) IterPrevious(iter *TreeIter) bool {
 	c_iter := (*C.GtkTreeIter)(C.NULL)
 	if iter != nil {

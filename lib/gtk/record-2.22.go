@@ -15,7 +15,11 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// GetGicon is a wrapper around the C function gtk_recent_info_get_gicon.
+// Retrieves the icon associated to the resource MIME type.
+/*
+
+C function : gtk_recent_info_get_gicon
+*/
 func (recv *RecentInfo) GetGicon() *gio.Icon {
 	retC := C.gtk_recent_info_get_gicon((*C.GtkRecentInfo)(recv.native))
 	var retGo (*gio.Icon)

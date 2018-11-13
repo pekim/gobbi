@@ -10,7 +10,12 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
-// GetCreateFolders is a wrapper around the C function gtk_file_chooser_get_create_folders.
+// Gets whether file choser will offer to create new folders.
+// See gtk_file_chooser_set_create_folders().
+/*
+
+C function : gtk_file_chooser_get_create_folders
+*/
 func (recv *FileChooser) GetCreateFolders() bool {
 	retC := C.gtk_file_chooser_get_create_folders((*C.GtkFileChooser)(recv.native))
 	retGo := retC == C.TRUE
@@ -18,7 +23,13 @@ func (recv *FileChooser) GetCreateFolders() bool {
 	return retGo
 }
 
-// SetCreateFolders is a wrapper around the C function gtk_file_chooser_set_create_folders.
+// Sets whether file choser will offer to create new folders.
+// This is only relevant if the action is not set to be
+// %GTK_FILE_CHOOSER_ACTION_OPEN.
+/*
+
+C function : gtk_file_chooser_set_create_folders
+*/
 func (recv *FileChooser) SetCreateFolders(createFolders bool) {
 	c_create_folders :=
 		boolToGboolean(createFolders)

@@ -8,7 +8,15 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-// CclosureMarshalGeneric is a wrapper around the C function g_cclosure_marshal_generic.
+// A generic marshaller function implemented via
+// [libffi](http://sourceware.org/libffi/).
+//
+// Normally this function is not passed explicitly to g_signal_new(),
+// but used automatically by GLib when specifying a %NULL marshaller.
+/*
+
+C function : g_cclosure_marshal_generic
+*/
 func CclosureMarshalGeneric(closure *Closure, returnGvalue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
 	c_closure := (*C.GClosure)(C.NULL)
 	if closure != nil {

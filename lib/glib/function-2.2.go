@@ -12,7 +12,27 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// AsciiStrtoull is a wrapper around the C function g_ascii_strtoull.
+// Converts a string to a #guint64 value.
+// This function behaves like the standard strtoull() function
+// does in the C locale. It does this without actually
+// changing the current locale, since that would not be
+// thread-safe.
+//
+// This function is typically used when reading configuration
+// files or other non-user input that should be locale independent.
+// To handle input from the user you should normally use the
+// locale-sensitive system strtoull() function.
+//
+// If the correct value would cause overflow, %G_MAXUINT64
+// is returned, and `ERANGE` is stored in `errno`.
+// If the base is outside the valid range, zero is returned, and
+// `EINVAL` is stored in `errno`.
+// If the string conversion fails, zero is returned, and @endptr returns
+// @nptr (if @endptr is non-%NULL).
+/*
+
+C function : g_ascii_strtoull
+*/
 func AsciiStrtoull(nptr string, base uint32) (uint64, string) {
 	c_nptr := C.CString(nptr)
 	defer C.free(unsafe.Pointer(c_nptr))
@@ -31,7 +51,17 @@ func AsciiStrtoull(nptr string, base uint32) (uint64, string) {
 
 // Unsupported : g_fprintf : unsupported parameter file : no type generator for gpointer (FILE*) for param file
 
-// GetApplicationName is a wrapper around the C function g_get_application_name.
+// Gets a human-readable name for the application, as set by
+// g_set_application_name(). This name should be localized if
+// possible, and is intended for display to the user.  Contrast with
+// g_get_prgname(), which gets a non-localized name. If
+// g_set_application_name() has not been called, returns the result of
+// g_get_prgname() (which may be %NULL if g_set_prgname() has also not
+// been called).
+/*
+
+C function : g_get_application_name
+*/
 func GetApplicationName() string {
 	retC := C.g_get_application_name()
 	retGo := C.GoString(retC)
@@ -41,7 +71,21 @@ func GetApplicationName() string {
 
 // Unsupported : g_printf : unsupported parameter ... : varargs
 
-// SetApplicationName is a wrapper around the C function g_set_application_name.
+// Sets a human-readable name for the application. This name should be
+// localized if possible, and is intended for display to the user.
+// Contrast with g_set_prgname(), which sets a non-localized name.
+// g_set_prgname() will be called automatically by gtk_init(),
+// but g_set_application_name() will not.
+//
+// Note that for thread safety reasons, this function can only
+// be called once.
+//
+// The application name will be used in contexts such as error messages,
+// or when displaying an application's name in the task list.
+/*
+
+C function : g_set_application_name
+*/
 func SetApplicationName(applicationName string) {
 	c_application_name := C.CString(applicationName)
 	defer C.free(unsafe.Pointer(c_application_name))
@@ -53,7 +97,11 @@ func SetApplicationName(applicationName string) {
 
 // Unsupported : g_sprintf : unsupported parameter ... : varargs
 
-// StrHasPrefix is a wrapper around the C function g_str_has_prefix.
+// Looks whether the string @str begins with @prefix.
+/*
+
+C function : g_str_has_prefix
+*/
 func StrHasPrefix(str string, prefix string) bool {
 	c_str := C.CString(str)
 	defer C.free(unsafe.Pointer(c_str))
@@ -67,7 +115,11 @@ func StrHasPrefix(str string, prefix string) bool {
 	return retGo
 }
 
-// StrHasSuffix is a wrapper around the C function g_str_has_suffix.
+// Looks whether the string @str ends with @suffix.
+/*
+
+C function : g_str_has_suffix
+*/
 func StrHasSuffix(str string, suffix string) bool {
 	c_str := C.CString(str)
 	defer C.free(unsafe.Pointer(c_str))
@@ -81,7 +133,23 @@ func StrHasSuffix(str string, suffix string) bool {
 	return retGo
 }
 
-// Utf8Strreverse is a wrapper around the C function g_utf8_strreverse.
+// Reverses a UTF-8 string. @str must be valid UTF-8 encoded text.
+// (Use g_utf8_validate() on all text before trying to use UTF-8
+// utility functions with it.)
+//
+// This function is intended for programmatic uses of reversed strings.
+// It pays no attention to decomposed characters, combining marks, byte
+// order marks, directional indicators (LRM, LRO, etc) and similar
+// characters which might need special handling when reversing a string
+// for display purposes.
+//
+// Note that unlike g_strreverse(), this function returns
+// newly-allocated memory, which should be freed with g_free() when
+// no longer needed.
+/*
+
+C function : g_utf8_strreverse
+*/
 func Utf8Strreverse(str string, len int64) string {
 	c_str := C.CString(str)
 	defer C.free(unsafe.Pointer(c_str))

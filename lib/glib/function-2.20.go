@@ -12,7 +12,27 @@ import "C"
 
 // Unsupported : g_base64_decode_inplace : unsupported parameter out_len : array length param out_len is pointer (gsize*)
 
-// Poll is a wrapper around the C function g_poll.
+// Polls @fds, as with the poll() system call, but portably. (On
+// systems that don't have poll(), it is emulated using select().)
+// This is used internally by #GMainContext, but it can be called
+// directly if you need to block until a file descriptor is ready, but
+// don't want to run the full main loop.
+//
+// Each element of @fds is a #GPollFD describing a single file
+// descriptor to poll. The @fd field indicates the file descriptor,
+// and the @events field indicates the events to poll for. On return,
+// the @revents fields will be filled with the events that actually
+// occurred.
+//
+// On POSIX systems, the file descriptors in @fds can be any sort of
+// file descriptor, but the situation is much more complicated on
+// Windows. If you need to use g_poll() in code that has to run on
+// Windows, the easiest solution is to construct all of your
+// #GPollFDs with g_io_channel_win32_make_pollfd().
+/*
+
+C function : g_poll
+*/
 func Poll(fds *PollFD, nfds uint32, timeout int32) int32 {
 	c_fds := (*C.GPollFD)(C.NULL)
 	if fds != nil {

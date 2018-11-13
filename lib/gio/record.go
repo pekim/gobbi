@@ -935,7 +935,11 @@ func (recv *FileAttributeInfoList) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// FileAttributeInfoListNew is a wrapper around the C function g_file_attribute_info_list_new.
+// Creates a new file attribute info list.
+/*
+
+C function : g_file_attribute_info_list_new
+*/
 func FileAttributeInfoListNew() *FileAttributeInfoList {
 	retC := C.g_file_attribute_info_list_new()
 	retGo := FileAttributeInfoListNewFromC(unsafe.Pointer(retC))
@@ -943,7 +947,12 @@ func FileAttributeInfoListNew() *FileAttributeInfoList {
 	return retGo
 }
 
-// Add is a wrapper around the C function g_file_attribute_info_list_add.
+// Adds a new attribute with @name to the @list, setting
+// its @type and @flags.
+/*
+
+C function : g_file_attribute_info_list_add
+*/
 func (recv *FileAttributeInfoList) Add(name string, type_ FileAttributeType, flags FileAttributeInfoFlags) {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -957,7 +966,11 @@ func (recv *FileAttributeInfoList) Add(name string, type_ FileAttributeType, fla
 	return
 }
 
-// Dup is a wrapper around the C function g_file_attribute_info_list_dup.
+// Makes a duplicate of a file attribute info list.
+/*
+
+C function : g_file_attribute_info_list_dup
+*/
 func (recv *FileAttributeInfoList) Dup() *FileAttributeInfoList {
 	retC := C.g_file_attribute_info_list_dup((*C.GFileAttributeInfoList)(recv.native))
 	retGo := FileAttributeInfoListNewFromC(unsafe.Pointer(retC))
@@ -965,7 +978,11 @@ func (recv *FileAttributeInfoList) Dup() *FileAttributeInfoList {
 	return retGo
 }
 
-// Lookup is a wrapper around the C function g_file_attribute_info_list_lookup.
+// Gets the file attribute with the name @name from @list.
+/*
+
+C function : g_file_attribute_info_list_lookup
+*/
 func (recv *FileAttributeInfoList) Lookup(name string) *FileAttributeInfo {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -976,7 +993,11 @@ func (recv *FileAttributeInfoList) Lookup(name string) *FileAttributeInfo {
 	return retGo
 }
 
-// Ref is a wrapper around the C function g_file_attribute_info_list_ref.
+// References a file attribute info list.
+/*
+
+C function : g_file_attribute_info_list_ref
+*/
 func (recv *FileAttributeInfoList) Ref() *FileAttributeInfoList {
 	retC := C.g_file_attribute_info_list_ref((*C.GFileAttributeInfoList)(recv.native))
 	retGo := FileAttributeInfoListNewFromC(unsafe.Pointer(retC))
@@ -984,7 +1005,12 @@ func (recv *FileAttributeInfoList) Ref() *FileAttributeInfoList {
 	return retGo
 }
 
-// Unref is a wrapper around the C function g_file_attribute_info_list_unref.
+// Removes a reference from the given @list. If the reference count
+// falls to zero, the @list is deleted.
+/*
+
+C function : g_file_attribute_info_list_unref
+*/
 func (recv *FileAttributeInfoList) Unref() {
 	C.g_file_attribute_info_list_unref((*C.GFileAttributeInfoList)(recv.native))
 
@@ -1012,7 +1038,29 @@ func (recv *FileAttributeMatcher) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// FileAttributeMatcherNew is a wrapper around the C function g_file_attribute_matcher_new.
+// Creates a new file attribute matcher, which matches attributes
+// against a given string. #GFileAttributeMatchers are reference
+// counted structures, and are created with a reference count of 1. If
+// the number of references falls to 0, the #GFileAttributeMatcher is
+// automatically destroyed.
+//
+// The @attribute string should be formatted with specific keys separated
+// from namespaces with a double colon. Several "namespace::key" strings may be
+// concatenated with a single comma (e.g. "standard::type,standard::is-hidden").
+// The wildcard "*" may be used to match all keys and namespaces, or
+// "namespace::*" will match all keys in a given namespace.
+//
+// ## Examples of file attribute matcher strings and results
+//
+// - `"*"`: matches all attributes.
+// - `"standard::is-hidden"`: matches only the key is-hidden in the
+// standard namespace.
+// - `"standard::type,unix::*"`: matches the type key in the standard
+// namespace and all keys in the unix namespace.
+/*
+
+C function : g_file_attribute_matcher_new
+*/
 func FileAttributeMatcherNew(attributes string) *FileAttributeMatcher {
 	c_attributes := C.CString(attributes)
 	defer C.free(unsafe.Pointer(c_attributes))
@@ -1023,7 +1071,16 @@ func FileAttributeMatcherNew(attributes string) *FileAttributeMatcher {
 	return retGo
 }
 
-// EnumerateNamespace is a wrapper around the C function g_file_attribute_matcher_enumerate_namespace.
+// Checks if the matcher will match all of the keys in a given namespace.
+// This will always return %TRUE if a wildcard character is in use (e.g. if
+// matcher was created with "standard::*" and @ns is "standard", or if matcher was created
+// using "*" and namespace is anything.)
+//
+// TODO: this is awkwardly worded.
+/*
+
+C function : g_file_attribute_matcher_enumerate_namespace
+*/
 func (recv *FileAttributeMatcher) EnumerateNamespace(ns string) bool {
 	c_ns := C.CString(ns)
 	defer C.free(unsafe.Pointer(c_ns))
@@ -1034,7 +1091,11 @@ func (recv *FileAttributeMatcher) EnumerateNamespace(ns string) bool {
 	return retGo
 }
 
-// EnumerateNext is a wrapper around the C function g_file_attribute_matcher_enumerate_next.
+// Gets the next matched attribute from a #GFileAttributeMatcher.
+/*
+
+C function : g_file_attribute_matcher_enumerate_next
+*/
 func (recv *FileAttributeMatcher) EnumerateNext() string {
 	retC := C.g_file_attribute_matcher_enumerate_next((*C.GFileAttributeMatcher)(recv.native))
 	retGo := C.GoString(retC)
@@ -1042,7 +1103,13 @@ func (recv *FileAttributeMatcher) EnumerateNext() string {
 	return retGo
 }
 
-// Matches is a wrapper around the C function g_file_attribute_matcher_matches.
+// Checks if an attribute will be matched by an attribute matcher. If
+// the matcher was created with the "*" matching string, this function
+// will always return %TRUE.
+/*
+
+C function : g_file_attribute_matcher_matches
+*/
 func (recv *FileAttributeMatcher) Matches(attribute string) bool {
 	c_attribute := C.CString(attribute)
 	defer C.free(unsafe.Pointer(c_attribute))
@@ -1053,7 +1120,12 @@ func (recv *FileAttributeMatcher) Matches(attribute string) bool {
 	return retGo
 }
 
-// MatchesOnly is a wrapper around the C function g_file_attribute_matcher_matches_only.
+// Checks if a attribute matcher only matches a given attribute. Always
+// returns %FALSE if "*" was used when creating the matcher.
+/*
+
+C function : g_file_attribute_matcher_matches_only
+*/
 func (recv *FileAttributeMatcher) MatchesOnly(attribute string) bool {
 	c_attribute := C.CString(attribute)
 	defer C.free(unsafe.Pointer(c_attribute))
@@ -1064,7 +1136,11 @@ func (recv *FileAttributeMatcher) MatchesOnly(attribute string) bool {
 	return retGo
 }
 
-// Ref is a wrapper around the C function g_file_attribute_matcher_ref.
+// References a file attribute matcher.
+/*
+
+C function : g_file_attribute_matcher_ref
+*/
 func (recv *FileAttributeMatcher) Ref() *FileAttributeMatcher {
 	retC := C.g_file_attribute_matcher_ref((*C.GFileAttributeMatcher)(recv.native))
 	retGo := FileAttributeMatcherNewFromC(unsafe.Pointer(retC))
@@ -1072,7 +1148,18 @@ func (recv *FileAttributeMatcher) Ref() *FileAttributeMatcher {
 	return retGo
 }
 
-// Subtract is a wrapper around the C function g_file_attribute_matcher_subtract.
+// Subtracts all attributes of @subtract from @matcher and returns
+// a matcher that supports those attributes.
+//
+// Note that currently it is not possible to remove a single
+// attribute when the @matcher matches the whole namespace - or remove
+// a namespace or attribute when the matcher matches everything. This
+// is a limitation of the current implementation, but may be fixed
+// in the future.
+/*
+
+C function : g_file_attribute_matcher_subtract
+*/
 func (recv *FileAttributeMatcher) Subtract(subtract *FileAttributeMatcher) *FileAttributeMatcher {
 	c_subtract := (*C.GFileAttributeMatcher)(C.NULL)
 	if subtract != nil {
@@ -1085,7 +1172,12 @@ func (recv *FileAttributeMatcher) Subtract(subtract *FileAttributeMatcher) *File
 	return retGo
 }
 
-// Unref is a wrapper around the C function g_file_attribute_matcher_unref.
+// Unreferences @matcher. If the reference count falls below 1,
+// the @matcher is automatically freed.
+/*
+
+C function : g_file_attribute_matcher_unref
+*/
 func (recv *FileAttributeMatcher) Unref() {
 	C.g_file_attribute_matcher_unref((*C.GFileAttributeMatcher)(recv.native))
 
@@ -1658,7 +1750,14 @@ func (recv *IOExtension) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// GetName is a wrapper around the C function g_io_extension_get_name.
+// Gets the name under which @extension was registered.
+//
+// Note that the same type may be registered as extension
+// for multiple extension points, under different names.
+/*
+
+C function : g_io_extension_get_name
+*/
 func (recv *IOExtension) GetName() string {
 	retC := C.g_io_extension_get_name((*C.GIOExtension)(recv.native))
 	retGo := C.GoString(retC)
@@ -1666,7 +1765,11 @@ func (recv *IOExtension) GetName() string {
 	return retGo
 }
 
-// GetPriority is a wrapper around the C function g_io_extension_get_priority.
+// Gets the priority with which @extension was registered.
+/*
+
+C function : g_io_extension_get_priority
+*/
 func (recv *IOExtension) GetPriority() int32 {
 	retC := C.g_io_extension_get_priority((*C.GIOExtension)(recv.native))
 	retGo := (int32)(retC)
@@ -1674,7 +1777,11 @@ func (recv *IOExtension) GetPriority() int32 {
 	return retGo
 }
 
-// GetType is a wrapper around the C function g_io_extension_get_type.
+// Gets the type associated with @extension.
+/*
+
+C function : g_io_extension_get_type
+*/
 func (recv *IOExtension) GetType() gobject.Type {
 	retC := C.g_io_extension_get_type((*C.GIOExtension)(recv.native))
 	retGo := (gobject.Type)(retC)
@@ -1682,7 +1789,12 @@ func (recv *IOExtension) GetType() gobject.Type {
 	return retGo
 }
 
-// RefClass is a wrapper around the C function g_io_extension_ref_class.
+// Gets a reference to the class for the type that is
+// associated with @extension.
+/*
+
+C function : g_io_extension_ref_class
+*/
 func (recv *IOExtension) RefClass() *gobject.TypeClass {
 	retC := C.g_io_extension_ref_class((*C.GIOExtension)(recv.native))
 	retGo := gobject.TypeClassNewFromC(unsafe.Pointer(retC))
@@ -1711,7 +1823,11 @@ func (recv *IOExtensionPoint) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// GetExtensionByName is a wrapper around the C function g_io_extension_point_get_extension_by_name.
+// Finds a #GIOExtension for an extension point by name.
+/*
+
+C function : g_io_extension_point_get_extension_by_name
+*/
 func (recv *IOExtensionPoint) GetExtensionByName(name string) *IOExtension {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -1722,7 +1838,12 @@ func (recv *IOExtensionPoint) GetExtensionByName(name string) *IOExtension {
 	return retGo
 }
 
-// GetExtensions is a wrapper around the C function g_io_extension_point_get_extensions.
+// Gets a list of all extensions that implement this extension point.
+// The list is sorted by priority, beginning with the highest priority.
+/*
+
+C function : g_io_extension_point_get_extensions
+*/
 func (recv *IOExtensionPoint) GetExtensions() *glib.List {
 	retC := C.g_io_extension_point_get_extensions((*C.GIOExtensionPoint)(recv.native))
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
@@ -1730,7 +1851,11 @@ func (recv *IOExtensionPoint) GetExtensions() *glib.List {
 	return retGo
 }
 
-// GetRequiredType is a wrapper around the C function g_io_extension_point_get_required_type.
+// Gets the required type for @extension_point.
+/*
+
+C function : g_io_extension_point_get_required_type
+*/
 func (recv *IOExtensionPoint) GetRequiredType() gobject.Type {
 	retC := C.g_io_extension_point_get_required_type((*C.GIOExtensionPoint)(recv.native))
 	retGo := (gobject.Type)(retC)
@@ -1738,7 +1863,12 @@ func (recv *IOExtensionPoint) GetRequiredType() gobject.Type {
 	return retGo
 }
 
-// SetRequiredType is a wrapper around the C function g_io_extension_point_set_required_type.
+// Sets the required type for @extension_point to @type.
+// All implementations must henceforth have this type.
+/*
+
+C function : g_io_extension_point_set_required_type
+*/
 func (recv *IOExtensionPoint) SetRequiredType(type_ gobject.Type) {
 	c_type := (C.GType)(type_)
 
@@ -4163,7 +4293,11 @@ func (recv *UnixMountPoint) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Compare is a wrapper around the C function g_unix_mount_point_compare.
+// Compares two unix mount points.
+/*
+
+C function : g_unix_mount_point_compare
+*/
 func (recv *UnixMountPoint) Compare(mount2 *UnixMountPoint) int32 {
 	c_mount2 := (*C.GUnixMountPoint)(C.NULL)
 	if mount2 != nil {
@@ -4176,14 +4310,22 @@ func (recv *UnixMountPoint) Compare(mount2 *UnixMountPoint) int32 {
 	return retGo
 }
 
-// Free is a wrapper around the C function g_unix_mount_point_free.
+// Frees a unix mount point.
+/*
+
+C function : g_unix_mount_point_free
+*/
 func (recv *UnixMountPoint) Free() {
 	C.g_unix_mount_point_free((*C.GUnixMountPoint)(recv.native))
 
 	return
 }
 
-// GetDevicePath is a wrapper around the C function g_unix_mount_point_get_device_path.
+// Gets the device path for a unix mount point.
+/*
+
+C function : g_unix_mount_point_get_device_path
+*/
 func (recv *UnixMountPoint) GetDevicePath() string {
 	retC := C.g_unix_mount_point_get_device_path((*C.GUnixMountPoint)(recv.native))
 	retGo := C.GoString(retC)
@@ -4191,7 +4333,11 @@ func (recv *UnixMountPoint) GetDevicePath() string {
 	return retGo
 }
 
-// GetFsType is a wrapper around the C function g_unix_mount_point_get_fs_type.
+// Gets the file system type for the mount point.
+/*
+
+C function : g_unix_mount_point_get_fs_type
+*/
 func (recv *UnixMountPoint) GetFsType() string {
 	retC := C.g_unix_mount_point_get_fs_type((*C.GUnixMountPoint)(recv.native))
 	retGo := C.GoString(retC)
@@ -4199,7 +4345,11 @@ func (recv *UnixMountPoint) GetFsType() string {
 	return retGo
 }
 
-// GetMountPath is a wrapper around the C function g_unix_mount_point_get_mount_path.
+// Gets the mount path for a unix mount point.
+/*
+
+C function : g_unix_mount_point_get_mount_path
+*/
 func (recv *UnixMountPoint) GetMountPath() string {
 	retC := C.g_unix_mount_point_get_mount_path((*C.GUnixMountPoint)(recv.native))
 	retGo := C.GoString(retC)
@@ -4207,7 +4357,11 @@ func (recv *UnixMountPoint) GetMountPath() string {
 	return retGo
 }
 
-// GuessCanEject is a wrapper around the C function g_unix_mount_point_guess_can_eject.
+// Guesses whether a Unix mount point can be ejected.
+/*
+
+C function : g_unix_mount_point_guess_can_eject
+*/
 func (recv *UnixMountPoint) GuessCanEject() bool {
 	retC := C.g_unix_mount_point_guess_can_eject((*C.GUnixMountPoint)(recv.native))
 	retGo := retC == C.TRUE
@@ -4215,7 +4369,11 @@ func (recv *UnixMountPoint) GuessCanEject() bool {
 	return retGo
 }
 
-// GuessIcon is a wrapper around the C function g_unix_mount_point_guess_icon.
+// Guesses the icon of a Unix mount point.
+/*
+
+C function : g_unix_mount_point_guess_icon
+*/
 func (recv *UnixMountPoint) GuessIcon() *Icon {
 	retC := C.g_unix_mount_point_guess_icon((*C.GUnixMountPoint)(recv.native))
 	retGo := IconNewFromC(unsafe.Pointer(retC))
@@ -4223,7 +4381,12 @@ func (recv *UnixMountPoint) GuessIcon() *Icon {
 	return retGo
 }
 
-// GuessName is a wrapper around the C function g_unix_mount_point_guess_name.
+// Guesses the name of a Unix mount point.
+// The result is a translated string.
+/*
+
+C function : g_unix_mount_point_guess_name
+*/
 func (recv *UnixMountPoint) GuessName() string {
 	retC := C.g_unix_mount_point_guess_name((*C.GUnixMountPoint)(recv.native))
 	retGo := C.GoString(retC)
@@ -4232,7 +4395,11 @@ func (recv *UnixMountPoint) GuessName() string {
 	return retGo
 }
 
-// IsLoopback is a wrapper around the C function g_unix_mount_point_is_loopback.
+// Checks if a unix mount point is a loopback device.
+/*
+
+C function : g_unix_mount_point_is_loopback
+*/
 func (recv *UnixMountPoint) IsLoopback() bool {
 	retC := C.g_unix_mount_point_is_loopback((*C.GUnixMountPoint)(recv.native))
 	retGo := retC == C.TRUE
@@ -4240,7 +4407,11 @@ func (recv *UnixMountPoint) IsLoopback() bool {
 	return retGo
 }
 
-// IsReadonly is a wrapper around the C function g_unix_mount_point_is_readonly.
+// Checks if a unix mount point is read only.
+/*
+
+C function : g_unix_mount_point_is_readonly
+*/
 func (recv *UnixMountPoint) IsReadonly() bool {
 	retC := C.g_unix_mount_point_is_readonly((*C.GUnixMountPoint)(recv.native))
 	retGo := retC == C.TRUE
@@ -4248,7 +4419,11 @@ func (recv *UnixMountPoint) IsReadonly() bool {
 	return retGo
 }
 
-// IsUserMountable is a wrapper around the C function g_unix_mount_point_is_user_mountable.
+// Checks if a unix mount point is mountable by the user.
+/*
+
+C function : g_unix_mount_point_is_user_mountable
+*/
 func (recv *UnixMountPoint) IsUserMountable() bool {
 	retC := C.g_unix_mount_point_is_user_mountable((*C.GUnixMountPoint)(recv.native))
 	retGo := retC == C.TRUE

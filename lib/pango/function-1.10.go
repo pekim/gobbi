@@ -8,7 +8,15 @@ package pango
 // #include <stdlib.h>
 import "C"
 
-// IsZeroWidth is a wrapper around the C function pango_is_zero_width.
+// Checks @ch to see if it is a character that should not be
+// normally rendered on the screen.  This includes all Unicode characters
+// with "ZERO WIDTH" in their name, as well as <firstterm>bidi</firstterm> formatting characters, and
+// a few other ones.  This is totally different from g_unichar_iszerowidth()
+// and is at best misnamed.
+/*
+
+C function : pango_is_zero_width
+*/
 func IsZeroWidth(ch rune) bool {
 	c_ch := (C.gunichar)(ch)
 

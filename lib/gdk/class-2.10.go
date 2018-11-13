@@ -24,7 +24,12 @@ import (
 */
 import "C"
 
-// SupportsInputShapes is a wrapper around the C function gdk_display_supports_input_shapes.
+// Returns %TRUE if gdk_window_input_shape_combine_mask() can
+// be used to modify the input shape of windows on @display.
+/*
+
+C function : gdk_display_supports_input_shapes
+*/
 func (recv *Display) SupportsInputShapes() bool {
 	retC := C.gdk_display_supports_input_shapes((*C.GdkDisplay)(recv.native))
 	retGo := retC == C.TRUE
@@ -32,7 +37,12 @@ func (recv *Display) SupportsInputShapes() bool {
 	return retGo
 }
 
-// SupportsShapes is a wrapper around the C function gdk_display_supports_shapes.
+// Returns %TRUE if gdk_window_shape_combine_mask() can
+// be used to create shaped windows on @display.
+/*
+
+C function : gdk_display_supports_shapes
+*/
 func (recv *Display) SupportsShapes() bool {
 	retC := C.gdk_display_supports_shapes((*C.GdkDisplay)(recv.native))
 	retGo := retC == C.TRUE
@@ -97,7 +107,24 @@ func screen_compositedChangedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// GetActiveWindow is a wrapper around the C function gdk_screen_get_active_window.
+// Returns the screen’s currently active window.
+//
+// On X11, this is done by inspecting the _NET_ACTIVE_WINDOW property
+// on the root window, as described in the
+// [Extended Window Manager Hints](http://www.freedesktop.org/Standards/wm-spec).
+// If there is no currently currently active
+// window, or the window manager does not support the
+// _NET_ACTIVE_WINDOW hint, this function returns %NULL.
+//
+// On other platforms, this function may return %NULL, depending on whether
+// it is implementable on that platform.
+//
+// The returned window should be unrefed using g_object_unref() when
+// no longer needed.
+/*
+
+C function : gdk_screen_get_active_window
+*/
 func (recv *Screen) GetActiveWindow() *Window {
 	retC := C.gdk_screen_get_active_window((*C.GdkScreen)(recv.native))
 	var retGo (*Window)
@@ -110,7 +137,11 @@ func (recv *Screen) GetActiveWindow() *Window {
 	return retGo
 }
 
-// GetFontOptions is a wrapper around the C function gdk_screen_get_font_options.
+// Gets any options previously set with gdk_screen_set_font_options().
+/*
+
+C function : gdk_screen_get_font_options
+*/
 func (recv *Screen) GetFontOptions() *cairo.FontOptions {
 	retC := C.gdk_screen_get_font_options((*C.GdkScreen)(recv.native))
 	var retGo (*cairo.FontOptions)
@@ -123,7 +154,12 @@ func (recv *Screen) GetFontOptions() *cairo.FontOptions {
 	return retGo
 }
 
-// GetResolution is a wrapper around the C function gdk_screen_get_resolution.
+// Gets the resolution for font handling on the screen; see
+// gdk_screen_set_resolution() for full details.
+/*
+
+C function : gdk_screen_get_resolution
+*/
 func (recv *Screen) GetResolution() float64 {
 	retC := C.gdk_screen_get_resolution((*C.GdkScreen)(recv.native))
 	retGo := (float64)(retC)
@@ -131,7 +167,25 @@ func (recv *Screen) GetResolution() float64 {
 	return retGo
 }
 
-// GetWindowStack is a wrapper around the C function gdk_screen_get_window_stack.
+// Returns a #GList of #GdkWindows representing the current
+// window stack.
+//
+// On X11, this is done by inspecting the _NET_CLIENT_LIST_STACKING
+// property on the root window, as described in the
+// [Extended Window Manager Hints](http://www.freedesktop.org/Standards/wm-spec).
+// If the window manager does not support the
+// _NET_CLIENT_LIST_STACKING hint, this function returns %NULL.
+//
+// On other platforms, this function may return %NULL, depending on whether
+// it is implementable on that platform.
+//
+// The returned list is newly allocated and owns references to the
+// windows it contains, so it should be freed using g_list_free() and
+// its windows unrefed using g_object_unref() when no longer needed.
+/*
+
+C function : gdk_screen_get_window_stack
+*/
 func (recv *Screen) GetWindowStack() *glib.List {
 	retC := C.gdk_screen_get_window_stack((*C.GdkScreen)(recv.native))
 	var retGo (*glib.List)
@@ -144,7 +198,16 @@ func (recv *Screen) GetWindowStack() *glib.List {
 	return retGo
 }
 
-// IsComposited is a wrapper around the C function gdk_screen_is_composited.
+// Returns whether windows with an RGBA visual can reasonably
+// be expected to have their alpha channel drawn correctly on
+// the screen.
+//
+// On X11 this function returns whether a compositing manager is
+// compositing @screen.
+/*
+
+C function : gdk_screen_is_composited
+*/
 func (recv *Screen) IsComposited() bool {
 	retC := C.gdk_screen_is_composited((*C.GdkScreen)(recv.native))
 	retGo := retC == C.TRUE
@@ -152,7 +215,15 @@ func (recv *Screen) IsComposited() bool {
 	return retGo
 }
 
-// SetFontOptions is a wrapper around the C function gdk_screen_set_font_options.
+// Sets the default font options for the screen. These
+// options will be set on any #PangoContext’s newly created
+// with gdk_pango_context_get_for_screen(). Changing the
+// default set of font options does not affect contexts that
+// have already been created.
+/*
+
+C function : gdk_screen_set_font_options
+*/
 func (recv *Screen) SetFontOptions(options *cairo.FontOptions) {
 	c_options := (*C.cairo_font_options_t)(C.NULL)
 	if options != nil {
@@ -164,7 +235,14 @@ func (recv *Screen) SetFontOptions(options *cairo.FontOptions) {
 	return
 }
 
-// SetResolution is a wrapper around the C function gdk_screen_set_resolution.
+// Sets the resolution for font handling on the screen. This is a
+// scale factor between points specified in a #PangoFontDescription
+// and cairo units. The default value is 96, meaning that a 10 point
+// font will be 13 units high. (10 * 96. / 72. = 13.3).
+/*
+
+C function : gdk_screen_set_resolution
+*/
 func (recv *Screen) SetResolution(dpi float64) {
 	c_dpi := (C.gdouble)(dpi)
 
@@ -173,7 +251,11 @@ func (recv *Screen) SetResolution(dpi float64) {
 	return
 }
 
-// GetTypeHint is a wrapper around the C function gdk_window_get_type_hint.
+// This function returns the type hint set for a window.
+/*
+
+C function : gdk_window_get_type_hint
+*/
 func (recv *Window) GetTypeHint() WindowTypeHint {
 	retC := C.gdk_window_get_type_hint((*C.GdkWindow)(recv.native))
 	retGo := (WindowTypeHint)(retC)
@@ -181,7 +263,26 @@ func (recv *Window) GetTypeHint() WindowTypeHint {
 	return retGo
 }
 
-// InputShapeCombineRegion is a wrapper around the C function gdk_window_input_shape_combine_region.
+// Like gdk_window_shape_combine_region(), but the shape applies
+// only to event handling. Mouse events which happen while
+// the pointer position corresponds to an unset bit in the
+// mask will be passed on the window below @window.
+//
+// An input shape is typically used with RGBA windows.
+// The alpha channel of the window defines which pixels are
+// invisible and allows for nicely antialiased borders,
+// and the input shape controls where the window is
+// “clickable”.
+//
+// On the X11 platform, this requires version 1.1 of the
+// shape extension.
+//
+// On the Win32 platform, this functionality is not present and the
+// function does nothing.
+/*
+
+C function : gdk_window_input_shape_combine_region
+*/
 func (recv *Window) InputShapeCombineRegion(shapeRegion *cairo.Region, offsetX int32, offsetY int32) {
 	c_shape_region := (*C.cairo_region_t)(C.NULL)
 	if shapeRegion != nil {
@@ -197,14 +298,32 @@ func (recv *Window) InputShapeCombineRegion(shapeRegion *cairo.Region, offsetX i
 	return
 }
 
-// MergeChildInputShapes is a wrapper around the C function gdk_window_merge_child_input_shapes.
+// Merges the input shape masks for any child windows into the
+// input shape mask for @window. i.e. the union of all input masks
+// for @window and its children will become the new input mask
+// for @window. See gdk_window_input_shape_combine_region().
+//
+// This function is distinct from gdk_window_set_child_input_shapes()
+// because it includes @window’s input shape mask in the set of
+// shapes to be merged.
+/*
+
+C function : gdk_window_merge_child_input_shapes
+*/
 func (recv *Window) MergeChildInputShapes() {
 	C.gdk_window_merge_child_input_shapes((*C.GdkWindow)(recv.native))
 
 	return
 }
 
-// SetChildInputShapes is a wrapper around the C function gdk_window_set_child_input_shapes.
+// Sets the input shape mask of @window to the union of input shape masks
+// for all children of @window, ignoring the input shape mask of @window
+// itself. Contrast with gdk_window_merge_child_input_shapes() which includes
+// the input shape mask of @window in the masks to be merged.
+/*
+
+C function : gdk_window_set_child_input_shapes
+*/
 func (recv *Window) SetChildInputShapes() {
 	C.gdk_window_set_child_input_shapes((*C.GdkWindow)(recv.native))
 

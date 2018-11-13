@@ -12,7 +12,14 @@ import "C"
 
 // Unsupported : gdk_display_store_clipboard : unsupported parameter targets :
 
-// SupportsClipboardPersistence is a wrapper around the C function gdk_display_supports_clipboard_persistence.
+// Returns whether the speicifed display supports clipboard
+// persistance; i.e. if it’s possible to store the clipboard data after an
+// application has quit. On X11 this checks if a clipboard daemon is
+// running.
+/*
+
+C function : gdk_display_supports_clipboard_persistence
+*/
 func (recv *Display) SupportsClipboardPersistence() bool {
 	retC := C.gdk_display_supports_clipboard_persistence((*C.GdkDisplay)(recv.native))
 	retGo := retC == C.TRUE
@@ -20,7 +27,12 @@ func (recv *Display) SupportsClipboardPersistence() bool {
 	return retGo
 }
 
-// SupportsSelectionNotification is a wrapper around the C function gdk_display_supports_selection_notification.
+// Returns whether #GdkEventOwnerChange events will be
+// sent when the owner of a selection changes.
+/*
+
+C function : gdk_display_supports_selection_notification
+*/
 func (recv *Display) SupportsSelectionNotification() bool {
 	retC := C.gdk_display_supports_selection_notification((*C.GdkDisplay)(recv.native))
 	retGo := retC == C.TRUE
@@ -28,21 +40,40 @@ func (recv *Display) SupportsSelectionNotification() bool {
 	return retGo
 }
 
-// ConfigureFinished is a wrapper around the C function gdk_window_configure_finished.
+// Does nothing, present only for compatiblity.
+/*
+
+C function : gdk_window_configure_finished
+*/
 func (recv *Window) ConfigureFinished() {
 	C.gdk_window_configure_finished((*C.GdkWindow)(recv.native))
 
 	return
 }
 
-// EnableSynchronizedConfigure is a wrapper around the C function gdk_window_enable_synchronized_configure.
+// Does nothing, present only for compatiblity.
+/*
+
+C function : gdk_window_enable_synchronized_configure
+*/
 func (recv *Window) EnableSynchronizedConfigure() {
 	C.gdk_window_enable_synchronized_configure((*C.GdkWindow)(recv.native))
 
 	return
 }
 
-// SetFocusOnMap is a wrapper around the C function gdk_window_set_focus_on_map.
+// Setting @focus_on_map to %FALSE hints the desktop environment that the
+// window doesn’t want to receive input focus when it is mapped.
+// focus_on_map should be turned off for windows that aren’t triggered
+// interactively (such as popups from network activity).
+//
+// On X, it is the responsibility of the window manager to interpret
+// this hint. Window managers following the freedesktop.org window
+// manager extension specification should respect it.
+/*
+
+C function : gdk_window_set_focus_on_map
+*/
 func (recv *Window) SetFocusOnMap(focusOnMap bool) {
 	c_focus_on_map :=
 		boolToGboolean(focusOnMap)

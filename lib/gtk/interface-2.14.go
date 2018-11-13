@@ -16,7 +16,12 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// GetCurrentFolderFile is a wrapper around the C function gtk_file_chooser_get_current_folder_file.
+// Gets the current folder of @chooser as #GFile.
+// See gtk_file_chooser_get_current_folder_uri().
+/*
+
+C function : gtk_file_chooser_get_current_folder_file
+*/
 func (recv *FileChooser) GetCurrentFolderFile() *gio.File {
 	retC := C.gtk_file_chooser_get_current_folder_file((*C.GtkFileChooser)(recv.native))
 	retGo := gio.FileNewFromC(unsafe.Pointer(retC))
@@ -24,7 +29,16 @@ func (recv *FileChooser) GetCurrentFolderFile() *gio.File {
 	return retGo
 }
 
-// GetFile is a wrapper around the C function gtk_file_chooser_get_file.
+// Gets the #GFile for the currently selected file in
+// the file selector. If multiple files are selected,
+// one of the files will be returned at random.
+//
+// If the file chooser is in folder mode, this function returns the selected
+// folder.
+/*
+
+C function : gtk_file_chooser_get_file
+*/
 func (recv *FileChooser) GetFile() *gio.File {
 	retC := C.gtk_file_chooser_get_file((*C.GtkFileChooser)(recv.native))
 	retGo := gio.FileNewFromC(unsafe.Pointer(retC))
@@ -32,7 +46,12 @@ func (recv *FileChooser) GetFile() *gio.File {
 	return retGo
 }
 
-// GetFiles is a wrapper around the C function gtk_file_chooser_get_files.
+// Lists all the selected files and subfolders in the current folder of @chooser
+// as #GFile. An internal function, see gtk_file_chooser_get_uris().
+/*
+
+C function : gtk_file_chooser_get_files
+*/
 func (recv *FileChooser) GetFiles() *glib.SList {
 	retC := C.gtk_file_chooser_get_files((*C.GtkFileChooser)(recv.native))
 	retGo := glib.SListNewFromC(unsafe.Pointer(retC))
@@ -40,7 +59,12 @@ func (recv *FileChooser) GetFiles() *glib.SList {
 	return retGo
 }
 
-// GetPreviewFile is a wrapper around the C function gtk_file_chooser_get_preview_file.
+// Gets the #GFile that should be previewed in a custom preview
+// Internal function, see gtk_file_chooser_get_preview_uri().
+/*
+
+C function : gtk_file_chooser_get_preview_file
+*/
 func (recv *FileChooser) GetPreviewFile() *gio.File {
 	retC := C.gtk_file_chooser_get_preview_file((*C.GtkFileChooser)(recv.native))
 	var retGo (*gio.File)
@@ -53,7 +77,12 @@ func (recv *FileChooser) GetPreviewFile() *gio.File {
 	return retGo
 }
 
-// SelectFile is a wrapper around the C function gtk_file_chooser_select_file.
+// Selects the file referred to by @file. An internal function. See
+// _gtk_file_chooser_select_uri().
+/*
+
+C function : gtk_file_chooser_select_file
+*/
 func (recv *FileChooser) SelectFile(file *gio.File) (bool, error) {
 	c_file := (*C.GFile)(file.ToC())
 
@@ -70,7 +99,12 @@ func (recv *FileChooser) SelectFile(file *gio.File) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// SetCurrentFolderFile is a wrapper around the C function gtk_file_chooser_set_current_folder_file.
+// Sets the current folder for @chooser from a #GFile.
+// Internal function, see gtk_file_chooser_set_current_folder_uri().
+/*
+
+C function : gtk_file_chooser_set_current_folder_file
+*/
 func (recv *FileChooser) SetCurrentFolderFile(file *gio.File) (bool, error) {
 	c_file := (*C.GFile)(file.ToC())
 
@@ -87,7 +121,43 @@ func (recv *FileChooser) SetCurrentFolderFile(file *gio.File) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// SetFile is a wrapper around the C function gtk_file_chooser_set_file.
+// Sets @file as the current filename for the file chooser, by changing
+// to the file’s parent folder and actually selecting the file in list.  If
+// the @chooser is in %GTK_FILE_CHOOSER_ACTION_SAVE mode, the file’s base name
+// will also appear in the dialog’s file name entry.
+//
+// If the file name isn’t in the current folder of @chooser, then the current
+// folder of @chooser will be changed to the folder containing @filename. This
+// is equivalent to a sequence of gtk_file_chooser_unselect_all() followed by
+// gtk_file_chooser_select_filename().
+//
+// Note that the file must exist, or nothing will be done except
+// for the directory change.
+//
+// If you are implementing a save dialog,
+// you should use this function if you already have a file name to which the
+// user may save; for example, when the user opens an existing file and then
+// does Save As...  If you don’t have
+// a file name already — for example, if the user just created a new
+// file and is saving it for the first time, do not call this function.
+// Instead, use something similar to this:
+// |[<!-- language="C" -->
+// if (document_is_new)
+// {
+// the user just created a new document
+// gtk_file_chooser_set_current_folder_file (chooser, default_file_for_saving);
+// gtk_file_chooser_set_current_name (chooser, "Untitled document");
+// }
+// else
+// {
+// the user edited an existing document
+// gtk_file_chooser_set_file (chooser, existing_file);
+// }
+// ]|
+/*
+
+C function : gtk_file_chooser_set_file
+*/
 func (recv *FileChooser) SetFile(file *gio.File) (bool, error) {
 	c_file := (*C.GFile)(file.ToC())
 
@@ -104,7 +174,12 @@ func (recv *FileChooser) SetFile(file *gio.File) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// UnselectFile is a wrapper around the C function gtk_file_chooser_unselect_file.
+// Unselects the file referred to by @file. If the file is not in the current
+// directory, does not exist, or is otherwise not currently selected, does nothing.
+/*
+
+C function : gtk_file_chooser_unselect_file
+*/
 func (recv *FileChooser) UnselectFile(file *gio.File) {
 	c_file := (*C.GFile)(file.ToC())
 
@@ -113,7 +188,12 @@ func (recv *FileChooser) UnselectFile(file *gio.File) {
 	return
 }
 
-// GetIconSize is a wrapper around the C function gtk_tool_shell_get_icon_size.
+// Retrieves the icon size for the tool shell. Tool items must not call this
+// function directly, but rely on gtk_tool_item_get_icon_size() instead.
+/*
+
+C function : gtk_tool_shell_get_icon_size
+*/
 func (recv *ToolShell) GetIconSize() IconSize {
 	retC := C.gtk_tool_shell_get_icon_size((*C.GtkToolShell)(recv.native))
 	retGo := (IconSize)(retC)
@@ -121,7 +201,13 @@ func (recv *ToolShell) GetIconSize() IconSize {
 	return retGo
 }
 
-// GetOrientation is a wrapper around the C function gtk_tool_shell_get_orientation.
+// Retrieves the current orientation for the tool shell. Tool items must not
+// call this function directly, but rely on gtk_tool_item_get_orientation()
+// instead.
+/*
+
+C function : gtk_tool_shell_get_orientation
+*/
 func (recv *ToolShell) GetOrientation() Orientation {
 	retC := C.gtk_tool_shell_get_orientation((*C.GtkToolShell)(recv.native))
 	retGo := (Orientation)(retC)
@@ -129,7 +215,12 @@ func (recv *ToolShell) GetOrientation() Orientation {
 	return retGo
 }
 
-// GetReliefStyle is a wrapper around the C function gtk_tool_shell_get_relief_style.
+// Returns the relief style of buttons on @shell. Tool items must not call this
+// function directly, but rely on gtk_tool_item_get_relief_style() instead.
+/*
+
+C function : gtk_tool_shell_get_relief_style
+*/
 func (recv *ToolShell) GetReliefStyle() ReliefStyle {
 	retC := C.gtk_tool_shell_get_relief_style((*C.GtkToolShell)(recv.native))
 	retGo := (ReliefStyle)(retC)
@@ -137,7 +228,13 @@ func (recv *ToolShell) GetReliefStyle() ReliefStyle {
 	return retGo
 }
 
-// GetStyle is a wrapper around the C function gtk_tool_shell_get_style.
+// Retrieves whether the tool shell has text, icons, or both. Tool items must
+// not call this function directly, but rely on gtk_tool_item_get_toolbar_style()
+// instead.
+/*
+
+C function : gtk_tool_shell_get_style
+*/
 func (recv *ToolShell) GetStyle() ToolbarStyle {
 	retC := C.gtk_tool_shell_get_style((*C.GtkToolShell)(recv.native))
 	retGo := (ToolbarStyle)(retC)
@@ -145,7 +242,16 @@ func (recv *ToolShell) GetStyle() ToolbarStyle {
 	return retGo
 }
 
-// RebuildMenu is a wrapper around the C function gtk_tool_shell_rebuild_menu.
+// Calling this function signals the tool shell that the overflow menu item for
+// tool items have changed. If there is an overflow menu and if it is visible
+// when this function it called, the menu will be rebuilt.
+//
+// Tool items must not call this function directly, but rely on
+// gtk_tool_item_rebuild_menu() instead.
+/*
+
+C function : gtk_tool_shell_rebuild_menu
+*/
 func (recv *ToolShell) RebuildMenu() {
 	C.gtk_tool_shell_rebuild_menu((*C.GtkToolShell)(recv.native))
 

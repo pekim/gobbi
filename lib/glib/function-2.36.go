@@ -12,7 +12,17 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Close is a wrapper around the C function g_close.
+// This wraps the close() call; in case of error, %errno will be
+// preserved, but the error will also be stored as a #GError in @error.
+//
+// Besides using #GError, there is another major reason to prefer this
+// function over the call provided by the system; on Unix, it will
+// attempt to correctly handle %EINTR, which has platform-specific
+// semantics.
+/*
+
+C function : g_close
+*/
 func Close(fd int32) (bool, error) {
 	c_fd := (C.gint)(fd)
 
@@ -29,7 +39,14 @@ func Close(fd int32) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// GetNumProcessors is a wrapper around the C function g_get_num_processors.
+// Determine the approximate number of threads that the system will
+// schedule simultaneously for this process.  This is intended to be
+// used as a parameter to g_thread_pool_new() for CPU bound tasks and
+// similar cases.
+/*
+
+C function : g_get_num_processors
+*/
 func GetNumProcessors() uint32 {
 	retC := C.g_get_num_processors()
 	retGo := (uint32)(retC)
@@ -41,7 +58,14 @@ func GetNumProcessors() uint32 {
 
 // Unsupported : g_unix_fd_add_full : unsupported parameter function : no type generator for UnixFDSourceFunc (GUnixFDSourceFunc) for param function
 
-// UnixFdSourceNew is a wrapper around the C function g_unix_fd_source_new.
+// Creates a #GSource to watch for a particular IO condition on a file
+// descriptor.
+//
+// The source will never close the fd -- you must do it yourself.
+/*
+
+C function : g_unix_fd_source_new
+*/
 func UnixFdSourceNew(fd int32, condition IOCondition) *Source {
 	c_fd := (C.gint)(fd)
 

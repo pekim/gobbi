@@ -20,7 +20,12 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// ContentTypeIsMimeType is a wrapper around the C function g_content_type_is_mime_type.
+// Determines if @type is a subset of @mime_type.
+// Convenience wrapper around g_content_type_is_a().
+/*
+
+C function : g_content_type_is_mime_type
+*/
 func ContentTypeIsMimeType(type_ string, mimeType string) bool {
 	c_type := C.CString(type_)
 	defer C.free(unsafe.Pointer(c_type))
@@ -34,7 +39,13 @@ func ContentTypeIsMimeType(type_ string, mimeType string) bool {
 	return retGo
 }
 
-// UnixMountFor is a wrapper around the C function g_unix_mount_for.
+// Gets a #GUnixMountEntry for a given file path. If @time_read
+// is set, it will be filled with a unix timestamp for checking
+// if the mounts have changed since with g_unix_mounts_changed_since().
+/*
+
+C function : g_unix_mount_for
+*/
 func UnixMountFor(filePath string) (*UnixMountEntry, uint64) {
 	c_file_path := C.CString(filePath)
 	defer C.free(unsafe.Pointer(c_file_path))

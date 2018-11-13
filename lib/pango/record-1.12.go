@@ -8,7 +8,14 @@ package pango
 // #include <stdlib.h>
 import "C"
 
-// GetFontScaleFactor is a wrapper around the C function pango_matrix_get_font_scale_factor.
+// Returns the scale factor of a matrix on the height of the font.
+// That is, the scale factor in the direction perpendicular to the
+// vector that the X coordinate is mapped to.  If the scale in the X
+// coordinate is needed as well, use pango_matrix_get_font_scale_factors().
+/*
+
+C function : pango_matrix_get_font_scale_factor
+*/
 func (recv *Matrix) GetFontScaleFactor() float64 {
 	retC := C.pango_matrix_get_font_scale_factor((*C.PangoMatrix)(recv.native))
 	retGo := (float64)(retC)

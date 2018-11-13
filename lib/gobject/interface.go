@@ -30,7 +30,13 @@ func (recv *TypePlugin) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CompleteInterfaceInfo is a wrapper around the C function g_type_plugin_complete_interface_info.
+// Calls the @complete_interface_info function from the
+// #GTypePluginClass of @plugin. There should be no need to use this
+// function outside of the GObject type system itself.
+/*
+
+C function : g_type_plugin_complete_interface_info
+*/
 func (recv *TypePlugin) CompleteInterfaceInfo(instanceType Type, interfaceType Type, info *InterfaceInfo) {
 	c_instance_type := (C.GType)(instanceType)
 
@@ -46,7 +52,13 @@ func (recv *TypePlugin) CompleteInterfaceInfo(instanceType Type, interfaceType T
 	return
 }
 
-// CompleteTypeInfo is a wrapper around the C function g_type_plugin_complete_type_info.
+// Calls the @complete_type_info function from the #GTypePluginClass of @plugin.
+// There should be no need to use this function outside of the GObject
+// type system itself.
+/*
+
+C function : g_type_plugin_complete_type_info
+*/
 func (recv *TypePlugin) CompleteTypeInfo(gType Type, info *TypeInfo, valueTable *TypeValueTable) {
 	c_g_type := (C.GType)(gType)
 
@@ -65,14 +77,26 @@ func (recv *TypePlugin) CompleteTypeInfo(gType Type, info *TypeInfo, valueTable 
 	return
 }
 
-// Unuse is a wrapper around the C function g_type_plugin_unuse.
+// Calls the @unuse_plugin function from the #GTypePluginClass of
+// @plugin.  There should be no need to use this function outside of
+// the GObject type system itself.
+/*
+
+C function : g_type_plugin_unuse
+*/
 func (recv *TypePlugin) Unuse() {
 	C.g_type_plugin_unuse((*C.GTypePlugin)(recv.native))
 
 	return
 }
 
-// Use is a wrapper around the C function g_type_plugin_use.
+// Calls the @use_plugin function from the #GTypePluginClass of
+// @plugin.  There should be no need to use this function outside of
+// the GObject type system itself.
+/*
+
+C function : g_type_plugin_use
+*/
 func (recv *TypePlugin) Use() {
 	C.g_type_plugin_use((*C.GTypePlugin)(recv.native))
 

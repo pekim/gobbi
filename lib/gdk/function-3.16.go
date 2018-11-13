@@ -10,7 +10,26 @@ import cairo "github.com/pekim/gobbi/lib/cairo"
 // #include <stdlib.h>
 import "C"
 
-// CairoDrawFromGl is a wrapper around the C function gdk_cairo_draw_from_gl.
+// This is the main way to draw GL content in GTK+. It takes a render buffer ID
+// (@source_type == #GL_RENDERBUFFER) or a texture id (@source_type == #GL_TEXTURE)
+// and draws it onto @cr with an OVER operation, respecting the current clip.
+// The top left corner of the rectangle specified by @x, @y, @width and @height
+// will be drawn at the current (0,0) position of the cairo_t.
+//
+// This will work for *all* cairo_t, as long as @window is realized, but the
+// fallback implementation that reads back the pixels from the buffer may be
+// used in the general case. In the case of direct drawing to a window with
+// no special effects applied to @cr it will however use a more efficient
+// approach.
+//
+// For #GL_RENDERBUFFER the code will always fall back to software for buffers
+// with alpha components, so make sure you use #GL_TEXTURE if using alpha.
+//
+// Calling this may change the current GL context.
+/*
+
+C function : gdk_cairo_draw_from_gl
+*/
 func CairoDrawFromGl(cr *cairo.Context, window *Window, source int32, sourceType int32, bufferScale int32, x int32, y int32, width int32, height int32) {
 	c_cr := (*C.cairo_t)(C.NULL)
 	if cr != nil {

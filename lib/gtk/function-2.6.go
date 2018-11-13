@@ -16,7 +16,12 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// AcceleratorGetLabel is a wrapper around the C function gtk_accelerator_get_label.
+// Converts an accelerator keyval and modifier mask into a string
+// which can be used to represent the accelerator to the user.
+/*
+
+C function : gtk_accelerator_get_label
+*/
 func AcceleratorGetLabel(acceleratorKey uint32, acceleratorMods gdk.ModifierType) string {
 	c_accelerator_key := (C.guint)(acceleratorKey)
 
@@ -29,7 +34,19 @@ func AcceleratorGetLabel(acceleratorKey uint32, acceleratorMods gdk.ModifierType
 	return retGo
 }
 
-// AlternativeDialogButtonOrder is a wrapper around the C function gtk_alternative_dialog_button_order.
+// Returns %TRUE if dialogs are expected to use an alternative
+// button order on the screen @screen. See
+// gtk_dialog_set_alternative_button_order() for more details
+// about alternative button order.
+//
+// If you need to use this function, you should probably connect
+// to the ::notify:gtk-alternative-button-order signal on the
+// #GtkSettings object associated to @screen, in order to be
+// notified if the button order setting changes.
+/*
+
+C function : gtk_alternative_dialog_button_order
+*/
 func AlternativeDialogButtonOrder(screen *gdk.Screen) bool {
 	c_screen := (*C.GdkScreen)(C.NULL)
 	if screen != nil {
@@ -42,7 +59,16 @@ func AlternativeDialogButtonOrder(screen *gdk.Screen) bool {
 	return retGo
 }
 
-// GetOptionGroup is a wrapper around the C function gtk_get_option_group.
+// Returns a #GOptionGroup for the commandline arguments recognized
+// by GTK+ and GDK.
+//
+// You should add this group to your #GOptionContext
+// with g_option_context_add_group(), if you are using
+// g_option_context_parse() to parse your commandline arguments.
+/*
+
+C function : gtk_get_option_group
+*/
 func GetOptionGroup(openDefaultDisplay bool) *glib.OptionGroup {
 	c_open_default_display :=
 		boolToGboolean(openDefaultDisplay)

@@ -48,7 +48,14 @@ func (recv *ActionMapInterface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ToString is a wrapper around the C function g_file_attribute_matcher_to_string.
+// Prints what the matcher is matching against. The format will be
+// equal to the format passed to g_file_attribute_matcher_new().
+// The output however, might not be identical, as the matcher may
+// decide to use a different order or omit needless parts.
+/*
+
+C function : g_file_attribute_matcher_to_string
+*/
 func (recv *FileAttributeMatcher) ToString() string {
 	retC := C.g_file_attribute_matcher_to_string((*C.GFileAttributeMatcher)(recv.native))
 	retGo := C.GoString(retC)
@@ -128,7 +135,20 @@ func (recv *Resource) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ResourceNewFromData is a wrapper around the C function g_resource_new_from_data.
+// Creates a GResource from a reference to the binary resource bundle.
+// This will keep a reference to @data while the resource lives, so
+// the data should not be modified or freed.
+//
+// If you want to use this resource in the global resource namespace you need
+// to register it with g_resources_register().
+//
+// Note: @data must be backed by memory that is at least pointer aligned.
+// Otherwise this function will internally create a copy of the memory since
+// GLib 2.56, or in older versions fail and exit the process.
+/*
+
+C function : g_resource_new_from_data
+*/
 func ResourceNewFromData(data *glib.Bytes) (*Resource, error) {
 	c_data := (*C.GBytes)(C.NULL)
 	if data != nil {
@@ -148,14 +168,24 @@ func ResourceNewFromData(data *glib.Bytes) (*Resource, error) {
 	return retGo, goThrowableError
 }
 
-// Register is a wrapper around the C function g_resources_register.
+// Registers the resource with the process-global set of resources.
+// Once a resource is registered the files in it can be accessed
+// with the global resource lookup functions like g_resources_lookup_data().
+/*
+
+C function : g_resources_register
+*/
 func (recv *Resource) Register() {
 	C.g_resources_register((*C.GResource)(recv.native))
 
 	return
 }
 
-// Unregister is a wrapper around the C function g_resources_unregister.
+// Unregisters the resource from the process-global set of resources.
+/*
+
+C function : g_resources_unregister
+*/
 func (recv *Resource) Unregister() {
 	C.g_resources_unregister((*C.GResource)(recv.native))
 
@@ -164,7 +194,14 @@ func (recv *Resource) Unregister() {
 
 // Unsupported : g_resource_enumerate_children : no return type
 
-// GetInfo is a wrapper around the C function g_resource_get_info.
+// Looks for a file at the specified @path in the resource and
+// if found returns information about it.
+//
+// @lookup_flags controls the behaviour of the lookup.
+/*
+
+C function : g_resource_get_info
+*/
 func (recv *Resource) GetInfo(path string, lookupFlags ResourceLookupFlags) (bool, uint64, uint32, error) {
 	c_path := C.CString(path)
 	defer C.free(unsafe.Pointer(c_path))
@@ -192,7 +229,24 @@ func (recv *Resource) GetInfo(path string, lookupFlags ResourceLookupFlags) (boo
 	return retGo, size, flags, goThrowableError
 }
 
-// LookupData is a wrapper around the C function g_resource_lookup_data.
+// Looks for a file at the specified @path in the resource and
+// returns a #GBytes that lets you directly access the data in
+// memory.
+//
+// The data is always followed by a zero byte, so you
+// can safely use the data as a C string. However, that byte
+// is not included in the size of the GBytes.
+//
+// For uncompressed resource files this is a pointer directly into
+// the resource bundle, which is typically in some readonly data section
+// in the program binary. For compressed files we allocate memory on
+// the heap and automatically uncompress the data.
+//
+// @lookup_flags controls the behaviour of the lookup.
+/*
+
+C function : g_resource_lookup_data
+*/
 func (recv *Resource) LookupData(path string, lookupFlags ResourceLookupFlags) (*glib.Bytes, error) {
 	c_path := C.CString(path)
 	defer C.free(unsafe.Pointer(c_path))
@@ -212,7 +266,14 @@ func (recv *Resource) LookupData(path string, lookupFlags ResourceLookupFlags) (
 	return retGo, goThrowableError
 }
 
-// OpenStream is a wrapper around the C function g_resource_open_stream.
+// Looks for a file at the specified @path in the resource and
+// returns a #GInputStream that lets you read the data.
+//
+// @lookup_flags controls the behaviour of the lookup.
+/*
+
+C function : g_resource_open_stream
+*/
 func (recv *Resource) OpenStream(path string, lookupFlags ResourceLookupFlags) (*InputStream, error) {
 	c_path := C.CString(path)
 	defer C.free(unsafe.Pointer(c_path))
@@ -232,7 +293,12 @@ func (recv *Resource) OpenStream(path string, lookupFlags ResourceLookupFlags) (
 	return retGo, goThrowableError
 }
 
-// Ref is a wrapper around the C function g_resource_ref.
+// Atomically increments the reference count of @resource by one. This
+// function is MT-safe and may be called from any thread.
+/*
+
+C function : g_resource_ref
+*/
 func (recv *Resource) Ref() *Resource {
 	retC := C.g_resource_ref((*C.GResource)(recv.native))
 	retGo := ResourceNewFromC(unsafe.Pointer(retC))
@@ -240,7 +306,14 @@ func (recv *Resource) Ref() *Resource {
 	return retGo
 }
 
-// Unref is a wrapper around the C function g_resource_unref.
+// Atomically decrements the reference count of @resource by one. If the
+// reference count drops to 0, all memory allocated by the resource is
+// released. This function is MT-safe and may be called from any
+// thread.
+/*
+
+C function : g_resource_unref
+*/
 func (recv *Resource) Unref() {
 	C.g_resource_unref((*C.GResource)(recv.native))
 
@@ -268,7 +341,11 @@ func (recv *SettingsSchema) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// GetId is a wrapper around the C function g_settings_schema_get_id.
+// Get the ID of @schema.
+/*
+
+C function : g_settings_schema_get_id
+*/
 func (recv *SettingsSchema) GetId() string {
 	retC := C.g_settings_schema_get_id((*C.GSettingsSchema)(recv.native))
 	retGo := C.GoString(retC)
@@ -276,7 +353,19 @@ func (recv *SettingsSchema) GetId() string {
 	return retGo
 }
 
-// GetPath is a wrapper around the C function g_settings_schema_get_path.
+// Gets the path associated with @schema, or %NULL.
+//
+// Schemas may be single-instance or relocatable.  Single-instance
+// schemas correspond to exactly one set of keys in the backend
+// database: those located at the path returned by this function.
+//
+// Relocatable schemas can be referenced by other schemas and can
+// threfore describe multiple sets of keys at different locations.  For
+// relocatable schemas, this function will return %NULL.
+/*
+
+C function : g_settings_schema_get_path
+*/
 func (recv *SettingsSchema) GetPath() string {
 	retC := C.g_settings_schema_get_path((*C.GSettingsSchema)(recv.native))
 	retGo := C.GoString(retC)
@@ -284,7 +373,11 @@ func (recv *SettingsSchema) GetPath() string {
 	return retGo
 }
 
-// Ref is a wrapper around the C function g_settings_schema_ref.
+// Increase the reference count of @schema, returning a new reference.
+/*
+
+C function : g_settings_schema_ref
+*/
 func (recv *SettingsSchema) Ref() *SettingsSchema {
 	retC := C.g_settings_schema_ref((*C.GSettingsSchema)(recv.native))
 	retGo := SettingsSchemaNewFromC(unsafe.Pointer(retC))
@@ -292,7 +385,11 @@ func (recv *SettingsSchema) Ref() *SettingsSchema {
 	return retGo
 }
 
-// Unref is a wrapper around the C function g_settings_schema_unref.
+// Decrease the reference count of @schema, possibly freeing it.
+/*
+
+C function : g_settings_schema_unref
+*/
 func (recv *SettingsSchema) Unref() {
 	C.g_settings_schema_unref((*C.GSettingsSchema)(recv.native))
 
@@ -320,7 +417,38 @@ func (recv *SettingsSchemaSource) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// SettingsSchemaSourceNewFromDirectory is a wrapper around the C function g_settings_schema_source_new_from_directory.
+// Attempts to create a new schema source corresponding to the contents
+// of the given directory.
+//
+// This function is not required for normal uses of #GSettings but it
+// may be useful to authors of plugin management systems.
+//
+// The directory should contain a file called `gschemas.compiled` as
+// produced by the [glib-compile-schemas][glib-compile-schemas] tool.
+//
+// If @trusted is %TRUE then `gschemas.compiled` is trusted not to be
+// corrupted. This assumption has a performance advantage, but can result
+// in crashes or inconsistent behaviour in the case of a corrupted file.
+// Generally, you should set @trusted to %TRUE for files installed by the
+// system and to %FALSE for files in the home directory.
+//
+// If @parent is non-%NULL then there are two effects.
+//
+// First, if g_settings_schema_source_lookup() is called with the
+// @recursive flag set to %TRUE and the schema can not be found in the
+// source, the lookup will recurse to the parent.
+//
+// Second, any references to other schemas specified within this
+// source (ie: `child` or `extends`) references may be resolved
+// from the @parent.
+//
+// For this second reason, except in very unusual situations, the
+// @parent should probably be given as the default schema source, as
+// returned by g_settings_schema_source_get_default().
+/*
+
+C function : g_settings_schema_source_new_from_directory
+*/
 func SettingsSchemaSourceNewFromDirectory(directory string, parent *SettingsSchemaSource, trusted bool) (*SettingsSchemaSource, error) {
 	c_directory := C.CString(directory)
 	defer C.free(unsafe.Pointer(c_directory))
@@ -346,7 +474,20 @@ func SettingsSchemaSourceNewFromDirectory(directory string, parent *SettingsSche
 	return retGo, goThrowableError
 }
 
-// Lookup is a wrapper around the C function g_settings_schema_source_lookup.
+// Looks up a schema with the identifier @schema_id in @source.
+//
+// This function is not required for normal uses of #GSettings but it
+// may be useful to authors of plugin management systems or to those who
+// want to introspect the content of schemas.
+//
+// If the schema isn't found directly in @source and @recursive is %TRUE
+// then the parent sources will also be checked.
+//
+// If the schema isn't found, %NULL is returned.
+/*
+
+C function : g_settings_schema_source_lookup
+*/
 func (recv *SettingsSchemaSource) Lookup(schemaId string, recursive bool) *SettingsSchema {
 	c_schema_id := C.CString(schemaId)
 	defer C.free(unsafe.Pointer(c_schema_id))
@@ -365,7 +506,11 @@ func (recv *SettingsSchemaSource) Lookup(schemaId string, recursive bool) *Setti
 	return retGo
 }
 
-// Ref is a wrapper around the C function g_settings_schema_source_ref.
+// Increase the reference count of @source, returning a new reference.
+/*
+
+C function : g_settings_schema_source_ref
+*/
 func (recv *SettingsSchemaSource) Ref() *SettingsSchemaSource {
 	retC := C.g_settings_schema_source_ref((*C.GSettingsSchemaSource)(recv.native))
 	retGo := SettingsSchemaSourceNewFromC(unsafe.Pointer(retC))
@@ -373,21 +518,41 @@ func (recv *SettingsSchemaSource) Ref() *SettingsSchemaSource {
 	return retGo
 }
 
-// Unref is a wrapper around the C function g_settings_schema_source_unref.
+// Decrease the reference count of @source, possibly freeing it.
+/*
+
+C function : g_settings_schema_source_unref
+*/
 func (recv *SettingsSchemaSource) Unref() {
 	C.g_settings_schema_source_unref((*C.GSettingsSchemaSource)(recv.native))
 
 	return
 }
 
-// Fini is a wrapper around the C function g_static_resource_fini.
+// Finalized a GResource initialized by g_static_resource_init().
+//
+// This is normally used by code generated by
+// [glib-compile-resources][glib-compile-resources]
+// and is not typically used by other code.
+/*
+
+C function : g_static_resource_fini
+*/
 func (recv *StaticResource) Fini() {
 	C.g_static_resource_fini((*C.GStaticResource)(recv.native))
 
 	return
 }
 
-// GetResource is a wrapper around the C function g_static_resource_get_resource.
+// Gets the GResource that was registered by a call to g_static_resource_init().
+//
+// This is normally used by code generated by
+// [glib-compile-resources][glib-compile-resources]
+// and is not typically used by other code.
+/*
+
+C function : g_static_resource_get_resource
+*/
 func (recv *StaticResource) GetResource() *Resource {
 	retC := C.g_static_resource_get_resource((*C.GStaticResource)(recv.native))
 	retGo := ResourceNewFromC(unsafe.Pointer(retC))
@@ -395,14 +560,27 @@ func (recv *StaticResource) GetResource() *Resource {
 	return retGo
 }
 
-// Init is a wrapper around the C function g_static_resource_init.
+// Initializes a GResource from static data using a
+// GStaticResource.
+//
+// This is normally used by code generated by
+// [glib-compile-resources][glib-compile-resources]
+// and is not typically used by other code.
+/*
+
+C function : g_static_resource_init
+*/
 func (recv *StaticResource) Init() {
 	C.g_static_resource_init((*C.GStaticResource)(recv.native))
 
 	return
 }
 
-// GetOptions is a wrapper around the C function g_unix_mount_point_get_options.
+// Gets the options for the mount point.
+/*
+
+C function : g_unix_mount_point_get_options
+*/
 func (recv *UnixMountPoint) GetOptions() string {
 	retC := C.g_unix_mount_point_get_options((*C.GUnixMountPoint)(recv.native))
 	retGo := C.GoString(retC)

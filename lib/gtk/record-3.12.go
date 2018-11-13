@@ -12,7 +12,11 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// TreePathNewFromIndicesv is a wrapper around the C function gtk_tree_path_new_from_indicesv.
+// Creates a new path with the given @indices array of @length.
+/*
+
+C function : gtk_tree_path_new_from_indicesv
+*/
 func TreePathNewFromIndicesv(indices []int32) *TreePath {
 	c_indices := &indices[0]
 

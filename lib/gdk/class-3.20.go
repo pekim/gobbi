@@ -41,7 +41,11 @@ import (
 */
 import "C"
 
-// GetSeat is a wrapper around the C function gdk_device_get_seat.
+// Returns the #GdkSeat the device belongs to.
+/*
+
+C function : gdk_device_get_seat
+*/
 func (recv *Device) GetSeat() *Seat {
 	retC := C.gdk_device_get_seat((*C.GdkDevice)(recv.native))
 	retGo := SeatNewFromC(unsafe.Pointer(retC))
@@ -167,7 +171,11 @@ func display_seatRemovedHandler(_ *C.GObject, c_seat *C.GdkSeat, data C.gpointer
 	callback(seat)
 }
 
-// GetDefaultSeat is a wrapper around the C function gdk_display_get_default_seat.
+// Returns the default #GdkSeat for this display.
+/*
+
+C function : gdk_display_get_default_seat
+*/
 func (recv *Display) GetDefaultSeat() *Seat {
 	retC := C.gdk_display_get_default_seat((*C.GdkDisplay)(recv.native))
 	retGo := SeatNewFromC(unsafe.Pointer(retC))
@@ -175,7 +183,11 @@ func (recv *Display) GetDefaultSeat() *Seat {
 	return retGo
 }
 
-// ListSeats is a wrapper around the C function gdk_display_list_seats.
+// Returns the list of seats known to @display.
+/*
+
+C function : gdk_display_list_seats
+*/
 func (recv *Display) ListSeats() *glib.List {
 	retC := C.gdk_display_list_seats((*C.GdkDisplay)(recv.native))
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
@@ -246,7 +258,16 @@ func dragcontext_dndFinishedHandler(_ *C.GObject, data C.gpointer) {
 
 // Unsupported signal 'drop-performed' for DragContext : unsupported parameter time : type gint :
 
-// GetDragWindow is a wrapper around the C function gdk_drag_context_get_drag_window.
+// Returns the window on which the drag icon should be rendered
+// during the drag operation. Note that the window may not be
+// available until the drag operation has begun. GDK will move
+// the window in accordance with the ongoing drag operation.
+// The window is owned by @context and will be destroyed when
+// the drag operation is over.
+/*
+
+C function : gdk_drag_context_get_drag_window
+*/
 func (recv *DragContext) GetDragWindow() *Window {
 	retC := C.gdk_drag_context_get_drag_window((*C.GdkDragContext)(recv.native))
 	var retGo (*Window)
@@ -259,7 +280,26 @@ func (recv *DragContext) GetDragWindow() *Window {
 	return retGo
 }
 
-// ManageDnd is a wrapper around the C function gdk_drag_context_manage_dnd.
+// Requests the drag and drop operation to be managed by @context.
+// When a drag and drop operation becomes managed, the #GdkDragContext
+// will internally handle all input and source-side #GdkEventDND events
+// as required by the windowing system.
+//
+// Once the drag and drop operation is managed, the drag context will
+// emit the following signals:
+// - The #GdkDragContext::action-changed signal whenever the final action
+// to be performed by the drag and drop operation changes.
+// - The #GdkDragContext::drop-performed signal after the user performs
+// the drag and drop gesture (typically by releasing the mouse button).
+// - The #GdkDragContext::dnd-finished signal after the drag and drop
+// operation concludes (after all #GdkSelection transfers happen).
+// - The #GdkDragContext::cancel signal if the drag and drop operation is
+// finished but doesn't happen over an accepting destination, or is
+// cancelled through other means.
+/*
+
+C function : gdk_drag_context_manage_dnd
+*/
 func (recv *DragContext) ManageDnd(ipcWindow *Window, actions DragAction) bool {
 	c_ipc_window := (*C.GdkWindow)(C.NULL)
 	if ipcWindow != nil {
@@ -274,7 +314,13 @@ func (recv *DragContext) ManageDnd(ipcWindow *Window, actions DragAction) bool {
 	return retGo
 }
 
-// SetHotspot is a wrapper around the C function gdk_drag_context_set_hotspot.
+// Sets the position of the drag window that will be kept
+// under the cursor hotspot. Initially, the hotspot is at the
+// top left corner of the drag window.
+/*
+
+C function : gdk_drag_context_set_hotspot
+*/
 func (recv *DragContext) SetHotspot(hotX int32, hotY int32) {
 	c_hot_x := (C.gint)(hotX)
 
@@ -285,7 +331,26 @@ func (recv *DragContext) SetHotspot(hotX int32, hotY int32) {
 	return
 }
 
-// IsLegacy is a wrapper around the C function gdk_gl_context_is_legacy.
+// Whether the #GdkGLContext is in legacy mode or not.
+//
+// The #GdkGLContext must be realized before calling this function.
+//
+// When realizing a GL context, GDK will try to use the OpenGL 3.2 core
+// profile; this profile removes all the OpenGL API that was deprecated
+// prior to the 3.2 version of the specification. If the realization is
+// successful, this function will return %FALSE.
+//
+// If the underlying OpenGL implementation does not support core profiles,
+// GDK will fall back to a pre-3.2 compatibility profile, and this function
+// will return %TRUE.
+//
+// You can use the value returned by this function to decide which kind
+// of OpenGL API to use, or whether to do extension discovery, or what
+// kind of shader programs to load.
+/*
+
+C function : gdk_gl_context_is_legacy
+*/
 func (recv *GLContext) IsLegacy() bool {
 	retC := C.gdk_gl_context_is_legacy((*C.GdkGLContext)(recv.native))
 	retGo := retC == C.TRUE

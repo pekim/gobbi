@@ -51,7 +51,11 @@ import (
 */
 import "C"
 
-// CursorNewForDisplay is a wrapper around the C function gdk_cursor_new_for_display.
+// Creates a new cursor from the set of builtin cursors.
+/*
+
+C function : gdk_cursor_new_for_display
+*/
 func CursorNewForDisplay(display *Display, cursorType CursorType) *Cursor {
 	c_display := (*C.GdkDisplay)(C.NULL)
 	if display != nil {
@@ -66,7 +70,11 @@ func CursorNewForDisplay(display *Display, cursorType CursorType) *Cursor {
 	return retGo
 }
 
-// GetDisplay is a wrapper around the C function gdk_cursor_get_display.
+// Returns the display on which the #GdkCursor is defined.
+/*
+
+C function : gdk_cursor_get_display
+*/
 func (recv *Cursor) GetDisplay() *Display {
 	retC := C.gdk_cursor_get_display((*C.GdkCursor)(recv.native))
 	retGo := DisplayNewFromC(unsafe.Pointer(retC))
@@ -133,21 +141,34 @@ func display_closedHandler(_ *C.GObject, c_is_error C.gboolean, data C.gpointer)
 	callback(isError)
 }
 
-// Beep is a wrapper around the C function gdk_display_beep.
+// Emits a short beep on @display
+/*
+
+C function : gdk_display_beep
+*/
 func (recv *Display) Beep() {
 	C.gdk_display_beep((*C.GdkDisplay)(recv.native))
 
 	return
 }
 
-// Close is a wrapper around the C function gdk_display_close.
+// Closes the connection to the windowing system for the given display,
+// and cleans up associated resources.
+/*
+
+C function : gdk_display_close
+*/
 func (recv *Display) Close() {
 	C.gdk_display_close((*C.GdkDisplay)(recv.native))
 
 	return
 }
 
-// GetDefaultScreen is a wrapper around the C function gdk_display_get_default_screen.
+// Get the default #GdkScreen for @display.
+/*
+
+C function : gdk_display_get_default_screen
+*/
 func (recv *Display) GetDefaultScreen() *Screen {
 	retC := C.gdk_display_get_default_screen((*C.GdkDisplay)(recv.native))
 	retGo := ScreenNewFromC(unsafe.Pointer(retC))
@@ -157,7 +178,11 @@ func (recv *Display) GetDefaultScreen() *Screen {
 
 // Unsupported : gdk_display_get_event : no return generator
 
-// GetNScreens is a wrapper around the C function gdk_display_get_n_screens.
+// Gets the number of screen managed by the @display.
+/*
+
+C function : gdk_display_get_n_screens
+*/
 func (recv *Display) GetNScreens() int32 {
 	retC := C.gdk_display_get_n_screens((*C.GdkDisplay)(recv.native))
 	retGo := (int32)(retC)
@@ -165,7 +190,11 @@ func (recv *Display) GetNScreens() int32 {
 	return retGo
 }
 
-// GetName is a wrapper around the C function gdk_display_get_name.
+// Gets the name of the display.
+/*
+
+C function : gdk_display_get_name
+*/
 func (recv *Display) GetName() string {
 	retC := C.gdk_display_get_name((*C.GdkDisplay)(recv.native))
 	retGo := C.GoString(retC)
@@ -175,7 +204,11 @@ func (recv *Display) GetName() string {
 
 // Unsupported : gdk_display_get_pointer : unsupported parameter mask : GdkModifierType* with indirection level of 1
 
-// GetScreen is a wrapper around the C function gdk_display_get_screen.
+// Returns a screen object for one of the screens of the display.
+/*
+
+C function : gdk_display_get_screen
+*/
 func (recv *Display) GetScreen(screenNum int32) *Screen {
 	c_screen_num := (C.gint)(screenNum)
 
@@ -185,7 +218,14 @@ func (recv *Display) GetScreen(screenNum int32) *Screen {
 	return retGo
 }
 
-// GetWindowAtPointer is a wrapper around the C function gdk_display_get_window_at_pointer.
+// Obtains the window underneath the mouse pointer, returning the location
+// of the pointer in that window in @win_x, @win_y for @screen. Returns %NULL
+// if the window under the mouse pointer is not known to GDK (for example,
+// belongs to another application).
+/*
+
+C function : gdk_display_get_window_at_pointer
+*/
 func (recv *Display) GetWindowAtPointer() (*Window, int32, int32) {
 	var c_win_x C.gint
 
@@ -206,7 +246,11 @@ func (recv *Display) GetWindowAtPointer() (*Window, int32, int32) {
 	return retGo, winX, winY
 }
 
-// KeyboardUngrab is a wrapper around the C function gdk_display_keyboard_ungrab.
+// Release any keyboard grab
+/*
+
+C function : gdk_display_keyboard_ungrab
+*/
 func (recv *Display) KeyboardUngrab(time uint32) {
 	c_time_ := (C.guint32)(time)
 
@@ -215,7 +259,12 @@ func (recv *Display) KeyboardUngrab(time uint32) {
 	return
 }
 
-// ListDevices is a wrapper around the C function gdk_display_list_devices.
+// Returns the list of available input devices attached to @display.
+// The list is statically allocated and should not be freed.
+/*
+
+C function : gdk_display_list_devices
+*/
 func (recv *Display) ListDevices() *glib.List {
 	retC := C.gdk_display_list_devices((*C.GdkDisplay)(recv.native))
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
@@ -225,7 +274,11 @@ func (recv *Display) ListDevices() *glib.List {
 
 // Unsupported : gdk_display_peek_event : no return generator
 
-// PointerIsGrabbed is a wrapper around the C function gdk_display_pointer_is_grabbed.
+// Test if the pointer is grabbed.
+/*
+
+C function : gdk_display_pointer_is_grabbed
+*/
 func (recv *Display) PointerIsGrabbed() bool {
 	retC := C.gdk_display_pointer_is_grabbed((*C.GdkDisplay)(recv.native))
 	retGo := retC == C.TRUE
@@ -233,7 +286,11 @@ func (recv *Display) PointerIsGrabbed() bool {
 	return retGo
 }
 
-// PointerUngrab is a wrapper around the C function gdk_display_pointer_ungrab.
+// Release any pointer grab.
+/*
+
+C function : gdk_display_pointer_ungrab
+*/
 func (recv *Display) PointerUngrab(time uint32) {
 	c_time_ := (C.guint32)(time)
 
@@ -244,7 +301,14 @@ func (recv *Display) PointerUngrab(time uint32) {
 
 // Unsupported : gdk_display_put_event : unsupported parameter event : no type generator for Event (const GdkEvent*) for param event
 
-// SetDoubleClickTime is a wrapper around the C function gdk_display_set_double_click_time.
+// Sets the double click time (two clicks within this time interval
+// count as a double click and result in a #GDK_2BUTTON_PRESS event).
+// Applications should not set this, it is a global
+// user-configured setting.
+/*
+
+C function : gdk_display_set_double_click_time
+*/
 func (recv *Display) SetDoubleClickTime(msec uint32) {
 	c_msec := (C.guint)(msec)
 
@@ -253,7 +317,19 @@ func (recv *Display) SetDoubleClickTime(msec uint32) {
 	return
 }
 
-// Sync is a wrapper around the C function gdk_display_sync.
+// Flushes any requests queued for the windowing system and waits until all
+// requests have been handled. This is often used for making sure that the
+// display is synchronized with the current state of the program. Calling
+// gdk_display_sync() before gdk_error_trap_pop() makes sure that any errors
+// generated from earlier requests are handled before the error trap is
+// removed.
+//
+// This is most useful for X11. On windowing systems where requests are
+// handled synchronously, this function will do nothing.
+/*
+
+C function : gdk_display_sync
+*/
 func (recv *Display) Sync() {
 	C.gdk_display_sync((*C.GdkDisplay)(recv.native))
 
@@ -319,7 +395,11 @@ func displaymanager_displayOpenedHandler(_ *C.GObject, c_display *C.GdkDisplay, 
 	callback(display)
 }
 
-// GetDefaultDisplay is a wrapper around the C function gdk_display_manager_get_default_display.
+// Gets the default #GdkDisplay.
+/*
+
+C function : gdk_display_manager_get_default_display
+*/
 func (recv *DisplayManager) GetDefaultDisplay() *Display {
 	retC := C.gdk_display_manager_get_default_display((*C.GdkDisplayManager)(recv.native))
 	var retGo (*Display)
@@ -332,7 +412,11 @@ func (recv *DisplayManager) GetDefaultDisplay() *Display {
 	return retGo
 }
 
-// ListDisplays is a wrapper around the C function gdk_display_manager_list_displays.
+// List all currently open displays.
+/*
+
+C function : gdk_display_manager_list_displays
+*/
 func (recv *DisplayManager) ListDisplays() *glib.SList {
 	retC := C.gdk_display_manager_list_displays((*C.GdkDisplayManager)(recv.native))
 	retGo := glib.SListNewFromC(unsafe.Pointer(retC))
@@ -340,7 +424,11 @@ func (recv *DisplayManager) ListDisplays() *glib.SList {
 	return retGo
 }
 
-// SetDefaultDisplay is a wrapper around the C function gdk_display_manager_set_default_display.
+// Sets @display as the default display.
+/*
+
+C function : gdk_display_manager_set_default_display
+*/
 func (recv *DisplayManager) SetDefaultDisplay(display *Display) {
 	c_display := (*C.GdkDisplay)(C.NULL)
 	if display != nil {
@@ -466,7 +554,11 @@ func screen_sizeChangedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// GetDisplay is a wrapper around the C function gdk_screen_get_display.
+// Gets the display to which the @screen belongs.
+/*
+
+C function : gdk_screen_get_display
+*/
 func (recv *Screen) GetDisplay() *Display {
 	retC := C.gdk_screen_get_display((*C.GdkScreen)(recv.native))
 	retGo := DisplayNewFromC(unsafe.Pointer(retC))
@@ -474,7 +566,13 @@ func (recv *Screen) GetDisplay() *Display {
 	return retGo
 }
 
-// GetHeight is a wrapper around the C function gdk_screen_get_height.
+// Gets the height of @screen in pixels. The returned size is in
+// ”application pixels”, not in ”device pixels” (see
+// gdk_screen_get_monitor_scale_factor()).
+/*
+
+C function : gdk_screen_get_height
+*/
 func (recv *Screen) GetHeight() int32 {
 	retC := C.gdk_screen_get_height((*C.GdkScreen)(recv.native))
 	retGo := (int32)(retC)
@@ -482,7 +580,15 @@ func (recv *Screen) GetHeight() int32 {
 	return retGo
 }
 
-// GetHeightMm is a wrapper around the C function gdk_screen_get_height_mm.
+// Returns the height of @screen in millimeters.
+//
+// Note that this value is somewhat ill-defined when the screen
+// has multiple monitors of different resolution. It is recommended
+// to use the monitor dimensions instead.
+/*
+
+C function : gdk_screen_get_height_mm
+*/
 func (recv *Screen) GetHeightMm() int32 {
 	retC := C.gdk_screen_get_height_mm((*C.GdkScreen)(recv.native))
 	retGo := (int32)(retC)
@@ -490,7 +596,11 @@ func (recv *Screen) GetHeightMm() int32 {
 	return retGo
 }
 
-// GetMonitorAtPoint is a wrapper around the C function gdk_screen_get_monitor_at_point.
+// Returns the monitor number in which the point (@x,@y) is located.
+/*
+
+C function : gdk_screen_get_monitor_at_point
+*/
 func (recv *Screen) GetMonitorAtPoint(x int32, y int32) int32 {
 	c_x := (C.gint)(x)
 
@@ -502,7 +612,12 @@ func (recv *Screen) GetMonitorAtPoint(x int32, y int32) int32 {
 	return retGo
 }
 
-// GetMonitorAtWindow is a wrapper around the C function gdk_screen_get_monitor_at_window.
+// Returns the number of the monitor in which the largest area of the
+// bounding rectangle of @window resides.
+/*
+
+C function : gdk_screen_get_monitor_at_window
+*/
 func (recv *Screen) GetMonitorAtWindow(window *Window) int32 {
 	c_window := (*C.GdkWindow)(C.NULL)
 	if window != nil {
@@ -517,7 +632,11 @@ func (recv *Screen) GetMonitorAtWindow(window *Window) int32 {
 
 // Unsupported : gdk_screen_get_monitor_geometry : unsupported parameter dest : Blacklisted record : GdkRectangle
 
-// GetNMonitors is a wrapper around the C function gdk_screen_get_n_monitors.
+// Returns the number of monitors which @screen consists of.
+/*
+
+C function : gdk_screen_get_n_monitors
+*/
 func (recv *Screen) GetNMonitors() int32 {
 	retC := C.gdk_screen_get_n_monitors((*C.GdkScreen)(recv.native))
 	retGo := (int32)(retC)
@@ -525,7 +644,12 @@ func (recv *Screen) GetNMonitors() int32 {
 	return retGo
 }
 
-// GetNumber is a wrapper around the C function gdk_screen_get_number.
+// Gets the index of @screen among the screens in the display
+// to which it belongs. (See gdk_screen_get_display())
+/*
+
+C function : gdk_screen_get_number
+*/
 func (recv *Screen) GetNumber() int32 {
 	retC := C.gdk_screen_get_number((*C.GdkScreen)(recv.native))
 	retGo := (int32)(retC)
@@ -533,7 +657,11 @@ func (recv *Screen) GetNumber() int32 {
 	return retGo
 }
 
-// GetRootWindow is a wrapper around the C function gdk_screen_get_root_window.
+// Gets the root window of @screen.
+/*
+
+C function : gdk_screen_get_root_window
+*/
 func (recv *Screen) GetRootWindow() *Window {
 	retC := C.gdk_screen_get_root_window((*C.GdkScreen)(recv.native))
 	retGo := WindowNewFromC(unsafe.Pointer(retC))
@@ -541,7 +669,15 @@ func (recv *Screen) GetRootWindow() *Window {
 	return retGo
 }
 
-// GetSetting is a wrapper around the C function gdk_screen_get_setting.
+// Retrieves a desktop-wide setting such as double-click time
+// for the #GdkScreen @screen.
+//
+// FIXME needs a list of valid settings here, or a link to
+// more information.
+/*
+
+C function : gdk_screen_get_setting
+*/
 func (recv *Screen) GetSetting(name string, value *gobject.Value) bool {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -557,7 +693,13 @@ func (recv *Screen) GetSetting(name string, value *gobject.Value) bool {
 	return retGo
 }
 
-// GetSystemVisual is a wrapper around the C function gdk_screen_get_system_visual.
+// Get the system’s default visual for @screen.
+// This is the visual for the root window of the display.
+// The return value should not be freed.
+/*
+
+C function : gdk_screen_get_system_visual
+*/
 func (recv *Screen) GetSystemVisual() *Visual {
 	retC := C.gdk_screen_get_system_visual((*C.GdkScreen)(recv.native))
 	retGo := VisualNewFromC(unsafe.Pointer(retC))
@@ -565,7 +707,16 @@ func (recv *Screen) GetSystemVisual() *Visual {
 	return retGo
 }
 
-// GetToplevelWindows is a wrapper around the C function gdk_screen_get_toplevel_windows.
+// Obtains a list of all toplevel windows known to GDK on the screen @screen.
+// A toplevel window is a child of the root window (see
+// gdk_get_default_root_window()).
+//
+// The returned list should be freed with g_list_free(), but
+// its elements need not be freed.
+/*
+
+C function : gdk_screen_get_toplevel_windows
+*/
 func (recv *Screen) GetToplevelWindows() *glib.List {
 	retC := C.gdk_screen_get_toplevel_windows((*C.GdkScreen)(recv.native))
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
@@ -573,7 +724,13 @@ func (recv *Screen) GetToplevelWindows() *glib.List {
 	return retGo
 }
 
-// GetWidth is a wrapper around the C function gdk_screen_get_width.
+// Gets the width of @screen in pixels. The returned size is in
+// ”application pixels”, not in ”device pixels” (see
+// gdk_screen_get_monitor_scale_factor()).
+/*
+
+C function : gdk_screen_get_width
+*/
 func (recv *Screen) GetWidth() int32 {
 	retC := C.gdk_screen_get_width((*C.GdkScreen)(recv.native))
 	retGo := (int32)(retC)
@@ -581,7 +738,15 @@ func (recv *Screen) GetWidth() int32 {
 	return retGo
 }
 
-// GetWidthMm is a wrapper around the C function gdk_screen_get_width_mm.
+// Gets the width of @screen in millimeters.
+//
+// Note that this value is somewhat ill-defined when the screen
+// has multiple monitors of different resolution. It is recommended
+// to use the monitor dimensions instead.
+/*
+
+C function : gdk_screen_get_width_mm
+*/
 func (recv *Screen) GetWidthMm() int32 {
 	retC := C.gdk_screen_get_width_mm((*C.GdkScreen)(recv.native))
 	retGo := (int32)(retC)
@@ -589,7 +754,16 @@ func (recv *Screen) GetWidthMm() int32 {
 	return retGo
 }
 
-// ListVisuals is a wrapper around the C function gdk_screen_list_visuals.
+// Lists the available visuals for the specified @screen.
+// A visual describes a hardware image data format.
+// For example, a visual might support 24-bit color, or 8-bit color,
+// and might expect pixels to be in a certain format.
+//
+// Call g_list_free() on the return value when you’re finished with it.
+/*
+
+C function : gdk_screen_list_visuals
+*/
 func (recv *Screen) ListVisuals() *glib.List {
 	retC := C.gdk_screen_list_visuals((*C.GdkScreen)(recv.native))
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
@@ -597,7 +771,12 @@ func (recv *Screen) ListVisuals() *glib.List {
 	return retGo
 }
 
-// MakeDisplayName is a wrapper around the C function gdk_screen_make_display_name.
+// Determines the name to pass to gdk_display_open() to get
+// a #GdkDisplay with this screen as the default screen.
+/*
+
+C function : gdk_screen_make_display_name
+*/
 func (recv *Screen) MakeDisplayName() string {
 	retC := C.gdk_screen_make_display_name((*C.GdkScreen)(recv.native))
 	retGo := C.GoString(retC)
@@ -606,7 +785,11 @@ func (recv *Screen) MakeDisplayName() string {
 	return retGo
 }
 
-// GetScreen is a wrapper around the C function gdk_visual_get_screen.
+// Gets the screen to which this visual belongs
+/*
+
+C function : gdk_visual_get_screen
+*/
 func (recv *Visual) GetScreen() *Screen {
 	retC := C.gdk_visual_get_screen((*C.GdkVisual)(recv.native))
 	retGo := ScreenNewFromC(unsafe.Pointer(retC))
@@ -614,14 +797,41 @@ func (recv *Visual) GetScreen() *Screen {
 	return retGo
 }
 
-// Fullscreen is a wrapper around the C function gdk_window_fullscreen.
+// Moves the window into fullscreen mode. This means the
+// window covers the entire screen and is above any panels
+// or task bars.
+//
+// If the window was already fullscreen, then this function does nothing.
+//
+// On X11, asks the window manager to put @window in a fullscreen
+// state, if the window manager supports this operation. Not all
+// window managers support this, and some deliberately ignore it or
+// don’t have a concept of “fullscreen”; so you can’t rely on the
+// fullscreenification actually happening. But it will happen with
+// most standard window managers, and GDK makes a best effort to get
+// it to happen.
+/*
+
+C function : gdk_window_fullscreen
+*/
 func (recv *Window) Fullscreen() {
 	C.gdk_window_fullscreen((*C.GdkWindow)(recv.native))
 
 	return
 }
 
-// SetSkipPagerHint is a wrapper around the C function gdk_window_set_skip_pager_hint.
+// Toggles whether a window should appear in a pager (workspace
+// switcher, or other desktop utility program that displays a small
+// thumbnail representation of the windows on the desktop). If a
+// window’s semantic type as specified with gdk_window_set_type_hint()
+// already fully describes the window, this function should
+// not be called in addition, instead you should
+// allow the window to be treated according to standard policy for
+// its semantic type.
+/*
+
+C function : gdk_window_set_skip_pager_hint
+*/
 func (recv *Window) SetSkipPagerHint(skipsPager bool) {
 	c_skips_pager :=
 		boolToGboolean(skipsPager)
@@ -631,7 +841,16 @@ func (recv *Window) SetSkipPagerHint(skipsPager bool) {
 	return
 }
 
-// SetSkipTaskbarHint is a wrapper around the C function gdk_window_set_skip_taskbar_hint.
+// Toggles whether a window should appear in a task list or window
+// list. If a window’s semantic type as specified with
+// gdk_window_set_type_hint() already fully describes the window, this
+// function should not be called in addition,
+// instead you should allow the window to be treated according to
+// standard policy for its semantic type.
+/*
+
+C function : gdk_window_set_skip_taskbar_hint
+*/
 func (recv *Window) SetSkipTaskbarHint(skipsTaskbar bool) {
 	c_skips_taskbar :=
 		boolToGboolean(skipsTaskbar)
@@ -641,7 +860,20 @@ func (recv *Window) SetSkipTaskbarHint(skipsTaskbar bool) {
 	return
 }
 
-// Unfullscreen is a wrapper around the C function gdk_window_unfullscreen.
+// Moves the window out of fullscreen mode. If the window was not
+// fullscreen, does nothing.
+//
+// On X11, asks the window manager to move @window out of the fullscreen
+// state, if the window manager supports this operation. Not all
+// window managers support this, and some deliberately ignore it or
+// don’t have a concept of “fullscreen”; so you can’t rely on the
+// unfullscreenification actually happening. But it will happen with
+// most standard window managers, and GDK makes a best effort to get
+// it to happen.
+/*
+
+C function : gdk_window_unfullscreen
+*/
 func (recv *Window) Unfullscreen() {
 	C.gdk_window_unfullscreen((*C.GdkWindow)(recv.native))
 

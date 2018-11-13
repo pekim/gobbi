@@ -20,7 +20,15 @@ import "C"
 
 // Unsupported : g_date_set_time_t : unsupported parameter timet : no type generator for glong (time_t) for param timet
 
-// SetTimeVal is a wrapper around the C function g_date_set_time_val.
+// Sets the value of a date from a #GTimeVal value.  Note that the
+// @tv_usec member is ignored, because #GDate can't make use of the
+// additional precision.
+//
+// The time to date conversion is done using the user's current timezone.
+/*
+
+C function : g_date_set_time_val
+*/
 func (recv *Date) SetTimeVal(timeval *TimeVal) {
 	c_timeval := (*C.GTimeVal)(C.NULL)
 	if timeval != nil {
@@ -32,7 +40,14 @@ func (recv *Date) SetTimeVal(timeval *TimeVal) {
 	return
 }
 
-// IsOwner is a wrapper around the C function g_main_context_is_owner.
+// Determines whether this thread holds the (recursive)
+// ownership of this #GMainContext. This is useful to
+// know before waiting on another thread that may be
+// blocking to get ownership of @context.
+/*
+
+C function : g_main_context_is_owner
+*/
 func (recv *MainContext) IsOwner() bool {
 	retC := C.g_main_context_is_owner((*C.GMainContext)(recv.native))
 	retGo := retC == C.TRUE

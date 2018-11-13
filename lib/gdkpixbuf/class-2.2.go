@@ -12,7 +12,12 @@ import "C"
 
 // Blacklisted : gdk_pixbuf_set_option
 
-// GetFormat is a wrapper around the C function gdk_pixbuf_loader_get_format.
+// Obtains the available information about the format of the
+// currently loading image file.
+/*
+
+C function : gdk_pixbuf_loader_get_format
+*/
 func (recv *PixbufLoader) GetFormat() *PixbufFormat {
 	retC := C.gdk_pixbuf_loader_get_format((*C.GdkPixbufLoader)(recv.native))
 	var retGo (*PixbufFormat)
@@ -25,7 +30,17 @@ func (recv *PixbufLoader) GetFormat() *PixbufFormat {
 	return retGo
 }
 
-// SetSize is a wrapper around the C function gdk_pixbuf_loader_set_size.
+// Causes the image to be scaled while it is loaded. The desired
+// image size can be determined relative to the original size of
+// the image by calling gdk_pixbuf_loader_set_size() from a
+// signal handler for the ::size-prepared signal.
+//
+// Attempts to set the desired image size  are ignored after the
+// emission of the ::size-prepared signal.
+/*
+
+C function : gdk_pixbuf_loader_set_size
+*/
 func (recv *PixbufLoader) SetSize(width int32, height int32) {
 	c_width := (C.int)(width)
 

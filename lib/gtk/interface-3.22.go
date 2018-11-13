@@ -14,7 +14,11 @@ import "C"
 
 // Unsupported : gtk_file_chooser_add_choice : unsupported parameter options :
 
-// GetChoice is a wrapper around the C function gtk_file_chooser_get_choice.
+// Gets the currently selected option in the 'choice' with the given ID.
+/*
+
+C function : gtk_file_chooser_get_choice
+*/
 func (recv *FileChooser) GetChoice(id string) string {
 	c_id := C.CString(id)
 	defer C.free(unsafe.Pointer(c_id))
@@ -25,7 +29,11 @@ func (recv *FileChooser) GetChoice(id string) string {
 	return retGo
 }
 
-// RemoveChoice is a wrapper around the C function gtk_file_chooser_remove_choice.
+// Removes a 'choice' that has been added with gtk_file_chooser_add_choice().
+/*
+
+C function : gtk_file_chooser_remove_choice
+*/
 func (recv *FileChooser) RemoveChoice(id string) {
 	c_id := C.CString(id)
 	defer C.free(unsafe.Pointer(c_id))
@@ -35,7 +43,13 @@ func (recv *FileChooser) RemoveChoice(id string) {
 	return
 }
 
-// SetChoice is a wrapper around the C function gtk_file_chooser_set_choice.
+// Selects an option in a 'choice' that has been added with
+// gtk_file_chooser_add_choice(). For a boolean choice, the
+// possible options are "true" and "false".
+/*
+
+C function : gtk_file_chooser_set_choice
+*/
 func (recv *FileChooser) SetChoice(id string, option string) {
 	c_id := C.CString(id)
 	defer C.free(unsafe.Pointer(c_id))

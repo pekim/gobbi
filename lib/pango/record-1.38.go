@@ -38,7 +38,16 @@ func (recv *AttrFontFeatures) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// GetFontScaleFactors is a wrapper around the C function pango_matrix_get_font_scale_factors.
+// Calculates the scale factor of a matrix on the width and height of the font.
+// That is, @xscale is the scale factor in the direction of the X coordinate,
+// and @yscale is the scale factor in the direction perpendicular to the
+// vector that the X coordinate is mapped to.
+//
+// Note that output numbers will always be non-negative.
+/*
+
+C function : pango_matrix_get_font_scale_factors
+*/
 func (recv *Matrix) GetFontScaleFactors() (float64, float64) {
 	var c_xscale C.double
 

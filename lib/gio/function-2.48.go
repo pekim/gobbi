@@ -23,7 +23,12 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// DtlsClientConnectionNew is a wrapper around the C function g_dtls_client_connection_new.
+// Creates a new #GDtlsClientConnection wrapping @base_socket which is
+// assumed to communicate with the server identified by @server_identity.
+/*
+
+C function : g_dtls_client_connection_new
+*/
 func DtlsClientConnectionNew(baseSocket *DatagramBased, serverIdentity *SocketConnectable) (*DtlsClientConnection, error) {
 	c_base_socket := (*C.GDatagramBased)(baseSocket.ToC())
 
@@ -42,7 +47,11 @@ func DtlsClientConnectionNew(baseSocket *DatagramBased, serverIdentity *SocketCo
 	return retGo, goThrowableError
 }
 
-// DtlsServerConnectionNew is a wrapper around the C function g_dtls_server_connection_new.
+// Creates a new #GDtlsServerConnection wrapping @base_socket.
+/*
+
+C function : g_dtls_server_connection_new
+*/
 func DtlsServerConnectionNew(baseSocket *DatagramBased, certificate *TlsCertificate) (*DtlsServerConnection, error) {
 	c_base_socket := (*C.GDatagramBased)(baseSocket.ToC())
 

@@ -12,7 +12,13 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// GetBytes is a wrapper around the C function g_mapped_file_get_bytes.
+// Creates a new #GBytes which references the data mapped from @file.
+// The mapped contents of the file must not be modified after creating this
+// bytes object, because a #GBytes should be immutable.
+/*
+
+C function : g_mapped_file_get_bytes
+*/
 func (recv *MappedFile) GetBytes() *Bytes {
 	retC := C.g_mapped_file_get_bytes((*C.GMappedFile)(recv.native))
 	retGo := BytesNewFromC(unsafe.Pointer(retC))
@@ -20,7 +26,11 @@ func (recv *MappedFile) GetBytes() *Bytes {
 	return retGo
 }
 
-// GetHasCrOrLf is a wrapper around the C function g_regex_get_has_cr_or_lf.
+// Checks whether the pattern contains explicit CR or LF references.
+/*
+
+C function : g_regex_get_has_cr_or_lf
+*/
 func (recv *Regex) GetHasCrOrLf() bool {
 	retC := C.g_regex_get_has_cr_or_lf((*C.GRegex)(recv.native))
 	retGo := retC == C.TRUE
@@ -28,7 +38,18 @@ func (recv *Regex) GetHasCrOrLf() bool {
 	return retGo
 }
 
-// FreeToBytes is a wrapper around the C function g_string_free_to_bytes.
+// Transfers ownership of the contents of @string to a newly allocated
+// #GBytes.  The #GString structure itself is deallocated, and it is
+// therefore invalid to use @string after invoking this function.
+//
+// Note that while #GString ensures that its buffer always has a
+// trailing nul character (not reflected in its "len"), the returned
+// #GBytes does not include this extra nul; i.e. it has length exactly
+// equal to the "len" member.
+/*
+
+C function : g_string_free_to_bytes
+*/
 func (recv *String) FreeToBytes() *Bytes {
 	retC := C.g_string_free_to_bytes((*C.GString)(recv.native))
 	retGo := BytesNewFromC(unsafe.Pointer(retC))

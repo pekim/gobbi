@@ -13,7 +13,13 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// PixbufNewFromBytes is a wrapper around the C function gdk_pixbuf_new_from_bytes.
+// Creates a new #GdkPixbuf out of in-memory readonly image data.
+// Currently only RGB images with 8 bits per sample are supported.
+// This is the #GBytes variant of gdk_pixbuf_new_from_data().
+/*
+
+C function : gdk_pixbuf_new_from_bytes
+*/
 func PixbufNewFromBytes(data *glib.Bytes, colorspace Colorspace, hasAlpha bool, bitsPerSample int32, width int32, height int32, rowstride int32) *Pixbuf {
 	c_data := (*C.GBytes)(C.NULL)
 	if data != nil {
@@ -39,7 +45,15 @@ func PixbufNewFromBytes(data *glib.Bytes, colorspace Colorspace, hasAlpha bool, 
 	return retGo
 }
 
-// GetOptions is a wrapper around the C function gdk_pixbuf_get_options.
+// Returns a #GHashTable with a list of all the options that may have been
+// attached to the @pixbuf when it was loaded, or that may have been
+// attached by another function using gdk_pixbuf_set_option().
+//
+// See gdk_pixbuf_get_option() for more details.
+/*
+
+C function : gdk_pixbuf_get_options
+*/
 func (recv *Pixbuf) GetOptions() *glib.HashTable {
 	retC := C.gdk_pixbuf_get_options((*C.GdkPixbuf)(recv.native))
 	retGo := glib.HashTableNewFromC(unsafe.Pointer(retC))
@@ -47,7 +61,10 @@ func (recv *Pixbuf) GetOptions() *glib.HashTable {
 	return retGo
 }
 
-// ReadPixelBytes is a wrapper around the C function gdk_pixbuf_read_pixel_bytes.
+/*
+
+C function : gdk_pixbuf_read_pixel_bytes
+*/
 func (recv *Pixbuf) ReadPixelBytes() *glib.Bytes {
 	retC := C.gdk_pixbuf_read_pixel_bytes((*C.GdkPixbuf)(recv.native))
 	retGo := glib.BytesNewFromC(unsafe.Pointer(retC))

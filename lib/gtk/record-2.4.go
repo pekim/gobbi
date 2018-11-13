@@ -10,7 +10,12 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
-// BackwardVisibleCursorPosition is a wrapper around the C function gtk_text_iter_backward_visible_cursor_position.
+// Moves @iter forward to the previous visible cursor position. See
+// gtk_text_iter_backward_cursor_position() for details.
+/*
+
+C function : gtk_text_iter_backward_visible_cursor_position
+*/
 func (recv *TextIter) BackwardVisibleCursorPosition() bool {
 	retC := C.gtk_text_iter_backward_visible_cursor_position((*C.GtkTextIter)(recv.native))
 	retGo := retC == C.TRUE
@@ -18,7 +23,12 @@ func (recv *TextIter) BackwardVisibleCursorPosition() bool {
 	return retGo
 }
 
-// BackwardVisibleCursorPositions is a wrapper around the C function gtk_text_iter_backward_visible_cursor_positions.
+// Moves up to @count visible cursor positions. See
+// gtk_text_iter_backward_cursor_position() for details.
+/*
+
+C function : gtk_text_iter_backward_visible_cursor_positions
+*/
 func (recv *TextIter) BackwardVisibleCursorPositions(count int32) bool {
 	c_count := (C.gint)(count)
 
@@ -28,7 +38,15 @@ func (recv *TextIter) BackwardVisibleCursorPositions(count int32) bool {
 	return retGo
 }
 
-// BackwardVisibleWordStart is a wrapper around the C function gtk_text_iter_backward_visible_word_start.
+// Moves backward to the previous visible word start. (If @iter is currently
+// on a word start, moves backward to the next one after that.) Word breaks
+// are determined by Pango and should be correct for nearly any
+// language (if not, the correct fix would be to the Pango word break
+// algorithms).
+/*
+
+C function : gtk_text_iter_backward_visible_word_start
+*/
 func (recv *TextIter) BackwardVisibleWordStart() bool {
 	retC := C.gtk_text_iter_backward_visible_word_start((*C.GtkTextIter)(recv.native))
 	retGo := retC == C.TRUE
@@ -36,7 +54,11 @@ func (recv *TextIter) BackwardVisibleWordStart() bool {
 	return retGo
 }
 
-// BackwardVisibleWordStarts is a wrapper around the C function gtk_text_iter_backward_visible_word_starts.
+// Calls gtk_text_iter_backward_visible_word_start() up to @count times.
+/*
+
+C function : gtk_text_iter_backward_visible_word_starts
+*/
 func (recv *TextIter) BackwardVisibleWordStarts(count int32) bool {
 	c_count := (C.gint)(count)
 
@@ -46,7 +68,12 @@ func (recv *TextIter) BackwardVisibleWordStarts(count int32) bool {
 	return retGo
 }
 
-// ForwardVisibleCursorPosition is a wrapper around the C function gtk_text_iter_forward_visible_cursor_position.
+// Moves @iter forward to the next visible cursor position. See
+// gtk_text_iter_forward_cursor_position() for details.
+/*
+
+C function : gtk_text_iter_forward_visible_cursor_position
+*/
 func (recv *TextIter) ForwardVisibleCursorPosition() bool {
 	retC := C.gtk_text_iter_forward_visible_cursor_position((*C.GtkTextIter)(recv.native))
 	retGo := retC == C.TRUE
@@ -54,7 +81,12 @@ func (recv *TextIter) ForwardVisibleCursorPosition() bool {
 	return retGo
 }
 
-// ForwardVisibleCursorPositions is a wrapper around the C function gtk_text_iter_forward_visible_cursor_positions.
+// Moves up to @count visible cursor positions. See
+// gtk_text_iter_forward_cursor_position() for details.
+/*
+
+C function : gtk_text_iter_forward_visible_cursor_positions
+*/
 func (recv *TextIter) ForwardVisibleCursorPositions(count int32) bool {
 	c_count := (C.gint)(count)
 
@@ -64,7 +96,15 @@ func (recv *TextIter) ForwardVisibleCursorPositions(count int32) bool {
 	return retGo
 }
 
-// ForwardVisibleWordEnd is a wrapper around the C function gtk_text_iter_forward_visible_word_end.
+// Moves forward to the next visible word end. (If @iter is currently on a
+// word end, moves forward to the next one after that.) Word breaks
+// are determined by Pango and should be correct for nearly any
+// language (if not, the correct fix would be to the Pango word break
+// algorithms).
+/*
+
+C function : gtk_text_iter_forward_visible_word_end
+*/
 func (recv *TextIter) ForwardVisibleWordEnd() bool {
 	retC := C.gtk_text_iter_forward_visible_word_end((*C.GtkTextIter)(recv.native))
 	retGo := retC == C.TRUE
@@ -72,7 +112,11 @@ func (recv *TextIter) ForwardVisibleWordEnd() bool {
 	return retGo
 }
 
-// ForwardVisibleWordEnds is a wrapper around the C function gtk_text_iter_forward_visible_word_ends.
+// Calls gtk_text_iter_forward_visible_word_end() up to @count times.
+/*
+
+C function : gtk_text_iter_forward_visible_word_ends
+*/
 func (recv *TextIter) ForwardVisibleWordEnds(count int32) bool {
 	c_count := (C.gint)(count)
 

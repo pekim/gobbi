@@ -26,7 +26,20 @@ import "C"
 
 // Unsupported : g_bus_get : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// BusGetFinish is a wrapper around the C function g_bus_get_finish.
+// Finishes an operation started with g_bus_get().
+//
+// The returned object is a singleton, that is, shared with other
+// callers of g_bus_get() and g_bus_get_sync() for @bus_type. In the
+// event that you need a private message bus connection, use
+// g_dbus_address_get_for_bus_sync() and
+// g_dbus_connection_new_for_address().
+//
+// Note that the returned #GDBusConnection object will (usually) have
+// the #GDBusConnection:exit-on-close property set to %TRUE.
+/*
+
+C function : g_bus_get_finish
+*/
 func BusGetFinish(res *AsyncResult) (*DBusConnection, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
 
@@ -43,7 +56,26 @@ func BusGetFinish(res *AsyncResult) (*DBusConnection, error) {
 	return retGo, goThrowableError
 }
 
-// BusGetSync is a wrapper around the C function g_bus_get_sync.
+// Synchronously connects to the message bus specified by @bus_type.
+// Note that the returned object may shared with other callers,
+// e.g. if two separate parts of a process calls this function with
+// the same @bus_type, they will share the same object.
+//
+// This is a synchronous failable function. See g_bus_get() and
+// g_bus_get_finish() for the asynchronous version.
+//
+// The returned object is a singleton, that is, shared with other
+// callers of g_bus_get() and g_bus_get_sync() for @bus_type. In the
+// event that you need a private message bus connection, use
+// g_dbus_address_get_for_bus_sync() and
+// g_dbus_connection_new_for_address().
+//
+// Note that the returned #GDBusConnection object will (usually) have
+// the #GDBusConnection:exit-on-close property set to %TRUE.
+/*
+
+C function : g_bus_get_sync
+*/
 func BusGetSync(busType BusType, cancellable *Cancellable) (*DBusConnection, error) {
 	c_bus_type := (C.GBusType)(busType)
 
@@ -69,7 +101,12 @@ func BusGetSync(busType BusType, cancellable *Cancellable) (*DBusConnection, err
 
 // Unsupported : g_bus_own_name_on_connection : unsupported parameter name_acquired_handler : no type generator for BusNameAcquiredCallback (GBusNameAcquiredCallback) for param name_acquired_handler
 
-// BusOwnNameOnConnectionWithClosures is a wrapper around the C function g_bus_own_name_on_connection_with_closures.
+// Version of g_bus_own_name_on_connection() using closures instead of
+// callbacks for easier binding in other languages.
+/*
+
+C function : g_bus_own_name_on_connection_with_closures
+*/
 func BusOwnNameOnConnectionWithClosures(connection *DBusConnection, name string, flags BusNameOwnerFlags, nameAcquiredClosure *gobject.Closure, nameLostClosure *gobject.Closure) uint32 {
 	c_connection := (*C.GDBusConnection)(C.NULL)
 	if connection != nil {
@@ -97,7 +134,12 @@ func BusOwnNameOnConnectionWithClosures(connection *DBusConnection, name string,
 	return retGo
 }
 
-// BusOwnNameWithClosures is a wrapper around the C function g_bus_own_name_with_closures.
+// Version of g_bus_own_name() using closures instead of callbacks for
+// easier binding in other languages.
+/*
+
+C function : g_bus_own_name_with_closures
+*/
 func BusOwnNameWithClosures(busType BusType, name string, flags BusNameOwnerFlags, busAcquiredClosure *gobject.Closure, nameAcquiredClosure *gobject.Closure, nameLostClosure *gobject.Closure) uint32 {
 	c_bus_type := (C.GBusType)(busType)
 
@@ -127,7 +169,11 @@ func BusOwnNameWithClosures(busType BusType, name string, flags BusNameOwnerFlag
 	return retGo
 }
 
-// BusUnownName is a wrapper around the C function g_bus_unown_name.
+// Stops owning a name.
+/*
+
+C function : g_bus_unown_name
+*/
 func BusUnownName(ownerId uint32) {
 	c_owner_id := (C.guint)(ownerId)
 
@@ -136,7 +182,11 @@ func BusUnownName(ownerId uint32) {
 	return
 }
 
-// BusUnwatchName is a wrapper around the C function g_bus_unwatch_name.
+// Stops watching a name.
+/*
+
+C function : g_bus_unwatch_name
+*/
 func BusUnwatchName(watcherId uint32) {
 	c_watcher_id := (C.guint)(watcherId)
 
@@ -149,7 +199,12 @@ func BusUnwatchName(watcherId uint32) {
 
 // Unsupported : g_bus_watch_name_on_connection : unsupported parameter name_appeared_handler : no type generator for BusNameAppearedCallback (GBusNameAppearedCallback) for param name_appeared_handler
 
-// BusWatchNameOnConnectionWithClosures is a wrapper around the C function g_bus_watch_name_on_connection_with_closures.
+// Version of g_bus_watch_name_on_connection() using closures instead of callbacks for
+// easier binding in other languages.
+/*
+
+C function : g_bus_watch_name_on_connection_with_closures
+*/
 func BusWatchNameOnConnectionWithClosures(connection *DBusConnection, name string, flags BusNameWatcherFlags, nameAppearedClosure *gobject.Closure, nameVanishedClosure *gobject.Closure) uint32 {
 	c_connection := (*C.GDBusConnection)(C.NULL)
 	if connection != nil {
@@ -177,7 +232,12 @@ func BusWatchNameOnConnectionWithClosures(connection *DBusConnection, name strin
 	return retGo
 }
 
-// BusWatchNameWithClosures is a wrapper around the C function g_bus_watch_name_with_closures.
+// Version of g_bus_watch_name() using closures instead of callbacks for
+// easier binding in other languages.
+/*
+
+C function : g_bus_watch_name_with_closures
+*/
 func BusWatchNameWithClosures(busType BusType, name string, flags BusNameWatcherFlags, nameAppearedClosure *gobject.Closure, nameVanishedClosure *gobject.Closure) uint32 {
 	c_bus_type := (C.GBusType)(busType)
 
@@ -202,7 +262,16 @@ func BusWatchNameWithClosures(busType BusType, name string, flags BusNameWatcher
 	return retGo
 }
 
-// DbusAddressGetForBusSync is a wrapper around the C function g_dbus_address_get_for_bus_sync.
+// Synchronously looks up the D-Bus address for the well-known message
+// bus instance specified by @bus_type. This may involve using various
+// platform specific mechanisms.
+//
+// The returned address will be in the
+// [D-Bus address format](https://dbus.freedesktop.org/doc/dbus-specification.html#addresses).
+/*
+
+C function : g_dbus_address_get_for_bus_sync
+*/
 func DbusAddressGetForBusSync(busType BusType, cancellable *Cancellable) (string, error) {
 	c_bus_type := (C.GBusType)(busType)
 
@@ -227,7 +296,11 @@ func DbusAddressGetForBusSync(busType BusType, cancellable *Cancellable) (string
 
 // Unsupported : g_dbus_address_get_stream : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// DbusAddressGetStreamFinish is a wrapper around the C function g_dbus_address_get_stream_finish.
+// Finishes an operation started with g_dbus_address_get_stream().
+/*
+
+C function : g_dbus_address_get_stream_finish
+*/
 func DbusAddressGetStreamFinish(res *AsyncResult) (*IOStream, string, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
 
@@ -249,7 +322,17 @@ func DbusAddressGetStreamFinish(res *AsyncResult) (*IOStream, string, error) {
 	return retGo, outGuid, goThrowableError
 }
 
-// DbusAddressGetStreamSync is a wrapper around the C function g_dbus_address_get_stream_sync.
+// Synchronously connects to an endpoint specified by @address and
+// sets up the connection so it is in a state to run the client-side
+// of the D-Bus authentication conversation. @address must be in the
+// [D-Bus address format](https://dbus.freedesktop.org/doc/dbus-specification.html#addresses).
+//
+// This is a synchronous failable function. See
+// g_dbus_address_get_stream() for the asynchronous version.
+/*
+
+C function : g_dbus_address_get_stream_sync
+*/
 func DbusAddressGetStreamSync(address string, cancellable *Cancellable) (*IOStream, string, error) {
 	c_address := C.CString(address)
 	defer C.free(unsafe.Pointer(c_address))
@@ -279,7 +362,21 @@ func DbusAddressGetStreamSync(address string, cancellable *Cancellable) (*IOStre
 
 // Unsupported : g_dbus_annotation_info_lookup : unsupported parameter annotations :
 
-// DbusErrorEncodeGerror is a wrapper around the C function g_dbus_error_encode_gerror.
+// Creates a D-Bus error name to use for @error. If @error matches
+// a registered error (cf. g_dbus_error_register_error()), the corresponding
+// D-Bus error name will be returned.
+//
+// Otherwise the a name of the form
+// `org.gtk.GDBus.UnmappedGError.Quark._ESCAPED_QUARK_NAME.Code_ERROR_CODE`
+// will be used. This allows other GDBus applications to map the error
+// on the wire back to a #GError using g_dbus_error_new_for_dbus_error().
+//
+// This function is typically only used in object mappings to put a
+// #GError on the wire. Regular applications should not use it.
+/*
+
+C function : g_dbus_error_encode_gerror
+*/
 func DbusErrorEncodeGerror(error *glib.Error) string {
 	c_error := (*C.GError)(C.NULL)
 	if error != nil {
@@ -293,7 +390,16 @@ func DbusErrorEncodeGerror(error *glib.Error) string {
 	return retGo
 }
 
-// DbusErrorGetRemoteError is a wrapper around the C function g_dbus_error_get_remote_error.
+// Gets the D-Bus error name used for @error, if any.
+//
+// This function is guaranteed to return a D-Bus error name for all
+// #GErrors returned from functions handling remote method calls
+// (e.g. g_dbus_connection_call_finish()) unless
+// g_dbus_error_strip_remote_error() has been used on @error.
+/*
+
+C function : g_dbus_error_get_remote_error
+*/
 func DbusErrorGetRemoteError(error *glib.Error) string {
 	c_error := (*C.GError)(C.NULL)
 	if error != nil {
@@ -307,7 +413,12 @@ func DbusErrorGetRemoteError(error *glib.Error) string {
 	return retGo
 }
 
-// DbusErrorIsRemoteError is a wrapper around the C function g_dbus_error_is_remote_error.
+// Checks if @error represents an error received via D-Bus from a remote peer. If so,
+// use g_dbus_error_get_remote_error() to get the name of the error.
+/*
+
+C function : g_dbus_error_is_remote_error
+*/
 func DbusErrorIsRemoteError(error *glib.Error) bool {
 	c_error := (*C.GError)(C.NULL)
 	if error != nil {
@@ -320,7 +431,36 @@ func DbusErrorIsRemoteError(error *glib.Error) bool {
 	return retGo
 }
 
-// DbusErrorNewForDbusError is a wrapper around the C function g_dbus_error_new_for_dbus_error.
+// Creates a #GError based on the contents of @dbus_error_name and
+// @dbus_error_message.
+//
+// Errors registered with g_dbus_error_register_error() will be looked
+// up using @dbus_error_name and if a match is found, the error domain
+// and code is used. Applications can use g_dbus_error_get_remote_error()
+// to recover @dbus_error_name.
+//
+// If a match against a registered error is not found and the D-Bus
+// error name is in a form as returned by g_dbus_error_encode_gerror()
+// the error domain and code encoded in the name is used to
+// create the #GError. Also, @dbus_error_name is added to the error message
+// such that it can be recovered with g_dbus_error_get_remote_error().
+//
+// Otherwise, a #GError with the error code %G_IO_ERROR_DBUS_ERROR
+// in the #G_IO_ERROR error domain is returned. Also, @dbus_error_name is
+// added to the error message such that it can be recovered with
+// g_dbus_error_get_remote_error().
+//
+// In all three cases, @dbus_error_name can always be recovered from the
+// returned #GError using the g_dbus_error_get_remote_error() function
+// (unless g_dbus_error_strip_remote_error() hasn't been used on the returned error).
+//
+// This function is typically only used in object mappings to prepare
+// #GError instances for applications. Regular applications should not use
+// it.
+/*
+
+C function : g_dbus_error_new_for_dbus_error
+*/
 func DbusErrorNewForDbusError(dbusErrorName string, dbusErrorMessage string) *glib.Error {
 	c_dbus_error_name := C.CString(dbusErrorName)
 	defer C.free(unsafe.Pointer(c_dbus_error_name))
@@ -334,7 +474,15 @@ func DbusErrorNewForDbusError(dbusErrorName string, dbusErrorMessage string) *gl
 	return retGo
 }
 
-// DbusErrorRegisterError is a wrapper around the C function g_dbus_error_register_error.
+// Creates an association to map between @dbus_error_name and
+// #GErrors specified by @error_domain and @error_code.
+//
+// This is typically done in the routine that returns the #GQuark for
+// an error domain.
+/*
+
+C function : g_dbus_error_register_error
+*/
 func DbusErrorRegisterError(errorDomain glib.Quark, errorCode int32, dbusErrorName string) bool {
 	c_error_domain := (C.GQuark)(errorDomain)
 
@@ -351,7 +499,16 @@ func DbusErrorRegisterError(errorDomain glib.Quark, errorCode int32, dbusErrorNa
 
 // Unsupported : g_dbus_error_register_error_domain : unsupported parameter entries :
 
-// DbusErrorStripRemoteError is a wrapper around the C function g_dbus_error_strip_remote_error.
+// Looks for extra information in the error message used to recover
+// the D-Bus error name and strips it if found. If stripped, the
+// message field in @error will correspond exactly to what was
+// received on the wire.
+//
+// This is typically used when presenting errors to the end user.
+/*
+
+C function : g_dbus_error_strip_remote_error
+*/
 func DbusErrorStripRemoteError(error *glib.Error) bool {
 	c_error := (*C.GError)(C.NULL)
 	if error != nil {
@@ -364,7 +521,11 @@ func DbusErrorStripRemoteError(error *glib.Error) bool {
 	return retGo
 }
 
-// DbusErrorUnregisterError is a wrapper around the C function g_dbus_error_unregister_error.
+// Destroys an association previously set up with g_dbus_error_register_error().
+/*
+
+C function : g_dbus_error_unregister_error
+*/
 func DbusErrorUnregisterError(errorDomain glib.Quark, errorCode int32, dbusErrorName string) bool {
 	c_error_domain := (C.GQuark)(errorDomain)
 
@@ -379,7 +540,15 @@ func DbusErrorUnregisterError(errorDomain glib.Quark, errorCode int32, dbusError
 	return retGo
 }
 
-// DbusGenerateGuid is a wrapper around the C function g_dbus_generate_guid.
+// Generate a D-Bus GUID that can be used with
+// e.g. g_dbus_connection_new().
+//
+// See the D-Bus specification regarding what strings are valid D-Bus
+// GUID (for example, D-Bus GUIDs are not RFC-4122 compliant).
+/*
+
+C function : g_dbus_generate_guid
+*/
 func DbusGenerateGuid() string {
 	retC := C.g_dbus_generate_guid()
 	retGo := C.GoString(retC)
@@ -388,7 +557,16 @@ func DbusGenerateGuid() string {
 	return retGo
 }
 
-// DbusIsAddress is a wrapper around the C function g_dbus_is_address.
+// Checks if @string is a
+// [D-Bus address](https://dbus.freedesktop.org/doc/dbus-specification.html#addresses).
+//
+// This doesn't check if @string is actually supported by #GDBusServer
+// or #GDBusConnection - use g_dbus_is_supported_address() to do more
+// checks.
+/*
+
+C function : g_dbus_is_address
+*/
 func DbusIsAddress(string string) bool {
 	c_string := C.CString(string)
 	defer C.free(unsafe.Pointer(c_string))
@@ -399,7 +577,14 @@ func DbusIsAddress(string string) bool {
 	return retGo
 }
 
-// DbusIsGuid is a wrapper around the C function g_dbus_is_guid.
+// Checks if @string is a D-Bus GUID.
+//
+// See the D-Bus specification regarding what strings are valid D-Bus
+// GUID (for example, D-Bus GUIDs are not RFC-4122 compliant).
+/*
+
+C function : g_dbus_is_guid
+*/
 func DbusIsGuid(string string) bool {
 	c_string := C.CString(string)
 	defer C.free(unsafe.Pointer(c_string))
@@ -410,7 +595,11 @@ func DbusIsGuid(string string) bool {
 	return retGo
 }
 
-// DbusIsInterfaceName is a wrapper around the C function g_dbus_is_interface_name.
+// Checks if @string is a valid D-Bus interface name.
+/*
+
+C function : g_dbus_is_interface_name
+*/
 func DbusIsInterfaceName(string string) bool {
 	c_string := C.CString(string)
 	defer C.free(unsafe.Pointer(c_string))
@@ -421,7 +610,11 @@ func DbusIsInterfaceName(string string) bool {
 	return retGo
 }
 
-// DbusIsMemberName is a wrapper around the C function g_dbus_is_member_name.
+// Checks if @string is a valid D-Bus member (e.g. signal or method) name.
+/*
+
+C function : g_dbus_is_member_name
+*/
 func DbusIsMemberName(string string) bool {
 	c_string := C.CString(string)
 	defer C.free(unsafe.Pointer(c_string))
@@ -432,7 +625,11 @@ func DbusIsMemberName(string string) bool {
 	return retGo
 }
 
-// DbusIsName is a wrapper around the C function g_dbus_is_name.
+// Checks if @string is a valid D-Bus bus name (either unique or well-known).
+/*
+
+C function : g_dbus_is_name
+*/
 func DbusIsName(string string) bool {
 	c_string := C.CString(string)
 	defer C.free(unsafe.Pointer(c_string))
@@ -443,7 +640,14 @@ func DbusIsName(string string) bool {
 	return retGo
 }
 
-// DbusIsSupportedAddress is a wrapper around the C function g_dbus_is_supported_address.
+// Like g_dbus_is_address() but also checks if the library supports the
+// transports in @string and that key/value pairs for each transport
+// are valid. See the specification of the
+// [D-Bus address format](https://dbus.freedesktop.org/doc/dbus-specification.html#addresses).
+/*
+
+C function : g_dbus_is_supported_address
+*/
 func DbusIsSupportedAddress(string string) (bool, error) {
 	c_string := C.CString(string)
 	defer C.free(unsafe.Pointer(c_string))
@@ -461,7 +665,11 @@ func DbusIsSupportedAddress(string string) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// DbusIsUniqueName is a wrapper around the C function g_dbus_is_unique_name.
+// Checks if @string is a valid D-Bus unique bus name.
+/*
+
+C function : g_dbus_is_unique_name
+*/
 func DbusIsUniqueName(string string) bool {
 	c_string := C.CString(string)
 	defer C.free(unsafe.Pointer(c_string))
@@ -472,7 +680,12 @@ func DbusIsUniqueName(string string) bool {
 	return retGo
 }
 
-// ProxyGetDefaultForProtocol is a wrapper around the C function g_proxy_get_default_for_protocol.
+// Lookup "gio-proxy" extension point for a proxy implementation that supports
+// specified protocol.
+/*
+
+C function : g_proxy_get_default_for_protocol
+*/
 func ProxyGetDefaultForProtocol(protocol string) *Proxy {
 	c_protocol := C.CString(protocol)
 	defer C.free(unsafe.Pointer(c_protocol))
@@ -483,7 +696,11 @@ func ProxyGetDefaultForProtocol(protocol string) *Proxy {
 	return retGo
 }
 
-// ProxyResolverGetDefault is a wrapper around the C function g_proxy_resolver_get_default.
+// Gets the default #GProxyResolver for the system.
+/*
+
+C function : g_proxy_resolver_get_default
+*/
 func ProxyResolverGetDefault() *ProxyResolver {
 	retC := C.g_proxy_resolver_get_default()
 	retGo := ProxyResolverNewFromC(unsafe.Pointer(retC))

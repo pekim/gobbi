@@ -23,7 +23,23 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// MakeDirectoryWithParents is a wrapper around the C function g_file_make_directory_with_parents.
+// Creates a directory and any parent directories that may not
+// exist similar to 'mkdir -p'. If the file system does not support
+// creating directories, this function will fail, setting @error to
+// %G_IO_ERROR_NOT_SUPPORTED. If the directory itself already exists,
+// this function will fail setting @error to %G_IO_ERROR_EXISTS, unlike
+// the similar g_mkdir_with_parents().
+//
+// For a local #GFile the newly created directories will have the default
+// (current) ownership and permissions of the current process.
+//
+// If @cancellable is not %NULL, then the operation can be cancelled by
+// triggering the cancellable object from another thread. If the operation
+// was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+/*
+
+C function : g_file_make_directory_with_parents
+*/
 func (recv *File) MakeDirectoryWithParents(cancellable *Cancellable) (bool, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
 	if cancellable != nil {
@@ -43,7 +59,16 @@ func (recv *File) MakeDirectoryWithParents(cancellable *Cancellable) (bool, erro
 	return retGo, goThrowableError
 }
 
-// Monitor is a wrapper around the C function g_file_monitor.
+// Obtains a file or directory monitor for the given file,
+// depending on the type of the file.
+//
+// If @cancellable is not %NULL, then the operation can be cancelled by
+// triggering the cancellable object from another thread. If the operation
+// was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+/*
+
+C function : g_file_monitor
+*/
 func (recv *File) Monitor(flags FileMonitorFlags, cancellable *Cancellable) (*FileMonitor, error) {
 	c_flags := (C.GFileMonitorFlags)(flags)
 
@@ -65,7 +90,15 @@ func (recv *File) Monitor(flags FileMonitorFlags, cancellable *Cancellable) (*Fi
 	return retGo, goThrowableError
 }
 
-// QueryFileType is a wrapper around the C function g_file_query_file_type.
+// Utility function to inspect the #GFileType of a file. This is
+// implemented using g_file_query_info() and as such does blocking I/O.
+//
+// The primary use case of this method is to check if a file is
+// a regular file, directory, or symlink.
+/*
+
+C function : g_file_query_file_type
+*/
 func (recv *File) QueryFileType(flags FileQueryInfoFlags, cancellable *Cancellable) FileType {
 	c_flags := (C.GFileQueryInfoFlags)(flags)
 
@@ -86,7 +119,36 @@ func (recv *File) QueryFileType(flags FileQueryInfoFlags, cancellable *Cancellab
 
 // Unsupported : g_mount_guess_content_type_sync : no return type
 
-// GetActivationRoot is a wrapper around the C function g_volume_get_activation_root.
+// Gets the activation root for a #GVolume if it is known ahead of
+// mount time. Returns %NULL otherwise. If not %NULL and if @volume
+// is mounted, then the result of g_mount_get_root() on the
+// #GMount object obtained from g_volume_get_mount() will always
+// either be equal or a prefix of what this function returns. In
+// other words, in code
+//
+// |[<!-- language="C" -->
+// GMount *mount;
+// GFile *mount_root
+// GFile *volume_activation_root;
+//
+// mount = g_volume_get_mount (volume); // mounted, so never NULL
+// mount_root = g_mount_get_root (mount);
+// volume_activation_root = g_volume_get_activation_root (volume); // assume not NULL
+// ]|
+// then the expression
+// |[<!-- language="C" -->
+// (g_file_has_prefix (volume_activation_root, mount_root) ||
+// g_file_equal (volume_activation_root, mount_root))
+// ]|
+// will always be %TRUE.
+//
+// Activation roots are typically used in #GVolumeMonitor
+// implementations to find the underlying mount to shadow, see
+// g_mount_is_shadowed() for more details.
+/*
+
+C function : g_volume_get_activation_root
+*/
 func (recv *Volume) GetActivationRoot() *File {
 	retC := C.g_volume_get_activation_root((*C.GVolume)(recv.native))
 	var retGo (*File)

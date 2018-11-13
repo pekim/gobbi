@@ -17,7 +17,16 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// PaperSizeNew is a wrapper around the C function gtk_paper_size_new.
+// Creates a new #GtkPaperSize object by parsing a
+// [PWG 5101.1-2002](ftp://ftp.pwg.org/pub/pwg/candidates/cs-pwgmsn10-20020226-5101.1.pdf)
+// paper name.
+//
+// If @name is %NULL, the default paper size is returned,
+// see gtk_paper_size_get_default().
+/*
+
+C function : gtk_paper_size_new
+*/
 func PaperSizeNew(name string) *PaperSize {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -28,7 +37,12 @@ func PaperSizeNew(name string) *PaperSize {
 	return retGo
 }
 
-// PaperSizeNewCustom is a wrapper around the C function gtk_paper_size_new_custom.
+// Creates a new #GtkPaperSize object with the
+// given parameters.
+/*
+
+C function : gtk_paper_size_new_custom
+*/
 func PaperSizeNewCustom(name string, displayName string, width float64, height float64, unit Unit) *PaperSize {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -48,7 +62,16 @@ func PaperSizeNewCustom(name string, displayName string, width float64, height f
 	return retGo
 }
 
-// PaperSizeNewFromPpd is a wrapper around the C function gtk_paper_size_new_from_ppd.
+// Creates a new #GtkPaperSize object by using
+// PPD information.
+//
+// If @ppd_name is not a recognized PPD paper name,
+// @ppd_display_name, @width and @height are used to
+// construct a custom #GtkPaperSize object.
+/*
+
+C function : gtk_paper_size_new_from_ppd
+*/
 func PaperSizeNewFromPpd(ppdName string, ppdDisplayName string, width float64, height float64) *PaperSize {
 	c_ppd_name := C.CString(ppdName)
 	defer C.free(unsafe.Pointer(c_ppd_name))
@@ -66,7 +89,11 @@ func PaperSizeNewFromPpd(ppdName string, ppdDisplayName string, width float64, h
 	return retGo
 }
 
-// Copy is a wrapper around the C function gtk_paper_size_copy.
+// Copies an existing #GtkPaperSize.
+/*
+
+C function : gtk_paper_size_copy
+*/
 func (recv *PaperSize) Copy() *PaperSize {
 	retC := C.gtk_paper_size_copy((*C.GtkPaperSize)(recv.native))
 	retGo := PaperSizeNewFromC(unsafe.Pointer(retC))
@@ -74,14 +101,22 @@ func (recv *PaperSize) Copy() *PaperSize {
 	return retGo
 }
 
-// Free is a wrapper around the C function gtk_paper_size_free.
+// Free the given #GtkPaperSize object.
+/*
+
+C function : gtk_paper_size_free
+*/
 func (recv *PaperSize) Free() {
 	C.gtk_paper_size_free((*C.GtkPaperSize)(recv.native))
 
 	return
 }
 
-// GetDefaultBottomMargin is a wrapper around the C function gtk_paper_size_get_default_bottom_margin.
+// Gets the default bottom margin for the #GtkPaperSize.
+/*
+
+C function : gtk_paper_size_get_default_bottom_margin
+*/
 func (recv *PaperSize) GetDefaultBottomMargin(unit Unit) float64 {
 	c_unit := (C.GtkUnit)(unit)
 
@@ -91,7 +126,11 @@ func (recv *PaperSize) GetDefaultBottomMargin(unit Unit) float64 {
 	return retGo
 }
 
-// GetDefaultLeftMargin is a wrapper around the C function gtk_paper_size_get_default_left_margin.
+// Gets the default left margin for the #GtkPaperSize.
+/*
+
+C function : gtk_paper_size_get_default_left_margin
+*/
 func (recv *PaperSize) GetDefaultLeftMargin(unit Unit) float64 {
 	c_unit := (C.GtkUnit)(unit)
 
@@ -101,7 +140,11 @@ func (recv *PaperSize) GetDefaultLeftMargin(unit Unit) float64 {
 	return retGo
 }
 
-// GetDefaultRightMargin is a wrapper around the C function gtk_paper_size_get_default_right_margin.
+// Gets the default right margin for the #GtkPaperSize.
+/*
+
+C function : gtk_paper_size_get_default_right_margin
+*/
 func (recv *PaperSize) GetDefaultRightMargin(unit Unit) float64 {
 	c_unit := (C.GtkUnit)(unit)
 
@@ -111,7 +154,11 @@ func (recv *PaperSize) GetDefaultRightMargin(unit Unit) float64 {
 	return retGo
 }
 
-// GetDefaultTopMargin is a wrapper around the C function gtk_paper_size_get_default_top_margin.
+// Gets the default top margin for the #GtkPaperSize.
+/*
+
+C function : gtk_paper_size_get_default_top_margin
+*/
 func (recv *PaperSize) GetDefaultTopMargin(unit Unit) float64 {
 	c_unit := (C.GtkUnit)(unit)
 
@@ -121,7 +168,11 @@ func (recv *PaperSize) GetDefaultTopMargin(unit Unit) float64 {
 	return retGo
 }
 
-// GetDisplayName is a wrapper around the C function gtk_paper_size_get_display_name.
+// Gets the human-readable name of the #GtkPaperSize.
+/*
+
+C function : gtk_paper_size_get_display_name
+*/
 func (recv *PaperSize) GetDisplayName() string {
 	retC := C.gtk_paper_size_get_display_name((*C.GtkPaperSize)(recv.native))
 	retGo := C.GoString(retC)
@@ -129,7 +180,12 @@ func (recv *PaperSize) GetDisplayName() string {
 	return retGo
 }
 
-// GetHeight is a wrapper around the C function gtk_paper_size_get_height.
+// Gets the paper height of the #GtkPaperSize, in
+// units of @unit.
+/*
+
+C function : gtk_paper_size_get_height
+*/
 func (recv *PaperSize) GetHeight(unit Unit) float64 {
 	c_unit := (C.GtkUnit)(unit)
 
@@ -139,7 +195,11 @@ func (recv *PaperSize) GetHeight(unit Unit) float64 {
 	return retGo
 }
 
-// GetName is a wrapper around the C function gtk_paper_size_get_name.
+// Gets the name of the #GtkPaperSize.
+/*
+
+C function : gtk_paper_size_get_name
+*/
 func (recv *PaperSize) GetName() string {
 	retC := C.gtk_paper_size_get_name((*C.GtkPaperSize)(recv.native))
 	retGo := C.GoString(retC)
@@ -147,7 +207,12 @@ func (recv *PaperSize) GetName() string {
 	return retGo
 }
 
-// GetPpdName is a wrapper around the C function gtk_paper_size_get_ppd_name.
+// Gets the PPD name of the #GtkPaperSize, which
+// may be %NULL.
+/*
+
+C function : gtk_paper_size_get_ppd_name
+*/
 func (recv *PaperSize) GetPpdName() string {
 	retC := C.gtk_paper_size_get_ppd_name((*C.GtkPaperSize)(recv.native))
 	retGo := C.GoString(retC)
@@ -155,7 +220,12 @@ func (recv *PaperSize) GetPpdName() string {
 	return retGo
 }
 
-// GetWidth is a wrapper around the C function gtk_paper_size_get_width.
+// Gets the paper width of the #GtkPaperSize, in
+// units of @unit.
+/*
+
+C function : gtk_paper_size_get_width
+*/
 func (recv *PaperSize) GetWidth(unit Unit) float64 {
 	c_unit := (C.GtkUnit)(unit)
 
@@ -165,7 +235,11 @@ func (recv *PaperSize) GetWidth(unit Unit) float64 {
 	return retGo
 }
 
-// IsEqual is a wrapper around the C function gtk_paper_size_is_equal.
+// Compares two #GtkPaperSize objects.
+/*
+
+C function : gtk_paper_size_is_equal
+*/
 func (recv *PaperSize) IsEqual(size2 *PaperSize) bool {
 	c_size2 := (*C.GtkPaperSize)(C.NULL)
 	if size2 != nil {
@@ -178,7 +252,11 @@ func (recv *PaperSize) IsEqual(size2 *PaperSize) bool {
 	return retGo
 }
 
-// SetSize is a wrapper around the C function gtk_paper_size_set_size.
+// Changes the dimensions of a @size to @width x @height.
+/*
+
+C function : gtk_paper_size_set_size
+*/
 func (recv *PaperSize) SetSize(width float64, height float64, unit Unit) {
 	c_width := (C.gdouble)(width)
 
@@ -212,7 +290,11 @@ func (recv *RecentInfo) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CreateAppInfo is a wrapper around the C function gtk_recent_info_create_app_info.
+// Creates a #GAppInfo for the specified #GtkRecentInfo
+/*
+
+C function : gtk_recent_info_create_app_info
+*/
 func (recv *RecentInfo) CreateAppInfo(appName string) (*gio.AppInfo, error) {
 	c_app_name := C.CString(appName)
 	defer C.free(unsafe.Pointer(c_app_name))
@@ -235,7 +317,13 @@ func (recv *RecentInfo) CreateAppInfo(appName string) (*gio.AppInfo, error) {
 	return retGo, goThrowableError
 }
 
-// Exists is a wrapper around the C function gtk_recent_info_exists.
+// Checks whether the resource pointed by @info still exists.
+// At the moment this check is done only on resources pointing
+// to local files.
+/*
+
+C function : gtk_recent_info_exists
+*/
 func (recv *RecentInfo) Exists() bool {
 	retC := C.gtk_recent_info_exists((*C.GtkRecentInfo)(recv.native))
 	retGo := retC == C.TRUE
@@ -245,7 +333,12 @@ func (recv *RecentInfo) Exists() bool {
 
 // Unsupported : gtk_recent_info_get_added : no return generator
 
-// GetAge is a wrapper around the C function gtk_recent_info_get_age.
+// Gets the number of days elapsed since the last update
+// of the resource pointed by @info.
+/*
+
+C function : gtk_recent_info_get_age
+*/
 func (recv *RecentInfo) GetAge() int32 {
 	retC := C.gtk_recent_info_get_age((*C.GtkRecentInfo)(recv.native))
 	retGo := (int32)(retC)
@@ -257,7 +350,11 @@ func (recv *RecentInfo) GetAge() int32 {
 
 // Unsupported : gtk_recent_info_get_applications : no return type
 
-// GetDescription is a wrapper around the C function gtk_recent_info_get_description.
+// Gets the (short) description of the resource.
+/*
+
+C function : gtk_recent_info_get_description
+*/
 func (recv *RecentInfo) GetDescription() string {
 	retC := C.gtk_recent_info_get_description((*C.GtkRecentInfo)(recv.native))
 	retGo := C.GoString(retC)
@@ -265,7 +362,12 @@ func (recv *RecentInfo) GetDescription() string {
 	return retGo
 }
 
-// GetDisplayName is a wrapper around the C function gtk_recent_info_get_display_name.
+// Gets the name of the resource. If none has been defined, the basename
+// of the resource is obtained.
+/*
+
+C function : gtk_recent_info_get_display_name
+*/
 func (recv *RecentInfo) GetDisplayName() string {
 	retC := C.gtk_recent_info_get_display_name((*C.GtkRecentInfo)(recv.native))
 	retGo := C.GoString(retC)
@@ -275,7 +377,11 @@ func (recv *RecentInfo) GetDisplayName() string {
 
 // Unsupported : gtk_recent_info_get_groups : no return type
 
-// GetIcon is a wrapper around the C function gtk_recent_info_get_icon.
+// Retrieves the icon of size @size associated to the resource MIME type.
+/*
+
+C function : gtk_recent_info_get_icon
+*/
 func (recv *RecentInfo) GetIcon(size int32) *gdkpixbuf.Pixbuf {
 	c_size := (C.gint)(size)
 
@@ -290,7 +396,11 @@ func (recv *RecentInfo) GetIcon(size int32) *gdkpixbuf.Pixbuf {
 	return retGo
 }
 
-// GetMimeType is a wrapper around the C function gtk_recent_info_get_mime_type.
+// Gets the MIME type of the resource.
+/*
+
+C function : gtk_recent_info_get_mime_type
+*/
 func (recv *RecentInfo) GetMimeType() string {
 	retC := C.gtk_recent_info_get_mime_type((*C.GtkRecentInfo)(recv.native))
 	retGo := C.GoString(retC)
@@ -300,7 +410,13 @@ func (recv *RecentInfo) GetMimeType() string {
 
 // Unsupported : gtk_recent_info_get_modified : no return generator
 
-// GetPrivateHint is a wrapper around the C function gtk_recent_info_get_private_hint.
+// Gets the value of the “private” flag. Resources in the recently used
+// list that have this flag set to %TRUE should only be displayed by the
+// applications that have registered them.
+/*
+
+C function : gtk_recent_info_get_private_hint
+*/
 func (recv *RecentInfo) GetPrivateHint() bool {
 	retC := C.gtk_recent_info_get_private_hint((*C.GtkRecentInfo)(recv.native))
 	retGo := retC == C.TRUE
@@ -308,7 +424,14 @@ func (recv *RecentInfo) GetPrivateHint() bool {
 	return retGo
 }
 
-// GetShortName is a wrapper around the C function gtk_recent_info_get_short_name.
+// Computes a valid UTF-8 string that can be used as the
+// name of the item in a menu or list. For example, calling
+// this function on an item that refers to
+// “file:///foo/bar.txt” will yield “bar.txt”.
+/*
+
+C function : gtk_recent_info_get_short_name
+*/
 func (recv *RecentInfo) GetShortName() string {
 	retC := C.gtk_recent_info_get_short_name((*C.GtkRecentInfo)(recv.native))
 	retGo := C.GoString(retC)
@@ -317,7 +440,11 @@ func (recv *RecentInfo) GetShortName() string {
 	return retGo
 }
 
-// GetUri is a wrapper around the C function gtk_recent_info_get_uri.
+// Gets the URI of the resource.
+/*
+
+C function : gtk_recent_info_get_uri
+*/
 func (recv *RecentInfo) GetUri() string {
 	retC := C.gtk_recent_info_get_uri((*C.GtkRecentInfo)(recv.native))
 	retGo := C.GoString(retC)
@@ -325,7 +452,13 @@ func (recv *RecentInfo) GetUri() string {
 	return retGo
 }
 
-// GetUriDisplay is a wrapper around the C function gtk_recent_info_get_uri_display.
+// Gets a displayable version of the resource’s URI. If the resource
+// is local, it returns a local path; if the resource is not local,
+// it returns the UTF-8 encoded content of gtk_recent_info_get_uri().
+/*
+
+C function : gtk_recent_info_get_uri_display
+*/
 func (recv *RecentInfo) GetUriDisplay() string {
 	retC := C.gtk_recent_info_get_uri_display((*C.GtkRecentInfo)(recv.native))
 	retGo := C.GoString(retC)
@@ -336,7 +469,11 @@ func (recv *RecentInfo) GetUriDisplay() string {
 
 // Unsupported : gtk_recent_info_get_visited : no return generator
 
-// HasApplication is a wrapper around the C function gtk_recent_info_has_application.
+// Checks whether an application registered this resource using @app_name.
+/*
+
+C function : gtk_recent_info_has_application
+*/
 func (recv *RecentInfo) HasApplication(appName string) bool {
 	c_app_name := C.CString(appName)
 	defer C.free(unsafe.Pointer(c_app_name))
@@ -347,7 +484,12 @@ func (recv *RecentInfo) HasApplication(appName string) bool {
 	return retGo
 }
 
-// HasGroup is a wrapper around the C function gtk_recent_info_has_group.
+// Checks whether @group_name appears inside the groups
+// registered for the recently used item @info.
+/*
+
+C function : gtk_recent_info_has_group
+*/
 func (recv *RecentInfo) HasGroup(groupName string) bool {
 	c_group_name := C.CString(groupName)
 	defer C.free(unsafe.Pointer(c_group_name))
@@ -358,7 +500,12 @@ func (recv *RecentInfo) HasGroup(groupName string) bool {
 	return retGo
 }
 
-// IsLocal is a wrapper around the C function gtk_recent_info_is_local.
+// Checks whether the resource is local or not by looking at the
+// scheme of its URI.
+/*
+
+C function : gtk_recent_info_is_local
+*/
 func (recv *RecentInfo) IsLocal() bool {
 	retC := C.gtk_recent_info_is_local((*C.GtkRecentInfo)(recv.native))
 	retGo := retC == C.TRUE
@@ -366,7 +513,12 @@ func (recv *RecentInfo) IsLocal() bool {
 	return retGo
 }
 
-// LastApplication is a wrapper around the C function gtk_recent_info_last_application.
+// Gets the name of the last application that have registered the
+// recently used resource represented by @info.
+/*
+
+C function : gtk_recent_info_last_application
+*/
 func (recv *RecentInfo) LastApplication() string {
 	retC := C.gtk_recent_info_last_application((*C.GtkRecentInfo)(recv.native))
 	retGo := C.GoString(retC)
@@ -375,7 +527,12 @@ func (recv *RecentInfo) LastApplication() string {
 	return retGo
 }
 
-// Match is a wrapper around the C function gtk_recent_info_match.
+// Checks whether two #GtkRecentInfo-struct point to the same
+// resource.
+/*
+
+C function : gtk_recent_info_match
+*/
 func (recv *RecentInfo) Match(infoB *RecentInfo) bool {
 	c_info_b := (*C.GtkRecentInfo)(C.NULL)
 	if infoB != nil {
@@ -388,7 +545,11 @@ func (recv *RecentInfo) Match(infoB *RecentInfo) bool {
 	return retGo
 }
 
-// Ref is a wrapper around the C function gtk_recent_info_ref.
+// Increases the reference count of @recent_info by one.
+/*
+
+C function : gtk_recent_info_ref
+*/
 func (recv *RecentInfo) Ref() *RecentInfo {
 	retC := C.gtk_recent_info_ref((*C.GtkRecentInfo)(recv.native))
 	retGo := RecentInfoNewFromC(unsafe.Pointer(retC))
@@ -396,7 +557,12 @@ func (recv *RecentInfo) Ref() *RecentInfo {
 	return retGo
 }
 
-// Unref is a wrapper around the C function gtk_recent_info_unref.
+// Decreases the reference count of @info by one. If the reference
+// count reaches zero, @info is deallocated, and the memory freed.
+/*
+
+C function : gtk_recent_info_unref
+*/
 func (recv *RecentInfo) Unref() {
 	C.gtk_recent_info_unref((*C.GtkRecentInfo)(recv.native))
 
@@ -430,7 +596,13 @@ func (recv *RecentManagerClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TargetsIncludeRichText is a wrapper around the C function gtk_selection_data_targets_include_rich_text.
+// Given a #GtkSelectionData object holding a list of targets,
+// determines if any of the targets in @targets can be used to
+// provide rich text.
+/*
+
+C function : gtk_selection_data_targets_include_rich_text
+*/
 func (recv *SelectionData) TargetsIncludeRichText(buffer *TextBuffer) bool {
 	c_buffer := (*C.GtkTextBuffer)(C.NULL)
 	if buffer != nil {
@@ -443,7 +615,13 @@ func (recv *SelectionData) TargetsIncludeRichText(buffer *TextBuffer) bool {
 	return retGo
 }
 
-// TargetsIncludeUri is a wrapper around the C function gtk_selection_data_targets_include_uri.
+// Given a #GtkSelectionData object holding a list of targets,
+// determines if any of the targets in @targets can be used to
+// provide a list or URIs.
+/*
+
+C function : gtk_selection_data_targets_include_uri
+*/
 func (recv *SelectionData) TargetsIncludeUri() bool {
 	retC := C.gtk_selection_data_targets_include_uri((*C.GtkSelectionData)(recv.native))
 	retGo := retC == C.TRUE
@@ -451,7 +629,14 @@ func (recv *SelectionData) TargetsIncludeUri() bool {
 	return retGo
 }
 
-// AddRichTextTargets is a wrapper around the C function gtk_target_list_add_rich_text_targets.
+// Appends the rich text targets registered with
+// gtk_text_buffer_register_serialize_format() or
+// gtk_text_buffer_register_deserialize_format() to the target list. All
+// targets are added with the same @info.
+/*
+
+C function : gtk_target_list_add_rich_text_targets
+*/
 func (recv *TargetList) AddRichTextTargets(info uint32, deserializable bool, buffer *TextBuffer) {
 	c_info := (C.guint)(info)
 

@@ -12,7 +12,11 @@ import cairo "github.com/pekim/gobbi/lib/cairo"
 // #include <stdlib.h>
 import "C"
 
-// RenderIconSurface is a wrapper around the C function gtk_render_icon_surface.
+// Renders the icon in @surface at the specified @x and @y coordinates.
+/*
+
+C function : gtk_render_icon_surface
+*/
 func RenderIconSurface(context *StyleContext, cr *cairo.Context, surface *cairo.Surface, x float64, y float64) {
 	c_context := (*C.GtkStyleContext)(C.NULL)
 	if context != nil {
@@ -38,7 +42,17 @@ func RenderIconSurface(context *StyleContext, cr *cairo.Context, surface *cairo.
 	return
 }
 
-// TestWidgetWaitForDraw is a wrapper around the C function gtk_test_widget_wait_for_draw.
+// Enters the main loop and waits for @widget to be “drawn”. In this
+// context that means it waits for the frame clock of @widget to have
+// run a full styling, layout and drawing cycle.
+//
+// This function is intended to be used for syncing with actions that
+// depend on @widget relayouting or on interaction with the display
+// server.
+/*
+
+C function : gtk_test_widget_wait_for_draw
+*/
 func TestWidgetWaitForDraw(widget *Widget) {
 	c_widget := (*C.GtkWidget)(C.NULL)
 	if widget != nil {

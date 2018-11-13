@@ -23,7 +23,15 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// AppInfoResetTypeAssociations is a wrapper around the C function g_app_info_reset_type_associations.
+// Removes all changes to the type associations done by
+// g_app_info_set_as_default_for_type(),
+// g_app_info_set_as_default_for_extension(),
+// g_app_info_add_supports_type() or
+// g_app_info_remove_supports_type().
+/*
+
+C function : g_app_info_reset_type_associations
+*/
 func AppInfoResetTypeAssociations(contentType string) {
 	c_content_type := C.CString(contentType)
 	defer C.free(unsafe.Pointer(c_content_type))
@@ -33,7 +41,16 @@ func AppInfoResetTypeAssociations(contentType string) {
 	return
 }
 
-// IconNewForString is a wrapper around the C function g_icon_new_for_string.
+// Generate a #GIcon instance from @str. This function can fail if
+// @str is not valid - see g_icon_to_string() for discussion.
+//
+// If your application or library provides one or more #GIcon
+// implementations you need to ensure that each #GType is registered
+// with the type system prior to calling g_icon_new_for_string().
+/*
+
+C function : g_icon_new_for_string
+*/
 func IconNewForString(str string) (*Icon, error) {
 	c_str := C.CString(str)
 	defer C.free(unsafe.Pointer(c_str))

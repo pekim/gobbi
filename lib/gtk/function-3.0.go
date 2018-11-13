@@ -19,7 +19,29 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// BindingEntryAddSignalFromString is a wrapper around the C function gtk_binding_entry_add_signal_from_string.
+// Parses a signal description from @signal_desc and incorporates
+// it into @binding_set.
+//
+// Signal descriptions may either bind a key combination to
+// one or more signals:
+// |[
+// bind "key" {
+// "signalname" (param, ...)
+// ...
+// }
+// ]|
+//
+// Or they may also unbind a key combination:
+// |[
+// unbind "key"
+// ]|
+//
+// Key combinations must be in a format that can be parsed by
+// gtk_accelerator_parse().
+/*
+
+C function : gtk_binding_entry_add_signal_from_string
+*/
 func BindingEntryAddSignalFromString(bindingSet *BindingSet, signalDesc string) glib.TokenType {
 	c_binding_set := (*C.GtkBindingSet)(C.NULL)
 	if bindingSet != nil {
@@ -35,7 +57,19 @@ func BindingEntryAddSignalFromString(bindingSet *BindingSet, signalDesc string) 
 	return retGo
 }
 
-// CairoShouldDrawWindow is a wrapper around the C function gtk_cairo_should_draw_window.
+// This function is supposed to be called in #GtkWidget::draw
+// implementations for widgets that support multiple windows.
+// @cr must be untransformed from invoking of the draw function.
+// This function will return %TRUE if the contents of the given
+// @window are supposed to be drawn and %FALSE otherwise. Note
+// that when the drawing was not initiated by the windowing
+// system this function will return %TRUE for all windows, so
+// you need to draw the bottommost window first. Also, do not
+// use “else if” statements to check which window should be drawn.
+/*
+
+C function : gtk_cairo_should_draw_window
+*/
 func CairoShouldDrawWindow(cr *cairo.Context, window *gdk.Window) bool {
 	c_cr := (*C.cairo_t)(C.NULL)
 	if cr != nil {
@@ -53,7 +87,19 @@ func CairoShouldDrawWindow(cr *cairo.Context, window *gdk.Window) bool {
 	return retGo
 }
 
-// CairoTransformToWindow is a wrapper around the C function gtk_cairo_transform_to_window.
+// Transforms the given cairo context @cr that from @widget-relative
+// coordinates to @window-relative coordinates.
+// If the @widget’s window is not an ancestor of @window, no
+// modification will be applied.
+//
+// This is the inverse to the transformation GTK applies when
+// preparing an expose event to be emitted with the #GtkWidget::draw
+// signal. It is intended to help porting multiwindow widgets from
+// GTK+ 2 to the rendering architecture of GTK+ 3.
+/*
+
+C function : gtk_cairo_transform_to_window
+*/
 func CairoTransformToWindow(cr *cairo.Context, widget *Widget, window *gdk.Window) {
 	c_cr := (*C.cairo_t)(C.NULL)
 	if cr != nil {
@@ -75,7 +121,14 @@ func CairoTransformToWindow(cr *cairo.Context, widget *Widget, window *gdk.Windo
 	return
 }
 
-// DeviceGrabAdd is a wrapper around the C function gtk_device_grab_add.
+// Adds a GTK+ grab on @device, so all the events on @device and its
+// associated pointer or keyboard (if any) are delivered to @widget.
+// If the @block_others parameter is %TRUE, any other devices will be
+// unable to interact with @widget during the grab.
+/*
+
+C function : gtk_device_grab_add
+*/
 func DeviceGrabAdd(widget *Widget, device *gdk.Device, blockOthers bool) {
 	c_widget := (*C.GtkWidget)(C.NULL)
 	if widget != nil {
@@ -95,7 +148,14 @@ func DeviceGrabAdd(widget *Widget, device *gdk.Device, blockOthers bool) {
 	return
 }
 
-// DeviceGrabRemove is a wrapper around the C function gtk_device_grab_remove.
+// Removes a device grab from the given widget.
+//
+// You have to pair calls to gtk_device_grab_add() and
+// gtk_device_grab_remove().
+/*
+
+C function : gtk_device_grab_remove
+*/
 func DeviceGrabRemove(widget *Widget, device *gdk.Device) {
 	c_widget := (*C.GtkWidget)(C.NULL)
 	if widget != nil {
@@ -114,7 +174,14 @@ func DeviceGrabRemove(widget *Widget, device *gdk.Device) {
 
 // Unsupported : gtk_draw_insertion_cursor : unsupported parameter location : Blacklisted record : GdkRectangle
 
-// GetBinaryAge is a wrapper around the C function gtk_get_binary_age.
+// Returns the binary age as passed to `libtool`
+// when building the GTK+ library the process is running against.
+// If `libtool` means nothing to you, don't
+// worry about it.
+/*
+
+C function : gtk_get_binary_age
+*/
 func GetBinaryAge() uint32 {
 	retC := C.gtk_get_binary_age()
 	retGo := (uint32)(retC)
@@ -122,7 +189,14 @@ func GetBinaryAge() uint32 {
 	return retGo
 }
 
-// GetInterfaceAge is a wrapper around the C function gtk_get_interface_age.
+// Returns the interface age as passed to `libtool`
+// when building the GTK+ library the process is running against.
+// If `libtool` means nothing to you, don't
+// worry about it.
+/*
+
+C function : gtk_get_interface_age
+*/
 func GetInterfaceAge() uint32 {
 	retC := C.gtk_get_interface_age()
 	retGo := (uint32)(retC)
@@ -130,7 +204,17 @@ func GetInterfaceAge() uint32 {
 	return retGo
 }
 
-// GetMajorVersion is a wrapper around the C function gtk_get_major_version.
+// Returns the major version number of the GTK+ library.
+// (e.g. in GTK+ version 3.1.5 this is 3.)
+//
+// This function is in the library, so it represents the GTK+ library
+// your code is running against. Contrast with the #GTK_MAJOR_VERSION
+// macro, which represents the major version of the GTK+ headers you
+// have included when compiling your code.
+/*
+
+C function : gtk_get_major_version
+*/
 func GetMajorVersion() uint32 {
 	retC := C.gtk_get_major_version()
 	retGo := (uint32)(retC)
@@ -138,7 +222,17 @@ func GetMajorVersion() uint32 {
 	return retGo
 }
 
-// GetMicroVersion is a wrapper around the C function gtk_get_micro_version.
+// Returns the micro version number of the GTK+ library.
+// (e.g. in GTK+ version 3.1.5 this is 5.)
+//
+// This function is in the library, so it represents the GTK+ library
+// your code is are running against. Contrast with the
+// #GTK_MICRO_VERSION macro, which represents the micro version of the
+// GTK+ headers you have included when compiling your code.
+/*
+
+C function : gtk_get_micro_version
+*/
 func GetMicroVersion() uint32 {
 	retC := C.gtk_get_micro_version()
 	retGo := (uint32)(retC)
@@ -146,7 +240,17 @@ func GetMicroVersion() uint32 {
 	return retGo
 }
 
-// GetMinorVersion is a wrapper around the C function gtk_get_minor_version.
+// Returns the minor version number of the GTK+ library.
+// (e.g. in GTK+ version 3.1.5 this is 1.)
+//
+// This function is in the library, so it represents the GTK+ library
+// your code is are running against. Contrast with the
+// #GTK_MINOR_VERSION macro, which represents the minor version of the
+// GTK+ headers you have included when compiling your code.
+/*
+
+C function : gtk_get_minor_version
+*/
 func GetMinorVersion() uint32 {
 	retC := C.gtk_get_minor_version()
 	retGo := (uint32)(retC)
@@ -154,7 +258,13 @@ func GetMinorVersion() uint32 {
 	return retGo
 }
 
-// RenderActivity is a wrapper around the C function gtk_render_activity.
+// Renders an activity indicator (such as in #GtkSpinner).
+// The state %GTK_STATE_FLAG_CHECKED determines whether there is
+// activity going on.
+/*
+
+C function : gtk_render_activity
+*/
 func RenderActivity(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
 	c_context := (*C.GtkStyleContext)(C.NULL)
 	if context != nil {
@@ -179,7 +289,15 @@ func RenderActivity(context *StyleContext, cr *cairo.Context, x float64, y float
 	return
 }
 
-// RenderArrow is a wrapper around the C function gtk_render_arrow.
+// Renders an arrow pointing to @angle.
+//
+// Typical arrow rendering at 0, 1⁄2 π;, π; and 3⁄2 π:
+//
+// ![](arrows.png)
+/*
+
+C function : gtk_render_arrow
+*/
 func RenderArrow(context *StyleContext, cr *cairo.Context, angle float64, x float64, y float64, size float64) {
 	c_context := (*C.GtkStyleContext)(C.NULL)
 	if context != nil {
@@ -204,7 +322,19 @@ func RenderArrow(context *StyleContext, cr *cairo.Context, angle float64, x floa
 	return
 }
 
-// RenderCheck is a wrapper around the C function gtk_render_check.
+// Renders a checkmark (as in a #GtkCheckButton).
+//
+// The %GTK_STATE_FLAG_CHECKED state determines whether the check is
+// on or off, and %GTK_STATE_FLAG_INCONSISTENT determines whether it
+// should be marked as undefined.
+//
+// Typical checkmark rendering:
+//
+// ![](checks.png)
+/*
+
+C function : gtk_render_check
+*/
 func RenderCheck(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
 	c_context := (*C.GtkStyleContext)(C.NULL)
 	if context != nil {
@@ -229,7 +359,17 @@ func RenderCheck(context *StyleContext, cr *cairo.Context, x float64, y float64,
 	return
 }
 
-// RenderExpander is a wrapper around the C function gtk_render_expander.
+// Renders an expander (as used in #GtkTreeView and #GtkExpander) in the area
+// defined by @x, @y, @width, @height. The state %GTK_STATE_FLAG_CHECKED
+// determines whether the expander is collapsed or expanded.
+//
+// Typical expander rendering:
+//
+// ![](expanders.png)
+/*
+
+C function : gtk_render_expander
+*/
 func RenderExpander(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
 	c_context := (*C.GtkStyleContext)(C.NULL)
 	if context != nil {
@@ -254,7 +394,17 @@ func RenderExpander(context *StyleContext, cr *cairo.Context, x float64, y float
 	return
 }
 
-// RenderExtension is a wrapper around the C function gtk_render_extension.
+// Renders a extension (as in a #GtkNotebook tab) in the rectangle
+// defined by @x, @y, @width, @height. The side where the extension
+// connects to is defined by @gap_side.
+//
+// Typical extension rendering:
+//
+// ![](extensions.png)
+/*
+
+C function : gtk_render_extension
+*/
 func RenderExtension(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64, gapSide PositionType) {
 	c_context := (*C.GtkStyleContext)(C.NULL)
 	if context != nil {
@@ -281,7 +431,15 @@ func RenderExtension(context *StyleContext, cr *cairo.Context, x float64, y floa
 	return
 }
 
-// RenderFocus is a wrapper around the C function gtk_render_focus.
+// Renders a focus indicator on the rectangle determined by @x, @y, @width, @height.
+//
+// Typical focus rendering:
+//
+// ![](focus.png)
+/*
+
+C function : gtk_render_focus
+*/
 func RenderFocus(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
 	c_context := (*C.GtkStyleContext)(C.NULL)
 	if context != nil {
@@ -306,7 +464,16 @@ func RenderFocus(context *StyleContext, cr *cairo.Context, x float64, y float64,
 	return
 }
 
-// RenderFrame is a wrapper around the C function gtk_render_frame.
+// Renders a frame around the rectangle defined by @x, @y, @width, @height.
+//
+// Examples of frame rendering, showing the effect of `border-image`,
+// `border-color`, `border-width`, `border-radius` and junctions:
+//
+// ![](frames.png)
+/*
+
+C function : gtk_render_frame
+*/
 func RenderFrame(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
 	c_context := (*C.GtkStyleContext)(C.NULL)
 	if context != nil {
@@ -331,7 +498,18 @@ func RenderFrame(context *StyleContext, cr *cairo.Context, x float64, y float64,
 	return
 }
 
-// RenderFrameGap is a wrapper around the C function gtk_render_frame_gap.
+// Renders a frame around the rectangle defined by (@x, @y, @width, @height),
+// leaving a gap on one side. @xy0_gap and @xy1_gap will mean X coordinates
+// for %GTK_POS_TOP and %GTK_POS_BOTTOM gap sides, and Y coordinates for
+// %GTK_POS_LEFT and %GTK_POS_RIGHT.
+//
+// Typical rendering of a frame with a gap:
+//
+// ![](frame-gap.png)
+/*
+
+C function : gtk_render_frame_gap
+*/
 func RenderFrameGap(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64, gapSide PositionType, xy0Gap float64, xy1Gap float64) {
 	c_context := (*C.GtkStyleContext)(C.NULL)
 	if context != nil {
@@ -362,7 +540,17 @@ func RenderFrameGap(context *StyleContext, cr *cairo.Context, x float64, y float
 	return
 }
 
-// RenderHandle is a wrapper around the C function gtk_render_handle.
+// Renders a handle (as in #GtkHandleBox, #GtkPaned and
+// #GtkWindow’s resize grip), in the rectangle
+// determined by @x, @y, @width, @height.
+//
+// Handles rendered for the paned and grip classes:
+//
+// ![](handles.png)
+/*
+
+C function : gtk_render_handle
+*/
 func RenderHandle(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
 	c_context := (*C.GtkStyleContext)(C.NULL)
 	if context != nil {
@@ -387,7 +575,12 @@ func RenderHandle(context *StyleContext, cr *cairo.Context, x float64, y float64
 	return
 }
 
-// RenderIconPixbuf is a wrapper around the C function gtk_render_icon_pixbuf.
+// Renders the icon specified by @source at the given @size, returning the result
+// in a pixbuf.
+/*
+
+C function : gtk_render_icon_pixbuf
+*/
 func RenderIconPixbuf(context *StyleContext, source *IconSource, size IconSize) *gdkpixbuf.Pixbuf {
 	c_context := (*C.GtkStyleContext)(C.NULL)
 	if context != nil {
@@ -407,7 +600,11 @@ func RenderIconPixbuf(context *StyleContext, source *IconSource, size IconSize) 
 	return retGo
 }
 
-// RenderLayout is a wrapper around the C function gtk_render_layout.
+// Renders @layout on the coordinates @x, @y
+/*
+
+C function : gtk_render_layout
+*/
 func RenderLayout(context *StyleContext, cr *cairo.Context, x float64, y float64, layout *pango.Layout) {
 	c_context := (*C.GtkStyleContext)(C.NULL)
 	if context != nil {
@@ -433,7 +630,11 @@ func RenderLayout(context *StyleContext, cr *cairo.Context, x float64, y float64
 	return
 }
 
-// RenderLine is a wrapper around the C function gtk_render_line.
+// Renders a line from (x0, y0) to (x1, y1).
+/*
+
+C function : gtk_render_line
+*/
 func RenderLine(context *StyleContext, cr *cairo.Context, x0 float64, y0 float64, x1 float64, y1 float64) {
 	c_context := (*C.GtkStyleContext)(C.NULL)
 	if context != nil {
@@ -458,7 +659,17 @@ func RenderLine(context *StyleContext, cr *cairo.Context, x0 float64, y0 float64
 	return
 }
 
-// RenderOption is a wrapper around the C function gtk_render_option.
+// Renders an option mark (as in a #GtkRadioButton), the %GTK_STATE_FLAG_CHECKED
+// state will determine whether the option is on or off, and
+// %GTK_STATE_FLAG_INCONSISTENT whether it should be marked as undefined.
+//
+// Typical option mark rendering:
+//
+// ![](options.png)
+/*
+
+C function : gtk_render_option
+*/
 func RenderOption(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
 	c_context := (*C.GtkStyleContext)(C.NULL)
 	if context != nil {
@@ -483,7 +694,17 @@ func RenderOption(context *StyleContext, cr *cairo.Context, x float64, y float64
 	return
 }
 
-// RenderSlider is a wrapper around the C function gtk_render_slider.
+// Renders a slider (as in #GtkScale) in the rectangle defined by @x, @y,
+// @width, @height. @orientation defines whether the slider is vertical
+// or horizontal.
+//
+// Typical slider rendering:
+//
+// ![](sliders.png)
+/*
+
+C function : gtk_render_slider
+*/
 func RenderSlider(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64, orientation Orientation) {
 	c_context := (*C.GtkStyleContext)(C.NULL)
 	if context != nil {

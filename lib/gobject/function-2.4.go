@@ -10,7 +10,17 @@ import "C"
 
 // Unsupported : g_param_spec_override : unsupported parameter overridden : Blacklisted record : GParamSpec
 
-// SignalAccumulatorTrueHandled is a wrapper around the C function g_signal_accumulator_true_handled.
+// A predefined #GSignalAccumulator for signals that return a
+// boolean values. The behavior that this accumulator gives is
+// that a return of %TRUE stops the signal emission: no further
+// callbacks will be invoked, while a return of %FALSE allows
+// the emission to continue. The idea here is that a %TRUE return
+// indicates that the callback handled the signal, and no further
+// handling is needed.
+/*
+
+C function : g_signal_accumulator_true_handled
+*/
 func SignalAccumulatorTrueHandled(ihint *SignalInvocationHint, returnAccu *Value, handlerReturn *Value, dummy uintptr) bool {
 	c_ihint := (*C.GSignalInvocationHint)(C.NULL)
 	if ihint != nil {
@@ -37,7 +47,12 @@ func SignalAccumulatorTrueHandled(ihint *SignalInvocationHint, returnAccu *Value
 
 // Unsupported : g_type_add_interface_check : unsupported parameter check_func : no type generator for TypeInterfaceCheckFunc (GTypeInterfaceCheckFunc) for param check_func
 
-// TypeClassPeekStatic is a wrapper around the C function g_type_class_peek_static.
+// A more efficient version of g_type_class_peek() which works only for
+// static types.
+/*
+
+C function : g_type_class_peek_static
+*/
 func TypeClassPeekStatic(type_ Type) uintptr {
 	c_type := (C.GType)(type_)
 
@@ -47,7 +62,12 @@ func TypeClassPeekStatic(type_ Type) uintptr {
 	return retGo
 }
 
-// TypeDefaultInterfacePeek is a wrapper around the C function g_type_default_interface_peek.
+// If the interface type @g_type is currently in use, returns its
+// default interface vtable.
+/*
+
+C function : g_type_default_interface_peek
+*/
 func TypeDefaultInterfacePeek(gType Type) uintptr {
 	c_g_type := (C.GType)(gType)
 
@@ -57,7 +77,20 @@ func TypeDefaultInterfacePeek(gType Type) uintptr {
 	return retGo
 }
 
-// TypeDefaultInterfaceRef is a wrapper around the C function g_type_default_interface_ref.
+// Increments the reference count for the interface type @g_type,
+// and returns the default interface vtable for the type.
+//
+// If the type is not currently in use, then the default vtable
+// for the type will be created and initalized by calling
+// the base interface init and default vtable init functions for
+// the type (the @base_init and @class_init members of #GTypeInfo).
+// Calling g_type_default_interface_ref() is useful when you
+// want to make sure that signals and properties for an interface
+// have been installed.
+/*
+
+C function : g_type_default_interface_ref
+*/
 func TypeDefaultInterfaceRef(gType Type) uintptr {
 	c_g_type := (C.GType)(gType)
 
@@ -67,7 +100,15 @@ func TypeDefaultInterfaceRef(gType Type) uintptr {
 	return retGo
 }
 
-// TypeDefaultInterfaceUnref is a wrapper around the C function g_type_default_interface_unref.
+// Decrements the reference count for the type corresponding to the
+// interface default vtable @g_iface. If the type is dynamic, then
+// when no one is using the interface and all references have
+// been released, the finalize function for the interface's default
+// vtable (the @class_finalize member of #GTypeInfo) will be called.
+/*
+
+C function : g_type_default_interface_unref
+*/
 func TypeDefaultInterfaceUnref(gIface uintptr) {
 	c_g_iface := (C.gpointer)(gIface)
 

@@ -44,7 +44,14 @@ func (recv *Proxy) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Connect is a wrapper around the C function g_proxy_connect.
+// Given @connection to communicate with a proxy (eg, a
+// #GSocketConnection that is connected to the proxy server), this
+// does the necessary handshake to connect to @proxy_address, and if
+// required, wraps the #GIOStream to handle proxy payload.
+/*
+
+C function : g_proxy_connect
+*/
 func (recv *Proxy) Connect(connection *IOStream, proxyAddress *ProxyAddress, cancellable *Cancellable) (*IOStream, error) {
 	c_connection := (*C.GIOStream)(C.NULL)
 	if connection != nil {
@@ -76,7 +83,11 @@ func (recv *Proxy) Connect(connection *IOStream, proxyAddress *ProxyAddress, can
 
 // Unsupported : g_proxy_connect_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// ConnectFinish is a wrapper around the C function g_proxy_connect_finish.
+// See g_proxy_connect().
+/*
+
+C function : g_proxy_connect_finish
+*/
 func (recv *Proxy) ConnectFinish(result *AsyncResult) (*IOStream, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
 
@@ -93,7 +104,17 @@ func (recv *Proxy) ConnectFinish(result *AsyncResult) (*IOStream, error) {
 	return retGo, goThrowableError
 }
 
-// SupportsHostname is a wrapper around the C function g_proxy_supports_hostname.
+// Some proxy protocols expect to be passed a hostname, which they
+// will resolve to an IP address themselves. Others, like SOCKS4, do
+// not allow this. This function will return %FALSE if @proxy is
+// implementing such a protocol. When %FALSE is returned, the caller
+// should resolve the destination hostname first, and then pass a
+// #GProxyAddress containing the stringified IP address to
+// g_proxy_connect() or g_proxy_connect_async().
+/*
+
+C function : g_proxy_supports_hostname
+*/
 func (recv *Proxy) SupportsHostname() bool {
 	retC := C.g_proxy_supports_hostname((*C.GProxy)(recv.native))
 	retGo := retC == C.TRUE
@@ -122,7 +143,13 @@ func (recv *ProxyResolver) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// IsSupported is a wrapper around the C function g_proxy_resolver_is_supported.
+// Checks if @resolver can be used on this system. (This is used
+// internally; g_proxy_resolver_get_default() will only return a proxy
+// resolver that returns %TRUE for this method.)
+/*
+
+C function : g_proxy_resolver_is_supported
+*/
 func (recv *ProxyResolver) IsSupported() bool {
 	retC := C.g_proxy_resolver_is_supported((*C.GProxyResolver)(recv.native))
 	retGo := retC == C.TRUE
@@ -136,7 +163,17 @@ func (recv *ProxyResolver) IsSupported() bool {
 
 // Unsupported : g_proxy_resolver_lookup_finish : no return type
 
-// ProxyEnumerate is a wrapper around the C function g_socket_connectable_proxy_enumerate.
+// Creates a #GSocketAddressEnumerator for @connectable that will
+// return #GProxyAddresses for addresses that you must connect
+// to via a proxy.
+//
+// If @connectable does not implement
+// g_socket_connectable_proxy_enumerate(), this will fall back to
+// calling g_socket_connectable_enumerate().
+/*
+
+C function : g_socket_connectable_proxy_enumerate
+*/
 func (recv *SocketConnectable) ProxyEnumerate() *SocketAddressEnumerator {
 	retC := C.g_socket_connectable_proxy_enumerate((*C.GSocketConnectable)(recv.native))
 	retGo := SocketAddressEnumeratorNewFromC(unsafe.Pointer(retC))

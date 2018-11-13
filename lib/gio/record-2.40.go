@@ -20,7 +20,14 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// GetKey is a wrapper around the C function g_settings_schema_get_key.
+// Gets the key named @name from @schema.
+//
+// It is a programmer error to request a key that does not exist.  See
+// g_settings_schema_list_keys().
+/*
+
+C function : g_settings_schema_get_key
+*/
 func (recv *SettingsSchema) GetKey(name string) *SettingsSchemaKey {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -31,7 +38,11 @@ func (recv *SettingsSchema) GetKey(name string) *SettingsSchemaKey {
 	return retGo
 }
 
-// HasKey is a wrapper around the C function g_settings_schema_has_key.
+// Checks if @schema has a key named @name.
+/*
+
+C function : g_settings_schema_has_key
+*/
 func (recv *SettingsSchema) HasKey(name string) bool {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -50,7 +61,11 @@ func (recv *SettingsSchema) HasKey(name string) bool {
 
 // Unsupported : g_settings_schema_key_range_check : unsupported parameter value : Blacklisted record : GVariant
 
-// Ref is a wrapper around the C function g_settings_schema_key_ref.
+// Increase the reference count of @key, returning a new reference.
+/*
+
+C function : g_settings_schema_key_ref
+*/
 func (recv *SettingsSchemaKey) Ref() *SettingsSchemaKey {
 	retC := C.g_settings_schema_key_ref((*C.GSettingsSchemaKey)(recv.native))
 	retGo := SettingsSchemaKeyNewFromC(unsafe.Pointer(retC))
@@ -58,7 +73,11 @@ func (recv *SettingsSchemaKey) Ref() *SettingsSchemaKey {
 	return retGo
 }
 
-// Unref is a wrapper around the C function g_settings_schema_key_unref.
+// Decrease the reference count of @key, possibly freeing it.
+/*
+
+C function : g_settings_schema_key_unref
+*/
 func (recv *SettingsSchemaKey) Unref() {
 	C.g_settings_schema_key_unref((*C.GSettingsSchemaKey)(recv.native))
 

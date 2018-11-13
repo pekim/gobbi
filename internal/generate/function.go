@@ -101,7 +101,8 @@ func (f *Function) generate(g *jen.Group, version *Version) {
 		return
 	}
 
-	g.Commentf("%s is a wrapper around the C function %s.", f.GoName, f.CIdentifier)
+	generateDoc(f.Doc, g)
+	g.Commentf("\nC function : %s", f.CIdentifier)
 
 	g.
 		Func().

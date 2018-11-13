@@ -10,7 +10,11 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// GetNKeys is a wrapper around the C function gdk_device_get_n_keys.
+// Returns the number of keys the device currently has.
+/*
+
+C function : gdk_device_get_n_keys
+*/
 func (recv *Device) GetNKeys() int32 {
 	retC := C.gdk_device_get_n_keys((*C.GdkDevice)(recv.native))
 	retGo := (int32)(retC)
@@ -18,7 +22,11 @@ func (recv *Device) GetNKeys() int32 {
 	return retGo
 }
 
-// GetDisplay is a wrapper around the C function gdk_window_get_display.
+// Gets the #GdkDisplay associated with a #GdkWindow.
+/*
+
+C function : gdk_window_get_display
+*/
 func (recv *Window) GetDisplay() *Display {
 	retC := C.gdk_window_get_display((*C.GdkWindow)(recv.native))
 	retGo := DisplayNewFromC(unsafe.Pointer(retC))
@@ -26,7 +34,15 @@ func (recv *Window) GetDisplay() *Display {
 	return retGo
 }
 
-// GetHeight is a wrapper around the C function gdk_window_get_height.
+// Returns the height of the given @window.
+//
+// On the X11 platform the returned size is the size reported in the
+// most-recently-processed configure event, rather than the current
+// size on the X server.
+/*
+
+C function : gdk_window_get_height
+*/
 func (recv *Window) GetHeight() int32 {
 	retC := C.gdk_window_get_height((*C.GdkWindow)(recv.native))
 	retGo := (int32)(retC)
@@ -34,7 +50,11 @@ func (recv *Window) GetHeight() int32 {
 	return retGo
 }
 
-// GetScreen is a wrapper around the C function gdk_window_get_screen.
+// Gets the #GdkScreen associated with a #GdkWindow.
+/*
+
+C function : gdk_window_get_screen
+*/
 func (recv *Window) GetScreen() *Screen {
 	retC := C.gdk_window_get_screen((*C.GdkWindow)(recv.native))
 	retGo := ScreenNewFromC(unsafe.Pointer(retC))
@@ -42,7 +62,11 @@ func (recv *Window) GetScreen() *Screen {
 	return retGo
 }
 
-// GetVisual is a wrapper around the C function gdk_window_get_visual.
+// Gets the #GdkVisual describing the pixel format of @window.
+/*
+
+C function : gdk_window_get_visual
+*/
 func (recv *Window) GetVisual() *Visual {
 	retC := C.gdk_window_get_visual((*C.GdkWindow)(recv.native))
 	retGo := VisualNewFromC(unsafe.Pointer(retC))
@@ -50,7 +74,15 @@ func (recv *Window) GetVisual() *Visual {
 	return retGo
 }
 
-// GetWidth is a wrapper around the C function gdk_window_get_width.
+// Returns the width of the given @window.
+//
+// On the X11 platform the returned size is the size reported in the
+// most-recently-processed configure event, rather than the current
+// size on the X server.
+/*
+
+C function : gdk_window_get_width
+*/
 func (recv *Window) GetWidth() int32 {
 	retC := C.gdk_window_get_width((*C.GdkWindow)(recv.native))
 	retGo := (int32)(retC)

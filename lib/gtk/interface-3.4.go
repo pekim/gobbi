@@ -25,7 +25,13 @@ import (
 */
 import "C"
 
-// GetActionName is a wrapper around the C function gtk_actionable_get_action_name.
+// Gets the action name for @actionable.
+//
+// See gtk_actionable_set_action_name() for more information.
+/*
+
+C function : gtk_actionable_get_action_name
+*/
 func (recv *Actionable) GetActionName() string {
 	retC := C.gtk_actionable_get_action_name((*C.GtkActionable)(recv.native))
 	retGo := C.GoString(retC)
@@ -35,7 +41,21 @@ func (recv *Actionable) GetActionName() string {
 
 // Unsupported : gtk_actionable_get_action_target_value : return type : Blacklisted record : GVariant
 
-// SetActionName is a wrapper around the C function gtk_actionable_set_action_name.
+// Specifies the name of the action with which this widget should be
+// associated.  If @action_name is %NULL then the widget will be
+// unassociated from any previous action.
+//
+// Usually this function is used when the widget is located (or will be
+// located) within the hierarchy of a #GtkApplicationWindow.
+//
+// Names are of the form “win.save” or “app.quit” for actions on the
+// containing #GtkApplicationWindow or its associated #GtkApplication,
+// respectively.  This is the same form used for actions in the #GMenu
+// associated with the window.
+/*
+
+C function : gtk_actionable_set_action_name
+*/
 func (recv *Actionable) SetActionName(actionName string) {
 	c_action_name := C.CString(actionName)
 	defer C.free(unsafe.Pointer(c_action_name))
@@ -49,7 +69,21 @@ func (recv *Actionable) SetActionName(actionName string) {
 
 // Unsupported : gtk_actionable_set_action_target_value : unsupported parameter target_value : Blacklisted record : GVariant
 
-// SetDetailedActionName is a wrapper around the C function gtk_actionable_set_detailed_action_name.
+// Sets the action-name and associated string target value of an
+// actionable widget.
+//
+// @detailed_action_name is a string in the format accepted by
+// g_action_parse_detailed_name().
+//
+// (Note that prior to version 3.22.25,
+// this function is only usable for actions with a simple "s" target, and
+// @detailed_action_name must be of the form `"action::target"` where
+// `action` is the action name and `target` is the string to use
+// as the target.)
+/*
+
+C function : gtk_actionable_set_detailed_action_name
+*/
 func (recv *Actionable) SetDetailedActionName(detailedActionName string) {
 	c_detailed_action_name := C.CString(detailedActionName)
 	defer C.free(unsafe.Pointer(c_detailed_action_name))
@@ -120,7 +154,11 @@ func colorchooser_colorActivatedHandler(_ *C.GObject, c_color *C.GdkRGBA, data C
 
 // Unsupported : gtk_color_chooser_add_palette : unsupported parameter colors :
 
-// GetRgba is a wrapper around the C function gtk_color_chooser_get_rgba.
+// Gets the currently-selected color.
+/*
+
+C function : gtk_color_chooser_get_rgba
+*/
 func (recv *ColorChooser) GetRgba() *gdk.RGBA {
 	var c_color C.GdkRGBA
 
@@ -131,7 +169,11 @@ func (recv *ColorChooser) GetRgba() *gdk.RGBA {
 	return color
 }
 
-// GetUseAlpha is a wrapper around the C function gtk_color_chooser_get_use_alpha.
+// Returns whether the color chooser shows the alpha channel.
+/*
+
+C function : gtk_color_chooser_get_use_alpha
+*/
 func (recv *ColorChooser) GetUseAlpha() bool {
 	retC := C.gtk_color_chooser_get_use_alpha((*C.GtkColorChooser)(recv.native))
 	retGo := retC == C.TRUE
@@ -139,7 +181,11 @@ func (recv *ColorChooser) GetUseAlpha() bool {
 	return retGo
 }
 
-// SetRgba is a wrapper around the C function gtk_color_chooser_set_rgba.
+// Sets the color.
+/*
+
+C function : gtk_color_chooser_set_rgba
+*/
 func (recv *ColorChooser) SetRgba(color *gdk.RGBA) {
 	c_color := (*C.GdkRGBA)(C.NULL)
 	if color != nil {
@@ -151,7 +197,11 @@ func (recv *ColorChooser) SetRgba(color *gdk.RGBA) {
 	return
 }
 
-// SetUseAlpha is a wrapper around the C function gtk_color_chooser_set_use_alpha.
+// Sets whether or not the color chooser should use the alpha channel.
+/*
+
+C function : gtk_color_chooser_set_use_alpha
+*/
 func (recv *ColorChooser) SetUseAlpha(useAlpha bool) {
 	c_use_alpha :=
 		boolToGboolean(useAlpha)

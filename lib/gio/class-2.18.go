@@ -33,7 +33,11 @@ import (
 */
 import "C"
 
-// DesktopAppInfoNewFromKeyfile is a wrapper around the C function g_desktop_app_info_new_from_keyfile.
+// Creates a new #GDesktopAppInfo.
+/*
+
+C function : g_desktop_app_info_new_from_keyfile
+*/
 func DesktopAppInfoNewFromKeyfile(keyFile *glib.KeyFile) *DesktopAppInfo {
 	c_key_file := (*C.GKeyFile)(C.NULL)
 	if keyFile != nil {
@@ -46,7 +50,11 @@ func DesktopAppInfoNewFromKeyfile(keyFile *glib.KeyFile) *DesktopAppInfo {
 	return retGo
 }
 
-// EmblemNew is a wrapper around the C function g_emblem_new.
+// Creates a new emblem for @icon.
+/*
+
+C function : g_emblem_new
+*/
 func EmblemNew(icon *Icon) *Emblem {
 	c_icon := (*C.GIcon)(icon.ToC())
 
@@ -56,7 +64,11 @@ func EmblemNew(icon *Icon) *Emblem {
 	return retGo
 }
 
-// EmblemNewWithOrigin is a wrapper around the C function g_emblem_new_with_origin.
+// Creates a new emblem for @icon.
+/*
+
+C function : g_emblem_new_with_origin
+*/
 func EmblemNewWithOrigin(icon *Icon, origin EmblemOrigin) *Emblem {
 	c_icon := (*C.GIcon)(icon.ToC())
 
@@ -68,7 +80,11 @@ func EmblemNewWithOrigin(icon *Icon, origin EmblemOrigin) *Emblem {
 	return retGo
 }
 
-// GetIcon is a wrapper around the C function g_emblem_get_icon.
+// Gives back the icon from @emblem.
+/*
+
+C function : g_emblem_get_icon
+*/
 func (recv *Emblem) GetIcon() *Icon {
 	retC := C.g_emblem_get_icon((*C.GEmblem)(recv.native))
 	retGo := IconNewFromC(unsafe.Pointer(retC))
@@ -76,7 +92,11 @@ func (recv *Emblem) GetIcon() *Icon {
 	return retGo
 }
 
-// GetOrigin is a wrapper around the C function g_emblem_get_origin.
+// Gets the origin of the emblem.
+/*
+
+C function : g_emblem_get_origin
+*/
 func (recv *Emblem) GetOrigin() EmblemOrigin {
 	retC := C.g_emblem_get_origin((*C.GEmblem)(recv.native))
 	retGo := (EmblemOrigin)(retC)
@@ -84,7 +104,11 @@ func (recv *Emblem) GetOrigin() EmblemOrigin {
 	return retGo
 }
 
-// EmblemedIconNew is a wrapper around the C function g_emblemed_icon_new.
+// Creates a new emblemed icon for @icon with the emblem @emblem.
+/*
+
+C function : g_emblemed_icon_new
+*/
 func EmblemedIconNew(icon *Icon, emblem *Emblem) *EmblemedIcon {
 	c_icon := (*C.GIcon)(icon.ToC())
 
@@ -99,7 +123,11 @@ func EmblemedIconNew(icon *Icon, emblem *Emblem) *EmblemedIcon {
 	return retGo
 }
 
-// AddEmblem is a wrapper around the C function g_emblemed_icon_add_emblem.
+// Adds @emblem to the #GList of #GEmblems.
+/*
+
+C function : g_emblemed_icon_add_emblem
+*/
 func (recv *EmblemedIcon) AddEmblem(emblem *Emblem) {
 	c_emblem := (*C.GEmblem)(C.NULL)
 	if emblem != nil {
@@ -111,7 +139,11 @@ func (recv *EmblemedIcon) AddEmblem(emblem *Emblem) {
 	return
 }
 
-// GetEmblems is a wrapper around the C function g_emblemed_icon_get_emblems.
+// Gets the list of emblems for the @icon.
+/*
+
+C function : g_emblemed_icon_get_emblems
+*/
 func (recv *EmblemedIcon) GetEmblems() *glib.List {
 	retC := C.g_emblemed_icon_get_emblems((*C.GEmblemedIcon)(recv.native))
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
@@ -119,7 +151,11 @@ func (recv *EmblemedIcon) GetEmblems() *glib.List {
 	return retGo
 }
 
-// GetIcon is a wrapper around the C function g_emblemed_icon_get_icon.
+// Gets the main icon for @emblemed.
+/*
+
+C function : g_emblemed_icon_get_icon
+*/
 func (recv *EmblemedIcon) GetIcon() *Icon {
 	retC := C.g_emblemed_icon_get_icon((*C.GEmblemedIcon)(recv.native))
 	retGo := IconNewFromC(unsafe.Pointer(retC))
@@ -127,7 +163,11 @@ func (recv *EmblemedIcon) GetIcon() *Icon {
 	return retGo
 }
 
-// GetContainer is a wrapper around the C function g_file_enumerator_get_container.
+// Get the #GFile container which is being enumerated.
+/*
+
+C function : g_file_enumerator_get_container
+*/
 func (recv *FileEnumerator) GetContainer() *File {
 	retC := C.g_file_enumerator_get_container((*C.GFileEnumerator)(recv.native))
 	retGo := FileNewFromC(unsafe.Pointer(retC))
@@ -135,7 +175,12 @@ func (recv *FileEnumerator) GetContainer() *File {
 	return retGo
 }
 
-// GetDataSize is a wrapper around the C function g_memory_output_stream_get_data_size.
+// Returns the number of bytes from the start up to including the last
+// byte written in the stream that has not been truncated away.
+/*
+
+C function : g_memory_output_stream_get_data_size
+*/
 func (recv *MemoryOutputStream) GetDataSize() uint64 {
 	retC := C.g_memory_output_stream_get_data_size((*C.GMemoryOutputStream)(recv.native))
 	retGo := (uint64)(retC)
@@ -143,7 +188,14 @@ func (recv *MemoryOutputStream) GetDataSize() uint64 {
 	return retGo
 }
 
-// PrependName is a wrapper around the C function g_themed_icon_prepend_name.
+// Prepend a name to the list of icons from within @icon.
+//
+// Note that doing so invalidates the hash computed by prior calls
+// to g_icon_hash().
+/*
+
+C function : g_themed_icon_prepend_name
+*/
 func (recv *ThemedIcon) PrependName(iconname string) {
 	c_iconname := C.CString(iconname)
 	defer C.free(unsafe.Pointer(c_iconname))
@@ -153,7 +205,17 @@ func (recv *ThemedIcon) PrependName(iconname string) {
 	return
 }
 
-// SetRateLimit is a wrapper around the C function g_unix_mount_monitor_set_rate_limit.
+// This function does nothing.
+//
+// Before 2.44, this was a partially-effective way of controlling the
+// rate at which events would be reported under some uncommon
+// circumstances.  Since @mount_monitor is a singleton, it also meant
+// that calling this function would have side effects for other users of
+// the monitor.
+/*
+
+C function : g_unix_mount_monitor_set_rate_limit
+*/
 func (recv *UnixMountMonitor) SetRateLimit(limitMsec int32) {
 	c_limit_msec := (C.int)(limitMsec)
 

@@ -12,7 +12,24 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// CheckVersion is a wrapper around the C function glib_check_version.
+// Checks that the GLib library in use is compatible with the
+// given version. Generally you would pass in the constants
+// #GLIB_MAJOR_VERSION, #GLIB_MINOR_VERSION, #GLIB_MICRO_VERSION
+// as the three arguments to this function; that produces
+// a check that the library in use is compatible with
+// the version of GLib the application or module was compiled
+// against.
+//
+// Compatibility is defined by two things: first the version
+// of the running library is newer than the version
+// @required_major.required_minor.@required_micro. Second
+// the running library must be binary compatible with the
+// version @required_major.required_minor.@required_micro
+// (same major version.)
+/*
+
+C function : glib_check_version
+*/
 func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint32) string {
 	c_required_major := (C.guint)(requiredMajor)
 
@@ -26,7 +43,26 @@ func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint
 	return retGo
 }
 
-// FilenameDisplayBasename is a wrapper around the C function g_filename_display_basename.
+// Returns the display basename for the particular filename, guaranteed
+// to be valid UTF-8. The display name might not be identical to the filename,
+// for instance there might be problems converting it to UTF-8, and some files
+// can be translated in the display.
+//
+// If GLib cannot make sense of the encoding of @filename, as a last resort it
+// replaces unknown characters with U+FFFD, the Unicode replacement character.
+// You can search the result for the UTF-8 encoding of this character (which is
+// "\357\277\275" in octal notation) to find out if @filename was in an invalid
+// encoding.
+//
+// You must pass the whole absolute pathname to this functions so that
+// translation of well known locations can be done.
+//
+// This function is preferred over g_filename_display_name() if you know the
+// whole path, as it allows translation.
+/*
+
+C function : g_filename_display_basename
+*/
 func FilenameDisplayBasename(filename string) string {
 	c_filename := C.CString(filename)
 	defer C.free(unsafe.Pointer(c_filename))
@@ -38,7 +74,25 @@ func FilenameDisplayBasename(filename string) string {
 	return retGo
 }
 
-// FilenameDisplayName is a wrapper around the C function g_filename_display_name.
+// Converts a filename into a valid UTF-8 string. The conversion is
+// not necessarily reversible, so you should keep the original around
+// and use the return value of this function only for display purposes.
+// Unlike g_filename_to_utf8(), the result is guaranteed to be non-%NULL
+// even if the filename actually isn't in the GLib file name encoding.
+//
+// If GLib cannot make sense of the encoding of @filename, as a last resort it
+// replaces unknown characters with U+FFFD, the Unicode replacement character.
+// You can search the result for the UTF-8 encoding of this character (which is
+// "\357\277\275" in octal notation) to find out if @filename was in an invalid
+// encoding.
+//
+// If you know the whole pathname of the file you should use
+// g_filename_display_basename(), since that allows location-based
+// translation of filenames.
+/*
+
+C function : g_filename_display_name
+*/
 func FilenameDisplayName(filename string) string {
 	c_filename := C.CString(filename)
 	defer C.free(unsafe.Pointer(c_filename))
@@ -58,7 +112,23 @@ func FilenameDisplayName(filename string) string {
 
 // Unsupported : g_get_system_data_dirs : no return type
 
-// GetUserCacheDir is a wrapper around the C function g_get_user_cache_dir.
+// Returns a base directory in which to store non-essential, cached
+// data specific to particular user.
+//
+// On UNIX platforms this is determined using the mechanisms described
+// in the
+// [XDG Base Directory Specification](http://www.freedesktop.org/Standards/basedir-spec).
+// In this case the directory retrieved will be `XDG_CACHE_HOME`.
+//
+// On Windows it follows XDG Base Directory Specification if `XDG_CACHE_HOME` is defined.
+// If `XDG_CACHE_HOME` is undefined, the directory that serves as a common
+// repository for temporary Internet files is used instead. A typical path is
+// `C:\Documents and Settings\username\Local Settings\Temporary Internet Files`.
+// See the [documentation for `CSIDL_INTERNET_CACHE`](https://msdn.microsoft.com/en-us/library/windows/desktop/bb762494%28v=vs.85%29.aspx#csidl_internet_cache).
+/*
+
+C function : g_get_user_cache_dir
+*/
 func GetUserCacheDir() string {
 	retC := C.g_get_user_cache_dir()
 	retGo := C.GoString(retC)
@@ -66,7 +136,24 @@ func GetUserCacheDir() string {
 	return retGo
 }
 
-// GetUserConfigDir is a wrapper around the C function g_get_user_config_dir.
+// Returns a base directory in which to store user-specific application
+// configuration information such as user preferences and settings.
+//
+// On UNIX platforms this is determined using the mechanisms described
+// in the
+// [XDG Base Directory Specification](http://www.freedesktop.org/Standards/basedir-spec).
+// In this case the directory retrieved will be `XDG_CONFIG_HOME`.
+//
+// On Windows it follows XDG Base Directory Specification if `XDG_CONFIG_HOME` is defined.
+// If `XDG_CONFIG_HOME` is undefined, the folder to use for local (as opposed
+// to roaming) application data is used instead. See the
+// [documentation for `CSIDL_LOCAL_APPDATA`](https://msdn.microsoft.com/en-us/library/windows/desktop/bb762494%28v=vs.85%29.aspx#csidl_local_appdata).
+// Note that in this case on Windows it will be  the same
+// as what g_get_user_data_dir() returns.
+/*
+
+C function : g_get_user_config_dir
+*/
 func GetUserConfigDir() string {
 	retC := C.g_get_user_config_dir()
 	retGo := C.GoString(retC)
@@ -74,7 +161,24 @@ func GetUserConfigDir() string {
 	return retGo
 }
 
-// GetUserDataDir is a wrapper around the C function g_get_user_data_dir.
+// Returns a base directory in which to access application data such
+// as icons that is customized for a particular user.
+//
+// On UNIX platforms this is determined using the mechanisms described
+// in the
+// [XDG Base Directory Specification](http://www.freedesktop.org/Standards/basedir-spec).
+// In this case the directory retrieved will be `XDG_DATA_HOME`.
+//
+// On Windows it follows XDG Base Directory Specification if `XDG_DATA_HOME`
+// is defined. If `XDG_DATA_HOME` is undefined, the folder to use for local (as
+// opposed to roaming) application data is used instead. See the
+// [documentation for `CSIDL_LOCAL_APPDATA`](https://msdn.microsoft.com/en-us/library/windows/desktop/bb762494%28v=vs.85%29.aspx#csidl_local_appdata).
+// Note that in this case on Windows it will be the same
+// as what g_get_user_config_dir() returns.
+/*
+
+C function : g_get_user_data_dir
+*/
 func GetUserDataDir() string {
 	retC := C.g_get_user_data_dir()
 	retGo := C.GoString(retC)
@@ -84,7 +188,15 @@ func GetUserDataDir() string {
 
 // Unsupported : g_log_set_default_handler : unsupported parameter log_func : no type generator for LogFunc (GLogFunc) for param log_func
 
-// Rmdir is a wrapper around the C function g_rmdir.
+// A wrapper for the POSIX rmdir() function. The rmdir() function
+// deletes a directory from the filesystem.
+//
+// See your C library manual for more details about how rmdir() works
+// on your system.
+/*
+
+C function : g_rmdir
+*/
 func Rmdir(filename string) int32 {
 	c_filename := C.CString(filename)
 	defer C.free(unsafe.Pointer(c_filename))
@@ -97,7 +209,18 @@ func Rmdir(filename string) int32 {
 
 // Unsupported : g_strv_length : unsupported parameter str_array : in string with indirection level of 2
 
-// Unlink is a wrapper around the C function g_unlink.
+// A wrapper for the POSIX unlink() function. The unlink() function
+// deletes a name from the filesystem. If this was the last link to the
+// file and no processes have it opened, the diskspace occupied by the
+// file is freed.
+//
+// See your C library manual for more details about unlink(). Note
+// that on Windows, it is in general not possible to delete files that
+// are open to some process, or mapped into memory.
+/*
+
+C function : g_unlink
+*/
 func Unlink(filename string) int32 {
 	c_filename := C.CString(filename)
 	defer C.free(unsafe.Pointer(c_filename))

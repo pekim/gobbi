@@ -12,7 +12,19 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Utf8MakeValid is a wrapper around the C function g_utf8_make_valid.
+// If the provided string is valid UTF-8, return a copy of it. If not,
+// return a copy in which bytes that could not be interpreted as valid Unicode
+// are replaced with the Unicode replacement character (U+FFFD).
+//
+// For example, this is an appropriate function to use if you have received
+// a string that was incorrectly declared to be UTF-8, and you need a valid
+// UTF-8 version of it that can be logged or displayed to the user, with the
+// assumption that it is close enough to ASCII or UTF-8 to be mostly
+// readable as-is.
+/*
+
+C function : g_utf8_make_valid
+*/
 func Utf8MakeValid(str string, len int64) string {
 	c_str := C.CString(str)
 	defer C.free(unsafe.Pointer(c_str))
@@ -26,7 +38,18 @@ func Utf8MakeValid(str string, len int64) string {
 	return retGo
 }
 
-// UuidStringIsValid is a wrapper around the C function g_uuid_string_is_valid.
+// Parses the string @str and verify if it is a UUID.
+//
+// The function accepts the following syntax:
+//
+// - simple forms (e.g. `f81d4fae-7dec-11d0-a765-00a0c91e6bf6`)
+//
+// Note that hyphens are required within the UUID string itself,
+// as per the aforementioned RFC.
+/*
+
+C function : g_uuid_string_is_valid
+*/
 func UuidStringIsValid(str string) bool {
 	c_str := C.CString(str)
 	defer C.free(unsafe.Pointer(c_str))
@@ -37,7 +60,11 @@ func UuidStringIsValid(str string) bool {
 	return retGo
 }
 
-// UuidStringRandom is a wrapper around the C function g_uuid_string_random.
+// Generates a random UUID (RFC 4122 version 4) as a string.
+/*
+
+C function : g_uuid_string_random
+*/
 func UuidStringRandom() string {
 	retC := C.g_uuid_string_random()
 	retGo := C.GoString(retC)

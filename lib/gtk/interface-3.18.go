@@ -15,7 +15,12 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// GetFontMap is a wrapper around the C function gtk_font_chooser_get_font_map.
+// Gets the custom font map of this font chooser widget,
+// or %NULL if it does not have one.
+/*
+
+C function : gtk_font_chooser_get_font_map
+*/
 func (recv *FontChooser) GetFontMap() *pango.FontMap {
 	retC := C.gtk_font_chooser_get_font_map((*C.GtkFontChooser)(recv.native))
 	var retGo (*pango.FontMap)
@@ -28,7 +33,34 @@ func (recv *FontChooser) GetFontMap() *pango.FontMap {
 	return retGo
 }
 
-// SetFontMap is a wrapper around the C function gtk_font_chooser_set_font_map.
+// Sets a custom font map to use for this font chooser widget.
+// A custom font map can be used to present application-specific
+// fonts instead of or in addition to the normal system fonts.
+//
+// |[<!-- language="C" -->
+// FcConfig *config;
+// PangoFontMap *fontmap;
+//
+// config = FcInitLoadConfigAndFonts ();
+// FcConfigAppFontAddFile (config, my_app_font_file);
+//
+// fontmap = pango_cairo_font_map_new_for_font_type (CAIRO_FONT_TYPE_FT);
+// pango_fc_font_map_set_config (PANGO_FC_FONT_MAP (fontmap), config);
+//
+// gtk_font_chooser_set_font_map (font_chooser, fontmap);
+// ]|
+//
+// Note that other GTK+ widgets will only be able to use the application-specific
+// font if it is present in the font map they use:
+//
+// |[
+// context = gtk_widget_get_pango_context (label);
+// pango_context_set_font_map (context, fontmap);
+// ]|
+/*
+
+C function : gtk_font_chooser_set_font_map
+*/
 func (recv *FontChooser) SetFontMap(fontmap *pango.FontMap) {
 	c_fontmap := (*C.PangoFontMap)(C.NULL)
 	if fontmap != nil {

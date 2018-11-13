@@ -14,7 +14,19 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// PixbufNewFromStream is a wrapper around the C function gdk_pixbuf_new_from_stream.
+// Creates a new pixbuf by loading an image from an input stream.
+//
+// The file format is detected automatically. If %NULL is returned, then
+// @error will be set. The @cancellable can be used to abort the operation
+// from another thread. If the operation was cancelled, the error
+// %G_IO_ERROR_CANCELLED will be returned. Other possible errors are in
+// the #GDK_PIXBUF_ERROR and %G_IO_ERROR domains.
+//
+// The stream is not closed.
+/*
+
+C function : gdk_pixbuf_new_from_stream
+*/
 func PixbufNewFromStream(stream *gio.InputStream, cancellable *gio.Cancellable) (*Pixbuf, error) {
 	c_stream := (*C.GInputStream)(C.NULL)
 	if stream != nil {
@@ -39,7 +51,31 @@ func PixbufNewFromStream(stream *gio.InputStream, cancellable *gio.Cancellable) 
 	return retGo, goThrowableError
 }
 
-// PixbufNewFromStreamAtScale is a wrapper around the C function gdk_pixbuf_new_from_stream_at_scale.
+// Creates a new pixbuf by loading an image from an input stream.
+//
+// The file format is detected automatically. If %NULL is returned, then
+// @error will be set. The @cancellable can be used to abort the operation
+// from another thread. If the operation was cancelled, the error
+// %G_IO_ERROR_CANCELLED will be returned. Other possible errors are in
+// the #GDK_PIXBUF_ERROR and %G_IO_ERROR domains.
+//
+// The image will be scaled to fit in the requested size, optionally
+// preserving the image's aspect ratio.
+//
+// When preserving the aspect ratio, a @width of -1 will cause the image to be
+// scaled to the exact given height, and a @height of -1 will cause the image
+// to be scaled to the exact given width. If both @width and @height are
+// given, this function will behave as if the smaller of the two values
+// is passed as -1.
+//
+// When not preserving aspect ratio, a @width or @height of -1 means to not
+// scale the image at all in that dimension.
+//
+// The stream is not closed.
+/*
+
+C function : gdk_pixbuf_new_from_stream_at_scale
+*/
 func PixbufNewFromStreamAtScale(stream *gio.InputStream, width int32, height int32, preserveAspectRatio bool, cancellable *gio.Cancellable) (*Pixbuf, error) {
 	c_stream := (*C.GInputStream)(C.NULL)
 	if stream != nil {

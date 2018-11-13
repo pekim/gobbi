@@ -15,7 +15,11 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// BorderNew is a wrapper around the C function gtk_border_new.
+// Allocates a new #GtkBorder-struct and initializes its elements to zero.
+/*
+
+C function : gtk_border_new
+*/
 func BorderNew() *Border {
 	retC := C.gtk_border_new()
 	retGo := BorderNewFromC(unsafe.Pointer(retC))
@@ -27,7 +31,11 @@ func BorderNew() *Border {
 
 // Unsupported : gtk_selection_data_get_data_type : return type : Blacklisted record : GdkAtom
 
-// GetDisplay is a wrapper around the C function gtk_selection_data_get_display.
+// Retrieves the display of the selection.
+/*
+
+C function : gtk_selection_data_get_display
+*/
 func (recv *SelectionData) GetDisplay() *gdk.Display {
 	retC := C.gtk_selection_data_get_display((*C.GtkSelectionData)(recv.native))
 	retGo := gdk.DisplayNewFromC(unsafe.Pointer(retC))
@@ -35,7 +43,11 @@ func (recv *SelectionData) GetDisplay() *gdk.Display {
 	return retGo
 }
 
-// GetFormat is a wrapper around the C function gtk_selection_data_get_format.
+// Retrieves the format of the selection.
+/*
+
+C function : gtk_selection_data_get_format
+*/
 func (recv *SelectionData) GetFormat() int32 {
 	retC := C.gtk_selection_data_get_format((*C.GtkSelectionData)(recv.native))
 	retGo := (int32)(retC)
@@ -43,7 +55,11 @@ func (recv *SelectionData) GetFormat() int32 {
 	return retGo
 }
 
-// GetLength is a wrapper around the C function gtk_selection_data_get_length.
+// Retrieves the length of the raw data of the selection.
+/*
+
+C function : gtk_selection_data_get_length
+*/
 func (recv *SelectionData) GetLength() int32 {
 	retC := C.gtk_selection_data_get_length((*C.GtkSelectionData)(recv.native))
 	retGo := (int32)(retC)

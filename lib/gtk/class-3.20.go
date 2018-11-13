@@ -53,7 +53,12 @@ import (
 */
 import "C"
 
-// GetHelpOverlay is a wrapper around the C function gtk_application_window_get_help_overlay.
+// Gets the #GtkShortcutsWindow that has been set up with
+// a prior call to gtk_application_window_set_help_overlay().
+/*
+
+C function : gtk_application_window_get_help_overlay
+*/
 func (recv *ApplicationWindow) GetHelpOverlay() *ShortcutsWindow {
 	retC := C.gtk_application_window_get_help_overlay((*C.GtkApplicationWindow)(recv.native))
 	var retGo (*ShortcutsWindow)
@@ -66,7 +71,15 @@ func (recv *ApplicationWindow) GetHelpOverlay() *ShortcutsWindow {
 	return retGo
 }
 
-// SetHelpOverlay is a wrapper around the C function gtk_application_window_set_help_overlay.
+// Associates a shortcuts window with the application window, and
+// sets up an action with the name win.show-help-overlay to present
+// it.
+//
+// @window takes resposibility for destroying @help_overlay.
+/*
+
+C function : gtk_application_window_set_help_overlay
+*/
 func (recv *ApplicationWindow) SetHelpOverlay(helpOverlay *ShortcutsWindow) {
 	c_help_overlay := (*C.GtkShortcutsWindow)(C.NULL)
 	if helpOverlay != nil {
@@ -115,7 +128,11 @@ func CastToFileChooserNative(object *gobject.Object) *FileChooserNative {
 	return FileChooserNativeNewFromC(object.ToC())
 }
 
-// FileChooserNativeNew is a wrapper around the C function gtk_file_chooser_native_new.
+// Creates a new #GtkFileChooserNative.
+/*
+
+C function : gtk_file_chooser_native_new
+*/
 func FileChooserNativeNew(title string, parent *Window, action FileChooserAction, acceptLabel string, cancelLabel string) *FileChooserNative {
 	c_title := C.CString(title)
 	defer C.free(unsafe.Pointer(c_title))
@@ -139,7 +156,11 @@ func FileChooserNativeNew(title string, parent *Window, action FileChooserAction
 	return retGo
 }
 
-// GetAcceptLabel is a wrapper around the C function gtk_file_chooser_native_get_accept_label.
+// Retrieves the custom label text for the accept button.
+/*
+
+C function : gtk_file_chooser_native_get_accept_label
+*/
 func (recv *FileChooserNative) GetAcceptLabel() string {
 	retC := C.gtk_file_chooser_native_get_accept_label((*C.GtkFileChooserNative)(recv.native))
 	retGo := C.GoString(retC)
@@ -147,7 +168,11 @@ func (recv *FileChooserNative) GetAcceptLabel() string {
 	return retGo
 }
 
-// GetCancelLabel is a wrapper around the C function gtk_file_chooser_native_get_cancel_label.
+// Retrieves the custom label text for the cancel button.
+/*
+
+C function : gtk_file_chooser_native_get_cancel_label
+*/
 func (recv *FileChooserNative) GetCancelLabel() string {
 	retC := C.gtk_file_chooser_native_get_cancel_label((*C.GtkFileChooserNative)(recv.native))
 	retGo := C.GoString(retC)
@@ -155,7 +180,17 @@ func (recv *FileChooserNative) GetCancelLabel() string {
 	return retGo
 }
 
-// SetAcceptLabel is a wrapper around the C function gtk_file_chooser_native_set_accept_label.
+// Sets the custom label text for the accept button.
+//
+// If characters in @label are preceded by an underscore, they are underlined.
+// If you need a literal underscore character in a label, use “__” (two
+// underscores). The first underlined character represents a keyboard
+// accelerator called a mnemonic.
+// Pressing Alt and that key activates the button.
+/*
+
+C function : gtk_file_chooser_native_set_accept_label
+*/
 func (recv *FileChooserNative) SetAcceptLabel(acceptLabel string) {
 	c_accept_label := C.CString(acceptLabel)
 	defer C.free(unsafe.Pointer(c_accept_label))
@@ -165,7 +200,17 @@ func (recv *FileChooserNative) SetAcceptLabel(acceptLabel string) {
 	return
 }
 
-// SetCancelLabel is a wrapper around the C function gtk_file_chooser_native_set_cancel_label.
+// Sets the custom label text for the cancel button.
+//
+// If characters in @label are preceded by an underscore, they are underlined.
+// If you need a literal underscore character in a label, use “__” (two
+// underscores). The first underlined character represents a keyboard
+// accelerator called a mnemonic.
+// Pressing Alt and that key activates the button.
+/*
+
+C function : gtk_file_chooser_native_set_cancel_label
+*/
 func (recv *FileChooserNative) SetCancelLabel(cancelLabel string) {
 	c_cancel_label := C.CString(cancelLabel)
 	defer C.free(unsafe.Pointer(c_cancel_label))
@@ -208,14 +253,30 @@ func CastToNativeDialog(object *gobject.Object) *NativeDialog {
 	return NativeDialogNewFromC(object.ToC())
 }
 
-// Destroy is a wrapper around the C function gtk_native_dialog_destroy.
+// Destroys a dialog.
+//
+// When a dialog is destroyed, it will break any references it holds
+// to other objects. If it is visible it will be hidden and any underlying
+// window system resources will be destroyed.
+//
+// Note that this does not release any reference to the object (as opposed to
+// destroying a GtkWindow) because there is no reference from the windowing
+// system to the #GtkNativeDialog.
+/*
+
+C function : gtk_native_dialog_destroy
+*/
 func (recv *NativeDialog) Destroy() {
 	C.gtk_native_dialog_destroy((*C.GtkNativeDialog)(recv.native))
 
 	return
 }
 
-// GetModal is a wrapper around the C function gtk_native_dialog_get_modal.
+// Returns whether the dialog is modal. See gtk_native_dialog_set_modal().
+/*
+
+C function : gtk_native_dialog_get_modal
+*/
 func (recv *NativeDialog) GetModal() bool {
 	retC := C.gtk_native_dialog_get_modal((*C.GtkNativeDialog)(recv.native))
 	retGo := retC == C.TRUE
@@ -223,7 +284,11 @@ func (recv *NativeDialog) GetModal() bool {
 	return retGo
 }
 
-// GetTitle is a wrapper around the C function gtk_native_dialog_get_title.
+// Gets the title of the #GtkNativeDialog.
+/*
+
+C function : gtk_native_dialog_get_title
+*/
 func (recv *NativeDialog) GetTitle() string {
 	retC := C.gtk_native_dialog_get_title((*C.GtkNativeDialog)(recv.native))
 	retGo := C.GoString(retC)
@@ -231,7 +296,12 @@ func (recv *NativeDialog) GetTitle() string {
 	return retGo
 }
 
-// GetTransientFor is a wrapper around the C function gtk_native_dialog_get_transient_for.
+// Fetches the transient parent for this window. See
+// gtk_native_dialog_set_transient_for().
+/*
+
+C function : gtk_native_dialog_get_transient_for
+*/
 func (recv *NativeDialog) GetTransientFor() *Window {
 	retC := C.gtk_native_dialog_get_transient_for((*C.GtkNativeDialog)(recv.native))
 	var retGo (*Window)
@@ -244,7 +314,11 @@ func (recv *NativeDialog) GetTransientFor() *Window {
 	return retGo
 }
 
-// GetVisible is a wrapper around the C function gtk_native_dialog_get_visible.
+// Determines whether the dialog is visible.
+/*
+
+C function : gtk_native_dialog_get_visible
+*/
 func (recv *NativeDialog) GetVisible() bool {
 	retC := C.gtk_native_dialog_get_visible((*C.GtkNativeDialog)(recv.native))
 	retGo := retC == C.TRUE
@@ -252,14 +326,54 @@ func (recv *NativeDialog) GetVisible() bool {
 	return retGo
 }
 
-// Hide is a wrapper around the C function gtk_native_dialog_hide.
+// Hides the dialog if it is visilbe, aborting any interaction. Once this
+// is called the  #GtkNativeDialog::response signal will not be emitted
+// until after the next call to gtk_native_dialog_show().
+//
+// If the dialog is not visible this does nothing.
+/*
+
+C function : gtk_native_dialog_hide
+*/
 func (recv *NativeDialog) Hide() {
 	C.gtk_native_dialog_hide((*C.GtkNativeDialog)(recv.native))
 
 	return
 }
 
-// Run is a wrapper around the C function gtk_native_dialog_run.
+// Blocks in a recursive main loop until @self emits the
+// #GtkNativeDialog::response signal. It then returns the response ID
+// from the ::response signal emission.
+//
+// Before entering the recursive main loop, gtk_native_dialog_run()
+// calls gtk_native_dialog_show() on the dialog for you.
+//
+// After gtk_native_dialog_run() returns, then dialog will be hidden.
+//
+// Typical usage of this function might be:
+// |[<!-- language="C" -->
+// gint result = gtk_native_dialog_run (GTK_NATIVE_DIALOG (dialog));
+// switch (result)
+// {
+// case GTK_RESPONSE_ACCEPT:
+// do_application_specific_something ();
+// break;
+// default:
+// do_nothing_since_dialog_was_cancelled ();
+// break;
+// }
+// g_object_unref (dialog);
+// ]|
+//
+// Note that even though the recursive main loop gives the effect of a
+// modal dialog (it prevents the user from interacting with other
+// windows in the same window group while the dialog is run), callbacks
+// such as timeouts, IO channel watches, DND drops, etc, will
+// be triggered during a gtk_nautilus_dialog_run() call.
+/*
+
+C function : gtk_native_dialog_run
+*/
 func (recv *NativeDialog) Run() int32 {
 	retC := C.gtk_native_dialog_run((*C.GtkNativeDialog)(recv.native))
 	retGo := (int32)(retC)
@@ -267,7 +381,16 @@ func (recv *NativeDialog) Run() int32 {
 	return retGo
 }
 
-// SetModal is a wrapper around the C function gtk_native_dialog_set_modal.
+// Sets a dialog modal or non-modal. Modal dialogs prevent interaction
+// with other windows in the same application. To keep modal dialogs
+// on top of main application windows, use
+// gtk_native_dialog_set_transient_for() to make the dialog transient for the
+// parent; most [window managers][gtk-X11-arch]
+// will then disallow lowering the dialog below the parent.
+/*
+
+C function : gtk_native_dialog_set_modal
+*/
 func (recv *NativeDialog) SetModal(modal bool) {
 	c_modal :=
 		boolToGboolean(modal)
@@ -277,7 +400,11 @@ func (recv *NativeDialog) SetModal(modal bool) {
 	return
 }
 
-// SetTitle is a wrapper around the C function gtk_native_dialog_set_title.
+// Sets the title of the #GtkNativeDialog.
+/*
+
+C function : gtk_native_dialog_set_title
+*/
 func (recv *NativeDialog) SetTitle(title string) {
 	c_title := C.CString(title)
 	defer C.free(unsafe.Pointer(c_title))
@@ -287,7 +414,17 @@ func (recv *NativeDialog) SetTitle(title string) {
 	return
 }
 
-// SetTransientFor is a wrapper around the C function gtk_native_dialog_set_transient_for.
+// Dialog windows should be set transient for the main application
+// window they were spawned from. This allows
+// [window managers][gtk-X11-arch] to e.g. keep the
+// dialog on top of the main window, or center the dialog over the
+// main window.
+//
+// Passing %NULL for @parent unsets the current transient window.
+/*
+
+C function : gtk_native_dialog_set_transient_for
+*/
 func (recv *NativeDialog) SetTransientFor(parent *Window) {
 	c_parent := (*C.GtkWindow)(C.NULL)
 	if parent != nil {
@@ -299,7 +436,16 @@ func (recv *NativeDialog) SetTransientFor(parent *Window) {
 	return
 }
 
-// Show is a wrapper around the C function gtk_native_dialog_show.
+// Shows the dialog on the display, allowing the user to interact with
+// it. When the user accepts the state of the dialog the dialog will
+// be automatically hidden and the #GtkNativeDialog::response signal
+// will be emitted.
+//
+// Multiple calls while the dialog is visible will be ignored.
+/*
+
+C function : gtk_native_dialog_show
+*/
 func (recv *NativeDialog) Show() {
 	C.gtk_native_dialog_show((*C.GtkNativeDialog)(recv.native))
 
@@ -463,7 +609,12 @@ func placessidebar_unmountHandler(_ *C.GObject, c_mount_operation *C.GMountOpera
 	callback(mountOperation)
 }
 
-// GetConstrainTo is a wrapper around the C function gtk_popover_get_constrain_to.
+// Returns the constraint for placing this popover.
+// See gtk_popover_set_constrain_to().
+/*
+
+C function : gtk_popover_get_constrain_to
+*/
 func (recv *Popover) GetConstrainTo() PopoverConstraint {
 	retC := C.gtk_popover_get_constrain_to((*C.GtkPopover)(recv.native))
 	retGo := (PopoverConstraint)(retC)
@@ -471,7 +622,14 @@ func (recv *Popover) GetConstrainTo() PopoverConstraint {
 	return retGo
 }
 
-// SetConstrainTo is a wrapper around the C function gtk_popover_set_constrain_to.
+// Sets a constraint for positioning this popover.
+//
+// Note that not all platforms support placing popovers freely,
+// and may already impose constraints.
+/*
+
+C function : gtk_popover_set_constrain_to
+*/
 func (recv *Popover) SetConstrainTo(constraint PopoverConstraint) {
 	c_constraint := (C.GtkPopoverConstraint)(constraint)
 
@@ -480,7 +638,14 @@ func (recv *Popover) SetConstrainTo(constraint PopoverConstraint) {
 	return
 }
 
-// ResetProperty is a wrapper around the C function gtk_settings_reset_property.
+// Undoes the effect of calling g_object_set() to install an
+// application-specific value for a setting. After this call,
+// the setting will again follow the session-wide value for
+// this setting.
+/*
+
+C function : gtk_settings_reset_property
+*/
 func (recv *Settings) ResetProperty(name string) {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -872,7 +1037,20 @@ func shortcutswindow_searchHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// ToString is a wrapper around the C function gtk_style_context_to_string.
+// Converts the style context into a string representation.
+//
+// The string representation always includes information about
+// the name, state, id, visibility and style classes of the CSS
+// node that is backing @context. Depending on the flags, more
+// information may be included.
+//
+// This function is intended for testing and debugging of the
+// CSS implementation in GTK+. There are no guarantees about
+// the format of the returned string, it may change.
+/*
+
+C function : gtk_style_context_to_string
+*/
 func (recv *StyleContext) ToString(flags StyleContextPrintFlags) string {
 	c_flags := (C.GtkStyleContextPrintFlags)(flags)
 
@@ -883,7 +1061,15 @@ func (recv *StyleContext) ToString(flags StyleContextPrintFlags) string {
 	return retGo
 }
 
-// Changed is a wrapper around the C function gtk_text_tag_changed.
+// Emits the #GtkTextTagTable::tag-changed signal on the #GtkTextTagTable where
+// the tag is included.
+//
+// The signal is already emitted when setting a #GtkTextTag property. This
+// function is useful for a #GtkTextTag subclass.
+/*
+
+C function : gtk_text_tag_changed
+*/
 func (recv *TextTag) Changed(sizeChanged bool) {
 	c_size_changed :=
 		boolToGboolean(sizeChanged)
@@ -893,7 +1079,17 @@ func (recv *TextTag) Changed(sizeChanged bool) {
 	return
 }
 
-// ResetCursorBlink is a wrapper around the C function gtk_text_view_reset_cursor_blink.
+// Ensures that the cursor is shown (i.e. not in an 'off' blink
+// interval) and resets the time that it will stay blinking (or
+// visible, in case blinking is disabled).
+//
+// This function should be called in response to user input
+// (e.g. from derived classes that override the textview's
+// #GtkWidget::key-press-event handler).
+/*
+
+C function : gtk_text_view_reset_cursor_blink
+*/
 func (recv *TextView) ResetCursorBlink() {
 	C.gtk_text_view_reset_cursor_blink((*C.GtkTextView)(recv.native))
 
@@ -902,7 +1098,12 @@ func (recv *TextView) ResetCursorBlink() {
 
 // Unsupported : gtk_widget_get_allocated_size : unsupported parameter allocation : Blacklisted record : GdkRectangle
 
-// GetFocusOnClick is a wrapper around the C function gtk_widget_get_focus_on_click.
+// Returns whether the widget should grab focus when it is clicked with the mouse.
+// See gtk_widget_set_focus_on_click().
+/*
+
+C function : gtk_widget_get_focus_on_click
+*/
 func (recv *Widget) GetFocusOnClick() bool {
 	retC := C.gtk_widget_get_focus_on_click((*C.GtkWidget)(recv.native))
 	retGo := retC == C.TRUE
@@ -910,14 +1111,32 @@ func (recv *Widget) GetFocusOnClick() bool {
 	return retGo
 }
 
-// QueueAllocate is a wrapper around the C function gtk_widget_queue_allocate.
+// This function is only for use in widget implementations.
+//
+// Flags the widget for a rerun of the GtkWidgetClass::size_allocate
+// function. Use this function instead of gtk_widget_queue_resize()
+// when the @widget's size request didn't change but it wants to
+// reposition its contents.
+//
+// An example user of this function is gtk_widget_set_halign().
+/*
+
+C function : gtk_widget_queue_allocate
+*/
 func (recv *Widget) QueueAllocate() {
 	C.gtk_widget_queue_allocate((*C.GtkWidget)(recv.native))
 
 	return
 }
 
-// SetFocusOnClick is a wrapper around the C function gtk_widget_set_focus_on_click.
+// Sets whether the widget should grab focus when it is clicked with the mouse.
+// Making mouse clicks not grab focus is useful in places like toolbars where
+// you don’t want the keyboard focus removed from the main area of the
+// application.
+/*
+
+C function : gtk_widget_set_focus_on_click
+*/
 func (recv *Widget) SetFocusOnClick(focusOnClick bool) {
 	c_focus_on_click :=
 		boolToGboolean(focusOnClick)

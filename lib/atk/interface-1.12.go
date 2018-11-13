@@ -13,7 +13,13 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// GetAlpha is a wrapper around the C function atk_component_get_alpha.
+// Returns the alpha value (i.e. the opacity) for this
+// @component, on a scale from 0 (fully transparent) to 1.0
+// (fully opaque).
+/*
+
+C function : atk_component_get_alpha
+*/
 func (recv *Component) GetAlpha() float64 {
 	retC := C.atk_component_get_alpha((*C.AtkComponent)(recv.native))
 	retGo := (float64)(retC)
@@ -21,7 +27,10 @@ func (recv *Component) GetAlpha() float64 {
 	return retGo
 }
 
-// GetAttributeValue is a wrapper around the C function atk_document_get_attribute_value.
+/*
+
+C function : atk_document_get_attribute_value
+*/
 func (recv *Document) GetAttributeValue(attributeName string) string {
 	c_attribute_name := C.CString(attributeName)
 	defer C.free(unsafe.Pointer(c_attribute_name))
@@ -32,7 +41,12 @@ func (recv *Document) GetAttributeValue(attributeName string) string {
 	return retGo
 }
 
-// GetAttributes is a wrapper around the C function atk_document_get_attributes.
+// Gets an AtkAttributeSet which describes document-wide
+// attributes as name-value pairs.
+/*
+
+C function : atk_document_get_attributes
+*/
 func (recv *Document) GetAttributes() *AttributeSet {
 	retC := C.atk_document_get_attributes((*C.AtkDocument)(recv.native))
 	retGo := SListNewFromC(unsafe.Pointer(retC))
@@ -40,7 +54,10 @@ func (recv *Document) GetAttributes() *AttributeSet {
 	return retGo
 }
 
-// SetAttributeValue is a wrapper around the C function atk_document_set_attribute_value.
+/*
+
+C function : atk_document_set_attribute_value
+*/
 func (recv *Document) SetAttributeValue(attributeName string, attributeValue string) bool {
 	c_attribute_name := C.CString(attributeName)
 	defer C.free(unsafe.Pointer(c_attribute_name))
@@ -54,7 +71,11 @@ func (recv *Document) SetAttributeValue(attributeName string, attributeValue str
 	return retGo
 }
 
-// GetHyperlink is a wrapper around the C function atk_hyperlink_impl_get_hyperlink.
+// Gets the hyperlink associated with this object.
+/*
+
+C function : atk_hyperlink_impl_get_hyperlink
+*/
 func (recv *HyperlinkImpl) GetHyperlink() *Hyperlink {
 	retC := C.atk_hyperlink_impl_get_hyperlink((*C.AtkHyperlinkImpl)(recv.native))
 	retGo := HyperlinkNewFromC(unsafe.Pointer(retC))
@@ -62,7 +83,10 @@ func (recv *HyperlinkImpl) GetHyperlink() *Hyperlink {
 	return retGo
 }
 
-// GetImageLocale is a wrapper around the C function atk_image_get_image_locale.
+/*
+
+C function : atk_image_get_image_locale
+*/
 func (recv *Image) GetImageLocale() string {
 	retC := C.atk_image_get_image_locale((*C.AtkImage)(recv.native))
 	retGo := C.GoString(retC)
@@ -70,7 +94,18 @@ func (recv *Image) GetImageLocale() string {
 	return retGo
 }
 
-// GetUri is a wrapper around the C function atk_streamable_content_get_uri.
+// Get a string representing a URI in IETF standard format
+// (see http://www.ietf.org/rfc/rfc2396.txt) from which the object's content
+// may be streamed in the specified mime-type, if one is available.
+// If mime_type is NULL, the URI for the default (and possibly only) mime-type is
+// returned.
+//
+// Note that it is possible for get_uri to return NULL but for
+// get_stream to work nonetheless, since not all GIOChannels connect to URIs.
+/*
+
+C function : atk_streamable_content_get_uri
+*/
 func (recv *StreamableContent) GetUri(mimeType string) string {
 	c_mime_type := C.CString(mimeType)
 	defer C.free(unsafe.Pointer(c_mime_type))
@@ -81,7 +116,13 @@ func (recv *StreamableContent) GetUri(mimeType string) string {
 	return retGo
 }
 
-// GetMinimumIncrement is a wrapper around the C function atk_value_get_minimum_increment.
+// Gets the minimum increment by which the value of this object may be changed.  If zero,
+// the minimum increment is undefined, which may mean that it is limited only by the
+// floating point precision of the platform.
+/*
+
+C function : atk_value_get_minimum_increment
+*/
 func (recv *Value) GetMinimumIncrement() *gobject.Value {
 	var c_value C.GValue
 

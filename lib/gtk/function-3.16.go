@@ -12,7 +12,22 @@ import gdk "github.com/pekim/gobbi/lib/gdk"
 // #include <stdlib.h>
 import "C"
 
-// DragCancel is a wrapper around the C function gtk_drag_cancel.
+// Cancels an ongoing drag operation on the source side.
+//
+// If you want to be able to cancel a drag operation in this way,
+// you need to keep a pointer to the drag context, either from an
+// explicit call to gtk_drag_begin_with_coordinates(), or by
+// connecting to #GtkWidget::drag-begin.
+//
+// If @context does not refer to an ongoing drag operation, this
+// function does nothing.
+//
+// If a drag is cancelled in this way, the @result argument of
+// #GtkWidget::drag-failed is set to @GTK_DRAG_RESULT_ERROR.
+/*
+
+C function : gtk_drag_cancel
+*/
 func DragCancel(context *gdk.DragContext) {
 	c_context := (*C.GdkDragContext)(C.NULL)
 	if context != nil {

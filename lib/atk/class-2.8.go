@@ -8,7 +8,12 @@ package atk
 // #include <stdlib.h>
 import "C"
 
-// GetObjectLocale is a wrapper around the C function atk_object_get_object_locale.
+// Gets a UTF-8 string indicating the POSIX-style LC_MESSAGES locale
+// of @accessible.
+/*
+
+C function : atk_object_get_object_locale
+*/
 func (recv *Object) GetObjectLocale() string {
 	retC := C.atk_object_get_object_locale((*C.AtkObject)(recv.native))
 	retGo := C.GoString(retC)

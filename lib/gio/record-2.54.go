@@ -20,7 +20,11 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Copy is a wrapper around the C function g_unix_mount_point_copy.
+// Makes a copy of @mount_point.
+/*
+
+C function : g_unix_mount_point_copy
+*/
 func (recv *UnixMountPoint) Copy() *UnixMountPoint {
 	retC := C.g_unix_mount_point_copy((*C.GUnixMountPoint)(recv.native))
 	retGo := UnixMountPointNewFromC(unsafe.Pointer(retC))

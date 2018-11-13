@@ -235,7 +235,19 @@ func (recv *ShortcutsWindowClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// StartsTag is a wrapper around the C function gtk_text_iter_starts_tag.
+// Returns %TRUE if @tag is toggled on at exactly this point. If @tag
+// is %NULL, returns %TRUE if any tag is toggled on at this point.
+//
+// Note that if gtk_text_iter_starts_tag() returns %TRUE, it means that @iter is
+// at the beginning of the tagged range, and that the
+// character at @iter is inside the tagged range. In other
+// words, unlike gtk_text_iter_ends_tag(), if gtk_text_iter_starts_tag() returns
+// %TRUE, gtk_text_iter_has_tag() will also return %TRUE for the same
+// parameters.
+/*
+
+C function : gtk_text_iter_starts_tag
+*/
 func (recv *TextIter) StartsTag(tag *TextTag) bool {
 	c_tag := (*C.GtkTextTag)(C.NULL)
 	if tag != nil {
@@ -248,7 +260,12 @@ func (recv *TextIter) StartsTag(tag *TextTag) bool {
 	return retGo
 }
 
-// GetCssName is a wrapper around the C function gtk_widget_class_get_css_name.
+// Gets the name used by this class for matching in CSS code. See
+// gtk_widget_class_set_css_name() for details.
+/*
+
+C function : gtk_widget_class_get_css_name
+*/
 func (recv *WidgetClass) GetCssName() string {
 	retC := C.gtk_widget_class_get_css_name((*C.GtkWidgetClass)(recv.native))
 	retGo := C.GoString(retC)
@@ -256,7 +273,14 @@ func (recv *WidgetClass) GetCssName() string {
 	return retGo
 }
 
-// SetCssName is a wrapper around the C function gtk_widget_class_set_css_name.
+// Sets the name to be used for CSS matching of widgets.
+//
+// If this function is not called for a given class, the name
+// of the parent class is used.
+/*
+
+C function : gtk_widget_class_set_css_name
+*/
 func (recv *WidgetClass) SetCssName(name string) {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -266,7 +290,12 @@ func (recv *WidgetClass) SetCssName(name string) {
 	return
 }
 
-// IterGetObjectName is a wrapper around the C function gtk_widget_path_iter_get_object_name.
+// Returns the object name that is at position @pos in the widget
+// hierarchy defined in @path.
+/*
+
+C function : gtk_widget_path_iter_get_object_name
+*/
 func (recv *WidgetPath) IterGetObjectName(pos int32) string {
 	c_pos := (C.gint)(pos)
 
@@ -276,7 +305,15 @@ func (recv *WidgetPath) IterGetObjectName(pos int32) string {
 	return retGo
 }
 
-// IterSetObjectName is a wrapper around the C function gtk_widget_path_iter_set_object_name.
+// Sets the object name for a given position in the widget hierarchy
+// defined by @path.
+//
+// When set, the object name overrides the object type when matching
+// CSS.
+/*
+
+C function : gtk_widget_path_iter_set_object_name
+*/
 func (recv *WidgetPath) IterSetObjectName(pos int32, name string) {
 	c_pos := (C.gint)(pos)
 

@@ -10,7 +10,15 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// ToString is a wrapper around the C function gdk_color_to_string.
+// Returns a textual specification of @color in the hexadecimal
+// form “\#rrrrggggbbbb” where “r”, “g” and “b” are hex digits
+// representing the red, green and blue components respectively.
+//
+// The returned string can be parsed by gdk_color_parse().
+/*
+
+C function : gdk_color_to_string
+*/
 func (recv *Color) ToString() string {
 	retC := C.gdk_color_to_string((*C.GdkColor)(recv.native))
 	retGo := C.GoString(retC)

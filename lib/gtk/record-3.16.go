@@ -38,7 +38,16 @@ func (recv *GLAreaClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// PaperSizeNewFromIpp is a wrapper around the C function gtk_paper_size_new_from_ipp.
+// Creates a new #GtkPaperSize object by using
+// IPP information.
+//
+// If @ipp_name is not a recognized paper name,
+// @width and @height are used to
+// construct a custom #GtkPaperSize object.
+/*
+
+C function : gtk_paper_size_new_from_ipp
+*/
 func PaperSizeNewFromIpp(ippName string, width float64, height float64) *PaperSize {
 	c_ipp_name := C.CString(ippName)
 	defer C.free(unsafe.Pointer(c_ipp_name))

@@ -20,7 +20,24 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// GetDescription is a wrapper around the C function g_settings_schema_key_get_description.
+// Gets the description for @key.
+//
+// If no description has been provided in the schema for @key, returns
+// %NULL.
+//
+// The description can be one sentence to several paragraphs in length.
+// Paragraphs are delimited with a double newline.  Descriptions can be
+// translated and the value returned from this function is is the
+// current locale.
+//
+// This function is slow.  The summary and description information for
+// the schemas is not stored in the compiled schema database so this
+// function has to parse all of the source XML files in the schema
+// directory.
+/*
+
+C function : g_settings_schema_key_get_description
+*/
 func (recv *SettingsSchemaKey) GetDescription() string {
 	retC := C.g_settings_schema_key_get_description((*C.GSettingsSchemaKey)(recv.native))
 	retGo := C.GoString(retC)
@@ -28,7 +45,23 @@ func (recv *SettingsSchemaKey) GetDescription() string {
 	return retGo
 }
 
-// GetSummary is a wrapper around the C function g_settings_schema_key_get_summary.
+// Gets the summary for @key.
+//
+// If no summary has been provided in the schema for @key, returns
+// %NULL.
+//
+// The summary is a short description of the purpose of the key; usually
+// one short sentence.  Summaries can be translated and the value
+// returned from this function is is the current locale.
+//
+// This function is slow.  The summary and description information for
+// the schemas is not stored in the compiled schema database so this
+// function has to parse all of the source XML files in the schema
+// directory.
+/*
+
+C function : g_settings_schema_key_get_summary
+*/
 func (recv *SettingsSchemaKey) GetSummary() string {
 	retC := C.g_settings_schema_key_get_summary((*C.GSettingsSchemaKey)(recv.native))
 	retGo := C.GoString(retC)
@@ -36,7 +69,11 @@ func (recv *SettingsSchemaKey) GetSummary() string {
 	return retGo
 }
 
-// GuessSymbolicIcon is a wrapper around the C function g_unix_mount_point_guess_symbolic_icon.
+// Guesses the symbolic icon of a Unix mount point.
+/*
+
+C function : g_unix_mount_point_guess_symbolic_icon
+*/
 func (recv *UnixMountPoint) GuessSymbolicIcon() *Icon {
 	retC := C.g_unix_mount_point_guess_symbolic_icon((*C.GUnixMountPoint)(recv.native))
 	retGo := IconNewFromC(unsafe.Pointer(retC))

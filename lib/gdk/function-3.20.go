@@ -13,7 +13,13 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// DragBeginFromPoint is a wrapper around the C function gdk_drag_begin_from_point.
+// Starts a drag and creates a new drag context for it.
+//
+// This function is called by the drag source.
+/*
+
+C function : gdk_drag_begin_from_point
+*/
 func DragBeginFromPoint(window *Window, device *Device, targets *glib.List, xRoot int32, yRoot int32) *DragContext {
 	c_window := (*C.GdkWindow)(C.NULL)
 	if window != nil {
@@ -40,7 +46,20 @@ func DragBeginFromPoint(window *Window, device *Device, targets *glib.List, xRoo
 	return retGo
 }
 
-// DragDropDone is a wrapper around the C function gdk_drag_drop_done.
+// Inform GDK if the drop ended successfully. Passing %FALSE
+// for @success may trigger a drag cancellation animation.
+//
+// This function is called by the drag source, and should
+// be the last call before dropping the reference to the
+// @context.
+//
+// The #GdkDragContext will only take the first gdk_drag_drop_done()
+// call as effective, if this function is called multiple times,
+// all subsequent calls will be ignored.
+/*
+
+C function : gdk_drag_drop_done
+*/
 func DragDropDone(context *DragContext, success bool) {
 	c_context := (*C.GdkDragContext)(C.NULL)
 	if context != nil {

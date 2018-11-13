@@ -10,14 +10,25 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// ForceFloating is a wrapper around the C function g_object_force_floating.
+// This function is intended for #GObject implementations to re-enforce
+// a [floating][floating-ref] object reference. Doing this is seldom
+// required: all #GInitiallyUnowneds are created with a floating reference
+// which usually just needs to be sunken by calling g_object_ref_sink().
+/*
+
+C function : g_object_force_floating
+*/
 func (recv *Object) ForceFloating() {
 	C.g_object_force_floating((*C.GObject)(recv.native))
 
 	return
 }
 
-// IsFloating is a wrapper around the C function g_object_is_floating.
+// Checks whether @object has a [floating][floating-ref] reference.
+/*
+
+C function : g_object_is_floating
+*/
 func (recv *Object) IsFloating() bool {
 	retC := C.g_object_is_floating((C.gpointer)(recv.native))
 	retGo := retC == C.TRUE
@@ -25,7 +36,21 @@ func (recv *Object) IsFloating() bool {
 	return retGo
 }
 
-// RefSink is a wrapper around the C function g_object_ref_sink.
+// Increase the reference count of @object, and possibly remove the
+// [floating][floating-ref] reference, if @object has a floating reference.
+//
+// In other words, if the object is floating, then this call "assumes
+// ownership" of the floating reference, converting it to a normal
+// reference by clearing the floating flag while leaving the reference
+// count unchanged.  If the object is not floating, then this call
+// adds a new normal reference increasing the reference count by one.
+//
+// Since GLib 2.56, the type of @object will be propagated to the return type
+// under the same conditions as for g_object_ref().
+/*
+
+C function : g_object_ref_sink
+*/
 func (recv *Object) RefSink() uintptr {
 	retC := C.g_object_ref_sink((C.gpointer)(recv.native))
 	retGo := (uintptr)(retC)

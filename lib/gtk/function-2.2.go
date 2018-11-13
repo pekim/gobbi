@@ -10,7 +10,20 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
-// IconSizeLookupForSettings is a wrapper around the C function gtk_icon_size_lookup_for_settings.
+// Obtains the pixel size of a semantic icon size, possibly
+// modified by user preferences for a particular
+// #GtkSettings. Normally @size would be
+// #GTK_ICON_SIZE_MENU, #GTK_ICON_SIZE_BUTTON, etc.  This function
+// isn’t normally needed, gtk_widget_render_icon_pixbuf() is the usual
+// way to get an icon for rendering, then just look at the size of
+// the rendered pixbuf. The rendered pixbuf may not even correspond to
+// the width/height returned by gtk_icon_size_lookup(), because themes
+// are free to render the pixbuf however they like, including changing
+// the usual size.
+/*
+
+C function : gtk_icon_size_lookup_for_settings
+*/
 func IconSizeLookupForSettings(settings *Settings, size IconSize) (bool, int32, int32) {
 	c_settings := (*C.GtkSettings)(C.NULL)
 	if settings != nil {

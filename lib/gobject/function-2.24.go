@@ -8,7 +8,20 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-// TypeAddClassPrivate is a wrapper around the C function g_type_add_class_private.
+// Registers a private class structure for a classed type;
+// when the class is allocated, the private structures for
+// the class and all of its parent types are allocated
+// sequentially in the same memory block as the public
+// structures, and are zero-filled.
+//
+// This function should be called in the
+// type's get_type() function after the type is registered.
+// The private structure can be retrieved using the
+// G_TYPE_CLASS_GET_PRIVATE() macro.
+/*
+
+C function : g_type_add_class_private
+*/
 func TypeAddClassPrivate(classType Type, privateSize uint64) {
 	c_class_type := (C.GType)(classType)
 

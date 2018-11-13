@@ -15,7 +15,13 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// GetEllipsizeMode is a wrapper around the C function gtk_tool_shell_get_ellipsize_mode.
+// Retrieves the current ellipsize mode for the tool shell. Tool items must not
+// call this function directly, but rely on gtk_tool_item_get_ellipsize_mode()
+// instead.
+/*
+
+C function : gtk_tool_shell_get_ellipsize_mode
+*/
 func (recv *ToolShell) GetEllipsizeMode() pango.EllipsizeMode {
 	retC := C.gtk_tool_shell_get_ellipsize_mode((*C.GtkToolShell)(recv.native))
 	retGo := (pango.EllipsizeMode)(retC)
@@ -23,7 +29,13 @@ func (recv *ToolShell) GetEllipsizeMode() pango.EllipsizeMode {
 	return retGo
 }
 
-// GetTextAlignment is a wrapper around the C function gtk_tool_shell_get_text_alignment.
+// Retrieves the current text alignment for the tool shell. Tool items must not
+// call this function directly, but rely on gtk_tool_item_get_text_alignment()
+// instead.
+/*
+
+C function : gtk_tool_shell_get_text_alignment
+*/
 func (recv *ToolShell) GetTextAlignment() float32 {
 	retC := C.gtk_tool_shell_get_text_alignment((*C.GtkToolShell)(recv.native))
 	retGo := (float32)(retC)
@@ -31,7 +43,13 @@ func (recv *ToolShell) GetTextAlignment() float32 {
 	return retGo
 }
 
-// GetTextOrientation is a wrapper around the C function gtk_tool_shell_get_text_orientation.
+// Retrieves the current text orientation for the tool shell. Tool items must not
+// call this function directly, but rely on gtk_tool_item_get_text_orientation()
+// instead.
+/*
+
+C function : gtk_tool_shell_get_text_orientation
+*/
 func (recv *ToolShell) GetTextOrientation() Orientation {
 	retC := C.gtk_tool_shell_get_text_orientation((*C.GtkToolShell)(recv.native))
 	retGo := (Orientation)(retC)
@@ -39,7 +57,13 @@ func (recv *ToolShell) GetTextOrientation() Orientation {
 	return retGo
 }
 
-// GetTextSizeGroup is a wrapper around the C function gtk_tool_shell_get_text_size_group.
+// Retrieves the current text size group for the tool shell. Tool items must not
+// call this function directly, but rely on gtk_tool_item_get_text_size_group()
+// instead.
+/*
+
+C function : gtk_tool_shell_get_text_size_group
+*/
 func (recv *ToolShell) GetTextSizeGroup() *SizeGroup {
 	retC := C.gtk_tool_shell_get_text_size_group((*C.GtkToolShell)(recv.native))
 	retGo := SizeGroupNewFromC(unsafe.Pointer(retC))

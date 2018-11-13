@@ -20,7 +20,11 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// UnixMountCopy is a wrapper around the C function g_unix_mount_copy.
+// Makes a copy of @mount_entry.
+/*
+
+C function : g_unix_mount_copy
+*/
 func UnixMountCopy(mountEntry *UnixMountEntry) *UnixMountEntry {
 	c_mount_entry := (*C.GUnixMountEntry)(C.NULL)
 	if mountEntry != nil {

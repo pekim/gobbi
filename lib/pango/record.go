@@ -209,7 +209,11 @@ func (recv *AttrIterator) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Copy is a wrapper around the C function pango_attr_iterator_copy.
+// Copy a #PangoAttrIterator
+/*
+
+C function : pango_attr_iterator_copy
+*/
 func (recv *AttrIterator) Copy() *AttrIterator {
 	retC := C.pango_attr_iterator_copy((*C.PangoAttrIterator)(recv.native))
 	retGo := AttrIteratorNewFromC(unsafe.Pointer(retC))
@@ -217,14 +221,25 @@ func (recv *AttrIterator) Copy() *AttrIterator {
 	return retGo
 }
 
-// Destroy is a wrapper around the C function pango_attr_iterator_destroy.
+// Destroy a #PangoAttrIterator and free all associated memory.
+/*
+
+C function : pango_attr_iterator_destroy
+*/
 func (recv *AttrIterator) Destroy() {
 	C.pango_attr_iterator_destroy((*C.PangoAttrIterator)(recv.native))
 
 	return
 }
 
-// Get is a wrapper around the C function pango_attr_iterator_get.
+// Find the current attribute of a particular type at the iterator
+// location. When multiple attributes of the same type overlap,
+// the attribute whose range starts closest to the current location
+// is used.
+/*
+
+C function : pango_attr_iterator_get
+*/
 func (recv *AttrIterator) Get(type_ AttrType) *Attribute {
 	c_type := (C.PangoAttrType)(type_)
 
@@ -239,7 +254,11 @@ func (recv *AttrIterator) Get(type_ AttrType) *Attribute {
 	return retGo
 }
 
-// GetFont is a wrapper around the C function pango_attr_iterator_get_font.
+// Get the font and other attributes at the current iterator position.
+/*
+
+C function : pango_attr_iterator_get_font
+*/
 func (recv *AttrIterator) GetFont(desc *FontDescription, language *Language, extraAttrs *glib.SList) {
 	c_desc := (*C.PangoFontDescription)(C.NULL)
 	if desc != nil {
@@ -261,7 +280,11 @@ func (recv *AttrIterator) GetFont(desc *FontDescription, language *Language, ext
 	return
 }
 
-// Next is a wrapper around the C function pango_attr_iterator_next.
+// Advance the iterator until the next change of style.
+/*
+
+C function : pango_attr_iterator_next
+*/
 func (recv *AttrIterator) Next() bool {
 	retC := C.pango_attr_iterator_next((*C.PangoAttrIterator)(recv.native))
 	retGo := retC == C.TRUE
@@ -269,7 +292,15 @@ func (recv *AttrIterator) Next() bool {
 	return retGo
 }
 
-// Range is a wrapper around the C function pango_attr_iterator_range.
+// Get the range of the current segment. Note that the
+// stored return values are signed, not unsigned like
+// the values in #PangoAttribute. To deal with this API
+// oversight, stored return values that wouldn't fit into
+// a signed integer are clamped to %G_MAXINT.
+/*
+
+C function : pango_attr_iterator_range
+*/
 func (recv *AttrIterator) Range() (int32, int32) {
 	var c_start C.gint
 
@@ -328,7 +359,11 @@ func (recv *AttrList) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// AttrListNew is a wrapper around the C function pango_attr_list_new.
+// Create a new empty attribute list with a reference count of one.
+/*
+
+C function : pango_attr_list_new
+*/
 func AttrListNew() *AttrList {
 	retC := C.pango_attr_list_new()
 	retGo := AttrListNewFromC(unsafe.Pointer(retC))
@@ -336,7 +371,19 @@ func AttrListNew() *AttrList {
 	return retGo
 }
 
-// Change is a wrapper around the C function pango_attr_list_change.
+// Insert the given attribute into the #PangoAttrList. It will
+// replace any attributes of the same type on that segment
+// and be merged with any adjoining attributes that are identical.
+//
+// This function is slower than pango_attr_list_insert() for
+// creating a attribute list in order (potentially much slower
+// for large lists). However, pango_attr_list_insert() is not
+// suitable for continually changing a set of attributes
+// since it never removes or combines existing attributes.
+/*
+
+C function : pango_attr_list_change
+*/
 func (recv *AttrList) Change(attr *Attribute) {
 	c_attr := (*C.PangoAttribute)(C.NULL)
 	if attr != nil {
@@ -348,7 +395,11 @@ func (recv *AttrList) Change(attr *Attribute) {
 	return
 }
 
-// Copy is a wrapper around the C function pango_attr_list_copy.
+// Copy @list and return an identical new list.
+/*
+
+C function : pango_attr_list_copy
+*/
 func (recv *AttrList) Copy() *AttrList {
 	retC := C.pango_attr_list_copy((*C.PangoAttrList)(recv.native))
 	var retGo (*AttrList)
@@ -361,7 +412,12 @@ func (recv *AttrList) Copy() *AttrList {
 	return retGo
 }
 
-// GetIterator is a wrapper around the C function pango_attr_list_get_iterator.
+// Create a iterator initialized to the beginning of the list.
+// @list must not be modified until this iterator is freed.
+/*
+
+C function : pango_attr_list_get_iterator
+*/
 func (recv *AttrList) GetIterator() *AttrIterator {
 	retC := C.pango_attr_list_get_iterator((*C.PangoAttrList)(recv.native))
 	retGo := AttrIteratorNewFromC(unsafe.Pointer(retC))
@@ -369,7 +425,13 @@ func (recv *AttrList) GetIterator() *AttrIterator {
 	return retGo
 }
 
-// Insert is a wrapper around the C function pango_attr_list_insert.
+// Insert the given attribute into the #PangoAttrList. It will
+// be inserted after all other attributes with a matching
+// @start_index.
+/*
+
+C function : pango_attr_list_insert
+*/
 func (recv *AttrList) Insert(attr *Attribute) {
 	c_attr := (*C.PangoAttribute)(C.NULL)
 	if attr != nil {
@@ -381,7 +443,13 @@ func (recv *AttrList) Insert(attr *Attribute) {
 	return
 }
 
-// InsertBefore is a wrapper around the C function pango_attr_list_insert_before.
+// Insert the given attribute into the #PangoAttrList. It will
+// be inserted before all other attributes with a matching
+// @start_index.
+/*
+
+C function : pango_attr_list_insert_before
+*/
 func (recv *AttrList) InsertBefore(attr *Attribute) {
 	c_attr := (*C.PangoAttribute)(C.NULL)
 	if attr != nil {
@@ -393,7 +461,20 @@ func (recv *AttrList) InsertBefore(attr *Attribute) {
 	return
 }
 
-// Splice is a wrapper around the C function pango_attr_list_splice.
+// This function opens up a hole in @list, fills it in with attributes from
+// the left, and then merges @other on top of the hole.
+//
+// This operation is equivalent to stretching every attribute
+// that applies at position @pos in @list by an amount @len,
+// and then calling pango_attr_list_change() with a copy
+// of each attribute in @other in sequence (offset in position by @pos).
+//
+// This operation proves useful for, for instance, inserting
+// a pre-edit string in the middle of an edit buffer.
+/*
+
+C function : pango_attr_list_splice
+*/
 func (recv *AttrList) Splice(other *AttrList, pos int32, len int32) {
 	c_other := (*C.PangoAttrList)(C.NULL)
 	if other != nil {
@@ -409,7 +490,13 @@ func (recv *AttrList) Splice(other *AttrList, pos int32, len int32) {
 	return
 }
 
-// Unref is a wrapper around the C function pango_attr_list_unref.
+// Decrease the reference count of the given attribute list by one.
+// If the result is zero, free the attribute list and the attributes
+// it contains.
+/*
+
+C function : pango_attr_list_unref
+*/
 func (recv *AttrList) Unref() {
 	C.pango_attr_list_unref((*C.PangoAttrList)(recv.native))
 
@@ -537,7 +624,11 @@ func (recv *Attribute) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Copy is a wrapper around the C function pango_attribute_copy.
+// Make a copy of an attribute.
+/*
+
+C function : pango_attribute_copy
+*/
 func (recv *Attribute) Copy() *Attribute {
 	retC := C.pango_attribute_copy((*C.PangoAttribute)(recv.native))
 	retGo := AttributeNewFromC(unsafe.Pointer(retC))
@@ -545,14 +636,24 @@ func (recv *Attribute) Copy() *Attribute {
 	return retGo
 }
 
-// Destroy is a wrapper around the C function pango_attribute_destroy.
+// Destroy a #PangoAttribute and free all associated memory.
+/*
+
+C function : pango_attribute_destroy
+*/
 func (recv *Attribute) Destroy() {
 	C.pango_attribute_destroy((*C.PangoAttribute)(recv.native))
 
 	return
 }
 
-// Equal is a wrapper around the C function pango_attribute_equal.
+// Compare two attributes for equality. This compares only the
+// actual value of the two attributes and not the ranges that the
+// attributes apply to.
+/*
+
+C function : pango_attribute_equal
+*/
 func (recv *Attribute) Equal(attr2 *Attribute) bool {
 	c_attr2 := (*C.PangoAttribute)(C.NULL)
 	if attr2 != nil {
@@ -600,7 +701,14 @@ func (recv *Color) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Copy is a wrapper around the C function pango_color_copy.
+// Creates a copy of @src, which should be freed with
+// pango_color_free(). Primarily used by language bindings,
+// not that useful otherwise (since colors can just be copied
+// by assignment in C).
+/*
+
+C function : pango_color_copy
+*/
 func (recv *Color) Copy() *Color {
 	retC := C.pango_color_copy((*C.PangoColor)(recv.native))
 	var retGo (*Color)
@@ -613,14 +721,29 @@ func (recv *Color) Copy() *Color {
 	return retGo
 }
 
-// Free is a wrapper around the C function pango_color_free.
+// Frees a color allocated by pango_color_copy().
+/*
+
+C function : pango_color_free
+*/
 func (recv *Color) Free() {
 	C.pango_color_free((*C.PangoColor)(recv.native))
 
 	return
 }
 
-// Parse is a wrapper around the C function pango_color_parse.
+// Fill in the fields of a color from a string specification. The
+// string can either one of a large set of standard names. (Taken
+// from the CSS <ulink url="http://dev.w3.org/csswg/css-color/#named-colors">specification</ulink>), or it can be a hexadecimal
+// value in the
+// form '&num;rgb' '&num;rrggbb' '&num;rrrgggbbb' or '&num;rrrrggggbbbb' where
+// 'r', 'g' and 'b' are hex digits of the red, green, and blue
+// components of the color, respectively. (White in the four
+// forms is '&num;fff' '&num;ffffff' '&num;fffffffff' and '&num;ffffffffffff')
+/*
+
+C function : pango_color_parse
+*/
 func (recv *Color) Parse(spec string) bool {
 	c_spec := C.CString(spec)
 	defer C.free(unsafe.Pointer(c_spec))
@@ -673,7 +796,12 @@ func (recv *Coverage) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Copy is a wrapper around the C function pango_coverage_copy.
+// Copy an existing #PangoCoverage. (This function may now be unnecessary
+// since we refcount the structure. File a bug if you use it.)
+/*
+
+C function : pango_coverage_copy
+*/
 func (recv *Coverage) Copy() *Coverage {
 	retC := C.pango_coverage_copy((*C.PangoCoverage)(recv.native))
 	retGo := CoverageNewFromC(unsafe.Pointer(retC))
@@ -681,7 +809,11 @@ func (recv *Coverage) Copy() *Coverage {
 	return retGo
 }
 
-// Get is a wrapper around the C function pango_coverage_get.
+// Determine whether a particular index is covered by @coverage
+/*
+
+C function : pango_coverage_get
+*/
 func (recv *Coverage) Get(index int32) CoverageLevel {
 	c_index_ := (C.int)(index)
 
@@ -691,7 +823,13 @@ func (recv *Coverage) Get(index int32) CoverageLevel {
 	return retGo
 }
 
-// Max is a wrapper around the C function pango_coverage_max.
+// Set the coverage for each index in @coverage to be the max (better)
+// value of the current coverage for the index and the coverage for
+// the corresponding index in @other.
+/*
+
+C function : pango_coverage_max
+*/
 func (recv *Coverage) Max(other *Coverage) {
 	c_other := (*C.PangoCoverage)(C.NULL)
 	if other != nil {
@@ -703,7 +841,11 @@ func (recv *Coverage) Max(other *Coverage) {
 	return
 }
 
-// Ref is a wrapper around the C function pango_coverage_ref.
+// Increase the reference count on the #PangoCoverage by one
+/*
+
+C function : pango_coverage_ref
+*/
 func (recv *Coverage) Ref() *Coverage {
 	retC := C.pango_coverage_ref((*C.PangoCoverage)(recv.native))
 	retGo := CoverageNewFromC(unsafe.Pointer(retC))
@@ -711,7 +853,11 @@ func (recv *Coverage) Ref() *Coverage {
 	return retGo
 }
 
-// Set is a wrapper around the C function pango_coverage_set.
+// Modify a particular index within @coverage
+/*
+
+C function : pango_coverage_set
+*/
 func (recv *Coverage) Set(index int32, level CoverageLevel) {
 	c_index_ := (C.int)(index)
 
@@ -724,7 +870,12 @@ func (recv *Coverage) Set(index int32, level CoverageLevel) {
 
 // Unsupported : pango_coverage_to_bytes : unsupported parameter bytes : output array param bytes
 
-// Unref is a wrapper around the C function pango_coverage_unref.
+// Decrease the reference count on the #PangoCoverage by one.
+// If the result is zero, free the coverage and all associated memory.
+/*
+
+C function : pango_coverage_unref
+*/
 func (recv *Coverage) Unref() {
 	C.pango_coverage_unref((*C.PangoCoverage)(recv.native))
 
@@ -764,7 +915,11 @@ func (recv *FontDescription) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// FontDescriptionNew is a wrapper around the C function pango_font_description_new.
+// Creates a new font description structure with all fields unset.
+/*
+
+C function : pango_font_description_new
+*/
 func FontDescriptionNew() *FontDescription {
 	retC := C.pango_font_description_new()
 	retGo := FontDescriptionNewFromC(unsafe.Pointer(retC))
@@ -772,7 +927,21 @@ func FontDescriptionNew() *FontDescription {
 	return retGo
 }
 
-// BetterMatch is a wrapper around the C function pango_font_description_better_match.
+// Determines if the style attributes of @new_match are a closer match
+// for @desc than those of @old_match are, or if @old_match is %NULL,
+// determines if @new_match is a match at all.
+// Approximate matching is done for
+// weight and style; other style attributes must match exactly.
+// Style attributes are all attributes other than family and size-related
+// attributes.  Approximate matching for style considers PANGO_STYLE_OBLIQUE
+// and PANGO_STYLE_ITALIC as matches, but not as good a match as when the
+// styles are equal.
+//
+// Note that @old_match must match @desc.
+/*
+
+C function : pango_font_description_better_match
+*/
 func (recv *FontDescription) BetterMatch(oldMatch *FontDescription, newMatch *FontDescription) bool {
 	c_old_match := (*C.PangoFontDescription)(C.NULL)
 	if oldMatch != nil {
@@ -790,7 +959,11 @@ func (recv *FontDescription) BetterMatch(oldMatch *FontDescription, newMatch *Fo
 	return retGo
 }
 
-// Copy is a wrapper around the C function pango_font_description_copy.
+// Make a copy of a #PangoFontDescription.
+/*
+
+C function : pango_font_description_copy
+*/
 func (recv *FontDescription) Copy() *FontDescription {
 	retC := C.pango_font_description_copy((*C.PangoFontDescription)(recv.native))
 	var retGo (*FontDescription)
@@ -803,7 +976,14 @@ func (recv *FontDescription) Copy() *FontDescription {
 	return retGo
 }
 
-// CopyStatic is a wrapper around the C function pango_font_description_copy_static.
+// Like pango_font_description_copy(), but only a shallow copy is made
+// of the family name and other allocated fields. The result can only
+// be used until @desc is modified or freed. This is meant to be used
+// when the copy is only needed temporarily.
+/*
+
+C function : pango_font_description_copy_static
+*/
 func (recv *FontDescription) CopyStatic() *FontDescription {
 	retC := C.pango_font_description_copy_static((*C.PangoFontDescription)(recv.native))
 	var retGo (*FontDescription)
@@ -816,7 +996,15 @@ func (recv *FontDescription) CopyStatic() *FontDescription {
 	return retGo
 }
 
-// Equal is a wrapper around the C function pango_font_description_equal.
+// Compares two font descriptions for equality. Two font descriptions
+// are considered equal if the fonts they describe are provably identical.
+// This means that their masks do not have to match, as long as other fields
+// are all the same. (Two font descriptions may result in identical fonts
+// being loaded, but still compare %FALSE.)
+/*
+
+C function : pango_font_description_equal
+*/
 func (recv *FontDescription) Equal(desc2 *FontDescription) bool {
 	c_desc2 := (*C.PangoFontDescription)(C.NULL)
 	if desc2 != nil {
@@ -829,14 +1017,23 @@ func (recv *FontDescription) Equal(desc2 *FontDescription) bool {
 	return retGo
 }
 
-// Free is a wrapper around the C function pango_font_description_free.
+// Frees a font description.
+/*
+
+C function : pango_font_description_free
+*/
 func (recv *FontDescription) Free() {
 	C.pango_font_description_free((*C.PangoFontDescription)(recv.native))
 
 	return
 }
 
-// GetFamily is a wrapper around the C function pango_font_description_get_family.
+// Gets the family name field of a font description. See
+// pango_font_description_set_family().
+/*
+
+C function : pango_font_description_get_family
+*/
 func (recv *FontDescription) GetFamily() string {
 	retC := C.pango_font_description_get_family((*C.PangoFontDescription)(recv.native))
 	retGo := C.GoString(retC)
@@ -844,7 +1041,11 @@ func (recv *FontDescription) GetFamily() string {
 	return retGo
 }
 
-// GetSetFields is a wrapper around the C function pango_font_description_get_set_fields.
+// Determines which fields in a font description have been set.
+/*
+
+C function : pango_font_description_get_set_fields
+*/
 func (recv *FontDescription) GetSetFields() FontMask {
 	retC := C.pango_font_description_get_set_fields((*C.PangoFontDescription)(recv.native))
 	retGo := (FontMask)(retC)
@@ -852,7 +1053,12 @@ func (recv *FontDescription) GetSetFields() FontMask {
 	return retGo
 }
 
-// GetSize is a wrapper around the C function pango_font_description_get_size.
+// Gets the size field of a font description.
+// See pango_font_description_set_size().
+/*
+
+C function : pango_font_description_get_size
+*/
 func (recv *FontDescription) GetSize() int32 {
 	retC := C.pango_font_description_get_size((*C.PangoFontDescription)(recv.native))
 	retGo := (int32)(retC)
@@ -860,7 +1066,12 @@ func (recv *FontDescription) GetSize() int32 {
 	return retGo
 }
 
-// GetStretch is a wrapper around the C function pango_font_description_get_stretch.
+// Gets the stretch field of a font description.
+// See pango_font_description_set_stretch().
+/*
+
+C function : pango_font_description_get_stretch
+*/
 func (recv *FontDescription) GetStretch() Stretch {
 	retC := C.pango_font_description_get_stretch((*C.PangoFontDescription)(recv.native))
 	retGo := (Stretch)(retC)
@@ -868,7 +1079,12 @@ func (recv *FontDescription) GetStretch() Stretch {
 	return retGo
 }
 
-// GetStyle is a wrapper around the C function pango_font_description_get_style.
+// Gets the style field of a #PangoFontDescription. See
+// pango_font_description_set_style().
+/*
+
+C function : pango_font_description_get_style
+*/
 func (recv *FontDescription) GetStyle() Style {
 	retC := C.pango_font_description_get_style((*C.PangoFontDescription)(recv.native))
 	retGo := (Style)(retC)
@@ -876,7 +1092,12 @@ func (recv *FontDescription) GetStyle() Style {
 	return retGo
 }
 
-// GetVariant is a wrapper around the C function pango_font_description_get_variant.
+// Gets the variant field of a #PangoFontDescription. See
+// pango_font_description_set_variant().
+/*
+
+C function : pango_font_description_get_variant
+*/
 func (recv *FontDescription) GetVariant() Variant {
 	retC := C.pango_font_description_get_variant((*C.PangoFontDescription)(recv.native))
 	retGo := (Variant)(retC)
@@ -884,7 +1105,12 @@ func (recv *FontDescription) GetVariant() Variant {
 	return retGo
 }
 
-// GetWeight is a wrapper around the C function pango_font_description_get_weight.
+// Gets the weight field of a font description. See
+// pango_font_description_set_weight().
+/*
+
+C function : pango_font_description_get_weight
+*/
 func (recv *FontDescription) GetWeight() Weight {
 	retC := C.pango_font_description_get_weight((*C.PangoFontDescription)(recv.native))
 	retGo := (Weight)(retC)
@@ -892,7 +1118,13 @@ func (recv *FontDescription) GetWeight() Weight {
 	return retGo
 }
 
-// Hash is a wrapper around the C function pango_font_description_hash.
+// Computes a hash of a #PangoFontDescription structure suitable
+// to be used, for example, as an argument to g_hash_table_new().
+// The hash value is independent of @desc->mask.
+/*
+
+C function : pango_font_description_hash
+*/
 func (recv *FontDescription) Hash() uint32 {
 	retC := C.pango_font_description_hash((*C.PangoFontDescription)(recv.native))
 	retGo := (uint32)(retC)
@@ -900,7 +1132,16 @@ func (recv *FontDescription) Hash() uint32 {
 	return retGo
 }
 
-// Merge is a wrapper around the C function pango_font_description_merge.
+// Merges the fields that are set in @desc_to_merge into the fields in
+// @desc.  If @replace_existing is %FALSE, only fields in @desc that
+// are not already set are affected. If %TRUE, then fields that are
+// already set will be replaced as well.
+//
+// If @desc_to_merge is %NULL, this function performs nothing.
+/*
+
+C function : pango_font_description_merge
+*/
 func (recv *FontDescription) Merge(descToMerge *FontDescription, replaceExisting bool) {
 	c_desc_to_merge := (*C.PangoFontDescription)(C.NULL)
 	if descToMerge != nil {
@@ -915,7 +1156,14 @@ func (recv *FontDescription) Merge(descToMerge *FontDescription, replaceExisting
 	return
 }
 
-// MergeStatic is a wrapper around the C function pango_font_description_merge_static.
+// Like pango_font_description_merge(), but only a shallow copy is made
+// of the family name and other allocated fields. @desc can only be
+// used until @desc_to_merge is modified or freed. This is meant
+// to be used when the merged font description is only needed temporarily.
+/*
+
+C function : pango_font_description_merge_static
+*/
 func (recv *FontDescription) MergeStatic(descToMerge *FontDescription, replaceExisting bool) {
 	c_desc_to_merge := (*C.PangoFontDescription)(C.NULL)
 	if descToMerge != nil {
@@ -930,7 +1178,15 @@ func (recv *FontDescription) MergeStatic(descToMerge *FontDescription, replaceEx
 	return
 }
 
-// SetFamily is a wrapper around the C function pango_font_description_set_family.
+// Sets the family name field of a font description. The family
+// name represents a family of related font styles, and will
+// resolve to a particular #PangoFontFamily. In some uses of
+// #PangoFontDescription, it is also possible to use a comma
+// separated list of family names for this field.
+/*
+
+C function : pango_font_description_set_family
+*/
 func (recv *FontDescription) SetFamily(family string) {
 	c_family := C.CString(family)
 	defer C.free(unsafe.Pointer(c_family))
@@ -940,7 +1196,16 @@ func (recv *FontDescription) SetFamily(family string) {
 	return
 }
 
-// SetFamilyStatic is a wrapper around the C function pango_font_description_set_family_static.
+// Like pango_font_description_set_family(), except that no
+// copy of @family is made. The caller must make sure that the
+// string passed in stays around until @desc has been freed
+// or the name is set again. This function can be used if
+// @family is a static string such as a C string literal, or
+// if @desc is only needed temporarily.
+/*
+
+C function : pango_font_description_set_family_static
+*/
 func (recv *FontDescription) SetFamilyStatic(family string) {
 	c_family := C.CString(family)
 	defer C.free(unsafe.Pointer(c_family))
@@ -950,7 +1215,12 @@ func (recv *FontDescription) SetFamilyStatic(family string) {
 	return
 }
 
-// SetSize is a wrapper around the C function pango_font_description_set_size.
+// Sets the size field of a font description in fractional points. This is mutually
+// exclusive with pango_font_description_set_absolute_size().
+/*
+
+C function : pango_font_description_set_size
+*/
 func (recv *FontDescription) SetSize(size int32) {
 	c_size := (C.gint)(size)
 
@@ -959,7 +1229,12 @@ func (recv *FontDescription) SetSize(size int32) {
 	return
 }
 
-// SetStretch is a wrapper around the C function pango_font_description_set_stretch.
+// Sets the stretch field of a font description. The stretch field
+// specifies how narrow or wide the font should be.
+/*
+
+C function : pango_font_description_set_stretch
+*/
 func (recv *FontDescription) SetStretch(stretch Stretch) {
 	c_stretch := (C.PangoStretch)(stretch)
 
@@ -968,7 +1243,18 @@ func (recv *FontDescription) SetStretch(stretch Stretch) {
 	return
 }
 
-// SetStyle is a wrapper around the C function pango_font_description_set_style.
+// Sets the style field of a #PangoFontDescription. The
+// #PangoStyle enumeration describes whether the font is slanted and
+// the manner in which it is slanted; it can be either
+// #PANGO_STYLE_NORMAL, #PANGO_STYLE_ITALIC, or #PANGO_STYLE_OBLIQUE.
+// Most fonts will either have a italic style or an oblique
+// style, but not both, and font matching in Pango will
+// match italic specifications with oblique fonts and vice-versa
+// if an exact match is not found.
+/*
+
+C function : pango_font_description_set_style
+*/
 func (recv *FontDescription) SetStyle(style Style) {
 	c_style := (C.PangoStyle)(style)
 
@@ -977,7 +1263,12 @@ func (recv *FontDescription) SetStyle(style Style) {
 	return
 }
 
-// SetVariant is a wrapper around the C function pango_font_description_set_variant.
+// Sets the variant field of a font description. The #PangoVariant
+// can either be %PANGO_VARIANT_NORMAL or %PANGO_VARIANT_SMALL_CAPS.
+/*
+
+C function : pango_font_description_set_variant
+*/
 func (recv *FontDescription) SetVariant(variant Variant) {
 	c_variant := (C.PangoVariant)(variant)
 
@@ -986,7 +1277,14 @@ func (recv *FontDescription) SetVariant(variant Variant) {
 	return
 }
 
-// SetWeight is a wrapper around the C function pango_font_description_set_weight.
+// Sets the weight field of a font description. The weight field
+// specifies how bold or light the font should be. In addition
+// to the values of the #PangoWeight enumeration, other intermediate
+// numeric values are possible.
+/*
+
+C function : pango_font_description_set_weight
+*/
 func (recv *FontDescription) SetWeight(weight Weight) {
 	c_weight := (C.PangoWeight)(weight)
 
@@ -995,7 +1293,14 @@ func (recv *FontDescription) SetWeight(weight Weight) {
 	return
 }
 
-// ToFilename is a wrapper around the C function pango_font_description_to_filename.
+// Creates a filename representation of a font description. The
+// filename is identical to the result from calling
+// pango_font_description_to_string(), but with underscores instead of
+// characters that are untypical in filenames, and in lower case only.
+/*
+
+C function : pango_font_description_to_filename
+*/
 func (recv *FontDescription) ToFilename() string {
 	retC := C.pango_font_description_to_filename((*C.PangoFontDescription)(recv.native))
 	retGo := C.GoString(retC)
@@ -1004,7 +1309,15 @@ func (recv *FontDescription) ToFilename() string {
 	return retGo
 }
 
-// ToString is a wrapper around the C function pango_font_description_to_string.
+// Creates a string representation of a font description. See
+// pango_font_description_from_string() for a description of the
+// format of the string representation. The family list in the
+// string description will only have a terminating comma if the
+// last word of the list is a valid style option.
+/*
+
+C function : pango_font_description_to_string
+*/
 func (recv *FontDescription) ToString() string {
 	retC := C.pango_font_description_to_string((*C.PangoFontDescription)(recv.native))
 	retGo := C.GoString(retC)
@@ -1013,7 +1326,12 @@ func (recv *FontDescription) ToString() string {
 	return retGo
 }
 
-// UnsetFields is a wrapper around the C function pango_font_description_unset_fields.
+// Unsets some of the fields in a #PangoFontDescription.  The unset
+// fields will get back to their default values.
+/*
+
+C function : pango_font_description_unset_fields
+*/
 func (recv *FontDescription) UnsetFields(toUnset FontMask) {
 	c_to_unset := (C.PangoFontMask)(toUnset)
 
@@ -1183,7 +1501,11 @@ func (recv *Item) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ItemNew is a wrapper around the C function pango_item_new.
+// Creates a new #PangoItem structure initialized to default values.
+/*
+
+C function : pango_item_new
+*/
 func ItemNew() *Item {
 	retC := C.pango_item_new()
 	retGo := ItemNewFromC(unsafe.Pointer(retC))
@@ -1191,7 +1513,11 @@ func ItemNew() *Item {
 	return retGo
 }
 
-// Copy is a wrapper around the C function pango_item_copy.
+// Copy an existing #PangoItem structure.
+/*
+
+C function : pango_item_copy
+*/
 func (recv *Item) Copy() *Item {
 	retC := C.pango_item_copy((*C.PangoItem)(recv.native))
 	var retGo (*Item)
@@ -1204,14 +1530,31 @@ func (recv *Item) Copy() *Item {
 	return retGo
 }
 
-// Free is a wrapper around the C function pango_item_free.
+// Free a #PangoItem and all associated memory.
+/*
+
+C function : pango_item_free
+*/
 func (recv *Item) Free() {
 	C.pango_item_free((*C.PangoItem)(recv.native))
 
 	return
 }
 
-// Split is a wrapper around the C function pango_item_split.
+// Modifies @orig to cover only the text after @split_index, and
+// returns a new item that covers the text before @split_index that
+// used to be in @orig. You can think of @split_index as the length of
+// the returned item. @split_index may not be 0, and it may not be
+// greater than or equal to the length of @orig (that is, there must
+// be at least one byte assigned to each item, you can't create a
+// zero-length item). @split_offset is the length of the first item in
+// chars, and must be provided because the text used to generate the
+// item isn't available, so pango_item_split() can't count the char
+// length of the split items itself.
+/*
+
+C function : pango_item_split
+*/
 func (recv *Item) Split(splitIndex int32, splitOffset int32) *Item {
 	c_split_index := (C.int)(splitIndex)
 
@@ -1244,7 +1587,28 @@ func (recv *Language) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// GetSampleString is a wrapper around the C function pango_language_get_sample_string.
+// Get a string that is representative of the characters needed to
+// render a particular language.
+//
+// The sample text may be a pangram, but is not necessarily.  It is chosen to
+// be demonstrative of normal text in the language, as well as exposing font
+// feature requirements unique to the language.  It is suitable for use
+// as sample text in a font selection dialog.
+//
+// If @language is %NULL, the default language as found by
+// pango_language_get_default() is used.
+//
+// If Pango does not have a sample string for @language, the classic
+// "The quick brown fox..." is returned.  This can be detected by
+// comparing the returned pointer value to that returned for (non-existent)
+// language code "xx".  That is, compare to:
+// <informalexample><programlisting>
+// pango_language_get_sample_string (pango_language_from_string ("xx"))
+// </programlisting></informalexample>
+/*
+
+C function : pango_language_get_sample_string
+*/
 func (recv *Language) GetSampleString() string {
 	retC := C.pango_language_get_sample_string((*C.PangoLanguage)(recv.native))
 	retGo := C.GoString(retC)
@@ -1252,7 +1616,15 @@ func (recv *Language) GetSampleString() string {
 	return retGo
 }
 
-// Matches is a wrapper around the C function pango_language_matches.
+// Checks if a language tag matches one of the elements in a list of
+// language ranges. A language tag is considered to match a range
+// in the list if the range is '*', the range is exactly the tag,
+// or the range is a prefix of the tag, and the character after it
+// in the tag is '-'.
+/*
+
+C function : pango_language_matches
+*/
 func (recv *Language) Matches(rangeList string) bool {
 	c_range_list := C.CString(rangeList)
 	defer C.free(unsafe.Pointer(c_range_list))
@@ -1263,7 +1635,11 @@ func (recv *Language) Matches(rangeList string) bool {
 	return retGo
 }
 
-// ToString is a wrapper around the C function pango_language_to_string.
+// Gets the RFC-3066 format string representing the given language tag.
+/*
+
+C function : pango_language_to_string
+*/
 func (recv *Language) ToString() string {
 	retC := C.pango_language_to_string((*C.PangoLanguage)(recv.native))
 	retGo := C.GoString(retC)
@@ -1329,7 +1705,13 @@ func (recv *LayoutLine) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// GetExtents is a wrapper around the C function pango_layout_line_get_extents.
+// Computes the logical and ink extents of a layout line. See
+// pango_font_get_glyph_extents() for details about the interpretation
+// of the rectangles.
+/*
+
+C function : pango_layout_line_get_extents
+*/
 func (recv *LayoutLine) GetExtents() (*Rectangle, *Rectangle) {
 	var c_ink_rect C.PangoRectangle
 
@@ -1344,7 +1726,15 @@ func (recv *LayoutLine) GetExtents() (*Rectangle, *Rectangle) {
 	return inkRect, logicalRect
 }
 
-// GetPixelExtents is a wrapper around the C function pango_layout_line_get_pixel_extents.
+// Computes the logical and ink extents of @layout_line in device units.
+// This function just calls pango_layout_line_get_extents() followed by
+// two pango_extents_to_pixels() calls, rounding @ink_rect and @logical_rect
+// such that the rounded rectangles fully contain the unrounded one (that is,
+// passes them as first argument to pango_extents_to_pixels()).
+/*
+
+C function : pango_layout_line_get_pixel_extents
+*/
 func (recv *LayoutLine) GetPixelExtents() (*Rectangle, *Rectangle) {
 	var c_ink_rect C.PangoRectangle
 
@@ -1361,7 +1751,11 @@ func (recv *LayoutLine) GetPixelExtents() (*Rectangle, *Rectangle) {
 
 // Unsupported : pango_layout_line_get_x_ranges : unsupported parameter ranges : output array param ranges
 
-// IndexToX is a wrapper around the C function pango_layout_line_index_to_x.
+// Converts an index within a line to a X position.
+/*
+
+C function : pango_layout_line_index_to_x
+*/
 func (recv *LayoutLine) IndexToX(index int32, trailing bool) int32 {
 	c_index_ := (C.int)(index)
 
@@ -1377,14 +1771,33 @@ func (recv *LayoutLine) IndexToX(index int32, trailing bool) int32 {
 	return xPos
 }
 
-// Unref is a wrapper around the C function pango_layout_line_unref.
+// Decrease the reference count of a #PangoLayoutLine by one.
+// If the result is zero, the line and all associated memory
+// will be freed.
+/*
+
+C function : pango_layout_line_unref
+*/
 func (recv *LayoutLine) Unref() {
 	C.pango_layout_line_unref((*C.PangoLayoutLine)(recv.native))
 
 	return
 }
 
-// XToIndex is a wrapper around the C function pango_layout_line_x_to_index.
+// Converts from x offset to the byte index of the corresponding
+// character within the text of the layout. If @x_pos is outside the line,
+// @index_ and @trailing will point to the very first or very last position
+// in the line. This determination is based on the resolved direction
+// of the paragraph; for example, if the resolved direction is
+// right-to-left, then an X position to the right of the line (after it)
+// results in 0 being stored in @index_ and @trailing. An X position to the
+// left of the line results in @index_ pointing to the (logical) last
+// grapheme in the line and @trailing being set to the number of characters
+// in that grapheme. The reverse is true for a left-to-right line.
+/*
+
+C function : pango_layout_line_x_to_index
+*/
 func (recv *LayoutLine) XToIndex(xPos int32) (bool, int32, int32) {
 	c_x_pos := (C.int)(xPos)
 
@@ -1544,7 +1957,13 @@ func (recv *TabArray) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TabArrayNew is a wrapper around the C function pango_tab_array_new.
+// Creates an array of @initial_size tab stops. Tab stops are specified in
+// pixel units if @positions_in_pixels is %TRUE, otherwise in Pango
+// units. All stops are initially at position 0.
+/*
+
+C function : pango_tab_array_new
+*/
 func TabArrayNew(initialSize int32, positionsInPixels bool) *TabArray {
 	c_initial_size := (C.gint)(initialSize)
 
@@ -1559,7 +1978,11 @@ func TabArrayNew(initialSize int32, positionsInPixels bool) *TabArray {
 
 // Unsupported : pango_tab_array_new_with_positions : unsupported parameter ... : varargs
 
-// Copy is a wrapper around the C function pango_tab_array_copy.
+// Copies a #PangoTabArray
+/*
+
+C function : pango_tab_array_copy
+*/
 func (recv *TabArray) Copy() *TabArray {
 	retC := C.pango_tab_array_copy((*C.PangoTabArray)(recv.native))
 	retGo := TabArrayNewFromC(unsafe.Pointer(retC))
@@ -1567,14 +1990,23 @@ func (recv *TabArray) Copy() *TabArray {
 	return retGo
 }
 
-// Free is a wrapper around the C function pango_tab_array_free.
+// Frees a tab array and associated resources.
+/*
+
+C function : pango_tab_array_free
+*/
 func (recv *TabArray) Free() {
 	C.pango_tab_array_free((*C.PangoTabArray)(recv.native))
 
 	return
 }
 
-// GetPositionsInPixels is a wrapper around the C function pango_tab_array_get_positions_in_pixels.
+// Returns %TRUE if the tab positions are in pixels, %FALSE if they are
+// in Pango units.
+/*
+
+C function : pango_tab_array_get_positions_in_pixels
+*/
 func (recv *TabArray) GetPositionsInPixels() bool {
 	retC := C.pango_tab_array_get_positions_in_pixels((*C.PangoTabArray)(recv.native))
 	retGo := retC == C.TRUE
@@ -1582,7 +2014,11 @@ func (recv *TabArray) GetPositionsInPixels() bool {
 	return retGo
 }
 
-// GetSize is a wrapper around the C function pango_tab_array_get_size.
+// Gets the number of tab stops in @tab_array.
+/*
+
+C function : pango_tab_array_get_size
+*/
 func (recv *TabArray) GetSize() int32 {
 	retC := C.pango_tab_array_get_size((*C.PangoTabArray)(recv.native))
 	retGo := (int32)(retC)
@@ -1594,7 +2030,12 @@ func (recv *TabArray) GetSize() int32 {
 
 // Unsupported : pango_tab_array_get_tabs : unsupported parameter alignments : PangoTabAlign** with indirection level of 2
 
-// Resize is a wrapper around the C function pango_tab_array_resize.
+// Resizes a tab array. You must subsequently initialize any tabs that
+// were added as a result of growing the array.
+/*
+
+C function : pango_tab_array_resize
+*/
 func (recv *TabArray) Resize(newSize int32) {
 	c_new_size := (C.gint)(newSize)
 
@@ -1603,7 +2044,13 @@ func (recv *TabArray) Resize(newSize int32) {
 	return
 }
 
-// SetTab is a wrapper around the C function pango_tab_array_set_tab.
+// Sets the alignment and location of a tab stop.
+// @alignment must always be #PANGO_TAB_LEFT in the current
+// implementation.
+/*
+
+C function : pango_tab_array_set_tab
+*/
 func (recv *TabArray) SetTab(tabIndex int32, alignment TabAlign, location int32) {
 	c_tab_index := (C.gint)(tabIndex)
 

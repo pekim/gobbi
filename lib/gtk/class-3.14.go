@@ -128,7 +128,13 @@ import "C"
 
 // Unsupported : gtk_application_get_actions_for_accel : no return type
 
-// GetMenuById is a wrapper around the C function gtk_application_get_menu_by_id.
+// Gets a menu from automatically loaded resources.
+// See [Automatic resources][automatic-resources]
+// for more information.
+/*
+
+C function : gtk_application_get_menu_by_id
+*/
 func (recv *Application) GetMenuById(id string) *gio.Menu {
 	c_id := C.CString(id)
 	defer C.free(unsafe.Pointer(c_id))
@@ -139,7 +145,44 @@ func (recv *Application) GetMenuById(id string) *gio.Menu {
 	return retGo
 }
 
-// PrefersAppMenu is a wrapper around the C function gtk_application_prefers_app_menu.
+// Determines if the desktop environment in which the application is
+// running would prefer an application menu be shown.
+//
+// If this function returns %TRUE then the application should call
+// gtk_application_set_app_menu() with the contents of an application
+// menu, which will be shown by the desktop environment.  If it returns
+// %FALSE then you should consider using an alternate approach, such as
+// a menubar.
+//
+// The value returned by this function is purely advisory and you are
+// free to ignore it.  If you call gtk_application_set_app_menu() even
+// if the desktop environment doesn't support app menus, then a fallback
+// will be provided.
+//
+// Applications are similarly free not to set an app menu even if the
+// desktop environment wants to show one.  In that case, a fallback will
+// also be created by the desktop environment (GNOME, for example, uses
+// a menu with only a "Quit" item in it).
+//
+// The value returned by this function never changes.  Once it returns a
+// particular value, it is guaranteed to always return the same value.
+//
+// You may only call this function after the application has been
+// registered and after the base startup handler has run.  You're most
+// likely to want to use this from your own startup handler.  It may
+// also make sense to consult this function while constructing UI (in
+// activate, open or an action activation handler) in order to determine
+// if you should show a gear menu or not.
+//
+// This function will return %FALSE on Mac OS and a default app menu
+// will be created automatically with the "usual" contents of that menu
+// typical to most Mac OS applications.  If you call
+// gtk_application_set_app_menu() anyway, then this menu will be
+// replaced with your own.
+/*
+
+C function : gtk_application_prefers_app_menu
+*/
 func (recv *Application) PrefersAppMenu() bool {
 	retC := C.gtk_application_prefers_app_menu((*C.GtkApplication)(recv.native))
 	retGo := retC == C.TRUE
@@ -147,7 +190,12 @@ func (recv *Application) PrefersAppMenu() bool {
 	return retGo
 }
 
-// AttributeGetColumn is a wrapper around the C function gtk_cell_area_attribute_get_column.
+// Returns the model column that an attribute has been mapped to,
+// or -1 if the attribute is not mapped.
+/*
+
+C function : gtk_cell_area_attribute_get_column
+*/
 func (recv *CellArea) AttributeGetColumn(renderer *CellRenderer, attribute string) int32 {
 	c_renderer := (*C.GtkCellRenderer)(C.NULL)
 	if renderer != nil {
@@ -220,7 +268,11 @@ func entrycompletion_noMatchesHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// GetPropagationPhase is a wrapper around the C function gtk_event_controller_get_propagation_phase.
+// Gets the propagation phase at which @controller handles events.
+/*
+
+C function : gtk_event_controller_get_propagation_phase
+*/
 func (recv *EventController) GetPropagationPhase() PropagationPhase {
 	retC := C.gtk_event_controller_get_propagation_phase((*C.GtkEventController)(recv.native))
 	retGo := (PropagationPhase)(retC)
@@ -228,7 +280,11 @@ func (recv *EventController) GetPropagationPhase() PropagationPhase {
 	return retGo
 }
 
-// GetWidget is a wrapper around the C function gtk_event_controller_get_widget.
+// Returns the #GtkWidget this controller relates to.
+/*
+
+C function : gtk_event_controller_get_widget
+*/
 func (recv *EventController) GetWidget() *Widget {
 	retC := C.gtk_event_controller_get_widget((*C.GtkEventController)(recv.native))
 	retGo := WidgetNewFromC(unsafe.Pointer(retC))
@@ -238,14 +294,28 @@ func (recv *EventController) GetWidget() *Widget {
 
 // Unsupported : gtk_event_controller_handle_event : unsupported parameter event : no type generator for Gdk.Event (const GdkEvent*) for param event
 
-// Reset is a wrapper around the C function gtk_event_controller_reset.
+// Resets the @controller to a clean state. Every interaction
+// the controller did through #GtkEventController::handle-event
+// will be dropped at this point.
+/*
+
+C function : gtk_event_controller_reset
+*/
 func (recv *EventController) Reset() {
 	C.gtk_event_controller_reset((*C.GtkEventController)(recv.native))
 
 	return
 }
 
-// SetPropagationPhase is a wrapper around the C function gtk_event_controller_set_propagation_phase.
+// Sets the propagation phase at which a controller handles events.
+//
+// If @phase is %GTK_PHASE_NONE, no automatic event handling will be
+// performed, but other additional gesture maintenance will. In that phase,
+// the events can be managed by calling gtk_event_controller_handle_event().
+/*
+
+C function : gtk_event_controller_set_propagation_phase
+*/
 func (recv *EventController) SetPropagationPhase(phase PropagationPhase) {
 	c_phase := (C.GtkPropagationPhase)(phase)
 
@@ -494,7 +564,14 @@ func gesture_updateHandler(_ *C.GObject, c_sequence *C.GdkEventSequence, data C.
 
 // Unsupported : gtk_gesture_get_bounding_box : unsupported parameter rect : Blacklisted record : GdkRectangle
 
-// GetBoundingBoxCenter is a wrapper around the C function gtk_gesture_get_bounding_box_center.
+// If there are touch sequences being currently handled by @gesture,
+// this function returns %TRUE and fills in @x and @y with the center
+// of the bounding box containing all active touches. Otherwise, %FALSE
+// will be returned.
+/*
+
+C function : gtk_gesture_get_bounding_box_center
+*/
 func (recv *Gesture) GetBoundingBoxCenter() (bool, float64, float64) {
 	var c_x C.gdouble
 
@@ -510,7 +587,12 @@ func (recv *Gesture) GetBoundingBoxCenter() (bool, float64, float64) {
 	return retGo, x, y
 }
 
-// GetDevice is a wrapper around the C function gtk_gesture_get_device.
+// Returns the master #GdkDevice that is currently operating
+// on @gesture, or %NULL if the gesture is not being interacted.
+/*
+
+C function : gtk_gesture_get_device
+*/
 func (recv *Gesture) GetDevice() *gdk.Device {
 	retC := C.gtk_gesture_get_device((*C.GtkGesture)(recv.native))
 	var retGo (*gdk.Device)
@@ -523,7 +605,11 @@ func (recv *Gesture) GetDevice() *gdk.Device {
 	return retGo
 }
 
-// GetGroup is a wrapper around the C function gtk_gesture_get_group.
+// Returns all gestures in the group of @gesture
+/*
+
+C function : gtk_gesture_get_group
+*/
 func (recv *Gesture) GetGroup() *glib.List {
 	retC := C.gtk_gesture_get_group((*C.GtkGesture)(recv.native))
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
@@ -531,7 +617,11 @@ func (recv *Gesture) GetGroup() *glib.List {
 	return retGo
 }
 
-// GetLastUpdatedSequence is a wrapper around the C function gtk_gesture_get_last_updated_sequence.
+// Returns the #GdkEventSequence that was last updated on @gesture.
+/*
+
+C function : gtk_gesture_get_last_updated_sequence
+*/
 func (recv *Gesture) GetLastUpdatedSequence() *gdk.EventSequence {
 	retC := C.gtk_gesture_get_last_updated_sequence((*C.GtkGesture)(recv.native))
 	var retGo (*gdk.EventSequence)
@@ -544,7 +634,14 @@ func (recv *Gesture) GetLastUpdatedSequence() *gdk.EventSequence {
 	return retGo
 }
 
-// GetPoint is a wrapper around the C function gtk_gesture_get_point.
+// If @sequence is currently being interpreted by @gesture, this
+// function returns %TRUE and fills in @x and @y with the last coordinates
+// stored for that event sequence. The coordinates are always relative to the
+// widget allocation.
+/*
+
+C function : gtk_gesture_get_point
+*/
 func (recv *Gesture) GetPoint(sequence *gdk.EventSequence) (bool, float64, float64) {
 	c_sequence := (*C.GdkEventSequence)(C.NULL)
 	if sequence != nil {
@@ -565,7 +662,11 @@ func (recv *Gesture) GetPoint(sequence *gdk.EventSequence) (bool, float64, float
 	return retGo, x, y
 }
 
-// GetSequenceState is a wrapper around the C function gtk_gesture_get_sequence_state.
+// Returns the @sequence state, as seen by @gesture.
+/*
+
+C function : gtk_gesture_get_sequence_state
+*/
 func (recv *Gesture) GetSequenceState(sequence *gdk.EventSequence) EventSequenceState {
 	c_sequence := (*C.GdkEventSequence)(C.NULL)
 	if sequence != nil {
@@ -578,7 +679,12 @@ func (recv *Gesture) GetSequenceState(sequence *gdk.EventSequence) EventSequence
 	return retGo
 }
 
-// GetSequences is a wrapper around the C function gtk_gesture_get_sequences.
+// Returns the list of #GdkEventSequences currently being interpreted
+// by @gesture.
+/*
+
+C function : gtk_gesture_get_sequences
+*/
 func (recv *Gesture) GetSequences() *glib.List {
 	retC := C.gtk_gesture_get_sequences((*C.GtkGesture)(recv.native))
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
@@ -586,7 +692,13 @@ func (recv *Gesture) GetSequences() *glib.List {
 	return retGo
 }
 
-// GetWindow is a wrapper around the C function gtk_gesture_get_window.
+// Returns the user-defined window that receives the events
+// handled by @gesture. See gtk_gesture_set_window() for more
+// information.
+/*
+
+C function : gtk_gesture_get_window
+*/
 func (recv *Gesture) GetWindow() *gdk.Window {
 	retC := C.gtk_gesture_get_window((*C.GtkGesture)(recv.native))
 	var retGo (*gdk.Window)
@@ -599,7 +711,21 @@ func (recv *Gesture) GetWindow() *gdk.Window {
 	return retGo
 }
 
-// Group is a wrapper around the C function gtk_gesture_group.
+// Adds @gesture to the same group than @group_gesture. Gestures
+// are by default isolated in their own groups.
+//
+// When gestures are grouped, the state of #GdkEventSequences
+// is kept in sync for all of those, so calling gtk_gesture_set_sequence_state(),
+// on one will transfer the same value to the others.
+//
+// Groups also perform an "implicit grabbing" of sequences, if a
+// #GdkEventSequence state is set to #GTK_EVENT_SEQUENCE_CLAIMED on one group,
+// every other gesture group attached to the same #GtkWidget will switch the
+// state for that sequence to #GTK_EVENT_SEQUENCE_DENIED.
+/*
+
+C function : gtk_gesture_group
+*/
 func (recv *Gesture) Group(gesture *Gesture) {
 	c_gesture := (*C.GtkGesture)(C.NULL)
 	if gesture != nil {
@@ -611,7 +737,12 @@ func (recv *Gesture) Group(gesture *Gesture) {
 	return
 }
 
-// HandlesSequence is a wrapper around the C function gtk_gesture_handles_sequence.
+// Returns %TRUE if @gesture is currently handling events corresponding to
+// @sequence.
+/*
+
+C function : gtk_gesture_handles_sequence
+*/
 func (recv *Gesture) HandlesSequence(sequence *gdk.EventSequence) bool {
 	c_sequence := (*C.GdkEventSequence)(C.NULL)
 	if sequence != nil {
@@ -624,7 +755,13 @@ func (recv *Gesture) HandlesSequence(sequence *gdk.EventSequence) bool {
 	return retGo
 }
 
-// IsActive is a wrapper around the C function gtk_gesture_is_active.
+// Returns %TRUE if the gesture is currently active.
+// A gesture is active meanwhile there are touch sequences
+// interacting with it.
+/*
+
+C function : gtk_gesture_is_active
+*/
 func (recv *Gesture) IsActive() bool {
 	retC := C.gtk_gesture_is_active((*C.GtkGesture)(recv.native))
 	retGo := retC == C.TRUE
@@ -632,7 +769,11 @@ func (recv *Gesture) IsActive() bool {
 	return retGo
 }
 
-// IsGroupedWith is a wrapper around the C function gtk_gesture_is_grouped_with.
+// Returns %TRUE if both gestures pertain to the same group.
+/*
+
+C function : gtk_gesture_is_grouped_with
+*/
 func (recv *Gesture) IsGroupedWith(other *Gesture) bool {
 	c_other := (*C.GtkGesture)(C.NULL)
 	if other != nil {
@@ -645,7 +786,14 @@ func (recv *Gesture) IsGroupedWith(other *Gesture) bool {
 	return retGo
 }
 
-// IsRecognized is a wrapper around the C function gtk_gesture_is_recognized.
+// Returns %TRUE if the gesture is currently recognized.
+// A gesture is recognized if there are as many interacting
+// touch sequences as required by @gesture, and #GtkGesture::check
+// returned %TRUE for the sequences being currently interpreted.
+/*
+
+C function : gtk_gesture_is_recognized
+*/
 func (recv *Gesture) IsRecognized() bool {
 	retC := C.gtk_gesture_is_recognized((*C.GtkGesture)(recv.native))
 	retGo := retC == C.TRUE
@@ -653,7 +801,52 @@ func (recv *Gesture) IsRecognized() bool {
 	return retGo
 }
 
-// SetSequenceState is a wrapper around the C function gtk_gesture_set_sequence_state.
+// Sets the state of @sequence in @gesture. Sequences start
+// in state #GTK_EVENT_SEQUENCE_NONE, and whenever they change
+// state, they can never go back to that state. Likewise,
+// sequences in state #GTK_EVENT_SEQUENCE_DENIED cannot turn
+// back to a not denied state. With these rules, the lifetime
+// of an event sequence is constrained to the next four:
+//
+// * None
+// * None → Denied
+// * None → Claimed
+// * None → Claimed → Denied
+//
+// Note: Due to event handling ordering, it may be unsafe to
+// set the state on another gesture within a #GtkGesture::begin
+// signal handler, as the callback might be executed before
+// the other gesture knows about the sequence. A safe way to
+// perform this could be:
+//
+// |[
+// static void
+// first_gesture_begin_cb (GtkGesture       *first_gesture,
+// GdkEventSequence *sequence,
+// gpointer          user_data)
+// {
+// gtk_gesture_set_sequence_state (first_gesture, sequence, GTK_EVENT_SEQUENCE_ACCEPTED);
+// gtk_gesture_set_sequence_state (second_gesture, sequence, GTK_EVENT_SEQUENCE_DENIED);
+// }
+//
+// static void
+// second_gesture_begin_cb (GtkGesture       *second_gesture,
+// GdkEventSequence *sequence,
+// gpointer          user_data)
+// {
+// if (gtk_gesture_get_sequence_state (first_gesture, sequence) == GTK_EVENT_SEQUENCE_ACCEPTED)
+// gtk_gesture_set_sequence_state (second_gesture, sequence, GTK_EVENT_SEQUENCE_DENIED);
+// }
+// ]|
+//
+// If both gestures are in the same group, just set the state on
+// the gesture emitting the event, the sequence will be already
+// be initialized to the group's global state when the second
+// gesture processes the event.
+/*
+
+C function : gtk_gesture_set_sequence_state
+*/
 func (recv *Gesture) SetSequenceState(sequence *gdk.EventSequence, state EventSequenceState) bool {
 	c_sequence := (*C.GdkEventSequence)(C.NULL)
 	if sequence != nil {
@@ -668,7 +861,13 @@ func (recv *Gesture) SetSequenceState(sequence *gdk.EventSequence, state EventSe
 	return retGo
 }
 
-// SetState is a wrapper around the C function gtk_gesture_set_state.
+// Sets the state of all sequences that @gesture is currently
+// interacting with. See gtk_gesture_set_sequence_state()
+// for more details on sequence states.
+/*
+
+C function : gtk_gesture_set_state
+*/
 func (recv *Gesture) SetState(state EventSequenceState) bool {
 	c_state := (C.GtkEventSequenceState)(state)
 
@@ -678,7 +877,13 @@ func (recv *Gesture) SetState(state EventSequenceState) bool {
 	return retGo
 }
 
-// SetWindow is a wrapper around the C function gtk_gesture_set_window.
+// Sets a specific window to receive events about, so @gesture
+// will effectively handle only events targeting @window, or
+// a child of it. @window must pertain to gtk_event_controller_get_widget().
+/*
+
+C function : gtk_gesture_set_window
+*/
 func (recv *Gesture) SetWindow(window *gdk.Window) {
 	c_window := (*C.GdkWindow)(C.NULL)
 	if window != nil {
@@ -690,7 +895,11 @@ func (recv *Gesture) SetWindow(window *gdk.Window) {
 	return
 }
 
-// Ungroup is a wrapper around the C function gtk_gesture_ungroup.
+// Separates @gesture into an isolated group.
+/*
+
+C function : gtk_gesture_ungroup
+*/
 func (recv *Gesture) Ungroup() {
 	C.gtk_gesture_ungroup((*C.GtkGesture)(recv.native))
 
@@ -703,7 +912,11 @@ func (recv *Gesture) Ungroup() {
 
 // Unsupported signal 'drag-update' for GestureDrag : unsupported parameter offset_x : type gdouble :
 
-// GestureDragNew is a wrapper around the C function gtk_gesture_drag_new.
+// Returns a newly created #GtkGesture that recognizes drags.
+/*
+
+C function : gtk_gesture_drag_new
+*/
 func GestureDragNew(widget *Widget) *GestureDrag {
 	c_widget := (*C.GtkWidget)(C.NULL)
 	if widget != nil {
@@ -716,7 +929,13 @@ func GestureDragNew(widget *Widget) *GestureDrag {
 	return retGo
 }
 
-// GetOffset is a wrapper around the C function gtk_gesture_drag_get_offset.
+// If the @gesture is active, this function returns %TRUE and
+// fills in @x and @y with the coordinates of the current point,
+// as an offset to the starting drag point.
+/*
+
+C function : gtk_gesture_drag_get_offset
+*/
 func (recv *GestureDrag) GetOffset() (bool, float64, float64) {
 	var c_x C.gdouble
 
@@ -732,7 +951,13 @@ func (recv *GestureDrag) GetOffset() (bool, float64, float64) {
 	return retGo, x, y
 }
 
-// GetStartPoint is a wrapper around the C function gtk_gesture_drag_get_start_point.
+// If the @gesture is active, this function returns %TRUE
+// and fills in @x and @y with the drag start coordinates,
+// in window-relative coordinates.
+/*
+
+C function : gtk_gesture_drag_get_start_point
+*/
 func (recv *GestureDrag) GetStartPoint() (bool, float64, float64) {
 	var c_x C.gdouble
 
@@ -807,7 +1032,11 @@ func gesturelongpress_cancelledHandler(_ *C.GObject, data C.gpointer) {
 
 // Unsupported signal 'pressed' for GestureLongPress : unsupported parameter x : type gdouble :
 
-// GestureLongPressNew is a wrapper around the C function gtk_gesture_long_press_new.
+// Returns a newly created #GtkGesture that recognizes long presses.
+/*
+
+C function : gtk_gesture_long_press_new
+*/
 func GestureLongPressNew(widget *Widget) *GestureLongPress {
 	c_widget := (*C.GtkWidget)(C.NULL)
 	if widget != nil {
@@ -881,7 +1110,12 @@ func gesturemultipress_stoppedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// GestureMultiPressNew is a wrapper around the C function gtk_gesture_multi_press_new.
+// Returns a newly created #GtkGesture that recognizes single and multiple
+// presses.
+/*
+
+C function : gtk_gesture_multi_press_new
+*/
 func GestureMultiPressNew(widget *Widget) *GestureMultiPress {
 	c_widget := (*C.GtkWidget)(C.NULL)
 	if widget != nil {
@@ -900,7 +1134,11 @@ func GestureMultiPressNew(widget *Widget) *GestureMultiPress {
 
 // Unsupported signal 'pan' for GesturePan : unsupported parameter direction : type PanDirection :
 
-// GesturePanNew is a wrapper around the C function gtk_gesture_pan_new.
+// Returns a newly created #GtkGesture that recognizes pan gestures.
+/*
+
+C function : gtk_gesture_pan_new
+*/
 func GesturePanNew(widget *Widget, orientation Orientation) *GesturePan {
 	c_widget := (*C.GtkWidget)(C.NULL)
 	if widget != nil {
@@ -915,7 +1153,11 @@ func GesturePanNew(widget *Widget, orientation Orientation) *GesturePan {
 	return retGo
 }
 
-// GetOrientation is a wrapper around the C function gtk_gesture_pan_get_orientation.
+// Returns the orientation of the pan gestures that this @gesture expects.
+/*
+
+C function : gtk_gesture_pan_get_orientation
+*/
 func (recv *GesturePan) GetOrientation() Orientation {
 	retC := C.gtk_gesture_pan_get_orientation((*C.GtkGesturePan)(recv.native))
 	retGo := (Orientation)(retC)
@@ -923,7 +1165,11 @@ func (recv *GesturePan) GetOrientation() Orientation {
 	return retGo
 }
 
-// SetOrientation is a wrapper around the C function gtk_gesture_pan_set_orientation.
+// Sets the orientation to be expected on pan gestures.
+/*
+
+C function : gtk_gesture_pan_set_orientation
+*/
 func (recv *GesturePan) SetOrientation(orientation Orientation) {
 	c_orientation := (C.GtkOrientation)(orientation)
 
@@ -934,7 +1180,12 @@ func (recv *GesturePan) SetOrientation(orientation Orientation) {
 
 // Unsupported signal 'angle-changed' for GestureRotate : unsupported parameter angle : type gdouble :
 
-// GestureRotateNew is a wrapper around the C function gtk_gesture_rotate_new.
+// Returns a newly created #GtkGesture that recognizes 2-touch
+// rotation gestures.
+/*
+
+C function : gtk_gesture_rotate_new
+*/
 func GestureRotateNew(widget *Widget) *GestureRotate {
 	c_widget := (*C.GtkWidget)(C.NULL)
 	if widget != nil {
@@ -947,7 +1198,13 @@ func GestureRotateNew(widget *Widget) *GestureRotate {
 	return retGo
 }
 
-// GetAngleDelta is a wrapper around the C function gtk_gesture_rotate_get_angle_delta.
+// If @gesture is active, this function returns the angle difference
+// in radians since the gesture was first recognized. If @gesture is
+// not active, 0 is returned.
+/*
+
+C function : gtk_gesture_rotate_get_angle_delta
+*/
 func (recv *GestureRotate) GetAngleDelta() float64 {
 	retC := C.gtk_gesture_rotate_get_angle_delta((*C.GtkGestureRotate)(recv.native))
 	retGo := (float64)(retC)
@@ -955,7 +1212,12 @@ func (recv *GestureRotate) GetAngleDelta() float64 {
 	return retGo
 }
 
-// GetButton is a wrapper around the C function gtk_gesture_single_get_button.
+// Returns the button number @gesture listens for, or 0 if @gesture
+// reacts to any button press.
+/*
+
+C function : gtk_gesture_single_get_button
+*/
 func (recv *GestureSingle) GetButton() uint32 {
 	retC := C.gtk_gesture_single_get_button((*C.GtkGestureSingle)(recv.native))
 	retGo := (uint32)(retC)
@@ -963,7 +1225,12 @@ func (recv *GestureSingle) GetButton() uint32 {
 	return retGo
 }
 
-// GetCurrentButton is a wrapper around the C function gtk_gesture_single_get_current_button.
+// Returns the button number currently interacting with @gesture, or 0 if there
+// is none.
+/*
+
+C function : gtk_gesture_single_get_current_button
+*/
 func (recv *GestureSingle) GetCurrentButton() uint32 {
 	retC := C.gtk_gesture_single_get_current_button((*C.GtkGestureSingle)(recv.native))
 	retGo := (uint32)(retC)
@@ -971,7 +1238,12 @@ func (recv *GestureSingle) GetCurrentButton() uint32 {
 	return retGo
 }
 
-// GetCurrentSequence is a wrapper around the C function gtk_gesture_single_get_current_sequence.
+// Returns the event sequence currently interacting with @gesture.
+// This is only meaningful if gtk_gesture_is_active() returns %TRUE.
+/*
+
+C function : gtk_gesture_single_get_current_sequence
+*/
 func (recv *GestureSingle) GetCurrentSequence() *gdk.EventSequence {
 	retC := C.gtk_gesture_single_get_current_sequence((*C.GtkGestureSingle)(recv.native))
 	var retGo (*gdk.EventSequence)
@@ -984,7 +1256,12 @@ func (recv *GestureSingle) GetCurrentSequence() *gdk.EventSequence {
 	return retGo
 }
 
-// GetExclusive is a wrapper around the C function gtk_gesture_single_get_exclusive.
+// Gets whether a gesture is exclusive. For more information, see
+// gtk_gesture_single_set_exclusive().
+/*
+
+C function : gtk_gesture_single_get_exclusive
+*/
 func (recv *GestureSingle) GetExclusive() bool {
 	retC := C.gtk_gesture_single_get_exclusive((*C.GtkGestureSingle)(recv.native))
 	retGo := retC == C.TRUE
@@ -992,7 +1269,11 @@ func (recv *GestureSingle) GetExclusive() bool {
 	return retGo
 }
 
-// GetTouchOnly is a wrapper around the C function gtk_gesture_single_get_touch_only.
+// Returns %TRUE if the gesture is only triggered by touch events.
+/*
+
+C function : gtk_gesture_single_get_touch_only
+*/
 func (recv *GestureSingle) GetTouchOnly() bool {
 	retC := C.gtk_gesture_single_get_touch_only((*C.GtkGestureSingle)(recv.native))
 	retGo := retC == C.TRUE
@@ -1000,7 +1281,13 @@ func (recv *GestureSingle) GetTouchOnly() bool {
 	return retGo
 }
 
-// SetButton is a wrapper around the C function gtk_gesture_single_set_button.
+// Sets the button number @gesture listens to. If non-0, every
+// button press from a different button number will be ignored.
+// Touch events implicitly match with button 1.
+/*
+
+C function : gtk_gesture_single_set_button
+*/
 func (recv *GestureSingle) SetButton(button uint32) {
 	c_button := (C.guint)(button)
 
@@ -1009,7 +1296,14 @@ func (recv *GestureSingle) SetButton(button uint32) {
 	return
 }
 
-// SetExclusive is a wrapper around the C function gtk_gesture_single_set_exclusive.
+// Sets whether @gesture is exclusive. An exclusive gesture will
+// only handle pointer and "pointer emulated" touch events, so at
+// any given time, there is only one sequence able to interact with
+// those.
+/*
+
+C function : gtk_gesture_single_set_exclusive
+*/
 func (recv *GestureSingle) SetExclusive(exclusive bool) {
 	c_exclusive :=
 		boolToGboolean(exclusive)
@@ -1019,7 +1313,13 @@ func (recv *GestureSingle) SetExclusive(exclusive bool) {
 	return
 }
 
-// SetTouchOnly is a wrapper around the C function gtk_gesture_single_set_touch_only.
+// If @touch_only is %TRUE, @gesture will only handle events of type
+// #GDK_TOUCH_BEGIN, #GDK_TOUCH_UPDATE or #GDK_TOUCH_END. If %FALSE,
+// mouse events will be handled too.
+/*
+
+C function : gtk_gesture_single_set_touch_only
+*/
 func (recv *GestureSingle) SetTouchOnly(touchOnly bool) {
 	c_touch_only :=
 		boolToGboolean(touchOnly)
@@ -1031,7 +1331,11 @@ func (recv *GestureSingle) SetTouchOnly(touchOnly bool) {
 
 // Unsupported signal 'swipe' for GestureSwipe : unsupported parameter velocity_x : type gdouble :
 
-// GestureSwipeNew is a wrapper around the C function gtk_gesture_swipe_new.
+// Returns a newly created #GtkGesture that recognizes swipes.
+/*
+
+C function : gtk_gesture_swipe_new
+*/
 func GestureSwipeNew(widget *Widget) *GestureSwipe {
 	c_widget := (*C.GtkWidget)(C.NULL)
 	if widget != nil {
@@ -1044,7 +1348,13 @@ func GestureSwipeNew(widget *Widget) *GestureSwipe {
 	return retGo
 }
 
-// GetVelocity is a wrapper around the C function gtk_gesture_swipe_get_velocity.
+// If the gesture is recognized, this function returns %TRUE and fill in
+// @velocity_x and @velocity_y with the recorded velocity, as per the
+// last event(s) processed.
+/*
+
+C function : gtk_gesture_swipe_get_velocity
+*/
 func (recv *GestureSwipe) GetVelocity() (bool, float64, float64) {
 	var c_velocity_x C.gdouble
 
@@ -1062,7 +1372,12 @@ func (recv *GestureSwipe) GetVelocity() (bool, float64, float64) {
 
 // Unsupported signal 'scale-changed' for GestureZoom : unsupported parameter scale : type gdouble :
 
-// GestureZoomNew is a wrapper around the C function gtk_gesture_zoom_new.
+// Returns a newly created #GtkGesture that recognizes zoom
+// in/out gestures (usually known as pinch/zoom).
+/*
+
+C function : gtk_gesture_zoom_new
+*/
 func GestureZoomNew(widget *Widget) *GestureZoom {
 	c_widget := (*C.GtkWidget)(C.NULL)
 	if widget != nil {
@@ -1075,7 +1390,13 @@ func GestureZoomNew(widget *Widget) *GestureZoom {
 	return retGo
 }
 
-// GetScaleDelta is a wrapper around the C function gtk_gesture_zoom_get_scale_delta.
+// If @gesture is active, this function returns the zooming difference
+// since the gesture was recognized (hence the starting point is
+// considered 1:1). If @gesture is not active, 1 is returned.
+/*
+
+C function : gtk_gesture_zoom_get_scale_delta
+*/
 func (recv *GestureZoom) GetScaleDelta() float64 {
 	retC := C.gtk_gesture_zoom_get_scale_delta((*C.GtkGestureZoom)(recv.native))
 	retGo := (float64)(retC)
@@ -1083,7 +1404,21 @@ func (recv *GestureZoom) GetScaleDelta() float64 {
 	return retGo
 }
 
-// AddResourcePath is a wrapper around the C function gtk_icon_theme_add_resource_path.
+// Adds a resource path that will be looked at when looking
+// for icons, similar to search paths.
+//
+// This function should be used to make application-specific icons
+// available as part of the icon theme.
+//
+// The resources are considered as part of the hicolor icon theme
+// and must be located in subdirectories that are defined in the
+// hicolor icon theme, such as `@path/16x16/actions/run.png`.
+// Icons that are directly placed in the resource path instead
+// of a subdirectory are also considered as ultimate fallback.
+/*
+
+C function : gtk_icon_theme_add_resource_path
+*/
 func (recv *IconTheme) AddResourcePath(path string) {
 	c_path := C.CString(path)
 	defer C.free(unsafe.Pointer(c_path))
@@ -1264,7 +1599,11 @@ func listbox_unselectAllHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// GetSelectedRows is a wrapper around the C function gtk_list_box_get_selected_rows.
+// Creates a list of all selected children.
+/*
+
+C function : gtk_list_box_get_selected_rows
+*/
 func (recv *ListBox) GetSelectedRows() *glib.List {
 	retC := C.gtk_list_box_get_selected_rows((*C.GtkListBox)(recv.native))
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
@@ -1272,7 +1611,11 @@ func (recv *ListBox) GetSelectedRows() *glib.List {
 	return retGo
 }
 
-// SelectAll is a wrapper around the C function gtk_list_box_select_all.
+// Select all children of @box, if the selection mode allows it.
+/*
+
+C function : gtk_list_box_select_all
+*/
 func (recv *ListBox) SelectAll() {
 	C.gtk_list_box_select_all((*C.GtkListBox)(recv.native))
 
@@ -1281,14 +1624,22 @@ func (recv *ListBox) SelectAll() {
 
 // Unsupported : gtk_list_box_selected_foreach : unsupported parameter func : no type generator for ListBoxForeachFunc (GtkListBoxForeachFunc) for param func
 
-// UnselectAll is a wrapper around the C function gtk_list_box_unselect_all.
+// Unselect all children of @box, if the selection mode allows it.
+/*
+
+C function : gtk_list_box_unselect_all
+*/
 func (recv *ListBox) UnselectAll() {
 	C.gtk_list_box_unselect_all((*C.GtkListBox)(recv.native))
 
 	return
 }
 
-// UnselectRow is a wrapper around the C function gtk_list_box_unselect_row.
+// Unselects a single row of @box, if the selection mode allows it.
+/*
+
+C function : gtk_list_box_unselect_row
+*/
 func (recv *ListBox) UnselectRow(row *ListBoxRow) {
 	c_row := (*C.GtkListBoxRow)(C.NULL)
 	if row != nil {
@@ -1300,7 +1651,12 @@ func (recv *ListBox) UnselectRow(row *ListBoxRow) {
 	return
 }
 
-// GetActivatable is a wrapper around the C function gtk_list_box_row_get_activatable.
+// Gets the value of the #GtkListBoxRow:activatable property
+// for this row.
+/*
+
+C function : gtk_list_box_row_get_activatable
+*/
 func (recv *ListBoxRow) GetActivatable() bool {
 	retC := C.gtk_list_box_row_get_activatable((*C.GtkListBoxRow)(recv.native))
 	retGo := retC == C.TRUE
@@ -1308,7 +1664,12 @@ func (recv *ListBoxRow) GetActivatable() bool {
 	return retGo
 }
 
-// GetSelectable is a wrapper around the C function gtk_list_box_row_get_selectable.
+// Gets the value of the #GtkListBoxRow:selectable property
+// for this row.
+/*
+
+C function : gtk_list_box_row_get_selectable
+*/
 func (recv *ListBoxRow) GetSelectable() bool {
 	retC := C.gtk_list_box_row_get_selectable((*C.GtkListBoxRow)(recv.native))
 	retGo := retC == C.TRUE
@@ -1316,7 +1677,12 @@ func (recv *ListBoxRow) GetSelectable() bool {
 	return retGo
 }
 
-// IsSelected is a wrapper around the C function gtk_list_box_row_is_selected.
+// Returns whether the child is currently selected in its
+// #GtkListBox container.
+/*
+
+C function : gtk_list_box_row_is_selected
+*/
 func (recv *ListBoxRow) IsSelected() bool {
 	retC := C.gtk_list_box_row_is_selected((*C.GtkListBoxRow)(recv.native))
 	retGo := retC == C.TRUE
@@ -1324,7 +1690,11 @@ func (recv *ListBoxRow) IsSelected() bool {
 	return retGo
 }
 
-// SetActivatable is a wrapper around the C function gtk_list_box_row_set_activatable.
+// Set the #GtkListBoxRow:activatable property for this row.
+/*
+
+C function : gtk_list_box_row_set_activatable
+*/
 func (recv *ListBoxRow) SetActivatable(activatable bool) {
 	c_activatable :=
 		boolToGboolean(activatable)
@@ -1334,7 +1704,11 @@ func (recv *ListBoxRow) SetActivatable(activatable bool) {
 	return
 }
 
-// SetSelectable is a wrapper around the C function gtk_list_box_row_set_selectable.
+// Set the #GtkListBoxRow:selectable property for this row.
+/*
+
+C function : gtk_list_box_row_set_selectable
+*/
 func (recv *ListBoxRow) SetSelectable(selectable bool) {
 	c_selectable :=
 		boolToGboolean(selectable)
@@ -1401,7 +1775,11 @@ func placessidebar_showEnterLocationHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// GetShowEnterLocation is a wrapper around the C function gtk_places_sidebar_get_show_enter_location.
+// Returns the value previously set with gtk_places_sidebar_set_show_enter_location()
+/*
+
+C function : gtk_places_sidebar_get_show_enter_location
+*/
 func (recv *PlacesSidebar) GetShowEnterLocation() bool {
 	retC := C.gtk_places_sidebar_get_show_enter_location((*C.GtkPlacesSidebar)(recv.native))
 	retGo := retC == C.TRUE
@@ -1409,7 +1787,16 @@ func (recv *PlacesSidebar) GetShowEnterLocation() bool {
 	return retGo
 }
 
-// SetShowEnterLocation is a wrapper around the C function gtk_places_sidebar_set_show_enter_location.
+// Sets whether the @sidebar should show an item for entering a location;
+// this is off by default. An application may want to turn this on if manually
+// entering URLs is an expected user action.
+//
+// If you enable this, you should connect to the
+// #GtkPlacesSidebar::show-enter-location signal.
+/*
+
+C function : gtk_places_sidebar_set_show_enter_location
+*/
 func (recv *PlacesSidebar) SetShowEnterLocation(showEnterLocation bool) {
 	c_show_enter_location :=
 		boolToGboolean(showEnterLocation)
@@ -1481,7 +1868,11 @@ func switch_stateSetHandler(_ *C.GObject, c_state C.gboolean, data C.gpointer) C
 	return retC
 }
 
-// GetState is a wrapper around the C function gtk_switch_get_state.
+// Gets the underlying state of the #GtkSwitch.
+/*
+
+C function : gtk_switch_get_state
+*/
 func (recv *Switch) GetState() bool {
 	retC := C.gtk_switch_get_state((*C.GtkSwitch)(recv.native))
 	retGo := retC == C.TRUE
@@ -1489,7 +1880,17 @@ func (recv *Switch) GetState() bool {
 	return retGo
 }
 
-// SetState is a wrapper around the C function gtk_switch_set_state.
+// Sets the underlying state of the #GtkSwitch.
+//
+// Normally, this is the same as #GtkSwitch:active, unless the switch
+// is set up for delayed state changes. This function is typically
+// called from a #GtkSwitch::state-set signal handler.
+//
+// See #GtkSwitch::state-set for details.
+/*
+
+C function : gtk_switch_set_state
+*/
 func (recv *Switch) SetState(state bool) {
 	c_state :=
 		boolToGboolean(state)

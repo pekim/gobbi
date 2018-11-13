@@ -10,7 +10,14 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// PushFront is a wrapper around the C function g_async_queue_push_front.
+// Pushes the @item into the @queue. @item must not be %NULL.
+// In contrast to g_async_queue_push(), this function
+// pushes the new item ahead of the items already in the queue,
+// so that it will be the next one to be popped off the queue.
+/*
+
+C function : g_async_queue_push_front
+*/
 func (recv *AsyncQueue) PushFront(item uintptr) {
 	c_item := (C.gpointer)(item)
 
@@ -19,7 +26,16 @@ func (recv *AsyncQueue) PushFront(item uintptr) {
 	return
 }
 
-// PushFrontUnlocked is a wrapper around the C function g_async_queue_push_front_unlocked.
+// Pushes the @item into the @queue. @item must not be %NULL.
+// In contrast to g_async_queue_push_unlocked(), this function
+// pushes the new item ahead of the items already in the queue,
+// so that it will be the next one to be popped off the queue.
+//
+// This function must be called while holding the @queue's lock.
+/*
+
+C function : g_async_queue_push_front_unlocked
+*/
 func (recv *AsyncQueue) PushFrontUnlocked(item uintptr) {
 	c_item := (C.gpointer)(item)
 
@@ -28,7 +44,11 @@ func (recv *AsyncQueue) PushFrontUnlocked(item uintptr) {
 	return
 }
 
-// Remove is a wrapper around the C function g_async_queue_remove.
+// Remove an item from the queue.
+/*
+
+C function : g_async_queue_remove
+*/
 func (recv *AsyncQueue) Remove(item uintptr) bool {
 	c_item := (C.gpointer)(item)
 
@@ -38,7 +58,13 @@ func (recv *AsyncQueue) Remove(item uintptr) bool {
 	return retGo
 }
 
-// RemoveUnlocked is a wrapper around the C function g_async_queue_remove_unlocked.
+// Remove an item from the queue.
+//
+// This function must be called while holding the @queue's lock.
+/*
+
+C function : g_async_queue_remove_unlocked
+*/
 func (recv *AsyncQueue) RemoveUnlocked(item uintptr) bool {
 	c_item := (C.gpointer)(item)
 
@@ -48,7 +74,12 @@ func (recv *AsyncQueue) RemoveUnlocked(item uintptr) bool {
 	return retGo
 }
 
-// MoveToFront is a wrapper around the C function g_thread_pool_move_to_front.
+// Moves the item to the front of the queue of unprocessed
+// items, so that it will be processed next.
+/*
+
+C function : g_thread_pool_move_to_front
+*/
 func (recv *ThreadPool) MoveToFront(data uintptr) bool {
 	c_data := (C.gpointer)(data)
 

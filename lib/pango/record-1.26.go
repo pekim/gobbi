@@ -10,7 +10,16 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// GetLogicalWidths is a wrapper around the C function pango_glyph_item_get_logical_widths.
+// Given a #PangoGlyphItem and the corresponding
+// text, determine the screen width corresponding to each character. When
+// multiple characters compose a single cluster, the width of the entire
+// cluster is divided equally among the characters.
+//
+// See also pango_glyph_string_get_logical_widths().
+/*
+
+C function : pango_glyph_item_get_logical_widths
+*/
 func (recv *GlyphItem) GetLogicalWidths(text string, logicalWidths []int32) {
 	c_text := C.CString(text)
 	defer C.free(unsafe.Pointer(c_text))

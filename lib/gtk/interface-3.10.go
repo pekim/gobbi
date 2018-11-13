@@ -12,7 +12,18 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// GetCurrentName is a wrapper around the C function gtk_file_chooser_get_current_name.
+// Gets the current name in the file selector, as entered by the user in the
+// text entry for “Name”.
+//
+// This is meant to be used in save dialogs, to get the currently typed filename
+// when the file itself does not exist yet.  For example, an application that
+// adds a custom extra widget to the file chooser for “file format” may want to
+// change the extension of the typed filename based on the chosen format, say,
+// from “.jpg” to “.png”.
+/*
+
+C function : gtk_file_chooser_get_current_name
+*/
 func (recv *FileChooser) GetCurrentName() string {
 	retC := C.gtk_file_chooser_get_current_name((*C.GtkFileChooser)(recv.native))
 	retGo := C.GoString(retC)
@@ -21,7 +32,14 @@ func (recv *FileChooser) GetCurrentName() string {
 	return retGo
 }
 
-// RowsReorderedWithLength is a wrapper around the C function gtk_tree_model_rows_reordered_with_length.
+// Emits the #GtkTreeModel::rows-reordered signal on @tree_model.
+//
+// This should be called by models when their rows have been
+// reordered.
+/*
+
+C function : gtk_tree_model_rows_reordered_with_length
+*/
 func (recv *TreeModel) RowsReorderedWithLength(path *TreePath, iter *TreeIter, newOrder []int32) {
 	c_path := (*C.GtkTreePath)(C.NULL)
 	if path != nil {

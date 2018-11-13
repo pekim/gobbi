@@ -56,7 +56,12 @@ func CastToCredentials(object *gobject.Object) *Credentials {
 	return CredentialsNewFromC(object.ToC())
 }
 
-// CredentialsNew is a wrapper around the C function g_credentials_new.
+// Creates a new #GCredentials object with credentials matching the
+// the current process.
+/*
+
+C function : g_credentials_new
+*/
 func CredentialsNew() *Credentials {
 	retC := C.g_credentials_new()
 	retGo := CredentialsNewFromC(unsafe.Pointer(retC))
@@ -64,7 +69,16 @@ func CredentialsNew() *Credentials {
 	return retGo
 }
 
-// GetNative is a wrapper around the C function g_credentials_get_native.
+// Gets a pointer to native credentials of type @native_type from
+// @credentials.
+//
+// It is a programming error (which will cause an warning to be
+// logged) to use this method if there is no #GCredentials support for
+// the OS or if @native_type isn't supported by the OS.
+/*
+
+C function : g_credentials_get_native
+*/
 func (recv *Credentials) GetNative(nativeType CredentialsType) uintptr {
 	c_native_type := (C.GCredentialsType)(nativeType)
 
@@ -76,7 +90,14 @@ func (recv *Credentials) GetNative(nativeType CredentialsType) uintptr {
 
 // Unsupported : g_credentials_get_unix_user : no return generator
 
-// IsSameUser is a wrapper around the C function g_credentials_is_same_user.
+// Checks if @credentials and @other_credentials is the same user.
+//
+// This operation can fail if #GCredentials is not supported on the
+// the OS.
+/*
+
+C function : g_credentials_is_same_user
+*/
 func (recv *Credentials) IsSameUser(otherCredentials *Credentials) (bool, error) {
 	c_other_credentials := (*C.GCredentials)(C.NULL)
 	if otherCredentials != nil {
@@ -96,7 +117,16 @@ func (recv *Credentials) IsSameUser(otherCredentials *Credentials) (bool, error)
 	return retGo, goThrowableError
 }
 
-// SetNative is a wrapper around the C function g_credentials_set_native.
+// Copies the native credentials of type @native_type from @native
+// into @credentials.
+//
+// It is a programming error (which will cause an warning to be
+// logged) to use this method if there is no #GCredentials support for
+// the OS or if @native_type isn't supported by the OS.
+/*
+
+C function : g_credentials_set_native
+*/
 func (recv *Credentials) SetNative(nativeType CredentialsType, native uintptr) {
 	c_native_type := (C.GCredentialsType)(nativeType)
 
@@ -109,7 +139,13 @@ func (recv *Credentials) SetNative(nativeType CredentialsType, native uintptr) {
 
 // Unsupported : g_credentials_set_unix_user : unsupported parameter uid : no type generator for guint (uid_t) for param uid
 
-// ToString is a wrapper around the C function g_credentials_to_string.
+// Creates a human-readable textual representation of @credentials
+// that can be used in logging and debug messages. The format of the
+// returned string may change in future GLib release.
+/*
+
+C function : g_credentials_to_string
+*/
 func (recv *Credentials) ToString() string {
 	retC := C.g_credentials_to_string((*C.GCredentials)(recv.native))
 	retGo := C.GoString(retC)
@@ -150,7 +186,11 @@ func CastToDBusAuthObserver(object *gobject.Object) *DBusAuthObserver {
 	return DBusAuthObserverNewFromC(object.ToC())
 }
 
-// DBusAuthObserverNew is a wrapper around the C function g_dbus_auth_observer_new.
+// Creates a new #GDBusAuthObserver object.
+/*
+
+C function : g_dbus_auth_observer_new
+*/
 func DBusAuthObserverNew() *DBusAuthObserver {
 	retC := C.g_dbus_auth_observer_new()
 	retGo := DBusAuthObserverNewFromC(unsafe.Pointer(retC))
@@ -158,7 +198,11 @@ func DBusAuthObserverNew() *DBusAuthObserver {
 	return retGo
 }
 
-// AuthorizeAuthenticatedPeer is a wrapper around the C function g_dbus_auth_observer_authorize_authenticated_peer.
+// Emits the #GDBusAuthObserver::authorize-authenticated-peer signal on @observer.
+/*
+
+C function : g_dbus_auth_observer_authorize_authenticated_peer
+*/
 func (recv *DBusAuthObserver) AuthorizeAuthenticatedPeer(stream *IOStream, credentials *Credentials) bool {
 	c_stream := (*C.GIOStream)(C.NULL)
 	if stream != nil {
@@ -208,7 +252,11 @@ func CastToDBusConnection(object *gobject.Object) *DBusConnection {
 	return DBusConnectionNewFromC(object.ToC())
 }
 
-// DBusConnectionNewFinish is a wrapper around the C function g_dbus_connection_new_finish.
+// Finishes an operation started with g_dbus_connection_new().
+/*
+
+C function : g_dbus_connection_new_finish
+*/
 func DBusConnectionNewFinish(res *AsyncResult) (*DBusConnection, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
 
@@ -225,7 +273,11 @@ func DBusConnectionNewFinish(res *AsyncResult) (*DBusConnection, error) {
 	return retGo, goThrowableError
 }
 
-// DBusConnectionNewForAddressFinish is a wrapper around the C function g_dbus_connection_new_for_address_finish.
+// Finishes an operation started with g_dbus_connection_new_for_address().
+/*
+
+C function : g_dbus_connection_new_for_address_finish
+*/
 func DBusConnectionNewForAddressFinish(res *AsyncResult) (*DBusConnection, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
 
@@ -242,7 +294,26 @@ func DBusConnectionNewForAddressFinish(res *AsyncResult) (*DBusConnection, error
 	return retGo, goThrowableError
 }
 
-// DBusConnectionNewForAddressSync is a wrapper around the C function g_dbus_connection_new_for_address_sync.
+// Synchronously connects and sets up a D-Bus client connection for
+// exchanging D-Bus messages with an endpoint specified by @address
+// which must be in the
+// [D-Bus address format](https://dbus.freedesktop.org/doc/dbus-specification.html#addresses).
+//
+// This constructor can only be used to initiate client-side
+// connections - use g_dbus_connection_new_sync() if you need to act
+// as the server. In particular, @flags cannot contain the
+// %G_DBUS_CONNECTION_FLAGS_AUTHENTICATION_SERVER or
+// %G_DBUS_CONNECTION_FLAGS_AUTHENTICATION_ALLOW_ANONYMOUS flags.
+//
+// This is a synchronous failable constructor. See
+// g_dbus_connection_new_for_address() for the asynchronous version.
+//
+// If @observer is not %NULL it may be used to control the
+// authentication process.
+/*
+
+C function : g_dbus_connection_new_for_address_sync
+*/
 func DBusConnectionNewForAddressSync(address string, flags DBusConnectionFlags, observer *DBusAuthObserver, cancellable *Cancellable) (*DBusConnection, error) {
 	c_address := C.CString(address)
 	defer C.free(unsafe.Pointer(c_address))
@@ -272,7 +343,25 @@ func DBusConnectionNewForAddressSync(address string, flags DBusConnectionFlags, 
 	return retGo, goThrowableError
 }
 
-// DBusConnectionNewSync is a wrapper around the C function g_dbus_connection_new_sync.
+// Synchronously sets up a D-Bus connection for exchanging D-Bus messages
+// with the end represented by @stream.
+//
+// If @stream is a #GSocketConnection, then the corresponding #GSocket
+// will be put into non-blocking mode.
+//
+// The D-Bus connection will interact with @stream from a worker thread.
+// As a result, the caller should not interact with @stream after this
+// method has been called, except by calling g_object_unref() on it.
+//
+// If @observer is not %NULL it may be used to control the
+// authentication process.
+//
+// This is a synchronous failable constructor. See
+// g_dbus_connection_new() for the asynchronous version.
+/*
+
+C function : g_dbus_connection_new_sync
+*/
 func DBusConnectionNewSync(stream *IOStream, guid string, flags DBusConnectionFlags, observer *DBusAuthObserver, cancellable *Cancellable) (*DBusConnection, error) {
 	c_stream := (*C.GIOStream)(C.NULL)
 	if stream != nil {
@@ -317,7 +406,11 @@ func DBusConnectionNewSync(stream *IOStream, guid string, flags DBusConnectionFl
 
 // Unsupported : g_dbus_connection_close : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// CloseFinish is a wrapper around the C function g_dbus_connection_close_finish.
+// Finishes an operation started with g_dbus_connection_close().
+/*
+
+C function : g_dbus_connection_close_finish
+*/
 func (recv *DBusConnection) CloseFinish(res *AsyncResult) (bool, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
 
@@ -334,7 +427,14 @@ func (recv *DBusConnection) CloseFinish(res *AsyncResult) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// CloseSync is a wrapper around the C function g_dbus_connection_close_sync.
+// Synchronously closees @connection. The calling thread is blocked
+// until this is done. See g_dbus_connection_close() for the
+// asynchronous version of this method and more details about what it
+// does.
+/*
+
+C function : g_dbus_connection_close_sync
+*/
 func (recv *DBusConnection) CloseSync(cancellable *Cancellable) (bool, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
 	if cancellable != nil {
@@ -358,7 +458,11 @@ func (recv *DBusConnection) CloseSync(cancellable *Cancellable) (bool, error) {
 
 // Unsupported : g_dbus_connection_flush : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// FlushFinish is a wrapper around the C function g_dbus_connection_flush_finish.
+// Finishes an operation started with g_dbus_connection_flush().
+/*
+
+C function : g_dbus_connection_flush_finish
+*/
 func (recv *DBusConnection) FlushFinish(res *AsyncResult) (bool, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
 
@@ -375,7 +479,14 @@ func (recv *DBusConnection) FlushFinish(res *AsyncResult) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// FlushSync is a wrapper around the C function g_dbus_connection_flush_sync.
+// Synchronously flushes @connection. The calling thread is blocked
+// until this is done. See g_dbus_connection_flush() for the
+// asynchronous version of this method and more details about what it
+// does.
+/*
+
+C function : g_dbus_connection_flush_sync
+*/
 func (recv *DBusConnection) FlushSync(cancellable *Cancellable) (bool, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
 	if cancellable != nil {
@@ -395,7 +506,11 @@ func (recv *DBusConnection) FlushSync(cancellable *Cancellable) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// GetCapabilities is a wrapper around the C function g_dbus_connection_get_capabilities.
+// Gets the capabilities negotiated with the remote peer
+/*
+
+C function : g_dbus_connection_get_capabilities
+*/
 func (recv *DBusConnection) GetCapabilities() DBusCapabilityFlags {
 	retC := C.g_dbus_connection_get_capabilities((*C.GDBusConnection)(recv.native))
 	retGo := (DBusCapabilityFlags)(retC)
@@ -403,7 +518,13 @@ func (recv *DBusConnection) GetCapabilities() DBusCapabilityFlags {
 	return retGo
 }
 
-// GetExitOnClose is a wrapper around the C function g_dbus_connection_get_exit_on_close.
+// Gets whether the process is terminated when @connection is
+// closed by the remote peer. See
+// #GDBusConnection:exit-on-close for more details.
+/*
+
+C function : g_dbus_connection_get_exit_on_close
+*/
 func (recv *DBusConnection) GetExitOnClose() bool {
 	retC := C.g_dbus_connection_get_exit_on_close((*C.GDBusConnection)(recv.native))
 	retGo := retC == C.TRUE
@@ -411,7 +532,12 @@ func (recv *DBusConnection) GetExitOnClose() bool {
 	return retGo
 }
 
-// GetGuid is a wrapper around the C function g_dbus_connection_get_guid.
+// The GUID of the peer performing the role of server when
+// authenticating. See #GDBusConnection:guid for more details.
+/*
+
+C function : g_dbus_connection_get_guid
+*/
 func (recv *DBusConnection) GetGuid() string {
 	retC := C.g_dbus_connection_get_guid((*C.GDBusConnection)(recv.native))
 	retGo := C.GoString(retC)
@@ -419,7 +545,19 @@ func (recv *DBusConnection) GetGuid() string {
 	return retGo
 }
 
-// GetPeerCredentials is a wrapper around the C function g_dbus_connection_get_peer_credentials.
+// Gets the credentials of the authenticated peer. This will always
+// return %NULL unless @connection acted as a server
+// (e.g. %G_DBUS_CONNECTION_FLAGS_AUTHENTICATION_SERVER was passed)
+// when set up and the client passed credentials as part of the
+// authentication process.
+//
+// In a message bus setup, the message bus is always the server and
+// each application is a client. So this method will always return
+// %NULL for message bus clients.
+/*
+
+C function : g_dbus_connection_get_peer_credentials
+*/
 func (recv *DBusConnection) GetPeerCredentials() *Credentials {
 	retC := C.g_dbus_connection_get_peer_credentials((*C.GDBusConnection)(recv.native))
 	var retGo (*Credentials)
@@ -432,7 +570,15 @@ func (recv *DBusConnection) GetPeerCredentials() *Credentials {
 	return retGo
 }
 
-// GetStream is a wrapper around the C function g_dbus_connection_get_stream.
+// Gets the underlying stream used for IO.
+//
+// While the #GDBusConnection is active, it will interact with this
+// stream from a worker thread, so it is not safe to interact with
+// the stream directly.
+/*
+
+C function : g_dbus_connection_get_stream
+*/
 func (recv *DBusConnection) GetStream() *IOStream {
 	retC := C.g_dbus_connection_get_stream((*C.GDBusConnection)(recv.native))
 	retGo := IOStreamNewFromC(unsafe.Pointer(retC))
@@ -440,7 +586,13 @@ func (recv *DBusConnection) GetStream() *IOStream {
 	return retGo
 }
 
-// GetUniqueName is a wrapper around the C function g_dbus_connection_get_unique_name.
+// Gets the unique name of @connection as assigned by the message
+// bus. This can also be used to figure out if @connection is a
+// message bus connection.
+/*
+
+C function : g_dbus_connection_get_unique_name
+*/
 func (recv *DBusConnection) GetUniqueName() string {
 	retC := C.g_dbus_connection_get_unique_name((*C.GDBusConnection)(recv.native))
 	retGo := C.GoString(retC)
@@ -448,7 +600,11 @@ func (recv *DBusConnection) GetUniqueName() string {
 	return retGo
 }
 
-// IsClosed is a wrapper around the C function g_dbus_connection_is_closed.
+// Gets whether @connection is closed.
+/*
+
+C function : g_dbus_connection_is_closed
+*/
 func (recv *DBusConnection) IsClosed() bool {
 	retC := C.g_dbus_connection_is_closed((*C.GDBusConnection)(recv.native))
 	retGo := retC == C.TRUE
@@ -460,7 +616,18 @@ func (recv *DBusConnection) IsClosed() bool {
 
 // Unsupported : g_dbus_connection_register_subtree : unsupported parameter user_data_free_func : no type generator for GLib.DestroyNotify (GDestroyNotify) for param user_data_free_func
 
-// RemoveFilter is a wrapper around the C function g_dbus_connection_remove_filter.
+// Removes a filter.
+//
+// Note that since filters run in a different thread, there is a race
+// condition where it is possible that the filter will be running even
+// after calling g_dbus_connection_remove_filter(), so you cannot just
+// free data that the filter might be using. Instead, you should pass
+// a #GDestroyNotify to g_dbus_connection_add_filter(), which will be
+// called when it is guaranteed that the data is no longer needed.
+/*
+
+C function : g_dbus_connection_remove_filter
+*/
 func (recv *DBusConnection) RemoveFilter(filterId uint32) {
 	c_filter_id := (C.guint)(filterId)
 
@@ -469,7 +636,29 @@ func (recv *DBusConnection) RemoveFilter(filterId uint32) {
 	return
 }
 
-// SendMessage is a wrapper around the C function g_dbus_connection_send_message.
+// Asynchronously sends @message to the peer represented by @connection.
+//
+// Unless @flags contain the
+// %G_DBUS_SEND_MESSAGE_FLAGS_PRESERVE_SERIAL flag, the serial number
+// will be assigned by @connection and set on @message via
+// g_dbus_message_set_serial(). If @out_serial is not %NULL, then the
+// serial number used will be written to this location prior to
+// submitting the message to the underlying transport.
+//
+// If @connection is closed then the operation will fail with
+// %G_IO_ERROR_CLOSED. If @message is not well-formed,
+// the operation fails with %G_IO_ERROR_INVALID_ARGUMENT.
+//
+// See this [server][gdbus-server] and [client][gdbus-unix-fd-client]
+// for an example of how to use this low-level API to send and receive
+// UNIX file descriptors.
+//
+// Note that @message must be unlocked, unless @flags contain the
+// %G_DBUS_SEND_MESSAGE_FLAGS_PRESERVE_SERIAL flag.
+/*
+
+C function : g_dbus_connection_send_message
+*/
 func (recv *DBusConnection) SendMessage(message *DBusMessage, flags DBusSendMessageFlags) (bool, uint32, error) {
 	c_message := (*C.GDBusMessage)(C.NULL)
 	if message != nil {
@@ -497,7 +686,20 @@ func (recv *DBusConnection) SendMessage(message *DBusMessage, flags DBusSendMess
 
 // Unsupported : g_dbus_connection_send_message_with_reply : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// SendMessageWithReplyFinish is a wrapper around the C function g_dbus_connection_send_message_with_reply_finish.
+// Finishes an operation started with g_dbus_connection_send_message_with_reply().
+//
+// Note that @error is only set if a local in-process error
+// occurred. That is to say that the returned #GDBusMessage object may
+// be of type %G_DBUS_MESSAGE_TYPE_ERROR. Use
+// g_dbus_message_to_gerror() to transcode this to a #GError.
+//
+// See this [server][gdbus-server] and [client][gdbus-unix-fd-client]
+// for an example of how to use this low-level API to send and receive
+// UNIX file descriptors.
+/*
+
+C function : g_dbus_connection_send_message_with_reply_finish
+*/
 func (recv *DBusConnection) SendMessageWithReplyFinish(res *AsyncResult) (*DBusMessage, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
 
@@ -514,7 +716,38 @@ func (recv *DBusConnection) SendMessageWithReplyFinish(res *AsyncResult) (*DBusM
 	return retGo, goThrowableError
 }
 
-// SendMessageWithReplySync is a wrapper around the C function g_dbus_connection_send_message_with_reply_sync.
+// Synchronously sends @message to the peer represented by @connection
+// and blocks the calling thread until a reply is received or the
+// timeout is reached. See g_dbus_connection_send_message_with_reply()
+// for the asynchronous version of this method.
+//
+// Unless @flags contain the
+// %G_DBUS_SEND_MESSAGE_FLAGS_PRESERVE_SERIAL flag, the serial number
+// will be assigned by @connection and set on @message via
+// g_dbus_message_set_serial(). If @out_serial is not %NULL, then the
+// serial number used will be written to this location prior to
+// submitting the message to the underlying transport.
+//
+// If @connection is closed then the operation will fail with
+// %G_IO_ERROR_CLOSED. If @cancellable is canceled, the operation will
+// fail with %G_IO_ERROR_CANCELLED. If @message is not well-formed,
+// the operation fails with %G_IO_ERROR_INVALID_ARGUMENT.
+//
+// Note that @error is only set if a local in-process error
+// occurred. That is to say that the returned #GDBusMessage object may
+// be of type %G_DBUS_MESSAGE_TYPE_ERROR. Use
+// g_dbus_message_to_gerror() to transcode this to a #GError.
+//
+// See this [server][gdbus-server] and [client][gdbus-unix-fd-client]
+// for an example of how to use this low-level API to send and receive
+// UNIX file descriptors.
+//
+// Note that @message must be unlocked, unless @flags contain the
+// %G_DBUS_SEND_MESSAGE_FLAGS_PRESERVE_SERIAL flag.
+/*
+
+C function : g_dbus_connection_send_message_with_reply_sync
+*/
 func (recv *DBusConnection) SendMessageWithReplySync(message *DBusMessage, flags DBusSendMessageFlags, timeoutMsec int32, cancellable *Cancellable) (*DBusMessage, uint32, error) {
 	c_message := (*C.GDBusMessage)(C.NULL)
 	if message != nil {
@@ -547,7 +780,20 @@ func (recv *DBusConnection) SendMessageWithReplySync(message *DBusMessage, flags
 	return retGo, outSerial, goThrowableError
 }
 
-// SetExitOnClose is a wrapper around the C function g_dbus_connection_set_exit_on_close.
+// Sets whether the process should be terminated when @connection is
+// closed by the remote peer. See #GDBusConnection:exit-on-close for
+// more details.
+//
+// Note that this function should be used with care. Most modern UNIX
+// desktops tie the notion of a user session the session bus, and expect
+// all of a users applications to quit when their bus connection goes away.
+// If you are setting @exit_on_close to %FALSE for the shared session
+// bus connection, you should make sure that your application exits
+// when the user session ends.
+/*
+
+C function : g_dbus_connection_set_exit_on_close
+*/
 func (recv *DBusConnection) SetExitOnClose(exitOnClose bool) {
 	c_exit_on_close :=
 		boolToGboolean(exitOnClose)
@@ -559,7 +805,11 @@ func (recv *DBusConnection) SetExitOnClose(exitOnClose bool) {
 
 // Unsupported : g_dbus_connection_signal_subscribe : unsupported parameter callback : no type generator for DBusSignalCallback (GDBusSignalCallback) for param callback
 
-// SignalUnsubscribe is a wrapper around the C function g_dbus_connection_signal_unsubscribe.
+// Unsubscribes from signals.
+/*
+
+C function : g_dbus_connection_signal_unsubscribe
+*/
 func (recv *DBusConnection) SignalUnsubscribe(subscriptionId uint32) {
 	c_subscription_id := (C.guint)(subscriptionId)
 
@@ -568,14 +818,25 @@ func (recv *DBusConnection) SignalUnsubscribe(subscriptionId uint32) {
 	return
 }
 
-// StartMessageProcessing is a wrapper around the C function g_dbus_connection_start_message_processing.
+// If @connection was created with
+// %G_DBUS_CONNECTION_FLAGS_DELAY_MESSAGE_PROCESSING, this method
+// starts processing messages. Does nothing on if @connection wasn't
+// created with this flag or if the method has already been called.
+/*
+
+C function : g_dbus_connection_start_message_processing
+*/
 func (recv *DBusConnection) StartMessageProcessing() {
 	C.g_dbus_connection_start_message_processing((*C.GDBusConnection)(recv.native))
 
 	return
 }
 
-// UnregisterObject is a wrapper around the C function g_dbus_connection_unregister_object.
+// Unregisters an object.
+/*
+
+C function : g_dbus_connection_unregister_object
+*/
 func (recv *DBusConnection) UnregisterObject(registrationId uint32) bool {
 	c_registration_id := (C.guint)(registrationId)
 
@@ -585,7 +846,11 @@ func (recv *DBusConnection) UnregisterObject(registrationId uint32) bool {
 	return retGo
 }
 
-// UnregisterSubtree is a wrapper around the C function g_dbus_connection_unregister_subtree.
+// Unregisters a subtree.
+/*
+
+C function : g_dbus_connection_unregister_subtree
+*/
 func (recv *DBusConnection) UnregisterSubtree(registrationId uint32) bool {
 	c_registration_id := (C.guint)(registrationId)
 
@@ -627,7 +892,11 @@ func CastToDBusMessage(object *gobject.Object) *DBusMessage {
 	return DBusMessageNewFromC(object.ToC())
 }
 
-// DBusMessageNew is a wrapper around the C function g_dbus_message_new.
+// Creates a new empty #GDBusMessage.
+/*
+
+C function : g_dbus_message_new
+*/
 func DBusMessageNew() *DBusMessage {
 	retC := C.g_dbus_message_new()
 	retGo := DBusMessageNewFromC(unsafe.Pointer(retC))
@@ -635,7 +904,13 @@ func DBusMessageNew() *DBusMessage {
 	return retGo
 }
 
-// DBusMessageNewFromBlob is a wrapper around the C function g_dbus_message_new_from_blob.
+// Creates a new #GDBusMessage from the data stored at @blob. The byte
+// order that the message was in can be retrieved using
+// g_dbus_message_get_byte_order().
+/*
+
+C function : g_dbus_message_new_from_blob
+*/
 func DBusMessageNewFromBlob(blob []uint8, capabilities DBusCapabilityFlags) (*DBusMessage, error) {
 	c_blob := &blob[0]
 
@@ -656,7 +931,11 @@ func DBusMessageNewFromBlob(blob []uint8, capabilities DBusCapabilityFlags) (*DB
 	return retGo, goThrowableError
 }
 
-// DBusMessageNewMethodCall is a wrapper around the C function g_dbus_message_new_method_call.
+// Creates a new #GDBusMessage for a method call.
+/*
+
+C function : g_dbus_message_new_method_call
+*/
 func DBusMessageNewMethodCall(name string, path string, interface_ string, method string) *DBusMessage {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -676,7 +955,11 @@ func DBusMessageNewMethodCall(name string, path string, interface_ string, metho
 	return retGo
 }
 
-// DBusMessageNewSignal is a wrapper around the C function g_dbus_message_new_signal.
+// Creates a new #GDBusMessage for a signal emission.
+/*
+
+C function : g_dbus_message_new_signal
+*/
 func DBusMessageNewSignal(path string, interface_ string, signal string) *DBusMessage {
 	c_path := C.CString(path)
 	defer C.free(unsafe.Pointer(c_path))
@@ -693,7 +976,16 @@ func DBusMessageNewSignal(path string, interface_ string, signal string) *DBusMe
 	return retGo
 }
 
-// Copy is a wrapper around the C function g_dbus_message_copy.
+// Copies @message. The copy is a deep copy and the returned
+// #GDBusMessage is completely identical except that it is guaranteed
+// to not be locked.
+//
+// This operation can fail if e.g. @message contains file descriptors
+// and the per-process or system-wide open files limit is reached.
+/*
+
+C function : g_dbus_message_copy
+*/
 func (recv *DBusMessage) Copy() (*DBusMessage, error) {
 	var cThrowableError *C.GError
 
@@ -708,7 +1000,11 @@ func (recv *DBusMessage) Copy() (*DBusMessage, error) {
 	return retGo, goThrowableError
 }
 
-// GetArg0 is a wrapper around the C function g_dbus_message_get_arg0.
+// Convenience to get the first item in the body of @message.
+/*
+
+C function : g_dbus_message_get_arg0
+*/
 func (recv *DBusMessage) GetArg0() string {
 	retC := C.g_dbus_message_get_arg0((*C.GDBusMessage)(recv.native))
 	retGo := C.GoString(retC)
@@ -718,7 +1014,11 @@ func (recv *DBusMessage) GetArg0() string {
 
 // Unsupported : g_dbus_message_get_body : return type : Blacklisted record : GVariant
 
-// GetByteOrder is a wrapper around the C function g_dbus_message_get_byte_order.
+// Gets the byte order of @message.
+/*
+
+C function : g_dbus_message_get_byte_order
+*/
 func (recv *DBusMessage) GetByteOrder() DBusMessageByteOrder {
 	retC := C.g_dbus_message_get_byte_order((*C.GDBusMessage)(recv.native))
 	retGo := (DBusMessageByteOrder)(retC)
@@ -726,7 +1026,11 @@ func (recv *DBusMessage) GetByteOrder() DBusMessageByteOrder {
 	return retGo
 }
 
-// GetDestination is a wrapper around the C function g_dbus_message_get_destination.
+// Convenience getter for the %G_DBUS_MESSAGE_HEADER_FIELD_DESTINATION header field.
+/*
+
+C function : g_dbus_message_get_destination
+*/
 func (recv *DBusMessage) GetDestination() string {
 	retC := C.g_dbus_message_get_destination((*C.GDBusMessage)(recv.native))
 	retGo := C.GoString(retC)
@@ -734,7 +1038,11 @@ func (recv *DBusMessage) GetDestination() string {
 	return retGo
 }
 
-// GetErrorName is a wrapper around the C function g_dbus_message_get_error_name.
+// Convenience getter for the %G_DBUS_MESSAGE_HEADER_FIELD_ERROR_NAME header field.
+/*
+
+C function : g_dbus_message_get_error_name
+*/
 func (recv *DBusMessage) GetErrorName() string {
 	retC := C.g_dbus_message_get_error_name((*C.GDBusMessage)(recv.native))
 	retGo := C.GoString(retC)
@@ -742,7 +1050,11 @@ func (recv *DBusMessage) GetErrorName() string {
 	return retGo
 }
 
-// GetFlags is a wrapper around the C function g_dbus_message_get_flags.
+// Gets the flags for @message.
+/*
+
+C function : g_dbus_message_get_flags
+*/
 func (recv *DBusMessage) GetFlags() DBusMessageFlags {
 	retC := C.g_dbus_message_get_flags((*C.GDBusMessage)(recv.native))
 	retGo := (DBusMessageFlags)(retC)
@@ -754,7 +1066,11 @@ func (recv *DBusMessage) GetFlags() DBusMessageFlags {
 
 // Unsupported : g_dbus_message_get_header_fields : no return type
 
-// GetInterface is a wrapper around the C function g_dbus_message_get_interface.
+// Convenience getter for the %G_DBUS_MESSAGE_HEADER_FIELD_INTERFACE header field.
+/*
+
+C function : g_dbus_message_get_interface
+*/
 func (recv *DBusMessage) GetInterface() string {
 	retC := C.g_dbus_message_get_interface((*C.GDBusMessage)(recv.native))
 	retGo := C.GoString(retC)
@@ -762,7 +1078,13 @@ func (recv *DBusMessage) GetInterface() string {
 	return retGo
 }
 
-// GetLocked is a wrapper around the C function g_dbus_message_get_locked.
+// Checks whether @message is locked. To monitor changes to this
+// value, conncet to the #GObject::notify signal to listen for changes
+// on the #GDBusMessage:locked property.
+/*
+
+C function : g_dbus_message_get_locked
+*/
 func (recv *DBusMessage) GetLocked() bool {
 	retC := C.g_dbus_message_get_locked((*C.GDBusMessage)(recv.native))
 	retGo := retC == C.TRUE
@@ -770,7 +1092,11 @@ func (recv *DBusMessage) GetLocked() bool {
 	return retGo
 }
 
-// GetMember is a wrapper around the C function g_dbus_message_get_member.
+// Convenience getter for the %G_DBUS_MESSAGE_HEADER_FIELD_MEMBER header field.
+/*
+
+C function : g_dbus_message_get_member
+*/
 func (recv *DBusMessage) GetMember() string {
 	retC := C.g_dbus_message_get_member((*C.GDBusMessage)(recv.native))
 	retGo := C.GoString(retC)
@@ -778,7 +1104,11 @@ func (recv *DBusMessage) GetMember() string {
 	return retGo
 }
 
-// GetMessageType is a wrapper around the C function g_dbus_message_get_message_type.
+// Gets the type of @message.
+/*
+
+C function : g_dbus_message_get_message_type
+*/
 func (recv *DBusMessage) GetMessageType() DBusMessageType {
 	retC := C.g_dbus_message_get_message_type((*C.GDBusMessage)(recv.native))
 	retGo := (DBusMessageType)(retC)
@@ -786,7 +1116,11 @@ func (recv *DBusMessage) GetMessageType() DBusMessageType {
 	return retGo
 }
 
-// GetNumUnixFds is a wrapper around the C function g_dbus_message_get_num_unix_fds.
+// Convenience getter for the %G_DBUS_MESSAGE_HEADER_FIELD_NUM_UNIX_FDS header field.
+/*
+
+C function : g_dbus_message_get_num_unix_fds
+*/
 func (recv *DBusMessage) GetNumUnixFds() uint32 {
 	retC := C.g_dbus_message_get_num_unix_fds((*C.GDBusMessage)(recv.native))
 	retGo := (uint32)(retC)
@@ -794,7 +1128,11 @@ func (recv *DBusMessage) GetNumUnixFds() uint32 {
 	return retGo
 }
 
-// GetPath is a wrapper around the C function g_dbus_message_get_path.
+// Convenience getter for the %G_DBUS_MESSAGE_HEADER_FIELD_PATH header field.
+/*
+
+C function : g_dbus_message_get_path
+*/
 func (recv *DBusMessage) GetPath() string {
 	retC := C.g_dbus_message_get_path((*C.GDBusMessage)(recv.native))
 	retGo := C.GoString(retC)
@@ -802,7 +1140,11 @@ func (recv *DBusMessage) GetPath() string {
 	return retGo
 }
 
-// GetReplySerial is a wrapper around the C function g_dbus_message_get_reply_serial.
+// Convenience getter for the %G_DBUS_MESSAGE_HEADER_FIELD_REPLY_SERIAL header field.
+/*
+
+C function : g_dbus_message_get_reply_serial
+*/
 func (recv *DBusMessage) GetReplySerial() uint32 {
 	retC := C.g_dbus_message_get_reply_serial((*C.GDBusMessage)(recv.native))
 	retGo := (uint32)(retC)
@@ -810,7 +1152,11 @@ func (recv *DBusMessage) GetReplySerial() uint32 {
 	return retGo
 }
 
-// GetSender is a wrapper around the C function g_dbus_message_get_sender.
+// Convenience getter for the %G_DBUS_MESSAGE_HEADER_FIELD_SENDER header field.
+/*
+
+C function : g_dbus_message_get_sender
+*/
 func (recv *DBusMessage) GetSender() string {
 	retC := C.g_dbus_message_get_sender((*C.GDBusMessage)(recv.native))
 	retGo := C.GoString(retC)
@@ -818,7 +1164,11 @@ func (recv *DBusMessage) GetSender() string {
 	return retGo
 }
 
-// GetSerial is a wrapper around the C function g_dbus_message_get_serial.
+// Gets the serial for @message.
+/*
+
+C function : g_dbus_message_get_serial
+*/
 func (recv *DBusMessage) GetSerial() uint32 {
 	retC := C.g_dbus_message_get_serial((*C.GDBusMessage)(recv.native))
 	retGo := (uint32)(retC)
@@ -826,7 +1176,11 @@ func (recv *DBusMessage) GetSerial() uint32 {
 	return retGo
 }
 
-// GetSignature is a wrapper around the C function g_dbus_message_get_signature.
+// Convenience getter for the %G_DBUS_MESSAGE_HEADER_FIELD_SIGNATURE header field.
+/*
+
+C function : g_dbus_message_get_signature
+*/
 func (recv *DBusMessage) GetSignature() string {
 	retC := C.g_dbus_message_get_signature((*C.GDBusMessage)(recv.native))
 	retGo := C.GoString(retC)
@@ -834,7 +1188,13 @@ func (recv *DBusMessage) GetSignature() string {
 	return retGo
 }
 
-// GetUnixFdList is a wrapper around the C function g_dbus_message_get_unix_fd_list.
+// Gets the UNIX file descriptors associated with @message, if any.
+//
+// This method is only available on UNIX.
+/*
+
+C function : g_dbus_message_get_unix_fd_list
+*/
 func (recv *DBusMessage) GetUnixFdList() *UnixFDList {
 	retC := C.g_dbus_message_get_unix_fd_list((*C.GDBusMessage)(recv.native))
 	retGo := UnixFDListNewFromC(unsafe.Pointer(retC))
@@ -842,7 +1202,11 @@ func (recv *DBusMessage) GetUnixFdList() *UnixFDList {
 	return retGo
 }
 
-// Lock is a wrapper around the C function g_dbus_message_lock.
+// If @message is locked, does nothing. Otherwise locks the message.
+/*
+
+C function : g_dbus_message_lock
+*/
 func (recv *DBusMessage) Lock() {
 	C.g_dbus_message_lock((*C.GDBusMessage)(recv.native))
 
@@ -851,7 +1215,11 @@ func (recv *DBusMessage) Lock() {
 
 // Unsupported : g_dbus_message_new_method_error : unsupported parameter ... : varargs
 
-// NewMethodErrorLiteral is a wrapper around the C function g_dbus_message_new_method_error_literal.
+// Creates a new #GDBusMessage that is an error reply to @method_call_message.
+/*
+
+C function : g_dbus_message_new_method_error_literal
+*/
 func (recv *DBusMessage) NewMethodErrorLiteral(errorName string, errorMessage string) *DBusMessage {
 	c_error_name := C.CString(errorName)
 	defer C.free(unsafe.Pointer(c_error_name))
@@ -867,7 +1235,11 @@ func (recv *DBusMessage) NewMethodErrorLiteral(errorName string, errorMessage st
 
 // Unsupported : g_dbus_message_new_method_error_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
 
-// NewMethodReply is a wrapper around the C function g_dbus_message_new_method_reply.
+// Creates a new #GDBusMessage that is a reply to @method_call_message.
+/*
+
+C function : g_dbus_message_new_method_reply
+*/
 func (recv *DBusMessage) NewMethodReply() *DBusMessage {
 	retC := C.g_dbus_message_new_method_reply((*C.GDBusMessage)(recv.native))
 	retGo := DBusMessageNewFromC(unsafe.Pointer(retC))
@@ -875,7 +1247,42 @@ func (recv *DBusMessage) NewMethodReply() *DBusMessage {
 	return retGo
 }
 
-// Print is a wrapper around the C function g_dbus_message_print.
+// Produces a human-readable multi-line description of @message.
+//
+// The contents of the description has no ABI guarantees, the contents
+// and formatting is subject to change at any time. Typical output
+// looks something like this:
+// |[
+// Flags:   none
+// Version: 0
+// Serial:  4
+// Headers:
+// path -> objectpath '/org/gtk/GDBus/TestObject'
+// interface -> 'org.gtk.GDBus.TestInterface'
+// member -> 'GimmeStdout'
+// destination -> ':1.146'
+// Body: ()
+// UNIX File Descriptors:
+// (none)
+// ]|
+// or
+// |[
+// Flags:   no-reply-expected
+// Version: 0
+// Serial:  477
+// Headers:
+// reply-serial -> uint32 4
+// destination -> ':1.159'
+// sender -> ':1.146'
+// num-unix-fds -> uint32 1
+// Body: ()
+// UNIX File Descriptors:
+// fd 12: dev=0:10,mode=020620,ino=5,uid=500,gid=5,rdev=136:2,size=0,atime=1273085037,mtime=1273085851,ctime=1272982635
+// ]|
+/*
+
+C function : g_dbus_message_print
+*/
 func (recv *DBusMessage) Print(indent uint32) string {
 	c_indent := (C.guint)(indent)
 
@@ -888,7 +1295,11 @@ func (recv *DBusMessage) Print(indent uint32) string {
 
 // Unsupported : g_dbus_message_set_body : unsupported parameter body : Blacklisted record : GVariant
 
-// SetByteOrder is a wrapper around the C function g_dbus_message_set_byte_order.
+// Sets the byte order of @message.
+/*
+
+C function : g_dbus_message_set_byte_order
+*/
 func (recv *DBusMessage) SetByteOrder(byteOrder DBusMessageByteOrder) {
 	c_byte_order := (C.GDBusMessageByteOrder)(byteOrder)
 
@@ -897,7 +1308,11 @@ func (recv *DBusMessage) SetByteOrder(byteOrder DBusMessageByteOrder) {
 	return
 }
 
-// SetDestination is a wrapper around the C function g_dbus_message_set_destination.
+// Convenience setter for the %G_DBUS_MESSAGE_HEADER_FIELD_DESTINATION header field.
+/*
+
+C function : g_dbus_message_set_destination
+*/
 func (recv *DBusMessage) SetDestination(value string) {
 	c_value := C.CString(value)
 	defer C.free(unsafe.Pointer(c_value))
@@ -907,7 +1322,11 @@ func (recv *DBusMessage) SetDestination(value string) {
 	return
 }
 
-// SetErrorName is a wrapper around the C function g_dbus_message_set_error_name.
+// Convenience setter for the %G_DBUS_MESSAGE_HEADER_FIELD_ERROR_NAME header field.
+/*
+
+C function : g_dbus_message_set_error_name
+*/
 func (recv *DBusMessage) SetErrorName(value string) {
 	c_value := C.CString(value)
 	defer C.free(unsafe.Pointer(c_value))
@@ -917,7 +1336,11 @@ func (recv *DBusMessage) SetErrorName(value string) {
 	return
 }
 
-// SetFlags is a wrapper around the C function g_dbus_message_set_flags.
+// Sets the flags to set on @message.
+/*
+
+C function : g_dbus_message_set_flags
+*/
 func (recv *DBusMessage) SetFlags(flags DBusMessageFlags) {
 	c_flags := (C.GDBusMessageFlags)(flags)
 
@@ -928,7 +1351,11 @@ func (recv *DBusMessage) SetFlags(flags DBusMessageFlags) {
 
 // Unsupported : g_dbus_message_set_header : unsupported parameter value : Blacklisted record : GVariant
 
-// SetInterface is a wrapper around the C function g_dbus_message_set_interface.
+// Convenience setter for the %G_DBUS_MESSAGE_HEADER_FIELD_INTERFACE header field.
+/*
+
+C function : g_dbus_message_set_interface
+*/
 func (recv *DBusMessage) SetInterface(value string) {
 	c_value := C.CString(value)
 	defer C.free(unsafe.Pointer(c_value))
@@ -938,7 +1365,11 @@ func (recv *DBusMessage) SetInterface(value string) {
 	return
 }
 
-// SetMember is a wrapper around the C function g_dbus_message_set_member.
+// Convenience setter for the %G_DBUS_MESSAGE_HEADER_FIELD_MEMBER header field.
+/*
+
+C function : g_dbus_message_set_member
+*/
 func (recv *DBusMessage) SetMember(value string) {
 	c_value := C.CString(value)
 	defer C.free(unsafe.Pointer(c_value))
@@ -948,7 +1379,11 @@ func (recv *DBusMessage) SetMember(value string) {
 	return
 }
 
-// SetMessageType is a wrapper around the C function g_dbus_message_set_message_type.
+// Sets @message to be of @type.
+/*
+
+C function : g_dbus_message_set_message_type
+*/
 func (recv *DBusMessage) SetMessageType(type_ DBusMessageType) {
 	c_type := (C.GDBusMessageType)(type_)
 
@@ -957,7 +1392,11 @@ func (recv *DBusMessage) SetMessageType(type_ DBusMessageType) {
 	return
 }
 
-// SetNumUnixFds is a wrapper around the C function g_dbus_message_set_num_unix_fds.
+// Convenience setter for the %G_DBUS_MESSAGE_HEADER_FIELD_NUM_UNIX_FDS header field.
+/*
+
+C function : g_dbus_message_set_num_unix_fds
+*/
 func (recv *DBusMessage) SetNumUnixFds(value uint32) {
 	c_value := (C.guint32)(value)
 
@@ -966,7 +1405,11 @@ func (recv *DBusMessage) SetNumUnixFds(value uint32) {
 	return
 }
 
-// SetPath is a wrapper around the C function g_dbus_message_set_path.
+// Convenience setter for the %G_DBUS_MESSAGE_HEADER_FIELD_PATH header field.
+/*
+
+C function : g_dbus_message_set_path
+*/
 func (recv *DBusMessage) SetPath(value string) {
 	c_value := C.CString(value)
 	defer C.free(unsafe.Pointer(c_value))
@@ -976,7 +1419,11 @@ func (recv *DBusMessage) SetPath(value string) {
 	return
 }
 
-// SetReplySerial is a wrapper around the C function g_dbus_message_set_reply_serial.
+// Convenience setter for the %G_DBUS_MESSAGE_HEADER_FIELD_REPLY_SERIAL header field.
+/*
+
+C function : g_dbus_message_set_reply_serial
+*/
 func (recv *DBusMessage) SetReplySerial(value uint32) {
 	c_value := (C.guint32)(value)
 
@@ -985,7 +1432,11 @@ func (recv *DBusMessage) SetReplySerial(value uint32) {
 	return
 }
 
-// SetSender is a wrapper around the C function g_dbus_message_set_sender.
+// Convenience setter for the %G_DBUS_MESSAGE_HEADER_FIELD_SENDER header field.
+/*
+
+C function : g_dbus_message_set_sender
+*/
 func (recv *DBusMessage) SetSender(value string) {
 	c_value := C.CString(value)
 	defer C.free(unsafe.Pointer(c_value))
@@ -995,7 +1446,11 @@ func (recv *DBusMessage) SetSender(value string) {
 	return
 }
 
-// SetSerial is a wrapper around the C function g_dbus_message_set_serial.
+// Sets the serial for @message.
+/*
+
+C function : g_dbus_message_set_serial
+*/
 func (recv *DBusMessage) SetSerial(serial uint32) {
 	c_serial := (C.guint32)(serial)
 
@@ -1004,7 +1459,11 @@ func (recv *DBusMessage) SetSerial(serial uint32) {
 	return
 }
 
-// SetSignature is a wrapper around the C function g_dbus_message_set_signature.
+// Convenience setter for the %G_DBUS_MESSAGE_HEADER_FIELD_SIGNATURE header field.
+/*
+
+C function : g_dbus_message_set_signature
+*/
 func (recv *DBusMessage) SetSignature(value string) {
 	c_value := C.CString(value)
 	defer C.free(unsafe.Pointer(c_value))
@@ -1014,7 +1473,16 @@ func (recv *DBusMessage) SetSignature(value string) {
 	return
 }
 
-// SetUnixFdList is a wrapper around the C function g_dbus_message_set_unix_fd_list.
+// Sets the UNIX file descriptors associated with @message. As a
+// side-effect the %G_DBUS_MESSAGE_HEADER_FIELD_NUM_UNIX_FDS header
+// field is set to the number of fds in @fd_list (or cleared if
+// @fd_list is %NULL).
+//
+// This method is only available on UNIX.
+/*
+
+C function : g_dbus_message_set_unix_fd_list
+*/
 func (recv *DBusMessage) SetUnixFdList(fdList *UnixFDList) {
 	c_fd_list := (*C.GUnixFDList)(C.NULL)
 	if fdList != nil {
@@ -1028,7 +1496,17 @@ func (recv *DBusMessage) SetUnixFdList(fdList *UnixFDList) {
 
 // Unsupported : g_dbus_message_to_blob : no return type
 
-// ToGerror is a wrapper around the C function g_dbus_message_to_gerror.
+// If @message is not of type %G_DBUS_MESSAGE_TYPE_ERROR does
+// nothing and returns %FALSE.
+//
+// Otherwise this method encodes the error in @message as a #GError
+// using g_dbus_error_set_dbus_error() using the information in the
+// %G_DBUS_MESSAGE_HEADER_FIELD_ERROR_NAME header field of @message as
+// well as the first string item in @message's body.
+/*
+
+C function : g_dbus_message_to_gerror
+*/
 func (recv *DBusMessage) ToGerror() (bool, error) {
 	var cThrowableError *C.GError
 
@@ -1075,7 +1553,11 @@ func CastToDBusMethodInvocation(object *gobject.Object) *DBusMethodInvocation {
 	return DBusMethodInvocationNewFromC(object.ToC())
 }
 
-// GetConnection is a wrapper around the C function g_dbus_method_invocation_get_connection.
+// Gets the #GDBusConnection the method was invoked on.
+/*
+
+C function : g_dbus_method_invocation_get_connection
+*/
 func (recv *DBusMethodInvocation) GetConnection() *DBusConnection {
 	retC := C.g_dbus_method_invocation_get_connection((*C.GDBusMethodInvocation)(recv.native))
 	retGo := DBusConnectionNewFromC(unsafe.Pointer(retC))
@@ -1083,7 +1565,16 @@ func (recv *DBusMethodInvocation) GetConnection() *DBusConnection {
 	return retGo
 }
 
-// GetInterfaceName is a wrapper around the C function g_dbus_method_invocation_get_interface_name.
+// Gets the name of the D-Bus interface the method was invoked on.
+//
+// If this method call is a property Get, Set or GetAll call that has
+// been redirected to the method call handler then
+// "org.freedesktop.DBus.Properties" will be returned.  See
+// #GDBusInterfaceVTable for more information.
+/*
+
+C function : g_dbus_method_invocation_get_interface_name
+*/
 func (recv *DBusMethodInvocation) GetInterfaceName() string {
 	retC := C.g_dbus_method_invocation_get_interface_name((*C.GDBusMethodInvocation)(recv.native))
 	retGo := C.GoString(retC)
@@ -1091,7 +1582,18 @@ func (recv *DBusMethodInvocation) GetInterfaceName() string {
 	return retGo
 }
 
-// GetMessage is a wrapper around the C function g_dbus_method_invocation_get_message.
+// Gets the #GDBusMessage for the method invocation. This is useful if
+// you need to use low-level protocol features, such as UNIX file
+// descriptor passing, that cannot be properly expressed in the
+// #GVariant API.
+//
+// See this [server][gdbus-server] and [client][gdbus-unix-fd-client]
+// for an example of how to use this low-level API to send and receive
+// UNIX file descriptors.
+/*
+
+C function : g_dbus_method_invocation_get_message
+*/
 func (recv *DBusMethodInvocation) GetMessage() *DBusMessage {
 	retC := C.g_dbus_method_invocation_get_message((*C.GDBusMethodInvocation)(recv.native))
 	retGo := DBusMessageNewFromC(unsafe.Pointer(retC))
@@ -1099,7 +1601,16 @@ func (recv *DBusMethodInvocation) GetMessage() *DBusMessage {
 	return retGo
 }
 
-// GetMethodInfo is a wrapper around the C function g_dbus_method_invocation_get_method_info.
+// Gets information about the method call, if any.
+//
+// If this method invocation is a property Get, Set or GetAll call that
+// has been redirected to the method call handler then %NULL will be
+// returned.  See g_dbus_method_invocation_get_property_info() and
+// #GDBusInterfaceVTable for more information.
+/*
+
+C function : g_dbus_method_invocation_get_method_info
+*/
 func (recv *DBusMethodInvocation) GetMethodInfo() *DBusMethodInfo {
 	retC := C.g_dbus_method_invocation_get_method_info((*C.GDBusMethodInvocation)(recv.native))
 	retGo := DBusMethodInfoNewFromC(unsafe.Pointer(retC))
@@ -1107,7 +1618,11 @@ func (recv *DBusMethodInvocation) GetMethodInfo() *DBusMethodInfo {
 	return retGo
 }
 
-// GetMethodName is a wrapper around the C function g_dbus_method_invocation_get_method_name.
+// Gets the name of the method that was invoked.
+/*
+
+C function : g_dbus_method_invocation_get_method_name
+*/
 func (recv *DBusMethodInvocation) GetMethodName() string {
 	retC := C.g_dbus_method_invocation_get_method_name((*C.GDBusMethodInvocation)(recv.native))
 	retGo := C.GoString(retC)
@@ -1115,7 +1630,11 @@ func (recv *DBusMethodInvocation) GetMethodName() string {
 	return retGo
 }
 
-// GetObjectPath is a wrapper around the C function g_dbus_method_invocation_get_object_path.
+// Gets the object path the method was invoked on.
+/*
+
+C function : g_dbus_method_invocation_get_object_path
+*/
 func (recv *DBusMethodInvocation) GetObjectPath() string {
 	retC := C.g_dbus_method_invocation_get_object_path((*C.GDBusMethodInvocation)(recv.native))
 	retGo := C.GoString(retC)
@@ -1125,7 +1644,11 @@ func (recv *DBusMethodInvocation) GetObjectPath() string {
 
 // Unsupported : g_dbus_method_invocation_get_parameters : return type : Blacklisted record : GVariant
 
-// GetSender is a wrapper around the C function g_dbus_method_invocation_get_sender.
+// Gets the bus name that invoked the method.
+/*
+
+C function : g_dbus_method_invocation_get_sender
+*/
 func (recv *DBusMethodInvocation) GetSender() string {
 	retC := C.g_dbus_method_invocation_get_sender((*C.GDBusMethodInvocation)(recv.native))
 	retGo := C.GoString(retC)
@@ -1133,7 +1656,11 @@ func (recv *DBusMethodInvocation) GetSender() string {
 	return retGo
 }
 
-// GetUserData is a wrapper around the C function g_dbus_method_invocation_get_user_data.
+// Gets the @user_data #gpointer passed to g_dbus_connection_register_object().
+/*
+
+C function : g_dbus_method_invocation_get_user_data
+*/
 func (recv *DBusMethodInvocation) GetUserData() uintptr {
 	retC := C.g_dbus_method_invocation_get_user_data((*C.GDBusMethodInvocation)(recv.native))
 	retGo := (uintptr)(unsafe.Pointer(retC))
@@ -1141,7 +1668,15 @@ func (recv *DBusMethodInvocation) GetUserData() uintptr {
 	return retGo
 }
 
-// ReturnDbusError is a wrapper around the C function g_dbus_method_invocation_return_dbus_error.
+// Finishes handling a D-Bus method call by returning an error.
+//
+// This method will take ownership of @invocation. See
+// #GDBusInterfaceVTable for more information about the ownership of
+// @invocation.
+/*
+
+C function : g_dbus_method_invocation_return_dbus_error
+*/
 func (recv *DBusMethodInvocation) ReturnDbusError(errorName string, errorMessage string) {
 	c_error_name := C.CString(errorName)
 	defer C.free(unsafe.Pointer(c_error_name))
@@ -1156,7 +1691,15 @@ func (recv *DBusMethodInvocation) ReturnDbusError(errorName string, errorMessage
 
 // Unsupported : g_dbus_method_invocation_return_error : unsupported parameter ... : varargs
 
-// ReturnErrorLiteral is a wrapper around the C function g_dbus_method_invocation_return_error_literal.
+// Like g_dbus_method_invocation_return_error() but without printf()-style formatting.
+//
+// This method will take ownership of @invocation. See
+// #GDBusInterfaceVTable for more information about the ownership of
+// @invocation.
+/*
+
+C function : g_dbus_method_invocation_return_error_literal
+*/
 func (recv *DBusMethodInvocation) ReturnErrorLiteral(domain glib.Quark, code int32, message string) {
 	c_domain := (C.GQuark)(domain)
 
@@ -1172,7 +1715,16 @@ func (recv *DBusMethodInvocation) ReturnErrorLiteral(domain glib.Quark, code int
 
 // Unsupported : g_dbus_method_invocation_return_error_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
 
-// ReturnGerror is a wrapper around the C function g_dbus_method_invocation_return_gerror.
+// Like g_dbus_method_invocation_return_error() but takes a #GError
+// instead of the error domain, error code and message.
+//
+// This method will take ownership of @invocation. See
+// #GDBusInterfaceVTable for more information about the ownership of
+// @invocation.
+/*
+
+C function : g_dbus_method_invocation_return_gerror
+*/
 func (recv *DBusMethodInvocation) ReturnGerror(error *glib.Error) {
 	c_error := (*C.GError)(C.NULL)
 	if error != nil {
@@ -1220,7 +1772,11 @@ func CastToDBusProxy(object *gobject.Object) *DBusProxy {
 	return DBusProxyNewFromC(object.ToC())
 }
 
-// DBusProxyNewFinish is a wrapper around the C function g_dbus_proxy_new_finish.
+// Finishes creating a #GDBusProxy.
+/*
+
+C function : g_dbus_proxy_new_finish
+*/
 func DBusProxyNewFinish(res *AsyncResult) (*DBusProxy, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
 
@@ -1237,7 +1793,11 @@ func DBusProxyNewFinish(res *AsyncResult) (*DBusProxy, error) {
 	return retGo, goThrowableError
 }
 
-// DBusProxyNewForBusFinish is a wrapper around the C function g_dbus_proxy_new_for_bus_finish.
+// Finishes creating a #GDBusProxy.
+/*
+
+C function : g_dbus_proxy_new_for_bus_finish
+*/
 func DBusProxyNewForBusFinish(res *AsyncResult) (*DBusProxy, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
 
@@ -1254,7 +1814,13 @@ func DBusProxyNewForBusFinish(res *AsyncResult) (*DBusProxy, error) {
 	return retGo, goThrowableError
 }
 
-// DBusProxyNewForBusSync is a wrapper around the C function g_dbus_proxy_new_for_bus_sync.
+// Like g_dbus_proxy_new_sync() but takes a #GBusType instead of a #GDBusConnection.
+//
+// #GDBusProxy is used in this [example][gdbus-wellknown-proxy].
+/*
+
+C function : g_dbus_proxy_new_for_bus_sync
+*/
 func DBusProxyNewForBusSync(busType BusType, flags DBusProxyFlags, info *DBusInterfaceInfo, name string, objectPath string, interfaceName string, cancellable *Cancellable) (*DBusProxy, error) {
 	c_bus_type := (C.GBusType)(busType)
 
@@ -1292,7 +1858,28 @@ func DBusProxyNewForBusSync(busType BusType, flags DBusProxyFlags, info *DBusInt
 	return retGo, goThrowableError
 }
 
-// DBusProxyNewSync is a wrapper around the C function g_dbus_proxy_new_sync.
+// Creates a proxy for accessing @interface_name on the remote object
+// at @object_path owned by @name at @connection and synchronously
+// loads D-Bus properties unless the
+// %G_DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES flag is used.
+//
+// If the %G_DBUS_PROXY_FLAGS_DO_NOT_CONNECT_SIGNALS flag is not set, also sets up
+// match rules for signals. Connect to the #GDBusProxy::g-signal signal
+// to handle signals from the remote object.
+//
+// If @name is a well-known name and the
+// %G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START and %G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START_AT_CONSTRUCTION
+// flags aren't set and no name owner currently exists, the message bus
+// will be requested to launch a name owner for the name.
+//
+// This is a synchronous failable constructor. See g_dbus_proxy_new()
+// and g_dbus_proxy_new_finish() for the asynchronous version.
+//
+// #GDBusProxy is used in this [example][gdbus-wellknown-proxy].
+/*
+
+C function : g_dbus_proxy_new_sync
+*/
 func DBusProxyNewSync(connection *DBusConnection, flags DBusProxyFlags, info *DBusInterfaceInfo, name string, objectPath string, interfaceName string, cancellable *Cancellable) (*DBusProxy, error) {
 	c_connection := (*C.GDBusConnection)(C.NULL)
 	if connection != nil {
@@ -1343,7 +1930,11 @@ func DBusProxyNewSync(connection *DBusConnection, flags DBusProxyFlags, info *DB
 
 // Unsupported : g_dbus_proxy_get_cached_property_names : no return type
 
-// GetConnection is a wrapper around the C function g_dbus_proxy_get_connection.
+// Gets the connection @proxy is for.
+/*
+
+C function : g_dbus_proxy_get_connection
+*/
 func (recv *DBusProxy) GetConnection() *DBusConnection {
 	retC := C.g_dbus_proxy_get_connection((*C.GDBusProxy)(recv.native))
 	retGo := DBusConnectionNewFromC(unsafe.Pointer(retC))
@@ -1351,7 +1942,15 @@ func (recv *DBusProxy) GetConnection() *DBusConnection {
 	return retGo
 }
 
-// GetDefaultTimeout is a wrapper around the C function g_dbus_proxy_get_default_timeout.
+// Gets the timeout to use if -1 (specifying default timeout) is
+// passed as @timeout_msec in the g_dbus_proxy_call() and
+// g_dbus_proxy_call_sync() functions.
+//
+// See the #GDBusProxy:g-default-timeout property for more details.
+/*
+
+C function : g_dbus_proxy_get_default_timeout
+*/
 func (recv *DBusProxy) GetDefaultTimeout() int32 {
 	retC := C.g_dbus_proxy_get_default_timeout((*C.GDBusProxy)(recv.native))
 	retGo := (int32)(retC)
@@ -1359,7 +1958,11 @@ func (recv *DBusProxy) GetDefaultTimeout() int32 {
 	return retGo
 }
 
-// GetFlags is a wrapper around the C function g_dbus_proxy_get_flags.
+// Gets the flags that @proxy was constructed with.
+/*
+
+C function : g_dbus_proxy_get_flags
+*/
 func (recv *DBusProxy) GetFlags() DBusProxyFlags {
 	retC := C.g_dbus_proxy_get_flags((*C.GDBusProxy)(recv.native))
 	retGo := (DBusProxyFlags)(retC)
@@ -1367,7 +1970,13 @@ func (recv *DBusProxy) GetFlags() DBusProxyFlags {
 	return retGo
 }
 
-// GetInterfaceInfo is a wrapper around the C function g_dbus_proxy_get_interface_info.
+// Returns the #GDBusInterfaceInfo, if any, specifying the interface
+// that @proxy conforms to. See the #GDBusProxy:g-interface-info
+// property for more details.
+/*
+
+C function : g_dbus_proxy_get_interface_info
+*/
 func (recv *DBusProxy) GetInterfaceInfo() *DBusInterfaceInfo {
 	retC := C.g_dbus_proxy_get_interface_info((*C.GDBusProxy)(recv.native))
 	var retGo (*DBusInterfaceInfo)
@@ -1380,7 +1989,11 @@ func (recv *DBusProxy) GetInterfaceInfo() *DBusInterfaceInfo {
 	return retGo
 }
 
-// GetInterfaceName is a wrapper around the C function g_dbus_proxy_get_interface_name.
+// Gets the D-Bus interface name @proxy is for.
+/*
+
+C function : g_dbus_proxy_get_interface_name
+*/
 func (recv *DBusProxy) GetInterfaceName() string {
 	retC := C.g_dbus_proxy_get_interface_name((*C.GDBusProxy)(recv.native))
 	retGo := C.GoString(retC)
@@ -1388,7 +2001,11 @@ func (recv *DBusProxy) GetInterfaceName() string {
 	return retGo
 }
 
-// GetName is a wrapper around the C function g_dbus_proxy_get_name.
+// Gets the name that @proxy was constructed for.
+/*
+
+C function : g_dbus_proxy_get_name
+*/
 func (recv *DBusProxy) GetName() string {
 	retC := C.g_dbus_proxy_get_name((*C.GDBusProxy)(recv.native))
 	retGo := C.GoString(retC)
@@ -1396,7 +2013,14 @@ func (recv *DBusProxy) GetName() string {
 	return retGo
 }
 
-// GetNameOwner is a wrapper around the C function g_dbus_proxy_get_name_owner.
+// The unique name that owns the name that @proxy is for or %NULL if
+// no-one currently owns that name. You may connect to the
+// #GObject::notify signal to track changes to the
+// #GDBusProxy:g-name-owner property.
+/*
+
+C function : g_dbus_proxy_get_name_owner
+*/
 func (recv *DBusProxy) GetNameOwner() string {
 	retC := C.g_dbus_proxy_get_name_owner((*C.GDBusProxy)(recv.native))
 	retGo := C.GoString(retC)
@@ -1405,7 +2029,11 @@ func (recv *DBusProxy) GetNameOwner() string {
 	return retGo
 }
 
-// GetObjectPath is a wrapper around the C function g_dbus_proxy_get_object_path.
+// Gets the object path @proxy is for.
+/*
+
+C function : g_dbus_proxy_get_object_path
+*/
 func (recv *DBusProxy) GetObjectPath() string {
 	retC := C.g_dbus_proxy_get_object_path((*C.GDBusProxy)(recv.native))
 	retGo := C.GoString(retC)
@@ -1415,7 +2043,15 @@ func (recv *DBusProxy) GetObjectPath() string {
 
 // Unsupported : g_dbus_proxy_set_cached_property : unsupported parameter value : Blacklisted record : GVariant
 
-// SetDefaultTimeout is a wrapper around the C function g_dbus_proxy_set_default_timeout.
+// Sets the timeout to use if -1 (specifying default timeout) is
+// passed as @timeout_msec in the g_dbus_proxy_call() and
+// g_dbus_proxy_call_sync() functions.
+//
+// See the #GDBusProxy:g-default-timeout property for more details.
+/*
+
+C function : g_dbus_proxy_set_default_timeout
+*/
 func (recv *DBusProxy) SetDefaultTimeout(timeoutMsec int32) {
 	c_timeout_msec := (C.gint)(timeoutMsec)
 
@@ -1424,7 +2060,13 @@ func (recv *DBusProxy) SetDefaultTimeout(timeoutMsec int32) {
 	return
 }
 
-// SetInterfaceInfo is a wrapper around the C function g_dbus_proxy_set_interface_info.
+// Ensure that interactions with @proxy conform to the given
+// interface. See the #GDBusProxy:g-interface-info property for more
+// details.
+/*
+
+C function : g_dbus_proxy_set_interface_info
+*/
 func (recv *DBusProxy) SetInterfaceInfo(info *DBusInterfaceInfo) {
 	c_info := (*C.GDBusInterfaceInfo)(C.NULL)
 	if info != nil {
@@ -1468,7 +2110,26 @@ func CastToDBusServer(object *gobject.Object) *DBusServer {
 	return DBusServerNewFromC(object.ToC())
 }
 
-// DBusServerNewSync is a wrapper around the C function g_dbus_server_new_sync.
+// Creates a new D-Bus server that listens on the first address in
+// @address that works.
+//
+// Once constructed, you can use g_dbus_server_get_client_address() to
+// get a D-Bus address string that clients can use to connect.
+//
+// Connect to the #GDBusServer::new-connection signal to handle
+// incoming connections.
+//
+// The returned #GDBusServer isn't active - you have to start it with
+// g_dbus_server_start().
+//
+// #GDBusServer is used in this [example][gdbus-peer-to-peer].
+//
+// This is a synchronous failable constructor. See
+// g_dbus_server_new() for the asynchronous version.
+/*
+
+C function : g_dbus_server_new_sync
+*/
 func DBusServerNewSync(address string, flags DBusServerFlags, guid string, observer *DBusAuthObserver, cancellable *Cancellable) (*DBusServer, error) {
 	c_address := C.CString(address)
 	defer C.free(unsafe.Pointer(c_address))
@@ -1501,7 +2162,13 @@ func DBusServerNewSync(address string, flags DBusServerFlags, guid string, obser
 	return retGo, goThrowableError
 }
 
-// GetClientAddress is a wrapper around the C function g_dbus_server_get_client_address.
+// Gets a
+// [D-Bus address](https://dbus.freedesktop.org/doc/dbus-specification.html#addresses)
+// string that can be used by clients to connect to @server.
+/*
+
+C function : g_dbus_server_get_client_address
+*/
 func (recv *DBusServer) GetClientAddress() string {
 	retC := C.g_dbus_server_get_client_address((*C.GDBusServer)(recv.native))
 	retGo := C.GoString(retC)
@@ -1509,7 +2176,11 @@ func (recv *DBusServer) GetClientAddress() string {
 	return retGo
 }
 
-// GetFlags is a wrapper around the C function g_dbus_server_get_flags.
+// Gets the flags for @server.
+/*
+
+C function : g_dbus_server_get_flags
+*/
 func (recv *DBusServer) GetFlags() DBusServerFlags {
 	retC := C.g_dbus_server_get_flags((*C.GDBusServer)(recv.native))
 	retGo := (DBusServerFlags)(retC)
@@ -1517,7 +2188,11 @@ func (recv *DBusServer) GetFlags() DBusServerFlags {
 	return retGo
 }
 
-// GetGuid is a wrapper around the C function g_dbus_server_get_guid.
+// Gets the GUID for @server.
+/*
+
+C function : g_dbus_server_get_guid
+*/
 func (recv *DBusServer) GetGuid() string {
 	retC := C.g_dbus_server_get_guid((*C.GDBusServer)(recv.native))
 	retGo := C.GoString(retC)
@@ -1525,7 +2200,11 @@ func (recv *DBusServer) GetGuid() string {
 	return retGo
 }
 
-// IsActive is a wrapper around the C function g_dbus_server_is_active.
+// Gets whether @server is active.
+/*
+
+C function : g_dbus_server_is_active
+*/
 func (recv *DBusServer) IsActive() bool {
 	retC := C.g_dbus_server_is_active((*C.GDBusServer)(recv.native))
 	retGo := retC == C.TRUE
@@ -1533,21 +2212,44 @@ func (recv *DBusServer) IsActive() bool {
 	return retGo
 }
 
-// Start is a wrapper around the C function g_dbus_server_start.
+// Starts @server.
+/*
+
+C function : g_dbus_server_start
+*/
 func (recv *DBusServer) Start() {
 	C.g_dbus_server_start((*C.GDBusServer)(recv.native))
 
 	return
 }
 
-// Stop is a wrapper around the C function g_dbus_server_stop.
+// Stops @server.
+/*
+
+C function : g_dbus_server_stop
+*/
 func (recv *DBusServer) Stop() {
 	C.g_dbus_server_stop((*C.GDBusServer)(recv.native))
 
 	return
 }
 
-// ReadUpto is a wrapper around the C function g_data_input_stream_read_upto.
+// Reads a string from the data input stream, up to the first
+// occurrence of any of the stop characters.
+//
+// In contrast to g_data_input_stream_read_until(), this function
+// does not consume the stop character. You have to use
+// g_data_input_stream_read_byte() to get it before calling
+// g_data_input_stream_read_upto() again.
+//
+// Note that @stop_chars may contain '\0' if @stop_chars_len is
+// specified.
+//
+// The returned string will always be nul-terminated on success.
+/*
+
+C function : g_data_input_stream_read_upto
+*/
 func (recv *DataInputStream) ReadUpto(stopChars string, stopCharsLen int64, cancellable *Cancellable) (string, uint64, error) {
 	c_stop_chars := C.CString(stopChars)
 	defer C.free(unsafe.Pointer(c_stop_chars))
@@ -1579,7 +2281,16 @@ func (recv *DataInputStream) ReadUpto(stopChars string, stopCharsLen int64, canc
 
 // Unsupported : g_data_input_stream_read_upto_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// StealData is a wrapper around the C function g_memory_output_stream_steal_data.
+// Gets any loaded data from the @ostream. Ownership of the data
+// is transferred to the caller; when no longer needed it must be
+// freed using the free function set in @ostream's
+// #GMemoryOutputStream:destroy-function property.
+//
+// @ostream must be closed before calling this function.
+/*
+
+C function : g_memory_output_stream_steal_data
+*/
 func (recv *MemoryOutputStream) StealData() uintptr {
 	retC := C.g_memory_output_stream_steal_data((*C.GMemoryOutputStream)(recv.native))
 	retGo := (uintptr)(unsafe.Pointer(retC))
@@ -1587,7 +2298,11 @@ func (recv *MemoryOutputStream) StealData() uintptr {
 	return retGo
 }
 
-// GetScheme is a wrapper around the C function g_network_address_get_scheme.
+// Gets @addr's scheme
+/*
+
+C function : g_network_address_get_scheme
+*/
 func (recv *NetworkAddress) GetScheme() string {
 	retC := C.g_network_address_get_scheme((*C.GNetworkAddress)(recv.native))
 	retGo := C.GoString(retC)
@@ -1595,7 +2310,12 @@ func (recv *NetworkAddress) GetScheme() string {
 	return retGo
 }
 
-// GetScheme is a wrapper around the C function g_network_service_get_scheme.
+// Get's the URI scheme used to resolve proxies. By default, the service name
+// is used as scheme.
+/*
+
+C function : g_network_service_get_scheme
+*/
 func (recv *NetworkService) GetScheme() string {
 	retC := C.g_network_service_get_scheme((*C.GNetworkService)(recv.native))
 	retGo := C.GoString(retC)
@@ -1603,7 +2323,12 @@ func (recv *NetworkService) GetScheme() string {
 	return retGo
 }
 
-// SetScheme is a wrapper around the C function g_network_service_set_scheme.
+// Set's the URI scheme used to resolve proxies. By default, the service name
+// is used as scheme.
+/*
+
+C function : g_network_service_set_scheme
+*/
 func (recv *NetworkService) SetScheme(scheme string) {
 	c_scheme := C.CString(scheme)
 	defer C.free(unsafe.Pointer(c_scheme))
@@ -1613,7 +2338,25 @@ func (recv *NetworkService) SetScheme(scheme string) {
 	return
 }
 
-// Acquire is a wrapper around the C function g_permission_acquire.
+// Attempts to acquire the permission represented by @permission.
+//
+// The precise method by which this happens depends on the permission
+// and the underlying authentication mechanism.  A simple example is
+// that a dialog may appear asking the user to enter their password.
+//
+// You should check with g_permission_get_can_acquire() before calling
+// this function.
+//
+// If the permission is acquired then %TRUE is returned.  Otherwise,
+// %FALSE is returned and @error is set appropriately.
+//
+// This call is blocking, likely for a very long time (in the case that
+// user interaction is required).  See g_permission_acquire_async() for
+// the non-blocking version.
+/*
+
+C function : g_permission_acquire
+*/
 func (recv *Permission) Acquire(cancellable *Cancellable) (bool, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
 	if cancellable != nil {
@@ -1635,7 +2378,15 @@ func (recv *Permission) Acquire(cancellable *Cancellable) (bool, error) {
 
 // Unsupported : g_permission_acquire_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// AcquireFinish is a wrapper around the C function g_permission_acquire_finish.
+// Collects the result of attempting to acquire the permission
+// represented by @permission.
+//
+// This is the second half of the asynchronous version of
+// g_permission_acquire().
+/*
+
+C function : g_permission_acquire_finish
+*/
 func (recv *Permission) AcquireFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
 
@@ -1652,7 +2403,13 @@ func (recv *Permission) AcquireFinish(result *AsyncResult) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// GetAllowed is a wrapper around the C function g_permission_get_allowed.
+// Gets the value of the 'allowed' property.  This property is %TRUE if
+// the caller currently has permission to perform the action that
+// @permission represents the permission to perform.
+/*
+
+C function : g_permission_get_allowed
+*/
 func (recv *Permission) GetAllowed() bool {
 	retC := C.g_permission_get_allowed((*C.GPermission)(recv.native))
 	retGo := retC == C.TRUE
@@ -1660,7 +2417,13 @@ func (recv *Permission) GetAllowed() bool {
 	return retGo
 }
 
-// GetCanAcquire is a wrapper around the C function g_permission_get_can_acquire.
+// Gets the value of the 'can-acquire' property.  This property is %TRUE
+// if it is generally possible to acquire the permission by calling
+// g_permission_acquire().
+/*
+
+C function : g_permission_get_can_acquire
+*/
 func (recv *Permission) GetCanAcquire() bool {
 	retC := C.g_permission_get_can_acquire((*C.GPermission)(recv.native))
 	retGo := retC == C.TRUE
@@ -1668,7 +2431,13 @@ func (recv *Permission) GetCanAcquire() bool {
 	return retGo
 }
 
-// GetCanRelease is a wrapper around the C function g_permission_get_can_release.
+// Gets the value of the 'can-release' property.  This property is %TRUE
+// if it is generally possible to release the permission by calling
+// g_permission_release().
+/*
+
+C function : g_permission_get_can_release
+*/
 func (recv *Permission) GetCanRelease() bool {
 	retC := C.g_permission_get_can_release((*C.GPermission)(recv.native))
 	retGo := retC == C.TRUE
@@ -1676,7 +2445,15 @@ func (recv *Permission) GetCanRelease() bool {
 	return retGo
 }
 
-// ImplUpdate is a wrapper around the C function g_permission_impl_update.
+// This function is called by the #GPermission implementation to update
+// the properties of the permission.  You should never call this
+// function except from a #GPermission implementation.
+//
+// GObject notify signals are generated, as appropriate.
+/*
+
+C function : g_permission_impl_update
+*/
 func (recv *Permission) ImplUpdate(allowed bool, canAcquire bool, canRelease bool) {
 	c_allowed :=
 		boolToGboolean(allowed)
@@ -1692,7 +2469,25 @@ func (recv *Permission) ImplUpdate(allowed bool, canAcquire bool, canRelease boo
 	return
 }
 
-// Release is a wrapper around the C function g_permission_release.
+// Attempts to release the permission represented by @permission.
+//
+// The precise method by which this happens depends on the permission
+// and the underlying authentication mechanism.  In most cases the
+// permission will be dropped immediately without further action.
+//
+// You should check with g_permission_get_can_release() before calling
+// this function.
+//
+// If the permission is released then %TRUE is returned.  Otherwise,
+// %FALSE is returned and @error is set appropriately.
+//
+// This call is blocking, likely for a very long time (in the case that
+// user interaction is required).  See g_permission_release_async() for
+// the non-blocking version.
+/*
+
+C function : g_permission_release
+*/
 func (recv *Permission) Release(cancellable *Cancellable) (bool, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
 	if cancellable != nil {
@@ -1714,7 +2509,15 @@ func (recv *Permission) Release(cancellable *Cancellable) (bool, error) {
 
 // Unsupported : g_permission_release_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// ReleaseFinish is a wrapper around the C function g_permission_release_finish.
+// Collects the result of attempting to release the permission
+// represented by @permission.
+//
+// This is the second half of the asynchronous version of
+// g_permission_release().
+/*
+
+C function : g_permission_release_finish
+*/
 func (recv *Permission) ReleaseFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
 
@@ -1775,7 +2578,16 @@ func CastToProxyAddress(object *gobject.Object) *ProxyAddress {
 	return ProxyAddressNewFromC(object.ToC())
 }
 
-// ProxyAddressNew is a wrapper around the C function g_proxy_address_new.
+// Creates a new #GProxyAddress for @inetaddr with @protocol that should
+// tunnel through @dest_hostname and @dest_port.
+//
+// (Note that this method doesn't set the #GProxyAddress:uri or
+// #GProxyAddress:destination-protocol fields; use g_object_new()
+// directly if you want to set those.)
+/*
+
+C function : g_proxy_address_new
+*/
 func ProxyAddressNew(inetaddr *InetAddress, port uint16, protocol string, destHostname string, destPort uint16, username string, password string) *ProxyAddress {
 	c_inetaddr := (*C.GInetAddress)(C.NULL)
 	if inetaddr != nil {
@@ -1804,7 +2616,13 @@ func ProxyAddressNew(inetaddr *InetAddress, port uint16, protocol string, destHo
 	return retGo
 }
 
-// GetDestinationHostname is a wrapper around the C function g_proxy_address_get_destination_hostname.
+// Gets @proxy's destination hostname; that is, the name of the host
+// that will be connected to via the proxy, not the name of the proxy
+// itself.
+/*
+
+C function : g_proxy_address_get_destination_hostname
+*/
 func (recv *ProxyAddress) GetDestinationHostname() string {
 	retC := C.g_proxy_address_get_destination_hostname((*C.GProxyAddress)(recv.native))
 	retGo := C.GoString(retC)
@@ -1812,7 +2630,13 @@ func (recv *ProxyAddress) GetDestinationHostname() string {
 	return retGo
 }
 
-// GetDestinationPort is a wrapper around the C function g_proxy_address_get_destination_port.
+// Gets @proxy's destination port; that is, the port on the
+// destination host that will be connected to via the proxy, not the
+// port number of the proxy itself.
+/*
+
+C function : g_proxy_address_get_destination_port
+*/
 func (recv *ProxyAddress) GetDestinationPort() uint16 {
 	retC := C.g_proxy_address_get_destination_port((*C.GProxyAddress)(recv.native))
 	retGo := (uint16)(retC)
@@ -1820,7 +2644,11 @@ func (recv *ProxyAddress) GetDestinationPort() uint16 {
 	return retGo
 }
 
-// GetPassword is a wrapper around the C function g_proxy_address_get_password.
+// Gets @proxy's password.
+/*
+
+C function : g_proxy_address_get_password
+*/
 func (recv *ProxyAddress) GetPassword() string {
 	retC := C.g_proxy_address_get_password((*C.GProxyAddress)(recv.native))
 	retGo := C.GoString(retC)
@@ -1828,7 +2656,11 @@ func (recv *ProxyAddress) GetPassword() string {
 	return retGo
 }
 
-// GetProtocol is a wrapper around the C function g_proxy_address_get_protocol.
+// Gets @proxy's protocol. eg, "socks" or "http"
+/*
+
+C function : g_proxy_address_get_protocol
+*/
 func (recv *ProxyAddress) GetProtocol() string {
 	retC := C.g_proxy_address_get_protocol((*C.GProxyAddress)(recv.native))
 	retGo := C.GoString(retC)
@@ -1836,7 +2668,11 @@ func (recv *ProxyAddress) GetProtocol() string {
 	return retGo
 }
 
-// GetUsername is a wrapper around the C function g_proxy_address_get_username.
+// Gets @proxy's username.
+/*
+
+C function : g_proxy_address_get_username
+*/
 func (recv *ProxyAddress) GetUsername() string {
 	retC := C.g_proxy_address_get_username((*C.GProxyAddress)(recv.native))
 	retGo := C.GoString(retC)
@@ -1844,7 +2680,17 @@ func (recv *ProxyAddress) GetUsername() string {
 	return retGo
 }
 
-// SettingsNew is a wrapper around the C function g_settings_new.
+// Creates a new #GSettings object with the schema specified by
+// @schema_id.
+//
+// Signals on the newly created #GSettings object will be dispatched
+// via the thread-default #GMainContext in effect at the time of the
+// call to g_settings_new().  The new #GSettings will hold a reference
+// on the context.  See g_main_context_push_thread_default().
+/*
+
+C function : g_settings_new
+*/
 func SettingsNew(schemaId string) *Settings {
 	c_schema_id := C.CString(schemaId)
 	defer C.free(unsafe.Pointer(c_schema_id))
@@ -1855,7 +2701,18 @@ func SettingsNew(schemaId string) *Settings {
 	return retGo
 }
 
-// SettingsNewWithBackend is a wrapper around the C function g_settings_new_with_backend.
+// Creates a new #GSettings object with the schema specified by
+// @schema_id and a given #GSettingsBackend.
+//
+// Creating a #GSettings object with a different backend allows accessing
+// settings from a database other than the usual one. For example, it may make
+// sense to pass a backend corresponding to the "defaults" settings database on
+// the system to get a settings object that modifies the system default
+// settings instead of the settings for this user.
+/*
+
+C function : g_settings_new_with_backend
+*/
 func SettingsNewWithBackend(schemaId string, backend *SettingsBackend) *Settings {
 	c_schema_id := C.CString(schemaId)
 	defer C.free(unsafe.Pointer(c_schema_id))
@@ -1871,7 +2728,15 @@ func SettingsNewWithBackend(schemaId string, backend *SettingsBackend) *Settings
 	return retGo
 }
 
-// SettingsNewWithBackendAndPath is a wrapper around the C function g_settings_new_with_backend_and_path.
+// Creates a new #GSettings object with the schema specified by
+// @schema_id and a given #GSettingsBackend and path.
+//
+// This is a mix of g_settings_new_with_backend() and
+// g_settings_new_with_path().
+/*
+
+C function : g_settings_new_with_backend_and_path
+*/
 func SettingsNewWithBackendAndPath(schemaId string, backend *SettingsBackend, path string) *Settings {
 	c_schema_id := C.CString(schemaId)
 	defer C.free(unsafe.Pointer(c_schema_id))
@@ -1890,7 +2755,23 @@ func SettingsNewWithBackendAndPath(schemaId string, backend *SettingsBackend, pa
 	return retGo
 }
 
-// SettingsNewWithPath is a wrapper around the C function g_settings_new_with_path.
+// Creates a new #GSettings object with the relocatable schema specified
+// by @schema_id and a given path.
+//
+// You only need to do this if you want to directly create a settings
+// object with a schema that doesn't have a specified path of its own.
+// That's quite rare.
+//
+// It is a programmer error to call this function for a schema that
+// has an explicitly specified path.
+//
+// It is a programmer error if @path is not a valid path.  A valid path
+// begins and ends with '/' and does not contain two consecutive '/'
+// characters.
+/*
+
+C function : g_settings_new_with_path
+*/
 func SettingsNewWithPath(schemaId string, path string) *Settings {
 	c_schema_id := C.CString(schemaId)
 	defer C.free(unsafe.Pointer(c_schema_id))
@@ -1904,7 +2785,30 @@ func SettingsNewWithPath(schemaId string, path string) *Settings {
 	return retGo
 }
 
-// Bind is a wrapper around the C function g_settings_bind.
+// Create a binding between the @key in the @settings object
+// and the property @property of @object.
+//
+// The binding uses the default GIO mapping functions to map
+// between the settings and property values. These functions
+// handle booleans, numeric types and string types in a
+// straightforward way. Use g_settings_bind_with_mapping() if
+// you need a custom mapping, or map between types that are not
+// supported by the default mapping functions.
+//
+// Unless the @flags include %G_SETTINGS_BIND_NO_SENSITIVITY, this
+// function also establishes a binding between the writability of
+// @key and the "sensitive" property of @object (if @object has
+// a boolean property by that name). See g_settings_bind_writable()
+// for more details about writable bindings.
+//
+// Note that the lifecycle of the binding is tied to @object,
+// and that you can have only one binding per object property.
+// If you bind the same property twice on the same object, the second
+// binding overrides the first one.
+/*
+
+C function : g_settings_bind
+*/
 func (recv *Settings) Bind(key string, object uintptr, property string, flags SettingsBindFlags) {
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
@@ -1923,7 +2827,27 @@ func (recv *Settings) Bind(key string, object uintptr, property string, flags Se
 
 // Unsupported : g_settings_bind_with_mapping : unsupported parameter get_mapping : no type generator for SettingsBindGetMapping (GSettingsBindGetMapping) for param get_mapping
 
-// BindWritable is a wrapper around the C function g_settings_bind_writable.
+// Create a binding between the writability of @key in the
+// @settings object and the property @property of @object.
+// The property must be boolean; "sensitive" or "visible"
+// properties of widgets are the most likely candidates.
+//
+// Writable bindings are always uni-directional; changes of the
+// writability of the setting will be propagated to the object
+// property, not the other way.
+//
+// When the @inverted argument is %TRUE, the binding inverts the
+// value as it passes from the setting to the object, i.e. @property
+// will be set to %TRUE if the key is not writable.
+//
+// Note that the lifecycle of the binding is tied to @object,
+// and that you can have only one binding per object property.
+// If you bind the same property twice on the same object, the second
+// binding overrides the first one.
+/*
+
+C function : g_settings_bind_writable
+*/
 func (recv *Settings) BindWritable(key string, object uintptr, property string, inverted bool) {
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
@@ -1941,7 +2865,13 @@ func (recv *Settings) BindWritable(key string, object uintptr, property string, 
 	return
 }
 
-// Delay is a wrapper around the C function g_settings_delay.
+// Changes the #GSettings object into 'delay-apply' mode. In this
+// mode, changes to @settings are not immediately propagated to the
+// backend, but kept locally until g_settings_apply() is called.
+/*
+
+C function : g_settings_delay
+*/
 func (recv *Settings) Delay() {
 	C.g_settings_delay((*C.GSettings)(recv.native))
 
@@ -1950,7 +2880,16 @@ func (recv *Settings) Delay() {
 
 // Unsupported : g_settings_get : unsupported parameter ... : varargs
 
-// GetBoolean is a wrapper around the C function g_settings_get_boolean.
+// Gets the value that is stored at @key in @settings.
+//
+// A convenience variant of g_settings_get() for booleans.
+//
+// It is a programmer error to give a @key that isn't specified as
+// having a boolean type in the schema for @settings.
+/*
+
+C function : g_settings_get_boolean
+*/
 func (recv *Settings) GetBoolean(key string) bool {
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
@@ -1961,7 +2900,16 @@ func (recv *Settings) GetBoolean(key string) bool {
 	return retGo
 }
 
-// GetChild is a wrapper around the C function g_settings_get_child.
+// Creates a child settings object which has a base path of
+// `base-path/@name`, where `base-path` is the base path of
+// @settings.
+//
+// The schema for the child settings object must have been declared
+// in the schema of @settings using a <child> element.
+/*
+
+C function : g_settings_get_child
+*/
 func (recv *Settings) GetChild(name string) *Settings {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -1972,7 +2920,16 @@ func (recv *Settings) GetChild(name string) *Settings {
 	return retGo
 }
 
-// GetDouble is a wrapper around the C function g_settings_get_double.
+// Gets the value that is stored at @key in @settings.
+//
+// A convenience variant of g_settings_get() for doubles.
+//
+// It is a programmer error to give a @key that isn't specified as
+// having a 'double' type in the schema for @settings.
+/*
+
+C function : g_settings_get_double
+*/
 func (recv *Settings) GetDouble(key string) float64 {
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
@@ -1983,7 +2940,22 @@ func (recv *Settings) GetDouble(key string) float64 {
 	return retGo
 }
 
-// GetEnum is a wrapper around the C function g_settings_get_enum.
+// Gets the value that is stored in @settings for @key and converts it
+// to the enum value that it represents.
+//
+// In order to use this function the type of the value must be a string
+// and it must be marked in the schema file as an enumerated type.
+//
+// It is a programmer error to give a @key that isn't contained in the
+// schema for @settings or is not marked as an enumerated type.
+//
+// If the value stored in the configuration database is not a valid
+// value for the enumerated type then this function will return the
+// default value.
+/*
+
+C function : g_settings_get_enum
+*/
 func (recv *Settings) GetEnum(key string) int32 {
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
@@ -1994,7 +2966,22 @@ func (recv *Settings) GetEnum(key string) int32 {
 	return retGo
 }
 
-// GetFlags is a wrapper around the C function g_settings_get_flags.
+// Gets the value that is stored in @settings for @key and converts it
+// to the flags value that it represents.
+//
+// In order to use this function the type of the value must be an array
+// of strings and it must be marked in the schema file as an flags type.
+//
+// It is a programmer error to give a @key that isn't contained in the
+// schema for @settings or is not marked as a flags type.
+//
+// If the value stored in the configuration database is not a valid
+// value for the flags type then this function will return the default
+// value.
+/*
+
+C function : g_settings_get_flags
+*/
 func (recv *Settings) GetFlags(key string) uint32 {
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
@@ -2005,7 +2992,12 @@ func (recv *Settings) GetFlags(key string) uint32 {
 	return retGo
 }
 
-// GetHasUnapplied is a wrapper around the C function g_settings_get_has_unapplied.
+// Returns whether the #GSettings object has any unapplied
+// changes.  This can only be the case if it is in 'delayed-apply' mode.
+/*
+
+C function : g_settings_get_has_unapplied
+*/
 func (recv *Settings) GetHasUnapplied() bool {
 	retC := C.g_settings_get_has_unapplied((*C.GSettings)(recv.native))
 	retGo := retC == C.TRUE
@@ -2013,7 +3005,16 @@ func (recv *Settings) GetHasUnapplied() bool {
 	return retGo
 }
 
-// GetInt is a wrapper around the C function g_settings_get_int.
+// Gets the value that is stored at @key in @settings.
+//
+// A convenience variant of g_settings_get() for 32-bit integers.
+//
+// It is a programmer error to give a @key that isn't specified as
+// having a int32 type in the schema for @settings.
+/*
+
+C function : g_settings_get_int
+*/
 func (recv *Settings) GetInt(key string) int32 {
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
@@ -2024,7 +3025,16 @@ func (recv *Settings) GetInt(key string) int32 {
 	return retGo
 }
 
-// GetString is a wrapper around the C function g_settings_get_string.
+// Gets the value that is stored at @key in @settings.
+//
+// A convenience variant of g_settings_get() for strings.
+//
+// It is a programmer error to give a @key that isn't specified as
+// having a string type in the schema for @settings.
+/*
+
+C function : g_settings_get_string
+*/
 func (recv *Settings) GetString(key string) string {
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
@@ -2040,7 +3050,11 @@ func (recv *Settings) GetString(key string) string {
 
 // Unsupported : g_settings_get_value : return type : Blacklisted record : GVariant
 
-// IsWritable is a wrapper around the C function g_settings_is_writable.
+// Finds out if a key can be written or not
+/*
+
+C function : g_settings_is_writable
+*/
 func (recv *Settings) IsWritable(name string) bool {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -2053,7 +3067,16 @@ func (recv *Settings) IsWritable(name string) bool {
 
 // Unsupported : g_settings_set : unsupported parameter ... : varargs
 
-// SetBoolean is a wrapper around the C function g_settings_set_boolean.
+// Sets @key in @settings to @value.
+//
+// A convenience variant of g_settings_set() for booleans.
+//
+// It is a programmer error to give a @key that isn't specified as
+// having a boolean type in the schema for @settings.
+/*
+
+C function : g_settings_set_boolean
+*/
 func (recv *Settings) SetBoolean(key string, value bool) bool {
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
@@ -2067,7 +3090,16 @@ func (recv *Settings) SetBoolean(key string, value bool) bool {
 	return retGo
 }
 
-// SetDouble is a wrapper around the C function g_settings_set_double.
+// Sets @key in @settings to @value.
+//
+// A convenience variant of g_settings_set() for doubles.
+//
+// It is a programmer error to give a @key that isn't specified as
+// having a 'double' type in the schema for @settings.
+/*
+
+C function : g_settings_set_double
+*/
 func (recv *Settings) SetDouble(key string, value float64) bool {
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
@@ -2080,7 +3112,16 @@ func (recv *Settings) SetDouble(key string, value float64) bool {
 	return retGo
 }
 
-// SetInt is a wrapper around the C function g_settings_set_int.
+// Sets @key in @settings to @value.
+//
+// A convenience variant of g_settings_set() for 32-bit integers.
+//
+// It is a programmer error to give a @key that isn't specified as
+// having a int32 type in the schema for @settings.
+/*
+
+C function : g_settings_set_int
+*/
 func (recv *Settings) SetInt(key string, value int32) bool {
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
@@ -2093,7 +3134,16 @@ func (recv *Settings) SetInt(key string, value int32) bool {
 	return retGo
 }
 
-// SetString is a wrapper around the C function g_settings_set_string.
+// Sets @key in @settings to @value.
+//
+// A convenience variant of g_settings_set() for strings.
+//
+// It is a programmer error to give a @key that isn't specified as
+// having a string type in the schema for @settings.
+/*
+
+C function : g_settings_set_string
+*/
 func (recv *Settings) SetString(key string, value string) bool {
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
@@ -2123,7 +3173,12 @@ func (recv *Settings) SetString(key string, value string) bool {
 
 // Blacklisted : g_settings_backend_writable_changed
 
-// SimplePermissionNew is a wrapper around the C function g_simple_permission_new.
+// Creates a new #GPermission instance that represents an action that is
+// either always or never allowed.
+/*
+
+C function : g_simple_permission_new
+*/
 func SimplePermissionNew(allowed bool) *SimplePermission {
 	c_allowed :=
 		boolToGboolean(allowed)
@@ -2134,7 +3189,22 @@ func SimplePermissionNew(allowed bool) *SimplePermission {
 	return retGo
 }
 
-// GetCredentials is a wrapper around the C function g_socket_get_credentials.
+// Returns the credentials of the foreign process connected to this
+// socket, if any (e.g. it is only supported for %G_SOCKET_FAMILY_UNIX
+// sockets).
+//
+// If this operation isn't supported on the OS, the method fails with
+// the %G_IO_ERROR_NOT_SUPPORTED error. On Linux this is implemented
+// by reading the %SO_PEERCRED option on the underlying socket.
+//
+// Other ways to obtain credentials from a foreign peer includes the
+// #GUnixCredentialsMessage type and
+// g_unix_connection_send_credentials() /
+// g_unix_connection_receive_credentials() functions.
+/*
+
+C function : g_socket_get_credentials
+*/
 func (recv *Socket) GetCredentials() (*Credentials, error) {
 	var cThrowableError *C.GError
 
@@ -2149,7 +3219,12 @@ func (recv *Socket) GetCredentials() (*Credentials, error) {
 	return retGo, goThrowableError
 }
 
-// GetTimeout is a wrapper around the C function g_socket_get_timeout.
+// Gets the timeout setting of the socket. For details on this, see
+// g_socket_set_timeout().
+/*
+
+C function : g_socket_get_timeout
+*/
 func (recv *Socket) GetTimeout() uint32 {
 	retC := C.g_socket_get_timeout((*C.GSocket)(recv.native))
 	retGo := (uint32)(retC)
@@ -2157,7 +3232,13 @@ func (recv *Socket) GetTimeout() uint32 {
 	return retGo
 }
 
-// ReceiveWithBlocking is a wrapper around the C function g_socket_receive_with_blocking.
+// This behaves exactly the same as g_socket_receive(), except that
+// the choice of blocking or non-blocking behavior is determined by
+// the @blocking argument rather than by @socket's properties.
+/*
+
+C function : g_socket_receive_with_blocking
+*/
 func (recv *Socket) ReceiveWithBlocking(buffer []uint8, blocking bool, cancellable *Cancellable) (int64, error) {
 	c_buffer := &buffer[0]
 
@@ -2184,7 +3265,13 @@ func (recv *Socket) ReceiveWithBlocking(buffer []uint8, blocking bool, cancellab
 	return retGo, goThrowableError
 }
 
-// SendWithBlocking is a wrapper around the C function g_socket_send_with_blocking.
+// This behaves exactly the same as g_socket_send(), except that
+// the choice of blocking or non-blocking behavior is determined by
+// the @blocking argument rather than by @socket's properties.
+/*
+
+C function : g_socket_send_with_blocking
+*/
 func (recv *Socket) SendWithBlocking(buffer []uint8, blocking bool, cancellable *Cancellable) (int64, error) {
 	c_buffer := &buffer[0]
 
@@ -2211,7 +3298,30 @@ func (recv *Socket) SendWithBlocking(buffer []uint8, blocking bool, cancellable 
 	return retGo, goThrowableError
 }
 
-// SetTimeout is a wrapper around the C function g_socket_set_timeout.
+// Sets the time in seconds after which I/O operations on @socket will
+// time out if they have not yet completed.
+//
+// On a blocking socket, this means that any blocking #GSocket
+// operation will time out after @timeout seconds of inactivity,
+// returning %G_IO_ERROR_TIMED_OUT.
+//
+// On a non-blocking socket, calls to g_socket_condition_wait() will
+// also fail with %G_IO_ERROR_TIMED_OUT after the given time. Sources
+// created with g_socket_create_source() will trigger after
+// @timeout seconds of inactivity, with the requested condition
+// set, at which point calling g_socket_receive(), g_socket_send(),
+// g_socket_check_connect_result(), etc, will fail with
+// %G_IO_ERROR_TIMED_OUT.
+//
+// If @timeout is 0 (the default), operations will never time out
+// on their own.
+//
+// Note that if an I/O operation is interrupted by a signal, this may
+// cause the timeout to be reset.
+/*
+
+C function : g_socket_set_timeout
+*/
 func (recv *Socket) SetTimeout(timeout uint32) {
 	c_timeout := (C.guint)(timeout)
 
@@ -2220,7 +3330,31 @@ func (recv *Socket) SetTimeout(timeout uint32) {
 	return
 }
 
-// ConnectToUri is a wrapper around the C function g_socket_client_connect_to_uri.
+// This is a helper function for g_socket_client_connect().
+//
+// Attempts to create a TCP connection with a network URI.
+//
+// @uri may be any valid URI containing an "authority" (hostname/port)
+// component. If a port is not specified in the URI, @default_port
+// will be used. TLS will be negotiated if #GSocketClient:tls is %TRUE.
+// (#GSocketClient does not know to automatically assume TLS for
+// certain URI schemes.)
+//
+// Using this rather than g_socket_client_connect() or
+// g_socket_client_connect_to_host() allows #GSocketClient to
+// determine when to use application-specific proxy protocols.
+//
+// Upon a successful connection, a new #GSocketConnection is constructed
+// and returned.  The caller owns this new object and must drop their
+// reference to it when finished with it.
+//
+// In the event of any failure (DNS error, service not found, no hosts
+// connectable) %NULL is returned and @error (if non-%NULL) is set
+// accordingly.
+/*
+
+C function : g_socket_client_connect_to_uri
+*/
 func (recv *SocketClient) ConnectToUri(uri string, defaultPort uint16, cancellable *Cancellable) (*SocketConnection, error) {
 	c_uri := C.CString(uri)
 	defer C.free(unsafe.Pointer(c_uri))
@@ -2247,7 +3381,11 @@ func (recv *SocketClient) ConnectToUri(uri string, defaultPort uint16, cancellab
 
 // Unsupported : g_socket_client_connect_to_uri_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// ConnectToUriFinish is a wrapper around the C function g_socket_client_connect_to_uri_finish.
+// Finishes an async connect operation. See g_socket_client_connect_to_uri_async()
+/*
+
+C function : g_socket_client_connect_to_uri_finish
+*/
 func (recv *SocketClient) ConnectToUriFinish(result *AsyncResult) (*SocketConnection, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
 
@@ -2264,7 +3402,11 @@ func (recv *SocketClient) ConnectToUriFinish(result *AsyncResult) (*SocketConnec
 	return retGo, goThrowableError
 }
 
-// GetEnableProxy is a wrapper around the C function g_socket_client_get_enable_proxy.
+// Gets the proxy enable state; see g_socket_client_set_enable_proxy()
+/*
+
+C function : g_socket_client_get_enable_proxy
+*/
 func (recv *SocketClient) GetEnableProxy() bool {
 	retC := C.g_socket_client_get_enable_proxy((*C.GSocketClient)(recv.native))
 	retGo := retC == C.TRUE
@@ -2272,7 +3414,13 @@ func (recv *SocketClient) GetEnableProxy() bool {
 	return retGo
 }
 
-// GetTimeout is a wrapper around the C function g_socket_client_get_timeout.
+// Gets the I/O timeout time for sockets created by @client.
+//
+// See g_socket_client_set_timeout() for details.
+/*
+
+C function : g_socket_client_get_timeout
+*/
 func (recv *SocketClient) GetTimeout() uint32 {
 	retC := C.g_socket_client_get_timeout((*C.GSocketClient)(recv.native))
 	retGo := (uint32)(retC)
@@ -2280,7 +3428,16 @@ func (recv *SocketClient) GetTimeout() uint32 {
 	return retGo
 }
 
-// SetEnableProxy is a wrapper around the C function g_socket_client_set_enable_proxy.
+// Sets whether or not @client attempts to make connections via a
+// proxy server. When enabled (the default), #GSocketClient will use a
+// #GProxyResolver to determine if a proxy protocol such as SOCKS is
+// needed, and automatically do the necessary proxy negotiation.
+//
+// See also g_socket_client_set_proxy_resolver().
+/*
+
+C function : g_socket_client_set_enable_proxy
+*/
 func (recv *SocketClient) SetEnableProxy(enable bool) {
 	c_enable :=
 		boolToGboolean(enable)
@@ -2290,7 +3447,16 @@ func (recv *SocketClient) SetEnableProxy(enable bool) {
 	return
 }
 
-// SetTimeout is a wrapper around the C function g_socket_client_set_timeout.
+// Sets the I/O timeout for sockets created by @client. @timeout is a
+// time in seconds, or 0 for no timeout (the default).
+//
+// The timeout value affects the initial connection attempt as well,
+// so setting this may cause calls to g_socket_client_connect(), etc,
+// to fail with %G_IO_ERROR_TIMED_OUT.
+/*
+
+C function : g_socket_client_set_timeout
+*/
 func (recv *SocketClient) SetTimeout(timeout uint32) {
 	c_timeout := (C.guint)(timeout)
 
@@ -2299,7 +3465,20 @@ func (recv *SocketClient) SetTimeout(timeout uint32) {
 	return
 }
 
-// ReceiveCredentials is a wrapper around the C function g_unix_connection_receive_credentials.
+// Receives credentials from the sending end of the connection.  The
+// sending end has to call g_unix_connection_send_credentials() (or
+// similar) for this to work.
+//
+// As well as reading the credentials this also reads (and discards) a
+// single byte from the stream, as this is required for credentials
+// passing to work on some implementations.
+//
+// Other ways to exchange credentials with a foreign peer includes the
+// #GUnixCredentialsMessage type and g_socket_get_credentials() function.
+/*
+
+C function : g_unix_connection_receive_credentials
+*/
 func (recv *UnixConnection) ReceiveCredentials(cancellable *Cancellable) (*Credentials, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
 	if cancellable != nil {
@@ -2319,7 +3498,21 @@ func (recv *UnixConnection) ReceiveCredentials(cancellable *Cancellable) (*Crede
 	return retGo, goThrowableError
 }
 
-// SendCredentials is a wrapper around the C function g_unix_connection_send_credentials.
+// Passes the credentials of the current user the receiving side
+// of the connection. The receiving end has to call
+// g_unix_connection_receive_credentials() (or similar) to accept the
+// credentials.
+//
+// As well as sending the credentials this also writes a single NUL
+// byte to the stream, as this is required for credentials passing to
+// work on some implementations.
+//
+// Other ways to exchange credentials with a foreign peer includes the
+// #GUnixCredentialsMessage type and g_socket_get_credentials() function.
+/*
+
+C function : g_unix_connection_send_credentials
+*/
 func (recv *UnixConnection) SendCredentials(cancellable *Cancellable) (bool, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
 	if cancellable != nil {
@@ -2378,7 +3571,11 @@ func CastToUnixCredentialsMessage(object *gobject.Object) *UnixCredentialsMessag
 	return UnixCredentialsMessageNewFromC(object.ToC())
 }
 
-// UnixCredentialsMessageNew is a wrapper around the C function g_unix_credentials_message_new.
+// Creates a new #GUnixCredentialsMessage with credentials matching the current processes.
+/*
+
+C function : g_unix_credentials_message_new
+*/
 func UnixCredentialsMessageNew() *UnixCredentialsMessage {
 	retC := C.g_unix_credentials_message_new()
 	retGo := UnixCredentialsMessageNewFromC(unsafe.Pointer(retC))
@@ -2386,7 +3583,11 @@ func UnixCredentialsMessageNew() *UnixCredentialsMessage {
 	return retGo
 }
 
-// UnixCredentialsMessageNewWithCredentials is a wrapper around the C function g_unix_credentials_message_new_with_credentials.
+// Creates a new #GUnixCredentialsMessage holding @credentials.
+/*
+
+C function : g_unix_credentials_message_new_with_credentials
+*/
 func UnixCredentialsMessageNewWithCredentials(credentials *Credentials) *UnixCredentialsMessage {
 	c_credentials := (*C.GCredentials)(C.NULL)
 	if credentials != nil {
@@ -2399,7 +3600,11 @@ func UnixCredentialsMessageNewWithCredentials(credentials *Credentials) *UnixCre
 	return retGo
 }
 
-// GetCredentials is a wrapper around the C function g_unix_credentials_message_get_credentials.
+// Gets the credentials stored in @message.
+/*
+
+C function : g_unix_credentials_message_get_credentials
+*/
 func (recv *UnixCredentialsMessage) GetCredentials() *Credentials {
 	retC := C.g_unix_credentials_message_get_credentials((*C.GUnixCredentialsMessage)(recv.native))
 	retGo := CredentialsNewFromC(unsafe.Pointer(retC))
@@ -2407,7 +3612,41 @@ func (recv *UnixCredentialsMessage) GetCredentials() *Credentials {
 	return retGo
 }
 
-// UnixSocketAddressNewWithType is a wrapper around the C function g_unix_socket_address_new_with_type.
+// Creates a new #GUnixSocketAddress of type @type with name @path.
+//
+// If @type is %G_UNIX_SOCKET_ADDRESS_PATH, this is equivalent to
+// calling g_unix_socket_address_new().
+//
+// If @type is %G_UNIX_SOCKET_ADDRESS_ANONYMOUS, @path and @path_len will be
+// ignored.
+//
+// If @path_type is %G_UNIX_SOCKET_ADDRESS_ABSTRACT, then @path_len
+// bytes of @path will be copied to the socket's path, and only those
+// bytes will be considered part of the name. (If @path_len is -1,
+// then @path is assumed to be NUL-terminated.) For example, if @path
+// was "test", then calling g_socket_address_get_native_size() on the
+// returned socket would return 7 (2 bytes of overhead, 1 byte for the
+// abstract-socket indicator byte, and 4 bytes for the name "test").
+//
+// If @path_type is %G_UNIX_SOCKET_ADDRESS_ABSTRACT_PADDED, then
+// @path_len bytes of @path will be copied to the socket's path, the
+// rest of the path will be padded with 0 bytes, and the entire
+// zero-padded buffer will be considered the name. (As above, if
+// @path_len is -1, then @path is assumed to be NUL-terminated.) In
+// this case, g_socket_address_get_native_size() will always return
+// the full size of a `struct sockaddr_un`, although
+// g_unix_socket_address_get_path_len() will still return just the
+// length of @path.
+//
+// %G_UNIX_SOCKET_ADDRESS_ABSTRACT is preferred over
+// %G_UNIX_SOCKET_ADDRESS_ABSTRACT_PADDED for new programs. Of course,
+// when connecting to a server created by another process, you must
+// use the appropriate type corresponding to how that process created
+// its listening socket.
+/*
+
+C function : g_unix_socket_address_new_with_type
+*/
 func UnixSocketAddressNewWithType(path []rune, type_ UnixSocketAddressType) *UnixSocketAddress {
 	c_path := &path[0]
 
@@ -2421,7 +3660,11 @@ func UnixSocketAddressNewWithType(path []rune, type_ UnixSocketAddressType) *Uni
 	return retGo
 }
 
-// GetAddressType is a wrapper around the C function g_unix_socket_address_get_address_type.
+// Gets @address's type.
+/*
+
+C function : g_unix_socket_address_get_address_type
+*/
 func (recv *UnixSocketAddress) GetAddressType() UnixSocketAddressType {
 	retC := C.g_unix_socket_address_get_address_type((*C.GUnixSocketAddress)(recv.native))
 	retGo := (UnixSocketAddressType)(retC)
@@ -2429,7 +3672,11 @@ func (recv *UnixSocketAddress) GetAddressType() UnixSocketAddressType {
 	return retGo
 }
 
-// GetFileInfo is a wrapper around the C function g_zlib_compressor_get_file_info.
+// Returns the #GZlibCompressor:file-info property.
+/*
+
+C function : g_zlib_compressor_get_file_info
+*/
 func (recv *ZlibCompressor) GetFileInfo() *FileInfo {
 	retC := C.g_zlib_compressor_get_file_info((*C.GZlibCompressor)(recv.native))
 	retGo := FileInfoNewFromC(unsafe.Pointer(retC))
@@ -2437,7 +3684,18 @@ func (recv *ZlibCompressor) GetFileInfo() *FileInfo {
 	return retGo
 }
 
-// SetFileInfo is a wrapper around the C function g_zlib_compressor_set_file_info.
+// Sets @file_info in @compressor. If non-%NULL, and @compressor's
+// #GZlibCompressor:format property is %G_ZLIB_COMPRESSOR_FORMAT_GZIP,
+// it will be used to set the file name and modification time in
+// the GZIP header of the compressed data.
+//
+// Note: it is an error to call this function while a compression is in
+// progress; it may only be called immediately after creation of @compressor,
+// or after resetting it with g_converter_reset().
+/*
+
+C function : g_zlib_compressor_set_file_info
+*/
 func (recv *ZlibCompressor) SetFileInfo(fileInfo *FileInfo) {
 	c_file_info := (*C.GFileInfo)(C.NULL)
 	if fileInfo != nil {
@@ -2449,7 +3707,15 @@ func (recv *ZlibCompressor) SetFileInfo(fileInfo *FileInfo) {
 	return
 }
 
-// GetFileInfo is a wrapper around the C function g_zlib_decompressor_get_file_info.
+// Retrieves the #GFileInfo constructed from the GZIP header data
+// of compressed data processed by @compressor, or %NULL if @decompressor's
+// #GZlibDecompressor:format property is not %G_ZLIB_COMPRESSOR_FORMAT_GZIP,
+// or the header data was not fully processed yet, or it not present in the
+// data stream at all.
+/*
+
+C function : g_zlib_decompressor_get_file_info
+*/
 func (recv *ZlibDecompressor) GetFileInfo() *FileInfo {
 	retC := C.g_zlib_decompressor_get_file_info((*C.GZlibDecompressor)(recv.native))
 	retGo := FileInfoNewFromC(unsafe.Pointer(retC))

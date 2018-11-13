@@ -27,7 +27,15 @@ import "C"
 
 // Unsupported : g_dbus_gvariant_to_gvalue : unsupported parameter value : Blacklisted record : GVariant
 
-// IoModulesLoadAllInDirectoryWithScope is a wrapper around the C function g_io_modules_load_all_in_directory_with_scope.
+// Loads all the modules in the specified directory.
+//
+// If don't require all modules to be initialized (and thus registering
+// all gtypes) then you can use g_io_modules_scan_all_in_directory()
+// which allows delayed/lazy loading of modules.
+/*
+
+C function : g_io_modules_load_all_in_directory_with_scope
+*/
 func IoModulesLoadAllInDirectoryWithScope(dirname string, scope *IOModuleScope) *glib.List {
 	c_dirname := C.CString(dirname)
 	defer C.free(unsafe.Pointer(c_dirname))
@@ -43,7 +51,21 @@ func IoModulesLoadAllInDirectoryWithScope(dirname string, scope *IOModuleScope) 
 	return retGo
 }
 
-// IoModulesScanAllInDirectoryWithScope is a wrapper around the C function g_io_modules_scan_all_in_directory_with_scope.
+// Scans all the modules in the specified directory, ensuring that
+// any extension point implemented by a module is registered.
+//
+// This may not actually load and initialize all the types in each
+// module, some modules may be lazily loaded and initialized when
+// an extension point it implementes is used with e.g.
+// g_io_extension_point_get_extensions() or
+// g_io_extension_point_get_extension_by_name().
+//
+// If you need to guarantee that all types are loaded in all the modules,
+// use g_io_modules_load_all_in_directory().
+/*
+
+C function : g_io_modules_scan_all_in_directory_with_scope
+*/
 func IoModulesScanAllInDirectoryWithScope(dirname string, scope *IOModuleScope) {
 	c_dirname := C.CString(dirname)
 	defer C.free(unsafe.Pointer(c_dirname))
@@ -58,7 +80,14 @@ func IoModulesScanAllInDirectoryWithScope(dirname string, scope *IOModuleScope) 
 	return
 }
 
-// TlsFileDatabaseNew is a wrapper around the C function g_tls_file_database_new.
+// Creates a new #GTlsFileDatabase which uses anchor certificate authorities
+// in @anchors to verify certificate chains.
+//
+// The certificates in @anchors must be PEM encoded.
+/*
+
+C function : g_tls_file_database_new
+*/
 func TlsFileDatabaseNew(anchors string) (*TlsFileDatabase, error) {
 	c_anchors := C.CString(anchors)
 	defer C.free(unsafe.Pointer(c_anchors))

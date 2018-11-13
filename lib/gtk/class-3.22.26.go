@@ -12,7 +12,11 @@ import "C"
 
 // Unsupported signal 'show-starred-location' for PlacesSidebar : unsupported parameter object : type PlacesOpenFlags :
 
-// GetShowStarredLocation is a wrapper around the C function gtk_places_sidebar_get_show_starred_location.
+// Returns the value previously set with gtk_places_sidebar_set_show_starred_location()
+/*
+
+C function : gtk_places_sidebar_get_show_starred_location
+*/
 func (recv *PlacesSidebar) GetShowStarredLocation() bool {
 	retC := C.gtk_places_sidebar_get_show_starred_location((*C.GtkPlacesSidebar)(recv.native))
 	retGo := retC == C.TRUE
@@ -20,7 +24,12 @@ func (recv *PlacesSidebar) GetShowStarredLocation() bool {
 	return retGo
 }
 
-// SetShowStarredLocation is a wrapper around the C function gtk_places_sidebar_set_show_starred_location.
+// If you enable this, you should connect to the
+// #GtkPlacesSidebar::show-starred-location signal.
+/*
+
+C function : gtk_places_sidebar_set_show_starred_location
+*/
 func (recv *PlacesSidebar) SetShowStarredLocation(showStarredLocation bool) {
 	c_show_starred_location :=
 		boolToGboolean(showStarredLocation)

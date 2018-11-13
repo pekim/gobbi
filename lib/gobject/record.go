@@ -74,7 +74,14 @@ func (recv *Closure) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ClosureNewObject is a wrapper around the C function g_closure_new_object.
+// A variant of g_closure_new_simple() which stores @object in the
+// @data field of the closure and calls g_object_watch_closure() on
+// @object and the created closure. This function is mainly useful
+// when implementing new types of closures.
+/*
+
+C function : g_closure_new_object
+*/
 func ClosureNewObject(sizeofClosure uint32, object *Object) *Closure {
 	c_sizeof_closure := (C.guint)(sizeofClosure)
 
@@ -89,7 +96,46 @@ func ClosureNewObject(sizeofClosure uint32, object *Object) *Closure {
 	return retGo
 }
 
-// ClosureNewSimple is a wrapper around the C function g_closure_new_simple.
+// Allocates a struct of the given size and initializes the initial
+// part as a #GClosure. This function is mainly useful when
+// implementing new types of closures.
+//
+// |[<!-- language="C" -->
+// typedef struct _MyClosure MyClosure;
+// struct _MyClosure
+// {
+// GClosure closure;
+// extra data goes here
+// };
+//
+// static void
+// my_closure_finalize (gpointer  notify_data,
+// GClosure *closure)
+// {
+// MyClosure *my_closure = (MyClosure *)closure;
+//
+// free extra data here
+// }
+//
+// MyClosure *my_closure_new (gpointer data)
+// {
+// GClosure *closure;
+// MyClosure *my_closure;
+//
+// closure = g_closure_new_simple (sizeof (MyClosure), data);
+// my_closure = (MyClosure *) closure;
+//
+// initialize extra data here
+//
+// g_closure_add_finalize_notifier (closure, notify_data,
+// my_closure_finalize);
+// return my_closure;
+// }
+// ]|
+/*
+
+C function : g_closure_new_simple
+*/
 func ClosureNewSimple(sizeofClosure uint32, data uintptr) *Closure {
 	c_sizeof_closure := (C.guint)(sizeofClosure)
 
@@ -107,7 +153,23 @@ func ClosureNewSimple(sizeofClosure uint32, data uintptr) *Closure {
 
 // Unsupported : g_closure_add_marshal_guards : unsupported parameter pre_marshal_notify : no type generator for ClosureNotify (GClosureNotify) for param pre_marshal_notify
 
-// Invalidate is a wrapper around the C function g_closure_invalidate.
+// Sets a flag on the closure to indicate that its calling
+// environment has become invalid, and thus causes any future
+// invocations of g_closure_invoke() on this @closure to be
+// ignored. Also, invalidation notifiers installed on the closure will
+// be called at this point. Note that unless you are holding a
+// reference to the closure yourself, the invalidation notifiers may
+// unref the closure and cause it to be destroyed, so if you need to
+// access the closure after calling g_closure_invalidate(), make sure
+// that you've previously called g_closure_ref().
+//
+// Note that g_closure_invalidate() will also be called when the
+// reference count of a closure drops to zero (unless it has already
+// been invalidated before).
+/*
+
+C function : g_closure_invalidate
+*/
 func (recv *Closure) Invalidate() {
 	C.g_closure_invalidate((*C.GClosure)(recv.native))
 
@@ -116,7 +178,12 @@ func (recv *Closure) Invalidate() {
 
 // Unsupported : g_closure_invoke : unsupported parameter param_values :
 
-// Ref is a wrapper around the C function g_closure_ref.
+// Increments the reference count on a closure to force it staying
+// alive while the caller holds a pointer to it.
+/*
+
+C function : g_closure_ref
+*/
 func (recv *Closure) Ref() *Closure {
 	retC := C.g_closure_ref((*C.GClosure)(recv.native))
 	retGo := ClosureNewFromC(unsafe.Pointer(retC))
@@ -132,14 +199,63 @@ func (recv *Closure) Ref() *Closure {
 
 // Unsupported : g_closure_set_meta_marshal : unsupported parameter meta_marshal : no type generator for ClosureMarshal (GClosureMarshal) for param meta_marshal
 
-// Sink is a wrapper around the C function g_closure_sink.
+// Takes over the initial ownership of a closure.  Each closure is
+// initially created in a "floating" state, which means that the initial
+// reference count is not owned by any caller. g_closure_sink() checks
+// to see if the object is still floating, and if so, unsets the
+// floating state and decreases the reference count. If the closure
+// is not floating, g_closure_sink() does nothing. The reason for the
+// existence of the floating state is to prevent cumbersome code
+// sequences like:
+// |[<!-- language="C" -->
+// closure = g_cclosure_new (cb_func, cb_data);
+// g_source_set_closure (source, closure);
+// g_closure_unref (closure); // GObject doesn't really need this
+// ]|
+// Because g_source_set_closure() (and similar functions) take ownership of the
+// initial reference count, if it is unowned, we instead can write:
+// |[<!-- language="C" -->
+// g_source_set_closure (source, g_cclosure_new (cb_func, cb_data));
+// ]|
+//
+// Generally, this function is used together with g_closure_ref(). Ane example
+// of storing a closure for later notification looks like:
+// |[<!-- language="C" -->
+// static GClosure *notify_closure = NULL;
+// void
+// foo_notify_set_closure (GClosure *closure)
+// {
+// if (notify_closure)
+// g_closure_unref (notify_closure);
+// notify_closure = closure;
+// if (notify_closure)
+// {
+// g_closure_ref (notify_closure);
+// g_closure_sink (notify_closure);
+// }
+// }
+// ]|
+//
+// Because g_closure_sink() may decrement the reference count of a closure
+// (if it hasn't been called on @closure yet) just like g_closure_unref(),
+// g_closure_ref() should be called prior to this function.
+/*
+
+C function : g_closure_sink
+*/
 func (recv *Closure) Sink() {
 	C.g_closure_sink((*C.GClosure)(recv.native))
 
 	return
 }
 
-// Unref is a wrapper around the C function g_closure_unref.
+// Decrements the reference count of a closure after it was previously
+// incremented by the same caller. If no other callers are using the
+// closure, then the closure will be destroyed and freed.
+/*
+
+C function : g_closure_unref
+*/
 func (recv *Closure) Unref() {
 	C.g_closure_unref((*C.GClosure)(recv.native))
 
@@ -496,7 +612,12 @@ func (recv *ParamSpecPool) ToC() unsafe.Pointer {
 
 // Unsupported : g_param_spec_pool_list : no return type
 
-// ListOwned is a wrapper around the C function g_param_spec_pool_list_owned.
+// Gets an #GList of all #GParamSpecs owned by @owner_type in
+// the pool.
+/*
+
+C function : g_param_spec_pool_list_owned
+*/
 func (recv *ParamSpecPool) ListOwned(ownerType Type) *glib.List {
 	c_owner_type := (C.GType)(ownerType)
 
@@ -683,7 +804,10 @@ func (recv *TypeClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// GetPrivate is a wrapper around the C function g_type_class_get_private.
+/*
+
+C function : g_type_class_get_private
+*/
 func (recv *TypeClass) GetPrivate(privateType Type) uintptr {
 	c_private_type := (C.GType)(privateType)
 
@@ -693,7 +817,18 @@ func (recv *TypeClass) GetPrivate(privateType Type) uintptr {
 	return retGo
 }
 
-// PeekParent is a wrapper around the C function g_type_class_peek_parent.
+// This is a convenience function often needed in class initializers.
+// It returns the class structure of the immediate parent type of the
+// class passed in.  Since derived classes hold a reference count on
+// their parent classes as long as they are instantiated, the returned
+// class will always exist.
+//
+// This function is essentially equivalent to:
+// g_type_class_peek (g_type_parent (G_TYPE_FROM_CLASS (g_class)))
+/*
+
+C function : g_type_class_peek_parent
+*/
 func (recv *TypeClass) PeekParent() uintptr {
 	retC := C.g_type_class_peek_parent((C.gpointer)(recv.native))
 	retGo := (uintptr)(retC)
@@ -701,14 +836,28 @@ func (recv *TypeClass) PeekParent() uintptr {
 	return retGo
 }
 
-// Unref is a wrapper around the C function g_type_class_unref.
+// Decrements the reference count of the class structure being passed in.
+// Once the last reference count of a class has been released, classes
+// may be finalized by the type system, so further dereferencing of a
+// class pointer after g_type_class_unref() are invalid.
+/*
+
+C function : g_type_class_unref
+*/
 func (recv *TypeClass) Unref() {
 	C.g_type_class_unref((C.gpointer)(recv.native))
 
 	return
 }
 
-// UnrefUncached is a wrapper around the C function g_type_class_unref_uncached.
+// A variant of g_type_class_unref() for use in #GTypeClassCacheFunc
+// implementations. It unreferences a class without consulting the chain
+// of #GTypeClassCacheFuncs, avoiding the recursion which would occur
+// otherwise.
+/*
+
+C function : g_type_class_unref_uncached
+*/
 func (recv *TypeClass) UnrefUncached() {
 	C.g_type_class_unref_uncached((C.gpointer)(recv.native))
 
@@ -809,7 +958,10 @@ func (recv *TypeInstance) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// GetPrivate is a wrapper around the C function g_type_instance_get_private.
+/*
+
+C function : g_type_instance_get_private
+*/
 func (recv *TypeInstance) GetPrivate(privateType Type) uintptr {
 	c_private_type := (C.GType)(privateType)
 
@@ -842,7 +994,14 @@ func (recv *TypeInterface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// PeekParent is a wrapper around the C function g_type_interface_peek_parent.
+// Returns the corresponding #GTypeInterface structure of the parent type
+// of the instance type to which @g_iface belongs. This is useful when
+// deriving the implementation of an interface from the parent type and
+// then possibly overriding some methods.
+/*
+
+C function : g_type_interface_peek_parent
+*/
 func (recv *TypeInterface) PeekParent() uintptr {
 	retC := C.g_type_interface_peek_parent((C.gpointer)(recv.native))
 	retGo := (uintptr)(retC)
@@ -1003,7 +1162,11 @@ func (recv *Value) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Copy is a wrapper around the C function g_value_copy.
+// Copies the value of @src_value into @dest_value.
+/*
+
+C function : g_value_copy
+*/
 func (recv *Value) Copy(destValue *Value) {
 	c_dest_value := (*C.GValue)(C.NULL)
 	if destValue != nil {
@@ -1015,7 +1178,14 @@ func (recv *Value) Copy(destValue *Value) {
 	return
 }
 
-// DupBoxed is a wrapper around the C function g_value_dup_boxed.
+// Get the contents of a %G_TYPE_BOXED derived #GValue.  Upon getting,
+// the boxed value is duplicated and needs to be later freed with
+// g_boxed_free(), e.g. like: g_boxed_free (G_VALUE_TYPE (@value),
+// return_value);
+/*
+
+C function : g_value_dup_boxed
+*/
 func (recv *Value) DupBoxed() uintptr {
 	retC := C.g_value_dup_boxed((*C.GValue)(recv.native))
 	retGo := (uintptr)(unsafe.Pointer(retC))
@@ -1023,7 +1193,13 @@ func (recv *Value) DupBoxed() uintptr {
 	return retGo
 }
 
-// DupObject is a wrapper around the C function g_value_dup_object.
+// Get the contents of a %G_TYPE_OBJECT derived #GValue, increasing
+// its reference count. If the contents of the #GValue are %NULL, then
+// %NULL will be returned.
+/*
+
+C function : g_value_dup_object
+*/
 func (recv *Value) DupObject() uintptr {
 	retC := C.g_value_dup_object((*C.GValue)(recv.native))
 	retGo := (uintptr)(retC)
@@ -1033,7 +1209,11 @@ func (recv *Value) DupObject() uintptr {
 
 // Unsupported : g_value_dup_param : return type : Blacklisted record : GParamSpec
 
-// DupString is a wrapper around the C function g_value_dup_string.
+// Get a copy the contents of a %G_TYPE_STRING #GValue.
+/*
+
+C function : g_value_dup_string
+*/
 func (recv *Value) DupString() string {
 	retC := C.g_value_dup_string((*C.GValue)(recv.native))
 	retGo := C.GoString(retC)
@@ -1042,7 +1222,12 @@ func (recv *Value) DupString() string {
 	return retGo
 }
 
-// FitsPointer is a wrapper around the C function g_value_fits_pointer.
+// Determines if @value will fit inside the size of a pointer value.
+// This is an internal function introduced mainly for C marshallers.
+/*
+
+C function : g_value_fits_pointer
+*/
 func (recv *Value) FitsPointer() bool {
 	retC := C.g_value_fits_pointer((*C.GValue)(recv.native))
 	retGo := retC == C.TRUE
@@ -1050,7 +1235,11 @@ func (recv *Value) FitsPointer() bool {
 	return retGo
 }
 
-// GetBoolean is a wrapper around the C function g_value_get_boolean.
+// Get the contents of a %G_TYPE_BOOLEAN #GValue.
+/*
+
+C function : g_value_get_boolean
+*/
 func (recv *Value) GetBoolean() bool {
 	retC := C.g_value_get_boolean((*C.GValue)(recv.native))
 	retGo := retC == C.TRUE
@@ -1058,7 +1247,11 @@ func (recv *Value) GetBoolean() bool {
 	return retGo
 }
 
-// GetBoxed is a wrapper around the C function g_value_get_boxed.
+// Get the contents of a %G_TYPE_BOXED derived #GValue.
+/*
+
+C function : g_value_get_boxed
+*/
 func (recv *Value) GetBoxed() uintptr {
 	retC := C.g_value_get_boxed((*C.GValue)(recv.native))
 	retGo := (uintptr)(unsafe.Pointer(retC))
@@ -1066,7 +1259,14 @@ func (recv *Value) GetBoxed() uintptr {
 	return retGo
 }
 
-// GetChar is a wrapper around the C function g_value_get_char.
+// Do not use this function; it is broken on platforms where the %char
+// type is unsigned, such as ARM and PowerPC.  See g_value_get_schar().
+//
+// Get the contents of a %G_TYPE_CHAR #GValue.
+/*
+
+C function : g_value_get_char
+*/
 func (recv *Value) GetChar() rune {
 	retC := C.g_value_get_char((*C.GValue)(recv.native))
 	retGo := (rune)(retC)
@@ -1074,7 +1274,11 @@ func (recv *Value) GetChar() rune {
 	return retGo
 }
 
-// GetDouble is a wrapper around the C function g_value_get_double.
+// Get the contents of a %G_TYPE_DOUBLE #GValue.
+/*
+
+C function : g_value_get_double
+*/
 func (recv *Value) GetDouble() float64 {
 	retC := C.g_value_get_double((*C.GValue)(recv.native))
 	retGo := (float64)(retC)
@@ -1082,7 +1286,11 @@ func (recv *Value) GetDouble() float64 {
 	return retGo
 }
 
-// GetEnum is a wrapper around the C function g_value_get_enum.
+// Get the contents of a %G_TYPE_ENUM #GValue.
+/*
+
+C function : g_value_get_enum
+*/
 func (recv *Value) GetEnum() int32 {
 	retC := C.g_value_get_enum((*C.GValue)(recv.native))
 	retGo := (int32)(retC)
@@ -1090,7 +1298,11 @@ func (recv *Value) GetEnum() int32 {
 	return retGo
 }
 
-// GetFlags is a wrapper around the C function g_value_get_flags.
+// Get the contents of a %G_TYPE_FLAGS #GValue.
+/*
+
+C function : g_value_get_flags
+*/
 func (recv *Value) GetFlags() uint32 {
 	retC := C.g_value_get_flags((*C.GValue)(recv.native))
 	retGo := (uint32)(retC)
@@ -1098,7 +1310,11 @@ func (recv *Value) GetFlags() uint32 {
 	return retGo
 }
 
-// GetFloat is a wrapper around the C function g_value_get_float.
+// Get the contents of a %G_TYPE_FLOAT #GValue.
+/*
+
+C function : g_value_get_float
+*/
 func (recv *Value) GetFloat() float32 {
 	retC := C.g_value_get_float((*C.GValue)(recv.native))
 	retGo := (float32)(retC)
@@ -1106,7 +1322,11 @@ func (recv *Value) GetFloat() float32 {
 	return retGo
 }
 
-// GetInt is a wrapper around the C function g_value_get_int.
+// Get the contents of a %G_TYPE_INT #GValue.
+/*
+
+C function : g_value_get_int
+*/
 func (recv *Value) GetInt() int32 {
 	retC := C.g_value_get_int((*C.GValue)(recv.native))
 	retGo := (int32)(retC)
@@ -1114,7 +1334,11 @@ func (recv *Value) GetInt() int32 {
 	return retGo
 }
 
-// GetInt64 is a wrapper around the C function g_value_get_int64.
+// Get the contents of a %G_TYPE_INT64 #GValue.
+/*
+
+C function : g_value_get_int64
+*/
 func (recv *Value) GetInt64() int64 {
 	retC := C.g_value_get_int64((*C.GValue)(recv.native))
 	retGo := (int64)(retC)
@@ -1122,7 +1346,11 @@ func (recv *Value) GetInt64() int64 {
 	return retGo
 }
 
-// GetLong is a wrapper around the C function g_value_get_long.
+// Get the contents of a %G_TYPE_LONG #GValue.
+/*
+
+C function : g_value_get_long
+*/
 func (recv *Value) GetLong() int64 {
 	retC := C.g_value_get_long((*C.GValue)(recv.native))
 	retGo := (int64)(retC)
@@ -1130,7 +1358,11 @@ func (recv *Value) GetLong() int64 {
 	return retGo
 }
 
-// GetObject is a wrapper around the C function g_value_get_object.
+// Get the contents of a %G_TYPE_OBJECT derived #GValue.
+/*
+
+C function : g_value_get_object
+*/
 func (recv *Value) GetObject() uintptr {
 	retC := C.g_value_get_object((*C.GValue)(recv.native))
 	retGo := (uintptr)(retC)
@@ -1140,7 +1372,11 @@ func (recv *Value) GetObject() uintptr {
 
 // Unsupported : g_value_get_param : return type : Blacklisted record : GParamSpec
 
-// GetPointer is a wrapper around the C function g_value_get_pointer.
+// Get the contents of a pointer #GValue.
+/*
+
+C function : g_value_get_pointer
+*/
 func (recv *Value) GetPointer() uintptr {
 	retC := C.g_value_get_pointer((*C.GValue)(recv.native))
 	retGo := (uintptr)(unsafe.Pointer(retC))
@@ -1148,7 +1384,11 @@ func (recv *Value) GetPointer() uintptr {
 	return retGo
 }
 
-// GetString is a wrapper around the C function g_value_get_string.
+// Get the contents of a %G_TYPE_STRING #GValue.
+/*
+
+C function : g_value_get_string
+*/
 func (recv *Value) GetString() string {
 	retC := C.g_value_get_string((*C.GValue)(recv.native))
 	retGo := C.GoString(retC)
@@ -1156,7 +1396,11 @@ func (recv *Value) GetString() string {
 	return retGo
 }
 
-// GetUchar is a wrapper around the C function g_value_get_uchar.
+// Get the contents of a %G_TYPE_UCHAR #GValue.
+/*
+
+C function : g_value_get_uchar
+*/
 func (recv *Value) GetUchar() uint8 {
 	retC := C.g_value_get_uchar((*C.GValue)(recv.native))
 	retGo := (uint8)(retC)
@@ -1164,7 +1408,11 @@ func (recv *Value) GetUchar() uint8 {
 	return retGo
 }
 
-// GetUint is a wrapper around the C function g_value_get_uint.
+// Get the contents of a %G_TYPE_UINT #GValue.
+/*
+
+C function : g_value_get_uint
+*/
 func (recv *Value) GetUint() uint32 {
 	retC := C.g_value_get_uint((*C.GValue)(recv.native))
 	retGo := (uint32)(retC)
@@ -1172,7 +1420,11 @@ func (recv *Value) GetUint() uint32 {
 	return retGo
 }
 
-// GetUint64 is a wrapper around the C function g_value_get_uint64.
+// Get the contents of a %G_TYPE_UINT64 #GValue.
+/*
+
+C function : g_value_get_uint64
+*/
 func (recv *Value) GetUint64() uint64 {
 	retC := C.g_value_get_uint64((*C.GValue)(recv.native))
 	retGo := (uint64)(retC)
@@ -1180,7 +1432,11 @@ func (recv *Value) GetUint64() uint64 {
 	return retGo
 }
 
-// GetUlong is a wrapper around the C function g_value_get_ulong.
+// Get the contents of a %G_TYPE_ULONG #GValue.
+/*
+
+C function : g_value_get_ulong
+*/
 func (recv *Value) GetUlong() uint64 {
 	retC := C.g_value_get_ulong((*C.GValue)(recv.native))
 	retGo := (uint64)(retC)
@@ -1188,7 +1444,11 @@ func (recv *Value) GetUlong() uint64 {
 	return retGo
 }
 
-// Init is a wrapper around the C function g_value_init.
+// Initializes @value with the default value of @type.
+/*
+
+C function : g_value_init
+*/
 func (recv *Value) Init(gType Type) *Value {
 	c_g_type := (C.GType)(gType)
 
@@ -1198,7 +1458,13 @@ func (recv *Value) Init(gType Type) *Value {
 	return retGo
 }
 
-// PeekPointer is a wrapper around the C function g_value_peek_pointer.
+// Returns the value contents as pointer. This function asserts that
+// g_value_fits_pointer() returned %TRUE for the passed in value.
+// This is an internal function introduced mainly for C marshallers.
+/*
+
+C function : g_value_peek_pointer
+*/
 func (recv *Value) PeekPointer() uintptr {
 	retC := C.g_value_peek_pointer((*C.GValue)(recv.native))
 	retGo := (uintptr)(unsafe.Pointer(retC))
@@ -1206,7 +1472,12 @@ func (recv *Value) PeekPointer() uintptr {
 	return retGo
 }
 
-// Reset is a wrapper around the C function g_value_reset.
+// Clears the current value in @value and resets it to the default value
+// (as if the value had just been initialized).
+/*
+
+C function : g_value_reset
+*/
 func (recv *Value) Reset() *Value {
 	retC := C.g_value_reset((*C.GValue)(recv.native))
 	retGo := ValueNewFromC(unsafe.Pointer(retC))
@@ -1214,7 +1485,11 @@ func (recv *Value) Reset() *Value {
 	return retGo
 }
 
-// SetBoolean is a wrapper around the C function g_value_set_boolean.
+// Set the contents of a %G_TYPE_BOOLEAN #GValue to @v_boolean.
+/*
+
+C function : g_value_set_boolean
+*/
 func (recv *Value) SetBoolean(vBoolean bool) {
 	c_v_boolean :=
 		boolToGboolean(vBoolean)
@@ -1224,7 +1499,11 @@ func (recv *Value) SetBoolean(vBoolean bool) {
 	return
 }
 
-// SetBoxed is a wrapper around the C function g_value_set_boxed.
+// Set the contents of a %G_TYPE_BOXED derived #GValue to @v_boxed.
+/*
+
+C function : g_value_set_boxed
+*/
 func (recv *Value) SetBoxed(vBoxed uintptr) {
 	c_v_boxed := (C.gconstpointer)(vBoxed)
 
@@ -1233,7 +1512,11 @@ func (recv *Value) SetBoxed(vBoxed uintptr) {
 	return
 }
 
-// SetBoxedTakeOwnership is a wrapper around the C function g_value_set_boxed_take_ownership.
+// This is an internal function introduced mainly for C marshallers.
+/*
+
+C function : g_value_set_boxed_take_ownership
+*/
 func (recv *Value) SetBoxedTakeOwnership(vBoxed uintptr) {
 	c_v_boxed := (C.gconstpointer)(vBoxed)
 
@@ -1242,7 +1525,11 @@ func (recv *Value) SetBoxedTakeOwnership(vBoxed uintptr) {
 	return
 }
 
-// SetChar is a wrapper around the C function g_value_set_char.
+// Set the contents of a %G_TYPE_CHAR #GValue to @v_char.
+/*
+
+C function : g_value_set_char
+*/
 func (recv *Value) SetChar(vChar rune) {
 	c_v_char := (C.gchar)(vChar)
 
@@ -1251,7 +1538,11 @@ func (recv *Value) SetChar(vChar rune) {
 	return
 }
 
-// SetDouble is a wrapper around the C function g_value_set_double.
+// Set the contents of a %G_TYPE_DOUBLE #GValue to @v_double.
+/*
+
+C function : g_value_set_double
+*/
 func (recv *Value) SetDouble(vDouble float64) {
 	c_v_double := (C.gdouble)(vDouble)
 
@@ -1260,7 +1551,11 @@ func (recv *Value) SetDouble(vDouble float64) {
 	return
 }
 
-// SetEnum is a wrapper around the C function g_value_set_enum.
+// Set the contents of a %G_TYPE_ENUM #GValue to @v_enum.
+/*
+
+C function : g_value_set_enum
+*/
 func (recv *Value) SetEnum(vEnum int32) {
 	c_v_enum := (C.gint)(vEnum)
 
@@ -1269,7 +1564,11 @@ func (recv *Value) SetEnum(vEnum int32) {
 	return
 }
 
-// SetFlags is a wrapper around the C function g_value_set_flags.
+// Set the contents of a %G_TYPE_FLAGS #GValue to @v_flags.
+/*
+
+C function : g_value_set_flags
+*/
 func (recv *Value) SetFlags(vFlags uint32) {
 	c_v_flags := (C.guint)(vFlags)
 
@@ -1278,7 +1577,11 @@ func (recv *Value) SetFlags(vFlags uint32) {
 	return
 }
 
-// SetFloat is a wrapper around the C function g_value_set_float.
+// Set the contents of a %G_TYPE_FLOAT #GValue to @v_float.
+/*
+
+C function : g_value_set_float
+*/
 func (recv *Value) SetFloat(vFloat float32) {
 	c_v_float := (C.gfloat)(vFloat)
 
@@ -1287,7 +1590,12 @@ func (recv *Value) SetFloat(vFloat float32) {
 	return
 }
 
-// SetInstance is a wrapper around the C function g_value_set_instance.
+// Sets @value from an instantiatable type via the
+// value_table's collect_value() function.
+/*
+
+C function : g_value_set_instance
+*/
 func (recv *Value) SetInstance(instance uintptr) {
 	c_instance := (C.gpointer)(instance)
 
@@ -1296,7 +1604,11 @@ func (recv *Value) SetInstance(instance uintptr) {
 	return
 }
 
-// SetInt is a wrapper around the C function g_value_set_int.
+// Set the contents of a %G_TYPE_INT #GValue to @v_int.
+/*
+
+C function : g_value_set_int
+*/
 func (recv *Value) SetInt(vInt int32) {
 	c_v_int := (C.gint)(vInt)
 
@@ -1305,7 +1617,11 @@ func (recv *Value) SetInt(vInt int32) {
 	return
 }
 
-// SetInt64 is a wrapper around the C function g_value_set_int64.
+// Set the contents of a %G_TYPE_INT64 #GValue to @v_int64.
+/*
+
+C function : g_value_set_int64
+*/
 func (recv *Value) SetInt64(vInt64 int64) {
 	c_v_int64 := (C.gint64)(vInt64)
 
@@ -1314,7 +1630,11 @@ func (recv *Value) SetInt64(vInt64 int64) {
 	return
 }
 
-// SetLong is a wrapper around the C function g_value_set_long.
+// Set the contents of a %G_TYPE_LONG #GValue to @v_long.
+/*
+
+C function : g_value_set_long
+*/
 func (recv *Value) SetLong(vLong int64) {
 	c_v_long := (C.glong)(vLong)
 
@@ -1323,7 +1643,21 @@ func (recv *Value) SetLong(vLong int64) {
 	return
 }
 
-// SetObject is a wrapper around the C function g_value_set_object.
+// Set the contents of a %G_TYPE_OBJECT derived #GValue to @v_object.
+//
+// g_value_set_object() increases the reference count of @v_object
+// (the #GValue holds a reference to @v_object).  If you do not wish
+// to increase the reference count of the object (i.e. you wish to
+// pass your current reference to the #GValue because you no longer
+// need it), use g_value_take_object() instead.
+//
+// It is important that your #GValue holds a reference to @v_object (either its
+// own, or one it has taken) to ensure that the object won't be destroyed while
+// the #GValue still exists).
+/*
+
+C function : g_value_set_object
+*/
 func (recv *Value) SetObject(vObject uintptr) {
 	c_v_object := (C.gpointer)(vObject)
 
@@ -1332,7 +1666,11 @@ func (recv *Value) SetObject(vObject uintptr) {
 	return
 }
 
-// SetObjectTakeOwnership is a wrapper around the C function g_value_set_object_take_ownership.
+// This is an internal function introduced mainly for C marshallers.
+/*
+
+C function : g_value_set_object_take_ownership
+*/
 func (recv *Value) SetObjectTakeOwnership(vObject uintptr) {
 	c_v_object := (C.gpointer)(vObject)
 
@@ -1345,7 +1683,11 @@ func (recv *Value) SetObjectTakeOwnership(vObject uintptr) {
 
 // Unsupported : g_value_set_param_take_ownership : unsupported parameter param : Blacklisted record : GParamSpec
 
-// SetPointer is a wrapper around the C function g_value_set_pointer.
+// Set the contents of a pointer #GValue to @v_pointer.
+/*
+
+C function : g_value_set_pointer
+*/
 func (recv *Value) SetPointer(vPointer uintptr) {
 	c_v_pointer := (C.gpointer)(vPointer)
 
@@ -1354,7 +1696,13 @@ func (recv *Value) SetPointer(vPointer uintptr) {
 	return
 }
 
-// SetStaticBoxed is a wrapper around the C function g_value_set_static_boxed.
+// Set the contents of a %G_TYPE_BOXED derived #GValue to @v_boxed.
+// The boxed value is assumed to be static, and is thus not duplicated
+// when setting the #GValue.
+/*
+
+C function : g_value_set_static_boxed
+*/
 func (recv *Value) SetStaticBoxed(vBoxed uintptr) {
 	c_v_boxed := (C.gconstpointer)(vBoxed)
 
@@ -1363,7 +1711,13 @@ func (recv *Value) SetStaticBoxed(vBoxed uintptr) {
 	return
 }
 
-// SetStaticString is a wrapper around the C function g_value_set_static_string.
+// Set the contents of a %G_TYPE_STRING #GValue to @v_string.
+// The string is assumed to be static, and is thus not duplicated
+// when setting the #GValue.
+/*
+
+C function : g_value_set_static_string
+*/
 func (recv *Value) SetStaticString(vString string) {
 	c_v_string := C.CString(vString)
 	defer C.free(unsafe.Pointer(c_v_string))
@@ -1373,7 +1727,11 @@ func (recv *Value) SetStaticString(vString string) {
 	return
 }
 
-// SetString is a wrapper around the C function g_value_set_string.
+// Set the contents of a %G_TYPE_STRING #GValue to @v_string.
+/*
+
+C function : g_value_set_string
+*/
 func (recv *Value) SetString(vString string) {
 	c_v_string := C.CString(vString)
 	defer C.free(unsafe.Pointer(c_v_string))
@@ -1383,7 +1741,11 @@ func (recv *Value) SetString(vString string) {
 	return
 }
 
-// SetStringTakeOwnership is a wrapper around the C function g_value_set_string_take_ownership.
+// This is an internal function introduced mainly for C marshallers.
+/*
+
+C function : g_value_set_string_take_ownership
+*/
 func (recv *Value) SetStringTakeOwnership(vString string) {
 	c_v_string := C.CString(vString)
 	defer C.free(unsafe.Pointer(c_v_string))
@@ -1393,7 +1755,11 @@ func (recv *Value) SetStringTakeOwnership(vString string) {
 	return
 }
 
-// SetUchar is a wrapper around the C function g_value_set_uchar.
+// Set the contents of a %G_TYPE_UCHAR #GValue to @v_uchar.
+/*
+
+C function : g_value_set_uchar
+*/
 func (recv *Value) SetUchar(vUchar uint8) {
 	c_v_uchar := (C.guchar)(vUchar)
 
@@ -1402,7 +1768,11 @@ func (recv *Value) SetUchar(vUchar uint8) {
 	return
 }
 
-// SetUint is a wrapper around the C function g_value_set_uint.
+// Set the contents of a %G_TYPE_UINT #GValue to @v_uint.
+/*
+
+C function : g_value_set_uint
+*/
 func (recv *Value) SetUint(vUint uint32) {
 	c_v_uint := (C.guint)(vUint)
 
@@ -1411,7 +1781,11 @@ func (recv *Value) SetUint(vUint uint32) {
 	return
 }
 
-// SetUint64 is a wrapper around the C function g_value_set_uint64.
+// Set the contents of a %G_TYPE_UINT64 #GValue to @v_uint64.
+/*
+
+C function : g_value_set_uint64
+*/
 func (recv *Value) SetUint64(vUint64 uint64) {
 	c_v_uint64 := (C.guint64)(vUint64)
 
@@ -1420,7 +1794,11 @@ func (recv *Value) SetUint64(vUint64 uint64) {
 	return
 }
 
-// SetUlong is a wrapper around the C function g_value_set_ulong.
+// Set the contents of a %G_TYPE_ULONG #GValue to @v_ulong.
+/*
+
+C function : g_value_set_ulong
+*/
 func (recv *Value) SetUlong(vUlong uint64) {
 	c_v_ulong := (C.gulong)(vUlong)
 
@@ -1429,7 +1807,17 @@ func (recv *Value) SetUlong(vUlong uint64) {
 	return
 }
 
-// Transform is a wrapper around the C function g_value_transform.
+// Tries to cast the contents of @src_value into a type appropriate
+// to store in @dest_value, e.g. to transform a %G_TYPE_INT value
+// into a %G_TYPE_FLOAT value. Performing transformations between
+// value types might incur precision lossage. Especially
+// transformations into strings might reveal seemingly arbitrary
+// results and shouldn't be relied upon for production code (such
+// as rcfile value or object property serialization).
+/*
+
+C function : g_value_transform
+*/
 func (recv *Value) Transform(destValue *Value) bool {
 	c_dest_value := (*C.GValue)(C.NULL)
 	if destValue != nil {
@@ -1442,7 +1830,14 @@ func (recv *Value) Transform(destValue *Value) bool {
 	return retGo
 }
 
-// Unset is a wrapper around the C function g_value_unset.
+// Clears the current value in @value (if any) and "unsets" the type,
+// this releases all resources associated with this GValue. An unset
+// value is the same as an uninitialized (zero-filled) #GValue
+// structure.
+/*
+
+C function : g_value_unset
+*/
 func (recv *Value) Unset() {
 	C.g_value_unset((*C.GValue)(recv.native))
 
@@ -1478,7 +1873,13 @@ func (recv *ValueArray) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ValueArrayNew is a wrapper around the C function g_value_array_new.
+// Allocate and initialize a new #GValueArray, optionally preserve space
+// for @n_prealloced elements. New arrays always contain 0 elements,
+// regardless of the value of @n_prealloced.
+/*
+
+C function : g_value_array_new
+*/
 func ValueArrayNew(nPrealloced uint32) *ValueArray {
 	c_n_prealloced := (C.guint)(nPrealloced)
 
@@ -1488,7 +1889,12 @@ func ValueArrayNew(nPrealloced uint32) *ValueArray {
 	return retGo
 }
 
-// Append is a wrapper around the C function g_value_array_append.
+// Insert a copy of @value as last element of @value_array. If @value is
+// %NULL, an uninitialized value is appended.
+/*
+
+C function : g_value_array_append
+*/
 func (recv *ValueArray) Append(value *Value) *ValueArray {
 	c_value := (*C.GValue)(C.NULL)
 	if value != nil {
@@ -1501,7 +1907,12 @@ func (recv *ValueArray) Append(value *Value) *ValueArray {
 	return retGo
 }
 
-// Copy is a wrapper around the C function g_value_array_copy.
+// Construct an exact copy of a #GValueArray by duplicating all its
+// contents.
+/*
+
+C function : g_value_array_copy
+*/
 func (recv *ValueArray) Copy() *ValueArray {
 	retC := C.g_value_array_copy((*C.GValueArray)(recv.native))
 	retGo := ValueArrayNewFromC(unsafe.Pointer(retC))
@@ -1509,14 +1920,22 @@ func (recv *ValueArray) Copy() *ValueArray {
 	return retGo
 }
 
-// Free is a wrapper around the C function g_value_array_free.
+// Free a #GValueArray including its contents.
+/*
+
+C function : g_value_array_free
+*/
 func (recv *ValueArray) Free() {
 	C.g_value_array_free((*C.GValueArray)(recv.native))
 
 	return
 }
 
-// GetNth is a wrapper around the C function g_value_array_get_nth.
+// Return a pointer to the value at @index_ containd in @value_array.
+/*
+
+C function : g_value_array_get_nth
+*/
 func (recv *ValueArray) GetNth(index uint32) *Value {
 	c_index_ := (C.guint)(index)
 
@@ -1526,7 +1945,12 @@ func (recv *ValueArray) GetNth(index uint32) *Value {
 	return retGo
 }
 
-// Insert is a wrapper around the C function g_value_array_insert.
+// Insert a copy of @value at specified position into @value_array. If @value
+// is %NULL, an uninitialized value is inserted.
+/*
+
+C function : g_value_array_insert
+*/
 func (recv *ValueArray) Insert(index uint32, value *Value) *ValueArray {
 	c_index_ := (C.guint)(index)
 
@@ -1541,7 +1965,12 @@ func (recv *ValueArray) Insert(index uint32, value *Value) *ValueArray {
 	return retGo
 }
 
-// Prepend is a wrapper around the C function g_value_array_prepend.
+// Insert a copy of @value as first element of @value_array. If @value is
+// %NULL, an uninitialized value is prepended.
+/*
+
+C function : g_value_array_prepend
+*/
 func (recv *ValueArray) Prepend(value *Value) *ValueArray {
 	c_value := (*C.GValue)(C.NULL)
 	if value != nil {
@@ -1554,7 +1983,11 @@ func (recv *ValueArray) Prepend(value *Value) *ValueArray {
 	return retGo
 }
 
-// Remove is a wrapper around the C function g_value_array_remove.
+// Remove the value at position @index_ from @value_array.
+/*
+
+C function : g_value_array_remove
+*/
 func (recv *ValueArray) Remove(index uint32) *ValueArray {
 	c_index_ := (C.guint)(index)
 

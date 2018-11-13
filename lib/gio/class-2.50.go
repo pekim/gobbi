@@ -20,7 +20,16 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// GetInt64 is a wrapper around the C function g_settings_get_int64.
+// Gets the value that is stored at @key in @settings.
+//
+// A convenience variant of g_settings_get() for 64-bit integers.
+//
+// It is a programmer error to give a @key that isn't specified as
+// having a int64 type in the schema for @settings.
+/*
+
+C function : g_settings_get_int64
+*/
 func (recv *Settings) GetInt64(key string) int64 {
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
@@ -31,7 +40,17 @@ func (recv *Settings) GetInt64(key string) int64 {
 	return retGo
 }
 
-// GetUint64 is a wrapper around the C function g_settings_get_uint64.
+// Gets the value that is stored at @key in @settings.
+//
+// A convenience variant of g_settings_get() for 64-bit unsigned
+// integers.
+//
+// It is a programmer error to give a @key that isn't specified as
+// having a uint64 type in the schema for @settings.
+/*
+
+C function : g_settings_get_uint64
+*/
 func (recv *Settings) GetUint64(key string) uint64 {
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
@@ -42,7 +61,16 @@ func (recv *Settings) GetUint64(key string) uint64 {
 	return retGo
 }
 
-// SetInt64 is a wrapper around the C function g_settings_set_int64.
+// Sets @key in @settings to @value.
+//
+// A convenience variant of g_settings_set() for 64-bit integers.
+//
+// It is a programmer error to give a @key that isn't specified as
+// having a int64 type in the schema for @settings.
+/*
+
+C function : g_settings_set_int64
+*/
 func (recv *Settings) SetInt64(key string, value int64) bool {
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
@@ -55,7 +83,17 @@ func (recv *Settings) SetInt64(key string, value int64) bool {
 	return retGo
 }
 
-// SetUint64 is a wrapper around the C function g_settings_set_uint64.
+// Sets @key in @settings to @value.
+//
+// A convenience variant of g_settings_set() for 64-bit unsigned
+// integers.
+//
+// It is a programmer error to give a @key that isn't specified as
+// having a uint64 type in the schema for @settings.
+/*
+
+C function : g_settings_set_uint64
+*/
 func (recv *Settings) SetUint64(key string, value uint64) bool {
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
@@ -70,7 +108,12 @@ func (recv *Settings) SetUint64(key string, value uint64) bool {
 
 // Unsupported : g_vfs_register_uri_scheme : unsupported parameter uri_func : no type generator for VfsFileLookupFunc (GVfsFileLookupFunc) for param uri_func
 
-// UnregisterUriScheme is a wrapper around the C function g_vfs_unregister_uri_scheme.
+// Unregisters the URI handler for @scheme previously registered with
+// g_vfs_register_uri_scheme().
+/*
+
+C function : g_vfs_unregister_uri_scheme
+*/
 func (recv *Vfs) UnregisterUriScheme(scheme string) bool {
 	c_scheme := C.CString(scheme)
 	defer C.free(unsafe.Pointer(c_scheme))

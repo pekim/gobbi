@@ -8,7 +8,20 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-// ClearObject is a wrapper around the C function g_clear_object.
+// Clears a reference to a #GObject.
+//
+// @object_ptr must not be %NULL.
+//
+// If the reference is %NULL then this function does nothing.
+// Otherwise, the reference count of the object is decreased and the
+// pointer is set to %NULL.
+//
+// A macro is also included that allows this function to be used without
+// pointer casts.
+/*
+
+C function : g_clear_object
+*/
 func ClearObject(objectPtr *Object) {
 	c_object_ptr := (**C.GObject)(C.NULL)
 	if objectPtr != nil {
@@ -20,7 +33,20 @@ func ClearObject(objectPtr *Object) {
 	return
 }
 
-// SignalAccumulatorFirstWins is a wrapper around the C function g_signal_accumulator_first_wins.
+// A predefined #GSignalAccumulator for signals intended to be used as a
+// hook for application code to provide a particular value.  Usually
+// only one such value is desired and multiple handlers for the same
+// signal don't make much sense (except for the case of the default
+// handler defined in the class structure, in which case you will
+// usually want the signal connection to override the class handler).
+//
+// This accumulator will use the return value from the first signal
+// handler that is run as the return value for the signal and not run
+// any further handlers (ie: the first handler "wins").
+/*
+
+C function : g_signal_accumulator_first_wins
+*/
 func SignalAccumulatorFirstWins(ihint *SignalInvocationHint, returnAccu *Value, handlerReturn *Value, dummy uintptr) bool {
 	c_ihint := (*C.GSignalInvocationHint)(C.NULL)
 	if ihint != nil {

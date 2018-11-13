@@ -8,7 +8,11 @@ package atk
 // #include <stdlib.h>
 import "C"
 
-// IsSelectedLink is a wrapper around the C function atk_hyperlink_is_selected_link.
+// Determines whether this AtkHyperlink is selected
+/*
+
+C function : atk_hyperlink_is_selected_link
+*/
 func (recv *Hyperlink) IsSelectedLink() bool {
 	retC := C.atk_hyperlink_is_selected_link((*C.AtkHyperlink)(recv.native))
 	retGo := retC == C.TRUE

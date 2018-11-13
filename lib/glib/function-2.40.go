@@ -12,7 +12,12 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// StrIsAscii is a wrapper around the C function g_str_is_ascii.
+// Determines if a string is pure ASCII. A string is pure ASCII if it
+// contains no bytes with the high bit set.
+/*
+
+C function : g_str_is_ascii
+*/
 func StrIsAscii(str string) bool {
 	c_str := C.CString(str)
 	defer C.free(unsafe.Pointer(c_str))
@@ -23,7 +28,32 @@ func StrIsAscii(str string) bool {
 	return retGo
 }
 
-// StrMatchString is a wrapper around the C function g_str_match_string.
+// Checks if a search conducted for @search_term should match
+// @potential_hit.
+//
+// This function calls g_str_tokenize_and_fold() on both
+// @search_term and @potential_hit.  ASCII alternates are never taken
+// for @search_term but will be taken for @potential_hit according to
+// the value of @accept_alternates.
+//
+// A hit occurs when each folded token in @search_term is a prefix of a
+// folded token from @potential_hit.
+//
+// Depending on how you're performing the search, it will typically be
+// faster to call g_str_tokenize_and_fold() on each string in
+// your corpus and build an index on the returned folded tokens, then
+// call g_str_tokenize_and_fold() on the search term and
+// perform lookups into that index.
+//
+// As some examples, searching for ‘fred’ would match the potential hit
+// ‘Smith, Fred’ and also ‘Frédéric’.  Searching for ‘Fréd’ would match
+// ‘Frédéric’ but not ‘Frederic’ (due to the one-directional nature of
+// accent matching).  Searching ‘fo’ would match ‘Foo’ and ‘Bar Foo
+// Baz’, but not ‘SFO’ (because no word has ‘fo’ as a prefix).
+/*
+
+C function : g_str_match_string
+*/
 func StrMatchString(searchTerm string, potentialHit string, acceptAlternates bool) bool {
 	c_search_term := C.CString(searchTerm)
 	defer C.free(unsafe.Pointer(c_search_term))
@@ -40,7 +70,28 @@ func StrMatchString(searchTerm string, potentialHit string, acceptAlternates boo
 	return retGo
 }
 
-// StrToAscii is a wrapper around the C function g_str_to_ascii.
+// Transliterate @str to plain ASCII.
+//
+// For best results, @str should be in composed normalised form.
+//
+// This function performs a reasonably good set of character
+// replacements.  The particular set of replacements that is done may
+// change by version or even by runtime environment.
+//
+// If the source language of @str is known, it can used to improve the
+// accuracy of the translation by passing it as @from_locale.  It should
+// be a valid POSIX locale string (of the form
+// "language[_territory][.codeset][@modifier]").
+//
+// If @from_locale is %NULL then the current locale is used.
+//
+// If you want to do translation for no specific locale, and you want it
+// to be done independently of the currently locale, specify "C" for
+// @from_locale.
+/*
+
+C function : g_str_to_ascii
+*/
 func StrToAscii(str string, fromLocale string) string {
 	c_str := C.CString(str)
 	defer C.free(unsafe.Pointer(c_str))
@@ -57,7 +108,39 @@ func StrToAscii(str string, fromLocale string) string {
 
 // Unsupported : g_str_tokenize_and_fold : unsupported parameter ascii_alternates : output array param ascii_alternates
 
-// VariantParseErrorPrintContext is a wrapper around the C function g_variant_parse_error_print_context.
+// Pretty-prints a message showing the context of a #GVariant parse
+// error within the string for which parsing was attempted.
+//
+// The resulting string is suitable for output to the console or other
+// monospace media where newlines are treated in the usual way.
+//
+// The message will typically look something like one of the following:
+//
+// |[
+// unterminated string constant:
+// (1, 2, 3, 'abc
+// ^^^^
+// ]|
+//
+// or
+//
+// |[
+// unable to find a common type:
+// [1, 2, 3, 'str']
+// ^        ^^^^^
+// ]|
+//
+// The format of the message may change in a future version.
+//
+// @error must have come from a failed attempt to g_variant_parse() and
+// @source_str must be exactly the same string that caused the error.
+// If @source_str was not nul-terminated when you passed it to
+// g_variant_parse() then you must add nul termination before using this
+// function.
+/*
+
+C function : g_variant_parse_error_print_context
+*/
 func VariantParseErrorPrintContext(error *Error, sourceStr string) string {
 	c_error := (*C.GError)(C.NULL)
 	if error != nil {

@@ -19,7 +19,13 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// AccelGroupsActivate is a wrapper around the C function gtk_accel_groups_activate.
+// Finds the first accelerator in any #GtkAccelGroup attached
+// to @object that matches @accel_key and @accel_mods, and
+// activates that accelerator.
+/*
+
+C function : gtk_accel_groups_activate
+*/
 func AccelGroupsActivate(object *gobject.Object, accelKey uint32, accelMods gdk.ModifierType) bool {
 	c_object := (*C.GObject)(C.NULL)
 	if object != nil {
@@ -36,7 +42,11 @@ func AccelGroupsActivate(object *gobject.Object, accelKey uint32, accelMods gdk.
 	return retGo
 }
 
-// AccelGroupsFromObject is a wrapper around the C function gtk_accel_groups_from_object.
+// Gets a list of all accel groups which are attached to @object.
+/*
+
+C function : gtk_accel_groups_from_object
+*/
 func AccelGroupsFromObject(object *gobject.Object) *glib.SList {
 	c_object := (*C.GObject)(C.NULL)
 	if object != nil {
@@ -49,7 +59,14 @@ func AccelGroupsFromObject(object *gobject.Object) *glib.SList {
 	return retGo
 }
 
-// AcceleratorGetDefaultModMask is a wrapper around the C function gtk_accelerator_get_default_mod_mask.
+// Gets the modifier mask.
+//
+// The modifier mask determines which modifiers are considered significant
+// for keyboard accelerators. See gtk_accelerator_set_default_mod_mask().
+/*
+
+C function : gtk_accelerator_get_default_mod_mask
+*/
 func AcceleratorGetDefaultModMask() gdk.ModifierType {
 	retC := C.gtk_accelerator_get_default_mod_mask()
 	retGo := (gdk.ModifierType)(retC)
@@ -57,7 +74,16 @@ func AcceleratorGetDefaultModMask() gdk.ModifierType {
 	return retGo
 }
 
-// AcceleratorName is a wrapper around the C function gtk_accelerator_name.
+// Converts an accelerator keyval and modifier mask into a string
+// parseable by gtk_accelerator_parse(). For example, if you pass in
+// #GDK_KEY_q and #GDK_CONTROL_MASK, this function returns “<Control>q”.
+//
+// If you need to display accelerators in the user interface,
+// see gtk_accelerator_get_label().
+/*
+
+C function : gtk_accelerator_name
+*/
 func AcceleratorName(acceleratorKey uint32, acceleratorMods gdk.ModifierType) string {
 	c_accelerator_key := (C.guint)(acceleratorKey)
 
@@ -72,7 +98,22 @@ func AcceleratorName(acceleratorKey uint32, acceleratorMods gdk.ModifierType) st
 
 // Unsupported : gtk_accelerator_parse : unsupported parameter accelerator_mods : GdkModifierType* with indirection level of 1
 
-// AcceleratorSetDefaultModMask is a wrapper around the C function gtk_accelerator_set_default_mod_mask.
+// Sets the modifiers that will be considered significant for keyboard
+// accelerators. The default mod mask depends on the GDK backend in use,
+// but will typically include #GDK_CONTROL_MASK | #GDK_SHIFT_MASK |
+// #GDK_MOD1_MASK | #GDK_SUPER_MASK | #GDK_HYPER_MASK | #GDK_META_MASK.
+// In other words, Control, Shift, Alt, Super, Hyper and Meta. Other
+// modifiers will by default be ignored by #GtkAccelGroup.
+//
+// You must include at least the three modifiers Control, Shift
+// and Alt in any value you pass to this function.
+//
+// The default mod mask should be changed on application startup,
+// before using any accelerator groups.
+/*
+
+C function : gtk_accelerator_set_default_mod_mask
+*/
 func AcceleratorSetDefaultModMask(defaultModMask gdk.ModifierType) {
 	c_default_mod_mask := (C.GdkModifierType)(defaultModMask)
 
@@ -81,7 +122,15 @@ func AcceleratorSetDefaultModMask(defaultModMask gdk.ModifierType) {
 	return
 }
 
-// AcceleratorValid is a wrapper around the C function gtk_accelerator_valid.
+// Determines whether a given keyval and modifier mask constitute
+// a valid keyboard accelerator. For example, the #GDK_KEY_a keyval
+// plus #GDK_CONTROL_MASK is valid - this is a “Ctrl+a” accelerator.
+// But, you can't, for instance, use the #GDK_KEY_Control_L keyval
+// as an accelerator.
+/*
+
+C function : gtk_accelerator_valid
+*/
 func AcceleratorValid(keyval uint32, modifiers gdk.ModifierType) bool {
 	c_keyval := (C.guint)(keyval)
 
@@ -93,7 +142,12 @@ func AcceleratorValid(keyval uint32, modifiers gdk.ModifierType) bool {
 	return retGo
 }
 
-// BindingEntryAddSignall is a wrapper around the C function gtk_binding_entry_add_signall.
+// Override or install a new key binding for @keyval with @modifiers on
+// @binding_set.
+/*
+
+C function : gtk_binding_entry_add_signall
+*/
 func BindingEntryAddSignall(bindingSet *BindingSet, keyval uint32, modifiers gdk.ModifierType, signalName string, bindingArgs *glib.SList) {
 	c_binding_set := (*C.GtkBindingSet)(C.NULL)
 	if bindingSet != nil {
@@ -117,7 +171,12 @@ func BindingEntryAddSignall(bindingSet *BindingSet, keyval uint32, modifiers gdk
 	return
 }
 
-// BindingEntryRemove is a wrapper around the C function gtk_binding_entry_remove.
+// Remove a binding previously installed via
+// gtk_binding_entry_add_signal() on @binding_set.
+/*
+
+C function : gtk_binding_entry_remove
+*/
 func BindingEntryRemove(bindingSet *BindingSet, keyval uint32, modifiers gdk.ModifierType) {
 	c_binding_set := (*C.GtkBindingSet)(C.NULL)
 	if bindingSet != nil {
@@ -133,7 +192,13 @@ func BindingEntryRemove(bindingSet *BindingSet, keyval uint32, modifiers gdk.Mod
 	return
 }
 
-// BindingSetByClass is a wrapper around the C function gtk_binding_set_by_class.
+// This function returns the binding set named after the type name of
+// the passed in class structure. New binding sets are created on
+// demand by this function.
+/*
+
+C function : gtk_binding_set_by_class
+*/
 func BindingSetByClass(objectClass uintptr) *BindingSet {
 	c_object_class := (C.gpointer)(objectClass)
 
@@ -143,7 +208,14 @@ func BindingSetByClass(objectClass uintptr) *BindingSet {
 	return retGo
 }
 
-// BindingSetFind is a wrapper around the C function gtk_binding_set_find.
+// Find a binding set by its globally unique name.
+//
+// The @set_name can either be a name used for gtk_binding_set_new()
+// or the type name of a class used in gtk_binding_set_by_class().
+/*
+
+C function : gtk_binding_set_find
+*/
 func BindingSetFind(setName string) *BindingSet {
 	c_set_name := C.CString(setName)
 	defer C.free(unsafe.Pointer(c_set_name))
@@ -159,7 +231,12 @@ func BindingSetFind(setName string) *BindingSet {
 	return retGo
 }
 
-// BindingSetNew is a wrapper around the C function gtk_binding_set_new.
+// GTK+ maintains a global list of binding sets. Each binding set has
+// a unique name which needs to be specified upon creation.
+/*
+
+C function : gtk_binding_set_new
+*/
 func BindingSetNew(setName string) *BindingSet {
 	c_set_name := C.CString(setName)
 	defer C.free(unsafe.Pointer(c_set_name))
@@ -170,7 +247,12 @@ func BindingSetNew(setName string) *BindingSet {
 	return retGo
 }
 
-// BindingsActivate is a wrapper around the C function gtk_bindings_activate.
+// Find a key binding matching @keyval and @modifiers and activate the
+// binding on @object.
+/*
+
+C function : gtk_bindings_activate
+*/
 func BindingsActivate(object *gobject.Object, keyval uint32, modifiers gdk.ModifierType) bool {
 	c_object := (*C.GObject)(C.NULL)
 	if object != nil {
@@ -187,7 +269,10 @@ func BindingsActivate(object *gobject.Object, keyval uint32, modifiers gdk.Modif
 	return retGo
 }
 
-// BuilderErrorQuark is a wrapper around the C function gtk_builder_error_quark.
+/*
+
+C function : gtk_builder_error_quark
+*/
 func BuilderErrorQuark() glib.Quark {
 	retC := C.gtk_builder_error_quark()
 	retGo := (glib.Quark)(retC)
@@ -195,7 +280,32 @@ func BuilderErrorQuark() glib.Quark {
 	return retGo
 }
 
-// CheckVersion is a wrapper around the C function gtk_check_version.
+// Checks that the GTK+ library in use is compatible with the
+// given version. Generally you would pass in the constants
+// #GTK_MAJOR_VERSION, #GTK_MINOR_VERSION, #GTK_MICRO_VERSION
+// as the three arguments to this function; that produces
+// a check that the library in use is compatible with
+// the version of GTK+ the application or module was compiled
+// against.
+//
+// Compatibility is defined by two things: first the version
+// of the running library is newer than the version
+// @required_major.required_minor.@required_micro. Second
+// the running library must be binary compatible with the
+// version @required_major.required_minor.@required_micro
+// (same major version.)
+//
+// This function is primarily for GTK+ modules; the module
+// can call this function to check that it wasn’t loaded
+// into an incompatible version of GTK+. However, such a
+// check isn’t completely reliable, since the module may be
+// linked against an old version of GTK+ and calling the
+// old version of gtk_check_version(), but still get loaded
+// into an application using a newer version of GTK+.
+/*
+
+C function : gtk_check_version
+*/
 func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint32) string {
 	c_required_major := (C.guint)(requiredMajor)
 
@@ -209,7 +319,10 @@ func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint
 	return retGo
 }
 
-// CssProviderErrorQuark is a wrapper around the C function gtk_css_provider_error_quark.
+/*
+
+C function : gtk_css_provider_error_quark
+*/
 func CssProviderErrorQuark() glib.Quark {
 	retC := C.gtk_css_provider_error_quark()
 	retGo := (glib.Quark)(retC)
@@ -217,14 +330,34 @@ func CssProviderErrorQuark() glib.Quark {
 	return retGo
 }
 
-// DisableSetlocale is a wrapper around the C function gtk_disable_setlocale.
+// Prevents gtk_init(), gtk_init_check(), gtk_init_with_args() and
+// gtk_parse_args() from automatically
+// calling `setlocale (LC_ALL, "")`. You would
+// want to use this function if you wanted to set the locale for
+// your program to something other than the user’s locale, or if
+// you wanted to set different values for different locale categories.
+//
+// Most programs should not need to call this function.
+/*
+
+C function : gtk_disable_setlocale
+*/
 func DisableSetlocale() {
 	C.gtk_disable_setlocale()
 
 	return
 }
 
-// DistributeNaturalAllocation is a wrapper around the C function gtk_distribute_natural_allocation.
+// Distributes @extra_space to child @sizes by bringing smaller
+// children up to natural size first.
+//
+// The remaining space will be added to the @minimum_size member of the
+// GtkRequestedSize struct. If all sizes reach their natural size then
+// the remaining space is returned.
+/*
+
+C function : gtk_distribute_natural_allocation
+*/
 func DistributeNaturalAllocation(extraSpace int32, nRequestedSizes uint32, sizes *RequestedSize) int32 {
 	c_extra_space := (C.gint)(extraSpace)
 
@@ -241,7 +374,12 @@ func DistributeNaturalAllocation(extraSpace int32, nRequestedSizes uint32, sizes
 	return retGo
 }
 
-// DragFinish is a wrapper around the C function gtk_drag_finish.
+// Informs the drag source that the drop is finished, and
+// that the data of the drag will no longer be required.
+/*
+
+C function : gtk_drag_finish
+*/
 func DragFinish(context *gdk.DragContext, success bool, del bool, time uint32) {
 	c_context := (*C.GdkDragContext)(C.NULL)
 	if context != nil {
@@ -261,7 +399,11 @@ func DragFinish(context *gdk.DragContext, success bool, del bool, time uint32) {
 	return
 }
 
-// DragGetSourceWidget is a wrapper around the C function gtk_drag_get_source_widget.
+// Determines the source widget for a drag.
+/*
+
+C function : gtk_drag_get_source_widget
+*/
 func DragGetSourceWidget(context *gdk.DragContext) *Widget {
 	c_context := (*C.GdkDragContext)(C.NULL)
 	if context != nil {
@@ -279,7 +421,12 @@ func DragGetSourceWidget(context *gdk.DragContext) *Widget {
 	return retGo
 }
 
-// DragSetIconDefault is a wrapper around the C function gtk_drag_set_icon_default.
+// Sets the icon for a particular drag to the default
+// icon.
+/*
+
+C function : gtk_drag_set_icon_default
+*/
 func DragSetIconDefault(context *gdk.DragContext) {
 	c_context := (*C.GdkDragContext)(C.NULL)
 	if context != nil {
@@ -291,7 +438,11 @@ func DragSetIconDefault(context *gdk.DragContext) {
 	return
 }
 
-// DragSetIconPixbuf is a wrapper around the C function gtk_drag_set_icon_pixbuf.
+// Sets @pixbuf as the icon for a given drag.
+/*
+
+C function : gtk_drag_set_icon_pixbuf
+*/
 func DragSetIconPixbuf(context *gdk.DragContext, pixbuf *gdkpixbuf.Pixbuf, hotX int32, hotY int32) {
 	c_context := (*C.GdkDragContext)(C.NULL)
 	if context != nil {
@@ -312,7 +463,11 @@ func DragSetIconPixbuf(context *gdk.DragContext, pixbuf *gdkpixbuf.Pixbuf, hotX 
 	return
 }
 
-// DragSetIconStock is a wrapper around the C function gtk_drag_set_icon_stock.
+// Sets the icon for a given drag from a stock ID.
+/*
+
+C function : gtk_drag_set_icon_stock
+*/
 func DragSetIconStock(context *gdk.DragContext, stockId string, hotX int32, hotY int32) {
 	c_context := (*C.GdkDragContext)(C.NULL)
 	if context != nil {
@@ -331,7 +486,18 @@ func DragSetIconStock(context *gdk.DragContext, stockId string, hotX int32, hotY
 	return
 }
 
-// DragSetIconSurface is a wrapper around the C function gtk_drag_set_icon_surface.
+// Sets @surface as the icon for a given drag. GTK+ retains
+// references for the arguments, and will release them when
+// they are no longer needed.
+//
+// To position the surface relative to the mouse, use
+// cairo_surface_set_device_offset() on @surface. The mouse
+// cursor will be positioned at the (0,0) coordinate of the
+// surface.
+/*
+
+C function : gtk_drag_set_icon_surface
+*/
 func DragSetIconSurface(context *gdk.DragContext, surface *cairo.Surface) {
 	c_context := (*C.GdkDragContext)(C.NULL)
 	if context != nil {
@@ -348,7 +514,14 @@ func DragSetIconSurface(context *gdk.DragContext, surface *cairo.Surface) {
 	return
 }
 
-// DragSetIconWidget is a wrapper around the C function gtk_drag_set_icon_widget.
+// Changes the icon for drag operation to a given widget.
+// GTK+ will not destroy the widget, so if you don’t want
+// it to persist, you should connect to the “drag-end”
+// signal and destroy it yourself.
+/*
+
+C function : gtk_drag_set_icon_widget
+*/
 func DragSetIconWidget(context *gdk.DragContext, widget *Widget, hotX int32, hotY int32) {
 	c_context := (*C.GdkDragContext)(C.NULL)
 	if context != nil {
@@ -369,7 +542,25 @@ func DragSetIconWidget(context *gdk.DragContext, widget *Widget, hotX int32, hot
 	return
 }
 
-// EventsPending is a wrapper around the C function gtk_events_pending.
+// Checks if any events are pending.
+//
+// This can be used to update the UI and invoke timeouts etc.
+// while doing some time intensive computation.
+//
+// ## Updating the UI during a long computation
+//
+// |[<!-- language="C" -->
+// computation going on...
+//
+// while (gtk_events_pending ())
+// gtk_main_iteration ();
+//
+// ...computation continued
+// ]|
+/*
+
+C function : gtk_events_pending
+*/
 func EventsPending() bool {
 	retC := C.gtk_events_pending()
 	retGo := retC == C.TRUE
@@ -377,7 +568,12 @@ func EventsPending() bool {
 	return retGo
 }
 
-// False is a wrapper around the C function gtk_false.
+// Analogical to gtk_true(), this function does nothing
+// but always returns %FALSE.
+/*
+
+C function : gtk_false
+*/
 func False() bool {
 	retC := C.gtk_false()
 	retGo := retC == C.TRUE
@@ -387,7 +583,12 @@ func False() bool {
 
 // Unsupported : gtk_get_current_event : no return generator
 
-// GetCurrentEventDevice is a wrapper around the C function gtk_get_current_event_device.
+// If there is a current event and it has a device, return that
+// device, otherwise return %NULL.
+/*
+
+C function : gtk_get_current_event_device
+*/
 func GetCurrentEventDevice() *gdk.Device {
 	retC := C.gtk_get_current_event_device()
 	var retGo (*gdk.Device)
@@ -402,7 +603,12 @@ func GetCurrentEventDevice() *gdk.Device {
 
 // Unsupported : gtk_get_current_event_state : unsupported parameter state : GdkModifierType* with indirection level of 1
 
-// GetCurrentEventTime is a wrapper around the C function gtk_get_current_event_time.
+// If there is a current event and it has a timestamp,
+// return that timestamp, otherwise return %GDK_CURRENT_TIME.
+/*
+
+C function : gtk_get_current_event_time
+*/
 func GetCurrentEventTime() uint32 {
 	retC := C.gtk_get_current_event_time()
 	retGo := (uint32)(retC)
@@ -410,7 +616,14 @@ func GetCurrentEventTime() uint32 {
 	return retGo
 }
 
-// GetDebugFlags is a wrapper around the C function gtk_get_debug_flags.
+// Returns the GTK+ debug flags.
+//
+// This function is intended for GTK+ modules that want
+// to adjust their debug output based on GTK+ debug flags.
+/*
+
+C function : gtk_get_debug_flags
+*/
 func GetDebugFlags() uint32 {
 	retC := C.gtk_get_debug_flags()
 	retGo := (uint32)(retC)
@@ -418,7 +631,18 @@ func GetDebugFlags() uint32 {
 	return retGo
 }
 
-// GetDefaultLanguage is a wrapper around the C function gtk_get_default_language.
+// Returns the #PangoLanguage for the default language currently in
+// effect. (Note that this can change over the life of an
+// application.) The default language is derived from the current
+// locale. It determines, for example, whether GTK+ uses the
+// right-to-left or left-to-right text direction.
+//
+// This function is equivalent to pango_language_get_default().
+// See that function for details.
+/*
+
+C function : gtk_get_default_language
+*/
 func GetDefaultLanguage() *pango.Language {
 	retC := C.gtk_get_default_language()
 	retGo := pango.LanguageNewFromC(unsafe.Pointer(retC))
@@ -428,7 +652,11 @@ func GetDefaultLanguage() *pango.Language {
 
 // Unsupported : gtk_get_event_widget : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
 
-// GrabGetCurrent is a wrapper around the C function gtk_grab_get_current.
+// Queries the current grab of the default window group.
+/*
+
+C function : gtk_grab_get_current
+*/
 func GrabGetCurrent() *Widget {
 	retC := C.gtk_grab_get_current()
 	var retGo (*Widget)
@@ -441,7 +669,11 @@ func GrabGetCurrent() *Widget {
 	return retGo
 }
 
-// IconSizeFromName is a wrapper around the C function gtk_icon_size_from_name.
+// Looks up the icon size associated with @name.
+/*
+
+C function : gtk_icon_size_from_name
+*/
 func IconSizeFromName(name string) IconSize {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -452,7 +684,12 @@ func IconSizeFromName(name string) IconSize {
 	return retGo
 }
 
-// IconSizeGetName is a wrapper around the C function gtk_icon_size_get_name.
+// Gets the canonical name of the given icon size. The returned string
+// is statically allocated and should not be freed.
+/*
+
+C function : gtk_icon_size_get_name
+*/
 func IconSizeGetName(size IconSize) string {
 	c_size := (C.GtkIconSize)(size)
 
@@ -462,7 +699,18 @@ func IconSizeGetName(size IconSize) string {
 	return retGo
 }
 
-// IconSizeLookup is a wrapper around the C function gtk_icon_size_lookup.
+// Obtains the pixel size of a semantic icon size @size:
+// #GTK_ICON_SIZE_MENU, #GTK_ICON_SIZE_BUTTON, etc.  This function
+// isn’t normally needed, gtk_icon_theme_load_icon() is the usual
+// way to get an icon for rendering, then just look at the size of
+// the rendered pixbuf. The rendered pixbuf may not even correspond to
+// the width/height returned by gtk_icon_size_lookup(), because themes
+// are free to render the pixbuf however they like, including changing
+// the usual size.
+/*
+
+C function : gtk_icon_size_lookup
+*/
 func IconSizeLookup(size IconSize) (bool, int32, int32) {
 	c_size := (C.GtkIconSize)(size)
 
@@ -480,7 +728,12 @@ func IconSizeLookup(size IconSize) (bool, int32, int32) {
 	return retGo, width, height
 }
 
-// IconSizeRegister is a wrapper around the C function gtk_icon_size_register.
+// Registers a new icon size, along the same lines as #GTK_ICON_SIZE_MENU,
+// etc. Returns the integer value for the size.
+/*
+
+C function : gtk_icon_size_register
+*/
 func IconSizeRegister(name string, width int32, height int32) IconSize {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -495,7 +748,13 @@ func IconSizeRegister(name string, width int32, height int32) IconSize {
 	return retGo
 }
 
-// IconSizeRegisterAlias is a wrapper around the C function gtk_icon_size_register_alias.
+// Registers @alias as another name for @target.
+// So calling gtk_icon_size_from_name() with @alias as argument
+// will return @target.
+/*
+
+C function : gtk_icon_size_register_alias
+*/
 func IconSizeRegisterAlias(alias string, target IconSize) {
 	c_alias := C.CString(alias)
 	defer C.free(unsafe.Pointer(c_alias))
@@ -507,7 +766,10 @@ func IconSizeRegisterAlias(alias string, target IconSize) {
 	return
 }
 
-// IconThemeErrorQuark is a wrapper around the C function gtk_icon_theme_error_quark.
+/*
+
+C function : gtk_icon_theme_error_quark
+*/
 func IconThemeErrorQuark() glib.Quark {
 	retC := C.gtk_icon_theme_error_quark()
 	retGo := (glib.Quark)(retC)
@@ -515,7 +777,42 @@ func IconThemeErrorQuark() glib.Quark {
 	return retGo
 }
 
-// Init is a wrapper around the C function gtk_init.
+// Call this function before using any other GTK+ functions in your GUI
+// applications.  It will initialize everything needed to operate the
+// toolkit and parses some standard command line options.
+//
+// Although you are expected to pass the @argc, @argv parameters from main() to
+// this function, it is possible to pass %NULL if @argv is not available or
+// commandline handling is not required.
+//
+// @argc and @argv are adjusted accordingly so your own code will
+// never see those standard arguments.
+//
+// Note that there are some alternative ways to initialize GTK+:
+// if you are calling gtk_parse_args(), gtk_init_check(),
+// gtk_init_with_args() or g_option_context_parse() with
+// the option group returned by gtk_get_option_group(),
+// you don’t have to call gtk_init().
+//
+// And if you are using #GtkApplication, you don't have to call any of the
+// initialization functions either; the #GtkApplication::startup handler
+// does it for you.
+//
+// This function will terminate your program if it was unable to
+// initialize the windowing system for some reason. If you want
+// your program to fall back to a textual interface you want to
+// call gtk_init_check() instead.
+//
+// Since 2.18, GTK+ calls `signal (SIGPIPE, SIG_IGN)`
+// during initialization, to ignore SIGPIPE signals, since these are
+// almost never wanted in graphical applications. If you do need to
+// handle SIGPIPE for some reason, reset the handler after gtk_init(),
+// but notice that other libraries (e.g. libdbus or gvfs) might do
+// similar things.
+/*
+
+C function : gtk_init
+*/
 func Init(args []string) []string {
 	cArgc, cArgv := argsIn(args)
 
@@ -526,7 +823,18 @@ func Init(args []string) []string {
 	return args
 }
 
-// InitCheck is a wrapper around the C function gtk_init_check.
+// This function does the same work as gtk_init() with only a single
+// change: It does not terminate the program if the commandline
+// arguments couldn’t be parsed or the windowing system can’t be
+// initialized. Instead it returns %FALSE on failure.
+//
+// This way the application can fall back to some other means of
+// communication with the user - for example a curses or command line
+// interface.
+/*
+
+C function : gtk_init_check
+*/
 func InitCheck(args []string) (bool, []string) {
 	cArgc, cArgv := argsIn(args)
 
@@ -540,7 +848,11 @@ func InitCheck(args []string) (bool, []string) {
 
 // Unsupported : gtk_key_snooper_install : unsupported parameter snooper : no type generator for KeySnoopFunc (GtkKeySnoopFunc) for param snooper
 
-// KeySnooperRemove is a wrapper around the C function gtk_key_snooper_remove.
+// Removes the key snooper function with the given id.
+/*
+
+C function : gtk_key_snooper_remove
+*/
 func KeySnooperRemove(snooperHandlerId uint32) {
 	c_snooper_handler_id := (C.guint)(snooperHandlerId)
 
@@ -549,7 +861,14 @@ func KeySnooperRemove(snooperHandlerId uint32) {
 	return
 }
 
-// Main is a wrapper around the C function gtk_main.
+// Runs the main loop until gtk_main_quit() is called.
+//
+// You can nest calls to gtk_main(). In that case gtk_main_quit()
+// will make the innermost invocation of the main loop return.
+/*
+
+C function : gtk_main
+*/
 func Main() {
 	C.gtk_main()
 
@@ -558,7 +877,16 @@ func Main() {
 
 // Unsupported : gtk_main_do_event : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
 
-// MainIteration is a wrapper around the C function gtk_main_iteration.
+// Runs a single iteration of the mainloop.
+//
+// If no events are waiting to be processed GTK+ will block
+// until the next event is noticed. If you don’t want to block
+// look at gtk_main_iteration_do() or check if any events are
+// pending with gtk_events_pending() first.
+/*
+
+C function : gtk_main_iteration
+*/
 func MainIteration() bool {
 	retC := C.gtk_main_iteration()
 	retGo := retC == C.TRUE
@@ -566,7 +894,13 @@ func MainIteration() bool {
 	return retGo
 }
 
-// MainIterationDo is a wrapper around the C function gtk_main_iteration_do.
+// Runs a single iteration of the mainloop.
+// If no events are available either return or block depending on
+// the value of @blocking.
+/*
+
+C function : gtk_main_iteration_do
+*/
 func MainIterationDo(blocking bool) bool {
 	c_blocking :=
 		boolToGboolean(blocking)
@@ -577,7 +911,11 @@ func MainIterationDo(blocking bool) bool {
 	return retGo
 }
 
-// MainLevel is a wrapper around the C function gtk_main_level.
+// Asks for the current nesting level of the main loop.
+/*
+
+C function : gtk_main_level
+*/
 func MainLevel() uint32 {
 	retC := C.gtk_main_level()
 	retGo := (uint32)(retC)
@@ -585,14 +923,24 @@ func MainLevel() uint32 {
 	return retGo
 }
 
-// MainQuit is a wrapper around the C function gtk_main_quit.
+// Makes the innermost invocation of the main loop return
+// when it regains control.
+/*
+
+C function : gtk_main_quit
+*/
 func MainQuit() {
 	C.gtk_main_quit()
 
 	return
 }
 
-// PaintArrow is a wrapper around the C function gtk_paint_arrow.
+// Draws an arrow in the given rectangle on @cr using the given
+// parameters. @arrow_type determines the direction of the arrow.
+/*
+
+C function : gtk_paint_arrow
+*/
 func PaintArrow(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, arrowType ArrowType, fill bool, x int32, y int32, width int32, height int32) {
 	c_style := (*C.GtkStyle)(C.NULL)
 	if style != nil {
@@ -634,7 +982,11 @@ func PaintArrow(style *Style, cr *cairo.Context, stateType StateType, shadowType
 	return
 }
 
-// PaintBox is a wrapper around the C function gtk_paint_box.
+// Draws a box on @cr with the given parameters.
+/*
+
+C function : gtk_paint_box
+*/
 func PaintBox(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32) {
 	c_style := (*C.GtkStyle)(C.NULL)
 	if style != nil {
@@ -671,7 +1023,12 @@ func PaintBox(style *Style, cr *cairo.Context, stateType StateType, shadowType S
 	return
 }
 
-// PaintBoxGap is a wrapper around the C function gtk_paint_box_gap.
+// Draws a box in @cr using the given style and state and shadow type,
+// leaving a gap in one side.
+/*
+
+C function : gtk_paint_box_gap
+*/
 func PaintBoxGap(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32, gapSide PositionType, gapX int32, gapWidth int32) {
 	c_style := (*C.GtkStyle)(C.NULL)
 	if style != nil {
@@ -714,7 +1071,12 @@ func PaintBoxGap(style *Style, cr *cairo.Context, stateType StateType, shadowTyp
 	return
 }
 
-// PaintCheck is a wrapper around the C function gtk_paint_check.
+// Draws a check button indicator in the given rectangle on @cr with
+// the given parameters.
+/*
+
+C function : gtk_paint_check
+*/
 func PaintCheck(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32) {
 	c_style := (*C.GtkStyle)(C.NULL)
 	if style != nil {
@@ -751,7 +1113,12 @@ func PaintCheck(style *Style, cr *cairo.Context, stateType StateType, shadowType
 	return
 }
 
-// PaintDiamond is a wrapper around the C function gtk_paint_diamond.
+// Draws a diamond in the given rectangle on @window using the given
+// parameters.
+/*
+
+C function : gtk_paint_diamond
+*/
 func PaintDiamond(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32) {
 	c_style := (*C.GtkStyle)(C.NULL)
 	if style != nil {
@@ -788,7 +1155,19 @@ func PaintDiamond(style *Style, cr *cairo.Context, stateType StateType, shadowTy
 	return
 }
 
-// PaintExpander is a wrapper around the C function gtk_paint_expander.
+// Draws an expander as used in #GtkTreeView. @x and @y specify the
+// center the expander. The size of the expander is determined by the
+// “expander-size” style property of @widget.  (If widget is not
+// specified or doesn’t have an “expander-size” property, an
+// unspecified default size will be used, since the caller doesn't
+// have sufficient information to position the expander, this is
+// likely not useful.) The expander is expander_size pixels tall
+// in the collapsed position and expander_size pixels wide in the
+// expanded position.
+/*
+
+C function : gtk_paint_expander
+*/
 func PaintExpander(style *Style, cr *cairo.Context, stateType StateType, widget *Widget, detail string, x int32, y int32, expanderStyle ExpanderStyle) {
 	c_style := (*C.GtkStyle)(C.NULL)
 	if style != nil {
@@ -821,7 +1200,11 @@ func PaintExpander(style *Style, cr *cairo.Context, stateType StateType, widget 
 	return
 }
 
-// PaintExtension is a wrapper around the C function gtk_paint_extension.
+// Draws an extension, i.e. a notebook tab.
+/*
+
+C function : gtk_paint_extension
+*/
 func PaintExtension(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32, gapSide PositionType) {
 	c_style := (*C.GtkStyle)(C.NULL)
 	if style != nil {
@@ -860,7 +1243,11 @@ func PaintExtension(style *Style, cr *cairo.Context, stateType StateType, shadow
 	return
 }
 
-// PaintFlatBox is a wrapper around the C function gtk_paint_flat_box.
+// Draws a flat box on @cr with the given parameters.
+/*
+
+C function : gtk_paint_flat_box
+*/
 func PaintFlatBox(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32) {
 	c_style := (*C.GtkStyle)(C.NULL)
 	if style != nil {
@@ -897,7 +1284,12 @@ func PaintFlatBox(style *Style, cr *cairo.Context, stateType StateType, shadowTy
 	return
 }
 
-// PaintFocus is a wrapper around the C function gtk_paint_focus.
+// Draws a focus indicator around the given rectangle on @cr using the
+// given style.
+/*
+
+C function : gtk_paint_focus
+*/
 func PaintFocus(style *Style, cr *cairo.Context, stateType StateType, widget *Widget, detail string, x int32, y int32, width int32, height int32) {
 	c_style := (*C.GtkStyle)(C.NULL)
 	if style != nil {
@@ -932,7 +1324,11 @@ func PaintFocus(style *Style, cr *cairo.Context, stateType StateType, widget *Wi
 	return
 }
 
-// PaintHandle is a wrapper around the C function gtk_paint_handle.
+// Draws a handle as used in #GtkHandleBox and #GtkPaned.
+/*
+
+C function : gtk_paint_handle
+*/
 func PaintHandle(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32, orientation Orientation) {
 	c_style := (*C.GtkStyle)(C.NULL)
 	if style != nil {
@@ -971,7 +1367,12 @@ func PaintHandle(style *Style, cr *cairo.Context, stateType StateType, shadowTyp
 	return
 }
 
-// PaintHline is a wrapper around the C function gtk_paint_hline.
+// Draws a horizontal line from (@x1, @y) to (@x2, @y) in @cr
+// using the given style and state.
+/*
+
+C function : gtk_paint_hline
+*/
 func PaintHline(style *Style, cr *cairo.Context, stateType StateType, widget *Widget, detail string, x1 int32, x2 int32, y int32) {
 	c_style := (*C.GtkStyle)(C.NULL)
 	if style != nil {
@@ -1004,7 +1405,11 @@ func PaintHline(style *Style, cr *cairo.Context, stateType StateType, widget *Wi
 	return
 }
 
-// PaintLayout is a wrapper around the C function gtk_paint_layout.
+// Draws a layout on @cr using the given parameters.
+/*
+
+C function : gtk_paint_layout
+*/
 func PaintLayout(style *Style, cr *cairo.Context, stateType StateType, useText bool, widget *Widget, detail string, x int32, y int32, layout *pango.Layout) {
 	c_style := (*C.GtkStyle)(C.NULL)
 	if style != nil {
@@ -1043,7 +1448,12 @@ func PaintLayout(style *Style, cr *cairo.Context, stateType StateType, useText b
 	return
 }
 
-// PaintOption is a wrapper around the C function gtk_paint_option.
+// Draws a radio button indicator in the given rectangle on @cr with
+// the given parameters.
+/*
+
+C function : gtk_paint_option
+*/
 func PaintOption(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32) {
 	c_style := (*C.GtkStyle)(C.NULL)
 	if style != nil {
@@ -1080,7 +1490,12 @@ func PaintOption(style *Style, cr *cairo.Context, stateType StateType, shadowTyp
 	return
 }
 
-// PaintResizeGrip is a wrapper around the C function gtk_paint_resize_grip.
+// Draws a resize grip in the given rectangle on @cr using the given
+// parameters.
+/*
+
+C function : gtk_paint_resize_grip
+*/
 func PaintResizeGrip(style *Style, cr *cairo.Context, stateType StateType, widget *Widget, detail string, edge gdk.WindowEdge, x int32, y int32, width int32, height int32) {
 	c_style := (*C.GtkStyle)(C.NULL)
 	if style != nil {
@@ -1117,7 +1532,12 @@ func PaintResizeGrip(style *Style, cr *cairo.Context, stateType StateType, widge
 	return
 }
 
-// PaintShadow is a wrapper around the C function gtk_paint_shadow.
+// Draws a shadow around the given rectangle in @cr
+// using the given style and state and shadow type.
+/*
+
+C function : gtk_paint_shadow
+*/
 func PaintShadow(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32) {
 	c_style := (*C.GtkStyle)(C.NULL)
 	if style != nil {
@@ -1154,7 +1574,13 @@ func PaintShadow(style *Style, cr *cairo.Context, stateType StateType, shadowTyp
 	return
 }
 
-// PaintShadowGap is a wrapper around the C function gtk_paint_shadow_gap.
+// Draws a shadow around the given rectangle in @cr
+// using the given style and state and shadow type, leaving a
+// gap in one side.
+/*
+
+C function : gtk_paint_shadow_gap
+*/
 func PaintShadowGap(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32, gapSide PositionType, gapX int32, gapWidth int32) {
 	c_style := (*C.GtkStyle)(C.NULL)
 	if style != nil {
@@ -1197,7 +1623,12 @@ func PaintShadowGap(style *Style, cr *cairo.Context, stateType StateType, shadow
 	return
 }
 
-// PaintSlider is a wrapper around the C function gtk_paint_slider.
+// Draws a slider in the given rectangle on @cr using the
+// given style and orientation.
+/*
+
+C function : gtk_paint_slider
+*/
 func PaintSlider(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32, orientation Orientation) {
 	c_style := (*C.GtkStyle)(C.NULL)
 	if style != nil {
@@ -1236,7 +1667,11 @@ func PaintSlider(style *Style, cr *cairo.Context, stateType StateType, shadowTyp
 	return
 }
 
-// PaintSpinner is a wrapper around the C function gtk_paint_spinner.
+// Draws a spinner on @window using the given parameters.
+/*
+
+C function : gtk_paint_spinner
+*/
 func PaintSpinner(style *Style, cr *cairo.Context, stateType StateType, widget *Widget, detail string, step uint32, x int32, y int32, width int32, height int32) {
 	c_style := (*C.GtkStyle)(C.NULL)
 	if style != nil {
@@ -1273,7 +1708,12 @@ func PaintSpinner(style *Style, cr *cairo.Context, stateType StateType, widget *
 	return
 }
 
-// PaintTab is a wrapper around the C function gtk_paint_tab.
+// Draws an option menu tab (i.e. the up and down pointing arrows)
+// in the given rectangle on @cr using the given parameters.
+/*
+
+C function : gtk_paint_tab
+*/
 func PaintTab(style *Style, cr *cairo.Context, stateType StateType, shadowType ShadowType, widget *Widget, detail string, x int32, y int32, width int32, height int32) {
 	c_style := (*C.GtkStyle)(C.NULL)
 	if style != nil {
@@ -1310,7 +1750,12 @@ func PaintTab(style *Style, cr *cairo.Context, stateType StateType, shadowType S
 	return
 }
 
-// PaintVline is a wrapper around the C function gtk_paint_vline.
+// Draws a vertical line from (@x, @y1_) to (@x, @y2_) in @cr
+// using the given style and state.
+/*
+
+C function : gtk_paint_vline
+*/
 func PaintVline(style *Style, cr *cairo.Context, stateType StateType, widget *Widget, detail string, y1 int32, y2 int32, x int32) {
 	c_style := (*C.GtkStyle)(C.NULL)
 	if style != nil {
@@ -1343,7 +1788,23 @@ func PaintVline(style *Style, cr *cairo.Context, stateType StateType, widget *Wi
 	return
 }
 
-// ParseArgs is a wrapper around the C function gtk_parse_args.
+// Parses command line arguments, and initializes global
+// attributes of GTK+, but does not actually open a connection
+// to a display. (See gdk_display_open(), gdk_get_display_arg_name())
+//
+// Any arguments used by GTK+ or GDK are removed from the array and
+// @argc and @argv are updated accordingly.
+//
+// There is no need to call this function explicitly if you are using
+// gtk_init(), or gtk_init_check().
+//
+// Note that many aspects of GTK+ require a display connection to
+// function, so this way of initializing GTK+ is really only useful
+// for specialized use cases.
+/*
+
+C function : gtk_parse_args
+*/
 func ParseArgs(args []string) (bool, []string) {
 	cArgc, cArgv := argsIn(args)
 
@@ -1357,7 +1818,12 @@ func ParseArgs(args []string) (bool, []string) {
 
 // Unsupported : gtk_propagate_event : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
 
-// RcAddDefaultFile is a wrapper around the C function gtk_rc_add_default_file.
+// Adds a file to the list of files to be parsed at the
+// end of gtk_init().
+/*
+
+C function : gtk_rc_add_default_file
+*/
 func RcAddDefaultFile(filename string) {
 	c_filename := C.CString(filename)
 	defer C.free(unsafe.Pointer(c_filename))
@@ -1367,7 +1833,12 @@ func RcAddDefaultFile(filename string) {
 	return
 }
 
-// RcFindModuleInPath is a wrapper around the C function gtk_rc_find_module_in_path.
+// Searches for a theme engine in the GTK+ search path. This function
+// is not useful for applications and should not be used.
+/*
+
+C function : gtk_rc_find_module_in_path
+*/
 func RcFindModuleInPath(moduleFile string) string {
 	c_module_file := C.CString(moduleFile)
 	defer C.free(unsafe.Pointer(c_module_file))
@@ -1379,7 +1850,13 @@ func RcFindModuleInPath(moduleFile string) string {
 	return retGo
 }
 
-// RcFindPixmapInPath is a wrapper around the C function gtk_rc_find_pixmap_in_path.
+// Looks up a file in pixmap path for the specified #GtkSettings.
+// If the file is not found, it outputs a warning message using
+// g_warning() and returns %NULL.
+/*
+
+C function : gtk_rc_find_pixmap_in_path
+*/
 func RcFindPixmapInPath(settings *Settings, scanner *glib.Scanner, pixmapFile string) string {
 	c_settings := (*C.GtkSettings)(C.NULL)
 	if settings != nil {
@@ -1403,7 +1880,13 @@ func RcFindPixmapInPath(settings *Settings, scanner *glib.Scanner, pixmapFile st
 
 // Unsupported : gtk_rc_get_default_files : no return type
 
-// RcGetImModuleFile is a wrapper around the C function gtk_rc_get_im_module_file.
+// Obtains the path to the IM modules file. See the documentation
+// of the `GTK_IM_MODULE_FILE`
+// environment variable for more details.
+/*
+
+C function : gtk_rc_get_im_module_file
+*/
 func RcGetImModuleFile() string {
 	retC := C.gtk_rc_get_im_module_file()
 	retGo := C.GoString(retC)
@@ -1412,7 +1895,15 @@ func RcGetImModuleFile() string {
 	return retGo
 }
 
-// RcGetImModulePath is a wrapper around the C function gtk_rc_get_im_module_path.
+// Obtains the path in which to look for IM modules. See the documentation
+// of the `GTK_PATH`
+// environment variable for more details about looking up modules. This
+// function is useful solely for utilities supplied with GTK+ and should
+// not be used by applications under normal circumstances.
+/*
+
+C function : gtk_rc_get_im_module_path
+*/
 func RcGetImModulePath() string {
 	retC := C.gtk_rc_get_im_module_path()
 	retGo := C.GoString(retC)
@@ -1421,7 +1912,13 @@ func RcGetImModulePath() string {
 	return retGo
 }
 
-// RcGetModuleDir is a wrapper around the C function gtk_rc_get_module_dir.
+// Returns a directory in which GTK+ looks for theme engines.
+// For full information about the search for theme engines,
+// see the docs for `GTK_PATH` in [Running GTK+ Applications][gtk-running].
+/*
+
+C function : gtk_rc_get_module_dir
+*/
 func RcGetModuleDir() string {
 	retC := C.gtk_rc_get_module_dir()
 	retGo := C.GoString(retC)
@@ -1430,7 +1927,16 @@ func RcGetModuleDir() string {
 	return retGo
 }
 
-// RcGetStyle is a wrapper around the C function gtk_rc_get_style.
+// Finds all matching RC styles for a given widget,
+// composites them together, and then creates a
+// #GtkStyle representing the composite appearance.
+// (GTK+ actually keeps a cache of previously
+// created styles, so a new style may not be
+// created.)
+/*
+
+C function : gtk_rc_get_style
+*/
 func RcGetStyle(widget *Widget) *Style {
 	c_widget := (*C.GtkWidget)(C.NULL)
 	if widget != nil {
@@ -1443,7 +1949,24 @@ func RcGetStyle(widget *Widget) *Style {
 	return retGo
 }
 
-// RcGetStyleByPaths is a wrapper around the C function gtk_rc_get_style_by_paths.
+// Creates up a #GtkStyle from styles defined in a RC file by providing
+// the raw components used in matching. This function may be useful
+// when creating pseudo-widgets that should be themed like widgets but
+// don’t actually have corresponding GTK+ widgets. An example of this
+// would be items inside a GNOME canvas widget.
+//
+// The action of gtk_rc_get_style() is similar to:
+// |[<!-- language="C" -->
+// gtk_widget_path (widget, NULL, &path, NULL);
+// gtk_widget_class_path (widget, NULL, &class_path, NULL);
+// gtk_rc_get_style_by_paths (gtk_widget_get_settings (widget),
+// path, class_path,
+// G_OBJECT_TYPE (widget));
+// ]|
+/*
+
+C function : gtk_rc_get_style_by_paths
+*/
 func RcGetStyleByPaths(settings *Settings, widgetPath string, classPath string, type_ gobject.Type) *Style {
 	c_settings := (*C.GtkSettings)(C.NULL)
 	if settings != nil {
@@ -1469,7 +1992,13 @@ func RcGetStyleByPaths(settings *Settings, widgetPath string, classPath string, 
 	return retGo
 }
 
-// RcGetThemeDir is a wrapper around the C function gtk_rc_get_theme_dir.
+// Returns the standard directory in which themes should
+// be installed. (GTK+ does not actually use this directory
+// itself.)
+/*
+
+C function : gtk_rc_get_theme_dir
+*/
 func RcGetThemeDir() string {
 	retC := C.gtk_rc_get_theme_dir()
 	retGo := C.GoString(retC)
@@ -1478,7 +2007,11 @@ func RcGetThemeDir() string {
 	return retGo
 }
 
-// RcParse is a wrapper around the C function gtk_rc_parse.
+// Parses a given resource file.
+/*
+
+C function : gtk_rc_parse
+*/
 func RcParse(filename string) {
 	c_filename := C.CString(filename)
 	defer C.free(unsafe.Pointer(c_filename))
@@ -1488,7 +2021,15 @@ func RcParse(filename string) {
 	return
 }
 
-// RcParseColor is a wrapper around the C function gtk_rc_parse_color.
+// Parses a color in the format expected
+// in a RC file.
+//
+// Note that theme engines should use gtk_rc_parse_color_full() in
+// order to support symbolic colors.
+/*
+
+C function : gtk_rc_parse_color
+*/
 func RcParseColor(scanner *glib.Scanner) (uint32, *gdk.Color) {
 	c_scanner := (*C.GScanner)(C.NULL)
 	if scanner != nil {
@@ -1509,7 +2050,11 @@ func RcParseColor(scanner *glib.Scanner) (uint32, *gdk.Color) {
 
 // Unsupported : gtk_rc_parse_state : unsupported parameter state : GtkStateType* with indirection level of 1
 
-// RcParseString is a wrapper around the C function gtk_rc_parse_string.
+// Parses resource information directly from a string.
+/*
+
+C function : gtk_rc_parse_string
+*/
 func RcParseString(rcString string) {
 	c_rc_string := C.CString(rcString)
 	defer C.free(unsafe.Pointer(c_rc_string))
@@ -1529,7 +2074,13 @@ func RcParseString(rcString string) {
 
 // Unsupported : gtk_rc_property_parse_requisition : unsupported parameter pspec : Blacklisted record : GParamSpec
 
-// RcReparseAll is a wrapper around the C function gtk_rc_reparse_all.
+// If the modification time on any previously read file for the
+// default #GtkSettings has changed, discard all style information
+// and then reread all previously read RC files.
+/*
+
+C function : gtk_rc_reparse_all
+*/
 func RcReparseAll() bool {
 	retC := C.gtk_rc_reparse_all()
 	retGo := retC == C.TRUE
@@ -1537,7 +2088,13 @@ func RcReparseAll() bool {
 	return retGo
 }
 
-// RcReparseAllForSettings is a wrapper around the C function gtk_rc_reparse_all_for_settings.
+// If the modification time on any previously read file
+// for the given #GtkSettings has changed, discard all style information
+// and then reread all previously read RC files.
+/*
+
+C function : gtk_rc_reparse_all_for_settings
+*/
 func RcReparseAllForSettings(settings *Settings, forceLoad bool) bool {
 	c_settings := (*C.GtkSettings)(C.NULL)
 	if settings != nil {
@@ -1553,7 +2110,10 @@ func RcReparseAllForSettings(settings *Settings, forceLoad bool) bool {
 	return retGo
 }
 
-// RcScannerNew is a wrapper around the C function gtk_rc_scanner_new.
+/*
+
+C function : gtk_rc_scanner_new
+*/
 func RcScannerNew() *glib.Scanner {
 	retC := C.gtk_rc_scanner_new()
 	retGo := glib.ScannerNewFromC(unsafe.Pointer(retC))
@@ -1563,7 +2123,10 @@ func RcScannerNew() *glib.Scanner {
 
 // Unsupported : gtk_rc_set_default_files : unsupported parameter filenames :
 
-// RecentChooserErrorQuark is a wrapper around the C function gtk_recent_chooser_error_quark.
+/*
+
+C function : gtk_recent_chooser_error_quark
+*/
 func RecentChooserErrorQuark() glib.Quark {
 	retC := C.gtk_recent_chooser_error_quark()
 	retGo := (glib.Quark)(retC)
@@ -1571,7 +2134,10 @@ func RecentChooserErrorQuark() glib.Quark {
 	return retGo
 }
 
-// RecentManagerErrorQuark is a wrapper around the C function gtk_recent_manager_error_quark.
+/*
+
+C function : gtk_recent_manager_error_quark
+*/
 func RecentManagerErrorQuark() glib.Quark {
 	retC := C.gtk_recent_manager_error_quark()
 	retGo := (glib.Quark)(retC)
@@ -1589,7 +2155,14 @@ func RecentManagerErrorQuark() glib.Quark {
 
 // Unsupported : gtk_selection_owner_set : unsupported parameter selection : Blacklisted record : GdkAtom
 
-// SelectionRemoveAll is a wrapper around the C function gtk_selection_remove_all.
+// Removes all handlers and unsets ownership of all
+// selections for a widget. Called when widget is being
+// destroyed. This function will not generally be
+// called by applications.
+/*
+
+C function : gtk_selection_remove_all
+*/
 func SelectionRemoveAll(widget *Widget) {
 	c_widget := (*C.GtkWidget)(C.NULL)
 	if widget != nil {
@@ -1601,7 +2174,11 @@ func SelectionRemoveAll(widget *Widget) {
 	return
 }
 
-// SetDebugFlags is a wrapper around the C function gtk_set_debug_flags.
+// Sets the GTK+ debug flags.
+/*
+
+C function : gtk_set_debug_flags
+*/
 func SetDebugFlags(flags uint32) {
 	c_flags := (C.guint)(flags)
 
@@ -1614,7 +2191,13 @@ func SetDebugFlags(flags uint32) {
 
 // Unsupported : gtk_stock_add_static : unsupported parameter items :
 
-// StockListIds is a wrapper around the C function gtk_stock_list_ids.
+// Retrieves a list of all known stock IDs added to a #GtkIconFactory
+// or registered with gtk_stock_add(). The list must be freed with g_slist_free(),
+// and each string in the list must be freed with g_free().
+/*
+
+C function : gtk_stock_list_ids
+*/
 func StockListIds() *glib.SList {
 	retC := C.gtk_stock_list_ids()
 	retGo := glib.SListNewFromC(unsafe.Pointer(retC))
@@ -1622,7 +2205,12 @@ func StockListIds() *glib.SList {
 	return retGo
 }
 
-// StockLookup is a wrapper around the C function gtk_stock_lookup.
+// Fills @item with the registered values for @stock_id, returning %TRUE
+// if @stock_id was known.
+/*
+
+C function : gtk_stock_lookup
+*/
 func StockLookup(stockId string) (bool, *StockItem) {
 	c_stock_id := C.CString(stockId)
 	defer C.free(unsafe.Pointer(c_stock_id))
@@ -1637,7 +2225,19 @@ func StockLookup(stockId string) (bool, *StockItem) {
 	return retGo, item
 }
 
-// TreeGetRowDragData is a wrapper around the C function gtk_tree_get_row_drag_data.
+// Obtains a @tree_model and @path from selection data of target type
+// %GTK_TREE_MODEL_ROW. Normally called from a drag_data_received handler.
+// This function can only be used if @selection_data originates from the same
+// process that’s calling this function, because a pointer to the tree model
+// is being passed around. If you aren’t in the same process, then you'll
+// get memory corruption. In the #GtkTreeDragDest drag_data_received handler,
+// you can assume that selection data of type %GTK_TREE_MODEL_ROW is
+// in from the current process. The returned path must be freed with
+// gtk_tree_path_free().
+/*
+
+C function : gtk_tree_get_row_drag_data
+*/
 func TreeGetRowDragData(selectionData *SelectionData) (bool, *TreeModel, *TreePath) {
 	c_selection_data := (*C.GtkSelectionData)(C.NULL)
 	if selectionData != nil {
@@ -1658,7 +2258,13 @@ func TreeGetRowDragData(selectionData *SelectionData) (bool, *TreeModel, *TreePa
 	return retGo, treeModel, path
 }
 
-// TreeRowReferenceDeleted is a wrapper around the C function gtk_tree_row_reference_deleted.
+// Lets a set of row reference created by
+// gtk_tree_row_reference_new_proxy() know that the
+// model emitted the #GtkTreeModel::row-deleted signal.
+/*
+
+C function : gtk_tree_row_reference_deleted
+*/
 func TreeRowReferenceDeleted(proxy *gobject.Object, path *TreePath) {
 	c_proxy := (*C.GObject)(C.NULL)
 	if proxy != nil {
@@ -1675,7 +2281,13 @@ func TreeRowReferenceDeleted(proxy *gobject.Object, path *TreePath) {
 	return
 }
 
-// TreeRowReferenceInserted is a wrapper around the C function gtk_tree_row_reference_inserted.
+// Lets a set of row reference created by
+// gtk_tree_row_reference_new_proxy() know that the
+// model emitted the #GtkTreeModel::row-inserted signal.
+/*
+
+C function : gtk_tree_row_reference_inserted
+*/
 func TreeRowReferenceInserted(proxy *gobject.Object, path *TreePath) {
 	c_proxy := (*C.GObject)(C.NULL)
 	if proxy != nil {
@@ -1692,7 +2304,13 @@ func TreeRowReferenceInserted(proxy *gobject.Object, path *TreePath) {
 	return
 }
 
-// TreeRowReferenceReordered is a wrapper around the C function gtk_tree_row_reference_reordered.
+// Lets a set of row reference created by
+// gtk_tree_row_reference_new_proxy() know that the
+// model emitted the #GtkTreeModel::rows-reordered signal.
+/*
+
+C function : gtk_tree_row_reference_reordered
+*/
 func TreeRowReferenceReordered(proxy *gobject.Object, path *TreePath, iter *TreeIter, newOrder []int32) {
 	c_proxy := (*C.GObject)(C.NULL)
 	if proxy != nil {
@@ -1716,7 +2334,12 @@ func TreeRowReferenceReordered(proxy *gobject.Object, path *TreePath, iter *Tree
 	return
 }
 
-// TreeSetRowDragData is a wrapper around the C function gtk_tree_set_row_drag_data.
+// Sets selection data of target type %GTK_TREE_MODEL_ROW. Normally used
+// in a drag_data_get handler.
+/*
+
+C function : gtk_tree_set_row_drag_data
+*/
 func TreeSetRowDragData(selectionData *SelectionData, treeModel *TreeModel, path *TreePath) bool {
 	c_selection_data := (*C.GtkSelectionData)(C.NULL)
 	if selectionData != nil {
@@ -1736,7 +2359,51 @@ func TreeSetRowDragData(selectionData *SelectionData, treeModel *TreeModel, path
 	return retGo
 }
 
-// True is a wrapper around the C function gtk_true.
+// All this function does it to return %TRUE.
+//
+// This can be useful for example if you want to inhibit the deletion
+// of a window. Of course you should not do this as the user expects
+// a reaction from clicking the close icon of the window...
+//
+// ## A persistent window
+//
+// |[<!-- language="C" -->
+// #include <gtk/gtk.h>
+//
+// int
+// main (int argc, char **argv)
+// {
+// GtkWidget *win, *but;
+// const char *text = "Close yourself. I mean it!";
+//
+// gtk_init (&argc, &argv);
+//
+// win = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+// g_signal_connect (win,
+// "delete-event",
+// G_CALLBACK (gtk_true),
+// NULL);
+// g_signal_connect (win, "destroy",
+// G_CALLBACK (gtk_main_quit),
+// NULL);
+//
+// but = gtk_button_new_with_label (text);
+// g_signal_connect_swapped (but, "clicked",
+// G_CALLBACK (gtk_object_destroy),
+// win);
+// gtk_container_add (GTK_CONTAINER (win), but);
+//
+// gtk_widget_show_all (win);
+//
+// gtk_main ();
+//
+// return 0;
+// }
+// ]|
+/*
+
+C function : gtk_true
+*/
 func True() bool {
 	retC := C.gtk_true()
 	retGo := retC == C.TRUE

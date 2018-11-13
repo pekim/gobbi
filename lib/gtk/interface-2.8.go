@@ -12,7 +12,12 @@ import "C"
 
 // Unsupported signal 'confirm-overwrite' for FileChooser : return value FileChooserConfirmation :
 
-// GetDoOverwriteConfirmation is a wrapper around the C function gtk_file_chooser_get_do_overwrite_confirmation.
+// Queries whether a file chooser is set to confirm for overwriting when the user
+// types a file name that already exists.
+/*
+
+C function : gtk_file_chooser_get_do_overwrite_confirmation
+*/
 func (recv *FileChooser) GetDoOverwriteConfirmation() bool {
 	retC := C.gtk_file_chooser_get_do_overwrite_confirmation((*C.GtkFileChooser)(recv.native))
 	retGo := retC == C.TRUE
@@ -20,7 +25,21 @@ func (recv *FileChooser) GetDoOverwriteConfirmation() bool {
 	return retGo
 }
 
-// SetDoOverwriteConfirmation is a wrapper around the C function gtk_file_chooser_set_do_overwrite_confirmation.
+// Sets whether a file chooser in %GTK_FILE_CHOOSER_ACTION_SAVE mode will present
+// a confirmation dialog if the user types a file name that already exists.  This
+// is %FALSE by default.
+//
+// If set to %TRUE, the @chooser will emit the
+// #GtkFileChooser::confirm-overwrite signal when appropriate.
+//
+// If all you need is the stock confirmation dialog, set this property to %TRUE.
+// You can override the way confirmation is done by actually handling the
+// #GtkFileChooser::confirm-overwrite signal; please refer to its documentation
+// for the details.
+/*
+
+C function : gtk_file_chooser_set_do_overwrite_confirmation
+*/
 func (recv *FileChooser) SetDoOverwriteConfirmation(doOverwriteConfirmation bool) {
 	c_do_overwrite_confirmation :=
 		boolToGboolean(doOverwriteConfirmation)

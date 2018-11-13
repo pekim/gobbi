@@ -62,7 +62,11 @@ func (recv *GlyphItemIter) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Copy is a wrapper around the C function pango_glyph_item_iter_copy.
+// Make a shallow copy of an existing #PangoGlyphItemIter structure.
+/*
+
+C function : pango_glyph_item_iter_copy
+*/
 func (recv *GlyphItemIter) Copy() *GlyphItemIter {
 	retC := C.pango_glyph_item_iter_copy((*C.PangoGlyphItemIter)(recv.native))
 	var retGo (*GlyphItemIter)
@@ -75,14 +79,24 @@ func (recv *GlyphItemIter) Copy() *GlyphItemIter {
 	return retGo
 }
 
-// Free is a wrapper around the C function pango_glyph_item_iter_free.
+// Frees a #PangoGlyphItemIter created by pango_glyph_item_iter_copy().
+/*
+
+C function : pango_glyph_item_iter_free
+*/
 func (recv *GlyphItemIter) Free() {
 	C.pango_glyph_item_iter_free((*C.PangoGlyphItemIter)(recv.native))
 
 	return
 }
 
-// InitEnd is a wrapper around the C function pango_glyph_item_iter_init_end.
+// Initializes a #PangoGlyphItemIter structure to point to the
+// last cluster in a glyph item.
+// See #PangoGlyphItemIter for details of cluster orders.
+/*
+
+C function : pango_glyph_item_iter_init_end
+*/
 func (recv *GlyphItemIter) InitEnd(glyphItem *GlyphItem, text string) bool {
 	c_glyph_item := (*C.PangoGlyphItem)(C.NULL)
 	if glyphItem != nil {
@@ -98,7 +112,13 @@ func (recv *GlyphItemIter) InitEnd(glyphItem *GlyphItem, text string) bool {
 	return retGo
 }
 
-// InitStart is a wrapper around the C function pango_glyph_item_iter_init_start.
+// Initializes a #PangoGlyphItemIter structure to point to the
+// first cluster in a glyph item.
+// See #PangoGlyphItemIter for details of cluster orders.
+/*
+
+C function : pango_glyph_item_iter_init_start
+*/
 func (recv *GlyphItemIter) InitStart(glyphItem *GlyphItem, text string) bool {
 	c_glyph_item := (*C.PangoGlyphItem)(C.NULL)
 	if glyphItem != nil {
@@ -114,7 +134,12 @@ func (recv *GlyphItemIter) InitStart(glyphItem *GlyphItem, text string) bool {
 	return retGo
 }
 
-// NextCluster is a wrapper around the C function pango_glyph_item_iter_next_cluster.
+// Advances the iterator to the next cluster in the glyph item.
+// See #PangoGlyphItemIter for details of cluster orders.
+/*
+
+C function : pango_glyph_item_iter_next_cluster
+*/
 func (recv *GlyphItemIter) NextCluster() bool {
 	retC := C.pango_glyph_item_iter_next_cluster((*C.PangoGlyphItemIter)(recv.native))
 	retGo := retC == C.TRUE
@@ -122,7 +147,12 @@ func (recv *GlyphItemIter) NextCluster() bool {
 	return retGo
 }
 
-// PrevCluster is a wrapper around the C function pango_glyph_item_iter_prev_cluster.
+// Moves the iterator to the preceding cluster in the glyph item.
+// See #PangoGlyphItemIter for details of cluster orders.
+/*
+
+C function : pango_glyph_item_iter_prev_cluster
+*/
 func (recv *GlyphItemIter) PrevCluster() bool {
 	retC := C.pango_glyph_item_iter_prev_cluster((*C.PangoGlyphItemIter)(recv.native))
 	retGo := retC == C.TRUE

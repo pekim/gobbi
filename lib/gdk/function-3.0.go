@@ -10,7 +10,11 @@ import cairo "github.com/pekim/gobbi/lib/cairo"
 // #include <stdlib.h>
 import "C"
 
-// CairoSetSourceRgba is a wrapper around the C function gdk_cairo_set_source_rgba.
+// Sets the specified #GdkRGBA as the source color of @cr.
+/*
+
+C function : gdk_cairo_set_source_rgba
+*/
 func CairoSetSourceRgba(cr *cairo.Context, rgba *RGBA) {
 	c_cr := (*C.cairo_t)(C.NULL)
 	if cr != nil {
@@ -27,14 +31,32 @@ func CairoSetSourceRgba(cr *cairo.Context, rgba *RGBA) {
 	return
 }
 
-// DisableMultidevice is a wrapper around the C function gdk_disable_multidevice.
+// Disables multidevice support in GDK. This call must happen prior
+// to gdk_display_open(), gtk_init(), gtk_init_with_args() or
+// gtk_init_check() in order to take effect.
+//
+// Most common GTK+ applications won’t ever need to call this. Only
+// applications that do mixed GDK/Xlib calls could want to disable
+// multidevice support if such Xlib code deals with input devices in
+// any way and doesn’t observe the presence of XInput 2.
+/*
+
+C function : gdk_disable_multidevice
+*/
 func DisableMultidevice() {
 	C.gdk_disable_multidevice()
 
 	return
 }
 
-// ErrorTrapPopIgnored is a wrapper around the C function gdk_error_trap_pop_ignored.
+// Removes an error trap pushed with gdk_error_trap_push(), but
+// without bothering to wait and see whether an error occurred.  If an
+// error arrives later asynchronously that was triggered while the
+// trap was pushed, that error will be ignored.
+/*
+
+C function : gdk_error_trap_pop_ignored
+*/
 func ErrorTrapPopIgnored() {
 	C.gdk_error_trap_pop_ignored()
 

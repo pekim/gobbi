@@ -33,7 +33,23 @@ func (recv *Checksum) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ChecksumNew is a wrapper around the C function g_checksum_new.
+// Creates a new #GChecksum, using the checksum algorithm @checksum_type.
+// If the @checksum_type is not known, %NULL is returned.
+// A #GChecksum can be used to compute the checksum, or digest, of an
+// arbitrary binary blob, using different hashing algorithms.
+//
+// A #GChecksum works by feeding a binary blob through g_checksum_update()
+// until there is data to be checked; the digest can then be extracted
+// using g_checksum_get_string(), which will return the checksum as a
+// hexadecimal string; or g_checksum_get_digest(), which will return a
+// vector of raw bytes. Once either g_checksum_get_string() or
+// g_checksum_get_digest() have been called on a #GChecksum, the checksum
+// will be closed and it won't be possible to call g_checksum_update()
+// on it anymore.
+/*
+
+C function : g_checksum_new
+*/
 func ChecksumNew(checksumType ChecksumType) *Checksum {
 	c_checksum_type := (C.GChecksumType)(checksumType)
 
@@ -43,7 +59,13 @@ func ChecksumNew(checksumType ChecksumType) *Checksum {
 	return retGo
 }
 
-// Copy is a wrapper around the C function g_checksum_copy.
+// Copies a #GChecksum. If @checksum has been closed, by calling
+// g_checksum_get_string() or g_checksum_get_digest(), the copied
+// checksum will be closed as well.
+/*
+
+C function : g_checksum_copy
+*/
 func (recv *Checksum) Copy() *Checksum {
 	retC := C.g_checksum_copy((*C.GChecksum)(recv.native))
 	retGo := ChecksumNewFromC(unsafe.Pointer(retC))
@@ -51,14 +73,26 @@ func (recv *Checksum) Copy() *Checksum {
 	return retGo
 }
 
-// Free is a wrapper around the C function g_checksum_free.
+// Frees the memory allocated for @checksum.
+/*
+
+C function : g_checksum_free
+*/
 func (recv *Checksum) Free() {
 	C.g_checksum_free((*C.GChecksum)(recv.native))
 
 	return
 }
 
-// GetDigest is a wrapper around the C function g_checksum_get_digest.
+// Gets the digest from @checksum as a raw binary vector and places it
+// into @buffer. The size of the digest depends on the type of checksum.
+//
+// Once this function has been called, the #GChecksum is closed and can
+// no longer be updated with g_checksum_update().
+/*
+
+C function : g_checksum_get_digest
+*/
 func (recv *Checksum) GetDigest(buffer uint8, digestLen uint64) {
 	c_buffer := (C.guint8)(buffer)
 
@@ -69,7 +103,16 @@ func (recv *Checksum) GetDigest(buffer uint8, digestLen uint64) {
 	return
 }
 
-// GetString is a wrapper around the C function g_checksum_get_string.
+// Gets the digest as an hexadecimal string.
+//
+// Once this function has been called the #GChecksum can no longer be
+// updated with g_checksum_update().
+//
+// The hexadecimal characters will be lower case.
+/*
+
+C function : g_checksum_get_string
+*/
 func (recv *Checksum) GetString() string {
 	retC := C.g_checksum_get_string((*C.GChecksum)(recv.native))
 	retGo := C.GoString(retC)
@@ -77,7 +120,13 @@ func (recv *Checksum) GetString() string {
 	return retGo
 }
 
-// Update is a wrapper around the C function g_checksum_update.
+// Feeds @data into an existing #GChecksum. The checksum must still be
+// open, that is g_checksum_get_string() or g_checksum_get_digest() must
+// not have been called on @checksum.
+/*
+
+C function : g_checksum_update
+*/
 func (recv *Checksum) Update(data []uint8) {
 	c_data := &data[0]
 
@@ -88,7 +137,11 @@ func (recv *Checksum) Update(data []uint8) {
 	return
 }
 
-// GetHashTable is a wrapper around the C function g_hash_table_iter_get_hash_table.
+// Returns the #GHashTable associated with @iter.
+/*
+
+C function : g_hash_table_iter_get_hash_table
+*/
 func (recv *HashTableIter) GetHashTable() *HashTable {
 	retC := C.g_hash_table_iter_get_hash_table((*C.GHashTableIter)(recv.native))
 	retGo := HashTableNewFromC(unsafe.Pointer(retC))
@@ -96,7 +149,23 @@ func (recv *HashTableIter) GetHashTable() *HashTable {
 	return retGo
 }
 
-// Init is a wrapper around the C function g_hash_table_iter_init.
+// Initializes a key/value pair iterator and associates it with
+// @hash_table. Modifying the hash table after calling this function
+// invalidates the returned iterator.
+// |[<!-- language="C" -->
+// GHashTableIter iter;
+// gpointer key, value;
+//
+// g_hash_table_iter_init (&iter, hash_table);
+// while (g_hash_table_iter_next (&iter, &key, &value))
+// {
+// do something with key and value
+// }
+// ]|
+/*
+
+C function : g_hash_table_iter_init
+*/
 func (recv *HashTableIter) Init(hashTable *HashTable) {
 	c_hash_table := (*C.GHashTable)(C.NULL)
 	if hashTable != nil {
@@ -108,7 +177,13 @@ func (recv *HashTableIter) Init(hashTable *HashTable) {
 	return
 }
 
-// Next is a wrapper around the C function g_hash_table_iter_next.
+// Advances @iter and retrieves the key and/or value that are now
+// pointed to as a result of this advancement. If %FALSE is returned,
+// @key and @value are not set, and the iterator becomes invalid.
+/*
+
+C function : g_hash_table_iter_next
+*/
 func (recv *HashTableIter) Next() (bool, uintptr, uintptr) {
 	var c_key C.gpointer
 
@@ -124,21 +199,64 @@ func (recv *HashTableIter) Next() (bool, uintptr, uintptr) {
 	return retGo, key, value
 }
 
-// Remove is a wrapper around the C function g_hash_table_iter_remove.
+// Removes the key/value pair currently pointed to by the iterator
+// from its associated #GHashTable. Can only be called after
+// g_hash_table_iter_next() returned %TRUE, and cannot be called
+// more than once for the same key/value pair.
+//
+// If the #GHashTable was created using g_hash_table_new_full(),
+// the key and value are freed using the supplied destroy functions,
+// otherwise you have to make sure that any dynamically allocated
+// values are freed yourself.
+//
+// It is safe to continue iterating the #GHashTable afterward:
+// |[<!-- language="C" -->
+// while (g_hash_table_iter_next (&iter, &key, &value))
+// {
+// if (condition)
+// g_hash_table_iter_remove (&iter);
+// }
+// ]|
+/*
+
+C function : g_hash_table_iter_remove
+*/
 func (recv *HashTableIter) Remove() {
 	C.g_hash_table_iter_remove((*C.GHashTableIter)(recv.native))
 
 	return
 }
 
-// Steal is a wrapper around the C function g_hash_table_iter_steal.
+// Removes the key/value pair currently pointed to by the
+// iterator from its associated #GHashTable, without calling
+// the key and value destroy functions. Can only be called
+// after g_hash_table_iter_next() returned %TRUE, and cannot
+// be called more than once for the same key/value pair.
+/*
+
+C function : g_hash_table_iter_steal
+*/
 func (recv *HashTableIter) Steal() {
 	C.g_hash_table_iter_steal((*C.GHashTableIter)(recv.native))
 
 	return
 }
 
-// GetElementStack is a wrapper around the C function g_markup_parse_context_get_element_stack.
+// Retrieves the element stack from the internal state of the parser.
+//
+// The returned #GSList is a list of strings where the first item is
+// the currently open tag (as would be returned by
+// g_markup_parse_context_get_element()) and the next item is its
+// immediate parent.
+//
+// This function is intended to be used in the start_element and
+// end_element handlers where g_markup_parse_context_get_element()
+// would merely return the name of the element that is being
+// processed.
+/*
+
+C function : g_markup_parse_context_get_element_stack
+*/
 func (recv *MarkupParseContext) GetElementStack() *SList {
 	retC := C.g_markup_parse_context_get_element_stack((*C.GMarkupParseContext)(recv.native))
 	retGo := SListNewFromC(unsafe.Pointer(retC))
@@ -146,7 +264,12 @@ func (recv *MarkupParseContext) GetElementStack() *SList {
 	return retGo
 }
 
-// AppendUriEscaped is a wrapper around the C function g_string_append_uri_escaped.
+// Appends @unescaped to @string, escaped any characters that
+// are reserved in URIs using URI-style escape sequences.
+/*
+
+C function : g_string_append_uri_escaped
+*/
 func (recv *String) AppendUriEscaped(unescaped string, reservedCharsAllowed string, allowUtf8 bool) *String {
 	c_unescaped := C.CString(unescaped)
 	defer C.free(unsafe.Pointer(c_unescaped))
@@ -163,7 +286,11 @@ func (recv *String) AppendUriEscaped(unescaped string, reservedCharsAllowed stri
 	return retGo
 }
 
-// Add is a wrapper around the C function g_test_suite_add.
+// Adds @test_case to @suite.
+/*
+
+C function : g_test_suite_add
+*/
 func (recv *TestSuite) Add(testCase *TestCase) {
 	c_test_case := (*C.GTestCase)(C.NULL)
 	if testCase != nil {
@@ -175,7 +302,11 @@ func (recv *TestSuite) Add(testCase *TestCase) {
 	return
 }
 
-// AddSuite is a wrapper around the C function g_test_suite_add_suite.
+// Adds @nestedsuite to @suite.
+/*
+
+C function : g_test_suite_add_suite
+*/
 func (recv *TestSuite) AddSuite(nestedsuite *TestSuite) {
 	c_nestedsuite := (*C.GTestSuite)(C.NULL)
 	if nestedsuite != nil {

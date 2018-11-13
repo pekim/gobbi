@@ -193,7 +193,12 @@ func CastToAppLaunchContext(object *gobject.Object) *AppLaunchContext {
 	return AppLaunchContextNewFromC(object.ToC())
 }
 
-// AppLaunchContextNew is a wrapper around the C function g_app_launch_context_new.
+// Creates a new application launch context. This is not normally used,
+// instead you instantiate a subclass of this, such as #GdkAppLaunchContext.
+/*
+
+C function : g_app_launch_context_new
+*/
 func AppLaunchContextNew() *AppLaunchContext {
 	retC := C.g_app_launch_context_new()
 	retGo := AppLaunchContextNewFromC(unsafe.Pointer(retC))
@@ -201,7 +206,13 @@ func AppLaunchContextNew() *AppLaunchContext {
 	return retGo
 }
 
-// GetDisplay is a wrapper around the C function g_app_launch_context_get_display.
+// Gets the display string for the @context. This is used to ensure new
+// applications are started on the same display as the launching
+// application, by setting the `DISPLAY` environment variable.
+/*
+
+C function : g_app_launch_context_get_display
+*/
 func (recv *AppLaunchContext) GetDisplay(info *AppInfo, files *glib.List) string {
 	c_info := (*C.GAppInfo)(info.ToC())
 
@@ -217,7 +228,15 @@ func (recv *AppLaunchContext) GetDisplay(info *AppInfo, files *glib.List) string
 	return retGo
 }
 
-// GetStartupNotifyId is a wrapper around the C function g_app_launch_context_get_startup_notify_id.
+// Initiates startup notification for the application and returns the
+// `DESKTOP_STARTUP_ID` for the launched operation, if supported.
+//
+// Startup notification IDs are defined in the
+// [FreeDesktop.Org Startup Notifications standard](http://standards.freedesktop.org/startup-notification-spec/startup-notification-latest.txt").
+/*
+
+C function : g_app_launch_context_get_startup_notify_id
+*/
 func (recv *AppLaunchContext) GetStartupNotifyId(info *AppInfo, files *glib.List) string {
 	c_info := (*C.GAppInfo)(info.ToC())
 
@@ -233,7 +252,12 @@ func (recv *AppLaunchContext) GetStartupNotifyId(info *AppInfo, files *glib.List
 	return retGo
 }
 
-// LaunchFailed is a wrapper around the C function g_app_launch_context_launch_failed.
+// Called when an application has failed to launch, so that it can cancel
+// the application startup notification started in g_app_launch_context_get_startup_notify_id().
+/*
+
+C function : g_app_launch_context_launch_failed
+*/
 func (recv *AppLaunchContext) LaunchFailed(startupNotifyId string) {
 	c_startup_notify_id := C.CString(startupNotifyId)
 	defer C.free(unsafe.Pointer(c_startup_notify_id))
@@ -321,7 +345,12 @@ func CastToBufferedInputStream(object *gobject.Object) *BufferedInputStream {
 	return BufferedInputStreamNewFromC(object.ToC())
 }
 
-// BufferedInputStreamNew is a wrapper around the C function g_buffered_input_stream_new.
+// Creates a new #GInputStream from the given @base_stream, with
+// a buffer set to the default size (4 kilobytes).
+/*
+
+C function : g_buffered_input_stream_new
+*/
 func BufferedInputStreamNew(baseStream *InputStream) *BufferedInputStream {
 	c_base_stream := (*C.GInputStream)(C.NULL)
 	if baseStream != nil {
@@ -334,7 +363,12 @@ func BufferedInputStreamNew(baseStream *InputStream) *BufferedInputStream {
 	return retGo
 }
 
-// BufferedInputStreamNewSized is a wrapper around the C function g_buffered_input_stream_new_sized.
+// Creates a new #GBufferedInputStream from the given @base_stream,
+// with a buffer set to @size.
+/*
+
+C function : g_buffered_input_stream_new_sized
+*/
 func BufferedInputStreamNewSized(baseStream *InputStream, size uint64) *BufferedInputStream {
 	c_base_stream := (*C.GInputStream)(C.NULL)
 	if baseStream != nil {
@@ -349,7 +383,34 @@ func BufferedInputStreamNewSized(baseStream *InputStream, size uint64) *Buffered
 	return retGo
 }
 
-// Fill is a wrapper around the C function g_buffered_input_stream_fill.
+// Tries to read @count bytes from the stream into the buffer.
+// Will block during this read.
+//
+// If @count is zero, returns zero and does nothing. A value of @count
+// larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
+//
+// On success, the number of bytes read into the buffer is returned.
+// It is not an error if this is not the same as the requested size, as it
+// can happen e.g. near the end of a file. Zero is returned on end of file
+// (or if @count is zero),  but never otherwise.
+//
+// If @count is -1 then the attempted read size is equal to the number of
+// bytes that are required to fill the buffer.
+//
+// If @cancellable is not %NULL, then the operation can be cancelled by
+// triggering the cancellable object from another thread. If the operation
+// was cancelled, the error %G_IO_ERROR_CANCELLED will be returned. If an
+// operation was partially finished when the operation was cancelled the
+// partial result will be returned, without an error.
+//
+// On error -1 is returned and @error is set accordingly.
+//
+// For the asynchronous, non-blocking, version of this function, see
+// g_buffered_input_stream_fill_async().
+/*
+
+C function : g_buffered_input_stream_fill
+*/
 func (recv *BufferedInputStream) Fill(count int64, cancellable *Cancellable) (int64, error) {
 	c_count := (C.gssize)(count)
 
@@ -373,7 +434,11 @@ func (recv *BufferedInputStream) Fill(count int64, cancellable *Cancellable) (in
 
 // Unsupported : g_buffered_input_stream_fill_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// FillFinish is a wrapper around the C function g_buffered_input_stream_fill_finish.
+// Finishes an asynchronous read.
+/*
+
+C function : g_buffered_input_stream_fill_finish
+*/
 func (recv *BufferedInputStream) FillFinish(result *AsyncResult) (int64, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
 
@@ -390,7 +455,11 @@ func (recv *BufferedInputStream) FillFinish(result *AsyncResult) (int64, error) 
 	return retGo, goThrowableError
 }
 
-// GetAvailable is a wrapper around the C function g_buffered_input_stream_get_available.
+// Gets the size of the available data within the stream.
+/*
+
+C function : g_buffered_input_stream_get_available
+*/
 func (recv *BufferedInputStream) GetAvailable() uint64 {
 	retC := C.g_buffered_input_stream_get_available((*C.GBufferedInputStream)(recv.native))
 	retGo := (uint64)(retC)
@@ -398,7 +467,11 @@ func (recv *BufferedInputStream) GetAvailable() uint64 {
 	return retGo
 }
 
-// GetBufferSize is a wrapper around the C function g_buffered_input_stream_get_buffer_size.
+// Gets the size of the input buffer.
+/*
+
+C function : g_buffered_input_stream_get_buffer_size
+*/
 func (recv *BufferedInputStream) GetBufferSize() uint64 {
 	retC := C.g_buffered_input_stream_get_buffer_size((*C.GBufferedInputStream)(recv.native))
 	retGo := (uint64)(retC)
@@ -406,7 +479,12 @@ func (recv *BufferedInputStream) GetBufferSize() uint64 {
 	return retGo
 }
 
-// Peek is a wrapper around the C function g_buffered_input_stream_peek.
+// Peeks in the buffer, copying data of size @count into @buffer,
+// offset @offset bytes.
+/*
+
+C function : g_buffered_input_stream_peek
+*/
 func (recv *BufferedInputStream) Peek(buffer []uint8, offset uint64) uint64 {
 	c_buffer := &buffer[0]
 
@@ -422,7 +500,23 @@ func (recv *BufferedInputStream) Peek(buffer []uint8, offset uint64) uint64 {
 
 // Unsupported : g_buffered_input_stream_peek_buffer : no return type
 
-// ReadByte is a wrapper around the C function g_buffered_input_stream_read_byte.
+// Tries to read a single byte from the stream or the buffer. Will block
+// during this read.
+//
+// On success, the byte read from the stream is returned. On end of stream
+// -1 is returned but it's not an exceptional error and @error is not set.
+//
+// If @cancellable is not %NULL, then the operation can be cancelled by
+// triggering the cancellable object from another thread. If the operation
+// was cancelled, the error %G_IO_ERROR_CANCELLED will be returned. If an
+// operation was partially finished when the operation was cancelled the
+// partial result will be returned, without an error.
+//
+// On error -1 is returned and @error is set accordingly.
+/*
+
+C function : g_buffered_input_stream_read_byte
+*/
 func (recv *BufferedInputStream) ReadByte(cancellable *Cancellable) (int32, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
 	if cancellable != nil {
@@ -442,7 +536,13 @@ func (recv *BufferedInputStream) ReadByte(cancellable *Cancellable) (int32, erro
 	return retGo, goThrowableError
 }
 
-// SetBufferSize is a wrapper around the C function g_buffered_input_stream_set_buffer_size.
+// Sets the size of the internal buffer of @stream to @size, or to the
+// size of the contents of the buffer. The buffer can never be resized
+// smaller than its current contents.
+/*
+
+C function : g_buffered_input_stream_set_buffer_size
+*/
 func (recv *BufferedInputStream) SetBufferSize(size uint64) {
 	c_size := (C.gsize)(size)
 
@@ -500,7 +600,11 @@ func CastToBufferedOutputStream(object *gobject.Object) *BufferedOutputStream {
 	return BufferedOutputStreamNewFromC(object.ToC())
 }
 
-// BufferedOutputStreamNew is a wrapper around the C function g_buffered_output_stream_new.
+// Creates a new buffered output stream for a base stream.
+/*
+
+C function : g_buffered_output_stream_new
+*/
 func BufferedOutputStreamNew(baseStream *OutputStream) *BufferedOutputStream {
 	c_base_stream := (*C.GOutputStream)(C.NULL)
 	if baseStream != nil {
@@ -513,7 +617,11 @@ func BufferedOutputStreamNew(baseStream *OutputStream) *BufferedOutputStream {
 	return retGo
 }
 
-// BufferedOutputStreamNewSized is a wrapper around the C function g_buffered_output_stream_new_sized.
+// Creates a new buffered output stream with a given buffer size.
+/*
+
+C function : g_buffered_output_stream_new_sized
+*/
 func BufferedOutputStreamNewSized(baseStream *OutputStream, size uint64) *BufferedOutputStream {
 	c_base_stream := (*C.GOutputStream)(C.NULL)
 	if baseStream != nil {
@@ -528,7 +636,11 @@ func BufferedOutputStreamNewSized(baseStream *OutputStream, size uint64) *Buffer
 	return retGo
 }
 
-// GetAutoGrow is a wrapper around the C function g_buffered_output_stream_get_auto_grow.
+// Checks if the buffer automatically grows as data is added.
+/*
+
+C function : g_buffered_output_stream_get_auto_grow
+*/
 func (recv *BufferedOutputStream) GetAutoGrow() bool {
 	retC := C.g_buffered_output_stream_get_auto_grow((*C.GBufferedOutputStream)(recv.native))
 	retGo := retC == C.TRUE
@@ -536,7 +648,11 @@ func (recv *BufferedOutputStream) GetAutoGrow() bool {
 	return retGo
 }
 
-// GetBufferSize is a wrapper around the C function g_buffered_output_stream_get_buffer_size.
+// Gets the size of the buffer in the @stream.
+/*
+
+C function : g_buffered_output_stream_get_buffer_size
+*/
 func (recv *BufferedOutputStream) GetBufferSize() uint64 {
 	retC := C.g_buffered_output_stream_get_buffer_size((*C.GBufferedOutputStream)(recv.native))
 	retGo := (uint64)(retC)
@@ -544,7 +660,14 @@ func (recv *BufferedOutputStream) GetBufferSize() uint64 {
 	return retGo
 }
 
-// SetAutoGrow is a wrapper around the C function g_buffered_output_stream_set_auto_grow.
+// Sets whether or not the @stream's buffer should automatically grow.
+// If @auto_grow is true, then each write will just make the buffer
+// larger, and you must manually flush the buffer to actually write out
+// the data to the underlying stream.
+/*
+
+C function : g_buffered_output_stream_set_auto_grow
+*/
 func (recv *BufferedOutputStream) SetAutoGrow(autoGrow bool) {
 	c_auto_grow :=
 		boolToGboolean(autoGrow)
@@ -554,7 +677,11 @@ func (recv *BufferedOutputStream) SetAutoGrow(autoGrow bool) {
 	return
 }
 
-// SetBufferSize is a wrapper around the C function g_buffered_output_stream_set_buffer_size.
+// Sets the size of the internal buffer to @size.
+/*
+
+C function : g_buffered_output_stream_set_buffer_size
+*/
 func (recv *BufferedOutputStream) SetBufferSize(size uint64) {
 	c_size := (C.gsize)(size)
 
@@ -701,7 +828,18 @@ func cancellable_cancelledHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// CancellableNew is a wrapper around the C function g_cancellable_new.
+// Creates a new #GCancellable object.
+//
+// Applications that want to start one or more operations
+// that should be cancellable should create a #GCancellable
+// and pass it to the operations.
+//
+// One #GCancellable can be used in multiple consecutive
+// operations or in multiple concurrent operations.
+/*
+
+C function : g_cancellable_new
+*/
 func CancellableNew() *Cancellable {
 	retC := C.g_cancellable_new()
 	retGo := CancellableNewFromC(unsafe.Pointer(retC))
@@ -709,14 +847,49 @@ func CancellableNew() *Cancellable {
 	return retGo
 }
 
-// Cancel is a wrapper around the C function g_cancellable_cancel.
+// Will set @cancellable to cancelled, and will emit the
+// #GCancellable::cancelled signal. (However, see the warning about
+// race conditions in the documentation for that signal if you are
+// planning to connect to it.)
+//
+// This function is thread-safe. In other words, you can safely call
+// it from a thread other than the one running the operation that was
+// passed the @cancellable.
+//
+// If @cancellable is %NULL, this function returns immediately for convenience.
+//
+// The convention within GIO is that cancelling an asynchronous
+// operation causes it to complete asynchronously. That is, if you
+// cancel the operation from the same thread in which it is running,
+// then the operation's #GAsyncReadyCallback will not be invoked until
+// the application returns to the main loop.
+/*
+
+C function : g_cancellable_cancel
+*/
 func (recv *Cancellable) Cancel() {
 	C.g_cancellable_cancel((*C.GCancellable)(recv.native))
 
 	return
 }
 
-// GetFd is a wrapper around the C function g_cancellable_get_fd.
+// Gets the file descriptor for a cancellable job. This can be used to
+// implement cancellable operations on Unix systems. The returned fd will
+// turn readable when @cancellable is cancelled.
+//
+// You are not supposed to read from the fd yourself, just check for
+// readable status. Reading to unset the readable status is done
+// with g_cancellable_reset().
+//
+// After a successful return from this function, you should use
+// g_cancellable_release_fd() to free up resources allocated for
+// the returned file descriptor.
+//
+// See also g_cancellable_make_pollfd().
+/*
+
+C function : g_cancellable_get_fd
+*/
 func (recv *Cancellable) GetFd() int32 {
 	retC := C.g_cancellable_get_fd((*C.GCancellable)(recv.native))
 	retGo := (int32)(retC)
@@ -724,7 +897,11 @@ func (recv *Cancellable) GetFd() int32 {
 	return retGo
 }
 
-// IsCancelled is a wrapper around the C function g_cancellable_is_cancelled.
+// Checks if a cancellable job has been cancelled.
+/*
+
+C function : g_cancellable_is_cancelled
+*/
 func (recv *Cancellable) IsCancelled() bool {
 	retC := C.g_cancellable_is_cancelled((*C.GCancellable)(recv.native))
 	retGo := retC == C.TRUE
@@ -732,28 +909,63 @@ func (recv *Cancellable) IsCancelled() bool {
 	return retGo
 }
 
-// PopCurrent is a wrapper around the C function g_cancellable_pop_current.
+// Pops @cancellable off the cancellable stack (verifying that @cancellable
+// is on the top of the stack).
+/*
+
+C function : g_cancellable_pop_current
+*/
 func (recv *Cancellable) PopCurrent() {
 	C.g_cancellable_pop_current((*C.GCancellable)(recv.native))
 
 	return
 }
 
-// PushCurrent is a wrapper around the C function g_cancellable_push_current.
+// Pushes @cancellable onto the cancellable stack. The current
+// cancellable can then be received using g_cancellable_get_current().
+//
+// This is useful when implementing cancellable operations in
+// code that does not allow you to pass down the cancellable object.
+//
+// This is typically called automatically by e.g. #GFile operations,
+// so you rarely have to call this yourself.
+/*
+
+C function : g_cancellable_push_current
+*/
 func (recv *Cancellable) PushCurrent() {
 	C.g_cancellable_push_current((*C.GCancellable)(recv.native))
 
 	return
 }
 
-// Reset is a wrapper around the C function g_cancellable_reset.
+// Resets @cancellable to its uncancelled state.
+//
+// If cancellable is currently in use by any cancellable operation
+// then the behavior of this function is undefined.
+//
+// Note that it is generally not a good idea to reuse an existing
+// cancellable for more operations after it has been cancelled once,
+// as this function might tempt you to do. The recommended practice
+// is to drop the reference to a cancellable after cancelling it,
+// and let it die with the outstanding async operations. You should
+// create a fresh cancellable for further async operations.
+/*
+
+C function : g_cancellable_reset
+*/
 func (recv *Cancellable) Reset() {
 	C.g_cancellable_reset((*C.GCancellable)(recv.native))
 
 	return
 }
 
-// SetErrorIfCancelled is a wrapper around the C function g_cancellable_set_error_if_cancelled.
+// If the @cancellable is cancelled, sets the error to notify
+// that the operation was cancelled.
+/*
+
+C function : g_cancellable_set_error_if_cancelled
+*/
 func (recv *Cancellable) SetErrorIfCancelled() (bool, error) {
 	var cThrowableError *C.GError
 
@@ -854,7 +1066,11 @@ func CastToConverterInputStream(object *gobject.Object) *ConverterInputStream {
 	return ConverterInputStreamNewFromC(object.ToC())
 }
 
-// ConverterInputStreamNew is a wrapper around the C function g_converter_input_stream_new.
+// Creates a new converter input stream for the @base_stream.
+/*
+
+C function : g_converter_input_stream_new
+*/
 func ConverterInputStreamNew(baseStream *InputStream, converter *Converter) *ConverterInputStream {
 	c_base_stream := (*C.GInputStream)(C.NULL)
 	if baseStream != nil {
@@ -918,7 +1134,11 @@ func CastToConverterOutputStream(object *gobject.Object) *ConverterOutputStream 
 	return ConverterOutputStreamNewFromC(object.ToC())
 }
 
-// ConverterOutputStreamNew is a wrapper around the C function g_converter_output_stream_new.
+// Creates a new converter output stream for the @base_stream.
+/*
+
+C function : g_converter_output_stream_new
+*/
 func ConverterOutputStreamNew(baseStream *OutputStream, converter *Converter) *ConverterOutputStream {
 	c_base_stream := (*C.GOutputStream)(C.NULL)
 	if baseStream != nil {
@@ -1066,7 +1286,11 @@ func CastToDataInputStream(object *gobject.Object) *DataInputStream {
 	return DataInputStreamNewFromC(object.ToC())
 }
 
-// DataInputStreamNew is a wrapper around the C function g_data_input_stream_new.
+// Creates a new data input stream for the @base_stream.
+/*
+
+C function : g_data_input_stream_new
+*/
 func DataInputStreamNew(baseStream *InputStream) *DataInputStream {
 	c_base_stream := (*C.GInputStream)(C.NULL)
 	if baseStream != nil {
@@ -1079,7 +1303,11 @@ func DataInputStreamNew(baseStream *InputStream) *DataInputStream {
 	return retGo
 }
 
-// GetByteOrder is a wrapper around the C function g_data_input_stream_get_byte_order.
+// Gets the byte order for the data input stream.
+/*
+
+C function : g_data_input_stream_get_byte_order
+*/
 func (recv *DataInputStream) GetByteOrder() DataStreamByteOrder {
 	retC := C.g_data_input_stream_get_byte_order((*C.GDataInputStream)(recv.native))
 	retGo := (DataStreamByteOrder)(retC)
@@ -1087,7 +1315,11 @@ func (recv *DataInputStream) GetByteOrder() DataStreamByteOrder {
 	return retGo
 }
 
-// GetNewlineType is a wrapper around the C function g_data_input_stream_get_newline_type.
+// Gets the current newline type for the @stream.
+/*
+
+C function : g_data_input_stream_get_newline_type
+*/
 func (recv *DataInputStream) GetNewlineType() DataStreamNewlineType {
 	retC := C.g_data_input_stream_get_newline_type((*C.GDataInputStream)(recv.native))
 	retGo := (DataStreamNewlineType)(retC)
@@ -1095,7 +1327,11 @@ func (recv *DataInputStream) GetNewlineType() DataStreamNewlineType {
 	return retGo
 }
 
-// ReadByte is a wrapper around the C function g_data_input_stream_read_byte.
+// Reads an unsigned 8-bit/1-byte value from @stream.
+/*
+
+C function : g_data_input_stream_read_byte
+*/
 func (recv *DataInputStream) ReadByte(cancellable *Cancellable) (uint8, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
 	if cancellable != nil {
@@ -1115,7 +1351,14 @@ func (recv *DataInputStream) ReadByte(cancellable *Cancellable) (uint8, error) {
 	return retGo, goThrowableError
 }
 
-// ReadInt16 is a wrapper around the C function g_data_input_stream_read_int16.
+// Reads a 16-bit/2-byte value from @stream.
+//
+// In order to get the correct byte order for this read operation,
+// see g_data_input_stream_get_byte_order() and g_data_input_stream_set_byte_order().
+/*
+
+C function : g_data_input_stream_read_int16
+*/
 func (recv *DataInputStream) ReadInt16(cancellable *Cancellable) (int16, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
 	if cancellable != nil {
@@ -1135,7 +1378,18 @@ func (recv *DataInputStream) ReadInt16(cancellable *Cancellable) (int16, error) 
 	return retGo, goThrowableError
 }
 
-// ReadInt32 is a wrapper around the C function g_data_input_stream_read_int32.
+// Reads a signed 32-bit/4-byte value from @stream.
+//
+// In order to get the correct byte order for this read operation,
+// see g_data_input_stream_get_byte_order() and g_data_input_stream_set_byte_order().
+//
+// If @cancellable is not %NULL, then the operation can be cancelled by
+// triggering the cancellable object from another thread. If the operation
+// was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+/*
+
+C function : g_data_input_stream_read_int32
+*/
 func (recv *DataInputStream) ReadInt32(cancellable *Cancellable) (int32, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
 	if cancellable != nil {
@@ -1155,7 +1409,18 @@ func (recv *DataInputStream) ReadInt32(cancellable *Cancellable) (int32, error) 
 	return retGo, goThrowableError
 }
 
-// ReadInt64 is a wrapper around the C function g_data_input_stream_read_int64.
+// Reads a 64-bit/8-byte value from @stream.
+//
+// In order to get the correct byte order for this read operation,
+// see g_data_input_stream_get_byte_order() and g_data_input_stream_set_byte_order().
+//
+// If @cancellable is not %NULL, then the operation can be cancelled by
+// triggering the cancellable object from another thread. If the operation
+// was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+/*
+
+C function : g_data_input_stream_read_int64
+*/
 func (recv *DataInputStream) ReadInt64(cancellable *Cancellable) (int64, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
 	if cancellable != nil {
@@ -1177,7 +1442,14 @@ func (recv *DataInputStream) ReadInt64(cancellable *Cancellable) (int64, error) 
 
 // Unsupported : g_data_input_stream_read_line : no return type
 
-// ReadUint16 is a wrapper around the C function g_data_input_stream_read_uint16.
+// Reads an unsigned 16-bit/2-byte value from @stream.
+//
+// In order to get the correct byte order for this read operation,
+// see g_data_input_stream_get_byte_order() and g_data_input_stream_set_byte_order().
+/*
+
+C function : g_data_input_stream_read_uint16
+*/
 func (recv *DataInputStream) ReadUint16(cancellable *Cancellable) (uint16, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
 	if cancellable != nil {
@@ -1197,7 +1469,18 @@ func (recv *DataInputStream) ReadUint16(cancellable *Cancellable) (uint16, error
 	return retGo, goThrowableError
 }
 
-// ReadUint32 is a wrapper around the C function g_data_input_stream_read_uint32.
+// Reads an unsigned 32-bit/4-byte value from @stream.
+//
+// In order to get the correct byte order for this read operation,
+// see g_data_input_stream_get_byte_order() and g_data_input_stream_set_byte_order().
+//
+// If @cancellable is not %NULL, then the operation can be cancelled by
+// triggering the cancellable object from another thread. If the operation
+// was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+/*
+
+C function : g_data_input_stream_read_uint32
+*/
 func (recv *DataInputStream) ReadUint32(cancellable *Cancellable) (uint32, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
 	if cancellable != nil {
@@ -1217,7 +1500,18 @@ func (recv *DataInputStream) ReadUint32(cancellable *Cancellable) (uint32, error
 	return retGo, goThrowableError
 }
 
-// ReadUint64 is a wrapper around the C function g_data_input_stream_read_uint64.
+// Reads an unsigned 64-bit/8-byte value from @stream.
+//
+// In order to get the correct byte order for this read operation,
+// see g_data_input_stream_get_byte_order().
+//
+// If @cancellable is not %NULL, then the operation can be cancelled by
+// triggering the cancellable object from another thread. If the operation
+// was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+/*
+
+C function : g_data_input_stream_read_uint64
+*/
 func (recv *DataInputStream) ReadUint64(cancellable *Cancellable) (uint64, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
 	if cancellable != nil {
@@ -1237,7 +1531,21 @@ func (recv *DataInputStream) ReadUint64(cancellable *Cancellable) (uint64, error
 	return retGo, goThrowableError
 }
 
-// ReadUntil is a wrapper around the C function g_data_input_stream_read_until.
+// Reads a string from the data input stream, up to the first
+// occurrence of any of the stop characters.
+//
+// Note that, in contrast to g_data_input_stream_read_until_async(),
+// this function consumes the stop character that it finds.
+//
+// Don't use this function in new code.  Its functionality is
+// inconsistent with g_data_input_stream_read_until_async().  Both
+// functions will be marked as deprecated in a future release.  Use
+// g_data_input_stream_read_upto() instead, but note that that function
+// does not consume the stop character.
+/*
+
+C function : g_data_input_stream_read_until
+*/
 func (recv *DataInputStream) ReadUntil(stopChars string, cancellable *Cancellable) (string, uint64, error) {
 	c_stop_chars := C.CString(stopChars)
 	defer C.free(unsafe.Pointer(c_stop_chars))
@@ -1265,7 +1573,12 @@ func (recv *DataInputStream) ReadUntil(stopChars string, cancellable *Cancellabl
 	return retGo, length, goThrowableError
 }
 
-// SetByteOrder is a wrapper around the C function g_data_input_stream_set_byte_order.
+// This function sets the byte order for the given @stream. All subsequent
+// reads from the @stream will be read in the given @order.
+/*
+
+C function : g_data_input_stream_set_byte_order
+*/
 func (recv *DataInputStream) SetByteOrder(order DataStreamByteOrder) {
 	c_order := (C.GDataStreamByteOrder)(order)
 
@@ -1274,7 +1587,15 @@ func (recv *DataInputStream) SetByteOrder(order DataStreamByteOrder) {
 	return
 }
 
-// SetNewlineType is a wrapper around the C function g_data_input_stream_set_newline_type.
+// Sets the newline type for the @stream.
+//
+// Note that using G_DATA_STREAM_NEWLINE_TYPE_ANY is slightly unsafe. If a read
+// chunk ends in "CR" we must read an additional byte to know if this is "CR" or
+// "CR LF", and this might block if there is no more data available.
+/*
+
+C function : g_data_input_stream_set_newline_type
+*/
 func (recv *DataInputStream) SetNewlineType(type_ DataStreamNewlineType) {
 	c_type := (C.GDataStreamNewlineType)(type_)
 
@@ -1332,7 +1653,11 @@ func CastToDataOutputStream(object *gobject.Object) *DataOutputStream {
 	return DataOutputStreamNewFromC(object.ToC())
 }
 
-// DataOutputStreamNew is a wrapper around the C function g_data_output_stream_new.
+// Creates a new data output stream for @base_stream.
+/*
+
+C function : g_data_output_stream_new
+*/
 func DataOutputStreamNew(baseStream *OutputStream) *DataOutputStream {
 	c_base_stream := (*C.GOutputStream)(C.NULL)
 	if baseStream != nil {
@@ -1345,7 +1670,11 @@ func DataOutputStreamNew(baseStream *OutputStream) *DataOutputStream {
 	return retGo
 }
 
-// GetByteOrder is a wrapper around the C function g_data_output_stream_get_byte_order.
+// Gets the byte order for the stream.
+/*
+
+C function : g_data_output_stream_get_byte_order
+*/
 func (recv *DataOutputStream) GetByteOrder() DataStreamByteOrder {
 	retC := C.g_data_output_stream_get_byte_order((*C.GDataOutputStream)(recv.native))
 	retGo := (DataStreamByteOrder)(retC)
@@ -1353,7 +1682,11 @@ func (recv *DataOutputStream) GetByteOrder() DataStreamByteOrder {
 	return retGo
 }
 
-// PutByte is a wrapper around the C function g_data_output_stream_put_byte.
+// Puts a byte into the output stream.
+/*
+
+C function : g_data_output_stream_put_byte
+*/
 func (recv *DataOutputStream) PutByte(data uint8, cancellable *Cancellable) (bool, error) {
 	c_data := (C.guchar)(data)
 
@@ -1375,7 +1708,11 @@ func (recv *DataOutputStream) PutByte(data uint8, cancellable *Cancellable) (boo
 	return retGo, goThrowableError
 }
 
-// PutInt16 is a wrapper around the C function g_data_output_stream_put_int16.
+// Puts a signed 16-bit integer into the output stream.
+/*
+
+C function : g_data_output_stream_put_int16
+*/
 func (recv *DataOutputStream) PutInt16(data int16, cancellable *Cancellable) (bool, error) {
 	c_data := (C.gint16)(data)
 
@@ -1397,7 +1734,11 @@ func (recv *DataOutputStream) PutInt16(data int16, cancellable *Cancellable) (bo
 	return retGo, goThrowableError
 }
 
-// PutInt32 is a wrapper around the C function g_data_output_stream_put_int32.
+// Puts a signed 32-bit integer into the output stream.
+/*
+
+C function : g_data_output_stream_put_int32
+*/
 func (recv *DataOutputStream) PutInt32(data int32, cancellable *Cancellable) (bool, error) {
 	c_data := (C.gint32)(data)
 
@@ -1419,7 +1760,11 @@ func (recv *DataOutputStream) PutInt32(data int32, cancellable *Cancellable) (bo
 	return retGo, goThrowableError
 }
 
-// PutInt64 is a wrapper around the C function g_data_output_stream_put_int64.
+// Puts a signed 64-bit integer into the stream.
+/*
+
+C function : g_data_output_stream_put_int64
+*/
 func (recv *DataOutputStream) PutInt64(data int64, cancellable *Cancellable) (bool, error) {
 	c_data := (C.gint64)(data)
 
@@ -1441,7 +1786,11 @@ func (recv *DataOutputStream) PutInt64(data int64, cancellable *Cancellable) (bo
 	return retGo, goThrowableError
 }
 
-// PutString is a wrapper around the C function g_data_output_stream_put_string.
+// Puts a string into the output stream.
+/*
+
+C function : g_data_output_stream_put_string
+*/
 func (recv *DataOutputStream) PutString(str string, cancellable *Cancellable) (bool, error) {
 	c_str := C.CString(str)
 	defer C.free(unsafe.Pointer(c_str))
@@ -1464,7 +1813,11 @@ func (recv *DataOutputStream) PutString(str string, cancellable *Cancellable) (b
 	return retGo, goThrowableError
 }
 
-// PutUint16 is a wrapper around the C function g_data_output_stream_put_uint16.
+// Puts an unsigned 16-bit integer into the output stream.
+/*
+
+C function : g_data_output_stream_put_uint16
+*/
 func (recv *DataOutputStream) PutUint16(data uint16, cancellable *Cancellable) (bool, error) {
 	c_data := (C.guint16)(data)
 
@@ -1486,7 +1839,11 @@ func (recv *DataOutputStream) PutUint16(data uint16, cancellable *Cancellable) (
 	return retGo, goThrowableError
 }
 
-// PutUint32 is a wrapper around the C function g_data_output_stream_put_uint32.
+// Puts an unsigned 32-bit integer into the stream.
+/*
+
+C function : g_data_output_stream_put_uint32
+*/
 func (recv *DataOutputStream) PutUint32(data uint32, cancellable *Cancellable) (bool, error) {
 	c_data := (C.guint32)(data)
 
@@ -1508,7 +1865,11 @@ func (recv *DataOutputStream) PutUint32(data uint32, cancellable *Cancellable) (
 	return retGo, goThrowableError
 }
 
-// PutUint64 is a wrapper around the C function g_data_output_stream_put_uint64.
+// Puts an unsigned 64-bit integer into the stream.
+/*
+
+C function : g_data_output_stream_put_uint64
+*/
 func (recv *DataOutputStream) PutUint64(data uint64, cancellable *Cancellable) (bool, error) {
 	c_data := (C.guint64)(data)
 
@@ -1530,7 +1891,11 @@ func (recv *DataOutputStream) PutUint64(data uint64, cancellable *Cancellable) (
 	return retGo, goThrowableError
 }
 
-// SetByteOrder is a wrapper around the C function g_data_output_stream_set_byte_order.
+// Sets the byte order of the data output stream to @order.
+/*
+
+C function : g_data_output_stream_set_byte_order
+*/
 func (recv *DataOutputStream) SetByteOrder(order DataStreamByteOrder) {
 	c_order := (C.GDataStreamByteOrder)(order)
 
@@ -1576,7 +1941,21 @@ func CastToDesktopAppInfo(object *gobject.Object) *DesktopAppInfo {
 	return DesktopAppInfoNewFromC(object.ToC())
 }
 
-// DesktopAppInfoNew is a wrapper around the C function g_desktop_app_info_new.
+// Creates a new #GDesktopAppInfo based on a desktop file id.
+//
+// A desktop file id is the basename of the desktop file, including the
+// .desktop extension. GIO is looking for a desktop file with this name
+// in the `applications` subdirectories of the XDG
+// data directories (i.e. the directories specified in the `XDG_DATA_HOME`
+// and `XDG_DATA_DIRS` environment variables). GIO also supports the
+// prefix-to-subdirectory mapping that is described in the
+// [Menu Spec](http://standards.freedesktop.org/menu-spec/latest/)
+// (i.e. a desktop id of kde-foo.desktop will match
+// `/usr/share/applications/kde/foo.desktop`).
+/*
+
+C function : g_desktop_app_info_new
+*/
 func DesktopAppInfoNew(desktopId string) *DesktopAppInfo {
 	c_desktop_id := C.CString(desktopId)
 	defer C.free(unsafe.Pointer(c_desktop_id))
@@ -1587,7 +1966,11 @@ func DesktopAppInfoNew(desktopId string) *DesktopAppInfo {
 	return retGo
 }
 
-// DesktopAppInfoNewFromFilename is a wrapper around the C function g_desktop_app_info_new_from_filename.
+// Creates a new #GDesktopAppInfo.
+/*
+
+C function : g_desktop_app_info_new_from_filename
+*/
 func DesktopAppInfoNewFromFilename(filename string) *DesktopAppInfo {
 	c_filename := C.CString(filename)
 	defer C.free(unsafe.Pointer(c_filename))
@@ -1598,7 +1981,11 @@ func DesktopAppInfoNewFromFilename(filename string) *DesktopAppInfo {
 	return retGo
 }
 
-// GetCategories is a wrapper around the C function g_desktop_app_info_get_categories.
+// Gets the categories from the desktop file.
+/*
+
+C function : g_desktop_app_info_get_categories
+*/
 func (recv *DesktopAppInfo) GetCategories() string {
 	retC := C.g_desktop_app_info_get_categories((*C.GDesktopAppInfo)(recv.native))
 	retGo := C.GoString(retC)
@@ -1606,7 +1993,11 @@ func (recv *DesktopAppInfo) GetCategories() string {
 	return retGo
 }
 
-// GetGenericName is a wrapper around the C function g_desktop_app_info_get_generic_name.
+// Gets the generic name from the destkop file.
+/*
+
+C function : g_desktop_app_info_get_generic_name
+*/
 func (recv *DesktopAppInfo) GetGenericName() string {
 	retC := C.g_desktop_app_info_get_generic_name((*C.GDesktopAppInfo)(recv.native))
 	retGo := C.GoString(retC)
@@ -1614,7 +2005,12 @@ func (recv *DesktopAppInfo) GetGenericName() string {
 	return retGo
 }
 
-// GetIsHidden is a wrapper around the C function g_desktop_app_info_get_is_hidden.
+// A desktop file is hidden if the Hidden key in it is
+// set to True.
+/*
+
+C function : g_desktop_app_info_get_is_hidden
+*/
 func (recv *DesktopAppInfo) GetIsHidden() bool {
 	retC := C.g_desktop_app_info_get_is_hidden((*C.GDesktopAppInfo)(recv.native))
 	retGo := retC == C.TRUE
@@ -1739,7 +2135,16 @@ func CastToFileEnumerator(object *gobject.Object) *FileEnumerator {
 	return FileEnumeratorNewFromC(object.ToC())
 }
 
-// Close is a wrapper around the C function g_file_enumerator_close.
+// Releases all resources used by this enumerator, making the
+// enumerator return %G_IO_ERROR_CLOSED on all calls.
+//
+// This will be automatically called when the last reference
+// is dropped, but you might want to call this function to make
+// sure resources are released as early as possible.
+/*
+
+C function : g_file_enumerator_close
+*/
 func (recv *FileEnumerator) Close(cancellable *Cancellable) (bool, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
 	if cancellable != nil {
@@ -1761,7 +2166,20 @@ func (recv *FileEnumerator) Close(cancellable *Cancellable) (bool, error) {
 
 // Unsupported : g_file_enumerator_close_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// CloseFinish is a wrapper around the C function g_file_enumerator_close_finish.
+// Finishes closing a file enumerator, started from g_file_enumerator_close_async().
+//
+// If the file enumerator was already closed when g_file_enumerator_close_async()
+// was called, then this function will report %G_IO_ERROR_CLOSED in @error, and
+// return %FALSE. If the file enumerator had pending operation when the close
+// operation was started, then this function will report %G_IO_ERROR_PENDING, and
+// return %FALSE.  If @cancellable was not %NULL, then the operation may have been
+// cancelled by triggering the cancellable object from another thread. If the operation
+// was cancelled, the error %G_IO_ERROR_CANCELLED will be set, and %FALSE will be
+// returned.
+/*
+
+C function : g_file_enumerator_close_finish
+*/
 func (recv *FileEnumerator) CloseFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
 
@@ -1778,7 +2196,11 @@ func (recv *FileEnumerator) CloseFinish(result *AsyncResult) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// HasPending is a wrapper around the C function g_file_enumerator_has_pending.
+// Checks if the file enumerator has pending operations.
+/*
+
+C function : g_file_enumerator_has_pending
+*/
 func (recv *FileEnumerator) HasPending() bool {
 	retC := C.g_file_enumerator_has_pending((*C.GFileEnumerator)(recv.native))
 	retGo := retC == C.TRUE
@@ -1786,7 +2208,11 @@ func (recv *FileEnumerator) HasPending() bool {
 	return retGo
 }
 
-// IsClosed is a wrapper around the C function g_file_enumerator_is_closed.
+// Checks if the file enumerator has been closed.
+/*
+
+C function : g_file_enumerator_is_closed
+*/
 func (recv *FileEnumerator) IsClosed() bool {
 	retC := C.g_file_enumerator_is_closed((*C.GFileEnumerator)(recv.native))
 	retGo := retC == C.TRUE
@@ -1794,7 +2220,21 @@ func (recv *FileEnumerator) IsClosed() bool {
 	return retGo
 }
 
-// NextFile is a wrapper around the C function g_file_enumerator_next_file.
+// Returns information for the next file in the enumerated object.
+// Will block until the information is available. The #GFileInfo
+// returned from this function will contain attributes that match the
+// attribute string that was passed when the #GFileEnumerator was created.
+//
+// See the documentation of #GFileEnumerator for information about the
+// order of returned files.
+//
+// On error, returns %NULL and sets @error to the error. If the
+// enumerator is at the end, %NULL will be returned and @error will
+// be unset.
+/*
+
+C function : g_file_enumerator_next_file
+*/
 func (recv *FileEnumerator) NextFile(cancellable *Cancellable) (*FileInfo, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
 	if cancellable != nil {
@@ -1821,7 +2261,11 @@ func (recv *FileEnumerator) NextFile(cancellable *Cancellable) (*FileInfo, error
 
 // Unsupported : g_file_enumerator_next_files_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// NextFilesFinish is a wrapper around the C function g_file_enumerator_next_files_finish.
+// Finishes the asynchronous operation started with g_file_enumerator_next_files_async().
+/*
+
+C function : g_file_enumerator_next_files_finish
+*/
 func (recv *FileEnumerator) NextFilesFinish(result *AsyncResult) (*glib.List, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
 
@@ -1838,7 +2282,11 @@ func (recv *FileEnumerator) NextFilesFinish(result *AsyncResult) (*glib.List, er
 	return retGo, goThrowableError
 }
 
-// SetPending is a wrapper around the C function g_file_enumerator_set_pending.
+// Sets the file enumerator as having pending operations.
+/*
+
+C function : g_file_enumerator_set_pending
+*/
 func (recv *FileEnumerator) SetPending(pending bool) {
 	c_pending :=
 		boolToGboolean(pending)
@@ -1924,7 +2372,11 @@ func CastToFileIcon(object *gobject.Object) *FileIcon {
 	return FileIconNewFromC(object.ToC())
 }
 
-// FileIconNew is a wrapper around the C function g_file_icon_new.
+// Creates a new icon for a file.
+/*
+
+C function : g_file_icon_new
+*/
 func FileIconNew(file *File) *FileIcon {
 	c_file := (*C.GFile)(file.ToC())
 
@@ -1934,7 +2386,11 @@ func FileIconNew(file *File) *FileIcon {
 	return retGo
 }
 
-// GetFile is a wrapper around the C function g_file_icon_get_file.
+// Gets the #GFile associated with the given @icon.
+/*
+
+C function : g_file_icon_get_file
+*/
 func (recv *FileIcon) GetFile() *File {
 	retC := C.g_file_icon_get_file((*C.GFileIcon)(recv.native))
 	retGo := FileNewFromC(unsafe.Pointer(retC))
@@ -1984,7 +2440,11 @@ func CastToFileInfo(object *gobject.Object) *FileInfo {
 	return FileInfoNewFromC(object.ToC())
 }
 
-// FileInfoNew is a wrapper around the C function g_file_info_new.
+// Creates a new file info structure.
+/*
+
+C function : g_file_info_new
+*/
 func FileInfoNew() *FileInfo {
 	retC := C.g_file_info_new()
 	retGo := FileInfoNewFromC(unsafe.Pointer(retC))
@@ -1992,14 +2452,23 @@ func FileInfoNew() *FileInfo {
 	return retGo
 }
 
-// ClearStatus is a wrapper around the C function g_file_info_clear_status.
+// Clears the status information from @info.
+/*
+
+C function : g_file_info_clear_status
+*/
 func (recv *FileInfo) ClearStatus() {
 	C.g_file_info_clear_status((*C.GFileInfo)(recv.native))
 
 	return
 }
 
-// CopyInto is a wrapper around the C function g_file_info_copy_into.
+// First clears all of the [GFileAttribute][gio-GFileAttribute] of @dest_info,
+// and then copies all of the file attributes from @src_info to @dest_info.
+/*
+
+C function : g_file_info_copy_into
+*/
 func (recv *FileInfo) CopyInto(destInfo *FileInfo) {
 	c_dest_info := (*C.GFileInfo)(C.NULL)
 	if destInfo != nil {
@@ -2011,7 +2480,11 @@ func (recv *FileInfo) CopyInto(destInfo *FileInfo) {
 	return
 }
 
-// Dup is a wrapper around the C function g_file_info_dup.
+// Duplicates a file info structure.
+/*
+
+C function : g_file_info_dup
+*/
 func (recv *FileInfo) Dup() *FileInfo {
 	retC := C.g_file_info_dup((*C.GFileInfo)(recv.native))
 	retGo := FileInfoNewFromC(unsafe.Pointer(retC))
@@ -2019,7 +2492,13 @@ func (recv *FileInfo) Dup() *FileInfo {
 	return retGo
 }
 
-// GetAttributeAsString is a wrapper around the C function g_file_info_get_attribute_as_string.
+// Gets the value of a attribute, formated as a string.
+// This escapes things as needed to make the string valid
+// utf8.
+/*
+
+C function : g_file_info_get_attribute_as_string
+*/
 func (recv *FileInfo) GetAttributeAsString(attribute string) string {
 	c_attribute := C.CString(attribute)
 	defer C.free(unsafe.Pointer(c_attribute))
@@ -2031,7 +2510,12 @@ func (recv *FileInfo) GetAttributeAsString(attribute string) string {
 	return retGo
 }
 
-// GetAttributeBoolean is a wrapper around the C function g_file_info_get_attribute_boolean.
+// Gets the value of a boolean attribute. If the attribute does not
+// contain a boolean value, %FALSE will be returned.
+/*
+
+C function : g_file_info_get_attribute_boolean
+*/
 func (recv *FileInfo) GetAttributeBoolean(attribute string) bool {
 	c_attribute := C.CString(attribute)
 	defer C.free(unsafe.Pointer(c_attribute))
@@ -2042,7 +2526,12 @@ func (recv *FileInfo) GetAttributeBoolean(attribute string) bool {
 	return retGo
 }
 
-// GetAttributeByteString is a wrapper around the C function g_file_info_get_attribute_byte_string.
+// Gets the value of a byte string attribute. If the attribute does
+// not contain a byte string, %NULL will be returned.
+/*
+
+C function : g_file_info_get_attribute_byte_string
+*/
 func (recv *FileInfo) GetAttributeByteString(attribute string) string {
 	c_attribute := C.CString(attribute)
 	defer C.free(unsafe.Pointer(c_attribute))
@@ -2055,7 +2544,13 @@ func (recv *FileInfo) GetAttributeByteString(attribute string) string {
 
 // Unsupported : g_file_info_get_attribute_data : unsupported parameter type : GFileAttributeType* with indirection level of 1
 
-// GetAttributeInt32 is a wrapper around the C function g_file_info_get_attribute_int32.
+// Gets a signed 32-bit integer contained within the attribute. If the
+// attribute does not contain a signed 32-bit integer, or is invalid,
+// 0 will be returned.
+/*
+
+C function : g_file_info_get_attribute_int32
+*/
 func (recv *FileInfo) GetAttributeInt32(attribute string) int32 {
 	c_attribute := C.CString(attribute)
 	defer C.free(unsafe.Pointer(c_attribute))
@@ -2066,7 +2561,13 @@ func (recv *FileInfo) GetAttributeInt32(attribute string) int32 {
 	return retGo
 }
 
-// GetAttributeInt64 is a wrapper around the C function g_file_info_get_attribute_int64.
+// Gets a signed 64-bit integer contained within the attribute. If the
+// attribute does not contain an signed 64-bit integer, or is invalid,
+// 0 will be returned.
+/*
+
+C function : g_file_info_get_attribute_int64
+*/
 func (recv *FileInfo) GetAttributeInt64(attribute string) int64 {
 	c_attribute := C.CString(attribute)
 	defer C.free(unsafe.Pointer(c_attribute))
@@ -2077,7 +2578,12 @@ func (recv *FileInfo) GetAttributeInt64(attribute string) int64 {
 	return retGo
 }
 
-// GetAttributeObject is a wrapper around the C function g_file_info_get_attribute_object.
+// Gets the value of a #GObject attribute. If the attribute does
+// not contain a #GObject, %NULL will be returned.
+/*
+
+C function : g_file_info_get_attribute_object
+*/
 func (recv *FileInfo) GetAttributeObject(attribute string) *gobject.Object {
 	c_attribute := C.CString(attribute)
 	defer C.free(unsafe.Pointer(c_attribute))
@@ -2088,7 +2594,11 @@ func (recv *FileInfo) GetAttributeObject(attribute string) *gobject.Object {
 	return retGo
 }
 
-// GetAttributeStatus is a wrapper around the C function g_file_info_get_attribute_status.
+// Gets the attribute status for an attribute key.
+/*
+
+C function : g_file_info_get_attribute_status
+*/
 func (recv *FileInfo) GetAttributeStatus(attribute string) FileAttributeStatus {
 	c_attribute := C.CString(attribute)
 	defer C.free(unsafe.Pointer(c_attribute))
@@ -2099,7 +2609,12 @@ func (recv *FileInfo) GetAttributeStatus(attribute string) FileAttributeStatus {
 	return retGo
 }
 
-// GetAttributeString is a wrapper around the C function g_file_info_get_attribute_string.
+// Gets the value of a string attribute. If the attribute does
+// not contain a string, %NULL will be returned.
+/*
+
+C function : g_file_info_get_attribute_string
+*/
 func (recv *FileInfo) GetAttributeString(attribute string) string {
 	c_attribute := C.CString(attribute)
 	defer C.free(unsafe.Pointer(c_attribute))
@@ -2110,7 +2625,11 @@ func (recv *FileInfo) GetAttributeString(attribute string) string {
 	return retGo
 }
 
-// GetAttributeType is a wrapper around the C function g_file_info_get_attribute_type.
+// Gets the attribute type for an attribute key.
+/*
+
+C function : g_file_info_get_attribute_type
+*/
 func (recv *FileInfo) GetAttributeType(attribute string) FileAttributeType {
 	c_attribute := C.CString(attribute)
 	defer C.free(unsafe.Pointer(c_attribute))
@@ -2121,7 +2640,13 @@ func (recv *FileInfo) GetAttributeType(attribute string) FileAttributeType {
 	return retGo
 }
 
-// GetAttributeUint32 is a wrapper around the C function g_file_info_get_attribute_uint32.
+// Gets an unsigned 32-bit integer contained within the attribute. If the
+// attribute does not contain an unsigned 32-bit integer, or is invalid,
+// 0 will be returned.
+/*
+
+C function : g_file_info_get_attribute_uint32
+*/
 func (recv *FileInfo) GetAttributeUint32(attribute string) uint32 {
 	c_attribute := C.CString(attribute)
 	defer C.free(unsafe.Pointer(c_attribute))
@@ -2132,7 +2657,13 @@ func (recv *FileInfo) GetAttributeUint32(attribute string) uint32 {
 	return retGo
 }
 
-// GetAttributeUint64 is a wrapper around the C function g_file_info_get_attribute_uint64.
+// Gets a unsigned 64-bit integer contained within the attribute. If the
+// attribute does not contain an unsigned 64-bit integer, or is invalid,
+// 0 will be returned.
+/*
+
+C function : g_file_info_get_attribute_uint64
+*/
 func (recv *FileInfo) GetAttributeUint64(attribute string) uint64 {
 	c_attribute := C.CString(attribute)
 	defer C.free(unsafe.Pointer(c_attribute))
@@ -2143,7 +2674,11 @@ func (recv *FileInfo) GetAttributeUint64(attribute string) uint64 {
 	return retGo
 }
 
-// GetContentType is a wrapper around the C function g_file_info_get_content_type.
+// Gets the file's content type.
+/*
+
+C function : g_file_info_get_content_type
+*/
 func (recv *FileInfo) GetContentType() string {
 	retC := C.g_file_info_get_content_type((*C.GFileInfo)(recv.native))
 	retGo := C.GoString(retC)
@@ -2151,7 +2686,11 @@ func (recv *FileInfo) GetContentType() string {
 	return retGo
 }
 
-// GetDisplayName is a wrapper around the C function g_file_info_get_display_name.
+// Gets a display name for a file.
+/*
+
+C function : g_file_info_get_display_name
+*/
 func (recv *FileInfo) GetDisplayName() string {
 	retC := C.g_file_info_get_display_name((*C.GFileInfo)(recv.native))
 	retGo := C.GoString(retC)
@@ -2159,7 +2698,11 @@ func (recv *FileInfo) GetDisplayName() string {
 	return retGo
 }
 
-// GetEditName is a wrapper around the C function g_file_info_get_edit_name.
+// Gets the edit name for a file.
+/*
+
+C function : g_file_info_get_edit_name
+*/
 func (recv *FileInfo) GetEditName() string {
 	retC := C.g_file_info_get_edit_name((*C.GFileInfo)(recv.native))
 	retGo := C.GoString(retC)
@@ -2167,7 +2710,12 @@ func (recv *FileInfo) GetEditName() string {
 	return retGo
 }
 
-// GetEtag is a wrapper around the C function g_file_info_get_etag.
+// Gets the [entity tag][gfile-etag] for a given
+// #GFileInfo. See %G_FILE_ATTRIBUTE_ETAG_VALUE.
+/*
+
+C function : g_file_info_get_etag
+*/
 func (recv *FileInfo) GetEtag() string {
 	retC := C.g_file_info_get_etag((*C.GFileInfo)(recv.native))
 	retGo := C.GoString(retC)
@@ -2175,7 +2723,12 @@ func (recv *FileInfo) GetEtag() string {
 	return retGo
 }
 
-// GetFileType is a wrapper around the C function g_file_info_get_file_type.
+// Gets a file's type (whether it is a regular file, symlink, etc).
+// This is different from the file's content type, see g_file_info_get_content_type().
+/*
+
+C function : g_file_info_get_file_type
+*/
 func (recv *FileInfo) GetFileType() FileType {
 	retC := C.g_file_info_get_file_type((*C.GFileInfo)(recv.native))
 	retGo := (FileType)(retC)
@@ -2183,7 +2736,11 @@ func (recv *FileInfo) GetFileType() FileType {
 	return retGo
 }
 
-// GetIcon is a wrapper around the C function g_file_info_get_icon.
+// Gets the icon for a file.
+/*
+
+C function : g_file_info_get_icon
+*/
 func (recv *FileInfo) GetIcon() *Icon {
 	retC := C.g_file_info_get_icon((*C.GFileInfo)(recv.native))
 	retGo := IconNewFromC(unsafe.Pointer(retC))
@@ -2191,7 +2748,11 @@ func (recv *FileInfo) GetIcon() *Icon {
 	return retGo
 }
 
-// GetIsBackup is a wrapper around the C function g_file_info_get_is_backup.
+// Checks if a file is a backup file.
+/*
+
+C function : g_file_info_get_is_backup
+*/
 func (recv *FileInfo) GetIsBackup() bool {
 	retC := C.g_file_info_get_is_backup((*C.GFileInfo)(recv.native))
 	retGo := retC == C.TRUE
@@ -2199,7 +2760,11 @@ func (recv *FileInfo) GetIsBackup() bool {
 	return retGo
 }
 
-// GetIsHidden is a wrapper around the C function g_file_info_get_is_hidden.
+// Checks if a file is hidden.
+/*
+
+C function : g_file_info_get_is_hidden
+*/
 func (recv *FileInfo) GetIsHidden() bool {
 	retC := C.g_file_info_get_is_hidden((*C.GFileInfo)(recv.native))
 	retGo := retC == C.TRUE
@@ -2207,7 +2772,11 @@ func (recv *FileInfo) GetIsHidden() bool {
 	return retGo
 }
 
-// GetIsSymlink is a wrapper around the C function g_file_info_get_is_symlink.
+// Checks if a file is a symlink.
+/*
+
+C function : g_file_info_get_is_symlink
+*/
 func (recv *FileInfo) GetIsSymlink() bool {
 	retC := C.g_file_info_get_is_symlink((*C.GFileInfo)(recv.native))
 	retGo := retC == C.TRUE
@@ -2215,7 +2784,12 @@ func (recv *FileInfo) GetIsSymlink() bool {
 	return retGo
 }
 
-// GetModificationTime is a wrapper around the C function g_file_info_get_modification_time.
+// Gets the modification time of the current @info and sets it
+// in @result.
+/*
+
+C function : g_file_info_get_modification_time
+*/
 func (recv *FileInfo) GetModificationTime() *glib.TimeVal {
 	var c_result C.GTimeVal
 
@@ -2226,7 +2800,11 @@ func (recv *FileInfo) GetModificationTime() *glib.TimeVal {
 	return result
 }
 
-// GetName is a wrapper around the C function g_file_info_get_name.
+// Gets the name for a file.
+/*
+
+C function : g_file_info_get_name
+*/
 func (recv *FileInfo) GetName() string {
 	retC := C.g_file_info_get_name((*C.GFileInfo)(recv.native))
 	retGo := C.GoString(retC)
@@ -2234,7 +2812,11 @@ func (recv *FileInfo) GetName() string {
 	return retGo
 }
 
-// GetSize is a wrapper around the C function g_file_info_get_size.
+// Gets the file's size.
+/*
+
+C function : g_file_info_get_size
+*/
 func (recv *FileInfo) GetSize() uint64 {
 	retC := C.g_file_info_get_size((*C.GFileInfo)(recv.native))
 	retGo := (uint64)(retC)
@@ -2242,7 +2824,12 @@ func (recv *FileInfo) GetSize() uint64 {
 	return retGo
 }
 
-// GetSortOrder is a wrapper around the C function g_file_info_get_sort_order.
+// Gets the value of the sort_order attribute from the #GFileInfo.
+// See %G_FILE_ATTRIBUTE_STANDARD_SORT_ORDER.
+/*
+
+C function : g_file_info_get_sort_order
+*/
 func (recv *FileInfo) GetSortOrder() int32 {
 	retC := C.g_file_info_get_sort_order((*C.GFileInfo)(recv.native))
 	retGo := (int32)(retC)
@@ -2250,7 +2837,11 @@ func (recv *FileInfo) GetSortOrder() int32 {
 	return retGo
 }
 
-// GetSymlinkTarget is a wrapper around the C function g_file_info_get_symlink_target.
+// Gets the symlink target for a given #GFileInfo.
+/*
+
+C function : g_file_info_get_symlink_target
+*/
 func (recv *FileInfo) GetSymlinkTarget() string {
 	retC := C.g_file_info_get_symlink_target((*C.GFileInfo)(recv.native))
 	retGo := C.GoString(retC)
@@ -2258,7 +2849,11 @@ func (recv *FileInfo) GetSymlinkTarget() string {
 	return retGo
 }
 
-// HasAttribute is a wrapper around the C function g_file_info_has_attribute.
+// Checks if a file info structure has an attribute named @attribute.
+/*
+
+C function : g_file_info_has_attribute
+*/
 func (recv *FileInfo) HasAttribute(attribute string) bool {
 	c_attribute := C.CString(attribute)
 	defer C.free(unsafe.Pointer(c_attribute))
@@ -2271,7 +2866,11 @@ func (recv *FileInfo) HasAttribute(attribute string) bool {
 
 // Unsupported : g_file_info_list_attributes : no return type
 
-// RemoveAttribute is a wrapper around the C function g_file_info_remove_attribute.
+// Removes all cases of @attribute from @info if it exists.
+/*
+
+C function : g_file_info_remove_attribute
+*/
 func (recv *FileInfo) RemoveAttribute(attribute string) {
 	c_attribute := C.CString(attribute)
 	defer C.free(unsafe.Pointer(c_attribute))
@@ -2281,7 +2880,12 @@ func (recv *FileInfo) RemoveAttribute(attribute string) {
 	return
 }
 
-// SetAttribute is a wrapper around the C function g_file_info_set_attribute.
+// Sets the @attribute to contain the given value, if possible. To unset the
+// attribute, use %G_ATTRIBUTE_TYPE_INVALID for @type.
+/*
+
+C function : g_file_info_set_attribute
+*/
 func (recv *FileInfo) SetAttribute(attribute string, type_ FileAttributeType, valueP uintptr) {
 	c_attribute := C.CString(attribute)
 	defer C.free(unsafe.Pointer(c_attribute))
@@ -2295,7 +2899,12 @@ func (recv *FileInfo) SetAttribute(attribute string, type_ FileAttributeType, va
 	return
 }
 
-// SetAttributeBoolean is a wrapper around the C function g_file_info_set_attribute_boolean.
+// Sets the @attribute to contain the given @attr_value,
+// if possible.
+/*
+
+C function : g_file_info_set_attribute_boolean
+*/
 func (recv *FileInfo) SetAttributeBoolean(attribute string, attrValue bool) {
 	c_attribute := C.CString(attribute)
 	defer C.free(unsafe.Pointer(c_attribute))
@@ -2308,7 +2917,12 @@ func (recv *FileInfo) SetAttributeBoolean(attribute string, attrValue bool) {
 	return
 }
 
-// SetAttributeByteString is a wrapper around the C function g_file_info_set_attribute_byte_string.
+// Sets the @attribute to contain the given @attr_value,
+// if possible.
+/*
+
+C function : g_file_info_set_attribute_byte_string
+*/
 func (recv *FileInfo) SetAttributeByteString(attribute string, attrValue string) {
 	c_attribute := C.CString(attribute)
 	defer C.free(unsafe.Pointer(c_attribute))
@@ -2321,7 +2935,12 @@ func (recv *FileInfo) SetAttributeByteString(attribute string, attrValue string)
 	return
 }
 
-// SetAttributeInt32 is a wrapper around the C function g_file_info_set_attribute_int32.
+// Sets the @attribute to contain the given @attr_value,
+// if possible.
+/*
+
+C function : g_file_info_set_attribute_int32
+*/
 func (recv *FileInfo) SetAttributeInt32(attribute string, attrValue int32) {
 	c_attribute := C.CString(attribute)
 	defer C.free(unsafe.Pointer(c_attribute))
@@ -2333,7 +2952,12 @@ func (recv *FileInfo) SetAttributeInt32(attribute string, attrValue int32) {
 	return
 }
 
-// SetAttributeInt64 is a wrapper around the C function g_file_info_set_attribute_int64.
+// Sets the @attribute to contain the given @attr_value,
+// if possible.
+/*
+
+C function : g_file_info_set_attribute_int64
+*/
 func (recv *FileInfo) SetAttributeInt64(attribute string, attrValue int64) {
 	c_attribute := C.CString(attribute)
 	defer C.free(unsafe.Pointer(c_attribute))
@@ -2345,7 +2969,11 @@ func (recv *FileInfo) SetAttributeInt64(attribute string, attrValue int64) {
 	return
 }
 
-// SetAttributeMask is a wrapper around the C function g_file_info_set_attribute_mask.
+// Sets @mask on @info to match specific attribute types.
+/*
+
+C function : g_file_info_set_attribute_mask
+*/
 func (recv *FileInfo) SetAttributeMask(mask *FileAttributeMatcher) {
 	c_mask := (*C.GFileAttributeMatcher)(C.NULL)
 	if mask != nil {
@@ -2357,7 +2985,12 @@ func (recv *FileInfo) SetAttributeMask(mask *FileAttributeMatcher) {
 	return
 }
 
-// SetAttributeObject is a wrapper around the C function g_file_info_set_attribute_object.
+// Sets the @attribute to contain the given @attr_value,
+// if possible.
+/*
+
+C function : g_file_info_set_attribute_object
+*/
 func (recv *FileInfo) SetAttributeObject(attribute string, attrValue *gobject.Object) {
 	c_attribute := C.CString(attribute)
 	defer C.free(unsafe.Pointer(c_attribute))
@@ -2372,7 +3005,12 @@ func (recv *FileInfo) SetAttributeObject(attribute string, attrValue *gobject.Ob
 	return
 }
 
-// SetAttributeString is a wrapper around the C function g_file_info_set_attribute_string.
+// Sets the @attribute to contain the given @attr_value,
+// if possible.
+/*
+
+C function : g_file_info_set_attribute_string
+*/
 func (recv *FileInfo) SetAttributeString(attribute string, attrValue string) {
 	c_attribute := C.CString(attribute)
 	defer C.free(unsafe.Pointer(c_attribute))
@@ -2387,7 +3025,12 @@ func (recv *FileInfo) SetAttributeString(attribute string, attrValue string) {
 
 // Unsupported : g_file_info_set_attribute_stringv : unsupported parameter attr_value :
 
-// SetAttributeUint32 is a wrapper around the C function g_file_info_set_attribute_uint32.
+// Sets the @attribute to contain the given @attr_value,
+// if possible.
+/*
+
+C function : g_file_info_set_attribute_uint32
+*/
 func (recv *FileInfo) SetAttributeUint32(attribute string, attrValue uint32) {
 	c_attribute := C.CString(attribute)
 	defer C.free(unsafe.Pointer(c_attribute))
@@ -2399,7 +3042,12 @@ func (recv *FileInfo) SetAttributeUint32(attribute string, attrValue uint32) {
 	return
 }
 
-// SetAttributeUint64 is a wrapper around the C function g_file_info_set_attribute_uint64.
+// Sets the @attribute to contain the given @attr_value,
+// if possible.
+/*
+
+C function : g_file_info_set_attribute_uint64
+*/
 func (recv *FileInfo) SetAttributeUint64(attribute string, attrValue uint64) {
 	c_attribute := C.CString(attribute)
 	defer C.free(unsafe.Pointer(c_attribute))
@@ -2411,7 +3059,12 @@ func (recv *FileInfo) SetAttributeUint64(attribute string, attrValue uint64) {
 	return
 }
 
-// SetContentType is a wrapper around the C function g_file_info_set_content_type.
+// Sets the content type attribute for a given #GFileInfo.
+// See %G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE.
+/*
+
+C function : g_file_info_set_content_type
+*/
 func (recv *FileInfo) SetContentType(contentType string) {
 	c_content_type := C.CString(contentType)
 	defer C.free(unsafe.Pointer(c_content_type))
@@ -2421,7 +3074,12 @@ func (recv *FileInfo) SetContentType(contentType string) {
 	return
 }
 
-// SetDisplayName is a wrapper around the C function g_file_info_set_display_name.
+// Sets the display name for the current #GFileInfo.
+// See %G_FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME.
+/*
+
+C function : g_file_info_set_display_name
+*/
 func (recv *FileInfo) SetDisplayName(displayName string) {
 	c_display_name := C.CString(displayName)
 	defer C.free(unsafe.Pointer(c_display_name))
@@ -2431,7 +3089,12 @@ func (recv *FileInfo) SetDisplayName(displayName string) {
 	return
 }
 
-// SetEditName is a wrapper around the C function g_file_info_set_edit_name.
+// Sets the edit name for the current file.
+// See %G_FILE_ATTRIBUTE_STANDARD_EDIT_NAME.
+/*
+
+C function : g_file_info_set_edit_name
+*/
 func (recv *FileInfo) SetEditName(editName string) {
 	c_edit_name := C.CString(editName)
 	defer C.free(unsafe.Pointer(c_edit_name))
@@ -2441,7 +3104,12 @@ func (recv *FileInfo) SetEditName(editName string) {
 	return
 }
 
-// SetFileType is a wrapper around the C function g_file_info_set_file_type.
+// Sets the file type in a #GFileInfo to @type.
+// See %G_FILE_ATTRIBUTE_STANDARD_TYPE.
+/*
+
+C function : g_file_info_set_file_type
+*/
 func (recv *FileInfo) SetFileType(type_ FileType) {
 	c_type := (C.GFileType)(type_)
 
@@ -2450,7 +3118,12 @@ func (recv *FileInfo) SetFileType(type_ FileType) {
 	return
 }
 
-// SetIcon is a wrapper around the C function g_file_info_set_icon.
+// Sets the icon for a given #GFileInfo.
+// See %G_FILE_ATTRIBUTE_STANDARD_ICON.
+/*
+
+C function : g_file_info_set_icon
+*/
 func (recv *FileInfo) SetIcon(icon *Icon) {
 	c_icon := (*C.GIcon)(icon.ToC())
 
@@ -2459,7 +3132,12 @@ func (recv *FileInfo) SetIcon(icon *Icon) {
 	return
 }
 
-// SetIsHidden is a wrapper around the C function g_file_info_set_is_hidden.
+// Sets the "is_hidden" attribute in a #GFileInfo according to @is_hidden.
+// See %G_FILE_ATTRIBUTE_STANDARD_IS_HIDDEN.
+/*
+
+C function : g_file_info_set_is_hidden
+*/
 func (recv *FileInfo) SetIsHidden(isHidden bool) {
 	c_is_hidden :=
 		boolToGboolean(isHidden)
@@ -2469,7 +3147,12 @@ func (recv *FileInfo) SetIsHidden(isHidden bool) {
 	return
 }
 
-// SetIsSymlink is a wrapper around the C function g_file_info_set_is_symlink.
+// Sets the "is_symlink" attribute in a #GFileInfo according to @is_symlink.
+// See %G_FILE_ATTRIBUTE_STANDARD_IS_SYMLINK.
+/*
+
+C function : g_file_info_set_is_symlink
+*/
 func (recv *FileInfo) SetIsSymlink(isSymlink bool) {
 	c_is_symlink :=
 		boolToGboolean(isSymlink)
@@ -2479,7 +3162,12 @@ func (recv *FileInfo) SetIsSymlink(isSymlink bool) {
 	return
 }
 
-// SetModificationTime is a wrapper around the C function g_file_info_set_modification_time.
+// Sets the %G_FILE_ATTRIBUTE_TIME_MODIFIED attribute in the file
+// info to the given time value.
+/*
+
+C function : g_file_info_set_modification_time
+*/
 func (recv *FileInfo) SetModificationTime(mtime *glib.TimeVal) {
 	c_mtime := (*C.GTimeVal)(C.NULL)
 	if mtime != nil {
@@ -2491,7 +3179,12 @@ func (recv *FileInfo) SetModificationTime(mtime *glib.TimeVal) {
 	return
 }
 
-// SetName is a wrapper around the C function g_file_info_set_name.
+// Sets the name attribute for the current #GFileInfo.
+// See %G_FILE_ATTRIBUTE_STANDARD_NAME.
+/*
+
+C function : g_file_info_set_name
+*/
 func (recv *FileInfo) SetName(name string) {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -2501,7 +3194,12 @@ func (recv *FileInfo) SetName(name string) {
 	return
 }
 
-// SetSize is a wrapper around the C function g_file_info_set_size.
+// Sets the %G_FILE_ATTRIBUTE_STANDARD_SIZE attribute in the file info
+// to the given size.
+/*
+
+C function : g_file_info_set_size
+*/
 func (recv *FileInfo) SetSize(size uint64) {
 	c_size := (C.goffset)(size)
 
@@ -2510,7 +3208,12 @@ func (recv *FileInfo) SetSize(size uint64) {
 	return
 }
 
-// SetSortOrder is a wrapper around the C function g_file_info_set_sort_order.
+// Sets the sort order attribute in the file info structure. See
+// %G_FILE_ATTRIBUTE_STANDARD_SORT_ORDER.
+/*
+
+C function : g_file_info_set_sort_order
+*/
 func (recv *FileInfo) SetSortOrder(sortOrder int32) {
 	c_sort_order := (C.gint32)(sortOrder)
 
@@ -2519,7 +3222,12 @@ func (recv *FileInfo) SetSortOrder(sortOrder int32) {
 	return
 }
 
-// SetSymlinkTarget is a wrapper around the C function g_file_info_set_symlink_target.
+// Sets the %G_FILE_ATTRIBUTE_STANDARD_SYMLINK_TARGET attribute in the file info
+// to the given symlink target.
+/*
+
+C function : g_file_info_set_symlink_target
+*/
 func (recv *FileInfo) SetSymlinkTarget(symlinkTarget string) {
 	c_symlink_target := C.CString(symlinkTarget)
 	defer C.free(unsafe.Pointer(c_symlink_target))
@@ -2529,7 +3237,12 @@ func (recv *FileInfo) SetSymlinkTarget(symlinkTarget string) {
 	return
 }
 
-// UnsetAttributeMask is a wrapper around the C function g_file_info_unset_attribute_mask.
+// Unsets a mask set by g_file_info_set_attribute_mask(), if one
+// is set.
+/*
+
+C function : g_file_info_unset_attribute_mask
+*/
 func (recv *FileInfo) UnsetAttributeMask() {
 	C.g_file_info_unset_attribute_mask((*C.GFileInfo)(recv.native))
 
@@ -2575,7 +3288,15 @@ func CastToFileInputStream(object *gobject.Object) *FileInputStream {
 	return FileInputStreamNewFromC(object.ToC())
 }
 
-// QueryInfo is a wrapper around the C function g_file_input_stream_query_info.
+// Queries a file input stream the given @attributes. This function blocks
+// while querying the stream. For the asynchronous (non-blocking) version
+// of this function, see g_file_input_stream_query_info_async(). While the
+// stream is blocked, the stream will set the pending flag internally, and
+// any other operations on the stream will fail with %G_IO_ERROR_PENDING.
+/*
+
+C function : g_file_input_stream_query_info
+*/
 func (recv *FileInputStream) QueryInfo(attributes string, cancellable *Cancellable) (*FileInfo, error) {
 	c_attributes := C.CString(attributes)
 	defer C.free(unsafe.Pointer(c_attributes))
@@ -2600,7 +3321,11 @@ func (recv *FileInputStream) QueryInfo(attributes string, cancellable *Cancellab
 
 // Unsupported : g_file_input_stream_query_info_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// QueryInfoFinish is a wrapper around the C function g_file_input_stream_query_info_finish.
+// Finishes an asynchronous info query operation.
+/*
+
+C function : g_file_input_stream_query_info_finish
+*/
 func (recv *FileInputStream) QueryInfoFinish(result *AsyncResult) (*FileInfo, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
 
@@ -2658,7 +3383,11 @@ func CastToFileMonitor(object *gobject.Object) *FileMonitor {
 
 // Unsupported signal 'changed' for FileMonitor : unsupported parameter event_type : type FileMonitorEvent :
 
-// Cancel is a wrapper around the C function g_file_monitor_cancel.
+// Cancels a file monitor.
+/*
+
+C function : g_file_monitor_cancel
+*/
 func (recv *FileMonitor) Cancel() bool {
 	retC := C.g_file_monitor_cancel((*C.GFileMonitor)(recv.native))
 	retGo := retC == C.TRUE
@@ -2666,7 +3395,17 @@ func (recv *FileMonitor) Cancel() bool {
 	return retGo
 }
 
-// EmitEvent is a wrapper around the C function g_file_monitor_emit_event.
+// Emits the #GFileMonitor::changed signal if a change
+// has taken place. Should be called from file monitor
+// implementations only.
+//
+// Implementations are responsible to call this method from the
+// [thread-default main context][g-main-context-push-thread-default] of the
+// thread that the monitor was created in.
+/*
+
+C function : g_file_monitor_emit_event
+*/
 func (recv *FileMonitor) EmitEvent(child *File, otherFile *File, eventType FileMonitorEvent) {
 	c_child := (*C.GFile)(child.ToC())
 
@@ -2679,7 +3418,11 @@ func (recv *FileMonitor) EmitEvent(child *File, otherFile *File, eventType FileM
 	return
 }
 
-// IsCancelled is a wrapper around the C function g_file_monitor_is_cancelled.
+// Returns whether the monitor is canceled.
+/*
+
+C function : g_file_monitor_is_cancelled
+*/
 func (recv *FileMonitor) IsCancelled() bool {
 	retC := C.g_file_monitor_is_cancelled((*C.GFileMonitor)(recv.native))
 	retGo := retC == C.TRUE
@@ -2687,7 +3430,12 @@ func (recv *FileMonitor) IsCancelled() bool {
 	return retGo
 }
 
-// SetRateLimit is a wrapper around the C function g_file_monitor_set_rate_limit.
+// Sets the rate limit to which the @monitor will report
+// consecutive change events to the same file.
+/*
+
+C function : g_file_monitor_set_rate_limit
+*/
 func (recv *FileMonitor) SetRateLimit(limitMsecs int32) {
 	c_limit_msecs := (C.gint)(limitMsecs)
 
@@ -2735,7 +3483,13 @@ func CastToFileOutputStream(object *gobject.Object) *FileOutputStream {
 	return FileOutputStreamNewFromC(object.ToC())
 }
 
-// GetEtag is a wrapper around the C function g_file_output_stream_get_etag.
+// Gets the entity tag for the file when it has been written.
+// This must be called after the stream has been written
+// and closed, as the etag can change while writing.
+/*
+
+C function : g_file_output_stream_get_etag
+*/
 func (recv *FileOutputStream) GetEtag() string {
 	retC := C.g_file_output_stream_get_etag((*C.GFileOutputStream)(recv.native))
 	retGo := C.GoString(retC)
@@ -2744,7 +3498,27 @@ func (recv *FileOutputStream) GetEtag() string {
 	return retGo
 }
 
-// QueryInfo is a wrapper around the C function g_file_output_stream_query_info.
+// Queries a file output stream for the given @attributes.
+// This function blocks while querying the stream. For the asynchronous
+// version of this function, see g_file_output_stream_query_info_async().
+// While the stream is blocked, the stream will set the pending flag
+// internally, and any other operations on the stream will fail with
+// %G_IO_ERROR_PENDING.
+//
+// Can fail if the stream was already closed (with @error being set to
+// %G_IO_ERROR_CLOSED), the stream has pending operations (with @error being
+// set to %G_IO_ERROR_PENDING), or if querying info is not supported for
+// the stream's interface (with @error being set to %G_IO_ERROR_NOT_SUPPORTED). In
+// all cases of failure, %NULL will be returned.
+//
+// If @cancellable is not %NULL, then the operation can be cancelled by
+// triggering the cancellable object from another thread. If the operation
+// was cancelled, the error %G_IO_ERROR_CANCELLED will be set, and %NULL will
+// be returned.
+/*
+
+C function : g_file_output_stream_query_info
+*/
 func (recv *FileOutputStream) QueryInfo(attributes string, cancellable *Cancellable) (*FileInfo, error) {
 	c_attributes := C.CString(attributes)
 	defer C.free(unsafe.Pointer(c_attributes))
@@ -2769,7 +3543,12 @@ func (recv *FileOutputStream) QueryInfo(attributes string, cancellable *Cancella
 
 // Unsupported : g_file_output_stream_query_info_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// QueryInfoFinish is a wrapper around the C function g_file_output_stream_query_info_finish.
+// Finalizes the asynchronous query started
+// by g_file_output_stream_query_info_async().
+/*
+
+C function : g_file_output_stream_query_info_finish
+*/
 func (recv *FileOutputStream) QueryInfoFinish(result *AsyncResult) (*FileInfo, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
 
@@ -2880,7 +3659,11 @@ func filenamecompleter_gotCompletionDataHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// FilenameCompleterNew is a wrapper around the C function g_filename_completer_new.
+// Creates a new filename completer.
+/*
+
+C function : g_filename_completer_new
+*/
 func FilenameCompleterNew() *FilenameCompleter {
 	retC := C.g_filename_completer_new()
 	retGo := FilenameCompleterNewFromC(unsafe.Pointer(retC))
@@ -2888,7 +3671,11 @@ func FilenameCompleterNew() *FilenameCompleter {
 	return retGo
 }
 
-// GetCompletionSuffix is a wrapper around the C function g_filename_completer_get_completion_suffix.
+// Obtains a completion for @initial_text from @completer.
+/*
+
+C function : g_filename_completer_get_completion_suffix
+*/
 func (recv *FilenameCompleter) GetCompletionSuffix(initialText string) string {
 	c_initial_text := C.CString(initialText)
 	defer C.free(unsafe.Pointer(c_initial_text))
@@ -2902,7 +3689,12 @@ func (recv *FilenameCompleter) GetCompletionSuffix(initialText string) string {
 
 // Unsupported : g_filename_completer_get_completions : no return type
 
-// SetDirsOnly is a wrapper around the C function g_filename_completer_set_dirs_only.
+// If @dirs_only is %TRUE, @completer will only
+// complete directory names, and not file names.
+/*
+
+C function : g_filename_completer_set_dirs_only
+*/
 func (recv *FilenameCompleter) SetDirsOnly(dirsOnly bool) {
 	c_dirs_only :=
 		boolToGboolean(dirsOnly)
@@ -2951,7 +3743,11 @@ func CastToFilterInputStream(object *gobject.Object) *FilterInputStream {
 	return FilterInputStreamNewFromC(object.ToC())
 }
 
-// GetBaseStream is a wrapper around the C function g_filter_input_stream_get_base_stream.
+// Gets the base stream for the filter stream.
+/*
+
+C function : g_filter_input_stream_get_base_stream
+*/
 func (recv *FilterInputStream) GetBaseStream() *InputStream {
 	retC := C.g_filter_input_stream_get_base_stream((*C.GFilterInputStream)(recv.native))
 	retGo := InputStreamNewFromC(unsafe.Pointer(retC))
@@ -2959,7 +3755,12 @@ func (recv *FilterInputStream) GetBaseStream() *InputStream {
 	return retGo
 }
 
-// GetCloseBaseStream is a wrapper around the C function g_filter_input_stream_get_close_base_stream.
+// Returns whether the base stream will be closed when @stream is
+// closed.
+/*
+
+C function : g_filter_input_stream_get_close_base_stream
+*/
 func (recv *FilterInputStream) GetCloseBaseStream() bool {
 	retC := C.g_filter_input_stream_get_close_base_stream((*C.GFilterInputStream)(recv.native))
 	retGo := retC == C.TRUE
@@ -2967,7 +3768,11 @@ func (recv *FilterInputStream) GetCloseBaseStream() bool {
 	return retGo
 }
 
-// SetCloseBaseStream is a wrapper around the C function g_filter_input_stream_set_close_base_stream.
+// Sets whether the base stream will be closed when @stream is closed.
+/*
+
+C function : g_filter_input_stream_set_close_base_stream
+*/
 func (recv *FilterInputStream) SetCloseBaseStream(closeBase bool) {
 	c_close_base :=
 		boolToGboolean(closeBase)
@@ -3016,7 +3821,11 @@ func CastToFilterOutputStream(object *gobject.Object) *FilterOutputStream {
 	return FilterOutputStreamNewFromC(object.ToC())
 }
 
-// GetBaseStream is a wrapper around the C function g_filter_output_stream_get_base_stream.
+// Gets the base stream for the filter stream.
+/*
+
+C function : g_filter_output_stream_get_base_stream
+*/
 func (recv *FilterOutputStream) GetBaseStream() *OutputStream {
 	retC := C.g_filter_output_stream_get_base_stream((*C.GFilterOutputStream)(recv.native))
 	retGo := OutputStreamNewFromC(unsafe.Pointer(retC))
@@ -3024,7 +3833,12 @@ func (recv *FilterOutputStream) GetBaseStream() *OutputStream {
 	return retGo
 }
 
-// GetCloseBaseStream is a wrapper around the C function g_filter_output_stream_get_close_base_stream.
+// Returns whether the base stream will be closed when @stream is
+// closed.
+/*
+
+C function : g_filter_output_stream_get_close_base_stream
+*/
 func (recv *FilterOutputStream) GetCloseBaseStream() bool {
 	retC := C.g_filter_output_stream_get_close_base_stream((*C.GFilterOutputStream)(recv.native))
 	retGo := retC == C.TRUE
@@ -3032,7 +3846,11 @@ func (recv *FilterOutputStream) GetCloseBaseStream() bool {
 	return retGo
 }
 
-// SetCloseBaseStream is a wrapper around the C function g_filter_output_stream_set_close_base_stream.
+// Sets whether the base stream will be closed when @stream is closed.
+/*
+
+C function : g_filter_output_stream_set_close_base_stream
+*/
 func (recv *FilterOutputStream) SetCloseBaseStream(closeBase bool) {
 	c_close_base :=
 		boolToGboolean(closeBase)
@@ -3069,7 +3887,12 @@ func CastToIOModule(object *gobject.Object) *IOModule {
 	return IOModuleNewFromC(object.ToC())
 }
 
-// IOModuleNew is a wrapper around the C function g_io_module_new.
+// Creates a new GIOModule that will load the specific
+// shared library when in use.
+/*
+
+C function : g_io_module_new
+*/
 func IOModuleNew(filename string) *IOModule {
 	c_filename := C.CString(filename)
 	defer C.free(unsafe.Pointer(c_filename))
@@ -3235,14 +4058,44 @@ func CastToInputStream(object *gobject.Object) *InputStream {
 	return InputStreamNewFromC(object.ToC())
 }
 
-// ClearPending is a wrapper around the C function g_input_stream_clear_pending.
+// Clears the pending flag on @stream.
+/*
+
+C function : g_input_stream_clear_pending
+*/
 func (recv *InputStream) ClearPending() {
 	C.g_input_stream_clear_pending((*C.GInputStream)(recv.native))
 
 	return
 }
 
-// Close is a wrapper around the C function g_input_stream_close.
+// Closes the stream, releasing resources related to it.
+//
+// Once the stream is closed, all other operations will return %G_IO_ERROR_CLOSED.
+// Closing a stream multiple times will not return an error.
+//
+// Streams will be automatically closed when the last reference
+// is dropped, but you might want to call this function to make sure
+// resources are released as early as possible.
+//
+// Some streams might keep the backing store of the stream (e.g. a file descriptor)
+// open after the stream is closed. See the documentation for the individual
+// stream for details.
+//
+// On failure the first error that happened will be reported, but the close
+// operation will finish as much as possible. A stream that failed to
+// close will still return %G_IO_ERROR_CLOSED for all operations. Still, it
+// is important to check and report the error to the user.
+//
+// If @cancellable is not %NULL, then the operation can be cancelled by
+// triggering the cancellable object from another thread. If the operation
+// was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+// Cancelling a close will still leave the stream closed, but some streams
+// can use a faster close that doesn't block to e.g. check errors.
+/*
+
+C function : g_input_stream_close
+*/
 func (recv *InputStream) Close(cancellable *Cancellable) (bool, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
 	if cancellable != nil {
@@ -3264,7 +4117,11 @@ func (recv *InputStream) Close(cancellable *Cancellable) (bool, error) {
 
 // Unsupported : g_input_stream_close_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// CloseFinish is a wrapper around the C function g_input_stream_close_finish.
+// Finishes closing a stream asynchronously, started from g_input_stream_close_async().
+/*
+
+C function : g_input_stream_close_finish
+*/
 func (recv *InputStream) CloseFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
 
@@ -3281,7 +4138,11 @@ func (recv *InputStream) CloseFinish(result *AsyncResult) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// HasPending is a wrapper around the C function g_input_stream_has_pending.
+// Checks if an input stream has pending actions.
+/*
+
+C function : g_input_stream_has_pending
+*/
 func (recv *InputStream) HasPending() bool {
 	retC := C.g_input_stream_has_pending((*C.GInputStream)(recv.native))
 	retGo := retC == C.TRUE
@@ -3289,7 +4150,11 @@ func (recv *InputStream) HasPending() bool {
 	return retGo
 }
 
-// IsClosed is a wrapper around the C function g_input_stream_is_closed.
+// Checks if an input stream is closed.
+/*
+
+C function : g_input_stream_is_closed
+*/
 func (recv *InputStream) IsClosed() bool {
 	retC := C.g_input_stream_is_closed((*C.GInputStream)(recv.native))
 	retGo := retC == C.TRUE
@@ -3297,7 +4162,31 @@ func (recv *InputStream) IsClosed() bool {
 	return retGo
 }
 
-// Read is a wrapper around the C function g_input_stream_read.
+// Tries to read @count bytes from the stream into the buffer starting at
+// @buffer. Will block during this read.
+//
+// If count is zero returns zero and does nothing. A value of @count
+// larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
+//
+// On success, the number of bytes read into the buffer is returned.
+// It is not an error if this is not the same as the requested size, as it
+// can happen e.g. near the end of a file. Zero is returned on end of file
+// (or if @count is zero),  but never otherwise.
+//
+// The returned @buffer is not a nul-terminated string, it can contain nul bytes
+// at any position, and this function doesn't nul-terminate the @buffer.
+//
+// If @cancellable is not %NULL, then the operation can be cancelled by
+// triggering the cancellable object from another thread. If the operation
+// was cancelled, the error %G_IO_ERROR_CANCELLED will be returned. If an
+// operation was partially finished when the operation was cancelled the
+// partial result will be returned, without an error.
+//
+// On error -1 is returned and @error is set accordingly.
+/*
+
+C function : g_input_stream_read
+*/
 func (recv *InputStream) Read(buffer []uint8, cancellable *Cancellable) (int64, error) {
 	c_buffer := &buffer[0]
 
@@ -3321,7 +4210,29 @@ func (recv *InputStream) Read(buffer []uint8, cancellable *Cancellable) (int64, 
 	return retGo, goThrowableError
 }
 
-// ReadAll is a wrapper around the C function g_input_stream_read_all.
+// Tries to read @count bytes from the stream into the buffer starting at
+// @buffer. Will block during this read.
+//
+// This function is similar to g_input_stream_read(), except it tries to
+// read as many bytes as requested, only stopping on an error or end of stream.
+//
+// On a successful read of @count bytes, or if we reached the end of the
+// stream,  %TRUE is returned, and @bytes_read is set to the number of bytes
+// read into @buffer.
+//
+// If there is an error during the operation %FALSE is returned and @error
+// is set to indicate the error status.
+//
+// As a special exception to the normal conventions for functions that
+// use #GError, if this function returns %FALSE (and sets @error) then
+// @bytes_read will be set to the number of bytes that were successfully
+// read before the error was encountered.  This functionality is only
+// available from C.  If you need it from another language then you must
+// write your own loop around g_input_stream_read().
+/*
+
+C function : g_input_stream_read_all
+*/
 func (recv *InputStream) ReadAll(buffer []uint8, cancellable *Cancellable) (bool, uint64, error) {
 	c_buffer := &buffer[0]
 
@@ -3351,7 +4262,11 @@ func (recv *InputStream) ReadAll(buffer []uint8, cancellable *Cancellable) (bool
 
 // Unsupported : g_input_stream_read_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// ReadFinish is a wrapper around the C function g_input_stream_read_finish.
+// Finishes an asynchronous stream read operation.
+/*
+
+C function : g_input_stream_read_finish
+*/
 func (recv *InputStream) ReadFinish(result *AsyncResult) (int64, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
 
@@ -3368,7 +4283,13 @@ func (recv *InputStream) ReadFinish(result *AsyncResult) (int64, error) {
 	return retGo, goThrowableError
 }
 
-// SetPending is a wrapper around the C function g_input_stream_set_pending.
+// Sets @stream to have actions pending. If the pending flag is
+// already set or @stream is closed, it will return %FALSE and set
+// @error.
+/*
+
+C function : g_input_stream_set_pending
+*/
 func (recv *InputStream) SetPending() (bool, error) {
 	var cThrowableError *C.GError
 
@@ -3383,7 +4304,24 @@ func (recv *InputStream) SetPending() (bool, error) {
 	return retGo, goThrowableError
 }
 
-// Skip is a wrapper around the C function g_input_stream_skip.
+// Tries to skip @count bytes from the stream. Will block during the operation.
+//
+// This is identical to g_input_stream_read(), from a behaviour standpoint,
+// but the bytes that are skipped are not returned to the user. Some
+// streams have an implementation that is more efficient than reading the data.
+//
+// This function is optional for inherited classes, as the default implementation
+// emulates it using read.
+//
+// If @cancellable is not %NULL, then the operation can be cancelled by
+// triggering the cancellable object from another thread. If the operation
+// was cancelled, the error %G_IO_ERROR_CANCELLED will be returned. If an
+// operation was partially finished when the operation was cancelled the
+// partial result will be returned, without an error.
+/*
+
+C function : g_input_stream_skip
+*/
 func (recv *InputStream) Skip(count uint64, cancellable *Cancellable) (int64, error) {
 	c_count := (C.gsize)(count)
 
@@ -3407,7 +4345,11 @@ func (recv *InputStream) Skip(count uint64, cancellable *Cancellable) (int64, er
 
 // Unsupported : g_input_stream_skip_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// SkipFinish is a wrapper around the C function g_input_stream_skip_finish.
+// Finishes a stream skip operation.
+/*
+
+C function : g_input_stream_skip_finish
+*/
 func (recv *InputStream) SkipFinish(result *AsyncResult) (int64, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
 
@@ -3500,7 +4442,11 @@ func CastToMemoryInputStream(object *gobject.Object) *MemoryInputStream {
 	return MemoryInputStreamNewFromC(object.ToC())
 }
 
-// MemoryInputStreamNew is a wrapper around the C function g_memory_input_stream_new.
+// Creates a new empty #GMemoryInputStream.
+/*
+
+C function : g_memory_input_stream_new
+*/
 func MemoryInputStreamNew() *MemoryInputStream {
 	retC := C.g_memory_input_stream_new()
 	retGo := MemoryInputStreamNewFromC(unsafe.Pointer(retC))
@@ -3563,7 +4509,14 @@ func CastToMemoryOutputStream(object *gobject.Object) *MemoryOutputStream {
 
 // Unsupported : g_memory_output_stream_new : unsupported parameter realloc_function : no type generator for ReallocFunc (GReallocFunc) for param realloc_function
 
-// GetData is a wrapper around the C function g_memory_output_stream_get_data.
+// Gets any loaded data from the @ostream.
+//
+// Note that the returned pointer may become invalid on the next
+// write or truncate operation on the stream.
+/*
+
+C function : g_memory_output_stream_get_data
+*/
 func (recv *MemoryOutputStream) GetData() uintptr {
 	retC := C.g_memory_output_stream_get_data((*C.GMemoryOutputStream)(recv.native))
 	retGo := (uintptr)(unsafe.Pointer(retC))
@@ -3571,7 +4524,25 @@ func (recv *MemoryOutputStream) GetData() uintptr {
 	return retGo
 }
 
-// GetSize is a wrapper around the C function g_memory_output_stream_get_size.
+// Gets the size of the currently allocated data area (available from
+// g_memory_output_stream_get_data()).
+//
+// You probably don't want to use this function on resizable streams.
+// See g_memory_output_stream_get_data_size() instead.  For resizable
+// streams the size returned by this function is an implementation
+// detail and may be change at any time in response to operations on the
+// stream.
+//
+// If the stream is fixed-sized (ie: no realloc was passed to
+// g_memory_output_stream_new()) then this is the maximum size of the
+// stream and further writes will return %G_IO_ERROR_NO_SPACE.
+//
+// In any case, if you want the number of bytes currently written to the
+// stream, use g_memory_output_stream_get_data_size().
+/*
+
+C function : g_memory_output_stream_get_size
+*/
 func (recv *MemoryOutputStream) GetSize() uint64 {
 	retC := C.g_memory_output_stream_get_size((*C.GMemoryOutputStream)(recv.native))
 	retGo := (uint64)(retC)
@@ -3629,7 +4600,11 @@ func CastToMountOperation(object *gobject.Object) *MountOperation {
 
 // Unsupported signal 'reply' for MountOperation : unsupported parameter result : type MountOperationResult :
 
-// MountOperationNew is a wrapper around the C function g_mount_operation_new.
+// Creates a new mount operation.
+/*
+
+C function : g_mount_operation_new
+*/
 func MountOperationNew() *MountOperation {
 	retC := C.g_mount_operation_new()
 	retGo := MountOperationNewFromC(unsafe.Pointer(retC))
@@ -3637,7 +4612,12 @@ func MountOperationNew() *MountOperation {
 	return retGo
 }
 
-// GetAnonymous is a wrapper around the C function g_mount_operation_get_anonymous.
+// Check to see whether the mount operation is being used
+// for an anonymous user.
+/*
+
+C function : g_mount_operation_get_anonymous
+*/
 func (recv *MountOperation) GetAnonymous() bool {
 	retC := C.g_mount_operation_get_anonymous((*C.GMountOperation)(recv.native))
 	retGo := retC == C.TRUE
@@ -3645,7 +4625,11 @@ func (recv *MountOperation) GetAnonymous() bool {
 	return retGo
 }
 
-// GetChoice is a wrapper around the C function g_mount_operation_get_choice.
+// Gets a choice from the mount operation.
+/*
+
+C function : g_mount_operation_get_choice
+*/
 func (recv *MountOperation) GetChoice() int32 {
 	retC := C.g_mount_operation_get_choice((*C.GMountOperation)(recv.native))
 	retGo := (int32)(retC)
@@ -3653,7 +4637,11 @@ func (recv *MountOperation) GetChoice() int32 {
 	return retGo
 }
 
-// GetDomain is a wrapper around the C function g_mount_operation_get_domain.
+// Gets the domain of the mount operation.
+/*
+
+C function : g_mount_operation_get_domain
+*/
 func (recv *MountOperation) GetDomain() string {
 	retC := C.g_mount_operation_get_domain((*C.GMountOperation)(recv.native))
 	retGo := C.GoString(retC)
@@ -3661,7 +4649,11 @@ func (recv *MountOperation) GetDomain() string {
 	return retGo
 }
 
-// GetPassword is a wrapper around the C function g_mount_operation_get_password.
+// Gets a password from the mount operation.
+/*
+
+C function : g_mount_operation_get_password
+*/
 func (recv *MountOperation) GetPassword() string {
 	retC := C.g_mount_operation_get_password((*C.GMountOperation)(recv.native))
 	retGo := C.GoString(retC)
@@ -3669,7 +4661,11 @@ func (recv *MountOperation) GetPassword() string {
 	return retGo
 }
 
-// GetPasswordSave is a wrapper around the C function g_mount_operation_get_password_save.
+// Gets the state of saving passwords for the mount operation.
+/*
+
+C function : g_mount_operation_get_password_save
+*/
 func (recv *MountOperation) GetPasswordSave() PasswordSave {
 	retC := C.g_mount_operation_get_password_save((*C.GMountOperation)(recv.native))
 	retGo := (PasswordSave)(retC)
@@ -3677,7 +4673,11 @@ func (recv *MountOperation) GetPasswordSave() PasswordSave {
 	return retGo
 }
 
-// GetUsername is a wrapper around the C function g_mount_operation_get_username.
+// Get the user name from the mount operation.
+/*
+
+C function : g_mount_operation_get_username
+*/
 func (recv *MountOperation) GetUsername() string {
 	retC := C.g_mount_operation_get_username((*C.GMountOperation)(recv.native))
 	retGo := C.GoString(retC)
@@ -3685,7 +4685,11 @@ func (recv *MountOperation) GetUsername() string {
 	return retGo
 }
 
-// Reply is a wrapper around the C function g_mount_operation_reply.
+// Emits the #GMountOperation::reply signal.
+/*
+
+C function : g_mount_operation_reply
+*/
 func (recv *MountOperation) Reply(result MountOperationResult) {
 	c_result := (C.GMountOperationResult)(result)
 
@@ -3694,7 +4698,11 @@ func (recv *MountOperation) Reply(result MountOperationResult) {
 	return
 }
 
-// SetAnonymous is a wrapper around the C function g_mount_operation_set_anonymous.
+// Sets the mount operation to use an anonymous user if @anonymous is %TRUE.
+/*
+
+C function : g_mount_operation_set_anonymous
+*/
 func (recv *MountOperation) SetAnonymous(anonymous bool) {
 	c_anonymous :=
 		boolToGboolean(anonymous)
@@ -3704,7 +4712,11 @@ func (recv *MountOperation) SetAnonymous(anonymous bool) {
 	return
 }
 
-// SetChoice is a wrapper around the C function g_mount_operation_set_choice.
+// Sets a default choice for the mount operation.
+/*
+
+C function : g_mount_operation_set_choice
+*/
 func (recv *MountOperation) SetChoice(choice int32) {
 	c_choice := (C.int)(choice)
 
@@ -3713,7 +4725,11 @@ func (recv *MountOperation) SetChoice(choice int32) {
 	return
 }
 
-// SetDomain is a wrapper around the C function g_mount_operation_set_domain.
+// Sets the mount operation's domain.
+/*
+
+C function : g_mount_operation_set_domain
+*/
 func (recv *MountOperation) SetDomain(domain string) {
 	c_domain := C.CString(domain)
 	defer C.free(unsafe.Pointer(c_domain))
@@ -3723,7 +4739,11 @@ func (recv *MountOperation) SetDomain(domain string) {
 	return
 }
 
-// SetPassword is a wrapper around the C function g_mount_operation_set_password.
+// Sets the mount operation's password to @password.
+/*
+
+C function : g_mount_operation_set_password
+*/
 func (recv *MountOperation) SetPassword(password string) {
 	c_password := C.CString(password)
 	defer C.free(unsafe.Pointer(c_password))
@@ -3733,7 +4753,11 @@ func (recv *MountOperation) SetPassword(password string) {
 	return
 }
 
-// SetPasswordSave is a wrapper around the C function g_mount_operation_set_password_save.
+// Sets the state of saving passwords for the mount operation.
+/*
+
+C function : g_mount_operation_set_password_save
+*/
 func (recv *MountOperation) SetPasswordSave(save PasswordSave) {
 	c_save := (C.GPasswordSave)(save)
 
@@ -3742,7 +4766,11 @@ func (recv *MountOperation) SetPasswordSave(save PasswordSave) {
 	return
 }
 
-// SetUsername is a wrapper around the C function g_mount_operation_set_username.
+// Sets the user name within @op to @username.
+/*
+
+C function : g_mount_operation_set_username
+*/
 func (recv *MountOperation) SetUsername(username string) {
 	c_username := C.CString(username)
 	defer C.free(unsafe.Pointer(c_username))
@@ -3902,14 +4930,50 @@ func CastToOutputStream(object *gobject.Object) *OutputStream {
 	return OutputStreamNewFromC(object.ToC())
 }
 
-// ClearPending is a wrapper around the C function g_output_stream_clear_pending.
+// Clears the pending flag on @stream.
+/*
+
+C function : g_output_stream_clear_pending
+*/
 func (recv *OutputStream) ClearPending() {
 	C.g_output_stream_clear_pending((*C.GOutputStream)(recv.native))
 
 	return
 }
 
-// Close is a wrapper around the C function g_output_stream_close.
+// Closes the stream, releasing resources related to it.
+//
+// Once the stream is closed, all other operations will return %G_IO_ERROR_CLOSED.
+// Closing a stream multiple times will not return an error.
+//
+// Closing a stream will automatically flush any outstanding buffers in the
+// stream.
+//
+// Streams will be automatically closed when the last reference
+// is dropped, but you might want to call this function to make sure
+// resources are released as early as possible.
+//
+// Some streams might keep the backing store of the stream (e.g. a file descriptor)
+// open after the stream is closed. See the documentation for the individual
+// stream for details.
+//
+// On failure the first error that happened will be reported, but the close
+// operation will finish as much as possible. A stream that failed to
+// close will still return %G_IO_ERROR_CLOSED for all operations. Still, it
+// is important to check and report the error to the user, otherwise
+// there might be a loss of data as all data might not be written.
+//
+// If @cancellable is not %NULL, then the operation can be cancelled by
+// triggering the cancellable object from another thread. If the operation
+// was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+// Cancelling a close will still leave the stream closed, but there some streams
+// can use a faster close that doesn't block to e.g. check errors. On
+// cancellation (as with any error) there is no guarantee that all written
+// data will reach the target.
+/*
+
+C function : g_output_stream_close
+*/
 func (recv *OutputStream) Close(cancellable *Cancellable) (bool, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
 	if cancellable != nil {
@@ -3931,7 +4995,11 @@ func (recv *OutputStream) Close(cancellable *Cancellable) (bool, error) {
 
 // Unsupported : g_output_stream_close_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// CloseFinish is a wrapper around the C function g_output_stream_close_finish.
+// Closes an output stream.
+/*
+
+C function : g_output_stream_close_finish
+*/
 func (recv *OutputStream) CloseFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
 
@@ -3948,7 +5016,19 @@ func (recv *OutputStream) CloseFinish(result *AsyncResult) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// Flush is a wrapper around the C function g_output_stream_flush.
+// Forces a write of all user-space buffered data for the given
+// @stream. Will block during the operation. Closing the stream will
+// implicitly cause a flush.
+//
+// This function is optional for inherited classes.
+//
+// If @cancellable is not %NULL, then the operation can be cancelled by
+// triggering the cancellable object from another thread. If the operation
+// was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
+/*
+
+C function : g_output_stream_flush
+*/
 func (recv *OutputStream) Flush(cancellable *Cancellable) (bool, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
 	if cancellable != nil {
@@ -3970,7 +5050,11 @@ func (recv *OutputStream) Flush(cancellable *Cancellable) (bool, error) {
 
 // Unsupported : g_output_stream_flush_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// FlushFinish is a wrapper around the C function g_output_stream_flush_finish.
+// Finishes flushing an output stream.
+/*
+
+C function : g_output_stream_flush_finish
+*/
 func (recv *OutputStream) FlushFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
 
@@ -3987,7 +5071,11 @@ func (recv *OutputStream) FlushFinish(result *AsyncResult) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// HasPending is a wrapper around the C function g_output_stream_has_pending.
+// Checks if an output stream has pending actions.
+/*
+
+C function : g_output_stream_has_pending
+*/
 func (recv *OutputStream) HasPending() bool {
 	retC := C.g_output_stream_has_pending((*C.GOutputStream)(recv.native))
 	retGo := retC == C.TRUE
@@ -3995,7 +5083,11 @@ func (recv *OutputStream) HasPending() bool {
 	return retGo
 }
 
-// IsClosed is a wrapper around the C function g_output_stream_is_closed.
+// Checks if an output stream has already been closed.
+/*
+
+C function : g_output_stream_is_closed
+*/
 func (recv *OutputStream) IsClosed() bool {
 	retC := C.g_output_stream_is_closed((*C.GOutputStream)(recv.native))
 	retGo := retC == C.TRUE
@@ -4003,7 +5095,13 @@ func (recv *OutputStream) IsClosed() bool {
 	return retGo
 }
 
-// SetPending is a wrapper around the C function g_output_stream_set_pending.
+// Sets @stream to have actions pending. If the pending flag is
+// already set or @stream is closed, it will return %FALSE and set
+// @error.
+/*
+
+C function : g_output_stream_set_pending
+*/
 func (recv *OutputStream) SetPending() (bool, error) {
 	var cThrowableError *C.GError
 
@@ -4018,7 +5116,11 @@ func (recv *OutputStream) SetPending() (bool, error) {
 	return retGo, goThrowableError
 }
 
-// Splice is a wrapper around the C function g_output_stream_splice.
+// Splices an input stream into an output stream.
+/*
+
+C function : g_output_stream_splice
+*/
 func (recv *OutputStream) Splice(source *InputStream, flags OutputStreamSpliceFlags, cancellable *Cancellable) (int64, error) {
 	c_source := (*C.GInputStream)(C.NULL)
 	if source != nil {
@@ -4047,7 +5149,11 @@ func (recv *OutputStream) Splice(source *InputStream, flags OutputStreamSpliceFl
 
 // Unsupported : g_output_stream_splice_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// SpliceFinish is a wrapper around the C function g_output_stream_splice_finish.
+// Finishes an asynchronous stream splice operation.
+/*
+
+C function : g_output_stream_splice_finish
+*/
 func (recv *OutputStream) SpliceFinish(result *AsyncResult) (int64, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
 
@@ -4064,7 +5170,30 @@ func (recv *OutputStream) SpliceFinish(result *AsyncResult) (int64, error) {
 	return retGo, goThrowableError
 }
 
-// Write is a wrapper around the C function g_output_stream_write.
+// Tries to write @count bytes from @buffer into the stream. Will block
+// during the operation.
+//
+// If count is 0, returns 0 and does nothing. A value of @count
+// larger than %G_MAXSSIZE will cause a %G_IO_ERROR_INVALID_ARGUMENT error.
+//
+// On success, the number of bytes written to the stream is returned.
+// It is not an error if this is not the same as the requested size, as it
+// can happen e.g. on a partial I/O error, or if there is not enough
+// storage in the stream. All writes block until at least one byte
+// is written or an error occurs; 0 is never returned (unless
+// @count is 0).
+//
+// If @cancellable is not %NULL, then the operation can be cancelled by
+// triggering the cancellable object from another thread. If the operation
+// was cancelled, the error %G_IO_ERROR_CANCELLED will be returned. If an
+// operation was partially finished when the operation was cancelled the
+// partial result will be returned, without an error.
+//
+// On error -1 is returned and @error is set accordingly.
+/*
+
+C function : g_output_stream_write
+*/
 func (recv *OutputStream) Write(buffer []uint8, cancellable *Cancellable) (int64, error) {
 	c_buffer := &buffer[0]
 
@@ -4088,7 +5217,29 @@ func (recv *OutputStream) Write(buffer []uint8, cancellable *Cancellable) (int64
 	return retGo, goThrowableError
 }
 
-// WriteAll is a wrapper around the C function g_output_stream_write_all.
+// Tries to write @count bytes from @buffer into the stream. Will block
+// during the operation.
+//
+// This function is similar to g_output_stream_write(), except it tries to
+// write as many bytes as requested, only stopping on an error.
+//
+// On a successful write of @count bytes, %TRUE is returned, and @bytes_written
+// is set to @count.
+//
+// If there is an error during the operation %FALSE is returned and @error
+// is set to indicate the error status.
+//
+// As a special exception to the normal conventions for functions that
+// use #GError, if this function returns %FALSE (and sets @error) then
+// @bytes_written will be set to the number of bytes that were
+// successfully written before the error was encountered.  This
+// functionality is only available from C.  If you need it from another
+// language then you must write your own loop around
+// g_output_stream_write().
+/*
+
+C function : g_output_stream_write_all
+*/
 func (recv *OutputStream) WriteAll(buffer []uint8, cancellable *Cancellable) (bool, uint64, error) {
 	c_buffer := &buffer[0]
 
@@ -4122,7 +5273,11 @@ func (recv *OutputStream) WriteAll(buffer []uint8, cancellable *Cancellable) (bo
 
 // Unsupported : g_output_stream_write_bytes_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// WriteBytesFinish is a wrapper around the C function g_output_stream_write_bytes_finish.
+// Finishes a stream write-from-#GBytes operation.
+/*
+
+C function : g_output_stream_write_bytes_finish
+*/
 func (recv *OutputStream) WriteBytesFinish(result *AsyncResult) (int64, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
 
@@ -4139,7 +5294,11 @@ func (recv *OutputStream) WriteBytesFinish(result *AsyncResult) (int64, error) {
 	return retGo, goThrowableError
 }
 
-// WriteFinish is a wrapper around the C function g_output_stream_write_finish.
+// Finishes a stream write operation.
+/*
+
+C function : g_output_stream_write_finish
+*/
 func (recv *OutputStream) WriteFinish(result *AsyncResult) (int64, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
 
@@ -4362,7 +5521,14 @@ func CastToSettings(object *gobject.Object) *Settings {
 
 // Unsupported signal 'writable-changed' for Settings : unsupported parameter key : type utf8 :
 
-// Apply is a wrapper around the C function g_settings_apply.
+// Applies any changes that have been made to the settings.  This
+// function does nothing unless @settings is in 'delay-apply' mode;
+// see g_settings_delay().  In the normal case settings are always
+// applied immediately.
+/*
+
+C function : g_settings_apply
+*/
 func (recv *Settings) Apply() {
 	C.g_settings_apply((*C.GSettings)(recv.native))
 
@@ -4375,7 +5541,15 @@ func (recv *Settings) Apply() {
 
 // Unsupported : g_settings_list_keys : no return type
 
-// Reset is a wrapper around the C function g_settings_reset.
+// Resets @key to its default value.
+//
+// This call resets the key, as much as possible, to its default value.
+// That might the value specified in the schema or the one set by the
+// administrator.
+/*
+
+C function : g_settings_reset
+*/
 func (recv *Settings) Reset(key string) {
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
@@ -4385,14 +5559,36 @@ func (recv *Settings) Reset(key string) {
 	return
 }
 
-// Revert is a wrapper around the C function g_settings_revert.
+// Reverts all non-applied changes to the settings.  This function
+// does nothing unless @settings is in 'delay-apply' mode; see
+// g_settings_delay().  In the normal case settings are always applied
+// immediately.
+//
+// Change notifications will be emitted for affected keys.
+/*
+
+C function : g_settings_revert
+*/
 func (recv *Settings) Revert() {
 	C.g_settings_revert((*C.GSettings)(recv.native))
 
 	return
 }
 
-// SetEnum is a wrapper around the C function g_settings_set_enum.
+// Looks up the enumerated type nick for @value and writes it to @key,
+// within @settings.
+//
+// It is a programmer error to give a @key that isn't contained in the
+// schema for @settings or is not marked as an enumerated type, or for
+// @value not to be a valid value for the named type.
+//
+// After performing the write, accessing @key directly with
+// g_settings_get_string() will return the 'nick' associated with
+// @value.
+/*
+
+C function : g_settings_set_enum
+*/
 func (recv *Settings) SetEnum(key string, value int32) bool {
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
@@ -4405,7 +5601,21 @@ func (recv *Settings) SetEnum(key string, value int32) bool {
 	return retGo
 }
 
-// SetFlags is a wrapper around the C function g_settings_set_flags.
+// Looks up the flags type nicks for the bits specified by @value, puts
+// them in an array of strings and writes the array to @key, within
+// @settings.
+//
+// It is a programmer error to give a @key that isn't contained in the
+// schema for @settings or is not marked as a flags type, or for @value
+// to contain any bits that are not value for the named type.
+//
+// After performing the write, accessing @key directly with
+// g_settings_get_strv() will return an array of 'nicks'; one for each
+// bit in @value.
+/*
+
+C function : g_settings_set_flags
+*/
 func (recv *Settings) SetFlags(key string, value uint32) bool {
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
@@ -4527,21 +5737,45 @@ func CastToSimpleAsyncResult(object *gobject.Object) *SimpleAsyncResult {
 
 // Unsupported : g_simple_async_result_new_from_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Complete is a wrapper around the C function g_simple_async_result_complete.
+// Completes an asynchronous I/O job immediately. Must be called in
+// the thread where the asynchronous result was to be delivered, as it
+// invokes the callback directly. If you are in a different thread use
+// g_simple_async_result_complete_in_idle().
+//
+// Calling this function takes a reference to @simple for as long as
+// is needed to complete the call.
+/*
+
+C function : g_simple_async_result_complete
+*/
 func (recv *SimpleAsyncResult) Complete() {
 	C.g_simple_async_result_complete((*C.GSimpleAsyncResult)(recv.native))
 
 	return
 }
 
-// CompleteInIdle is a wrapper around the C function g_simple_async_result_complete_in_idle.
+// Completes an asynchronous function in an idle handler in the
+// [thread-default main context][g-main-context-push-thread-default]
+// of the thread that @simple was initially created in
+// (and re-pushes that context around the invocation of the callback).
+//
+// Calling this function takes a reference to @simple for as long as
+// is needed to complete the call.
+/*
+
+C function : g_simple_async_result_complete_in_idle
+*/
 func (recv *SimpleAsyncResult) CompleteInIdle() {
 	C.g_simple_async_result_complete_in_idle((*C.GSimpleAsyncResult)(recv.native))
 
 	return
 }
 
-// GetOpResGboolean is a wrapper around the C function g_simple_async_result_get_op_res_gboolean.
+// Gets the operation result boolean from within the asynchronous result.
+/*
+
+C function : g_simple_async_result_get_op_res_gboolean
+*/
 func (recv *SimpleAsyncResult) GetOpResGboolean() bool {
 	retC := C.g_simple_async_result_get_op_res_gboolean((*C.GSimpleAsyncResult)(recv.native))
 	retGo := retC == C.TRUE
@@ -4549,7 +5783,11 @@ func (recv *SimpleAsyncResult) GetOpResGboolean() bool {
 	return retGo
 }
 
-// GetOpResGpointer is a wrapper around the C function g_simple_async_result_get_op_res_gpointer.
+// Gets a pointer result as returned by the asynchronous function.
+/*
+
+C function : g_simple_async_result_get_op_res_gpointer
+*/
 func (recv *SimpleAsyncResult) GetOpResGpointer() uintptr {
 	retC := C.g_simple_async_result_get_op_res_gpointer((*C.GSimpleAsyncResult)(recv.native))
 	retGo := (uintptr)(unsafe.Pointer(retC))
@@ -4557,7 +5795,11 @@ func (recv *SimpleAsyncResult) GetOpResGpointer() uintptr {
 	return retGo
 }
 
-// GetOpResGssize is a wrapper around the C function g_simple_async_result_get_op_res_gssize.
+// Gets a gssize from the asynchronous result.
+/*
+
+C function : g_simple_async_result_get_op_res_gssize
+*/
 func (recv *SimpleAsyncResult) GetOpResGssize() int64 {
 	retC := C.g_simple_async_result_get_op_res_gssize((*C.GSimpleAsyncResult)(recv.native))
 	retGo := (int64)(retC)
@@ -4565,7 +5807,11 @@ func (recv *SimpleAsyncResult) GetOpResGssize() int64 {
 	return retGo
 }
 
-// GetSourceTag is a wrapper around the C function g_simple_async_result_get_source_tag.
+// Gets the source tag for the #GSimpleAsyncResult.
+/*
+
+C function : g_simple_async_result_get_source_tag
+*/
 func (recv *SimpleAsyncResult) GetSourceTag() uintptr {
 	retC := C.g_simple_async_result_get_source_tag((*C.GSimpleAsyncResult)(recv.native))
 	retGo := (uintptr)(unsafe.Pointer(retC))
@@ -4573,7 +5819,16 @@ func (recv *SimpleAsyncResult) GetSourceTag() uintptr {
 	return retGo
 }
 
-// PropagateError is a wrapper around the C function g_simple_async_result_propagate_error.
+// Propagates an error from within the simple asynchronous result to
+// a given destination.
+//
+// If the #GCancellable given to a prior call to
+// g_simple_async_result_set_check_cancellable() is cancelled then this
+// function will return %TRUE with @dest set appropriately.
+/*
+
+C function : g_simple_async_result_propagate_error
+*/
 func (recv *SimpleAsyncResult) PropagateError() (bool, error) {
 	var cThrowableError *C.GError
 
@@ -4594,7 +5849,11 @@ func (recv *SimpleAsyncResult) PropagateError() (bool, error) {
 
 // Unsupported : g_simple_async_result_set_error_va : unsupported parameter args : no type generator for va_list (va_list) for param args
 
-// SetFromError is a wrapper around the C function g_simple_async_result_set_from_error.
+// Sets the result from a #GError.
+/*
+
+C function : g_simple_async_result_set_from_error
+*/
 func (recv *SimpleAsyncResult) SetFromError(error *glib.Error) {
 	c_error := (*C.GError)(C.NULL)
 	if error != nil {
@@ -4606,7 +5865,15 @@ func (recv *SimpleAsyncResult) SetFromError(error *glib.Error) {
 	return
 }
 
-// SetHandleCancellation is a wrapper around the C function g_simple_async_result_set_handle_cancellation.
+// Sets whether to handle cancellation within the asynchronous operation.
+//
+// This function has nothing to do with
+// g_simple_async_result_set_check_cancellable().  It only refers to the
+// #GCancellable passed to g_simple_async_result_run_in_thread().
+/*
+
+C function : g_simple_async_result_set_handle_cancellation
+*/
 func (recv *SimpleAsyncResult) SetHandleCancellation(handleCancellation bool) {
 	c_handle_cancellation :=
 		boolToGboolean(handleCancellation)
@@ -4616,7 +5883,11 @@ func (recv *SimpleAsyncResult) SetHandleCancellation(handleCancellation bool) {
 	return
 }
 
-// SetOpResGboolean is a wrapper around the C function g_simple_async_result_set_op_res_gboolean.
+// Sets the operation result to a boolean within the asynchronous result.
+/*
+
+C function : g_simple_async_result_set_op_res_gboolean
+*/
 func (recv *SimpleAsyncResult) SetOpResGboolean(opRes bool) {
 	c_op_res :=
 		boolToGboolean(opRes)
@@ -4628,7 +5899,12 @@ func (recv *SimpleAsyncResult) SetOpResGboolean(opRes bool) {
 
 // Unsupported : g_simple_async_result_set_op_res_gpointer : unsupported parameter destroy_op_res : no type generator for GLib.DestroyNotify (GDestroyNotify) for param destroy_op_res
 
-// SetOpResGssize is a wrapper around the C function g_simple_async_result_set_op_res_gssize.
+// Sets the operation result within the asynchronous result to
+// the given @op_res.
+/*
+
+C function : g_simple_async_result_set_op_res_gssize
+*/
 func (recv *SimpleAsyncResult) SetOpResGssize(opRes int64) {
 	c_op_res := (C.gssize)(opRes)
 
@@ -4789,7 +6065,23 @@ func CastToSocketAddressEnumerator(object *gobject.Object) *SocketAddressEnumera
 	return SocketAddressEnumeratorNewFromC(object.ToC())
 }
 
-// Next is a wrapper around the C function g_socket_address_enumerator_next.
+// Retrieves the next #GSocketAddress from @enumerator. Note that this
+// may block for some amount of time. (Eg, a #GNetworkAddress may need
+// to do a DNS lookup before it can return an address.) Use
+// g_socket_address_enumerator_next_async() if you need to avoid
+// blocking.
+//
+// If @enumerator is expected to yield addresses, but for some reason
+// is unable to (eg, because of a DNS error), then the first call to
+// g_socket_address_enumerator_next() will return an appropriate error
+// in *@error. However, if the first call to
+// g_socket_address_enumerator_next() succeeds, then any further
+// internal errors (other than @cancellable being triggered) will be
+// ignored.
+/*
+
+C function : g_socket_address_enumerator_next
+*/
 func (recv *SocketAddressEnumerator) Next(cancellable *Cancellable) (*SocketAddress, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
 	if cancellable != nil {
@@ -4811,7 +6103,14 @@ func (recv *SocketAddressEnumerator) Next(cancellable *Cancellable) (*SocketAddr
 
 // Unsupported : g_socket_address_enumerator_next_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// NextFinish is a wrapper around the C function g_socket_address_enumerator_next_finish.
+// Retrieves the result of a completed call to
+// g_socket_address_enumerator_next_async(). See
+// g_socket_address_enumerator_next() for more information about
+// error handling.
+/*
+
+C function : g_socket_address_enumerator_next_finish
+*/
 func (recv *SocketAddressEnumerator) NextFinish(result *AsyncResult) (*SocketAddress, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
 
@@ -4948,7 +6247,11 @@ func CastToTcpWrapperConnection(object *gobject.Object) *TcpWrapperConnection {
 	return TcpWrapperConnectionNewFromC(object.ToC())
 }
 
-// GetBaseIoStream is a wrapper around the C function g_tcp_wrapper_connection_get_base_io_stream.
+// Get's @conn's base #GIOStream
+/*
+
+C function : g_tcp_wrapper_connection_get_base_io_stream
+*/
 func (recv *TcpWrapperConnection) GetBaseIoStream() *IOStream {
 	retC := C.g_tcp_wrapper_connection_get_base_io_stream((*C.GTcpWrapperConnection)(recv.native))
 	retGo := IOStreamNewFromC(unsafe.Pointer(retC))
@@ -4988,7 +6291,11 @@ func CastToThemedIcon(object *gobject.Object) *ThemedIcon {
 	return ThemedIconNewFromC(object.ToC())
 }
 
-// ThemedIconNew is a wrapper around the C function g_themed_icon_new.
+// Creates a new themed icon for @iconname.
+/*
+
+C function : g_themed_icon_new
+*/
 func ThemedIconNew(iconname string) *ThemedIcon {
 	c_iconname := C.CString(iconname)
 	defer C.free(unsafe.Pointer(c_iconname))
@@ -5001,7 +6308,25 @@ func ThemedIconNew(iconname string) *ThemedIcon {
 
 // Unsupported : g_themed_icon_new_from_names : unsupported parameter iconnames :
 
-// ThemedIconNewWithDefaultFallbacks is a wrapper around the C function g_themed_icon_new_with_default_fallbacks.
+// Creates a new themed icon for @iconname, and all the names
+// that can be created by shortening @iconname at '-' characters.
+//
+// In the following example, @icon1 and @icon2 are equivalent:
+// |[<!-- language="C" -->
+// const char *names[] = {
+// "gnome-dev-cdrom-audio",
+// "gnome-dev-cdrom",
+// "gnome-dev",
+// "gnome"
+// };
+//
+// icon1 = g_themed_icon_new_from_names (names, 4);
+// icon2 = g_themed_icon_new_with_default_fallbacks ("gnome-dev-cdrom-audio");
+// ]|
+/*
+
+C function : g_themed_icon_new_with_default_fallbacks
+*/
 func ThemedIconNewWithDefaultFallbacks(iconname string) *ThemedIcon {
 	c_iconname := C.CString(iconname)
 	defer C.free(unsafe.Pointer(c_iconname))
@@ -5012,7 +6337,14 @@ func ThemedIconNewWithDefaultFallbacks(iconname string) *ThemedIcon {
 	return retGo
 }
 
-// AppendName is a wrapper around the C function g_themed_icon_append_name.
+// Append a name to the list of icons from within @icon.
+//
+// Note that doing so invalidates the hash computed by prior calls
+// to g_icon_hash().
+/*
+
+C function : g_themed_icon_append_name
+*/
 func (recv *ThemedIcon) AppendName(iconname string) {
 	c_iconname := C.CString(iconname)
 	defer C.free(unsafe.Pointer(c_iconname))
@@ -5185,7 +6517,14 @@ func CastToUnixInputStream(object *gobject.Object) *UnixInputStream {
 	return UnixInputStreamNewFromC(object.ToC())
 }
 
-// UnixInputStreamNew is a wrapper around the C function g_unix_input_stream_new.
+// Creates a new #GUnixInputStream for the given @fd.
+//
+// If @close_fd is %TRUE, the file descriptor will be closed
+// when the stream is closed.
+/*
+
+C function : g_unix_input_stream_new
+*/
 func UnixInputStreamNew(fd int32, closeFd bool) *UnixInputStream {
 	c_fd := (C.gint)(fd)
 
@@ -5354,7 +6693,14 @@ func unixmountmonitor_mountsChangedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// UnixMountMonitorNew is a wrapper around the C function g_unix_mount_monitor_new.
+// Deprecated alias for g_unix_mount_monitor_get().
+//
+// This function was never a true constructor, which is why it was
+// renamed.
+/*
+
+C function : g_unix_mount_monitor_new
+*/
 func UnixMountMonitorNew() *UnixMountMonitor {
 	retC := C.g_unix_mount_monitor_new()
 	retGo := UnixMountMonitorNewFromC(unsafe.Pointer(retC))
@@ -5401,7 +6747,14 @@ func CastToUnixOutputStream(object *gobject.Object) *UnixOutputStream {
 	return UnixOutputStreamNewFromC(object.ToC())
 }
 
-// UnixOutputStreamNew is a wrapper around the C function g_unix_output_stream_new.
+// Creates a new #GUnixOutputStream for the given @fd.
+//
+// If @close_fd, is %TRUE, the file descriptor will be closed when
+// the output stream is destroyed.
+/*
+
+C function : g_unix_output_stream_new
+*/
 func UnixOutputStreamNew(fd int32, closeFd bool) *UnixOutputStream {
 	c_fd := (C.gint)(fd)
 
@@ -5463,7 +6816,12 @@ func CastToUnixSocketAddress(object *gobject.Object) *UnixSocketAddress {
 	return UnixSocketAddressNewFromC(object.ToC())
 }
 
-// UnixSocketAddressNewAbstract is a wrapper around the C function g_unix_socket_address_new_abstract.
+// Creates a new %G_UNIX_SOCKET_ADDRESS_ABSTRACT_PADDED
+// #GUnixSocketAddress for @path.
+/*
+
+C function : g_unix_socket_address_new_abstract
+*/
 func UnixSocketAddressNewAbstract(path []rune) *UnixSocketAddress {
 	c_path := &path[0]
 
@@ -5513,7 +6871,11 @@ func CastToVfs(object *gobject.Object) *Vfs {
 	return VfsNewFromC(object.ToC())
 }
 
-// GetFileForPath is a wrapper around the C function g_vfs_get_file_for_path.
+// Gets a #GFile for @path.
+/*
+
+C function : g_vfs_get_file_for_path
+*/
 func (recv *Vfs) GetFileForPath(path string) *File {
 	c_path := C.CString(path)
 	defer C.free(unsafe.Pointer(c_path))
@@ -5524,7 +6886,15 @@ func (recv *Vfs) GetFileForPath(path string) *File {
 	return retGo
 }
 
-// GetFileForUri is a wrapper around the C function g_vfs_get_file_for_uri.
+// Gets a #GFile for @uri.
+//
+// This operation never fails, but the returned object
+// might not support any I/O operation if the URI
+// is malformed or if the URI scheme is not supported.
+/*
+
+C function : g_vfs_get_file_for_uri
+*/
 func (recv *Vfs) GetFileForUri(uri string) *File {
 	c_uri := C.CString(uri)
 	defer C.free(unsafe.Pointer(c_uri))
@@ -5537,7 +6907,11 @@ func (recv *Vfs) GetFileForUri(uri string) *File {
 
 // Unsupported : g_vfs_get_supported_uri_schemes : no return type
 
-// IsActive is a wrapper around the C function g_vfs_is_active.
+// Checks if the VFS is active.
+/*
+
+C function : g_vfs_is_active
+*/
 func (recv *Vfs) IsActive() bool {
 	retC := C.g_vfs_is_active((*C.GVfs)(recv.native))
 	retGo := retC == C.TRUE
@@ -5545,7 +6919,13 @@ func (recv *Vfs) IsActive() bool {
 	return retGo
 }
 
-// ParseName is a wrapper around the C function g_vfs_parse_name.
+// This operation never fails, but the returned object might
+// not support any I/O operations if the @parse_name cannot
+// be parsed by the #GVfs module.
+/*
+
+C function : g_vfs_parse_name
+*/
 func (recv *Vfs) ParseName(parseName string) *File {
 	c_parse_name := C.CString(parseName)
 	defer C.free(unsafe.Pointer(c_parse_name))
@@ -6180,7 +7560,14 @@ func volumemonitor_volumeRemovedHandler(_ *C.GObject, c_volume *C.GVolume, data 
 	callback(volume)
 }
 
-// GetConnectedDrives is a wrapper around the C function g_volume_monitor_get_connected_drives.
+// Gets a list of drives connected to the system.
+//
+// The returned list should be freed with g_list_free(), after
+// its elements have been unreffed with g_object_unref().
+/*
+
+C function : g_volume_monitor_get_connected_drives
+*/
 func (recv *VolumeMonitor) GetConnectedDrives() *glib.List {
 	retC := C.g_volume_monitor_get_connected_drives((*C.GVolumeMonitor)(recv.native))
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
@@ -6188,7 +7575,11 @@ func (recv *VolumeMonitor) GetConnectedDrives() *glib.List {
 	return retGo
 }
 
-// GetMountForUuid is a wrapper around the C function g_volume_monitor_get_mount_for_uuid.
+// Finds a #GMount object by its UUID (see g_mount_get_uuid())
+/*
+
+C function : g_volume_monitor_get_mount_for_uuid
+*/
 func (recv *VolumeMonitor) GetMountForUuid(uuid string) *Mount {
 	c_uuid := C.CString(uuid)
 	defer C.free(unsafe.Pointer(c_uuid))
@@ -6199,7 +7590,14 @@ func (recv *VolumeMonitor) GetMountForUuid(uuid string) *Mount {
 	return retGo
 }
 
-// GetMounts is a wrapper around the C function g_volume_monitor_get_mounts.
+// Gets a list of the mounts on the system.
+//
+// The returned list should be freed with g_list_free(), after
+// its elements have been unreffed with g_object_unref().
+/*
+
+C function : g_volume_monitor_get_mounts
+*/
 func (recv *VolumeMonitor) GetMounts() *glib.List {
 	retC := C.g_volume_monitor_get_mounts((*C.GVolumeMonitor)(recv.native))
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
@@ -6207,7 +7605,11 @@ func (recv *VolumeMonitor) GetMounts() *glib.List {
 	return retGo
 }
 
-// GetVolumeForUuid is a wrapper around the C function g_volume_monitor_get_volume_for_uuid.
+// Finds a #GVolume object by its UUID (see g_volume_get_uuid())
+/*
+
+C function : g_volume_monitor_get_volume_for_uuid
+*/
 func (recv *VolumeMonitor) GetVolumeForUuid(uuid string) *Volume {
 	c_uuid := C.CString(uuid)
 	defer C.free(unsafe.Pointer(c_uuid))
@@ -6218,7 +7620,14 @@ func (recv *VolumeMonitor) GetVolumeForUuid(uuid string) *Volume {
 	return retGo
 }
 
-// GetVolumes is a wrapper around the C function g_volume_monitor_get_volumes.
+// Gets a list of the volumes on the system.
+//
+// The returned list should be freed with g_list_free(), after
+// its elements have been unreffed with g_object_unref().
+/*
+
+C function : g_volume_monitor_get_volumes
+*/
 func (recv *VolumeMonitor) GetVolumes() *glib.List {
 	retC := C.g_volume_monitor_get_volumes((*C.GVolumeMonitor)(recv.native))
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))

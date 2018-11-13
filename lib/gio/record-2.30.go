@@ -46,14 +46,33 @@ func (recv *DBusInterfaceIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CacheBuild is a wrapper around the C function g_dbus_interface_info_cache_build.
+// Builds a lookup-cache to speed up
+// g_dbus_interface_info_lookup_method(),
+// g_dbus_interface_info_lookup_signal() and
+// g_dbus_interface_info_lookup_property().
+//
+// If this has already been called with @info, the existing cache is
+// used and its use count is increased.
+//
+// Note that @info cannot be modified until
+// g_dbus_interface_info_cache_release() is called.
+/*
+
+C function : g_dbus_interface_info_cache_build
+*/
 func (recv *DBusInterfaceInfo) CacheBuild() {
 	C.g_dbus_interface_info_cache_build((*C.GDBusInterfaceInfo)(recv.native))
 
 	return
 }
 
-// CacheRelease is a wrapper around the C function g_dbus_interface_info_cache_release.
+// Decrements the usage count for the cache for @info built by
+// g_dbus_interface_info_cache_build() (if any) and frees the
+// resources used by the cache if the usage count drops to zero.
+/*
+
+C function : g_dbus_interface_info_cache_release
+*/
 func (recv *DBusInterfaceInfo) CacheRelease() {
 	C.g_dbus_interface_info_cache_release((*C.GDBusInterfaceInfo)(recv.native))
 
@@ -262,7 +281,13 @@ func (recv *IOModuleScope) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Block is a wrapper around the C function g_io_module_scope_block.
+// Block modules with the given @basename from being loaded when
+// this scope is used with g_io_modules_scan_all_in_directory_with_scope()
+// or g_io_modules_load_all_in_directory_with_scope().
+/*
+
+C function : g_io_module_scope_block
+*/
 func (recv *IOModuleScope) Block(basename string) {
 	c_basename := C.CString(basename)
 	defer C.free(unsafe.Pointer(c_basename))
@@ -272,7 +297,11 @@ func (recv *IOModuleScope) Block(basename string) {
 	return
 }
 
-// Free is a wrapper around the C function g_io_module_scope_free.
+// Free a module scope.
+/*
+
+C function : g_io_module_scope_free
+*/
 func (recv *IOModuleScope) Free() {
 	C.g_io_module_scope_free((*C.GIOModuleScope)(recv.native))
 

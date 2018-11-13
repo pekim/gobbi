@@ -39,7 +39,12 @@ import "C"
 
 // Unsupported : g_data_input_stream_read_until_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// ReadUntilFinish is a wrapper around the C function g_data_input_stream_read_until_finish.
+// Finish an asynchronous call started by
+// g_data_input_stream_read_until_async().
+/*
+
+C function : g_data_input_stream_read_until_finish
+*/
 func (recv *DataInputStream) ReadUntilFinish(result *AsyncResult) (string, uint64, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
 
@@ -118,7 +123,12 @@ func mountoperation_abortedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// GetCloseFd is a wrapper around the C function g_unix_input_stream_get_close_fd.
+// Returns whether the file descriptor of @stream will be
+// closed when the stream is closed.
+/*
+
+C function : g_unix_input_stream_get_close_fd
+*/
 func (recv *UnixInputStream) GetCloseFd() bool {
 	retC := C.g_unix_input_stream_get_close_fd((*C.GUnixInputStream)(recv.native))
 	retGo := retC == C.TRUE
@@ -126,7 +136,11 @@ func (recv *UnixInputStream) GetCloseFd() bool {
 	return retGo
 }
 
-// GetFd is a wrapper around the C function g_unix_input_stream_get_fd.
+// Return the UNIX file descriptor that the stream reads from.
+/*
+
+C function : g_unix_input_stream_get_fd
+*/
 func (recv *UnixInputStream) GetFd() int32 {
 	retC := C.g_unix_input_stream_get_fd((*C.GUnixInputStream)(recv.native))
 	retGo := (int32)(retC)
@@ -134,7 +148,12 @@ func (recv *UnixInputStream) GetFd() int32 {
 	return retGo
 }
 
-// SetCloseFd is a wrapper around the C function g_unix_input_stream_set_close_fd.
+// Sets whether the file descriptor of @stream shall be closed
+// when the stream is closed.
+/*
+
+C function : g_unix_input_stream_set_close_fd
+*/
 func (recv *UnixInputStream) SetCloseFd(closeFd bool) {
 	c_close_fd :=
 		boolToGboolean(closeFd)
@@ -144,7 +163,12 @@ func (recv *UnixInputStream) SetCloseFd(closeFd bool) {
 	return
 }
 
-// GetCloseFd is a wrapper around the C function g_unix_output_stream_get_close_fd.
+// Returns whether the file descriptor of @stream will be
+// closed when the stream is closed.
+/*
+
+C function : g_unix_output_stream_get_close_fd
+*/
 func (recv *UnixOutputStream) GetCloseFd() bool {
 	retC := C.g_unix_output_stream_get_close_fd((*C.GUnixOutputStream)(recv.native))
 	retGo := retC == C.TRUE
@@ -152,7 +176,11 @@ func (recv *UnixOutputStream) GetCloseFd() bool {
 	return retGo
 }
 
-// GetFd is a wrapper around the C function g_unix_output_stream_get_fd.
+// Return the UNIX file descriptor that the stream writes to.
+/*
+
+C function : g_unix_output_stream_get_fd
+*/
 func (recv *UnixOutputStream) GetFd() int32 {
 	retC := C.g_unix_output_stream_get_fd((*C.GUnixOutputStream)(recv.native))
 	retGo := (int32)(retC)
@@ -160,7 +188,12 @@ func (recv *UnixOutputStream) GetFd() int32 {
 	return retGo
 }
 
-// SetCloseFd is a wrapper around the C function g_unix_output_stream_set_close_fd.
+// Sets whether the file descriptor of @stream shall be closed
+// when the stream is closed.
+/*
+
+C function : g_unix_output_stream_set_close_fd
+*/
 func (recv *UnixOutputStream) SetCloseFd(closeFd bool) {
 	c_close_fd :=
 		boolToGboolean(closeFd)

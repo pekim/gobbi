@@ -10,7 +10,13 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// DescribeWithAbsoluteSize is a wrapper around the C function pango_font_describe_with_absolute_size.
+// Returns a description of the font, with absolute font size set
+// (in device units). Use pango_font_describe() if you want the font
+// size in points.
+/*
+
+C function : pango_font_describe_with_absolute_size
+*/
 func (recv *Font) DescribeWithAbsoluteSize() *FontDescription {
 	retC := C.pango_font_describe_with_absolute_size((*C.PangoFont)(recv.native))
 	retGo := FontDescriptionNewFromC(unsafe.Pointer(retC))

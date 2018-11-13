@@ -14,7 +14,12 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// PixbufNewFromStreamFinish is a wrapper around the C function gdk_pixbuf_new_from_stream_finish.
+// Finishes an asynchronous pixbuf creation operation started with
+// gdk_pixbuf_new_from_stream_async().
+/*
+
+C function : gdk_pixbuf_new_from_stream_finish
+*/
 func PixbufNewFromStreamFinish(asyncResult *gio.AsyncResult) (*Pixbuf, error) {
 	c_async_result := (*C.GAsyncResult)(asyncResult.ToC())
 

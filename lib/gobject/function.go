@@ -12,7 +12,11 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// BoxedCopy is a wrapper around the C function g_boxed_copy.
+// Provide a copy of a boxed structure @src_boxed which is of type @boxed_type.
+/*
+
+C function : g_boxed_copy
+*/
 func BoxedCopy(boxedType Type, srcBoxed uintptr) uintptr {
 	c_boxed_type := (C.GType)(boxedType)
 
@@ -24,7 +28,11 @@ func BoxedCopy(boxedType Type, srcBoxed uintptr) uintptr {
 	return retGo
 }
 
-// BoxedFree is a wrapper around the C function g_boxed_free.
+// Free the boxed structure @boxed which is of type @boxed_type.
+/*
+
+C function : g_boxed_free
+*/
 func BoxedFree(boxedType Type, boxed uintptr) {
 	c_boxed_type := (C.GType)(boxedType)
 
@@ -37,7 +45,14 @@ func BoxedFree(boxedType Type, boxed uintptr) {
 
 // Unsupported : g_boxed_type_register_static : unsupported parameter boxed_copy : no type generator for BoxedCopyFunc (GBoxedCopyFunc) for param boxed_copy
 
-// CclosureMarshalBooleanBoxedBoxed is a wrapper around the C function g_cclosure_marshal_BOOLEAN__BOXED_BOXED.
+// A #GClosureMarshal function for use with signals with handlers that
+// take two boxed pointers as arguments and return a boolean.  If you
+// have such a signal, you will probably also need to use an
+// accumulator, such as g_signal_accumulator_true_handled().
+/*
+
+C function : g_cclosure_marshal_BOOLEAN__BOXED_BOXED
+*/
 func CclosureMarshalBooleanBoxedBoxed(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
 	c_closure := (*C.GClosure)(C.NULL)
 	if closure != nil {
@@ -65,7 +80,14 @@ func CclosureMarshalBooleanBoxedBoxed(closure *Closure, returnValue *Value, nPar
 	return
 }
 
-// CclosureMarshalBooleanFlags is a wrapper around the C function g_cclosure_marshal_BOOLEAN__FLAGS.
+// A #GClosureMarshal function for use with signals with handlers that
+// take a flags type as an argument and return a boolean.  If you have
+// such a signal, you will probably also need to use an accumulator,
+// such as g_signal_accumulator_true_handled().
+/*
+
+C function : g_cclosure_marshal_BOOLEAN__FLAGS
+*/
 func CclosureMarshalBooleanFlags(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
 	c_closure := (*C.GClosure)(C.NULL)
 	if closure != nil {
@@ -93,7 +115,13 @@ func CclosureMarshalBooleanFlags(closure *Closure, returnValue *Value, nParamVal
 	return
 }
 
-// CclosureMarshalStringObjectPointer is a wrapper around the C function g_cclosure_marshal_STRING__OBJECT_POINTER.
+// A #GClosureMarshal function for use with signals with handlers that
+// take a #GObject and a pointer and produce a string.  It is highly
+// unlikely that your signal handler fits this description.
+/*
+
+C function : g_cclosure_marshal_STRING__OBJECT_POINTER
+*/
 func CclosureMarshalStringObjectPointer(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
 	c_closure := (*C.GClosure)(C.NULL)
 	if closure != nil {
@@ -121,7 +149,12 @@ func CclosureMarshalStringObjectPointer(closure *Closure, returnValue *Value, nP
 	return
 }
 
-// CclosureMarshalVoidBoolean is a wrapper around the C function g_cclosure_marshal_VOID__BOOLEAN.
+// A #GClosureMarshal function for use with signals with a single
+// boolean argument.
+/*
+
+C function : g_cclosure_marshal_VOID__BOOLEAN
+*/
 func CclosureMarshalVoidBoolean(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
 	c_closure := (*C.GClosure)(C.NULL)
 	if closure != nil {
@@ -149,7 +182,12 @@ func CclosureMarshalVoidBoolean(closure *Closure, returnValue *Value, nParamValu
 	return
 }
 
-// CclosureMarshalVoidBoxed is a wrapper around the C function g_cclosure_marshal_VOID__BOXED.
+// A #GClosureMarshal function for use with signals with a single
+// argument which is any boxed pointer type.
+/*
+
+C function : g_cclosure_marshal_VOID__BOXED
+*/
 func CclosureMarshalVoidBoxed(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
 	c_closure := (*C.GClosure)(C.NULL)
 	if closure != nil {
@@ -177,7 +215,12 @@ func CclosureMarshalVoidBoxed(closure *Closure, returnValue *Value, nParamValues
 	return
 }
 
-// CclosureMarshalVoidChar is a wrapper around the C function g_cclosure_marshal_VOID__CHAR.
+// A #GClosureMarshal function for use with signals with a single
+// character argument.
+/*
+
+C function : g_cclosure_marshal_VOID__CHAR
+*/
 func CclosureMarshalVoidChar(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
 	c_closure := (*C.GClosure)(C.NULL)
 	if closure != nil {
@@ -205,7 +248,12 @@ func CclosureMarshalVoidChar(closure *Closure, returnValue *Value, nParamValues 
 	return
 }
 
-// CclosureMarshalVoidDouble is a wrapper around the C function g_cclosure_marshal_VOID__DOUBLE.
+// A #GClosureMarshal function for use with signals with one
+// double-precision floating point argument.
+/*
+
+C function : g_cclosure_marshal_VOID__DOUBLE
+*/
 func CclosureMarshalVoidDouble(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
 	c_closure := (*C.GClosure)(C.NULL)
 	if closure != nil {
@@ -233,7 +281,12 @@ func CclosureMarshalVoidDouble(closure *Closure, returnValue *Value, nParamValue
 	return
 }
 
-// CclosureMarshalVoidEnum is a wrapper around the C function g_cclosure_marshal_VOID__ENUM.
+// A #GClosureMarshal function for use with signals with a single
+// argument with an enumerated type.
+/*
+
+C function : g_cclosure_marshal_VOID__ENUM
+*/
 func CclosureMarshalVoidEnum(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
 	c_closure := (*C.GClosure)(C.NULL)
 	if closure != nil {
@@ -261,7 +314,12 @@ func CclosureMarshalVoidEnum(closure *Closure, returnValue *Value, nParamValues 
 	return
 }
 
-// CclosureMarshalVoidFlags is a wrapper around the C function g_cclosure_marshal_VOID__FLAGS.
+// A #GClosureMarshal function for use with signals with a single
+// argument with a flags types.
+/*
+
+C function : g_cclosure_marshal_VOID__FLAGS
+*/
 func CclosureMarshalVoidFlags(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
 	c_closure := (*C.GClosure)(C.NULL)
 	if closure != nil {
@@ -289,7 +347,12 @@ func CclosureMarshalVoidFlags(closure *Closure, returnValue *Value, nParamValues
 	return
 }
 
-// CclosureMarshalVoidFloat is a wrapper around the C function g_cclosure_marshal_VOID__FLOAT.
+// A #GClosureMarshal function for use with signals with one
+// single-precision floating point argument.
+/*
+
+C function : g_cclosure_marshal_VOID__FLOAT
+*/
 func CclosureMarshalVoidFloat(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
 	c_closure := (*C.GClosure)(C.NULL)
 	if closure != nil {
@@ -317,7 +380,12 @@ func CclosureMarshalVoidFloat(closure *Closure, returnValue *Value, nParamValues
 	return
 }
 
-// CclosureMarshalVoidInt is a wrapper around the C function g_cclosure_marshal_VOID__INT.
+// A #GClosureMarshal function for use with signals with a single
+// integer argument.
+/*
+
+C function : g_cclosure_marshal_VOID__INT
+*/
 func CclosureMarshalVoidInt(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
 	c_closure := (*C.GClosure)(C.NULL)
 	if closure != nil {
@@ -345,7 +413,12 @@ func CclosureMarshalVoidInt(closure *Closure, returnValue *Value, nParamValues u
 	return
 }
 
-// CclosureMarshalVoidLong is a wrapper around the C function g_cclosure_marshal_VOID__LONG.
+// A #GClosureMarshal function for use with signals with with a single
+// long integer argument.
+/*
+
+C function : g_cclosure_marshal_VOID__LONG
+*/
 func CclosureMarshalVoidLong(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
 	c_closure := (*C.GClosure)(C.NULL)
 	if closure != nil {
@@ -373,7 +446,12 @@ func CclosureMarshalVoidLong(closure *Closure, returnValue *Value, nParamValues 
 	return
 }
 
-// CclosureMarshalVoidObject is a wrapper around the C function g_cclosure_marshal_VOID__OBJECT.
+// A #GClosureMarshal function for use with signals with a single
+// #GObject argument.
+/*
+
+C function : g_cclosure_marshal_VOID__OBJECT
+*/
 func CclosureMarshalVoidObject(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
 	c_closure := (*C.GClosure)(C.NULL)
 	if closure != nil {
@@ -401,7 +479,12 @@ func CclosureMarshalVoidObject(closure *Closure, returnValue *Value, nParamValue
 	return
 }
 
-// CclosureMarshalVoidParam is a wrapper around the C function g_cclosure_marshal_VOID__PARAM.
+// A #GClosureMarshal function for use with signals with a single
+// argument of type #GParamSpec.
+/*
+
+C function : g_cclosure_marshal_VOID__PARAM
+*/
 func CclosureMarshalVoidParam(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
 	c_closure := (*C.GClosure)(C.NULL)
 	if closure != nil {
@@ -429,7 +512,16 @@ func CclosureMarshalVoidParam(closure *Closure, returnValue *Value, nParamValues
 	return
 }
 
-// CclosureMarshalVoidPointer is a wrapper around the C function g_cclosure_marshal_VOID__POINTER.
+// A #GClosureMarshal function for use with signals with a single raw
+// pointer argument type.
+//
+// If it is possible, it is better to use one of the more specific
+// functions such as g_cclosure_marshal_VOID__OBJECT() or
+// g_cclosure_marshal_VOID__OBJECT().
+/*
+
+C function : g_cclosure_marshal_VOID__POINTER
+*/
 func CclosureMarshalVoidPointer(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
 	c_closure := (*C.GClosure)(C.NULL)
 	if closure != nil {
@@ -457,7 +549,12 @@ func CclosureMarshalVoidPointer(closure *Closure, returnValue *Value, nParamValu
 	return
 }
 
-// CclosureMarshalVoidString is a wrapper around the C function g_cclosure_marshal_VOID__STRING.
+// A #GClosureMarshal function for use with signals with a single string
+// argument.
+/*
+
+C function : g_cclosure_marshal_VOID__STRING
+*/
 func CclosureMarshalVoidString(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
 	c_closure := (*C.GClosure)(C.NULL)
 	if closure != nil {
@@ -485,7 +582,12 @@ func CclosureMarshalVoidString(closure *Closure, returnValue *Value, nParamValue
 	return
 }
 
-// CclosureMarshalVoidUchar is a wrapper around the C function g_cclosure_marshal_VOID__UCHAR.
+// A #GClosureMarshal function for use with signals with a single
+// unsigned character argument.
+/*
+
+C function : g_cclosure_marshal_VOID__UCHAR
+*/
 func CclosureMarshalVoidUchar(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
 	c_closure := (*C.GClosure)(C.NULL)
 	if closure != nil {
@@ -513,7 +615,12 @@ func CclosureMarshalVoidUchar(closure *Closure, returnValue *Value, nParamValues
 	return
 }
 
-// CclosureMarshalVoidUint is a wrapper around the C function g_cclosure_marshal_VOID__UINT.
+// A #GClosureMarshal function for use with signals with with a single
+// unsigned integer argument.
+/*
+
+C function : g_cclosure_marshal_VOID__UINT
+*/
 func CclosureMarshalVoidUint(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
 	c_closure := (*C.GClosure)(C.NULL)
 	if closure != nil {
@@ -541,7 +648,12 @@ func CclosureMarshalVoidUint(closure *Closure, returnValue *Value, nParamValues 
 	return
 }
 
-// CclosureMarshalVoidUintPointer is a wrapper around the C function g_cclosure_marshal_VOID__UINT_POINTER.
+// A #GClosureMarshal function for use with signals with a unsigned int
+// and a pointer as arguments.
+/*
+
+C function : g_cclosure_marshal_VOID__UINT_POINTER
+*/
 func CclosureMarshalVoidUintPointer(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
 	c_closure := (*C.GClosure)(C.NULL)
 	if closure != nil {
@@ -569,7 +681,12 @@ func CclosureMarshalVoidUintPointer(closure *Closure, returnValue *Value, nParam
 	return
 }
 
-// CclosureMarshalVoidUlong is a wrapper around the C function g_cclosure_marshal_VOID__ULONG.
+// A #GClosureMarshal function for use with signals with a single
+// unsigned long integer argument.
+/*
+
+C function : g_cclosure_marshal_VOID__ULONG
+*/
 func CclosureMarshalVoidUlong(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
 	c_closure := (*C.GClosure)(C.NULL)
 	if closure != nil {
@@ -597,7 +714,12 @@ func CclosureMarshalVoidUlong(closure *Closure, returnValue *Value, nParamValues
 	return
 }
 
-// CclosureMarshalVoidVariant is a wrapper around the C function g_cclosure_marshal_VOID__VARIANT.
+// A #GClosureMarshal function for use with signals with a single
+// #GVariant argument.
+/*
+
+C function : g_cclosure_marshal_VOID__VARIANT
+*/
 func CclosureMarshalVoidVariant(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
 	c_closure := (*C.GClosure)(C.NULL)
 	if closure != nil {
@@ -625,7 +747,11 @@ func CclosureMarshalVoidVariant(closure *Closure, returnValue *Value, nParamValu
 	return
 }
 
-// CclosureMarshalVoidVoid is a wrapper around the C function g_cclosure_marshal_VOID__VOID.
+// A #GClosureMarshal function for use with signals with no arguments.
+/*
+
+C function : g_cclosure_marshal_VOID__VOID
+*/
 func CclosureMarshalVoidVoid(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
 	c_closure := (*C.GClosure)(C.NULL)
 	if closure != nil {
@@ -661,7 +787,30 @@ func CclosureMarshalVoidVoid(closure *Closure, returnValue *Value, nParamValues 
 
 // Unsupported : g_cclosure_new_swap : unsupported parameter callback_func : no type generator for Callback (GCallback) for param callback_func
 
-// EnumCompleteTypeInfo is a wrapper around the C function g_enum_complete_type_info.
+// This function is meant to be called from the `complete_type_info`
+// function of a #GTypePlugin implementation, as in the following
+// example:
+//
+// |[<!-- language="C" -->
+// static void
+// my_enum_complete_type_info (GTypePlugin     *plugin,
+// GType            g_type,
+// GTypeInfo       *info,
+// GTypeValueTable *value_table)
+// {
+// static const GEnumValue values[] = {
+// { MY_ENUM_FOO, "MY_ENUM_FOO", "foo" },
+// { MY_ENUM_BAR, "MY_ENUM_BAR", "bar" },
+// { 0, NULL, NULL }
+// };
+//
+// g_enum_complete_type_info (type, info, values);
+// }
+// ]|
+/*
+
+C function : g_enum_complete_type_info
+*/
 func EnumCompleteTypeInfo(gEnumType Type, constValues *EnumValue) *TypeInfo {
 	c_g_enum_type := (C.GType)(gEnumType)
 
@@ -679,7 +828,11 @@ func EnumCompleteTypeInfo(gEnumType Type, constValues *EnumValue) *TypeInfo {
 	return info
 }
 
-// EnumGetValue is a wrapper around the C function g_enum_get_value.
+// Returns the #GEnumValue for a value.
+/*
+
+C function : g_enum_get_value
+*/
 func EnumGetValue(enumClass *EnumClass, value int32) *EnumValue {
 	c_enum_class := (*C.GEnumClass)(C.NULL)
 	if enumClass != nil {
@@ -694,7 +847,11 @@ func EnumGetValue(enumClass *EnumClass, value int32) *EnumValue {
 	return retGo
 }
 
-// EnumGetValueByName is a wrapper around the C function g_enum_get_value_by_name.
+// Looks up a #GEnumValue by name.
+/*
+
+C function : g_enum_get_value_by_name
+*/
 func EnumGetValueByName(enumClass *EnumClass, name string) *EnumValue {
 	c_enum_class := (*C.GEnumClass)(C.NULL)
 	if enumClass != nil {
@@ -710,7 +867,11 @@ func EnumGetValueByName(enumClass *EnumClass, name string) *EnumValue {
 	return retGo
 }
 
-// EnumGetValueByNick is a wrapper around the C function g_enum_get_value_by_nick.
+// Looks up a #GEnumValue by nickname.
+/*
+
+C function : g_enum_get_value_by_nick
+*/
 func EnumGetValueByNick(enumClass *EnumClass, nick string) *EnumValue {
 	c_enum_class := (*C.GEnumClass)(C.NULL)
 	if enumClass != nil {
@@ -726,7 +887,15 @@ func EnumGetValueByNick(enumClass *EnumClass, nick string) *EnumValue {
 	return retGo
 }
 
-// EnumRegisterStatic is a wrapper around the C function g_enum_register_static.
+// Registers a new static enumeration type with the name @name.
+//
+// It is normally more convenient to let [glib-mkenums][glib-mkenums],
+// generate a my_enum_get_type() function from a usual C enumeration
+// definition  than to write one yourself using g_enum_register_static().
+/*
+
+C function : g_enum_register_static
+*/
 func EnumRegisterStatic(name string, constStaticValues *EnumValue) Type {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -742,7 +911,13 @@ func EnumRegisterStatic(name string, constStaticValues *EnumValue) Type {
 	return retGo
 }
 
-// FlagsCompleteTypeInfo is a wrapper around the C function g_flags_complete_type_info.
+// This function is meant to be called from the complete_type_info()
+// function of a #GTypePlugin implementation, see the example for
+// g_enum_complete_type_info() above.
+/*
+
+C function : g_flags_complete_type_info
+*/
 func FlagsCompleteTypeInfo(gFlagsType Type, constValues *FlagsValue) *TypeInfo {
 	c_g_flags_type := (C.GType)(gFlagsType)
 
@@ -760,7 +935,11 @@ func FlagsCompleteTypeInfo(gFlagsType Type, constValues *FlagsValue) *TypeInfo {
 	return info
 }
 
-// FlagsGetFirstValue is a wrapper around the C function g_flags_get_first_value.
+// Returns the first #GFlagsValue which is set in @value.
+/*
+
+C function : g_flags_get_first_value
+*/
 func FlagsGetFirstValue(flagsClass *FlagsClass, value uint32) *FlagsValue {
 	c_flags_class := (*C.GFlagsClass)(C.NULL)
 	if flagsClass != nil {
@@ -775,7 +954,11 @@ func FlagsGetFirstValue(flagsClass *FlagsClass, value uint32) *FlagsValue {
 	return retGo
 }
 
-// FlagsGetValueByName is a wrapper around the C function g_flags_get_value_by_name.
+// Looks up a #GFlagsValue by name.
+/*
+
+C function : g_flags_get_value_by_name
+*/
 func FlagsGetValueByName(flagsClass *FlagsClass, name string) *FlagsValue {
 	c_flags_class := (*C.GFlagsClass)(C.NULL)
 	if flagsClass != nil {
@@ -791,7 +974,11 @@ func FlagsGetValueByName(flagsClass *FlagsClass, name string) *FlagsValue {
 	return retGo
 }
 
-// FlagsGetValueByNick is a wrapper around the C function g_flags_get_value_by_nick.
+// Looks up a #GFlagsValue by nickname.
+/*
+
+C function : g_flags_get_value_by_nick
+*/
 func FlagsGetValueByNick(flagsClass *FlagsClass, nick string) *FlagsValue {
 	c_flags_class := (*C.GFlagsClass)(C.NULL)
 	if flagsClass != nil {
@@ -807,7 +994,15 @@ func FlagsGetValueByNick(flagsClass *FlagsClass, nick string) *FlagsValue {
 	return retGo
 }
 
-// FlagsRegisterStatic is a wrapper around the C function g_flags_register_static.
+// Registers a new static flags type with the name @name.
+//
+// It is normally more convenient to let [glib-mkenums][glib-mkenums]
+// generate a my_flags_get_type() function from a usual C enumeration
+// definition than to write one yourself using g_flags_register_static().
+/*
+
+C function : g_flags_register_static
+*/
 func FlagsRegisterStatic(name string, constStaticValues *FlagsValue) Type {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -823,7 +1018,10 @@ func FlagsRegisterStatic(name string, constStaticValues *FlagsValue) Type {
 	return retGo
 }
 
-// GtypeGetType is a wrapper around the C function g_gtype_get_type.
+/*
+
+C function : g_gtype_get_type
+*/
 func GtypeGetType() Type {
 	retC := C.g_gtype_get_type()
 	retGo := (Type)(retC)
@@ -857,7 +1055,16 @@ func GtypeGetType() Type {
 
 // Unsupported : g_param_spec_pointer : return type : Blacklisted record : GParamSpec
 
-// ParamSpecPoolNew is a wrapper around the C function g_param_spec_pool_new.
+// Creates a new #GParamSpecPool.
+//
+// If @type_prefixing is %TRUE, lookups in the newly created pool will
+// allow to specify the owner as a colon-separated prefix of the
+// property name, like "GtkContainer:border-width". This feature is
+// deprecated, so you should always set @type_prefixing to %FALSE.
+/*
+
+C function : g_param_spec_pool_new
+*/
 func ParamSpecPoolNew(typePrefixing bool) *ParamSpecPool {
 	c_type_prefixing :=
 		boolToGboolean(typePrefixing)
@@ -882,7 +1089,14 @@ func ParamSpecPoolNew(typePrefixing bool) *ParamSpecPool {
 
 // Unsupported : g_param_spec_value_array : unsupported parameter element_spec : Blacklisted record : GParamSpec
 
-// ParamTypeRegisterStatic is a wrapper around the C function g_param_type_register_static.
+// Registers @name as the name of a new static type derived from
+// #G_TYPE_PARAM. The type system uses the information contained in
+// the #GParamSpecTypeInfo structure pointed to by @info to manage the
+// #GParamSpec type and its instances.
+/*
+
+C function : g_param_type_register_static
+*/
 func ParamTypeRegisterStatic(name string, pspecInfo *ParamSpecTypeInfo) Type {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -908,7 +1122,12 @@ func ParamTypeRegisterStatic(name string, pspecInfo *ParamSpecTypeInfo) Type {
 
 // Unsupported : g_param_values_cmp : unsupported parameter pspec : Blacklisted record : GParamSpec
 
-// PointerTypeRegisterStatic is a wrapper around the C function g_pointer_type_register_static.
+// Creates a new %G_TYPE_POINTER derived type id for a new
+// pointer type with name @name.
+/*
+
+C function : g_pointer_type_register_static
+*/
 func PointerTypeRegisterStatic(name string) Type {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -923,7 +1142,11 @@ func PointerTypeRegisterStatic(name string) Type {
 
 // Unsupported : g_signal_chain_from_overridden : unsupported parameter instance_and_params :
 
-// SignalConnectClosure is a wrapper around the C function g_signal_connect_closure.
+// Connects a closure to a signal for a particular object.
+/*
+
+C function : g_signal_connect_closure
+*/
 func SignalConnectClosure(instance uintptr, detailedSignal string, closure *Closure, after bool) uint64 {
 	c_instance := (C.gpointer)(instance)
 
@@ -944,7 +1167,11 @@ func SignalConnectClosure(instance uintptr, detailedSignal string, closure *Clos
 	return retGo
 }
 
-// SignalConnectClosureById is a wrapper around the C function g_signal_connect_closure_by_id.
+// Connects a closure to a signal for a particular object.
+/*
+
+C function : g_signal_connect_closure_by_id
+*/
 func SignalConnectClosureById(instance uintptr, signalId uint32, detail glib.Quark, closure *Closure, after bool) uint64 {
 	c_instance := (C.gpointer)(instance)
 
@@ -978,7 +1205,11 @@ func SignalConnectClosureById(instance uintptr, signalId uint32, detail glib.Qua
 
 // Unsupported : g_signal_emitv : unsupported parameter instance_and_params :
 
-// SignalGetInvocationHint is a wrapper around the C function g_signal_get_invocation_hint.
+// Returns the invocation hint of the innermost signal emission of instance.
+/*
+
+C function : g_signal_get_invocation_hint
+*/
 func SignalGetInvocationHint(instance uintptr) *SignalInvocationHint {
 	c_instance := (C.gpointer)(instance)
 
@@ -988,7 +1219,18 @@ func SignalGetInvocationHint(instance uintptr) *SignalInvocationHint {
 	return retGo
 }
 
-// SignalHandlerBlock is a wrapper around the C function g_signal_handler_block.
+// Blocks a handler of an instance so it will not be called during any
+// signal emissions unless it is unblocked again. Thus "blocking" a
+// signal handler means to temporarily deactive it, a signal handler
+// has to be unblocked exactly the same amount of times it has been
+// blocked before to become active again.
+//
+// The @handler_id has to be a valid signal handler id, connected to a
+// signal of @instance.
+/*
+
+C function : g_signal_handler_block
+*/
 func SignalHandlerBlock(instance uintptr, handlerId uint64) {
 	c_instance := (C.gpointer)(instance)
 
@@ -999,7 +1241,16 @@ func SignalHandlerBlock(instance uintptr, handlerId uint64) {
 	return
 }
 
-// SignalHandlerDisconnect is a wrapper around the C function g_signal_handler_disconnect.
+// Disconnects a handler from an instance so it will not be called during
+// any future or currently ongoing emissions of the signal it has been
+// connected to. The @handler_id becomes invalid and may be reused.
+//
+// The @handler_id has to be a valid signal handler id, connected to a
+// signal of @instance.
+/*
+
+C function : g_signal_handler_disconnect
+*/
 func SignalHandlerDisconnect(instance uintptr, handlerId uint64) {
 	c_instance := (C.gpointer)(instance)
 
@@ -1010,7 +1261,15 @@ func SignalHandlerDisconnect(instance uintptr, handlerId uint64) {
 	return
 }
 
-// SignalHandlerFind is a wrapper around the C function g_signal_handler_find.
+// Finds the first signal handler that matches certain selection criteria.
+// The criteria mask is passed as an OR-ed combination of #GSignalMatchType
+// flags, and the criteria values are passed as arguments.
+// The match @mask has to be non-0 for successful matches.
+// If no handler was found, 0 is returned.
+/*
+
+C function : g_signal_handler_find
+*/
 func SignalHandlerFind(instance uintptr, mask SignalMatchType, signalId uint32, detail glib.Quark, closure *Closure, func_ uintptr, data uintptr) uint64 {
 	c_instance := (C.gpointer)(instance)
 
@@ -1035,7 +1294,11 @@ func SignalHandlerFind(instance uintptr, mask SignalMatchType, signalId uint32, 
 	return retGo
 }
 
-// SignalHandlerIsConnected is a wrapper around the C function g_signal_handler_is_connected.
+// Returns whether @handler_id is the ID of a handler connected to @instance.
+/*
+
+C function : g_signal_handler_is_connected
+*/
 func SignalHandlerIsConnected(instance uintptr, handlerId uint64) bool {
 	c_instance := (C.gpointer)(instance)
 
@@ -1047,7 +1310,23 @@ func SignalHandlerIsConnected(instance uintptr, handlerId uint64) bool {
 	return retGo
 }
 
-// SignalHandlerUnblock is a wrapper around the C function g_signal_handler_unblock.
+// Undoes the effect of a previous g_signal_handler_block() call.  A
+// blocked handler is skipped during signal emissions and will not be
+// invoked, unblocking it (for exactly the amount of times it has been
+// blocked before) reverts its "blocked" state, so the handler will be
+// recognized by the signal system and is called upon future or
+// currently ongoing signal emissions (since the order in which
+// handlers are called during signal emissions is deterministic,
+// whether the unblocked handler in question is called as part of a
+// currently ongoing emission depends on how far that emission has
+// proceeded yet).
+//
+// The @handler_id has to be a valid id of a signal handler that is
+// connected to a signal of @instance and is currently blocked.
+/*
+
+C function : g_signal_handler_unblock
+*/
 func SignalHandlerUnblock(instance uintptr, handlerId uint64) {
 	c_instance := (C.gpointer)(instance)
 
@@ -1058,7 +1337,17 @@ func SignalHandlerUnblock(instance uintptr, handlerId uint64) {
 	return
 }
 
-// SignalHandlersBlockMatched is a wrapper around the C function g_signal_handlers_block_matched.
+// Blocks all handlers on an instance that match a certain selection criteria.
+// The criteria mask is passed as an OR-ed combination of #GSignalMatchType
+// flags, and the criteria values are passed as arguments.
+// Passing at least one of the %G_SIGNAL_MATCH_CLOSURE, %G_SIGNAL_MATCH_FUNC
+// or %G_SIGNAL_MATCH_DATA match flags is required for successful matches.
+// If no handlers were found, 0 is returned, the number of blocked handlers
+// otherwise.
+/*
+
+C function : g_signal_handlers_block_matched
+*/
 func SignalHandlersBlockMatched(instance uintptr, mask SignalMatchType, signalId uint32, detail glib.Quark, closure *Closure, func_ uintptr, data uintptr) uint32 {
 	c_instance := (C.gpointer)(instance)
 
@@ -1083,7 +1372,13 @@ func SignalHandlersBlockMatched(instance uintptr, mask SignalMatchType, signalId
 	return retGo
 }
 
-// SignalHandlersDestroy is a wrapper around the C function g_signal_handlers_destroy.
+// Destroy all signal handlers of a type instance. This function is
+// an implementation detail of the #GObject dispose implementation,
+// and should not be used outside of the type system.
+/*
+
+C function : g_signal_handlers_destroy
+*/
 func SignalHandlersDestroy(instance uintptr) {
 	c_instance := (C.gpointer)(instance)
 
@@ -1092,7 +1387,18 @@ func SignalHandlersDestroy(instance uintptr) {
 	return
 }
 
-// SignalHandlersDisconnectMatched is a wrapper around the C function g_signal_handlers_disconnect_matched.
+// Disconnects all handlers on an instance that match a certain
+// selection criteria. The criteria mask is passed as an OR-ed
+// combination of #GSignalMatchType flags, and the criteria values are
+// passed as arguments.  Passing at least one of the
+// %G_SIGNAL_MATCH_CLOSURE, %G_SIGNAL_MATCH_FUNC or
+// %G_SIGNAL_MATCH_DATA match flags is required for successful
+// matches.  If no handlers were found, 0 is returned, the number of
+// disconnected handlers otherwise.
+/*
+
+C function : g_signal_handlers_disconnect_matched
+*/
 func SignalHandlersDisconnectMatched(instance uintptr, mask SignalMatchType, signalId uint32, detail glib.Quark, closure *Closure, func_ uintptr, data uintptr) uint32 {
 	c_instance := (C.gpointer)(instance)
 
@@ -1117,7 +1423,18 @@ func SignalHandlersDisconnectMatched(instance uintptr, mask SignalMatchType, sig
 	return retGo
 }
 
-// SignalHandlersUnblockMatched is a wrapper around the C function g_signal_handlers_unblock_matched.
+// Unblocks all handlers on an instance that match a certain selection
+// criteria. The criteria mask is passed as an OR-ed combination of
+// #GSignalMatchType flags, and the criteria values are passed as arguments.
+// Passing at least one of the %G_SIGNAL_MATCH_CLOSURE, %G_SIGNAL_MATCH_FUNC
+// or %G_SIGNAL_MATCH_DATA match flags is required for successful matches.
+// If no handlers were found, 0 is returned, the number of unblocked handlers
+// otherwise. The match criteria should not apply to any handlers that are
+// not currently blocked.
+/*
+
+C function : g_signal_handlers_unblock_matched
+*/
 func SignalHandlersUnblockMatched(instance uintptr, mask SignalMatchType, signalId uint32, detail glib.Quark, closure *Closure, func_ uintptr, data uintptr) uint32 {
 	c_instance := (C.gpointer)(instance)
 
@@ -1142,7 +1459,26 @@ func SignalHandlersUnblockMatched(instance uintptr, mask SignalMatchType, signal
 	return retGo
 }
 
-// SignalHasHandlerPending is a wrapper around the C function g_signal_has_handler_pending.
+// Returns whether there are any handlers connected to @instance for the
+// given signal id and detail.
+//
+// If @detail is 0 then it will only match handlers that were connected
+// without detail.  If @detail is non-zero then it will match handlers
+// connected both without detail and with the given detail.  This is
+// consistent with how a signal emitted with @detail would be delivered
+// to those handlers.
+//
+// Since 2.46 this also checks for a non-default class closure being
+// installed, as this is basically always what you want.
+//
+// One example of when you might use this is when the arguments to the
+// signal are difficult to compute. A class implementor may opt to not
+// emit the signal if no one is attached anyway, thus saving the cost
+// of building the arguments.
+/*
+
+C function : g_signal_has_handler_pending
+*/
 func SignalHasHandlerPending(instance uintptr, signalId uint32, detail glib.Quark, mayBeBlocked bool) bool {
 	c_instance := (C.gpointer)(instance)
 
@@ -1161,7 +1497,17 @@ func SignalHasHandlerPending(instance uintptr, signalId uint32, detail glib.Quar
 
 // Unsupported : g_signal_list_ids : no return type
 
-// SignalLookup is a wrapper around the C function g_signal_lookup.
+// Given the name of the signal and the type of object it connects to, gets
+// the signal's identifying integer. Emitting the signal by number is
+// somewhat faster than using the name each time.
+//
+// Also tries the ancestors of the given type.
+//
+// See g_signal_new() for details on allowed signal names.
+/*
+
+C function : g_signal_lookup
+*/
 func SignalLookup(name string, itype Type) uint32 {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -1174,7 +1520,13 @@ func SignalLookup(name string, itype Type) uint32 {
 	return retGo
 }
 
-// SignalName is a wrapper around the C function g_signal_name.
+// Given the signal's identifier, finds its name.
+//
+// Two different signals may have the same name, if they have differing types.
+/*
+
+C function : g_signal_name
+*/
 func SignalName(signalId uint32) string {
 	c_signal_id := (C.guint)(signalId)
 
@@ -1190,7 +1542,17 @@ func SignalName(signalId uint32) string {
 
 // Unsupported : g_signal_newv : unsupported parameter accumulator : no type generator for SignalAccumulator (GSignalAccumulator) for param accumulator
 
-// SignalOverrideClassClosure is a wrapper around the C function g_signal_override_class_closure.
+// Overrides the class closure (i.e. the default handler) for the given signal
+// for emissions on instances of @instance_type. @instance_type must be derived
+// from the type to which the signal belongs.
+//
+// See g_signal_chain_from_overridden() and
+// g_signal_chain_from_overridden_handler() for how to chain up to the
+// parent class closure from inside the overridden one.
+/*
+
+C function : g_signal_override_class_closure
+*/
 func SignalOverrideClassClosure(signalId uint32, instanceType Type, classClosure *Closure) {
 	c_signal_id := (C.guint)(signalId)
 
@@ -1206,7 +1568,12 @@ func SignalOverrideClassClosure(signalId uint32, instanceType Type, classClosure
 	return
 }
 
-// SignalParseName is a wrapper around the C function g_signal_parse_name.
+// Internal function to parse a signal name into its @signal_id
+// and @detail quark.
+/*
+
+C function : g_signal_parse_name
+*/
 func SignalParseName(detailedSignal string, itype Type, forceDetailQuark bool) (bool, uint32, glib.Quark) {
 	c_detailed_signal := C.CString(detailedSignal)
 	defer C.free(unsafe.Pointer(c_detailed_signal))
@@ -1230,7 +1597,16 @@ func SignalParseName(detailedSignal string, itype Type, forceDetailQuark bool) (
 	return retGo, signalIdP, detailP
 }
 
-// SignalQuery_ is a wrapper around the C function g_signal_query.
+// Queries the signal system for in-depth information about a
+// specific signal. This function will fill in a user-provided
+// structure to hold signal-specific information. If an invalid
+// signal id is passed in, the @signal_id member of the #GSignalQuery
+// is 0. All members filled into the #GSignalQuery structure should
+// be considered constant and have to be left untouched.
+/*
+
+C function : g_signal_query
+*/
 func SignalQuery_(signalId uint32) *SignalQuery {
 	c_signal_id := (C.guint)(signalId)
 
@@ -1243,7 +1619,11 @@ func SignalQuery_(signalId uint32) *SignalQuery {
 	return query
 }
 
-// SignalRemoveEmissionHook is a wrapper around the C function g_signal_remove_emission_hook.
+// Deletes an emission hook.
+/*
+
+C function : g_signal_remove_emission_hook
+*/
 func SignalRemoveEmissionHook(signalId uint32, hookId uint64) {
 	c_signal_id := (C.guint)(signalId)
 
@@ -1254,7 +1634,17 @@ func SignalRemoveEmissionHook(signalId uint32, hookId uint64) {
 	return
 }
 
-// SignalStopEmission is a wrapper around the C function g_signal_stop_emission.
+// Stops a signal's current emission.
+//
+// This will prevent the default method from running, if the signal was
+// %G_SIGNAL_RUN_LAST and you connected normally (i.e. without the "after"
+// flag).
+//
+// Prints a warning if used on a signal which isn't being emitted.
+/*
+
+C function : g_signal_stop_emission
+*/
 func SignalStopEmission(instance uintptr, signalId uint32, detail glib.Quark) {
 	c_instance := (C.gpointer)(instance)
 
@@ -1267,7 +1657,14 @@ func SignalStopEmission(instance uintptr, signalId uint32, detail glib.Quark) {
 	return
 }
 
-// SignalStopEmissionByName is a wrapper around the C function g_signal_stop_emission_by_name.
+// Stops a signal's current emission.
+//
+// This is just like g_signal_stop_emission() except it will look up the
+// signal id for you.
+/*
+
+C function : g_signal_stop_emission_by_name
+*/
 func SignalStopEmissionByName(instance uintptr, detailedSignal string) {
 	c_instance := (C.gpointer)(instance)
 
@@ -1279,7 +1676,13 @@ func SignalStopEmissionByName(instance uintptr, detailedSignal string) {
 	return
 }
 
-// SignalTypeCclosureNew is a wrapper around the C function g_signal_type_cclosure_new.
+// Creates a new closure which invokes the function found at the offset
+// @struct_offset in the class structure of the interface or classed type
+// identified by @itype.
+/*
+
+C function : g_signal_type_cclosure_new
+*/
 func SignalTypeCclosureNew(itype Type, structOffset uint32) *Closure {
 	c_itype := (C.GType)(itype)
 
@@ -1291,7 +1694,15 @@ func SignalTypeCclosureNew(itype Type, structOffset uint32) *Closure {
 	return retGo
 }
 
-// SourceSetClosure is a wrapper around the C function g_source_set_closure.
+// Set the callback for a source as a #GClosure.
+//
+// If the source is not one of the standard GLib types, the @closure_callback
+// and @closure_marshal fields of the #GSourceFuncs structure must have been
+// filled in with pointers to appropriate functions.
+/*
+
+C function : g_source_set_closure
+*/
 func SourceSetClosure(source *glib.Source, closure *Closure) {
 	c_source := (*C.GSource)(C.NULL)
 	if source != nil {
@@ -1308,7 +1719,20 @@ func SourceSetClosure(source *glib.Source, closure *Closure) {
 	return
 }
 
-// SourceSetDummyCallback is a wrapper around the C function g_source_set_dummy_callback.
+// Sets a dummy callback for @source. The callback will do nothing, and
+// if the source expects a #gboolean return value, it will return %TRUE.
+// (If the source expects any other type of return value, it will return
+// a 0/%NULL value; whatever g_value_init() initializes a #GValue to for
+// that type.)
+//
+// If the source is not one of the standard GLib types, the
+// @closure_callback and @closure_marshal fields of the #GSourceFuncs
+// structure must have been filled in with pointers to appropriate
+// functions.
+/*
+
+C function : g_source_set_dummy_callback
+*/
 func SourceSetDummyCallback(source *glib.Source) {
 	c_source := (*C.GSource)(C.NULL)
 	if source != nil {
@@ -1320,7 +1744,14 @@ func SourceSetDummyCallback(source *glib.Source) {
 	return
 }
 
-// StrdupValueContents is a wrapper around the C function g_strdup_value_contents.
+// Return a newly allocated string, which describes the contents of a
+// #GValue.  The main purpose of this function is to describe #GValue
+// contents for debugging output, the way in which the contents are
+// described may change between different GLib versions.
+/*
+
+C function : g_strdup_value_contents
+*/
 func StrdupValueContents(value *Value) string {
 	c_value := (*C.GValue)(C.NULL)
 	if value != nil {
@@ -1336,7 +1767,10 @@ func StrdupValueContents(value *Value) string {
 
 // Unsupported : g_type_add_class_cache_func : unsupported parameter cache_func : no type generator for TypeClassCacheFunc (GTypeClassCacheFunc) for param cache_func
 
-// TypeAddInstancePrivate is a wrapper around the C function g_type_add_instance_private.
+/*
+
+C function : g_type_add_instance_private
+*/
 func TypeAddInstancePrivate(classType Type, privateSize uint64) int32 {
 	c_class_type := (C.GType)(classType)
 
@@ -1348,7 +1782,13 @@ func TypeAddInstancePrivate(classType Type, privateSize uint64) int32 {
 	return retGo
 }
 
-// TypeAddInterfaceDynamic is a wrapper around the C function g_type_add_interface_dynamic.
+// Adds the dynamic @interface_type to @instantiable_type. The information
+// contained in the #GTypePlugin structure pointed to by @plugin
+// is used to manage the relationship.
+/*
+
+C function : g_type_add_interface_dynamic
+*/
 func TypeAddInterfaceDynamic(instanceType Type, interfaceType Type, plugin *TypePlugin) {
 	c_instance_type := (C.GType)(instanceType)
 
@@ -1361,7 +1801,13 @@ func TypeAddInterfaceDynamic(instanceType Type, interfaceType Type, plugin *Type
 	return
 }
 
-// TypeAddInterfaceStatic is a wrapper around the C function g_type_add_interface_static.
+// Adds the static @interface_type to @instantiable_type.
+// The information contained in the #GInterfaceInfo structure
+// pointed to by @info is used to manage the relationship.
+/*
+
+C function : g_type_add_interface_static
+*/
 func TypeAddInterfaceStatic(instanceType Type, interfaceType Type, info *InterfaceInfo) {
 	c_instance_type := (C.GType)(instanceType)
 
@@ -1377,7 +1823,10 @@ func TypeAddInterfaceStatic(instanceType Type, interfaceType Type, info *Interfa
 	return
 }
 
-// TypeCheckClassCast is a wrapper around the C function g_type_check_class_cast.
+/*
+
+C function : g_type_check_class_cast
+*/
 func TypeCheckClassCast(gClass *TypeClass, isAType Type) *TypeClass {
 	c_g_class := (*C.GTypeClass)(C.NULL)
 	if gClass != nil {
@@ -1392,7 +1841,10 @@ func TypeCheckClassCast(gClass *TypeClass, isAType Type) *TypeClass {
 	return retGo
 }
 
-// TypeCheckClassIsA is a wrapper around the C function g_type_check_class_is_a.
+/*
+
+C function : g_type_check_class_is_a
+*/
 func TypeCheckClassIsA(gClass *TypeClass, isAType Type) bool {
 	c_g_class := (*C.GTypeClass)(C.NULL)
 	if gClass != nil {
@@ -1407,7 +1859,12 @@ func TypeCheckClassIsA(gClass *TypeClass, isAType Type) bool {
 	return retGo
 }
 
-// TypeCheckInstance is a wrapper around the C function g_type_check_instance.
+// Private helper function to aid implementation of the
+// G_TYPE_CHECK_INSTANCE() macro.
+/*
+
+C function : g_type_check_instance
+*/
 func TypeCheckInstance(instance *TypeInstance) bool {
 	c_instance := (*C.GTypeInstance)(C.NULL)
 	if instance != nil {
@@ -1420,7 +1877,10 @@ func TypeCheckInstance(instance *TypeInstance) bool {
 	return retGo
 }
 
-// TypeCheckInstanceCast is a wrapper around the C function g_type_check_instance_cast.
+/*
+
+C function : g_type_check_instance_cast
+*/
 func TypeCheckInstanceCast(instance *TypeInstance, ifaceType Type) *TypeInstance {
 	c_instance := (*C.GTypeInstance)(C.NULL)
 	if instance != nil {
@@ -1435,7 +1895,10 @@ func TypeCheckInstanceCast(instance *TypeInstance, ifaceType Type) *TypeInstance
 	return retGo
 }
 
-// TypeCheckInstanceIsA is a wrapper around the C function g_type_check_instance_is_a.
+/*
+
+C function : g_type_check_instance_is_a
+*/
 func TypeCheckInstanceIsA(instance *TypeInstance, ifaceType Type) bool {
 	c_instance := (*C.GTypeInstance)(C.NULL)
 	if instance != nil {
@@ -1450,7 +1913,10 @@ func TypeCheckInstanceIsA(instance *TypeInstance, ifaceType Type) bool {
 	return retGo
 }
 
-// TypeCheckInstanceIsFundamentallyA is a wrapper around the C function g_type_check_instance_is_fundamentally_a.
+/*
+
+C function : g_type_check_instance_is_fundamentally_a
+*/
 func TypeCheckInstanceIsFundamentallyA(instance *TypeInstance, fundamentalType Type) bool {
 	c_instance := (*C.GTypeInstance)(C.NULL)
 	if instance != nil {
@@ -1465,7 +1931,10 @@ func TypeCheckInstanceIsFundamentallyA(instance *TypeInstance, fundamentalType T
 	return retGo
 }
 
-// TypeCheckIsValueType is a wrapper around the C function g_type_check_is_value_type.
+/*
+
+C function : g_type_check_is_value_type
+*/
 func TypeCheckIsValueType(type_ Type) bool {
 	c_type := (C.GType)(type_)
 
@@ -1475,7 +1944,10 @@ func TypeCheckIsValueType(type_ Type) bool {
 	return retGo
 }
 
-// TypeCheckValue is a wrapper around the C function g_type_check_value.
+/*
+
+C function : g_type_check_value
+*/
 func TypeCheckValue(value *Value) bool {
 	c_value := (*C.GValue)(C.NULL)
 	if value != nil {
@@ -1488,7 +1960,10 @@ func TypeCheckValue(value *Value) bool {
 	return retGo
 }
 
-// TypeCheckValueHolds is a wrapper around the C function g_type_check_value_holds.
+/*
+
+C function : g_type_check_value_holds
+*/
 func TypeCheckValueHolds(value *Value, type_ Type) bool {
 	c_value := (*C.GValue)(C.NULL)
 	if value != nil {
@@ -1505,7 +1980,10 @@ func TypeCheckValueHolds(value *Value, type_ Type) bool {
 
 // Unsupported : g_type_children : no return type
 
-// TypeClassAdjustPrivateOffset is a wrapper around the C function g_type_class_adjust_private_offset.
+/*
+
+C function : g_type_class_adjust_private_offset
+*/
 func TypeClassAdjustPrivateOffset(gClass uintptr, privateSizeOrOffset int32) {
 	c_g_class := (C.gpointer)(gClass)
 
@@ -1516,7 +1994,15 @@ func TypeClassAdjustPrivateOffset(gClass uintptr, privateSizeOrOffset int32) {
 	return
 }
 
-// TypeClassPeek is a wrapper around the C function g_type_class_peek.
+// This function is essentially the same as g_type_class_ref(),
+// except that the classes reference count isn't incremented.
+// As a consequence, this function may return %NULL if the class
+// of the type passed in does not currently exist (hasn't been
+// referenced before).
+/*
+
+C function : g_type_class_peek
+*/
 func TypeClassPeek(type_ Type) uintptr {
 	c_type := (C.GType)(type_)
 
@@ -1526,7 +2012,13 @@ func TypeClassPeek(type_ Type) uintptr {
 	return retGo
 }
 
-// TypeClassRef is a wrapper around the C function g_type_class_ref.
+// Increments the reference count of the class structure belonging to
+// @type. This function will demand-create the class if it doesn't
+// exist already.
+/*
+
+C function : g_type_class_ref
+*/
 func TypeClassRef(type_ Type) uintptr {
 	c_type := (C.GType)(type_)
 
@@ -1536,7 +2028,26 @@ func TypeClassRef(type_ Type) uintptr {
 	return retGo
 }
 
-// TypeCreateInstance is a wrapper around the C function g_type_create_instance.
+// Creates and initializes an instance of @type if @type is valid and
+// can be instantiated. The type system only performs basic allocation
+// and structure setups for instances: actual instance creation should
+// happen through functions supplied by the type's fundamental type
+// implementation.  So use of g_type_create_instance() is reserved for
+// implementators of fundamental types only. E.g. instances of the
+// #GObject hierarchy should be created via g_object_new() and never
+// directly through g_type_create_instance() which doesn't handle things
+// like singleton objects or object construction.
+//
+// The extended members of the returned instance are guaranteed to be filled
+// with zeros.
+//
+// Note: Do not use this function, unless you're implementing a
+// fundamental type. Also language bindings should not use this
+// function, but g_object_new() instead.
+/*
+
+C function : g_type_create_instance
+*/
 func TypeCreateInstance(type_ Type) *TypeInstance {
 	c_type := (C.GType)(type_)
 
@@ -1546,7 +2057,12 @@ func TypeCreateInstance(type_ Type) *TypeInstance {
 	return retGo
 }
 
-// TypeDepth is a wrapper around the C function g_type_depth.
+// Returns the length of the ancestry of the passed in type. This
+// includes the type itself, so that e.g. a fundamental type has depth 1.
+/*
+
+C function : g_type_depth
+*/
 func TypeDepth(type_ Type) uint32 {
 	c_type := (C.GType)(type_)
 
@@ -1556,7 +2072,15 @@ func TypeDepth(type_ Type) uint32 {
 	return retGo
 }
 
-// TypeFreeInstance is a wrapper around the C function g_type_free_instance.
+// Frees an instance of a type, returning it to the instance pool for
+// the type, if there is one.
+//
+// Like g_type_create_instance(), this function is reserved for
+// implementors of fundamental types.
+/*
+
+C function : g_type_free_instance
+*/
 func TypeFreeInstance(instance *TypeInstance) {
 	c_instance := (*C.GTypeInstance)(C.NULL)
 	if instance != nil {
@@ -1568,7 +2092,14 @@ func TypeFreeInstance(instance *TypeInstance) {
 	return
 }
 
-// TypeFromName is a wrapper around the C function g_type_from_name.
+// Lookup the type ID from a given type name, returning 0 if no type
+// has been registered under this name (this is the preferred method
+// to find out by name whether a specific type has been registered
+// yet).
+/*
+
+C function : g_type_from_name
+*/
 func TypeFromName(name string) Type {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -1579,7 +2110,12 @@ func TypeFromName(name string) Type {
 	return retGo
 }
 
-// TypeFundamental is a wrapper around the C function g_type_fundamental.
+// Internal function, used to extract the fundamental type ID portion.
+// Use G_TYPE_FUNDAMENTAL() instead.
+/*
+
+C function : g_type_fundamental
+*/
 func TypeFundamental(typeId Type) Type {
 	c_type_id := (C.GType)(typeId)
 
@@ -1589,7 +2125,14 @@ func TypeFundamental(typeId Type) Type {
 	return retGo
 }
 
-// TypeFundamentalNext is a wrapper around the C function g_type_fundamental_next.
+// Returns the next free fundamental type id which can be used to
+// register a new fundamental type with g_type_register_fundamental().
+// The returned type ID represents the highest currently registered
+// fundamental type identifier.
+/*
+
+C function : g_type_fundamental_next
+*/
 func TypeFundamentalNext() Type {
 	retC := C.g_type_fundamental_next()
 	retGo := (Type)(retC)
@@ -1597,7 +2140,11 @@ func TypeFundamentalNext() Type {
 	return retGo
 }
 
-// TypeGetPlugin is a wrapper around the C function g_type_get_plugin.
+// Returns the #GTypePlugin structure for @type.
+/*
+
+C function : g_type_get_plugin
+*/
 func TypeGetPlugin(type_ Type) *TypePlugin {
 	c_type := (C.GType)(type_)
 
@@ -1607,7 +2154,16 @@ func TypeGetPlugin(type_ Type) *TypePlugin {
 	return retGo
 }
 
-// TypeGetQdata is a wrapper around the C function g_type_get_qdata.
+// Obtains data which has previously been attached to @type
+// with g_type_set_qdata().
+//
+// Note that this does not take subtyping into account; data
+// attached to one type with g_type_set_qdata() cannot
+// be retrieved from a subtype using g_type_get_qdata().
+/*
+
+C function : g_type_get_qdata
+*/
 func TypeGetQdata(type_ Type, quark glib.Quark) uintptr {
 	c_type := (C.GType)(type_)
 
@@ -1619,14 +2175,29 @@ func TypeGetQdata(type_ Type, quark glib.Quark) uintptr {
 	return retGo
 }
 
-// TypeInit is a wrapper around the C function g_type_init.
+// This function used to initialise the type system.  Since GLib 2.36,
+// the type system is initialised automatically and this function does
+// nothing.
+/*
+
+C function : g_type_init
+*/
 func TypeInit() {
 	C.g_type_init()
 
 	return
 }
 
-// TypeInitWithDebugFlags is a wrapper around the C function g_type_init_with_debug_flags.
+// This function used to initialise the type system with debugging
+// flags.  Since GLib 2.36, the type system is initialised automatically
+// and this function does nothing.
+//
+// If you need to enable debugging features, use the GOBJECT_DEBUG
+// environment variable.
+/*
+
+C function : g_type_init_with_debug_flags
+*/
 func TypeInitWithDebugFlags(debugFlags TypeDebugFlags) {
 	c_debug_flags := (C.GTypeDebugFlags)(debugFlags)
 
@@ -1635,7 +2206,15 @@ func TypeInitWithDebugFlags(debugFlags TypeDebugFlags) {
 	return
 }
 
-// TypeInterfaceAddPrerequisite is a wrapper around the C function g_type_interface_add_prerequisite.
+// Adds @prerequisite_type to the list of prerequisites of @interface_type.
+// This means that any type implementing @interface_type must also implement
+// @prerequisite_type. Prerequisites can be thought of as an alternative to
+// interface derivation (which GType doesn't support). An interface can have
+// at most one instantiatable prerequisite type.
+/*
+
+C function : g_type_interface_add_prerequisite
+*/
 func TypeInterfaceAddPrerequisite(interfaceType Type, prerequisiteType Type) {
 	c_interface_type := (C.GType)(interfaceType)
 
@@ -1646,7 +2225,14 @@ func TypeInterfaceAddPrerequisite(interfaceType Type, prerequisiteType Type) {
 	return
 }
 
-// TypeInterfaceGetPlugin is a wrapper around the C function g_type_interface_get_plugin.
+// Returns the #GTypePlugin structure for the dynamic interface
+// @interface_type which has been added to @instance_type, or %NULL
+// if @interface_type has not been added to @instance_type or does
+// not have a #GTypePlugin structure. See g_type_add_interface_dynamic().
+/*
+
+C function : g_type_interface_get_plugin
+*/
 func TypeInterfaceGetPlugin(instanceType Type, interfaceType Type) *TypePlugin {
 	c_instance_type := (C.GType)(instanceType)
 
@@ -1658,7 +2244,12 @@ func TypeInterfaceGetPlugin(instanceType Type, interfaceType Type) *TypePlugin {
 	return retGo
 }
 
-// TypeInterfacePeek is a wrapper around the C function g_type_interface_peek.
+// Returns the #GTypeInterface structure of an interface to which the
+// passed in class conforms.
+/*
+
+C function : g_type_interface_peek
+*/
 func TypeInterfacePeek(instanceClass uintptr, ifaceType Type) uintptr {
 	c_instance_class := (C.gpointer)(instanceClass)
 
@@ -1672,7 +2263,13 @@ func TypeInterfacePeek(instanceClass uintptr, ifaceType Type) uintptr {
 
 // Unsupported : g_type_interfaces : no return type
 
-// TypeIsA is a wrapper around the C function g_type_is_a.
+// If @is_a_type is a derivable type, check whether @type is a
+// descendant of @is_a_type. If @is_a_type is an interface, check
+// whether @type conforms to it.
+/*
+
+C function : g_type_is_a
+*/
 func TypeIsA(type_ Type, isAType Type) bool {
 	c_type := (C.GType)(type_)
 
@@ -1684,7 +2281,15 @@ func TypeIsA(type_ Type, isAType Type) bool {
 	return retGo
 }
 
-// TypeName is a wrapper around the C function g_type_name.
+// Get the unique name that is assigned to a type ID.  Note that this
+// function (like all other GType API) cannot cope with invalid type
+// IDs. %G_TYPE_INVALID may be passed to this function, as may be any
+// other validly registered type ID, but randomized type IDs should
+// not be passed in and will most likely lead to a crash.
+/*
+
+C function : g_type_name
+*/
 func TypeName(type_ Type) string {
 	c_type := (C.GType)(type_)
 
@@ -1694,7 +2299,10 @@ func TypeName(type_ Type) string {
 	return retGo
 }
 
-// TypeNameFromClass is a wrapper around the C function g_type_name_from_class.
+/*
+
+C function : g_type_name_from_class
+*/
 func TypeNameFromClass(gClass *TypeClass) string {
 	c_g_class := (*C.GTypeClass)(C.NULL)
 	if gClass != nil {
@@ -1707,7 +2315,10 @@ func TypeNameFromClass(gClass *TypeClass) string {
 	return retGo
 }
 
-// TypeNameFromInstance is a wrapper around the C function g_type_name_from_instance.
+/*
+
+C function : g_type_name_from_instance
+*/
 func TypeNameFromInstance(instance *TypeInstance) string {
 	c_instance := (*C.GTypeInstance)(C.NULL)
 	if instance != nil {
@@ -1720,7 +2331,17 @@ func TypeNameFromInstance(instance *TypeInstance) string {
 	return retGo
 }
 
-// TypeNextBase is a wrapper around the C function g_type_next_base.
+// Given a @leaf_type and a @root_type which is contained in its
+// anchestry, return the type that @root_type is the immediate parent
+// of. In other words, this function determines the type that is
+// derived directly from @root_type which is also a base class of
+// @leaf_type.  Given a root type and a leaf type, this function can
+// be used to determine the types and order in which the leaf type is
+// descended from the root type.
+/*
+
+C function : g_type_next_base
+*/
 func TypeNextBase(leafType Type, rootType Type) Type {
 	c_leaf_type := (C.GType)(leafType)
 
@@ -1732,7 +2353,12 @@ func TypeNextBase(leafType Type, rootType Type) Type {
 	return retGo
 }
 
-// TypeParent is a wrapper around the C function g_type_parent.
+// Return the direct parent type of the passed in type. If the passed
+// in type has no parent, i.e. is a fundamental type, 0 is returned.
+/*
+
+C function : g_type_parent
+*/
 func TypeParent(type_ Type) Type {
 	c_type := (C.GType)(type_)
 
@@ -1742,7 +2368,11 @@ func TypeParent(type_ Type) Type {
 	return retGo
 }
 
-// TypeQname is a wrapper around the C function g_type_qname.
+// Get the corresponding quark of the type IDs name.
+/*
+
+C function : g_type_qname
+*/
 func TypeQname(type_ Type) glib.Quark {
 	c_type := (C.GType)(type_)
 
@@ -1752,7 +2382,16 @@ func TypeQname(type_ Type) glib.Quark {
 	return retGo
 }
 
-// TypeQuery_ is a wrapper around the C function g_type_query.
+// Queries the type system for information about a specific type.
+// This function will fill in a user-provided structure to hold
+// type-specific information. If an invalid #GType is passed in, the
+// @type member of the #GTypeQuery is 0. All members filled into the
+// #GTypeQuery structure should be considered constant and have to be
+// left untouched.
+/*
+
+C function : g_type_query
+*/
 func TypeQuery_(type_ Type) *TypeQuery {
 	c_type := (C.GType)(type_)
 
@@ -1765,7 +2404,15 @@ func TypeQuery_(type_ Type) *TypeQuery {
 	return query
 }
 
-// TypeRegisterDynamic is a wrapper around the C function g_type_register_dynamic.
+// Registers @type_name as the name of a new dynamic type derived from
+// @parent_type.  The type system uses the information contained in the
+// #GTypePlugin structure pointed to by @plugin to manage the type and its
+// instances (if not abstract).  The value of @flags determines the nature
+// (e.g. abstract or not) of the type.
+/*
+
+C function : g_type_register_dynamic
+*/
 func TypeRegisterDynamic(parentType Type, typeName string, plugin *TypePlugin, flags TypeFlags) Type {
 	c_parent_type := (C.GType)(parentType)
 
@@ -1782,7 +2429,17 @@ func TypeRegisterDynamic(parentType Type, typeName string, plugin *TypePlugin, f
 	return retGo
 }
 
-// TypeRegisterFundamental is a wrapper around the C function g_type_register_fundamental.
+// Registers @type_id as the predefined identifier and @type_name as the
+// name of a fundamental type. If @type_id is already registered, or a
+// type named @type_name is already registered, the behaviour is undefined.
+// The type system uses the information contained in the #GTypeInfo structure
+// pointed to by @info and the #GTypeFundamentalInfo structure pointed to by
+// @finfo to manage the type and its instances. The value of @flags determines
+// additional characteristics of the fundamental type.
+/*
+
+C function : g_type_register_fundamental
+*/
 func TypeRegisterFundamental(typeId Type, typeName string, info *TypeInfo, finfo *TypeFundamentalInfo, flags TypeFlags) Type {
 	c_type_id := (C.GType)(typeId)
 
@@ -1807,7 +2464,15 @@ func TypeRegisterFundamental(typeId Type, typeName string, info *TypeInfo, finfo
 	return retGo
 }
 
-// TypeRegisterStatic is a wrapper around the C function g_type_register_static.
+// Registers @type_name as the name of a new static type derived from
+// @parent_type. The type system uses the information contained in the
+// #GTypeInfo structure pointed to by @info to manage the type and its
+// instances (if not abstract). The value of @flags determines the nature
+// (e.g. abstract or not) of the type.
+/*
+
+C function : g_type_register_static
+*/
 func TypeRegisterStatic(parentType Type, typeName string, info *TypeInfo, flags TypeFlags) Type {
 	c_parent_type := (C.GType)(parentType)
 
@@ -1829,7 +2494,11 @@ func TypeRegisterStatic(parentType Type, typeName string, info *TypeInfo, flags 
 
 // Unsupported : g_type_remove_class_cache_func : unsupported parameter cache_func : no type generator for TypeClassCacheFunc (GTypeClassCacheFunc) for param cache_func
 
-// TypeSetQdata is a wrapper around the C function g_type_set_qdata.
+// Attaches arbitrary data to a type.
+/*
+
+C function : g_type_set_qdata
+*/
 func TypeSetQdata(type_ Type, quark glib.Quark, data uintptr) {
 	c_type := (C.GType)(type_)
 
@@ -1842,7 +2511,10 @@ func TypeSetQdata(type_ Type, quark glib.Quark, data uintptr) {
 	return
 }
 
-// TypeTestFlags is a wrapper around the C function g_type_test_flags.
+/*
+
+C function : g_type_test_flags
+*/
 func TypeTestFlags(type_ Type, flags uint32) bool {
 	c_type := (C.GType)(type_)
 
@@ -1854,7 +2526,15 @@ func TypeTestFlags(type_ Type, flags uint32) bool {
 	return retGo
 }
 
-// TypeValueTablePeek is a wrapper around the C function g_type_value_table_peek.
+// Returns the location of the #GTypeValueTable associated with @type.
+//
+// Note that this function should only be used from source code
+// that implements or has internal knowledge of the implementation of
+// @type.
+/*
+
+C function : g_type_value_table_peek
+*/
 func TypeValueTablePeek(type_ Type) *TypeValueTable {
 	c_type := (C.GType)(type_)
 
@@ -1866,7 +2546,12 @@ func TypeValueTablePeek(type_ Type) *TypeValueTable {
 
 // Unsupported : g_value_register_transform_func : unsupported parameter transform_func : no type generator for ValueTransform (GValueTransform) for param transform_func
 
-// ValueTypeCompatible is a wrapper around the C function g_value_type_compatible.
+// Returns whether a #GValue of type @src_type can be copied into
+// a #GValue of type @dest_type.
+/*
+
+C function : g_value_type_compatible
+*/
 func ValueTypeCompatible(srcType Type, destType Type) bool {
 	c_src_type := (C.GType)(srcType)
 
@@ -1878,7 +2563,14 @@ func ValueTypeCompatible(srcType Type, destType Type) bool {
 	return retGo
 }
 
-// ValueTypeTransformable is a wrapper around the C function g_value_type_transformable.
+// Check whether g_value_transform() is able to transform values
+// of type @src_type into values of type @dest_type. Note that for
+// the types to be transformable, they must be compatible or a
+// transformation function must be registered.
+/*
+
+C function : g_value_type_transformable
+*/
 func ValueTypeTransformable(srcType Type, destType Type) bool {
 	c_src_type := (C.GType)(srcType)
 

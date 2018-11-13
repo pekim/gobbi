@@ -10,7 +10,14 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// EnumToString is a wrapper around the C function g_enum_to_string.
+// Pretty-prints @value in the form of the enum’s name.
+//
+// This is intended to be used for debugging purposes. The format of the output
+// may change in the future.
+/*
+
+C function : g_enum_to_string
+*/
 func EnumToString(gEnumType Type, value int32) string {
 	c_g_enum_type := (C.GType)(gEnumType)
 
@@ -23,7 +30,15 @@ func EnumToString(gEnumType Type, value int32) string {
 	return retGo
 }
 
-// FlagsToString is a wrapper around the C function g_flags_to_string.
+// Pretty-prints @value in the form of the flag names separated by ` | ` and
+// sorted. Any extra bits will be shown at the end as a hexadecimal number.
+//
+// This is intended to be used for debugging purposes. The format of the output
+// may change in the future.
+/*
+
+C function : g_flags_to_string
+*/
 func FlagsToString(flagsType Type, value uint32) string {
 	c_flags_type := (C.GType)(flagsType)
 

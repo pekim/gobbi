@@ -27,7 +27,11 @@ import "C"
 
 // Unsupported : g_initable_newv : unsupported parameter parameters :
 
-// ResolverErrorQuark is a wrapper around the C function g_resolver_error_quark.
+// Gets the #GResolver Error Quark.
+/*
+
+C function : g_resolver_error_quark
+*/
 func ResolverErrorQuark() glib.Quark {
 	retC := C.g_resolver_error_quark()
 	retGo := (glib.Quark)(retC)
@@ -35,7 +39,11 @@ func ResolverErrorQuark() glib.Quark {
 	return retGo
 }
 
-// SrvTargetListSort is a wrapper around the C function g_srv_target_list_sort.
+// Sorts @targets in place according to the algorithm in RFC 2782.
+/*
+
+C function : g_srv_target_list_sort
+*/
 func SrvTargetListSort(targets *glib.List) *glib.List {
 	c_targets := (*C.GList)(C.NULL)
 	if targets != nil {

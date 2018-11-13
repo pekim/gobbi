@@ -15,7 +15,10 @@ import "C"
 
 // Unsupported signal 'page-changed' for Document : unsupported parameter page_number : type gint :
 
-// GetCurrentPageNumber is a wrapper around the C function atk_document_get_current_page_number.
+/*
+
+C function : atk_document_get_current_page_number
+*/
 func (recv *Document) GetCurrentPageNumber() int32 {
 	retC := C.atk_document_get_current_page_number((*C.AtkDocument)(recv.native))
 	retGo := (int32)(retC)
@@ -23,7 +26,10 @@ func (recv *Document) GetCurrentPageNumber() int32 {
 	return retGo
 }
 
-// GetPageCount is a wrapper around the C function atk_document_get_page_count.
+/*
+
+C function : atk_document_get_page_count
+*/
 func (recv *Document) GetPageCount() int32 {
 	retC := C.atk_document_get_page_count((*C.AtkDocument)(recv.native))
 	retGo := (int32)(retC)
@@ -33,7 +39,11 @@ func (recv *Document) GetPageCount() int32 {
 
 // Unsupported : atk_table_cell_get_column_header_cells : no return type
 
-// GetColumnSpan is a wrapper around the C function atk_table_cell_get_column_span.
+// Returns the number of columns occupied by this cell accessible.
+/*
+
+C function : atk_table_cell_get_column_span
+*/
 func (recv *TableCell) GetColumnSpan() int32 {
 	retC := C.atk_table_cell_get_column_span((*C.AtkTableCell)(recv.native))
 	retGo := (int32)(retC)
@@ -41,7 +51,11 @@ func (recv *TableCell) GetColumnSpan() int32 {
 	return retGo
 }
 
-// GetPosition is a wrapper around the C function atk_table_cell_get_position.
+// Retrieves the tabular position of this cell.
+/*
+
+C function : atk_table_cell_get_position
+*/
 func (recv *TableCell) GetPosition() (bool, int32, int32) {
 	var c_row C.gint
 
@@ -57,7 +71,15 @@ func (recv *TableCell) GetPosition() (bool, int32, int32) {
 	return retGo, row, column
 }
 
-// GetRowColumnSpan is a wrapper around the C function atk_table_cell_get_row_column_span.
+// Gets the row and column indexes and span of this cell accessible.
+//
+// Note: If the object does not implement this function, then, by default, atk
+// will implement this function by calling get_row_span and get_column_span
+// on the object.
+/*
+
+C function : atk_table_cell_get_row_column_span
+*/
 func (recv *TableCell) GetRowColumnSpan() (bool, int32, int32, int32, int32) {
 	var c_row C.gint
 
@@ -83,7 +105,11 @@ func (recv *TableCell) GetRowColumnSpan() (bool, int32, int32, int32, int32) {
 
 // Unsupported : atk_table_cell_get_row_header_cells : no return type
 
-// GetRowSpan is a wrapper around the C function atk_table_cell_get_row_span.
+// Returns the number of rows occupied by this cell accessible.
+/*
+
+C function : atk_table_cell_get_row_span
+*/
 func (recv *TableCell) GetRowSpan() int32 {
 	retC := C.atk_table_cell_get_row_span((*C.AtkTableCell)(recv.native))
 	retGo := (int32)(retC)
@@ -91,7 +117,11 @@ func (recv *TableCell) GetRowSpan() int32 {
 	return retGo
 }
 
-// GetTable is a wrapper around the C function atk_table_cell_get_table.
+// Returns a reference to the accessible of the containing table.
+/*
+
+C function : atk_table_cell_get_table
+*/
 func (recv *TableCell) GetTable() *Object {
 	retC := C.atk_table_cell_get_table((*C.AtkTableCell)(recv.native))
 	retGo := ObjectNewFromC(unsafe.Pointer(retC))
@@ -101,7 +131,14 @@ func (recv *TableCell) GetTable() *Object {
 
 // Unsupported signal 'value-changed' for Value : unsupported parameter value : type gdouble :
 
-// GetIncrement is a wrapper around the C function atk_value_get_increment.
+// Gets the minimum increment by which the value of this object may be
+// changed.  If zero, the minimum increment is undefined, which may
+// mean that it is limited only by the floating point precision of the
+// platform.
+/*
+
+C function : atk_value_get_increment
+*/
 func (recv *Value) GetIncrement() float64 {
 	retC := C.atk_value_get_increment((*C.AtkValue)(recv.native))
 	retGo := (float64)(retC)
@@ -109,7 +146,11 @@ func (recv *Value) GetIncrement() float64 {
 	return retGo
 }
 
-// GetRange is a wrapper around the C function atk_value_get_range.
+// Gets the range of this object.
+/*
+
+C function : atk_value_get_range
+*/
 func (recv *Value) GetRange() *Range {
 	retC := C.atk_value_get_range((*C.AtkValue)(recv.native))
 	var retGo (*Range)
@@ -122,7 +163,12 @@ func (recv *Value) GetRange() *Range {
 	return retGo
 }
 
-// GetSubRanges is a wrapper around the C function atk_value_get_sub_ranges.
+// Gets the list of subranges defined for this object. See #AtkValue
+// introduction for examples of subranges and when to expose them.
+/*
+
+C function : atk_value_get_sub_ranges
+*/
 func (recv *Value) GetSubRanges() *glib.SList {
 	retC := C.atk_value_get_sub_ranges((*C.AtkValue)(recv.native))
 	retGo := glib.SListNewFromC(unsafe.Pointer(retC))
@@ -130,7 +176,13 @@ func (recv *Value) GetSubRanges() *glib.SList {
 	return retGo
 }
 
-// GetValueAndText is a wrapper around the C function atk_value_get_value_and_text.
+// Gets the current value and the human readable text alternative of
+// @obj. @text is a newly created string, that must be freed by the
+// caller. Can be NULL if no descriptor is available.
+/*
+
+C function : atk_value_get_value_and_text
+*/
 func (recv *Value) GetValueAndText() (float64, string) {
 	var c_value C.gdouble
 
@@ -146,7 +198,24 @@ func (recv *Value) GetValueAndText() (float64, string) {
 	return value, text
 }
 
-// SetValue is a wrapper around the C function atk_value_set_value.
+// Sets the value of this object.
+//
+// This method is intended to provide a way to change the value of the
+// object. In any case, it is possible that the value can't be
+// modified (ie: a read-only component). If the value changes due this
+// call, it is possible that the text could change, and will trigger
+// an #AtkValue::value-changed signal emission.
+//
+// Note for implementors: the deprecated atk_value_set_current_value()
+// method returned TRUE or FALSE depending if the value was assigned
+// or not. In the practice several implementors were not able to
+// decide it, and returned TRUE in any case. For that reason it is not
+// required anymore to return if the value was properly assigned or
+// not.
+/*
+
+C function : atk_value_set_value
+*/
 func (recv *Value) SetValue(newValue float64) {
 	c_new_value := (C.gdouble)(newValue)
 

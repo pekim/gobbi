@@ -25,7 +25,11 @@ import "C"
 
 // Unsupported : g_app_info_launch_default_for_uri_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// AppInfoLaunchDefaultForUriFinish is a wrapper around the C function g_app_info_launch_default_for_uri_finish.
+// Finishes an asynchronous launch-default-for-uri operation.
+/*
+
+C function : g_app_info_launch_default_for_uri_finish
+*/
 func AppInfoLaunchDefaultForUriFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
 

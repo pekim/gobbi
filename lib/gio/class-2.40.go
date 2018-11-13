@@ -125,7 +125,35 @@ func appinfomonitor_changedHandler(_ *C.GObject, data C.gpointer) {
 
 // Unsupported : g_application_add_main_option_entries : unsupported parameter entries :
 
-// AddOptionGroup is a wrapper around the C function g_application_add_option_group.
+// Adds a #GOptionGroup to the commandline handling of @application.
+//
+// This function is comparable to g_option_context_add_group().
+//
+// Unlike g_application_add_main_option_entries(), this function does
+// not deal with %NULL @arg_data and never transmits options to the
+// primary instance.
+//
+// The reason for that is because, by the time the options arrive at the
+// primary instance, it is typically too late to do anything with them.
+// Taking the GTK option group as an example: GTK will already have been
+// initialised by the time the #GApplication::command-line handler runs.
+// In the case that this is not the first-running instance of the
+// application, the existing instance may already have been running for
+// a very long time.
+//
+// This means that the options from #GOptionGroup are only really usable
+// in the case that the instance of the application being run is the
+// first instance.  Passing options like `--display=` or `--gdk-debug=`
+// on future runs will have no effect on the existing primary instance.
+//
+// Calling this function will cause the options in the supplied option
+// group to be parsed, but it does not cause you to be "opted in" to the
+// new functionality whereby unrecognised options are rejected even if
+// %G_APPLICATION_HANDLES_COMMAND_LINE was given.
+/*
+
+C function : g_application_add_option_group
+*/
 func (recv *Application) AddOptionGroup(group *glib.OptionGroup) {
 	c_group := (*C.GOptionGroup)(C.NULL)
 	if group != nil {
@@ -137,7 +165,36 @@ func (recv *Application) AddOptionGroup(group *glib.OptionGroup) {
 	return
 }
 
-// SendNotification is a wrapper around the C function g_application_send_notification.
+// Sends a notification on behalf of @application to the desktop shell.
+// There is no guarantee that the notification is displayed immediately,
+// or even at all.
+//
+// Notifications may persist after the application exits. It will be
+// D-Bus-activated when the notification or one of its actions is
+// activated.
+//
+// Modifying @notification after this call has no effect. However, the
+// object can be reused for a later call to this function.
+//
+// @id may be any string that uniquely identifies the event for the
+// application. It does not need to be in any special format. For
+// example, "new-message" might be appropriate for a notification about
+// new messages.
+//
+// If a previous notification was sent with the same @id, it will be
+// replaced with @notification and shown again as if it was a new
+// notification. This works even for notifications sent from a previous
+// execution of the application, as long as @id is the same string.
+//
+// @id may be %NULL, but it is impossible to replace or withdraw
+// notifications without an id.
+//
+// If @notification is no longer relevant, it can be withdrawn with
+// g_application_withdraw_notification().
+/*
+
+C function : g_application_send_notification
+*/
 func (recv *Application) SendNotification(id string, notification *Notification) {
 	c_id := C.CString(id)
 	defer C.free(unsafe.Pointer(c_id))
@@ -152,7 +209,23 @@ func (recv *Application) SendNotification(id string, notification *Notification)
 	return
 }
 
-// WithdrawNotification is a wrapper around the C function g_application_withdraw_notification.
+// Withdraws a notification that was sent with
+// g_application_send_notification().
+//
+// This call does nothing if a notification with @id doesn't exist or
+// the notification was never sent.
+//
+// This function works even for notifications sent in previous
+// executions of this application, as long @id is the same as it was for
+// the sent notification.
+//
+// Note that notifications are dismissed when the user clicks on one
+// of the buttons in a notification or triggers its default action, so
+// there is no need to explicitly withdraw the notification in that case.
+/*
+
+C function : g_application_withdraw_notification
+*/
 func (recv *Application) WithdrawNotification(id string) {
 	c_id := C.CString(id)
 	defer C.free(unsafe.Pointer(c_id))
@@ -162,7 +235,19 @@ func (recv *Application) WithdrawNotification(id string) {
 	return
 }
 
-// GetOptionsDict is a wrapper around the C function g_application_command_line_get_options_dict.
+// Gets the options there were passed to g_application_command_line().
+//
+// If you did not override local_command_line() then these are the same
+// options that were parsed according to the #GOptionEntrys added to the
+// application with g_application_add_main_option_entries() and possibly
+// modified from your GApplication::handle-local-options handler.
+//
+// If no options were sent then an empty dictionary is returned so that
+// you don't need to check for %NULL.
+/*
+
+C function : g_application_command_line_get_options_dict
+*/
 func (recv *ApplicationCommandLine) GetOptionsDict() *glib.VariantDict {
 	retC := C.g_application_command_line_get_options_dict((*C.GApplicationCommandLine)(recv.native))
 	retGo := glib.VariantDictNewFromC(unsafe.Pointer(retC))
@@ -170,7 +255,14 @@ func (recv *ApplicationCommandLine) GetOptionsDict() *glib.VariantDict {
 	return retGo
 }
 
-// InetSocketAddressNewFromString is a wrapper around the C function g_inet_socket_address_new_from_string.
+// Creates a new #GInetSocketAddress for @address and @port.
+//
+// If @address is an IPv6 address, it can also contain a scope ID
+// (separated from the address by a `%`).
+/*
+
+C function : g_inet_socket_address_new_from_string
+*/
 func InetSocketAddressNewFromString(address string, port uint32) *InetSocketAddress {
 	c_address := C.CString(address)
 	defer C.free(unsafe.Pointer(c_address))
@@ -215,7 +307,16 @@ func CastToNotification(object *gobject.Object) *Notification {
 	return NotificationNewFromC(object.ToC())
 }
 
-// NotificationNew is a wrapper around the C function g_notification_new.
+// Creates a new #GNotification with @title as its title.
+//
+// After populating @notification with more details, it can be sent to
+// the desktop shell with g_application_send_notification(). Changing
+// any properties after this call will not have any effect until
+// resending @notification.
+/*
+
+C function : g_notification_new
+*/
 func NotificationNew(title string) *Notification {
 	c_title := C.CString(title)
 	defer C.free(unsafe.Pointer(c_title))
@@ -226,7 +327,18 @@ func NotificationNew(title string) *Notification {
 	return retGo
 }
 
-// AddButton is a wrapper around the C function g_notification_add_button.
+// Adds a button to @notification that activates the action in
+// @detailed_action when clicked. That action must be an
+// application-wide action (starting with "app."). If @detailed_action
+// contains a target, the action will be activated with that target as
+// its parameter.
+//
+// See g_action_parse_detailed_name() for a description of the format
+// for @detailed_action.
+/*
+
+C function : g_notification_add_button
+*/
 func (recv *Notification) AddButton(label string, detailedAction string) {
 	c_label := C.CString(label)
 	defer C.free(unsafe.Pointer(c_label))
@@ -243,7 +355,11 @@ func (recv *Notification) AddButton(label string, detailedAction string) {
 
 // Unsupported : g_notification_add_button_with_target_value : unsupported parameter target : Blacklisted record : GVariant
 
-// SetBody is a wrapper around the C function g_notification_set_body.
+// Sets the body of @notification to @body.
+/*
+
+C function : g_notification_set_body
+*/
 func (recv *Notification) SetBody(body string) {
 	c_body := C.CString(body)
 	defer C.free(unsafe.Pointer(c_body))
@@ -253,7 +369,21 @@ func (recv *Notification) SetBody(body string) {
 	return
 }
 
-// SetDefaultAction is a wrapper around the C function g_notification_set_default_action.
+// Sets the default action of @notification to @detailed_action. This
+// action is activated when the notification is clicked on.
+//
+// The action in @detailed_action must be an application-wide action (it
+// must start with "app."). If @detailed_action contains a target, the
+// given action will be activated with that target as its parameter.
+// See g_action_parse_detailed_name() for a description of the format
+// for @detailed_action.
+//
+// When no default action is set, the application that the notification
+// was sent on is activated.
+/*
+
+C function : g_notification_set_default_action
+*/
 func (recv *Notification) SetDefaultAction(detailedAction string) {
 	c_detailed_action := C.CString(detailedAction)
 	defer C.free(unsafe.Pointer(c_detailed_action))
@@ -267,7 +397,11 @@ func (recv *Notification) SetDefaultAction(detailedAction string) {
 
 // Unsupported : g_notification_set_default_action_and_target_value : unsupported parameter target : Blacklisted record : GVariant
 
-// SetIcon is a wrapper around the C function g_notification_set_icon.
+// Sets the icon of @notification to @icon.
+/*
+
+C function : g_notification_set_icon
+*/
 func (recv *Notification) SetIcon(icon *Icon) {
 	c_icon := (*C.GIcon)(icon.ToC())
 
@@ -276,7 +410,12 @@ func (recv *Notification) SetIcon(icon *Icon) {
 	return
 }
 
-// SetPriority is a wrapper around the C function g_notification_set_priority.
+// Sets the priority of @notification to @priority. See
+// #GNotificationPriority for possible values.
+/*
+
+C function : g_notification_set_priority
+*/
 func (recv *Notification) SetPriority(priority NotificationPriority) {
 	c_priority := (C.GNotificationPriority)(priority)
 
@@ -285,7 +424,11 @@ func (recv *Notification) SetPriority(priority NotificationPriority) {
 	return
 }
 
-// SetTitle is a wrapper around the C function g_notification_set_title.
+// Sets the title of @notification to @title.
+/*
+
+C function : g_notification_set_title
+*/
 func (recv *Notification) SetTitle(title string) {
 	c_title := C.CString(title)
 	defer C.free(unsafe.Pointer(c_title))
@@ -295,7 +438,11 @@ func (recv *Notification) SetTitle(title string) {
 	return
 }
 
-// SetUrgent is a wrapper around the C function g_notification_set_urgent.
+// Deprecated in favor of g_notification_set_priority().
+/*
+
+C function : g_notification_set_urgent
+*/
 func (recv *Notification) SetUrgent(urgent bool) {
 	c_urgent :=
 		boolToGboolean(urgent)
@@ -349,7 +496,51 @@ func CastToSubprocess(object *gobject.Object) *Subprocess {
 
 // Unsupported : g_subprocess_newv : unsupported parameter argv :
 
-// Communicate is a wrapper around the C function g_subprocess_communicate.
+// Communicate with the subprocess until it terminates, and all input
+// and output has been completed.
+//
+// If @stdin_buf is given, the subprocess must have been created with
+// %G_SUBPROCESS_FLAGS_STDIN_PIPE.  The given data is fed to the
+// stdin of the subprocess and the pipe is closed (ie: EOF).
+//
+// At the same time (as not to cause blocking when dealing with large
+// amounts of data), if %G_SUBPROCESS_FLAGS_STDOUT_PIPE or
+// %G_SUBPROCESS_FLAGS_STDERR_PIPE were used, reads from those
+// streams.  The data that was read is returned in @stdout and/or
+// the @stderr.
+//
+// If the subprocess was created with %G_SUBPROCESS_FLAGS_STDOUT_PIPE,
+// @stdout_buf will contain the data read from stdout.  Otherwise, for
+// subprocesses not created with %G_SUBPROCESS_FLAGS_STDOUT_PIPE,
+// @stdout_buf will be set to %NULL.  Similar provisions apply to
+// @stderr_buf and %G_SUBPROCESS_FLAGS_STDERR_PIPE.
+//
+// As usual, any output variable may be given as %NULL to ignore it.
+//
+// If you desire the stdout and stderr data to be interleaved, create
+// the subprocess with %G_SUBPROCESS_FLAGS_STDOUT_PIPE and
+// %G_SUBPROCESS_FLAGS_STDERR_MERGE.  The merged result will be returned
+// in @stdout_buf and @stderr_buf will be set to %NULL.
+//
+// In case of any error (including cancellation), %FALSE will be
+// returned with @error set.  Some or all of the stdin data may have
+// been written.  Any stdout or stderr data that has been read will be
+// discarded. None of the out variables (aside from @error) will have
+// been set to anything in particular and should not be inspected.
+//
+// In the case that %TRUE is returned, the subprocess has exited and the
+// exit status inspection APIs (eg: g_subprocess_get_if_exited(),
+// g_subprocess_get_exit_status()) may be used.
+//
+// You should not attempt to use any of the subprocess pipes after
+// starting this function, since they may be left in strange states,
+// even if the operation was cancelled.  You should especially not
+// attempt to interact with the pipes while the operation is in progress
+// (either from another thread or if using the asynchronous version).
+/*
+
+C function : g_subprocess_communicate
+*/
 func (recv *Subprocess) Communicate(stdinBuf *glib.Bytes, cancellable *Cancellable) (bool, *glib.Bytes, *glib.Bytes, error) {
 	c_stdin_buf := (*C.GBytes)(C.NULL)
 	if stdinBuf != nil {
@@ -384,7 +575,11 @@ func (recv *Subprocess) Communicate(stdinBuf *glib.Bytes, cancellable *Cancellab
 
 // Unsupported : g_subprocess_communicate_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// CommunicateFinish is a wrapper around the C function g_subprocess_communicate_finish.
+// Complete an invocation of g_subprocess_communicate_async().
+/*
+
+C function : g_subprocess_communicate_finish
+*/
 func (recv *Subprocess) CommunicateFinish(result *AsyncResult) (bool, *glib.Bytes, *glib.Bytes, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
 
@@ -409,7 +604,12 @@ func (recv *Subprocess) CommunicateFinish(result *AsyncResult) (bool, *glib.Byte
 	return retGo, stdoutBuf, stderrBuf, goThrowableError
 }
 
-// CommunicateUtf8 is a wrapper around the C function g_subprocess_communicate_utf8.
+// Like g_subprocess_communicate(), but validates the output of the
+// process as UTF-8, and returns it as a regular NUL terminated string.
+/*
+
+C function : g_subprocess_communicate_utf8
+*/
 func (recv *Subprocess) CommunicateUtf8(stdinBuf string, cancellable *Cancellable) (bool, string, string, error) {
 	c_stdin_buf := C.CString(stdinBuf)
 	defer C.free(unsafe.Pointer(c_stdin_buf))
@@ -444,7 +644,11 @@ func (recv *Subprocess) CommunicateUtf8(stdinBuf string, cancellable *Cancellabl
 
 // Unsupported : g_subprocess_communicate_utf8_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// CommunicateUtf8Finish is a wrapper around the C function g_subprocess_communicate_utf8_finish.
+// Complete an invocation of g_subprocess_communicate_utf8_async().
+/*
+
+C function : g_subprocess_communicate_utf8_finish
+*/
 func (recv *Subprocess) CommunicateUtf8Finish(result *AsyncResult) (bool, string, string, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
 
@@ -471,14 +675,35 @@ func (recv *Subprocess) CommunicateUtf8Finish(result *AsyncResult) (bool, string
 	return retGo, stdoutBuf, stderrBuf, goThrowableError
 }
 
-// ForceExit is a wrapper around the C function g_subprocess_force_exit.
+// Use an operating-system specific method to attempt an immediate,
+// forceful termination of the process.  There is no mechanism to
+// determine whether or not the request itself was successful;
+// however, you can use g_subprocess_wait() to monitor the status of
+// the process after calling this function.
+//
+// On Unix, this function sends %SIGKILL.
+/*
+
+C function : g_subprocess_force_exit
+*/
 func (recv *Subprocess) ForceExit() {
 	C.g_subprocess_force_exit((*C.GSubprocess)(recv.native))
 
 	return
 }
 
-// GetExitStatus is a wrapper around the C function g_subprocess_get_exit_status.
+// Check the exit status of the subprocess, given that it exited
+// normally.  This is the value passed to the exit() system call or the
+// return value from main.
+//
+// This is equivalent to the system WEXITSTATUS macro.
+//
+// It is an error to call this function before g_subprocess_wait() and
+// unless g_subprocess_get_if_exited() returned %TRUE.
+/*
+
+C function : g_subprocess_get_exit_status
+*/
 func (recv *Subprocess) GetExitStatus() int32 {
 	retC := C.g_subprocess_get_exit_status((*C.GSubprocess)(recv.native))
 	retGo := (int32)(retC)
@@ -486,7 +711,12 @@ func (recv *Subprocess) GetExitStatus() int32 {
 	return retGo
 }
 
-// GetIdentifier is a wrapper around the C function g_subprocess_get_identifier.
+// On UNIX, returns the process ID as a decimal string.
+// On Windows, returns the result of GetProcessId() also as a string.
+/*
+
+C function : g_subprocess_get_identifier
+*/
 func (recv *Subprocess) GetIdentifier() string {
 	retC := C.g_subprocess_get_identifier((*C.GSubprocess)(recv.native))
 	retGo := C.GoString(retC)
@@ -494,7 +724,17 @@ func (recv *Subprocess) GetIdentifier() string {
 	return retGo
 }
 
-// GetIfExited is a wrapper around the C function g_subprocess_get_if_exited.
+// Check if the given subprocess exited normally (ie: by way of exit()
+// or return from main()).
+//
+// This is equivalent to the system WIFEXITED macro.
+//
+// It is an error to call this function before g_subprocess_wait() has
+// returned.
+/*
+
+C function : g_subprocess_get_if_exited
+*/
 func (recv *Subprocess) GetIfExited() bool {
 	retC := C.g_subprocess_get_if_exited((*C.GSubprocess)(recv.native))
 	retGo := retC == C.TRUE
@@ -502,7 +742,16 @@ func (recv *Subprocess) GetIfExited() bool {
 	return retGo
 }
 
-// GetIfSignaled is a wrapper around the C function g_subprocess_get_if_signaled.
+// Check if the given subprocess terminated in response to a signal.
+//
+// This is equivalent to the system WIFSIGNALED macro.
+//
+// It is an error to call this function before g_subprocess_wait() has
+// returned.
+/*
+
+C function : g_subprocess_get_if_signaled
+*/
 func (recv *Subprocess) GetIfSignaled() bool {
 	retC := C.g_subprocess_get_if_signaled((*C.GSubprocess)(recv.native))
 	retGo := retC == C.TRUE
@@ -510,7 +759,21 @@ func (recv *Subprocess) GetIfSignaled() bool {
 	return retGo
 }
 
-// GetStatus is a wrapper around the C function g_subprocess_get_status.
+// Gets the raw status code of the process, as from waitpid().
+//
+// This value has no particular meaning, but it can be used with the
+// macros defined by the system headers such as WIFEXITED.  It can also
+// be used with g_spawn_check_exit_status().
+//
+// It is more likely that you want to use g_subprocess_get_if_exited()
+// followed by g_subprocess_get_exit_status().
+//
+// It is an error to call this function before g_subprocess_wait() has
+// returned.
+/*
+
+C function : g_subprocess_get_status
+*/
 func (recv *Subprocess) GetStatus() int32 {
 	retC := C.g_subprocess_get_status((*C.GSubprocess)(recv.native))
 	retGo := (int32)(retC)
@@ -518,7 +781,15 @@ func (recv *Subprocess) GetStatus() int32 {
 	return retGo
 }
 
-// GetStderrPipe is a wrapper around the C function g_subprocess_get_stderr_pipe.
+// Gets the #GInputStream from which to read the stderr output of
+// @subprocess.
+//
+// The process must have been created with
+// %G_SUBPROCESS_FLAGS_STDERR_PIPE.
+/*
+
+C function : g_subprocess_get_stderr_pipe
+*/
 func (recv *Subprocess) GetStderrPipe() *InputStream {
 	retC := C.g_subprocess_get_stderr_pipe((*C.GSubprocess)(recv.native))
 	retGo := InputStreamNewFromC(unsafe.Pointer(retC))
@@ -526,7 +797,15 @@ func (recv *Subprocess) GetStderrPipe() *InputStream {
 	return retGo
 }
 
-// GetStdinPipe is a wrapper around the C function g_subprocess_get_stdin_pipe.
+// Gets the #GOutputStream that you can write to in order to give data
+// to the stdin of @subprocess.
+//
+// The process must have been created with
+// %G_SUBPROCESS_FLAGS_STDIN_PIPE.
+/*
+
+C function : g_subprocess_get_stdin_pipe
+*/
 func (recv *Subprocess) GetStdinPipe() *OutputStream {
 	retC := C.g_subprocess_get_stdin_pipe((*C.GSubprocess)(recv.native))
 	retGo := OutputStreamNewFromC(unsafe.Pointer(retC))
@@ -534,7 +813,15 @@ func (recv *Subprocess) GetStdinPipe() *OutputStream {
 	return retGo
 }
 
-// GetStdoutPipe is a wrapper around the C function g_subprocess_get_stdout_pipe.
+// Gets the #GInputStream from which to read the stdout output of
+// @subprocess.
+//
+// The process must have been created with
+// %G_SUBPROCESS_FLAGS_STDOUT_PIPE.
+/*
+
+C function : g_subprocess_get_stdout_pipe
+*/
 func (recv *Subprocess) GetStdoutPipe() *InputStream {
 	retC := C.g_subprocess_get_stdout_pipe((*C.GSubprocess)(recv.native))
 	retGo := InputStreamNewFromC(unsafe.Pointer(retC))
@@ -542,7 +829,16 @@ func (recv *Subprocess) GetStdoutPipe() *InputStream {
 	return retGo
 }
 
-// GetSuccessful is a wrapper around the C function g_subprocess_get_successful.
+// Checks if the process was "successful".  A process is considered
+// successful if it exited cleanly with an exit status of 0, either by
+// way of the exit() system call or return from main().
+//
+// It is an error to call this function before g_subprocess_wait() has
+// returned.
+/*
+
+C function : g_subprocess_get_successful
+*/
 func (recv *Subprocess) GetSuccessful() bool {
 	retC := C.g_subprocess_get_successful((*C.GSubprocess)(recv.native))
 	retGo := retC == C.TRUE
@@ -550,7 +846,17 @@ func (recv *Subprocess) GetSuccessful() bool {
 	return retGo
 }
 
-// GetTermSig is a wrapper around the C function g_subprocess_get_term_sig.
+// Get the signal number that caused the subprocess to terminate, given
+// that it terminated due to a signal.
+//
+// This is equivalent to the system WTERMSIG macro.
+//
+// It is an error to call this function before g_subprocess_wait() and
+// unless g_subprocess_get_if_signaled() returned %TRUE.
+/*
+
+C function : g_subprocess_get_term_sig
+*/
 func (recv *Subprocess) GetTermSig() int32 {
 	retC := C.g_subprocess_get_term_sig((*C.GSubprocess)(recv.native))
 	retGo := (int32)(retC)
@@ -558,7 +864,17 @@ func (recv *Subprocess) GetTermSig() int32 {
 	return retGo
 }
 
-// SendSignal is a wrapper around the C function g_subprocess_send_signal.
+// Sends the UNIX signal @signal_num to the subprocess, if it is still
+// running.
+//
+// This API is race-free.  If the subprocess has terminated, it will not
+// be signalled.
+//
+// This API is not available on Windows.
+/*
+
+C function : g_subprocess_send_signal
+*/
 func (recv *Subprocess) SendSignal(signalNum int32) {
 	c_signal_num := (C.gint)(signalNum)
 
@@ -567,7 +883,21 @@ func (recv *Subprocess) SendSignal(signalNum int32) {
 	return
 }
 
-// Wait is a wrapper around the C function g_subprocess_wait.
+// Synchronously wait for the subprocess to terminate.
+//
+// After the process terminates you can query its exit status with
+// functions such as g_subprocess_get_if_exited() and
+// g_subprocess_get_exit_status().
+//
+// This function does not fail in the case of the subprocess having
+// abnormal termination.  See g_subprocess_wait_check() for that.
+//
+// Cancelling @cancellable doesn't kill the subprocess.  Call
+// g_subprocess_force_exit() if it is desirable.
+/*
+
+C function : g_subprocess_wait
+*/
 func (recv *Subprocess) Wait(cancellable *Cancellable) (bool, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
 	if cancellable != nil {
@@ -589,7 +919,11 @@ func (recv *Subprocess) Wait(cancellable *Cancellable) (bool, error) {
 
 // Unsupported : g_subprocess_wait_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// WaitCheck is a wrapper around the C function g_subprocess_wait_check.
+// Combines g_subprocess_wait() with g_spawn_check_exit_status().
+/*
+
+C function : g_subprocess_wait_check
+*/
 func (recv *Subprocess) WaitCheck(cancellable *Cancellable) (bool, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
 	if cancellable != nil {
@@ -611,7 +945,12 @@ func (recv *Subprocess) WaitCheck(cancellable *Cancellable) (bool, error) {
 
 // Unsupported : g_subprocess_wait_check_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// WaitCheckFinish is a wrapper around the C function g_subprocess_wait_check_finish.
+// Collects the result of a previous call to
+// g_subprocess_wait_check_async().
+/*
+
+C function : g_subprocess_wait_check_finish
+*/
 func (recv *Subprocess) WaitCheckFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
 
@@ -628,7 +967,12 @@ func (recv *Subprocess) WaitCheckFinish(result *AsyncResult) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// WaitFinish is a wrapper around the C function g_subprocess_wait_finish.
+// Collects the result of a previous call to
+// g_subprocess_wait_async().
+/*
+
+C function : g_subprocess_wait_finish
+*/
 func (recv *Subprocess) WaitFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
 
@@ -677,7 +1021,15 @@ func CastToSubprocessLauncher(object *gobject.Object) *SubprocessLauncher {
 	return SubprocessLauncherNewFromC(object.ToC())
 }
 
-// SubprocessLauncherNew is a wrapper around the C function g_subprocess_launcher_new.
+// Creates a new #GSubprocessLauncher.
+//
+// The launcher is created with the default options.  A copy of the
+// environment of the calling process is made at the time of this call
+// and will be used as the environment that the process is launched in.
+/*
+
+C function : g_subprocess_launcher_new
+*/
 func SubprocessLauncherNew(flags SubprocessFlags) *SubprocessLauncher {
 	c_flags := (C.GSubprocessFlags)(flags)
 
@@ -687,7 +1039,15 @@ func SubprocessLauncherNew(flags SubprocessFlags) *SubprocessLauncher {
 	return retGo
 }
 
-// Getenv is a wrapper around the C function g_subprocess_launcher_getenv.
+// Returns the value of the environment variable @variable in the
+// environment of processes launched from this launcher.
+//
+// On UNIX, the returned string can be an arbitrary byte string.
+// On Windows, it will be UTF-8.
+/*
+
+C function : g_subprocess_launcher_getenv
+*/
 func (recv *SubprocessLauncher) Getenv(variable string) string {
 	c_variable := C.CString(variable)
 	defer C.free(unsafe.Pointer(c_variable))
@@ -700,7 +1060,15 @@ func (recv *SubprocessLauncher) Getenv(variable string) string {
 
 // Unsupported : g_subprocess_launcher_set_child_setup : unsupported parameter child_setup : no type generator for GLib.SpawnChildSetupFunc (GSpawnChildSetupFunc) for param child_setup
 
-// SetCwd is a wrapper around the C function g_subprocess_launcher_set_cwd.
+// Sets the current working directory that processes will be launched
+// with.
+//
+// By default processes are launched with the current working directory
+// of the launching process at the time of launch.
+/*
+
+C function : g_subprocess_launcher_set_cwd
+*/
 func (recv *SubprocessLauncher) SetCwd(cwd string) {
 	c_cwd := C.CString(cwd)
 	defer C.free(unsafe.Pointer(c_cwd))
@@ -712,7 +1080,22 @@ func (recv *SubprocessLauncher) SetCwd(cwd string) {
 
 // Unsupported : g_subprocess_launcher_set_environ : unsupported parameter env :
 
-// SetFlags is a wrapper around the C function g_subprocess_launcher_set_flags.
+// Sets the flags on the launcher.
+//
+// The default flags are %G_SUBPROCESS_FLAGS_NONE.
+//
+// You may not set flags that specify conflicting options for how to
+// handle a particular stdio stream (eg: specifying both
+// %G_SUBPROCESS_FLAGS_STDIN_PIPE and
+// %G_SUBPROCESS_FLAGS_STDIN_INHERIT).
+//
+// You may also not set a flag that conflicts with a previous call to a
+// function like g_subprocess_launcher_set_stdin_file_path() or
+// g_subprocess_launcher_take_stdout_fd().
+/*
+
+C function : g_subprocess_launcher_set_flags
+*/
 func (recv *SubprocessLauncher) SetFlags(flags SubprocessFlags) {
 	c_flags := (C.GSubprocessFlags)(flags)
 
@@ -721,7 +1104,24 @@ func (recv *SubprocessLauncher) SetFlags(flags SubprocessFlags) {
 	return
 }
 
-// SetStderrFilePath is a wrapper around the C function g_subprocess_launcher_set_stderr_file_path.
+// Sets the file path to use as the stderr for spawned processes.
+//
+// If @path is %NULL then any previously given path is unset.
+//
+// The file will be created or truncated when the process is spawned, as
+// would be the case if using '2>' at the shell.
+//
+// If you want to send both stdout and stderr to the same file then use
+// %G_SUBPROCESS_FLAGS_STDERR_MERGE.
+//
+// You may not set a stderr file path if a stderr fd is already set or
+// if the launcher flags contain any flags directing stderr elsewhere.
+//
+// This feature is only available on UNIX.
+/*
+
+C function : g_subprocess_launcher_set_stderr_file_path
+*/
 func (recv *SubprocessLauncher) SetStderrFilePath(path string) {
 	c_path := C.CString(path)
 	defer C.free(unsafe.Pointer(c_path))
@@ -731,7 +1131,20 @@ func (recv *SubprocessLauncher) SetStderrFilePath(path string) {
 	return
 }
 
-// SetStdinFilePath is a wrapper around the C function g_subprocess_launcher_set_stdin_file_path.
+// Sets the file path to use as the stdin for spawned processes.
+//
+// If @path is %NULL then any previously given path is unset.
+//
+// The file must exist or spawning the process will fail.
+//
+// You may not set a stdin file path if a stdin fd is already set or if
+// the launcher flags contain any flags directing stdin elsewhere.
+//
+// This feature is only available on UNIX.
+/*
+
+C function : g_subprocess_launcher_set_stdin_file_path
+*/
 func (recv *SubprocessLauncher) SetStdinFilePath(path string) {
 	c_path := C.CString(path)
 	defer C.free(unsafe.Pointer(c_path))
@@ -741,7 +1154,21 @@ func (recv *SubprocessLauncher) SetStdinFilePath(path string) {
 	return
 }
 
-// SetStdoutFilePath is a wrapper around the C function g_subprocess_launcher_set_stdout_file_path.
+// Sets the file path to use as the stdout for spawned processes.
+//
+// If @path is %NULL then any previously given path is unset.
+//
+// The file will be created or truncated when the process is spawned, as
+// would be the case if using '>' at the shell.
+//
+// You may not set a stdout file path if a stdout fd is already set or
+// if the launcher flags contain any flags directing stdout elsewhere.
+//
+// This feature is only available on UNIX.
+/*
+
+C function : g_subprocess_launcher_set_stdout_file_path
+*/
 func (recv *SubprocessLauncher) SetStdoutFilePath(path string) {
 	c_path := C.CString(path)
 	defer C.free(unsafe.Pointer(c_path))
@@ -751,7 +1178,16 @@ func (recv *SubprocessLauncher) SetStdoutFilePath(path string) {
 	return
 }
 
-// Setenv is a wrapper around the C function g_subprocess_launcher_setenv.
+// Sets the environment variable @variable in the environment of
+// processes launched from this launcher.
+//
+// On UNIX, both the variable's name and value can be arbitrary byte
+// strings, except that the variable's name cannot contain '='.
+// On Windows, they should be in UTF-8.
+/*
+
+C function : g_subprocess_launcher_setenv
+*/
 func (recv *SubprocessLauncher) Setenv(variable string, value string, overwrite bool) {
 	c_variable := C.CString(variable)
 	defer C.free(unsafe.Pointer(c_variable))
@@ -771,7 +1207,22 @@ func (recv *SubprocessLauncher) Setenv(variable string, value string, overwrite 
 
 // Unsupported : g_subprocess_launcher_spawnv : unsupported parameter argv :
 
-// TakeFd is a wrapper around the C function g_subprocess_launcher_take_fd.
+// Transfer an arbitrary file descriptor from parent process to the
+// child.  This function takes "ownership" of the fd; it will be closed
+// in the parent when @self is freed.
+//
+// By default, all file descriptors from the parent will be closed.
+// This function allows you to create (for example) a custom pipe() or
+// socketpair() before launching the process, and choose the target
+// descriptor in the child.
+//
+// An example use case is GNUPG, which has a command line argument
+// --passphrase-fd providing a file descriptor number where it expects
+// the passphrase to be written.
+/*
+
+C function : g_subprocess_launcher_take_fd
+*/
 func (recv *SubprocessLauncher) TakeFd(sourceFd int32, targetFd int32) {
 	c_source_fd := (C.gint)(sourceFd)
 
@@ -782,7 +1233,26 @@ func (recv *SubprocessLauncher) TakeFd(sourceFd int32, targetFd int32) {
 	return
 }
 
-// TakeStderrFd is a wrapper around the C function g_subprocess_launcher_take_stderr_fd.
+// Sets the file descriptor to use as the stderr for spawned processes.
+//
+// If @fd is -1 then any previously given fd is unset.
+//
+// Note that the default behaviour is to pass stderr through to the
+// stderr of the parent process.
+//
+// The passed @fd belongs to the #GSubprocessLauncher.  It will be
+// automatically closed when the launcher is finalized.  The file
+// descriptor will also be closed on the child side when executing the
+// spawned process.
+//
+// You may not set a stderr fd if a stderr file path is already set or
+// if the launcher flags contain any flags directing stderr elsewhere.
+//
+// This feature is only available on UNIX.
+/*
+
+C function : g_subprocess_launcher_take_stderr_fd
+*/
 func (recv *SubprocessLauncher) TakeStderrFd(fd int32) {
 	c_fd := (C.gint)(fd)
 
@@ -791,7 +1261,28 @@ func (recv *SubprocessLauncher) TakeStderrFd(fd int32) {
 	return
 }
 
-// TakeStdinFd is a wrapper around the C function g_subprocess_launcher_take_stdin_fd.
+// Sets the file descriptor to use as the stdin for spawned processes.
+//
+// If @fd is -1 then any previously given fd is unset.
+//
+// Note that if your intention is to have the stdin of the calling
+// process inherited by the child then %G_SUBPROCESS_FLAGS_STDIN_INHERIT
+// is a better way to go about doing that.
+//
+// The passed @fd is noted but will not be touched in the current
+// process.  It is therefore necessary that it be kept open by the
+// caller until the subprocess is spawned.  The file descriptor will
+// also not be explicitly closed on the child side, so it must be marked
+// O_CLOEXEC if that's what you want.
+//
+// You may not set a stdin fd if a stdin file path is already set or if
+// the launcher flags contain any flags directing stdin elsewhere.
+//
+// This feature is only available on UNIX.
+/*
+
+C function : g_subprocess_launcher_take_stdin_fd
+*/
 func (recv *SubprocessLauncher) TakeStdinFd(fd int32) {
 	c_fd := (C.gint)(fd)
 
@@ -800,7 +1291,27 @@ func (recv *SubprocessLauncher) TakeStdinFd(fd int32) {
 	return
 }
 
-// TakeStdoutFd is a wrapper around the C function g_subprocess_launcher_take_stdout_fd.
+// Sets the file descriptor to use as the stdout for spawned processes.
+//
+// If @fd is -1 then any previously given fd is unset.
+//
+// Note that the default behaviour is to pass stdout through to the
+// stdout of the parent process.
+//
+// The passed @fd is noted but will not be touched in the current
+// process.  It is therefore necessary that it be kept open by the
+// caller until the subprocess is spawned.  The file descriptor will
+// also not be explicitly closed on the child side, so it must be marked
+// O_CLOEXEC if that's what you want.
+//
+// You may not set a stdout fd if a stdout file path is already set or
+// if the launcher flags contain any flags directing stdout elsewhere.
+//
+// This feature is only available on UNIX.
+/*
+
+C function : g_subprocess_launcher_take_stdout_fd
+*/
 func (recv *SubprocessLauncher) TakeStdoutFd(fd int32) {
 	c_fd := (C.gint)(fd)
 
@@ -809,7 +1320,15 @@ func (recv *SubprocessLauncher) TakeStdoutFd(fd int32) {
 	return
 }
 
-// Unsetenv is a wrapper around the C function g_subprocess_launcher_unsetenv.
+// Removes the environment variable @variable from the environment of
+// processes launched from this launcher.
+//
+// On UNIX, the variable's name can be an arbitrary byte string not
+// containing '='. On Windows, it should be in UTF-8.
+/*
+
+C function : g_subprocess_launcher_unsetenv
+*/
 func (recv *SubprocessLauncher) Unsetenv(variable string) {
 	c_variable := C.CString(variable)
 	defer C.free(unsafe.Pointer(c_variable))
@@ -819,7 +1338,30 @@ func (recv *SubprocessLauncher) Unsetenv(variable string) {
 	return
 }
 
-// InvokeRequestCertificate is a wrapper around the C function g_tls_interaction_invoke_request_certificate.
+// Invoke the interaction to ask the user to choose a certificate to
+// use with the connection. It invokes this interaction in the main
+// loop, specifically the #GMainContext returned by
+// g_main_context_get_thread_default() when the interaction is
+// created. This is called by called by #GTlsConnection when the peer
+// requests a certificate during the handshake.
+//
+// Derived subclasses usually implement a certificate selector,
+// although they may also choose to provide a certificate from
+// elsewhere. Alternatively the user may abort this certificate
+// request, which may or may not abort the TLS connection.
+//
+// The implementation can either be a synchronous (eg: modal dialog) or an
+// asynchronous one (eg: modeless dialog). This function will take care of
+// calling which ever one correctly.
+//
+// If the interaction is cancelled by the cancellation object, or by the
+// user then %G_TLS_INTERACTION_FAILED will be returned with an error that
+// contains a %G_IO_ERROR_CANCELLED error code. Certain implementations may
+// not support immediate cancellation.
+/*
+
+C function : g_tls_interaction_invoke_request_certificate
+*/
 func (recv *TlsInteraction) InvokeRequestCertificate(connection *TlsConnection, flags TlsCertificateRequestFlags, cancellable *Cancellable) (TlsInteractionResult, error) {
 	c_connection := (*C.GTlsConnection)(C.NULL)
 	if connection != nil {
@@ -846,7 +1388,26 @@ func (recv *TlsInteraction) InvokeRequestCertificate(connection *TlsConnection, 
 	return retGo, goThrowableError
 }
 
-// RequestCertificate is a wrapper around the C function g_tls_interaction_request_certificate.
+// Run synchronous interaction to ask the user to choose a certificate to use
+// with the connection. In general, g_tls_interaction_invoke_request_certificate()
+// should be used instead of this function.
+//
+// Derived subclasses usually implement a certificate selector, although they may
+// also choose to provide a certificate from elsewhere. Alternatively the user may
+// abort this certificate request, which will usually abort the TLS connection.
+//
+// If %G_TLS_INTERACTION_HANDLED is returned, then the #GTlsConnection
+// passed to g_tls_interaction_request_certificate() will have had its
+// #GTlsConnection:certificate filled in.
+//
+// If the interaction is cancelled by the cancellation object, or by the
+// user then %G_TLS_INTERACTION_FAILED will be returned with an error that
+// contains a %G_IO_ERROR_CANCELLED error code. Certain implementations may
+// not support immediate cancellation.
+/*
+
+C function : g_tls_interaction_request_certificate
+*/
 func (recv *TlsInteraction) RequestCertificate(connection *TlsConnection, flags TlsCertificateRequestFlags, cancellable *Cancellable) (TlsInteractionResult, error) {
 	c_connection := (*C.GTlsConnection)(C.NULL)
 	if connection != nil {
@@ -875,7 +1436,20 @@ func (recv *TlsInteraction) RequestCertificate(connection *TlsConnection, flags 
 
 // Unsupported : g_tls_interaction_request_certificate_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// RequestCertificateFinish is a wrapper around the C function g_tls_interaction_request_certificate_finish.
+// Complete an request certificate user interaction request. This should be once
+// the g_tls_interaction_request_certificate_async() completion callback is called.
+//
+// If %G_TLS_INTERACTION_HANDLED is returned, then the #GTlsConnection
+// passed to g_tls_interaction_request_certificate_async() will have had its
+// #GTlsConnection:certificate filled in.
+//
+// If the interaction is cancelled by the cancellation object, or by the
+// user then %G_TLS_INTERACTION_FAILED will be returned with an error that
+// contains a %G_IO_ERROR_CANCELLED error code.
+/*
+
+C function : g_tls_interaction_request_certificate_finish
+*/
 func (recv *TlsInteraction) RequestCertificateFinish(result *AsyncResult) (TlsInteractionResult, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
 

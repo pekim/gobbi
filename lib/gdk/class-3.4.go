@@ -8,7 +8,19 @@ package gdk
 // #include <stdlib.h>
 import "C"
 
-// GetModifierMask is a wrapper around the C function gdk_keymap_get_modifier_mask.
+// Returns the modifier mask the @keymap’s windowing system backend
+// uses for a particular purpose.
+//
+// Note that this function always returns real hardware modifiers, not
+// virtual ones (e.g. it will return #GDK_MOD1_MASK rather than
+// #GDK_META_MASK if the backend maps MOD1 to META), so there are use
+// cases where the return value of this function has to be transformed
+// by gdk_keymap_add_virtual_modifiers() in order to contain the
+// expected result.
+/*
+
+C function : gdk_keymap_get_modifier_mask
+*/
 func (recv *Keymap) GetModifierMask(intent ModifierIntent) ModifierType {
 	c_intent := (C.GdkModifierIntent)(intent)
 
@@ -18,7 +30,11 @@ func (recv *Keymap) GetModifierMask(intent ModifierIntent) ModifierType {
 	return retGo
 }
 
-// GetModifierState is a wrapper around the C function gdk_keymap_get_modifier_state.
+// Returns the current modifier state.
+/*
+
+C function : gdk_keymap_get_modifier_state
+*/
 func (recv *Keymap) GetModifierState() uint32 {
 	retC := C.gdk_keymap_get_modifier_state((*C.GdkKeymap)(recv.native))
 	retGo := (uint32)(retC)
@@ -28,7 +44,15 @@ func (recv *Keymap) GetModifierState() uint32 {
 
 // Unsupported : gdk_screen_get_monitor_workarea : unsupported parameter dest : Blacklisted record : GdkRectangle
 
-// BeginMoveDragForDevice is a wrapper around the C function gdk_window_begin_move_drag_for_device.
+// Begins a window move operation (for a toplevel window).
+// You might use this function to implement a “window move grip,” for
+// example. The function works best with window managers that support the
+// [Extended Window Manager Hints](http://www.freedesktop.org/Standards/wm-spec)
+// but has a fallback implementation for other window managers.
+/*
+
+C function : gdk_window_begin_move_drag_for_device
+*/
 func (recv *Window) BeginMoveDragForDevice(device *Device, button int32, rootX int32, rootY int32, timestamp uint32) {
 	c_device := (*C.GdkDevice)(C.NULL)
 	if device != nil {
@@ -48,7 +72,16 @@ func (recv *Window) BeginMoveDragForDevice(device *Device, button int32, rootX i
 	return
 }
 
-// BeginResizeDragForDevice is a wrapper around the C function gdk_window_begin_resize_drag_for_device.
+// Begins a window resize operation (for a toplevel window).
+// You might use this function to implement a “window resize grip,” for
+// example; in fact #GtkStatusbar uses it. The function works best
+// with window managers that support the
+// [Extended Window Manager Hints](http://www.freedesktop.org/Standards/wm-spec)
+// but has a fallback implementation for other window managers.
+/*
+
+C function : gdk_window_begin_resize_drag_for_device
+*/
 func (recv *Window) BeginResizeDragForDevice(edge WindowEdge, device *Device, button int32, rootX int32, rootY int32, timestamp uint32) {
 	c_edge := (C.GdkWindowEdge)(edge)
 

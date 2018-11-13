@@ -24,7 +24,13 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// AppInfoGetFallbackForType is a wrapper around the C function g_app_info_get_fallback_for_type.
+// Gets a list of fallback #GAppInfos for a given content type, i.e.
+// those applications which claim to support the given content type
+// by MIME type subclassing and not directly.
+/*
+
+C function : g_app_info_get_fallback_for_type
+*/
 func AppInfoGetFallbackForType(contentType string) *glib.List {
 	c_content_type := C.CString(contentType)
 	defer C.free(unsafe.Pointer(c_content_type))
@@ -35,7 +41,16 @@ func AppInfoGetFallbackForType(contentType string) *glib.List {
 	return retGo
 }
 
-// AppInfoGetRecommendedForType is a wrapper around the C function g_app_info_get_recommended_for_type.
+// Gets a list of recommended #GAppInfos for a given content type, i.e.
+// those applications which claim to support the given content type exactly,
+// and not by MIME type subclassing.
+// Note that the first application of the list is the last used one, i.e.
+// the last one for which g_app_info_set_as_last_used_for_type() has been
+// called.
+/*
+
+C function : g_app_info_get_recommended_for_type
+*/
 func AppInfoGetRecommendedForType(contentType string) *glib.List {
 	c_content_type := C.CString(contentType)
 	defer C.free(unsafe.Pointer(c_content_type))
@@ -50,7 +65,15 @@ func AppInfoGetRecommendedForType(contentType string) *glib.List {
 
 // Blacklisted : g_null_settings_backend_new
 
-// PollableSourceNew is a wrapper around the C function g_pollable_source_new.
+// Utility method for #GPollableInputStream and #GPollableOutputStream
+// implementations. Creates a new #GSource that expects a callback of
+// type #GPollableSourceFunc. The new source does not actually do
+// anything on its own; use g_source_add_child_source() to add other
+// sources to it to cause it to trigger.
+/*
+
+C function : g_pollable_source_new
+*/
 func PollableSourceNew(pollableStream *gobject.Object) *glib.Source {
 	c_pollable_stream := (*C.GObject)(C.NULL)
 	if pollableStream != nil {
@@ -65,7 +88,11 @@ func PollableSourceNew(pollableStream *gobject.Object) *glib.Source {
 
 // Unsupported : g_simple_async_report_take_gerror_in_idle : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// TlsBackendGetDefault is a wrapper around the C function g_tls_backend_get_default.
+// Gets the default #GTlsBackend for the system.
+/*
+
+C function : g_tls_backend_get_default
+*/
 func TlsBackendGetDefault() *TlsBackend {
 	retC := C.g_tls_backend_get_default()
 	retGo := TlsBackendNewFromC(unsafe.Pointer(retC))
@@ -73,7 +100,17 @@ func TlsBackendGetDefault() *TlsBackend {
 	return retGo
 }
 
-// TlsClientConnectionNew is a wrapper around the C function g_tls_client_connection_new.
+// Creates a new #GTlsClientConnection wrapping @base_io_stream (which
+// must have pollable input and output streams) which is assumed to
+// communicate with the server identified by @server_identity.
+//
+// See the documentation for #GTlsConnection:base-io-stream for restrictions
+// on when application code can run operations on the @base_io_stream after
+// this function has returned.
+/*
+
+C function : g_tls_client_connection_new
+*/
 func TlsClientConnectionNew(baseIoStream *IOStream, serverIdentity *SocketConnectable) (*TlsClientConnection, error) {
 	c_base_io_stream := (*C.GIOStream)(C.NULL)
 	if baseIoStream != nil {
@@ -95,7 +132,11 @@ func TlsClientConnectionNew(baseIoStream *IOStream, serverIdentity *SocketConnec
 	return retGo, goThrowableError
 }
 
-// TlsErrorQuark is a wrapper around the C function g_tls_error_quark.
+// Gets the TLS error quark.
+/*
+
+C function : g_tls_error_quark
+*/
 func TlsErrorQuark() glib.Quark {
 	retC := C.g_tls_error_quark()
 	retGo := (glib.Quark)(retC)
@@ -103,7 +144,16 @@ func TlsErrorQuark() glib.Quark {
 	return retGo
 }
 
-// TlsServerConnectionNew is a wrapper around the C function g_tls_server_connection_new.
+// Creates a new #GTlsServerConnection wrapping @base_io_stream (which
+// must have pollable input and output streams).
+//
+// See the documentation for #GTlsConnection:base-io-stream for restrictions
+// on when application code can run operations on the @base_io_stream after
+// this function has returned.
+/*
+
+C function : g_tls_server_connection_new
+*/
 func TlsServerConnectionNew(baseIoStream *IOStream, certificate *TlsCertificate) (*TlsServerConnection, error) {
 	c_base_io_stream := (*C.GIOStream)(C.NULL)
 	if baseIoStream != nil {

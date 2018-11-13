@@ -22,7 +22,11 @@ import "C"
 
 // Unsupported : gtk_file_filter_to_gvariant : return type : Blacklisted record : GVariant
 
-// GetUseEs is a wrapper around the C function gtk_gl_area_get_use_es.
+// Retrieves the value set by gtk_gl_area_set_use_es().
+/*
+
+C function : gtk_gl_area_get_use_es
+*/
 func (recv *GLArea) GetUseEs() bool {
 	retC := C.gtk_gl_area_get_use_es((*C.GtkGLArea)(recv.native))
 	retGo := retC == C.TRUE
@@ -30,7 +34,14 @@ func (recv *GLArea) GetUseEs() bool {
 	return retGo
 }
 
-// SetUseEs is a wrapper around the C function gtk_gl_area_set_use_es.
+// Sets whether the @area should create an OpenGL or an OpenGL ES context.
+//
+// You should check the capabilities of the #GdkGLContext before drawing
+// with either API.
+/*
+
+C function : gtk_gl_area_set_use_es
+*/
 func (recv *GLArea) SetUseEs(useEs bool) {
 	c_use_es :=
 		boolToGboolean(useEs)
@@ -42,7 +53,11 @@ func (recv *GLArea) SetUseEs(useEs bool) {
 
 // Unsupported signal 'popped-up' for Menu : unsupported parameter flipped_rect : type gpointer :
 
-// PlaceOnMonitor is a wrapper around the C function gtk_menu_place_on_monitor.
+// Places @menu on the given monitor.
+/*
+
+C function : gtk_menu_place_on_monitor
+*/
 func (recv *Menu) PlaceOnMonitor(monitor *gdk.Monitor) {
 	c_monitor := (*C.GdkMonitor)(C.NULL)
 	if monitor != nil {
@@ -60,7 +75,19 @@ func (recv *Menu) PlaceOnMonitor(monitor *gdk.Monitor) {
 
 // Unsupported : gtk_menu_popup_at_widget : unsupported parameter trigger_event : no type generator for Gdk.Event (const GdkEvent*) for param trigger_event
 
-// PadControllerNew is a wrapper around the C function gtk_pad_controller_new.
+// Creates a new #GtkPadController that will associate events from @pad to
+// actions. A %NULL pad may be provided so the controller manages all pad devices
+// generically, it is discouraged to mix #GtkPadController objects with %NULL
+// and non-%NULL @pad argument on the same @window, as execution order is not
+// guaranteed.
+//
+// The #GtkPadController is created with no mapped actions. In order to map pad
+// events to actions, use gtk_pad_controller_set_action_entries() or
+// gtk_pad_controller_set_action().
+/*
+
+C function : gtk_pad_controller_new
+*/
 func PadControllerNew(window *Window, group *gio.ActionGroup, pad *gdk.Device) *PadController {
 	c_window := (*C.GtkWindow)(C.NULL)
 	if window != nil {
@@ -80,7 +107,18 @@ func PadControllerNew(window *Window, group *gio.ActionGroup, pad *gdk.Device) *
 	return retGo
 }
 
-// SetAction is a wrapper around the C function gtk_pad_controller_set_action.
+// Adds an individual action to @controller. This action will only be activated
+// if the given button/ring/strip number in @index is interacted while
+// the current mode is @mode. -1 may be used for simple cases, so the action
+// is triggered on all modes.
+//
+// The given @label should be considered user-visible, so internationalization
+// rules apply. Some windowing systems may be able to use those for user
+// feedback.
+/*
+
+C function : gtk_pad_controller_set_action
+*/
 func (recv *PadController) SetAction(type_ PadActionType, index int32, mode int32, label string, actionName string) {
 	c_type := (C.GtkPadActionType)(type_)
 
@@ -105,14 +143,26 @@ func (recv *PadController) SetAction(type_ PadActionType, index int32, mode int3
 
 // Unsupported : gtk_page_setup_to_gvariant : return type : Blacklisted record : GVariant
 
-// Popdown is a wrapper around the C function gtk_popover_popdown.
+// Pops @popover down.This is different than a gtk_widget_hide() call
+// in that it shows the popover with a transition. If you want to hide
+// the popover without a transition, use gtk_widget_hide().
+/*
+
+C function : gtk_popover_popdown
+*/
 func (recv *Popover) Popdown() {
 	C.gtk_popover_popdown((*C.GtkPopover)(recv.native))
 
 	return
 }
 
-// Popup is a wrapper around the C function gtk_popover_popup.
+// Pops @popover up. This is different than a gtk_widget_show() call
+// in that it shows the popover with a transition. If you want to show
+// the popover without a transition, use gtk_widget_show().
+/*
+
+C function : gtk_popover_popup
+*/
 func (recv *Popover) Popup() {
 	C.gtk_popover_popup((*C.GtkPopover)(recv.native))
 
@@ -123,7 +173,11 @@ func (recv *Popover) Popup() {
 
 // Unsupported : gtk_print_settings_to_gvariant : return type : Blacklisted record : GVariant
 
-// GetMaxContentHeight is a wrapper around the C function gtk_scrolled_window_get_max_content_height.
+// Returns the maximum content height set.
+/*
+
+C function : gtk_scrolled_window_get_max_content_height
+*/
 func (recv *ScrolledWindow) GetMaxContentHeight() int32 {
 	retC := C.gtk_scrolled_window_get_max_content_height((*C.GtkScrolledWindow)(recv.native))
 	retGo := (int32)(retC)
@@ -131,7 +185,11 @@ func (recv *ScrolledWindow) GetMaxContentHeight() int32 {
 	return retGo
 }
 
-// GetMaxContentWidth is a wrapper around the C function gtk_scrolled_window_get_max_content_width.
+// Returns the maximum content width set.
+/*
+
+C function : gtk_scrolled_window_get_max_content_width
+*/
 func (recv *ScrolledWindow) GetMaxContentWidth() int32 {
 	retC := C.gtk_scrolled_window_get_max_content_width((*C.GtkScrolledWindow)(recv.native))
 	retGo := (int32)(retC)
@@ -139,7 +197,12 @@ func (recv *ScrolledWindow) GetMaxContentWidth() int32 {
 	return retGo
 }
 
-// GetPropagateNaturalHeight is a wrapper around the C function gtk_scrolled_window_get_propagate_natural_height.
+// Reports whether the natural height of the child will be calculated and propagated
+// through the scrolled windows requested natural height.
+/*
+
+C function : gtk_scrolled_window_get_propagate_natural_height
+*/
 func (recv *ScrolledWindow) GetPropagateNaturalHeight() bool {
 	retC := C.gtk_scrolled_window_get_propagate_natural_height((*C.GtkScrolledWindow)(recv.native))
 	retGo := retC == C.TRUE
@@ -147,7 +210,12 @@ func (recv *ScrolledWindow) GetPropagateNaturalHeight() bool {
 	return retGo
 }
 
-// GetPropagateNaturalWidth is a wrapper around the C function gtk_scrolled_window_get_propagate_natural_width.
+// Reports whether the natural width of the child will be calculated and propagated
+// through the scrolled windows requested natural width.
+/*
+
+C function : gtk_scrolled_window_get_propagate_natural_width
+*/
 func (recv *ScrolledWindow) GetPropagateNaturalWidth() bool {
 	retC := C.gtk_scrolled_window_get_propagate_natural_width((*C.GtkScrolledWindow)(recv.native))
 	retGo := retC == C.TRUE
@@ -155,7 +223,16 @@ func (recv *ScrolledWindow) GetPropagateNaturalWidth() bool {
 	return retGo
 }
 
-// SetMaxContentHeight is a wrapper around the C function gtk_scrolled_window_set_max_content_height.
+// Sets the maximum height that @scrolled_window should keep visible. The
+// @scrolled_window will grow up to this height before it starts scrolling
+// the content.
+//
+// It is a programming error to set the maximum content height to a value
+// smaller than #GtkScrolledWindow:min-content-height.
+/*
+
+C function : gtk_scrolled_window_set_max_content_height
+*/
 func (recv *ScrolledWindow) SetMaxContentHeight(height int32) {
 	c_height := (C.gint)(height)
 
@@ -164,7 +241,16 @@ func (recv *ScrolledWindow) SetMaxContentHeight(height int32) {
 	return
 }
 
-// SetMaxContentWidth is a wrapper around the C function gtk_scrolled_window_set_max_content_width.
+// Sets the maximum width that @scrolled_window should keep visible. The
+// @scrolled_window will grow up to this width before it starts scrolling
+// the content.
+//
+// It is a programming error to set the maximum content width to a value
+// smaller than #GtkScrolledWindow:min-content-width.
+/*
+
+C function : gtk_scrolled_window_set_max_content_width
+*/
 func (recv *ScrolledWindow) SetMaxContentWidth(width int32) {
 	c_width := (C.gint)(width)
 
@@ -173,7 +259,12 @@ func (recv *ScrolledWindow) SetMaxContentWidth(width int32) {
 	return
 }
 
-// SetPropagateNaturalHeight is a wrapper around the C function gtk_scrolled_window_set_propagate_natural_height.
+// Sets whether the natural height of the child should be calculated and propagated
+// through the scrolled windows requested natural height.
+/*
+
+C function : gtk_scrolled_window_set_propagate_natural_height
+*/
 func (recv *ScrolledWindow) SetPropagateNaturalHeight(propagate bool) {
 	c_propagate :=
 		boolToGboolean(propagate)
@@ -183,7 +274,12 @@ func (recv *ScrolledWindow) SetPropagateNaturalHeight(propagate bool) {
 	return
 }
 
-// SetPropagateNaturalWidth is a wrapper around the C function gtk_scrolled_window_set_propagate_natural_width.
+// Sets whether the natural width of the child should be calculated and propagated
+// through the scrolled windows requested natural width.
+/*
+
+C function : gtk_scrolled_window_set_propagate_natural_width
+*/
 func (recv *ScrolledWindow) SetPropagateNaturalWidth(propagate bool) {
 	c_propagate :=
 		boolToGboolean(propagate)
@@ -193,7 +289,11 @@ func (recv *ScrolledWindow) SetPropagateNaturalWidth(propagate bool) {
 	return
 }
 
-// ShortcutLabelNew is a wrapper around the C function gtk_shortcut_label_new.
+// Creates a new #GtkShortcutLabel with @accelerator set.
+/*
+
+C function : gtk_shortcut_label_new
+*/
 func ShortcutLabelNew(accelerator string) *ShortcutLabel {
 	c_accelerator := C.CString(accelerator)
 	defer C.free(unsafe.Pointer(c_accelerator))
@@ -204,7 +304,11 @@ func ShortcutLabelNew(accelerator string) *ShortcutLabel {
 	return retGo
 }
 
-// GetAccelerator is a wrapper around the C function gtk_shortcut_label_get_accelerator.
+// Retrieves the current accelerator of @self.
+/*
+
+C function : gtk_shortcut_label_get_accelerator
+*/
 func (recv *ShortcutLabel) GetAccelerator() string {
 	retC := C.gtk_shortcut_label_get_accelerator((*C.GtkShortcutLabel)(recv.native))
 	retGo := C.GoString(retC)
@@ -212,7 +316,11 @@ func (recv *ShortcutLabel) GetAccelerator() string {
 	return retGo
 }
 
-// GetDisabledText is a wrapper around the C function gtk_shortcut_label_get_disabled_text.
+// Retrieves the text that is displayed when no accelerator is set.
+/*
+
+C function : gtk_shortcut_label_get_disabled_text
+*/
 func (recv *ShortcutLabel) GetDisabledText() string {
 	retC := C.gtk_shortcut_label_get_disabled_text((*C.GtkShortcutLabel)(recv.native))
 	retGo := C.GoString(retC)
@@ -220,7 +328,11 @@ func (recv *ShortcutLabel) GetDisabledText() string {
 	return retGo
 }
 
-// SetAccelerator is a wrapper around the C function gtk_shortcut_label_set_accelerator.
+// Sets the accelerator to be displayed by @self.
+/*
+
+C function : gtk_shortcut_label_set_accelerator
+*/
 func (recv *ShortcutLabel) SetAccelerator(accelerator string) {
 	c_accelerator := C.CString(accelerator)
 	defer C.free(unsafe.Pointer(c_accelerator))
@@ -230,7 +342,11 @@ func (recv *ShortcutLabel) SetAccelerator(accelerator string) {
 	return
 }
 
-// SetDisabledText is a wrapper around the C function gtk_shortcut_label_set_disabled_text.
+// Sets the text to be displayed by @self when no accelerator is set.
+/*
+
+C function : gtk_shortcut_label_set_disabled_text
+*/
 func (recv *ShortcutLabel) SetDisabledText(disabledText string) {
 	c_disabled_text := C.CString(disabledText)
 	defer C.free(unsafe.Pointer(c_disabled_text))

@@ -12,7 +12,22 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Access is a wrapper around the C function g_access.
+// A wrapper for the POSIX access() function. This function is used to
+// test a pathname for one or several of read, write or execute
+// permissions, or just existence.
+//
+// On Windows, the file protection mechanism is not at all POSIX-like,
+// and the underlying function in the C library only checks the
+// FAT-style READONLY attribute, and does not look at the ACL of a
+// file at all. This function is this in practise almost useless on
+// Windows. Software that needs to handle file permissions on Windows
+// more exactly should use the Win32 API.
+//
+// See your C library manual for more details about access().
+/*
+
+C function : g_access
+*/
 func Access(filename string, mode int32) int32 {
 	c_filename := C.CString(filename)
 	defer C.free(unsafe.Pointer(c_filename))
@@ -29,7 +44,14 @@ func Access(filename string, mode int32) int32 {
 
 // Unsupported : g_build_pathv : unsupported parameter args :
 
-// Chdir is a wrapper around the C function g_chdir.
+// A wrapper for the POSIX chdir() function. The function changes the
+// current directory of the process to @path.
+//
+// See your C library manual for more details about chdir().
+/*
+
+C function : g_chdir
+*/
 func Chdir(path string) int32 {
 	c_path := C.CString(path)
 	defer C.free(unsafe.Pointer(c_path))
@@ -40,7 +62,12 @@ func Chdir(path string) int32 {
 	return retGo
 }
 
-// DatalistGetFlags is a wrapper around the C function g_datalist_get_flags.
+// Gets flags values packed in together with the datalist.
+// See g_datalist_set_flags().
+/*
+
+C function : g_datalist_get_flags
+*/
 func DatalistGetFlags(datalist *Data) uint32 {
 	c_datalist := (**C.GData)(C.NULL)
 	if datalist != nil {
@@ -53,7 +80,16 @@ func DatalistGetFlags(datalist *Data) uint32 {
 	return retGo
 }
 
-// DatalistSetFlags is a wrapper around the C function g_datalist_set_flags.
+// Turns on flag values for a data list. This function is used
+// to keep a small number of boolean flags in an object with
+// a data list without using any additional space. It is
+// not generally useful except in circumstances where space
+// is very tight. (It is used in the base #GObject type, for
+// example.)
+/*
+
+C function : g_datalist_set_flags
+*/
 func DatalistSetFlags(datalist *Data, flags uint32) {
 	c_datalist := (**C.GData)(C.NULL)
 	if datalist != nil {
@@ -67,7 +103,11 @@ func DatalistSetFlags(datalist *Data, flags uint32) {
 	return
 }
 
-// DatalistUnsetFlags is a wrapper around the C function g_datalist_unset_flags.
+// Turns off flag values for a data list. See g_datalist_unset_flags()
+/*
+
+C function : g_datalist_unset_flags
+*/
 func DatalistUnsetFlags(datalist *Data, flags uint32) {
 	c_datalist := (**C.GData)(C.NULL)
 	if datalist != nil {
@@ -81,7 +121,35 @@ func DatalistUnsetFlags(datalist *Data, flags uint32) {
 	return
 }
 
-// FileSetContents is a wrapper around the C function g_file_set_contents.
+// Writes all of @contents to a file named @filename, with good error checking.
+// If a file called @filename already exists it will be overwritten.
+//
+// This write is atomic in the sense that it is first written to a temporary
+// file which is then renamed to the final name. Notes:
+//
+// - On UNIX, if @filename already exists hard links to @filename will break.
+// Also since the file is recreated, existing permissions, access control
+// lists, metadata etc. may be lost. If @filename is a symbolic link,
+// the link itself will be replaced, not the linked file.
+//
+// - On Windows renaming a file will not remove an existing file with the
+// new name, so on Windows there is a race condition between the existing
+// file being removed and the temporary file being renamed.
+//
+// - On Windows there is no way to remove a file that is open to some
+// process, or mapped into memory. Thus, this function will fail if
+// @filename already exists and is open.
+//
+// If the call was successful, it returns %TRUE. If the call was not successful,
+// it returns %FALSE and sets @error. The error domain is #G_FILE_ERROR.
+// Possible error codes are those in the #GFileError enumeration.
+//
+// Note that the name for the temporary file is constructed by appending up
+// to 7 characters to @filename.
+/*
+
+C function : g_file_set_contents
+*/
 func FileSetContents(filename string, contents []uint8) (bool, error) {
 	c_filename := C.CString(filename)
 	defer C.free(unsafe.Pointer(c_filename))
@@ -103,7 +171,24 @@ func FileSetContents(filename string, contents []uint8) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// GetHostName is a wrapper around the C function g_get_host_name.
+// Return a name for the machine.
+//
+// The returned name is not necessarily a fully-qualified domain name,
+// or even present in DNS or some other name service at all. It need
+// not even be unique on your local network or site, but usually it
+// is. Callers should not rely on the return value having any specific
+// properties like uniqueness for security purposes. Even if the name
+// of the machine is changed while an application is running, the
+// return value from this function does not change. The returned
+// string is owned by GLib and should not be modified or freed. If no
+// name can be determined, a default fixed string "localhost" is
+// returned.
+//
+// The encoding of the returned string is UTF-8.
+/*
+
+C function : g_get_host_name
+*/
 func GetHostName() string {
 	retC := C.g_get_host_name()
 	retGo := C.GoString(retC)
@@ -113,7 +198,12 @@ func GetHostName() string {
 
 // Unsupported : g_listenv : no return type
 
-// MkdirWithParents is a wrapper around the C function g_mkdir_with_parents.
+// Create a directory if it doesn't already exist. Create intermediate
+// parent directories as needed, too.
+/*
+
+C function : g_mkdir_with_parents
+*/
 func MkdirWithParents(pathname string, mode int32) int32 {
 	c_pathname := C.CString(pathname)
 	defer C.free(unsafe.Pointer(c_pathname))
@@ -126,7 +216,12 @@ func MkdirWithParents(pathname string, mode int32) int32 {
 	return retGo
 }
 
-// TryMalloc0 is a wrapper around the C function g_try_malloc0.
+// Attempts to allocate @n_bytes, initialized to 0's, and returns %NULL on
+// failure. Contrast with g_malloc0(), which aborts the program on failure.
+/*
+
+C function : g_try_malloc0
+*/
 func TryMalloc0(nBytes uint64) uintptr {
 	c_n_bytes := (C.gsize)(nBytes)
 
@@ -136,7 +231,21 @@ func TryMalloc0(nBytes uint64) uintptr {
 	return retGo
 }
 
-// Utf8CollateKeyForFilename is a wrapper around the C function g_utf8_collate_key_for_filename.
+// Converts a string into a collation key that can be compared
+// with other collation keys produced by the same function using strcmp().
+//
+// In order to sort filenames correctly, this function treats the dot '.'
+// as a special case. Most dictionary orderings seem to consider it
+// insignificant, thus producing the ordering "event.c" "eventgenerator.c"
+// "event.h" instead of "event.c" "event.h" "eventgenerator.c". Also, we
+// would like to treat numbers intelligently so that "file1" "file10" "file5"
+// is sorted as "file1" "file5" "file10".
+//
+// Note that this function depends on the [current locale][setlocale].
+/*
+
+C function : g_utf8_collate_key_for_filename
+*/
 func Utf8CollateKeyForFilename(str string, len int64) string {
 	c_str := C.CString(str)
 	defer C.free(unsafe.Pointer(c_str))

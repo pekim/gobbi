@@ -8,7 +8,17 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-// Unbind is a wrapper around the C function g_binding_unbind.
+// Explicitly releases the binding between the source and the target
+// property expressed by @binding.
+//
+// This function will release the reference that is being held on
+// the @binding instance; if you want to hold on to the #GBinding instance
+// after calling g_binding_unbind(), you will need to hold a reference
+// to it.
+/*
+
+C function : g_binding_unbind
+*/
 func (recv *Binding) Unbind() {
 	C.g_binding_unbind((*C.GBinding)(recv.native))
 

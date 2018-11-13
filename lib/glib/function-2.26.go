@@ -12,7 +12,12 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// DateTimeCompare is a wrapper around the C function g_date_time_compare.
+// A comparison function for #GDateTimes that is suitable
+// as a #GCompareFunc. Both #GDateTimes must be non-%NULL.
+/*
+
+C function : g_date_time_compare
+*/
 func DateTimeCompare(dt1 uintptr, dt2 uintptr) int32 {
 	c_dt1 := (C.gconstpointer)(dt1)
 
@@ -24,7 +29,14 @@ func DateTimeCompare(dt1 uintptr, dt2 uintptr) int32 {
 	return retGo
 }
 
-// DateTimeEqual is a wrapper around the C function g_date_time_equal.
+// Checks to see if @dt1 and @dt2 are equal.
+//
+// Equal here means that they represent the same moment after converting
+// them to the same time zone.
+/*
+
+C function : g_date_time_equal
+*/
 func DateTimeEqual(dt1 uintptr, dt2 uintptr) bool {
 	c_dt1 := (C.gconstpointer)(dt1)
 
@@ -36,7 +48,11 @@ func DateTimeEqual(dt1 uintptr, dt2 uintptr) bool {
 	return retGo
 }
 
-// DateTimeHash is a wrapper around the C function g_date_time_hash.
+// Hashes @datetime into a #guint, suitable for use within #GHashTable.
+/*
+
+C function : g_date_time_hash
+*/
 func DateTimeHash(datetime uintptr) uint32 {
 	c_datetime := (C.gconstpointer)(datetime)
 
@@ -46,7 +62,14 @@ func DateTimeHash(datetime uintptr) uint32 {
 	return retGo
 }
 
-// Dcgettext is a wrapper around the C function g_dcgettext.
+// This is a variant of g_dgettext() that allows specifying a locale
+// category instead of always using `LC_MESSAGES`. See g_dgettext() for
+// more information about how this functions differs from calling
+// dcgettext() directly.
+/*
+
+C function : g_dcgettext
+*/
 func Dcgettext(domain string, msgid string, category int32) string {
 	c_domain := C.CString(domain)
 	defer C.free(unsafe.Pointer(c_domain))
@@ -62,7 +85,26 @@ func Dcgettext(domain string, msgid string, category int32) string {
 	return retGo
 }
 
-// SourceSetNameById is a wrapper around the C function g_source_set_name_by_id.
+// Sets the name of a source using its ID.
+//
+// This is a convenience utility to set source names from the return
+// value of g_idle_add(), g_timeout_add(), etc.
+//
+// It is a programmer error to attempt to set the name of a non-existent
+// source.
+//
+// More specifically: source IDs can be reissued after a source has been
+// destroyed and therefore it is never valid to use this function with a
+// source ID which may have already been removed.  An example is when
+// scheduling an idle to run in another thread with g_idle_add(): the
+// idle may already have run and been removed by the time this function
+// is called on its (now invalid) source ID.  This source ID may have
+// been reissued, leading to the operation being performed against the
+// wrong source.
+/*
+
+C function : g_source_set_name_by_id
+*/
 func SourceSetNameById(tag uint32, name string) {
 	c_tag := (C.guint)(tag)
 

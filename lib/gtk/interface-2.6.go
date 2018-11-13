@@ -10,7 +10,12 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
-// GetShowHidden is a wrapper around the C function gtk_file_chooser_get_show_hidden.
+// Gets whether hidden files and folders are displayed in the file selector.
+// See gtk_file_chooser_set_show_hidden().
+/*
+
+C function : gtk_file_chooser_get_show_hidden
+*/
 func (recv *FileChooser) GetShowHidden() bool {
 	retC := C.gtk_file_chooser_get_show_hidden((*C.GtkFileChooser)(recv.native))
 	retGo := retC == C.TRUE
@@ -18,7 +23,11 @@ func (recv *FileChooser) GetShowHidden() bool {
 	return retGo
 }
 
-// SetShowHidden is a wrapper around the C function gtk_file_chooser_set_show_hidden.
+// Sets whether hidden files and folders are displayed in the file selector.
+/*
+
+C function : gtk_file_chooser_set_show_hidden
+*/
 func (recv *FileChooser) SetShowHidden(showHidden bool) {
 	c_show_hidden :=
 		boolToGboolean(showHidden)

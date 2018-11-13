@@ -25,7 +25,12 @@ import "C"
 
 // Unsupported : g_file_make_directory_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// MakeDirectoryFinish is a wrapper around the C function g_file_make_directory_finish.
+// Finishes an asynchronous directory creation, started with
+// g_file_make_directory_async().
+/*
+
+C function : g_file_make_directory_finish
+*/
 func (recv *File) MakeDirectoryFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
 
@@ -46,7 +51,13 @@ func (recv *File) MakeDirectoryFinish(result *AsyncResult) (bool, error) {
 
 // Unsupported : g_file_measure_disk_usage_async : unsupported parameter progress_callback : no type generator for FileMeasureProgressCallback (GFileMeasureProgressCallback) for param progress_callback
 
-// MeasureDiskUsageFinish is a wrapper around the C function g_file_measure_disk_usage_finish.
+// Collects the results from an earlier call to
+// g_file_measure_disk_usage_async().  See g_file_measure_disk_usage() for
+// more information.
+/*
+
+C function : g_file_measure_disk_usage_finish
+*/
 func (recv *File) MeasureDiskUsageFinish(result *AsyncResult) (bool, uint64, uint64, uint64, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
 
@@ -77,7 +88,12 @@ func (recv *File) MeasureDiskUsageFinish(result *AsyncResult) (bool, uint64, uin
 
 // Unsupported : g_file_trash_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// TrashFinish is a wrapper around the C function g_file_trash_finish.
+// Finishes an asynchronous file trashing operation, started with
+// g_file_trash_async().
+/*
+
+C function : g_file_trash_finish
+*/
 func (recv *File) TrashFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
 

@@ -12,7 +12,26 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// MappedFileNew is a wrapper around the C function g_mapped_file_new.
+// Maps a file into memory. On UNIX, this is using the mmap() function.
+//
+// If @writable is %TRUE, the mapped buffer may be modified, otherwise
+// it is an error to modify the mapped buffer. Modifications to the buffer
+// are not visible to other processes mapping the same file, and are not
+// written back to the file.
+//
+// Note that modifications of the underlying file might affect the contents
+// of the #GMappedFile. Therefore, mapping should only be used if the file
+// will not be modified, or if all modifications of the file are done
+// atomically (e.g. using g_file_set_contents()).
+//
+// If @filename is the name of an empty, regular file, the function
+// will successfully return an empty #GMappedFile. In other cases of
+// size 0 (e.g. device files such as /dev/null), @error will be set
+// to the #GFileError value #G_FILE_ERROR_INVAL.
+/*
+
+C function : g_mapped_file_new
+*/
 func MappedFileNew(filename string, writable bool) (*MappedFile, error) {
 	c_filename := C.CString(filename)
 	defer C.free(unsafe.Pointer(c_filename))
@@ -33,14 +52,28 @@ func MappedFileNew(filename string, writable bool) (*MappedFile, error) {
 	return retGo, goThrowableError
 }
 
-// Free is a wrapper around the C function g_mapped_file_free.
+// This call existed before #GMappedFile had refcounting and is currently
+// exactly the same as g_mapped_file_unref().
+/*
+
+C function : g_mapped_file_free
+*/
 func (recv *MappedFile) Free() {
 	C.g_mapped_file_free((*C.GMappedFile)(recv.native))
 
 	return
 }
 
-// GetContents is a wrapper around the C function g_mapped_file_get_contents.
+// Returns the contents of a #GMappedFile.
+//
+// Note that the contents may not be zero-terminated,
+// even if the #GMappedFile is backed by a text file.
+//
+// If the file is empty then %NULL is returned.
+/*
+
+C function : g_mapped_file_get_contents
+*/
 func (recv *MappedFile) GetContents() string {
 	retC := C.g_mapped_file_get_contents((*C.GMappedFile)(recv.native))
 	retGo := C.GoString(retC)
@@ -49,7 +82,11 @@ func (recv *MappedFile) GetContents() string {
 	return retGo
 }
 
-// GetLength is a wrapper around the C function g_mapped_file_get_length.
+// Returns the length of the contents of a #GMappedFile.
+/*
+
+C function : g_mapped_file_get_length
+*/
 func (recv *MappedFile) GetLength() uint64 {
 	retC := C.g_mapped_file_get_length((*C.GMappedFile)(recv.native))
 	retGo := (uint64)(retC)

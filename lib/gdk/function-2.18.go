@@ -10,7 +10,11 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// OffscreenWindowGetEmbedder is a wrapper around the C function gdk_offscreen_window_get_embedder.
+// Gets the window that @window is embedded in.
+/*
+
+C function : gdk_offscreen_window_get_embedder
+*/
 func OffscreenWindowGetEmbedder(window *Window) *Window {
 	c_window := (*C.GdkWindow)(C.NULL)
 	if window != nil {
@@ -28,7 +32,16 @@ func OffscreenWindowGetEmbedder(window *Window) *Window {
 	return retGo
 }
 
-// OffscreenWindowSetEmbedder is a wrapper around the C function gdk_offscreen_window_set_embedder.
+// Sets @window to be embedded in @embedder.
+//
+// To fully embed an offscreen window, in addition to calling this
+// function, it is also necessary to handle the #GdkWindow::pick-embedded-child
+// signal on the @embedder and the #GdkWindow::to-embedder and
+// #GdkWindow::from-embedder signals on @window.
+/*
+
+C function : gdk_offscreen_window_set_embedder
+*/
 func OffscreenWindowSetEmbedder(window *Window, embedder *Window) {
 	c_window := (*C.GdkWindow)(C.NULL)
 	if window != nil {

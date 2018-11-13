@@ -15,7 +15,15 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// DragSetIconName is a wrapper around the C function gtk_drag_set_icon_name.
+// Sets the icon for a given drag from a named themed icon. See
+// the docs for #GtkIconTheme for more details. Note that the
+// size of the icon depends on the icon theme (the icon is
+// loaded at the symbolic size #GTK_ICON_SIZE_DND), thus
+// @hot_x and @hot_y have to be used with care.
+/*
+
+C function : gtk_drag_set_icon_name
+*/
 func DragSetIconName(context *gdk.DragContext, iconName string, hotX int32, hotY int32) {
 	c_context := (*C.GdkDragContext)(C.NULL)
 	if context != nil {

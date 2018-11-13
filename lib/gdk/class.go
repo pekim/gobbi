@@ -194,7 +194,14 @@ func CastToCursor(object *gobject.Object) *Cursor {
 	return CursorNewFromC(object.ToC())
 }
 
-// CursorNew is a wrapper around the C function gdk_cursor_new.
+// Creates a new cursor from the set of builtin cursors for the default display.
+// See gdk_cursor_new_for_display().
+//
+// To make the cursor invisible, use %GDK_BLANK_CURSOR.
+/*
+
+C function : gdk_cursor_new
+*/
 func CursorNew(cursorType CursorType) *Cursor {
 	c_cursor_type := (C.GdkCursorType)(cursorType)
 
@@ -204,7 +211,11 @@ func CursorNew(cursorType CursorType) *Cursor {
 	return retGo
 }
 
-// Ref is a wrapper around the C function gdk_cursor_ref.
+// Adds a reference to @cursor.
+/*
+
+C function : gdk_cursor_ref
+*/
 func (recv *Cursor) Ref() *Cursor {
 	retC := C.gdk_cursor_ref((*C.GdkCursor)(recv.native))
 	retGo := CursorNewFromC(unsafe.Pointer(retC))
@@ -212,7 +223,12 @@ func (recv *Cursor) Ref() *Cursor {
 	return retGo
 }
 
-// Unref is a wrapper around the C function gdk_cursor_unref.
+// Removes a reference from @cursor, deallocating the cursor
+// if no references remain.
+/*
+
+C function : gdk_cursor_unref
+*/
 func (recv *Cursor) Unref() {
 	C.gdk_cursor_unref((*C.GdkCursor)(recv.native))
 
@@ -308,7 +324,12 @@ func device_changedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// GetAxis is a wrapper around the C function gdk_device_get_axis.
+// Interprets an array of double as axis values for a given device,
+// and locates the value in the array for a given axis use.
+/*
+
+C function : gdk_device_get_axis
+*/
 func (recv *Device) GetAxis(axes []float64, use AxisUse) (bool, float64) {
 	c_axes := &axes[0]
 
@@ -328,7 +349,13 @@ func (recv *Device) GetAxis(axes []float64, use AxisUse) (bool, float64) {
 
 // Unsupported : gdk_device_get_state : unsupported parameter mask : GdkModifierType* with indirection level of 1
 
-// ListSlaveDevices is a wrapper around the C function gdk_device_list_slave_devices.
+// If the device if of type %GDK_DEVICE_TYPE_MASTER, it will return
+// the list of slave devices attached to it, otherwise it will return
+// %NULL
+/*
+
+C function : gdk_device_list_slave_devices
+*/
 func (recv *Device) ListSlaveDevices() *glib.List {
 	retC := C.gdk_device_list_slave_devices((*C.GdkDevice)(recv.native))
 	var retGo (*glib.List)
@@ -341,7 +368,11 @@ func (recv *Device) ListSlaveDevices() *glib.List {
 	return retGo
 }
 
-// SetAxisUse is a wrapper around the C function gdk_device_set_axis_use.
+// Specifies how an axis of a device is used.
+/*
+
+C function : gdk_device_set_axis_use
+*/
 func (recv *Device) SetAxisUse(index uint32, use AxisUse) {
 	c_index_ := (C.guint)(index)
 
@@ -352,7 +383,12 @@ func (recv *Device) SetAxisUse(index uint32, use AxisUse) {
 	return
 }
 
-// SetKey is a wrapper around the C function gdk_device_set_key.
+// Specifies the X key event to generate when a macro button of a device
+// is pressed.
+/*
+
+C function : gdk_device_set_key
+*/
 func (recv *Device) SetKey(index uint32, keyval uint32, modifiers ModifierType) {
 	c_index_ := (C.guint)(index)
 
@@ -365,7 +401,17 @@ func (recv *Device) SetKey(index uint32, keyval uint32, modifiers ModifierType) 
 	return
 }
 
-// SetMode is a wrapper around the C function gdk_device_set_mode.
+// Sets a the mode of an input device. The mode controls if the
+// device is active and whether the device’s range is mapped to the
+// entire screen or to a single window.
+//
+// Note: This is only meaningful for floating devices, master devices (and
+// slaves connected to these) drive the pointer cursor, which is not limited
+// by the input mode.
+/*
+
+C function : gdk_device_set_mode
+*/
 func (recv *Device) SetMode(mode InputMode) bool {
 	c_mode := (C.GdkInputMode)(mode)
 
@@ -673,7 +719,11 @@ func display_openedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// DeviceIsGrabbed is a wrapper around the C function gdk_display_device_is_grabbed.
+// Returns %TRUE if there is an ongoing grab on @device for @display.
+/*
+
+C function : gdk_display_device_is_grabbed
+*/
 func (recv *Display) DeviceIsGrabbed(device *Device) bool {
 	c_device := (*C.GdkDevice)(C.NULL)
 	if device != nil {
@@ -750,7 +800,11 @@ func CastToDragContext(object *gobject.Object) *DragContext {
 	return DragContextNewFromC(object.ToC())
 }
 
-// GetDevice is a wrapper around the C function gdk_drag_context_get_device.
+// Returns the #GdkDevice associated to the drag context.
+/*
+
+C function : gdk_drag_context_get_device
+*/
 func (recv *DragContext) GetDevice() *Device {
 	retC := C.gdk_drag_context_get_device((*C.GdkDragContext)(recv.native))
 	retGo := DeviceNewFromC(unsafe.Pointer(retC))
@@ -758,7 +812,12 @@ func (recv *DragContext) GetDevice() *Device {
 	return retGo
 }
 
-// SetDevice is a wrapper around the C function gdk_drag_context_set_device.
+// Associates a #GdkDevice to @context, so all Drag and Drop events
+// for @context are emitted as if they came from this device.
+/*
+
+C function : gdk_drag_context_set_device
+*/
 func (recv *DragContext) SetDevice(device *Device) {
 	c_device := (*C.GdkDevice)(C.NULL)
 	if device != nil {
@@ -1265,7 +1324,11 @@ func CastToKeymap(object *gobject.Object) *Keymap {
 	return KeymapNewFromC(object.ToC())
 }
 
-// GetDirection is a wrapper around the C function gdk_keymap_get_direction.
+// Returns the direction of effective layout of the keymap.
+/*
+
+C function : gdk_keymap_get_direction
+*/
 func (recv *Keymap) GetDirection() pango.Direction {
 	retC := C.gdk_keymap_get_direction((*C.GdkKeymap)(recv.native))
 	retGo := (pango.Direction)(retC)
@@ -1277,7 +1340,15 @@ func (recv *Keymap) GetDirection() pango.Direction {
 
 // Unsupported : gdk_keymap_get_entries_for_keyval : unsupported parameter keys : output array param keys
 
-// LookupKey is a wrapper around the C function gdk_keymap_lookup_key.
+// Looks up the keyval mapped to a keycode/group/level triplet.
+// If no keyval is bound to @key, returns 0. For normal user input,
+// you want to use gdk_keymap_translate_keyboard_state() instead of
+// this function, since the effective group/level may not be
+// the same as the current keyboard state.
+/*
+
+C function : gdk_keymap_lookup_key
+*/
 func (recv *Keymap) LookupKey(key *KeymapKey) uint32 {
 	c_key := (*C.GdkKeymapKey)(C.NULL)
 	if key != nil {
@@ -1388,7 +1459,14 @@ func CastToWindow(object *gobject.Object) *Window {
 	return WindowNewFromC(object.ToC())
 }
 
-// WindowNew is a wrapper around the C function gdk_window_new.
+// Creates a new #GdkWindow using the attributes from
+// @attributes. See #GdkWindowAttr and #GdkWindowAttributesType for
+// more details.  Note: to use this on displays other than the default
+// display, @parent must be specified.
+/*
+
+C function : gdk_window_new
+*/
 func WindowNew(parent *Window, attributes *WindowAttr, attributesMask int32) *Window {
 	c_parent := (*C.GdkWindow)(C.NULL)
 	if parent != nil {
@@ -1410,7 +1488,15 @@ func WindowNew(parent *Window, attributes *WindowAttr, attributesMask int32) *Wi
 
 // Unsupported : gdk_window_add_filter : unsupported parameter function : no type generator for FilterFunc (GdkFilterFunc) for param function
 
-// BeginMoveDrag is a wrapper around the C function gdk_window_begin_move_drag.
+// Begins a window move operation (for a toplevel window).
+//
+// This function assumes that the drag is controlled by the
+// client pointer device, use gdk_window_begin_move_drag_for_device()
+// to begin a drag with a different device.
+/*
+
+C function : gdk_window_begin_move_drag
+*/
 func (recv *Window) BeginMoveDrag(button int32, rootX int32, rootY int32, timestamp uint32) {
 	c_button := (C.gint)(button)
 
@@ -1427,7 +1513,48 @@ func (recv *Window) BeginMoveDrag(button int32, rootX int32, rootY int32, timest
 
 // Unsupported : gdk_window_begin_paint_rect : unsupported parameter rectangle : Blacklisted record : GdkRectangle
 
-// BeginPaintRegion is a wrapper around the C function gdk_window_begin_paint_region.
+// Indicates that you are beginning the process of redrawing @region.
+// A backing store (offscreen buffer) large enough to contain @region
+// will be created. The backing store will be initialized with the
+// background color or background surface for @window. Then, all
+// drawing operations performed on @window will be diverted to the
+// backing store.  When you call gdk_window_end_paint(), the backing
+// store will be copied to @window, making it visible onscreen. Only
+// the part of @window contained in @region will be modified; that is,
+// drawing operations are clipped to @region.
+//
+// The net result of all this is to remove flicker, because the user
+// sees the finished product appear all at once when you call
+// gdk_window_end_paint(). If you draw to @window directly without
+// calling gdk_window_begin_paint_region(), the user may see flicker
+// as individual drawing operations are performed in sequence.  The
+// clipping and background-initializing features of
+// gdk_window_begin_paint_region() are conveniences for the
+// programmer, so you can avoid doing that work yourself.
+//
+// When using GTK+, the widget system automatically places calls to
+// gdk_window_begin_paint_region() and gdk_window_end_paint() around
+// emissions of the expose_event signal. That is, if you’re writing an
+// expose event handler, you can assume that the exposed area in
+// #GdkEventExpose has already been cleared to the window background,
+// is already set as the clip region, and already has a backing store.
+// Therefore in most cases, application code need not call
+// gdk_window_begin_paint_region(). (You can disable the automatic
+// calls around expose events on a widget-by-widget basis by calling
+// gtk_widget_set_double_buffered().)
+//
+// If you call this function multiple times before calling the
+// matching gdk_window_end_paint(), the backing stores are pushed onto
+// a stack. gdk_window_end_paint() copies the topmost backing store
+// onscreen, subtracts the topmost region from all other regions in
+// the stack, and pops the stack. All drawing operations affect only
+// the topmost backing store in the stack. One matching call to
+// gdk_window_end_paint() is required for each call to
+// gdk_window_begin_paint_region().
+/*
+
+C function : gdk_window_begin_paint_region
+*/
 func (recv *Window) BeginPaintRegion(region *cairo.Region) {
 	c_region := (*C.cairo_region_t)(C.NULL)
 	if region != nil {
@@ -1439,7 +1566,15 @@ func (recv *Window) BeginPaintRegion(region *cairo.Region) {
 	return
 }
 
-// BeginResizeDrag is a wrapper around the C function gdk_window_begin_resize_drag.
+// Begins a window resize operation (for a toplevel window).
+//
+// This function assumes that the drag is controlled by the
+// client pointer device, use gdk_window_begin_resize_drag_for_device()
+// to begin a drag with a different device.
+/*
+
+C function : gdk_window_begin_resize_drag
+*/
 func (recv *Window) BeginResizeDrag(edge WindowEdge, button int32, rootX int32, rootY int32, timestamp uint32) {
 	c_edge := (C.GdkWindowEdge)(edge)
 
@@ -1456,14 +1591,31 @@ func (recv *Window) BeginResizeDrag(edge WindowEdge, button int32, rootX int32, 
 	return
 }
 
-// Deiconify is a wrapper around the C function gdk_window_deiconify.
+// Attempt to deiconify (unminimize) @window. On X11 the window manager may
+// choose to ignore the request to deiconify. When using GTK+,
+// use gtk_window_deiconify() instead of the #GdkWindow variant. Or better yet,
+// you probably want to use gtk_window_present(), which raises the window, focuses it,
+// unminimizes it, and puts it on the current desktop.
+/*
+
+C function : gdk_window_deiconify
+*/
 func (recv *Window) Deiconify() {
 	C.gdk_window_deiconify((*C.GdkWindow)(recv.native))
 
 	return
 }
 
-// Destroy is a wrapper around the C function gdk_window_destroy.
+// Destroys the window system resources associated with @window and decrements @window's
+// reference count. The window system resources for all children of @window are also
+// destroyed, but the children’s reference counts are not decremented.
+//
+// Note that a window will not be destroyed automatically when its reference count
+// reaches zero. You must call this function yourself before that happens.
+/*
+
+C function : gdk_window_destroy
+*/
 func (recv *Window) Destroy() {
 	C.gdk_window_destroy((*C.GdkWindow)(recv.native))
 
@@ -1472,14 +1624,30 @@ func (recv *Window) Destroy() {
 
 // Blacklisted : gdk_window_destroy_notify
 
-// EndPaint is a wrapper around the C function gdk_window_end_paint.
+// Indicates that the backing store created by the most recent call
+// to gdk_window_begin_paint_region() should be copied onscreen and
+// deleted, leaving the next-most-recent backing store or no backing
+// store at all as the active paint region. See
+// gdk_window_begin_paint_region() for full details.
+//
+// It is an error to call this function without a matching
+// gdk_window_begin_paint_region() first.
+/*
+
+C function : gdk_window_end_paint
+*/
 func (recv *Window) EndPaint() {
 	C.gdk_window_end_paint((*C.GdkWindow)(recv.native))
 
 	return
 }
 
-// Focus is a wrapper around the C function gdk_window_focus.
+// Sets keyboard focus to @window. In most cases, gtk_window_present()
+// should be used on a #GtkWindow, rather than calling this function.
+/*
+
+C function : gdk_window_focus
+*/
 func (recv *Window) Focus(timestamp uint32) {
 	c_timestamp := (C.guint32)(timestamp)
 
@@ -1488,21 +1656,49 @@ func (recv *Window) Focus(timestamp uint32) {
 	return
 }
 
-// FreezeToplevelUpdatesLibgtkOnly is a wrapper around the C function gdk_window_freeze_toplevel_updates_libgtk_only.
+// Temporarily freezes a window and all its descendants such that it won't
+// receive expose events.  The window will begin receiving expose events
+// again when gdk_window_thaw_toplevel_updates_libgtk_only() is called. If
+// gdk_window_freeze_toplevel_updates_libgtk_only()
+// has been called more than once,
+// gdk_window_thaw_toplevel_updates_libgtk_only() must be called
+// an equal number of times to begin processing exposes.
+//
+// This function is not part of the GDK public API and is only
+// for use by GTK+.
+/*
+
+C function : gdk_window_freeze_toplevel_updates_libgtk_only
+*/
 func (recv *Window) FreezeToplevelUpdatesLibgtkOnly() {
 	C.gdk_window_freeze_toplevel_updates_libgtk_only((*C.GdkWindow)(recv.native))
 
 	return
 }
 
-// FreezeUpdates is a wrapper around the C function gdk_window_freeze_updates.
+// Temporarily freezes a window such that it won’t receive expose
+// events.  The window will begin receiving expose events again when
+// gdk_window_thaw_updates() is called. If gdk_window_freeze_updates()
+// has been called more than once, gdk_window_thaw_updates() must be called
+// an equal number of times to begin processing exposes.
+/*
+
+C function : gdk_window_freeze_updates
+*/
 func (recv *Window) FreezeUpdates() {
 	C.gdk_window_freeze_updates((*C.GdkWindow)(recv.native))
 
 	return
 }
 
-// FullscreenOnMonitor is a wrapper around the C function gdk_window_fullscreen_on_monitor.
+// Moves the window into fullscreen mode on the given monitor. This means
+// the window covers the entire screen and is above any panels or task bars.
+//
+// If the window was already fullscreen, then this function does nothing.
+/*
+
+C function : gdk_window_fullscreen_on_monitor
+*/
 func (recv *Window) FullscreenOnMonitor(monitor int32) {
 	c_monitor := (C.gint)(monitor)
 
@@ -1511,7 +1707,17 @@ func (recv *Window) FullscreenOnMonitor(monitor int32) {
 	return
 }
 
-// GetChildren is a wrapper around the C function gdk_window_get_children.
+// Gets the list of children of @window known to GDK.
+// This function only returns children created via GDK,
+// so for example it’s useless when used with the root window;
+// it only returns windows an application created itself.
+//
+// The returned list must be freed, but the elements in the
+// list need not be.
+/*
+
+C function : gdk_window_get_children
+*/
 func (recv *Window) GetChildren() *glib.List {
 	retC := C.gdk_window_get_children((*C.GdkWindow)(recv.native))
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
@@ -1519,7 +1725,15 @@ func (recv *Window) GetChildren() *glib.List {
 	return retGo
 }
 
-// GetClipRegion is a wrapper around the C function gdk_window_get_clip_region.
+// Computes the region of a window that potentially can be written
+// to by drawing primitives. This region may not take into account
+// other factors such as if the window is obscured by other windows,
+// but no area outside of this region will be affected by drawing
+// primitives.
+/*
+
+C function : gdk_window_get_clip_region
+*/
 func (recv *Window) GetClipRegion() *cairo.Region {
 	retC := C.gdk_window_get_clip_region((*C.GdkWindow)(recv.native))
 	retGo := cairo.RegionNewFromC(unsafe.Pointer(retC))
@@ -1529,7 +1743,12 @@ func (recv *Window) GetClipRegion() *cairo.Region {
 
 // Unsupported : gdk_window_get_decorations : unsupported parameter decorations : GdkWMDecoration* with indirection level of 1
 
-// GetEvents is a wrapper around the C function gdk_window_get_events.
+// Gets the event mask for @window for all master input devices. See
+// gdk_window_set_events().
+/*
+
+C function : gdk_window_get_events
+*/
 func (recv *Window) GetEvents() EventMask {
 	retC := C.gdk_window_get_events((*C.GdkWindow)(recv.native))
 	retGo := (EventMask)(retC)
@@ -1539,7 +1758,30 @@ func (recv *Window) GetEvents() EventMask {
 
 // Unsupported : gdk_window_get_frame_extents : unsupported parameter rect : Blacklisted record : GdkRectangle
 
-// GetGeometry is a wrapper around the C function gdk_window_get_geometry.
+// Any of the return location arguments to this function may be %NULL,
+// if you aren’t interested in getting the value of that field.
+//
+// The X and Y coordinates returned are relative to the parent window
+// of @window, which for toplevels usually means relative to the
+// window decorations (titlebar, etc.) rather than relative to the
+// root window (screen-size background window).
+//
+// On the X11 platform, the geometry is obtained from the X server,
+// so reflects the latest position of @window; this may be out-of-sync
+// with the position of @window delivered in the most-recently-processed
+// #GdkEventConfigure. gdk_window_get_position() in contrast gets the
+// position from the most recent configure event.
+//
+// Note: If @window is not a toplevel, it is much better
+// to call gdk_window_get_position(), gdk_window_get_width() and
+// gdk_window_get_height() instead, because it avoids the roundtrip to
+// the X server and because these functions support the full 32-bit
+// coordinate space, whereas gdk_window_get_geometry() is restricted to
+// the 16-bit coordinates of X11.
+/*
+
+C function : gdk_window_get_geometry
+*/
 func (recv *Window) GetGeometry() (int32, int32, int32, int32) {
 	var c_x C.gint
 
@@ -1562,7 +1804,14 @@ func (recv *Window) GetGeometry() (int32, int32, int32, int32) {
 	return x, y, width, height
 }
 
-// GetOrigin is a wrapper around the C function gdk_window_get_origin.
+// Obtains the position of a window in root window coordinates.
+// (Compare with gdk_window_get_position() and
+// gdk_window_get_geometry() which return the position of a window
+// relative to its parent window.)
+/*
+
+C function : gdk_window_get_origin
+*/
 func (recv *Window) GetOrigin() (int32, int32, int32) {
 	var c_x C.gint
 
@@ -1578,7 +1827,21 @@ func (recv *Window) GetOrigin() (int32, int32, int32) {
 	return retGo, x, y
 }
 
-// GetParent is a wrapper around the C function gdk_window_get_parent.
+// Obtains the parent of @window, as known to GDK. Does not query the
+// X server; thus this returns the parent as passed to gdk_window_new(),
+// not the actual parent. This should never matter unless you’re using
+// Xlib calls mixed with GDK calls on the X11 platform. It may also
+// matter for toplevel windows, because the window manager may choose
+// to reparent them.
+//
+// Note that you should use gdk_window_get_effective_parent() when
+// writing generic code that walks up a window hierarchy, because
+// gdk_window_get_parent() will most likely not do what you expect if
+// there are offscreen windows in the hierarchy.
+/*
+
+C function : gdk_window_get_parent
+*/
 func (recv *Window) GetParent() *Window {
 	retC := C.gdk_window_get_parent((*C.GdkWindow)(recv.native))
 	retGo := WindowNewFromC(unsafe.Pointer(retC))
@@ -1588,7 +1851,17 @@ func (recv *Window) GetParent() *Window {
 
 // Unsupported : gdk_window_get_pointer : unsupported parameter mask : GdkModifierType* with indirection level of 1
 
-// GetPosition is a wrapper around the C function gdk_window_get_position.
+// Obtains the position of the window as reported in the
+// most-recently-processed #GdkEventConfigure. Contrast with
+// gdk_window_get_geometry() which queries the X server for the
+// current window position, regardless of which events have been
+// received or processed.
+//
+// The position coordinates are relative to the window’s parent window.
+/*
+
+C function : gdk_window_get_position
+*/
 func (recv *Window) GetPosition() (int32, int32) {
 	var c_x C.gint
 
@@ -1603,7 +1876,12 @@ func (recv *Window) GetPosition() (int32, int32) {
 	return x, y
 }
 
-// GetRootOrigin is a wrapper around the C function gdk_window_get_root_origin.
+// Obtains the top-left corner of the window manager frame in root
+// window coordinates.
+/*
+
+C function : gdk_window_get_root_origin
+*/
 func (recv *Window) GetRootOrigin() (int32, int32) {
 	var c_x C.gint
 
@@ -1618,7 +1896,12 @@ func (recv *Window) GetRootOrigin() (int32, int32) {
 	return x, y
 }
 
-// GetSourceEvents is a wrapper around the C function gdk_window_get_source_events.
+// Returns the event mask for @window corresponding to the device class specified
+// by @source.
+/*
+
+C function : gdk_window_get_source_events
+*/
 func (recv *Window) GetSourceEvents(source InputSource) EventMask {
 	c_source := (C.GdkInputSource)(source)
 
@@ -1628,7 +1911,12 @@ func (recv *Window) GetSourceEvents(source InputSource) EventMask {
 	return retGo
 }
 
-// GetState is a wrapper around the C function gdk_window_get_state.
+// Gets the bitwise OR of the currently active window state flags,
+// from the #GdkWindowState enumeration.
+/*
+
+C function : gdk_window_get_state
+*/
 func (recv *Window) GetState() WindowState {
 	retC := C.gdk_window_get_state((*C.GdkWindow)(recv.native))
 	retGo := (WindowState)(retC)
@@ -1636,7 +1924,20 @@ func (recv *Window) GetState() WindowState {
 	return retGo
 }
 
-// GetToplevel is a wrapper around the C function gdk_window_get_toplevel.
+// Gets the toplevel window that’s an ancestor of @window.
+//
+// Any window type but %GDK_WINDOW_CHILD is considered a
+// toplevel window, as is a %GDK_WINDOW_CHILD window that
+// has a root window as parent.
+//
+// Note that you should use gdk_window_get_effective_toplevel() when
+// you want to get to a window’s toplevel as seen on screen, because
+// gdk_window_get_toplevel() will most likely not do what you expect
+// if there are offscreen windows in the hierarchy.
+/*
+
+C function : gdk_window_get_toplevel
+*/
 func (recv *Window) GetToplevel() *Window {
 	retC := C.gdk_window_get_toplevel((*C.GdkWindow)(recv.native))
 	retGo := WindowNewFromC(unsafe.Pointer(retC))
@@ -1644,7 +1945,16 @@ func (recv *Window) GetToplevel() *Window {
 	return retGo
 }
 
-// GetUpdateArea is a wrapper around the C function gdk_window_get_update_area.
+// Transfers ownership of the update area from @window to the caller
+// of the function. That is, after calling this function, @window will
+// no longer have an invalid/dirty region; the update area is removed
+// from @window and handed to you. If a window has no update area,
+// gdk_window_get_update_area() returns %NULL. You are responsible for
+// calling cairo_region_destroy() on the returned region if it’s non-%NULL.
+/*
+
+C function : gdk_window_get_update_area
+*/
 func (recv *Window) GetUpdateArea() *cairo.Region {
 	retC := C.gdk_window_get_update_area((*C.GdkWindow)(recv.native))
 	retGo := cairo.RegionNewFromC(unsafe.Pointer(retC))
@@ -1652,7 +1962,12 @@ func (recv *Window) GetUpdateArea() *cairo.Region {
 	return retGo
 }
 
-// GetUserData is a wrapper around the C function gdk_window_get_user_data.
+// Retrieves the user data for @window, which is normally the widget
+// that @window belongs to. See gdk_window_set_user_data().
+/*
+
+C function : gdk_window_get_user_data
+*/
 func (recv *Window) GetUserData() uintptr {
 	var c_data C.gpointer
 
@@ -1663,7 +1978,14 @@ func (recv *Window) GetUserData() uintptr {
 	return data
 }
 
-// GetVisibleRegion is a wrapper around the C function gdk_window_get_visible_region.
+// Computes the region of the @window that is potentially visible.
+// This does not necessarily take into account if the window is
+// obscured by other windows, but no area outside of this region
+// is visible.
+/*
+
+C function : gdk_window_get_visible_region
+*/
 func (recv *Window) GetVisibleRegion() *cairo.Region {
 	retC := C.gdk_window_get_visible_region((*C.GdkWindow)(recv.native))
 	retGo := cairo.RegionNewFromC(unsafe.Pointer(retC))
@@ -1671,7 +1993,11 @@ func (recv *Window) GetVisibleRegion() *cairo.Region {
 	return retGo
 }
 
-// GetWindowType is a wrapper around the C function gdk_window_get_window_type.
+// Gets the type of the window. See #GdkWindowType.
+/*
+
+C function : gdk_window_get_window_type
+*/
 func (recv *Window) GetWindowType() WindowType {
 	retC := C.gdk_window_get_window_type((*C.GdkWindow)(recv.native))
 	retGo := (WindowType)(retC)
@@ -1679,14 +2005,29 @@ func (recv *Window) GetWindowType() WindowType {
 	return retGo
 }
 
-// Hide is a wrapper around the C function gdk_window_hide.
+// For toplevel windows, withdraws them, so they will no longer be
+// known to the window manager; for all windows, unmaps them, so
+// they won’t be displayed. Normally done automatically as
+// part of gtk_widget_hide().
+/*
+
+C function : gdk_window_hide
+*/
 func (recv *Window) Hide() {
 	C.gdk_window_hide((*C.GdkWindow)(recv.native))
 
 	return
 }
 
-// Iconify is a wrapper around the C function gdk_window_iconify.
+// Asks to iconify (minimize) @window. The window manager may choose
+// to ignore the request, but normally will honor it. Using
+// gtk_window_iconify() is preferred, if you have a #GtkWindow widget.
+//
+// This function only makes sense when @window is a toplevel window.
+/*
+
+C function : gdk_window_iconify
+*/
 func (recv *Window) Iconify() {
 	C.gdk_window_iconify((*C.GdkWindow)(recv.native))
 
@@ -1697,7 +2038,27 @@ func (recv *Window) Iconify() {
 
 // Unsupported : gdk_window_invalidate_rect : unsupported parameter rect : Blacklisted record : GdkRectangle
 
-// InvalidateRegion is a wrapper around the C function gdk_window_invalidate_region.
+// Adds @region to the update area for @window. The update area is the
+// region that needs to be redrawn, or “dirty region.” The call
+// gdk_window_process_updates() sends one or more expose events to the
+// window, which together cover the entire update area. An
+// application would normally redraw the contents of @window in
+// response to those expose events.
+//
+// GDK will call gdk_window_process_all_updates() on your behalf
+// whenever your program returns to the main loop and becomes idle, so
+// normally there’s no need to do that manually, you just need to
+// invalidate regions that you know should be redrawn.
+//
+// The @invalidate_children parameter controls whether the region of
+// each child window that intersects @region will also be invalidated.
+// If %FALSE, then the update area for child windows will remain
+// unaffected. See gdk_window_invalidate_maybe_recurse if you need
+// fine grained control over which children are invalidated.
+/*
+
+C function : gdk_window_invalidate_region
+*/
 func (recv *Window) InvalidateRegion(region *cairo.Region, invalidateChildren bool) {
 	c_region := (*C.cairo_region_t)(C.NULL)
 	if region != nil {
@@ -1712,7 +2073,14 @@ func (recv *Window) InvalidateRegion(region *cairo.Region, invalidateChildren bo
 	return
 }
 
-// IsViewable is a wrapper around the C function gdk_window_is_viewable.
+// Check if the window and all ancestors of the window are
+// mapped. (This is not necessarily "viewable" in the X sense, since
+// we only check as far as we have GDK window parents, not to the root
+// window.)
+/*
+
+C function : gdk_window_is_viewable
+*/
 func (recv *Window) IsViewable() bool {
 	retC := C.gdk_window_is_viewable((*C.GdkWindow)(recv.native))
 	retGo := retC == C.TRUE
@@ -1720,7 +2088,12 @@ func (recv *Window) IsViewable() bool {
 	return retGo
 }
 
-// IsVisible is a wrapper around the C function gdk_window_is_visible.
+// Checks whether the window has been mapped (with gdk_window_show() or
+// gdk_window_show_unraised()).
+/*
+
+C function : gdk_window_is_visible
+*/
 func (recv *Window) IsVisible() bool {
 	retC := C.gdk_window_is_visible((*C.GdkWindow)(recv.native))
 	retGo := retC == C.TRUE
@@ -1728,28 +2101,77 @@ func (recv *Window) IsVisible() bool {
 	return retGo
 }
 
-// Lower is a wrapper around the C function gdk_window_lower.
+// Lowers @window to the bottom of the Z-order (stacking order), so that
+// other windows with the same parent window appear above @window.
+// This is true whether or not the other windows are visible.
+//
+// If @window is a toplevel, the window manager may choose to deny the
+// request to move the window in the Z-order, gdk_window_lower() only
+// requests the restack, does not guarantee it.
+//
+// Note that gdk_window_show() raises the window again, so don’t call this
+// function before gdk_window_show(). (Try gdk_window_show_unraised().)
+/*
+
+C function : gdk_window_lower
+*/
 func (recv *Window) Lower() {
 	C.gdk_window_lower((*C.GdkWindow)(recv.native))
 
 	return
 }
 
-// Maximize is a wrapper around the C function gdk_window_maximize.
+// Maximizes the window. If the window was already maximized, then
+// this function does nothing.
+//
+// On X11, asks the window manager to maximize @window, if the window
+// manager supports this operation. Not all window managers support
+// this, and some deliberately ignore it or don’t have a concept of
+// “maximized”; so you can’t rely on the maximization actually
+// happening. But it will happen with most standard window managers,
+// and GDK makes a best effort to get it to happen.
+//
+// On Windows, reliably maximizes the window.
+/*
+
+C function : gdk_window_maximize
+*/
 func (recv *Window) Maximize() {
 	C.gdk_window_maximize((*C.GdkWindow)(recv.native))
 
 	return
 }
 
-// MergeChildShapes is a wrapper around the C function gdk_window_merge_child_shapes.
+// Merges the shape masks for any child windows into the
+// shape mask for @window. i.e. the union of all masks
+// for @window and its children will become the new mask
+// for @window. See gdk_window_shape_combine_region().
+//
+// This function is distinct from gdk_window_set_child_shapes()
+// because it includes @window’s shape mask in the set of shapes to
+// be merged.
+/*
+
+C function : gdk_window_merge_child_shapes
+*/
 func (recv *Window) MergeChildShapes() {
 	C.gdk_window_merge_child_shapes((*C.GdkWindow)(recv.native))
 
 	return
 }
 
-// Move is a wrapper around the C function gdk_window_move.
+// Repositions a window relative to its parent window.
+// For toplevel windows, window managers may ignore or modify the move;
+// you should probably use gtk_window_move() on a #GtkWindow widget
+// anyway, instead of using GDK functions. For child windows,
+// the move will reliably succeed.
+//
+// If you’re also planning to resize the window, use gdk_window_move_resize()
+// to both move and resize simultaneously, for a nicer visual effect.
+/*
+
+C function : gdk_window_move
+*/
 func (recv *Window) Move(x int32, y int32) {
 	c_x := (C.gint)(x)
 
@@ -1760,7 +2182,14 @@ func (recv *Window) Move(x int32, y int32) {
 	return
 }
 
-// MoveResize is a wrapper around the C function gdk_window_move_resize.
+// Equivalent to calling gdk_window_move() and gdk_window_resize(),
+// except that both operations are performed at once, avoiding strange
+// visual effects. (i.e. the user may be able to see the window first
+// move, then resize, if you don’t use gdk_window_move_resize().)
+/*
+
+C function : gdk_window_move_resize
+*/
 func (recv *Window) MoveResize(x int32, y int32, width int32, height int32) {
 	c_x := (C.gint)(x)
 
@@ -1775,7 +2204,12 @@ func (recv *Window) MoveResize(x int32, y int32, width int32, height int32) {
 	return
 }
 
-// PeekChildren is a wrapper around the C function gdk_window_peek_children.
+// Like gdk_window_get_children(), but does not copy the list of
+// children, so the list does not need to be freed.
+/*
+
+C function : gdk_window_peek_children
+*/
 func (recv *Window) PeekChildren() *glib.List {
 	retC := C.gdk_window_peek_children((*C.GdkWindow)(recv.native))
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
@@ -1783,7 +2217,18 @@ func (recv *Window) PeekChildren() *glib.List {
 	return retGo
 }
 
-// ProcessUpdates is a wrapper around the C function gdk_window_process_updates.
+// Sends one or more expose events to @window. The areas in each
+// expose event will cover the entire update area for the window (see
+// gdk_window_invalidate_region() for details). Normally GDK calls
+// gdk_window_process_all_updates() on your behalf, so there’s no
+// need to call this function unless you want to force expose events
+// to be delivered immediately and synchronously (vs. the usual
+// case, where GDK delivers them in an idle handler). Occasionally
+// this is useful to produce nicer scrolling behavior, for example.
+/*
+
+C function : gdk_window_process_updates
+*/
 func (recv *Window) ProcessUpdates(updateChildren bool) {
 	c_update_children :=
 		boolToGboolean(updateChildren)
@@ -1793,14 +2238,28 @@ func (recv *Window) ProcessUpdates(updateChildren bool) {
 	return
 }
 
-// Raise is a wrapper around the C function gdk_window_raise.
+// Raises @window to the top of the Z-order (stacking order), so that
+// other windows with the same parent window appear below @window.
+// This is true whether or not the windows are visible.
+//
+// If @window is a toplevel, the window manager may choose to deny the
+// request to move the window in the Z-order, gdk_window_raise() only
+// requests the restack, does not guarantee it.
+/*
+
+C function : gdk_window_raise
+*/
 func (recv *Window) Raise() {
 	C.gdk_window_raise((*C.GdkWindow)(recv.native))
 
 	return
 }
 
-// RegisterDnd is a wrapper around the C function gdk_window_register_dnd.
+// Registers a window as a potential drop destination.
+/*
+
+C function : gdk_window_register_dnd
+*/
 func (recv *Window) RegisterDnd() {
 	C.gdk_window_register_dnd((*C.GdkWindow)(recv.native))
 
@@ -1809,7 +2268,12 @@ func (recv *Window) RegisterDnd() {
 
 // Unsupported : gdk_window_remove_filter : unsupported parameter function : no type generator for FilterFunc (GdkFilterFunc) for param function
 
-// Reparent is a wrapper around the C function gdk_window_reparent.
+// Reparents @window into the given @new_parent. The window being
+// reparented will be unmapped as a side effect.
+/*
+
+C function : gdk_window_reparent
+*/
 func (recv *Window) Reparent(newParent *Window, x int32, y int32) {
 	c_new_parent := (*C.GdkWindow)(C.NULL)
 	if newParent != nil {
@@ -1825,7 +2289,18 @@ func (recv *Window) Reparent(newParent *Window, x int32, y int32) {
 	return
 }
 
-// Resize is a wrapper around the C function gdk_window_resize.
+// Resizes @window; for toplevel windows, asks the window manager to resize
+// the window. The window manager may not allow the resize. When using GTK+,
+// use gtk_window_resize() instead of this low-level GDK function.
+//
+// Windows may not be resized below 1x1.
+//
+// If you’re also planning to move the window, use gdk_window_move_resize()
+// to both move and resize simultaneously, for a nicer visual effect.
+/*
+
+C function : gdk_window_resize
+*/
 func (recv *Window) Resize(width int32, height int32) {
 	c_width := (C.gint)(width)
 
@@ -1836,7 +2311,21 @@ func (recv *Window) Resize(width int32, height int32) {
 	return
 }
 
-// Scroll is a wrapper around the C function gdk_window_scroll.
+// Scroll the contents of @window, both pixels and children, by the
+// given amount. @window itself does not move. Portions of the window
+// that the scroll operation brings in from offscreen areas are
+// invalidated. The invalidated region may be bigger than what would
+// strictly be necessary.
+//
+// For X11, a minimum area will be invalidated if the window has no
+// subwindows, or if the edges of the window’s parent do not extend
+// beyond the edges of the window. In other cases, a multi-step process
+// is used to scroll the window which may produce temporary visual
+// artifacts and unnecessary invalidations.
+/*
+
+C function : gdk_window_scroll
+*/
 func (recv *Window) Scroll(dx int32, dy int32) {
 	c_dx := (C.gint)(dx)
 
@@ -1847,7 +2336,16 @@ func (recv *Window) Scroll(dx int32, dy int32) {
 	return
 }
 
-// SetBackground is a wrapper around the C function gdk_window_set_background.
+// Sets the background color of @window.
+//
+// However, when using GTK+, influence the background of a widget
+// using a style class or CSS — if you’re an application — or with
+// gtk_style_context_set_background() — if you're implementing a
+// custom widget.
+/*
+
+C function : gdk_window_set_background
+*/
 func (recv *Window) SetBackground(color *Color) {
 	c_color := (*C.GdkColor)(C.NULL)
 	if color != nil {
@@ -1859,7 +2357,17 @@ func (recv *Window) SetBackground(color *Color) {
 	return
 }
 
-// SetBackgroundPattern is a wrapper around the C function gdk_window_set_background_pattern.
+// Sets the background of @window.
+//
+// A background of %NULL means that the window will inherit its
+// background from its parent window.
+//
+// The windowing system will normally fill a window with its background
+// when the window is obscured then exposed.
+/*
+
+C function : gdk_window_set_background_pattern
+*/
 func (recv *Window) SetBackgroundPattern(pattern *cairo.Pattern) {
 	c_pattern := (*C.cairo_pattern_t)(C.NULL)
 	if pattern != nil {
@@ -1871,7 +2379,13 @@ func (recv *Window) SetBackgroundPattern(pattern *cairo.Pattern) {
 	return
 }
 
-// SetBackgroundRgba is a wrapper around the C function gdk_window_set_background_rgba.
+// Sets the background color of @window.
+//
+// See also gdk_window_set_background_pattern().
+/*
+
+C function : gdk_window_set_background_rgba
+*/
 func (recv *Window) SetBackgroundRgba(rgba *RGBA) {
 	c_rgba := (*C.GdkRGBA)(C.NULL)
 	if rgba != nil {
@@ -1883,14 +2397,33 @@ func (recv *Window) SetBackgroundRgba(rgba *RGBA) {
 	return
 }
 
-// SetChildShapes is a wrapper around the C function gdk_window_set_child_shapes.
+// Sets the shape mask of @window to the union of shape masks
+// for all children of @window, ignoring the shape mask of @window
+// itself. Contrast with gdk_window_merge_child_shapes() which includes
+// the shape mask of @window in the masks to be merged.
+/*
+
+C function : gdk_window_set_child_shapes
+*/
 func (recv *Window) SetChildShapes() {
 	C.gdk_window_set_child_shapes((*C.GdkWindow)(recv.native))
 
 	return
 }
 
-// SetCursor is a wrapper around the C function gdk_window_set_cursor.
+// Sets the default mouse pointer for a #GdkWindow.
+//
+// Note that @cursor must be for the same display as @window.
+//
+// Use gdk_cursor_new_for_display() or gdk_cursor_new_from_pixbuf() to
+// create the cursor. To make the cursor invisible, use %GDK_BLANK_CURSOR.
+// Passing %NULL for the @cursor argument to gdk_window_set_cursor() means
+// that @window will use the cursor of its parent window. Most windows
+// should use this default.
+/*
+
+C function : gdk_window_set_cursor
+*/
 func (recv *Window) SetCursor(cursor *Cursor) {
 	c_cursor := (*C.GdkCursor)(C.NULL)
 	if cursor != nil {
@@ -1902,7 +2435,24 @@ func (recv *Window) SetCursor(cursor *Cursor) {
 	return
 }
 
-// SetDecorations is a wrapper around the C function gdk_window_set_decorations.
+// “Decorations” are the features the window manager adds to a toplevel #GdkWindow.
+// This function sets the traditional Motif window manager hints that tell the
+// window manager which decorations you would like your window to have.
+// Usually you should use gtk_window_set_decorated() on a #GtkWindow instead of
+// using the GDK function directly.
+//
+// The @decorations argument is the logical OR of the fields in
+// the #GdkWMDecoration enumeration. If #GDK_DECOR_ALL is included in the
+// mask, the other bits indicate which decorations should be turned off.
+// If #GDK_DECOR_ALL is not included, then the other bits indicate
+// which decorations should be turned on.
+//
+// Most window managers honor a decorations hint of 0 to disable all decorations,
+// but very few honor all possible combinations of bits.
+/*
+
+C function : gdk_window_set_decorations
+*/
 func (recv *Window) SetDecorations(decorations WMDecoration) {
 	c_decorations := (C.GdkWMDecoration)(decorations)
 
@@ -1911,7 +2461,17 @@ func (recv *Window) SetDecorations(decorations WMDecoration) {
 	return
 }
 
-// SetEvents is a wrapper around the C function gdk_window_set_events.
+// The event mask for a window determines which events will be reported
+// for that window from all master input devices. For example, an event mask
+// including #GDK_BUTTON_PRESS_MASK means the window should report button
+// press events. The event mask is the bitwise OR of values from the
+// #GdkEventMask enumeration.
+//
+// See the [input handling overview][event-masks] for details.
+/*
+
+C function : gdk_window_set_events
+*/
 func (recv *Window) SetEvents(eventMask EventMask) {
 	c_event_mask := (C.GdkEventMask)(eventMask)
 
@@ -1920,7 +2480,23 @@ func (recv *Window) SetEvents(eventMask EventMask) {
 	return
 }
 
-// SetFunctions is a wrapper around the C function gdk_window_set_functions.
+// Sets hints about the window management functions to make available
+// via buttons on the window frame.
+//
+// On the X backend, this function sets the traditional Motif window
+// manager hint for this purpose. However, few window managers do
+// anything reliable or interesting with this hint. Many ignore it
+// entirely.
+//
+// The @functions argument is the logical OR of values from the
+// #GdkWMFunction enumeration. If the bitmask includes #GDK_FUNC_ALL,
+// then the other bits indicate which functions to disable; if
+// it doesn’t include #GDK_FUNC_ALL, it indicates which functions to
+// enable.
+/*
+
+C function : gdk_window_set_functions
+*/
 func (recv *Window) SetFunctions(functions WMFunction) {
 	c_functions := (C.GdkWMFunction)(functions)
 
@@ -1929,7 +2505,31 @@ func (recv *Window) SetFunctions(functions WMFunction) {
 	return
 }
 
-// SetGeometryHints is a wrapper around the C function gdk_window_set_geometry_hints.
+// Sets the geometry hints for @window. Hints flagged in @geom_mask
+// are set, hints not flagged in @geom_mask are unset.
+// To unset all hints, use a @geom_mask of 0 and a @geometry of %NULL.
+//
+// This function provides hints to the windowing system about
+// acceptable sizes for a toplevel window. The purpose of
+// this is to constrain user resizing, but the windowing system
+// will typically  (but is not required to) also constrain the
+// current size of the window to the provided values and
+// constrain programatic resizing via gdk_window_resize() or
+// gdk_window_move_resize().
+//
+// Note that on X11, this effect has no effect on windows
+// of type %GDK_WINDOW_TEMP or windows where override redirect
+// has been turned on via gdk_window_set_override_redirect()
+// since these windows are not resizable by the user.
+//
+// Since you can’t count on the windowing system doing the
+// constraints for programmatic resizes, you should generally
+// call gdk_window_constrain_size() yourself to determine
+// appropriate sizes.
+/*
+
+C function : gdk_window_set_geometry_hints
+*/
 func (recv *Window) SetGeometryHints(geometry *Geometry, geomMask WindowHints) {
 	c_geometry := (*C.GdkGeometry)(C.NULL)
 	if geometry != nil {
@@ -1943,7 +2543,20 @@ func (recv *Window) SetGeometryHints(geometry *Geometry, geomMask WindowHints) {
 	return
 }
 
-// SetGroup is a wrapper around the C function gdk_window_set_group.
+// Sets the group leader window for @window. By default,
+// GDK sets the group leader for all toplevel windows
+// to a global window implicitly created by GDK. With this function
+// you can override this default.
+//
+// The group leader window allows the window manager to distinguish
+// all windows that belong to a single application. It may for example
+// allow users to minimize/unminimize all windows belonging to an
+// application at once. You should only set a non-default group window
+// if your application pretends to be multiple applications.
+/*
+
+C function : gdk_window_set_group
+*/
 func (recv *Window) SetGroup(leader *Window) {
 	c_leader := (*C.GdkWindow)(C.NULL)
 	if leader != nil {
@@ -1955,7 +2568,19 @@ func (recv *Window) SetGroup(leader *Window) {
 	return
 }
 
-// SetIconList is a wrapper around the C function gdk_window_set_icon_list.
+// Sets a list of icons for the window. One of these will be used
+// to represent the window when it has been iconified. The icon is
+// usually shown in an icon box or some sort of task bar. Which icon
+// size is shown depends on the window manager. The window manager
+// can scale the icon  but setting several size icons can give better
+// image quality since the window manager may only need to scale the
+// icon by a small amount or not at all.
+//
+// Note that some platforms don't support window icons.
+/*
+
+C function : gdk_window_set_icon_list
+*/
 func (recv *Window) SetIconList(pixbufs *glib.List) {
 	c_pixbufs := (*C.GList)(C.NULL)
 	if pixbufs != nil {
@@ -1967,7 +2592,22 @@ func (recv *Window) SetIconList(pixbufs *glib.List) {
 	return
 }
 
-// SetIconName is a wrapper around the C function gdk_window_set_icon_name.
+// Windows may have a name used while minimized, distinct from the
+// name they display in their titlebar. Most of the time this is a bad
+// idea from a user interface standpoint. But you can set such a name
+// with this function, if you like.
+//
+// After calling this with a non-%NULL @name, calls to gdk_window_set_title()
+// will not update the icon title.
+//
+// Using %NULL for @name unsets the icon title; further calls to
+// gdk_window_set_title() will again update the icon title as well.
+//
+// Note that some platforms don't support window icons.
+/*
+
+C function : gdk_window_set_icon_name
+*/
 func (recv *Window) SetIconName(name string) {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -1977,7 +2617,17 @@ func (recv *Window) SetIconName(name string) {
 	return
 }
 
-// SetModalHint is a wrapper around the C function gdk_window_set_modal_hint.
+// The application can use this hint to tell the window manager
+// that a certain window has modal behaviour. The window manager
+// can use this information to handle modal windows in a special
+// way.
+//
+// You should only use this on windows for which you have
+// previously called gdk_window_set_transient_for()
+/*
+
+C function : gdk_window_set_modal_hint
+*/
 func (recv *Window) SetModalHint(modal bool) {
 	c_modal :=
 		boolToGboolean(modal)
@@ -1987,7 +2637,18 @@ func (recv *Window) SetModalHint(modal bool) {
 	return
 }
 
-// SetOverrideRedirect is a wrapper around the C function gdk_window_set_override_redirect.
+// An override redirect window is not under the control of the window manager.
+// This means it won’t have a titlebar, won’t be minimizable, etc. - it will
+// be entirely under the control of the application. The window manager
+// can’t see the override redirect window at all.
+//
+// Override redirect should only be used for short-lived temporary
+// windows, such as popup menus. #GtkMenu uses an override redirect
+// window in its implementation, for example.
+/*
+
+C function : gdk_window_set_override_redirect
+*/
 func (recv *Window) SetOverrideRedirect(overrideRedirect bool) {
 	c_override_redirect :=
 		boolToGboolean(overrideRedirect)
@@ -1997,7 +2658,22 @@ func (recv *Window) SetOverrideRedirect(overrideRedirect bool) {
 	return
 }
 
-// SetRole is a wrapper around the C function gdk_window_set_role.
+// When using GTK+, typically you should use gtk_window_set_role() instead
+// of this low-level function.
+//
+// The window manager and session manager use a window’s role to
+// distinguish it from other kinds of window in the same application.
+// When an application is restarted after being saved in a previous
+// session, all windows with the same title and role are treated as
+// interchangeable.  So if you have two windows with the same title
+// that should be distinguished for session management purposes, you
+// should set the role on those windows. It doesn’t matter what string
+// you use for the role, as long as you have a different role for each
+// non-interchangeable kind of window.
+/*
+
+C function : gdk_window_set_role
+*/
 func (recv *Window) SetRole(role string) {
 	c_role := C.CString(role)
 	defer C.free(unsafe.Pointer(c_role))
@@ -2007,7 +2683,14 @@ func (recv *Window) SetRole(role string) {
 	return
 }
 
-// SetStaticGravities is a wrapper around the C function gdk_window_set_static_gravities.
+// Used to set the bit gravity of the given window to static, and flag
+// it so all children get static subwindow gravity. This is used if you
+// are implementing scary features that involve deep knowledge of the
+// windowing system. Don’t worry about it.
+/*
+
+C function : gdk_window_set_static_gravities
+*/
 func (recv *Window) SetStaticGravities(useStatic bool) bool {
 	c_use_static :=
 		boolToGboolean(useStatic)
@@ -2018,7 +2701,15 @@ func (recv *Window) SetStaticGravities(useStatic bool) bool {
 	return retGo
 }
 
-// SetTitle is a wrapper around the C function gdk_window_set_title.
+// Sets the title of a toplevel window, to be displayed in the titlebar.
+// If you haven’t explicitly set the icon name for the window
+// (using gdk_window_set_icon_name()), the icon name will be set to
+// @title as well. @title must be in UTF-8 encoding (as with all
+// user-readable strings in GDK/GTK+). @title may not be %NULL.
+/*
+
+C function : gdk_window_set_title
+*/
 func (recv *Window) SetTitle(title string) {
 	c_title := C.CString(title)
 	defer C.free(unsafe.Pointer(c_title))
@@ -2028,7 +2719,17 @@ func (recv *Window) SetTitle(title string) {
 	return
 }
 
-// SetTransientFor is a wrapper around the C function gdk_window_set_transient_for.
+// Indicates to the window manager that @window is a transient dialog
+// associated with the application window @parent. This allows the
+// window manager to do things like center @window on @parent and
+// keep @window above @parent.
+//
+// See gtk_window_set_transient_for() if you’re using #GtkWindow or
+// #GtkDialog.
+/*
+
+C function : gdk_window_set_transient_for
+*/
 func (recv *Window) SetTransientFor(parent *Window) {
 	c_parent := (*C.GdkWindow)(C.NULL)
 	if parent != nil {
@@ -2040,7 +2741,16 @@ func (recv *Window) SetTransientFor(parent *Window) {
 	return
 }
 
-// SetTypeHint is a wrapper around the C function gdk_window_set_type_hint.
+// The application can use this call to provide a hint to the window
+// manager about the functionality of a window. The window manager
+// can use this information when determining the decoration and behaviour
+// of the window.
+//
+// The hint must be set before the window is mapped.
+/*
+
+C function : gdk_window_set_type_hint
+*/
 func (recv *Window) SetTypeHint(hint WindowTypeHint) {
 	c_hint := (C.GdkWindowTypeHint)(hint)
 
@@ -2049,7 +2759,17 @@ func (recv *Window) SetTypeHint(hint WindowTypeHint) {
 	return
 }
 
-// SetUserData is a wrapper around the C function gdk_window_set_user_data.
+// For most purposes this function is deprecated in favor of
+// g_object_set_data(). However, for historical reasons GTK+ stores
+// the #GtkWidget that owns a #GdkWindow as user data on the
+// #GdkWindow. So, custom widget implementations should use
+// this function for that. If GTK+ receives an event for a #GdkWindow,
+// and the user data for the window is non-%NULL, GTK+ will assume the
+// user data is a #GtkWidget, and forward the event to that widget.
+/*
+
+C function : gdk_window_set_user_data
+*/
 func (recv *Window) SetUserData(userData uintptr) {
 	c_user_data := (C.gpointer)(userData)
 
@@ -2058,7 +2778,24 @@ func (recv *Window) SetUserData(userData uintptr) {
 	return
 }
 
-// ShapeCombineRegion is a wrapper around the C function gdk_window_shape_combine_region.
+// Makes pixels in @window outside @shape_region be transparent,
+// so that the window may be nonrectangular.
+//
+// If @shape_region is %NULL, the shape will be unset, so the whole
+// window will be opaque again. @offset_x and @offset_y are ignored
+// if @shape_region is %NULL.
+//
+// On the X11 platform, this uses an X server extension which is
+// widely available on most common platforms, but not available on
+// very old X servers, and occasionally the implementation will be
+// buggy. On servers without the shape extension, this function
+// will do nothing.
+//
+// This function works on both toplevel and child windows.
+/*
+
+C function : gdk_window_shape_combine_region
+*/
 func (recv *Window) ShapeCombineRegion(shapeRegion *cairo.Region, offsetX int32, offsetY int32) {
 	c_shape_region := (*C.cairo_region_t)(C.NULL)
 	if shapeRegion != nil {
@@ -2074,56 +2811,127 @@ func (recv *Window) ShapeCombineRegion(shapeRegion *cairo.Region, offsetX int32,
 	return
 }
 
-// Show is a wrapper around the C function gdk_window_show.
+// Like gdk_window_show_unraised(), but also raises the window to the
+// top of the window stack (moves the window to the front of the
+// Z-order).
+//
+// This function maps a window so it’s visible onscreen. Its opposite
+// is gdk_window_hide().
+//
+// When implementing a #GtkWidget, you should call this function on the widget's
+// #GdkWindow as part of the “map” method.
+/*
+
+C function : gdk_window_show
+*/
 func (recv *Window) Show() {
 	C.gdk_window_show((*C.GdkWindow)(recv.native))
 
 	return
 }
 
-// ShowUnraised is a wrapper around the C function gdk_window_show_unraised.
+// Shows a #GdkWindow onscreen, but does not modify its stacking
+// order. In contrast, gdk_window_show() will raise the window
+// to the top of the window stack.
+//
+// On the X11 platform, in Xlib terms, this function calls
+// XMapWindow() (it also updates some internal GDK state, which means
+// that you can’t really use XMapWindow() directly on a GDK window).
+/*
+
+C function : gdk_window_show_unraised
+*/
 func (recv *Window) ShowUnraised() {
 	C.gdk_window_show_unraised((*C.GdkWindow)(recv.native))
 
 	return
 }
 
-// Stick is a wrapper around the C function gdk_window_stick.
+// “Pins” a window such that it’s on all workspaces and does not scroll
+// with viewports, for window managers that have scrollable viewports.
+// (When using #GtkWindow, gtk_window_stick() may be more useful.)
+//
+// On the X11 platform, this function depends on window manager
+// support, so may have no effect with many window managers. However,
+// GDK will do the best it can to convince the window manager to stick
+// the window. For window managers that don’t support this operation,
+// there’s nothing you can do to force it to happen.
+/*
+
+C function : gdk_window_stick
+*/
 func (recv *Window) Stick() {
 	C.gdk_window_stick((*C.GdkWindow)(recv.native))
 
 	return
 }
 
-// ThawToplevelUpdatesLibgtkOnly is a wrapper around the C function gdk_window_thaw_toplevel_updates_libgtk_only.
+// Thaws a window frozen with
+// gdk_window_freeze_toplevel_updates_libgtk_only().
+//
+// This function is not part of the GDK public API and is only
+// for use by GTK+.
+/*
+
+C function : gdk_window_thaw_toplevel_updates_libgtk_only
+*/
 func (recv *Window) ThawToplevelUpdatesLibgtkOnly() {
 	C.gdk_window_thaw_toplevel_updates_libgtk_only((*C.GdkWindow)(recv.native))
 
 	return
 }
 
-// ThawUpdates is a wrapper around the C function gdk_window_thaw_updates.
+// Thaws a window frozen with gdk_window_freeze_updates().
+/*
+
+C function : gdk_window_thaw_updates
+*/
 func (recv *Window) ThawUpdates() {
 	C.gdk_window_thaw_updates((*C.GdkWindow)(recv.native))
 
 	return
 }
 
-// Unmaximize is a wrapper around the C function gdk_window_unmaximize.
+// Unmaximizes the window. If the window wasn’t maximized, then this
+// function does nothing.
+//
+// On X11, asks the window manager to unmaximize @window, if the
+// window manager supports this operation. Not all window managers
+// support this, and some deliberately ignore it or don’t have a
+// concept of “maximized”; so you can’t rely on the unmaximization
+// actually happening. But it will happen with most standard window
+// managers, and GDK makes a best effort to get it to happen.
+//
+// On Windows, reliably unmaximizes the window.
+/*
+
+C function : gdk_window_unmaximize
+*/
 func (recv *Window) Unmaximize() {
 	C.gdk_window_unmaximize((*C.GdkWindow)(recv.native))
 
 	return
 }
 
-// Unstick is a wrapper around the C function gdk_window_unstick.
+// Reverse operation for gdk_window_stick(); see gdk_window_stick(),
+// and gtk_window_unstick().
+/*
+
+C function : gdk_window_unstick
+*/
 func (recv *Window) Unstick() {
 	C.gdk_window_unstick((*C.GdkWindow)(recv.native))
 
 	return
 }
 
-// Withdraw is a wrapper around the C function gdk_window_withdraw.
+// Withdraws a window (unmaps it and asks the window manager to forget about it).
+// This function is not really useful as gdk_window_hide() automatically
+// withdraws toplevel windows before hiding them.
+/*
+
+C function : gdk_window_withdraw
+*/
 func (recv *Window) Withdraw() {
 	C.gdk_window_withdraw((*C.GdkWindow)(recv.native))
 

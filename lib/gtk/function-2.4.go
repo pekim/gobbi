@@ -16,7 +16,12 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// BindingsActivateEvent is a wrapper around the C function gtk_bindings_activate_event.
+// Looks up key bindings for @object to find one matching
+// @event, and if one was found, activate it.
+/*
+
+C function : gtk_bindings_activate_event
+*/
 func BindingsActivateEvent(object *gobject.Object, event *gdk.EventKey) bool {
 	c_object := (*C.GObject)(C.NULL)
 	if object != nil {
@@ -34,7 +39,11 @@ func BindingsActivateEvent(object *gobject.Object, event *gdk.EventKey) bool {
 	return retGo
 }
 
-// FileChooserErrorQuark is a wrapper around the C function gtk_file_chooser_error_quark.
+// Registers an error quark for #GtkFileChooser if necessary.
+/*
+
+C function : gtk_file_chooser_error_quark
+*/
 func FileChooserErrorQuark() glib.Quark {
 	retC := C.gtk_file_chooser_error_quark()
 	retGo := (glib.Quark)(retC)
@@ -42,7 +51,20 @@ func FileChooserErrorQuark() glib.Quark {
 	return retGo
 }
 
-// RcResetStyles is a wrapper around the C function gtk_rc_reset_styles.
+// This function recomputes the styles for all widgets that use a
+// particular #GtkSettings object. (There is one #GtkSettings object
+// per #GdkScreen, see gtk_settings_get_for_screen()); It is useful
+// when some global parameter has changed that affects the appearance
+// of all widgets, because when a widget gets a new style, it will
+// both redraw and recompute any cached information about its
+// appearance. As an example, it is used when the default font size
+// set by the operating system changes. Note that this function
+// doesn’t affect widgets that have a style set explicitly on them
+// with gtk_widget_set_style().
+/*
+
+C function : gtk_rc_reset_styles
+*/
 func RcResetStyles(settings *Settings) {
 	c_settings := (*C.GtkSettings)(C.NULL)
 	if settings != nil {

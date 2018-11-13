@@ -85,7 +85,11 @@ func (recv *OutputMessage) ToC() unsafe.Pointer {
 
 // Unsupported : g_settings_schema_list_children : no return type
 
-// GetName is a wrapper around the C function g_settings_schema_key_get_name.
+// Gets the name of @key.
+/*
+
+C function : g_settings_schema_key_get_name
+*/
 func (recv *SettingsSchemaKey) GetName() string {
 	retC := C.g_settings_schema_key_get_name((*C.GSettingsSchemaKey)(recv.native))
 	retGo := C.GoString(retC)

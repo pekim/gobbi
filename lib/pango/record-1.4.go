@@ -8,7 +8,22 @@ package pango
 // #include <stdlib.h>
 import "C"
 
-// IncludesScript is a wrapper around the C function pango_language_includes_script.
+// Determines if @script is one of the scripts used to
+// write @language. The returned value is conservative;
+// if nothing is known about the language tag @language,
+// %TRUE will be returned, since, as far as Pango knows,
+// @script might be used to write @language.
+//
+// This routine is used in Pango's itemization process when
+// determining if a supplied language tag is relevant to
+// a particular section of text. It probably is not useful for
+// applications in most circumstances.
+//
+// This function uses pango_language_get_scripts() internally.
+/*
+
+C function : pango_language_includes_script
+*/
 func (recv *Language) IncludesScript(script Script) bool {
 	c_script := (C.PangoScript)(script)
 
@@ -18,7 +33,11 @@ func (recv *Language) IncludesScript(script Script) bool {
 	return retGo
 }
 
-// Free is a wrapper around the C function pango_script_iter_free.
+// Frees a #PangoScriptIter created with pango_script_iter_new().
+/*
+
+C function : pango_script_iter_free
+*/
 func (recv *ScriptIter) Free() {
 	C.pango_script_iter_free((*C.PangoScriptIter)(recv.native))
 
@@ -27,7 +46,13 @@ func (recv *ScriptIter) Free() {
 
 // Unsupported : pango_script_iter_get_range : unsupported parameter script : PangoScript* with indirection level of 1
 
-// Next is a wrapper around the C function pango_script_iter_next.
+// Advances a #PangoScriptIter to the next range. If @iter
+// is already at the end, it is left unchanged and %FALSE
+// is returned.
+/*
+
+C function : pango_script_iter_next
+*/
 func (recv *ScriptIter) Next() bool {
 	retC := C.pango_script_iter_next((*C.PangoScriptIter)(recv.native))
 	retGo := retC == C.TRUE

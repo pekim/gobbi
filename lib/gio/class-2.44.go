@@ -24,7 +24,16 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// BindBusyProperty is a wrapper around the C function g_application_bind_busy_property.
+// Marks @application as busy (see g_application_mark_busy()) while
+// @property on @object is %TRUE.
+//
+// The binding holds a reference to @application while it is active, but
+// not to @object. Instead, the binding is destroyed when @object is
+// finalized.
+/*
+
+C function : g_application_bind_busy_property
+*/
 func (recv *Application) BindBusyProperty(object uintptr, property string) {
 	c_object := (C.gpointer)(object)
 
@@ -36,7 +45,12 @@ func (recv *Application) BindBusyProperty(object uintptr, property string) {
 	return
 }
 
-// GetIsBusy is a wrapper around the C function g_application_get_is_busy.
+// Gets the application's current busy state, as set through
+// g_application_mark_busy() or g_application_bind_busy_property().
+/*
+
+C function : g_application_get_is_busy
+*/
 func (recv *Application) GetIsBusy() bool {
 	retC := C.g_application_get_is_busy((*C.GApplication)(recv.native))
 	retGo := retC == C.TRUE
@@ -44,7 +58,13 @@ func (recv *Application) GetIsBusy() bool {
 	return retGo
 }
 
-// UnbindBusyProperty is a wrapper around the C function g_application_unbind_busy_property.
+// Destroys a binding between @property and the busy state of
+// @application that was previously created with
+// g_application_bind_busy_property().
+/*
+
+C function : g_application_unbind_busy_property
+*/
 func (recv *Application) UnbindBusyProperty(object uintptr, property string) {
 	c_object := (C.gpointer)(object)
 
@@ -56,7 +76,48 @@ func (recv *Application) UnbindBusyProperty(object uintptr, property string) {
 	return
 }
 
-// Iterate is a wrapper around the C function g_file_enumerator_iterate.
+// This is a version of g_file_enumerator_next_file() that's easier to
+// use correctly from C programs.  With g_file_enumerator_next_file(),
+// the gboolean return value signifies "end of iteration or error", which
+// requires allocation of a temporary #GError.
+//
+// In contrast, with this function, a %FALSE return from
+// g_file_enumerator_iterate() *always* means
+// "error".  End of iteration is signaled by @out_info or @out_child being %NULL.
+//
+// Another crucial difference is that the references for @out_info and
+// @out_child are owned by @direnum (they are cached as hidden
+// properties).  You must not unref them in your own code.  This makes
+// memory management significantly easier for C code in combination
+// with loops.
+//
+// Finally, this function optionally allows retrieving a #GFile as
+// well.
+//
+// You must specify at least one of @out_info or @out_child.
+//
+// The code pattern for correctly using g_file_enumerator_iterate() from C
+// is:
+//
+// |[
+// direnum = g_file_enumerate_children (file, ...);
+// while (TRUE)
+// {
+// GFileInfo *info;
+// if (!g_file_enumerator_iterate (direnum, &info, NULL, cancellable, error))
+// goto out;
+// if (!info)
+// break;
+// ... do stuff with "info"; do not unref it! ...
+// }
+//
+// out:
+// g_object_unref (direnum); // Note: frees the last @info
+// ]|
+/*
+
+C function : g_file_enumerator_iterate
+*/
 func (recv *FileEnumerator) Iterate(cancellable *Cancellable) (bool, *FileInfo, *File, error) {
 	var c_out_info *C.GFileInfo
 
@@ -86,7 +147,19 @@ func (recv *FileEnumerator) Iterate(cancellable *Cancellable) (bool, *FileInfo, 
 
 // Unsupported : g_input_stream_read_all_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// ReadAllFinish is a wrapper around the C function g_input_stream_read_all_finish.
+// Finishes an asynchronous stream read operation started with
+// g_input_stream_read_all_async().
+//
+// As a special exception to the normal conventions for functions that
+// use #GError, if this function returns %FALSE (and sets @error) then
+// @bytes_read will be set to the number of bytes that were successfully
+// read before the error was encountered.  This functionality is only
+// available from C.  If you need it from another language then you must
+// write your own loop around g_input_stream_read_async().
+/*
+
+C function : g_input_stream_read_all_finish
+*/
 func (recv *InputStream) ReadAllFinish(result *AsyncResult) (bool, uint64, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
 
@@ -107,7 +180,12 @@ func (recv *InputStream) ReadAllFinish(result *AsyncResult) (bool, uint64, error
 	return retGo, bytesRead, goThrowableError
 }
 
-// ListStoreNew is a wrapper around the C function g_list_store_new.
+// Creates a new #GListStore with items of type @item_type. @item_type
+// must be a subclass of #GObject.
+/*
+
+C function : g_list_store_new
+*/
 func ListStoreNew(itemType gobject.Type) *ListStore {
 	c_item_type := (C.GType)(itemType)
 
@@ -117,7 +195,16 @@ func ListStoreNew(itemType gobject.Type) *ListStore {
 	return retGo
 }
 
-// Append is a wrapper around the C function g_list_store_append.
+// Appends @item to @store. @item must be of type #GListStore:item-type.
+//
+// This function takes a ref on @item.
+//
+// Use g_list_store_splice() to append multiple items at the same time
+// efficiently.
+/*
+
+C function : g_list_store_append
+*/
 func (recv *ListStore) Append(item uintptr) {
 	c_item := (C.gpointer)(item)
 
@@ -126,7 +213,18 @@ func (recv *ListStore) Append(item uintptr) {
 	return
 }
 
-// Insert is a wrapper around the C function g_list_store_insert.
+// Inserts @item into @store at @position. @item must be of type
+// #GListStore:item-type or derived from it. @position must be smaller
+// than the length of the list, or equal to it to append.
+//
+// This function takes a ref on @item.
+//
+// Use g_list_store_splice() to insert multiple items at the same time
+// efficiently.
+/*
+
+C function : g_list_store_insert
+*/
 func (recv *ListStore) Insert(position uint32, item uintptr) {
 	c_position := (C.guint)(position)
 
@@ -139,7 +237,15 @@ func (recv *ListStore) Insert(position uint32, item uintptr) {
 
 // Unsupported : g_list_store_insert_sorted : unsupported parameter compare_func : no type generator for GLib.CompareDataFunc (GCompareDataFunc) for param compare_func
 
-// Remove is a wrapper around the C function g_list_store_remove.
+// Removes the item from @store that is at @position. @position must be
+// smaller than the current length of the list.
+//
+// Use g_list_store_splice() to remove multiple items at the same time
+// efficiently.
+/*
+
+C function : g_list_store_remove
+*/
 func (recv *ListStore) Remove(position uint32) {
 	c_position := (C.guint)(position)
 
@@ -148,7 +254,11 @@ func (recv *ListStore) Remove(position uint32) {
 	return
 }
 
-// RemoveAll is a wrapper around the C function g_list_store_remove_all.
+// Removes all items from @store.
+/*
+
+C function : g_list_store_remove_all
+*/
 func (recv *ListStore) RemoveAll() {
 	C.g_list_store_remove_all((*C.GListStore)(recv.native))
 
@@ -157,7 +267,22 @@ func (recv *ListStore) RemoveAll() {
 
 // Unsupported : g_list_store_splice : unsupported parameter additions :
 
-// NetworkAddressNewLoopback is a wrapper around the C function g_network_address_new_loopback.
+// Creates a new #GSocketConnectable for connecting to the local host
+// over a loopback connection to the given @port. This is intended for
+// use in connecting to local services which may be running on IPv4 or
+// IPv6.
+//
+// The connectable will return IPv4 and IPv6 loopback addresses,
+// regardless of how the host resolves `localhost`. By contrast,
+// g_network_address_new() will often only return an IPv4 address when
+// resolving `localhost`, and an IPv6 address for `localhost6`.
+//
+// g_network_address_get_hostname() will always return `localhost` for
+// #GNetworkAddresses created with this constructor.
+/*
+
+C function : g_network_address_new_loopback
+*/
 func NetworkAddressNewLoopback(port uint16) *NetworkAddress {
 	c_port := (C.guint16)(port)
 
@@ -169,7 +294,20 @@ func NetworkAddressNewLoopback(port uint16) *NetworkAddress {
 
 // Unsupported : g_output_stream_write_all_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// WriteAllFinish is a wrapper around the C function g_output_stream_write_all_finish.
+// Finishes an asynchronous stream write operation started with
+// g_output_stream_write_all_async().
+//
+// As a special exception to the normal conventions for functions that
+// use #GError, if this function returns %FALSE (and sets @error) then
+// @bytes_written will be set to the number of bytes that were
+// successfully written before the error was encountered.  This
+// functionality is only available from C.  If you need it from another
+// language then you must write your own loop around
+// g_output_stream_write_async().
+/*
+
+C function : g_output_stream_write_all_finish
+*/
 func (recv *OutputStream) WriteAllFinish(result *AsyncResult) (bool, uint64, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
 
@@ -229,7 +367,12 @@ func CastToSimpleIOStream(object *gobject.Object) *SimpleIOStream {
 	return SimpleIOStreamNewFromC(object.ToC())
 }
 
-// SimpleIOStreamNew is a wrapper around the C function g_simple_io_stream_new.
+// Creates a new #GSimpleIOStream wrapping @input_stream and @output_stream.
+// See also #GIOStream.
+/*
+
+C function : g_simple_io_stream_new
+*/
 func SimpleIOStreamNew(inputStream *InputStream, outputStream *OutputStream) *SimpleIOStream {
 	c_input_stream := (*C.GInputStream)(C.NULL)
 	if inputStream != nil {
@@ -249,7 +392,13 @@ func SimpleIOStreamNew(inputStream *InputStream, outputStream *OutputStream) *Si
 
 // Unsupported : g_socket_send_messages : unsupported parameter messages :
 
-// GetCompleted is a wrapper around the C function g_task_get_completed.
+// Gets the value of #GTask:completed. This changes from %FALSE to %TRUE after
+// the task’s callback is invoked, and will return %FALSE if called from inside
+// the callback.
+/*
+
+C function : g_task_get_completed
+*/
 func (recv *Task) GetCompleted() bool {
 	retC := C.g_task_get_completed((*C.GTask)(recv.native))
 	retGo := retC == C.TRUE

@@ -13,7 +13,14 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// PixbufNewFromResource is a wrapper around the C function gdk_pixbuf_new_from_resource.
+// Creates a new pixbuf by loading an image from an resource.
+//
+// The file format is detected automatically. If %NULL is returned, then
+// @error will be set.
+/*
+
+C function : gdk_pixbuf_new_from_resource
+*/
 func PixbufNewFromResource(resourcePath string) (*Pixbuf, error) {
 	c_resource_path := C.CString(resourcePath)
 	defer C.free(unsafe.Pointer(c_resource_path))
@@ -31,7 +38,23 @@ func PixbufNewFromResource(resourcePath string) (*Pixbuf, error) {
 	return retGo, goThrowableError
 }
 
-// PixbufNewFromResourceAtScale is a wrapper around the C function gdk_pixbuf_new_from_resource_at_scale.
+// Creates a new pixbuf by loading an image from an resource.
+//
+// The file format is detected automatically. If %NULL is returned, then
+// @error will be set.
+//
+// The image will be scaled to fit in the requested size, optionally
+// preserving the image's aspect ratio. When preserving the aspect ratio,
+// a @width of -1 will cause the image to be scaled to the exact given
+// height, and a @height of -1 will cause the image to be scaled to the
+// exact given width. When not preserving aspect ratio, a @width or
+// @height of -1 means to not scale the image at all in that dimension.
+//
+// The stream is not closed.
+/*
+
+C function : gdk_pixbuf_new_from_resource_at_scale
+*/
 func PixbufNewFromResourceAtScale(resourcePath string, width int32, height int32, preserveAspectRatio bool) (*Pixbuf, error) {
 	c_resource_path := C.CString(resourcePath)
 	defer C.free(unsafe.Pointer(c_resource_path))
@@ -56,7 +79,11 @@ func PixbufNewFromResourceAtScale(resourcePath string, width int32, height int32
 	return retGo, goThrowableError
 }
 
-// GetByteLength is a wrapper around the C function gdk_pixbuf_get_byte_length.
+// Returns the length of the pixel data, in bytes.
+/*
+
+C function : gdk_pixbuf_get_byte_length
+*/
 func (recv *Pixbuf) GetByteLength() uint64 {
 	retC := C.gdk_pixbuf_get_byte_length((*C.GdkPixbuf)(recv.native))
 	retGo := (uint64)(retC)

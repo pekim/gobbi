@@ -27,7 +27,11 @@ import (
 */
 import "C"
 
-// GetPageHasPadding is a wrapper around the C function gtk_assistant_get_page_has_padding.
+// Gets whether page has padding.
+/*
+
+C function : gtk_assistant_get_page_has_padding
+*/
 func (recv *Assistant) GetPageHasPadding(page *Widget) bool {
 	c_page := (*C.GtkWidget)(C.NULL)
 	if page != nil {
@@ -40,7 +44,12 @@ func (recv *Assistant) GetPageHasPadding(page *Widget) bool {
 	return retGo
 }
 
-// SetPageHasPadding is a wrapper around the C function gtk_assistant_set_page_has_padding.
+// Sets whether the assistant is adding padding around
+// the page.
+/*
+
+C function : gtk_assistant_set_page_has_padding
+*/
 func (recv *Assistant) SetPageHasPadding(page *Widget, hasPadding bool) {
 	c_page := (*C.GtkWidget)(C.NULL)
 	if page != nil {
@@ -59,7 +68,12 @@ func (recv *Assistant) SetPageHasPadding(page *Widget, hasPadding bool) {
 
 // Unsupported : gtk_flow_box_bind_model : unsupported parameter create_widget_func : no type generator for FlowBoxCreateWidgetFunc (GtkFlowBoxCreateWidgetFunc) for param create_widget_func
 
-// GetOverlayPassThrough is a wrapper around the C function gtk_overlay_get_overlay_pass_through.
+// Convenience function to get the value of the #GtkOverlay:pass-through
+// child property for @widget.
+/*
+
+C function : gtk_overlay_get_overlay_pass_through
+*/
 func (recv *Overlay) GetOverlayPassThrough(widget *Widget) bool {
 	c_widget := (*C.GtkWidget)(C.NULL)
 	if widget != nil {
@@ -72,7 +86,17 @@ func (recv *Overlay) GetOverlayPassThrough(widget *Widget) bool {
 	return retGo
 }
 
-// ReorderOverlay is a wrapper around the C function gtk_overlay_reorder_overlay.
+// Moves @child to a new @index in the list of @overlay children.
+// The list contains overlays in the order that these were
+// added to @overlay.
+//
+// A widget’s index in the @overlay children list determines which order
+// the children are drawn if they overlap. The first child is drawn at
+// the bottom. It also affects the default focus chain order.
+/*
+
+C function : gtk_overlay_reorder_overlay
+*/
 func (recv *Overlay) ReorderOverlay(child *Widget, position int32) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -86,7 +110,12 @@ func (recv *Overlay) ReorderOverlay(child *Widget, position int32) {
 	return
 }
 
-// SetOverlayPassThrough is a wrapper around the C function gtk_overlay_set_overlay_pass_through.
+// Convenience function to set the value of the #GtkOverlay:pass-through
+// child property for @widget.
+/*
+
+C function : gtk_overlay_set_overlay_pass_through
+*/
 func (recv *Overlay) SetOverlayPassThrough(widget *Widget, passThrough bool) {
 	c_widget := (*C.GtkWidget)(C.NULL)
 	if widget != nil {
@@ -158,7 +187,11 @@ func placessidebar_showOtherLocationsHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// GetShowOtherLocations is a wrapper around the C function gtk_places_sidebar_get_show_other_locations.
+// Returns the value previously set with gtk_places_sidebar_set_show_other_locations()
+/*
+
+C function : gtk_places_sidebar_get_show_other_locations
+*/
 func (recv *PlacesSidebar) GetShowOtherLocations() bool {
 	retC := C.gtk_places_sidebar_get_show_other_locations((*C.GtkPlacesSidebar)(recv.native))
 	retGo := retC == C.TRUE
@@ -166,7 +199,11 @@ func (recv *PlacesSidebar) GetShowOtherLocations() bool {
 	return retGo
 }
 
-// GetShowRecent is a wrapper around the C function gtk_places_sidebar_get_show_recent.
+// Returns the value previously set with gtk_places_sidebar_set_show_recent()
+/*
+
+C function : gtk_places_sidebar_get_show_recent
+*/
 func (recv *PlacesSidebar) GetShowRecent() bool {
 	retC := C.gtk_places_sidebar_get_show_recent((*C.GtkPlacesSidebar)(recv.native))
 	retGo := retC == C.TRUE
@@ -174,7 +211,11 @@ func (recv *PlacesSidebar) GetShowRecent() bool {
 	return retGo
 }
 
-// GetShowTrash is a wrapper around the C function gtk_places_sidebar_get_show_trash.
+// Returns the value previously set with gtk_places_sidebar_set_show_trash()
+/*
+
+C function : gtk_places_sidebar_get_show_trash
+*/
 func (recv *PlacesSidebar) GetShowTrash() bool {
 	retC := C.gtk_places_sidebar_get_show_trash((*C.GtkPlacesSidebar)(recv.native))
 	retGo := retC == C.TRUE
@@ -182,7 +223,19 @@ func (recv *PlacesSidebar) GetShowTrash() bool {
 	return retGo
 }
 
-// SetDropTargetsVisible is a wrapper around the C function gtk_places_sidebar_set_drop_targets_visible.
+// Make the GtkPlacesSidebar show drop targets, so it can show the available
+// drop targets and a "new bookmark" row. This improves the Drag-and-Drop
+// experience of the user and allows applications to show all available
+// drop targets at once.
+//
+// This needs to be called when the application is aware of an ongoing drag
+// that might target the sidebar. The drop-targets-visible state will be unset
+// automatically if the drag finishes in the GtkPlacesSidebar. You only need
+// to unset the state when the drag ends on some other widget on your application.
+/*
+
+C function : gtk_places_sidebar_set_drop_targets_visible
+*/
 func (recv *PlacesSidebar) SetDropTargetsVisible(visible bool, context *gdk.DragContext) {
 	c_visible :=
 		boolToGboolean(visible)
@@ -197,7 +250,18 @@ func (recv *PlacesSidebar) SetDropTargetsVisible(visible bool, context *gdk.Drag
 	return
 }
 
-// SetShowOtherLocations is a wrapper around the C function gtk_places_sidebar_set_show_other_locations.
+// Sets whether the @sidebar should show an item for the application to show
+// an Other Locations view; this is off by default. When set to %TRUE, persistent
+// devices such as hard drives are hidden, otherwise they are shown in the sidebar.
+// An application may want to turn this on if it implements a way for the user to
+// see and interact with drives and network servers directly.
+//
+// If you enable this, you should connect to the
+// #GtkPlacesSidebar::show-other-locations signal.
+/*
+
+C function : gtk_places_sidebar_set_show_other_locations
+*/
 func (recv *PlacesSidebar) SetShowOtherLocations(showOtherLocations bool) {
 	c_show_other_locations :=
 		boolToGboolean(showOtherLocations)
@@ -207,7 +271,14 @@ func (recv *PlacesSidebar) SetShowOtherLocations(showOtherLocations bool) {
 	return
 }
 
-// SetShowRecent is a wrapper around the C function gtk_places_sidebar_set_show_recent.
+// Sets whether the @sidebar should show an item for recent files.
+// The default value for this option is determined by the desktop
+// environment, but this function can be used to override it on a
+// per-application basis.
+/*
+
+C function : gtk_places_sidebar_set_show_recent
+*/
 func (recv *PlacesSidebar) SetShowRecent(showRecent bool) {
 	c_show_recent :=
 		boolToGboolean(showRecent)
@@ -217,7 +288,11 @@ func (recv *PlacesSidebar) SetShowRecent(showRecent bool) {
 	return
 }
 
-// SetShowTrash is a wrapper around the C function gtk_places_sidebar_set_show_trash.
+// Sets whether the @sidebar should show an item for the Trash location.
+/*
+
+C function : gtk_places_sidebar_set_show_trash
+*/
 func (recv *PlacesSidebar) SetShowTrash(showTrash bool) {
 	c_show_trash :=
 		boolToGboolean(showTrash)
@@ -227,7 +302,12 @@ func (recv *PlacesSidebar) SetShowTrash(showTrash bool) {
 	return
 }
 
-// GetDefaultWidget is a wrapper around the C function gtk_popover_get_default_widget.
+// Gets the widget that should be set as the default while
+// the popover is shown.
+/*
+
+C function : gtk_popover_get_default_widget
+*/
 func (recv *Popover) GetDefaultWidget() *Widget {
 	retC := C.gtk_popover_get_default_widget((*C.GtkPopover)(recv.native))
 	var retGo (*Widget)
@@ -240,7 +320,14 @@ func (recv *Popover) GetDefaultWidget() *Widget {
 	return retGo
 }
 
-// SetDefaultWidget is a wrapper around the C function gtk_popover_set_default_widget.
+// Sets the widget that should be set as default widget while
+// the popover is shown (see gtk_window_set_default()). #GtkPopover
+// remembers the previous default widget and reestablishes it
+// when the popover is dismissed.
+/*
+
+C function : gtk_popover_set_default_widget
+*/
 func (recv *Popover) SetDefaultWidget(widget *Widget) {
 	c_widget := (*C.GtkWidget)(C.NULL)
 	if widget != nil {
@@ -252,7 +339,32 @@ func (recv *Popover) SetDefaultWidget(widget *Widget) {
 	return
 }
 
-// JoinGroup is a wrapper around the C function gtk_radio_menu_item_join_group.
+// Joins a #GtkRadioMenuItem object to the group of another #GtkRadioMenuItem
+// object.
+//
+// This function should be used by language bindings to avoid the memory
+// manangement of the opaque #GSList of gtk_radio_menu_item_get_group()
+// and gtk_radio_menu_item_set_group().
+//
+// A common way to set up a group of #GtkRadioMenuItem instances is:
+//
+// |[
+// GtkRadioMenuItem *last_item = NULL;
+//
+// while ( ...more items to add... )
+// {
+// GtkRadioMenuItem *radio_item;
+//
+// radio_item = gtk_radio_menu_item_new (...);
+//
+// gtk_radio_menu_item_join_group (radio_item, last_item);
+// last_item = radio_item;
+// }
+// ]|
+/*
+
+C function : gtk_radio_menu_item_join_group
+*/
 func (recv *RadioMenuItem) JoinGroup(groupSource *RadioMenuItem) {
 	c_group_source := (*C.GtkRadioMenuItem)(C.NULL)
 	if groupSource != nil {
@@ -264,7 +376,12 @@ func (recv *RadioMenuItem) JoinGroup(groupSource *RadioMenuItem) {
 	return
 }
 
-// GetInterpolateSize is a wrapper around the C function gtk_stack_get_interpolate_size.
+// Returns wether the #GtkStack is set up to interpolate between
+// the sizes of children on page switch.
+/*
+
+C function : gtk_stack_get_interpolate_size
+*/
 func (recv *Stack) GetInterpolateSize() bool {
 	retC := C.gtk_stack_get_interpolate_size((*C.GtkStack)(recv.native))
 	retGo := retC == C.TRUE
@@ -272,7 +389,15 @@ func (recv *Stack) GetInterpolateSize() bool {
 	return retGo
 }
 
-// SetInterpolateSize is a wrapper around the C function gtk_stack_set_interpolate_size.
+// Sets whether or not @stack will interpolate its size when
+// changing the visible child. If the #GtkStack:interpolate-size
+// property is set to %TRUE, @stack will interpolate its size between
+// the current one and the one it'll take after changing the
+// visible child, according to the set transition duration.
+/*
+
+C function : gtk_stack_set_interpolate_size
+*/
 func (recv *Stack) SetInterpolateSize(interpolateSize bool) {
 	c_interpolate_size :=
 		boolToGboolean(interpolateSize)
@@ -282,7 +407,11 @@ func (recv *Stack) SetInterpolateSize(interpolateSize bool) {
 	return
 }
 
-// GetBottomMargin is a wrapper around the C function gtk_text_view_get_bottom_margin.
+// Gets the bottom margin for text in the @text_view.
+/*
+
+C function : gtk_text_view_get_bottom_margin
+*/
 func (recv *TextView) GetBottomMargin() int32 {
 	retC := C.gtk_text_view_get_bottom_margin((*C.GtkTextView)(recv.native))
 	retGo := (int32)(retC)
@@ -290,7 +419,11 @@ func (recv *TextView) GetBottomMargin() int32 {
 	return retGo
 }
 
-// GetTopMargin is a wrapper around the C function gtk_text_view_get_top_margin.
+// Gets the top margin for text in the @text_view.
+/*
+
+C function : gtk_text_view_get_top_margin
+*/
 func (recv *TextView) GetTopMargin() int32 {
 	retC := C.gtk_text_view_get_top_margin((*C.GtkTextView)(recv.native))
 	retGo := (int32)(retC)
@@ -298,7 +431,14 @@ func (recv *TextView) GetTopMargin() int32 {
 	return retGo
 }
 
-// SetBottomMargin is a wrapper around the C function gtk_text_view_set_bottom_margin.
+// Sets the bottom margin for text in @text_view.
+//
+// Note that this function is confusingly named.
+// In CSS terms, the value set here is padding.
+/*
+
+C function : gtk_text_view_set_bottom_margin
+*/
 func (recv *TextView) SetBottomMargin(bottomMargin int32) {
 	c_bottom_margin := (C.gint)(bottomMargin)
 
@@ -307,7 +447,14 @@ func (recv *TextView) SetBottomMargin(bottomMargin int32) {
 	return
 }
 
-// SetTopMargin is a wrapper around the C function gtk_text_view_set_top_margin.
+// Sets the top margin for text in @text_view.
+//
+// Note that this function is confusingly named.
+// In CSS terms, the value set here is padding.
+/*
+
+C function : gtk_text_view_set_top_margin
+*/
 func (recv *TextView) SetTopMargin(topMargin int32) {
 	c_top_margin := (C.gint)(topMargin)
 
@@ -316,7 +463,11 @@ func (recv *TextView) SetTopMargin(topMargin int32) {
 	return
 }
 
-// GetFontMap is a wrapper around the C function gtk_widget_get_font_map.
+// Gets the font map that has been set with gtk_widget_set_font_map().
+/*
+
+C function : gtk_widget_get_font_map
+*/
 func (recv *Widget) GetFontMap() *pango.FontMap {
 	retC := C.gtk_widget_get_font_map((*C.GtkWidget)(recv.native))
 	var retGo (*pango.FontMap)
@@ -329,7 +480,12 @@ func (recv *Widget) GetFontMap() *pango.FontMap {
 	return retGo
 }
 
-// GetFontOptions is a wrapper around the C function gtk_widget_get_font_options.
+// Returns the #cairo_font_options_t used for Pango rendering. When not set,
+// the defaults font options for the #GdkScreen will be used.
+/*
+
+C function : gtk_widget_get_font_options
+*/
 func (recv *Widget) GetFontOptions() *cairo.FontOptions {
 	retC := C.gtk_widget_get_font_options((*C.GtkWidget)(recv.native))
 	var retGo (*cairo.FontOptions)
@@ -342,7 +498,12 @@ func (recv *Widget) GetFontOptions() *cairo.FontOptions {
 	return retGo
 }
 
-// SetFontMap is a wrapper around the C function gtk_widget_set_font_map.
+// Sets the font map to use for Pango rendering. When not set, the widget
+// will inherit the font map from its parent.
+/*
+
+C function : gtk_widget_set_font_map
+*/
 func (recv *Widget) SetFontMap(fontMap *pango.FontMap) {
 	c_font_map := (*C.PangoFontMap)(C.NULL)
 	if fontMap != nil {
@@ -354,7 +515,12 @@ func (recv *Widget) SetFontMap(fontMap *pango.FontMap) {
 	return
 }
 
-// SetFontOptions is a wrapper around the C function gtk_widget_set_font_options.
+// Sets the #cairo_font_options_t used for Pango rendering in this widget.
+// When not set, the default font options for the #GdkScreen will be used.
+/*
+
+C function : gtk_widget_set_font_options
+*/
 func (recv *Widget) SetFontOptions(options *cairo.FontOptions) {
 	c_options := (*C.cairo_font_options_t)(C.NULL)
 	if options != nil {
@@ -366,7 +532,15 @@ func (recv *Widget) SetFontOptions(options *cairo.FontOptions) {
 	return
 }
 
-// FullscreenOnMonitor is a wrapper around the C function gtk_window_fullscreen_on_monitor.
+// Asks to place @window in the fullscreen state. Note that you shouldn't assume
+// the window is definitely full screen afterward.
+//
+// You can track the fullscreen state via the "window-state-event" signal
+// on #GtkWidget.
+/*
+
+C function : gtk_window_fullscreen_on_monitor
+*/
 func (recv *Window) FullscreenOnMonitor(screen *gdk.Screen, monitor int32) {
 	c_screen := (*C.GdkScreen)(C.NULL)
 	if screen != nil {

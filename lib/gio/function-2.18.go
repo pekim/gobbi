@@ -20,7 +20,11 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// ContentTypeFromMimeType is a wrapper around the C function g_content_type_from_mime_type.
+// Tries to find a content type based on the mime type name.
+/*
+
+C function : g_content_type_from_mime_type
+*/
 func ContentTypeFromMimeType(mimeType string) string {
 	c_mime_type := C.CString(mimeType)
 	defer C.free(unsafe.Pointer(c_mime_type))

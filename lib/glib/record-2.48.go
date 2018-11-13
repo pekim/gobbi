@@ -10,7 +10,15 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// IsEmpty is a wrapper around the C function g_sequence_is_empty.
+// Returns %TRUE if the sequence contains zero items.
+//
+// This function is functionally identical to checking the result of
+// g_sequence_get_length() being equal to zero. However this function is
+// implemented in O(1) running time.
+/*
+
+C function : g_sequence_is_empty
+*/
 func (recv *Sequence) IsEmpty() bool {
 	retC := C.g_sequence_is_empty((*C.GSequence)(recv.native))
 	retGo := retC == C.TRUE

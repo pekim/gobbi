@@ -20,7 +20,17 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// ActionNameIsValid is a wrapper around the C function g_action_name_is_valid.
+// Checks if @action_name is valid.
+//
+// @action_name is valid if it consists only of alphanumeric characters,
+// plus '-' and '.'.  The empty string is not a valid action name.
+//
+// It is an error to call this function with a non-utf8 @action_name.
+// @action_name must not be %NULL.
+/*
+
+C function : g_action_name_is_valid
+*/
 func ActionNameIsValid(actionName string) bool {
 	c_action_name := C.CString(actionName)
 	defer C.free(unsafe.Pointer(c_action_name))

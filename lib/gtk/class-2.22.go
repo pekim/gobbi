@@ -15,7 +15,13 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// GetWidget is a wrapper around the C function gtk_accessible_get_widget.
+// Gets the #GtkWidget corresponding to the #GtkAccessible.
+// The returned widget does not have a reference added, so
+// you do not need to unref it.
+/*
+
+C function : gtk_accessible_get_widget
+*/
 func (recv *Accessible) GetWidget() *Widget {
 	retC := C.gtk_accessible_get_widget((*C.GtkAccessible)(recv.native))
 	var retGo (*Widget)
@@ -28,7 +34,16 @@ func (recv *Accessible) GetWidget() *Widget {
 	return retGo
 }
 
-// SetWidget is a wrapper around the C function gtk_accessible_set_widget.
+// Sets the #GtkWidget corresponding to the #GtkAccessible.
+//
+// @accessible will not hold a reference to @widget.
+// It is the caller’s responsibility to ensure that when @widget
+// is destroyed, the widget is unset by calling this function
+// again with @widget set to %NULL.
+/*
+
+C function : gtk_accessible_set_widget
+*/
 func (recv *Accessible) SetWidget(widget *Widget) {
 	c_widget := (*C.GtkWidget)(C.NULL)
 	if widget != nil {
@@ -40,14 +55,31 @@ func (recv *Accessible) SetWidget(widget *Widget) {
 	return
 }
 
-// Commit is a wrapper around the C function gtk_assistant_commit.
+// Erases the visited page history so the back button is not
+// shown on the current page, and removes the cancel button
+// from subsequent pages.
+//
+// Use this when the information provided up to the current
+// page is hereafter deemed permanent and cannot be modified
+// or undone. For example, showing a progress page to track
+// a long-running, unreversible operation after the user has
+// clicked apply on a confirmation page.
+/*
+
+C function : gtk_assistant_commit
+*/
 func (recv *Assistant) Commit() {
 	C.gtk_assistant_commit((*C.GtkAssistant)(recv.native))
 
 	return
 }
 
-// GetEventWindow is a wrapper around the C function gtk_button_get_event_window.
+// Returns the button’s event window if it is realized, %NULL otherwise.
+// This function should be rarely needed.
+/*
+
+C function : gtk_button_get_event_window
+*/
 func (recv *Button) GetEventWindow() *gdk.Window {
 	retC := C.gtk_button_get_event_window((*C.GtkButton)(recv.native))
 	retGo := gdk.WindowNewFromC(unsafe.Pointer(retC))
@@ -55,7 +87,20 @@ func (recv *Button) GetEventWindow() *gdk.Window {
 	return retGo
 }
 
-// ImContextFilterKeypress is a wrapper around the C function gtk_entry_im_context_filter_keypress.
+// Allow the #GtkEntry input method to internally handle key press
+// and release events. If this function returns %TRUE, then no further
+// processing should be done for this key event. See
+// gtk_im_context_filter_keypress().
+//
+// Note that you are expected to call this function from your handler
+// when overriding key event handling. This is needed in the case when
+// you need to insert your own key handling between the input method
+// and the default key event handling of the #GtkEntry.
+// See gtk_text_view_reset_im_context() for an example of use.
+/*
+
+C function : gtk_entry_im_context_filter_keypress
+*/
 func (recv *Entry) ImContextFilterKeypress(event *gdk.EventKey) bool {
 	c_event := (*C.GdkEventKey)(C.NULL)
 	if event != nil {
@@ -68,14 +113,26 @@ func (recv *Entry) ImContextFilterKeypress(event *gdk.EventKey) bool {
 	return retGo
 }
 
-// ResetImContext is a wrapper around the C function gtk_entry_reset_im_context.
+// Reset the input method context of the entry if needed.
+//
+// This can be necessary in the case where modifying the buffer
+// would confuse on-going input method behavior.
+/*
+
+C function : gtk_entry_reset_im_context
+*/
 func (recv *Entry) ResetImContext() {
 	C.gtk_entry_reset_im_context((*C.GtkEntry)(recv.native))
 
 	return
 }
 
-// GetLabelFill is a wrapper around the C function gtk_expander_get_label_fill.
+// Returns whether the label widget will fill all available
+// horizontal space allocated to @expander.
+/*
+
+C function : gtk_expander_get_label_fill
+*/
 func (recv *Expander) GetLabelFill() bool {
 	retC := C.gtk_expander_get_label_fill((*C.GtkExpander)(recv.native))
 	retGo := retC == C.TRUE
@@ -83,7 +140,12 @@ func (recv *Expander) GetLabelFill() bool {
 	return retGo
 }
 
-// SetLabelFill is a wrapper around the C function gtk_expander_set_label_fill.
+// Sets whether the label widget should fill all available
+// horizontal space allocated to @expander.
+/*
+
+C function : gtk_expander_set_label_fill
+*/
 func (recv *Expander) SetLabelFill(labelFill bool) {
 	c_label_fill :=
 		boolToGboolean(labelFill)
@@ -93,7 +155,11 @@ func (recv *Expander) SetLabelFill(labelFill bool) {
 	return
 }
 
-// GetFontSelection is a wrapper around the C function gtk_font_selection_dialog_get_font_selection.
+// Retrieves the #GtkFontSelection widget embedded in the dialog.
+/*
+
+C function : gtk_font_selection_dialog_get_font_selection
+*/
 func (recv *FontSelectionDialog) GetFontSelection() *Widget {
 	retC := C.gtk_font_selection_dialog_get_font_selection((*C.GtkFontSelectionDialog)(recv.native))
 	retGo := WidgetNewFromC(unsafe.Pointer(retC))
@@ -101,7 +167,12 @@ func (recv *FontSelectionDialog) GetFontSelection() *Widget {
 	return retGo
 }
 
-// GetItemColumn is a wrapper around the C function gtk_icon_view_get_item_column.
+// Gets the column in which the item @path is currently
+// displayed. Column numbers start at 0.
+/*
+
+C function : gtk_icon_view_get_item_column
+*/
 func (recv *IconView) GetItemColumn(path *TreePath) int32 {
 	c_path := (*C.GtkTreePath)(C.NULL)
 	if path != nil {
@@ -114,7 +185,12 @@ func (recv *IconView) GetItemColumn(path *TreePath) int32 {
 	return retGo
 }
 
-// GetItemRow is a wrapper around the C function gtk_icon_view_get_item_row.
+// Gets the row in which the item @path is currently
+// displayed. Row numbers start at 0.
+/*
+
+C function : gtk_icon_view_get_item_row
+*/
 func (recv *IconView) GetItemRow(path *TreePath) int32 {
 	c_path := (*C.GtkTreePath)(C.NULL)
 	if path != nil {
@@ -127,7 +203,15 @@ func (recv *IconView) GetItemRow(path *TreePath) int32 {
 	return retGo
 }
 
-// GetMessageArea is a wrapper around the C function gtk_message_dialog_get_message_area.
+// Returns the message area of the dialog. This is the box where the
+// dialog’s primary and secondary labels are packed. You can add your
+// own extra content to that box and it will appear below those labels.
+// See gtk_dialog_get_content_area() for the corresponding
+// function in the parent #GtkDialog.
+/*
+
+C function : gtk_message_dialog_get_message_area
+*/
 func (recv *MessageDialog) GetMessageArea() *Widget {
 	retC := C.gtk_message_dialog_get_message_area((*C.GtkMessageDialog)(recv.native))
 	retGo := WidgetNewFromC(unsafe.Pointer(retC))
@@ -135,7 +219,11 @@ func (recv *MessageDialog) GetMessageArea() *Widget {
 	return retGo
 }
 
-// GetTabHborder is a wrapper around the C function gtk_notebook_get_tab_hborder.
+// Returns the horizontal width of a tab border.
+/*
+
+C function : gtk_notebook_get_tab_hborder
+*/
 func (recv *Notebook) GetTabHborder() uint16 {
 	retC := C.gtk_notebook_get_tab_hborder((*C.GtkNotebook)(recv.native))
 	retGo := (uint16)(retC)
@@ -143,7 +231,11 @@ func (recv *Notebook) GetTabHborder() uint16 {
 	return retGo
 }
 
-// GetTabVborder is a wrapper around the C function gtk_notebook_get_tab_vborder.
+// Returns the vertical width of a tab border.
+/*
+
+C function : gtk_notebook_get_tab_vborder
+*/
 func (recv *Notebook) GetTabVborder() uint16 {
 	retC := C.gtk_notebook_get_tab_vborder((*C.GtkNotebook)(recv.native))
 	retGo := (uint16)(retC)
@@ -151,7 +243,12 @@ func (recv *Notebook) GetTabVborder() uint16 {
 	return retGo
 }
 
-// RemoveAll is a wrapper around the C function gtk_statusbar_remove_all.
+// Forces the removal of all messages from a statusbar's
+// stack with the exact @context_id.
+/*
+
+C function : gtk_statusbar_remove_all
+*/
 func (recv *Statusbar) RemoveAll(contextId uint32) {
 	c_context_id := (C.guint)(contextId)
 
@@ -160,7 +257,11 @@ func (recv *Statusbar) RemoveAll(contextId uint32) {
 	return
 }
 
-// GetSize is a wrapper around the C function gtk_table_get_size.
+// Gets the number of rows and columns in the table.
+/*
+
+C function : gtk_table_get_size
+*/
 func (recv *Table) GetSize() (uint32, uint32) {
 	var c_rows C.guint
 
@@ -175,7 +276,11 @@ func (recv *Table) GetSize() (uint32, uint32) {
 	return rows, columns
 }
 
-// GetHadjustment is a wrapper around the C function gtk_text_view_get_hadjustment.
+// Gets the horizontal-scrolling #GtkAdjustment.
+/*
+
+C function : gtk_text_view_get_hadjustment
+*/
 func (recv *TextView) GetHadjustment() *Adjustment {
 	retC := C.gtk_text_view_get_hadjustment((*C.GtkTextView)(recv.native))
 	retGo := AdjustmentNewFromC(unsafe.Pointer(retC))
@@ -183,7 +288,11 @@ func (recv *TextView) GetHadjustment() *Adjustment {
 	return retGo
 }
 
-// GetVadjustment is a wrapper around the C function gtk_text_view_get_vadjustment.
+// Gets the vertical-scrolling #GtkAdjustment.
+/*
+
+C function : gtk_text_view_get_vadjustment
+*/
 func (recv *TextView) GetVadjustment() *Adjustment {
 	retC := C.gtk_text_view_get_vadjustment((*C.GtkTextView)(recv.native))
 	retGo := AdjustmentNewFromC(unsafe.Pointer(retC))
@@ -191,7 +300,40 @@ func (recv *TextView) GetVadjustment() *Adjustment {
 	return retGo
 }
 
-// ImContextFilterKeypress is a wrapper around the C function gtk_text_view_im_context_filter_keypress.
+// Allow the #GtkTextView input method to internally handle key press
+// and release events. If this function returns %TRUE, then no further
+// processing should be done for this key event. See
+// gtk_im_context_filter_keypress().
+//
+// Note that you are expected to call this function from your handler
+// when overriding key event handling. This is needed in the case when
+// you need to insert your own key handling between the input method
+// and the default key event handling of the #GtkTextView.
+//
+// |[<!-- language="C" -->
+// static gboolean
+// gtk_foo_bar_key_press_event (GtkWidget   *widget,
+// GdkEventKey *event)
+// {
+// guint keyval;
+//
+// gdk_event_get_keyval ((GdkEvent*)event, &keyval);
+//
+// if (keyval == GDK_KEY_Return || keyval == GDK_KEY_KP_Enter)
+// {
+// if (gtk_text_view_im_context_filter_keypress (GTK_TEXT_VIEW (widget), event))
+// return TRUE;
+// }
+//
+// Do some stuff
+//
+// return GTK_WIDGET_CLASS (gtk_foo_bar_parent_class)->key_press_event (widget, event);
+// }
+// ]|
+/*
+
+C function : gtk_text_view_im_context_filter_keypress
+*/
 func (recv *TextView) ImContextFilterKeypress(event *gdk.EventKey) bool {
 	c_event := (*C.GdkEventKey)(C.NULL)
 	if event != nil {
@@ -204,14 +346,25 @@ func (recv *TextView) ImContextFilterKeypress(event *gdk.EventKey) bool {
 	return retGo
 }
 
-// ResetImContext is a wrapper around the C function gtk_text_view_reset_im_context.
+// Reset the input method context of the text view if needed.
+//
+// This can be necessary in the case where modifying the buffer
+// would confuse on-going input method behavior.
+/*
+
+C function : gtk_text_view_reset_im_context
+*/
 func (recv *TextView) ResetImContext() {
 	C.gtk_text_view_reset_im_context((*C.GtkTextView)(recv.native))
 
 	return
 }
 
-// GetViewWindow is a wrapper around the C function gtk_viewport_get_view_window.
+// Gets the view window of the #GtkViewport.
+/*
+
+C function : gtk_viewport_get_view_window
+*/
 func (recv *Viewport) GetViewWindow() *gdk.Window {
 	retC := C.gtk_viewport_get_view_window((*C.GtkViewport)(recv.native))
 	retGo := gdk.WindowNewFromC(unsafe.Pointer(retC))
@@ -219,7 +372,12 @@ func (recv *Viewport) GetViewWindow() *gdk.Window {
 	return retGo
 }
 
-// GetCurrentGrab is a wrapper around the C function gtk_window_group_get_current_grab.
+// Gets the current grab widget of the given group,
+// see gtk_grab_add().
+/*
+
+C function : gtk_window_group_get_current_grab
+*/
 func (recv *WindowGroup) GetCurrentGrab() *Widget {
 	retC := C.gtk_window_group_get_current_grab((*C.GtkWindowGroup)(recv.native))
 	retGo := WidgetNewFromC(unsafe.Pointer(retC))

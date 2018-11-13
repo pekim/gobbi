@@ -15,7 +15,20 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// GetFont is a wrapper around the C function gtk_font_chooser_get_font.
+// Gets the currently-selected font name.
+//
+// Note that this can be a different string than what you set with
+// gtk_font_chooser_set_font(), as the font chooser widget may
+// normalize font names and thus return a string with a different
+// structure. For example, “Helvetica Italic Bold 12” could be
+// normalized to “Helvetica Bold Italic 12”.
+//
+// Use pango_font_description_equal() if you want to compare two
+// font descriptions.
+/*
+
+C function : gtk_font_chooser_get_font
+*/
 func (recv *FontChooser) GetFont() string {
 	retC := C.gtk_font_chooser_get_font((*C.GtkFontChooser)(recv.native))
 	retGo := C.GoString(retC)
@@ -24,7 +37,20 @@ func (recv *FontChooser) GetFont() string {
 	return retGo
 }
 
-// GetFontDesc is a wrapper around the C function gtk_font_chooser_get_font_desc.
+// Gets the currently-selected font.
+//
+// Note that this can be a different string than what you set with
+// gtk_font_chooser_set_font(), as the font chooser widget may
+// normalize font names and thus return a string with a different
+// structure. For example, “Helvetica Italic Bold 12” could be
+// normalized to “Helvetica Bold Italic 12”.
+//
+// Use pango_font_description_equal() if you want to compare two
+// font descriptions.
+/*
+
+C function : gtk_font_chooser_get_font_desc
+*/
 func (recv *FontChooser) GetFontDesc() *pango.FontDescription {
 	retC := C.gtk_font_chooser_get_font_desc((*C.GtkFontChooser)(recv.native))
 	var retGo (*pango.FontDescription)
@@ -37,7 +63,14 @@ func (recv *FontChooser) GetFontDesc() *pango.FontDescription {
 	return retGo
 }
 
-// GetFontFace is a wrapper around the C function gtk_font_chooser_get_font_face.
+// Gets the #PangoFontFace representing the selected font group
+// details (i.e. family, slant, weight, width, etc).
+//
+// If the selected font is not installed, returns %NULL.
+/*
+
+C function : gtk_font_chooser_get_font_face
+*/
 func (recv *FontChooser) GetFontFace() *pango.FontFace {
 	retC := C.gtk_font_chooser_get_font_face((*C.GtkFontChooser)(recv.native))
 	var retGo (*pango.FontFace)
@@ -50,7 +83,14 @@ func (recv *FontChooser) GetFontFace() *pango.FontFace {
 	return retGo
 }
 
-// GetFontFamily is a wrapper around the C function gtk_font_chooser_get_font_family.
+// Gets the #PangoFontFamily representing the selected font family.
+// Font families are a collection of font faces.
+//
+// If the selected font is not installed, returns %NULL.
+/*
+
+C function : gtk_font_chooser_get_font_family
+*/
 func (recv *FontChooser) GetFontFamily() *pango.FontFamily {
 	retC := C.gtk_font_chooser_get_font_family((*C.GtkFontChooser)(recv.native))
 	var retGo (*pango.FontFamily)
@@ -63,7 +103,11 @@ func (recv *FontChooser) GetFontFamily() *pango.FontFamily {
 	return retGo
 }
 
-// GetFontSize is a wrapper around the C function gtk_font_chooser_get_font_size.
+// The selected font size.
+/*
+
+C function : gtk_font_chooser_get_font_size
+*/
 func (recv *FontChooser) GetFontSize() int32 {
 	retC := C.gtk_font_chooser_get_font_size((*C.GtkFontChooser)(recv.native))
 	retGo := (int32)(retC)
@@ -71,7 +115,11 @@ func (recv *FontChooser) GetFontSize() int32 {
 	return retGo
 }
 
-// GetPreviewText is a wrapper around the C function gtk_font_chooser_get_preview_text.
+// Gets the text displayed in the preview area.
+/*
+
+C function : gtk_font_chooser_get_preview_text
+*/
 func (recv *FontChooser) GetPreviewText() string {
 	retC := C.gtk_font_chooser_get_preview_text((*C.GtkFontChooser)(recv.native))
 	retGo := C.GoString(retC)
@@ -80,7 +128,11 @@ func (recv *FontChooser) GetPreviewText() string {
 	return retGo
 }
 
-// GetShowPreviewEntry is a wrapper around the C function gtk_font_chooser_get_show_preview_entry.
+// Returns whether the preview entry is shown or not.
+/*
+
+C function : gtk_font_chooser_get_show_preview_entry
+*/
 func (recv *FontChooser) GetShowPreviewEntry() bool {
 	retC := C.gtk_font_chooser_get_show_preview_entry((*C.GtkFontChooser)(recv.native))
 	retGo := retC == C.TRUE
@@ -90,7 +142,11 @@ func (recv *FontChooser) GetShowPreviewEntry() bool {
 
 // Unsupported : gtk_font_chooser_set_filter_func : unsupported parameter filter : no type generator for FontFilterFunc (GtkFontFilterFunc) for param filter
 
-// SetFont is a wrapper around the C function gtk_font_chooser_set_font.
+// Sets the currently-selected font.
+/*
+
+C function : gtk_font_chooser_set_font
+*/
 func (recv *FontChooser) SetFont(fontname string) {
 	c_fontname := C.CString(fontname)
 	defer C.free(unsafe.Pointer(c_fontname))
@@ -100,7 +156,11 @@ func (recv *FontChooser) SetFont(fontname string) {
 	return
 }
 
-// SetFontDesc is a wrapper around the C function gtk_font_chooser_set_font_desc.
+// Sets the currently-selected font from @font_desc.
+/*
+
+C function : gtk_font_chooser_set_font_desc
+*/
 func (recv *FontChooser) SetFontDesc(fontDesc *pango.FontDescription) {
 	c_font_desc := (*C.PangoFontDescription)(C.NULL)
 	if fontDesc != nil {
@@ -112,7 +172,12 @@ func (recv *FontChooser) SetFontDesc(fontDesc *pango.FontDescription) {
 	return
 }
 
-// SetPreviewText is a wrapper around the C function gtk_font_chooser_set_preview_text.
+// Sets the text displayed in the preview area.
+// The @text is used to show how the selected font looks.
+/*
+
+C function : gtk_font_chooser_set_preview_text
+*/
 func (recv *FontChooser) SetPreviewText(text string) {
 	c_text := C.CString(text)
 	defer C.free(unsafe.Pointer(c_text))
@@ -122,7 +187,11 @@ func (recv *FontChooser) SetPreviewText(text string) {
 	return
 }
 
-// SetShowPreviewEntry is a wrapper around the C function gtk_font_chooser_set_show_preview_entry.
+// Shows or hides the editable preview entry.
+/*
+
+C function : gtk_font_chooser_set_show_preview_entry
+*/
 func (recv *FontChooser) SetShowPreviewEntry(showPreviewEntry bool) {
 	c_show_preview_entry :=
 		boolToGboolean(showPreviewEntry)

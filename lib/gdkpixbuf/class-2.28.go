@@ -14,7 +14,14 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// PixbufAnimationNewFromResource is a wrapper around the C function gdk_pixbuf_animation_new_from_resource.
+// Creates a new pixbuf animation by loading an image from an resource.
+//
+// The file format is detected automatically. If %NULL is returned, then
+// @error will be set.
+/*
+
+C function : gdk_pixbuf_animation_new_from_resource
+*/
 func PixbufAnimationNewFromResource(resourcePath string) (*PixbufAnimation, error) {
 	c_resource_path := C.CString(resourcePath)
 	defer C.free(unsafe.Pointer(c_resource_path))
@@ -32,7 +39,19 @@ func PixbufAnimationNewFromResource(resourcePath string) (*PixbufAnimation, erro
 	return retGo, goThrowableError
 }
 
-// PixbufAnimationNewFromStream is a wrapper around the C function gdk_pixbuf_animation_new_from_stream.
+// Creates a new animation by loading it from an input stream.
+//
+// The file format is detected automatically. If %NULL is returned, then
+// @error will be set. The @cancellable can be used to abort the operation
+// from another thread. If the operation was cancelled, the error
+// %G_IO_ERROR_CANCELLED will be returned. Other possible errors are in
+// the #GDK_PIXBUF_ERROR and %G_IO_ERROR domains.
+//
+// The stream is not closed.
+/*
+
+C function : gdk_pixbuf_animation_new_from_stream
+*/
 func PixbufAnimationNewFromStream(stream *gio.InputStream, cancellable *gio.Cancellable) (*PixbufAnimation, error) {
 	c_stream := (*C.GInputStream)(C.NULL)
 	if stream != nil {
@@ -57,7 +76,12 @@ func PixbufAnimationNewFromStream(stream *gio.InputStream, cancellable *gio.Canc
 	return retGo, goThrowableError
 }
 
-// PixbufAnimationNewFromStreamFinish is a wrapper around the C function gdk_pixbuf_animation_new_from_stream_finish.
+// Finishes an asynchronous pixbuf animation creation operation started with
+// gdk_pixbuf_animation_new_from_stream_async().
+/*
+
+C function : gdk_pixbuf_animation_new_from_stream_finish
+*/
 func PixbufAnimationNewFromStreamFinish(asyncResult *gio.AsyncResult) (*PixbufAnimation, error) {
 	c_async_result := (*C.GAsyncResult)(asyncResult.ToC())
 

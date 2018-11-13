@@ -13,7 +13,20 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// PixbufNewFromFileAtSize is a wrapper around the C function gdk_pixbuf_new_from_file_at_size.
+// Creates a new pixbuf by loading an image from a file.
+// The file format is detected automatically. If %NULL is returned, then
+// @error will be set. Possible errors are in the #GDK_PIXBUF_ERROR and
+// #G_FILE_ERROR domains.
+//
+// The image will be scaled to fit in the requested size, preserving
+// the image's aspect ratio. Note that the returned pixbuf may be smaller
+// than @width x @height, if the aspect ratio requires it. To load
+// and image at the requested size, regardless of aspect ratio, use
+// gdk_pixbuf_new_from_file_at_scale().
+/*
+
+C function : gdk_pixbuf_new_from_file_at_size
+*/
 func PixbufNewFromFileAtSize(filename string, width int32, height int32) (*Pixbuf, error) {
 	c_filename := C.CString(filename)
 	defer C.free(unsafe.Pointer(c_filename))
@@ -43,7 +56,23 @@ func PixbufNewFromFileAtSize(filename string, width int32, height int32) (*Pixbu
 
 // Unsupported : gdk_pixbuf_save_to_callbackv : unsupported parameter save_func : no type generator for PixbufSaveFunc (GdkPixbufSaveFunc) for param save_func
 
-// PixbufLoaderNewWithMimeType is a wrapper around the C function gdk_pixbuf_loader_new_with_mime_type.
+// Creates a new pixbuf loader object that always attempts to parse
+// image data as if it were an image of mime type @mime_type, instead of
+// identifying the type automatically. Useful if you want an error if
+// the image isn't the expected mime type, for loading image formats
+// that can't be reliably identified by looking at the data, or if
+// the user manually forces a specific mime type.
+//
+// The list of supported mime types depends on what image loaders
+// are installed, but typically "image/png", "image/jpeg", "image/gif",
+// "image/tiff" and "image/x-xpixmap" are among the supported mime types.
+// To obtain the full list of supported mime types, call
+// gdk_pixbuf_format_get_mime_types() on each of the #GdkPixbufFormat
+// structs returned by gdk_pixbuf_get_formats().
+/*
+
+C function : gdk_pixbuf_loader_new_with_mime_type
+*/
 func PixbufLoaderNewWithMimeType(mimeType string) (*PixbufLoader, error) {
 	c_mime_type := C.CString(mimeType)
 	defer C.free(unsafe.Pointer(c_mime_type))

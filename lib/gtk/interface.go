@@ -247,7 +247,10 @@ func (recv *CellAccessibleParent) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Activate is a wrapper around the C function gtk_cell_accessible_parent_activate.
+/*
+
+C function : gtk_cell_accessible_parent_activate
+*/
 func (recv *CellAccessibleParent) Activate(cell *CellAccessible) {
 	c_cell := (*C.GtkCellAccessible)(C.NULL)
 	if cell != nil {
@@ -259,7 +262,10 @@ func (recv *CellAccessibleParent) Activate(cell *CellAccessible) {
 	return
 }
 
-// Edit is a wrapper around the C function gtk_cell_accessible_parent_edit.
+/*
+
+C function : gtk_cell_accessible_parent_edit
+*/
 func (recv *CellAccessibleParent) Edit(cell *CellAccessible) {
 	c_cell := (*C.GtkCellAccessible)(C.NULL)
 	if cell != nil {
@@ -271,7 +277,10 @@ func (recv *CellAccessibleParent) Edit(cell *CellAccessible) {
 	return
 }
 
-// ExpandCollapse is a wrapper around the C function gtk_cell_accessible_parent_expand_collapse.
+/*
+
+C function : gtk_cell_accessible_parent_expand_collapse
+*/
 func (recv *CellAccessibleParent) ExpandCollapse(cell *CellAccessible) {
 	c_cell := (*C.GtkCellAccessible)(C.NULL)
 	if cell != nil {
@@ -285,7 +294,10 @@ func (recv *CellAccessibleParent) ExpandCollapse(cell *CellAccessible) {
 
 // Unsupported : gtk_cell_accessible_parent_get_cell_area : unsupported parameter cell_rect : Blacklisted record : GdkRectangle
 
-// GetCellExtents is a wrapper around the C function gtk_cell_accessible_parent_get_cell_extents.
+/*
+
+C function : gtk_cell_accessible_parent_get_cell_extents
+*/
 func (recv *CellAccessibleParent) GetCellExtents(cell *CellAccessible, x int32, y int32, width int32, height int32, coordType atk.CoordType) {
 	c_cell := (*C.GtkCellAccessible)(C.NULL)
 	if cell != nil {
@@ -307,7 +319,10 @@ func (recv *CellAccessibleParent) GetCellExtents(cell *CellAccessible, x int32, 
 	return
 }
 
-// GetChildIndex is a wrapper around the C function gtk_cell_accessible_parent_get_child_index.
+/*
+
+C function : gtk_cell_accessible_parent_get_child_index
+*/
 func (recv *CellAccessibleParent) GetChildIndex(cell *CellAccessible) int32 {
 	c_cell := (*C.GtkCellAccessible)(C.NULL)
 	if cell != nil {
@@ -320,7 +335,10 @@ func (recv *CellAccessibleParent) GetChildIndex(cell *CellAccessible) int32 {
 	return retGo
 }
 
-// GetRendererState is a wrapper around the C function gtk_cell_accessible_parent_get_renderer_state.
+/*
+
+C function : gtk_cell_accessible_parent_get_renderer_state
+*/
 func (recv *CellAccessibleParent) GetRendererState(cell *CellAccessible) CellRendererState {
 	c_cell := (*C.GtkCellAccessible)(C.NULL)
 	if cell != nil {
@@ -333,7 +351,10 @@ func (recv *CellAccessibleParent) GetRendererState(cell *CellAccessible) CellRen
 	return retGo
 }
 
-// GrabFocus is a wrapper around the C function gtk_cell_accessible_parent_grab_focus.
+/*
+
+C function : gtk_cell_accessible_parent_grab_focus
+*/
 func (recv *CellAccessibleParent) GrabFocus(cell *CellAccessible) bool {
 	c_cell := (*C.GtkCellAccessible)(C.NULL)
 	if cell != nil {
@@ -346,7 +367,10 @@ func (recv *CellAccessibleParent) GrabFocus(cell *CellAccessible) bool {
 	return retGo
 }
 
-// UpdateRelationset is a wrapper around the C function gtk_cell_accessible_parent_update_relationset.
+/*
+
+C function : gtk_cell_accessible_parent_update_relationset
+*/
 func (recv *CellAccessibleParent) UpdateRelationset(cell *CellAccessible, relationset *atk.RelationSet) {
 	c_cell := (*C.GtkCellAccessible)(C.NULL)
 	if cell != nil {
@@ -498,14 +522,22 @@ func celleditable_removeWidgetHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// EditingDone is a wrapper around the C function gtk_cell_editable_editing_done.
+// Emits the #GtkCellEditable::editing-done signal.
+/*
+
+C function : gtk_cell_editable_editing_done
+*/
 func (recv *CellEditable) EditingDone() {
 	C.gtk_cell_editable_editing_done((*C.GtkCellEditable)(recv.native))
 
 	return
 }
 
-// RemoveWidget is a wrapper around the C function gtk_cell_editable_remove_widget.
+// Emits the #GtkCellEditable::remove-widget signal.
+/*
+
+C function : gtk_cell_editable_remove_widget
+*/
 func (recv *CellEditable) RemoveWidget() {
 	C.gtk_cell_editable_remove_widget((*C.GtkCellEditable)(recv.native))
 
@@ -638,28 +670,52 @@ func editable_changedHandler(_ *C.GObject, data C.gpointer) {
 
 // Unsupported signal 'insert-text' for Editable : unsupported parameter new_text : type utf8 :
 
-// CopyClipboard is a wrapper around the C function gtk_editable_copy_clipboard.
+// Copies the contents of the currently selected content in the editable and
+// puts it on the clipboard.
+/*
+
+C function : gtk_editable_copy_clipboard
+*/
 func (recv *Editable) CopyClipboard() {
 	C.gtk_editable_copy_clipboard((*C.GtkEditable)(recv.native))
 
 	return
 }
 
-// CutClipboard is a wrapper around the C function gtk_editable_cut_clipboard.
+// Removes the contents of the currently selected content in the editable and
+// puts it on the clipboard.
+/*
+
+C function : gtk_editable_cut_clipboard
+*/
 func (recv *Editable) CutClipboard() {
 	C.gtk_editable_cut_clipboard((*C.GtkEditable)(recv.native))
 
 	return
 }
 
-// DeleteSelection is a wrapper around the C function gtk_editable_delete_selection.
+// Deletes the currently selected text of the editable.
+// This call doesn’t do anything if there is no selected text.
+/*
+
+C function : gtk_editable_delete_selection
+*/
 func (recv *Editable) DeleteSelection() {
 	C.gtk_editable_delete_selection((*C.GtkEditable)(recv.native))
 
 	return
 }
 
-// DeleteText is a wrapper around the C function gtk_editable_delete_text.
+// Deletes a sequence of characters. The characters that are deleted are
+// those characters at positions from @start_pos up to, but not including
+// @end_pos. If @end_pos is negative, then the characters deleted
+// are those from @start_pos to the end of the text.
+//
+// Note that the positions are specified in characters, not bytes.
+/*
+
+C function : gtk_editable_delete_text
+*/
 func (recv *Editable) DeleteText(startPos int32, endPos int32) {
 	c_start_pos := (C.gint)(startPos)
 
@@ -670,7 +726,16 @@ func (recv *Editable) DeleteText(startPos int32, endPos int32) {
 	return
 }
 
-// GetChars is a wrapper around the C function gtk_editable_get_chars.
+// Retrieves a sequence of characters. The characters that are retrieved
+// are those characters at positions from @start_pos up to, but not
+// including @end_pos. If @end_pos is negative, then the characters
+// retrieved are those characters from @start_pos to the end of the text.
+//
+// Note that positions are specified in characters, not bytes.
+/*
+
+C function : gtk_editable_get_chars
+*/
 func (recv *Editable) GetChars(startPos int32, endPos int32) string {
 	c_start_pos := (C.gint)(startPos)
 
@@ -683,7 +748,12 @@ func (recv *Editable) GetChars(startPos int32, endPos int32) string {
 	return retGo
 }
 
-// GetEditable is a wrapper around the C function gtk_editable_get_editable.
+// Retrieves whether @editable is editable. See
+// gtk_editable_set_editable().
+/*
+
+C function : gtk_editable_get_editable
+*/
 func (recv *Editable) GetEditable() bool {
 	retC := C.gtk_editable_get_editable((*C.GtkEditable)(recv.native))
 	retGo := retC == C.TRUE
@@ -691,7 +761,14 @@ func (recv *Editable) GetEditable() bool {
 	return retGo
 }
 
-// GetPosition is a wrapper around the C function gtk_editable_get_position.
+// Retrieves the current position of the cursor relative to the start
+// of the content of the editable.
+//
+// Note that this position is in characters, not in bytes.
+/*
+
+C function : gtk_editable_get_position
+*/
 func (recv *Editable) GetPosition() int32 {
 	retC := C.gtk_editable_get_position((*C.GtkEditable)(recv.native))
 	retGo := (int32)(retC)
@@ -699,7 +776,15 @@ func (recv *Editable) GetPosition() int32 {
 	return retGo
 }
 
-// GetSelectionBounds is a wrapper around the C function gtk_editable_get_selection_bounds.
+// Retrieves the selection bound of the editable. start_pos will be filled
+// with the start of the selection and @end_pos with end. If no text was
+// selected both will be identical and %FALSE will be returned.
+//
+// Note that positions are specified in characters, not bytes.
+/*
+
+C function : gtk_editable_get_selection_bounds
+*/
 func (recv *Editable) GetSelectionBounds() (bool, int32, int32) {
 	var c_start_pos C.gint
 
@@ -715,7 +800,15 @@ func (recv *Editable) GetSelectionBounds() (bool, int32, int32) {
 	return retGo, startPos, endPos
 }
 
-// InsertText is a wrapper around the C function gtk_editable_insert_text.
+// Inserts @new_text_length bytes of @new_text into the contents of the
+// widget, at position @position.
+//
+// Note that the position is in characters, not in bytes.
+// The function updates @position to point after the newly inserted text.
+/*
+
+C function : gtk_editable_insert_text
+*/
 func (recv *Editable) InsertText(newText string, newTextLength int32, position int32) {
 	c_new_text := C.CString(newText)
 	defer C.free(unsafe.Pointer(c_new_text))
@@ -729,14 +822,29 @@ func (recv *Editable) InsertText(newText string, newTextLength int32, position i
 	return
 }
 
-// PasteClipboard is a wrapper around the C function gtk_editable_paste_clipboard.
+// Pastes the content of the clipboard to the current position of the
+// cursor in the editable.
+/*
+
+C function : gtk_editable_paste_clipboard
+*/
 func (recv *Editable) PasteClipboard() {
 	C.gtk_editable_paste_clipboard((*C.GtkEditable)(recv.native))
 
 	return
 }
 
-// SelectRegion is a wrapper around the C function gtk_editable_select_region.
+// Selects a region of text. The characters that are selected are
+// those characters at positions from @start_pos up to, but not
+// including @end_pos. If @end_pos is negative, then the
+// characters selected are those characters from @start_pos to
+// the end of the text.
+//
+// Note that positions are specified in characters, not bytes.
+/*
+
+C function : gtk_editable_select_region
+*/
 func (recv *Editable) SelectRegion(startPos int32, endPos int32) {
 	c_start_pos := (C.gint)(startPos)
 
@@ -747,7 +855,12 @@ func (recv *Editable) SelectRegion(startPos int32, endPos int32) {
 	return
 }
 
-// SetEditable is a wrapper around the C function gtk_editable_set_editable.
+// Determines if the user can edit the text in the editable
+// widget or not.
+/*
+
+C function : gtk_editable_set_editable
+*/
 func (recv *Editable) SetEditable(isEditable bool) {
 	c_is_editable :=
 		boolToGboolean(isEditable)
@@ -757,7 +870,17 @@ func (recv *Editable) SetEditable(isEditable bool) {
 	return
 }
 
-// SetPosition is a wrapper around the C function gtk_editable_set_position.
+// Sets the cursor position in the editable to the given value.
+//
+// The cursor is displayed before the character with the given (base 0)
+// index in the contents of the editable. The value must be less than or
+// equal to the number of characters in the editable. A value of -1
+// indicates that the position should be set after the last character
+// of the editable. Note that @position is in characters, not in bytes.
+/*
+
+C function : gtk_editable_set_position
+*/
 func (recv *Editable) SetPosition(position int32) {
 	c_position := (C.gint)(position)
 
@@ -1015,7 +1138,12 @@ func filechooser_updatePreviewHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// GetUsePreviewLabel is a wrapper around the C function gtk_file_chooser_get_use_preview_label.
+// Gets whether a stock label should be drawn with the name of the previewed
+// file.  See gtk_file_chooser_set_use_preview_label().
+/*
+
+C function : gtk_file_chooser_get_use_preview_label
+*/
 func (recv *FileChooser) GetUsePreviewLabel() bool {
 	retC := C.gtk_file_chooser_get_use_preview_label((*C.GtkFileChooser)(recv.native))
 	retGo := retC == C.TRUE
@@ -1313,7 +1441,16 @@ func (recv *TreeDragDest) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// DragDataReceived is a wrapper around the C function gtk_tree_drag_dest_drag_data_received.
+// Asks the #GtkTreeDragDest to insert a row before the path @dest,
+// deriving the contents of the row from @selection_data. If @dest is
+// outside the tree so that inserting before it is impossible, %FALSE
+// will be returned. Also, %FALSE may be returned if the new row is
+// not created for some model-specific reason.  Should robustly handle
+// a @dest no longer found in the model!
+/*
+
+C function : gtk_tree_drag_dest_drag_data_received
+*/
 func (recv *TreeDragDest) DragDataReceived(dest *TreePath, selectionData *SelectionData) bool {
 	c_dest := (*C.GtkTreePath)(C.NULL)
 	if dest != nil {
@@ -1331,7 +1468,15 @@ func (recv *TreeDragDest) DragDataReceived(dest *TreePath, selectionData *Select
 	return retGo
 }
 
-// RowDropPossible is a wrapper around the C function gtk_tree_drag_dest_row_drop_possible.
+// Determines whether a drop is possible before the given @dest_path,
+// at the same depth as @dest_path. i.e., can we drop the data in
+// @selection_data at that location. @dest_path does not have to
+// exist; the return value will almost certainly be %FALSE if the
+// parent of @dest_path doesn’t exist, though.
+/*
+
+C function : gtk_tree_drag_dest_row_drop_possible
+*/
 func (recv *TreeDragDest) RowDropPossible(destPath *TreePath, selectionData *SelectionData) bool {
 	c_dest_path := (*C.GtkTreePath)(C.NULL)
 	if destPath != nil {
@@ -1370,7 +1515,15 @@ func (recv *TreeDragSource) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// DragDataDelete is a wrapper around the C function gtk_tree_drag_source_drag_data_delete.
+// Asks the #GtkTreeDragSource to delete the row at @path, because
+// it was moved somewhere else via drag-and-drop. Returns %FALSE
+// if the deletion fails because @path no longer exists, or for
+// some model-specific reason. Should robustly handle a @path no
+// longer found in the model!
+/*
+
+C function : gtk_tree_drag_source_drag_data_delete
+*/
 func (recv *TreeDragSource) DragDataDelete(path *TreePath) bool {
 	c_path := (*C.GtkTreePath)(C.NULL)
 	if path != nil {
@@ -1383,7 +1536,14 @@ func (recv *TreeDragSource) DragDataDelete(path *TreePath) bool {
 	return retGo
 }
 
-// DragDataGet is a wrapper around the C function gtk_tree_drag_source_drag_data_get.
+// Asks the #GtkTreeDragSource to fill in @selection_data with a
+// representation of the row at @path. @selection_data->target gives
+// the required type of the data.  Should robustly handle a @path no
+// longer found in the model!
+/*
+
+C function : gtk_tree_drag_source_drag_data_get
+*/
 func (recv *TreeDragSource) DragDataGet(path *TreePath, selectionData *SelectionData) bool {
 	c_path := (*C.GtkTreePath)(C.NULL)
 	if path != nil {
@@ -1401,7 +1561,13 @@ func (recv *TreeDragSource) DragDataGet(path *TreePath, selectionData *Selection
 	return retGo
 }
 
-// RowDraggable is a wrapper around the C function gtk_tree_drag_source_row_draggable.
+// Asks the #GtkTreeDragSource whether a particular row can be used as
+// the source of a DND operation. If the source doesn’t implement
+// this interface, the row is assumed draggable.
+/*
+
+C function : gtk_tree_drag_source_row_draggable
+*/
 func (recv *TreeDragSource) RowDraggable(path *TreePath) bool {
 	c_path := (*C.GtkTreePath)(C.NULL)
 	if path != nil {
@@ -1683,7 +1849,11 @@ func treemodel_rowInsertedHandler(_ *C.GObject, c_path *C.GtkTreePath, c_iter *C
 
 // Unsupported : gtk_tree_model_get : unsupported parameter ... : varargs
 
-// GetColumnType is a wrapper around the C function gtk_tree_model_get_column_type.
+// Returns the type of the column.
+/*
+
+C function : gtk_tree_model_get_column_type
+*/
 func (recv *TreeModel) GetColumnType(index int32) gobject.Type {
 	c_index_ := (C.gint)(index)
 
@@ -1693,7 +1863,15 @@ func (recv *TreeModel) GetColumnType(index int32) gobject.Type {
 	return retGo
 }
 
-// GetFlags is a wrapper around the C function gtk_tree_model_get_flags.
+// Returns a set of flags supported by this interface.
+//
+// The flags are a bitwise combination of #GtkTreeModelFlags.
+// The flags supported should not change during the lifetime
+// of the @tree_model.
+/*
+
+C function : gtk_tree_model_get_flags
+*/
 func (recv *TreeModel) GetFlags() TreeModelFlags {
 	retC := C.gtk_tree_model_get_flags((*C.GtkTreeModel)(recv.native))
 	retGo := (TreeModelFlags)(retC)
@@ -1701,7 +1879,12 @@ func (recv *TreeModel) GetFlags() TreeModelFlags {
 	return retGo
 }
 
-// GetIter is a wrapper around the C function gtk_tree_model_get_iter.
+// Sets @iter to a valid iterator pointing to @path.  If @path does
+// not exist, @iter is set to an invalid iterator and %FALSE is returned.
+/*
+
+C function : gtk_tree_model_get_iter
+*/
 func (recv *TreeModel) GetIter(path *TreePath) (bool, *TreeIter) {
 	var c_iter C.GtkTreeIter
 
@@ -1718,7 +1901,13 @@ func (recv *TreeModel) GetIter(path *TreePath) (bool, *TreeIter) {
 	return retGo, iter
 }
 
-// GetIterFirst is a wrapper around the C function gtk_tree_model_get_iter_first.
+// Initializes @iter with the first iterator in the tree
+// (the one at the path "0") and returns %TRUE. Returns
+// %FALSE if the tree is empty.
+/*
+
+C function : gtk_tree_model_get_iter_first
+*/
 func (recv *TreeModel) GetIterFirst() (bool, *TreeIter) {
 	var c_iter C.GtkTreeIter
 
@@ -1730,7 +1919,12 @@ func (recv *TreeModel) GetIterFirst() (bool, *TreeIter) {
 	return retGo, iter
 }
 
-// GetIterFromString is a wrapper around the C function gtk_tree_model_get_iter_from_string.
+// Sets @iter to a valid iterator pointing to @path_string, if it
+// exists. Otherwise, @iter is left invalid and %FALSE is returned.
+/*
+
+C function : gtk_tree_model_get_iter_from_string
+*/
 func (recv *TreeModel) GetIterFromString(pathString string) (bool, *TreeIter) {
 	var c_iter C.GtkTreeIter
 
@@ -1745,7 +1939,11 @@ func (recv *TreeModel) GetIterFromString(pathString string) (bool, *TreeIter) {
 	return retGo, iter
 }
 
-// GetNColumns is a wrapper around the C function gtk_tree_model_get_n_columns.
+// Returns the number of columns supported by @tree_model.
+/*
+
+C function : gtk_tree_model_get_n_columns
+*/
 func (recv *TreeModel) GetNColumns() int32 {
 	retC := C.gtk_tree_model_get_n_columns((*C.GtkTreeModel)(recv.native))
 	retGo := (int32)(retC)
@@ -1753,7 +1951,13 @@ func (recv *TreeModel) GetNColumns() int32 {
 	return retGo
 }
 
-// GetPath is a wrapper around the C function gtk_tree_model_get_path.
+// Returns a newly-created #GtkTreePath-struct referenced by @iter.
+//
+// This path should be freed with gtk_tree_path_free().
+/*
+
+C function : gtk_tree_model_get_path
+*/
 func (recv *TreeModel) GetPath(iter *TreeIter) *TreePath {
 	c_iter := (*C.GtkTreeIter)(C.NULL)
 	if iter != nil {
@@ -1768,7 +1972,14 @@ func (recv *TreeModel) GetPath(iter *TreeIter) *TreePath {
 
 // Unsupported : gtk_tree_model_get_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
 
-// GetValue is a wrapper around the C function gtk_tree_model_get_value.
+// Initializes and sets @value to that at @column.
+//
+// When done with @value, g_value_unset() needs to be called
+// to free any allocated memory.
+/*
+
+C function : gtk_tree_model_get_value
+*/
 func (recv *TreeModel) GetValue(iter *TreeIter, column int32) *gobject.Value {
 	c_iter := (*C.GtkTreeIter)(C.NULL)
 	if iter != nil {
@@ -1786,7 +1997,18 @@ func (recv *TreeModel) GetValue(iter *TreeIter, column int32) *gobject.Value {
 	return value
 }
 
-// IterChildren is a wrapper around the C function gtk_tree_model_iter_children.
+// Sets @iter to point to the first child of @parent.
+//
+// If @parent has no children, %FALSE is returned and @iter is
+// set to be invalid. @parent will remain a valid node after this
+// function has been called.
+//
+// If @parent is %NULL returns the first node, equivalent to
+// `gtk_tree_model_get_iter_first (tree_model, iter);`
+/*
+
+C function : gtk_tree_model_iter_children
+*/
 func (recv *TreeModel) IterChildren(parent *TreeIter) (bool, *TreeIter) {
 	var c_iter C.GtkTreeIter
 
@@ -1803,7 +2025,11 @@ func (recv *TreeModel) IterChildren(parent *TreeIter) (bool, *TreeIter) {
 	return retGo, iter
 }
 
-// IterHasChild is a wrapper around the C function gtk_tree_model_iter_has_child.
+// Returns %TRUE if @iter has children, %FALSE otherwise.
+/*
+
+C function : gtk_tree_model_iter_has_child
+*/
 func (recv *TreeModel) IterHasChild(iter *TreeIter) bool {
 	c_iter := (*C.GtkTreeIter)(C.NULL)
 	if iter != nil {
@@ -1816,7 +2042,14 @@ func (recv *TreeModel) IterHasChild(iter *TreeIter) bool {
 	return retGo
 }
 
-// IterNChildren is a wrapper around the C function gtk_tree_model_iter_n_children.
+// Returns the number of children that @iter has.
+//
+// As a special case, if @iter is %NULL, then the number
+// of toplevel nodes is returned.
+/*
+
+C function : gtk_tree_model_iter_n_children
+*/
 func (recv *TreeModel) IterNChildren(iter *TreeIter) int32 {
 	c_iter := (*C.GtkTreeIter)(C.NULL)
 	if iter != nil {
@@ -1829,7 +2062,14 @@ func (recv *TreeModel) IterNChildren(iter *TreeIter) int32 {
 	return retGo
 }
 
-// IterNext is a wrapper around the C function gtk_tree_model_iter_next.
+// Sets @iter to point to the node following it at the current level.
+//
+// If there is no next @iter, %FALSE is returned and @iter is set
+// to be invalid.
+/*
+
+C function : gtk_tree_model_iter_next
+*/
 func (recv *TreeModel) IterNext(iter *TreeIter) bool {
 	c_iter := (*C.GtkTreeIter)(C.NULL)
 	if iter != nil {
@@ -1842,7 +2082,17 @@ func (recv *TreeModel) IterNext(iter *TreeIter) bool {
 	return retGo
 }
 
-// IterNthChild is a wrapper around the C function gtk_tree_model_iter_nth_child.
+// Sets @iter to be the child of @parent, using the given index.
+//
+// The first index is 0. If @n is too big, or @parent has no children,
+// @iter is set to an invalid iterator and %FALSE is returned. @parent
+// will remain a valid node after this function has been called. As a
+// special case, if @parent is %NULL, then the @n-th root node
+// is set.
+/*
+
+C function : gtk_tree_model_iter_nth_child
+*/
 func (recv *TreeModel) IterNthChild(parent *TreeIter, n int32) (bool, *TreeIter) {
 	var c_iter C.GtkTreeIter
 
@@ -1861,7 +2111,19 @@ func (recv *TreeModel) IterNthChild(parent *TreeIter, n int32) (bool, *TreeIter)
 	return retGo, iter
 }
 
-// IterParent is a wrapper around the C function gtk_tree_model_iter_parent.
+// Sets @iter to be the parent of @child.
+//
+// If @child is at the toplevel, and doesn’t have a parent, then
+// @iter is set to an invalid iterator and %FALSE is returned.
+// @child will remain a valid node after this function has been
+// called.
+//
+// @iter will be initialized before the lookup is performed, so @child
+// and @iter cannot point to the same memory location.
+/*
+
+C function : gtk_tree_model_iter_parent
+*/
 func (recv *TreeModel) IterParent(child *TreeIter) (bool, *TreeIter) {
 	var c_iter C.GtkTreeIter
 
@@ -1878,7 +2140,27 @@ func (recv *TreeModel) IterParent(child *TreeIter) (bool, *TreeIter) {
 	return retGo, iter
 }
 
-// RefNode is a wrapper around the C function gtk_tree_model_ref_node.
+// Lets the tree ref the node.
+//
+// This is an optional method for models to implement.
+// To be more specific, models may ignore this call as it exists
+// primarily for performance reasons.
+//
+// This function is primarily meant as a way for views to let
+// caching models know when nodes are being displayed (and hence,
+// whether or not to cache that node). Being displayed means a node
+// is in an expanded branch, regardless of whether the node is currently
+// visible in the viewport. For example, a file-system based model
+// would not want to keep the entire file-hierarchy in memory,
+// just the sections that are currently being displayed by
+// every current view.
+//
+// A model should be expected to be able to get an iter independent
+// of its reffed state.
+/*
+
+C function : gtk_tree_model_ref_node
+*/
 func (recv *TreeModel) RefNode(iter *TreeIter) {
 	c_iter := (*C.GtkTreeIter)(C.NULL)
 	if iter != nil {
@@ -1890,7 +2172,11 @@ func (recv *TreeModel) RefNode(iter *TreeIter) {
 	return
 }
 
-// RowChanged is a wrapper around the C function gtk_tree_model_row_changed.
+// Emits the #GtkTreeModel::row-changed signal on @tree_model.
+/*
+
+C function : gtk_tree_model_row_changed
+*/
 func (recv *TreeModel) RowChanged(path *TreePath, iter *TreeIter) {
 	c_path := (*C.GtkTreePath)(C.NULL)
 	if path != nil {
@@ -1907,7 +2193,18 @@ func (recv *TreeModel) RowChanged(path *TreePath, iter *TreeIter) {
 	return
 }
 
-// RowDeleted is a wrapper around the C function gtk_tree_model_row_deleted.
+// Emits the #GtkTreeModel::row-deleted signal on @tree_model.
+//
+// This should be called by models after a row has been removed.
+// The location pointed to by @path should be the location that
+// the row previously was at. It may not be a valid location anymore.
+//
+// Nodes that are deleted are not unreffed, this means that any
+// outstanding references on the deleted node should not be released.
+/*
+
+C function : gtk_tree_model_row_deleted
+*/
 func (recv *TreeModel) RowDeleted(path *TreePath) {
 	c_path := (*C.GtkTreePath)(C.NULL)
 	if path != nil {
@@ -1919,7 +2216,13 @@ func (recv *TreeModel) RowDeleted(path *TreePath) {
 	return
 }
 
-// RowHasChildToggled is a wrapper around the C function gtk_tree_model_row_has_child_toggled.
+// Emits the #GtkTreeModel::row-has-child-toggled signal on
+// @tree_model. This should be called by models after the child
+// state of a node changes.
+/*
+
+C function : gtk_tree_model_row_has_child_toggled
+*/
 func (recv *TreeModel) RowHasChildToggled(path *TreePath, iter *TreeIter) {
 	c_path := (*C.GtkTreePath)(C.NULL)
 	if path != nil {
@@ -1936,7 +2239,11 @@ func (recv *TreeModel) RowHasChildToggled(path *TreePath, iter *TreeIter) {
 	return
 }
 
-// RowInserted is a wrapper around the C function gtk_tree_model_row_inserted.
+// Emits the #GtkTreeModel::row-inserted signal on @tree_model.
+/*
+
+C function : gtk_tree_model_row_inserted
+*/
 func (recv *TreeModel) RowInserted(path *TreePath, iter *TreeIter) {
 	c_path := (*C.GtkTreePath)(C.NULL)
 	if path != nil {
@@ -1953,7 +2260,14 @@ func (recv *TreeModel) RowInserted(path *TreePath, iter *TreeIter) {
 	return
 }
 
-// RowsReordered is a wrapper around the C function gtk_tree_model_rows_reordered.
+// Emits the #GtkTreeModel::rows-reordered signal on @tree_model.
+//
+// This should be called by models when their rows have been
+// reordered.
+/*
+
+C function : gtk_tree_model_rows_reordered
+*/
 func (recv *TreeModel) RowsReordered(path *TreePath, iter *TreeIter, newOrder int32) {
 	c_path := (*C.GtkTreePath)(C.NULL)
 	if path != nil {
@@ -1972,7 +2286,11 @@ func (recv *TreeModel) RowsReordered(path *TreePath, iter *TreeIter, newOrder in
 	return
 }
 
-// SortNewWithModel is a wrapper around the C function gtk_tree_model_sort_new_with_model.
+// Creates a new #GtkTreeModel, with @child_model as the child model.
+/*
+
+C function : gtk_tree_model_sort_new_with_model
+*/
 func (recv *TreeModel) SortNewWithModel() *TreeModel {
 	retC := C.gtk_tree_model_sort_new_with_model((*C.GtkTreeModel)(recv.native))
 	retGo := TreeModelNewFromC(unsafe.Pointer(retC))
@@ -1980,7 +2298,18 @@ func (recv *TreeModel) SortNewWithModel() *TreeModel {
 	return retGo
 }
 
-// UnrefNode is a wrapper around the C function gtk_tree_model_unref_node.
+// Lets the tree unref the node.
+//
+// This is an optional method for models to implement.
+// To be more specific, models may ignore this call as it exists
+// primarily for performance reasons. For more information on what
+// this means, see gtk_tree_model_ref_node().
+//
+// Please note that nodes that are deleted are not unreffed.
+/*
+
+C function : gtk_tree_model_unref_node
+*/
 func (recv *TreeModel) UnrefNode(iter *TreeIter) {
 	c_iter := (*C.GtkTreeIter)(C.NULL)
 	if iter != nil {
@@ -2072,7 +2401,13 @@ func treesortable_sortColumnChangedHandler(_ *C.GObject, data C.gpointer) {
 
 // Unsupported : gtk_tree_sortable_get_sort_column_id : unsupported parameter order : GtkSortType* with indirection level of 1
 
-// HasDefaultSortFunc is a wrapper around the C function gtk_tree_sortable_has_default_sort_func.
+// Returns %TRUE if the model has a default sort function. This is used
+// primarily by GtkTreeViewColumns in order to determine if a model can
+// go back to the default state, or not.
+/*
+
+C function : gtk_tree_sortable_has_default_sort_func
+*/
 func (recv *TreeSortable) HasDefaultSortFunc() bool {
 	retC := C.gtk_tree_sortable_has_default_sort_func((*C.GtkTreeSortable)(recv.native))
 	retGo := retC == C.TRUE
@@ -2082,7 +2417,19 @@ func (recv *TreeSortable) HasDefaultSortFunc() bool {
 
 // Unsupported : gtk_tree_sortable_set_default_sort_func : unsupported parameter sort_func : no type generator for TreeIterCompareFunc (GtkTreeIterCompareFunc) for param sort_func
 
-// SetSortColumnId is a wrapper around the C function gtk_tree_sortable_set_sort_column_id.
+// Sets the current sort column to be @sort_column_id. The @sortable will
+// resort itself to reflect this change, after emitting a
+// #GtkTreeSortable::sort-column-changed signal. @sort_column_id may either be
+// a regular column id, or one of the following special values:
+//
+// - %GTK_TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID: the default sort function
+// will be used, if it is set
+//
+// - %GTK_TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID: no sorting will occur
+/*
+
+C function : gtk_tree_sortable_set_sort_column_id
+*/
 func (recv *TreeSortable) SetSortColumnId(sortColumnId int32, order SortType) {
 	c_sort_column_id := (C.gint)(sortColumnId)
 
@@ -2095,7 +2442,11 @@ func (recv *TreeSortable) SetSortColumnId(sortColumnId int32, order SortType) {
 
 // Unsupported : gtk_tree_sortable_set_sort_func : unsupported parameter sort_func : no type generator for TreeIterCompareFunc (GtkTreeIterCompareFunc) for param sort_func
 
-// SortColumnChanged is a wrapper around the C function gtk_tree_sortable_sort_column_changed.
+// Emits a #GtkTreeSortable::sort-column-changed signal on @sortable.
+/*
+
+C function : gtk_tree_sortable_sort_column_changed
+*/
 func (recv *TreeSortable) SortColumnChanged() {
 	C.gtk_tree_sortable_sort_column_changed((*C.GtkTreeSortable)(recv.native))
 

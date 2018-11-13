@@ -14,7 +14,11 @@ import "C"
 
 // Unsupported signal 'activate-link' for AboutDialog : unsupported parameter uri : type utf8 :
 
-// ComboBoxNewWithEntry is a wrapper around the C function gtk_combo_box_new_with_entry.
+// Creates a new empty #GtkComboBox with an entry.
+/*
+
+C function : gtk_combo_box_new_with_entry
+*/
 func ComboBoxNewWithEntry() *ComboBox {
 	retC := C.gtk_combo_box_new_with_entry()
 	retGo := ComboBoxNewFromC(unsafe.Pointer(retC))
@@ -22,7 +26,12 @@ func ComboBoxNewWithEntry() *ComboBox {
 	return retGo
 }
 
-// ComboBoxNewWithModelAndEntry is a wrapper around the C function gtk_combo_box_new_with_model_and_entry.
+// Creates a new empty #GtkComboBox with an entry
+// and with the model initialized to @model.
+/*
+
+C function : gtk_combo_box_new_with_model_and_entry
+*/
 func ComboBoxNewWithModelAndEntry(model *TreeModel) *ComboBox {
 	c_model := (*C.GtkTreeModel)(model.ToC())
 
@@ -32,7 +41,12 @@ func ComboBoxNewWithModelAndEntry(model *TreeModel) *ComboBox {
 	return retGo
 }
 
-// GetEntryTextColumn is a wrapper around the C function gtk_combo_box_get_entry_text_column.
+// Returns the column which @combo_box is using to get the strings
+// from to display in the internal entry.
+/*
+
+C function : gtk_combo_box_get_entry_text_column
+*/
 func (recv *ComboBox) GetEntryTextColumn() int32 {
 	retC := C.gtk_combo_box_get_entry_text_column((*C.GtkComboBox)(recv.native))
 	retGo := (int32)(retC)
@@ -40,7 +54,11 @@ func (recv *ComboBox) GetEntryTextColumn() int32 {
 	return retGo
 }
 
-// GetHasEntry is a wrapper around the C function gtk_combo_box_get_has_entry.
+// Returns whether the combo box has an entry.
+/*
+
+C function : gtk_combo_box_get_has_entry
+*/
 func (recv *ComboBox) GetHasEntry() bool {
 	retC := C.gtk_combo_box_get_has_entry((*C.GtkComboBox)(recv.native))
 	retGo := retC == C.TRUE
@@ -48,7 +66,16 @@ func (recv *ComboBox) GetHasEntry() bool {
 	return retGo
 }
 
-// SetEntryTextColumn is a wrapper around the C function gtk_combo_box_set_entry_text_column.
+// Sets the model column which @combo_box should use to get strings from
+// to be @text_column. The column @text_column in the model of @combo_box
+// must be of type %G_TYPE_STRING.
+//
+// This is only relevant if @combo_box has been created with
+// #GtkComboBox:has-entry as %TRUE.
+/*
+
+C function : gtk_combo_box_set_entry_text_column
+*/
 func (recv *ComboBox) SetEntryTextColumn(textColumn int32) {
 	c_text_column := (C.gint)(textColumn)
 
@@ -57,7 +84,12 @@ func (recv *ComboBox) SetEntryTextColumn(textColumn int32) {
 	return
 }
 
-// ComboBoxTextNew is a wrapper around the C function gtk_combo_box_text_new.
+// Creates a new #GtkComboBoxText, which is a #GtkComboBox just displaying
+// strings.
+/*
+
+C function : gtk_combo_box_text_new
+*/
 func ComboBoxTextNew() *ComboBoxText {
 	retC := C.gtk_combo_box_text_new()
 	retGo := ComboBoxTextNewFromC(unsafe.Pointer(retC))
@@ -65,7 +97,12 @@ func ComboBoxTextNew() *ComboBoxText {
 	return retGo
 }
 
-// ComboBoxTextNewWithEntry is a wrapper around the C function gtk_combo_box_text_new_with_entry.
+// Creates a new #GtkComboBoxText, which is a #GtkComboBox just displaying
+// strings. The combo box created by this function has an entry.
+/*
+
+C function : gtk_combo_box_text_new_with_entry
+*/
 func ComboBoxTextNewWithEntry() *ComboBoxText {
 	retC := C.gtk_combo_box_text_new_with_entry()
 	retGo := ComboBoxTextNewFromC(unsafe.Pointer(retC))
@@ -73,7 +110,15 @@ func ComboBoxTextNewWithEntry() *ComboBoxText {
 	return retGo
 }
 
-// Append is a wrapper around the C function gtk_combo_box_text_append.
+// Appends @text to the list of strings stored in @combo_box.
+// If @id is non-%NULL then it is used as the ID of the row.
+//
+// This is the same as calling gtk_combo_box_text_insert() with a
+// position of -1.
+/*
+
+C function : gtk_combo_box_text_append
+*/
 func (recv *ComboBoxText) Append(id string, text string) {
 	c_id := C.CString(id)
 	defer C.free(unsafe.Pointer(c_id))
@@ -86,7 +131,14 @@ func (recv *ComboBoxText) Append(id string, text string) {
 	return
 }
 
-// AppendText is a wrapper around the C function gtk_combo_box_text_append_text.
+// Appends @text to the list of strings stored in @combo_box.
+//
+// This is the same as calling gtk_combo_box_text_insert_text() with a
+// position of -1.
+/*
+
+C function : gtk_combo_box_text_append_text
+*/
 func (recv *ComboBoxText) AppendText(text string) {
 	c_text := C.CString(text)
 	defer C.free(unsafe.Pointer(c_text))
@@ -96,7 +148,14 @@ func (recv *ComboBoxText) AppendText(text string) {
 	return
 }
 
-// GetActiveText is a wrapper around the C function gtk_combo_box_text_get_active_text.
+// Returns the currently active string in @combo_box, or %NULL
+// if none is selected. If @combo_box contains an entry, this
+// function will return its contents (which will not necessarily
+// be an item from the list).
+/*
+
+C function : gtk_combo_box_text_get_active_text
+*/
 func (recv *ComboBoxText) GetActiveText() string {
 	retC := C.gtk_combo_box_text_get_active_text((*C.GtkComboBoxText)(recv.native))
 	retGo := C.GoString(retC)
@@ -105,7 +164,16 @@ func (recv *ComboBoxText) GetActiveText() string {
 	return retGo
 }
 
-// InsertText is a wrapper around the C function gtk_combo_box_text_insert_text.
+// Inserts @text at @position in the list of strings stored in @combo_box.
+//
+// If @position is negative then @text is appended.
+//
+// This is the same as calling gtk_combo_box_text_insert() with a %NULL
+// ID string.
+/*
+
+C function : gtk_combo_box_text_insert_text
+*/
 func (recv *ComboBoxText) InsertText(position int32, text string) {
 	c_position := (C.gint)(position)
 
@@ -117,7 +185,15 @@ func (recv *ComboBoxText) InsertText(position int32, text string) {
 	return
 }
 
-// Prepend is a wrapper around the C function gtk_combo_box_text_prepend.
+// Prepends @text to the list of strings stored in @combo_box.
+// If @id is non-%NULL then it is used as the ID of the row.
+//
+// This is the same as calling gtk_combo_box_text_insert() with a
+// position of 0.
+/*
+
+C function : gtk_combo_box_text_prepend
+*/
 func (recv *ComboBoxText) Prepend(id string, text string) {
 	c_id := C.CString(id)
 	defer C.free(unsafe.Pointer(c_id))
@@ -130,7 +206,14 @@ func (recv *ComboBoxText) Prepend(id string, text string) {
 	return
 }
 
-// PrependText is a wrapper around the C function gtk_combo_box_text_prepend_text.
+// Prepends @text to the list of strings stored in @combo_box.
+//
+// This is the same as calling gtk_combo_box_text_insert_text() with a
+// position of 0.
+/*
+
+C function : gtk_combo_box_text_prepend_text
+*/
 func (recv *ComboBoxText) PrependText(text string) {
 	c_text := C.CString(text)
 	defer C.free(unsafe.Pointer(c_text))
@@ -140,7 +223,11 @@ func (recv *ComboBoxText) PrependText(text string) {
 	return
 }
 
-// Remove is a wrapper around the C function gtk_combo_box_text_remove.
+// Removes the string at @position from @combo_box.
+/*
+
+C function : gtk_combo_box_text_remove
+*/
 func (recv *ComboBoxText) Remove(position int32) {
 	c_position := (C.gint)(position)
 
@@ -149,7 +236,11 @@ func (recv *ComboBoxText) Remove(position int32) {
 	return
 }
 
-// GetGroupName is a wrapper around the C function gtk_notebook_get_group_name.
+// Gets the current group name for @notebook.
+/*
+
+C function : gtk_notebook_get_group_name
+*/
 func (recv *Notebook) GetGroupName() string {
 	retC := C.gtk_notebook_get_group_name((*C.GtkNotebook)(recv.native))
 	retGo := C.GoString(retC)
@@ -157,7 +248,15 @@ func (recv *Notebook) GetGroupName() string {
 	return retGo
 }
 
-// SetGroupName is a wrapper around the C function gtk_notebook_set_group_name.
+// Sets a group name for @notebook.
+//
+// Notebooks with the same name will be able to exchange tabs
+// via drag and drop. A notebook with a %NULL group name will
+// not be able to exchange tabs with any other notebook.
+/*
+
+C function : gtk_notebook_set_group_name
+*/
 func (recv *Notebook) SetGroupName(groupName string) {
 	c_group_name := C.CString(groupName)
 	defer C.free(unsafe.Pointer(c_group_name))
@@ -167,7 +266,12 @@ func (recv *Notebook) SetGroupName(groupName string) {
 	return
 }
 
-// GetRoundDigits is a wrapper around the C function gtk_range_get_round_digits.
+// Gets the number of digits to round the value to when
+// it changes. See #GtkRange::change-value.
+/*
+
+C function : gtk_range_get_round_digits
+*/
 func (recv *Range) GetRoundDigits() int32 {
 	retC := C.gtk_range_get_round_digits((*C.GtkRange)(recv.native))
 	retGo := (int32)(retC)
@@ -175,7 +279,12 @@ func (recv *Range) GetRoundDigits() int32 {
 	return retGo
 }
 
-// SetRoundDigits is a wrapper around the C function gtk_range_set_round_digits.
+// Sets the number of digits to round the value to when
+// it changes. See #GtkRange::change-value.
+/*
+
+C function : gtk_range_set_round_digits
+*/
 func (recv *Range) SetRoundDigits(roundDigits int32) {
 	c_round_digits := (C.gint)(roundDigits)
 

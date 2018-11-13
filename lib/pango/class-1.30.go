@@ -8,7 +8,12 @@ package pango
 // #include <stdlib.h>
 import "C"
 
-// GetCharacterCount is a wrapper around the C function pango_layout_get_character_count.
+// Returns the number of Unicode characters in the
+// the text of @layout.
+/*
+
+C function : pango_layout_get_character_count
+*/
 func (recv *Layout) GetCharacterCount() int32 {
 	retC := C.pango_layout_get_character_count((*C.PangoLayout)(recv.native))
 	retGo := (int32)(retC)

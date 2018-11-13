@@ -66,7 +66,11 @@ import (
 */
 import "C"
 
-// GetBaselinePosition is a wrapper around the C function gtk_box_get_baseline_position.
+// Gets the value set by gtk_box_set_baseline_position().
+/*
+
+C function : gtk_box_get_baseline_position
+*/
 func (recv *Box) GetBaselinePosition() BaselinePosition {
 	retC := C.gtk_box_get_baseline_position((*C.GtkBox)(recv.native))
 	retGo := (BaselinePosition)(retC)
@@ -74,7 +78,16 @@ func (recv *Box) GetBaselinePosition() BaselinePosition {
 	return retGo
 }
 
-// SetBaselinePosition is a wrapper around the C function gtk_box_set_baseline_position.
+// Sets the baseline position of a box. This affects
+// only horizontal boxes with at least one baseline aligned
+// child. If there is more vertical space available than requested,
+// and the baseline is not allocated by the parent then
+// @position is used to allocate the baseline wrt the
+// extra space available.
+/*
+
+C function : gtk_box_set_baseline_position
+*/
 func (recv *Box) SetBaselinePosition(position BaselinePosition) {
 	c_position := (C.GtkBaselinePosition)(position)
 
@@ -83,7 +96,16 @@ func (recv *Box) SetBaselinePosition(position BaselinePosition) {
 	return
 }
 
-// BuilderNewFromFile is a wrapper around the C function gtk_builder_new_from_file.
+// Builds the [GtkBuilder UI definition][BUILDER-UI]
+// in the file @filename.
+//
+// If there is an error opening the file or parsing the description then
+// the program will be aborted.  You should only ever attempt to parse
+// user interface descriptions that are shipped as part of your program.
+/*
+
+C function : gtk_builder_new_from_file
+*/
 func BuilderNewFromFile(filename string) *Builder {
 	c_filename := C.CString(filename)
 	defer C.free(unsafe.Pointer(c_filename))
@@ -94,7 +116,15 @@ func BuilderNewFromFile(filename string) *Builder {
 	return retGo
 }
 
-// BuilderNewFromResource is a wrapper around the C function gtk_builder_new_from_resource.
+// Builds the [GtkBuilder UI definition][BUILDER-UI]
+// at @resource_path.
+//
+// If there is an error locating the resource or parsing the
+// description, then the program will be aborted.
+/*
+
+C function : gtk_builder_new_from_resource
+*/
 func BuilderNewFromResource(resourcePath string) *Builder {
 	c_resource_path := C.CString(resourcePath)
 	defer C.free(unsafe.Pointer(c_resource_path))
@@ -105,7 +135,19 @@ func BuilderNewFromResource(resourcePath string) *Builder {
 	return retGo
 }
 
-// BuilderNewFromString is a wrapper around the C function gtk_builder_new_from_string.
+// Builds the user interface described by @string (in the
+// [GtkBuilder UI definition][BUILDER-UI] format).
+//
+// If @string is %NULL-terminated, then @length should be -1.
+// If @length is not -1, then it is the length of @string.
+//
+// If there is an error parsing @string then the program will be
+// aborted. You should not attempt to parse user interface description
+// from untrusted sources.
+/*
+
+C function : gtk_builder_new_from_string
+*/
 func BuilderNewFromString(string string) *Builder {
 	c_string := C.CString(string)
 	defer C.free(unsafe.Pointer(c_string))
@@ -122,7 +164,18 @@ func BuilderNewFromString(string string) *Builder {
 
 // Unsupported : gtk_builder_add_callback_symbols : unsupported parameter first_callback_symbol : no type generator for GObject.Callback (GCallback) for param first_callback_symbol
 
-// GetApplication is a wrapper around the C function gtk_builder_get_application.
+// Gets the #GtkApplication associated with the builder.
+//
+// The #GtkApplication is used for creating action proxies as requested
+// from XML that the builder is loading.
+//
+// By default, the builder uses the default application: the one from
+// g_application_get_default(). If you want to use another application
+// for constructing proxies, use gtk_builder_set_application().
+/*
+
+C function : gtk_builder_get_application
+*/
 func (recv *Builder) GetApplication() *Application {
 	retC := C.gtk_builder_get_application((*C.GtkBuilder)(recv.native))
 	var retGo (*Application)
@@ -137,7 +190,14 @@ func (recv *Builder) GetApplication() *Application {
 
 // Unsupported : gtk_builder_lookup_callback_symbol : no return generator
 
-// SetApplication is a wrapper around the C function gtk_builder_set_application.
+// Sets the application associated with @builder.
+//
+// You only need this function if there is more than one #GApplication
+// in your process. @application cannot be %NULL.
+/*
+
+C function : gtk_builder_set_application
+*/
 func (recv *Builder) SetApplication(application *Application) {
 	c_application := (*C.GtkApplication)(C.NULL)
 	if application != nil {
@@ -149,7 +209,18 @@ func (recv *Builder) SetApplication(application *Application) {
 	return
 }
 
-// ButtonNewFromIconName is a wrapper around the C function gtk_button_new_from_icon_name.
+// Creates a new button containing an icon from the current icon theme.
+//
+// If the icon name isn’t known, a “broken image” icon will be
+// displayed instead. If the current icon theme is changed, the icon
+// will be updated appropriately.
+//
+// This function is a convenience wrapper around gtk_button_new() and
+// gtk_button_set_image().
+/*
+
+C function : gtk_button_new_from_icon_name
+*/
 func ButtonNewFromIconName(iconName string, size IconSize) *Button {
 	c_icon_name := C.CString(iconName)
 	defer C.free(unsafe.Pointer(c_icon_name))
@@ -162,7 +233,12 @@ func ButtonNewFromIconName(iconName string, size IconSize) *Button {
 	return retGo
 }
 
-// GetTabs is a wrapper around the C function gtk_entry_get_tabs.
+// Gets the tabstops that were set on the entry using gtk_entry_set_tabs(), if
+// any.
+/*
+
+C function : gtk_entry_get_tabs
+*/
 func (recv *Entry) GetTabs() *pango.TabArray {
 	retC := C.gtk_entry_get_tabs((*C.GtkEntry)(recv.native))
 	var retGo (*pango.TabArray)
@@ -175,7 +251,12 @@ func (recv *Entry) GetTabs() *pango.TabArray {
 	return retGo
 }
 
-// SetTabs is a wrapper around the C function gtk_entry_set_tabs.
+// Sets a #PangoTabArray; the tabstops in the array are applied to the entry
+// text.
+/*
+
+C function : gtk_entry_set_tabs
+*/
 func (recv *Entry) SetTabs(tabs *pango.TabArray) {
 	c_tabs := (*C.PangoTabArray)(C.NULL)
 	if tabs != nil {
@@ -187,7 +268,11 @@ func (recv *Entry) SetTabs(tabs *pango.TabArray) {
 	return
 }
 
-// GetBaselineRow is a wrapper around the C function gtk_grid_get_baseline_row.
+// Returns which row defines the global baseline of @grid.
+/*
+
+C function : gtk_grid_get_baseline_row
+*/
 func (recv *Grid) GetBaselineRow() int32 {
 	retC := C.gtk_grid_get_baseline_row((*C.GtkGrid)(recv.native))
 	retGo := (int32)(retC)
@@ -195,7 +280,13 @@ func (recv *Grid) GetBaselineRow() int32 {
 	return retGo
 }
 
-// GetRowBaselinePosition is a wrapper around the C function gtk_grid_get_row_baseline_position.
+// Returns the baseline position of @row as set
+// by gtk_grid_set_row_baseline_position() or the default value
+// %GTK_BASELINE_POSITION_CENTER.
+/*
+
+C function : gtk_grid_get_row_baseline_position
+*/
 func (recv *Grid) GetRowBaselinePosition(row int32) BaselinePosition {
 	c_row := (C.gint)(row)
 
@@ -205,7 +296,16 @@ func (recv *Grid) GetRowBaselinePosition(row int32) BaselinePosition {
 	return retGo
 }
 
-// RemoveColumn is a wrapper around the C function gtk_grid_remove_column.
+// Removes a column from the grid.
+//
+// Children that are placed in this column are removed,
+// spanning children that overlap this column have their
+// width reduced by one, and children after the column
+// are moved to the left.
+/*
+
+C function : gtk_grid_remove_column
+*/
 func (recv *Grid) RemoveColumn(position int32) {
 	c_position := (C.gint)(position)
 
@@ -214,7 +314,16 @@ func (recv *Grid) RemoveColumn(position int32) {
 	return
 }
 
-// RemoveRow is a wrapper around the C function gtk_grid_remove_row.
+// Removes a row from the grid.
+//
+// Children that are placed in this row are removed,
+// spanning children that overlap this row have their
+// height reduced by one, and children below the row
+// are moved up.
+/*
+
+C function : gtk_grid_remove_row
+*/
 func (recv *Grid) RemoveRow(position int32) {
 	c_position := (C.gint)(position)
 
@@ -223,7 +332,14 @@ func (recv *Grid) RemoveRow(position int32) {
 	return
 }
 
-// SetBaselineRow is a wrapper around the C function gtk_grid_set_baseline_row.
+// Sets which row defines the global baseline for the entire grid.
+// Each row in the grid can have its own local baseline, but only
+// one of those is global, meaning it will be the baseline in the
+// parent of the @grid.
+/*
+
+C function : gtk_grid_set_baseline_row
+*/
 func (recv *Grid) SetBaselineRow(row int32) {
 	c_row := (C.gint)(row)
 
@@ -232,7 +348,12 @@ func (recv *Grid) SetBaselineRow(row int32) {
 	return
 }
 
-// SetRowBaselinePosition is a wrapper around the C function gtk_grid_set_row_baseline_position.
+// Sets how the baseline should be positioned on @row of the
+// grid, in case that row is assigned more space than is requested.
+/*
+
+C function : gtk_grid_set_row_baseline_position
+*/
 func (recv *Grid) SetRowBaselinePosition(row int32, pos BaselinePosition) {
 	c_row := (C.gint)(row)
 
@@ -243,7 +364,11 @@ func (recv *Grid) SetRowBaselinePosition(row int32, pos BaselinePosition) {
 	return
 }
 
-// HeaderBarNew is a wrapper around the C function gtk_header_bar_new.
+// Creates a new #GtkHeaderBar widget.
+/*
+
+C function : gtk_header_bar_new
+*/
 func HeaderBarNew() *HeaderBar {
 	retC := C.gtk_header_bar_new()
 	retGo := HeaderBarNewFromC(unsafe.Pointer(retC))
@@ -251,7 +376,12 @@ func HeaderBarNew() *HeaderBar {
 	return retGo
 }
 
-// GetCustomTitle is a wrapper around the C function gtk_header_bar_get_custom_title.
+// Retrieves the custom title widget of the header. See
+// gtk_header_bar_set_custom_title().
+/*
+
+C function : gtk_header_bar_get_custom_title
+*/
 func (recv *HeaderBar) GetCustomTitle() *Widget {
 	retC := C.gtk_header_bar_get_custom_title((*C.GtkHeaderBar)(recv.native))
 	var retGo (*Widget)
@@ -264,7 +394,12 @@ func (recv *HeaderBar) GetCustomTitle() *Widget {
 	return retGo
 }
 
-// GetShowCloseButton is a wrapper around the C function gtk_header_bar_get_show_close_button.
+// Returns whether this header bar shows the standard window
+// decorations.
+/*
+
+C function : gtk_header_bar_get_show_close_button
+*/
 func (recv *HeaderBar) GetShowCloseButton() bool {
 	retC := C.gtk_header_bar_get_show_close_button((*C.GtkHeaderBar)(recv.native))
 	retGo := retC == C.TRUE
@@ -272,7 +407,11 @@ func (recv *HeaderBar) GetShowCloseButton() bool {
 	return retGo
 }
 
-// GetSubtitle is a wrapper around the C function gtk_header_bar_get_subtitle.
+// Retrieves the subtitle of the header. See gtk_header_bar_set_subtitle().
+/*
+
+C function : gtk_header_bar_get_subtitle
+*/
 func (recv *HeaderBar) GetSubtitle() string {
 	retC := C.gtk_header_bar_get_subtitle((*C.GtkHeaderBar)(recv.native))
 	retGo := C.GoString(retC)
@@ -280,7 +419,11 @@ func (recv *HeaderBar) GetSubtitle() string {
 	return retGo
 }
 
-// GetTitle is a wrapper around the C function gtk_header_bar_get_title.
+// Retrieves the title of the header. See gtk_header_bar_set_title().
+/*
+
+C function : gtk_header_bar_get_title
+*/
 func (recv *HeaderBar) GetTitle() string {
 	retC := C.gtk_header_bar_get_title((*C.GtkHeaderBar)(recv.native))
 	retGo := C.GoString(retC)
@@ -288,7 +431,12 @@ func (recv *HeaderBar) GetTitle() string {
 	return retGo
 }
 
-// PackEnd is a wrapper around the C function gtk_header_bar_pack_end.
+// Adds @child to @bar, packed with reference to the
+// end of the @bar.
+/*
+
+C function : gtk_header_bar_pack_end
+*/
 func (recv *HeaderBar) PackEnd(child *Widget) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -300,7 +448,12 @@ func (recv *HeaderBar) PackEnd(child *Widget) {
 	return
 }
 
-// PackStart is a wrapper around the C function gtk_header_bar_pack_start.
+// Adds @child to @bar, packed with reference to the
+// start of the @bar.
+/*
+
+C function : gtk_header_bar_pack_start
+*/
 func (recv *HeaderBar) PackStart(child *Widget) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -312,7 +465,20 @@ func (recv *HeaderBar) PackStart(child *Widget) {
 	return
 }
 
-// SetCustomTitle is a wrapper around the C function gtk_header_bar_set_custom_title.
+// Sets a custom title for the #GtkHeaderBar.
+//
+// The title should help a user identify the current view. This
+// supersedes any title set by gtk_header_bar_set_title() or
+// gtk_header_bar_set_subtitle(). To achieve the same style as
+// the builtin title and subtitle, use the “title” and “subtitle”
+// style classes.
+//
+// You should set the custom title to %NULL, for the header title
+// label to be visible again.
+/*
+
+C function : gtk_header_bar_set_custom_title
+*/
 func (recv *HeaderBar) SetCustomTitle(titleWidget *Widget) {
 	c_title_widget := (*C.GtkWidget)(C.NULL)
 	if titleWidget != nil {
@@ -324,7 +490,12 @@ func (recv *HeaderBar) SetCustomTitle(titleWidget *Widget) {
 	return
 }
 
-// SetShowCloseButton is a wrapper around the C function gtk_header_bar_set_show_close_button.
+// Sets whether this header bar shows the standard window decorations,
+// including close, maximize, and minimize.
+/*
+
+C function : gtk_header_bar_set_show_close_button
+*/
 func (recv *HeaderBar) SetShowCloseButton(setting bool) {
 	c_setting :=
 		boolToGboolean(setting)
@@ -334,7 +505,16 @@ func (recv *HeaderBar) SetShowCloseButton(setting bool) {
 	return
 }
 
-// SetSubtitle is a wrapper around the C function gtk_header_bar_set_subtitle.
+// Sets the subtitle of the #GtkHeaderBar. The title should give a user
+// an additional detail to help him identify the current view.
+//
+// Note that GtkHeaderBar by default reserves room for the subtitle,
+// even if none is currently set. If this is not desired, set the
+// #GtkHeaderBar:has-subtitle property to %FALSE.
+/*
+
+C function : gtk_header_bar_set_subtitle
+*/
 func (recv *HeaderBar) SetSubtitle(subtitle string) {
 	c_subtitle := C.CString(subtitle)
 	defer C.free(unsafe.Pointer(c_subtitle))
@@ -344,7 +524,13 @@ func (recv *HeaderBar) SetSubtitle(subtitle string) {
 	return
 }
 
-// SetTitle is a wrapper around the C function gtk_header_bar_set_title.
+// Sets the title of the #GtkHeaderBar. The title should help a user
+// identify the current view. A good title should not include the
+// application name.
+/*
+
+C function : gtk_header_bar_set_title
+*/
 func (recv *HeaderBar) SetTitle(title string) {
 	c_title := C.CString(title)
 	defer C.free(unsafe.Pointer(c_title))
@@ -354,7 +540,15 @@ func (recv *HeaderBar) SetTitle(title string) {
 	return
 }
 
-// GetBaseScale is a wrapper around the C function gtk_icon_info_get_base_scale.
+// Gets the base scale for the icon. The base scale is a scale
+// for the icon that was specified by the icon theme creator.
+// For instance an icon drawn for a high-dpi screen with window
+// scale 2 for a base size of 32 will be 64 pixels tall and have
+// a base scale of 2.
+/*
+
+C function : gtk_icon_info_get_base_scale
+*/
 func (recv *IconInfo) GetBaseScale() int32 {
 	retC := C.gtk_icon_info_get_base_scale((*C.GtkIconInfo)(recv.native))
 	retGo := (int32)(retC)
@@ -362,7 +556,21 @@ func (recv *IconInfo) GetBaseScale() int32 {
 	return retGo
 }
 
-// LoadSurface is a wrapper around the C function gtk_icon_info_load_surface.
+// Renders an icon previously looked up in an icon theme using
+// gtk_icon_theme_lookup_icon(); the size will be based on the size
+// passed to gtk_icon_theme_lookup_icon(). Note that the resulting
+// surface may not be exactly this size; an icon theme may have icons
+// that differ slightly from their nominal sizes, and in addition GTK+
+// will avoid scaling icons that it considers sufficiently close to the
+// requested size or for which the source image would have to be scaled
+// up too far. (This maintains sharpness.). This behaviour can be changed
+// by passing the %GTK_ICON_LOOKUP_FORCE_SIZE flag when obtaining
+// the #GtkIconInfo. If this flag has been specified, the pixbuf
+// returned by this function will be scaled to the exact size.
+/*
+
+C function : gtk_icon_info_load_surface
+*/
 func (recv *IconInfo) LoadSurface(forWindow *gdk.Window) (*cairo.Surface, error) {
 	c_for_window := (*C.GdkWindow)(C.NULL)
 	if forWindow != nil {
@@ -384,7 +592,23 @@ func (recv *IconInfo) LoadSurface(forWindow *gdk.Window) (*cairo.Surface, error)
 
 // Unsupported : gtk_icon_theme_choose_icon_for_scale : unsupported parameter icon_names :
 
-// LoadIconForScale is a wrapper around the C function gtk_icon_theme_load_icon_for_scale.
+// Looks up an icon in an icon theme for a particular window scale,
+// scales it to the given size and renders it into a pixbuf. This is a
+// convenience function; if more details about the icon are needed,
+// use gtk_icon_theme_lookup_icon() followed by
+// gtk_icon_info_load_icon().
+//
+// Note that you probably want to listen for icon theme changes and
+// update the icon. This is usually done by connecting to the
+// GtkWidget::style-set signal. If for some reason you do not want to
+// update the icon when the icon theme changes, you should consider
+// using gdk_pixbuf_copy() to make a private copy of the pixbuf
+// returned by this function. Otherwise GTK+ may need to keep the old
+// icon theme loaded, which would be a waste of memory.
+/*
+
+C function : gtk_icon_theme_load_icon_for_scale
+*/
 func (recv *IconTheme) LoadIconForScale(iconName string, size int32, scale int32, flags IconLookupFlags) (*gdkpixbuf.Pixbuf, error) {
 	c_icon_name := C.CString(iconName)
 	defer C.free(unsafe.Pointer(c_icon_name))
@@ -413,7 +637,19 @@ func (recv *IconTheme) LoadIconForScale(iconName string, size int32, scale int32
 	return retGo, goThrowableError
 }
 
-// LoadSurface is a wrapper around the C function gtk_icon_theme_load_surface.
+// Looks up an icon in an icon theme for a particular window scale,
+// scales it to the given size and renders it into a cairo surface. This is a
+// convenience function; if more details about the icon are needed,
+// use gtk_icon_theme_lookup_icon() followed by
+// gtk_icon_info_load_surface().
+//
+// Note that you probably want to listen for icon theme changes and
+// update the icon. This is usually done by connecting to the
+// GtkWidget::style-set signal.
+/*
+
+C function : gtk_icon_theme_load_surface
+*/
 func (recv *IconTheme) LoadSurface(iconName string, size int32, scale int32, forWindow *gdk.Window, flags IconLookupFlags) (*cairo.Surface, error) {
 	c_icon_name := C.CString(iconName)
 	defer C.free(unsafe.Pointer(c_icon_name))
@@ -447,7 +683,13 @@ func (recv *IconTheme) LoadSurface(iconName string, size int32, scale int32, for
 	return retGo, goThrowableError
 }
 
-// LookupByGiconForScale is a wrapper around the C function gtk_icon_theme_lookup_by_gicon_for_scale.
+// Looks up an icon and returns a #GtkIconInfo containing information
+// such as the filename of the icon. The icon can then be rendered into
+// a pixbuf using gtk_icon_info_load_icon().
+/*
+
+C function : gtk_icon_theme_lookup_by_gicon_for_scale
+*/
 func (recv *IconTheme) LookupByGiconForScale(icon *gio.Icon, size int32, scale int32, flags IconLookupFlags) *IconInfo {
 	c_icon := (*C.GIcon)(icon.ToC())
 
@@ -468,7 +710,15 @@ func (recv *IconTheme) LookupByGiconForScale(icon *gio.Icon, size int32, scale i
 	return retGo
 }
 
-// LookupIconForScale is a wrapper around the C function gtk_icon_theme_lookup_icon_for_scale.
+// Looks up a named icon for a particular window scale and returns a
+// #GtkIconInfo containing information such as the filename of the
+// icon. The icon can then be rendered into a pixbuf using
+// gtk_icon_info_load_icon(). (gtk_icon_theme_load_icon() combines
+// these two steps if all you need is the pixbuf.)
+/*
+
+C function : gtk_icon_theme_lookup_icon_for_scale
+*/
 func (recv *IconTheme) LookupIconForScale(iconName string, size int32, scale int32, flags IconLookupFlags) *IconInfo {
 	c_icon_name := C.CString(iconName)
 	defer C.free(unsafe.Pointer(c_icon_name))
@@ -490,7 +740,14 @@ func (recv *IconTheme) LookupIconForScale(iconName string, size int32, scale int
 	return retGo
 }
 
-// ImageNewFromSurface is a wrapper around the C function gtk_image_new_from_surface.
+// Creates a new #GtkImage displaying @surface.
+// The #GtkImage does not assume a reference to the
+// surface; you still need to unref it if you own references.
+// #GtkImage will add its own reference rather than adopting yours.
+/*
+
+C function : gtk_image_new_from_surface
+*/
 func ImageNewFromSurface(surface *cairo.Surface) *Image {
 	c_surface := (*C.cairo_surface_t)(C.NULL)
 	if surface != nil {
@@ -503,7 +760,11 @@ func ImageNewFromSurface(surface *cairo.Surface) *Image {
 	return retGo
 }
 
-// SetFromSurface is a wrapper around the C function gtk_image_set_from_surface.
+// See gtk_image_new_from_surface() for details.
+/*
+
+C function : gtk_image_set_from_surface
+*/
 func (recv *Image) SetFromSurface(surface *cairo.Surface) {
 	c_surface := (*C.cairo_surface_t)(C.NULL)
 	if surface != nil {
@@ -515,7 +776,11 @@ func (recv *Image) SetFromSurface(surface *cairo.Surface) {
 	return
 }
 
-// GetShowCloseButton is a wrapper around the C function gtk_info_bar_get_show_close_button.
+// Returns whether the widget will display a standard close button.
+/*
+
+C function : gtk_info_bar_get_show_close_button
+*/
 func (recv *InfoBar) GetShowCloseButton() bool {
 	retC := C.gtk_info_bar_get_show_close_button((*C.GtkInfoBar)(recv.native))
 	retGo := retC == C.TRUE
@@ -523,7 +788,12 @@ func (recv *InfoBar) GetShowCloseButton() bool {
 	return retGo
 }
 
-// SetShowCloseButton is a wrapper around the C function gtk_info_bar_set_show_close_button.
+// If true, a standard close button is shown. When clicked it emits
+// the response %GTK_RESPONSE_CLOSE.
+/*
+
+C function : gtk_info_bar_set_show_close_button
+*/
 func (recv *InfoBar) SetShowCloseButton(setting bool) {
 	c_setting :=
 		boolToGboolean(setting)
@@ -533,7 +803,12 @@ func (recv *InfoBar) SetShowCloseButton(setting bool) {
 	return
 }
 
-// GetLines is a wrapper around the C function gtk_label_get_lines.
+// Gets the number of lines to which an ellipsized, wrapping
+// label should be limited. See gtk_label_set_lines().
+/*
+
+C function : gtk_label_get_lines
+*/
 func (recv *Label) GetLines() int32 {
 	retC := C.gtk_label_get_lines((*C.GtkLabel)(recv.native))
 	retGo := (int32)(retC)
@@ -541,7 +816,14 @@ func (recv *Label) GetLines() int32 {
 	return retGo
 }
 
-// SetLines is a wrapper around the C function gtk_label_set_lines.
+// Sets the number of lines to which an ellipsized, wrapping label
+// should be limited. This has no effect if the label is not wrapping
+// or ellipsized. Set this to -1 if you don’t want to limit the
+// number of lines.
+/*
+
+C function : gtk_label_set_lines
+*/
 func (recv *Label) SetLines(lines int32) {
 	c_lines := (C.gint)(lines)
 
@@ -668,7 +950,11 @@ func listbox_rowSelectedHandler(_ *C.GObject, c_row *C.GtkListBoxRow, data C.gpo
 	callback(row)
 }
 
-// ListBoxNew is a wrapper around the C function gtk_list_box_new.
+// Creates a new #GtkListBox container.
+/*
+
+C function : gtk_list_box_new
+*/
 func ListBoxNew() *ListBox {
 	retC := C.gtk_list_box_new()
 	retGo := ListBoxNewFromC(unsafe.Pointer(retC))
@@ -676,7 +962,16 @@ func ListBoxNew() *ListBox {
 	return retGo
 }
 
-// DragHighlightRow is a wrapper around the C function gtk_list_box_drag_highlight_row.
+// This is a helper function for implementing DnD onto a #GtkListBox.
+// The passed in @row will be highlighted via gtk_drag_highlight(),
+// and any previously highlighted row will be unhighlighted.
+//
+// The row will also be unhighlighted when the widget gets
+// a drag leave event.
+/*
+
+C function : gtk_list_box_drag_highlight_row
+*/
 func (recv *ListBox) DragHighlightRow(row *ListBoxRow) {
 	c_row := (*C.GtkListBoxRow)(C.NULL)
 	if row != nil {
@@ -688,14 +983,23 @@ func (recv *ListBox) DragHighlightRow(row *ListBoxRow) {
 	return
 }
 
-// DragUnhighlightRow is a wrapper around the C function gtk_list_box_drag_unhighlight_row.
+// If a row has previously been highlighted via gtk_list_box_drag_highlight_row()
+// it will have the highlight removed.
+/*
+
+C function : gtk_list_box_drag_unhighlight_row
+*/
 func (recv *ListBox) DragUnhighlightRow() {
 	C.gtk_list_box_drag_unhighlight_row((*C.GtkListBox)(recv.native))
 
 	return
 }
 
-// GetActivateOnSingleClick is a wrapper around the C function gtk_list_box_get_activate_on_single_click.
+// Returns whether rows activate on single clicks.
+/*
+
+C function : gtk_list_box_get_activate_on_single_click
+*/
 func (recv *ListBox) GetActivateOnSingleClick() bool {
 	retC := C.gtk_list_box_get_activate_on_single_click((*C.GtkListBox)(recv.native))
 	retGo := retC == C.TRUE
@@ -703,7 +1007,12 @@ func (recv *ListBox) GetActivateOnSingleClick() bool {
 	return retGo
 }
 
-// GetAdjustment is a wrapper around the C function gtk_list_box_get_adjustment.
+// Gets the adjustment (if any) that the widget uses to
+// for vertical scrolling.
+/*
+
+C function : gtk_list_box_get_adjustment
+*/
 func (recv *ListBox) GetAdjustment() *Adjustment {
 	retC := C.gtk_list_box_get_adjustment((*C.GtkListBox)(recv.native))
 	retGo := AdjustmentNewFromC(unsafe.Pointer(retC))
@@ -711,7 +1020,13 @@ func (recv *ListBox) GetAdjustment() *Adjustment {
 	return retGo
 }
 
-// GetRowAtIndex is a wrapper around the C function gtk_list_box_get_row_at_index.
+// Gets the n-th child in the list (not counting headers).
+// If @_index is negative or larger than the number of items in the
+// list, %NULL is returned.
+/*
+
+C function : gtk_list_box_get_row_at_index
+*/
 func (recv *ListBox) GetRowAtIndex(index int32) *ListBoxRow {
 	c_index_ := (C.gint)(index)
 
@@ -726,7 +1041,11 @@ func (recv *ListBox) GetRowAtIndex(index int32) *ListBoxRow {
 	return retGo
 }
 
-// GetRowAtY is a wrapper around the C function gtk_list_box_get_row_at_y.
+// Gets the row at the @y position.
+/*
+
+C function : gtk_list_box_get_row_at_y
+*/
 func (recv *ListBox) GetRowAtY(y int32) *ListBoxRow {
 	c_y := (C.gint)(y)
 
@@ -741,7 +1060,15 @@ func (recv *ListBox) GetRowAtY(y int32) *ListBoxRow {
 	return retGo
 }
 
-// GetSelectedRow is a wrapper around the C function gtk_list_box_get_selected_row.
+// Gets the selected row.
+//
+// Note that the box may allow multiple selection, in which
+// case you should use gtk_list_box_selected_foreach() to
+// find all selected rows.
+/*
+
+C function : gtk_list_box_get_selected_row
+*/
 func (recv *ListBox) GetSelectedRow() *ListBoxRow {
 	retC := C.gtk_list_box_get_selected_row((*C.GtkListBox)(recv.native))
 	retGo := ListBoxRowNewFromC(unsafe.Pointer(retC))
@@ -749,7 +1076,11 @@ func (recv *ListBox) GetSelectedRow() *ListBoxRow {
 	return retGo
 }
 
-// GetSelectionMode is a wrapper around the C function gtk_list_box_get_selection_mode.
+// Gets the selection mode of the listbox.
+/*
+
+C function : gtk_list_box_get_selection_mode
+*/
 func (recv *ListBox) GetSelectionMode() SelectionMode {
 	retC := C.gtk_list_box_get_selection_mode((*C.GtkListBox)(recv.native))
 	retGo := (SelectionMode)(retC)
@@ -757,7 +1088,16 @@ func (recv *ListBox) GetSelectionMode() SelectionMode {
 	return retGo
 }
 
-// Insert is a wrapper around the C function gtk_list_box_insert.
+// Insert the @child into the @box at @position. If a sort function is
+// set, the widget will actually be inserted at the calculated position and
+// this function has the same effect of gtk_container_add().
+//
+// If @position is -1, or larger than the total number of items in the
+// @box, then the @child will be appended to the end.
+/*
+
+C function : gtk_list_box_insert
+*/
 func (recv *ListBox) Insert(child *Widget, position int32) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -771,28 +1111,54 @@ func (recv *ListBox) Insert(child *Widget, position int32) {
 	return
 }
 
-// InvalidateFilter is a wrapper around the C function gtk_list_box_invalidate_filter.
+// Update the filtering for all rows. Call this when result
+// of the filter function on the @box is changed due
+// to an external factor. For instance, this would be used
+// if the filter function just looked for a specific search
+// string and the entry with the search string has changed.
+/*
+
+C function : gtk_list_box_invalidate_filter
+*/
 func (recv *ListBox) InvalidateFilter() {
 	C.gtk_list_box_invalidate_filter((*C.GtkListBox)(recv.native))
 
 	return
 }
 
-// InvalidateHeaders is a wrapper around the C function gtk_list_box_invalidate_headers.
+// Update the separators for all rows. Call this when result
+// of the header function on the @box is changed due
+// to an external factor.
+/*
+
+C function : gtk_list_box_invalidate_headers
+*/
 func (recv *ListBox) InvalidateHeaders() {
 	C.gtk_list_box_invalidate_headers((*C.GtkListBox)(recv.native))
 
 	return
 }
 
-// InvalidateSort is a wrapper around the C function gtk_list_box_invalidate_sort.
+// Update the sorting for all rows. Call this when result
+// of the sort function on the @box is changed due
+// to an external factor.
+/*
+
+C function : gtk_list_box_invalidate_sort
+*/
 func (recv *ListBox) InvalidateSort() {
 	C.gtk_list_box_invalidate_sort((*C.GtkListBox)(recv.native))
 
 	return
 }
 
-// Prepend is a wrapper around the C function gtk_list_box_prepend.
+// Prepend a widget to the list. If a sort function is set, the widget will
+// actually be inserted at the calculated position and this function has the
+// same effect of gtk_container_add().
+/*
+
+C function : gtk_list_box_prepend
+*/
 func (recv *ListBox) Prepend(child *Widget) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -804,7 +1170,11 @@ func (recv *ListBox) Prepend(child *Widget) {
 	return
 }
 
-// SelectRow is a wrapper around the C function gtk_list_box_select_row.
+// Make @row the currently selected row.
+/*
+
+C function : gtk_list_box_select_row
+*/
 func (recv *ListBox) SelectRow(row *ListBoxRow) {
 	c_row := (*C.GtkListBoxRow)(C.NULL)
 	if row != nil {
@@ -816,7 +1186,12 @@ func (recv *ListBox) SelectRow(row *ListBoxRow) {
 	return
 }
 
-// SetActivateOnSingleClick is a wrapper around the C function gtk_list_box_set_activate_on_single_click.
+// If @single is %TRUE, rows will be activated when you click on them,
+// otherwise you need to double-click.
+/*
+
+C function : gtk_list_box_set_activate_on_single_click
+*/
 func (recv *ListBox) SetActivateOnSingleClick(single bool) {
 	c_single :=
 		boolToGboolean(single)
@@ -826,7 +1201,18 @@ func (recv *ListBox) SetActivateOnSingleClick(single bool) {
 	return
 }
 
-// SetAdjustment is a wrapper around the C function gtk_list_box_set_adjustment.
+// Sets the adjustment (if any) that the widget uses to
+// for vertical scrolling. For instance, this is used
+// to get the page size for PageUp/Down key handling.
+//
+// In the normal case when the @box is packed inside
+// a #GtkScrolledWindow the adjustment from that will
+// be picked up automatically, so there is no need
+// to manually do that.
+/*
+
+C function : gtk_list_box_set_adjustment
+*/
 func (recv *ListBox) SetAdjustment(adjustment *Adjustment) {
 	c_adjustment := (*C.GtkAdjustment)(C.NULL)
 	if adjustment != nil {
@@ -842,7 +1228,12 @@ func (recv *ListBox) SetAdjustment(adjustment *Adjustment) {
 
 // Unsupported : gtk_list_box_set_header_func : unsupported parameter update_header : no type generator for ListBoxUpdateHeaderFunc (GtkListBoxUpdateHeaderFunc) for param update_header
 
-// SetPlaceholder is a wrapper around the C function gtk_list_box_set_placeholder.
+// Sets the placeholder widget that is shown in the list when
+// it doesn't display any visible children.
+/*
+
+C function : gtk_list_box_set_placeholder
+*/
 func (recv *ListBox) SetPlaceholder(placeholder *Widget) {
 	c_placeholder := (*C.GtkWidget)(C.NULL)
 	if placeholder != nil {
@@ -854,7 +1245,12 @@ func (recv *ListBox) SetPlaceholder(placeholder *Widget) {
 	return
 }
 
-// SetSelectionMode is a wrapper around the C function gtk_list_box_set_selection_mode.
+// Sets how selection works in the listbox.
+// See #GtkSelectionMode for details.
+/*
+
+C function : gtk_list_box_set_selection_mode
+*/
 func (recv *ListBox) SetSelectionMode(mode SelectionMode) {
 	c_mode := (C.GtkSelectionMode)(mode)
 
@@ -922,7 +1318,11 @@ func listboxrow_activateHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// ListBoxRowNew is a wrapper around the C function gtk_list_box_row_new.
+// Creates a new #GtkListBoxRow, to be used as a child of a #GtkListBox.
+/*
+
+C function : gtk_list_box_row_new
+*/
 func ListBoxRowNew() *ListBoxRow {
 	retC := C.gtk_list_box_row_new()
 	retGo := ListBoxRowNewFromC(unsafe.Pointer(retC))
@@ -930,14 +1330,39 @@ func ListBoxRowNew() *ListBoxRow {
 	return retGo
 }
 
-// Changed is a wrapper around the C function gtk_list_box_row_changed.
+// Marks @row as changed, causing any state that depends on this
+// to be updated. This affects sorting, filtering and headers.
+//
+// Note that calls to this method must be in sync with the data
+// used for the row functions. For instance, if the list is
+// mirroring some external data set, and *two* rows changed in the
+// external data set then when you call gtk_list_box_row_changed()
+// on the first row the sort function must only read the new data
+// for the first of the two changed rows, otherwise the resorting
+// of the rows will be wrong.
+//
+// This generally means that if you don’t fully control the data
+// model you have to duplicate the data that affects the listbox
+// row functions into the row widgets themselves. Another alternative
+// is to call gtk_list_box_invalidate_sort() on any model change,
+// but that is more expensive.
+/*
+
+C function : gtk_list_box_row_changed
+*/
 func (recv *ListBoxRow) Changed() {
 	C.gtk_list_box_row_changed((*C.GtkListBoxRow)(recv.native))
 
 	return
 }
 
-// GetHeader is a wrapper around the C function gtk_list_box_row_get_header.
+// Returns the current header of the @row. This can be used
+// in a #GtkListBoxUpdateHeaderFunc to see if there is a header
+// set already, and if so to update the state of it.
+/*
+
+C function : gtk_list_box_row_get_header
+*/
 func (recv *ListBoxRow) GetHeader() *Widget {
 	retC := C.gtk_list_box_row_get_header((*C.GtkListBoxRow)(recv.native))
 	var retGo (*Widget)
@@ -950,7 +1375,11 @@ func (recv *ListBoxRow) GetHeader() *Widget {
 	return retGo
 }
 
-// GetIndex is a wrapper around the C function gtk_list_box_row_get_index.
+// Gets the current index of the @row in its #GtkListBox container.
+/*
+
+C function : gtk_list_box_row_get_index
+*/
 func (recv *ListBoxRow) GetIndex() int32 {
 	retC := C.gtk_list_box_row_get_index((*C.GtkListBoxRow)(recv.native))
 	retGo := (int32)(retC)
@@ -958,7 +1387,13 @@ func (recv *ListBoxRow) GetIndex() int32 {
 	return retGo
 }
 
-// SetHeader is a wrapper around the C function gtk_list_box_row_set_header.
+// Sets the current header of the @row. This is only allowed to be called
+// from a #GtkListBoxUpdateHeaderFunc. It will replace any existing
+// header in the row, and be shown in front of the row in the listbox.
+/*
+
+C function : gtk_list_box_row_set_header
+*/
 func (recv *ListBoxRow) SetHeader(header *Widget) {
 	c_header := (*C.GtkWidget)(C.NULL)
 	if header != nil {
@@ -1043,7 +1478,15 @@ func placessidebar_populatePopupHandler(_ *C.GObject, c_container *C.GtkWidget, 
 
 // Unsupported signal 'show-error-message' for PlacesSidebar : unsupported parameter primary : type utf8 :
 
-// PlacesSidebarNew is a wrapper around the C function gtk_places_sidebar_new.
+// Creates a new #GtkPlacesSidebar widget.
+//
+// The application should connect to at least the
+// #GtkPlacesSidebar::open-location signal to be notified
+// when the user makes a selection in the sidebar.
+/*
+
+C function : gtk_places_sidebar_new
+*/
 func PlacesSidebarNew() *PlacesSidebar {
 	retC := C.gtk_places_sidebar_new()
 	retGo := PlacesSidebarNewFromC(unsafe.Pointer(retC))
@@ -1051,7 +1494,20 @@ func PlacesSidebarNew() *PlacesSidebar {
 	return retGo
 }
 
-// AddShortcut is a wrapper around the C function gtk_places_sidebar_add_shortcut.
+// Applications may want to present some folders in the places sidebar if
+// they could be immediately useful to users.  For example, a drawing
+// program could add a “/usr/share/clipart” location when the sidebar is
+// being used in an “Insert Clipart” dialog box.
+//
+// This function adds the specified @location to a special place for immutable
+// shortcuts.  The shortcuts are application-specific; they are not shared
+// across applications, and they are not persistent.  If this function
+// is called multiple times with different locations, then they are added
+// to the sidebar’s list in the same order as the function is called.
+/*
+
+C function : gtk_places_sidebar_add_shortcut
+*/
 func (recv *PlacesSidebar) AddShortcut(location *gio.File) {
 	c_location := (*C.GFile)(location.ToC())
 
@@ -1060,7 +1516,19 @@ func (recv *PlacesSidebar) AddShortcut(location *gio.File) {
 	return
 }
 
-// GetLocation is a wrapper around the C function gtk_places_sidebar_get_location.
+// Gets the currently selected location in the @sidebar. This can be %NULL when
+// nothing is selected, for example, when gtk_places_sidebar_set_location() has
+// been called with a location that is not among the sidebar’s list of places to
+// show.
+//
+// You can use this function to get the selection in the @sidebar.  Also, if you
+// connect to the #GtkPlacesSidebar::populate-popup signal, you can use this
+// function to get the location that is being referred to during the callbacks
+// for your menu items.
+/*
+
+C function : gtk_places_sidebar_get_location
+*/
 func (recv *PlacesSidebar) GetLocation() *gio.File {
 	retC := C.gtk_places_sidebar_get_location((*C.GtkPlacesSidebar)(recv.native))
 	var retGo (*gio.File)
@@ -1073,7 +1541,13 @@ func (recv *PlacesSidebar) GetLocation() *gio.File {
 	return retGo
 }
 
-// GetNthBookmark is a wrapper around the C function gtk_places_sidebar_get_nth_bookmark.
+// This function queries the bookmarks added by the user to the places sidebar,
+// and returns one of them.  This function is used by #GtkFileChooser to implement
+// the “Alt-1”, “Alt-2”, etc. shortcuts, which activate the cooresponding bookmark.
+/*
+
+C function : gtk_places_sidebar_get_nth_bookmark
+*/
 func (recv *PlacesSidebar) GetNthBookmark(n int32) *gio.File {
 	c_n := (C.gint)(n)
 
@@ -1088,7 +1562,11 @@ func (recv *PlacesSidebar) GetNthBookmark(n int32) *gio.File {
 	return retGo
 }
 
-// GetOpenFlags is a wrapper around the C function gtk_places_sidebar_get_open_flags.
+// Gets the open flags.
+/*
+
+C function : gtk_places_sidebar_get_open_flags
+*/
 func (recv *PlacesSidebar) GetOpenFlags() PlacesOpenFlags {
 	retC := C.gtk_places_sidebar_get_open_flags((*C.GtkPlacesSidebar)(recv.native))
 	retGo := (PlacesOpenFlags)(retC)
@@ -1096,7 +1574,11 @@ func (recv *PlacesSidebar) GetOpenFlags() PlacesOpenFlags {
 	return retGo
 }
 
-// GetShowDesktop is a wrapper around the C function gtk_places_sidebar_get_show_desktop.
+// Returns the value previously set with gtk_places_sidebar_set_show_desktop()
+/*
+
+C function : gtk_places_sidebar_get_show_desktop
+*/
 func (recv *PlacesSidebar) GetShowDesktop() bool {
 	retC := C.gtk_places_sidebar_get_show_desktop((*C.GtkPlacesSidebar)(recv.native))
 	retGo := retC == C.TRUE
@@ -1104,7 +1586,11 @@ func (recv *PlacesSidebar) GetShowDesktop() bool {
 	return retGo
 }
 
-// ListShortcuts is a wrapper around the C function gtk_places_sidebar_list_shortcuts.
+// Gets the list of shortcuts.
+/*
+
+C function : gtk_places_sidebar_list_shortcuts
+*/
 func (recv *PlacesSidebar) ListShortcuts() *glib.SList {
 	retC := C.gtk_places_sidebar_list_shortcuts((*C.GtkPlacesSidebar)(recv.native))
 	retGo := glib.SListNewFromC(unsafe.Pointer(retC))
@@ -1112,7 +1598,13 @@ func (recv *PlacesSidebar) ListShortcuts() *glib.SList {
 	return retGo
 }
 
-// RemoveShortcut is a wrapper around the C function gtk_places_sidebar_remove_shortcut.
+// Removes an application-specific shortcut that has been previously been
+// inserted with gtk_places_sidebar_add_shortcut().  If the @location is not a
+// shortcut in the sidebar, then nothing is done.
+/*
+
+C function : gtk_places_sidebar_remove_shortcut
+*/
 func (recv *PlacesSidebar) RemoveShortcut(location *gio.File) {
 	c_location := (*C.GFile)(location.ToC())
 
@@ -1121,7 +1613,15 @@ func (recv *PlacesSidebar) RemoveShortcut(location *gio.File) {
 	return
 }
 
-// SetLocation is a wrapper around the C function gtk_places_sidebar_set_location.
+// Sets the location that is being shown in the widgets surrounding the
+// @sidebar, for example, in a folder view in a file manager.  In turn, the
+// @sidebar will highlight that location if it is being shown in the list of
+// places, or it will unhighlight everything if the @location is not among the
+// places in the list.
+/*
+
+C function : gtk_places_sidebar_set_location
+*/
 func (recv *PlacesSidebar) SetLocation(location *gio.File) {
 	c_location := (*C.GFile)(location.ToC())
 
@@ -1130,7 +1630,25 @@ func (recv *PlacesSidebar) SetLocation(location *gio.File) {
 	return
 }
 
-// SetOpenFlags is a wrapper around the C function gtk_places_sidebar_set_open_flags.
+// Sets the way in which the calling application can open new locations from
+// the places sidebar.  For example, some applications only open locations
+// “directly” into their main view, while others may support opening locations
+// in a new notebook tab or a new window.
+//
+// This function is used to tell the places @sidebar about the ways in which the
+// application can open new locations, so that the sidebar can display (or not)
+// the “Open in new tab” and “Open in new window” menu items as appropriate.
+//
+// When the #GtkPlacesSidebar::open-location signal is emitted, its flags
+// argument will be set to one of the @flags that was passed in
+// gtk_places_sidebar_set_open_flags().
+//
+// Passing 0 for @flags will cause #GTK_PLACES_OPEN_NORMAL to always be sent
+// to callbacks for the “open-location” signal.
+/*
+
+C function : gtk_places_sidebar_set_open_flags
+*/
 func (recv *PlacesSidebar) SetOpenFlags(flags PlacesOpenFlags) {
 	c_flags := (C.GtkPlacesOpenFlags)(flags)
 
@@ -1139,7 +1657,16 @@ func (recv *PlacesSidebar) SetOpenFlags(flags PlacesOpenFlags) {
 	return
 }
 
-// SetShowConnectToServer is a wrapper around the C function gtk_places_sidebar_set_show_connect_to_server.
+// Sets whether the @sidebar should show an item for connecting to a network server;
+// this is off by default. An application may want to turn this on if it implements
+// a way for the user to connect to network servers directly.
+//
+// If you enable this, you should connect to the
+// #GtkPlacesSidebar::show-connect-to-server signal.
+/*
+
+C function : gtk_places_sidebar_set_show_connect_to_server
+*/
 func (recv *PlacesSidebar) SetShowConnectToServer(showConnectToServer bool) {
 	c_show_connect_to_server :=
 		boolToGboolean(showConnectToServer)
@@ -1149,7 +1676,14 @@ func (recv *PlacesSidebar) SetShowConnectToServer(showConnectToServer bool) {
 	return
 }
 
-// SetShowDesktop is a wrapper around the C function gtk_places_sidebar_set_show_desktop.
+// Sets whether the @sidebar should show an item for the Desktop folder.
+// The default value for this option is determined by the desktop
+// environment and the user’s configuration, but this function can be
+// used to override it on a per-application basis.
+/*
+
+C function : gtk_places_sidebar_set_show_desktop
+*/
 func (recv *PlacesSidebar) SetShowDesktop(showDesktop bool) {
 	c_show_desktop :=
 		boolToGboolean(showDesktop)
@@ -1159,7 +1693,11 @@ func (recv *PlacesSidebar) SetShowDesktop(showDesktop bool) {
 	return
 }
 
-// RevealerNew is a wrapper around the C function gtk_revealer_new.
+// Creates a new #GtkRevealer.
+/*
+
+C function : gtk_revealer_new
+*/
 func RevealerNew() *Revealer {
 	retC := C.gtk_revealer_new()
 	retGo := RevealerNewFromC(unsafe.Pointer(retC))
@@ -1167,7 +1705,12 @@ func RevealerNew() *Revealer {
 	return retGo
 }
 
-// GetChildRevealed is a wrapper around the C function gtk_revealer_get_child_revealed.
+// Returns whether the child is fully revealed, in other words whether
+// the transition to the revealed state is completed.
+/*
+
+C function : gtk_revealer_get_child_revealed
+*/
 func (recv *Revealer) GetChildRevealed() bool {
 	retC := C.gtk_revealer_get_child_revealed((*C.GtkRevealer)(recv.native))
 	retGo := retC == C.TRUE
@@ -1175,7 +1718,17 @@ func (recv *Revealer) GetChildRevealed() bool {
 	return retGo
 }
 
-// GetRevealChild is a wrapper around the C function gtk_revealer_get_reveal_child.
+// Returns whether the child is currently
+// revealed. See gtk_revealer_set_reveal_child().
+//
+// This function returns %TRUE as soon as the transition
+// is to the revealed state is started. To learn whether
+// the child is fully revealed (ie the transition is completed),
+// use gtk_revealer_get_child_revealed().
+/*
+
+C function : gtk_revealer_get_reveal_child
+*/
 func (recv *Revealer) GetRevealChild() bool {
 	retC := C.gtk_revealer_get_reveal_child((*C.GtkRevealer)(recv.native))
 	retGo := retC == C.TRUE
@@ -1183,7 +1736,12 @@ func (recv *Revealer) GetRevealChild() bool {
 	return retGo
 }
 
-// GetTransitionDuration is a wrapper around the C function gtk_revealer_get_transition_duration.
+// Returns the amount of time (in milliseconds) that
+// transitions will take.
+/*
+
+C function : gtk_revealer_get_transition_duration
+*/
 func (recv *Revealer) GetTransitionDuration() uint32 {
 	retC := C.gtk_revealer_get_transition_duration((*C.GtkRevealer)(recv.native))
 	retGo := (uint32)(retC)
@@ -1191,7 +1749,12 @@ func (recv *Revealer) GetTransitionDuration() uint32 {
 	return retGo
 }
 
-// GetTransitionType is a wrapper around the C function gtk_revealer_get_transition_type.
+// Gets the type of animation that will be used
+// for transitions in @revealer.
+/*
+
+C function : gtk_revealer_get_transition_type
+*/
 func (recv *Revealer) GetTransitionType() RevealerTransitionType {
 	retC := C.gtk_revealer_get_transition_type((*C.GtkRevealer)(recv.native))
 	retGo := (RevealerTransitionType)(retC)
@@ -1199,7 +1762,14 @@ func (recv *Revealer) GetTransitionType() RevealerTransitionType {
 	return retGo
 }
 
-// SetRevealChild is a wrapper around the C function gtk_revealer_set_reveal_child.
+// Tells the #GtkRevealer to reveal or conceal its child.
+//
+// The transition will be animated with the current
+// transition type of @revealer.
+/*
+
+C function : gtk_revealer_set_reveal_child
+*/
 func (recv *Revealer) SetRevealChild(revealChild bool) {
 	c_reveal_child :=
 		boolToGboolean(revealChild)
@@ -1209,7 +1779,11 @@ func (recv *Revealer) SetRevealChild(revealChild bool) {
 	return
 }
 
-// SetTransitionDuration is a wrapper around the C function gtk_revealer_set_transition_duration.
+// Sets the duration that transitions will take.
+/*
+
+C function : gtk_revealer_set_transition_duration
+*/
 func (recv *Revealer) SetTransitionDuration(duration uint32) {
 	c_duration := (C.guint)(duration)
 
@@ -1218,7 +1792,13 @@ func (recv *Revealer) SetTransitionDuration(duration uint32) {
 	return
 }
 
-// SetTransitionType is a wrapper around the C function gtk_revealer_set_transition_type.
+// Sets the type of animation that will be used for
+// transitions in @revealer. Available types include
+// various kinds of fades and slides.
+/*
+
+C function : gtk_revealer_set_transition_type
+*/
 func (recv *Revealer) SetTransitionType(transition RevealerTransitionType) {
 	c_transition := (C.GtkRevealerTransitionType)(transition)
 
@@ -1227,7 +1807,13 @@ func (recv *Revealer) SetTransitionType(transition RevealerTransitionType) {
 	return
 }
 
-// SearchBarNew is a wrapper around the C function gtk_search_bar_new.
+// Creates a #GtkSearchBar. You will need to tell it about
+// which widget is going to be your text entry using
+// gtk_search_bar_connect_entry().
+/*
+
+C function : gtk_search_bar_new
+*/
 func SearchBarNew() *SearchBar {
 	retC := C.gtk_search_bar_new()
 	retGo := SearchBarNewFromC(unsafe.Pointer(retC))
@@ -1235,7 +1821,14 @@ func SearchBarNew() *SearchBar {
 	return retGo
 }
 
-// ConnectEntry is a wrapper around the C function gtk_search_bar_connect_entry.
+// Connects the #GtkEntry widget passed as the one to be used in
+// this search bar. The entry should be a descendant of the search bar.
+// This is only required if the entry isn’t the direct child of the
+// search bar (as in our main example).
+/*
+
+C function : gtk_search_bar_connect_entry
+*/
 func (recv *SearchBar) ConnectEntry(entry *Entry) {
 	c_entry := (*C.GtkEntry)(C.NULL)
 	if entry != nil {
@@ -1247,7 +1840,11 @@ func (recv *SearchBar) ConnectEntry(entry *Entry) {
 	return
 }
 
-// GetSearchMode is a wrapper around the C function gtk_search_bar_get_search_mode.
+// Returns whether the search mode is on or off.
+/*
+
+C function : gtk_search_bar_get_search_mode
+*/
 func (recv *SearchBar) GetSearchMode() bool {
 	retC := C.gtk_search_bar_get_search_mode((*C.GtkSearchBar)(recv.native))
 	retGo := retC == C.TRUE
@@ -1255,7 +1852,11 @@ func (recv *SearchBar) GetSearchMode() bool {
 	return retGo
 }
 
-// GetShowCloseButton is a wrapper around the C function gtk_search_bar_get_show_close_button.
+// Returns whether the close button is shown.
+/*
+
+C function : gtk_search_bar_get_show_close_button
+*/
 func (recv *SearchBar) GetShowCloseButton() bool {
 	retC := C.gtk_search_bar_get_show_close_button((*C.GtkSearchBar)(recv.native))
 	retGo := retC == C.TRUE
@@ -1265,7 +1866,11 @@ func (recv *SearchBar) GetShowCloseButton() bool {
 
 // Unsupported : gtk_search_bar_handle_event : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
 
-// SetSearchMode is a wrapper around the C function gtk_search_bar_set_search_mode.
+// Switches the search mode on or off.
+/*
+
+C function : gtk_search_bar_set_search_mode
+*/
 func (recv *SearchBar) SetSearchMode(searchMode bool) {
 	c_search_mode :=
 		boolToGboolean(searchMode)
@@ -1275,7 +1880,14 @@ func (recv *SearchBar) SetSearchMode(searchMode bool) {
 	return
 }
 
-// SetShowCloseButton is a wrapper around the C function gtk_search_bar_set_show_close_button.
+// Shows or hides the close button. Applications that
+// already have a “search” toggle button should not show a close
+// button in their search bar, as it duplicates the role of the
+// toggle button.
+/*
+
+C function : gtk_search_bar_set_show_close_button
+*/
 func (recv *SearchBar) SetShowCloseButton(visible bool) {
 	c_visible :=
 		boolToGboolean(visible)
@@ -1342,7 +1954,11 @@ func searchentry_searchChangedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// StackNew is a wrapper around the C function gtk_stack_new.
+// Creates a new #GtkStack container.
+/*
+
+C function : gtk_stack_new
+*/
 func StackNew() *Stack {
 	retC := C.gtk_stack_new()
 	retGo := StackNewFromC(unsafe.Pointer(retC))
@@ -1350,7 +1966,12 @@ func StackNew() *Stack {
 	return retGo
 }
 
-// AddNamed is a wrapper around the C function gtk_stack_add_named.
+// Adds a child to @stack.
+// The child is identified by the @name.
+/*
+
+C function : gtk_stack_add_named
+*/
 func (recv *Stack) AddNamed(child *Widget, name string) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -1365,7 +1986,14 @@ func (recv *Stack) AddNamed(child *Widget, name string) {
 	return
 }
 
-// AddTitled is a wrapper around the C function gtk_stack_add_titled.
+// Adds a child to @stack.
+// The child is identified by the @name. The @title
+// will be used by #GtkStackSwitcher to represent
+// @child in a tab bar, so it should be short.
+/*
+
+C function : gtk_stack_add_titled
+*/
 func (recv *Stack) AddTitled(child *Widget, name string, title string) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -1383,7 +2011,12 @@ func (recv *Stack) AddTitled(child *Widget, name string, title string) {
 	return
 }
 
-// GetHomogeneous is a wrapper around the C function gtk_stack_get_homogeneous.
+// Gets whether @stack is homogeneous.
+// See gtk_stack_set_homogeneous().
+/*
+
+C function : gtk_stack_get_homogeneous
+*/
 func (recv *Stack) GetHomogeneous() bool {
 	retC := C.gtk_stack_get_homogeneous((*C.GtkStack)(recv.native))
 	retGo := retC == C.TRUE
@@ -1391,7 +2024,12 @@ func (recv *Stack) GetHomogeneous() bool {
 	return retGo
 }
 
-// GetTransitionDuration is a wrapper around the C function gtk_stack_get_transition_duration.
+// Returns the amount of time (in milliseconds) that
+// transitions between pages in @stack will take.
+/*
+
+C function : gtk_stack_get_transition_duration
+*/
 func (recv *Stack) GetTransitionDuration() uint32 {
 	retC := C.gtk_stack_get_transition_duration((*C.GtkStack)(recv.native))
 	retGo := (uint32)(retC)
@@ -1399,7 +2037,12 @@ func (recv *Stack) GetTransitionDuration() uint32 {
 	return retGo
 }
 
-// GetTransitionType is a wrapper around the C function gtk_stack_get_transition_type.
+// Gets the type of animation that will be used
+// for transitions between pages in @stack.
+/*
+
+C function : gtk_stack_get_transition_type
+*/
 func (recv *Stack) GetTransitionType() StackTransitionType {
 	retC := C.gtk_stack_get_transition_type((*C.GtkStack)(recv.native))
 	retGo := (StackTransitionType)(retC)
@@ -1407,7 +2050,12 @@ func (recv *Stack) GetTransitionType() StackTransitionType {
 	return retGo
 }
 
-// GetVisibleChild is a wrapper around the C function gtk_stack_get_visible_child.
+// Gets the currently visible child of @stack, or %NULL if
+// there are no visible children.
+/*
+
+C function : gtk_stack_get_visible_child
+*/
 func (recv *Stack) GetVisibleChild() *Widget {
 	retC := C.gtk_stack_get_visible_child((*C.GtkStack)(recv.native))
 	var retGo (*Widget)
@@ -1420,7 +2068,12 @@ func (recv *Stack) GetVisibleChild() *Widget {
 	return retGo
 }
 
-// GetVisibleChildName is a wrapper around the C function gtk_stack_get_visible_child_name.
+// Returns the name of the currently visible child of @stack, or
+// %NULL if there is no visible child.
+/*
+
+C function : gtk_stack_get_visible_child_name
+*/
 func (recv *Stack) GetVisibleChildName() string {
 	retC := C.gtk_stack_get_visible_child_name((*C.GtkStack)(recv.native))
 	retGo := C.GoString(retC)
@@ -1428,7 +2081,18 @@ func (recv *Stack) GetVisibleChildName() string {
 	return retGo
 }
 
-// SetHomogeneous is a wrapper around the C function gtk_stack_set_homogeneous.
+// Sets the #GtkStack to be homogeneous or not. If it
+// is homogeneous, the #GtkStack will request the same
+// size for all its children. If it isn't, the stack
+// may change size when a different child becomes visible.
+//
+// Since 3.16, homogeneity can be controlled separately
+// for horizontal and vertical size, with the
+// #GtkStack:hhomogeneous and #GtkStack:vhomogeneous.
+/*
+
+C function : gtk_stack_set_homogeneous
+*/
 func (recv *Stack) SetHomogeneous(homogeneous bool) {
 	c_homogeneous :=
 		boolToGboolean(homogeneous)
@@ -1438,7 +2102,12 @@ func (recv *Stack) SetHomogeneous(homogeneous bool) {
 	return
 }
 
-// SetTransitionDuration is a wrapper around the C function gtk_stack_set_transition_duration.
+// Sets the duration that transitions between pages in @stack
+// will take.
+/*
+
+C function : gtk_stack_set_transition_duration
+*/
 func (recv *Stack) SetTransitionDuration(duration uint32) {
 	c_duration := (C.guint)(duration)
 
@@ -1447,7 +2116,17 @@ func (recv *Stack) SetTransitionDuration(duration uint32) {
 	return
 }
 
-// SetTransitionType is a wrapper around the C function gtk_stack_set_transition_type.
+// Sets the type of animation that will be used for
+// transitions between pages in @stack. Available
+// types include various kinds of fades and slides.
+//
+// The transition type can be changed without problems
+// at runtime, so it is possible to change the animation
+// based on the page that is about to become current.
+/*
+
+C function : gtk_stack_set_transition_type
+*/
 func (recv *Stack) SetTransitionType(transition StackTransitionType) {
 	c_transition := (C.GtkStackTransitionType)(transition)
 
@@ -1456,7 +2135,20 @@ func (recv *Stack) SetTransitionType(transition StackTransitionType) {
 	return
 }
 
-// SetVisibleChild is a wrapper around the C function gtk_stack_set_visible_child.
+// Makes @child the visible child of @stack.
+//
+// If @child is different from the currently
+// visible child, the transition between the
+// two will be animated with the current
+// transition type of @stack.
+//
+// Note that the @child widget has to be visible itself
+// (see gtk_widget_show()) in order to become the visible
+// child of @stack.
+/*
+
+C function : gtk_stack_set_visible_child
+*/
 func (recv *Stack) SetVisibleChild(child *Widget) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -1468,7 +2160,15 @@ func (recv *Stack) SetVisibleChild(child *Widget) {
 	return
 }
 
-// SetVisibleChildFull is a wrapper around the C function gtk_stack_set_visible_child_full.
+// Makes the child with the given name visible.
+//
+// Note that the child widget has to be visible itself
+// (see gtk_widget_show()) in order to become the visible
+// child of @stack.
+/*
+
+C function : gtk_stack_set_visible_child_full
+*/
 func (recv *Stack) SetVisibleChildFull(name string, transition StackTransitionType) {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -1480,7 +2180,20 @@ func (recv *Stack) SetVisibleChildFull(name string, transition StackTransitionTy
 	return
 }
 
-// SetVisibleChildName is a wrapper around the C function gtk_stack_set_visible_child_name.
+// Makes the child with the given name visible.
+//
+// If @child is different from the currently
+// visible child, the transition between the
+// two will be animated with the current
+// transition type of @stack.
+//
+// Note that the child widget has to be visible itself
+// (see gtk_widget_show()) in order to become the visible
+// child of @stack.
+/*
+
+C function : gtk_stack_set_visible_child_name
+*/
 func (recv *Stack) SetVisibleChildName(name string) {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -1490,7 +2203,11 @@ func (recv *Stack) SetVisibleChildName(name string) {
 	return
 }
 
-// StackSwitcherNew is a wrapper around the C function gtk_stack_switcher_new.
+// Create a new #GtkStackSwitcher.
+/*
+
+C function : gtk_stack_switcher_new
+*/
 func StackSwitcherNew() *StackSwitcher {
 	retC := C.gtk_stack_switcher_new()
 	retGo := StackSwitcherNewFromC(unsafe.Pointer(retC))
@@ -1498,7 +2215,12 @@ func StackSwitcherNew() *StackSwitcher {
 	return retGo
 }
 
-// GetStack is a wrapper around the C function gtk_stack_switcher_get_stack.
+// Retrieves the stack.
+// See gtk_stack_switcher_set_stack().
+/*
+
+C function : gtk_stack_switcher_get_stack
+*/
 func (recv *StackSwitcher) GetStack() *Stack {
 	retC := C.gtk_stack_switcher_get_stack((*C.GtkStackSwitcher)(recv.native))
 	var retGo (*Stack)
@@ -1511,7 +2233,11 @@ func (recv *StackSwitcher) GetStack() *Stack {
 	return retGo
 }
 
-// SetStack is a wrapper around the C function gtk_stack_switcher_set_stack.
+// Sets the stack to control.
+/*
+
+C function : gtk_stack_switcher_set_stack
+*/
 func (recv *StackSwitcher) SetStack(stack *Stack) {
 	c_stack := (*C.GtkStack)(C.NULL)
 	if stack != nil {
@@ -1523,7 +2249,11 @@ func (recv *StackSwitcher) SetStack(stack *Stack) {
 	return
 }
 
-// GetScale is a wrapper around the C function gtk_style_context_get_scale.
+// Returns the scale used for assets.
+/*
+
+C function : gtk_style_context_get_scale
+*/
 func (recv *StyleContext) GetScale() int32 {
 	retC := C.gtk_style_context_get_scale((*C.GtkStyleContext)(recv.native))
 	retGo := (int32)(retC)
@@ -1531,7 +2261,11 @@ func (recv *StyleContext) GetScale() int32 {
 	return retGo
 }
 
-// SetScale is a wrapper around the C function gtk_style_context_set_scale.
+// Sets the scale to use when getting image assets for the style.
+/*
+
+C function : gtk_style_context_set_scale
+*/
 func (recv *StyleContext) SetScale(scale int32) {
 	c_scale := (C.gint)(scale)
 
@@ -1542,7 +2276,14 @@ func (recv *StyleContext) SetScale(scale int32) {
 
 // Unsupported : gtk_drag_begin_with_coordinates : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
 
-// GetAllocatedBaseline is a wrapper around the C function gtk_widget_get_allocated_baseline.
+// Returns the baseline that has currently been allocated to @widget.
+// This function is intended to be used when implementing handlers
+// for the #GtkWidget::draw function, and when allocating child
+// widgets in #GtkWidget::size_allocate.
+/*
+
+C function : gtk_widget_get_allocated_baseline
+*/
 func (recv *Widget) GetAllocatedBaseline() int32 {
 	retC := C.gtk_widget_get_allocated_baseline((*C.GtkWidget)(recv.native))
 	retGo := (int32)(retC)
@@ -1550,7 +2291,19 @@ func (recv *Widget) GetAllocatedBaseline() int32 {
 	return retGo
 }
 
-// GetPreferredHeightAndBaselineForWidth is a wrapper around the C function gtk_widget_get_preferred_height_and_baseline_for_width.
+// Retrieves a widget’s minimum and natural height and the corresponding baselines if it would be given
+// the specified @width, or the default height if @width is -1. The baselines may be -1 which means
+// that no baseline is requested for this widget.
+//
+// The returned request will be modified by the
+// GtkWidgetClass::adjust_size_request and GtkWidgetClass::adjust_baseline_request virtual methods
+// and by any #GtkSizeGroups that have been applied. That is, the returned request
+// is the one that should be used for layout, not necessarily the one
+// returned by the widget itself.
+/*
+
+C function : gtk_widget_get_preferred_height_and_baseline_for_width
+*/
 func (recv *Widget) GetPreferredHeightAndBaselineForWidth(width int32) (int32, int32, int32, int32) {
 	c_width := (C.gint)(width)
 
@@ -1575,7 +2328,15 @@ func (recv *Widget) GetPreferredHeightAndBaselineForWidth(width int32) (int32, i
 	return minimumHeight, naturalHeight, minimumBaseline, naturalBaseline
 }
 
-// GetScaleFactor is a wrapper around the C function gtk_widget_get_scale_factor.
+// Retrieves the internal scale factor that maps from window coordinates
+// to the actual device pixels. On traditional systems this is 1, on
+// high density outputs, it can be a higher value (typically 2).
+//
+// See gdk_window_get_scale_factor().
+/*
+
+C function : gtk_widget_get_scale_factor
+*/
 func (recv *Widget) GetScaleFactor() int32 {
 	retC := C.gtk_widget_get_scale_factor((*C.GtkWidget)(recv.native))
 	retGo := (int32)(retC)
@@ -1583,7 +2344,12 @@ func (recv *Widget) GetScaleFactor() int32 {
 	return retGo
 }
 
-// GetValignWithBaseline is a wrapper around the C function gtk_widget_get_valign_with_baseline.
+// Gets the value of the #GtkWidget:valign property, including
+// %GTK_ALIGN_BASELINE.
+/*
+
+C function : gtk_widget_get_valign_with_baseline
+*/
 func (recv *Widget) GetValignWithBaseline() Align {
 	retC := C.gtk_widget_get_valign_with_baseline((*C.GtkWidget)(recv.native))
 	retGo := (Align)(retC)
@@ -1591,7 +2357,26 @@ func (recv *Widget) GetValignWithBaseline() Align {
 	return retGo
 }
 
-// InitTemplate is a wrapper around the C function gtk_widget_init_template.
+// Creates and initializes child widgets defined in templates. This
+// function must be called in the instance initializer for any
+// class which assigned itself a template using gtk_widget_class_set_template()
+//
+// It is important to call this function in the instance initializer
+// of a #GtkWidget subclass and not in #GObject.constructed() or
+// #GObject.constructor() for two reasons.
+//
+// One reason is that generally derived widgets will assume that parent
+// class composite widgets have been created in their instance
+// initializers.
+//
+// Another reason is that when calling g_object_new() on a widget with
+// composite templates, it’s important to build the composite widgets
+// before the construct properties are set. Properties passed to g_object_new()
+// should take precedence over properties set in the private template XML.
+/*
+
+C function : gtk_widget_init_template
+*/
 func (recv *Widget) InitTemplate() {
 	C.gtk_widget_init_template((*C.GtkWidget)(recv.native))
 
@@ -1600,14 +2385,35 @@ func (recv *Widget) InitTemplate() {
 
 // Unsupported : gtk_widget_size_allocate_with_baseline : unsupported parameter allocation : Blacklisted record : GdkRectangle
 
-// Close is a wrapper around the C function gtk_window_close.
+// Requests that the window is closed, similar to what happens
+// when a window manager close button is clicked.
+//
+// This function can be used with close buttons in custom
+// titlebars.
+/*
+
+C function : gtk_window_close
+*/
 func (recv *Window) Close() {
 	C.gtk_window_close((*C.GtkWindow)(recv.native))
 
 	return
 }
 
-// SetTitlebar is a wrapper around the C function gtk_window_set_titlebar.
+// Sets a custom titlebar for @window.
+//
+// A typical widget used here is #GtkHeaderBar, as it provides various features
+// expected of a titlebar while allowing the addition of child widgets to it.
+//
+// If you set a custom titlebar, GTK+ will do its best to convince
+// the window manager not to put its own titlebar on the window.
+// Depending on the system, this function may not work for a window
+// that is already visible, so you set the titlebar before calling
+// gtk_widget_show().
+/*
+
+C function : gtk_window_set_titlebar
+*/
 func (recv *Window) SetTitlebar(titlebar *Widget) {
 	c_titlebar := (*C.GtkWidget)(C.NULL)
 	if titlebar != nil {

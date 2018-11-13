@@ -12,7 +12,15 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// ComputeHmacForBytes is a wrapper around the C function g_compute_hmac_for_bytes.
+// Computes the HMAC for a binary @data. This is a
+// convenience wrapper for g_hmac_new(), g_hmac_get_string()
+// and g_hmac_unref().
+//
+// The hexadecimal string returned will be in lower case.
+/*
+
+C function : g_compute_hmac_for_bytes
+*/
 func ComputeHmacForBytes(digestType ChecksumType, key *Bytes, data *Bytes) string {
 	c_digest_type := (C.GChecksumType)(digestType)
 
@@ -45,7 +53,19 @@ func ComputeHmacForBytes(digestType ChecksumType, key *Bytes, data *Bytes) strin
 
 // Unsupported : g_log_writer_format_fields : unsupported parameter fields :
 
-// LogWriterIsJournald is a wrapper around the C function g_log_writer_is_journald.
+// Check whether the given @output_fd file descriptor is a connection to the
+// systemd journal, or something else (like a log file or `stdout` or
+// `stderr`).
+//
+// Invalid file descriptors are accepted and return %FALSE, which allows for
+// the following construct without needing any additional error handling:
+// |[<!-- language="C" -->
+// is_journald = g_log_writer_is_journald (fileno (stderr));
+// ]|
+/*
+
+C function : g_log_writer_is_journald
+*/
 func LogWriterIsJournald(outputFd int32) bool {
 	c_output_fd := (C.gint)(outputFd)
 
@@ -59,7 +79,13 @@ func LogWriterIsJournald(outputFd int32) bool {
 
 // Unsupported : g_log_writer_standard_streams : unsupported parameter fields :
 
-// LogWriterSupportsColor is a wrapper around the C function g_log_writer_supports_color.
+// Check whether the given @output_fd file descriptor supports ANSI color
+// escape sequences. If so, they can safely be used when formatting log
+// messages.
+/*
+
+C function : g_log_writer_supports_color
+*/
 func LogWriterSupportsColor(outputFd int32) bool {
 	c_output_fd := (C.gint)(outputFd)
 

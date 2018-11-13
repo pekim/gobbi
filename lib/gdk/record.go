@@ -50,7 +50,13 @@ func (recv *Color) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Copy is a wrapper around the C function gdk_color_copy.
+// Makes a copy of a #GdkColor.
+//
+// The result must be freed using gdk_color_free().
+/*
+
+C function : gdk_color_copy
+*/
 func (recv *Color) Copy() *Color {
 	retC := C.gdk_color_copy((*C.GdkColor)(recv.native))
 	retGo := ColorNewFromC(unsafe.Pointer(retC))
@@ -58,7 +64,11 @@ func (recv *Color) Copy() *Color {
 	return retGo
 }
 
-// Equal is a wrapper around the C function gdk_color_equal.
+// Compares two colors.
+/*
+
+C function : gdk_color_equal
+*/
 func (recv *Color) Equal(colorb *Color) bool {
 	c_colorb := (*C.GdkColor)(C.NULL)
 	if colorb != nil {
@@ -71,14 +81,23 @@ func (recv *Color) Equal(colorb *Color) bool {
 	return retGo
 }
 
-// Free is a wrapper around the C function gdk_color_free.
+// Frees a #GdkColor created with gdk_color_copy().
+/*
+
+C function : gdk_color_free
+*/
 func (recv *Color) Free() {
 	C.gdk_color_free((*C.GdkColor)(recv.native))
 
 	return
 }
 
-// Hash is a wrapper around the C function gdk_color_hash.
+// A hash function suitable for using for a hash
+// table that stores #GdkColors.
+/*
+
+C function : gdk_color_hash
+*/
 func (recv *Color) Hash() uint32 {
 	retC := C.gdk_color_hash((*C.GdkColor)(recv.native))
 	retGo := (uint32)(retC)
@@ -1142,7 +1161,13 @@ func (recv *FrameTimings) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// GetFrameTime is a wrapper around the C function gdk_frame_timings_get_frame_time.
+// Returns the frame time for the frame. This is the time value
+// that is typically used to time animations for the frame. See
+// gdk_frame_clock_get_frame_time().
+/*
+
+C function : gdk_frame_timings_get_frame_time
+*/
 func (recv *FrameTimings) GetFrameTime() int64 {
 	retC := C.gdk_frame_timings_get_frame_time((*C.GdkFrameTimings)(recv.native))
 	retGo := (int64)(retC)

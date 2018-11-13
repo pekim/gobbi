@@ -14,7 +14,20 @@ import "C"
 
 // Unsupported : g_get_locale_variants : no return type
 
-// GetMonotonicTime is a wrapper around the C function g_get_monotonic_time.
+// Queries the system monotonic time.
+//
+// The monotonic clock will always increase and doesn't suffer
+// discontinuities when the user (or NTP) changes the system time.  It
+// may or may not continue to tick during times where the machine is
+// suspended.
+//
+// We try to use the clock that corresponds as closely as possible to
+// the passage of time as measured by system calls such as poll() but it
+// may not always be possible to do this.
+/*
+
+C function : g_get_monotonic_time
+*/
 func GetMonotonicTime() int64 {
 	retC := C.g_get_monotonic_time()
 	retGo := (int64)(retC)
@@ -22,7 +35,19 @@ func GetMonotonicTime() int64 {
 	return retGo
 }
 
-// GetRealTime is a wrapper around the C function g_get_real_time.
+// Queries the system wall-clock time.
+//
+// This call is functionally equivalent to g_get_current_time() except
+// that the return value is often more convenient than dealing with a
+// #GTimeVal.
+//
+// You should only use this call if you are actually interested in the real
+// wall-clock time.  g_get_monotonic_time() is probably more useful for
+// measuring intervals.
+/*
+
+C function : g_get_real_time
+*/
 func GetRealTime() int64 {
 	retC := C.g_get_real_time()
 	retGo := (int64)(retC)
@@ -30,7 +55,20 @@ func GetRealTime() int64 {
 	return retGo
 }
 
-// GetUserRuntimeDir is a wrapper around the C function g_get_user_runtime_dir.
+// Returns a directory that is unique to the current user on the local
+// system.
+//
+// This is determined using the mechanisms described
+// in the
+// [XDG Base Directory Specification](http://www.freedesktop.org/Standards/basedir-spec).
+// This is the directory
+// specified in the `XDG_RUNTIME_DIR` environment variable.
+// In the case that this variable is not set, we return the value of
+// g_get_user_cache_dir(), after verifying that it exists.
+/*
+
+C function : g_get_user_runtime_dir
+*/
 func GetUserRuntimeDir() string {
 	retC := C.g_get_user_runtime_dir()
 	retGo := C.GoString(retC)

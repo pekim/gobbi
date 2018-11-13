@@ -10,7 +10,10 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
-// GetRevealed is a wrapper around the C function gtk_info_bar_get_revealed.
+/*
+
+C function : gtk_info_bar_get_revealed
+*/
 func (recv *InfoBar) GetRevealed() bool {
 	retC := C.gtk_info_bar_get_revealed((*C.GtkInfoBar)(recv.native))
 	retGo := retC == C.TRUE
@@ -18,7 +21,15 @@ func (recv *InfoBar) GetRevealed() bool {
 	return retGo
 }
 
-// SetRevealed is a wrapper around the C function gtk_info_bar_set_revealed.
+// Sets the GtkInfoBar:revealed property to @revealed. This will cause
+// @info_bar to show up with a slide-in transition.
+//
+// Note that this property does not automatically show @info_bar and thus won’t
+// have any effect if it is invisible.
+/*
+
+C function : gtk_info_bar_set_revealed
+*/
 func (recv *InfoBar) SetRevealed(revealed bool) {
 	c_revealed :=
 		boolToGboolean(revealed)

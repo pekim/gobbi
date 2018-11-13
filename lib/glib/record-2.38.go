@@ -10,7 +10,13 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// GetMaxLookbehind is a wrapper around the C function g_regex_get_max_lookbehind.
+// Gets the number of characters in the longest lookbehind assertion in the
+// pattern. This information is useful when doing multi-segment matching using
+// the partial matching facilities.
+/*
+
+C function : g_regex_get_max_lookbehind
+*/
 func (recv *Regex) GetMaxLookbehind() int32 {
 	retC := C.g_regex_get_max_lookbehind((*C.GRegex)(recv.native))
 	retGo := (int32)(retC)

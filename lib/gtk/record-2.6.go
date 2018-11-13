@@ -15,7 +15,11 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// GetPixbuf is a wrapper around the C function gtk_selection_data_get_pixbuf.
+// Gets the contents of the selection data as a #GdkPixbuf.
+/*
+
+C function : gtk_selection_data_get_pixbuf
+*/
 func (recv *SelectionData) GetPixbuf() *gdkpixbuf.Pixbuf {
 	retC := C.gtk_selection_data_get_pixbuf((*C.GtkSelectionData)(recv.native))
 	var retGo (*gdkpixbuf.Pixbuf)
@@ -30,7 +34,13 @@ func (recv *SelectionData) GetPixbuf() *gdkpixbuf.Pixbuf {
 
 // Unsupported : gtk_selection_data_get_uris : no return type
 
-// SetPixbuf is a wrapper around the C function gtk_selection_data_set_pixbuf.
+// Sets the contents of the selection from a #GdkPixbuf
+// The pixbuf is converted to the form determined by
+// @selection_data->target.
+/*
+
+C function : gtk_selection_data_set_pixbuf
+*/
 func (recv *SelectionData) SetPixbuf(pixbuf *gdkpixbuf.Pixbuf) bool {
 	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
 	if pixbuf != nil {
@@ -45,7 +55,13 @@ func (recv *SelectionData) SetPixbuf(pixbuf *gdkpixbuf.Pixbuf) bool {
 
 // Unsupported : gtk_selection_data_set_uris : unsupported parameter uris :
 
-// TargetsIncludeImage is a wrapper around the C function gtk_selection_data_targets_include_image.
+// Given a #GtkSelectionData object holding a list of targets,
+// determines if any of the targets in @targets can be used to
+// provide a #GdkPixbuf.
+/*
+
+C function : gtk_selection_data_targets_include_image
+*/
 func (recv *SelectionData) TargetsIncludeImage(writable bool) bool {
 	c_writable :=
 		boolToGboolean(writable)
@@ -56,7 +72,12 @@ func (recv *SelectionData) TargetsIncludeImage(writable bool) bool {
 	return retGo
 }
 
-// AddImageTargets is a wrapper around the C function gtk_target_list_add_image_targets.
+// Appends the image targets supported by #GtkSelectionData to
+// the target list. All targets are added with the same @info.
+/*
+
+C function : gtk_target_list_add_image_targets
+*/
 func (recv *TargetList) AddImageTargets(info uint32, writable bool) {
 	c_info := (C.guint)(info)
 
@@ -68,7 +89,12 @@ func (recv *TargetList) AddImageTargets(info uint32, writable bool) {
 	return
 }
 
-// AddTextTargets is a wrapper around the C function gtk_target_list_add_text_targets.
+// Appends the text targets supported by #GtkSelectionData to
+// the target list. All targets are added with the same @info.
+/*
+
+C function : gtk_target_list_add_text_targets
+*/
 func (recv *TargetList) AddTextTargets(info uint32) {
 	c_info := (C.guint)(info)
 
@@ -77,7 +103,12 @@ func (recv *TargetList) AddTextTargets(info uint32) {
 	return
 }
 
-// AddUriTargets is a wrapper around the C function gtk_target_list_add_uri_targets.
+// Appends the URI targets supported by #GtkSelectionData to
+// the target list. All targets are added with the same @info.
+/*
+
+C function : gtk_target_list_add_uri_targets
+*/
 func (recv *TargetList) AddUriTargets(info uint32) {
 	c_info := (C.guint)(info)
 

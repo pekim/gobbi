@@ -12,7 +12,17 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// BackwardVisibleLine is a wrapper around the C function gtk_text_iter_backward_visible_line.
+// Moves @iter to the start of the previous visible line. Returns %TRUE if
+// @iter could be moved; i.e. if @iter was at character offset 0, this
+// function returns %FALSE. Therefore if @iter was already on line 0,
+// but not at the start of the line, @iter is snapped to the start of
+// the line and the function returns %TRUE. (Note that this implies that
+// in a loop calling this function, the line number may not change on
+// every iteration, if your first iteration is on line 0.)
+/*
+
+C function : gtk_text_iter_backward_visible_line
+*/
 func (recv *TextIter) BackwardVisibleLine() bool {
 	retC := C.gtk_text_iter_backward_visible_line((*C.GtkTextIter)(recv.native))
 	retGo := retC == C.TRUE
@@ -20,7 +30,17 @@ func (recv *TextIter) BackwardVisibleLine() bool {
 	return retGo
 }
 
-// BackwardVisibleLines is a wrapper around the C function gtk_text_iter_backward_visible_lines.
+// Moves @count visible lines backward, if possible (if @count would move
+// past the start or end of the buffer, moves to the start or end of
+// the buffer).  The return value indicates whether the iterator moved
+// onto a dereferenceable position; if the iterator didn’t move, or
+// moved onto the end iterator, then %FALSE is returned. If @count is 0,
+// the function does nothing and returns %FALSE. If @count is negative,
+// moves forward by 0 - @count lines.
+/*
+
+C function : gtk_text_iter_backward_visible_lines
+*/
 func (recv *TextIter) BackwardVisibleLines(count int32) bool {
 	c_count := (C.gint)(count)
 
@@ -30,7 +50,14 @@ func (recv *TextIter) BackwardVisibleLines(count int32) bool {
 	return retGo
 }
 
-// ForwardVisibleLine is a wrapper around the C function gtk_text_iter_forward_visible_line.
+// Moves @iter to the start of the next visible line. Returns %TRUE if there
+// was a next line to move to, and %FALSE if @iter was simply moved to
+// the end of the buffer and is now not dereferenceable, or if @iter was
+// already at the end of the buffer.
+/*
+
+C function : gtk_text_iter_forward_visible_line
+*/
 func (recv *TextIter) ForwardVisibleLine() bool {
 	retC := C.gtk_text_iter_forward_visible_line((*C.GtkTextIter)(recv.native))
 	retGo := retC == C.TRUE
@@ -38,7 +65,17 @@ func (recv *TextIter) ForwardVisibleLine() bool {
 	return retGo
 }
 
-// ForwardVisibleLines is a wrapper around the C function gtk_text_iter_forward_visible_lines.
+// Moves @count visible lines forward, if possible (if @count would move
+// past the start or end of the buffer, moves to the start or end of
+// the buffer).  The return value indicates whether the iterator moved
+// onto a dereferenceable position; if the iterator didn’t move, or
+// moved onto the end iterator, then %FALSE is returned. If @count is 0,
+// the function does nothing and returns %FALSE. If @count is negative,
+// moves backward by 0 - @count lines.
+/*
+
+C function : gtk_text_iter_forward_visible_lines
+*/
 func (recv *TextIter) ForwardVisibleLines(count int32) bool {
 	c_count := (C.gint)(count)
 
@@ -48,7 +85,11 @@ func (recv *TextIter) ForwardVisibleLines(count int32) bool {
 	return retGo
 }
 
-// GetModel is a wrapper around the C function gtk_tree_row_reference_get_model.
+// Returns the model that the row reference is monitoring.
+/*
+
+C function : gtk_tree_row_reference_get_model
+*/
 func (recv *TreeRowReference) GetModel() *TreeModel {
 	retC := C.gtk_tree_row_reference_get_model((*C.GtkTreeRowReference)(recv.native))
 	retGo := TreeModelNewFromC(unsafe.Pointer(retC))

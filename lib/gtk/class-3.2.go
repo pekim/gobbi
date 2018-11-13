@@ -34,7 +34,11 @@ import (
 */
 import "C"
 
-// GetMinimumIncrement is a wrapper around the C function gtk_adjustment_get_minimum_increment.
+// Gets the smaller of step increment and page increment.
+/*
+
+C function : gtk_adjustment_get_minimum_increment
+*/
 func (recv *Adjustment) GetMinimumIncrement() float64 {
 	retC := C.gtk_adjustment_get_minimum_increment((*C.GtkAdjustment)(recv.native))
 	retGo := (float64)(retC)
@@ -42,7 +46,12 @@ func (recv *Adjustment) GetMinimumIncrement() float64 {
 	return retGo
 }
 
-// GetShowDefaultItem is a wrapper around the C function gtk_app_chooser_button_get_show_default_item.
+// Returns the current value of the #GtkAppChooserButton:show-default-item
+// property.
+/*
+
+C function : gtk_app_chooser_button_get_show_default_item
+*/
 func (recv *AppChooserButton) GetShowDefaultItem() bool {
 	retC := C.gtk_app_chooser_button_get_show_default_item((*C.GtkAppChooserButton)(recv.native))
 	retGo := retC == C.TRUE
@@ -50,7 +59,12 @@ func (recv *AppChooserButton) GetShowDefaultItem() bool {
 	return retGo
 }
 
-// SetShowDefaultItem is a wrapper around the C function gtk_app_chooser_button_set_show_default_item.
+// Sets whether the dropdown menu of this button should show the
+// default application for the given content type at top.
+/*
+
+C function : gtk_app_chooser_button_set_show_default_item
+*/
 func (recv *AppChooserButton) SetShowDefaultItem(setting bool) {
 	c_setting :=
 		boolToGboolean(setting)
@@ -178,7 +192,11 @@ func application_windowRemovedHandler(_ *C.GObject, c_window *C.GtkWindow, data 
 	callback(window)
 }
 
-// RemovePage is a wrapper around the C function gtk_assistant_remove_page.
+// Removes the @page_num’s page from @assistant.
+/*
+
+C function : gtk_assistant_remove_page
+*/
 func (recv *Assistant) RemovePage(pageNum int32) {
 	c_page_num := (C.gint)(pageNum)
 
@@ -187,7 +205,12 @@ func (recv *Assistant) RemovePage(pageNum int32) {
 	return
 }
 
-// GetChildNonHomogeneous is a wrapper around the C function gtk_button_box_get_child_non_homogeneous.
+// Returns whether the child is exempted from homogenous
+// sizing.
+/*
+
+C function : gtk_button_box_get_child_non_homogeneous
+*/
 func (recv *ButtonBox) GetChildNonHomogeneous(child *Widget) bool {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -200,7 +223,11 @@ func (recv *ButtonBox) GetChildNonHomogeneous(child *Widget) bool {
 	return retGo
 }
 
-// SetChildNonHomogeneous is a wrapper around the C function gtk_button_box_set_child_non_homogeneous.
+// Sets whether the child is exempted from homogeous sizing.
+/*
+
+C function : gtk_button_box_set_child_non_homogeneous
+*/
 func (recv *ButtonBox) SetChildNonHomogeneous(child *Widget, nonHomogeneous bool) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -215,7 +242,17 @@ func (recv *ButtonBox) SetChildNonHomogeneous(child *Widget, nonHomogeneous bool
 	return
 }
 
-// ChildNotify is a wrapper around the C function gtk_container_child_notify.
+// Emits a #GtkWidget::child-notify signal for the
+// [child property][child-properties]
+// @child_property on the child.
+//
+// This is an analogue of g_object_notify() for child properties.
+//
+// Also see gtk_widget_child_notify().
+/*
+
+C function : gtk_container_child_notify
+*/
 func (recv *Container) ChildNotify(child *Widget, childProperty string) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -230,7 +267,17 @@ func (recv *Container) ChildNotify(child *Widget, childProperty string) {
 	return
 }
 
-// ToString is a wrapper around the C function gtk_css_provider_to_string.
+// Converts the @provider into a string representation in CSS
+// format.
+//
+// Using gtk_css_provider_load_from_data() with the return value
+// from this function on a new provider created with
+// gtk_css_provider_new() will basically create a duplicate of
+// this @provider.
+/*
+
+C function : gtk_css_provider_to_string
+*/
 func (recv *CssProvider) ToString() string {
 	retC := C.gtk_css_provider_to_string((*C.GtkCssProvider)(recv.native))
 	retGo := C.GoString(retC)
@@ -239,7 +286,11 @@ func (recv *CssProvider) ToString() string {
 	return retGo
 }
 
-// GetPlaceholderText is a wrapper around the C function gtk_entry_get_placeholder_text.
+// Retrieves the text that will be displayed when @entry is empty and unfocused
+/*
+
+C function : gtk_entry_get_placeholder_text
+*/
 func (recv *Entry) GetPlaceholderText() string {
 	retC := C.gtk_entry_get_placeholder_text((*C.GtkEntry)(recv.native))
 	retGo := C.GoString(retC)
@@ -247,7 +298,19 @@ func (recv *Entry) GetPlaceholderText() string {
 	return retGo
 }
 
-// SetPlaceholderText is a wrapper around the C function gtk_entry_set_placeholder_text.
+// Sets text to be displayed in @entry when it is empty and unfocused.
+// This can be used to give a visual hint of the expected contents of
+// the #GtkEntry.
+//
+// Note that since the placeholder text gets removed when the entry
+// received focus, using this feature is a bit problematic if the entry
+// is given the initial focus in a window. Sometimes this can be
+// worked around by delaying the initial focus setting until the
+// first key event arrives.
+/*
+
+C function : gtk_entry_set_placeholder_text
+*/
 func (recv *Entry) SetPlaceholderText(text string) {
 	c_text := C.CString(text)
 	defer C.free(unsafe.Pointer(c_text))
@@ -257,7 +320,12 @@ func (recv *Entry) SetPlaceholderText(text string) {
 	return
 }
 
-// GetResizeToplevel is a wrapper around the C function gtk_expander_get_resize_toplevel.
+// Returns whether the expander will resize the toplevel widget
+// containing the expander upon resizing and collpasing.
+/*
+
+C function : gtk_expander_get_resize_toplevel
+*/
 func (recv *Expander) GetResizeToplevel() bool {
 	retC := C.gtk_expander_get_resize_toplevel((*C.GtkExpander)(recv.native))
 	retGo := retC == C.TRUE
@@ -265,7 +333,12 @@ func (recv *Expander) GetResizeToplevel() bool {
 	return retGo
 }
 
-// SetResizeToplevel is a wrapper around the C function gtk_expander_set_resize_toplevel.
+// Sets whether the expander will resize the toplevel widget
+// containing the expander upon resizing and collpasing.
+/*
+
+C function : gtk_expander_set_resize_toplevel
+*/
 func (recv *Expander) SetResizeToplevel(resizeToplevel bool) {
 	c_resize_toplevel :=
 		boolToGboolean(resizeToplevel)
@@ -275,7 +348,11 @@ func (recv *Expander) SetResizeToplevel(resizeToplevel bool) {
 	return
 }
 
-// FontChooserDialogNew is a wrapper around the C function gtk_font_chooser_dialog_new.
+// Creates a new #GtkFontChooserDialog.
+/*
+
+C function : gtk_font_chooser_dialog_new
+*/
 func FontChooserDialogNew(title string, parent *Window) *FontChooserDialog {
 	c_title := C.CString(title)
 	defer C.free(unsafe.Pointer(c_title))
@@ -291,7 +368,11 @@ func FontChooserDialogNew(title string, parent *Window) *FontChooserDialog {
 	return retGo
 }
 
-// FontChooserWidgetNew is a wrapper around the C function gtk_font_chooser_widget_new.
+// Creates a new #GtkFontChooserWidget.
+/*
+
+C function : gtk_font_chooser_widget_new
+*/
 func FontChooserWidgetNew() *FontChooserWidget {
 	retC := C.gtk_font_chooser_widget_new()
 	retGo := FontChooserWidgetNewFromC(unsafe.Pointer(retC))
@@ -299,7 +380,12 @@ func FontChooserWidgetNew() *FontChooserWidget {
 	return retGo
 }
 
-// GetChildAt is a wrapper around the C function gtk_grid_get_child_at.
+// Gets the child of @grid whose area covers the grid
+// cell whose upper left corner is at @left, @top.
+/*
+
+C function : gtk_grid_get_child_at
+*/
 func (recv *Grid) GetChildAt(left int32, top int32) *Widget {
 	c_left := (C.gint)(left)
 
@@ -316,7 +402,15 @@ func (recv *Grid) GetChildAt(left int32, top int32) *Widget {
 	return retGo
 }
 
-// InsertColumn is a wrapper around the C function gtk_grid_insert_column.
+// Inserts a column at the specified position.
+//
+// Children which are attached at or to the right of this position
+// are moved one column to the right. Children which span across this
+// position are grown to span the new column.
+/*
+
+C function : gtk_grid_insert_column
+*/
 func (recv *Grid) InsertColumn(position int32) {
 	c_position := (C.gint)(position)
 
@@ -325,7 +419,16 @@ func (recv *Grid) InsertColumn(position int32) {
 	return
 }
 
-// InsertNextTo is a wrapper around the C function gtk_grid_insert_next_to.
+// Inserts a row or column at the specified position.
+//
+// The new row or column is placed next to @sibling, on the side
+// determined by @side. If @side is %GTK_POS_TOP or %GTK_POS_BOTTOM,
+// a row is inserted. If @side is %GTK_POS_LEFT of %GTK_POS_RIGHT,
+// a column is inserted.
+/*
+
+C function : gtk_grid_insert_next_to
+*/
 func (recv *Grid) InsertNextTo(sibling *Widget, side PositionType) {
 	c_sibling := (*C.GtkWidget)(C.NULL)
 	if sibling != nil {
@@ -339,7 +442,15 @@ func (recv *Grid) InsertNextTo(sibling *Widget, side PositionType) {
 	return
 }
 
-// InsertRow is a wrapper around the C function gtk_grid_insert_row.
+// Inserts a row at the specified position.
+//
+// Children which are attached at or below this position
+// are moved one row down. Children which span across this
+// position are grown to span the new row.
+/*
+
+C function : gtk_grid_insert_row
+*/
 func (recv *Grid) InsertRow(position int32) {
 	c_position := (C.gint)(position)
 
@@ -348,7 +459,11 @@ func (recv *Grid) InsertRow(position int32) {
 	return
 }
 
-// LockButtonNew is a wrapper around the C function gtk_lock_button_new.
+// Creates a new lock button which reflects the @permission.
+/*
+
+C function : gtk_lock_button_new
+*/
 func LockButtonNew(permission *gio.Permission) *LockButton {
 	c_permission := (*C.GPermission)(C.NULL)
 	if permission != nil {
@@ -361,7 +476,11 @@ func LockButtonNew(permission *gio.Permission) *LockButton {
 	return retGo
 }
 
-// GetPermission is a wrapper around the C function gtk_lock_button_get_permission.
+// Obtains the #GPermission object that controls @button.
+/*
+
+C function : gtk_lock_button_get_permission
+*/
 func (recv *LockButton) GetPermission() *gio.Permission {
 	retC := C.gtk_lock_button_get_permission((*C.GtkLockButton)(recv.native))
 	retGo := gio.PermissionNewFromC(unsafe.Pointer(retC))
@@ -369,7 +488,11 @@ func (recv *LockButton) GetPermission() *gio.Permission {
 	return retGo
 }
 
-// SetPermission is a wrapper around the C function gtk_lock_button_set_permission.
+// Sets the #GPermission object that controls @button.
+/*
+
+C function : gtk_lock_button_set_permission
+*/
 func (recv *LockButton) SetPermission(permission *gio.Permission) {
 	c_permission := (*C.GPermission)(C.NULL)
 	if permission != nil {
@@ -383,7 +506,11 @@ func (recv *LockButton) SetPermission(permission *gio.Permission) {
 
 // Unsupported signal 'insert' for MenuShell : unsupported parameter position : type gint :
 
-// OverlayNew is a wrapper around the C function gtk_overlay_new.
+// Creates a new #GtkOverlay.
+/*
+
+C function : gtk_overlay_new
+*/
 func OverlayNew() *Overlay {
 	retC := C.gtk_overlay_new()
 	retGo := OverlayNewFromC(unsafe.Pointer(retC))
@@ -391,7 +518,17 @@ func OverlayNew() *Overlay {
 	return retGo
 }
 
-// AddOverlay is a wrapper around the C function gtk_overlay_add_overlay.
+// Adds @widget to @overlay.
+//
+// The widget will be stacked on top of the main widget
+// added with gtk_container_add().
+//
+// The position at which @widget is placed is determined
+// from its #GtkWidget:halign and #GtkWidget:valign properties.
+/*
+
+C function : gtk_overlay_add_overlay
+*/
 func (recv *Overlay) AddOverlay(widget *Widget) {
 	c_widget := (*C.GtkWidget)(C.NULL)
 	if widget != nil {
@@ -403,7 +540,11 @@ func (recv *Overlay) AddOverlay(widget *Widget) {
 	return
 }
 
-// GetXOffset is a wrapper around the C function gtk_tree_view_column_get_x_offset.
+// Returns the current X offset of @tree_column in pixels.
+/*
+
+C function : gtk_tree_view_column_get_x_offset
+*/
 func (recv *TreeViewColumn) GetXOffset() int32 {
 	retC := C.gtk_tree_view_column_get_x_offset((*C.GtkTreeViewColumn)(recv.native))
 	retGo := (int32)(retC)
@@ -411,7 +552,12 @@ func (recv *TreeViewColumn) GetXOffset() int32 {
 	return retGo
 }
 
-// DragSourceSetIconGicon is a wrapper around the C function gtk_drag_source_set_icon_gicon.
+// Sets the icon that will be used for drags from a particular source
+// to @icon. See the docs for #GtkIconTheme for more details.
+/*
+
+C function : gtk_drag_source_set_icon_gicon
+*/
 func (recv *Widget) DragSourceSetIconGicon(icon *gio.Icon) {
 	c_icon := (*C.GIcon)(icon.ToC())
 
@@ -420,7 +566,19 @@ func (recv *Widget) DragSourceSetIconGicon(icon *gio.Icon) {
 	return
 }
 
-// HasVisibleFocus is a wrapper around the C function gtk_widget_has_visible_focus.
+// Determines if the widget should show a visible indication that
+// it has the global input focus. This is a convenience function for
+// use in ::draw handlers that takes into account whether focus
+// indication should currently be shown in the toplevel window of
+// @widget. See gtk_window_get_focus_visible() for more information
+// about focus indication.
+//
+// To find out if the widget has the global input focus, use
+// gtk_widget_has_focus().
+/*
+
+C function : gtk_widget_has_visible_focus
+*/
 func (recv *Widget) HasVisibleFocus() bool {
 	retC := C.gtk_widget_has_visible_focus((*C.GtkWidget)(recv.native))
 	retGo := retC == C.TRUE
@@ -428,7 +586,11 @@ func (recv *Widget) HasVisibleFocus() bool {
 	return retGo
 }
 
-// GetFocusVisible is a wrapper around the C function gtk_window_get_focus_visible.
+// Gets the value of the #GtkWindow:focus-visible property.
+/*
+
+C function : gtk_window_get_focus_visible
+*/
 func (recv *Window) GetFocusVisible() bool {
 	retC := C.gtk_window_get_focus_visible((*C.GtkWindow)(recv.native))
 	retGo := retC == C.TRUE
@@ -436,7 +598,11 @@ func (recv *Window) GetFocusVisible() bool {
 	return retGo
 }
 
-// SetFocusVisible is a wrapper around the C function gtk_window_set_focus_visible.
+// Sets the #GtkWindow:focus-visible property.
+/*
+
+C function : gtk_window_set_focus_visible
+*/
 func (recv *Window) SetFocusVisible(setting bool) {
 	c_setting :=
 		boolToGboolean(setting)

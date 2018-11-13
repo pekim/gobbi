@@ -13,7 +13,11 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// GetFontDescription is a wrapper around the C function pango_layout_get_font_description.
+// Gets the font description for the layout, if any.
+/*
+
+C function : pango_layout_get_font_description
+*/
 func (recv *Layout) GetFontDescription() *FontDescription {
 	retC := C.pango_layout_get_font_description((*C.PangoLayout)(recv.native))
 	var retGo (*FontDescription)
@@ -64,21 +68,47 @@ func CastToRenderer(object *gobject.Object) *Renderer {
 	return RendererNewFromC(object.ToC())
 }
 
-// Activate is a wrapper around the C function pango_renderer_activate.
+// Does initial setup before rendering operations on @renderer.
+// pango_renderer_deactivate() should be called when done drawing.
+// Calls such as pango_renderer_draw_layout() automatically
+// activate the layout before drawing on it. Calls to
+// pango_renderer_activate() and pango_renderer_deactivate() can
+// be nested and the renderer will only be initialized and
+// deinitialized once.
+/*
+
+C function : pango_renderer_activate
+*/
 func (recv *Renderer) Activate() {
 	C.pango_renderer_activate((*C.PangoRenderer)(recv.native))
 
 	return
 }
 
-// Deactivate is a wrapper around the C function pango_renderer_deactivate.
+// Cleans up after rendering operations on @renderer. See
+// docs for pango_renderer_activate().
+/*
+
+C function : pango_renderer_deactivate
+*/
 func (recv *Renderer) Deactivate() {
 	C.pango_renderer_deactivate((*C.PangoRenderer)(recv.native))
 
 	return
 }
 
-// DrawErrorUnderline is a wrapper around the C function pango_renderer_draw_error_underline.
+// Draw a squiggly line that approximately covers the given rectangle
+// in the style of an underline used to indicate a spelling error.
+// (The width of the underline is rounded to an integer number
+// of up/down segments and the resulting rectangle is centered
+// in the original rectangle)
+//
+// This should be called while @renderer is already active.  Use
+// pango_renderer_activate() to activate a renderer.
+/*
+
+C function : pango_renderer_draw_error_underline
+*/
 func (recv *Renderer) DrawErrorUnderline(x int32, y int32, width int32, height int32) {
 	c_x := (C.int)(x)
 
@@ -93,7 +123,11 @@ func (recv *Renderer) DrawErrorUnderline(x int32, y int32, width int32, height i
 	return
 }
 
-// DrawGlyph is a wrapper around the C function pango_renderer_draw_glyph.
+// Draws a single glyph with coordinates in device space.
+/*
+
+C function : pango_renderer_draw_glyph
+*/
 func (recv *Renderer) DrawGlyph(font *Font, glyph Glyph, x float64, y float64) {
 	c_font := (*C.PangoFont)(C.NULL)
 	if font != nil {
@@ -113,7 +147,11 @@ func (recv *Renderer) DrawGlyph(font *Font, glyph Glyph, x float64, y float64) {
 
 // Unsupported : pango_renderer_draw_glyphs : unsupported parameter glyphs : Blacklisted record : PangoGlyphString
 
-// DrawLayout is a wrapper around the C function pango_renderer_draw_layout.
+// Draws @layout with the specified #PangoRenderer.
+/*
+
+C function : pango_renderer_draw_layout
+*/
 func (recv *Renderer) DrawLayout(layout *Layout, x int32, y int32) {
 	c_layout := (*C.PangoLayout)(C.NULL)
 	if layout != nil {
@@ -129,7 +167,11 @@ func (recv *Renderer) DrawLayout(layout *Layout, x int32, y int32) {
 	return
 }
 
-// DrawLayoutLine is a wrapper around the C function pango_renderer_draw_layout_line.
+// Draws @line with the specified #PangoRenderer.
+/*
+
+C function : pango_renderer_draw_layout_line
+*/
 func (recv *Renderer) DrawLayoutLine(line *LayoutLine, x int32, y int32) {
 	c_line := (*C.PangoLayoutLine)(C.NULL)
 	if line != nil {
@@ -145,7 +187,15 @@ func (recv *Renderer) DrawLayoutLine(line *LayoutLine, x int32, y int32) {
 	return
 }
 
-// DrawRectangle is a wrapper around the C function pango_renderer_draw_rectangle.
+// Draws an axis-aligned rectangle in user space coordinates with the
+// specified #PangoRenderer.
+//
+// This should be called while @renderer is already active.  Use
+// pango_renderer_activate() to activate a renderer.
+/*
+
+C function : pango_renderer_draw_rectangle
+*/
 func (recv *Renderer) DrawRectangle(part RenderPart, x int32, y int32, width int32, height int32) {
 	c_part := (C.PangoRenderPart)(part)
 
@@ -162,7 +212,12 @@ func (recv *Renderer) DrawRectangle(part RenderPart, x int32, y int32, width int
 	return
 }
 
-// DrawTrapezoid is a wrapper around the C function pango_renderer_draw_trapezoid.
+// Draws a trapezoid with the parallel sides aligned with the X axis
+// using the given #PangoRenderer; coordinates are in device space.
+/*
+
+C function : pango_renderer_draw_trapezoid
+*/
 func (recv *Renderer) DrawTrapezoid(part RenderPart, y1 float64, x11 float64, x21 float64, y2 float64, x12 float64, x22 float64) {
 	c_part := (C.PangoRenderPart)(part)
 
@@ -183,7 +238,11 @@ func (recv *Renderer) DrawTrapezoid(part RenderPart, y1 float64, x11 float64, x2
 	return
 }
 
-// GetColor is a wrapper around the C function pango_renderer_get_color.
+// Gets the current rendering color for the specified part.
+/*
+
+C function : pango_renderer_get_color
+*/
 func (recv *Renderer) GetColor(part RenderPart) *Color {
 	c_part := (C.PangoRenderPart)(part)
 
@@ -198,7 +257,12 @@ func (recv *Renderer) GetColor(part RenderPart) *Color {
 	return retGo
 }
 
-// GetMatrix is a wrapper around the C function pango_renderer_get_matrix.
+// Gets the transformation matrix that will be applied when
+// rendering. See pango_renderer_set_matrix().
+/*
+
+C function : pango_renderer_get_matrix
+*/
 func (recv *Renderer) GetMatrix() *Matrix {
 	retC := C.pango_renderer_get_matrix((*C.PangoRenderer)(recv.native))
 	var retGo (*Matrix)
@@ -211,7 +275,23 @@ func (recv *Renderer) GetMatrix() *Matrix {
 	return retGo
 }
 
-// PartChanged is a wrapper around the C function pango_renderer_part_changed.
+// Informs Pango that the way that the rendering is done
+// for @part has changed in a way that would prevent multiple
+// pieces being joined together into one drawing call. For
+// instance, if a subclass of #PangoRenderer was to add a stipple
+// option for drawing underlines, it needs to call
+//
+// <informalexample><programlisting>
+// pango_renderer_part_changed (render, PANGO_RENDER_PART_UNDERLINE);
+// </programlisting></informalexample>
+//
+// When the stipple changes or underlines with different stipples
+// might be joined together. Pango automatically calls this for
+// changes to colors. (See pango_renderer_set_color())
+/*
+
+C function : pango_renderer_part_changed
+*/
 func (recv *Renderer) PartChanged(part RenderPart) {
 	c_part := (C.PangoRenderPart)(part)
 
@@ -220,7 +300,12 @@ func (recv *Renderer) PartChanged(part RenderPart) {
 	return
 }
 
-// SetColor is a wrapper around the C function pango_renderer_set_color.
+// Sets the color for part of the rendering.
+// Also see pango_renderer_set_alpha().
+/*
+
+C function : pango_renderer_set_color
+*/
 func (recv *Renderer) SetColor(part RenderPart, color *Color) {
 	c_part := (C.PangoRenderPart)(part)
 
@@ -234,7 +319,11 @@ func (recv *Renderer) SetColor(part RenderPart, color *Color) {
 	return
 }
 
-// SetMatrix is a wrapper around the C function pango_renderer_set_matrix.
+// Sets the transformation matrix that will be applied when rendering.
+/*
+
+C function : pango_renderer_set_matrix
+*/
 func (recv *Renderer) SetMatrix(matrix *Matrix) {
 	c_matrix := (*C.PangoMatrix)(C.NULL)
 	if matrix != nil {

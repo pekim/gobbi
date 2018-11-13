@@ -45,7 +45,22 @@ func CastToContext(object *gobject.Object) *Context {
 	return ContextNewFromC(object.ToC())
 }
 
-// ContextNew is a wrapper around the C function pango_context_new.
+// Creates a new #PangoContext initialized to default values.
+//
+// This function is not particularly useful as it should always
+// be followed by a pango_context_set_font_map() call, and the
+// function pango_font_map_create_context() does these two steps
+// together and hence users are recommended to use that.
+//
+// If you are using Pango as part of a higher-level system,
+// that system may have it's own way of create a #PangoContext.
+// For instance, the GTK+ toolkit has, among others,
+// gdk_pango_context_get_for_screen(), and
+// gtk_widget_get_pango_context().  Use those instead.
+/*
+
+C function : pango_context_new
+*/
 func ContextNew() *Context {
 	retC := C.pango_context_new()
 	retGo := ContextNewFromC(unsafe.Pointer(retC))
@@ -53,7 +68,12 @@ func ContextNew() *Context {
 	return retGo
 }
 
-// GetBaseDir is a wrapper around the C function pango_context_get_base_dir.
+// Retrieves the base direction for the context. See
+// pango_context_set_base_dir().
+/*
+
+C function : pango_context_get_base_dir
+*/
 func (recv *Context) GetBaseDir() Direction {
 	retC := C.pango_context_get_base_dir((*C.PangoContext)(recv.native))
 	retGo := (Direction)(retC)
@@ -61,7 +81,11 @@ func (recv *Context) GetBaseDir() Direction {
 	return retGo
 }
 
-// GetFontDescription is a wrapper around the C function pango_context_get_font_description.
+// Retrieve the default font description for the context.
+/*
+
+C function : pango_context_get_font_description
+*/
 func (recv *Context) GetFontDescription() *FontDescription {
 	retC := C.pango_context_get_font_description((*C.PangoContext)(recv.native))
 	retGo := FontDescriptionNewFromC(unsafe.Pointer(retC))
@@ -69,7 +93,11 @@ func (recv *Context) GetFontDescription() *FontDescription {
 	return retGo
 }
 
-// GetLanguage is a wrapper around the C function pango_context_get_language.
+// Retrieves the global language tag for the context.
+/*
+
+C function : pango_context_get_language
+*/
 func (recv *Context) GetLanguage() *Language {
 	retC := C.pango_context_get_language((*C.PangoContext)(recv.native))
 	retGo := LanguageNewFromC(unsafe.Pointer(retC))
@@ -81,7 +109,12 @@ func (recv *Context) GetLanguage() *Language {
 
 // Unsupported : pango_context_list_families : unsupported parameter families : output array param families
 
-// LoadFont is a wrapper around the C function pango_context_load_font.
+// Loads the font in one of the fontmaps in the context
+// that is the closest match for @desc.
+/*
+
+C function : pango_context_load_font
+*/
 func (recv *Context) LoadFont(desc *FontDescription) *Font {
 	c_desc := (*C.PangoFontDescription)(C.NULL)
 	if desc != nil {
@@ -99,7 +132,12 @@ func (recv *Context) LoadFont(desc *FontDescription) *Font {
 	return retGo
 }
 
-// LoadFontset is a wrapper around the C function pango_context_load_fontset.
+// Load a set of fonts in the context that can be used to render
+// a font matching @desc.
+/*
+
+C function : pango_context_load_fontset
+*/
 func (recv *Context) LoadFontset(desc *FontDescription, language *Language) *Fontset {
 	c_desc := (*C.PangoFontDescription)(C.NULL)
 	if desc != nil {
@@ -122,7 +160,18 @@ func (recv *Context) LoadFontset(desc *FontDescription, language *Language) *Fon
 	return retGo
 }
 
-// SetBaseDir is a wrapper around the C function pango_context_set_base_dir.
+// Sets the base direction for the context.
+//
+// The base direction is used in applying the Unicode bidirectional
+// algorithm; if the @direction is %PANGO_DIRECTION_LTR or
+// %PANGO_DIRECTION_RTL, then the value will be used as the paragraph
+// direction in the Unicode bidirectional algorithm.  A value of
+// %PANGO_DIRECTION_WEAK_LTR or %PANGO_DIRECTION_WEAK_RTL is used only
+// for paragraphs that do not contain any strong characters themselves.
+/*
+
+C function : pango_context_set_base_dir
+*/
 func (recv *Context) SetBaseDir(direction Direction) {
 	c_direction := (C.PangoDirection)(direction)
 
@@ -131,7 +180,11 @@ func (recv *Context) SetBaseDir(direction Direction) {
 	return
 }
 
-// SetFontDescription is a wrapper around the C function pango_context_set_font_description.
+// Set the default font description for the context
+/*
+
+C function : pango_context_set_font_description
+*/
 func (recv *Context) SetFontDescription(desc *FontDescription) {
 	c_desc := (*C.PangoFontDescription)(C.NULL)
 	if desc != nil {
@@ -143,7 +196,13 @@ func (recv *Context) SetFontDescription(desc *FontDescription) {
 	return
 }
 
-// SetFontMap is a wrapper around the C function pango_context_set_font_map.
+// Sets the font map to be searched when fonts are looked-up in this context.
+// This is only for internal use by Pango backends, a #PangoContext obtained
+// via one of the recommended methods should already have a suitable font map.
+/*
+
+C function : pango_context_set_font_map
+*/
 func (recv *Context) SetFontMap(fontMap *FontMap) {
 	c_font_map := (*C.PangoFontMap)(C.NULL)
 	if fontMap != nil {
@@ -155,7 +214,13 @@ func (recv *Context) SetFontMap(fontMap *FontMap) {
 	return
 }
 
-// SetLanguage is a wrapper around the C function pango_context_set_language.
+// Sets the global language tag for the context.  The default language
+// for the locale of the running process can be found using
+// pango_language_get_default().
+/*
+
+C function : pango_context_set_language
+*/
 func (recv *Context) SetLanguage(language *Language) {
 	c_language := (*C.PangoLanguage)(C.NULL)
 	if language != nil {
@@ -258,7 +323,13 @@ func CastToFont(object *gobject.Object) *Font {
 	return FontNewFromC(object.ToC())
 }
 
-// Describe is a wrapper around the C function pango_font_describe.
+// Returns a description of the font, with font size set in points.
+// Use pango_font_describe_with_absolute_size() if you want the font
+// size in device units.
+/*
+
+C function : pango_font_describe
+*/
 func (recv *Font) Describe() *FontDescription {
 	retC := C.pango_font_describe((*C.PangoFont)(recv.native))
 	retGo := FontDescriptionNewFromC(unsafe.Pointer(retC))
@@ -266,7 +337,12 @@ func (recv *Font) Describe() *FontDescription {
 	return retGo
 }
 
-// FindShaper is a wrapper around the C function pango_font_find_shaper.
+// Finds the best matching shaper for a font for a particular
+// language tag and character point.
+/*
+
+C function : pango_font_find_shaper
+*/
 func (recv *Font) FindShaper(language *Language, ch uint32) *EngineShape {
 	c_language := (*C.PangoLanguage)(C.NULL)
 	if language != nil {
@@ -281,7 +357,11 @@ func (recv *Font) FindShaper(language *Language, ch uint32) *EngineShape {
 	return retGo
 }
 
-// GetCoverage is a wrapper around the C function pango_font_get_coverage.
+// Computes the coverage map for a given font and language tag.
+/*
+
+C function : pango_font_get_coverage
+*/
 func (recv *Font) GetCoverage(language *Language) *Coverage {
 	c_language := (*C.PangoLanguage)(C.NULL)
 	if language != nil {
@@ -294,7 +374,20 @@ func (recv *Font) GetCoverage(language *Language) *Coverage {
 	return retGo
 }
 
-// GetGlyphExtents is a wrapper around the C function pango_font_get_glyph_extents.
+// Gets the logical and ink extents of a glyph within a font. The
+// coordinate system for each rectangle has its origin at the
+// base line and horizontal origin of the character with increasing
+// coordinates extending to the right and down. The macros PANGO_ASCENT(),
+// PANGO_DESCENT(), PANGO_LBEARING(), and PANGO_RBEARING() can be used to convert
+// from the extents rectangle to more traditional font metrics. The units
+// of the rectangles are in 1/PANGO_SCALE of a device unit.
+//
+// If @font is %NULL, this function gracefully sets some sane values in the
+// output variables and returns.
+/*
+
+C function : pango_font_get_glyph_extents
+*/
 func (recv *Font) GetGlyphExtents(glyph Glyph) (*Rectangle, *Rectangle) {
 	c_glyph := (C.PangoGlyph)(glyph)
 
@@ -346,7 +439,13 @@ func CastToFontFace(object *gobject.Object) *FontFace {
 	return FontFaceNewFromC(object.ToC())
 }
 
-// Describe is a wrapper around the C function pango_font_face_describe.
+// Returns the family, style, variant, weight and stretch of
+// a #PangoFontFace. The size field of the resulting font description
+// will be unset.
+/*
+
+C function : pango_font_face_describe
+*/
 func (recv *FontFace) Describe() *FontDescription {
 	retC := C.pango_font_face_describe((*C.PangoFontFace)(recv.native))
 	retGo := FontDescriptionNewFromC(unsafe.Pointer(retC))
@@ -354,7 +453,14 @@ func (recv *FontFace) Describe() *FontDescription {
 	return retGo
 }
 
-// GetFaceName is a wrapper around the C function pango_font_face_get_face_name.
+// Gets a name representing the style of this face among the
+// different faces in the #PangoFontFamily for the face. This
+// name is unique among all faces in the family and is suitable
+// for displaying to users.
+/*
+
+C function : pango_font_face_get_face_name
+*/
 func (recv *FontFace) GetFaceName() string {
 	retC := C.pango_font_face_get_face_name((*C.PangoFontFace)(recv.native))
 	retGo := C.GoString(retC)
@@ -395,7 +501,13 @@ func CastToFontFamily(object *gobject.Object) *FontFamily {
 	return FontFamilyNewFromC(object.ToC())
 }
 
-// GetName is a wrapper around the C function pango_font_family_get_name.
+// Gets the name of the family. The name is unique among all
+// fonts for the font backend and can be used in a #PangoFontDescription
+// to specify that a face from this family is desired.
+/*
+
+C function : pango_font_family_get_name
+*/
 func (recv *FontFamily) GetName() string {
 	retC := C.pango_font_family_get_name((*C.PangoFontFamily)(recv.native))
 	retGo := C.GoString(retC)
@@ -440,7 +552,11 @@ func CastToFontMap(object *gobject.Object) *FontMap {
 
 // Unsupported : pango_font_map_list_families : unsupported parameter families : output array param families
 
-// LoadFont is a wrapper around the C function pango_font_map_load_font.
+// Load the font in the fontmap that is the closest match for @desc.
+/*
+
+C function : pango_font_map_load_font
+*/
 func (recv *FontMap) LoadFont(context *Context, desc *FontDescription) *Font {
 	c_context := (*C.PangoContext)(C.NULL)
 	if context != nil {
@@ -463,7 +579,12 @@ func (recv *FontMap) LoadFont(context *Context, desc *FontDescription) *Font {
 	return retGo
 }
 
-// LoadFontset is a wrapper around the C function pango_font_map_load_fontset.
+// Load a set of fonts in the fontmap that can be used to render
+// a font matching @desc.
+/*
+
+C function : pango_font_map_load_fontset
+*/
 func (recv *FontMap) LoadFontset(context *Context, desc *FontDescription, language *Language) *Fontset {
 	c_context := (*C.PangoContext)(C.NULL)
 	if context != nil {
@@ -524,7 +645,12 @@ func CastToFontset(object *gobject.Object) *Fontset {
 	return FontsetNewFromC(object.ToC())
 }
 
-// GetFont is a wrapper around the C function pango_fontset_get_font.
+// Returns the font in the fontset that contains the best glyph for the
+// Unicode character @wc.
+/*
+
+C function : pango_fontset_get_font
+*/
 func (recv *Fontset) GetFont(wc uint32) *Font {
 	c_wc := (C.guint)(wc)
 
@@ -570,7 +696,12 @@ func CastToLayout(object *gobject.Object) *Layout {
 	return LayoutNewFromC(object.ToC())
 }
 
-// LayoutNew is a wrapper around the C function pango_layout_new.
+// Create a new #PangoLayout object with attributes initialized to
+// default values for a particular #PangoContext.
+/*
+
+C function : pango_layout_new
+*/
 func LayoutNew(context *Context) *Layout {
 	c_context := (*C.PangoContext)(C.NULL)
 	if context != nil {
@@ -583,14 +714,27 @@ func LayoutNew(context *Context) *Layout {
 	return retGo
 }
 
-// ContextChanged is a wrapper around the C function pango_layout_context_changed.
+// Forces recomputation of any state in the #PangoLayout that
+// might depend on the layout's context. This function should
+// be called if you make changes to the context subsequent
+// to creating the layout.
+/*
+
+C function : pango_layout_context_changed
+*/
 func (recv *Layout) ContextChanged() {
 	C.pango_layout_context_changed((*C.PangoLayout)(recv.native))
 
 	return
 }
 
-// Copy is a wrapper around the C function pango_layout_copy.
+// Does a deep copy-by-value of the @src layout. The attribute list,
+// tab array, and text from the original layout are all copied by
+// value.
+/*
+
+C function : pango_layout_copy
+*/
 func (recv *Layout) Copy() *Layout {
 	retC := C.pango_layout_copy((*C.PangoLayout)(recv.native))
 	retGo := LayoutNewFromC(unsafe.Pointer(retC))
@@ -598,7 +742,12 @@ func (recv *Layout) Copy() *Layout {
 	return retGo
 }
 
-// GetAlignment is a wrapper around the C function pango_layout_get_alignment.
+// Gets the alignment for the layout: how partial lines are
+// positioned within the horizontal space available.
+/*
+
+C function : pango_layout_get_alignment
+*/
 func (recv *Layout) GetAlignment() Alignment {
 	retC := C.pango_layout_get_alignment((*C.PangoLayout)(recv.native))
 	retGo := (Alignment)(retC)
@@ -606,7 +755,11 @@ func (recv *Layout) GetAlignment() Alignment {
 	return retGo
 }
 
-// GetAttributes is a wrapper around the C function pango_layout_get_attributes.
+// Gets the attribute list for the layout, if any.
+/*
+
+C function : pango_layout_get_attributes
+*/
 func (recv *Layout) GetAttributes() *AttrList {
 	retC := C.pango_layout_get_attributes((*C.PangoLayout)(recv.native))
 	retGo := AttrListNewFromC(unsafe.Pointer(retC))
@@ -614,7 +767,11 @@ func (recv *Layout) GetAttributes() *AttrList {
 	return retGo
 }
 
-// GetContext is a wrapper around the C function pango_layout_get_context.
+// Retrieves the #PangoContext used for this layout.
+/*
+
+C function : pango_layout_get_context
+*/
 func (recv *Layout) GetContext() *Context {
 	retC := C.pango_layout_get_context((*C.PangoLayout)(recv.native))
 	retGo := ContextNewFromC(unsafe.Pointer(retC))
@@ -622,7 +779,18 @@ func (recv *Layout) GetContext() *Context {
 	return retGo
 }
 
-// GetCursorPos is a wrapper around the C function pango_layout_get_cursor_pos.
+// Given an index within a layout, determines the positions that of the
+// strong and weak cursors if the insertion point is at that
+// index. The position of each cursor is stored as a zero-width
+// rectangle. The strong cursor location is the location where
+// characters of the directionality equal to the base direction of the
+// layout are inserted.  The weak cursor location is the location
+// where characters of the directionality opposite to the base
+// direction of the layout are inserted.
+/*
+
+C function : pango_layout_get_cursor_pos
+*/
 func (recv *Layout) GetCursorPos(index int32) (*Rectangle, *Rectangle) {
 	c_index_ := (C.int)(index)
 
@@ -639,7 +807,19 @@ func (recv *Layout) GetCursorPos(index int32) (*Rectangle, *Rectangle) {
 	return strongPos, weakPos
 }
 
-// GetExtents is a wrapper around the C function pango_layout_get_extents.
+// Computes the logical and ink extents of @layout. Logical extents
+// are usually what you want for positioning things.  Note that both extents
+// may have non-zero x and y.  You may want to use those to offset where you
+// render the layout.  Not doing that is a very typical bug that shows up as
+// right-to-left layouts not being correctly positioned in a layout with
+// a set width.
+//
+// The extents are given in layout coordinates and in Pango units; layout
+// coordinates begin at the top left corner of the layout.
+/*
+
+C function : pango_layout_get_extents
+*/
 func (recv *Layout) GetExtents() (*Rectangle, *Rectangle) {
 	var c_ink_rect C.PangoRectangle
 
@@ -654,7 +834,12 @@ func (recv *Layout) GetExtents() (*Rectangle, *Rectangle) {
 	return inkRect, logicalRect
 }
 
-// GetIndent is a wrapper around the C function pango_layout_get_indent.
+// Gets the paragraph indent width in Pango units. A negative value
+// indicates a hanging indentation.
+/*
+
+C function : pango_layout_get_indent
+*/
 func (recv *Layout) GetIndent() int32 {
 	retC := C.pango_layout_get_indent((*C.PangoLayout)(recv.native))
 	retGo := (int32)(retC)
@@ -664,7 +849,12 @@ func (recv *Layout) GetIndent() int32 {
 
 // Unsupported : pango_layout_get_iter : return type : Blacklisted record : PangoLayoutIter
 
-// GetJustify is a wrapper around the C function pango_layout_get_justify.
+// Gets whether each complete line should be stretched to fill the entire
+// width of the layout.
+/*
+
+C function : pango_layout_get_justify
+*/
 func (recv *Layout) GetJustify() bool {
 	retC := C.pango_layout_get_justify((*C.PangoLayout)(recv.native))
 	retGo := retC == C.TRUE
@@ -672,7 +862,14 @@ func (recv *Layout) GetJustify() bool {
 	return retGo
 }
 
-// GetLine is a wrapper around the C function pango_layout_get_line.
+// Retrieves a particular line from a #PangoLayout.
+//
+// Use the faster pango_layout_get_line_readonly() if you do not plan
+// to modify the contents of the line (glyphs, glyph widths, etc.).
+/*
+
+C function : pango_layout_get_line
+*/
 func (recv *Layout) GetLine(line int32) *LayoutLine {
 	c_line := (C.int)(line)
 
@@ -687,7 +884,11 @@ func (recv *Layout) GetLine(line int32) *LayoutLine {
 	return retGo
 }
 
-// GetLineCount is a wrapper around the C function pango_layout_get_line_count.
+// Retrieves the count of lines for the @layout.
+/*
+
+C function : pango_layout_get_line_count
+*/
 func (recv *Layout) GetLineCount() int32 {
 	retC := C.pango_layout_get_line_count((*C.PangoLayout)(recv.native))
 	retGo := (int32)(retC)
@@ -695,7 +896,14 @@ func (recv *Layout) GetLineCount() int32 {
 	return retGo
 }
 
-// GetLines is a wrapper around the C function pango_layout_get_lines.
+// Returns the lines of the @layout as a list.
+//
+// Use the faster pango_layout_get_lines_readonly() if you do not plan
+// to modify the contents of the lines (glyphs, glyph widths, etc.).
+/*
+
+C function : pango_layout_get_lines
+*/
 func (recv *Layout) GetLines() *glib.SList {
 	retC := C.pango_layout_get_lines((*C.PangoLayout)(recv.native))
 	retGo := glib.SListNewFromC(unsafe.Pointer(retC))
@@ -705,7 +913,15 @@ func (recv *Layout) GetLines() *glib.SList {
 
 // Unsupported : pango_layout_get_log_attrs : unsupported parameter attrs : output array param attrs
 
-// GetPixelExtents is a wrapper around the C function pango_layout_get_pixel_extents.
+// Computes the logical and ink extents of @layout in device units.
+// This function just calls pango_layout_get_extents() followed by
+// two pango_extents_to_pixels() calls, rounding @ink_rect and @logical_rect
+// such that the rounded rectangles fully contain the unrounded one (that is,
+// passes them as first argument to pango_extents_to_pixels()).
+/*
+
+C function : pango_layout_get_pixel_extents
+*/
 func (recv *Layout) GetPixelExtents() (*Rectangle, *Rectangle) {
 	var c_ink_rect C.PangoRectangle
 
@@ -720,7 +936,15 @@ func (recv *Layout) GetPixelExtents() (*Rectangle, *Rectangle) {
 	return inkRect, logicalRect
 }
 
-// GetPixelSize is a wrapper around the C function pango_layout_get_pixel_size.
+// Determines the logical width and height of a #PangoLayout
+// in device units. (pango_layout_get_size() returns the width
+// and height scaled by %PANGO_SCALE.) This
+// is simply a convenience function around
+// pango_layout_get_pixel_extents().
+/*
+
+C function : pango_layout_get_pixel_size
+*/
 func (recv *Layout) GetPixelSize() (int32, int32) {
 	var c_width C.int
 
@@ -735,7 +959,11 @@ func (recv *Layout) GetPixelSize() (int32, int32) {
 	return width, height
 }
 
-// GetSingleParagraphMode is a wrapper around the C function pango_layout_get_single_paragraph_mode.
+// Obtains the value set by pango_layout_set_single_paragraph_mode().
+/*
+
+C function : pango_layout_get_single_paragraph_mode
+*/
 func (recv *Layout) GetSingleParagraphMode() bool {
 	retC := C.pango_layout_get_single_paragraph_mode((*C.PangoLayout)(recv.native))
 	retGo := retC == C.TRUE
@@ -743,7 +971,13 @@ func (recv *Layout) GetSingleParagraphMode() bool {
 	return retGo
 }
 
-// GetSize is a wrapper around the C function pango_layout_get_size.
+// Determines the logical width and height of a #PangoLayout
+// in Pango units (device units scaled by %PANGO_SCALE). This
+// is simply a convenience function around pango_layout_get_extents().
+/*
+
+C function : pango_layout_get_size
+*/
 func (recv *Layout) GetSize() (int32, int32) {
 	var c_width C.int
 
@@ -758,7 +992,11 @@ func (recv *Layout) GetSize() (int32, int32) {
 	return width, height
 }
 
-// GetSpacing is a wrapper around the C function pango_layout_get_spacing.
+// Gets the amount of spacing between the lines of the layout.
+/*
+
+C function : pango_layout_get_spacing
+*/
 func (recv *Layout) GetSpacing() int32 {
 	retC := C.pango_layout_get_spacing((*C.PangoLayout)(recv.native))
 	retGo := (int32)(retC)
@@ -766,7 +1004,14 @@ func (recv *Layout) GetSpacing() int32 {
 	return retGo
 }
 
-// GetTabs is a wrapper around the C function pango_layout_get_tabs.
+// Gets the current #PangoTabArray used by this layout. If no
+// #PangoTabArray has been set, then the default tabs are in use
+// and %NULL is returned. Default tabs are every 8 spaces.
+// The return value should be freed with pango_tab_array_free().
+/*
+
+C function : pango_layout_get_tabs
+*/
 func (recv *Layout) GetTabs() *TabArray {
 	retC := C.pango_layout_get_tabs((*C.PangoLayout)(recv.native))
 	var retGo (*TabArray)
@@ -779,7 +1024,12 @@ func (recv *Layout) GetTabs() *TabArray {
 	return retGo
 }
 
-// GetText is a wrapper around the C function pango_layout_get_text.
+// Gets the text in the layout. The returned text should not
+// be freed or modified.
+/*
+
+C function : pango_layout_get_text
+*/
 func (recv *Layout) GetText() string {
 	retC := C.pango_layout_get_text((*C.PangoLayout)(recv.native))
 	retGo := C.GoString(retC)
@@ -787,7 +1037,11 @@ func (recv *Layout) GetText() string {
 	return retGo
 }
 
-// GetWidth is a wrapper around the C function pango_layout_get_width.
+// Gets the width to which the lines of the #PangoLayout should wrap.
+/*
+
+C function : pango_layout_get_width
+*/
 func (recv *Layout) GetWidth() int32 {
 	retC := C.pango_layout_get_width((*C.PangoLayout)(recv.native))
 	retGo := (int32)(retC)
@@ -795,7 +1049,14 @@ func (recv *Layout) GetWidth() int32 {
 	return retGo
 }
 
-// GetWrap is a wrapper around the C function pango_layout_get_wrap.
+// Gets the wrap mode for the layout.
+//
+// Use pango_layout_is_wrapped() to query whether any paragraphs
+// were actually wrapped.
+/*
+
+C function : pango_layout_get_wrap
+*/
 func (recv *Layout) GetWrap() WrapMode {
 	retC := C.pango_layout_get_wrap((*C.PangoLayout)(recv.native))
 	retGo := (WrapMode)(retC)
@@ -803,7 +1064,12 @@ func (recv *Layout) GetWrap() WrapMode {
 	return retGo
 }
 
-// IndexToLineX is a wrapper around the C function pango_layout_index_to_line_x.
+// Converts from byte @index_ within the @layout to line and X position.
+// (X position is measured from the left edge of the line)
+/*
+
+C function : pango_layout_index_to_line_x
+*/
 func (recv *Layout) IndexToLineX(index int32, trailing bool) (int32, int32) {
 	c_index_ := (C.int)(index)
 
@@ -823,7 +1089,16 @@ func (recv *Layout) IndexToLineX(index int32, trailing bool) (int32, int32) {
 	return line, xPos
 }
 
-// IndexToPos is a wrapper around the C function pango_layout_index_to_pos.
+// Converts from an index within a #PangoLayout to the onscreen position
+// corresponding to the grapheme at that index, which is represented
+// as rectangle.  Note that <literal>pos->x</literal> is always the leading
+// edge of the grapheme and <literal>pos->x + pos->width</literal> the trailing
+// edge of the grapheme. If the directionality of the grapheme is right-to-left,
+// then <literal>pos->width</literal> will be negative.
+/*
+
+C function : pango_layout_index_to_pos
+*/
 func (recv *Layout) IndexToPos(index int32) *Rectangle {
 	c_index_ := (C.int)(index)
 
@@ -836,7 +1111,26 @@ func (recv *Layout) IndexToPos(index int32) *Rectangle {
 	return pos
 }
 
-// MoveCursorVisually is a wrapper around the C function pango_layout_move_cursor_visually.
+// Computes a new cursor position from an old position and
+// a count of positions to move visually. If @direction is positive,
+// then the new strong cursor position will be one position
+// to the right of the old cursor position. If @direction is negative,
+// then the new strong cursor position will be one position
+// to the left of the old cursor position.
+//
+// In the presence of bidirectional text, the correspondence
+// between logical and visual order will depend on the direction
+// of the current run, and there may be jumps when the cursor
+// is moved off of the end of a run.
+//
+// Motion here is in cursor positions, not in characters, so a
+// single call to pango_layout_move_cursor_visually() may move the
+// cursor over multiple characters when multiple characters combine
+// to form a single grapheme.
+/*
+
+C function : pango_layout_move_cursor_visually
+*/
 func (recv *Layout) MoveCursorVisually(strong bool, oldIndex int32, oldTrailing int32, direction int32) (int32, int32) {
 	c_strong :=
 		boolToGboolean(strong)
@@ -860,7 +1154,12 @@ func (recv *Layout) MoveCursorVisually(strong bool, oldIndex int32, oldTrailing 
 	return newIndex, newTrailing
 }
 
-// SetAlignment is a wrapper around the C function pango_layout_set_alignment.
+// Sets the alignment for the layout: how partial lines are
+// positioned within the horizontal space available.
+/*
+
+C function : pango_layout_set_alignment
+*/
 func (recv *Layout) SetAlignment(alignment Alignment) {
 	c_alignment := (C.PangoAlignment)(alignment)
 
@@ -869,7 +1168,12 @@ func (recv *Layout) SetAlignment(alignment Alignment) {
 	return
 }
 
-// SetAttributes is a wrapper around the C function pango_layout_set_attributes.
+// Sets the text attributes for a layout object.
+// References @attrs, so the caller can unref its reference.
+/*
+
+C function : pango_layout_set_attributes
+*/
 func (recv *Layout) SetAttributes(attrs *AttrList) {
 	c_attrs := (*C.PangoAttrList)(C.NULL)
 	if attrs != nil {
@@ -881,7 +1185,13 @@ func (recv *Layout) SetAttributes(attrs *AttrList) {
 	return
 }
 
-// SetFontDescription is a wrapper around the C function pango_layout_set_font_description.
+// Sets the default font description for the layout. If no font
+// description is set on the layout, the font description from
+// the layout's context is used.
+/*
+
+C function : pango_layout_set_font_description
+*/
 func (recv *Layout) SetFontDescription(desc *FontDescription) {
 	c_desc := (*C.PangoFontDescription)(C.NULL)
 	if desc != nil {
@@ -893,7 +1203,17 @@ func (recv *Layout) SetFontDescription(desc *FontDescription) {
 	return
 }
 
-// SetIndent is a wrapper around the C function pango_layout_set_indent.
+// Sets the width in Pango units to indent each paragraph. A negative value
+// of @indent will produce a hanging indentation. That is, the first line will
+// have the full width, and subsequent lines will be indented by the
+// absolute value of @indent.
+//
+// The indent setting is ignored if layout alignment is set to
+// %PANGO_ALIGN_CENTER.
+/*
+
+C function : pango_layout_set_indent
+*/
 func (recv *Layout) SetIndent(indent int32) {
 	c_indent := (C.int)(indent)
 
@@ -902,7 +1222,18 @@ func (recv *Layout) SetIndent(indent int32) {
 	return
 }
 
-// SetJustify is a wrapper around the C function pango_layout_set_justify.
+// Sets whether each complete line should be stretched to
+// fill the entire width of the layout. This stretching is typically
+// done by adding whitespace, but for some scripts (such as Arabic),
+// the justification may be done in more complex ways, like extending
+// the characters.
+//
+// Note that this setting is not implemented and so is ignored in Pango
+// older than 1.18.
+/*
+
+C function : pango_layout_set_justify
+*/
 func (recv *Layout) SetJustify(justify bool) {
 	c_justify :=
 		boolToGboolean(justify)
@@ -912,7 +1243,12 @@ func (recv *Layout) SetJustify(justify bool) {
 	return
 }
 
-// SetMarkup is a wrapper around the C function pango_layout_set_markup.
+// Same as pango_layout_set_markup_with_accel(), but
+// the markup text isn't scanned for accelerators.
+/*
+
+C function : pango_layout_set_markup
+*/
 func (recv *Layout) SetMarkup(markup string, length int32) {
 	c_markup := C.CString(markup)
 	defer C.free(unsafe.Pointer(c_markup))
@@ -926,7 +1262,14 @@ func (recv *Layout) SetMarkup(markup string, length int32) {
 
 // Blacklisted : pango_layout_set_markup_with_accel
 
-// SetSingleParagraphMode is a wrapper around the C function pango_layout_set_single_paragraph_mode.
+// If @setting is %TRUE, do not treat newlines and similar characters
+// as paragraph separators; instead, keep all text in a single paragraph,
+// and display a glyph for paragraph separator characters. Used when
+// you want to allow editing of newlines on a single text line.
+/*
+
+C function : pango_layout_set_single_paragraph_mode
+*/
 func (recv *Layout) SetSingleParagraphMode(setting bool) {
 	c_setting :=
 		boolToGboolean(setting)
@@ -936,7 +1279,12 @@ func (recv *Layout) SetSingleParagraphMode(setting bool) {
 	return
 }
 
-// SetSpacing is a wrapper around the C function pango_layout_set_spacing.
+// Sets the amount of spacing in Pango unit between the lines of the
+// layout.
+/*
+
+C function : pango_layout_set_spacing
+*/
 func (recv *Layout) SetSpacing(spacing int32) {
 	c_spacing := (C.int)(spacing)
 
@@ -945,7 +1293,14 @@ func (recv *Layout) SetSpacing(spacing int32) {
 	return
 }
 
-// SetTabs is a wrapper around the C function pango_layout_set_tabs.
+// Sets the tabs to use for @layout, overriding the default tabs
+// (by default, tabs are every 8 spaces). If @tabs is %NULL, the default
+// tabs are reinstated. @tabs is copied into the layout; you must
+// free your copy of @tabs yourself.
+/*
+
+C function : pango_layout_set_tabs
+*/
 func (recv *Layout) SetTabs(tabs *TabArray) {
 	c_tabs := (*C.PangoTabArray)(C.NULL)
 	if tabs != nil {
@@ -957,7 +1312,17 @@ func (recv *Layout) SetTabs(tabs *TabArray) {
 	return
 }
 
-// SetText is a wrapper around the C function pango_layout_set_text.
+// Sets the text of the layout.
+//
+// Note that if you have used
+// pango_layout_set_markup() or pango_layout_set_markup_with_accel() on
+// @layout before, you may want to call pango_layout_set_attributes() to clear
+// the attributes set on the layout from the markup as this function does not
+// clear attributes.
+/*
+
+C function : pango_layout_set_text
+*/
 func (recv *Layout) SetText(text string, length int32) {
 	c_text := C.CString(text)
 	defer C.free(unsafe.Pointer(c_text))
@@ -969,7 +1334,12 @@ func (recv *Layout) SetText(text string, length int32) {
 	return
 }
 
-// SetWidth is a wrapper around the C function pango_layout_set_width.
+// Sets the width to which the lines of the #PangoLayout should wrap or
+// ellipsized.  The default value is -1: no width set.
+/*
+
+C function : pango_layout_set_width
+*/
 func (recv *Layout) SetWidth(width int32) {
 	c_width := (C.int)(width)
 
@@ -978,7 +1348,13 @@ func (recv *Layout) SetWidth(width int32) {
 	return
 }
 
-// SetWrap is a wrapper around the C function pango_layout_set_wrap.
+// Sets the wrap mode; the wrap mode only has effect if a width
+// is set on the layout with pango_layout_set_width().
+// To turn off wrapping, set the width to -1.
+/*
+
+C function : pango_layout_set_wrap
+*/
 func (recv *Layout) SetWrap(wrap WrapMode) {
 	c_wrap := (C.PangoWrapMode)(wrap)
 
@@ -987,7 +1363,18 @@ func (recv *Layout) SetWrap(wrap WrapMode) {
 	return
 }
 
-// XyToIndex is a wrapper around the C function pango_layout_xy_to_index.
+// Converts from X and Y position within a layout to the byte
+// index to the character at that logical position. If the
+// Y position is not inside the layout, the closest position is chosen
+// (the position will be clamped inside the layout). If the
+// X position is not within the layout, then the start or the
+// end of the line is chosen as described for pango_layout_line_x_to_index().
+// If either the X or Y positions were not inside the layout, then the
+// function returns %FALSE; on an exact hit, it returns %TRUE.
+/*
+
+C function : pango_layout_xy_to_index
+*/
 func (recv *Layout) XyToIndex(x int32, y int32) (bool, int32, int32) {
 	c_x := (C.int)(x)
 

@@ -14,7 +14,12 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// CairoSurfaceCreateFromPixbuf is a wrapper around the C function gdk_cairo_surface_create_from_pixbuf.
+// Creates an image surface with the same contents as
+// the pixbuf.
+/*
+
+C function : gdk_cairo_surface_create_from_pixbuf
+*/
 func CairoSurfaceCreateFromPixbuf(pixbuf *gdkpixbuf.Pixbuf, scale int32, forWindow *Window) *cairo.Surface {
 	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
 	if pixbuf != nil {
@@ -34,7 +39,37 @@ func CairoSurfaceCreateFromPixbuf(pixbuf *gdkpixbuf.Pixbuf, scale int32, forWind
 	return retGo
 }
 
-// SetAllowedBackends is a wrapper around the C function gdk_set_allowed_backends.
+// Sets a list of backends that GDK should try to use.
+//
+// This can be be useful if your application does not
+// work with certain GDK backends.
+//
+// By default, GDK tries all included backends.
+//
+// For example,
+// |[<!-- language="C" -->
+// gdk_set_allowed_backends ("wayland,quartz,*");
+// ]|
+// instructs GDK to try the Wayland backend first,
+// followed by the Quartz backend, and then all
+// others.
+//
+// If the `GDK_BACKEND` environment variable
+// is set, it determines what backends are tried in what
+// order, while still respecting the set of allowed backends
+// that are specified by this function.
+//
+// The possible backend names are x11, win32, quartz,
+// broadway, wayland. You can also include a * in the
+// list to try all remaining backends.
+//
+// This call must happen prior to gdk_display_open(),
+// gtk_init(), gtk_init_with_args() or gtk_init_check()
+// in order to take effect.
+/*
+
+C function : gdk_set_allowed_backends
+*/
 func SetAllowedBackends(backends string) {
 	c_backends := C.CString(backends)
 	defer C.free(unsafe.Pointer(c_backends))

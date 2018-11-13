@@ -31,7 +31,12 @@ func (recv *DevicePad) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// GetFeatureGroup is a wrapper around the C function gdk_device_pad_get_feature_group.
+// Returns the group the given @feature and @idx belong to,
+// or -1 if feature/index do not exist in @pad.
+/*
+
+C function : gdk_device_pad_get_feature_group
+*/
 func (recv *DevicePad) GetFeatureGroup(feature DevicePadFeature, featureIdx int32) int32 {
 	c_feature := (C.GdkDevicePadFeature)(feature)
 
@@ -43,7 +48,11 @@ func (recv *DevicePad) GetFeatureGroup(feature DevicePadFeature, featureIdx int3
 	return retGo
 }
 
-// GetGroupNModes is a wrapper around the C function gdk_device_pad_get_group_n_modes.
+// Returns the number of modes that @group may have.
+/*
+
+C function : gdk_device_pad_get_group_n_modes
+*/
 func (recv *DevicePad) GetGroupNModes(groupIdx int32) int32 {
 	c_group_idx := (C.gint)(groupIdx)
 
@@ -53,7 +62,11 @@ func (recv *DevicePad) GetGroupNModes(groupIdx int32) int32 {
 	return retGo
 }
 
-// GetNFeatures is a wrapper around the C function gdk_device_pad_get_n_features.
+// Returns the number of features a tablet pad has.
+/*
+
+C function : gdk_device_pad_get_n_features
+*/
 func (recv *DevicePad) GetNFeatures(feature DevicePadFeature) int32 {
 	c_feature := (C.GdkDevicePadFeature)(feature)
 
@@ -63,7 +76,14 @@ func (recv *DevicePad) GetNFeatures(feature DevicePadFeature) int32 {
 	return retGo
 }
 
-// GetNGroups is a wrapper around the C function gdk_device_pad_get_n_groups.
+// Returns the number of groups this pad device has. Pads have
+// at least one group. A pad group is a subcollection of
+// buttons/strip/rings that is affected collectively by a same
+// current mode.
+/*
+
+C function : gdk_device_pad_get_n_groups
+*/
 func (recv *DevicePad) GetNGroups() int32 {
 	retC := C.gdk_device_pad_get_n_groups((*C.GdkDevicePad)(recv.native))
 	retGo := (int32)(retC)

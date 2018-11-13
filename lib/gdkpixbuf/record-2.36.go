@@ -10,7 +10,13 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// IsSaveOptionSupported is a wrapper around the C function gdk_pixbuf_format_is_save_option_supported.
+// Returns %TRUE if the save option specified by @option_key is supported when
+// saving a pixbuf using the module implementing @format.
+// See gdk_pixbuf_save() for more information about option keys.
+/*
+
+C function : gdk_pixbuf_format_is_save_option_supported
+*/
 func (recv *PixbufFormat) IsSaveOptionSupported(optionKey string) bool {
 	c_option_key := C.CString(optionKey)
 	defer C.free(unsafe.Pointer(c_option_key))

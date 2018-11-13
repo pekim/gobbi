@@ -10,7 +10,11 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// AttrLetterSpacingNew is a wrapper around the C function pango_attr_letter_spacing_new.
+// Create a new letter-spacing attribute.
+/*
+
+C function : pango_attr_letter_spacing_new
+*/
 func AttrLetterSpacingNew(letterSpacing int32) *Attribute {
 	c_letter_spacing := (C.int)(letterSpacing)
 

@@ -19,7 +19,12 @@ import "C"
 
 // Unsupported : atk_focus_tracker_init : unsupported parameter init : no type generator for EventListenerInit (AtkEventListenerInit) for param init
 
-// FocusTrackerNotify is a wrapper around the C function atk_focus_tracker_notify.
+// Cause the focus tracker functions which have been specified to be
+// executed for the object.
+/*
+
+C function : atk_focus_tracker_notify
+*/
 func FocusTrackerNotify(object *Object) {
 	c_object := (*C.AtkObject)(C.NULL)
 	if object != nil {
@@ -31,7 +36,17 @@ func FocusTrackerNotify(object *Object) {
 	return
 }
 
-// GetDefaultRegistry is a wrapper around the C function atk_get_default_registry.
+// Gets a default implementation of the #AtkObjectFactory/type
+// registry.
+// Note: For most toolkit maintainers, this will be the correct
+// registry for registering new #AtkObject factories. Following
+// a call to this function, maintainers may call atk_registry_set_factory_type()
+// to associate an #AtkObjectFactory subclass with the GType of objects
+// for whom accessibility information will be provided.
+/*
+
+C function : atk_get_default_registry
+*/
 func GetDefaultRegistry() *Registry {
 	retC := C.atk_get_default_registry()
 	retGo := RegistryNewFromC(unsafe.Pointer(retC))
@@ -39,7 +54,11 @@ func GetDefaultRegistry() *Registry {
 	return retGo
 }
 
-// GetRoot is a wrapper around the C function atk_get_root.
+// Gets the root accessible container for the current application.
+/*
+
+C function : atk_get_root
+*/
 func GetRoot() *Object {
 	retC := C.atk_get_root()
 	retGo := ObjectNewFromC(unsafe.Pointer(retC))
@@ -47,7 +66,11 @@ func GetRoot() *Object {
 	return retGo
 }
 
-// GetToolkitName is a wrapper around the C function atk_get_toolkit_name.
+// Gets name string for the GUI toolkit implementing ATK for this application.
+/*
+
+C function : atk_get_toolkit_name
+*/
 func GetToolkitName() string {
 	retC := C.atk_get_toolkit_name()
 	retGo := C.GoString(retC)
@@ -55,7 +78,11 @@ func GetToolkitName() string {
 	return retGo
 }
 
-// GetToolkitVersion is a wrapper around the C function atk_get_toolkit_version.
+// Gets version string for the GUI toolkit implementing ATK for this application.
+/*
+
+C function : atk_get_toolkit_version
+*/
 func GetToolkitVersion() string {
 	retC := C.atk_get_toolkit_version()
 	retGo := C.GoString(retC)
@@ -63,7 +90,11 @@ func GetToolkitVersion() string {
 	return retGo
 }
 
-// RelationTypeForName is a wrapper around the C function atk_relation_type_for_name.
+// Get the #AtkRelationType type corresponding to a relation name.
+/*
+
+C function : atk_relation_type_for_name
+*/
 func RelationTypeForName(name string) RelationType {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -74,7 +105,11 @@ func RelationTypeForName(name string) RelationType {
 	return retGo
 }
 
-// RelationTypeGetName is a wrapper around the C function atk_relation_type_get_name.
+// Gets the description string describing the #AtkRelationType @type.
+/*
+
+C function : atk_relation_type_get_name
+*/
 func RelationTypeGetName(type_ RelationType) string {
 	c_type := (C.AtkRelationType)(type_)
 
@@ -84,7 +119,11 @@ func RelationTypeGetName(type_ RelationType) string {
 	return retGo
 }
 
-// RelationTypeRegister is a wrapper around the C function atk_relation_type_register.
+// Associate @name with a new #AtkRelationType
+/*
+
+C function : atk_relation_type_register
+*/
 func RelationTypeRegister(name string) RelationType {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -95,7 +134,10 @@ func RelationTypeRegister(name string) RelationType {
 	return retGo
 }
 
-// RemoveFocusTracker is a wrapper around the C function atk_remove_focus_tracker.
+/*
+
+C function : atk_remove_focus_tracker
+*/
 func RemoveFocusTracker(trackerId uint32) {
 	c_tracker_id := (C.guint)(trackerId)
 
@@ -104,7 +146,21 @@ func RemoveFocusTracker(trackerId uint32) {
 	return
 }
 
-// RemoveGlobalEventListener is a wrapper around the C function atk_remove_global_event_listener.
+// @listener_id is the value returned by #atk_add_global_event_listener
+// when you registered that event listener.
+//
+// Toolkit implementor note: ATK provides a default implementation for
+// this virtual method. ATK implementors are discouraged from
+// reimplementing this method.
+//
+// Toolkit implementor note: this method is not intended to be used by
+// ATK implementors but by ATK consumers.
+//
+// Removes the specified event listener
+/*
+
+C function : atk_remove_global_event_listener
+*/
 func RemoveGlobalEventListener(listenerId uint32) {
 	c_listener_id := (C.guint)(listenerId)
 
@@ -113,7 +169,14 @@ func RemoveGlobalEventListener(listenerId uint32) {
 	return
 }
 
-// RemoveKeyEventListener is a wrapper around the C function atk_remove_key_event_listener.
+// @listener_id is the value returned by #atk_add_key_event_listener
+// when you registered that event listener.
+//
+// Removes the specified event listener.
+/*
+
+C function : atk_remove_key_event_listener
+*/
 func RemoveKeyEventListener(listenerId uint32) {
 	c_listener_id := (C.guint)(listenerId)
 
@@ -122,7 +185,11 @@ func RemoveKeyEventListener(listenerId uint32) {
 	return
 }
 
-// RoleForName is a wrapper around the C function atk_role_for_name.
+// Get the #AtkRole type corresponding to a rolew name.
+/*
+
+C function : atk_role_for_name
+*/
 func RoleForName(name string) Role {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -133,7 +200,11 @@ func RoleForName(name string) Role {
 	return retGo
 }
 
-// RoleGetLocalizedName is a wrapper around the C function atk_role_get_localized_name.
+// Gets the localized description string describing the #AtkRole @role.
+/*
+
+C function : atk_role_get_localized_name
+*/
 func RoleGetLocalizedName(role Role) string {
 	c_role := (C.AtkRole)(role)
 
@@ -143,7 +214,11 @@ func RoleGetLocalizedName(role Role) string {
 	return retGo
 }
 
-// RoleGetName is a wrapper around the C function atk_role_get_name.
+// Gets the description string describing the #AtkRole @role.
+/*
+
+C function : atk_role_get_name
+*/
 func RoleGetName(role Role) string {
 	c_role := (C.AtkRole)(role)
 
@@ -153,7 +228,12 @@ func RoleGetName(role Role) string {
 	return retGo
 }
 
-// RoleRegister is a wrapper around the C function atk_role_register.
+// Registers the role specified by @name. @name must be a meaningful
+// name. So it should not be empty, or consisting on whitespaces.
+/*
+
+C function : atk_role_register
+*/
 func RoleRegister(name string) Role {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -164,7 +244,11 @@ func RoleRegister(name string) Role {
 	return retGo
 }
 
-// StateTypeForName is a wrapper around the C function atk_state_type_for_name.
+// Gets the #AtkStateType corresponding to the description string @name.
+/*
+
+C function : atk_state_type_for_name
+*/
 func StateTypeForName(name string) StateType {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -175,7 +259,11 @@ func StateTypeForName(name string) StateType {
 	return retGo
 }
 
-// StateTypeGetName is a wrapper around the C function atk_state_type_get_name.
+// Gets the description string describing the #AtkStateType @type.
+/*
+
+C function : atk_state_type_get_name
+*/
 func StateTypeGetName(type_ StateType) string {
 	c_type := (C.AtkStateType)(type_)
 
@@ -185,7 +273,11 @@ func StateTypeGetName(type_ StateType) string {
 	return retGo
 }
 
-// StateTypeRegister is a wrapper around the C function atk_state_type_register.
+// Register a new object state.
+/*
+
+C function : atk_state_type_register
+*/
 func StateTypeRegister(name string) StateType {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -196,7 +288,11 @@ func StateTypeRegister(name string) StateType {
 	return retGo
 }
 
-// TextAttributeForName is a wrapper around the C function atk_text_attribute_for_name.
+// Get the #AtkTextAttribute type corresponding to a text attribute name.
+/*
+
+C function : atk_text_attribute_for_name
+*/
 func TextAttributeForName(name string) TextAttribute {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -207,7 +303,11 @@ func TextAttributeForName(name string) TextAttribute {
 	return retGo
 }
 
-// TextAttributeGetName is a wrapper around the C function atk_text_attribute_get_name.
+// Gets the name corresponding to the #AtkTextAttribute
+/*
+
+C function : atk_text_attribute_get_name
+*/
 func TextAttributeGetName(attr TextAttribute) string {
 	c_attr := (C.AtkTextAttribute)(attr)
 
@@ -217,7 +317,11 @@ func TextAttributeGetName(attr TextAttribute) string {
 	return retGo
 }
 
-// TextAttributeGetValue is a wrapper around the C function atk_text_attribute_get_value.
+// Gets the value for the index of the #AtkTextAttribute
+/*
+
+C function : atk_text_attribute_get_value
+*/
 func TextAttributeGetValue(attr TextAttribute, index int32) string {
 	c_attr := (C.AtkTextAttribute)(attr)
 
@@ -229,7 +333,11 @@ func TextAttributeGetValue(attr TextAttribute, index int32) string {
 	return retGo
 }
 
-// TextAttributeRegister is a wrapper around the C function atk_text_attribute_register.
+// Associate @name with a new #AtkTextAttribute
+/*
+
+C function : atk_text_attribute_register
+*/
 func TextAttributeRegister(name string) TextAttribute {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -240,7 +348,11 @@ func TextAttributeRegister(name string) TextAttribute {
 	return retGo
 }
 
-// ValueTypeGetLocalizedName is a wrapper around the C function atk_value_type_get_localized_name.
+// Gets the localized description string describing the #AtkValueType @value_type.
+/*
+
+C function : atk_value_type_get_localized_name
+*/
 func ValueTypeGetLocalizedName(valueType ValueType) string {
 	c_value_type := (C.AtkValueType)(valueType)
 
@@ -250,7 +362,11 @@ func ValueTypeGetLocalizedName(valueType ValueType) string {
 	return retGo
 }
 
-// ValueTypeGetName is a wrapper around the C function atk_value_type_get_name.
+// Gets the description string describing the #AtkValueType @value_type.
+/*
+
+C function : atk_value_type_get_name
+*/
 func ValueTypeGetName(valueType ValueType) string {
 	c_value_type := (C.AtkValueType)(valueType)
 

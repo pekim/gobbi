@@ -1763,7 +1763,11 @@ func CastToAccelGroup(object *gobject.Object) *AccelGroup {
 
 // Unsupported signal 'accel-changed' for AccelGroup : unsupported parameter keyval : type guint :
 
-// AccelGroupNew is a wrapper around the C function gtk_accel_group_new.
+// Creates a new #GtkAccelGroup.
+/*
+
+C function : gtk_accel_group_new
+*/
 func AccelGroupNew() *AccelGroup {
 	retC := C.gtk_accel_group_new()
 	retGo := AccelGroupNewFromC(unsafe.Pointer(retC))
@@ -1771,7 +1775,12 @@ func AccelGroupNew() *AccelGroup {
 	return retGo
 }
 
-// Activate is a wrapper around the C function gtk_accel_group_activate.
+// Finds the first accelerator in @accel_group that matches
+// @accel_key and @accel_mods, and activates it.
+/*
+
+C function : gtk_accel_group_activate
+*/
 func (recv *AccelGroup) Activate(accelQuark glib.Quark, acceleratable *gobject.Object, accelKey uint32, accelMods gdk.ModifierType) bool {
 	c_accel_quark := (C.GQuark)(accelQuark)
 
@@ -1790,7 +1799,19 @@ func (recv *AccelGroup) Activate(accelQuark glib.Quark, acceleratable *gobject.O
 	return retGo
 }
 
-// Connect is a wrapper around the C function gtk_accel_group_connect.
+// Installs an accelerator in this group. When @accel_group is being
+// activated in response to a call to gtk_accel_groups_activate(),
+// @closure will be invoked if the @accel_key and @accel_mods from
+// gtk_accel_groups_activate() match those of this connection.
+//
+// The signature used for the @closure is that of #GtkAccelGroupActivate.
+//
+// Note that, due to implementation details, a single closure can
+// only be connected to one accelerator group.
+/*
+
+C function : gtk_accel_group_connect
+*/
 func (recv *AccelGroup) Connect(accelKey uint32, accelMods gdk.ModifierType, accelFlags AccelFlags, closure *gobject.Closure) {
 	c_accel_key := (C.guint)(accelKey)
 
@@ -1808,7 +1829,22 @@ func (recv *AccelGroup) Connect(accelKey uint32, accelMods gdk.ModifierType, acc
 	return
 }
 
-// ConnectByPath is a wrapper around the C function gtk_accel_group_connect_by_path.
+// Installs an accelerator in this group, using an accelerator path
+// to look up the appropriate key and modifiers (see
+// gtk_accel_map_add_entry()). When @accel_group is being activated
+// in response to a call to gtk_accel_groups_activate(), @closure will
+// be invoked if the @accel_key and @accel_mods from
+// gtk_accel_groups_activate() match the key and modifiers for the path.
+//
+// The signature used for the @closure is that of #GtkAccelGroupActivate.
+//
+// Note that @accel_path string will be stored in a #GQuark. Therefore,
+// if you pass a static string, you can save some memory by interning it
+// first with g_intern_static_string().
+/*
+
+C function : gtk_accel_group_connect_by_path
+*/
 func (recv *AccelGroup) ConnectByPath(accelPath string, closure *gobject.Closure) {
 	c_accel_path := C.CString(accelPath)
 	defer C.free(unsafe.Pointer(c_accel_path))
@@ -1823,7 +1859,14 @@ func (recv *AccelGroup) ConnectByPath(accelPath string, closure *gobject.Closure
 	return
 }
 
-// Disconnect is a wrapper around the C function gtk_accel_group_disconnect.
+// Removes an accelerator previously installed through
+// gtk_accel_group_connect().
+//
+// Since 2.20 @closure can be %NULL.
+/*
+
+C function : gtk_accel_group_disconnect
+*/
 func (recv *AccelGroup) Disconnect(closure *gobject.Closure) bool {
 	c_closure := (*C.GClosure)(C.NULL)
 	if closure != nil {
@@ -1836,7 +1879,12 @@ func (recv *AccelGroup) Disconnect(closure *gobject.Closure) bool {
 	return retGo
 }
 
-// DisconnectKey is a wrapper around the C function gtk_accel_group_disconnect_key.
+// Removes an accelerator previously installed through
+// gtk_accel_group_connect().
+/*
+
+C function : gtk_accel_group_disconnect_key
+*/
 func (recv *AccelGroup) DisconnectKey(accelKey uint32, accelMods gdk.ModifierType) bool {
 	c_accel_key := (C.guint)(accelKey)
 
@@ -1850,7 +1898,19 @@ func (recv *AccelGroup) DisconnectKey(accelKey uint32, accelMods gdk.ModifierTyp
 
 // Unsupported : gtk_accel_group_find : unsupported parameter find_func : no type generator for AccelGroupFindFunc (GtkAccelGroupFindFunc) for param find_func
 
-// Lock is a wrapper around the C function gtk_accel_group_lock.
+// Locks the given accelerator group.
+//
+// Locking an acelerator group prevents the accelerators contained
+// within it to be changed during runtime. Refer to
+// gtk_accel_map_change_entry() about runtime accelerator changes.
+//
+// If called more than once, @accel_group remains locked until
+// gtk_accel_group_unlock() has been called an equivalent number
+// of times.
+/*
+
+C function : gtk_accel_group_lock
+*/
 func (recv *AccelGroup) Lock() {
 	C.gtk_accel_group_lock((*C.GtkAccelGroup)(recv.native))
 
@@ -1859,7 +1919,11 @@ func (recv *AccelGroup) Lock() {
 
 // Unsupported : gtk_accel_group_query : no return type
 
-// Unlock is a wrapper around the C function gtk_accel_group_unlock.
+// Undoes the last call to gtk_accel_group_lock() on this @accel_group.
+/*
+
+C function : gtk_accel_group_unlock
+*/
 func (recv *AccelGroup) Unlock() {
 	C.gtk_accel_group_unlock((*C.GtkAccelGroup)(recv.native))
 
@@ -1920,7 +1984,11 @@ func CastToAccelLabel(object *gobject.Object) *AccelLabel {
 	return AccelLabelNewFromC(object.ToC())
 }
 
-// AccelLabelNew is a wrapper around the C function gtk_accel_label_new.
+// Creates a new #GtkAccelLabel.
+/*
+
+C function : gtk_accel_label_new
+*/
 func AccelLabelNew(string string) *AccelLabel {
 	c_string := C.CString(string)
 	defer C.free(unsafe.Pointer(c_string))
@@ -1931,7 +1999,12 @@ func AccelLabelNew(string string) *AccelLabel {
 	return retGo
 }
 
-// GetAccelWidget is a wrapper around the C function gtk_accel_label_get_accel_widget.
+// Fetches the widget monitored by this accelerator label. See
+// gtk_accel_label_set_accel_widget().
+/*
+
+C function : gtk_accel_label_get_accel_widget
+*/
 func (recv *AccelLabel) GetAccelWidget() *Widget {
 	retC := C.gtk_accel_label_get_accel_widget((*C.GtkAccelLabel)(recv.native))
 	var retGo (*Widget)
@@ -1944,7 +2017,13 @@ func (recv *AccelLabel) GetAccelWidget() *Widget {
 	return retGo
 }
 
-// GetAccelWidth is a wrapper around the C function gtk_accel_label_get_accel_width.
+// Returns the width needed to display the accelerator key(s).
+// This is used by menus to align all of the #GtkMenuItem widgets, and shouldn't
+// be needed by applications.
+/*
+
+C function : gtk_accel_label_get_accel_width
+*/
 func (recv *AccelLabel) GetAccelWidth() uint32 {
 	retC := C.gtk_accel_label_get_accel_width((*C.GtkAccelLabel)(recv.native))
 	retGo := (uint32)(retC)
@@ -1952,7 +2031,13 @@ func (recv *AccelLabel) GetAccelWidth() uint32 {
 	return retGo
 }
 
-// Refetch is a wrapper around the C function gtk_accel_label_refetch.
+// Recreates the string representing the accelerator keys.
+// This should not be needed since the string is automatically updated whenever
+// accelerators are added or removed from the associated widget.
+/*
+
+C function : gtk_accel_label_refetch
+*/
 func (recv *AccelLabel) Refetch() bool {
 	retC := C.gtk_accel_label_refetch((*C.GtkAccelLabel)(recv.native))
 	retGo := retC == C.TRUE
@@ -1960,7 +2045,14 @@ func (recv *AccelLabel) Refetch() bool {
 	return retGo
 }
 
-// SetAccelClosure is a wrapper around the C function gtk_accel_label_set_accel_closure.
+// Sets the closure to be monitored by this accelerator label. The closure
+// must be connected to an accelerator group; see gtk_accel_group_connect().
+// Passing %NULL for @accel_closure will dissociate @accel_label from its
+// current closure, if any.
+/*
+
+C function : gtk_accel_label_set_accel_closure
+*/
 func (recv *AccelLabel) SetAccelClosure(accelClosure *gobject.Closure) {
 	c_accel_closure := (*C.GClosure)(C.NULL)
 	if accelClosure != nil {
@@ -1972,7 +2064,12 @@ func (recv *AccelLabel) SetAccelClosure(accelClosure *gobject.Closure) {
 	return
 }
 
-// SetAccelWidget is a wrapper around the C function gtk_accel_label_set_accel_widget.
+// Sets the widget to be monitored by this accelerator label. Passing %NULL for
+// @accel_widget will dissociate @accel_label from its current widget, if any.
+/*
+
+C function : gtk_accel_label_set_accel_widget
+*/
 func (recv *AccelLabel) SetAccelWidget(accelWidget *Widget) {
 	c_accel_widget := (*C.GtkWidget)(C.NULL)
 	if accelWidget != nil {
@@ -2060,7 +2157,12 @@ func CastToAccessible(object *gobject.Object) *Accessible {
 	return AccessibleNewFromC(object.ToC())
 }
 
-// ConnectWidgetDestroyed is a wrapper around the C function gtk_accessible_connect_widget_destroyed.
+// This function specifies the callback function to be called
+// when the widget corresponding to a GtkAccessible is destroyed.
+/*
+
+C function : gtk_accessible_connect_widget_destroyed
+*/
 func (recv *Accessible) ConnectWidgetDestroyed() {
 	C.gtk_accessible_connect_widget_destroyed((*C.GtkAccessible)(recv.native))
 
@@ -2361,7 +2463,11 @@ func adjustment_valueChangedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// AdjustmentNew is a wrapper around the C function gtk_adjustment_new.
+// Creates a new #GtkAdjustment.
+/*
+
+C function : gtk_adjustment_new
+*/
 func AdjustmentNew(value float64, lower float64, upper float64, stepIncrement float64, pageIncrement float64, pageSize float64) *Adjustment {
 	c_value := (C.gdouble)(value)
 
@@ -2381,14 +2487,30 @@ func AdjustmentNew(value float64, lower float64, upper float64, stepIncrement fl
 	return retGo
 }
 
-// Changed is a wrapper around the C function gtk_adjustment_changed.
+// Emits a #GtkAdjustment::changed signal from the #GtkAdjustment.
+// This is typically called by the owner of the #GtkAdjustment after it has
+// changed any of the #GtkAdjustment properties other than the value.
+/*
+
+C function : gtk_adjustment_changed
+*/
 func (recv *Adjustment) Changed() {
 	C.gtk_adjustment_changed((*C.GtkAdjustment)(recv.native))
 
 	return
 }
 
-// ClampPage is a wrapper around the C function gtk_adjustment_clamp_page.
+// Updates the #GtkAdjustment:value property to ensure that the range
+// between @lower and @upper is in the current page (i.e. between
+// #GtkAdjustment:value and #GtkAdjustment:value + #GtkAdjustment:page-size).
+// If the range is larger than the page size, then only the start of it will
+// be in the current page.
+//
+// A #GtkAdjustment::value-changed signal will be emitted if the value is changed.
+/*
+
+C function : gtk_adjustment_clamp_page
+*/
 func (recv *Adjustment) ClampPage(lower float64, upper float64) {
 	c_lower := (C.gdouble)(lower)
 
@@ -2399,7 +2521,12 @@ func (recv *Adjustment) ClampPage(lower float64, upper float64) {
 	return
 }
 
-// GetValue is a wrapper around the C function gtk_adjustment_get_value.
+// Gets the current value of the adjustment.
+// See gtk_adjustment_set_value().
+/*
+
+C function : gtk_adjustment_get_value
+*/
 func (recv *Adjustment) GetValue() float64 {
 	retC := C.gtk_adjustment_get_value((*C.GtkAdjustment)(recv.native))
 	retGo := (float64)(retC)
@@ -2407,7 +2534,16 @@ func (recv *Adjustment) GetValue() float64 {
 	return retGo
 }
 
-// SetValue is a wrapper around the C function gtk_adjustment_set_value.
+// Sets the #GtkAdjustment value. The value is clamped to lie between
+// #GtkAdjustment:lower and #GtkAdjustment:upper.
+//
+// Note that for adjustments which are used in a #GtkScrollbar, the
+// effective range of allowed values goes from #GtkAdjustment:lower to
+// #GtkAdjustment:upper - #GtkAdjustment:page-size.
+/*
+
+C function : gtk_adjustment_set_value
+*/
 func (recv *Adjustment) SetValue(value float64) {
 	c_value := (C.gdouble)(value)
 
@@ -2416,7 +2552,13 @@ func (recv *Adjustment) SetValue(value float64) {
 	return
 }
 
-// ValueChanged is a wrapper around the C function gtk_adjustment_value_changed.
+// Emits a #GtkAdjustment::value-changed signal from the #GtkAdjustment.
+// This is typically called by the owner of the #GtkAdjustment after it has
+// changed the #GtkAdjustment:value property.
+/*
+
+C function : gtk_adjustment_value_changed
+*/
 func (recv *Adjustment) ValueChanged() {
 	C.gtk_adjustment_value_changed((*C.GtkAdjustment)(recv.native))
 
@@ -2477,7 +2619,11 @@ func CastToAlignment(object *gobject.Object) *Alignment {
 	return AlignmentNewFromC(object.ToC())
 }
 
-// AlignmentNew is a wrapper around the C function gtk_alignment_new.
+// Creates a new #GtkAlignment.
+/*
+
+C function : gtk_alignment_new
+*/
 func AlignmentNew(xalign float32, yalign float32, xscale float32, yscale float32) *Alignment {
 	c_xalign := (C.gfloat)(xalign)
 
@@ -2493,7 +2639,11 @@ func AlignmentNew(xalign float32, yalign float32, xscale float32, yscale float32
 	return retGo
 }
 
-// Set is a wrapper around the C function gtk_alignment_set.
+// Sets the #GtkAlignment values.
+/*
+
+C function : gtk_alignment_set
+*/
 func (recv *Alignment) Set(xalign float32, yalign float32, xscale float32, yscale float32) {
 	c_xalign := (C.gfloat)(xalign)
 
@@ -2579,7 +2729,11 @@ func CastToAppChooserButton(object *gobject.Object) *AppChooserButton {
 
 // Unsupported signal 'custom-item-activated' for AppChooserButton : unsupported parameter item_name : type utf8 :
 
-// GetHeading is a wrapper around the C function gtk_app_chooser_button_get_heading.
+// Returns the text to display at the top of the dialog.
+/*
+
+C function : gtk_app_chooser_button_get_heading
+*/
 func (recv *AppChooserButton) GetHeading() string {
 	retC := C.gtk_app_chooser_button_get_heading((*C.GtkAppChooserButton)(recv.native))
 	retGo := C.GoString(retC)
@@ -2587,7 +2741,12 @@ func (recv *AppChooserButton) GetHeading() string {
 	return retGo
 }
 
-// SetHeading is a wrapper around the C function gtk_app_chooser_button_set_heading.
+// Sets the text to display at the top of the dialog.
+// If the heading is not set, the dialog displays a default text.
+/*
+
+C function : gtk_app_chooser_button_set_heading
+*/
 func (recv *AppChooserButton) SetHeading(heading string) {
 	c_heading := C.CString(heading)
 	defer C.free(unsafe.Pointer(c_heading))
@@ -2686,7 +2845,11 @@ func CastToAppChooserDialog(object *gobject.Object) *AppChooserDialog {
 	return AppChooserDialogNewFromC(object.ToC())
 }
 
-// GetHeading is a wrapper around the C function gtk_app_chooser_dialog_get_heading.
+// Returns the text to display at the top of the dialog.
+/*
+
+C function : gtk_app_chooser_dialog_get_heading
+*/
 func (recv *AppChooserDialog) GetHeading() string {
 	retC := C.gtk_app_chooser_dialog_get_heading((*C.GtkAppChooserDialog)(recv.native))
 	retGo := C.GoString(retC)
@@ -2694,7 +2857,12 @@ func (recv *AppChooserDialog) GetHeading() string {
 	return retGo
 }
 
-// SetHeading is a wrapper around the C function gtk_app_chooser_dialog_set_heading.
+// Sets the text to display at the top of the dialog.
+// If the heading is not set, the dialog displays a default text.
+/*
+
+C function : gtk_app_chooser_dialog_set_heading
+*/
 func (recv *AppChooserDialog) SetHeading(heading string) {
 	c_heading := C.CString(heading)
 	defer C.free(unsafe.Pointer(c_heading))
@@ -2952,7 +3120,12 @@ func appchooserwidget_populatePopupHandler(_ *C.GObject, c_menu *C.GtkMenu, c_ap
 	callback(menu, application)
 }
 
-// SetDefaultText is a wrapper around the C function gtk_app_chooser_widget_set_default_text.
+// Sets the text that is shown if there are not applications
+// that can handle the content type.
+/*
+
+C function : gtk_app_chooser_widget_set_default_text
+*/
 func (recv *AppChooserWidget) SetDefaultText(text string) {
 	c_text := C.CString(text)
 	defer C.free(unsafe.Pointer(c_text))
@@ -3159,7 +3332,11 @@ func CastToArrow(object *gobject.Object) *Arrow {
 	return ArrowNewFromC(object.ToC())
 }
 
-// ArrowNew is a wrapper around the C function gtk_arrow_new.
+// Creates a new #GtkArrow widget.
+/*
+
+C function : gtk_arrow_new
+*/
 func ArrowNew(arrowType ArrowType, shadowType ShadowType) *Arrow {
 	c_arrow_type := (C.GtkArrowType)(arrowType)
 
@@ -3171,7 +3348,11 @@ func ArrowNew(arrowType ArrowType, shadowType ShadowType) *Arrow {
 	return retGo
 }
 
-// Set is a wrapper around the C function gtk_arrow_set.
+// Sets the direction and style of the #GtkArrow, @arrow.
+/*
+
+C function : gtk_arrow_set
+*/
 func (recv *Arrow) Set(arrowType ArrowType, shadowType ShadowType) {
 	c_arrow_type := (C.GtkArrowType)(arrowType)
 
@@ -3305,7 +3486,11 @@ func CastToAspectFrame(object *gobject.Object) *AspectFrame {
 	return AspectFrameNewFromC(object.ToC())
 }
 
-// AspectFrameNew is a wrapper around the C function gtk_aspect_frame_new.
+// Create a new #GtkAspectFrame.
+/*
+
+C function : gtk_aspect_frame_new
+*/
 func AspectFrameNew(label string, xalign float32, yalign float32, ratio float32, obeyChild bool) *AspectFrame {
 	c_label := C.CString(label)
 	defer C.free(unsafe.Pointer(c_label))
@@ -3325,7 +3510,11 @@ func AspectFrameNew(label string, xalign float32, yalign float32, ratio float32,
 	return retGo
 }
 
-// Set is a wrapper around the C function gtk_aspect_frame_set.
+// Set parameters for an existing #GtkAspectFrame.
+/*
+
+C function : gtk_aspect_frame_set
+*/
 func (recv *AspectFrame) Set(xalign float32, yalign float32, ratio float32, obeyChild bool) {
 	c_xalign := (C.gfloat)(xalign)
 
@@ -3526,7 +3715,13 @@ func CastToBin(object *gobject.Object) *Bin {
 	return BinNewFromC(object.ToC())
 }
 
-// GetChild is a wrapper around the C function gtk_bin_get_child.
+// Gets the child of the #GtkBin, or %NULL if the bin contains
+// no child widget. The returned widget does not have a reference
+// added, so you do not need to unref it.
+/*
+
+C function : gtk_bin_get_child
+*/
 func (recv *Bin) GetChild() *Widget {
 	retC := C.gtk_bin_get_child((*C.GtkBin)(recv.native))
 	var retGo (*Widget)
@@ -3657,7 +3852,12 @@ func CastToBox(object *gobject.Object) *Box {
 	return BoxNewFromC(object.ToC())
 }
 
-// GetHomogeneous is a wrapper around the C function gtk_box_get_homogeneous.
+// Returns whether the box is homogeneous (all children are the
+// same size). See gtk_box_set_homogeneous().
+/*
+
+C function : gtk_box_get_homogeneous
+*/
 func (recv *Box) GetHomogeneous() bool {
 	retC := C.gtk_box_get_homogeneous((*C.GtkBox)(recv.native))
 	retGo := retC == C.TRUE
@@ -3665,7 +3865,11 @@ func (recv *Box) GetHomogeneous() bool {
 	return retGo
 }
 
-// GetSpacing is a wrapper around the C function gtk_box_get_spacing.
+// Gets the value set by gtk_box_set_spacing().
+/*
+
+C function : gtk_box_get_spacing
+*/
 func (recv *Box) GetSpacing() int32 {
 	retC := C.gtk_box_get_spacing((*C.GtkBox)(recv.native))
 	retGo := (int32)(retC)
@@ -3673,7 +3877,13 @@ func (recv *Box) GetSpacing() int32 {
 	return retGo
 }
 
-// PackEnd is a wrapper around the C function gtk_box_pack_end.
+// Adds @child to @box, packed with reference to the end of @box.
+// The @child is packed after (away from end of) any other child
+// packed with reference to the end of @box.
+/*
+
+C function : gtk_box_pack_end
+*/
 func (recv *Box) PackEnd(child *Widget, expand bool, fill bool, padding uint32) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -3693,7 +3903,13 @@ func (recv *Box) PackEnd(child *Widget, expand bool, fill bool, padding uint32) 
 	return
 }
 
-// PackStart is a wrapper around the C function gtk_box_pack_start.
+// Adds @child to @box, packed with reference to the start of @box.
+// The @child is packed after any other child packed with reference
+// to the start of @box.
+/*
+
+C function : gtk_box_pack_start
+*/
 func (recv *Box) PackStart(child *Widget, expand bool, fill bool, padding uint32) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -3715,7 +3931,19 @@ func (recv *Box) PackStart(child *Widget, expand bool, fill bool, padding uint32
 
 // Unsupported : gtk_box_query_child_packing : unsupported parameter pack_type : GtkPackType* with indirection level of 1
 
-// ReorderChild is a wrapper around the C function gtk_box_reorder_child.
+// Moves @child to a new @position in the list of @box children.
+// The list contains widgets packed #GTK_PACK_START
+// as well as widgets packed #GTK_PACK_END, in the order that these
+// widgets were added to @box.
+//
+// A widget’s position in the @box children list determines where
+// the widget is packed into @box.  A child widget at some position
+// in the list will be packed just after all other widgets of the
+// same packing type that appear earlier in the list.
+/*
+
+C function : gtk_box_reorder_child
+*/
 func (recv *Box) ReorderChild(child *Widget, position int32) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -3729,7 +3957,11 @@ func (recv *Box) ReorderChild(child *Widget, position int32) {
 	return
 }
 
-// SetChildPacking is a wrapper around the C function gtk_box_set_child_packing.
+// Sets the way @child is packed into @box.
+/*
+
+C function : gtk_box_set_child_packing
+*/
 func (recv *Box) SetChildPacking(child *Widget, expand bool, fill bool, padding uint32, packType PackType) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -3751,7 +3983,13 @@ func (recv *Box) SetChildPacking(child *Widget, expand bool, fill bool, padding 
 	return
 }
 
-// SetHomogeneous is a wrapper around the C function gtk_box_set_homogeneous.
+// Sets the #GtkBox:homogeneous property of @box, controlling
+// whether or not all children of @box are given equal space
+// in the box.
+/*
+
+C function : gtk_box_set_homogeneous
+*/
 func (recv *Box) SetHomogeneous(homogeneous bool) {
 	c_homogeneous :=
 		boolToGboolean(homogeneous)
@@ -3761,7 +3999,12 @@ func (recv *Box) SetHomogeneous(homogeneous bool) {
 	return
 }
 
-// SetSpacing is a wrapper around the C function gtk_box_set_spacing.
+// Sets the #GtkBox:spacing property of @box, which is the
+// number of pixels to place between children of @box.
+/*
+
+C function : gtk_box_set_spacing
+*/
 func (recv *Box) SetSpacing(spacing int32) {
 	c_spacing := (C.gint)(spacing)
 
@@ -4217,7 +4460,12 @@ func button_releasedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// ButtonNew is a wrapper around the C function gtk_button_new.
+// Creates a new #GtkButton widget. To add a child widget to the button,
+// use gtk_container_add().
+/*
+
+C function : gtk_button_new
+*/
 func ButtonNew() *Button {
 	retC := C.gtk_button_new()
 	retGo := ButtonNewFromC(unsafe.Pointer(retC))
@@ -4225,7 +4473,16 @@ func ButtonNew() *Button {
 	return retGo
 }
 
-// ButtonNewFromStock is a wrapper around the C function gtk_button_new_from_stock.
+// Creates a new #GtkButton containing the image and text from a stock item.
+// Some stock ids have preprocessor macros like #GTK_STOCK_OK and
+// #GTK_STOCK_APPLY.
+//
+// If @stock_id is unknown, then it will be treated as a mnemonic
+// label (as for gtk_button_new_with_mnemonic()).
+/*
+
+C function : gtk_button_new_from_stock
+*/
 func ButtonNewFromStock(stockId string) *Button {
 	c_stock_id := C.CString(stockId)
 	defer C.free(unsafe.Pointer(c_stock_id))
@@ -4236,7 +4493,12 @@ func ButtonNewFromStock(stockId string) *Button {
 	return retGo
 }
 
-// ButtonNewWithLabel is a wrapper around the C function gtk_button_new_with_label.
+// Creates a #GtkButton widget with a #GtkLabel child containing the given
+// text.
+/*
+
+C function : gtk_button_new_with_label
+*/
 func ButtonNewWithLabel(label string) *Button {
 	c_label := C.CString(label)
 	defer C.free(unsafe.Pointer(c_label))
@@ -4247,7 +4509,16 @@ func ButtonNewWithLabel(label string) *Button {
 	return retGo
 }
 
-// ButtonNewWithMnemonic is a wrapper around the C function gtk_button_new_with_mnemonic.
+// Creates a new #GtkButton containing a label.
+// If characters in @label are preceded by an underscore, they are underlined.
+// If you need a literal underscore character in a label, use “__” (two
+// underscores). The first underlined character represents a keyboard
+// accelerator called a mnemonic.
+// Pressing Alt and that key activates the button.
+/*
+
+C function : gtk_button_new_with_mnemonic
+*/
 func ButtonNewWithMnemonic(label string) *Button {
 	c_label := C.CString(label)
 	defer C.free(unsafe.Pointer(c_label))
@@ -4258,21 +4529,37 @@ func ButtonNewWithMnemonic(label string) *Button {
 	return retGo
 }
 
-// Clicked is a wrapper around the C function gtk_button_clicked.
+// Emits a #GtkButton::clicked signal to the given #GtkButton.
+/*
+
+C function : gtk_button_clicked
+*/
 func (recv *Button) Clicked() {
 	C.gtk_button_clicked((*C.GtkButton)(recv.native))
 
 	return
 }
 
-// Enter is a wrapper around the C function gtk_button_enter.
+// Emits a #GtkButton::enter signal to the given #GtkButton.
+/*
+
+C function : gtk_button_enter
+*/
 func (recv *Button) Enter() {
 	C.gtk_button_enter((*C.GtkButton)(recv.native))
 
 	return
 }
 
-// GetLabel is a wrapper around the C function gtk_button_get_label.
+// Fetches the text from the label of the button, as set by
+// gtk_button_set_label(). If the label text has not
+// been set the return value will be %NULL. This will be the
+// case if you create an empty button with gtk_button_new() to
+// use as a container.
+/*
+
+C function : gtk_button_get_label
+*/
 func (recv *Button) GetLabel() string {
 	retC := C.gtk_button_get_label((*C.GtkButton)(recv.native))
 	retGo := C.GoString(retC)
@@ -4280,7 +4567,11 @@ func (recv *Button) GetLabel() string {
 	return retGo
 }
 
-// GetRelief is a wrapper around the C function gtk_button_get_relief.
+// Returns the current relief style of the given #GtkButton.
+/*
+
+C function : gtk_button_get_relief
+*/
 func (recv *Button) GetRelief() ReliefStyle {
 	retC := C.gtk_button_get_relief((*C.GtkButton)(recv.native))
 	retGo := (ReliefStyle)(retC)
@@ -4288,7 +4579,11 @@ func (recv *Button) GetRelief() ReliefStyle {
 	return retGo
 }
 
-// GetUseStock is a wrapper around the C function gtk_button_get_use_stock.
+// Returns whether the button label is a stock item.
+/*
+
+C function : gtk_button_get_use_stock
+*/
 func (recv *Button) GetUseStock() bool {
 	retC := C.gtk_button_get_use_stock((*C.GtkButton)(recv.native))
 	retGo := retC == C.TRUE
@@ -4296,7 +4591,12 @@ func (recv *Button) GetUseStock() bool {
 	return retGo
 }
 
-// GetUseUnderline is a wrapper around the C function gtk_button_get_use_underline.
+// Returns whether an embedded underline in the button label indicates a
+// mnemonic. See gtk_button_set_use_underline ().
+/*
+
+C function : gtk_button_get_use_underline
+*/
 func (recv *Button) GetUseUnderline() bool {
 	retC := C.gtk_button_get_use_underline((*C.GtkButton)(recv.native))
 	retGo := retC == C.TRUE
@@ -4304,28 +4604,48 @@ func (recv *Button) GetUseUnderline() bool {
 	return retGo
 }
 
-// Leave is a wrapper around the C function gtk_button_leave.
+// Emits a #GtkButton::leave signal to the given #GtkButton.
+/*
+
+C function : gtk_button_leave
+*/
 func (recv *Button) Leave() {
 	C.gtk_button_leave((*C.GtkButton)(recv.native))
 
 	return
 }
 
-// Pressed is a wrapper around the C function gtk_button_pressed.
+// Emits a #GtkButton::pressed signal to the given #GtkButton.
+/*
+
+C function : gtk_button_pressed
+*/
 func (recv *Button) Pressed() {
 	C.gtk_button_pressed((*C.GtkButton)(recv.native))
 
 	return
 }
 
-// Released is a wrapper around the C function gtk_button_released.
+// Emits a #GtkButton::released signal to the given #GtkButton.
+/*
+
+C function : gtk_button_released
+*/
 func (recv *Button) Released() {
 	C.gtk_button_released((*C.GtkButton)(recv.native))
 
 	return
 }
 
-// SetLabel is a wrapper around the C function gtk_button_set_label.
+// Sets the text of the label of the button to @str. This text is
+// also used to select the stock item if gtk_button_set_use_stock()
+// is used.
+//
+// This will also clear any previously set labels.
+/*
+
+C function : gtk_button_set_label
+*/
 func (recv *Button) SetLabel(label string) {
 	c_label := C.CString(label)
 	defer C.free(unsafe.Pointer(c_label))
@@ -4335,7 +4655,15 @@ func (recv *Button) SetLabel(label string) {
 	return
 }
 
-// SetRelief is a wrapper around the C function gtk_button_set_relief.
+// Sets the relief style of the edges of the given #GtkButton widget.
+// Two styles exist, %GTK_RELIEF_NORMAL and %GTK_RELIEF_NONE.
+// The default style is, as one can guess, %GTK_RELIEF_NORMAL.
+// The deprecated value %GTK_RELIEF_HALF behaves the same as
+// %GTK_RELIEF_NORMAL.
+/*
+
+C function : gtk_button_set_relief
+*/
 func (recv *Button) SetRelief(relief ReliefStyle) {
 	c_relief := (C.GtkReliefStyle)(relief)
 
@@ -4344,7 +4672,12 @@ func (recv *Button) SetRelief(relief ReliefStyle) {
 	return
 }
 
-// SetUseStock is a wrapper around the C function gtk_button_set_use_stock.
+// If %TRUE, the label set on the button is used as a
+// stock id to select the stock item for the button.
+/*
+
+C function : gtk_button_set_use_stock
+*/
 func (recv *Button) SetUseStock(useStock bool) {
 	c_use_stock :=
 		boolToGboolean(useStock)
@@ -4354,7 +4687,12 @@ func (recv *Button) SetUseStock(useStock bool) {
 	return
 }
 
-// SetUseUnderline is a wrapper around the C function gtk_button_set_use_underline.
+// If true, an underline in the text of the button label indicates
+// the next character should be used for the mnemonic accelerator key.
+/*
+
+C function : gtk_button_set_use_underline
+*/
 func (recv *Button) SetUseUnderline(useUnderline bool) {
 	c_use_underline :=
 		boolToGboolean(useUnderline)
@@ -4502,7 +4840,11 @@ func CastToButtonBox(object *gobject.Object) *ButtonBox {
 	return ButtonBoxNewFromC(object.ToC())
 }
 
-// GetLayout is a wrapper around the C function gtk_button_box_get_layout.
+// Retrieves the method being used to arrange the buttons in a button box.
+/*
+
+C function : gtk_button_box_get_layout
+*/
 func (recv *ButtonBox) GetLayout() ButtonBoxStyle {
 	retC := C.gtk_button_box_get_layout((*C.GtkButtonBox)(recv.native))
 	retGo := (ButtonBoxStyle)(retC)
@@ -4510,7 +4852,22 @@ func (recv *ButtonBox) GetLayout() ButtonBoxStyle {
 	return retGo
 }
 
-// SetChildSecondary is a wrapper around the C function gtk_button_box_set_child_secondary.
+// Sets whether @child should appear in a secondary group of children.
+// A typical use of a secondary child is the help button in a dialog.
+//
+// This group appears after the other children if the style
+// is %GTK_BUTTONBOX_START, %GTK_BUTTONBOX_SPREAD or
+// %GTK_BUTTONBOX_EDGE, and before the other children if the style
+// is %GTK_BUTTONBOX_END. For horizontal button boxes, the definition
+// of before/after depends on direction of the widget (see
+// gtk_widget_set_direction()). If the style is %GTK_BUTTONBOX_START
+// or %GTK_BUTTONBOX_END, then the secondary children are aligned at
+// the other end of the button box from the main children. For the
+// other styles, they appear immediately next to the main children.
+/*
+
+C function : gtk_button_box_set_child_secondary
+*/
 func (recv *ButtonBox) SetChildSecondary(child *Widget, isSecondary bool) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -4525,7 +4882,11 @@ func (recv *ButtonBox) SetChildSecondary(child *Widget, isSecondary bool) {
 	return
 }
 
-// SetLayout is a wrapper around the C function gtk_button_box_set_layout.
+// Changes the way buttons are arranged in their container.
+/*
+
+C function : gtk_button_box_set_layout
+*/
 func (recv *ButtonBox) SetLayout(layoutStyle ButtonBoxStyle) {
 	c_layout_style := (C.GtkButtonBoxStyle)(layoutStyle)
 
@@ -4992,7 +5353,11 @@ func calendar_prevYearHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// CalendarNew is a wrapper around the C function gtk_calendar_new.
+// Creates a new calendar, with the current date being selected.
+/*
+
+C function : gtk_calendar_new
+*/
 func CalendarNew() *Calendar {
 	retC := C.gtk_calendar_new()
 	retGo := CalendarNewFromC(unsafe.Pointer(retC))
@@ -5000,14 +5365,22 @@ func CalendarNew() *Calendar {
 	return retGo
 }
 
-// ClearMarks is a wrapper around the C function gtk_calendar_clear_marks.
+// Remove all visual markers.
+/*
+
+C function : gtk_calendar_clear_marks
+*/
 func (recv *Calendar) ClearMarks() {
 	C.gtk_calendar_clear_marks((*C.GtkCalendar)(recv.native))
 
 	return
 }
 
-// GetDate is a wrapper around the C function gtk_calendar_get_date.
+// Obtains the selected date from a #GtkCalendar.
+/*
+
+C function : gtk_calendar_get_date
+*/
 func (recv *Calendar) GetDate() (uint32, uint32, uint32) {
 	var c_year C.guint
 
@@ -5026,7 +5399,11 @@ func (recv *Calendar) GetDate() (uint32, uint32, uint32) {
 	return year, month, day
 }
 
-// MarkDay is a wrapper around the C function gtk_calendar_mark_day.
+// Places a visual marker on a particular day.
+/*
+
+C function : gtk_calendar_mark_day
+*/
 func (recv *Calendar) MarkDay(day uint32) {
 	c_day := (C.guint)(day)
 
@@ -5035,7 +5412,11 @@ func (recv *Calendar) MarkDay(day uint32) {
 	return
 }
 
-// SelectDay is a wrapper around the C function gtk_calendar_select_day.
+// Selects a day from the current month.
+/*
+
+C function : gtk_calendar_select_day
+*/
 func (recv *Calendar) SelectDay(day uint32) {
 	c_day := (C.guint)(day)
 
@@ -5044,7 +5425,11 @@ func (recv *Calendar) SelectDay(day uint32) {
 	return
 }
 
-// SelectMonth is a wrapper around the C function gtk_calendar_select_month.
+// Shifts the calendar to a different month.
+/*
+
+C function : gtk_calendar_select_month
+*/
 func (recv *Calendar) SelectMonth(month uint32, year uint32) {
 	c_month := (C.guint)(month)
 
@@ -5055,7 +5440,11 @@ func (recv *Calendar) SelectMonth(month uint32, year uint32) {
 	return
 }
 
-// UnmarkDay is a wrapper around the C function gtk_calendar_unmark_day.
+// Removes the visual marker from a particular day.
+/*
+
+C function : gtk_calendar_unmark_day
+*/
 func (recv *Calendar) UnmarkDay(day uint32) {
 	c_day := (C.guint)(day)
 
@@ -5265,7 +5654,22 @@ func CastToCellAreaContext(object *gobject.Object) *CellAreaContext {
 	return CellAreaContextNewFromC(object.ToC())
 }
 
-// Allocate is a wrapper around the C function gtk_cell_area_context_allocate.
+// Allocates a width and/or a height for all rows which are to be
+// rendered with @context.
+//
+// Usually allocation is performed only horizontally or sometimes
+// vertically since a group of rows are usually rendered side by
+// side vertically or horizontally and share either the same width
+// or the same height. Sometimes they are allocated in both horizontal
+// and vertical orientations producing a homogeneous effect of the
+// rows. This is generally the case for #GtkTreeView when
+// #GtkTreeView:fixed-height-mode is enabled.
+//
+// Since 3.0
+/*
+
+C function : gtk_cell_area_context_allocate
+*/
 func (recv *CellAreaContext) Allocate(width int32, height int32) {
 	c_width := (C.gint)(width)
 
@@ -5276,7 +5680,34 @@ func (recv *CellAreaContext) Allocate(width int32, height int32) {
 	return
 }
 
-// Reset is a wrapper around the C function gtk_cell_area_context_reset.
+// Resets any previously cached request and allocation
+// data.
+//
+// When underlying #GtkTreeModel data changes its
+// important to reset the context if the content
+// size is allowed to shrink. If the content size
+// is only allowed to grow (this is usually an option
+// for views rendering large data stores as a measure
+// of optimization), then only the row that changed
+// or was inserted needs to be (re)requested with
+// gtk_cell_area_get_preferred_width().
+//
+// When the new overall size of the context requires
+// that the allocated size changes (or whenever this
+// allocation changes at all), the variable row
+// sizes need to be re-requested for every row.
+//
+// For instance, if the rows are displayed all with
+// the same width from top to bottom then a change
+// in the allocated width necessitates a recalculation
+// of all the displayed row heights using
+// gtk_cell_area_get_preferred_height_for_width().
+//
+// Since 3.0
+/*
+
+C function : gtk_cell_area_context_reset
+*/
 func (recv *CellAreaContext) Reset() {
 	C.gtk_cell_area_context_reset((*C.GtkCellAreaContext)(recv.native))
 
@@ -5324,7 +5755,11 @@ func CastToCellRenderer(object *gobject.Object) *CellRenderer {
 
 // Unsupported : gtk_cell_renderer_activate : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
 
-// GetFixedSize is a wrapper around the C function gtk_cell_renderer_get_fixed_size.
+// Fills in @width and @height with the appropriate size of @cell.
+/*
+
+C function : gtk_cell_renderer_get_fixed_size
+*/
 func (recv *CellRenderer) GetFixedSize() (int32, int32) {
 	var c_width C.gint
 
@@ -5343,7 +5778,11 @@ func (recv *CellRenderer) GetFixedSize() (int32, int32) {
 
 // Unsupported : gtk_cell_renderer_render : unsupported parameter background_area : Blacklisted record : GdkRectangle
 
-// SetFixedSize is a wrapper around the C function gtk_cell_renderer_set_fixed_size.
+// Sets the renderer size to be explicit, independent of the properties set.
+/*
+
+C function : gtk_cell_renderer_set_fixed_size
+*/
 func (recv *CellRenderer) SetFixedSize(width int32, height int32) {
 	c_width := (C.gint)(width)
 
@@ -5498,7 +5937,17 @@ func CastToCellRendererPixbuf(object *gobject.Object) *CellRendererPixbuf {
 	return CellRendererPixbufNewFromC(object.ToC())
 }
 
-// CellRendererPixbufNew is a wrapper around the C function gtk_cell_renderer_pixbuf_new.
+// Creates a new #GtkCellRendererPixbuf. Adjust rendering
+// parameters using object properties. Object properties can be set
+// globally (with g_object_set()). Also, with #GtkTreeViewColumn, you
+// can bind a property to a value in a #GtkTreeModel. For example, you
+// can bind the “pixbuf” property on the cell renderer to a pixbuf value
+// in the model, thus rendering a different image in each row of the
+// #GtkTreeView.
+/*
+
+C function : gtk_cell_renderer_pixbuf_new
+*/
 func CellRendererPixbufNew() *CellRendererPixbuf {
 	retC := C.gtk_cell_renderer_pixbuf_new()
 	retGo := CellRendererPixbufNewFromC(unsafe.Pointer(retC))
@@ -5694,7 +6143,17 @@ func CastToCellRendererText(object *gobject.Object) *CellRendererText {
 
 // Unsupported signal 'edited' for CellRendererText : unsupported parameter path : type utf8 :
 
-// CellRendererTextNew is a wrapper around the C function gtk_cell_renderer_text_new.
+// Creates a new #GtkCellRendererText. Adjust how text is drawn using
+// object properties. Object properties can be
+// set globally (with g_object_set()). Also, with #GtkTreeViewColumn,
+// you can bind a property to a value in a #GtkTreeModel. For example,
+// you can bind the “text” property on the cell renderer to a string
+// value in the model, thus rendering a different string in each row
+// of the #GtkTreeView
+/*
+
+C function : gtk_cell_renderer_text_new
+*/
 func CellRendererTextNew() *CellRendererText {
 	retC := C.gtk_cell_renderer_text_new()
 	retGo := CellRendererTextNewFromC(unsafe.Pointer(retC))
@@ -5702,7 +6161,17 @@ func CellRendererTextNew() *CellRendererText {
 	return retGo
 }
 
-// SetFixedHeightFromFont is a wrapper around the C function gtk_cell_renderer_text_set_fixed_height_from_font.
+// Sets the height of a renderer to explicitly be determined by the “font” and
+// “y_pad” property set on it.  Further changes in these properties do not
+// affect the height, so they must be accompanied by a subsequent call to this
+// function.  Using this function is unflexible, and should really only be used
+// if calculating the size of a cell is too slow (ie, a massive number of cells
+// displayed).  If @number_of_rows is -1, then the fixed height is unset, and
+// the height is determined by the properties again.
+/*
+
+C function : gtk_cell_renderer_text_set_fixed_height_from_font
+*/
 func (recv *CellRendererText) SetFixedHeightFromFont(numberOfRows int32) {
 	c_number_of_rows := (C.gint)(numberOfRows)
 
@@ -5757,7 +6226,17 @@ func CastToCellRendererToggle(object *gobject.Object) *CellRendererToggle {
 
 // Unsupported signal 'toggled' for CellRendererToggle : unsupported parameter path : type utf8 :
 
-// CellRendererToggleNew is a wrapper around the C function gtk_cell_renderer_toggle_new.
+// Creates a new #GtkCellRendererToggle. Adjust rendering
+// parameters using object properties. Object properties can be set
+// globally (with g_object_set()). Also, with #GtkTreeViewColumn, you
+// can bind a property to a value in a #GtkTreeModel. For example, you
+// can bind the “active” property on the cell renderer to a boolean value
+// in the model, thus causing the check button to reflect the state of
+// the model.
+/*
+
+C function : gtk_cell_renderer_toggle_new
+*/
 func CellRendererToggleNew() *CellRendererToggle {
 	retC := C.gtk_cell_renderer_toggle_new()
 	retGo := CellRendererToggleNewFromC(unsafe.Pointer(retC))
@@ -5765,7 +6244,12 @@ func CellRendererToggleNew() *CellRendererToggle {
 	return retGo
 }
 
-// GetActive is a wrapper around the C function gtk_cell_renderer_toggle_get_active.
+// Returns whether the cell renderer is active. See
+// gtk_cell_renderer_toggle_set_active().
+/*
+
+C function : gtk_cell_renderer_toggle_get_active
+*/
 func (recv *CellRendererToggle) GetActive() bool {
 	retC := C.gtk_cell_renderer_toggle_get_active((*C.GtkCellRendererToggle)(recv.native))
 	retGo := retC == C.TRUE
@@ -5773,7 +6257,11 @@ func (recv *CellRendererToggle) GetActive() bool {
 	return retGo
 }
 
-// GetRadio is a wrapper around the C function gtk_cell_renderer_toggle_get_radio.
+// Returns whether we’re rendering radio toggles rather than checkboxes.
+/*
+
+C function : gtk_cell_renderer_toggle_get_radio
+*/
 func (recv *CellRendererToggle) GetRadio() bool {
 	retC := C.gtk_cell_renderer_toggle_get_radio((*C.GtkCellRendererToggle)(recv.native))
 	retGo := retC == C.TRUE
@@ -5781,7 +6269,11 @@ func (recv *CellRendererToggle) GetRadio() bool {
 	return retGo
 }
 
-// SetActive is a wrapper around the C function gtk_cell_renderer_toggle_set_active.
+// Activates or deactivates a cell renderer.
+/*
+
+C function : gtk_cell_renderer_toggle_set_active
+*/
 func (recv *CellRendererToggle) SetActive(setting bool) {
 	c_setting :=
 		boolToGboolean(setting)
@@ -5791,7 +6283,17 @@ func (recv *CellRendererToggle) SetActive(setting bool) {
 	return
 }
 
-// SetRadio is a wrapper around the C function gtk_cell_renderer_toggle_set_radio.
+// If @radio is %TRUE, the cell renderer renders a radio toggle
+// (i.e. a toggle in a group of mutually-exclusive toggles).
+// If %FALSE, it renders a check toggle (a standalone boolean option).
+// This can be set globally for the cell renderer, or changed just
+// before rendering each cell in the model (for #GtkTreeView, you set
+// up a per-row setting using #GtkTreeViewColumn to associate model
+// columns with cell renderer properties).
+/*
+
+C function : gtk_cell_renderer_toggle_set_radio
+*/
 func (recv *CellRendererToggle) SetRadio(radio bool) {
 	c_radio :=
 		boolToGboolean(radio)
@@ -5928,7 +6430,11 @@ func CastToCheckButton(object *gobject.Object) *CheckButton {
 	return CheckButtonNewFromC(object.ToC())
 }
 
-// CheckButtonNew is a wrapper around the C function gtk_check_button_new.
+// Creates a new #GtkCheckButton.
+/*
+
+C function : gtk_check_button_new
+*/
 func CheckButtonNew() *CheckButton {
 	retC := C.gtk_check_button_new()
 	retGo := CheckButtonNewFromC(unsafe.Pointer(retC))
@@ -5936,7 +6442,11 @@ func CheckButtonNew() *CheckButton {
 	return retGo
 }
 
-// CheckButtonNewWithLabel is a wrapper around the C function gtk_check_button_new_with_label.
+// Creates a new #GtkCheckButton with a #GtkLabel to the right of it.
+/*
+
+C function : gtk_check_button_new_with_label
+*/
 func CheckButtonNewWithLabel(label string) *CheckButton {
 	c_label := C.CString(label)
 	defer C.free(unsafe.Pointer(c_label))
@@ -5947,7 +6457,13 @@ func CheckButtonNewWithLabel(label string) *CheckButton {
 	return retGo
 }
 
-// CheckButtonNewWithMnemonic is a wrapper around the C function gtk_check_button_new_with_mnemonic.
+// Creates a new #GtkCheckButton containing a label. The label
+// will be created using gtk_label_new_with_mnemonic(), so underscores
+// in @label indicate the mnemonic for the check button.
+/*
+
+C function : gtk_check_button_new_with_mnemonic
+*/
 func CheckButtonNewWithMnemonic(label string) *CheckButton {
 	c_label := C.CString(label)
 	defer C.free(unsafe.Pointer(c_label))
@@ -6094,7 +6610,11 @@ func checkmenuitem_toggledHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// CheckMenuItemNew is a wrapper around the C function gtk_check_menu_item_new.
+// Creates a new #GtkCheckMenuItem.
+/*
+
+C function : gtk_check_menu_item_new
+*/
 func CheckMenuItemNew() *CheckMenuItem {
 	retC := C.gtk_check_menu_item_new()
 	retGo := CheckMenuItemNewFromC(unsafe.Pointer(retC))
@@ -6102,7 +6622,11 @@ func CheckMenuItemNew() *CheckMenuItem {
 	return retGo
 }
 
-// CheckMenuItemNewWithLabel is a wrapper around the C function gtk_check_menu_item_new_with_label.
+// Creates a new #GtkCheckMenuItem with a label.
+/*
+
+C function : gtk_check_menu_item_new_with_label
+*/
 func CheckMenuItemNewWithLabel(label string) *CheckMenuItem {
 	c_label := C.CString(label)
 	defer C.free(unsafe.Pointer(c_label))
@@ -6113,7 +6637,13 @@ func CheckMenuItemNewWithLabel(label string) *CheckMenuItem {
 	return retGo
 }
 
-// CheckMenuItemNewWithMnemonic is a wrapper around the C function gtk_check_menu_item_new_with_mnemonic.
+// Creates a new #GtkCheckMenuItem containing a label. The label
+// will be created using gtk_label_new_with_mnemonic(), so underscores
+// in @label indicate the mnemonic for the menu item.
+/*
+
+C function : gtk_check_menu_item_new_with_mnemonic
+*/
 func CheckMenuItemNewWithMnemonic(label string) *CheckMenuItem {
 	c_label := C.CString(label)
 	defer C.free(unsafe.Pointer(c_label))
@@ -6124,7 +6654,12 @@ func CheckMenuItemNewWithMnemonic(label string) *CheckMenuItem {
 	return retGo
 }
 
-// GetActive is a wrapper around the C function gtk_check_menu_item_get_active.
+// Returns whether the check menu item is active. See
+// gtk_check_menu_item_set_active ().
+/*
+
+C function : gtk_check_menu_item_get_active
+*/
 func (recv *CheckMenuItem) GetActive() bool {
 	retC := C.gtk_check_menu_item_get_active((*C.GtkCheckMenuItem)(recv.native))
 	retGo := retC == C.TRUE
@@ -6132,7 +6667,11 @@ func (recv *CheckMenuItem) GetActive() bool {
 	return retGo
 }
 
-// GetInconsistent is a wrapper around the C function gtk_check_menu_item_get_inconsistent.
+// Retrieves the value set by gtk_check_menu_item_set_inconsistent().
+/*
+
+C function : gtk_check_menu_item_get_inconsistent
+*/
 func (recv *CheckMenuItem) GetInconsistent() bool {
 	retC := C.gtk_check_menu_item_get_inconsistent((*C.GtkCheckMenuItem)(recv.native))
 	retGo := retC == C.TRUE
@@ -6140,7 +6679,11 @@ func (recv *CheckMenuItem) GetInconsistent() bool {
 	return retGo
 }
 
-// SetActive is a wrapper around the C function gtk_check_menu_item_set_active.
+// Sets the active state of the menu item’s check box.
+/*
+
+C function : gtk_check_menu_item_set_active
+*/
 func (recv *CheckMenuItem) SetActive(isActive bool) {
 	c_is_active :=
 		boolToGboolean(isActive)
@@ -6150,7 +6693,18 @@ func (recv *CheckMenuItem) SetActive(isActive bool) {
 	return
 }
 
-// SetInconsistent is a wrapper around the C function gtk_check_menu_item_set_inconsistent.
+// If the user has selected a range of elements (such as some text or
+// spreadsheet cells) that are affected by a boolean setting, and the
+// current values in that range are inconsistent, you may want to
+// display the check in an “in between” state. This function turns on
+// “in between” display.  Normally you would turn off the inconsistent
+// state again if the user explicitly selects a setting. This has to be
+// done manually, gtk_check_menu_item_set_inconsistent() only affects
+// visual appearance, it doesn’t affect the semantics of the widget.
+/*
+
+C function : gtk_check_menu_item_set_inconsistent
+*/
 func (recv *CheckMenuItem) SetInconsistent(setting bool) {
 	c_setting :=
 		boolToGboolean(setting)
@@ -6160,7 +6714,11 @@ func (recv *CheckMenuItem) SetInconsistent(setting bool) {
 	return
 }
 
-// Toggled is a wrapper around the C function gtk_check_menu_item_toggled.
+// Emits the #GtkCheckMenuItem::toggled signal.
+/*
+
+C function : gtk_check_menu_item_toggled
+*/
 func (recv *CheckMenuItem) Toggled() {
 	C.gtk_check_menu_item_toggled((*C.GtkCheckMenuItem)(recv.native))
 
@@ -6288,14 +6846,29 @@ func CastToClipboard(object *gobject.Object) *Clipboard {
 	return ClipboardNewFromC(object.ToC())
 }
 
-// Clear is a wrapper around the C function gtk_clipboard_clear.
+// Clears the contents of the clipboard. Generally this should only
+// be called between the time you call gtk_clipboard_set_with_owner()
+// or gtk_clipboard_set_with_data(),
+// and when the @clear_func you supplied is called. Otherwise, the
+// clipboard may be owned by someone else.
+/*
+
+C function : gtk_clipboard_clear
+*/
 func (recv *Clipboard) Clear() {
 	C.gtk_clipboard_clear((*C.GtkClipboard)(recv.native))
 
 	return
 }
 
-// GetOwner is a wrapper around the C function gtk_clipboard_get_owner.
+// If the clipboard contents callbacks were set with
+// gtk_clipboard_set_with_owner(), and the gtk_clipboard_set_with_data() or
+// gtk_clipboard_clear() has not subsequently called, returns the owner set
+// by gtk_clipboard_set_with_owner().
+/*
+
+C function : gtk_clipboard_get_owner
+*/
 func (recv *Clipboard) GetOwner() *gobject.Object {
 	retC := C.gtk_clipboard_get_owner((*C.GtkClipboard)(recv.native))
 	var retGo (*gobject.Object)
@@ -6312,7 +6885,14 @@ func (recv *Clipboard) GetOwner() *gobject.Object {
 
 // Unsupported : gtk_clipboard_request_text : unsupported parameter callback : no type generator for ClipboardTextReceivedFunc (GtkClipboardTextReceivedFunc) for param callback
 
-// SetText is a wrapper around the C function gtk_clipboard_set_text.
+// Sets the contents of the clipboard to the given UTF-8 string. GTK+ will
+// make a copy of the text and take responsibility for responding
+// for requests for the text, and for converting the text into
+// the requested format.
+/*
+
+C function : gtk_clipboard_set_text
+*/
 func (recv *Clipboard) SetText(text string, len int32) {
 	c_text := C.CString(text)
 	defer C.free(unsafe.Pointer(c_text))
@@ -6330,7 +6910,14 @@ func (recv *Clipboard) SetText(text string, len int32) {
 
 // Unsupported : gtk_clipboard_wait_for_contents : unsupported parameter target : Blacklisted record : GdkAtom
 
-// WaitForText is a wrapper around the C function gtk_clipboard_wait_for_text.
+// Requests the contents of the clipboard as text and converts
+// the result to UTF-8 if necessary. This function waits for
+// the data to be received using the main loop, so events,
+// timeouts, etc, may be dispatched during the wait.
+/*
+
+C function : gtk_clipboard_wait_for_text
+*/
 func (recv *Clipboard) WaitForText() string {
 	retC := C.gtk_clipboard_wait_for_text((*C.GtkClipboard)(recv.native))
 	retGo := C.GoString(retC)
@@ -6339,7 +6926,19 @@ func (recv *Clipboard) WaitForText() string {
 	return retGo
 }
 
-// WaitIsTextAvailable is a wrapper around the C function gtk_clipboard_wait_is_text_available.
+// Test to see if there is text available to be pasted
+// This is done by requesting the TARGETS atom and checking
+// if it contains any of the supported text targets. This function
+// waits for the data to be received using the main loop, so events,
+// timeouts, etc, may be dispatched during the wait.
+//
+// This function is a little faster than calling
+// gtk_clipboard_wait_for_text() since it doesn’t need to retrieve
+// the actual text.
+/*
+
+C function : gtk_clipboard_wait_is_text_available
+*/
 func (recv *Clipboard) WaitIsTextAvailable() bool {
 	retC := C.gtk_clipboard_wait_is_text_available((*C.GtkClipboard)(recv.native))
 	retGo := retC == C.TRUE
@@ -6695,7 +7294,11 @@ func colorselection_colorChangedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// ColorSelectionNew is a wrapper around the C function gtk_color_selection_new.
+// Creates a new GtkColorSelection.
+/*
+
+C function : gtk_color_selection_new
+*/
 func ColorSelectionNew() *ColorSelection {
 	retC := C.gtk_color_selection_new()
 	retGo := ColorSelectionNewFromC(unsafe.Pointer(retC))
@@ -6703,7 +7306,11 @@ func ColorSelectionNew() *ColorSelection {
 	return retGo
 }
 
-// GetCurrentAlpha is a wrapper around the C function gtk_color_selection_get_current_alpha.
+// Returns the current alpha value.
+/*
+
+C function : gtk_color_selection_get_current_alpha
+*/
 func (recv *ColorSelection) GetCurrentAlpha() uint16 {
 	retC := C.gtk_color_selection_get_current_alpha((*C.GtkColorSelection)(recv.native))
 	retGo := (uint16)(retC)
@@ -6711,7 +7318,11 @@ func (recv *ColorSelection) GetCurrentAlpha() uint16 {
 	return retGo
 }
 
-// GetCurrentColor is a wrapper around the C function gtk_color_selection_get_current_color.
+// Sets @color to be the current color in the GtkColorSelection widget.
+/*
+
+C function : gtk_color_selection_get_current_color
+*/
 func (recv *ColorSelection) GetCurrentColor() *gdk.Color {
 	var c_color C.GdkColor
 
@@ -6722,7 +7333,11 @@ func (recv *ColorSelection) GetCurrentColor() *gdk.Color {
 	return color
 }
 
-// GetHasOpacityControl is a wrapper around the C function gtk_color_selection_get_has_opacity_control.
+// Determines whether the colorsel has an opacity control.
+/*
+
+C function : gtk_color_selection_get_has_opacity_control
+*/
 func (recv *ColorSelection) GetHasOpacityControl() bool {
 	retC := C.gtk_color_selection_get_has_opacity_control((*C.GtkColorSelection)(recv.native))
 	retGo := retC == C.TRUE
@@ -6730,7 +7345,11 @@ func (recv *ColorSelection) GetHasOpacityControl() bool {
 	return retGo
 }
 
-// GetHasPalette is a wrapper around the C function gtk_color_selection_get_has_palette.
+// Determines whether the color selector has a color palette.
+/*
+
+C function : gtk_color_selection_get_has_palette
+*/
 func (recv *ColorSelection) GetHasPalette() bool {
 	retC := C.gtk_color_selection_get_has_palette((*C.GtkColorSelection)(recv.native))
 	retGo := retC == C.TRUE
@@ -6738,7 +7357,11 @@ func (recv *ColorSelection) GetHasPalette() bool {
 	return retGo
 }
 
-// GetPreviousAlpha is a wrapper around the C function gtk_color_selection_get_previous_alpha.
+// Returns the previous alpha value.
+/*
+
+C function : gtk_color_selection_get_previous_alpha
+*/
 func (recv *ColorSelection) GetPreviousAlpha() uint16 {
 	retC := C.gtk_color_selection_get_previous_alpha((*C.GtkColorSelection)(recv.native))
 	retGo := (uint16)(retC)
@@ -6746,7 +7369,11 @@ func (recv *ColorSelection) GetPreviousAlpha() uint16 {
 	return retGo
 }
 
-// GetPreviousColor is a wrapper around the C function gtk_color_selection_get_previous_color.
+// Fills @color in with the original color value.
+/*
+
+C function : gtk_color_selection_get_previous_color
+*/
 func (recv *ColorSelection) GetPreviousColor() *gdk.Color {
 	var c_color C.GdkColor
 
@@ -6757,7 +7384,11 @@ func (recv *ColorSelection) GetPreviousColor() *gdk.Color {
 	return color
 }
 
-// IsAdjusting is a wrapper around the C function gtk_color_selection_is_adjusting.
+// Gets the current state of the @colorsel.
+/*
+
+C function : gtk_color_selection_is_adjusting
+*/
 func (recv *ColorSelection) IsAdjusting() bool {
 	retC := C.gtk_color_selection_is_adjusting((*C.GtkColorSelection)(recv.native))
 	retGo := retC == C.TRUE
@@ -6765,7 +7396,14 @@ func (recv *ColorSelection) IsAdjusting() bool {
 	return retGo
 }
 
-// SetCurrentAlpha is a wrapper around the C function gtk_color_selection_set_current_alpha.
+// Sets the current opacity to be @alpha.
+//
+// The first time this is called, it will also set
+// the original opacity to be @alpha too.
+/*
+
+C function : gtk_color_selection_set_current_alpha
+*/
 func (recv *ColorSelection) SetCurrentAlpha(alpha uint16) {
 	c_alpha := (C.guint16)(alpha)
 
@@ -6774,7 +7412,14 @@ func (recv *ColorSelection) SetCurrentAlpha(alpha uint16) {
 	return
 }
 
-// SetCurrentColor is a wrapper around the C function gtk_color_selection_set_current_color.
+// Sets the current color to be @color.
+//
+// The first time this is called, it will also set
+// the original color to be @color too.
+/*
+
+C function : gtk_color_selection_set_current_color
+*/
 func (recv *ColorSelection) SetCurrentColor(color *gdk.Color) {
 	c_color := (*C.GdkColor)(C.NULL)
 	if color != nil {
@@ -6786,7 +7431,11 @@ func (recv *ColorSelection) SetCurrentColor(color *gdk.Color) {
 	return
 }
 
-// SetHasOpacityControl is a wrapper around the C function gtk_color_selection_set_has_opacity_control.
+// Sets the @colorsel to use or not use opacity.
+/*
+
+C function : gtk_color_selection_set_has_opacity_control
+*/
 func (recv *ColorSelection) SetHasOpacityControl(hasOpacity bool) {
 	c_has_opacity :=
 		boolToGboolean(hasOpacity)
@@ -6796,7 +7445,11 @@ func (recv *ColorSelection) SetHasOpacityControl(hasOpacity bool) {
 	return
 }
 
-// SetHasPalette is a wrapper around the C function gtk_color_selection_set_has_palette.
+// Shows and hides the palette based upon the value of @has_palette.
+/*
+
+C function : gtk_color_selection_set_has_palette
+*/
 func (recv *ColorSelection) SetHasPalette(hasPalette bool) {
 	c_has_palette :=
 		boolToGboolean(hasPalette)
@@ -6806,7 +7459,14 @@ func (recv *ColorSelection) SetHasPalette(hasPalette bool) {
 	return
 }
 
-// SetPreviousAlpha is a wrapper around the C function gtk_color_selection_set_previous_alpha.
+// Sets the “previous” alpha to be @alpha.
+//
+// This function should be called with some hesitations,
+// as it might seem confusing to have that alpha change.
+/*
+
+C function : gtk_color_selection_set_previous_alpha
+*/
 func (recv *ColorSelection) SetPreviousAlpha(alpha uint16) {
 	c_alpha := (C.guint16)(alpha)
 
@@ -6815,7 +7475,16 @@ func (recv *ColorSelection) SetPreviousAlpha(alpha uint16) {
 	return
 }
 
-// SetPreviousColor is a wrapper around the C function gtk_color_selection_set_previous_color.
+// Sets the “previous” color to be @color.
+//
+// This function should be called with some hesitations,
+// as it might seem confusing to have that color change.
+// Calling gtk_color_selection_set_current_color() will also
+// set this color the first time it is called.
+/*
+
+C function : gtk_color_selection_set_previous_color
+*/
 func (recv *ColorSelection) SetPreviousColor(color *gdk.Color) {
 	c_color := (*C.GdkColor)(C.NULL)
 	if color != nil {
@@ -6906,7 +7575,11 @@ func CastToColorSelectionDialog(object *gobject.Object) *ColorSelectionDialog {
 	return ColorSelectionDialogNewFromC(object.ToC())
 }
 
-// ColorSelectionDialogNew is a wrapper around the C function gtk_color_selection_dialog_new.
+// Creates a new #GtkColorSelectionDialog.
+/*
+
+C function : gtk_color_selection_dialog_new
+*/
 func ColorSelectionDialogNew(title string) *ColorSelectionDialog {
 	c_title := C.CString(title)
 	defer C.free(unsafe.Pointer(c_title))
@@ -6981,7 +7654,11 @@ func CastToComboBox(object *gobject.Object) *ComboBox {
 	return ComboBoxNewFromC(object.ToC())
 }
 
-// ComboBoxNewWithArea is a wrapper around the C function gtk_combo_box_new_with_area.
+// Creates a new empty #GtkComboBox using @area to layout cells.
+/*
+
+C function : gtk_combo_box_new_with_area
+*/
 func ComboBoxNewWithArea(area *CellArea) *ComboBox {
 	c_area := (*C.GtkCellArea)(C.NULL)
 	if area != nil {
@@ -6994,7 +7671,13 @@ func ComboBoxNewWithArea(area *CellArea) *ComboBox {
 	return retGo
 }
 
-// ComboBoxNewWithAreaAndEntry is a wrapper around the C function gtk_combo_box_new_with_area_and_entry.
+// Creates a new empty #GtkComboBox with an entry.
+//
+// The new combo box will use @area to layout cells.
+/*
+
+C function : gtk_combo_box_new_with_area_and_entry
+*/
 func ComboBoxNewWithAreaAndEntry(area *CellArea) *ComboBox {
 	c_area := (*C.GtkCellArea)(C.NULL)
 	if area != nil {
@@ -7007,7 +7690,11 @@ func ComboBoxNewWithAreaAndEntry(area *CellArea) *ComboBox {
 	return retGo
 }
 
-// GetAddTearoffs is a wrapper around the C function gtk_combo_box_get_add_tearoffs.
+// Gets the current value of the :add-tearoffs property.
+/*
+
+C function : gtk_combo_box_get_add_tearoffs
+*/
 func (recv *ComboBox) GetAddTearoffs() bool {
 	retC := C.gtk_combo_box_get_add_tearoffs((*C.GtkComboBox)(recv.native))
 	retGo := retC == C.TRUE
@@ -7456,7 +8143,22 @@ func container_setFocusChildHandler(_ *C.GObject, c_object *C.GtkWidget, data C.
 	callback(object)
 }
 
-// Add is a wrapper around the C function gtk_container_add.
+// Adds @widget to @container. Typically used for simple containers
+// such as #GtkWindow, #GtkFrame, or #GtkButton; for more complicated
+// layout containers such as #GtkBox or #GtkGrid, this function will
+// pick default packing parameters that may not be correct.  So
+// consider functions such as gtk_box_pack_start() and
+// gtk_grid_attach() as an alternative to gtk_container_add() in
+// those cases. A widget may be added to only one container at a time;
+// you can’t place the same widget inside two different containers.
+//
+// Note that some containers, such as #GtkScrolledWindow or #GtkListBox,
+// may add intermediate children between the added widget and the
+// container.
+/*
+
+C function : gtk_container_add
+*/
 func (recv *Container) Add(widget *Widget) {
 	c_widget := (*C.GtkWidget)(C.NULL)
 	if widget != nil {
@@ -7470,7 +8172,10 @@ func (recv *Container) Add(widget *Widget) {
 
 // Unsupported : gtk_container_add_with_properties : unsupported parameter ... : varargs
 
-// CheckResize is a wrapper around the C function gtk_container_check_resize.
+/*
+
+C function : gtk_container_check_resize
+*/
 func (recv *Container) CheckResize() {
 	C.gtk_container_check_resize((*C.GtkContainer)(recv.native))
 
@@ -7479,7 +8184,11 @@ func (recv *Container) CheckResize() {
 
 // Unsupported : gtk_container_child_get : unsupported parameter ... : varargs
 
-// ChildGetProperty is a wrapper around the C function gtk_container_child_get_property.
+// Gets the value of a child property for @child and @container.
+/*
+
+C function : gtk_container_child_get_property
+*/
 func (recv *Container) ChildGetProperty(child *Widget, propertyName string, value *gobject.Value) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -7503,7 +8212,11 @@ func (recv *Container) ChildGetProperty(child *Widget, propertyName string, valu
 
 // Unsupported : gtk_container_child_set : unsupported parameter ... : varargs
 
-// ChildSetProperty is a wrapper around the C function gtk_container_child_set_property.
+// Sets a child property for @child and @container.
+/*
+
+C function : gtk_container_child_set_property
+*/
 func (recv *Container) ChildSetProperty(child *Widget, propertyName string, value *gobject.Value) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -7525,7 +8238,15 @@ func (recv *Container) ChildSetProperty(child *Widget, propertyName string, valu
 
 // Unsupported : gtk_container_child_set_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
 
-// ChildType is a wrapper around the C function gtk_container_child_type.
+// Returns the type of the children supported by the container.
+//
+// Note that this may return %G_TYPE_NONE to indicate that no more
+// children can be added, e.g. for a #GtkPaned which already has two
+// children.
+/*
+
+C function : gtk_container_child_type
+*/
 func (recv *Container) ChildType() gobject.Type {
 	retC := C.gtk_container_child_type((*C.GtkContainer)(recv.native))
 	retGo := (gobject.Type)(retC)
@@ -7537,7 +8258,12 @@ func (recv *Container) ChildType() gobject.Type {
 
 // Unsupported : gtk_container_foreach : unsupported parameter callback : no type generator for Callback (GtkCallback) for param callback
 
-// GetBorderWidth is a wrapper around the C function gtk_container_get_border_width.
+// Retrieves the border width of the container. See
+// gtk_container_set_border_width().
+/*
+
+C function : gtk_container_get_border_width
+*/
 func (recv *Container) GetBorderWidth() uint32 {
 	retC := C.gtk_container_get_border_width((*C.GtkContainer)(recv.native))
 	retGo := (uint32)(retC)
@@ -7545,7 +8271,12 @@ func (recv *Container) GetBorderWidth() uint32 {
 	return retGo
 }
 
-// GetChildren is a wrapper around the C function gtk_container_get_children.
+// Returns the container’s non-internal children. See
+// gtk_container_forall() for details on what constitutes an "internal" child.
+/*
+
+C function : gtk_container_get_children
+*/
 func (recv *Container) GetChildren() *glib.List {
 	retC := C.gtk_container_get_children((*C.GtkContainer)(recv.native))
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
@@ -7553,7 +8284,15 @@ func (recv *Container) GetChildren() *glib.List {
 	return retGo
 }
 
-// GetFocusChain is a wrapper around the C function gtk_container_get_focus_chain.
+// Retrieves the focus chain of the container, if one has been
+// set explicitly. If no focus chain has been explicitly
+// set, GTK+ computes the focus chain based on the positions
+// of the children. In that case, GTK+ stores %NULL in
+// @focusable_widgets and returns %FALSE.
+/*
+
+C function : gtk_container_get_focus_chain
+*/
 func (recv *Container) GetFocusChain() (bool, *glib.List) {
 	var c_focusable_widgets *C.GList
 
@@ -7565,7 +8304,12 @@ func (recv *Container) GetFocusChain() (bool, *glib.List) {
 	return retGo, focusableWidgets
 }
 
-// GetFocusHadjustment is a wrapper around the C function gtk_container_get_focus_hadjustment.
+// Retrieves the horizontal focus adjustment for the container. See
+// gtk_container_set_focus_hadjustment ().
+/*
+
+C function : gtk_container_get_focus_hadjustment
+*/
 func (recv *Container) GetFocusHadjustment() *Adjustment {
 	retC := C.gtk_container_get_focus_hadjustment((*C.GtkContainer)(recv.native))
 	var retGo (*Adjustment)
@@ -7578,7 +8322,12 @@ func (recv *Container) GetFocusHadjustment() *Adjustment {
 	return retGo
 }
 
-// GetFocusVadjustment is a wrapper around the C function gtk_container_get_focus_vadjustment.
+// Retrieves the vertical focus adjustment for the container. See
+// gtk_container_set_focus_vadjustment().
+/*
+
+C function : gtk_container_get_focus_vadjustment
+*/
 func (recv *Container) GetFocusVadjustment() *Adjustment {
 	retC := C.gtk_container_get_focus_vadjustment((*C.GtkContainer)(recv.native))
 	var retGo (*Adjustment)
@@ -7591,7 +8340,12 @@ func (recv *Container) GetFocusVadjustment() *Adjustment {
 	return retGo
 }
 
-// GetPathForChild is a wrapper around the C function gtk_container_get_path_for_child.
+// Returns a newly created widget path representing all the widget hierarchy
+// from the toplevel down to and including @child.
+/*
+
+C function : gtk_container_get_path_for_child
+*/
 func (recv *Container) GetPathForChild(child *Widget) *WidgetPath {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -7604,7 +8358,12 @@ func (recv *Container) GetPathForChild(child *Widget) *WidgetPath {
 	return retGo
 }
 
-// GetResizeMode is a wrapper around the C function gtk_container_get_resize_mode.
+// Returns the resize mode for the container. See
+// gtk_container_set_resize_mode ().
+/*
+
+C function : gtk_container_get_resize_mode
+*/
 func (recv *Container) GetResizeMode() ResizeMode {
 	retC := C.gtk_container_get_resize_mode((*C.GtkContainer)(recv.native))
 	retGo := (ResizeMode)(retC)
@@ -7612,7 +8371,25 @@ func (recv *Container) GetResizeMode() ResizeMode {
 	return retGo
 }
 
-// PropagateDraw is a wrapper around the C function gtk_container_propagate_draw.
+// When a container receives a call to the draw function, it must send
+// synthetic #GtkWidget::draw calls to all children that don’t have their
+// own #GdkWindows. This function provides a convenient way of doing this.
+// A container, when it receives a call to its #GtkWidget::draw function,
+// calls gtk_container_propagate_draw() once for each child, passing in
+// the @cr the container received.
+//
+// gtk_container_propagate_draw() takes care of translating the origin of @cr,
+// and deciding whether the draw needs to be sent to the child. It is a
+// convenient and optimized way of getting the same effect as calling
+// gtk_widget_draw() on the child directly.
+//
+// In most cases, a container can simply either inherit the
+// #GtkWidget::draw implementation from #GtkContainer, or do some drawing
+// and then chain to the ::draw implementation from #GtkContainer.
+/*
+
+C function : gtk_container_propagate_draw
+*/
 func (recv *Container) PropagateDraw(child *Widget, cr *cairo.Context) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -7629,7 +8406,19 @@ func (recv *Container) PropagateDraw(child *Widget, cr *cairo.Context) {
 	return
 }
 
-// Remove is a wrapper around the C function gtk_container_remove.
+// Removes @widget from @container. @widget must be inside @container.
+// Note that @container will own a reference to @widget, and that this
+// may be the last reference held; so removing a widget from its
+// container can destroy that widget. If you want to use @widget
+// again, you need to add a reference to it before removing it from
+// a container, using g_object_ref(). If you don’t want to use @widget
+// again it’s usually more efficient to simply destroy it directly
+// using gtk_widget_destroy() since this will remove it from the
+// container and help break any circular reference count cycles.
+/*
+
+C function : gtk_container_remove
+*/
 func (recv *Container) Remove(widget *Widget) {
 	c_widget := (*C.GtkWidget)(C.NULL)
 	if widget != nil {
@@ -7641,14 +8430,29 @@ func (recv *Container) Remove(widget *Widget) {
 	return
 }
 
-// ResizeChildren is a wrapper around the C function gtk_container_resize_children.
+/*
+
+C function : gtk_container_resize_children
+*/
 func (recv *Container) ResizeChildren() {
 	C.gtk_container_resize_children((*C.GtkContainer)(recv.native))
 
 	return
 }
 
-// SetBorderWidth is a wrapper around the C function gtk_container_set_border_width.
+// Sets the border width of the container.
+//
+// The border width of a container is the amount of space to leave
+// around the outside of the container. The only exception to this is
+// #GtkWindow; because toplevel windows can’t leave space outside,
+// they leave the space inside. The border is added on all sides of
+// the container. To add space to only one side, use a specific
+// #GtkWidget:margin property on the child widget, for example
+// #GtkWidget:margin-top.
+/*
+
+C function : gtk_container_set_border_width
+*/
 func (recv *Container) SetBorderWidth(borderWidth uint32) {
 	c_border_width := (C.guint)(borderWidth)
 
@@ -7657,7 +8461,17 @@ func (recv *Container) SetBorderWidth(borderWidth uint32) {
 	return
 }
 
-// SetFocusChain is a wrapper around the C function gtk_container_set_focus_chain.
+// Sets a focus chain, overriding the one computed automatically by GTK+.
+//
+// In principle each widget in the chain should be a descendant of the
+// container, but this is not enforced by this method, since it’s allowed
+// to set the focus chain before you pack the widgets, or have a widget
+// in the chain that isn’t always packed. The necessary checks are done
+// when the focus chain is actually traversed.
+/*
+
+C function : gtk_container_set_focus_chain
+*/
 func (recv *Container) SetFocusChain(focusableWidgets *glib.List) {
 	c_focusable_widgets := (*C.GList)(C.NULL)
 	if focusableWidgets != nil {
@@ -7669,7 +8483,18 @@ func (recv *Container) SetFocusChain(focusableWidgets *glib.List) {
 	return
 }
 
-// SetFocusChild is a wrapper around the C function gtk_container_set_focus_child.
+// Sets, or unsets if @child is %NULL, the focused child of @container.
+//
+// This function emits the GtkContainer::set_focus_child signal of
+// @container. Implementations of #GtkContainer can override the
+// default behaviour by overriding the class closure of this signal.
+//
+// This is function is mostly meant to be used by widgets. Applications can use
+// gtk_widget_grab_focus() to manually set the focus to a specific widget.
+/*
+
+C function : gtk_container_set_focus_child
+*/
 func (recv *Container) SetFocusChild(child *Widget) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -7681,7 +8506,19 @@ func (recv *Container) SetFocusChild(child *Widget) {
 	return
 }
 
-// SetFocusHadjustment is a wrapper around the C function gtk_container_set_focus_hadjustment.
+// Hooks up an adjustment to focus handling in a container, so when a child
+// of the container is focused, the adjustment is scrolled to show that
+// widget. This function sets the horizontal alignment.
+// See gtk_scrolled_window_get_hadjustment() for a typical way of obtaining
+// the adjustment and gtk_container_set_focus_vadjustment() for setting
+// the vertical adjustment.
+//
+// The adjustments have to be in pixel units and in the same coordinate
+// system as the allocation for immediate children of the container.
+/*
+
+C function : gtk_container_set_focus_hadjustment
+*/
 func (recv *Container) SetFocusHadjustment(adjustment *Adjustment) {
 	c_adjustment := (*C.GtkAdjustment)(C.NULL)
 	if adjustment != nil {
@@ -7693,7 +8530,19 @@ func (recv *Container) SetFocusHadjustment(adjustment *Adjustment) {
 	return
 }
 
-// SetFocusVadjustment is a wrapper around the C function gtk_container_set_focus_vadjustment.
+// Hooks up an adjustment to focus handling in a container, so when a
+// child of the container is focused, the adjustment is scrolled to
+// show that widget. This function sets the vertical alignment. See
+// gtk_scrolled_window_get_vadjustment() for a typical way of obtaining
+// the adjustment and gtk_container_set_focus_hadjustment() for setting
+// the horizontal adjustment.
+//
+// The adjustments have to be in pixel units and in the same coordinate
+// system as the allocation for immediate children of the container.
+/*
+
+C function : gtk_container_set_focus_vadjustment
+*/
 func (recv *Container) SetFocusVadjustment(adjustment *Adjustment) {
 	c_adjustment := (*C.GtkAdjustment)(C.NULL)
 	if adjustment != nil {
@@ -7705,7 +8554,14 @@ func (recv *Container) SetFocusVadjustment(adjustment *Adjustment) {
 	return
 }
 
-// SetReallocateRedraws is a wrapper around the C function gtk_container_set_reallocate_redraws.
+// Sets the @reallocate_redraws flag of the container to the given value.
+//
+// Containers requesting reallocation redraws get automatically
+// redrawn if any of their children changed allocation.
+/*
+
+C function : gtk_container_set_reallocate_redraws
+*/
 func (recv *Container) SetReallocateRedraws(needsRedraws bool) {
 	c_needs_redraws :=
 		boolToGboolean(needsRedraws)
@@ -7715,7 +8571,15 @@ func (recv *Container) SetReallocateRedraws(needsRedraws bool) {
 	return
 }
 
-// SetResizeMode is a wrapper around the C function gtk_container_set_resize_mode.
+// Sets the resize mode for the container.
+//
+// The resize mode of a container determines whether a resize request
+// will be passed to the container’s parent, queued for later execution
+// or executed immediately.
+/*
+
+C function : gtk_container_set_resize_mode
+*/
 func (recv *Container) SetResizeMode(resizeMode ResizeMode) {
 	c_resize_mode := (C.GtkResizeMode)(resizeMode)
 
@@ -7724,7 +8588,11 @@ func (recv *Container) SetResizeMode(resizeMode ResizeMode) {
 	return
 }
 
-// UnsetFocusChain is a wrapper around the C function gtk_container_unset_focus_chain.
+// Removes a focus chain explicitly set with gtk_container_set_focus_chain().
+/*
+
+C function : gtk_container_unset_focus_chain
+*/
 func (recv *Container) UnsetFocusChain() {
 	C.gtk_container_unset_focus_chain((*C.GtkContainer)(recv.native))
 
@@ -7834,7 +8702,10 @@ func CastToContainerCellAccessible(object *gobject.Object) *ContainerCellAccessi
 	return ContainerCellAccessibleNewFromC(object.ToC())
 }
 
-// ContainerCellAccessibleNew is a wrapper around the C function gtk_container_cell_accessible_new.
+/*
+
+C function : gtk_container_cell_accessible_new
+*/
 func ContainerCellAccessibleNew() *ContainerCellAccessible {
 	retC := C.gtk_container_cell_accessible_new()
 	retGo := ContainerCellAccessibleNewFromC(unsafe.Pointer(retC))
@@ -7842,7 +8713,10 @@ func ContainerCellAccessibleNew() *ContainerCellAccessible {
 	return retGo
 }
 
-// AddChild is a wrapper around the C function gtk_container_cell_accessible_add_child.
+/*
+
+C function : gtk_container_cell_accessible_add_child
+*/
 func (recv *ContainerCellAccessible) AddChild(child *CellAccessible) {
 	c_child := (*C.GtkCellAccessible)(C.NULL)
 	if child != nil {
@@ -7854,7 +8728,11 @@ func (recv *ContainerCellAccessible) AddChild(child *CellAccessible) {
 	return
 }
 
-// GetChildren is a wrapper around the C function gtk_container_cell_accessible_get_children.
+// Get a list of children.
+/*
+
+C function : gtk_container_cell_accessible_get_children
+*/
 func (recv *ContainerCellAccessible) GetChildren() *glib.List {
 	retC := C.gtk_container_cell_accessible_get_children((*C.GtkContainerCellAccessible)(recv.native))
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
@@ -7862,7 +8740,10 @@ func (recv *ContainerCellAccessible) GetChildren() *glib.List {
 	return retGo
 }
 
-// RemoveChild is a wrapper around the C function gtk_container_cell_accessible_remove_child.
+/*
+
+C function : gtk_container_cell_accessible_remove_child
+*/
 func (recv *ContainerCellAccessible) RemoveChild(child *CellAccessible) {
 	c_child := (*C.GtkCellAccessible)(C.NULL)
 	if child != nil {
@@ -7979,7 +8860,11 @@ func cssprovider_parsingErrorHandler(_ *C.GObject, c_section *C.GtkCssSection, c
 	callback(section, error)
 }
 
-// CssProviderNew is a wrapper around the C function gtk_css_provider_new.
+// Returns a newly created #GtkCssProvider.
+/*
+
+C function : gtk_css_provider_new
+*/
 func CssProviderNew() *CssProvider {
 	retC := C.gtk_css_provider_new()
 	retGo := CssProviderNewFromC(unsafe.Pointer(retC))
@@ -7987,7 +8872,12 @@ func CssProviderNew() *CssProvider {
 	return retGo
 }
 
-// LoadFromData is a wrapper around the C function gtk_css_provider_load_from_data.
+// Loads @data into @css_provider, and by doing so clears any previously loaded
+// information.
+/*
+
+C function : gtk_css_provider_load_from_data
+*/
 func (recv *CssProvider) LoadFromData(data []uint8) (bool, error) {
 	c_data := &data[0]
 
@@ -8006,7 +8896,12 @@ func (recv *CssProvider) LoadFromData(data []uint8) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// LoadFromFile is a wrapper around the C function gtk_css_provider_load_from_file.
+// Loads the data contained in @file into @css_provider, making it
+// clear any previously loaded information.
+/*
+
+C function : gtk_css_provider_load_from_file
+*/
 func (recv *CssProvider) LoadFromFile(file *gio.File) (bool, error) {
 	c_file := (*C.GFile)(file.ToC())
 
@@ -8023,7 +8918,12 @@ func (recv *CssProvider) LoadFromFile(file *gio.File) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// LoadFromPath is a wrapper around the C function gtk_css_provider_load_from_path.
+// Loads the data contained in @path into @css_provider, making it clear
+// any previously loaded information.
+/*
+
+C function : gtk_css_provider_load_from_path
+*/
 func (recv *CssProvider) LoadFromPath(path string) (bool, error) {
 	c_path := C.CString(path)
 	defer C.free(unsafe.Pointer(c_path))
@@ -8164,7 +9064,14 @@ func dialog_closeHandler(_ *C.GObject, data C.gpointer) {
 
 // Unsupported signal 'response' for Dialog : unsupported parameter response_id : type gint :
 
-// DialogNew is a wrapper around the C function gtk_dialog_new.
+// Creates a new dialog box.
+//
+// Widgets should not be packed into this #GtkWindow
+// directly, but into the @vbox and @action_area, as described above.
+/*
+
+C function : gtk_dialog_new
+*/
 func DialogNew() *Dialog {
 	retC := C.gtk_dialog_new()
 	retGo := DialogNewFromC(unsafe.Pointer(retC))
@@ -8174,7 +9081,16 @@ func DialogNew() *Dialog {
 
 // Unsupported : gtk_dialog_new_with_buttons : unsupported parameter ... : varargs
 
-// AddActionWidget is a wrapper around the C function gtk_dialog_add_action_widget.
+// Adds an activatable widget to the action area of a #GtkDialog,
+// connecting a signal handler that will emit the #GtkDialog::response
+// signal on the dialog when the widget is activated. The widget is
+// appended to the end of the dialog’s action area. If you want to add a
+// non-activatable widget, simply pack it into the @action_area field
+// of the #GtkDialog struct.
+/*
+
+C function : gtk_dialog_add_action_widget
+*/
 func (recv *Dialog) AddActionWidget(child *Widget, responseId int32) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -8188,7 +9104,15 @@ func (recv *Dialog) AddActionWidget(child *Widget, responseId int32) {
 	return
 }
 
-// AddButton is a wrapper around the C function gtk_dialog_add_button.
+// Adds a button with the given text and sets things up so that
+// clicking the button will emit the #GtkDialog::response signal with
+// the given @response_id. The button is appended to the end of the
+// dialog’s action area. The button widget is returned, but usually
+// you don’t need it.
+/*
+
+C function : gtk_dialog_add_button
+*/
 func (recv *Dialog) AddButton(buttonText string, responseId int32) *Widget {
 	c_button_text := C.CString(buttonText)
 	defer C.free(unsafe.Pointer(c_button_text))
@@ -8203,7 +9127,14 @@ func (recv *Dialog) AddButton(buttonText string, responseId int32) *Widget {
 
 // Unsupported : gtk_dialog_add_buttons : unsupported parameter ... : varargs
 
-// Response is a wrapper around the C function gtk_dialog_response.
+// Emits the #GtkDialog::response signal with the given response ID.
+// Used to indicate that the user has responded to the dialog in some way;
+// typically either you or gtk_dialog_run() will be monitoring the
+// ::response signal and take appropriate action.
+/*
+
+C function : gtk_dialog_response
+*/
 func (recv *Dialog) Response(responseId int32) {
 	c_response_id := (C.gint)(responseId)
 
@@ -8212,7 +9143,55 @@ func (recv *Dialog) Response(responseId int32) {
 	return
 }
 
-// Run is a wrapper around the C function gtk_dialog_run.
+// Blocks in a recursive main loop until the @dialog either emits the
+// #GtkDialog::response signal, or is destroyed. If the dialog is
+// destroyed during the call to gtk_dialog_run(), gtk_dialog_run() returns
+// #GTK_RESPONSE_NONE. Otherwise, it returns the response ID from the
+// ::response signal emission.
+//
+// Before entering the recursive main loop, gtk_dialog_run() calls
+// gtk_widget_show() on the dialog for you. Note that you still
+// need to show any children of the dialog yourself.
+//
+// During gtk_dialog_run(), the default behavior of #GtkWidget::delete-event
+// is disabled; if the dialog receives ::delete_event, it will not be
+// destroyed as windows usually are, and gtk_dialog_run() will return
+// #GTK_RESPONSE_DELETE_EVENT. Also, during gtk_dialog_run() the dialog
+// will be modal. You can force gtk_dialog_run() to return at any time by
+// calling gtk_dialog_response() to emit the ::response signal. Destroying
+// the dialog during gtk_dialog_run() is a very bad idea, because your
+// post-run code won’t know whether the dialog was destroyed or not.
+//
+// After gtk_dialog_run() returns, you are responsible for hiding or
+// destroying the dialog if you wish to do so.
+//
+// Typical usage of this function might be:
+// |[<!-- language="C" -->
+// GtkWidget *dialog = gtk_dialog_new ();
+// Set up dialog...
+//
+// int result = gtk_dialog_run (GTK_DIALOG (dialog));
+// switch (result)
+// {
+// case GTK_RESPONSE_ACCEPT:
+// do_application_specific_something ();
+// break;
+// default:
+// do_nothing_since_dialog_was_cancelled ();
+// break;
+// }
+// gtk_widget_destroy (dialog);
+// ]|
+//
+// Note that even though the recursive main loop gives the effect of a
+// modal dialog (it prevents the user from interacting with other
+// windows in the same window group while the dialog is run), callbacks
+// such as timeouts, IO channel watches, DND drops, etc, will
+// be triggered during a gtk_dialog_run() call.
+/*
+
+C function : gtk_dialog_run
+*/
 func (recv *Dialog) Run() int32 {
 	retC := C.gtk_dialog_run((*C.GtkDialog)(recv.native))
 	retGo := (int32)(retC)
@@ -8220,7 +9199,13 @@ func (recv *Dialog) Run() int32 {
 	return retGo
 }
 
-// SetDefaultResponse is a wrapper around the C function gtk_dialog_set_default_response.
+// Sets the last widget in the dialog’s action area with the given @response_id
+// as the default widget for the dialog. Pressing “Enter” normally activates
+// the default widget.
+/*
+
+C function : gtk_dialog_set_default_response
+*/
 func (recv *Dialog) SetDefaultResponse(responseId int32) {
 	c_response_id := (C.gint)(responseId)
 
@@ -8229,7 +9214,13 @@ func (recv *Dialog) SetDefaultResponse(responseId int32) {
 	return
 }
 
-// SetResponseSensitive is a wrapper around the C function gtk_dialog_set_response_sensitive.
+// Calls `gtk_widget_set_sensitive (widget, @setting)`
+// for each widget in the dialog’s action area with the given @response_id.
+// A convenient way to sensitize/desensitize dialog buttons.
+/*
+
+C function : gtk_dialog_set_response_sensitive
+*/
 func (recv *Dialog) SetResponseSensitive(responseId int32, setting bool) {
 	c_response_id := (C.gint)(responseId)
 
@@ -8295,7 +9286,11 @@ func CastToDrawingArea(object *gobject.Object) *DrawingArea {
 	return DrawingAreaNewFromC(object.ToC())
 }
 
-// DrawingAreaNew is a wrapper around the C function gtk_drawing_area_new.
+// Creates a new drawing area.
+/*
+
+C function : gtk_drawing_area_new
+*/
 func DrawingAreaNew() *DrawingArea {
 	retC := C.gtk_drawing_area_new()
 	retGo := DrawingAreaNewFromC(unsafe.Pointer(retC))
@@ -8764,7 +9759,11 @@ func entry_toggleOverwriteHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// EntryNew is a wrapper around the C function gtk_entry_new.
+// Creates a new entry.
+/*
+
+C function : gtk_entry_new
+*/
 func EntryNew() *Entry {
 	retC := C.gtk_entry_new()
 	retGo := EntryNewFromC(unsafe.Pointer(retC))
@@ -8772,7 +9771,11 @@ func EntryNew() *Entry {
 	return retGo
 }
 
-// GetActivatesDefault is a wrapper around the C function gtk_entry_get_activates_default.
+// Retrieves the value set by gtk_entry_set_activates_default().
+/*
+
+C function : gtk_entry_get_activates_default
+*/
 func (recv *Entry) GetActivatesDefault() bool {
 	retC := C.gtk_entry_get_activates_default((*C.GtkEntry)(recv.native))
 	retGo := retC == C.TRUE
@@ -8780,7 +9783,11 @@ func (recv *Entry) GetActivatesDefault() bool {
 	return retGo
 }
 
-// GetHasFrame is a wrapper around the C function gtk_entry_get_has_frame.
+// Gets the value set by gtk_entry_set_has_frame().
+/*
+
+C function : gtk_entry_get_has_frame
+*/
 func (recv *Entry) GetHasFrame() bool {
 	retC := C.gtk_entry_get_has_frame((*C.GtkEntry)(recv.native))
 	retGo := retC == C.TRUE
@@ -8788,7 +9795,12 @@ func (recv *Entry) GetHasFrame() bool {
 	return retGo
 }
 
-// GetInvisibleChar is a wrapper around the C function gtk_entry_get_invisible_char.
+// Retrieves the character displayed in place of the real characters
+// for entries with visibility set to false. See gtk_entry_set_invisible_char().
+/*
+
+C function : gtk_entry_get_invisible_char
+*/
 func (recv *Entry) GetInvisibleChar() rune {
 	retC := C.gtk_entry_get_invisible_char((*C.GtkEntry)(recv.native))
 	retGo := (rune)(retC)
@@ -8796,7 +9808,20 @@ func (recv *Entry) GetInvisibleChar() rune {
 	return retGo
 }
 
-// GetLayout is a wrapper around the C function gtk_entry_get_layout.
+// Gets the #PangoLayout used to display the entry.
+// The layout is useful to e.g. convert text positions to
+// pixel positions, in combination with gtk_entry_get_layout_offsets().
+// The returned layout is owned by the entry and must not be
+// modified or freed by the caller.
+//
+// Keep in mind that the layout text may contain a preedit string, so
+// gtk_entry_layout_index_to_text_index() and
+// gtk_entry_text_index_to_layout_index() are needed to convert byte
+// indices in the layout to byte indices in the entry contents.
+/*
+
+C function : gtk_entry_get_layout
+*/
 func (recv *Entry) GetLayout() *pango.Layout {
 	retC := C.gtk_entry_get_layout((*C.GtkEntry)(recv.native))
 	retGo := pango.LayoutNewFromC(unsafe.Pointer(retC))
@@ -8804,7 +9829,29 @@ func (recv *Entry) GetLayout() *pango.Layout {
 	return retGo
 }
 
-// GetLayoutOffsets is a wrapper around the C function gtk_entry_get_layout_offsets.
+// Obtains the position of the #PangoLayout used to render text
+// in the entry, in widget coordinates. Useful if you want to line
+// up the text in an entry with some other text, e.g. when using the
+// entry to implement editable cells in a sheet widget.
+//
+// Also useful to convert mouse events into coordinates inside the
+// #PangoLayout, e.g. to take some action if some part of the entry text
+// is clicked.
+//
+// Note that as the user scrolls around in the entry the offsets will
+// change; you’ll need to connect to the “notify::scroll-offset”
+// signal to track this. Remember when using the #PangoLayout
+// functions you need to convert to and from pixels using
+// PANGO_PIXELS() or #PANGO_SCALE.
+//
+// Keep in mind that the layout text may contain a preedit string, so
+// gtk_entry_layout_index_to_text_index() and
+// gtk_entry_text_index_to_layout_index() are needed to convert byte
+// indices in the layout to byte indices in the entry contents.
+/*
+
+C function : gtk_entry_get_layout_offsets
+*/
 func (recv *Entry) GetLayoutOffsets() (int32, int32) {
 	var c_x C.gint
 
@@ -8819,7 +9866,15 @@ func (recv *Entry) GetLayoutOffsets() (int32, int32) {
 	return x, y
 }
 
-// GetMaxLength is a wrapper around the C function gtk_entry_get_max_length.
+// Retrieves the maximum allowed length of the text in
+// @entry. See gtk_entry_set_max_length().
+//
+// This is equivalent to getting @entry's #GtkEntryBuffer and
+// calling gtk_entry_buffer_get_max_length() on it.
+/*
+
+C function : gtk_entry_get_max_length
+*/
 func (recv *Entry) GetMaxLength() int32 {
 	retC := C.gtk_entry_get_max_length((*C.GtkEntry)(recv.native))
 	retGo := (int32)(retC)
@@ -8827,7 +9882,15 @@ func (recv *Entry) GetMaxLength() int32 {
 	return retGo
 }
 
-// GetText is a wrapper around the C function gtk_entry_get_text.
+// Retrieves the contents of the entry widget.
+// See also gtk_editable_get_chars().
+//
+// This is equivalent to getting @entry's #GtkEntryBuffer and calling
+// gtk_entry_buffer_get_text() on it.
+/*
+
+C function : gtk_entry_get_text
+*/
 func (recv *Entry) GetText() string {
 	retC := C.gtk_entry_get_text((*C.GtkEntry)(recv.native))
 	retGo := C.GoString(retC)
@@ -8835,7 +9898,12 @@ func (recv *Entry) GetText() string {
 	return retGo
 }
 
-// GetVisibility is a wrapper around the C function gtk_entry_get_visibility.
+// Retrieves whether the text in @entry is visible. See
+// gtk_entry_set_visibility().
+/*
+
+C function : gtk_entry_get_visibility
+*/
 func (recv *Entry) GetVisibility() bool {
 	retC := C.gtk_entry_get_visibility((*C.GtkEntry)(recv.native))
 	retGo := retC == C.TRUE
@@ -8843,7 +9911,11 @@ func (recv *Entry) GetVisibility() bool {
 	return retGo
 }
 
-// GetWidthChars is a wrapper around the C function gtk_entry_get_width_chars.
+// Gets the value set by gtk_entry_set_width_chars().
+/*
+
+C function : gtk_entry_get_width_chars
+*/
 func (recv *Entry) GetWidthChars() int32 {
 	retC := C.gtk_entry_get_width_chars((*C.GtkEntry)(recv.native))
 	retGo := (int32)(retC)
@@ -8851,7 +9923,13 @@ func (recv *Entry) GetWidthChars() int32 {
 	return retGo
 }
 
-// LayoutIndexToTextIndex is a wrapper around the C function gtk_entry_layout_index_to_text_index.
+// Converts from a position in the entry’s #PangoLayout (returned by
+// gtk_entry_get_layout()) to a position in the entry contents
+// (returned by gtk_entry_get_text()).
+/*
+
+C function : gtk_entry_layout_index_to_text_index
+*/
 func (recv *Entry) LayoutIndexToTextIndex(layoutIndex int32) int32 {
 	c_layout_index := (C.gint)(layoutIndex)
 
@@ -8861,7 +9939,18 @@ func (recv *Entry) LayoutIndexToTextIndex(layoutIndex int32) int32 {
 	return retGo
 }
 
-// SetActivatesDefault is a wrapper around the C function gtk_entry_set_activates_default.
+// If @setting is %TRUE, pressing Enter in the @entry will activate the default
+// widget for the window containing the entry. This usually means that
+// the dialog box containing the entry will be closed, since the default
+// widget is usually one of the dialog buttons.
+//
+// (For experts: if @setting is %TRUE, the entry calls
+// gtk_window_activate_default() on the window containing the entry, in
+// the default handler for the #GtkEntry::activate signal.)
+/*
+
+C function : gtk_entry_set_activates_default
+*/
 func (recv *Entry) SetActivatesDefault(setting bool) {
 	c_setting :=
 		boolToGboolean(setting)
@@ -8871,7 +9960,11 @@ func (recv *Entry) SetActivatesDefault(setting bool) {
 	return
 }
 
-// SetHasFrame is a wrapper around the C function gtk_entry_set_has_frame.
+// Sets whether the entry has a beveled frame around it.
+/*
+
+C function : gtk_entry_set_has_frame
+*/
 func (recv *Entry) SetHasFrame(setting bool) {
 	c_setting :=
 		boolToGboolean(setting)
@@ -8881,7 +9974,17 @@ func (recv *Entry) SetHasFrame(setting bool) {
 	return
 }
 
-// SetInvisibleChar is a wrapper around the C function gtk_entry_set_invisible_char.
+// Sets the character to use in place of the actual text when
+// gtk_entry_set_visibility() has been called to set text visibility
+// to %FALSE. i.e. this is the character used in “password mode” to
+// show the user how many characters have been typed. By default, GTK+
+// picks the best invisible char available in the current font. If you
+// set the invisible char to 0, then the user will get no feedback
+// at all; there will be no text on the screen as they type.
+/*
+
+C function : gtk_entry_set_invisible_char
+*/
 func (recv *Entry) SetInvisibleChar(ch rune) {
 	c_ch := (C.gunichar)(ch)
 
@@ -8890,7 +9993,17 @@ func (recv *Entry) SetInvisibleChar(ch rune) {
 	return
 }
 
-// SetMaxLength is a wrapper around the C function gtk_entry_set_max_length.
+// Sets the maximum allowed length of the contents of the widget. If
+// the current contents are longer than the given length, then they
+// will be truncated to fit.
+//
+// This is equivalent to getting @entry's #GtkEntryBuffer and
+// calling gtk_entry_buffer_set_max_length() on it.
+// ]|
+/*
+
+C function : gtk_entry_set_max_length
+*/
 func (recv *Entry) SetMaxLength(max int32) {
 	c_max := (C.gint)(max)
 
@@ -8899,7 +10012,14 @@ func (recv *Entry) SetMaxLength(max int32) {
 	return
 }
 
-// SetText is a wrapper around the C function gtk_entry_set_text.
+// Sets the text in the widget to the given
+// value, replacing the current contents.
+//
+// See gtk_entry_buffer_set_text().
+/*
+
+C function : gtk_entry_set_text
+*/
 func (recv *Entry) SetText(text string) {
 	c_text := C.CString(text)
 	defer C.free(unsafe.Pointer(c_text))
@@ -8909,7 +10029,23 @@ func (recv *Entry) SetText(text string) {
 	return
 }
 
-// SetVisibility is a wrapper around the C function gtk_entry_set_visibility.
+// Sets whether the contents of the entry are visible or not.
+// When visibility is set to %FALSE, characters are displayed
+// as the invisible char, and will also appear that way when
+// the text in the entry widget is copied elsewhere.
+//
+// By default, GTK+ picks the best invisible character available
+// in the current font, but it can be changed with
+// gtk_entry_set_invisible_char().
+//
+// Note that you probably want to set #GtkEntry:input-purpose
+// to %GTK_INPUT_PURPOSE_PASSWORD or %GTK_INPUT_PURPOSE_PIN to
+// inform input methods about the purpose of this entry,
+// in addition to setting visibility to %FALSE.
+/*
+
+C function : gtk_entry_set_visibility
+*/
 func (recv *Entry) SetVisibility(visible bool) {
 	c_visible :=
 		boolToGboolean(visible)
@@ -8919,7 +10055,15 @@ func (recv *Entry) SetVisibility(visible bool) {
 	return
 }
 
-// SetWidthChars is a wrapper around the C function gtk_entry_set_width_chars.
+// Changes the size request of the entry to be about the right size
+// for @n_chars characters. Note that it changes the size
+// request, the size can still be affected by
+// how you pack the widget into containers. If @n_chars is -1, the
+// size reverts to the default entry size.
+/*
+
+C function : gtk_entry_set_width_chars
+*/
 func (recv *Entry) SetWidthChars(nChars int32) {
 	c_n_chars := (C.gint)(nChars)
 
@@ -8928,7 +10072,14 @@ func (recv *Entry) SetWidthChars(nChars int32) {
 	return
 }
 
-// TextIndexToLayoutIndex is a wrapper around the C function gtk_entry_text_index_to_layout_index.
+// Converts from a position in the entry contents (returned
+// by gtk_entry_get_text()) to a position in the
+// entry’s #PangoLayout (returned by gtk_entry_get_layout(),
+// with text retrieved via pango_layout_get_text()).
+/*
+
+C function : gtk_entry_text_index_to_layout_index
+*/
 func (recv *Entry) TextIndexToLayoutIndex(textIndex int32) int32 {
 	c_text_index := (C.gint)(textIndex)
 
@@ -9156,7 +10307,11 @@ func CastToEventBox(object *gobject.Object) *EventBox {
 	return EventBoxNewFromC(object.ToC())
 }
 
-// EventBoxNew is a wrapper around the C function gtk_event_box_new.
+// Creates a new #GtkEventBox.
+/*
+
+C function : gtk_event_box_new
+*/
 func EventBoxNew() *EventBox {
 	retC := C.gtk_event_box_new()
 	retGo := EventBoxNewFromC(unsafe.Pointer(retC))
@@ -10278,7 +11433,11 @@ func CastToFixed(object *gobject.Object) *Fixed {
 	return FixedNewFromC(object.ToC())
 }
 
-// FixedNew is a wrapper around the C function gtk_fixed_new.
+// Creates a new #GtkFixed.
+/*
+
+C function : gtk_fixed_new
+*/
 func FixedNew() *Fixed {
 	retC := C.gtk_fixed_new()
 	retGo := FixedNewFromC(unsafe.Pointer(retC))
@@ -10286,7 +11445,11 @@ func FixedNew() *Fixed {
 	return retGo
 }
 
-// Move is a wrapper around the C function gtk_fixed_move.
+// Moves a child of a #GtkFixed container to the given position.
+/*
+
+C function : gtk_fixed_move
+*/
 func (recv *Fixed) Move(widget *Widget, x int32, y int32) {
 	c_widget := (*C.GtkWidget)(C.NULL)
 	if widget != nil {
@@ -10302,7 +11465,11 @@ func (recv *Fixed) Move(widget *Widget, x int32, y int32) {
 	return
 }
 
-// Put is a wrapper around the C function gtk_fixed_put.
+// Adds a widget to a #GtkFixed container at the given position.
+/*
+
+C function : gtk_fixed_put
+*/
 func (recv *Fixed) Put(widget *Widget, x int32, y int32) {
 	c_widget := (*C.GtkWidget)(C.NULL)
 	if widget != nil {
@@ -11260,7 +12427,11 @@ func CastToFontSelection(object *gobject.Object) *FontSelection {
 	return FontSelectionNewFromC(object.ToC())
 }
 
-// FontSelectionNew is a wrapper around the C function gtk_font_selection_new.
+// Creates a new #GtkFontSelection.
+/*
+
+C function : gtk_font_selection_new
+*/
 func FontSelectionNew() *FontSelection {
 	retC := C.gtk_font_selection_new()
 	retGo := FontSelectionNewFromC(unsafe.Pointer(retC))
@@ -11268,7 +12439,18 @@ func FontSelectionNew() *FontSelection {
 	return retGo
 }
 
-// GetFontName is a wrapper around the C function gtk_font_selection_get_font_name.
+// Gets the currently-selected font name.
+//
+// Note that this can be a different string than what you set with
+// gtk_font_selection_set_font_name(), as the font selection widget may
+// normalize font names and thus return a string with a different structure.
+// For example, “Helvetica Italic Bold 12” could be normalized to
+// “Helvetica Bold Italic 12”. Use pango_font_description_equal()
+// if you want to compare two font descriptions.
+/*
+
+C function : gtk_font_selection_get_font_name
+*/
 func (recv *FontSelection) GetFontName() string {
 	retC := C.gtk_font_selection_get_font_name((*C.GtkFontSelection)(recv.native))
 	retGo := C.GoString(retC)
@@ -11277,7 +12459,11 @@ func (recv *FontSelection) GetFontName() string {
 	return retGo
 }
 
-// GetPreviewText is a wrapper around the C function gtk_font_selection_get_preview_text.
+// Gets the text displayed in the preview area.
+/*
+
+C function : gtk_font_selection_get_preview_text
+*/
 func (recv *FontSelection) GetPreviewText() string {
 	retC := C.gtk_font_selection_get_preview_text((*C.GtkFontSelection)(recv.native))
 	retGo := C.GoString(retC)
@@ -11285,7 +12471,15 @@ func (recv *FontSelection) GetPreviewText() string {
 	return retGo
 }
 
-// SetFontName is a wrapper around the C function gtk_font_selection_set_font_name.
+// Sets the currently-selected font.
+//
+// Note that the @fontsel needs to know the screen in which it will appear
+// for this to work; this can be guaranteed by simply making sure that the
+// @fontsel is inserted in a toplevel window before you call this function.
+/*
+
+C function : gtk_font_selection_set_font_name
+*/
 func (recv *FontSelection) SetFontName(fontname string) bool {
 	c_fontname := C.CString(fontname)
 	defer C.free(unsafe.Pointer(c_fontname))
@@ -11296,7 +12490,12 @@ func (recv *FontSelection) SetFontName(fontname string) bool {
 	return retGo
 }
 
-// SetPreviewText is a wrapper around the C function gtk_font_selection_set_preview_text.
+// Sets the text displayed in the preview area.
+// The @text is used to show how the selected font looks.
+/*
+
+C function : gtk_font_selection_set_preview_text
+*/
 func (recv *FontSelection) SetPreviewText(text string) {
 	c_text := C.CString(text)
 	defer C.free(unsafe.Pointer(c_text))
@@ -11385,7 +12584,11 @@ func CastToFontSelectionDialog(object *gobject.Object) *FontSelectionDialog {
 	return FontSelectionDialogNewFromC(object.ToC())
 }
 
-// FontSelectionDialogNew is a wrapper around the C function gtk_font_selection_dialog_new.
+// Creates a new #GtkFontSelectionDialog.
+/*
+
+C function : gtk_font_selection_dialog_new
+*/
 func FontSelectionDialogNew(title string) *FontSelectionDialog {
 	c_title := C.CString(title)
 	defer C.free(unsafe.Pointer(c_title))
@@ -11396,7 +12599,18 @@ func FontSelectionDialogNew(title string) *FontSelectionDialog {
 	return retGo
 }
 
-// GetFontName is a wrapper around the C function gtk_font_selection_dialog_get_font_name.
+// Gets the currently-selected font name.
+//
+// Note that this can be a different string than what you set with
+// gtk_font_selection_dialog_set_font_name(), as the font selection widget
+// may normalize font names and thus return a string with a different
+// structure. For example, “Helvetica Italic Bold 12” could be normalized
+// to “Helvetica Bold Italic 12”.  Use pango_font_description_equal()
+// if you want to compare two font descriptions.
+/*
+
+C function : gtk_font_selection_dialog_get_font_name
+*/
 func (recv *FontSelectionDialog) GetFontName() string {
 	retC := C.gtk_font_selection_dialog_get_font_name((*C.GtkFontSelectionDialog)(recv.native))
 	retGo := C.GoString(retC)
@@ -11405,7 +12619,11 @@ func (recv *FontSelectionDialog) GetFontName() string {
 	return retGo
 }
 
-// GetPreviewText is a wrapper around the C function gtk_font_selection_dialog_get_preview_text.
+// Gets the text displayed in the preview area.
+/*
+
+C function : gtk_font_selection_dialog_get_preview_text
+*/
 func (recv *FontSelectionDialog) GetPreviewText() string {
 	retC := C.gtk_font_selection_dialog_get_preview_text((*C.GtkFontSelectionDialog)(recv.native))
 	retGo := C.GoString(retC)
@@ -11413,7 +12631,11 @@ func (recv *FontSelectionDialog) GetPreviewText() string {
 	return retGo
 }
 
-// SetFontName is a wrapper around the C function gtk_font_selection_dialog_set_font_name.
+// Sets the currently selected font.
+/*
+
+C function : gtk_font_selection_dialog_set_font_name
+*/
 func (recv *FontSelectionDialog) SetFontName(fontname string) bool {
 	c_fontname := C.CString(fontname)
 	defer C.free(unsafe.Pointer(c_fontname))
@@ -11424,7 +12646,11 @@ func (recv *FontSelectionDialog) SetFontName(fontname string) bool {
 	return retGo
 }
 
-// SetPreviewText is a wrapper around the C function gtk_font_selection_dialog_set_preview_text.
+// Sets the text displayed in the preview area.
+/*
+
+C function : gtk_font_selection_dialog_set_preview_text
+*/
 func (recv *FontSelectionDialog) SetPreviewText(text string) {
 	c_text := C.CString(text)
 	defer C.free(unsafe.Pointer(c_text))
@@ -11498,7 +12724,12 @@ func CastToFrame(object *gobject.Object) *Frame {
 	return FrameNewFromC(object.ToC())
 }
 
-// FrameNew is a wrapper around the C function gtk_frame_new.
+// Creates a new #GtkFrame, with optional label @label.
+// If @label is %NULL, the label is omitted.
+/*
+
+C function : gtk_frame_new
+*/
 func FrameNew(label string) *Frame {
 	c_label := C.CString(label)
 	defer C.free(unsafe.Pointer(c_label))
@@ -11509,7 +12740,14 @@ func FrameNew(label string) *Frame {
 	return retGo
 }
 
-// GetLabel is a wrapper around the C function gtk_frame_get_label.
+// If the frame’s label widget is a #GtkLabel, returns the
+// text in the label widget. (The frame will have a #GtkLabel
+// for the label widget if a non-%NULL argument was passed
+// to gtk_frame_new().)
+/*
+
+C function : gtk_frame_get_label
+*/
 func (recv *Frame) GetLabel() string {
 	retC := C.gtk_frame_get_label((*C.GtkFrame)(recv.native))
 	retGo := C.GoString(retC)
@@ -11517,7 +12755,12 @@ func (recv *Frame) GetLabel() string {
 	return retGo
 }
 
-// GetLabelAlign is a wrapper around the C function gtk_frame_get_label_align.
+// Retrieves the X and Y alignment of the frame’s label. See
+// gtk_frame_set_label_align().
+/*
+
+C function : gtk_frame_get_label_align
+*/
 func (recv *Frame) GetLabelAlign() (float32, float32) {
 	var c_xalign C.gfloat
 
@@ -11532,7 +12775,12 @@ func (recv *Frame) GetLabelAlign() (float32, float32) {
 	return xalign, yalign
 }
 
-// GetLabelWidget is a wrapper around the C function gtk_frame_get_label_widget.
+// Retrieves the label widget for the frame. See
+// gtk_frame_set_label_widget().
+/*
+
+C function : gtk_frame_get_label_widget
+*/
 func (recv *Frame) GetLabelWidget() *Widget {
 	retC := C.gtk_frame_get_label_widget((*C.GtkFrame)(recv.native))
 	var retGo (*Widget)
@@ -11545,7 +12793,12 @@ func (recv *Frame) GetLabelWidget() *Widget {
 	return retGo
 }
 
-// GetShadowType is a wrapper around the C function gtk_frame_get_shadow_type.
+// Retrieves the shadow type of the frame. See
+// gtk_frame_set_shadow_type().
+/*
+
+C function : gtk_frame_get_shadow_type
+*/
 func (recv *Frame) GetShadowType() ShadowType {
 	retC := C.gtk_frame_get_shadow_type((*C.GtkFrame)(recv.native))
 	retGo := (ShadowType)(retC)
@@ -11553,7 +12806,12 @@ func (recv *Frame) GetShadowType() ShadowType {
 	return retGo
 }
 
-// SetLabel is a wrapper around the C function gtk_frame_set_label.
+// Removes the current #GtkFrame:label-widget. If @label is not %NULL, creates a
+// new #GtkLabel with that text and adds it as the #GtkFrame:label-widget.
+/*
+
+C function : gtk_frame_set_label
+*/
 func (recv *Frame) SetLabel(label string) {
 	c_label := C.CString(label)
 	defer C.free(unsafe.Pointer(c_label))
@@ -11563,7 +12821,12 @@ func (recv *Frame) SetLabel(label string) {
 	return
 }
 
-// SetLabelAlign is a wrapper around the C function gtk_frame_set_label_align.
+// Sets the alignment of the frame widget’s label. The
+// default values for a newly created frame are 0.0 and 0.5.
+/*
+
+C function : gtk_frame_set_label_align
+*/
 func (recv *Frame) SetLabelAlign(xalign float32, yalign float32) {
 	c_xalign := (C.gfloat)(xalign)
 
@@ -11574,7 +12837,12 @@ func (recv *Frame) SetLabelAlign(xalign float32, yalign float32) {
 	return
 }
 
-// SetLabelWidget is a wrapper around the C function gtk_frame_set_label_widget.
+// Sets the #GtkFrame:label-widget for the frame. This is the widget that
+// will appear embedded in the top edge of the frame as a title.
+/*
+
+C function : gtk_frame_set_label_widget
+*/
 func (recv *Frame) SetLabelWidget(labelWidget *Widget) {
 	c_label_widget := (*C.GtkWidget)(C.NULL)
 	if labelWidget != nil {
@@ -11586,7 +12854,14 @@ func (recv *Frame) SetLabelWidget(labelWidget *Widget) {
 	return
 }
 
-// SetShadowType is a wrapper around the C function gtk_frame_set_shadow_type.
+// Sets the #GtkFrame:shadow-type for @frame, i.e. whether it is drawn without
+// (%GTK_SHADOW_NONE) or with (other values) a visible border. Values other than
+// %GTK_SHADOW_NONE are treated identically by GtkFrame. The chosen type is
+// applied by removing or adding the .flat class to the CSS node named border.
+/*
+
+C function : gtk_frame_set_shadow_type
+*/
 func (recv *Frame) SetShadowType(type_ ShadowType) {
 	c_type := (C.GtkShadowType)(type_)
 
@@ -12113,7 +13388,11 @@ func CastToGrid(object *gobject.Object) *Grid {
 	return GridNewFromC(object.ToC())
 }
 
-// GridNew is a wrapper around the C function gtk_grid_new.
+// Creates a new grid widget.
+/*
+
+C function : gtk_grid_new
+*/
 func GridNew() *Grid {
 	retC := C.gtk_grid_new()
 	retGo := GridNewFromC(unsafe.Pointer(retC))
@@ -12121,7 +13400,15 @@ func GridNew() *Grid {
 	return retGo
 }
 
-// Attach is a wrapper around the C function gtk_grid_attach.
+// Adds a widget to the grid.
+//
+// The position of @child is determined by @left and @top. The
+// number of “cells” that @child will occupy is determined by
+// @width and @height.
+/*
+
+C function : gtk_grid_attach
+*/
 func (recv *Grid) Attach(child *Widget, left int32, top int32, width int32, height int32) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -12141,7 +13428,19 @@ func (recv *Grid) Attach(child *Widget, left int32, top int32, width int32, heig
 	return
 }
 
-// AttachNextTo is a wrapper around the C function gtk_grid_attach_next_to.
+// Adds a widget to the grid.
+//
+// The widget is placed next to @sibling, on the side determined by
+// @side. When @sibling is %NULL, the widget is placed in row (for
+// left or right placement) or column 0 (for top or bottom placement),
+// at the end indicated by @side.
+//
+// Attaching widgets labeled [1], [2], [3] with @sibling == %NULL and
+// @side == %GTK_POS_LEFT yields a layout of [3][2][1].
+/*
+
+C function : gtk_grid_attach_next_to
+*/
 func (recv *Grid) AttachNextTo(child *Widget, sibling *Widget, side PositionType, width int32, height int32) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -12164,7 +13463,11 @@ func (recv *Grid) AttachNextTo(child *Widget, sibling *Widget, side PositionType
 	return
 }
 
-// GetColumnHomogeneous is a wrapper around the C function gtk_grid_get_column_homogeneous.
+// Returns whether all columns of @grid have the same width.
+/*
+
+C function : gtk_grid_get_column_homogeneous
+*/
 func (recv *Grid) GetColumnHomogeneous() bool {
 	retC := C.gtk_grid_get_column_homogeneous((*C.GtkGrid)(recv.native))
 	retGo := retC == C.TRUE
@@ -12172,7 +13475,11 @@ func (recv *Grid) GetColumnHomogeneous() bool {
 	return retGo
 }
 
-// GetColumnSpacing is a wrapper around the C function gtk_grid_get_column_spacing.
+// Returns the amount of space between the columns of @grid.
+/*
+
+C function : gtk_grid_get_column_spacing
+*/
 func (recv *Grid) GetColumnSpacing() uint32 {
 	retC := C.gtk_grid_get_column_spacing((*C.GtkGrid)(recv.native))
 	retGo := (uint32)(retC)
@@ -12180,7 +13487,11 @@ func (recv *Grid) GetColumnSpacing() uint32 {
 	return retGo
 }
 
-// GetRowHomogeneous is a wrapper around the C function gtk_grid_get_row_homogeneous.
+// Returns whether all rows of @grid have the same height.
+/*
+
+C function : gtk_grid_get_row_homogeneous
+*/
 func (recv *Grid) GetRowHomogeneous() bool {
 	retC := C.gtk_grid_get_row_homogeneous((*C.GtkGrid)(recv.native))
 	retGo := retC == C.TRUE
@@ -12188,7 +13499,11 @@ func (recv *Grid) GetRowHomogeneous() bool {
 	return retGo
 }
 
-// GetRowSpacing is a wrapper around the C function gtk_grid_get_row_spacing.
+// Returns the amount of space between the rows of @grid.
+/*
+
+C function : gtk_grid_get_row_spacing
+*/
 func (recv *Grid) GetRowSpacing() uint32 {
 	retC := C.gtk_grid_get_row_spacing((*C.GtkGrid)(recv.native))
 	retGo := (uint32)(retC)
@@ -12196,7 +13511,11 @@ func (recv *Grid) GetRowSpacing() uint32 {
 	return retGo
 }
 
-// SetColumnHomogeneous is a wrapper around the C function gtk_grid_set_column_homogeneous.
+// Sets whether all columns of @grid will have the same width.
+/*
+
+C function : gtk_grid_set_column_homogeneous
+*/
 func (recv *Grid) SetColumnHomogeneous(homogeneous bool) {
 	c_homogeneous :=
 		boolToGboolean(homogeneous)
@@ -12206,7 +13525,11 @@ func (recv *Grid) SetColumnHomogeneous(homogeneous bool) {
 	return
 }
 
-// SetColumnSpacing is a wrapper around the C function gtk_grid_set_column_spacing.
+// Sets the amount of space between columns of @grid.
+/*
+
+C function : gtk_grid_set_column_spacing
+*/
 func (recv *Grid) SetColumnSpacing(spacing uint32) {
 	c_spacing := (C.guint)(spacing)
 
@@ -12215,7 +13538,11 @@ func (recv *Grid) SetColumnSpacing(spacing uint32) {
 	return
 }
 
-// SetRowHomogeneous is a wrapper around the C function gtk_grid_set_row_homogeneous.
+// Sets whether all rows of @grid will have the same height.
+/*
+
+C function : gtk_grid_set_row_homogeneous
+*/
 func (recv *Grid) SetRowHomogeneous(homogeneous bool) {
 	c_homogeneous :=
 		boolToGboolean(homogeneous)
@@ -12225,7 +13552,11 @@ func (recv *Grid) SetRowHomogeneous(homogeneous bool) {
 	return
 }
 
-// SetRowSpacing is a wrapper around the C function gtk_grid_set_row_spacing.
+// Sets the amount of space between rows of @grid.
+/*
+
+C function : gtk_grid_set_row_spacing
+*/
 func (recv *Grid) SetRowSpacing(spacing uint32) {
 	c_spacing := (C.guint)(spacing)
 
@@ -12302,7 +13633,11 @@ func CastToHBox(object *gobject.Object) *HBox {
 	return HBoxNewFromC(object.ToC())
 }
 
-// HBoxNew is a wrapper around the C function gtk_hbox_new.
+// Creates a new #GtkHBox.
+/*
+
+C function : gtk_hbox_new
+*/
 func HBoxNew(homogeneous bool, spacing int32) *HBox {
 	c_homogeneous :=
 		boolToGboolean(homogeneous)
@@ -12388,7 +13723,11 @@ func CastToHButtonBox(object *gobject.Object) *HButtonBox {
 	return HButtonBoxNewFromC(object.ToC())
 }
 
-// HButtonBoxNew is a wrapper around the C function gtk_hbutton_box_new.
+// Creates a new horizontal button box.
+/*
+
+C function : gtk_hbutton_box_new
+*/
 func HButtonBoxNew() *HButtonBox {
 	retC := C.gtk_hbutton_box_new()
 	retGo := HButtonBoxNewFromC(unsafe.Pointer(retC))
@@ -12464,7 +13803,11 @@ func CastToHPaned(object *gobject.Object) *HPaned {
 	return HPanedNewFromC(object.ToC())
 }
 
-// HPanedNew is a wrapper around the C function gtk_hpaned_new.
+// Create a new #GtkHPaned
+/*
+
+C function : gtk_hpaned_new
+*/
 func HPanedNew() *HPaned {
 	retC := C.gtk_hpaned_new()
 	retGo := HPanedNewFromC(unsafe.Pointer(retC))
@@ -12653,7 +13996,11 @@ func CastToHScale(object *gobject.Object) *HScale {
 	return HScaleNewFromC(object.ToC())
 }
 
-// HScaleNew is a wrapper around the C function gtk_hscale_new.
+// Creates a new #GtkHScale.
+/*
+
+C function : gtk_hscale_new
+*/
 func HScaleNew(adjustment *Adjustment) *HScale {
 	c_adjustment := (*C.GtkAdjustment)(C.NULL)
 	if adjustment != nil {
@@ -12666,7 +14013,18 @@ func HScaleNew(adjustment *Adjustment) *HScale {
 	return retGo
 }
 
-// HScaleNewWithRange is a wrapper around the C function gtk_hscale_new_with_range.
+// Creates a new horizontal scale widget that lets the user input a
+// number between @min and @max (including @min and @max) with the
+// increment @step.  @step must be nonzero; it’s the distance the
+// slider moves when using the arrow keys to adjust the scale value.
+//
+// Note that the way in which the precision is derived works best if @step
+// is a power of ten. If the resulting precision is not suitable for your
+// needs, use gtk_scale_set_digits() to correct it.
+/*
+
+C function : gtk_hscale_new_with_range
+*/
 func HScaleNewWithRange(min float64, max float64, step float64) *HScale {
 	c_min := (C.gdouble)(min)
 
@@ -12748,7 +14106,11 @@ func CastToHScrollbar(object *gobject.Object) *HScrollbar {
 	return HScrollbarNewFromC(object.ToC())
 }
 
-// HScrollbarNew is a wrapper around the C function gtk_hscrollbar_new.
+// Creates a new horizontal scrollbar.
+/*
+
+C function : gtk_hscrollbar_new
+*/
 func HScrollbarNew(adjustment *Adjustment) *HScrollbar {
 	c_adjustment := (*C.GtkAdjustment)(C.NULL)
 	if adjustment != nil {
@@ -12824,7 +14186,11 @@ func CastToHSeparator(object *gobject.Object) *HSeparator {
 	return HSeparatorNewFromC(object.ToC())
 }
 
-// HSeparatorNew is a wrapper around the C function gtk_hseparator_new.
+// Creates a new #GtkHSeparator.
+/*
+
+C function : gtk_hseparator_new
+*/
 func HSeparatorNew() *HSeparator {
 	retC := C.gtk_hseparator_new()
 	retGo := HSeparatorNewFromC(unsafe.Pointer(retC))
@@ -13019,7 +14385,11 @@ func handlebox_childDetachedHandler(_ *C.GObject, c_widget *C.GtkWidget, data C.
 	callback(widget)
 }
 
-// HandleBoxNew is a wrapper around the C function gtk_handle_box_new.
+// Create a new handle box.
+/*
+
+C function : gtk_handle_box_new
+*/
 func HandleBoxNew() *HandleBox {
 	retC := C.gtk_handle_box_new()
 	retGo := HandleBoxNewFromC(unsafe.Pointer(retC))
@@ -13027,7 +14397,12 @@ func HandleBoxNew() *HandleBox {
 	return retGo
 }
 
-// GetHandlePosition is a wrapper around the C function gtk_handle_box_get_handle_position.
+// Gets the handle position of the handle box. See
+// gtk_handle_box_set_handle_position().
+/*
+
+C function : gtk_handle_box_get_handle_position
+*/
 func (recv *HandleBox) GetHandlePosition() PositionType {
 	retC := C.gtk_handle_box_get_handle_position((*C.GtkHandleBox)(recv.native))
 	retGo := (PositionType)(retC)
@@ -13035,7 +14410,12 @@ func (recv *HandleBox) GetHandlePosition() PositionType {
 	return retGo
 }
 
-// GetShadowType is a wrapper around the C function gtk_handle_box_get_shadow_type.
+// Gets the type of shadow drawn around the handle box. See
+// gtk_handle_box_set_shadow_type().
+/*
+
+C function : gtk_handle_box_get_shadow_type
+*/
 func (recv *HandleBox) GetShadowType() ShadowType {
 	retC := C.gtk_handle_box_get_shadow_type((*C.GtkHandleBox)(recv.native))
 	retGo := (ShadowType)(retC)
@@ -13043,7 +14423,12 @@ func (recv *HandleBox) GetShadowType() ShadowType {
 	return retGo
 }
 
-// GetSnapEdge is a wrapper around the C function gtk_handle_box_get_snap_edge.
+// Gets the edge used for determining reattachment of the handle box.
+// See gtk_handle_box_set_snap_edge().
+/*
+
+C function : gtk_handle_box_get_snap_edge
+*/
 func (recv *HandleBox) GetSnapEdge() PositionType {
 	retC := C.gtk_handle_box_get_snap_edge((*C.GtkHandleBox)(recv.native))
 	retGo := (PositionType)(retC)
@@ -13051,7 +14436,11 @@ func (recv *HandleBox) GetSnapEdge() PositionType {
 	return retGo
 }
 
-// SetHandlePosition is a wrapper around the C function gtk_handle_box_set_handle_position.
+// Sets the side of the handlebox where the handle is drawn.
+/*
+
+C function : gtk_handle_box_set_handle_position
+*/
 func (recv *HandleBox) SetHandlePosition(position PositionType) {
 	c_position := (C.GtkPositionType)(position)
 
@@ -13060,7 +14449,12 @@ func (recv *HandleBox) SetHandlePosition(position PositionType) {
 	return
 }
 
-// SetShadowType is a wrapper around the C function gtk_handle_box_set_shadow_type.
+// Sets the type of shadow to be drawn around the border
+// of the handle box.
+/*
+
+C function : gtk_handle_box_set_shadow_type
+*/
 func (recv *HandleBox) SetShadowType(type_ ShadowType) {
 	c_type := (C.GtkShadowType)(type_)
 
@@ -13069,7 +14463,23 @@ func (recv *HandleBox) SetShadowType(type_ ShadowType) {
 	return
 }
 
-// SetSnapEdge is a wrapper around the C function gtk_handle_box_set_snap_edge.
+// Sets the snap edge of a handlebox. The snap edge is
+// the edge of the detached child that must be aligned
+// with the corresponding edge of the “ghost” left
+// behind when the child was detached to reattach
+// the torn-off window. Usually, the snap edge should
+// be chosen so that it stays in the same place on
+// the screen when the handlebox is torn off.
+//
+// If the snap edge is not set, then an appropriate value
+// will be guessed from the handle position. If the
+// handle position is %GTK_POS_RIGHT or %GTK_POS_LEFT,
+// then the snap edge will be %GTK_POS_TOP, otherwise
+// it will be %GTK_POS_LEFT.
+/*
+
+C function : gtk_handle_box_set_snap_edge
+*/
 func (recv *HandleBox) SetSnapEdge(edge PositionType) {
 	c_edge := (C.GtkPositionType)(edge)
 
@@ -13414,7 +14824,26 @@ func imcontext_retrieveSurroundingHandler(_ *C.GObject, data C.gpointer) C.gbool
 	return retC
 }
 
-// DeleteSurrounding is a wrapper around the C function gtk_im_context_delete_surrounding.
+// Asks the widget that the input context is attached to to delete
+// characters around the cursor position by emitting the
+// GtkIMContext::delete_surrounding signal. Note that @offset and @n_chars
+// are in characters not in bytes which differs from the usage other
+// places in #GtkIMContext.
+//
+// In order to use this function, you should first call
+// gtk_im_context_get_surrounding() to get the current context, and
+// call this function immediately afterwards to make sure that you
+// know what you are deleting. You should also account for the fact
+// that even if the signal was handled, the input context might not
+// have deleted all the characters that were requested to be deleted.
+//
+// This function is used by an input method that wants to make
+// subsitutions in the existing text in response to new input. It is
+// not useful for applications.
+/*
+
+C function : gtk_im_context_delete_surrounding
+*/
 func (recv *IMContext) DeleteSurrounding(offset int32, nChars int32) bool {
 	c_offset := (C.gint)(offset)
 
@@ -13426,7 +14855,13 @@ func (recv *IMContext) DeleteSurrounding(offset int32, nChars int32) bool {
 	return retGo
 }
 
-// FilterKeypress is a wrapper around the C function gtk_im_context_filter_keypress.
+// Allow an input method to internally handle key press and release
+// events. If this function returns %TRUE, then no further processing
+// should be done for this key event.
+/*
+
+C function : gtk_im_context_filter_keypress
+*/
 func (recv *IMContext) FilterKeypress(event *gdk.EventKey) bool {
 	c_event := (*C.GdkEventKey)(C.NULL)
 	if event != nil {
@@ -13439,21 +14874,42 @@ func (recv *IMContext) FilterKeypress(event *gdk.EventKey) bool {
 	return retGo
 }
 
-// FocusIn is a wrapper around the C function gtk_im_context_focus_in.
+// Notify the input method that the widget to which this
+// input context corresponds has gained focus. The input method
+// may, for example, change the displayed feedback to reflect
+// this change.
+/*
+
+C function : gtk_im_context_focus_in
+*/
 func (recv *IMContext) FocusIn() {
 	C.gtk_im_context_focus_in((*C.GtkIMContext)(recv.native))
 
 	return
 }
 
-// FocusOut is a wrapper around the C function gtk_im_context_focus_out.
+// Notify the input method that the widget to which this
+// input context corresponds has lost focus. The input method
+// may, for example, change the displayed feedback or reset the contexts
+// state to reflect this change.
+/*
+
+C function : gtk_im_context_focus_out
+*/
 func (recv *IMContext) FocusOut() {
 	C.gtk_im_context_focus_out((*C.GtkIMContext)(recv.native))
 
 	return
 }
 
-// GetPreeditString is a wrapper around the C function gtk_im_context_get_preedit_string.
+// Retrieve the current preedit string for the input context,
+// and a list of attributes to apply to the string.
+// This string should be displayed inserted at the insertion
+// point.
+/*
+
+C function : gtk_im_context_get_preedit_string
+*/
 func (recv *IMContext) GetPreeditString() (string, *pango.AttrList, int32) {
 	var c_str *C.gchar
 
@@ -13473,7 +14929,22 @@ func (recv *IMContext) GetPreeditString() (string, *pango.AttrList, int32) {
 	return str, attrs, cursorPos
 }
 
-// GetSurrounding is a wrapper around the C function gtk_im_context_get_surrounding.
+// Retrieves context around the insertion point. Input methods
+// typically want context in order to constrain input text based on
+// existing text; this is important for languages such as Thai where
+// only some sequences of characters are allowed.
+//
+// This function is implemented by emitting the
+// GtkIMContext::retrieve_surrounding signal on the input method; in
+// response to this signal, a widget should provide as much context as
+// is available, up to an entire paragraph, by calling
+// gtk_im_context_set_surrounding(). Note that there is no obligation
+// for a widget to respond to the ::retrieve_surrounding signal, so input
+// methods must be prepared to function without context.
+/*
+
+C function : gtk_im_context_get_surrounding
+*/
 func (recv *IMContext) GetSurrounding() (bool, string, int32) {
 	var c_text *C.gchar
 
@@ -13490,14 +14961,27 @@ func (recv *IMContext) GetSurrounding() (bool, string, int32) {
 	return retGo, text, cursorIndex
 }
 
-// Reset is a wrapper around the C function gtk_im_context_reset.
+// Notify the input method that a change such as a change in cursor
+// position has been made. This will typically cause the input
+// method to clear the preedit state.
+/*
+
+C function : gtk_im_context_reset
+*/
 func (recv *IMContext) Reset() {
 	C.gtk_im_context_reset((*C.GtkIMContext)(recv.native))
 
 	return
 }
 
-// SetClientWindow is a wrapper around the C function gtk_im_context_set_client_window.
+// Set the client window for the input context; this is the
+// #GdkWindow in which the input appears. This window is
+// used in order to correctly position status windows, and may
+// also be used for purposes internal to the input method.
+/*
+
+C function : gtk_im_context_set_client_window
+*/
 func (recv *IMContext) SetClientWindow(window *gdk.Window) {
 	c_window := (*C.GdkWindow)(C.NULL)
 	if window != nil {
@@ -13511,7 +14995,14 @@ func (recv *IMContext) SetClientWindow(window *gdk.Window) {
 
 // Unsupported : gtk_im_context_set_cursor_location : unsupported parameter area : Blacklisted record : GdkRectangle
 
-// SetSurrounding is a wrapper around the C function gtk_im_context_set_surrounding.
+// Sets surrounding context around the insertion point and preedit
+// string. This function is expected to be called in response to the
+// GtkIMContext::retrieve_surrounding signal, and will likely have no
+// effect if called at other times.
+/*
+
+C function : gtk_im_context_set_surrounding
+*/
 func (recv *IMContext) SetSurrounding(text string, len int32, cursorIndex int32) {
 	c_text := C.CString(text)
 	defer C.free(unsafe.Pointer(c_text))
@@ -13525,7 +15016,14 @@ func (recv *IMContext) SetSurrounding(text string, len int32, cursorIndex int32)
 	return
 }
 
-// SetUsePreedit is a wrapper around the C function gtk_im_context_set_use_preedit.
+// Sets whether the IM context should use the preedit string
+// to display feedback. If @use_preedit is FALSE (default
+// is TRUE), then the IM context may use some other method to display
+// feedback, such as displaying it in a child of the root window.
+/*
+
+C function : gtk_im_context_set_use_preedit
+*/
 func (recv *IMContext) SetUsePreedit(usePreedit bool) {
 	c_use_preedit :=
 		boolToGboolean(usePreedit)
@@ -13574,7 +15072,11 @@ func CastToIMContextSimple(object *gobject.Object) *IMContextSimple {
 	return IMContextSimpleNewFromC(object.ToC())
 }
 
-// IMContextSimpleNew is a wrapper around the C function gtk_im_context_simple_new.
+// Creates a new #GtkIMContextSimple.
+/*
+
+C function : gtk_im_context_simple_new
+*/
 func IMContextSimpleNew() *IMContextSimple {
 	retC := C.gtk_im_context_simple_new()
 	retGo := IMContextSimpleNewFromC(unsafe.Pointer(retC))
@@ -13584,7 +15086,19 @@ func IMContextSimpleNew() *IMContextSimple {
 
 // Blacklisted : gtk_im_context_simple_add_compose_file
 
-// AddTable is a wrapper around the C function gtk_im_context_simple_add_table.
+// Adds an additional table to search to the input context.
+// Each row of the table consists of @max_seq_len key symbols
+// followed by two #guint16 interpreted as the high and low
+// words of a #gunicode value. Tables are searched starting
+// from the last added.
+//
+// The table must be sorted in dictionary order on the
+// numeric value of the key symbol fields. (Values beyond
+// the length of the sequence should be zero.)
+/*
+
+C function : gtk_im_context_simple_add_table
+*/
 func (recv *IMContextSimple) AddTable(data []uint16, maxSeqLen int32, nSeqs int32) {
 	c_data := &data[0]
 
@@ -13636,7 +15150,11 @@ func CastToIMMulticontext(object *gobject.Object) *IMMulticontext {
 	return IMMulticontextNewFromC(object.ToC())
 }
 
-// IMMulticontextNew is a wrapper around the C function gtk_im_multicontext_new.
+// Creates a new #GtkIMMulticontext.
+/*
+
+C function : gtk_im_multicontext_new
+*/
 func IMMulticontextNew() *IMMulticontext {
 	retC := C.gtk_im_multicontext_new()
 	retGo := IMMulticontextNewFromC(unsafe.Pointer(retC))
@@ -13644,7 +15162,13 @@ func IMMulticontextNew() *IMMulticontext {
 	return retGo
 }
 
-// AppendMenuitems is a wrapper around the C function gtk_im_multicontext_append_menuitems.
+// Add menuitems for various available input methods to a menu;
+// the menuitems, when selected, will switch the input method
+// for the context and the global default input method.
+/*
+
+C function : gtk_im_multicontext_append_menuitems
+*/
 func (recv *IMMulticontext) AppendMenuitems(menushell *MenuShell) {
 	c_menushell := (*C.GtkMenuShell)(C.NULL)
 	if menushell != nil {
@@ -13690,7 +15214,23 @@ func CastToIconFactory(object *gobject.Object) *IconFactory {
 	return IconFactoryNewFromC(object.ToC())
 }
 
-// IconFactoryNew is a wrapper around the C function gtk_icon_factory_new.
+// Creates a new #GtkIconFactory. An icon factory manages a collection
+// of #GtkIconSets; a #GtkIconSet manages a set of variants of a
+// particular icon (i.e. a #GtkIconSet contains variants for different
+// sizes and widget states). Icons in an icon factory are named by a
+// stock ID, which is a simple string identifying the icon. Each
+// #GtkStyle has a list of #GtkIconFactorys derived from the current
+// theme; those icon factories are consulted first when searching for
+// an icon. If the theme doesn’t set a particular icon, GTK+ looks for
+// the icon in a list of default icon factories, maintained by
+// gtk_icon_factory_add_default() and
+// gtk_icon_factory_remove_default(). Applications with icons should
+// add a default icon factory with their icons, which will allow
+// themes to override the icons for the application.
+/*
+
+C function : gtk_icon_factory_new
+*/
 func IconFactoryNew() *IconFactory {
 	retC := C.gtk_icon_factory_new()
 	retGo := IconFactoryNewFromC(unsafe.Pointer(retC))
@@ -13698,7 +15238,20 @@ func IconFactoryNew() *IconFactory {
 	return retGo
 }
 
-// Add is a wrapper around the C function gtk_icon_factory_add.
+// Adds the given @icon_set to the icon factory, under the name
+// @stock_id.  @stock_id should be namespaced for your application,
+// e.g. “myapp-whatever-icon”.  Normally applications create a
+// #GtkIconFactory, then add it to the list of default factories with
+// gtk_icon_factory_add_default(). Then they pass the @stock_id to
+// widgets such as #GtkImage to display the icon. Themes can provide
+// an icon with the same name (such as "myapp-whatever-icon") to
+// override your application’s default icons. If an icon already
+// existed in @factory for @stock_id, it is unreferenced and replaced
+// with the new @icon_set.
+/*
+
+C function : gtk_icon_factory_add
+*/
 func (recv *IconFactory) Add(stockId string, iconSet *IconSet) {
 	c_stock_id := C.CString(stockId)
 	defer C.free(unsafe.Pointer(c_stock_id))
@@ -13713,14 +15266,31 @@ func (recv *IconFactory) Add(stockId string, iconSet *IconSet) {
 	return
 }
 
-// AddDefault is a wrapper around the C function gtk_icon_factory_add_default.
+// Adds an icon factory to the list of icon factories searched by
+// gtk_style_lookup_icon_set(). This means that, for example,
+// gtk_image_new_from_stock() will be able to find icons in @factory.
+// There will normally be an icon factory added for each library or
+// application that comes with icons. The default icon factories
+// can be overridden by themes.
+/*
+
+C function : gtk_icon_factory_add_default
+*/
 func (recv *IconFactory) AddDefault() {
 	C.gtk_icon_factory_add_default((*C.GtkIconFactory)(recv.native))
 
 	return
 }
 
-// Lookup is a wrapper around the C function gtk_icon_factory_lookup.
+// Looks up @stock_id in the icon factory, returning an icon set
+// if found, otherwise %NULL. For display to the user, you should
+// use gtk_style_lookup_icon_set() on the #GtkStyle for the
+// widget that will display the icon, instead of using this
+// function directly, so that themes are taken into account.
+/*
+
+C function : gtk_icon_factory_lookup
+*/
 func (recv *IconFactory) Lookup(stockId string) *IconSet {
 	c_stock_id := C.CString(stockId)
 	defer C.free(unsafe.Pointer(c_stock_id))
@@ -13731,7 +15301,13 @@ func (recv *IconFactory) Lookup(stockId string) *IconSet {
 	return retGo
 }
 
-// RemoveDefault is a wrapper around the C function gtk_icon_factory_remove_default.
+// Removes an icon factory from the list of default icon
+// factories. Not normally used; you might use it for a library that
+// can be unloaded or shut down.
+/*
+
+C function : gtk_icon_factory_remove_default
+*/
 func (recv *IconFactory) RemoveDefault() {
 	C.gtk_icon_factory_remove_default((*C.GtkIconFactory)(recv.native))
 
@@ -14449,7 +16025,11 @@ func CastToImage(object *gobject.Object) *Image {
 	return ImageNewFromC(object.ToC())
 }
 
-// ImageNew is a wrapper around the C function gtk_image_new.
+// Creates a new empty #GtkImage widget.
+/*
+
+C function : gtk_image_new
+*/
 func ImageNew() *Image {
 	retC := C.gtk_image_new()
 	retGo := ImageNewFromC(unsafe.Pointer(retC))
@@ -14457,7 +16037,19 @@ func ImageNew() *Image {
 	return retGo
 }
 
-// ImageNewFromAnimation is a wrapper around the C function gtk_image_new_from_animation.
+// Creates a #GtkImage displaying the given animation.
+// The #GtkImage does not assume a reference to the
+// animation; you still need to unref it if you own references.
+// #GtkImage will add its own reference rather than adopting yours.
+//
+// Note that the animation frames are shown using a timeout with
+// #G_PRIORITY_DEFAULT. When using animations to indicate busyness,
+// keep in mind that the animation will only be shown if the main loop
+// is not busy with something that has a higher priority.
+/*
+
+C function : gtk_image_new_from_animation
+*/
 func ImageNewFromAnimation(animation *gdkpixbuf.PixbufAnimation) *Image {
 	c_animation := (*C.GdkPixbufAnimation)(C.NULL)
 	if animation != nil {
@@ -14470,7 +16062,26 @@ func ImageNewFromAnimation(animation *gdkpixbuf.PixbufAnimation) *Image {
 	return retGo
 }
 
-// ImageNewFromFile is a wrapper around the C function gtk_image_new_from_file.
+// Creates a new #GtkImage displaying the file @filename. If the file
+// isn’t found or can’t be loaded, the resulting #GtkImage will
+// display a “broken image” icon. This function never returns %NULL,
+// it always returns a valid #GtkImage widget.
+//
+// If the file contains an animation, the image will contain an
+// animation.
+//
+// If you need to detect failures to load the file, use
+// gdk_pixbuf_new_from_file() to load the file yourself, then create
+// the #GtkImage from the pixbuf. (Or for animations, use
+// gdk_pixbuf_animation_new_from_file()).
+//
+// The storage type (gtk_image_get_storage_type()) of the returned
+// image is not defined, it will be whatever is appropriate for
+// displaying the file.
+/*
+
+C function : gtk_image_new_from_file
+*/
 func ImageNewFromFile(filename string) *Image {
 	c_filename := C.CString(filename)
 	defer C.free(unsafe.Pointer(c_filename))
@@ -14481,7 +16092,21 @@ func ImageNewFromFile(filename string) *Image {
 	return retGo
 }
 
-// ImageNewFromIconSet is a wrapper around the C function gtk_image_new_from_icon_set.
+// Creates a #GtkImage displaying an icon set. Sample stock sizes are
+// #GTK_ICON_SIZE_MENU, #GTK_ICON_SIZE_SMALL_TOOLBAR. Instead of using
+// this function, usually it’s better to create a #GtkIconFactory, put
+// your icon sets in the icon factory, add the icon factory to the
+// list of default factories with gtk_icon_factory_add_default(), and
+// then use gtk_image_new_from_stock(). This will allow themes to
+// override the icon you ship with your application.
+//
+// The #GtkImage does not assume a reference to the
+// icon set; you still need to unref it if you own references.
+// #GtkImage will add its own reference rather than adopting yours.
+/*
+
+C function : gtk_image_new_from_icon_set
+*/
 func ImageNewFromIconSet(iconSet *IconSet, size IconSize) *Image {
 	c_icon_set := (*C.GtkIconSet)(C.NULL)
 	if iconSet != nil {
@@ -14496,7 +16121,18 @@ func ImageNewFromIconSet(iconSet *IconSet, size IconSize) *Image {
 	return retGo
 }
 
-// ImageNewFromPixbuf is a wrapper around the C function gtk_image_new_from_pixbuf.
+// Creates a new #GtkImage displaying @pixbuf.
+// The #GtkImage does not assume a reference to the
+// pixbuf; you still need to unref it if you own references.
+// #GtkImage will add its own reference rather than adopting yours.
+//
+// Note that this function just creates an #GtkImage from the pixbuf. The
+// #GtkImage created will not react to state changes. Should you want that,
+// you should use gtk_image_new_from_icon_name().
+/*
+
+C function : gtk_image_new_from_pixbuf
+*/
 func ImageNewFromPixbuf(pixbuf *gdkpixbuf.Pixbuf) *Image {
 	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
 	if pixbuf != nil {
@@ -14509,7 +16145,16 @@ func ImageNewFromPixbuf(pixbuf *gdkpixbuf.Pixbuf) *Image {
 	return retGo
 }
 
-// ImageNewFromStock is a wrapper around the C function gtk_image_new_from_stock.
+// Creates a #GtkImage displaying a stock icon. Sample stock icon
+// names are #GTK_STOCK_OPEN, #GTK_STOCK_QUIT. Sample stock sizes
+// are #GTK_ICON_SIZE_MENU, #GTK_ICON_SIZE_SMALL_TOOLBAR. If the stock
+// icon name isn’t known, the image will be empty.
+// You can register your own stock icon names, see
+// gtk_icon_factory_add_default() and gtk_icon_factory_add().
+/*
+
+C function : gtk_image_new_from_stock
+*/
 func ImageNewFromStock(stockId string, size IconSize) *Image {
 	c_stock_id := C.CString(stockId)
 	defer C.free(unsafe.Pointer(c_stock_id))
@@ -14522,7 +16167,15 @@ func ImageNewFromStock(stockId string, size IconSize) *Image {
 	return retGo
 }
 
-// GetAnimation is a wrapper around the C function gtk_image_get_animation.
+// Gets the #GdkPixbufAnimation being displayed by the #GtkImage.
+// The storage type of the image must be %GTK_IMAGE_EMPTY or
+// %GTK_IMAGE_ANIMATION (see gtk_image_get_storage_type()).
+// The caller of this function does not own a reference to the
+// returned animation.
+/*
+
+C function : gtk_image_get_animation
+*/
 func (recv *Image) GetAnimation() *gdkpixbuf.PixbufAnimation {
 	retC := C.gtk_image_get_animation((*C.GtkImage)(recv.native))
 	var retGo (*gdkpixbuf.PixbufAnimation)
@@ -14537,7 +16190,15 @@ func (recv *Image) GetAnimation() *gdkpixbuf.PixbufAnimation {
 
 // Unsupported : gtk_image_get_icon_set : unsupported parameter size : no type generator for gint (GtkIconSize*) for param size
 
-// GetPixbuf is a wrapper around the C function gtk_image_get_pixbuf.
+// Gets the #GdkPixbuf being displayed by the #GtkImage.
+// The storage type of the image must be %GTK_IMAGE_EMPTY or
+// %GTK_IMAGE_PIXBUF (see gtk_image_get_storage_type()).
+// The caller of this function does not own a reference to the
+// returned pixbuf.
+/*
+
+C function : gtk_image_get_pixbuf
+*/
 func (recv *Image) GetPixbuf() *gdkpixbuf.Pixbuf {
 	retC := C.gtk_image_get_pixbuf((*C.GtkImage)(recv.native))
 	var retGo (*gdkpixbuf.Pixbuf)
@@ -14552,7 +16213,13 @@ func (recv *Image) GetPixbuf() *gdkpixbuf.Pixbuf {
 
 // Unsupported : gtk_image_get_stock : unsupported parameter size : no type generator for gint (GtkIconSize*) for param size
 
-// GetStorageType is a wrapper around the C function gtk_image_get_storage_type.
+// Gets the type of representation being used by the #GtkImage
+// to store image data. If the #GtkImage has no image data,
+// the return value will be %GTK_IMAGE_EMPTY.
+/*
+
+C function : gtk_image_get_storage_type
+*/
 func (recv *Image) GetStorageType() ImageType {
 	retC := C.gtk_image_get_storage_type((*C.GtkImage)(recv.native))
 	retGo := (ImageType)(retC)
@@ -14560,7 +16227,12 @@ func (recv *Image) GetStorageType() ImageType {
 	return retGo
 }
 
-// SetFromAnimation is a wrapper around the C function gtk_image_set_from_animation.
+// Causes the #GtkImage to display the given animation (or display
+// nothing, if you set the animation to %NULL).
+/*
+
+C function : gtk_image_set_from_animation
+*/
 func (recv *Image) SetFromAnimation(animation *gdkpixbuf.PixbufAnimation) {
 	c_animation := (*C.GdkPixbufAnimation)(C.NULL)
 	if animation != nil {
@@ -14572,7 +16244,11 @@ func (recv *Image) SetFromAnimation(animation *gdkpixbuf.PixbufAnimation) {
 	return
 }
 
-// SetFromFile is a wrapper around the C function gtk_image_set_from_file.
+// See gtk_image_new_from_file() for details.
+/*
+
+C function : gtk_image_set_from_file
+*/
 func (recv *Image) SetFromFile(filename string) {
 	c_filename := C.CString(filename)
 	defer C.free(unsafe.Pointer(c_filename))
@@ -14582,7 +16258,11 @@ func (recv *Image) SetFromFile(filename string) {
 	return
 }
 
-// SetFromIconSet is a wrapper around the C function gtk_image_set_from_icon_set.
+// See gtk_image_new_from_icon_set() for details.
+/*
+
+C function : gtk_image_set_from_icon_set
+*/
 func (recv *Image) SetFromIconSet(iconSet *IconSet, size IconSize) {
 	c_icon_set := (*C.GtkIconSet)(C.NULL)
 	if iconSet != nil {
@@ -14596,7 +16276,11 @@ func (recv *Image) SetFromIconSet(iconSet *IconSet, size IconSize) {
 	return
 }
 
-// SetFromPixbuf is a wrapper around the C function gtk_image_set_from_pixbuf.
+// See gtk_image_new_from_pixbuf() for details.
+/*
+
+C function : gtk_image_set_from_pixbuf
+*/
 func (recv *Image) SetFromPixbuf(pixbuf *gdkpixbuf.Pixbuf) {
 	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
 	if pixbuf != nil {
@@ -14608,7 +16292,11 @@ func (recv *Image) SetFromPixbuf(pixbuf *gdkpixbuf.Pixbuf) {
 	return
 }
 
-// SetFromResource is a wrapper around the C function gtk_image_set_from_resource.
+// See gtk_image_new_from_resource() for details.
+/*
+
+C function : gtk_image_set_from_resource
+*/
 func (recv *Image) SetFromResource(resourcePath string) {
 	c_resource_path := C.CString(resourcePath)
 	defer C.free(unsafe.Pointer(c_resource_path))
@@ -14618,7 +16306,11 @@ func (recv *Image) SetFromResource(resourcePath string) {
 	return
 }
 
-// SetFromStock is a wrapper around the C function gtk_image_set_from_stock.
+// See gtk_image_new_from_stock() for details.
+/*
+
+C function : gtk_image_set_from_stock
+*/
 func (recv *Image) SetFromStock(stockId string, size IconSize) {
 	c_stock_id := C.CString(stockId)
 	defer C.free(unsafe.Pointer(c_stock_id))
@@ -14817,7 +16509,11 @@ func CastToImageMenuItem(object *gobject.Object) *ImageMenuItem {
 	return ImageMenuItemNewFromC(object.ToC())
 }
 
-// ImageMenuItemNew is a wrapper around the C function gtk_image_menu_item_new.
+// Creates a new #GtkImageMenuItem with an empty label.
+/*
+
+C function : gtk_image_menu_item_new
+*/
 func ImageMenuItemNew() *ImageMenuItem {
 	retC := C.gtk_image_menu_item_new()
 	retGo := ImageMenuItemNewFromC(unsafe.Pointer(retC))
@@ -14825,7 +16521,19 @@ func ImageMenuItemNew() *ImageMenuItem {
 	return retGo
 }
 
-// ImageMenuItemNewFromStock is a wrapper around the C function gtk_image_menu_item_new_from_stock.
+// Creates a new #GtkImageMenuItem containing the image and text from a
+// stock item. Some stock ids have preprocessor macros like #GTK_STOCK_OK
+// and #GTK_STOCK_APPLY.
+//
+// If you want this menu item to have changeable accelerators, then pass in
+// %NULL for accel_group. Next call gtk_menu_item_set_accel_path() with an
+// appropriate path for the menu item, use gtk_stock_lookup() to look up the
+// standard accelerator for the stock item, and if one is found, call
+// gtk_accel_map_add_entry() to register it.
+/*
+
+C function : gtk_image_menu_item_new_from_stock
+*/
 func ImageMenuItemNewFromStock(stockId string, accelGroup *AccelGroup) *ImageMenuItem {
 	c_stock_id := C.CString(stockId)
 	defer C.free(unsafe.Pointer(c_stock_id))
@@ -14841,7 +16549,11 @@ func ImageMenuItemNewFromStock(stockId string, accelGroup *AccelGroup) *ImageMen
 	return retGo
 }
 
-// ImageMenuItemNewWithLabel is a wrapper around the C function gtk_image_menu_item_new_with_label.
+// Creates a new #GtkImageMenuItem containing a label.
+/*
+
+C function : gtk_image_menu_item_new_with_label
+*/
 func ImageMenuItemNewWithLabel(label string) *ImageMenuItem {
 	c_label := C.CString(label)
 	defer C.free(unsafe.Pointer(c_label))
@@ -14852,7 +16564,13 @@ func ImageMenuItemNewWithLabel(label string) *ImageMenuItem {
 	return retGo
 }
 
-// ImageMenuItemNewWithMnemonic is a wrapper around the C function gtk_image_menu_item_new_with_mnemonic.
+// Creates a new #GtkImageMenuItem containing a label. The label
+// will be created using gtk_label_new_with_mnemonic(), so underscores
+// in @label indicate the mnemonic for the menu item.
+/*
+
+C function : gtk_image_menu_item_new_with_mnemonic
+*/
 func ImageMenuItemNewWithMnemonic(label string) *ImageMenuItem {
 	c_label := C.CString(label)
 	defer C.free(unsafe.Pointer(c_label))
@@ -14863,7 +16581,12 @@ func ImageMenuItemNewWithMnemonic(label string) *ImageMenuItem {
 	return retGo
 }
 
-// GetImage is a wrapper around the C function gtk_image_menu_item_get_image.
+// Gets the widget that is currently set as the image of @image_menu_item.
+// See gtk_image_menu_item_set_image().
+/*
+
+C function : gtk_image_menu_item_get_image
+*/
 func (recv *ImageMenuItem) GetImage() *Widget {
 	retC := C.gtk_image_menu_item_get_image((*C.GtkImageMenuItem)(recv.native))
 	retGo := WidgetNewFromC(unsafe.Pointer(retC))
@@ -14871,7 +16594,13 @@ func (recv *ImageMenuItem) GetImage() *Widget {
 	return retGo
 }
 
-// SetImage is a wrapper around the C function gtk_image_menu_item_set_image.
+// Sets the image of @image_menu_item to the given widget.
+// Note that it depends on the show-menu-images setting whether
+// the image will be displayed or not.
+/*
+
+C function : gtk_image_menu_item_set_image
+*/
 func (recv *ImageMenuItem) SetImage(image *Widget) {
 	c_image := (*C.GtkWidget)(C.NULL)
 	if image != nil {
@@ -15018,7 +16747,11 @@ func CastToInvisible(object *gobject.Object) *Invisible {
 	return InvisibleNewFromC(object.ToC())
 }
 
-// InvisibleNew is a wrapper around the C function gtk_invisible_new.
+// Creates a new #GtkInvisible.
+/*
+
+C function : gtk_invisible_new
+*/
 func InvisibleNew() *Invisible {
 	retC := C.gtk_invisible_new()
 	retGo := InvisibleNewFromC(unsafe.Pointer(retC))
@@ -15203,7 +16936,12 @@ func label_populatePopupHandler(_ *C.GObject, c_menu *C.GtkMenu, data C.gpointer
 	callback(menu)
 }
 
-// LabelNew is a wrapper around the C function gtk_label_new.
+// Creates a new label with the given text inside it. You can
+// pass %NULL to get an empty label widget.
+/*
+
+C function : gtk_label_new
+*/
 func LabelNew(str string) *Label {
 	c_str := C.CString(str)
 	defer C.free(unsafe.Pointer(c_str))
@@ -15214,7 +16952,24 @@ func LabelNew(str string) *Label {
 	return retGo
 }
 
-// LabelNewWithMnemonic is a wrapper around the C function gtk_label_new_with_mnemonic.
+// Creates a new #GtkLabel, containing the text in @str.
+//
+// If characters in @str are preceded by an underscore, they are
+// underlined. If you need a literal underscore character in a label, use
+// '__' (two underscores). The first underlined character represents a
+// keyboard accelerator called a mnemonic. The mnemonic key can be used
+// to activate another widget, chosen automatically, or explicitly using
+// gtk_label_set_mnemonic_widget().
+//
+// If gtk_label_set_mnemonic_widget() is not called, then the first
+// activatable ancestor of the #GtkLabel will be chosen as the mnemonic
+// widget. For instance, if the label is inside a button or menu item,
+// the button or menu item will automatically become the mnemonic widget
+// and be activated by the mnemonic.
+/*
+
+C function : gtk_label_new_with_mnemonic
+*/
 func LabelNewWithMnemonic(str string) *Label {
 	c_str := C.CString(str)
 	defer C.free(unsafe.Pointer(c_str))
@@ -15225,7 +16980,16 @@ func LabelNewWithMnemonic(str string) *Label {
 	return retGo
 }
 
-// GetAttributes is a wrapper around the C function gtk_label_get_attributes.
+// Gets the attribute list that was set on the label using
+// gtk_label_set_attributes(), if any. This function does
+// not reflect attributes that come from the labels markup
+// (see gtk_label_set_markup()). If you want to get the
+// effective attributes for the label, use
+// pango_layout_get_attribute (gtk_label_get_layout (label)).
+/*
+
+C function : gtk_label_get_attributes
+*/
 func (recv *Label) GetAttributes() *pango.AttrList {
 	retC := C.gtk_label_get_attributes((*C.GtkLabel)(recv.native))
 	var retGo (*pango.AttrList)
@@ -15238,7 +17002,11 @@ func (recv *Label) GetAttributes() *pango.AttrList {
 	return retGo
 }
 
-// GetJustify is a wrapper around the C function gtk_label_get_justify.
+// Returns the justification of the label. See gtk_label_set_justify().
+/*
+
+C function : gtk_label_get_justify
+*/
 func (recv *Label) GetJustify() Justification {
 	retC := C.gtk_label_get_justify((*C.GtkLabel)(recv.native))
 	retGo := (Justification)(retC)
@@ -15246,7 +17014,13 @@ func (recv *Label) GetJustify() Justification {
 	return retGo
 }
 
-// GetLabel is a wrapper around the C function gtk_label_get_label.
+// Fetches the text from a label widget including any embedded
+// underlines indicating mnemonics and Pango markup. (See
+// gtk_label_get_text()).
+/*
+
+C function : gtk_label_get_label
+*/
 func (recv *Label) GetLabel() string {
 	retC := C.gtk_label_get_label((*C.GtkLabel)(recv.native))
 	retGo := C.GoString(retC)
@@ -15254,7 +17028,16 @@ func (recv *Label) GetLabel() string {
 	return retGo
 }
 
-// GetLayout is a wrapper around the C function gtk_label_get_layout.
+// Gets the #PangoLayout used to display the label.
+// The layout is useful to e.g. convert text positions to
+// pixel positions, in combination with gtk_label_get_layout_offsets().
+// The returned layout is owned by the @label so need not be
+// freed by the caller. The @label is free to recreate its layout at
+// any time, so it should be considered read-only.
+/*
+
+C function : gtk_label_get_layout
+*/
 func (recv *Label) GetLayout() *pango.Layout {
 	retC := C.gtk_label_get_layout((*C.GtkLabel)(recv.native))
 	retGo := pango.LayoutNewFromC(unsafe.Pointer(retC))
@@ -15262,7 +17045,19 @@ func (recv *Label) GetLayout() *pango.Layout {
 	return retGo
 }
 
-// GetLayoutOffsets is a wrapper around the C function gtk_label_get_layout_offsets.
+// Obtains the coordinates where the label will draw the #PangoLayout
+// representing the text in the label; useful to convert mouse events
+// into coordinates inside the #PangoLayout, e.g. to take some action
+// if some part of the label is clicked. Of course you will need to
+// create a #GtkEventBox to receive the events, and pack the label
+// inside it, since labels are windowless (they return %FALSE from
+// gtk_widget_get_has_window()). Remember
+// when using the #PangoLayout functions you need to convert to
+// and from pixels using PANGO_PIXELS() or #PANGO_SCALE.
+/*
+
+C function : gtk_label_get_layout_offsets
+*/
 func (recv *Label) GetLayoutOffsets() (int32, int32) {
 	var c_x C.gint
 
@@ -15277,7 +17072,12 @@ func (recv *Label) GetLayoutOffsets() (int32, int32) {
 	return x, y
 }
 
-// GetLineWrap is a wrapper around the C function gtk_label_get_line_wrap.
+// Returns whether lines in the label are automatically wrapped.
+// See gtk_label_set_line_wrap().
+/*
+
+C function : gtk_label_get_line_wrap
+*/
 func (recv *Label) GetLineWrap() bool {
 	retC := C.gtk_label_get_line_wrap((*C.GtkLabel)(recv.native))
 	retGo := retC == C.TRUE
@@ -15285,7 +17085,13 @@ func (recv *Label) GetLineWrap() bool {
 	return retGo
 }
 
-// GetMnemonicKeyval is a wrapper around the C function gtk_label_get_mnemonic_keyval.
+// If the label has been set so that it has an mnemonic key this function
+// returns the keyval used for the mnemonic accelerator. If there is no
+// mnemonic set up it returns #GDK_KEY_VoidSymbol.
+/*
+
+C function : gtk_label_get_mnemonic_keyval
+*/
 func (recv *Label) GetMnemonicKeyval() uint32 {
 	retC := C.gtk_label_get_mnemonic_keyval((*C.GtkLabel)(recv.native))
 	retGo := (uint32)(retC)
@@ -15293,7 +17099,12 @@ func (recv *Label) GetMnemonicKeyval() uint32 {
 	return retGo
 }
 
-// GetMnemonicWidget is a wrapper around the C function gtk_label_get_mnemonic_widget.
+// Retrieves the target of the mnemonic (keyboard shortcut) of this
+// label. See gtk_label_set_mnemonic_widget().
+/*
+
+C function : gtk_label_get_mnemonic_widget
+*/
 func (recv *Label) GetMnemonicWidget() *Widget {
 	retC := C.gtk_label_get_mnemonic_widget((*C.GtkLabel)(recv.native))
 	var retGo (*Widget)
@@ -15306,7 +17117,11 @@ func (recv *Label) GetMnemonicWidget() *Widget {
 	return retGo
 }
 
-// GetSelectable is a wrapper around the C function gtk_label_get_selectable.
+// Gets the value set by gtk_label_set_selectable().
+/*
+
+C function : gtk_label_get_selectable
+*/
 func (recv *Label) GetSelectable() bool {
 	retC := C.gtk_label_get_selectable((*C.GtkLabel)(recv.native))
 	retGo := retC == C.TRUE
@@ -15314,7 +17129,12 @@ func (recv *Label) GetSelectable() bool {
 	return retGo
 }
 
-// GetSelectionBounds is a wrapper around the C function gtk_label_get_selection_bounds.
+// Gets the selected range of characters in the label, returning %TRUE
+// if there’s a selection.
+/*
+
+C function : gtk_label_get_selection_bounds
+*/
 func (recv *Label) GetSelectionBounds() (bool, int32, int32) {
 	var c_start C.gint
 
@@ -15330,7 +17150,13 @@ func (recv *Label) GetSelectionBounds() (bool, int32, int32) {
 	return retGo, start, end
 }
 
-// GetText is a wrapper around the C function gtk_label_get_text.
+// Fetches the text from a label widget, as displayed on the
+// screen. This does not include any embedded underlines
+// indicating mnemonics or Pango markup. (See gtk_label_get_label())
+/*
+
+C function : gtk_label_get_text
+*/
 func (recv *Label) GetText() string {
 	retC := C.gtk_label_get_text((*C.GtkLabel)(recv.native))
 	retGo := C.GoString(retC)
@@ -15338,7 +17164,13 @@ func (recv *Label) GetText() string {
 	return retGo
 }
 
-// GetUseMarkup is a wrapper around the C function gtk_label_get_use_markup.
+// Returns whether the label’s text is interpreted as marked up with
+// the [Pango text markup language][PangoMarkupFormat].
+// See gtk_label_set_use_markup ().
+/*
+
+C function : gtk_label_get_use_markup
+*/
 func (recv *Label) GetUseMarkup() bool {
 	retC := C.gtk_label_get_use_markup((*C.GtkLabel)(recv.native))
 	retGo := retC == C.TRUE
@@ -15346,7 +17178,12 @@ func (recv *Label) GetUseMarkup() bool {
 	return retGo
 }
 
-// GetUseUnderline is a wrapper around the C function gtk_label_get_use_underline.
+// Returns whether an embedded underline in the label indicates a
+// mnemonic. See gtk_label_set_use_underline().
+/*
+
+C function : gtk_label_get_use_underline
+*/
 func (recv *Label) GetUseUnderline() bool {
 	retC := C.gtk_label_get_use_underline((*C.GtkLabel)(recv.native))
 	retGo := retC == C.TRUE
@@ -15354,7 +17191,14 @@ func (recv *Label) GetUseUnderline() bool {
 	return retGo
 }
 
-// SelectRegion is a wrapper around the C function gtk_label_select_region.
+// Selects a range of characters in the label, if the label is selectable.
+// See gtk_label_set_selectable(). If the label is not selectable,
+// this function has no effect. If @start_offset or
+// @end_offset are -1, then the end of the label will be substituted.
+/*
+
+C function : gtk_label_select_region
+*/
 func (recv *Label) SelectRegion(startOffset int32, endOffset int32) {
 	c_start_offset := (C.gint)(startOffset)
 
@@ -15365,7 +17209,19 @@ func (recv *Label) SelectRegion(startOffset int32, endOffset int32) {
 	return
 }
 
-// SetAttributes is a wrapper around the C function gtk_label_set_attributes.
+// Sets a #PangoAttrList; the attributes in the list are applied to the
+// label text.
+//
+// The attributes set with this function will be applied
+// and merged with any other attributes previously effected by way
+// of the #GtkLabel:use-underline or #GtkLabel:use-markup properties.
+// While it is not recommended to mix markup strings with manually set
+// attributes, if you must; know that the attributes will be applied
+// to the label after the markup string is parsed.
+/*
+
+C function : gtk_label_set_attributes
+*/
 func (recv *Label) SetAttributes(attrs *pango.AttrList) {
 	c_attrs := (*C.PangoAttrList)(C.NULL)
 	if attrs != nil {
@@ -15377,7 +17233,16 @@ func (recv *Label) SetAttributes(attrs *pango.AttrList) {
 	return
 }
 
-// SetJustify is a wrapper around the C function gtk_label_set_justify.
+// Sets the alignment of the lines in the text of the label relative to
+// each other. %GTK_JUSTIFY_LEFT is the default value when the widget is
+// first created with gtk_label_new(). If you instead want to set the
+// alignment of the label as a whole, use gtk_widget_set_halign() instead.
+// gtk_label_set_justify() has no effect on labels containing only a
+// single line.
+/*
+
+C function : gtk_label_set_justify
+*/
 func (recv *Label) SetJustify(jtype Justification) {
 	c_jtype := (C.GtkJustification)(jtype)
 
@@ -15386,7 +17251,14 @@ func (recv *Label) SetJustify(jtype Justification) {
 	return
 }
 
-// SetLabel is a wrapper around the C function gtk_label_set_label.
+// Sets the text of the label. The label is interpreted as
+// including embedded underlines and/or Pango markup depending
+// on the values of the #GtkLabel:use-underline and
+// #GtkLabel:use-markup properties.
+/*
+
+C function : gtk_label_set_label
+*/
 func (recv *Label) SetLabel(str string) {
 	c_str := C.CString(str)
 	defer C.free(unsafe.Pointer(c_str))
@@ -15396,7 +17268,19 @@ func (recv *Label) SetLabel(str string) {
 	return
 }
 
-// SetLineWrap is a wrapper around the C function gtk_label_set_line_wrap.
+// Toggles line wrapping within the #GtkLabel widget. %TRUE makes it break
+// lines if text exceeds the widget’s size. %FALSE lets the text get cut off
+// by the edge of the widget if it exceeds the widget size.
+//
+// Note that setting line wrapping to %TRUE does not make the label
+// wrap at its parent container’s width, because GTK+ widgets
+// conceptually can’t make their requisition depend on the parent
+// container’s size. For a label that wraps at a specific position,
+// set the label’s width using gtk_widget_set_size_request().
+/*
+
+C function : gtk_label_set_line_wrap
+*/
 func (recv *Label) SetLineWrap(wrap bool) {
 	c_wrap :=
 		boolToGboolean(wrap)
@@ -15406,7 +17290,36 @@ func (recv *Label) SetLineWrap(wrap bool) {
 	return
 }
 
-// SetMarkup is a wrapper around the C function gtk_label_set_markup.
+// Parses @str which is marked up with the
+// [Pango text markup language][PangoMarkupFormat], setting the
+// label’s text and attribute list based on the parse results.
+//
+// If the @str is external data, you may need to escape it with
+// g_markup_escape_text() or g_markup_printf_escaped():
+//
+// |[<!-- language="C" -->
+// GtkWidget *label = gtk_label_new (NULL);
+// const char *str = "some text";
+// const char *format = "<span style=\"italic\">\%s</span>";
+// char *markup;
+//
+// markup = g_markup_printf_escaped (format, str);
+// gtk_label_set_markup (GTK_LABEL (label), markup);
+// g_free (markup);
+// ]|
+//
+// This function will set the #GtkLabel:use-markup property to %TRUE as
+// a side effect.
+//
+// If you set the label contents using the #GtkLabel:label property you
+// should also ensure that you set the #GtkLabel:use-markup property
+// accordingly.
+//
+// See also: gtk_label_set_text()
+/*
+
+C function : gtk_label_set_markup
+*/
 func (recv *Label) SetMarkup(str string) {
 	c_str := C.CString(str)
 	defer C.free(unsafe.Pointer(c_str))
@@ -15416,7 +17329,18 @@ func (recv *Label) SetMarkup(str string) {
 	return
 }
 
-// SetMarkupWithMnemonic is a wrapper around the C function gtk_label_set_markup_with_mnemonic.
+// Parses @str which is marked up with the
+// [Pango text markup language][PangoMarkupFormat],
+// setting the label’s text and attribute list based on the parse results.
+// If characters in @str are preceded by an underscore, they are underlined
+// indicating that they represent a keyboard accelerator called a mnemonic.
+//
+// The mnemonic key can be used to activate another widget, chosen
+// automatically, or explicitly using gtk_label_set_mnemonic_widget().
+/*
+
+C function : gtk_label_set_markup_with_mnemonic
+*/
 func (recv *Label) SetMarkupWithMnemonic(str string) {
 	c_str := C.CString(str)
 	defer C.free(unsafe.Pointer(c_str))
@@ -15426,7 +17350,24 @@ func (recv *Label) SetMarkupWithMnemonic(str string) {
 	return
 }
 
-// SetMnemonicWidget is a wrapper around the C function gtk_label_set_mnemonic_widget.
+// If the label has been set so that it has an mnemonic key (using
+// i.e. gtk_label_set_markup_with_mnemonic(),
+// gtk_label_set_text_with_mnemonic(), gtk_label_new_with_mnemonic()
+// or the “use_underline” property) the label can be associated with a
+// widget that is the target of the mnemonic. When the label is inside
+// a widget (like a #GtkButton or a #GtkNotebook tab) it is
+// automatically associated with the correct widget, but sometimes
+// (i.e. when the target is a #GtkEntry next to the label) you need to
+// set it explicitly using this function.
+//
+// The target widget will be accelerated by emitting the
+// GtkWidget::mnemonic-activate signal on it. The default handler for
+// this signal will activate the widget if there are no mnemonic collisions
+// and toggle focus between the colliding widgets otherwise.
+/*
+
+C function : gtk_label_set_mnemonic_widget
+*/
 func (recv *Label) SetMnemonicWidget(widget *Widget) {
 	c_widget := (*C.GtkWidget)(C.NULL)
 	if widget != nil {
@@ -15438,7 +17379,14 @@ func (recv *Label) SetMnemonicWidget(widget *Widget) {
 	return
 }
 
-// SetPattern is a wrapper around the C function gtk_label_set_pattern.
+// The pattern of underlines you want under the existing text within the
+// #GtkLabel widget.  For example if the current text of the label says
+// “FooBarBaz” passing a pattern of “___   ___” will underline
+// “Foo” and “Baz” but not “Bar”.
+/*
+
+C function : gtk_label_set_pattern
+*/
 func (recv *Label) SetPattern(pattern string) {
 	c_pattern := C.CString(pattern)
 	defer C.free(unsafe.Pointer(c_pattern))
@@ -15448,7 +17396,12 @@ func (recv *Label) SetPattern(pattern string) {
 	return
 }
 
-// SetSelectable is a wrapper around the C function gtk_label_set_selectable.
+// Selectable labels allow the user to select text from the label, for
+// copy-and-paste.
+/*
+
+C function : gtk_label_set_selectable
+*/
 func (recv *Label) SetSelectable(setting bool) {
 	c_setting :=
 		boolToGboolean(setting)
@@ -15458,7 +17411,20 @@ func (recv *Label) SetSelectable(setting bool) {
 	return
 }
 
-// SetText is a wrapper around the C function gtk_label_set_text.
+// Sets the text within the #GtkLabel widget. It overwrites any text that
+// was there before.
+//
+// This function will clear any previously set mnemonic accelerators, and
+// set the #GtkLabel:use-underline property to %FALSE as a side effect.
+//
+// This function will set the #GtkLabel:use-markup property to %FALSE
+// as a side effect.
+//
+// See also: gtk_label_set_markup()
+/*
+
+C function : gtk_label_set_text
+*/
 func (recv *Label) SetText(str string) {
 	c_str := C.CString(str)
 	defer C.free(unsafe.Pointer(c_str))
@@ -15468,7 +17434,15 @@ func (recv *Label) SetText(str string) {
 	return
 }
 
-// SetTextWithMnemonic is a wrapper around the C function gtk_label_set_text_with_mnemonic.
+// Sets the label’s text from the string @str.
+// If characters in @str are preceded by an underscore, they are underlined
+// indicating that they represent a keyboard accelerator called a mnemonic.
+// The mnemonic key can be used to activate another widget, chosen
+// automatically, or explicitly using gtk_label_set_mnemonic_widget().
+/*
+
+C function : gtk_label_set_text_with_mnemonic
+*/
 func (recv *Label) SetTextWithMnemonic(str string) {
 	c_str := C.CString(str)
 	defer C.free(unsafe.Pointer(c_str))
@@ -15478,7 +17452,13 @@ func (recv *Label) SetTextWithMnemonic(str string) {
 	return
 }
 
-// SetUseMarkup is a wrapper around the C function gtk_label_set_use_markup.
+// Sets whether the text of the label contains markup in
+// [Pango’s text markup language][PangoMarkupFormat].
+// See gtk_label_set_markup().
+/*
+
+C function : gtk_label_set_use_markup
+*/
 func (recv *Label) SetUseMarkup(setting bool) {
 	c_setting :=
 		boolToGboolean(setting)
@@ -15488,7 +17468,12 @@ func (recv *Label) SetUseMarkup(setting bool) {
 	return
 }
 
-// SetUseUnderline is a wrapper around the C function gtk_label_set_use_underline.
+// If true, an underline in the text indicates the next character should be
+// used for the mnemonic accelerator key.
+/*
+
+C function : gtk_label_set_use_underline
+*/
 func (recv *Label) SetUseUnderline(setting bool) {
 	c_setting :=
 		boolToGboolean(setting)
@@ -15616,7 +17601,13 @@ func CastToLayout(object *gobject.Object) *Layout {
 	return LayoutNewFromC(object.ToC())
 }
 
-// LayoutNew is a wrapper around the C function gtk_layout_new.
+// Creates a new #GtkLayout. Unless you have a specific adjustment
+// you’d like the layout to use for scrolling, pass %NULL for
+// @hadjustment and @vadjustment.
+/*
+
+C function : gtk_layout_new
+*/
 func LayoutNew(hadjustment *Adjustment, vadjustment *Adjustment) *Layout {
 	c_hadjustment := (*C.GtkAdjustment)(C.NULL)
 	if hadjustment != nil {
@@ -15634,7 +17625,16 @@ func LayoutNew(hadjustment *Adjustment, vadjustment *Adjustment) *Layout {
 	return retGo
 }
 
-// GetHadjustment is a wrapper around the C function gtk_layout_get_hadjustment.
+// This function should only be called after the layout has been
+// placed in a #GtkScrolledWindow or otherwise configured for
+// scrolling. It returns the #GtkAdjustment used for communication
+// between the horizontal scrollbar and @layout.
+//
+// See #GtkScrolledWindow, #GtkScrollbar, #GtkAdjustment for details.
+/*
+
+C function : gtk_layout_get_hadjustment
+*/
 func (recv *Layout) GetHadjustment() *Adjustment {
 	retC := C.gtk_layout_get_hadjustment((*C.GtkLayout)(recv.native))
 	retGo := AdjustmentNewFromC(unsafe.Pointer(retC))
@@ -15642,7 +17642,13 @@ func (recv *Layout) GetHadjustment() *Adjustment {
 	return retGo
 }
 
-// GetSize is a wrapper around the C function gtk_layout_get_size.
+// Gets the size that has been set on the layout, and that determines
+// the total extents of the layout’s scrollbar area. See
+// gtk_layout_set_size ().
+/*
+
+C function : gtk_layout_get_size
+*/
 func (recv *Layout) GetSize() (uint32, uint32) {
 	var c_width C.guint
 
@@ -15657,7 +17663,16 @@ func (recv *Layout) GetSize() (uint32, uint32) {
 	return width, height
 }
 
-// GetVadjustment is a wrapper around the C function gtk_layout_get_vadjustment.
+// This function should only be called after the layout has been
+// placed in a #GtkScrolledWindow or otherwise configured for
+// scrolling. It returns the #GtkAdjustment used for communication
+// between the vertical scrollbar and @layout.
+//
+// See #GtkScrolledWindow, #GtkScrollbar, #GtkAdjustment for details.
+/*
+
+C function : gtk_layout_get_vadjustment
+*/
 func (recv *Layout) GetVadjustment() *Adjustment {
 	retC := C.gtk_layout_get_vadjustment((*C.GtkLayout)(recv.native))
 	retGo := AdjustmentNewFromC(unsafe.Pointer(retC))
@@ -15665,7 +17680,11 @@ func (recv *Layout) GetVadjustment() *Adjustment {
 	return retGo
 }
 
-// Move is a wrapper around the C function gtk_layout_move.
+// Moves a current child of @layout to a new position.
+/*
+
+C function : gtk_layout_move
+*/
 func (recv *Layout) Move(childWidget *Widget, x int32, y int32) {
 	c_child_widget := (*C.GtkWidget)(C.NULL)
 	if childWidget != nil {
@@ -15681,7 +17700,12 @@ func (recv *Layout) Move(childWidget *Widget, x int32, y int32) {
 	return
 }
 
-// Put is a wrapper around the C function gtk_layout_put.
+// Adds @child_widget to @layout, at position (@x,@y).
+// @layout becomes the new parent container of @child_widget.
+/*
+
+C function : gtk_layout_put
+*/
 func (recv *Layout) Put(childWidget *Widget, x int32, y int32) {
 	c_child_widget := (*C.GtkWidget)(C.NULL)
 	if childWidget != nil {
@@ -15697,7 +17721,13 @@ func (recv *Layout) Put(childWidget *Widget, x int32, y int32) {
 	return
 }
 
-// SetHadjustment is a wrapper around the C function gtk_layout_set_hadjustment.
+// Sets the horizontal scroll adjustment for the layout.
+//
+// See #GtkScrolledWindow, #GtkScrollbar, #GtkAdjustment for details.
+/*
+
+C function : gtk_layout_set_hadjustment
+*/
 func (recv *Layout) SetHadjustment(adjustment *Adjustment) {
 	c_adjustment := (*C.GtkAdjustment)(C.NULL)
 	if adjustment != nil {
@@ -15709,7 +17739,11 @@ func (recv *Layout) SetHadjustment(adjustment *Adjustment) {
 	return
 }
 
-// SetSize is a wrapper around the C function gtk_layout_set_size.
+// Sets the size of the scrollable area of the layout.
+/*
+
+C function : gtk_layout_set_size
+*/
 func (recv *Layout) SetSize(width uint32, height uint32) {
 	c_width := (C.guint)(width)
 
@@ -15720,7 +17754,13 @@ func (recv *Layout) SetSize(width uint32, height uint32) {
 	return
 }
 
-// SetVadjustment is a wrapper around the C function gtk_layout_set_vadjustment.
+// Sets the vertical scroll adjustment for the layout.
+//
+// See #GtkScrolledWindow, #GtkScrollbar, #GtkAdjustment for details.
+/*
+
+C function : gtk_layout_set_vadjustment
+*/
 func (recv *Layout) SetVadjustment(adjustment *Adjustment) {
 	c_adjustment := (*C.GtkAdjustment)(C.NULL)
 	if adjustment != nil {
@@ -16463,7 +18503,11 @@ func CastToListStore(object *gobject.Object) *ListStore {
 
 // Unsupported : gtk_list_store_new : unsupported parameter ... : varargs
 
-// ListStoreNewv is a wrapper around the C function gtk_list_store_newv.
+// Non-vararg creation function.  Used primarily by language bindings.
+/*
+
+C function : gtk_list_store_newv
+*/
 func ListStoreNewv(types []gobject.Type) *ListStore {
 	c_n_columns := (C.gint)(len(types))
 
@@ -16475,7 +18519,13 @@ func ListStoreNewv(types []gobject.Type) *ListStore {
 	return retGo
 }
 
-// Append is a wrapper around the C function gtk_list_store_append.
+// Appends a new row to @list_store.  @iter will be changed to point to this new
+// row.  The row will be empty after this function is called.  To fill in
+// values, you need to call gtk_list_store_set() or gtk_list_store_set_value().
+/*
+
+C function : gtk_list_store_append
+*/
 func (recv *ListStore) Append() *TreeIter {
 	var c_iter C.GtkTreeIter
 
@@ -16486,14 +18536,26 @@ func (recv *ListStore) Append() *TreeIter {
 	return iter
 }
 
-// Clear is a wrapper around the C function gtk_list_store_clear.
+// Removes all rows from the list store.
+/*
+
+C function : gtk_list_store_clear
+*/
 func (recv *ListStore) Clear() {
 	C.gtk_list_store_clear((*C.GtkListStore)(recv.native))
 
 	return
 }
 
-// Insert is a wrapper around the C function gtk_list_store_insert.
+// Creates a new row at @position.  @iter will be changed to point to this new
+// row.  If @position is -1 or is larger than the number of rows on the list,
+// then the new row will be appended to the list. The row will be empty after
+// this function is called.  To fill in values, you need to call
+// gtk_list_store_set() or gtk_list_store_set_value().
+/*
+
+C function : gtk_list_store_insert
+*/
 func (recv *ListStore) Insert(position int32) *TreeIter {
 	var c_iter C.GtkTreeIter
 
@@ -16506,7 +18568,14 @@ func (recv *ListStore) Insert(position int32) *TreeIter {
 	return iter
 }
 
-// InsertAfter is a wrapper around the C function gtk_list_store_insert_after.
+// Inserts a new row after @sibling. If @sibling is %NULL, then the row will be
+// prepended to the beginning of the list. @iter will be changed to point to
+// this new row. The row will be empty after this function is called. To fill
+// in values, you need to call gtk_list_store_set() or gtk_list_store_set_value().
+/*
+
+C function : gtk_list_store_insert_after
+*/
 func (recv *ListStore) InsertAfter(sibling *TreeIter) *TreeIter {
 	var c_iter C.GtkTreeIter
 
@@ -16522,7 +18591,14 @@ func (recv *ListStore) InsertAfter(sibling *TreeIter) *TreeIter {
 	return iter
 }
 
-// InsertBefore is a wrapper around the C function gtk_list_store_insert_before.
+// Inserts a new row before @sibling. If @sibling is %NULL, then the row will
+// be appended to the end of the list. @iter will be changed to point to this
+// new row. The row will be empty after this function is called. To fill in
+// values, you need to call gtk_list_store_set() or gtk_list_store_set_value().
+/*
+
+C function : gtk_list_store_insert_before
+*/
 func (recv *ListStore) InsertBefore(sibling *TreeIter) *TreeIter {
 	var c_iter C.GtkTreeIter
 
@@ -16538,7 +18614,13 @@ func (recv *ListStore) InsertBefore(sibling *TreeIter) *TreeIter {
 	return iter
 }
 
-// Prepend is a wrapper around the C function gtk_list_store_prepend.
+// Prepends a new row to @list_store. @iter will be changed to point to this new
+// row. The row will be empty after this function is called. To fill in
+// values, you need to call gtk_list_store_set() or gtk_list_store_set_value().
+/*
+
+C function : gtk_list_store_prepend
+*/
 func (recv *ListStore) Prepend() *TreeIter {
 	var c_iter C.GtkTreeIter
 
@@ -16549,7 +18631,13 @@ func (recv *ListStore) Prepend() *TreeIter {
 	return iter
 }
 
-// Remove is a wrapper around the C function gtk_list_store_remove.
+// Removes the given row from the list store.  After being removed,
+// @iter is set to be the next valid row, or invalidated if it pointed
+// to the last row in @list_store.
+/*
+
+C function : gtk_list_store_remove
+*/
 func (recv *ListStore) Remove(iter *TreeIter) bool {
 	c_iter := (*C.GtkTreeIter)(C.NULL)
 	if iter != nil {
@@ -16564,7 +18652,14 @@ func (recv *ListStore) Remove(iter *TreeIter) bool {
 
 // Unsupported : gtk_list_store_set : unsupported parameter ... : varargs
 
-// SetColumnTypes is a wrapper around the C function gtk_list_store_set_column_types.
+// This function is meant primarily for #GObjects that inherit from #GtkListStore,
+// and should only be used when constructing a new #GtkListStore.  It will not
+// function after a row has been added, or a method on the #GtkTreeModel
+// interface is called.
+/*
+
+C function : gtk_list_store_set_column_types
+*/
 func (recv *ListStore) SetColumnTypes(types []gobject.Type) {
 	c_n_columns := (C.gint)(len(types))
 
@@ -16577,7 +18672,13 @@ func (recv *ListStore) SetColumnTypes(types []gobject.Type) {
 
 // Unsupported : gtk_list_store_set_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
 
-// SetValue is a wrapper around the C function gtk_list_store_set_value.
+// Sets the data in the cell specified by @iter and @column.
+// The type of @value must be convertible to the type of the
+// column.
+/*
+
+C function : gtk_list_store_set_value
+*/
 func (recv *ListStore) SetValue(iter *TreeIter, column int32, value *gobject.Value) {
 	c_iter := (*C.GtkTreeIter)(C.NULL)
 	if iter != nil {
@@ -16825,7 +18926,11 @@ func CastToMenu(object *gobject.Object) *Menu {
 
 // Unsupported signal 'move-scroll' for Menu : unsupported parameter scroll_type : type ScrollType :
 
-// MenuNew is a wrapper around the C function gtk_menu_new.
+// Creates a new #GtkMenu
+/*
+
+C function : gtk_menu_new
+*/
 func MenuNew() *Menu {
 	retC := C.gtk_menu_new()
 	retGo := MenuNewFromC(unsafe.Pointer(retC))
@@ -16835,14 +18940,25 @@ func MenuNew() *Menu {
 
 // Unsupported : gtk_menu_attach_to_widget : unsupported parameter detacher : no type generator for MenuDetachFunc (GtkMenuDetachFunc) for param detacher
 
-// Detach is a wrapper around the C function gtk_menu_detach.
+// Detaches the menu from the widget to which it had been attached.
+// This function will call the callback function, @detacher, provided
+// when the gtk_menu_attach_to_widget() function was called.
+/*
+
+C function : gtk_menu_detach
+*/
 func (recv *Menu) Detach() {
 	C.gtk_menu_detach((*C.GtkMenu)(recv.native))
 
 	return
 }
 
-// GetAccelGroup is a wrapper around the C function gtk_menu_get_accel_group.
+// Gets the #GtkAccelGroup which holds global accelerators for the
+// menu. See gtk_menu_set_accel_group().
+/*
+
+C function : gtk_menu_get_accel_group
+*/
 func (recv *Menu) GetAccelGroup() *AccelGroup {
 	retC := C.gtk_menu_get_accel_group((*C.GtkMenu)(recv.native))
 	retGo := AccelGroupNewFromC(unsafe.Pointer(retC))
@@ -16850,7 +18966,12 @@ func (recv *Menu) GetAccelGroup() *AccelGroup {
 	return retGo
 }
 
-// GetActive is a wrapper around the C function gtk_menu_get_active.
+// Returns the selected menu item from the menu.  This is used by the
+// #GtkComboBox.
+/*
+
+C function : gtk_menu_get_active
+*/
 func (recv *Menu) GetActive() *Widget {
 	retC := C.gtk_menu_get_active((*C.GtkMenu)(recv.native))
 	retGo := WidgetNewFromC(unsafe.Pointer(retC))
@@ -16858,7 +18979,11 @@ func (recv *Menu) GetActive() *Widget {
 	return retGo
 }
 
-// GetAttachWidget is a wrapper around the C function gtk_menu_get_attach_widget.
+// Returns the #GtkWidget that the menu is attached to.
+/*
+
+C function : gtk_menu_get_attach_widget
+*/
 func (recv *Menu) GetAttachWidget() *Widget {
 	retC := C.gtk_menu_get_attach_widget((*C.GtkMenu)(recv.native))
 	retGo := WidgetNewFromC(unsafe.Pointer(retC))
@@ -16866,7 +18991,12 @@ func (recv *Menu) GetAttachWidget() *Widget {
 	return retGo
 }
 
-// GetTearoffState is a wrapper around the C function gtk_menu_get_tearoff_state.
+// Returns whether the menu is torn off.
+// See gtk_menu_set_tearoff_state().
+/*
+
+C function : gtk_menu_get_tearoff_state
+*/
 func (recv *Menu) GetTearoffState() bool {
 	retC := C.gtk_menu_get_tearoff_state((*C.GtkMenu)(recv.native))
 	retGo := retC == C.TRUE
@@ -16874,7 +19004,11 @@ func (recv *Menu) GetTearoffState() bool {
 	return retGo
 }
 
-// GetTitle is a wrapper around the C function gtk_menu_get_title.
+// Returns the title of the menu. See gtk_menu_set_title().
+/*
+
+C function : gtk_menu_get_title
+*/
 func (recv *Menu) GetTitle() string {
 	retC := C.gtk_menu_get_title((*C.GtkMenu)(recv.native))
 	retGo := C.GoString(retC)
@@ -16882,7 +19016,11 @@ func (recv *Menu) GetTitle() string {
 	return retGo
 }
 
-// Popdown is a wrapper around the C function gtk_menu_popdown.
+// Removes the menu from the screen.
+/*
+
+C function : gtk_menu_popdown
+*/
 func (recv *Menu) Popdown() {
 	C.gtk_menu_popdown((*C.GtkMenu)(recv.native))
 
@@ -16891,7 +19029,12 @@ func (recv *Menu) Popdown() {
 
 // Unsupported : gtk_menu_popup : unsupported parameter func : no type generator for MenuPositionFunc (GtkMenuPositionFunc) for param func
 
-// ReorderChild is a wrapper around the C function gtk_menu_reorder_child.
+// Moves @child to a new @position in the list of @menu
+// children.
+/*
+
+C function : gtk_menu_reorder_child
+*/
 func (recv *Menu) ReorderChild(child *Widget, position int32) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -16905,14 +19048,26 @@ func (recv *Menu) ReorderChild(child *Widget, position int32) {
 	return
 }
 
-// Reposition is a wrapper around the C function gtk_menu_reposition.
+// Repositions the menu according to its position function.
+/*
+
+C function : gtk_menu_reposition
+*/
 func (recv *Menu) Reposition() {
 	C.gtk_menu_reposition((*C.GtkMenu)(recv.native))
 
 	return
 }
 
-// SetAccelGroup is a wrapper around the C function gtk_menu_set_accel_group.
+// Set the #GtkAccelGroup which holds global accelerators for the
+// menu.  This accelerator group needs to also be added to all windows
+// that this menu is being used in with gtk_window_add_accel_group(),
+// in order for those windows to support all the accelerators
+// contained in this group.
+/*
+
+C function : gtk_menu_set_accel_group
+*/
 func (recv *Menu) SetAccelGroup(accelGroup *AccelGroup) {
 	c_accel_group := (*C.GtkAccelGroup)(C.NULL)
 	if accelGroup != nil {
@@ -16924,7 +19079,31 @@ func (recv *Menu) SetAccelGroup(accelGroup *AccelGroup) {
 	return
 }
 
-// SetAccelPath is a wrapper around the C function gtk_menu_set_accel_path.
+// Sets an accelerator path for this menu from which accelerator paths
+// for its immediate children, its menu items, can be constructed.
+// The main purpose of this function is to spare the programmer the
+// inconvenience of having to call gtk_menu_item_set_accel_path() on
+// each menu item that should support runtime user changable accelerators.
+// Instead, by just calling gtk_menu_set_accel_path() on their parent,
+// each menu item of this menu, that contains a label describing its
+// purpose, automatically gets an accel path assigned.
+//
+// For example, a menu containing menu items “New” and “Exit”, will, after
+// `gtk_menu_set_accel_path (menu, "<Gnumeric-Sheet>/File");` has been
+// called, assign its items the accel paths: `"<Gnumeric-Sheet>/File/New"`
+// and `"<Gnumeric-Sheet>/File/Exit"`.
+//
+// Assigning accel paths to menu items then enables the user to change
+// their accelerators at runtime. More details about accelerator paths
+// and their default setups can be found at gtk_accel_map_add_entry().
+//
+// Note that @accel_path string will be stored in a #GQuark. Therefore,
+// if you pass a static string, you can save some memory by interning
+// it first with g_intern_static_string().
+/*
+
+C function : gtk_menu_set_accel_path
+*/
 func (recv *Menu) SetAccelPath(accelPath string) {
 	c_accel_path := C.CString(accelPath)
 	defer C.free(unsafe.Pointer(c_accel_path))
@@ -16934,7 +19113,12 @@ func (recv *Menu) SetAccelPath(accelPath string) {
 	return
 }
 
-// SetActive is a wrapper around the C function gtk_menu_set_active.
+// Selects the specified menu item within the menu.  This is used by
+// the #GtkComboBox and should not be used by anyone else.
+/*
+
+C function : gtk_menu_set_active
+*/
 func (recv *Menu) SetActive(index uint32) {
 	c_index := (C.guint)(index)
 
@@ -16943,7 +19127,14 @@ func (recv *Menu) SetActive(index uint32) {
 	return
 }
 
-// SetTearoffState is a wrapper around the C function gtk_menu_set_tearoff_state.
+// Changes the tearoff state of the menu.  A menu is normally
+// displayed as drop down menu which persists as long as the menu is
+// active.  It can also be displayed as a tearoff menu which persists
+// until it is closed or reattached.
+/*
+
+C function : gtk_menu_set_tearoff_state
+*/
 func (recv *Menu) SetTearoffState(tornOff bool) {
 	c_torn_off :=
 		boolToGboolean(tornOff)
@@ -16953,7 +19144,16 @@ func (recv *Menu) SetTearoffState(tornOff bool) {
 	return
 }
 
-// SetTitle is a wrapper around the C function gtk_menu_set_title.
+// Sets the title string for the menu.
+//
+// The title is displayed when the menu is shown as a tearoff
+// menu. If @title is %NULL, the menu will see if it is attached
+// to a parent menu item, and if so it will try to use the same
+// text as that menu item’s label.
+/*
+
+C function : gtk_menu_set_title
+*/
 func (recv *Menu) SetTitle(title string) {
 	c_title := C.CString(title)
 	defer C.free(unsafe.Pointer(c_title))
@@ -17091,7 +19291,11 @@ func CastToMenuBar(object *gobject.Object) *MenuBar {
 	return MenuBarNewFromC(object.ToC())
 }
 
-// MenuBarNew is a wrapper around the C function gtk_menu_bar_new.
+// Creates a new #GtkMenuBar
+/*
+
+C function : gtk_menu_bar_new
+*/
 func MenuBarNew() *MenuBar {
 	retC := C.gtk_menu_bar_new()
 	retGo := MenuBarNewFromC(unsafe.Pointer(retC))
@@ -17553,7 +19757,11 @@ func menuitem_selectHandler(_ *C.GObject, data C.gpointer) {
 
 // Unsupported signal 'toggle-size-request' for MenuItem : unsupported parameter object : type gpointer :
 
-// MenuItemNew is a wrapper around the C function gtk_menu_item_new.
+// Creates a new #GtkMenuItem.
+/*
+
+C function : gtk_menu_item_new
+*/
 func MenuItemNew() *MenuItem {
 	retC := C.gtk_menu_item_new()
 	retGo := MenuItemNewFromC(unsafe.Pointer(retC))
@@ -17561,7 +19769,11 @@ func MenuItemNew() *MenuItem {
 	return retGo
 }
 
-// MenuItemNewWithLabel is a wrapper around the C function gtk_menu_item_new_with_label.
+// Creates a new #GtkMenuItem whose child is a #GtkLabel.
+/*
+
+C function : gtk_menu_item_new_with_label
+*/
 func MenuItemNewWithLabel(label string) *MenuItem {
 	c_label := C.CString(label)
 	defer C.free(unsafe.Pointer(c_label))
@@ -17572,7 +19784,14 @@ func MenuItemNewWithLabel(label string) *MenuItem {
 	return retGo
 }
 
-// MenuItemNewWithMnemonic is a wrapper around the C function gtk_menu_item_new_with_mnemonic.
+// Creates a new #GtkMenuItem containing a label.
+//
+// The label will be created using gtk_label_new_with_mnemonic(),
+// so underscores in @label indicate the mnemonic for the menu item.
+/*
+
+C function : gtk_menu_item_new_with_mnemonic
+*/
 func MenuItemNewWithMnemonic(label string) *MenuItem {
 	c_label := C.CString(label)
 	defer C.free(unsafe.Pointer(c_label))
@@ -17583,21 +19802,34 @@ func MenuItemNewWithMnemonic(label string) *MenuItem {
 	return retGo
 }
 
-// Activate is a wrapper around the C function gtk_menu_item_activate.
+// Emits the #GtkMenuItem::activate signal on the given item
+/*
+
+C function : gtk_menu_item_activate
+*/
 func (recv *MenuItem) Activate() {
 	C.gtk_menu_item_activate((*C.GtkMenuItem)(recv.native))
 
 	return
 }
 
-// Deselect is a wrapper around the C function gtk_menu_item_deselect.
+// Emits the #GtkMenuItem::deselect signal on the given item.
+/*
+
+C function : gtk_menu_item_deselect
+*/
 func (recv *MenuItem) Deselect() {
 	C.gtk_menu_item_deselect((*C.GtkMenuItem)(recv.native))
 
 	return
 }
 
-// GetRightJustified is a wrapper around the C function gtk_menu_item_get_right_justified.
+// Gets whether the menu item appears justified at the right
+// side of the menu bar.
+/*
+
+C function : gtk_menu_item_get_right_justified
+*/
 func (recv *MenuItem) GetRightJustified() bool {
 	retC := C.gtk_menu_item_get_right_justified((*C.GtkMenuItem)(recv.native))
 	retGo := retC == C.TRUE
@@ -17605,7 +19837,12 @@ func (recv *MenuItem) GetRightJustified() bool {
 	return retGo
 }
 
-// GetSubmenu is a wrapper around the C function gtk_menu_item_get_submenu.
+// Gets the submenu underneath this menu item, if any.
+// See gtk_menu_item_set_submenu().
+/*
+
+C function : gtk_menu_item_get_submenu
+*/
 func (recv *MenuItem) GetSubmenu() *Widget {
 	retC := C.gtk_menu_item_get_submenu((*C.GtkMenuItem)(recv.native))
 	var retGo (*Widget)
@@ -17618,14 +19855,40 @@ func (recv *MenuItem) GetSubmenu() *Widget {
 	return retGo
 }
 
-// Select is a wrapper around the C function gtk_menu_item_select.
+// Emits the #GtkMenuItem::select signal on the given item.
+/*
+
+C function : gtk_menu_item_select
+*/
 func (recv *MenuItem) Select() {
 	C.gtk_menu_item_select((*C.GtkMenuItem)(recv.native))
 
 	return
 }
 
-// SetAccelPath is a wrapper around the C function gtk_menu_item_set_accel_path.
+// Set the accelerator path on @menu_item, through which runtime
+// changes of the menu item’s accelerator caused by the user can be
+// identified and saved to persistent storage (see gtk_accel_map_save()
+// on this). To set up a default accelerator for this menu item, call
+// gtk_accel_map_add_entry() with the same @accel_path. See also
+// gtk_accel_map_add_entry() on the specifics of accelerator paths,
+// and gtk_menu_set_accel_path() for a more convenient variant of
+// this function.
+//
+// This function is basically a convenience wrapper that handles
+// calling gtk_widget_set_accel_path() with the appropriate accelerator
+// group for the menu item.
+//
+// Note that you do need to set an accelerator on the parent menu with
+// gtk_menu_set_accel_group() for this to work.
+//
+// Note that @accel_path string will be stored in a #GQuark.
+// Therefore, if you pass a static string, you can save some memory
+// by interning it first with g_intern_static_string().
+/*
+
+C function : gtk_menu_item_set_accel_path
+*/
 func (recv *MenuItem) SetAccelPath(accelPath string) {
 	c_accel_path := C.CString(accelPath)
 	defer C.free(unsafe.Pointer(c_accel_path))
@@ -17635,7 +19898,15 @@ func (recv *MenuItem) SetAccelPath(accelPath string) {
 	return
 }
 
-// SetRightJustified is a wrapper around the C function gtk_menu_item_set_right_justified.
+// Sets whether the menu item appears justified at the right
+// side of a menu bar. This was traditionally done for “Help”
+// menu items, but is now considered a bad idea. (If the widget
+// layout is reversed for a right-to-left language like Hebrew
+// or Arabic, right-justified-menu-items appear at the left.)
+/*
+
+C function : gtk_menu_item_set_right_justified
+*/
 func (recv *MenuItem) SetRightJustified(rightJustified bool) {
 	c_right_justified :=
 		boolToGboolean(rightJustified)
@@ -17645,7 +19916,12 @@ func (recv *MenuItem) SetRightJustified(rightJustified bool) {
 	return
 }
 
-// SetSubmenu is a wrapper around the C function gtk_menu_item_set_submenu.
+// Sets or replaces the menu item’s submenu, or removes it when a %NULL
+// submenu is passed.
+/*
+
+C function : gtk_menu_item_set_submenu
+*/
 func (recv *MenuItem) SetSubmenu(submenu *Menu) {
 	c_submenu := (*C.GtkWidget)(C.NULL)
 	if submenu != nil {
@@ -17657,7 +19933,11 @@ func (recv *MenuItem) SetSubmenu(submenu *Menu) {
 	return
 }
 
-// ToggleSizeAllocate is a wrapper around the C function gtk_menu_item_toggle_size_allocate.
+// Emits the #GtkMenuItem::toggle-size-allocate signal on the given item.
+/*
+
+C function : gtk_menu_item_toggle_size_allocate
+*/
 func (recv *MenuItem) ToggleSizeAllocate(allocation int32) {
 	c_allocation := (C.gint)(allocation)
 
@@ -17666,7 +19946,11 @@ func (recv *MenuItem) ToggleSizeAllocate(allocation int32) {
 	return
 }
 
-// ToggleSizeRequest is a wrapper around the C function gtk_menu_item_toggle_size_request.
+// Emits the #GtkMenuItem::toggle-size-request signal on the given item.
+/*
+
+C function : gtk_menu_item_toggle_size_request
+*/
 func (recv *MenuItem) ToggleSizeRequest(requisition int32) {
 	c_requisition := (C.gint)(requisition)
 
@@ -18042,7 +20326,11 @@ func menushell_selectionDoneHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// ActivateItem is a wrapper around the C function gtk_menu_shell_activate_item.
+// Activates the menu item within the menu shell.
+/*
+
+C function : gtk_menu_shell_activate_item
+*/
 func (recv *MenuShell) ActivateItem(menuItem *Widget, forceDeactivate bool) {
 	c_menu_item := (*C.GtkWidget)(C.NULL)
 	if menuItem != nil {
@@ -18057,7 +20345,12 @@ func (recv *MenuShell) ActivateItem(menuItem *Widget, forceDeactivate bool) {
 	return
 }
 
-// Append is a wrapper around the C function gtk_menu_shell_append.
+// Adds a new #GtkMenuItem to the end of the menu shell's
+// item list.
+/*
+
+C function : gtk_menu_shell_append
+*/
 func (recv *MenuShell) Append(child *MenuItem) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -18069,21 +20362,38 @@ func (recv *MenuShell) Append(child *MenuItem) {
 	return
 }
 
-// Deactivate is a wrapper around the C function gtk_menu_shell_deactivate.
+// Deactivates the menu shell.
+//
+// Typically this results in the menu shell being erased
+// from the screen.
+/*
+
+C function : gtk_menu_shell_deactivate
+*/
 func (recv *MenuShell) Deactivate() {
 	C.gtk_menu_shell_deactivate((*C.GtkMenuShell)(recv.native))
 
 	return
 }
 
-// Deselect is a wrapper around the C function gtk_menu_shell_deselect.
+// Deselects the currently selected item from the menu shell,
+// if any.
+/*
+
+C function : gtk_menu_shell_deselect
+*/
 func (recv *MenuShell) Deselect() {
 	C.gtk_menu_shell_deselect((*C.GtkMenuShell)(recv.native))
 
 	return
 }
 
-// Insert is a wrapper around the C function gtk_menu_shell_insert.
+// Adds a new #GtkMenuItem to the menu shell’s item list
+// at the position indicated by @position.
+/*
+
+C function : gtk_menu_shell_insert
+*/
 func (recv *MenuShell) Insert(child *Widget, position int32) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -18097,7 +20407,12 @@ func (recv *MenuShell) Insert(child *Widget, position int32) {
 	return
 }
 
-// Prepend is a wrapper around the C function gtk_menu_shell_prepend.
+// Adds a new #GtkMenuItem to the beginning of the menu shell's
+// item list.
+/*
+
+C function : gtk_menu_shell_prepend
+*/
 func (recv *MenuShell) Prepend(child *Widget) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -18109,7 +20424,11 @@ func (recv *MenuShell) Prepend(child *Widget) {
 	return
 }
 
-// SelectItem is a wrapper around the C function gtk_menu_shell_select_item.
+// Selects the menu item from the menu shell.
+/*
+
+C function : gtk_menu_shell_select_item
+*/
 func (recv *MenuShell) SelectItem(menuItem *Widget) {
 	c_menu_item := (*C.GtkWidget)(C.NULL)
 	if menuItem != nil {
@@ -18451,7 +20770,12 @@ func CastToMisc(object *gobject.Object) *Misc {
 	return MiscNewFromC(object.ToC())
 }
 
-// GetAlignment is a wrapper around the C function gtk_misc_get_alignment.
+// Gets the X and Y alignment of the widget within its allocation.
+// See gtk_misc_set_alignment().
+/*
+
+C function : gtk_misc_get_alignment
+*/
 func (recv *Misc) GetAlignment() (float32, float32) {
 	var c_xalign C.gfloat
 
@@ -18466,7 +20790,12 @@ func (recv *Misc) GetAlignment() (float32, float32) {
 	return xalign, yalign
 }
 
-// GetPadding is a wrapper around the C function gtk_misc_get_padding.
+// Gets the padding in the X and Y directions of the widget.
+// See gtk_misc_set_padding().
+/*
+
+C function : gtk_misc_get_padding
+*/
 func (recv *Misc) GetPadding() (int32, int32) {
 	var c_xpad C.gint
 
@@ -18481,7 +20810,11 @@ func (recv *Misc) GetPadding() (int32, int32) {
 	return xpad, ypad
 }
 
-// SetAlignment is a wrapper around the C function gtk_misc_set_alignment.
+// Sets the alignment of the widget.
+/*
+
+C function : gtk_misc_set_alignment
+*/
 func (recv *Misc) SetAlignment(xalign float32, yalign float32) {
 	c_xalign := (C.gfloat)(xalign)
 
@@ -18492,7 +20825,11 @@ func (recv *Misc) SetAlignment(xalign float32, yalign float32) {
 	return
 }
 
-// SetPadding is a wrapper around the C function gtk_misc_set_padding.
+// Sets the amount of space to add around the widget.
+/*
+
+C function : gtk_misc_set_padding
+*/
 func (recv *Misc) SetPadding(xpad int32, ypad int32) {
 	c_xpad := (C.gint)(xpad)
 
@@ -18750,7 +21087,11 @@ func notebook_selectPageHandler(_ *C.GObject, c_object C.gboolean, data C.gpoint
 
 // Unsupported signal 'switch-page' for Notebook : unsupported parameter page_num : type guint :
 
-// NotebookNew is a wrapper around the C function gtk_notebook_new.
+// Creates a new #GtkNotebook widget with no pages.
+/*
+
+C function : gtk_notebook_new
+*/
 func NotebookNew() *Notebook {
 	retC := C.gtk_notebook_new()
 	retGo := NotebookNewFromC(unsafe.Pointer(retC))
@@ -18758,7 +21099,11 @@ func NotebookNew() *Notebook {
 	return retGo
 }
 
-// AppendPage is a wrapper around the C function gtk_notebook_append_page.
+// Appends a page to @notebook.
+/*
+
+C function : gtk_notebook_append_page
+*/
 func (recv *Notebook) AppendPage(child *Widget, tabLabel *Widget) int32 {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -18776,7 +21121,12 @@ func (recv *Notebook) AppendPage(child *Widget, tabLabel *Widget) int32 {
 	return retGo
 }
 
-// AppendPageMenu is a wrapper around the C function gtk_notebook_append_page_menu.
+// Appends a page to @notebook, specifying the widget to use as the
+// label in the popup menu.
+/*
+
+C function : gtk_notebook_append_page_menu
+*/
 func (recv *Notebook) AppendPageMenu(child *Widget, tabLabel *Widget, menuLabel *Widget) int32 {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -18799,7 +21149,11 @@ func (recv *Notebook) AppendPageMenu(child *Widget, tabLabel *Widget, menuLabel 
 	return retGo
 }
 
-// GetCurrentPage is a wrapper around the C function gtk_notebook_get_current_page.
+// Returns the page number of the current page.
+/*
+
+C function : gtk_notebook_get_current_page
+*/
 func (recv *Notebook) GetCurrentPage() int32 {
 	retC := C.gtk_notebook_get_current_page((*C.GtkNotebook)(recv.native))
 	retGo := (int32)(retC)
@@ -18807,7 +21161,11 @@ func (recv *Notebook) GetCurrentPage() int32 {
 	return retGo
 }
 
-// GetMenuLabel is a wrapper around the C function gtk_notebook_get_menu_label.
+// Retrieves the menu label widget of the page containing @child.
+/*
+
+C function : gtk_notebook_get_menu_label
+*/
 func (recv *Notebook) GetMenuLabel(child *Widget) *Widget {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -18825,7 +21183,12 @@ func (recv *Notebook) GetMenuLabel(child *Widget) *Widget {
 	return retGo
 }
 
-// GetMenuLabelText is a wrapper around the C function gtk_notebook_get_menu_label_text.
+// Retrieves the text of the menu label for the page containing
+// @child.
+/*
+
+C function : gtk_notebook_get_menu_label_text
+*/
 func (recv *Notebook) GetMenuLabelText(child *Widget) string {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -18838,7 +21201,11 @@ func (recv *Notebook) GetMenuLabelText(child *Widget) string {
 	return retGo
 }
 
-// GetNthPage is a wrapper around the C function gtk_notebook_get_nth_page.
+// Returns the child widget contained in page number @page_num.
+/*
+
+C function : gtk_notebook_get_nth_page
+*/
 func (recv *Notebook) GetNthPage(pageNum int32) *Widget {
 	c_page_num := (C.gint)(pageNum)
 
@@ -18853,7 +21220,12 @@ func (recv *Notebook) GetNthPage(pageNum int32) *Widget {
 	return retGo
 }
 
-// GetScrollable is a wrapper around the C function gtk_notebook_get_scrollable.
+// Returns whether the tab label area has arrows for scrolling.
+// See gtk_notebook_set_scrollable().
+/*
+
+C function : gtk_notebook_get_scrollable
+*/
 func (recv *Notebook) GetScrollable() bool {
 	retC := C.gtk_notebook_get_scrollable((*C.GtkNotebook)(recv.native))
 	retGo := retC == C.TRUE
@@ -18861,7 +21233,12 @@ func (recv *Notebook) GetScrollable() bool {
 	return retGo
 }
 
-// GetShowBorder is a wrapper around the C function gtk_notebook_get_show_border.
+// Returns whether a bevel will be drawn around the notebook pages.
+// See gtk_notebook_set_show_border().
+/*
+
+C function : gtk_notebook_get_show_border
+*/
 func (recv *Notebook) GetShowBorder() bool {
 	retC := C.gtk_notebook_get_show_border((*C.GtkNotebook)(recv.native))
 	retGo := retC == C.TRUE
@@ -18869,7 +21246,12 @@ func (recv *Notebook) GetShowBorder() bool {
 	return retGo
 }
 
-// GetShowTabs is a wrapper around the C function gtk_notebook_get_show_tabs.
+// Returns whether the tabs of the notebook are shown.
+// See gtk_notebook_set_show_tabs().
+/*
+
+C function : gtk_notebook_get_show_tabs
+*/
 func (recv *Notebook) GetShowTabs() bool {
 	retC := C.gtk_notebook_get_show_tabs((*C.GtkNotebook)(recv.native))
 	retGo := retC == C.TRUE
@@ -18877,7 +21259,13 @@ func (recv *Notebook) GetShowTabs() bool {
 	return retGo
 }
 
-// GetTabLabel is a wrapper around the C function gtk_notebook_get_tab_label.
+// Returns the tab label widget for the page @child.
+// %NULL is returned if @child is not in @notebook or
+// if no tab label has specifically been set for @child.
+/*
+
+C function : gtk_notebook_get_tab_label
+*/
 func (recv *Notebook) GetTabLabel(child *Widget) *Widget {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -18895,7 +21283,12 @@ func (recv *Notebook) GetTabLabel(child *Widget) *Widget {
 	return retGo
 }
 
-// GetTabLabelText is a wrapper around the C function gtk_notebook_get_tab_label_text.
+// Retrieves the text of the tab label for the page containing
+// @child.
+/*
+
+C function : gtk_notebook_get_tab_label_text
+*/
 func (recv *Notebook) GetTabLabelText(child *Widget) string {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -18908,7 +21301,12 @@ func (recv *Notebook) GetTabLabelText(child *Widget) string {
 	return retGo
 }
 
-// GetTabPos is a wrapper around the C function gtk_notebook_get_tab_pos.
+// Gets the edge at which the tabs for switching pages in the
+// notebook are drawn.
+/*
+
+C function : gtk_notebook_get_tab_pos
+*/
 func (recv *Notebook) GetTabPos() PositionType {
 	retC := C.gtk_notebook_get_tab_pos((*C.GtkNotebook)(recv.native))
 	retGo := (PositionType)(retC)
@@ -18916,7 +21314,11 @@ func (recv *Notebook) GetTabPos() PositionType {
 	return retGo
 }
 
-// InsertPage is a wrapper around the C function gtk_notebook_insert_page.
+// Insert a page into @notebook at the given position.
+/*
+
+C function : gtk_notebook_insert_page
+*/
 func (recv *Notebook) InsertPage(child *Widget, tabLabel *Widget, position int32) int32 {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -18936,7 +21338,12 @@ func (recv *Notebook) InsertPage(child *Widget, tabLabel *Widget, position int32
 	return retGo
 }
 
-// InsertPageMenu is a wrapper around the C function gtk_notebook_insert_page_menu.
+// Insert a page into @notebook at the given position, specifying
+// the widget to use as the label in the popup menu.
+/*
+
+C function : gtk_notebook_insert_page_menu
+*/
 func (recv *Notebook) InsertPageMenu(child *Widget, tabLabel *Widget, menuLabel *Widget, position int32) int32 {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -18961,14 +21368,24 @@ func (recv *Notebook) InsertPageMenu(child *Widget, tabLabel *Widget, menuLabel 
 	return retGo
 }
 
-// NextPage is a wrapper around the C function gtk_notebook_next_page.
+// Switches to the next page. Nothing happens if the current page is
+// the last page.
+/*
+
+C function : gtk_notebook_next_page
+*/
 func (recv *Notebook) NextPage() {
 	C.gtk_notebook_next_page((*C.GtkNotebook)(recv.native))
 
 	return
 }
 
-// PageNum is a wrapper around the C function gtk_notebook_page_num.
+// Finds the index of the page which contains the given child
+// widget.
+/*
+
+C function : gtk_notebook_page_num
+*/
 func (recv *Notebook) PageNum(child *Widget) int32 {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -18981,21 +21398,35 @@ func (recv *Notebook) PageNum(child *Widget) int32 {
 	return retGo
 }
 
-// PopupDisable is a wrapper around the C function gtk_notebook_popup_disable.
+// Disables the popup menu.
+/*
+
+C function : gtk_notebook_popup_disable
+*/
 func (recv *Notebook) PopupDisable() {
 	C.gtk_notebook_popup_disable((*C.GtkNotebook)(recv.native))
 
 	return
 }
 
-// PopupEnable is a wrapper around the C function gtk_notebook_popup_enable.
+// Enables the popup menu: if the user clicks with the right
+// mouse button on the tab labels, a menu with all the pages
+// will be popped up.
+/*
+
+C function : gtk_notebook_popup_enable
+*/
 func (recv *Notebook) PopupEnable() {
 	C.gtk_notebook_popup_enable((*C.GtkNotebook)(recv.native))
 
 	return
 }
 
-// PrependPage is a wrapper around the C function gtk_notebook_prepend_page.
+// Prepends a page to @notebook.
+/*
+
+C function : gtk_notebook_prepend_page
+*/
 func (recv *Notebook) PrependPage(child *Widget, tabLabel *Widget) int32 {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -19013,7 +21444,12 @@ func (recv *Notebook) PrependPage(child *Widget, tabLabel *Widget) int32 {
 	return retGo
 }
 
-// PrependPageMenu is a wrapper around the C function gtk_notebook_prepend_page_menu.
+// Prepends a page to @notebook, specifying the widget to use as the
+// label in the popup menu.
+/*
+
+C function : gtk_notebook_prepend_page_menu
+*/
 func (recv *Notebook) PrependPageMenu(child *Widget, tabLabel *Widget, menuLabel *Widget) int32 {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -19036,14 +21472,24 @@ func (recv *Notebook) PrependPageMenu(child *Widget, tabLabel *Widget, menuLabel
 	return retGo
 }
 
-// PrevPage is a wrapper around the C function gtk_notebook_prev_page.
+// Switches to the previous page. Nothing happens if the current page
+// is the first page.
+/*
+
+C function : gtk_notebook_prev_page
+*/
 func (recv *Notebook) PrevPage() {
 	C.gtk_notebook_prev_page((*C.GtkNotebook)(recv.native))
 
 	return
 }
 
-// RemovePage is a wrapper around the C function gtk_notebook_remove_page.
+// Removes a page from the notebook given its index
+// in the notebook.
+/*
+
+C function : gtk_notebook_remove_page
+*/
 func (recv *Notebook) RemovePage(pageNum int32) {
 	c_page_num := (C.gint)(pageNum)
 
@@ -19052,7 +21498,14 @@ func (recv *Notebook) RemovePage(pageNum int32) {
 	return
 }
 
-// ReorderChild is a wrapper around the C function gtk_notebook_reorder_child.
+// Reorders the page containing @child, so that it appears in position
+// @position. If @position is greater than or equal to the number of
+// children in the list or negative, @child will be moved to the end
+// of the list.
+/*
+
+C function : gtk_notebook_reorder_child
+*/
 func (recv *Notebook) ReorderChild(child *Widget, position int32) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -19066,7 +21519,16 @@ func (recv *Notebook) ReorderChild(child *Widget, position int32) {
 	return
 }
 
-// SetCurrentPage is a wrapper around the C function gtk_notebook_set_current_page.
+// Switches to the page number @page_num.
+//
+// Note that due to historical reasons, GtkNotebook refuses
+// to switch to a page unless the child widget is visible.
+// Therefore, it is recommended to show child widgets before
+// adding them to a notebook.
+/*
+
+C function : gtk_notebook_set_current_page
+*/
 func (recv *Notebook) SetCurrentPage(pageNum int32) {
 	c_page_num := (C.gint)(pageNum)
 
@@ -19075,7 +21537,11 @@ func (recv *Notebook) SetCurrentPage(pageNum int32) {
 	return
 }
 
-// SetMenuLabel is a wrapper around the C function gtk_notebook_set_menu_label.
+// Changes the menu label for the page containing @child.
+/*
+
+C function : gtk_notebook_set_menu_label
+*/
 func (recv *Notebook) SetMenuLabel(child *Widget, menuLabel *Widget) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -19092,7 +21558,11 @@ func (recv *Notebook) SetMenuLabel(child *Widget, menuLabel *Widget) {
 	return
 }
 
-// SetMenuLabelText is a wrapper around the C function gtk_notebook_set_menu_label_text.
+// Creates a new label and sets it as the menu label of @child.
+/*
+
+C function : gtk_notebook_set_menu_label_text
+*/
 func (recv *Notebook) SetMenuLabelText(child *Widget, menuText string) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -19107,7 +21577,12 @@ func (recv *Notebook) SetMenuLabelText(child *Widget, menuText string) {
 	return
 }
 
-// SetScrollable is a wrapper around the C function gtk_notebook_set_scrollable.
+// Sets whether the tab label area will have arrows for
+// scrolling if there are too many tabs to fit in the area.
+/*
+
+C function : gtk_notebook_set_scrollable
+*/
 func (recv *Notebook) SetScrollable(scrollable bool) {
 	c_scrollable :=
 		boolToGboolean(scrollable)
@@ -19117,7 +21592,13 @@ func (recv *Notebook) SetScrollable(scrollable bool) {
 	return
 }
 
-// SetShowBorder is a wrapper around the C function gtk_notebook_set_show_border.
+// Sets whether a bevel will be drawn around the notebook pages.
+// This only has a visual effect when the tabs are not shown.
+// See gtk_notebook_set_show_tabs().
+/*
+
+C function : gtk_notebook_set_show_border
+*/
 func (recv *Notebook) SetShowBorder(showBorder bool) {
 	c_show_border :=
 		boolToGboolean(showBorder)
@@ -19127,7 +21608,11 @@ func (recv *Notebook) SetShowBorder(showBorder bool) {
 	return
 }
 
-// SetShowTabs is a wrapper around the C function gtk_notebook_set_show_tabs.
+// Sets whether to show the tabs for the notebook or not.
+/*
+
+C function : gtk_notebook_set_show_tabs
+*/
 func (recv *Notebook) SetShowTabs(showTabs bool) {
 	c_show_tabs :=
 		boolToGboolean(showTabs)
@@ -19137,7 +21622,13 @@ func (recv *Notebook) SetShowTabs(showTabs bool) {
 	return
 }
 
-// SetTabLabel is a wrapper around the C function gtk_notebook_set_tab_label.
+// Changes the tab label for @child.
+// If %NULL is specified for @tab_label, then the page will
+// have the label “page N”.
+/*
+
+C function : gtk_notebook_set_tab_label
+*/
 func (recv *Notebook) SetTabLabel(child *Widget, tabLabel *Widget) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -19154,7 +21645,12 @@ func (recv *Notebook) SetTabLabel(child *Widget, tabLabel *Widget) {
 	return
 }
 
-// SetTabLabelText is a wrapper around the C function gtk_notebook_set_tab_label_text.
+// Creates a new label and sets it as the tab label for the page
+// containing @child.
+/*
+
+C function : gtk_notebook_set_tab_label_text
+*/
 func (recv *Notebook) SetTabLabelText(child *Widget, tabText string) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -19169,7 +21665,12 @@ func (recv *Notebook) SetTabLabelText(child *Widget, tabText string) {
 	return
 }
 
-// SetTabPos is a wrapper around the C function gtk_notebook_set_tab_pos.
+// Sets the edge at which the tabs for switching pages in the
+// notebook are drawn.
+/*
+
+C function : gtk_notebook_set_tab_pos
+*/
 func (recv *Notebook) SetTabPos(pos PositionType) {
 	c_pos := (C.GtkPositionType)(pos)
 
@@ -19281,7 +21782,10 @@ func CastToNotebookPageAccessible(object *gobject.Object) *NotebookPageAccessibl
 	return NotebookPageAccessibleNewFromC(object.ToC())
 }
 
-// NotebookPageAccessibleNew is a wrapper around the C function gtk_notebook_page_accessible_new.
+/*
+
+C function : gtk_notebook_page_accessible_new
+*/
 func NotebookPageAccessibleNew(notebook *NotebookAccessible, child *Widget) *NotebookPageAccessible {
 	c_notebook := (*C.GtkNotebookAccessible)(C.NULL)
 	if notebook != nil {
@@ -19299,7 +21803,10 @@ func NotebookPageAccessibleNew(notebook *NotebookAccessible, child *Widget) *Not
 	return retGo
 }
 
-// Invalidate is a wrapper around the C function gtk_notebook_page_accessible_invalidate.
+/*
+
+C function : gtk_notebook_page_accessible_invalidate
+*/
 func (recv *NotebookPageAccessible) Invalidate() {
 	C.gtk_notebook_page_accessible_invalidate((*C.GtkNotebookPageAccessible)(recv.native))
 
@@ -19570,7 +22077,13 @@ func CastToPaned(object *gobject.Object) *Paned {
 	return PanedNewFromC(object.ToC())
 }
 
-// Add1 is a wrapper around the C function gtk_paned_add1.
+// Adds a child to the top or left pane with default parameters. This is
+// equivalent to
+// `gtk_paned_pack1 (paned, child, FALSE, TRUE)`.
+/*
+
+C function : gtk_paned_add1
+*/
 func (recv *Paned) Add1(child *Widget) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -19582,7 +22095,13 @@ func (recv *Paned) Add1(child *Widget) {
 	return
 }
 
-// Add2 is a wrapper around the C function gtk_paned_add2.
+// Adds a child to the bottom or right pane with default parameters. This
+// is equivalent to
+// `gtk_paned_pack2 (paned, child, TRUE, TRUE)`.
+/*
+
+C function : gtk_paned_add2
+*/
 func (recv *Paned) Add2(child *Widget) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -19594,7 +22113,11 @@ func (recv *Paned) Add2(child *Widget) {
 	return
 }
 
-// GetPosition is a wrapper around the C function gtk_paned_get_position.
+// Obtains the position of the divider between the two panes.
+/*
+
+C function : gtk_paned_get_position
+*/
 func (recv *Paned) GetPosition() int32 {
 	retC := C.gtk_paned_get_position((*C.GtkPaned)(recv.native))
 	retGo := (int32)(retC)
@@ -19602,7 +22125,11 @@ func (recv *Paned) GetPosition() int32 {
 	return retGo
 }
 
-// Pack1 is a wrapper around the C function gtk_paned_pack1.
+// Adds a child to the top or left pane.
+/*
+
+C function : gtk_paned_pack1
+*/
 func (recv *Paned) Pack1(child *Widget, resize bool, shrink bool) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -19620,7 +22147,11 @@ func (recv *Paned) Pack1(child *Widget, resize bool, shrink bool) {
 	return
 }
 
-// Pack2 is a wrapper around the C function gtk_paned_pack2.
+// Adds a child to the bottom or right pane.
+/*
+
+C function : gtk_paned_pack2
+*/
 func (recv *Paned) Pack2(child *Widget, resize bool, shrink bool) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -19638,7 +22169,11 @@ func (recv *Paned) Pack2(child *Widget, resize bool, shrink bool) {
 	return
 }
 
-// SetPosition is a wrapper around the C function gtk_paned_set_position.
+// Sets the position of the divider between the two panes.
+/*
+
+C function : gtk_paned_set_position
+*/
 func (recv *Paned) SetPosition(position int32) {
 	c_position := (C.gint)(position)
 
@@ -19835,7 +22370,11 @@ func placessidebar_showConnectToServerHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// GetShowConnectToServer is a wrapper around the C function gtk_places_sidebar_get_show_connect_to_server.
+// Returns the value previously set with gtk_places_sidebar_set_show_connect_to_server()
+/*
+
+C function : gtk_places_sidebar_get_show_connect_to_server
+*/
 func (recv *PlacesSidebar) GetShowConnectToServer() bool {
 	retC := C.gtk_places_sidebar_get_show_connect_to_server((*C.GtkPlacesSidebar)(recv.native))
 	retGo := retC == C.TRUE
@@ -19968,7 +22507,11 @@ func popover_closedHandler(_ *C.GObject, data C.gpointer) {
 
 // Unsupported : gtk_popover_get_pointing_to : unsupported parameter rect : Blacklisted record : GdkRectangle
 
-// GetPosition is a wrapper around the C function gtk_popover_get_position.
+// Returns the preferred position of @popover.
+/*
+
+C function : gtk_popover_get_position
+*/
 func (recv *Popover) GetPosition() PositionType {
 	retC := C.gtk_popover_get_position((*C.GtkPopover)(recv.native))
 	retGo := (PositionType)(retC)
@@ -20253,7 +22796,11 @@ func CastToProgressBar(object *gobject.Object) *ProgressBar {
 	return ProgressBarNewFromC(object.ToC())
 }
 
-// ProgressBarNew is a wrapper around the C function gtk_progress_bar_new.
+// Creates a new #GtkProgressBar.
+/*
+
+C function : gtk_progress_bar_new
+*/
 func ProgressBarNew() *ProgressBar {
 	retC := C.gtk_progress_bar_new()
 	retGo := ProgressBarNewFromC(unsafe.Pointer(retC))
@@ -20261,7 +22808,11 @@ func ProgressBarNew() *ProgressBar {
 	return retGo
 }
 
-// GetFraction is a wrapper around the C function gtk_progress_bar_get_fraction.
+// Returns the current fraction of the task that’s been completed.
+/*
+
+C function : gtk_progress_bar_get_fraction
+*/
 func (recv *ProgressBar) GetFraction() float64 {
 	retC := C.gtk_progress_bar_get_fraction((*C.GtkProgressBar)(recv.native))
 	retGo := (float64)(retC)
@@ -20269,7 +22820,11 @@ func (recv *ProgressBar) GetFraction() float64 {
 	return retGo
 }
 
-// GetInverted is a wrapper around the C function gtk_progress_bar_get_inverted.
+// Gets the value set by gtk_progress_bar_set_inverted().
+/*
+
+C function : gtk_progress_bar_get_inverted
+*/
 func (recv *ProgressBar) GetInverted() bool {
 	retC := C.gtk_progress_bar_get_inverted((*C.GtkProgressBar)(recv.native))
 	retGo := retC == C.TRUE
@@ -20277,7 +22832,11 @@ func (recv *ProgressBar) GetInverted() bool {
 	return retGo
 }
 
-// GetPulseStep is a wrapper around the C function gtk_progress_bar_get_pulse_step.
+// Retrieves the pulse step set with gtk_progress_bar_set_pulse_step().
+/*
+
+C function : gtk_progress_bar_get_pulse_step
+*/
 func (recv *ProgressBar) GetPulseStep() float64 {
 	retC := C.gtk_progress_bar_get_pulse_step((*C.GtkProgressBar)(recv.native))
 	retGo := (float64)(retC)
@@ -20285,7 +22844,14 @@ func (recv *ProgressBar) GetPulseStep() float64 {
 	return retGo
 }
 
-// GetText is a wrapper around the C function gtk_progress_bar_get_text.
+// Retrieves the text that is displayed with the progress bar,
+// if any, otherwise %NULL. The return value is a reference
+// to the text, not a copy of it, so will become invalid
+// if you change the text in the progress bar.
+/*
+
+C function : gtk_progress_bar_get_text
+*/
 func (recv *ProgressBar) GetText() string {
 	retC := C.gtk_progress_bar_get_text((*C.GtkProgressBar)(recv.native))
 	retGo := C.GoString(retC)
@@ -20293,14 +22859,28 @@ func (recv *ProgressBar) GetText() string {
 	return retGo
 }
 
-// Pulse is a wrapper around the C function gtk_progress_bar_pulse.
+// Indicates that some progress has been made, but you don’t know how much.
+// Causes the progress bar to enter “activity mode,” where a block
+// bounces back and forth. Each call to gtk_progress_bar_pulse()
+// causes the block to move by a little bit (the amount of movement
+// per pulse is determined by gtk_progress_bar_set_pulse_step()).
+/*
+
+C function : gtk_progress_bar_pulse
+*/
 func (recv *ProgressBar) Pulse() {
 	C.gtk_progress_bar_pulse((*C.GtkProgressBar)(recv.native))
 
 	return
 }
 
-// SetFraction is a wrapper around the C function gtk_progress_bar_set_fraction.
+// Causes the progress bar to “fill in” the given fraction
+// of the bar. The fraction should be between 0.0 and 1.0,
+// inclusive.
+/*
+
+C function : gtk_progress_bar_set_fraction
+*/
 func (recv *ProgressBar) SetFraction(fraction float64) {
 	c_fraction := (C.gdouble)(fraction)
 
@@ -20309,7 +22889,12 @@ func (recv *ProgressBar) SetFraction(fraction float64) {
 	return
 }
 
-// SetInverted is a wrapper around the C function gtk_progress_bar_set_inverted.
+// Progress bars normally grow from top to bottom or left to right.
+// Inverted progress bars grow in the opposite direction.
+/*
+
+C function : gtk_progress_bar_set_inverted
+*/
 func (recv *ProgressBar) SetInverted(inverted bool) {
 	c_inverted :=
 		boolToGboolean(inverted)
@@ -20319,7 +22904,12 @@ func (recv *ProgressBar) SetInverted(inverted bool) {
 	return
 }
 
-// SetPulseStep is a wrapper around the C function gtk_progress_bar_set_pulse_step.
+// Sets the fraction of total progress bar length to move the
+// bouncing block for each call to gtk_progress_bar_pulse().
+/*
+
+C function : gtk_progress_bar_set_pulse_step
+*/
 func (recv *ProgressBar) SetPulseStep(fraction float64) {
 	c_fraction := (C.gdouble)(fraction)
 
@@ -20328,7 +22918,20 @@ func (recv *ProgressBar) SetPulseStep(fraction float64) {
 	return
 }
 
-// SetText is a wrapper around the C function gtk_progress_bar_set_text.
+// Causes the given @text to appear next to the progress bar.
+//
+// If @text is %NULL and #GtkProgressBar:show-text is %TRUE, the current
+// value of #GtkProgressBar:fraction will be displayed as a percentage.
+//
+// If @text is non-%NULL and #GtkProgressBar:show-text is %TRUE, the text
+// will be displayed. In this case, it will not display the progress
+// percentage. If @text is the empty string, the progress bar will still
+// be styled and sized suitably for containing text, as long as
+// #GtkProgressBar:show-text is %TRUE.
+/*
+
+C function : gtk_progress_bar_set_text
+*/
 func (recv *ProgressBar) SetText(text string) {
 	c_text := C.CString(text)
 	defer C.free(unsafe.Pointer(c_text))
@@ -20525,7 +23128,12 @@ func CastToRadioButton(object *gobject.Object) *RadioButton {
 	return RadioButtonNewFromC(object.ToC())
 }
 
-// RadioButtonNew is a wrapper around the C function gtk_radio_button_new.
+// Creates a new #GtkRadioButton. To be of any practical value, a widget should
+// then be packed into the radio button.
+/*
+
+C function : gtk_radio_button_new
+*/
 func RadioButtonNew(group *glib.SList) *RadioButton {
 	c_group := (*C.GSList)(C.NULL)
 	if group != nil {
@@ -20538,7 +23146,13 @@ func RadioButtonNew(group *glib.SList) *RadioButton {
 	return retGo
 }
 
-// RadioButtonNewFromWidget is a wrapper around the C function gtk_radio_button_new_from_widget.
+// Creates a new #GtkRadioButton, adding it to the same group as
+// @radio_group_member. As with gtk_radio_button_new(), a widget
+// should be packed into the radio button.
+/*
+
+C function : gtk_radio_button_new_from_widget
+*/
 func RadioButtonNewFromWidget(radioGroupMember *RadioButton) *RadioButton {
 	c_radio_group_member := (*C.GtkRadioButton)(C.NULL)
 	if radioGroupMember != nil {
@@ -20551,7 +23165,11 @@ func RadioButtonNewFromWidget(radioGroupMember *RadioButton) *RadioButton {
 	return retGo
 }
 
-// RadioButtonNewWithLabel is a wrapper around the C function gtk_radio_button_new_with_label.
+// Creates a new #GtkRadioButton with a text label.
+/*
+
+C function : gtk_radio_button_new_with_label
+*/
 func RadioButtonNewWithLabel(group *glib.SList, label string) *RadioButton {
 	c_group := (*C.GSList)(C.NULL)
 	if group != nil {
@@ -20567,7 +23185,12 @@ func RadioButtonNewWithLabel(group *glib.SList, label string) *RadioButton {
 	return retGo
 }
 
-// RadioButtonNewWithLabelFromWidget is a wrapper around the C function gtk_radio_button_new_with_label_from_widget.
+// Creates a new #GtkRadioButton with a text label, adding it to
+// the same group as @radio_group_member.
+/*
+
+C function : gtk_radio_button_new_with_label_from_widget
+*/
 func RadioButtonNewWithLabelFromWidget(radioGroupMember *RadioButton, label string) *RadioButton {
 	c_radio_group_member := (*C.GtkRadioButton)(C.NULL)
 	if radioGroupMember != nil {
@@ -20583,7 +23206,14 @@ func RadioButtonNewWithLabelFromWidget(radioGroupMember *RadioButton, label stri
 	return retGo
 }
 
-// RadioButtonNewWithMnemonic is a wrapper around the C function gtk_radio_button_new_with_mnemonic.
+// Creates a new #GtkRadioButton containing a label, adding it to the same
+// group as @group. The label will be created using
+// gtk_label_new_with_mnemonic(), so underscores in @label indicate the
+// mnemonic for the button.
+/*
+
+C function : gtk_radio_button_new_with_mnemonic
+*/
 func RadioButtonNewWithMnemonic(group *glib.SList, label string) *RadioButton {
 	c_group := (*C.GSList)(C.NULL)
 	if group != nil {
@@ -20599,7 +23229,13 @@ func RadioButtonNewWithMnemonic(group *glib.SList, label string) *RadioButton {
 	return retGo
 }
 
-// RadioButtonNewWithMnemonicFromWidget is a wrapper around the C function gtk_radio_button_new_with_mnemonic_from_widget.
+// Creates a new #GtkRadioButton containing a label. The label
+// will be created using gtk_label_new_with_mnemonic(), so underscores
+// in @label indicate the mnemonic for the button.
+/*
+
+C function : gtk_radio_button_new_with_mnemonic_from_widget
+*/
 func RadioButtonNewWithMnemonicFromWidget(radioGroupMember *RadioButton, label string) *RadioButton {
 	c_radio_group_member := (*C.GtkRadioButton)(C.NULL)
 	if radioGroupMember != nil {
@@ -20615,7 +23251,11 @@ func RadioButtonNewWithMnemonicFromWidget(radioGroupMember *RadioButton, label s
 	return retGo
 }
 
-// GetGroup is a wrapper around the C function gtk_radio_button_get_group.
+// Retrieves the group assigned to a radio button.
+/*
+
+C function : gtk_radio_button_get_group
+*/
 func (recv *RadioButton) GetGroup() *glib.SList {
 	retC := C.gtk_radio_button_get_group((*C.GtkRadioButton)(recv.native))
 	retGo := glib.SListNewFromC(unsafe.Pointer(retC))
@@ -20623,7 +23263,14 @@ func (recv *RadioButton) GetGroup() *glib.SList {
 	return retGo
 }
 
-// SetGroup is a wrapper around the C function gtk_radio_button_set_group.
+// Sets a #GtkRadioButton’s group. It should be noted that this does not change
+// the layout of your interface in any way, so if you are changing the group,
+// it is likely you will need to re-arrange the user interface to reflect these
+// changes.
+/*
+
+C function : gtk_radio_button_set_group
+*/
 func (recv *RadioButton) SetGroup(group *glib.SList) {
 	c_group := (*C.GSList)(C.NULL)
 	if group != nil {
@@ -20850,7 +23497,11 @@ func radiomenuitem_groupChangedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// RadioMenuItemNew is a wrapper around the C function gtk_radio_menu_item_new.
+// Creates a new #GtkRadioMenuItem.
+/*
+
+C function : gtk_radio_menu_item_new
+*/
 func RadioMenuItemNew(group *glib.SList) *RadioMenuItem {
 	c_group := (*C.GSList)(C.NULL)
 	if group != nil {
@@ -20863,7 +23514,11 @@ func RadioMenuItemNew(group *glib.SList) *RadioMenuItem {
 	return retGo
 }
 
-// RadioMenuItemNewWithLabel is a wrapper around the C function gtk_radio_menu_item_new_with_label.
+// Creates a new #GtkRadioMenuItem whose child is a simple #GtkLabel.
+/*
+
+C function : gtk_radio_menu_item_new_with_label
+*/
 func RadioMenuItemNewWithLabel(group *glib.SList, label string) *RadioMenuItem {
 	c_group := (*C.GSList)(C.NULL)
 	if group != nil {
@@ -20879,7 +23534,13 @@ func RadioMenuItemNewWithLabel(group *glib.SList, label string) *RadioMenuItem {
 	return retGo
 }
 
-// RadioMenuItemNewWithMnemonic is a wrapper around the C function gtk_radio_menu_item_new_with_mnemonic.
+// Creates a new #GtkRadioMenuItem containing a label. The label
+// will be created using gtk_label_new_with_mnemonic(), so underscores
+// in @label indicate the mnemonic for the menu item.
+/*
+
+C function : gtk_radio_menu_item_new_with_mnemonic
+*/
 func RadioMenuItemNewWithMnemonic(group *glib.SList, label string) *RadioMenuItem {
 	c_group := (*C.GSList)(C.NULL)
 	if group != nil {
@@ -20895,7 +23556,12 @@ func RadioMenuItemNewWithMnemonic(group *glib.SList, label string) *RadioMenuIte
 	return retGo
 }
 
-// GetGroup is a wrapper around the C function gtk_radio_menu_item_get_group.
+// Returns the group to which the radio menu item belongs, as a #GList of
+// #GtkRadioMenuItem. The list belongs to GTK+ and should not be freed.
+/*
+
+C function : gtk_radio_menu_item_get_group
+*/
 func (recv *RadioMenuItem) GetGroup() *glib.SList {
 	retC := C.gtk_radio_menu_item_get_group((*C.GtkRadioMenuItem)(recv.native))
 	retGo := glib.SListNewFromC(unsafe.Pointer(retC))
@@ -20903,7 +23569,11 @@ func (recv *RadioMenuItem) GetGroup() *glib.SList {
 	return retGo
 }
 
-// SetGroup is a wrapper around the C function gtk_radio_menu_item_set_group.
+// Sets the group of a radio menu item, or changes it.
+/*
+
+C function : gtk_radio_menu_item_set_group
+*/
 func (recv *RadioMenuItem) SetGroup(group *glib.SList) {
 	c_group := (*C.GSList)(C.NULL)
 	if group != nil {
@@ -21202,7 +23872,14 @@ func range_valueChangedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// GetAdjustment is a wrapper around the C function gtk_range_get_adjustment.
+// Get the #GtkAdjustment which is the “model” object for #GtkRange.
+// See gtk_range_set_adjustment() for details.
+// The return value does not have a reference added, so should not
+// be unreferenced.
+/*
+
+C function : gtk_range_get_adjustment
+*/
 func (recv *Range) GetAdjustment() *Adjustment {
 	retC := C.gtk_range_get_adjustment((*C.GtkRange)(recv.native))
 	retGo := AdjustmentNewFromC(unsafe.Pointer(retC))
@@ -21210,7 +23887,11 @@ func (recv *Range) GetAdjustment() *Adjustment {
 	return retGo
 }
 
-// GetInverted is a wrapper around the C function gtk_range_get_inverted.
+// Gets the value set by gtk_range_set_inverted().
+/*
+
+C function : gtk_range_get_inverted
+*/
 func (recv *Range) GetInverted() bool {
 	retC := C.gtk_range_get_inverted((*C.GtkRange)(recv.native))
 	retGo := retC == C.TRUE
@@ -21218,7 +23899,11 @@ func (recv *Range) GetInverted() bool {
 	return retGo
 }
 
-// GetValue is a wrapper around the C function gtk_range_get_value.
+// Gets the current value of the range.
+/*
+
+C function : gtk_range_get_value
+*/
 func (recv *Range) GetValue() float64 {
 	retC := C.gtk_range_get_value((*C.GtkRange)(recv.native))
 	retGo := (float64)(retC)
@@ -21226,7 +23911,17 @@ func (recv *Range) GetValue() float64 {
 	return retGo
 }
 
-// SetAdjustment is a wrapper around the C function gtk_range_set_adjustment.
+// Sets the adjustment to be used as the “model” object for this range
+// widget. The adjustment indicates the current range value, the
+// minimum and maximum range values, the step/page increments used
+// for keybindings and scrolling, and the page size. The page size
+// is normally 0 for #GtkScale and nonzero for #GtkScrollbar, and
+// indicates the size of the visible area of the widget being scrolled.
+// The page size affects the size of the scrollbar slider.
+/*
+
+C function : gtk_range_set_adjustment
+*/
 func (recv *Range) SetAdjustment(adjustment *Adjustment) {
 	c_adjustment := (*C.GtkAdjustment)(C.NULL)
 	if adjustment != nil {
@@ -21238,7 +23933,14 @@ func (recv *Range) SetAdjustment(adjustment *Adjustment) {
 	return
 }
 
-// SetIncrements is a wrapper around the C function gtk_range_set_increments.
+// Sets the step and page sizes for the range.
+// The step size is used when the user clicks the #GtkScrollbar
+// arrows or moves #GtkScale via arrow keys. The page size
+// is used for example when moving via Page Up or Page Down keys.
+/*
+
+C function : gtk_range_set_increments
+*/
 func (recv *Range) SetIncrements(step float64, page float64) {
 	c_step := (C.gdouble)(step)
 
@@ -21249,7 +23951,14 @@ func (recv *Range) SetIncrements(step float64, page float64) {
 	return
 }
 
-// SetInverted is a wrapper around the C function gtk_range_set_inverted.
+// Ranges normally move from lower to higher values as the
+// slider moves from top to bottom or left to right. Inverted
+// ranges have higher values at the top or on the right rather than
+// on the bottom or left.
+/*
+
+C function : gtk_range_set_inverted
+*/
 func (recv *Range) SetInverted(setting bool) {
 	c_setting :=
 		boolToGboolean(setting)
@@ -21259,7 +23968,13 @@ func (recv *Range) SetInverted(setting bool) {
 	return
 }
 
-// SetRange is a wrapper around the C function gtk_range_set_range.
+// Sets the allowable values in the #GtkRange, and clamps the range
+// value to be between @min and @max. (If the range has a non-zero
+// page size, it is clamped between @min and @max - page-size.)
+/*
+
+C function : gtk_range_set_range
+*/
 func (recv *Range) SetRange(min float64, max float64) {
 	c_min := (C.gdouble)(min)
 
@@ -21270,7 +23985,14 @@ func (recv *Range) SetRange(min float64, max float64) {
 	return
 }
 
-// SetValue is a wrapper around the C function gtk_range_set_value.
+// Sets the current value of the range; if the value is outside the
+// minimum or maximum range values, it will be clamped to fit inside
+// them. The range emits the #GtkRange::value-changed signal if the
+// value changes.
+/*
+
+C function : gtk_range_set_value
+*/
 func (recv *Range) SetValue(value float64) {
 	c_value := (C.gdouble)(value)
 
@@ -21406,7 +24128,12 @@ func CastToRcStyle(object *gobject.Object) *RcStyle {
 	return RcStyleNewFromC(object.ToC())
 }
 
-// RcStyleNew is a wrapper around the C function gtk_rc_style_new.
+// Creates a new #GtkRcStyle with no fields set and
+// a reference count of 1.
+/*
+
+C function : gtk_rc_style_new
+*/
 func RcStyleNew() *RcStyle {
 	retC := C.gtk_rc_style_new()
 	retGo := RcStyleNewFromC(unsafe.Pointer(retC))
@@ -21414,7 +24141,13 @@ func RcStyleNew() *RcStyle {
 	return retGo
 }
 
-// Copy is a wrapper around the C function gtk_rc_style_copy.
+// Makes a copy of the specified #GtkRcStyle. This function
+// will correctly copy an RC style that is a member of a class
+// derived from #GtkRcStyle.
+/*
+
+C function : gtk_rc_style_copy
+*/
 func (recv *RcStyle) Copy() *RcStyle {
 	retC := C.gtk_rc_style_copy((*C.GtkRcStyle)(recv.native))
 	retGo := RcStyleNewFromC(unsafe.Pointer(retC))
@@ -21789,7 +24522,10 @@ func CastToRendererCellAccessible(object *gobject.Object) *RendererCellAccessibl
 	return RendererCellAccessibleNewFromC(object.ToC())
 }
 
-// RendererCellAccessibleNew is a wrapper around the C function gtk_renderer_cell_accessible_new.
+/*
+
+C function : gtk_renderer_cell_accessible_new
+*/
 func RendererCellAccessibleNew(renderer *CellRenderer) *RendererCellAccessible {
 	c_renderer := (*C.GtkCellRenderer)(C.NULL)
 	if renderer != nil {
@@ -21926,7 +24662,11 @@ func CastToScale(object *gobject.Object) *Scale {
 
 // Unsupported signal 'format-value' for Scale : unsupported parameter value : type gdouble :
 
-// GetDigits is a wrapper around the C function gtk_scale_get_digits.
+// Gets the number of decimal places that are displayed in the value.
+/*
+
+C function : gtk_scale_get_digits
+*/
 func (recv *Scale) GetDigits() int32 {
 	retC := C.gtk_scale_get_digits((*C.GtkScale)(recv.native))
 	retGo := (int32)(retC)
@@ -21934,7 +24674,12 @@ func (recv *Scale) GetDigits() int32 {
 	return retGo
 }
 
-// GetDrawValue is a wrapper around the C function gtk_scale_get_draw_value.
+// Returns whether the current value is displayed as a string
+// next to the slider.
+/*
+
+C function : gtk_scale_get_draw_value
+*/
 func (recv *Scale) GetDrawValue() bool {
 	retC := C.gtk_scale_get_draw_value((*C.GtkScale)(recv.native))
 	retGo := retC == C.TRUE
@@ -21942,7 +24687,11 @@ func (recv *Scale) GetDrawValue() bool {
 	return retGo
 }
 
-// GetValuePos is a wrapper around the C function gtk_scale_get_value_pos.
+// Gets the position in which the current value is displayed.
+/*
+
+C function : gtk_scale_get_value_pos
+*/
 func (recv *Scale) GetValuePos() PositionType {
 	retC := C.gtk_scale_get_value_pos((*C.GtkScale)(recv.native))
 	retGo := (PositionType)(retC)
@@ -21950,7 +24699,20 @@ func (recv *Scale) GetValuePos() PositionType {
 	return retGo
 }
 
-// SetDigits is a wrapper around the C function gtk_scale_set_digits.
+// Sets the number of decimal places that are displayed in the value. Also
+// causes the value of the adjustment to be rounded to this number of digits,
+// so the retrieved value matches the displayed one, if #GtkScale:draw-value is
+// %TRUE when the value changes. If you want to enforce rounding the value when
+// #GtkScale:draw-value is %FALSE, you can set #GtkRange:round-digits instead.
+//
+// Note that rounding to a small number of digits can interfere with
+// the smooth autoscrolling that is built into #GtkScale. As an alternative,
+// you can use the #GtkScale::format-value signal to format the displayed
+// value yourself.
+/*
+
+C function : gtk_scale_set_digits
+*/
 func (recv *Scale) SetDigits(digits int32) {
 	c_digits := (C.gint)(digits)
 
@@ -21959,7 +24721,12 @@ func (recv *Scale) SetDigits(digits int32) {
 	return
 }
 
-// SetDrawValue is a wrapper around the C function gtk_scale_set_draw_value.
+// Specifies whether the current value is displayed as a string next
+// to the slider.
+/*
+
+C function : gtk_scale_set_draw_value
+*/
 func (recv *Scale) SetDrawValue(drawValue bool) {
 	c_draw_value :=
 		boolToGboolean(drawValue)
@@ -21969,7 +24736,11 @@ func (recv *Scale) SetDrawValue(drawValue bool) {
 	return
 }
 
-// SetValuePos is a wrapper around the C function gtk_scale_set_value_pos.
+// Sets the position in which the current value is displayed.
+/*
+
+C function : gtk_scale_set_value_pos
+*/
 func (recv *Scale) SetValuePos(pos PositionType) {
 	c_pos := (C.GtkPositionType)(pos)
 
@@ -22331,7 +25102,16 @@ func CastToScrolledWindow(object *gobject.Object) *ScrolledWindow {
 
 // Unsupported signal 'scroll-child' for ScrolledWindow : unsupported parameter scroll : type ScrollType :
 
-// ScrolledWindowNew is a wrapper around the C function gtk_scrolled_window_new.
+// Creates a new scrolled window.
+//
+// The two arguments are the scrolled window’s adjustments; these will be
+// shared with the scrollbars and the child widget to keep the bars in sync
+// with the child. Usually you want to pass %NULL for the adjustments, which
+// will cause the scrolled window to create them for you.
+/*
+
+C function : gtk_scrolled_window_new
+*/
 func ScrolledWindowNew(hadjustment *Adjustment, vadjustment *Adjustment) *ScrolledWindow {
 	c_hadjustment := (*C.GtkAdjustment)(C.NULL)
 	if hadjustment != nil {
@@ -22349,7 +25129,26 @@ func ScrolledWindowNew(hadjustment *Adjustment, vadjustment *Adjustment) *Scroll
 	return retGo
 }
 
-// AddWithViewport is a wrapper around the C function gtk_scrolled_window_add_with_viewport.
+// Used to add children without native scrolling capabilities. This
+// is simply a convenience function; it is equivalent to adding the
+// unscrollable child to a viewport, then adding the viewport to the
+// scrolled window. If a child has native scrolling, use
+// gtk_container_add() instead of this function.
+//
+// The viewport scrolls the child by moving its #GdkWindow, and takes
+// the size of the child to be the size of its toplevel #GdkWindow.
+// This will be very wrong for most widgets that support native scrolling;
+// for example, if you add a widget such as #GtkTreeView with a viewport,
+// the whole widget will scroll, including the column headings. Thus,
+// widgets with native scrolling support should not be used with the
+// #GtkViewport proxy.
+//
+// A widget supports scrolling natively if it implements the
+// #GtkScrollable interface.
+/*
+
+C function : gtk_scrolled_window_add_with_viewport
+*/
 func (recv *ScrolledWindow) AddWithViewport(child *Widget) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -22361,7 +25160,13 @@ func (recv *ScrolledWindow) AddWithViewport(child *Widget) {
 	return
 }
 
-// GetHadjustment is a wrapper around the C function gtk_scrolled_window_get_hadjustment.
+// Returns the horizontal scrollbar’s adjustment, used to connect the
+// horizontal scrollbar to the child widget’s horizontal scroll
+// functionality.
+/*
+
+C function : gtk_scrolled_window_get_hadjustment
+*/
 func (recv *ScrolledWindow) GetHadjustment() *Adjustment {
 	retC := C.gtk_scrolled_window_get_hadjustment((*C.GtkScrolledWindow)(recv.native))
 	retGo := AdjustmentNewFromC(unsafe.Pointer(retC))
@@ -22369,7 +25174,12 @@ func (recv *ScrolledWindow) GetHadjustment() *Adjustment {
 	return retGo
 }
 
-// GetPlacement is a wrapper around the C function gtk_scrolled_window_get_placement.
+// Gets the placement of the contents with respect to the scrollbars
+// for the scrolled window. See gtk_scrolled_window_set_placement().
+/*
+
+C function : gtk_scrolled_window_get_placement
+*/
 func (recv *ScrolledWindow) GetPlacement() CornerType {
 	retC := C.gtk_scrolled_window_get_placement((*C.GtkScrolledWindow)(recv.native))
 	retGo := (CornerType)(retC)
@@ -22379,7 +25189,12 @@ func (recv *ScrolledWindow) GetPlacement() CornerType {
 
 // Unsupported : gtk_scrolled_window_get_policy : unsupported parameter hscrollbar_policy : GtkPolicyType* with indirection level of 1
 
-// GetShadowType is a wrapper around the C function gtk_scrolled_window_get_shadow_type.
+// Gets the shadow type of the scrolled window. See
+// gtk_scrolled_window_set_shadow_type().
+/*
+
+C function : gtk_scrolled_window_get_shadow_type
+*/
 func (recv *ScrolledWindow) GetShadowType() ShadowType {
 	retC := C.gtk_scrolled_window_get_shadow_type((*C.GtkScrolledWindow)(recv.native))
 	retGo := (ShadowType)(retC)
@@ -22387,7 +25202,12 @@ func (recv *ScrolledWindow) GetShadowType() ShadowType {
 	return retGo
 }
 
-// GetVadjustment is a wrapper around the C function gtk_scrolled_window_get_vadjustment.
+// Returns the vertical scrollbar’s adjustment, used to connect the
+// vertical scrollbar to the child widget’s vertical scroll functionality.
+/*
+
+C function : gtk_scrolled_window_get_vadjustment
+*/
 func (recv *ScrolledWindow) GetVadjustment() *Adjustment {
 	retC := C.gtk_scrolled_window_get_vadjustment((*C.GtkScrolledWindow)(recv.native))
 	retGo := AdjustmentNewFromC(unsafe.Pointer(retC))
@@ -22395,7 +25215,11 @@ func (recv *ScrolledWindow) GetVadjustment() *Adjustment {
 	return retGo
 }
 
-// SetHadjustment is a wrapper around the C function gtk_scrolled_window_set_hadjustment.
+// Sets the #GtkAdjustment for the horizontal scrollbar.
+/*
+
+C function : gtk_scrolled_window_set_hadjustment
+*/
 func (recv *ScrolledWindow) SetHadjustment(hadjustment *Adjustment) {
 	c_hadjustment := (*C.GtkAdjustment)(C.NULL)
 	if hadjustment != nil {
@@ -22407,7 +25231,20 @@ func (recv *ScrolledWindow) SetHadjustment(hadjustment *Adjustment) {
 	return
 }
 
-// SetPlacement is a wrapper around the C function gtk_scrolled_window_set_placement.
+// Sets the placement of the contents with respect to the scrollbars
+// for the scrolled window.
+//
+// The default is %GTK_CORNER_TOP_LEFT, meaning the child is
+// in the top left, with the scrollbars underneath and to the right.
+// Other values in #GtkCornerType are %GTK_CORNER_TOP_RIGHT,
+// %GTK_CORNER_BOTTOM_LEFT, and %GTK_CORNER_BOTTOM_RIGHT.
+//
+// See also gtk_scrolled_window_get_placement() and
+// gtk_scrolled_window_unset_placement().
+/*
+
+C function : gtk_scrolled_window_set_placement
+*/
 func (recv *ScrolledWindow) SetPlacement(windowPlacement CornerType) {
 	c_window_placement := (C.GtkCornerType)(windowPlacement)
 
@@ -22416,7 +25253,18 @@ func (recv *ScrolledWindow) SetPlacement(windowPlacement CornerType) {
 	return
 }
 
-// SetPolicy is a wrapper around the C function gtk_scrolled_window_set_policy.
+// Sets the scrollbar policy for the horizontal and vertical scrollbars.
+//
+// The policy determines when the scrollbar should appear; it is a value
+// from the #GtkPolicyType enumeration. If %GTK_POLICY_ALWAYS, the
+// scrollbar is always present; if %GTK_POLICY_NEVER, the scrollbar is
+// never present; if %GTK_POLICY_AUTOMATIC, the scrollbar is present only
+// if needed (that is, if the slider part of the bar would be smaller
+// than the trough — the display is larger than the page size).
+/*
+
+C function : gtk_scrolled_window_set_policy
+*/
 func (recv *ScrolledWindow) SetPolicy(hscrollbarPolicy PolicyType, vscrollbarPolicy PolicyType) {
 	c_hscrollbar_policy := (C.GtkPolicyType)(hscrollbarPolicy)
 
@@ -22427,7 +25275,12 @@ func (recv *ScrolledWindow) SetPolicy(hscrollbarPolicy PolicyType, vscrollbarPol
 	return
 }
 
-// SetShadowType is a wrapper around the C function gtk_scrolled_window_set_shadow_type.
+// Changes the type of shadow drawn around the contents of
+// @scrolled_window.
+/*
+
+C function : gtk_scrolled_window_set_shadow_type
+*/
 func (recv *ScrolledWindow) SetShadowType(type_ ShadowType) {
 	c_type := (C.GtkShadowType)(type_)
 
@@ -22436,7 +25289,11 @@ func (recv *ScrolledWindow) SetShadowType(type_ ShadowType) {
 	return
 }
 
-// SetVadjustment is a wrapper around the C function gtk_scrolled_window_set_vadjustment.
+// Sets the #GtkAdjustment for the vertical scrollbar.
+/*
+
+C function : gtk_scrolled_window_set_vadjustment
+*/
 func (recv *ScrolledWindow) SetVadjustment(vadjustment *Adjustment) {
 	c_vadjustment := (*C.GtkAdjustment)(C.NULL)
 	if vadjustment != nil {
@@ -22760,7 +25617,11 @@ func CastToSeparatorMenuItem(object *gobject.Object) *SeparatorMenuItem {
 	return SeparatorMenuItemNewFromC(object.ToC())
 }
 
-// SeparatorMenuItemNew is a wrapper around the C function gtk_separator_menu_item_new.
+// Creates a new #GtkSeparatorMenuItem.
+/*
+
+C function : gtk_separator_menu_item_new
+*/
 func SeparatorMenuItemNew() *SeparatorMenuItem {
 	retC := C.gtk_separator_menu_item_new()
 	retGo := SeparatorMenuItemNewFromC(unsafe.Pointer(retC))
@@ -22896,7 +25757,10 @@ func CastToSettings(object *gobject.Object) *Settings {
 	return SettingsNewFromC(object.ToC())
 }
 
-// SetDoubleProperty is a wrapper around the C function gtk_settings_set_double_property.
+/*
+
+C function : gtk_settings_set_double_property
+*/
 func (recv *Settings) SetDoubleProperty(name string, vDouble float64, origin string) {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -22911,7 +25775,10 @@ func (recv *Settings) SetDoubleProperty(name string, vDouble float64, origin str
 	return
 }
 
-// SetLongProperty is a wrapper around the C function gtk_settings_set_long_property.
+/*
+
+C function : gtk_settings_set_long_property
+*/
 func (recv *Settings) SetLongProperty(name string, vLong int64, origin string) {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -22926,7 +25793,10 @@ func (recv *Settings) SetLongProperty(name string, vLong int64, origin string) {
 	return
 }
 
-// SetPropertyValue is a wrapper around the C function gtk_settings_set_property_value.
+/*
+
+C function : gtk_settings_set_property_value
+*/
 func (recv *Settings) SetPropertyValue(name string, svalue *SettingsValue) {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -22941,7 +25811,10 @@ func (recv *Settings) SetPropertyValue(name string, svalue *SettingsValue) {
 	return
 }
 
-// SetStringProperty is a wrapper around the C function gtk_settings_set_string_property.
+/*
+
+C function : gtk_settings_set_string_property
+*/
 func (recv *Settings) SetStringProperty(name string, vString string, origin string) {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -22996,7 +25869,11 @@ func CastToSizeGroup(object *gobject.Object) *SizeGroup {
 	return SizeGroupNewFromC(object.ToC())
 }
 
-// SizeGroupNew is a wrapper around the C function gtk_size_group_new.
+// Create a new #GtkSizeGroup.
+/*
+
+C function : gtk_size_group_new
+*/
 func SizeGroupNew(mode SizeGroupMode) *SizeGroup {
 	c_mode := (C.GtkSizeGroupMode)(mode)
 
@@ -23006,7 +25883,18 @@ func SizeGroupNew(mode SizeGroupMode) *SizeGroup {
 	return retGo
 }
 
-// AddWidget is a wrapper around the C function gtk_size_group_add_widget.
+// Adds a widget to a #GtkSizeGroup. In the future, the requisition
+// of the widget will be determined as the maximum of its requisition
+// and the requisition of the other widgets in the size group.
+// Whether this applies horizontally, vertically, or in both directions
+// depends on the mode of the size group. See gtk_size_group_set_mode().
+//
+// When the widget is destroyed or no longer referenced elsewhere, it will
+// be removed from the size group.
+/*
+
+C function : gtk_size_group_add_widget
+*/
 func (recv *SizeGroup) AddWidget(widget *Widget) {
 	c_widget := (*C.GtkWidget)(C.NULL)
 	if widget != nil {
@@ -23018,7 +25906,11 @@ func (recv *SizeGroup) AddWidget(widget *Widget) {
 	return
 }
 
-// GetMode is a wrapper around the C function gtk_size_group_get_mode.
+// Gets the current mode of the size group. See gtk_size_group_set_mode().
+/*
+
+C function : gtk_size_group_get_mode
+*/
 func (recv *SizeGroup) GetMode() SizeGroupMode {
 	retC := C.gtk_size_group_get_mode((*C.GtkSizeGroup)(recv.native))
 	retGo := (SizeGroupMode)(retC)
@@ -23026,7 +25918,11 @@ func (recv *SizeGroup) GetMode() SizeGroupMode {
 	return retGo
 }
 
-// RemoveWidget is a wrapper around the C function gtk_size_group_remove_widget.
+// Removes a widget from a #GtkSizeGroup.
+/*
+
+C function : gtk_size_group_remove_widget
+*/
 func (recv *SizeGroup) RemoveWidget(widget *Widget) {
 	c_widget := (*C.GtkWidget)(C.NULL)
 	if widget != nil {
@@ -23038,7 +25934,16 @@ func (recv *SizeGroup) RemoveWidget(widget *Widget) {
 	return
 }
 
-// SetMode is a wrapper around the C function gtk_size_group_set_mode.
+// Sets the #GtkSizeGroupMode of the size group. The mode of the size
+// group determines whether the widgets in the size group should
+// all have the same horizontal requisition (%GTK_SIZE_GROUP_HORIZONTAL)
+// all have the same vertical requisition (%GTK_SIZE_GROUP_VERTICAL),
+// or should all have the same requisition in both directions
+// (%GTK_SIZE_GROUP_BOTH).
+/*
+
+C function : gtk_size_group_set_mode
+*/
 func (recv *SizeGroup) SetMode(mode SizeGroupMode) {
 	c_mode := (C.GtkSizeGroupMode)(mode)
 
@@ -23224,7 +26129,11 @@ func spinbutton_valueChangedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// SpinButtonNew is a wrapper around the C function gtk_spin_button_new.
+// Creates a new #GtkSpinButton.
+/*
+
+C function : gtk_spin_button_new
+*/
 func SpinButtonNew(adjustment *Adjustment, climbRate float64, digits uint32) *SpinButton {
 	c_adjustment := (*C.GtkAdjustment)(C.NULL)
 	if adjustment != nil {
@@ -23241,7 +26150,19 @@ func SpinButtonNew(adjustment *Adjustment, climbRate float64, digits uint32) *Sp
 	return retGo
 }
 
-// SpinButtonNewWithRange is a wrapper around the C function gtk_spin_button_new_with_range.
+// This is a convenience constructor that allows creation of a numeric
+// #GtkSpinButton without manually creating an adjustment. The value is
+// initially set to the minimum value and a page increment of 10 * @step
+// is the default. The precision of the spin button is equivalent to the
+// precision of @step.
+//
+// Note that the way in which the precision is derived works best if @step
+// is a power of ten. If the resulting precision is not suitable for your
+// needs, use gtk_spin_button_set_digits() to correct it.
+/*
+
+C function : gtk_spin_button_new_with_range
+*/
 func SpinButtonNewWithRange(min float64, max float64, step float64) *SpinButton {
 	c_min := (C.gdouble)(min)
 
@@ -23255,7 +26176,12 @@ func SpinButtonNewWithRange(min float64, max float64, step float64) *SpinButton 
 	return retGo
 }
 
-// Configure is a wrapper around the C function gtk_spin_button_configure.
+// Changes the properties of an existing spin button. The adjustment,
+// climb rate, and number of decimal places are updated accordingly.
+/*
+
+C function : gtk_spin_button_configure
+*/
 func (recv *SpinButton) Configure(adjustment *Adjustment, climbRate float64, digits uint32) {
 	c_adjustment := (*C.GtkAdjustment)(C.NULL)
 	if adjustment != nil {
@@ -23271,7 +26197,11 @@ func (recv *SpinButton) Configure(adjustment *Adjustment, climbRate float64, dig
 	return
 }
 
-// GetAdjustment is a wrapper around the C function gtk_spin_button_get_adjustment.
+// Get the adjustment associated with a #GtkSpinButton
+/*
+
+C function : gtk_spin_button_get_adjustment
+*/
 func (recv *SpinButton) GetAdjustment() *Adjustment {
 	retC := C.gtk_spin_button_get_adjustment((*C.GtkSpinButton)(recv.native))
 	retGo := AdjustmentNewFromC(unsafe.Pointer(retC))
@@ -23279,7 +26209,11 @@ func (recv *SpinButton) GetAdjustment() *Adjustment {
 	return retGo
 }
 
-// GetDigits is a wrapper around the C function gtk_spin_button_get_digits.
+// Fetches the precision of @spin_button. See gtk_spin_button_set_digits().
+/*
+
+C function : gtk_spin_button_get_digits
+*/
 func (recv *SpinButton) GetDigits() uint32 {
 	retC := C.gtk_spin_button_get_digits((*C.GtkSpinButton)(recv.native))
 	retGo := (uint32)(retC)
@@ -23287,7 +26221,12 @@ func (recv *SpinButton) GetDigits() uint32 {
 	return retGo
 }
 
-// GetIncrements is a wrapper around the C function gtk_spin_button_get_increments.
+// Gets the current step and page the increments used by @spin_button. See
+// gtk_spin_button_set_increments().
+/*
+
+C function : gtk_spin_button_get_increments
+*/
 func (recv *SpinButton) GetIncrements() (float64, float64) {
 	var c_step C.gdouble
 
@@ -23302,7 +26241,12 @@ func (recv *SpinButton) GetIncrements() (float64, float64) {
 	return step, page
 }
 
-// GetNumeric is a wrapper around the C function gtk_spin_button_get_numeric.
+// Returns whether non-numeric text can be typed into the spin button.
+// See gtk_spin_button_set_numeric().
+/*
+
+C function : gtk_spin_button_get_numeric
+*/
 func (recv *SpinButton) GetNumeric() bool {
 	retC := C.gtk_spin_button_get_numeric((*C.GtkSpinButton)(recv.native))
 	retGo := retC == C.TRUE
@@ -23310,7 +26254,12 @@ func (recv *SpinButton) GetNumeric() bool {
 	return retGo
 }
 
-// GetRange is a wrapper around the C function gtk_spin_button_get_range.
+// Gets the range allowed for @spin_button.
+// See gtk_spin_button_set_range().
+/*
+
+C function : gtk_spin_button_get_range
+*/
 func (recv *SpinButton) GetRange() (float64, float64) {
 	var c_min C.gdouble
 
@@ -23325,7 +26274,12 @@ func (recv *SpinButton) GetRange() (float64, float64) {
 	return min, max
 }
 
-// GetSnapToTicks is a wrapper around the C function gtk_spin_button_get_snap_to_ticks.
+// Returns whether the values are corrected to the nearest step.
+// See gtk_spin_button_set_snap_to_ticks().
+/*
+
+C function : gtk_spin_button_get_snap_to_ticks
+*/
 func (recv *SpinButton) GetSnapToTicks() bool {
 	retC := C.gtk_spin_button_get_snap_to_ticks((*C.GtkSpinButton)(recv.native))
 	retGo := retC == C.TRUE
@@ -23333,7 +26287,12 @@ func (recv *SpinButton) GetSnapToTicks() bool {
 	return retGo
 }
 
-// GetUpdatePolicy is a wrapper around the C function gtk_spin_button_get_update_policy.
+// Gets the update behavior of a spin button.
+// See gtk_spin_button_set_update_policy().
+/*
+
+C function : gtk_spin_button_get_update_policy
+*/
 func (recv *SpinButton) GetUpdatePolicy() SpinButtonUpdatePolicy {
 	retC := C.gtk_spin_button_get_update_policy((*C.GtkSpinButton)(recv.native))
 	retGo := (SpinButtonUpdatePolicy)(retC)
@@ -23341,7 +26300,11 @@ func (recv *SpinButton) GetUpdatePolicy() SpinButtonUpdatePolicy {
 	return retGo
 }
 
-// GetValue is a wrapper around the C function gtk_spin_button_get_value.
+// Get the value in the @spin_button.
+/*
+
+C function : gtk_spin_button_get_value
+*/
 func (recv *SpinButton) GetValue() float64 {
 	retC := C.gtk_spin_button_get_value((*C.GtkSpinButton)(recv.native))
 	retGo := (float64)(retC)
@@ -23349,7 +26312,11 @@ func (recv *SpinButton) GetValue() float64 {
 	return retGo
 }
 
-// GetValueAsInt is a wrapper around the C function gtk_spin_button_get_value_as_int.
+// Get the value @spin_button represented as an integer.
+/*
+
+C function : gtk_spin_button_get_value_as_int
+*/
 func (recv *SpinButton) GetValueAsInt() int32 {
 	retC := C.gtk_spin_button_get_value_as_int((*C.GtkSpinButton)(recv.native))
 	retGo := (int32)(retC)
@@ -23357,7 +26324,13 @@ func (recv *SpinButton) GetValueAsInt() int32 {
 	return retGo
 }
 
-// GetWrap is a wrapper around the C function gtk_spin_button_get_wrap.
+// Returns whether the spin button’s value wraps around to the
+// opposite limit when the upper or lower limit of the range is
+// exceeded. See gtk_spin_button_set_wrap().
+/*
+
+C function : gtk_spin_button_get_wrap
+*/
 func (recv *SpinButton) GetWrap() bool {
 	retC := C.gtk_spin_button_get_wrap((*C.GtkSpinButton)(recv.native))
 	retGo := retC == C.TRUE
@@ -23365,7 +26338,11 @@ func (recv *SpinButton) GetWrap() bool {
 	return retGo
 }
 
-// SetAdjustment is a wrapper around the C function gtk_spin_button_set_adjustment.
+// Replaces the #GtkAdjustment associated with @spin_button.
+/*
+
+C function : gtk_spin_button_set_adjustment
+*/
 func (recv *SpinButton) SetAdjustment(adjustment *Adjustment) {
 	c_adjustment := (*C.GtkAdjustment)(C.NULL)
 	if adjustment != nil {
@@ -23377,7 +26354,12 @@ func (recv *SpinButton) SetAdjustment(adjustment *Adjustment) {
 	return
 }
 
-// SetDigits is a wrapper around the C function gtk_spin_button_set_digits.
+// Set the precision to be displayed by @spin_button. Up to 20 digit precision
+// is allowed.
+/*
+
+C function : gtk_spin_button_set_digits
+*/
 func (recv *SpinButton) SetDigits(digits uint32) {
 	c_digits := (C.guint)(digits)
 
@@ -23386,7 +26368,12 @@ func (recv *SpinButton) SetDigits(digits uint32) {
 	return
 }
 
-// SetIncrements is a wrapper around the C function gtk_spin_button_set_increments.
+// Sets the step and page increments for spin_button.  This affects how
+// quickly the value changes when the spin button’s arrows are activated.
+/*
+
+C function : gtk_spin_button_set_increments
+*/
 func (recv *SpinButton) SetIncrements(step float64, page float64) {
 	c_step := (C.gdouble)(step)
 
@@ -23397,7 +26384,12 @@ func (recv *SpinButton) SetIncrements(step float64, page float64) {
 	return
 }
 
-// SetNumeric is a wrapper around the C function gtk_spin_button_set_numeric.
+// Sets the flag that determines if non-numeric text can be typed
+// into the spin button.
+/*
+
+C function : gtk_spin_button_set_numeric
+*/
 func (recv *SpinButton) SetNumeric(numeric bool) {
 	c_numeric :=
 		boolToGboolean(numeric)
@@ -23407,7 +26399,14 @@ func (recv *SpinButton) SetNumeric(numeric bool) {
 	return
 }
 
-// SetRange is a wrapper around the C function gtk_spin_button_set_range.
+// Sets the minimum and maximum allowable values for @spin_button.
+//
+// If the current value is outside this range, it will be adjusted
+// to fit within the range, otherwise it will remain unchanged.
+/*
+
+C function : gtk_spin_button_set_range
+*/
 func (recv *SpinButton) SetRange(min float64, max float64) {
 	c_min := (C.gdouble)(min)
 
@@ -23418,7 +26417,13 @@ func (recv *SpinButton) SetRange(min float64, max float64) {
 	return
 }
 
-// SetSnapToTicks is a wrapper around the C function gtk_spin_button_set_snap_to_ticks.
+// Sets the policy as to whether values are corrected to the
+// nearest step increment when a spin button is activated after
+// providing an invalid value.
+/*
+
+C function : gtk_spin_button_set_snap_to_ticks
+*/
 func (recv *SpinButton) SetSnapToTicks(snapToTicks bool) {
 	c_snap_to_ticks :=
 		boolToGboolean(snapToTicks)
@@ -23428,7 +26433,13 @@ func (recv *SpinButton) SetSnapToTicks(snapToTicks bool) {
 	return
 }
 
-// SetUpdatePolicy is a wrapper around the C function gtk_spin_button_set_update_policy.
+// Sets the update behavior of a spin button.
+// This determines whether the spin button is always updated
+// or only when a valid value is set.
+/*
+
+C function : gtk_spin_button_set_update_policy
+*/
 func (recv *SpinButton) SetUpdatePolicy(policy SpinButtonUpdatePolicy) {
 	c_policy := (C.GtkSpinButtonUpdatePolicy)(policy)
 
@@ -23437,7 +26448,11 @@ func (recv *SpinButton) SetUpdatePolicy(policy SpinButtonUpdatePolicy) {
 	return
 }
 
-// SetValue is a wrapper around the C function gtk_spin_button_set_value.
+// Sets the value of @spin_button.
+/*
+
+C function : gtk_spin_button_set_value
+*/
 func (recv *SpinButton) SetValue(value float64) {
 	c_value := (C.gdouble)(value)
 
@@ -23446,7 +26461,13 @@ func (recv *SpinButton) SetValue(value float64) {
 	return
 }
 
-// SetWrap is a wrapper around the C function gtk_spin_button_set_wrap.
+// Sets the flag that determines if a spin button value wraps
+// around to the opposite limit when the upper or lower limit
+// of the range is exceeded.
+/*
+
+C function : gtk_spin_button_set_wrap
+*/
 func (recv *SpinButton) SetWrap(wrap bool) {
 	c_wrap :=
 		boolToGboolean(wrap)
@@ -23456,7 +26477,12 @@ func (recv *SpinButton) SetWrap(wrap bool) {
 	return
 }
 
-// Spin is a wrapper around the C function gtk_spin_button_spin.
+// Increment or decrement a spin button’s value in a specified
+// direction by a specified amount.
+/*
+
+C function : gtk_spin_button_spin
+*/
 func (recv *SpinButton) Spin(direction SpinType, increment float64) {
 	c_direction := (C.GtkSpinType)(direction)
 
@@ -23467,7 +26493,11 @@ func (recv *SpinButton) Spin(direction SpinType, increment float64) {
 	return
 }
 
-// Update is a wrapper around the C function gtk_spin_button_update.
+// Manually force an update of the spin button.
+/*
+
+C function : gtk_spin_button_update
+*/
 func (recv *SpinButton) Update() {
 	C.gtk_spin_button_update((*C.GtkSpinButton)(recv.native))
 
@@ -23964,7 +26994,11 @@ func CastToStatusbar(object *gobject.Object) *Statusbar {
 
 // Unsupported signal 'text-pushed' for Statusbar : unsupported parameter context_id : type guint :
 
-// StatusbarNew is a wrapper around the C function gtk_statusbar_new.
+// Creates a new #GtkStatusbar ready for messages.
+/*
+
+C function : gtk_statusbar_new
+*/
 func StatusbarNew() *Statusbar {
 	retC := C.gtk_statusbar_new()
 	retGo := StatusbarNewFromC(unsafe.Pointer(retC))
@@ -23972,7 +27006,13 @@ func StatusbarNew() *Statusbar {
 	return retGo
 }
 
-// GetContextId is a wrapper around the C function gtk_statusbar_get_context_id.
+// Returns a new context identifier, given a description
+// of the actual context. Note that the description is
+// not shown in the UI.
+/*
+
+C function : gtk_statusbar_get_context_id
+*/
 func (recv *Statusbar) GetContextId(contextDescription string) uint32 {
 	c_context_description := C.CString(contextDescription)
 	defer C.free(unsafe.Pointer(c_context_description))
@@ -23983,7 +27023,16 @@ func (recv *Statusbar) GetContextId(contextDescription string) uint32 {
 	return retGo
 }
 
-// Pop is a wrapper around the C function gtk_statusbar_pop.
+// Removes the first message in the #GtkStatusbar’s stack
+// with the given context id.
+//
+// Note that this may not change the displayed message, if
+// the message at the top of the stack has a different
+// context id.
+/*
+
+C function : gtk_statusbar_pop
+*/
 func (recv *Statusbar) Pop(contextId uint32) {
 	c_context_id := (C.guint)(contextId)
 
@@ -23992,7 +27041,11 @@ func (recv *Statusbar) Pop(contextId uint32) {
 	return
 }
 
-// Push is a wrapper around the C function gtk_statusbar_push.
+// Pushes a new message onto a statusbar’s stack.
+/*
+
+C function : gtk_statusbar_push
+*/
 func (recv *Statusbar) Push(contextId uint32, text string) uint32 {
 	c_context_id := (C.guint)(contextId)
 
@@ -24005,7 +27058,12 @@ func (recv *Statusbar) Push(contextId uint32, text string) uint32 {
 	return retGo
 }
 
-// Remove is a wrapper around the C function gtk_statusbar_remove.
+// Forces the removal of a message from a statusbar’s stack.
+// The exact @context_id and @message_id must be specified.
+/*
+
+C function : gtk_statusbar_remove
+*/
 func (recv *Statusbar) Remove(contextId uint32, messageId uint32) {
 	c_context_id := (C.guint)(contextId)
 
@@ -24147,7 +27205,11 @@ func CastToStyle(object *gobject.Object) *Style {
 	return StyleNewFromC(object.ToC())
 }
 
-// StyleNew is a wrapper around the C function gtk_style_new.
+// Creates a new #GtkStyle.
+/*
+
+C function : gtk_style_new
+*/
 func StyleNew() *Style {
 	retC := C.gtk_style_new()
 	retGo := StyleNewFromC(unsafe.Pointer(retC))
@@ -24155,7 +27217,10 @@ func StyleNew() *Style {
 	return retGo
 }
 
-// ApplyDefaultBackground is a wrapper around the C function gtk_style_apply_default_background.
+/*
+
+C function : gtk_style_apply_default_background
+*/
 func (recv *Style) ApplyDefaultBackground(cr *cairo.Context, window *gdk.Window, stateType StateType, x int32, y int32, width int32, height int32) {
 	c_cr := (*C.cairo_t)(C.NULL)
 	if cr != nil {
@@ -24182,7 +27247,19 @@ func (recv *Style) ApplyDefaultBackground(cr *cairo.Context, window *gdk.Window,
 	return
 }
 
-// Attach is a wrapper around the C function gtk_style_attach.
+// Attaches a style to a window; this process allocates the
+// colors and creates the GC’s for the style - it specializes
+// it to a particular visual. The process may involve the creation
+// of a new style if the style has already been attached to a
+// window with a different style and visual.
+//
+// Since this function may return a new object, you have to use it
+// in the following way:
+// `style = gtk_style_attach (style, window)`
+/*
+
+C function : gtk_style_attach
+*/
 func (recv *Style) Attach(window *gdk.Window) *Style {
 	c_window := (*C.GdkWindow)(C.NULL)
 	if window != nil {
@@ -24195,7 +27272,11 @@ func (recv *Style) Attach(window *gdk.Window) *Style {
 	return retGo
 }
 
-// Copy is a wrapper around the C function gtk_style_copy.
+// Creates a copy of the passed in #GtkStyle object.
+/*
+
+C function : gtk_style_copy
+*/
 func (recv *Style) Copy() *Style {
 	retC := C.gtk_style_copy((*C.GtkStyle)(recv.native))
 	retGo := StyleNewFromC(unsafe.Pointer(retC))
@@ -24203,14 +27284,25 @@ func (recv *Style) Copy() *Style {
 	return retGo
 }
 
-// Detach is a wrapper around the C function gtk_style_detach.
+// Detaches a style from a window. If the style is not attached
+// to any windows anymore, it is unrealized. See gtk_style_attach().
+/*
+
+C function : gtk_style_detach
+*/
 func (recv *Style) Detach() {
 	C.gtk_style_detach((*C.GtkStyle)(recv.native))
 
 	return
 }
 
-// LookupIconSet is a wrapper around the C function gtk_style_lookup_icon_set.
+// Looks up @stock_id in the icon factories associated with @style
+// and the default icon factory, returning an icon set if found,
+// otherwise %NULL.
+/*
+
+C function : gtk_style_lookup_icon_set
+*/
 func (recv *Style) LookupIconSet(stockId string) *IconSet {
 	c_stock_id := C.CString(stockId)
 	defer C.free(unsafe.Pointer(c_stock_id))
@@ -24221,7 +27313,13 @@ func (recv *Style) LookupIconSet(stockId string) *IconSet {
 	return retGo
 }
 
-// RenderIcon is a wrapper around the C function gtk_style_render_icon.
+// Renders the icon specified by @source at the given @size
+// according to the given parameters and returns the result in a
+// pixbuf.
+/*
+
+C function : gtk_style_render_icon
+*/
 func (recv *Style) RenderIcon(source *IconSource, direction TextDirection, state StateType, size IconSize, widget *Widget, detail string) *gdkpixbuf.Pixbuf {
 	c_source := (*C.GtkIconSource)(C.NULL)
 	if source != nil {
@@ -24248,7 +27346,12 @@ func (recv *Style) RenderIcon(source *IconSource, direction TextDirection, state
 	return retGo
 }
 
-// SetBackground is a wrapper around the C function gtk_style_set_background.
+// Sets the background of @window to the background color or pixmap
+// specified by @style for the given state.
+/*
+
+C function : gtk_style_set_background
+*/
 func (recv *Style) SetBackground(window *gdk.Window, stateType StateType) {
 	c_window := (*C.GdkWindow)(C.NULL)
 	if window != nil {
@@ -24296,7 +27399,18 @@ func CastToStyleContext(object *gobject.Object) *StyleContext {
 	return StyleContextNewFromC(object.ToC())
 }
 
-// StyleContextNew is a wrapper around the C function gtk_style_context_new.
+// Creates a standalone #GtkStyleContext, this style context
+// won’t be attached to any widget, so you may want
+// to call gtk_style_context_set_path() yourself.
+//
+// This function is only useful when using the theming layer
+// separated from GTK+, if you are using #GtkStyleContext to
+// theme #GtkWidgets, use gtk_widget_get_style_context()
+// in order to get a style context ready to theme the widget.
+/*
+
+C function : gtk_style_context_new
+*/
 func StyleContextNew() *StyleContext {
 	retC := C.gtk_style_context_new()
 	retGo := StyleContextNewFromC(unsafe.Pointer(retC))
@@ -24304,7 +27418,11 @@ func StyleContextNew() *StyleContext {
 	return retGo
 }
 
-// GetScreen is a wrapper around the C function gtk_style_context_get_screen.
+// Returns the #GdkScreen to which @context is attached.
+/*
+
+C function : gtk_style_context_get_screen
+*/
 func (recv *StyleContext) GetScreen() *gdk.Screen {
 	retC := C.gtk_style_context_get_screen((*C.GtkStyleContext)(recv.native))
 	retGo := gdk.ScreenNewFromC(unsafe.Pointer(retC))
@@ -24312,7 +27430,22 @@ func (recv *StyleContext) GetScreen() *gdk.Screen {
 	return retGo
 }
 
-// GetSection is a wrapper around the C function gtk_style_context_get_section.
+// Queries the location in the CSS where @property was defined for the
+// current @context. Note that the state to be queried is taken from
+// gtk_style_context_get_state().
+//
+// If the location is not available, %NULL will be returned. The
+// location might not be available for various reasons, such as the
+// property being overridden, @property not naming a supported CSS
+// property or tracking of definitions being disabled for performance
+// reasons.
+//
+// Shorthand CSS properties cannot be queried for a location and will
+// always return %NULL.
+/*
+
+C function : gtk_style_context_get_section
+*/
 func (recv *StyleContext) GetSection(property string) *CssSection {
 	c_property := C.CString(property)
 	defer C.free(unsafe.Pointer(c_property))
@@ -24328,7 +27461,14 @@ func (recv *StyleContext) GetSection(property string) *CssSection {
 	return retGo
 }
 
-// GetStyleProperty is a wrapper around the C function gtk_style_context_get_style_property.
+// Gets the value for a widget style property.
+//
+// When @value is no longer needed, g_value_unset() must be called
+// to free any allocated memory.
+/*
+
+C function : gtk_style_context_get_style_property
+*/
 func (recv *StyleContext) GetStyleProperty(propertyName string, value *gobject.Value) {
 	c_property_name := C.CString(propertyName)
 	defer C.free(unsafe.Pointer(c_property_name))
@@ -24343,7 +27483,11 @@ func (recv *StyleContext) GetStyleProperty(propertyName string, value *gobject.V
 	return
 }
 
-// LookupColor is a wrapper around the C function gtk_style_context_lookup_color.
+// Looks up and resolves a color name in the @context color map.
+/*
+
+C function : gtk_style_context_lookup_color
+*/
 func (recv *StyleContext) LookupColor(colorName string) (bool, *gdk.RGBA) {
 	c_color_name := C.CString(colorName)
 	defer C.free(unsafe.Pointer(c_color_name))
@@ -24358,7 +27502,13 @@ func (recv *StyleContext) LookupColor(colorName string) (bool, *gdk.RGBA) {
 	return retGo, color
 }
 
-// LookupIconSet is a wrapper around the C function gtk_style_context_lookup_icon_set.
+// Looks up @stock_id in the icon factories associated to @context and
+// the default icon factory, returning an icon set if found, otherwise
+// %NULL.
+/*
+
+C function : gtk_style_context_lookup_icon_set
+*/
 func (recv *StyleContext) LookupIconSet(stockId string) *IconSet {
 	c_stock_id := C.CString(stockId)
 	defer C.free(unsafe.Pointer(c_stock_id))
@@ -24408,7 +27558,11 @@ func CastToStyleProperties(object *gobject.Object) *StyleProperties {
 	return StylePropertiesNewFromC(object.ToC())
 }
 
-// StylePropertiesNew is a wrapper around the C function gtk_style_properties_new.
+// Returns a newly created #GtkStyleProperties
+/*
+
+C function : gtk_style_properties_new
+*/
 func StylePropertiesNew() *StyleProperties {
 	retC := C.gtk_style_properties_new()
 	retGo := StylePropertiesNewFromC(unsafe.Pointer(retC))
@@ -24416,7 +27570,11 @@ func StylePropertiesNew() *StyleProperties {
 	return retGo
 }
 
-// Clear is a wrapper around the C function gtk_style_properties_clear.
+// Clears all style information from @props.
+/*
+
+C function : gtk_style_properties_clear
+*/
 func (recv *StyleProperties) Clear() {
 	C.gtk_style_properties_clear((*C.GtkStyleProperties)(recv.native))
 
@@ -24652,7 +27810,15 @@ func CastToTable(object *gobject.Object) *Table {
 	return TableNewFromC(object.ToC())
 }
 
-// TableNew is a wrapper around the C function gtk_table_new.
+// Used to create a new table widget. An initial size must be given by
+// specifying how many rows and columns the table should have, although
+// this can be changed later with gtk_table_resize().  @rows and @columns
+// must both be in the range 1 .. 65535. For historical reasons, 0 is accepted
+// as well and is silently interpreted as 1.
+/*
+
+C function : gtk_table_new
+*/
 func TableNew(rows uint32, columns uint32, homogeneous bool) *Table {
 	c_rows := (C.guint)(rows)
 
@@ -24667,7 +27833,24 @@ func TableNew(rows uint32, columns uint32, homogeneous bool) *Table {
 	return retGo
 }
 
-// Attach is a wrapper around the C function gtk_table_attach.
+// Adds a widget to a table. The number of “cells” that a widget will occupy is
+// specified by @left_attach, @right_attach, @top_attach and @bottom_attach.
+// These each represent the leftmost, rightmost, uppermost and lowest column
+// and row numbers of the table. (Columns and rows are indexed from zero).
+//
+// To make a button occupy the lower right cell of a 2x2 table, use
+// |[
+// gtk_table_attach (table, button,
+// 1, 2, // left, right attach
+// 1, 2, // top, bottom attach
+// xoptions, yoptions,
+// xpadding, ypadding);
+// ]|
+// If you want to make the button span the entire bottom row, use @left_attach == 0 and @right_attach = 2 instead.
+/*
+
+C function : gtk_table_attach
+*/
 func (recv *Table) Attach(child *Widget, leftAttach uint32, rightAttach uint32, topAttach uint32, bottomAttach uint32, xoptions AttachOptions, yoptions AttachOptions, xpadding uint32, ypadding uint32) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -24695,7 +27878,14 @@ func (recv *Table) Attach(child *Widget, leftAttach uint32, rightAttach uint32, 
 	return
 }
 
-// AttachDefaults is a wrapper around the C function gtk_table_attach_defaults.
+// As there are many options associated with gtk_table_attach(), this convenience
+// function provides the programmer with a means to add children to a table with
+// identical padding and expansion options. The values used for the #GtkAttachOptions
+// are `GTK_EXPAND | GTK_FILL`, and the padding is set to 0.
+/*
+
+C function : gtk_table_attach_defaults
+*/
 func (recv *Table) AttachDefaults(widget *Widget, leftAttach uint32, rightAttach uint32, topAttach uint32, bottomAttach uint32) {
 	c_widget := (*C.GtkWidget)(C.NULL)
 	if widget != nil {
@@ -24715,7 +27905,12 @@ func (recv *Table) AttachDefaults(widget *Widget, leftAttach uint32, rightAttach
 	return
 }
 
-// GetColSpacing is a wrapper around the C function gtk_table_get_col_spacing.
+// Gets the amount of space between column @col, and
+// column @col + 1. See gtk_table_set_col_spacing().
+/*
+
+C function : gtk_table_get_col_spacing
+*/
 func (recv *Table) GetColSpacing(column uint32) uint32 {
 	c_column := (C.guint)(column)
 
@@ -24725,7 +27920,13 @@ func (recv *Table) GetColSpacing(column uint32) uint32 {
 	return retGo
 }
 
-// GetDefaultColSpacing is a wrapper around the C function gtk_table_get_default_col_spacing.
+// Gets the default column spacing for the table. This is
+// the spacing that will be used for newly added columns.
+// (See gtk_table_set_col_spacings())
+/*
+
+C function : gtk_table_get_default_col_spacing
+*/
 func (recv *Table) GetDefaultColSpacing() uint32 {
 	retC := C.gtk_table_get_default_col_spacing((*C.GtkTable)(recv.native))
 	retGo := (uint32)(retC)
@@ -24733,7 +27934,13 @@ func (recv *Table) GetDefaultColSpacing() uint32 {
 	return retGo
 }
 
-// GetDefaultRowSpacing is a wrapper around the C function gtk_table_get_default_row_spacing.
+// Gets the default row spacing for the table. This is
+// the spacing that will be used for newly added rows.
+// (See gtk_table_set_row_spacings())
+/*
+
+C function : gtk_table_get_default_row_spacing
+*/
 func (recv *Table) GetDefaultRowSpacing() uint32 {
 	retC := C.gtk_table_get_default_row_spacing((*C.GtkTable)(recv.native))
 	retGo := (uint32)(retC)
@@ -24741,7 +27948,12 @@ func (recv *Table) GetDefaultRowSpacing() uint32 {
 	return retGo
 }
 
-// GetHomogeneous is a wrapper around the C function gtk_table_get_homogeneous.
+// Returns whether the table cells are all constrained to the same
+// width and height. (See gtk_table_set_homogeneous ())
+/*
+
+C function : gtk_table_get_homogeneous
+*/
 func (recv *Table) GetHomogeneous() bool {
 	retC := C.gtk_table_get_homogeneous((*C.GtkTable)(recv.native))
 	retGo := retC == C.TRUE
@@ -24749,7 +27961,12 @@ func (recv *Table) GetHomogeneous() bool {
 	return retGo
 }
 
-// GetRowSpacing is a wrapper around the C function gtk_table_get_row_spacing.
+// Gets the amount of space between row @row, and
+// row @row + 1. See gtk_table_set_row_spacing().
+/*
+
+C function : gtk_table_get_row_spacing
+*/
 func (recv *Table) GetRowSpacing(row uint32) uint32 {
 	c_row := (C.guint)(row)
 
@@ -24759,7 +27976,12 @@ func (recv *Table) GetRowSpacing(row uint32) uint32 {
 	return retGo
 }
 
-// Resize is a wrapper around the C function gtk_table_resize.
+// If you need to change a table’s size after
+// it has been created, this function allows you to do so.
+/*
+
+C function : gtk_table_resize
+*/
 func (recv *Table) Resize(rows uint32, columns uint32) {
 	c_rows := (C.guint)(rows)
 
@@ -24770,7 +27992,12 @@ func (recv *Table) Resize(rows uint32, columns uint32) {
 	return
 }
 
-// SetColSpacing is a wrapper around the C function gtk_table_set_col_spacing.
+// Alters the amount of space between a given table column and the following
+// column.
+/*
+
+C function : gtk_table_set_col_spacing
+*/
 func (recv *Table) SetColSpacing(column uint32, spacing uint32) {
 	c_column := (C.guint)(column)
 
@@ -24781,7 +28008,11 @@ func (recv *Table) SetColSpacing(column uint32, spacing uint32) {
 	return
 }
 
-// SetColSpacings is a wrapper around the C function gtk_table_set_col_spacings.
+// Sets the space between every column in @table equal to @spacing.
+/*
+
+C function : gtk_table_set_col_spacings
+*/
 func (recv *Table) SetColSpacings(spacing uint32) {
 	c_spacing := (C.guint)(spacing)
 
@@ -24790,7 +28021,12 @@ func (recv *Table) SetColSpacings(spacing uint32) {
 	return
 }
 
-// SetHomogeneous is a wrapper around the C function gtk_table_set_homogeneous.
+// Changes the homogenous property of table cells, ie. whether all cells are
+// an equal size or not.
+/*
+
+C function : gtk_table_set_homogeneous
+*/
 func (recv *Table) SetHomogeneous(homogeneous bool) {
 	c_homogeneous :=
 		boolToGboolean(homogeneous)
@@ -24800,7 +28036,11 @@ func (recv *Table) SetHomogeneous(homogeneous bool) {
 	return
 }
 
-// SetRowSpacing is a wrapper around the C function gtk_table_set_row_spacing.
+// Changes the space between a given table row and the subsequent row.
+/*
+
+C function : gtk_table_set_row_spacing
+*/
 func (recv *Table) SetRowSpacing(row uint32, spacing uint32) {
 	c_row := (C.guint)(row)
 
@@ -24811,7 +28051,11 @@ func (recv *Table) SetRowSpacing(row uint32, spacing uint32) {
 	return
 }
 
-// SetRowSpacings is a wrapper around the C function gtk_table_set_row_spacings.
+// Sets the space between every row in @table equal to @spacing.
+/*
+
+C function : gtk_table_set_row_spacings
+*/
 func (recv *Table) SetRowSpacings(spacing uint32) {
 	c_spacing := (C.guint)(spacing)
 
@@ -24889,7 +28133,11 @@ func CastToTearoffMenuItem(object *gobject.Object) *TearoffMenuItem {
 	return TearoffMenuItemNewFromC(object.ToC())
 }
 
-// TearoffMenuItemNew is a wrapper around the C function gtk_tearoff_menu_item_new.
+// Creates a new #GtkTearoffMenuItem.
+/*
+
+C function : gtk_tearoff_menu_item_new
+*/
 func TearoffMenuItemNew() *TearoffMenuItem {
 	retC := C.gtk_tearoff_menu_item_new()
 	retGo := TearoffMenuItemNewFromC(unsafe.Pointer(retC))
@@ -25610,7 +28858,11 @@ func textbuffer_removeTagHandler(_ *C.GObject, c_tag *C.GtkTextTag, c_start *C.G
 	callback(tag, start, end)
 }
 
-// TextBufferNew is a wrapper around the C function gtk_text_buffer_new.
+// Creates a new text buffer.
+/*
+
+C function : gtk_text_buffer_new
+*/
 func TextBufferNew(table *TextTagTable) *TextBuffer {
 	c_table := (*C.GtkTextTagTable)(C.NULL)
 	if table != nil {
@@ -25623,7 +28875,13 @@ func TextBufferNew(table *TextTagTable) *TextBuffer {
 	return retGo
 }
 
-// AddSelectionClipboard is a wrapper around the C function gtk_text_buffer_add_selection_clipboard.
+// Adds @clipboard to the list of clipboards in which the selection
+// contents of @buffer are available. In most cases, @clipboard will be
+// the #GtkClipboard of type %GDK_SELECTION_PRIMARY for a view of @buffer.
+/*
+
+C function : gtk_text_buffer_add_selection_clipboard
+*/
 func (recv *TextBuffer) AddSelectionClipboard(clipboard *Clipboard) {
 	c_clipboard := (*C.GtkClipboard)(C.NULL)
 	if clipboard != nil {
@@ -25635,7 +28893,13 @@ func (recv *TextBuffer) AddSelectionClipboard(clipboard *Clipboard) {
 	return
 }
 
-// ApplyTag is a wrapper around the C function gtk_text_buffer_apply_tag.
+// Emits the “apply-tag” signal on @buffer. The default
+// handler for the signal applies @tag to the given range.
+// @start and @end do not have to be in order.
+/*
+
+C function : gtk_text_buffer_apply_tag
+*/
 func (recv *TextBuffer) ApplyTag(tag *TextTag, start *TextIter, end *TextIter) {
 	c_tag := (*C.GtkTextTag)(C.NULL)
 	if tag != nil {
@@ -25657,7 +28921,12 @@ func (recv *TextBuffer) ApplyTag(tag *TextTag, start *TextIter, end *TextIter) {
 	return
 }
 
-// ApplyTagByName is a wrapper around the C function gtk_text_buffer_apply_tag_by_name.
+// Calls gtk_text_tag_table_lookup() on the buffer’s tag table to
+// get a #GtkTextTag, then calls gtk_text_buffer_apply_tag().
+/*
+
+C function : gtk_text_buffer_apply_tag_by_name
+*/
 func (recv *TextBuffer) ApplyTagByName(name string, start *TextIter, end *TextIter) {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -25677,14 +28946,38 @@ func (recv *TextBuffer) ApplyTagByName(name string, start *TextIter, end *TextIt
 	return
 }
 
-// BeginUserAction is a wrapper around the C function gtk_text_buffer_begin_user_action.
+// Called to indicate that the buffer operations between here and a
+// call to gtk_text_buffer_end_user_action() are part of a single
+// user-visible operation. The operations between
+// gtk_text_buffer_begin_user_action() and
+// gtk_text_buffer_end_user_action() can then be grouped when creating
+// an undo stack. #GtkTextBuffer maintains a count of calls to
+// gtk_text_buffer_begin_user_action() that have not been closed with
+// a call to gtk_text_buffer_end_user_action(), and emits the
+// “begin-user-action” and “end-user-action” signals only for the
+// outermost pair of calls. This allows you to build user actions
+// from other user actions.
+//
+// The “interactive” buffer mutation functions, such as
+// gtk_text_buffer_insert_interactive(), automatically call begin/end
+// user action around the buffer operations they perform, so there's
+// no need to add extra calls if you user action consists solely of a
+// single call to one of those functions.
+/*
+
+C function : gtk_text_buffer_begin_user_action
+*/
 func (recv *TextBuffer) BeginUserAction() {
 	C.gtk_text_buffer_begin_user_action((*C.GtkTextBuffer)(recv.native))
 
 	return
 }
 
-// CopyClipboard is a wrapper around the C function gtk_text_buffer_copy_clipboard.
+// Copies the currently-selected text to a clipboard.
+/*
+
+C function : gtk_text_buffer_copy_clipboard
+*/
 func (recv *TextBuffer) CopyClipboard(clipboard *Clipboard) {
 	c_clipboard := (*C.GtkClipboard)(C.NULL)
 	if clipboard != nil {
@@ -25696,7 +28989,15 @@ func (recv *TextBuffer) CopyClipboard(clipboard *Clipboard) {
 	return
 }
 
-// CreateChildAnchor is a wrapper around the C function gtk_text_buffer_create_child_anchor.
+// This is a convenience function which simply creates a child anchor
+// with gtk_text_child_anchor_new() and inserts it into the buffer
+// with gtk_text_buffer_insert_child_anchor(). The new anchor is
+// owned by the buffer; no reference count is returned to
+// the caller of gtk_text_buffer_create_child_anchor().
+/*
+
+C function : gtk_text_buffer_create_child_anchor
+*/
 func (recv *TextBuffer) CreateChildAnchor(iter *TextIter) *TextChildAnchor {
 	c_iter := (*C.GtkTextIter)(C.NULL)
 	if iter != nil {
@@ -25709,7 +29010,27 @@ func (recv *TextBuffer) CreateChildAnchor(iter *TextIter) *TextChildAnchor {
 	return retGo
 }
 
-// CreateMark is a wrapper around the C function gtk_text_buffer_create_mark.
+// Creates a mark at position @where. If @mark_name is %NULL, the mark
+// is anonymous; otherwise, the mark can be retrieved by name using
+// gtk_text_buffer_get_mark(). If a mark has left gravity, and text is
+// inserted at the mark’s current location, the mark will be moved to
+// the left of the newly-inserted text. If the mark has right gravity
+// (@left_gravity = %FALSE), the mark will end up on the right of
+// newly-inserted text. The standard left-to-right cursor is a mark
+// with right gravity (when you type, the cursor stays on the right
+// side of the text you’re typing).
+//
+// The caller of this function does not own a
+// reference to the returned #GtkTextMark, so you can ignore the
+// return value if you like. Marks are owned by the buffer and go
+// away when the buffer does.
+//
+// Emits the #GtkTextBuffer::mark-set signal as notification of the mark's
+// initial placement.
+/*
+
+C function : gtk_text_buffer_create_mark
+*/
 func (recv *TextBuffer) CreateMark(markName string, where *TextIter, leftGravity bool) *TextMark {
 	c_mark_name := C.CString(markName)
 	defer C.free(unsafe.Pointer(c_mark_name))
@@ -25730,7 +29051,12 @@ func (recv *TextBuffer) CreateMark(markName string, where *TextIter, leftGravity
 
 // Unsupported : gtk_text_buffer_create_tag : unsupported parameter ... : varargs
 
-// CutClipboard is a wrapper around the C function gtk_text_buffer_cut_clipboard.
+// Copies the currently-selected text to a clipboard, then deletes
+// said text if it’s editable.
+/*
+
+C function : gtk_text_buffer_cut_clipboard
+*/
 func (recv *TextBuffer) CutClipboard(clipboard *Clipboard, defaultEditable bool) {
 	c_clipboard := (*C.GtkClipboard)(C.NULL)
 	if clipboard != nil {
@@ -25745,7 +29071,17 @@ func (recv *TextBuffer) CutClipboard(clipboard *Clipboard, defaultEditable bool)
 	return
 }
 
-// Delete is a wrapper around the C function gtk_text_buffer_delete.
+// Deletes text between @start and @end. The order of @start and @end
+// is not actually relevant; gtk_text_buffer_delete() will reorder
+// them. This function actually emits the “delete-range” signal, and
+// the default handler of that signal deletes the text. Because the
+// buffer is modified, all outstanding iterators become invalid after
+// calling this function; however, the @start and @end will be
+// re-initialized to point to the location where text was deleted.
+/*
+
+C function : gtk_text_buffer_delete
+*/
 func (recv *TextBuffer) Delete(start *TextIter, end *TextIter) {
 	c_start := (*C.GtkTextIter)(C.NULL)
 	if start != nil {
@@ -25762,7 +29098,15 @@ func (recv *TextBuffer) Delete(start *TextIter, end *TextIter) {
 	return
 }
 
-// DeleteInteractive is a wrapper around the C function gtk_text_buffer_delete_interactive.
+// Deletes all editable text in the given range.
+// Calls gtk_text_buffer_delete() for each editable sub-range of
+// [@start,@end). @start and @end are revalidated to point to
+// the location of the last deleted range, or left untouched if
+// no text was deleted.
+/*
+
+C function : gtk_text_buffer_delete_interactive
+*/
 func (recv *TextBuffer) DeleteInteractive(startIter *TextIter, endIter *TextIter, defaultEditable bool) bool {
 	c_start_iter := (*C.GtkTextIter)(C.NULL)
 	if startIter != nil {
@@ -25783,7 +29127,19 @@ func (recv *TextBuffer) DeleteInteractive(startIter *TextIter, endIter *TextIter
 	return retGo
 }
 
-// DeleteMark is a wrapper around the C function gtk_text_buffer_delete_mark.
+// Deletes @mark, so that it’s no longer located anywhere in the
+// buffer. Removes the reference the buffer holds to the mark, so if
+// you haven’t called g_object_ref() on the mark, it will be freed. Even
+// if the mark isn’t freed, most operations on @mark become
+// invalid, until it gets added to a buffer again with
+// gtk_text_buffer_add_mark(). Use gtk_text_mark_get_deleted() to
+// find out if a mark has been removed from its buffer.
+// The #GtkTextBuffer::mark-deleted signal will be emitted as notification after
+// the mark is deleted.
+/*
+
+C function : gtk_text_buffer_delete_mark
+*/
 func (recv *TextBuffer) DeleteMark(mark *TextMark) {
 	c_mark := (*C.GtkTextMark)(C.NULL)
 	if mark != nil {
@@ -25795,7 +29151,12 @@ func (recv *TextBuffer) DeleteMark(mark *TextMark) {
 	return
 }
 
-// DeleteMarkByName is a wrapper around the C function gtk_text_buffer_delete_mark_by_name.
+// Deletes the mark named @name; the mark must exist. See
+// gtk_text_buffer_delete_mark() for details.
+/*
+
+C function : gtk_text_buffer_delete_mark_by_name
+*/
 func (recv *TextBuffer) DeleteMarkByName(name string) {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -25805,7 +29166,14 @@ func (recv *TextBuffer) DeleteMarkByName(name string) {
 	return
 }
 
-// DeleteSelection is a wrapper around the C function gtk_text_buffer_delete_selection.
+// Deletes the range between the “insert” and “selection_bound” marks,
+// that is, the currently-selected text. If @interactive is %TRUE,
+// the editability of the selection will be considered (users can’t delete
+// uneditable text).
+/*
+
+C function : gtk_text_buffer_delete_selection
+*/
 func (recv *TextBuffer) DeleteSelection(interactive bool, defaultEditable bool) bool {
 	c_interactive :=
 		boolToGboolean(interactive)
@@ -25819,14 +29187,24 @@ func (recv *TextBuffer) DeleteSelection(interactive bool, defaultEditable bool) 
 	return retGo
 }
 
-// EndUserAction is a wrapper around the C function gtk_text_buffer_end_user_action.
+// Should be paired with a call to gtk_text_buffer_begin_user_action().
+// See that function for a full explanation.
+/*
+
+C function : gtk_text_buffer_end_user_action
+*/
 func (recv *TextBuffer) EndUserAction() {
 	C.gtk_text_buffer_end_user_action((*C.GtkTextBuffer)(recv.native))
 
 	return
 }
 
-// GetBounds is a wrapper around the C function gtk_text_buffer_get_bounds.
+// Retrieves the first and last iterators in the buffer, i.e. the
+// entire buffer lies within the range [@start,@end).
+/*
+
+C function : gtk_text_buffer_get_bounds
+*/
 func (recv *TextBuffer) GetBounds() (*TextIter, *TextIter) {
 	var c_start C.GtkTextIter
 
@@ -25841,7 +29219,14 @@ func (recv *TextBuffer) GetBounds() (*TextIter, *TextIter) {
 	return start, end
 }
 
-// GetCharCount is a wrapper around the C function gtk_text_buffer_get_char_count.
+// Gets the number of characters in the buffer; note that characters
+// and bytes are not the same, you can’t e.g. expect the contents of
+// the buffer in string form to be this many bytes long. The character
+// count is cached, so this function is very fast.
+/*
+
+C function : gtk_text_buffer_get_char_count
+*/
 func (recv *TextBuffer) GetCharCount() int32 {
 	retC := C.gtk_text_buffer_get_char_count((*C.GtkTextBuffer)(recv.native))
 	retGo := (int32)(retC)
@@ -25849,7 +29234,16 @@ func (recv *TextBuffer) GetCharCount() int32 {
 	return retGo
 }
 
-// GetEndIter is a wrapper around the C function gtk_text_buffer_get_end_iter.
+// Initializes @iter with the “end iterator,” one past the last valid
+// character in the text buffer. If dereferenced with
+// gtk_text_iter_get_char(), the end iterator has a character value of 0.
+// The entire buffer lies in the range from the first position in
+// the buffer (call gtk_text_buffer_get_start_iter() to get
+// character position 0) to the end iterator.
+/*
+
+C function : gtk_text_buffer_get_end_iter
+*/
 func (recv *TextBuffer) GetEndIter() *TextIter {
 	var c_iter C.GtkTextIter
 
@@ -25860,7 +29254,14 @@ func (recv *TextBuffer) GetEndIter() *TextIter {
 	return iter
 }
 
-// GetInsert is a wrapper around the C function gtk_text_buffer_get_insert.
+// Returns the mark that represents the cursor (insertion point).
+// Equivalent to calling gtk_text_buffer_get_mark() to get the mark
+// named “insert”, but very slightly more efficient, and involves less
+// typing.
+/*
+
+C function : gtk_text_buffer_get_insert
+*/
 func (recv *TextBuffer) GetInsert() *TextMark {
 	retC := C.gtk_text_buffer_get_insert((*C.GtkTextBuffer)(recv.native))
 	retGo := TextMarkNewFromC(unsafe.Pointer(retC))
@@ -25868,7 +29269,11 @@ func (recv *TextBuffer) GetInsert() *TextMark {
 	return retGo
 }
 
-// GetIterAtChildAnchor is a wrapper around the C function gtk_text_buffer_get_iter_at_child_anchor.
+// Obtains the location of @anchor within @buffer.
+/*
+
+C function : gtk_text_buffer_get_iter_at_child_anchor
+*/
 func (recv *TextBuffer) GetIterAtChildAnchor(anchor *TextChildAnchor) *TextIter {
 	var c_iter C.GtkTextIter
 
@@ -25884,7 +29289,12 @@ func (recv *TextBuffer) GetIterAtChildAnchor(anchor *TextChildAnchor) *TextIter 
 	return iter
 }
 
-// GetIterAtLine is a wrapper around the C function gtk_text_buffer_get_iter_at_line.
+// Initializes @iter to the start of the given line. If @line_number is greater
+// than the number of lines in the @buffer, the end iterator is returned.
+/*
+
+C function : gtk_text_buffer_get_iter_at_line
+*/
 func (recv *TextBuffer) GetIterAtLine(lineNumber int32) *TextIter {
 	var c_iter C.GtkTextIter
 
@@ -25897,7 +29307,19 @@ func (recv *TextBuffer) GetIterAtLine(lineNumber int32) *TextIter {
 	return iter
 }
 
-// GetIterAtLineIndex is a wrapper around the C function gtk_text_buffer_get_iter_at_line_index.
+// Obtains an iterator pointing to @byte_index within the given line.
+// @byte_index must be the start of a UTF-8 character. Note bytes, not
+// characters; UTF-8 may encode one character as multiple bytes.
+//
+// Before the 3.20 version, it was not allowed to pass an invalid location.
+//
+// Since the 3.20 version, if @line_number is greater than the number of lines
+// in the @buffer, the end iterator is returned. And if @byte_index is off the
+// end of the line, the iterator at the end of the line is returned.
+/*
+
+C function : gtk_text_buffer_get_iter_at_line_index
+*/
 func (recv *TextBuffer) GetIterAtLineIndex(lineNumber int32, byteIndex int32) *TextIter {
 	var c_iter C.GtkTextIter
 
@@ -25912,7 +29334,18 @@ func (recv *TextBuffer) GetIterAtLineIndex(lineNumber int32, byteIndex int32) *T
 	return iter
 }
 
-// GetIterAtLineOffset is a wrapper around the C function gtk_text_buffer_get_iter_at_line_offset.
+// Obtains an iterator pointing to @char_offset within the given line. Note
+// characters, not bytes; UTF-8 may encode one character as multiple bytes.
+//
+// Before the 3.20 version, it was not allowed to pass an invalid location.
+//
+// Since the 3.20 version, if @line_number is greater than the number of lines
+// in the @buffer, the end iterator is returned. And if @char_offset is off the
+// end of the line, the iterator at the end of the line is returned.
+/*
+
+C function : gtk_text_buffer_get_iter_at_line_offset
+*/
 func (recv *TextBuffer) GetIterAtLineOffset(lineNumber int32, charOffset int32) *TextIter {
 	var c_iter C.GtkTextIter
 
@@ -25927,7 +29360,11 @@ func (recv *TextBuffer) GetIterAtLineOffset(lineNumber int32, charOffset int32) 
 	return iter
 }
 
-// GetIterAtMark is a wrapper around the C function gtk_text_buffer_get_iter_at_mark.
+// Initializes @iter with the current position of @mark.
+/*
+
+C function : gtk_text_buffer_get_iter_at_mark
+*/
 func (recv *TextBuffer) GetIterAtMark(mark *TextMark) *TextIter {
 	var c_iter C.GtkTextIter
 
@@ -25943,7 +29380,14 @@ func (recv *TextBuffer) GetIterAtMark(mark *TextMark) *TextIter {
 	return iter
 }
 
-// GetIterAtOffset is a wrapper around the C function gtk_text_buffer_get_iter_at_offset.
+// Initializes @iter to a position @char_offset chars from the start
+// of the entire buffer. If @char_offset is -1 or greater than the number
+// of characters in the buffer, @iter is initialized to the end iterator,
+// the iterator one past the last valid character in the buffer.
+/*
+
+C function : gtk_text_buffer_get_iter_at_offset
+*/
 func (recv *TextBuffer) GetIterAtOffset(charOffset int32) *TextIter {
 	var c_iter C.GtkTextIter
 
@@ -25956,7 +29400,12 @@ func (recv *TextBuffer) GetIterAtOffset(charOffset int32) *TextIter {
 	return iter
 }
 
-// GetLineCount is a wrapper around the C function gtk_text_buffer_get_line_count.
+// Obtains the number of lines in the buffer. This value is cached, so
+// the function is very fast.
+/*
+
+C function : gtk_text_buffer_get_line_count
+*/
 func (recv *TextBuffer) GetLineCount() int32 {
 	retC := C.gtk_text_buffer_get_line_count((*C.GtkTextBuffer)(recv.native))
 	retGo := (int32)(retC)
@@ -25964,7 +29413,12 @@ func (recv *TextBuffer) GetLineCount() int32 {
 	return retGo
 }
 
-// GetMark is a wrapper around the C function gtk_text_buffer_get_mark.
+// Returns the mark named @name in buffer @buffer, or %NULL if no such
+// mark exists in the buffer.
+/*
+
+C function : gtk_text_buffer_get_mark
+*/
 func (recv *TextBuffer) GetMark(name string) *TextMark {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -25980,7 +29434,14 @@ func (recv *TextBuffer) GetMark(name string) *TextMark {
 	return retGo
 }
 
-// GetModified is a wrapper around the C function gtk_text_buffer_get_modified.
+// Indicates whether the buffer has been modified since the last call
+// to gtk_text_buffer_set_modified() set the modification flag to
+// %FALSE. Used for example to enable a “save” function in a text
+// editor.
+/*
+
+C function : gtk_text_buffer_get_modified
+*/
 func (recv *TextBuffer) GetModified() bool {
 	retC := C.gtk_text_buffer_get_modified((*C.GtkTextBuffer)(recv.native))
 	retGo := retC == C.TRUE
@@ -25988,7 +29449,21 @@ func (recv *TextBuffer) GetModified() bool {
 	return retGo
 }
 
-// GetSelectionBound is a wrapper around the C function gtk_text_buffer_get_selection_bound.
+// Returns the mark that represents the selection bound.  Equivalent
+// to calling gtk_text_buffer_get_mark() to get the mark named
+// “selection_bound”, but very slightly more efficient, and involves
+// less typing.
+//
+// The currently-selected text in @buffer is the region between the
+// “selection_bound” and “insert” marks. If “selection_bound” and
+// “insert” are in the same place, then there is no current selection.
+// gtk_text_buffer_get_selection_bounds() is another convenient function
+// for handling the selection, if you just want to know whether there’s a
+// selection and what its bounds are.
+/*
+
+C function : gtk_text_buffer_get_selection_bound
+*/
 func (recv *TextBuffer) GetSelectionBound() *TextMark {
 	retC := C.gtk_text_buffer_get_selection_bound((*C.GtkTextBuffer)(recv.native))
 	retGo := TextMarkNewFromC(unsafe.Pointer(retC))
@@ -25996,7 +29471,16 @@ func (recv *TextBuffer) GetSelectionBound() *TextMark {
 	return retGo
 }
 
-// GetSelectionBounds is a wrapper around the C function gtk_text_buffer_get_selection_bounds.
+// Returns %TRUE if some text is selected; places the bounds
+// of the selection in @start and @end (if the selection has length 0,
+// then @start and @end are filled in with the same value).
+// @start and @end will be in ascending order. If @start and @end are
+// NULL, then they are not filled in, but the return value still indicates
+// whether text is selected.
+/*
+
+C function : gtk_text_buffer_get_selection_bounds
+*/
 func (recv *TextBuffer) GetSelectionBounds() (bool, *TextIter, *TextIter) {
 	var c_start C.GtkTextIter
 
@@ -26012,7 +29496,20 @@ func (recv *TextBuffer) GetSelectionBounds() (bool, *TextIter, *TextIter) {
 	return retGo, start, end
 }
 
-// GetSlice is a wrapper around the C function gtk_text_buffer_get_slice.
+// Returns the text in the range [@start,@end). Excludes undisplayed
+// text (text marked with tags that set the invisibility attribute) if
+// @include_hidden_chars is %FALSE. The returned string includes a
+// 0xFFFC character whenever the buffer contains
+// embedded images, so byte and character indexes into
+// the returned string do correspond to byte
+// and character indexes into the buffer. Contrast with
+// gtk_text_buffer_get_text(). Note that 0xFFFC can occur in normal
+// text as well, so it is not a reliable indicator that a pixbuf or
+// widget is in the buffer.
+/*
+
+C function : gtk_text_buffer_get_slice
+*/
 func (recv *TextBuffer) GetSlice(start *TextIter, end *TextIter, includeHiddenChars bool) string {
 	c_start := (*C.GtkTextIter)(C.NULL)
 	if start != nil {
@@ -26034,7 +29531,13 @@ func (recv *TextBuffer) GetSlice(start *TextIter, end *TextIter, includeHiddenCh
 	return retGo
 }
 
-// GetStartIter is a wrapper around the C function gtk_text_buffer_get_start_iter.
+// Initialized @iter with the first position in the text buffer. This
+// is the same as using gtk_text_buffer_get_iter_at_offset() to get
+// the iter at character offset 0.
+/*
+
+C function : gtk_text_buffer_get_start_iter
+*/
 func (recv *TextBuffer) GetStartIter() *TextIter {
 	var c_iter C.GtkTextIter
 
@@ -26045,7 +29548,11 @@ func (recv *TextBuffer) GetStartIter() *TextIter {
 	return iter
 }
 
-// GetTagTable is a wrapper around the C function gtk_text_buffer_get_tag_table.
+// Get the #GtkTextTagTable associated with this buffer.
+/*
+
+C function : gtk_text_buffer_get_tag_table
+*/
 func (recv *TextBuffer) GetTagTable() *TextTagTable {
 	retC := C.gtk_text_buffer_get_tag_table((*C.GtkTextBuffer)(recv.native))
 	retGo := TextTagTableNewFromC(unsafe.Pointer(retC))
@@ -26053,7 +29560,17 @@ func (recv *TextBuffer) GetTagTable() *TextTagTable {
 	return retGo
 }
 
-// GetText is a wrapper around the C function gtk_text_buffer_get_text.
+// Returns the text in the range [@start,@end). Excludes undisplayed
+// text (text marked with tags that set the invisibility attribute) if
+// @include_hidden_chars is %FALSE. Does not include characters
+// representing embedded images, so byte and character indexes into
+// the returned string do not correspond to byte
+// and character indexes into the buffer. Contrast with
+// gtk_text_buffer_get_slice().
+/*
+
+C function : gtk_text_buffer_get_text
+*/
 func (recv *TextBuffer) GetText(start *TextIter, end *TextIter, includeHiddenChars bool) string {
 	c_start := (*C.GtkTextIter)(C.NULL)
 	if start != nil {
@@ -26075,7 +29592,17 @@ func (recv *TextBuffer) GetText(start *TextIter, end *TextIter, includeHiddenCha
 	return retGo
 }
 
-// Insert is a wrapper around the C function gtk_text_buffer_insert.
+// Inserts @len bytes of @text at position @iter.  If @len is -1,
+// @text must be nul-terminated and will be inserted in its
+// entirety. Emits the “insert-text” signal; insertion actually occurs
+// in the default handler for the signal. @iter is invalidated when
+// insertion occurs (because the buffer contents change), but the
+// default signal handler revalidates it to point to the end of the
+// inserted text.
+/*
+
+C function : gtk_text_buffer_insert
+*/
 func (recv *TextBuffer) Insert(iter *TextIter, text string, len int32) {
 	c_iter := (*C.GtkTextIter)(C.NULL)
 	if iter != nil {
@@ -26092,7 +29619,12 @@ func (recv *TextBuffer) Insert(iter *TextIter, text string, len int32) {
 	return
 }
 
-// InsertAtCursor is a wrapper around the C function gtk_text_buffer_insert_at_cursor.
+// Simply calls gtk_text_buffer_insert(), using the current
+// cursor position as the insertion point.
+/*
+
+C function : gtk_text_buffer_insert_at_cursor
+*/
 func (recv *TextBuffer) InsertAtCursor(text string, len int32) {
 	c_text := C.CString(text)
 	defer C.free(unsafe.Pointer(c_text))
@@ -26104,7 +29636,21 @@ func (recv *TextBuffer) InsertAtCursor(text string, len int32) {
 	return
 }
 
-// InsertChildAnchor is a wrapper around the C function gtk_text_buffer_insert_child_anchor.
+// Inserts a child widget anchor into the text buffer at @iter. The
+// anchor will be counted as one character in character counts, and
+// when obtaining the buffer contents as a string, will be represented
+// by the Unicode “object replacement character” 0xFFFC. Note that the
+// “slice” variants for obtaining portions of the buffer as a string
+// include this character for child anchors, but the “text” variants do
+// not. E.g. see gtk_text_buffer_get_slice() and
+// gtk_text_buffer_get_text(). Consider
+// gtk_text_buffer_create_child_anchor() as a more convenient
+// alternative to this function. The buffer will add a reference to
+// the anchor, so you can unref it after insertion.
+/*
+
+C function : gtk_text_buffer_insert_child_anchor
+*/
 func (recv *TextBuffer) InsertChildAnchor(iter *TextIter, anchor *TextChildAnchor) {
 	c_iter := (*C.GtkTextIter)(C.NULL)
 	if iter != nil {
@@ -26121,7 +29667,18 @@ func (recv *TextBuffer) InsertChildAnchor(iter *TextIter, anchor *TextChildAncho
 	return
 }
 
-// InsertInteractive is a wrapper around the C function gtk_text_buffer_insert_interactive.
+// Like gtk_text_buffer_insert(), but the insertion will not occur if
+// @iter is at a non-editable location in the buffer. Usually you
+// want to prevent insertions at ineditable locations if the insertion
+// results from a user action (is interactive).
+//
+// @default_editable indicates the editability of text that doesn't
+// have a tag affecting editability applied to it. Typically the
+// result of gtk_text_view_get_editable() is appropriate here.
+/*
+
+C function : gtk_text_buffer_insert_interactive
+*/
 func (recv *TextBuffer) InsertInteractive(iter *TextIter, text string, len int32, defaultEditable bool) bool {
 	c_iter := (*C.GtkTextIter)(C.NULL)
 	if iter != nil {
@@ -26142,7 +29699,16 @@ func (recv *TextBuffer) InsertInteractive(iter *TextIter, text string, len int32
 	return retGo
 }
 
-// InsertInteractiveAtCursor is a wrapper around the C function gtk_text_buffer_insert_interactive_at_cursor.
+// Calls gtk_text_buffer_insert_interactive() at the cursor
+// position.
+//
+// @default_editable indicates the editability of text that doesn't
+// have a tag affecting editability applied to it. Typically the
+// result of gtk_text_view_get_editable() is appropriate here.
+/*
+
+C function : gtk_text_buffer_insert_interactive_at_cursor
+*/
 func (recv *TextBuffer) InsertInteractiveAtCursor(text string, len int32, defaultEditable bool) bool {
 	c_text := C.CString(text)
 	defer C.free(unsafe.Pointer(c_text))
@@ -26158,7 +29724,18 @@ func (recv *TextBuffer) InsertInteractiveAtCursor(text string, len int32, defaul
 	return retGo
 }
 
-// InsertPixbuf is a wrapper around the C function gtk_text_buffer_insert_pixbuf.
+// Inserts an image into the text buffer at @iter. The image will be
+// counted as one character in character counts, and when obtaining
+// the buffer contents as a string, will be represented by the Unicode
+// “object replacement character” 0xFFFC. Note that the “slice”
+// variants for obtaining portions of the buffer as a string include
+// this character for pixbufs, but the “text” variants do
+// not. e.g. see gtk_text_buffer_get_slice() and
+// gtk_text_buffer_get_text().
+/*
+
+C function : gtk_text_buffer_insert_pixbuf
+*/
 func (recv *TextBuffer) InsertPixbuf(iter *TextIter, pixbuf *gdkpixbuf.Pixbuf) {
 	c_iter := (*C.GtkTextIter)(C.NULL)
 	if iter != nil {
@@ -26175,7 +29752,18 @@ func (recv *TextBuffer) InsertPixbuf(iter *TextIter, pixbuf *gdkpixbuf.Pixbuf) {
 	return
 }
 
-// InsertRange is a wrapper around the C function gtk_text_buffer_insert_range.
+// Copies text, tags, and pixbufs between @start and @end (the order
+// of @start and @end doesn’t matter) and inserts the copy at @iter.
+// Used instead of simply getting/inserting text because it preserves
+// images and tags. If @start and @end are in a different buffer from
+// @buffer, the two buffers must share the same tag table.
+//
+// Implemented via emissions of the insert_text and apply_tag signals,
+// so expect those.
+/*
+
+C function : gtk_text_buffer_insert_range
+*/
 func (recv *TextBuffer) InsertRange(iter *TextIter, start *TextIter, end *TextIter) {
 	c_iter := (*C.GtkTextIter)(C.NULL)
 	if iter != nil {
@@ -26197,7 +29785,15 @@ func (recv *TextBuffer) InsertRange(iter *TextIter, start *TextIter, end *TextIt
 	return
 }
 
-// InsertRangeInteractive is a wrapper around the C function gtk_text_buffer_insert_range_interactive.
+// Same as gtk_text_buffer_insert_range(), but does nothing if the
+// insertion point isn’t editable. The @default_editable parameter
+// indicates whether the text is editable at @iter if no tags
+// enclosing @iter affect editability. Typically the result of
+// gtk_text_view_get_editable() is appropriate here.
+/*
+
+C function : gtk_text_buffer_insert_range_interactive
+*/
 func (recv *TextBuffer) InsertRangeInteractive(iter *TextIter, start *TextIter, end *TextIter, defaultEditable bool) bool {
 	c_iter := (*C.GtkTextIter)(C.NULL)
 	if iter != nil {
@@ -26227,7 +29823,12 @@ func (recv *TextBuffer) InsertRangeInteractive(iter *TextIter, start *TextIter, 
 
 // Unsupported : gtk_text_buffer_insert_with_tags_by_name : unsupported parameter ... : varargs
 
-// MoveMark is a wrapper around the C function gtk_text_buffer_move_mark.
+// Moves @mark to the new location @where. Emits the #GtkTextBuffer::mark-set
+// signal as notification of the move.
+/*
+
+C function : gtk_text_buffer_move_mark
+*/
 func (recv *TextBuffer) MoveMark(mark *TextMark, where *TextIter) {
 	c_mark := (*C.GtkTextMark)(C.NULL)
 	if mark != nil {
@@ -26244,7 +29845,12 @@ func (recv *TextBuffer) MoveMark(mark *TextMark, where *TextIter) {
 	return
 }
 
-// MoveMarkByName is a wrapper around the C function gtk_text_buffer_move_mark_by_name.
+// Moves the mark named @name (which must exist) to location @where.
+// See gtk_text_buffer_move_mark() for details.
+/*
+
+C function : gtk_text_buffer_move_mark_by_name
+*/
 func (recv *TextBuffer) MoveMarkByName(name string, where *TextIter) {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -26259,7 +29865,17 @@ func (recv *TextBuffer) MoveMarkByName(name string, where *TextIter) {
 	return
 }
 
-// PasteClipboard is a wrapper around the C function gtk_text_buffer_paste_clipboard.
+// Pastes the contents of a clipboard. If @override_location is %NULL, the
+// pasted text will be inserted at the cursor position, or the buffer selection
+// will be replaced if the selection is non-empty.
+//
+// Note: pasting is asynchronous, that is, we’ll ask for the paste data and
+// return, and at some point later after the main loop runs, the paste data will
+// be inserted.
+/*
+
+C function : gtk_text_buffer_paste_clipboard
+*/
 func (recv *TextBuffer) PasteClipboard(clipboard *Clipboard, overrideLocation *TextIter, defaultEditable bool) {
 	c_clipboard := (*C.GtkClipboard)(C.NULL)
 	if clipboard != nil {
@@ -26279,7 +29895,17 @@ func (recv *TextBuffer) PasteClipboard(clipboard *Clipboard, overrideLocation *T
 	return
 }
 
-// PlaceCursor is a wrapper around the C function gtk_text_buffer_place_cursor.
+// This function moves the “insert” and “selection_bound” marks
+// simultaneously.  If you move them to the same place in two steps
+// with gtk_text_buffer_move_mark(), you will temporarily select a
+// region in between their old and new locations, which can be pretty
+// inefficient since the temporarily-selected region will force stuff
+// to be recalculated. This function moves them as a unit, which can
+// be optimized.
+/*
+
+C function : gtk_text_buffer_place_cursor
+*/
 func (recv *TextBuffer) PlaceCursor(where *TextIter) {
 	c_where := (*C.GtkTextIter)(C.NULL)
 	if where != nil {
@@ -26291,7 +29917,15 @@ func (recv *TextBuffer) PlaceCursor(where *TextIter) {
 	return
 }
 
-// RemoveAllTags is a wrapper around the C function gtk_text_buffer_remove_all_tags.
+// Removes all tags in the range between @start and @end.  Be careful
+// with this function; it could remove tags added in code unrelated to
+// the code you’re currently writing. That is, using this function is
+// probably a bad idea if you have two or more unrelated code sections
+// that add tags.
+/*
+
+C function : gtk_text_buffer_remove_all_tags
+*/
 func (recv *TextBuffer) RemoveAllTags(start *TextIter, end *TextIter) {
 	c_start := (*C.GtkTextIter)(C.NULL)
 	if start != nil {
@@ -26308,7 +29942,12 @@ func (recv *TextBuffer) RemoveAllTags(start *TextIter, end *TextIter) {
 	return
 }
 
-// RemoveSelectionClipboard is a wrapper around the C function gtk_text_buffer_remove_selection_clipboard.
+// Removes a #GtkClipboard added with
+// gtk_text_buffer_add_selection_clipboard().
+/*
+
+C function : gtk_text_buffer_remove_selection_clipboard
+*/
 func (recv *TextBuffer) RemoveSelectionClipboard(clipboard *Clipboard) {
 	c_clipboard := (*C.GtkClipboard)(C.NULL)
 	if clipboard != nil {
@@ -26320,7 +29959,13 @@ func (recv *TextBuffer) RemoveSelectionClipboard(clipboard *Clipboard) {
 	return
 }
 
-// RemoveTag is a wrapper around the C function gtk_text_buffer_remove_tag.
+// Emits the “remove-tag” signal. The default handler for the signal
+// removes all occurrences of @tag from the given range. @start and
+// @end don’t have to be in order.
+/*
+
+C function : gtk_text_buffer_remove_tag
+*/
 func (recv *TextBuffer) RemoveTag(tag *TextTag, start *TextIter, end *TextIter) {
 	c_tag := (*C.GtkTextTag)(C.NULL)
 	if tag != nil {
@@ -26342,7 +29987,12 @@ func (recv *TextBuffer) RemoveTag(tag *TextTag, start *TextIter, end *TextIter) 
 	return
 }
 
-// RemoveTagByName is a wrapper around the C function gtk_text_buffer_remove_tag_by_name.
+// Calls gtk_text_tag_table_lookup() on the buffer’s tag table to
+// get a #GtkTextTag, then calls gtk_text_buffer_remove_tag().
+/*
+
+C function : gtk_text_buffer_remove_tag_by_name
+*/
 func (recv *TextBuffer) RemoveTagByName(name string, start *TextIter, end *TextIter) {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -26362,7 +30012,15 @@ func (recv *TextBuffer) RemoveTagByName(name string, start *TextIter, end *TextI
 	return
 }
 
-// SetModified is a wrapper around the C function gtk_text_buffer_set_modified.
+// Used to keep track of whether the buffer has been modified since the
+// last time it was saved. Whenever the buffer is saved to disk, call
+// gtk_text_buffer_set_modified (@buffer, FALSE). When the buffer is modified,
+// it will automatically toggled on the modified bit again. When the modified
+// bit flips, the buffer emits the #GtkTextBuffer::modified-changed signal.
+/*
+
+C function : gtk_text_buffer_set_modified
+*/
 func (recv *TextBuffer) SetModified(setting bool) {
 	c_setting :=
 		boolToGboolean(setting)
@@ -26372,7 +30030,12 @@ func (recv *TextBuffer) SetModified(setting bool) {
 	return
 }
 
-// SetText is a wrapper around the C function gtk_text_buffer_set_text.
+// Deletes current contents of @buffer, and inserts @text instead. If
+// @len is -1, @text must be nul-terminated. @text must be valid UTF-8.
+/*
+
+C function : gtk_text_buffer_set_text
+*/
 func (recv *TextBuffer) SetText(text string, len int32) {
 	c_text := C.CString(text)
 	defer C.free(unsafe.Pointer(c_text))
@@ -26482,7 +30145,14 @@ func CastToTextChildAnchor(object *gobject.Object) *TextChildAnchor {
 	return TextChildAnchorNewFromC(object.ToC())
 }
 
-// TextChildAnchorNew is a wrapper around the C function gtk_text_child_anchor_new.
+// Creates a new #GtkTextChildAnchor. Usually you would then insert
+// it into a #GtkTextBuffer with gtk_text_buffer_insert_child_anchor().
+// To perform the creation and insertion in one step, use the
+// convenience function gtk_text_buffer_create_child_anchor().
+/*
+
+C function : gtk_text_child_anchor_new
+*/
 func TextChildAnchorNew() *TextChildAnchor {
 	retC := C.gtk_text_child_anchor_new()
 	retGo := TextChildAnchorNewFromC(unsafe.Pointer(retC))
@@ -26490,7 +30160,16 @@ func TextChildAnchorNew() *TextChildAnchor {
 	return retGo
 }
 
-// GetDeleted is a wrapper around the C function gtk_text_child_anchor_get_deleted.
+// Determines whether a child anchor has been deleted from
+// the buffer. Keep in mind that the child anchor will be
+// unreferenced when removed from the buffer, so you need to
+// hold your own reference (with g_object_ref()) if you plan
+// to use this function — otherwise all deleted child anchors
+// will also be finalized.
+/*
+
+C function : gtk_text_child_anchor_get_deleted
+*/
 func (recv *TextChildAnchor) GetDeleted() bool {
 	retC := C.gtk_text_child_anchor_get_deleted((*C.GtkTextChildAnchor)(recv.native))
 	retGo := retC == C.TRUE
@@ -26498,7 +30177,12 @@ func (recv *TextChildAnchor) GetDeleted() bool {
 	return retGo
 }
 
-// GetWidgets is a wrapper around the C function gtk_text_child_anchor_get_widgets.
+// Gets a list of all widgets anchored at this child anchor.
+// The returned list should be freed with g_list_free().
+/*
+
+C function : gtk_text_child_anchor_get_widgets
+*/
 func (recv *TextChildAnchor) GetWidgets() *glib.List {
 	retC := C.gtk_text_child_anchor_get_widgets((*C.GtkTextChildAnchor)(recv.native))
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
@@ -26540,7 +30224,12 @@ func CastToTextMark(object *gobject.Object) *TextMark {
 	return TextMarkNewFromC(object.ToC())
 }
 
-// GetBuffer is a wrapper around the C function gtk_text_mark_get_buffer.
+// Gets the buffer this mark is located inside,
+// or %NULL if the mark is deleted.
+/*
+
+C function : gtk_text_mark_get_buffer
+*/
 func (recv *TextMark) GetBuffer() *TextBuffer {
 	retC := C.gtk_text_mark_get_buffer((*C.GtkTextMark)(recv.native))
 	retGo := TextBufferNewFromC(unsafe.Pointer(retC))
@@ -26548,7 +30237,13 @@ func (recv *TextMark) GetBuffer() *TextBuffer {
 	return retGo
 }
 
-// GetDeleted is a wrapper around the C function gtk_text_mark_get_deleted.
+// Returns %TRUE if the mark has been removed from its buffer
+// with gtk_text_buffer_delete_mark(). See gtk_text_buffer_add_mark()
+// for a way to add it to a buffer again.
+/*
+
+C function : gtk_text_mark_get_deleted
+*/
 func (recv *TextMark) GetDeleted() bool {
 	retC := C.gtk_text_mark_get_deleted((*C.GtkTextMark)(recv.native))
 	retGo := retC == C.TRUE
@@ -26556,7 +30251,11 @@ func (recv *TextMark) GetDeleted() bool {
 	return retGo
 }
 
-// GetLeftGravity is a wrapper around the C function gtk_text_mark_get_left_gravity.
+// Determines whether the mark has left gravity.
+/*
+
+C function : gtk_text_mark_get_left_gravity
+*/
 func (recv *TextMark) GetLeftGravity() bool {
 	retC := C.gtk_text_mark_get_left_gravity((*C.GtkTextMark)(recv.native))
 	retGo := retC == C.TRUE
@@ -26564,7 +30263,11 @@ func (recv *TextMark) GetLeftGravity() bool {
 	return retGo
 }
 
-// GetName is a wrapper around the C function gtk_text_mark_get_name.
+// Returns the mark name; returns NULL for anonymous marks.
+/*
+
+C function : gtk_text_mark_get_name
+*/
 func (recv *TextMark) GetName() string {
 	retC := C.gtk_text_mark_get_name((*C.GtkTextMark)(recv.native))
 	retGo := C.GoString(retC)
@@ -26572,7 +30275,12 @@ func (recv *TextMark) GetName() string {
 	return retGo
 }
 
-// GetVisible is a wrapper around the C function gtk_text_mark_get_visible.
+// Returns %TRUE if the mark is visible (i.e. a cursor is displayed
+// for it).
+/*
+
+C function : gtk_text_mark_get_visible
+*/
 func (recv *TextMark) GetVisible() bool {
 	retC := C.gtk_text_mark_get_visible((*C.GtkTextMark)(recv.native))
 	retGo := retC == C.TRUE
@@ -26580,7 +30288,15 @@ func (recv *TextMark) GetVisible() bool {
 	return retGo
 }
 
-// SetVisible is a wrapper around the C function gtk_text_mark_set_visible.
+// Sets the visibility of @mark; the insertion point is normally
+// visible, i.e. you can see it as a vertical bar. Also, the text
+// widget uses a visible mark to indicate where a drop will occur when
+// dragging-and-dropping text. Most other marks are not visible.
+// Marks are not visible by default.
+/*
+
+C function : gtk_text_mark_set_visible
+*/
 func (recv *TextMark) SetVisible(setting bool) {
 	c_setting :=
 		boolToGboolean(setting)
@@ -26626,7 +30342,12 @@ func CastToTextTag(object *gobject.Object) *TextTag {
 
 // Unsupported signal 'event' for TextTag : unsupported parameter event : no type generator for Gdk.Event,
 
-// TextTagNew is a wrapper around the C function gtk_text_tag_new.
+// Creates a #GtkTextTag. Configure the tag using object arguments,
+// i.e. using g_object_set().
+/*
+
+C function : gtk_text_tag_new
+*/
 func TextTagNew(name string) *TextTag {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -26639,7 +30360,11 @@ func TextTagNew(name string) *TextTag {
 
 // Unsupported : gtk_text_tag_event : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
 
-// GetPriority is a wrapper around the C function gtk_text_tag_get_priority.
+// Get the tag priority.
+/*
+
+C function : gtk_text_tag_get_priority
+*/
 func (recv *TextTag) GetPriority() int32 {
 	retC := C.gtk_text_tag_get_priority((*C.GtkTextTag)(recv.native))
 	retGo := (int32)(retC)
@@ -26647,7 +30372,21 @@ func (recv *TextTag) GetPriority() int32 {
 	return retGo
 }
 
-// SetPriority is a wrapper around the C function gtk_text_tag_set_priority.
+// Sets the priority of a #GtkTextTag. Valid priorities
+// start at 0 and go to one less than gtk_text_tag_table_get_size().
+// Each tag in a table has a unique priority; setting the priority
+// of one tag shifts the priorities of all the other tags in the
+// table to maintain a unique priority for each tag. Higher priority
+// tags “win” if two tags both set the same text attribute. When adding
+// a tag to a tag table, it will be assigned the highest priority in
+// the table by default; so normally the precedence of a set of tags
+// is the order in which they were added to the table, or created with
+// gtk_text_buffer_create_tag(), which adds the tag to the buffer’s table
+// automatically.
+/*
+
+C function : gtk_text_tag_set_priority
+*/
 func (recv *TextTag) SetPriority(priority int32) {
 	c_priority := (C.gint)(priority)
 
@@ -26869,7 +30608,12 @@ func texttagtable_tagRemovedHandler(_ *C.GObject, c_tag *C.GtkTextTag, data C.gp
 	callback(tag)
 }
 
-// TextTagTableNew is a wrapper around the C function gtk_text_tag_table_new.
+// Creates a new #GtkTextTagTable. The table contains no tags by
+// default.
+/*
+
+C function : gtk_text_tag_table_new
+*/
 func TextTagTableNew() *TextTagTable {
 	retC := C.gtk_text_tag_table_new()
 	retGo := TextTagTableNewFromC(unsafe.Pointer(retC))
@@ -26877,7 +30621,15 @@ func TextTagTableNew() *TextTagTable {
 	return retGo
 }
 
-// Add is a wrapper around the C function gtk_text_tag_table_add.
+// Add a tag to the table. The tag is assigned the highest priority
+// in the table.
+//
+// @tag must not be in a tag table already, and may not have
+// the same name as an already-added tag.
+/*
+
+C function : gtk_text_tag_table_add
+*/
 func (recv *TextTagTable) Add(tag *TextTag) bool {
 	c_tag := (*C.GtkTextTag)(C.NULL)
 	if tag != nil {
@@ -26892,7 +30644,11 @@ func (recv *TextTagTable) Add(tag *TextTag) bool {
 
 // Unsupported : gtk_text_tag_table_foreach : unsupported parameter func : no type generator for TextTagTableForeach (GtkTextTagTableForeach) for param func
 
-// GetSize is a wrapper around the C function gtk_text_tag_table_get_size.
+// Returns the size of the table (number of tags)
+/*
+
+C function : gtk_text_tag_table_get_size
+*/
 func (recv *TextTagTable) GetSize() int32 {
 	retC := C.gtk_text_tag_table_get_size((*C.GtkTextTagTable)(recv.native))
 	retGo := (int32)(retC)
@@ -26900,7 +30656,11 @@ func (recv *TextTagTable) GetSize() int32 {
 	return retGo
 }
 
-// Lookup is a wrapper around the C function gtk_text_tag_table_lookup.
+// Look up a named tag.
+/*
+
+C function : gtk_text_tag_table_lookup
+*/
 func (recv *TextTagTable) Lookup(name string) *TextTag {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -26916,7 +30676,14 @@ func (recv *TextTagTable) Lookup(name string) *TextTag {
 	return retGo
 }
 
-// Remove is a wrapper around the C function gtk_text_tag_table_remove.
+// Remove a tag from the table. If a #GtkTextBuffer has @table as its tag table,
+// the tag is removed from the buffer. The table’s reference to the tag is
+// removed, so the tag will end up destroyed if you don’t have a reference to
+// it.
+/*
+
+C function : gtk_text_tag_table_remove
+*/
 func (recv *TextTagTable) Remove(tag *TextTag) {
 	c_tag := (*C.GtkTextTag)(C.NULL)
 	if tag != nil {
@@ -27507,7 +31274,14 @@ func textview_toggleOverwriteHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// TextViewNew is a wrapper around the C function gtk_text_view_new.
+// Creates a new #GtkTextView. If you don’t call gtk_text_view_set_buffer()
+// before using the text view, an empty default buffer will be created
+// for you. Get the buffer with gtk_text_view_get_buffer(). If you want
+// to specify your own buffer, consider gtk_text_view_new_with_buffer().
+/*
+
+C function : gtk_text_view_new
+*/
 func TextViewNew() *TextView {
 	retC := C.gtk_text_view_new()
 	retGo := TextViewNewFromC(unsafe.Pointer(retC))
@@ -27515,7 +31289,16 @@ func TextViewNew() *TextView {
 	return retGo
 }
 
-// TextViewNewWithBuffer is a wrapper around the C function gtk_text_view_new_with_buffer.
+// Creates a new #GtkTextView widget displaying the buffer
+// @buffer. One buffer can be shared among many widgets.
+// @buffer may be %NULL to create a default buffer, in which case
+// this function is equivalent to gtk_text_view_new(). The
+// text view adds its own reference count to the buffer; it does not
+// take over an existing reference.
+/*
+
+C function : gtk_text_view_new_with_buffer
+*/
 func TextViewNewWithBuffer(buffer *TextBuffer) *TextView {
 	c_buffer := (*C.GtkTextBuffer)(C.NULL)
 	if buffer != nil {
@@ -27528,7 +31311,11 @@ func TextViewNewWithBuffer(buffer *TextBuffer) *TextView {
 	return retGo
 }
 
-// AddChildAtAnchor is a wrapper around the C function gtk_text_view_add_child_at_anchor.
+// Adds a child widget in the text buffer, at the given @anchor.
+/*
+
+C function : gtk_text_view_add_child_at_anchor
+*/
 func (recv *TextView) AddChildAtAnchor(child *Widget, anchor *TextChildAnchor) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -27545,7 +31332,20 @@ func (recv *TextView) AddChildAtAnchor(child *Widget, anchor *TextChildAnchor) {
 	return
 }
 
-// AddChildInWindow is a wrapper around the C function gtk_text_view_add_child_in_window.
+// Adds a child at fixed coordinates in one of the text widget's
+// windows.
+//
+// The window must have nonzero size (see
+// gtk_text_view_set_border_window_size()). Note that the child
+// coordinates are given relative to scrolling. When
+// placing a child in #GTK_TEXT_WINDOW_WIDGET, scrolling is
+// irrelevant, the child floats above all scrollable areas. But when
+// placing a child in one of the scrollable windows (border windows or
+// text window) it will move with the scrolling as needed.
+/*
+
+C function : gtk_text_view_add_child_in_window
+*/
 func (recv *TextView) AddChildInWindow(child *Widget, whichWindow TextWindowType, xpos int32, ypos int32) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -27563,7 +31363,18 @@ func (recv *TextView) AddChildInWindow(child *Widget, whichWindow TextWindowType
 	return
 }
 
-// BackwardDisplayLine is a wrapper around the C function gtk_text_view_backward_display_line.
+// Moves the given @iter backward by one display (wrapped) line.
+// A display line is different from a paragraph. Paragraphs are
+// separated by newlines or other paragraph separator characters.
+// Display lines are created by line-wrapping a paragraph. If
+// wrapping is turned off, display lines and paragraphs will be the
+// same. Display lines are divided differently for each view, since
+// they depend on the view’s width; paragraphs are the same in all
+// views, since they depend on the contents of the #GtkTextBuffer.
+/*
+
+C function : gtk_text_view_backward_display_line
+*/
 func (recv *TextView) BackwardDisplayLine(iter *TextIter) bool {
 	c_iter := (*C.GtkTextIter)(C.NULL)
 	if iter != nil {
@@ -27576,7 +31387,18 @@ func (recv *TextView) BackwardDisplayLine(iter *TextIter) bool {
 	return retGo
 }
 
-// BackwardDisplayLineStart is a wrapper around the C function gtk_text_view_backward_display_line_start.
+// Moves the given @iter backward to the next display line start.
+// A display line is different from a paragraph. Paragraphs are
+// separated by newlines or other paragraph separator characters.
+// Display lines are created by line-wrapping a paragraph. If
+// wrapping is turned off, display lines and paragraphs will be the
+// same. Display lines are divided differently for each view, since
+// they depend on the view’s width; paragraphs are the same in all
+// views, since they depend on the contents of the #GtkTextBuffer.
+/*
+
+C function : gtk_text_view_backward_display_line_start
+*/
 func (recv *TextView) BackwardDisplayLineStart(iter *TextIter) bool {
 	c_iter := (*C.GtkTextIter)(C.NULL)
 	if iter != nil {
@@ -27589,7 +31411,15 @@ func (recv *TextView) BackwardDisplayLineStart(iter *TextIter) bool {
 	return retGo
 }
 
-// BufferToWindowCoords is a wrapper around the C function gtk_text_view_buffer_to_window_coords.
+// Converts coordinate (@buffer_x, @buffer_y) to coordinates for the window
+// @win, and stores the result in (@window_x, @window_y).
+//
+// Note that you can’t convert coordinates for a nonexisting window (see
+// gtk_text_view_set_border_window_size()).
+/*
+
+C function : gtk_text_view_buffer_to_window_coords
+*/
 func (recv *TextView) BufferToWindowCoords(win TextWindowType, bufferX int32, bufferY int32) (int32, int32) {
 	c_win := (C.GtkTextWindowType)(win)
 
@@ -27610,7 +31440,18 @@ func (recv *TextView) BufferToWindowCoords(win TextWindowType, bufferX int32, bu
 	return windowX, windowY
 }
 
-// ForwardDisplayLine is a wrapper around the C function gtk_text_view_forward_display_line.
+// Moves the given @iter forward by one display (wrapped) line.
+// A display line is different from a paragraph. Paragraphs are
+// separated by newlines or other paragraph separator characters.
+// Display lines are created by line-wrapping a paragraph. If
+// wrapping is turned off, display lines and paragraphs will be the
+// same. Display lines are divided differently for each view, since
+// they depend on the view’s width; paragraphs are the same in all
+// views, since they depend on the contents of the #GtkTextBuffer.
+/*
+
+C function : gtk_text_view_forward_display_line
+*/
 func (recv *TextView) ForwardDisplayLine(iter *TextIter) bool {
 	c_iter := (*C.GtkTextIter)(C.NULL)
 	if iter != nil {
@@ -27623,7 +31464,18 @@ func (recv *TextView) ForwardDisplayLine(iter *TextIter) bool {
 	return retGo
 }
 
-// ForwardDisplayLineEnd is a wrapper around the C function gtk_text_view_forward_display_line_end.
+// Moves the given @iter forward to the next display line end.
+// A display line is different from a paragraph. Paragraphs are
+// separated by newlines or other paragraph separator characters.
+// Display lines are created by line-wrapping a paragraph. If
+// wrapping is turned off, display lines and paragraphs will be the
+// same. Display lines are divided differently for each view, since
+// they depend on the view’s width; paragraphs are the same in all
+// views, since they depend on the contents of the #GtkTextBuffer.
+/*
+
+C function : gtk_text_view_forward_display_line_end
+*/
 func (recv *TextView) ForwardDisplayLineEnd(iter *TextIter) bool {
 	c_iter := (*C.GtkTextIter)(C.NULL)
 	if iter != nil {
@@ -27636,7 +31488,12 @@ func (recv *TextView) ForwardDisplayLineEnd(iter *TextIter) bool {
 	return retGo
 }
 
-// GetBorderWindowSize is a wrapper around the C function gtk_text_view_get_border_window_size.
+// Gets the width of the specified border window. See
+// gtk_text_view_set_border_window_size().
+/*
+
+C function : gtk_text_view_get_border_window_size
+*/
 func (recv *TextView) GetBorderWindowSize(type_ TextWindowType) int32 {
 	c_type := (C.GtkTextWindowType)(type_)
 
@@ -27646,7 +31503,13 @@ func (recv *TextView) GetBorderWindowSize(type_ TextWindowType) int32 {
 	return retGo
 }
 
-// GetBuffer is a wrapper around the C function gtk_text_view_get_buffer.
+// Returns the #GtkTextBuffer being displayed by this text view.
+// The reference count on the buffer is not incremented; the caller
+// of this function won’t own a new reference.
+/*
+
+C function : gtk_text_view_get_buffer
+*/
 func (recv *TextView) GetBuffer() *TextBuffer {
 	retC := C.gtk_text_view_get_buffer((*C.GtkTextView)(recv.native))
 	retGo := TextBufferNewFromC(unsafe.Pointer(retC))
@@ -27654,7 +31517,11 @@ func (recv *TextView) GetBuffer() *TextBuffer {
 	return retGo
 }
 
-// GetCursorVisible is a wrapper around the C function gtk_text_view_get_cursor_visible.
+// Find out whether the cursor should be displayed.
+/*
+
+C function : gtk_text_view_get_cursor_visible
+*/
 func (recv *TextView) GetCursorVisible() bool {
 	retC := C.gtk_text_view_get_cursor_visible((*C.GtkTextView)(recv.native))
 	retGo := retC == C.TRUE
@@ -27662,7 +31529,18 @@ func (recv *TextView) GetCursorVisible() bool {
 	return retGo
 }
 
-// GetDefaultAttributes is a wrapper around the C function gtk_text_view_get_default_attributes.
+// Obtains a copy of the default text attributes. These are the
+// attributes used for text unless a tag overrides them.
+// You’d typically pass the default attributes in to
+// gtk_text_iter_get_attributes() in order to get the
+// attributes in effect at a given text position.
+//
+// The return value is a copy owned by the caller of this function,
+// and should be freed with gtk_text_attributes_unref().
+/*
+
+C function : gtk_text_view_get_default_attributes
+*/
 func (recv *TextView) GetDefaultAttributes() *TextAttributes {
 	retC := C.gtk_text_view_get_default_attributes((*C.GtkTextView)(recv.native))
 	retGo := TextAttributesNewFromC(unsafe.Pointer(retC))
@@ -27670,7 +31548,12 @@ func (recv *TextView) GetDefaultAttributes() *TextAttributes {
 	return retGo
 }
 
-// GetEditable is a wrapper around the C function gtk_text_view_get_editable.
+// Returns the default editability of the #GtkTextView. Tags in the
+// buffer may override this setting for some ranges of text.
+/*
+
+C function : gtk_text_view_get_editable
+*/
 func (recv *TextView) GetEditable() bool {
 	retC := C.gtk_text_view_get_editable((*C.GtkTextView)(recv.native))
 	retGo := retC == C.TRUE
@@ -27678,7 +31561,13 @@ func (recv *TextView) GetEditable() bool {
 	return retGo
 }
 
-// GetIndent is a wrapper around the C function gtk_text_view_get_indent.
+// Gets the default indentation of paragraphs in @text_view.
+// Tags in the view’s buffer may override the default.
+// The indentation may be negative.
+/*
+
+C function : gtk_text_view_get_indent
+*/
 func (recv *TextView) GetIndent() int32 {
 	retC := C.gtk_text_view_get_indent((*C.GtkTextView)(recv.native))
 	retGo := (int32)(retC)
@@ -27686,7 +31575,15 @@ func (recv *TextView) GetIndent() int32 {
 	return retGo
 }
 
-// GetIterAtLocation is a wrapper around the C function gtk_text_view_get_iter_at_location.
+// Retrieves the iterator at buffer coordinates @x and @y. Buffer
+// coordinates are coordinates for the entire buffer, not just the
+// currently-displayed portion.  If you have coordinates from an
+// event, you have to convert those to buffer coordinates with
+// gtk_text_view_window_to_buffer_coords().
+/*
+
+C function : gtk_text_view_get_iter_at_location
+*/
 func (recv *TextView) GetIterAtLocation(x int32, y int32) *TextIter {
 	var c_iter C.GtkTextIter
 
@@ -27703,7 +31600,12 @@ func (recv *TextView) GetIterAtLocation(x int32, y int32) *TextIter {
 
 // Unsupported : gtk_text_view_get_iter_location : unsupported parameter location : Blacklisted record : GdkRectangle
 
-// GetJustification is a wrapper around the C function gtk_text_view_get_justification.
+// Gets the default justification of paragraphs in @text_view.
+// Tags in the buffer may override the default.
+/*
+
+C function : gtk_text_view_get_justification
+*/
 func (recv *TextView) GetJustification() Justification {
 	retC := C.gtk_text_view_get_justification((*C.GtkTextView)(recv.native))
 	retGo := (Justification)(retC)
@@ -27711,7 +31613,12 @@ func (recv *TextView) GetJustification() Justification {
 	return retGo
 }
 
-// GetLeftMargin is a wrapper around the C function gtk_text_view_get_left_margin.
+// Gets the default left margin size of paragraphs in the @text_view.
+// Tags in the buffer may override the default.
+/*
+
+C function : gtk_text_view_get_left_margin
+*/
 func (recv *TextView) GetLeftMargin() int32 {
 	retC := C.gtk_text_view_get_left_margin((*C.GtkTextView)(recv.native))
 	retGo := (int32)(retC)
@@ -27719,7 +31626,15 @@ func (recv *TextView) GetLeftMargin() int32 {
 	return retGo
 }
 
-// GetLineAtY is a wrapper around the C function gtk_text_view_get_line_at_y.
+// Gets the #GtkTextIter at the start of the line containing
+// the coordinate @y. @y is in buffer coordinates, convert from
+// window coordinates with gtk_text_view_window_to_buffer_coords().
+// If non-%NULL, @line_top will be filled with the coordinate of the top
+// edge of the line.
+/*
+
+C function : gtk_text_view_get_line_at_y
+*/
 func (recv *TextView) GetLineAtY(y int32) (*TextIter, int32) {
 	var c_target_iter C.GtkTextIter
 
@@ -27736,7 +31651,13 @@ func (recv *TextView) GetLineAtY(y int32) (*TextIter, int32) {
 	return targetIter, lineTop
 }
 
-// GetLineYrange is a wrapper around the C function gtk_text_view_get_line_yrange.
+// Gets the y coordinate of the top of the line containing @iter,
+// and the height of the line. The coordinate is a buffer coordinate;
+// convert to window coordinates with gtk_text_view_buffer_to_window_coords().
+/*
+
+C function : gtk_text_view_get_line_yrange
+*/
 func (recv *TextView) GetLineYrange(iter *TextIter) (int32, int32) {
 	c_iter := (*C.GtkTextIter)(C.NULL)
 	if iter != nil {
@@ -27756,7 +31677,13 @@ func (recv *TextView) GetLineYrange(iter *TextIter) (int32, int32) {
 	return y, height
 }
 
-// GetPixelsAboveLines is a wrapper around the C function gtk_text_view_get_pixels_above_lines.
+// Gets the default number of pixels to put above paragraphs.
+// Adding this function with gtk_text_view_get_pixels_below_lines()
+// is equal to the line space between each paragraph.
+/*
+
+C function : gtk_text_view_get_pixels_above_lines
+*/
 func (recv *TextView) GetPixelsAboveLines() int32 {
 	retC := C.gtk_text_view_get_pixels_above_lines((*C.GtkTextView)(recv.native))
 	retGo := (int32)(retC)
@@ -27764,7 +31691,14 @@ func (recv *TextView) GetPixelsAboveLines() int32 {
 	return retGo
 }
 
-// GetPixelsBelowLines is a wrapper around the C function gtk_text_view_get_pixels_below_lines.
+// Gets the value set by gtk_text_view_set_pixels_below_lines().
+//
+// The line space is the sum of the value returned by this function and the
+// value returned by gtk_text_view_get_pixels_above_lines().
+/*
+
+C function : gtk_text_view_get_pixels_below_lines
+*/
 func (recv *TextView) GetPixelsBelowLines() int32 {
 	retC := C.gtk_text_view_get_pixels_below_lines((*C.GtkTextView)(recv.native))
 	retGo := (int32)(retC)
@@ -27772,7 +31706,11 @@ func (recv *TextView) GetPixelsBelowLines() int32 {
 	return retGo
 }
 
-// GetPixelsInsideWrap is a wrapper around the C function gtk_text_view_get_pixels_inside_wrap.
+// Gets the value set by gtk_text_view_set_pixels_inside_wrap().
+/*
+
+C function : gtk_text_view_get_pixels_inside_wrap
+*/
 func (recv *TextView) GetPixelsInsideWrap() int32 {
 	retC := C.gtk_text_view_get_pixels_inside_wrap((*C.GtkTextView)(recv.native))
 	retGo := (int32)(retC)
@@ -27780,7 +31718,12 @@ func (recv *TextView) GetPixelsInsideWrap() int32 {
 	return retGo
 }
 
-// GetRightMargin is a wrapper around the C function gtk_text_view_get_right_margin.
+// Gets the default right margin for text in @text_view. Tags
+// in the buffer may override the default.
+/*
+
+C function : gtk_text_view_get_right_margin
+*/
 func (recv *TextView) GetRightMargin() int32 {
 	retC := C.gtk_text_view_get_right_margin((*C.GtkTextView)(recv.native))
 	retGo := (int32)(retC)
@@ -27788,7 +31731,14 @@ func (recv *TextView) GetRightMargin() int32 {
 	return retGo
 }
 
-// GetTabs is a wrapper around the C function gtk_text_view_get_tabs.
+// Gets the default tabs for @text_view. Tags in the buffer may
+// override the defaults. The returned array will be %NULL if
+// “standard” (8-space) tabs are used. Free the return value
+// with pango_tab_array_free().
+/*
+
+C function : gtk_text_view_get_tabs
+*/
 func (recv *TextView) GetTabs() *pango.TabArray {
 	retC := C.gtk_text_view_get_tabs((*C.GtkTextView)(recv.native))
 	var retGo (*pango.TabArray)
@@ -27803,7 +31753,16 @@ func (recv *TextView) GetTabs() *pango.TabArray {
 
 // Unsupported : gtk_text_view_get_visible_rect : unsupported parameter visible_rect : Blacklisted record : GdkRectangle
 
-// GetWindow is a wrapper around the C function gtk_text_view_get_window.
+// Retrieves the #GdkWindow corresponding to an area of the text view;
+// possible windows include the overall widget window, child windows
+// on the left, right, top, bottom, and the window that displays the
+// text buffer. Windows are %NULL and nonexistent if their width or
+// height is 0, and are nonexistent before the widget has been
+// realized.
+/*
+
+C function : gtk_text_view_get_window
+*/
 func (recv *TextView) GetWindow(win TextWindowType) *gdk.Window {
 	c_win := (C.GtkTextWindowType)(win)
 
@@ -27818,7 +31777,14 @@ func (recv *TextView) GetWindow(win TextWindowType) *gdk.Window {
 	return retGo
 }
 
-// GetWindowType is a wrapper around the C function gtk_text_view_get_window_type.
+// Usually used to find out which window an event corresponds to.
+//
+// If you connect to an event signal on @text_view, this function
+// should be called on `event->window` to see which window it was.
+/*
+
+C function : gtk_text_view_get_window_type
+*/
 func (recv *TextView) GetWindowType(window *gdk.Window) TextWindowType {
 	c_window := (*C.GdkWindow)(C.NULL)
 	if window != nil {
@@ -27831,7 +31797,11 @@ func (recv *TextView) GetWindowType(window *gdk.Window) TextWindowType {
 	return retGo
 }
 
-// GetWrapMode is a wrapper around the C function gtk_text_view_get_wrap_mode.
+// Gets the line wrapping for the view.
+/*
+
+C function : gtk_text_view_get_wrap_mode
+*/
 func (recv *TextView) GetWrapMode() WrapMode {
 	retC := C.gtk_text_view_get_wrap_mode((*C.GtkTextView)(recv.native))
 	retGo := (WrapMode)(retC)
@@ -27839,7 +31809,11 @@ func (recv *TextView) GetWrapMode() WrapMode {
 	return retGo
 }
 
-// MoveChild is a wrapper around the C function gtk_text_view_move_child.
+// Updates the position of a child, as for gtk_text_view_add_child_in_window().
+/*
+
+C function : gtk_text_view_move_child
+*/
 func (recv *TextView) MoveChild(child *Widget, xpos int32, ypos int32) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -27855,7 +31829,12 @@ func (recv *TextView) MoveChild(child *Widget, xpos int32, ypos int32) {
 	return
 }
 
-// MoveMarkOnscreen is a wrapper around the C function gtk_text_view_move_mark_onscreen.
+// Moves a mark within the buffer so that it's
+// located within the currently-visible text area.
+/*
+
+C function : gtk_text_view_move_mark_onscreen
+*/
 func (recv *TextView) MoveMarkOnscreen(mark *TextMark) bool {
 	c_mark := (*C.GtkTextMark)(C.NULL)
 	if mark != nil {
@@ -27868,7 +31847,21 @@ func (recv *TextView) MoveMarkOnscreen(mark *TextMark) bool {
 	return retGo
 }
 
-// MoveVisually is a wrapper around the C function gtk_text_view_move_visually.
+// Move the iterator a given number of characters visually, treating
+// it as the strong cursor position. If @count is positive, then the
+// new strong cursor position will be @count positions to the right of
+// the old cursor position. If @count is negative then the new strong
+// cursor position will be @count positions to the left of the old
+// cursor position.
+//
+// In the presence of bi-directional text, the correspondence
+// between logical and visual order will depend on the direction
+// of the current run, and there may be jumps when the cursor
+// is moved off of the end of a run.
+/*
+
+C function : gtk_text_view_move_visually
+*/
 func (recv *TextView) MoveVisually(iter *TextIter, count int32) bool {
 	c_iter := (*C.GtkTextIter)(C.NULL)
 	if iter != nil {
@@ -27883,7 +31876,12 @@ func (recv *TextView) MoveVisually(iter *TextIter, count int32) bool {
 	return retGo
 }
 
-// PlaceCursorOnscreen is a wrapper around the C function gtk_text_view_place_cursor_onscreen.
+// Moves the cursor to the currently visible region of the
+// buffer, it it isn’t there already.
+/*
+
+C function : gtk_text_view_place_cursor_onscreen
+*/
 func (recv *TextView) PlaceCursorOnscreen() bool {
 	retC := C.gtk_text_view_place_cursor_onscreen((*C.GtkTextView)(recv.native))
 	retGo := retC == C.TRUE
@@ -27891,7 +31889,12 @@ func (recv *TextView) PlaceCursorOnscreen() bool {
 	return retGo
 }
 
-// ScrollMarkOnscreen is a wrapper around the C function gtk_text_view_scroll_mark_onscreen.
+// Scrolls @text_view the minimum distance such that @mark is contained
+// within the visible area of the widget.
+/*
+
+C function : gtk_text_view_scroll_mark_onscreen
+*/
 func (recv *TextView) ScrollMarkOnscreen(mark *TextMark) {
 	c_mark := (*C.GtkTextMark)(C.NULL)
 	if mark != nil {
@@ -27903,7 +31906,24 @@ func (recv *TextView) ScrollMarkOnscreen(mark *TextMark) {
 	return
 }
 
-// ScrollToIter is a wrapper around the C function gtk_text_view_scroll_to_iter.
+// Scrolls @text_view so that @iter is on the screen in the position
+// indicated by @xalign and @yalign. An alignment of 0.0 indicates
+// left or top, 1.0 indicates right or bottom, 0.5 means center.
+// If @use_align is %FALSE, the text scrolls the minimal distance to
+// get the mark onscreen, possibly not scrolling at all. The effective
+// screen for purposes of this function is reduced by a margin of size
+// @within_margin.
+//
+// Note that this function uses the currently-computed height of the
+// lines in the text buffer. Line heights are computed in an idle
+// handler; so this function may not have the desired effect if it’s
+// called before the height computations. To avoid oddness, consider
+// using gtk_text_view_scroll_to_mark() which saves a point to be
+// scrolled to after line validation.
+/*
+
+C function : gtk_text_view_scroll_to_iter
+*/
 func (recv *TextView) ScrollToIter(iter *TextIter, withinMargin float64, useAlign bool, xalign float64, yalign float64) bool {
 	c_iter := (*C.GtkTextIter)(C.NULL)
 	if iter != nil {
@@ -27925,7 +31945,17 @@ func (recv *TextView) ScrollToIter(iter *TextIter, withinMargin float64, useAlig
 	return retGo
 }
 
-// ScrollToMark is a wrapper around the C function gtk_text_view_scroll_to_mark.
+// Scrolls @text_view so that @mark is on the screen in the position
+// indicated by @xalign and @yalign. An alignment of 0.0 indicates
+// left or top, 1.0 indicates right or bottom, 0.5 means center.
+// If @use_align is %FALSE, the text scrolls the minimal distance to
+// get the mark onscreen, possibly not scrolling at all. The effective
+// screen for purposes of this function is reduced by a margin of size
+// @within_margin.
+/*
+
+C function : gtk_text_view_scroll_to_mark
+*/
 func (recv *TextView) ScrollToMark(mark *TextMark, withinMargin float64, useAlign bool, xalign float64, yalign float64) {
 	c_mark := (*C.GtkTextMark)(C.NULL)
 	if mark != nil {
@@ -27946,7 +31976,17 @@ func (recv *TextView) ScrollToMark(mark *TextMark, withinMargin float64, useAlig
 	return
 }
 
-// SetBorderWindowSize is a wrapper around the C function gtk_text_view_set_border_window_size.
+// Sets the width of %GTK_TEXT_WINDOW_LEFT or %GTK_TEXT_WINDOW_RIGHT,
+// or the height of %GTK_TEXT_WINDOW_TOP or %GTK_TEXT_WINDOW_BOTTOM.
+// Automatically destroys the corresponding window if the size is set
+// to 0, and creates the window if the size is set to non-zero.  This
+// function can only be used for the “border windows”, and it won’t
+// work with %GTK_TEXT_WINDOW_WIDGET, %GTK_TEXT_WINDOW_TEXT, or
+// %GTK_TEXT_WINDOW_PRIVATE.
+/*
+
+C function : gtk_text_view_set_border_window_size
+*/
 func (recv *TextView) SetBorderWindowSize(type_ TextWindowType, size int32) {
 	c_type := (C.GtkTextWindowType)(type_)
 
@@ -27957,7 +31997,15 @@ func (recv *TextView) SetBorderWindowSize(type_ TextWindowType, size int32) {
 	return
 }
 
-// SetBuffer is a wrapper around the C function gtk_text_view_set_buffer.
+// Sets @buffer as the buffer being displayed by @text_view. The previous
+// buffer displayed by the text view is unreferenced, and a reference is
+// added to @buffer. If you owned a reference to @buffer before passing it
+// to this function, you must remove that reference yourself; #GtkTextView
+// will not “adopt” it.
+/*
+
+C function : gtk_text_view_set_buffer
+*/
 func (recv *TextView) SetBuffer(buffer *TextBuffer) {
 	c_buffer := (*C.GtkTextBuffer)(C.NULL)
 	if buffer != nil {
@@ -27969,7 +32017,16 @@ func (recv *TextView) SetBuffer(buffer *TextBuffer) {
 	return
 }
 
-// SetCursorVisible is a wrapper around the C function gtk_text_view_set_cursor_visible.
+// Toggles whether the insertion point should be displayed. A buffer with
+// no editable text probably shouldn’t have a visible cursor, so you may
+// want to turn the cursor off.
+//
+// Note that this property may be overridden by the
+// #GtkSettings:gtk-keynave-use-caret settings.
+/*
+
+C function : gtk_text_view_set_cursor_visible
+*/
 func (recv *TextView) SetCursorVisible(setting bool) {
 	c_setting :=
 		boolToGboolean(setting)
@@ -27979,7 +32036,13 @@ func (recv *TextView) SetCursorVisible(setting bool) {
 	return
 }
 
-// SetEditable is a wrapper around the C function gtk_text_view_set_editable.
+// Sets the default editability of the #GtkTextView. You can override
+// this default setting with tags in the buffer, using the “editable”
+// attribute of tags.
+/*
+
+C function : gtk_text_view_set_editable
+*/
 func (recv *TextView) SetEditable(setting bool) {
 	c_setting :=
 		boolToGboolean(setting)
@@ -27989,7 +32052,12 @@ func (recv *TextView) SetEditable(setting bool) {
 	return
 }
 
-// SetIndent is a wrapper around the C function gtk_text_view_set_indent.
+// Sets the default indentation for paragraphs in @text_view.
+// Tags in the buffer may override the default.
+/*
+
+C function : gtk_text_view_set_indent
+*/
 func (recv *TextView) SetIndent(indent int32) {
 	c_indent := (C.gint)(indent)
 
@@ -27998,7 +32066,12 @@ func (recv *TextView) SetIndent(indent int32) {
 	return
 }
 
-// SetJustification is a wrapper around the C function gtk_text_view_set_justification.
+// Sets the default justification of text in @text_view.
+// Tags in the view’s buffer may override the default.
+/*
+
+C function : gtk_text_view_set_justification
+*/
 func (recv *TextView) SetJustification(justification Justification) {
 	c_justification := (C.GtkJustification)(justification)
 
@@ -28007,7 +32080,15 @@ func (recv *TextView) SetJustification(justification Justification) {
 	return
 }
 
-// SetLeftMargin is a wrapper around the C function gtk_text_view_set_left_margin.
+// Sets the default left margin for text in @text_view.
+// Tags in the buffer may override the default.
+//
+// Note that this function is confusingly named.
+// In CSS terms, the value set here is padding.
+/*
+
+C function : gtk_text_view_set_left_margin
+*/
 func (recv *TextView) SetLeftMargin(leftMargin int32) {
 	c_left_margin := (C.gint)(leftMargin)
 
@@ -28016,7 +32097,12 @@ func (recv *TextView) SetLeftMargin(leftMargin int32) {
 	return
 }
 
-// SetPixelsAboveLines is a wrapper around the C function gtk_text_view_set_pixels_above_lines.
+// Sets the default number of blank pixels above paragraphs in @text_view.
+// Tags in the buffer for @text_view may override the defaults.
+/*
+
+C function : gtk_text_view_set_pixels_above_lines
+*/
 func (recv *TextView) SetPixelsAboveLines(pixelsAboveLines int32) {
 	c_pixels_above_lines := (C.gint)(pixelsAboveLines)
 
@@ -28025,7 +32111,13 @@ func (recv *TextView) SetPixelsAboveLines(pixelsAboveLines int32) {
 	return
 }
 
-// SetPixelsBelowLines is a wrapper around the C function gtk_text_view_set_pixels_below_lines.
+// Sets the default number of pixels of blank space
+// to put below paragraphs in @text_view. May be overridden
+// by tags applied to @text_view’s buffer.
+/*
+
+C function : gtk_text_view_set_pixels_below_lines
+*/
 func (recv *TextView) SetPixelsBelowLines(pixelsBelowLines int32) {
 	c_pixels_below_lines := (C.gint)(pixelsBelowLines)
 
@@ -28034,7 +32126,13 @@ func (recv *TextView) SetPixelsBelowLines(pixelsBelowLines int32) {
 	return
 }
 
-// SetPixelsInsideWrap is a wrapper around the C function gtk_text_view_set_pixels_inside_wrap.
+// Sets the default number of pixels of blank space to leave between
+// display/wrapped lines within a paragraph. May be overridden by
+// tags in @text_view’s buffer.
+/*
+
+C function : gtk_text_view_set_pixels_inside_wrap
+*/
 func (recv *TextView) SetPixelsInsideWrap(pixelsInsideWrap int32) {
 	c_pixels_inside_wrap := (C.gint)(pixelsInsideWrap)
 
@@ -28043,7 +32141,15 @@ func (recv *TextView) SetPixelsInsideWrap(pixelsInsideWrap int32) {
 	return
 }
 
-// SetRightMargin is a wrapper around the C function gtk_text_view_set_right_margin.
+// Sets the default right margin for text in the text view.
+// Tags in the buffer may override the default.
+//
+// Note that this function is confusingly named.
+// In CSS terms, the value set here is padding.
+/*
+
+C function : gtk_text_view_set_right_margin
+*/
 func (recv *TextView) SetRightMargin(rightMargin int32) {
 	c_right_margin := (C.gint)(rightMargin)
 
@@ -28052,7 +32158,12 @@ func (recv *TextView) SetRightMargin(rightMargin int32) {
 	return
 }
 
-// SetTabs is a wrapper around the C function gtk_text_view_set_tabs.
+// Sets the default tab stops for paragraphs in @text_view.
+// Tags in the buffer may override the default.
+/*
+
+C function : gtk_text_view_set_tabs
+*/
 func (recv *TextView) SetTabs(tabs *pango.TabArray) {
 	c_tabs := (*C.PangoTabArray)(C.NULL)
 	if tabs != nil {
@@ -28064,7 +32175,11 @@ func (recv *TextView) SetTabs(tabs *pango.TabArray) {
 	return
 }
 
-// SetWrapMode is a wrapper around the C function gtk_text_view_set_wrap_mode.
+// Sets the line wrapping for the view.
+/*
+
+C function : gtk_text_view_set_wrap_mode
+*/
 func (recv *TextView) SetWrapMode(wrapMode WrapMode) {
 	c_wrap_mode := (C.GtkWrapMode)(wrapMode)
 
@@ -28073,7 +32188,13 @@ func (recv *TextView) SetWrapMode(wrapMode WrapMode) {
 	return
 }
 
-// StartsDisplayLine is a wrapper around the C function gtk_text_view_starts_display_line.
+// Determines whether @iter is at the start of a display line.
+// See gtk_text_view_forward_display_line() for an explanation of
+// display lines vs. paragraphs.
+/*
+
+C function : gtk_text_view_starts_display_line
+*/
 func (recv *TextView) StartsDisplayLine(iter *TextIter) bool {
 	c_iter := (*C.GtkTextIter)(C.NULL)
 	if iter != nil {
@@ -28086,7 +32207,15 @@ func (recv *TextView) StartsDisplayLine(iter *TextIter) bool {
 	return retGo
 }
 
-// WindowToBufferCoords is a wrapper around the C function gtk_text_view_window_to_buffer_coords.
+// Converts coordinates on the window identified by @win to buffer
+// coordinates, storing the result in (@buffer_x,@buffer_y).
+//
+// Note that you can’t convert coordinates for a nonexisting window (see
+// gtk_text_view_set_border_window_size()).
+/*
+
+C function : gtk_text_view_window_to_buffer_coords
+*/
 func (recv *TextView) WindowToBufferCoords(win TextWindowType, windowX int32, windowY int32) (int32, int32) {
 	c_win := (C.GtkTextWindowType)(win)
 
@@ -28225,7 +32354,11 @@ func CastToThemingEngine(object *gobject.Object) *ThemingEngine {
 	return ThemingEngineNewFromC(object.ToC())
 }
 
-// GetScreen is a wrapper around the C function gtk_theming_engine_get_screen.
+// Returns the #GdkScreen to which @engine currently rendering to.
+/*
+
+C function : gtk_theming_engine_get_screen
+*/
 func (recv *ThemingEngine) GetScreen() *gdk.Screen {
 	retC := C.gtk_theming_engine_get_screen((*C.GtkThemingEngine)(recv.native))
 	var retGo (*gdk.Screen)
@@ -28455,7 +32588,11 @@ func togglebutton_toggledHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// ToggleButtonNew is a wrapper around the C function gtk_toggle_button_new.
+// Creates a new toggle button. A widget should be packed into the button, as in gtk_button_new().
+/*
+
+C function : gtk_toggle_button_new
+*/
 func ToggleButtonNew() *ToggleButton {
 	retC := C.gtk_toggle_button_new()
 	retGo := ToggleButtonNewFromC(unsafe.Pointer(retC))
@@ -28463,7 +32600,11 @@ func ToggleButtonNew() *ToggleButton {
 	return retGo
 }
 
-// ToggleButtonNewWithLabel is a wrapper around the C function gtk_toggle_button_new_with_label.
+// Creates a new toggle button with a text label.
+/*
+
+C function : gtk_toggle_button_new_with_label
+*/
 func ToggleButtonNewWithLabel(label string) *ToggleButton {
 	c_label := C.CString(label)
 	defer C.free(unsafe.Pointer(c_label))
@@ -28474,7 +32615,13 @@ func ToggleButtonNewWithLabel(label string) *ToggleButton {
 	return retGo
 }
 
-// ToggleButtonNewWithMnemonic is a wrapper around the C function gtk_toggle_button_new_with_mnemonic.
+// Creates a new #GtkToggleButton containing a label. The label
+// will be created using gtk_label_new_with_mnemonic(), so underscores
+// in @label indicate the mnemonic for the button.
+/*
+
+C function : gtk_toggle_button_new_with_mnemonic
+*/
 func ToggleButtonNewWithMnemonic(label string) *ToggleButton {
 	c_label := C.CString(label)
 	defer C.free(unsafe.Pointer(c_label))
@@ -28485,7 +32632,12 @@ func ToggleButtonNewWithMnemonic(label string) *ToggleButton {
 	return retGo
 }
 
-// GetActive is a wrapper around the C function gtk_toggle_button_get_active.
+// Queries a #GtkToggleButton and returns its current state. Returns %TRUE if
+// the toggle button is pressed in and %FALSE if it is raised.
+/*
+
+C function : gtk_toggle_button_get_active
+*/
 func (recv *ToggleButton) GetActive() bool {
 	retC := C.gtk_toggle_button_get_active((*C.GtkToggleButton)(recv.native))
 	retGo := retC == C.TRUE
@@ -28493,7 +32645,11 @@ func (recv *ToggleButton) GetActive() bool {
 	return retGo
 }
 
-// GetInconsistent is a wrapper around the C function gtk_toggle_button_get_inconsistent.
+// Gets the value set by gtk_toggle_button_set_inconsistent().
+/*
+
+C function : gtk_toggle_button_get_inconsistent
+*/
 func (recv *ToggleButton) GetInconsistent() bool {
 	retC := C.gtk_toggle_button_get_inconsistent((*C.GtkToggleButton)(recv.native))
 	retGo := retC == C.TRUE
@@ -28501,7 +32657,12 @@ func (recv *ToggleButton) GetInconsistent() bool {
 	return retGo
 }
 
-// GetMode is a wrapper around the C function gtk_toggle_button_get_mode.
+// Retrieves whether the button is displayed as a separate indicator
+// and label. See gtk_toggle_button_set_mode().
+/*
+
+C function : gtk_toggle_button_get_mode
+*/
 func (recv *ToggleButton) GetMode() bool {
 	retC := C.gtk_toggle_button_get_mode((*C.GtkToggleButton)(recv.native))
 	retGo := retC == C.TRUE
@@ -28509,7 +32670,14 @@ func (recv *ToggleButton) GetMode() bool {
 	return retGo
 }
 
-// SetActive is a wrapper around the C function gtk_toggle_button_set_active.
+// Sets the status of the toggle button. Set to %TRUE if you want the
+// GtkToggleButton to be “pressed in”, and %FALSE to raise it.
+// This action causes the #GtkToggleButton::toggled signal and the
+// #GtkButton::clicked signal to be emitted.
+/*
+
+C function : gtk_toggle_button_set_active
+*/
 func (recv *ToggleButton) SetActive(isActive bool) {
 	c_is_active :=
 		boolToGboolean(isActive)
@@ -28519,7 +32687,18 @@ func (recv *ToggleButton) SetActive(isActive bool) {
 	return
 }
 
-// SetInconsistent is a wrapper around the C function gtk_toggle_button_set_inconsistent.
+// If the user has selected a range of elements (such as some text or
+// spreadsheet cells) that are affected by a toggle button, and the
+// current values in that range are inconsistent, you may want to
+// display the toggle in an “in between” state. This function turns on
+// “in between” display.  Normally you would turn off the inconsistent
+// state again if the user toggles the toggle button. This has to be
+// done manually, gtk_toggle_button_set_inconsistent() only affects
+// visual appearance, it doesn’t affect the semantics of the button.
+/*
+
+C function : gtk_toggle_button_set_inconsistent
+*/
 func (recv *ToggleButton) SetInconsistent(setting bool) {
 	c_setting :=
 		boolToGboolean(setting)
@@ -28529,7 +32708,20 @@ func (recv *ToggleButton) SetInconsistent(setting bool) {
 	return
 }
 
-// SetMode is a wrapper around the C function gtk_toggle_button_set_mode.
+// Sets whether the button is displayed as a separate indicator and label.
+// You can call this function on a checkbutton or a radiobutton with
+// @draw_indicator = %FALSE to make the button look like a normal button.
+//
+// This can be used to create linked strip of buttons that work like
+// a #GtkStackSwitcher.
+//
+// This function only affects instances of classes like #GtkCheckButton
+// and #GtkRadioButton that derive from #GtkToggleButton,
+// not instances of #GtkToggleButton itself.
+/*
+
+C function : gtk_toggle_button_set_mode
+*/
 func (recv *ToggleButton) SetMode(drawIndicator bool) {
 	c_draw_indicator :=
 		boolToGboolean(drawIndicator)
@@ -28539,7 +32731,13 @@ func (recv *ToggleButton) SetMode(drawIndicator bool) {
 	return
 }
 
-// Toggled is a wrapper around the C function gtk_toggle_button_toggled.
+// Emits the #GtkToggleButton::toggled signal on the
+// #GtkToggleButton. There is no good reason for an
+// application ever to call this function.
+/*
+
+C function : gtk_toggle_button_toggled
+*/
 func (recv *ToggleButton) Toggled() {
 	C.gtk_toggle_button_toggled((*C.GtkToggleButton)(recv.native))
 
@@ -29348,7 +33546,11 @@ func toolbar_focusHomeOrEndHandler(_ *C.GObject, c_focus_home C.gboolean, data C
 
 // Unsupported signal 'style-changed' for Toolbar : unsupported parameter style : type ToolbarStyle :
 
-// ToolbarNew is a wrapper around the C function gtk_toolbar_new.
+// Creates a new toolbar.
+/*
+
+C function : gtk_toolbar_new
+*/
 func ToolbarNew() *Toolbar {
 	retC := C.gtk_toolbar_new()
 	retGo := ToolbarNewFromC(unsafe.Pointer(retC))
@@ -29356,7 +33558,11 @@ func ToolbarNew() *Toolbar {
 	return retGo
 }
 
-// GetIconSize is a wrapper around the C function gtk_toolbar_get_icon_size.
+// Retrieves the icon size for the toolbar. See gtk_toolbar_set_icon_size().
+/*
+
+C function : gtk_toolbar_get_icon_size
+*/
 func (recv *Toolbar) GetIconSize() IconSize {
 	retC := C.gtk_toolbar_get_icon_size((*C.GtkToolbar)(recv.native))
 	retGo := (IconSize)(retC)
@@ -29364,7 +33570,12 @@ func (recv *Toolbar) GetIconSize() IconSize {
 	return retGo
 }
 
-// GetStyle is a wrapper around the C function gtk_toolbar_get_style.
+// Retrieves whether the toolbar has text, icons, or both . See
+// gtk_toolbar_set_style().
+/*
+
+C function : gtk_toolbar_get_style
+*/
 func (recv *Toolbar) GetStyle() ToolbarStyle {
 	retC := C.gtk_toolbar_get_style((*C.GtkToolbar)(recv.native))
 	retGo := (ToolbarStyle)(retC)
@@ -29372,7 +33583,18 @@ func (recv *Toolbar) GetStyle() ToolbarStyle {
 	return retGo
 }
 
-// SetIconSize is a wrapper around the C function gtk_toolbar_set_icon_size.
+// This function sets the size of stock icons in the toolbar. You
+// can call it both before you add the icons and after they’ve been
+// added. The size you set will override user preferences for the default
+// icon size.
+//
+// This should only be used for special-purpose toolbars, normal
+// application toolbars should respect the user preferences for the
+// size of icons.
+/*
+
+C function : gtk_toolbar_set_icon_size
+*/
 func (recv *Toolbar) SetIconSize(iconSize IconSize) {
 	c_icon_size := (C.GtkIconSize)(iconSize)
 
@@ -29381,7 +33603,11 @@ func (recv *Toolbar) SetIconSize(iconSize IconSize) {
 	return
 }
 
-// SetStyle is a wrapper around the C function gtk_toolbar_set_style.
+// Alters the view of @toolbar to display either icons only, text only, or both.
+/*
+
+C function : gtk_toolbar_set_style
+*/
 func (recv *Toolbar) SetStyle(style ToolbarStyle) {
 	c_style := (C.GtkToolbarStyle)(style)
 
@@ -29390,14 +33616,24 @@ func (recv *Toolbar) SetStyle(style ToolbarStyle) {
 	return
 }
 
-// UnsetIconSize is a wrapper around the C function gtk_toolbar_unset_icon_size.
+// Unsets toolbar icon size set with gtk_toolbar_set_icon_size(), so that
+// user preferences will be used to determine the icon size.
+/*
+
+C function : gtk_toolbar_unset_icon_size
+*/
 func (recv *Toolbar) UnsetIconSize() {
 	C.gtk_toolbar_unset_icon_size((*C.GtkToolbar)(recv.native))
 
 	return
 }
 
-// UnsetStyle is a wrapper around the C function gtk_toolbar_unset_style.
+// Unsets a toolbar style set with gtk_toolbar_set_style(), so that
+// user preferences will be used to determine the toolbar style.
+/*
+
+C function : gtk_toolbar_unset_style
+*/
 func (recv *Toolbar) UnsetStyle() {
 	C.gtk_toolbar_unset_style((*C.GtkToolbar)(recv.native))
 
@@ -29490,7 +33726,10 @@ func CastToToplevelAccessible(object *gobject.Object) *ToplevelAccessible {
 	return ToplevelAccessibleNewFromC(object.ToC())
 }
 
-// GetChildren is a wrapper around the C function gtk_toplevel_accessible_get_children.
+/*
+
+C function : gtk_toplevel_accessible_get_children
+*/
 func (recv *ToplevelAccessible) GetChildren() *glib.List {
 	retC := C.gtk_toplevel_accessible_get_children((*C.GtkToplevelAccessible)(recv.native))
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
@@ -29576,14 +33815,29 @@ func CastToTreeModelSort(object *gobject.Object) *TreeModelSort {
 	return TreeModelSortNewFromC(object.ToC())
 }
 
-// ClearCache is a wrapper around the C function gtk_tree_model_sort_clear_cache.
+// This function should almost never be called.  It clears the @tree_model_sort
+// of any cached iterators that haven’t been reffed with
+// gtk_tree_model_ref_node().  This might be useful if the child model being
+// sorted is static (and doesn’t change often) and there has been a lot of
+// unreffed access to nodes.  As a side effect of this function, all unreffed
+// iters will be invalid.
+/*
+
+C function : gtk_tree_model_sort_clear_cache
+*/
 func (recv *TreeModelSort) ClearCache() {
 	C.gtk_tree_model_sort_clear_cache((*C.GtkTreeModelSort)(recv.native))
 
 	return
 }
 
-// ConvertChildIterToIter is a wrapper around the C function gtk_tree_model_sort_convert_child_iter_to_iter.
+// Sets @sort_iter to point to the row in @tree_model_sort that corresponds to
+// the row pointed at by @child_iter.  If @sort_iter was not set, %FALSE
+// is returned.  Note: a boolean is only returned since 2.14.
+/*
+
+C function : gtk_tree_model_sort_convert_child_iter_to_iter
+*/
 func (recv *TreeModelSort) ConvertChildIterToIter(childIter *TreeIter) (bool, *TreeIter) {
 	var c_sort_iter C.GtkTreeIter
 
@@ -29600,7 +33854,14 @@ func (recv *TreeModelSort) ConvertChildIterToIter(childIter *TreeIter) (bool, *T
 	return retGo, sortIter
 }
 
-// ConvertChildPathToPath is a wrapper around the C function gtk_tree_model_sort_convert_child_path_to_path.
+// Converts @child_path to a path relative to @tree_model_sort.  That is,
+// @child_path points to a path in the child model.  The returned path will
+// point to the same row in the sorted model.  If @child_path isn’t a valid
+// path on the child model, then %NULL is returned.
+/*
+
+C function : gtk_tree_model_sort_convert_child_path_to_path
+*/
 func (recv *TreeModelSort) ConvertChildPathToPath(childPath *TreePath) *TreePath {
 	c_child_path := (*C.GtkTreePath)(C.NULL)
 	if childPath != nil {
@@ -29618,7 +33879,11 @@ func (recv *TreeModelSort) ConvertChildPathToPath(childPath *TreePath) *TreePath
 	return retGo
 }
 
-// ConvertIterToChildIter is a wrapper around the C function gtk_tree_model_sort_convert_iter_to_child_iter.
+// Sets @child_iter to point to the row pointed to by @sorted_iter.
+/*
+
+C function : gtk_tree_model_sort_convert_iter_to_child_iter
+*/
 func (recv *TreeModelSort) ConvertIterToChildIter(sortedIter *TreeIter) *TreeIter {
 	var c_child_iter C.GtkTreeIter
 
@@ -29634,7 +33899,15 @@ func (recv *TreeModelSort) ConvertIterToChildIter(sortedIter *TreeIter) *TreeIte
 	return childIter
 }
 
-// ConvertPathToChildPath is a wrapper around the C function gtk_tree_model_sort_convert_path_to_child_path.
+// Converts @sorted_path to a path on the child model of @tree_model_sort.
+// That is, @sorted_path points to a location in @tree_model_sort.  The
+// returned path will point to the same location in the model not being
+// sorted.  If @sorted_path does not point to a location in the child model,
+// %NULL is returned.
+/*
+
+C function : gtk_tree_model_sort_convert_path_to_child_path
+*/
 func (recv *TreeModelSort) ConvertPathToChildPath(sortedPath *TreePath) *TreePath {
 	c_sorted_path := (*C.GtkTreePath)(C.NULL)
 	if sortedPath != nil {
@@ -29652,7 +33925,11 @@ func (recv *TreeModelSort) ConvertPathToChildPath(sortedPath *TreePath) *TreePat
 	return retGo
 }
 
-// GetModel is a wrapper around the C function gtk_tree_model_sort_get_model.
+// Returns the model the #GtkTreeModelSort is sorting.
+/*
+
+C function : gtk_tree_model_sort_get_model
+*/
 func (recv *TreeModelSort) GetModel() *TreeModel {
 	retC := C.gtk_tree_model_sort_get_model((*C.GtkTreeModelSort)(recv.native))
 	retGo := TreeModelNewFromC(unsafe.Pointer(retC))
@@ -29660,7 +33937,14 @@ func (recv *TreeModelSort) GetModel() *TreeModel {
 	return retGo
 }
 
-// ResetDefaultSortFunc is a wrapper around the C function gtk_tree_model_sort_reset_default_sort_func.
+// This resets the default sort function to be in the “unsorted” state.  That
+// is, it is in the same order as the child model. It will re-sort the model
+// to be in the same order as the child model only if the #GtkTreeModelSort
+// is in “unsorted” state.
+/*
+
+C function : gtk_tree_model_sort_reset_default_sort_func
+*/
 func (recv *TreeModelSort) ResetDefaultSortFunc() {
 	C.gtk_tree_model_sort_reset_default_sort_func((*C.GtkTreeModelSort)(recv.native))
 
@@ -29773,7 +34057,12 @@ func treeselection_changedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// GetMode is a wrapper around the C function gtk_tree_selection_get_mode.
+// Gets the selection mode for @selection. See
+// gtk_tree_selection_set_mode().
+/*
+
+C function : gtk_tree_selection_get_mode
+*/
 func (recv *TreeSelection) GetMode() SelectionMode {
 	retC := C.gtk_tree_selection_get_mode((*C.GtkTreeSelection)(recv.native))
 	retGo := (SelectionMode)(retC)
@@ -29781,7 +34070,15 @@ func (recv *TreeSelection) GetMode() SelectionMode {
 	return retGo
 }
 
-// GetSelected is a wrapper around the C function gtk_tree_selection_get_selected.
+// Sets @iter to the currently selected node if @selection is set to
+// #GTK_SELECTION_SINGLE or #GTK_SELECTION_BROWSE.  @iter may be NULL if you
+// just want to test if @selection has any selected nodes.  @model is filled
+// with the current model as a convenience.  This function will not work if you
+// use @selection is #GTK_SELECTION_MULTIPLE.
+/*
+
+C function : gtk_tree_selection_get_selected
+*/
 func (recv *TreeSelection) GetSelected() (bool, *TreeModel, *TreeIter) {
 	var c_model *C.GtkTreeModel
 
@@ -29797,7 +34094,11 @@ func (recv *TreeSelection) GetSelected() (bool, *TreeModel, *TreeIter) {
 	return retGo, model, iter
 }
 
-// GetTreeView is a wrapper around the C function gtk_tree_selection_get_tree_view.
+// Returns the tree view associated with @selection.
+/*
+
+C function : gtk_tree_selection_get_tree_view
+*/
 func (recv *TreeSelection) GetTreeView() *TreeView {
 	retC := C.gtk_tree_selection_get_tree_view((*C.GtkTreeSelection)(recv.native))
 	retGo := TreeViewNewFromC(unsafe.Pointer(retC))
@@ -29805,7 +34106,11 @@ func (recv *TreeSelection) GetTreeView() *TreeView {
 	return retGo
 }
 
-// GetUserData is a wrapper around the C function gtk_tree_selection_get_user_data.
+// Returns the user data for the selection function.
+/*
+
+C function : gtk_tree_selection_get_user_data
+*/
 func (recv *TreeSelection) GetUserData() uintptr {
 	retC := C.gtk_tree_selection_get_user_data((*C.GtkTreeSelection)(recv.native))
 	retGo := (uintptr)(unsafe.Pointer(retC))
@@ -29813,7 +34118,11 @@ func (recv *TreeSelection) GetUserData() uintptr {
 	return retGo
 }
 
-// IterIsSelected is a wrapper around the C function gtk_tree_selection_iter_is_selected.
+// Returns %TRUE if the row at @iter is currently selected.
+/*
+
+C function : gtk_tree_selection_iter_is_selected
+*/
 func (recv *TreeSelection) IterIsSelected(iter *TreeIter) bool {
 	c_iter := (*C.GtkTreeIter)(C.NULL)
 	if iter != nil {
@@ -29826,7 +34135,12 @@ func (recv *TreeSelection) IterIsSelected(iter *TreeIter) bool {
 	return retGo
 }
 
-// PathIsSelected is a wrapper around the C function gtk_tree_selection_path_is_selected.
+// Returns %TRUE if the row pointed to by @path is currently selected.  If @path
+// does not point to a valid location, %FALSE is returned
+/*
+
+C function : gtk_tree_selection_path_is_selected
+*/
 func (recv *TreeSelection) PathIsSelected(path *TreePath) bool {
 	c_path := (*C.GtkTreePath)(C.NULL)
 	if path != nil {
@@ -29839,14 +34153,23 @@ func (recv *TreeSelection) PathIsSelected(path *TreePath) bool {
 	return retGo
 }
 
-// SelectAll is a wrapper around the C function gtk_tree_selection_select_all.
+// Selects all the nodes. @selection must be set to #GTK_SELECTION_MULTIPLE
+// mode.
+/*
+
+C function : gtk_tree_selection_select_all
+*/
 func (recv *TreeSelection) SelectAll() {
 	C.gtk_tree_selection_select_all((*C.GtkTreeSelection)(recv.native))
 
 	return
 }
 
-// SelectIter is a wrapper around the C function gtk_tree_selection_select_iter.
+// Selects the specified iterator.
+/*
+
+C function : gtk_tree_selection_select_iter
+*/
 func (recv *TreeSelection) SelectIter(iter *TreeIter) {
 	c_iter := (*C.GtkTreeIter)(C.NULL)
 	if iter != nil {
@@ -29858,7 +34181,11 @@ func (recv *TreeSelection) SelectIter(iter *TreeIter) {
 	return
 }
 
-// SelectPath is a wrapper around the C function gtk_tree_selection_select_path.
+// Select the row at @path.
+/*
+
+C function : gtk_tree_selection_select_path
+*/
 func (recv *TreeSelection) SelectPath(path *TreePath) {
 	c_path := (*C.GtkTreePath)(C.NULL)
 	if path != nil {
@@ -29870,7 +34197,12 @@ func (recv *TreeSelection) SelectPath(path *TreePath) {
 	return
 }
 
-// SelectRange is a wrapper around the C function gtk_tree_selection_select_range.
+// Selects a range of nodes, determined by @start_path and @end_path inclusive.
+// @selection must be set to #GTK_SELECTION_MULTIPLE mode.
+/*
+
+C function : gtk_tree_selection_select_range
+*/
 func (recv *TreeSelection) SelectRange(startPath *TreePath, endPath *TreePath) {
 	c_start_path := (*C.GtkTreePath)(C.NULL)
 	if startPath != nil {
@@ -29889,7 +34221,13 @@ func (recv *TreeSelection) SelectRange(startPath *TreePath, endPath *TreePath) {
 
 // Unsupported : gtk_tree_selection_selected_foreach : unsupported parameter func : no type generator for TreeSelectionForeachFunc (GtkTreeSelectionForeachFunc) for param func
 
-// SetMode is a wrapper around the C function gtk_tree_selection_set_mode.
+// Sets the selection mode of the @selection.  If the previous type was
+// #GTK_SELECTION_MULTIPLE, then the anchor is kept selected, if it was
+// previously selected.
+/*
+
+C function : gtk_tree_selection_set_mode
+*/
 func (recv *TreeSelection) SetMode(type_ SelectionMode) {
 	c_type := (C.GtkSelectionMode)(type_)
 
@@ -29900,14 +34238,22 @@ func (recv *TreeSelection) SetMode(type_ SelectionMode) {
 
 // Unsupported : gtk_tree_selection_set_select_function : unsupported parameter func : no type generator for TreeSelectionFunc (GtkTreeSelectionFunc) for param func
 
-// UnselectAll is a wrapper around the C function gtk_tree_selection_unselect_all.
+// Unselects all the nodes.
+/*
+
+C function : gtk_tree_selection_unselect_all
+*/
 func (recv *TreeSelection) UnselectAll() {
 	C.gtk_tree_selection_unselect_all((*C.GtkTreeSelection)(recv.native))
 
 	return
 }
 
-// UnselectIter is a wrapper around the C function gtk_tree_selection_unselect_iter.
+// Unselects the specified iterator.
+/*
+
+C function : gtk_tree_selection_unselect_iter
+*/
 func (recv *TreeSelection) UnselectIter(iter *TreeIter) {
 	c_iter := (*C.GtkTreeIter)(C.NULL)
 	if iter != nil {
@@ -29919,7 +34265,11 @@ func (recv *TreeSelection) UnselectIter(iter *TreeIter) {
 	return
 }
 
-// UnselectPath is a wrapper around the C function gtk_tree_selection_unselect_path.
+// Unselects the row at @path.
+/*
+
+C function : gtk_tree_selection_unselect_path
+*/
 func (recv *TreeSelection) UnselectPath(path *TreePath) {
 	c_path := (*C.GtkTreePath)(C.NULL)
 	if path != nil {
@@ -29967,7 +34317,11 @@ func CastToTreeStore(object *gobject.Object) *TreeStore {
 
 // Unsupported : gtk_tree_store_new : unsupported parameter ... : varargs
 
-// TreeStoreNewv is a wrapper around the C function gtk_tree_store_newv.
+// Non vararg creation function.  Used primarily by language bindings.
+/*
+
+C function : gtk_tree_store_newv
+*/
 func TreeStoreNewv(types []gobject.Type) *TreeStore {
 	c_n_columns := (C.gint)(len(types))
 
@@ -29979,7 +34333,15 @@ func TreeStoreNewv(types []gobject.Type) *TreeStore {
 	return retGo
 }
 
-// Append is a wrapper around the C function gtk_tree_store_append.
+// Appends a new row to @tree_store.  If @parent is non-%NULL, then it will append the
+// new row after the last child of @parent, otherwise it will append a row to
+// the top level.  @iter will be changed to point to this new row.  The row will
+// be empty after this function is called.  To fill in values, you need to call
+// gtk_tree_store_set() or gtk_tree_store_set_value().
+/*
+
+C function : gtk_tree_store_append
+*/
 func (recv *TreeStore) Append(parent *TreeIter) *TreeIter {
 	var c_iter C.GtkTreeIter
 
@@ -29995,14 +34357,28 @@ func (recv *TreeStore) Append(parent *TreeIter) *TreeIter {
 	return iter
 }
 
-// Clear is a wrapper around the C function gtk_tree_store_clear.
+// Removes all rows from @tree_store
+/*
+
+C function : gtk_tree_store_clear
+*/
 func (recv *TreeStore) Clear() {
 	C.gtk_tree_store_clear((*C.GtkTreeStore)(recv.native))
 
 	return
 }
 
-// Insert is a wrapper around the C function gtk_tree_store_insert.
+// Creates a new row at @position.  If parent is non-%NULL, then the row will be
+// made a child of @parent.  Otherwise, the row will be created at the toplevel.
+// If @position is -1 or is larger than the number of rows at that level, then
+// the new row will be inserted to the end of the list.  @iter will be changed
+// to point to this new row.  The row will be empty after this function is
+// called.  To fill in values, you need to call gtk_tree_store_set() or
+// gtk_tree_store_set_value().
+/*
+
+C function : gtk_tree_store_insert
+*/
 func (recv *TreeStore) Insert(parent *TreeIter, position int32) *TreeIter {
 	var c_iter C.GtkTreeIter
 
@@ -30020,7 +34396,19 @@ func (recv *TreeStore) Insert(parent *TreeIter, position int32) *TreeIter {
 	return iter
 }
 
-// InsertAfter is a wrapper around the C function gtk_tree_store_insert_after.
+// Inserts a new row after @sibling.  If @sibling is %NULL, then the row will be
+// prepended to @parent ’s children.  If @parent and @sibling are %NULL, then
+// the row will be prepended to the toplevel.  If both @sibling and @parent are
+// set, then @parent must be the parent of @sibling.  When @sibling is set,
+// @parent is optional.
+//
+// @iter will be changed to point to this new row.  The row will be empty after
+// this function is called.  To fill in values, you need to call
+// gtk_tree_store_set() or gtk_tree_store_set_value().
+/*
+
+C function : gtk_tree_store_insert_after
+*/
 func (recv *TreeStore) InsertAfter(parent *TreeIter, sibling *TreeIter) *TreeIter {
 	var c_iter C.GtkTreeIter
 
@@ -30041,7 +34429,19 @@ func (recv *TreeStore) InsertAfter(parent *TreeIter, sibling *TreeIter) *TreeIte
 	return iter
 }
 
-// InsertBefore is a wrapper around the C function gtk_tree_store_insert_before.
+// Inserts a new row before @sibling.  If @sibling is %NULL, then the row will
+// be appended to @parent ’s children.  If @parent and @sibling are %NULL, then
+// the row will be appended to the toplevel.  If both @sibling and @parent are
+// set, then @parent must be the parent of @sibling.  When @sibling is set,
+// @parent is optional.
+//
+// @iter will be changed to point to this new row.  The row will be empty after
+// this function is called.  To fill in values, you need to call
+// gtk_tree_store_set() or gtk_tree_store_set_value().
+/*
+
+C function : gtk_tree_store_insert_before
+*/
 func (recv *TreeStore) InsertBefore(parent *TreeIter, sibling *TreeIter) *TreeIter {
 	var c_iter C.GtkTreeIter
 
@@ -30062,7 +34462,12 @@ func (recv *TreeStore) InsertBefore(parent *TreeIter, sibling *TreeIter) *TreeIt
 	return iter
 }
 
-// IsAncestor is a wrapper around the C function gtk_tree_store_is_ancestor.
+// Returns %TRUE if @iter is an ancestor of @descendant.  That is, @iter is the
+// parent (or grandparent or great-grandparent) of @descendant.
+/*
+
+C function : gtk_tree_store_is_ancestor
+*/
 func (recv *TreeStore) IsAncestor(iter *TreeIter, descendant *TreeIter) bool {
 	c_iter := (*C.GtkTreeIter)(C.NULL)
 	if iter != nil {
@@ -30080,7 +34485,12 @@ func (recv *TreeStore) IsAncestor(iter *TreeIter, descendant *TreeIter) bool {
 	return retGo
 }
 
-// IterDepth is a wrapper around the C function gtk_tree_store_iter_depth.
+// Returns the depth of @iter.  This will be 0 for anything on the root level, 1
+// for anything down a level, etc.
+/*
+
+C function : gtk_tree_store_iter_depth
+*/
 func (recv *TreeStore) IterDepth(iter *TreeIter) int32 {
 	c_iter := (*C.GtkTreeIter)(C.NULL)
 	if iter != nil {
@@ -30093,7 +34503,15 @@ func (recv *TreeStore) IterDepth(iter *TreeIter) int32 {
 	return retGo
 }
 
-// Prepend is a wrapper around the C function gtk_tree_store_prepend.
+// Prepends a new row to @tree_store.  If @parent is non-%NULL, then it will prepend
+// the new row before the first child of @parent, otherwise it will prepend a row
+// to the top level.  @iter will be changed to point to this new row.  The row
+// will be empty after this function is called.  To fill in values, you need to
+// call gtk_tree_store_set() or gtk_tree_store_set_value().
+/*
+
+C function : gtk_tree_store_prepend
+*/
 func (recv *TreeStore) Prepend(parent *TreeIter) *TreeIter {
 	var c_iter C.GtkTreeIter
 
@@ -30109,7 +34527,13 @@ func (recv *TreeStore) Prepend(parent *TreeIter) *TreeIter {
 	return iter
 }
 
-// Remove is a wrapper around the C function gtk_tree_store_remove.
+// Removes @iter from @tree_store.  After being removed, @iter is set to the
+// next valid row at that level, or invalidated if it previously pointed to the
+// last one.
+/*
+
+C function : gtk_tree_store_remove
+*/
 func (recv *TreeStore) Remove(iter *TreeIter) bool {
 	c_iter := (*C.GtkTreeIter)(C.NULL)
 	if iter != nil {
@@ -30124,7 +34548,14 @@ func (recv *TreeStore) Remove(iter *TreeIter) bool {
 
 // Unsupported : gtk_tree_store_set : unsupported parameter ... : varargs
 
-// SetColumnTypes is a wrapper around the C function gtk_tree_store_set_column_types.
+// This function is meant primarily for #GObjects that inherit from
+// #GtkTreeStore, and should only be used when constructing a new
+// #GtkTreeStore.  It will not function after a row has been added,
+// or a method on the #GtkTreeModel interface is called.
+/*
+
+C function : gtk_tree_store_set_column_types
+*/
 func (recv *TreeStore) SetColumnTypes(types []gobject.Type) {
 	c_n_columns := (C.gint)(len(types))
 
@@ -30137,7 +34568,13 @@ func (recv *TreeStore) SetColumnTypes(types []gobject.Type) {
 
 // Unsupported : gtk_tree_store_set_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
 
-// SetValue is a wrapper around the C function gtk_tree_store_set_value.
+// Sets the data in the cell specified by @iter and @column.
+// The type of @value must be convertible to the type of the
+// column.
+/*
+
+C function : gtk_tree_store_set_value
+*/
 func (recv *TreeStore) SetValue(iter *TreeIter, column int32, value *gobject.Value) {
 	c_iter := (*C.GtkTreeIter)(C.NULL)
 	if iter != nil {
@@ -31085,7 +35522,11 @@ func treeview_unselectAllHandler(_ *C.GObject, data C.gpointer) C.gboolean {
 	return retC
 }
 
-// TreeViewNew is a wrapper around the C function gtk_tree_view_new.
+// Creates a new #GtkTreeView widget.
+/*
+
+C function : gtk_tree_view_new
+*/
 func TreeViewNew() *TreeView {
 	retC := C.gtk_tree_view_new()
 	retGo := TreeViewNewFromC(unsafe.Pointer(retC))
@@ -31093,7 +35534,11 @@ func TreeViewNew() *TreeView {
 	return retGo
 }
 
-// TreeViewNewWithModel is a wrapper around the C function gtk_tree_view_new_with_model.
+// Creates a new #GtkTreeView widget with the model initialized to @model.
+/*
+
+C function : gtk_tree_view_new_with_model
+*/
 func TreeViewNewWithModel(model *TreeModel) *TreeView {
 	c_model := (*C.GtkTreeModel)(model.ToC())
 
@@ -31103,7 +35548,13 @@ func TreeViewNewWithModel(model *TreeModel) *TreeView {
 	return retGo
 }
 
-// AppendColumn is a wrapper around the C function gtk_tree_view_append_column.
+// Appends @column to the list of columns. If @tree_view has “fixed_height”
+// mode enabled, then @column must have its “sizing” property set to be
+// GTK_TREE_VIEW_COLUMN_FIXED.
+/*
+
+C function : gtk_tree_view_append_column
+*/
 func (recv *TreeView) AppendColumn(column *TreeViewColumn) int32 {
 	c_column := (*C.GtkTreeViewColumn)(C.NULL)
 	if column != nil {
@@ -31116,14 +35567,22 @@ func (recv *TreeView) AppendColumn(column *TreeViewColumn) int32 {
 	return retGo
 }
 
-// CollapseAll is a wrapper around the C function gtk_tree_view_collapse_all.
+// Recursively collapses all visible, expanded nodes in @tree_view.
+/*
+
+C function : gtk_tree_view_collapse_all
+*/
 func (recv *TreeView) CollapseAll() {
 	C.gtk_tree_view_collapse_all((*C.GtkTreeView)(recv.native))
 
 	return
 }
 
-// CollapseRow is a wrapper around the C function gtk_tree_view_collapse_row.
+// Collapses a row (hides its child rows, if they exist).
+/*
+
+C function : gtk_tree_view_collapse_row
+*/
 func (recv *TreeView) CollapseRow(path *TreePath) bool {
 	c_path := (*C.GtkTreePath)(C.NULL)
 	if path != nil {
@@ -31136,14 +35595,24 @@ func (recv *TreeView) CollapseRow(path *TreePath) bool {
 	return retGo
 }
 
-// ColumnsAutosize is a wrapper around the C function gtk_tree_view_columns_autosize.
+// Resizes all columns to their optimal width. Only works after the
+// treeview has been realized.
+/*
+
+C function : gtk_tree_view_columns_autosize
+*/
 func (recv *TreeView) ColumnsAutosize() {
 	C.gtk_tree_view_columns_autosize((*C.GtkTreeView)(recv.native))
 
 	return
 }
 
-// CreateRowDragIcon is a wrapper around the C function gtk_tree_view_create_row_drag_icon.
+// Creates a #cairo_surface_t representation of the row at @path.
+// This image is used for a drag icon.
+/*
+
+C function : gtk_tree_view_create_row_drag_icon
+*/
 func (recv *TreeView) CreateRowDragIcon(path *TreePath) *cairo.Surface {
 	c_path := (*C.GtkTreePath)(C.NULL)
 	if path != nil {
@@ -31160,14 +35629,22 @@ func (recv *TreeView) CreateRowDragIcon(path *TreePath) *cairo.Surface {
 
 // Unsupported : gtk_tree_view_enable_model_drag_source : unsupported parameter targets :
 
-// ExpandAll is a wrapper around the C function gtk_tree_view_expand_all.
+// Recursively expands all nodes in the @tree_view.
+/*
+
+C function : gtk_tree_view_expand_all
+*/
 func (recv *TreeView) ExpandAll() {
 	C.gtk_tree_view_expand_all((*C.GtkTreeView)(recv.native))
 
 	return
 }
 
-// ExpandRow is a wrapper around the C function gtk_tree_view_expand_row.
+// Opens the row so its children are visible.
+/*
+
+C function : gtk_tree_view_expand_row
+*/
 func (recv *TreeView) ExpandRow(path *TreePath, openAll bool) bool {
 	c_path := (*C.GtkTreePath)(C.NULL)
 	if path != nil {
@@ -31185,7 +35662,13 @@ func (recv *TreeView) ExpandRow(path *TreePath, openAll bool) bool {
 
 // Unsupported : gtk_tree_view_get_background_area : unsupported parameter rect : Blacklisted record : GdkRectangle
 
-// GetBinWindow is a wrapper around the C function gtk_tree_view_get_bin_window.
+// Returns the window that @tree_view renders to.
+// This is used primarily to compare to `event->window`
+// to confirm that the event on @tree_view is on the right window.
+/*
+
+C function : gtk_tree_view_get_bin_window
+*/
 func (recv *TreeView) GetBinWindow() *gdk.Window {
 	retC := C.gtk_tree_view_get_bin_window((*C.GtkTreeView)(recv.native))
 	var retGo (*gdk.Window)
@@ -31200,7 +35683,11 @@ func (recv *TreeView) GetBinWindow() *gdk.Window {
 
 // Unsupported : gtk_tree_view_get_cell_area : unsupported parameter rect : Blacklisted record : GdkRectangle
 
-// GetColumn is a wrapper around the C function gtk_tree_view_get_column.
+// Gets the #GtkTreeViewColumn at the given position in the #tree_view.
+/*
+
+C function : gtk_tree_view_get_column
+*/
 func (recv *TreeView) GetColumn(n int32) *TreeViewColumn {
 	c_n := (C.gint)(n)
 
@@ -31215,7 +35702,12 @@ func (recv *TreeView) GetColumn(n int32) *TreeViewColumn {
 	return retGo
 }
 
-// GetColumns is a wrapper around the C function gtk_tree_view_get_columns.
+// Returns a #GList of all the #GtkTreeViewColumn s currently in @tree_view.
+// The returned list must be freed with g_list_free ().
+/*
+
+C function : gtk_tree_view_get_columns
+*/
 func (recv *TreeView) GetColumns() *glib.List {
 	retC := C.gtk_tree_view_get_columns((*C.GtkTreeView)(recv.native))
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
@@ -31223,7 +35715,16 @@ func (recv *TreeView) GetColumns() *glib.List {
 	return retGo
 }
 
-// GetCursor is a wrapper around the C function gtk_tree_view_get_cursor.
+// Fills in @path and @focus_column with the current path and focus column.  If
+// the cursor isn’t currently set, then *@path will be %NULL.  If no column
+// currently has focus, then *@focus_column will be %NULL.
+//
+// The returned #GtkTreePath must be freed with gtk_tree_path_free() when
+// you are done with it.
+/*
+
+C function : gtk_tree_view_get_cursor
+*/
 func (recv *TreeView) GetCursor() (*TreePath, *TreeViewColumn) {
 	var c_path *C.GtkTreePath
 
@@ -31242,7 +35743,12 @@ func (recv *TreeView) GetCursor() (*TreePath, *TreeViewColumn) {
 
 // Unsupported : gtk_tree_view_get_drag_dest_row : unsupported parameter pos : GtkTreeViewDropPosition* with indirection level of 1
 
-// GetEnableSearch is a wrapper around the C function gtk_tree_view_get_enable_search.
+// Returns whether or not the tree allows to start interactive searching
+// by typing in text.
+/*
+
+C function : gtk_tree_view_get_enable_search
+*/
 func (recv *TreeView) GetEnableSearch() bool {
 	retC := C.gtk_tree_view_get_enable_search((*C.GtkTreeView)(recv.native))
 	retGo := retC == C.TRUE
@@ -31250,7 +35756,12 @@ func (recv *TreeView) GetEnableSearch() bool {
 	return retGo
 }
 
-// GetExpanderColumn is a wrapper around the C function gtk_tree_view_get_expander_column.
+// Returns the column that is the current expander column.
+// This column has the expander arrow drawn next to it.
+/*
+
+C function : gtk_tree_view_get_expander_column
+*/
 func (recv *TreeView) GetExpanderColumn() *TreeViewColumn {
 	retC := C.gtk_tree_view_get_expander_column((*C.GtkTreeView)(recv.native))
 	retGo := TreeViewColumnNewFromC(unsafe.Pointer(retC))
@@ -31258,7 +35769,11 @@ func (recv *TreeView) GetExpanderColumn() *TreeViewColumn {
 	return retGo
 }
 
-// GetHadjustment is a wrapper around the C function gtk_tree_view_get_hadjustment.
+// Gets the #GtkAdjustment currently being used for the horizontal aspect.
+/*
+
+C function : gtk_tree_view_get_hadjustment
+*/
 func (recv *TreeView) GetHadjustment() *Adjustment {
 	retC := C.gtk_tree_view_get_hadjustment((*C.GtkTreeView)(recv.native))
 	retGo := AdjustmentNewFromC(unsafe.Pointer(retC))
@@ -31266,7 +35781,11 @@ func (recv *TreeView) GetHadjustment() *Adjustment {
 	return retGo
 }
 
-// GetHeadersVisible is a wrapper around the C function gtk_tree_view_get_headers_visible.
+// Returns %TRUE if the headers on the @tree_view are visible.
+/*
+
+C function : gtk_tree_view_get_headers_visible
+*/
 func (recv *TreeView) GetHeadersVisible() bool {
 	retC := C.gtk_tree_view_get_headers_visible((*C.GtkTreeView)(recv.native))
 	retGo := retC == C.TRUE
@@ -31274,7 +35793,12 @@ func (recv *TreeView) GetHeadersVisible() bool {
 	return retGo
 }
 
-// GetModel is a wrapper around the C function gtk_tree_view_get_model.
+// Returns the model the #GtkTreeView is based on.  Returns %NULL if the
+// model is unset.
+/*
+
+C function : gtk_tree_view_get_model
+*/
 func (recv *TreeView) GetModel() *TreeModel {
 	retC := C.gtk_tree_view_get_model((*C.GtkTreeView)(recv.native))
 	var retGo (*TreeModel)
@@ -31287,7 +35811,27 @@ func (recv *TreeView) GetModel() *TreeModel {
 	return retGo
 }
 
-// GetPathAtPos is a wrapper around the C function gtk_tree_view_get_path_at_pos.
+// Finds the path at the point (@x, @y), relative to bin_window coordinates
+// (please see gtk_tree_view_get_bin_window()).
+// That is, @x and @y are relative to an events coordinates. @x and @y must
+// come from an event on the @tree_view only where `event->window ==
+// gtk_tree_view_get_bin_window ()`. It is primarily for
+// things like popup menus. If @path is non-%NULL, then it will be filled
+// with the #GtkTreePath at that point.  This path should be freed with
+// gtk_tree_path_free().  If @column is non-%NULL, then it will be filled
+// with the column at that point.  @cell_x and @cell_y return the coordinates
+// relative to the cell background (i.e. the @background_area passed to
+// gtk_cell_renderer_render()).  This function is only meaningful if
+// @tree_view is realized.  Therefore this function will always return %FALSE
+// if @tree_view is not realized or does not have a model.
+//
+// For converting widget coordinates (eg. the ones you get from
+// GtkWidget::query-tooltip), please see
+// gtk_tree_view_convert_widget_to_bin_window_coords().
+/*
+
+C function : gtk_tree_view_get_path_at_pos
+*/
 func (recv *TreeView) GetPathAtPos(x int32, y int32) (bool, *TreePath, *TreeViewColumn, int32, int32) {
 	c_x := (C.gint)(x)
 
@@ -31315,7 +35859,12 @@ func (recv *TreeView) GetPathAtPos(x int32, y int32) (bool, *TreePath, *TreeView
 	return retGo, path, column, cellX, cellY
 }
 
-// GetReorderable is a wrapper around the C function gtk_tree_view_get_reorderable.
+// Retrieves whether the user can reorder the tree via drag-and-drop. See
+// gtk_tree_view_set_reorderable().
+/*
+
+C function : gtk_tree_view_get_reorderable
+*/
 func (recv *TreeView) GetReorderable() bool {
 	retC := C.gtk_tree_view_get_reorderable((*C.GtkTreeView)(recv.native))
 	retGo := retC == C.TRUE
@@ -31323,7 +35872,11 @@ func (recv *TreeView) GetReorderable() bool {
 	return retGo
 }
 
-// GetRulesHint is a wrapper around the C function gtk_tree_view_get_rules_hint.
+// Gets the setting set by gtk_tree_view_set_rules_hint().
+/*
+
+C function : gtk_tree_view_get_rules_hint
+*/
 func (recv *TreeView) GetRulesHint() bool {
 	retC := C.gtk_tree_view_get_rules_hint((*C.GtkTreeView)(recv.native))
 	retGo := retC == C.TRUE
@@ -31331,7 +35884,11 @@ func (recv *TreeView) GetRulesHint() bool {
 	return retGo
 }
 
-// GetSearchColumn is a wrapper around the C function gtk_tree_view_get_search_column.
+// Gets the column searched on by the interactive search code.
+/*
+
+C function : gtk_tree_view_get_search_column
+*/
 func (recv *TreeView) GetSearchColumn() int32 {
 	retC := C.gtk_tree_view_get_search_column((*C.GtkTreeView)(recv.native))
 	retGo := (int32)(retC)
@@ -31341,7 +35898,11 @@ func (recv *TreeView) GetSearchColumn() int32 {
 
 // Unsupported : gtk_tree_view_get_search_equal_func : no return generator
 
-// GetSelection is a wrapper around the C function gtk_tree_view_get_selection.
+// Gets the #GtkTreeSelection associated with @tree_view.
+/*
+
+C function : gtk_tree_view_get_selection
+*/
 func (recv *TreeView) GetSelection() *TreeSelection {
 	retC := C.gtk_tree_view_get_selection((*C.GtkTreeView)(recv.native))
 	retGo := TreeSelectionNewFromC(unsafe.Pointer(retC))
@@ -31349,7 +35910,11 @@ func (recv *TreeView) GetSelection() *TreeSelection {
 	return retGo
 }
 
-// GetVadjustment is a wrapper around the C function gtk_tree_view_get_vadjustment.
+// Gets the #GtkAdjustment currently being used for the vertical aspect.
+/*
+
+C function : gtk_tree_view_get_vadjustment
+*/
 func (recv *TreeView) GetVadjustment() *Adjustment {
 	retC := C.gtk_tree_view_get_vadjustment((*C.GtkTreeView)(recv.native))
 	retGo := AdjustmentNewFromC(unsafe.Pointer(retC))
@@ -31359,7 +35924,14 @@ func (recv *TreeView) GetVadjustment() *Adjustment {
 
 // Unsupported : gtk_tree_view_get_visible_rect : unsupported parameter visible_rect : Blacklisted record : GdkRectangle
 
-// InsertColumn is a wrapper around the C function gtk_tree_view_insert_column.
+// This inserts the @column into the @tree_view at @position.  If @position is
+// -1, then the column is inserted at the end. If @tree_view has
+// “fixed_height” mode enabled, then @column must have its “sizing” property
+// set to be GTK_TREE_VIEW_COLUMN_FIXED.
+/*
+
+C function : gtk_tree_view_insert_column
+*/
 func (recv *TreeView) InsertColumn(column *TreeViewColumn, position int32) int32 {
 	c_column := (*C.GtkTreeViewColumn)(C.NULL)
 	if column != nil {
@@ -31380,7 +35952,12 @@ func (recv *TreeView) InsertColumn(column *TreeViewColumn, position int32) int32
 
 // Unsupported : gtk_tree_view_map_expanded_rows : unsupported parameter func : no type generator for TreeViewMappingFunc (GtkTreeViewMappingFunc) for param func
 
-// MoveColumnAfter is a wrapper around the C function gtk_tree_view_move_column_after.
+// Moves @column to be after to @base_column.  If @base_column is %NULL, then
+// @column is placed in the first position.
+/*
+
+C function : gtk_tree_view_move_column_after
+*/
 func (recv *TreeView) MoveColumnAfter(column *TreeViewColumn, baseColumn *TreeViewColumn) {
 	c_column := (*C.GtkTreeViewColumn)(C.NULL)
 	if column != nil {
@@ -31397,7 +35974,11 @@ func (recv *TreeView) MoveColumnAfter(column *TreeViewColumn, baseColumn *TreeVi
 	return
 }
 
-// RemoveColumn is a wrapper around the C function gtk_tree_view_remove_column.
+// Removes @column from @tree_view.
+/*
+
+C function : gtk_tree_view_remove_column
+*/
 func (recv *TreeView) RemoveColumn(column *TreeViewColumn) int32 {
 	c_column := (*C.GtkTreeViewColumn)(C.NULL)
 	if column != nil {
@@ -31410,7 +35991,11 @@ func (recv *TreeView) RemoveColumn(column *TreeViewColumn) int32 {
 	return retGo
 }
 
-// RowActivated is a wrapper around the C function gtk_tree_view_row_activated.
+// Activates the cell determined by @path and @column.
+/*
+
+C function : gtk_tree_view_row_activated
+*/
 func (recv *TreeView) RowActivated(path *TreePath, column *TreeViewColumn) {
 	c_path := (*C.GtkTreePath)(C.NULL)
 	if path != nil {
@@ -31427,7 +36012,11 @@ func (recv *TreeView) RowActivated(path *TreePath, column *TreeViewColumn) {
 	return
 }
 
-// RowExpanded is a wrapper around the C function gtk_tree_view_row_expanded.
+// Returns %TRUE if the node pointed to by @path is expanded in @tree_view.
+/*
+
+C function : gtk_tree_view_row_expanded
+*/
 func (recv *TreeView) RowExpanded(path *TreePath) bool {
 	c_path := (*C.GtkTreePath)(C.NULL)
 	if path != nil {
@@ -31440,7 +36029,26 @@ func (recv *TreeView) RowExpanded(path *TreePath) bool {
 	return retGo
 }
 
-// ScrollToCell is a wrapper around the C function gtk_tree_view_scroll_to_cell.
+// Moves the alignments of @tree_view to the position specified by @column and
+// @path.  If @column is %NULL, then no horizontal scrolling occurs.  Likewise,
+// if @path is %NULL no vertical scrolling occurs.  At a minimum, one of @column
+// or @path need to be non-%NULL.  @row_align determines where the row is
+// placed, and @col_align determines where @column is placed.  Both are expected
+// to be between 0.0 and 1.0. 0.0 means left/top alignment, 1.0 means
+// right/bottom alignment, 0.5 means center.
+//
+// If @use_align is %FALSE, then the alignment arguments are ignored, and the
+// tree does the minimum amount of work to scroll the cell onto the screen.
+// This means that the cell will be scrolled to the edge closest to its current
+// position.  If the cell is currently visible on the screen, nothing is done.
+//
+// This function only works if the model is set, and @path is a valid row on the
+// model.  If the model changes before the @tree_view is realized, the centered
+// path will be modified to reflect this change.
+/*
+
+C function : gtk_tree_view_scroll_to_cell
+*/
 func (recv *TreeView) ScrollToCell(path *TreePath, column *TreeViewColumn, useAlign bool, rowAlign float32, colAlign float32) {
 	c_path := (*C.GtkTreePath)(C.NULL)
 	if path != nil {
@@ -31464,7 +36072,17 @@ func (recv *TreeView) ScrollToCell(path *TreePath, column *TreeViewColumn, useAl
 	return
 }
 
-// ScrollToPoint is a wrapper around the C function gtk_tree_view_scroll_to_point.
+// Scrolls the tree view such that the top-left corner of the visible
+// area is @tree_x, @tree_y, where @tree_x and @tree_y are specified
+// in tree coordinates.  The @tree_view must be realized before
+// this function is called.  If it isn't, you probably want to be
+// using gtk_tree_view_scroll_to_cell().
+//
+// If either @tree_x or @tree_y are -1, then that direction isn’t scrolled.
+/*
+
+C function : gtk_tree_view_scroll_to_point
+*/
 func (recv *TreeView) ScrollToPoint(treeX int32, treeY int32) {
 	c_tree_x := (C.gint)(treeX)
 
@@ -31477,7 +36095,21 @@ func (recv *TreeView) ScrollToPoint(treeX int32, treeY int32) {
 
 // Unsupported : gtk_tree_view_set_column_drag_function : unsupported parameter func : no type generator for TreeViewColumnDropFunc (GtkTreeViewColumnDropFunc) for param func
 
-// SetCursor is a wrapper around the C function gtk_tree_view_set_cursor.
+// Sets the current keyboard focus to be at @path, and selects it.  This is
+// useful when you want to focus the user’s attention on a particular row.  If
+// @focus_column is not %NULL, then focus is given to the column specified by
+// it. Additionally, if @focus_column is specified, and @start_editing is
+// %TRUE, then editing should be started in the specified cell.
+// This function is often followed by @gtk_widget_grab_focus (@tree_view)
+// in order to give keyboard focus to the widget.  Please note that editing
+// can only happen when the widget is realized.
+//
+// If @path is invalid for @model, the current cursor (if any) will be unset
+// and the function will return without failing.
+/*
+
+C function : gtk_tree_view_set_cursor
+*/
 func (recv *TreeView) SetCursor(path *TreePath, focusColumn *TreeViewColumn, startEditing bool) {
 	c_path := (*C.GtkTreePath)(C.NULL)
 	if path != nil {
@@ -31499,7 +36131,12 @@ func (recv *TreeView) SetCursor(path *TreePath, focusColumn *TreeViewColumn, sta
 
 // Unsupported : gtk_tree_view_set_destroy_count_func : unsupported parameter func : no type generator for TreeDestroyCountFunc (GtkTreeDestroyCountFunc) for param func
 
-// SetDragDestRow is a wrapper around the C function gtk_tree_view_set_drag_dest_row.
+// Sets the row that is highlighted for feedback.
+// If @path is %NULL, an existing highlight is removed.
+/*
+
+C function : gtk_tree_view_set_drag_dest_row
+*/
 func (recv *TreeView) SetDragDestRow(path *TreePath, pos TreeViewDropPosition) {
 	c_path := (*C.GtkTreePath)(C.NULL)
 	if path != nil {
@@ -31513,7 +36150,15 @@ func (recv *TreeView) SetDragDestRow(path *TreePath, pos TreeViewDropPosition) {
 	return
 }
 
-// SetEnableSearch is a wrapper around the C function gtk_tree_view_set_enable_search.
+// If @enable_search is set, then the user can type in text to search through
+// the tree interactively (this is sometimes called "typeahead find").
+//
+// Note that even if this is %FALSE, the user can still initiate a search
+// using the “start-interactive-search” key binding.
+/*
+
+C function : gtk_tree_view_set_enable_search
+*/
 func (recv *TreeView) SetEnableSearch(enableSearch bool) {
 	c_enable_search :=
 		boolToGboolean(enableSearch)
@@ -31523,7 +36168,16 @@ func (recv *TreeView) SetEnableSearch(enableSearch bool) {
 	return
 }
 
-// SetExpanderColumn is a wrapper around the C function gtk_tree_view_set_expander_column.
+// Sets the column to draw the expander arrow at. It must be in @tree_view.
+// If @column is %NULL, then the expander arrow is always at the first
+// visible column.
+//
+// If you do not want expander arrow to appear in your tree, set the
+// expander column to a hidden column.
+/*
+
+C function : gtk_tree_view_set_expander_column
+*/
 func (recv *TreeView) SetExpanderColumn(column *TreeViewColumn) {
 	c_column := (*C.GtkTreeViewColumn)(C.NULL)
 	if column != nil {
@@ -31535,7 +36189,11 @@ func (recv *TreeView) SetExpanderColumn(column *TreeViewColumn) {
 	return
 }
 
-// SetHadjustment is a wrapper around the C function gtk_tree_view_set_hadjustment.
+// Sets the #GtkAdjustment for the current horizontal aspect.
+/*
+
+C function : gtk_tree_view_set_hadjustment
+*/
 func (recv *TreeView) SetHadjustment(adjustment *Adjustment) {
 	c_adjustment := (*C.GtkAdjustment)(C.NULL)
 	if adjustment != nil {
@@ -31547,7 +36205,11 @@ func (recv *TreeView) SetHadjustment(adjustment *Adjustment) {
 	return
 }
 
-// SetHeadersClickable is a wrapper around the C function gtk_tree_view_set_headers_clickable.
+// Allow the column title buttons to be clicked.
+/*
+
+C function : gtk_tree_view_set_headers_clickable
+*/
 func (recv *TreeView) SetHeadersClickable(setting bool) {
 	c_setting :=
 		boolToGboolean(setting)
@@ -31557,7 +36219,11 @@ func (recv *TreeView) SetHeadersClickable(setting bool) {
 	return
 }
 
-// SetHeadersVisible is a wrapper around the C function gtk_tree_view_set_headers_visible.
+// Sets the visibility state of the headers.
+/*
+
+C function : gtk_tree_view_set_headers_visible
+*/
 func (recv *TreeView) SetHeadersVisible(headersVisible bool) {
 	c_headers_visible :=
 		boolToGboolean(headersVisible)
@@ -31567,7 +36233,13 @@ func (recv *TreeView) SetHeadersVisible(headersVisible bool) {
 	return
 }
 
-// SetModel is a wrapper around the C function gtk_tree_view_set_model.
+// Sets the model for a #GtkTreeView.  If the @tree_view already has a model
+// set, it will remove it before setting the new model.  If @model is %NULL,
+// then it will unset the old model.
+/*
+
+C function : gtk_tree_view_set_model
+*/
 func (recv *TreeView) SetModel(model *TreeModel) {
 	c_model := (*C.GtkTreeModel)(model.ToC())
 
@@ -31576,7 +36248,24 @@ func (recv *TreeView) SetModel(model *TreeModel) {
 	return
 }
 
-// SetReorderable is a wrapper around the C function gtk_tree_view_set_reorderable.
+// This function is a convenience function to allow you to reorder
+// models that support the #GtkTreeDragSourceIface and the
+// #GtkTreeDragDestIface.  Both #GtkTreeStore and #GtkListStore support
+// these.  If @reorderable is %TRUE, then the user can reorder the
+// model by dragging and dropping rows. The developer can listen to
+// these changes by connecting to the model’s #GtkTreeModel::row-inserted
+// and #GtkTreeModel::row-deleted signals. The reordering is implemented
+// by setting up the tree view as a drag source and destination.
+// Therefore, drag and drop can not be used in a reorderable view for any
+// other purpose.
+//
+// This function does not give you any degree of control over the order -- any
+// reordering is allowed.  If more control is needed, you should probably
+// handle drag and drop manually.
+/*
+
+C function : gtk_tree_view_set_reorderable
+*/
 func (recv *TreeView) SetReorderable(reorderable bool) {
 	c_reorderable :=
 		boolToGboolean(reorderable)
@@ -31586,7 +36275,25 @@ func (recv *TreeView) SetReorderable(reorderable bool) {
 	return
 }
 
-// SetRulesHint is a wrapper around the C function gtk_tree_view_set_rules_hint.
+// Sets a hint for the theme to draw even/odd rows in the @tree_view
+// with different colors, also known as "zebra striping".
+//
+// This function tells the GTK+ theme that the user interface for your
+// application requires users to read across tree rows and associate
+// cells with one another.
+//
+// Do not use it just because you prefer the appearance of the ruled
+// tree; that’s a question for the theme. Some themes will draw tree
+// rows in alternating colors even when rules are turned off, and
+// users who prefer that appearance all the time can choose those
+// themes. You should call this function only as a semantic hint to
+// the theme engine that your tree makes alternating colors useful
+// from a functional standpoint (since it has lots of columns,
+// generally).
+/*
+
+C function : gtk_tree_view_set_rules_hint
+*/
 func (recv *TreeView) SetRulesHint(setting bool) {
 	c_setting :=
 		boolToGboolean(setting)
@@ -31596,7 +36303,19 @@ func (recv *TreeView) SetRulesHint(setting bool) {
 	return
 }
 
-// SetSearchColumn is a wrapper around the C function gtk_tree_view_set_search_column.
+// Sets @column as the column where the interactive search code should
+// search in for the current model.
+//
+// If the search column is set, users can use the “start-interactive-search”
+// key binding to bring up search popup. The enable-search property controls
+// whether simply typing text will also start an interactive search.
+//
+// Note that @column refers to a column of the current model. The search
+// column is reset to -1 when the model is changed.
+/*
+
+C function : gtk_tree_view_set_search_column
+*/
 func (recv *TreeView) SetSearchColumn(column int32) {
 	c_column := (C.gint)(column)
 
@@ -31607,7 +36326,11 @@ func (recv *TreeView) SetSearchColumn(column int32) {
 
 // Unsupported : gtk_tree_view_set_search_equal_func : unsupported parameter search_equal_func : no type generator for TreeViewSearchEqualFunc (GtkTreeViewSearchEqualFunc) for param search_equal_func
 
-// SetVadjustment is a wrapper around the C function gtk_tree_view_set_vadjustment.
+// Sets the #GtkAdjustment for the current vertical aspect.
+/*
+
+C function : gtk_tree_view_set_vadjustment
+*/
 func (recv *TreeView) SetVadjustment(adjustment *Adjustment) {
 	c_adjustment := (*C.GtkAdjustment)(C.NULL)
 	if adjustment != nil {
@@ -31619,14 +36342,26 @@ func (recv *TreeView) SetVadjustment(adjustment *Adjustment) {
 	return
 }
 
-// UnsetRowsDragDest is a wrapper around the C function gtk_tree_view_unset_rows_drag_dest.
+// Undoes the effect of
+// gtk_tree_view_enable_model_drag_dest(). Calling this method sets
+// #GtkTreeView:reorderable to %FALSE.
+/*
+
+C function : gtk_tree_view_unset_rows_drag_dest
+*/
 func (recv *TreeView) UnsetRowsDragDest() {
 	C.gtk_tree_view_unset_rows_drag_dest((*C.GtkTreeView)(recv.native))
 
 	return
 }
 
-// UnsetRowsDragSource is a wrapper around the C function gtk_tree_view_unset_rows_drag_source.
+// Undoes the effect of
+// gtk_tree_view_enable_model_drag_source(). Calling this method sets
+// #GtkTreeView:reorderable to %FALSE.
+/*
+
+C function : gtk_tree_view_unset_rows_drag_source
+*/
 func (recv *TreeView) UnsetRowsDragSource() {
 	C.gtk_tree_view_unset_rows_drag_source((*C.GtkTreeView)(recv.native))
 
@@ -31813,7 +36548,11 @@ func treeviewcolumn_clickedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// TreeViewColumnNew is a wrapper around the C function gtk_tree_view_column_new.
+// Creates a new #GtkTreeViewColumn.
+/*
+
+C function : gtk_tree_view_column_new
+*/
 func TreeViewColumnNew() *TreeViewColumn {
 	retC := C.gtk_tree_view_column_new()
 	retGo := TreeViewColumnNewFromC(unsafe.Pointer(retC))
@@ -31823,7 +36562,16 @@ func TreeViewColumnNew() *TreeViewColumn {
 
 // Unsupported : gtk_tree_view_column_new_with_attributes : unsupported parameter ... : varargs
 
-// AddAttribute is a wrapper around the C function gtk_tree_view_column_add_attribute.
+// Adds an attribute mapping to the list in @tree_column.  The @column is the
+// column of the model to get a value from, and the @attribute is the
+// parameter on @cell_renderer to be set from the value. So for example
+// if column 2 of the model contains strings, you could have the
+// “text” attribute of a #GtkCellRendererText get its values from
+// column 2.
+/*
+
+C function : gtk_tree_view_column_add_attribute
+*/
 func (recv *TreeViewColumn) AddAttribute(cellRenderer *CellRenderer, attribute string, column int32) {
 	c_cell_renderer := (*C.GtkCellRenderer)(C.NULL)
 	if cellRenderer != nil {
@@ -31840,7 +36588,13 @@ func (recv *TreeViewColumn) AddAttribute(cellRenderer *CellRenderer, attribute s
 	return
 }
 
-// CellGetPosition is a wrapper around the C function gtk_tree_view_column_cell_get_position.
+// Obtains the horizontal position and size of a cell in a column. If the
+// cell is not found in the column, @start_pos and @width are not changed and
+// %FALSE is returned.
+/*
+
+C function : gtk_tree_view_column_cell_get_position
+*/
 func (recv *TreeViewColumn) CellGetPosition(cellRenderer *CellRenderer) (bool, int32, int32) {
 	c_cell_renderer := (*C.GtkCellRenderer)(C.NULL)
 	if cellRenderer != nil {
@@ -31863,7 +36617,13 @@ func (recv *TreeViewColumn) CellGetPosition(cellRenderer *CellRenderer) (bool, i
 
 // Unsupported : gtk_tree_view_column_cell_get_size : unsupported parameter cell_area : Blacklisted record : GdkRectangle
 
-// CellIsVisible is a wrapper around the C function gtk_tree_view_column_cell_is_visible.
+// Returns %TRUE if any of the cells packed into the @tree_column are visible.
+// For this to be meaningful, you must first initialize the cells with
+// gtk_tree_view_column_cell_set_cell_data()
+/*
+
+C function : gtk_tree_view_column_cell_is_visible
+*/
 func (recv *TreeViewColumn) CellIsVisible() bool {
 	retC := C.gtk_tree_view_column_cell_is_visible((*C.GtkTreeViewColumn)(recv.native))
 	retGo := retC == C.TRUE
@@ -31871,7 +36631,14 @@ func (recv *TreeViewColumn) CellIsVisible() bool {
 	return retGo
 }
 
-// CellSetCellData is a wrapper around the C function gtk_tree_view_column_cell_set_cell_data.
+// Sets the cell renderer based on the @tree_model and @iter.  That is, for
+// every attribute mapping in @tree_column, it will get a value from the set
+// column on the @iter, and use that value to set the attribute on the cell
+// renderer.  This is used primarily by the #GtkTreeView.
+/*
+
+C function : gtk_tree_view_column_cell_set_cell_data
+*/
 func (recv *TreeViewColumn) CellSetCellData(treeModel *TreeModel, iter *TreeIter, isExpander bool, isExpanded bool) {
 	c_tree_model := (*C.GtkTreeModel)(treeModel.ToC())
 
@@ -31891,14 +36658,23 @@ func (recv *TreeViewColumn) CellSetCellData(treeModel *TreeModel, iter *TreeIter
 	return
 }
 
-// Clear is a wrapper around the C function gtk_tree_view_column_clear.
+// Unsets all the mappings on all renderers on the @tree_column.
+/*
+
+C function : gtk_tree_view_column_clear
+*/
 func (recv *TreeViewColumn) Clear() {
 	C.gtk_tree_view_column_clear((*C.GtkTreeViewColumn)(recv.native))
 
 	return
 }
 
-// ClearAttributes is a wrapper around the C function gtk_tree_view_column_clear_attributes.
+// Clears all existing attributes previously set with
+// gtk_tree_view_column_set_attributes().
+/*
+
+C function : gtk_tree_view_column_clear_attributes
+*/
 func (recv *TreeViewColumn) ClearAttributes(cellRenderer *CellRenderer) {
 	c_cell_renderer := (*C.GtkCellRenderer)(C.NULL)
 	if cellRenderer != nil {
@@ -31910,14 +36686,24 @@ func (recv *TreeViewColumn) ClearAttributes(cellRenderer *CellRenderer) {
 	return
 }
 
-// Clicked is a wrapper around the C function gtk_tree_view_column_clicked.
+// Emits the “clicked” signal on the column.  This function will only work if
+// @tree_column is clickable.
+/*
+
+C function : gtk_tree_view_column_clicked
+*/
 func (recv *TreeViewColumn) Clicked() {
 	C.gtk_tree_view_column_clicked((*C.GtkTreeViewColumn)(recv.native))
 
 	return
 }
 
-// GetAlignment is a wrapper around the C function gtk_tree_view_column_get_alignment.
+// Returns the current x alignment of @tree_column.  This value can range
+// between 0.0 and 1.0.
+/*
+
+C function : gtk_tree_view_column_get_alignment
+*/
 func (recv *TreeViewColumn) GetAlignment() float32 {
 	retC := C.gtk_tree_view_column_get_alignment((*C.GtkTreeViewColumn)(recv.native))
 	retGo := (float32)(retC)
@@ -31925,7 +36711,11 @@ func (recv *TreeViewColumn) GetAlignment() float32 {
 	return retGo
 }
 
-// GetClickable is a wrapper around the C function gtk_tree_view_column_get_clickable.
+// Returns %TRUE if the user can click on the header for the column.
+/*
+
+C function : gtk_tree_view_column_get_clickable
+*/
 func (recv *TreeViewColumn) GetClickable() bool {
 	retC := C.gtk_tree_view_column_get_clickable((*C.GtkTreeViewColumn)(recv.native))
 	retGo := retC == C.TRUE
@@ -31933,7 +36723,12 @@ func (recv *TreeViewColumn) GetClickable() bool {
 	return retGo
 }
 
-// GetFixedWidth is a wrapper around the C function gtk_tree_view_column_get_fixed_width.
+// Gets the fixed width of the column.  This may not be the actual displayed
+// width of the column; for that, use gtk_tree_view_column_get_width().
+/*
+
+C function : gtk_tree_view_column_get_fixed_width
+*/
 func (recv *TreeViewColumn) GetFixedWidth() int32 {
 	retC := C.gtk_tree_view_column_get_fixed_width((*C.GtkTreeViewColumn)(recv.native))
 	retGo := (int32)(retC)
@@ -31941,7 +36736,12 @@ func (recv *TreeViewColumn) GetFixedWidth() int32 {
 	return retGo
 }
 
-// GetMaxWidth is a wrapper around the C function gtk_tree_view_column_get_max_width.
+// Returns the maximum width in pixels of the @tree_column, or -1 if no maximum
+// width is set.
+/*
+
+C function : gtk_tree_view_column_get_max_width
+*/
 func (recv *TreeViewColumn) GetMaxWidth() int32 {
 	retC := C.gtk_tree_view_column_get_max_width((*C.GtkTreeViewColumn)(recv.native))
 	retGo := (int32)(retC)
@@ -31949,7 +36749,12 @@ func (recv *TreeViewColumn) GetMaxWidth() int32 {
 	return retGo
 }
 
-// GetMinWidth is a wrapper around the C function gtk_tree_view_column_get_min_width.
+// Returns the minimum width in pixels of the @tree_column, or -1 if no minimum
+// width is set.
+/*
+
+C function : gtk_tree_view_column_get_min_width
+*/
 func (recv *TreeViewColumn) GetMinWidth() int32 {
 	retC := C.gtk_tree_view_column_get_min_width((*C.GtkTreeViewColumn)(recv.native))
 	retGo := (int32)(retC)
@@ -31957,7 +36762,11 @@ func (recv *TreeViewColumn) GetMinWidth() int32 {
 	return retGo
 }
 
-// GetReorderable is a wrapper around the C function gtk_tree_view_column_get_reorderable.
+// Returns %TRUE if the @tree_column can be reordered by the user.
+/*
+
+C function : gtk_tree_view_column_get_reorderable
+*/
 func (recv *TreeViewColumn) GetReorderable() bool {
 	retC := C.gtk_tree_view_column_get_reorderable((*C.GtkTreeViewColumn)(recv.native))
 	retGo := retC == C.TRUE
@@ -31965,7 +36774,11 @@ func (recv *TreeViewColumn) GetReorderable() bool {
 	return retGo
 }
 
-// GetResizable is a wrapper around the C function gtk_tree_view_column_get_resizable.
+// Returns %TRUE if the @tree_column can be resized by the end user.
+/*
+
+C function : gtk_tree_view_column_get_resizable
+*/
 func (recv *TreeViewColumn) GetResizable() bool {
 	retC := C.gtk_tree_view_column_get_resizable((*C.GtkTreeViewColumn)(recv.native))
 	retGo := retC == C.TRUE
@@ -31973,7 +36786,11 @@ func (recv *TreeViewColumn) GetResizable() bool {
 	return retGo
 }
 
-// GetSizing is a wrapper around the C function gtk_tree_view_column_get_sizing.
+// Returns the current type of @tree_column.
+/*
+
+C function : gtk_tree_view_column_get_sizing
+*/
 func (recv *TreeViewColumn) GetSizing() TreeViewColumnSizing {
 	retC := C.gtk_tree_view_column_get_sizing((*C.GtkTreeViewColumn)(recv.native))
 	retGo := (TreeViewColumnSizing)(retC)
@@ -31981,7 +36798,13 @@ func (recv *TreeViewColumn) GetSizing() TreeViewColumnSizing {
 	return retGo
 }
 
-// GetSortColumnId is a wrapper around the C function gtk_tree_view_column_get_sort_column_id.
+// Gets the logical @sort_column_id that the model sorts on when this
+// column is selected for sorting.
+// See gtk_tree_view_column_set_sort_column_id().
+/*
+
+C function : gtk_tree_view_column_get_sort_column_id
+*/
 func (recv *TreeViewColumn) GetSortColumnId() int32 {
 	retC := C.gtk_tree_view_column_get_sort_column_id((*C.GtkTreeViewColumn)(recv.native))
 	retGo := (int32)(retC)
@@ -31989,7 +36812,11 @@ func (recv *TreeViewColumn) GetSortColumnId() int32 {
 	return retGo
 }
 
-// GetSortIndicator is a wrapper around the C function gtk_tree_view_column_get_sort_indicator.
+// Gets the value set by gtk_tree_view_column_set_sort_indicator().
+/*
+
+C function : gtk_tree_view_column_get_sort_indicator
+*/
 func (recv *TreeViewColumn) GetSortIndicator() bool {
 	retC := C.gtk_tree_view_column_get_sort_indicator((*C.GtkTreeViewColumn)(recv.native))
 	retGo := retC == C.TRUE
@@ -31997,7 +36824,11 @@ func (recv *TreeViewColumn) GetSortIndicator() bool {
 	return retGo
 }
 
-// GetSortOrder is a wrapper around the C function gtk_tree_view_column_get_sort_order.
+// Gets the value set by gtk_tree_view_column_set_sort_order().
+/*
+
+C function : gtk_tree_view_column_get_sort_order
+*/
 func (recv *TreeViewColumn) GetSortOrder() SortType {
 	retC := C.gtk_tree_view_column_get_sort_order((*C.GtkTreeViewColumn)(recv.native))
 	retGo := (SortType)(retC)
@@ -32005,7 +36836,11 @@ func (recv *TreeViewColumn) GetSortOrder() SortType {
 	return retGo
 }
 
-// GetSpacing is a wrapper around the C function gtk_tree_view_column_get_spacing.
+// Returns the spacing of @tree_column.
+/*
+
+C function : gtk_tree_view_column_get_spacing
+*/
 func (recv *TreeViewColumn) GetSpacing() int32 {
 	retC := C.gtk_tree_view_column_get_spacing((*C.GtkTreeViewColumn)(recv.native))
 	retGo := (int32)(retC)
@@ -32013,7 +36848,11 @@ func (recv *TreeViewColumn) GetSpacing() int32 {
 	return retGo
 }
 
-// GetTitle is a wrapper around the C function gtk_tree_view_column_get_title.
+// Returns the title of the widget.
+/*
+
+C function : gtk_tree_view_column_get_title
+*/
 func (recv *TreeViewColumn) GetTitle() string {
 	retC := C.gtk_tree_view_column_get_title((*C.GtkTreeViewColumn)(recv.native))
 	retGo := C.GoString(retC)
@@ -32021,7 +36860,11 @@ func (recv *TreeViewColumn) GetTitle() string {
 	return retGo
 }
 
-// GetVisible is a wrapper around the C function gtk_tree_view_column_get_visible.
+// Returns %TRUE if @tree_column is visible.
+/*
+
+C function : gtk_tree_view_column_get_visible
+*/
 func (recv *TreeViewColumn) GetVisible() bool {
 	retC := C.gtk_tree_view_column_get_visible((*C.GtkTreeViewColumn)(recv.native))
 	retGo := retC == C.TRUE
@@ -32029,7 +36872,12 @@ func (recv *TreeViewColumn) GetVisible() bool {
 	return retGo
 }
 
-// GetWidget is a wrapper around the C function gtk_tree_view_column_get_widget.
+// Returns the #GtkWidget in the button on the column header.
+// If a custom widget has not been set then %NULL is returned.
+/*
+
+C function : gtk_tree_view_column_get_widget
+*/
 func (recv *TreeViewColumn) GetWidget() *Widget {
 	retC := C.gtk_tree_view_column_get_widget((*C.GtkTreeViewColumn)(recv.native))
 	var retGo (*Widget)
@@ -32042,7 +36890,11 @@ func (recv *TreeViewColumn) GetWidget() *Widget {
 	return retGo
 }
 
-// GetWidth is a wrapper around the C function gtk_tree_view_column_get_width.
+// Returns the current size of @tree_column in pixels.
+/*
+
+C function : gtk_tree_view_column_get_width
+*/
 func (recv *TreeViewColumn) GetWidth() int32 {
 	retC := C.gtk_tree_view_column_get_width((*C.GtkTreeViewColumn)(recv.native))
 	retGo := (int32)(retC)
@@ -32050,7 +36902,13 @@ func (recv *TreeViewColumn) GetWidth() int32 {
 	return retGo
 }
 
-// PackEnd is a wrapper around the C function gtk_tree_view_column_pack_end.
+// Adds the @cell to end of the column. If @expand is %FALSE, then the @cell
+// is allocated no more space than it needs. Any unused space is divided
+// evenly between cells for which @expand is %TRUE.
+/*
+
+C function : gtk_tree_view_column_pack_end
+*/
 func (recv *TreeViewColumn) PackEnd(cell *CellRenderer, expand bool) {
 	c_cell := (*C.GtkCellRenderer)(C.NULL)
 	if cell != nil {
@@ -32065,7 +36923,13 @@ func (recv *TreeViewColumn) PackEnd(cell *CellRenderer, expand bool) {
 	return
 }
 
-// PackStart is a wrapper around the C function gtk_tree_view_column_pack_start.
+// Packs the @cell into the beginning of the column. If @expand is %FALSE, then
+// the @cell is allocated no more space than it needs. Any unused space is divided
+// evenly between cells for which @expand is %TRUE.
+/*
+
+C function : gtk_tree_view_column_pack_start
+*/
 func (recv *TreeViewColumn) PackStart(cell *CellRenderer, expand bool) {
 	c_cell := (*C.GtkCellRenderer)(C.NULL)
 	if cell != nil {
@@ -32080,7 +36944,13 @@ func (recv *TreeViewColumn) PackStart(cell *CellRenderer, expand bool) {
 	return
 }
 
-// SetAlignment is a wrapper around the C function gtk_tree_view_column_set_alignment.
+// Sets the alignment of the title or custom widget inside the column header.
+// The alignment determines its location inside the button -- 0.0 for left, 0.5
+// for center, 1.0 for right.
+/*
+
+C function : gtk_tree_view_column_set_alignment
+*/
 func (recv *TreeViewColumn) SetAlignment(xalign float32) {
 	c_xalign := (C.gfloat)(xalign)
 
@@ -32093,7 +36963,12 @@ func (recv *TreeViewColumn) SetAlignment(xalign float32) {
 
 // Unsupported : gtk_tree_view_column_set_cell_data_func : unsupported parameter func : no type generator for TreeCellDataFunc (GtkTreeCellDataFunc) for param func
 
-// SetClickable is a wrapper around the C function gtk_tree_view_column_set_clickable.
+// Sets the header to be active if @clickable is %TRUE.  When the header is
+// active, then it can take keyboard focus, and can be clicked.
+/*
+
+C function : gtk_tree_view_column_set_clickable
+*/
 func (recv *TreeViewColumn) SetClickable(clickable bool) {
 	c_clickable :=
 		boolToGboolean(clickable)
@@ -32103,7 +36978,21 @@ func (recv *TreeViewColumn) SetClickable(clickable bool) {
 	return
 }
 
-// SetFixedWidth is a wrapper around the C function gtk_tree_view_column_set_fixed_width.
+// If @fixed_width is not -1, sets the fixed width of @tree_column; otherwise
+// unsets it.  The effective value of @fixed_width is clamped between the
+// minimum and maximum width of the column; however, the value stored in the
+// “fixed-width” property is not clamped.  If the column sizing is
+// #GTK_TREE_VIEW_COLUMN_GROW_ONLY or #GTK_TREE_VIEW_COLUMN_AUTOSIZE, setting
+// a fixed width overrides the automatically calculated width.  Note that
+// @fixed_width is only a hint to GTK+; the width actually allocated to the
+// column may be greater or less than requested.
+//
+// Along with “expand”, the “fixed-width” property changes when the column is
+// resized by the user.
+/*
+
+C function : gtk_tree_view_column_set_fixed_width
+*/
 func (recv *TreeViewColumn) SetFixedWidth(fixedWidth int32) {
 	c_fixed_width := (C.gint)(fixedWidth)
 
@@ -32112,7 +37001,14 @@ func (recv *TreeViewColumn) SetFixedWidth(fixedWidth int32) {
 	return
 }
 
-// SetMaxWidth is a wrapper around the C function gtk_tree_view_column_set_max_width.
+// Sets the maximum width of the @tree_column.  If @max_width is -1, then the
+// maximum width is unset.  Note, the column can actually be wider than max
+// width if it’s the last column in a view.  In this case, the column expands to
+// fill any extra space.
+/*
+
+C function : gtk_tree_view_column_set_max_width
+*/
 func (recv *TreeViewColumn) SetMaxWidth(maxWidth int32) {
 	c_max_width := (C.gint)(maxWidth)
 
@@ -32121,7 +37017,12 @@ func (recv *TreeViewColumn) SetMaxWidth(maxWidth int32) {
 	return
 }
 
-// SetMinWidth is a wrapper around the C function gtk_tree_view_column_set_min_width.
+// Sets the minimum width of the @tree_column.  If @min_width is -1, then the
+// minimum width is unset.
+/*
+
+C function : gtk_tree_view_column_set_min_width
+*/
 func (recv *TreeViewColumn) SetMinWidth(minWidth int32) {
 	c_min_width := (C.gint)(minWidth)
 
@@ -32130,7 +37031,12 @@ func (recv *TreeViewColumn) SetMinWidth(minWidth int32) {
 	return
 }
 
-// SetReorderable is a wrapper around the C function gtk_tree_view_column_set_reorderable.
+// If @reorderable is %TRUE, then the column can be reordered by the end user
+// dragging the header.
+/*
+
+C function : gtk_tree_view_column_set_reorderable
+*/
 func (recv *TreeViewColumn) SetReorderable(reorderable bool) {
 	c_reorderable :=
 		boolToGboolean(reorderable)
@@ -32140,7 +37046,14 @@ func (recv *TreeViewColumn) SetReorderable(reorderable bool) {
 	return
 }
 
-// SetResizable is a wrapper around the C function gtk_tree_view_column_set_resizable.
+// If @resizable is %TRUE, then the user can explicitly resize the column by
+// grabbing the outer edge of the column button.  If resizable is %TRUE and
+// sizing mode of the column is #GTK_TREE_VIEW_COLUMN_AUTOSIZE, then the sizing
+// mode is changed to #GTK_TREE_VIEW_COLUMN_GROW_ONLY.
+/*
+
+C function : gtk_tree_view_column_set_resizable
+*/
 func (recv *TreeViewColumn) SetResizable(resizable bool) {
 	c_resizable :=
 		boolToGboolean(resizable)
@@ -32150,7 +37063,11 @@ func (recv *TreeViewColumn) SetResizable(resizable bool) {
 	return
 }
 
-// SetSizing is a wrapper around the C function gtk_tree_view_column_set_sizing.
+// Sets the growth behavior of @tree_column to @type.
+/*
+
+C function : gtk_tree_view_column_set_sizing
+*/
 func (recv *TreeViewColumn) SetSizing(type_ TreeViewColumnSizing) {
 	c_type := (C.GtkTreeViewColumnSizing)(type_)
 
@@ -32159,7 +37076,12 @@ func (recv *TreeViewColumn) SetSizing(type_ TreeViewColumnSizing) {
 	return
 }
 
-// SetSortColumnId is a wrapper around the C function gtk_tree_view_column_set_sort_column_id.
+// Sets the logical @sort_column_id that this column sorts on when this column
+// is selected for sorting.  Doing so makes the column header clickable.
+/*
+
+C function : gtk_tree_view_column_set_sort_column_id
+*/
 func (recv *TreeViewColumn) SetSortColumnId(sortColumnId int32) {
 	c_sort_column_id := (C.gint)(sortColumnId)
 
@@ -32168,7 +37090,14 @@ func (recv *TreeViewColumn) SetSortColumnId(sortColumnId int32) {
 	return
 }
 
-// SetSortIndicator is a wrapper around the C function gtk_tree_view_column_set_sort_indicator.
+// Call this function with a @setting of %TRUE to display an arrow in
+// the header button indicating the column is sorted. Call
+// gtk_tree_view_column_set_sort_order() to change the direction of
+// the arrow.
+/*
+
+C function : gtk_tree_view_column_set_sort_indicator
+*/
 func (recv *TreeViewColumn) SetSortIndicator(setting bool) {
 	c_setting :=
 		boolToGboolean(setting)
@@ -32178,7 +37107,21 @@ func (recv *TreeViewColumn) SetSortIndicator(setting bool) {
 	return
 }
 
-// SetSortOrder is a wrapper around the C function gtk_tree_view_column_set_sort_order.
+// Changes the appearance of the sort indicator.
+//
+// This does not actually sort the model.  Use
+// gtk_tree_view_column_set_sort_column_id() if you want automatic sorting
+// support.  This function is primarily for custom sorting behavior, and should
+// be used in conjunction with gtk_tree_sortable_set_sort_column_id() to do
+// that. For custom models, the mechanism will vary.
+//
+// The sort indicator changes direction to indicate normal sort or reverse sort.
+// Note that you must have the sort indicator enabled to see anything when
+// calling this function; see gtk_tree_view_column_set_sort_indicator().
+/*
+
+C function : gtk_tree_view_column_set_sort_order
+*/
 func (recv *TreeViewColumn) SetSortOrder(order SortType) {
 	c_order := (C.GtkSortType)(order)
 
@@ -32187,7 +37130,12 @@ func (recv *TreeViewColumn) SetSortOrder(order SortType) {
 	return
 }
 
-// SetSpacing is a wrapper around the C function gtk_tree_view_column_set_spacing.
+// Sets the spacing field of @tree_column, which is the number of pixels to
+// place between cell renderers packed into it.
+/*
+
+C function : gtk_tree_view_column_set_spacing
+*/
 func (recv *TreeViewColumn) SetSpacing(spacing int32) {
 	c_spacing := (C.gint)(spacing)
 
@@ -32196,7 +37144,12 @@ func (recv *TreeViewColumn) SetSpacing(spacing int32) {
 	return
 }
 
-// SetTitle is a wrapper around the C function gtk_tree_view_column_set_title.
+// Sets the title of the @tree_column.  If a custom widget has been set, then
+// this value is ignored.
+/*
+
+C function : gtk_tree_view_column_set_title
+*/
 func (recv *TreeViewColumn) SetTitle(title string) {
 	c_title := C.CString(title)
 	defer C.free(unsafe.Pointer(c_title))
@@ -32206,7 +37159,11 @@ func (recv *TreeViewColumn) SetTitle(title string) {
 	return
 }
 
-// SetVisible is a wrapper around the C function gtk_tree_view_column_set_visible.
+// Sets the visibility of @tree_column.
+/*
+
+C function : gtk_tree_view_column_set_visible
+*/
 func (recv *TreeViewColumn) SetVisible(visible bool) {
 	c_visible :=
 		boolToGboolean(visible)
@@ -32216,7 +37173,12 @@ func (recv *TreeViewColumn) SetVisible(visible bool) {
 	return
 }
 
-// SetWidget is a wrapper around the C function gtk_tree_view_column_set_widget.
+// Sets the widget in the header to be @widget.  If widget is %NULL, then the
+// header button is set with a #GtkLabel set to the title of @tree_column.
+/*
+
+C function : gtk_tree_view_column_set_widget
+*/
 func (recv *TreeViewColumn) SetWidget(widget *Widget) {
 	c_widget := (*C.GtkWidget)(C.NULL)
 	if widget != nil {
@@ -32330,7 +37292,11 @@ func CastToVBox(object *gobject.Object) *VBox {
 	return VBoxNewFromC(object.ToC())
 }
 
-// VBoxNew is a wrapper around the C function gtk_vbox_new.
+// Creates a new #GtkVBox.
+/*
+
+C function : gtk_vbox_new
+*/
 func VBoxNew(homogeneous bool, spacing int32) *VBox {
 	c_homogeneous :=
 		boolToGboolean(homogeneous)
@@ -32416,7 +37382,11 @@ func CastToVButtonBox(object *gobject.Object) *VButtonBox {
 	return VButtonBoxNewFromC(object.ToC())
 }
 
-// VButtonBoxNew is a wrapper around the C function gtk_vbutton_box_new.
+// Creates a new vertical button box.
+/*
+
+C function : gtk_vbutton_box_new
+*/
 func VButtonBoxNew() *VButtonBox {
 	retC := C.gtk_vbutton_box_new()
 	retGo := VButtonBoxNewFromC(unsafe.Pointer(retC))
@@ -32492,7 +37462,11 @@ func CastToVPaned(object *gobject.Object) *VPaned {
 	return VPanedNewFromC(object.ToC())
 }
 
-// VPanedNew is a wrapper around the C function gtk_vpaned_new.
+// Create a new #GtkVPaned
+/*
+
+C function : gtk_vpaned_new
+*/
 func VPanedNew() *VPaned {
 	retC := C.gtk_vpaned_new()
 	retGo := VPanedNewFromC(unsafe.Pointer(retC))
@@ -32568,7 +37542,11 @@ func CastToVScale(object *gobject.Object) *VScale {
 	return VScaleNewFromC(object.ToC())
 }
 
-// VScaleNew is a wrapper around the C function gtk_vscale_new.
+// Creates a new #GtkVScale.
+/*
+
+C function : gtk_vscale_new
+*/
 func VScaleNew(adjustment *Adjustment) *VScale {
 	c_adjustment := (*C.GtkAdjustment)(C.NULL)
 	if adjustment != nil {
@@ -32581,7 +37559,18 @@ func VScaleNew(adjustment *Adjustment) *VScale {
 	return retGo
 }
 
-// VScaleNewWithRange is a wrapper around the C function gtk_vscale_new_with_range.
+// Creates a new vertical scale widget that lets the user input a
+// number between @min and @max (including @min and @max) with the
+// increment @step.  @step must be nonzero; it’s the distance the
+// slider moves when using the arrow keys to adjust the scale value.
+//
+// Note that the way in which the precision is derived works best if @step
+// is a power of ten. If the resulting precision is not suitable for your
+// needs, use gtk_scale_set_digits() to correct it.
+/*
+
+C function : gtk_vscale_new_with_range
+*/
 func VScaleNewWithRange(min float64, max float64, step float64) *VScale {
 	c_min := (C.gdouble)(min)
 
@@ -32663,7 +37652,11 @@ func CastToVScrollbar(object *gobject.Object) *VScrollbar {
 	return VScrollbarNewFromC(object.ToC())
 }
 
-// VScrollbarNew is a wrapper around the C function gtk_vscrollbar_new.
+// Creates a new vertical scrollbar.
+/*
+
+C function : gtk_vscrollbar_new
+*/
 func VScrollbarNew(adjustment *Adjustment) *VScrollbar {
 	c_adjustment := (*C.GtkAdjustment)(C.NULL)
 	if adjustment != nil {
@@ -32739,7 +37732,11 @@ func CastToVSeparator(object *gobject.Object) *VSeparator {
 	return VSeparatorNewFromC(object.ToC())
 }
 
-// VSeparatorNew is a wrapper around the C function gtk_vseparator_new.
+// Creates a new #GtkVSeparator.
+/*
+
+C function : gtk_vseparator_new
+*/
 func VSeparatorNew() *VSeparator {
 	retC := C.gtk_vseparator_new()
 	retGo := VSeparatorNewFromC(unsafe.Pointer(retC))
@@ -32816,7 +37813,12 @@ func CastToViewport(object *gobject.Object) *Viewport {
 	return ViewportNewFromC(object.ToC())
 }
 
-// ViewportNew is a wrapper around the C function gtk_viewport_new.
+// Creates a new #GtkViewport with the given adjustments, or with default
+// adjustments if none are given.
+/*
+
+C function : gtk_viewport_new
+*/
 func ViewportNew(hadjustment *Adjustment, vadjustment *Adjustment) *Viewport {
 	c_hadjustment := (*C.GtkAdjustment)(C.NULL)
 	if hadjustment != nil {
@@ -32834,7 +37836,11 @@ func ViewportNew(hadjustment *Adjustment, vadjustment *Adjustment) *Viewport {
 	return retGo
 }
 
-// GetHadjustment is a wrapper around the C function gtk_viewport_get_hadjustment.
+// Returns the horizontal adjustment of the viewport.
+/*
+
+C function : gtk_viewport_get_hadjustment
+*/
 func (recv *Viewport) GetHadjustment() *Adjustment {
 	retC := C.gtk_viewport_get_hadjustment((*C.GtkViewport)(recv.native))
 	retGo := AdjustmentNewFromC(unsafe.Pointer(retC))
@@ -32842,7 +37848,12 @@ func (recv *Viewport) GetHadjustment() *Adjustment {
 	return retGo
 }
 
-// GetShadowType is a wrapper around the C function gtk_viewport_get_shadow_type.
+// Gets the shadow type of the #GtkViewport. See
+// gtk_viewport_set_shadow_type().
+/*
+
+C function : gtk_viewport_get_shadow_type
+*/
 func (recv *Viewport) GetShadowType() ShadowType {
 	retC := C.gtk_viewport_get_shadow_type((*C.GtkViewport)(recv.native))
 	retGo := (ShadowType)(retC)
@@ -32850,7 +37861,11 @@ func (recv *Viewport) GetShadowType() ShadowType {
 	return retGo
 }
 
-// GetVadjustment is a wrapper around the C function gtk_viewport_get_vadjustment.
+// Returns the vertical adjustment of the viewport.
+/*
+
+C function : gtk_viewport_get_vadjustment
+*/
 func (recv *Viewport) GetVadjustment() *Adjustment {
 	retC := C.gtk_viewport_get_vadjustment((*C.GtkViewport)(recv.native))
 	retGo := AdjustmentNewFromC(unsafe.Pointer(retC))
@@ -32858,7 +37873,11 @@ func (recv *Viewport) GetVadjustment() *Adjustment {
 	return retGo
 }
 
-// SetHadjustment is a wrapper around the C function gtk_viewport_set_hadjustment.
+// Sets the horizontal adjustment of the viewport.
+/*
+
+C function : gtk_viewport_set_hadjustment
+*/
 func (recv *Viewport) SetHadjustment(adjustment *Adjustment) {
 	c_adjustment := (*C.GtkAdjustment)(C.NULL)
 	if adjustment != nil {
@@ -32870,7 +37889,11 @@ func (recv *Viewport) SetHadjustment(adjustment *Adjustment) {
 	return
 }
 
-// SetShadowType is a wrapper around the C function gtk_viewport_set_shadow_type.
+// Sets the shadow type of the viewport.
+/*
+
+C function : gtk_viewport_set_shadow_type
+*/
 func (recv *Viewport) SetShadowType(type_ ShadowType) {
 	c_type := (C.GtkShadowType)(type_)
 
@@ -32879,7 +37902,11 @@ func (recv *Viewport) SetShadowType(type_ ShadowType) {
 	return
 }
 
-// SetVadjustment is a wrapper around the C function gtk_viewport_set_vadjustment.
+// Sets the vertical adjustment of the viewport.
+/*
+
+C function : gtk_viewport_set_vadjustment
+*/
 func (recv *Viewport) SetVadjustment(adjustment *Adjustment) {
 	c_adjustment := (*C.GtkAdjustment)(C.NULL)
 	if adjustment != nil {
@@ -35541,7 +40568,14 @@ func widget_windowStateEventHandler(_ *C.GObject, c_event *C.GdkEventWindowState
 
 // Unsupported : gtk_widget_new : unsupported parameter ... : varargs
 
-// Activate is a wrapper around the C function gtk_widget_activate.
+// For widgets that can be “activated” (buttons, menu items, etc.)
+// this function activates them. Activation is what happens when you
+// press Enter on a widget during key navigation. If @widget isn't
+// activatable, the function returns %FALSE.
+/*
+
+C function : gtk_widget_activate
+*/
 func (recv *Widget) Activate() bool {
 	retC := C.gtk_widget_activate((*C.GtkWidget)(recv.native))
 	retGo := retC == C.TRUE
@@ -35549,7 +40583,18 @@ func (recv *Widget) Activate() bool {
 	return retGo
 }
 
-// AddAccelerator is a wrapper around the C function gtk_widget_add_accelerator.
+// Installs an accelerator for this @widget in @accel_group that causes
+// @accel_signal to be emitted if the accelerator is activated.
+// The @accel_group needs to be added to the widget’s toplevel via
+// gtk_window_add_accel_group(), and the signal must be of type %G_SIGNAL_ACTION.
+// Accelerators added through this function are not user changeable during
+// runtime. If you want to support accelerators that can be changed by the
+// user, use gtk_accel_map_add_entry() and gtk_widget_set_accel_path() or
+// gtk_menu_item_set_accel_path() instead.
+/*
+
+C function : gtk_widget_add_accelerator
+*/
 func (recv *Widget) AddAccelerator(accelSignal string, accelGroup *AccelGroup, accelKey uint32, accelMods gdk.ModifierType, accelFlags AccelFlags) {
 	c_accel_signal := C.CString(accelSignal)
 	defer C.free(unsafe.Pointer(c_accel_signal))
@@ -35570,7 +40615,13 @@ func (recv *Widget) AddAccelerator(accelSignal string, accelGroup *AccelGroup, a
 	return
 }
 
-// AddEvents is a wrapper around the C function gtk_widget_add_events.
+// Adds the events in the bitfield @events to the event mask for
+// @widget. See gtk_widget_set_events() and the
+// [input handling overview][event-masks] for details.
+/*
+
+C function : gtk_widget_add_events
+*/
 func (recv *Widget) AddEvents(events int32) {
 	c_events := (C.gint)(events)
 
@@ -35579,7 +40630,29 @@ func (recv *Widget) AddEvents(events int32) {
 	return
 }
 
-// ChildFocus is a wrapper around the C function gtk_widget_child_focus.
+// This function is used by custom widget implementations; if you're
+// writing an app, you’d use gtk_widget_grab_focus() to move the focus
+// to a particular widget, and gtk_container_set_focus_chain() to
+// change the focus tab order. So you may want to investigate those
+// functions instead.
+//
+// gtk_widget_child_focus() is called by containers as the user moves
+// around the window using keyboard shortcuts. @direction indicates
+// what kind of motion is taking place (up, down, left, right, tab
+// forward, tab backward). gtk_widget_child_focus() emits the
+// #GtkWidget::focus signal; widgets override the default handler
+// for this signal in order to implement appropriate focus behavior.
+//
+// The default ::focus handler for a widget should return %TRUE if
+// moving in @direction left the focus on a focusable location inside
+// that widget, and %FALSE if moving in @direction moved the focus
+// outside the widget. If returning %TRUE, widgets normally
+// call gtk_widget_grab_focus() to place the focus accordingly;
+// if returning %FALSE, they don’t modify the current focus location.
+/*
+
+C function : gtk_widget_child_focus
+*/
 func (recv *Widget) ChildFocus(direction DirectionType) bool {
 	c_direction := (C.GtkDirectionType)(direction)
 
@@ -35589,7 +40662,17 @@ func (recv *Widget) ChildFocus(direction DirectionType) bool {
 	return retGo
 }
 
-// ChildNotify is a wrapper around the C function gtk_widget_child_notify.
+// Emits a #GtkWidget::child-notify signal for the
+// [child property][child-properties] @child_property
+// on @widget.
+//
+// This is the analogue of g_object_notify() for child properties.
+//
+// Also see gtk_container_child_notify().
+/*
+
+C function : gtk_widget_child_notify
+*/
 func (recv *Widget) ChildNotify(childProperty string) {
 	c_child_property := C.CString(childProperty)
 	defer C.free(unsafe.Pointer(c_child_property))
@@ -35599,7 +40682,12 @@ func (recv *Widget) ChildNotify(childProperty string) {
 	return
 }
 
-// ClassPath is a wrapper around the C function gtk_widget_class_path.
+// Same as gtk_widget_path(), but always uses the name of a widget’s type,
+// never uses a custom name set with gtk_widget_set_name().
+/*
+
+C function : gtk_widget_class_path
+*/
 func (recv *Widget) ClassPath() (uint32, string, string) {
 	var c_path_length C.guint
 
@@ -35620,7 +40708,21 @@ func (recv *Widget) ClassPath() (uint32, string, string) {
 	return pathLength, path, pathReversed
 }
 
-// ComputeExpand is a wrapper around the C function gtk_widget_compute_expand.
+// Computes whether a container should give this widget extra space
+// when possible. Containers should check this, rather than
+// looking at gtk_widget_get_hexpand() or gtk_widget_get_vexpand().
+//
+// This function already checks whether the widget is visible, so
+// visibility does not need to be checked separately. Non-visible
+// widgets are not expanded.
+//
+// The computed expand value uses either the expand setting explicitly
+// set on the widget itself, or, if none has been explicitly set,
+// the widget may expand if some of its children do.
+/*
+
+C function : gtk_widget_compute_expand
+*/
 func (recv *Widget) ComputeExpand(orientation Orientation) bool {
 	c_orientation := (C.GtkOrientation)(orientation)
 
@@ -35630,7 +40732,13 @@ func (recv *Widget) ComputeExpand(orientation Orientation) bool {
 	return retGo
 }
 
-// CreatePangoContext is a wrapper around the C function gtk_widget_create_pango_context.
+// Creates a new #PangoContext with the appropriate font map,
+// font options, font description, and base direction for drawing
+// text for this widget. See also gtk_widget_get_pango_context().
+/*
+
+C function : gtk_widget_create_pango_context
+*/
 func (recv *Widget) CreatePangoContext() *pango.Context {
 	retC := C.gtk_widget_create_pango_context((*C.GtkWidget)(recv.native))
 	retGo := pango.ContextNewFromC(unsafe.Pointer(retC))
@@ -35638,7 +40746,18 @@ func (recv *Widget) CreatePangoContext() *pango.Context {
 	return retGo
 }
 
-// CreatePangoLayout is a wrapper around the C function gtk_widget_create_pango_layout.
+// Creates a new #PangoLayout with the appropriate font map,
+// font description, and base direction for drawing text for
+// this widget.
+//
+// If you keep a #PangoLayout created in this way around, you need
+// to re-create it when the widget #PangoContext is replaced.
+// This can be tracked by using the #GtkWidget::screen-changed signal
+// on the widget.
+/*
+
+C function : gtk_widget_create_pango_layout
+*/
 func (recv *Widget) CreatePangoLayout(text string) *pango.Layout {
 	c_text := C.CString(text)
 	defer C.free(unsafe.Pointer(c_text))
@@ -35649,14 +40768,58 @@ func (recv *Widget) CreatePangoLayout(text string) *pango.Layout {
 	return retGo
 }
 
-// Destroy is a wrapper around the C function gtk_widget_destroy.
+// Destroys a widget.
+//
+// When a widget is destroyed all references it holds on other objects
+// will be released:
+//
+// - if the widget is inside a container, it will be removed from its
+// parent
+// - if the widget is a container, all its children will be destroyed,
+// recursively
+// - if the widget is a top level, it will be removed from the list
+// of top level widgets that GTK+ maintains internally
+//
+// It's expected that all references held on the widget will also
+// be released; you should connect to the #GtkWidget::destroy signal
+// if you hold a reference to @widget and you wish to remove it when
+// this function is called. It is not necessary to do so if you are
+// implementing a #GtkContainer, as you'll be able to use the
+// #GtkContainerClass.remove() virtual function for that.
+//
+// It's important to notice that gtk_widget_destroy() will only cause
+// the @widget to be finalized if no additional references, acquired
+// using g_object_ref(), are held on it. In case additional references
+// are in place, the @widget will be in an "inert" state after calling
+// this function; @widget will still point to valid memory, allowing you
+// to release the references you hold, but you may not query the widget's
+// own state.
+//
+// You should typically call this function on top level widgets, and
+// rarely on child widgets.
+//
+// See also: gtk_container_remove()
+/*
+
+C function : gtk_widget_destroy
+*/
 func (recv *Widget) Destroy() {
 	C.gtk_widget_destroy((*C.GtkWidget)(recv.native))
 
 	return
 }
 
-// Destroyed is a wrapper around the C function gtk_widget_destroyed.
+// This function sets *@widget_pointer to %NULL if @widget_pointer !=
+// %NULL.  It’s intended to be used as a callback connected to the
+// “destroy” signal of a widget. You connect gtk_widget_destroyed()
+// as a signal handler, and pass the address of your widget variable
+// as user data. Then when the widget is destroyed, the variable will
+// be set to %NULL. Useful for example to avoid multiple copies
+// of the same dialog.
+/*
+
+C function : gtk_widget_destroyed
+*/
 func (recv *Widget) Destroyed(widgetPointer *Widget) {
 	c_widget_pointer := (**C.GtkWidget)(C.NULL)
 	if widgetPointer != nil {
@@ -35670,7 +40833,13 @@ func (recv *Widget) Destroyed(widgetPointer *Widget) {
 
 // Unsupported : gtk_drag_begin : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
 
-// DragCheckThreshold is a wrapper around the C function gtk_drag_check_threshold.
+// Checks to see if a mouse drag starting at (@start_x, @start_y) and ending
+// at (@current_x, @current_y) has passed the GTK+ drag threshold, and thus
+// should trigger the beginning of a drag-and-drop operation.
+/*
+
+C function : gtk_drag_check_threshold
+*/
 func (recv *Widget) DragCheckThreshold(startX int32, startY int32, currentX int32, currentY int32) bool {
 	c_start_x := (C.gint)(startX)
 
@@ -35688,7 +40857,12 @@ func (recv *Widget) DragCheckThreshold(startX int32, startY int32, currentX int3
 
 // Unsupported : gtk_drag_dest_find_target : return type : Blacklisted record : GdkAtom
 
-// DragDestGetTargetList is a wrapper around the C function gtk_drag_dest_get_target_list.
+// Returns the list of targets this widget can accept from
+// drag-and-drop.
+/*
+
+C function : gtk_drag_dest_get_target_list
+*/
 func (recv *Widget) DragDestGetTargetList() *TargetList {
 	retC := C.gtk_drag_dest_get_target_list((*C.GtkWidget)(recv.native))
 	var retGo (*TargetList)
@@ -35703,7 +40877,11 @@ func (recv *Widget) DragDestGetTargetList() *TargetList {
 
 // Unsupported : gtk_drag_dest_set : unsupported parameter targets :
 
-// DragDestSetProxy is a wrapper around the C function gtk_drag_dest_set_proxy.
+// Sets this widget as a proxy for drops to another window.
+/*
+
+C function : gtk_drag_dest_set_proxy
+*/
 func (recv *Widget) DragDestSetProxy(proxyWindow *gdk.Window, protocol gdk.DragProtocol, useCoordinates bool) {
 	c_proxy_window := (*C.GdkWindow)(C.NULL)
 	if proxyWindow != nil {
@@ -35720,7 +40898,13 @@ func (recv *Widget) DragDestSetProxy(proxyWindow *gdk.Window, protocol gdk.DragP
 	return
 }
 
-// DragDestSetTargetList is a wrapper around the C function gtk_drag_dest_set_target_list.
+// Sets the target types that this widget can accept from drag-and-drop.
+// The widget must first be made into a drag destination with
+// gtk_drag_dest_set().
+/*
+
+C function : gtk_drag_dest_set_target_list
+*/
 func (recv *Widget) DragDestSetTargetList(targetList *TargetList) {
 	c_target_list := (*C.GtkTargetList)(C.NULL)
 	if targetList != nil {
@@ -35732,7 +40916,13 @@ func (recv *Widget) DragDestSetTargetList(targetList *TargetList) {
 	return
 }
 
-// DragDestUnset is a wrapper around the C function gtk_drag_dest_unset.
+// Clears information about a drop destination set with
+// gtk_drag_dest_set(). The widget will no longer receive
+// notification of drags.
+/*
+
+C function : gtk_drag_dest_unset
+*/
 func (recv *Widget) DragDestUnset() {
 	C.gtk_drag_dest_unset((*C.GtkWidget)(recv.native))
 
@@ -35741,7 +40931,13 @@ func (recv *Widget) DragDestUnset() {
 
 // Unsupported : gtk_drag_get_data : unsupported parameter target : Blacklisted record : GdkAtom
 
-// DragHighlight is a wrapper around the C function gtk_drag_highlight.
+// Highlights a widget as a currently hovered drop target.
+// To end the highlight, call gtk_drag_unhighlight().
+// GTK+ calls this automatically if %GTK_DEST_DEFAULT_HIGHLIGHT is set.
+/*
+
+C function : gtk_drag_highlight
+*/
 func (recv *Widget) DragHighlight() {
 	C.gtk_drag_highlight((*C.GtkWidget)(recv.native))
 
@@ -35750,7 +40946,13 @@ func (recv *Widget) DragHighlight() {
 
 // Unsupported : gtk_drag_source_set : unsupported parameter targets :
 
-// DragSourceSetIconPixbuf is a wrapper around the C function gtk_drag_source_set_icon_pixbuf.
+// Sets the icon that will be used for drags from a particular widget
+// from a #GdkPixbuf. GTK+ retains a reference for @pixbuf and will
+// release it when it is no longer needed.
+/*
+
+C function : gtk_drag_source_set_icon_pixbuf
+*/
 func (recv *Widget) DragSourceSetIconPixbuf(pixbuf *gdkpixbuf.Pixbuf) {
 	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
 	if pixbuf != nil {
@@ -35762,7 +40964,12 @@ func (recv *Widget) DragSourceSetIconPixbuf(pixbuf *gdkpixbuf.Pixbuf) {
 	return
 }
 
-// DragSourceSetIconStock is a wrapper around the C function gtk_drag_source_set_icon_stock.
+// Sets the icon that will be used for drags from a particular source
+// to a stock icon.
+/*
+
+C function : gtk_drag_source_set_icon_stock
+*/
 func (recv *Widget) DragSourceSetIconStock(stockId string) {
 	c_stock_id := C.CString(stockId)
 	defer C.free(unsafe.Pointer(c_stock_id))
@@ -35772,21 +40979,38 @@ func (recv *Widget) DragSourceSetIconStock(stockId string) {
 	return
 }
 
-// DragSourceUnset is a wrapper around the C function gtk_drag_source_unset.
+// Undoes the effects of gtk_drag_source_set().
+/*
+
+C function : gtk_drag_source_unset
+*/
 func (recv *Widget) DragSourceUnset() {
 	C.gtk_drag_source_unset((*C.GtkWidget)(recv.native))
 
 	return
 }
 
-// DragUnhighlight is a wrapper around the C function gtk_drag_unhighlight.
+// Removes a highlight set by gtk_drag_highlight() from
+// a widget.
+/*
+
+C function : gtk_drag_unhighlight
+*/
 func (recv *Widget) DragUnhighlight() {
 	C.gtk_drag_unhighlight((*C.GtkWidget)(recv.native))
 
 	return
 }
 
-// EnsureStyle is a wrapper around the C function gtk_widget_ensure_style.
+// Ensures that @widget has a style (@widget->style).
+//
+// Not a very useful function; most of the time, if you
+// want the style, the widget is realized, and realized
+// widgets are guaranteed to have a style already.
+/*
+
+C function : gtk_widget_ensure_style
+*/
 func (recv *Widget) EnsureStyle() {
 	C.gtk_widget_ensure_style((*C.GtkWidget)(recv.native))
 
@@ -35795,14 +41019,37 @@ func (recv *Widget) EnsureStyle() {
 
 // Unsupported : gtk_widget_event : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
 
-// FreezeChildNotify is a wrapper around the C function gtk_widget_freeze_child_notify.
+// Stops emission of #GtkWidget::child-notify signals on @widget. The
+// signals are queued until gtk_widget_thaw_child_notify() is called
+// on @widget.
+//
+// This is the analogue of g_object_freeze_notify() for child properties.
+/*
+
+C function : gtk_widget_freeze_child_notify
+*/
 func (recv *Widget) FreezeChildNotify() {
 	C.gtk_widget_freeze_child_notify((*C.GtkWidget)(recv.native))
 
 	return
 }
 
-// GetAccessible is a wrapper around the C function gtk_widget_get_accessible.
+// Returns the accessible object that describes the widget to an
+// assistive technology.
+//
+// If accessibility support is not available, this #AtkObject
+// instance may be a no-op. Likewise, if no class-specific #AtkObject
+// implementation is available for the widget instance in question,
+// it will inherit an #AtkObject implementation from the first ancestor
+// class for which such an implementation is defined.
+//
+// The documentation of the
+// [ATK](http://developer.gnome.org/atk/stable/)
+// library contains more information about accessible objects and their uses.
+/*
+
+C function : gtk_widget_get_accessible
+*/
 func (recv *Widget) GetAccessible() *atk.Object {
 	retC := C.gtk_widget_get_accessible((*C.GtkWidget)(recv.native))
 	retGo := atk.ObjectNewFromC(unsafe.Pointer(retC))
@@ -35810,7 +41057,13 @@ func (recv *Widget) GetAccessible() *atk.Object {
 	return retGo
 }
 
-// GetAllocatedHeight is a wrapper around the C function gtk_widget_get_allocated_height.
+// Returns the height that has currently been allocated to @widget.
+// This function is intended to be used when implementing handlers
+// for the #GtkWidget::draw function.
+/*
+
+C function : gtk_widget_get_allocated_height
+*/
 func (recv *Widget) GetAllocatedHeight() int32 {
 	retC := C.gtk_widget_get_allocated_height((*C.GtkWidget)(recv.native))
 	retGo := (int32)(retC)
@@ -35818,7 +41071,13 @@ func (recv *Widget) GetAllocatedHeight() int32 {
 	return retGo
 }
 
-// GetAllocatedWidth is a wrapper around the C function gtk_widget_get_allocated_width.
+// Returns the width that has currently been allocated to @widget.
+// This function is intended to be used when implementing handlers
+// for the #GtkWidget::draw function.
+/*
+
+C function : gtk_widget_get_allocated_width
+*/
 func (recv *Widget) GetAllocatedWidth() int32 {
 	retC := C.gtk_widget_get_allocated_width((*C.GtkWidget)(recv.native))
 	retGo := (int32)(retC)
@@ -35826,7 +41085,19 @@ func (recv *Widget) GetAllocatedWidth() int32 {
 	return retGo
 }
 
-// GetAncestor is a wrapper around the C function gtk_widget_get_ancestor.
+// Gets the first ancestor of @widget with type @widget_type. For example,
+// `gtk_widget_get_ancestor (widget, GTK_TYPE_BOX)` gets
+// the first #GtkBox that’s an ancestor of @widget. No reference will be
+// added to the returned widget; it should not be unreferenced. See note
+// about checking for a toplevel #GtkWindow in the docs for
+// gtk_widget_get_toplevel().
+//
+// Note that unlike gtk_widget_is_ancestor(), gtk_widget_get_ancestor()
+// considers @widget to be an ancestor of itself.
+/*
+
+C function : gtk_widget_get_ancestor
+*/
 func (recv *Widget) GetAncestor(widgetType gobject.Type) *Widget {
 	c_widget_type := (C.GType)(widgetType)
 
@@ -35841,7 +41112,28 @@ func (recv *Widget) GetAncestor(widgetType gobject.Type) *Widget {
 	return retGo
 }
 
-// GetChildRequisition is a wrapper around the C function gtk_widget_get_child_requisition.
+// This function is only for use in widget implementations. Obtains
+// @widget->requisition, unless someone has forced a particular
+// geometry on the widget (e.g. with gtk_widget_set_size_request()),
+// in which case it returns that geometry instead of the widget's
+// requisition.
+//
+// This function differs from gtk_widget_size_request() in that
+// it retrieves the last size request value from @widget->requisition,
+// while gtk_widget_size_request() actually calls the "size_request" method
+// on @widget to compute the size request and fill in @widget->requisition,
+// and only then returns @widget->requisition.
+//
+// Because this function does not call the “size_request” method, it
+// can only be used when you know that @widget->requisition is
+// up-to-date, that is, gtk_widget_size_request() has been called
+// since the last time a resize was queued. In general, only container
+// implementations have this information; applications should use
+// gtk_widget_size_request().
+/*
+
+C function : gtk_widget_get_child_requisition
+*/
 func (recv *Widget) GetChildRequisition() *Requisition {
 	var c_requisition C.GtkRequisition
 
@@ -35852,7 +41144,16 @@ func (recv *Widget) GetChildRequisition() *Requisition {
 	return requisition
 }
 
-// GetChildVisible is a wrapper around the C function gtk_widget_get_child_visible.
+// Gets the value set with gtk_widget_set_child_visible().
+// If you feel a need to use this function, your code probably
+// needs reorganization.
+//
+// This function is only useful for container implementations and
+// never should be called by an application.
+/*
+
+C function : gtk_widget_get_child_visible
+*/
 func (recv *Widget) GetChildVisible() bool {
 	retC := C.gtk_widget_get_child_visible((*C.GtkWidget)(recv.native))
 	retGo := retC == C.TRUE
@@ -35860,7 +41161,11 @@ func (recv *Widget) GetChildVisible() bool {
 	return retGo
 }
 
-// GetCompositeName is a wrapper around the C function gtk_widget_get_composite_name.
+// Obtains the composite name of a widget.
+/*
+
+C function : gtk_widget_get_composite_name
+*/
 func (recv *Widget) GetCompositeName() string {
 	retC := C.gtk_widget_get_composite_name((*C.GtkWidget)(recv.native))
 	retGo := C.GoString(retC)
@@ -35869,7 +41174,12 @@ func (recv *Widget) GetCompositeName() string {
 	return retGo
 }
 
-// GetDirection is a wrapper around the C function gtk_widget_get_direction.
+// Gets the reading direction for a particular widget. See
+// gtk_widget_set_direction().
+/*
+
+C function : gtk_widget_get_direction
+*/
 func (recv *Widget) GetDirection() TextDirection {
 	retC := C.gtk_widget_get_direction((*C.GtkWidget)(recv.native))
 	retGo := (TextDirection)(retC)
@@ -35877,7 +41187,17 @@ func (recv *Widget) GetDirection() TextDirection {
 	return retGo
 }
 
-// GetEvents is a wrapper around the C function gtk_widget_get_events.
+// Returns the event mask (see #GdkEventMask) for the widget. These are the
+// events that the widget will receive.
+//
+// Note: Internally, the widget event mask will be the logical OR of the event
+// mask set through gtk_widget_set_events() or gtk_widget_add_events(), and the
+// event mask necessary to cater for every #GtkEventController created for the
+// widget.
+/*
+
+C function : gtk_widget_get_events
+*/
 func (recv *Widget) GetEvents() int32 {
 	retC := C.gtk_widget_get_events((*C.GtkWidget)(recv.native))
 	retGo := (int32)(retC)
@@ -35885,7 +41205,16 @@ func (recv *Widget) GetEvents() int32 {
 	return retGo
 }
 
-// GetHalign is a wrapper around the C function gtk_widget_get_halign.
+// Gets the value of the #GtkWidget:halign property.
+//
+// For backwards compatibility reasons this method will never return
+// %GTK_ALIGN_BASELINE, but instead it will convert it to
+// %GTK_ALIGN_FILL. Baselines are not supported for horizontal
+// alignment.
+/*
+
+C function : gtk_widget_get_halign
+*/
 func (recv *Widget) GetHalign() Align {
 	retC := C.gtk_widget_get_halign((*C.GtkWidget)(recv.native))
 	retGo := (Align)(retC)
@@ -35893,7 +41222,24 @@ func (recv *Widget) GetHalign() Align {
 	return retGo
 }
 
-// GetHexpand is a wrapper around the C function gtk_widget_get_hexpand.
+// Gets whether the widget would like any available extra horizontal
+// space. When a user resizes a #GtkWindow, widgets with expand=TRUE
+// generally receive the extra space. For example, a list or
+// scrollable area or document in your window would often be set to
+// expand.
+//
+// Containers should use gtk_widget_compute_expand() rather than
+// this function, to see whether a widget, or any of its children,
+// has the expand flag set. If any child of a widget wants to
+// expand, the parent may ask to expand also.
+//
+// This function only looks at the widget’s own hexpand flag, rather
+// than computing whether the entire widget tree rooted at this widget
+// wants to expand.
+/*
+
+C function : gtk_widget_get_hexpand
+*/
 func (recv *Widget) GetHexpand() bool {
 	retC := C.gtk_widget_get_hexpand((*C.GtkWidget)(recv.native))
 	retGo := retC == C.TRUE
@@ -35901,7 +41247,20 @@ func (recv *Widget) GetHexpand() bool {
 	return retGo
 }
 
-// GetHexpandSet is a wrapper around the C function gtk_widget_get_hexpand_set.
+// Gets whether gtk_widget_set_hexpand() has been used to
+// explicitly set the expand flag on this widget.
+//
+// If hexpand is set, then it overrides any computed
+// expand value based on child widgets. If hexpand is not
+// set, then the expand value depends on whether any
+// children of the widget would like to expand.
+//
+// There are few reasons to use this function, but it’s here
+// for completeness and consistency.
+/*
+
+C function : gtk_widget_get_hexpand_set
+*/
 func (recv *Widget) GetHexpandSet() bool {
 	retC := C.gtk_widget_get_hexpand_set((*C.GtkWidget)(recv.native))
 	retGo := retC == C.TRUE
@@ -35909,7 +41268,22 @@ func (recv *Widget) GetHexpandSet() bool {
 	return retGo
 }
 
-// GetModifierStyle is a wrapper around the C function gtk_widget_get_modifier_style.
+// Returns the current modifier style for the widget. (As set by
+// gtk_widget_modify_style().) If no style has previously set, a new
+// #GtkRcStyle will be created with all values unset, and set as the
+// modifier style for the widget. If you make changes to this rc
+// style, you must call gtk_widget_modify_style(), passing in the
+// returned rc style, to make sure that your changes take effect.
+//
+// Caution: passing the style back to gtk_widget_modify_style() will
+// normally end up destroying it, because gtk_widget_modify_style() copies
+// the passed-in style and sets the copy as the new modifier style,
+// thus dropping any reference to the old modifier style. Add a reference
+// to the modifier style if you want to keep it alive.
+/*
+
+C function : gtk_widget_get_modifier_style
+*/
 func (recv *Widget) GetModifierStyle() *RcStyle {
 	retC := C.gtk_widget_get_modifier_style((*C.GtkWidget)(recv.native))
 	retGo := RcStyleNewFromC(unsafe.Pointer(retC))
@@ -35917,7 +41291,12 @@ func (recv *Widget) GetModifierStyle() *RcStyle {
 	return retGo
 }
 
-// GetName is a wrapper around the C function gtk_widget_get_name.
+// Retrieves the name of a widget. See gtk_widget_set_name() for the
+// significance of widget names.
+/*
+
+C function : gtk_widget_get_name
+*/
 func (recv *Widget) GetName() string {
 	retC := C.gtk_widget_get_name((*C.GtkWidget)(recv.native))
 	retGo := C.GoString(retC)
@@ -35925,7 +41304,17 @@ func (recv *Widget) GetName() string {
 	return retGo
 }
 
-// GetPangoContext is a wrapper around the C function gtk_widget_get_pango_context.
+// Gets a #PangoContext with the appropriate font map, font description,
+// and base direction for this widget. Unlike the context returned
+// by gtk_widget_create_pango_context(), this context is owned by
+// the widget (it can be used until the screen for the widget changes
+// or the widget is removed from its toplevel), and will be updated to
+// match any changes to the widget’s attributes. This can be tracked
+// by using the #GtkWidget::screen-changed signal on the widget.
+/*
+
+C function : gtk_widget_get_pango_context
+*/
 func (recv *Widget) GetPangoContext() *pango.Context {
 	retC := C.gtk_widget_get_pango_context((*C.GtkWidget)(recv.native))
 	retGo := pango.ContextNewFromC(unsafe.Pointer(retC))
@@ -35933,7 +41322,11 @@ func (recv *Widget) GetPangoContext() *pango.Context {
 	return retGo
 }
 
-// GetParent is a wrapper around the C function gtk_widget_get_parent.
+// Returns the parent container of @widget.
+/*
+
+C function : gtk_widget_get_parent
+*/
 func (recv *Widget) GetParent() *Widget {
 	retC := C.gtk_widget_get_parent((*C.GtkWidget)(recv.native))
 	var retGo (*Widget)
@@ -35946,7 +41339,11 @@ func (recv *Widget) GetParent() *Widget {
 	return retGo
 }
 
-// GetParentWindow is a wrapper around the C function gtk_widget_get_parent_window.
+// Gets @widget’s parent window, or %NULL if it does not have one.
+/*
+
+C function : gtk_widget_get_parent_window
+*/
 func (recv *Widget) GetParentWindow() *gdk.Window {
 	retC := C.gtk_widget_get_parent_window((*C.GtkWidget)(recv.native))
 	var retGo (*gdk.Window)
@@ -35959,7 +41356,13 @@ func (recv *Widget) GetParentWindow() *gdk.Window {
 	return retGo
 }
 
-// GetPath is a wrapper around the C function gtk_widget_get_path.
+// Returns the #GtkWidgetPath representing @widget, if the widget
+// is not connected to a toplevel widget, a partial path will be
+// created.
+/*
+
+C function : gtk_widget_get_path
+*/
 func (recv *Widget) GetPath() *WidgetPath {
 	retC := C.gtk_widget_get_path((*C.GtkWidget)(recv.native))
 	retGo := WidgetPathNewFromC(unsafe.Pointer(retC))
@@ -35967,7 +41370,15 @@ func (recv *Widget) GetPath() *WidgetPath {
 	return retGo
 }
 
-// GetPointer is a wrapper around the C function gtk_widget_get_pointer.
+// Obtains the location of the mouse pointer in widget coordinates.
+// Widget coordinates are a bit odd; for historical reasons, they are
+// defined as @widget->window coordinates for widgets that return %TRUE for
+// gtk_widget_get_has_window(); and are relative to @widget->allocation.x,
+// @widget->allocation.y otherwise.
+/*
+
+C function : gtk_widget_get_pointer
+*/
 func (recv *Widget) GetPointer() (int32, int32) {
 	var c_x C.gint
 
@@ -35982,7 +41393,15 @@ func (recv *Widget) GetPointer() (int32, int32) {
 	return x, y
 }
 
-// GetSettings is a wrapper around the C function gtk_widget_get_settings.
+// Gets the settings object holding the settings used for this widget.
+//
+// Note that this function can only be called when the #GtkWidget
+// is attached to a toplevel, since the settings object is specific
+// to a particular #GdkScreen.
+/*
+
+C function : gtk_widget_get_settings
+*/
 func (recv *Widget) GetSettings() *Settings {
 	retC := C.gtk_widget_get_settings((*C.GtkWidget)(recv.native))
 	retGo := SettingsNewFromC(unsafe.Pointer(retC))
@@ -35990,7 +41409,17 @@ func (recv *Widget) GetSettings() *Settings {
 	return retGo
 }
 
-// GetSizeRequest is a wrapper around the C function gtk_widget_get_size_request.
+// Gets the size request that was explicitly set for the widget using
+// gtk_widget_set_size_request(). A value of -1 stored in @width or
+// @height indicates that that dimension has not been set explicitly
+// and the natural requisition of the widget will be used instead. See
+// gtk_widget_set_size_request(). To get the size a widget will
+// actually request, call gtk_widget_get_preferred_size() instead of
+// this function.
+/*
+
+C function : gtk_widget_get_size_request
+*/
 func (recv *Widget) GetSizeRequest() (int32, int32) {
 	var c_width C.gint
 
@@ -36005,7 +41434,11 @@ func (recv *Widget) GetSizeRequest() (int32, int32) {
 	return width, height
 }
 
-// GetStyle is a wrapper around the C function gtk_widget_get_style.
+// Simply an accessor function that returns @widget->style.
+/*
+
+C function : gtk_widget_get_style
+*/
 func (recv *Widget) GetStyle() *Style {
 	retC := C.gtk_widget_get_style((*C.GtkWidget)(recv.native))
 	retGo := StyleNewFromC(unsafe.Pointer(retC))
@@ -36013,7 +41446,12 @@ func (recv *Widget) GetStyle() *Style {
 	return retGo
 }
 
-// GetStyleContext is a wrapper around the C function gtk_widget_get_style_context.
+// Returns the style context associated to @widget. The returned object is
+// guaranteed to be the same for the lifetime of @widget.
+/*
+
+C function : gtk_widget_get_style_context
+*/
 func (recv *Widget) GetStyleContext() *StyleContext {
 	retC := C.gtk_widget_get_style_context((*C.GtkWidget)(recv.native))
 	retGo := StyleContextNewFromC(unsafe.Pointer(retC))
@@ -36021,7 +41459,12 @@ func (recv *Widget) GetStyleContext() *StyleContext {
 	return retGo
 }
 
-// GetSupportMultidevice is a wrapper around the C function gtk_widget_get_support_multidevice.
+// Returns %TRUE if @widget is multiple pointer aware. See
+// gtk_widget_set_support_multidevice() for more information.
+/*
+
+C function : gtk_widget_get_support_multidevice
+*/
 func (recv *Widget) GetSupportMultidevice() bool {
 	retC := C.gtk_widget_get_support_multidevice((*C.GtkWidget)(recv.native))
 	retGo := retC == C.TRUE
@@ -36029,7 +41472,19 @@ func (recv *Widget) GetSupportMultidevice() bool {
 	return retGo
 }
 
-// GetTemplateChild is a wrapper around the C function gtk_widget_get_template_child.
+// Fetch an object build from the template XML for @widget_type in this @widget instance.
+//
+// This will only report children which were previously declared with
+// gtk_widget_class_bind_template_child_full() or one of its
+// variants.
+//
+// This function is only meant to be called for code which is private to the @widget_type which
+// declared the child and is meant for language bindings which cannot easily make use
+// of the GObject structure offsets.
+/*
+
+C function : gtk_widget_get_template_child
+*/
 func (recv *Widget) GetTemplateChild(widgetType gobject.Type, name string) *gobject.Object {
 	c_widget_type := (C.GType)(widgetType)
 
@@ -36042,7 +41497,41 @@ func (recv *Widget) GetTemplateChild(widgetType gobject.Type, name string) *gobj
 	return retGo
 }
 
-// GetToplevel is a wrapper around the C function gtk_widget_get_toplevel.
+// This function returns the topmost widget in the container hierarchy
+// @widget is a part of. If @widget has no parent widgets, it will be
+// returned as the topmost widget. No reference will be added to the
+// returned widget; it should not be unreferenced.
+//
+// Note the difference in behavior vs. gtk_widget_get_ancestor();
+// `gtk_widget_get_ancestor (widget, GTK_TYPE_WINDOW)`
+// would return
+// %NULL if @widget wasn’t inside a toplevel window, and if the
+// window was inside a #GtkWindow-derived widget which was in turn
+// inside the toplevel #GtkWindow. While the second case may
+// seem unlikely, it actually happens when a #GtkPlug is embedded
+// inside a #GtkSocket within the same application.
+//
+// To reliably find the toplevel #GtkWindow, use
+// gtk_widget_get_toplevel() and call GTK_IS_WINDOW()
+// on the result. For instance, to get the title of a widget's toplevel
+// window, one might use:
+// |[<!-- language="C" -->
+// static const char *
+// get_widget_toplevel_title (GtkWidget *widget)
+// {
+// GtkWidget *toplevel = gtk_widget_get_toplevel (widget);
+// if (GTK_IS_WINDOW (toplevel))
+// {
+// return gtk_window_get_title (GTK_WINDOW (toplevel));
+// }
+//
+// return NULL;
+// }
+// ]|
+/*
+
+C function : gtk_widget_get_toplevel
+*/
 func (recv *Widget) GetToplevel() *Widget {
 	retC := C.gtk_widget_get_toplevel((*C.GtkWidget)(recv.native))
 	retGo := WidgetNewFromC(unsafe.Pointer(retC))
@@ -36050,7 +41539,18 @@ func (recv *Widget) GetToplevel() *Widget {
 	return retGo
 }
 
-// GetValign is a wrapper around the C function gtk_widget_get_valign.
+// Gets the value of the #GtkWidget:valign property.
+//
+// For backwards compatibility reasons this method will never return
+// %GTK_ALIGN_BASELINE, but instead it will convert it to
+// %GTK_ALIGN_FILL. If your widget want to support baseline aligned
+// children it must use gtk_widget_get_valign_with_baseline(), or
+// `g_object_get (widget, "valign", &value, NULL)`, which will
+// also report the true value.
+/*
+
+C function : gtk_widget_get_valign
+*/
 func (recv *Widget) GetValign() Align {
 	retC := C.gtk_widget_get_valign((*C.GtkWidget)(recv.native))
 	retGo := (Align)(retC)
@@ -36058,7 +41558,14 @@ func (recv *Widget) GetValign() Align {
 	return retGo
 }
 
-// GetVexpand is a wrapper around the C function gtk_widget_get_vexpand.
+// Gets whether the widget would like any available extra vertical
+// space.
+//
+// See gtk_widget_get_hexpand() for more detail.
+/*
+
+C function : gtk_widget_get_vexpand
+*/
 func (recv *Widget) GetVexpand() bool {
 	retC := C.gtk_widget_get_vexpand((*C.GtkWidget)(recv.native))
 	retGo := retC == C.TRUE
@@ -36066,7 +41573,14 @@ func (recv *Widget) GetVexpand() bool {
 	return retGo
 }
 
-// GetVexpandSet is a wrapper around the C function gtk_widget_get_vexpand_set.
+// Gets whether gtk_widget_set_vexpand() has been used to
+// explicitly set the expand flag on this widget.
+//
+// See gtk_widget_get_hexpand_set() for more detail.
+/*
+
+C function : gtk_widget_get_vexpand_set
+*/
 func (recv *Widget) GetVexpandSet() bool {
 	retC := C.gtk_widget_get_vexpand_set((*C.GtkWidget)(recv.native))
 	retGo := retC == C.TRUE
@@ -36074,7 +41588,11 @@ func (recv *Widget) GetVexpandSet() bool {
 	return retGo
 }
 
-// GetVisual is a wrapper around the C function gtk_widget_get_visual.
+// Gets the visual that will be used to render @widget.
+/*
+
+C function : gtk_widget_get_visual
+*/
 func (recv *Widget) GetVisual() *gdk.Visual {
 	retC := C.gtk_widget_get_visual((*C.GtkWidget)(recv.native))
 	retGo := gdk.VisualNewFromC(unsafe.Pointer(retC))
@@ -36082,42 +41600,101 @@ func (recv *Widget) GetVisual() *gdk.Visual {
 	return retGo
 }
 
-// GrabAdd is a wrapper around the C function gtk_grab_add.
+// Makes @widget the current grabbed widget.
+//
+// This means that interaction with other widgets in the same
+// application is blocked and mouse as well as keyboard events
+// are delivered to this widget.
+//
+// If @widget is not sensitive, it is not set as the current
+// grabbed widget and this function does nothing.
+/*
+
+C function : gtk_grab_add
+*/
 func (recv *Widget) GrabAdd() {
 	C.gtk_grab_add((*C.GtkWidget)(recv.native))
 
 	return
 }
 
-// GrabDefault is a wrapper around the C function gtk_widget_grab_default.
+// Causes @widget to become the default widget. @widget must be able to be
+// a default widget; typically you would ensure this yourself
+// by calling gtk_widget_set_can_default() with a %TRUE value.
+// The default widget is activated when
+// the user presses Enter in a window. Default widgets must be
+// activatable, that is, gtk_widget_activate() should affect them. Note
+// that #GtkEntry widgets require the “activates-default” property
+// set to %TRUE before they activate the default widget when Enter
+// is pressed and the #GtkEntry is focused.
+/*
+
+C function : gtk_widget_grab_default
+*/
 func (recv *Widget) GrabDefault() {
 	C.gtk_widget_grab_default((*C.GtkWidget)(recv.native))
 
 	return
 }
 
-// GrabFocus is a wrapper around the C function gtk_widget_grab_focus.
+// Causes @widget to have the keyboard focus for the #GtkWindow it's
+// inside. @widget must be a focusable widget, such as a #GtkEntry;
+// something like #GtkFrame won’t work.
+//
+// More precisely, it must have the %GTK_CAN_FOCUS flag set. Use
+// gtk_widget_set_can_focus() to modify that flag.
+//
+// The widget also needs to be realized and mapped. This is indicated by the
+// related signals. Grabbing the focus immediately after creating the widget
+// will likely fail and cause critical warnings.
+/*
+
+C function : gtk_widget_grab_focus
+*/
 func (recv *Widget) GrabFocus() {
 	C.gtk_widget_grab_focus((*C.GtkWidget)(recv.native))
 
 	return
 }
 
-// GrabRemove is a wrapper around the C function gtk_grab_remove.
+// Removes the grab from the given widget.
+//
+// You have to pair calls to gtk_grab_add() and gtk_grab_remove().
+//
+// If @widget does not have the grab, this function does nothing.
+/*
+
+C function : gtk_grab_remove
+*/
 func (recv *Widget) GrabRemove() {
 	C.gtk_grab_remove((*C.GtkWidget)(recv.native))
 
 	return
 }
 
-// Hide is a wrapper around the C function gtk_widget_hide.
+// Reverses the effects of gtk_widget_show(), causing the widget to be
+// hidden (invisible to the user).
+/*
+
+C function : gtk_widget_hide
+*/
 func (recv *Widget) Hide() {
 	C.gtk_widget_hide((*C.GtkWidget)(recv.native))
 
 	return
 }
 
-// HideOnDelete is a wrapper around the C function gtk_widget_hide_on_delete.
+// Utility function; intended to be connected to the #GtkWidget::delete-event
+// signal on a #GtkWindow. The function calls gtk_widget_hide() on its
+// argument, then returns %TRUE. If connected to ::delete-event, the
+// result is that clicking the close button for a window (on the
+// window frame, top right corner usually) will hide but not destroy
+// the window. By default, GTK+ destroys windows when ::delete-event
+// is received.
+/*
+
+C function : gtk_widget_hide_on_delete
+*/
 func (recv *Widget) HideOnDelete() bool {
 	retC := C.gtk_widget_hide_on_delete((*C.GtkWidget)(recv.native))
 	retGo := retC == C.TRUE
@@ -36125,7 +41702,13 @@ func (recv *Widget) HideOnDelete() bool {
 	return retGo
 }
 
-// InDestruction is a wrapper around the C function gtk_widget_in_destruction.
+// Returns whether the widget is currently being destroyed.
+// This information can sometimes be used to avoid doing
+// unnecessary work.
+/*
+
+C function : gtk_widget_in_destruction
+*/
 func (recv *Widget) InDestruction() bool {
 	retC := C.gtk_widget_in_destruction((*C.GtkWidget)(recv.native))
 	retGo := retC == C.TRUE
@@ -36135,7 +41718,12 @@ func (recv *Widget) InDestruction() bool {
 
 // Unsupported : gtk_widget_intersect : unsupported parameter area : Blacklisted record : GdkRectangle
 
-// IsAncestor is a wrapper around the C function gtk_widget_is_ancestor.
+// Determines whether @widget is somewhere inside @ancestor, possibly with
+// intermediate containers.
+/*
+
+C function : gtk_widget_is_ancestor
+*/
 func (recv *Widget) IsAncestor(ancestor *Widget) bool {
 	c_ancestor := (*C.GtkWidget)(C.NULL)
 	if ancestor != nil {
@@ -36148,7 +41736,14 @@ func (recv *Widget) IsAncestor(ancestor *Widget) bool {
 	return retGo
 }
 
-// IsFocus is a wrapper around the C function gtk_widget_is_focus.
+// Determines if the widget is the focus widget within its
+// toplevel. (This does not mean that the #GtkWidget:has-focus property is
+// necessarily set; #GtkWidget:has-focus will only be set if the
+// toplevel widget additionally has the global input focus.)
+/*
+
+C function : gtk_widget_is_focus
+*/
 func (recv *Widget) IsFocus() bool {
 	retC := C.gtk_widget_is_focus((*C.GtkWidget)(recv.native))
 	retGo := retC == C.TRUE
@@ -36156,7 +41751,16 @@ func (recv *Widget) IsFocus() bool {
 	return retGo
 }
 
-// ListAccelClosures is a wrapper around the C function gtk_widget_list_accel_closures.
+// Lists the closures used by @widget for accelerator group connections
+// with gtk_accel_group_connect_by_path() or gtk_accel_group_connect().
+// The closures can be used to monitor accelerator changes on @widget,
+// by connecting to the @GtkAccelGroup::accel-changed signal of the
+// #GtkAccelGroup of a closure which can be found out with
+// gtk_accel_group_from_accel_closure().
+/*
+
+C function : gtk_widget_list_accel_closures
+*/
 func (recv *Widget) ListAccelClosures() *glib.List {
 	retC := C.gtk_widget_list_accel_closures((*C.GtkWidget)(recv.native))
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
@@ -36164,14 +41768,23 @@ func (recv *Widget) ListAccelClosures() *glib.List {
 	return retGo
 }
 
-// Map is a wrapper around the C function gtk_widget_map.
+// This function is only for use in widget implementations. Causes
+// a widget to be mapped if it isn’t already.
+/*
+
+C function : gtk_widget_map
+*/
 func (recv *Widget) Map() {
 	C.gtk_widget_map((*C.GtkWidget)(recv.native))
 
 	return
 }
 
-// MnemonicActivate is a wrapper around the C function gtk_widget_mnemonic_activate.
+// Emits the #GtkWidget::mnemonic-activate signal.
+/*
+
+C function : gtk_widget_mnemonic_activate
+*/
 func (recv *Widget) MnemonicActivate(groupCycling bool) bool {
 	c_group_cycling :=
 		boolToGboolean(groupCycling)
@@ -36182,7 +41795,25 @@ func (recv *Widget) MnemonicActivate(groupCycling bool) bool {
 	return retGo
 }
 
-// ModifyBase is a wrapper around the C function gtk_widget_modify_base.
+// Sets the base color for a widget in a particular state.
+// All other style values are left untouched. The base color
+// is the background color used along with the text color
+// (see gtk_widget_modify_text()) for widgets such as #GtkEntry
+// and #GtkTextView. See also gtk_widget_modify_style().
+//
+// > Note that “no window” widgets (which have the %GTK_NO_WINDOW
+// > flag set) draw on their parent container’s window and thus may
+// > not draw any background themselves. This is the case for e.g.
+// > #GtkLabel.
+// >
+// > To modify the background of such widgets, you have to set the
+// > base color on their parent; if you want to set the background
+// > of a rectangular area around a label, try placing the label in
+// > a #GtkEventBox widget and setting the base color on that.
+/*
+
+C function : gtk_widget_modify_base
+*/
 func (recv *Widget) ModifyBase(state StateType, color *gdk.Color) {
 	c_state := (C.GtkStateType)(state)
 
@@ -36196,7 +41827,24 @@ func (recv *Widget) ModifyBase(state StateType, color *gdk.Color) {
 	return
 }
 
-// ModifyBg is a wrapper around the C function gtk_widget_modify_bg.
+// Sets the background color for a widget in a particular state.
+//
+// All other style values are left untouched.
+// See also gtk_widget_modify_style().
+//
+// > Note that “no window” widgets (which have the %GTK_NO_WINDOW
+// > flag set) draw on their parent container’s window and thus may
+// > not draw any background themselves. This is the case for e.g.
+// > #GtkLabel.
+// >
+// > To modify the background of such widgets, you have to set the
+// > background color on their parent; if you want to set the background
+// > of a rectangular area around a label, try placing the label in
+// > a #GtkEventBox widget and setting the background color on that.
+/*
+
+C function : gtk_widget_modify_bg
+*/
 func (recv *Widget) ModifyBg(state StateType, color *gdk.Color) {
 	c_state := (C.GtkStateType)(state)
 
@@ -36210,7 +41858,14 @@ func (recv *Widget) ModifyBg(state StateType, color *gdk.Color) {
 	return
 }
 
-// ModifyFg is a wrapper around the C function gtk_widget_modify_fg.
+// Sets the foreground color for a widget in a particular state.
+//
+// All other style values are left untouched.
+// See also gtk_widget_modify_style().
+/*
+
+C function : gtk_widget_modify_fg
+*/
 func (recv *Widget) ModifyFg(state StateType, color *gdk.Color) {
 	c_state := (C.GtkStateType)(state)
 
@@ -36224,7 +41879,14 @@ func (recv *Widget) ModifyFg(state StateType, color *gdk.Color) {
 	return
 }
 
-// ModifyFont is a wrapper around the C function gtk_widget_modify_font.
+// Sets the font to use for a widget.
+//
+// All other style values are left untouched.
+// See also gtk_widget_modify_style().
+/*
+
+C function : gtk_widget_modify_font
+*/
 func (recv *Widget) ModifyFont(fontDesc *pango.FontDescription) {
 	c_font_desc := (*C.PangoFontDescription)(C.NULL)
 	if fontDesc != nil {
@@ -36236,7 +41898,28 @@ func (recv *Widget) ModifyFont(fontDesc *pango.FontDescription) {
 	return
 }
 
-// ModifyStyle is a wrapper around the C function gtk_widget_modify_style.
+// Modifies style values on the widget.
+//
+// Modifications made using this technique take precedence over
+// style values set via an RC file, however, they will be overridden
+// if a style is explicitly set on the widget using gtk_widget_set_style().
+// The #GtkRcStyle-struct is designed so each field can either be
+// set or unset, so it is possible, using this function, to modify some
+// style values and leave the others unchanged.
+//
+// Note that modifications made with this function are not cumulative
+// with previous calls to gtk_widget_modify_style() or with such
+// functions as gtk_widget_modify_fg(). If you wish to retain
+// previous values, you must first call gtk_widget_get_modifier_style(),
+// make your modifications to the returned style, then call
+// gtk_widget_modify_style() with that style. On the other hand,
+// if you first call gtk_widget_modify_style(), subsequent calls
+// to such functions gtk_widget_modify_fg() will have a cumulative
+// effect with the initial modifications.
+/*
+
+C function : gtk_widget_modify_style
+*/
 func (recv *Widget) ModifyStyle(style *RcStyle) {
 	c_style := (*C.GtkRcStyle)(C.NULL)
 	if style != nil {
@@ -36248,7 +41931,17 @@ func (recv *Widget) ModifyStyle(style *RcStyle) {
 	return
 }
 
-// ModifyText is a wrapper around the C function gtk_widget_modify_text.
+// Sets the text color for a widget in a particular state.
+//
+// All other style values are left untouched.
+// The text color is the foreground color used along with the
+// base color (see gtk_widget_modify_base()) for widgets such
+// as #GtkEntry and #GtkTextView.
+// See also gtk_widget_modify_style().
+/*
+
+C function : gtk_widget_modify_text
+*/
 func (recv *Widget) ModifyText(state StateType, color *gdk.Color) {
 	c_state := (C.GtkStateType)(state)
 
@@ -36262,7 +41955,22 @@ func (recv *Widget) ModifyText(state StateType, color *gdk.Color) {
 	return
 }
 
-// Path is a wrapper around the C function gtk_widget_path.
+// Obtains the full path to @widget. The path is simply the name of a
+// widget and all its parents in the container hierarchy, separated by
+// periods. The name of a widget comes from
+// gtk_widget_get_name(). Paths are used to apply styles to a widget
+// in gtkrc configuration files. Widget names are the type of the
+// widget by default (e.g. “GtkButton”) or can be set to an
+// application-specific value with gtk_widget_set_name(). By setting
+// the name of a widget, you allow users or theme authors to apply
+// styles to that specific widget in their gtkrc
+// file. @path_reversed_p fills in the path in reverse order,
+// i.e. starting with @widget’s name instead of starting with the name
+// of @widget’s outermost ancestor.
+/*
+
+C function : gtk_widget_path
+*/
 func (recv *Widget) Path() (uint32, string, string) {
 	var c_path_length C.guint
 
@@ -36283,21 +41991,48 @@ func (recv *Widget) Path() (uint32, string, string) {
 	return pathLength, path, pathReversed
 }
 
-// QueueComputeExpand is a wrapper around the C function gtk_widget_queue_compute_expand.
+// Mark @widget as needing to recompute its expand flags. Call
+// this function when setting legacy expand child properties
+// on the child of a container.
+//
+// See gtk_widget_compute_expand().
+/*
+
+C function : gtk_widget_queue_compute_expand
+*/
 func (recv *Widget) QueueComputeExpand() {
 	C.gtk_widget_queue_compute_expand((*C.GtkWidget)(recv.native))
 
 	return
 }
 
-// QueueDraw is a wrapper around the C function gtk_widget_queue_draw.
+// Equivalent to calling gtk_widget_queue_draw_area() for the
+// entire area of a widget.
+/*
+
+C function : gtk_widget_queue_draw
+*/
 func (recv *Widget) QueueDraw() {
 	C.gtk_widget_queue_draw((*C.GtkWidget)(recv.native))
 
 	return
 }
 
-// QueueDrawArea is a wrapper around the C function gtk_widget_queue_draw_area.
+// Convenience function that calls gtk_widget_queue_draw_region() on
+// the region created from the given coordinates.
+//
+// The region here is specified in widget coordinates.
+// Widget coordinates are a bit odd; for historical reasons, they are
+// defined as @widget->window coordinates for widgets that return %TRUE for
+// gtk_widget_get_has_window(), and are relative to @widget->allocation.x,
+// @widget->allocation.y otherwise.
+//
+// @width or @height may be 0, in this case this function does
+// nothing. Negative values for @width and @height are not allowed.
+/*
+
+C function : gtk_widget_queue_draw_area
+*/
 func (recv *Widget) QueueDrawArea(x int32, y int32, width int32, height int32) {
 	c_x := (C.gint)(x)
 
@@ -36312,21 +42047,61 @@ func (recv *Widget) QueueDrawArea(x int32, y int32, width int32, height int32) {
 	return
 }
 
-// QueueResize is a wrapper around the C function gtk_widget_queue_resize.
+// This function is only for use in widget implementations.
+// Flags a widget to have its size renegotiated; should
+// be called when a widget for some reason has a new size request.
+// For example, when you change the text in a #GtkLabel, #GtkLabel
+// queues a resize to ensure there’s enough space for the new text.
+//
+// Note that you cannot call gtk_widget_queue_resize() on a widget
+// from inside its implementation of the GtkWidgetClass::size_allocate
+// virtual method. Calls to gtk_widget_queue_resize() from inside
+// GtkWidgetClass::size_allocate will be silently ignored.
+/*
+
+C function : gtk_widget_queue_resize
+*/
 func (recv *Widget) QueueResize() {
 	C.gtk_widget_queue_resize((*C.GtkWidget)(recv.native))
 
 	return
 }
 
-// Realize is a wrapper around the C function gtk_widget_realize.
+// Creates the GDK (windowing system) resources associated with a
+// widget.  For example, @widget->window will be created when a widget
+// is realized.  Normally realization happens implicitly; if you show
+// a widget and all its parent containers, then the widget will be
+// realized and mapped automatically.
+//
+// Realizing a widget requires all
+// the widget’s parent widgets to be realized; calling
+// gtk_widget_realize() realizes the widget’s parents in addition to
+// @widget itself. If a widget is not yet inside a toplevel window
+// when you realize it, bad things will happen.
+//
+// This function is primarily used in widget implementations, and
+// isn’t very useful otherwise. Many times when you think you might
+// need it, a better approach is to connect to a signal that will be
+// called after the widget is realized automatically, such as
+// #GtkWidget::draw. Or simply g_signal_connect () to the
+// #GtkWidget::realize signal.
+/*
+
+C function : gtk_widget_realize
+*/
 func (recv *Widget) Realize() {
 	C.gtk_widget_realize((*C.GtkWidget)(recv.native))
 
 	return
 }
 
-// RegionIntersect is a wrapper around the C function gtk_widget_region_intersect.
+// Computes the intersection of a @widget’s area and @region, returning
+// the intersection. The result may be empty, use cairo_region_is_empty() to
+// check.
+/*
+
+C function : gtk_widget_region_intersect
+*/
 func (recv *Widget) RegionIntersect(region *cairo.Region) *cairo.Region {
 	c_region := (*C.cairo_region_t)(C.NULL)
 	if region != nil {
@@ -36339,7 +42114,12 @@ func (recv *Widget) RegionIntersect(region *cairo.Region) *cairo.Region {
 	return retGo
 }
 
-// RemoveAccelerator is a wrapper around the C function gtk_widget_remove_accelerator.
+// Removes an accelerator from @widget, previously installed with
+// gtk_widget_add_accelerator().
+/*
+
+C function : gtk_widget_remove_accelerator
+*/
 func (recv *Widget) RemoveAccelerator(accelGroup *AccelGroup, accelKey uint32, accelMods gdk.ModifierType) bool {
 	c_accel_group := (*C.GtkAccelGroup)(C.NULL)
 	if accelGroup != nil {
@@ -36356,7 +42136,21 @@ func (recv *Widget) RemoveAccelerator(accelGroup *AccelGroup, accelKey uint32, a
 	return retGo
 }
 
-// RenderIcon is a wrapper around the C function gtk_widget_render_icon.
+// A convenience function that uses the theme settings for @widget
+// to look up @stock_id and render it to a pixbuf. @stock_id should
+// be a stock icon ID such as #GTK_STOCK_OPEN or #GTK_STOCK_OK. @size
+// should be a size such as #GTK_ICON_SIZE_MENU. @detail should be a
+// string that identifies the widget or code doing the rendering, so
+// that theme engines can special-case rendering for that widget or
+// code.
+//
+// The pixels in the returned #GdkPixbuf are shared with the rest of
+// the application and should not be modified. The pixbuf should be
+// freed after use with g_object_unref().
+/*
+
+C function : gtk_widget_render_icon
+*/
 func (recv *Widget) RenderIcon(stockId string, size IconSize, detail string) *gdkpixbuf.Pixbuf {
 	c_stock_id := C.CString(stockId)
 	defer C.free(unsafe.Pointer(c_stock_id))
@@ -36377,7 +42171,12 @@ func (recv *Widget) RenderIcon(stockId string, size IconSize, detail string) *gd
 	return retGo
 }
 
-// Reparent is a wrapper around the C function gtk_widget_reparent.
+// Moves a widget from one #GtkContainer to another, handling reference
+// count issues to avoid destroying the widget.
+/*
+
+C function : gtk_widget_reparent
+*/
 func (recv *Widget) Reparent(newParent *Widget) {
 	c_new_parent := (*C.GtkWidget)(C.NULL)
 	if newParent != nil {
@@ -36389,7 +42188,15 @@ func (recv *Widget) Reparent(newParent *Widget) {
 	return
 }
 
-// ResetRcStyles is a wrapper around the C function gtk_widget_reset_rc_styles.
+// Reset the styles of @widget and all descendents, so when
+// they are looked up again, they get the correct values
+// for the currently loaded RC file settings.
+//
+// This function is not useful for applications.
+/*
+
+C function : gtk_widget_reset_rc_styles
+*/
 func (recv *Widget) ResetRcStyles() {
 	C.gtk_widget_reset_rc_styles((*C.GtkWidget)(recv.native))
 
@@ -36398,7 +42205,31 @@ func (recv *Widget) ResetRcStyles() {
 
 // Unsupported : gtk_widget_send_expose : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
 
-// SetAccelPath is a wrapper around the C function gtk_widget_set_accel_path.
+// Given an accelerator group, @accel_group, and an accelerator path,
+// @accel_path, sets up an accelerator in @accel_group so whenever the
+// key binding that is defined for @accel_path is pressed, @widget
+// will be activated.  This removes any accelerators (for any
+// accelerator group) installed by previous calls to
+// gtk_widget_set_accel_path(). Associating accelerators with
+// paths allows them to be modified by the user and the modifications
+// to be saved for future use. (See gtk_accel_map_save().)
+//
+// This function is a low level function that would most likely
+// be used by a menu creation system like #GtkUIManager. If you
+// use #GtkUIManager, setting up accelerator paths will be done
+// automatically.
+//
+// Even when you you aren’t using #GtkUIManager, if you only want to
+// set up accelerators on menu items gtk_menu_item_set_accel_path()
+// provides a somewhat more convenient interface.
+//
+// Note that @accel_path string will be stored in a #GQuark. Therefore, if you
+// pass a static string, you can save some memory by interning it first with
+// g_intern_static_string().
+/*
+
+C function : gtk_widget_set_accel_path
+*/
 func (recv *Widget) SetAccelPath(accelPath string, accelGroup *AccelGroup) {
 	c_accel_path := C.CString(accelPath)
 	defer C.free(unsafe.Pointer(c_accel_path))
@@ -36413,7 +42244,21 @@ func (recv *Widget) SetAccelPath(accelPath string, accelGroup *AccelGroup) {
 	return
 }
 
-// SetAppPaintable is a wrapper around the C function gtk_widget_set_app_paintable.
+// Sets whether the application intends to draw on the widget in
+// an #GtkWidget::draw handler.
+//
+// This is a hint to the widget and does not affect the behavior of
+// the GTK+ core; many widgets ignore this flag entirely. For widgets
+// that do pay attention to the flag, such as #GtkEventBox and #GtkWindow,
+// the effect is to suppress default themed drawing of the widget's
+// background. (Children of the widget will still be drawn.) The application
+// is then entirely responsible for drawing the widget background.
+//
+// Note that the background is still drawn when the widget is mapped.
+/*
+
+C function : gtk_widget_set_app_paintable
+*/
 func (recv *Widget) SetAppPaintable(appPaintable bool) {
 	c_app_paintable :=
 		boolToGboolean(appPaintable)
@@ -36423,7 +42268,27 @@ func (recv *Widget) SetAppPaintable(appPaintable bool) {
 	return
 }
 
-// SetChildVisible is a wrapper around the C function gtk_widget_set_child_visible.
+// Sets whether @widget should be mapped along with its when its parent
+// is mapped and @widget has been shown with gtk_widget_show().
+//
+// The child visibility can be set for widget before it is added to
+// a container with gtk_widget_set_parent(), to avoid mapping
+// children unnecessary before immediately unmapping them. However
+// it will be reset to its default state of %TRUE when the widget
+// is removed from a container.
+//
+// Note that changing the child visibility of a widget does not
+// queue a resize on the widget. Most of the time, the size of
+// a widget is computed from all visible children, whether or
+// not they are mapped. If this is not the case, the container
+// can queue a resize itself.
+//
+// This function is only useful for container implementations and
+// never should be called by an application.
+/*
+
+C function : gtk_widget_set_child_visible
+*/
 func (recv *Widget) SetChildVisible(isVisible bool) {
 	c_is_visible :=
 		boolToGboolean(isVisible)
@@ -36433,7 +42298,12 @@ func (recv *Widget) SetChildVisible(isVisible bool) {
 	return
 }
 
-// SetCompositeName is a wrapper around the C function gtk_widget_set_composite_name.
+// Sets a widgets composite name. The widget must be
+// a composite child of its parent; see gtk_widget_push_composite_child().
+/*
+
+C function : gtk_widget_set_composite_name
+*/
 func (recv *Widget) SetCompositeName(name string) {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -36443,7 +42313,22 @@ func (recv *Widget) SetCompositeName(name string) {
 	return
 }
 
-// SetDirection is a wrapper around the C function gtk_widget_set_direction.
+// Sets the reading direction on a particular widget. This direction
+// controls the primary direction for widgets containing text,
+// and also the direction in which the children of a container are
+// packed. The ability to set the direction is present in order
+// so that correct localization into languages with right-to-left
+// reading directions can be done. Generally, applications will
+// let the default reading direction present, except for containers
+// where the containers are arranged in an order that is explicitly
+// visual rather than logical (such as buttons for text justification).
+//
+// If the direction is set to %GTK_TEXT_DIR_NONE, then the value
+// set by gtk_widget_set_default_direction() will be used.
+/*
+
+C function : gtk_widget_set_direction
+*/
 func (recv *Widget) SetDirection(dir TextDirection) {
 	c_dir := (C.GtkTextDirection)(dir)
 
@@ -36452,7 +42337,35 @@ func (recv *Widget) SetDirection(dir TextDirection) {
 	return
 }
 
-// SetDoubleBuffered is a wrapper around the C function gtk_widget_set_double_buffered.
+// Widgets are double buffered by default; you can use this function
+// to turn off the buffering. “Double buffered” simply means that
+// gdk_window_begin_draw_frame() and gdk_window_end_draw_frame() are called
+// automatically around expose events sent to the
+// widget. gdk_window_begin_draw_frame() diverts all drawing to a widget's
+// window to an offscreen buffer, and gdk_window_end_draw_frame() draws the
+// buffer to the screen. The result is that users see the window
+// update in one smooth step, and don’t see individual graphics
+// primitives being rendered.
+//
+// In very simple terms, double buffered widgets don’t flicker,
+// so you would only use this function to turn off double buffering
+// if you had special needs and really knew what you were doing.
+//
+// Note: if you turn off double-buffering, you have to handle
+// expose events, since even the clearing to the background color or
+// pixmap will not happen automatically (as it is done in
+// gdk_window_begin_draw_frame()).
+//
+// In 3.10 GTK and GDK have been restructured for translucent drawing. Since
+// then expose events for double-buffered widgets are culled into a single
+// event to the toplevel GDK window. If you now unset double buffering, you
+// will cause a separate rendering pass for every widget. This will likely
+// cause rendering problems - in particular related to stacking - and usually
+// increases rendering times significantly.
+/*
+
+C function : gtk_widget_set_double_buffered
+*/
 func (recv *Widget) SetDoubleBuffered(doubleBuffered bool) {
 	c_double_buffered :=
 		boolToGboolean(doubleBuffered)
@@ -36462,7 +42375,21 @@ func (recv *Widget) SetDoubleBuffered(doubleBuffered bool) {
 	return
 }
 
-// SetEvents is a wrapper around the C function gtk_widget_set_events.
+// Sets the event mask (see #GdkEventMask) for a widget. The event
+// mask determines which events a widget will receive. Keep in mind
+// that different widgets have different default event masks, and by
+// changing the event mask you may disrupt a widget’s functionality,
+// so be careful. This function must be called while a widget is
+// unrealized. Consider gtk_widget_add_events() for widgets that are
+// already realized, or if you want to preserve the existing event
+// mask. This function can’t be used with widgets that have no window.
+// (See gtk_widget_get_has_window()).  To get events on those widgets,
+// place them inside a #GtkEventBox and receive events on the event
+// box.
+/*
+
+C function : gtk_widget_set_events
+*/
 func (recv *Widget) SetEvents(events int32) {
 	c_events := (C.gint)(events)
 
@@ -36471,7 +42398,12 @@ func (recv *Widget) SetEvents(events int32) {
 	return
 }
 
-// SetHalign is a wrapper around the C function gtk_widget_set_halign.
+// Sets the horizontal alignment of @widget.
+// See the #GtkWidget:halign property.
+/*
+
+C function : gtk_widget_set_halign
+*/
 func (recv *Widget) SetHalign(align Align) {
 	c_align := (C.GtkAlign)(align)
 
@@ -36480,7 +42412,35 @@ func (recv *Widget) SetHalign(align Align) {
 	return
 }
 
-// SetHexpand is a wrapper around the C function gtk_widget_set_hexpand.
+// Sets whether the widget would like any available extra horizontal
+// space. When a user resizes a #GtkWindow, widgets with expand=TRUE
+// generally receive the extra space. For example, a list or
+// scrollable area or document in your window would often be set to
+// expand.
+//
+// Call this function to set the expand flag if you would like your
+// widget to become larger horizontally when the window has extra
+// room.
+//
+// By default, widgets automatically expand if any of their children
+// want to expand. (To see if a widget will automatically expand given
+// its current children and state, call gtk_widget_compute_expand(). A
+// container can decide how the expandability of children affects the
+// expansion of the container by overriding the compute_expand virtual
+// method on #GtkWidget.).
+//
+// Setting hexpand explicitly with this function will override the
+// automatic expand behavior.
+//
+// This function forces the widget to expand or not to expand,
+// regardless of children.  The override occurs because
+// gtk_widget_set_hexpand() sets the hexpand-set property (see
+// gtk_widget_set_hexpand_set()) which causes the widget’s hexpand
+// value to be used, rather than looking at children and widget state.
+/*
+
+C function : gtk_widget_set_hexpand
+*/
 func (recv *Widget) SetHexpand(expand bool) {
 	c_expand :=
 		boolToGboolean(expand)
@@ -36490,7 +42450,25 @@ func (recv *Widget) SetHexpand(expand bool) {
 	return
 }
 
-// SetHexpandSet is a wrapper around the C function gtk_widget_set_hexpand_set.
+// Sets whether the hexpand flag (see gtk_widget_get_hexpand()) will
+// be used.
+//
+// The hexpand-set property will be set automatically when you call
+// gtk_widget_set_hexpand() to set hexpand, so the most likely
+// reason to use this function would be to unset an explicit expand
+// flag.
+//
+// If hexpand is set, then it overrides any computed
+// expand value based on child widgets. If hexpand is not
+// set, then the expand value depends on whether any
+// children of the widget would like to expand.
+//
+// There are few reasons to use this function, but it’s here
+// for completeness and consistency.
+/*
+
+C function : gtk_widget_set_hexpand_set
+*/
 func (recv *Widget) SetHexpandSet(set bool) {
 	c_set :=
 		boolToGboolean(set)
@@ -36500,7 +42478,19 @@ func (recv *Widget) SetHexpandSet(set bool) {
 	return
 }
 
-// SetName is a wrapper around the C function gtk_widget_set_name.
+// Widgets can be named, which allows you to refer to them from a
+// CSS file. You can apply a style to widgets with a particular name
+// in the CSS file. See the documentation for the CSS syntax (on the
+// same page as the docs for #GtkStyleContext).
+//
+// Note that the CSS syntax has certain special characters to delimit
+// and represent elements in a selector (period, #, >, *...), so using
+// these will make your widget impossible to match by name. Any combination
+// of alphanumeric symbols, dashes and underscores will suffice.
+/*
+
+C function : gtk_widget_set_name
+*/
 func (recv *Widget) SetName(name string) {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -36510,7 +42500,16 @@ func (recv *Widget) SetName(name string) {
 	return
 }
 
-// SetParent is a wrapper around the C function gtk_widget_set_parent.
+// This function is useful only when implementing subclasses of
+// #GtkContainer.
+// Sets the container as the parent of @widget, and takes care of
+// some details such as updating the state and style of the child
+// to reflect its new location. The opposite function is
+// gtk_widget_unparent().
+/*
+
+C function : gtk_widget_set_parent
+*/
 func (recv *Widget) SetParent(parent *Widget) {
 	c_parent := (*C.GtkWidget)(C.NULL)
 	if parent != nil {
@@ -36522,7 +42521,18 @@ func (recv *Widget) SetParent(parent *Widget) {
 	return
 }
 
-// SetParentWindow is a wrapper around the C function gtk_widget_set_parent_window.
+// Sets a non default parent window for @widget.
+//
+// For #GtkWindow classes, setting a @parent_window effects whether
+// the window is a toplevel window or can be embedded into other
+// widgets.
+//
+// For #GtkWindow classes, this needs to be called before the
+// window is realized.
+/*
+
+C function : gtk_widget_set_parent_window
+*/
 func (recv *Widget) SetParentWindow(parentWindow *gdk.Window) {
 	c_parent_window := (*C.GdkWindow)(C.NULL)
 	if parentWindow != nil {
@@ -36534,7 +42544,25 @@ func (recv *Widget) SetParentWindow(parentWindow *gdk.Window) {
 	return
 }
 
-// SetRedrawOnAllocate is a wrapper around the C function gtk_widget_set_redraw_on_allocate.
+// Sets whether the entire widget is queued for drawing when its size
+// allocation changes. By default, this setting is %TRUE and
+// the entire widget is redrawn on every size change. If your widget
+// leaves the upper left unchanged when made bigger, turning this
+// setting off will improve performance.
+//
+// Note that for widgets where gtk_widget_get_has_window() is %FALSE
+// setting this flag to %FALSE turns off all allocation on resizing:
+// the widget will not even redraw if its position changes; this is to
+// allow containers that don’t draw anything to avoid excess
+// invalidations. If you set this flag on a widget with no window that
+// does draw on @widget->window, you are
+// responsible for invalidating both the old and new allocation of the
+// widget when the widget is moved and responsible for invalidating
+// regions newly when the widget increases size.
+/*
+
+C function : gtk_widget_set_redraw_on_allocate
+*/
 func (recv *Widget) SetRedrawOnAllocate(redrawOnAllocate bool) {
 	c_redraw_on_allocate :=
 		boolToGboolean(redrawOnAllocate)
@@ -36544,7 +42572,14 @@ func (recv *Widget) SetRedrawOnAllocate(redrawOnAllocate bool) {
 	return
 }
 
-// SetSensitive is a wrapper around the C function gtk_widget_set_sensitive.
+// Sets the sensitivity of a widget. A widget is sensitive if the user
+// can interact with it. Insensitive widgets are “grayed out” and the
+// user can’t interact with them. Insensitive widgets are known as
+// “inactive”, “disabled”, or “ghosted” in some other toolkits.
+/*
+
+C function : gtk_widget_set_sensitive
+*/
 func (recv *Widget) SetSensitive(sensitive bool) {
 	c_sensitive :=
 		boolToGboolean(sensitive)
@@ -36554,7 +42589,40 @@ func (recv *Widget) SetSensitive(sensitive bool) {
 	return
 }
 
-// SetSizeRequest is a wrapper around the C function gtk_widget_set_size_request.
+// Sets the minimum size of a widget; that is, the widget’s size
+// request will be at least @width by @height. You can use this
+// function to force a widget to be larger than it normally would be.
+//
+// In most cases, gtk_window_set_default_size() is a better choice for
+// toplevel windows than this function; setting the default size will
+// still allow users to shrink the window. Setting the size request
+// will force them to leave the window at least as large as the size
+// request. When dealing with window sizes,
+// gtk_window_set_geometry_hints() can be a useful function as well.
+//
+// Note the inherent danger of setting any fixed size - themes,
+// translations into other languages, different fonts, and user action
+// can all change the appropriate size for a given widget. So, it's
+// basically impossible to hardcode a size that will always be
+// correct.
+//
+// The size request of a widget is the smallest size a widget can
+// accept while still functioning well and drawing itself correctly.
+// However in some strange cases a widget may be allocated less than
+// its requested size, and in many cases a widget may be allocated more
+// space than it requested.
+//
+// If the size request in a given direction is -1 (unset), then
+// the “natural” size request of the widget will be used instead.
+//
+// The size request set here does not include any margin from the
+// #GtkWidget properties margin-left, margin-right, margin-top, and
+// margin-bottom, but it does include pretty much all other padding
+// or border properties set by any subclass of #GtkWidget.
+/*
+
+C function : gtk_widget_set_size_request
+*/
 func (recv *Widget) SetSizeRequest(width int32, height int32) {
 	c_width := (C.gint)(width)
 
@@ -36565,7 +42633,13 @@ func (recv *Widget) SetSizeRequest(width int32, height int32) {
 	return
 }
 
-// SetState is a wrapper around the C function gtk_widget_set_state.
+// This function is for use in widget implementations. Sets the state
+// of a widget (insensitive, prelighted, etc.) Usually you should set
+// the state using wrapper functions such as gtk_widget_set_sensitive().
+/*
+
+C function : gtk_widget_set_state
+*/
 func (recv *Widget) SetState(state StateType) {
 	c_state := (C.GtkStateType)(state)
 
@@ -36574,7 +42648,12 @@ func (recv *Widget) SetState(state StateType) {
 	return
 }
 
-// SetStyle is a wrapper around the C function gtk_widget_set_style.
+// Used to set the #GtkStyle for a widget (@widget->style). Since
+// GTK 3, this function does nothing, the passed in style is ignored.
+/*
+
+C function : gtk_widget_set_style
+*/
 func (recv *Widget) SetStyle(style *Style) {
 	c_style := (*C.GtkStyle)(C.NULL)
 	if style != nil {
@@ -36586,7 +42665,12 @@ func (recv *Widget) SetStyle(style *Style) {
 	return
 }
 
-// SetValign is a wrapper around the C function gtk_widget_set_valign.
+// Sets the vertical alignment of @widget.
+// See the #GtkWidget:valign property.
+/*
+
+C function : gtk_widget_set_valign
+*/
 func (recv *Widget) SetValign(align Align) {
 	c_align := (C.GtkAlign)(align)
 
@@ -36595,7 +42679,14 @@ func (recv *Widget) SetValign(align Align) {
 	return
 }
 
-// SetVexpand is a wrapper around the C function gtk_widget_set_vexpand.
+// Sets whether the widget would like any available extra vertical
+// space.
+//
+// See gtk_widget_set_hexpand() for more detail.
+/*
+
+C function : gtk_widget_set_vexpand
+*/
 func (recv *Widget) SetVexpand(expand bool) {
 	c_expand :=
 		boolToGboolean(expand)
@@ -36605,7 +42696,14 @@ func (recv *Widget) SetVexpand(expand bool) {
 	return
 }
 
-// SetVexpandSet is a wrapper around the C function gtk_widget_set_vexpand_set.
+// Sets whether the vexpand flag (see gtk_widget_get_vexpand()) will
+// be used.
+//
+// See gtk_widget_set_hexpand_set() for more detail.
+/*
+
+C function : gtk_widget_set_vexpand_set
+*/
 func (recv *Widget) SetVexpandSet(set bool) {
 	c_set :=
 		boolToGboolean(set)
@@ -36615,7 +42713,17 @@ func (recv *Widget) SetVexpandSet(set bool) {
 	return
 }
 
-// SetVisual is a wrapper around the C function gtk_widget_set_visual.
+// Sets the visual that should be used for by widget and its children for
+// creating #GdkWindows. The visual must be on the same #GdkScreen as
+// returned by gtk_widget_get_screen(), so handling the
+// #GtkWidget::screen-changed signal is necessary.
+//
+// Setting a new @visual will not cause @widget to recreate its windows,
+// so you should call this function before @widget is realized.
+/*
+
+C function : gtk_widget_set_visual
+*/
 func (recv *Widget) SetVisual(visual *gdk.Visual) {
 	c_visual := (*C.GdkVisual)(C.NULL)
 	if visual != nil {
@@ -36627,21 +42735,48 @@ func (recv *Widget) SetVisual(visual *gdk.Visual) {
 	return
 }
 
-// Show is a wrapper around the C function gtk_widget_show.
+// Flags a widget to be displayed. Any widget that isn’t shown will
+// not appear on the screen. If you want to show all the widgets in a
+// container, it’s easier to call gtk_widget_show_all() on the
+// container, instead of individually showing the widgets.
+//
+// Remember that you have to show the containers containing a widget,
+// in addition to the widget itself, before it will appear onscreen.
+//
+// When a toplevel container is shown, it is immediately realized and
+// mapped; other shown widgets are realized and mapped when their
+// toplevel container is realized and mapped.
+/*
+
+C function : gtk_widget_show
+*/
 func (recv *Widget) Show() {
 	C.gtk_widget_show((*C.GtkWidget)(recv.native))
 
 	return
 }
 
-// ShowAll is a wrapper around the C function gtk_widget_show_all.
+// Recursively shows a widget, and any child widgets (if the widget is
+// a container).
+/*
+
+C function : gtk_widget_show_all
+*/
 func (recv *Widget) ShowAll() {
 	C.gtk_widget_show_all((*C.GtkWidget)(recv.native))
 
 	return
 }
 
-// ShowNow is a wrapper around the C function gtk_widget_show_now.
+// Shows a widget. If the widget is an unmapped toplevel widget
+// (i.e. a #GtkWindow that has not yet been shown), enter the main
+// loop and wait for the window to actually be mapped. Be careful;
+// because the main loop is running, anything can happen during
+// this function.
+/*
+
+C function : gtk_widget_show_now
+*/
 func (recv *Widget) ShowNow() {
 	C.gtk_widget_show_now((*C.GtkWidget)(recv.native))
 
@@ -36650,7 +42785,22 @@ func (recv *Widget) ShowNow() {
 
 // Unsupported : gtk_widget_size_allocate : unsupported parameter allocation : Blacklisted record : GdkRectangle
 
-// SizeRequest is a wrapper around the C function gtk_widget_size_request.
+// This function is typically used when implementing a #GtkContainer
+// subclass.  Obtains the preferred size of a widget. The container
+// uses this information to arrange its child widgets and decide what
+// size allocations to give them with gtk_widget_size_allocate().
+//
+// You can also call this function from an application, with some
+// caveats. Most notably, getting a size request requires the widget
+// to be associated with a screen, because font information may be
+// needed. Multihead-aware applications should keep this in mind.
+//
+// Also remember that the size request is not necessarily the size
+// a widget will actually be allocated.
+/*
+
+C function : gtk_widget_size_request
+*/
 func (recv *Widget) SizeRequest() *Requisition {
 	var c_requisition C.GtkRequisition
 
@@ -36663,7 +42813,11 @@ func (recv *Widget) SizeRequest() *Requisition {
 
 // Unsupported : gtk_widget_style_get : unsupported parameter ... : varargs
 
-// StyleGetProperty is a wrapper around the C function gtk_widget_style_get_property.
+// Gets the value of a style property of @widget.
+/*
+
+C function : gtk_widget_style_get_property
+*/
 func (recv *Widget) StyleGetProperty(propertyName string, value *gobject.Value) {
 	c_property_name := C.CString(propertyName)
 	defer C.free(unsafe.Pointer(c_property_name))
@@ -36680,14 +42834,27 @@ func (recv *Widget) StyleGetProperty(propertyName string, value *gobject.Value) 
 
 // Unsupported : gtk_widget_style_get_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
 
-// ThawChildNotify is a wrapper around the C function gtk_widget_thaw_child_notify.
+// Reverts the effect of a previous call to gtk_widget_freeze_child_notify().
+// This causes all queued #GtkWidget::child-notify signals on @widget to be
+// emitted.
+/*
+
+C function : gtk_widget_thaw_child_notify
+*/
 func (recv *Widget) ThawChildNotify() {
 	C.gtk_widget_thaw_child_notify((*C.GtkWidget)(recv.native))
 
 	return
 }
 
-// TranslateCoordinates is a wrapper around the C function gtk_widget_translate_coordinates.
+// Translate coordinates relative to @src_widget’s allocation to coordinates
+// relative to @dest_widget’s allocations. In order to perform this
+// operation, both widgets must be realized, and must share a common
+// toplevel.
+/*
+
+C function : gtk_widget_translate_coordinates
+*/
 func (recv *Widget) TranslateCoordinates(destWidget *Widget, srcX int32, srcY int32) (bool, int32, int32) {
 	c_dest_widget := (*C.GtkWidget)(C.NULL)
 	if destWidget != nil {
@@ -36712,21 +42879,38 @@ func (recv *Widget) TranslateCoordinates(destWidget *Widget, srcX int32, srcY in
 	return retGo, destX, destY
 }
 
-// Unmap is a wrapper around the C function gtk_widget_unmap.
+// This function is only for use in widget implementations. Causes
+// a widget to be unmapped if it’s currently mapped.
+/*
+
+C function : gtk_widget_unmap
+*/
 func (recv *Widget) Unmap() {
 	C.gtk_widget_unmap((*C.GtkWidget)(recv.native))
 
 	return
 }
 
-// Unparent is a wrapper around the C function gtk_widget_unparent.
+// This function is only for use in widget implementations.
+// Should be called by implementations of the remove method
+// on #GtkContainer, to dissociate a child from the container.
+/*
+
+C function : gtk_widget_unparent
+*/
 func (recv *Widget) Unparent() {
 	C.gtk_widget_unparent((*C.GtkWidget)(recv.native))
 
 	return
 }
 
-// Unrealize is a wrapper around the C function gtk_widget_unrealize.
+// This function is only useful in widget implementations.
+// Causes a widget to be unrealized (frees all GDK resources
+// associated with the widget, such as @widget->window).
+/*
+
+C function : gtk_widget_unrealize
+*/
 func (recv *Widget) Unrealize() {
 	C.gtk_widget_unrealize((*C.GtkWidget)(recv.native))
 
@@ -37133,7 +43317,30 @@ func window_setFocusHandler(_ *C.GObject, c_object *C.GtkWidget, data C.gpointer
 	callback(object)
 }
 
-// WindowNew is a wrapper around the C function gtk_window_new.
+// Creates a new #GtkWindow, which is a toplevel window that can
+// contain other widgets. Nearly always, the type of the window should
+// be #GTK_WINDOW_TOPLEVEL. If you’re implementing something like a
+// popup menu from scratch (which is a bad idea, just use #GtkMenu),
+// you might use #GTK_WINDOW_POPUP. #GTK_WINDOW_POPUP is not for
+// dialogs, though in some other toolkits dialogs are called “popups”.
+// In GTK+, #GTK_WINDOW_POPUP means a pop-up menu or pop-up tooltip.
+// On X11, popup windows are not controlled by the
+// [window manager][gtk-X11-arch].
+//
+// If you simply want an undecorated window (no window borders), use
+// gtk_window_set_decorated(), don’t use #GTK_WINDOW_POPUP.
+//
+// All top-level windows created by gtk_window_new() are stored in
+// an internal top-level window list.  This list can be obtained from
+// gtk_window_list_toplevels().  Due to Gtk+ keeping a reference to
+// the window internally, gtk_window_new() does not return a reference
+// to the caller.
+//
+// To delete a #GtkWindow, call gtk_widget_destroy().
+/*
+
+C function : gtk_window_new
+*/
 func WindowNew(type_ WindowType) *Window {
 	c_type := (C.GtkWindowType)(type_)
 
@@ -37143,7 +43350,14 @@ func WindowNew(type_ WindowType) *Window {
 	return retGo
 }
 
-// ActivateDefault is a wrapper around the C function gtk_window_activate_default.
+// Activates the default widget for the window, unless the current
+// focused widget has been configured to receive the default action
+// (see gtk_widget_set_receives_default()), in which case the
+// focused widget is activated.
+/*
+
+C function : gtk_window_activate_default
+*/
 func (recv *Window) ActivateDefault() bool {
 	retC := C.gtk_window_activate_default((*C.GtkWindow)(recv.native))
 	retGo := retC == C.TRUE
@@ -37151,7 +43365,11 @@ func (recv *Window) ActivateDefault() bool {
 	return retGo
 }
 
-// ActivateFocus is a wrapper around the C function gtk_window_activate_focus.
+// Activates the current focused widget within the window.
+/*
+
+C function : gtk_window_activate_focus
+*/
 func (recv *Window) ActivateFocus() bool {
 	retC := C.gtk_window_activate_focus((*C.GtkWindow)(recv.native))
 	retGo := retC == C.TRUE
@@ -37159,7 +43377,13 @@ func (recv *Window) ActivateFocus() bool {
 	return retGo
 }
 
-// AddAccelGroup is a wrapper around the C function gtk_window_add_accel_group.
+// Associate @accel_group with @window, such that calling
+// gtk_accel_groups_activate() on @window will activate accelerators
+// in @accel_group.
+/*
+
+C function : gtk_window_add_accel_group
+*/
 func (recv *Window) AddAccelGroup(accelGroup *AccelGroup) {
 	c_accel_group := (*C.GtkAccelGroup)(C.NULL)
 	if accelGroup != nil {
@@ -37171,7 +43395,11 @@ func (recv *Window) AddAccelGroup(accelGroup *AccelGroup) {
 	return
 }
 
-// AddMnemonic is a wrapper around the C function gtk_window_add_mnemonic.
+// Adds a mnemonic to this window.
+/*
+
+C function : gtk_window_add_mnemonic
+*/
 func (recv *Window) AddMnemonic(keyval uint32, target *Widget) {
 	c_keyval := (C.guint)(keyval)
 
@@ -37185,7 +43413,16 @@ func (recv *Window) AddMnemonic(keyval uint32, target *Widget) {
 	return
 }
 
-// BeginMoveDrag is a wrapper around the C function gtk_window_begin_move_drag.
+// Starts moving a window. This function is used if an application has
+// window movement grips. When GDK can support it, the window movement
+// will be done using the standard mechanism for the
+// [window manager][gtk-X11-arch] or windowing
+// system. Otherwise, GDK will try to emulate window movement,
+// potentially not all that well, depending on the windowing system.
+/*
+
+C function : gtk_window_begin_move_drag
+*/
 func (recv *Window) BeginMoveDrag(button int32, rootX int32, rootY int32, timestamp uint32) {
 	c_button := (C.gint)(button)
 
@@ -37200,7 +43437,16 @@ func (recv *Window) BeginMoveDrag(button int32, rootX int32, rootY int32, timest
 	return
 }
 
-// BeginResizeDrag is a wrapper around the C function gtk_window_begin_resize_drag.
+// Starts resizing a window. This function is used if an application
+// has window resizing controls. When GDK can support it, the resize
+// will be done using the standard mechanism for the
+// [window manager][gtk-X11-arch] or windowing
+// system. Otherwise, GDK will try to emulate window resizing,
+// potentially not all that well, depending on the windowing system.
+/*
+
+C function : gtk_window_begin_resize_drag
+*/
 func (recv *Window) BeginResizeDrag(edge gdk.WindowEdge, button int32, rootX int32, rootY int32, timestamp uint32) {
 	c_edge := (C.GdkWindowEdge)(edge)
 
@@ -37217,14 +43463,30 @@ func (recv *Window) BeginResizeDrag(edge gdk.WindowEdge, button int32, rootX int
 	return
 }
 
-// Deiconify is a wrapper around the C function gtk_window_deiconify.
+// Asks to deiconify (i.e. unminimize) the specified @window. Note
+// that you shouldn’t assume the window is definitely deiconified
+// afterward, because other entities (e.g. the user or
+// [window manager][gtk-X11-arch])) could iconify it
+// again before your code which assumes deiconification gets to run.
+//
+// You can track iconification via the “window-state-event” signal
+// on #GtkWidget.
+/*
+
+C function : gtk_window_deiconify
+*/
 func (recv *Window) Deiconify() {
 	C.gtk_window_deiconify((*C.GtkWindow)(recv.native))
 
 	return
 }
 
-// GetDecorated is a wrapper around the C function gtk_window_get_decorated.
+// Returns whether the window has been set to have decorations
+// such as a title bar via gtk_window_set_decorated().
+/*
+
+C function : gtk_window_get_decorated
+*/
 func (recv *Window) GetDecorated() bool {
 	retC := C.gtk_window_get_decorated((*C.GtkWindow)(recv.native))
 	retGo := retC == C.TRUE
@@ -37232,7 +43494,14 @@ func (recv *Window) GetDecorated() bool {
 	return retGo
 }
 
-// GetDefaultSize is a wrapper around the C function gtk_window_get_default_size.
+// Gets the default size of the window. A value of -1 for the width or
+// height indicates that a default size has not been explicitly set
+// for that dimension, so the “natural” size of the window will be
+// used.
+/*
+
+C function : gtk_window_get_default_size
+*/
 func (recv *Window) GetDefaultSize() (int32, int32) {
 	var c_width C.gint
 
@@ -37247,7 +43516,12 @@ func (recv *Window) GetDefaultSize() (int32, int32) {
 	return width, height
 }
 
-// GetDestroyWithParent is a wrapper around the C function gtk_window_get_destroy_with_parent.
+// Returns whether the window will be destroyed with its transient parent. See
+// gtk_window_set_destroy_with_parent ().
+/*
+
+C function : gtk_window_get_destroy_with_parent
+*/
 func (recv *Window) GetDestroyWithParent() bool {
 	retC := C.gtk_window_get_destroy_with_parent((*C.GtkWindow)(recv.native))
 	retGo := retC == C.TRUE
@@ -37255,7 +43529,15 @@ func (recv *Window) GetDestroyWithParent() bool {
 	return retGo
 }
 
-// GetFocus is a wrapper around the C function gtk_window_get_focus.
+// Retrieves the current focused widget within the window.
+// Note that this is the widget that would have the focus
+// if the toplevel window focused; if the toplevel window
+// is not focused then  `gtk_widget_has_focus (widget)` will
+// not be %TRUE for the widget.
+/*
+
+C function : gtk_window_get_focus
+*/
 func (recv *Window) GetFocus() *Widget {
 	retC := C.gtk_window_get_focus((*C.GtkWindow)(recv.native))
 	var retGo (*Widget)
@@ -37268,7 +43550,11 @@ func (recv *Window) GetFocus() *Widget {
 	return retGo
 }
 
-// GetGravity is a wrapper around the C function gtk_window_get_gravity.
+// Gets the value set by gtk_window_set_gravity().
+/*
+
+C function : gtk_window_get_gravity
+*/
 func (recv *Window) GetGravity() gdk.Gravity {
 	retC := C.gtk_window_get_gravity((*C.GtkWindow)(recv.native))
 	retGo := (gdk.Gravity)(retC)
@@ -37276,7 +43562,13 @@ func (recv *Window) GetGravity() gdk.Gravity {
 	return retGo
 }
 
-// GetIcon is a wrapper around the C function gtk_window_get_icon.
+// Gets the value set by gtk_window_set_icon() (or if you've
+// called gtk_window_set_icon_list(), gets the first icon in
+// the icon list).
+/*
+
+C function : gtk_window_get_icon
+*/
 func (recv *Window) GetIcon() *gdkpixbuf.Pixbuf {
 	retC := C.gtk_window_get_icon((*C.GtkWindow)(recv.native))
 	var retGo (*gdkpixbuf.Pixbuf)
@@ -37289,7 +43581,13 @@ func (recv *Window) GetIcon() *gdkpixbuf.Pixbuf {
 	return retGo
 }
 
-// GetIconList is a wrapper around the C function gtk_window_get_icon_list.
+// Retrieves the list of icons set by gtk_window_set_icon_list().
+// The list is copied, but the reference count on each
+// member won’t be incremented.
+/*
+
+C function : gtk_window_get_icon_list
+*/
 func (recv *Window) GetIconList() *glib.List {
 	retC := C.gtk_window_get_icon_list((*C.GtkWindow)(recv.native))
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
@@ -37297,7 +43595,12 @@ func (recv *Window) GetIconList() *glib.List {
 	return retGo
 }
 
-// GetMnemonicModifier is a wrapper around the C function gtk_window_get_mnemonic_modifier.
+// Returns the mnemonic modifier for this window. See
+// gtk_window_set_mnemonic_modifier().
+/*
+
+C function : gtk_window_get_mnemonic_modifier
+*/
 func (recv *Window) GetMnemonicModifier() gdk.ModifierType {
 	retC := C.gtk_window_get_mnemonic_modifier((*C.GtkWindow)(recv.native))
 	retGo := (gdk.ModifierType)(retC)
@@ -37305,7 +43608,11 @@ func (recv *Window) GetMnemonicModifier() gdk.ModifierType {
 	return retGo
 }
 
-// GetModal is a wrapper around the C function gtk_window_get_modal.
+// Returns whether the window is modal. See gtk_window_set_modal().
+/*
+
+C function : gtk_window_get_modal
+*/
 func (recv *Window) GetModal() bool {
 	retC := C.gtk_window_get_modal((*C.GtkWindow)(recv.native))
 	retGo := retC == C.TRUE
@@ -37313,7 +43620,46 @@ func (recv *Window) GetModal() bool {
 	return retGo
 }
 
-// GetPosition is a wrapper around the C function gtk_window_get_position.
+// This function returns the position you need to pass to
+// gtk_window_move() to keep @window in its current position.
+// This means that the meaning of the returned value varies with
+// window gravity. See gtk_window_move() for more details.
+//
+// The reliability of this function depends on the windowing system
+// currently in use. Some windowing systems, such as Wayland, do not
+// support a global coordinate system, and thus the position of the
+// window will always be (0, 0). Others, like X11, do not have a reliable
+// way to obtain the geometry of the decorations of a window if they are
+// provided by the window manager. Additionally, on X11, window manager
+// have been known to mismanage window gravity, which result in windows
+// moving even if you use the coordinates of the current position as
+// returned by this function.
+//
+// If you haven’t changed the window gravity, its gravity will be
+// #GDK_GRAVITY_NORTH_WEST. This means that gtk_window_get_position()
+// gets the position of the top-left corner of the window manager
+// frame for the window. gtk_window_move() sets the position of this
+// same top-left corner.
+//
+// If a window has gravity #GDK_GRAVITY_STATIC the window manager
+// frame is not relevant, and thus gtk_window_get_position() will
+// always produce accurate results. However you can’t use static
+// gravity to do things like place a window in a corner of the screen,
+// because static gravity ignores the window manager decorations.
+//
+// Ideally, this function should return appropriate values if the
+// window has client side decorations, assuming that the windowing
+// system supports global coordinates.
+//
+// In practice, saving the window position should not be left to
+// applications, as they lack enough knowledge of the windowing
+// system and the window manager state to effectively do so. The
+// appropriate way to implement saving the window position is to
+// use a platform-specific protocol, wherever that is available.
+/*
+
+C function : gtk_window_get_position
+*/
 func (recv *Window) GetPosition() (int32, int32) {
 	var c_root_x C.gint
 
@@ -37328,7 +43674,11 @@ func (recv *Window) GetPosition() (int32, int32) {
 	return rootX, rootY
 }
 
-// GetResizable is a wrapper around the C function gtk_window_get_resizable.
+// Gets the value set by gtk_window_set_resizable().
+/*
+
+C function : gtk_window_get_resizable
+*/
 func (recv *Window) GetResizable() bool {
 	retC := C.gtk_window_get_resizable((*C.GtkWindow)(recv.native))
 	retGo := retC == C.TRUE
@@ -37336,7 +43686,12 @@ func (recv *Window) GetResizable() bool {
 	return retGo
 }
 
-// GetRole is a wrapper around the C function gtk_window_get_role.
+// Returns the role of the window. See gtk_window_set_role() for
+// further explanation.
+/*
+
+C function : gtk_window_get_role
+*/
 func (recv *Window) GetRole() string {
 	retC := C.gtk_window_get_role((*C.GtkWindow)(recv.native))
 	retGo := C.GoString(retC)
@@ -37344,7 +43699,82 @@ func (recv *Window) GetRole() string {
 	return retGo
 }
 
-// GetSize is a wrapper around the C function gtk_window_get_size.
+// Obtains the current size of @window.
+//
+// If @window is not visible on screen, this function return the size GTK+
+// will suggest to the [window manager][gtk-X11-arch] for the initial window
+// size (but this is not reliably the same as the size the window manager
+// will actually select). See: gtk_window_set_default_size().
+//
+// Depending on the windowing system and the window manager constraints,
+// the size returned by this function may not match the size set using
+// gtk_window_resize(); additionally, since gtk_window_resize() may be
+// implemented as an asynchronous operation, GTK+ cannot guarantee in any
+// way that this code:
+//
+// |[<!-- language="C" -->
+// width and height are set elsewhere
+// gtk_window_resize (window, width, height);
+//
+// int new_width, new_height;
+// gtk_window_get_size (window, &new_width, &new_height);
+// ]|
+//
+// will result in `new_width` and `new_height` matching `width` and
+// `height`, respectively.
+//
+// This function will return the logical size of the #GtkWindow,
+// excluding the widgets used in client side decorations; there is,
+// however, no guarantee that the result will be completely accurate
+// because client side decoration may include widgets that depend on
+// the user preferences and that may not be visibile at the time you
+// call this function.
+//
+// The dimensions returned by this function are suitable for being
+// stored across sessions; use gtk_window_set_default_size() to
+// restore them when before showing the window.
+//
+// To avoid potential race conditions, you should only call this
+// function in response to a size change notification, for instance
+// inside a handler for the #GtkWidget::size-allocate signal, or
+// inside a handler for the #GtkWidget::configure-event signal:
+//
+// |[<!-- language="C" -->
+// static void
+// on_size_allocate (GtkWidget *widget, GtkAllocation *allocation)
+// {
+// int new_width, new_height;
+//
+// gtk_window_get_size (GTK_WINDOW (widget), &new_width, &new_height);
+//
+// ...
+// }
+// ]|
+//
+// Note that, if you connect to the #GtkWidget::size-allocate signal,
+// you should not use the dimensions of the #GtkAllocation passed to
+// the signal handler, as the allocation may contain client side
+// decorations added by GTK+, depending on the windowing system in
+// use.
+//
+// If you are getting a window size in order to position the window
+// on the screen, you should, instead, simply set the window’s semantic
+// type with gtk_window_set_type_hint(), which allows the window manager
+// to e.g. center dialogs. Also, if you set the transient parent of
+// dialogs with gtk_window_set_transient_for() window managers will
+// often center the dialog over its parent window. It's much preferred
+// to let the window manager handle these cases rather than doing it
+// yourself, because all apps will behave consistently and according to
+// user or system preferences, if the window manager handles it. Also,
+// the window manager can take into account the size of the window
+// decorations and border that it may add, and of which GTK+ has no
+// knowledge. Additionally, positioning windows in global screen coordinates
+// may not be allowed by the windowing system. For more information,
+// see: gtk_window_set_position().
+/*
+
+C function : gtk_window_get_size
+*/
 func (recv *Window) GetSize() (int32, int32) {
 	var c_width C.gint
 
@@ -37359,7 +43789,11 @@ func (recv *Window) GetSize() (int32, int32) {
 	return width, height
 }
 
-// GetTitle is a wrapper around the C function gtk_window_get_title.
+// Retrieves the title of the window. See gtk_window_set_title().
+/*
+
+C function : gtk_window_get_title
+*/
 func (recv *Window) GetTitle() string {
 	retC := C.gtk_window_get_title((*C.GtkWindow)(recv.native))
 	retGo := C.GoString(retC)
@@ -37367,7 +43801,12 @@ func (recv *Window) GetTitle() string {
 	return retGo
 }
 
-// GetTransientFor is a wrapper around the C function gtk_window_get_transient_for.
+// Fetches the transient parent for this window. See
+// gtk_window_set_transient_for().
+/*
+
+C function : gtk_window_get_transient_for
+*/
 func (recv *Window) GetTransientFor() *Window {
 	retC := C.gtk_window_get_transient_for((*C.GtkWindow)(recv.native))
 	var retGo (*Window)
@@ -37380,7 +43819,11 @@ func (recv *Window) GetTransientFor() *Window {
 	return retGo
 }
 
-// GetTypeHint is a wrapper around the C function gtk_window_get_type_hint.
+// Gets the type hint for this window. See gtk_window_set_type_hint().
+/*
+
+C function : gtk_window_get_type_hint
+*/
 func (recv *Window) GetTypeHint() gdk.WindowTypeHint {
 	retC := C.gtk_window_get_type_hint((*C.GtkWindow)(recv.native))
 	retGo := (gdk.WindowTypeHint)(retC)
@@ -37388,7 +43831,11 @@ func (recv *Window) GetTypeHint() gdk.WindowTypeHint {
 	return retGo
 }
 
-// HasGroup is a wrapper around the C function gtk_window_has_group.
+// Returns whether @window has an explicit window group.
+/*
+
+C function : gtk_window_has_group
+*/
 func (recv *Window) HasGroup() bool {
 	retC := C.gtk_window_has_group((*C.GtkWindow)(recv.native))
 	retGo := retC == C.TRUE
@@ -37396,21 +43843,60 @@ func (recv *Window) HasGroup() bool {
 	return retGo
 }
 
-// Iconify is a wrapper around the C function gtk_window_iconify.
+// Asks to iconify (i.e. minimize) the specified @window. Note that
+// you shouldn’t assume the window is definitely iconified afterward,
+// because other entities (e.g. the user or
+// [window manager][gtk-X11-arch]) could deiconify it
+// again, or there may not be a window manager in which case
+// iconification isn’t possible, etc. But normally the window will end
+// up iconified. Just don’t write code that crashes if not.
+//
+// It’s permitted to call this function before showing a window,
+// in which case the window will be iconified before it ever appears
+// onscreen.
+//
+// You can track iconification via the “window-state-event” signal
+// on #GtkWidget.
+/*
+
+C function : gtk_window_iconify
+*/
 func (recv *Window) Iconify() {
 	C.gtk_window_iconify((*C.GtkWindow)(recv.native))
 
 	return
 }
 
-// Maximize is a wrapper around the C function gtk_window_maximize.
+// Asks to maximize @window, so that it becomes full-screen. Note that
+// you shouldn’t assume the window is definitely maximized afterward,
+// because other entities (e.g. the user or
+// [window manager][gtk-X11-arch]) could unmaximize it
+// again, and not all window managers support maximization. But
+// normally the window will end up maximized. Just don’t write code
+// that crashes if not.
+//
+// It’s permitted to call this function before showing a window,
+// in which case the window will be maximized when it appears onscreen
+// initially.
+//
+// You can track maximization via the “window-state-event” signal
+// on #GtkWidget, or by listening to notifications on the
+// #GtkWindow:is-maximized property.
+/*
+
+C function : gtk_window_maximize
+*/
 func (recv *Window) Maximize() {
 	C.gtk_window_maximize((*C.GtkWindow)(recv.native))
 
 	return
 }
 
-// MnemonicActivate is a wrapper around the C function gtk_window_mnemonic_activate.
+// Activates the targets associated with the mnemonic.
+/*
+
+C function : gtk_window_mnemonic_activate
+*/
 func (recv *Window) MnemonicActivate(keyval uint32, modifier gdk.ModifierType) bool {
 	c_keyval := (C.guint)(keyval)
 
@@ -37422,7 +43908,43 @@ func (recv *Window) MnemonicActivate(keyval uint32, modifier gdk.ModifierType) b
 	return retGo
 }
 
-// Move is a wrapper around the C function gtk_window_move.
+// Asks the [window manager][gtk-X11-arch] to move
+// @window to the given position.  Window managers are free to ignore
+// this; most window managers ignore requests for initial window
+// positions (instead using a user-defined placement algorithm) and
+// honor requests after the window has already been shown.
+//
+// Note: the position is the position of the gravity-determined
+// reference point for the window. The gravity determines two things:
+// first, the location of the reference point in root window
+// coordinates; and second, which point on the window is positioned at
+// the reference point.
+//
+// By default the gravity is #GDK_GRAVITY_NORTH_WEST, so the reference
+// point is simply the @x, @y supplied to gtk_window_move(). The
+// top-left corner of the window decorations (aka window frame or
+// border) will be placed at @x, @y.  Therefore, to position a window
+// at the top left of the screen, you want to use the default gravity
+// (which is #GDK_GRAVITY_NORTH_WEST) and move the window to 0,0.
+//
+// To position a window at the bottom right corner of the screen, you
+// would set #GDK_GRAVITY_SOUTH_EAST, which means that the reference
+// point is at @x + the window width and @y + the window height, and
+// the bottom-right corner of the window border will be placed at that
+// reference point. So, to place a window in the bottom right corner
+// you would first set gravity to south east, then write:
+// `gtk_window_move (window, gdk_screen_width () - window_width,
+// gdk_screen_height () - window_height)` (note that this
+// example does not take multi-head scenarios into account).
+//
+// The [Extended Window Manager Hints Specification](http://www.freedesktop.org/Standards/wm-spec)
+// has a nice table of gravities in the “implementation notes” section.
+//
+// The gtk_window_get_position() documentation may also be relevant.
+/*
+
+C function : gtk_window_move
+*/
 func (recv *Window) Move(x int32, y int32) {
 	c_x := (C.gint)(x)
 
@@ -37433,7 +43955,81 @@ func (recv *Window) Move(x int32, y int32) {
 	return
 }
 
-// ParseGeometry is a wrapper around the C function gtk_window_parse_geometry.
+// Parses a standard X Window System geometry string - see the
+// manual page for X (type “man X”) for details on this.
+// gtk_window_parse_geometry() does work on all GTK+ ports
+// including Win32 but is primarily intended for an X environment.
+//
+// If either a size or a position can be extracted from the
+// geometry string, gtk_window_parse_geometry() returns %TRUE
+// and calls gtk_window_set_default_size() and/or gtk_window_move()
+// to resize/move the window.
+//
+// If gtk_window_parse_geometry() returns %TRUE, it will also
+// set the #GDK_HINT_USER_POS and/or #GDK_HINT_USER_SIZE hints
+// indicating to the window manager that the size/position of
+// the window was user-specified. This causes most window
+// managers to honor the geometry.
+//
+// Note that for gtk_window_parse_geometry() to work as expected, it has
+// to be called when the window has its “final” size, i.e. after calling
+// gtk_widget_show_all() on the contents and gtk_window_set_geometry_hints()
+// on the window.
+// |[<!-- language="C" -->
+// #include <gtk/gtk.h>
+//
+// static void
+// fill_with_content (GtkWidget *vbox)
+// {
+// fill with content...
+// }
+//
+// int
+// main (int argc, char *argv[])
+// {
+// GtkWidget *window, *vbox;
+// GdkGeometry size_hints = {
+// 100, 50, 0, 0, 100, 50, 10,
+// 10, 0.0, 0.0, GDK_GRAVITY_NORTH_WEST
+// };
+//
+// gtk_init (&argc, &argv);
+//
+// window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+// vbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+//
+// gtk_container_add (GTK_CONTAINER (window), vbox);
+// fill_with_content (vbox);
+// gtk_widget_show_all (vbox);
+//
+// gtk_window_set_geometry_hints (GTK_WINDOW (window),
+// NULL,
+// &size_hints,
+// GDK_HINT_MIN_SIZE |
+// GDK_HINT_BASE_SIZE |
+// GDK_HINT_RESIZE_INC);
+//
+// if (argc > 1)
+// {
+// gboolean res;
+// res = gtk_window_parse_geometry (GTK_WINDOW (window),
+// argv[1]);
+// if (! res)
+// fprintf (stderr,
+// "Failed to parse “%s”\n",
+// argv[1]);
+// }
+//
+// gtk_widget_show_all (window);
+// gtk_main ();
+//
+// return 0;
+// }
+// ]|
+/*
+
+C function : gtk_window_parse_geometry
+*/
 func (recv *Window) ParseGeometry(geometry string) bool {
 	c_geometry := C.CString(geometry)
 	defer C.free(unsafe.Pointer(c_geometry))
@@ -37444,14 +44040,37 @@ func (recv *Window) ParseGeometry(geometry string) bool {
 	return retGo
 }
 
-// Present is a wrapper around the C function gtk_window_present.
+// Presents a window to the user. This may mean raising the window
+// in the stacking order, deiconifying it, moving it to the current
+// desktop, and/or giving it the keyboard focus, possibly dependent
+// on the user’s platform, window manager, and preferences.
+//
+// If @window is hidden, this function calls gtk_widget_show()
+// as well.
+//
+// This function should be used when the user tries to open a window
+// that’s already open. Say for example the preferences dialog is
+// currently open, and the user chooses Preferences from the menu
+// a second time; use gtk_window_present() to move the already-open dialog
+// where the user can see it.
+//
+// If you are calling this function in response to a user interaction,
+// it is preferable to use gtk_window_present_with_time().
+/*
+
+C function : gtk_window_present
+*/
 func (recv *Window) Present() {
 	C.gtk_window_present((*C.GtkWindow)(recv.native))
 
 	return
 }
 
-// RemoveAccelGroup is a wrapper around the C function gtk_window_remove_accel_group.
+// Reverses the effects of gtk_window_add_accel_group().
+/*
+
+C function : gtk_window_remove_accel_group
+*/
 func (recv *Window) RemoveAccelGroup(accelGroup *AccelGroup) {
 	c_accel_group := (*C.GtkAccelGroup)(C.NULL)
 	if accelGroup != nil {
@@ -37463,7 +44082,11 @@ func (recv *Window) RemoveAccelGroup(accelGroup *AccelGroup) {
 	return
 }
 
-// RemoveMnemonic is a wrapper around the C function gtk_window_remove_mnemonic.
+// Removes a mnemonic from this window.
+/*
+
+C function : gtk_window_remove_mnemonic
+*/
 func (recv *Window) RemoveMnemonic(keyval uint32, target *Widget) {
 	c_keyval := (C.guint)(keyval)
 
@@ -37477,14 +44100,51 @@ func (recv *Window) RemoveMnemonic(keyval uint32, target *Widget) {
 	return
 }
 
-// ReshowWithInitialSize is a wrapper around the C function gtk_window_reshow_with_initial_size.
+// Hides @window, then reshows it, resetting the
+// default size and position of the window. Used
+// by GUI builders only.
+/*
+
+C function : gtk_window_reshow_with_initial_size
+*/
 func (recv *Window) ReshowWithInitialSize() {
 	C.gtk_window_reshow_with_initial_size((*C.GtkWindow)(recv.native))
 
 	return
 }
 
-// Resize is a wrapper around the C function gtk_window_resize.
+// Resizes the window as if the user had done so, obeying geometry
+// constraints. The default geometry constraint is that windows may
+// not be smaller than their size request; to override this
+// constraint, call gtk_widget_set_size_request() to set the window's
+// request to a smaller value.
+//
+// If gtk_window_resize() is called before showing a window for the
+// first time, it overrides any default size set with
+// gtk_window_set_default_size().
+//
+// Windows may not be resized smaller than 1 by 1 pixels.
+//
+// When using client side decorations, GTK+ will do its best to adjust
+// the given size so that the resulting window size matches the
+// requested size without the title bar, borders and shadows added for
+// the client side decorations, but there is no guarantee that the
+// result will be totally accurate because these widgets added for
+// client side decorations depend on the theme and may not be realized
+// or visible at the time gtk_window_resize() is issued.
+//
+// If the GtkWindow has a titlebar widget (see gtk_window_set_titlebar()), then
+// typically, gtk_window_resize() will compensate for the height of the titlebar
+// widget only if the height is known when the resulting GtkWindow configuration
+// is issued.
+// For example, if new widgets are added after the GtkWindow configuration
+// and cause the titlebar widget to grow in height, this will result in a
+// window content smaller that specified by gtk_window_resize() and not
+// a larger window.
+/*
+
+C function : gtk_window_resize
+*/
 func (recv *Window) Resize(width int32, height int32) {
 	c_width := (C.gint)(width)
 
@@ -37495,7 +44155,21 @@ func (recv *Window) Resize(width int32, height int32) {
 	return
 }
 
-// SetDecorated is a wrapper around the C function gtk_window_set_decorated.
+// By default, windows are decorated with a title bar, resize
+// controls, etc.  Some [window managers][gtk-X11-arch]
+// allow GTK+ to disable these decorations, creating a
+// borderless window. If you set the decorated property to %FALSE
+// using this function, GTK+ will do its best to convince the window
+// manager not to decorate the window. Depending on the system, this
+// function may not have any effect when called on a window that is
+// already visible, so you should call it before calling gtk_widget_show().
+//
+// On Windows, this function always works, since there’s no window manager
+// policy involved.
+/*
+
+C function : gtk_window_set_decorated
+*/
 func (recv *Window) SetDecorated(setting bool) {
 	c_setting :=
 		boolToGboolean(setting)
@@ -37505,7 +44179,17 @@ func (recv *Window) SetDecorated(setting bool) {
 	return
 }
 
-// SetDefault is a wrapper around the C function gtk_window_set_default.
+// The default widget is the widget that’s activated when the user
+// presses Enter in a dialog (for example). This function sets or
+// unsets the default widget for a #GtkWindow. When setting (rather
+// than unsetting) the default widget it’s generally easier to call
+// gtk_widget_grab_default() on the widget. Before making a widget
+// the default widget, you must call gtk_widget_set_can_default() on
+// the widget you’d like to make the default.
+/*
+
+C function : gtk_window_set_default
+*/
 func (recv *Window) SetDefault(defaultWidget *Widget) {
 	c_default_widget := (*C.GtkWidget)(C.NULL)
 	if defaultWidget != nil {
@@ -37517,7 +44201,43 @@ func (recv *Window) SetDefault(defaultWidget *Widget) {
 	return
 }
 
-// SetDefaultSize is a wrapper around the C function gtk_window_set_default_size.
+// Sets the default size of a window. If the window’s “natural” size
+// (its size request) is larger than the default, the default will be
+// ignored. More generally, if the default size does not obey the
+// geometry hints for the window (gtk_window_set_geometry_hints() can
+// be used to set these explicitly), the default size will be clamped
+// to the nearest permitted size.
+//
+// Unlike gtk_widget_set_size_request(), which sets a size request for
+// a widget and thus would keep users from shrinking the window, this
+// function only sets the initial size, just as if the user had
+// resized the window themselves. Users can still shrink the window
+// again as they normally would. Setting a default size of -1 means to
+// use the “natural” default size (the size request of the window).
+//
+// For more control over a window’s initial size and how resizing works,
+// investigate gtk_window_set_geometry_hints().
+//
+// For some uses, gtk_window_resize() is a more appropriate function.
+// gtk_window_resize() changes the current size of the window, rather
+// than the size to be used on initial display. gtk_window_resize() always
+// affects the window itself, not the geometry widget.
+//
+// The default size of a window only affects the first time a window is
+// shown; if a window is hidden and re-shown, it will remember the size
+// it had prior to hiding, rather than using the default size.
+//
+// Windows can’t actually be 0x0 in size, they must be at least 1x1, but
+// passing 0 for @width and @height is OK, resulting in a 1x1 default size.
+//
+// If you use this function to reestablish a previously saved window size,
+// note that the appropriate size to save is the one returned by
+// gtk_window_get_size(). Using the window allocation directly will not
+// work in all circumstances and can lead to growing or shrinking windows.
+/*
+
+C function : gtk_window_set_default_size
+*/
 func (recv *Window) SetDefaultSize(width int32, height int32) {
 	c_width := (C.gint)(width)
 
@@ -37528,7 +44248,14 @@ func (recv *Window) SetDefaultSize(width int32, height int32) {
 	return
 }
 
-// SetDestroyWithParent is a wrapper around the C function gtk_window_set_destroy_with_parent.
+// If @setting is %TRUE, then destroying the transient parent of @window
+// will also destroy @window itself. This is useful for dialogs that
+// shouldn’t persist beyond the lifetime of the main window they're
+// associated with, for example.
+/*
+
+C function : gtk_window_set_destroy_with_parent
+*/
 func (recv *Window) SetDestroyWithParent(setting bool) {
 	c_setting :=
 		boolToGboolean(setting)
@@ -37538,7 +44265,15 @@ func (recv *Window) SetDestroyWithParent(setting bool) {
 	return
 }
 
-// SetFocus is a wrapper around the C function gtk_window_set_focus.
+// If @focus is not the current focus widget, and is focusable, sets
+// it as the focus widget for the window. If @focus is %NULL, unsets
+// the focus widget for this window. To set the focus to a particular
+// widget in the toplevel, it is usually more convenient to use
+// gtk_widget_grab_focus() instead of this function.
+/*
+
+C function : gtk_window_set_focus
+*/
 func (recv *Window) SetFocus(focus *Widget) {
 	c_focus := (*C.GtkWidget)(C.NULL)
 	if focus != nil {
@@ -37550,7 +44285,14 @@ func (recv *Window) SetFocus(focus *Widget) {
 	return
 }
 
-// SetGeometryHints is a wrapper around the C function gtk_window_set_geometry_hints.
+// This function sets up hints about how a window can be resized by
+// the user.  You can set a minimum and maximum size; allowed resize
+// increments (e.g. for xterm, you can only resize by the size of a
+// character); aspect ratios; and more. See the #GdkGeometry struct.
+/*
+
+C function : gtk_window_set_geometry_hints
+*/
 func (recv *Window) SetGeometryHints(geometryWidget *Widget, geometry *gdk.Geometry, geomMask gdk.WindowHints) {
 	c_geometry_widget := (*C.GtkWidget)(C.NULL)
 	if geometryWidget != nil {
@@ -37569,7 +44311,16 @@ func (recv *Window) SetGeometryHints(geometryWidget *Widget, geometry *gdk.Geome
 	return
 }
 
-// SetGravity is a wrapper around the C function gtk_window_set_gravity.
+// Window gravity defines the meaning of coordinates passed to
+// gtk_window_move(). See gtk_window_move() and #GdkGravity for
+// more details.
+//
+// The default window gravity is #GDK_GRAVITY_NORTH_WEST which will
+// typically “do what you mean.”
+/*
+
+C function : gtk_window_set_gravity
+*/
 func (recv *Window) SetGravity(gravity gdk.Gravity) {
 	c_gravity := (C.GdkGravity)(gravity)
 
@@ -37578,7 +44329,29 @@ func (recv *Window) SetGravity(gravity gdk.Gravity) {
 	return
 }
 
-// SetIcon is a wrapper around the C function gtk_window_set_icon.
+// Sets up the icon representing a #GtkWindow. This icon is used when
+// the window is minimized (also known as iconified).  Some window
+// managers or desktop environments may also place it in the window
+// frame, or display it in other contexts. On others, the icon is not
+// used at all, so your mileage may vary.
+//
+// The icon should be provided in whatever size it was naturally
+// drawn; that is, don’t scale the image before passing it to
+// GTK+. Scaling is postponed until the last minute, when the desired
+// final size is known, to allow best quality.
+//
+// If you have your icon hand-drawn in multiple sizes, use
+// gtk_window_set_icon_list(). Then the best size will be used.
+//
+// This function is equivalent to calling gtk_window_set_icon_list()
+// with a 1-element list.
+//
+// See also gtk_window_set_default_icon_list() to set the icon
+// for all windows in your application in one go.
+/*
+
+C function : gtk_window_set_icon
+*/
 func (recv *Window) SetIcon(icon *gdkpixbuf.Pixbuf) {
 	c_icon := (*C.GdkPixbuf)(C.NULL)
 	if icon != nil {
@@ -37590,7 +44363,35 @@ func (recv *Window) SetIcon(icon *gdkpixbuf.Pixbuf) {
 	return
 }
 
-// SetIconList is a wrapper around the C function gtk_window_set_icon_list.
+// Sets up the icon representing a #GtkWindow. The icon is used when
+// the window is minimized (also known as iconified).  Some window
+// managers or desktop environments may also place it in the window
+// frame, or display it in other contexts. On others, the icon is not
+// used at all, so your mileage may vary.
+//
+// gtk_window_set_icon_list() allows you to pass in the same icon in
+// several hand-drawn sizes. The list should contain the natural sizes
+// your icon is available in; that is, don’t scale the image before
+// passing it to GTK+. Scaling is postponed until the last minute,
+// when the desired final size is known, to allow best quality.
+//
+// By passing several sizes, you may improve the final image quality
+// of the icon, by reducing or eliminating automatic image scaling.
+//
+// Recommended sizes to provide: 16x16, 32x32, 48x48 at minimum, and
+// larger images (64x64, 128x128) if you have them.
+//
+// See also gtk_window_set_default_icon_list() to set the icon
+// for all windows in your application in one go.
+//
+// Note that transient windows (those who have been set transient for another
+// window using gtk_window_set_transient_for()) will inherit their
+// icon from their transient parent. So there’s no need to explicitly
+// set the icon on transient windows.
+/*
+
+C function : gtk_window_set_icon_list
+*/
 func (recv *Window) SetIconList(list *glib.List) {
 	c_list := (*C.GList)(C.NULL)
 	if list != nil {
@@ -37602,7 +44403,11 @@ func (recv *Window) SetIconList(list *glib.List) {
 	return
 }
 
-// SetMnemonicModifier is a wrapper around the C function gtk_window_set_mnemonic_modifier.
+// Sets the mnemonic modifier for this window.
+/*
+
+C function : gtk_window_set_mnemonic_modifier
+*/
 func (recv *Window) SetMnemonicModifier(modifier gdk.ModifierType) {
 	c_modifier := (C.GdkModifierType)(modifier)
 
@@ -37611,7 +44416,16 @@ func (recv *Window) SetMnemonicModifier(modifier gdk.ModifierType) {
 	return
 }
 
-// SetModal is a wrapper around the C function gtk_window_set_modal.
+// Sets a window modal or non-modal. Modal windows prevent interaction
+// with other windows in the same application. To keep modal dialogs
+// on top of main application windows, use
+// gtk_window_set_transient_for() to make the dialog transient for the
+// parent; most [window managers][gtk-X11-arch]
+// will then disallow lowering the dialog below the parent.
+/*
+
+C function : gtk_window_set_modal
+*/
 func (recv *Window) SetModal(modal bool) {
 	c_modal :=
 		boolToGboolean(modal)
@@ -37621,7 +44435,13 @@ func (recv *Window) SetModal(modal bool) {
 	return
 }
 
-// SetPosition is a wrapper around the C function gtk_window_set_position.
+// Sets a position constraint for this window. If the old or new
+// constraint is %GTK_WIN_POS_CENTER_ALWAYS, this will also cause
+// the window to be repositioned to satisfy the new constraint.
+/*
+
+C function : gtk_window_set_position
+*/
 func (recv *Window) SetPosition(position WindowPosition) {
 	c_position := (C.GtkWindowPosition)(position)
 
@@ -37630,7 +44450,12 @@ func (recv *Window) SetPosition(position WindowPosition) {
 	return
 }
 
-// SetResizable is a wrapper around the C function gtk_window_set_resizable.
+// Sets whether the user can resize a window. Windows are user resizable
+// by default.
+/*
+
+C function : gtk_window_set_resizable
+*/
 func (recv *Window) SetResizable(resizable bool) {
 	c_resizable :=
 		boolToGboolean(resizable)
@@ -37640,7 +44465,22 @@ func (recv *Window) SetResizable(resizable bool) {
 	return
 }
 
-// SetRole is a wrapper around the C function gtk_window_set_role.
+// This function is only useful on X11, not with other GTK+ targets.
+//
+// In combination with the window title, the window role allows a
+// [window manager][gtk-X11-arch] to identify "the
+// same" window when an application is restarted. So for example you
+// might set the “toolbox” role on your app’s toolbox window, so that
+// when the user restarts their session, the window manager can put
+// the toolbox back in the same place.
+//
+// If a window already has a unique title, you don’t need to set the
+// role, since the WM can use the title to identify the window when
+// restoring the session.
+/*
+
+C function : gtk_window_set_role
+*/
 func (recv *Window) SetRole(role string) {
 	c_role := C.CString(role)
 	defer C.free(unsafe.Pointer(c_role))
@@ -37650,7 +44490,18 @@ func (recv *Window) SetRole(role string) {
 	return
 }
 
-// SetTitle is a wrapper around the C function gtk_window_set_title.
+// Sets the title of the #GtkWindow. The title of a window will be
+// displayed in its title bar; on the X Window System, the title bar
+// is rendered by the [window manager][gtk-X11-arch],
+// so exactly how the title appears to users may vary
+// according to a user’s exact configuration. The title should help a
+// user distinguish this window from other windows they may have
+// open. A good title might include the application name and current
+// document filename, for example.
+/*
+
+C function : gtk_window_set_title
+*/
 func (recv *Window) SetTitle(title string) {
 	c_title := C.CString(title)
 	defer C.free(unsafe.Pointer(c_title))
@@ -37660,7 +44511,28 @@ func (recv *Window) SetTitle(title string) {
 	return
 }
 
-// SetTransientFor is a wrapper around the C function gtk_window_set_transient_for.
+// Dialog windows should be set transient for the main application
+// window they were spawned from. This allows
+// [window managers][gtk-X11-arch] to e.g. keep the
+// dialog on top of the main window, or center the dialog over the
+// main window. gtk_dialog_new_with_buttons() and other convenience
+// functions in GTK+ will sometimes call
+// gtk_window_set_transient_for() on your behalf.
+//
+// Passing %NULL for @parent unsets the current transient window.
+//
+// On Wayland, this function can also be used to attach a new
+// #GTK_WINDOW_POPUP to a #GTK_WINDOW_TOPLEVEL parent already mapped
+// on screen so that the #GTK_WINDOW_POPUP will be created as a
+// subsurface-based window #GDK_WINDOW_SUBSURFACE which can be
+// positioned at will relatively to the #GTK_WINDOW_TOPLEVEL surface.
+//
+// On Windows, this function puts the child window on top of the parent,
+// much as the window manager would have done on X.
+/*
+
+C function : gtk_window_set_transient_for
+*/
 func (recv *Window) SetTransientFor(parent *Window) {
 	c_parent := (*C.GtkWindow)(C.NULL)
 	if parent != nil {
@@ -37672,7 +44544,18 @@ func (recv *Window) SetTransientFor(parent *Window) {
 	return
 }
 
-// SetTypeHint is a wrapper around the C function gtk_window_set_type_hint.
+// By setting the type hint for the window, you allow the window
+// manager to decorate and handle the window in a way which is
+// suitable to the function of the window in your application.
+//
+// This function should be called before the window becomes visible.
+//
+// gtk_dialog_new_with_buttons() and other convenience functions in GTK+
+// will sometimes call gtk_window_set_type_hint() on your behalf.
+/*
+
+C function : gtk_window_set_type_hint
+*/
 func (recv *Window) SetTypeHint(hint gdk.WindowTypeHint) {
 	c_hint := (C.GdkWindowTypeHint)(hint)
 
@@ -37681,7 +44564,18 @@ func (recv *Window) SetTypeHint(hint gdk.WindowTypeHint) {
 	return
 }
 
-// SetWmclass is a wrapper around the C function gtk_window_set_wmclass.
+// Don’t use this function. It sets the X Window System “class” and
+// “name” hints for a window.  According to the ICCCM, you should
+// always set these to the same value for all windows in an
+// application, and GTK+ sets them to that value by default, so calling
+// this function is sort of pointless. However, you may want to call
+// gtk_window_set_role() on each window in your application, for the
+// benefit of the session manager. Setting the role allows the window
+// manager to restore window positions when loading a saved session.
+/*
+
+C function : gtk_window_set_wmclass
+*/
 func (recv *Window) SetWmclass(wmclassName string, wmclassClass string) {
 	c_wmclass_name := C.CString(wmclassName)
 	defer C.free(unsafe.Pointer(c_wmclass_name))
@@ -37694,21 +44588,60 @@ func (recv *Window) SetWmclass(wmclassName string, wmclassClass string) {
 	return
 }
 
-// Stick is a wrapper around the C function gtk_window_stick.
+// Asks to stick @window, which means that it will appear on all user
+// desktops. Note that you shouldn’t assume the window is definitely
+// stuck afterward, because other entities (e.g. the user or
+// [window manager][gtk-X11-arch] could unstick it
+// again, and some window managers do not support sticking
+// windows. But normally the window will end up stuck. Just don't
+// write code that crashes if not.
+//
+// It’s permitted to call this function before showing a window.
+//
+// You can track stickiness via the “window-state-event” signal
+// on #GtkWidget.
+/*
+
+C function : gtk_window_stick
+*/
 func (recv *Window) Stick() {
 	C.gtk_window_stick((*C.GtkWindow)(recv.native))
 
 	return
 }
 
-// Unmaximize is a wrapper around the C function gtk_window_unmaximize.
+// Asks to unmaximize @window. Note that you shouldn’t assume the
+// window is definitely unmaximized afterward, because other entities
+// (e.g. the user or [window manager][gtk-X11-arch])
+// could maximize it again, and not all window
+// managers honor requests to unmaximize. But normally the window will
+// end up unmaximized. Just don’t write code that crashes if not.
+//
+// You can track maximization via the “window-state-event” signal
+// on #GtkWidget.
+/*
+
+C function : gtk_window_unmaximize
+*/
 func (recv *Window) Unmaximize() {
 	C.gtk_window_unmaximize((*C.GtkWindow)(recv.native))
 
 	return
 }
 
-// Unstick is a wrapper around the C function gtk_window_unstick.
+// Asks to unstick @window, which means that it will appear on only
+// one of the user’s desktops. Note that you shouldn’t assume the
+// window is definitely unstuck afterward, because other entities
+// (e.g. the user or [window manager][gtk-X11-arch]) could
+// stick it again. But normally the window will
+// end up stuck. Just don’t write code that crashes if not.
+//
+// You can track stickiness via the “window-state-event” signal
+// on #GtkWidget.
+/*
+
+C function : gtk_window_unstick
+*/
 func (recv *Window) Unstick() {
 	C.gtk_window_unstick((*C.GtkWindow)(recv.native))
 
@@ -37818,7 +44751,12 @@ func CastToWindowGroup(object *gobject.Object) *WindowGroup {
 	return WindowGroupNewFromC(object.ToC())
 }
 
-// WindowGroupNew is a wrapper around the C function gtk_window_group_new.
+// Creates a new #GtkWindowGroup object. Grabs added with
+// gtk_grab_add() only affect windows within the same #GtkWindowGroup.
+/*
+
+C function : gtk_window_group_new
+*/
 func WindowGroupNew() *WindowGroup {
 	retC := C.gtk_window_group_new()
 	retGo := WindowGroupNewFromC(unsafe.Pointer(retC))
@@ -37826,7 +44764,11 @@ func WindowGroupNew() *WindowGroup {
 	return retGo
 }
 
-// AddWindow is a wrapper around the C function gtk_window_group_add_window.
+// Adds a window to a #GtkWindowGroup.
+/*
+
+C function : gtk_window_group_add_window
+*/
 func (recv *WindowGroup) AddWindow(window *Window) {
 	c_window := (*C.GtkWindow)(C.NULL)
 	if window != nil {
@@ -37838,7 +44780,11 @@ func (recv *WindowGroup) AddWindow(window *Window) {
 	return
 }
 
-// RemoveWindow is a wrapper around the C function gtk_window_group_remove_window.
+// Removes a window from a #GtkWindowGroup.
+/*
+
+C function : gtk_window_group_remove_window
+*/
 func (recv *WindowGroup) RemoveWindow(window *Window) {
 	c_window := (*C.GtkWindow)(C.NULL)
 	if window != nil {

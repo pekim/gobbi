@@ -10,7 +10,11 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// GetFocusObject is a wrapper around the C function atk_get_focus_object.
+// Gets the currently focused object.
+/*
+
+C function : atk_get_focus_object
+*/
 func GetFocusObject() *Object {
 	retC := C.atk_get_focus_object()
 	retGo := ObjectNewFromC(unsafe.Pointer(retC))

@@ -12,7 +12,16 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// SymbolicColorNewWin32 is a wrapper around the C function gtk_symbolic_color_new_win32.
+// Creates a symbolic color based on the current win32
+// theme.
+//
+// Note that while this call is available on all platforms
+// the actual value returned is not reliable on non-win32
+// platforms.
+/*
+
+C function : gtk_symbolic_color_new_win32
+*/
 func SymbolicColorNewWin32(themeClass string, id int32) *SymbolicColor {
 	c_theme_class := C.CString(themeClass)
 	defer C.free(unsafe.Pointer(c_theme_class))

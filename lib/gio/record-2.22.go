@@ -129,7 +129,14 @@ func (recv *OutputVector) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// SrvTargetNew is a wrapper around the C function g_srv_target_new.
+// Creates a new #GSrvTarget with the given parameters.
+//
+// You should not need to use this; normally #GSrvTargets are
+// created by #GResolver.
+/*
+
+C function : g_srv_target_new
+*/
 func SrvTargetNew(hostname string, port uint16, priority uint16, weight uint16) *SrvTarget {
 	c_hostname := C.CString(hostname)
 	defer C.free(unsafe.Pointer(c_hostname))
@@ -146,7 +153,11 @@ func SrvTargetNew(hostname string, port uint16, priority uint16, weight uint16) 
 	return retGo
 }
 
-// Copy is a wrapper around the C function g_srv_target_copy.
+// Copies @target
+/*
+
+C function : g_srv_target_copy
+*/
 func (recv *SrvTarget) Copy() *SrvTarget {
 	retC := C.g_srv_target_copy((*C.GSrvTarget)(recv.native))
 	retGo := SrvTargetNewFromC(unsafe.Pointer(retC))
@@ -154,14 +165,25 @@ func (recv *SrvTarget) Copy() *SrvTarget {
 	return retGo
 }
 
-// Free is a wrapper around the C function g_srv_target_free.
+// Frees @target
+/*
+
+C function : g_srv_target_free
+*/
 func (recv *SrvTarget) Free() {
 	C.g_srv_target_free((*C.GSrvTarget)(recv.native))
 
 	return
 }
 
-// GetHostname is a wrapper around the C function g_srv_target_get_hostname.
+// Gets @target's hostname (in ASCII form; if you are going to present
+// this to the user, you should use g_hostname_is_ascii_encoded() to
+// check if it contains encoded Unicode segments, and use
+// g_hostname_to_unicode() to convert it if it does.)
+/*
+
+C function : g_srv_target_get_hostname
+*/
 func (recv *SrvTarget) GetHostname() string {
 	retC := C.g_srv_target_get_hostname((*C.GSrvTarget)(recv.native))
 	retGo := C.GoString(retC)
@@ -169,7 +191,11 @@ func (recv *SrvTarget) GetHostname() string {
 	return retGo
 }
 
-// GetPort is a wrapper around the C function g_srv_target_get_port.
+// Gets @target's port
+/*
+
+C function : g_srv_target_get_port
+*/
 func (recv *SrvTarget) GetPort() uint16 {
 	retC := C.g_srv_target_get_port((*C.GSrvTarget)(recv.native))
 	retGo := (uint16)(retC)
@@ -177,7 +203,13 @@ func (recv *SrvTarget) GetPort() uint16 {
 	return retGo
 }
 
-// GetPriority is a wrapper around the C function g_srv_target_get_priority.
+// Gets @target's priority. You should not need to look at this;
+// #GResolver already sorts the targets according to the algorithm in
+// RFC 2782.
+/*
+
+C function : g_srv_target_get_priority
+*/
 func (recv *SrvTarget) GetPriority() uint16 {
 	retC := C.g_srv_target_get_priority((*C.GSrvTarget)(recv.native))
 	retGo := (uint16)(retC)
@@ -185,7 +217,13 @@ func (recv *SrvTarget) GetPriority() uint16 {
 	return retGo
 }
 
-// GetWeight is a wrapper around the C function g_srv_target_get_weight.
+// Gets @target's weight. You should not need to look at this;
+// #GResolver already sorts the targets according to the algorithm in
+// RFC 2782.
+/*
+
+C function : g_srv_target_get_weight
+*/
 func (recv *SrvTarget) GetWeight() uint16 {
 	retC := C.g_srv_target_get_weight((*C.GSrvTarget)(recv.native))
 	retGo := (uint16)(retC)

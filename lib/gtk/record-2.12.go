@@ -15,7 +15,12 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// PaperSizeNewFromKeyFile is a wrapper around the C function gtk_paper_size_new_from_key_file.
+// Reads a paper size from the group @group_name in the key file
+// @key_file.
+/*
+
+C function : gtk_paper_size_new_from_key_file
+*/
 func PaperSizeNewFromKeyFile(keyFile *glib.KeyFile, groupName string) (*PaperSize, error) {
 	c_key_file := (*C.GKeyFile)(C.NULL)
 	if keyFile != nil {
@@ -38,7 +43,11 @@ func PaperSizeNewFromKeyFile(keyFile *glib.KeyFile, groupName string) (*PaperSiz
 	return retGo, goThrowableError
 }
 
-// ToKeyFile is a wrapper around the C function gtk_paper_size_to_key_file.
+// This function adds the paper size from @size to @key_file.
+/*
+
+C function : gtk_paper_size_to_key_file
+*/
 func (recv *PaperSize) ToKeyFile(keyFile *glib.KeyFile, groupName string) {
 	c_key_file := (*C.GKeyFile)(C.NULL)
 	if keyFile != nil {

@@ -66,7 +66,12 @@ func (recv *AsyncInitable) ToC() unsafe.Pointer {
 
 // Unsupported : g_async_initable_init_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// InitFinish is a wrapper around the C function g_async_initable_init_finish.
+// Finishes asynchronous initialization and returns the result.
+// See g_async_initable_init_async().
+/*
+
+C function : g_async_initable_init_finish
+*/
 func (recv *AsyncInitable) InitFinish(res *AsyncResult) (bool, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
 
@@ -83,7 +88,12 @@ func (recv *AsyncInitable) InitFinish(res *AsyncResult) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// NewFinish is a wrapper around the C function g_async_initable_new_finish.
+// Finishes the async construction for the various g_async_initable_new
+// calls, returning the created object or %NULL on error.
+/*
+
+C function : g_async_initable_new_finish
+*/
 func (recv *AsyncInitable) NewFinish(res *AsyncResult) (*gobject.Object, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
 
@@ -157,7 +167,11 @@ func drive_stopButtonHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// CanStart is a wrapper around the C function g_drive_can_start.
+// Checks if a drive can be started.
+/*
+
+C function : g_drive_can_start
+*/
 func (recv *Drive) CanStart() bool {
 	retC := C.g_drive_can_start((*C.GDrive)(recv.native))
 	retGo := retC == C.TRUE
@@ -165,7 +179,11 @@ func (recv *Drive) CanStart() bool {
 	return retGo
 }
 
-// CanStartDegraded is a wrapper around the C function g_drive_can_start_degraded.
+// Checks if a drive can be started degraded.
+/*
+
+C function : g_drive_can_start_degraded
+*/
 func (recv *Drive) CanStartDegraded() bool {
 	retC := C.g_drive_can_start_degraded((*C.GDrive)(recv.native))
 	retGo := retC == C.TRUE
@@ -173,7 +191,11 @@ func (recv *Drive) CanStartDegraded() bool {
 	return retGo
 }
 
-// CanStop is a wrapper around the C function g_drive_can_stop.
+// Checks if a drive can be stopped.
+/*
+
+C function : g_drive_can_stop
+*/
 func (recv *Drive) CanStop() bool {
 	retC := C.g_drive_can_stop((*C.GDrive)(recv.native))
 	retGo := retC == C.TRUE
@@ -183,7 +205,12 @@ func (recv *Drive) CanStop() bool {
 
 // Unsupported : g_drive_eject_with_operation : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// EjectWithOperationFinish is a wrapper around the C function g_drive_eject_with_operation_finish.
+// Finishes ejecting a drive. If any errors occurred during the operation,
+// @error will be set to contain the errors and %FALSE will be returned.
+/*
+
+C function : g_drive_eject_with_operation_finish
+*/
 func (recv *Drive) EjectWithOperationFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
 
@@ -200,7 +227,11 @@ func (recv *Drive) EjectWithOperationFinish(result *AsyncResult) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// GetStartStopType is a wrapper around the C function g_drive_get_start_stop_type.
+// Gets a hint about how a drive can be started/stopped.
+/*
+
+C function : g_drive_get_start_stop_type
+*/
 func (recv *Drive) GetStartStopType() DriveStartStopType {
 	retC := C.g_drive_get_start_stop_type((*C.GDrive)(recv.native))
 	retGo := (DriveStartStopType)(retC)
@@ -210,7 +241,11 @@ func (recv *Drive) GetStartStopType() DriveStartStopType {
 
 // Unsupported : g_drive_start : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// StartFinish is a wrapper around the C function g_drive_start_finish.
+// Finishes starting a drive.
+/*
+
+C function : g_drive_start_finish
+*/
 func (recv *Drive) StartFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
 
@@ -229,7 +264,11 @@ func (recv *Drive) StartFinish(result *AsyncResult) (bool, error) {
 
 // Unsupported : g_drive_stop : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// StopFinish is a wrapper around the C function g_drive_stop_finish.
+// Finishes stopping a drive.
+/*
+
+C function : g_drive_stop_finish
+*/
 func (recv *Drive) StopFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
 
@@ -246,7 +285,33 @@ func (recv *Drive) StopFinish(result *AsyncResult) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// CreateReadwrite is a wrapper around the C function g_file_create_readwrite.
+// Creates a new file and returns a stream for reading and
+// writing to it. The file must not already exist.
+//
+// By default files created are generally readable by everyone,
+// but if you pass #G_FILE_CREATE_PRIVATE in @flags the file
+// will be made readable only to the current user, to the level
+// that is supported on the target filesystem.
+//
+// If @cancellable is not %NULL, then the operation can be cancelled
+// by triggering the cancellable object from another thread. If the
+// operation was cancelled, the error %G_IO_ERROR_CANCELLED will be
+// returned.
+//
+// If a file or directory with this name already exists, the
+// %G_IO_ERROR_EXISTS error will be returned. Some file systems don't
+// allow all file names, and may return an %G_IO_ERROR_INVALID_FILENAME
+// error, and if the name is too long, %G_IO_ERROR_FILENAME_TOO_LONG
+// will be returned. Other errors are possible too, and depend on what
+// kind of filesystem the file is on.
+//
+// Note that in many non-local file cases read and write streams are
+// not supported, so make sure you really need to do read and write
+// streaming, rather than just opening for reading or writing.
+/*
+
+C function : g_file_create_readwrite
+*/
 func (recv *File) CreateReadwrite(flags FileCreateFlags, cancellable *Cancellable) (*FileIOStream, error) {
 	c_flags := (C.GFileCreateFlags)(flags)
 
@@ -270,7 +335,12 @@ func (recv *File) CreateReadwrite(flags FileCreateFlags, cancellable *Cancellabl
 
 // Unsupported : g_file_create_readwrite_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// CreateReadwriteFinish is a wrapper around the C function g_file_create_readwrite_finish.
+// Finishes an asynchronous file create operation started with
+// g_file_create_readwrite_async().
+/*
+
+C function : g_file_create_readwrite_finish
+*/
 func (recv *File) CreateReadwriteFinish(res *AsyncResult) (*FileIOStream, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
 
@@ -289,7 +359,12 @@ func (recv *File) CreateReadwriteFinish(res *AsyncResult) (*FileIOStream, error)
 
 // Unsupported : g_file_eject_mountable_with_operation : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// EjectMountableWithOperationFinish is a wrapper around the C function g_file_eject_mountable_with_operation_finish.
+// Finishes an asynchronous eject operation started by
+// g_file_eject_mountable_with_operation().
+/*
+
+C function : g_file_eject_mountable_with_operation_finish
+*/
 func (recv *File) EjectMountableWithOperationFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
 
@@ -306,7 +381,26 @@ func (recv *File) EjectMountableWithOperationFinish(result *AsyncResult) (bool, 
 	return retGo, goThrowableError
 }
 
-// OpenReadwrite is a wrapper around the C function g_file_open_readwrite.
+// Opens an existing file for reading and writing. The result is
+// a #GFileIOStream that can be used to read and write the contents
+// of the file.
+//
+// If @cancellable is not %NULL, then the operation can be cancelled
+// by triggering the cancellable object from another thread. If the
+// operation was cancelled, the error %G_IO_ERROR_CANCELLED will be
+// returned.
+//
+// If the file does not exist, the %G_IO_ERROR_NOT_FOUND error will
+// be returned. If the file is a directory, the %G_IO_ERROR_IS_DIRECTORY
+// error will be returned. Other errors are possible too, and depend on
+// what kind of filesystem the file is on. Note that in many non-local
+// file cases read and write streams are not supported, so make sure you
+// really need to do read and write streaming, rather than just opening
+// for reading or writing.
+/*
+
+C function : g_file_open_readwrite
+*/
 func (recv *File) OpenReadwrite(cancellable *Cancellable) (*FileIOStream, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
 	if cancellable != nil {
@@ -328,7 +422,12 @@ func (recv *File) OpenReadwrite(cancellable *Cancellable) (*FileIOStream, error)
 
 // Unsupported : g_file_open_readwrite_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// OpenReadwriteFinish is a wrapper around the C function g_file_open_readwrite_finish.
+// Finishes an asynchronous file read operation started with
+// g_file_open_readwrite_async().
+/*
+
+C function : g_file_open_readwrite_finish
+*/
 func (recv *File) OpenReadwriteFinish(res *AsyncResult) (*FileIOStream, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
 
@@ -347,7 +446,14 @@ func (recv *File) OpenReadwriteFinish(res *AsyncResult) (*FileIOStream, error) {
 
 // Unsupported : g_file_poll_mountable : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// PollMountableFinish is a wrapper around the C function g_file_poll_mountable_finish.
+// Finishes a poll operation. See g_file_poll_mountable() for details.
+//
+// Finish an asynchronous poll operation that was polled
+// with g_file_poll_mountable().
+/*
+
+C function : g_file_poll_mountable_finish
+*/
 func (recv *File) PollMountableFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
 
@@ -364,7 +470,20 @@ func (recv *File) PollMountableFinish(result *AsyncResult) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// ReplaceReadwrite is a wrapper around the C function g_file_replace_readwrite.
+// Returns an output stream for overwriting the file in readwrite mode,
+// possibly creating a backup copy of the file first. If the file doesn't
+// exist, it will be created.
+//
+// For details about the behaviour, see g_file_replace() which does the
+// same thing but returns an output stream only.
+//
+// Note that in many non-local file cases read and write streams are not
+// supported, so make sure you really need to do read and write streaming,
+// rather than just opening for reading or writing.
+/*
+
+C function : g_file_replace_readwrite
+*/
 func (recv *File) ReplaceReadwrite(etag string, makeBackup bool, flags FileCreateFlags, cancellable *Cancellable) (*FileIOStream, error) {
 	c_etag := C.CString(etag)
 	defer C.free(unsafe.Pointer(c_etag))
@@ -394,7 +513,12 @@ func (recv *File) ReplaceReadwrite(etag string, makeBackup bool, flags FileCreat
 
 // Unsupported : g_file_replace_readwrite_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// ReplaceReadwriteFinish is a wrapper around the C function g_file_replace_readwrite_finish.
+// Finishes an asynchronous file replace operation started with
+// g_file_replace_readwrite_async().
+/*
+
+C function : g_file_replace_readwrite_finish
+*/
 func (recv *File) ReplaceReadwriteFinish(res *AsyncResult) (*FileIOStream, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
 
@@ -413,7 +537,14 @@ func (recv *File) ReplaceReadwriteFinish(res *AsyncResult) (*FileIOStream, error
 
 // Unsupported : g_file_start_mountable : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// StartMountableFinish is a wrapper around the C function g_file_start_mountable_finish.
+// Finishes a start operation. See g_file_start_mountable() for details.
+//
+// Finish an asynchronous start operation that was started
+// with g_file_start_mountable().
+/*
+
+C function : g_file_start_mountable_finish
+*/
 func (recv *File) StartMountableFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
 
@@ -432,7 +563,14 @@ func (recv *File) StartMountableFinish(result *AsyncResult) (bool, error) {
 
 // Unsupported : g_file_stop_mountable : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// StopMountableFinish is a wrapper around the C function g_file_stop_mountable_finish.
+// Finishes an stop operation, see g_file_stop_mountable() for details.
+//
+// Finish an asynchronous stop operation that was started
+// with g_file_stop_mountable().
+/*
+
+C function : g_file_stop_mountable_finish
+*/
 func (recv *File) StopMountableFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
 
@@ -449,7 +587,14 @@ func (recv *File) StopMountableFinish(result *AsyncResult) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// SupportsThreadContexts is a wrapper around the C function g_file_supports_thread_contexts.
+// Checks if @file supports
+// [thread-default contexts][g-main-context-push-thread-default-context].
+// If this returns %FALSE, you cannot perform asynchronous operations on
+// @file in a thread that has a thread-default context.
+/*
+
+C function : g_file_supports_thread_contexts
+*/
 func (recv *File) SupportsThreadContexts() bool {
 	retC := C.g_file_supports_thread_contexts((*C.GFile)(recv.native))
 	retGo := retC == C.TRUE
@@ -459,7 +604,15 @@ func (recv *File) SupportsThreadContexts() bool {
 
 // Unsupported : g_file_unmount_mountable_with_operation : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// UnmountMountableWithOperationFinish is a wrapper around the C function g_file_unmount_mountable_with_operation_finish.
+// Finishes an unmount operation,
+// see g_file_unmount_mountable_with_operation() for details.
+//
+// Finish an asynchronous unmount operation that was started
+// with g_file_unmount_mountable_with_operation().
+/*
+
+C function : g_file_unmount_mountable_with_operation_finish
+*/
 func (recv *File) UnmountMountableWithOperationFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
 
@@ -497,7 +650,48 @@ func (recv *Initable) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Init is a wrapper around the C function g_initable_init.
+// Initializes the object implementing the interface.
+//
+// This method is intended for language bindings. If writing in C,
+// g_initable_new() should typically be used instead.
+//
+// The object must be initialized before any real use after initial
+// construction, either with this function or g_async_initable_init_async().
+//
+// Implementations may also support cancellation. If @cancellable is not %NULL,
+// then initialization can be cancelled by triggering the cancellable object
+// from another thread. If the operation was cancelled, the error
+// %G_IO_ERROR_CANCELLED will be returned. If @cancellable is not %NULL and
+// the object doesn't support cancellable initialization the error
+// %G_IO_ERROR_NOT_SUPPORTED will be returned.
+//
+// If the object is not initialized, or initialization returns with an
+// error, then all operations on the object except g_object_ref() and
+// g_object_unref() are considered to be invalid, and have undefined
+// behaviour. See the [introduction][ginitable] for more details.
+//
+// Callers should not assume that a class which implements #GInitable can be
+// initialized multiple times, unless the class explicitly documents itself as
+// supporting this. Generally, a class’ implementation of init() can assume
+// (and assert) that it will only be called once. Previously, this documentation
+// recommended all #GInitable implementations should be idempotent; that
+// recommendation was relaxed in GLib 2.54.
+//
+// If a class explicitly supports being initialized multiple times, it is
+// recommended that the method is idempotent: multiple calls with the same
+// arguments should return the same results. Only the first call initializes
+// the object; further calls return the result of the first call.
+//
+// One reason why a class might need to support idempotent initialization is if
+// it is designed to be used via the singleton pattern, with a
+// #GObjectClass.constructor that sometimes returns an existing instance.
+// In this pattern, a caller would expect to be able to call g_initable_init()
+// on the result of g_object_new(), regardless of whether it is in fact a new
+// instance.
+/*
+
+C function : g_initable_init
+*/
 func (recv *Initable) Init(cancellable *Cancellable) (bool, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
 	if cancellable != nil {
@@ -576,7 +770,12 @@ func mount_preUnmountHandler(_ *C.GObject, data C.gpointer) {
 
 // Unsupported : g_mount_eject_with_operation : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// EjectWithOperationFinish is a wrapper around the C function g_mount_eject_with_operation_finish.
+// Finishes ejecting a mount. If any errors occurred during the operation,
+// @error will be set to contain the errors and %FALSE will be returned.
+/*
+
+C function : g_mount_eject_with_operation_finish
+*/
 func (recv *Mount) EjectWithOperationFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
 
@@ -595,7 +794,12 @@ func (recv *Mount) EjectWithOperationFinish(result *AsyncResult) (bool, error) {
 
 // Unsupported : g_mount_unmount_with_operation : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// UnmountWithOperationFinish is a wrapper around the C function g_mount_unmount_with_operation_finish.
+// Finishes unmounting a mount. If any errors occurred during the operation,
+// @error will be set to contain the errors and %FALSE will be returned.
+/*
+
+C function : g_mount_unmount_with_operation_finish
+*/
 func (recv *Mount) UnmountWithOperationFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
 
@@ -612,7 +816,11 @@ func (recv *Mount) UnmountWithOperationFinish(result *AsyncResult) (bool, error)
 	return retGo, goThrowableError
 }
 
-// Enumerate is a wrapper around the C function g_socket_connectable_enumerate.
+// Creates a #GSocketAddressEnumerator for @connectable.
+/*
+
+C function : g_socket_connectable_enumerate
+*/
 func (recv *SocketConnectable) Enumerate() *SocketAddressEnumerator {
 	retC := C.g_socket_connectable_enumerate((*C.GSocketConnectable)(recv.native))
 	retGo := SocketAddressEnumeratorNewFromC(unsafe.Pointer(retC))
@@ -622,7 +830,12 @@ func (recv *SocketConnectable) Enumerate() *SocketAddressEnumerator {
 
 // Unsupported : g_volume_eject_with_operation : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// EjectWithOperationFinish is a wrapper around the C function g_volume_eject_with_operation_finish.
+// Finishes ejecting a volume. If any errors occurred during the operation,
+// @error will be set to contain the errors and %FALSE will be returned.
+/*
+
+C function : g_volume_eject_with_operation_finish
+*/
 func (recv *Volume) EjectWithOperationFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
 

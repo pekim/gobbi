@@ -10,7 +10,15 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Init is a wrapper around the C function pango_attribute_init.
+// Initializes @attr's klass to @klass,
+// it's start_index to %PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING
+// and end_index to %PANGO_ATTR_INDEX_TO_TEXT_END
+// such that the attribute applies
+// to the entire text by default.
+/*
+
+C function : pango_attribute_init
+*/
 func (recv *Attribute) Init(klass *AttrClass) {
 	c_klass := (*C.PangoAttrClass)(C.NULL)
 	if klass != nil {
@@ -22,7 +30,11 @@ func (recv *Attribute) Init(klass *AttrClass) {
 	return
 }
 
-// Copy is a wrapper around the C function pango_glyph_item_copy.
+// Make a deep copy of an existing #PangoGlyphItem structure.
+/*
+
+C function : pango_glyph_item_copy
+*/
 func (recv *GlyphItem) Copy() *GlyphItem {
 	retC := C.pango_glyph_item_copy((*C.PangoGlyphItem)(recv.native))
 	var retGo (*GlyphItem)

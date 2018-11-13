@@ -23,7 +23,15 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// ContentTypeGetGenericIconName is a wrapper around the C function g_content_type_get_generic_icon_name.
+// Gets the generic icon name for a content type.
+//
+// See the
+// [shared-mime-info](http://www.freedesktop.org/wiki/Specifications/shared-mime-info-spec)
+// specification for more on the generic icon name.
+/*
+
+C function : g_content_type_get_generic_icon_name
+*/
 func ContentTypeGetGenericIconName(type_ string) string {
 	c_type := C.CString(type_)
 	defer C.free(unsafe.Pointer(c_type))
@@ -35,7 +43,11 @@ func ContentTypeGetGenericIconName(type_ string) string {
 	return retGo
 }
 
-// ContentTypeGetSymbolicIcon is a wrapper around the C function g_content_type_get_symbolic_icon.
+// Gets the symbolic icon for a content type.
+/*
+
+C function : g_content_type_get_symbolic_icon
+*/
 func ContentTypeGetSymbolicIcon(type_ string) *Icon {
 	c_type := C.CString(type_)
 	defer C.free(unsafe.Pointer(c_type))
@@ -46,7 +58,14 @@ func ContentTypeGetSymbolicIcon(type_ string) *Icon {
 	return retGo
 }
 
-// PollableSourceNewFull is a wrapper around the C function g_pollable_source_new_full.
+// Utility method for #GPollableInputStream and #GPollableOutputStream
+// implementations. Creates a new #GSource, as with
+// g_pollable_source_new(), but also attaching @child_source (with a
+// dummy callback), and @cancellable, if they are non-%NULL.
+/*
+
+C function : g_pollable_source_new_full
+*/
 func PollableSourceNewFull(pollableStream uintptr, childSource *glib.Source, cancellable *Cancellable) *glib.Source {
 	c_pollable_stream := (C.gpointer)(pollableStream)
 
@@ -66,7 +85,19 @@ func PollableSourceNewFull(pollableStream uintptr, childSource *glib.Source, can
 	return retGo
 }
 
-// PollableStreamRead is a wrapper around the C function g_pollable_stream_read.
+// Tries to read from @stream, as with g_input_stream_read() (if
+// @blocking is %TRUE) or g_pollable_input_stream_read_nonblocking()
+// (if @blocking is %FALSE). This can be used to more easily share
+// code between blocking and non-blocking implementations of a method.
+//
+// If @blocking is %FALSE, then @stream must be a
+// #GPollableInputStream for which g_pollable_input_stream_can_poll()
+// returns %TRUE, or else the behavior is undefined. If @blocking is
+// %TRUE, then @stream does not need to be a #GPollableInputStream.
+/*
+
+C function : g_pollable_stream_read
+*/
 func PollableStreamRead(stream *InputStream, buffer []uint8, blocking bool, cancellable *Cancellable) (int64, error) {
 	c_stream := (*C.GInputStream)(C.NULL)
 	if stream != nil {
@@ -98,7 +129,20 @@ func PollableStreamRead(stream *InputStream, buffer []uint8, blocking bool, canc
 	return retGo, goThrowableError
 }
 
-// PollableStreamWrite is a wrapper around the C function g_pollable_stream_write.
+// Tries to write to @stream, as with g_output_stream_write() (if
+// @blocking is %TRUE) or g_pollable_output_stream_write_nonblocking()
+// (if @blocking is %FALSE). This can be used to more easily share
+// code between blocking and non-blocking implementations of a method.
+//
+// If @blocking is %FALSE, then @stream must be a
+// #GPollableOutputStream for which
+// g_pollable_output_stream_can_poll() returns %TRUE or else the
+// behavior is undefined. If @blocking is %TRUE, then @stream does not
+// need to be a #GPollableOutputStream.
+/*
+
+C function : g_pollable_stream_write
+*/
 func PollableStreamWrite(stream *OutputStream, buffer []uint8, blocking bool, cancellable *Cancellable) (int64, error) {
 	c_stream := (*C.GOutputStream)(C.NULL)
 	if stream != nil {
@@ -130,7 +174,28 @@ func PollableStreamWrite(stream *OutputStream, buffer []uint8, blocking bool, ca
 	return retGo, goThrowableError
 }
 
-// PollableStreamWriteAll is a wrapper around the C function g_pollable_stream_write_all.
+// Tries to write @count bytes to @stream, as with
+// g_output_stream_write_all(), but using g_pollable_stream_write()
+// rather than g_output_stream_write().
+//
+// On a successful write of @count bytes, %TRUE is returned, and
+// @bytes_written is set to @count.
+//
+// If there is an error during the operation (including
+// %G_IO_ERROR_WOULD_BLOCK in the non-blocking case), %FALSE is
+// returned and @error is set to indicate the error status,
+// @bytes_written is updated to contain the number of bytes written
+// into the stream before the error occurred.
+//
+// As with g_pollable_stream_write(), if @blocking is %FALSE, then
+// @stream must be a #GPollableOutputStream for which
+// g_pollable_output_stream_can_poll() returns %TRUE or else the
+// behavior is undefined. If @blocking is %TRUE, then @stream does not
+// need to be a #GPollableOutputStream.
+/*
+
+C function : g_pollable_stream_write_all
+*/
 func PollableStreamWriteAll(stream *OutputStream, buffer []uint8, blocking bool, cancellable *Cancellable) (bool, uint64, error) {
 	c_stream := (*C.GOutputStream)(C.NULL)
 	if stream != nil {
@@ -166,7 +231,11 @@ func PollableStreamWriteAll(stream *OutputStream, buffer []uint8, blocking bool,
 	return retGo, bytesWritten, goThrowableError
 }
 
-// UnixMountGuessSymbolicIcon is a wrapper around the C function g_unix_mount_guess_symbolic_icon.
+// Guesses the symbolic icon of a Unix mount.
+/*
+
+C function : g_unix_mount_guess_symbolic_icon
+*/
 func UnixMountGuessSymbolicIcon(mountEntry *UnixMountEntry) *Icon {
 	c_mount_entry := (*C.GUnixMountEntry)(C.NULL)
 	if mountEntry != nil {

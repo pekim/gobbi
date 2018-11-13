@@ -14,7 +14,23 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// CursorNewFromSurface is a wrapper around the C function gdk_cursor_new_from_surface.
+// Creates a new cursor from a cairo image surface.
+//
+// Not all GDK backends support RGBA cursors. If they are not
+// supported, a monochrome approximation will be displayed.
+// The functions gdk_display_supports_cursor_alpha() and
+// gdk_display_supports_cursor_color() can be used to determine
+// whether RGBA cursors are supported;
+// gdk_display_get_default_cursor_size() and
+// gdk_display_get_maximal_cursor_size() give information about
+// cursor sizes.
+//
+// On the X backend, support for RGBA cursors requires a
+// sufficently new version of the X Render extension.
+/*
+
+C function : gdk_cursor_new_from_surface
+*/
 func CursorNewFromSurface(display *Display, surface *cairo.Surface, x float64, y float64) *Cursor {
 	c_display := (*C.GdkDisplay)(C.NULL)
 	if display != nil {
@@ -36,7 +52,15 @@ func CursorNewFromSurface(display *Display, surface *cairo.Surface, x float64, y
 	return retGo
 }
 
-// GetSurface is a wrapper around the C function gdk_cursor_get_surface.
+// Returns a cairo image surface with the image used to display the cursor.
+//
+// Note that depending on the capabilities of the windowing system and
+// on the cursor, GDK may not be able to obtain the image data. In this
+// case, %NULL is returned.
+/*
+
+C function : gdk_cursor_get_surface
+*/
 func (recv *Cursor) GetSurface() (*cairo.Surface, float64, float64) {
 	var c_x_hot C.gdouble
 
@@ -57,7 +81,14 @@ func (recv *Cursor) GetSurface() (*cairo.Surface, float64, float64) {
 	return retGo, xHot, yHot
 }
 
-// GetPositionDouble is a wrapper around the C function gdk_device_get_position_double.
+// Gets the current location of @device in double precision. As a slave device's
+// coordinates are those of its master pointer, this function
+// may not be called on devices of type %GDK_DEVICE_TYPE_SLAVE,
+// unless there is an ongoing grab on them. See gdk_device_grab().
+/*
+
+C function : gdk_device_get_position_double
+*/
 func (recv *Device) GetPositionDouble() (*Screen, float64, float64) {
 	var c_screen *C.GdkScreen
 
@@ -76,7 +107,17 @@ func (recv *Device) GetPositionDouble() (*Screen, float64, float64) {
 	return screen, x, y
 }
 
-// GetMonitorScaleFactor is a wrapper around the C function gdk_screen_get_monitor_scale_factor.
+// Returns the internal scale factor that maps from monitor coordinates
+// to the actual device pixels. On traditional systems this is 1, but
+// on very high density outputs this can be a higher value (often 2).
+//
+// This can be used if you want to create pixel based data for a
+// particular monitor, but most of the time you’re drawing to a window
+// where it is better to use gdk_window_get_scale_factor() instead.
+/*
+
+C function : gdk_screen_get_monitor_scale_factor
+*/
 func (recv *Screen) GetMonitorScaleFactor(monitorNum int32) int32 {
 	c_monitor_num := (C.gint)(monitorNum)
 
@@ -88,7 +129,18 @@ func (recv *Screen) GetMonitorScaleFactor(monitorNum int32) int32 {
 
 // Unsupported : gdk_window_create_similar_image_surface : unsupported parameter format : no type generator for gint (cairo_format_t) for param format
 
-// GetChildrenWithUserData is a wrapper around the C function gdk_window_get_children_with_user_data.
+// Gets the list of children of @window known to GDK with a
+// particular @user_data set on it.
+//
+// The returned list must be freed, but the elements in the
+// list need not be.
+//
+// The list is returned in (relative) stacking order, i.e. the
+// lowest window is first.
+/*
+
+C function : gdk_window_get_children_with_user_data
+*/
 func (recv *Window) GetChildrenWithUserData(userData uintptr) *glib.List {
 	c_user_data := (C.gpointer)(userData)
 
@@ -100,7 +152,22 @@ func (recv *Window) GetChildrenWithUserData(userData uintptr) *glib.List {
 
 // Unsupported : gdk_window_get_device_position_double : unsupported parameter mask : GdkModifierType* with indirection level of 1
 
-// GetScaleFactor is a wrapper around the C function gdk_window_get_scale_factor.
+// Returns the internal scale factor that maps from window coordiantes
+// to the actual device pixels. On traditional systems this is 1, but
+// on very high density outputs this can be a higher value (often 2).
+//
+// A higher value means that drawing is automatically scaled up to
+// a higher resolution, so any code doing drawing will automatically look
+// nicer. However, if you are supplying pixel-based data the scale
+// value can be used to determine whether to use a pixel resource
+// with higher resolution data.
+//
+// The scale of a window may change during runtime, if this happens
+// a configure event will be sent to the toplevel window.
+/*
+
+C function : gdk_window_get_scale_factor
+*/
 func (recv *Window) GetScaleFactor() int32 {
 	retC := C.gdk_window_get_scale_factor((*C.GdkWindow)(recv.native))
 	retGo := (int32)(retC)
@@ -110,7 +177,23 @@ func (recv *Window) GetScaleFactor() int32 {
 
 // Unsupported : gdk_window_set_invalidate_handler : unsupported parameter handler : no type generator for WindowInvalidateHandlerFunc (GdkWindowInvalidateHandlerFunc) for param handler
 
-// SetOpaqueRegion is a wrapper around the C function gdk_window_set_opaque_region.
+// For optimisation purposes, compositing window managers may
+// like to not draw obscured regions of windows, or turn off blending
+// during for these regions. With RGB windows with no transparency,
+// this is just the shape of the window, but with ARGB32 windows, the
+// compositor does not know what regions of the window are transparent
+// or not.
+//
+// This function only works for toplevel windows.
+//
+// GTK+ will update this property automatically if
+// the @window background is opaque, as we know where the opaque regions
+// are. If your window background is not opaque, please update this
+// property in your #GtkWidget::style-updated handler.
+/*
+
+C function : gdk_window_set_opaque_region
+*/
 func (recv *Window) SetOpaqueRegion(region *cairo.Region) {
 	c_region := (*C.cairo_region_t)(C.NULL)
 	if region != nil {

@@ -10,7 +10,11 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Ref is a wrapper around the C function pango_attr_list_ref.
+// Increase the reference count of the given attribute list by one.
+/*
+
+C function : pango_attr_list_ref
+*/
 func (recv *AttrList) Ref() *AttrList {
 	retC := C.pango_attr_list_ref((*C.PangoAttrList)(recv.native))
 	retGo := AttrListNewFromC(unsafe.Pointer(retC))
@@ -18,7 +22,11 @@ func (recv *AttrList) Ref() *AttrList {
 	return retGo
 }
 
-// Ref is a wrapper around the C function pango_layout_line_ref.
+// Increase the reference count of a #PangoLayoutLine by one.
+/*
+
+C function : pango_layout_line_ref
+*/
 func (recv *LayoutLine) Ref() *LayoutLine {
 	retC := C.pango_layout_line_ref((*C.PangoLayoutLine)(recv.native))
 	retGo := LayoutLineNewFromC(unsafe.Pointer(retC))

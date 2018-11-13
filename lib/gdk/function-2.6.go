@@ -8,7 +8,14 @@ package gdk
 // #include <stdlib.h>
 import "C"
 
-// DragDropSucceeded is a wrapper around the C function gdk_drag_drop_succeeded.
+// Returns whether the dropped data has been successfully
+// transferred. This function is intended to be used while
+// handling a %GDK_DROP_FINISHED event, its return value is
+// meaningless at other times.
+/*
+
+C function : gdk_drag_drop_succeeded
+*/
 func DragDropSucceeded(context *DragContext) bool {
 	c_context := (*C.GdkDragContext)(C.NULL)
 	if context != nil {

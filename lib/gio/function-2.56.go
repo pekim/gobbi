@@ -20,7 +20,17 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// UnixIsSystemDevicePath is a wrapper around the C function g_unix_is_system_device_path.
+// Determines if @device_path is considered a block device path which is only
+// used in implementation of the OS. This is primarily used for hiding
+// mounted volumes that are intended as APIs for programs to read, and system
+// administrators at a shell; rather than something that should, for example,
+// appear in a GUI. For example, the Linux `/proc` filesystem.
+//
+// The list of device paths considered ‘system’ ones may change over time.
+/*
+
+C function : g_unix_is_system_device_path
+*/
 func UnixIsSystemDevicePath(devicePath string) bool {
 	c_device_path := C.CString(devicePath)
 	defer C.free(unsafe.Pointer(c_device_path))
@@ -31,7 +41,17 @@ func UnixIsSystemDevicePath(devicePath string) bool {
 	return retGo
 }
 
-// UnixIsSystemFsType is a wrapper around the C function g_unix_is_system_fs_type.
+// Determines if @fs_type is considered a type of file system which is only
+// used in implementation of the OS. This is primarily used for hiding
+// mounted volumes that are intended as APIs for programs to read, and system
+// administrators at a shell; rather than something that should, for example,
+// appear in a GUI. For example, the Linux `/proc` filesystem.
+//
+// The list of file system types considered ‘system’ ones may change over time.
+/*
+
+C function : g_unix_is_system_fs_type
+*/
 func UnixIsSystemFsType(fsType string) bool {
 	c_fs_type := C.CString(fsType)
 	defer C.free(unsafe.Pointer(c_fs_type))

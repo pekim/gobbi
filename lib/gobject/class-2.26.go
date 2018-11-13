@@ -42,7 +42,11 @@ func CastToBinding(object *Object) *Binding {
 	return BindingNewFromC(object.ToC())
 }
 
-// GetFlags is a wrapper around the C function g_binding_get_flags.
+// Retrieves the flags passed when constructing the #GBinding.
+/*
+
+C function : g_binding_get_flags
+*/
 func (recv *Binding) GetFlags() BindingFlags {
 	retC := C.g_binding_get_flags((*C.GBinding)(recv.native))
 	retGo := (BindingFlags)(retC)
@@ -50,7 +54,11 @@ func (recv *Binding) GetFlags() BindingFlags {
 	return retGo
 }
 
-// GetSource is a wrapper around the C function g_binding_get_source.
+// Retrieves the #GObject instance used as the source of the binding.
+/*
+
+C function : g_binding_get_source
+*/
 func (recv *Binding) GetSource() *Object {
 	retC := C.g_binding_get_source((*C.GBinding)(recv.native))
 	retGo := ObjectNewFromC(unsafe.Pointer(retC))
@@ -58,7 +66,12 @@ func (recv *Binding) GetSource() *Object {
 	return retGo
 }
 
-// GetSourceProperty is a wrapper around the C function g_binding_get_source_property.
+// Retrieves the name of the property of #GBinding:source used as the source
+// of the binding.
+/*
+
+C function : g_binding_get_source_property
+*/
 func (recv *Binding) GetSourceProperty() string {
 	retC := C.g_binding_get_source_property((*C.GBinding)(recv.native))
 	retGo := C.GoString(retC)
@@ -66,7 +79,11 @@ func (recv *Binding) GetSourceProperty() string {
 	return retGo
 }
 
-// GetTarget is a wrapper around the C function g_binding_get_target.
+// Retrieves the #GObject instance used as the target of the binding.
+/*
+
+C function : g_binding_get_target
+*/
 func (recv *Binding) GetTarget() *Object {
 	retC := C.g_binding_get_target((*C.GBinding)(recv.native))
 	retGo := ObjectNewFromC(unsafe.Pointer(retC))
@@ -74,7 +91,12 @@ func (recv *Binding) GetTarget() *Object {
 	return retGo
 }
 
-// GetTargetProperty is a wrapper around the C function g_binding_get_target_property.
+// Retrieves the name of the property of #GBinding:target used as the target
+// of the binding.
+/*
+
+C function : g_binding_get_target_property
+*/
 func (recv *Binding) GetTargetProperty() string {
 	retC := C.g_binding_get_target_property((*C.GBinding)(recv.native))
 	retGo := C.GoString(retC)
@@ -82,7 +104,32 @@ func (recv *Binding) GetTargetProperty() string {
 	return retGo
 }
 
-// BindProperty is a wrapper around the C function g_object_bind_property.
+// Creates a binding between @source_property on @source and @target_property
+// on @target. Whenever the @source_property is changed the @target_property is
+// updated using the same value. For instance:
+//
+// |[
+// g_object_bind_property (action, "active", widget, "sensitive", 0);
+// ]|
+//
+// Will result in the "sensitive" property of the widget #GObject instance to be
+// updated with the same value of the "active" property of the action #GObject
+// instance.
+//
+// If @flags contains %G_BINDING_BIDIRECTIONAL then the binding will be mutual:
+// if @target_property on @target changes then the @source_property on @source
+// will be updated as well.
+//
+// The binding will automatically be removed when either the @source or the
+// @target instances are finalized. To remove the binding without affecting the
+// @source and the @target you can just call g_object_unref() on the returned
+// #GBinding instance.
+//
+// A #GObject can have multiple bindings.
+/*
+
+C function : g_object_bind_property
+*/
 func (recv *Object) BindProperty(sourceProperty string, target uintptr, targetProperty string, flags BindingFlags) *Binding {
 	c_source_property := C.CString(sourceProperty)
 	defer C.free(unsafe.Pointer(c_source_property))
@@ -102,7 +149,17 @@ func (recv *Object) BindProperty(sourceProperty string, target uintptr, targetPr
 
 // Unsupported : g_object_bind_property_full : unsupported parameter transform_to : no type generator for BindingTransformFunc (GBindingTransformFunc) for param transform_to
 
-// BindPropertyWithClosures is a wrapper around the C function g_object_bind_property_with_closures.
+// Creates a binding between @source_property on @source and @target_property
+// on @target, allowing you to set the transformation functions to be used by
+// the binding.
+//
+// This function is the language bindings friendly version of
+// g_object_bind_property_full(), using #GClosures instead of
+// function pointers.
+/*
+
+C function : g_object_bind_property_with_closures
+*/
 func (recv *Object) BindPropertyWithClosures(sourceProperty string, target uintptr, targetProperty string, flags BindingFlags, transformTo *Closure, transformFrom *Closure) *Binding {
 	c_source_property := C.CString(sourceProperty)
 	defer C.free(unsafe.Pointer(c_source_property))

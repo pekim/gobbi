@@ -23,7 +23,17 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// AppInfoCreateFromCommandline is a wrapper around the C function g_app_info_create_from_commandline.
+// Creates a new #GAppInfo from the given information.
+//
+// Note that for @commandline, the quoting rules of the Exec key of the
+// [freedesktop.org Desktop Entry Specification](http://freedesktop.org/Standards/desktop-entry-spec)
+// are applied. For example, if the @commandline contains
+// percent-encoded URIs, the percent-character must be doubled in order to prevent it from
+// being swallowed by Exec key unquoting. See the specification for exact quoting rules.
+/*
+
+C function : g_app_info_create_from_commandline
+*/
 func AppInfoCreateFromCommandline(commandline string, applicationName string, flags AppInfoCreateFlags) (*AppInfo, error) {
 	c_commandline := C.CString(commandline)
 	defer C.free(unsafe.Pointer(c_commandline))
@@ -46,7 +56,18 @@ func AppInfoCreateFromCommandline(commandline string, applicationName string, fl
 	return retGo, goThrowableError
 }
 
-// AppInfoGetAll is a wrapper around the C function g_app_info_get_all.
+// Gets a list of all of the applications currently registered
+// on this system.
+//
+// For desktop files, this includes applications that have
+// `NoDisplay=true` set or are excluded from display by means
+// of `OnlyShowIn` or `NotShowIn`. See g_app_info_should_show().
+// The returned list does not include applications which have
+// the `Hidden` key set.
+/*
+
+C function : g_app_info_get_all
+*/
 func AppInfoGetAll() *glib.List {
 	retC := C.g_app_info_get_all()
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
@@ -54,7 +75,14 @@ func AppInfoGetAll() *glib.List {
 	return retGo
 }
 
-// AppInfoGetAllForType is a wrapper around the C function g_app_info_get_all_for_type.
+// Gets a list of all #GAppInfos for a given content type,
+// including the recommended and fallback #GAppInfos. See
+// g_app_info_get_recommended_for_type() and
+// g_app_info_get_fallback_for_type().
+/*
+
+C function : g_app_info_get_all_for_type
+*/
 func AppInfoGetAllForType(contentType string) *glib.List {
 	c_content_type := C.CString(contentType)
 	defer C.free(unsafe.Pointer(c_content_type))
@@ -65,7 +93,11 @@ func AppInfoGetAllForType(contentType string) *glib.List {
 	return retGo
 }
 
-// AppInfoGetDefaultForType is a wrapper around the C function g_app_info_get_default_for_type.
+// Gets the default #GAppInfo for a given content type.
+/*
+
+C function : g_app_info_get_default_for_type
+*/
 func AppInfoGetDefaultForType(contentType string, mustSupportUris bool) *AppInfo {
 	c_content_type := C.CString(contentType)
 	defer C.free(unsafe.Pointer(c_content_type))
@@ -79,7 +111,14 @@ func AppInfoGetDefaultForType(contentType string, mustSupportUris bool) *AppInfo
 	return retGo
 }
 
-// AppInfoGetDefaultForUriScheme is a wrapper around the C function g_app_info_get_default_for_uri_scheme.
+// Gets the default application for handling URIs with
+// the given URI scheme. A URI scheme is the initial part
+// of the URI, up to but not including the ':', e.g. "http",
+// "ftp" or "sip".
+/*
+
+C function : g_app_info_get_default_for_uri_scheme
+*/
 func AppInfoGetDefaultForUriScheme(uriScheme string) *AppInfo {
 	c_uri_scheme := C.CString(uriScheme)
 	defer C.free(unsafe.Pointer(c_uri_scheme))
@@ -90,7 +129,14 @@ func AppInfoGetDefaultForUriScheme(uriScheme string) *AppInfo {
 	return retGo
 }
 
-// AppInfoLaunchDefaultForUri is a wrapper around the C function g_app_info_launch_default_for_uri.
+// Utility function that launches the default application
+// registered to handle the specified uri. Synchronous I/O
+// is done on the uri to detect the type of the file if
+// required.
+/*
+
+C function : g_app_info_launch_default_for_uri
+*/
 func AppInfoLaunchDefaultForUri(uri string, context *AppLaunchContext) (bool, error) {
 	c_uri := C.CString(uri)
 	defer C.free(unsafe.Pointer(c_uri))
@@ -113,7 +159,12 @@ func AppInfoLaunchDefaultForUri(uri string, context *AppLaunchContext) (bool, er
 	return retGo, goThrowableError
 }
 
-// ContentTypeCanBeExecutable is a wrapper around the C function g_content_type_can_be_executable.
+// Checks if a content type can be executable. Note that for instance
+// things like text files can be executables (i.e. scripts and batch files).
+/*
+
+C function : g_content_type_can_be_executable
+*/
 func ContentTypeCanBeExecutable(type_ string) bool {
 	c_type := C.CString(type_)
 	defer C.free(unsafe.Pointer(c_type))
@@ -124,7 +175,11 @@ func ContentTypeCanBeExecutable(type_ string) bool {
 	return retGo
 }
 
-// ContentTypeEquals is a wrapper around the C function g_content_type_equals.
+// Compares two content types for equality.
+/*
+
+C function : g_content_type_equals
+*/
 func ContentTypeEquals(type1 string, type2 string) bool {
 	c_type1 := C.CString(type1)
 	defer C.free(unsafe.Pointer(c_type1))
@@ -138,7 +193,11 @@ func ContentTypeEquals(type1 string, type2 string) bool {
 	return retGo
 }
 
-// ContentTypeGetDescription is a wrapper around the C function g_content_type_get_description.
+// Gets the human readable description of the content type.
+/*
+
+C function : g_content_type_get_description
+*/
 func ContentTypeGetDescription(type_ string) string {
 	c_type := C.CString(type_)
 	defer C.free(unsafe.Pointer(c_type))
@@ -150,7 +209,11 @@ func ContentTypeGetDescription(type_ string) string {
 	return retGo
 }
 
-// ContentTypeGetIcon is a wrapper around the C function g_content_type_get_icon.
+// Gets the icon for a content type.
+/*
+
+C function : g_content_type_get_icon
+*/
 func ContentTypeGetIcon(type_ string) *Icon {
 	c_type := C.CString(type_)
 	defer C.free(unsafe.Pointer(c_type))
@@ -161,7 +224,11 @@ func ContentTypeGetIcon(type_ string) *Icon {
 	return retGo
 }
 
-// ContentTypeGetMimeType is a wrapper around the C function g_content_type_get_mime_type.
+// Gets the mime type for the content type, if one is registered.
+/*
+
+C function : g_content_type_get_mime_type
+*/
 func ContentTypeGetMimeType(type_ string) string {
 	c_type := C.CString(type_)
 	defer C.free(unsafe.Pointer(c_type))
@@ -173,7 +240,14 @@ func ContentTypeGetMimeType(type_ string) string {
 	return retGo
 }
 
-// ContentTypeGuess is a wrapper around the C function g_content_type_guess.
+// Guesses the content type based on example data. If the function is
+// uncertain, @result_uncertain will be set to %TRUE. Either @filename
+// or @data may be %NULL, in which case the guess will be based solely
+// on the other argument.
+/*
+
+C function : g_content_type_guess
+*/
 func ContentTypeGuess(filename string, data []uint8) (string, bool) {
 	c_filename := C.CString(filename)
 	defer C.free(unsafe.Pointer(c_filename))
@@ -193,7 +267,11 @@ func ContentTypeGuess(filename string, data []uint8) (string, bool) {
 	return retGo, resultUncertain
 }
 
-// ContentTypeIsA is a wrapper around the C function g_content_type_is_a.
+// Determines if @type is a subset of @supertype.
+/*
+
+C function : g_content_type_is_a
+*/
 func ContentTypeIsA(type_ string, supertype string) bool {
 	c_type := C.CString(type_)
 	defer C.free(unsafe.Pointer(c_type))
@@ -207,7 +285,14 @@ func ContentTypeIsA(type_ string, supertype string) bool {
 	return retGo
 }
 
-// ContentTypeIsUnknown is a wrapper around the C function g_content_type_is_unknown.
+// Checks if the content type is the generic "unknown" type.
+// On UNIX this is the "application/octet-stream" mimetype,
+// while on win32 it is "*" and on OSX it is a dynamic type
+// or octet-stream.
+/*
+
+C function : g_content_type_is_unknown
+*/
 func ContentTypeIsUnknown(type_ string) bool {
 	c_type := C.CString(type_)
 	defer C.free(unsafe.Pointer(c_type))
@@ -218,7 +303,13 @@ func ContentTypeIsUnknown(type_ string) bool {
 	return retGo
 }
 
-// ContentTypesGetRegistered is a wrapper around the C function g_content_types_get_registered.
+// Gets a list of strings containing all the registered content types
+// known to the system. The list and its data should be freed using
+// g_list_free_full (list, g_free).
+/*
+
+C function : g_content_types_get_registered
+*/
 func ContentTypesGetRegistered() *glib.List {
 	retC := C.g_content_types_get_registered()
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
@@ -226,7 +317,10 @@ func ContentTypesGetRegistered() *glib.List {
 	return retGo
 }
 
-// DbusErrorQuark is a wrapper around the C function g_dbus_error_quark.
+/*
+
+C function : g_dbus_error_quark
+*/
 func DbusErrorQuark() glib.Quark {
 	retC := C.g_dbus_error_quark()
 	retGo := (glib.Quark)(retC)
@@ -234,7 +328,24 @@ func DbusErrorQuark() glib.Quark {
 	return retGo
 }
 
-// FileNewForCommandlineArg is a wrapper around the C function g_file_new_for_commandline_arg.
+// Creates a #GFile with the given argument from the command line.
+// The value of @arg can be either a URI, an absolute path or a
+// relative path resolved relative to the current working directory.
+// This operation never fails, but the returned object might not
+// support any I/O operation if @arg points to a malformed path.
+//
+// Note that on Windows, this function expects its argument to be in
+// UTF-8 -- not the system code page.  This means that you
+// should not use this function with string from argv as it is passed
+// to main().  g_win32_get_command_line() will return a UTF-8 version of
+// the commandline.  #GApplication also uses UTF-8 but
+// g_application_command_line_create_file_for_arg() may be more useful
+// for you there.  It is also always possible to use this function with
+// #GOptionContext arguments of type %G_OPTION_ARG_FILENAME.
+/*
+
+C function : g_file_new_for_commandline_arg
+*/
 func FileNewForCommandlineArg(arg string) *File {
 	c_arg := C.CString(arg)
 	defer C.free(unsafe.Pointer(c_arg))
@@ -245,7 +356,13 @@ func FileNewForCommandlineArg(arg string) *File {
 	return retGo
 }
 
-// FileNewForPath is a wrapper around the C function g_file_new_for_path.
+// Constructs a #GFile for a given path. This operation never
+// fails, but the returned object might not support any I/O
+// operation if @path is malformed.
+/*
+
+C function : g_file_new_for_path
+*/
 func FileNewForPath(path string) *File {
 	c_path := C.CString(path)
 	defer C.free(unsafe.Pointer(c_path))
@@ -256,7 +373,14 @@ func FileNewForPath(path string) *File {
 	return retGo
 }
 
-// FileNewForUri is a wrapper around the C function g_file_new_for_uri.
+// Constructs a #GFile for a given URI. This operation never
+// fails, but the returned object might not support any I/O
+// operation if @uri is malformed or if the uri type is
+// not supported.
+/*
+
+C function : g_file_new_for_uri
+*/
 func FileNewForUri(uri string) *File {
 	c_uri := C.CString(uri)
 	defer C.free(unsafe.Pointer(c_uri))
@@ -267,7 +391,14 @@ func FileNewForUri(uri string) *File {
 	return retGo
 }
 
-// FileParseName is a wrapper around the C function g_file_parse_name.
+// Constructs a #GFile with the given @parse_name (i.e. something
+// given by g_file_get_parse_name()). This operation never fails,
+// but the returned object might not support any I/O operation if
+// the @parse_name cannot be parsed.
+/*
+
+C function : g_file_parse_name
+*/
 func FileParseName(parseName string) *File {
 	c_parse_name := C.CString(parseName)
 	defer C.free(unsafe.Pointer(c_parse_name))
@@ -278,7 +409,11 @@ func FileParseName(parseName string) *File {
 	return retGo
 }
 
-// IconHash is a wrapper around the C function g_icon_hash.
+// Gets a hash for an icon.
+/*
+
+C function : g_icon_hash
+*/
 func IconHash(icon uintptr) uint32 {
 	c_icon := (C.gconstpointer)(icon)
 
@@ -288,7 +423,17 @@ func IconHash(icon uintptr) uint32 {
 	return retGo
 }
 
-// IoErrorFromErrno is a wrapper around the C function g_io_error_from_errno.
+// Converts errno.h error codes into GIO error codes. The fallback
+// value %G_IO_ERROR_FAILED is returned for error codes not currently
+// handled (but note that future GLib releases may return a more
+// specific value instead).
+//
+// As %errno is global and may be modified by intermediate function
+// calls, you should save its value as soon as the call which sets it
+/*
+
+C function : g_io_error_from_errno
+*/
 func IoErrorFromErrno(errNo int32) IOErrorEnum {
 	c_err_no := (C.gint)(errNo)
 
@@ -298,7 +443,11 @@ func IoErrorFromErrno(errNo int32) IOErrorEnum {
 	return retGo
 }
 
-// IoErrorQuark is a wrapper around the C function g_io_error_quark.
+// Gets the GIO Error Quark.
+/*
+
+C function : g_io_error_quark
+*/
 func IoErrorQuark() glib.Quark {
 	retC := C.g_io_error_quark()
 	retGo := (glib.Quark)(retC)
@@ -306,7 +455,15 @@ func IoErrorQuark() glib.Quark {
 	return retGo
 }
 
-// IoExtensionPointImplement is a wrapper around the C function g_io_extension_point_implement.
+// Registers @type as extension for the extension point with name
+// @extension_point_name.
+//
+// If @type has already been registered as an extension for this
+// extension point, the existing #GIOExtension object is returned.
+/*
+
+C function : g_io_extension_point_implement
+*/
 func IoExtensionPointImplement(extensionPointName string, type_ gobject.Type, extensionName string, priority int32) *IOExtension {
 	c_extension_point_name := C.CString(extensionPointName)
 	defer C.free(unsafe.Pointer(c_extension_point_name))
@@ -324,7 +481,11 @@ func IoExtensionPointImplement(extensionPointName string, type_ gobject.Type, ex
 	return retGo
 }
 
-// IoExtensionPointLookup is a wrapper around the C function g_io_extension_point_lookup.
+// Looks up an existing extension point.
+/*
+
+C function : g_io_extension_point_lookup
+*/
 func IoExtensionPointLookup(name string) *IOExtensionPoint {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -335,7 +496,11 @@ func IoExtensionPointLookup(name string) *IOExtensionPoint {
 	return retGo
 }
 
-// IoExtensionPointRegister is a wrapper around the C function g_io_extension_point_register.
+// Registers an extension point.
+/*
+
+C function : g_io_extension_point_register
+*/
 func IoExtensionPointRegister(name string) *IOExtensionPoint {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -346,7 +511,15 @@ func IoExtensionPointRegister(name string) *IOExtensionPoint {
 	return retGo
 }
 
-// IoModulesLoadAllInDirectory is a wrapper around the C function g_io_modules_load_all_in_directory.
+// Loads all the modules in the specified directory.
+//
+// If don't require all modules to be initialized (and thus registering
+// all gtypes) then you can use g_io_modules_scan_all_in_directory()
+// which allows delayed/lazy loading of modules.
+/*
+
+C function : g_io_modules_load_all_in_directory
+*/
 func IoModulesLoadAllInDirectory(dirname string) *glib.List {
 	c_dirname := C.CString(dirname)
 	defer C.free(unsafe.Pointer(c_dirname))
@@ -357,7 +530,14 @@ func IoModulesLoadAllInDirectory(dirname string) *glib.List {
 	return retGo
 }
 
-// IoSchedulerCancelAllJobs is a wrapper around the C function g_io_scheduler_cancel_all_jobs.
+// Cancels all cancellable I/O jobs.
+//
+// A job is cancellable if a #GCancellable was passed into
+// g_io_scheduler_push_job().
+/*
+
+C function : g_io_scheduler_cancel_all_jobs
+*/
 func IoSchedulerCancelAllJobs() {
 	C.g_io_scheduler_cancel_all_jobs()
 
@@ -372,7 +552,14 @@ func IoSchedulerCancelAllJobs() {
 
 // Unsupported : g_simple_async_report_gerror_in_idle : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// UnixIsMountPathSystemInternal is a wrapper around the C function g_unix_is_mount_path_system_internal.
+// Determines if @mount_path is considered an implementation of the
+// OS. This is primarily used for hiding mountable and mounted volumes
+// that only are used in the OS and has little to no relevance to the
+// casual user.
+/*
+
+C function : g_unix_is_mount_path_system_internal
+*/
 func UnixIsMountPathSystemInternal(mountPath string) bool {
 	c_mount_path := C.CString(mountPath)
 	defer C.free(unsafe.Pointer(c_mount_path))
@@ -383,7 +570,13 @@ func UnixIsMountPathSystemInternal(mountPath string) bool {
 	return retGo
 }
 
-// UnixMountAt is a wrapper around the C function g_unix_mount_at.
+// Gets a #GUnixMountEntry for a given mount path. If @time_read
+// is set, it will be filled with a unix timestamp for checking
+// if the mounts have changed since with g_unix_mounts_changed_since().
+/*
+
+C function : g_unix_mount_at
+*/
 func UnixMountAt(mountPath string) (*UnixMountEntry, uint64) {
 	c_mount_path := C.CString(mountPath)
 	defer C.free(unsafe.Pointer(c_mount_path))
@@ -398,7 +591,11 @@ func UnixMountAt(mountPath string) (*UnixMountEntry, uint64) {
 	return retGo, timeRead
 }
 
-// UnixMountCompare is a wrapper around the C function g_unix_mount_compare.
+// Compares two unix mounts.
+/*
+
+C function : g_unix_mount_compare
+*/
 func UnixMountCompare(mount1 *UnixMountEntry, mount2 *UnixMountEntry) int32 {
 	c_mount1 := (*C.GUnixMountEntry)(C.NULL)
 	if mount1 != nil {
@@ -416,7 +613,11 @@ func UnixMountCompare(mount1 *UnixMountEntry, mount2 *UnixMountEntry) int32 {
 	return retGo
 }
 
-// UnixMountFree is a wrapper around the C function g_unix_mount_free.
+// Frees a unix mount.
+/*
+
+C function : g_unix_mount_free
+*/
 func UnixMountFree(mountEntry *UnixMountEntry) {
 	c_mount_entry := (*C.GUnixMountEntry)(C.NULL)
 	if mountEntry != nil {
@@ -428,7 +629,11 @@ func UnixMountFree(mountEntry *UnixMountEntry) {
 	return
 }
 
-// UnixMountGetDevicePath is a wrapper around the C function g_unix_mount_get_device_path.
+// Gets the device path for a unix mount.
+/*
+
+C function : g_unix_mount_get_device_path
+*/
 func UnixMountGetDevicePath(mountEntry *UnixMountEntry) string {
 	c_mount_entry := (*C.GUnixMountEntry)(C.NULL)
 	if mountEntry != nil {
@@ -441,7 +646,11 @@ func UnixMountGetDevicePath(mountEntry *UnixMountEntry) string {
 	return retGo
 }
 
-// UnixMountGetFsType is a wrapper around the C function g_unix_mount_get_fs_type.
+// Gets the filesystem type for the unix mount.
+/*
+
+C function : g_unix_mount_get_fs_type
+*/
 func UnixMountGetFsType(mountEntry *UnixMountEntry) string {
 	c_mount_entry := (*C.GUnixMountEntry)(C.NULL)
 	if mountEntry != nil {
@@ -454,7 +663,11 @@ func UnixMountGetFsType(mountEntry *UnixMountEntry) string {
 	return retGo
 }
 
-// UnixMountGetMountPath is a wrapper around the C function g_unix_mount_get_mount_path.
+// Gets the mount path for a unix mount.
+/*
+
+C function : g_unix_mount_get_mount_path
+*/
 func UnixMountGetMountPath(mountEntry *UnixMountEntry) string {
 	c_mount_entry := (*C.GUnixMountEntry)(C.NULL)
 	if mountEntry != nil {
@@ -467,7 +680,11 @@ func UnixMountGetMountPath(mountEntry *UnixMountEntry) string {
 	return retGo
 }
 
-// UnixMountGuessCanEject is a wrapper around the C function g_unix_mount_guess_can_eject.
+// Guesses whether a Unix mount can be ejected.
+/*
+
+C function : g_unix_mount_guess_can_eject
+*/
 func UnixMountGuessCanEject(mountEntry *UnixMountEntry) bool {
 	c_mount_entry := (*C.GUnixMountEntry)(C.NULL)
 	if mountEntry != nil {
@@ -480,7 +697,11 @@ func UnixMountGuessCanEject(mountEntry *UnixMountEntry) bool {
 	return retGo
 }
 
-// UnixMountGuessIcon is a wrapper around the C function g_unix_mount_guess_icon.
+// Guesses the icon of a Unix mount.
+/*
+
+C function : g_unix_mount_guess_icon
+*/
 func UnixMountGuessIcon(mountEntry *UnixMountEntry) *Icon {
 	c_mount_entry := (*C.GUnixMountEntry)(C.NULL)
 	if mountEntry != nil {
@@ -493,7 +714,12 @@ func UnixMountGuessIcon(mountEntry *UnixMountEntry) *Icon {
 	return retGo
 }
 
-// UnixMountGuessName is a wrapper around the C function g_unix_mount_guess_name.
+// Guesses the name of a Unix mount.
+// The result is a translated string.
+/*
+
+C function : g_unix_mount_guess_name
+*/
 func UnixMountGuessName(mountEntry *UnixMountEntry) string {
 	c_mount_entry := (*C.GUnixMountEntry)(C.NULL)
 	if mountEntry != nil {
@@ -507,7 +733,11 @@ func UnixMountGuessName(mountEntry *UnixMountEntry) string {
 	return retGo
 }
 
-// UnixMountGuessShouldDisplay is a wrapper around the C function g_unix_mount_guess_should_display.
+// Guesses whether a Unix mount should be displayed in the UI.
+/*
+
+C function : g_unix_mount_guess_should_display
+*/
 func UnixMountGuessShouldDisplay(mountEntry *UnixMountEntry) bool {
 	c_mount_entry := (*C.GUnixMountEntry)(C.NULL)
 	if mountEntry != nil {
@@ -520,7 +750,11 @@ func UnixMountGuessShouldDisplay(mountEntry *UnixMountEntry) bool {
 	return retGo
 }
 
-// UnixMountIsReadonly is a wrapper around the C function g_unix_mount_is_readonly.
+// Checks if a unix mount is mounted read only.
+/*
+
+C function : g_unix_mount_is_readonly
+*/
 func UnixMountIsReadonly(mountEntry *UnixMountEntry) bool {
 	c_mount_entry := (*C.GUnixMountEntry)(C.NULL)
 	if mountEntry != nil {
@@ -533,7 +767,16 @@ func UnixMountIsReadonly(mountEntry *UnixMountEntry) bool {
 	return retGo
 }
 
-// UnixMountIsSystemInternal is a wrapper around the C function g_unix_mount_is_system_internal.
+// Checks if a Unix mount is a system mount. This is the Boolean OR of
+// g_unix_is_system_fs_type(), g_unix_is_system_device_path() and
+// g_unix_is_mount_path_system_internal() on @mount_entry’s properties.
+//
+// The definition of what a ‘system’ mount entry is may change over time as new
+// file system types and device paths are ignored.
+/*
+
+C function : g_unix_mount_is_system_internal
+*/
 func UnixMountIsSystemInternal(mountEntry *UnixMountEntry) bool {
 	c_mount_entry := (*C.GUnixMountEntry)(C.NULL)
 	if mountEntry != nil {
@@ -546,7 +789,11 @@ func UnixMountIsSystemInternal(mountEntry *UnixMountEntry) bool {
 	return retGo
 }
 
-// UnixMountPointsChangedSince is a wrapper around the C function g_unix_mount_points_changed_since.
+// Checks if the unix mount points have changed since a given unix time.
+/*
+
+C function : g_unix_mount_points_changed_since
+*/
 func UnixMountPointsChangedSince(time uint64) bool {
 	c_time := (C.guint64)(time)
 
@@ -556,7 +803,14 @@ func UnixMountPointsChangedSince(time uint64) bool {
 	return retGo
 }
 
-// UnixMountPointsGet is a wrapper around the C function g_unix_mount_points_get.
+// Gets a #GList of #GUnixMountPoint containing the unix mount points.
+// If @time_read is set, it will be filled with the mount timestamp,
+// allowing for checking if the mounts have changed with
+// g_unix_mount_points_changed_since().
+/*
+
+C function : g_unix_mount_points_get
+*/
 func UnixMountPointsGet() (*glib.List, uint64) {
 	var c_time_read C.guint64
 
@@ -568,7 +822,11 @@ func UnixMountPointsGet() (*glib.List, uint64) {
 	return retGo, timeRead
 }
 
-// UnixMountsChangedSince is a wrapper around the C function g_unix_mounts_changed_since.
+// Checks if the unix mounts have changed since a given unix time.
+/*
+
+C function : g_unix_mounts_changed_since
+*/
 func UnixMountsChangedSince(time uint64) bool {
 	c_time := (C.guint64)(time)
 
@@ -578,7 +836,14 @@ func UnixMountsChangedSince(time uint64) bool {
 	return retGo
 }
 
-// UnixMountsGet is a wrapper around the C function g_unix_mounts_get.
+// Gets a #GList of #GUnixMountEntry containing the unix mounts.
+// If @time_read is set, it will be filled with the mount
+// timestamp, allowing for checking if the mounts have changed
+// with g_unix_mounts_changed_since().
+/*
+
+C function : g_unix_mounts_get
+*/
 func UnixMountsGet() (*glib.List, uint64) {
 	var c_time_read C.guint64
 

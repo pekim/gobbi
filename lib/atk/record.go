@@ -318,7 +318,12 @@ func (recv *Implementor) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// RefAccessible is a wrapper around the C function atk_implementor_ref_accessible.
+// Gets a reference to an object's #AtkObject implementation, if
+// the object implements #AtkObjectIface
+/*
+
+C function : atk_implementor_ref_accessible
+*/
 func (recv *Implementor) RefAccessible() *Object {
 	retC := C.atk_implementor_ref_accessible((*C.AtkImplementor)(recv.native))
 	retGo := ObjectNewFromC(unsafe.Pointer(retC))

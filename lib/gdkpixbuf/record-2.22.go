@@ -10,7 +10,11 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Copy is a wrapper around the C function gdk_pixbuf_format_copy.
+// Creates a copy of @format
+/*
+
+C function : gdk_pixbuf_format_copy
+*/
 func (recv *PixbufFormat) Copy() *PixbufFormat {
 	retC := C.gdk_pixbuf_format_copy((*C.GdkPixbufFormat)(recv.native))
 	retGo := PixbufFormatNewFromC(unsafe.Pointer(retC))
@@ -18,7 +22,12 @@ func (recv *PixbufFormat) Copy() *PixbufFormat {
 	return retGo
 }
 
-// Free is a wrapper around the C function gdk_pixbuf_format_free.
+// Frees the resources allocated when copying a #GdkPixbufFormat
+// using gdk_pixbuf_format_copy()
+/*
+
+C function : gdk_pixbuf_format_free
+*/
 func (recv *PixbufFormat) Free() {
 	C.gdk_pixbuf_format_free((*C.GdkPixbufFormat)(recv.native))
 

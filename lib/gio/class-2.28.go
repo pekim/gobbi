@@ -261,7 +261,17 @@ func application_startupHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// ApplicationNew is a wrapper around the C function g_application_new.
+// Creates a new #GApplication instance.
+//
+// If non-%NULL, the application id must be valid.  See
+// g_application_id_is_valid().
+//
+// If no application ID is given then some features of #GApplication
+// (most notably application uniqueness) will be disabled.
+/*
+
+C function : g_application_new
+*/
 func ApplicationNew(applicationId string, flags ApplicationFlags) *Application {
 	c_application_id := C.CString(applicationId)
 	defer C.free(unsafe.Pointer(c_application_id))
@@ -274,14 +284,27 @@ func ApplicationNew(applicationId string, flags ApplicationFlags) *Application {
 	return retGo
 }
 
-// Activate is a wrapper around the C function g_application_activate.
+// Activates the application.
+//
+// In essence, this results in the #GApplication::activate signal being
+// emitted in the primary instance.
+//
+// The application must be registered before calling this function.
+/*
+
+C function : g_application_activate
+*/
 func (recv *Application) Activate() {
 	C.g_application_activate((*C.GApplication)(recv.native))
 
 	return
 }
 
-// GetApplicationId is a wrapper around the C function g_application_get_application_id.
+// Gets the unique identifier for @application.
+/*
+
+C function : g_application_get_application_id
+*/
 func (recv *Application) GetApplicationId() string {
 	retC := C.g_application_get_application_id((*C.GApplication)(recv.native))
 	retGo := C.GoString(retC)
@@ -289,7 +312,13 @@ func (recv *Application) GetApplicationId() string {
 	return retGo
 }
 
-// GetFlags is a wrapper around the C function g_application_get_flags.
+// Gets the flags for @application.
+//
+// See #GApplicationFlags.
+/*
+
+C function : g_application_get_flags
+*/
 func (recv *Application) GetFlags() ApplicationFlags {
 	retC := C.g_application_get_flags((*C.GApplication)(recv.native))
 	retGo := (ApplicationFlags)(retC)
@@ -297,7 +326,14 @@ func (recv *Application) GetFlags() ApplicationFlags {
 	return retGo
 }
 
-// GetInactivityTimeout is a wrapper around the C function g_application_get_inactivity_timeout.
+// Gets the current inactivity timeout for the application.
+//
+// This is the amount of time (in milliseconds) after the last call to
+// g_application_release() before the application stops running.
+/*
+
+C function : g_application_get_inactivity_timeout
+*/
 func (recv *Application) GetInactivityTimeout() uint32 {
 	retC := C.g_application_get_inactivity_timeout((*C.GApplication)(recv.native))
 	retGo := (uint32)(retC)
@@ -305,7 +341,14 @@ func (recv *Application) GetInactivityTimeout() uint32 {
 	return retGo
 }
 
-// GetIsRegistered is a wrapper around the C function g_application_get_is_registered.
+// Checks if @application is registered.
+//
+// An application is registered if g_application_register() has been
+// successfully called.
+/*
+
+C function : g_application_get_is_registered
+*/
 func (recv *Application) GetIsRegistered() bool {
 	retC := C.g_application_get_is_registered((*C.GApplication)(recv.native))
 	retGo := retC == C.TRUE
@@ -313,7 +356,20 @@ func (recv *Application) GetIsRegistered() bool {
 	return retGo
 }
 
-// GetIsRemote is a wrapper around the C function g_application_get_is_remote.
+// Checks if @application is remote.
+//
+// If @application is remote then it means that another instance of
+// application already exists (the 'primary' instance).  Calls to
+// perform actions on @application will result in the actions being
+// performed by the primary instance.
+//
+// The value of this property cannot be accessed before
+// g_application_register() has been called.  See
+// g_application_get_is_registered().
+/*
+
+C function : g_application_get_is_remote
+*/
 func (recv *Application) GetIsRemote() bool {
 	retC := C.g_application_get_is_remote((*C.GApplication)(recv.native))
 	retGo := retC == C.TRUE
@@ -321,7 +377,17 @@ func (recv *Application) GetIsRemote() bool {
 	return retGo
 }
 
-// Hold is a wrapper around the C function g_application_hold.
+// Increases the use count of @application.
+//
+// Use this function to indicate that the application has a reason to
+// continue to run.  For example, g_application_hold() is called by GTK+
+// when a toplevel window is on the screen.
+//
+// To cancel the hold, call g_application_release().
+/*
+
+C function : g_application_hold
+*/
 func (recv *Application) Hold() {
 	C.g_application_hold((*C.GApplication)(recv.native))
 
@@ -330,7 +396,40 @@ func (recv *Application) Hold() {
 
 // Unsupported : g_application_open : unsupported parameter files :
 
-// Register is a wrapper around the C function g_application_register.
+// Attempts registration of the application.
+//
+// This is the point at which the application discovers if it is the
+// primary instance or merely acting as a remote for an already-existing
+// primary instance.  This is implemented by attempting to acquire the
+// application identifier as a unique bus name on the session bus using
+// GDBus.
+//
+// If there is no application ID or if %G_APPLICATION_NON_UNIQUE was
+// given, then this process will always become the primary instance.
+//
+// Due to the internal architecture of GDBus, method calls can be
+// dispatched at any time (even if a main loop is not running).  For
+// this reason, you must ensure that any object paths that you wish to
+// register are registered before calling this function.
+//
+// If the application has already been registered then %TRUE is
+// returned with no work performed.
+//
+// The #GApplication::startup signal is emitted if registration succeeds
+// and @application is the primary instance (including the non-unique
+// case).
+//
+// In the event of an error (such as @cancellable being cancelled, or a
+// failure to connect to the session bus), %FALSE is returned and @error
+// is set appropriately.
+//
+// Note: the return value of this function is not an indicator that this
+// instance is or is not the primary instance of the application.  See
+// g_application_get_is_remote() for that.
+/*
+
+C function : g_application_register
+*/
 func (recv *Application) Register(cancellable *Cancellable) (bool, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
 	if cancellable != nil {
@@ -350,14 +449,101 @@ func (recv *Application) Register(cancellable *Cancellable) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// Release is a wrapper around the C function g_application_release.
+// Decrease the use count of @application.
+//
+// When the use count reaches zero, the application will stop running.
+//
+// Never call this function except to cancel the effect of a previous
+// call to g_application_hold().
+/*
+
+C function : g_application_release
+*/
 func (recv *Application) Release() {
 	C.g_application_release((*C.GApplication)(recv.native))
 
 	return
 }
 
-// Run is a wrapper around the C function g_application_run.
+// Runs the application.
+//
+// This function is intended to be run from main() and its return value
+// is intended to be returned by main(). Although you are expected to pass
+// the @argc, @argv parameters from main() to this function, it is possible
+// to pass %NULL if @argv is not available or commandline handling is not
+// required.  Note that on Windows, @argc and @argv are ignored, and
+// g_win32_get_command_line() is called internally (for proper support
+// of Unicode commandline arguments).
+//
+// #GApplication will attempt to parse the commandline arguments.  You
+// can add commandline flags to the list of recognised options by way of
+// g_application_add_main_option_entries().  After this, the
+// #GApplication::handle-local-options signal is emitted, from which the
+// application can inspect the values of its #GOptionEntrys.
+//
+// #GApplication::handle-local-options is a good place to handle options
+// such as `--version`, where an immediate reply from the local process is
+// desired (instead of communicating with an already-running instance).
+// A #GApplication::handle-local-options handler can stop further processing
+// by returning a non-negative value, which then becomes the exit status of
+// the process.
+//
+// What happens next depends on the flags: if
+// %G_APPLICATION_HANDLES_COMMAND_LINE was specified then the remaining
+// commandline arguments are sent to the primary instance, where a
+// #GApplication::command-line signal is emitted.  Otherwise, the
+// remaining commandline arguments are assumed to be a list of files.
+// If there are no files listed, the application is activated via the
+// #GApplication::activate signal.  If there are one or more files, and
+// %G_APPLICATION_HANDLES_OPEN was specified then the files are opened
+// via the #GApplication::open signal.
+//
+// If you are interested in doing more complicated local handling of the
+// commandline then you should implement your own #GApplication subclass
+// and override local_command_line(). In this case, you most likely want
+// to return %TRUE from your local_command_line() implementation to
+// suppress the default handling. See
+// [gapplication-example-cmdline2.c][gapplication-example-cmdline2]
+// for an example.
+//
+// If, after the above is done, the use count of the application is zero
+// then the exit status is returned immediately.  If the use count is
+// non-zero then the default main context is iterated until the use count
+// falls to zero, at which point 0 is returned.
+//
+// If the %G_APPLICATION_IS_SERVICE flag is set, then the service will
+// run for as much as 10 seconds with a use count of zero while waiting
+// for the message that caused the activation to arrive.  After that,
+// if the use count falls to zero the application will exit immediately,
+// except in the case that g_application_set_inactivity_timeout() is in
+// use.
+//
+// This function sets the prgname (g_set_prgname()), if not already set,
+// to the basename of argv[0].
+//
+// Much like g_main_loop_run(), this function will acquire the main context
+// for the duration that the application is running.
+//
+// Since 2.40, applications that are not explicitly flagged as services
+// or launchers (ie: neither %G_APPLICATION_IS_SERVICE or
+// %G_APPLICATION_IS_LAUNCHER are given as flags) will check (from the
+// default handler for local_command_line) if "--gapplication-service"
+// was given in the command line.  If this flag is present then normal
+// commandline processing is interrupted and the
+// %G_APPLICATION_IS_SERVICE flag is set.  This provides a "compromise"
+// solution whereby running an application directly from the commandline
+// will invoke it in the normal way (which can be useful for debugging)
+// while still allowing applications to be D-Bus activated in service
+// mode.  The D-Bus service file should invoke the executable with
+// "--gapplication-service" as the sole commandline argument.  This
+// approach is suitable for use by most graphical applications but
+// should not be used from applications like editors that need precise
+// control over when processes invoked via the commandline will exit and
+// what their exit status will be.
+/*
+
+C function : g_application_run
+*/
 func (recv *Application) Run(args []string) int32 {
 	cArgc, cArgv := argsIn(args)
 
@@ -367,7 +553,12 @@ func (recv *Application) Run(args []string) int32 {
 	return retGo
 }
 
-// SetActionGroup is a wrapper around the C function g_application_set_action_group.
+// This used to be how actions were associated with a #GApplication.
+// Now there is #GActionMap for that.
+/*
+
+C function : g_application_set_action_group
+*/
 func (recv *Application) SetActionGroup(actionGroup *ActionGroup) {
 	c_action_group := (*C.GActionGroup)(actionGroup.ToC())
 
@@ -376,7 +567,17 @@ func (recv *Application) SetActionGroup(actionGroup *ActionGroup) {
 	return
 }
 
-// SetApplicationId is a wrapper around the C function g_application_set_application_id.
+// Sets the unique identifier for @application.
+//
+// The application id can only be modified if @application has not yet
+// been registered.
+//
+// If non-%NULL, the application id must be valid.  See
+// g_application_id_is_valid().
+/*
+
+C function : g_application_set_application_id
+*/
 func (recv *Application) SetApplicationId(applicationId string) {
 	c_application_id := C.CString(applicationId)
 	defer C.free(unsafe.Pointer(c_application_id))
@@ -386,7 +587,16 @@ func (recv *Application) SetApplicationId(applicationId string) {
 	return
 }
 
-// SetFlags is a wrapper around the C function g_application_set_flags.
+// Sets the flags for @application.
+//
+// The flags can only be modified if @application has not yet been
+// registered.
+//
+// See #GApplicationFlags.
+/*
+
+C function : g_application_set_flags
+*/
 func (recv *Application) SetFlags(flags ApplicationFlags) {
 	c_flags := (C.GApplicationFlags)(flags)
 
@@ -395,7 +605,18 @@ func (recv *Application) SetFlags(flags ApplicationFlags) {
 	return
 }
 
-// SetInactivityTimeout is a wrapper around the C function g_application_set_inactivity_timeout.
+// Sets the current inactivity timeout for the application.
+//
+// This is the amount of time (in milliseconds) after the last call to
+// g_application_release() before the application stops running.
+//
+// This call has no side effects of its own.  The value set here is only
+// used for next time g_application_release() drops the use count to
+// zero.  Any timeouts currently in progress are not impacted.
+/*
+
+C function : g_application_set_inactivity_timeout
+*/
 func (recv *Application) SetInactivityTimeout(inactivityTimeout uint32) {
 	c_inactivity_timeout := (C.guint)(inactivityTimeout)
 
@@ -406,7 +627,18 @@ func (recv *Application) SetInactivityTimeout(inactivityTimeout uint32) {
 
 // Unsupported : g_application_command_line_get_arguments : no return type
 
-// GetCwd is a wrapper around the C function g_application_command_line_get_cwd.
+// Gets the working directory of the command line invocation.
+// The string may contain non-utf8 data.
+//
+// It is possible that the remote application did not send a working
+// directory, so this may be %NULL.
+//
+// The return value should not be modified or freed and is valid for as
+// long as @cmdline exists.
+/*
+
+C function : g_application_command_line_get_cwd
+*/
 func (recv *ApplicationCommandLine) GetCwd() string {
 	retC := C.g_application_command_line_get_cwd((*C.GApplicationCommandLine)(recv.native))
 	retGo := C.GoString(retC)
@@ -416,7 +648,12 @@ func (recv *ApplicationCommandLine) GetCwd() string {
 
 // Unsupported : g_application_command_line_get_environ : no return type
 
-// GetExitStatus is a wrapper around the C function g_application_command_line_get_exit_status.
+// Gets the exit status of @cmdline.  See
+// g_application_command_line_set_exit_status() for more information.
+/*
+
+C function : g_application_command_line_get_exit_status
+*/
 func (recv *ApplicationCommandLine) GetExitStatus() int32 {
 	retC := C.g_application_command_line_get_exit_status((*C.GApplicationCommandLine)(recv.native))
 	retGo := (int32)(retC)
@@ -424,7 +661,11 @@ func (recv *ApplicationCommandLine) GetExitStatus() int32 {
 	return retGo
 }
 
-// GetIsRemote is a wrapper around the C function g_application_command_line_get_is_remote.
+// Determines if @cmdline represents a remote invocation.
+/*
+
+C function : g_application_command_line_get_is_remote
+*/
 func (recv *ApplicationCommandLine) GetIsRemote() bool {
 	retC := C.g_application_command_line_get_is_remote((*C.GApplicationCommandLine)(recv.native))
 	retGo := retC == C.TRUE
@@ -434,7 +675,21 @@ func (recv *ApplicationCommandLine) GetIsRemote() bool {
 
 // Unsupported : g_application_command_line_get_platform_data : return type : Blacklisted record : GVariant
 
-// Getenv is a wrapper around the C function g_application_command_line_getenv.
+// Gets the value of a particular environment variable of the command
+// line invocation, as would be returned by g_getenv().  The strings may
+// contain non-utf8 data.
+//
+// The remote application usually does not send an environment.  Use
+// %G_APPLICATION_SEND_ENVIRONMENT to affect that.  Even with this flag
+// set it is possible that the environment is still not available (due
+// to invocation messages from other applications).
+//
+// The return value should not be modified or freed and is valid for as
+// long as @cmdline exists.
+/*
+
+C function : g_application_command_line_getenv
+*/
 func (recv *ApplicationCommandLine) Getenv(name string) string {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -449,7 +704,31 @@ func (recv *ApplicationCommandLine) Getenv(name string) string {
 
 // Unsupported : g_application_command_line_printerr : unsupported parameter ... : varargs
 
-// SetExitStatus is a wrapper around the C function g_application_command_line_set_exit_status.
+// Sets the exit status that will be used when the invoking process
+// exits.
+//
+// The return value of the #GApplication::command-line signal is
+// passed to this function when the handler returns.  This is the usual
+// way of setting the exit status.
+//
+// In the event that you want the remote invocation to continue running
+// and want to decide on the exit status in the future, you can use this
+// call.  For the case of a remote invocation, the remote process will
+// typically exit when the last reference is dropped on @cmdline.  The
+// exit status of the remote process will be equal to the last value
+// that was set with this function.
+//
+// In the case that the commandline invocation is local, the situation
+// is slightly more complicated.  If the commandline invocation results
+// in the mainloop running (ie: because the use-count of the application
+// increased to a non-zero value) then the application is considered to
+// have been 'successful' in a certain sense, and the exit status is
+// always zero.  If the application use count is zero, though, the exit
+// status of the local #GApplicationCommandLine is used.
+/*
+
+C function : g_application_command_line_set_exit_status
+*/
 func (recv *ApplicationCommandLine) SetExitStatus(exitStatus int32) {
 	c_exit_status := (C.int)(exitStatus)
 
@@ -458,7 +737,19 @@ func (recv *ApplicationCommandLine) SetExitStatus(exitStatus int32) {
 	return
 }
 
-// SourceNew is a wrapper around the C function g_cancellable_source_new.
+// Creates a source that triggers if @cancellable is cancelled and
+// calls its callback of type #GCancellableSourceFunc. This is
+// primarily useful for attaching to another (non-cancellable) source
+// with g_source_add_child_source() to add cancellability to it.
+//
+// For convenience, you can call this with a %NULL #GCancellable,
+// in which case the source will never trigger.
+//
+// The new #GSource will hold a reference to the #GCancellable.
+/*
+
+C function : g_cancellable_source_new
+*/
 func (recv *Cancellable) SourceNew() *glib.Source {
 	retC := C.g_cancellable_source_new((*C.GCancellable)(recv.native))
 	retGo := glib.SourceNewFromC(unsafe.Pointer(retC))
@@ -466,7 +757,11 @@ func (recv *Cancellable) SourceNew() *glib.Source {
 	return retGo
 }
 
-// ClearEmblems is a wrapper around the C function g_emblemed_icon_clear_emblems.
+// Removes all the emblems from @icon.
+/*
+
+C function : g_emblemed_icon_clear_emblems
+*/
 func (recv *EmblemedIcon) ClearEmblems() {
 	C.g_emblemed_icon_clear_emblems((*C.GEmblemedIcon)(recv.native))
 
@@ -485,7 +780,17 @@ func (recv *EmblemedIcon) ClearEmblems() {
 
 // Unsupported : g_simple_action_new_stateful : unsupported parameter parameter_type : Blacklisted record : GVariantType
 
-// SetEnabled is a wrapper around the C function g_simple_action_set_enabled.
+// Sets the action as enabled or not.
+//
+// An action must be enabled in order to be activated or in order to
+// have its state changed from outside callers.
+//
+// This should only be called by the implementor of the action.  Users
+// of the action should not attempt to modify its enabled flag.
+/*
+
+C function : g_simple_action_set_enabled
+*/
 func (recv *SimpleAction) SetEnabled(enabled bool) {
 	c_enabled :=
 		boolToGboolean(enabled)
@@ -529,7 +834,11 @@ func CastToSimpleActionGroup(object *gobject.Object) *SimpleActionGroup {
 	return SimpleActionGroupNewFromC(object.ToC())
 }
 
-// SimpleActionGroupNew is a wrapper around the C function g_simple_action_group_new.
+// Creates a new, empty, #GSimpleActionGroup.
+/*
+
+C function : g_simple_action_group_new
+*/
 func SimpleActionGroupNew() *SimpleActionGroup {
 	retC := C.g_simple_action_group_new()
 	retGo := SimpleActionGroupNewFromC(unsafe.Pointer(retC))
@@ -537,7 +846,16 @@ func SimpleActionGroupNew() *SimpleActionGroup {
 	return retGo
 }
 
-// Insert is a wrapper around the C function g_simple_action_group_insert.
+// Adds an action to the action group.
+//
+// If the action group already contains an action with the same name as
+// @action then the old action is dropped from the group.
+//
+// The action group takes its own reference on @action.
+/*
+
+C function : g_simple_action_group_insert
+*/
 func (recv *SimpleActionGroup) Insert(action *Action) {
 	c_action := (*C.GAction)(action.ToC())
 
@@ -546,7 +864,13 @@ func (recv *SimpleActionGroup) Insert(action *Action) {
 	return
 }
 
-// Lookup is a wrapper around the C function g_simple_action_group_lookup.
+// Looks up the action with the name @action_name in the group.
+//
+// If no such action exists, returns %NULL.
+/*
+
+C function : g_simple_action_group_lookup
+*/
 func (recv *SimpleActionGroup) Lookup(actionName string) *Action {
 	c_action_name := C.CString(actionName)
 	defer C.free(unsafe.Pointer(c_action_name))
@@ -557,7 +881,13 @@ func (recv *SimpleActionGroup) Lookup(actionName string) *Action {
 	return retGo
 }
 
-// Remove is a wrapper around the C function g_simple_action_group_remove.
+// Removes the named action from the action group.
+//
+// If no action of this name is in the group then nothing happens.
+/*
+
+C function : g_simple_action_group_remove
+*/
 func (recv *SimpleActionGroup) Remove(actionName string) {
 	c_action_name := C.CString(actionName)
 	defer C.free(unsafe.Pointer(c_action_name))
@@ -569,7 +899,12 @@ func (recv *SimpleActionGroup) Remove(actionName string) {
 
 // Unsupported : g_simple_async_result_new_take_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// TakeError is a wrapper around the C function g_simple_async_result_take_error.
+// Sets the result from @error, and takes over the caller's ownership
+// of @error, so the caller does not need to free it any more.
+/*
+
+C function : g_simple_async_result_take_error
+*/
 func (recv *SimpleAsyncResult) TakeError(error *glib.Error) {
 	c_error := (*C.GError)(C.NULL)
 	if error != nil {
@@ -581,7 +916,12 @@ func (recv *SimpleAsyncResult) TakeError(error *glib.Error) {
 	return
 }
 
-// GetTls is a wrapper around the C function g_socket_client_get_tls.
+// Gets whether @client creates TLS connections. See
+// g_socket_client_set_tls() for details.
+/*
+
+C function : g_socket_client_get_tls
+*/
 func (recv *SocketClient) GetTls() bool {
 	retC := C.g_socket_client_get_tls((*C.GSocketClient)(recv.native))
 	retGo := retC == C.TRUE
@@ -589,7 +929,12 @@ func (recv *SocketClient) GetTls() bool {
 	return retGo
 }
 
-// GetTlsValidationFlags is a wrapper around the C function g_socket_client_get_tls_validation_flags.
+// Gets the TLS validation flags used creating TLS connections via
+// @client.
+/*
+
+C function : g_socket_client_get_tls_validation_flags
+*/
 func (recv *SocketClient) GetTlsValidationFlags() TlsCertificateFlags {
 	retC := C.g_socket_client_get_tls_validation_flags((*C.GSocketClient)(recv.native))
 	retGo := (TlsCertificateFlags)(retC)
@@ -597,7 +942,28 @@ func (recv *SocketClient) GetTlsValidationFlags() TlsCertificateFlags {
 	return retGo
 }
 
-// SetTls is a wrapper around the C function g_socket_client_set_tls.
+// Sets whether @client creates TLS (aka SSL) connections. If @tls is
+// %TRUE, @client will wrap its connections in a #GTlsClientConnection
+// and perform a TLS handshake when connecting.
+//
+// Note that since #GSocketClient must return a #GSocketConnection,
+// but #GTlsClientConnection is not a #GSocketConnection, this
+// actually wraps the resulting #GTlsClientConnection in a
+// #GTcpWrapperConnection when returning it. You can use
+// g_tcp_wrapper_connection_get_base_io_stream() on the return value
+// to extract the #GTlsClientConnection.
+//
+// If you need to modify the behavior of the TLS handshake (eg, by
+// setting a client-side certificate to use, or connecting to the
+// #GTlsConnection::accept-certificate signal), you can connect to
+// @client's #GSocketClient::event signal and wait for it to be
+// emitted with %G_SOCKET_CLIENT_TLS_HANDSHAKING, which will give you
+// a chance to see the #GTlsClientConnection before the handshake
+// starts.
+/*
+
+C function : g_socket_client_set_tls
+*/
 func (recv *SocketClient) SetTls(tls bool) {
 	c_tls :=
 		boolToGboolean(tls)
@@ -607,7 +973,12 @@ func (recv *SocketClient) SetTls(tls bool) {
 	return
 }
 
-// SetTlsValidationFlags is a wrapper around the C function g_socket_client_set_tls_validation_flags.
+// Sets the TLS validation flags used when creating TLS connections
+// via @client. The default value is %G_TLS_CERTIFICATE_VALIDATE_ALL.
+/*
+
+C function : g_socket_client_set_tls_validation_flags
+*/
 func (recv *SocketClient) SetTlsValidationFlags(flags TlsCertificateFlags) {
 	c_flags := (C.GTlsCertificateFlags)(flags)
 
@@ -616,7 +987,11 @@ func (recv *SocketClient) SetTlsValidationFlags(flags TlsCertificateFlags) {
 	return
 }
 
-// TcpWrapperConnectionNew is a wrapper around the C function g_tcp_wrapper_connection_new.
+// Wraps @base_io_stream and @socket together as a #GSocketConnection.
+/*
+
+C function : g_tcp_wrapper_connection_new
+*/
 func TcpWrapperConnectionNew(baseIoStream *IOStream, socket *Socket) *TcpWrapperConnection {
 	c_base_io_stream := (*C.GIOStream)(C.NULL)
 	if baseIoStream != nil {
@@ -668,7 +1043,23 @@ func CastToTlsCertificate(object *gobject.Object) *TlsCertificate {
 	return TlsCertificateNewFromC(object.ToC())
 }
 
-// TlsCertificateNewFromFile is a wrapper around the C function g_tls_certificate_new_from_file.
+// Creates a #GTlsCertificate from the PEM-encoded data in @file. The
+// returned certificate will be the first certificate found in @file. As
+// of GLib 2.44, if @file contains more certificates it will try to load
+// a certificate chain. All certificates will be verified in the order
+// found (top-level certificate should be the last one in the file) and
+// the #GTlsCertificate:issuer property of each certificate will be set
+// accordingly if the verification succeeds. If any certificate in the
+// chain cannot be verified, the first certificate in the file will
+// still be returned.
+//
+// If @file cannot be read or parsed, the function will return %NULL and
+// set @error. Otherwise, this behaves like
+// g_tls_certificate_new_from_pem().
+/*
+
+C function : g_tls_certificate_new_from_file
+*/
 func TlsCertificateNewFromFile(file string) (*TlsCertificate, error) {
 	c_file := C.CString(file)
 	defer C.free(unsafe.Pointer(c_file))
@@ -686,7 +1077,24 @@ func TlsCertificateNewFromFile(file string) (*TlsCertificate, error) {
 	return retGo, goThrowableError
 }
 
-// TlsCertificateNewFromFiles is a wrapper around the C function g_tls_certificate_new_from_files.
+// Creates a #GTlsCertificate from the PEM-encoded data in @cert_file
+// and @key_file. The returned certificate will be the first certificate
+// found in @cert_file. As of GLib 2.44, if @cert_file contains more
+// certificates it will try to load a certificate chain. All
+// certificates will be verified in the order found (top-level
+// certificate should be the last one in the file) and the
+// #GTlsCertificate:issuer property of each certificate will be set
+// accordingly if the verification succeeds. If any certificate in the
+// chain cannot be verified, the first certificate in the file will
+// still be returned.
+//
+// If either file cannot be read or parsed, the function will return
+// %NULL and set @error. Otherwise, this behaves like
+// g_tls_certificate_new_from_pem().
+/*
+
+C function : g_tls_certificate_new_from_files
+*/
 func TlsCertificateNewFromFiles(certFile string, keyFile string) (*TlsCertificate, error) {
 	c_cert_file := C.CString(certFile)
 	defer C.free(unsafe.Pointer(c_cert_file))
@@ -707,7 +1115,24 @@ func TlsCertificateNewFromFiles(certFile string, keyFile string) (*TlsCertificat
 	return retGo, goThrowableError
 }
 
-// TlsCertificateNewFromPem is a wrapper around the C function g_tls_certificate_new_from_pem.
+// Creates a #GTlsCertificate from the PEM-encoded data in @data. If
+// @data includes both a certificate and a private key, then the
+// returned certificate will include the private key data as well. (See
+// the #GTlsCertificate:private-key-pem property for information about
+// supported formats.)
+//
+// The returned certificate will be the first certificate found in
+// @data. As of GLib 2.44, if @data contains more certificates it will
+// try to load a certificate chain. All certificates will be verified in
+// the order found (top-level certificate should be the last one in the
+// file) and the #GTlsCertificate:issuer property of each certificate
+// will be set accordingly if the verification succeeds. If any
+// certificate in the chain cannot be verified, the first certificate in
+// the file will still be returned.
+/*
+
+C function : g_tls_certificate_new_from_pem
+*/
 func TlsCertificateNewFromPem(data string) (*TlsCertificate, error) {
 	c_data := C.CString(data)
 	defer C.free(unsafe.Pointer(c_data))
@@ -727,7 +1152,11 @@ func TlsCertificateNewFromPem(data string) (*TlsCertificate, error) {
 	return retGo, goThrowableError
 }
 
-// GetIssuer is a wrapper around the C function g_tls_certificate_get_issuer.
+// Gets the #GTlsCertificate representing @cert's issuer, if known
+/*
+
+C function : g_tls_certificate_get_issuer
+*/
 func (recv *TlsCertificate) GetIssuer() *TlsCertificate {
 	retC := C.g_tls_certificate_get_issuer((*C.GTlsCertificate)(recv.native))
 	retGo := TlsCertificateNewFromC(unsafe.Pointer(retC))
@@ -735,7 +1164,29 @@ func (recv *TlsCertificate) GetIssuer() *TlsCertificate {
 	return retGo
 }
 
-// Verify is a wrapper around the C function g_tls_certificate_verify.
+// This verifies @cert and returns a set of #GTlsCertificateFlags
+// indicating any problems found with it. This can be used to verify a
+// certificate outside the context of making a connection, or to
+// check a certificate against a CA that is not part of the system
+// CA database.
+//
+// If @identity is not %NULL, @cert's name(s) will be compared against
+// it, and %G_TLS_CERTIFICATE_BAD_IDENTITY will be set in the return
+// value if it does not match. If @identity is %NULL, that bit will
+// never be set in the return value.
+//
+// If @trusted_ca is not %NULL, then @cert (or one of the certificates
+// in its chain) must be signed by it, or else
+// %G_TLS_CERTIFICATE_UNKNOWN_CA will be set in the return value. If
+// @trusted_ca is %NULL, that bit will never be set in the return
+// value.
+//
+// (All other #GTlsCertificateFlags values will always be set or unset
+// as appropriate.)
+/*
+
+C function : g_tls_certificate_verify
+*/
 func (recv *TlsCertificate) Verify(identity *SocketConnectable, trustedCa *TlsCertificate) TlsCertificateFlags {
 	c_identity := (*C.GSocketConnectable)(identity.ToC())
 
@@ -789,7 +1240,12 @@ func CastToTlsConnection(object *gobject.Object) *TlsConnection {
 	return TlsConnectionNewFromC(object.ToC())
 }
 
-// EmitAcceptCertificate is a wrapper around the C function g_tls_connection_emit_accept_certificate.
+// Used by #GTlsConnection implementations to emit the
+// #GTlsConnection::accept-certificate signal.
+/*
+
+C function : g_tls_connection_emit_accept_certificate
+*/
 func (recv *TlsConnection) EmitAcceptCertificate(peerCert *TlsCertificate, errors TlsCertificateFlags) bool {
 	c_peer_cert := (*C.GTlsCertificate)(C.NULL)
 	if peerCert != nil {
@@ -804,7 +1260,12 @@ func (recv *TlsConnection) EmitAcceptCertificate(peerCert *TlsCertificate, error
 	return retGo
 }
 
-// GetCertificate is a wrapper around the C function g_tls_connection_get_certificate.
+// Gets @conn's certificate, as set by
+// g_tls_connection_set_certificate().
+/*
+
+C function : g_tls_connection_get_certificate
+*/
 func (recv *TlsConnection) GetCertificate() *TlsCertificate {
 	retC := C.g_tls_connection_get_certificate((*C.GTlsConnection)(recv.native))
 	retGo := TlsCertificateNewFromC(unsafe.Pointer(retC))
@@ -812,7 +1273,13 @@ func (recv *TlsConnection) GetCertificate() *TlsCertificate {
 	return retGo
 }
 
-// GetPeerCertificate is a wrapper around the C function g_tls_connection_get_peer_certificate.
+// Gets @conn's peer's certificate after the handshake has completed.
+// (It is not set during the emission of
+// #GTlsConnection::accept-certificate.)
+/*
+
+C function : g_tls_connection_get_peer_certificate
+*/
 func (recv *TlsConnection) GetPeerCertificate() *TlsCertificate {
 	retC := C.g_tls_connection_get_peer_certificate((*C.GTlsConnection)(recv.native))
 	retGo := TlsCertificateNewFromC(unsafe.Pointer(retC))
@@ -820,7 +1287,13 @@ func (recv *TlsConnection) GetPeerCertificate() *TlsCertificate {
 	return retGo
 }
 
-// GetPeerCertificateErrors is a wrapper around the C function g_tls_connection_get_peer_certificate_errors.
+// Gets the errors associated with validating @conn's peer's
+// certificate, after the handshake has completed. (It is not set
+// during the emission of #GTlsConnection::accept-certificate.)
+/*
+
+C function : g_tls_connection_get_peer_certificate_errors
+*/
 func (recv *TlsConnection) GetPeerCertificateErrors() TlsCertificateFlags {
 	retC := C.g_tls_connection_get_peer_certificate_errors((*C.GTlsConnection)(recv.native))
 	retGo := (TlsCertificateFlags)(retC)
@@ -828,7 +1301,12 @@ func (recv *TlsConnection) GetPeerCertificateErrors() TlsCertificateFlags {
 	return retGo
 }
 
-// GetRehandshakeMode is a wrapper around the C function g_tls_connection_get_rehandshake_mode.
+// Gets @conn rehandshaking mode. See
+// g_tls_connection_set_rehandshake_mode() for details.
+/*
+
+C function : g_tls_connection_get_rehandshake_mode
+*/
 func (recv *TlsConnection) GetRehandshakeMode() TlsRehandshakeMode {
 	retC := C.g_tls_connection_get_rehandshake_mode((*C.GTlsConnection)(recv.native))
 	retGo := (TlsRehandshakeMode)(retC)
@@ -836,7 +1314,13 @@ func (recv *TlsConnection) GetRehandshakeMode() TlsRehandshakeMode {
 	return retGo
 }
 
-// GetRequireCloseNotify is a wrapper around the C function g_tls_connection_get_require_close_notify.
+// Tests whether or not @conn expects a proper TLS close notification
+// when the connection is closed. See
+// g_tls_connection_set_require_close_notify() for details.
+/*
+
+C function : g_tls_connection_get_require_close_notify
+*/
 func (recv *TlsConnection) GetRequireCloseNotify() bool {
 	retC := C.g_tls_connection_get_require_close_notify((*C.GTlsConnection)(recv.native))
 	retGo := retC == C.TRUE
@@ -844,7 +1328,12 @@ func (recv *TlsConnection) GetRequireCloseNotify() bool {
 	return retGo
 }
 
-// GetUseSystemCertdb is a wrapper around the C function g_tls_connection_get_use_system_certdb.
+// Gets whether @conn uses the system certificate database to verify
+// peer certificates. See g_tls_connection_set_use_system_certdb().
+/*
+
+C function : g_tls_connection_get_use_system_certdb
+*/
 func (recv *TlsConnection) GetUseSystemCertdb() bool {
 	retC := C.g_tls_connection_get_use_system_certdb((*C.GTlsConnection)(recv.native))
 	retGo := retC == C.TRUE
@@ -852,7 +1341,32 @@ func (recv *TlsConnection) GetUseSystemCertdb() bool {
 	return retGo
 }
 
-// Handshake is a wrapper around the C function g_tls_connection_handshake.
+// Attempts a TLS handshake on @conn.
+//
+// On the client side, it is never necessary to call this method;
+// although the connection needs to perform a handshake after
+// connecting (or after sending a "STARTTLS"-type command) and may
+// need to rehandshake later if the server requests it,
+// #GTlsConnection will handle this for you automatically when you try
+// to send or receive data on the connection. However, you can call
+// g_tls_connection_handshake() manually if you want to know for sure
+// whether the initial handshake succeeded or failed (as opposed to
+// just immediately trying to write to @conn's output stream, in which
+// case if it fails, it may not be possible to tell if it failed
+// before or after completing the handshake).
+//
+// Likewise, on the server side, although a handshake is necessary at
+// the beginning of the communication, you do not need to call this
+// function explicitly unless you want clearer error reporting.
+// However, you may call g_tls_connection_handshake() later on to
+// renegotiate parameters (encryption methods, etc) with the client.
+//
+// #GTlsConnection::accept_certificate may be emitted during the
+// handshake.
+/*
+
+C function : g_tls_connection_handshake
+*/
 func (recv *TlsConnection) Handshake(cancellable *Cancellable) (bool, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
 	if cancellable != nil {
@@ -874,7 +1388,12 @@ func (recv *TlsConnection) Handshake(cancellable *Cancellable) (bool, error) {
 
 // Unsupported : g_tls_connection_handshake_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// HandshakeFinish is a wrapper around the C function g_tls_connection_handshake_finish.
+// Finish an asynchronous TLS handshake operation. See
+// g_tls_connection_handshake() for more information.
+/*
+
+C function : g_tls_connection_handshake_finish
+*/
 func (recv *TlsConnection) HandshakeFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
 
@@ -891,7 +1410,28 @@ func (recv *TlsConnection) HandshakeFinish(result *AsyncResult) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// SetCertificate is a wrapper around the C function g_tls_connection_set_certificate.
+// This sets the certificate that @conn will present to its peer
+// during the TLS handshake. For a #GTlsServerConnection, it is
+// mandatory to set this, and that will normally be done at construct
+// time.
+//
+// For a #GTlsClientConnection, this is optional. If a handshake fails
+// with %G_TLS_ERROR_CERTIFICATE_REQUIRED, that means that the server
+// requires a certificate, and if you try connecting again, you should
+// call this method first. You can call
+// g_tls_client_connection_get_accepted_cas() on the failed connection
+// to get a list of Certificate Authorities that the server will
+// accept certificates from.
+//
+// (It is also possible that a server will allow the connection with
+// or without a certificate; in that case, if you don't provide a
+// certificate, you can tell that the server requested one by the fact
+// that g_tls_client_connection_get_accepted_cas() will return
+// non-%NULL.)
+/*
+
+C function : g_tls_connection_set_certificate
+*/
 func (recv *TlsConnection) SetCertificate(certificate *TlsCertificate) {
 	c_certificate := (*C.GTlsCertificate)(C.NULL)
 	if certificate != nil {
@@ -903,7 +1443,30 @@ func (recv *TlsConnection) SetCertificate(certificate *TlsCertificate) {
 	return
 }
 
-// SetRehandshakeMode is a wrapper around the C function g_tls_connection_set_rehandshake_mode.
+// Sets how @conn behaves with respect to rehandshaking requests.
+//
+// %G_TLS_REHANDSHAKE_NEVER means that it will never agree to
+// rehandshake after the initial handshake is complete. (For a client,
+// this means it will refuse rehandshake requests from the server, and
+// for a server, this means it will close the connection with an error
+// if the client attempts to rehandshake.)
+//
+// %G_TLS_REHANDSHAKE_SAFELY means that the connection will allow a
+// rehandshake only if the other end of the connection supports the
+// TLS `renegotiation_info` extension. This is the default behavior,
+// but means that rehandshaking will not work against older
+// implementations that do not support that extension.
+//
+// %G_TLS_REHANDSHAKE_UNSAFELY means that the connection will allow
+// rehandshaking even without the `renegotiation_info` extension. On
+// the server side in particular, this is not recommended, since it
+// leaves the server open to certain attacks. However, this mode is
+// necessary if you need to allow renegotiation with older client
+// software.
+/*
+
+C function : g_tls_connection_set_rehandshake_mode
+*/
 func (recv *TlsConnection) SetRehandshakeMode(mode TlsRehandshakeMode) {
 	c_mode := (C.GTlsRehandshakeMode)(mode)
 
@@ -912,7 +1475,37 @@ func (recv *TlsConnection) SetRehandshakeMode(mode TlsRehandshakeMode) {
 	return
 }
 
-// SetRequireCloseNotify is a wrapper around the C function g_tls_connection_set_require_close_notify.
+// Sets whether or not @conn expects a proper TLS close notification
+// before the connection is closed. If this is %TRUE (the default),
+// then @conn will expect to receive a TLS close notification from its
+// peer before the connection is closed, and will return a
+// %G_TLS_ERROR_EOF error if the connection is closed without proper
+// notification (since this may indicate a network error, or
+// man-in-the-middle attack).
+//
+// In some protocols, the application will know whether or not the
+// connection was closed cleanly based on application-level data
+// (because the application-level data includes a length field, or is
+// somehow self-delimiting); in this case, the close notify is
+// redundant and sometimes omitted. (TLS 1.1 explicitly allows this;
+// in TLS 1.0 it is technically an error, but often done anyway.) You
+// can use g_tls_connection_set_require_close_notify() to tell @conn
+// to allow an "unannounced" connection close, in which case the close
+// will show up as a 0-length read, as in a non-TLS
+// #GSocketConnection, and it is up to the application to check that
+// the data has been fully received.
+//
+// Note that this only affects the behavior when the peer closes the
+// connection; when the application calls g_io_stream_close() itself
+// on @conn, this will send a close notification regardless of the
+// setting of this property. If you explicitly want to do an unclean
+// close, you can close @conn's #GTlsConnection:base-io-stream rather
+// than closing @conn itself, but note that this may only be done when no other
+// operations are pending on @conn or the base I/O stream.
+/*
+
+C function : g_tls_connection_set_require_close_notify
+*/
 func (recv *TlsConnection) SetRequireCloseNotify(requireCloseNotify bool) {
 	c_require_close_notify :=
 		boolToGboolean(requireCloseNotify)
@@ -922,7 +1515,17 @@ func (recv *TlsConnection) SetRequireCloseNotify(requireCloseNotify bool) {
 	return
 }
 
-// SetUseSystemCertdb is a wrapper around the C function g_tls_connection_set_use_system_certdb.
+// Sets whether @conn uses the system certificate database to verify
+// peer certificates. This is %TRUE by default. If set to %FALSE, then
+// peer certificate validation will always set the
+// %G_TLS_CERTIFICATE_UNKNOWN_CA error (meaning
+// #GTlsConnection::accept-certificate will always be emitted on
+// client-side connections, unless that bit is not set in
+// #GTlsClientConnection:validation-flags).
+/*
+
+C function : g_tls_connection_set_use_system_certdb
+*/
 func (recv *TlsConnection) SetUseSystemCertdb(useSystemCertdb bool) {
 	c_use_system_certdb :=
 		boolToGboolean(useSystemCertdb)

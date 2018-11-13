@@ -13,7 +13,22 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// PixbufNewFromFileAtScale is a wrapper around the C function gdk_pixbuf_new_from_file_at_scale.
+// Creates a new pixbuf by loading an image from a file.  The file format is
+// detected automatically. If %NULL is returned, then @error will be set.
+// Possible errors are in the #GDK_PIXBUF_ERROR and #G_FILE_ERROR domains.
+// The image will be scaled to fit in the requested size, optionally preserving
+// the image's aspect ratio.
+//
+// When preserving the aspect ratio, a @width of -1 will cause the image
+// to be scaled to the exact given height, and a @height of -1 will cause
+// the image to be scaled to the exact given width. When not preserving
+// aspect ratio, a @width or @height of -1 means to not scale the image
+// at all in that dimension. Negative values for @width and @height are
+// allowed since 2.8.
+/*
+
+C function : gdk_pixbuf_new_from_file_at_scale
+*/
 func PixbufNewFromFileAtScale(filename string, width int32, height int32, preserveAspectRatio bool) (*Pixbuf, error) {
 	c_filename := C.CString(filename)
 	defer C.free(unsafe.Pointer(c_filename))
@@ -38,7 +53,12 @@ func PixbufNewFromFileAtScale(filename string, width int32, height int32, preser
 	return retGo, goThrowableError
 }
 
-// Flip is a wrapper around the C function gdk_pixbuf_flip.
+// Flips a pixbuf horizontally or vertically and returns the
+// result in a new pixbuf.
+/*
+
+C function : gdk_pixbuf_flip
+*/
 func (recv *Pixbuf) Flip(horizontal bool) *Pixbuf {
 	c_horizontal :=
 		boolToGboolean(horizontal)
@@ -54,7 +74,14 @@ func (recv *Pixbuf) Flip(horizontal bool) *Pixbuf {
 	return retGo
 }
 
-// RotateSimple is a wrapper around the C function gdk_pixbuf_rotate_simple.
+// Rotates a pixbuf by a multiple of 90 degrees, and returns the
+// result in a new pixbuf.
+//
+// If @angle is 0, a copy of @src is returned, avoiding any rotation.
+/*
+
+C function : gdk_pixbuf_rotate_simple
+*/
 func (recv *Pixbuf) RotateSimple(angle PixbufRotation) *Pixbuf {
 	c_angle := (C.GdkPixbufRotation)(angle)
 

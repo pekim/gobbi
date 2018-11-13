@@ -124,7 +124,11 @@ func (recv *Action) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// DoAction is a wrapper around the C function atk_action_do_action.
+// Perform the specified action on the object.
+/*
+
+C function : atk_action_do_action
+*/
 func (recv *Action) DoAction(i int32) bool {
 	c_i := (C.gint)(i)
 
@@ -134,7 +138,11 @@ func (recv *Action) DoAction(i int32) bool {
 	return retGo
 }
 
-// GetDescription is a wrapper around the C function atk_action_get_description.
+// Returns a description of the specified action of the object.
+/*
+
+C function : atk_action_get_description
+*/
 func (recv *Action) GetDescription(i int32) string {
 	c_i := (C.gint)(i)
 
@@ -144,7 +152,32 @@ func (recv *Action) GetDescription(i int32) string {
 	return retGo
 }
 
-// GetKeybinding is a wrapper around the C function atk_action_get_keybinding.
+// Gets the keybinding which can be used to activate this action, if one
+// exists. The string returned should contain localized, human-readable,
+// key sequences as they would appear when displayed on screen. It must
+// be in the format "mnemonic;sequence;shortcut".
+//
+// - The mnemonic key activates the object if it is presently enabled onscreen.
+// This typically corresponds to the underlined letter within the widget.
+// Example: "n" in a traditional "New..." menu item or the "a" in "Apply" for
+// a button.
+// - The sequence is the full list of keys which invoke the action even if the
+// relevant element is not currently shown on screen. For instance, for a menu
+// item the sequence is the keybindings used to open the parent menus before
+// invoking. The sequence string is colon-delimited. Example: "Alt+F:N" in a
+// traditional "New..." menu item.
+// - The shortcut, if it exists, will invoke the same action without showing
+// the component or its enclosing menus or dialogs. Example: "Ctrl+N" in a
+// traditional "New..." menu item.
+//
+// Example: For a traditional "New..." menu item, the expected return value
+// would be: "N;Alt+F:N;Ctrl+N" for the English locale and "N;Alt+D:N;Strg+N"
+// for the German locale. If, hypothetically, this menu item lacked a mnemonic,
+// it would be represented by ";;Ctrl+N" and ";;Strg+N" respectively.
+/*
+
+C function : atk_action_get_keybinding
+*/
 func (recv *Action) GetKeybinding(i int32) string {
 	c_i := (C.gint)(i)
 
@@ -154,7 +187,11 @@ func (recv *Action) GetKeybinding(i int32) string {
 	return retGo
 }
 
-// GetLocalizedName is a wrapper around the C function atk_action_get_localized_name.
+// Returns the localized name of the specified action of the object.
+/*
+
+C function : atk_action_get_localized_name
+*/
 func (recv *Action) GetLocalizedName(i int32) string {
 	c_i := (C.gint)(i)
 
@@ -164,7 +201,13 @@ func (recv *Action) GetLocalizedName(i int32) string {
 	return retGo
 }
 
-// GetNActions is a wrapper around the C function atk_action_get_n_actions.
+// Gets the number of accessible actions available on the object.
+// If there are more than one, the first one is considered the
+// "default" action of the object.
+/*
+
+C function : atk_action_get_n_actions
+*/
 func (recv *Action) GetNActions() int32 {
 	retC := C.atk_action_get_n_actions((*C.AtkAction)(recv.native))
 	retGo := (int32)(retC)
@@ -172,7 +215,24 @@ func (recv *Action) GetNActions() int32 {
 	return retGo
 }
 
-// GetName is a wrapper around the C function atk_action_get_name.
+// Returns a non-localized string naming the specified action of the
+// object. This name is generally not descriptive of the end result
+// of the action, but instead names the 'interaction type' which the
+// object supports. By convention, the above strings should be used to
+// represent the actions which correspond to the common point-and-click
+// interaction techniques of the same name: i.e.
+// "click", "press", "release", "drag", "drop", "popup", etc.
+// The "popup" action should be used to pop up a context menu for the
+// object, if one exists.
+//
+// For technical reasons, some toolkits cannot guarantee that the
+// reported action is actually 'bound' to a nontrivial user event;
+// i.e. the result of some actions via atk_action_do_action() may be
+// NIL.
+/*
+
+C function : atk_action_get_name
+*/
 func (recv *Action) GetName(i int32) string {
 	c_i := (C.gint)(i)
 
@@ -182,7 +242,11 @@ func (recv *Action) GetName(i int32) string {
 	return retGo
 }
 
-// SetDescription is a wrapper around the C function atk_action_set_description.
+// Sets a description of the specified action of the object.
+/*
+
+C function : atk_action_set_description
+*/
 func (recv *Action) SetDescription(i int32, desc string) bool {
 	c_i := (C.gint)(i)
 
@@ -277,7 +341,15 @@ func component_boundsChangedHandler(_ *C.GObject, c_arg1 *C.AtkRectangle, data C
 
 // Unsupported : atk_component_add_focus_handler : unsupported parameter handler : no type generator for FocusHandler (AtkFocusHandler) for param handler
 
-// Contains is a wrapper around the C function atk_component_contains.
+// Checks whether the specified point is within the extent of the @component.
+//
+// Toolkit implementor note: ATK provides a default implementation for
+// this virtual method. In general there are little reason to
+// re-implement it.
+/*
+
+C function : atk_component_contains
+*/
 func (recv *Component) Contains(x int32, y int32, coordType CoordType) bool {
 	c_x := (C.gint)(x)
 
@@ -291,7 +363,11 @@ func (recv *Component) Contains(x int32, y int32, coordType CoordType) bool {
 	return retGo
 }
 
-// GetExtents is a wrapper around the C function atk_component_get_extents.
+// Gets the rectangle which gives the extent of the @component.
+/*
+
+C function : atk_component_get_extents
+*/
 func (recv *Component) GetExtents(coordType CoordType) (int32, int32, int32, int32) {
 	var c_x C.gint
 
@@ -316,7 +392,11 @@ func (recv *Component) GetExtents(coordType CoordType) (int32, int32, int32, int
 	return x, y, width, height
 }
 
-// GetLayer is a wrapper around the C function atk_component_get_layer.
+// Gets the layer of the component.
+/*
+
+C function : atk_component_get_layer
+*/
 func (recv *Component) GetLayer() Layer {
 	retC := C.atk_component_get_layer((*C.AtkComponent)(recv.native))
 	retGo := (Layer)(retC)
@@ -324,7 +404,12 @@ func (recv *Component) GetLayer() Layer {
 	return retGo
 }
 
-// GetMdiZorder is a wrapper around the C function atk_component_get_mdi_zorder.
+// Gets the zorder of the component. The value G_MININT will be returned
+// if the layer of the component is not ATK_LAYER_MDI or ATK_LAYER_WINDOW.
+/*
+
+C function : atk_component_get_mdi_zorder
+*/
 func (recv *Component) GetMdiZorder() int32 {
 	retC := C.atk_component_get_mdi_zorder((*C.AtkComponent)(recv.native))
 	retGo := (int32)(retC)
@@ -332,7 +417,12 @@ func (recv *Component) GetMdiZorder() int32 {
 	return retGo
 }
 
-// GetPosition is a wrapper around the C function atk_component_get_position.
+// Gets the position of @component in the form of
+// a point specifying @component's top-left corner.
+/*
+
+C function : atk_component_get_position
+*/
 func (recv *Component) GetPosition(coordType CoordType) (int32, int32) {
 	var c_x C.gint
 
@@ -349,7 +439,11 @@ func (recv *Component) GetPosition(coordType CoordType) (int32, int32) {
 	return x, y
 }
 
-// GetSize is a wrapper around the C function atk_component_get_size.
+// Gets the size of the @component in terms of width and height.
+/*
+
+C function : atk_component_get_size
+*/
 func (recv *Component) GetSize() (int32, int32) {
 	var c_width C.gint
 
@@ -364,7 +458,11 @@ func (recv *Component) GetSize() (int32, int32) {
 	return width, height
 }
 
-// GrabFocus is a wrapper around the C function atk_component_grab_focus.
+// Grabs focus for this @component.
+/*
+
+C function : atk_component_grab_focus
+*/
 func (recv *Component) GrabFocus() bool {
 	retC := C.atk_component_grab_focus((*C.AtkComponent)(recv.native))
 	retGo := retC == C.TRUE
@@ -372,7 +470,12 @@ func (recv *Component) GrabFocus() bool {
 	return retGo
 }
 
-// RefAccessibleAtPoint is a wrapper around the C function atk_component_ref_accessible_at_point.
+// Gets a reference to the accessible child, if one exists, at the
+// coordinate point specified by @x and @y.
+/*
+
+C function : atk_component_ref_accessible_at_point
+*/
 func (recv *Component) RefAccessibleAtPoint(x int32, y int32, coordType CoordType) *Object {
 	c_x := (C.gint)(x)
 
@@ -391,7 +494,13 @@ func (recv *Component) RefAccessibleAtPoint(x int32, y int32, coordType CoordTyp
 	return retGo
 }
 
-// RemoveFocusHandler is a wrapper around the C function atk_component_remove_focus_handler.
+// Remove the handler specified by @handler_id from the list of
+// functions to be executed when this object receives focus events
+// (in or out).
+/*
+
+C function : atk_component_remove_focus_handler
+*/
 func (recv *Component) RemoveFocusHandler(handlerId uint32) {
 	c_handler_id := (C.guint)(handlerId)
 
@@ -400,7 +509,11 @@ func (recv *Component) RemoveFocusHandler(handlerId uint32) {
 	return
 }
 
-// SetExtents is a wrapper around the C function atk_component_set_extents.
+// Sets the extents of @component.
+/*
+
+C function : atk_component_set_extents
+*/
 func (recv *Component) SetExtents(x int32, y int32, width int32, height int32, coordType CoordType) bool {
 	c_x := (C.gint)(x)
 
@@ -418,7 +531,11 @@ func (recv *Component) SetExtents(x int32, y int32, width int32, height int32, c
 	return retGo
 }
 
-// SetPosition is a wrapper around the C function atk_component_set_position.
+// Sets the postition of @component.
+/*
+
+C function : atk_component_set_position
+*/
 func (recv *Component) SetPosition(x int32, y int32, coordType CoordType) bool {
 	c_x := (C.gint)(x)
 
@@ -432,7 +549,11 @@ func (recv *Component) SetPosition(x int32, y int32, coordType CoordType) bool {
 	return retGo
 }
 
-// SetSize is a wrapper around the C function atk_component_set_size.
+// Set the size of the @component in terms of width and height.
+/*
+
+C function : atk_component_set_size
+*/
 func (recv *Component) SetSize(width int32, height int32) bool {
 	c_width := (C.gint)(width)
 
@@ -636,7 +757,13 @@ func document_reloadHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// GetDocument is a wrapper around the C function atk_document_get_document.
+// Gets a %gpointer that points to an instance of the DOM.  It is
+// up to the caller to check atk_document_get_type to determine
+// how to cast this pointer.
+/*
+
+C function : atk_document_get_document
+*/
 func (recv *Document) GetDocument() uintptr {
 	retC := C.atk_document_get_document((*C.AtkDocument)(recv.native))
 	retGo := (uintptr)(unsafe.Pointer(retC))
@@ -644,7 +771,11 @@ func (recv *Document) GetDocument() uintptr {
 	return retGo
 }
 
-// GetDocumentType is a wrapper around the C function atk_document_get_document_type.
+// Gets a string indicating the document type.
+/*
+
+C function : atk_document_get_document_type
+*/
 func (recv *Document) GetDocumentType() string {
 	retC := C.atk_document_get_document_type((*C.AtkDocument)(recv.native))
 	retGo := C.GoString(retC)
@@ -652,7 +783,15 @@ func (recv *Document) GetDocumentType() string {
 	return retGo
 }
 
-// GetLocale is a wrapper around the C function atk_document_get_locale.
+// Gets a UTF-8 string indicating the POSIX-style LC_MESSAGES locale
+// of the content of this document instance.  Individual
+// text substrings or images within this document may have
+// a different locale, see atk_text_get_attributes and
+// atk_image_get_image_locale.
+/*
+
+C function : atk_document_get_locale
+*/
 func (recv *Document) GetLocale() string {
 	retC := C.atk_document_get_locale((*C.AtkDocument)(recv.native))
 	retGo := C.GoString(retC)
@@ -681,7 +820,12 @@ func (recv *EditableText) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CopyText is a wrapper around the C function atk_editable_text_copy_text.
+// Copy text from @start_pos up to, but not including @end_pos
+// to the clipboard.
+/*
+
+C function : atk_editable_text_copy_text
+*/
 func (recv *EditableText) CopyText(startPos int32, endPos int32) {
 	c_start_pos := (C.gint)(startPos)
 
@@ -692,7 +836,12 @@ func (recv *EditableText) CopyText(startPos int32, endPos int32) {
 	return
 }
 
-// CutText is a wrapper around the C function atk_editable_text_cut_text.
+// Copy text from @start_pos up to, but not including @end_pos
+// to the clipboard and then delete from the widget.
+/*
+
+C function : atk_editable_text_cut_text
+*/
 func (recv *EditableText) CutText(startPos int32, endPos int32) {
 	c_start_pos := (C.gint)(startPos)
 
@@ -703,7 +852,11 @@ func (recv *EditableText) CutText(startPos int32, endPos int32) {
 	return
 }
 
-// DeleteText is a wrapper around the C function atk_editable_text_delete_text.
+// Delete text @start_pos up to, but not including @end_pos.
+/*
+
+C function : atk_editable_text_delete_text
+*/
 func (recv *EditableText) DeleteText(startPos int32, endPos int32) {
 	c_start_pos := (C.gint)(startPos)
 
@@ -714,7 +867,11 @@ func (recv *EditableText) DeleteText(startPos int32, endPos int32) {
 	return
 }
 
-// InsertText is a wrapper around the C function atk_editable_text_insert_text.
+// Insert text at a given position.
+/*
+
+C function : atk_editable_text_insert_text
+*/
 func (recv *EditableText) InsertText(string string, length int32, position int32) {
 	c_string := C.CString(string)
 	defer C.free(unsafe.Pointer(c_string))
@@ -728,7 +885,11 @@ func (recv *EditableText) InsertText(string string, length int32, position int32
 	return
 }
 
-// PasteText is a wrapper around the C function atk_editable_text_paste_text.
+// Paste text from clipboard to specified @position.
+/*
+
+C function : atk_editable_text_paste_text
+*/
 func (recv *EditableText) PasteText(position int32) {
 	c_position := (C.gint)(position)
 
@@ -739,7 +900,11 @@ func (recv *EditableText) PasteText(position int32) {
 
 // Blacklisted : atk_editable_text_set_run_attributes
 
-// SetTextContents is a wrapper around the C function atk_editable_text_set_text_contents.
+// Set text contents of @text.
+/*
+
+C function : atk_editable_text_set_text_contents
+*/
 func (recv *EditableText) SetTextContents(string string) {
 	c_string := C.CString(string)
 	defer C.free(unsafe.Pointer(c_string))
@@ -793,7 +958,12 @@ func (recv *Hypertext) ToC() unsafe.Pointer {
 
 // Unsupported signal 'link-selected' for Hypertext : unsupported parameter arg1 : type gint :
 
-// GetLink is a wrapper around the C function atk_hypertext_get_link.
+// Gets the link in this hypertext document at index
+// @link_index
+/*
+
+C function : atk_hypertext_get_link
+*/
 func (recv *Hypertext) GetLink(linkIndex int32) *Hyperlink {
 	c_link_index := (C.gint)(linkIndex)
 
@@ -803,7 +973,12 @@ func (recv *Hypertext) GetLink(linkIndex int32) *Hyperlink {
 	return retGo
 }
 
-// GetLinkIndex is a wrapper around the C function atk_hypertext_get_link_index.
+// Gets the index into the array of hyperlinks that is associated with
+// the character specified by @char_index.
+/*
+
+C function : atk_hypertext_get_link_index
+*/
 func (recv *Hypertext) GetLinkIndex(charIndex int32) int32 {
 	c_char_index := (C.gint)(charIndex)
 
@@ -813,7 +988,11 @@ func (recv *Hypertext) GetLinkIndex(charIndex int32) int32 {
 	return retGo
 }
 
-// GetNLinks is a wrapper around the C function atk_hypertext_get_n_links.
+// Gets the number of links within this hypertext document.
+/*
+
+C function : atk_hypertext_get_n_links
+*/
 func (recv *Hypertext) GetNLinks() int32 {
 	retC := C.atk_hypertext_get_n_links((*C.AtkHypertext)(recv.native))
 	retGo := (int32)(retC)
@@ -842,7 +1021,11 @@ func (recv *Image) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// GetImageDescription is a wrapper around the C function atk_image_get_image_description.
+// Get a textual description of this image.
+/*
+
+C function : atk_image_get_image_description
+*/
 func (recv *Image) GetImageDescription() string {
 	retC := C.atk_image_get_image_description((*C.AtkImage)(recv.native))
 	retGo := C.GoString(retC)
@@ -850,7 +1033,12 @@ func (recv *Image) GetImageDescription() string {
 	return retGo
 }
 
-// GetImagePosition is a wrapper around the C function atk_image_get_image_position.
+// Gets the position of the image in the form of a point specifying the
+// images top-left corner.
+/*
+
+C function : atk_image_get_image_position
+*/
 func (recv *Image) GetImagePosition(coordType CoordType) (int32, int32) {
 	var c_x C.gint
 
@@ -867,7 +1055,13 @@ func (recv *Image) GetImagePosition(coordType CoordType) (int32, int32) {
 	return x, y
 }
 
-// GetImageSize is a wrapper around the C function atk_image_get_image_size.
+// Get the width and height in pixels for the specified image.
+// The values of @width and @height are returned as -1 if the
+// values cannot be obtained (for instance, if the object is not onscreen).
+/*
+
+C function : atk_image_get_image_size
+*/
 func (recv *Image) GetImageSize() (int32, int32) {
 	var c_width C.gint
 
@@ -882,7 +1076,11 @@ func (recv *Image) GetImageSize() (int32, int32) {
 	return width, height
 }
 
-// SetImageDescription is a wrapper around the C function atk_image_set_image_description.
+// Sets the textual description for this image.
+/*
+
+C function : atk_image_set_image_description
+*/
 func (recv *Image) SetImageDescription(description string) bool {
 	c_description := C.CString(description)
 	defer C.free(unsafe.Pointer(c_description))
@@ -992,7 +1190,12 @@ func selection_selectionChangedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// AddSelection is a wrapper around the C function atk_selection_add_selection.
+// Adds the specified accessible child of the object to the
+// object's selection.
+/*
+
+C function : atk_selection_add_selection
+*/
 func (recv *Selection) AddSelection(i int32) bool {
 	c_i := (C.gint)(i)
 
@@ -1002,7 +1205,12 @@ func (recv *Selection) AddSelection(i int32) bool {
 	return retGo
 }
 
-// ClearSelection is a wrapper around the C function atk_selection_clear_selection.
+// Clears the selection in the object so that no children in the object
+// are selected.
+/*
+
+C function : atk_selection_clear_selection
+*/
 func (recv *Selection) ClearSelection() bool {
 	retC := C.atk_selection_clear_selection((*C.AtkSelection)(recv.native))
 	retGo := retC == C.TRUE
@@ -1010,7 +1218,15 @@ func (recv *Selection) ClearSelection() bool {
 	return retGo
 }
 
-// GetSelectionCount is a wrapper around the C function atk_selection_get_selection_count.
+// Gets the number of accessible children currently selected.
+// Note: callers should not rely on %NULL or on a zero value for
+// indication of whether AtkSelectionIface is implemented, they should
+// use type checking/interface checking macros or the
+// atk_get_accessible_value() convenience method.
+/*
+
+C function : atk_selection_get_selection_count
+*/
 func (recv *Selection) GetSelectionCount() int32 {
 	retC := C.atk_selection_get_selection_count((*C.AtkSelection)(recv.native))
 	retGo := (int32)(retC)
@@ -1018,7 +1234,15 @@ func (recv *Selection) GetSelectionCount() int32 {
 	return retGo
 }
 
-// IsChildSelected is a wrapper around the C function atk_selection_is_child_selected.
+// Determines if the current child of this object is selected
+// Note: callers should not rely on %NULL or on a zero value for
+// indication of whether AtkSelectionIface is implemented, they should
+// use type checking/interface checking macros or the
+// atk_get_accessible_value() convenience method.
+/*
+
+C function : atk_selection_is_child_selected
+*/
 func (recv *Selection) IsChildSelected(i int32) bool {
 	c_i := (C.gint)(i)
 
@@ -1028,7 +1252,16 @@ func (recv *Selection) IsChildSelected(i int32) bool {
 	return retGo
 }
 
-// RefSelection is a wrapper around the C function atk_selection_ref_selection.
+// Gets a reference to the accessible object representing the specified
+// selected child of the object.
+// Note: callers should not rely on %NULL or on a zero value for
+// indication of whether AtkSelectionIface is implemented, they should
+// use type checking/interface checking macros or the
+// atk_get_accessible_value() convenience method.
+/*
+
+C function : atk_selection_ref_selection
+*/
 func (recv *Selection) RefSelection(i int32) *Object {
 	c_i := (C.gint)(i)
 
@@ -1043,7 +1276,11 @@ func (recv *Selection) RefSelection(i int32) *Object {
 	return retGo
 }
 
-// RemoveSelection is a wrapper around the C function atk_selection_remove_selection.
+// Removes the specified child of the object from the object's selection.
+/*
+
+C function : atk_selection_remove_selection
+*/
 func (recv *Selection) RemoveSelection(i int32) bool {
 	c_i := (C.gint)(i)
 
@@ -1053,7 +1290,12 @@ func (recv *Selection) RemoveSelection(i int32) bool {
 	return retGo
 }
 
-// SelectAllSelection is a wrapper around the C function atk_selection_select_all_selection.
+// Causes every child of the object to be selected if the object
+// supports multiple selections.
+/*
+
+C function : atk_selection_select_all_selection
+*/
 func (recv *Selection) SelectAllSelection() bool {
 	retC := C.atk_selection_select_all_selection((*C.AtkSelection)(recv.native))
 	retGo := retC == C.TRUE
@@ -1082,7 +1324,12 @@ func (recv *StreamableContent) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// GetMimeType is a wrapper around the C function atk_streamable_content_get_mime_type.
+// Gets the character string of the specified mime type. The first mime
+// type is at position 0, the second at position 1, and so on.
+/*
+
+C function : atk_streamable_content_get_mime_type
+*/
 func (recv *StreamableContent) GetMimeType(i int32) string {
 	c_i := (C.gint)(i)
 
@@ -1092,7 +1339,11 @@ func (recv *StreamableContent) GetMimeType(i int32) string {
 	return retGo
 }
 
-// GetNMimeTypes is a wrapper around the C function atk_streamable_content_get_n_mime_types.
+// Gets the number of mime types supported by this object.
+/*
+
+C function : atk_streamable_content_get_n_mime_types
+*/
 func (recv *StreamableContent) GetNMimeTypes() int32 {
 	retC := C.atk_streamable_content_get_n_mime_types((*C.AtkStreamableContent)(recv.native))
 	retGo := (int32)(retC)
@@ -1302,7 +1553,11 @@ func table_rowReorderedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// AddColumnSelection is a wrapper around the C function atk_table_add_column_selection.
+// Adds the specified @column to the selection.
+/*
+
+C function : atk_table_add_column_selection
+*/
 func (recv *Table) AddColumnSelection(column int32) bool {
 	c_column := (C.gint)(column)
 
@@ -1312,7 +1567,11 @@ func (recv *Table) AddColumnSelection(column int32) bool {
 	return retGo
 }
 
-// AddRowSelection is a wrapper around the C function atk_table_add_row_selection.
+// Adds the specified @row to the selection.
+/*
+
+C function : atk_table_add_row_selection
+*/
 func (recv *Table) AddRowSelection(row int32) bool {
 	c_row := (C.gint)(row)
 
@@ -1322,7 +1581,11 @@ func (recv *Table) AddRowSelection(row int32) bool {
 	return retGo
 }
 
-// GetCaption is a wrapper around the C function atk_table_get_caption.
+// Gets the caption for the @table.
+/*
+
+C function : atk_table_get_caption
+*/
 func (recv *Table) GetCaption() *Object {
 	retC := C.atk_table_get_caption((*C.AtkTable)(recv.native))
 	var retGo (*Object)
@@ -1335,7 +1598,11 @@ func (recv *Table) GetCaption() *Object {
 	return retGo
 }
 
-// GetColumnAtIndex is a wrapper around the C function atk_table_get_column_at_index.
+// Gets a #gint representing the column at the specified @index_.
+/*
+
+C function : atk_table_get_column_at_index
+*/
 func (recv *Table) GetColumnAtIndex(index int32) int32 {
 	c_index_ := (C.gint)(index)
 
@@ -1345,7 +1612,11 @@ func (recv *Table) GetColumnAtIndex(index int32) int32 {
 	return retGo
 }
 
-// GetColumnDescription is a wrapper around the C function atk_table_get_column_description.
+// Gets the description text of the specified @column in the table
+/*
+
+C function : atk_table_get_column_description
+*/
 func (recv *Table) GetColumnDescription(column int32) string {
 	c_column := (C.gint)(column)
 
@@ -1355,7 +1626,12 @@ func (recv *Table) GetColumnDescription(column int32) string {
 	return retGo
 }
 
-// GetColumnExtentAt is a wrapper around the C function atk_table_get_column_extent_at.
+// Gets the number of columns occupied by the accessible object
+// at the specified @row and @column in the @table.
+/*
+
+C function : atk_table_get_column_extent_at
+*/
 func (recv *Table) GetColumnExtentAt(row int32, column int32) int32 {
 	c_row := (C.gint)(row)
 
@@ -1367,7 +1643,11 @@ func (recv *Table) GetColumnExtentAt(row int32, column int32) int32 {
 	return retGo
 }
 
-// GetColumnHeader is a wrapper around the C function atk_table_get_column_header.
+// Gets the column header of a specified column in an accessible table.
+/*
+
+C function : atk_table_get_column_header
+*/
 func (recv *Table) GetColumnHeader(column int32) *Object {
 	c_column := (C.gint)(column)
 
@@ -1382,7 +1662,12 @@ func (recv *Table) GetColumnHeader(column int32) *Object {
 	return retGo
 }
 
-// GetIndexAt is a wrapper around the C function atk_table_get_index_at.
+// Gets a #gint representing the index at the specified @row and
+// @column.
+/*
+
+C function : atk_table_get_index_at
+*/
 func (recv *Table) GetIndexAt(row int32, column int32) int32 {
 	c_row := (C.gint)(row)
 
@@ -1394,7 +1679,11 @@ func (recv *Table) GetIndexAt(row int32, column int32) int32 {
 	return retGo
 }
 
-// GetNColumns is a wrapper around the C function atk_table_get_n_columns.
+// Gets the number of columns in the table.
+/*
+
+C function : atk_table_get_n_columns
+*/
 func (recv *Table) GetNColumns() int32 {
 	retC := C.atk_table_get_n_columns((*C.AtkTable)(recv.native))
 	retGo := (int32)(retC)
@@ -1402,7 +1691,11 @@ func (recv *Table) GetNColumns() int32 {
 	return retGo
 }
 
-// GetNRows is a wrapper around the C function atk_table_get_n_rows.
+// Gets the number of rows in the table.
+/*
+
+C function : atk_table_get_n_rows
+*/
 func (recv *Table) GetNRows() int32 {
 	retC := C.atk_table_get_n_rows((*C.AtkTable)(recv.native))
 	retGo := (int32)(retC)
@@ -1410,7 +1703,11 @@ func (recv *Table) GetNRows() int32 {
 	return retGo
 }
 
-// GetRowAtIndex is a wrapper around the C function atk_table_get_row_at_index.
+// Gets a #gint representing the row at the specified @index_.
+/*
+
+C function : atk_table_get_row_at_index
+*/
 func (recv *Table) GetRowAtIndex(index int32) int32 {
 	c_index_ := (C.gint)(index)
 
@@ -1420,7 +1717,11 @@ func (recv *Table) GetRowAtIndex(index int32) int32 {
 	return retGo
 }
 
-// GetRowDescription is a wrapper around the C function atk_table_get_row_description.
+// Gets the description text of the specified row in the table
+/*
+
+C function : atk_table_get_row_description
+*/
 func (recv *Table) GetRowDescription(row int32) string {
 	c_row := (C.gint)(row)
 
@@ -1430,7 +1731,12 @@ func (recv *Table) GetRowDescription(row int32) string {
 	return retGo
 }
 
-// GetRowExtentAt is a wrapper around the C function atk_table_get_row_extent_at.
+// Gets the number of rows occupied by the accessible object
+// at a specified @row and @column in the @table.
+/*
+
+C function : atk_table_get_row_extent_at
+*/
 func (recv *Table) GetRowExtentAt(row int32, column int32) int32 {
 	c_row := (C.gint)(row)
 
@@ -1442,7 +1748,11 @@ func (recv *Table) GetRowExtentAt(row int32, column int32) int32 {
 	return retGo
 }
 
-// GetRowHeader is a wrapper around the C function atk_table_get_row_header.
+// Gets the row header of a specified row in an accessible table.
+/*
+
+C function : atk_table_get_row_header
+*/
 func (recv *Table) GetRowHeader(row int32) *Object {
 	c_row := (C.gint)(row)
 
@@ -1461,7 +1771,11 @@ func (recv *Table) GetRowHeader(row int32) *Object {
 
 // Unsupported : atk_table_get_selected_rows : unsupported parameter selected : gint** with indirection level of 2
 
-// GetSummary is a wrapper around the C function atk_table_get_summary.
+// Gets the summary description of the table.
+/*
+
+C function : atk_table_get_summary
+*/
 func (recv *Table) GetSummary() *Object {
 	retC := C.atk_table_get_summary((*C.AtkTable)(recv.native))
 	retGo := ObjectNewFromC(unsafe.Pointer(retC))
@@ -1469,7 +1783,12 @@ func (recv *Table) GetSummary() *Object {
 	return retGo
 }
 
-// IsColumnSelected is a wrapper around the C function atk_table_is_column_selected.
+// Gets a boolean value indicating whether the specified @column
+// is selected
+/*
+
+C function : atk_table_is_column_selected
+*/
 func (recv *Table) IsColumnSelected(column int32) bool {
 	c_column := (C.gint)(column)
 
@@ -1479,7 +1798,12 @@ func (recv *Table) IsColumnSelected(column int32) bool {
 	return retGo
 }
 
-// IsRowSelected is a wrapper around the C function atk_table_is_row_selected.
+// Gets a boolean value indicating whether the specified @row
+// is selected
+/*
+
+C function : atk_table_is_row_selected
+*/
 func (recv *Table) IsRowSelected(row int32) bool {
 	c_row := (C.gint)(row)
 
@@ -1489,7 +1813,12 @@ func (recv *Table) IsRowSelected(row int32) bool {
 	return retGo
 }
 
-// IsSelected is a wrapper around the C function atk_table_is_selected.
+// Gets a boolean value indicating whether the accessible object
+// at the specified @row and @column is selected
+/*
+
+C function : atk_table_is_selected
+*/
 func (recv *Table) IsSelected(row int32, column int32) bool {
 	c_row := (C.gint)(row)
 
@@ -1501,7 +1830,12 @@ func (recv *Table) IsSelected(row int32, column int32) bool {
 	return retGo
 }
 
-// RefAt is a wrapper around the C function atk_table_ref_at.
+// Get a reference to the table cell at @row, @column. This cell
+// should implement the interface #AtkTableCell
+/*
+
+C function : atk_table_ref_at
+*/
 func (recv *Table) RefAt(row int32, column int32) *Object {
 	c_row := (C.gint)(row)
 
@@ -1513,7 +1847,11 @@ func (recv *Table) RefAt(row int32, column int32) *Object {
 	return retGo
 }
 
-// RemoveColumnSelection is a wrapper around the C function atk_table_remove_column_selection.
+// Adds the specified @column to the selection.
+/*
+
+C function : atk_table_remove_column_selection
+*/
 func (recv *Table) RemoveColumnSelection(column int32) bool {
 	c_column := (C.gint)(column)
 
@@ -1523,7 +1861,11 @@ func (recv *Table) RemoveColumnSelection(column int32) bool {
 	return retGo
 }
 
-// RemoveRowSelection is a wrapper around the C function atk_table_remove_row_selection.
+// Removes the specified @row from the selection.
+/*
+
+C function : atk_table_remove_row_selection
+*/
 func (recv *Table) RemoveRowSelection(row int32) bool {
 	c_row := (C.gint)(row)
 
@@ -1533,7 +1875,11 @@ func (recv *Table) RemoveRowSelection(row int32) bool {
 	return retGo
 }
 
-// SetCaption is a wrapper around the C function atk_table_set_caption.
+// Sets the caption for the table.
+/*
+
+C function : atk_table_set_caption
+*/
 func (recv *Table) SetCaption(caption *Object) {
 	c_caption := (*C.AtkObject)(C.NULL)
 	if caption != nil {
@@ -1545,7 +1891,11 @@ func (recv *Table) SetCaption(caption *Object) {
 	return
 }
 
-// SetColumnDescription is a wrapper around the C function atk_table_set_column_description.
+// Sets the description text for the specified @column of the @table.
+/*
+
+C function : atk_table_set_column_description
+*/
 func (recv *Table) SetColumnDescription(column int32, description string) {
 	c_column := (C.gint)(column)
 
@@ -1557,7 +1907,11 @@ func (recv *Table) SetColumnDescription(column int32, description string) {
 	return
 }
 
-// SetColumnHeader is a wrapper around the C function atk_table_set_column_header.
+// Sets the specified column header to @header.
+/*
+
+C function : atk_table_set_column_header
+*/
 func (recv *Table) SetColumnHeader(column int32, header *Object) {
 	c_column := (C.gint)(column)
 
@@ -1571,7 +1925,11 @@ func (recv *Table) SetColumnHeader(column int32, header *Object) {
 	return
 }
 
-// SetRowDescription is a wrapper around the C function atk_table_set_row_description.
+// Sets the description text for the specified @row of @table.
+/*
+
+C function : atk_table_set_row_description
+*/
 func (recv *Table) SetRowDescription(row int32, description string) {
 	c_row := (C.gint)(row)
 
@@ -1583,7 +1941,11 @@ func (recv *Table) SetRowDescription(row int32, description string) {
 	return
 }
 
-// SetRowHeader is a wrapper around the C function atk_table_set_row_header.
+// Sets the specified row header to @header.
+/*
+
+C function : atk_table_set_row_header
+*/
 func (recv *Table) SetRowHeader(row int32, header *Object) {
 	c_row := (C.gint)(row)
 
@@ -1597,7 +1959,11 @@ func (recv *Table) SetRowHeader(row int32, header *Object) {
 	return
 }
 
-// SetSummary is a wrapper around the C function atk_table_set_summary.
+// Sets the summary description of the table.
+/*
+
+C function : atk_table_set_summary
+*/
 func (recv *Table) SetSummary(accessible *Object) {
 	c_accessible := (*C.AtkObject)(C.NULL)
 	if accessible != nil {
@@ -1773,7 +2139,11 @@ func text_textSelectionChangedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// AddSelection is a wrapper around the C function atk_text_add_selection.
+// Adds a selection bounded by the specified offsets.
+/*
+
+C function : atk_text_add_selection
+*/
 func (recv *Text) AddSelection(startOffset int32, endOffset int32) bool {
 	c_start_offset := (C.gint)(startOffset)
 
@@ -1785,7 +2155,11 @@ func (recv *Text) AddSelection(startOffset int32, endOffset int32) bool {
 	return retGo
 }
 
-// GetCaretOffset is a wrapper around the C function atk_text_get_caret_offset.
+// Gets the offset position of the caret (cursor).
+/*
+
+C function : atk_text_get_caret_offset
+*/
 func (recv *Text) GetCaretOffset() int32 {
 	retC := C.atk_text_get_caret_offset((*C.AtkText)(recv.native))
 	retGo := (int32)(retC)
@@ -1793,7 +2167,11 @@ func (recv *Text) GetCaretOffset() int32 {
 	return retGo
 }
 
-// GetCharacterAtOffset is a wrapper around the C function atk_text_get_character_at_offset.
+// Gets the specified text.
+/*
+
+C function : atk_text_get_character_at_offset
+*/
 func (recv *Text) GetCharacterAtOffset(offset int32) rune {
 	c_offset := (C.gint)(offset)
 
@@ -1803,7 +2181,11 @@ func (recv *Text) GetCharacterAtOffset(offset int32) rune {
 	return retGo
 }
 
-// GetCharacterCount is a wrapper around the C function atk_text_get_character_count.
+// Gets the character count.
+/*
+
+C function : atk_text_get_character_count
+*/
 func (recv *Text) GetCharacterCount() int32 {
 	retC := C.atk_text_get_character_count((*C.AtkText)(recv.native))
 	retGo := (int32)(retC)
@@ -1811,7 +2193,12 @@ func (recv *Text) GetCharacterCount() int32 {
 	return retGo
 }
 
-// GetCharacterExtents is a wrapper around the C function atk_text_get_character_extents.
+// Get the bounding box containing the glyph representing the character at
+// a particular text offset.
+/*
+
+C function : atk_text_get_character_extents
+*/
 func (recv *Text) GetCharacterExtents(offset int32, coords CoordType) (int32, int32, int32, int32) {
 	c_offset := (C.gint)(offset)
 
@@ -1840,7 +2227,11 @@ func (recv *Text) GetCharacterExtents(offset int32, coords CoordType) (int32, in
 
 // Blacklisted : atk_text_get_default_attributes
 
-// GetNSelections is a wrapper around the C function atk_text_get_n_selections.
+// Gets the number of selected regions.
+/*
+
+C function : atk_text_get_n_selections
+*/
 func (recv *Text) GetNSelections() int32 {
 	retC := C.atk_text_get_n_selections((*C.AtkText)(recv.native))
 	retGo := (int32)(retC)
@@ -1848,7 +2239,13 @@ func (recv *Text) GetNSelections() int32 {
 	return retGo
 }
 
-// GetOffsetAtPoint is a wrapper around the C function atk_text_get_offset_at_point.
+// Gets the offset of the character located at coordinates @x and @y. @x and @y
+// are interpreted as being relative to the screen or this widget's window
+// depending on @coords.
+/*
+
+C function : atk_text_get_offset_at_point
+*/
 func (recv *Text) GetOffsetAtPoint(x int32, y int32, coords CoordType) int32 {
 	c_x := (C.gint)(x)
 
@@ -1864,7 +2261,11 @@ func (recv *Text) GetOffsetAtPoint(x int32, y int32, coords CoordType) int32 {
 
 // Blacklisted : atk_text_get_run_attributes
 
-// GetSelection is a wrapper around the C function atk_text_get_selection.
+// Gets the text from the specified selection.
+/*
+
+C function : atk_text_get_selection
+*/
 func (recv *Text) GetSelection(selectionNum int32) (string, int32, int32) {
 	c_selection_num := (C.gint)(selectionNum)
 
@@ -1883,7 +2284,11 @@ func (recv *Text) GetSelection(selectionNum int32) (string, int32, int32) {
 	return retGo, startOffset, endOffset
 }
 
-// GetText is a wrapper around the C function atk_text_get_text.
+// Gets the specified text.
+/*
+
+C function : atk_text_get_text
+*/
 func (recv *Text) GetText(startOffset int32, endOffset int32) string {
 	c_start_offset := (C.gint)(startOffset)
 
@@ -1896,7 +2301,11 @@ func (recv *Text) GetText(startOffset int32, endOffset int32) string {
 	return retGo
 }
 
-// GetTextAfterOffset is a wrapper around the C function atk_text_get_text_after_offset.
+// Gets the specified text.
+/*
+
+C function : atk_text_get_text_after_offset
+*/
 func (recv *Text) GetTextAfterOffset(offset int32, boundaryType TextBoundary) (string, int32, int32) {
 	c_offset := (C.gint)(offset)
 
@@ -1917,7 +2326,34 @@ func (recv *Text) GetTextAfterOffset(offset int32, boundaryType TextBoundary) (s
 	return retGo, startOffset, endOffset
 }
 
-// GetTextAtOffset is a wrapper around the C function atk_text_get_text_at_offset.
+// Gets the specified text.
+//
+// If the boundary_type if ATK_TEXT_BOUNDARY_CHAR the character at the
+// offset is returned.
+//
+// If the boundary_type is ATK_TEXT_BOUNDARY_WORD_START the returned string
+// is from the word start at or before the offset to the word start after
+// the offset.
+//
+// The returned string will contain the word at the offset if the offset
+// is inside a word and will contain the word before the offset if the
+// offset is not inside a word.
+//
+// If the boundary type is ATK_TEXT_BOUNDARY_SENTENCE_START the returned
+// string is from the sentence start at or before the offset to the sentence
+// start after the offset.
+//
+// The returned string will contain the sentence at the offset if the offset
+// is inside a sentence and will contain the sentence before the offset
+// if the offset is not inside a sentence.
+//
+// If the boundary type is ATK_TEXT_BOUNDARY_LINE_START the returned
+// string is from the line start at or before the offset to the line
+// start after the offset.
+/*
+
+C function : atk_text_get_text_at_offset
+*/
 func (recv *Text) GetTextAtOffset(offset int32, boundaryType TextBoundary) (string, int32, int32) {
 	c_offset := (C.gint)(offset)
 
@@ -1938,7 +2374,11 @@ func (recv *Text) GetTextAtOffset(offset int32, boundaryType TextBoundary) (stri
 	return retGo, startOffset, endOffset
 }
 
-// GetTextBeforeOffset is a wrapper around the C function atk_text_get_text_before_offset.
+// Gets the specified text.
+/*
+
+C function : atk_text_get_text_before_offset
+*/
 func (recv *Text) GetTextBeforeOffset(offset int32, boundaryType TextBoundary) (string, int32, int32) {
 	c_offset := (C.gint)(offset)
 
@@ -1959,7 +2399,11 @@ func (recv *Text) GetTextBeforeOffset(offset int32, boundaryType TextBoundary) (
 	return retGo, startOffset, endOffset
 }
 
-// RemoveSelection is a wrapper around the C function atk_text_remove_selection.
+// Removes the specified selection.
+/*
+
+C function : atk_text_remove_selection
+*/
 func (recv *Text) RemoveSelection(selectionNum int32) bool {
 	c_selection_num := (C.gint)(selectionNum)
 
@@ -1969,7 +2413,11 @@ func (recv *Text) RemoveSelection(selectionNum int32) bool {
 	return retGo
 }
 
-// SetCaretOffset is a wrapper around the C function atk_text_set_caret_offset.
+// Sets the caret (cursor) position to the specified @offset.
+/*
+
+C function : atk_text_set_caret_offset
+*/
 func (recv *Text) SetCaretOffset(offset int32) bool {
 	c_offset := (C.gint)(offset)
 
@@ -1979,7 +2427,11 @@ func (recv *Text) SetCaretOffset(offset int32) bool {
 	return retGo
 }
 
-// SetSelection is a wrapper around the C function atk_text_set_selection.
+// Changes the start and end offset of the specified selection.
+/*
+
+C function : atk_text_set_selection
+*/
 func (recv *Text) SetSelection(selectionNum int32, startOffset int32, endOffset int32) bool {
 	c_selection_num := (C.gint)(selectionNum)
 
@@ -2014,7 +2466,11 @@ func (recv *Value) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// GetCurrentValue is a wrapper around the C function atk_value_get_current_value.
+// Gets the value of this object.
+/*
+
+C function : atk_value_get_current_value
+*/
 func (recv *Value) GetCurrentValue() *gobject.Value {
 	var c_value C.GValue
 
@@ -2025,7 +2481,11 @@ func (recv *Value) GetCurrentValue() *gobject.Value {
 	return value
 }
 
-// GetMaximumValue is a wrapper around the C function atk_value_get_maximum_value.
+// Gets the maximum value of this object.
+/*
+
+C function : atk_value_get_maximum_value
+*/
 func (recv *Value) GetMaximumValue() *gobject.Value {
 	var c_value C.GValue
 
@@ -2036,7 +2496,11 @@ func (recv *Value) GetMaximumValue() *gobject.Value {
 	return value
 }
 
-// GetMinimumValue is a wrapper around the C function atk_value_get_minimum_value.
+// Gets the minimum value of this object.
+/*
+
+C function : atk_value_get_minimum_value
+*/
 func (recv *Value) GetMinimumValue() *gobject.Value {
 	var c_value C.GValue
 
@@ -2047,7 +2511,11 @@ func (recv *Value) GetMinimumValue() *gobject.Value {
 	return value
 }
 
-// SetCurrentValue is a wrapper around the C function atk_value_set_current_value.
+// Sets the value of this object.
+/*
+
+C function : atk_value_set_current_value
+*/
 func (recv *Value) SetCurrentValue(value *gobject.Value) bool {
 	c_value := (*C.GValue)(C.NULL)
 	if value != nil {

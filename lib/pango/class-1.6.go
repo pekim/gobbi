@@ -10,7 +10,11 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// GetFontMap is a wrapper around the C function pango_context_get_font_map.
+// Gets the #PangoFontMap used to look up fonts for this context.
+/*
+
+C function : pango_context_get_font_map
+*/
 func (recv *Context) GetFontMap() *FontMap {
 	retC := C.pango_context_get_font_map((*C.PangoContext)(recv.native))
 	retGo := FontMapNewFromC(unsafe.Pointer(retC))
@@ -18,7 +22,12 @@ func (recv *Context) GetFontMap() *FontMap {
 	return retGo
 }
 
-// GetMatrix is a wrapper around the C function pango_context_get_matrix.
+// Gets the transformation matrix that will be applied when
+// rendering with this context. See pango_context_set_matrix().
+/*
+
+C function : pango_context_get_matrix
+*/
 func (recv *Context) GetMatrix() *Matrix {
 	retC := C.pango_context_get_matrix((*C.PangoContext)(recv.native))
 	var retGo (*Matrix)
@@ -31,7 +40,16 @@ func (recv *Context) GetMatrix() *Matrix {
 	return retGo
 }
 
-// SetMatrix is a wrapper around the C function pango_context_set_matrix.
+// Sets the transformation matrix that will be applied when rendering
+// with this context. Note that reported metrics are in the user space
+// coordinates before the application of the matrix, not device-space
+// coordinates after the application of the matrix. So, they don't scale
+// with the matrix, though they may change slightly for different
+// matrices, depending on how the text is fit to the pixel grid.
+/*
+
+C function : pango_context_set_matrix
+*/
 func (recv *Context) SetMatrix(matrix *Matrix) {
 	c_matrix := (*C.PangoMatrix)(C.NULL)
 	if matrix != nil {
@@ -43,7 +61,12 @@ func (recv *Context) SetMatrix(matrix *Matrix) {
 	return
 }
 
-// GetEllipsize is a wrapper around the C function pango_layout_get_ellipsize.
+// Gets the type of ellipsization being performed for @layout.
+// See pango_layout_set_ellipsize()
+/*
+
+C function : pango_layout_get_ellipsize
+*/
 func (recv *Layout) GetEllipsize() EllipsizeMode {
 	retC := C.pango_layout_get_ellipsize((*C.PangoLayout)(recv.native))
 	retGo := (EllipsizeMode)(retC)
@@ -51,7 +74,21 @@ func (recv *Layout) GetEllipsize() EllipsizeMode {
 	return retGo
 }
 
-// SetEllipsize is a wrapper around the C function pango_layout_set_ellipsize.
+// Sets the type of ellipsization being performed for @layout.
+// Depending on the ellipsization mode @ellipsize text is
+// removed from the start, middle, or end of text so they
+// fit within the width and height of layout set with
+// pango_layout_set_width() and pango_layout_set_height().
+//
+// If the layout contains characters such as newlines that
+// force it to be layed out in multiple paragraphs, then whether
+// each paragraph is ellipsized separately or the entire layout
+// is ellipsized as a whole depends on the set height of the layout.
+// See pango_layout_set_height() for details.
+/*
+
+C function : pango_layout_set_ellipsize
+*/
 func (recv *Layout) SetEllipsize(ellipsize EllipsizeMode) {
 	c_ellipsize := (C.PangoEllipsizeMode)(ellipsize)
 

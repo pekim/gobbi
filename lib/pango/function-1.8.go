@@ -10,7 +10,13 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// AttrStrikethroughColorNew is a wrapper around the C function pango_attr_strikethrough_color_new.
+// Create a new strikethrough color attribute. This attribute
+// modifies the color of strikethrough lines. If not set, strikethrough
+// lines will use the foreground color.
+/*
+
+C function : pango_attr_strikethrough_color_new
+*/
 func AttrStrikethroughColorNew(red uint16, green uint16, blue uint16) *Attribute {
 	c_red := (C.guint16)(red)
 
@@ -24,7 +30,13 @@ func AttrStrikethroughColorNew(red uint16, green uint16, blue uint16) *Attribute
 	return retGo
 }
 
-// AttrUnderlineColorNew is a wrapper around the C function pango_attr_underline_color_new.
+// Create a new underline color attribute. This attribute
+// modifies the color of underlines. If not set, underlines
+// will use the foreground color.
+/*
+
+C function : pango_attr_underline_color_new
+*/
 func AttrUnderlineColorNew(red uint16, green uint16, blue uint16) *Attribute {
 	c_red := (C.guint16)(red)
 

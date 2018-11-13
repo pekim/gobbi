@@ -15,7 +15,12 @@ import "C"
 
 // Unsupported : gdk_drag_find_window_for_screen : unsupported parameter protocol : GdkDragProtocol* with indirection level of 1
 
-// GetDisplayArgName is a wrapper around the C function gdk_get_display_arg_name.
+// Gets the display name specified in the command line arguments passed
+// to gdk_init() or gdk_parse_args(), if any.
+/*
+
+C function : gdk_get_display_arg_name
+*/
 func GetDisplayArgName() string {
 	retC := C.gdk_get_display_arg_name()
 	retGo := C.GoString(retC)
@@ -23,14 +28,41 @@ func GetDisplayArgName() string {
 	return retGo
 }
 
-// NotifyStartupComplete is a wrapper around the C function gdk_notify_startup_complete.
+// Indicates to the GUI environment that the application has finished
+// loading. If the applications opens windows, this function is
+// normally called after opening the application’s initial set of
+// windows.
+//
+// GTK+ will call this function automatically after opening the first
+// #GtkWindow unless gtk_window_set_auto_startup_notification() is called
+// to disable that feature.
+/*
+
+C function : gdk_notify_startup_complete
+*/
 func NotifyStartupComplete() {
 	C.gdk_notify_startup_complete()
 
 	return
 }
 
-// PangoContextGetForScreen is a wrapper around the C function gdk_pango_context_get_for_screen.
+// Creates a #PangoContext for @screen.
+//
+// The context must be freed when you’re finished with it.
+//
+// When using GTK+, normally you should use gtk_widget_get_pango_context()
+// instead of this function, to get the appropriate context for
+// the widget you intend to render text onto.
+//
+// The newly created context will have the default font options
+// (see #cairo_font_options_t) for the screen; if these options
+// change it will not be updated. Using gtk_widget_get_pango_context()
+// is more convenient if you want to keep a context around and track
+// changes to the screen’s font rendering settings.
+/*
+
+C function : gdk_pango_context_get_for_screen
+*/
 func PangoContextGetForScreen(screen *Screen) *pango.Context {
 	c_screen := (*C.GdkScreen)(C.NULL)
 	if screen != nil {
@@ -43,7 +75,18 @@ func PangoContextGetForScreen(screen *Screen) *pango.Context {
 	return retGo
 }
 
-// ParseArgs is a wrapper around the C function gdk_parse_args.
+// Parse command line arguments, and store for future
+// use by calls to gdk_display_open().
+//
+// Any arguments used by GDK are removed from the array and @argc and @argv are
+// updated accordingly.
+//
+// You shouldn’t call this function explicitly if you are using
+// gtk_init(), gtk_init_check(), gdk_init(), or gdk_init_check().
+/*
+
+C function : gdk_parse_args
+*/
 func ParseArgs(args []string) []string {
 	cArgc, cArgv := argsIn(args)
 

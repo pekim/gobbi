@@ -258,7 +258,15 @@ func action_activateHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// ActionNew is a wrapper around the C function gtk_action_new.
+// Creates a new #GtkAction object. To add the action to a
+// #GtkActionGroup and set the accelerator for the action,
+// call gtk_action_group_add_action_with_accel().
+// See the [UI Definition section][XML-UI] for information on allowed action
+// names.
+/*
+
+C function : gtk_action_new
+*/
 func ActionNew(name string, label string, tooltip string, stockId string) *Action {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -278,21 +286,45 @@ func ActionNew(name string, label string, tooltip string, stockId string) *Actio
 	return retGo
 }
 
-// Activate is a wrapper around the C function gtk_action_activate.
+// Emits the “activate” signal on the specified action, if it isn't
+// insensitive. This gets called by the proxy widgets when they get
+// activated.
+//
+// It can also be used to manually activate an action.
+/*
+
+C function : gtk_action_activate
+*/
 func (recv *Action) Activate() {
 	C.gtk_action_activate((*C.GtkAction)(recv.native))
 
 	return
 }
 
-// ConnectAccelerator is a wrapper around the C function gtk_action_connect_accelerator.
+// Installs the accelerator for @action if @action has an
+// accel path and group. See gtk_action_set_accel_path() and
+// gtk_action_set_accel_group()
+//
+// Since multiple proxies may independently trigger the installation
+// of the accelerator, the @action counts the number of times this
+// function has been called and doesn’t remove the accelerator until
+// gtk_action_disconnect_accelerator() has been called as many times.
+/*
+
+C function : gtk_action_connect_accelerator
+*/
 func (recv *Action) ConnectAccelerator() {
 	C.gtk_action_connect_accelerator((*C.GtkAction)(recv.native))
 
 	return
 }
 
-// CreateIcon is a wrapper around the C function gtk_action_create_icon.
+// This function is intended for use by action implementations to
+// create icons displayed in the proxy widgets.
+/*
+
+C function : gtk_action_create_icon
+*/
 func (recv *Action) CreateIcon(iconSize IconSize) *Widget {
 	c_icon_size := (C.GtkIconSize)(iconSize)
 
@@ -302,7 +334,11 @@ func (recv *Action) CreateIcon(iconSize IconSize) *Widget {
 	return retGo
 }
 
-// CreateMenuItem is a wrapper around the C function gtk_action_create_menu_item.
+// Creates a menu item widget that proxies for the given action.
+/*
+
+C function : gtk_action_create_menu_item
+*/
 func (recv *Action) CreateMenuItem() *Widget {
 	retC := C.gtk_action_create_menu_item((*C.GtkAction)(recv.native))
 	retGo := WidgetNewFromC(unsafe.Pointer(retC))
@@ -310,7 +346,11 @@ func (recv *Action) CreateMenuItem() *Widget {
 	return retGo
 }
 
-// CreateToolItem is a wrapper around the C function gtk_action_create_tool_item.
+// Creates a toolbar item widget that proxies for the given action.
+/*
+
+C function : gtk_action_create_tool_item
+*/
 func (recv *Action) CreateToolItem() *Widget {
 	retC := C.gtk_action_create_tool_item((*C.GtkAction)(recv.native))
 	retGo := WidgetNewFromC(unsafe.Pointer(retC))
@@ -318,14 +358,22 @@ func (recv *Action) CreateToolItem() *Widget {
 	return retGo
 }
 
-// DisconnectAccelerator is a wrapper around the C function gtk_action_disconnect_accelerator.
+// Undoes the effect of one call to gtk_action_connect_accelerator().
+/*
+
+C function : gtk_action_disconnect_accelerator
+*/
 func (recv *Action) DisconnectAccelerator() {
 	C.gtk_action_disconnect_accelerator((*C.GtkAction)(recv.native))
 
 	return
 }
 
-// GetName is a wrapper around the C function gtk_action_get_name.
+// Returns the name of the action.
+/*
+
+C function : gtk_action_get_name
+*/
 func (recv *Action) GetName() string {
 	retC := C.gtk_action_get_name((*C.GtkAction)(recv.native))
 	retGo := C.GoString(retC)
@@ -333,7 +381,12 @@ func (recv *Action) GetName() string {
 	return retGo
 }
 
-// GetProxies is a wrapper around the C function gtk_action_get_proxies.
+// Returns the proxy widgets for an action.
+// See also gtk_activatable_get_related_action().
+/*
+
+C function : gtk_action_get_proxies
+*/
 func (recv *Action) GetProxies() *glib.SList {
 	retC := C.gtk_action_get_proxies((*C.GtkAction)(recv.native))
 	retGo := glib.SListNewFromC(unsafe.Pointer(retC))
@@ -341,7 +394,13 @@ func (recv *Action) GetProxies() *glib.SList {
 	return retGo
 }
 
-// GetSensitive is a wrapper around the C function gtk_action_get_sensitive.
+// Returns whether the action itself is sensitive. Note that this doesn’t
+// necessarily mean effective sensitivity. See gtk_action_is_sensitive()
+// for that.
+/*
+
+C function : gtk_action_get_sensitive
+*/
 func (recv *Action) GetSensitive() bool {
 	retC := C.gtk_action_get_sensitive((*C.GtkAction)(recv.native))
 	retGo := retC == C.TRUE
@@ -349,7 +408,13 @@ func (recv *Action) GetSensitive() bool {
 	return retGo
 }
 
-// GetVisible is a wrapper around the C function gtk_action_get_visible.
+// Returns whether the action itself is visible. Note that this doesn’t
+// necessarily mean effective visibility. See gtk_action_is_sensitive()
+// for that.
+/*
+
+C function : gtk_action_get_visible
+*/
 func (recv *Action) GetVisible() bool {
 	retC := C.gtk_action_get_visible((*C.GtkAction)(recv.native))
 	retGo := retC == C.TRUE
@@ -357,7 +422,11 @@ func (recv *Action) GetVisible() bool {
 	return retGo
 }
 
-// IsSensitive is a wrapper around the C function gtk_action_is_sensitive.
+// Returns whether the action is effectively sensitive.
+/*
+
+C function : gtk_action_is_sensitive
+*/
 func (recv *Action) IsSensitive() bool {
 	retC := C.gtk_action_is_sensitive((*C.GtkAction)(recv.native))
 	retGo := retC == C.TRUE
@@ -365,7 +434,11 @@ func (recv *Action) IsSensitive() bool {
 	return retGo
 }
 
-// IsVisible is a wrapper around the C function gtk_action_is_visible.
+// Returns whether the action is effectively visible.
+/*
+
+C function : gtk_action_is_visible
+*/
 func (recv *Action) IsVisible() bool {
 	retC := C.gtk_action_is_visible((*C.GtkAction)(recv.native))
 	retGo := retC == C.TRUE
@@ -373,7 +446,12 @@ func (recv *Action) IsVisible() bool {
 	return retGo
 }
 
-// SetAccelGroup is a wrapper around the C function gtk_action_set_accel_group.
+// Sets the #GtkAccelGroup in which the accelerator for this action
+// will be installed.
+/*
+
+C function : gtk_action_set_accel_group
+*/
 func (recv *Action) SetAccelGroup(accelGroup *AccelGroup) {
 	c_accel_group := (*C.GtkAccelGroup)(C.NULL)
 	if accelGroup != nil {
@@ -385,7 +463,17 @@ func (recv *Action) SetAccelGroup(accelGroup *AccelGroup) {
 	return
 }
 
-// SetAccelPath is a wrapper around the C function gtk_action_set_accel_path.
+// Sets the accel path for this action.  All proxy widgets associated
+// with the action will have this accel path, so that their
+// accelerators are consistent.
+//
+// Note that @accel_path string will be stored in a #GQuark. Therefore, if you
+// pass a static string, you can save some memory by interning it first with
+// g_intern_static_string().
+/*
+
+C function : gtk_action_set_accel_path
+*/
 func (recv *Action) SetAccelPath(accelPath string) {
 	c_accel_path := C.CString(accelPath)
 	defer C.free(unsafe.Pointer(c_accel_path))
@@ -635,7 +723,13 @@ func actiongroup_preActivateHandler(_ *C.GObject, c_action *C.GtkAction, data C.
 	callback(action)
 }
 
-// ActionGroupNew is a wrapper around the C function gtk_action_group_new.
+// Creates a new #GtkActionGroup object. The name of the action group
+// is used when associating [keybindings][Action-Accel]
+// with the actions.
+/*
+
+C function : gtk_action_group_new
+*/
 func ActionGroupNew(name string) *ActionGroup {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -646,7 +740,16 @@ func ActionGroupNew(name string) *ActionGroup {
 	return retGo
 }
 
-// AddAction is a wrapper around the C function gtk_action_group_add_action.
+// Adds an action object to the action group. Note that this function
+// does not set up the accel path of the action, which can lead to problems
+// if a user tries to modify the accelerator of a menuitem associated with
+// the action. Therefore you must either set the accel path yourself with
+// gtk_action_set_accel_path(), or use
+// `gtk_action_group_add_action_with_accel (..., NULL)`.
+/*
+
+C function : gtk_action_group_add_action
+*/
 func (recv *ActionGroup) AddAction(action *Action) {
 	c_action := (*C.GtkAction)(C.NULL)
 	if action != nil {
@@ -658,7 +761,16 @@ func (recv *ActionGroup) AddAction(action *Action) {
 	return
 }
 
-// AddActionWithAccel is a wrapper around the C function gtk_action_group_add_action_with_accel.
+// Adds an action object to the action group and sets up the accelerator.
+//
+// If @accelerator is %NULL, attempts to use the accelerator associated
+// with the stock_id of the action.
+//
+// Accel paths are set to `<Actions>/group-name/action-name`.
+/*
+
+C function : gtk_action_group_add_action_with_accel
+*/
 func (recv *ActionGroup) AddActionWithAccel(action *Action, accelerator string) {
 	c_action := (*C.GtkAction)(C.NULL)
 	if action != nil {
@@ -685,7 +797,11 @@ func (recv *ActionGroup) AddActionWithAccel(action *Action, accelerator string) 
 
 // Unsupported : gtk_action_group_add_toggle_actions_full : unsupported parameter entries :
 
-// GetAction is a wrapper around the C function gtk_action_group_get_action.
+// Looks up an action in the action group by name.
+/*
+
+C function : gtk_action_group_get_action
+*/
 func (recv *ActionGroup) GetAction(actionName string) *Action {
 	c_action_name := C.CString(actionName)
 	defer C.free(unsafe.Pointer(c_action_name))
@@ -696,7 +812,11 @@ func (recv *ActionGroup) GetAction(actionName string) *Action {
 	return retGo
 }
 
-// GetName is a wrapper around the C function gtk_action_group_get_name.
+// Gets the name of the action group.
+/*
+
+C function : gtk_action_group_get_name
+*/
 func (recv *ActionGroup) GetName() string {
 	retC := C.gtk_action_group_get_name((*C.GtkActionGroup)(recv.native))
 	retGo := C.GoString(retC)
@@ -704,7 +824,14 @@ func (recv *ActionGroup) GetName() string {
 	return retGo
 }
 
-// GetSensitive is a wrapper around the C function gtk_action_group_get_sensitive.
+// Returns %TRUE if the group is sensitive.  The constituent actions
+// can only be logically sensitive (see gtk_action_is_sensitive()) if
+// they are sensitive (see gtk_action_get_sensitive()) and their group
+// is sensitive.
+/*
+
+C function : gtk_action_group_get_sensitive
+*/
 func (recv *ActionGroup) GetSensitive() bool {
 	retC := C.gtk_action_group_get_sensitive((*C.GtkActionGroup)(recv.native))
 	retGo := retC == C.TRUE
@@ -712,7 +839,14 @@ func (recv *ActionGroup) GetSensitive() bool {
 	return retGo
 }
 
-// GetVisible is a wrapper around the C function gtk_action_group_get_visible.
+// Returns %TRUE if the group is visible.  The constituent actions
+// can only be logically visible (see gtk_action_is_visible()) if
+// they are visible (see gtk_action_get_visible()) and their group
+// is visible.
+/*
+
+C function : gtk_action_group_get_visible
+*/
 func (recv *ActionGroup) GetVisible() bool {
 	retC := C.gtk_action_group_get_visible((*C.GtkActionGroup)(recv.native))
 	retGo := retC == C.TRUE
@@ -720,7 +854,11 @@ func (recv *ActionGroup) GetVisible() bool {
 	return retGo
 }
 
-// ListActions is a wrapper around the C function gtk_action_group_list_actions.
+// Lists the actions in the action group.
+/*
+
+C function : gtk_action_group_list_actions
+*/
 func (recv *ActionGroup) ListActions() *glib.List {
 	retC := C.gtk_action_group_list_actions((*C.GtkActionGroup)(recv.native))
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
@@ -728,7 +866,11 @@ func (recv *ActionGroup) ListActions() *glib.List {
 	return retGo
 }
 
-// RemoveAction is a wrapper around the C function gtk_action_group_remove_action.
+// Removes an action object from the action group.
+/*
+
+C function : gtk_action_group_remove_action
+*/
 func (recv *ActionGroup) RemoveAction(action *Action) {
 	c_action := (*C.GtkAction)(C.NULL)
 	if action != nil {
@@ -740,7 +882,11 @@ func (recv *ActionGroup) RemoveAction(action *Action) {
 	return
 }
 
-// SetSensitive is a wrapper around the C function gtk_action_group_set_sensitive.
+// Changes the sensitivity of @action_group
+/*
+
+C function : gtk_action_group_set_sensitive
+*/
 func (recv *ActionGroup) SetSensitive(sensitive bool) {
 	c_sensitive :=
 		boolToGboolean(sensitive)
@@ -752,7 +898,16 @@ func (recv *ActionGroup) SetSensitive(sensitive bool) {
 
 // Unsupported : gtk_action_group_set_translate_func : unsupported parameter func : no type generator for TranslateFunc (GtkTranslateFunc) for param func
 
-// SetTranslationDomain is a wrapper around the C function gtk_action_group_set_translation_domain.
+// Sets the translation domain and uses g_dgettext() for translating the
+// @label and @tooltip of #GtkActionEntrys added by
+// gtk_action_group_add_actions().
+//
+// If you’re not using gettext() for localization, see
+// gtk_action_group_set_translate_func().
+/*
+
+C function : gtk_action_group_set_translation_domain
+*/
 func (recv *ActionGroup) SetTranslationDomain(domain string) {
 	c_domain := C.CString(domain)
 	defer C.free(unsafe.Pointer(c_domain))
@@ -762,7 +917,11 @@ func (recv *ActionGroup) SetTranslationDomain(domain string) {
 	return
 }
 
-// SetVisible is a wrapper around the C function gtk_action_group_set_visible.
+// Changes the visible of @action_group.
+/*
+
+C function : gtk_action_group_set_visible
+*/
 func (recv *ActionGroup) SetVisible(visible bool) {
 	c_visible :=
 		boolToGboolean(visible)
@@ -772,7 +931,12 @@ func (recv *ActionGroup) SetVisible(visible bool) {
 	return
 }
 
-// GetPadding is a wrapper around the C function gtk_alignment_get_padding.
+// Gets the padding on the different sides of the widget.
+// See gtk_alignment_set_padding ().
+/*
+
+C function : gtk_alignment_get_padding
+*/
 func (recv *Alignment) GetPadding() (uint32, uint32, uint32, uint32) {
 	var c_padding_top C.guint
 
@@ -795,7 +959,14 @@ func (recv *Alignment) GetPadding() (uint32, uint32, uint32, uint32) {
 	return paddingTop, paddingBottom, paddingLeft, paddingRight
 }
 
-// SetPadding is a wrapper around the C function gtk_alignment_set_padding.
+// Sets the padding on the different sides of the widget.
+// The padding adds blank space to the sides of the widget. For instance,
+// this can be used to indent the child widget towards the right by adding
+// padding on the left.
+/*
+
+C function : gtk_alignment_set_padding
+*/
 func (recv *Alignment) SetPadding(paddingTop uint32, paddingBottom uint32, paddingLeft uint32, paddingRight uint32) {
 	c_padding_top := (C.guint)(paddingTop)
 
@@ -810,7 +981,11 @@ func (recv *Alignment) SetPadding(paddingTop uint32, paddingBottom uint32, paddi
 	return
 }
 
-// GetAlignment is a wrapper around the C function gtk_button_get_alignment.
+// Gets the alignment of the child in the button.
+/*
+
+C function : gtk_button_get_alignment
+*/
 func (recv *Button) GetAlignment() (float32, float32) {
 	var c_xalign C.gfloat
 
@@ -825,7 +1000,12 @@ func (recv *Button) GetAlignment() (float32, float32) {
 	return xalign, yalign
 }
 
-// GetFocusOnClick is a wrapper around the C function gtk_button_get_focus_on_click.
+// Returns whether the button grabs focus when it is clicked with the mouse.
+// See gtk_button_set_focus_on_click().
+/*
+
+C function : gtk_button_get_focus_on_click
+*/
 func (recv *Button) GetFocusOnClick() bool {
 	retC := C.gtk_button_get_focus_on_click((*C.GtkButton)(recv.native))
 	retGo := retC == C.TRUE
@@ -833,7 +1013,12 @@ func (recv *Button) GetFocusOnClick() bool {
 	return retGo
 }
 
-// SetAlignment is a wrapper around the C function gtk_button_set_alignment.
+// Sets the alignment of the child. This property has no effect unless
+// the child is a #GtkMisc or a #GtkAlignment.
+/*
+
+C function : gtk_button_set_alignment
+*/
 func (recv *Button) SetAlignment(xalign float32, yalign float32) {
 	c_xalign := (C.gfloat)(xalign)
 
@@ -844,7 +1029,14 @@ func (recv *Button) SetAlignment(xalign float32, yalign float32) {
 	return
 }
 
-// SetFocusOnClick is a wrapper around the C function gtk_button_set_focus_on_click.
+// Sets whether the button will grab focus when it is clicked with the mouse.
+// Making mouse clicks not grab focus is useful in places like toolbars where
+// you don’t want the keyboard focus removed from the main area of the
+// application.
+/*
+
+C function : gtk_button_set_focus_on_click
+*/
 func (recv *Button) SetFocusOnClick(focusOnClick bool) {
 	c_focus_on_click :=
 		boolToGboolean(focusOnClick)
@@ -854,7 +1046,11 @@ func (recv *Button) SetFocusOnClick(focusOnClick bool) {
 	return
 }
 
-// GetChildSecondary is a wrapper around the C function gtk_button_box_get_child_secondary.
+// Returns whether @child should appear in a secondary group of children.
+/*
+
+C function : gtk_button_box_get_child_secondary
+*/
 func (recv *ButtonBox) GetChildSecondary(child *Widget) bool {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -867,7 +1063,11 @@ func (recv *ButtonBox) GetChildSecondary(child *Widget) bool {
 	return retGo
 }
 
-// GetDisplayOptions is a wrapper around the C function gtk_calendar_get_display_options.
+// Returns the current display options of @calendar.
+/*
+
+C function : gtk_calendar_get_display_options
+*/
 func (recv *Calendar) GetDisplayOptions() CalendarDisplayOptions {
 	retC := C.gtk_calendar_get_display_options((*C.GtkCalendar)(recv.native))
 	retGo := (CalendarDisplayOptions)(retC)
@@ -875,7 +1075,12 @@ func (recv *Calendar) GetDisplayOptions() CalendarDisplayOptions {
 	return retGo
 }
 
-// SetDisplayOptions is a wrapper around the C function gtk_calendar_set_display_options.
+// Sets display options (whether to display the heading and the month
+// headings).
+/*
+
+C function : gtk_calendar_set_display_options
+*/
 func (recv *Calendar) SetDisplayOptions(flags CalendarDisplayOptions) {
 	c_flags := (C.GtkCalendarDisplayOptions)(flags)
 
@@ -941,7 +1146,11 @@ func cellrenderer_editingCanceledHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// GetDrawAsRadio is a wrapper around the C function gtk_check_menu_item_get_draw_as_radio.
+// Returns whether @check_menu_item looks like a #GtkRadioMenuItem
+/*
+
+C function : gtk_check_menu_item_get_draw_as_radio
+*/
 func (recv *CheckMenuItem) GetDrawAsRadio() bool {
 	retC := C.gtk_check_menu_item_get_draw_as_radio((*C.GtkCheckMenuItem)(recv.native))
 	retGo := retC == C.TRUE
@@ -949,7 +1158,11 @@ func (recv *CheckMenuItem) GetDrawAsRadio() bool {
 	return retGo
 }
 
-// SetDrawAsRadio is a wrapper around the C function gtk_check_menu_item_set_draw_as_radio.
+// Sets whether @check_menu_item is drawn like a #GtkRadioMenuItem
+/*
+
+C function : gtk_check_menu_item_set_draw_as_radio
+*/
 func (recv *CheckMenuItem) SetDrawAsRadio(drawAsRadio bool) {
 	c_draw_as_radio :=
 		boolToGboolean(drawAsRadio)
@@ -1020,7 +1233,17 @@ func colorbutton_colorSetHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// ColorButtonNew is a wrapper around the C function gtk_color_button_new.
+// Creates a new color button.
+//
+// This returns a widget in the form of a small button containing
+// a swatch representing the current selected color. When the button
+// is clicked, a color-selection dialog will open, allowing the user
+// to select a color. The swatch will be updated to reflect the new
+// color when the user finishes.
+/*
+
+C function : gtk_color_button_new
+*/
 func ColorButtonNew() *ColorButton {
 	retC := C.gtk_color_button_new()
 	retGo := ColorButtonNewFromC(unsafe.Pointer(retC))
@@ -1028,7 +1251,11 @@ func ColorButtonNew() *ColorButton {
 	return retGo
 }
 
-// ColorButtonNewWithColor is a wrapper around the C function gtk_color_button_new_with_color.
+// Creates a new color button.
+/*
+
+C function : gtk_color_button_new_with_color
+*/
 func ColorButtonNewWithColor(color *gdk.Color) *ColorButton {
 	c_color := (*C.GdkColor)(C.NULL)
 	if color != nil {
@@ -1041,7 +1268,11 @@ func ColorButtonNewWithColor(color *gdk.Color) *ColorButton {
 	return retGo
 }
 
-// GetAlpha is a wrapper around the C function gtk_color_button_get_alpha.
+// Returns the current alpha value.
+/*
+
+C function : gtk_color_button_get_alpha
+*/
 func (recv *ColorButton) GetAlpha() uint16 {
 	retC := C.gtk_color_button_get_alpha((*C.GtkColorButton)(recv.native))
 	retGo := (uint16)(retC)
@@ -1049,7 +1280,11 @@ func (recv *ColorButton) GetAlpha() uint16 {
 	return retGo
 }
 
-// GetColor is a wrapper around the C function gtk_color_button_get_color.
+// Sets @color to be the current color in the #GtkColorButton widget.
+/*
+
+C function : gtk_color_button_get_color
+*/
 func (recv *ColorButton) GetColor() *gdk.Color {
 	var c_color C.GdkColor
 
@@ -1060,7 +1295,11 @@ func (recv *ColorButton) GetColor() *gdk.Color {
 	return color
 }
 
-// GetTitle is a wrapper around the C function gtk_color_button_get_title.
+// Gets the title of the color selection dialog.
+/*
+
+C function : gtk_color_button_get_title
+*/
 func (recv *ColorButton) GetTitle() string {
 	retC := C.gtk_color_button_get_title((*C.GtkColorButton)(recv.native))
 	retGo := C.GoString(retC)
@@ -1068,7 +1307,11 @@ func (recv *ColorButton) GetTitle() string {
 	return retGo
 }
 
-// GetUseAlpha is a wrapper around the C function gtk_color_button_get_use_alpha.
+// Does the color selection dialog use the alpha channel ?
+/*
+
+C function : gtk_color_button_get_use_alpha
+*/
 func (recv *ColorButton) GetUseAlpha() bool {
 	retC := C.gtk_color_button_get_use_alpha((*C.GtkColorButton)(recv.native))
 	retGo := retC == C.TRUE
@@ -1076,7 +1319,11 @@ func (recv *ColorButton) GetUseAlpha() bool {
 	return retGo
 }
 
-// SetAlpha is a wrapper around the C function gtk_color_button_set_alpha.
+// Sets the current opacity to be @alpha.
+/*
+
+C function : gtk_color_button_set_alpha
+*/
 func (recv *ColorButton) SetAlpha(alpha uint16) {
 	c_alpha := (C.guint16)(alpha)
 
@@ -1085,7 +1332,11 @@ func (recv *ColorButton) SetAlpha(alpha uint16) {
 	return
 }
 
-// SetColor is a wrapper around the C function gtk_color_button_set_color.
+// Sets the current color to be @color.
+/*
+
+C function : gtk_color_button_set_color
+*/
 func (recv *ColorButton) SetColor(color *gdk.Color) {
 	c_color := (*C.GdkColor)(C.NULL)
 	if color != nil {
@@ -1097,7 +1348,11 @@ func (recv *ColorButton) SetColor(color *gdk.Color) {
 	return
 }
 
-// SetTitle is a wrapper around the C function gtk_color_button_set_title.
+// Sets the title for the color selection dialog.
+/*
+
+C function : gtk_color_button_set_title
+*/
 func (recv *ColorButton) SetTitle(title string) {
 	c_title := C.CString(title)
 	defer C.free(unsafe.Pointer(c_title))
@@ -1107,7 +1362,11 @@ func (recv *ColorButton) SetTitle(title string) {
 	return
 }
 
-// SetUseAlpha is a wrapper around the C function gtk_color_button_set_use_alpha.
+// Sets whether or not the color button should use the alpha channel.
+/*
+
+C function : gtk_color_button_set_use_alpha
+*/
 func (recv *ColorButton) SetUseAlpha(useAlpha bool) {
 	c_use_alpha :=
 		boolToGboolean(useAlpha)
@@ -1174,7 +1433,11 @@ func combobox_changedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// ComboBoxNew is a wrapper around the C function gtk_combo_box_new.
+// Creates a new empty #GtkComboBox.
+/*
+
+C function : gtk_combo_box_new
+*/
 func ComboBoxNew() *ComboBox {
 	retC := C.gtk_combo_box_new()
 	retGo := ComboBoxNewFromC(unsafe.Pointer(retC))
@@ -1182,7 +1445,11 @@ func ComboBoxNew() *ComboBox {
 	return retGo
 }
 
-// ComboBoxNewWithModel is a wrapper around the C function gtk_combo_box_new_with_model.
+// Creates a new #GtkComboBox with the model initialized to @model.
+/*
+
+C function : gtk_combo_box_new_with_model
+*/
 func ComboBoxNewWithModel(model *TreeModel) *ComboBox {
 	c_model := (*C.GtkTreeModel)(model.ToC())
 
@@ -1192,7 +1459,15 @@ func ComboBoxNewWithModel(model *TreeModel) *ComboBox {
 	return retGo
 }
 
-// GetActive is a wrapper around the C function gtk_combo_box_get_active.
+// Returns the index of the currently active item, or -1 if there’s no
+// active item. If the model is a non-flat treemodel, and the active item
+// is not an immediate child of the root of the tree, this function returns
+// `gtk_tree_path_get_indices (path)[0]`, where
+// `path` is the #GtkTreePath of the active item.
+/*
+
+C function : gtk_combo_box_get_active
+*/
 func (recv *ComboBox) GetActive() int32 {
 	retC := C.gtk_combo_box_get_active((*C.GtkComboBox)(recv.native))
 	retGo := (int32)(retC)
@@ -1200,7 +1475,12 @@ func (recv *ComboBox) GetActive() int32 {
 	return retGo
 }
 
-// GetActiveIter is a wrapper around the C function gtk_combo_box_get_active_iter.
+// Sets @iter to point to the currently active item, if any item is active.
+// Otherwise, @iter is left unchanged.
+/*
+
+C function : gtk_combo_box_get_active_iter
+*/
 func (recv *ComboBox) GetActiveIter() (bool, *TreeIter) {
 	var c_iter C.GtkTreeIter
 
@@ -1212,7 +1492,11 @@ func (recv *ComboBox) GetActiveIter() (bool, *TreeIter) {
 	return retGo, iter
 }
 
-// GetModel is a wrapper around the C function gtk_combo_box_get_model.
+// Returns the #GtkTreeModel which is acting as data source for @combo_box.
+/*
+
+C function : gtk_combo_box_get_model
+*/
 func (recv *ComboBox) GetModel() *TreeModel {
 	retC := C.gtk_combo_box_get_model((*C.GtkComboBox)(recv.native))
 	retGo := TreeModelNewFromC(unsafe.Pointer(retC))
@@ -1220,21 +1504,41 @@ func (recv *ComboBox) GetModel() *TreeModel {
 	return retGo
 }
 
-// Popdown is a wrapper around the C function gtk_combo_box_popdown.
+// Hides the menu or dropdown list of @combo_box.
+//
+// This function is mostly intended for use by accessibility technologies;
+// applications should have little use for it.
+/*
+
+C function : gtk_combo_box_popdown
+*/
 func (recv *ComboBox) Popdown() {
 	C.gtk_combo_box_popdown((*C.GtkComboBox)(recv.native))
 
 	return
 }
 
-// Popup is a wrapper around the C function gtk_combo_box_popup.
+// Pops up the menu or dropdown list of @combo_box.
+//
+// This function is mostly intended for use by accessibility technologies;
+// applications should have little use for it.
+//
+// Before calling this, @combo_box must be mapped, or nothing will happen.
+/*
+
+C function : gtk_combo_box_popup
+*/
 func (recv *ComboBox) Popup() {
 	C.gtk_combo_box_popup((*C.GtkComboBox)(recv.native))
 
 	return
 }
 
-// SetActive is a wrapper around the C function gtk_combo_box_set_active.
+// Sets the active item of @combo_box to be the item at @index.
+/*
+
+C function : gtk_combo_box_set_active
+*/
 func (recv *ComboBox) SetActive(index int32) {
 	c_index_ := (C.gint)(index)
 
@@ -1243,7 +1547,12 @@ func (recv *ComboBox) SetActive(index int32) {
 	return
 }
 
-// SetActiveIter is a wrapper around the C function gtk_combo_box_set_active_iter.
+// Sets the current active item to be the one referenced by @iter, or
+// unsets the active item if @iter is %NULL.
+/*
+
+C function : gtk_combo_box_set_active_iter
+*/
 func (recv *ComboBox) SetActiveIter(iter *TreeIter) {
 	c_iter := (*C.GtkTreeIter)(C.NULL)
 	if iter != nil {
@@ -1255,7 +1564,13 @@ func (recv *ComboBox) SetActiveIter(iter *TreeIter) {
 	return
 }
 
-// SetColumnSpanColumn is a wrapper around the C function gtk_combo_box_set_column_span_column.
+// Sets the column with column span information for @combo_box to be
+// @column_span. The column span column contains integers which indicate
+// how many columns an item should span.
+/*
+
+C function : gtk_combo_box_set_column_span_column
+*/
 func (recv *ComboBox) SetColumnSpanColumn(columnSpan int32) {
 	c_column_span := (C.gint)(columnSpan)
 
@@ -1264,7 +1579,16 @@ func (recv *ComboBox) SetColumnSpanColumn(columnSpan int32) {
 	return
 }
 
-// SetModel is a wrapper around the C function gtk_combo_box_set_model.
+// Sets the model used by @combo_box to be @model. Will unset a previously set
+// model (if applicable). If model is %NULL, then it will unset the model.
+//
+// Note that this function does not clear the cell renderers, you have to
+// call gtk_cell_layout_clear() yourself if you need to set up different
+// cell renderers for the new model.
+/*
+
+C function : gtk_combo_box_set_model
+*/
 func (recv *ComboBox) SetModel(model *TreeModel) {
 	c_model := (*C.GtkTreeModel)(model.ToC())
 
@@ -1273,7 +1597,13 @@ func (recv *ComboBox) SetModel(model *TreeModel) {
 	return
 }
 
-// SetRowSpanColumn is a wrapper around the C function gtk_combo_box_set_row_span_column.
+// Sets the column with row span information for @combo_box to be @row_span.
+// The row span column contains integers which indicate how many rows
+// an item should span.
+/*
+
+C function : gtk_combo_box_set_row_span_column
+*/
 func (recv *ComboBox) SetRowSpanColumn(rowSpan int32) {
 	c_row_span := (C.gint)(rowSpan)
 
@@ -1282,7 +1612,13 @@ func (recv *ComboBox) SetRowSpanColumn(rowSpan int32) {
 	return
 }
 
-// SetWrapWidth is a wrapper around the C function gtk_combo_box_set_wrap_width.
+// Sets the wrap width of @combo_box to be @width. The wrap width is basically
+// the preferred number of columns when you want the popup to be layed out
+// in a table.
+/*
+
+C function : gtk_combo_box_set_wrap_width
+*/
 func (recv *ComboBox) SetWrapWidth(width int32) {
 	c_width := (C.gint)(width)
 
@@ -1291,7 +1627,11 @@ func (recv *ComboBox) SetWrapWidth(width int32) {
 	return
 }
 
-// GetAlignment is a wrapper around the C function gtk_entry_get_alignment.
+// Gets the value set by gtk_entry_set_alignment().
+/*
+
+C function : gtk_entry_get_alignment
+*/
 func (recv *Entry) GetAlignment() float32 {
 	retC := C.gtk_entry_get_alignment((*C.GtkEntry)(recv.native))
 	retGo := (float32)(retC)
@@ -1299,7 +1639,11 @@ func (recv *Entry) GetAlignment() float32 {
 	return retGo
 }
 
-// GetCompletion is a wrapper around the C function gtk_entry_get_completion.
+// Returns the auxiliary completion object currently in use by @entry.
+/*
+
+C function : gtk_entry_get_completion
+*/
 func (recv *Entry) GetCompletion() *EntryCompletion {
 	retC := C.gtk_entry_get_completion((*C.GtkEntry)(recv.native))
 	retGo := EntryCompletionNewFromC(unsafe.Pointer(retC))
@@ -1307,7 +1651,13 @@ func (recv *Entry) GetCompletion() *EntryCompletion {
 	return retGo
 }
 
-// SetAlignment is a wrapper around the C function gtk_entry_set_alignment.
+// Sets the alignment for the contents of the entry. This controls
+// the horizontal positioning of the contents when the displayed
+// text is shorter than the width of the entry.
+/*
+
+C function : gtk_entry_set_alignment
+*/
 func (recv *Entry) SetAlignment(xalign float32) {
 	c_xalign := (C.gfloat)(xalign)
 
@@ -1316,7 +1666,14 @@ func (recv *Entry) SetAlignment(xalign float32) {
 	return
 }
 
-// SetCompletion is a wrapper around the C function gtk_entry_set_completion.
+// Sets @completion to be the auxiliary completion object to use with @entry.
+// All further configuration of the completion mechanism is done on
+// @completion using the #GtkEntryCompletion API. Completion is disabled if
+// @completion is set to %NULL.
+/*
+
+C function : gtk_entry_set_completion
+*/
 func (recv *Entry) SetCompletion(completion *EntryCompletion) {
 	c_completion := (*C.GtkEntryCompletion)(C.NULL)
 	if completion != nil {
@@ -1394,7 +1751,11 @@ func entrycompletion_matchSelectedHandler(_ *C.GObject, c_model *C.GtkTreeModel,
 	return retC
 }
 
-// EntryCompletionNew is a wrapper around the C function gtk_entry_completion_new.
+// Creates a new #GtkEntryCompletion object.
+/*
+
+C function : gtk_entry_completion_new
+*/
 func EntryCompletionNew() *EntryCompletion {
 	retC := C.gtk_entry_completion_new()
 	retGo := EntryCompletionNewFromC(unsafe.Pointer(retC))
@@ -1402,14 +1763,27 @@ func EntryCompletionNew() *EntryCompletion {
 	return retGo
 }
 
-// Complete is a wrapper around the C function gtk_entry_completion_complete.
+// Requests a completion operation, or in other words a refiltering of the
+// current list with completions, using the current key. The completion list
+// view will be updated accordingly.
+/*
+
+C function : gtk_entry_completion_complete
+*/
 func (recv *EntryCompletion) Complete() {
 	C.gtk_entry_completion_complete((*C.GtkEntryCompletion)(recv.native))
 
 	return
 }
 
-// DeleteAction is a wrapper around the C function gtk_entry_completion_delete_action.
+// Deletes the action at @index_ from @completion’s action list.
+//
+// Note that @index_ is a relative position and the position of an
+// action may have changed since it was inserted.
+/*
+
+C function : gtk_entry_completion_delete_action
+*/
 func (recv *EntryCompletion) DeleteAction(index int32) {
 	c_index_ := (C.gint)(index)
 
@@ -1418,7 +1792,11 @@ func (recv *EntryCompletion) DeleteAction(index int32) {
 	return
 }
 
-// GetEntry is a wrapper around the C function gtk_entry_completion_get_entry.
+// Gets the entry @completion has been attached to.
+/*
+
+C function : gtk_entry_completion_get_entry
+*/
 func (recv *EntryCompletion) GetEntry() *Widget {
 	retC := C.gtk_entry_completion_get_entry((*C.GtkEntryCompletion)(recv.native))
 	retGo := WidgetNewFromC(unsafe.Pointer(retC))
@@ -1426,7 +1804,11 @@ func (recv *EntryCompletion) GetEntry() *Widget {
 	return retGo
 }
 
-// GetMinimumKeyLength is a wrapper around the C function gtk_entry_completion_get_minimum_key_length.
+// Returns the minimum key length as set for @completion.
+/*
+
+C function : gtk_entry_completion_get_minimum_key_length
+*/
 func (recv *EntryCompletion) GetMinimumKeyLength() int32 {
 	retC := C.gtk_entry_completion_get_minimum_key_length((*C.GtkEntryCompletion)(recv.native))
 	retGo := (int32)(retC)
@@ -1434,7 +1816,12 @@ func (recv *EntryCompletion) GetMinimumKeyLength() int32 {
 	return retGo
 }
 
-// GetModel is a wrapper around the C function gtk_entry_completion_get_model.
+// Returns the model the #GtkEntryCompletion is using as data source.
+// Returns %NULL if the model is unset.
+/*
+
+C function : gtk_entry_completion_get_model
+*/
 func (recv *EntryCompletion) GetModel() *TreeModel {
 	retC := C.gtk_entry_completion_get_model((*C.GtkEntryCompletion)(recv.native))
 	var retGo (*TreeModel)
@@ -1447,7 +1834,12 @@ func (recv *EntryCompletion) GetModel() *TreeModel {
 	return retGo
 }
 
-// InsertActionMarkup is a wrapper around the C function gtk_entry_completion_insert_action_markup.
+// Inserts an action in @completion’s action item list at position @index_
+// with markup @markup.
+/*
+
+C function : gtk_entry_completion_insert_action_markup
+*/
 func (recv *EntryCompletion) InsertActionMarkup(index int32, markup string) {
 	c_index_ := (C.gint)(index)
 
@@ -1459,7 +1851,16 @@ func (recv *EntryCompletion) InsertActionMarkup(index int32, markup string) {
 	return
 }
 
-// InsertActionText is a wrapper around the C function gtk_entry_completion_insert_action_text.
+// Inserts an action in @completion’s action item list at position @index_
+// with text @text. If you want the action item to have markup, use
+// gtk_entry_completion_insert_action_markup().
+//
+// Note that @index_ is a relative position in the list of actions and
+// the position of an action can change when deleting a different action.
+/*
+
+C function : gtk_entry_completion_insert_action_text
+*/
 func (recv *EntryCompletion) InsertActionText(index int32, text string) {
 	c_index_ := (C.gint)(index)
 
@@ -1473,7 +1874,14 @@ func (recv *EntryCompletion) InsertActionText(index int32, text string) {
 
 // Unsupported : gtk_entry_completion_set_match_func : unsupported parameter func : no type generator for EntryCompletionMatchFunc (GtkEntryCompletionMatchFunc) for param func
 
-// SetMinimumKeyLength is a wrapper around the C function gtk_entry_completion_set_minimum_key_length.
+// Requires the length of the search key for @completion to be at least
+// @length. This is useful for long lists, where completing using a small
+// key takes a lot of time and will come up with meaningless results anyway
+// (ie, a too large dataset).
+/*
+
+C function : gtk_entry_completion_set_minimum_key_length
+*/
 func (recv *EntryCompletion) SetMinimumKeyLength(length int32) {
 	c_length := (C.gint)(length)
 
@@ -1482,7 +1890,13 @@ func (recv *EntryCompletion) SetMinimumKeyLength(length int32) {
 	return
 }
 
-// SetModel is a wrapper around the C function gtk_entry_completion_set_model.
+// Sets the model for a #GtkEntryCompletion. If @completion already has
+// a model set, it will remove it before setting the new model.
+// If model is %NULL, then it will unset the model.
+/*
+
+C function : gtk_entry_completion_set_model
+*/
 func (recv *EntryCompletion) SetModel(model *TreeModel) {
 	c_model := (*C.GtkTreeModel)(model.ToC())
 
@@ -1491,7 +1905,19 @@ func (recv *EntryCompletion) SetModel(model *TreeModel) {
 	return
 }
 
-// SetTextColumn is a wrapper around the C function gtk_entry_completion_set_text_column.
+// Convenience function for setting up the most used case of this code: a
+// completion list with just strings. This function will set up @completion
+// to have a list displaying all (and just) strings in the completion list,
+// and to get those strings from @column in the model of @completion.
+//
+// This functions creates and adds a #GtkCellRendererText for the selected
+// column. If you need to set the text column, but don't want the cell
+// renderer, use g_object_set() to set the #GtkEntryCompletion:text-column
+// property directly.
+/*
+
+C function : gtk_entry_completion_set_text_column
+*/
 func (recv *EntryCompletion) SetTextColumn(column int32) {
 	c_column := (C.gint)(column)
 
@@ -1500,7 +1926,13 @@ func (recv *EntryCompletion) SetTextColumn(column int32) {
 	return
 }
 
-// GetAboveChild is a wrapper around the C function gtk_event_box_get_above_child.
+// Returns whether the event box window is above or below the
+// windows of its child. See gtk_event_box_set_above_child()
+// for details.
+/*
+
+C function : gtk_event_box_get_above_child
+*/
 func (recv *EventBox) GetAboveChild() bool {
 	retC := C.gtk_event_box_get_above_child((*C.GtkEventBox)(recv.native))
 	retGo := retC == C.TRUE
@@ -1508,7 +1940,12 @@ func (recv *EventBox) GetAboveChild() bool {
 	return retGo
 }
 
-// GetVisibleWindow is a wrapper around the C function gtk_event_box_get_visible_window.
+// Returns whether the event box has a visible window.
+// See gtk_event_box_set_visible_window() for details.
+/*
+
+C function : gtk_event_box_get_visible_window
+*/
 func (recv *EventBox) GetVisibleWindow() bool {
 	retC := C.gtk_event_box_get_visible_window((*C.GtkEventBox)(recv.native))
 	retGo := retC == C.TRUE
@@ -1516,7 +1953,17 @@ func (recv *EventBox) GetVisibleWindow() bool {
 	return retGo
 }
 
-// SetAboveChild is a wrapper around the C function gtk_event_box_set_above_child.
+// Set whether the event box window is positioned above the windows
+// of its child, as opposed to below it. If the window is above, all
+// events inside the event box will go to the event box. If the window
+// is below, events in windows of child widgets will first got to that
+// widget, and then to its parents.
+//
+// The default is to keep the window below the child.
+/*
+
+C function : gtk_event_box_set_above_child
+*/
 func (recv *EventBox) SetAboveChild(aboveChild bool) {
 	c_above_child :=
 		boolToGboolean(aboveChild)
@@ -1526,7 +1973,43 @@ func (recv *EventBox) SetAboveChild(aboveChild bool) {
 	return
 }
 
-// SetVisibleWindow is a wrapper around the C function gtk_event_box_set_visible_window.
+// Set whether the event box uses a visible or invisible child
+// window. The default is to use visible windows.
+//
+// In an invisible window event box, the window that the
+// event box creates is a %GDK_INPUT_ONLY window, which
+// means that it is invisible and only serves to receive
+// events.
+//
+// A visible window event box creates a visible (%GDK_INPUT_OUTPUT)
+// window that acts as the parent window for all the widgets
+// contained in the event box.
+//
+// You should generally make your event box invisible if
+// you just want to trap events. Creating a visible window
+// may cause artifacts that are visible to the user, especially
+// if the user is using a theme with gradients or pixmaps.
+//
+// The main reason to create a non input-only event box is if
+// you want to set the background to a different color or
+// draw on it.
+//
+// There is one unexpected issue for an invisible event box that has its
+// window below the child. (See gtk_event_box_set_above_child().)
+// Since the input-only window is not an ancestor window of any windows
+// that descendent widgets of the event box create, events on these
+// windows aren’t propagated up by the windowing system, but only by GTK+.
+// The practical effect of this is if an event isn’t in the event
+// mask for the descendant window (see gtk_widget_add_events()),
+// it won’t be received by the event box.
+//
+// This problem doesn’t occur for visible event boxes, because in
+// that case, the event box window is actually the ancestor of the
+// descendant windows, not just at the same place on the screen.
+/*
+
+C function : gtk_event_box_set_visible_window
+*/
 func (recv *EventBox) SetVisibleWindow(visibleWindow bool) {
 	c_visible_window :=
 		boolToGboolean(visibleWindow)
@@ -1536,7 +2019,11 @@ func (recv *EventBox) SetVisibleWindow(visibleWindow bool) {
 	return
 }
 
-// ExpanderNew is a wrapper around the C function gtk_expander_new.
+// Creates a new expander using @label as the text of the label.
+/*
+
+C function : gtk_expander_new
+*/
 func ExpanderNew(label string) *Expander {
 	c_label := C.CString(label)
 	defer C.free(unsafe.Pointer(c_label))
@@ -1547,7 +2034,16 @@ func ExpanderNew(label string) *Expander {
 	return retGo
 }
 
-// ExpanderNewWithMnemonic is a wrapper around the C function gtk_expander_new_with_mnemonic.
+// Creates a new expander using @label as the text of the label.
+// If characters in @label are preceded by an underscore, they are underlined.
+// If you need a literal underscore character in a label, use “__” (two
+// underscores). The first underlined character represents a keyboard
+// accelerator called a mnemonic.
+// Pressing Alt and that key activates the button.
+/*
+
+C function : gtk_expander_new_with_mnemonic
+*/
 func ExpanderNewWithMnemonic(label string) *Expander {
 	c_label := C.CString(label)
 	defer C.free(unsafe.Pointer(c_label))
@@ -1558,7 +2054,14 @@ func ExpanderNewWithMnemonic(label string) *Expander {
 	return retGo
 }
 
-// GetExpanded is a wrapper around the C function gtk_expander_get_expanded.
+// Queries a #GtkExpander and returns its current state. Returns %TRUE
+// if the child widget is revealed.
+//
+// See gtk_expander_set_expanded().
+/*
+
+C function : gtk_expander_get_expanded
+*/
 func (recv *Expander) GetExpanded() bool {
 	retC := C.gtk_expander_get_expanded((*C.GtkExpander)(recv.native))
 	retGo := retC == C.TRUE
@@ -1566,7 +2069,21 @@ func (recv *Expander) GetExpanded() bool {
 	return retGo
 }
 
-// GetLabel is a wrapper around the C function gtk_expander_get_label.
+// Fetches the text from a label widget including any embedded
+// underlines indicating mnemonics and Pango markup, as set by
+// gtk_expander_set_label(). If the label text has not been set the
+// return value will be %NULL. This will be the case if you create an
+// empty button with gtk_button_new() to use as a container.
+//
+// Note that this function behaved differently in versions prior to
+// 2.14 and used to return the label text stripped of embedded
+// underlines indicating mnemonics and Pango markup. This problem can
+// be avoided by fetching the label text directly from the label
+// widget.
+/*
+
+C function : gtk_expander_get_label
+*/
 func (recv *Expander) GetLabel() string {
 	retC := C.gtk_expander_get_label((*C.GtkExpander)(recv.native))
 	retGo := C.GoString(retC)
@@ -1574,7 +2091,12 @@ func (recv *Expander) GetLabel() string {
 	return retGo
 }
 
-// GetLabelWidget is a wrapper around the C function gtk_expander_get_label_widget.
+// Retrieves the label widget for the frame. See
+// gtk_expander_set_label_widget().
+/*
+
+C function : gtk_expander_get_label_widget
+*/
 func (recv *Expander) GetLabelWidget() *Widget {
 	retC := C.gtk_expander_get_label_widget((*C.GtkExpander)(recv.native))
 	var retGo (*Widget)
@@ -1587,7 +2109,11 @@ func (recv *Expander) GetLabelWidget() *Widget {
 	return retGo
 }
 
-// GetSpacing is a wrapper around the C function gtk_expander_get_spacing.
+// Gets the value set by gtk_expander_set_spacing().
+/*
+
+C function : gtk_expander_get_spacing
+*/
 func (recv *Expander) GetSpacing() int32 {
 	retC := C.gtk_expander_get_spacing((*C.GtkExpander)(recv.native))
 	retGo := (int32)(retC)
@@ -1595,7 +2121,13 @@ func (recv *Expander) GetSpacing() int32 {
 	return retGo
 }
 
-// GetUseMarkup is a wrapper around the C function gtk_expander_get_use_markup.
+// Returns whether the label’s text is interpreted as marked up with
+// the [Pango text markup language][PangoMarkupFormat].
+// See gtk_expander_set_use_markup().
+/*
+
+C function : gtk_expander_get_use_markup
+*/
 func (recv *Expander) GetUseMarkup() bool {
 	retC := C.gtk_expander_get_use_markup((*C.GtkExpander)(recv.native))
 	retGo := retC == C.TRUE
@@ -1603,7 +2135,12 @@ func (recv *Expander) GetUseMarkup() bool {
 	return retGo
 }
 
-// GetUseUnderline is a wrapper around the C function gtk_expander_get_use_underline.
+// Returns whether an embedded underline in the expander label
+// indicates a mnemonic. See gtk_expander_set_use_underline().
+/*
+
+C function : gtk_expander_get_use_underline
+*/
 func (recv *Expander) GetUseUnderline() bool {
 	retC := C.gtk_expander_get_use_underline((*C.GtkExpander)(recv.native))
 	retGo := retC == C.TRUE
@@ -1611,7 +2148,13 @@ func (recv *Expander) GetUseUnderline() bool {
 	return retGo
 }
 
-// SetExpanded is a wrapper around the C function gtk_expander_set_expanded.
+// Sets the state of the expander. Set to %TRUE, if you want
+// the child widget to be revealed, and %FALSE if you want the
+// child widget to be hidden.
+/*
+
+C function : gtk_expander_set_expanded
+*/
 func (recv *Expander) SetExpanded(expanded bool) {
 	c_expanded :=
 		boolToGboolean(expanded)
@@ -1621,7 +2164,13 @@ func (recv *Expander) SetExpanded(expanded bool) {
 	return
 }
 
-// SetLabel is a wrapper around the C function gtk_expander_set_label.
+// Sets the text of the label of the expander to @label.
+//
+// This will also clear any previously set labels.
+/*
+
+C function : gtk_expander_set_label
+*/
 func (recv *Expander) SetLabel(label string) {
 	c_label := C.CString(label)
 	defer C.free(unsafe.Pointer(c_label))
@@ -1631,7 +2180,12 @@ func (recv *Expander) SetLabel(label string) {
 	return
 }
 
-// SetLabelWidget is a wrapper around the C function gtk_expander_set_label_widget.
+// Set the label widget for the expander. This is the widget
+// that will appear embedded alongside the expander arrow.
+/*
+
+C function : gtk_expander_set_label_widget
+*/
 func (recv *Expander) SetLabelWidget(labelWidget *Widget) {
 	c_label_widget := (*C.GtkWidget)(C.NULL)
 	if labelWidget != nil {
@@ -1643,7 +2197,12 @@ func (recv *Expander) SetLabelWidget(labelWidget *Widget) {
 	return
 }
 
-// SetSpacing is a wrapper around the C function gtk_expander_set_spacing.
+// Sets the spacing field of @expander, which is the number of
+// pixels to place between expander and the child.
+/*
+
+C function : gtk_expander_set_spacing
+*/
 func (recv *Expander) SetSpacing(spacing int32) {
 	c_spacing := (C.gint)(spacing)
 
@@ -1652,7 +2211,13 @@ func (recv *Expander) SetSpacing(spacing int32) {
 	return
 }
 
-// SetUseMarkup is a wrapper around the C function gtk_expander_set_use_markup.
+// Sets whether the text of the label contains markup in
+// [Pango’s text markup language][PangoMarkupFormat].
+// See gtk_label_set_markup().
+/*
+
+C function : gtk_expander_set_use_markup
+*/
 func (recv *Expander) SetUseMarkup(useMarkup bool) {
 	c_use_markup :=
 		boolToGboolean(useMarkup)
@@ -1662,7 +2227,12 @@ func (recv *Expander) SetUseMarkup(useMarkup bool) {
 	return
 }
 
-// SetUseUnderline is a wrapper around the C function gtk_expander_set_use_underline.
+// If true, an underline in the text of the expander label indicates
+// the next character should be used for the mnemonic accelerator key.
+/*
+
+C function : gtk_expander_set_use_underline
+*/
 func (recv *Expander) SetUseUnderline(useUnderline bool) {
 	c_use_underline :=
 		boolToGboolean(useUnderline)
@@ -1674,7 +2244,13 @@ func (recv *Expander) SetUseUnderline(useUnderline bool) {
 
 // Unsupported : gtk_file_chooser_dialog_new : unsupported parameter ... : varargs
 
-// FileChooserWidgetNew is a wrapper around the C function gtk_file_chooser_widget_new.
+// Creates a new #GtkFileChooserWidget. This is a file chooser widget that can
+// be embedded in custom windows, and it is the same widget that is used by
+// #GtkFileChooserDialog.
+/*
+
+C function : gtk_file_chooser_widget_new
+*/
 func FileChooserWidgetNew(action FileChooserAction) *FileChooserWidget {
 	c_action := (C.GtkFileChooserAction)(action)
 
@@ -1684,7 +2260,20 @@ func FileChooserWidgetNew(action FileChooserAction) *FileChooserWidget {
 	return retGo
 }
 
-// FileFilterNew is a wrapper around the C function gtk_file_filter_new.
+// Creates a new #GtkFileFilter with no rules added to it.
+// Such a filter doesn’t accept any files, so is not
+// particularly useful until you add rules with
+// gtk_file_filter_add_mime_type(), gtk_file_filter_add_pattern(),
+// or gtk_file_filter_add_custom(). To create a filter
+// that accepts any file, use:
+// |[<!-- language="C" -->
+// GtkFileFilter *filter = gtk_file_filter_new ();
+// gtk_file_filter_add_pattern (filter, "*");
+// ]|
+/*
+
+C function : gtk_file_filter_new
+*/
 func FileFilterNew() *FileFilter {
 	retC := C.gtk_file_filter_new()
 	retGo := FileFilterNewFromC(unsafe.Pointer(retC))
@@ -1694,7 +2283,11 @@ func FileFilterNew() *FileFilter {
 
 // Unsupported : gtk_file_filter_add_custom : unsupported parameter func : no type generator for FileFilterFunc (GtkFileFilterFunc) for param func
 
-// AddMimeType is a wrapper around the C function gtk_file_filter_add_mime_type.
+// Adds a rule allowing a given mime type to @filter.
+/*
+
+C function : gtk_file_filter_add_mime_type
+*/
 func (recv *FileFilter) AddMimeType(mimeType string) {
 	c_mime_type := C.CString(mimeType)
 	defer C.free(unsafe.Pointer(c_mime_type))
@@ -1704,7 +2297,11 @@ func (recv *FileFilter) AddMimeType(mimeType string) {
 	return
 }
 
-// AddPattern is a wrapper around the C function gtk_file_filter_add_pattern.
+// Adds a rule allowing a shell style glob to a filter.
+/*
+
+C function : gtk_file_filter_add_pattern
+*/
 func (recv *FileFilter) AddPattern(pattern string) {
 	c_pattern := C.CString(pattern)
 	defer C.free(unsafe.Pointer(c_pattern))
@@ -1714,7 +2311,17 @@ func (recv *FileFilter) AddPattern(pattern string) {
 	return
 }
 
-// Filter is a wrapper around the C function gtk_file_filter_filter.
+// Tests whether a file should be displayed according to @filter.
+// The #GtkFileFilterInfo @filter_info should include
+// the fields returned from gtk_file_filter_get_needed().
+//
+// This function will not typically be used by applications; it
+// is intended principally for use in the implementation of
+// #GtkFileChooser.
+/*
+
+C function : gtk_file_filter_filter
+*/
 func (recv *FileFilter) Filter(filterInfo *FileFilterInfo) bool {
 	c_filter_info := (*C.GtkFileFilterInfo)(C.NULL)
 	if filterInfo != nil {
@@ -1727,7 +2334,11 @@ func (recv *FileFilter) Filter(filterInfo *FileFilterInfo) bool {
 	return retGo
 }
 
-// GetName is a wrapper around the C function gtk_file_filter_get_name.
+// Gets the human-readable name for the filter. See gtk_file_filter_set_name().
+/*
+
+C function : gtk_file_filter_get_name
+*/
 func (recv *FileFilter) GetName() string {
 	retC := C.gtk_file_filter_get_name((*C.GtkFileFilter)(recv.native))
 	retGo := C.GoString(retC)
@@ -1735,7 +2346,16 @@ func (recv *FileFilter) GetName() string {
 	return retGo
 }
 
-// GetNeeded is a wrapper around the C function gtk_file_filter_get_needed.
+// Gets the fields that need to be filled in for the #GtkFileFilterInfo
+// passed to gtk_file_filter_filter()
+//
+// This function will not typically be used by applications; it
+// is intended principally for use in the implementation of
+// #GtkFileChooser.
+/*
+
+C function : gtk_file_filter_get_needed
+*/
 func (recv *FileFilter) GetNeeded() FileFilterFlags {
 	retC := C.gtk_file_filter_get_needed((*C.GtkFileFilter)(recv.native))
 	retGo := (FileFilterFlags)(retC)
@@ -1743,7 +2363,13 @@ func (recv *FileFilter) GetNeeded() FileFilterFlags {
 	return retGo
 }
 
-// SetName is a wrapper around the C function gtk_file_filter_set_name.
+// Sets the human-readable name of the filter; this is the string
+// that will be displayed in the file selector user interface if
+// there is a selectable list of filters.
+/*
+
+C function : gtk_file_filter_set_name
+*/
 func (recv *FileFilter) SetName(name string) {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -1810,7 +2436,11 @@ func fontbutton_fontSetHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// FontButtonNew is a wrapper around the C function gtk_font_button_new.
+// Creates a new font picker widget.
+/*
+
+C function : gtk_font_button_new
+*/
 func FontButtonNew() *FontButton {
 	retC := C.gtk_font_button_new()
 	retGo := FontButtonNewFromC(unsafe.Pointer(retC))
@@ -1818,7 +2448,11 @@ func FontButtonNew() *FontButton {
 	return retGo
 }
 
-// FontButtonNewWithFont is a wrapper around the C function gtk_font_button_new_with_font.
+// Creates a new font picker widget.
+/*
+
+C function : gtk_font_button_new_with_font
+*/
 func FontButtonNewWithFont(fontname string) *FontButton {
 	c_fontname := C.CString(fontname)
 	defer C.free(unsafe.Pointer(c_fontname))
@@ -1829,7 +2463,16 @@ func FontButtonNewWithFont(fontname string) *FontButton {
 	return retGo
 }
 
-// GetFontName is a wrapper around the C function gtk_font_button_get_font_name.
+// Retrieves the name of the currently selected font. This name includes
+// style and size information as well. If you want to render something
+// with the font, use this string with pango_font_description_from_string() .
+// If you’re interested in peeking certain values (family name,
+// style, size, weight) just query these properties from the
+// #PangoFontDescription object.
+/*
+
+C function : gtk_font_button_get_font_name
+*/
 func (recv *FontButton) GetFontName() string {
 	retC := C.gtk_font_button_get_font_name((*C.GtkFontButton)(recv.native))
 	retGo := C.GoString(retC)
@@ -1837,7 +2480,11 @@ func (recv *FontButton) GetFontName() string {
 	return retGo
 }
 
-// GetShowSize is a wrapper around the C function gtk_font_button_get_show_size.
+// Returns whether the font size will be shown in the label.
+/*
+
+C function : gtk_font_button_get_show_size
+*/
 func (recv *FontButton) GetShowSize() bool {
 	retC := C.gtk_font_button_get_show_size((*C.GtkFontButton)(recv.native))
 	retGo := retC == C.TRUE
@@ -1845,7 +2492,11 @@ func (recv *FontButton) GetShowSize() bool {
 	return retGo
 }
 
-// GetShowStyle is a wrapper around the C function gtk_font_button_get_show_style.
+// Returns whether the name of the font style will be shown in the label.
+/*
+
+C function : gtk_font_button_get_show_style
+*/
 func (recv *FontButton) GetShowStyle() bool {
 	retC := C.gtk_font_button_get_show_style((*C.GtkFontButton)(recv.native))
 	retGo := retC == C.TRUE
@@ -1853,7 +2504,11 @@ func (recv *FontButton) GetShowStyle() bool {
 	return retGo
 }
 
-// GetTitle is a wrapper around the C function gtk_font_button_get_title.
+// Retrieves the title of the font chooser dialog.
+/*
+
+C function : gtk_font_button_get_title
+*/
 func (recv *FontButton) GetTitle() string {
 	retC := C.gtk_font_button_get_title((*C.GtkFontButton)(recv.native))
 	retGo := C.GoString(retC)
@@ -1861,7 +2516,11 @@ func (recv *FontButton) GetTitle() string {
 	return retGo
 }
 
-// GetUseFont is a wrapper around the C function gtk_font_button_get_use_font.
+// Returns whether the selected font is used in the label.
+/*
+
+C function : gtk_font_button_get_use_font
+*/
 func (recv *FontButton) GetUseFont() bool {
 	retC := C.gtk_font_button_get_use_font((*C.GtkFontButton)(recv.native))
 	retGo := retC == C.TRUE
@@ -1869,7 +2528,11 @@ func (recv *FontButton) GetUseFont() bool {
 	return retGo
 }
 
-// GetUseSize is a wrapper around the C function gtk_font_button_get_use_size.
+// Returns whether the selected size is used in the label.
+/*
+
+C function : gtk_font_button_get_use_size
+*/
 func (recv *FontButton) GetUseSize() bool {
 	retC := C.gtk_font_button_get_use_size((*C.GtkFontButton)(recv.native))
 	retGo := retC == C.TRUE
@@ -1877,7 +2540,11 @@ func (recv *FontButton) GetUseSize() bool {
 	return retGo
 }
 
-// SetFontName is a wrapper around the C function gtk_font_button_set_font_name.
+// Sets or updates the currently-displayed font in font picker dialog.
+/*
+
+C function : gtk_font_button_set_font_name
+*/
 func (recv *FontButton) SetFontName(fontname string) bool {
 	c_fontname := C.CString(fontname)
 	defer C.free(unsafe.Pointer(c_fontname))
@@ -1888,7 +2555,11 @@ func (recv *FontButton) SetFontName(fontname string) bool {
 	return retGo
 }
 
-// SetShowSize is a wrapper around the C function gtk_font_button_set_show_size.
+// If @show_size is %TRUE, the font size will be displayed along with the name of the selected font.
+/*
+
+C function : gtk_font_button_set_show_size
+*/
 func (recv *FontButton) SetShowSize(showSize bool) {
 	c_show_size :=
 		boolToGboolean(showSize)
@@ -1898,7 +2569,11 @@ func (recv *FontButton) SetShowSize(showSize bool) {
 	return
 }
 
-// SetShowStyle is a wrapper around the C function gtk_font_button_set_show_style.
+// If @show_style is %TRUE, the font style will be displayed along with name of the selected font.
+/*
+
+C function : gtk_font_button_set_show_style
+*/
 func (recv *FontButton) SetShowStyle(showStyle bool) {
 	c_show_style :=
 		boolToGboolean(showStyle)
@@ -1908,7 +2583,11 @@ func (recv *FontButton) SetShowStyle(showStyle bool) {
 	return
 }
 
-// SetTitle is a wrapper around the C function gtk_font_button_set_title.
+// Sets the title for the font chooser dialog.
+/*
+
+C function : gtk_font_button_set_title
+*/
 func (recv *FontButton) SetTitle(title string) {
 	c_title := C.CString(title)
 	defer C.free(unsafe.Pointer(c_title))
@@ -1918,7 +2597,11 @@ func (recv *FontButton) SetTitle(title string) {
 	return
 }
 
-// SetUseFont is a wrapper around the C function gtk_font_button_set_use_font.
+// If @use_font is %TRUE, the font name will be written using the selected font.
+/*
+
+C function : gtk_font_button_set_use_font
+*/
 func (recv *FontButton) SetUseFont(useFont bool) {
 	c_use_font :=
 		boolToGboolean(useFont)
@@ -1928,7 +2611,11 @@ func (recv *FontButton) SetUseFont(useFont bool) {
 	return
 }
 
-// SetUseSize is a wrapper around the C function gtk_font_button_set_use_size.
+// If @use_size is %TRUE, the font name will be written using the selected size.
+/*
+
+C function : gtk_font_button_set_use_size
+*/
 func (recv *FontButton) SetUseSize(useSize bool) {
 	c_use_size :=
 		boolToGboolean(useSize)
@@ -1938,7 +2625,11 @@ func (recv *FontButton) SetUseSize(useSize bool) {
 	return
 }
 
-// Copy is a wrapper around the C function gtk_icon_info_copy.
+// Make a copy of a #GtkIconInfo.
+/*
+
+C function : gtk_icon_info_copy
+*/
 func (recv *IconInfo) Copy() *IconInfo {
 	retC := C.gtk_icon_info_copy((*C.GtkIconInfo)(recv.native))
 	retGo := IconInfoNewFromC(unsafe.Pointer(retC))
@@ -1946,7 +2637,11 @@ func (recv *IconInfo) Copy() *IconInfo {
 	return retGo
 }
 
-// Free is a wrapper around the C function gtk_icon_info_free.
+// Free a #GtkIconInfo and associated information
+/*
+
+C function : gtk_icon_info_free
+*/
 func (recv *IconInfo) Free() {
 	C.gtk_icon_info_free((*C.GtkIconInfo)(recv.native))
 
@@ -1955,7 +2650,21 @@ func (recv *IconInfo) Free() {
 
 // Unsupported : gtk_icon_info_get_attach_points : unsupported parameter points : output array param points
 
-// GetBaseSize is a wrapper around the C function gtk_icon_info_get_base_size.
+// Gets the base size for the icon. The base size
+// is a size for the icon that was specified by
+// the icon theme creator. This may be different
+// than the actual size of image; an example of
+// this is small emblem icons that can be attached
+// to a larger icon. These icons will be given
+// the same base size as the larger icons to which
+// they are attached.
+//
+// Note that for scaled icons the base size does
+// not include the base scale.
+/*
+
+C function : gtk_icon_info_get_base_size
+*/
 func (recv *IconInfo) GetBaseSize() int32 {
 	retC := C.gtk_icon_info_get_base_size((*C.GtkIconInfo)(recv.native))
 	retGo := (int32)(retC)
@@ -1963,7 +2672,13 @@ func (recv *IconInfo) GetBaseSize() int32 {
 	return retGo
 }
 
-// GetBuiltinPixbuf is a wrapper around the C function gtk_icon_info_get_builtin_pixbuf.
+// Gets the built-in image for this icon, if any. To allow GTK+ to use
+// built in icon images, you must pass the %GTK_ICON_LOOKUP_USE_BUILTIN
+// to gtk_icon_theme_lookup_icon().
+/*
+
+C function : gtk_icon_info_get_builtin_pixbuf
+*/
 func (recv *IconInfo) GetBuiltinPixbuf() *gdkpixbuf.Pixbuf {
 	retC := C.gtk_icon_info_get_builtin_pixbuf((*C.GtkIconInfo)(recv.native))
 	var retGo (*gdkpixbuf.Pixbuf)
@@ -1976,7 +2691,11 @@ func (recv *IconInfo) GetBuiltinPixbuf() *gdkpixbuf.Pixbuf {
 	return retGo
 }
 
-// GetDisplayName is a wrapper around the C function gtk_icon_info_get_display_name.
+// This function is deprecated and always returns %NULL.
+/*
+
+C function : gtk_icon_info_get_display_name
+*/
 func (recv *IconInfo) GetDisplayName() string {
 	retC := C.gtk_icon_info_get_display_name((*C.GtkIconInfo)(recv.native))
 	retGo := C.GoString(retC)
@@ -1986,7 +2705,14 @@ func (recv *IconInfo) GetDisplayName() string {
 
 // Unsupported : gtk_icon_info_get_embedded_rect : unsupported parameter rectangle : Blacklisted record : GdkRectangle
 
-// GetFilename is a wrapper around the C function gtk_icon_info_get_filename.
+// Gets the filename for the icon. If the %GTK_ICON_LOOKUP_USE_BUILTIN
+// flag was passed to gtk_icon_theme_lookup_icon(), there may be no
+// filename if a builtin icon is returned; in this case, you should
+// use gtk_icon_info_get_builtin_pixbuf().
+/*
+
+C function : gtk_icon_info_get_filename
+*/
 func (recv *IconInfo) GetFilename() string {
 	retC := C.gtk_icon_info_get_filename((*C.GtkIconInfo)(recv.native))
 	retGo := C.GoString(retC)
@@ -1994,7 +2720,21 @@ func (recv *IconInfo) GetFilename() string {
 	return retGo
 }
 
-// LoadIcon is a wrapper around the C function gtk_icon_info_load_icon.
+// Renders an icon previously looked up in an icon theme using
+// gtk_icon_theme_lookup_icon(); the size will be based on the size
+// passed to gtk_icon_theme_lookup_icon(). Note that the resulting
+// pixbuf may not be exactly this size; an icon theme may have icons
+// that differ slightly from their nominal sizes, and in addition GTK+
+// will avoid scaling icons that it considers sufficiently close to the
+// requested size or for which the source image would have to be scaled
+// up too far. (This maintains sharpness.). This behaviour can be changed
+// by passing the %GTK_ICON_LOOKUP_FORCE_SIZE flag when obtaining
+// the #GtkIconInfo. If this flag has been specified, the pixbuf
+// returned by this function will be scaled to the exact size.
+/*
+
+C function : gtk_icon_info_load_icon
+*/
 func (recv *IconInfo) LoadIcon() (*gdkpixbuf.Pixbuf, error) {
 	var cThrowableError *C.GError
 
@@ -2009,7 +2749,24 @@ func (recv *IconInfo) LoadIcon() (*gdkpixbuf.Pixbuf, error) {
 	return retGo, goThrowableError
 }
 
-// SetRawCoordinates is a wrapper around the C function gtk_icon_info_set_raw_coordinates.
+// Sets whether the coordinates returned by gtk_icon_info_get_embedded_rect()
+// and gtk_icon_info_get_attach_points() should be returned in their
+// original form as specified in the icon theme, instead of scaled
+// appropriately for the pixbuf returned by gtk_icon_info_load_icon().
+//
+// Raw coordinates are somewhat strange; they are specified to be with
+// respect to the unscaled pixmap for PNG and XPM icons, but for SVG
+// icons, they are in a 1000x1000 coordinate space that is scaled
+// to the final size of the icon.  You can determine if the icon is an SVG
+// icon by using gtk_icon_info_get_filename(), and seeing if it is non-%NULL
+// and ends in “.svg”.
+//
+// This function is provided primarily to allow compatibility wrappers
+// for older API's, and is not expected to be useful for applications.
+/*
+
+C function : gtk_icon_info_set_raw_coordinates
+*/
 func (recv *IconInfo) SetRawCoordinates(rawCoordinates bool) {
 	c_raw_coordinates :=
 		boolToGboolean(rawCoordinates)
@@ -2019,7 +2776,15 @@ func (recv *IconInfo) SetRawCoordinates(rawCoordinates bool) {
 	return
 }
 
-// IconThemeNew is a wrapper around the C function gtk_icon_theme_new.
+// Creates a new icon theme object. Icon theme objects are used
+// to lookup up an icon by name in a particular icon theme.
+// Usually, you’ll want to use gtk_icon_theme_get_default()
+// or gtk_icon_theme_get_for_screen() rather than creating
+// a new icon theme object for scratch.
+/*
+
+C function : gtk_icon_theme_new
+*/
 func IconThemeNew() *IconTheme {
 	retC := C.gtk_icon_theme_new()
 	retGo := IconThemeNewFromC(unsafe.Pointer(retC))
@@ -2027,7 +2792,12 @@ func IconThemeNew() *IconTheme {
 	return retGo
 }
 
-// AppendSearchPath is a wrapper around the C function gtk_icon_theme_append_search_path.
+// Appends a directory to the search path.
+// See gtk_icon_theme_set_search_path().
+/*
+
+C function : gtk_icon_theme_append_search_path
+*/
 func (recv *IconTheme) AppendSearchPath(path string) {
 	c_path := C.CString(path)
 	defer C.free(unsafe.Pointer(c_path))
@@ -2037,7 +2807,13 @@ func (recv *IconTheme) AppendSearchPath(path string) {
 	return
 }
 
-// GetExampleIconName is a wrapper around the C function gtk_icon_theme_get_example_icon_name.
+// Gets the name of an icon that is representative of the
+// current theme (for instance, to use when presenting
+// a list of themes to the user.)
+/*
+
+C function : gtk_icon_theme_get_example_icon_name
+*/
 func (recv *IconTheme) GetExampleIconName() string {
 	retC := C.gtk_icon_theme_get_example_icon_name((*C.GtkIconTheme)(recv.native))
 	retGo := C.GoString(retC)
@@ -2048,7 +2824,12 @@ func (recv *IconTheme) GetExampleIconName() string {
 
 // Unsupported : gtk_icon_theme_get_search_path : unsupported parameter path : output array param path
 
-// HasIcon is a wrapper around the C function gtk_icon_theme_has_icon.
+// Checks whether an icon theme includes an icon
+// for a particular name.
+/*
+
+C function : gtk_icon_theme_has_icon
+*/
 func (recv *IconTheme) HasIcon(iconName string) bool {
 	c_icon_name := C.CString(iconName)
 	defer C.free(unsafe.Pointer(c_icon_name))
@@ -2059,7 +2840,19 @@ func (recv *IconTheme) HasIcon(iconName string) bool {
 	return retGo
 }
 
-// ListIcons is a wrapper around the C function gtk_icon_theme_list_icons.
+// Lists the icons in the current icon theme. Only a subset
+// of the icons can be listed by providing a context string.
+// The set of values for the context string is system dependent,
+// but will typically include such values as “Applications” and
+// “MimeTypes”. Contexts are explained in the
+// [Icon Theme Specification](http://www.freedesktop.org/wiki/Specifications/icon-theme-spec).
+// The standard contexts are listed in the
+// [Icon Naming Specification](http://www.freedesktop.org/wiki/Specifications/icon-naming-spec).
+// Also see gtk_icon_theme_list_contexts().
+/*
+
+C function : gtk_icon_theme_list_icons
+*/
 func (recv *IconTheme) ListIcons(context string) *glib.List {
 	c_context := C.CString(context)
 	defer C.free(unsafe.Pointer(c_context))
@@ -2070,7 +2863,22 @@ func (recv *IconTheme) ListIcons(context string) *glib.List {
 	return retGo
 }
 
-// LoadIcon is a wrapper around the C function gtk_icon_theme_load_icon.
+// Looks up an icon in an icon theme, scales it to the given size
+// and renders it into a pixbuf. This is a convenience function;
+// if more details about the icon are needed, use
+// gtk_icon_theme_lookup_icon() followed by gtk_icon_info_load_icon().
+//
+// Note that you probably want to listen for icon theme changes and
+// update the icon. This is usually done by connecting to the
+// GtkWidget::style-set signal. If for some reason you do not want to
+// update the icon when the icon theme changes, you should consider
+// using gdk_pixbuf_copy() to make a private copy of the pixbuf
+// returned by this function. Otherwise GTK+ may need to keep the old
+// icon theme loaded, which would be a waste of memory.
+/*
+
+C function : gtk_icon_theme_load_icon
+*/
 func (recv *IconTheme) LoadIcon(iconName string, size int32, flags IconLookupFlags) (*gdkpixbuf.Pixbuf, error) {
 	c_icon_name := C.CString(iconName)
 	defer C.free(unsafe.Pointer(c_icon_name))
@@ -2097,7 +2905,21 @@ func (recv *IconTheme) LoadIcon(iconName string, size int32, flags IconLookupFla
 	return retGo, goThrowableError
 }
 
-// LookupIcon is a wrapper around the C function gtk_icon_theme_lookup_icon.
+// Looks up a named icon and returns a #GtkIconInfo containing
+// information such as the filename of the icon. The icon
+// can then be rendered into a pixbuf using
+// gtk_icon_info_load_icon(). (gtk_icon_theme_load_icon()
+// combines these two steps if all you need is the pixbuf.)
+//
+// When rendering on displays with high pixel densities you should not
+// use a @size multiplied by the scaling factor returned by functions
+// like gdk_window_get_scale_factor(). Instead, you should use
+// gtk_icon_theme_lookup_icon_for_scale(), as the assets loaded
+// for a given scaling factor may be different.
+/*
+
+C function : gtk_icon_theme_lookup_icon
+*/
 func (recv *IconTheme) LookupIcon(iconName string, size int32, flags IconLookupFlags) *IconInfo {
 	c_icon_name := C.CString(iconName)
 	defer C.free(unsafe.Pointer(c_icon_name))
@@ -2117,7 +2939,12 @@ func (recv *IconTheme) LookupIcon(iconName string, size int32, flags IconLookupF
 	return retGo
 }
 
-// PrependSearchPath is a wrapper around the C function gtk_icon_theme_prepend_search_path.
+// Prepends a directory to the search path.
+// See gtk_icon_theme_set_search_path().
+/*
+
+C function : gtk_icon_theme_prepend_search_path
+*/
 func (recv *IconTheme) PrependSearchPath(path string) {
 	c_path := C.CString(path)
 	defer C.free(unsafe.Pointer(c_path))
@@ -2127,7 +2954,13 @@ func (recv *IconTheme) PrependSearchPath(path string) {
 	return
 }
 
-// RescanIfNeeded is a wrapper around the C function gtk_icon_theme_rescan_if_needed.
+// Checks to see if the icon theme has changed; if it has, any
+// currently cached information is discarded and will be reloaded
+// next time @icon_theme is accessed.
+/*
+
+C function : gtk_icon_theme_rescan_if_needed
+*/
 func (recv *IconTheme) RescanIfNeeded() bool {
 	retC := C.gtk_icon_theme_rescan_if_needed((*C.GtkIconTheme)(recv.native))
 	retGo := retC == C.TRUE
@@ -2135,7 +2968,14 @@ func (recv *IconTheme) RescanIfNeeded() bool {
 	return retGo
 }
 
-// SetCustomTheme is a wrapper around the C function gtk_icon_theme_set_custom_theme.
+// Sets the name of the icon theme that the #GtkIconTheme object uses
+// overriding system configuration. This function cannot be called
+// on the icon theme objects returned from gtk_icon_theme_get_default()
+// and gtk_icon_theme_get_for_screen().
+/*
+
+C function : gtk_icon_theme_set_custom_theme
+*/
 func (recv *IconTheme) SetCustomTheme(themeName string) {
 	c_theme_name := C.CString(themeName)
 	defer C.free(unsafe.Pointer(c_theme_name))
@@ -2145,7 +2985,13 @@ func (recv *IconTheme) SetCustomTheme(themeName string) {
 	return
 }
 
-// SetScreen is a wrapper around the C function gtk_icon_theme_set_screen.
+// Sets the screen for an icon theme; the screen is used
+// to track the user’s currently configured icon theme,
+// which might be different for different screens.
+/*
+
+C function : gtk_icon_theme_set_screen
+*/
 func (recv *IconTheme) SetScreen(screen *gdk.Screen) {
 	c_screen := (*C.GdkScreen)(C.NULL)
 	if screen != nil {
@@ -2159,7 +3005,17 @@ func (recv *IconTheme) SetScreen(screen *gdk.Screen) {
 
 // Unsupported : gtk_icon_theme_set_search_path : unsupported parameter path :
 
-// Attach is a wrapper around the C function gtk_menu_attach.
+// Adds a new #GtkMenuItem to a (table) menu. The number of “cells” that
+// an item will occupy is specified by @left_attach, @right_attach,
+// @top_attach and @bottom_attach. These each represent the leftmost,
+// rightmost, uppermost and lower column and row numbers of the table.
+// (Columns and rows are indexed from zero).
+//
+// Note that this function is not related to gtk_menu_detach().
+/*
+
+C function : gtk_menu_attach
+*/
 func (recv *Menu) Attach(child *Widget, leftAttach uint32, rightAttach uint32, topAttach uint32, bottomAttach uint32) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -2179,7 +3035,19 @@ func (recv *Menu) Attach(child *Widget, leftAttach uint32, rightAttach uint32, t
 	return
 }
 
-// SetMonitor is a wrapper around the C function gtk_menu_set_monitor.
+// Informs GTK+ on which monitor a menu should be popped up.
+// See gdk_monitor_get_geometry().
+//
+// This function should be called from a #GtkMenuPositionFunc
+// if the menu should not appear on the same monitor as the pointer.
+// This information can’t be reliably inferred from the coordinates
+// returned by a #GtkMenuPositionFunc, since, for very long menus,
+// these coordinates may extend beyond the monitor boundaries or even
+// the screen boundaries.
+/*
+
+C function : gtk_menu_set_monitor
+*/
 func (recv *Menu) SetMonitor(monitorNum int32) {
 	c_monitor_num := (C.gint)(monitorNum)
 
@@ -2188,7 +3056,11 @@ func (recv *Menu) SetMonitor(monitorNum int32) {
 	return
 }
 
-// Cancel is a wrapper around the C function gtk_menu_shell_cancel.
+// Cancels the selection within the menu shell.
+/*
+
+C function : gtk_menu_shell_cancel
+*/
 func (recv *MenuShell) Cancel() {
 	C.gtk_menu_shell_cancel((*C.GtkMenuShell)(recv.native))
 
@@ -2197,7 +3069,12 @@ func (recv *MenuShell) Cancel() {
 
 // Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
 
-// SetMarkup is a wrapper around the C function gtk_message_dialog_set_markup.
+// Sets the text of the message dialog to be @str, which is marked
+// up with the [Pango text markup language][PangoMarkupFormat].
+/*
+
+C function : gtk_message_dialog_set_markup
+*/
 func (recv *MessageDialog) SetMarkup(str string) {
 	c_str := C.CString(str)
 	defer C.free(unsafe.Pointer(c_str))
@@ -2207,7 +3084,11 @@ func (recv *MessageDialog) SetMarkup(str string) {
 	return
 }
 
-// GetChild1 is a wrapper around the C function gtk_paned_get_child1.
+// Obtains the first child of the paned widget.
+/*
+
+C function : gtk_paned_get_child1
+*/
 func (recv *Paned) GetChild1() *Widget {
 	retC := C.gtk_paned_get_child1((*C.GtkPaned)(recv.native))
 	var retGo (*Widget)
@@ -2220,7 +3101,11 @@ func (recv *Paned) GetChild1() *Widget {
 	return retGo
 }
 
-// GetChild2 is a wrapper around the C function gtk_paned_get_child2.
+// Obtains the second child of the paned widget.
+/*
+
+C function : gtk_paned_get_child2
+*/
 func (recv *Paned) GetChild2() *Widget {
 	retC := C.gtk_paned_get_child2((*C.GtkPaned)(recv.native))
 	var retGo (*Widget)
@@ -2292,7 +3177,13 @@ func radioaction_changedHandler(_ *C.GObject, c_current *C.GtkRadioAction, data 
 	callback(current)
 }
 
-// RadioActionNew is a wrapper around the C function gtk_radio_action_new.
+// Creates a new #GtkRadioAction object. To add the action to
+// a #GtkActionGroup and set the accelerator for the action,
+// call gtk_action_group_add_action_with_accel().
+/*
+
+C function : gtk_radio_action_new
+*/
 func RadioActionNew(name string, label string, tooltip string, stockId string, value int32) *RadioAction {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -2314,7 +3205,12 @@ func RadioActionNew(name string, label string, tooltip string, stockId string, v
 	return retGo
 }
 
-// GetCurrentValue is a wrapper around the C function gtk_radio_action_get_current_value.
+// Obtains the value property of the currently active member of
+// the group to which @action belongs.
+/*
+
+C function : gtk_radio_action_get_current_value
+*/
 func (recv *RadioAction) GetCurrentValue() int32 {
 	retC := C.gtk_radio_action_get_current_value((*C.GtkRadioAction)(recv.native))
 	retGo := (int32)(retC)
@@ -2322,7 +3218,27 @@ func (recv *RadioAction) GetCurrentValue() int32 {
 	return retGo
 }
 
-// GetGroup is a wrapper around the C function gtk_radio_action_get_group.
+// Returns the list representing the radio group for this object.
+// Note that the returned list is only valid until the next change
+// to the group.
+//
+// A common way to set up a group of radio group is the following:
+// |[<!-- language="C" -->
+// GSList *group = NULL;
+// GtkRadioAction *action;
+//
+// while ( ...more actions to add... /)
+// {
+// action = gtk_radio_action_new (...);
+//
+// gtk_radio_action_set_group (action, group);
+// group = gtk_radio_action_get_group (action);
+// }
+// ]|
+/*
+
+C function : gtk_radio_action_get_group
+*/
 func (recv *RadioAction) GetGroup() *glib.SList {
 	retC := C.gtk_radio_action_get_group((*C.GtkRadioAction)(recv.native))
 	retGo := glib.SListNewFromC(unsafe.Pointer(retC))
@@ -2330,7 +3246,11 @@ func (recv *RadioAction) GetGroup() *glib.SList {
 	return retGo
 }
 
-// SetGroup is a wrapper around the C function gtk_radio_action_set_group.
+// Sets the radio group for the radio action object.
+/*
+
+C function : gtk_radio_action_set_group
+*/
 func (recv *RadioAction) SetGroup(group *glib.SList) {
 	c_group := (*C.GSList)(C.NULL)
 	if group != nil {
@@ -2399,7 +3319,11 @@ func radiobutton_groupChangedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// RadioMenuItemNewFromWidget is a wrapper around the C function gtk_radio_menu_item_new_from_widget.
+// Creates a new #GtkRadioMenuItem adding it to the same group as @group.
+/*
+
+C function : gtk_radio_menu_item_new_from_widget
+*/
 func RadioMenuItemNewFromWidget(group *RadioMenuItem) *RadioMenuItem {
 	c_group := (*C.GtkRadioMenuItem)(C.NULL)
 	if group != nil {
@@ -2412,7 +3336,12 @@ func RadioMenuItemNewFromWidget(group *RadioMenuItem) *RadioMenuItem {
 	return retGo
 }
 
-// RadioMenuItemNewWithLabelFromWidget is a wrapper around the C function gtk_radio_menu_item_new_with_label_from_widget.
+// Creates a new GtkRadioMenuItem whose child is a simple GtkLabel.
+// The new #GtkRadioMenuItem is added to the same group as @group.
+/*
+
+C function : gtk_radio_menu_item_new_with_label_from_widget
+*/
 func RadioMenuItemNewWithLabelFromWidget(group *RadioMenuItem, label string) *RadioMenuItem {
 	c_group := (*C.GtkRadioMenuItem)(C.NULL)
 	if group != nil {
@@ -2428,7 +3357,15 @@ func RadioMenuItemNewWithLabelFromWidget(group *RadioMenuItem, label string) *Ra
 	return retGo
 }
 
-// RadioMenuItemNewWithMnemonicFromWidget is a wrapper around the C function gtk_radio_menu_item_new_with_mnemonic_from_widget.
+// Creates a new GtkRadioMenuItem containing a label. The label will be
+// created using gtk_label_new_with_mnemonic(), so underscores in label
+// indicate the mnemonic for the menu item.
+//
+// The new #GtkRadioMenuItem is added to the same group as @group.
+/*
+
+C function : gtk_radio_menu_item_new_with_mnemonic_from_widget
+*/
 func RadioMenuItemNewWithMnemonicFromWidget(group *RadioMenuItem, label string) *RadioMenuItem {
 	c_group := (*C.GtkRadioMenuItem)(C.NULL)
 	if group != nil {
@@ -2444,7 +3381,11 @@ func RadioMenuItemNewWithMnemonicFromWidget(group *RadioMenuItem, label string) 
 	return retGo
 }
 
-// RadioToolButtonNew is a wrapper around the C function gtk_radio_tool_button_new.
+// Creates a new #GtkRadioToolButton, adding it to @group.
+/*
+
+C function : gtk_radio_tool_button_new
+*/
 func RadioToolButtonNew(group *glib.SList) *RadioToolButton {
 	c_group := (*C.GSList)(C.NULL)
 	if group != nil {
@@ -2457,7 +3398,13 @@ func RadioToolButtonNew(group *glib.SList) *RadioToolButton {
 	return retGo
 }
 
-// RadioToolButtonNewFromStock is a wrapper around the C function gtk_radio_tool_button_new_from_stock.
+// Creates a new #GtkRadioToolButton, adding it to @group.
+// The new #GtkRadioToolButton will contain an icon and label from the
+// stock item indicated by @stock_id.
+/*
+
+C function : gtk_radio_tool_button_new_from_stock
+*/
 func RadioToolButtonNewFromStock(group *glib.SList, stockId string) *RadioToolButton {
 	c_group := (*C.GSList)(C.NULL)
 	if group != nil {
@@ -2473,7 +3420,11 @@ func RadioToolButtonNewFromStock(group *glib.SList, stockId string) *RadioToolBu
 	return retGo
 }
 
-// RadioToolButtonNewFromWidget is a wrapper around the C function gtk_radio_tool_button_new_from_widget.
+// Creates a new #GtkRadioToolButton adding it to the same group as @gruup
+/*
+
+C function : gtk_radio_tool_button_new_from_widget
+*/
 func RadioToolButtonNewFromWidget(group *RadioToolButton) *RadioToolButton {
 	c_group := (*C.GtkRadioToolButton)(C.NULL)
 	if group != nil {
@@ -2486,7 +3437,13 @@ func RadioToolButtonNewFromWidget(group *RadioToolButton) *RadioToolButton {
 	return retGo
 }
 
-// RadioToolButtonNewWithStockFromWidget is a wrapper around the C function gtk_radio_tool_button_new_with_stock_from_widget.
+// Creates a new #GtkRadioToolButton adding it to the same group as @group.
+// The new #GtkRadioToolButton will contain an icon and label from the
+// stock item indicated by @stock_id.
+/*
+
+C function : gtk_radio_tool_button_new_with_stock_from_widget
+*/
 func RadioToolButtonNewWithStockFromWidget(group *RadioToolButton, stockId string) *RadioToolButton {
 	c_group := (*C.GtkRadioToolButton)(C.NULL)
 	if group != nil {
@@ -2502,7 +3459,11 @@ func RadioToolButtonNewWithStockFromWidget(group *RadioToolButton, stockId strin
 	return retGo
 }
 
-// GetGroup is a wrapper around the C function gtk_radio_tool_button_get_group.
+// Returns the radio button group @button belongs to.
+/*
+
+C function : gtk_radio_tool_button_get_group
+*/
 func (recv *RadioToolButton) GetGroup() *glib.SList {
 	retC := C.gtk_radio_tool_button_get_group((*C.GtkRadioToolButton)(recv.native))
 	retGo := glib.SListNewFromC(unsafe.Pointer(retC))
@@ -2510,7 +3471,11 @@ func (recv *RadioToolButton) GetGroup() *glib.SList {
 	return retGo
 }
 
-// SetGroup is a wrapper around the C function gtk_radio_tool_button_set_group.
+// Adds @button to @group, removing it from the group it belonged to before.
+/*
+
+C function : gtk_radio_tool_button_set_group
+*/
 func (recv *RadioToolButton) SetGroup(group *glib.SList) {
 	c_group := (*C.GSList)(C.NULL)
 	if group != nil {
@@ -2522,7 +3487,13 @@ func (recv *RadioToolButton) SetGroup(group *glib.SList) {
 	return
 }
 
-// GetLayout is a wrapper around the C function gtk_scale_get_layout.
+// Gets the #PangoLayout used to display the scale. The returned
+// object is owned by the scale so does not need to be freed by
+// the caller.
+/*
+
+C function : gtk_scale_get_layout
+*/
 func (recv *Scale) GetLayout() *pango.Layout {
 	retC := C.gtk_scale_get_layout((*C.GtkScale)(recv.native))
 	var retGo (*pango.Layout)
@@ -2535,7 +3506,17 @@ func (recv *Scale) GetLayout() *pango.Layout {
 	return retGo
 }
 
-// GetLayoutOffsets is a wrapper around the C function gtk_scale_get_layout_offsets.
+// Obtains the coordinates where the scale will draw the
+// #PangoLayout representing the text in the scale. Remember
+// when using the #PangoLayout function you need to convert to
+// and from pixels using PANGO_PIXELS() or #PANGO_SCALE.
+//
+// If the #GtkScale:draw-value property is %FALSE, the return
+// values are undefined.
+/*
+
+C function : gtk_scale_get_layout_offsets
+*/
 func (recv *Scale) GetLayoutOffsets() (int32, int32) {
 	var c_x C.gint
 
@@ -2550,7 +3531,11 @@ func (recv *Scale) GetLayoutOffsets() (int32, int32) {
 	return x, y
 }
 
-// SeparatorToolItemNew is a wrapper around the C function gtk_separator_tool_item_new.
+// Create a new #GtkSeparatorToolItem
+/*
+
+C function : gtk_separator_tool_item_new
+*/
 func SeparatorToolItemNew() *SeparatorToolItem {
 	retC := C.gtk_separator_tool_item_new()
 	retGo := SeparatorToolItemNewFromC(unsafe.Pointer(retC))
@@ -2558,7 +3543,12 @@ func SeparatorToolItemNew() *SeparatorToolItem {
 	return retGo
 }
 
-// GetDraw is a wrapper around the C function gtk_separator_tool_item_get_draw.
+// Returns whether @item is drawn as a line, or just blank.
+// See gtk_separator_tool_item_set_draw().
+/*
+
+C function : gtk_separator_tool_item_get_draw
+*/
 func (recv *SeparatorToolItem) GetDraw() bool {
 	retC := C.gtk_separator_tool_item_get_draw((*C.GtkSeparatorToolItem)(recv.native))
 	retGo := retC == C.TRUE
@@ -2566,7 +3556,13 @@ func (recv *SeparatorToolItem) GetDraw() bool {
 	return retGo
 }
 
-// SetDraw is a wrapper around the C function gtk_separator_tool_item_set_draw.
+// Whether @item is drawn as a vertical line, or just blank.
+// Setting this to %FALSE along with gtk_tool_item_set_expand() is useful
+// to create an item that forces following items to the end of the toolbar.
+/*
+
+C function : gtk_separator_tool_item_set_draw
+*/
 func (recv *SeparatorToolItem) SetDraw(draw bool) {
 	c_draw :=
 		boolToGboolean(draw)
@@ -2690,7 +3686,17 @@ func style_unrealizeHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// SelectRange is a wrapper around the C function gtk_text_buffer_select_range.
+// This function moves the “insert” and “selection_bound” marks
+// simultaneously.  If you move them in two steps
+// with gtk_text_buffer_move_mark(), you will temporarily select a
+// region in between their old and new locations, which can be pretty
+// inefficient since the temporarily-selected region will force stuff
+// to be recalculated. This function moves them as a unit, which can
+// be optimized.
+/*
+
+C function : gtk_text_buffer_select_range
+*/
 func (recv *TextBuffer) SelectRange(ins *TextIter, bound *TextIter) {
 	c_ins := (*C.GtkTextIter)(C.NULL)
 	if ins != nil {
@@ -2707,7 +3713,12 @@ func (recv *TextBuffer) SelectRange(ins *TextIter, bound *TextIter) {
 	return
 }
 
-// GetAcceptsTab is a wrapper around the C function gtk_text_view_get_accepts_tab.
+// Returns whether pressing the Tab key inserts a tab characters.
+// gtk_text_view_set_accepts_tab().
+/*
+
+C function : gtk_text_view_get_accepts_tab
+*/
 func (recv *TextView) GetAcceptsTab() bool {
 	retC := C.gtk_text_view_get_accepts_tab((*C.GtkTextView)(recv.native))
 	retGo := retC == C.TRUE
@@ -2715,7 +3726,11 @@ func (recv *TextView) GetAcceptsTab() bool {
 	return retGo
 }
 
-// GetOverwrite is a wrapper around the C function gtk_text_view_get_overwrite.
+// Returns whether the #GtkTextView is in overwrite mode or not.
+/*
+
+C function : gtk_text_view_get_overwrite
+*/
 func (recv *TextView) GetOverwrite() bool {
 	retC := C.gtk_text_view_get_overwrite((*C.GtkTextView)(recv.native))
 	retGo := retC == C.TRUE
@@ -2723,7 +3738,14 @@ func (recv *TextView) GetOverwrite() bool {
 	return retGo
 }
 
-// SetAcceptsTab is a wrapper around the C function gtk_text_view_set_accepts_tab.
+// Sets the behavior of the text widget when the Tab key is pressed.
+// If @accepts_tab is %TRUE, a tab character is inserted. If @accepts_tab
+// is %FALSE the keyboard focus is moved to the next widget in the focus
+// chain.
+/*
+
+C function : gtk_text_view_set_accepts_tab
+*/
 func (recv *TextView) SetAcceptsTab(acceptsTab bool) {
 	c_accepts_tab :=
 		boolToGboolean(acceptsTab)
@@ -2733,7 +3755,11 @@ func (recv *TextView) SetAcceptsTab(acceptsTab bool) {
 	return
 }
 
-// SetOverwrite is a wrapper around the C function gtk_text_view_set_overwrite.
+// Changes the #GtkTextView overwrite mode.
+/*
+
+C function : gtk_text_view_set_overwrite
+*/
 func (recv *TextView) SetOverwrite(overwrite bool) {
 	c_overwrite :=
 		boolToGboolean(overwrite)
@@ -2743,7 +3769,13 @@ func (recv *TextView) SetOverwrite(overwrite bool) {
 	return
 }
 
-// ToggleActionNew is a wrapper around the C function gtk_toggle_action_new.
+// Creates a new #GtkToggleAction object. To add the action to
+// a #GtkActionGroup and set the accelerator for the action,
+// call gtk_action_group_add_action_with_accel().
+/*
+
+C function : gtk_toggle_action_new
+*/
 func ToggleActionNew(name string, label string, tooltip string, stockId string) *ToggleAction {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -2763,7 +3795,11 @@ func ToggleActionNew(name string, label string, tooltip string, stockId string) 
 	return retGo
 }
 
-// GetActive is a wrapper around the C function gtk_toggle_action_get_active.
+// Returns the checked state of the toggle action.
+/*
+
+C function : gtk_toggle_action_get_active
+*/
 func (recv *ToggleAction) GetActive() bool {
 	retC := C.gtk_toggle_action_get_active((*C.GtkToggleAction)(recv.native))
 	retGo := retC == C.TRUE
@@ -2771,7 +3807,11 @@ func (recv *ToggleAction) GetActive() bool {
 	return retGo
 }
 
-// GetDrawAsRadio is a wrapper around the C function gtk_toggle_action_get_draw_as_radio.
+// Returns whether the action should have proxies like a radio action.
+/*
+
+C function : gtk_toggle_action_get_draw_as_radio
+*/
 func (recv *ToggleAction) GetDrawAsRadio() bool {
 	retC := C.gtk_toggle_action_get_draw_as_radio((*C.GtkToggleAction)(recv.native))
 	retGo := retC == C.TRUE
@@ -2779,7 +3819,11 @@ func (recv *ToggleAction) GetDrawAsRadio() bool {
 	return retGo
 }
 
-// SetActive is a wrapper around the C function gtk_toggle_action_set_active.
+// Sets the checked state on the toggle action.
+/*
+
+C function : gtk_toggle_action_set_active
+*/
 func (recv *ToggleAction) SetActive(isActive bool) {
 	c_is_active :=
 		boolToGboolean(isActive)
@@ -2789,7 +3833,11 @@ func (recv *ToggleAction) SetActive(isActive bool) {
 	return
 }
 
-// SetDrawAsRadio is a wrapper around the C function gtk_toggle_action_set_draw_as_radio.
+// Sets whether the action should have proxies like a radio action.
+/*
+
+C function : gtk_toggle_action_set_draw_as_radio
+*/
 func (recv *ToggleAction) SetDrawAsRadio(drawAsRadio bool) {
 	c_draw_as_radio :=
 		boolToGboolean(drawAsRadio)
@@ -2799,14 +3847,22 @@ func (recv *ToggleAction) SetDrawAsRadio(drawAsRadio bool) {
 	return
 }
 
-// Toggled is a wrapper around the C function gtk_toggle_action_toggled.
+// Emits the “toggled” signal on the toggle action.
+/*
+
+C function : gtk_toggle_action_toggled
+*/
 func (recv *ToggleAction) Toggled() {
 	C.gtk_toggle_action_toggled((*C.GtkToggleAction)(recv.native))
 
 	return
 }
 
-// ToggleToolButtonNew is a wrapper around the C function gtk_toggle_tool_button_new.
+// Returns a new #GtkToggleToolButton
+/*
+
+C function : gtk_toggle_tool_button_new
+*/
 func ToggleToolButtonNew() *ToggleToolButton {
 	retC := C.gtk_toggle_tool_button_new()
 	retGo := ToggleToolButtonNewFromC(unsafe.Pointer(retC))
@@ -2814,7 +3870,15 @@ func ToggleToolButtonNew() *ToggleToolButton {
 	return retGo
 }
 
-// ToggleToolButtonNewFromStock is a wrapper around the C function gtk_toggle_tool_button_new_from_stock.
+// Creates a new #GtkToggleToolButton containing the image and text from a
+// stock item. Some stock ids have preprocessor macros like #GTK_STOCK_OK
+// and #GTK_STOCK_APPLY.
+//
+// It is an error if @stock_id is not a name of a stock item.
+/*
+
+C function : gtk_toggle_tool_button_new_from_stock
+*/
 func ToggleToolButtonNewFromStock(stockId string) *ToggleToolButton {
 	c_stock_id := C.CString(stockId)
 	defer C.free(unsafe.Pointer(c_stock_id))
@@ -2825,7 +3889,12 @@ func ToggleToolButtonNewFromStock(stockId string) *ToggleToolButton {
 	return retGo
 }
 
-// GetActive is a wrapper around the C function gtk_toggle_tool_button_get_active.
+// Queries a #GtkToggleToolButton and returns its current state.
+// Returns %TRUE if the toggle button is pressed in and %FALSE if it is raised.
+/*
+
+C function : gtk_toggle_tool_button_get_active
+*/
 func (recv *ToggleToolButton) GetActive() bool {
 	retC := C.gtk_toggle_tool_button_get_active((*C.GtkToggleToolButton)(recv.native))
 	retGo := retC == C.TRUE
@@ -2833,7 +3902,13 @@ func (recv *ToggleToolButton) GetActive() bool {
 	return retGo
 }
 
-// SetActive is a wrapper around the C function gtk_toggle_tool_button_set_active.
+// Sets the status of the toggle tool button. Set to %TRUE if you
+// want the GtkToggleButton to be “pressed in”, and %FALSE to raise it.
+// This action causes the toggled signal to be emitted.
+/*
+
+C function : gtk_toggle_tool_button_set_active
+*/
 func (recv *ToggleToolButton) SetActive(isActive bool) {
 	c_is_active :=
 		boolToGboolean(isActive)
@@ -2843,7 +3918,12 @@ func (recv *ToggleToolButton) SetActive(isActive bool) {
 	return
 }
 
-// ToolButtonNew is a wrapper around the C function gtk_tool_button_new.
+// Creates a new #GtkToolButton using @icon_widget as contents and @label as
+// label.
+/*
+
+C function : gtk_tool_button_new
+*/
 func ToolButtonNew(iconWidget *Widget, label string) *ToolButton {
 	c_icon_widget := (*C.GtkWidget)(C.NULL)
 	if iconWidget != nil {
@@ -2859,7 +3939,15 @@ func ToolButtonNew(iconWidget *Widget, label string) *ToolButton {
 	return retGo
 }
 
-// ToolButtonNewFromStock is a wrapper around the C function gtk_tool_button_new_from_stock.
+// Creates a new #GtkToolButton containing the image and text from a
+// stock item. Some stock ids have preprocessor macros like #GTK_STOCK_OK
+// and #GTK_STOCK_APPLY.
+//
+// It is an error if @stock_id is not a name of a stock item.
+/*
+
+C function : gtk_tool_button_new_from_stock
+*/
 func ToolButtonNewFromStock(stockId string) *ToolButton {
 	c_stock_id := C.CString(stockId)
 	defer C.free(unsafe.Pointer(c_stock_id))
@@ -2870,7 +3958,12 @@ func ToolButtonNewFromStock(stockId string) *ToolButton {
 	return retGo
 }
 
-// GetIconWidget is a wrapper around the C function gtk_tool_button_get_icon_widget.
+// Return the widget used as icon widget on @button.
+// See gtk_tool_button_set_icon_widget().
+/*
+
+C function : gtk_tool_button_get_icon_widget
+*/
 func (recv *ToolButton) GetIconWidget() *Widget {
 	retC := C.gtk_tool_button_get_icon_widget((*C.GtkToolButton)(recv.native))
 	var retGo (*Widget)
@@ -2883,7 +3976,13 @@ func (recv *ToolButton) GetIconWidget() *Widget {
 	return retGo
 }
 
-// GetLabel is a wrapper around the C function gtk_tool_button_get_label.
+// Returns the label used by the tool button, or %NULL if the tool button
+// doesn’t have a label. or uses a the label from a stock item. The returned
+// string is owned by GTK+, and must not be modified or freed.
+/*
+
+C function : gtk_tool_button_get_label
+*/
 func (recv *ToolButton) GetLabel() string {
 	retC := C.gtk_tool_button_get_label((*C.GtkToolButton)(recv.native))
 	retGo := C.GoString(retC)
@@ -2891,7 +3990,12 @@ func (recv *ToolButton) GetLabel() string {
 	return retGo
 }
 
-// GetLabelWidget is a wrapper around the C function gtk_tool_button_get_label_widget.
+// Returns the widget used as label on @button.
+// See gtk_tool_button_set_label_widget().
+/*
+
+C function : gtk_tool_button_get_label_widget
+*/
 func (recv *ToolButton) GetLabelWidget() *Widget {
 	retC := C.gtk_tool_button_get_label_widget((*C.GtkToolButton)(recv.native))
 	var retGo (*Widget)
@@ -2904,7 +4008,12 @@ func (recv *ToolButton) GetLabelWidget() *Widget {
 	return retGo
 }
 
-// GetStockId is a wrapper around the C function gtk_tool_button_get_stock_id.
+// Returns the name of the stock item. See gtk_tool_button_set_stock_id().
+// The returned string is owned by GTK+ and must not be freed or modifed.
+/*
+
+C function : gtk_tool_button_get_stock_id
+*/
 func (recv *ToolButton) GetStockId() string {
 	retC := C.gtk_tool_button_get_stock_id((*C.GtkToolButton)(recv.native))
 	retGo := C.GoString(retC)
@@ -2912,7 +4021,12 @@ func (recv *ToolButton) GetStockId() string {
 	return retGo
 }
 
-// GetUseUnderline is a wrapper around the C function gtk_tool_button_get_use_underline.
+// Returns whether underscores in the label property are used as mnemonics
+// on menu items on the overflow menu. See gtk_tool_button_set_use_underline().
+/*
+
+C function : gtk_tool_button_get_use_underline
+*/
 func (recv *ToolButton) GetUseUnderline() bool {
 	retC := C.gtk_tool_button_get_use_underline((*C.GtkToolButton)(recv.native))
 	retGo := retC == C.TRUE
@@ -2920,7 +4034,13 @@ func (recv *ToolButton) GetUseUnderline() bool {
 	return retGo
 }
 
-// SetIconWidget is a wrapper around the C function gtk_tool_button_set_icon_widget.
+// Sets @icon as the widget used as icon on @button. If @icon_widget is
+// %NULL the icon is determined by the #GtkToolButton:stock-id property. If the
+// #GtkToolButton:stock-id property is also %NULL, @button will not have an icon.
+/*
+
+C function : gtk_tool_button_set_icon_widget
+*/
 func (recv *ToolButton) SetIconWidget(iconWidget *Widget) {
 	c_icon_widget := (*C.GtkWidget)(C.NULL)
 	if iconWidget != nil {
@@ -2932,7 +4052,16 @@ func (recv *ToolButton) SetIconWidget(iconWidget *Widget) {
 	return
 }
 
-// SetLabel is a wrapper around the C function gtk_tool_button_set_label.
+// Sets @label as the label used for the tool button. The #GtkToolButton:label
+// property only has an effect if not overridden by a non-%NULL
+// #GtkToolButton:label-widget property. If both the #GtkToolButton:label-widget
+// and #GtkToolButton:label properties are %NULL, the label is determined by the
+// #GtkToolButton:stock-id property. If the #GtkToolButton:stock-id property is
+// also %NULL, @button will not have a label.
+/*
+
+C function : gtk_tool_button_set_label
+*/
 func (recv *ToolButton) SetLabel(label string) {
 	c_label := C.CString(label)
 	defer C.free(unsafe.Pointer(c_label))
@@ -2942,7 +4071,15 @@ func (recv *ToolButton) SetLabel(label string) {
 	return
 }
 
-// SetLabelWidget is a wrapper around the C function gtk_tool_button_set_label_widget.
+// Sets @label_widget as the widget that will be used as the label
+// for @button. If @label_widget is %NULL the #GtkToolButton:label property is used
+// as label. If #GtkToolButton:label is also %NULL, the label in the stock item
+// determined by the #GtkToolButton:stock-id property is used as label. If
+// #GtkToolButton:stock-id is also %NULL, @button does not have a label.
+/*
+
+C function : gtk_tool_button_set_label_widget
+*/
 func (recv *ToolButton) SetLabelWidget(labelWidget *Widget) {
 	c_label_widget := (*C.GtkWidget)(C.NULL)
 	if labelWidget != nil {
@@ -2954,7 +4091,13 @@ func (recv *ToolButton) SetLabelWidget(labelWidget *Widget) {
 	return
 }
 
-// SetStockId is a wrapper around the C function gtk_tool_button_set_stock_id.
+// Sets the name of the stock item. See gtk_tool_button_new_from_stock().
+// The stock_id property only has an effect if not overridden by non-%NULL
+// #GtkToolButton:label-widget and #GtkToolButton:icon-widget properties.
+/*
+
+C function : gtk_tool_button_set_stock_id
+*/
 func (recv *ToolButton) SetStockId(stockId string) {
 	c_stock_id := C.CString(stockId)
 	defer C.free(unsafe.Pointer(c_stock_id))
@@ -2964,7 +4107,18 @@ func (recv *ToolButton) SetStockId(stockId string) {
 	return
 }
 
-// SetUseUnderline is a wrapper around the C function gtk_tool_button_set_use_underline.
+// If set, an underline in the label property indicates that the next character
+// should be used for the mnemonic accelerator key in the overflow menu. For
+// example, if the label property is “_Open” and @use_underline is %TRUE,
+// the label on the tool button will be “Open” and the item on the overflow
+// menu will have an underlined “O”.
+//
+// Labels shown on tool buttons never have mnemonics on them; this property
+// only affects the menu item on the overflow menu.
+/*
+
+C function : gtk_tool_button_set_use_underline
+*/
 func (recv *ToolButton) SetUseUnderline(useUnderline bool) {
 	c_use_underline :=
 		boolToGboolean(useUnderline)
@@ -2974,7 +4128,11 @@ func (recv *ToolButton) SetUseUnderline(useUnderline bool) {
 	return
 }
 
-// ToolItemNew is a wrapper around the C function gtk_tool_item_new.
+// Creates a new #GtkToolItem
+/*
+
+C function : gtk_tool_item_new
+*/
 func ToolItemNew() *ToolItem {
 	retC := C.gtk_tool_item_new()
 	retGo := ToolItemNewFromC(unsafe.Pointer(retC))
@@ -2982,7 +4140,12 @@ func ToolItemNew() *ToolItem {
 	return retGo
 }
 
-// GetExpand is a wrapper around the C function gtk_tool_item_get_expand.
+// Returns whether @tool_item is allocated extra space.
+// See gtk_tool_item_set_expand().
+/*
+
+C function : gtk_tool_item_get_expand
+*/
 func (recv *ToolItem) GetExpand() bool {
 	retC := C.gtk_tool_item_get_expand((*C.GtkToolItem)(recv.native))
 	retGo := retC == C.TRUE
@@ -2990,7 +4153,12 @@ func (recv *ToolItem) GetExpand() bool {
 	return retGo
 }
 
-// GetHomogeneous is a wrapper around the C function gtk_tool_item_get_homogeneous.
+// Returns whether @tool_item is the same size as other homogeneous
+// items. See gtk_tool_item_set_homogeneous().
+/*
+
+C function : gtk_tool_item_get_homogeneous
+*/
 func (recv *ToolItem) GetHomogeneous() bool {
 	retC := C.gtk_tool_item_get_homogeneous((*C.GtkToolItem)(recv.native))
 	retGo := retC == C.TRUE
@@ -2998,7 +4166,13 @@ func (recv *ToolItem) GetHomogeneous() bool {
 	return retGo
 }
 
-// GetIconSize is a wrapper around the C function gtk_tool_item_get_icon_size.
+// Returns the icon size used for @tool_item. Custom subclasses of
+// #GtkToolItem should call this function to find out what size icons
+// they should use.
+/*
+
+C function : gtk_tool_item_get_icon_size
+*/
 func (recv *ToolItem) GetIconSize() IconSize {
 	retC := C.gtk_tool_item_get_icon_size((*C.GtkToolItem)(recv.native))
 	retGo := (IconSize)(retC)
@@ -3006,7 +4180,12 @@ func (recv *ToolItem) GetIconSize() IconSize {
 	return retGo
 }
 
-// GetIsImportant is a wrapper around the C function gtk_tool_item_get_is_important.
+// Returns whether @tool_item is considered important. See
+// gtk_tool_item_set_is_important()
+/*
+
+C function : gtk_tool_item_get_is_important
+*/
 func (recv *ToolItem) GetIsImportant() bool {
 	retC := C.gtk_tool_item_get_is_important((*C.GtkToolItem)(recv.native))
 	retGo := retC == C.TRUE
@@ -3014,7 +4193,13 @@ func (recv *ToolItem) GetIsImportant() bool {
 	return retGo
 }
 
-// GetOrientation is a wrapper around the C function gtk_tool_item_get_orientation.
+// Returns the orientation used for @tool_item. Custom subclasses of
+// #GtkToolItem should call this function to find out what size icons
+// they should use.
+/*
+
+C function : gtk_tool_item_get_orientation
+*/
 func (recv *ToolItem) GetOrientation() Orientation {
 	retC := C.gtk_tool_item_get_orientation((*C.GtkToolItem)(recv.native))
 	retGo := (Orientation)(retC)
@@ -3022,7 +4207,17 @@ func (recv *ToolItem) GetOrientation() Orientation {
 	return retGo
 }
 
-// GetProxyMenuItem is a wrapper around the C function gtk_tool_item_get_proxy_menu_item.
+// If @menu_item_id matches the string passed to
+// gtk_tool_item_set_proxy_menu_item() return the corresponding #GtkMenuItem.
+//
+// Custom subclasses of #GtkToolItem should use this function to
+// update their menu item when the #GtkToolItem changes. That the
+// @menu_item_ids must match ensures that a #GtkToolItem
+// will not inadvertently change a menu item that they did not create.
+/*
+
+C function : gtk_tool_item_get_proxy_menu_item
+*/
 func (recv *ToolItem) GetProxyMenuItem(menuItemId string) *Widget {
 	c_menu_item_id := C.CString(menuItemId)
 	defer C.free(unsafe.Pointer(c_menu_item_id))
@@ -3038,7 +4233,14 @@ func (recv *ToolItem) GetProxyMenuItem(menuItemId string) *Widget {
 	return retGo
 }
 
-// GetReliefStyle is a wrapper around the C function gtk_tool_item_get_relief_style.
+// Returns the relief style of @tool_item. See gtk_button_set_relief().
+// Custom subclasses of #GtkToolItem should call this function in the handler
+// of the #GtkToolItem::toolbar_reconfigured signal to find out the
+// relief style of buttons.
+/*
+
+C function : gtk_tool_item_get_relief_style
+*/
 func (recv *ToolItem) GetReliefStyle() ReliefStyle {
 	retC := C.gtk_tool_item_get_relief_style((*C.GtkToolItem)(recv.native))
 	retGo := (ReliefStyle)(retC)
@@ -3046,7 +4248,22 @@ func (recv *ToolItem) GetReliefStyle() ReliefStyle {
 	return retGo
 }
 
-// GetToolbarStyle is a wrapper around the C function gtk_tool_item_get_toolbar_style.
+// Returns the toolbar style used for @tool_item. Custom subclasses of
+// #GtkToolItem should call this function in the handler of the
+// GtkToolItem::toolbar_reconfigured signal to find out in what style
+// the toolbar is displayed and change themselves accordingly
+//
+// Possibilities are:
+// - %GTK_TOOLBAR_BOTH, meaning the tool item should show
+// both an icon and a label, stacked vertically
+// - %GTK_TOOLBAR_ICONS, meaning the toolbar shows only icons
+// - %GTK_TOOLBAR_TEXT, meaning the tool item should only show text
+// - %GTK_TOOLBAR_BOTH_HORIZ, meaning the tool item should show
+// both an icon and a label, arranged horizontally
+/*
+
+C function : gtk_tool_item_get_toolbar_style
+*/
 func (recv *ToolItem) GetToolbarStyle() ToolbarStyle {
 	retC := C.gtk_tool_item_get_toolbar_style((*C.GtkToolItem)(recv.native))
 	retGo := (ToolbarStyle)(retC)
@@ -3054,7 +4271,12 @@ func (recv *ToolItem) GetToolbarStyle() ToolbarStyle {
 	return retGo
 }
 
-// GetUseDragWindow is a wrapper around the C function gtk_tool_item_get_use_drag_window.
+// Returns whether @tool_item has a drag window. See
+// gtk_tool_item_set_use_drag_window().
+/*
+
+C function : gtk_tool_item_get_use_drag_window
+*/
 func (recv *ToolItem) GetUseDragWindow() bool {
 	retC := C.gtk_tool_item_get_use_drag_window((*C.GtkToolItem)(recv.native))
 	retGo := retC == C.TRUE
@@ -3062,7 +4284,12 @@ func (recv *ToolItem) GetUseDragWindow() bool {
 	return retGo
 }
 
-// GetVisibleHorizontal is a wrapper around the C function gtk_tool_item_get_visible_horizontal.
+// Returns whether the @tool_item is visible on toolbars that are
+// docked horizontally.
+/*
+
+C function : gtk_tool_item_get_visible_horizontal
+*/
 func (recv *ToolItem) GetVisibleHorizontal() bool {
 	retC := C.gtk_tool_item_get_visible_horizontal((*C.GtkToolItem)(recv.native))
 	retGo := retC == C.TRUE
@@ -3070,7 +4297,12 @@ func (recv *ToolItem) GetVisibleHorizontal() bool {
 	return retGo
 }
 
-// GetVisibleVertical is a wrapper around the C function gtk_tool_item_get_visible_vertical.
+// Returns whether @tool_item is visible when the toolbar is docked vertically.
+// See gtk_tool_item_set_visible_vertical().
+/*
+
+C function : gtk_tool_item_get_visible_vertical
+*/
 func (recv *ToolItem) GetVisibleVertical() bool {
 	retC := C.gtk_tool_item_get_visible_vertical((*C.GtkToolItem)(recv.native))
 	retGo := retC == C.TRUE
@@ -3078,7 +4310,13 @@ func (recv *ToolItem) GetVisibleVertical() bool {
 	return retGo
 }
 
-// RetrieveProxyMenuItem is a wrapper around the C function gtk_tool_item_retrieve_proxy_menu_item.
+// Returns the #GtkMenuItem that was last set by
+// gtk_tool_item_set_proxy_menu_item(), ie. the #GtkMenuItem
+// that is going to appear in the overflow menu.
+/*
+
+C function : gtk_tool_item_retrieve_proxy_menu_item
+*/
 func (recv *ToolItem) RetrieveProxyMenuItem() *Widget {
 	retC := C.gtk_tool_item_retrieve_proxy_menu_item((*C.GtkToolItem)(recv.native))
 	retGo := WidgetNewFromC(unsafe.Pointer(retC))
@@ -3086,7 +4324,14 @@ func (recv *ToolItem) RetrieveProxyMenuItem() *Widget {
 	return retGo
 }
 
-// SetExpand is a wrapper around the C function gtk_tool_item_set_expand.
+// Sets whether @tool_item is allocated extra space when there
+// is more room on the toolbar then needed for the items. The
+// effect is that the item gets bigger when the toolbar gets bigger
+// and smaller when the toolbar gets smaller.
+/*
+
+C function : gtk_tool_item_set_expand
+*/
 func (recv *ToolItem) SetExpand(expand bool) {
 	c_expand :=
 		boolToGboolean(expand)
@@ -3096,7 +4341,13 @@ func (recv *ToolItem) SetExpand(expand bool) {
 	return
 }
 
-// SetHomogeneous is a wrapper around the C function gtk_tool_item_set_homogeneous.
+// Sets whether @tool_item is to be allocated the same size as other
+// homogeneous items. The effect is that all homogeneous items will have
+// the same width as the widest of the items.
+/*
+
+C function : gtk_tool_item_set_homogeneous
+*/
 func (recv *ToolItem) SetHomogeneous(homogeneous bool) {
 	c_homogeneous :=
 		boolToGboolean(homogeneous)
@@ -3106,7 +4357,15 @@ func (recv *ToolItem) SetHomogeneous(homogeneous bool) {
 	return
 }
 
-// SetIsImportant is a wrapper around the C function gtk_tool_item_set_is_important.
+// Sets whether @tool_item should be considered important. The #GtkToolButton
+// class uses this property to determine whether to show or hide its label
+// when the toolbar style is %GTK_TOOLBAR_BOTH_HORIZ. The result is that
+// only tool buttons with the “is_important” property set have labels, an
+// effect known as “priority text”
+/*
+
+C function : gtk_tool_item_set_is_important
+*/
 func (recv *ToolItem) SetIsImportant(isImportant bool) {
 	c_is_important :=
 		boolToGboolean(isImportant)
@@ -3116,7 +4375,15 @@ func (recv *ToolItem) SetIsImportant(isImportant bool) {
 	return
 }
 
-// SetProxyMenuItem is a wrapper around the C function gtk_tool_item_set_proxy_menu_item.
+// Sets the #GtkMenuItem used in the toolbar overflow menu. The
+// @menu_item_id is used to identify the caller of this function and
+// should also be used with gtk_tool_item_get_proxy_menu_item().
+//
+// See also #GtkToolItem::create-menu-proxy.
+/*
+
+C function : gtk_tool_item_set_proxy_menu_item
+*/
 func (recv *ToolItem) SetProxyMenuItem(menuItemId string, menuItem *Widget) {
 	c_menu_item_id := C.CString(menuItemId)
 	defer C.free(unsafe.Pointer(c_menu_item_id))
@@ -3131,7 +4398,14 @@ func (recv *ToolItem) SetProxyMenuItem(menuItemId string, menuItem *Widget) {
 	return
 }
 
-// SetUseDragWindow is a wrapper around the C function gtk_tool_item_set_use_drag_window.
+// Sets whether @tool_item has a drag window. When %TRUE the
+// toolitem can be used as a drag source through gtk_drag_source_set().
+// When @tool_item has a drag window it will intercept all events,
+// even those that would otherwise be sent to a child of @tool_item.
+/*
+
+C function : gtk_tool_item_set_use_drag_window
+*/
 func (recv *ToolItem) SetUseDragWindow(useDragWindow bool) {
 	c_use_drag_window :=
 		boolToGboolean(useDragWindow)
@@ -3141,7 +4415,11 @@ func (recv *ToolItem) SetUseDragWindow(useDragWindow bool) {
 	return
 }
 
-// SetVisibleHorizontal is a wrapper around the C function gtk_tool_item_set_visible_horizontal.
+// Sets whether @tool_item is visible when the toolbar is docked horizontally.
+/*
+
+C function : gtk_tool_item_set_visible_horizontal
+*/
 func (recv *ToolItem) SetVisibleHorizontal(visibleHorizontal bool) {
 	c_visible_horizontal :=
 		boolToGboolean(visibleHorizontal)
@@ -3151,7 +4429,14 @@ func (recv *ToolItem) SetVisibleHorizontal(visibleHorizontal bool) {
 	return
 }
 
-// SetVisibleVertical is a wrapper around the C function gtk_tool_item_set_visible_vertical.
+// Sets whether @tool_item is visible when the toolbar is docked
+// vertically. Some tool items, such as text entries, are too wide to be
+// useful on a vertically docked toolbar. If @visible_vertical is %FALSE
+// @tool_item will not appear on toolbars that are docked vertically.
+/*
+
+C function : gtk_tool_item_set_visible_vertical
+*/
 func (recv *ToolItem) SetVisibleVertical(visibleVertical bool) {
 	c_visible_vertical :=
 		boolToGboolean(visibleVertical)
@@ -3161,7 +4446,16 @@ func (recv *ToolItem) SetVisibleVertical(visibleVertical bool) {
 	return
 }
 
-// GetDropIndex is a wrapper around the C function gtk_toolbar_get_drop_index.
+// Returns the position corresponding to the indicated point on
+// @toolbar. This is useful when dragging items to the toolbar:
+// this function returns the position a new item should be
+// inserted.
+//
+// @x and @y are in @toolbar coordinates.
+/*
+
+C function : gtk_toolbar_get_drop_index
+*/
 func (recv *Toolbar) GetDropIndex(x int32, y int32) int32 {
 	c_x := (C.gint)(x)
 
@@ -3173,7 +4467,12 @@ func (recv *Toolbar) GetDropIndex(x int32, y int32) int32 {
 	return retGo
 }
 
-// GetItemIndex is a wrapper around the C function gtk_toolbar_get_item_index.
+// Returns the position of @item on the toolbar, starting from 0.
+// It is an error if @item is not a child of the toolbar.
+/*
+
+C function : gtk_toolbar_get_item_index
+*/
 func (recv *Toolbar) GetItemIndex(item *ToolItem) int32 {
 	c_item := (*C.GtkToolItem)(C.NULL)
 	if item != nil {
@@ -3186,7 +4485,11 @@ func (recv *Toolbar) GetItemIndex(item *ToolItem) int32 {
 	return retGo
 }
 
-// GetNItems is a wrapper around the C function gtk_toolbar_get_n_items.
+// Returns the number of items on the toolbar.
+/*
+
+C function : gtk_toolbar_get_n_items
+*/
 func (recv *Toolbar) GetNItems() int32 {
 	retC := C.gtk_toolbar_get_n_items((*C.GtkToolbar)(recv.native))
 	retGo := (int32)(retC)
@@ -3194,7 +4497,12 @@ func (recv *Toolbar) GetNItems() int32 {
 	return retGo
 }
 
-// GetNthItem is a wrapper around the C function gtk_toolbar_get_nth_item.
+// Returns the @n'th item on @toolbar, or %NULL if the
+// toolbar does not contain an @n'th item.
+/*
+
+C function : gtk_toolbar_get_nth_item
+*/
 func (recv *Toolbar) GetNthItem(n int32) *ToolItem {
 	c_n := (C.gint)(n)
 
@@ -3209,7 +4517,12 @@ func (recv *Toolbar) GetNthItem(n int32) *ToolItem {
 	return retGo
 }
 
-// GetReliefStyle is a wrapper around the C function gtk_toolbar_get_relief_style.
+// Returns the relief style of buttons on @toolbar. See
+// gtk_button_set_relief().
+/*
+
+C function : gtk_toolbar_get_relief_style
+*/
 func (recv *Toolbar) GetReliefStyle() ReliefStyle {
 	retC := C.gtk_toolbar_get_relief_style((*C.GtkToolbar)(recv.native))
 	retGo := (ReliefStyle)(retC)
@@ -3217,7 +4530,12 @@ func (recv *Toolbar) GetReliefStyle() ReliefStyle {
 	return retGo
 }
 
-// GetShowArrow is a wrapper around the C function gtk_toolbar_get_show_arrow.
+// Returns whether the toolbar has an overflow menu.
+// See gtk_toolbar_set_show_arrow().
+/*
+
+C function : gtk_toolbar_get_show_arrow
+*/
 func (recv *Toolbar) GetShowArrow() bool {
 	retC := C.gtk_toolbar_get_show_arrow((*C.GtkToolbar)(recv.native))
 	retGo := retC == C.TRUE
@@ -3225,7 +4543,13 @@ func (recv *Toolbar) GetShowArrow() bool {
 	return retGo
 }
 
-// Insert is a wrapper around the C function gtk_toolbar_insert.
+// Insert a #GtkToolItem into the toolbar at position @pos. If @pos is
+// 0 the item is prepended to the start of the toolbar. If @pos is
+// negative, the item is appended to the end of the toolbar.
+/*
+
+C function : gtk_toolbar_insert
+*/
 func (recv *Toolbar) Insert(item *ToolItem, pos int32) {
 	c_item := (*C.GtkToolItem)(C.NULL)
 	if item != nil {
@@ -3239,7 +4563,19 @@ func (recv *Toolbar) Insert(item *ToolItem, pos int32) {
 	return
 }
 
-// SetDropHighlightItem is a wrapper around the C function gtk_toolbar_set_drop_highlight_item.
+// Highlights @toolbar to give an idea of what it would look like
+// if @item was added to @toolbar at the position indicated by @index_.
+// If @item is %NULL, highlighting is turned off. In that case @index_
+// is ignored.
+//
+// The @tool_item passed to this function must not be part of any widget
+// hierarchy. When an item is set as drop highlight item it can not
+// added to any widget hierarchy or used as highlight item for another
+// toolbar.
+/*
+
+C function : gtk_toolbar_set_drop_highlight_item
+*/
 func (recv *Toolbar) SetDropHighlightItem(toolItem *ToolItem, index int32) {
 	c_tool_item := (*C.GtkToolItem)(C.NULL)
 	if toolItem != nil {
@@ -3253,7 +4589,16 @@ func (recv *Toolbar) SetDropHighlightItem(toolItem *ToolItem, index int32) {
 	return
 }
 
-// SetShowArrow is a wrapper around the C function gtk_toolbar_set_show_arrow.
+// Sets whether to show an overflow menu when @toolbar isn’t allocated enough
+// size to show all of its items. If %TRUE, items which can’t fit in @toolbar,
+// and which have a proxy menu item set by gtk_tool_item_set_proxy_menu_item()
+// or #GtkToolItem::create-menu-proxy, will be available in an overflow menu,
+// which can be opened by an added arrow button. If %FALSE, @toolbar will
+// request enough size to fit all of its child items without any overflow.
+/*
+
+C function : gtk_toolbar_set_show_arrow
+*/
 func (recv *Toolbar) SetShowArrow(showArrow bool) {
 	c_show_arrow :=
 		boolToGboolean(showArrow)
@@ -3263,14 +4608,29 @@ func (recv *Toolbar) SetShowArrow(showArrow bool) {
 	return
 }
 
-// ClearCache is a wrapper around the C function gtk_tree_model_filter_clear_cache.
+// This function should almost never be called. It clears the @filter
+// of any cached iterators that haven’t been reffed with
+// gtk_tree_model_ref_node(). This might be useful if the child model
+// being filtered is static (and doesn’t change often) and there has been
+// a lot of unreffed access to nodes. As a side effect of this function,
+// all unreffed iters will be invalid.
+/*
+
+C function : gtk_tree_model_filter_clear_cache
+*/
 func (recv *TreeModelFilter) ClearCache() {
 	C.gtk_tree_model_filter_clear_cache((*C.GtkTreeModelFilter)(recv.native))
 
 	return
 }
 
-// ConvertChildIterToIter is a wrapper around the C function gtk_tree_model_filter_convert_child_iter_to_iter.
+// Sets @filter_iter to point to the row in @filter that corresponds to the
+// row pointed at by @child_iter.  If @filter_iter was not set, %FALSE is
+// returned.
+/*
+
+C function : gtk_tree_model_filter_convert_child_iter_to_iter
+*/
 func (recv *TreeModelFilter) ConvertChildIterToIter(childIter *TreeIter) (bool, *TreeIter) {
 	var c_filter_iter C.GtkTreeIter
 
@@ -3287,7 +4647,15 @@ func (recv *TreeModelFilter) ConvertChildIterToIter(childIter *TreeIter) (bool, 
 	return retGo, filterIter
 }
 
-// ConvertChildPathToPath is a wrapper around the C function gtk_tree_model_filter_convert_child_path_to_path.
+// Converts @child_path to a path relative to @filter. That is, @child_path
+// points to a path in the child model. The rerturned path will point to the
+// same row in the filtered model. If @child_path isn’t a valid path on the
+// child model or points to a row which is not visible in @filter, then %NULL
+// is returned.
+/*
+
+C function : gtk_tree_model_filter_convert_child_path_to_path
+*/
 func (recv *TreeModelFilter) ConvertChildPathToPath(childPath *TreePath) *TreePath {
 	c_child_path := (*C.GtkTreePath)(C.NULL)
 	if childPath != nil {
@@ -3305,7 +4673,11 @@ func (recv *TreeModelFilter) ConvertChildPathToPath(childPath *TreePath) *TreePa
 	return retGo
 }
 
-// ConvertIterToChildIter is a wrapper around the C function gtk_tree_model_filter_convert_iter_to_child_iter.
+// Sets @child_iter to point to the row pointed to by @filter_iter.
+/*
+
+C function : gtk_tree_model_filter_convert_iter_to_child_iter
+*/
 func (recv *TreeModelFilter) ConvertIterToChildIter(filterIter *TreeIter) *TreeIter {
 	var c_child_iter C.GtkTreeIter
 
@@ -3321,7 +4693,14 @@ func (recv *TreeModelFilter) ConvertIterToChildIter(filterIter *TreeIter) *TreeI
 	return childIter
 }
 
-// ConvertPathToChildPath is a wrapper around the C function gtk_tree_model_filter_convert_path_to_child_path.
+// Converts @filter_path to a path on the child model of @filter. That is,
+// @filter_path points to a location in @filter. The returned path will
+// point to the same location in the model not being filtered. If @filter_path
+// does not point to a location in the child model, %NULL is returned.
+/*
+
+C function : gtk_tree_model_filter_convert_path_to_child_path
+*/
 func (recv *TreeModelFilter) ConvertPathToChildPath(filterPath *TreePath) *TreePath {
 	c_filter_path := (*C.GtkTreePath)(C.NULL)
 	if filterPath != nil {
@@ -3339,7 +4718,11 @@ func (recv *TreeModelFilter) ConvertPathToChildPath(filterPath *TreePath) *TreeP
 	return retGo
 }
 
-// GetModel is a wrapper around the C function gtk_tree_model_filter_get_model.
+// Returns a pointer to the child model of @filter.
+/*
+
+C function : gtk_tree_model_filter_get_model
+*/
 func (recv *TreeModelFilter) GetModel() *TreeModel {
 	retC := C.gtk_tree_model_filter_get_model((*C.GtkTreeModelFilter)(recv.native))
 	retGo := TreeModelNewFromC(unsafe.Pointer(retC))
@@ -3347,7 +4730,12 @@ func (recv *TreeModelFilter) GetModel() *TreeModel {
 	return retGo
 }
 
-// Refilter is a wrapper around the C function gtk_tree_model_filter_refilter.
+// Emits ::row_changed for each row in the child model, which causes
+// the filter to re-evaluate whether a row is visible or not.
+/*
+
+C function : gtk_tree_model_filter_refilter
+*/
 func (recv *TreeModelFilter) Refilter() {
 	C.gtk_tree_model_filter_refilter((*C.GtkTreeModelFilter)(recv.native))
 
@@ -3356,7 +4744,18 @@ func (recv *TreeModelFilter) Refilter() {
 
 // Unsupported : gtk_tree_model_filter_set_modify_func : unsupported parameter func : no type generator for TreeModelFilterModifyFunc (GtkTreeModelFilterModifyFunc) for param func
 
-// SetVisibleColumn is a wrapper around the C function gtk_tree_model_filter_set_visible_column.
+// Sets @column of the child_model to be the column where @filter should
+// look for visibility information. @columns should be a column of type
+// %G_TYPE_BOOLEAN, where %TRUE means that a row is visible, and %FALSE
+// if not.
+//
+// Note that gtk_tree_model_filter_set_visible_func() or
+// gtk_tree_model_filter_set_visible_column() can only be called
+// once for a given filter model.
+/*
+
+C function : gtk_tree_model_filter_set_visible_column
+*/
 func (recv *TreeModelFilter) SetVisibleColumn(column int32) {
 	c_column := (C.gint)(column)
 
@@ -3367,7 +4766,11 @@ func (recv *TreeModelFilter) SetVisibleColumn(column int32) {
 
 // Unsupported : gtk_tree_model_filter_set_visible_func : unsupported parameter func : no type generator for TreeModelFilterVisibleFunc (GtkTreeModelFilterVisibleFunc) for param func
 
-// GetExpand is a wrapper around the C function gtk_tree_view_column_get_expand.
+// Returns %TRUE if the column expands to fill available space.
+/*
+
+C function : gtk_tree_view_column_get_expand
+*/
 func (recv *TreeViewColumn) GetExpand() bool {
 	retC := C.gtk_tree_view_column_get_expand((*C.GtkTreeViewColumn)(recv.native))
 	retGo := retC == C.TRUE
@@ -3375,7 +4778,17 @@ func (recv *TreeViewColumn) GetExpand() bool {
 	return retGo
 }
 
-// SetExpand is a wrapper around the C function gtk_tree_view_column_set_expand.
+// Sets the column to take available extra space.  This space is shared equally
+// amongst all columns that have the expand set to %TRUE.  If no column has this
+// option set, then the last column gets all extra space.  By default, every
+// column is created with this %FALSE.
+//
+// Along with “fixed-width”, the “expand” property changes when the column is
+// resized by the user.
+/*
+
+C function : gtk_tree_view_column_set_expand
+*/
 func (recv *TreeViewColumn) SetExpand(expand bool) {
 	c_expand :=
 		boolToGboolean(expand)
@@ -3741,7 +5154,11 @@ func uimanager_preActivateHandler(_ *C.GObject, c_action *C.GtkAction, data C.gp
 	callback(action)
 }
 
-// UIManagerNew is a wrapper around the C function gtk_ui_manager_new.
+// Creates a new ui manager object.
+/*
+
+C function : gtk_ui_manager_new
+*/
 func UIManagerNew() *UIManager {
 	retC := C.gtk_ui_manager_new()
 	retGo := UIManagerNewFromC(unsafe.Pointer(retC))
@@ -3749,7 +5166,19 @@ func UIManagerNew() *UIManager {
 	return retGo
 }
 
-// AddUi is a wrapper around the C function gtk_ui_manager_add_ui.
+// Adds a UI element to the current contents of @manager.
+//
+// If @type is %GTK_UI_MANAGER_AUTO, GTK+ inserts a menuitem, toolitem or
+// separator if such an element can be inserted at the place determined by
+// @path. Otherwise @type must indicate an element that can be inserted at
+// the place determined by @path.
+//
+// If @path points to a menuitem or toolitem, the new element will be inserted
+// before or after this item, depending on @top.
+/*
+
+C function : gtk_ui_manager_add_ui
+*/
 func (recv *UIManager) AddUi(mergeId uint32, path string, name string, action string, type_ UIManagerItemType, top bool) {
 	c_merge_id := (C.guint)(mergeId)
 
@@ -3772,7 +5201,12 @@ func (recv *UIManager) AddUi(mergeId uint32, path string, name string, action st
 	return
 }
 
-// AddUiFromFile is a wrapper around the C function gtk_ui_manager_add_ui_from_file.
+// Parses a file containing a [UI definition][XML-UI] and
+// merges it with the current contents of @manager.
+/*
+
+C function : gtk_ui_manager_add_ui_from_file
+*/
 func (recv *UIManager) AddUiFromFile(filename string) (uint32, error) {
 	c_filename := C.CString(filename)
 	defer C.free(unsafe.Pointer(c_filename))
@@ -3790,7 +5224,13 @@ func (recv *UIManager) AddUiFromFile(filename string) (uint32, error) {
 	return retGo, goThrowableError
 }
 
-// AddUiFromString is a wrapper around the C function gtk_ui_manager_add_ui_from_string.
+// Parses a string containing a [UI definition][XML-UI] and merges it with
+// the current contents of @manager. An enclosing <ui> element is added if
+// it is missing.
+/*
+
+C function : gtk_ui_manager_add_ui_from_string
+*/
 func (recv *UIManager) AddUiFromString(buffer string) (uint32, error) {
 	c_buffer := C.CString(buffer)
 	defer C.free(unsafe.Pointer(c_buffer))
@@ -3810,14 +5250,36 @@ func (recv *UIManager) AddUiFromString(buffer string) (uint32, error) {
 	return retGo, goThrowableError
 }
 
-// EnsureUpdate is a wrapper around the C function gtk_ui_manager_ensure_update.
+// Makes sure that all pending updates to the UI have been completed.
+//
+// This may occasionally be necessary, since #GtkUIManager updates the
+// UI in an idle function. A typical example where this function is
+// useful is to enforce that the menubar and toolbar have been added to
+// the main window before showing it:
+// |[<!-- language="C" -->
+// gtk_container_add (GTK_CONTAINER (window), vbox);
+// g_signal_connect (merge, "add-widget",
+// G_CALLBACK (add_widget), vbox);
+// gtk_ui_manager_add_ui_from_file (merge, "my-menus");
+// gtk_ui_manager_add_ui_from_file (merge, "my-toolbars");
+// gtk_ui_manager_ensure_update (merge);
+// gtk_widget_show (window);
+// ]|
+/*
+
+C function : gtk_ui_manager_ensure_update
+*/
 func (recv *UIManager) EnsureUpdate() {
 	C.gtk_ui_manager_ensure_update((*C.GtkUIManager)(recv.native))
 
 	return
 }
 
-// GetAccelGroup is a wrapper around the C function gtk_ui_manager_get_accel_group.
+// Returns the #GtkAccelGroup associated with @manager.
+/*
+
+C function : gtk_ui_manager_get_accel_group
+*/
 func (recv *UIManager) GetAccelGroup() *AccelGroup {
 	retC := C.gtk_ui_manager_get_accel_group((*C.GtkUIManager)(recv.native))
 	retGo := AccelGroupNewFromC(unsafe.Pointer(retC))
@@ -3825,7 +5287,12 @@ func (recv *UIManager) GetAccelGroup() *AccelGroup {
 	return retGo
 }
 
-// GetAction is a wrapper around the C function gtk_ui_manager_get_action.
+// Looks up an action by following a path. See gtk_ui_manager_get_widget()
+// for more information about paths.
+/*
+
+C function : gtk_ui_manager_get_action
+*/
 func (recv *UIManager) GetAction(path string) *Action {
 	c_path := C.CString(path)
 	defer C.free(unsafe.Pointer(c_path))
@@ -3836,7 +5303,11 @@ func (recv *UIManager) GetAction(path string) *Action {
 	return retGo
 }
 
-// GetActionGroups is a wrapper around the C function gtk_ui_manager_get_action_groups.
+// Returns the list of action groups associated with @manager.
+/*
+
+C function : gtk_ui_manager_get_action_groups
+*/
 func (recv *UIManager) GetActionGroups() *glib.List {
 	retC := C.gtk_ui_manager_get_action_groups((*C.GtkUIManager)(recv.native))
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
@@ -3844,7 +5315,12 @@ func (recv *UIManager) GetActionGroups() *glib.List {
 	return retGo
 }
 
-// GetAddTearoffs is a wrapper around the C function gtk_ui_manager_get_add_tearoffs.
+// Returns whether menus generated by this #GtkUIManager
+// will have tearoff menu items.
+/*
+
+C function : gtk_ui_manager_get_add_tearoffs
+*/
 func (recv *UIManager) GetAddTearoffs() bool {
 	retC := C.gtk_ui_manager_get_add_tearoffs((*C.GtkUIManager)(recv.native))
 	retGo := retC == C.TRUE
@@ -3852,7 +5328,11 @@ func (recv *UIManager) GetAddTearoffs() bool {
 	return retGo
 }
 
-// GetToplevels is a wrapper around the C function gtk_ui_manager_get_toplevels.
+// Obtains a list of all toplevel widgets of the requested types.
+/*
+
+C function : gtk_ui_manager_get_toplevels
+*/
 func (recv *UIManager) GetToplevels(types UIManagerItemType) *glib.SList {
 	c_types := (C.GtkUIManagerItemType)(types)
 
@@ -3862,7 +5342,11 @@ func (recv *UIManager) GetToplevels(types UIManagerItemType) *glib.SList {
 	return retGo
 }
 
-// GetUi is a wrapper around the C function gtk_ui_manager_get_ui.
+// Creates a [UI definition][XML-UI] of the merged UI.
+/*
+
+C function : gtk_ui_manager_get_ui
+*/
 func (recv *UIManager) GetUi() string {
 	retC := C.gtk_ui_manager_get_ui((*C.GtkUIManager)(recv.native))
 	retGo := C.GoString(retC)
@@ -3871,7 +5355,24 @@ func (recv *UIManager) GetUi() string {
 	return retGo
 }
 
-// GetWidget is a wrapper around the C function gtk_ui_manager_get_widget.
+// Looks up a widget by following a path.
+// The path consists of the names specified in the XML description of the UI.
+// separated by “/”. Elements which don’t have a name or action attribute in
+// the XML (e.g. <popup>) can be addressed by their XML element name
+// (e.g. "popup"). The root element ("/ui") can be omitted in the path.
+//
+// Note that the widget found by following a path that ends in a <menu>;
+// element is the menuitem to which the menu is attached, not the menu it
+// manages.
+//
+// Also note that the widgets constructed by a ui manager are not tied to
+// the lifecycle of the ui manager. If you add the widgets returned by this
+// function to some container or explicitly ref them, they will survive the
+// destruction of the ui manager.
+/*
+
+C function : gtk_ui_manager_get_widget
+*/
 func (recv *UIManager) GetWidget(path string) *Widget {
 	c_path := C.CString(path)
 	defer C.free(unsafe.Pointer(c_path))
@@ -3882,7 +5383,17 @@ func (recv *UIManager) GetWidget(path string) *Widget {
 	return retGo
 }
 
-// InsertActionGroup is a wrapper around the C function gtk_ui_manager_insert_action_group.
+// Inserts an action group into the list of action groups associated
+// with @manager. Actions in earlier groups hide actions with the same
+// name in later groups.
+//
+// If @pos is larger than the number of action groups in @manager, or
+// negative, @action_group will be inserted at the end of the internal
+// list.
+/*
+
+C function : gtk_ui_manager_insert_action_group
+*/
 func (recv *UIManager) InsertActionGroup(actionGroup *ActionGroup, pos int32) {
 	c_action_group := (*C.GtkActionGroup)(C.NULL)
 	if actionGroup != nil {
@@ -3896,7 +5407,12 @@ func (recv *UIManager) InsertActionGroup(actionGroup *ActionGroup, pos int32) {
 	return
 }
 
-// NewMergeId is a wrapper around the C function gtk_ui_manager_new_merge_id.
+// Returns an unused merge id, suitable for use with
+// gtk_ui_manager_add_ui().
+/*
+
+C function : gtk_ui_manager_new_merge_id
+*/
 func (recv *UIManager) NewMergeId() uint32 {
 	retC := C.gtk_ui_manager_new_merge_id((*C.GtkUIManager)(recv.native))
 	retGo := (uint32)(retC)
@@ -3904,7 +5420,12 @@ func (recv *UIManager) NewMergeId() uint32 {
 	return retGo
 }
 
-// RemoveActionGroup is a wrapper around the C function gtk_ui_manager_remove_action_group.
+// Removes an action group from the list of action groups associated
+// with @manager.
+/*
+
+C function : gtk_ui_manager_remove_action_group
+*/
 func (recv *UIManager) RemoveActionGroup(actionGroup *ActionGroup) {
 	c_action_group := (*C.GtkActionGroup)(C.NULL)
 	if actionGroup != nil {
@@ -3916,7 +5437,11 @@ func (recv *UIManager) RemoveActionGroup(actionGroup *ActionGroup) {
 	return
 }
 
-// RemoveUi is a wrapper around the C function gtk_ui_manager_remove_ui.
+// Unmerges the part of @manager's content identified by @merge_id.
+/*
+
+C function : gtk_ui_manager_remove_ui
+*/
 func (recv *UIManager) RemoveUi(mergeId uint32) {
 	c_merge_id := (C.guint)(mergeId)
 
@@ -3925,7 +5450,15 @@ func (recv *UIManager) RemoveUi(mergeId uint32) {
 	return
 }
 
-// SetAddTearoffs is a wrapper around the C function gtk_ui_manager_set_add_tearoffs.
+// Sets the “add_tearoffs” property, which controls whether menus
+// generated by this #GtkUIManager will have tearoff menu items.
+//
+// Note that this only affects regular menus. Generated popup
+// menus never have tearoff menu items.
+/*
+
+C function : gtk_ui_manager_set_add_tearoffs
+*/
 func (recv *UIManager) SetAddTearoffs(addTearoffs bool) {
 	c_add_tearoffs :=
 		boolToGboolean(addTearoffs)
@@ -3935,7 +5468,16 @@ func (recv *UIManager) SetAddTearoffs(addTearoffs bool) {
 	return
 }
 
-// AddMnemonicLabel is a wrapper around the C function gtk_widget_add_mnemonic_label.
+// Adds a widget to the list of mnemonic labels for
+// this widget. (See gtk_widget_list_mnemonic_labels()). Note the
+// list of mnemonic labels for the widget is cleared when the
+// widget is destroyed, so the caller must make sure to update
+// its internal state at this point as well, by using a connection
+// to the #GtkWidget::destroy signal or a weak notifier.
+/*
+
+C function : gtk_widget_add_mnemonic_label
+*/
 func (recv *Widget) AddMnemonicLabel(label *Widget) {
 	c_label := (*C.GtkWidget)(C.NULL)
 	if label != nil {
@@ -3947,7 +5489,17 @@ func (recv *Widget) AddMnemonicLabel(label *Widget) {
 	return
 }
 
-// CanActivateAccel is a wrapper around the C function gtk_widget_can_activate_accel.
+// Determines whether an accelerator that activates the signal
+// identified by @signal_id can currently be activated.
+// This is done by emitting the #GtkWidget::can-activate-accel
+// signal on @widget; if the signal isn’t overridden by a
+// handler or in a derived widget, then the default check is
+// that the widget must be sensitive, and the widget and all
+// its ancestors mapped.
+/*
+
+C function : gtk_widget_can_activate_accel
+*/
 func (recv *Widget) CanActivateAccel(signalId uint32) bool {
 	c_signal_id := (C.guint)(signalId)
 
@@ -3957,7 +5509,12 @@ func (recv *Widget) CanActivateAccel(signalId uint32) bool {
 	return retGo
 }
 
-// DragSourceGetTargetList is a wrapper around the C function gtk_drag_source_get_target_list.
+// Gets the list of targets this widget can provide for
+// drag-and-drop.
+/*
+
+C function : gtk_drag_source_get_target_list
+*/
 func (recv *Widget) DragSourceGetTargetList() *TargetList {
 	retC := C.gtk_drag_source_get_target_list((*C.GtkWidget)(recv.native))
 	var retGo (*TargetList)
@@ -3970,7 +5527,13 @@ func (recv *Widget) DragSourceGetTargetList() *TargetList {
 	return retGo
 }
 
-// DragSourceSetTargetList is a wrapper around the C function gtk_drag_source_set_target_list.
+// Changes the target types that this widget offers for drag-and-drop.
+// The widget must first be made into a drag source with
+// gtk_drag_source_set().
+/*
+
+C function : gtk_drag_source_set_target_list
+*/
 func (recv *Widget) DragSourceSetTargetList(targetList *TargetList) {
 	c_target_list := (*C.GtkTargetList)(C.NULL)
 	if targetList != nil {
@@ -3982,7 +5545,13 @@ func (recv *Widget) DragSourceSetTargetList(targetList *TargetList) {
 	return
 }
 
-// GetNoShowAll is a wrapper around the C function gtk_widget_get_no_show_all.
+// Returns the current value of the #GtkWidget:no-show-all property,
+// which determines whether calls to gtk_widget_show_all()
+// will affect this widget.
+/*
+
+C function : gtk_widget_get_no_show_all
+*/
 func (recv *Widget) GetNoShowAll() bool {
 	retC := C.gtk_widget_get_no_show_all((*C.GtkWidget)(recv.native))
 	retGo := retC == C.TRUE
@@ -3990,7 +5559,20 @@ func (recv *Widget) GetNoShowAll() bool {
 	return retGo
 }
 
-// ListMnemonicLabels is a wrapper around the C function gtk_widget_list_mnemonic_labels.
+// Returns a newly allocated list of the widgets, normally labels, for
+// which this widget is the target of a mnemonic (see for example,
+// gtk_label_set_mnemonic_widget()).
+//
+// The widgets in the list are not individually referenced. If you
+// want to iterate through the list and perform actions involving
+// callbacks that might destroy the widgets, you
+// must call `g_list_foreach (result,
+// (GFunc)g_object_ref, NULL)` first, and then unref all the
+// widgets afterwards.
+/*
+
+C function : gtk_widget_list_mnemonic_labels
+*/
 func (recv *Widget) ListMnemonicLabels() *glib.List {
 	retC := C.gtk_widget_list_mnemonic_labels((*C.GtkWidget)(recv.native))
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
@@ -3998,14 +5580,26 @@ func (recv *Widget) ListMnemonicLabels() *glib.List {
 	return retGo
 }
 
-// QueueResizeNoRedraw is a wrapper around the C function gtk_widget_queue_resize_no_redraw.
+// This function works like gtk_widget_queue_resize(),
+// except that the widget is not invalidated.
+/*
+
+C function : gtk_widget_queue_resize_no_redraw
+*/
 func (recv *Widget) QueueResizeNoRedraw() {
 	C.gtk_widget_queue_resize_no_redraw((*C.GtkWidget)(recv.native))
 
 	return
 }
 
-// RemoveMnemonicLabel is a wrapper around the C function gtk_widget_remove_mnemonic_label.
+// Removes a widget from the list of mnemonic labels for
+// this widget. (See gtk_widget_list_mnemonic_labels()). The widget
+// must have previously been added to the list with
+// gtk_widget_add_mnemonic_label().
+/*
+
+C function : gtk_widget_remove_mnemonic_label
+*/
 func (recv *Widget) RemoveMnemonicLabel(label *Widget) {
 	c_label := (*C.GtkWidget)(C.NULL)
 	if label != nil {
@@ -4017,7 +5611,15 @@ func (recv *Widget) RemoveMnemonicLabel(label *Widget) {
 	return
 }
 
-// SetNoShowAll is a wrapper around the C function gtk_widget_set_no_show_all.
+// Sets the #GtkWidget:no-show-all property, which determines whether
+// calls to gtk_widget_show_all() will affect this widget.
+//
+// This is mostly for use in constructing widget hierarchies with externally
+// controlled visibility, see #GtkUIManager.
+/*
+
+C function : gtk_widget_set_no_show_all
+*/
 func (recv *Widget) SetNoShowAll(noShowAll bool) {
 	c_no_show_all :=
 		boolToGboolean(noShowAll)
@@ -4027,7 +5629,14 @@ func (recv *Widget) SetNoShowAll(noShowAll bool) {
 	return
 }
 
-// ActivateKey is a wrapper around the C function gtk_window_activate_key.
+// Activates mnemonics and accelerators for this #GtkWindow. This is normally
+// called by the default ::key_press_event handler for toplevel windows,
+// however in some cases it may be useful to call this directly when
+// overriding the standard key handling for a toplevel window.
+/*
+
+C function : gtk_window_activate_key
+*/
 func (recv *Window) ActivateKey(event *gdk.EventKey) bool {
 	c_event := (*C.GdkEventKey)(C.NULL)
 	if event != nil {
@@ -4040,7 +5649,11 @@ func (recv *Window) ActivateKey(event *gdk.EventKey) bool {
 	return retGo
 }
 
-// GetAcceptFocus is a wrapper around the C function gtk_window_get_accept_focus.
+// Gets the value set by gtk_window_set_accept_focus().
+/*
+
+C function : gtk_window_get_accept_focus
+*/
 func (recv *Window) GetAcceptFocus() bool {
 	retC := C.gtk_window_get_accept_focus((*C.GtkWindow)(recv.native))
 	retGo := retC == C.TRUE
@@ -4048,7 +5661,13 @@ func (recv *Window) GetAcceptFocus() bool {
 	return retGo
 }
 
-// HasToplevelFocus is a wrapper around the C function gtk_window_has_toplevel_focus.
+// Returns whether the input focus is within this GtkWindow.
+// For real toplevel windows, this is identical to gtk_window_is_active(),
+// but for embedded windows, like #GtkPlug, the results will differ.
+/*
+
+C function : gtk_window_has_toplevel_focus
+*/
 func (recv *Window) HasToplevelFocus() bool {
 	retC := C.gtk_window_has_toplevel_focus((*C.GtkWindow)(recv.native))
 	retGo := retC == C.TRUE
@@ -4056,7 +5675,17 @@ func (recv *Window) HasToplevelFocus() bool {
 	return retGo
 }
 
-// IsActive is a wrapper around the C function gtk_window_is_active.
+// Returns whether the window is part of the current active toplevel.
+// (That is, the toplevel window receiving keystrokes.)
+// The return value is %TRUE if the window is active toplevel
+// itself, but also if it is, say, a #GtkPlug embedded in the active toplevel.
+// You might use this function if you wanted to draw a widget
+// differently in an active window from a widget in an inactive window.
+// See gtk_window_has_toplevel_focus()
+/*
+
+C function : gtk_window_is_active
+*/
 func (recv *Window) IsActive() bool {
 	retC := C.gtk_window_is_active((*C.GtkWindow)(recv.native))
 	retGo := retC == C.TRUE
@@ -4064,7 +5693,16 @@ func (recv *Window) IsActive() bool {
 	return retGo
 }
 
-// PropagateKeyEvent is a wrapper around the C function gtk_window_propagate_key_event.
+// Propagate a key press or release event to the focus widget and
+// up the focus container chain until a widget handles @event.
+// This is normally called by the default ::key_press_event and
+// ::key_release_event handlers for toplevel windows,
+// however in some cases it may be useful to call this directly when
+// overriding the standard key handling for a toplevel window.
+/*
+
+C function : gtk_window_propagate_key_event
+*/
 func (recv *Window) PropagateKeyEvent(event *gdk.EventKey) bool {
 	c_event := (*C.GdkEventKey)(C.NULL)
 	if event != nil {
@@ -4077,7 +5715,12 @@ func (recv *Window) PropagateKeyEvent(event *gdk.EventKey) bool {
 	return retGo
 }
 
-// SetAcceptFocus is a wrapper around the C function gtk_window_set_accept_focus.
+// Windows may set a hint asking the desktop environment not to receive
+// the input focus. This function sets this hint.
+/*
+
+C function : gtk_window_set_accept_focus
+*/
 func (recv *Window) SetAcceptFocus(setting bool) {
 	c_setting :=
 		boolToGboolean(setting)
@@ -4087,7 +5730,30 @@ func (recv *Window) SetAcceptFocus(setting bool) {
 	return
 }
 
-// SetKeepAbove is a wrapper around the C function gtk_window_set_keep_above.
+// Asks to keep @window above, so that it stays on top. Note that
+// you shouldn’t assume the window is definitely above afterward,
+// because other entities (e.g. the user or
+// [window manager][gtk-X11-arch]) could not keep it above,
+// and not all window managers support keeping windows above. But
+// normally the window will end kept above. Just don’t write code
+// that crashes if not.
+//
+// It’s permitted to call this function before showing a window,
+// in which case the window will be kept above when it appears onscreen
+// initially.
+//
+// You can track the above state via the “window-state-event” signal
+// on #GtkWidget.
+//
+// Note that, according to the
+// [Extended Window Manager Hints Specification](http://www.freedesktop.org/Standards/wm-spec),
+// the above state is mainly meant for user preferences and should not
+// be used by applications e.g. for drawing attention to their
+// dialogs.
+/*
+
+C function : gtk_window_set_keep_above
+*/
 func (recv *Window) SetKeepAbove(setting bool) {
 	c_setting :=
 		boolToGboolean(setting)
@@ -4097,7 +5763,30 @@ func (recv *Window) SetKeepAbove(setting bool) {
 	return
 }
 
-// SetKeepBelow is a wrapper around the C function gtk_window_set_keep_below.
+// Asks to keep @window below, so that it stays in bottom. Note that
+// you shouldn’t assume the window is definitely below afterward,
+// because other entities (e.g. the user or
+// [window manager][gtk-X11-arch]) could not keep it below,
+// and not all window managers support putting windows below. But
+// normally the window will be kept below. Just don’t write code
+// that crashes if not.
+//
+// It’s permitted to call this function before showing a window,
+// in which case the window will be kept below when it appears onscreen
+// initially.
+//
+// You can track the below state via the “window-state-event” signal
+// on #GtkWidget.
+//
+// Note that, according to the
+// [Extended Window Manager Hints Specification](http://www.freedesktop.org/Standards/wm-spec),
+// the above state is mainly meant for user preferences and should not
+// be used by applications e.g. for drawing attention to their
+// dialogs.
+/*
+
+C function : gtk_window_set_keep_below
+*/
 func (recv *Window) SetKeepBelow(setting bool) {
 	c_setting :=
 		boolToGboolean(setting)

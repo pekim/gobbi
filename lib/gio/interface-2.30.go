@@ -102,7 +102,12 @@ func (recv *DBusInterface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// GetInfo is a wrapper around the C function g_dbus_interface_get_info.
+// Gets D-Bus introspection information for the D-Bus interface
+// implemented by @interface_.
+/*
+
+C function : g_dbus_interface_get_info
+*/
 func (recv *DBusInterface) GetInfo() *DBusInterfaceInfo {
 	retC := C.g_dbus_interface_get_info((*C.GDBusInterface)(recv.native))
 	retGo := DBusInterfaceInfoNewFromC(unsafe.Pointer(retC))
@@ -110,7 +115,15 @@ func (recv *DBusInterface) GetInfo() *DBusInterfaceInfo {
 	return retGo
 }
 
-// GetObject is a wrapper around the C function g_dbus_interface_get_object.
+// Gets the #GDBusObject that @interface_ belongs to, if any.
+//
+// It is not safe to use the returned object if @interface_ or
+// the returned object is being used from other threads. See
+// g_dbus_interface_dup_object() for a thread-safe alternative.
+/*
+
+C function : g_dbus_interface_get_object
+*/
 func (recv *DBusInterface) GetObject() *DBusObject {
 	retC := C.g_dbus_interface_get_object((*C.GDBusInterface)(recv.native))
 	retGo := DBusObjectNewFromC(unsafe.Pointer(retC))
@@ -118,7 +131,13 @@ func (recv *DBusInterface) GetObject() *DBusObject {
 	return retGo
 }
 
-// SetObject is a wrapper around the C function g_dbus_interface_set_object.
+// Sets the #GDBusObject for @interface_ to @object.
+//
+// Note that @interface_ will hold a weak reference to @object.
+/*
+
+C function : g_dbus_interface_set_object
+*/
 func (recv *DBusInterface) SetObject(object *DBusObject) {
 	c_object := (*C.GDBusObject)(object.ToC())
 
@@ -245,7 +264,12 @@ func dbusobject_interfaceRemovedHandler(_ *C.GObject, c_interface *C.GDBusInterf
 	callback(interface_)
 }
 
-// GetInterface is a wrapper around the C function g_dbus_object_get_interface.
+// Gets the D-Bus interface with name @interface_name associated with
+// @object, if any.
+/*
+
+C function : g_dbus_object_get_interface
+*/
 func (recv *DBusObject) GetInterface(interfaceName string) *DBusInterface {
 	c_interface_name := C.CString(interfaceName)
 	defer C.free(unsafe.Pointer(c_interface_name))
@@ -256,7 +280,11 @@ func (recv *DBusObject) GetInterface(interfaceName string) *DBusInterface {
 	return retGo
 }
 
-// GetInterfaces is a wrapper around the C function g_dbus_object_get_interfaces.
+// Gets the D-Bus interfaces associated with @object.
+/*
+
+C function : g_dbus_object_get_interfaces
+*/
 func (recv *DBusObject) GetInterfaces() *glib.List {
 	retC := C.g_dbus_object_get_interfaces((*C.GDBusObject)(recv.native))
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
@@ -264,7 +292,11 @@ func (recv *DBusObject) GetInterfaces() *glib.List {
 	return retGo
 }
 
-// GetObjectPath is a wrapper around the C function g_dbus_object_get_object_path.
+// Gets the object path for @object.
+/*
+
+C function : g_dbus_object_get_object_path
+*/
 func (recv *DBusObject) GetObjectPath() string {
 	retC := C.g_dbus_object_get_object_path((*C.GDBusObject)(recv.native))
 	retGo := C.GoString(retC)
@@ -512,7 +544,12 @@ func dbusobjectmanager_objectRemovedHandler(_ *C.GObject, c_object *C.GDBusObjec
 	callback(object)
 }
 
-// GetInterface is a wrapper around the C function g_dbus_object_manager_get_interface.
+// Gets the interface proxy for @interface_name at @object_path, if
+// any.
+/*
+
+C function : g_dbus_object_manager_get_interface
+*/
 func (recv *DBusObjectManager) GetInterface(objectPath string, interfaceName string) *DBusInterface {
 	c_object_path := C.CString(objectPath)
 	defer C.free(unsafe.Pointer(c_object_path))
@@ -526,7 +563,11 @@ func (recv *DBusObjectManager) GetInterface(objectPath string, interfaceName str
 	return retGo
 }
 
-// GetObject is a wrapper around the C function g_dbus_object_manager_get_object.
+// Gets the #GDBusObjectProxy at @object_path, if any.
+/*
+
+C function : g_dbus_object_manager_get_object
+*/
 func (recv *DBusObjectManager) GetObject(objectPath string) *DBusObject {
 	c_object_path := C.CString(objectPath)
 	defer C.free(unsafe.Pointer(c_object_path))
@@ -537,7 +578,11 @@ func (recv *DBusObjectManager) GetObject(objectPath string) *DBusObject {
 	return retGo
 }
 
-// GetObjectPath is a wrapper around the C function g_dbus_object_manager_get_object_path.
+// Gets the object path that @manager is for.
+/*
+
+C function : g_dbus_object_manager_get_object_path
+*/
 func (recv *DBusObjectManager) GetObjectPath() string {
 	retC := C.g_dbus_object_manager_get_object_path((*C.GDBusObjectManager)(recv.native))
 	retGo := C.GoString(retC)
@@ -545,7 +590,11 @@ func (recv *DBusObjectManager) GetObjectPath() string {
 	return retGo
 }
 
-// GetObjects is a wrapper around the C function g_dbus_object_manager_get_objects.
+// Gets all #GDBusObject objects known to @manager.
+/*
+
+C function : g_dbus_object_manager_get_objects
+*/
 func (recv *DBusObjectManager) GetObjects() *glib.List {
 	retC := C.g_dbus_object_manager_get_objects((*C.GDBusObjectManager)(recv.native))
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
@@ -553,7 +602,11 @@ func (recv *DBusObjectManager) GetObjects() *glib.List {
 	return retGo
 }
 
-// GetDefaultDatabase is a wrapper around the C function g_tls_backend_get_default_database.
+// Gets the default #GTlsDatabase used to verify TLS connections.
+/*
+
+C function : g_tls_backend_get_default_database
+*/
 func (recv *TlsBackend) GetDefaultDatabase() *TlsDatabase {
 	retC := C.g_tls_backend_get_default_database((*C.GTlsBackend)(recv.native))
 	retGo := TlsDatabaseNewFromC(unsafe.Pointer(retC))
@@ -561,7 +614,11 @@ func (recv *TlsBackend) GetDefaultDatabase() *TlsDatabase {
 	return retGo
 }
 
-// GetFileDatabaseType is a wrapper around the C function g_tls_backend_get_file_database_type.
+// Gets the #GType of @backend's #GTlsFileDatabase implementation.
+/*
+
+C function : g_tls_backend_get_file_database_type
+*/
 func (recv *TlsBackend) GetFileDatabaseType() gobject.Type {
 	retC := C.g_tls_backend_get_file_database_type((*C.GTlsBackend)(recv.native))
 	retGo := (gobject.Type)(retC)

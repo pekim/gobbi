@@ -10,7 +10,11 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// PixbufSimpleAnimNew is a wrapper around the C function gdk_pixbuf_simple_anim_new.
+// Creates a new, empty animation.
+/*
+
+C function : gdk_pixbuf_simple_anim_new
+*/
 func PixbufSimpleAnimNew(width int32, height int32, rate float32) *PixbufSimpleAnim {
 	c_width := (C.gint)(width)
 
@@ -24,7 +28,13 @@ func PixbufSimpleAnimNew(width int32, height int32, rate float32) *PixbufSimpleA
 	return retGo
 }
 
-// AddFrame is a wrapper around the C function gdk_pixbuf_simple_anim_add_frame.
+// Adds a new frame to @animation. The @pixbuf must
+// have the dimensions specified when the animation
+// was constructed.
+/*
+
+C function : gdk_pixbuf_simple_anim_add_frame
+*/
 func (recv *PixbufSimpleAnim) AddFrame(pixbuf *Pixbuf) {
 	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
 	if pixbuf != nil {

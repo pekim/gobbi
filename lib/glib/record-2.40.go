@@ -12,7 +12,15 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// SaveToFile is a wrapper around the C function g_key_file_save_to_file.
+// Writes the contents of @key_file to @filename using
+// g_file_set_contents().
+//
+// This function can fail for any of the reasons that
+// g_file_set_contents() may fail.
+/*
+
+C function : g_key_file_save_to_file
+*/
 func (recv *KeyFile) SaveToFile(filename string) (bool, error) {
 	c_filename := C.CString(filename)
 	defer C.free(unsafe.Pointer(c_filename))
@@ -55,14 +63,35 @@ func (recv *VariantDict) ToC() unsafe.Pointer {
 
 // Unsupported : g_variant_dict_new : unsupported parameter from_asv : Blacklisted record : GVariant
 
-// Clear is a wrapper around the C function g_variant_dict_clear.
+// Releases all memory associated with a #GVariantDict without freeing
+// the #GVariantDict structure itself.
+//
+// It typically only makes sense to do this on a stack-allocated
+// #GVariantDict if you want to abort building the value part-way
+// through.  This function need not be called if you call
+// g_variant_dict_end() and it also doesn't need to be called on dicts
+// allocated with g_variant_dict_new (see g_variant_dict_unref() for
+// that).
+//
+// It is valid to call this function on either an initialised
+// #GVariantDict or one that was previously cleared by an earlier call
+// to g_variant_dict_clear() but it is not valid to call this function
+// on uninitialised memory.
+/*
+
+C function : g_variant_dict_clear
+*/
 func (recv *VariantDict) Clear() {
 	C.g_variant_dict_clear((*C.GVariantDict)(recv.native))
 
 	return
 }
 
-// Contains is a wrapper around the C function g_variant_dict_contains.
+// Checks if @key exists in @dict.
+/*
+
+C function : g_variant_dict_contains
+*/
 func (recv *VariantDict) Contains(key string) bool {
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
@@ -85,7 +114,14 @@ func (recv *VariantDict) Contains(key string) bool {
 
 // Unsupported : g_variant_dict_lookup_value : unsupported parameter expected_type : Blacklisted record : GVariantType
 
-// Ref is a wrapper around the C function g_variant_dict_ref.
+// Increases the reference count on @dict.
+//
+// Don't call this on stack-allocated #GVariantDict instances or bad
+// things will happen.
+/*
+
+C function : g_variant_dict_ref
+*/
 func (recv *VariantDict) Ref() *VariantDict {
 	retC := C.g_variant_dict_ref((*C.GVariantDict)(recv.native))
 	retGo := VariantDictNewFromC(unsafe.Pointer(retC))
@@ -93,7 +129,11 @@ func (recv *VariantDict) Ref() *VariantDict {
 	return retGo
 }
 
-// Remove is a wrapper around the C function g_variant_dict_remove.
+// Removes a key and its associated value from a #GVariantDict.
+/*
+
+C function : g_variant_dict_remove
+*/
 func (recv *VariantDict) Remove(key string) bool {
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
@@ -104,7 +144,17 @@ func (recv *VariantDict) Remove(key string) bool {
 	return retGo
 }
 
-// Unref is a wrapper around the C function g_variant_dict_unref.
+// Decreases the reference count on @dict.
+//
+// In the event that there are no more references, releases all memory
+// associated with the #GVariantDict.
+//
+// Don't call this on stack-allocated #GVariantDict instances or bad
+// things will happen.
+/*
+
+C function : g_variant_dict_unref
+*/
 func (recv *VariantDict) Unref() {
 	C.g_variant_dict_unref((*C.GVariantDict)(recv.native))
 

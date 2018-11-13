@@ -16,7 +16,13 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// BindingEntrySkip is a wrapper around the C function gtk_binding_entry_skip.
+// Install a binding on @binding_set which causes key lookups
+// to be aborted, to prevent bindings from lower priority sets
+// to be activated.
+/*
+
+C function : gtk_binding_entry_skip
+*/
 func BindingEntrySkip(bindingSet *BindingSet, keyval uint32, modifiers gdk.ModifierType) {
 	c_binding_set := (*C.GtkBindingSet)(C.NULL)
 	if bindingSet != nil {
@@ -32,7 +38,11 @@ func BindingEntrySkip(bindingSet *BindingSet, keyval uint32, modifiers gdk.Modif
 	return
 }
 
-// PaperSizeGetPaperSizes is a wrapper around the C function gtk_paper_size_get_paper_sizes.
+// Creates a list of known paper sizes.
+/*
+
+C function : gtk_paper_size_get_paper_sizes
+*/
 func PaperSizeGetPaperSizes(includeCustom bool) *glib.List {
 	c_include_custom :=
 		boolToGboolean(includeCustom)
@@ -43,7 +53,13 @@ func PaperSizeGetPaperSizes(includeCustom bool) *glib.List {
 	return retGo
 }
 
-// RcParseColorFull is a wrapper around the C function gtk_rc_parse_color_full.
+// Parses a color in the format expected
+// in a RC file. If @style is not %NULL, it will be consulted to resolve
+// references to symbolic colors.
+/*
+
+C function : gtk_rc_parse_color_full
+*/
 func RcParseColorFull(scanner *glib.Scanner, style *RcStyle) (uint32, *gdk.Color) {
 	c_scanner := (*C.GScanner)(C.NULL)
 	if scanner != nil {

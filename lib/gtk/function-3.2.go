@@ -17,7 +17,13 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// DragSetIconGicon is a wrapper around the C function gtk_drag_set_icon_gicon.
+// Sets the icon for a given drag from the given @icon.
+// See the documentation for gtk_drag_set_icon_name()
+// for more details about using icons in drag and drop.
+/*
+
+C function : gtk_drag_set_icon_gicon
+*/
 func DragSetIconGicon(context *gdk.DragContext, icon *gio.Icon, hotX int32, hotY int32) {
 	c_context := (*C.GdkDragContext)(C.NULL)
 	if context != nil {
@@ -35,7 +41,18 @@ func DragSetIconGicon(context *gdk.DragContext, icon *gio.Icon, hotX int32, hotY
 	return
 }
 
-// RenderIcon is a wrapper around the C function gtk_render_icon.
+// Renders the icon in @pixbuf at the specified @x and @y coordinates.
+//
+// This function will render the icon in @pixbuf at exactly its size,
+// regardless of scaling factors, which may not be appropriate when
+// drawing on displays with high pixel densities.
+//
+// You probably want to use gtk_render_icon_surface() instead, if you
+// already have a Cairo surface.
+/*
+
+C function : gtk_render_icon
+*/
 func RenderIcon(context *StyleContext, cr *cairo.Context, pixbuf *gdkpixbuf.Pixbuf, x float64, y float64) {
 	c_context := (*C.GtkStyleContext)(C.NULL)
 	if context != nil {

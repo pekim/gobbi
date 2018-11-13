@@ -10,7 +10,14 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// GetAttributes is a wrapper around the C function atk_object_get_attributes.
+// Get a list of properties applied to this object as a whole, as an #AtkAttributeSet consisting of
+// name-value pairs. As such these attributes may be considered weakly-typed properties or annotations,
+// as distinct from strongly-typed object data available via other get/set methods.
+// Not all objects have explicit "name-value pair" #AtkAttributeSet properties.
+/*
+
+C function : atk_object_get_attributes
+*/
 func (recv *Object) GetAttributes() *AttributeSet {
 	retC := C.atk_object_get_attributes((*C.AtkObject)(recv.native))
 	retGo := SListNewFromC(unsafe.Pointer(retC))

@@ -16,7 +16,16 @@ import "C"
 
 // Unsupported signal 'to-embedder' for Window : unsupported parameter offscreen_x : type gdouble :
 
-// EnsureNative is a wrapper around the C function gdk_window_ensure_native.
+// Tries to ensure that there is a window-system native window for this
+// GdkWindow. This may fail in some situations, returning %FALSE.
+//
+// Offscreen window and children of them can never have native windows.
+//
+// Some backends may not support native child windows.
+/*
+
+C function : gdk_window_ensure_native
+*/
 func (recv *Window) EnsureNative() bool {
 	retC := C.gdk_window_ensure_native((*C.GdkWindow)(recv.native))
 	retGo := retC == C.TRUE
@@ -24,21 +33,38 @@ func (recv *Window) EnsureNative() bool {
 	return retGo
 }
 
-// Flush is a wrapper around the C function gdk_window_flush.
+// This function does nothing.
+/*
+
+C function : gdk_window_flush
+*/
 func (recv *Window) Flush() {
 	C.gdk_window_flush((*C.GdkWindow)(recv.native))
 
 	return
 }
 
-// GeometryChanged is a wrapper around the C function gdk_window_geometry_changed.
+// This function informs GDK that the geometry of an embedded
+// offscreen window has changed. This is necessary for GDK to keep
+// track of which offscreen window the pointer is in.
+/*
+
+C function : gdk_window_geometry_changed
+*/
 func (recv *Window) GeometryChanged() {
 	C.gdk_window_geometry_changed((*C.GdkWindow)(recv.native))
 
 	return
 }
 
-// GetCursor is a wrapper around the C function gdk_window_get_cursor.
+// Retrieves a #GdkCursor pointer for the cursor currently set on the
+// specified #GdkWindow, or %NULL.  If the return value is %NULL then
+// there is no custom cursor set on the specified window, and it is
+// using the cursor for its parent window.
+/*
+
+C function : gdk_window_get_cursor
+*/
 func (recv *Window) GetCursor() *Cursor {
 	retC := C.gdk_window_get_cursor((*C.GdkWindow)(recv.native))
 	var retGo (*Cursor)
@@ -51,7 +77,14 @@ func (recv *Window) GetCursor() *Cursor {
 	return retGo
 }
 
-// GetRootCoords is a wrapper around the C function gdk_window_get_root_coords.
+// Obtains the position of a window position in root
+// window coordinates. This is similar to
+// gdk_window_get_origin() but allows you to pass
+// in any position in the window, not just the origin.
+/*
+
+C function : gdk_window_get_root_coords
+*/
 func (recv *Window) GetRootCoords(x int32, y int32) (int32, int32) {
 	c_x := (C.gint)(x)
 
@@ -70,7 +103,11 @@ func (recv *Window) GetRootCoords(x int32, y int32) (int32, int32) {
 	return rootX, rootY
 }
 
-// IsDestroyed is a wrapper around the C function gdk_window_is_destroyed.
+// Check to see if a window is destroyed..
+/*
+
+C function : gdk_window_is_destroyed
+*/
 func (recv *Window) IsDestroyed() bool {
 	retC := C.gdk_window_is_destroyed((*C.GdkWindow)(recv.native))
 	retGo := retC == C.TRUE
@@ -78,7 +115,20 @@ func (recv *Window) IsDestroyed() bool {
 	return retGo
 }
 
-// Restack is a wrapper around the C function gdk_window_restack.
+// Changes the position of  @window in the Z-order (stacking order), so that
+// it is above @sibling (if @above is %TRUE) or below @sibling (if @above is
+// %FALSE).
+//
+// If @sibling is %NULL, then this either raises (if @above is %TRUE) or
+// lowers the window.
+//
+// If @window is a toplevel, the window manager may choose to deny the
+// request to move the window in the Z-order, gdk_window_restack() only
+// requests the restack, does not guarantee it.
+/*
+
+C function : gdk_window_restack
+*/
 func (recv *Window) Restack(sibling *Window, above bool) {
 	c_sibling := (*C.GdkWindow)(C.NULL)
 	if sibling != nil {

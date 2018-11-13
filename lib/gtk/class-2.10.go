@@ -368,7 +368,11 @@ func assistant_prepareHandler(_ *C.GObject, c_page *C.GtkWidget, data C.gpointer
 	callback(page)
 }
 
-// AssistantNew is a wrapper around the C function gtk_assistant_new.
+// Creates a new #GtkAssistant.
+/*
+
+C function : gtk_assistant_new
+*/
 func AssistantNew() *Assistant {
 	retC := C.gtk_assistant_new()
 	retGo := AssistantNewFromC(unsafe.Pointer(retC))
@@ -376,7 +380,11 @@ func AssistantNew() *Assistant {
 	return retGo
 }
 
-// AddActionWidget is a wrapper around the C function gtk_assistant_add_action_widget.
+// Adds a widget to the action area of a #GtkAssistant.
+/*
+
+C function : gtk_assistant_add_action_widget
+*/
 func (recv *Assistant) AddActionWidget(child *Widget) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -388,7 +396,11 @@ func (recv *Assistant) AddActionWidget(child *Widget) {
 	return
 }
 
-// AppendPage is a wrapper around the C function gtk_assistant_append_page.
+// Appends a page to the @assistant.
+/*
+
+C function : gtk_assistant_append_page
+*/
 func (recv *Assistant) AppendPage(page *Widget) int32 {
 	c_page := (*C.GtkWidget)(C.NULL)
 	if page != nil {
@@ -401,7 +413,11 @@ func (recv *Assistant) AppendPage(page *Widget) int32 {
 	return retGo
 }
 
-// GetCurrentPage is a wrapper around the C function gtk_assistant_get_current_page.
+// Returns the page number of the current page.
+/*
+
+C function : gtk_assistant_get_current_page
+*/
 func (recv *Assistant) GetCurrentPage() int32 {
 	retC := C.gtk_assistant_get_current_page((*C.GtkAssistant)(recv.native))
 	retGo := (int32)(retC)
@@ -409,7 +425,11 @@ func (recv *Assistant) GetCurrentPage() int32 {
 	return retGo
 }
 
-// GetNPages is a wrapper around the C function gtk_assistant_get_n_pages.
+// Returns the number of pages in the @assistant
+/*
+
+C function : gtk_assistant_get_n_pages
+*/
 func (recv *Assistant) GetNPages() int32 {
 	retC := C.gtk_assistant_get_n_pages((*C.GtkAssistant)(recv.native))
 	retGo := (int32)(retC)
@@ -417,7 +437,11 @@ func (recv *Assistant) GetNPages() int32 {
 	return retGo
 }
 
-// GetNthPage is a wrapper around the C function gtk_assistant_get_nth_page.
+// Returns the child widget contained in page number @page_num.
+/*
+
+C function : gtk_assistant_get_nth_page
+*/
 func (recv *Assistant) GetNthPage(pageNum int32) *Widget {
 	c_page_num := (C.gint)(pageNum)
 
@@ -432,7 +456,11 @@ func (recv *Assistant) GetNthPage(pageNum int32) *Widget {
 	return retGo
 }
 
-// GetPageComplete is a wrapper around the C function gtk_assistant_get_page_complete.
+// Gets whether @page is complete.
+/*
+
+C function : gtk_assistant_get_page_complete
+*/
 func (recv *Assistant) GetPageComplete(page *Widget) bool {
 	c_page := (*C.GtkWidget)(C.NULL)
 	if page != nil {
@@ -445,7 +473,11 @@ func (recv *Assistant) GetPageComplete(page *Widget) bool {
 	return retGo
 }
 
-// GetPageHeaderImage is a wrapper around the C function gtk_assistant_get_page_header_image.
+// Gets the header image for @page.
+/*
+
+C function : gtk_assistant_get_page_header_image
+*/
 func (recv *Assistant) GetPageHeaderImage(page *Widget) *gdkpixbuf.Pixbuf {
 	c_page := (*C.GtkWidget)(C.NULL)
 	if page != nil {
@@ -458,7 +490,11 @@ func (recv *Assistant) GetPageHeaderImage(page *Widget) *gdkpixbuf.Pixbuf {
 	return retGo
 }
 
-// GetPageSideImage is a wrapper around the C function gtk_assistant_get_page_side_image.
+// Gets the side image for @page.
+/*
+
+C function : gtk_assistant_get_page_side_image
+*/
 func (recv *Assistant) GetPageSideImage(page *Widget) *gdkpixbuf.Pixbuf {
 	c_page := (*C.GtkWidget)(C.NULL)
 	if page != nil {
@@ -471,7 +507,11 @@ func (recv *Assistant) GetPageSideImage(page *Widget) *gdkpixbuf.Pixbuf {
 	return retGo
 }
 
-// GetPageTitle is a wrapper around the C function gtk_assistant_get_page_title.
+// Gets the title for @page.
+/*
+
+C function : gtk_assistant_get_page_title
+*/
 func (recv *Assistant) GetPageTitle(page *Widget) string {
 	c_page := (*C.GtkWidget)(C.NULL)
 	if page != nil {
@@ -484,7 +524,11 @@ func (recv *Assistant) GetPageTitle(page *Widget) string {
 	return retGo
 }
 
-// GetPageType is a wrapper around the C function gtk_assistant_get_page_type.
+// Gets the page type of @page.
+/*
+
+C function : gtk_assistant_get_page_type
+*/
 func (recv *Assistant) GetPageType(page *Widget) AssistantPageType {
 	c_page := (*C.GtkWidget)(C.NULL)
 	if page != nil {
@@ -497,7 +541,11 @@ func (recv *Assistant) GetPageType(page *Widget) AssistantPageType {
 	return retGo
 }
 
-// InsertPage is a wrapper around the C function gtk_assistant_insert_page.
+// Inserts a page in the @assistant at a given position.
+/*
+
+C function : gtk_assistant_insert_page
+*/
 func (recv *Assistant) InsertPage(page *Widget, position int32) int32 {
 	c_page := (*C.GtkWidget)(C.NULL)
 	if page != nil {
@@ -512,7 +560,11 @@ func (recv *Assistant) InsertPage(page *Widget, position int32) int32 {
 	return retGo
 }
 
-// PrependPage is a wrapper around the C function gtk_assistant_prepend_page.
+// Prepends a page to the @assistant.
+/*
+
+C function : gtk_assistant_prepend_page
+*/
 func (recv *Assistant) PrependPage(page *Widget) int32 {
 	c_page := (*C.GtkWidget)(C.NULL)
 	if page != nil {
@@ -525,7 +577,11 @@ func (recv *Assistant) PrependPage(page *Widget) int32 {
 	return retGo
 }
 
-// RemoveActionWidget is a wrapper around the C function gtk_assistant_remove_action_widget.
+// Removes a widget from the action area of a #GtkAssistant.
+/*
+
+C function : gtk_assistant_remove_action_widget
+*/
 func (recv *Assistant) RemoveActionWidget(child *Widget) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -537,7 +593,15 @@ func (recv *Assistant) RemoveActionWidget(child *Widget) {
 	return
 }
 
-// SetCurrentPage is a wrapper around the C function gtk_assistant_set_current_page.
+// Switches the page to @page_num.
+//
+// Note that this will only be necessary in custom buttons,
+// as the @assistant flow can be set with
+// gtk_assistant_set_forward_page_func().
+/*
+
+C function : gtk_assistant_set_current_page
+*/
 func (recv *Assistant) SetCurrentPage(pageNum int32) {
 	c_page_num := (C.gint)(pageNum)
 
@@ -548,7 +612,14 @@ func (recv *Assistant) SetCurrentPage(pageNum int32) {
 
 // Unsupported : gtk_assistant_set_forward_page_func : unsupported parameter page_func : no type generator for AssistantPageFunc (GtkAssistantPageFunc) for param page_func
 
-// SetPageComplete is a wrapper around the C function gtk_assistant_set_page_complete.
+// Sets whether @page contents are complete.
+//
+// This will make @assistant update the buttons state
+// to be able to continue the task.
+/*
+
+C function : gtk_assistant_set_page_complete
+*/
 func (recv *Assistant) SetPageComplete(page *Widget, complete bool) {
 	c_page := (*C.GtkWidget)(C.NULL)
 	if page != nil {
@@ -563,7 +634,11 @@ func (recv *Assistant) SetPageComplete(page *Widget, complete bool) {
 	return
 }
 
-// SetPageHeaderImage is a wrapper around the C function gtk_assistant_set_page_header_image.
+// Sets a header image for @page.
+/*
+
+C function : gtk_assistant_set_page_header_image
+*/
 func (recv *Assistant) SetPageHeaderImage(page *Widget, pixbuf *gdkpixbuf.Pixbuf) {
 	c_page := (*C.GtkWidget)(C.NULL)
 	if page != nil {
@@ -580,7 +655,14 @@ func (recv *Assistant) SetPageHeaderImage(page *Widget, pixbuf *gdkpixbuf.Pixbuf
 	return
 }
 
-// SetPageSideImage is a wrapper around the C function gtk_assistant_set_page_side_image.
+// Sets a side image for @page.
+//
+// This image used to be displayed in the side area of the assistant
+// when @page is the current page.
+/*
+
+C function : gtk_assistant_set_page_side_image
+*/
 func (recv *Assistant) SetPageSideImage(page *Widget, pixbuf *gdkpixbuf.Pixbuf) {
 	c_page := (*C.GtkWidget)(C.NULL)
 	if page != nil {
@@ -597,7 +679,14 @@ func (recv *Assistant) SetPageSideImage(page *Widget, pixbuf *gdkpixbuf.Pixbuf) 
 	return
 }
 
-// SetPageTitle is a wrapper around the C function gtk_assistant_set_page_title.
+// Sets a title for @page.
+//
+// The title is displayed in the header area of the assistant
+// when @page is the current page.
+/*
+
+C function : gtk_assistant_set_page_title
+*/
 func (recv *Assistant) SetPageTitle(page *Widget, title string) {
 	c_page := (*C.GtkWidget)(C.NULL)
 	if page != nil {
@@ -612,7 +701,13 @@ func (recv *Assistant) SetPageTitle(page *Widget, title string) {
 	return
 }
 
-// SetPageType is a wrapper around the C function gtk_assistant_set_page_type.
+// Sets the page type for @page.
+//
+// The page type determines the page behavior in the @assistant.
+/*
+
+C function : gtk_assistant_set_page_type
+*/
 func (recv *Assistant) SetPageType(page *Widget, type_ AssistantPageType) {
 	c_page := (*C.GtkWidget)(C.NULL)
 	if page != nil {
@@ -626,14 +721,31 @@ func (recv *Assistant) SetPageType(page *Widget, type_ AssistantPageType) {
 	return
 }
 
-// UpdateButtonsState is a wrapper around the C function gtk_assistant_update_buttons_state.
+// Forces @assistant to recompute the buttons state.
+//
+// GTK+ automatically takes care of this in most situations,
+// e.g. when the user goes to a different page, or when the
+// visibility or completeness of a page changes.
+//
+// One situation where it can be necessary to call this
+// function is when changing a value on the current page
+// affects the future page flow of the assistant.
+/*
+
+C function : gtk_assistant_update_buttons_state
+*/
 func (recv *Assistant) UpdateButtonsState() {
 	C.gtk_assistant_update_buttons_state((*C.GtkAssistant)(recv.native))
 
 	return
 }
 
-// GetImagePosition is a wrapper around the C function gtk_button_get_image_position.
+// Gets the position of the image relative to the text
+// inside the button.
+/*
+
+C function : gtk_button_get_image_position
+*/
 func (recv *Button) GetImagePosition() PositionType {
 	retC := C.gtk_button_get_image_position((*C.GtkButton)(recv.native))
 	retGo := (PositionType)(retC)
@@ -641,7 +753,12 @@ func (recv *Button) GetImagePosition() PositionType {
 	return retGo
 }
 
-// SetImagePosition is a wrapper around the C function gtk_button_set_image_position.
+// Sets the position of the image relative to the text
+// inside the button.
+/*
+
+C function : gtk_button_set_image_position
+*/
 func (recv *Button) SetImagePosition(position PositionType) {
 	c_position := (C.GtkPositionType)(position)
 
@@ -654,7 +771,11 @@ func (recv *Button) SetImagePosition(position PositionType) {
 
 // Unsupported signal 'accel-edited' for CellRendererAccel : unsupported parameter path_string : type utf8 :
 
-// CellRendererAccelNew is a wrapper around the C function gtk_cell_renderer_accel_new.
+// Creates a new #GtkCellRendererAccel.
+/*
+
+C function : gtk_cell_renderer_accel_new
+*/
 func CellRendererAccelNew() *CellRendererAccel {
 	retC := C.gtk_cell_renderer_accel_new()
 	retGo := CellRendererAccelNewFromC(unsafe.Pointer(retC))
@@ -662,7 +783,11 @@ func CellRendererAccelNew() *CellRendererAccel {
 	return retGo
 }
 
-// CellRendererSpinNew is a wrapper around the C function gtk_cell_renderer_spin_new.
+// Creates a new #GtkCellRendererSpin.
+/*
+
+C function : gtk_cell_renderer_spin_new
+*/
 func CellRendererSpinNew() *CellRendererSpin {
 	retC := C.gtk_cell_renderer_spin_new()
 	retGo := CellRendererSpinNewFromC(unsafe.Pointer(retC))
@@ -674,7 +799,19 @@ func CellRendererSpinNew() *CellRendererSpin {
 
 // Unsupported : gtk_clipboard_wait_for_rich_text : unsupported parameter format : Blacklisted record : GdkAtom
 
-// WaitIsRichTextAvailable is a wrapper around the C function gtk_clipboard_wait_is_rich_text_available.
+// Test to see if there is rich text available to be pasted
+// This is done by requesting the TARGETS atom and checking
+// if it contains any of the supported rich text targets. This function
+// waits for the data to be received using the main loop, so events,
+// timeouts, etc, may be dispatched during the wait.
+//
+// This function is a little faster than calling
+// gtk_clipboard_wait_for_rich_text() since it doesn’t need to retrieve
+// the actual text.
+/*
+
+C function : gtk_clipboard_wait_is_rich_text_available
+*/
 func (recv *Clipboard) WaitIsRichTextAvailable(buffer *TextBuffer) bool {
 	c_buffer := (*C.GtkTextBuffer)(C.NULL)
 	if buffer != nil {
@@ -687,7 +824,12 @@ func (recv *Clipboard) WaitIsRichTextAvailable(buffer *TextBuffer) bool {
 	return retGo
 }
 
-// GetTitle is a wrapper around the C function gtk_combo_box_get_title.
+// Gets the current title of the menu in tearoff mode. See
+// gtk_combo_box_set_add_tearoffs().
+/*
+
+C function : gtk_combo_box_get_title
+*/
 func (recv *ComboBox) GetTitle() string {
 	retC := C.gtk_combo_box_get_title((*C.GtkComboBox)(recv.native))
 	retGo := C.GoString(retC)
@@ -695,7 +837,11 @@ func (recv *ComboBox) GetTitle() string {
 	return retGo
 }
 
-// SetTitle is a wrapper around the C function gtk_combo_box_set_title.
+// Sets the menu’s title in tearoff mode.
+/*
+
+C function : gtk_combo_box_set_title
+*/
 func (recv *ComboBox) SetTitle(title string) {
 	c_title := C.CString(title)
 	defer C.free(unsafe.Pointer(c_title))
@@ -705,7 +851,12 @@ func (recv *ComboBox) SetTitle(title string) {
 	return
 }
 
-// GetInnerBorder is a wrapper around the C function gtk_entry_get_inner_border.
+// This function returns the entry’s #GtkEntry:inner-border property. See
+// gtk_entry_set_inner_border() for more information.
+/*
+
+C function : gtk_entry_get_inner_border
+*/
 func (recv *Entry) GetInnerBorder() *Border {
 	retC := C.gtk_entry_get_inner_border((*C.GtkEntry)(recv.native))
 	var retGo (*Border)
@@ -718,7 +869,18 @@ func (recv *Entry) GetInnerBorder() *Border {
 	return retGo
 }
 
-// SetInnerBorder is a wrapper around the C function gtk_entry_set_inner_border.
+// Sets %entry’s inner-border property to @border, or clears it if %NULL
+// is passed. The inner-border is the area around the entry’s text, but
+// inside its frame.
+//
+// If set, this property overrides the inner-border style property.
+// Overriding the style-provided border is useful when you want to do
+// in-place editing of some text in a canvas or list widget, where
+// pixel-exact positioning of the entry is important.
+/*
+
+C function : gtk_entry_set_inner_border
+*/
 func (recv *Entry) SetInnerBorder(border *Border) {
 	c_border := (*C.GtkBorder)(C.NULL)
 	if border != nil {
@@ -730,7 +892,12 @@ func (recv *Entry) SetInnerBorder(border *Border) {
 	return
 }
 
-// GetFocusOnClick is a wrapper around the C function gtk_file_chooser_button_get_focus_on_click.
+// Returns whether the button grabs focus when it is clicked with the mouse.
+// See gtk_file_chooser_button_set_focus_on_click().
+/*
+
+C function : gtk_file_chooser_button_get_focus_on_click
+*/
 func (recv *FileChooserButton) GetFocusOnClick() bool {
 	retC := C.gtk_file_chooser_button_get_focus_on_click((*C.GtkFileChooserButton)(recv.native))
 	retGo := retC == C.TRUE
@@ -738,7 +905,14 @@ func (recv *FileChooserButton) GetFocusOnClick() bool {
 	return retGo
 }
 
-// SetFocusOnClick is a wrapper around the C function gtk_file_chooser_button_set_focus_on_click.
+// Sets whether the button will grab focus when it is clicked with the mouse.
+// Making mouse clicks not grab focus is useful in places like toolbars where
+// you don’t want the keyboard focus removed from the main area of the
+// application.
+/*
+
+C function : gtk_file_chooser_button_set_focus_on_click
+*/
 func (recv *FileChooserButton) SetFocusOnClick(focusOnClick bool) {
 	c_focus_on_click :=
 		boolToGboolean(focusOnClick)
@@ -748,7 +922,11 @@ func (recv *FileChooserButton) SetFocusOnClick(focusOnClick bool) {
 	return
 }
 
-// GetLineWrapMode is a wrapper around the C function gtk_label_get_line_wrap_mode.
+// Returns line wrap mode used by the label. See gtk_label_set_line_wrap_mode().
+/*
+
+C function : gtk_label_get_line_wrap_mode
+*/
 func (recv *Label) GetLineWrapMode() pango.WrapMode {
 	retC := C.gtk_label_get_line_wrap_mode((*C.GtkLabel)(recv.native))
 	retGo := (pango.WrapMode)(retC)
@@ -756,7 +934,13 @@ func (recv *Label) GetLineWrapMode() pango.WrapMode {
 	return retGo
 }
 
-// SetLineWrapMode is a wrapper around the C function gtk_label_set_line_wrap_mode.
+// If line wrapping is on (see gtk_label_set_line_wrap()) this controls how
+// the line wrapping is done. The default is %PANGO_WRAP_WORD which means
+// wrap on word boundaries.
+/*
+
+C function : gtk_label_set_line_wrap_mode
+*/
 func (recv *Label) SetLineWrapMode(wrapMode pango.WrapMode) {
 	c_wrap_mode := (C.PangoWrapMode)(wrapMode)
 
@@ -765,7 +949,11 @@ func (recv *Label) SetLineWrapMode(wrapMode pango.WrapMode) {
 	return
 }
 
-// LinkButtonNew is a wrapper around the C function gtk_link_button_new.
+// Creates a new #GtkLinkButton with the URI as its text.
+/*
+
+C function : gtk_link_button_new
+*/
 func LinkButtonNew(uri string) *LinkButton {
 	c_uri := C.CString(uri)
 	defer C.free(unsafe.Pointer(c_uri))
@@ -776,7 +964,11 @@ func LinkButtonNew(uri string) *LinkButton {
 	return retGo
 }
 
-// LinkButtonNewWithLabel is a wrapper around the C function gtk_link_button_new_with_label.
+// Creates a new #GtkLinkButton containing a label.
+/*
+
+C function : gtk_link_button_new_with_label
+*/
 func LinkButtonNewWithLabel(uri string, label string) *LinkButton {
 	c_uri := C.CString(uri)
 	defer C.free(unsafe.Pointer(c_uri))
@@ -790,7 +982,11 @@ func LinkButtonNewWithLabel(uri string, label string) *LinkButton {
 	return retGo
 }
 
-// GetUri is a wrapper around the C function gtk_link_button_get_uri.
+// Retrieves the URI set using gtk_link_button_set_uri().
+/*
+
+C function : gtk_link_button_get_uri
+*/
 func (recv *LinkButton) GetUri() string {
 	retC := C.gtk_link_button_get_uri((*C.GtkLinkButton)(recv.native))
 	retGo := C.GoString(retC)
@@ -798,7 +994,12 @@ func (recv *LinkButton) GetUri() string {
 	return retGo
 }
 
-// SetUri is a wrapper around the C function gtk_link_button_set_uri.
+// Sets @uri as the URI where the #GtkLinkButton points. As a side-effect
+// this unsets the “visited” state of the button.
+/*
+
+C function : gtk_link_button_set_uri
+*/
 func (recv *LinkButton) SetUri(uri string) {
 	c_uri := C.CString(uri)
 	defer C.free(unsafe.Pointer(c_uri))
@@ -808,7 +1009,11 @@ func (recv *LinkButton) SetUri(uri string) {
 	return
 }
 
-// SetImage is a wrapper around the C function gtk_message_dialog_set_image.
+// Sets the dialog’s image to @image.
+/*
+
+C function : gtk_message_dialog_set_image
+*/
 func (recv *MessageDialog) SetImage(image *Widget) {
 	c_image := (*C.GtkWidget)(C.NULL)
 	if image != nil {
@@ -826,7 +1031,11 @@ func (recv *MessageDialog) SetImage(image *Widget) {
 
 // Unsupported signal 'page-reordered' for Notebook : unsupported parameter page_num : type guint :
 
-// GetTabDetachable is a wrapper around the C function gtk_notebook_get_tab_detachable.
+// Returns whether the tab contents can be detached from @notebook.
+/*
+
+C function : gtk_notebook_get_tab_detachable
+*/
 func (recv *Notebook) GetTabDetachable(child *Widget) bool {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -839,7 +1048,11 @@ func (recv *Notebook) GetTabDetachable(child *Widget) bool {
 	return retGo
 }
 
-// GetTabReorderable is a wrapper around the C function gtk_notebook_get_tab_reorderable.
+// Gets whether the tab can be reordered via drag and drop or not.
+/*
+
+C function : gtk_notebook_get_tab_reorderable
+*/
 func (recv *Notebook) GetTabReorderable(child *Widget) bool {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -852,7 +1065,55 @@ func (recv *Notebook) GetTabReorderable(child *Widget) bool {
 	return retGo
 }
 
-// SetTabDetachable is a wrapper around the C function gtk_notebook_set_tab_detachable.
+// Sets whether the tab can be detached from @notebook to another
+// notebook or widget.
+//
+// Note that 2 notebooks must share a common group identificator
+// (see gtk_notebook_set_group_name()) to allow automatic tabs
+// interchange between them.
+//
+// If you want a widget to interact with a notebook through DnD
+// (i.e.: accept dragged tabs from it) it must be set as a drop
+// destination and accept the target “GTK_NOTEBOOK_TAB”. The notebook
+// will fill the selection with a GtkWidget** pointing to the child
+// widget that corresponds to the dropped tab.
+//
+// Note that you should use gtk_notebook_detach_tab() instead
+// of gtk_container_remove() if you want to remove the tab from
+// the source notebook as part of accepting a drop. Otherwise,
+// the source notebook will think that the dragged tab was
+// removed from underneath the ongoing drag operation, and
+// will initiate a drag cancel animation.
+//
+// |[<!-- language="C" -->
+// static void
+// on_drag_data_received (GtkWidget        *widget,
+// GdkDragContext   *context,
+// gint              x,
+// gint              y,
+// GtkSelectionData *data,
+// guint             info,
+// guint             time,
+// gpointer          user_data)
+// {
+// GtkWidget *notebook;
+// GtkWidget **child;
+//
+// notebook = gtk_drag_get_source_widget (context);
+// child = (void*) gtk_selection_data_get_data (data);
+//
+// process_widget (*child);
+//
+// gtk_notebook_detach_tab (GTK_NOTEBOOK (notebook), *child);
+// }
+// ]|
+//
+// If you want a notebook to accept drags from other widgets,
+// you will have to set your own DnD code to do it.
+/*
+
+C function : gtk_notebook_set_tab_detachable
+*/
 func (recv *Notebook) SetTabDetachable(child *Widget, detachable bool) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -867,7 +1128,12 @@ func (recv *Notebook) SetTabDetachable(child *Widget, detachable bool) {
 	return
 }
 
-// SetTabReorderable is a wrapper around the C function gtk_notebook_set_tab_reorderable.
+// Sets whether the notebook tab can be reordered
+// via drag and drop or not.
+/*
+
+C function : gtk_notebook_set_tab_reorderable
+*/
 func (recv *Notebook) SetTabReorderable(child *Widget, reorderable bool) {
 	c_child := (*C.GtkWidget)(C.NULL)
 	if child != nil {
@@ -882,7 +1148,11 @@ func (recv *Notebook) SetTabReorderable(child *Widget, reorderable bool) {
 	return
 }
 
-// PageSetupNew is a wrapper around the C function gtk_page_setup_new.
+// Creates a new #GtkPageSetup.
+/*
+
+C function : gtk_page_setup_new
+*/
 func PageSetupNew() *PageSetup {
 	retC := C.gtk_page_setup_new()
 	retGo := PageSetupNewFromC(unsafe.Pointer(retC))
@@ -890,7 +1160,11 @@ func PageSetupNew() *PageSetup {
 	return retGo
 }
 
-// Copy is a wrapper around the C function gtk_page_setup_copy.
+// Copies a #GtkPageSetup.
+/*
+
+C function : gtk_page_setup_copy
+*/
 func (recv *PageSetup) Copy() *PageSetup {
 	retC := C.gtk_page_setup_copy((*C.GtkPageSetup)(recv.native))
 	retGo := PageSetupNewFromC(unsafe.Pointer(retC))
@@ -898,7 +1172,11 @@ func (recv *PageSetup) Copy() *PageSetup {
 	return retGo
 }
 
-// GetBottomMargin is a wrapper around the C function gtk_page_setup_get_bottom_margin.
+// Gets the bottom margin in units of @unit.
+/*
+
+C function : gtk_page_setup_get_bottom_margin
+*/
 func (recv *PageSetup) GetBottomMargin(unit Unit) float64 {
 	c_unit := (C.GtkUnit)(unit)
 
@@ -908,7 +1186,11 @@ func (recv *PageSetup) GetBottomMargin(unit Unit) float64 {
 	return retGo
 }
 
-// GetLeftMargin is a wrapper around the C function gtk_page_setup_get_left_margin.
+// Gets the left margin in units of @unit.
+/*
+
+C function : gtk_page_setup_get_left_margin
+*/
 func (recv *PageSetup) GetLeftMargin(unit Unit) float64 {
 	c_unit := (C.GtkUnit)(unit)
 
@@ -918,7 +1200,11 @@ func (recv *PageSetup) GetLeftMargin(unit Unit) float64 {
 	return retGo
 }
 
-// GetOrientation is a wrapper around the C function gtk_page_setup_get_orientation.
+// Gets the page orientation of the #GtkPageSetup.
+/*
+
+C function : gtk_page_setup_get_orientation
+*/
 func (recv *PageSetup) GetOrientation() PageOrientation {
 	retC := C.gtk_page_setup_get_orientation((*C.GtkPageSetup)(recv.native))
 	retGo := (PageOrientation)(retC)
@@ -926,7 +1212,15 @@ func (recv *PageSetup) GetOrientation() PageOrientation {
 	return retGo
 }
 
-// GetPageHeight is a wrapper around the C function gtk_page_setup_get_page_height.
+// Returns the page height in units of @unit.
+//
+// Note that this function takes orientation and
+// margins into consideration.
+// See gtk_page_setup_get_paper_height().
+/*
+
+C function : gtk_page_setup_get_page_height
+*/
 func (recv *PageSetup) GetPageHeight(unit Unit) float64 {
 	c_unit := (C.GtkUnit)(unit)
 
@@ -936,7 +1230,15 @@ func (recv *PageSetup) GetPageHeight(unit Unit) float64 {
 	return retGo
 }
 
-// GetPageWidth is a wrapper around the C function gtk_page_setup_get_page_width.
+// Returns the page width in units of @unit.
+//
+// Note that this function takes orientation and
+// margins into consideration.
+// See gtk_page_setup_get_paper_width().
+/*
+
+C function : gtk_page_setup_get_page_width
+*/
 func (recv *PageSetup) GetPageWidth(unit Unit) float64 {
 	c_unit := (C.GtkUnit)(unit)
 
@@ -946,7 +1248,15 @@ func (recv *PageSetup) GetPageWidth(unit Unit) float64 {
 	return retGo
 }
 
-// GetPaperHeight is a wrapper around the C function gtk_page_setup_get_paper_height.
+// Returns the paper height in units of @unit.
+//
+// Note that this function takes orientation, but
+// not margins into consideration.
+// See gtk_page_setup_get_page_height().
+/*
+
+C function : gtk_page_setup_get_paper_height
+*/
 func (recv *PageSetup) GetPaperHeight(unit Unit) float64 {
 	c_unit := (C.GtkUnit)(unit)
 
@@ -956,7 +1266,11 @@ func (recv *PageSetup) GetPaperHeight(unit Unit) float64 {
 	return retGo
 }
 
-// GetPaperSize is a wrapper around the C function gtk_page_setup_get_paper_size.
+// Gets the paper size of the #GtkPageSetup.
+/*
+
+C function : gtk_page_setup_get_paper_size
+*/
 func (recv *PageSetup) GetPaperSize() *PaperSize {
 	retC := C.gtk_page_setup_get_paper_size((*C.GtkPageSetup)(recv.native))
 	retGo := PaperSizeNewFromC(unsafe.Pointer(retC))
@@ -964,7 +1278,15 @@ func (recv *PageSetup) GetPaperSize() *PaperSize {
 	return retGo
 }
 
-// GetPaperWidth is a wrapper around the C function gtk_page_setup_get_paper_width.
+// Returns the paper width in units of @unit.
+//
+// Note that this function takes orientation, but
+// not margins into consideration.
+// See gtk_page_setup_get_page_width().
+/*
+
+C function : gtk_page_setup_get_paper_width
+*/
 func (recv *PageSetup) GetPaperWidth(unit Unit) float64 {
 	c_unit := (C.GtkUnit)(unit)
 
@@ -974,7 +1296,11 @@ func (recv *PageSetup) GetPaperWidth(unit Unit) float64 {
 	return retGo
 }
 
-// GetRightMargin is a wrapper around the C function gtk_page_setup_get_right_margin.
+// Gets the right margin in units of @unit.
+/*
+
+C function : gtk_page_setup_get_right_margin
+*/
 func (recv *PageSetup) GetRightMargin(unit Unit) float64 {
 	c_unit := (C.GtkUnit)(unit)
 
@@ -984,7 +1310,11 @@ func (recv *PageSetup) GetRightMargin(unit Unit) float64 {
 	return retGo
 }
 
-// GetTopMargin is a wrapper around the C function gtk_page_setup_get_top_margin.
+// Gets the top margin in units of @unit.
+/*
+
+C function : gtk_page_setup_get_top_margin
+*/
 func (recv *PageSetup) GetTopMargin(unit Unit) float64 {
 	c_unit := (C.GtkUnit)(unit)
 
@@ -994,7 +1324,11 @@ func (recv *PageSetup) GetTopMargin(unit Unit) float64 {
 	return retGo
 }
 
-// SetBottomMargin is a wrapper around the C function gtk_page_setup_set_bottom_margin.
+// Sets the bottom margin of the #GtkPageSetup.
+/*
+
+C function : gtk_page_setup_set_bottom_margin
+*/
 func (recv *PageSetup) SetBottomMargin(margin float64, unit Unit) {
 	c_margin := (C.gdouble)(margin)
 
@@ -1005,7 +1339,11 @@ func (recv *PageSetup) SetBottomMargin(margin float64, unit Unit) {
 	return
 }
 
-// SetLeftMargin is a wrapper around the C function gtk_page_setup_set_left_margin.
+// Sets the left margin of the #GtkPageSetup.
+/*
+
+C function : gtk_page_setup_set_left_margin
+*/
 func (recv *PageSetup) SetLeftMargin(margin float64, unit Unit) {
 	c_margin := (C.gdouble)(margin)
 
@@ -1016,7 +1354,11 @@ func (recv *PageSetup) SetLeftMargin(margin float64, unit Unit) {
 	return
 }
 
-// SetOrientation is a wrapper around the C function gtk_page_setup_set_orientation.
+// Sets the page orientation of the #GtkPageSetup.
+/*
+
+C function : gtk_page_setup_set_orientation
+*/
 func (recv *PageSetup) SetOrientation(orientation PageOrientation) {
 	c_orientation := (C.GtkPageOrientation)(orientation)
 
@@ -1025,7 +1367,13 @@ func (recv *PageSetup) SetOrientation(orientation PageOrientation) {
 	return
 }
 
-// SetPaperSize is a wrapper around the C function gtk_page_setup_set_paper_size.
+// Sets the paper size of the #GtkPageSetup without
+// changing the margins. See
+// gtk_page_setup_set_paper_size_and_default_margins().
+/*
+
+C function : gtk_page_setup_set_paper_size
+*/
 func (recv *PageSetup) SetPaperSize(size *PaperSize) {
 	c_size := (*C.GtkPaperSize)(C.NULL)
 	if size != nil {
@@ -1037,7 +1385,12 @@ func (recv *PageSetup) SetPaperSize(size *PaperSize) {
 	return
 }
 
-// SetPaperSizeAndDefaultMargins is a wrapper around the C function gtk_page_setup_set_paper_size_and_default_margins.
+// Sets the paper size of the #GtkPageSetup and modifies
+// the margins according to the new paper size.
+/*
+
+C function : gtk_page_setup_set_paper_size_and_default_margins
+*/
 func (recv *PageSetup) SetPaperSizeAndDefaultMargins(size *PaperSize) {
 	c_size := (*C.GtkPaperSize)(C.NULL)
 	if size != nil {
@@ -1049,7 +1402,11 @@ func (recv *PageSetup) SetPaperSizeAndDefaultMargins(size *PaperSize) {
 	return
 }
 
-// SetRightMargin is a wrapper around the C function gtk_page_setup_set_right_margin.
+// Sets the right margin of the #GtkPageSetup.
+/*
+
+C function : gtk_page_setup_set_right_margin
+*/
 func (recv *PageSetup) SetRightMargin(margin float64, unit Unit) {
 	c_margin := (C.gdouble)(margin)
 
@@ -1060,7 +1417,11 @@ func (recv *PageSetup) SetRightMargin(margin float64, unit Unit) {
 	return
 }
 
-// SetTopMargin is a wrapper around the C function gtk_page_setup_set_top_margin.
+// Sets the top margin of the #GtkPageSetup.
+/*
+
+C function : gtk_page_setup_set_top_margin
+*/
 func (recv *PageSetup) SetTopMargin(margin float64, unit Unit) {
 	c_margin := (C.gdouble)(margin)
 
@@ -1071,7 +1432,12 @@ func (recv *PageSetup) SetTopMargin(margin float64, unit Unit) {
 	return
 }
 
-// CreatePangoContext is a wrapper around the C function gtk_print_context_create_pango_context.
+// Creates a new #PangoContext that can be used with the
+// #GtkPrintContext.
+/*
+
+C function : gtk_print_context_create_pango_context
+*/
 func (recv *PrintContext) CreatePangoContext() *pango.Context {
 	retC := C.gtk_print_context_create_pango_context((*C.GtkPrintContext)(recv.native))
 	retGo := pango.ContextNewFromC(unsafe.Pointer(retC))
@@ -1079,7 +1445,12 @@ func (recv *PrintContext) CreatePangoContext() *pango.Context {
 	return retGo
 }
 
-// CreatePangoLayout is a wrapper around the C function gtk_print_context_create_pango_layout.
+// Creates a new #PangoLayout that is suitable for use
+// with the #GtkPrintContext.
+/*
+
+C function : gtk_print_context_create_pango_layout
+*/
 func (recv *PrintContext) CreatePangoLayout() *pango.Layout {
 	retC := C.gtk_print_context_create_pango_layout((*C.GtkPrintContext)(recv.native))
 	retGo := pango.LayoutNewFromC(unsafe.Pointer(retC))
@@ -1087,7 +1458,12 @@ func (recv *PrintContext) CreatePangoLayout() *pango.Layout {
 	return retGo
 }
 
-// GetCairoContext is a wrapper around the C function gtk_print_context_get_cairo_context.
+// Obtains the cairo context that is associated with the
+// #GtkPrintContext.
+/*
+
+C function : gtk_print_context_get_cairo_context
+*/
 func (recv *PrintContext) GetCairoContext() *cairo.Context {
 	retC := C.gtk_print_context_get_cairo_context((*C.GtkPrintContext)(recv.native))
 	retGo := cairo.ContextNewFromC(unsafe.Pointer(retC))
@@ -1095,7 +1471,12 @@ func (recv *PrintContext) GetCairoContext() *cairo.Context {
 	return retGo
 }
 
-// GetDpiX is a wrapper around the C function gtk_print_context_get_dpi_x.
+// Obtains the horizontal resolution of the #GtkPrintContext,
+// in dots per inch.
+/*
+
+C function : gtk_print_context_get_dpi_x
+*/
 func (recv *PrintContext) GetDpiX() float64 {
 	retC := C.gtk_print_context_get_dpi_x((*C.GtkPrintContext)(recv.native))
 	retGo := (float64)(retC)
@@ -1103,7 +1484,12 @@ func (recv *PrintContext) GetDpiX() float64 {
 	return retGo
 }
 
-// GetDpiY is a wrapper around the C function gtk_print_context_get_dpi_y.
+// Obtains the vertical resolution of the #GtkPrintContext,
+// in dots per inch.
+/*
+
+C function : gtk_print_context_get_dpi_y
+*/
 func (recv *PrintContext) GetDpiY() float64 {
 	retC := C.gtk_print_context_get_dpi_y((*C.GtkPrintContext)(recv.native))
 	retGo := (float64)(retC)
@@ -1111,7 +1497,11 @@ func (recv *PrintContext) GetDpiY() float64 {
 	return retGo
 }
 
-// GetHeight is a wrapper around the C function gtk_print_context_get_height.
+// Obtains the height of the #GtkPrintContext, in pixels.
+/*
+
+C function : gtk_print_context_get_height
+*/
 func (recv *PrintContext) GetHeight() float64 {
 	retC := C.gtk_print_context_get_height((*C.GtkPrintContext)(recv.native))
 	retGo := (float64)(retC)
@@ -1119,7 +1509,12 @@ func (recv *PrintContext) GetHeight() float64 {
 	return retGo
 }
 
-// GetPageSetup is a wrapper around the C function gtk_print_context_get_page_setup.
+// Obtains the #GtkPageSetup that determines the page
+// dimensions of the #GtkPrintContext.
+/*
+
+C function : gtk_print_context_get_page_setup
+*/
 func (recv *PrintContext) GetPageSetup() *PageSetup {
 	retC := C.gtk_print_context_get_page_setup((*C.GtkPrintContext)(recv.native))
 	retGo := PageSetupNewFromC(unsafe.Pointer(retC))
@@ -1127,7 +1522,12 @@ func (recv *PrintContext) GetPageSetup() *PageSetup {
 	return retGo
 }
 
-// GetPangoFontmap is a wrapper around the C function gtk_print_context_get_pango_fontmap.
+// Returns a #PangoFontMap that is suitable for use
+// with the #GtkPrintContext.
+/*
+
+C function : gtk_print_context_get_pango_fontmap
+*/
 func (recv *PrintContext) GetPangoFontmap() *pango.FontMap {
 	retC := C.gtk_print_context_get_pango_fontmap((*C.GtkPrintContext)(recv.native))
 	retGo := pango.FontMapNewFromC(unsafe.Pointer(retC))
@@ -1135,7 +1535,11 @@ func (recv *PrintContext) GetPangoFontmap() *pango.FontMap {
 	return retGo
 }
 
-// GetWidth is a wrapper around the C function gtk_print_context_get_width.
+// Obtains the width of the #GtkPrintContext, in pixels.
+/*
+
+C function : gtk_print_context_get_width
+*/
 func (recv *PrintContext) GetWidth() float64 {
 	retC := C.gtk_print_context_get_width((*C.GtkPrintContext)(recv.native))
 	retGo := (float64)(retC)
@@ -1143,7 +1547,16 @@ func (recv *PrintContext) GetWidth() float64 {
 	return retGo
 }
 
-// SetCairoContext is a wrapper around the C function gtk_print_context_set_cairo_context.
+// Sets a new cairo context on a print context.
+//
+// This function is intended to be used when implementing
+// an internal print preview, it is not needed for printing,
+// since GTK+ itself creates a suitable cairo context in that
+// case.
+/*
+
+C function : gtk_print_context_set_cairo_context
+*/
 func (recv *PrintContext) SetCairoContext(cr *cairo.Context, dpiX float64, dpiY float64) {
 	c_cr := (*C.cairo_t)(C.NULL)
 	if cr != nil {
@@ -1587,7 +2000,11 @@ func printoperation_statusChangedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// PrintOperationNew is a wrapper around the C function gtk_print_operation_new.
+// Creates a new #GtkPrintOperation.
+/*
+
+C function : gtk_print_operation_new
+*/
 func PrintOperationNew() *PrintOperation {
 	retC := C.gtk_print_operation_new()
 	retGo := PrintOperationNewFromC(unsafe.Pointer(retC))
@@ -1595,14 +2012,27 @@ func PrintOperationNew() *PrintOperation {
 	return retGo
 }
 
-// Cancel is a wrapper around the C function gtk_print_operation_cancel.
+// Cancels a running print operation. This function may
+// be called from a #GtkPrintOperation::begin-print,
+// #GtkPrintOperation::paginate or #GtkPrintOperation::draw-page
+// signal handler to stop the currently running print
+// operation.
+/*
+
+C function : gtk_print_operation_cancel
+*/
 func (recv *PrintOperation) Cancel() {
 	C.gtk_print_operation_cancel((*C.GtkPrintOperation)(recv.native))
 
 	return
 }
 
-// GetDefaultPageSetup is a wrapper around the C function gtk_print_operation_get_default_page_setup.
+// Returns the default page setup, see
+// gtk_print_operation_set_default_page_setup().
+/*
+
+C function : gtk_print_operation_get_default_page_setup
+*/
 func (recv *PrintOperation) GetDefaultPageSetup() *PageSetup {
 	retC := C.gtk_print_operation_get_default_page_setup((*C.GtkPrintOperation)(recv.native))
 	retGo := PageSetupNewFromC(unsafe.Pointer(retC))
@@ -1610,7 +2040,14 @@ func (recv *PrintOperation) GetDefaultPageSetup() *PageSetup {
 	return retGo
 }
 
-// GetError is a wrapper around the C function gtk_print_operation_get_error.
+// Call this when the result of a print operation is
+// %GTK_PRINT_OPERATION_RESULT_ERROR, either as returned by
+// gtk_print_operation_run(), or in the #GtkPrintOperation::done signal
+// handler. The returned #GError will contain more details on what went wrong.
+/*
+
+C function : gtk_print_operation_get_error
+*/
 func (recv *PrintOperation) GetError() error {
 	var cThrowableError *C.GError
 
@@ -1624,7 +2061,15 @@ func (recv *PrintOperation) GetError() error {
 	return goThrowableError
 }
 
-// GetPrintSettings is a wrapper around the C function gtk_print_operation_get_print_settings.
+// Returns the current print settings.
+//
+// Note that the return value is %NULL until either
+// gtk_print_operation_set_print_settings() or
+// gtk_print_operation_run() have been called.
+/*
+
+C function : gtk_print_operation_get_print_settings
+*/
 func (recv *PrintOperation) GetPrintSettings() *PrintSettings {
 	retC := C.gtk_print_operation_get_print_settings((*C.GtkPrintOperation)(recv.native))
 	retGo := PrintSettingsNewFromC(unsafe.Pointer(retC))
@@ -1632,7 +2077,12 @@ func (recv *PrintOperation) GetPrintSettings() *PrintSettings {
 	return retGo
 }
 
-// GetStatus is a wrapper around the C function gtk_print_operation_get_status.
+// Returns the status of the print operation.
+// Also see gtk_print_operation_get_status_string().
+/*
+
+C function : gtk_print_operation_get_status
+*/
 func (recv *PrintOperation) GetStatus() PrintStatus {
 	retC := C.gtk_print_operation_get_status((*C.GtkPrintOperation)(recv.native))
 	retGo := (PrintStatus)(retC)
@@ -1640,7 +2090,16 @@ func (recv *PrintOperation) GetStatus() PrintStatus {
 	return retGo
 }
 
-// GetStatusString is a wrapper around the C function gtk_print_operation_get_status_string.
+// Returns a string representation of the status of the
+// print operation. The string is translated and suitable
+// for displaying the print status e.g. in a #GtkStatusbar.
+//
+// Use gtk_print_operation_get_status() to obtain a status
+// value that is suitable for programmatic use.
+/*
+
+C function : gtk_print_operation_get_status_string
+*/
 func (recv *PrintOperation) GetStatusString() string {
 	retC := C.gtk_print_operation_get_status_string((*C.GtkPrintOperation)(recv.native))
 	retGo := C.GoString(retC)
@@ -1648,7 +2107,17 @@ func (recv *PrintOperation) GetStatusString() string {
 	return retGo
 }
 
-// IsFinished is a wrapper around the C function gtk_print_operation_is_finished.
+// A convenience function to find out if the print operation
+// is finished, either successfully (%GTK_PRINT_STATUS_FINISHED)
+// or unsuccessfully (%GTK_PRINT_STATUS_FINISHED_ABORTED).
+//
+// Note: when you enable print status tracking the print operation
+// can be in a non-finished state even after done has been called, as
+// the operation status then tracks the print job status on the printer.
+/*
+
+C function : gtk_print_operation_is_finished
+*/
 func (recv *PrintOperation) IsFinished() bool {
 	retC := C.gtk_print_operation_is_finished((*C.GtkPrintOperation)(recv.native))
 	retGo := retC == C.TRUE
@@ -1656,7 +2125,65 @@ func (recv *PrintOperation) IsFinished() bool {
 	return retGo
 }
 
-// Run is a wrapper around the C function gtk_print_operation_run.
+// Runs the print operation, by first letting the user modify
+// print settings in the print dialog, and then print the document.
+//
+// Normally that this function does not return until the rendering of all
+// pages is complete. You can connect to the
+// #GtkPrintOperation::status-changed signal on @op to obtain some
+// information about the progress of the print operation.
+// Furthermore, it may use a recursive mainloop to show the print dialog.
+//
+// If you call gtk_print_operation_set_allow_async() or set the
+// #GtkPrintOperation:allow-async property the operation will run
+// asynchronously if this is supported on the platform. The
+// #GtkPrintOperation::done signal will be emitted with the result of the
+// operation when the it is done (i.e. when the dialog is canceled, or when
+// the print succeeds or fails).
+// |[<!-- language="C" -->
+// if (settings != NULL)
+// gtk_print_operation_set_print_settings (print, settings);
+//
+// if (page_setup != NULL)
+// gtk_print_operation_set_default_page_setup (print, page_setup);
+//
+// g_signal_connect (print, "begin-print",
+// G_CALLBACK (begin_print), &data);
+// g_signal_connect (print, "draw-page",
+// G_CALLBACK (draw_page), &data);
+//
+// res = gtk_print_operation_run (print,
+// GTK_PRINT_OPERATION_ACTION_PRINT_DIALOG,
+// parent,
+// &error);
+//
+// if (res == GTK_PRINT_OPERATION_RESULT_ERROR)
+// {
+// error_dialog = gtk_message_dialog_new (GTK_WINDOW (parent),
+// GTK_DIALOG_DESTROY_WITH_PARENT,
+// GTK_MESSAGE_ERROR,
+// GTK_BUTTONS_CLOSE,
+// "Error printing file:\n%s",
+// error->message);
+// g_signal_connect (error_dialog, "response",
+// G_CALLBACK (gtk_widget_destroy), NULL);
+// gtk_widget_show (error_dialog);
+// g_error_free (error);
+// }
+// else if (res == GTK_PRINT_OPERATION_RESULT_APPLY)
+// {
+// if (settings != NULL)
+// g_object_unref (settings);
+// settings = g_object_ref (gtk_print_operation_get_print_settings (print));
+// }
+// ]|
+//
+// Note that gtk_print_operation_run() can only be called once on a
+// given #GtkPrintOperation.
+/*
+
+C function : gtk_print_operation_run
+*/
 func (recv *PrintOperation) Run(action PrintOperationAction, parent *Window) (PrintOperationResult, error) {
 	c_action := (C.GtkPrintOperationAction)(action)
 
@@ -1678,7 +2205,13 @@ func (recv *PrintOperation) Run(action PrintOperationAction, parent *Window) (Pr
 	return retGo, goThrowableError
 }
 
-// SetAllowAsync is a wrapper around the C function gtk_print_operation_set_allow_async.
+// Sets whether the gtk_print_operation_run() may return
+// before the print operation is completed. Note that
+// some platforms may not allow asynchronous operation.
+/*
+
+C function : gtk_print_operation_set_allow_async
+*/
 func (recv *PrintOperation) SetAllowAsync(allowAsync bool) {
 	c_allow_async :=
 		boolToGboolean(allowAsync)
@@ -1688,7 +2221,16 @@ func (recv *PrintOperation) SetAllowAsync(allowAsync bool) {
 	return
 }
 
-// SetCurrentPage is a wrapper around the C function gtk_print_operation_set_current_page.
+// Sets the current page.
+//
+// If this is called before gtk_print_operation_run(),
+// the user will be able to select to print only the current page.
+//
+// Note that this only makes sense for pre-paginated documents.
+/*
+
+C function : gtk_print_operation_set_current_page
+*/
 func (recv *PrintOperation) SetCurrentPage(currentPage int32) {
 	c_current_page := (C.gint)(currentPage)
 
@@ -1697,7 +2239,11 @@ func (recv *PrintOperation) SetCurrentPage(currentPage int32) {
 	return
 }
 
-// SetCustomTabLabel is a wrapper around the C function gtk_print_operation_set_custom_tab_label.
+// Sets the label for the tab holding custom widgets.
+/*
+
+C function : gtk_print_operation_set_custom_tab_label
+*/
 func (recv *PrintOperation) SetCustomTabLabel(label string) {
 	c_label := C.CString(label)
 	defer C.free(unsafe.Pointer(c_label))
@@ -1707,7 +2253,15 @@ func (recv *PrintOperation) SetCustomTabLabel(label string) {
 	return
 }
 
-// SetDefaultPageSetup is a wrapper around the C function gtk_print_operation_set_default_page_setup.
+// Makes @default_page_setup the default page setup for @op.
+//
+// This page setup will be used by gtk_print_operation_run(),
+// but it can be overridden on a per-page basis by connecting
+// to the #GtkPrintOperation::request-page-setup signal.
+/*
+
+C function : gtk_print_operation_set_default_page_setup
+*/
 func (recv *PrintOperation) SetDefaultPageSetup(defaultPageSetup *PageSetup) {
 	c_default_page_setup := (*C.GtkPageSetup)(C.NULL)
 	if defaultPageSetup != nil {
@@ -1719,7 +2273,18 @@ func (recv *PrintOperation) SetDefaultPageSetup(defaultPageSetup *PageSetup) {
 	return
 }
 
-// SetExportFilename is a wrapper around the C function gtk_print_operation_set_export_filename.
+// Sets up the #GtkPrintOperation to generate a file instead
+// of showing the print dialog. The indended use of this function
+// is for implementing “Export to PDF” actions. Currently, PDF
+// is the only supported format.
+//
+// “Print to PDF” support is independent of this and is done
+// by letting the user pick the “Print to PDF” item from the list
+// of printers in the print dialog.
+/*
+
+C function : gtk_print_operation_set_export_filename
+*/
 func (recv *PrintOperation) SetExportFilename(filename string) {
 	c_filename := C.CString(filename)
 	defer C.free(unsafe.Pointer(c_filename))
@@ -1729,7 +2294,15 @@ func (recv *PrintOperation) SetExportFilename(filename string) {
 	return
 }
 
-// SetJobName is a wrapper around the C function gtk_print_operation_set_job_name.
+// Sets the name of the print job. The name is used to identify
+// the job (e.g. in monitoring applications like eggcups).
+//
+// If you don’t set a job name, GTK+ picks a default one by
+// numbering successive print jobs.
+/*
+
+C function : gtk_print_operation_set_job_name
+*/
 func (recv *PrintOperation) SetJobName(jobName string) {
 	c_job_name := C.CString(jobName)
 	defer C.free(unsafe.Pointer(c_job_name))
@@ -1739,7 +2312,21 @@ func (recv *PrintOperation) SetJobName(jobName string) {
 	return
 }
 
-// SetNPages is a wrapper around the C function gtk_print_operation_set_n_pages.
+// Sets the number of pages in the document.
+//
+// This must be set to a positive number
+// before the rendering starts. It may be set in a
+// #GtkPrintOperation::begin-print signal hander.
+//
+// Note that the page numbers passed to the
+// #GtkPrintOperation::request-page-setup
+// and #GtkPrintOperation::draw-page signals are 0-based, i.e. if
+// the user chooses to print all pages, the last ::draw-page signal
+// will be for page @n_pages - 1.
+/*
+
+C function : gtk_print_operation_set_n_pages
+*/
 func (recv *PrintOperation) SetNPages(nPages int32) {
 	c_n_pages := (C.gint)(nPages)
 
@@ -1748,7 +2335,13 @@ func (recv *PrintOperation) SetNPages(nPages int32) {
 	return
 }
 
-// SetPrintSettings is a wrapper around the C function gtk_print_operation_set_print_settings.
+// Sets the print settings for @op. This is typically used to
+// re-establish print settings from a previous print operation,
+// see gtk_print_operation_run().
+/*
+
+C function : gtk_print_operation_set_print_settings
+*/
 func (recv *PrintOperation) SetPrintSettings(printSettings *PrintSettings) {
 	c_print_settings := (*C.GtkPrintSettings)(C.NULL)
 	if printSettings != nil {
@@ -1760,7 +2353,12 @@ func (recv *PrintOperation) SetPrintSettings(printSettings *PrintSettings) {
 	return
 }
 
-// SetShowProgress is a wrapper around the C function gtk_print_operation_set_show_progress.
+// If @show_progress is %TRUE, the print operation will show a
+// progress dialog during the print operation.
+/*
+
+C function : gtk_print_operation_set_show_progress
+*/
 func (recv *PrintOperation) SetShowProgress(showProgress bool) {
 	c_show_progress :=
 		boolToGboolean(showProgress)
@@ -1770,7 +2368,17 @@ func (recv *PrintOperation) SetShowProgress(showProgress bool) {
 	return
 }
 
-// SetTrackPrintStatus is a wrapper around the C function gtk_print_operation_set_track_print_status.
+// If track_status is %TRUE, the print operation will try to continue report
+// on the status of the print job in the printer queues and printer. This
+// can allow your application to show things like “out of paper” issues,
+// and when the print job actually reaches the printer.
+//
+// This function is often implemented using some form of polling, so it should
+// not be enabled unless needed.
+/*
+
+C function : gtk_print_operation_set_track_print_status
+*/
 func (recv *PrintOperation) SetTrackPrintStatus(trackStatus bool) {
 	c_track_status :=
 		boolToGboolean(trackStatus)
@@ -1780,7 +2388,13 @@ func (recv *PrintOperation) SetTrackPrintStatus(trackStatus bool) {
 	return
 }
 
-// SetUnit is a wrapper around the C function gtk_print_operation_set_unit.
+// Sets up the transformation for the cairo context obtained from
+// #GtkPrintContext in such a way that distances are measured in
+// units of @unit.
+/*
+
+C function : gtk_print_operation_set_unit
+*/
 func (recv *PrintOperation) SetUnit(unit Unit) {
 	c_unit := (C.GtkUnit)(unit)
 
@@ -1789,7 +2403,16 @@ func (recv *PrintOperation) SetUnit(unit Unit) {
 	return
 }
 
-// SetUseFullPage is a wrapper around the C function gtk_print_operation_set_use_full_page.
+// If @full_page is %TRUE, the transformation for the cairo context
+// obtained from #GtkPrintContext puts the origin at the top left
+// corner of the page (which may not be the top left corner of the
+// sheet, depending on page orientation and the number of pages per
+// sheet). Otherwise, the origin is at the top left corner of the
+// imageable area (i.e. inside the margins).
+/*
+
+C function : gtk_print_operation_set_use_full_page
+*/
 func (recv *PrintOperation) SetUseFullPage(fullPage bool) {
 	c_full_page :=
 		boolToGboolean(fullPage)
@@ -1799,7 +2422,11 @@ func (recv *PrintOperation) SetUseFullPage(fullPage bool) {
 	return
 }
 
-// PrintSettingsNew is a wrapper around the C function gtk_print_settings_new.
+// Creates a new #GtkPrintSettings object.
+/*
+
+C function : gtk_print_settings_new
+*/
 func PrintSettingsNew() *PrintSettings {
 	retC := C.gtk_print_settings_new()
 	retGo := PrintSettingsNewFromC(unsafe.Pointer(retC))
@@ -1807,7 +2434,11 @@ func PrintSettingsNew() *PrintSettings {
 	return retGo
 }
 
-// Copy is a wrapper around the C function gtk_print_settings_copy.
+// Copies a #GtkPrintSettings object.
+/*
+
+C function : gtk_print_settings_copy
+*/
 func (recv *PrintSettings) Copy() *PrintSettings {
 	retC := C.gtk_print_settings_copy((*C.GtkPrintSettings)(recv.native))
 	retGo := PrintSettingsNewFromC(unsafe.Pointer(retC))
@@ -1817,7 +2448,11 @@ func (recv *PrintSettings) Copy() *PrintSettings {
 
 // Unsupported : gtk_print_settings_foreach : unsupported parameter func : no type generator for PrintSettingsFunc (GtkPrintSettingsFunc) for param func
 
-// Get is a wrapper around the C function gtk_print_settings_get.
+// Looks up the string value associated with @key.
+/*
+
+C function : gtk_print_settings_get
+*/
 func (recv *PrintSettings) Get(key string) string {
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
@@ -1828,7 +2463,15 @@ func (recv *PrintSettings) Get(key string) string {
 	return retGo
 }
 
-// GetBool is a wrapper around the C function gtk_print_settings_get_bool.
+// Returns the boolean represented by the value
+// that is associated with @key.
+//
+// The string “true” represents %TRUE, any other
+// string %FALSE.
+/*
+
+C function : gtk_print_settings_get_bool
+*/
 func (recv *PrintSettings) GetBool(key string) bool {
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
@@ -1839,7 +2482,11 @@ func (recv *PrintSettings) GetBool(key string) bool {
 	return retGo
 }
 
-// GetCollate is a wrapper around the C function gtk_print_settings_get_collate.
+// Gets the value of %GTK_PRINT_SETTINGS_COLLATE.
+/*
+
+C function : gtk_print_settings_get_collate
+*/
 func (recv *PrintSettings) GetCollate() bool {
 	retC := C.gtk_print_settings_get_collate((*C.GtkPrintSettings)(recv.native))
 	retGo := retC == C.TRUE
@@ -1847,7 +2494,11 @@ func (recv *PrintSettings) GetCollate() bool {
 	return retGo
 }
 
-// GetDefaultSource is a wrapper around the C function gtk_print_settings_get_default_source.
+// Gets the value of %GTK_PRINT_SETTINGS_DEFAULT_SOURCE.
+/*
+
+C function : gtk_print_settings_get_default_source
+*/
 func (recv *PrintSettings) GetDefaultSource() string {
 	retC := C.gtk_print_settings_get_default_source((*C.GtkPrintSettings)(recv.native))
 	retGo := C.GoString(retC)
@@ -1855,7 +2506,11 @@ func (recv *PrintSettings) GetDefaultSource() string {
 	return retGo
 }
 
-// GetDither is a wrapper around the C function gtk_print_settings_get_dither.
+// Gets the value of %GTK_PRINT_SETTINGS_DITHER.
+/*
+
+C function : gtk_print_settings_get_dither
+*/
 func (recv *PrintSettings) GetDither() string {
 	retC := C.gtk_print_settings_get_dither((*C.GtkPrintSettings)(recv.native))
 	retGo := C.GoString(retC)
@@ -1863,7 +2518,11 @@ func (recv *PrintSettings) GetDither() string {
 	return retGo
 }
 
-// GetDouble is a wrapper around the C function gtk_print_settings_get_double.
+// Returns the double value associated with @key, or 0.
+/*
+
+C function : gtk_print_settings_get_double
+*/
 func (recv *PrintSettings) GetDouble(key string) float64 {
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
@@ -1874,7 +2533,15 @@ func (recv *PrintSettings) GetDouble(key string) float64 {
 	return retGo
 }
 
-// GetDoubleWithDefault is a wrapper around the C function gtk_print_settings_get_double_with_default.
+// Returns the floating point number represented by
+// the value that is associated with @key, or @default_val
+// if the value does not represent a floating point number.
+//
+// Floating point numbers are parsed with g_ascii_strtod().
+/*
+
+C function : gtk_print_settings_get_double_with_default
+*/
 func (recv *PrintSettings) GetDoubleWithDefault(key string, def float64) float64 {
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
@@ -1887,7 +2554,11 @@ func (recv *PrintSettings) GetDoubleWithDefault(key string, def float64) float64
 	return retGo
 }
 
-// GetDuplex is a wrapper around the C function gtk_print_settings_get_duplex.
+// Gets the value of %GTK_PRINT_SETTINGS_DUPLEX.
+/*
+
+C function : gtk_print_settings_get_duplex
+*/
 func (recv *PrintSettings) GetDuplex() PrintDuplex {
 	retC := C.gtk_print_settings_get_duplex((*C.GtkPrintSettings)(recv.native))
 	retGo := (PrintDuplex)(retC)
@@ -1895,7 +2566,11 @@ func (recv *PrintSettings) GetDuplex() PrintDuplex {
 	return retGo
 }
 
-// GetFinishings is a wrapper around the C function gtk_print_settings_get_finishings.
+// Gets the value of %GTK_PRINT_SETTINGS_FINISHINGS.
+/*
+
+C function : gtk_print_settings_get_finishings
+*/
 func (recv *PrintSettings) GetFinishings() string {
 	retC := C.gtk_print_settings_get_finishings((*C.GtkPrintSettings)(recv.native))
 	retGo := C.GoString(retC)
@@ -1903,7 +2578,11 @@ func (recv *PrintSettings) GetFinishings() string {
 	return retGo
 }
 
-// GetInt is a wrapper around the C function gtk_print_settings_get_int.
+// Returns the integer value of @key, or 0.
+/*
+
+C function : gtk_print_settings_get_int
+*/
 func (recv *PrintSettings) GetInt(key string) int32 {
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
@@ -1914,7 +2593,12 @@ func (recv *PrintSettings) GetInt(key string) int32 {
 	return retGo
 }
 
-// GetIntWithDefault is a wrapper around the C function gtk_print_settings_get_int_with_default.
+// Returns the value of @key, interpreted as
+// an integer, or the default value.
+/*
+
+C function : gtk_print_settings_get_int_with_default
+*/
 func (recv *PrintSettings) GetIntWithDefault(key string, def int32) int32 {
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
@@ -1927,7 +2611,12 @@ func (recv *PrintSettings) GetIntWithDefault(key string, def int32) int32 {
 	return retGo
 }
 
-// GetLength is a wrapper around the C function gtk_print_settings_get_length.
+// Returns the value associated with @key, interpreted
+// as a length. The returned value is converted to @units.
+/*
+
+C function : gtk_print_settings_get_length
+*/
 func (recv *PrintSettings) GetLength(key string, unit Unit) float64 {
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
@@ -1940,7 +2629,13 @@ func (recv *PrintSettings) GetLength(key string, unit Unit) float64 {
 	return retGo
 }
 
-// GetMediaType is a wrapper around the C function gtk_print_settings_get_media_type.
+// Gets the value of %GTK_PRINT_SETTINGS_MEDIA_TYPE.
+//
+// The set of media types is defined in PWG 5101.1-2002 PWG.
+/*
+
+C function : gtk_print_settings_get_media_type
+*/
 func (recv *PrintSettings) GetMediaType() string {
 	retC := C.gtk_print_settings_get_media_type((*C.GtkPrintSettings)(recv.native))
 	retGo := C.GoString(retC)
@@ -1948,7 +2643,11 @@ func (recv *PrintSettings) GetMediaType() string {
 	return retGo
 }
 
-// GetNCopies is a wrapper around the C function gtk_print_settings_get_n_copies.
+// Gets the value of %GTK_PRINT_SETTINGS_N_COPIES.
+/*
+
+C function : gtk_print_settings_get_n_copies
+*/
 func (recv *PrintSettings) GetNCopies() int32 {
 	retC := C.gtk_print_settings_get_n_copies((*C.GtkPrintSettings)(recv.native))
 	retGo := (int32)(retC)
@@ -1956,7 +2655,11 @@ func (recv *PrintSettings) GetNCopies() int32 {
 	return retGo
 }
 
-// GetNumberUp is a wrapper around the C function gtk_print_settings_get_number_up.
+// Gets the value of %GTK_PRINT_SETTINGS_NUMBER_UP.
+/*
+
+C function : gtk_print_settings_get_number_up
+*/
 func (recv *PrintSettings) GetNumberUp() int32 {
 	retC := C.gtk_print_settings_get_number_up((*C.GtkPrintSettings)(recv.native))
 	retGo := (int32)(retC)
@@ -1964,7 +2667,12 @@ func (recv *PrintSettings) GetNumberUp() int32 {
 	return retGo
 }
 
-// GetOrientation is a wrapper around the C function gtk_print_settings_get_orientation.
+// Get the value of %GTK_PRINT_SETTINGS_ORIENTATION,
+// converted to a #GtkPageOrientation.
+/*
+
+C function : gtk_print_settings_get_orientation
+*/
 func (recv *PrintSettings) GetOrientation() PageOrientation {
 	retC := C.gtk_print_settings_get_orientation((*C.GtkPrintSettings)(recv.native))
 	retGo := (PageOrientation)(retC)
@@ -1972,7 +2680,11 @@ func (recv *PrintSettings) GetOrientation() PageOrientation {
 	return retGo
 }
 
-// GetOutputBin is a wrapper around the C function gtk_print_settings_get_output_bin.
+// Gets the value of %GTK_PRINT_SETTINGS_OUTPUT_BIN.
+/*
+
+C function : gtk_print_settings_get_output_bin
+*/
 func (recv *PrintSettings) GetOutputBin() string {
 	retC := C.gtk_print_settings_get_output_bin((*C.GtkPrintSettings)(recv.native))
 	retGo := C.GoString(retC)
@@ -1982,7 +2694,11 @@ func (recv *PrintSettings) GetOutputBin() string {
 
 // Unsupported : gtk_print_settings_get_page_ranges : no return type
 
-// GetPageSet is a wrapper around the C function gtk_print_settings_get_page_set.
+// Gets the value of %GTK_PRINT_SETTINGS_PAGE_SET.
+/*
+
+C function : gtk_print_settings_get_page_set
+*/
 func (recv *PrintSettings) GetPageSet() PageSet {
 	retC := C.gtk_print_settings_get_page_set((*C.GtkPrintSettings)(recv.native))
 	retGo := (PageSet)(retC)
@@ -1990,7 +2706,12 @@ func (recv *PrintSettings) GetPageSet() PageSet {
 	return retGo
 }
 
-// GetPaperHeight is a wrapper around the C function gtk_print_settings_get_paper_height.
+// Gets the value of %GTK_PRINT_SETTINGS_PAPER_HEIGHT,
+// converted to @unit.
+/*
+
+C function : gtk_print_settings_get_paper_height
+*/
 func (recv *PrintSettings) GetPaperHeight(unit Unit) float64 {
 	c_unit := (C.GtkUnit)(unit)
 
@@ -2000,7 +2721,12 @@ func (recv *PrintSettings) GetPaperHeight(unit Unit) float64 {
 	return retGo
 }
 
-// GetPaperSize is a wrapper around the C function gtk_print_settings_get_paper_size.
+// Gets the value of %GTK_PRINT_SETTINGS_PAPER_FORMAT,
+// converted to a #GtkPaperSize.
+/*
+
+C function : gtk_print_settings_get_paper_size
+*/
 func (recv *PrintSettings) GetPaperSize() *PaperSize {
 	retC := C.gtk_print_settings_get_paper_size((*C.GtkPrintSettings)(recv.native))
 	retGo := PaperSizeNewFromC(unsafe.Pointer(retC))
@@ -2008,7 +2734,12 @@ func (recv *PrintSettings) GetPaperSize() *PaperSize {
 	return retGo
 }
 
-// GetPaperWidth is a wrapper around the C function gtk_print_settings_get_paper_width.
+// Gets the value of %GTK_PRINT_SETTINGS_PAPER_WIDTH,
+// converted to @unit.
+/*
+
+C function : gtk_print_settings_get_paper_width
+*/
 func (recv *PrintSettings) GetPaperWidth(unit Unit) float64 {
 	c_unit := (C.GtkUnit)(unit)
 
@@ -2018,7 +2749,11 @@ func (recv *PrintSettings) GetPaperWidth(unit Unit) float64 {
 	return retGo
 }
 
-// GetPrintPages is a wrapper around the C function gtk_print_settings_get_print_pages.
+// Gets the value of %GTK_PRINT_SETTINGS_PRINT_PAGES.
+/*
+
+C function : gtk_print_settings_get_print_pages
+*/
 func (recv *PrintSettings) GetPrintPages() PrintPages {
 	retC := C.gtk_print_settings_get_print_pages((*C.GtkPrintSettings)(recv.native))
 	retGo := (PrintPages)(retC)
@@ -2026,7 +2761,12 @@ func (recv *PrintSettings) GetPrintPages() PrintPages {
 	return retGo
 }
 
-// GetPrinter is a wrapper around the C function gtk_print_settings_get_printer.
+// Convenience function to obtain the value of
+// %GTK_PRINT_SETTINGS_PRINTER.
+/*
+
+C function : gtk_print_settings_get_printer
+*/
 func (recv *PrintSettings) GetPrinter() string {
 	retC := C.gtk_print_settings_get_printer((*C.GtkPrintSettings)(recv.native))
 	retGo := C.GoString(retC)
@@ -2034,7 +2774,11 @@ func (recv *PrintSettings) GetPrinter() string {
 	return retGo
 }
 
-// GetQuality is a wrapper around the C function gtk_print_settings_get_quality.
+// Gets the value of %GTK_PRINT_SETTINGS_QUALITY.
+/*
+
+C function : gtk_print_settings_get_quality
+*/
 func (recv *PrintSettings) GetQuality() PrintQuality {
 	retC := C.gtk_print_settings_get_quality((*C.GtkPrintSettings)(recv.native))
 	retGo := (PrintQuality)(retC)
@@ -2042,7 +2786,11 @@ func (recv *PrintSettings) GetQuality() PrintQuality {
 	return retGo
 }
 
-// GetResolution is a wrapper around the C function gtk_print_settings_get_resolution.
+// Gets the value of %GTK_PRINT_SETTINGS_RESOLUTION.
+/*
+
+C function : gtk_print_settings_get_resolution
+*/
 func (recv *PrintSettings) GetResolution() int32 {
 	retC := C.gtk_print_settings_get_resolution((*C.GtkPrintSettings)(recv.native))
 	retGo := (int32)(retC)
@@ -2050,7 +2798,11 @@ func (recv *PrintSettings) GetResolution() int32 {
 	return retGo
 }
 
-// GetReverse is a wrapper around the C function gtk_print_settings_get_reverse.
+// Gets the value of %GTK_PRINT_SETTINGS_REVERSE.
+/*
+
+C function : gtk_print_settings_get_reverse
+*/
 func (recv *PrintSettings) GetReverse() bool {
 	retC := C.gtk_print_settings_get_reverse((*C.GtkPrintSettings)(recv.native))
 	retGo := retC == C.TRUE
@@ -2058,7 +2810,11 @@ func (recv *PrintSettings) GetReverse() bool {
 	return retGo
 }
 
-// GetScale is a wrapper around the C function gtk_print_settings_get_scale.
+// Gets the value of %GTK_PRINT_SETTINGS_SCALE.
+/*
+
+C function : gtk_print_settings_get_scale
+*/
 func (recv *PrintSettings) GetScale() float64 {
 	retC := C.gtk_print_settings_get_scale((*C.GtkPrintSettings)(recv.native))
 	retGo := (float64)(retC)
@@ -2066,7 +2822,11 @@ func (recv *PrintSettings) GetScale() float64 {
 	return retGo
 }
 
-// GetUseColor is a wrapper around the C function gtk_print_settings_get_use_color.
+// Gets the value of %GTK_PRINT_SETTINGS_USE_COLOR.
+/*
+
+C function : gtk_print_settings_get_use_color
+*/
 func (recv *PrintSettings) GetUseColor() bool {
 	retC := C.gtk_print_settings_get_use_color((*C.GtkPrintSettings)(recv.native))
 	retGo := retC == C.TRUE
@@ -2074,7 +2834,11 @@ func (recv *PrintSettings) GetUseColor() bool {
 	return retGo
 }
 
-// HasKey is a wrapper around the C function gtk_print_settings_has_key.
+// Returns %TRUE, if a value is associated with @key.
+/*
+
+C function : gtk_print_settings_has_key
+*/
 func (recv *PrintSettings) HasKey(key string) bool {
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
@@ -2085,7 +2849,11 @@ func (recv *PrintSettings) HasKey(key string) bool {
 	return retGo
 }
 
-// Set is a wrapper around the C function gtk_print_settings_set.
+// Associates @value with @key.
+/*
+
+C function : gtk_print_settings_set
+*/
 func (recv *PrintSettings) Set(key string, value string) {
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
@@ -2098,7 +2866,11 @@ func (recv *PrintSettings) Set(key string, value string) {
 	return
 }
 
-// SetBool is a wrapper around the C function gtk_print_settings_set_bool.
+// Sets @key to a boolean value.
+/*
+
+C function : gtk_print_settings_set_bool
+*/
 func (recv *PrintSettings) SetBool(key string, value bool) {
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
@@ -2111,7 +2883,11 @@ func (recv *PrintSettings) SetBool(key string, value bool) {
 	return
 }
 
-// SetCollate is a wrapper around the C function gtk_print_settings_set_collate.
+// Sets the value of %GTK_PRINT_SETTINGS_COLLATE.
+/*
+
+C function : gtk_print_settings_set_collate
+*/
 func (recv *PrintSettings) SetCollate(collate bool) {
 	c_collate :=
 		boolToGboolean(collate)
@@ -2121,7 +2897,11 @@ func (recv *PrintSettings) SetCollate(collate bool) {
 	return
 }
 
-// SetDefaultSource is a wrapper around the C function gtk_print_settings_set_default_source.
+// Sets the value of %GTK_PRINT_SETTINGS_DEFAULT_SOURCE.
+/*
+
+C function : gtk_print_settings_set_default_source
+*/
 func (recv *PrintSettings) SetDefaultSource(defaultSource string) {
 	c_default_source := C.CString(defaultSource)
 	defer C.free(unsafe.Pointer(c_default_source))
@@ -2131,7 +2911,11 @@ func (recv *PrintSettings) SetDefaultSource(defaultSource string) {
 	return
 }
 
-// SetDither is a wrapper around the C function gtk_print_settings_set_dither.
+// Sets the value of %GTK_PRINT_SETTINGS_DITHER.
+/*
+
+C function : gtk_print_settings_set_dither
+*/
 func (recv *PrintSettings) SetDither(dither string) {
 	c_dither := C.CString(dither)
 	defer C.free(unsafe.Pointer(c_dither))
@@ -2141,7 +2925,11 @@ func (recv *PrintSettings) SetDither(dither string) {
 	return
 }
 
-// SetDouble is a wrapper around the C function gtk_print_settings_set_double.
+// Sets @key to a double value.
+/*
+
+C function : gtk_print_settings_set_double
+*/
 func (recv *PrintSettings) SetDouble(key string, value float64) {
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
@@ -2153,7 +2941,11 @@ func (recv *PrintSettings) SetDouble(key string, value float64) {
 	return
 }
 
-// SetDuplex is a wrapper around the C function gtk_print_settings_set_duplex.
+// Sets the value of %GTK_PRINT_SETTINGS_DUPLEX.
+/*
+
+C function : gtk_print_settings_set_duplex
+*/
 func (recv *PrintSettings) SetDuplex(duplex PrintDuplex) {
 	c_duplex := (C.GtkPrintDuplex)(duplex)
 
@@ -2162,7 +2954,11 @@ func (recv *PrintSettings) SetDuplex(duplex PrintDuplex) {
 	return
 }
 
-// SetFinishings is a wrapper around the C function gtk_print_settings_set_finishings.
+// Sets the value of %GTK_PRINT_SETTINGS_FINISHINGS.
+/*
+
+C function : gtk_print_settings_set_finishings
+*/
 func (recv *PrintSettings) SetFinishings(finishings string) {
 	c_finishings := C.CString(finishings)
 	defer C.free(unsafe.Pointer(c_finishings))
@@ -2172,7 +2968,11 @@ func (recv *PrintSettings) SetFinishings(finishings string) {
 	return
 }
 
-// SetInt is a wrapper around the C function gtk_print_settings_set_int.
+// Sets @key to an integer value.
+/*
+
+C function : gtk_print_settings_set_int
+*/
 func (recv *PrintSettings) SetInt(key string, value int32) {
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
@@ -2184,7 +2984,11 @@ func (recv *PrintSettings) SetInt(key string, value int32) {
 	return
 }
 
-// SetLength is a wrapper around the C function gtk_print_settings_set_length.
+// Associates a length in units of @unit with @key.
+/*
+
+C function : gtk_print_settings_set_length
+*/
 func (recv *PrintSettings) SetLength(key string, value float64, unit Unit) {
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
@@ -2198,7 +3002,13 @@ func (recv *PrintSettings) SetLength(key string, value float64, unit Unit) {
 	return
 }
 
-// SetMediaType is a wrapper around the C function gtk_print_settings_set_media_type.
+// Sets the value of %GTK_PRINT_SETTINGS_MEDIA_TYPE.
+//
+// The set of media types is defined in PWG 5101.1-2002 PWG.
+/*
+
+C function : gtk_print_settings_set_media_type
+*/
 func (recv *PrintSettings) SetMediaType(mediaType string) {
 	c_media_type := C.CString(mediaType)
 	defer C.free(unsafe.Pointer(c_media_type))
@@ -2208,7 +3018,11 @@ func (recv *PrintSettings) SetMediaType(mediaType string) {
 	return
 }
 
-// SetNCopies is a wrapper around the C function gtk_print_settings_set_n_copies.
+// Sets the value of %GTK_PRINT_SETTINGS_N_COPIES.
+/*
+
+C function : gtk_print_settings_set_n_copies
+*/
 func (recv *PrintSettings) SetNCopies(numCopies int32) {
 	c_num_copies := (C.gint)(numCopies)
 
@@ -2217,7 +3031,11 @@ func (recv *PrintSettings) SetNCopies(numCopies int32) {
 	return
 }
 
-// SetNumberUp is a wrapper around the C function gtk_print_settings_set_number_up.
+// Sets the value of %GTK_PRINT_SETTINGS_NUMBER_UP.
+/*
+
+C function : gtk_print_settings_set_number_up
+*/
 func (recv *PrintSettings) SetNumberUp(numberUp int32) {
 	c_number_up := (C.gint)(numberUp)
 
@@ -2226,7 +3044,11 @@ func (recv *PrintSettings) SetNumberUp(numberUp int32) {
 	return
 }
 
-// SetOrientation is a wrapper around the C function gtk_print_settings_set_orientation.
+// Sets the value of %GTK_PRINT_SETTINGS_ORIENTATION.
+/*
+
+C function : gtk_print_settings_set_orientation
+*/
 func (recv *PrintSettings) SetOrientation(orientation PageOrientation) {
 	c_orientation := (C.GtkPageOrientation)(orientation)
 
@@ -2235,7 +3057,11 @@ func (recv *PrintSettings) SetOrientation(orientation PageOrientation) {
 	return
 }
 
-// SetOutputBin is a wrapper around the C function gtk_print_settings_set_output_bin.
+// Sets the value of %GTK_PRINT_SETTINGS_OUTPUT_BIN.
+/*
+
+C function : gtk_print_settings_set_output_bin
+*/
 func (recv *PrintSettings) SetOutputBin(outputBin string) {
 	c_output_bin := C.CString(outputBin)
 	defer C.free(unsafe.Pointer(c_output_bin))
@@ -2247,7 +3073,11 @@ func (recv *PrintSettings) SetOutputBin(outputBin string) {
 
 // Unsupported : gtk_print_settings_set_page_ranges : unsupported parameter page_ranges :
 
-// SetPageSet is a wrapper around the C function gtk_print_settings_set_page_set.
+// Sets the value of %GTK_PRINT_SETTINGS_PAGE_SET.
+/*
+
+C function : gtk_print_settings_set_page_set
+*/
 func (recv *PrintSettings) SetPageSet(pageSet PageSet) {
 	c_page_set := (C.GtkPageSet)(pageSet)
 
@@ -2256,7 +3086,11 @@ func (recv *PrintSettings) SetPageSet(pageSet PageSet) {
 	return
 }
 
-// SetPaperHeight is a wrapper around the C function gtk_print_settings_set_paper_height.
+// Sets the value of %GTK_PRINT_SETTINGS_PAPER_HEIGHT.
+/*
+
+C function : gtk_print_settings_set_paper_height
+*/
 func (recv *PrintSettings) SetPaperHeight(height float64, unit Unit) {
 	c_height := (C.gdouble)(height)
 
@@ -2267,7 +3101,13 @@ func (recv *PrintSettings) SetPaperHeight(height float64, unit Unit) {
 	return
 }
 
-// SetPaperSize is a wrapper around the C function gtk_print_settings_set_paper_size.
+// Sets the value of %GTK_PRINT_SETTINGS_PAPER_FORMAT,
+// %GTK_PRINT_SETTINGS_PAPER_WIDTH and
+// %GTK_PRINT_SETTINGS_PAPER_HEIGHT.
+/*
+
+C function : gtk_print_settings_set_paper_size
+*/
 func (recv *PrintSettings) SetPaperSize(paperSize *PaperSize) {
 	c_paper_size := (*C.GtkPaperSize)(C.NULL)
 	if paperSize != nil {
@@ -2279,7 +3119,11 @@ func (recv *PrintSettings) SetPaperSize(paperSize *PaperSize) {
 	return
 }
 
-// SetPaperWidth is a wrapper around the C function gtk_print_settings_set_paper_width.
+// Sets the value of %GTK_PRINT_SETTINGS_PAPER_WIDTH.
+/*
+
+C function : gtk_print_settings_set_paper_width
+*/
 func (recv *PrintSettings) SetPaperWidth(width float64, unit Unit) {
 	c_width := (C.gdouble)(width)
 
@@ -2290,7 +3134,11 @@ func (recv *PrintSettings) SetPaperWidth(width float64, unit Unit) {
 	return
 }
 
-// SetPrintPages is a wrapper around the C function gtk_print_settings_set_print_pages.
+// Sets the value of %GTK_PRINT_SETTINGS_PRINT_PAGES.
+/*
+
+C function : gtk_print_settings_set_print_pages
+*/
 func (recv *PrintSettings) SetPrintPages(pages PrintPages) {
 	c_pages := (C.GtkPrintPages)(pages)
 
@@ -2299,7 +3147,12 @@ func (recv *PrintSettings) SetPrintPages(pages PrintPages) {
 	return
 }
 
-// SetPrinter is a wrapper around the C function gtk_print_settings_set_printer.
+// Convenience function to set %GTK_PRINT_SETTINGS_PRINTER
+// to @printer.
+/*
+
+C function : gtk_print_settings_set_printer
+*/
 func (recv *PrintSettings) SetPrinter(printer string) {
 	c_printer := C.CString(printer)
 	defer C.free(unsafe.Pointer(c_printer))
@@ -2309,7 +3162,11 @@ func (recv *PrintSettings) SetPrinter(printer string) {
 	return
 }
 
-// SetQuality is a wrapper around the C function gtk_print_settings_set_quality.
+// Sets the value of %GTK_PRINT_SETTINGS_QUALITY.
+/*
+
+C function : gtk_print_settings_set_quality
+*/
 func (recv *PrintSettings) SetQuality(quality PrintQuality) {
 	c_quality := (C.GtkPrintQuality)(quality)
 
@@ -2318,7 +3175,13 @@ func (recv *PrintSettings) SetQuality(quality PrintQuality) {
 	return
 }
 
-// SetResolution is a wrapper around the C function gtk_print_settings_set_resolution.
+// Sets the values of %GTK_PRINT_SETTINGS_RESOLUTION,
+// %GTK_PRINT_SETTINGS_RESOLUTION_X and
+// %GTK_PRINT_SETTINGS_RESOLUTION_Y.
+/*
+
+C function : gtk_print_settings_set_resolution
+*/
 func (recv *PrintSettings) SetResolution(resolution int32) {
 	c_resolution := (C.gint)(resolution)
 
@@ -2327,7 +3190,11 @@ func (recv *PrintSettings) SetResolution(resolution int32) {
 	return
 }
 
-// SetReverse is a wrapper around the C function gtk_print_settings_set_reverse.
+// Sets the value of %GTK_PRINT_SETTINGS_REVERSE.
+/*
+
+C function : gtk_print_settings_set_reverse
+*/
 func (recv *PrintSettings) SetReverse(reverse bool) {
 	c_reverse :=
 		boolToGboolean(reverse)
@@ -2337,7 +3204,11 @@ func (recv *PrintSettings) SetReverse(reverse bool) {
 	return
 }
 
-// SetScale is a wrapper around the C function gtk_print_settings_set_scale.
+// Sets the value of %GTK_PRINT_SETTINGS_SCALE.
+/*
+
+C function : gtk_print_settings_set_scale
+*/
 func (recv *PrintSettings) SetScale(scale float64) {
 	c_scale := (C.gdouble)(scale)
 
@@ -2346,7 +3217,11 @@ func (recv *PrintSettings) SetScale(scale float64) {
 	return
 }
 
-// SetUseColor is a wrapper around the C function gtk_print_settings_set_use_color.
+// Sets the value of %GTK_PRINT_SETTINGS_USE_COLOR.
+/*
+
+C function : gtk_print_settings_set_use_color
+*/
 func (recv *PrintSettings) SetUseColor(useColor bool) {
 	c_use_color :=
 		boolToGboolean(useColor)
@@ -2356,7 +3231,12 @@ func (recv *PrintSettings) SetUseColor(useColor bool) {
 	return
 }
 
-// Unset is a wrapper around the C function gtk_print_settings_unset.
+// Removes any value associated with @key.
+// This has the same effect as setting the value to %NULL.
+/*
+
+C function : gtk_print_settings_unset
+*/
 func (recv *PrintSettings) Unset(key string) {
 	c_key := C.CString(key)
 	defer C.free(unsafe.Pointer(c_key))
@@ -2366,7 +3246,12 @@ func (recv *PrintSettings) Unset(key string) {
 	return
 }
 
-// SetCurrentValue is a wrapper around the C function gtk_radio_action_set_current_value.
+// Sets the currently active group member to the member with value
+// property @current_value.
+/*
+
+C function : gtk_radio_action_set_current_value
+*/
 func (recv *RadioAction) SetCurrentValue(currentValue int32) {
 	c_current_value := (C.gint)(currentValue)
 
@@ -2375,7 +3260,12 @@ func (recv *RadioAction) SetCurrentValue(currentValue int32) {
 	return
 }
 
-// GetLowerStepperSensitivity is a wrapper around the C function gtk_range_get_lower_stepper_sensitivity.
+// Gets the sensitivity policy for the stepper that points to the
+// 'lower' end of the GtkRange’s adjustment.
+/*
+
+C function : gtk_range_get_lower_stepper_sensitivity
+*/
 func (recv *Range) GetLowerStepperSensitivity() SensitivityType {
 	retC := C.gtk_range_get_lower_stepper_sensitivity((*C.GtkRange)(recv.native))
 	retGo := (SensitivityType)(retC)
@@ -2383,7 +3273,12 @@ func (recv *Range) GetLowerStepperSensitivity() SensitivityType {
 	return retGo
 }
 
-// GetUpperStepperSensitivity is a wrapper around the C function gtk_range_get_upper_stepper_sensitivity.
+// Gets the sensitivity policy for the stepper that points to the
+// 'upper' end of the GtkRange’s adjustment.
+/*
+
+C function : gtk_range_get_upper_stepper_sensitivity
+*/
 func (recv *Range) GetUpperStepperSensitivity() SensitivityType {
 	retC := C.gtk_range_get_upper_stepper_sensitivity((*C.GtkRange)(recv.native))
 	retGo := (SensitivityType)(retC)
@@ -2391,7 +3286,12 @@ func (recv *Range) GetUpperStepperSensitivity() SensitivityType {
 	return retGo
 }
 
-// SetLowerStepperSensitivity is a wrapper around the C function gtk_range_set_lower_stepper_sensitivity.
+// Sets the sensitivity policy for the stepper that points to the
+// 'lower' end of the GtkRange’s adjustment.
+/*
+
+C function : gtk_range_set_lower_stepper_sensitivity
+*/
 func (recv *Range) SetLowerStepperSensitivity(sensitivity SensitivityType) {
 	c_sensitivity := (C.GtkSensitivityType)(sensitivity)
 
@@ -2400,7 +3300,12 @@ func (recv *Range) SetLowerStepperSensitivity(sensitivity SensitivityType) {
 	return
 }
 
-// SetUpperStepperSensitivity is a wrapper around the C function gtk_range_set_upper_stepper_sensitivity.
+// Sets the sensitivity policy for the stepper that points to the
+// 'upper' end of the GtkRange’s adjustment.
+/*
+
+C function : gtk_range_set_upper_stepper_sensitivity
+*/
 func (recv *Range) SetUpperStepperSensitivity(sensitivity SensitivityType) {
 	c_sensitivity := (C.GtkSensitivityType)(sensitivity)
 
@@ -2413,7 +3318,22 @@ func (recv *Range) SetUpperStepperSensitivity(sensitivity SensitivityType) {
 
 // Unsupported : gtk_recent_chooser_dialog_new_for_manager : unsupported parameter ... : varargs
 
-// RecentChooserMenuNew is a wrapper around the C function gtk_recent_chooser_menu_new.
+// Creates a new #GtkRecentChooserMenu widget.
+//
+// This kind of widget shows the list of recently used resources as
+// a menu, each item as a menu item.  Each item inside the menu might
+// have an icon, representing its MIME type, and a number, for mnemonic
+// access.
+//
+// This widget implements the #GtkRecentChooser interface.
+//
+// This widget creates its own #GtkRecentManager object.  See the
+// gtk_recent_chooser_menu_new_for_manager() function to know how to create
+// a #GtkRecentChooserMenu widget bound to another #GtkRecentManager object.
+/*
+
+C function : gtk_recent_chooser_menu_new
+*/
 func RecentChooserMenuNew() *RecentChooserMenu {
 	retC := C.gtk_recent_chooser_menu_new()
 	retGo := RecentChooserMenuNewFromC(unsafe.Pointer(retC))
@@ -2421,7 +3341,17 @@ func RecentChooserMenuNew() *RecentChooserMenu {
 	return retGo
 }
 
-// RecentChooserMenuNewForManager is a wrapper around the C function gtk_recent_chooser_menu_new_for_manager.
+// Creates a new #GtkRecentChooserMenu widget using @manager as
+// the underlying recently used resources manager.
+//
+// This is useful if you have implemented your own recent manager,
+// or if you have a customized instance of a #GtkRecentManager
+// object or if you wish to share a common #GtkRecentManager object
+// among multiple #GtkRecentChooser widgets.
+/*
+
+C function : gtk_recent_chooser_menu_new_for_manager
+*/
 func RecentChooserMenuNewForManager(manager *RecentManager) *RecentChooserMenu {
 	c_manager := (*C.GtkRecentManager)(C.NULL)
 	if manager != nil {
@@ -2434,7 +3364,11 @@ func RecentChooserMenuNewForManager(manager *RecentManager) *RecentChooserMenu {
 	return retGo
 }
 
-// GetShowNumbers is a wrapper around the C function gtk_recent_chooser_menu_get_show_numbers.
+// Returns the value set by gtk_recent_chooser_menu_set_show_numbers().
+/*
+
+C function : gtk_recent_chooser_menu_get_show_numbers
+*/
 func (recv *RecentChooserMenu) GetShowNumbers() bool {
 	retC := C.gtk_recent_chooser_menu_get_show_numbers((*C.GtkRecentChooserMenu)(recv.native))
 	retGo := retC == C.TRUE
@@ -2442,7 +3376,14 @@ func (recv *RecentChooserMenu) GetShowNumbers() bool {
 	return retGo
 }
 
-// SetShowNumbers is a wrapper around the C function gtk_recent_chooser_menu_set_show_numbers.
+// Sets whether a number should be added to the items of @menu.  The
+// numbers are shown to provide a unique character for a mnemonic to
+// be used inside ten menu item’s label.  Only the first the items
+// get a number to avoid clashes.
+/*
+
+C function : gtk_recent_chooser_menu_set_show_numbers
+*/
 func (recv *RecentChooserMenu) SetShowNumbers(showNumbers bool) {
 	c_show_numbers :=
 		boolToGboolean(showNumbers)
@@ -2452,7 +3393,12 @@ func (recv *RecentChooserMenu) SetShowNumbers(showNumbers bool) {
 	return
 }
 
-// RecentChooserWidgetNew is a wrapper around the C function gtk_recent_chooser_widget_new.
+// Creates a new #GtkRecentChooserWidget object.  This is an embeddable widget
+// used to access the recently used resources list.
+/*
+
+C function : gtk_recent_chooser_widget_new
+*/
 func RecentChooserWidgetNew() *RecentChooserWidget {
 	retC := C.gtk_recent_chooser_widget_new()
 	retGo := RecentChooserWidgetNewFromC(unsafe.Pointer(retC))
@@ -2460,7 +3406,14 @@ func RecentChooserWidgetNew() *RecentChooserWidget {
 	return retGo
 }
 
-// RecentChooserWidgetNewForManager is a wrapper around the C function gtk_recent_chooser_widget_new_for_manager.
+// Creates a new #GtkRecentChooserWidget with a specified recent manager.
+//
+// This is useful if you have implemented your own recent manager, or if you
+// have a customized instance of a #GtkRecentManager object.
+/*
+
+C function : gtk_recent_chooser_widget_new_for_manager
+*/
 func RecentChooserWidgetNewForManager(manager *RecentManager) *RecentChooserWidget {
 	c_manager := (*C.GtkRecentManager)(C.NULL)
 	if manager != nil {
@@ -2473,7 +3426,20 @@ func RecentChooserWidgetNewForManager(manager *RecentManager) *RecentChooserWidg
 	return retGo
 }
 
-// RecentFilterNew is a wrapper around the C function gtk_recent_filter_new.
+// Creates a new #GtkRecentFilter with no rules added to it.
+// Such filter does not accept any recently used resources, so is not
+// particularly useful until you add rules with
+// gtk_recent_filter_add_pattern(), gtk_recent_filter_add_mime_type(),
+// gtk_recent_filter_add_application(), gtk_recent_filter_add_age().
+// To create a filter that accepts any recently used resource, use:
+// |[<!-- language="C" -->
+// GtkRecentFilter *filter = gtk_recent_filter_new ();
+// gtk_recent_filter_add_pattern (filter, "*");
+// ]|
+/*
+
+C function : gtk_recent_filter_new
+*/
 func RecentFilterNew() *RecentFilter {
 	retC := C.gtk_recent_filter_new()
 	retGo := RecentFilterNewFromC(unsafe.Pointer(retC))
@@ -2481,7 +3447,12 @@ func RecentFilterNew() *RecentFilter {
 	return retGo
 }
 
-// AddAge is a wrapper around the C function gtk_recent_filter_add_age.
+// Adds a rule that allows resources based on their age - that is, the number
+// of days elapsed since they were last modified.
+/*
+
+C function : gtk_recent_filter_add_age
+*/
 func (recv *RecentFilter) AddAge(days int32) {
 	c_days := (C.gint)(days)
 
@@ -2490,7 +3461,12 @@ func (recv *RecentFilter) AddAge(days int32) {
 	return
 }
 
-// AddApplication is a wrapper around the C function gtk_recent_filter_add_application.
+// Adds a rule that allows resources based on the name of the application
+// that has registered them.
+/*
+
+C function : gtk_recent_filter_add_application
+*/
 func (recv *RecentFilter) AddApplication(application string) {
 	c_application := C.CString(application)
 	defer C.free(unsafe.Pointer(c_application))
@@ -2502,7 +3478,12 @@ func (recv *RecentFilter) AddApplication(application string) {
 
 // Unsupported : gtk_recent_filter_add_custom : unsupported parameter func : no type generator for RecentFilterFunc (GtkRecentFilterFunc) for param func
 
-// AddGroup is a wrapper around the C function gtk_recent_filter_add_group.
+// Adds a rule that allows resources based on the name of the group
+// to which they belong
+/*
+
+C function : gtk_recent_filter_add_group
+*/
 func (recv *RecentFilter) AddGroup(group string) {
 	c_group := C.CString(group)
 	defer C.free(unsafe.Pointer(c_group))
@@ -2512,7 +3493,11 @@ func (recv *RecentFilter) AddGroup(group string) {
 	return
 }
 
-// AddMimeType is a wrapper around the C function gtk_recent_filter_add_mime_type.
+// Adds a rule that allows resources based on their registered MIME type.
+/*
+
+C function : gtk_recent_filter_add_mime_type
+*/
 func (recv *RecentFilter) AddMimeType(mimeType string) {
 	c_mime_type := C.CString(mimeType)
 	defer C.free(unsafe.Pointer(c_mime_type))
@@ -2522,7 +3507,12 @@ func (recv *RecentFilter) AddMimeType(mimeType string) {
 	return
 }
 
-// AddPattern is a wrapper around the C function gtk_recent_filter_add_pattern.
+// Adds a rule that allows resources based on a pattern matching their
+// display name.
+/*
+
+C function : gtk_recent_filter_add_pattern
+*/
 func (recv *RecentFilter) AddPattern(pattern string) {
 	c_pattern := C.CString(pattern)
 	defer C.free(unsafe.Pointer(c_pattern))
@@ -2532,14 +3522,31 @@ func (recv *RecentFilter) AddPattern(pattern string) {
 	return
 }
 
-// AddPixbufFormats is a wrapper around the C function gtk_recent_filter_add_pixbuf_formats.
+// Adds a rule allowing image files in the formats supported
+// by GdkPixbuf.
+/*
+
+C function : gtk_recent_filter_add_pixbuf_formats
+*/
 func (recv *RecentFilter) AddPixbufFormats() {
 	C.gtk_recent_filter_add_pixbuf_formats((*C.GtkRecentFilter)(recv.native))
 
 	return
 }
 
-// Filter is a wrapper around the C function gtk_recent_filter_filter.
+// Tests whether a file should be displayed according to @filter.
+// The #GtkRecentFilterInfo @filter_info should include
+// the fields returned from gtk_recent_filter_get_needed(), and
+// must set the #GtkRecentFilterInfo.contains field of @filter_info
+// to indicate which fields have been set.
+//
+// This function will not typically be used by applications; it
+// is intended principally for use in the implementation of
+// #GtkRecentChooser.
+/*
+
+C function : gtk_recent_filter_filter
+*/
 func (recv *RecentFilter) Filter(filterInfo *RecentFilterInfo) bool {
 	c_filter_info := (*C.GtkRecentFilterInfo)(C.NULL)
 	if filterInfo != nil {
@@ -2552,7 +3559,12 @@ func (recv *RecentFilter) Filter(filterInfo *RecentFilterInfo) bool {
 	return retGo
 }
 
-// GetName is a wrapper around the C function gtk_recent_filter_get_name.
+// Gets the human-readable name for the filter.
+// See gtk_recent_filter_set_name().
+/*
+
+C function : gtk_recent_filter_get_name
+*/
 func (recv *RecentFilter) GetName() string {
 	retC := C.gtk_recent_filter_get_name((*C.GtkRecentFilter)(recv.native))
 	retGo := C.GoString(retC)
@@ -2560,7 +3572,16 @@ func (recv *RecentFilter) GetName() string {
 	return retGo
 }
 
-// GetNeeded is a wrapper around the C function gtk_recent_filter_get_needed.
+// Gets the fields that need to be filled in for the #GtkRecentFilterInfo
+// passed to gtk_recent_filter_filter()
+//
+// This function will not typically be used by applications; it
+// is intended principally for use in the implementation of
+// #GtkRecentChooser.
+/*
+
+C function : gtk_recent_filter_get_needed
+*/
 func (recv *RecentFilter) GetNeeded() RecentFilterFlags {
 	retC := C.gtk_recent_filter_get_needed((*C.GtkRecentFilter)(recv.native))
 	retGo := (RecentFilterFlags)(retC)
@@ -2568,7 +3589,13 @@ func (recv *RecentFilter) GetNeeded() RecentFilterFlags {
 	return retGo
 }
 
-// SetName is a wrapper around the C function gtk_recent_filter_set_name.
+// Sets the human-readable name of the filter; this is the string
+// that will be displayed in the recently used resources selector
+// user interface if there is a selectable list of filters.
+/*
+
+C function : gtk_recent_filter_set_name
+*/
 func (recv *RecentFilter) SetName(name string) {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -2612,7 +3639,17 @@ func CastToRecentManager(object *gobject.Object) *RecentManager {
 	return RecentManagerNewFromC(object.ToC())
 }
 
-// RecentManagerNew is a wrapper around the C function gtk_recent_manager_new.
+// Creates a new recent manager object. Recent manager objects are used to
+// handle the list of recently used resources. A #GtkRecentManager object
+// monitors the recently used resources list, and emits the “changed” signal
+// each time something inside the list changes.
+//
+// #GtkRecentManager objects are expensive: be sure to create them only when
+// needed. You should use gtk_recent_manager_get_default() instead.
+/*
+
+C function : gtk_recent_manager_new
+*/
 func RecentManagerNew() *RecentManager {
 	retC := C.gtk_recent_manager_new()
 	retGo := RecentManagerNewFromC(unsafe.Pointer(retC))
@@ -2620,7 +3657,29 @@ func RecentManagerNew() *RecentManager {
 	return retGo
 }
 
-// AddFull is a wrapper around the C function gtk_recent_manager_add_full.
+// Adds a new resource, pointed by @uri, into the recently used
+// resources list, using the metadata specified inside the
+// #GtkRecentData-struct passed in @recent_data.
+//
+// The passed URI will be used to identify this resource inside the
+// list.
+//
+// In order to register the new recently used resource, metadata about
+// the resource must be passed as well as the URI; the metadata is
+// stored in a #GtkRecentData-struct, which must contain the MIME
+// type of the resource pointed by the URI; the name of the application
+// that is registering the item, and a command line to be used when
+// launching the item.
+//
+// Optionally, a #GtkRecentData-struct might contain a UTF-8 string
+// to be used when viewing the item instead of the last component of
+// the URI; a short description of the item; whether the item should
+// be considered private - that is, should be displayed only by the
+// applications that have registered it.
+/*
+
+C function : gtk_recent_manager_add_full
+*/
 func (recv *RecentManager) AddFull(uri string, recentData *RecentData) bool {
 	c_uri := C.CString(uri)
 	defer C.free(unsafe.Pointer(c_uri))
@@ -2636,7 +3695,19 @@ func (recv *RecentManager) AddFull(uri string, recentData *RecentData) bool {
 	return retGo
 }
 
-// AddItem is a wrapper around the C function gtk_recent_manager_add_item.
+// Adds a new resource, pointed by @uri, into the recently used
+// resources list.
+//
+// This function automatically retrieves some of the needed
+// metadata and setting other metadata to common default values;
+// it then feeds the data to gtk_recent_manager_add_full().
+//
+// See gtk_recent_manager_add_full() if you want to explicitly
+// define the metadata for the resource pointed by @uri.
+/*
+
+C function : gtk_recent_manager_add_item
+*/
 func (recv *RecentManager) AddItem(uri string) bool {
 	c_uri := C.CString(uri)
 	defer C.free(unsafe.Pointer(c_uri))
@@ -2647,7 +3718,11 @@ func (recv *RecentManager) AddItem(uri string) bool {
 	return retGo
 }
 
-// GetItems is a wrapper around the C function gtk_recent_manager_get_items.
+// Gets the list of recently used resources.
+/*
+
+C function : gtk_recent_manager_get_items
+*/
 func (recv *RecentManager) GetItems() *glib.List {
 	retC := C.gtk_recent_manager_get_items((*C.GtkRecentManager)(recv.native))
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
@@ -2655,7 +3730,12 @@ func (recv *RecentManager) GetItems() *glib.List {
 	return retGo
 }
 
-// HasItem is a wrapper around the C function gtk_recent_manager_has_item.
+// Checks whether there is a recently used resource registered
+// with @uri inside the recent manager.
+/*
+
+C function : gtk_recent_manager_has_item
+*/
 func (recv *RecentManager) HasItem(uri string) bool {
 	c_uri := C.CString(uri)
 	defer C.free(unsafe.Pointer(c_uri))
@@ -2666,7 +3746,13 @@ func (recv *RecentManager) HasItem(uri string) bool {
 	return retGo
 }
 
-// LookupItem is a wrapper around the C function gtk_recent_manager_lookup_item.
+// Searches for a URI inside the recently used resources list, and
+// returns a #GtkRecentInfo-struct containing informations about the resource
+// like its MIME type, or its display name.
+/*
+
+C function : gtk_recent_manager_lookup_item
+*/
 func (recv *RecentManager) LookupItem(uri string) (*RecentInfo, error) {
 	c_uri := C.CString(uri)
 	defer C.free(unsafe.Pointer(c_uri))
@@ -2689,7 +3775,14 @@ func (recv *RecentManager) LookupItem(uri string) (*RecentInfo, error) {
 	return retGo, goThrowableError
 }
 
-// MoveItem is a wrapper around the C function gtk_recent_manager_move_item.
+// Changes the location of a recently used resource from @uri to @new_uri.
+//
+// Please note that this function will not affect the resource pointed
+// by the URIs, but only the URI used in the recently used resources list.
+/*
+
+C function : gtk_recent_manager_move_item
+*/
 func (recv *RecentManager) MoveItem(uri string, newUri string) (bool, error) {
 	c_uri := C.CString(uri)
 	defer C.free(unsafe.Pointer(c_uri))
@@ -2710,7 +3803,11 @@ func (recv *RecentManager) MoveItem(uri string, newUri string) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// PurgeItems is a wrapper around the C function gtk_recent_manager_purge_items.
+// Purges every item from the recently used resources list.
+/*
+
+C function : gtk_recent_manager_purge_items
+*/
 func (recv *RecentManager) PurgeItems() (int32, error) {
 	var cThrowableError *C.GError
 
@@ -2725,7 +3822,12 @@ func (recv *RecentManager) PurgeItems() (int32, error) {
 	return retGo, goThrowableError
 }
 
-// RemoveItem is a wrapper around the C function gtk_recent_manager_remove_item.
+// Removes a resource pointed by @uri from the recently used resources
+// list handled by a recent manager.
+/*
+
+C function : gtk_recent_manager_remove_item
+*/
 func (recv *RecentManager) RemoveItem(uri string) (bool, error) {
 	c_uri := C.CString(uri)
 	defer C.free(unsafe.Pointer(c_uri))
@@ -2743,14 +3845,27 @@ func (recv *RecentManager) RemoveItem(uri string) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// UnsetPlacement is a wrapper around the C function gtk_scrolled_window_unset_placement.
+// Unsets the placement of the contents with respect to the scrollbars
+// for the scrolled window. If no window placement is set for a scrolled
+// window, it defaults to %GTK_CORNER_TOP_LEFT.
+//
+// See also gtk_scrolled_window_set_placement() and
+// gtk_scrolled_window_get_placement().
+/*
+
+C function : gtk_scrolled_window_unset_placement
+*/
 func (recv *ScrolledWindow) UnsetPlacement() {
 	C.gtk_scrolled_window_unset_placement((*C.GtkScrolledWindow)(recv.native))
 
 	return
 }
 
-// GetWidgets is a wrapper around the C function gtk_size_group_get_widgets.
+// Returns the list of widgets associated with @size_group.
+/*
+
+C function : gtk_size_group_get_widgets
+*/
 func (recv *SizeGroup) GetWidgets() *glib.SList {
 	retC := C.gtk_size_group_get_widgets((*C.GtkSizeGroup)(recv.native))
 	retGo := glib.SListNewFromC(unsafe.Pointer(retC))
@@ -2876,7 +3991,11 @@ func statusicon_activateHandler(_ *C.GObject, data C.gpointer) {
 
 // Unsupported signal 'size-changed' for StatusIcon : unsupported parameter size : type gint :
 
-// StatusIconNew is a wrapper around the C function gtk_status_icon_new.
+// Creates an empty status icon object.
+/*
+
+C function : gtk_status_icon_new
+*/
 func StatusIconNew() *StatusIcon {
 	retC := C.gtk_status_icon_new()
 	retGo := StatusIconNewFromC(unsafe.Pointer(retC))
@@ -2884,7 +4003,14 @@ func StatusIconNew() *StatusIcon {
 	return retGo
 }
 
-// StatusIconNewFromFile is a wrapper around the C function gtk_status_icon_new_from_file.
+// Creates a status icon displaying the file @filename.
+//
+// The image will be scaled down to fit in the available
+// space in the notification area, if necessary.
+/*
+
+C function : gtk_status_icon_new_from_file
+*/
 func StatusIconNewFromFile(filename string) *StatusIcon {
 	c_filename := C.CString(filename)
 	defer C.free(unsafe.Pointer(c_filename))
@@ -2895,7 +4021,13 @@ func StatusIconNewFromFile(filename string) *StatusIcon {
 	return retGo
 }
 
-// StatusIconNewFromIconName is a wrapper around the C function gtk_status_icon_new_from_icon_name.
+// Creates a status icon displaying an icon from the current icon theme.
+// If the current icon theme is changed, the icon will be updated
+// appropriately.
+/*
+
+C function : gtk_status_icon_new_from_icon_name
+*/
 func StatusIconNewFromIconName(iconName string) *StatusIcon {
 	c_icon_name := C.CString(iconName)
 	defer C.free(unsafe.Pointer(c_icon_name))
@@ -2906,7 +4038,14 @@ func StatusIconNewFromIconName(iconName string) *StatusIcon {
 	return retGo
 }
 
-// StatusIconNewFromPixbuf is a wrapper around the C function gtk_status_icon_new_from_pixbuf.
+// Creates a status icon displaying @pixbuf.
+//
+// The image will be scaled down to fit in the available
+// space in the notification area, if necessary.
+/*
+
+C function : gtk_status_icon_new_from_pixbuf
+*/
 func StatusIconNewFromPixbuf(pixbuf *gdkpixbuf.Pixbuf) *StatusIcon {
 	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
 	if pixbuf != nil {
@@ -2919,7 +4058,14 @@ func StatusIconNewFromPixbuf(pixbuf *gdkpixbuf.Pixbuf) *StatusIcon {
 	return retGo
 }
 
-// StatusIconNewFromStock is a wrapper around the C function gtk_status_icon_new_from_stock.
+// Creates a status icon displaying a stock icon. Sample stock icon
+// names are #GTK_STOCK_OPEN, #GTK_STOCK_QUIT. You can register your
+// own stock icon names, see gtk_icon_factory_add_default() and
+// gtk_icon_factory_add().
+/*
+
+C function : gtk_status_icon_new_from_stock
+*/
 func StatusIconNewFromStock(stockId string) *StatusIcon {
 	c_stock_id := C.CString(stockId)
 	defer C.free(unsafe.Pointer(c_stock_id))
@@ -2932,7 +4078,15 @@ func StatusIconNewFromStock(stockId string) *StatusIcon {
 
 // Unsupported : gtk_status_icon_get_geometry : unsupported parameter area : Blacklisted record : GdkRectangle
 
-// GetIconName is a wrapper around the C function gtk_status_icon_get_icon_name.
+// Gets the name of the icon being displayed by the #GtkStatusIcon.
+// The storage type of the status icon must be %GTK_IMAGE_EMPTY or
+// %GTK_IMAGE_ICON_NAME (see gtk_status_icon_get_storage_type()).
+// The returned string is owned by the #GtkStatusIcon and should not
+// be freed or modified.
+/*
+
+C function : gtk_status_icon_get_icon_name
+*/
 func (recv *StatusIcon) GetIconName() string {
 	retC := C.gtk_status_icon_get_icon_name((*C.GtkStatusIcon)(recv.native))
 	retGo := C.GoString(retC)
@@ -2940,7 +4094,15 @@ func (recv *StatusIcon) GetIconName() string {
 	return retGo
 }
 
-// GetPixbuf is a wrapper around the C function gtk_status_icon_get_pixbuf.
+// Gets the #GdkPixbuf being displayed by the #GtkStatusIcon.
+// The storage type of the status icon must be %GTK_IMAGE_EMPTY or
+// %GTK_IMAGE_PIXBUF (see gtk_status_icon_get_storage_type()).
+// The caller of this function does not own a reference to the
+// returned pixbuf.
+/*
+
+C function : gtk_status_icon_get_pixbuf
+*/
 func (recv *StatusIcon) GetPixbuf() *gdkpixbuf.Pixbuf {
 	retC := C.gtk_status_icon_get_pixbuf((*C.GtkStatusIcon)(recv.native))
 	var retGo (*gdkpixbuf.Pixbuf)
@@ -2953,7 +4115,18 @@ func (recv *StatusIcon) GetPixbuf() *gdkpixbuf.Pixbuf {
 	return retGo
 }
 
-// GetSize is a wrapper around the C function gtk_status_icon_get_size.
+// Gets the size in pixels that is available for the image.
+// Stock icons and named icons adapt their size automatically
+// if the size of the notification area changes. For other
+// storage types, the size-changed signal can be used to
+// react to size changes.
+//
+// Note that the returned size is only meaningful while the
+// status icon is embedded (see gtk_status_icon_is_embedded()).
+/*
+
+C function : gtk_status_icon_get_size
+*/
 func (recv *StatusIcon) GetSize() int32 {
 	retC := C.gtk_status_icon_get_size((*C.GtkStatusIcon)(recv.native))
 	retGo := (int32)(retC)
@@ -2961,7 +4134,15 @@ func (recv *StatusIcon) GetSize() int32 {
 	return retGo
 }
 
-// GetStock is a wrapper around the C function gtk_status_icon_get_stock.
+// Gets the id of the stock icon being displayed by the #GtkStatusIcon.
+// The storage type of the status icon must be %GTK_IMAGE_EMPTY or
+// %GTK_IMAGE_STOCK (see gtk_status_icon_get_storage_type()).
+// The returned string is owned by the #GtkStatusIcon and should not
+// be freed or modified.
+/*
+
+C function : gtk_status_icon_get_stock
+*/
 func (recv *StatusIcon) GetStock() string {
 	retC := C.gtk_status_icon_get_stock((*C.GtkStatusIcon)(recv.native))
 	retGo := C.GoString(retC)
@@ -2969,7 +4150,13 @@ func (recv *StatusIcon) GetStock() string {
 	return retGo
 }
 
-// GetStorageType is a wrapper around the C function gtk_status_icon_get_storage_type.
+// Gets the type of representation being used by the #GtkStatusIcon
+// to store image data. If the #GtkStatusIcon has no image data,
+// the return value will be %GTK_IMAGE_EMPTY.
+/*
+
+C function : gtk_status_icon_get_storage_type
+*/
 func (recv *StatusIcon) GetStorageType() ImageType {
 	retC := C.gtk_status_icon_get_storage_type((*C.GtkStatusIcon)(recv.native))
 	retGo := (ImageType)(retC)
@@ -2977,7 +4164,14 @@ func (recv *StatusIcon) GetStorageType() ImageType {
 	return retGo
 }
 
-// GetVisible is a wrapper around the C function gtk_status_icon_get_visible.
+// Returns whether the status icon is visible or not.
+// Note that being visible does not guarantee that
+// the user can actually see the icon, see also
+// gtk_status_icon_is_embedded().
+/*
+
+C function : gtk_status_icon_get_visible
+*/
 func (recv *StatusIcon) GetVisible() bool {
 	retC := C.gtk_status_icon_get_visible((*C.GtkStatusIcon)(recv.native))
 	retGo := retC == C.TRUE
@@ -2985,7 +4179,12 @@ func (recv *StatusIcon) GetVisible() bool {
 	return retGo
 }
 
-// IsEmbedded is a wrapper around the C function gtk_status_icon_is_embedded.
+// Returns whether the status icon is embedded in a notification
+// area.
+/*
+
+C function : gtk_status_icon_is_embedded
+*/
 func (recv *StatusIcon) IsEmbedded() bool {
 	retC := C.gtk_status_icon_is_embedded((*C.GtkStatusIcon)(recv.native))
 	retGo := retC == C.TRUE
@@ -2993,7 +4192,12 @@ func (recv *StatusIcon) IsEmbedded() bool {
 	return retGo
 }
 
-// SetFromFile is a wrapper around the C function gtk_status_icon_set_from_file.
+// Makes @status_icon display the file @filename.
+// See gtk_status_icon_new_from_file() for details.
+/*
+
+C function : gtk_status_icon_set_from_file
+*/
 func (recv *StatusIcon) SetFromFile(filename string) {
 	c_filename := C.CString(filename)
 	defer C.free(unsafe.Pointer(c_filename))
@@ -3003,7 +4207,13 @@ func (recv *StatusIcon) SetFromFile(filename string) {
 	return
 }
 
-// SetFromIconName is a wrapper around the C function gtk_status_icon_set_from_icon_name.
+// Makes @status_icon display the icon named @icon_name from the
+// current icon theme.
+// See gtk_status_icon_new_from_icon_name() for details.
+/*
+
+C function : gtk_status_icon_set_from_icon_name
+*/
 func (recv *StatusIcon) SetFromIconName(iconName string) {
 	c_icon_name := C.CString(iconName)
 	defer C.free(unsafe.Pointer(c_icon_name))
@@ -3013,7 +4223,12 @@ func (recv *StatusIcon) SetFromIconName(iconName string) {
 	return
 }
 
-// SetFromPixbuf is a wrapper around the C function gtk_status_icon_set_from_pixbuf.
+// Makes @status_icon display @pixbuf.
+// See gtk_status_icon_new_from_pixbuf() for details.
+/*
+
+C function : gtk_status_icon_set_from_pixbuf
+*/
 func (recv *StatusIcon) SetFromPixbuf(pixbuf *gdkpixbuf.Pixbuf) {
 	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
 	if pixbuf != nil {
@@ -3025,7 +4240,12 @@ func (recv *StatusIcon) SetFromPixbuf(pixbuf *gdkpixbuf.Pixbuf) {
 	return
 }
 
-// SetFromStock is a wrapper around the C function gtk_status_icon_set_from_stock.
+// Makes @status_icon display the stock icon with the id @stock_id.
+// See gtk_status_icon_new_from_stock() for details.
+/*
+
+C function : gtk_status_icon_set_from_stock
+*/
 func (recv *StatusIcon) SetFromStock(stockId string) {
 	c_stock_id := C.CString(stockId)
 	defer C.free(unsafe.Pointer(c_stock_id))
@@ -3035,7 +4255,11 @@ func (recv *StatusIcon) SetFromStock(stockId string) {
 	return
 }
 
-// SetVisible is a wrapper around the C function gtk_status_icon_set_visible.
+// Shows or hides a status icon.
+/*
+
+C function : gtk_status_icon_set_visible
+*/
 func (recv *StatusIcon) SetVisible(visible bool) {
 	c_visible :=
 		boolToGboolean(visible)
@@ -3045,7 +4269,15 @@ func (recv *StatusIcon) SetVisible(visible bool) {
 	return
 }
 
-// LookupColor is a wrapper around the C function gtk_style_lookup_color.
+// Looks up @color_name in the style’s logical color mappings,
+// filling in @color and returning %TRUE if found, otherwise
+// returning %FALSE. Do not cache the found mapping, because
+// it depends on the #GtkStyle and might change when a theme
+// switch occurs.
+/*
+
+C function : gtk_style_lookup_color
+*/
 func (recv *Style) LookupColor(colorName string) (bool, *gdk.Color) {
 	c_color_name := C.CString(colorName)
 	defer C.free(unsafe.Pointer(c_color_name))
@@ -3066,7 +4298,15 @@ func (recv *Style) LookupColor(colorName string) (bool, *gdk.Color) {
 
 // Unsupported : gtk_text_buffer_deserialize_set_can_create_tags : unsupported parameter format : Blacklisted record : GdkAtom
 
-// GetCopyTargetList is a wrapper around the C function gtk_text_buffer_get_copy_target_list.
+// This function returns the list of targets this text buffer can
+// provide for copying and as DND source. The targets in the list are
+// added with @info values from the #GtkTextBufferTargetInfo enum,
+// using gtk_target_list_add_rich_text_targets() and
+// gtk_target_list_add_text_targets().
+/*
+
+C function : gtk_text_buffer_get_copy_target_list
+*/
 func (recv *TextBuffer) GetCopyTargetList() *TargetList {
 	retC := C.gtk_text_buffer_get_copy_target_list((*C.GtkTextBuffer)(recv.native))
 	retGo := TargetListNewFromC(unsafe.Pointer(retC))
@@ -3076,7 +4316,11 @@ func (recv *TextBuffer) GetCopyTargetList() *TargetList {
 
 // Unsupported : gtk_text_buffer_get_deserialize_formats : no return type
 
-// GetHasSelection is a wrapper around the C function gtk_text_buffer_get_has_selection.
+// Indicates whether the buffer has some text currently selected.
+/*
+
+C function : gtk_text_buffer_get_has_selection
+*/
 func (recv *TextBuffer) GetHasSelection() bool {
 	retC := C.gtk_text_buffer_get_has_selection((*C.GtkTextBuffer)(recv.native))
 	retGo := retC == C.TRUE
@@ -3084,7 +4328,15 @@ func (recv *TextBuffer) GetHasSelection() bool {
 	return retGo
 }
 
-// GetPasteTargetList is a wrapper around the C function gtk_text_buffer_get_paste_target_list.
+// This function returns the list of targets this text buffer supports
+// for pasting and as DND destination. The targets in the list are
+// added with @info values from the #GtkTextBufferTargetInfo enum,
+// using gtk_target_list_add_rich_text_targets() and
+// gtk_target_list_add_text_targets().
+/*
+
+C function : gtk_text_buffer_get_paste_target_list
+*/
 func (recv *TextBuffer) GetPasteTargetList() *TargetList {
 	retC := C.gtk_text_buffer_get_paste_target_list((*C.GtkTextBuffer)(recv.native))
 	retGo := TargetListNewFromC(unsafe.Pointer(retC))
@@ -3112,7 +4364,11 @@ func (recv *TextBuffer) GetPasteTargetList() *TargetList {
 
 // Unsupported : gtk_tree_store_insert_with_valuesv : unsupported parameter values :
 
-// GetEnableTreeLines is a wrapper around the C function gtk_tree_view_get_enable_tree_lines.
+// Returns whether or not tree lines are drawn in @tree_view.
+/*
+
+C function : gtk_tree_view_get_enable_tree_lines
+*/
 func (recv *TreeView) GetEnableTreeLines() bool {
 	retC := C.gtk_tree_view_get_enable_tree_lines((*C.GtkTreeView)(recv.native))
 	retGo := retC == C.TRUE
@@ -3120,7 +4376,11 @@ func (recv *TreeView) GetEnableTreeLines() bool {
 	return retGo
 }
 
-// GetGridLines is a wrapper around the C function gtk_tree_view_get_grid_lines.
+// Returns which grid lines are enabled in @tree_view.
+/*
+
+C function : gtk_tree_view_get_grid_lines
+*/
 func (recv *TreeView) GetGridLines() TreeViewGridLines {
 	retC := C.gtk_tree_view_get_grid_lines((*C.GtkTreeView)(recv.native))
 	retGo := (TreeViewGridLines)(retC)
@@ -3128,7 +4388,11 @@ func (recv *TreeView) GetGridLines() TreeViewGridLines {
 	return retGo
 }
 
-// GetHeadersClickable is a wrapper around the C function gtk_tree_view_get_headers_clickable.
+// Returns whether all header columns are clickable.
+/*
+
+C function : gtk_tree_view_get_headers_clickable
+*/
 func (recv *TreeView) GetHeadersClickable() bool {
 	retC := C.gtk_tree_view_get_headers_clickable((*C.GtkTreeView)(recv.native))
 	retGo := retC == C.TRUE
@@ -3136,7 +4400,13 @@ func (recv *TreeView) GetHeadersClickable() bool {
 	return retGo
 }
 
-// GetRubberBanding is a wrapper around the C function gtk_tree_view_get_rubber_banding.
+// Returns whether rubber banding is turned on for @tree_view.  If the
+// selection mode is #GTK_SELECTION_MULTIPLE, rubber banding will allow the
+// user to select multiple rows by dragging the mouse.
+/*
+
+C function : gtk_tree_view_get_rubber_banding
+*/
 func (recv *TreeView) GetRubberBanding() bool {
 	retC := C.gtk_tree_view_get_rubber_banding((*C.GtkTreeView)(recv.native))
 	retGo := retC == C.TRUE
@@ -3144,7 +4414,13 @@ func (recv *TreeView) GetRubberBanding() bool {
 	return retGo
 }
 
-// GetSearchEntry is a wrapper around the C function gtk_tree_view_get_search_entry.
+// Returns the #GtkEntry which is currently in use as interactive search
+// entry for @tree_view.  In case the built-in entry is being used, %NULL
+// will be returned.
+/*
+
+C function : gtk_tree_view_get_search_entry
+*/
 func (recv *TreeView) GetSearchEntry() *Entry {
 	retC := C.gtk_tree_view_get_search_entry((*C.GtkTreeView)(recv.native))
 	retGo := EntryNewFromC(unsafe.Pointer(retC))
@@ -3154,7 +4430,12 @@ func (recv *TreeView) GetSearchEntry() *Entry {
 
 // Unsupported : gtk_tree_view_get_search_position_func : no return generator
 
-// SetEnableTreeLines is a wrapper around the C function gtk_tree_view_set_enable_tree_lines.
+// Sets whether to draw lines interconnecting the expanders in @tree_view.
+// This does not have any visible effects for lists.
+/*
+
+C function : gtk_tree_view_set_enable_tree_lines
+*/
 func (recv *TreeView) SetEnableTreeLines(enabled bool) {
 	c_enabled :=
 		boolToGboolean(enabled)
@@ -3164,7 +4445,11 @@ func (recv *TreeView) SetEnableTreeLines(enabled bool) {
 	return
 }
 
-// SetGridLines is a wrapper around the C function gtk_tree_view_set_grid_lines.
+// Sets which grid lines to draw in @tree_view.
+/*
+
+C function : gtk_tree_view_set_grid_lines
+*/
 func (recv *TreeView) SetGridLines(gridLines TreeViewGridLines) {
 	c_grid_lines := (C.GtkTreeViewGridLines)(gridLines)
 
@@ -3173,7 +4458,13 @@ func (recv *TreeView) SetGridLines(gridLines TreeViewGridLines) {
 	return
 }
 
-// SetRubberBanding is a wrapper around the C function gtk_tree_view_set_rubber_banding.
+// Enables or disables rubber banding in @tree_view.  If the selection mode
+// is #GTK_SELECTION_MULTIPLE, rubber banding will allow the user to select
+// multiple rows by dragging the mouse.
+/*
+
+C function : gtk_tree_view_set_rubber_banding
+*/
 func (recv *TreeView) SetRubberBanding(enable bool) {
 	c_enable :=
 		boolToGboolean(enable)
@@ -3183,7 +4474,15 @@ func (recv *TreeView) SetRubberBanding(enable bool) {
 	return
 }
 
-// SetSearchEntry is a wrapper around the C function gtk_tree_view_set_search_entry.
+// Sets the entry which the interactive search code will use for this
+// @tree_view.  This is useful when you want to provide a search entry
+// in our interface at all time at a fixed position.  Passing %NULL for
+// @entry will make the interactive search code use the built-in popup
+// entry again.
+/*
+
+C function : gtk_tree_view_set_search_entry
+*/
 func (recv *TreeView) SetSearchEntry(entry *Entry) {
 	c_entry := (*C.GtkEntry)(C.NULL)
 	if entry != nil {
@@ -3197,7 +4496,12 @@ func (recv *TreeView) SetSearchEntry(entry *Entry) {
 
 // Unsupported : gtk_tree_view_set_search_position_func : unsupported parameter func : no type generator for TreeViewSearchPositionFunc (GtkTreeViewSearchPositionFunc) for param func
 
-// DragDestGetTrackMotion is a wrapper around the C function gtk_drag_dest_get_track_motion.
+// Returns whether the widget has been configured to always
+// emit #GtkWidget::drag-motion signals.
+/*
+
+C function : gtk_drag_dest_get_track_motion
+*/
 func (recv *Widget) DragDestGetTrackMotion() bool {
 	retC := C.gtk_drag_dest_get_track_motion((*C.GtkWidget)(recv.native))
 	retGo := retC == C.TRUE
@@ -3205,7 +4509,16 @@ func (recv *Widget) DragDestGetTrackMotion() bool {
 	return retGo
 }
 
-// DragDestSetTrackMotion is a wrapper around the C function gtk_drag_dest_set_track_motion.
+// Tells the widget to emit #GtkWidget::drag-motion and
+// #GtkWidget::drag-leave events regardless of the targets and the
+// %GTK_DEST_DEFAULT_MOTION flag.
+//
+// This may be used when a widget wants to do generic
+// actions regardless of the targets that the source offers.
+/*
+
+C function : gtk_drag_dest_set_track_motion
+*/
 func (recv *Widget) DragDestSetTrackMotion(trackMotion bool) {
 	c_track_motion :=
 		boolToGboolean(trackMotion)
@@ -3215,7 +4528,17 @@ func (recv *Widget) DragDestSetTrackMotion(trackMotion bool) {
 	return
 }
 
-// IsComposited is a wrapper around the C function gtk_widget_is_composited.
+// Whether @widget can rely on having its alpha channel
+// drawn correctly. On X11 this function returns whether a
+// compositing manager is running for @widget’s screen.
+//
+// Please note that the semantics of this call will change
+// in the future if used on a widget that has a composited
+// window in its hierarchy (as set by gdk_window_set_composited()).
+/*
+
+C function : gtk_widget_is_composited
+*/
 func (recv *Widget) IsComposited() bool {
 	retC := C.gtk_widget_is_composited((*C.GtkWidget)(recv.native))
 	retGo := retC == C.TRUE
@@ -3223,7 +4546,12 @@ func (recv *Widget) IsComposited() bool {
 	return retGo
 }
 
-// GetDeletable is a wrapper around the C function gtk_window_get_deletable.
+// Returns whether the window has been set to have a close button
+// via gtk_window_set_deletable().
+/*
+
+C function : gtk_window_get_deletable
+*/
 func (recv *Window) GetDeletable() bool {
 	retC := C.gtk_window_get_deletable((*C.GtkWindow)(recv.native))
 	retGo := retC == C.TRUE
@@ -3231,7 +4559,13 @@ func (recv *Window) GetDeletable() bool {
 	return retGo
 }
 
-// GetGroup is a wrapper around the C function gtk_window_get_group.
+// Returns the group for @window or the default group, if
+// @window is %NULL or if @window does not have an explicit
+// window group.
+/*
+
+C function : gtk_window_get_group
+*/
 func (recv *Window) GetGroup() *WindowGroup {
 	retC := C.gtk_window_get_group((*C.GtkWindow)(recv.native))
 	retGo := WindowGroupNewFromC(unsafe.Pointer(retC))
@@ -3239,7 +4573,20 @@ func (recv *Window) GetGroup() *WindowGroup {
 	return retGo
 }
 
-// SetDeletable is a wrapper around the C function gtk_window_set_deletable.
+// By default, windows have a close button in the window frame. Some
+// [window managers][gtk-X11-arch] allow GTK+ to
+// disable this button. If you set the deletable property to %FALSE
+// using this function, GTK+ will do its best to convince the window
+// manager not to show a close button. Depending on the system, this
+// function may not have any effect when called on a window that is
+// already visible, so you should call it before calling gtk_widget_show().
+//
+// On Windows, this function always works, since there’s no window manager
+// policy involved.
+/*
+
+C function : gtk_window_set_deletable
+*/
 func (recv *Window) SetDeletable(setting bool) {
 	c_setting :=
 		boolToGboolean(setting)

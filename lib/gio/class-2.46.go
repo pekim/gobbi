@@ -24,7 +24,12 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// RegisterObjectWithClosures is a wrapper around the C function g_dbus_connection_register_object_with_closures.
+// Version of g_dbus_connection_register_object() using closures instead of a
+// #GDBusInterfaceVTable for easier binding in other languages.
+/*
+
+C function : g_dbus_connection_register_object_with_closures
+*/
 func (recv *DBusConnection) RegisterObjectWithClosures(objectPath string, interfaceInfo *DBusInterfaceInfo, methodCallClosure *gobject.Closure, getPropertyClosure *gobject.Closure, setPropertyClosure *gobject.Closure) (uint32, error) {
 	c_object_path := C.CString(objectPath)
 	defer C.free(unsafe.Pointer(c_object_path))

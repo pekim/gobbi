@@ -15,7 +15,12 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// PaperSizeGetDefault is a wrapper around the C function gtk_paper_size_get_default.
+// Returns the name of the default paper size, which
+// depends on the current locale.
+/*
+
+C function : gtk_paper_size_get_default
+*/
 func PaperSizeGetDefault() string {
 	retC := C.gtk_paper_size_get_default()
 	retGo := C.GoString(retC)
@@ -23,7 +28,11 @@ func PaperSizeGetDefault() string {
 	return retGo
 }
 
-// PrintErrorQuark is a wrapper around the C function gtk_print_error_quark.
+// Registers an error quark for #GtkPrintOperation if necessary.
+/*
+
+C function : gtk_print_error_quark
+*/
 func PrintErrorQuark() glib.Quark {
 	retC := C.gtk_print_error_quark()
 	retGo := (glib.Quark)(retC)
@@ -31,7 +40,18 @@ func PrintErrorQuark() glib.Quark {
 	return retGo
 }
 
-// PrintRunPageSetupDialog is a wrapper around the C function gtk_print_run_page_setup_dialog.
+// Runs a page setup dialog, letting the user modify the values from
+// @page_setup. If the user cancels the dialog, the returned #GtkPageSetup
+// is identical to the passed in @page_setup, otherwise it contains the
+// modifications done in the dialog.
+//
+// Note that this function may use a recursive mainloop to show the page
+// setup dialog. See gtk_print_run_page_setup_dialog_async() if this is
+// a problem.
+/*
+
+C function : gtk_print_run_page_setup_dialog
+*/
 func PrintRunPageSetupDialog(parent *Window, pageSetup *PageSetup, settings *PrintSettings) *PageSetup {
 	c_parent := (*C.GtkWindow)(C.NULL)
 	if parent != nil {

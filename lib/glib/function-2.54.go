@@ -12,7 +12,31 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// AsciiStringToSigned is a wrapper around the C function g_ascii_string_to_signed.
+// A convenience function for converting a string to a signed number.
+//
+// This function assumes that @str contains only a number of the given
+// @base that is within inclusive bounds limited by @min and @max. If
+// this is true, then the converted number is stored in @out_num. An
+// empty string is not a valid input. A string with leading or
+// trailing whitespace is also an invalid input.
+//
+// @base can be between 2 and 36 inclusive. Hexadecimal numbers must
+// not be prefixed with "0x" or "0X". Such a problem does not exist
+// for octal numbers, since they were usually prefixed with a zero
+// which does not change the value of the parsed number.
+//
+// Parsing failures result in an error with the %G_NUMBER_PARSER_ERROR
+// domain. If the input is invalid, the error code will be
+// %G_NUMBER_PARSER_ERROR_INVALID. If the parsed number is out of
+// bounds - %G_NUMBER_PARSER_ERROR_OUT_OF_BOUNDS.
+//
+// See g_ascii_strtoll() if you have more complex needs such as
+// parsing a string which starts with a number, but then has other
+// characters.
+/*
+
+C function : g_ascii_string_to_signed
+*/
 func AsciiStringToSigned(str string, base uint32, min int64, max int64) (bool, int64, error) {
 	c_str := C.CString(str)
 	defer C.free(unsafe.Pointer(c_str))
@@ -40,7 +64,31 @@ func AsciiStringToSigned(str string, base uint32, min int64, max int64) (bool, i
 	return retGo, outNum, goThrowableError
 }
 
-// AsciiStringToUnsigned is a wrapper around the C function g_ascii_string_to_unsigned.
+// A convenience function for converting a string to an unsigned number.
+//
+// This function assumes that @str contains only a number of the given
+// @base that is within inclusive bounds limited by @min and @max. If
+// this is true, then the converted number is stored in @out_num. An
+// empty string is not a valid input. A string with leading or
+// trailing whitespace is also an invalid input.
+//
+// @base can be between 2 and 36 inclusive. Hexadecimal numbers must
+// not be prefixed with "0x" or "0X". Such a problem does not exist
+// for octal numbers, since they were usually prefixed with a zero
+// which does not change the value of the parsed number.
+//
+// Parsing failures result in an error with the %G_NUMBER_PARSER_ERROR
+// domain. If the input is invalid, the error code will be
+// %G_NUMBER_PARSER_ERROR_INVALID. If the parsed number is out of
+// bounds - %G_NUMBER_PARSER_ERROR_OUT_OF_BOUNDS.
+//
+// See g_ascii_strtoull() if you have more complex needs such as
+// parsing a string which starts with a number, but then has other
+// characters.
+/*
+
+C function : g_ascii_string_to_unsigned
+*/
 func AsciiStringToUnsigned(str string, base uint32, min uint64, max uint64) (bool, uint64, error) {
 	c_str := C.CString(str)
 	defer C.free(unsafe.Pointer(c_str))
@@ -68,7 +116,17 @@ func AsciiStringToUnsigned(str string, base uint32, min uint64, max uint64) (boo
 	return retGo, outNum, goThrowableError
 }
 
-// PtrArrayFind is a wrapper around the C function g_ptr_array_find.
+// Checks whether @needle exists in @haystack. If the element is found, %TRUE is
+// returned and the element’s index is returned in @index_ (if non-%NULL).
+// Otherwise, %FALSE is returned and @index_ is undefined. If @needle exists
+// multiple times in @haystack, the index of the first instance is returned.
+//
+// This does pointer comparisons only. If you want to use more complex equality
+// checks, such as string comparisons, use g_ptr_array_find_with_equal_func().
+/*
+
+C function : g_ptr_array_find
+*/
 func PtrArrayFind(haystack []uintptr, needle uintptr) (bool, uint32) {
 	c_haystack := &haystack[0]
 

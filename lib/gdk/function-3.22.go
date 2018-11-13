@@ -14,7 +14,12 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// CairoGetDrawingContext is a wrapper around the C function gdk_cairo_get_drawing_context.
+// Retrieves the #GdkDrawingContext that created the Cairo
+// context @cr.
+/*
+
+C function : gdk_cairo_get_drawing_context
+*/
 func CairoGetDrawingContext(cr *cairo.Context) *DrawingContext {
 	c_cr := (*C.cairo_t)(C.NULL)
 	if cr != nil {
@@ -32,7 +37,23 @@ func CairoGetDrawingContext(cr *cairo.Context) *DrawingContext {
 	return retGo
 }
 
-// PangoContextGetForDisplay is a wrapper around the C function gdk_pango_context_get_for_display.
+// Creates a #PangoContext for @display.
+//
+// The context must be freed when you’re finished with it.
+//
+// When using GTK+, normally you should use gtk_widget_get_pango_context()
+// instead of this function, to get the appropriate context for
+// the widget you intend to render text onto.
+//
+// The newly created context will have the default font options
+// (see #cairo_font_options_t) for the display; if these options
+// change it will not be updated. Using gtk_widget_get_pango_context()
+// is more convenient if you want to keep a context around and track
+// changes to the font rendering settings.
+/*
+
+C function : gdk_pango_context_get_for_display
+*/
 func PangoContextGetForDisplay(display *Display) *pango.Context {
 	c_display := (*C.GdkDisplay)(C.NULL)
 	if display != nil {

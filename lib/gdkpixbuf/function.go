@@ -9,7 +9,10 @@ import glib "github.com/pekim/gobbi/lib/glib"
 // #include <stdlib.h>
 import "C"
 
-// PixbufErrorQuark is a wrapper around the C function gdk_pixbuf_error_quark.
+/*
+
+C function : gdk_pixbuf_error_quark
+*/
 func PixbufErrorQuark() glib.Quark {
 	retC := C.gdk_pixbuf_error_quark()
 	retGo := (glib.Quark)(retC)

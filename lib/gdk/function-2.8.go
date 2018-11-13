@@ -14,7 +14,22 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// CairoCreate is a wrapper around the C function gdk_cairo_create.
+// Creates a Cairo context for drawing to @window.
+//
+// Note that calling cairo_reset_clip() on the resulting #cairo_t will
+// produce undefined results, so avoid it at all costs.
+//
+// Typically, this function is used to draw on a #GdkWindow out of the paint
+// cycle of the toolkit; this should be avoided, as it breaks various assumptions
+// and optimizations.
+//
+// If you are drawing on a native #GdkWindow in response to a %GDK_EXPOSE event
+// you should use gdk_window_begin_draw_frame() and gdk_drawing_context_get_cairo_context()
+// instead. GTK will automatically do this for you when drawing a widget.
+/*
+
+C function : gdk_cairo_create
+*/
 func CairoCreate(window *Window) *cairo.Context {
 	c_window := (*C.GdkWindow)(C.NULL)
 	if window != nil {
@@ -29,7 +44,11 @@ func CairoCreate(window *Window) *cairo.Context {
 
 // Unsupported : gdk_cairo_rectangle : unsupported parameter rectangle : Blacklisted record : GdkRectangle
 
-// CairoRegion is a wrapper around the C function gdk_cairo_region.
+// Adds the given region to the current path of @cr.
+/*
+
+C function : gdk_cairo_region
+*/
 func CairoRegion(cr *cairo.Context, region *cairo.Region) {
 	c_cr := (*C.cairo_t)(C.NULL)
 	if cr != nil {
@@ -46,7 +65,11 @@ func CairoRegion(cr *cairo.Context, region *cairo.Region) {
 	return
 }
 
-// CairoSetSourceColor is a wrapper around the C function gdk_cairo_set_source_color.
+// Sets the specified #GdkColor as the source color of @cr.
+/*
+
+C function : gdk_cairo_set_source_color
+*/
 func CairoSetSourceColor(cr *cairo.Context, color *Color) {
 	c_cr := (*C.cairo_t)(C.NULL)
 	if cr != nil {
@@ -63,7 +86,14 @@ func CairoSetSourceColor(cr *cairo.Context, color *Color) {
 	return
 }
 
-// CairoSetSourcePixbuf is a wrapper around the C function gdk_cairo_set_source_pixbuf.
+// Sets the given pixbuf as the source pattern for @cr.
+//
+// The pattern has an extend mode of %CAIRO_EXTEND_NONE and is aligned
+// so that the origin of @pixbuf is @pixbuf_x, @pixbuf_y.
+/*
+
+C function : gdk_cairo_set_source_pixbuf
+*/
 func CairoSetSourcePixbuf(cr *cairo.Context, pixbuf *gdkpixbuf.Pixbuf, pixbufX float64, pixbufY float64) {
 	c_cr := (*C.cairo_t)(C.NULL)
 	if cr != nil {

@@ -110,7 +110,11 @@ func device_toolChangedHandler(_ *C.GObject, c_tool *C.GdkDeviceTool, data C.gpo
 	callback(tool)
 }
 
-// GetAxes is a wrapper around the C function gdk_device_get_axes.
+// Returns the axes currently available on the device.
+/*
+
+C function : gdk_device_get_axes
+*/
 func (recv *Device) GetAxes() AxisFlags {
 	retC := C.gdk_device_get_axes((*C.GdkDevice)(recv.native))
 	retGo := (AxisFlags)(retC)
@@ -150,7 +154,19 @@ func CastToDeviceTool(object *gobject.Object) *DeviceTool {
 	return DeviceToolNewFromC(object.ToC())
 }
 
-// GetHardwareId is a wrapper around the C function gdk_device_tool_get_hardware_id.
+// Gets the hardware ID of this tool, or 0 if it's not known. When
+// non-zero, the identificator is unique for the given tool model,
+// meaning that two identical tools will share the same @hardware_id,
+// but will have different serial numbers (see gdk_device_tool_get_serial()).
+//
+// This is a more concrete (and device specific) method to identify
+// a #GdkDeviceTool than gdk_device_tool_get_tool_type(), as a tablet
+// may support multiple devices with the same #GdkDeviceToolType,
+// but having different hardware identificators.
+/*
+
+C function : gdk_device_tool_get_hardware_id
+*/
 func (recv *DeviceTool) GetHardwareId() uint64 {
 	retC := C.gdk_device_tool_get_hardware_id((*C.GdkDeviceTool)(recv.native))
 	retGo := (uint64)(retC)
@@ -158,7 +174,12 @@ func (recv *DeviceTool) GetHardwareId() uint64 {
 	return retGo
 }
 
-// GetSerial is a wrapper around the C function gdk_device_tool_get_serial.
+// Gets the serial of this tool, this value can be used to identify a
+// physical tool (eg. a tablet pen) across program executions.
+/*
+
+C function : gdk_device_tool_get_serial
+*/
 func (recv *DeviceTool) GetSerial() uint64 {
 	retC := C.gdk_device_tool_get_serial((*C.GdkDeviceTool)(recv.native))
 	retGo := (uint64)(retC)
@@ -166,7 +187,11 @@ func (recv *DeviceTool) GetSerial() uint64 {
 	return retGo
 }
 
-// GetToolType is a wrapper around the C function gdk_device_tool_get_tool_type.
+// Gets the #GdkDeviceToolType of the tool.
+/*
+
+C function : gdk_device_tool_get_tool_type
+*/
 func (recv *DeviceTool) GetToolType() DeviceToolType {
 	retC := C.gdk_device_tool_get_tool_type((*C.GdkDeviceTool)(recv.native))
 	retGo := (DeviceToolType)(retC)
@@ -292,7 +317,11 @@ func display_monitorRemovedHandler(_ *C.GObject, c_monitor *C.GdkMonitor, data C
 	callback(monitor)
 }
 
-// GetMonitor is a wrapper around the C function gdk_display_get_monitor.
+// Gets a monitor associated with this display.
+/*
+
+C function : gdk_display_get_monitor
+*/
 func (recv *Display) GetMonitor(monitorNum int32) *Monitor {
 	c_monitor_num := (C.int)(monitorNum)
 
@@ -307,7 +336,12 @@ func (recv *Display) GetMonitor(monitorNum int32) *Monitor {
 	return retGo
 }
 
-// GetMonitorAtPoint is a wrapper around the C function gdk_display_get_monitor_at_point.
+// Gets the monitor in which the point (@x, @y) is located,
+// or a nearby monitor if the point is not in any monitor.
+/*
+
+C function : gdk_display_get_monitor_at_point
+*/
 func (recv *Display) GetMonitorAtPoint(x int32, y int32) *Monitor {
 	c_x := (C.int)(x)
 
@@ -319,7 +353,13 @@ func (recv *Display) GetMonitorAtPoint(x int32, y int32) *Monitor {
 	return retGo
 }
 
-// GetMonitorAtWindow is a wrapper around the C function gdk_display_get_monitor_at_window.
+// Gets the monitor in which the largest area of @window
+// resides, or a monitor close to @window if it is outside
+// of all monitors.
+/*
+
+C function : gdk_display_get_monitor_at_window
+*/
 func (recv *Display) GetMonitorAtWindow(window *Window) *Monitor {
 	c_window := (*C.GdkWindow)(C.NULL)
 	if window != nil {
@@ -332,7 +372,14 @@ func (recv *Display) GetMonitorAtWindow(window *Window) *Monitor {
 	return retGo
 }
 
-// GetNMonitors is a wrapper around the C function gdk_display_get_n_monitors.
+// Gets the number of monitors that belong to @display.
+//
+// The returned number is valid until the next emission of the
+// #GdkDisplay::monitor-added or #GdkDisplay::monitor-removed signal.
+/*
+
+C function : gdk_display_get_n_monitors
+*/
 func (recv *Display) GetNMonitors() int32 {
 	retC := C.gdk_display_get_n_monitors((*C.GdkDisplay)(recv.native))
 	retGo := (int32)(retC)
@@ -340,7 +387,16 @@ func (recv *Display) GetNMonitors() int32 {
 	return retGo
 }
 
-// GetPrimaryMonitor is a wrapper around the C function gdk_display_get_primary_monitor.
+// Gets the primary monitor for the display.
+//
+// The primary monitor is considered the monitor where the “main desktop”
+// lives. While normal application windows typically allow the window
+// manager to place the windows, specialized desktop applications
+// such as panels should place themselves on the primary monitor.
+/*
+
+C function : gdk_display_get_primary_monitor
+*/
 func (recv *Display) GetPrimaryMonitor() *Monitor {
 	retC := C.gdk_display_get_primary_monitor((*C.GdkDisplay)(recv.native))
 	var retGo (*Monitor)
@@ -385,7 +441,16 @@ func CastToDrawingContext(object *gobject.Object) *DrawingContext {
 	return DrawingContextNewFromC(object.ToC())
 }
 
-// GetCairoContext is a wrapper around the C function gdk_drawing_context_get_cairo_context.
+// Retrieves a Cairo context to be used to draw on the #GdkWindow
+// that created the #GdkDrawingContext.
+//
+// The returned context is guaranteed to be valid as long as the
+// #GdkDrawingContext is valid, that is between a call to
+// gdk_window_begin_draw_frame() and gdk_window_end_draw_frame().
+/*
+
+C function : gdk_drawing_context_get_cairo_context
+*/
 func (recv *DrawingContext) GetCairoContext() *cairo.Context {
 	retC := C.gdk_drawing_context_get_cairo_context((*C.GdkDrawingContext)(recv.native))
 	retGo := cairo.ContextNewFromC(unsafe.Pointer(retC))
@@ -393,7 +458,11 @@ func (recv *DrawingContext) GetCairoContext() *cairo.Context {
 	return retGo
 }
 
-// GetClip is a wrapper around the C function gdk_drawing_context_get_clip.
+// Retrieves a copy of the clip region used when creating the @context.
+/*
+
+C function : gdk_drawing_context_get_clip
+*/
 func (recv *DrawingContext) GetClip() *cairo.Region {
 	retC := C.gdk_drawing_context_get_clip((*C.GdkDrawingContext)(recv.native))
 	var retGo (*cairo.Region)
@@ -406,7 +475,11 @@ func (recv *DrawingContext) GetClip() *cairo.Region {
 	return retGo
 }
 
-// GetWindow is a wrapper around the C function gdk_drawing_context_get_window.
+// Retrieves the window that created the drawing @context.
+/*
+
+C function : gdk_drawing_context_get_window
+*/
 func (recv *DrawingContext) GetWindow() *Window {
 	retC := C.gdk_drawing_context_get_window((*C.GdkDrawingContext)(recv.native))
 	retGo := WindowNewFromC(unsafe.Pointer(retC))
@@ -414,7 +487,11 @@ func (recv *DrawingContext) GetWindow() *Window {
 	return retGo
 }
 
-// IsValid is a wrapper around the C function gdk_drawing_context_is_valid.
+// Checks whether the given #GdkDrawingContext is valid.
+/*
+
+C function : gdk_drawing_context_is_valid
+*/
 func (recv *DrawingContext) IsValid() bool {
 	retC := C.gdk_drawing_context_is_valid((*C.GdkDrawingContext)(recv.native))
 	retGo := retC == C.TRUE
@@ -422,7 +499,11 @@ func (recv *DrawingContext) IsValid() bool {
 	return retGo
 }
 
-// GetUseEs is a wrapper around the C function gdk_gl_context_get_use_es.
+// Checks whether the @context is using an OpenGL or OpenGL ES profile.
+/*
+
+C function : gdk_gl_context_get_use_es
+*/
 func (recv *GLContext) GetUseEs() bool {
 	retC := C.gdk_gl_context_get_use_es((*C.GdkGLContext)(recv.native))
 	retGo := retC == C.TRUE
@@ -430,7 +511,22 @@ func (recv *GLContext) GetUseEs() bool {
 	return retGo
 }
 
-// SetUseEs is a wrapper around the C function gdk_gl_context_set_use_es.
+// Requests that GDK create a OpenGL ES context instead of an OpenGL one,
+// if the platform and windowing system allows it.
+//
+// The @context must not have been realized.
+//
+// By default, GDK will attempt to automatically detect whether the
+// underlying GL implementation is OpenGL or OpenGL ES once the @context
+// is realized.
+//
+// You should check the return value of gdk_gl_context_get_use_es() after
+// calling gdk_gl_context_realize() to decide whether to use the OpenGL or
+// OpenGL ES API, extensions, or shaders.
+/*
+
+C function : gdk_gl_context_set_use_es
+*/
 func (recv *GLContext) SetUseEs(useEs int32) {
 	c_use_es := (C.int)(useEs)
 
@@ -528,7 +624,11 @@ func monitor_invalidateHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// GetDisplay is a wrapper around the C function gdk_monitor_get_display.
+// Gets the display that this monitor belongs to.
+/*
+
+C function : gdk_monitor_get_display
+*/
 func (recv *Monitor) GetDisplay() *Display {
 	retC := C.gdk_monitor_get_display((*C.GdkMonitor)(recv.native))
 	retGo := DisplayNewFromC(unsafe.Pointer(retC))
@@ -538,7 +638,11 @@ func (recv *Monitor) GetDisplay() *Display {
 
 // Unsupported : gdk_monitor_get_geometry : unsupported parameter geometry : Blacklisted record : GdkRectangle
 
-// GetHeightMm is a wrapper around the C function gdk_monitor_get_height_mm.
+// Gets the height in millimeters of the monitor.
+/*
+
+C function : gdk_monitor_get_height_mm
+*/
 func (recv *Monitor) GetHeightMm() int32 {
 	retC := C.gdk_monitor_get_height_mm((*C.GdkMonitor)(recv.native))
 	retGo := (int32)(retC)
@@ -546,7 +650,11 @@ func (recv *Monitor) GetHeightMm() int32 {
 	return retGo
 }
 
-// GetManufacturer is a wrapper around the C function gdk_monitor_get_manufacturer.
+// Gets the name of the monitor's manufacturer, if available.
+/*
+
+C function : gdk_monitor_get_manufacturer
+*/
 func (recv *Monitor) GetManufacturer() string {
 	retC := C.gdk_monitor_get_manufacturer((*C.GdkMonitor)(recv.native))
 	retGo := C.GoString(retC)
@@ -554,7 +662,11 @@ func (recv *Monitor) GetManufacturer() string {
 	return retGo
 }
 
-// GetModel is a wrapper around the C function gdk_monitor_get_model.
+// Gets the a string identifying the monitor model, if available.
+/*
+
+C function : gdk_monitor_get_model
+*/
 func (recv *Monitor) GetModel() string {
 	retC := C.gdk_monitor_get_model((*C.GdkMonitor)(recv.native))
 	retGo := C.GoString(retC)
@@ -562,7 +674,14 @@ func (recv *Monitor) GetModel() string {
 	return retGo
 }
 
-// GetRefreshRate is a wrapper around the C function gdk_monitor_get_refresh_rate.
+// Gets the refresh rate of the monitor, if available.
+//
+// The value is in milli-Hertz, so a refresh rate of 60Hz
+// is returned as 60000.
+/*
+
+C function : gdk_monitor_get_refresh_rate
+*/
 func (recv *Monitor) GetRefreshRate() int32 {
 	retC := C.gdk_monitor_get_refresh_rate((*C.GdkMonitor)(recv.native))
 	retGo := (int32)(retC)
@@ -570,7 +689,17 @@ func (recv *Monitor) GetRefreshRate() int32 {
 	return retGo
 }
 
-// GetScaleFactor is a wrapper around the C function gdk_monitor_get_scale_factor.
+// Gets the internal scale factor that maps from monitor coordinates
+// to the actual device pixels. On traditional systems this is 1, but
+// on very high density outputs this can be a higher value (often 2).
+//
+// This can be used if you want to create pixel based data for a
+// particular monitor, but most of the time you’re drawing to a window
+// where it is better to use gdk_window_get_scale_factor() instead.
+/*
+
+C function : gdk_monitor_get_scale_factor
+*/
 func (recv *Monitor) GetScaleFactor() int32 {
 	retC := C.gdk_monitor_get_scale_factor((*C.GdkMonitor)(recv.native))
 	retGo := (int32)(retC)
@@ -578,7 +707,12 @@ func (recv *Monitor) GetScaleFactor() int32 {
 	return retGo
 }
 
-// GetSubpixelLayout is a wrapper around the C function gdk_monitor_get_subpixel_layout.
+// Gets information about the layout of red, green and blue
+// primaries for each pixel in this monitor, if available.
+/*
+
+C function : gdk_monitor_get_subpixel_layout
+*/
 func (recv *Monitor) GetSubpixelLayout() SubpixelLayout {
 	retC := C.gdk_monitor_get_subpixel_layout((*C.GdkMonitor)(recv.native))
 	retGo := (SubpixelLayout)(retC)
@@ -586,7 +720,11 @@ func (recv *Monitor) GetSubpixelLayout() SubpixelLayout {
 	return retGo
 }
 
-// GetWidthMm is a wrapper around the C function gdk_monitor_get_width_mm.
+// Gets the width in millimeters of the monitor.
+/*
+
+C function : gdk_monitor_get_width_mm
+*/
 func (recv *Monitor) GetWidthMm() int32 {
 	retC := C.gdk_monitor_get_width_mm((*C.GdkMonitor)(recv.native))
 	retGo := (int32)(retC)
@@ -596,7 +734,12 @@ func (recv *Monitor) GetWidthMm() int32 {
 
 // Unsupported : gdk_monitor_get_workarea : unsupported parameter workarea : Blacklisted record : GdkRectangle
 
-// IsPrimary is a wrapper around the C function gdk_monitor_is_primary.
+// Gets whether this monitor should be considered primary
+// (see gdk_display_get_primary_monitor()).
+/*
+
+C function : gdk_monitor_is_primary
+*/
 func (recv *Monitor) IsPrimary() bool {
 	retC := C.gdk_monitor_is_primary((*C.GdkMonitor)(recv.native))
 	retGo := retC == C.TRUE
@@ -637,7 +780,11 @@ func CastToSeat(object *gobject.Object) *Seat {
 	return SeatNewFromC(object.ToC())
 }
 
-// GetDisplay is a wrapper around the C function gdk_seat_get_display.
+// Returns the #GdkDisplay this seat belongs to.
+/*
+
+C function : gdk_seat_get_display
+*/
 func (recv *Seat) GetDisplay() *Display {
 	retC := C.gdk_seat_get_display((*C.GdkSeat)(recv.native))
 	retGo := DisplayNewFromC(unsafe.Pointer(retC))
@@ -647,7 +794,37 @@ func (recv *Seat) GetDisplay() *Display {
 
 // Unsupported signal 'moved-to-rect' for Window : unsupported parameter flipped_rect : type gpointer :
 
-// BeginDrawFrame is a wrapper around the C function gdk_window_begin_draw_frame.
+// Indicates that you are beginning the process of redrawing @region
+// on @window, and provides you with a #GdkDrawingContext.
+//
+// If @window is a top level #GdkWindow, backed by a native window
+// implementation, a backing store (offscreen buffer) large enough to
+// contain @region will be created. The backing store will be initialized
+// with the background color or background surface for @window. Then, all
+// drawing operations performed on @window will be diverted to the
+// backing store. When you call gdk_window_end_frame(), the contents of
+// the backing store will be copied to @window, making it visible
+// on screen. Only the part of @window contained in @region will be
+// modified; that is, drawing operations are clipped to @region.
+//
+// The net result of all this is to remove flicker, because the user
+// sees the finished product appear all at once when you call
+// gdk_window_end_draw_frame(). If you draw to @window directly without
+// calling gdk_window_begin_draw_frame(), the user may see flicker
+// as individual drawing operations are performed in sequence.
+//
+// When using GTK+, the widget system automatically places calls to
+// gdk_window_begin_draw_frame() and gdk_window_end_draw_frame() around
+// emissions of the `GtkWidget::draw` signal. That is, if you’re
+// drawing the contents of the widget yourself, you can assume that the
+// widget has a cleared background, is already set as the clip region,
+// and already has a backing store. Therefore in most cases, application
+// code in GTK does not need to call gdk_window_begin_draw_frame()
+// explicitly.
+/*
+
+C function : gdk_window_begin_draw_frame
+*/
 func (recv *Window) BeginDrawFrame(region *cairo.Region) *DrawingContext {
 	c_region := (*C.cairo_region_t)(C.NULL)
 	if region != nil {
@@ -660,7 +837,17 @@ func (recv *Window) BeginDrawFrame(region *cairo.Region) *DrawingContext {
 	return retGo
 }
 
-// EndDrawFrame is a wrapper around the C function gdk_window_end_draw_frame.
+// Indicates that the drawing of the contents of @window started with
+// gdk_window_begin_frame() has been completed.
+//
+// This function will take care of destroying the #GdkDrawingContext.
+//
+// It is an error to call this function without a matching
+// gdk_window_begin_frame() first.
+/*
+
+C function : gdk_window_end_draw_frame
+*/
 func (recv *Window) EndDrawFrame(context *DrawingContext) {
 	c_context := (*C.GdkDrawingContext)(C.NULL)
 	if context != nil {

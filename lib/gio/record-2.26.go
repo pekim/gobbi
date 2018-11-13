@@ -80,7 +80,12 @@ func (recv *DBusAnnotationInfo) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Ref is a wrapper around the C function g_dbus_annotation_info_ref.
+// If @info is statically allocated does nothing. Otherwise increases
+// the reference count.
+/*
+
+C function : g_dbus_annotation_info_ref
+*/
 func (recv *DBusAnnotationInfo) Ref() *DBusAnnotationInfo {
 	retC := C.g_dbus_annotation_info_ref((*C.GDBusAnnotationInfo)(recv.native))
 	retGo := DBusAnnotationInfoNewFromC(unsafe.Pointer(retC))
@@ -88,7 +93,13 @@ func (recv *DBusAnnotationInfo) Ref() *DBusAnnotationInfo {
 	return retGo
 }
 
-// Unref is a wrapper around the C function g_dbus_annotation_info_unref.
+// If @info is statically allocated, does nothing. Otherwise decreases
+// the reference count of @info. When its reference count drops to 0,
+// the memory used is freed.
+/*
+
+C function : g_dbus_annotation_info_unref
+*/
 func (recv *DBusAnnotationInfo) Unref() {
 	C.g_dbus_annotation_info_unref((*C.GDBusAnnotationInfo)(recv.native))
 
@@ -131,7 +142,12 @@ func (recv *DBusArgInfo) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Ref is a wrapper around the C function g_dbus_arg_info_ref.
+// If @info is statically allocated does nothing. Otherwise increases
+// the reference count.
+/*
+
+C function : g_dbus_arg_info_ref
+*/
 func (recv *DBusArgInfo) Ref() *DBusArgInfo {
 	retC := C.g_dbus_arg_info_ref((*C.GDBusArgInfo)(recv.native))
 	retGo := DBusArgInfoNewFromC(unsafe.Pointer(retC))
@@ -139,7 +155,13 @@ func (recv *DBusArgInfo) Ref() *DBusArgInfo {
 	return retGo
 }
 
-// Unref is a wrapper around the C function g_dbus_arg_info_unref.
+// If @info is statically allocated, does nothing. Otherwise decreases
+// the reference count of @info. When its reference count drops to 0,
+// the memory used is freed.
+/*
+
+C function : g_dbus_arg_info_unref
+*/
 func (recv *DBusArgInfo) Unref() {
 	C.g_dbus_arg_info_unref((*C.GDBusArgInfo)(recv.native))
 
@@ -212,7 +234,16 @@ func (recv *DBusInterfaceInfo) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// GenerateXml is a wrapper around the C function g_dbus_interface_info_generate_xml.
+// Appends an XML representation of @info (and its children) to @string_builder.
+//
+// This function is typically used for generating introspection XML
+// documents at run-time for handling the
+// `org.freedesktop.DBus.Introspectable.Introspect`
+// method.
+/*
+
+C function : g_dbus_interface_info_generate_xml
+*/
 func (recv *DBusInterfaceInfo) GenerateXml(indent uint32, stringBuilder *glib.String) {
 	c_indent := (C.guint)(indent)
 
@@ -226,7 +257,14 @@ func (recv *DBusInterfaceInfo) GenerateXml(indent uint32, stringBuilder *glib.St
 	return
 }
 
-// LookupMethod is a wrapper around the C function g_dbus_interface_info_lookup_method.
+// Looks up information about a method.
+//
+// The cost of this function is O(n) in number of methods unless
+// g_dbus_interface_info_cache_build() has been used on @info.
+/*
+
+C function : g_dbus_interface_info_lookup_method
+*/
 func (recv *DBusInterfaceInfo) LookupMethod(name string) *DBusMethodInfo {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -237,7 +275,14 @@ func (recv *DBusInterfaceInfo) LookupMethod(name string) *DBusMethodInfo {
 	return retGo
 }
 
-// LookupProperty is a wrapper around the C function g_dbus_interface_info_lookup_property.
+// Looks up information about a property.
+//
+// The cost of this function is O(n) in number of properties unless
+// g_dbus_interface_info_cache_build() has been used on @info.
+/*
+
+C function : g_dbus_interface_info_lookup_property
+*/
 func (recv *DBusInterfaceInfo) LookupProperty(name string) *DBusPropertyInfo {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -248,7 +293,14 @@ func (recv *DBusInterfaceInfo) LookupProperty(name string) *DBusPropertyInfo {
 	return retGo
 }
 
-// LookupSignal is a wrapper around the C function g_dbus_interface_info_lookup_signal.
+// Looks up information about a signal.
+//
+// The cost of this function is O(n) in number of signals unless
+// g_dbus_interface_info_cache_build() has been used on @info.
+/*
+
+C function : g_dbus_interface_info_lookup_signal
+*/
 func (recv *DBusInterfaceInfo) LookupSignal(name string) *DBusSignalInfo {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -259,7 +311,12 @@ func (recv *DBusInterfaceInfo) LookupSignal(name string) *DBusSignalInfo {
 	return retGo
 }
 
-// Ref is a wrapper around the C function g_dbus_interface_info_ref.
+// If @info is statically allocated does nothing. Otherwise increases
+// the reference count.
+/*
+
+C function : g_dbus_interface_info_ref
+*/
 func (recv *DBusInterfaceInfo) Ref() *DBusInterfaceInfo {
 	retC := C.g_dbus_interface_info_ref((*C.GDBusInterfaceInfo)(recv.native))
 	retGo := DBusInterfaceInfoNewFromC(unsafe.Pointer(retC))
@@ -267,7 +324,13 @@ func (recv *DBusInterfaceInfo) Ref() *DBusInterfaceInfo {
 	return retGo
 }
 
-// Unref is a wrapper around the C function g_dbus_interface_info_unref.
+// If @info is statically allocated, does nothing. Otherwise decreases
+// the reference count of @info. When its reference count drops to 0,
+// the memory used is freed.
+/*
+
+C function : g_dbus_interface_info_unref
+*/
 func (recv *DBusInterfaceInfo) Unref() {
 	C.g_dbus_interface_info_unref((*C.GDBusInterfaceInfo)(recv.native))
 
@@ -333,7 +396,12 @@ func (recv *DBusMethodInfo) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Ref is a wrapper around the C function g_dbus_method_info_ref.
+// If @info is statically allocated does nothing. Otherwise increases
+// the reference count.
+/*
+
+C function : g_dbus_method_info_ref
+*/
 func (recv *DBusMethodInfo) Ref() *DBusMethodInfo {
 	retC := C.g_dbus_method_info_ref((*C.GDBusMethodInfo)(recv.native))
 	retGo := DBusMethodInfoNewFromC(unsafe.Pointer(retC))
@@ -341,7 +409,13 @@ func (recv *DBusMethodInfo) Ref() *DBusMethodInfo {
 	return retGo
 }
 
-// Unref is a wrapper around the C function g_dbus_method_info_unref.
+// If @info is statically allocated, does nothing. Otherwise decreases
+// the reference count of @info. When its reference count drops to 0,
+// the memory used is freed.
+/*
+
+C function : g_dbus_method_info_unref
+*/
 func (recv *DBusMethodInfo) Unref() {
 	C.g_dbus_method_info_unref((*C.GDBusMethodInfo)(recv.native))
 
@@ -382,7 +456,18 @@ func (recv *DBusNodeInfo) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// DBusNodeInfoNewForXml is a wrapper around the C function g_dbus_node_info_new_for_xml.
+// Parses @xml_data and returns a #GDBusNodeInfo representing the data.
+//
+// The introspection XML must contain exactly one top-level
+// <node> element.
+//
+// Note that this routine is using a
+// [GMarkup][glib-Simple-XML-Subset-Parser.description]-based
+// parser that only accepts a subset of valid XML documents.
+/*
+
+C function : g_dbus_node_info_new_for_xml
+*/
 func DBusNodeInfoNewForXml(xmlData string) (*DBusNodeInfo, error) {
 	c_xml_data := C.CString(xmlData)
 	defer C.free(unsafe.Pointer(c_xml_data))
@@ -400,7 +485,14 @@ func DBusNodeInfoNewForXml(xmlData string) (*DBusNodeInfo, error) {
 	return retGo, goThrowableError
 }
 
-// GenerateXml is a wrapper around the C function g_dbus_node_info_generate_xml.
+// Appends an XML representation of @info (and its children) to @string_builder.
+//
+// This function is typically used for generating introspection XML documents at run-time for
+// handling the `org.freedesktop.DBus.Introspectable.Introspect`  method.
+/*
+
+C function : g_dbus_node_info_generate_xml
+*/
 func (recv *DBusNodeInfo) GenerateXml(indent uint32, stringBuilder *glib.String) {
 	c_indent := (C.guint)(indent)
 
@@ -414,7 +506,13 @@ func (recv *DBusNodeInfo) GenerateXml(indent uint32, stringBuilder *glib.String)
 	return
 }
 
-// LookupInterface is a wrapper around the C function g_dbus_node_info_lookup_interface.
+// Looks up information about an interface.
+//
+// The cost of this function is O(n) in number of interfaces.
+/*
+
+C function : g_dbus_node_info_lookup_interface
+*/
 func (recv *DBusNodeInfo) LookupInterface(name string) *DBusInterfaceInfo {
 	c_name := C.CString(name)
 	defer C.free(unsafe.Pointer(c_name))
@@ -425,7 +523,12 @@ func (recv *DBusNodeInfo) LookupInterface(name string) *DBusInterfaceInfo {
 	return retGo
 }
 
-// Ref is a wrapper around the C function g_dbus_node_info_ref.
+// If @info is statically allocated does nothing. Otherwise increases
+// the reference count.
+/*
+
+C function : g_dbus_node_info_ref
+*/
 func (recv *DBusNodeInfo) Ref() *DBusNodeInfo {
 	retC := C.g_dbus_node_info_ref((*C.GDBusNodeInfo)(recv.native))
 	retGo := DBusNodeInfoNewFromC(unsafe.Pointer(retC))
@@ -433,7 +536,13 @@ func (recv *DBusNodeInfo) Ref() *DBusNodeInfo {
 	return retGo
 }
 
-// Unref is a wrapper around the C function g_dbus_node_info_unref.
+// If @info is statically allocated, does nothing. Otherwise decreases
+// the reference count of @info. When its reference count drops to 0,
+// the memory used is freed.
+/*
+
+C function : g_dbus_node_info_unref
+*/
 func (recv *DBusNodeInfo) Unref() {
 	C.g_dbus_node_info_unref((*C.GDBusNodeInfo)(recv.native))
 
@@ -480,7 +589,12 @@ func (recv *DBusPropertyInfo) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Ref is a wrapper around the C function g_dbus_property_info_ref.
+// If @info is statically allocated does nothing. Otherwise increases
+// the reference count.
+/*
+
+C function : g_dbus_property_info_ref
+*/
 func (recv *DBusPropertyInfo) Ref() *DBusPropertyInfo {
 	retC := C.g_dbus_property_info_ref((*C.GDBusPropertyInfo)(recv.native))
 	retGo := DBusPropertyInfoNewFromC(unsafe.Pointer(retC))
@@ -488,7 +602,13 @@ func (recv *DBusPropertyInfo) Ref() *DBusPropertyInfo {
 	return retGo
 }
 
-// Unref is a wrapper around the C function g_dbus_property_info_unref.
+// If @info is statically allocated, does nothing. Otherwise decreases
+// the reference count of @info. When its reference count drops to 0,
+// the memory used is freed.
+/*
+
+C function : g_dbus_property_info_unref
+*/
 func (recv *DBusPropertyInfo) Unref() {
 	C.g_dbus_property_info_unref((*C.GDBusPropertyInfo)(recv.native))
 
@@ -553,7 +673,12 @@ func (recv *DBusSignalInfo) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Ref is a wrapper around the C function g_dbus_signal_info_ref.
+// If @info is statically allocated does nothing. Otherwise increases
+// the reference count.
+/*
+
+C function : g_dbus_signal_info_ref
+*/
 func (recv *DBusSignalInfo) Ref() *DBusSignalInfo {
 	retC := C.g_dbus_signal_info_ref((*C.GDBusSignalInfo)(recv.native))
 	retGo := DBusSignalInfoNewFromC(unsafe.Pointer(retC))
@@ -561,7 +686,13 @@ func (recv *DBusSignalInfo) Ref() *DBusSignalInfo {
 	return retGo
 }
 
-// Unref is a wrapper around the C function g_dbus_signal_info_unref.
+// If @info is statically allocated, does nothing. Otherwise decreases
+// the reference count of @info. When its reference count drops to 0,
+// the memory used is freed.
+/*
+
+C function : g_dbus_signal_info_unref
+*/
 func (recv *DBusSignalInfo) Unref() {
 	C.g_dbus_signal_info_unref((*C.GDBusSignalInfo)(recv.native))
 

@@ -8,7 +8,11 @@ package gdkpixbuf
 // #include <stdlib.h>
 import "C"
 
-// GetLoop is a wrapper around the C function gdk_pixbuf_simple_anim_get_loop.
+// Gets whether @animation should loop indefinitely when it reaches the end.
+/*
+
+C function : gdk_pixbuf_simple_anim_get_loop
+*/
 func (recv *PixbufSimpleAnim) GetLoop() bool {
 	retC := C.gdk_pixbuf_simple_anim_get_loop((*C.GdkPixbufSimpleAnim)(recv.native))
 	retGo := retC == C.TRUE
@@ -16,7 +20,11 @@ func (recv *PixbufSimpleAnim) GetLoop() bool {
 	return retGo
 }
 
-// SetLoop is a wrapper around the C function gdk_pixbuf_simple_anim_set_loop.
+// Sets whether @animation should loop indefinitely when it reaches the end.
+/*
+
+C function : gdk_pixbuf_simple_anim_set_loop
+*/
 func (recv *PixbufSimpleAnim) SetLoop(loop bool) {
 	c_loop :=
 		boolToGboolean(loop)

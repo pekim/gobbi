@@ -10,7 +10,18 @@ import cairo "github.com/pekim/gobbi/lib/cairo"
 // #include <stdlib.h>
 import "C"
 
-// CairoSetSourceWindow is a wrapper around the C function gdk_cairo_set_source_window.
+// Sets the given window as the source pattern for @cr.
+//
+// The pattern has an extend mode of %CAIRO_EXTEND_NONE and is aligned
+// so that the origin of @window is @x, @y. The window contains all its
+// subwindows when rendering.
+//
+// Note that the contents of @window are undefined outside of the
+// visible part of @window, so use this function with care.
+/*
+
+C function : gdk_cairo_set_source_window
+*/
 func CairoSetSourceWindow(cr *cairo.Context, window *Window, x float64, y float64) {
 	c_cr := (*C.cairo_t)(C.NULL)
 	if cr != nil {

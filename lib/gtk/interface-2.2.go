@@ -12,7 +12,15 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// GetStringFromIter is a wrapper around the C function gtk_tree_model_get_string_from_iter.
+// Generates a string representation of the iter.
+//
+// This string is a “:” separated list of numbers.
+// For example, “4:10:0:3” would be an acceptable
+// return value for this string.
+/*
+
+C function : gtk_tree_model_get_string_from_iter
+*/
 func (recv *TreeModel) GetStringFromIter(iter *TreeIter) string {
 	c_iter := (*C.GtkTreeIter)(C.NULL)
 	if iter != nil {

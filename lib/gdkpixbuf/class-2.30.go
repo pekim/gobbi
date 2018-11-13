@@ -13,7 +13,18 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// WriteBytes is a wrapper around the C function gdk_pixbuf_loader_write_bytes.
+// This will cause a pixbuf loader to parse a buffer inside a #GBytes
+// for an image.  It will return %TRUE if the data was loaded successfully,
+// and %FALSE if an error occurred.  In the latter case, the loader
+// will be closed, and will not accept further writes. If %FALSE is
+// returned, @error will be set to an error from the #GDK_PIXBUF_ERROR
+// or #G_FILE_ERROR domains.
+//
+// See also: gdk_pixbuf_loader_write()
+/*
+
+C function : gdk_pixbuf_loader_write_bytes
+*/
 func (recv *PixbufLoader) WriteBytes(buffer *glib.Bytes) (bool, error) {
 	c_buffer := (*C.GBytes)(C.NULL)
 	if buffer != nil {

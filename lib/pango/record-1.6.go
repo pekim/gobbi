@@ -10,7 +10,11 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Free is a wrapper around the C function pango_glyph_item_free.
+// Frees a #PangoGlyphItem and resources to which it points.
+/*
+
+C function : pango_glyph_item_free
+*/
 func (recv *GlyphItem) Free() {
 	C.pango_glyph_item_free((*C.PangoGlyphItem)(recv.native))
 
@@ -66,7 +70,13 @@ func (recv *Matrix) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Concat is a wrapper around the C function pango_matrix_concat.
+// Changes the transformation represented by @matrix to be the
+// transformation given by first applying transformation
+// given by @new_matrix then applying the original transformation.
+/*
+
+C function : pango_matrix_concat
+*/
 func (recv *Matrix) Concat(newMatrix *Matrix) {
 	c_new_matrix := (*C.PangoMatrix)(C.NULL)
 	if newMatrix != nil {
@@ -78,7 +88,11 @@ func (recv *Matrix) Concat(newMatrix *Matrix) {
 	return
 }
 
-// Copy is a wrapper around the C function pango_matrix_copy.
+// Copies a #PangoMatrix.
+/*
+
+C function : pango_matrix_copy
+*/
 func (recv *Matrix) Copy() *Matrix {
 	retC := C.pango_matrix_copy((*C.PangoMatrix)(recv.native))
 	var retGo (*Matrix)
@@ -91,14 +105,24 @@ func (recv *Matrix) Copy() *Matrix {
 	return retGo
 }
 
-// Free is a wrapper around the C function pango_matrix_free.
+// Free a #PangoMatrix created with pango_matrix_copy().
+/*
+
+C function : pango_matrix_free
+*/
 func (recv *Matrix) Free() {
 	C.pango_matrix_free((*C.PangoMatrix)(recv.native))
 
 	return
 }
 
-// Rotate is a wrapper around the C function pango_matrix_rotate.
+// Changes the transformation represented by @matrix to be the
+// transformation given by first rotating by @degrees degrees
+// counter-clockwise then applying the original transformation.
+/*
+
+C function : pango_matrix_rotate
+*/
 func (recv *Matrix) Rotate(degrees float64) {
 	c_degrees := (C.double)(degrees)
 
@@ -107,7 +131,14 @@ func (recv *Matrix) Rotate(degrees float64) {
 	return
 }
 
-// Scale is a wrapper around the C function pango_matrix_scale.
+// Changes the transformation represented by @matrix to be the
+// transformation given by first scaling by @sx in the X direction
+// and @sy in the Y direction then applying the original
+// transformation.
+/*
+
+C function : pango_matrix_scale
+*/
 func (recv *Matrix) Scale(scaleX float64, scaleY float64) {
 	c_scale_x := (C.double)(scaleX)
 
@@ -118,7 +149,13 @@ func (recv *Matrix) Scale(scaleX float64, scaleY float64) {
 	return
 }
 
-// Translate is a wrapper around the C function pango_matrix_translate.
+// Changes the transformation represented by @matrix to be the
+// transformation given by first translating by (@tx, @ty)
+// then applying the original transformation.
+/*
+
+C function : pango_matrix_translate
+*/
 func (recv *Matrix) Translate(tx float64, ty float64) {
 	c_tx := (C.double)(tx)
 
