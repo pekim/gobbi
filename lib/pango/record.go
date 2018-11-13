@@ -16,7 +16,9 @@ import "C"
 // the properties of a segment of text.
 /*
 
-C record/class : PangoAnalysis
+C type
+
+PangoAnalysis
 */
 type Analysis struct {
 	native *C.PangoAnalysis
@@ -67,7 +69,9 @@ func (recv *Analysis) ToC() unsafe.Pointer {
 // provided for #PangoAttribute.
 /*
 
-C record/class : PangoAttrClass
+C type
+
+PangoAttrClass
 */
 type AttrClass struct {
 	native *C.PangoAttrClass
@@ -102,7 +106,9 @@ func (recv *AttrClass) ToC() unsafe.Pointer {
 // are colors.
 /*
 
-C record/class : PangoAttrColor
+C type
+
+PangoAttrColor
 */
 type AttrColor struct {
 	native *C.PangoAttrColor
@@ -130,7 +136,9 @@ func (recv *AttrColor) ToC() unsafe.Pointer {
 // a float or double value.
 /*
 
-C record/class : PangoAttrFloat
+C type
+
+PangoAttrFloat
 */
 type AttrFloat struct {
 	native *C.PangoAttrFloat
@@ -163,7 +171,9 @@ func (recv *AttrFloat) ToC() unsafe.Pointer {
 // sets all aspects of the font description at once.
 /*
 
-C record/class : PangoAttrFontDesc
+C type
+
+PangoAttrFontDesc
 */
 type AttrFontDesc struct {
 	native *C.PangoAttrFontDesc
@@ -191,7 +201,9 @@ func (recv *AttrFontDesc) ToC() unsafe.Pointer {
 // an integer or enumeration value.
 /*
 
-C record/class : PangoAttrInt
+C type
+
+PangoAttrInt
 */
 type AttrInt struct {
 	native *C.PangoAttrInt
@@ -229,7 +241,9 @@ func (recv *AttrInt) ToC() unsafe.Pointer {
 // attributes currently in effect can be queried.
 /*
 
-C record/class : PangoAttrIterator
+C type
+
+PangoAttrIterator
 */
 type AttrIterator struct {
 	native *C.PangoAttrIterator
@@ -254,7 +268,9 @@ func (recv *AttrIterator) ToC() unsafe.Pointer {
 // Copy a #PangoAttrIterator
 /*
 
-C function : pango_attr_iterator_copy
+C function
+
+pango_attr_iterator_copy
 */
 func (recv *AttrIterator) Copy() *AttrIterator {
 	retC := C.pango_attr_iterator_copy((*C.PangoAttrIterator)(recv.native))
@@ -266,7 +282,9 @@ func (recv *AttrIterator) Copy() *AttrIterator {
 // Destroy a #PangoAttrIterator and free all associated memory.
 /*
 
-C function : pango_attr_iterator_destroy
+C function
+
+pango_attr_iterator_destroy
 */
 func (recv *AttrIterator) Destroy() {
 	C.pango_attr_iterator_destroy((*C.PangoAttrIterator)(recv.native))
@@ -280,7 +298,9 @@ func (recv *AttrIterator) Destroy() {
 // is used.
 /*
 
-C function : pango_attr_iterator_get
+C function
+
+pango_attr_iterator_get
 */
 func (recv *AttrIterator) Get(type_ AttrType) *Attribute {
 	c_type := (C.PangoAttrType)(type_)
@@ -299,7 +319,9 @@ func (recv *AttrIterator) Get(type_ AttrType) *Attribute {
 // Get the font and other attributes at the current iterator position.
 /*
 
-C function : pango_attr_iterator_get_font
+C function
+
+pango_attr_iterator_get_font
 */
 func (recv *AttrIterator) GetFont(desc *FontDescription, language *Language, extraAttrs *glib.SList) {
 	c_desc := (*C.PangoFontDescription)(C.NULL)
@@ -325,7 +347,9 @@ func (recv *AttrIterator) GetFont(desc *FontDescription, language *Language, ext
 // Advance the iterator until the next change of style.
 /*
 
-C function : pango_attr_iterator_next
+C function
+
+pango_attr_iterator_next
 */
 func (recv *AttrIterator) Next() bool {
 	retC := C.pango_attr_iterator_next((*C.PangoAttrIterator)(recv.native))
@@ -341,7 +365,9 @@ func (recv *AttrIterator) Next() bool {
 // a signed integer are clamped to %G_MAXINT.
 /*
 
-C function : pango_attr_iterator_range
+C function
+
+pango_attr_iterator_range
 */
 func (recv *AttrIterator) Range() (int32, int32) {
 	var c_start C.gint
@@ -361,7 +387,9 @@ func (recv *AttrIterator) Range() (int32, int32) {
 // are languages.
 /*
 
-C record/class : PangoAttrLanguage
+C type
+
+PangoAttrLanguage
 */
 type AttrLanguage struct {
 	native *C.PangoAttrLanguage
@@ -397,7 +425,9 @@ func (recv *AttrLanguage) ToC() unsafe.Pointer {
 // for more than one paragraph of text.
 /*
 
-C record/class : PangoAttrList
+C type
+
+PangoAttrList
 */
 type AttrList struct {
 	native *C.PangoAttrList
@@ -422,7 +452,9 @@ func (recv *AttrList) ToC() unsafe.Pointer {
 // Create a new empty attribute list with a reference count of one.
 /*
 
-C function : pango_attr_list_new
+C function
+
+pango_attr_list_new
 */
 func AttrListNew() *AttrList {
 	retC := C.pango_attr_list_new()
@@ -442,7 +474,9 @@ func AttrListNew() *AttrList {
 // since it never removes or combines existing attributes.
 /*
 
-C function : pango_attr_list_change
+C function
+
+pango_attr_list_change
 */
 func (recv *AttrList) Change(attr *Attribute) {
 	c_attr := (*C.PangoAttribute)(C.NULL)
@@ -458,7 +492,9 @@ func (recv *AttrList) Change(attr *Attribute) {
 // Copy @list and return an identical new list.
 /*
 
-C function : pango_attr_list_copy
+C function
+
+pango_attr_list_copy
 */
 func (recv *AttrList) Copy() *AttrList {
 	retC := C.pango_attr_list_copy((*C.PangoAttrList)(recv.native))
@@ -476,7 +512,9 @@ func (recv *AttrList) Copy() *AttrList {
 // @list must not be modified until this iterator is freed.
 /*
 
-C function : pango_attr_list_get_iterator
+C function
+
+pango_attr_list_get_iterator
 */
 func (recv *AttrList) GetIterator() *AttrIterator {
 	retC := C.pango_attr_list_get_iterator((*C.PangoAttrList)(recv.native))
@@ -490,7 +528,9 @@ func (recv *AttrList) GetIterator() *AttrIterator {
 // @start_index.
 /*
 
-C function : pango_attr_list_insert
+C function
+
+pango_attr_list_insert
 */
 func (recv *AttrList) Insert(attr *Attribute) {
 	c_attr := (*C.PangoAttribute)(C.NULL)
@@ -508,7 +548,9 @@ func (recv *AttrList) Insert(attr *Attribute) {
 // @start_index.
 /*
 
-C function : pango_attr_list_insert_before
+C function
+
+pango_attr_list_insert_before
 */
 func (recv *AttrList) InsertBefore(attr *Attribute) {
 	c_attr := (*C.PangoAttribute)(C.NULL)
@@ -533,7 +575,9 @@ func (recv *AttrList) InsertBefore(attr *Attribute) {
 // a pre-edit string in the middle of an edit buffer.
 /*
 
-C function : pango_attr_list_splice
+C function
+
+pango_attr_list_splice
 */
 func (recv *AttrList) Splice(other *AttrList, pos int32, len int32) {
 	c_other := (*C.PangoAttrList)(C.NULL)
@@ -555,7 +599,9 @@ func (recv *AttrList) Splice(other *AttrList, pos int32, len int32) {
 // it contains.
 /*
 
-C function : pango_attr_list_unref
+C function
+
+pango_attr_list_unref
 */
 func (recv *AttrList) Unref() {
 	C.pango_attr_list_unref((*C.PangoAttrList)(recv.native))
@@ -567,7 +613,9 @@ func (recv *AttrList) Unref() {
 // impose shape restrictions.
 /*
 
-C record/class : PangoAttrShape
+C type
+
+PangoAttrShape
 */
 type AttrShape struct {
 	native *C.PangoAttrShape
@@ -604,7 +652,9 @@ func (recv *AttrShape) ToC() unsafe.Pointer {
 // set font size.
 /*
 
-C record/class : PangoAttrSize
+C type
+
+PangoAttrSize
 */
 type AttrSize struct {
 	native *C.PangoAttrSize
@@ -638,7 +688,9 @@ func (recv *AttrSize) ToC() unsafe.Pointer {
 // a string value.
 /*
 
-C record/class : PangoAttrString
+C type
+
+PangoAttrString
 */
 type AttrString struct {
 	native *C.PangoAttrString
@@ -675,7 +727,9 @@ func (recv *AttrString) ToC() unsafe.Pointer {
 // By default an attribute will have an all-inclusive range of [0,%G_MAXUINT].
 /*
 
-C record/class : PangoAttribute
+C type
+
+PangoAttribute
 */
 type Attribute struct {
 	native *C.PangoAttribute
@@ -711,7 +765,9 @@ func (recv *Attribute) ToC() unsafe.Pointer {
 // Make a copy of an attribute.
 /*
 
-C function : pango_attribute_copy
+C function
+
+pango_attribute_copy
 */
 func (recv *Attribute) Copy() *Attribute {
 	retC := C.pango_attribute_copy((*C.PangoAttribute)(recv.native))
@@ -723,7 +779,9 @@ func (recv *Attribute) Copy() *Attribute {
 // Destroy a #PangoAttribute and free all associated memory.
 /*
 
-C function : pango_attribute_destroy
+C function
+
+pango_attribute_destroy
 */
 func (recv *Attribute) Destroy() {
 	C.pango_attribute_destroy((*C.PangoAttribute)(recv.native))
@@ -736,7 +794,9 @@ func (recv *Attribute) Destroy() {
 // attributes apply to.
 /*
 
-C function : pango_attribute_equal
+C function
+
+pango_attribute_equal
 */
 func (recv *Attribute) Equal(attr2 *Attribute) bool {
 	c_attr2 := (*C.PangoAttribute)(C.NULL)
@@ -754,7 +814,9 @@ func (recv *Attribute) Equal(attr2 *Attribute) bool {
 // represent a color in an uncalibrated RGB color-space.
 /*
 
-C record/class : PangoColor
+C type
+
+PangoColor
 */
 type Color struct {
 	native *C.PangoColor
@@ -796,7 +858,9 @@ func (recv *Color) ToC() unsafe.Pointer {
 // by assignment in C).
 /*
 
-C function : pango_color_copy
+C function
+
+pango_color_copy
 */
 func (recv *Color) Copy() *Color {
 	retC := C.pango_color_copy((*C.PangoColor)(recv.native))
@@ -813,7 +877,9 @@ func (recv *Color) Copy() *Color {
 // Frees a color allocated by pango_color_copy().
 /*
 
-C function : pango_color_free
+C function
+
+pango_color_free
 */
 func (recv *Color) Free() {
 	C.pango_color_free((*C.PangoColor)(recv.native))
@@ -831,7 +897,9 @@ func (recv *Color) Free() {
 // forms is '&num;fff' '&num;ffffff' '&num;fffffffff' and '&num;ffffffffffff')
 /*
 
-C function : pango_color_parse
+C function
+
+pango_color_parse
 */
 func (recv *Color) Parse(spec string) bool {
 	c_spec := C.CString(spec)
@@ -845,7 +913,9 @@ func (recv *Color) Parse(spec string) bool {
 
 /*
 
-C record/class : PangoContextClass
+C type
+
+PangoContextClass
 */
 type ContextClass struct {
 	native *C.PangoContextClass
@@ -871,7 +941,9 @@ func (recv *ContextClass) ToC() unsafe.Pointer {
 // to #PangoCoverageLevel. It is an opaque structure with no public fields.
 /*
 
-C record/class : PangoCoverage
+C type
+
+PangoCoverage
 */
 type Coverage struct {
 	native *C.PangoCoverage
@@ -897,7 +969,9 @@ func (recv *Coverage) ToC() unsafe.Pointer {
 // since we refcount the structure. File a bug if you use it.)
 /*
 
-C function : pango_coverage_copy
+C function
+
+pango_coverage_copy
 */
 func (recv *Coverage) Copy() *Coverage {
 	retC := C.pango_coverage_copy((*C.PangoCoverage)(recv.native))
@@ -909,7 +983,9 @@ func (recv *Coverage) Copy() *Coverage {
 // Determine whether a particular index is covered by @coverage
 /*
 
-C function : pango_coverage_get
+C function
+
+pango_coverage_get
 */
 func (recv *Coverage) Get(index int32) CoverageLevel {
 	c_index_ := (C.int)(index)
@@ -925,7 +1001,9 @@ func (recv *Coverage) Get(index int32) CoverageLevel {
 // the corresponding index in @other.
 /*
 
-C function : pango_coverage_max
+C function
+
+pango_coverage_max
 */
 func (recv *Coverage) Max(other *Coverage) {
 	c_other := (*C.PangoCoverage)(C.NULL)
@@ -941,7 +1019,9 @@ func (recv *Coverage) Max(other *Coverage) {
 // Increase the reference count on the #PangoCoverage by one
 /*
 
-C function : pango_coverage_ref
+C function
+
+pango_coverage_ref
 */
 func (recv *Coverage) Ref() *Coverage {
 	retC := C.pango_coverage_ref((*C.PangoCoverage)(recv.native))
@@ -953,7 +1033,9 @@ func (recv *Coverage) Ref() *Coverage {
 // Modify a particular index within @coverage
 /*
 
-C function : pango_coverage_set
+C function
+
+pango_coverage_set
 */
 func (recv *Coverage) Set(index int32, level CoverageLevel) {
 	c_index_ := (C.int)(index)
@@ -971,7 +1053,9 @@ func (recv *Coverage) Set(index int32, level CoverageLevel) {
 // If the result is zero, free the coverage and all associated memory.
 /*
 
-C function : pango_coverage_unref
+C function
+
+pango_coverage_unref
 */
 func (recv *Coverage) Unref() {
 	C.pango_coverage_unref((*C.PangoCoverage)(recv.native))
@@ -997,7 +1081,9 @@ func (recv *Coverage) Unref() {
 // the characteristics of a font to load.
 /*
 
-C record/class : PangoFontDescription
+C type
+
+PangoFontDescription
 */
 type FontDescription struct {
 	native *C.PangoFontDescription
@@ -1022,7 +1108,9 @@ func (recv *FontDescription) ToC() unsafe.Pointer {
 // Creates a new font description structure with all fields unset.
 /*
 
-C function : pango_font_description_new
+C function
+
+pango_font_description_new
 */
 func FontDescriptionNew() *FontDescription {
 	retC := C.pango_font_description_new()
@@ -1044,7 +1132,9 @@ func FontDescriptionNew() *FontDescription {
 // Note that @old_match must match @desc.
 /*
 
-C function : pango_font_description_better_match
+C function
+
+pango_font_description_better_match
 */
 func (recv *FontDescription) BetterMatch(oldMatch *FontDescription, newMatch *FontDescription) bool {
 	c_old_match := (*C.PangoFontDescription)(C.NULL)
@@ -1066,7 +1156,9 @@ func (recv *FontDescription) BetterMatch(oldMatch *FontDescription, newMatch *Fo
 // Make a copy of a #PangoFontDescription.
 /*
 
-C function : pango_font_description_copy
+C function
+
+pango_font_description_copy
 */
 func (recv *FontDescription) Copy() *FontDescription {
 	retC := C.pango_font_description_copy((*C.PangoFontDescription)(recv.native))
@@ -1086,7 +1178,9 @@ func (recv *FontDescription) Copy() *FontDescription {
 // when the copy is only needed temporarily.
 /*
 
-C function : pango_font_description_copy_static
+C function
+
+pango_font_description_copy_static
 */
 func (recv *FontDescription) CopyStatic() *FontDescription {
 	retC := C.pango_font_description_copy_static((*C.PangoFontDescription)(recv.native))
@@ -1107,7 +1201,9 @@ func (recv *FontDescription) CopyStatic() *FontDescription {
 // being loaded, but still compare %FALSE.)
 /*
 
-C function : pango_font_description_equal
+C function
+
+pango_font_description_equal
 */
 func (recv *FontDescription) Equal(desc2 *FontDescription) bool {
 	c_desc2 := (*C.PangoFontDescription)(C.NULL)
@@ -1124,7 +1220,9 @@ func (recv *FontDescription) Equal(desc2 *FontDescription) bool {
 // Frees a font description.
 /*
 
-C function : pango_font_description_free
+C function
+
+pango_font_description_free
 */
 func (recv *FontDescription) Free() {
 	C.pango_font_description_free((*C.PangoFontDescription)(recv.native))
@@ -1136,7 +1234,9 @@ func (recv *FontDescription) Free() {
 // pango_font_description_set_family().
 /*
 
-C function : pango_font_description_get_family
+C function
+
+pango_font_description_get_family
 */
 func (recv *FontDescription) GetFamily() string {
 	retC := C.pango_font_description_get_family((*C.PangoFontDescription)(recv.native))
@@ -1148,7 +1248,9 @@ func (recv *FontDescription) GetFamily() string {
 // Determines which fields in a font description have been set.
 /*
 
-C function : pango_font_description_get_set_fields
+C function
+
+pango_font_description_get_set_fields
 */
 func (recv *FontDescription) GetSetFields() FontMask {
 	retC := C.pango_font_description_get_set_fields((*C.PangoFontDescription)(recv.native))
@@ -1161,7 +1263,9 @@ func (recv *FontDescription) GetSetFields() FontMask {
 // See pango_font_description_set_size().
 /*
 
-C function : pango_font_description_get_size
+C function
+
+pango_font_description_get_size
 */
 func (recv *FontDescription) GetSize() int32 {
 	retC := C.pango_font_description_get_size((*C.PangoFontDescription)(recv.native))
@@ -1174,7 +1278,9 @@ func (recv *FontDescription) GetSize() int32 {
 // See pango_font_description_set_stretch().
 /*
 
-C function : pango_font_description_get_stretch
+C function
+
+pango_font_description_get_stretch
 */
 func (recv *FontDescription) GetStretch() Stretch {
 	retC := C.pango_font_description_get_stretch((*C.PangoFontDescription)(recv.native))
@@ -1187,7 +1293,9 @@ func (recv *FontDescription) GetStretch() Stretch {
 // pango_font_description_set_style().
 /*
 
-C function : pango_font_description_get_style
+C function
+
+pango_font_description_get_style
 */
 func (recv *FontDescription) GetStyle() Style {
 	retC := C.pango_font_description_get_style((*C.PangoFontDescription)(recv.native))
@@ -1200,7 +1308,9 @@ func (recv *FontDescription) GetStyle() Style {
 // pango_font_description_set_variant().
 /*
 
-C function : pango_font_description_get_variant
+C function
+
+pango_font_description_get_variant
 */
 func (recv *FontDescription) GetVariant() Variant {
 	retC := C.pango_font_description_get_variant((*C.PangoFontDescription)(recv.native))
@@ -1213,7 +1323,9 @@ func (recv *FontDescription) GetVariant() Variant {
 // pango_font_description_set_weight().
 /*
 
-C function : pango_font_description_get_weight
+C function
+
+pango_font_description_get_weight
 */
 func (recv *FontDescription) GetWeight() Weight {
 	retC := C.pango_font_description_get_weight((*C.PangoFontDescription)(recv.native))
@@ -1227,7 +1339,9 @@ func (recv *FontDescription) GetWeight() Weight {
 // The hash value is independent of @desc->mask.
 /*
 
-C function : pango_font_description_hash
+C function
+
+pango_font_description_hash
 */
 func (recv *FontDescription) Hash() uint32 {
 	retC := C.pango_font_description_hash((*C.PangoFontDescription)(recv.native))
@@ -1244,7 +1358,9 @@ func (recv *FontDescription) Hash() uint32 {
 // If @desc_to_merge is %NULL, this function performs nothing.
 /*
 
-C function : pango_font_description_merge
+C function
+
+pango_font_description_merge
 */
 func (recv *FontDescription) Merge(descToMerge *FontDescription, replaceExisting bool) {
 	c_desc_to_merge := (*C.PangoFontDescription)(C.NULL)
@@ -1266,7 +1382,9 @@ func (recv *FontDescription) Merge(descToMerge *FontDescription, replaceExisting
 // to be used when the merged font description is only needed temporarily.
 /*
 
-C function : pango_font_description_merge_static
+C function
+
+pango_font_description_merge_static
 */
 func (recv *FontDescription) MergeStatic(descToMerge *FontDescription, replaceExisting bool) {
 	c_desc_to_merge := (*C.PangoFontDescription)(C.NULL)
@@ -1289,7 +1407,9 @@ func (recv *FontDescription) MergeStatic(descToMerge *FontDescription, replaceEx
 // separated list of family names for this field.
 /*
 
-C function : pango_font_description_set_family
+C function
+
+pango_font_description_set_family
 */
 func (recv *FontDescription) SetFamily(family string) {
 	c_family := C.CString(family)
@@ -1308,7 +1428,9 @@ func (recv *FontDescription) SetFamily(family string) {
 // if @desc is only needed temporarily.
 /*
 
-C function : pango_font_description_set_family_static
+C function
+
+pango_font_description_set_family_static
 */
 func (recv *FontDescription) SetFamilyStatic(family string) {
 	c_family := C.CString(family)
@@ -1323,7 +1445,9 @@ func (recv *FontDescription) SetFamilyStatic(family string) {
 // exclusive with pango_font_description_set_absolute_size().
 /*
 
-C function : pango_font_description_set_size
+C function
+
+pango_font_description_set_size
 */
 func (recv *FontDescription) SetSize(size int32) {
 	c_size := (C.gint)(size)
@@ -1337,7 +1461,9 @@ func (recv *FontDescription) SetSize(size int32) {
 // specifies how narrow or wide the font should be.
 /*
 
-C function : pango_font_description_set_stretch
+C function
+
+pango_font_description_set_stretch
 */
 func (recv *FontDescription) SetStretch(stretch Stretch) {
 	c_stretch := (C.PangoStretch)(stretch)
@@ -1357,7 +1483,9 @@ func (recv *FontDescription) SetStretch(stretch Stretch) {
 // if an exact match is not found.
 /*
 
-C function : pango_font_description_set_style
+C function
+
+pango_font_description_set_style
 */
 func (recv *FontDescription) SetStyle(style Style) {
 	c_style := (C.PangoStyle)(style)
@@ -1371,7 +1499,9 @@ func (recv *FontDescription) SetStyle(style Style) {
 // can either be %PANGO_VARIANT_NORMAL or %PANGO_VARIANT_SMALL_CAPS.
 /*
 
-C function : pango_font_description_set_variant
+C function
+
+pango_font_description_set_variant
 */
 func (recv *FontDescription) SetVariant(variant Variant) {
 	c_variant := (C.PangoVariant)(variant)
@@ -1387,7 +1517,9 @@ func (recv *FontDescription) SetVariant(variant Variant) {
 // numeric values are possible.
 /*
 
-C function : pango_font_description_set_weight
+C function
+
+pango_font_description_set_weight
 */
 func (recv *FontDescription) SetWeight(weight Weight) {
 	c_weight := (C.PangoWeight)(weight)
@@ -1403,7 +1535,9 @@ func (recv *FontDescription) SetWeight(weight Weight) {
 // characters that are untypical in filenames, and in lower case only.
 /*
 
-C function : pango_font_description_to_filename
+C function
+
+pango_font_description_to_filename
 */
 func (recv *FontDescription) ToFilename() string {
 	retC := C.pango_font_description_to_filename((*C.PangoFontDescription)(recv.native))
@@ -1420,7 +1554,9 @@ func (recv *FontDescription) ToFilename() string {
 // last word of the list is a valid style option.
 /*
 
-C function : pango_font_description_to_string
+C function
+
+pango_font_description_to_string
 */
 func (recv *FontDescription) ToString() string {
 	retC := C.pango_font_description_to_string((*C.PangoFontDescription)(recv.native))
@@ -1434,7 +1570,9 @@ func (recv *FontDescription) ToString() string {
 // fields will get back to their default values.
 /*
 
-C function : pango_font_description_unset_fields
+C function
+
+pango_font_description_unset_fields
 */
 func (recv *FontDescription) UnsetFields(toUnset FontMask) {
 	c_to_unset := (C.PangoFontMask)(toUnset)
@@ -1460,7 +1598,9 @@ func (recv *FontDescription) UnsetFields(toUnset FontMask) {
 // information for a single glyph.
 /*
 
-C record/class : PangoGlyphGeometry
+C type
+
+PangoGlyphGeometry
 */
 type GlyphGeometry struct {
 	native  *C.PangoGlyphGeometry
@@ -1501,7 +1641,9 @@ func (recv *GlyphGeometry) ToC() unsafe.Pointer {
 // It contains the following fields.
 /*
 
-C record/class : PangoGlyphInfo
+C type
+
+PangoGlyphInfo
 */
 type GlyphInfo struct {
 	native *C.PangoGlyphInfo
@@ -1538,7 +1680,9 @@ func (recv *GlyphInfo) ToC() unsafe.Pointer {
 // each of which contains a list of #PangoGlyphItem.
 /*
 
-C record/class : PangoGlyphItem
+C type
+
+PangoGlyphItem
 */
 type GlyphItem struct {
 	native *C.PangoGlyphItem
@@ -1569,7 +1713,9 @@ func (recv *GlyphItem) ToC() unsafe.Pointer {
 // added in the future.
 /*
 
-C record/class : PangoGlyphVisAttr
+C type
+
+PangoGlyphVisAttr
 */
 type GlyphVisAttr struct {
 	native *C.PangoGlyphVisAttr
@@ -1597,7 +1743,9 @@ func (recv *GlyphVisAttr) ToC() unsafe.Pointer {
 // The #PangoItem structure stores information about a segment of text.
 /*
 
-C record/class : PangoItem
+C type
+
+PangoItem
 */
 type Item struct {
 	native   *C.PangoItem
@@ -1637,7 +1785,9 @@ func (recv *Item) ToC() unsafe.Pointer {
 // Creates a new #PangoItem structure initialized to default values.
 /*
 
-C function : pango_item_new
+C function
+
+pango_item_new
 */
 func ItemNew() *Item {
 	retC := C.pango_item_new()
@@ -1649,7 +1799,9 @@ func ItemNew() *Item {
 // Copy an existing #PangoItem structure.
 /*
 
-C function : pango_item_copy
+C function
+
+pango_item_copy
 */
 func (recv *Item) Copy() *Item {
 	retC := C.pango_item_copy((*C.PangoItem)(recv.native))
@@ -1666,7 +1818,9 @@ func (recv *Item) Copy() *Item {
 // Free a #PangoItem and all associated memory.
 /*
 
-C function : pango_item_free
+C function
+
+pango_item_free
 */
 func (recv *Item) Free() {
 	C.pango_item_free((*C.PangoItem)(recv.native))
@@ -1686,7 +1840,9 @@ func (recv *Item) Free() {
 // length of the split items itself.
 /*
 
-C function : pango_item_split
+C function
+
+pango_item_split
 */
 func (recv *Item) Split(splitIndex int32, splitOffset int32) *Item {
 	c_split_index := (C.int)(splitIndex)
@@ -1706,7 +1862,9 @@ func (recv *Item) Split(splitIndex int32, splitOffset int32) *Item {
 // copied and compared with each other.
 /*
 
-C record/class : PangoLanguage
+C type
+
+PangoLanguage
 */
 type Language struct {
 	native *C.PangoLanguage
@@ -1748,7 +1906,9 @@ func (recv *Language) ToC() unsafe.Pointer {
 // </programlisting></informalexample>
 /*
 
-C function : pango_language_get_sample_string
+C function
+
+pango_language_get_sample_string
 */
 func (recv *Language) GetSampleString() string {
 	retC := C.pango_language_get_sample_string((*C.PangoLanguage)(recv.native))
@@ -1764,7 +1924,9 @@ func (recv *Language) GetSampleString() string {
 // in the tag is '-'.
 /*
 
-C function : pango_language_matches
+C function
+
+pango_language_matches
 */
 func (recv *Language) Matches(rangeList string) bool {
 	c_range_list := C.CString(rangeList)
@@ -1779,7 +1941,9 @@ func (recv *Language) Matches(rangeList string) bool {
 // Gets the RFC-3066 format string representing the given language tag.
 /*
 
-C function : pango_language_to_string
+C function
+
+pango_language_to_string
 */
 func (recv *Language) ToString() string {
 	retC := C.pango_language_to_string((*C.PangoLanguage)(recv.native))
@@ -1790,7 +1954,9 @@ func (recv *Language) ToString() string {
 
 /*
 
-C record/class : PangoLayoutClass
+C type
+
+PangoLayoutClass
 */
 type LayoutClass struct {
 	native *C.PangoLayoutClass
@@ -1824,7 +1990,9 @@ func (recv *LayoutClass) ToC() unsafe.Pointer {
 // code specific to each rendering system.
 /*
 
-C record/class : PangoLayoutLine
+C type
+
+PangoLayoutLine
 */
 type LayoutLine struct {
 	native *C.PangoLayoutLine
@@ -1865,7 +2033,9 @@ func (recv *LayoutLine) ToC() unsafe.Pointer {
 // of the rectangles.
 /*
 
-C function : pango_layout_line_get_extents
+C function
+
+pango_layout_line_get_extents
 */
 func (recv *LayoutLine) GetExtents() (*Rectangle, *Rectangle) {
 	var c_ink_rect C.PangoRectangle
@@ -1888,7 +2058,9 @@ func (recv *LayoutLine) GetExtents() (*Rectangle, *Rectangle) {
 // passes them as first argument to pango_extents_to_pixels()).
 /*
 
-C function : pango_layout_line_get_pixel_extents
+C function
+
+pango_layout_line_get_pixel_extents
 */
 func (recv *LayoutLine) GetPixelExtents() (*Rectangle, *Rectangle) {
 	var c_ink_rect C.PangoRectangle
@@ -1909,7 +2081,9 @@ func (recv *LayoutLine) GetPixelExtents() (*Rectangle, *Rectangle) {
 // Converts an index within a line to a X position.
 /*
 
-C function : pango_layout_line_index_to_x
+C function
+
+pango_layout_line_index_to_x
 */
 func (recv *LayoutLine) IndexToX(index int32, trailing bool) int32 {
 	c_index_ := (C.int)(index)
@@ -1931,7 +2105,9 @@ func (recv *LayoutLine) IndexToX(index int32, trailing bool) int32 {
 // will be freed.
 /*
 
-C function : pango_layout_line_unref
+C function
+
+pango_layout_line_unref
 */
 func (recv *LayoutLine) Unref() {
 	C.pango_layout_line_unref((*C.PangoLayoutLine)(recv.native))
@@ -1951,7 +2127,9 @@ func (recv *LayoutLine) Unref() {
 // in that grapheme. The reverse is true for a left-to-right line.
 /*
 
-C function : pango_layout_line_x_to_index
+C function
+
+pango_layout_line_x_to_index
 */
 func (recv *LayoutLine) XToIndex(xPos int32) (bool, int32, int32) {
 	c_x_pos := (C.int)(xPos)
@@ -1974,7 +2152,9 @@ func (recv *LayoutLine) XToIndex(xPos int32) (bool, int32, int32) {
 // about the attributes of a single character.
 /*
 
-C record/class : PangoLogAttr
+C type
+
+PangoLogAttr
 */
 type LogAttr struct {
 	native *C.PangoLogAttr
@@ -2018,7 +2198,9 @@ func (recv *LogAttr) ToC() unsafe.Pointer {
 // of text. (See, for instance, pango_font_get_glyph_extents())
 /*
 
-C record/class : PangoRectangle
+C type
+
+PangoRectangle
 */
 type Rectangle struct {
 	native *C.PangoRectangle
@@ -2060,7 +2242,9 @@ func (recv *Rectangle) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : PangoRendererPrivate
+C type
+
+PangoRendererPrivate
 */
 type RendererPrivate struct {
 	native *C.PangoRendererPrivate
@@ -2088,7 +2272,9 @@ func (recv *RendererPrivate) ToC() unsafe.Pointer {
 // and identify ranges in different scripts.
 /*
 
-C record/class : PangoScriptIter
+C type
+
+PangoScriptIter
 */
 type ScriptIter struct {
 	native *C.PangoScriptIter
@@ -2114,7 +2300,9 @@ func (recv *ScriptIter) ToC() unsafe.Pointer {
 // of tab stops. Each tab stop has an alignment and a position.
 /*
 
-C record/class : PangoTabArray
+C type
+
+PangoTabArray
 */
 type TabArray struct {
 	native *C.PangoTabArray
@@ -2141,7 +2329,9 @@ func (recv *TabArray) ToC() unsafe.Pointer {
 // units. All stops are initially at position 0.
 /*
 
-C function : pango_tab_array_new
+C function
+
+pango_tab_array_new
 */
 func TabArrayNew(initialSize int32, positionsInPixels bool) *TabArray {
 	c_initial_size := (C.gint)(initialSize)
@@ -2160,7 +2350,9 @@ func TabArrayNew(initialSize int32, positionsInPixels bool) *TabArray {
 // Copies a #PangoTabArray
 /*
 
-C function : pango_tab_array_copy
+C function
+
+pango_tab_array_copy
 */
 func (recv *TabArray) Copy() *TabArray {
 	retC := C.pango_tab_array_copy((*C.PangoTabArray)(recv.native))
@@ -2172,7 +2364,9 @@ func (recv *TabArray) Copy() *TabArray {
 // Frees a tab array and associated resources.
 /*
 
-C function : pango_tab_array_free
+C function
+
+pango_tab_array_free
 */
 func (recv *TabArray) Free() {
 	C.pango_tab_array_free((*C.PangoTabArray)(recv.native))
@@ -2184,7 +2378,9 @@ func (recv *TabArray) Free() {
 // in Pango units.
 /*
 
-C function : pango_tab_array_get_positions_in_pixels
+C function
+
+pango_tab_array_get_positions_in_pixels
 */
 func (recv *TabArray) GetPositionsInPixels() bool {
 	retC := C.pango_tab_array_get_positions_in_pixels((*C.PangoTabArray)(recv.native))
@@ -2196,7 +2392,9 @@ func (recv *TabArray) GetPositionsInPixels() bool {
 // Gets the number of tab stops in @tab_array.
 /*
 
-C function : pango_tab_array_get_size
+C function
+
+pango_tab_array_get_size
 */
 func (recv *TabArray) GetSize() int32 {
 	retC := C.pango_tab_array_get_size((*C.PangoTabArray)(recv.native))
@@ -2213,7 +2411,9 @@ func (recv *TabArray) GetSize() int32 {
 // were added as a result of growing the array.
 /*
 
-C function : pango_tab_array_resize
+C function
+
+pango_tab_array_resize
 */
 func (recv *TabArray) Resize(newSize int32) {
 	c_new_size := (C.gint)(newSize)
@@ -2228,7 +2428,9 @@ func (recv *TabArray) Resize(newSize int32) {
 // implementation.
 /*
 
-C function : pango_tab_array_set_tab
+C function
+
+pango_tab_array_set_tab
 */
 func (recv *TabArray) SetTab(tabIndex int32, alignment TabAlign, location int32) {
 	c_tab_index := (C.gint)(tabIndex)

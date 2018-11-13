@@ -37,7 +37,9 @@ import "C"
 // Do not call this API on a #GSource that you did not create.
 /*
 
-C function : g_source_add_child_source
+C function
+
+g_source_add_child_source
 */
 func (recv *Source) AddChildSource(childSource *Source) {
 	c_child_source := (*C.GSource)(C.NULL)
@@ -59,7 +61,9 @@ func (recv *Source) AddChildSource(childSource *Source) {
 // other reasonable alternative otherwise.  See g_get_monotonic_time().
 /*
 
-C function : g_source_get_time
+C function
+
+g_source_get_time
 */
 func (recv *Source) GetTime() int64 {
 	retC := C.g_source_get_time((*C.GSource)(recv.native))
@@ -74,7 +78,9 @@ func (recv *Source) GetTime() int64 {
 // Do not call this API on a #GSource that you did not create.
 /*
 
-C function : g_source_remove_child_source
+C function
+
+g_source_remove_child_source
 */
 func (recv *Source) RemoveChildSource(childSource *Source) {
 	c_child_source := (*C.GSource)(C.NULL)

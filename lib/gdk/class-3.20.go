@@ -44,7 +44,9 @@ import "C"
 // Returns the #GdkSeat the device belongs to.
 /*
 
-C function : gdk_device_get_seat
+C function
+
+gdk_device_get_seat
 */
 func (recv *Device) GetSeat() *Seat {
 	retC := C.gdk_device_get_seat((*C.GdkDevice)(recv.native))
@@ -174,7 +176,9 @@ func display_seatRemovedHandler(_ *C.GObject, c_seat *C.GdkSeat, data C.gpointer
 // Returns the default #GdkSeat for this display.
 /*
 
-C function : gdk_display_get_default_seat
+C function
+
+gdk_display_get_default_seat
 */
 func (recv *Display) GetDefaultSeat() *Seat {
 	retC := C.gdk_display_get_default_seat((*C.GdkDisplay)(recv.native))
@@ -186,7 +190,9 @@ func (recv *Display) GetDefaultSeat() *Seat {
 // Returns the list of seats known to @display.
 /*
 
-C function : gdk_display_list_seats
+C function
+
+gdk_display_list_seats
 */
 func (recv *Display) ListSeats() *glib.List {
 	retC := C.gdk_display_list_seats((*C.GdkDisplay)(recv.native))
@@ -266,7 +272,9 @@ func dragcontext_dndFinishedHandler(_ *C.GObject, data C.gpointer) {
 // the drag operation is over.
 /*
 
-C function : gdk_drag_context_get_drag_window
+C function
+
+gdk_drag_context_get_drag_window
 */
 func (recv *DragContext) GetDragWindow() *Window {
 	retC := C.gdk_drag_context_get_drag_window((*C.GdkDragContext)(recv.native))
@@ -298,7 +306,9 @@ func (recv *DragContext) GetDragWindow() *Window {
 // cancelled through other means.
 /*
 
-C function : gdk_drag_context_manage_dnd
+C function
+
+gdk_drag_context_manage_dnd
 */
 func (recv *DragContext) ManageDnd(ipcWindow *Window, actions DragAction) bool {
 	c_ipc_window := (*C.GdkWindow)(C.NULL)
@@ -319,7 +329,9 @@ func (recv *DragContext) ManageDnd(ipcWindow *Window, actions DragAction) bool {
 // top left corner of the drag window.
 /*
 
-C function : gdk_drag_context_set_hotspot
+C function
+
+gdk_drag_context_set_hotspot
 */
 func (recv *DragContext) SetHotspot(hotX int32, hotY int32) {
 	c_hot_x := (C.gint)(hotX)
@@ -349,7 +361,9 @@ func (recv *DragContext) SetHotspot(hotX int32, hotY int32) {
 // kind of shader programs to load.
 /*
 
-C function : gdk_gl_context_is_legacy
+C function
+
+gdk_gl_context_is_legacy
 */
 func (recv *GLContext) IsLegacy() bool {
 	retC := C.gdk_gl_context_is_legacy((*C.GdkGLContext)(recv.native))

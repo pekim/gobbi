@@ -11,7 +11,9 @@ import "C"
 // Returns whether the Scroll Lock modifer is locked.
 /*
 
-C function : gdk_keymap_get_scroll_lock_state
+C function
+
+gdk_keymap_get_scroll_lock_state
 */
 func (recv *Keymap) GetScrollLockState() bool {
 	retC := C.gdk_keymap_get_scroll_lock_state((*C.GdkKeymap)(recv.native))
@@ -26,7 +28,9 @@ func (recv *Keymap) GetScrollLockState() bool {
 // See gdk_window_set_pass_through() for details
 /*
 
-C function : gdk_window_get_pass_through
+C function
+
+gdk_window_get_pass_through
 */
 func (recv *Window) GetPassThrough() bool {
 	retC := C.gdk_window_get_pass_through((*C.GdkWindow)(recv.native))
@@ -55,7 +59,9 @@ func (recv *Window) GetPassThrough() bool {
 // enter/leave events on its way to the destination window.
 /*
 
-C function : gdk_window_set_pass_through
+C function
+
+gdk_window_set_pass_through
 */
 func (recv *Window) SetPassThrough(passThrough bool) {
 	c_pass_through :=

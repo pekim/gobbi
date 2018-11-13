@@ -27,7 +27,9 @@ import "C"
 // The time to date conversion is done using the user's current timezone.
 /*
 
-C function : g_date_set_time_val
+C function
+
+g_date_set_time_val
 */
 func (recv *Date) SetTimeVal(timeval *TimeVal) {
 	c_timeval := (*C.GTimeVal)(C.NULL)
@@ -46,7 +48,9 @@ func (recv *Date) SetTimeVal(timeval *TimeVal) {
 // blocking to get ownership of @context.
 /*
 
-C function : g_main_context_is_owner
+C function
+
+g_main_context_is_owner
 */
 func (recv *MainContext) IsOwner() bool {
 	retC := C.g_main_context_is_owner((*C.GMainContext)(recv.native))

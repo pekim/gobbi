@@ -70,7 +70,9 @@ import "C"
 // valid thing to do.
 /*
 
-C function : g_child_watch_source_new
+C function
+
+g_child_watch_source_new
 */
 func ChildWatchSourceNew(pid Pid) *Source {
 	c_pid := (C.GPid)(pid)
@@ -86,7 +88,9 @@ func ChildWatchSourceNew(pid Pid) *Source {
 // for filenames. Use g_filename_to_utf8() to convert it to UTF-8.
 /*
 
-C function : g_file_read_link
+C function
+
+g_file_read_link
 */
 func FileReadLink(filename string) (string, error) {
 	c_filename := C.CString(filename)
@@ -131,7 +135,9 @@ func FileReadLink(filename string) (string, error) {
 // array directly to execvpe(), g_spawn_async(), or the like.
 /*
 
-C function : g_setenv
+C function
+
+g_setenv
 */
 func Setenv(variable string, value string, overwrite bool) bool {
 	c_variable := C.CString(variable)
@@ -152,7 +158,9 @@ func Setenv(variable string, value string, overwrite bool) bool {
 // An auxiliary function for gettext() support (see Q_()).
 /*
 
-C function : g_strip_context
+C function
+
+g_strip_context
 */
 func StripContext(msgid string, msgval string) string {
 	c_msgid := C.CString(msgid)
@@ -180,7 +188,9 @@ func StripContext(msgid string, msgval string) string {
 // pointed to by @mirrored_ch.  Otherwise the original character is put.
 /*
 
-C function : g_unichar_get_mirror_char
+C function
+
+g_unichar_get_mirror_char
 */
 func UnicharGetMirrorChar(ch rune, mirroredCh rune) bool {
 	c_ch := (C.gunichar)(ch)
@@ -212,7 +222,9 @@ func UnicharGetMirrorChar(ch rune, mirroredCh rune) bool {
 // array directly to execvpe(), g_spawn_async(), or the like.
 /*
 
-C function : g_unsetenv
+C function
+
+g_unsetenv
 */
 func Unsetenv(variable string) {
 	c_variable := C.CString(variable)

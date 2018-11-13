@@ -57,7 +57,9 @@ import "C"
 // a prior call to gtk_application_window_set_help_overlay().
 /*
 
-C function : gtk_application_window_get_help_overlay
+C function
+
+gtk_application_window_get_help_overlay
 */
 func (recv *ApplicationWindow) GetHelpOverlay() *ShortcutsWindow {
 	retC := C.gtk_application_window_get_help_overlay((*C.GtkApplicationWindow)(recv.native))
@@ -78,7 +80,9 @@ func (recv *ApplicationWindow) GetHelpOverlay() *ShortcutsWindow {
 // @window takes resposibility for destroying @help_overlay.
 /*
 
-C function : gtk_application_window_set_help_overlay
+C function
+
+gtk_application_window_set_help_overlay
 */
 func (recv *ApplicationWindow) SetHelpOverlay(helpOverlay *ShortcutsWindow) {
 	c_help_overlay := (*C.GtkShortcutsWindow)(C.NULL)
@@ -105,7 +109,11 @@ func (recv *ApplicationWindow) SetHelpOverlay(helpOverlay *ShortcutsWindow) {
 // This is required, as there may not be one in the case of a platform native dialog.
 // Showing, hiding and running the dialog is handled by the #GtkNativeDialog functions.
 //
-// ## Typical usage ## {#gtkfilechoosernative-typical-usage}
+/*
+Typical usage
+
+(see gtkfilechoosernative-typical-usage)
+*/
 //
 // In the simplest of cases, you can the following code to use
 // #GtkFileChooserDialog to select a file for opening:
@@ -173,14 +181,18 @@ func (recv *ApplicationWindow) SetHelpOverlay(helpOverlay *ShortcutsWindow) {
 //
 // For more information on how to best set up a file dialog, see #GtkFileChooserDialog.
 //
-// ## Response Codes ## {#gtkfilechooserdialognative-responses}
+/*
+Response Codes
+
+(see gtkfilechooserdialognative-responses)
+*/
 //
 // #GtkFileChooserNative inherits from #GtkNativeDialog, which means it
 // will return #GTK_RESPONSE_ACCEPT if the user accepted, and
 // #GTK_RESPONSE_CANCEL if he pressed cancel. It can also return
 // #GTK_RESPONSE_DELETE_EVENT if the window was unexpectedly closed.
 //
-// ## Differences from #GtkFileChooserDialog ##  {#gtkfilechooserdialognative-differences}
+// Differences from #GtkFileChooserDialog ##  {#gtkfilechooserdialognative-differences}
 //
 // There are a few things in the GtkFileChooser API that are not
 // possible to use with #GtkFileChooserNative, as such use would
@@ -203,7 +215,11 @@ func (recv *ApplicationWindow) SetHelpOverlay(helpOverlay *ShortcutsWindow) {
 // No operations that change the the dialog work while the dialog is
 // visible. Set all the properties that are required before showing the dialog.
 //
-// ## Win32 details ## {#gtkfilechooserdialognative-win32}
+/*
+Win32 details
+
+(see gtkfilechooserdialognative-win32)
+*/
 //
 // On windows the IFileDialog implementation (added in Windows Vista) is
 // used. It supports many of the features that #GtkFileChooserDialog
@@ -218,7 +234,11 @@ func (recv *ApplicationWindow) SetHelpOverlay(helpOverlay *ShortcutsWindow) {
 // If any of these features are used the regular #GtkFileChooserDialog
 // will be used in place of the native one.
 //
-// ## Portal details ## {#gtkfilechooserdialognative-portal}
+/*
+Portal details
+
+(see gtkfilechooserdialognative-portal)
+*/
 //
 // When the org.freedesktop.portal.FileChooser portal is available on the
 // session bus, it is used to bring up an out-of-process file chooser. Depending
@@ -232,7 +252,11 @@ func (recv *ApplicationWindow) SetHelpOverlay(helpOverlay *ShortcutsWindow) {
 //
 // * Any #GtkFileFilter added with a custom filter.
 //
-// ## macOS details ## {#gtkfilechooserdialognative-macos}
+/*
+macOS details
+
+(see gtkfilechooserdialognative-macos)
+*/
 //
 // On macOS the NSSavePanel and NSOpenPanel classes are used to provide native
 // file chooser dialogs. Some features provided by #GtkFileChooserDialog are
@@ -249,7 +273,9 @@ func (recv *ApplicationWindow) SetHelpOverlay(helpOverlay *ShortcutsWindow) {
 // * Shortcut folders.
 /*
 
-C record/class : GtkFileChooserNative
+C type
+
+GtkFileChooserNative
 */
 type FileChooserNative struct {
 	native *C.GtkFileChooserNative
@@ -290,7 +316,9 @@ func CastToFileChooserNative(object *gobject.Object) *FileChooserNative {
 // Creates a new #GtkFileChooserNative.
 /*
 
-C function : gtk_file_chooser_native_new
+C function
+
+gtk_file_chooser_native_new
 */
 func FileChooserNativeNew(title string, parent *Window, action FileChooserAction, acceptLabel string, cancelLabel string) *FileChooserNative {
 	c_title := C.CString(title)
@@ -318,7 +346,9 @@ func FileChooserNativeNew(title string, parent *Window, action FileChooserAction
 // Retrieves the custom label text for the accept button.
 /*
 
-C function : gtk_file_chooser_native_get_accept_label
+C function
+
+gtk_file_chooser_native_get_accept_label
 */
 func (recv *FileChooserNative) GetAcceptLabel() string {
 	retC := C.gtk_file_chooser_native_get_accept_label((*C.GtkFileChooserNative)(recv.native))
@@ -330,7 +360,9 @@ func (recv *FileChooserNative) GetAcceptLabel() string {
 // Retrieves the custom label text for the cancel button.
 /*
 
-C function : gtk_file_chooser_native_get_cancel_label
+C function
+
+gtk_file_chooser_native_get_cancel_label
 */
 func (recv *FileChooserNative) GetCancelLabel() string {
 	retC := C.gtk_file_chooser_native_get_cancel_label((*C.GtkFileChooserNative)(recv.native))
@@ -348,7 +380,9 @@ func (recv *FileChooserNative) GetCancelLabel() string {
 // Pressing Alt and that key activates the button.
 /*
 
-C function : gtk_file_chooser_native_set_accept_label
+C function
+
+gtk_file_chooser_native_set_accept_label
 */
 func (recv *FileChooserNative) SetAcceptLabel(acceptLabel string) {
 	c_accept_label := C.CString(acceptLabel)
@@ -368,7 +402,9 @@ func (recv *FileChooserNative) SetAcceptLabel(acceptLabel string) {
 // Pressing Alt and that key activates the button.
 /*
 
-C function : gtk_file_chooser_native_set_cancel_label
+C function
+
+gtk_file_chooser_native_set_cancel_label
 */
 func (recv *FileChooserNative) SetCancelLabel(cancelLabel string) {
 	c_cancel_label := C.CString(cancelLabel)
@@ -396,7 +432,9 @@ func (recv *FileChooserNative) SetCancelLabel(cancelLabel string) {
 // similar to gtk_dialog_run().
 /*
 
-C record/class : GtkNativeDialog
+C type
+
+GtkNativeDialog
 */
 type NativeDialog struct {
 	native *C.GtkNativeDialog
@@ -441,7 +479,9 @@ func CastToNativeDialog(object *gobject.Object) *NativeDialog {
 // system to the #GtkNativeDialog.
 /*
 
-C function : gtk_native_dialog_destroy
+C function
+
+gtk_native_dialog_destroy
 */
 func (recv *NativeDialog) Destroy() {
 	C.gtk_native_dialog_destroy((*C.GtkNativeDialog)(recv.native))
@@ -452,7 +492,9 @@ func (recv *NativeDialog) Destroy() {
 // Returns whether the dialog is modal. See gtk_native_dialog_set_modal().
 /*
 
-C function : gtk_native_dialog_get_modal
+C function
+
+gtk_native_dialog_get_modal
 */
 func (recv *NativeDialog) GetModal() bool {
 	retC := C.gtk_native_dialog_get_modal((*C.GtkNativeDialog)(recv.native))
@@ -464,7 +506,9 @@ func (recv *NativeDialog) GetModal() bool {
 // Gets the title of the #GtkNativeDialog.
 /*
 
-C function : gtk_native_dialog_get_title
+C function
+
+gtk_native_dialog_get_title
 */
 func (recv *NativeDialog) GetTitle() string {
 	retC := C.gtk_native_dialog_get_title((*C.GtkNativeDialog)(recv.native))
@@ -477,7 +521,9 @@ func (recv *NativeDialog) GetTitle() string {
 // gtk_native_dialog_set_transient_for().
 /*
 
-C function : gtk_native_dialog_get_transient_for
+C function
+
+gtk_native_dialog_get_transient_for
 */
 func (recv *NativeDialog) GetTransientFor() *Window {
 	retC := C.gtk_native_dialog_get_transient_for((*C.GtkNativeDialog)(recv.native))
@@ -494,7 +540,9 @@ func (recv *NativeDialog) GetTransientFor() *Window {
 // Determines whether the dialog is visible.
 /*
 
-C function : gtk_native_dialog_get_visible
+C function
+
+gtk_native_dialog_get_visible
 */
 func (recv *NativeDialog) GetVisible() bool {
 	retC := C.gtk_native_dialog_get_visible((*C.GtkNativeDialog)(recv.native))
@@ -510,7 +558,9 @@ func (recv *NativeDialog) GetVisible() bool {
 // If the dialog is not visible this does nothing.
 /*
 
-C function : gtk_native_dialog_hide
+C function
+
+gtk_native_dialog_hide
 */
 func (recv *NativeDialog) Hide() {
 	C.gtk_native_dialog_hide((*C.GtkNativeDialog)(recv.native))
@@ -549,7 +599,9 @@ func (recv *NativeDialog) Hide() {
 // be triggered during a gtk_nautilus_dialog_run() call.
 /*
 
-C function : gtk_native_dialog_run
+C function
+
+gtk_native_dialog_run
 */
 func (recv *NativeDialog) Run() int32 {
 	retC := C.gtk_native_dialog_run((*C.GtkNativeDialog)(recv.native))
@@ -566,7 +618,9 @@ func (recv *NativeDialog) Run() int32 {
 // will then disallow lowering the dialog below the parent.
 /*
 
-C function : gtk_native_dialog_set_modal
+C function
+
+gtk_native_dialog_set_modal
 */
 func (recv *NativeDialog) SetModal(modal bool) {
 	c_modal :=
@@ -580,7 +634,9 @@ func (recv *NativeDialog) SetModal(modal bool) {
 // Sets the title of the #GtkNativeDialog.
 /*
 
-C function : gtk_native_dialog_set_title
+C function
+
+gtk_native_dialog_set_title
 */
 func (recv *NativeDialog) SetTitle(title string) {
 	c_title := C.CString(title)
@@ -600,7 +656,9 @@ func (recv *NativeDialog) SetTitle(title string) {
 // Passing %NULL for @parent unsets the current transient window.
 /*
 
-C function : gtk_native_dialog_set_transient_for
+C function
+
+gtk_native_dialog_set_transient_for
 */
 func (recv *NativeDialog) SetTransientFor(parent *Window) {
 	c_parent := (*C.GtkWindow)(C.NULL)
@@ -621,7 +679,9 @@ func (recv *NativeDialog) SetTransientFor(parent *Window) {
 // Multiple calls while the dialog is visible will be ignored.
 /*
 
-C function : gtk_native_dialog_show
+C function
+
+gtk_native_dialog_show
 */
 func (recv *NativeDialog) Show() {
 	C.gtk_native_dialog_show((*C.GtkNativeDialog)(recv.native))
@@ -673,7 +733,9 @@ func (recv *NativeDialog) Show() {
 // is required that those are made stateful and accepting this #GVariantType.
 /*
 
-C record/class : GtkPadController
+C type
+
+GtkPadController
 */
 type PadController struct {
 	native *C.GtkPadController
@@ -835,7 +897,9 @@ func placessidebar_unmountHandler(_ *C.GObject, c_mount_operation *C.GMountOpera
 // See gtk_popover_set_constrain_to().
 /*
 
-C function : gtk_popover_get_constrain_to
+C function
+
+gtk_popover_get_constrain_to
 */
 func (recv *Popover) GetConstrainTo() PopoverConstraint {
 	retC := C.gtk_popover_get_constrain_to((*C.GtkPopover)(recv.native))
@@ -850,7 +914,9 @@ func (recv *Popover) GetConstrainTo() PopoverConstraint {
 // and may already impose constraints.
 /*
 
-C function : gtk_popover_set_constrain_to
+C function
+
+gtk_popover_set_constrain_to
 */
 func (recv *Popover) SetConstrainTo(constraint PopoverConstraint) {
 	c_constraint := (C.GtkPopoverConstraint)(constraint)
@@ -866,7 +932,9 @@ func (recv *Popover) SetConstrainTo(constraint PopoverConstraint) {
 // this setting.
 /*
 
-C function : gtk_settings_reset_property
+C function
+
+gtk_settings_reset_property
 */
 func (recv *Settings) ResetProperty(name string) {
 	c_name := C.CString(name)
@@ -881,7 +949,9 @@ func (recv *Settings) ResetProperty(name string) {
 // in the user interface.
 /*
 
-C record/class : GtkShortcutLabel
+C type
+
+GtkShortcutLabel
 */
 type ShortcutLabel struct {
 	native *C.GtkShortcutLabel
@@ -942,7 +1012,9 @@ func CastToShortcutLabel(object *gobject.Object) *ShortcutLabel {
 // This widget is only meant to be used with #GtkShortcutsWindow.
 /*
 
-C record/class : GtkShortcutsGroup
+C type
+
+GtkShortcutsGroup
 */
 type ShortcutsGroup struct {
 	native *C.GtkShortcutsGroup
@@ -1007,7 +1079,9 @@ func CastToShortcutsGroup(object *gobject.Object) *ShortcutsGroup {
 // This widget is only meant to be used with #GtkShortcutsWindow.
 /*
 
-C record/class : GtkShortcutsSection
+C type
+
+GtkShortcutsSection
 */
 type ShortcutsSection struct {
 	native *C.GtkShortcutsSection
@@ -1066,7 +1140,9 @@ func CastToShortcutsSection(object *gobject.Object) *ShortcutsSection {
 // with a short text. This widget is only meant to be used with #GtkShortcutsWindow.
 /*
 
-C record/class : GtkShortcutsShortcut
+C type
+
+GtkShortcutsShortcut
 */
 type ShortcutsShortcut struct {
 	native *C.GtkShortcutsShortcut
@@ -1161,7 +1237,9 @@ func CastToShortcutsShortcut(object *gobject.Object) *ShortcutsShortcut {
 // The .ui file for this example can be found [here](https://git.gnome.org/browse/gtk+/tree/demos/gtk-demo/shortcuts-builder.ui).
 /*
 
-C record/class : GtkShortcutsWindow
+C type
+
+GtkShortcutsWindow
 */
 type ShortcutsWindow struct {
 	native *C.GtkShortcutsWindow
@@ -1346,7 +1424,9 @@ func shortcutswindow_searchHandler(_ *C.GObject, data C.gpointer) {
 // the format of the returned string, it may change.
 /*
 
-C function : gtk_style_context_to_string
+C function
+
+gtk_style_context_to_string
 */
 func (recv *StyleContext) ToString(flags StyleContextPrintFlags) string {
 	c_flags := (C.GtkStyleContextPrintFlags)(flags)
@@ -1365,7 +1445,9 @@ func (recv *StyleContext) ToString(flags StyleContextPrintFlags) string {
 // function is useful for a #GtkTextTag subclass.
 /*
 
-C function : gtk_text_tag_changed
+C function
+
+gtk_text_tag_changed
 */
 func (recv *TextTag) Changed(sizeChanged bool) {
 	c_size_changed :=
@@ -1385,7 +1467,9 @@ func (recv *TextTag) Changed(sizeChanged bool) {
 // #GtkWidget::key-press-event handler).
 /*
 
-C function : gtk_text_view_reset_cursor_blink
+C function
+
+gtk_text_view_reset_cursor_blink
 */
 func (recv *TextView) ResetCursorBlink() {
 	C.gtk_text_view_reset_cursor_blink((*C.GtkTextView)(recv.native))
@@ -1399,7 +1483,9 @@ func (recv *TextView) ResetCursorBlink() {
 // See gtk_widget_set_focus_on_click().
 /*
 
-C function : gtk_widget_get_focus_on_click
+C function
+
+gtk_widget_get_focus_on_click
 */
 func (recv *Widget) GetFocusOnClick() bool {
 	retC := C.gtk_widget_get_focus_on_click((*C.GtkWidget)(recv.native))
@@ -1418,7 +1504,9 @@ func (recv *Widget) GetFocusOnClick() bool {
 // An example user of this function is gtk_widget_set_halign().
 /*
 
-C function : gtk_widget_queue_allocate
+C function
+
+gtk_widget_queue_allocate
 */
 func (recv *Widget) QueueAllocate() {
 	C.gtk_widget_queue_allocate((*C.GtkWidget)(recv.native))
@@ -1432,7 +1520,9 @@ func (recv *Widget) QueueAllocate() {
 // application.
 /*
 
-C function : gtk_widget_set_focus_on_click
+C function
+
+gtk_widget_set_focus_on_click
 */
 func (recv *Widget) SetFocusOnClick(focusOnClick bool) {
 	c_focus_on_click :=

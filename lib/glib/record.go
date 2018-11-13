@@ -14,7 +14,9 @@ import "C"
 // Contains the public fields of a GArray.
 /*
 
-C record/class : GArray
+C type
+
+GArray
 */
 type Array struct {
 	native *C.GArray
@@ -51,7 +53,9 @@ func (recv *Array) ToC() unsafe.Pointer {
 // g_async_queue_* functions.
 /*
 
-C record/class : GAsyncQueue
+C type
+
+GAsyncQueue
 */
 type AsyncQueue struct {
 	native *C.GAsyncQueue
@@ -83,7 +87,9 @@ func (recv *AsyncQueue) ToC() unsafe.Pointer {
 // of the queue or due to scheduling.
 /*
 
-C function : g_async_queue_length
+C function
+
+g_async_queue_length
 */
 func (recv *AsyncQueue) Length() int32 {
 	retC := C.g_async_queue_length((*C.GAsyncQueue)(recv.native))
@@ -104,7 +110,9 @@ func (recv *AsyncQueue) Length() int32 {
 // This function must be called while holding the @queue's lock.
 /*
 
-C function : g_async_queue_length_unlocked
+C function
+
+g_async_queue_length_unlocked
 */
 func (recv *AsyncQueue) LengthUnlocked() int32 {
 	retC := C.g_async_queue_length_unlocked((*C.GAsyncQueue)(recv.native))
@@ -124,7 +132,9 @@ func (recv *AsyncQueue) LengthUnlocked() int32 {
 // deadlock may occur.
 /*
 
-C function : g_async_queue_lock
+C function
+
+g_async_queue_lock
 */
 func (recv *AsyncQueue) Lock() {
 	C.g_async_queue_lock((*C.GAsyncQueue)(recv.native))
@@ -136,7 +146,9 @@ func (recv *AsyncQueue) Lock() {
 // blocks until data becomes available.
 /*
 
-C function : g_async_queue_pop
+C function
+
+g_async_queue_pop
 */
 func (recv *AsyncQueue) Pop() uintptr {
 	retC := C.g_async_queue_pop((*C.GAsyncQueue)(recv.native))
@@ -151,7 +163,9 @@ func (recv *AsyncQueue) Pop() uintptr {
 // This function must be called while holding the @queue's lock.
 /*
 
-C function : g_async_queue_pop_unlocked
+C function
+
+g_async_queue_pop_unlocked
 */
 func (recv *AsyncQueue) PopUnlocked() uintptr {
 	retC := C.g_async_queue_pop_unlocked((*C.GAsyncQueue)(recv.native))
@@ -163,7 +177,9 @@ func (recv *AsyncQueue) PopUnlocked() uintptr {
 // Pushes the @data into the @queue. @data must not be %NULL.
 /*
 
-C function : g_async_queue_push
+C function
+
+g_async_queue_push
 */
 func (recv *AsyncQueue) Push(data uintptr) {
 	c_data := (C.gpointer)(data)
@@ -178,7 +194,9 @@ func (recv *AsyncQueue) Push(data uintptr) {
 // This function must be called while holding the @queue's lock.
 /*
 
-C function : g_async_queue_push_unlocked
+C function
+
+g_async_queue_push_unlocked
 */
 func (recv *AsyncQueue) PushUnlocked(data uintptr) {
 	c_data := (C.gpointer)(data)
@@ -192,7 +210,9 @@ func (recv *AsyncQueue) PushUnlocked(data uintptr) {
 // You do not need to hold the lock to call this function.
 /*
 
-C function : g_async_queue_ref
+C function
+
+g_async_queue_ref
 */
 func (recv *AsyncQueue) Ref() *AsyncQueue {
 	retC := C.g_async_queue_ref((*C.GAsyncQueue)(recv.native))
@@ -204,7 +224,9 @@ func (recv *AsyncQueue) Ref() *AsyncQueue {
 // Increases the reference count of the asynchronous @queue by 1.
 /*
 
-C function : g_async_queue_ref_unlocked
+C function
+
+g_async_queue_ref_unlocked
 */
 func (recv *AsyncQueue) RefUnlocked() {
 	C.g_async_queue_ref_unlocked((*C.GAsyncQueue)(recv.native))
@@ -221,7 +243,9 @@ func (recv *AsyncQueue) RefUnlocked() {
 // and g_time_val_add() can be used.
 /*
 
-C function : g_async_queue_timed_pop
+C function
+
+g_async_queue_timed_pop
 */
 func (recv *AsyncQueue) TimedPop(endTime *TimeVal) uintptr {
 	c_end_time := (*C.GTimeVal)(C.NULL)
@@ -246,7 +270,9 @@ func (recv *AsyncQueue) TimedPop(endTime *TimeVal) uintptr {
 // This function must be called while holding the @queue's lock.
 /*
 
-C function : g_async_queue_timed_pop_unlocked
+C function
+
+g_async_queue_timed_pop_unlocked
 */
 func (recv *AsyncQueue) TimedPopUnlocked(endTime *TimeVal) uintptr {
 	c_end_time := (*C.GTimeVal)(C.NULL)
@@ -266,7 +292,9 @@ func (recv *AsyncQueue) TimedPopUnlocked(endTime *TimeVal) uintptr {
 // If no data is received before the timeout, %NULL is returned.
 /*
 
-C function : g_async_queue_timeout_pop
+C function
+
+g_async_queue_timeout_pop
 */
 func (recv *AsyncQueue) TimeoutPop(timeout uint64) uintptr {
 	c_timeout := (C.guint64)(timeout)
@@ -285,7 +313,9 @@ func (recv *AsyncQueue) TimeoutPop(timeout uint64) uintptr {
 // This function must be called while holding the @queue's lock.
 /*
 
-C function : g_async_queue_timeout_pop_unlocked
+C function
+
+g_async_queue_timeout_pop_unlocked
 */
 func (recv *AsyncQueue) TimeoutPopUnlocked(timeout uint64) uintptr {
 	c_timeout := (C.guint64)(timeout)
@@ -300,7 +330,9 @@ func (recv *AsyncQueue) TimeoutPopUnlocked(timeout uint64) uintptr {
 // %NULL is returned.
 /*
 
-C function : g_async_queue_try_pop
+C function
+
+g_async_queue_try_pop
 */
 func (recv *AsyncQueue) TryPop() uintptr {
 	retC := C.g_async_queue_try_pop((*C.GAsyncQueue)(recv.native))
@@ -315,7 +347,9 @@ func (recv *AsyncQueue) TryPop() uintptr {
 // This function must be called while holding the @queue's lock.
 /*
 
-C function : g_async_queue_try_pop_unlocked
+C function
+
+g_async_queue_try_pop_unlocked
 */
 func (recv *AsyncQueue) TryPopUnlocked() uintptr {
 	retC := C.g_async_queue_try_pop_unlocked((*C.GAsyncQueue)(recv.native))
@@ -331,7 +365,9 @@ func (recv *AsyncQueue) TryPopUnlocked() uintptr {
 // behaviour.
 /*
 
-C function : g_async_queue_unlock
+C function
+
+g_async_queue_unlock
 */
 func (recv *AsyncQueue) Unlock() {
 	C.g_async_queue_unlock((*C.GAsyncQueue)(recv.native))
@@ -347,7 +383,9 @@ func (recv *AsyncQueue) Unlock() {
 // You do not need to hold the lock to call this function.
 /*
 
-C function : g_async_queue_unref
+C function
+
+g_async_queue_unref
 */
 func (recv *AsyncQueue) Unref() {
 	C.g_async_queue_unref((*C.GAsyncQueue)(recv.native))
@@ -361,7 +399,9 @@ func (recv *AsyncQueue) Unref() {
 // will be destroyed and the memory allocated will be freed.
 /*
 
-C function : g_async_queue_unref_and_unlock
+C function
+
+g_async_queue_unref_and_unlock
 */
 func (recv *AsyncQueue) UnrefAndUnlock() {
 	C.g_async_queue_unref_and_unlock((*C.GAsyncQueue)(recv.native))
@@ -373,7 +413,9 @@ func (recv *AsyncQueue) UnrefAndUnlock() {
 // private data and should not be directly accessed.
 /*
 
-C record/class : GBookmarkFile
+C type
+
+GBookmarkFile
 */
 type BookmarkFile struct {
 	native *C.GBookmarkFile
@@ -464,7 +506,9 @@ func (recv *BookmarkFile) ToC() unsafe.Pointer {
 // A #GCond should only be accessed via the g_cond_ functions.
 /*
 
-C record/class : GCond
+C type
+
+GCond
 */
 type Cond struct {
 	native *C.GCond
@@ -494,7 +538,9 @@ func (recv *Cond) ToC() unsafe.Pointer {
 // while calling this function, though not required.
 /*
 
-C function : g_cond_broadcast
+C function
+
+g_cond_broadcast
 */
 func (recv *Cond) Broadcast() {
 	C.g_cond_broadcast((*C.GCond)(recv.native))
@@ -508,7 +554,9 @@ func (recv *Cond) Broadcast() {
 // while calling this function, though not required.
 /*
 
-C function : g_cond_signal
+C function
+
+g_cond_signal
 */
 func (recv *Cond) Signal() {
 	C.g_cond_signal((*C.GCond)(recv.native))
@@ -523,7 +571,9 @@ func (recv *Cond) Signal() {
 // accessed via the following functions.
 /*
 
-C record/class : GData
+C type
+
+GData
 */
 type Data struct {
 	native *C.GData
@@ -558,7 +608,9 @@ func (recv *Data) ToC() unsafe.Pointer {
 // and year.
 /*
 
-C record/class : GDate
+C type
+
+GDate
 */
 type Date struct {
 	native *C.GDate
@@ -592,7 +644,9 @@ func (recv *Date) ToC() unsafe.Pointer {
 // represent an existing day). Free the return value with g_date_free().
 /*
 
-C function : g_date_new
+C function
+
+g_date_new
 */
 func DateNew() *Date {
 	retC := C.g_date_new()
@@ -606,7 +660,9 @@ func DateNew() *Date {
 // returned date will be valid.
 /*
 
-C function : g_date_new_dmy
+C function
+
+g_date_new_dmy
 */
 func DateNewDmy(day DateDay, month DateMonth, year DateYear) *Date {
 	c_day := (C.GDateDay)(day)
@@ -626,7 +682,9 @@ func DateNewDmy(day DateDay, month DateMonth, year DateYear) *Date {
 // unreasonably large number), the returned date will be valid.
 /*
 
-C function : g_date_new_julian
+C function
+
+g_date_new_julian
 */
 func DateNewJulian(julianDay uint32) *Date {
 	c_julian_day := (C.guint32)(julianDay)
@@ -642,7 +700,9 @@ func DateNewJulian(julianDay uint32) *Date {
 // The date must be valid.
 /*
 
-C function : g_date_add_days
+C function
+
+g_date_add_days
 */
 func (recv *Date) AddDays(nDays uint32) {
 	c_n_days := (C.guint)(nDays)
@@ -659,7 +719,9 @@ func (recv *Date) AddDays(nDays uint32) {
 // the current day in it). The date must be valid.
 /*
 
-C function : g_date_add_months
+C function
+
+g_date_add_months
 */
 func (recv *Date) AddMonths(nMonths uint32) {
 	c_n_months := (C.guint)(nMonths)
@@ -675,7 +737,9 @@ func (recv *Date) AddMonths(nMonths uint32) {
 // to February 28. The date must be valid.
 /*
 
-C function : g_date_add_years
+C function
+
+g_date_add_years
 */
 func (recv *Date) AddYears(nYears uint32) {
 	c_n_years := (C.guint)(nYears)
@@ -692,7 +756,9 @@ func (recv *Date) AddYears(nYears uint32) {
 // All non-%NULL dates must be valid.
 /*
 
-C function : g_date_clamp
+C function
+
+g_date_clamp
 */
 func (recv *Date) Clamp(minDate *Date, maxDate *Date) {
 	c_min_date := (*C.GDate)(C.NULL)
@@ -716,7 +782,9 @@ func (recv *Date) Clamp(minDate *Date, maxDate *Date) {
 // Validity can be tested with g_date_valid().
 /*
 
-C function : g_date_clear
+C function
+
+g_date_clear
 */
 func (recv *Date) Clear(nDates uint32) {
 	c_n_dates := (C.guint)(nDates)
@@ -730,7 +798,9 @@ func (recv *Date) Clear(nDates uint32) {
 // Both dates must be valid.
 /*
 
-C function : g_date_compare
+C function
+
+g_date_compare
 */
 func (recv *Date) Compare(rhs *Date) int32 {
 	c_rhs := (*C.GDate)(C.NULL)
@@ -749,7 +819,9 @@ func (recv *Date) Compare(rhs *Date) int32 {
 // Both dates must be valid.
 /*
 
-C function : g_date_days_between
+C function
+
+g_date_days_between
 */
 func (recv *Date) DaysBetween(date2 *Date) int32 {
 	c_date2 := (*C.GDate)(C.NULL)
@@ -766,7 +838,9 @@ func (recv *Date) DaysBetween(date2 *Date) int32 {
 // Frees a #GDate returned from g_date_new().
 /*
 
-C function : g_date_free
+C function
+
+g_date_free
 */
 func (recv *Date) Free() {
 	C.g_date_free((*C.GDate)(recv.native))
@@ -777,7 +851,9 @@ func (recv *Date) Free() {
 // Returns the day of the month. The date must be valid.
 /*
 
-C function : g_date_get_day
+C function
+
+g_date_get_day
 */
 func (recv *Date) GetDay() DateDay {
 	retC := C.g_date_get_day((*C.GDate)(recv.native))
@@ -790,7 +866,9 @@ func (recv *Date) GetDay() DateDay {
 // year. The date must be valid.
 /*
 
-C function : g_date_get_day_of_year
+C function
+
+g_date_get_day_of_year
 */
 func (recv *Date) GetDayOfYear() uint32 {
 	retC := C.g_date_get_day_of_year((*C.GDate)(recv.native))
@@ -805,7 +883,9 @@ func (recv *Date) GetDayOfYear() uint32 {
 // etc. The date must be valid.
 /*
 
-C function : g_date_get_julian
+C function
+
+g_date_get_julian
 */
 func (recv *Date) GetJulian() uint32 {
 	retC := C.g_date_get_julian((*C.GDate)(recv.native))
@@ -819,7 +899,9 @@ func (recv *Date) GetJulian() uint32 {
 // The date must be valid.
 /*
 
-C function : g_date_get_monday_week_of_year
+C function
+
+g_date_get_monday_week_of_year
 */
 func (recv *Date) GetMondayWeekOfYear() uint32 {
 	retC := C.g_date_get_monday_week_of_year((*C.GDate)(recv.native))
@@ -831,7 +913,9 @@ func (recv *Date) GetMondayWeekOfYear() uint32 {
 // Returns the month of the year. The date must be valid.
 /*
 
-C function : g_date_get_month
+C function
+
+g_date_get_month
 */
 func (recv *Date) GetMonth() DateMonth {
 	retC := C.g_date_get_month((*C.GDate)(recv.native))
@@ -845,7 +929,9 @@ func (recv *Date) GetMonth() DateMonth {
 // Can return 0 if the day is before the first Sunday of the year.
 /*
 
-C function : g_date_get_sunday_week_of_year
+C function
+
+g_date_get_sunday_week_of_year
 */
 func (recv *Date) GetSundayWeekOfYear() uint32 {
 	retC := C.g_date_get_sunday_week_of_year((*C.GDate)(recv.native))
@@ -857,7 +943,9 @@ func (recv *Date) GetSundayWeekOfYear() uint32 {
 // Returns the day of the week for a #GDate. The date must be valid.
 /*
 
-C function : g_date_get_weekday
+C function
+
+g_date_get_weekday
 */
 func (recv *Date) GetWeekday() DateWeekday {
 	retC := C.g_date_get_weekday((*C.GDate)(recv.native))
@@ -869,7 +957,9 @@ func (recv *Date) GetWeekday() DateWeekday {
 // Returns the year of a #GDate. The date must be valid.
 /*
 
-C function : g_date_get_year
+C function
+
+g_date_get_year
 */
 func (recv *Date) GetYear() DateYear {
 	retC := C.g_date_get_year((*C.GDate)(recv.native))
@@ -882,7 +972,9 @@ func (recv *Date) GetYear() DateYear {
 // The date must be valid.
 /*
 
-C function : g_date_is_first_of_month
+C function
+
+g_date_is_first_of_month
 */
 func (recv *Date) IsFirstOfMonth() bool {
 	retC := C.g_date_is_first_of_month((*C.GDate)(recv.native))
@@ -895,7 +987,9 @@ func (recv *Date) IsFirstOfMonth() bool {
 // The date must be valid.
 /*
 
-C function : g_date_is_last_of_month
+C function
+
+g_date_is_last_of_month
 */
 func (recv *Date) IsLastOfMonth() bool {
 	retC := C.g_date_is_last_of_month((*C.GDate)(recv.native))
@@ -908,7 +1002,9 @@ func (recv *Date) IsLastOfMonth() bool {
 // and swap the values if this is not the case.
 /*
 
-C function : g_date_order
+C function
+
+g_date_order
 */
 func (recv *Date) Order(date2 *Date) {
 	c_date2 := (*C.GDate)(C.NULL)
@@ -925,7 +1021,9 @@ func (recv *Date) Order(date2 *Date) {
 // day-month-year triplet is invalid, the date will be invalid.
 /*
 
-C function : g_date_set_day
+C function
+
+g_date_set_day
 */
 func (recv *Date) SetDay(day DateDay) {
 	c_day := (C.GDateDay)(day)
@@ -941,7 +1039,9 @@ func (recv *Date) SetDay(day DateDay) {
 // set it.
 /*
 
-C function : g_date_set_dmy
+C function
+
+g_date_set_dmy
 */
 func (recv *Date) SetDmy(day DateDay, month DateMonth, y DateYear) {
 	c_day := (C.GDateDay)(day)
@@ -958,7 +1058,9 @@ func (recv *Date) SetDmy(day DateDay, month DateMonth, y DateYear) {
 // Sets the value of a #GDate from a Julian day number.
 /*
 
-C function : g_date_set_julian
+C function
+
+g_date_set_julian
 */
 func (recv *Date) SetJulian(julianDate uint32) {
 	c_julian_date := (C.guint32)(julianDate)
@@ -972,7 +1074,9 @@ func (recv *Date) SetJulian(julianDate uint32) {
 // day-month-year triplet is invalid, the date will be invalid.
 /*
 
-C function : g_date_set_month
+C function
+
+g_date_set_month
 */
 func (recv *Date) SetMonth(month DateMonth) {
 	c_month := (C.GDateMonth)(month)
@@ -995,7 +1099,9 @@ func (recv *Date) SetMonth(month DateMonth) {
 // capacity).
 /*
 
-C function : g_date_set_parse
+C function
+
+g_date_set_parse
 */
 func (recv *Date) SetParse(str string) {
 	c_str := C.CString(str)
@@ -1010,7 +1116,9 @@ func (recv *Date) SetParse(str string) {
 // The time to date conversion is done using the user's current timezone.
 /*
 
-C function : g_date_set_time
+C function
+
+g_date_set_time
 */
 func (recv *Date) SetTime(time Time) {
 	c_time_ := (C.GTime)(time)
@@ -1024,7 +1132,9 @@ func (recv *Date) SetTime(time Time) {
 // triplet is invalid, the date will be invalid.
 /*
 
-C function : g_date_set_year
+C function
+
+g_date_set_year
 */
 func (recv *Date) SetYear(year DateYear) {
 	c_year := (C.GDateYear)(year)
@@ -1039,7 +1149,9 @@ func (recv *Date) SetYear(year DateYear) {
 // The date must be valid.
 /*
 
-C function : g_date_subtract_days
+C function
+
+g_date_subtract_days
 */
 func (recv *Date) SubtractDays(nDays uint32) {
 	c_n_days := (C.guint)(nDays)
@@ -1055,7 +1167,9 @@ func (recv *Date) SubtractDays(nDays uint32) {
 // may change. The date must be valid.
 /*
 
-C function : g_date_subtract_months
+C function
+
+g_date_subtract_months
 */
 func (recv *Date) SubtractMonths(nMonths uint32) {
 	c_n_months := (C.guint)(nMonths)
@@ -1072,7 +1186,9 @@ func (recv *Date) SubtractMonths(nMonths uint32) {
 // must be valid.
 /*
 
-C function : g_date_subtract_years
+C function
+
+g_date_subtract_years
 */
 func (recv *Date) SubtractYears(nYears uint32) {
 	c_n_years := (C.guint)(nYears)
@@ -1089,7 +1205,9 @@ func (recv *Date) SubtractYears(nYears uint32) {
 // if it wasn't allocated by one of the g_date_new() variants.
 /*
 
-C function : g_date_valid
+C function
+
+g_date_valid
 */
 func (recv *Date) Valid() bool {
 	retC := C.g_date_valid((*C.GDate)(recv.native))
@@ -1102,7 +1220,9 @@ func (recv *Date) Valid() bool {
 // Used in g_parse_debug_string().
 /*
 
-C record/class : GDebugKey
+C type
+
+GDebugKey
 */
 type DebugKey struct {
 	native *C.GDebugKey
@@ -1137,7 +1257,9 @@ func (recv *DebugKey) ToC() unsafe.Pointer {
 // An opaque structure representing an opened directory.
 /*
 
-C record/class : GDir
+C type
+
+GDir
 */
 type Dir struct {
 	native *C.GDir
@@ -1162,7 +1284,9 @@ func (recv *Dir) ToC() unsafe.Pointer {
 // Closes the directory and deallocates all related resources.
 /*
 
-C function : g_dir_close
+C function
+
+g_dir_close
 */
 func (recv *Dir) Close() {
 	C.g_dir_close((*C.GDir)(recv.native))
@@ -1185,7 +1309,9 @@ func (recv *Dir) Close() {
 // filenames, the returned name is in UTF-8.
 /*
 
-C function : g_dir_read_name
+C function
+
+g_dir_read_name
 */
 func (recv *Dir) ReadName() string {
 	retC := C.g_dir_read_name((*C.GDir)(recv.native))
@@ -1198,7 +1324,9 @@ func (recv *Dir) ReadName() string {
 // will return the first entry again.
 /*
 
-C function : g_dir_rewind
+C function
+
+g_dir_rewind
 */
 func (recv *Dir) Rewind() {
 	C.g_dir_rewind((*C.GDir)(recv.native))
@@ -1210,7 +1338,9 @@ func (recv *Dir) Rewind() {
 // an error that has occurred.
 /*
 
-C record/class : GError
+C type
+
+GError
 */
 type Error struct {
 	native  *C.GError
@@ -1254,7 +1384,9 @@ func (recv *Error) ToC() unsafe.Pointer {
 // that could include printf() escape sequences.
 /*
 
-C function : g_error_new_literal
+C function
+
+g_error_new_literal
 */
 func ErrorNewLiteral(domain Quark, code int32, message string) *Error {
 	c_domain := (C.GQuark)(domain)
@@ -1273,7 +1405,9 @@ func ErrorNewLiteral(domain Quark, code int32, message string) *Error {
 // Makes a copy of @error.
 /*
 
-C function : g_error_copy
+C function
+
+g_error_copy
 */
 func (recv *Error) Copy() *Error {
 	retC := C.g_error_copy((*C.GError)(recv.native))
@@ -1285,7 +1419,9 @@ func (recv *Error) Copy() *Error {
 // Frees a #GError and associated resources.
 /*
 
-C function : g_error_free
+C function
+
+g_error_free
 */
 func (recv *Error) Free() {
 	C.g_error_free((*C.GError)(recv.native))
@@ -1305,7 +1441,9 @@ func (recv *Error) Free() {
 // a certain case, your code will still work.
 /*
 
-C function : g_error_matches
+C function
+
+g_error_matches
 */
 func (recv *Error) Matches(domain Quark, code int32) bool {
 	c_domain := (C.GQuark)(domain)
@@ -1323,7 +1461,9 @@ func (recv *Error) Matches(domain Quark, code int32) bool {
 // following functions.
 /*
 
-C record/class : GHashTable
+C type
+
+GHashTable
 */
 type HashTable struct {
 	native *C.GHashTable
@@ -1351,7 +1491,9 @@ func (recv *HashTable) ToC() unsafe.Pointer {
 // with g_hash_table_iter_init().
 /*
 
-C record/class : GHashTableIter
+C type
+
+GHashTableIter
 */
 type HashTableIter struct {
 	native *C.GHashTableIter
@@ -1382,7 +1524,9 @@ func (recv *HashTableIter) ToC() unsafe.Pointer {
 // The #GHook struct represents a single hook function in a #GHookList.
 /*
 
-C record/class : GHook
+C type
+
+GHook
 */
 type Hook struct {
 	native *C.GHook
@@ -1433,7 +1577,9 @@ func (recv *Hook) ToC() unsafe.Pointer {
 // if the second id is greater than the first.
 /*
 
-C function : g_hook_compare_ids
+C function
+
+g_hook_compare_ids
 */
 func (recv *Hook) CompareIds(sibling *Hook) int32 {
 	c_sibling := (*C.GHook)(C.NULL)
@@ -1450,7 +1596,9 @@ func (recv *Hook) CompareIds(sibling *Hook) int32 {
 // The #GHookList struct represents a list of hook functions.
 /*
 
-C record/class : GHookList
+C type
+
+GHookList
 */
 type HookList struct {
 	native *C.GHookList
@@ -1490,7 +1638,9 @@ func (recv *HookList) ToC() unsafe.Pointer {
 // Removes all the #GHook elements from a #GHookList.
 /*
 
-C function : g_hook_list_clear
+C function
+
+g_hook_list_clear
 */
 func (recv *HookList) Clear() {
 	C.g_hook_list_clear((*C.GHookList)(recv.native))
@@ -1502,7 +1652,9 @@ func (recv *HookList) Clear() {
 // This must be called before the #GHookList is used.
 /*
 
-C function : g_hook_list_init
+C function
+
+g_hook_list_init
 */
 func (recv *HookList) Init(hookSize uint32) {
 	c_hook_size := (C.guint)(hookSize)
@@ -1515,7 +1667,9 @@ func (recv *HookList) Init(hookSize uint32) {
 // Calls all of the #GHook functions in a #GHookList.
 /*
 
-C function : g_hook_list_invoke
+C function
+
+g_hook_list_invoke
 */
 func (recv *HookList) Invoke(mayRecurse bool) {
 	c_may_recurse :=
@@ -1530,7 +1684,9 @@ func (recv *HookList) Invoke(mayRecurse bool) {
 // Any function which returns %FALSE is removed from the #GHookList.
 /*
 
-C function : g_hook_list_invoke_check
+C function
+
+g_hook_list_invoke_check
 */
 func (recv *HookList) InvokeCheck(mayRecurse bool) {
 	c_may_recurse :=
@@ -1553,7 +1709,9 @@ func (recv *HookList) InvokeCheck(mayRecurse bool) {
 // in a generic way.
 /*
 
-C record/class : GIOFuncs
+C type
+
+GIOFuncs
 */
 type IOFuncs struct {
 	native *C.GIOFuncs
@@ -1587,7 +1745,9 @@ func (recv *IOFuncs) ToC() unsafe.Pointer {
 // and should not be accessed directly.
 /*
 
-C record/class : GKeyFile
+C type
+
+GKeyFile
 */
 type KeyFile struct {
 	native *C.GKeyFile
@@ -1612,7 +1772,9 @@ func (recv *KeyFile) ToC() unsafe.Pointer {
 // The #GList struct is used for each element in a doubly-linked list.
 /*
 
-C record/class : GList
+C type
+
+GList
 */
 type List struct {
 	native *C.GList
@@ -1646,7 +1808,9 @@ func (recv *List) ToC() unsafe.Pointer {
 // type representing a set of sources to be handled in a main loop.
 /*
 
-C record/class : GMainContext
+C type
+
+GMainContext
 */
 type MainContext struct {
 	native *C.GMainContext
@@ -1671,7 +1835,9 @@ func (recv *MainContext) ToC() unsafe.Pointer {
 // Creates a new #GMainContext structure.
 /*
 
-C function : g_main_context_new
+C function
+
+g_main_context_new
 */
 func MainContextNew() *MainContext {
 	retC := C.g_main_context_new()
@@ -1692,7 +1858,9 @@ func MainContextNew() *MainContext {
 // g_main_context_check(), g_main_context_dispatch().
 /*
 
-C function : g_main_context_acquire
+C function
+
+g_main_context_acquire
 */
 func (recv *MainContext) Acquire() bool {
 	retC := C.g_main_context_acquire((*C.GMainContext)(recv.native))
@@ -1706,7 +1874,9 @@ func (recv *MainContext) Acquire() bool {
 // a typical event source will use g_source_add_unix_fd() instead.
 /*
 
-C function : g_main_context_add_poll
+C function
+
+g_main_context_add_poll
 */
 func (recv *MainContext) AddPoll(fd *PollFD, priority int32) {
 	c_fd := (*C.GPollFD)(C.NULL)
@@ -1729,7 +1899,9 @@ func (recv *MainContext) AddPoll(fd *PollFD, priority int32) {
 // g_main_context_acquire() before you may call this function.
 /*
 
-C function : g_main_context_dispatch
+C function
+
+g_main_context_dispatch
 */
 func (recv *MainContext) Dispatch() {
 	C.g_main_context_dispatch((*C.GMainContext)(recv.native))
@@ -1742,7 +1914,9 @@ func (recv *MainContext) Dispatch() {
 // the first one found will be returned.
 /*
 
-C function : g_main_context_find_source_by_funcs_user_data
+C function
+
+g_main_context_find_source_by_funcs_user_data
 */
 func (recv *MainContext) FindSourceByFuncsUserData(funcs *SourceFuncs, userData uintptr) *Source {
 	c_funcs := (*C.GSourceFuncs)(C.NULL)
@@ -1772,7 +1946,9 @@ func (recv *MainContext) FindSourceByFuncsUserData(funcs *SourceFuncs, userData 
 // wrong source.
 /*
 
-C function : g_main_context_find_source_by_id
+C function
+
+g_main_context_find_source_by_id
 */
 func (recv *MainContext) FindSourceById(sourceId uint32) *Source {
 	c_source_id := (C.guint)(sourceId)
@@ -1788,7 +1964,9 @@ func (recv *MainContext) FindSourceById(sourceId uint32) *Source {
 // one found will be returned.
 /*
 
-C function : g_main_context_find_source_by_user_data
+C function
+
+g_main_context_find_source_by_user_data
 */
 func (recv *MainContext) FindSourceByUserData(userData uintptr) *Source {
 	c_user_data := (C.gpointer)(userData)
@@ -1815,7 +1993,9 @@ func (recv *MainContext) FindSourceByUserData(userData uintptr) *Source {
 // be interrupted for other reasons than an event source becoming ready.
 /*
 
-C function : g_main_context_iteration
+C function
+
+g_main_context_iteration
 */
 func (recv *MainContext) Iteration(mayBlock bool) bool {
 	c_may_block :=
@@ -1830,7 +2010,9 @@ func (recv *MainContext) Iteration(mayBlock bool) bool {
 // Checks if any sources have pending events for the given context.
 /*
 
-C function : g_main_context_pending
+C function
+
+g_main_context_pending
 */
 func (recv *MainContext) Pending() bool {
 	retC := C.g_main_context_pending((*C.GMainContext)(recv.native))
@@ -1846,7 +2028,9 @@ func (recv *MainContext) Pending() bool {
 // g_main_context_acquire() before you may call this function.
 /*
 
-C function : g_main_context_prepare
+C function
+
+g_main_context_prepare
 */
 func (recv *MainContext) Prepare(priority int32) bool {
 	c_priority := (C.gint)(priority)
@@ -1862,7 +2046,9 @@ func (recv *MainContext) Prepare(priority int32) bool {
 // Increases the reference count on a #GMainContext object by one.
 /*
 
-C function : g_main_context_ref
+C function
+
+g_main_context_ref
 */
 func (recv *MainContext) Ref() *MainContext {
 	retC := C.g_main_context_ref((*C.GMainContext)(recv.native))
@@ -1877,7 +2063,9 @@ func (recv *MainContext) Ref() *MainContext {
 // is called as many times as it was acquired.
 /*
 
-C function : g_main_context_release
+C function
+
+g_main_context_release
 */
 func (recv *MainContext) Release() {
 	C.g_main_context_release((*C.GMainContext)(recv.native))
@@ -1889,7 +2077,9 @@ func (recv *MainContext) Release() {
 // polled for a particular context.
 /*
 
-C function : g_main_context_remove_poll
+C function
+
+g_main_context_remove_poll
 */
 func (recv *MainContext) RemovePoll(fd *PollFD) {
 	c_fd := (*C.GPollFD)(C.NULL)
@@ -1908,7 +2098,9 @@ func (recv *MainContext) RemovePoll(fd *PollFD) {
 // the result is zero, free the context and free all associated memory.
 /*
 
-C function : g_main_context_unref
+C function
+
+g_main_context_unref
 */
 func (recv *MainContext) Unref() {
 	C.g_main_context_unref((*C.GMainContext)(recv.native))
@@ -1948,7 +2140,9 @@ func (recv *MainContext) Unref() {
 // ]|
 /*
 
-C function : g_main_context_wakeup
+C function
+
+g_main_context_wakeup
 */
 func (recv *MainContext) Wakeup() {
 	C.g_main_context_wakeup((*C.GMainContext)(recv.native))
@@ -1960,7 +2154,9 @@ func (recv *MainContext) Wakeup() {
 // representing the main event loop of a GLib or GTK+ application.
 /*
 
-C record/class : GMainLoop
+C type
+
+GMainLoop
 */
 type MainLoop struct {
 	native *C.GMainLoop
@@ -1985,7 +2181,9 @@ func (recv *MainLoop) ToC() unsafe.Pointer {
 // Creates a new #GMainLoop structure.
 /*
 
-C function : g_main_loop_new
+C function
+
+g_main_loop_new
 */
 func MainLoopNew(context *MainContext, isRunning bool) *MainLoop {
 	c_context := (*C.GMainContext)(C.NULL)
@@ -2005,7 +2203,9 @@ func MainLoopNew(context *MainContext, isRunning bool) *MainLoop {
 // Returns the #GMainContext of @loop.
 /*
 
-C function : g_main_loop_get_context
+C function
+
+g_main_loop_get_context
 */
 func (recv *MainLoop) GetContext() *MainContext {
 	retC := C.g_main_loop_get_context((*C.GMainLoop)(recv.native))
@@ -2017,7 +2217,9 @@ func (recv *MainLoop) GetContext() *MainContext {
 // Checks to see if the main loop is currently being run via g_main_loop_run().
 /*
 
-C function : g_main_loop_is_running
+C function
+
+g_main_loop_is_running
 */
 func (recv *MainLoop) IsRunning() bool {
 	retC := C.g_main_loop_is_running((*C.GMainLoop)(recv.native))
@@ -2033,7 +2235,9 @@ func (recv *MainLoop) IsRunning() bool {
 // g_main_loop_quit() is called will still be executed.
 /*
 
-C function : g_main_loop_quit
+C function
+
+g_main_loop_quit
 */
 func (recv *MainLoop) Quit() {
 	C.g_main_loop_quit((*C.GMainLoop)(recv.native))
@@ -2044,7 +2248,9 @@ func (recv *MainLoop) Quit() {
 // Increases the reference count on a #GMainLoop object by one.
 /*
 
-C function : g_main_loop_ref
+C function
+
+g_main_loop_ref
 */
 func (recv *MainLoop) Ref() *MainLoop {
 	retC := C.g_main_loop_ref((*C.GMainLoop)(recv.native))
@@ -2059,7 +2265,9 @@ func (recv *MainLoop) Ref() *MainLoop {
 // simply wait.
 /*
 
-C function : g_main_loop_run
+C function
+
+g_main_loop_run
 */
 func (recv *MainLoop) Run() {
 	C.g_main_loop_run((*C.GMainLoop)(recv.native))
@@ -2071,7 +2279,9 @@ func (recv *MainLoop) Run() {
 // the result is zero, free the loop and free all associated memory.
 /*
 
-C function : g_main_loop_unref
+C function
+
+g_main_loop_unref
 */
 func (recv *MainLoop) Unref() {
 	C.g_main_loop_unref((*C.GMainLoop)(recv.native))
@@ -2084,7 +2294,9 @@ func (recv *MainLoop) Unref() {
 // not be accessed directly.
 /*
 
-C record/class : GMappedFile
+C type
+
+GMappedFile
 */
 type MappedFile struct {
 	native *C.GMappedFile
@@ -2114,7 +2326,9 @@ func (recv *MappedFile) ToC() unsafe.Pointer {
 // Since 2.22
 /*
 
-C function : g_mapped_file_unref
+C function
+
+g_mapped_file_unref
 */
 func (recv *MappedFile) Unref() {
 	C.g_mapped_file_unref((*C.GMappedFile)(recv.native))
@@ -2129,7 +2343,9 @@ func (recv *MappedFile) Unref() {
 // on for more details.
 /*
 
-C record/class : GMarkupParseContext
+C type
+
+GMarkupParseContext
 */
 type MarkupParseContext struct {
 	native *C.GMarkupParseContext
@@ -2160,7 +2376,9 @@ func (recv *MarkupParseContext) ToC() unsafe.Pointer {
 // for example if elements are still open.
 /*
 
-C function : g_markup_parse_context_end_parse
+C function
+
+g_markup_parse_context_end_parse
 */
 func (recv *MarkupParseContext) EndParse() (bool, error) {
 	var cThrowableError *C.GError
@@ -2182,7 +2400,9 @@ func (recv *MarkupParseContext) EndParse() (bool, error) {
 // #GMarkupParser functions or while a subparser is pushed.
 /*
 
-C function : g_markup_parse_context_free
+C function
+
+g_markup_parse_context_free
 */
 func (recv *MarkupParseContext) Free() {
 	C.g_markup_parse_context_free((*C.GMarkupParseContext)(recv.native))
@@ -2196,7 +2416,9 @@ func (recv *MarkupParseContext) Free() {
 // "the best number we could come up with for error messages."
 /*
 
-C function : g_markup_parse_context_get_position
+C function
+
+g_markup_parse_context_get_position
 */
 func (recv *MarkupParseContext) GetPosition(lineNumber int32, charNumber int32) {
 	c_line_number := (C.gint)(lineNumber)
@@ -2220,7 +2442,9 @@ func (recv *MarkupParseContext) GetPosition(lineNumber int32, charNumber int32) 
 // all errors are fatal.
 /*
 
-C function : g_markup_parse_context_parse
+C function
+
+g_markup_parse_context_parse
 */
 func (recv *MarkupParseContext) Parse(text string, textLen int64) (bool, error) {
 	c_text := C.CString(text)
@@ -2250,7 +2474,9 @@ func (recv *MarkupParseContext) Parse(text string, textLen int64) (bool, error) 
 // back to its caller.
 /*
 
-C record/class : GMarkupParser
+C type
+
+GMarkupParser
 */
 type MarkupParser struct {
 	native *C.GMarkupParser
@@ -2281,7 +2507,9 @@ func (recv *MarkupParser) ToC() unsafe.Pointer {
 // matches.
 /*
 
-C record/class : GMatchInfo
+C type
+
+GMatchInfo
 */
 type MatchInfo struct {
 	native *C.GMatchInfo
@@ -2310,7 +2538,9 @@ func (recv *MatchInfo) ToC() unsafe.Pointer {
 // This functions related to this has been deprecated in 2.46, and no longer work.
 /*
 
-C record/class : GMemVTable
+C type
+
+GMemVTable
 */
 type MemVTable struct {
 	native *C.GMemVTable
@@ -2341,7 +2571,9 @@ func (recv *MemVTable) ToC() unsafe.Pointer {
 // The #GNode struct represents one node in a [n-ary tree][glib-N-ary-Trees].
 /*
 
-C record/class : GNode
+C type
+
+GNode
 */
 type Node struct {
 	native *C.GNode
@@ -2377,7 +2609,9 @@ func (recv *Node) ToC() unsafe.Pointer {
 // which contains the given data.
 /*
 
-C function : g_node_child_index
+C function
+
+g_node_child_index
 */
 func (recv *Node) ChildIndex(data uintptr) int32 {
 	c_data := (C.gpointer)(data)
@@ -2393,7 +2627,9 @@ func (recv *Node) ChildIndex(data uintptr) int32 {
 // the second 1, and so on.
 /*
 
-C function : g_node_child_position
+C function
+
+g_node_child_position
 */
 func (recv *Node) ChildPosition(child *Node) int32 {
 	c_child := (*C.GNode)(C.NULL)
@@ -2413,7 +2649,9 @@ func (recv *Node) ChildPosition(child *Node) int32 {
 // nodes, see g_node_copy_deep() if you need that).
 /*
 
-C function : g_node_copy
+C function
+
+g_node_copy
 */
 func (recv *Node) Copy() *Node {
 	retC := C.g_node_copy((*C.GNode)(recv.native))
@@ -2428,7 +2666,9 @@ func (recv *Node) Copy() *Node {
 // For the children of the root node the depth is 2. And so on.
 /*
 
-C function : g_node_depth
+C function
+
+g_node_depth
 */
 func (recv *Node) Depth() uint32 {
 	retC := C.g_node_depth((*C.GNode)(recv.native))
@@ -2441,7 +2681,9 @@ func (recv *Node) Depth() uint32 {
 // allocated.
 /*
 
-C function : g_node_destroy
+C function
+
+g_node_destroy
 */
 func (recv *Node) Destroy() {
 	C.g_node_destroy((*C.GNode)(recv.native))
@@ -2452,7 +2694,9 @@ func (recv *Node) Destroy() {
 // Finds a #GNode in a tree.
 /*
 
-C function : g_node_find
+C function
+
+g_node_find
 */
 func (recv *Node) Find(order TraverseType, flags TraverseFlags, data uintptr) *Node {
 	c_order := (C.GTraverseType)(order)
@@ -2470,7 +2714,9 @@ func (recv *Node) Find(order TraverseType, flags TraverseFlags, data uintptr) *N
 // Finds the first child of a #GNode with the given data.
 /*
 
-C function : g_node_find_child
+C function
+
+g_node_find_child
 */
 func (recv *Node) FindChild(flags TraverseFlags, data uintptr) *Node {
 	c_flags := (C.GTraverseFlags)(flags)
@@ -2487,7 +2733,9 @@ func (recv *Node) FindChild(flags TraverseFlags, data uintptr) *Node {
 // This could possibly be the node itself.
 /*
 
-C function : g_node_first_sibling
+C function
+
+g_node_first_sibling
 */
 func (recv *Node) FirstSibling() *Node {
 	retC := C.g_node_first_sibling((*C.GNode)(recv.native))
@@ -2499,7 +2747,9 @@ func (recv *Node) FirstSibling() *Node {
 // Gets the root of a tree.
 /*
 
-C function : g_node_get_root
+C function
+
+g_node_get_root
 */
 func (recv *Node) GetRoot() *Node {
 	retC := C.g_node_get_root((*C.GNode)(recv.native))
@@ -2511,7 +2761,9 @@ func (recv *Node) GetRoot() *Node {
 // Inserts a #GNode beneath the parent at the given position.
 /*
 
-C function : g_node_insert
+C function
+
+g_node_insert
 */
 func (recv *Node) Insert(position int32, node *Node) *Node {
 	c_position := (C.gint)(position)
@@ -2530,7 +2782,9 @@ func (recv *Node) Insert(position int32, node *Node) *Node {
 // Inserts a #GNode beneath the parent after the given sibling.
 /*
 
-C function : g_node_insert_after
+C function
+
+g_node_insert_after
 */
 func (recv *Node) InsertAfter(sibling *Node, node *Node) *Node {
 	c_sibling := (*C.GNode)(C.NULL)
@@ -2552,7 +2806,9 @@ func (recv *Node) InsertAfter(sibling *Node, node *Node) *Node {
 // Inserts a #GNode beneath the parent before the given sibling.
 /*
 
-C function : g_node_insert_before
+C function
+
+g_node_insert_before
 */
 func (recv *Node) InsertBefore(sibling *Node, node *Node) *Node {
 	c_sibling := (*C.GNode)(C.NULL)
@@ -2576,7 +2832,9 @@ func (recv *Node) InsertBefore(sibling *Node, node *Node) *Node {
 // or if node is the grandparent of @descendant etc.
 /*
 
-C function : g_node_is_ancestor
+C function
+
+g_node_is_ancestor
 */
 func (recv *Node) IsAncestor(descendant *Node) bool {
 	c_descendant := (*C.GNode)(C.NULL)
@@ -2593,7 +2851,9 @@ func (recv *Node) IsAncestor(descendant *Node) bool {
 // Gets the last child of a #GNode.
 /*
 
-C function : g_node_last_child
+C function
+
+g_node_last_child
 */
 func (recv *Node) LastChild() *Node {
 	retC := C.g_node_last_child((*C.GNode)(recv.native))
@@ -2606,7 +2866,9 @@ func (recv *Node) LastChild() *Node {
 // This could possibly be the node itself.
 /*
 
-C function : g_node_last_sibling
+C function
+
+g_node_last_sibling
 */
 func (recv *Node) LastSibling() *Node {
 	retC := C.g_node_last_sibling((*C.GNode)(recv.native))
@@ -2622,7 +2884,9 @@ func (recv *Node) LastSibling() *Node {
 // 1 is returned. If @root has children, 2 is returned. And so on.
 /*
 
-C function : g_node_max_height
+C function
+
+g_node_max_height
 */
 func (recv *Node) MaxHeight() uint32 {
 	retC := C.g_node_max_height((*C.GNode)(recv.native))
@@ -2634,7 +2898,9 @@ func (recv *Node) MaxHeight() uint32 {
 // Gets the number of children of a #GNode.
 /*
 
-C function : g_node_n_children
+C function
+
+g_node_n_children
 */
 func (recv *Node) NChildren() uint32 {
 	retC := C.g_node_n_children((*C.GNode)(recv.native))
@@ -2646,7 +2912,9 @@ func (recv *Node) NChildren() uint32 {
 // Gets the number of nodes in a tree.
 /*
 
-C function : g_node_n_nodes
+C function
+
+g_node_n_nodes
 */
 func (recv *Node) NNodes(flags TraverseFlags) uint32 {
 	c_flags := (C.GTraverseFlags)(flags)
@@ -2662,7 +2930,9 @@ func (recv *Node) NNodes(flags TraverseFlags) uint32 {
 // too big, %NULL is returned.
 /*
 
-C function : g_node_nth_child
+C function
+
+g_node_nth_child
 */
 func (recv *Node) NthChild(n uint32) *Node {
 	c_n := (C.guint)(n)
@@ -2676,7 +2946,9 @@ func (recv *Node) NthChild(n uint32) *Node {
 // Inserts a #GNode as the first child of the given parent.
 /*
 
-C function : g_node_prepend
+C function
+
+g_node_prepend
 */
 func (recv *Node) Prepend(node *Node) *Node {
 	c_node := (*C.GNode)(C.NULL)
@@ -2694,7 +2966,9 @@ func (recv *Node) Prepend(node *Node) *Node {
 // (It doesn't change the order of the grandchildren.)
 /*
 
-C function : g_node_reverse_children
+C function
+
+g_node_reverse_children
 */
 func (recv *Node) ReverseChildren() {
 	C.g_node_reverse_children((*C.GNode)(recv.native))
@@ -2707,7 +2981,9 @@ func (recv *Node) ReverseChildren() {
 // Unlinks a #GNode from a tree, resulting in two separate trees.
 /*
 
-C function : g_node_unlink
+C function
+
+g_node_unlink
 */
 func (recv *Node) Unlink() {
 	C.g_node_unlink((*C.GNode)(recv.native))
@@ -2720,7 +2996,9 @@ func (recv *Node) Unlink() {
 // fields and should not be directly accessed.
 /*
 
-C record/class : GOptionContext
+C type
+
+GOptionContext
 */
 type OptionContext struct {
 	native *C.GOptionContext
@@ -2747,7 +3025,9 @@ func (recv *OptionContext) ToC() unsafe.Pointer {
 // or g_option_group_add_entries().
 /*
 
-C record/class : GOptionEntry
+C type
+
+GOptionEntry
 */
 type OptionEntry struct {
 	native         *C.GOptionEntry
@@ -2808,7 +3088,9 @@ func (recv *OptionEntry) ToC() unsafe.Pointer {
 // the application can then add to its #GOptionContext.
 /*
 
-C record/class : GOptionGroup
+C type
+
+GOptionGroup
 */
 type OptionGroup struct {
 	native *C.GOptionGroup
@@ -2834,7 +3116,9 @@ func (recv *OptionGroup) ToC() unsafe.Pointer {
 // structure is opaque and its fields cannot be accessed directly.
 /*
 
-C record/class : GPatternSpec
+C type
+
+GPatternSpec
 */
 type PatternSpec struct {
 	native *C.GPatternSpec
@@ -2860,7 +3144,9 @@ func (recv *PatternSpec) ToC() unsafe.Pointer {
 // match the same set of strings.
 /*
 
-C function : g_pattern_spec_equal
+C function
+
+g_pattern_spec_equal
 */
 func (recv *PatternSpec) Equal(pspec2 *PatternSpec) bool {
 	c_pspec2 := (*C.GPatternSpec)(C.NULL)
@@ -2877,7 +3163,9 @@ func (recv *PatternSpec) Equal(pspec2 *PatternSpec) bool {
 // Frees the memory allocated for the #GPatternSpec.
 /*
 
-C function : g_pattern_spec_free
+C function
+
+g_pattern_spec_free
 */
 func (recv *PatternSpec) Free() {
 	C.g_pattern_spec_free((*C.GPatternSpec)(recv.native))
@@ -2889,7 +3177,9 @@ func (recv *PatternSpec) Free() {
 // occurred.
 /*
 
-C record/class : GPollFD
+C type
+
+GPollFD
 */
 type PollFD struct {
 	native  *C.GPollFD
@@ -2944,7 +3234,9 @@ func (recv *PollFD) ToC() unsafe.Pointer {
 // be accessed via the g_private_ functions.
 /*
 
-C record/class : GPrivate
+C type
+
+GPrivate
 */
 type Private struct {
 	native *C.GPrivate
@@ -2976,7 +3268,9 @@ func (recv *Private) ToC() unsafe.Pointer {
 // created, for example).
 /*
 
-C function : g_private_get
+C function
+
+g_private_get
 */
 func (recv *Private) Get() uintptr {
 	retC := C.g_private_get((*C.GPrivate)(recv.native))
@@ -2992,7 +3286,9 @@ func (recv *Private) Get() uintptr {
 // the #GDestroyNotify for @key is not called on the old value.
 /*
 
-C function : g_private_set
+C function
+
+g_private_set
 */
 func (recv *Private) Set(value uintptr) {
 	c_value := (C.gpointer)(value)
@@ -3008,7 +3304,9 @@ func (recv *Private) Set(value uintptr) {
 // [Queue][glib-Double-ended-Queues].
 /*
 
-C record/class : GQueue
+C type
+
+GQueue
 */
 type Queue struct {
 	native *C.GQueue
@@ -3046,7 +3344,9 @@ func (recv *Queue) ToC() unsafe.Pointer {
 // either use g_queue_free_full() or free them manually first.
 /*
 
-C function : g_queue_free
+C function
+
+g_queue_free
 */
 func (recv *Queue) Free() {
 	C.g_queue_free((*C.GQueue)(recv.native))
@@ -3057,7 +3357,9 @@ func (recv *Queue) Free() {
 // Returns %TRUE if the queue is empty.
 /*
 
-C function : g_queue_is_empty
+C function
+
+g_queue_is_empty
 */
 func (recv *Queue) IsEmpty() bool {
 	retC := C.g_queue_is_empty((*C.GQueue)(recv.native))
@@ -3069,7 +3371,9 @@ func (recv *Queue) IsEmpty() bool {
 // Returns the first element of the queue.
 /*
 
-C function : g_queue_peek_head
+C function
+
+g_queue_peek_head
 */
 func (recv *Queue) PeekHead() uintptr {
 	retC := C.g_queue_peek_head((*C.GQueue)(recv.native))
@@ -3081,7 +3385,9 @@ func (recv *Queue) PeekHead() uintptr {
 // Returns the last element of the queue.
 /*
 
-C function : g_queue_peek_tail
+C function
+
+g_queue_peek_tail
 */
 func (recv *Queue) PeekTail() uintptr {
 	retC := C.g_queue_peek_tail((*C.GQueue)(recv.native))
@@ -3093,7 +3399,9 @@ func (recv *Queue) PeekTail() uintptr {
 // Removes the first element of the queue and returns its data.
 /*
 
-C function : g_queue_pop_head
+C function
+
+g_queue_pop_head
 */
 func (recv *Queue) PopHead() uintptr {
 	retC := C.g_queue_pop_head((*C.GQueue)(recv.native))
@@ -3105,7 +3413,9 @@ func (recv *Queue) PopHead() uintptr {
 // Removes and returns the first element of the queue.
 /*
 
-C function : g_queue_pop_head_link
+C function
+
+g_queue_pop_head_link
 */
 func (recv *Queue) PopHeadLink() *List {
 	retC := C.g_queue_pop_head_link((*C.GQueue)(recv.native))
@@ -3117,7 +3427,9 @@ func (recv *Queue) PopHeadLink() *List {
 // Removes the last element of the queue and returns its data.
 /*
 
-C function : g_queue_pop_tail
+C function
+
+g_queue_pop_tail
 */
 func (recv *Queue) PopTail() uintptr {
 	retC := C.g_queue_pop_tail((*C.GQueue)(recv.native))
@@ -3129,7 +3441,9 @@ func (recv *Queue) PopTail() uintptr {
 // Removes and returns the last element of the queue.
 /*
 
-C function : g_queue_pop_tail_link
+C function
+
+g_queue_pop_tail_link
 */
 func (recv *Queue) PopTailLink() *List {
 	retC := C.g_queue_pop_tail_link((*C.GQueue)(recv.native))
@@ -3141,7 +3455,9 @@ func (recv *Queue) PopTailLink() *List {
 // Adds a new element at the head of the queue.
 /*
 
-C function : g_queue_push_head
+C function
+
+g_queue_push_head
 */
 func (recv *Queue) PushHead(data uintptr) {
 	c_data := (C.gpointer)(data)
@@ -3154,7 +3470,9 @@ func (recv *Queue) PushHead(data uintptr) {
 // Adds a new element at the head of the queue.
 /*
 
-C function : g_queue_push_head_link
+C function
+
+g_queue_push_head_link
 */
 func (recv *Queue) PushHeadLink(link *List) {
 	c_link_ := (*C.GList)(C.NULL)
@@ -3170,7 +3488,9 @@ func (recv *Queue) PushHeadLink(link *List) {
 // Adds a new element at the tail of the queue.
 /*
 
-C function : g_queue_push_tail
+C function
+
+g_queue_push_tail
 */
 func (recv *Queue) PushTail(data uintptr) {
 	c_data := (C.gpointer)(data)
@@ -3183,7 +3503,9 @@ func (recv *Queue) PushTail(data uintptr) {
 // Adds a new element at the tail of the queue.
 /*
 
-C function : g_queue_push_tail_link
+C function
+
+g_queue_push_tail_link
 */
 func (recv *Queue) PushTailLink(link *List) {
 	c_link_ := (*C.GList)(C.NULL)
@@ -3200,7 +3522,9 @@ func (recv *Queue) PushTailLink(link *List) {
 // accessed through the g_rand_* functions.
 /*
 
-C record/class : GRand
+C type
+
+GRand
 */
 type Rand struct {
 	native *C.GRand
@@ -3226,7 +3550,9 @@ func (recv *Rand) ToC() unsafe.Pointer {
 // the range [0..1).
 /*
 
-C function : g_rand_double
+C function
+
+g_rand_double
 */
 func (recv *Rand) Double() float64 {
 	retC := C.g_rand_double((*C.GRand)(recv.native))
@@ -3239,7 +3565,9 @@ func (recv *Rand) Double() float64 {
 // the range [@begin..@end).
 /*
 
-C function : g_rand_double_range
+C function
+
+g_rand_double_range
 */
 func (recv *Rand) DoubleRange(begin float64, end float64) float64 {
 	c_begin := (C.gdouble)(begin)
@@ -3255,7 +3583,9 @@ func (recv *Rand) DoubleRange(begin float64, end float64) float64 {
 // Frees the memory allocated for the #GRand.
 /*
 
-C function : g_rand_free
+C function
+
+g_rand_free
 */
 func (recv *Rand) Free() {
 	C.g_rand_free((*C.GRand)(recv.native))
@@ -3267,7 +3597,9 @@ func (recv *Rand) Free() {
 // the range [0..2^32-1].
 /*
 
-C function : g_rand_int
+C function
+
+g_rand_int
 */
 func (recv *Rand) Int() uint32 {
 	retC := C.g_rand_int((*C.GRand)(recv.native))
@@ -3280,7 +3612,9 @@ func (recv *Rand) Int() uint32 {
 // the range [@begin..@end-1].
 /*
 
-C function : g_rand_int_range
+C function
+
+g_rand_int_range
 */
 func (recv *Rand) IntRange(begin int32, end int32) int32 {
 	c_begin := (C.gint32)(begin)
@@ -3296,7 +3630,9 @@ func (recv *Rand) IntRange(begin int32, end int32) int32 {
 // Sets the seed for the random number generator #GRand to @seed.
 /*
 
-C function : g_rand_set_seed
+C function
+
+g_rand_set_seed
 */
 func (recv *Rand) SetSeed(seed uint32) {
 	c_seed := (C.guint32)(seed)
@@ -3310,7 +3646,9 @@ func (recv *Rand) SetSeed(seed uint32) {
 // list.
 /*
 
-C record/class : GSList
+C type
+
+GSList
 */
 type SList struct {
 	native *C.GSList
@@ -3355,7 +3693,9 @@ func (recv *SList) ToC() unsafe.Pointer {
 // is declared by #GScannerMsgFunc.
 /*
 
-C record/class : GScanner
+C type
+
+GScanner
 */
 type Scanner struct {
 	native         *C.GScanner
@@ -3435,7 +3775,9 @@ func (recv *Scanner) ToC() unsafe.Pointer {
 // g_scanner_get_next_token().
 /*
 
-C function : g_scanner_cur_line
+C function
+
+g_scanner_cur_line
 */
 func (recv *Scanner) CurLine() uint32 {
 	retC := C.g_scanner_cur_line((*C.GScanner)(recv.native))
@@ -3449,7 +3791,9 @@ func (recv *Scanner) CurLine() uint32 {
 // g_scanner_get_next_token().
 /*
 
-C function : g_scanner_cur_position
+C function
+
+g_scanner_cur_position
 */
 func (recv *Scanner) CurPosition() uint32 {
 	retC := C.g_scanner_cur_position((*C.GScanner)(recv.native))
@@ -3462,7 +3806,9 @@ func (recv *Scanner) CurPosition() uint32 {
 // field in the #GScanner structure.
 /*
 
-C function : g_scanner_cur_token
+C function
+
+g_scanner_cur_token
 */
 func (recv *Scanner) CurToken() TokenType {
 	retC := C.g_scanner_cur_token((*C.GScanner)(recv.native))
@@ -3476,7 +3822,9 @@ func (recv *Scanner) CurToken() TokenType {
 // Frees all memory used by the #GScanner.
 /*
 
-C function : g_scanner_destroy
+C function
+
+g_scanner_destroy
 */
 func (recv *Scanner) Destroy() {
 	C.g_scanner_destroy((*C.GScanner)(recv.native))
@@ -3488,7 +3836,9 @@ func (recv *Scanner) Destroy() {
 // the file or text buffer.
 /*
 
-C function : g_scanner_eof
+C function
+
+g_scanner_eof
 */
 func (recv *Scanner) Eof() bool {
 	retC := C.g_scanner_eof((*C.GScanner)(recv.native))
@@ -3505,7 +3855,9 @@ func (recv *Scanner) Eof() bool {
 // the #GScanner structure.
 /*
 
-C function : g_scanner_get_next_token
+C function
+
+g_scanner_get_next_token
 */
 func (recv *Scanner) GetNextToken() TokenType {
 	retC := C.g_scanner_get_next_token((*C.GScanner)(recv.native))
@@ -3517,7 +3869,9 @@ func (recv *Scanner) GetNextToken() TokenType {
 // Prepares to scan a file.
 /*
 
-C function : g_scanner_input_file
+C function
+
+g_scanner_input_file
 */
 func (recv *Scanner) InputFile(inputFd int32) {
 	c_input_fd := (C.gint)(inputFd)
@@ -3530,7 +3884,9 @@ func (recv *Scanner) InputFile(inputFd int32) {
 // Prepares to scan a text buffer.
 /*
 
-C function : g_scanner_input_text
+C function
+
+g_scanner_input_text
 */
 func (recv *Scanner) InputText(text string, textLen uint32) {
 	c_text := C.CString(text)
@@ -3548,7 +3904,9 @@ func (recv *Scanner) InputText(text string, textLen uint32) {
 // returned.
 /*
 
-C function : g_scanner_lookup_symbol
+C function
+
+g_scanner_lookup_symbol
 */
 func (recv *Scanner) LookupSymbol(symbol string) uintptr {
 	c_symbol := C.CString(symbol)
@@ -3573,7 +3931,9 @@ func (recv *Scanner) LookupSymbol(symbol string) uintptr {
 // any symbols that may have been added or removed in the new scope.
 /*
 
-C function : g_scanner_peek_next_token
+C function
+
+g_scanner_peek_next_token
 */
 func (recv *Scanner) PeekNextToken() TokenType {
 	retC := C.g_scanner_peek_next_token((*C.GScanner)(recv.native))
@@ -3585,7 +3945,9 @@ func (recv *Scanner) PeekNextToken() TokenType {
 // Adds a symbol to the given scope.
 /*
 
-C function : g_scanner_scope_add_symbol
+C function
+
+g_scanner_scope_add_symbol
 */
 func (recv *Scanner) ScopeAddSymbol(scopeId uint32, symbol string, value uintptr) {
 	c_scope_id := (C.guint)(scopeId)
@@ -3606,7 +3968,9 @@ func (recv *Scanner) ScopeAddSymbol(scopeId uint32, symbol string, value uintptr
 // symbol is not bound in the scope, %NULL is returned.
 /*
 
-C function : g_scanner_scope_lookup_symbol
+C function
+
+g_scanner_scope_lookup_symbol
 */
 func (recv *Scanner) ScopeLookupSymbol(scopeId uint32, symbol string) uintptr {
 	c_scope_id := (C.guint)(scopeId)
@@ -3623,7 +3987,9 @@ func (recv *Scanner) ScopeLookupSymbol(scopeId uint32, symbol string) uintptr {
 // Removes a symbol from a scope.
 /*
 
-C function : g_scanner_scope_remove_symbol
+C function
+
+g_scanner_scope_remove_symbol
 */
 func (recv *Scanner) ScopeRemoveSymbol(scopeId uint32, symbol string) {
 	c_scope_id := (C.guint)(scopeId)
@@ -3639,7 +4005,9 @@ func (recv *Scanner) ScopeRemoveSymbol(scopeId uint32, symbol string) {
 // Sets the current scope.
 /*
 
-C function : g_scanner_set_scope
+C function
+
+g_scanner_set_scope
 */
 func (recv *Scanner) SetScope(scopeId uint32) uint32 {
 	c_scope_id := (C.guint)(scopeId)
@@ -3656,7 +4024,9 @@ func (recv *Scanner) SetScope(scopeId uint32) uint32 {
 // onto the current scanning position.
 /*
 
-C function : g_scanner_sync_file_offset
+C function
+
+g_scanner_sync_file_offset
 */
 func (recv *Scanner) SyncFileOffset() {
 	C.g_scanner_sync_file_offset((*C.GScanner)(recv.native))
@@ -3673,7 +4043,9 @@ func (recv *Scanner) SyncFileOffset() {
 // to construct part of the message.
 /*
 
-C function : g_scanner_unexp_token
+C function
+
+g_scanner_unexp_token
 */
 func (recv *Scanner) UnexpToken(expectedToken TokenType, identifierSpec string, symbolSpec string, symbolName string, message string, isError int32) {
 	c_expected_token := (C.GTokenType)(expectedToken)
@@ -3704,7 +4076,9 @@ func (recv *Scanner) UnexpToken(expectedToken TokenType, identifierSpec string, 
 // parsing of the next unpeeked token.
 /*
 
-C record/class : GScannerConfig
+C type
+
+GScannerConfig
 */
 type ScannerConfig struct {
 	native              *C.GScannerConfig
@@ -3771,7 +4145,9 @@ func (recv *ScannerConfig) ToC() unsafe.Pointer {
 // [sequence][glib-Sequences] data type.
 /*
 
-C record/class : GSequence
+C type
+
+GSequence
 */
 type Sequence struct {
 	native *C.GSequence
@@ -3797,7 +4173,9 @@ func (recv *Sequence) ToC() unsafe.Pointer {
 // iterator pointing into a #GSequence.
 /*
 
-C record/class : GSequenceIter
+C type
+
+GSequenceIter
 */
 type SequenceIter struct {
 	native *C.GSequenceIter
@@ -3823,7 +4201,9 @@ func (recv *SequenceIter) ToC() unsafe.Pointer {
 // representing an event source.
 /*
 
-C record/class : GSource
+C type
+
+GSource
 */
 type Source struct {
 	native *C.GSource
@@ -3868,7 +4248,9 @@ func (recv *Source) ToC() unsafe.Pointer {
 // executed.
 /*
 
-C function : g_source_new
+C function
+
+g_source_new
 */
 func SourceNew(sourceFuncs *SourceFuncs, structSize uint32) *Source {
 	c_source_funcs := (*C.GSourceFuncs)(C.NULL)
@@ -3898,7 +4280,9 @@ func SourceNew(sourceFuncs *SourceFuncs, structSize uint32) *Source {
 // g_source_add_unix_fd() instead of this API.
 /*
 
-C function : g_source_add_poll
+C function
+
+g_source_add_poll
 */
 func (recv *Source) AddPoll(fd *PollFD) {
 	c_fd := (*C.GPollFD)(C.NULL)
@@ -3915,7 +4299,9 @@ func (recv *Source) AddPoll(fd *PollFD) {
 // that context. Remove it by calling g_source_destroy().
 /*
 
-C function : g_source_attach
+C function
+
+g_source_attach
 */
 func (recv *Source) Attach(context *MainContext) uint32 {
 	c_context := (*C.GMainContext)(C.NULL)
@@ -3935,7 +4321,9 @@ func (recv *Source) Attach(context *MainContext) uint32 {
 // removed from their context.
 /*
 
-C function : g_source_destroy
+C function
+
+g_source_destroy
 */
 func (recv *Source) Destroy() {
 	C.g_source_destroy((*C.GSource)(recv.native))
@@ -3947,7 +4335,9 @@ func (recv *Source) Destroy() {
 // see g_source_set_can_recurse().
 /*
 
-C function : g_source_get_can_recurse
+C function
+
+g_source_get_can_recurse
 */
 func (recv *Source) GetCanRecurse() bool {
 	retC := C.g_source_get_can_recurse((*C.GSource)(recv.native))
@@ -3966,7 +4356,9 @@ func (recv *Source) GetCanRecurse() bool {
 // whose #GMainContext has been destroyed is an error.
 /*
 
-C function : g_source_get_context
+C function
+
+g_source_get_context
 */
 func (recv *Source) GetContext() *MainContext {
 	retC := C.g_source_get_context((*C.GSource)(recv.native))
@@ -3984,7 +4376,9 @@ func (recv *Source) GetContext() *MainContext {
 // g_get_current_time().
 /*
 
-C function : g_source_get_current_time
+C function
+
+g_source_get_current_time
 */
 func (recv *Source) GetCurrentTime(timeval *TimeVal) {
 	c_timeval := (*C.GTimeVal)(C.NULL)
@@ -4003,7 +4397,9 @@ func (recv *Source) GetCurrentTime(timeval *TimeVal) {
 // mapping from ID to source is done by g_main_context_find_source_by_id().
 /*
 
-C function : g_source_get_id
+C function
+
+g_source_get_id
 */
 func (recv *Source) GetId() uint32 {
 	retC := C.g_source_get_id((*C.GSource)(recv.native))
@@ -4015,7 +4411,9 @@ func (recv *Source) GetId() uint32 {
 // Gets the priority of a source.
 /*
 
-C function : g_source_get_priority
+C function
+
+g_source_get_priority
 */
 func (recv *Source) GetPriority() int32 {
 	retC := C.g_source_get_priority((*C.GSource)(recv.native))
@@ -4031,7 +4429,9 @@ func (recv *Source) GetPriority() int32 {
 // indication that the source will fire immediately.
 /*
 
-C function : g_source_get_ready_time
+C function
+
+g_source_get_ready_time
 */
 func (recv *Source) GetReadyTime() int64 {
 	retC := C.g_source_get_ready_time((*C.GSource)(recv.native))
@@ -4043,7 +4443,9 @@ func (recv *Source) GetReadyTime() int64 {
 // Increases the reference count on a source by one.
 /*
 
-C function : g_source_ref
+C function
+
+g_source_ref
 */
 func (recv *Source) Ref() *Source {
 	retC := C.g_source_ref((*C.GSource)(recv.native))
@@ -4059,7 +4461,9 @@ func (recv *Source) Ref() *Source {
 // Do not call this API on a #GSource that you did not create.
 /*
 
-C function : g_source_remove_poll
+C function
+
+g_source_remove_poll
 */
 func (recv *Source) RemovePoll(fd *PollFD) {
 	c_fd := (*C.GPollFD)(C.NULL)
@@ -4082,7 +4486,9 @@ func (recv *Source) RemovePoll(fd *PollFD) {
 // than @callback_funcs->ref.
 /*
 
-C function : g_source_set_callback_indirect
+C function
+
+g_source_set_callback_indirect
 */
 func (recv *Source) SetCallbackIndirect(callbackData uintptr, callbackFuncs *SourceCallbackFuncs) {
 	c_callback_data := (C.gpointer)(callbackData)
@@ -4103,7 +4509,9 @@ func (recv *Source) SetCallbackIndirect(callbackData uintptr, callbackFuncs *Sou
 // source is blocked until the dispatch function returns.
 /*
 
-C function : g_source_set_can_recurse
+C function
+
+g_source_set_can_recurse
 */
 func (recv *Source) SetCanRecurse(canRecurse bool) {
 	c_can_recurse :=
@@ -4124,7 +4532,9 @@ func (recv *Source) SetCanRecurse(canRecurse bool) {
 // as a child of another source.
 /*
 
-C function : g_source_set_priority
+C function
+
+g_source_set_priority
 */
 func (recv *Source) SetPriority(priority int32) {
 	c_priority := (C.gint)(priority)
@@ -4139,7 +4549,9 @@ func (recv *Source) SetPriority(priority int32) {
 // memory will be destroyed.
 /*
 
-C function : g_source_unref
+C function
+
+g_source_unref
 */
 func (recv *Source) Unref() {
 	C.g_source_unref((*C.GSource)(recv.native))
@@ -4151,7 +4563,9 @@ func (recv *Source) Unref() {
 // functions for managing callback objects.
 /*
 
-C record/class : GSourceCallbackFuncs
+C type
+
+GSourceCallbackFuncs
 */
 type SourceCallbackFuncs struct {
 	native *C.GSourceCallbackFuncs
@@ -4198,7 +4612,9 @@ func (recv *SourceCallbackFuncs) ToC() unsafe.Pointer {
 // required condition has been met, and returns %TRUE if so.
 /*
 
-C record/class : GSourceFuncs
+C type
+
+GSourceFuncs
 */
 type SourceFuncs struct {
 	native *C.GSourceFuncs
@@ -4228,7 +4644,9 @@ func (recv *SourceFuncs) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GSourcePrivate
+C type
+
+GSourcePrivate
 */
 type SourcePrivate struct {
 	native *C.GSourcePrivate
@@ -4256,7 +4674,9 @@ func (recv *SourcePrivate) ToC() unsafe.Pointer {
 // See g_stat() for more information.
 /*
 
-C record/class : GStatBuf
+C type
+
+GStatBuf
 */
 type StatBuf struct {
 	native *C.GStatBuf
@@ -4281,7 +4701,9 @@ func (recv *StatBuf) ToC() unsafe.Pointer {
 // The GString struct contains the public fields of a GString.
 /*
 
-C record/class : GString
+C type
+
+GString
 */
 type String struct {
 	native       *C.GString
@@ -4321,7 +4743,9 @@ func (recv *String) ToC() unsafe.Pointer {
 // it if necessary.
 /*
 
-C function : g_string_append
+C function
+
+g_string_append
 */
 func (recv *String) Append(val string) *String {
 	c_val := C.CString(val)
@@ -4337,7 +4761,9 @@ func (recv *String) Append(val string) *String {
 // it if necessary.
 /*
 
-C function : g_string_append_c
+C function
+
+g_string_append_c
 */
 func (recv *String) AppendC(c rune) *String {
 	c_c := (C.gchar)(c)
@@ -4357,7 +4783,9 @@ func (recv *String) AppendC(c rune) *String {
 // least @len addressable bytes.
 /*
 
-C function : g_string_append_len
+C function
+
+g_string_append_len
 */
 func (recv *String) AppendLen(val string, len int64) *String {
 	c_val := C.CString(val)
@@ -4377,7 +4805,9 @@ func (recv *String) AppendLen(val string, len int64) *String {
 // to the string.
 /*
 
-C function : g_string_append_unichar
+C function
+
+g_string_append_unichar
 */
 func (recv *String) AppendUnichar(wc rune) *String {
 	c_wc := (C.gunichar)(wc)
@@ -4391,7 +4821,9 @@ func (recv *String) AppendUnichar(wc rune) *String {
 // Converts all uppercase ASCII letters to lowercase ASCII letters.
 /*
 
-C function : g_string_ascii_down
+C function
+
+g_string_ascii_down
 */
 func (recv *String) AsciiDown() *String {
 	retC := C.g_string_ascii_down((*C.GString)(recv.native))
@@ -4403,7 +4835,9 @@ func (recv *String) AsciiDown() *String {
 // Converts all lowercase ASCII letters to uppercase ASCII letters.
 /*
 
-C function : g_string_ascii_up
+C function
+
+g_string_ascii_up
 */
 func (recv *String) AsciiUp() *String {
 	retC := C.g_string_ascii_up((*C.GString)(recv.native))
@@ -4418,7 +4852,9 @@ func (recv *String) AsciiUp() *String {
 // have to worry about having enough space to copy the string.
 /*
 
-C function : g_string_assign
+C function
+
+g_string_assign
 */
 func (recv *String) Assign(rval string) *String {
 	c_rval := C.CString(rval)
@@ -4433,7 +4869,9 @@ func (recv *String) Assign(rval string) *String {
 // Converts a #GString to lowercase.
 /*
 
-C function : g_string_down
+C function
+
+g_string_down
 */
 func (recv *String) Down() *String {
 	retC := C.g_string_down((*C.GString)(recv.native))
@@ -4446,7 +4884,9 @@ func (recv *String) Down() *String {
 // For use with #GHashTable.
 /*
 
-C function : g_string_equal
+C function
+
+g_string_equal
 */
 func (recv *String) Equal(v2 *String) bool {
 	c_v2 := (*C.GString)(C.NULL)
@@ -4464,7 +4904,9 @@ func (recv *String) Equal(v2 *String) bool {
 // The rest of the #GString is shifted down to fill the gap.
 /*
 
-C function : g_string_erase
+C function
+
+g_string_erase
 */
 func (recv *String) Erase(pos int64, len int64) *String {
 	c_pos := (C.gssize)(pos)
@@ -4483,7 +4925,9 @@ func (recv *String) Erase(pos int64, len int64) *String {
 // free it after use with g_free().
 /*
 
-C function : g_string_free
+C function
+
+g_string_free
 */
 func (recv *String) Free(freeSegment bool) string {
 	c_free_segment :=
@@ -4499,7 +4943,9 @@ func (recv *String) Free(freeSegment bool) string {
 // Creates a hash code for @str; for use with #GHashTable.
 /*
 
-C function : g_string_hash
+C function
+
+g_string_hash
 */
 func (recv *String) Hash() uint32 {
 	retC := C.g_string_hash((*C.GString)(recv.native))
@@ -4512,7 +4958,9 @@ func (recv *String) Hash() uint32 {
 // expanding it if necessary.
 /*
 
-C function : g_string_insert
+C function
+
+g_string_insert
 */
 func (recv *String) Insert(pos int64, val string) *String {
 	c_pos := (C.gssize)(pos)
@@ -4529,7 +4977,9 @@ func (recv *String) Insert(pos int64, val string) *String {
 // Inserts a byte into a #GString, expanding it if necessary.
 /*
 
-C function : g_string_insert_c
+C function
+
+g_string_insert_c
 */
 func (recv *String) InsertC(pos int64, c rune) *String {
 	c_pos := (C.gssize)(pos)
@@ -4552,7 +5002,9 @@ func (recv *String) InsertC(pos int64, c rune) *String {
 // least @len addressable bytes.
 /*
 
-C function : g_string_insert_len
+C function
+
+g_string_insert_len
 */
 func (recv *String) InsertLen(pos int64, val string, len int64) *String {
 	c_pos := (C.gssize)(pos)
@@ -4572,7 +5024,9 @@ func (recv *String) InsertLen(pos int64, val string, len int64) *String {
 // into the string at the given position.
 /*
 
-C function : g_string_insert_unichar
+C function
+
+g_string_insert_unichar
 */
 func (recv *String) InsertUnichar(pos int64, wc rune) *String {
 	c_pos := (C.gssize)(pos)
@@ -4589,7 +5043,9 @@ func (recv *String) InsertUnichar(pos int64, wc rune) *String {
 // expanding it if necessary.
 /*
 
-C function : g_string_prepend
+C function
+
+g_string_prepend
 */
 func (recv *String) Prepend(val string) *String {
 	c_val := C.CString(val)
@@ -4605,7 +5061,9 @@ func (recv *String) Prepend(val string) *String {
 // expanding it if necessary.
 /*
 
-C function : g_string_prepend_c
+C function
+
+g_string_prepend_c
 */
 func (recv *String) PrependC(c rune) *String {
 	c_c := (C.gchar)(c)
@@ -4625,7 +5083,9 @@ func (recv *String) PrependC(c rune) *String {
 // @val has at least @len addressable bytes.
 /*
 
-C function : g_string_prepend_len
+C function
+
+g_string_prepend_len
 */
 func (recv *String) PrependLen(val string, len int64) *String {
 	c_val := C.CString(val)
@@ -4643,7 +5103,9 @@ func (recv *String) PrependLen(val string, len int64) *String {
 // to the string.
 /*
 
-C function : g_string_prepend_unichar
+C function
+
+g_string_prepend_unichar
 */
 func (recv *String) PrependUnichar(wc rune) *String {
 	c_wc := (C.gunichar)(wc)
@@ -4663,7 +5125,9 @@ func (recv *String) PrependUnichar(wc rune) *String {
 // always, string->str[string->len] will be a nul byte.)
 /*
 
-C function : g_string_set_size
+C function
+
+g_string_set_size
 */
 func (recv *String) SetSize(len uint64) *String {
 	c_len := (C.gsize)(len)
@@ -4677,7 +5141,9 @@ func (recv *String) SetSize(len uint64) *String {
 // Cuts off the end of the GString, leaving the first @len bytes.
 /*
 
-C function : g_string_truncate
+C function
+
+g_string_truncate
 */
 func (recv *String) Truncate(len uint64) *String {
 	c_len := (C.gsize)(len)
@@ -4691,7 +5157,9 @@ func (recv *String) Truncate(len uint64) *String {
 // Converts a #GString to uppercase.
 /*
 
-C function : g_string_up
+C function
+
+g_string_up
 */
 func (recv *String) Up() *String {
 	retC := C.g_string_up((*C.GString)(recv.native))
@@ -4704,7 +5172,9 @@ func (recv *String) Up() *String {
 // It should only be accessed by using the following functions.
 /*
 
-C record/class : GStringChunk
+C type
+
+GStringChunk
 */
 type StringChunk struct {
 	native *C.GStringChunk
@@ -4731,7 +5201,9 @@ func (recv *StringChunk) ToC() unsafe.Pointer {
 // access any of the strings which were contained within it.
 /*
 
-C function : g_string_chunk_free
+C function
+
+g_string_chunk_free
 */
 func (recv *StringChunk) Free() {
 	C.g_string_chunk_free((*C.GStringChunk)(recv.native))
@@ -4752,7 +5224,9 @@ func (recv *StringChunk) Free() {
 // duplicates.
 /*
 
-C function : g_string_chunk_insert
+C function
+
+g_string_chunk_insert
 */
 func (recv *StringChunk) Insert(string string) string {
 	c_string := C.CString(string)
@@ -4780,7 +5254,9 @@ func (recv *StringChunk) Insert(string string) string {
 // if they do match.
 /*
 
-C function : g_string_chunk_insert_const
+C function
+
+g_string_chunk_insert_const
 */
 func (recv *StringChunk) InsertConst(string string) string {
 	c_string := C.CString(string)
@@ -4796,7 +5272,9 @@ func (recv *StringChunk) InsertConst(string string) string {
 // An opaque structure representing a test case.
 /*
 
-C record/class : GTestCase
+C type
+
+GTestCase
 */
 type TestCase struct {
 	native *C.GTestCase
@@ -4820,7 +5298,9 @@ func (recv *TestCase) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GTestConfig
+C type
+
+GTestConfig
 */
 type TestConfig struct {
 	native          *C.GTestConfig
@@ -4875,7 +5355,9 @@ func (recv *TestConfig) ToC() unsafe.Pointer {
 // An opaque structure representing a test suite.
 /*
 
-C record/class : GTestSuite
+C type
+
+GTestSuite
 */
 type TestSuite struct {
 	native *C.GTestSuite
@@ -4912,7 +5394,9 @@ func (recv *TestSuite) ToC() unsafe.Pointer {
 // accessed.
 /*
 
-C record/class : GThread
+C type
+
+GThread
 */
 type Thread struct {
 	native *C.GThread
@@ -4952,7 +5436,9 @@ func (recv *Thread) ToC() unsafe.Pointer {
 // want to keep the GThread alive beyond the g_thread_join() call.
 /*
 
-C function : g_thread_join
+C function
+
+g_thread_join
 */
 func (recv *Thread) Join() uintptr {
 	retC := C.g_thread_join((*C.GThread)(recv.native))
@@ -4966,7 +5452,9 @@ func (recv *Thread) Join() uintptr {
 // so you must not copy this struct.
 /*
 
-C record/class : GThreadPool
+C type
+
+GThreadPool
 */
 type ThreadPool struct {
 	native *C.GThreadPool
@@ -5015,7 +5503,9 @@ func (recv *ThreadPool) ToC() unsafe.Pointer {
 // After calling this function @pool must not be used anymore.
 /*
 
-C function : g_thread_pool_free
+C function
+
+g_thread_pool_free
 */
 func (recv *ThreadPool) Free(immediate bool, wait bool) {
 	c_immediate :=
@@ -5032,7 +5522,9 @@ func (recv *ThreadPool) Free(immediate bool, wait bool) {
 // Returns the maximal number of threads for @pool.
 /*
 
-C function : g_thread_pool_get_max_threads
+C function
+
+g_thread_pool_get_max_threads
 */
 func (recv *ThreadPool) GetMaxThreads() int32 {
 	retC := C.g_thread_pool_get_max_threads((*C.GThreadPool)(recv.native))
@@ -5044,7 +5536,9 @@ func (recv *ThreadPool) GetMaxThreads() int32 {
 // Returns the number of threads currently running in @pool.
 /*
 
-C function : g_thread_pool_get_num_threads
+C function
+
+g_thread_pool_get_num_threads
 */
 func (recv *ThreadPool) GetNumThreads() uint32 {
 	retC := C.g_thread_pool_get_num_threads((*C.GThreadPool)(recv.native))
@@ -5069,7 +5563,9 @@ func (recv *ThreadPool) GetNumThreads() uint32 {
 // Before version 2.32, this function did not return a success status.
 /*
 
-C function : g_thread_pool_push
+C function
+
+g_thread_pool_push
 */
 func (recv *ThreadPool) Push(data uintptr) (bool, error) {
 	c_data := (C.gpointer)(data)
@@ -5109,7 +5605,9 @@ func (recv *ThreadPool) Push(data uintptr) (bool, error) {
 // Before version 2.32, this function did not return a success status.
 /*
 
-C function : g_thread_pool_set_max_threads
+C function
+
+g_thread_pool_set_max_threads
 */
 func (recv *ThreadPool) SetMaxThreads(maxThreads int32) (bool, error) {
 	c_max_threads := (C.gint)(maxThreads)
@@ -5130,7 +5628,9 @@ func (recv *ThreadPool) SetMaxThreads(maxThreads int32) (bool, error) {
 // Returns the number of tasks still unprocessed in @pool.
 /*
 
-C function : g_thread_pool_unprocessed
+C function
+
+g_thread_pool_unprocessed
 */
 func (recv *ThreadPool) Unprocessed() uint32 {
 	retC := C.g_thread_pool_unprocessed((*C.GThreadPool)(recv.native))
@@ -5148,7 +5648,9 @@ func (recv *ThreadPool) Unprocessed() uint32 {
 // removed from a future version of GLib.
 /*
 
-C record/class : GTimeVal
+C type
+
+GTimeVal
 */
 type TimeVal struct {
 	native *C.GTimeVal
@@ -5184,7 +5686,9 @@ func (recv *TimeVal) ToC() unsafe.Pointer {
 // also be negative to decrease the value of @time_.
 /*
 
-C function : g_time_val_add
+C function
+
+g_time_val_add
 */
 func (recv *TimeVal) Add(microseconds int64) {
 	c_microseconds := (C.glong)(microseconds)
@@ -5197,7 +5701,9 @@ func (recv *TimeVal) Add(microseconds int64) {
 // Opaque datatype that records a start time.
 /*
 
-C record/class : GTimer
+C type
+
+GTimer
 */
 type Timer struct {
 	native *C.GTimer
@@ -5222,7 +5728,9 @@ func (recv *Timer) ToC() unsafe.Pointer {
 // Destroys a timer, freeing associated resources.
 /*
 
-C function : g_timer_destroy
+C function
+
+g_timer_destroy
 */
 func (recv *Timer) Destroy() {
 	C.g_timer_destroy((*C.GTimer)(recv.native))
@@ -5238,7 +5746,9 @@ func (recv *Timer) Destroy() {
 // essentially useless.
 /*
 
-C function : g_timer_elapsed
+C function
+
+g_timer_elapsed
 */
 func (recv *Timer) Elapsed(microseconds uint64) float64 {
 	c_microseconds := (C.gulong)(microseconds)
@@ -5254,7 +5764,9 @@ func (recv *Timer) Elapsed(microseconds uint64) float64 {
 // serves no purpose.
 /*
 
-C function : g_timer_reset
+C function
+
+g_timer_reset
 */
 func (recv *Timer) Reset() {
 	C.g_timer_reset((*C.GTimer)(recv.native))
@@ -5268,7 +5780,9 @@ func (recv *Timer) Reset() {
 // g_timer_start() immediately after creating the timer.
 /*
 
-C function : g_timer_start
+C function
+
+g_timer_start
 */
 func (recv *Timer) Start() {
 	C.g_timer_start((*C.GTimer)(recv.native))
@@ -5280,7 +5794,9 @@ func (recv *Timer) Start() {
 // difference between this end time and the start time.
 /*
 
-C function : g_timer_stop
+C function
+
+g_timer_stop
 */
 func (recv *Timer) Stop() {
 	C.g_timer_stop((*C.GTimer)(recv.native))
@@ -5292,7 +5808,9 @@ func (recv *Timer) Stop() {
 // is cast to a GTrashStack*.
 /*
 
-C record/class : GTrashStack
+C type
+
+GTrashStack
 */
 type TrashStack struct {
 	native *C.GTrashStack
@@ -5320,7 +5838,9 @@ func (recv *TrashStack) ToC() unsafe.Pointer {
 // accessed only by using the following functions.
 /*
 
-C record/class : GTree
+C type
+
+GTree
 */
 type Tree struct {
 	native *C.GTree
@@ -5350,7 +5870,9 @@ func (recv *Tree) ToC() unsafe.Pointer {
 // the #GTree.
 /*
 
-C function : g_tree_destroy
+C function
+
+g_tree_destroy
 */
 func (recv *Tree) Destroy() {
 	C.g_tree_destroy((*C.GTree)(recv.native))
@@ -5367,7 +5889,9 @@ func (recv *Tree) Destroy() {
 // If the root node has children the height is 2, etc.
 /*
 
-C function : g_tree_height
+C function
+
+g_tree_height
 */
 func (recv *Tree) Height() int32 {
 	retC := C.g_tree_height((*C.GTree)(recv.native))
@@ -5388,7 +5912,9 @@ func (recv *Tree) Height() int32 {
 // so that the distance from the root to every leaf is as small as possible.
 /*
 
-C function : g_tree_insert
+C function
+
+g_tree_insert
 */
 func (recv *Tree) Insert(key uintptr, value uintptr) {
 	c_key := (C.gpointer)(key)
@@ -5405,7 +5931,9 @@ func (recv *Tree) Insert(key uintptr, value uintptr) {
 // is O(log n) (where n is the number of key/value pairs in the tree).
 /*
 
-C function : g_tree_lookup
+C function
+
+g_tree_lookup
 */
 func (recv *Tree) Lookup(key uintptr) uintptr {
 	c_key := (C.gconstpointer)(key)
@@ -5422,7 +5950,9 @@ func (recv *Tree) Lookup(key uintptr) uintptr {
 // g_tree_remove().
 /*
 
-C function : g_tree_lookup_extended
+C function
+
+g_tree_lookup_extended
 */
 func (recv *Tree) LookupExtended(lookupKey uintptr, origKey uintptr, value uintptr) bool {
 	c_lookup_key := (C.gconstpointer)(lookupKey)
@@ -5440,7 +5970,9 @@ func (recv *Tree) LookupExtended(lookupKey uintptr, origKey uintptr, value uintp
 // Gets the number of nodes in a #GTree.
 /*
 
-C function : g_tree_nnodes
+C function
+
+g_tree_nnodes
 */
 func (recv *Tree) Nnodes() int32 {
 	retC := C.g_tree_nnodes((*C.GTree)(recv.native))
@@ -5457,7 +5989,9 @@ func (recv *Tree) Nnodes() int32 {
 // If the key does not exist in the #GTree, the function does nothing.
 /*
 
-C function : g_tree_remove
+C function
+
+g_tree_remove
 */
 func (recv *Tree) Remove(key uintptr) bool {
 	c_key := (C.gconstpointer)(key)
@@ -5479,7 +6013,9 @@ func (recv *Tree) Remove(key uintptr) bool {
 // so that the distance from the root to every leaf is as small as possible.
 /*
 
-C function : g_tree_replace
+C function
+
+g_tree_replace
 */
 func (recv *Tree) Replace(key uintptr, value uintptr) {
 	c_key := (C.gpointer)(key)
@@ -5499,7 +6035,9 @@ func (recv *Tree) Replace(key uintptr, value uintptr) {
 // If the key does not exist in the #GTree, the function does nothing.
 /*
 
-C function : g_tree_steal
+C function
+
+g_tree_steal
 */
 func (recv *Tree) Steal(key uintptr) bool {
 	c_key := (C.gconstpointer)(key)
@@ -5521,7 +6059,9 @@ func (recv *Tree) Steal(key uintptr) bool {
 // access it from more than one thread.
 /*
 
-C record/class : GVariantBuilder
+C type
+
+GVariantBuilder
 */
 type VariantBuilder struct {
 	native *C.GVariantBuilder
@@ -5547,7 +6087,9 @@ func (recv *VariantBuilder) ToC() unsafe.Pointer {
 // using the following functions.
 /*
 
-C record/class : GVariantIter
+C type
+
+GVariantIter
 */
 type VariantIter struct {
 	native *C.GVariantIter

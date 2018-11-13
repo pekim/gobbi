@@ -18,7 +18,9 @@ import "C"
 // This is the #GBytes variant of gdk_pixbuf_new_from_data().
 /*
 
-C function : gdk_pixbuf_new_from_bytes
+C function
+
+gdk_pixbuf_new_from_bytes
 */
 func PixbufNewFromBytes(data *glib.Bytes, colorspace Colorspace, hasAlpha bool, bitsPerSample int32, width int32, height int32, rowstride int32) *Pixbuf {
 	c_data := (*C.GBytes)(C.NULL)
@@ -52,7 +54,9 @@ func PixbufNewFromBytes(data *glib.Bytes, colorspace Colorspace, hasAlpha bool, 
 // See gdk_pixbuf_get_option() for more details.
 /*
 
-C function : gdk_pixbuf_get_options
+C function
+
+gdk_pixbuf_get_options
 */
 func (recv *Pixbuf) GetOptions() *glib.HashTable {
 	retC := C.gdk_pixbuf_get_options((*C.GdkPixbuf)(recv.native))
@@ -63,7 +67,9 @@ func (recv *Pixbuf) GetOptions() *glib.HashTable {
 
 /*
 
-C function : gdk_pixbuf_read_pixel_bytes
+C function
+
+gdk_pixbuf_read_pixel_bytes
 */
 func (recv *Pixbuf) ReadPixelBytes() *glib.Bytes {
 	retC := C.gdk_pixbuf_read_pixel_bytes((*C.GdkPixbuf)(recv.native))

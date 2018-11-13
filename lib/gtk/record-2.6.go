@@ -18,7 +18,9 @@ import "C"
 // Gets the contents of the selection data as a #GdkPixbuf.
 /*
 
-C function : gtk_selection_data_get_pixbuf
+C function
+
+gtk_selection_data_get_pixbuf
 */
 func (recv *SelectionData) GetPixbuf() *gdkpixbuf.Pixbuf {
 	retC := C.gtk_selection_data_get_pixbuf((*C.GtkSelectionData)(recv.native))
@@ -39,7 +41,9 @@ func (recv *SelectionData) GetPixbuf() *gdkpixbuf.Pixbuf {
 // @selection_data->target.
 /*
 
-C function : gtk_selection_data_set_pixbuf
+C function
+
+gtk_selection_data_set_pixbuf
 */
 func (recv *SelectionData) SetPixbuf(pixbuf *gdkpixbuf.Pixbuf) bool {
 	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
@@ -60,7 +64,9 @@ func (recv *SelectionData) SetPixbuf(pixbuf *gdkpixbuf.Pixbuf) bool {
 // provide a #GdkPixbuf.
 /*
 
-C function : gtk_selection_data_targets_include_image
+C function
+
+gtk_selection_data_targets_include_image
 */
 func (recv *SelectionData) TargetsIncludeImage(writable bool) bool {
 	c_writable :=
@@ -76,7 +82,9 @@ func (recv *SelectionData) TargetsIncludeImage(writable bool) bool {
 // the target list. All targets are added with the same @info.
 /*
 
-C function : gtk_target_list_add_image_targets
+C function
+
+gtk_target_list_add_image_targets
 */
 func (recv *TargetList) AddImageTargets(info uint32, writable bool) {
 	c_info := (C.guint)(info)
@@ -93,7 +101,9 @@ func (recv *TargetList) AddImageTargets(info uint32, writable bool) {
 // the target list. All targets are added with the same @info.
 /*
 
-C function : gtk_target_list_add_text_targets
+C function
+
+gtk_target_list_add_text_targets
 */
 func (recv *TargetList) AddTextTargets(info uint32) {
 	c_info := (C.guint)(info)
@@ -107,7 +117,9 @@ func (recv *TargetList) AddTextTargets(info uint32) {
 // the target list. All targets are added with the same @info.
 /*
 
-C function : gtk_target_list_add_uri_targets
+C function
+
+gtk_target_list_add_uri_targets
 */
 func (recv *TargetList) AddUriTargets(info uint32) {
 	c_info := (C.guint)(info)

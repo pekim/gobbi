@@ -31,7 +31,9 @@ import "C"
 // @nptr (if @endptr is non-%NULL).
 /*
 
-C function : g_ascii_strtoull
+C function
+
+g_ascii_strtoull
 */
 func AsciiStrtoull(nptr string, base uint32) (uint64, string) {
 	c_nptr := C.CString(nptr)
@@ -60,7 +62,9 @@ func AsciiStrtoull(nptr string, base uint32) (uint64, string) {
 // been called).
 /*
 
-C function : g_get_application_name
+C function
+
+g_get_application_name
 */
 func GetApplicationName() string {
 	retC := C.g_get_application_name()
@@ -84,7 +88,9 @@ func GetApplicationName() string {
 // or when displaying an application's name in the task list.
 /*
 
-C function : g_set_application_name
+C function
+
+g_set_application_name
 */
 func SetApplicationName(applicationName string) {
 	c_application_name := C.CString(applicationName)
@@ -100,7 +106,9 @@ func SetApplicationName(applicationName string) {
 // Looks whether the string @str begins with @prefix.
 /*
 
-C function : g_str_has_prefix
+C function
+
+g_str_has_prefix
 */
 func StrHasPrefix(str string, prefix string) bool {
 	c_str := C.CString(str)
@@ -118,7 +126,9 @@ func StrHasPrefix(str string, prefix string) bool {
 // Looks whether the string @str ends with @suffix.
 /*
 
-C function : g_str_has_suffix
+C function
+
+g_str_has_suffix
 */
 func StrHasSuffix(str string, suffix string) bool {
 	c_str := C.CString(str)
@@ -148,7 +158,9 @@ func StrHasSuffix(str string, suffix string) bool {
 // no longer needed.
 /*
 
-C function : g_utf8_strreverse
+C function
+
+g_utf8_strreverse
 */
 func Utf8Strreverse(str string, len int64) string {
 	c_str := C.CString(str)

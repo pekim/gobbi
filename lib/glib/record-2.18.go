@@ -15,7 +15,9 @@ import "C"
 // Resets the state of the @checksum back to its initial state.
 /*
 
-C function : g_checksum_reset
+C function
+
+g_checksum_reset
 */
 func (recv *Checksum) Reset() {
 	C.g_checksum_reset((*C.GChecksum)(recv.native))
@@ -30,7 +32,9 @@ func (recv *Checksum) Reset() {
 // of g_markup_parse_context_push().
 /*
 
-C function : g_markup_parse_context_get_user_data
+C function
+
+g_markup_parse_context_get_user_data
 */
 func (recv *MarkupParseContext) GetUserData() uintptr {
 	retC := C.g_markup_parse_context_get_user_data((*C.GMarkupParseContext)(recv.native))
@@ -54,7 +58,9 @@ func (recv *MarkupParseContext) GetUserData() uintptr {
 // interface.
 /*
 
-C function : g_markup_parse_context_pop
+C function
+
+g_markup_parse_context_pop
 */
 func (recv *MarkupParseContext) Pop() uintptr {
 	retC := C.g_markup_parse_context_pop((*C.GMarkupParseContext)(recv.native))
@@ -179,7 +185,9 @@ func (recv *MarkupParseContext) Pop() uintptr {
 // ]|
 /*
 
-C function : g_markup_parse_context_push
+C function
+
+g_markup_parse_context_push
 */
 func (recv *MarkupParseContext) Push(parser *MarkupParser, userData uintptr) {
 	c_parser := (*C.GMarkupParser)(C.NULL)

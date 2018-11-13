@@ -35,7 +35,9 @@ import "C"
 // See g_action_map_add_action_entries() for an example.
 /*
 
-C record/class : GActionEntry
+C type
+
+GActionEntry
 */
 type ActionEntry struct {
 	native *C.GActionEntry
@@ -77,7 +79,9 @@ func (recv *ActionEntry) ToC() unsafe.Pointer {
 // Application Information interface, for operating system portability.
 /*
 
-C record/class : GAppInfoIface
+C type
+
+GAppInfoIface
 */
 type AppInfoIface struct {
 	native *C.GAppInfoIface
@@ -125,7 +129,9 @@ func (recv *AppInfoIface) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GAppLaunchContextClass
+C type
+
+GAppLaunchContextClass
 */
 type AppLaunchContextClass struct {
 	native *C.GAppLaunchContextClass
@@ -158,7 +164,9 @@ func (recv *AppLaunchContextClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GAppLaunchContextPrivate
+C type
+
+GAppLaunchContextPrivate
 */
 type AppLaunchContextPrivate struct {
 	native *C.GAppLaunchContextPrivate
@@ -182,7 +190,9 @@ func (recv *AppLaunchContextPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GApplicationCommandLinePrivate
+C type
+
+GApplicationCommandLinePrivate
 */
 type ApplicationCommandLinePrivate struct {
 	native *C.GApplicationCommandLinePrivate
@@ -206,7 +216,9 @@ func (recv *ApplicationCommandLinePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GApplicationPrivate
+C type
+
+GApplicationPrivate
 */
 type ApplicationPrivate struct {
 	native *C.GApplicationPrivate
@@ -231,7 +243,9 @@ func (recv *ApplicationPrivate) ToC() unsafe.Pointer {
 // Interface definition for #GAsyncResult.
 /*
 
-C record/class : GAsyncResultIface
+C type
+
+GAsyncResultIface
 */
 type AsyncResultIface struct {
 	native *C.GAsyncResultIface
@@ -259,7 +273,9 @@ func (recv *AsyncResultIface) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GBufferedInputStreamClass
+C type
+
+GBufferedInputStreamClass
 */
 type BufferedInputStreamClass struct {
 	native *C.GBufferedInputStreamClass
@@ -292,7 +308,9 @@ func (recv *BufferedInputStreamClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GBufferedInputStreamPrivate
+C type
+
+GBufferedInputStreamPrivate
 */
 type BufferedInputStreamPrivate struct {
 	native *C.GBufferedInputStreamPrivate
@@ -316,7 +334,9 @@ func (recv *BufferedInputStreamPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GBufferedOutputStreamClass
+C type
+
+GBufferedOutputStreamClass
 */
 type BufferedOutputStreamClass struct {
 	native *C.GBufferedOutputStreamClass
@@ -343,7 +363,9 @@ func (recv *BufferedOutputStreamClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GBufferedOutputStreamPrivate
+C type
+
+GBufferedOutputStreamPrivate
 */
 type BufferedOutputStreamPrivate struct {
 	native *C.GBufferedOutputStreamPrivate
@@ -367,7 +389,9 @@ func (recv *BufferedOutputStreamPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GCancellableClass
+C type
+
+GCancellableClass
 */
 type CancellableClass struct {
 	native *C.GCancellableClass
@@ -398,7 +422,9 @@ func (recv *CancellableClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GCancellablePrivate
+C type
+
+GCancellablePrivate
 */
 type CancellablePrivate struct {
 	native *C.GCancellablePrivate
@@ -422,7 +448,9 @@ func (recv *CancellablePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GCharsetConverterClass
+C type
+
+GCharsetConverterClass
 */
 type CharsetConverterClass struct {
 	native *C.GCharsetConverterClass
@@ -447,7 +475,9 @@ func (recv *CharsetConverterClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GConverterInputStreamClass
+C type
+
+GConverterInputStreamClass
 */
 type ConverterInputStreamClass struct {
 	native *C.GConverterInputStreamClass
@@ -477,7 +507,9 @@ func (recv *ConverterInputStreamClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GConverterInputStreamPrivate
+C type
+
+GConverterInputStreamPrivate
 */
 type ConverterInputStreamPrivate struct {
 	native *C.GConverterInputStreamPrivate
@@ -501,7 +533,9 @@ func (recv *ConverterInputStreamPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GConverterOutputStreamClass
+C type
+
+GConverterOutputStreamClass
 */
 type ConverterOutputStreamClass struct {
 	native *C.GConverterOutputStreamClass
@@ -531,7 +565,9 @@ func (recv *ConverterOutputStreamClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GConverterOutputStreamPrivate
+C type
+
+GConverterOutputStreamPrivate
 */
 type ConverterOutputStreamPrivate struct {
 	native *C.GConverterOutputStreamPrivate
@@ -555,7 +591,9 @@ func (recv *ConverterOutputStreamPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GDBusInterfaceSkeletonPrivate
+C type
+
+GDBusInterfaceSkeletonPrivate
 */
 type DBusInterfaceSkeletonPrivate struct {
 	native *C.GDBusInterfaceSkeletonPrivate
@@ -579,7 +617,9 @@ func (recv *DBusInterfaceSkeletonPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GDBusObjectManagerClientPrivate
+C type
+
+GDBusObjectManagerClientPrivate
 */
 type DBusObjectManagerClientPrivate struct {
 	native *C.GDBusObjectManagerClientPrivate
@@ -603,7 +643,9 @@ func (recv *DBusObjectManagerClientPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GDBusObjectManagerServerPrivate
+C type
+
+GDBusObjectManagerServerPrivate
 */
 type DBusObjectManagerServerPrivate struct {
 	native *C.GDBusObjectManagerServerPrivate
@@ -627,7 +669,9 @@ func (recv *DBusObjectManagerServerPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GDBusObjectProxyPrivate
+C type
+
+GDBusObjectProxyPrivate
 */
 type DBusObjectProxyPrivate struct {
 	native *C.GDBusObjectProxyPrivate
@@ -651,7 +695,9 @@ func (recv *DBusObjectProxyPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GDBusObjectSkeletonPrivate
+C type
+
+GDBusObjectSkeletonPrivate
 */
 type DBusObjectSkeletonPrivate struct {
 	native *C.GDBusObjectSkeletonPrivate
@@ -675,7 +721,9 @@ func (recv *DBusObjectSkeletonPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GDBusProxyPrivate
+C type
+
+GDBusProxyPrivate
 */
 type DBusProxyPrivate struct {
 	native *C.GDBusProxyPrivate
@@ -699,7 +747,9 @@ func (recv *DBusProxyPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GDataInputStreamClass
+C type
+
+GDataInputStreamClass
 */
 type DataInputStreamClass struct {
 	native *C.GDataInputStreamClass
@@ -729,7 +779,9 @@ func (recv *DataInputStreamClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GDataInputStreamPrivate
+C type
+
+GDataInputStreamPrivate
 */
 type DataInputStreamPrivate struct {
 	native *C.GDataInputStreamPrivate
@@ -753,7 +805,9 @@ func (recv *DataInputStreamPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GDataOutputStreamClass
+C type
+
+GDataOutputStreamClass
 */
 type DataOutputStreamClass struct {
 	native *C.GDataOutputStreamClass
@@ -783,7 +837,9 @@ func (recv *DataOutputStreamClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GDataOutputStreamPrivate
+C type
+
+GDataOutputStreamPrivate
 */
 type DataOutputStreamPrivate struct {
 	native *C.GDataOutputStreamPrivate
@@ -807,7 +863,9 @@ func (recv *DataOutputStreamPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GDesktopAppInfoClass
+C type
+
+GDesktopAppInfoClass
 */
 type DesktopAppInfoClass struct {
 	native *C.GDesktopAppInfoClass
@@ -834,7 +892,9 @@ func (recv *DesktopAppInfoClass) ToC() unsafe.Pointer {
 // handlers with URI schemes.
 /*
 
-C record/class : GDesktopAppInfoLookupIface
+C type
+
+GDesktopAppInfoLookupIface
 */
 type DesktopAppInfoLookupIface struct {
 	native *C.GDesktopAppInfoLookupIface
@@ -861,7 +921,9 @@ func (recv *DesktopAppInfoLookupIface) ToC() unsafe.Pointer {
 // Interface for creating #GDrive implementations.
 /*
 
-C record/class : GDriveIface
+C type
+
+GDriveIface
 */
 type DriveIface struct {
 	native *C.GDriveIface
@@ -918,7 +980,9 @@ func (recv *DriveIface) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GEmblemClass
+C type
+
+GEmblemClass
 */
 type EmblemClass struct {
 	native *C.GEmblemClass
@@ -942,7 +1006,9 @@ func (recv *EmblemClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GEmblemedIconClass
+C type
+
+GEmblemedIconClass
 */
 type EmblemedIconClass struct {
 	native *C.GEmblemedIconClass
@@ -967,7 +1033,9 @@ func (recv *EmblemedIconClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GEmblemedIconPrivate
+C type
+
+GEmblemedIconPrivate
 */
 type EmblemedIconPrivate struct {
 	native *C.GEmblemedIconPrivate
@@ -992,7 +1060,9 @@ func (recv *EmblemedIconPrivate) ToC() unsafe.Pointer {
 // Information about a specific attribute.
 /*
 
-C record/class : GFileAttributeInfo
+C type
+
+GFileAttributeInfo
 */
 type FileAttributeInfo struct {
 	native *C.GFileAttributeInfo
@@ -1032,7 +1102,9 @@ func (recv *FileAttributeInfo) ToC() unsafe.Pointer {
 // The registry stores Key-Value pair formats as #GFileAttributeInfos.
 /*
 
-C record/class : GFileAttributeInfoList
+C type
+
+GFileAttributeInfoList
 */
 type FileAttributeInfoList struct {
 	native *C.GFileAttributeInfoList
@@ -1064,7 +1136,9 @@ func (recv *FileAttributeInfoList) ToC() unsafe.Pointer {
 // Creates a new file attribute info list.
 /*
 
-C function : g_file_attribute_info_list_new
+C function
+
+g_file_attribute_info_list_new
 */
 func FileAttributeInfoListNew() *FileAttributeInfoList {
 	retC := C.g_file_attribute_info_list_new()
@@ -1077,7 +1151,9 @@ func FileAttributeInfoListNew() *FileAttributeInfoList {
 // its @type and @flags.
 /*
 
-C function : g_file_attribute_info_list_add
+C function
+
+g_file_attribute_info_list_add
 */
 func (recv *FileAttributeInfoList) Add(name string, type_ FileAttributeType, flags FileAttributeInfoFlags) {
 	c_name := C.CString(name)
@@ -1095,7 +1171,9 @@ func (recv *FileAttributeInfoList) Add(name string, type_ FileAttributeType, fla
 // Makes a duplicate of a file attribute info list.
 /*
 
-C function : g_file_attribute_info_list_dup
+C function
+
+g_file_attribute_info_list_dup
 */
 func (recv *FileAttributeInfoList) Dup() *FileAttributeInfoList {
 	retC := C.g_file_attribute_info_list_dup((*C.GFileAttributeInfoList)(recv.native))
@@ -1107,7 +1185,9 @@ func (recv *FileAttributeInfoList) Dup() *FileAttributeInfoList {
 // Gets the file attribute with the name @name from @list.
 /*
 
-C function : g_file_attribute_info_list_lookup
+C function
+
+g_file_attribute_info_list_lookup
 */
 func (recv *FileAttributeInfoList) Lookup(name string) *FileAttributeInfo {
 	c_name := C.CString(name)
@@ -1122,7 +1202,9 @@ func (recv *FileAttributeInfoList) Lookup(name string) *FileAttributeInfo {
 // References a file attribute info list.
 /*
 
-C function : g_file_attribute_info_list_ref
+C function
+
+g_file_attribute_info_list_ref
 */
 func (recv *FileAttributeInfoList) Ref() *FileAttributeInfoList {
 	retC := C.g_file_attribute_info_list_ref((*C.GFileAttributeInfoList)(recv.native))
@@ -1135,7 +1217,9 @@ func (recv *FileAttributeInfoList) Ref() *FileAttributeInfoList {
 // falls to zero, the @list is deleted.
 /*
 
-C function : g_file_attribute_info_list_unref
+C function
+
+g_file_attribute_info_list_unref
 */
 func (recv *FileAttributeInfoList) Unref() {
 	C.g_file_attribute_info_list_unref((*C.GFileAttributeInfoList)(recv.native))
@@ -1146,7 +1230,9 @@ func (recv *FileAttributeInfoList) Unref() {
 // Determines if a string matches a file attribute.
 /*
 
-C record/class : GFileAttributeMatcher
+C type
+
+GFileAttributeMatcher
 */
 type FileAttributeMatcher struct {
 	native *C.GFileAttributeMatcher
@@ -1180,7 +1266,7 @@ func (recv *FileAttributeMatcher) ToC() unsafe.Pointer {
 // The wildcard "*" may be used to match all keys and namespaces, or
 // "namespace::*" will match all keys in a given namespace.
 //
-// ## Examples of file attribute matcher strings and results
+// Examples of file attribute matcher strings and results
 //
 // - `"*"`: matches all attributes.
 // - `"standard::is-hidden"`: matches only the key is-hidden in the
@@ -1189,7 +1275,9 @@ func (recv *FileAttributeMatcher) ToC() unsafe.Pointer {
 // namespace and all keys in the unix namespace.
 /*
 
-C function : g_file_attribute_matcher_new
+C function
+
+g_file_attribute_matcher_new
 */
 func FileAttributeMatcherNew(attributes string) *FileAttributeMatcher {
 	c_attributes := C.CString(attributes)
@@ -1209,7 +1297,9 @@ func FileAttributeMatcherNew(attributes string) *FileAttributeMatcher {
 // TODO: this is awkwardly worded.
 /*
 
-C function : g_file_attribute_matcher_enumerate_namespace
+C function
+
+g_file_attribute_matcher_enumerate_namespace
 */
 func (recv *FileAttributeMatcher) EnumerateNamespace(ns string) bool {
 	c_ns := C.CString(ns)
@@ -1224,7 +1314,9 @@ func (recv *FileAttributeMatcher) EnumerateNamespace(ns string) bool {
 // Gets the next matched attribute from a #GFileAttributeMatcher.
 /*
 
-C function : g_file_attribute_matcher_enumerate_next
+C function
+
+g_file_attribute_matcher_enumerate_next
 */
 func (recv *FileAttributeMatcher) EnumerateNext() string {
 	retC := C.g_file_attribute_matcher_enumerate_next((*C.GFileAttributeMatcher)(recv.native))
@@ -1238,7 +1330,9 @@ func (recv *FileAttributeMatcher) EnumerateNext() string {
 // will always return %TRUE.
 /*
 
-C function : g_file_attribute_matcher_matches
+C function
+
+g_file_attribute_matcher_matches
 */
 func (recv *FileAttributeMatcher) Matches(attribute string) bool {
 	c_attribute := C.CString(attribute)
@@ -1254,7 +1348,9 @@ func (recv *FileAttributeMatcher) Matches(attribute string) bool {
 // returns %FALSE if "*" was used when creating the matcher.
 /*
 
-C function : g_file_attribute_matcher_matches_only
+C function
+
+g_file_attribute_matcher_matches_only
 */
 func (recv *FileAttributeMatcher) MatchesOnly(attribute string) bool {
 	c_attribute := C.CString(attribute)
@@ -1269,7 +1365,9 @@ func (recv *FileAttributeMatcher) MatchesOnly(attribute string) bool {
 // References a file attribute matcher.
 /*
 
-C function : g_file_attribute_matcher_ref
+C function
+
+g_file_attribute_matcher_ref
 */
 func (recv *FileAttributeMatcher) Ref() *FileAttributeMatcher {
 	retC := C.g_file_attribute_matcher_ref((*C.GFileAttributeMatcher)(recv.native))
@@ -1288,7 +1386,9 @@ func (recv *FileAttributeMatcher) Ref() *FileAttributeMatcher {
 // in the future.
 /*
 
-C function : g_file_attribute_matcher_subtract
+C function
+
+g_file_attribute_matcher_subtract
 */
 func (recv *FileAttributeMatcher) Subtract(subtract *FileAttributeMatcher) *FileAttributeMatcher {
 	c_subtract := (*C.GFileAttributeMatcher)(C.NULL)
@@ -1306,7 +1406,9 @@ func (recv *FileAttributeMatcher) Subtract(subtract *FileAttributeMatcher) *File
 // the @matcher is automatically freed.
 /*
 
-C function : g_file_attribute_matcher_unref
+C function
+
+g_file_attribute_matcher_unref
 */
 func (recv *FileAttributeMatcher) Unref() {
 	C.g_file_attribute_matcher_unref((*C.GFileAttributeMatcher)(recv.native))
@@ -1317,7 +1419,9 @@ func (recv *FileAttributeMatcher) Unref() {
 // An interface for file descriptor based io objects.
 /*
 
-C record/class : GFileDescriptorBasedIface
+C type
+
+GFileDescriptorBasedIface
 */
 type FileDescriptorBasedIface struct {
 	native *C.GFileDescriptorBasedIface
@@ -1343,7 +1447,9 @@ func (recv *FileDescriptorBasedIface) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GFileEnumeratorClass
+C type
+
+GFileEnumeratorClass
 */
 type FileEnumeratorClass struct {
 	native *C.GFileEnumeratorClass
@@ -1381,7 +1487,9 @@ func (recv *FileEnumeratorClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GFileEnumeratorPrivate
+C type
+
+GFileEnumeratorPrivate
 */
 type FileEnumeratorPrivate struct {
 	native *C.GFileEnumeratorPrivate
@@ -1405,7 +1513,9 @@ func (recv *FileEnumeratorPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GFileIOStreamClass
+C type
+
+GFileIOStreamClass
 */
 type FileIOStreamClass struct {
 	native *C.GFileIOStreamClass
@@ -1444,7 +1554,9 @@ func (recv *FileIOStreamClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GFileIOStreamPrivate
+C type
+
+GFileIOStreamPrivate
 */
 type FileIOStreamPrivate struct {
 	native *C.GFileIOStreamPrivate
@@ -1468,7 +1580,9 @@ func (recv *FileIOStreamPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GFileIconClass
+C type
+
+GFileIconClass
 */
 type FileIconClass struct {
 	native *C.GFileIconClass
@@ -1493,7 +1607,9 @@ func (recv *FileIconClass) ToC() unsafe.Pointer {
 // An interface for writing VFS file handles.
 /*
 
-C record/class : GFileIface
+C type
+
+GFileIface
 */
 type FileIface struct {
 	native *C.GFileIface
@@ -1626,7 +1742,9 @@ func (recv *FileIface) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GFileInfoClass
+C type
+
+GFileInfoClass
 */
 type FileInfoClass struct {
 	native *C.GFileInfoClass
@@ -1650,7 +1768,9 @@ func (recv *FileInfoClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GFileInputStreamClass
+C type
+
+GFileInputStreamClass
 */
 type FileInputStreamClass struct {
 	native *C.GFileInputStreamClass
@@ -1686,7 +1806,9 @@ func (recv *FileInputStreamClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GFileInputStreamPrivate
+C type
+
+GFileInputStreamPrivate
 */
 type FileInputStreamPrivate struct {
 	native *C.GFileInputStreamPrivate
@@ -1710,7 +1832,9 @@ func (recv *FileInputStreamPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GFileMonitorClass
+C type
+
+GFileMonitorClass
 */
 type FileMonitorClass struct {
 	native *C.GFileMonitorClass
@@ -1742,7 +1866,9 @@ func (recv *FileMonitorClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GFileMonitorPrivate
+C type
+
+GFileMonitorPrivate
 */
 type FileMonitorPrivate struct {
 	native *C.GFileMonitorPrivate
@@ -1766,7 +1892,9 @@ func (recv *FileMonitorPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GFileOutputStreamClass
+C type
+
+GFileOutputStreamClass
 */
 type FileOutputStreamClass struct {
 	native *C.GFileOutputStreamClass
@@ -1805,7 +1933,9 @@ func (recv *FileOutputStreamClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GFileOutputStreamPrivate
+C type
+
+GFileOutputStreamPrivate
 */
 type FileOutputStreamPrivate struct {
 	native *C.GFileOutputStreamPrivate
@@ -1829,7 +1959,9 @@ func (recv *FileOutputStreamPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GFilenameCompleterClass
+C type
+
+GFilenameCompleterClass
 */
 type FilenameCompleterClass struct {
 	native *C.GFilenameCompleterClass
@@ -1858,7 +1990,9 @@ func (recv *FilenameCompleterClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GFilterInputStreamClass
+C type
+
+GFilterInputStreamClass
 */
 type FilterInputStreamClass struct {
 	native *C.GFilterInputStreamClass
@@ -1886,7 +2020,9 @@ func (recv *FilterInputStreamClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GFilterOutputStreamClass
+C type
+
+GFilterOutputStreamClass
 */
 type FilterOutputStreamClass struct {
 	native *C.GFilterOutputStreamClass
@@ -1916,7 +2052,9 @@ func (recv *FilterOutputStreamClass) ToC() unsafe.Pointer {
 // using the following functions.
 /*
 
-C record/class : GIOExtension
+C type
+
+GIOExtension
 */
 type IOExtension struct {
 	native *C.GIOExtension
@@ -1944,7 +2082,9 @@ func (recv *IOExtension) ToC() unsafe.Pointer {
 // for multiple extension points, under different names.
 /*
 
-C function : g_io_extension_get_name
+C function
+
+g_io_extension_get_name
 */
 func (recv *IOExtension) GetName() string {
 	retC := C.g_io_extension_get_name((*C.GIOExtension)(recv.native))
@@ -1956,7 +2096,9 @@ func (recv *IOExtension) GetName() string {
 // Gets the priority with which @extension was registered.
 /*
 
-C function : g_io_extension_get_priority
+C function
+
+g_io_extension_get_priority
 */
 func (recv *IOExtension) GetPriority() int32 {
 	retC := C.g_io_extension_get_priority((*C.GIOExtension)(recv.native))
@@ -1968,7 +2110,9 @@ func (recv *IOExtension) GetPriority() int32 {
 // Gets the type associated with @extension.
 /*
 
-C function : g_io_extension_get_type
+C function
+
+g_io_extension_get_type
 */
 func (recv *IOExtension) GetType() gobject.Type {
 	retC := C.g_io_extension_get_type((*C.GIOExtension)(recv.native))
@@ -1981,7 +2125,9 @@ func (recv *IOExtension) GetType() gobject.Type {
 // associated with @extension.
 /*
 
-C function : g_io_extension_ref_class
+C function
+
+g_io_extension_ref_class
 */
 func (recv *IOExtension) RefClass() *gobject.TypeClass {
 	retC := C.g_io_extension_ref_class((*C.GIOExtension)(recv.native))
@@ -1994,7 +2140,9 @@ func (recv *IOExtension) RefClass() *gobject.TypeClass {
 // using the following functions.
 /*
 
-C record/class : GIOExtensionPoint
+C type
+
+GIOExtensionPoint
 */
 type IOExtensionPoint struct {
 	native *C.GIOExtensionPoint
@@ -2019,7 +2167,9 @@ func (recv *IOExtensionPoint) ToC() unsafe.Pointer {
 // Finds a #GIOExtension for an extension point by name.
 /*
 
-C function : g_io_extension_point_get_extension_by_name
+C function
+
+g_io_extension_point_get_extension_by_name
 */
 func (recv *IOExtensionPoint) GetExtensionByName(name string) *IOExtension {
 	c_name := C.CString(name)
@@ -2035,7 +2185,9 @@ func (recv *IOExtensionPoint) GetExtensionByName(name string) *IOExtension {
 // The list is sorted by priority, beginning with the highest priority.
 /*
 
-C function : g_io_extension_point_get_extensions
+C function
+
+g_io_extension_point_get_extensions
 */
 func (recv *IOExtensionPoint) GetExtensions() *glib.List {
 	retC := C.g_io_extension_point_get_extensions((*C.GIOExtensionPoint)(recv.native))
@@ -2047,7 +2199,9 @@ func (recv *IOExtensionPoint) GetExtensions() *glib.List {
 // Gets the required type for @extension_point.
 /*
 
-C function : g_io_extension_point_get_required_type
+C function
+
+g_io_extension_point_get_required_type
 */
 func (recv *IOExtensionPoint) GetRequiredType() gobject.Type {
 	retC := C.g_io_extension_point_get_required_type((*C.GIOExtensionPoint)(recv.native))
@@ -2060,7 +2214,9 @@ func (recv *IOExtensionPoint) GetRequiredType() gobject.Type {
 // All implementations must henceforth have this type.
 /*
 
-C function : g_io_extension_point_set_required_type
+C function
+
+g_io_extension_point_set_required_type
 */
 func (recv *IOExtensionPoint) SetRequiredType(type_ gobject.Type) {
 	c_type := (C.GType)(type_)
@@ -2072,7 +2228,9 @@ func (recv *IOExtensionPoint) SetRequiredType(type_ gobject.Type) {
 
 /*
 
-C record/class : GIOModuleClass
+C type
+
+GIOModuleClass
 */
 type IOModuleClass struct {
 	native *C.GIOModuleClass
@@ -2097,7 +2255,9 @@ func (recv *IOModuleClass) ToC() unsafe.Pointer {
 // Opaque class for defining and scheduling IO jobs.
 /*
 
-C record/class : GIOSchedulerJob
+C type
+
+GIOSchedulerJob
 */
 type IOSchedulerJob struct {
 	native *C.GIOSchedulerJob
@@ -2125,7 +2285,9 @@ func (recv *IOSchedulerJob) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GIOStreamAdapter
+C type
+
+GIOStreamAdapter
 */
 type IOStreamAdapter struct {
 	native *C.GIOStreamAdapter
@@ -2149,7 +2311,9 @@ func (recv *IOStreamAdapter) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GIOStreamClass
+C type
+
+GIOStreamClass
 */
 type IOStreamClass struct {
 	native *C.GIOStreamClass
@@ -2189,7 +2353,9 @@ func (recv *IOStreamClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GIOStreamPrivate
+C type
+
+GIOStreamPrivate
 */
 type IOStreamPrivate struct {
 	native *C.GIOStreamPrivate
@@ -2216,7 +2382,9 @@ func (recv *IOStreamPrivate) ToC() unsafe.Pointer {
 // examples of how to implement this interface.
 /*
 
-C record/class : GIconIface
+C type
+
+GIconIface
 */
 type IconIface struct {
 	native *C.GIconIface
@@ -2246,7 +2414,9 @@ func (recv *IconIface) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GInetAddressClass
+C type
+
+GInetAddressClass
 */
 type InetAddressClass struct {
 	native *C.GInetAddressClass
@@ -2273,7 +2443,9 @@ func (recv *InetAddressClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GInetAddressMaskClass
+C type
+
+GInetAddressMaskClass
 */
 type InetAddressMaskClass struct {
 	native *C.GInetAddressMaskClass
@@ -2298,7 +2470,9 @@ func (recv *InetAddressMaskClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GInetAddressMaskPrivate
+C type
+
+GInetAddressMaskPrivate
 */
 type InetAddressMaskPrivate struct {
 	native *C.GInetAddressMaskPrivate
@@ -2322,7 +2496,9 @@ func (recv *InetAddressMaskPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GInetAddressPrivate
+C type
+
+GInetAddressPrivate
 */
 type InetAddressPrivate struct {
 	native *C.GInetAddressPrivate
@@ -2346,7 +2522,9 @@ func (recv *InetAddressPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GInetSocketAddressClass
+C type
+
+GInetSocketAddressClass
 */
 type InetSocketAddressClass struct {
 	native *C.GInetSocketAddressClass
@@ -2371,7 +2549,9 @@ func (recv *InetSocketAddressClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GInetSocketAddressPrivate
+C type
+
+GInetSocketAddressPrivate
 */
 type InetSocketAddressPrivate struct {
 	native *C.GInetSocketAddressPrivate
@@ -2395,7 +2575,9 @@ func (recv *InetSocketAddressPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GInputStreamClass
+C type
+
+GInputStreamClass
 */
 type InputStreamClass struct {
 	native *C.GInputStreamClass
@@ -2434,7 +2616,9 @@ func (recv *InputStreamClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GInputStreamPrivate
+C type
+
+GInputStreamPrivate
 */
 type InputStreamPrivate struct {
 	native *C.GInputStreamPrivate
@@ -2458,7 +2642,9 @@ func (recv *InputStreamPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GListStoreClass
+C type
+
+GListStoreClass
 */
 type ListStoreClass struct {
 	native *C.GListStoreClass
@@ -2484,7 +2670,9 @@ func (recv *ListStoreClass) ToC() unsafe.Pointer {
 // Interface for icons that can be loaded as a stream.
 /*
 
-C record/class : GLoadableIconIface
+C type
+
+GLoadableIconIface
 */
 type LoadableIconIface struct {
 	native *C.GLoadableIconIface
@@ -2512,7 +2700,9 @@ func (recv *LoadableIconIface) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GMemoryInputStreamClass
+C type
+
+GMemoryInputStreamClass
 */
 type MemoryInputStreamClass struct {
 	native *C.GMemoryInputStreamClass
@@ -2542,7 +2732,9 @@ func (recv *MemoryInputStreamClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GMemoryInputStreamPrivate
+C type
+
+GMemoryInputStreamPrivate
 */
 type MemoryInputStreamPrivate struct {
 	native *C.GMemoryInputStreamPrivate
@@ -2566,7 +2758,9 @@ func (recv *MemoryInputStreamPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GMemoryOutputStreamClass
+C type
+
+GMemoryOutputStreamClass
 */
 type MemoryOutputStreamClass struct {
 	native *C.GMemoryOutputStreamClass
@@ -2596,7 +2790,9 @@ func (recv *MemoryOutputStreamClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GMemoryOutputStreamPrivate
+C type
+
+GMemoryOutputStreamPrivate
 */
 type MemoryOutputStreamPrivate struct {
 	native *C.GMemoryOutputStreamPrivate
@@ -2620,7 +2816,9 @@ func (recv *MemoryOutputStreamPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GMenuAttributeIterClass
+C type
+
+GMenuAttributeIterClass
 */
 type MenuAttributeIterClass struct {
 	native *C.GMenuAttributeIterClass
@@ -2646,7 +2844,9 @@ func (recv *MenuAttributeIterClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GMenuAttributeIterPrivate
+C type
+
+GMenuAttributeIterPrivate
 */
 type MenuAttributeIterPrivate struct {
 	native *C.GMenuAttributeIterPrivate
@@ -2670,7 +2870,9 @@ func (recv *MenuAttributeIterPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GMenuLinkIterClass
+C type
+
+GMenuLinkIterClass
 */
 type MenuLinkIterClass struct {
 	native *C.GMenuLinkIterClass
@@ -2696,7 +2898,9 @@ func (recv *MenuLinkIterClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GMenuLinkIterPrivate
+C type
+
+GMenuLinkIterPrivate
 */
 type MenuLinkIterPrivate struct {
 	native *C.GMenuLinkIterPrivate
@@ -2720,7 +2924,9 @@ func (recv *MenuLinkIterPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GMenuModelClass
+C type
+
+GMenuModelClass
 */
 type MenuModelClass struct {
 	native *C.GMenuModelClass
@@ -2753,7 +2959,9 @@ func (recv *MenuModelClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GMenuModelPrivate
+C type
+
+GMenuModelPrivate
 */
 type MenuModelPrivate struct {
 	native *C.GMenuModelPrivate
@@ -2778,7 +2986,9 @@ func (recv *MenuModelPrivate) ToC() unsafe.Pointer {
 // Interface for implementing operations for mounts.
 /*
 
-C record/class : GMountIface
+C type
+
+GMountIface
 */
 type MountIface struct {
 	native *C.GMountIface
@@ -2830,7 +3040,9 @@ func (recv *MountIface) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GMountOperationClass
+C type
+
+GMountOperationClass
 */
 type MountOperationClass struct {
 	native *C.GMountOperationClass
@@ -2870,7 +3082,9 @@ func (recv *MountOperationClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GMountOperationPrivate
+C type
+
+GMountOperationPrivate
 */
 type MountOperationPrivate struct {
 	native *C.GMountOperationPrivate
@@ -2895,7 +3109,9 @@ func (recv *MountOperationPrivate) ToC() unsafe.Pointer {
 // An socket address of some unknown native type.
 /*
 
-C record/class : GNativeSocketAddress
+C type
+
+GNativeSocketAddress
 */
 type NativeSocketAddress struct {
 	native *C.GNativeSocketAddress
@@ -2919,7 +3135,9 @@ func (recv *NativeSocketAddress) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GNativeVolumeMonitorClass
+C type
+
+GNativeVolumeMonitorClass
 */
 type NativeVolumeMonitorClass struct {
 	native *C.GNativeVolumeMonitorClass
@@ -2945,7 +3163,9 @@ func (recv *NativeVolumeMonitorClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GNetworkAddressClass
+C type
+
+GNetworkAddressClass
 */
 type NetworkAddressClass struct {
 	native *C.GNetworkAddressClass
@@ -2970,7 +3190,9 @@ func (recv *NetworkAddressClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GNetworkAddressPrivate
+C type
+
+GNetworkAddressPrivate
 */
 type NetworkAddressPrivate struct {
 	native *C.GNetworkAddressPrivate
@@ -2994,7 +3216,9 @@ func (recv *NetworkAddressPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GNetworkServiceClass
+C type
+
+GNetworkServiceClass
 */
 type NetworkServiceClass struct {
 	native *C.GNetworkServiceClass
@@ -3019,7 +3243,9 @@ func (recv *NetworkServiceClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GNetworkServicePrivate
+C type
+
+GNetworkServicePrivate
 */
 type NetworkServicePrivate struct {
 	native *C.GNetworkServicePrivate
@@ -3043,7 +3269,9 @@ func (recv *NetworkServicePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GOutputStreamClass
+C type
+
+GOutputStreamClass
 */
 type OutputStreamClass struct {
 	native *C.GOutputStreamClass
@@ -3088,7 +3316,9 @@ func (recv *OutputStreamClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GOutputStreamPrivate
+C type
+
+GOutputStreamPrivate
 */
 type OutputStreamPrivate struct {
 	native *C.GOutputStreamPrivate
@@ -3112,7 +3342,9 @@ func (recv *OutputStreamPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GPermissionClass
+C type
+
+GPermissionClass
 */
 type PermissionClass struct {
 	native *C.GPermissionClass
@@ -3144,7 +3376,9 @@ func (recv *PermissionClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GPermissionPrivate
+C type
+
+GPermissionPrivate
 */
 type PermissionPrivate struct {
 	native *C.GPermissionPrivate
@@ -3168,7 +3402,9 @@ func (recv *PermissionPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GProxyAddressEnumeratorClass
+C type
+
+GProxyAddressEnumeratorClass
 */
 type ProxyAddressEnumeratorClass struct {
 	native *C.GProxyAddressEnumeratorClass
@@ -3200,7 +3436,9 @@ func (recv *ProxyAddressEnumeratorClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GProxyAddressEnumeratorPrivate
+C type
+
+GProxyAddressEnumeratorPrivate
 */
 type ProxyAddressEnumeratorPrivate struct {
 	native *C.GProxyAddressEnumeratorPrivate
@@ -3224,7 +3462,9 @@ func (recv *ProxyAddressEnumeratorPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GProxyAddressPrivate
+C type
+
+GProxyAddressPrivate
 */
 type ProxyAddressPrivate struct {
 	native *C.GProxyAddressPrivate
@@ -3249,7 +3489,9 @@ func (recv *ProxyAddressPrivate) ToC() unsafe.Pointer {
 // The virtual function table for #GProxyResolver.
 /*
 
-C record/class : GProxyResolverInterface
+C type
+
+GProxyResolverInterface
 */
 type ProxyResolverInterface struct {
 	native *C.GProxyResolverInterface
@@ -3278,7 +3520,9 @@ func (recv *ProxyResolverInterface) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GResolverClass
+C type
+
+GResolverClass
 */
 type ResolverClass struct {
 	native *C.GResolverClass
@@ -3319,7 +3563,9 @@ func (recv *ResolverClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GResolverPrivate
+C type
+
+GResolverPrivate
 */
 type ResolverPrivate struct {
 	native *C.GResolverPrivate
@@ -3344,7 +3590,9 @@ func (recv *ResolverPrivate) ToC() unsafe.Pointer {
 // Provides an interface for implementing seekable functionality on I/O Streams.
 /*
 
-C record/class : GSeekableIface
+C type
+
+GSeekableIface
 */
 type SeekableIface struct {
 	native *C.GSeekableIface
@@ -3378,7 +3626,9 @@ func (recv *SeekableIface) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GSettingsClass
+C type
+
+GSettingsClass
 */
 type SettingsClass struct {
 	native *C.GSettingsClass
@@ -3408,7 +3658,9 @@ func (recv *SettingsClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GSettingsPrivate
+C type
+
+GSettingsPrivate
 */
 type SettingsPrivate struct {
 	native *C.GSettingsPrivate
@@ -3434,7 +3686,9 @@ func (recv *SettingsPrivate) ToC() unsafe.Pointer {
 // using the following functions.
 /*
 
-C record/class : GSettingsSchemaKey
+C type
+
+GSettingsSchemaKey
 */
 type SettingsSchemaKey struct {
 	native *C.GSettingsSchemaKey
@@ -3458,7 +3712,9 @@ func (recv *SettingsSchemaKey) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GSimpleActionGroupClass
+C type
+
+GSimpleActionGroupClass
 */
 type SimpleActionGroupClass struct {
 	native *C.GSimpleActionGroupClass
@@ -3484,7 +3740,9 @@ func (recv *SimpleActionGroupClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GSimpleActionGroupPrivate
+C type
+
+GSimpleActionGroupPrivate
 */
 type SimpleActionGroupPrivate struct {
 	native *C.GSimpleActionGroupPrivate
@@ -3508,7 +3766,9 @@ func (recv *SimpleActionGroupPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GSimpleAsyncResultClass
+C type
+
+GSimpleAsyncResultClass
 */
 type SimpleAsyncResultClass struct {
 	native *C.GSimpleAsyncResultClass
@@ -3532,7 +3792,9 @@ func (recv *SimpleAsyncResultClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GSimpleProxyResolverClass
+C type
+
+GSimpleProxyResolverClass
 */
 type SimpleProxyResolverClass struct {
 	native *C.GSimpleProxyResolverClass
@@ -3562,7 +3824,9 @@ func (recv *SimpleProxyResolverClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GSimpleProxyResolverPrivate
+C type
+
+GSimpleProxyResolverPrivate
 */
 type SimpleProxyResolverPrivate struct {
 	native *C.GSimpleProxyResolverPrivate
@@ -3586,7 +3850,9 @@ func (recv *SimpleProxyResolverPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GSocketAddressClass
+C type
+
+GSocketAddressClass
 */
 type SocketAddressClass struct {
 	native *C.GSocketAddressClass
@@ -3614,7 +3880,9 @@ func (recv *SocketAddressClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GSocketAddressEnumeratorClass
+C type
+
+GSocketAddressEnumeratorClass
 */
 type SocketAddressEnumeratorClass struct {
 	native *C.GSocketAddressEnumeratorClass
@@ -3642,7 +3910,9 @@ func (recv *SocketAddressEnumeratorClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GSocketClass
+C type
+
+GSocketClass
 */
 type SocketClass struct {
 	native *C.GSocketClass
@@ -3677,7 +3947,9 @@ func (recv *SocketClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GSocketClientClass
+C type
+
+GSocketClientClass
 */
 type SocketClientClass struct {
 	native *C.GSocketClientClass
@@ -3707,7 +3979,9 @@ func (recv *SocketClientClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GSocketClientPrivate
+C type
+
+GSocketClientPrivate
 */
 type SocketClientPrivate struct {
 	native *C.GSocketClientPrivate
@@ -3733,7 +4007,9 @@ func (recv *SocketClientPrivate) ToC() unsafe.Pointer {
 // and #GProxyAddressEnumerator
 /*
 
-C record/class : GSocketConnectableIface
+C type
+
+GSocketConnectableIface
 */
 type SocketConnectableIface struct {
 	native *C.GSocketConnectableIface
@@ -3761,7 +4037,9 @@ func (recv *SocketConnectableIface) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GSocketConnectionClass
+C type
+
+GSocketConnectionClass
 */
 type SocketConnectionClass struct {
 	native *C.GSocketConnectionClass
@@ -3792,7 +4070,9 @@ func (recv *SocketConnectionClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GSocketConnectionPrivate
+C type
+
+GSocketConnectionPrivate
 */
 type SocketConnectionPrivate struct {
 	native *C.GSocketConnectionPrivate
@@ -3817,7 +4097,9 @@ func (recv *SocketConnectionPrivate) ToC() unsafe.Pointer {
 // Class structure for #GSocketControlMessage.
 /*
 
-C record/class : GSocketControlMessageClass
+C type
+
+GSocketControlMessageClass
 */
 type SocketControlMessageClass struct {
 	native *C.GSocketControlMessageClass
@@ -3852,7 +4134,9 @@ func (recv *SocketControlMessageClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GSocketControlMessagePrivate
+C type
+
+GSocketControlMessagePrivate
 */
 type SocketControlMessagePrivate struct {
 	native *C.GSocketControlMessagePrivate
@@ -3877,7 +4161,9 @@ func (recv *SocketControlMessagePrivate) ToC() unsafe.Pointer {
 // Class structure for #GSocketListener.
 /*
 
-C record/class : GSocketListenerClass
+C type
+
+GSocketListenerClass
 */
 type SocketListenerClass struct {
 	native *C.GSocketListenerClass
@@ -3909,7 +4195,9 @@ func (recv *SocketListenerClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GSocketListenerPrivate
+C type
+
+GSocketListenerPrivate
 */
 type SocketListenerPrivate struct {
 	native *C.GSocketListenerPrivate
@@ -3933,7 +4221,9 @@ func (recv *SocketListenerPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GSocketPrivate
+C type
+
+GSocketPrivate
 */
 type SocketPrivate struct {
 	native *C.GSocketPrivate
@@ -3958,7 +4248,9 @@ func (recv *SocketPrivate) ToC() unsafe.Pointer {
 // Class structure for #GSocketService.
 /*
 
-C record/class : GSocketServiceClass
+C type
+
+GSocketServiceClass
 */
 type SocketServiceClass struct {
 	native *C.GSocketServiceClass
@@ -3990,7 +4282,9 @@ func (recv *SocketServiceClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GSocketServicePrivate
+C type
+
+GSocketServicePrivate
 */
 type SocketServicePrivate struct {
 	native *C.GSocketServicePrivate
@@ -4028,7 +4322,9 @@ func (recv *SocketServicePrivate) ToC() unsafe.Pointer {
 // #GSrvTarget at all.
 /*
 
-C record/class : GSrvTarget
+C type
+
+GSrvTarget
 */
 type SrvTarget struct {
 	native *C.GSrvTarget
@@ -4054,7 +4350,9 @@ func (recv *SrvTarget) ToC() unsafe.Pointer {
 // using the following functions.
 /*
 
-C record/class : GStaticResource
+C type
+
+GStaticResource
 */
 type StaticResource struct {
 	native *C.GStaticResource
@@ -4083,7 +4381,9 @@ func (recv *StaticResource) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GTaskClass
+C type
+
+GTaskClass
 */
 type TaskClass struct {
 	native *C.GTaskClass
@@ -4107,7 +4407,9 @@ func (recv *TaskClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GTcpConnectionClass
+C type
+
+GTcpConnectionClass
 */
 type TcpConnectionClass struct {
 	native *C.GTcpConnectionClass
@@ -4132,7 +4434,9 @@ func (recv *TcpConnectionClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GTcpConnectionPrivate
+C type
+
+GTcpConnectionPrivate
 */
 type TcpConnectionPrivate struct {
 	native *C.GTcpConnectionPrivate
@@ -4156,7 +4460,9 @@ func (recv *TcpConnectionPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GTcpWrapperConnectionClass
+C type
+
+GTcpWrapperConnectionClass
 */
 type TcpWrapperConnectionClass struct {
 	native *C.GTcpWrapperConnectionClass
@@ -4181,7 +4487,9 @@ func (recv *TcpWrapperConnectionClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GTcpWrapperConnectionPrivate
+C type
+
+GTcpWrapperConnectionPrivate
 */
 type TcpWrapperConnectionPrivate struct {
 	native *C.GTcpWrapperConnectionPrivate
@@ -4205,7 +4513,9 @@ func (recv *TcpWrapperConnectionPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GThemedIconClass
+C type
+
+GThemedIconClass
 */
 type ThemedIconClass struct {
 	native *C.GThemedIconClass
@@ -4229,7 +4539,9 @@ func (recv *ThemedIconClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GThreadedSocketServiceClass
+C type
+
+GThreadedSocketServiceClass
 */
 type ThreadedSocketServiceClass struct {
 	native *C.GThreadedSocketServiceClass
@@ -4260,7 +4572,9 @@ func (recv *ThreadedSocketServiceClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GThreadedSocketServicePrivate
+C type
+
+GThreadedSocketServicePrivate
 */
 type ThreadedSocketServicePrivate struct {
 	native *C.GThreadedSocketServicePrivate
@@ -4284,7 +4598,9 @@ func (recv *ThreadedSocketServicePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GTlsCertificateClass
+C type
+
+GTlsCertificateClass
 */
 type TlsCertificateClass struct {
 	native *C.GTlsCertificateClass
@@ -4311,7 +4627,9 @@ func (recv *TlsCertificateClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GTlsCertificatePrivate
+C type
+
+GTlsCertificatePrivate
 */
 type TlsCertificatePrivate struct {
 	native *C.GTlsCertificatePrivate
@@ -4335,7 +4653,9 @@ func (recv *TlsCertificatePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GTlsConnectionClass
+C type
+
+GTlsConnectionClass
 */
 type TlsConnectionClass struct {
 	native *C.GTlsConnectionClass
@@ -4365,7 +4685,9 @@ func (recv *TlsConnectionClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GTlsConnectionPrivate
+C type
+
+GTlsConnectionPrivate
 */
 type TlsConnectionPrivate struct {
 	native *C.GTlsConnectionPrivate
@@ -4389,7 +4711,9 @@ func (recv *TlsConnectionPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GTlsDatabasePrivate
+C type
+
+GTlsDatabasePrivate
 */
 type TlsDatabasePrivate struct {
 	native *C.GTlsDatabasePrivate
@@ -4414,7 +4738,9 @@ func (recv *TlsDatabasePrivate) ToC() unsafe.Pointer {
 // Provides an interface for #GTlsFileDatabase implementations.
 /*
 
-C record/class : GTlsFileDatabaseInterface
+C type
+
+GTlsFileDatabaseInterface
 */
 type TlsFileDatabaseInterface struct {
 	native *C.GTlsFileDatabaseInterface
@@ -4440,7 +4766,9 @@ func (recv *TlsFileDatabaseInterface) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GTlsInteractionPrivate
+C type
+
+GTlsInteractionPrivate
 */
 type TlsInteractionPrivate struct {
 	native *C.GTlsInteractionPrivate
@@ -4465,7 +4793,9 @@ func (recv *TlsInteractionPrivate) ToC() unsafe.Pointer {
 // Class structure for #GTlsPassword.
 /*
 
-C record/class : GTlsPasswordClass
+C type
+
+GTlsPasswordClass
 */
 type TlsPasswordClass struct {
 	native *C.GTlsPasswordClass
@@ -4494,7 +4824,9 @@ func (recv *TlsPasswordClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GTlsPasswordPrivate
+C type
+
+GTlsPasswordPrivate
 */
 type TlsPasswordPrivate struct {
 	native *C.GTlsPasswordPrivate
@@ -4518,7 +4850,9 @@ func (recv *TlsPasswordPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GUnixConnectionClass
+C type
+
+GUnixConnectionClass
 */
 type UnixConnectionClass struct {
 	native *C.GUnixConnectionClass
@@ -4543,7 +4877,9 @@ func (recv *UnixConnectionClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GUnixConnectionPrivate
+C type
+
+GUnixConnectionPrivate
 */
 type UnixConnectionPrivate struct {
 	native *C.GUnixConnectionPrivate
@@ -4567,7 +4903,9 @@ func (recv *UnixConnectionPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GUnixCredentialsMessagePrivate
+C type
+
+GUnixCredentialsMessagePrivate
 */
 type UnixCredentialsMessagePrivate struct {
 	native *C.GUnixCredentialsMessagePrivate
@@ -4591,7 +4929,9 @@ func (recv *UnixCredentialsMessagePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GUnixFDListClass
+C type
+
+GUnixFDListClass
 */
 type UnixFDListClass struct {
 	native *C.GUnixFDListClass
@@ -4621,7 +4961,9 @@ func (recv *UnixFDListClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GUnixFDListPrivate
+C type
+
+GUnixFDListPrivate
 */
 type UnixFDListPrivate struct {
 	native *C.GUnixFDListPrivate
@@ -4645,7 +4987,9 @@ func (recv *UnixFDListPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GUnixFDMessageClass
+C type
+
+GUnixFDMessageClass
 */
 type UnixFDMessageClass struct {
 	native *C.GUnixFDMessageClass
@@ -4672,7 +5016,9 @@ func (recv *UnixFDMessageClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GUnixFDMessagePrivate
+C type
+
+GUnixFDMessagePrivate
 */
 type UnixFDMessagePrivate struct {
 	native *C.GUnixFDMessagePrivate
@@ -4696,7 +5042,9 @@ func (recv *UnixFDMessagePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GUnixInputStreamClass
+C type
+
+GUnixInputStreamClass
 */
 type UnixInputStreamClass struct {
 	native *C.GUnixInputStreamClass
@@ -4726,7 +5074,9 @@ func (recv *UnixInputStreamClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GUnixInputStreamPrivate
+C type
+
+GUnixInputStreamPrivate
 */
 type UnixInputStreamPrivate struct {
 	native *C.GUnixInputStreamPrivate
@@ -4752,7 +5102,9 @@ func (recv *UnixInputStreamPrivate) ToC() unsafe.Pointer {
 // This corresponds roughly to a mtab entry.
 /*
 
-C record/class : GUnixMountEntry
+C type
+
+GUnixMountEntry
 */
 type UnixMountEntry struct {
 	native *C.GUnixMountEntry
@@ -4776,7 +5128,9 @@ func (recv *UnixMountEntry) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GUnixMountMonitorClass
+C type
+
+GUnixMountMonitorClass
 */
 type UnixMountMonitorClass struct {
 	native *C.GUnixMountMonitorClass
@@ -4802,7 +5156,9 @@ func (recv *UnixMountMonitorClass) ToC() unsafe.Pointer {
 // This corresponds roughly to a fstab entry.
 /*
 
-C record/class : GUnixMountPoint
+C type
+
+GUnixMountPoint
 */
 type UnixMountPoint struct {
 	native *C.GUnixMountPoint
@@ -4827,7 +5183,9 @@ func (recv *UnixMountPoint) ToC() unsafe.Pointer {
 // Compares two unix mount points.
 /*
 
-C function : g_unix_mount_point_compare
+C function
+
+g_unix_mount_point_compare
 */
 func (recv *UnixMountPoint) Compare(mount2 *UnixMountPoint) int32 {
 	c_mount2 := (*C.GUnixMountPoint)(C.NULL)
@@ -4844,7 +5202,9 @@ func (recv *UnixMountPoint) Compare(mount2 *UnixMountPoint) int32 {
 // Frees a unix mount point.
 /*
 
-C function : g_unix_mount_point_free
+C function
+
+g_unix_mount_point_free
 */
 func (recv *UnixMountPoint) Free() {
 	C.g_unix_mount_point_free((*C.GUnixMountPoint)(recv.native))
@@ -4855,7 +5215,9 @@ func (recv *UnixMountPoint) Free() {
 // Gets the device path for a unix mount point.
 /*
 
-C function : g_unix_mount_point_get_device_path
+C function
+
+g_unix_mount_point_get_device_path
 */
 func (recv *UnixMountPoint) GetDevicePath() string {
 	retC := C.g_unix_mount_point_get_device_path((*C.GUnixMountPoint)(recv.native))
@@ -4867,7 +5229,9 @@ func (recv *UnixMountPoint) GetDevicePath() string {
 // Gets the file system type for the mount point.
 /*
 
-C function : g_unix_mount_point_get_fs_type
+C function
+
+g_unix_mount_point_get_fs_type
 */
 func (recv *UnixMountPoint) GetFsType() string {
 	retC := C.g_unix_mount_point_get_fs_type((*C.GUnixMountPoint)(recv.native))
@@ -4879,7 +5243,9 @@ func (recv *UnixMountPoint) GetFsType() string {
 // Gets the mount path for a unix mount point.
 /*
 
-C function : g_unix_mount_point_get_mount_path
+C function
+
+g_unix_mount_point_get_mount_path
 */
 func (recv *UnixMountPoint) GetMountPath() string {
 	retC := C.g_unix_mount_point_get_mount_path((*C.GUnixMountPoint)(recv.native))
@@ -4891,7 +5257,9 @@ func (recv *UnixMountPoint) GetMountPath() string {
 // Guesses whether a Unix mount point can be ejected.
 /*
 
-C function : g_unix_mount_point_guess_can_eject
+C function
+
+g_unix_mount_point_guess_can_eject
 */
 func (recv *UnixMountPoint) GuessCanEject() bool {
 	retC := C.g_unix_mount_point_guess_can_eject((*C.GUnixMountPoint)(recv.native))
@@ -4903,7 +5271,9 @@ func (recv *UnixMountPoint) GuessCanEject() bool {
 // Guesses the icon of a Unix mount point.
 /*
 
-C function : g_unix_mount_point_guess_icon
+C function
+
+g_unix_mount_point_guess_icon
 */
 func (recv *UnixMountPoint) GuessIcon() *Icon {
 	retC := C.g_unix_mount_point_guess_icon((*C.GUnixMountPoint)(recv.native))
@@ -4916,7 +5286,9 @@ func (recv *UnixMountPoint) GuessIcon() *Icon {
 // The result is a translated string.
 /*
 
-C function : g_unix_mount_point_guess_name
+C function
+
+g_unix_mount_point_guess_name
 */
 func (recv *UnixMountPoint) GuessName() string {
 	retC := C.g_unix_mount_point_guess_name((*C.GUnixMountPoint)(recv.native))
@@ -4929,7 +5301,9 @@ func (recv *UnixMountPoint) GuessName() string {
 // Checks if a unix mount point is a loopback device.
 /*
 
-C function : g_unix_mount_point_is_loopback
+C function
+
+g_unix_mount_point_is_loopback
 */
 func (recv *UnixMountPoint) IsLoopback() bool {
 	retC := C.g_unix_mount_point_is_loopback((*C.GUnixMountPoint)(recv.native))
@@ -4941,7 +5315,9 @@ func (recv *UnixMountPoint) IsLoopback() bool {
 // Checks if a unix mount point is read only.
 /*
 
-C function : g_unix_mount_point_is_readonly
+C function
+
+g_unix_mount_point_is_readonly
 */
 func (recv *UnixMountPoint) IsReadonly() bool {
 	retC := C.g_unix_mount_point_is_readonly((*C.GUnixMountPoint)(recv.native))
@@ -4953,7 +5329,9 @@ func (recv *UnixMountPoint) IsReadonly() bool {
 // Checks if a unix mount point is mountable by the user.
 /*
 
-C function : g_unix_mount_point_is_user_mountable
+C function
+
+g_unix_mount_point_is_user_mountable
 */
 func (recv *UnixMountPoint) IsUserMountable() bool {
 	retC := C.g_unix_mount_point_is_user_mountable((*C.GUnixMountPoint)(recv.native))
@@ -4964,7 +5342,9 @@ func (recv *UnixMountPoint) IsUserMountable() bool {
 
 /*
 
-C record/class : GUnixOutputStreamClass
+C type
+
+GUnixOutputStreamClass
 */
 type UnixOutputStreamClass struct {
 	native *C.GUnixOutputStreamClass
@@ -4994,7 +5374,9 @@ func (recv *UnixOutputStreamClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GUnixOutputStreamPrivate
+C type
+
+GUnixOutputStreamPrivate
 */
 type UnixOutputStreamPrivate struct {
 	native *C.GUnixOutputStreamPrivate
@@ -5018,7 +5400,9 @@ func (recv *UnixOutputStreamPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GUnixSocketAddressClass
+C type
+
+GUnixSocketAddressClass
 */
 type UnixSocketAddressClass struct {
 	native *C.GUnixSocketAddressClass
@@ -5043,7 +5427,9 @@ func (recv *UnixSocketAddressClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GUnixSocketAddressPrivate
+C type
+
+GUnixSocketAddressPrivate
 */
 type UnixSocketAddressPrivate struct {
 	native *C.GUnixSocketAddressPrivate
@@ -5067,7 +5453,9 @@ func (recv *UnixSocketAddressPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GVfsClass
+C type
+
+GVfsClass
 */
 type VfsClass struct {
 	native *C.GVfsClass
@@ -5110,7 +5498,9 @@ func (recv *VfsClass) ToC() unsafe.Pointer {
 // Interface for implementing operations for mountable volumes.
 /*
 
-C record/class : GVolumeIface
+C type
+
+GVolumeIface
 */
 type VolumeIface struct {
 	native *C.GVolumeIface
@@ -5156,7 +5546,9 @@ func (recv *VolumeIface) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GVolumeMonitorClass
+C type
+
+GVolumeMonitorClass
 */
 type VolumeMonitorClass struct {
 	native *C.GVolumeMonitorClass
@@ -5206,7 +5598,9 @@ func (recv *VolumeMonitorClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GZlibCompressorClass
+C type
+
+GZlibCompressorClass
 */
 type ZlibCompressorClass struct {
 	native *C.GZlibCompressorClass
@@ -5231,7 +5625,9 @@ func (recv *ZlibCompressorClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GZlibDecompressorClass
+C type
+
+GZlibDecompressorClass
 */
 type ZlibDecompressorClass struct {
 	native *C.GZlibDecompressorClass

@@ -36,7 +36,9 @@ import "C"
 // To cancel the busy indication, use g_application_unmark_busy().
 /*
 
-C function : g_application_mark_busy
+C function
+
+g_application_mark_busy
 */
 func (recv *Application) MarkBusy() {
 	C.g_application_mark_busy((*C.GApplication)(recv.native))
@@ -53,7 +55,9 @@ func (recv *Application) MarkBusy() {
 // call to g_application_mark_busy().
 /*
 
-C function : g_application_unmark_busy
+C function
+
+g_application_unmark_busy
 */
 func (recv *Application) UnmarkBusy() {
 	C.g_application_unmark_busy((*C.GApplication)(recv.native))
@@ -64,7 +68,9 @@ func (recv *Application) UnmarkBusy() {
 // Creates a new icon for a bytes.
 /*
 
-C function : g_bytes_icon_new
+C function
+
+g_bytes_icon_new
 */
 func BytesIconNew(bytes *glib.Bytes) *BytesIcon {
 	c_bytes := (*C.GBytes)(C.NULL)
@@ -81,7 +87,9 @@ func BytesIconNew(bytes *glib.Bytes) *BytesIcon {
 // Gets the #GBytes associated with the given @icon.
 /*
 
-C function : g_bytes_icon_get_bytes
+C function
+
+g_bytes_icon_get_bytes
 */
 func (recv *BytesIcon) GetBytes() *glib.Bytes {
 	retC := C.g_bytes_icon_get_bytes((*C.GBytesIcon)(recv.native))
@@ -103,7 +111,9 @@ func (recv *BytesIcon) GetBytes() *glib.Bytes {
 // If the call was GetAll, %NULL will be returned.
 /*
 
-C function : g_dbus_method_invocation_get_property_info
+C function
+
+g_dbus_method_invocation_get_property_info
 */
 func (recv *DBusMethodInvocation) GetPropertyInfo() *DBusPropertyInfo {
 	retC := C.g_dbus_method_invocation_get_property_info((*C.GDBusMethodInvocation)(recv.native))
@@ -119,7 +129,9 @@ func (recv *DBusMethodInvocation) GetPropertyInfo() *DBusPropertyInfo {
 // action.
 /*
 
-C function : g_desktop_app_info_get_action_name
+C function
+
+g_desktop_app_info_get_action_name
 */
 func (recv *DesktopAppInfo) GetActionName(actionName string) string {
 	c_action_name := C.CString(actionName)
@@ -149,7 +161,9 @@ func (recv *DesktopAppInfo) GetActionName(actionName string) string {
 // occur while using this function.
 /*
 
-C function : g_desktop_app_info_launch_action
+C function
+
+g_desktop_app_info_launch_action
 */
 func (recv *DesktopAppInfo) LaunchAction(actionName string, launchContext *AppLaunchContext) {
 	c_action_name := C.CString(actionName)
@@ -170,7 +184,9 @@ func (recv *DesktopAppInfo) LaunchAction(actionName string, launchContext *AppLa
 // Removes all items in the menu.
 /*
 
-C function : g_menu_remove_all
+C function
+
+g_menu_remove_all
 */
 func (recv *Menu) RemoveAll() {
 	C.g_menu_remove_all((*C.GMenu)(recv.native))
@@ -192,7 +208,9 @@ func (recv *Menu) RemoveAll() {
 // If @icon is %NULL then the icon is unset.
 /*
 
-C function : g_menu_item_set_icon
+C function
+
+g_menu_item_set_icon
 */
 func (recv *MenuItem) SetIcon(icon *Icon) {
 	c_icon := (*C.GIcon)(icon.ToC())
@@ -255,7 +273,9 @@ func (recv *MenuItem) SetIcon(icon *Icon) {
 // combine its use with g_settings_bind().
 /*
 
-C record/class : GPropertyAction
+C type
+
+GPropertyAction
 */
 type PropertyAction struct {
 	native *C.GPropertyAction
@@ -298,7 +318,9 @@ func CastToPropertyAction(object *gobject.Object) *PropertyAction {
 // until the action is destroyed.
 /*
 
-C function : g_property_action_new
+C function
+
+g_property_action_new
 */
 func PropertyActionNew(name string, object uintptr, propertyName string) *PropertyAction {
 	c_name := C.CString(name)

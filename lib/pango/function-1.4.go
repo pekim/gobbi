@@ -21,7 +21,9 @@ import "C"
 // text.
 /*
 
-C function : pango_attr_fallback_new
+C function
+
+pango_attr_fallback_new
 */
 func AttrFallbackNew(enableFallback bool) *Attribute {
 	c_enable_fallback :=
@@ -37,7 +39,9 @@ func AttrFallbackNew(enableFallback bool) *Attribute {
 // direction, according to the Unicode bidirectional algorithm.
 /*
 
-C function : pango_find_base_dir
+C function
+
+pango_find_base_dir
 */
 func FindBaseDir(text string, length int32) Direction {
 	c_text := C.CString(text)
@@ -56,7 +60,9 @@ func FindBaseDir(text string, length int32) Direction {
 // is specified explicitly rather than gotten from the #PangoContext.
 /*
 
-C function : pango_itemize_with_base_dir
+C function
+
+pango_itemize_with_base_dir
 */
 func ItemizeWithBaseDir(context *Context, baseDir Direction, text string, startIndex int32, length int32, attrs *AttrList, cachedIter *AttrIterator) *glib.List {
 	c_context := (*C.PangoContext)(C.NULL)
@@ -100,7 +106,9 @@ func ItemizeWithBaseDir(context *Context, baseDir Direction, text string, startI
 // g_unichar_get_script().
 /*
 
-C function : pango_script_for_unichar
+C function
+
+pango_script_for_unichar
 */
 func ScriptForUnichar(ch rune) Script {
 	c_ch := (C.gunichar)(ch)
@@ -143,7 +151,9 @@ func ScriptForUnichar(ch rune) Script {
 // context language is not feasible.
 /*
 
-C function : pango_script_get_sample_language
+C function
+
+pango_script_get_sample_language
 */
 func ScriptGetSampleLanguage(script Script) *Language {
 	c_script := (C.PangoScript)(script)

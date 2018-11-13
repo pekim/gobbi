@@ -16,7 +16,9 @@ import "C"
 // the red, green, and blue components respectively.
 /*
 
-C function : pango_color_to_string
+C function
+
+pango_color_to_string
 */
 func (recv *Color) ToString() string {
 	retC := C.pango_color_to_string((*C.PangoColor)(recv.native))
@@ -30,7 +32,9 @@ func (recv *Color) ToString() string {
 // pango_font_description_set_gravity().
 /*
 
-C function : pango_font_description_get_gravity
+C function
+
+pango_font_description_get_gravity
 */
 func (recv *FontDescription) GetGravity() Gravity {
 	retC := C.pango_font_description_get_gravity((*C.PangoFontDescription)(recv.native))
@@ -48,7 +52,9 @@ func (recv *FontDescription) GetGravity() Gravity {
 // be set on a #PangoContext.
 /*
 
-C function : pango_font_description_set_gravity
+C function
+
+pango_font_description_set_gravity
 */
 func (recv *FontDescription) SetGravity(gravity Gravity) {
 	c_gravity := (C.PangoGravity)(gravity)
@@ -74,7 +80,9 @@ func (recv *FontDescription) SetGravity(gravity Gravity) {
 // (@x1+@dx2,@y1+@dy2) for all values of @x1 and @x2.
 /*
 
-C function : pango_matrix_transform_distance
+C function
+
+pango_matrix_transform_distance
 */
 func (recv *Matrix) TransformDistance(dx float64, dy float64) {
 	c_dx := (C.double)(dx)
@@ -99,7 +107,9 @@ func (recv *Matrix) TransformDistance(dx float64, dy float64) {
 // using pango_extents_to_pixels()'s first argument.
 /*
 
-C function : pango_matrix_transform_pixel_rectangle
+C function
+
+pango_matrix_transform_pixel_rectangle
 */
 func (recv *Matrix) TransformPixelRectangle(rect *Rectangle) {
 	c_rect := (*C.PangoRectangle)(C.NULL)
@@ -115,7 +125,9 @@ func (recv *Matrix) TransformPixelRectangle(rect *Rectangle) {
 // Transforms the point (@x, @y) by @matrix.
 /*
 
-C function : pango_matrix_transform_point
+C function
+
+pango_matrix_transform_point
 */
 func (recv *Matrix) TransformPoint(x float64, y float64) {
 	c_x := (C.double)(x)
@@ -147,7 +159,9 @@ func (recv *Matrix) TransformPoint(x float64, y float64) {
 // example).
 /*
 
-C function : pango_matrix_transform_rectangle
+C function
+
+pango_matrix_transform_rectangle
 */
 func (recv *Matrix) TransformRectangle(rect *Rectangle) {
 	c_rect := (*C.PangoRectangle)(C.NULL)

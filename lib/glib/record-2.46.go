@@ -16,7 +16,9 @@ import "C"
 // so that it will be the next one to be popped off the queue.
 /*
 
-C function : g_async_queue_push_front
+C function
+
+g_async_queue_push_front
 */
 func (recv *AsyncQueue) PushFront(item uintptr) {
 	c_item := (C.gpointer)(item)
@@ -34,7 +36,9 @@ func (recv *AsyncQueue) PushFront(item uintptr) {
 // This function must be called while holding the @queue's lock.
 /*
 
-C function : g_async_queue_push_front_unlocked
+C function
+
+g_async_queue_push_front_unlocked
 */
 func (recv *AsyncQueue) PushFrontUnlocked(item uintptr) {
 	c_item := (C.gpointer)(item)
@@ -47,7 +51,9 @@ func (recv *AsyncQueue) PushFrontUnlocked(item uintptr) {
 // Remove an item from the queue.
 /*
 
-C function : g_async_queue_remove
+C function
+
+g_async_queue_remove
 */
 func (recv *AsyncQueue) Remove(item uintptr) bool {
 	c_item := (C.gpointer)(item)
@@ -63,7 +69,9 @@ func (recv *AsyncQueue) Remove(item uintptr) bool {
 // This function must be called while holding the @queue's lock.
 /*
 
-C function : g_async_queue_remove_unlocked
+C function
+
+g_async_queue_remove_unlocked
 */
 func (recv *AsyncQueue) RemoveUnlocked(item uintptr) bool {
 	c_item := (C.gpointer)(item)
@@ -78,7 +86,9 @@ func (recv *AsyncQueue) RemoveUnlocked(item uintptr) bool {
 // items, so that it will be processed next.
 /*
 
-C function : g_thread_pool_move_to_front
+C function
+
+g_thread_pool_move_to_front
 */
 func (recv *ThreadPool) MoveToFront(data uintptr) bool {
 	c_data := (C.gpointer)(data)

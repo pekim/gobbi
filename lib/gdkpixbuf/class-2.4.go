@@ -25,7 +25,9 @@ import "C"
 // gdk_pixbuf_new_from_file_at_scale().
 /*
 
-C function : gdk_pixbuf_new_from_file_at_size
+C function
+
+gdk_pixbuf_new_from_file_at_size
 */
 func PixbufNewFromFileAtSize(filename string, width int32, height int32) (*Pixbuf, error) {
 	c_filename := C.CString(filename)
@@ -71,7 +73,9 @@ func PixbufNewFromFileAtSize(filename string, width int32, height int32) (*Pixbu
 // structs returned by gdk_pixbuf_get_formats().
 /*
 
-C function : gdk_pixbuf_loader_new_with_mime_type
+C function
+
+gdk_pixbuf_loader_new_with_mime_type
 */
 func PixbufLoaderNewWithMimeType(mimeType string) (*PixbufLoader, error) {
 	c_mime_type := C.CString(mimeType)

@@ -17,7 +17,9 @@ import "C"
 // accessed directly.
 /*
 
-C record/class : GInitiallyUnowned
+C type
+
+GInitiallyUnowned
 */
 type InitiallyUnowned struct {
 	native *C.GInitiallyUnowned
@@ -55,7 +57,9 @@ func CastToInitiallyUnowned(object *Object) *InitiallyUnowned {
 // to the #GObject implementation and should never be accessed directly.
 /*
 
-C record/class : GObject
+C type
+
+GObject
 */
 type Object struct {
 	native *C.GObject
@@ -103,7 +107,9 @@ func CastToObject(object *Object) *Object {
 // thread. Use #GWeakRef if thread-safety is required.
 /*
 
-C function : g_object_add_weak_pointer
+C function
+
+g_object_add_weak_pointer
 */
 func (recv *Object) AddWeakPointer(weakPointerLocation uintptr) {
 	c_weak_pointer_location := (C.gpointer)(weakPointerLocation)
@@ -128,7 +134,9 @@ func (recv *Object) AddWeakPointer(weakPointerLocation uintptr) {
 // premature notification while the object is still being modified.
 /*
 
-C function : g_object_freeze_notify
+C function
+
+g_object_freeze_notify
 */
 func (recv *Object) FreezeNotify() {
 	C.g_object_freeze_notify((*C.GObject)(recv.native))
@@ -141,7 +149,9 @@ func (recv *Object) FreezeNotify() {
 // Gets a named field from the objects table of associations (see g_object_set_data()).
 /*
 
-C function : g_object_get_data
+C function
+
+g_object_get_data
 */
 func (recv *Object) GetData(key string) uintptr {
 	c_key := C.CString(key)
@@ -164,7 +174,9 @@ func (recv *Object) GetData(key string) uintptr {
 // bindings, g_object_get() is much more convenient for C programming.
 /*
 
-C function : g_object_get_property
+C function
+
+g_object_get_property
 */
 func (recv *Object) GetProperty(propertyName string, value *Value) {
 	c_property_name := C.CString(propertyName)
@@ -184,7 +196,9 @@ func (recv *Object) GetProperty(propertyName string, value *Value) {
 // g_object_set_qdata().
 /*
 
-C function : g_object_get_qdata
+C function
+
+g_object_get_qdata
 */
 func (recv *Object) GetQdata(quark glib.Quark) uintptr {
 	c_quark := (C.GQuark)(quark)
@@ -209,7 +223,9 @@ func (recv *Object) GetQdata(quark glib.Quark) uintptr {
 // called.
 /*
 
-C function : g_object_notify
+C function
+
+g_object_notify
 */
 func (recv *Object) Notify(propertyName string) {
 	c_property_name := C.CString(propertyName)
@@ -228,7 +244,9 @@ func (recv *Object) Notify(propertyName string) {
 // explicit.
 /*
 
-C function : g_object_ref
+C function
+
+g_object_ref
 */
 func (recv *Object) Ref() uintptr {
 	retC := C.g_object_ref((C.gpointer)(recv.native))
@@ -242,7 +260,9 @@ func (recv *Object) Ref() uintptr {
 // to match the one used with g_object_add_weak_pointer().
 /*
 
-C function : g_object_remove_weak_pointer
+C function
+
+g_object_remove_weak_pointer
 */
 func (recv *Object) RemoveWeakPointer(weakPointerLocation uintptr) {
 	c_weak_pointer_location := (C.gpointer)(weakPointerLocation)
@@ -258,7 +278,9 @@ func (recv *Object) RemoveWeakPointer(weakPointerLocation uintptr) {
 // This function should only be called from object system implementations.
 /*
 
-C function : g_object_run_dispose
+C function
+
+g_object_run_dispose
 */
 func (recv *Object) RunDispose() {
 	C.g_object_run_dispose((*C.GObject)(recv.native))
@@ -275,7 +297,9 @@ func (recv *Object) RunDispose() {
 // the old association will be destroyed.
 /*
 
-C function : g_object_set_data
+C function
+
+g_object_set_data
 */
 func (recv *Object) SetData(key string, data uintptr) {
 	c_key := C.CString(key)
@@ -293,7 +317,9 @@ func (recv *Object) SetData(key string, data uintptr) {
 // Sets a property on an object.
 /*
 
-C function : g_object_set_property
+C function
+
+g_object_set_property
 */
 func (recv *Object) SetProperty(propertyName string, value *Value) {
 	c_property_name := C.CString(propertyName)
@@ -319,7 +345,9 @@ func (recv *Object) SetProperty(propertyName string, value *Value) {
 // removes the data stored.
 /*
 
-C function : g_object_set_qdata
+C function
+
+g_object_set_qdata
 */
 func (recv *Object) SetQdata(quark glib.Quark, data uintptr) {
 	c_quark := (C.GQuark)(quark)
@@ -339,7 +367,9 @@ func (recv *Object) SetQdata(quark glib.Quark, data uintptr) {
 // without invoking the association's destroy handler.
 /*
 
-C function : g_object_steal_data
+C function
+
+g_object_steal_data
 */
 func (recv *Object) StealData(key string) uintptr {
 	c_key := C.CString(key)
@@ -388,7 +418,9 @@ func (recv *Object) StealData(key string) uintptr {
 // g_object_set_qdata_full().
 /*
 
-C function : g_object_steal_qdata
+C function
+
+g_object_steal_qdata
 */
 func (recv *Object) StealQdata(quark glib.Quark) uintptr {
 	c_quark := (C.GQuark)(quark)
@@ -410,7 +442,9 @@ func (recv *Object) StealQdata(quark glib.Quark) uintptr {
 // It is an error to call this function when the freeze count is zero.
 /*
 
-C function : g_object_thaw_notify
+C function
+
+g_object_thaw_notify
 */
 func (recv *Object) ThawNotify() {
 	C.g_object_thaw_notify((*C.GObject)(recv.native))
@@ -427,7 +461,9 @@ func (recv *Object) ThawNotify() {
 // invalid #GObject instance. Use g_clear_object() for this.
 /*
 
-C function : g_object_unref
+C function
+
+g_object_unref
 */
 func (recv *Object) Unref() {
 	C.g_object_unref((C.gpointer)(recv.native))
@@ -446,7 +482,9 @@ func (recv *Object) Unref() {
 // use this @object as closure data.
 /*
 
-C function : g_object_watch_closure
+C function
+
+g_object_watch_closure
 */
 func (recv *Object) WatchClosure(closure *Closure) {
 	c_closure := (*C.GClosure)(C.NULL)

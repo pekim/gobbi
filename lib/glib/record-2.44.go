@@ -17,7 +17,9 @@ import "C"
 // See g_option_context_set_strict_posix() for more information.
 /*
 
-C function : g_option_context_get_strict_posix
+C function
+
+g_option_context_get_strict_posix
 */
 func (recv *OptionContext) GetStrictPosix() bool {
 	retC := C.g_option_context_get_strict_posix((*C.GOptionContext)(recv.native))
@@ -52,7 +54,9 @@ func (recv *OptionContext) GetStrictPosix() bool {
 // parsing).
 /*
 
-C function : g_option_context_set_strict_posix
+C function
+
+g_option_context_set_strict_posix
 */
 func (recv *OptionContext) SetStrictPosix(strictPosix bool) {
 	c_strict_posix :=
@@ -66,7 +70,9 @@ func (recv *OptionContext) SetStrictPosix(strictPosix bool) {
 // Increments the reference count of @group by one.
 /*
 
-C function : g_option_group_ref
+C function
+
+g_option_group_ref
 */
 func (recv *OptionGroup) Ref() *OptionGroup {
 	retC := C.g_option_group_ref((*C.GOptionGroup)(recv.native))
@@ -80,7 +86,9 @@ func (recv *OptionGroup) Ref() *OptionGroup {
 // and all memory allocated by the @group is released.
 /*
 
-C function : g_option_group_unref
+C function
+
+g_option_group_unref
 */
 func (recv *OptionGroup) Unref() {
 	C.g_option_group_unref((*C.GOptionGroup)(recv.native))

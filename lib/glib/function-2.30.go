@@ -21,7 +21,9 @@ import "C"
 // `{ tmp = *atomic; *atomic &= val; return tmp; }`.
 /*
 
-C function : g_atomic_int_and
+C function
+
+g_atomic_int_and
 */
 func AtomicIntAnd(atomic uint32, val uint32) uint32 {
 	c_atomic := (C.guint)(atomic)
@@ -43,7 +45,9 @@ func AtomicIntAnd(atomic uint32, val uint32) uint32 {
 // This call acts as a full compiler and hardware memory barrier.
 /*
 
-C function : g_atomic_int_or
+C function
+
+g_atomic_int_or
 */
 func AtomicIntOr(atomic uint32, val uint32) uint32 {
 	c_atomic := (C.guint)(atomic)
@@ -65,7 +69,9 @@ func AtomicIntOr(atomic uint32, val uint32) uint32 {
 // This call acts as a full compiler and hardware memory barrier.
 /*
 
-C function : g_atomic_int_xor
+C function
+
+g_atomic_int_xor
 */
 func AtomicIntXor(atomic uint32, val uint32) uint32 {
 	c_atomic := (C.guint)(atomic)
@@ -93,7 +99,9 @@ func AtomicIntXor(atomic uint32, val uint32) uint32 {
 // The hexadecimal string returned will be in lower case.
 /*
 
-C function : g_compute_hmac_for_data
+C function
+
+g_compute_hmac_for_data
 */
 func ComputeHmacForData(digestType ChecksumType, key []uint8, data []uint8) string {
 	c_digest_type := (C.GChecksumType)(digestType)
@@ -118,7 +126,9 @@ func ComputeHmacForData(digestType ChecksumType, key []uint8, data []uint8) stri
 // The hexadecimal string returned will be in lower case.
 /*
 
-C function : g_compute_hmac_for_string
+C function
+
+g_compute_hmac_for_string
 */
 func ComputeHmacForString(digestType ChecksumType, key []uint8, str string) string {
 	c_digest_type := (C.GChecksumType)(digestType)
@@ -152,7 +162,9 @@ func ComputeHmacForString(digestType ChecksumType, key []uint8, str string) stri
 // modified, and might thus be a read-only literal string.
 /*
 
-C function : g_dir_make_tmp
+C function
+
+g_dir_make_tmp
 */
 func DirMakeTmp(tmpl string) (string, error) {
 	c_tmpl := C.CString(tmpl)
@@ -185,7 +197,9 @@ func DirMakeTmp(tmpl string) (string, error) {
 // formatted.
 /*
 
-C function : g_format_size
+C function
+
+g_format_size
 */
 func FormatSize(size uint64) string {
 	c_size := (C.guint64)(size)
@@ -203,7 +217,9 @@ func FormatSize(size uint64) string {
 // that modify the output. See #GFormatSizeFlags.
 /*
 
-C function : g_format_size_full
+C function
+
+g_format_size_full
 */
 func FormatSizeFull(size uint64, flags FormatSizeFlags) string {
 	c_size := (C.guint64)(size)
@@ -234,7 +250,9 @@ func FormatSizeFull(size uint64, flags FormatSizeFlags) string {
 // g_dir_make_tmp() instead.
 /*
 
-C function : g_mkdtemp
+C function
+
+g_mkdtemp
 */
 func Mkdtemp(tmpl string) string {
 	c_tmpl := C.CString(tmpl)
@@ -264,7 +282,9 @@ func Mkdtemp(tmpl string) string {
 // g_dir_make_tmp() instead.
 /*
 
-C function : g_mkdtemp_full
+C function
+
+g_mkdtemp_full
 */
 func MkdtempFull(tmpl string, mode int32) string {
 	c_tmpl := C.CString(tmpl)
@@ -292,7 +312,9 @@ func MkdtempFull(tmpl string, mode int32) string {
 // In this case the output string will be of course equal to @string.
 /*
 
-C function : g_regex_escape_nul
+C function
+
+g_regex_escape_nul
 */
 func RegexEscapeNul(string string, length int32) string {
 	c_string := C.CString(string)
@@ -322,7 +344,9 @@ func RegexEscapeNul(string string, length int32) string {
 // If not called from inside a test, this function does nothing.
 /*
 
-C function : g_test_fail
+C function
+
+g_test_fail
 */
 func TestFail() {
 	C.g_test_fail()
@@ -348,7 +372,9 @@ func TestFail() {
 // for details.
 /*
 
-C function : g_unichar_compose
+C function
+
+g_unichar_compose
 */
 func UnicharCompose(a rune, b rune, ch rune) bool {
 	c_a := (C.gunichar)(a)
@@ -388,7 +414,9 @@ func UnicharCompose(a rune, b rune, ch rune) bool {
 // for details.
 /*
 
-C function : g_unichar_decompose
+C function
+
+g_unichar_decompose
 */
 func UnicharDecompose(ch rune, a rune, b rune) bool {
 	c_ch := (C.gunichar)(ch)
@@ -424,7 +452,9 @@ func UnicharDecompose(ch rune, a rune, b rune) bool {
 // for details.
 /*
 
-C function : g_unichar_fully_decompose
+C function
+
+g_unichar_fully_decompose
 */
 func UnicharFullyDecompose(ch rune, compat bool, result rune, resultLen uint64) uint64 {
 	c_ch := (C.gunichar)(ch)
@@ -453,7 +483,9 @@ func UnicharFullyDecompose(ch rune, compat bool, result rune, resultLen uint64) 
 // for details.
 /*
 
-C function : g_unicode_script_from_iso15924
+C function
+
+g_unicode_script_from_iso15924
 */
 func UnicodeScriptFromIso15924(iso15924 uint32) UnicodeScript {
 	c_iso15924 := (C.guint32)(iso15924)
@@ -475,7 +507,9 @@ func UnicodeScriptFromIso15924(iso15924 uint32) UnicodeScript {
 // for details.
 /*
 
-C function : g_unicode_script_to_iso15924
+C function
+
+g_unicode_script_to_iso15924
 */
 func UnicodeScriptToIso15924(script UnicodeScript) uint32 {
 	c_script := (C.GUnicodeScript)(script)
@@ -496,7 +530,9 @@ func UnicodeScriptToIso15924(script UnicodeScript) uint32 {
 // for fcntl(); these are different on Linux/glibc.
 /*
 
-C function : g_unix_open_pipe
+C function
+
+g_unix_open_pipe
 */
 func UnixOpenPipe(fds int32, flags int32) (bool, error) {
 	c_fds := (C.gint)(fds)
@@ -521,7 +557,9 @@ func UnixOpenPipe(fds int32, flags int32) (bool, error) {
 // on some older ones may use %O_NDELAY.
 /*
 
-C function : g_unix_set_fd_nonblocking
+C function
+
+g_unix_set_fd_nonblocking
 */
 func UnixSetFdNonblocking(fd int32, nonblock bool) (bool, error) {
 	c_fd := (C.gint)(fd)
@@ -571,7 +609,9 @@ func UnixSetFdNonblocking(fd int32, nonblock bool) (bool, error) {
 // executed.
 /*
 
-C function : g_unix_signal_source_new
+C function
+
+g_unix_signal_source_new
 */
 func UnixSignalSourceNew(signum int32) *Source {
 	c_signum := (C.gint)(signum)
@@ -586,7 +626,9 @@ func UnixSignalSourceNew(signum int32) *Source {
 // The substring will contain @end_pos - @start_pos characters.
 /*
 
-C function : g_utf8_substring
+C function
+
+g_utf8_substring
 */
 func Utf8Substring(str string, startPos int64, endPos int64) string {
 	c_str := C.CString(str)

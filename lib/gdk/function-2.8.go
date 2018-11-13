@@ -28,7 +28,9 @@ import "C"
 // instead. GTK will automatically do this for you when drawing a widget.
 /*
 
-C function : gdk_cairo_create
+C function
+
+gdk_cairo_create
 */
 func CairoCreate(window *Window) *cairo.Context {
 	c_window := (*C.GdkWindow)(C.NULL)
@@ -47,7 +49,9 @@ func CairoCreate(window *Window) *cairo.Context {
 // Adds the given region to the current path of @cr.
 /*
 
-C function : gdk_cairo_region
+C function
+
+gdk_cairo_region
 */
 func CairoRegion(cr *cairo.Context, region *cairo.Region) {
 	c_cr := (*C.cairo_t)(C.NULL)
@@ -68,7 +72,9 @@ func CairoRegion(cr *cairo.Context, region *cairo.Region) {
 // Sets the specified #GdkColor as the source color of @cr.
 /*
 
-C function : gdk_cairo_set_source_color
+C function
+
+gdk_cairo_set_source_color
 */
 func CairoSetSourceColor(cr *cairo.Context, color *Color) {
 	c_cr := (*C.cairo_t)(C.NULL)
@@ -92,7 +98,9 @@ func CairoSetSourceColor(cr *cairo.Context, color *Color) {
 // so that the origin of @pixbuf is @pixbuf_x, @pixbuf_y.
 /*
 
-C function : gdk_cairo_set_source_pixbuf
+C function
+
+gdk_cairo_set_source_pixbuf
 */
 func CairoSetSourcePixbuf(cr *cairo.Context, pixbuf *gdkpixbuf.Pixbuf, pixbufX float64, pixbufY float64) {
 	c_cr := (*C.cairo_t)(C.NULL)

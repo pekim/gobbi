@@ -17,7 +17,9 @@ import "C"
 // g_value_init() and g_value_set_instance().
 /*
 
-C function : g_value_init_from_instance
+C function
+
+g_value_init_from_instance
 */
 func (recv *Value) InitFromInstance(instance uintptr) {
 	c_instance := (C.gpointer)(instance)

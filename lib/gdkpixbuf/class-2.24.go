@@ -18,7 +18,9 @@ import "C"
 // gdk_pixbuf_new_from_stream_async().
 /*
 
-C function : gdk_pixbuf_new_from_stream_finish
+C function
+
+gdk_pixbuf_new_from_stream_finish
 */
 func PixbufNewFromStreamFinish(asyncResult *gio.AsyncResult) (*Pixbuf, error) {
 	c_async_result := (*C.GAsyncResult)(asyncResult.ToC())

@@ -25,7 +25,9 @@ import "C"
 // gtk_application_set_app_menu().
 /*
 
-C function : gtk_application_get_app_menu
+C function
+
+gtk_application_get_app_menu
 */
 func (recv *Application) GetAppMenu() *gio.MenuModel {
 	retC := C.gtk_application_get_app_menu((*C.GtkApplication)(recv.native))
@@ -43,7 +45,9 @@ func (recv *Application) GetAppMenu() *gio.MenuModel {
 // gtk_application_set_menubar().
 /*
 
-C function : gtk_application_get_menubar
+C function
+
+gtk_application_get_menubar
 */
 func (recv *Application) GetMenubar() *gio.MenuModel {
 	retC := C.gtk_application_get_menubar((*C.GtkApplication)(recv.native))
@@ -75,7 +79,9 @@ func (recv *Application) GetMenubar() *gio.MenuModel {
 // this window to find out more about why the action is inhibited.
 /*
 
-C function : gtk_application_inhibit
+C function
+
+gtk_application_inhibit
 */
 func (recv *Application) Inhibit(window *Window, flags ApplicationInhibitFlags, reason string) uint32 {
 	c_window := (*C.GtkWindow)(C.NULL)
@@ -101,7 +107,9 @@ func (recv *Application) Inhibit(window *Window, flags ApplicationInhibitFlags, 
 // when the application is running in a sandbox).
 /*
 
-C function : gtk_application_is_inhibited
+C function
+
+gtk_application_is_inhibited
 */
 func (recv *Application) IsInhibited(flags ApplicationInhibitFlags) bool {
 	c_flags := (C.GtkApplicationInhibitFlags)(flags)
@@ -133,7 +141,9 @@ func (recv *Application) IsInhibited(flags ApplicationInhibitFlags) bool {
 // selecting these menu items.
 /*
 
-C function : gtk_application_set_app_menu
+C function
+
+gtk_application_set_app_menu
 */
 func (recv *Application) SetAppMenu(appMenu *gio.MenuModel) {
 	c_app_menu := (*C.GMenuModel)(C.NULL)
@@ -166,7 +176,9 @@ func (recv *Application) SetAppMenu(appMenu *gio.MenuModel) {
 // user selecting these menu items.
 /*
 
-C function : gtk_application_set_menubar
+C function
+
+gtk_application_set_menubar
 */
 func (recv *Application) SetMenubar(menubar *gio.MenuModel) {
 	c_menubar := (*C.GMenuModel)(C.NULL)
@@ -183,7 +195,9 @@ func (recv *Application) SetMenubar(menubar *gio.MenuModel) {
 // Inhibitors are also cleared when the application exits.
 /*
 
-C function : gtk_application_uninhibit
+C function
+
+gtk_application_uninhibit
 */
 func (recv *Application) Uninhibit(cookie uint32) {
 	c_cookie := (C.guint)(cookie)
@@ -196,7 +210,9 @@ func (recv *Application) Uninhibit(cookie uint32) {
 // Creates a new #GtkApplicationWindow.
 /*
 
-C function : gtk_application_window_new
+C function
+
+gtk_application_window_new
 */
 func ApplicationWindowNew(application *Application) *ApplicationWindow {
 	c_application := (*C.GtkApplication)(C.NULL)
@@ -214,7 +230,9 @@ func ApplicationWindowNew(application *Application) *ApplicationWindow {
 // and menubar as needed.
 /*
 
-C function : gtk_application_window_get_show_menubar
+C function
+
+gtk_application_window_get_show_menubar
 */
 func (recv *ApplicationWindow) GetShowMenubar() bool {
 	retC := C.gtk_application_window_get_show_menubar((*C.GtkApplicationWindow)(recv.native))
@@ -227,7 +245,9 @@ func (recv *ApplicationWindow) GetShowMenubar() bool {
 // and menubar as needed.
 /*
 
-C function : gtk_application_window_set_show_menubar
+C function
+
+gtk_application_window_set_show_menubar
 */
 func (recv *ApplicationWindow) SetShowMenubar(showMenubar bool) {
 	c_show_menubar :=
@@ -252,7 +272,9 @@ func (recv *ApplicationWindow) SetShowMenubar(showMenubar bool) {
 // to call g_error().
 /*
 
-C function : gtk_builder_add_from_resource
+C function
+
+gtk_builder_add_from_resource
 */
 func (recv *Builder) AddFromResource(resourcePath string) (uint32, error) {
 	c_resource_path := C.CString(resourcePath)
@@ -276,7 +298,9 @@ func (recv *Builder) AddFromResource(resourcePath string) (uint32, error) {
 // Creates a new #GtkColorChooserDialog.
 /*
 
-C function : gtk_color_chooser_dialog_new
+C function
+
+gtk_color_chooser_dialog_new
 */
 func ColorChooserDialogNew(title string, parent *Window) *ColorChooserDialog {
 	c_title := C.CString(title)
@@ -296,7 +320,9 @@ func ColorChooserDialogNew(title string, parent *Window) *ColorChooserDialog {
 // Creates a new #GtkColorChooserWidget.
 /*
 
-C function : gtk_color_chooser_widget_new
+C function
+
+gtk_color_chooser_widget_new
 */
 func ColorChooserWidgetNew() *ColorChooserWidget {
 	retC := C.gtk_color_chooser_widget_new()
@@ -313,7 +339,9 @@ func ColorChooserWidgetNew() *ColorChooserWidget {
 // see gtk_entry_completion_set_text_column() for details.
 /*
 
-C function : gtk_entry_completion_compute_prefix
+C function
+
+gtk_entry_completion_compute_prefix
 */
 func (recv *EntryCompletion) ComputePrefix(key string) string {
 	c_key := C.CString(key)
@@ -344,7 +372,9 @@ func (recv *EntryCompletion) ComputePrefix(key string) string {
 // displaying the file.
 /*
 
-C function : gtk_image_new_from_resource
+C function
+
+gtk_image_new_from_resource
 */
 func ImageNewFromResource(resourcePath string) *Image {
 	c_resource_path := C.CString(resourcePath)
@@ -368,7 +398,9 @@ func ImageNewFromResource(resourcePath string) *Image {
 // attach widget or on any of its parent widgets.
 /*
 
-C function : gtk_menu_new_from_model
+C function
+
+gtk_menu_new_from_model
 */
 func MenuNewFromModel(model *gio.MenuModel) *Menu {
 	c_model := (*C.GMenuModel)(C.NULL)
@@ -391,7 +423,9 @@ func MenuNewFromModel(model *gio.MenuModel) *Menu {
 // widget hierarchy.
 /*
 
-C function : gtk_menu_bar_new_from_model
+C function
+
+gtk_menu_bar_new_from_model
 */
 func MenuBarNewFromModel(model *gio.MenuModel) *MenuBar {
 	c_model := (*C.GMenuModel)(C.NULL)
@@ -408,7 +442,9 @@ func MenuBarNewFromModel(model *gio.MenuModel) *MenuBar {
 // Returns whether the scale has an origin.
 /*
 
-C function : gtk_scale_get_has_origin
+C function
+
+gtk_scale_get_has_origin
 */
 func (recv *Scale) GetHasOrigin() bool {
 	retC := C.gtk_scale_get_has_origin((*C.GtkScale)(recv.native))
@@ -422,7 +458,9 @@ func (recv *Scale) GetHasOrigin() bool {
 // and the current value.
 /*
 
-C function : gtk_scale_set_has_origin
+C function
+
+gtk_scale_set_has_origin
 */
 func (recv *Scale) SetHasOrigin(hasOrigin bool) {
 	c_has_origin :=
@@ -437,7 +475,9 @@ func (recv *Scale) SetHasOrigin(hasOrigin bool) {
 // scrolling. See gtk_scrolled_window_set_capture_button_press().
 /*
 
-C function : gtk_scrolled_window_get_capture_button_press
+C function
+
+gtk_scrolled_window_get_capture_button_press
 */
 func (recv *ScrolledWindow) GetCaptureButtonPress() bool {
 	retC := C.gtk_scrolled_window_get_capture_button_press((*C.GtkScrolledWindow)(recv.native))
@@ -449,7 +489,9 @@ func (recv *ScrolledWindow) GetCaptureButtonPress() bool {
 // Returns the specified kinetic scrolling behavior.
 /*
 
-C function : gtk_scrolled_window_get_kinetic_scrolling
+C function
+
+gtk_scrolled_window_get_kinetic_scrolling
 */
 func (recv *ScrolledWindow) GetKineticScrolling() bool {
 	retC := C.gtk_scrolled_window_get_kinetic_scrolling((*C.GtkScrolledWindow)(recv.native))
@@ -471,7 +513,9 @@ func (recv *ScrolledWindow) GetKineticScrolling() bool {
 // This setting only has an effect if kinetic scrolling is enabled.
 /*
 
-C function : gtk_scrolled_window_set_capture_button_press
+C function
+
+gtk_scrolled_window_set_capture_button_press
 */
 func (recv *ScrolledWindow) SetCaptureButtonPress(captureButtonPress bool) {
 	c_capture_button_press :=
@@ -487,7 +531,9 @@ func (recv *ScrolledWindow) SetCaptureButtonPress(captureButtonPress bool) {
 // %GDK_SOURCE_TOUCHSCREEN.
 /*
 
-C function : gtk_scrolled_window_set_kinetic_scrolling
+C function
+
+gtk_scrolled_window_set_kinetic_scrolling
 */
 func (recv *ScrolledWindow) SetKineticScrolling(kineticScrolling bool) {
 	c_kinetic_scrolling :=
@@ -502,7 +548,9 @@ func (recv *ScrolledWindow) SetKineticScrolling(kineticScrolling bool) {
 // See that function for details.
 /*
 
-C function : gtk_style_context_get_parent
+C function
+
+gtk_style_context_get_parent
 */
 func (recv *StyleContext) GetParent() *StyleContext {
 	retC := C.gtk_style_context_get_parent((*C.GtkStyleContext)(recv.native))
@@ -525,7 +573,9 @@ func (recv *StyleContext) GetParent() *StyleContext {
 // gtk_widget_get_style_context(), the parent will be set for you.
 /*
 
-C function : gtk_style_context_set_parent
+C function
+
+gtk_style_context_set_parent
 */
 func (recv *StyleContext) SetParent(parent *StyleContext) {
 	c_parent := (*C.GtkStyleContext)(C.NULL)
@@ -541,7 +591,9 @@ func (recv *StyleContext) SetParent(parent *StyleContext) {
 // Queries the number of columns in the given @tree_view.
 /*
 
-C function : gtk_tree_view_get_n_columns
+C function
+
+gtk_tree_view_get_n_columns
 */
 func (recv *TreeView) GetNColumns() uint32 {
 	retC := C.gtk_tree_view_get_n_columns((*C.GtkTreeView)(recv.native))
@@ -554,7 +606,9 @@ func (recv *TreeView) GetNColumns() uint32 {
 // merges it with the current contents of @manager.
 /*
 
-C function : gtk_ui_manager_add_ui_from_resource
+C function
+
+gtk_ui_manager_add_ui_from_resource
 */
 func (recv *UIManager) AddUiFromResource(resourcePath string) (uint32, error) {
 	c_resource_path := C.CString(resourcePath)
@@ -579,7 +633,9 @@ func (recv *UIManager) AddUiFromResource(resourcePath string) (uint32, error) {
 // See gdk_keymap_get_modifier_mask().
 /*
 
-C function : gtk_widget_get_modifier_mask
+C function
+
+gtk_widget_get_modifier_mask
 */
 func (recv *Widget) GetModifierMask(intent gdk.ModifierIntent) gdk.ModifierType {
 	c_intent := (C.GdkModifierIntent)(intent)
@@ -594,7 +650,9 @@ func (recv *Widget) GetModifierMask(intent gdk.ModifierIntent) gdk.ModifierType 
 // gtk_window_set_attached_to().
 /*
 
-C function : gtk_window_get_attached_to
+C function
+
+gtk_window_get_attached_to
 */
 func (recv *Window) GetAttachedTo() *Widget {
 	retC := C.gtk_window_get_attached_to((*C.GtkWindow)(recv.native))
@@ -612,7 +670,9 @@ func (recv *Window) GetAttachedTo() *Widget {
 // when maximized. See gtk_window_set_hide_titlebar_when_maximized ().
 /*
 
-C function : gtk_window_get_hide_titlebar_when_maximized
+C function
+
+gtk_window_get_hide_titlebar_when_maximized
 */
 func (recv *Window) GetHideTitlebarWhenMaximized() bool {
 	retC := C.gtk_window_get_hide_titlebar_when_maximized((*C.GtkWindow)(recv.native))
@@ -637,7 +697,9 @@ func (recv *Window) GetHideTitlebarWhenMaximized() bool {
 // Passing %NULL for @attach_widget detaches the window.
 /*
 
-C function : gtk_window_set_attached_to
+C function
+
+gtk_window_set_attached_to
 */
 func (recv *Window) SetAttachedTo(attachWidget *Widget) {
 	c_attach_widget := (*C.GtkWidget)(C.NULL)
@@ -662,7 +724,9 @@ func (recv *Window) SetAttachedTo(attachWidget *Widget) {
 // content and visibility anyway.
 /*
 
-C function : gtk_window_set_hide_titlebar_when_maximized
+C function
+
+gtk_window_set_hide_titlebar_when_maximized
 */
 func (recv *Window) SetHideTitlebarWhenMaximized(setting bool) {
 	c_setting :=

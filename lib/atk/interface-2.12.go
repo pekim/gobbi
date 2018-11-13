@@ -17,7 +17,9 @@ import "C"
 
 /*
 
-C function : atk_document_get_current_page_number
+C function
+
+atk_document_get_current_page_number
 */
 func (recv *Document) GetCurrentPageNumber() int32 {
 	retC := C.atk_document_get_current_page_number((*C.AtkDocument)(recv.native))
@@ -28,7 +30,9 @@ func (recv *Document) GetCurrentPageNumber() int32 {
 
 /*
 
-C function : atk_document_get_page_count
+C function
+
+atk_document_get_page_count
 */
 func (recv *Document) GetPageCount() int32 {
 	retC := C.atk_document_get_page_count((*C.AtkDocument)(recv.native))
@@ -42,7 +46,9 @@ func (recv *Document) GetPageCount() int32 {
 // Returns the number of columns occupied by this cell accessible.
 /*
 
-C function : atk_table_cell_get_column_span
+C function
+
+atk_table_cell_get_column_span
 */
 func (recv *TableCell) GetColumnSpan() int32 {
 	retC := C.atk_table_cell_get_column_span((*C.AtkTableCell)(recv.native))
@@ -54,7 +60,9 @@ func (recv *TableCell) GetColumnSpan() int32 {
 // Retrieves the tabular position of this cell.
 /*
 
-C function : atk_table_cell_get_position
+C function
+
+atk_table_cell_get_position
 */
 func (recv *TableCell) GetPosition() (bool, int32, int32) {
 	var c_row C.gint
@@ -78,7 +86,9 @@ func (recv *TableCell) GetPosition() (bool, int32, int32) {
 // on the object.
 /*
 
-C function : atk_table_cell_get_row_column_span
+C function
+
+atk_table_cell_get_row_column_span
 */
 func (recv *TableCell) GetRowColumnSpan() (bool, int32, int32, int32, int32) {
 	var c_row C.gint
@@ -108,7 +118,9 @@ func (recv *TableCell) GetRowColumnSpan() (bool, int32, int32, int32, int32) {
 // Returns the number of rows occupied by this cell accessible.
 /*
 
-C function : atk_table_cell_get_row_span
+C function
+
+atk_table_cell_get_row_span
 */
 func (recv *TableCell) GetRowSpan() int32 {
 	retC := C.atk_table_cell_get_row_span((*C.AtkTableCell)(recv.native))
@@ -120,7 +132,9 @@ func (recv *TableCell) GetRowSpan() int32 {
 // Returns a reference to the accessible of the containing table.
 /*
 
-C function : atk_table_cell_get_table
+C function
+
+atk_table_cell_get_table
 */
 func (recv *TableCell) GetTable() *Object {
 	retC := C.atk_table_cell_get_table((*C.AtkTableCell)(recv.native))
@@ -137,7 +151,9 @@ func (recv *TableCell) GetTable() *Object {
 // platform.
 /*
 
-C function : atk_value_get_increment
+C function
+
+atk_value_get_increment
 */
 func (recv *Value) GetIncrement() float64 {
 	retC := C.atk_value_get_increment((*C.AtkValue)(recv.native))
@@ -149,7 +165,9 @@ func (recv *Value) GetIncrement() float64 {
 // Gets the range of this object.
 /*
 
-C function : atk_value_get_range
+C function
+
+atk_value_get_range
 */
 func (recv *Value) GetRange() *Range {
 	retC := C.atk_value_get_range((*C.AtkValue)(recv.native))
@@ -167,7 +185,9 @@ func (recv *Value) GetRange() *Range {
 // introduction for examples of subranges and when to expose them.
 /*
 
-C function : atk_value_get_sub_ranges
+C function
+
+atk_value_get_sub_ranges
 */
 func (recv *Value) GetSubRanges() *glib.SList {
 	retC := C.atk_value_get_sub_ranges((*C.AtkValue)(recv.native))
@@ -181,7 +201,9 @@ func (recv *Value) GetSubRanges() *glib.SList {
 // caller. Can be NULL if no descriptor is available.
 /*
 
-C function : atk_value_get_value_and_text
+C function
+
+atk_value_get_value_and_text
 */
 func (recv *Value) GetValueAndText() (float64, string) {
 	var c_value C.gdouble
@@ -214,7 +236,9 @@ func (recv *Value) GetValueAndText() (float64, string) {
 // not.
 /*
 
-C function : atk_value_set_value
+C function
+
+atk_value_set_value
 */
 func (recv *Value) SetValue(newValue float64) {
 	c_new_value := (C.gdouble)(newValue)

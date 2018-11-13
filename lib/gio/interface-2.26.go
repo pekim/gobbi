@@ -31,7 +31,9 @@ import "C"
 // g_io_extension_point_get_extension_by_name().
 /*
 
-C record/class : GProxy
+C type
+
+GProxy
 */
 type Proxy struct {
 	native *C.GProxy
@@ -59,7 +61,9 @@ func (recv *Proxy) ToC() unsafe.Pointer {
 // required, wraps the #GIOStream to handle proxy payload.
 /*
 
-C function : g_proxy_connect
+C function
+
+g_proxy_connect
 */
 func (recv *Proxy) Connect(connection *IOStream, proxyAddress *ProxyAddress, cancellable *Cancellable) (*IOStream, error) {
 	c_connection := (*C.GIOStream)(C.NULL)
@@ -95,7 +99,9 @@ func (recv *Proxy) Connect(connection *IOStream, proxyAddress *ProxyAddress, can
 // See g_proxy_connect().
 /*
 
-C function : g_proxy_connect_finish
+C function
+
+g_proxy_connect_finish
 */
 func (recv *Proxy) ConnectFinish(result *AsyncResult) (*IOStream, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -122,7 +128,9 @@ func (recv *Proxy) ConnectFinish(result *AsyncResult) (*IOStream, error) {
 // g_proxy_connect() or g_proxy_connect_async().
 /*
 
-C function : g_proxy_supports_hostname
+C function
+
+g_proxy_supports_hostname
 */
 func (recv *Proxy) SupportsHostname() bool {
 	retC := C.g_proxy_supports_hostname((*C.GProxy)(recv.native))
@@ -140,7 +148,9 @@ func (recv *Proxy) SupportsHostname() bool {
 // Flatpak portals.
 /*
 
-C record/class : GProxyResolver
+C type
+
+GProxyResolver
 */
 type ProxyResolver struct {
 	native *C.GProxyResolver
@@ -167,7 +177,9 @@ func (recv *ProxyResolver) ToC() unsafe.Pointer {
 // resolver that returns %TRUE for this method.)
 /*
 
-C function : g_proxy_resolver_is_supported
+C function
+
+g_proxy_resolver_is_supported
 */
 func (recv *ProxyResolver) IsSupported() bool {
 	retC := C.g_proxy_resolver_is_supported((*C.GProxyResolver)(recv.native))
@@ -191,7 +203,9 @@ func (recv *ProxyResolver) IsSupported() bool {
 // calling g_socket_connectable_enumerate().
 /*
 
-C function : g_socket_connectable_proxy_enumerate
+C function
+
+g_socket_connectable_proxy_enumerate
 */
 func (recv *SocketConnectable) ProxyEnumerate() *SocketAddressEnumerator {
 	retC := C.g_socket_connectable_proxy_enumerate((*C.GSocketConnectable)(recv.native))

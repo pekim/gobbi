@@ -19,7 +19,9 @@ import "C"
 // to do so.
 /*
 
-C function : pango_markup_parser_finish
+C function
+
+pango_markup_parser_finish
 */
 func MarkupParserFinish(context *glib.MarkupParseContext) (bool, *AttrList, string, rune, error) {
 	c_context := (*C.GMarkupParseContext)(C.NULL)
@@ -75,7 +77,9 @@ func MarkupParserFinish(context *glib.MarkupParseContext) (bool, *AttrList, stri
 // the simpler pango_parse_markup() API is recommended instead.
 /*
 
-C function : pango_markup_parser_new
+C function
+
+pango_markup_parser_new
 */
 func MarkupParserNew(accelMarker rune) *glib.MarkupParseContext {
 	c_accel_marker := (C.gunichar)(accelMarker)

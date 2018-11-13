@@ -20,7 +20,9 @@ import "C"
 // not public API and must not be used by applications.
 /*
 
-C function : gdk_add_option_entries_libgtk_only
+C function
+
+gdk_add_option_entries_libgtk_only
 */
 func AddOptionEntriesLibgtkOnly(group *glib.OptionGroup) {
 	c_group := (*C.GOptionGroup)(C.NULL)
@@ -38,7 +40,9 @@ func AddOptionEntriesLibgtkOnly(group *glib.OptionGroup) {
 // Emits a short beep on the default display.
 /*
 
-C function : gdk_beep
+C function
+
+gdk_beep
 */
 func Beep() {
 	C.gdk_beep()
@@ -55,7 +59,9 @@ func Beep() {
 // set with cairo_surface_set_device_offset().
 /*
 
-C function : gdk_cairo_region_create_from_surface
+C function
+
+gdk_cairo_region_create_from_surface
 */
 func CairoRegionCreateFromSurface(surface *cairo.Surface) *cairo.Region {
 	c_surface := (*C.cairo_surface_t)(C.NULL)
@@ -79,7 +85,9 @@ func CairoRegionCreateFromSurface(surface *cairo.Surface) *cairo.Region {
 // operations. See gdk_drag_context_manage_dnd() for more information.
 /*
 
-C function : gdk_drag_abort
+C function
+
+gdk_drag_abort
 */
 func DragAbort(context *DragContext, time uint32) {
 	c_context := (*C.GdkDragContext)(C.NULL)
@@ -102,7 +110,9 @@ func DragAbort(context *DragContext, time uint32) {
 // This function is called by the drag source.
 /*
 
-C function : gdk_drag_begin
+C function
+
+gdk_drag_begin
 */
 func DragBegin(window *Window, targets *glib.List) *DragContext {
 	c_window := (*C.GdkWindow)(C.NULL)
@@ -126,7 +136,9 @@ func DragBegin(window *Window, targets *glib.List) *DragContext {
 // This function is called by the drag source.
 /*
 
-C function : gdk_drag_begin_for_device
+C function
+
+gdk_drag_begin_for_device
 */
 func DragBeginForDevice(window *Window, device *Device, targets *glib.List) *DragContext {
 	c_window := (*C.GdkWindow)(C.NULL)
@@ -158,7 +170,9 @@ func DragBeginForDevice(window *Window, device *Device, targets *glib.List) *Dra
 // operations. See gdk_drag_context_manage_dnd() for more information.
 /*
 
-C function : gdk_drag_drop
+C function
+
+gdk_drag_drop
 */
 func DragDrop(context *DragContext, time uint32) {
 	c_context := (*C.GdkDragContext)(C.NULL)
@@ -184,7 +198,9 @@ func DragDrop(context *DragContext, time uint32) {
 // operations. See gdk_drag_context_manage_dnd() for more information.
 /*
 
-C function : gdk_drag_motion
+C function
+
+gdk_drag_motion
 */
 func DragMotion(context *DragContext, destWindow *Window, protocol DragProtocol, xRoot int32, yRoot int32, suggestedAction DragAction, possibleActions DragAction, time uint32) bool {
 	c_context := (*C.GdkDragContext)(C.NULL)
@@ -221,7 +237,9 @@ func DragMotion(context *DragContext, destWindow *Window, protocol DragProtocol,
 // gdk_drag_motion() called by the drag source.
 /*
 
-C function : gdk_drag_status
+C function
+
+gdk_drag_status
 */
 func DragStatus(context *DragContext, action DragAction, time uint32) {
 	c_context := (*C.GdkDragContext)(C.NULL)
@@ -243,7 +261,9 @@ func DragStatus(context *DragContext, action DragAction, time uint32) {
 // This function is called by the drag destination.
 /*
 
-C function : gdk_drop_finish
+C function
+
+gdk_drop_finish
 */
 func DropFinish(context *DragContext, success bool, time uint32) {
 	c_context := (*C.GdkDragContext)(C.NULL)
@@ -267,7 +287,9 @@ func DropFinish(context *DragContext, success bool, time uint32) {
 // to a drop initiated by the drag source.
 /*
 
-C function : gdk_drop_reply
+C function
+
+gdk_drop_reply
 */
 func DropReply(context *DragContext, accepted bool, time uint32) {
 	c_context := (*C.GdkDragContext)(C.NULL)
@@ -298,7 +320,9 @@ func DropReply(context *DragContext, accepted bool, time uint32) {
 // call to Xlib was not a blocking round trip.
 /*
 
-C function : gdk_error_trap_pop
+C function
+
+gdk_error_trap_pop
 */
 func ErrorTrapPop() int32 {
 	retC := C.gdk_error_trap_pop()
@@ -321,7 +345,7 @@ func ErrorTrapPop() int32 {
 // You can use gdk_x11_display_error_trap_push() to ignore errors
 // on only a single display.
 //
-// ## Trapping an X error
+// Trapping an X error
 //
 // |[<!-- language="C" -->
 // gdk_error_trap_push ();
@@ -336,7 +360,9 @@ func ErrorTrapPop() int32 {
 // ]|
 /*
 
-C function : gdk_error_trap_push
+C function
+
+gdk_error_trap_push
 */
 func ErrorTrapPush() {
 	C.gdk_error_trap_push()
@@ -353,7 +379,9 @@ func ErrorTrapPush() {
 // Checks if any events are ready to be processed for any display.
 /*
 
-C function : gdk_events_pending
+C function
+
+gdk_events_pending
 */
 func EventsPending() bool {
 	retC := C.gdk_events_pending()
@@ -367,7 +395,9 @@ func EventsPending() bool {
 // This is rarely needed by applications.
 /*
 
-C function : gdk_flush
+C function
+
+gdk_flush
 */
 func Flush() {
 	C.gdk_flush()
@@ -379,7 +409,9 @@ func Flush() {
 // for the default display and screen.
 /*
 
-C function : gdk_get_default_root_window
+C function
+
+gdk_get_default_root_window
 */
 func GetDefaultRootWindow() *Window {
 	retC := C.gdk_get_default_root_window()
@@ -393,7 +425,9 @@ func GetDefaultRootWindow() *Window {
 // `--display` command line option.
 /*
 
-C function : gdk_get_display
+C function
+
+gdk_get_display
 */
 func GetDisplay() string {
 	retC := C.gdk_get_display()
@@ -409,7 +443,9 @@ func GetDisplay() string {
 // with g_get_prgname()) with the first character converted to uppercase.
 /*
 
-C function : gdk_get_program_class
+C function
+
+gdk_get_program_class
 */
 func GetProgramClass() string {
 	retC := C.gdk_get_program_class()
@@ -421,7 +457,9 @@ func GetProgramClass() string {
 // Gets whether event debugging output is enabled.
 /*
 
-C function : gdk_get_show_events
+C function
+
+gdk_get_show_events
 */
 func GetShowEvents() bool {
 	retC := C.gdk_get_show_events()
@@ -432,7 +470,9 @@ func GetShowEvents() bool {
 
 /*
 
-C function : gdk_gl_error_quark
+C function
+
+gdk_gl_error_quark
 */
 func GlErrorQuark() glib.Quark {
 	retC := C.gdk_gl_error_quark()
@@ -452,7 +492,9 @@ func GlErrorQuark() glib.Quark {
 // needed by GTK+ applications.
 /*
 
-C function : gdk_init
+C function
+
+gdk_init
 */
 func Init(args []string) []string {
 	cArgc, cArgv := argsIn(args)
@@ -474,7 +516,9 @@ func Init(args []string) []string {
 // needed by GTK+ applications.
 /*
 
-C function : gdk_init_check
+C function
+
+gdk_init_check
 */
 func InitCheck(args []string) (bool, []string) {
 	cArgc, cArgv := argsIn(args)
@@ -496,7 +540,9 @@ func InitCheck(args []string) (bool, []string) {
 // are emitted when the grab ends unvoluntarily.
 /*
 
-C function : gdk_keyboard_grab
+C function
+
+gdk_keyboard_grab
 */
 func KeyboardGrab(window *Window, ownerEvents bool, time uint32) GrabStatus {
 	c_window := (*C.GdkWindow)(C.NULL)
@@ -519,7 +565,9 @@ func KeyboardGrab(window *Window, ownerEvents bool, time uint32) GrabStatus {
 // application.
 /*
 
-C function : gdk_keyboard_ungrab
+C function
+
+gdk_keyboard_ungrab
 */
 func KeyboardUngrab(time uint32) {
 	c_time_ := (C.guint32)(time)
@@ -533,7 +581,9 @@ func KeyboardUngrab(time uint32) {
 // Examples of keyvals are #GDK_KEY_a, #GDK_KEY_Enter, #GDK_KEY_F1, etc.
 /*
 
-C function : gdk_keyval_convert_case
+C function
+
+gdk_keyval_convert_case
 */
 func KeyvalConvertCase(symbol uint32) (uint32, uint32) {
 	c_symbol := (C.guint)(symbol)
@@ -558,7 +608,9 @@ func KeyvalConvertCase(symbol uint32) (uint32, uint32) {
 // but without the leading “GDK_KEY_”.
 /*
 
-C function : gdk_keyval_from_name
+C function
+
+gdk_keyval_from_name
 */
 func KeyvalFromName(keyvalName string) uint32 {
 	c_keyval_name := C.CString(keyvalName)
@@ -573,7 +625,9 @@ func KeyvalFromName(keyvalName string) uint32 {
 // Returns %TRUE if the given key value is in lower case.
 /*
 
-C function : gdk_keyval_is_lower
+C function
+
+gdk_keyval_is_lower
 */
 func KeyvalIsLower(keyval uint32) bool {
 	c_keyval := (C.guint)(keyval)
@@ -587,7 +641,9 @@ func KeyvalIsLower(keyval uint32) bool {
 // Returns %TRUE if the given key value is in upper case.
 /*
 
-C function : gdk_keyval_is_upper
+C function
+
+gdk_keyval_is_upper
 */
 func KeyvalIsUpper(keyval uint32) bool {
 	c_keyval := (C.guint)(keyval)
@@ -605,7 +661,9 @@ func KeyvalIsUpper(keyval uint32) bool {
 // but without the leading “GDK_KEY_”.
 /*
 
-C function : gdk_keyval_name
+C function
+
+gdk_keyval_name
 */
 func KeyvalName(keyval uint32) string {
 	c_keyval := (C.guint)(keyval)
@@ -619,7 +677,9 @@ func KeyvalName(keyval uint32) string {
 // Converts a key value to lower case, if applicable.
 /*
 
-C function : gdk_keyval_to_lower
+C function
+
+gdk_keyval_to_lower
 */
 func KeyvalToLower(keyval uint32) uint32 {
 	c_keyval := (C.guint)(keyval)
@@ -634,7 +694,9 @@ func KeyvalToLower(keyval uint32) uint32 {
 // character.
 /*
 
-C function : gdk_keyval_to_unicode
+C function
+
+gdk_keyval_to_unicode
 */
 func KeyvalToUnicode(keyval uint32) uint32 {
 	c_keyval := (C.guint)(keyval)
@@ -648,7 +710,9 @@ func KeyvalToUnicode(keyval uint32) uint32 {
 // Converts a key value to upper case, if applicable.
 /*
 
-C function : gdk_keyval_to_upper
+C function
+
+gdk_keyval_to_upper
 */
 func KeyvalToUpper(keyval uint32) uint32 {
 	c_keyval := (C.guint)(keyval)
@@ -668,7 +732,9 @@ func KeyvalToUpper(keyval uint32) uint32 {
 // Call g_list_free() on the return value when you’re finished with it.
 /*
 
-C function : gdk_list_visuals
+C function
+
+gdk_list_visuals
 */
 func ListVisuals() *glib.List {
 	retC := C.gdk_list_visuals()
@@ -682,7 +748,9 @@ func ListVisuals() *glib.List {
 // add a reference to it.
 /*
 
-C function : gdk_offscreen_window_get_surface
+C function
+
+gdk_offscreen_window_get_surface
 */
 func OffscreenWindowGetSurface(window *Window) *cairo.Surface {
 	c_window := (*C.GdkWindow)(C.NULL)
@@ -716,7 +784,9 @@ func OffscreenWindowGetSurface(window *Window) *cairo.Surface {
 // changes to the screen’s font rendering settings.
 /*
 
-C function : gdk_pango_context_get
+C function
+
+gdk_pango_context_get
 */
 func PangoContextGet() *pango.Context {
 	retC := C.gdk_pango_context_get()
@@ -736,7 +806,9 @@ func PangoContextGet() *pango.Context {
 // of text, such as when text is selected.
 /*
 
-C function : gdk_pango_layout_get_clip_region
+C function
+
+gdk_pango_layout_get_clip_region
 */
 func PangoLayoutGetClipRegion(layout *pango.Layout, xOrigin int32, yOrigin int32, indexRanges int32, nRanges int32) *cairo.Region {
 	c_layout := (*C.PangoLayout)(C.NULL)
@@ -774,7 +846,9 @@ func PangoLayoutGetClipRegion(layout *pango.Layout, xOrigin int32, yOrigin int32
 // of text, such as when text is selected.
 /*
 
-C function : gdk_pango_layout_line_get_clip_region
+C function
+
+gdk_pango_layout_line_get_clip_region
 */
 func PangoLayoutLineGetClipRegion(line *pango.LayoutLine, xOrigin int32, yOrigin int32, indexRanges []int32, nRanges int32) *cairo.Region {
 	c_line := (*C.PangoLayoutLine)(C.NULL)
@@ -805,7 +879,9 @@ func PangoLayoutLineGetClipRegion(line *pango.LayoutLine, xOrigin int32, yOrigin
 // The pixbuf will contain an alpha channel if the @surface contains one.
 /*
 
-C function : gdk_pixbuf_get_from_surface
+C function
+
+gdk_pixbuf_get_from_surface
 */
 func PixbufGetFromSurface(surface *cairo.Surface, srcX int32, srcY int32, width int32, height int32) *gdkpixbuf.Pixbuf {
 	c_surface := (*C.cairo_surface_t)(C.NULL)
@@ -860,7 +936,9 @@ func PixbufGetFromSurface(surface *cairo.Surface, srcX int32, srcY int32, width 
 // it returns %NULL; so check the return value.)
 /*
 
-C function : gdk_pixbuf_get_from_window
+C function
+
+gdk_pixbuf_get_from_window
 */
 func PixbufGetFromWindow(window *Window, srcX int32, srcY int32, width int32, height int32) *gdkpixbuf.Pixbuf {
 	c_window := (*C.GdkWindow)(C.NULL)
@@ -910,7 +988,9 @@ func PixbufGetFromWindow(window *Window, srcX int32, srcY int32, width int32, he
 // are emitted when the grab ends unvoluntarily.
 /*
 
-C function : gdk_pointer_grab
+C function
+
+gdk_pointer_grab
 */
 func PointerGrab(window *Window, ownerEvents bool, eventMask EventMask, confineTo *Window, cursor *Cursor, time uint32) GrabStatus {
 	c_window := (*C.GdkWindow)(C.NULL)
@@ -948,7 +1028,9 @@ func PointerGrab(window *Window, ownerEvents bool, eventMask EventMask, confineT
 // presses into account.
 /*
 
-C function : gdk_pointer_is_grabbed
+C function
+
+gdk_pointer_is_grabbed
 */
 func PointerIsGrabbed() bool {
 	retC := C.gdk_pointer_is_grabbed()
@@ -961,7 +1043,9 @@ func PointerIsGrabbed() bool {
 // application.
 /*
 
-C function : gdk_pointer_ungrab
+C function
+
+gdk_pointer_ungrab
 */
 func PointerUngrab(time uint32) {
 	c_time_ := (C.guint32)(time)
@@ -975,7 +1059,9 @@ func PointerUngrab(time uint32) {
 // public API and should not be used in application code.
 /*
 
-C function : gdk_pre_parse_libgtk_only
+C function
+
+gdk_pre_parse_libgtk_only
 */
 func PreParseLibgtkOnly() {
 	C.gdk_pre_parse_libgtk_only()
@@ -1010,7 +1096,9 @@ func PreParseLibgtkOnly() {
 // global user-configured setting.
 /*
 
-C function : gdk_set_double_click_time
+C function
+
+gdk_set_double_click_time
 */
 func SetDoubleClickTime(msec uint32) {
 	c_msec := (C.guint)(msec)
@@ -1028,7 +1116,9 @@ func SetDoubleClickTime(msec uint32) {
 // line option.
 /*
 
-C function : gdk_set_program_class
+C function
+
+gdk_set_program_class
 */
 func SetProgramClass(programClass string) {
 	c_program_class := C.CString(programClass)
@@ -1045,7 +1135,9 @@ func SetProgramClass(programClass string) {
 // to use this option.
 /*
 
-C function : gdk_set_show_events
+C function
+
+gdk_set_show_events
 */
 func SetShowEvents(showEvents bool) {
 	c_show_events :=
@@ -1060,7 +1152,9 @@ func SetShowEvents(showEvents bool) {
 // for the default screen. See gdk_screen_get_setting().
 /*
 
-C function : gdk_setting_get
+C function
+
+gdk_setting_get
 */
 func SettingGet(name string, value *gobject.Value) bool {
 	c_name := C.CString(name)
@@ -1085,7 +1179,9 @@ func SettingGet(name string, value *gobject.Value) bool {
 // section.
 /*
 
-C function : gdk_threads_enter
+C function
+
+gdk_threads_enter
 */
 func ThreadsEnter() {
 	C.gdk_threads_enter()
@@ -1100,7 +1196,9 @@ func ThreadsEnter() {
 // GTK+; to be safe, call it before gtk_init().
 /*
 
-C function : gdk_threads_init
+C function
+
+gdk_threads_init
 */
 func ThreadsInit() {
 	C.gdk_threads_init()
@@ -1111,7 +1209,9 @@ func ThreadsInit() {
 // Leaves a critical region begun with gdk_threads_enter().
 /*
 
-C function : gdk_threads_leave
+C function
+
+gdk_threads_leave
 */
 func ThreadsLeave() {
 	C.gdk_threads_leave()
@@ -1122,7 +1222,9 @@ func ThreadsLeave() {
 // Convert from a ISO10646 character to a key symbol.
 /*
 
-C function : gdk_unicode_to_keyval
+C function
+
+gdk_unicode_to_keyval
 */
 func UnicodeToKeyval(wc uint32) uint32 {
 	c_wc := (C.guint32)(wc)
@@ -1139,7 +1241,9 @@ func UnicodeToKeyval(wc uint32) uint32 {
 // \x{ABCD}, or it may be in some other form of approximation.
 /*
 
-C function : gdk_utf8_to_string_target
+C function
+
+gdk_utf8_to_string_target
 */
 func Utf8ToStringTarget(str string) string {
 	c_str := C.CString(str)

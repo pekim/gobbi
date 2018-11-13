@@ -371,7 +371,9 @@ func assistant_prepareHandler(_ *C.GObject, c_page *C.GtkWidget, data C.gpointer
 // Creates a new #GtkAssistant.
 /*
 
-C function : gtk_assistant_new
+C function
+
+gtk_assistant_new
 */
 func AssistantNew() *Assistant {
 	retC := C.gtk_assistant_new()
@@ -383,7 +385,9 @@ func AssistantNew() *Assistant {
 // Adds a widget to the action area of a #GtkAssistant.
 /*
 
-C function : gtk_assistant_add_action_widget
+C function
+
+gtk_assistant_add_action_widget
 */
 func (recv *Assistant) AddActionWidget(child *Widget) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -399,7 +403,9 @@ func (recv *Assistant) AddActionWidget(child *Widget) {
 // Appends a page to the @assistant.
 /*
 
-C function : gtk_assistant_append_page
+C function
+
+gtk_assistant_append_page
 */
 func (recv *Assistant) AppendPage(page *Widget) int32 {
 	c_page := (*C.GtkWidget)(C.NULL)
@@ -416,7 +422,9 @@ func (recv *Assistant) AppendPage(page *Widget) int32 {
 // Returns the page number of the current page.
 /*
 
-C function : gtk_assistant_get_current_page
+C function
+
+gtk_assistant_get_current_page
 */
 func (recv *Assistant) GetCurrentPage() int32 {
 	retC := C.gtk_assistant_get_current_page((*C.GtkAssistant)(recv.native))
@@ -428,7 +436,9 @@ func (recv *Assistant) GetCurrentPage() int32 {
 // Returns the number of pages in the @assistant
 /*
 
-C function : gtk_assistant_get_n_pages
+C function
+
+gtk_assistant_get_n_pages
 */
 func (recv *Assistant) GetNPages() int32 {
 	retC := C.gtk_assistant_get_n_pages((*C.GtkAssistant)(recv.native))
@@ -440,7 +450,9 @@ func (recv *Assistant) GetNPages() int32 {
 // Returns the child widget contained in page number @page_num.
 /*
 
-C function : gtk_assistant_get_nth_page
+C function
+
+gtk_assistant_get_nth_page
 */
 func (recv *Assistant) GetNthPage(pageNum int32) *Widget {
 	c_page_num := (C.gint)(pageNum)
@@ -459,7 +471,9 @@ func (recv *Assistant) GetNthPage(pageNum int32) *Widget {
 // Gets whether @page is complete.
 /*
 
-C function : gtk_assistant_get_page_complete
+C function
+
+gtk_assistant_get_page_complete
 */
 func (recv *Assistant) GetPageComplete(page *Widget) bool {
 	c_page := (*C.GtkWidget)(C.NULL)
@@ -476,7 +490,9 @@ func (recv *Assistant) GetPageComplete(page *Widget) bool {
 // Gets the header image for @page.
 /*
 
-C function : gtk_assistant_get_page_header_image
+C function
+
+gtk_assistant_get_page_header_image
 */
 func (recv *Assistant) GetPageHeaderImage(page *Widget) *gdkpixbuf.Pixbuf {
 	c_page := (*C.GtkWidget)(C.NULL)
@@ -493,7 +509,9 @@ func (recv *Assistant) GetPageHeaderImage(page *Widget) *gdkpixbuf.Pixbuf {
 // Gets the side image for @page.
 /*
 
-C function : gtk_assistant_get_page_side_image
+C function
+
+gtk_assistant_get_page_side_image
 */
 func (recv *Assistant) GetPageSideImage(page *Widget) *gdkpixbuf.Pixbuf {
 	c_page := (*C.GtkWidget)(C.NULL)
@@ -510,7 +528,9 @@ func (recv *Assistant) GetPageSideImage(page *Widget) *gdkpixbuf.Pixbuf {
 // Gets the title for @page.
 /*
 
-C function : gtk_assistant_get_page_title
+C function
+
+gtk_assistant_get_page_title
 */
 func (recv *Assistant) GetPageTitle(page *Widget) string {
 	c_page := (*C.GtkWidget)(C.NULL)
@@ -527,7 +547,9 @@ func (recv *Assistant) GetPageTitle(page *Widget) string {
 // Gets the page type of @page.
 /*
 
-C function : gtk_assistant_get_page_type
+C function
+
+gtk_assistant_get_page_type
 */
 func (recv *Assistant) GetPageType(page *Widget) AssistantPageType {
 	c_page := (*C.GtkWidget)(C.NULL)
@@ -544,7 +566,9 @@ func (recv *Assistant) GetPageType(page *Widget) AssistantPageType {
 // Inserts a page in the @assistant at a given position.
 /*
 
-C function : gtk_assistant_insert_page
+C function
+
+gtk_assistant_insert_page
 */
 func (recv *Assistant) InsertPage(page *Widget, position int32) int32 {
 	c_page := (*C.GtkWidget)(C.NULL)
@@ -563,7 +587,9 @@ func (recv *Assistant) InsertPage(page *Widget, position int32) int32 {
 // Prepends a page to the @assistant.
 /*
 
-C function : gtk_assistant_prepend_page
+C function
+
+gtk_assistant_prepend_page
 */
 func (recv *Assistant) PrependPage(page *Widget) int32 {
 	c_page := (*C.GtkWidget)(C.NULL)
@@ -580,7 +606,9 @@ func (recv *Assistant) PrependPage(page *Widget) int32 {
 // Removes a widget from the action area of a #GtkAssistant.
 /*
 
-C function : gtk_assistant_remove_action_widget
+C function
+
+gtk_assistant_remove_action_widget
 */
 func (recv *Assistant) RemoveActionWidget(child *Widget) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -600,7 +628,9 @@ func (recv *Assistant) RemoveActionWidget(child *Widget) {
 // gtk_assistant_set_forward_page_func().
 /*
 
-C function : gtk_assistant_set_current_page
+C function
+
+gtk_assistant_set_current_page
 */
 func (recv *Assistant) SetCurrentPage(pageNum int32) {
 	c_page_num := (C.gint)(pageNum)
@@ -618,7 +648,9 @@ func (recv *Assistant) SetCurrentPage(pageNum int32) {
 // to be able to continue the task.
 /*
 
-C function : gtk_assistant_set_page_complete
+C function
+
+gtk_assistant_set_page_complete
 */
 func (recv *Assistant) SetPageComplete(page *Widget, complete bool) {
 	c_page := (*C.GtkWidget)(C.NULL)
@@ -637,7 +669,9 @@ func (recv *Assistant) SetPageComplete(page *Widget, complete bool) {
 // Sets a header image for @page.
 /*
 
-C function : gtk_assistant_set_page_header_image
+C function
+
+gtk_assistant_set_page_header_image
 */
 func (recv *Assistant) SetPageHeaderImage(page *Widget, pixbuf *gdkpixbuf.Pixbuf) {
 	c_page := (*C.GtkWidget)(C.NULL)
@@ -661,7 +695,9 @@ func (recv *Assistant) SetPageHeaderImage(page *Widget, pixbuf *gdkpixbuf.Pixbuf
 // when @page is the current page.
 /*
 
-C function : gtk_assistant_set_page_side_image
+C function
+
+gtk_assistant_set_page_side_image
 */
 func (recv *Assistant) SetPageSideImage(page *Widget, pixbuf *gdkpixbuf.Pixbuf) {
 	c_page := (*C.GtkWidget)(C.NULL)
@@ -685,7 +721,9 @@ func (recv *Assistant) SetPageSideImage(page *Widget, pixbuf *gdkpixbuf.Pixbuf) 
 // when @page is the current page.
 /*
 
-C function : gtk_assistant_set_page_title
+C function
+
+gtk_assistant_set_page_title
 */
 func (recv *Assistant) SetPageTitle(page *Widget, title string) {
 	c_page := (*C.GtkWidget)(C.NULL)
@@ -706,7 +744,9 @@ func (recv *Assistant) SetPageTitle(page *Widget, title string) {
 // The page type determines the page behavior in the @assistant.
 /*
 
-C function : gtk_assistant_set_page_type
+C function
+
+gtk_assistant_set_page_type
 */
 func (recv *Assistant) SetPageType(page *Widget, type_ AssistantPageType) {
 	c_page := (*C.GtkWidget)(C.NULL)
@@ -732,7 +772,9 @@ func (recv *Assistant) SetPageType(page *Widget, type_ AssistantPageType) {
 // affects the future page flow of the assistant.
 /*
 
-C function : gtk_assistant_update_buttons_state
+C function
+
+gtk_assistant_update_buttons_state
 */
 func (recv *Assistant) UpdateButtonsState() {
 	C.gtk_assistant_update_buttons_state((*C.GtkAssistant)(recv.native))
@@ -744,7 +786,9 @@ func (recv *Assistant) UpdateButtonsState() {
 // inside the button.
 /*
 
-C function : gtk_button_get_image_position
+C function
+
+gtk_button_get_image_position
 */
 func (recv *Button) GetImagePosition() PositionType {
 	retC := C.gtk_button_get_image_position((*C.GtkButton)(recv.native))
@@ -757,7 +801,9 @@ func (recv *Button) GetImagePosition() PositionType {
 // inside the button.
 /*
 
-C function : gtk_button_set_image_position
+C function
+
+gtk_button_set_image_position
 */
 func (recv *Button) SetImagePosition(position PositionType) {
 	c_position := (C.GtkPositionType)(position)
@@ -774,7 +820,9 @@ func (recv *Button) SetImagePosition(position PositionType) {
 // Creates a new #GtkCellRendererAccel.
 /*
 
-C function : gtk_cell_renderer_accel_new
+C function
+
+gtk_cell_renderer_accel_new
 */
 func CellRendererAccelNew() *CellRendererAccel {
 	retC := C.gtk_cell_renderer_accel_new()
@@ -786,7 +834,9 @@ func CellRendererAccelNew() *CellRendererAccel {
 // Creates a new #GtkCellRendererSpin.
 /*
 
-C function : gtk_cell_renderer_spin_new
+C function
+
+gtk_cell_renderer_spin_new
 */
 func CellRendererSpinNew() *CellRendererSpin {
 	retC := C.gtk_cell_renderer_spin_new()
@@ -810,7 +860,9 @@ func CellRendererSpinNew() *CellRendererSpin {
 // the actual text.
 /*
 
-C function : gtk_clipboard_wait_is_rich_text_available
+C function
+
+gtk_clipboard_wait_is_rich_text_available
 */
 func (recv *Clipboard) WaitIsRichTextAvailable(buffer *TextBuffer) bool {
 	c_buffer := (*C.GtkTextBuffer)(C.NULL)
@@ -828,7 +880,9 @@ func (recv *Clipboard) WaitIsRichTextAvailable(buffer *TextBuffer) bool {
 // gtk_combo_box_set_add_tearoffs().
 /*
 
-C function : gtk_combo_box_get_title
+C function
+
+gtk_combo_box_get_title
 */
 func (recv *ComboBox) GetTitle() string {
 	retC := C.gtk_combo_box_get_title((*C.GtkComboBox)(recv.native))
@@ -840,7 +894,9 @@ func (recv *ComboBox) GetTitle() string {
 // Sets the menu’s title in tearoff mode.
 /*
 
-C function : gtk_combo_box_set_title
+C function
+
+gtk_combo_box_set_title
 */
 func (recv *ComboBox) SetTitle(title string) {
 	c_title := C.CString(title)
@@ -855,7 +911,9 @@ func (recv *ComboBox) SetTitle(title string) {
 // gtk_entry_set_inner_border() for more information.
 /*
 
-C function : gtk_entry_get_inner_border
+C function
+
+gtk_entry_get_inner_border
 */
 func (recv *Entry) GetInnerBorder() *Border {
 	retC := C.gtk_entry_get_inner_border((*C.GtkEntry)(recv.native))
@@ -879,7 +937,9 @@ func (recv *Entry) GetInnerBorder() *Border {
 // pixel-exact positioning of the entry is important.
 /*
 
-C function : gtk_entry_set_inner_border
+C function
+
+gtk_entry_set_inner_border
 */
 func (recv *Entry) SetInnerBorder(border *Border) {
 	c_border := (*C.GtkBorder)(C.NULL)
@@ -896,7 +956,9 @@ func (recv *Entry) SetInnerBorder(border *Border) {
 // See gtk_file_chooser_button_set_focus_on_click().
 /*
 
-C function : gtk_file_chooser_button_get_focus_on_click
+C function
+
+gtk_file_chooser_button_get_focus_on_click
 */
 func (recv *FileChooserButton) GetFocusOnClick() bool {
 	retC := C.gtk_file_chooser_button_get_focus_on_click((*C.GtkFileChooserButton)(recv.native))
@@ -911,7 +973,9 @@ func (recv *FileChooserButton) GetFocusOnClick() bool {
 // application.
 /*
 
-C function : gtk_file_chooser_button_set_focus_on_click
+C function
+
+gtk_file_chooser_button_set_focus_on_click
 */
 func (recv *FileChooserButton) SetFocusOnClick(focusOnClick bool) {
 	c_focus_on_click :=
@@ -925,7 +989,9 @@ func (recv *FileChooserButton) SetFocusOnClick(focusOnClick bool) {
 // Returns line wrap mode used by the label. See gtk_label_set_line_wrap_mode().
 /*
 
-C function : gtk_label_get_line_wrap_mode
+C function
+
+gtk_label_get_line_wrap_mode
 */
 func (recv *Label) GetLineWrapMode() pango.WrapMode {
 	retC := C.gtk_label_get_line_wrap_mode((*C.GtkLabel)(recv.native))
@@ -939,7 +1005,9 @@ func (recv *Label) GetLineWrapMode() pango.WrapMode {
 // wrap on word boundaries.
 /*
 
-C function : gtk_label_set_line_wrap_mode
+C function
+
+gtk_label_set_line_wrap_mode
 */
 func (recv *Label) SetLineWrapMode(wrapMode pango.WrapMode) {
 	c_wrap_mode := (C.PangoWrapMode)(wrapMode)
@@ -952,7 +1020,9 @@ func (recv *Label) SetLineWrapMode(wrapMode pango.WrapMode) {
 // Creates a new #GtkLinkButton with the URI as its text.
 /*
 
-C function : gtk_link_button_new
+C function
+
+gtk_link_button_new
 */
 func LinkButtonNew(uri string) *LinkButton {
 	c_uri := C.CString(uri)
@@ -967,7 +1037,9 @@ func LinkButtonNew(uri string) *LinkButton {
 // Creates a new #GtkLinkButton containing a label.
 /*
 
-C function : gtk_link_button_new_with_label
+C function
+
+gtk_link_button_new_with_label
 */
 func LinkButtonNewWithLabel(uri string, label string) *LinkButton {
 	c_uri := C.CString(uri)
@@ -985,7 +1057,9 @@ func LinkButtonNewWithLabel(uri string, label string) *LinkButton {
 // Retrieves the URI set using gtk_link_button_set_uri().
 /*
 
-C function : gtk_link_button_get_uri
+C function
+
+gtk_link_button_get_uri
 */
 func (recv *LinkButton) GetUri() string {
 	retC := C.gtk_link_button_get_uri((*C.GtkLinkButton)(recv.native))
@@ -998,7 +1072,9 @@ func (recv *LinkButton) GetUri() string {
 // this unsets the “visited” state of the button.
 /*
 
-C function : gtk_link_button_set_uri
+C function
+
+gtk_link_button_set_uri
 */
 func (recv *LinkButton) SetUri(uri string) {
 	c_uri := C.CString(uri)
@@ -1012,7 +1088,9 @@ func (recv *LinkButton) SetUri(uri string) {
 // Sets the dialog’s image to @image.
 /*
 
-C function : gtk_message_dialog_set_image
+C function
+
+gtk_message_dialog_set_image
 */
 func (recv *MessageDialog) SetImage(image *Widget) {
 	c_image := (*C.GtkWidget)(C.NULL)
@@ -1034,7 +1112,9 @@ func (recv *MessageDialog) SetImage(image *Widget) {
 // Returns whether the tab contents can be detached from @notebook.
 /*
 
-C function : gtk_notebook_get_tab_detachable
+C function
+
+gtk_notebook_get_tab_detachable
 */
 func (recv *Notebook) GetTabDetachable(child *Widget) bool {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -1051,7 +1131,9 @@ func (recv *Notebook) GetTabDetachable(child *Widget) bool {
 // Gets whether the tab can be reordered via drag and drop or not.
 /*
 
-C function : gtk_notebook_get_tab_reorderable
+C function
+
+gtk_notebook_get_tab_reorderable
 */
 func (recv *Notebook) GetTabReorderable(child *Widget) bool {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -1112,7 +1194,9 @@ func (recv *Notebook) GetTabReorderable(child *Widget) bool {
 // you will have to set your own DnD code to do it.
 /*
 
-C function : gtk_notebook_set_tab_detachable
+C function
+
+gtk_notebook_set_tab_detachable
 */
 func (recv *Notebook) SetTabDetachable(child *Widget, detachable bool) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -1132,7 +1216,9 @@ func (recv *Notebook) SetTabDetachable(child *Widget, detachable bool) {
 // via drag and drop or not.
 /*
 
-C function : gtk_notebook_set_tab_reorderable
+C function
+
+gtk_notebook_set_tab_reorderable
 */
 func (recv *Notebook) SetTabReorderable(child *Widget, reorderable bool) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -1151,7 +1237,9 @@ func (recv *Notebook) SetTabReorderable(child *Widget, reorderable bool) {
 // Creates a new #GtkPageSetup.
 /*
 
-C function : gtk_page_setup_new
+C function
+
+gtk_page_setup_new
 */
 func PageSetupNew() *PageSetup {
 	retC := C.gtk_page_setup_new()
@@ -1163,7 +1251,9 @@ func PageSetupNew() *PageSetup {
 // Copies a #GtkPageSetup.
 /*
 
-C function : gtk_page_setup_copy
+C function
+
+gtk_page_setup_copy
 */
 func (recv *PageSetup) Copy() *PageSetup {
 	retC := C.gtk_page_setup_copy((*C.GtkPageSetup)(recv.native))
@@ -1175,7 +1265,9 @@ func (recv *PageSetup) Copy() *PageSetup {
 // Gets the bottom margin in units of @unit.
 /*
 
-C function : gtk_page_setup_get_bottom_margin
+C function
+
+gtk_page_setup_get_bottom_margin
 */
 func (recv *PageSetup) GetBottomMargin(unit Unit) float64 {
 	c_unit := (C.GtkUnit)(unit)
@@ -1189,7 +1281,9 @@ func (recv *PageSetup) GetBottomMargin(unit Unit) float64 {
 // Gets the left margin in units of @unit.
 /*
 
-C function : gtk_page_setup_get_left_margin
+C function
+
+gtk_page_setup_get_left_margin
 */
 func (recv *PageSetup) GetLeftMargin(unit Unit) float64 {
 	c_unit := (C.GtkUnit)(unit)
@@ -1203,7 +1297,9 @@ func (recv *PageSetup) GetLeftMargin(unit Unit) float64 {
 // Gets the page orientation of the #GtkPageSetup.
 /*
 
-C function : gtk_page_setup_get_orientation
+C function
+
+gtk_page_setup_get_orientation
 */
 func (recv *PageSetup) GetOrientation() PageOrientation {
 	retC := C.gtk_page_setup_get_orientation((*C.GtkPageSetup)(recv.native))
@@ -1219,7 +1315,9 @@ func (recv *PageSetup) GetOrientation() PageOrientation {
 // See gtk_page_setup_get_paper_height().
 /*
 
-C function : gtk_page_setup_get_page_height
+C function
+
+gtk_page_setup_get_page_height
 */
 func (recv *PageSetup) GetPageHeight(unit Unit) float64 {
 	c_unit := (C.GtkUnit)(unit)
@@ -1237,7 +1335,9 @@ func (recv *PageSetup) GetPageHeight(unit Unit) float64 {
 // See gtk_page_setup_get_paper_width().
 /*
 
-C function : gtk_page_setup_get_page_width
+C function
+
+gtk_page_setup_get_page_width
 */
 func (recv *PageSetup) GetPageWidth(unit Unit) float64 {
 	c_unit := (C.GtkUnit)(unit)
@@ -1255,7 +1355,9 @@ func (recv *PageSetup) GetPageWidth(unit Unit) float64 {
 // See gtk_page_setup_get_page_height().
 /*
 
-C function : gtk_page_setup_get_paper_height
+C function
+
+gtk_page_setup_get_paper_height
 */
 func (recv *PageSetup) GetPaperHeight(unit Unit) float64 {
 	c_unit := (C.GtkUnit)(unit)
@@ -1269,7 +1371,9 @@ func (recv *PageSetup) GetPaperHeight(unit Unit) float64 {
 // Gets the paper size of the #GtkPageSetup.
 /*
 
-C function : gtk_page_setup_get_paper_size
+C function
+
+gtk_page_setup_get_paper_size
 */
 func (recv *PageSetup) GetPaperSize() *PaperSize {
 	retC := C.gtk_page_setup_get_paper_size((*C.GtkPageSetup)(recv.native))
@@ -1285,7 +1389,9 @@ func (recv *PageSetup) GetPaperSize() *PaperSize {
 // See gtk_page_setup_get_page_width().
 /*
 
-C function : gtk_page_setup_get_paper_width
+C function
+
+gtk_page_setup_get_paper_width
 */
 func (recv *PageSetup) GetPaperWidth(unit Unit) float64 {
 	c_unit := (C.GtkUnit)(unit)
@@ -1299,7 +1405,9 @@ func (recv *PageSetup) GetPaperWidth(unit Unit) float64 {
 // Gets the right margin in units of @unit.
 /*
 
-C function : gtk_page_setup_get_right_margin
+C function
+
+gtk_page_setup_get_right_margin
 */
 func (recv *PageSetup) GetRightMargin(unit Unit) float64 {
 	c_unit := (C.GtkUnit)(unit)
@@ -1313,7 +1421,9 @@ func (recv *PageSetup) GetRightMargin(unit Unit) float64 {
 // Gets the top margin in units of @unit.
 /*
 
-C function : gtk_page_setup_get_top_margin
+C function
+
+gtk_page_setup_get_top_margin
 */
 func (recv *PageSetup) GetTopMargin(unit Unit) float64 {
 	c_unit := (C.GtkUnit)(unit)
@@ -1327,7 +1437,9 @@ func (recv *PageSetup) GetTopMargin(unit Unit) float64 {
 // Sets the bottom margin of the #GtkPageSetup.
 /*
 
-C function : gtk_page_setup_set_bottom_margin
+C function
+
+gtk_page_setup_set_bottom_margin
 */
 func (recv *PageSetup) SetBottomMargin(margin float64, unit Unit) {
 	c_margin := (C.gdouble)(margin)
@@ -1342,7 +1454,9 @@ func (recv *PageSetup) SetBottomMargin(margin float64, unit Unit) {
 // Sets the left margin of the #GtkPageSetup.
 /*
 
-C function : gtk_page_setup_set_left_margin
+C function
+
+gtk_page_setup_set_left_margin
 */
 func (recv *PageSetup) SetLeftMargin(margin float64, unit Unit) {
 	c_margin := (C.gdouble)(margin)
@@ -1357,7 +1471,9 @@ func (recv *PageSetup) SetLeftMargin(margin float64, unit Unit) {
 // Sets the page orientation of the #GtkPageSetup.
 /*
 
-C function : gtk_page_setup_set_orientation
+C function
+
+gtk_page_setup_set_orientation
 */
 func (recv *PageSetup) SetOrientation(orientation PageOrientation) {
 	c_orientation := (C.GtkPageOrientation)(orientation)
@@ -1372,7 +1488,9 @@ func (recv *PageSetup) SetOrientation(orientation PageOrientation) {
 // gtk_page_setup_set_paper_size_and_default_margins().
 /*
 
-C function : gtk_page_setup_set_paper_size
+C function
+
+gtk_page_setup_set_paper_size
 */
 func (recv *PageSetup) SetPaperSize(size *PaperSize) {
 	c_size := (*C.GtkPaperSize)(C.NULL)
@@ -1389,7 +1507,9 @@ func (recv *PageSetup) SetPaperSize(size *PaperSize) {
 // the margins according to the new paper size.
 /*
 
-C function : gtk_page_setup_set_paper_size_and_default_margins
+C function
+
+gtk_page_setup_set_paper_size_and_default_margins
 */
 func (recv *PageSetup) SetPaperSizeAndDefaultMargins(size *PaperSize) {
 	c_size := (*C.GtkPaperSize)(C.NULL)
@@ -1405,7 +1525,9 @@ func (recv *PageSetup) SetPaperSizeAndDefaultMargins(size *PaperSize) {
 // Sets the right margin of the #GtkPageSetup.
 /*
 
-C function : gtk_page_setup_set_right_margin
+C function
+
+gtk_page_setup_set_right_margin
 */
 func (recv *PageSetup) SetRightMargin(margin float64, unit Unit) {
 	c_margin := (C.gdouble)(margin)
@@ -1420,7 +1542,9 @@ func (recv *PageSetup) SetRightMargin(margin float64, unit Unit) {
 // Sets the top margin of the #GtkPageSetup.
 /*
 
-C function : gtk_page_setup_set_top_margin
+C function
+
+gtk_page_setup_set_top_margin
 */
 func (recv *PageSetup) SetTopMargin(margin float64, unit Unit) {
 	c_margin := (C.gdouble)(margin)
@@ -1436,7 +1560,9 @@ func (recv *PageSetup) SetTopMargin(margin float64, unit Unit) {
 // #GtkPrintContext.
 /*
 
-C function : gtk_print_context_create_pango_context
+C function
+
+gtk_print_context_create_pango_context
 */
 func (recv *PrintContext) CreatePangoContext() *pango.Context {
 	retC := C.gtk_print_context_create_pango_context((*C.GtkPrintContext)(recv.native))
@@ -1449,7 +1575,9 @@ func (recv *PrintContext) CreatePangoContext() *pango.Context {
 // with the #GtkPrintContext.
 /*
 
-C function : gtk_print_context_create_pango_layout
+C function
+
+gtk_print_context_create_pango_layout
 */
 func (recv *PrintContext) CreatePangoLayout() *pango.Layout {
 	retC := C.gtk_print_context_create_pango_layout((*C.GtkPrintContext)(recv.native))
@@ -1462,7 +1590,9 @@ func (recv *PrintContext) CreatePangoLayout() *pango.Layout {
 // #GtkPrintContext.
 /*
 
-C function : gtk_print_context_get_cairo_context
+C function
+
+gtk_print_context_get_cairo_context
 */
 func (recv *PrintContext) GetCairoContext() *cairo.Context {
 	retC := C.gtk_print_context_get_cairo_context((*C.GtkPrintContext)(recv.native))
@@ -1475,7 +1605,9 @@ func (recv *PrintContext) GetCairoContext() *cairo.Context {
 // in dots per inch.
 /*
 
-C function : gtk_print_context_get_dpi_x
+C function
+
+gtk_print_context_get_dpi_x
 */
 func (recv *PrintContext) GetDpiX() float64 {
 	retC := C.gtk_print_context_get_dpi_x((*C.GtkPrintContext)(recv.native))
@@ -1488,7 +1620,9 @@ func (recv *PrintContext) GetDpiX() float64 {
 // in dots per inch.
 /*
 
-C function : gtk_print_context_get_dpi_y
+C function
+
+gtk_print_context_get_dpi_y
 */
 func (recv *PrintContext) GetDpiY() float64 {
 	retC := C.gtk_print_context_get_dpi_y((*C.GtkPrintContext)(recv.native))
@@ -1500,7 +1634,9 @@ func (recv *PrintContext) GetDpiY() float64 {
 // Obtains the height of the #GtkPrintContext, in pixels.
 /*
 
-C function : gtk_print_context_get_height
+C function
+
+gtk_print_context_get_height
 */
 func (recv *PrintContext) GetHeight() float64 {
 	retC := C.gtk_print_context_get_height((*C.GtkPrintContext)(recv.native))
@@ -1513,7 +1649,9 @@ func (recv *PrintContext) GetHeight() float64 {
 // dimensions of the #GtkPrintContext.
 /*
 
-C function : gtk_print_context_get_page_setup
+C function
+
+gtk_print_context_get_page_setup
 */
 func (recv *PrintContext) GetPageSetup() *PageSetup {
 	retC := C.gtk_print_context_get_page_setup((*C.GtkPrintContext)(recv.native))
@@ -1526,7 +1664,9 @@ func (recv *PrintContext) GetPageSetup() *PageSetup {
 // with the #GtkPrintContext.
 /*
 
-C function : gtk_print_context_get_pango_fontmap
+C function
+
+gtk_print_context_get_pango_fontmap
 */
 func (recv *PrintContext) GetPangoFontmap() *pango.FontMap {
 	retC := C.gtk_print_context_get_pango_fontmap((*C.GtkPrintContext)(recv.native))
@@ -1538,7 +1678,9 @@ func (recv *PrintContext) GetPangoFontmap() *pango.FontMap {
 // Obtains the width of the #GtkPrintContext, in pixels.
 /*
 
-C function : gtk_print_context_get_width
+C function
+
+gtk_print_context_get_width
 */
 func (recv *PrintContext) GetWidth() float64 {
 	retC := C.gtk_print_context_get_width((*C.GtkPrintContext)(recv.native))
@@ -1555,7 +1697,9 @@ func (recv *PrintContext) GetWidth() float64 {
 // case.
 /*
 
-C function : gtk_print_context_set_cairo_context
+C function
+
+gtk_print_context_set_cairo_context
 */
 func (recv *PrintContext) SetCairoContext(cr *cairo.Context, dpiX float64, dpiY float64) {
 	c_cr := (*C.cairo_t)(C.NULL)
@@ -2003,7 +2147,9 @@ func printoperation_statusChangedHandler(_ *C.GObject, data C.gpointer) {
 // Creates a new #GtkPrintOperation.
 /*
 
-C function : gtk_print_operation_new
+C function
+
+gtk_print_operation_new
 */
 func PrintOperationNew() *PrintOperation {
 	retC := C.gtk_print_operation_new()
@@ -2019,7 +2165,9 @@ func PrintOperationNew() *PrintOperation {
 // operation.
 /*
 
-C function : gtk_print_operation_cancel
+C function
+
+gtk_print_operation_cancel
 */
 func (recv *PrintOperation) Cancel() {
 	C.gtk_print_operation_cancel((*C.GtkPrintOperation)(recv.native))
@@ -2031,7 +2179,9 @@ func (recv *PrintOperation) Cancel() {
 // gtk_print_operation_set_default_page_setup().
 /*
 
-C function : gtk_print_operation_get_default_page_setup
+C function
+
+gtk_print_operation_get_default_page_setup
 */
 func (recv *PrintOperation) GetDefaultPageSetup() *PageSetup {
 	retC := C.gtk_print_operation_get_default_page_setup((*C.GtkPrintOperation)(recv.native))
@@ -2046,7 +2196,9 @@ func (recv *PrintOperation) GetDefaultPageSetup() *PageSetup {
 // handler. The returned #GError will contain more details on what went wrong.
 /*
 
-C function : gtk_print_operation_get_error
+C function
+
+gtk_print_operation_get_error
 */
 func (recv *PrintOperation) GetError() error {
 	var cThrowableError *C.GError
@@ -2068,7 +2220,9 @@ func (recv *PrintOperation) GetError() error {
 // gtk_print_operation_run() have been called.
 /*
 
-C function : gtk_print_operation_get_print_settings
+C function
+
+gtk_print_operation_get_print_settings
 */
 func (recv *PrintOperation) GetPrintSettings() *PrintSettings {
 	retC := C.gtk_print_operation_get_print_settings((*C.GtkPrintOperation)(recv.native))
@@ -2081,7 +2235,9 @@ func (recv *PrintOperation) GetPrintSettings() *PrintSettings {
 // Also see gtk_print_operation_get_status_string().
 /*
 
-C function : gtk_print_operation_get_status
+C function
+
+gtk_print_operation_get_status
 */
 func (recv *PrintOperation) GetStatus() PrintStatus {
 	retC := C.gtk_print_operation_get_status((*C.GtkPrintOperation)(recv.native))
@@ -2098,7 +2254,9 @@ func (recv *PrintOperation) GetStatus() PrintStatus {
 // value that is suitable for programmatic use.
 /*
 
-C function : gtk_print_operation_get_status_string
+C function
+
+gtk_print_operation_get_status_string
 */
 func (recv *PrintOperation) GetStatusString() string {
 	retC := C.gtk_print_operation_get_status_string((*C.GtkPrintOperation)(recv.native))
@@ -2116,7 +2274,9 @@ func (recv *PrintOperation) GetStatusString() string {
 // the operation status then tracks the print job status on the printer.
 /*
 
-C function : gtk_print_operation_is_finished
+C function
+
+gtk_print_operation_is_finished
 */
 func (recv *PrintOperation) IsFinished() bool {
 	retC := C.gtk_print_operation_is_finished((*C.GtkPrintOperation)(recv.native))
@@ -2182,7 +2342,9 @@ func (recv *PrintOperation) IsFinished() bool {
 // given #GtkPrintOperation.
 /*
 
-C function : gtk_print_operation_run
+C function
+
+gtk_print_operation_run
 */
 func (recv *PrintOperation) Run(action PrintOperationAction, parent *Window) (PrintOperationResult, error) {
 	c_action := (C.GtkPrintOperationAction)(action)
@@ -2210,7 +2372,9 @@ func (recv *PrintOperation) Run(action PrintOperationAction, parent *Window) (Pr
 // some platforms may not allow asynchronous operation.
 /*
 
-C function : gtk_print_operation_set_allow_async
+C function
+
+gtk_print_operation_set_allow_async
 */
 func (recv *PrintOperation) SetAllowAsync(allowAsync bool) {
 	c_allow_async :=
@@ -2229,7 +2393,9 @@ func (recv *PrintOperation) SetAllowAsync(allowAsync bool) {
 // Note that this only makes sense for pre-paginated documents.
 /*
 
-C function : gtk_print_operation_set_current_page
+C function
+
+gtk_print_operation_set_current_page
 */
 func (recv *PrintOperation) SetCurrentPage(currentPage int32) {
 	c_current_page := (C.gint)(currentPage)
@@ -2242,7 +2408,9 @@ func (recv *PrintOperation) SetCurrentPage(currentPage int32) {
 // Sets the label for the tab holding custom widgets.
 /*
 
-C function : gtk_print_operation_set_custom_tab_label
+C function
+
+gtk_print_operation_set_custom_tab_label
 */
 func (recv *PrintOperation) SetCustomTabLabel(label string) {
 	c_label := C.CString(label)
@@ -2260,7 +2428,9 @@ func (recv *PrintOperation) SetCustomTabLabel(label string) {
 // to the #GtkPrintOperation::request-page-setup signal.
 /*
 
-C function : gtk_print_operation_set_default_page_setup
+C function
+
+gtk_print_operation_set_default_page_setup
 */
 func (recv *PrintOperation) SetDefaultPageSetup(defaultPageSetup *PageSetup) {
 	c_default_page_setup := (*C.GtkPageSetup)(C.NULL)
@@ -2283,7 +2453,9 @@ func (recv *PrintOperation) SetDefaultPageSetup(defaultPageSetup *PageSetup) {
 // of printers in the print dialog.
 /*
 
-C function : gtk_print_operation_set_export_filename
+C function
+
+gtk_print_operation_set_export_filename
 */
 func (recv *PrintOperation) SetExportFilename(filename string) {
 	c_filename := C.CString(filename)
@@ -2301,7 +2473,9 @@ func (recv *PrintOperation) SetExportFilename(filename string) {
 // numbering successive print jobs.
 /*
 
-C function : gtk_print_operation_set_job_name
+C function
+
+gtk_print_operation_set_job_name
 */
 func (recv *PrintOperation) SetJobName(jobName string) {
 	c_job_name := C.CString(jobName)
@@ -2325,7 +2499,9 @@ func (recv *PrintOperation) SetJobName(jobName string) {
 // will be for page @n_pages - 1.
 /*
 
-C function : gtk_print_operation_set_n_pages
+C function
+
+gtk_print_operation_set_n_pages
 */
 func (recv *PrintOperation) SetNPages(nPages int32) {
 	c_n_pages := (C.gint)(nPages)
@@ -2340,7 +2516,9 @@ func (recv *PrintOperation) SetNPages(nPages int32) {
 // see gtk_print_operation_run().
 /*
 
-C function : gtk_print_operation_set_print_settings
+C function
+
+gtk_print_operation_set_print_settings
 */
 func (recv *PrintOperation) SetPrintSettings(printSettings *PrintSettings) {
 	c_print_settings := (*C.GtkPrintSettings)(C.NULL)
@@ -2357,7 +2535,9 @@ func (recv *PrintOperation) SetPrintSettings(printSettings *PrintSettings) {
 // progress dialog during the print operation.
 /*
 
-C function : gtk_print_operation_set_show_progress
+C function
+
+gtk_print_operation_set_show_progress
 */
 func (recv *PrintOperation) SetShowProgress(showProgress bool) {
 	c_show_progress :=
@@ -2377,7 +2557,9 @@ func (recv *PrintOperation) SetShowProgress(showProgress bool) {
 // not be enabled unless needed.
 /*
 
-C function : gtk_print_operation_set_track_print_status
+C function
+
+gtk_print_operation_set_track_print_status
 */
 func (recv *PrintOperation) SetTrackPrintStatus(trackStatus bool) {
 	c_track_status :=
@@ -2393,7 +2575,9 @@ func (recv *PrintOperation) SetTrackPrintStatus(trackStatus bool) {
 // units of @unit.
 /*
 
-C function : gtk_print_operation_set_unit
+C function
+
+gtk_print_operation_set_unit
 */
 func (recv *PrintOperation) SetUnit(unit Unit) {
 	c_unit := (C.GtkUnit)(unit)
@@ -2411,7 +2595,9 @@ func (recv *PrintOperation) SetUnit(unit Unit) {
 // imageable area (i.e. inside the margins).
 /*
 
-C function : gtk_print_operation_set_use_full_page
+C function
+
+gtk_print_operation_set_use_full_page
 */
 func (recv *PrintOperation) SetUseFullPage(fullPage bool) {
 	c_full_page :=
@@ -2425,7 +2611,9 @@ func (recv *PrintOperation) SetUseFullPage(fullPage bool) {
 // Creates a new #GtkPrintSettings object.
 /*
 
-C function : gtk_print_settings_new
+C function
+
+gtk_print_settings_new
 */
 func PrintSettingsNew() *PrintSettings {
 	retC := C.gtk_print_settings_new()
@@ -2437,7 +2625,9 @@ func PrintSettingsNew() *PrintSettings {
 // Copies a #GtkPrintSettings object.
 /*
 
-C function : gtk_print_settings_copy
+C function
+
+gtk_print_settings_copy
 */
 func (recv *PrintSettings) Copy() *PrintSettings {
 	retC := C.gtk_print_settings_copy((*C.GtkPrintSettings)(recv.native))
@@ -2451,7 +2641,9 @@ func (recv *PrintSettings) Copy() *PrintSettings {
 // Looks up the string value associated with @key.
 /*
 
-C function : gtk_print_settings_get
+C function
+
+gtk_print_settings_get
 */
 func (recv *PrintSettings) Get(key string) string {
 	c_key := C.CString(key)
@@ -2470,7 +2662,9 @@ func (recv *PrintSettings) Get(key string) string {
 // string %FALSE.
 /*
 
-C function : gtk_print_settings_get_bool
+C function
+
+gtk_print_settings_get_bool
 */
 func (recv *PrintSettings) GetBool(key string) bool {
 	c_key := C.CString(key)
@@ -2485,7 +2679,9 @@ func (recv *PrintSettings) GetBool(key string) bool {
 // Gets the value of %GTK_PRINT_SETTINGS_COLLATE.
 /*
 
-C function : gtk_print_settings_get_collate
+C function
+
+gtk_print_settings_get_collate
 */
 func (recv *PrintSettings) GetCollate() bool {
 	retC := C.gtk_print_settings_get_collate((*C.GtkPrintSettings)(recv.native))
@@ -2497,7 +2693,9 @@ func (recv *PrintSettings) GetCollate() bool {
 // Gets the value of %GTK_PRINT_SETTINGS_DEFAULT_SOURCE.
 /*
 
-C function : gtk_print_settings_get_default_source
+C function
+
+gtk_print_settings_get_default_source
 */
 func (recv *PrintSettings) GetDefaultSource() string {
 	retC := C.gtk_print_settings_get_default_source((*C.GtkPrintSettings)(recv.native))
@@ -2509,7 +2707,9 @@ func (recv *PrintSettings) GetDefaultSource() string {
 // Gets the value of %GTK_PRINT_SETTINGS_DITHER.
 /*
 
-C function : gtk_print_settings_get_dither
+C function
+
+gtk_print_settings_get_dither
 */
 func (recv *PrintSettings) GetDither() string {
 	retC := C.gtk_print_settings_get_dither((*C.GtkPrintSettings)(recv.native))
@@ -2521,7 +2721,9 @@ func (recv *PrintSettings) GetDither() string {
 // Returns the double value associated with @key, or 0.
 /*
 
-C function : gtk_print_settings_get_double
+C function
+
+gtk_print_settings_get_double
 */
 func (recv *PrintSettings) GetDouble(key string) float64 {
 	c_key := C.CString(key)
@@ -2540,7 +2742,9 @@ func (recv *PrintSettings) GetDouble(key string) float64 {
 // Floating point numbers are parsed with g_ascii_strtod().
 /*
 
-C function : gtk_print_settings_get_double_with_default
+C function
+
+gtk_print_settings_get_double_with_default
 */
 func (recv *PrintSettings) GetDoubleWithDefault(key string, def float64) float64 {
 	c_key := C.CString(key)
@@ -2557,7 +2761,9 @@ func (recv *PrintSettings) GetDoubleWithDefault(key string, def float64) float64
 // Gets the value of %GTK_PRINT_SETTINGS_DUPLEX.
 /*
 
-C function : gtk_print_settings_get_duplex
+C function
+
+gtk_print_settings_get_duplex
 */
 func (recv *PrintSettings) GetDuplex() PrintDuplex {
 	retC := C.gtk_print_settings_get_duplex((*C.GtkPrintSettings)(recv.native))
@@ -2569,7 +2775,9 @@ func (recv *PrintSettings) GetDuplex() PrintDuplex {
 // Gets the value of %GTK_PRINT_SETTINGS_FINISHINGS.
 /*
 
-C function : gtk_print_settings_get_finishings
+C function
+
+gtk_print_settings_get_finishings
 */
 func (recv *PrintSettings) GetFinishings() string {
 	retC := C.gtk_print_settings_get_finishings((*C.GtkPrintSettings)(recv.native))
@@ -2581,7 +2789,9 @@ func (recv *PrintSettings) GetFinishings() string {
 // Returns the integer value of @key, or 0.
 /*
 
-C function : gtk_print_settings_get_int
+C function
+
+gtk_print_settings_get_int
 */
 func (recv *PrintSettings) GetInt(key string) int32 {
 	c_key := C.CString(key)
@@ -2597,7 +2807,9 @@ func (recv *PrintSettings) GetInt(key string) int32 {
 // an integer, or the default value.
 /*
 
-C function : gtk_print_settings_get_int_with_default
+C function
+
+gtk_print_settings_get_int_with_default
 */
 func (recv *PrintSettings) GetIntWithDefault(key string, def int32) int32 {
 	c_key := C.CString(key)
@@ -2615,7 +2827,9 @@ func (recv *PrintSettings) GetIntWithDefault(key string, def int32) int32 {
 // as a length. The returned value is converted to @units.
 /*
 
-C function : gtk_print_settings_get_length
+C function
+
+gtk_print_settings_get_length
 */
 func (recv *PrintSettings) GetLength(key string, unit Unit) float64 {
 	c_key := C.CString(key)
@@ -2634,7 +2848,9 @@ func (recv *PrintSettings) GetLength(key string, unit Unit) float64 {
 // The set of media types is defined in PWG 5101.1-2002 PWG.
 /*
 
-C function : gtk_print_settings_get_media_type
+C function
+
+gtk_print_settings_get_media_type
 */
 func (recv *PrintSettings) GetMediaType() string {
 	retC := C.gtk_print_settings_get_media_type((*C.GtkPrintSettings)(recv.native))
@@ -2646,7 +2862,9 @@ func (recv *PrintSettings) GetMediaType() string {
 // Gets the value of %GTK_PRINT_SETTINGS_N_COPIES.
 /*
 
-C function : gtk_print_settings_get_n_copies
+C function
+
+gtk_print_settings_get_n_copies
 */
 func (recv *PrintSettings) GetNCopies() int32 {
 	retC := C.gtk_print_settings_get_n_copies((*C.GtkPrintSettings)(recv.native))
@@ -2658,7 +2876,9 @@ func (recv *PrintSettings) GetNCopies() int32 {
 // Gets the value of %GTK_PRINT_SETTINGS_NUMBER_UP.
 /*
 
-C function : gtk_print_settings_get_number_up
+C function
+
+gtk_print_settings_get_number_up
 */
 func (recv *PrintSettings) GetNumberUp() int32 {
 	retC := C.gtk_print_settings_get_number_up((*C.GtkPrintSettings)(recv.native))
@@ -2671,7 +2891,9 @@ func (recv *PrintSettings) GetNumberUp() int32 {
 // converted to a #GtkPageOrientation.
 /*
 
-C function : gtk_print_settings_get_orientation
+C function
+
+gtk_print_settings_get_orientation
 */
 func (recv *PrintSettings) GetOrientation() PageOrientation {
 	retC := C.gtk_print_settings_get_orientation((*C.GtkPrintSettings)(recv.native))
@@ -2683,7 +2905,9 @@ func (recv *PrintSettings) GetOrientation() PageOrientation {
 // Gets the value of %GTK_PRINT_SETTINGS_OUTPUT_BIN.
 /*
 
-C function : gtk_print_settings_get_output_bin
+C function
+
+gtk_print_settings_get_output_bin
 */
 func (recv *PrintSettings) GetOutputBin() string {
 	retC := C.gtk_print_settings_get_output_bin((*C.GtkPrintSettings)(recv.native))
@@ -2697,7 +2921,9 @@ func (recv *PrintSettings) GetOutputBin() string {
 // Gets the value of %GTK_PRINT_SETTINGS_PAGE_SET.
 /*
 
-C function : gtk_print_settings_get_page_set
+C function
+
+gtk_print_settings_get_page_set
 */
 func (recv *PrintSettings) GetPageSet() PageSet {
 	retC := C.gtk_print_settings_get_page_set((*C.GtkPrintSettings)(recv.native))
@@ -2710,7 +2936,9 @@ func (recv *PrintSettings) GetPageSet() PageSet {
 // converted to @unit.
 /*
 
-C function : gtk_print_settings_get_paper_height
+C function
+
+gtk_print_settings_get_paper_height
 */
 func (recv *PrintSettings) GetPaperHeight(unit Unit) float64 {
 	c_unit := (C.GtkUnit)(unit)
@@ -2725,7 +2953,9 @@ func (recv *PrintSettings) GetPaperHeight(unit Unit) float64 {
 // converted to a #GtkPaperSize.
 /*
 
-C function : gtk_print_settings_get_paper_size
+C function
+
+gtk_print_settings_get_paper_size
 */
 func (recv *PrintSettings) GetPaperSize() *PaperSize {
 	retC := C.gtk_print_settings_get_paper_size((*C.GtkPrintSettings)(recv.native))
@@ -2738,7 +2968,9 @@ func (recv *PrintSettings) GetPaperSize() *PaperSize {
 // converted to @unit.
 /*
 
-C function : gtk_print_settings_get_paper_width
+C function
+
+gtk_print_settings_get_paper_width
 */
 func (recv *PrintSettings) GetPaperWidth(unit Unit) float64 {
 	c_unit := (C.GtkUnit)(unit)
@@ -2752,7 +2984,9 @@ func (recv *PrintSettings) GetPaperWidth(unit Unit) float64 {
 // Gets the value of %GTK_PRINT_SETTINGS_PRINT_PAGES.
 /*
 
-C function : gtk_print_settings_get_print_pages
+C function
+
+gtk_print_settings_get_print_pages
 */
 func (recv *PrintSettings) GetPrintPages() PrintPages {
 	retC := C.gtk_print_settings_get_print_pages((*C.GtkPrintSettings)(recv.native))
@@ -2765,7 +2999,9 @@ func (recv *PrintSettings) GetPrintPages() PrintPages {
 // %GTK_PRINT_SETTINGS_PRINTER.
 /*
 
-C function : gtk_print_settings_get_printer
+C function
+
+gtk_print_settings_get_printer
 */
 func (recv *PrintSettings) GetPrinter() string {
 	retC := C.gtk_print_settings_get_printer((*C.GtkPrintSettings)(recv.native))
@@ -2777,7 +3013,9 @@ func (recv *PrintSettings) GetPrinter() string {
 // Gets the value of %GTK_PRINT_SETTINGS_QUALITY.
 /*
 
-C function : gtk_print_settings_get_quality
+C function
+
+gtk_print_settings_get_quality
 */
 func (recv *PrintSettings) GetQuality() PrintQuality {
 	retC := C.gtk_print_settings_get_quality((*C.GtkPrintSettings)(recv.native))
@@ -2789,7 +3027,9 @@ func (recv *PrintSettings) GetQuality() PrintQuality {
 // Gets the value of %GTK_PRINT_SETTINGS_RESOLUTION.
 /*
 
-C function : gtk_print_settings_get_resolution
+C function
+
+gtk_print_settings_get_resolution
 */
 func (recv *PrintSettings) GetResolution() int32 {
 	retC := C.gtk_print_settings_get_resolution((*C.GtkPrintSettings)(recv.native))
@@ -2801,7 +3041,9 @@ func (recv *PrintSettings) GetResolution() int32 {
 // Gets the value of %GTK_PRINT_SETTINGS_REVERSE.
 /*
 
-C function : gtk_print_settings_get_reverse
+C function
+
+gtk_print_settings_get_reverse
 */
 func (recv *PrintSettings) GetReverse() bool {
 	retC := C.gtk_print_settings_get_reverse((*C.GtkPrintSettings)(recv.native))
@@ -2813,7 +3055,9 @@ func (recv *PrintSettings) GetReverse() bool {
 // Gets the value of %GTK_PRINT_SETTINGS_SCALE.
 /*
 
-C function : gtk_print_settings_get_scale
+C function
+
+gtk_print_settings_get_scale
 */
 func (recv *PrintSettings) GetScale() float64 {
 	retC := C.gtk_print_settings_get_scale((*C.GtkPrintSettings)(recv.native))
@@ -2825,7 +3069,9 @@ func (recv *PrintSettings) GetScale() float64 {
 // Gets the value of %GTK_PRINT_SETTINGS_USE_COLOR.
 /*
 
-C function : gtk_print_settings_get_use_color
+C function
+
+gtk_print_settings_get_use_color
 */
 func (recv *PrintSettings) GetUseColor() bool {
 	retC := C.gtk_print_settings_get_use_color((*C.GtkPrintSettings)(recv.native))
@@ -2837,7 +3083,9 @@ func (recv *PrintSettings) GetUseColor() bool {
 // Returns %TRUE, if a value is associated with @key.
 /*
 
-C function : gtk_print_settings_has_key
+C function
+
+gtk_print_settings_has_key
 */
 func (recv *PrintSettings) HasKey(key string) bool {
 	c_key := C.CString(key)
@@ -2852,7 +3100,9 @@ func (recv *PrintSettings) HasKey(key string) bool {
 // Associates @value with @key.
 /*
 
-C function : gtk_print_settings_set
+C function
+
+gtk_print_settings_set
 */
 func (recv *PrintSettings) Set(key string, value string) {
 	c_key := C.CString(key)
@@ -2869,7 +3119,9 @@ func (recv *PrintSettings) Set(key string, value string) {
 // Sets @key to a boolean value.
 /*
 
-C function : gtk_print_settings_set_bool
+C function
+
+gtk_print_settings_set_bool
 */
 func (recv *PrintSettings) SetBool(key string, value bool) {
 	c_key := C.CString(key)
@@ -2886,7 +3138,9 @@ func (recv *PrintSettings) SetBool(key string, value bool) {
 // Sets the value of %GTK_PRINT_SETTINGS_COLLATE.
 /*
 
-C function : gtk_print_settings_set_collate
+C function
+
+gtk_print_settings_set_collate
 */
 func (recv *PrintSettings) SetCollate(collate bool) {
 	c_collate :=
@@ -2900,7 +3154,9 @@ func (recv *PrintSettings) SetCollate(collate bool) {
 // Sets the value of %GTK_PRINT_SETTINGS_DEFAULT_SOURCE.
 /*
 
-C function : gtk_print_settings_set_default_source
+C function
+
+gtk_print_settings_set_default_source
 */
 func (recv *PrintSettings) SetDefaultSource(defaultSource string) {
 	c_default_source := C.CString(defaultSource)
@@ -2914,7 +3170,9 @@ func (recv *PrintSettings) SetDefaultSource(defaultSource string) {
 // Sets the value of %GTK_PRINT_SETTINGS_DITHER.
 /*
 
-C function : gtk_print_settings_set_dither
+C function
+
+gtk_print_settings_set_dither
 */
 func (recv *PrintSettings) SetDither(dither string) {
 	c_dither := C.CString(dither)
@@ -2928,7 +3186,9 @@ func (recv *PrintSettings) SetDither(dither string) {
 // Sets @key to a double value.
 /*
 
-C function : gtk_print_settings_set_double
+C function
+
+gtk_print_settings_set_double
 */
 func (recv *PrintSettings) SetDouble(key string, value float64) {
 	c_key := C.CString(key)
@@ -2944,7 +3204,9 @@ func (recv *PrintSettings) SetDouble(key string, value float64) {
 // Sets the value of %GTK_PRINT_SETTINGS_DUPLEX.
 /*
 
-C function : gtk_print_settings_set_duplex
+C function
+
+gtk_print_settings_set_duplex
 */
 func (recv *PrintSettings) SetDuplex(duplex PrintDuplex) {
 	c_duplex := (C.GtkPrintDuplex)(duplex)
@@ -2957,7 +3219,9 @@ func (recv *PrintSettings) SetDuplex(duplex PrintDuplex) {
 // Sets the value of %GTK_PRINT_SETTINGS_FINISHINGS.
 /*
 
-C function : gtk_print_settings_set_finishings
+C function
+
+gtk_print_settings_set_finishings
 */
 func (recv *PrintSettings) SetFinishings(finishings string) {
 	c_finishings := C.CString(finishings)
@@ -2971,7 +3235,9 @@ func (recv *PrintSettings) SetFinishings(finishings string) {
 // Sets @key to an integer value.
 /*
 
-C function : gtk_print_settings_set_int
+C function
+
+gtk_print_settings_set_int
 */
 func (recv *PrintSettings) SetInt(key string, value int32) {
 	c_key := C.CString(key)
@@ -2987,7 +3253,9 @@ func (recv *PrintSettings) SetInt(key string, value int32) {
 // Associates a length in units of @unit with @key.
 /*
 
-C function : gtk_print_settings_set_length
+C function
+
+gtk_print_settings_set_length
 */
 func (recv *PrintSettings) SetLength(key string, value float64, unit Unit) {
 	c_key := C.CString(key)
@@ -3007,7 +3275,9 @@ func (recv *PrintSettings) SetLength(key string, value float64, unit Unit) {
 // The set of media types is defined in PWG 5101.1-2002 PWG.
 /*
 
-C function : gtk_print_settings_set_media_type
+C function
+
+gtk_print_settings_set_media_type
 */
 func (recv *PrintSettings) SetMediaType(mediaType string) {
 	c_media_type := C.CString(mediaType)
@@ -3021,7 +3291,9 @@ func (recv *PrintSettings) SetMediaType(mediaType string) {
 // Sets the value of %GTK_PRINT_SETTINGS_N_COPIES.
 /*
 
-C function : gtk_print_settings_set_n_copies
+C function
+
+gtk_print_settings_set_n_copies
 */
 func (recv *PrintSettings) SetNCopies(numCopies int32) {
 	c_num_copies := (C.gint)(numCopies)
@@ -3034,7 +3306,9 @@ func (recv *PrintSettings) SetNCopies(numCopies int32) {
 // Sets the value of %GTK_PRINT_SETTINGS_NUMBER_UP.
 /*
 
-C function : gtk_print_settings_set_number_up
+C function
+
+gtk_print_settings_set_number_up
 */
 func (recv *PrintSettings) SetNumberUp(numberUp int32) {
 	c_number_up := (C.gint)(numberUp)
@@ -3047,7 +3321,9 @@ func (recv *PrintSettings) SetNumberUp(numberUp int32) {
 // Sets the value of %GTK_PRINT_SETTINGS_ORIENTATION.
 /*
 
-C function : gtk_print_settings_set_orientation
+C function
+
+gtk_print_settings_set_orientation
 */
 func (recv *PrintSettings) SetOrientation(orientation PageOrientation) {
 	c_orientation := (C.GtkPageOrientation)(orientation)
@@ -3060,7 +3336,9 @@ func (recv *PrintSettings) SetOrientation(orientation PageOrientation) {
 // Sets the value of %GTK_PRINT_SETTINGS_OUTPUT_BIN.
 /*
 
-C function : gtk_print_settings_set_output_bin
+C function
+
+gtk_print_settings_set_output_bin
 */
 func (recv *PrintSettings) SetOutputBin(outputBin string) {
 	c_output_bin := C.CString(outputBin)
@@ -3076,7 +3354,9 @@ func (recv *PrintSettings) SetOutputBin(outputBin string) {
 // Sets the value of %GTK_PRINT_SETTINGS_PAGE_SET.
 /*
 
-C function : gtk_print_settings_set_page_set
+C function
+
+gtk_print_settings_set_page_set
 */
 func (recv *PrintSettings) SetPageSet(pageSet PageSet) {
 	c_page_set := (C.GtkPageSet)(pageSet)
@@ -3089,7 +3369,9 @@ func (recv *PrintSettings) SetPageSet(pageSet PageSet) {
 // Sets the value of %GTK_PRINT_SETTINGS_PAPER_HEIGHT.
 /*
 
-C function : gtk_print_settings_set_paper_height
+C function
+
+gtk_print_settings_set_paper_height
 */
 func (recv *PrintSettings) SetPaperHeight(height float64, unit Unit) {
 	c_height := (C.gdouble)(height)
@@ -3106,7 +3388,9 @@ func (recv *PrintSettings) SetPaperHeight(height float64, unit Unit) {
 // %GTK_PRINT_SETTINGS_PAPER_HEIGHT.
 /*
 
-C function : gtk_print_settings_set_paper_size
+C function
+
+gtk_print_settings_set_paper_size
 */
 func (recv *PrintSettings) SetPaperSize(paperSize *PaperSize) {
 	c_paper_size := (*C.GtkPaperSize)(C.NULL)
@@ -3122,7 +3406,9 @@ func (recv *PrintSettings) SetPaperSize(paperSize *PaperSize) {
 // Sets the value of %GTK_PRINT_SETTINGS_PAPER_WIDTH.
 /*
 
-C function : gtk_print_settings_set_paper_width
+C function
+
+gtk_print_settings_set_paper_width
 */
 func (recv *PrintSettings) SetPaperWidth(width float64, unit Unit) {
 	c_width := (C.gdouble)(width)
@@ -3137,7 +3423,9 @@ func (recv *PrintSettings) SetPaperWidth(width float64, unit Unit) {
 // Sets the value of %GTK_PRINT_SETTINGS_PRINT_PAGES.
 /*
 
-C function : gtk_print_settings_set_print_pages
+C function
+
+gtk_print_settings_set_print_pages
 */
 func (recv *PrintSettings) SetPrintPages(pages PrintPages) {
 	c_pages := (C.GtkPrintPages)(pages)
@@ -3151,7 +3439,9 @@ func (recv *PrintSettings) SetPrintPages(pages PrintPages) {
 // to @printer.
 /*
 
-C function : gtk_print_settings_set_printer
+C function
+
+gtk_print_settings_set_printer
 */
 func (recv *PrintSettings) SetPrinter(printer string) {
 	c_printer := C.CString(printer)
@@ -3165,7 +3455,9 @@ func (recv *PrintSettings) SetPrinter(printer string) {
 // Sets the value of %GTK_PRINT_SETTINGS_QUALITY.
 /*
 
-C function : gtk_print_settings_set_quality
+C function
+
+gtk_print_settings_set_quality
 */
 func (recv *PrintSettings) SetQuality(quality PrintQuality) {
 	c_quality := (C.GtkPrintQuality)(quality)
@@ -3180,7 +3472,9 @@ func (recv *PrintSettings) SetQuality(quality PrintQuality) {
 // %GTK_PRINT_SETTINGS_RESOLUTION_Y.
 /*
 
-C function : gtk_print_settings_set_resolution
+C function
+
+gtk_print_settings_set_resolution
 */
 func (recv *PrintSettings) SetResolution(resolution int32) {
 	c_resolution := (C.gint)(resolution)
@@ -3193,7 +3487,9 @@ func (recv *PrintSettings) SetResolution(resolution int32) {
 // Sets the value of %GTK_PRINT_SETTINGS_REVERSE.
 /*
 
-C function : gtk_print_settings_set_reverse
+C function
+
+gtk_print_settings_set_reverse
 */
 func (recv *PrintSettings) SetReverse(reverse bool) {
 	c_reverse :=
@@ -3207,7 +3503,9 @@ func (recv *PrintSettings) SetReverse(reverse bool) {
 // Sets the value of %GTK_PRINT_SETTINGS_SCALE.
 /*
 
-C function : gtk_print_settings_set_scale
+C function
+
+gtk_print_settings_set_scale
 */
 func (recv *PrintSettings) SetScale(scale float64) {
 	c_scale := (C.gdouble)(scale)
@@ -3220,7 +3518,9 @@ func (recv *PrintSettings) SetScale(scale float64) {
 // Sets the value of %GTK_PRINT_SETTINGS_USE_COLOR.
 /*
 
-C function : gtk_print_settings_set_use_color
+C function
+
+gtk_print_settings_set_use_color
 */
 func (recv *PrintSettings) SetUseColor(useColor bool) {
 	c_use_color :=
@@ -3235,7 +3535,9 @@ func (recv *PrintSettings) SetUseColor(useColor bool) {
 // This has the same effect as setting the value to %NULL.
 /*
 
-C function : gtk_print_settings_unset
+C function
+
+gtk_print_settings_unset
 */
 func (recv *PrintSettings) Unset(key string) {
 	c_key := C.CString(key)
@@ -3250,7 +3552,9 @@ func (recv *PrintSettings) Unset(key string) {
 // property @current_value.
 /*
 
-C function : gtk_radio_action_set_current_value
+C function
+
+gtk_radio_action_set_current_value
 */
 func (recv *RadioAction) SetCurrentValue(currentValue int32) {
 	c_current_value := (C.gint)(currentValue)
@@ -3264,7 +3568,9 @@ func (recv *RadioAction) SetCurrentValue(currentValue int32) {
 // 'lower' end of the GtkRange’s adjustment.
 /*
 
-C function : gtk_range_get_lower_stepper_sensitivity
+C function
+
+gtk_range_get_lower_stepper_sensitivity
 */
 func (recv *Range) GetLowerStepperSensitivity() SensitivityType {
 	retC := C.gtk_range_get_lower_stepper_sensitivity((*C.GtkRange)(recv.native))
@@ -3277,7 +3583,9 @@ func (recv *Range) GetLowerStepperSensitivity() SensitivityType {
 // 'upper' end of the GtkRange’s adjustment.
 /*
 
-C function : gtk_range_get_upper_stepper_sensitivity
+C function
+
+gtk_range_get_upper_stepper_sensitivity
 */
 func (recv *Range) GetUpperStepperSensitivity() SensitivityType {
 	retC := C.gtk_range_get_upper_stepper_sensitivity((*C.GtkRange)(recv.native))
@@ -3290,7 +3598,9 @@ func (recv *Range) GetUpperStepperSensitivity() SensitivityType {
 // 'lower' end of the GtkRange’s adjustment.
 /*
 
-C function : gtk_range_set_lower_stepper_sensitivity
+C function
+
+gtk_range_set_lower_stepper_sensitivity
 */
 func (recv *Range) SetLowerStepperSensitivity(sensitivity SensitivityType) {
 	c_sensitivity := (C.GtkSensitivityType)(sensitivity)
@@ -3304,7 +3614,9 @@ func (recv *Range) SetLowerStepperSensitivity(sensitivity SensitivityType) {
 // 'upper' end of the GtkRange’s adjustment.
 /*
 
-C function : gtk_range_set_upper_stepper_sensitivity
+C function
+
+gtk_range_set_upper_stepper_sensitivity
 */
 func (recv *Range) SetUpperStepperSensitivity(sensitivity SensitivityType) {
 	c_sensitivity := (C.GtkSensitivityType)(sensitivity)
@@ -3332,7 +3644,9 @@ func (recv *Range) SetUpperStepperSensitivity(sensitivity SensitivityType) {
 // a #GtkRecentChooserMenu widget bound to another #GtkRecentManager object.
 /*
 
-C function : gtk_recent_chooser_menu_new
+C function
+
+gtk_recent_chooser_menu_new
 */
 func RecentChooserMenuNew() *RecentChooserMenu {
 	retC := C.gtk_recent_chooser_menu_new()
@@ -3350,7 +3664,9 @@ func RecentChooserMenuNew() *RecentChooserMenu {
 // among multiple #GtkRecentChooser widgets.
 /*
 
-C function : gtk_recent_chooser_menu_new_for_manager
+C function
+
+gtk_recent_chooser_menu_new_for_manager
 */
 func RecentChooserMenuNewForManager(manager *RecentManager) *RecentChooserMenu {
 	c_manager := (*C.GtkRecentManager)(C.NULL)
@@ -3367,7 +3683,9 @@ func RecentChooserMenuNewForManager(manager *RecentManager) *RecentChooserMenu {
 // Returns the value set by gtk_recent_chooser_menu_set_show_numbers().
 /*
 
-C function : gtk_recent_chooser_menu_get_show_numbers
+C function
+
+gtk_recent_chooser_menu_get_show_numbers
 */
 func (recv *RecentChooserMenu) GetShowNumbers() bool {
 	retC := C.gtk_recent_chooser_menu_get_show_numbers((*C.GtkRecentChooserMenu)(recv.native))
@@ -3382,7 +3700,9 @@ func (recv *RecentChooserMenu) GetShowNumbers() bool {
 // get a number to avoid clashes.
 /*
 
-C function : gtk_recent_chooser_menu_set_show_numbers
+C function
+
+gtk_recent_chooser_menu_set_show_numbers
 */
 func (recv *RecentChooserMenu) SetShowNumbers(showNumbers bool) {
 	c_show_numbers :=
@@ -3397,7 +3717,9 @@ func (recv *RecentChooserMenu) SetShowNumbers(showNumbers bool) {
 // used to access the recently used resources list.
 /*
 
-C function : gtk_recent_chooser_widget_new
+C function
+
+gtk_recent_chooser_widget_new
 */
 func RecentChooserWidgetNew() *RecentChooserWidget {
 	retC := C.gtk_recent_chooser_widget_new()
@@ -3412,7 +3734,9 @@ func RecentChooserWidgetNew() *RecentChooserWidget {
 // have a customized instance of a #GtkRecentManager object.
 /*
 
-C function : gtk_recent_chooser_widget_new_for_manager
+C function
+
+gtk_recent_chooser_widget_new_for_manager
 */
 func RecentChooserWidgetNewForManager(manager *RecentManager) *RecentChooserWidget {
 	c_manager := (*C.GtkRecentManager)(C.NULL)
@@ -3438,7 +3762,9 @@ func RecentChooserWidgetNewForManager(manager *RecentManager) *RecentChooserWidg
 // ]|
 /*
 
-C function : gtk_recent_filter_new
+C function
+
+gtk_recent_filter_new
 */
 func RecentFilterNew() *RecentFilter {
 	retC := C.gtk_recent_filter_new()
@@ -3451,7 +3777,9 @@ func RecentFilterNew() *RecentFilter {
 // of days elapsed since they were last modified.
 /*
 
-C function : gtk_recent_filter_add_age
+C function
+
+gtk_recent_filter_add_age
 */
 func (recv *RecentFilter) AddAge(days int32) {
 	c_days := (C.gint)(days)
@@ -3465,7 +3793,9 @@ func (recv *RecentFilter) AddAge(days int32) {
 // that has registered them.
 /*
 
-C function : gtk_recent_filter_add_application
+C function
+
+gtk_recent_filter_add_application
 */
 func (recv *RecentFilter) AddApplication(application string) {
 	c_application := C.CString(application)
@@ -3482,7 +3812,9 @@ func (recv *RecentFilter) AddApplication(application string) {
 // to which they belong
 /*
 
-C function : gtk_recent_filter_add_group
+C function
+
+gtk_recent_filter_add_group
 */
 func (recv *RecentFilter) AddGroup(group string) {
 	c_group := C.CString(group)
@@ -3496,7 +3828,9 @@ func (recv *RecentFilter) AddGroup(group string) {
 // Adds a rule that allows resources based on their registered MIME type.
 /*
 
-C function : gtk_recent_filter_add_mime_type
+C function
+
+gtk_recent_filter_add_mime_type
 */
 func (recv *RecentFilter) AddMimeType(mimeType string) {
 	c_mime_type := C.CString(mimeType)
@@ -3511,7 +3845,9 @@ func (recv *RecentFilter) AddMimeType(mimeType string) {
 // display name.
 /*
 
-C function : gtk_recent_filter_add_pattern
+C function
+
+gtk_recent_filter_add_pattern
 */
 func (recv *RecentFilter) AddPattern(pattern string) {
 	c_pattern := C.CString(pattern)
@@ -3526,7 +3862,9 @@ func (recv *RecentFilter) AddPattern(pattern string) {
 // by GdkPixbuf.
 /*
 
-C function : gtk_recent_filter_add_pixbuf_formats
+C function
+
+gtk_recent_filter_add_pixbuf_formats
 */
 func (recv *RecentFilter) AddPixbufFormats() {
 	C.gtk_recent_filter_add_pixbuf_formats((*C.GtkRecentFilter)(recv.native))
@@ -3545,7 +3883,9 @@ func (recv *RecentFilter) AddPixbufFormats() {
 // #GtkRecentChooser.
 /*
 
-C function : gtk_recent_filter_filter
+C function
+
+gtk_recent_filter_filter
 */
 func (recv *RecentFilter) Filter(filterInfo *RecentFilterInfo) bool {
 	c_filter_info := (*C.GtkRecentFilterInfo)(C.NULL)
@@ -3563,7 +3903,9 @@ func (recv *RecentFilter) Filter(filterInfo *RecentFilterInfo) bool {
 // See gtk_recent_filter_set_name().
 /*
 
-C function : gtk_recent_filter_get_name
+C function
+
+gtk_recent_filter_get_name
 */
 func (recv *RecentFilter) GetName() string {
 	retC := C.gtk_recent_filter_get_name((*C.GtkRecentFilter)(recv.native))
@@ -3580,7 +3922,9 @@ func (recv *RecentFilter) GetName() string {
 // #GtkRecentChooser.
 /*
 
-C function : gtk_recent_filter_get_needed
+C function
+
+gtk_recent_filter_get_needed
 */
 func (recv *RecentFilter) GetNeeded() RecentFilterFlags {
 	retC := C.gtk_recent_filter_get_needed((*C.GtkRecentFilter)(recv.native))
@@ -3594,7 +3938,9 @@ func (recv *RecentFilter) GetNeeded() RecentFilterFlags {
 // user interface if there is a selectable list of filters.
 /*
 
-C function : gtk_recent_filter_set_name
+C function
+
+gtk_recent_filter_set_name
 */
 func (recv *RecentFilter) SetName(name string) {
 	c_name := C.CString(name)
@@ -3667,7 +4013,9 @@ func (recv *RecentFilter) SetName(name string) {
 // Recently used files are supported since GTK+ 2.10.
 /*
 
-C record/class : GtkRecentManager
+C type
+
+GtkRecentManager
 */
 type RecentManager struct {
 	native *C.GtkRecentManager
@@ -3711,7 +4059,9 @@ func CastToRecentManager(object *gobject.Object) *RecentManager {
 // needed. You should use gtk_recent_manager_get_default() instead.
 /*
 
-C function : gtk_recent_manager_new
+C function
+
+gtk_recent_manager_new
 */
 func RecentManagerNew() *RecentManager {
 	retC := C.gtk_recent_manager_new()
@@ -3741,7 +4091,9 @@ func RecentManagerNew() *RecentManager {
 // applications that have registered it.
 /*
 
-C function : gtk_recent_manager_add_full
+C function
+
+gtk_recent_manager_add_full
 */
 func (recv *RecentManager) AddFull(uri string, recentData *RecentData) bool {
 	c_uri := C.CString(uri)
@@ -3769,7 +4121,9 @@ func (recv *RecentManager) AddFull(uri string, recentData *RecentData) bool {
 // define the metadata for the resource pointed by @uri.
 /*
 
-C function : gtk_recent_manager_add_item
+C function
+
+gtk_recent_manager_add_item
 */
 func (recv *RecentManager) AddItem(uri string) bool {
 	c_uri := C.CString(uri)
@@ -3784,7 +4138,9 @@ func (recv *RecentManager) AddItem(uri string) bool {
 // Gets the list of recently used resources.
 /*
 
-C function : gtk_recent_manager_get_items
+C function
+
+gtk_recent_manager_get_items
 */
 func (recv *RecentManager) GetItems() *glib.List {
 	retC := C.gtk_recent_manager_get_items((*C.GtkRecentManager)(recv.native))
@@ -3797,7 +4153,9 @@ func (recv *RecentManager) GetItems() *glib.List {
 // with @uri inside the recent manager.
 /*
 
-C function : gtk_recent_manager_has_item
+C function
+
+gtk_recent_manager_has_item
 */
 func (recv *RecentManager) HasItem(uri string) bool {
 	c_uri := C.CString(uri)
@@ -3814,7 +4172,9 @@ func (recv *RecentManager) HasItem(uri string) bool {
 // like its MIME type, or its display name.
 /*
 
-C function : gtk_recent_manager_lookup_item
+C function
+
+gtk_recent_manager_lookup_item
 */
 func (recv *RecentManager) LookupItem(uri string) (*RecentInfo, error) {
 	c_uri := C.CString(uri)
@@ -3844,7 +4204,9 @@ func (recv *RecentManager) LookupItem(uri string) (*RecentInfo, error) {
 // by the URIs, but only the URI used in the recently used resources list.
 /*
 
-C function : gtk_recent_manager_move_item
+C function
+
+gtk_recent_manager_move_item
 */
 func (recv *RecentManager) MoveItem(uri string, newUri string) (bool, error) {
 	c_uri := C.CString(uri)
@@ -3869,7 +4231,9 @@ func (recv *RecentManager) MoveItem(uri string, newUri string) (bool, error) {
 // Purges every item from the recently used resources list.
 /*
 
-C function : gtk_recent_manager_purge_items
+C function
+
+gtk_recent_manager_purge_items
 */
 func (recv *RecentManager) PurgeItems() (int32, error) {
 	var cThrowableError *C.GError
@@ -3889,7 +4253,9 @@ func (recv *RecentManager) PurgeItems() (int32, error) {
 // list handled by a recent manager.
 /*
 
-C function : gtk_recent_manager_remove_item
+C function
+
+gtk_recent_manager_remove_item
 */
 func (recv *RecentManager) RemoveItem(uri string) (bool, error) {
 	c_uri := C.CString(uri)
@@ -3916,7 +4282,9 @@ func (recv *RecentManager) RemoveItem(uri string) (bool, error) {
 // gtk_scrolled_window_get_placement().
 /*
 
-C function : gtk_scrolled_window_unset_placement
+C function
+
+gtk_scrolled_window_unset_placement
 */
 func (recv *ScrolledWindow) UnsetPlacement() {
 	C.gtk_scrolled_window_unset_placement((*C.GtkScrolledWindow)(recv.native))
@@ -3927,7 +4295,9 @@ func (recv *ScrolledWindow) UnsetPlacement() {
 // Returns the list of widgets associated with @size_group.
 /*
 
-C function : gtk_size_group_get_widgets
+C function
+
+gtk_size_group_get_widgets
 */
 func (recv *SizeGroup) GetWidgets() *glib.SList {
 	retC := C.gtk_size_group_get_widgets((*C.GtkSizeGroup)(recv.native))
@@ -4057,7 +4427,9 @@ func statusicon_activateHandler(_ *C.GObject, data C.gpointer) {
 // Creates an empty status icon object.
 /*
 
-C function : gtk_status_icon_new
+C function
+
+gtk_status_icon_new
 */
 func StatusIconNew() *StatusIcon {
 	retC := C.gtk_status_icon_new()
@@ -4072,7 +4444,9 @@ func StatusIconNew() *StatusIcon {
 // space in the notification area, if necessary.
 /*
 
-C function : gtk_status_icon_new_from_file
+C function
+
+gtk_status_icon_new_from_file
 */
 func StatusIconNewFromFile(filename string) *StatusIcon {
 	c_filename := C.CString(filename)
@@ -4089,7 +4463,9 @@ func StatusIconNewFromFile(filename string) *StatusIcon {
 // appropriately.
 /*
 
-C function : gtk_status_icon_new_from_icon_name
+C function
+
+gtk_status_icon_new_from_icon_name
 */
 func StatusIconNewFromIconName(iconName string) *StatusIcon {
 	c_icon_name := C.CString(iconName)
@@ -4107,7 +4483,9 @@ func StatusIconNewFromIconName(iconName string) *StatusIcon {
 // space in the notification area, if necessary.
 /*
 
-C function : gtk_status_icon_new_from_pixbuf
+C function
+
+gtk_status_icon_new_from_pixbuf
 */
 func StatusIconNewFromPixbuf(pixbuf *gdkpixbuf.Pixbuf) *StatusIcon {
 	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
@@ -4127,7 +4505,9 @@ func StatusIconNewFromPixbuf(pixbuf *gdkpixbuf.Pixbuf) *StatusIcon {
 // gtk_icon_factory_add().
 /*
 
-C function : gtk_status_icon_new_from_stock
+C function
+
+gtk_status_icon_new_from_stock
 */
 func StatusIconNewFromStock(stockId string) *StatusIcon {
 	c_stock_id := C.CString(stockId)
@@ -4148,7 +4528,9 @@ func StatusIconNewFromStock(stockId string) *StatusIcon {
 // be freed or modified.
 /*
 
-C function : gtk_status_icon_get_icon_name
+C function
+
+gtk_status_icon_get_icon_name
 */
 func (recv *StatusIcon) GetIconName() string {
 	retC := C.gtk_status_icon_get_icon_name((*C.GtkStatusIcon)(recv.native))
@@ -4164,7 +4546,9 @@ func (recv *StatusIcon) GetIconName() string {
 // returned pixbuf.
 /*
 
-C function : gtk_status_icon_get_pixbuf
+C function
+
+gtk_status_icon_get_pixbuf
 */
 func (recv *StatusIcon) GetPixbuf() *gdkpixbuf.Pixbuf {
 	retC := C.gtk_status_icon_get_pixbuf((*C.GtkStatusIcon)(recv.native))
@@ -4188,7 +4572,9 @@ func (recv *StatusIcon) GetPixbuf() *gdkpixbuf.Pixbuf {
 // status icon is embedded (see gtk_status_icon_is_embedded()).
 /*
 
-C function : gtk_status_icon_get_size
+C function
+
+gtk_status_icon_get_size
 */
 func (recv *StatusIcon) GetSize() int32 {
 	retC := C.gtk_status_icon_get_size((*C.GtkStatusIcon)(recv.native))
@@ -4204,7 +4590,9 @@ func (recv *StatusIcon) GetSize() int32 {
 // be freed or modified.
 /*
 
-C function : gtk_status_icon_get_stock
+C function
+
+gtk_status_icon_get_stock
 */
 func (recv *StatusIcon) GetStock() string {
 	retC := C.gtk_status_icon_get_stock((*C.GtkStatusIcon)(recv.native))
@@ -4218,7 +4606,9 @@ func (recv *StatusIcon) GetStock() string {
 // the return value will be %GTK_IMAGE_EMPTY.
 /*
 
-C function : gtk_status_icon_get_storage_type
+C function
+
+gtk_status_icon_get_storage_type
 */
 func (recv *StatusIcon) GetStorageType() ImageType {
 	retC := C.gtk_status_icon_get_storage_type((*C.GtkStatusIcon)(recv.native))
@@ -4233,7 +4623,9 @@ func (recv *StatusIcon) GetStorageType() ImageType {
 // gtk_status_icon_is_embedded().
 /*
 
-C function : gtk_status_icon_get_visible
+C function
+
+gtk_status_icon_get_visible
 */
 func (recv *StatusIcon) GetVisible() bool {
 	retC := C.gtk_status_icon_get_visible((*C.GtkStatusIcon)(recv.native))
@@ -4246,7 +4638,9 @@ func (recv *StatusIcon) GetVisible() bool {
 // area.
 /*
 
-C function : gtk_status_icon_is_embedded
+C function
+
+gtk_status_icon_is_embedded
 */
 func (recv *StatusIcon) IsEmbedded() bool {
 	retC := C.gtk_status_icon_is_embedded((*C.GtkStatusIcon)(recv.native))
@@ -4259,7 +4653,9 @@ func (recv *StatusIcon) IsEmbedded() bool {
 // See gtk_status_icon_new_from_file() for details.
 /*
 
-C function : gtk_status_icon_set_from_file
+C function
+
+gtk_status_icon_set_from_file
 */
 func (recv *StatusIcon) SetFromFile(filename string) {
 	c_filename := C.CString(filename)
@@ -4275,7 +4671,9 @@ func (recv *StatusIcon) SetFromFile(filename string) {
 // See gtk_status_icon_new_from_icon_name() for details.
 /*
 
-C function : gtk_status_icon_set_from_icon_name
+C function
+
+gtk_status_icon_set_from_icon_name
 */
 func (recv *StatusIcon) SetFromIconName(iconName string) {
 	c_icon_name := C.CString(iconName)
@@ -4290,7 +4688,9 @@ func (recv *StatusIcon) SetFromIconName(iconName string) {
 // See gtk_status_icon_new_from_pixbuf() for details.
 /*
 
-C function : gtk_status_icon_set_from_pixbuf
+C function
+
+gtk_status_icon_set_from_pixbuf
 */
 func (recv *StatusIcon) SetFromPixbuf(pixbuf *gdkpixbuf.Pixbuf) {
 	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
@@ -4307,7 +4707,9 @@ func (recv *StatusIcon) SetFromPixbuf(pixbuf *gdkpixbuf.Pixbuf) {
 // See gtk_status_icon_new_from_stock() for details.
 /*
 
-C function : gtk_status_icon_set_from_stock
+C function
+
+gtk_status_icon_set_from_stock
 */
 func (recv *StatusIcon) SetFromStock(stockId string) {
 	c_stock_id := C.CString(stockId)
@@ -4321,7 +4723,9 @@ func (recv *StatusIcon) SetFromStock(stockId string) {
 // Shows or hides a status icon.
 /*
 
-C function : gtk_status_icon_set_visible
+C function
+
+gtk_status_icon_set_visible
 */
 func (recv *StatusIcon) SetVisible(visible bool) {
 	c_visible :=
@@ -4339,7 +4743,9 @@ func (recv *StatusIcon) SetVisible(visible bool) {
 // switch occurs.
 /*
 
-C function : gtk_style_lookup_color
+C function
+
+gtk_style_lookup_color
 */
 func (recv *Style) LookupColor(colorName string) (bool, *gdk.Color) {
 	c_color_name := C.CString(colorName)
@@ -4368,7 +4774,9 @@ func (recv *Style) LookupColor(colorName string) (bool, *gdk.Color) {
 // gtk_target_list_add_text_targets().
 /*
 
-C function : gtk_text_buffer_get_copy_target_list
+C function
+
+gtk_text_buffer_get_copy_target_list
 */
 func (recv *TextBuffer) GetCopyTargetList() *TargetList {
 	retC := C.gtk_text_buffer_get_copy_target_list((*C.GtkTextBuffer)(recv.native))
@@ -4382,7 +4790,9 @@ func (recv *TextBuffer) GetCopyTargetList() *TargetList {
 // Indicates whether the buffer has some text currently selected.
 /*
 
-C function : gtk_text_buffer_get_has_selection
+C function
+
+gtk_text_buffer_get_has_selection
 */
 func (recv *TextBuffer) GetHasSelection() bool {
 	retC := C.gtk_text_buffer_get_has_selection((*C.GtkTextBuffer)(recv.native))
@@ -4398,7 +4808,9 @@ func (recv *TextBuffer) GetHasSelection() bool {
 // gtk_target_list_add_text_targets().
 /*
 
-C function : gtk_text_buffer_get_paste_target_list
+C function
+
+gtk_text_buffer_get_paste_target_list
 */
 func (recv *TextBuffer) GetPasteTargetList() *TargetList {
 	retC := C.gtk_text_buffer_get_paste_target_list((*C.GtkTextBuffer)(recv.native))
@@ -4430,7 +4842,9 @@ func (recv *TextBuffer) GetPasteTargetList() *TargetList {
 // Returns whether or not tree lines are drawn in @tree_view.
 /*
 
-C function : gtk_tree_view_get_enable_tree_lines
+C function
+
+gtk_tree_view_get_enable_tree_lines
 */
 func (recv *TreeView) GetEnableTreeLines() bool {
 	retC := C.gtk_tree_view_get_enable_tree_lines((*C.GtkTreeView)(recv.native))
@@ -4442,7 +4856,9 @@ func (recv *TreeView) GetEnableTreeLines() bool {
 // Returns which grid lines are enabled in @tree_view.
 /*
 
-C function : gtk_tree_view_get_grid_lines
+C function
+
+gtk_tree_view_get_grid_lines
 */
 func (recv *TreeView) GetGridLines() TreeViewGridLines {
 	retC := C.gtk_tree_view_get_grid_lines((*C.GtkTreeView)(recv.native))
@@ -4454,7 +4870,9 @@ func (recv *TreeView) GetGridLines() TreeViewGridLines {
 // Returns whether all header columns are clickable.
 /*
 
-C function : gtk_tree_view_get_headers_clickable
+C function
+
+gtk_tree_view_get_headers_clickable
 */
 func (recv *TreeView) GetHeadersClickable() bool {
 	retC := C.gtk_tree_view_get_headers_clickable((*C.GtkTreeView)(recv.native))
@@ -4468,7 +4886,9 @@ func (recv *TreeView) GetHeadersClickable() bool {
 // user to select multiple rows by dragging the mouse.
 /*
 
-C function : gtk_tree_view_get_rubber_banding
+C function
+
+gtk_tree_view_get_rubber_banding
 */
 func (recv *TreeView) GetRubberBanding() bool {
 	retC := C.gtk_tree_view_get_rubber_banding((*C.GtkTreeView)(recv.native))
@@ -4482,7 +4902,9 @@ func (recv *TreeView) GetRubberBanding() bool {
 // will be returned.
 /*
 
-C function : gtk_tree_view_get_search_entry
+C function
+
+gtk_tree_view_get_search_entry
 */
 func (recv *TreeView) GetSearchEntry() *Entry {
 	retC := C.gtk_tree_view_get_search_entry((*C.GtkTreeView)(recv.native))
@@ -4497,7 +4919,9 @@ func (recv *TreeView) GetSearchEntry() *Entry {
 // This does not have any visible effects for lists.
 /*
 
-C function : gtk_tree_view_set_enable_tree_lines
+C function
+
+gtk_tree_view_set_enable_tree_lines
 */
 func (recv *TreeView) SetEnableTreeLines(enabled bool) {
 	c_enabled :=
@@ -4511,7 +4935,9 @@ func (recv *TreeView) SetEnableTreeLines(enabled bool) {
 // Sets which grid lines to draw in @tree_view.
 /*
 
-C function : gtk_tree_view_set_grid_lines
+C function
+
+gtk_tree_view_set_grid_lines
 */
 func (recv *TreeView) SetGridLines(gridLines TreeViewGridLines) {
 	c_grid_lines := (C.GtkTreeViewGridLines)(gridLines)
@@ -4526,7 +4952,9 @@ func (recv *TreeView) SetGridLines(gridLines TreeViewGridLines) {
 // multiple rows by dragging the mouse.
 /*
 
-C function : gtk_tree_view_set_rubber_banding
+C function
+
+gtk_tree_view_set_rubber_banding
 */
 func (recv *TreeView) SetRubberBanding(enable bool) {
 	c_enable :=
@@ -4544,7 +4972,9 @@ func (recv *TreeView) SetRubberBanding(enable bool) {
 // entry again.
 /*
 
-C function : gtk_tree_view_set_search_entry
+C function
+
+gtk_tree_view_set_search_entry
 */
 func (recv *TreeView) SetSearchEntry(entry *Entry) {
 	c_entry := (*C.GtkEntry)(C.NULL)
@@ -4563,7 +4993,9 @@ func (recv *TreeView) SetSearchEntry(entry *Entry) {
 // emit #GtkWidget::drag-motion signals.
 /*
 
-C function : gtk_drag_dest_get_track_motion
+C function
+
+gtk_drag_dest_get_track_motion
 */
 func (recv *Widget) DragDestGetTrackMotion() bool {
 	retC := C.gtk_drag_dest_get_track_motion((*C.GtkWidget)(recv.native))
@@ -4580,7 +5012,9 @@ func (recv *Widget) DragDestGetTrackMotion() bool {
 // actions regardless of the targets that the source offers.
 /*
 
-C function : gtk_drag_dest_set_track_motion
+C function
+
+gtk_drag_dest_set_track_motion
 */
 func (recv *Widget) DragDestSetTrackMotion(trackMotion bool) {
 	c_track_motion :=
@@ -4600,7 +5034,9 @@ func (recv *Widget) DragDestSetTrackMotion(trackMotion bool) {
 // window in its hierarchy (as set by gdk_window_set_composited()).
 /*
 
-C function : gtk_widget_is_composited
+C function
+
+gtk_widget_is_composited
 */
 func (recv *Widget) IsComposited() bool {
 	retC := C.gtk_widget_is_composited((*C.GtkWidget)(recv.native))
@@ -4613,7 +5049,9 @@ func (recv *Widget) IsComposited() bool {
 // via gtk_window_set_deletable().
 /*
 
-C function : gtk_window_get_deletable
+C function
+
+gtk_window_get_deletable
 */
 func (recv *Window) GetDeletable() bool {
 	retC := C.gtk_window_get_deletable((*C.GtkWindow)(recv.native))
@@ -4627,7 +5065,9 @@ func (recv *Window) GetDeletable() bool {
 // window group.
 /*
 
-C function : gtk_window_get_group
+C function
+
+gtk_window_get_group
 */
 func (recv *Window) GetGroup() *WindowGroup {
 	retC := C.gtk_window_get_group((*C.GtkWindow)(recv.native))
@@ -4648,7 +5088,9 @@ func (recv *Window) GetGroup() *WindowGroup {
 // policy involved.
 /*
 
-C function : gtk_window_set_deletable
+C function
+
+gtk_window_set_deletable
 */
 func (recv *Window) SetDeletable(setting bool) {
 	c_setting :=

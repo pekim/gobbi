@@ -56,7 +56,9 @@ import "C"
 // %G_CREDENTIALS_TYPE_SOLARIS_UCRED.
 /*
 
-C record/class : GCredentials
+C type
+
+GCredentials
 */
 type Credentials struct {
 	native *C.GCredentials
@@ -93,7 +95,9 @@ func CastToCredentials(object *gobject.Object) *Credentials {
 // the current process.
 /*
 
-C function : g_credentials_new
+C function
+
+g_credentials_new
 */
 func CredentialsNew() *Credentials {
 	retC := C.g_credentials_new()
@@ -110,7 +114,9 @@ func CredentialsNew() *Credentials {
 // the OS or if @native_type isn't supported by the OS.
 /*
 
-C function : g_credentials_get_native
+C function
+
+g_credentials_get_native
 */
 func (recv *Credentials) GetNative(nativeType CredentialsType) uintptr {
 	c_native_type := (C.GCredentialsType)(nativeType)
@@ -129,7 +135,9 @@ func (recv *Credentials) GetNative(nativeType CredentialsType) uintptr {
 // the OS.
 /*
 
-C function : g_credentials_is_same_user
+C function
+
+g_credentials_is_same_user
 */
 func (recv *Credentials) IsSameUser(otherCredentials *Credentials) (bool, error) {
 	c_other_credentials := (*C.GCredentials)(C.NULL)
@@ -158,7 +166,9 @@ func (recv *Credentials) IsSameUser(otherCredentials *Credentials) (bool, error)
 // the OS or if @native_type isn't supported by the OS.
 /*
 
-C function : g_credentials_set_native
+C function
+
+g_credentials_set_native
 */
 func (recv *Credentials) SetNative(nativeType CredentialsType, native uintptr) {
 	c_native_type := (C.GCredentialsType)(nativeType)
@@ -177,7 +187,9 @@ func (recv *Credentials) SetNative(nativeType CredentialsType, native uintptr) {
 // returned string may change in future GLib release.
 /*
 
-C function : g_credentials_to_string
+C function
+
+g_credentials_to_string
 */
 func (recv *Credentials) ToString() string {
 	retC := C.g_credentials_to_string((*C.GCredentials)(recv.native))
@@ -193,7 +205,7 @@ func (recv *Credentials) ToString() string {
 // signals you are interested in. Note that new signals may be added
 // in the future
 //
-// ## Controlling Authentication # {#auth-observer}
+// Controlling Authentication # {#auth-observer}
 //
 // For example, if you only want to allow D-Bus connections from
 // processes owned by the same uid as the server, you would use a
@@ -223,7 +235,9 @@ func (recv *Credentials) ToString() string {
 // ]|
 /*
 
-C record/class : GDBusAuthObserver
+C type
+
+GDBusAuthObserver
 */
 type DBusAuthObserver struct {
 	native *C.GDBusAuthObserver
@@ -259,7 +273,9 @@ func CastToDBusAuthObserver(object *gobject.Object) *DBusAuthObserver {
 // Creates a new #GDBusAuthObserver object.
 /*
 
-C function : g_dbus_auth_observer_new
+C function
+
+g_dbus_auth_observer_new
 */
 func DBusAuthObserverNew() *DBusAuthObserver {
 	retC := C.g_dbus_auth_observer_new()
@@ -271,7 +287,9 @@ func DBusAuthObserverNew() *DBusAuthObserver {
 // Emits the #GDBusAuthObserver::authorize-authenticated-peer signal on @observer.
 /*
 
-C function : g_dbus_auth_observer_authorize_authenticated_peer
+C function
+
+g_dbus_auth_observer_authorize_authenticated_peer
 */
 func (recv *DBusAuthObserver) AuthorizeAuthenticatedPeer(stream *IOStream, credentials *Credentials) bool {
 	c_stream := (*C.GIOStream)(C.NULL)
@@ -320,28 +338,30 @@ func (recv *DBusAuthObserver) AuthorizeAuthenticatedPeer(stream *IOStream, crede
 // #GError, the only valid thing you can do with that #GDBusConnection is to
 // free it with g_object_unref().
 //
-// ## An example D-Bus server # {#gdbus-server}
+// An example D-Bus server # {#gdbus-server}
 //
 // Here is an example for a D-Bus server:
 // [gdbus-example-server.c](https://git.gnome.org/browse/glib/tree/gio/tests/gdbus-example-server.c)
 //
-// ## An example for exporting a subtree # {#gdbus-subtree-server}
+// An example for exporting a subtree # {#gdbus-subtree-server}
 //
 // Here is an example for exporting a subtree:
 // [gdbus-example-subtree.c](https://git.gnome.org/browse/glib/tree/gio/tests/gdbus-example-subtree.c)
 //
-// ## An example for file descriptor passing # {#gdbus-unix-fd-client}
+// An example for file descriptor passing # {#gdbus-unix-fd-client}
 //
 // Here is an example for passing UNIX file descriptors:
 // [gdbus-unix-fd-client.c](https://git.gnome.org/browse/glib/tree/gio/tests/gdbus-example-unix-fd-client.c)
 //
-// ## An example for exporting a GObject # {#gdbus-export}
+// An example for exporting a GObject # {#gdbus-export}
 //
 // Here is an example for exporting a #GObject:
 // [gdbus-example-export.c](https://git.gnome.org/browse/glib/tree/gio/tests/gdbus-example-export.c)
 /*
 
-C record/class : GDBusConnection
+C type
+
+GDBusConnection
 */
 type DBusConnection struct {
 	native *C.GDBusConnection
@@ -377,7 +397,9 @@ func CastToDBusConnection(object *gobject.Object) *DBusConnection {
 // Finishes an operation started with g_dbus_connection_new().
 /*
 
-C function : g_dbus_connection_new_finish
+C function
+
+g_dbus_connection_new_finish
 */
 func DBusConnectionNewFinish(res *AsyncResult) (*DBusConnection, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
@@ -398,7 +420,9 @@ func DBusConnectionNewFinish(res *AsyncResult) (*DBusConnection, error) {
 // Finishes an operation started with g_dbus_connection_new_for_address().
 /*
 
-C function : g_dbus_connection_new_for_address_finish
+C function
+
+g_dbus_connection_new_for_address_finish
 */
 func DBusConnectionNewForAddressFinish(res *AsyncResult) (*DBusConnection, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
@@ -434,7 +458,9 @@ func DBusConnectionNewForAddressFinish(res *AsyncResult) (*DBusConnection, error
 // authentication process.
 /*
 
-C function : g_dbus_connection_new_for_address_sync
+C function
+
+g_dbus_connection_new_for_address_sync
 */
 func DBusConnectionNewForAddressSync(address string, flags DBusConnectionFlags, observer *DBusAuthObserver, cancellable *Cancellable) (*DBusConnection, error) {
 	c_address := C.CString(address)
@@ -482,7 +508,9 @@ func DBusConnectionNewForAddressSync(address string, flags DBusConnectionFlags, 
 // g_dbus_connection_new() for the asynchronous version.
 /*
 
-C function : g_dbus_connection_new_sync
+C function
+
+g_dbus_connection_new_sync
 */
 func DBusConnectionNewSync(stream *IOStream, guid string, flags DBusConnectionFlags, observer *DBusAuthObserver, cancellable *Cancellable) (*DBusConnection, error) {
 	c_stream := (*C.GIOStream)(C.NULL)
@@ -531,7 +559,9 @@ func DBusConnectionNewSync(stream *IOStream, guid string, flags DBusConnectionFl
 // Finishes an operation started with g_dbus_connection_close().
 /*
 
-C function : g_dbus_connection_close_finish
+C function
+
+g_dbus_connection_close_finish
 */
 func (recv *DBusConnection) CloseFinish(res *AsyncResult) (bool, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
@@ -555,7 +585,9 @@ func (recv *DBusConnection) CloseFinish(res *AsyncResult) (bool, error) {
 // does.
 /*
 
-C function : g_dbus_connection_close_sync
+C function
+
+g_dbus_connection_close_sync
 */
 func (recv *DBusConnection) CloseSync(cancellable *Cancellable) (bool, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -583,7 +615,9 @@ func (recv *DBusConnection) CloseSync(cancellable *Cancellable) (bool, error) {
 // Finishes an operation started with g_dbus_connection_flush().
 /*
 
-C function : g_dbus_connection_flush_finish
+C function
+
+g_dbus_connection_flush_finish
 */
 func (recv *DBusConnection) FlushFinish(res *AsyncResult) (bool, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
@@ -607,7 +641,9 @@ func (recv *DBusConnection) FlushFinish(res *AsyncResult) (bool, error) {
 // does.
 /*
 
-C function : g_dbus_connection_flush_sync
+C function
+
+g_dbus_connection_flush_sync
 */
 func (recv *DBusConnection) FlushSync(cancellable *Cancellable) (bool, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -631,7 +667,9 @@ func (recv *DBusConnection) FlushSync(cancellable *Cancellable) (bool, error) {
 // Gets the capabilities negotiated with the remote peer
 /*
 
-C function : g_dbus_connection_get_capabilities
+C function
+
+g_dbus_connection_get_capabilities
 */
 func (recv *DBusConnection) GetCapabilities() DBusCapabilityFlags {
 	retC := C.g_dbus_connection_get_capabilities((*C.GDBusConnection)(recv.native))
@@ -645,7 +683,9 @@ func (recv *DBusConnection) GetCapabilities() DBusCapabilityFlags {
 // #GDBusConnection:exit-on-close for more details.
 /*
 
-C function : g_dbus_connection_get_exit_on_close
+C function
+
+g_dbus_connection_get_exit_on_close
 */
 func (recv *DBusConnection) GetExitOnClose() bool {
 	retC := C.g_dbus_connection_get_exit_on_close((*C.GDBusConnection)(recv.native))
@@ -658,7 +698,9 @@ func (recv *DBusConnection) GetExitOnClose() bool {
 // authenticating. See #GDBusConnection:guid for more details.
 /*
 
-C function : g_dbus_connection_get_guid
+C function
+
+g_dbus_connection_get_guid
 */
 func (recv *DBusConnection) GetGuid() string {
 	retC := C.g_dbus_connection_get_guid((*C.GDBusConnection)(recv.native))
@@ -678,7 +720,9 @@ func (recv *DBusConnection) GetGuid() string {
 // %NULL for message bus clients.
 /*
 
-C function : g_dbus_connection_get_peer_credentials
+C function
+
+g_dbus_connection_get_peer_credentials
 */
 func (recv *DBusConnection) GetPeerCredentials() *Credentials {
 	retC := C.g_dbus_connection_get_peer_credentials((*C.GDBusConnection)(recv.native))
@@ -699,7 +743,9 @@ func (recv *DBusConnection) GetPeerCredentials() *Credentials {
 // the stream directly.
 /*
 
-C function : g_dbus_connection_get_stream
+C function
+
+g_dbus_connection_get_stream
 */
 func (recv *DBusConnection) GetStream() *IOStream {
 	retC := C.g_dbus_connection_get_stream((*C.GDBusConnection)(recv.native))
@@ -713,7 +759,9 @@ func (recv *DBusConnection) GetStream() *IOStream {
 // message bus connection.
 /*
 
-C function : g_dbus_connection_get_unique_name
+C function
+
+g_dbus_connection_get_unique_name
 */
 func (recv *DBusConnection) GetUniqueName() string {
 	retC := C.g_dbus_connection_get_unique_name((*C.GDBusConnection)(recv.native))
@@ -725,7 +773,9 @@ func (recv *DBusConnection) GetUniqueName() string {
 // Gets whether @connection is closed.
 /*
 
-C function : g_dbus_connection_is_closed
+C function
+
+g_dbus_connection_is_closed
 */
 func (recv *DBusConnection) IsClosed() bool {
 	retC := C.g_dbus_connection_is_closed((*C.GDBusConnection)(recv.native))
@@ -748,7 +798,9 @@ func (recv *DBusConnection) IsClosed() bool {
 // called when it is guaranteed that the data is no longer needed.
 /*
 
-C function : g_dbus_connection_remove_filter
+C function
+
+g_dbus_connection_remove_filter
 */
 func (recv *DBusConnection) RemoveFilter(filterId uint32) {
 	c_filter_id := (C.guint)(filterId)
@@ -779,7 +831,9 @@ func (recv *DBusConnection) RemoveFilter(filterId uint32) {
 // %G_DBUS_SEND_MESSAGE_FLAGS_PRESERVE_SERIAL flag.
 /*
 
-C function : g_dbus_connection_send_message
+C function
+
+g_dbus_connection_send_message
 */
 func (recv *DBusConnection) SendMessage(message *DBusMessage, flags DBusSendMessageFlags) (bool, uint32, error) {
 	c_message := (*C.GDBusMessage)(C.NULL)
@@ -820,7 +874,9 @@ func (recv *DBusConnection) SendMessage(message *DBusMessage, flags DBusSendMess
 // UNIX file descriptors.
 /*
 
-C function : g_dbus_connection_send_message_with_reply_finish
+C function
+
+g_dbus_connection_send_message_with_reply_finish
 */
 func (recv *DBusConnection) SendMessageWithReplyFinish(res *AsyncResult) (*DBusMessage, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
@@ -868,7 +924,9 @@ func (recv *DBusConnection) SendMessageWithReplyFinish(res *AsyncResult) (*DBusM
 // %G_DBUS_SEND_MESSAGE_FLAGS_PRESERVE_SERIAL flag.
 /*
 
-C function : g_dbus_connection_send_message_with_reply_sync
+C function
+
+g_dbus_connection_send_message_with_reply_sync
 */
 func (recv *DBusConnection) SendMessageWithReplySync(message *DBusMessage, flags DBusSendMessageFlags, timeoutMsec int32, cancellable *Cancellable) (*DBusMessage, uint32, error) {
 	c_message := (*C.GDBusMessage)(C.NULL)
@@ -914,7 +972,9 @@ func (recv *DBusConnection) SendMessageWithReplySync(message *DBusMessage, flags
 // when the user session ends.
 /*
 
-C function : g_dbus_connection_set_exit_on_close
+C function
+
+g_dbus_connection_set_exit_on_close
 */
 func (recv *DBusConnection) SetExitOnClose(exitOnClose bool) {
 	c_exit_on_close :=
@@ -930,7 +990,9 @@ func (recv *DBusConnection) SetExitOnClose(exitOnClose bool) {
 // Unsubscribes from signals.
 /*
 
-C function : g_dbus_connection_signal_unsubscribe
+C function
+
+g_dbus_connection_signal_unsubscribe
 */
 func (recv *DBusConnection) SignalUnsubscribe(subscriptionId uint32) {
 	c_subscription_id := (C.guint)(subscriptionId)
@@ -946,7 +1008,9 @@ func (recv *DBusConnection) SignalUnsubscribe(subscriptionId uint32) {
 // created with this flag or if the method has already been called.
 /*
 
-C function : g_dbus_connection_start_message_processing
+C function
+
+g_dbus_connection_start_message_processing
 */
 func (recv *DBusConnection) StartMessageProcessing() {
 	C.g_dbus_connection_start_message_processing((*C.GDBusConnection)(recv.native))
@@ -957,7 +1021,9 @@ func (recv *DBusConnection) StartMessageProcessing() {
 // Unregisters an object.
 /*
 
-C function : g_dbus_connection_unregister_object
+C function
+
+g_dbus_connection_unregister_object
 */
 func (recv *DBusConnection) UnregisterObject(registrationId uint32) bool {
 	c_registration_id := (C.guint)(registrationId)
@@ -971,7 +1037,9 @@ func (recv *DBusConnection) UnregisterObject(registrationId uint32) bool {
 // Unregisters a subtree.
 /*
 
-C function : g_dbus_connection_unregister_subtree
+C function
+
+g_dbus_connection_unregister_subtree
 */
 func (recv *DBusConnection) UnregisterSubtree(registrationId uint32) bool {
 	c_registration_id := (C.guint)(registrationId)
@@ -986,7 +1054,9 @@ func (recv *DBusConnection) UnregisterSubtree(registrationId uint32) bool {
 // on a #GDBusConnection.
 /*
 
-C record/class : GDBusMessage
+C type
+
+GDBusMessage
 */
 type DBusMessage struct {
 	native *C.GDBusMessage
@@ -1022,7 +1092,9 @@ func CastToDBusMessage(object *gobject.Object) *DBusMessage {
 // Creates a new empty #GDBusMessage.
 /*
 
-C function : g_dbus_message_new
+C function
+
+g_dbus_message_new
 */
 func DBusMessageNew() *DBusMessage {
 	retC := C.g_dbus_message_new()
@@ -1036,7 +1108,9 @@ func DBusMessageNew() *DBusMessage {
 // g_dbus_message_get_byte_order().
 /*
 
-C function : g_dbus_message_new_from_blob
+C function
+
+g_dbus_message_new_from_blob
 */
 func DBusMessageNewFromBlob(blob []uint8, capabilities DBusCapabilityFlags) (*DBusMessage, error) {
 	c_blob := &blob[0]
@@ -1061,7 +1135,9 @@ func DBusMessageNewFromBlob(blob []uint8, capabilities DBusCapabilityFlags) (*DB
 // Creates a new #GDBusMessage for a method call.
 /*
 
-C function : g_dbus_message_new_method_call
+C function
+
+g_dbus_message_new_method_call
 */
 func DBusMessageNewMethodCall(name string, path string, interface_ string, method string) *DBusMessage {
 	c_name := C.CString(name)
@@ -1085,7 +1161,9 @@ func DBusMessageNewMethodCall(name string, path string, interface_ string, metho
 // Creates a new #GDBusMessage for a signal emission.
 /*
 
-C function : g_dbus_message_new_signal
+C function
+
+g_dbus_message_new_signal
 */
 func DBusMessageNewSignal(path string, interface_ string, signal string) *DBusMessage {
 	c_path := C.CString(path)
@@ -1111,7 +1189,9 @@ func DBusMessageNewSignal(path string, interface_ string, signal string) *DBusMe
 // and the per-process or system-wide open files limit is reached.
 /*
 
-C function : g_dbus_message_copy
+C function
+
+g_dbus_message_copy
 */
 func (recv *DBusMessage) Copy() (*DBusMessage, error) {
 	var cThrowableError *C.GError
@@ -1130,7 +1210,9 @@ func (recv *DBusMessage) Copy() (*DBusMessage, error) {
 // Convenience to get the first item in the body of @message.
 /*
 
-C function : g_dbus_message_get_arg0
+C function
+
+g_dbus_message_get_arg0
 */
 func (recv *DBusMessage) GetArg0() string {
 	retC := C.g_dbus_message_get_arg0((*C.GDBusMessage)(recv.native))
@@ -1144,7 +1226,9 @@ func (recv *DBusMessage) GetArg0() string {
 // Gets the byte order of @message.
 /*
 
-C function : g_dbus_message_get_byte_order
+C function
+
+g_dbus_message_get_byte_order
 */
 func (recv *DBusMessage) GetByteOrder() DBusMessageByteOrder {
 	retC := C.g_dbus_message_get_byte_order((*C.GDBusMessage)(recv.native))
@@ -1156,7 +1240,9 @@ func (recv *DBusMessage) GetByteOrder() DBusMessageByteOrder {
 // Convenience getter for the %G_DBUS_MESSAGE_HEADER_FIELD_DESTINATION header field.
 /*
 
-C function : g_dbus_message_get_destination
+C function
+
+g_dbus_message_get_destination
 */
 func (recv *DBusMessage) GetDestination() string {
 	retC := C.g_dbus_message_get_destination((*C.GDBusMessage)(recv.native))
@@ -1168,7 +1254,9 @@ func (recv *DBusMessage) GetDestination() string {
 // Convenience getter for the %G_DBUS_MESSAGE_HEADER_FIELD_ERROR_NAME header field.
 /*
 
-C function : g_dbus_message_get_error_name
+C function
+
+g_dbus_message_get_error_name
 */
 func (recv *DBusMessage) GetErrorName() string {
 	retC := C.g_dbus_message_get_error_name((*C.GDBusMessage)(recv.native))
@@ -1180,7 +1268,9 @@ func (recv *DBusMessage) GetErrorName() string {
 // Gets the flags for @message.
 /*
 
-C function : g_dbus_message_get_flags
+C function
+
+g_dbus_message_get_flags
 */
 func (recv *DBusMessage) GetFlags() DBusMessageFlags {
 	retC := C.g_dbus_message_get_flags((*C.GDBusMessage)(recv.native))
@@ -1196,7 +1286,9 @@ func (recv *DBusMessage) GetFlags() DBusMessageFlags {
 // Convenience getter for the %G_DBUS_MESSAGE_HEADER_FIELD_INTERFACE header field.
 /*
 
-C function : g_dbus_message_get_interface
+C function
+
+g_dbus_message_get_interface
 */
 func (recv *DBusMessage) GetInterface() string {
 	retC := C.g_dbus_message_get_interface((*C.GDBusMessage)(recv.native))
@@ -1210,7 +1302,9 @@ func (recv *DBusMessage) GetInterface() string {
 // on the #GDBusMessage:locked property.
 /*
 
-C function : g_dbus_message_get_locked
+C function
+
+g_dbus_message_get_locked
 */
 func (recv *DBusMessage) GetLocked() bool {
 	retC := C.g_dbus_message_get_locked((*C.GDBusMessage)(recv.native))
@@ -1222,7 +1316,9 @@ func (recv *DBusMessage) GetLocked() bool {
 // Convenience getter for the %G_DBUS_MESSAGE_HEADER_FIELD_MEMBER header field.
 /*
 
-C function : g_dbus_message_get_member
+C function
+
+g_dbus_message_get_member
 */
 func (recv *DBusMessage) GetMember() string {
 	retC := C.g_dbus_message_get_member((*C.GDBusMessage)(recv.native))
@@ -1234,7 +1330,9 @@ func (recv *DBusMessage) GetMember() string {
 // Gets the type of @message.
 /*
 
-C function : g_dbus_message_get_message_type
+C function
+
+g_dbus_message_get_message_type
 */
 func (recv *DBusMessage) GetMessageType() DBusMessageType {
 	retC := C.g_dbus_message_get_message_type((*C.GDBusMessage)(recv.native))
@@ -1246,7 +1344,9 @@ func (recv *DBusMessage) GetMessageType() DBusMessageType {
 // Convenience getter for the %G_DBUS_MESSAGE_HEADER_FIELD_NUM_UNIX_FDS header field.
 /*
 
-C function : g_dbus_message_get_num_unix_fds
+C function
+
+g_dbus_message_get_num_unix_fds
 */
 func (recv *DBusMessage) GetNumUnixFds() uint32 {
 	retC := C.g_dbus_message_get_num_unix_fds((*C.GDBusMessage)(recv.native))
@@ -1258,7 +1358,9 @@ func (recv *DBusMessage) GetNumUnixFds() uint32 {
 // Convenience getter for the %G_DBUS_MESSAGE_HEADER_FIELD_PATH header field.
 /*
 
-C function : g_dbus_message_get_path
+C function
+
+g_dbus_message_get_path
 */
 func (recv *DBusMessage) GetPath() string {
 	retC := C.g_dbus_message_get_path((*C.GDBusMessage)(recv.native))
@@ -1270,7 +1372,9 @@ func (recv *DBusMessage) GetPath() string {
 // Convenience getter for the %G_DBUS_MESSAGE_HEADER_FIELD_REPLY_SERIAL header field.
 /*
 
-C function : g_dbus_message_get_reply_serial
+C function
+
+g_dbus_message_get_reply_serial
 */
 func (recv *DBusMessage) GetReplySerial() uint32 {
 	retC := C.g_dbus_message_get_reply_serial((*C.GDBusMessage)(recv.native))
@@ -1282,7 +1386,9 @@ func (recv *DBusMessage) GetReplySerial() uint32 {
 // Convenience getter for the %G_DBUS_MESSAGE_HEADER_FIELD_SENDER header field.
 /*
 
-C function : g_dbus_message_get_sender
+C function
+
+g_dbus_message_get_sender
 */
 func (recv *DBusMessage) GetSender() string {
 	retC := C.g_dbus_message_get_sender((*C.GDBusMessage)(recv.native))
@@ -1294,7 +1400,9 @@ func (recv *DBusMessage) GetSender() string {
 // Gets the serial for @message.
 /*
 
-C function : g_dbus_message_get_serial
+C function
+
+g_dbus_message_get_serial
 */
 func (recv *DBusMessage) GetSerial() uint32 {
 	retC := C.g_dbus_message_get_serial((*C.GDBusMessage)(recv.native))
@@ -1306,7 +1414,9 @@ func (recv *DBusMessage) GetSerial() uint32 {
 // Convenience getter for the %G_DBUS_MESSAGE_HEADER_FIELD_SIGNATURE header field.
 /*
 
-C function : g_dbus_message_get_signature
+C function
+
+g_dbus_message_get_signature
 */
 func (recv *DBusMessage) GetSignature() string {
 	retC := C.g_dbus_message_get_signature((*C.GDBusMessage)(recv.native))
@@ -1320,7 +1430,9 @@ func (recv *DBusMessage) GetSignature() string {
 // This method is only available on UNIX.
 /*
 
-C function : g_dbus_message_get_unix_fd_list
+C function
+
+g_dbus_message_get_unix_fd_list
 */
 func (recv *DBusMessage) GetUnixFdList() *UnixFDList {
 	retC := C.g_dbus_message_get_unix_fd_list((*C.GDBusMessage)(recv.native))
@@ -1332,7 +1444,9 @@ func (recv *DBusMessage) GetUnixFdList() *UnixFDList {
 // If @message is locked, does nothing. Otherwise locks the message.
 /*
 
-C function : g_dbus_message_lock
+C function
+
+g_dbus_message_lock
 */
 func (recv *DBusMessage) Lock() {
 	C.g_dbus_message_lock((*C.GDBusMessage)(recv.native))
@@ -1345,7 +1459,9 @@ func (recv *DBusMessage) Lock() {
 // Creates a new #GDBusMessage that is an error reply to @method_call_message.
 /*
 
-C function : g_dbus_message_new_method_error_literal
+C function
+
+g_dbus_message_new_method_error_literal
 */
 func (recv *DBusMessage) NewMethodErrorLiteral(errorName string, errorMessage string) *DBusMessage {
 	c_error_name := C.CString(errorName)
@@ -1365,7 +1481,9 @@ func (recv *DBusMessage) NewMethodErrorLiteral(errorName string, errorMessage st
 // Creates a new #GDBusMessage that is a reply to @method_call_message.
 /*
 
-C function : g_dbus_message_new_method_reply
+C function
+
+g_dbus_message_new_method_reply
 */
 func (recv *DBusMessage) NewMethodReply() *DBusMessage {
 	retC := C.g_dbus_message_new_method_reply((*C.GDBusMessage)(recv.native))
@@ -1408,7 +1526,9 @@ func (recv *DBusMessage) NewMethodReply() *DBusMessage {
 // ]|
 /*
 
-C function : g_dbus_message_print
+C function
+
+g_dbus_message_print
 */
 func (recv *DBusMessage) Print(indent uint32) string {
 	c_indent := (C.guint)(indent)
@@ -1425,7 +1545,9 @@ func (recv *DBusMessage) Print(indent uint32) string {
 // Sets the byte order of @message.
 /*
 
-C function : g_dbus_message_set_byte_order
+C function
+
+g_dbus_message_set_byte_order
 */
 func (recv *DBusMessage) SetByteOrder(byteOrder DBusMessageByteOrder) {
 	c_byte_order := (C.GDBusMessageByteOrder)(byteOrder)
@@ -1438,7 +1560,9 @@ func (recv *DBusMessage) SetByteOrder(byteOrder DBusMessageByteOrder) {
 // Convenience setter for the %G_DBUS_MESSAGE_HEADER_FIELD_DESTINATION header field.
 /*
 
-C function : g_dbus_message_set_destination
+C function
+
+g_dbus_message_set_destination
 */
 func (recv *DBusMessage) SetDestination(value string) {
 	c_value := C.CString(value)
@@ -1452,7 +1576,9 @@ func (recv *DBusMessage) SetDestination(value string) {
 // Convenience setter for the %G_DBUS_MESSAGE_HEADER_FIELD_ERROR_NAME header field.
 /*
 
-C function : g_dbus_message_set_error_name
+C function
+
+g_dbus_message_set_error_name
 */
 func (recv *DBusMessage) SetErrorName(value string) {
 	c_value := C.CString(value)
@@ -1466,7 +1592,9 @@ func (recv *DBusMessage) SetErrorName(value string) {
 // Sets the flags to set on @message.
 /*
 
-C function : g_dbus_message_set_flags
+C function
+
+g_dbus_message_set_flags
 */
 func (recv *DBusMessage) SetFlags(flags DBusMessageFlags) {
 	c_flags := (C.GDBusMessageFlags)(flags)
@@ -1481,7 +1609,9 @@ func (recv *DBusMessage) SetFlags(flags DBusMessageFlags) {
 // Convenience setter for the %G_DBUS_MESSAGE_HEADER_FIELD_INTERFACE header field.
 /*
 
-C function : g_dbus_message_set_interface
+C function
+
+g_dbus_message_set_interface
 */
 func (recv *DBusMessage) SetInterface(value string) {
 	c_value := C.CString(value)
@@ -1495,7 +1625,9 @@ func (recv *DBusMessage) SetInterface(value string) {
 // Convenience setter for the %G_DBUS_MESSAGE_HEADER_FIELD_MEMBER header field.
 /*
 
-C function : g_dbus_message_set_member
+C function
+
+g_dbus_message_set_member
 */
 func (recv *DBusMessage) SetMember(value string) {
 	c_value := C.CString(value)
@@ -1509,7 +1641,9 @@ func (recv *DBusMessage) SetMember(value string) {
 // Sets @message to be of @type.
 /*
 
-C function : g_dbus_message_set_message_type
+C function
+
+g_dbus_message_set_message_type
 */
 func (recv *DBusMessage) SetMessageType(type_ DBusMessageType) {
 	c_type := (C.GDBusMessageType)(type_)
@@ -1522,7 +1656,9 @@ func (recv *DBusMessage) SetMessageType(type_ DBusMessageType) {
 // Convenience setter for the %G_DBUS_MESSAGE_HEADER_FIELD_NUM_UNIX_FDS header field.
 /*
 
-C function : g_dbus_message_set_num_unix_fds
+C function
+
+g_dbus_message_set_num_unix_fds
 */
 func (recv *DBusMessage) SetNumUnixFds(value uint32) {
 	c_value := (C.guint32)(value)
@@ -1535,7 +1671,9 @@ func (recv *DBusMessage) SetNumUnixFds(value uint32) {
 // Convenience setter for the %G_DBUS_MESSAGE_HEADER_FIELD_PATH header field.
 /*
 
-C function : g_dbus_message_set_path
+C function
+
+g_dbus_message_set_path
 */
 func (recv *DBusMessage) SetPath(value string) {
 	c_value := C.CString(value)
@@ -1549,7 +1687,9 @@ func (recv *DBusMessage) SetPath(value string) {
 // Convenience setter for the %G_DBUS_MESSAGE_HEADER_FIELD_REPLY_SERIAL header field.
 /*
 
-C function : g_dbus_message_set_reply_serial
+C function
+
+g_dbus_message_set_reply_serial
 */
 func (recv *DBusMessage) SetReplySerial(value uint32) {
 	c_value := (C.guint32)(value)
@@ -1562,7 +1702,9 @@ func (recv *DBusMessage) SetReplySerial(value uint32) {
 // Convenience setter for the %G_DBUS_MESSAGE_HEADER_FIELD_SENDER header field.
 /*
 
-C function : g_dbus_message_set_sender
+C function
+
+g_dbus_message_set_sender
 */
 func (recv *DBusMessage) SetSender(value string) {
 	c_value := C.CString(value)
@@ -1576,7 +1718,9 @@ func (recv *DBusMessage) SetSender(value string) {
 // Sets the serial for @message.
 /*
 
-C function : g_dbus_message_set_serial
+C function
+
+g_dbus_message_set_serial
 */
 func (recv *DBusMessage) SetSerial(serial uint32) {
 	c_serial := (C.guint32)(serial)
@@ -1589,7 +1733,9 @@ func (recv *DBusMessage) SetSerial(serial uint32) {
 // Convenience setter for the %G_DBUS_MESSAGE_HEADER_FIELD_SIGNATURE header field.
 /*
 
-C function : g_dbus_message_set_signature
+C function
+
+g_dbus_message_set_signature
 */
 func (recv *DBusMessage) SetSignature(value string) {
 	c_value := C.CString(value)
@@ -1608,7 +1754,9 @@ func (recv *DBusMessage) SetSignature(value string) {
 // This method is only available on UNIX.
 /*
 
-C function : g_dbus_message_set_unix_fd_list
+C function
+
+g_dbus_message_set_unix_fd_list
 */
 func (recv *DBusMessage) SetUnixFdList(fdList *UnixFDList) {
 	c_fd_list := (*C.GUnixFDList)(C.NULL)
@@ -1632,7 +1780,9 @@ func (recv *DBusMessage) SetUnixFdList(fdList *UnixFDList) {
 // well as the first string item in @message's body.
 /*
 
-C function : g_dbus_message_to_gerror
+C function
+
+g_dbus_message_to_gerror
 */
 func (recv *DBusMessage) ToGerror() (bool, error) {
 	var cThrowableError *C.GError
@@ -1657,7 +1807,9 @@ func (recv *DBusMessage) ToGerror() (bool, error) {
 // #GDBusInterfaceVTable that was passed to g_dbus_connection_register_object().
 /*
 
-C record/class : GDBusMethodInvocation
+C type
+
+GDBusMethodInvocation
 */
 type DBusMethodInvocation struct {
 	native *C.GDBusMethodInvocation
@@ -1693,7 +1845,9 @@ func CastToDBusMethodInvocation(object *gobject.Object) *DBusMethodInvocation {
 // Gets the #GDBusConnection the method was invoked on.
 /*
 
-C function : g_dbus_method_invocation_get_connection
+C function
+
+g_dbus_method_invocation_get_connection
 */
 func (recv *DBusMethodInvocation) GetConnection() *DBusConnection {
 	retC := C.g_dbus_method_invocation_get_connection((*C.GDBusMethodInvocation)(recv.native))
@@ -1710,7 +1864,9 @@ func (recv *DBusMethodInvocation) GetConnection() *DBusConnection {
 // #GDBusInterfaceVTable for more information.
 /*
 
-C function : g_dbus_method_invocation_get_interface_name
+C function
+
+g_dbus_method_invocation_get_interface_name
 */
 func (recv *DBusMethodInvocation) GetInterfaceName() string {
 	retC := C.g_dbus_method_invocation_get_interface_name((*C.GDBusMethodInvocation)(recv.native))
@@ -1729,7 +1885,9 @@ func (recv *DBusMethodInvocation) GetInterfaceName() string {
 // UNIX file descriptors.
 /*
 
-C function : g_dbus_method_invocation_get_message
+C function
+
+g_dbus_method_invocation_get_message
 */
 func (recv *DBusMethodInvocation) GetMessage() *DBusMessage {
 	retC := C.g_dbus_method_invocation_get_message((*C.GDBusMethodInvocation)(recv.native))
@@ -1746,7 +1904,9 @@ func (recv *DBusMethodInvocation) GetMessage() *DBusMessage {
 // #GDBusInterfaceVTable for more information.
 /*
 
-C function : g_dbus_method_invocation_get_method_info
+C function
+
+g_dbus_method_invocation_get_method_info
 */
 func (recv *DBusMethodInvocation) GetMethodInfo() *DBusMethodInfo {
 	retC := C.g_dbus_method_invocation_get_method_info((*C.GDBusMethodInvocation)(recv.native))
@@ -1758,7 +1918,9 @@ func (recv *DBusMethodInvocation) GetMethodInfo() *DBusMethodInfo {
 // Gets the name of the method that was invoked.
 /*
 
-C function : g_dbus_method_invocation_get_method_name
+C function
+
+g_dbus_method_invocation_get_method_name
 */
 func (recv *DBusMethodInvocation) GetMethodName() string {
 	retC := C.g_dbus_method_invocation_get_method_name((*C.GDBusMethodInvocation)(recv.native))
@@ -1770,7 +1932,9 @@ func (recv *DBusMethodInvocation) GetMethodName() string {
 // Gets the object path the method was invoked on.
 /*
 
-C function : g_dbus_method_invocation_get_object_path
+C function
+
+g_dbus_method_invocation_get_object_path
 */
 func (recv *DBusMethodInvocation) GetObjectPath() string {
 	retC := C.g_dbus_method_invocation_get_object_path((*C.GDBusMethodInvocation)(recv.native))
@@ -1784,7 +1948,9 @@ func (recv *DBusMethodInvocation) GetObjectPath() string {
 // Gets the bus name that invoked the method.
 /*
 
-C function : g_dbus_method_invocation_get_sender
+C function
+
+g_dbus_method_invocation_get_sender
 */
 func (recv *DBusMethodInvocation) GetSender() string {
 	retC := C.g_dbus_method_invocation_get_sender((*C.GDBusMethodInvocation)(recv.native))
@@ -1796,7 +1962,9 @@ func (recv *DBusMethodInvocation) GetSender() string {
 // Gets the @user_data #gpointer passed to g_dbus_connection_register_object().
 /*
 
-C function : g_dbus_method_invocation_get_user_data
+C function
+
+g_dbus_method_invocation_get_user_data
 */
 func (recv *DBusMethodInvocation) GetUserData() uintptr {
 	retC := C.g_dbus_method_invocation_get_user_data((*C.GDBusMethodInvocation)(recv.native))
@@ -1812,7 +1980,9 @@ func (recv *DBusMethodInvocation) GetUserData() uintptr {
 // @invocation.
 /*
 
-C function : g_dbus_method_invocation_return_dbus_error
+C function
+
+g_dbus_method_invocation_return_dbus_error
 */
 func (recv *DBusMethodInvocation) ReturnDbusError(errorName string, errorMessage string) {
 	c_error_name := C.CString(errorName)
@@ -1835,7 +2005,9 @@ func (recv *DBusMethodInvocation) ReturnDbusError(errorName string, errorMessage
 // @invocation.
 /*
 
-C function : g_dbus_method_invocation_return_error_literal
+C function
+
+g_dbus_method_invocation_return_error_literal
 */
 func (recv *DBusMethodInvocation) ReturnErrorLiteral(domain glib.Quark, code int32, message string) {
 	c_domain := (C.GQuark)(domain)
@@ -1860,7 +2032,9 @@ func (recv *DBusMethodInvocation) ReturnErrorLiteral(domain glib.Quark, code int
 // @invocation.
 /*
 
-C function : g_dbus_method_invocation_return_gerror
+C function
+
+g_dbus_method_invocation_return_gerror
 */
 func (recv *DBusMethodInvocation) ReturnGerror(error *glib.Error) {
 	c_error := (*C.GError)(C.NULL)
@@ -1915,7 +2089,9 @@ func (recv *DBusMethodInvocation) ReturnGerror(error *glib.Error) {
 // [gdbus-example-watch-proxy.c](https://git.gnome.org/browse/glib/tree/gio/tests/gdbus-example-watch-proxy.c)
 /*
 
-C record/class : GDBusProxy
+C type
+
+GDBusProxy
 */
 type DBusProxy struct {
 	native *C.GDBusProxy
@@ -1953,7 +2129,9 @@ func CastToDBusProxy(object *gobject.Object) *DBusProxy {
 // Finishes creating a #GDBusProxy.
 /*
 
-C function : g_dbus_proxy_new_finish
+C function
+
+g_dbus_proxy_new_finish
 */
 func DBusProxyNewFinish(res *AsyncResult) (*DBusProxy, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
@@ -1974,7 +2152,9 @@ func DBusProxyNewFinish(res *AsyncResult) (*DBusProxy, error) {
 // Finishes creating a #GDBusProxy.
 /*
 
-C function : g_dbus_proxy_new_for_bus_finish
+C function
+
+g_dbus_proxy_new_for_bus_finish
 */
 func DBusProxyNewForBusFinish(res *AsyncResult) (*DBusProxy, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
@@ -1997,7 +2177,9 @@ func DBusProxyNewForBusFinish(res *AsyncResult) (*DBusProxy, error) {
 // #GDBusProxy is used in this [example][gdbus-wellknown-proxy].
 /*
 
-C function : g_dbus_proxy_new_for_bus_sync
+C function
+
+g_dbus_proxy_new_for_bus_sync
 */
 func DBusProxyNewForBusSync(busType BusType, flags DBusProxyFlags, info *DBusInterfaceInfo, name string, objectPath string, interfaceName string, cancellable *Cancellable) (*DBusProxy, error) {
 	c_bus_type := (C.GBusType)(busType)
@@ -2056,7 +2238,9 @@ func DBusProxyNewForBusSync(busType BusType, flags DBusProxyFlags, info *DBusInt
 // #GDBusProxy is used in this [example][gdbus-wellknown-proxy].
 /*
 
-C function : g_dbus_proxy_new_sync
+C function
+
+g_dbus_proxy_new_sync
 */
 func DBusProxyNewSync(connection *DBusConnection, flags DBusProxyFlags, info *DBusInterfaceInfo, name string, objectPath string, interfaceName string, cancellable *Cancellable) (*DBusProxy, error) {
 	c_connection := (*C.GDBusConnection)(C.NULL)
@@ -2111,7 +2295,9 @@ func DBusProxyNewSync(connection *DBusConnection, flags DBusProxyFlags, info *DB
 // Gets the connection @proxy is for.
 /*
 
-C function : g_dbus_proxy_get_connection
+C function
+
+g_dbus_proxy_get_connection
 */
 func (recv *DBusProxy) GetConnection() *DBusConnection {
 	retC := C.g_dbus_proxy_get_connection((*C.GDBusProxy)(recv.native))
@@ -2127,7 +2313,9 @@ func (recv *DBusProxy) GetConnection() *DBusConnection {
 // See the #GDBusProxy:g-default-timeout property for more details.
 /*
 
-C function : g_dbus_proxy_get_default_timeout
+C function
+
+g_dbus_proxy_get_default_timeout
 */
 func (recv *DBusProxy) GetDefaultTimeout() int32 {
 	retC := C.g_dbus_proxy_get_default_timeout((*C.GDBusProxy)(recv.native))
@@ -2139,7 +2327,9 @@ func (recv *DBusProxy) GetDefaultTimeout() int32 {
 // Gets the flags that @proxy was constructed with.
 /*
 
-C function : g_dbus_proxy_get_flags
+C function
+
+g_dbus_proxy_get_flags
 */
 func (recv *DBusProxy) GetFlags() DBusProxyFlags {
 	retC := C.g_dbus_proxy_get_flags((*C.GDBusProxy)(recv.native))
@@ -2153,7 +2343,9 @@ func (recv *DBusProxy) GetFlags() DBusProxyFlags {
 // property for more details.
 /*
 
-C function : g_dbus_proxy_get_interface_info
+C function
+
+g_dbus_proxy_get_interface_info
 */
 func (recv *DBusProxy) GetInterfaceInfo() *DBusInterfaceInfo {
 	retC := C.g_dbus_proxy_get_interface_info((*C.GDBusProxy)(recv.native))
@@ -2170,7 +2362,9 @@ func (recv *DBusProxy) GetInterfaceInfo() *DBusInterfaceInfo {
 // Gets the D-Bus interface name @proxy is for.
 /*
 
-C function : g_dbus_proxy_get_interface_name
+C function
+
+g_dbus_proxy_get_interface_name
 */
 func (recv *DBusProxy) GetInterfaceName() string {
 	retC := C.g_dbus_proxy_get_interface_name((*C.GDBusProxy)(recv.native))
@@ -2182,7 +2376,9 @@ func (recv *DBusProxy) GetInterfaceName() string {
 // Gets the name that @proxy was constructed for.
 /*
 
-C function : g_dbus_proxy_get_name
+C function
+
+g_dbus_proxy_get_name
 */
 func (recv *DBusProxy) GetName() string {
 	retC := C.g_dbus_proxy_get_name((*C.GDBusProxy)(recv.native))
@@ -2197,7 +2393,9 @@ func (recv *DBusProxy) GetName() string {
 // #GDBusProxy:g-name-owner property.
 /*
 
-C function : g_dbus_proxy_get_name_owner
+C function
+
+g_dbus_proxy_get_name_owner
 */
 func (recv *DBusProxy) GetNameOwner() string {
 	retC := C.g_dbus_proxy_get_name_owner((*C.GDBusProxy)(recv.native))
@@ -2210,7 +2408,9 @@ func (recv *DBusProxy) GetNameOwner() string {
 // Gets the object path @proxy is for.
 /*
 
-C function : g_dbus_proxy_get_object_path
+C function
+
+g_dbus_proxy_get_object_path
 */
 func (recv *DBusProxy) GetObjectPath() string {
 	retC := C.g_dbus_proxy_get_object_path((*C.GDBusProxy)(recv.native))
@@ -2228,7 +2428,9 @@ func (recv *DBusProxy) GetObjectPath() string {
 // See the #GDBusProxy:g-default-timeout property for more details.
 /*
 
-C function : g_dbus_proxy_set_default_timeout
+C function
+
+g_dbus_proxy_set_default_timeout
 */
 func (recv *DBusProxy) SetDefaultTimeout(timeoutMsec int32) {
 	c_timeout_msec := (C.gint)(timeoutMsec)
@@ -2243,7 +2445,9 @@ func (recv *DBusProxy) SetDefaultTimeout(timeoutMsec int32) {
 // details.
 /*
 
-C function : g_dbus_proxy_set_interface_info
+C function
+
+g_dbus_proxy_set_interface_info
 */
 func (recv *DBusProxy) SetInterfaceInfo(info *DBusInterfaceInfo) {
 	c_info := (*C.GDBusInterfaceInfo)(C.NULL)
@@ -2269,7 +2473,9 @@ func (recv *DBusProxy) SetInterfaceInfo(info *DBusInterfaceInfo) {
 // in [gdbus-example-peer.c](https://git.gnome.org/browse/glib/tree/gio/tests/gdbus-example-peer.c).
 /*
 
-C record/class : GDBusServer
+C type
+
+GDBusServer
 */
 type DBusServer struct {
 	native *C.GDBusServer
@@ -2320,7 +2526,9 @@ func CastToDBusServer(object *gobject.Object) *DBusServer {
 // g_dbus_server_new() for the asynchronous version.
 /*
 
-C function : g_dbus_server_new_sync
+C function
+
+g_dbus_server_new_sync
 */
 func DBusServerNewSync(address string, flags DBusServerFlags, guid string, observer *DBusAuthObserver, cancellable *Cancellable) (*DBusServer, error) {
 	c_address := C.CString(address)
@@ -2359,7 +2567,9 @@ func DBusServerNewSync(address string, flags DBusServerFlags, guid string, obser
 // string that can be used by clients to connect to @server.
 /*
 
-C function : g_dbus_server_get_client_address
+C function
+
+g_dbus_server_get_client_address
 */
 func (recv *DBusServer) GetClientAddress() string {
 	retC := C.g_dbus_server_get_client_address((*C.GDBusServer)(recv.native))
@@ -2371,7 +2581,9 @@ func (recv *DBusServer) GetClientAddress() string {
 // Gets the flags for @server.
 /*
 
-C function : g_dbus_server_get_flags
+C function
+
+g_dbus_server_get_flags
 */
 func (recv *DBusServer) GetFlags() DBusServerFlags {
 	retC := C.g_dbus_server_get_flags((*C.GDBusServer)(recv.native))
@@ -2383,7 +2595,9 @@ func (recv *DBusServer) GetFlags() DBusServerFlags {
 // Gets the GUID for @server.
 /*
 
-C function : g_dbus_server_get_guid
+C function
+
+g_dbus_server_get_guid
 */
 func (recv *DBusServer) GetGuid() string {
 	retC := C.g_dbus_server_get_guid((*C.GDBusServer)(recv.native))
@@ -2395,7 +2609,9 @@ func (recv *DBusServer) GetGuid() string {
 // Gets whether @server is active.
 /*
 
-C function : g_dbus_server_is_active
+C function
+
+g_dbus_server_is_active
 */
 func (recv *DBusServer) IsActive() bool {
 	retC := C.g_dbus_server_is_active((*C.GDBusServer)(recv.native))
@@ -2407,7 +2623,9 @@ func (recv *DBusServer) IsActive() bool {
 // Starts @server.
 /*
 
-C function : g_dbus_server_start
+C function
+
+g_dbus_server_start
 */
 func (recv *DBusServer) Start() {
 	C.g_dbus_server_start((*C.GDBusServer)(recv.native))
@@ -2418,7 +2636,9 @@ func (recv *DBusServer) Start() {
 // Stops @server.
 /*
 
-C function : g_dbus_server_stop
+C function
+
+g_dbus_server_stop
 */
 func (recv *DBusServer) Stop() {
 	C.g_dbus_server_stop((*C.GDBusServer)(recv.native))
@@ -2440,7 +2660,9 @@ func (recv *DBusServer) Stop() {
 // The returned string will always be nul-terminated on success.
 /*
 
-C function : g_data_input_stream_read_upto
+C function
+
+g_data_input_stream_read_upto
 */
 func (recv *DataInputStream) ReadUpto(stopChars string, stopCharsLen int64, cancellable *Cancellable) (string, uint64, error) {
 	c_stop_chars := C.CString(stopChars)
@@ -2481,7 +2703,9 @@ func (recv *DataInputStream) ReadUpto(stopChars string, stopCharsLen int64, canc
 // @ostream must be closed before calling this function.
 /*
 
-C function : g_memory_output_stream_steal_data
+C function
+
+g_memory_output_stream_steal_data
 */
 func (recv *MemoryOutputStream) StealData() uintptr {
 	retC := C.g_memory_output_stream_steal_data((*C.GMemoryOutputStream)(recv.native))
@@ -2493,7 +2717,9 @@ func (recv *MemoryOutputStream) StealData() uintptr {
 // Gets @addr's scheme
 /*
 
-C function : g_network_address_get_scheme
+C function
+
+g_network_address_get_scheme
 */
 func (recv *NetworkAddress) GetScheme() string {
 	retC := C.g_network_address_get_scheme((*C.GNetworkAddress)(recv.native))
@@ -2506,7 +2732,9 @@ func (recv *NetworkAddress) GetScheme() string {
 // is used as scheme.
 /*
 
-C function : g_network_service_get_scheme
+C function
+
+g_network_service_get_scheme
 */
 func (recv *NetworkService) GetScheme() string {
 	retC := C.g_network_service_get_scheme((*C.GNetworkService)(recv.native))
@@ -2519,7 +2747,9 @@ func (recv *NetworkService) GetScheme() string {
 // is used as scheme.
 /*
 
-C function : g_network_service_set_scheme
+C function
+
+g_network_service_set_scheme
 */
 func (recv *NetworkService) SetScheme(scheme string) {
 	c_scheme := C.CString(scheme)
@@ -2547,7 +2777,9 @@ func (recv *NetworkService) SetScheme(scheme string) {
 // the non-blocking version.
 /*
 
-C function : g_permission_acquire
+C function
+
+g_permission_acquire
 */
 func (recv *Permission) Acquire(cancellable *Cancellable) (bool, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -2577,7 +2809,9 @@ func (recv *Permission) Acquire(cancellable *Cancellable) (bool, error) {
 // g_permission_acquire().
 /*
 
-C function : g_permission_acquire_finish
+C function
+
+g_permission_acquire_finish
 */
 func (recv *Permission) AcquireFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -2600,7 +2834,9 @@ func (recv *Permission) AcquireFinish(result *AsyncResult) (bool, error) {
 // @permission represents the permission to perform.
 /*
 
-C function : g_permission_get_allowed
+C function
+
+g_permission_get_allowed
 */
 func (recv *Permission) GetAllowed() bool {
 	retC := C.g_permission_get_allowed((*C.GPermission)(recv.native))
@@ -2614,7 +2850,9 @@ func (recv *Permission) GetAllowed() bool {
 // g_permission_acquire().
 /*
 
-C function : g_permission_get_can_acquire
+C function
+
+g_permission_get_can_acquire
 */
 func (recv *Permission) GetCanAcquire() bool {
 	retC := C.g_permission_get_can_acquire((*C.GPermission)(recv.native))
@@ -2628,7 +2866,9 @@ func (recv *Permission) GetCanAcquire() bool {
 // g_permission_release().
 /*
 
-C function : g_permission_get_can_release
+C function
+
+g_permission_get_can_release
 */
 func (recv *Permission) GetCanRelease() bool {
 	retC := C.g_permission_get_can_release((*C.GPermission)(recv.native))
@@ -2644,7 +2884,9 @@ func (recv *Permission) GetCanRelease() bool {
 // GObject notify signals are generated, as appropriate.
 /*
 
-C function : g_permission_impl_update
+C function
+
+g_permission_impl_update
 */
 func (recv *Permission) ImplUpdate(allowed bool, canAcquire bool, canRelease bool) {
 	c_allowed :=
@@ -2678,7 +2920,9 @@ func (recv *Permission) ImplUpdate(allowed bool, canAcquire bool, canRelease boo
 // the non-blocking version.
 /*
 
-C function : g_permission_release
+C function
+
+g_permission_release
 */
 func (recv *Permission) Release(cancellable *Cancellable) (bool, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -2708,7 +2952,9 @@ func (recv *Permission) Release(cancellable *Cancellable) (bool, error) {
 // g_permission_release().
 /*
 
-C function : g_permission_release_finish
+C function
+
+g_permission_release_finish
 */
 func (recv *Permission) ReleaseFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -2729,7 +2975,9 @@ func (recv *Permission) ReleaseFinish(result *AsyncResult) (bool, error) {
 // Support for proxied #GInetSocketAddress.
 /*
 
-C record/class : GProxyAddress
+C type
+
+GProxyAddress
 */
 type ProxyAddress struct {
 	native *C.GProxyAddress
@@ -2782,7 +3030,9 @@ func CastToProxyAddress(object *gobject.Object) *ProxyAddress {
 // directly if you want to set those.)
 /*
 
-C function : g_proxy_address_new
+C function
+
+g_proxy_address_new
 */
 func ProxyAddressNew(inetaddr *InetAddress, port uint16, protocol string, destHostname string, destPort uint16, username string, password string) *ProxyAddress {
 	c_inetaddr := (*C.GInetAddress)(C.NULL)
@@ -2817,7 +3067,9 @@ func ProxyAddressNew(inetaddr *InetAddress, port uint16, protocol string, destHo
 // itself.
 /*
 
-C function : g_proxy_address_get_destination_hostname
+C function
+
+g_proxy_address_get_destination_hostname
 */
 func (recv *ProxyAddress) GetDestinationHostname() string {
 	retC := C.g_proxy_address_get_destination_hostname((*C.GProxyAddress)(recv.native))
@@ -2831,7 +3083,9 @@ func (recv *ProxyAddress) GetDestinationHostname() string {
 // port number of the proxy itself.
 /*
 
-C function : g_proxy_address_get_destination_port
+C function
+
+g_proxy_address_get_destination_port
 */
 func (recv *ProxyAddress) GetDestinationPort() uint16 {
 	retC := C.g_proxy_address_get_destination_port((*C.GProxyAddress)(recv.native))
@@ -2843,7 +3097,9 @@ func (recv *ProxyAddress) GetDestinationPort() uint16 {
 // Gets @proxy's password.
 /*
 
-C function : g_proxy_address_get_password
+C function
+
+g_proxy_address_get_password
 */
 func (recv *ProxyAddress) GetPassword() string {
 	retC := C.g_proxy_address_get_password((*C.GProxyAddress)(recv.native))
@@ -2855,7 +3111,9 @@ func (recv *ProxyAddress) GetPassword() string {
 // Gets @proxy's protocol. eg, "socks" or "http"
 /*
 
-C function : g_proxy_address_get_protocol
+C function
+
+g_proxy_address_get_protocol
 */
 func (recv *ProxyAddress) GetProtocol() string {
 	retC := C.g_proxy_address_get_protocol((*C.GProxyAddress)(recv.native))
@@ -2867,7 +3125,9 @@ func (recv *ProxyAddress) GetProtocol() string {
 // Gets @proxy's username.
 /*
 
-C function : g_proxy_address_get_username
+C function
+
+g_proxy_address_get_username
 */
 func (recv *ProxyAddress) GetUsername() string {
 	retC := C.g_proxy_address_get_username((*C.GProxyAddress)(recv.native))
@@ -2885,7 +3145,9 @@ func (recv *ProxyAddress) GetUsername() string {
 // on the context.  See g_main_context_push_thread_default().
 /*
 
-C function : g_settings_new
+C function
+
+g_settings_new
 */
 func SettingsNew(schemaId string) *Settings {
 	c_schema_id := C.CString(schemaId)
@@ -2907,7 +3169,9 @@ func SettingsNew(schemaId string) *Settings {
 // settings instead of the settings for this user.
 /*
 
-C function : g_settings_new_with_backend
+C function
+
+g_settings_new_with_backend
 */
 func SettingsNewWithBackend(schemaId string, backend *SettingsBackend) *Settings {
 	c_schema_id := C.CString(schemaId)
@@ -2931,7 +3195,9 @@ func SettingsNewWithBackend(schemaId string, backend *SettingsBackend) *Settings
 // g_settings_new_with_path().
 /*
 
-C function : g_settings_new_with_backend_and_path
+C function
+
+g_settings_new_with_backend_and_path
 */
 func SettingsNewWithBackendAndPath(schemaId string, backend *SettingsBackend, path string) *Settings {
 	c_schema_id := C.CString(schemaId)
@@ -2966,7 +3232,9 @@ func SettingsNewWithBackendAndPath(schemaId string, backend *SettingsBackend, pa
 // characters.
 /*
 
-C function : g_settings_new_with_path
+C function
+
+g_settings_new_with_path
 */
 func SettingsNewWithPath(schemaId string, path string) *Settings {
 	c_schema_id := C.CString(schemaId)
@@ -3003,7 +3271,9 @@ func SettingsNewWithPath(schemaId string, path string) *Settings {
 // binding overrides the first one.
 /*
 
-C function : g_settings_bind
+C function
+
+g_settings_bind
 */
 func (recv *Settings) Bind(key string, object uintptr, property string, flags SettingsBindFlags) {
 	c_key := C.CString(key)
@@ -3042,7 +3312,9 @@ func (recv *Settings) Bind(key string, object uintptr, property string, flags Se
 // binding overrides the first one.
 /*
 
-C function : g_settings_bind_writable
+C function
+
+g_settings_bind_writable
 */
 func (recv *Settings) BindWritable(key string, object uintptr, property string, inverted bool) {
 	c_key := C.CString(key)
@@ -3066,7 +3338,9 @@ func (recv *Settings) BindWritable(key string, object uintptr, property string, 
 // backend, but kept locally until g_settings_apply() is called.
 /*
 
-C function : g_settings_delay
+C function
+
+g_settings_delay
 */
 func (recv *Settings) Delay() {
 	C.g_settings_delay((*C.GSettings)(recv.native))
@@ -3084,7 +3358,9 @@ func (recv *Settings) Delay() {
 // having a boolean type in the schema for @settings.
 /*
 
-C function : g_settings_get_boolean
+C function
+
+g_settings_get_boolean
 */
 func (recv *Settings) GetBoolean(key string) bool {
 	c_key := C.CString(key)
@@ -3104,7 +3380,9 @@ func (recv *Settings) GetBoolean(key string) bool {
 // in the schema of @settings using a <child> element.
 /*
 
-C function : g_settings_get_child
+C function
+
+g_settings_get_child
 */
 func (recv *Settings) GetChild(name string) *Settings {
 	c_name := C.CString(name)
@@ -3124,7 +3402,9 @@ func (recv *Settings) GetChild(name string) *Settings {
 // having a 'double' type in the schema for @settings.
 /*
 
-C function : g_settings_get_double
+C function
+
+g_settings_get_double
 */
 func (recv *Settings) GetDouble(key string) float64 {
 	c_key := C.CString(key)
@@ -3150,7 +3430,9 @@ func (recv *Settings) GetDouble(key string) float64 {
 // default value.
 /*
 
-C function : g_settings_get_enum
+C function
+
+g_settings_get_enum
 */
 func (recv *Settings) GetEnum(key string) int32 {
 	c_key := C.CString(key)
@@ -3176,7 +3458,9 @@ func (recv *Settings) GetEnum(key string) int32 {
 // value.
 /*
 
-C function : g_settings_get_flags
+C function
+
+g_settings_get_flags
 */
 func (recv *Settings) GetFlags(key string) uint32 {
 	c_key := C.CString(key)
@@ -3192,7 +3476,9 @@ func (recv *Settings) GetFlags(key string) uint32 {
 // changes.  This can only be the case if it is in 'delayed-apply' mode.
 /*
 
-C function : g_settings_get_has_unapplied
+C function
+
+g_settings_get_has_unapplied
 */
 func (recv *Settings) GetHasUnapplied() bool {
 	retC := C.g_settings_get_has_unapplied((*C.GSettings)(recv.native))
@@ -3209,7 +3495,9 @@ func (recv *Settings) GetHasUnapplied() bool {
 // having a int32 type in the schema for @settings.
 /*
 
-C function : g_settings_get_int
+C function
+
+g_settings_get_int
 */
 func (recv *Settings) GetInt(key string) int32 {
 	c_key := C.CString(key)
@@ -3229,7 +3517,9 @@ func (recv *Settings) GetInt(key string) int32 {
 // having a string type in the schema for @settings.
 /*
 
-C function : g_settings_get_string
+C function
+
+g_settings_get_string
 */
 func (recv *Settings) GetString(key string) string {
 	c_key := C.CString(key)
@@ -3249,7 +3539,9 @@ func (recv *Settings) GetString(key string) string {
 // Finds out if a key can be written or not
 /*
 
-C function : g_settings_is_writable
+C function
+
+g_settings_is_writable
 */
 func (recv *Settings) IsWritable(name string) bool {
 	c_name := C.CString(name)
@@ -3271,7 +3563,9 @@ func (recv *Settings) IsWritable(name string) bool {
 // having a boolean type in the schema for @settings.
 /*
 
-C function : g_settings_set_boolean
+C function
+
+g_settings_set_boolean
 */
 func (recv *Settings) SetBoolean(key string, value bool) bool {
 	c_key := C.CString(key)
@@ -3294,7 +3588,9 @@ func (recv *Settings) SetBoolean(key string, value bool) bool {
 // having a 'double' type in the schema for @settings.
 /*
 
-C function : g_settings_set_double
+C function
+
+g_settings_set_double
 */
 func (recv *Settings) SetDouble(key string, value float64) bool {
 	c_key := C.CString(key)
@@ -3316,7 +3612,9 @@ func (recv *Settings) SetDouble(key string, value float64) bool {
 // having a int32 type in the schema for @settings.
 /*
 
-C function : g_settings_set_int
+C function
+
+g_settings_set_int
 */
 func (recv *Settings) SetInt(key string, value int32) bool {
 	c_key := C.CString(key)
@@ -3338,7 +3636,9 @@ func (recv *Settings) SetInt(key string, value int32) bool {
 // having a string type in the schema for @settings.
 /*
 
-C function : g_settings_set_string
+C function
+
+g_settings_set_string
 */
 func (recv *Settings) SetString(key string, value string) bool {
 	c_key := C.CString(key)
@@ -3373,7 +3673,9 @@ func (recv *Settings) SetString(key string, value string) bool {
 // either always or never allowed.
 /*
 
-C function : g_simple_permission_new
+C function
+
+g_simple_permission_new
 */
 func SimplePermissionNew(allowed bool) *SimplePermission {
 	c_allowed :=
@@ -3399,7 +3701,9 @@ func SimplePermissionNew(allowed bool) *SimplePermission {
 // g_unix_connection_receive_credentials() functions.
 /*
 
-C function : g_socket_get_credentials
+C function
+
+g_socket_get_credentials
 */
 func (recv *Socket) GetCredentials() (*Credentials, error) {
 	var cThrowableError *C.GError
@@ -3419,7 +3723,9 @@ func (recv *Socket) GetCredentials() (*Credentials, error) {
 // g_socket_set_timeout().
 /*
 
-C function : g_socket_get_timeout
+C function
+
+g_socket_get_timeout
 */
 func (recv *Socket) GetTimeout() uint32 {
 	retC := C.g_socket_get_timeout((*C.GSocket)(recv.native))
@@ -3433,7 +3739,9 @@ func (recv *Socket) GetTimeout() uint32 {
 // the @blocking argument rather than by @socket's properties.
 /*
 
-C function : g_socket_receive_with_blocking
+C function
+
+g_socket_receive_with_blocking
 */
 func (recv *Socket) ReceiveWithBlocking(buffer []uint8, blocking bool, cancellable *Cancellable) (int64, error) {
 	c_buffer := &buffer[0]
@@ -3466,7 +3774,9 @@ func (recv *Socket) ReceiveWithBlocking(buffer []uint8, blocking bool, cancellab
 // the @blocking argument rather than by @socket's properties.
 /*
 
-C function : g_socket_send_with_blocking
+C function
+
+g_socket_send_with_blocking
 */
 func (recv *Socket) SendWithBlocking(buffer []uint8, blocking bool, cancellable *Cancellable) (int64, error) {
 	c_buffer := &buffer[0]
@@ -3516,7 +3826,9 @@ func (recv *Socket) SendWithBlocking(buffer []uint8, blocking bool, cancellable 
 // cause the timeout to be reset.
 /*
 
-C function : g_socket_set_timeout
+C function
+
+g_socket_set_timeout
 */
 func (recv *Socket) SetTimeout(timeout uint32) {
 	c_timeout := (C.guint)(timeout)
@@ -3549,7 +3861,9 @@ func (recv *Socket) SetTimeout(timeout uint32) {
 // accordingly.
 /*
 
-C function : g_socket_client_connect_to_uri
+C function
+
+g_socket_client_connect_to_uri
 */
 func (recv *SocketClient) ConnectToUri(uri string, defaultPort uint16, cancellable *Cancellable) (*SocketConnection, error) {
 	c_uri := C.CString(uri)
@@ -3580,7 +3894,9 @@ func (recv *SocketClient) ConnectToUri(uri string, defaultPort uint16, cancellab
 // Finishes an async connect operation. See g_socket_client_connect_to_uri_async()
 /*
 
-C function : g_socket_client_connect_to_uri_finish
+C function
+
+g_socket_client_connect_to_uri_finish
 */
 func (recv *SocketClient) ConnectToUriFinish(result *AsyncResult) (*SocketConnection, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -3601,7 +3917,9 @@ func (recv *SocketClient) ConnectToUriFinish(result *AsyncResult) (*SocketConnec
 // Gets the proxy enable state; see g_socket_client_set_enable_proxy()
 /*
 
-C function : g_socket_client_get_enable_proxy
+C function
+
+g_socket_client_get_enable_proxy
 */
 func (recv *SocketClient) GetEnableProxy() bool {
 	retC := C.g_socket_client_get_enable_proxy((*C.GSocketClient)(recv.native))
@@ -3615,7 +3933,9 @@ func (recv *SocketClient) GetEnableProxy() bool {
 // See g_socket_client_set_timeout() for details.
 /*
 
-C function : g_socket_client_get_timeout
+C function
+
+g_socket_client_get_timeout
 */
 func (recv *SocketClient) GetTimeout() uint32 {
 	retC := C.g_socket_client_get_timeout((*C.GSocketClient)(recv.native))
@@ -3632,7 +3952,9 @@ func (recv *SocketClient) GetTimeout() uint32 {
 // See also g_socket_client_set_proxy_resolver().
 /*
 
-C function : g_socket_client_set_enable_proxy
+C function
+
+g_socket_client_set_enable_proxy
 */
 func (recv *SocketClient) SetEnableProxy(enable bool) {
 	c_enable :=
@@ -3651,7 +3973,9 @@ func (recv *SocketClient) SetEnableProxy(enable bool) {
 // to fail with %G_IO_ERROR_TIMED_OUT.
 /*
 
-C function : g_socket_client_set_timeout
+C function
+
+g_socket_client_set_timeout
 */
 func (recv *SocketClient) SetTimeout(timeout uint32) {
 	c_timeout := (C.guint)(timeout)
@@ -3673,7 +3997,9 @@ func (recv *SocketClient) SetTimeout(timeout uint32) {
 // #GUnixCredentialsMessage type and g_socket_get_credentials() function.
 /*
 
-C function : g_unix_connection_receive_credentials
+C function
+
+g_unix_connection_receive_credentials
 */
 func (recv *UnixConnection) ReceiveCredentials(cancellable *Cancellable) (*Credentials, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -3707,7 +4033,9 @@ func (recv *UnixConnection) ReceiveCredentials(cancellable *Cancellable) (*Crede
 // #GUnixCredentialsMessage type and g_socket_get_credentials() function.
 /*
 
-C function : g_unix_connection_send_credentials
+C function
+
+g_unix_connection_send_credentials
 */
 func (recv *UnixConnection) SendCredentials(cancellable *Cancellable) (bool, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -3741,7 +4069,9 @@ func (recv *UnixConnection) SendCredentials(cancellable *Cancellable) (bool, err
 // g_socket_get_credentials().
 /*
 
-C record/class : GUnixCredentialsMessage
+C type
+
+GUnixCredentialsMessage
 */
 type UnixCredentialsMessage struct {
 	native *C.GUnixCredentialsMessage
@@ -3784,7 +4114,9 @@ func CastToUnixCredentialsMessage(object *gobject.Object) *UnixCredentialsMessag
 // Creates a new #GUnixCredentialsMessage with credentials matching the current processes.
 /*
 
-C function : g_unix_credentials_message_new
+C function
+
+g_unix_credentials_message_new
 */
 func UnixCredentialsMessageNew() *UnixCredentialsMessage {
 	retC := C.g_unix_credentials_message_new()
@@ -3796,7 +4128,9 @@ func UnixCredentialsMessageNew() *UnixCredentialsMessage {
 // Creates a new #GUnixCredentialsMessage holding @credentials.
 /*
 
-C function : g_unix_credentials_message_new_with_credentials
+C function
+
+g_unix_credentials_message_new_with_credentials
 */
 func UnixCredentialsMessageNewWithCredentials(credentials *Credentials) *UnixCredentialsMessage {
 	c_credentials := (*C.GCredentials)(C.NULL)
@@ -3813,7 +4147,9 @@ func UnixCredentialsMessageNewWithCredentials(credentials *Credentials) *UnixCre
 // Gets the credentials stored in @message.
 /*
 
-C function : g_unix_credentials_message_get_credentials
+C function
+
+g_unix_credentials_message_get_credentials
 */
 func (recv *UnixCredentialsMessage) GetCredentials() *Credentials {
 	retC := C.g_unix_credentials_message_get_credentials((*C.GUnixCredentialsMessage)(recv.native))
@@ -3855,7 +4191,9 @@ func (recv *UnixCredentialsMessage) GetCredentials() *Credentials {
 // its listening socket.
 /*
 
-C function : g_unix_socket_address_new_with_type
+C function
+
+g_unix_socket_address_new_with_type
 */
 func UnixSocketAddressNewWithType(path []rune, type_ UnixSocketAddressType) *UnixSocketAddress {
 	c_path := &path[0]
@@ -3873,7 +4211,9 @@ func UnixSocketAddressNewWithType(path []rune, type_ UnixSocketAddressType) *Uni
 // Gets @address's type.
 /*
 
-C function : g_unix_socket_address_get_address_type
+C function
+
+g_unix_socket_address_get_address_type
 */
 func (recv *UnixSocketAddress) GetAddressType() UnixSocketAddressType {
 	retC := C.g_unix_socket_address_get_address_type((*C.GUnixSocketAddress)(recv.native))
@@ -3885,7 +4225,9 @@ func (recv *UnixSocketAddress) GetAddressType() UnixSocketAddressType {
 // Returns the #GZlibCompressor:file-info property.
 /*
 
-C function : g_zlib_compressor_get_file_info
+C function
+
+g_zlib_compressor_get_file_info
 */
 func (recv *ZlibCompressor) GetFileInfo() *FileInfo {
 	retC := C.g_zlib_compressor_get_file_info((*C.GZlibCompressor)(recv.native))
@@ -3904,7 +4246,9 @@ func (recv *ZlibCompressor) GetFileInfo() *FileInfo {
 // or after resetting it with g_converter_reset().
 /*
 
-C function : g_zlib_compressor_set_file_info
+C function
+
+g_zlib_compressor_set_file_info
 */
 func (recv *ZlibCompressor) SetFileInfo(fileInfo *FileInfo) {
 	c_file_info := (*C.GFileInfo)(C.NULL)
@@ -3924,7 +4268,9 @@ func (recv *ZlibCompressor) SetFileInfo(fileInfo *FileInfo) {
 // data stream at all.
 /*
 
-C function : g_zlib_decompressor_get_file_info
+C function
+
+g_zlib_decompressor_get_file_info
 */
 func (recv *ZlibDecompressor) GetFileInfo() *FileInfo {
 	retC := C.g_zlib_decompressor_get_file_info((*C.GZlibDecompressor)(recv.native))

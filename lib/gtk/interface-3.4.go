@@ -30,7 +30,9 @@ import "C"
 // See gtk_actionable_set_action_name() for more information.
 /*
 
-C function : gtk_actionable_get_action_name
+C function
+
+gtk_actionable_get_action_name
 */
 func (recv *Actionable) GetActionName() string {
 	retC := C.gtk_actionable_get_action_name((*C.GtkActionable)(recv.native))
@@ -54,7 +56,9 @@ func (recv *Actionable) GetActionName() string {
 // associated with the window.
 /*
 
-C function : gtk_actionable_set_action_name
+C function
+
+gtk_actionable_set_action_name
 */
 func (recv *Actionable) SetActionName(actionName string) {
 	c_action_name := C.CString(actionName)
@@ -82,7 +86,9 @@ func (recv *Actionable) SetActionName(actionName string) {
 // as the target.)
 /*
 
-C function : gtk_actionable_set_detailed_action_name
+C function
+
+gtk_actionable_set_detailed_action_name
 */
 func (recv *Actionable) SetDetailedActionName(detailedActionName string) {
 	c_detailed_action_name := C.CString(detailedActionName)
@@ -157,7 +163,9 @@ func colorchooser_colorActivatedHandler(_ *C.GObject, c_color *C.GdkRGBA, data C
 // Gets the currently-selected color.
 /*
 
-C function : gtk_color_chooser_get_rgba
+C function
+
+gtk_color_chooser_get_rgba
 */
 func (recv *ColorChooser) GetRgba() *gdk.RGBA {
 	var c_color C.GdkRGBA
@@ -172,7 +180,9 @@ func (recv *ColorChooser) GetRgba() *gdk.RGBA {
 // Returns whether the color chooser shows the alpha channel.
 /*
 
-C function : gtk_color_chooser_get_use_alpha
+C function
+
+gtk_color_chooser_get_use_alpha
 */
 func (recv *ColorChooser) GetUseAlpha() bool {
 	retC := C.gtk_color_chooser_get_use_alpha((*C.GtkColorChooser)(recv.native))
@@ -184,7 +194,9 @@ func (recv *ColorChooser) GetUseAlpha() bool {
 // Sets the color.
 /*
 
-C function : gtk_color_chooser_set_rgba
+C function
+
+gtk_color_chooser_set_rgba
 */
 func (recv *ColorChooser) SetRgba(color *gdk.RGBA) {
 	c_color := (*C.GdkRGBA)(C.NULL)
@@ -200,7 +212,9 @@ func (recv *ColorChooser) SetRgba(color *gdk.RGBA) {
 // Sets whether or not the color chooser should use the alpha channel.
 /*
 
-C function : gtk_color_chooser_set_use_alpha
+C function
+
+gtk_color_chooser_set_use_alpha
 */
 func (recv *ColorChooser) SetUseAlpha(useAlpha bool) {
 	c_use_alpha :=

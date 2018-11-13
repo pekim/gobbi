@@ -27,7 +27,9 @@ import "C"
 // documented in the interface methods.
 /*
 
-C record/class : GDatagramBasedInterface
+C type
+
+GDatagramBasedInterface
 */
 type DatagramBasedInterface struct {
 	native *C.GDatagramBasedInterface
@@ -58,7 +60,9 @@ func (recv *DatagramBasedInterface) ToC() unsafe.Pointer {
 // vtable for a #GDtlsClientConnection implementation.
 /*
 
-C record/class : GDtlsClientConnectionInterface
+C type
+
+GDtlsClientConnectionInterface
 */
 type DtlsClientConnectionInterface struct {
 	native *C.GDtlsClientConnectionInterface
@@ -84,7 +88,9 @@ func (recv *DtlsClientConnectionInterface) ToC() unsafe.Pointer {
 // Virtual method table for a #GDtlsConnection implementation.
 /*
 
-C record/class : GDtlsConnectionInterface
+C type
+
+GDtlsConnectionInterface
 */
 type DtlsConnectionInterface struct {
 	native *C.GDtlsConnectionInterface
@@ -117,7 +123,9 @@ func (recv *DtlsConnectionInterface) ToC() unsafe.Pointer {
 // vtable for a #GDtlsServerConnection implementation.
 /*
 
-C record/class : GDtlsServerConnectionInterface
+C type
+
+GDtlsServerConnectionInterface
 */
 type DtlsServerConnectionInterface struct {
 	native *C.GDtlsServerConnectionInterface
@@ -161,7 +169,9 @@ func (recv *DtlsServerConnectionInterface) ToC() unsafe.Pointer {
 // `MSG_EOR` or `MSG_TRUNC`.
 /*
 
-C record/class : GInputMessage
+C type
+
+GInputMessage
 */
 type InputMessage struct {
 	native *C.GInputMessage

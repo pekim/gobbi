@@ -15,7 +15,9 @@ import "C"
 // pipelines, to benchmark windowing system rendering operations.
 /*
 
-C function : gdk_test_render_sync
+C function
+
+gdk_test_render_sync
 */
 func TestRenderSync(window *Window) {
 	c_window := (*C.GdkWindow)(C.NULL)
@@ -42,7 +44,9 @@ func TestRenderSync(window *Window) {
 // by its accompanying button release event.
 /*
 
-C function : gdk_test_simulate_button
+C function
+
+gdk_test_simulate_button
 */
 func TestSimulateButton(window *Window, x int32, y int32, button uint32, modifiers ModifierType, buttonPressrelease EventType) bool {
 	c_window := (*C.GdkWindow)(C.NULL)
@@ -84,7 +88,9 @@ func TestSimulateButton(window *Window, x int32, y int32, button uint32, modifie
 // followed by its accompanying key release event.
 /*
 
-C function : gdk_test_simulate_key
+C function
+
+gdk_test_simulate_key
 */
 func TestSimulateKey(window *Window, x int32, y int32, keyval uint32, modifiers ModifierType, keyPressrelease EventType) bool {
 	c_window := (*C.GdkWindow)(C.NULL)

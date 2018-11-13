@@ -29,7 +29,9 @@ import "C"
 // ]|
 /*
 
-C function : gdk_event_request_motions
+C function
+
+gdk_event_request_motions
 */
 func EventRequestMotions(event *EventMotion) {
 	c_event := (*C.GdkEventMotion)(C.NULL)
@@ -51,7 +53,9 @@ func EventRequestMotions(event *EventMotion) {
 // disable that feature.
 /*
 
-C function : gdk_notify_startup_complete_with_id
+C function
+
+gdk_notify_startup_complete_with_id
 */
 func NotifyStartupCompleteWithId(startupId string) {
 	c_startup_id := C.CString(startupId)

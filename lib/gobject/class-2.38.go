@@ -17,7 +17,9 @@ import "C"
 // to it.
 /*
 
-C function : g_binding_unbind
+C function
+
+g_binding_unbind
 */
 func (recv *Binding) Unbind() {
 	C.g_binding_unbind((*C.GBinding)(recv.native))

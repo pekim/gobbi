@@ -21,7 +21,9 @@ import "C"
 // will become available and be stored in the #GdkFrameTimings.
 /*
 
-C function : gdk_frame_timings_get_complete
+C function
+
+gdk_frame_timings_get_complete
 */
 func (recv *FrameTimings) GetComplete() bool {
 	retC := C.gdk_frame_timings_get_complete((*C.GdkFrameTimings)(recv.native))
@@ -34,7 +36,9 @@ func (recv *FrameTimings) GetComplete() bool {
 // this frame was drawn.
 /*
 
-C function : gdk_frame_timings_get_frame_counter
+C function
+
+gdk_frame_timings_get_frame_counter
 */
 func (recv *FrameTimings) GetFrameCounter() int64 {
 	retC := C.gdk_frame_timings_get_frame_counter((*C.GdkFrameTimings)(recv.native))
@@ -54,7 +58,9 @@ func (recv *FrameTimings) GetFrameCounter() int64 {
 // may want this information for Audio/Video synchronization.
 /*
 
-C function : gdk_frame_timings_get_predicted_presentation_time
+C function
+
+gdk_frame_timings_get_predicted_presentation_time
 */
 func (recv *FrameTimings) GetPredictedPresentationTime() int64 {
 	retC := C.gdk_frame_timings_get_predicted_presentation_time((*C.GdkFrameTimings)(recv.native))
@@ -67,7 +73,9 @@ func (recv *FrameTimings) GetPredictedPresentationTime() int64 {
 // became visible to the user.
 /*
 
-C function : gdk_frame_timings_get_presentation_time
+C function
+
+gdk_frame_timings_get_presentation_time
 */
 func (recv *FrameTimings) GetPresentationTime() int64 {
 	retC := C.gdk_frame_timings_get_presentation_time((*C.GdkFrameTimings)(recv.native))
@@ -81,7 +89,9 @@ func (recv *FrameTimings) GetPresentationTime() int64 {
 // usually happens during the “vertical blanking interval”.
 /*
 
-C function : gdk_frame_timings_get_refresh_interval
+C function
+
+gdk_frame_timings_get_refresh_interval
 */
 func (recv *FrameTimings) GetRefreshInterval() int64 {
 	retC := C.gdk_frame_timings_get_refresh_interval((*C.GdkFrameTimings)(recv.native))
@@ -93,7 +103,9 @@ func (recv *FrameTimings) GetRefreshInterval() int64 {
 // Increases the reference count of @timings.
 /*
 
-C function : gdk_frame_timings_ref
+C function
+
+gdk_frame_timings_ref
 */
 func (recv *FrameTimings) Ref() *FrameTimings {
 	retC := C.gdk_frame_timings_ref((*C.GdkFrameTimings)(recv.native))
@@ -106,7 +118,9 @@ func (recv *FrameTimings) Ref() *FrameTimings {
 // is no longer referenced, it will be freed.
 /*
 
-C function : gdk_frame_timings_unref
+C function
+
+gdk_frame_timings_unref
 */
 func (recv *FrameTimings) Unref() {
 	C.gdk_frame_timings_unref((*C.GdkFrameTimings)(recv.native))

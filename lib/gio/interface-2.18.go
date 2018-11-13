@@ -38,7 +38,9 @@ import "C"
 // was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
 /*
 
-C function : g_file_make_directory_with_parents
+C function
+
+g_file_make_directory_with_parents
 */
 func (recv *File) MakeDirectoryWithParents(cancellable *Cancellable) (bool, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -67,7 +69,9 @@ func (recv *File) MakeDirectoryWithParents(cancellable *Cancellable) (bool, erro
 // was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
 /*
 
-C function : g_file_monitor
+C function
+
+g_file_monitor
 */
 func (recv *File) Monitor(flags FileMonitorFlags, cancellable *Cancellable) (*FileMonitor, error) {
 	c_flags := (C.GFileMonitorFlags)(flags)
@@ -97,7 +101,9 @@ func (recv *File) Monitor(flags FileMonitorFlags, cancellable *Cancellable) (*Fi
 // a regular file, directory, or symlink.
 /*
 
-C function : g_file_query_file_type
+C function
+
+g_file_query_file_type
 */
 func (recv *File) QueryFileType(flags FileQueryInfoFlags, cancellable *Cancellable) FileType {
 	c_flags := (C.GFileQueryInfoFlags)(flags)
@@ -147,7 +153,9 @@ func (recv *File) QueryFileType(flags FileQueryInfoFlags, cancellable *Cancellab
 // g_mount_is_shadowed() for more details.
 /*
 
-C function : g_volume_get_activation_root
+C function
+
+g_volume_get_activation_root
 */
 func (recv *Volume) GetActivationRoot() *File {
 	retC := C.g_volume_get_activation_root((*C.GVolume)(recv.native))

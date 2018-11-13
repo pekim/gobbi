@@ -20,7 +20,9 @@ import "C"
 // you do not need to unref it.
 /*
 
-C function : gtk_accessible_get_widget
+C function
+
+gtk_accessible_get_widget
 */
 func (recv *Accessible) GetWidget() *Widget {
 	retC := C.gtk_accessible_get_widget((*C.GtkAccessible)(recv.native))
@@ -42,7 +44,9 @@ func (recv *Accessible) GetWidget() *Widget {
 // again with @widget set to %NULL.
 /*
 
-C function : gtk_accessible_set_widget
+C function
+
+gtk_accessible_set_widget
 */
 func (recv *Accessible) SetWidget(widget *Widget) {
 	c_widget := (*C.GtkWidget)(C.NULL)
@@ -66,7 +70,9 @@ func (recv *Accessible) SetWidget(widget *Widget) {
 // clicked apply on a confirmation page.
 /*
 
-C function : gtk_assistant_commit
+C function
+
+gtk_assistant_commit
 */
 func (recv *Assistant) Commit() {
 	C.gtk_assistant_commit((*C.GtkAssistant)(recv.native))
@@ -78,7 +84,9 @@ func (recv *Assistant) Commit() {
 // This function should be rarely needed.
 /*
 
-C function : gtk_button_get_event_window
+C function
+
+gtk_button_get_event_window
 */
 func (recv *Button) GetEventWindow() *gdk.Window {
 	retC := C.gtk_button_get_event_window((*C.GtkButton)(recv.native))
@@ -99,7 +107,9 @@ func (recv *Button) GetEventWindow() *gdk.Window {
 // See gtk_text_view_reset_im_context() for an example of use.
 /*
 
-C function : gtk_entry_im_context_filter_keypress
+C function
+
+gtk_entry_im_context_filter_keypress
 */
 func (recv *Entry) ImContextFilterKeypress(event *gdk.EventKey) bool {
 	c_event := (*C.GdkEventKey)(C.NULL)
@@ -119,7 +129,9 @@ func (recv *Entry) ImContextFilterKeypress(event *gdk.EventKey) bool {
 // would confuse on-going input method behavior.
 /*
 
-C function : gtk_entry_reset_im_context
+C function
+
+gtk_entry_reset_im_context
 */
 func (recv *Entry) ResetImContext() {
 	C.gtk_entry_reset_im_context((*C.GtkEntry)(recv.native))
@@ -131,7 +143,9 @@ func (recv *Entry) ResetImContext() {
 // horizontal space allocated to @expander.
 /*
 
-C function : gtk_expander_get_label_fill
+C function
+
+gtk_expander_get_label_fill
 */
 func (recv *Expander) GetLabelFill() bool {
 	retC := C.gtk_expander_get_label_fill((*C.GtkExpander)(recv.native))
@@ -144,7 +158,9 @@ func (recv *Expander) GetLabelFill() bool {
 // horizontal space allocated to @expander.
 /*
 
-C function : gtk_expander_set_label_fill
+C function
+
+gtk_expander_set_label_fill
 */
 func (recv *Expander) SetLabelFill(labelFill bool) {
 	c_label_fill :=
@@ -158,7 +174,9 @@ func (recv *Expander) SetLabelFill(labelFill bool) {
 // Retrieves the #GtkFontSelection widget embedded in the dialog.
 /*
 
-C function : gtk_font_selection_dialog_get_font_selection
+C function
+
+gtk_font_selection_dialog_get_font_selection
 */
 func (recv *FontSelectionDialog) GetFontSelection() *Widget {
 	retC := C.gtk_font_selection_dialog_get_font_selection((*C.GtkFontSelectionDialog)(recv.native))
@@ -171,7 +189,9 @@ func (recv *FontSelectionDialog) GetFontSelection() *Widget {
 // displayed. Column numbers start at 0.
 /*
 
-C function : gtk_icon_view_get_item_column
+C function
+
+gtk_icon_view_get_item_column
 */
 func (recv *IconView) GetItemColumn(path *TreePath) int32 {
 	c_path := (*C.GtkTreePath)(C.NULL)
@@ -189,7 +209,9 @@ func (recv *IconView) GetItemColumn(path *TreePath) int32 {
 // displayed. Row numbers start at 0.
 /*
 
-C function : gtk_icon_view_get_item_row
+C function
+
+gtk_icon_view_get_item_row
 */
 func (recv *IconView) GetItemRow(path *TreePath) int32 {
 	c_path := (*C.GtkTreePath)(C.NULL)
@@ -210,7 +232,9 @@ func (recv *IconView) GetItemRow(path *TreePath) int32 {
 // function in the parent #GtkDialog.
 /*
 
-C function : gtk_message_dialog_get_message_area
+C function
+
+gtk_message_dialog_get_message_area
 */
 func (recv *MessageDialog) GetMessageArea() *Widget {
 	retC := C.gtk_message_dialog_get_message_area((*C.GtkMessageDialog)(recv.native))
@@ -222,7 +246,9 @@ func (recv *MessageDialog) GetMessageArea() *Widget {
 // Returns the horizontal width of a tab border.
 /*
 
-C function : gtk_notebook_get_tab_hborder
+C function
+
+gtk_notebook_get_tab_hborder
 */
 func (recv *Notebook) GetTabHborder() uint16 {
 	retC := C.gtk_notebook_get_tab_hborder((*C.GtkNotebook)(recv.native))
@@ -234,7 +260,9 @@ func (recv *Notebook) GetTabHborder() uint16 {
 // Returns the vertical width of a tab border.
 /*
 
-C function : gtk_notebook_get_tab_vborder
+C function
+
+gtk_notebook_get_tab_vborder
 */
 func (recv *Notebook) GetTabVborder() uint16 {
 	retC := C.gtk_notebook_get_tab_vborder((*C.GtkNotebook)(recv.native))
@@ -247,7 +275,9 @@ func (recv *Notebook) GetTabVborder() uint16 {
 // stack with the exact @context_id.
 /*
 
-C function : gtk_statusbar_remove_all
+C function
+
+gtk_statusbar_remove_all
 */
 func (recv *Statusbar) RemoveAll(contextId uint32) {
 	c_context_id := (C.guint)(contextId)
@@ -260,7 +290,9 @@ func (recv *Statusbar) RemoveAll(contextId uint32) {
 // Gets the number of rows and columns in the table.
 /*
 
-C function : gtk_table_get_size
+C function
+
+gtk_table_get_size
 */
 func (recv *Table) GetSize() (uint32, uint32) {
 	var c_rows C.guint
@@ -279,7 +311,9 @@ func (recv *Table) GetSize() (uint32, uint32) {
 // Gets the horizontal-scrolling #GtkAdjustment.
 /*
 
-C function : gtk_text_view_get_hadjustment
+C function
+
+gtk_text_view_get_hadjustment
 */
 func (recv *TextView) GetHadjustment() *Adjustment {
 	retC := C.gtk_text_view_get_hadjustment((*C.GtkTextView)(recv.native))
@@ -291,7 +325,9 @@ func (recv *TextView) GetHadjustment() *Adjustment {
 // Gets the vertical-scrolling #GtkAdjustment.
 /*
 
-C function : gtk_text_view_get_vadjustment
+C function
+
+gtk_text_view_get_vadjustment
 */
 func (recv *TextView) GetVadjustment() *Adjustment {
 	retC := C.gtk_text_view_get_vadjustment((*C.GtkTextView)(recv.native))
@@ -332,7 +368,9 @@ func (recv *TextView) GetVadjustment() *Adjustment {
 // ]|
 /*
 
-C function : gtk_text_view_im_context_filter_keypress
+C function
+
+gtk_text_view_im_context_filter_keypress
 */
 func (recv *TextView) ImContextFilterKeypress(event *gdk.EventKey) bool {
 	c_event := (*C.GdkEventKey)(C.NULL)
@@ -352,7 +390,9 @@ func (recv *TextView) ImContextFilterKeypress(event *gdk.EventKey) bool {
 // would confuse on-going input method behavior.
 /*
 
-C function : gtk_text_view_reset_im_context
+C function
+
+gtk_text_view_reset_im_context
 */
 func (recv *TextView) ResetImContext() {
 	C.gtk_text_view_reset_im_context((*C.GtkTextView)(recv.native))
@@ -363,7 +403,9 @@ func (recv *TextView) ResetImContext() {
 // Gets the view window of the #GtkViewport.
 /*
 
-C function : gtk_viewport_get_view_window
+C function
+
+gtk_viewport_get_view_window
 */
 func (recv *Viewport) GetViewWindow() *gdk.Window {
 	retC := C.gtk_viewport_get_view_window((*C.GtkViewport)(recv.native))
@@ -376,7 +418,9 @@ func (recv *Viewport) GetViewWindow() *gdk.Window {
 // see gtk_grab_add().
 /*
 
-C function : gtk_window_group_get_current_grab
+C function
+
+gtk_window_group_get_current_grab
 */
 func (recv *WindowGroup) GetCurrentGrab() *Widget {
 	retC := C.gtk_window_group_get_current_grab((*C.GtkWindowGroup)(recv.native))

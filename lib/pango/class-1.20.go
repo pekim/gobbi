@@ -14,7 +14,9 @@ import "C"
 // pango_layout_set_height() for details.
 /*
 
-C function : pango_layout_get_height
+C function
+
+pango_layout_get_height
 */
 func (recv *Layout) GetHeight() int32 {
 	retC := C.pango_layout_get_height((*C.PangoLayout)(recv.native))
@@ -49,7 +51,9 @@ func (recv *Layout) GetHeight() int32 {
 // future.
 /*
 
-C function : pango_layout_set_height
+C function
+
+pango_layout_set_height
 */
 func (recv *Layout) SetHeight(height int32) {
 	c_height := (C.int)(height)
@@ -67,7 +71,9 @@ func (recv *Layout) SetHeight(height int32) {
 // rendered.
 /*
 
-C function : pango_renderer_get_layout
+C function
+
+pango_renderer_get_layout
 */
 func (recv *Renderer) GetLayout() *Layout {
 	retC := C.pango_renderer_get_layout((*C.PangoRenderer)(recv.native))
@@ -89,7 +95,9 @@ func (recv *Renderer) GetLayout() *Layout {
 // rendered.
 /*
 
-C function : pango_renderer_get_layout_line
+C function
+
+pango_renderer_get_layout_line
 */
 func (recv *Renderer) GetLayoutLine() *LayoutLine {
 	retC := C.pango_renderer_get_layout_line((*C.PangoRenderer)(recv.native))

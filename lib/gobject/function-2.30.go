@@ -15,7 +15,9 @@ import "C"
 // but used automatically by GLib when specifying a %NULL marshaller.
 /*
 
-C function : g_cclosure_marshal_generic
+C function
+
+g_cclosure_marshal_generic
 */
 func CclosureMarshalGeneric(closure *Closure, returnGvalue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
 	c_closure := (*C.GClosure)(C.NULL)

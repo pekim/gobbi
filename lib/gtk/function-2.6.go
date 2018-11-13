@@ -20,7 +20,9 @@ import "C"
 // which can be used to represent the accelerator to the user.
 /*
 
-C function : gtk_accelerator_get_label
+C function
+
+gtk_accelerator_get_label
 */
 func AcceleratorGetLabel(acceleratorKey uint32, acceleratorMods gdk.ModifierType) string {
 	c_accelerator_key := (C.guint)(acceleratorKey)
@@ -45,7 +47,9 @@ func AcceleratorGetLabel(acceleratorKey uint32, acceleratorMods gdk.ModifierType
 // notified if the button order setting changes.
 /*
 
-C function : gtk_alternative_dialog_button_order
+C function
+
+gtk_alternative_dialog_button_order
 */
 func AlternativeDialogButtonOrder(screen *gdk.Screen) bool {
 	c_screen := (*C.GdkScreen)(C.NULL)
@@ -67,7 +71,9 @@ func AlternativeDialogButtonOrder(screen *gdk.Screen) bool {
 // g_option_context_parse() to parse your commandline arguments.
 /*
 
-C function : gtk_get_option_group
+C function
+
+gtk_get_option_group
 */
 func GetOptionGroup(openDefaultDisplay bool) *glib.OptionGroup {
 	c_open_default_display :=

@@ -21,7 +21,9 @@ import "C"
 // Creates a new #GtkActionBar widget.
 /*
 
-C function : gtk_action_bar_new
+C function
+
+gtk_action_bar_new
 */
 func ActionBarNew() *ActionBar {
 	retC := C.gtk_action_bar_new()
@@ -33,7 +35,9 @@ func ActionBarNew() *ActionBar {
 // Retrieves the center bar widget of the bar.
 /*
 
-C function : gtk_action_bar_get_center_widget
+C function
+
+gtk_action_bar_get_center_widget
 */
 func (recv *ActionBar) GetCenterWidget() *Widget {
 	retC := C.gtk_action_bar_get_center_widget((*C.GtkActionBar)(recv.native))
@@ -51,7 +55,9 @@ func (recv *ActionBar) GetCenterWidget() *Widget {
 // end of the @action_bar.
 /*
 
-C function : gtk_action_bar_pack_end
+C function
+
+gtk_action_bar_pack_end
 */
 func (recv *ActionBar) PackEnd(child *Widget) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -68,7 +74,9 @@ func (recv *ActionBar) PackEnd(child *Widget) {
 // start of the @action_bar.
 /*
 
-C function : gtk_action_bar_pack_start
+C function
+
+gtk_action_bar_pack_start
 */
 func (recv *ActionBar) PackStart(child *Widget) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -84,7 +92,9 @@ func (recv *ActionBar) PackStart(child *Widget) {
 // Sets the center widget for the #GtkActionBar.
 /*
 
-C function : gtk_action_bar_set_center_widget
+C function
+
+gtk_action_bar_set_center_widget
 */
 func (recv *ActionBar) SetCenterWidget(centerWidget *Widget) {
 	c_center_widget := (*C.GtkWidget)(C.NULL)
@@ -106,7 +116,9 @@ func (recv *ActionBar) SetCenterWidget(centerWidget *Widget) {
 // Retrieves the center widget of the box.
 /*
 
-C function : gtk_box_get_center_widget
+C function
+
+gtk_box_get_center_widget
 */
 func (recv *Box) GetCenterWidget() *Widget {
 	retC := C.gtk_box_get_center_widget((*C.GtkBox)(recv.native))
@@ -126,7 +138,9 @@ func (recv *Box) GetCenterWidget() *Widget {
 // of space.
 /*
 
-C function : gtk_box_set_center_widget
+C function
+
+gtk_box_set_center_widget
 */
 func (recv *Box) SetCenterWidget(widget *Widget) {
 	c_widget := (*C.GtkWidget)(C.NULL)
@@ -144,7 +158,9 @@ func (recv *Box) SetCenterWidget(widget *Widget) {
 // #GtkDialog:use-header-bar property is %TRUE.
 /*
 
-C function : gtk_dialog_get_header_bar
+C function
+
+gtk_dialog_get_header_bar
 */
 func (recv *Dialog) GetHeaderBar() *Widget {
 	retC := C.gtk_dialog_get_header_bar((*C.GtkDialog)(recv.native))
@@ -157,7 +173,9 @@ func (recv *Dialog) GetHeaderBar() *Widget {
 // See gtk_entry_set_max_width_chars().
 /*
 
-C function : gtk_entry_get_max_width_chars
+C function
+
+gtk_entry_get_max_width_chars
 */
 func (recv *Entry) GetMaxWidthChars() int32 {
 	retC := C.gtk_entry_get_max_width_chars((*C.GtkEntry)(recv.native))
@@ -169,7 +187,9 @@ func (recv *Entry) GetMaxWidthChars() int32 {
 // Sets the desired maximum width in characters of @entry.
 /*
 
-C function : gtk_entry_set_max_width_chars
+C function
+
+gtk_entry_set_max_width_chars
 */
 func (recv *Entry) SetMaxWidthChars(nChars int32) {
 	c_n_chars := (C.gint)(nChars)
@@ -182,7 +202,9 @@ func (recv *Entry) SetMaxWidthChars(nChars int32) {
 // Creates a GtkFlowBox.
 /*
 
-C function : gtk_flow_box_new
+C function
+
+gtk_flow_box_new
 */
 func FlowBoxNew() *FlowBox {
 	retC := C.gtk_flow_box_new()
@@ -194,7 +216,9 @@ func FlowBoxNew() *FlowBox {
 // Returns whether children activate on single clicks.
 /*
 
-C function : gtk_flow_box_get_activate_on_single_click
+C function
+
+gtk_flow_box_get_activate_on_single_click
 */
 func (recv *FlowBox) GetActivateOnSingleClick() bool {
 	retC := C.gtk_flow_box_get_activate_on_single_click((*C.GtkFlowBox)(recv.native))
@@ -206,7 +230,9 @@ func (recv *FlowBox) GetActivateOnSingleClick() bool {
 // Gets the nth child in the @box.
 /*
 
-C function : gtk_flow_box_get_child_at_index
+C function
+
+gtk_flow_box_get_child_at_index
 */
 func (recv *FlowBox) GetChildAtIndex(idx int32) *FlowBoxChild {
 	c_idx := (C.gint)(idx)
@@ -225,7 +251,9 @@ func (recv *FlowBox) GetChildAtIndex(idx int32) *FlowBoxChild {
 // Gets the horizontal spacing.
 /*
 
-C function : gtk_flow_box_get_column_spacing
+C function
+
+gtk_flow_box_get_column_spacing
 */
 func (recv *FlowBox) GetColumnSpacing() uint32 {
 	retC := C.gtk_flow_box_get_column_spacing((*C.GtkFlowBox)(recv.native))
@@ -238,7 +266,9 @@ func (recv *FlowBox) GetColumnSpacing() uint32 {
 // same size). See gtk_box_set_homogeneous().
 /*
 
-C function : gtk_flow_box_get_homogeneous
+C function
+
+gtk_flow_box_get_homogeneous
 */
 func (recv *FlowBox) GetHomogeneous() bool {
 	retC := C.gtk_flow_box_get_homogeneous((*C.GtkFlowBox)(recv.native))
@@ -250,7 +280,9 @@ func (recv *FlowBox) GetHomogeneous() bool {
 // Gets the maximum number of children per line.
 /*
 
-C function : gtk_flow_box_get_max_children_per_line
+C function
+
+gtk_flow_box_get_max_children_per_line
 */
 func (recv *FlowBox) GetMaxChildrenPerLine() uint32 {
 	retC := C.gtk_flow_box_get_max_children_per_line((*C.GtkFlowBox)(recv.native))
@@ -262,7 +294,9 @@ func (recv *FlowBox) GetMaxChildrenPerLine() uint32 {
 // Gets the minimum number of children per line.
 /*
 
-C function : gtk_flow_box_get_min_children_per_line
+C function
+
+gtk_flow_box_get_min_children_per_line
 */
 func (recv *FlowBox) GetMinChildrenPerLine() uint32 {
 	retC := C.gtk_flow_box_get_min_children_per_line((*C.GtkFlowBox)(recv.native))
@@ -274,7 +308,9 @@ func (recv *FlowBox) GetMinChildrenPerLine() uint32 {
 // Gets the vertical spacing.
 /*
 
-C function : gtk_flow_box_get_row_spacing
+C function
+
+gtk_flow_box_get_row_spacing
 */
 func (recv *FlowBox) GetRowSpacing() uint32 {
 	retC := C.gtk_flow_box_get_row_spacing((*C.GtkFlowBox)(recv.native))
@@ -286,7 +322,9 @@ func (recv *FlowBox) GetRowSpacing() uint32 {
 // Creates a list of all selected children.
 /*
 
-C function : gtk_flow_box_get_selected_children
+C function
+
+gtk_flow_box_get_selected_children
 */
 func (recv *FlowBox) GetSelectedChildren() *glib.List {
 	retC := C.gtk_flow_box_get_selected_children((*C.GtkFlowBox)(recv.native))
@@ -298,7 +336,9 @@ func (recv *FlowBox) GetSelectedChildren() *glib.List {
 // Gets the selection mode of @box.
 /*
 
-C function : gtk_flow_box_get_selection_mode
+C function
+
+gtk_flow_box_get_selection_mode
 */
 func (recv *FlowBox) GetSelectionMode() SelectionMode {
 	retC := C.gtk_flow_box_get_selection_mode((*C.GtkFlowBox)(recv.native))
@@ -317,7 +357,9 @@ func (recv *FlowBox) GetSelectionMode() SelectionMode {
 // in the @box, then the @widget will be appended to the end.
 /*
 
-C function : gtk_flow_box_insert
+C function
+
+gtk_flow_box_insert
 */
 func (recv *FlowBox) Insert(widget *Widget, position int32) {
 	c_widget := (*C.GtkWidget)(C.NULL)
@@ -341,7 +383,9 @@ func (recv *FlowBox) Insert(widget *Widget, position int32) {
 // term, and the entry with the string has changed.
 /*
 
-C function : gtk_flow_box_invalidate_filter
+C function
+
+gtk_flow_box_invalidate_filter
 */
 func (recv *FlowBox) InvalidateFilter() {
 	C.gtk_flow_box_invalidate_filter((*C.GtkFlowBox)(recv.native))
@@ -355,7 +399,9 @@ func (recv *FlowBox) InvalidateFilter() {
 // @box is changed due to an external factor.
 /*
 
-C function : gtk_flow_box_invalidate_sort
+C function
+
+gtk_flow_box_invalidate_sort
 */
 func (recv *FlowBox) InvalidateSort() {
 	C.gtk_flow_box_invalidate_sort((*C.GtkFlowBox)(recv.native))
@@ -367,7 +413,9 @@ func (recv *FlowBox) InvalidateSort() {
 // mode allows it.
 /*
 
-C function : gtk_flow_box_select_all
+C function
+
+gtk_flow_box_select_all
 */
 func (recv *FlowBox) SelectAll() {
 	C.gtk_flow_box_select_all((*C.GtkFlowBox)(recv.native))
@@ -379,7 +427,9 @@ func (recv *FlowBox) SelectAll() {
 // mode allows it.
 /*
 
-C function : gtk_flow_box_select_child
+C function
+
+gtk_flow_box_select_child
 */
 func (recv *FlowBox) SelectChild(child *FlowBoxChild) {
 	c_child := (*C.GtkFlowBoxChild)(C.NULL)
@@ -398,7 +448,9 @@ func (recv *FlowBox) SelectChild(child *FlowBoxChild) {
 // on them, otherwise you need to double-click.
 /*
 
-C function : gtk_flow_box_set_activate_on_single_click
+C function
+
+gtk_flow_box_set_activate_on_single_click
 */
 func (recv *FlowBox) SetActivateOnSingleClick(single bool) {
 	c_single :=
@@ -413,7 +465,9 @@ func (recv *FlowBox) SetActivateOnSingleClick(single bool) {
 // See the #GtkFlowBox:column-spacing property.
 /*
 
-C function : gtk_flow_box_set_column_spacing
+C function
+
+gtk_flow_box_set_column_spacing
 */
 func (recv *FlowBox) SetColumnSpacing(spacing uint32) {
 	c_spacing := (C.guint)(spacing)
@@ -437,7 +491,9 @@ func (recv *FlowBox) SetColumnSpacing(spacing uint32) {
 // of the box.
 /*
 
-C function : gtk_flow_box_set_hadjustment
+C function
+
+gtk_flow_box_set_hadjustment
 */
 func (recv *FlowBox) SetHadjustment(adjustment *Adjustment) {
 	c_adjustment := (*C.GtkAdjustment)(C.NULL)
@@ -455,7 +511,9 @@ func (recv *FlowBox) SetHadjustment(adjustment *Adjustment) {
 // in the box.
 /*
 
-C function : gtk_flow_box_set_homogeneous
+C function
+
+gtk_flow_box_set_homogeneous
 */
 func (recv *FlowBox) SetHomogeneous(homogeneous bool) {
 	c_homogeneous :=
@@ -474,7 +532,9 @@ func (recv *FlowBox) SetHomogeneous(homogeneous bool) {
 // than @n_children children long in the given orientation.
 /*
 
-C function : gtk_flow_box_set_max_children_per_line
+C function
+
+gtk_flow_box_set_max_children_per_line
 */
 func (recv *FlowBox) SetMaxChildrenPerLine(nChildren uint32) {
 	c_n_children := (C.guint)(nChildren)
@@ -488,7 +548,9 @@ func (recv *FlowBox) SetMaxChildrenPerLine(nChildren uint32) {
 // in @box’s orientation before flowing.
 /*
 
-C function : gtk_flow_box_set_min_children_per_line
+C function
+
+gtk_flow_box_set_min_children_per_line
 */
 func (recv *FlowBox) SetMinChildrenPerLine(nChildren uint32) {
 	c_n_children := (C.guint)(nChildren)
@@ -502,7 +564,9 @@ func (recv *FlowBox) SetMinChildrenPerLine(nChildren uint32) {
 // See the #GtkFlowBox:row-spacing property.
 /*
 
-C function : gtk_flow_box_set_row_spacing
+C function
+
+gtk_flow_box_set_row_spacing
 */
 func (recv *FlowBox) SetRowSpacing(spacing uint32) {
 	c_spacing := (C.guint)(spacing)
@@ -516,7 +580,9 @@ func (recv *FlowBox) SetRowSpacing(spacing uint32) {
 // See #GtkSelectionMode for details.
 /*
 
-C function : gtk_flow_box_set_selection_mode
+C function
+
+gtk_flow_box_set_selection_mode
 */
 func (recv *FlowBox) SetSelectionMode(mode SelectionMode) {
 	c_mode := (C.GtkSelectionMode)(mode)
@@ -540,7 +606,9 @@ func (recv *FlowBox) SetSelectionMode(mode SelectionMode) {
 // of the box.
 /*
 
-C function : gtk_flow_box_set_vadjustment
+C function
+
+gtk_flow_box_set_vadjustment
 */
 func (recv *FlowBox) SetVadjustment(adjustment *Adjustment) {
 	c_adjustment := (*C.GtkAdjustment)(C.NULL)
@@ -557,7 +625,9 @@ func (recv *FlowBox) SetVadjustment(adjustment *Adjustment) {
 // mode allows it.
 /*
 
-C function : gtk_flow_box_unselect_all
+C function
+
+gtk_flow_box_unselect_all
 */
 func (recv *FlowBox) UnselectAll() {
 	C.gtk_flow_box_unselect_all((*C.GtkFlowBox)(recv.native))
@@ -569,7 +639,9 @@ func (recv *FlowBox) UnselectAll() {
 // mode allows it.
 /*
 
-C function : gtk_flow_box_unselect_child
+C function
+
+gtk_flow_box_unselect_child
 */
 func (recv *FlowBox) UnselectChild(child *FlowBoxChild) {
 	c_child := (*C.GtkFlowBoxChild)(C.NULL)
@@ -586,7 +658,9 @@ func (recv *FlowBox) UnselectChild(child *FlowBoxChild) {
 // of a #GtkFlowBox.
 /*
 
-C function : gtk_flow_box_child_new
+C function
+
+gtk_flow_box_child_new
 */
 func FlowBoxChildNew() *FlowBoxChild {
 	retC := C.gtk_flow_box_child_new()
@@ -613,7 +687,9 @@ func FlowBoxChildNew() *FlowBoxChild {
 // model change, but that is more expensive.
 /*
 
-C function : gtk_flow_box_child_changed
+C function
+
+gtk_flow_box_child_changed
 */
 func (recv *FlowBoxChild) Changed() {
 	C.gtk_flow_box_child_changed((*C.GtkFlowBoxChild)(recv.native))
@@ -624,7 +700,9 @@ func (recv *FlowBoxChild) Changed() {
 // Gets the current index of the @child in its #GtkFlowBox container.
 /*
 
-C function : gtk_flow_box_child_get_index
+C function
+
+gtk_flow_box_child_get_index
 */
 func (recv *FlowBoxChild) GetIndex() int32 {
 	retC := C.gtk_flow_box_child_get_index((*C.GtkFlowBoxChild)(recv.native))
@@ -637,7 +715,9 @@ func (recv *FlowBoxChild) GetIndex() int32 {
 // #GtkFlowBox container.
 /*
 
-C function : gtk_flow_box_child_is_selected
+C function
+
+gtk_flow_box_child_is_selected
 */
 func (recv *FlowBoxChild) IsSelected() bool {
 	retC := C.gtk_flow_box_child_is_selected((*C.GtkFlowBoxChild)(recv.native))
@@ -650,7 +730,9 @@ func (recv *FlowBoxChild) IsSelected() bool {
 // gtk_header_bar_set_decoration_layout().
 /*
 
-C function : gtk_header_bar_get_decoration_layout
+C function
+
+gtk_header_bar_get_decoration_layout
 */
 func (recv *HeaderBar) GetDecorationLayout() string {
 	retC := C.gtk_header_bar_get_decoration_layout((*C.GtkHeaderBar)(recv.native))
@@ -663,7 +745,9 @@ func (recv *HeaderBar) GetDecorationLayout() string {
 // a subtitle, regardless if one is currently set or not.
 /*
 
-C function : gtk_header_bar_get_has_subtitle
+C function
+
+gtk_header_bar_get_has_subtitle
 */
 func (recv *HeaderBar) GetHasSubtitle() bool {
 	retC := C.gtk_header_bar_get_has_subtitle((*C.GtkHeaderBar)(recv.native))
@@ -691,7 +775,9 @@ func (recv *HeaderBar) GetHasSubtitle() bool {
 // on the left, and minimize, maximize and close buttons on the right.
 /*
 
-C function : gtk_header_bar_set_decoration_layout
+C function
+
+gtk_header_bar_set_decoration_layout
 */
 func (recv *HeaderBar) SetDecorationLayout(layout string) {
 	c_layout := C.CString(layout)
@@ -706,7 +792,9 @@ func (recv *HeaderBar) SetDecorationLayout(layout string) {
 // for a subtitle, even if none is currently set.
 /*
 
-C function : gtk_header_bar_set_has_subtitle
+C function
+
+gtk_header_bar_set_has_subtitle
 */
 func (recv *HeaderBar) SetHasSubtitle(setting bool) {
 	c_setting :=
@@ -722,7 +810,9 @@ func (recv *HeaderBar) SetHasSubtitle(setting bool) {
 // This behaviour may change in the future.
 /*
 
-C function : gtk_icon_info_is_symbolic
+C function
+
+gtk_icon_info_is_symbolic
 */
 func (recv *IconInfo) IsSymbolic() bool {
 	retC := C.gtk_icon_info_is_symbolic((*C.GtkIconInfo)(recv.native))
@@ -736,7 +826,9 @@ func (recv *IconInfo) IsSymbolic() bool {
 // returns %NULL.
 /*
 
-C function : gtk_menu_button_get_popover
+C function
+
+gtk_menu_button_get_popover
 */
 func (recv *MenuButton) GetPopover() *Popover {
 	retC := C.gtk_menu_button_get_popover((*C.GtkMenuButton)(recv.native))
@@ -754,7 +846,9 @@ func (recv *MenuButton) GetPopover() *Popover {
 // from the menu model.
 /*
 
-C function : gtk_menu_button_get_use_popover
+C function
+
+gtk_menu_button_get_use_popover
 */
 func (recv *MenuButton) GetUsePopover() bool {
 	retC := C.gtk_menu_button_get_use_popover((*C.GtkMenuButton)(recv.native))
@@ -768,7 +862,9 @@ func (recv *MenuButton) GetUsePopover() bool {
 // or #GtkMenuButton:popup are set, they will be set to %NULL.
 /*
 
-C function : gtk_menu_button_set_popover
+C function
+
+gtk_menu_button_set_popover
 */
 func (recv *MenuButton) SetPopover(popover *Widget) {
 	c_popover := (*C.GtkWidget)(C.NULL)
@@ -786,7 +882,9 @@ func (recv *MenuButton) SetPopover(popover *Widget) {
 // this property is only consulted when a new menu model is set.
 /*
 
-C function : gtk_menu_button_set_use_popover
+C function
+
+gtk_menu_button_set_use_popover
 */
 func (recv *MenuButton) SetUsePopover(usePopover bool) {
 	c_use_popover :=
@@ -800,7 +898,9 @@ func (recv *MenuButton) SetUsePopover(usePopover bool) {
 // Returns the value previously set with gtk_places_sidebar_set_local_only().
 /*
 
-C function : gtk_places_sidebar_get_local_only
+C function
+
+gtk_places_sidebar_get_local_only
 */
 func (recv *PlacesSidebar) GetLocalOnly() bool {
 	retC := C.gtk_places_sidebar_get_local_only((*C.GtkPlacesSidebar)(recv.native))
@@ -812,7 +912,9 @@ func (recv *PlacesSidebar) GetLocalOnly() bool {
 // Sets whether the @sidebar should only show local files.
 /*
 
-C function : gtk_places_sidebar_set_local_only
+C function
+
+gtk_places_sidebar_set_local_only
 */
 func (recv *PlacesSidebar) SetLocalOnly(localOnly bool) {
 	c_local_only :=
@@ -826,7 +928,9 @@ func (recv *PlacesSidebar) SetLocalOnly(localOnly bool) {
 // Creates a new popover to point to @relative_to
 /*
 
-C function : gtk_popover_new
+C function
+
+gtk_popover_new
 */
 func PopoverNew(relativeTo *Widget) *Popover {
 	c_relative_to := (*C.GtkWidget)(C.NULL)
@@ -852,7 +956,9 @@ func PopoverNew(relativeTo *Widget) *Popover {
 // on the menus attach widget or on any of its parent widgets.
 /*
 
-C function : gtk_popover_new_from_model
+C function
+
+gtk_popover_new_from_model
 */
 func PopoverNewFromModel(relativeTo *Widget, model *gio.MenuModel) *Popover {
 	c_relative_to := (*C.GtkWidget)(C.NULL)
@@ -897,7 +1003,9 @@ func PopoverNewFromModel(relativeTo *Widget, model *gio.MenuModel) *Popover {
 // #GMenuModel.
 /*
 
-C function : gtk_popover_bind_model
+C function
+
+gtk_popover_bind_model
 */
 func (recv *Popover) BindModel(model *gio.MenuModel, actionNamespace string) {
 	c_model := (*C.GMenuModel)(C.NULL)
@@ -917,7 +1025,9 @@ func (recv *Popover) BindModel(model *gio.MenuModel, actionNamespace string) {
 // see the implications of this.
 /*
 
-C function : gtk_popover_get_modal
+C function
+
+gtk_popover_get_modal
 */
 func (recv *Popover) GetModal() bool {
 	retC := C.gtk_popover_get_modal((*C.GtkPopover)(recv.native))
@@ -929,7 +1039,9 @@ func (recv *Popover) GetModal() bool {
 // Returns the widget @popover is currently attached to
 /*
 
-C function : gtk_popover_get_relative_to
+C function
+
+gtk_popover_get_relative_to
 */
 func (recv *Popover) GetRelativeTo() *Widget {
 	retC := C.gtk_popover_get_relative_to((*C.GtkPopover)(recv.native))
@@ -944,7 +1056,9 @@ func (recv *Popover) GetRelativeTo() *Widget {
 // dismiss the popover and ungrab input.
 /*
 
-C function : gtk_popover_set_modal
+C function
+
+gtk_popover_set_modal
 */
 func (recv *Popover) SetModal(modal bool) {
 	c_modal :=
@@ -965,7 +1079,9 @@ func (recv *Popover) SetModal(modal bool) {
 // #GtkPopover may choose to appear on the opposite side
 /*
 
-C function : gtk_popover_set_position
+C function
+
+gtk_popover_set_position
 */
 func (recv *Popover) SetPosition(position PositionType) {
 	c_position := (C.GtkPositionType)(position)
@@ -984,7 +1100,9 @@ func (recv *Popover) SetPosition(position PositionType) {
 // unless extra references are kept.
 /*
 
-C function : gtk_popover_set_relative_to
+C function
+
+gtk_popover_set_relative_to
 */
 func (recv *Popover) SetRelativeTo(relativeTo *Widget) {
 	c_relative_to := (*C.GtkWidget)(C.NULL)
@@ -1002,7 +1120,9 @@ func (recv *Popover) SetRelativeTo(relativeTo *Widget) {
 // name.
 /*
 
-C function : gtk_stack_get_child_by_name
+C function
+
+gtk_stack_get_child_by_name
 */
 func (recv *Stack) GetChildByName(name string) *Widget {
 	c_name := C.CString(name)
@@ -1023,7 +1143,9 @@ func (recv *Stack) GetChildByName(name string) *Widget {
 // another.
 /*
 
-C function : gtk_stack_get_transition_running
+C function
+
+gtk_stack_get_transition_running
 */
 func (recv *Stack) GetTransitionRunning() bool {
 	retC := C.gtk_stack_get_transition_running((*C.GtkStack)(recv.native))
@@ -1035,7 +1157,9 @@ func (recv *Stack) GetTransitionRunning() bool {
 // Gets the value of the #GtkWidget:margin-end property.
 /*
 
-C function : gtk_widget_get_margin_end
+C function
+
+gtk_widget_get_margin_end
 */
 func (recv *Widget) GetMarginEnd() int32 {
 	retC := C.gtk_widget_get_margin_end((*C.GtkWidget)(recv.native))
@@ -1047,7 +1171,9 @@ func (recv *Widget) GetMarginEnd() int32 {
 // Gets the value of the #GtkWidget:margin-start property.
 /*
 
-C function : gtk_widget_get_margin_start
+C function
+
+gtk_widget_get_margin_start
 */
 func (recv *Widget) GetMarginStart() int32 {
 	retC := C.gtk_widget_get_margin_start((*C.GtkWidget)(recv.native))
@@ -1060,7 +1186,9 @@ func (recv *Widget) GetMarginStart() int32 {
 // See the #GtkWidget:margin-end property.
 /*
 
-C function : gtk_widget_set_margin_end
+C function
+
+gtk_widget_set_margin_end
 */
 func (recv *Widget) SetMarginEnd(margin int32) {
 	c_margin := (C.gint)(margin)
@@ -1074,7 +1202,9 @@ func (recv *Widget) SetMarginEnd(margin int32) {
 // See the #GtkWidget:margin-start property.
 /*
 
-C function : gtk_widget_set_margin_start
+C function
+
+gtk_widget_set_margin_start
 */
 func (recv *Widget) SetMarginStart(margin int32) {
 	c_margin := (C.gint)(margin)
@@ -1093,7 +1223,9 @@ func (recv *Widget) SetMarginStart(margin int32) {
 // gtk_window_maximize() or gtk_window_unmaximize().
 /*
 
-C function : gtk_window_is_maximized
+C function
+
+gtk_window_is_maximized
 */
 func (recv *Window) IsMaximized() bool {
 	retC := C.gtk_window_is_maximized((*C.GtkWindow)(recv.native))

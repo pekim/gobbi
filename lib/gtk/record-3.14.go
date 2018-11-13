@@ -15,7 +15,9 @@ import "C"
 // @path
 /*
 
-C function : gtk_widget_path_iter_get_state
+C function
+
+gtk_widget_path_iter_get_state
 */
 func (recv *WidgetPath) IterGetState(pos int32) StateFlags {
 	c_pos := (C.gint)(pos)
@@ -32,20 +34,22 @@ func (recv *WidgetPath) IterGetState(pos int32) StateFlags {
 // If you want to update just a single state flag, you need to do
 // this manually, as this function updates all state flags.
 //
-// ## Setting a flag
+// Setting a flag
 //
 // |[<!-- language="C" -->
 // gtk_widget_path_iter_set_state (path, pos, gtk_widget_path_iter_get_state (path, pos) | flag);
 // ]|
 //
-// ## Unsetting a flag
+// Unsetting a flag
 //
 // |[<!-- language="C" -->
 // gtk_widget_path_iter_set_state (path, pos, gtk_widget_path_iter_get_state (path, pos) & ~flag);
 // ]|
 /*
 
-C function : gtk_widget_path_iter_set_state
+C function
+
+gtk_widget_path_iter_set_state
 */
 func (recv *WidgetPath) IterSetState(pos int32, state StateFlags) {
 	c_pos := (C.gint)(pos)

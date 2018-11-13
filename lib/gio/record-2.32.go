@@ -26,7 +26,9 @@ import "C"
 // The virtual function table for #GActionMap.
 /*
 
-C record/class : GActionMapInterface
+C type
+
+GActionMapInterface
 */
 type ActionMapInterface struct {
 	native *C.GActionMapInterface
@@ -58,7 +60,9 @@ func (recv *ActionMapInterface) ToC() unsafe.Pointer {
 // decide to use a different order or omit needless parts.
 /*
 
-C function : g_file_attribute_matcher_to_string
+C function
+
+g_file_attribute_matcher_to_string
 */
 func (recv *FileAttributeMatcher) ToString() string {
 	retC := C.g_file_attribute_matcher_to_string((*C.GFileAttributeMatcher)(recv.native))
@@ -71,7 +75,9 @@ func (recv *FileAttributeMatcher) ToString() string {
 // The virtual function table for #GNetworkMonitor.
 /*
 
-C record/class : GNetworkMonitorInterface
+C type
+
+GNetworkMonitorInterface
 */
 type NetworkMonitorInterface struct {
 	native *C.GNetworkMonitorInterface
@@ -101,7 +107,9 @@ func (recv *NetworkMonitorInterface) ToC() unsafe.Pointer {
 // The virtual function table for #GRemoteActionGroup.
 /*
 
-C record/class : GRemoteActionGroupInterface
+C type
+
+GRemoteActionGroupInterface
 */
 type RemoteActionGroupInterface struct {
 	native *C.GRemoteActionGroupInterface
@@ -253,7 +261,9 @@ func (recv *RemoteActionGroupInterface) ToC() unsafe.Pointer {
 // location of a single resource with an individual file.
 /*
 
-C record/class : GResource
+C type
+
+GResource
 */
 type Resource struct {
 	native *C.GResource
@@ -287,7 +297,9 @@ func (recv *Resource) ToC() unsafe.Pointer {
 // GLib 2.56, or in older versions fail and exit the process.
 /*
 
-C function : g_resource_new_from_data
+C function
+
+g_resource_new_from_data
 */
 func ResourceNewFromData(data *glib.Bytes) (*Resource, error) {
 	c_data := (*C.GBytes)(C.NULL)
@@ -313,7 +325,9 @@ func ResourceNewFromData(data *glib.Bytes) (*Resource, error) {
 // with the global resource lookup functions like g_resources_lookup_data().
 /*
 
-C function : g_resources_register
+C function
+
+g_resources_register
 */
 func (recv *Resource) Register() {
 	C.g_resources_register((*C.GResource)(recv.native))
@@ -324,7 +338,9 @@ func (recv *Resource) Register() {
 // Unregisters the resource from the process-global set of resources.
 /*
 
-C function : g_resources_unregister
+C function
+
+g_resources_unregister
 */
 func (recv *Resource) Unregister() {
 	C.g_resources_unregister((*C.GResource)(recv.native))
@@ -340,7 +356,9 @@ func (recv *Resource) Unregister() {
 // @lookup_flags controls the behaviour of the lookup.
 /*
 
-C function : g_resource_get_info
+C function
+
+g_resource_get_info
 */
 func (recv *Resource) GetInfo(path string, lookupFlags ResourceLookupFlags) (bool, uint64, uint32, error) {
 	c_path := C.CString(path)
@@ -385,7 +403,9 @@ func (recv *Resource) GetInfo(path string, lookupFlags ResourceLookupFlags) (boo
 // @lookup_flags controls the behaviour of the lookup.
 /*
 
-C function : g_resource_lookup_data
+C function
+
+g_resource_lookup_data
 */
 func (recv *Resource) LookupData(path string, lookupFlags ResourceLookupFlags) (*glib.Bytes, error) {
 	c_path := C.CString(path)
@@ -412,7 +432,9 @@ func (recv *Resource) LookupData(path string, lookupFlags ResourceLookupFlags) (
 // @lookup_flags controls the behaviour of the lookup.
 /*
 
-C function : g_resource_open_stream
+C function
+
+g_resource_open_stream
 */
 func (recv *Resource) OpenStream(path string, lookupFlags ResourceLookupFlags) (*InputStream, error) {
 	c_path := C.CString(path)
@@ -437,7 +459,9 @@ func (recv *Resource) OpenStream(path string, lookupFlags ResourceLookupFlags) (
 // function is MT-safe and may be called from any thread.
 /*
 
-C function : g_resource_ref
+C function
+
+g_resource_ref
 */
 func (recv *Resource) Ref() *Resource {
 	retC := C.g_resource_ref((*C.GResource)(recv.native))
@@ -452,7 +476,9 @@ func (recv *Resource) Ref() *Resource {
 // thread.
 /*
 
-C function : g_resource_unref
+C function
+
+g_resource_unref
 */
 func (recv *Resource) Unref() {
 	C.g_resource_unref((*C.GResource)(recv.native))
@@ -552,7 +578,9 @@ func (recv *Resource) Unref() {
 // itself before attempting to create the settings source.
 /*
 
-C record/class : GSettingsSchema
+C type
+
+GSettingsSchema
 */
 type SettingsSchema struct {
 	native *C.GSettingsSchema
@@ -577,7 +605,9 @@ func (recv *SettingsSchema) ToC() unsafe.Pointer {
 // Get the ID of @schema.
 /*
 
-C function : g_settings_schema_get_id
+C function
+
+g_settings_schema_get_id
 */
 func (recv *SettingsSchema) GetId() string {
 	retC := C.g_settings_schema_get_id((*C.GSettingsSchema)(recv.native))
@@ -597,7 +627,9 @@ func (recv *SettingsSchema) GetId() string {
 // relocatable schemas, this function will return %NULL.
 /*
 
-C function : g_settings_schema_get_path
+C function
+
+g_settings_schema_get_path
 */
 func (recv *SettingsSchema) GetPath() string {
 	retC := C.g_settings_schema_get_path((*C.GSettingsSchema)(recv.native))
@@ -609,7 +641,9 @@ func (recv *SettingsSchema) GetPath() string {
 // Increase the reference count of @schema, returning a new reference.
 /*
 
-C function : g_settings_schema_ref
+C function
+
+g_settings_schema_ref
 */
 func (recv *SettingsSchema) Ref() *SettingsSchema {
 	retC := C.g_settings_schema_ref((*C.GSettingsSchema)(recv.native))
@@ -621,7 +655,9 @@ func (recv *SettingsSchema) Ref() *SettingsSchema {
 // Decrease the reference count of @schema, possibly freeing it.
 /*
 
-C function : g_settings_schema_unref
+C function
+
+g_settings_schema_unref
 */
 func (recv *SettingsSchema) Unref() {
 	C.g_settings_schema_unref((*C.GSettingsSchema)(recv.native))
@@ -632,7 +668,9 @@ func (recv *SettingsSchema) Unref() {
 // This is an opaque structure type.  You may not access it directly.
 /*
 
-C record/class : GSettingsSchemaSource
+C type
+
+GSettingsSchemaSource
 */
 type SettingsSchemaSource struct {
 	native *C.GSettingsSchemaSource
@@ -684,7 +722,9 @@ func (recv *SettingsSchemaSource) ToC() unsafe.Pointer {
 // returned by g_settings_schema_source_get_default().
 /*
 
-C function : g_settings_schema_source_new_from_directory
+C function
+
+g_settings_schema_source_new_from_directory
 */
 func SettingsSchemaSourceNewFromDirectory(directory string, parent *SettingsSchemaSource, trusted bool) (*SettingsSchemaSource, error) {
 	c_directory := C.CString(directory)
@@ -723,7 +763,9 @@ func SettingsSchemaSourceNewFromDirectory(directory string, parent *SettingsSche
 // If the schema isn't found, %NULL is returned.
 /*
 
-C function : g_settings_schema_source_lookup
+C function
+
+g_settings_schema_source_lookup
 */
 func (recv *SettingsSchemaSource) Lookup(schemaId string, recursive bool) *SettingsSchema {
 	c_schema_id := C.CString(schemaId)
@@ -746,7 +788,9 @@ func (recv *SettingsSchemaSource) Lookup(schemaId string, recursive bool) *Setti
 // Increase the reference count of @source, returning a new reference.
 /*
 
-C function : g_settings_schema_source_ref
+C function
+
+g_settings_schema_source_ref
 */
 func (recv *SettingsSchemaSource) Ref() *SettingsSchemaSource {
 	retC := C.g_settings_schema_source_ref((*C.GSettingsSchemaSource)(recv.native))
@@ -758,7 +802,9 @@ func (recv *SettingsSchemaSource) Ref() *SettingsSchemaSource {
 // Decrease the reference count of @source, possibly freeing it.
 /*
 
-C function : g_settings_schema_source_unref
+C function
+
+g_settings_schema_source_unref
 */
 func (recv *SettingsSchemaSource) Unref() {
 	C.g_settings_schema_source_unref((*C.GSettingsSchemaSource)(recv.native))
@@ -773,7 +819,9 @@ func (recv *SettingsSchemaSource) Unref() {
 // and is not typically used by other code.
 /*
 
-C function : g_static_resource_fini
+C function
+
+g_static_resource_fini
 */
 func (recv *StaticResource) Fini() {
 	C.g_static_resource_fini((*C.GStaticResource)(recv.native))
@@ -788,7 +836,9 @@ func (recv *StaticResource) Fini() {
 // and is not typically used by other code.
 /*
 
-C function : g_static_resource_get_resource
+C function
+
+g_static_resource_get_resource
 */
 func (recv *StaticResource) GetResource() *Resource {
 	retC := C.g_static_resource_get_resource((*C.GStaticResource)(recv.native))
@@ -805,7 +855,9 @@ func (recv *StaticResource) GetResource() *Resource {
 // and is not typically used by other code.
 /*
 
-C function : g_static_resource_init
+C function
+
+g_static_resource_init
 */
 func (recv *StaticResource) Init() {
 	C.g_static_resource_init((*C.GStaticResource)(recv.native))
@@ -816,7 +868,9 @@ func (recv *StaticResource) Init() {
 // Gets the options for the mount point.
 /*
 
-C function : g_unix_mount_point_get_options
+C function
+
+g_unix_mount_point_get_options
 */
 func (recv *UnixMountPoint) GetOptions() string {
 	retC := C.g_unix_mount_point_get_options((*C.GUnixMountPoint)(recv.native))

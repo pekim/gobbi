@@ -17,7 +17,9 @@ import "C"
 // a GChecksum, use g_checksum_free().
 /*
 
-C record/class : GChecksum
+C type
+
+GChecksum
 */
 type Checksum struct {
 	native *C.GChecksum
@@ -54,7 +56,9 @@ func (recv *Checksum) ToC() unsafe.Pointer {
 // on it anymore.
 /*
 
-C function : g_checksum_new
+C function
+
+g_checksum_new
 */
 func ChecksumNew(checksumType ChecksumType) *Checksum {
 	c_checksum_type := (C.GChecksumType)(checksumType)
@@ -70,7 +74,9 @@ func ChecksumNew(checksumType ChecksumType) *Checksum {
 // checksum will be closed as well.
 /*
 
-C function : g_checksum_copy
+C function
+
+g_checksum_copy
 */
 func (recv *Checksum) Copy() *Checksum {
 	retC := C.g_checksum_copy((*C.GChecksum)(recv.native))
@@ -82,7 +88,9 @@ func (recv *Checksum) Copy() *Checksum {
 // Frees the memory allocated for @checksum.
 /*
 
-C function : g_checksum_free
+C function
+
+g_checksum_free
 */
 func (recv *Checksum) Free() {
 	C.g_checksum_free((*C.GChecksum)(recv.native))
@@ -97,7 +105,9 @@ func (recv *Checksum) Free() {
 // no longer be updated with g_checksum_update().
 /*
 
-C function : g_checksum_get_digest
+C function
+
+g_checksum_get_digest
 */
 func (recv *Checksum) GetDigest(buffer uint8, digestLen uint64) {
 	c_buffer := (C.guint8)(buffer)
@@ -117,7 +127,9 @@ func (recv *Checksum) GetDigest(buffer uint8, digestLen uint64) {
 // The hexadecimal characters will be lower case.
 /*
 
-C function : g_checksum_get_string
+C function
+
+g_checksum_get_string
 */
 func (recv *Checksum) GetString() string {
 	retC := C.g_checksum_get_string((*C.GChecksum)(recv.native))
@@ -131,7 +143,9 @@ func (recv *Checksum) GetString() string {
 // not have been called on @checksum.
 /*
 
-C function : g_checksum_update
+C function
+
+g_checksum_update
 */
 func (recv *Checksum) Update(data []uint8) {
 	c_data := &data[0]
@@ -146,7 +160,9 @@ func (recv *Checksum) Update(data []uint8) {
 // Returns the #GHashTable associated with @iter.
 /*
 
-C function : g_hash_table_iter_get_hash_table
+C function
+
+g_hash_table_iter_get_hash_table
 */
 func (recv *HashTableIter) GetHashTable() *HashTable {
 	retC := C.g_hash_table_iter_get_hash_table((*C.GHashTableIter)(recv.native))
@@ -170,7 +186,9 @@ func (recv *HashTableIter) GetHashTable() *HashTable {
 // ]|
 /*
 
-C function : g_hash_table_iter_init
+C function
+
+g_hash_table_iter_init
 */
 func (recv *HashTableIter) Init(hashTable *HashTable) {
 	c_hash_table := (*C.GHashTable)(C.NULL)
@@ -188,7 +206,9 @@ func (recv *HashTableIter) Init(hashTable *HashTable) {
 // @key and @value are not set, and the iterator becomes invalid.
 /*
 
-C function : g_hash_table_iter_next
+C function
+
+g_hash_table_iter_next
 */
 func (recv *HashTableIter) Next() (bool, uintptr, uintptr) {
 	var c_key C.gpointer
@@ -225,7 +245,9 @@ func (recv *HashTableIter) Next() (bool, uintptr, uintptr) {
 // ]|
 /*
 
-C function : g_hash_table_iter_remove
+C function
+
+g_hash_table_iter_remove
 */
 func (recv *HashTableIter) Remove() {
 	C.g_hash_table_iter_remove((*C.GHashTableIter)(recv.native))
@@ -240,7 +262,9 @@ func (recv *HashTableIter) Remove() {
 // be called more than once for the same key/value pair.
 /*
 
-C function : g_hash_table_iter_steal
+C function
+
+g_hash_table_iter_steal
 */
 func (recv *HashTableIter) Steal() {
 	C.g_hash_table_iter_steal((*C.GHashTableIter)(recv.native))
@@ -261,7 +285,9 @@ func (recv *HashTableIter) Steal() {
 // processed.
 /*
 
-C function : g_markup_parse_context_get_element_stack
+C function
+
+g_markup_parse_context_get_element_stack
 */
 func (recv *MarkupParseContext) GetElementStack() *SList {
 	retC := C.g_markup_parse_context_get_element_stack((*C.GMarkupParseContext)(recv.native))
@@ -274,7 +300,9 @@ func (recv *MarkupParseContext) GetElementStack() *SList {
 // are reserved in URIs using URI-style escape sequences.
 /*
 
-C function : g_string_append_uri_escaped
+C function
+
+g_string_append_uri_escaped
 */
 func (recv *String) AppendUriEscaped(unescaped string, reservedCharsAllowed string, allowUtf8 bool) *String {
 	c_unescaped := C.CString(unescaped)
@@ -295,7 +323,9 @@ func (recv *String) AppendUriEscaped(unescaped string, reservedCharsAllowed stri
 // Adds @test_case to @suite.
 /*
 
-C function : g_test_suite_add
+C function
+
+g_test_suite_add
 */
 func (recv *TestSuite) Add(testCase *TestCase) {
 	c_test_case := (*C.GTestCase)(C.NULL)
@@ -311,7 +341,9 @@ func (recv *TestSuite) Add(testCase *TestCase) {
 // Adds @nestedsuite to @suite.
 /*
 
-C function : g_test_suite_add_suite
+C function
+
+g_test_suite_add_suite
 */
 func (recv *TestSuite) AddSuite(nestedsuite *TestSuite) {
 	c_nestedsuite := (*C.GTestSuite)(C.NULL)

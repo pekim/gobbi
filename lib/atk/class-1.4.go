@@ -11,7 +11,9 @@ import "C"
 // Determines whether this AtkHyperlink is selected
 /*
 
-C function : atk_hyperlink_is_selected_link
+C function
+
+atk_hyperlink_is_selected_link
 */
 func (recv *Hyperlink) IsSelectedLink() bool {
 	retC := C.atk_hyperlink_is_selected_link((*C.AtkHyperlink)(recv.native))

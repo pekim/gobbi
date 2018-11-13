@@ -37,7 +37,9 @@ import "C"
 // Gets the smaller of step increment and page increment.
 /*
 
-C function : gtk_adjustment_get_minimum_increment
+C function
+
+gtk_adjustment_get_minimum_increment
 */
 func (recv *Adjustment) GetMinimumIncrement() float64 {
 	retC := C.gtk_adjustment_get_minimum_increment((*C.GtkAdjustment)(recv.native))
@@ -50,7 +52,9 @@ func (recv *Adjustment) GetMinimumIncrement() float64 {
 // property.
 /*
 
-C function : gtk_app_chooser_button_get_show_default_item
+C function
+
+gtk_app_chooser_button_get_show_default_item
 */
 func (recv *AppChooserButton) GetShowDefaultItem() bool {
 	retC := C.gtk_app_chooser_button_get_show_default_item((*C.GtkAppChooserButton)(recv.native))
@@ -63,7 +67,9 @@ func (recv *AppChooserButton) GetShowDefaultItem() bool {
 // default application for the given content type at top.
 /*
 
-C function : gtk_app_chooser_button_set_show_default_item
+C function
+
+gtk_app_chooser_button_set_show_default_item
 */
 func (recv *AppChooserButton) SetShowDefaultItem(setting bool) {
 	c_setting :=
@@ -195,7 +201,9 @@ func application_windowRemovedHandler(_ *C.GObject, c_window *C.GtkWindow, data 
 // Removes the @page_num’s page from @assistant.
 /*
 
-C function : gtk_assistant_remove_page
+C function
+
+gtk_assistant_remove_page
 */
 func (recv *Assistant) RemovePage(pageNum int32) {
 	c_page_num := (C.gint)(pageNum)
@@ -209,7 +217,9 @@ func (recv *Assistant) RemovePage(pageNum int32) {
 // sizing.
 /*
 
-C function : gtk_button_box_get_child_non_homogeneous
+C function
+
+gtk_button_box_get_child_non_homogeneous
 */
 func (recv *ButtonBox) GetChildNonHomogeneous(child *Widget) bool {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -226,7 +236,9 @@ func (recv *ButtonBox) GetChildNonHomogeneous(child *Widget) bool {
 // Sets whether the child is exempted from homogeous sizing.
 /*
 
-C function : gtk_button_box_set_child_non_homogeneous
+C function
+
+gtk_button_box_set_child_non_homogeneous
 */
 func (recv *ButtonBox) SetChildNonHomogeneous(child *Widget, nonHomogeneous bool) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -251,7 +263,9 @@ func (recv *ButtonBox) SetChildNonHomogeneous(child *Widget, nonHomogeneous bool
 // Also see gtk_widget_child_notify().
 /*
 
-C function : gtk_container_child_notify
+C function
+
+gtk_container_child_notify
 */
 func (recv *Container) ChildNotify(child *Widget, childProperty string) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -276,7 +290,9 @@ func (recv *Container) ChildNotify(child *Widget, childProperty string) {
 // this @provider.
 /*
 
-C function : gtk_css_provider_to_string
+C function
+
+gtk_css_provider_to_string
 */
 func (recv *CssProvider) ToString() string {
 	retC := C.gtk_css_provider_to_string((*C.GtkCssProvider)(recv.native))
@@ -289,7 +305,9 @@ func (recv *CssProvider) ToString() string {
 // Retrieves the text that will be displayed when @entry is empty and unfocused
 /*
 
-C function : gtk_entry_get_placeholder_text
+C function
+
+gtk_entry_get_placeholder_text
 */
 func (recv *Entry) GetPlaceholderText() string {
 	retC := C.gtk_entry_get_placeholder_text((*C.GtkEntry)(recv.native))
@@ -309,7 +327,9 @@ func (recv *Entry) GetPlaceholderText() string {
 // first key event arrives.
 /*
 
-C function : gtk_entry_set_placeholder_text
+C function
+
+gtk_entry_set_placeholder_text
 */
 func (recv *Entry) SetPlaceholderText(text string) {
 	c_text := C.CString(text)
@@ -324,7 +344,9 @@ func (recv *Entry) SetPlaceholderText(text string) {
 // containing the expander upon resizing and collpasing.
 /*
 
-C function : gtk_expander_get_resize_toplevel
+C function
+
+gtk_expander_get_resize_toplevel
 */
 func (recv *Expander) GetResizeToplevel() bool {
 	retC := C.gtk_expander_get_resize_toplevel((*C.GtkExpander)(recv.native))
@@ -337,7 +359,9 @@ func (recv *Expander) GetResizeToplevel() bool {
 // containing the expander upon resizing and collpasing.
 /*
 
-C function : gtk_expander_set_resize_toplevel
+C function
+
+gtk_expander_set_resize_toplevel
 */
 func (recv *Expander) SetResizeToplevel(resizeToplevel bool) {
 	c_resize_toplevel :=
@@ -351,7 +375,9 @@ func (recv *Expander) SetResizeToplevel(resizeToplevel bool) {
 // Creates a new #GtkFontChooserDialog.
 /*
 
-C function : gtk_font_chooser_dialog_new
+C function
+
+gtk_font_chooser_dialog_new
 */
 func FontChooserDialogNew(title string, parent *Window) *FontChooserDialog {
 	c_title := C.CString(title)
@@ -371,7 +397,9 @@ func FontChooserDialogNew(title string, parent *Window) *FontChooserDialog {
 // Creates a new #GtkFontChooserWidget.
 /*
 
-C function : gtk_font_chooser_widget_new
+C function
+
+gtk_font_chooser_widget_new
 */
 func FontChooserWidgetNew() *FontChooserWidget {
 	retC := C.gtk_font_chooser_widget_new()
@@ -384,7 +412,9 @@ func FontChooserWidgetNew() *FontChooserWidget {
 // cell whose upper left corner is at @left, @top.
 /*
 
-C function : gtk_grid_get_child_at
+C function
+
+gtk_grid_get_child_at
 */
 func (recv *Grid) GetChildAt(left int32, top int32) *Widget {
 	c_left := (C.gint)(left)
@@ -409,7 +439,9 @@ func (recv *Grid) GetChildAt(left int32, top int32) *Widget {
 // position are grown to span the new column.
 /*
 
-C function : gtk_grid_insert_column
+C function
+
+gtk_grid_insert_column
 */
 func (recv *Grid) InsertColumn(position int32) {
 	c_position := (C.gint)(position)
@@ -427,7 +459,9 @@ func (recv *Grid) InsertColumn(position int32) {
 // a column is inserted.
 /*
 
-C function : gtk_grid_insert_next_to
+C function
+
+gtk_grid_insert_next_to
 */
 func (recv *Grid) InsertNextTo(sibling *Widget, side PositionType) {
 	c_sibling := (*C.GtkWidget)(C.NULL)
@@ -449,7 +483,9 @@ func (recv *Grid) InsertNextTo(sibling *Widget, side PositionType) {
 // position are grown to span the new row.
 /*
 
-C function : gtk_grid_insert_row
+C function
+
+gtk_grid_insert_row
 */
 func (recv *Grid) InsertRow(position int32) {
 	c_position := (C.gint)(position)
@@ -462,7 +498,9 @@ func (recv *Grid) InsertRow(position int32) {
 // Creates a new lock button which reflects the @permission.
 /*
 
-C function : gtk_lock_button_new
+C function
+
+gtk_lock_button_new
 */
 func LockButtonNew(permission *gio.Permission) *LockButton {
 	c_permission := (*C.GPermission)(C.NULL)
@@ -479,7 +517,9 @@ func LockButtonNew(permission *gio.Permission) *LockButton {
 // Obtains the #GPermission object that controls @button.
 /*
 
-C function : gtk_lock_button_get_permission
+C function
+
+gtk_lock_button_get_permission
 */
 func (recv *LockButton) GetPermission() *gio.Permission {
 	retC := C.gtk_lock_button_get_permission((*C.GtkLockButton)(recv.native))
@@ -491,7 +531,9 @@ func (recv *LockButton) GetPermission() *gio.Permission {
 // Sets the #GPermission object that controls @button.
 /*
 
-C function : gtk_lock_button_set_permission
+C function
+
+gtk_lock_button_set_permission
 */
 func (recv *LockButton) SetPermission(permission *gio.Permission) {
 	c_permission := (*C.GPermission)(C.NULL)
@@ -509,7 +551,9 @@ func (recv *LockButton) SetPermission(permission *gio.Permission) {
 // Creates a new #GtkOverlay.
 /*
 
-C function : gtk_overlay_new
+C function
+
+gtk_overlay_new
 */
 func OverlayNew() *Overlay {
 	retC := C.gtk_overlay_new()
@@ -527,7 +571,9 @@ func OverlayNew() *Overlay {
 // from its #GtkWidget:halign and #GtkWidget:valign properties.
 /*
 
-C function : gtk_overlay_add_overlay
+C function
+
+gtk_overlay_add_overlay
 */
 func (recv *Overlay) AddOverlay(widget *Widget) {
 	c_widget := (*C.GtkWidget)(C.NULL)
@@ -543,7 +589,9 @@ func (recv *Overlay) AddOverlay(widget *Widget) {
 // Returns the current X offset of @tree_column in pixels.
 /*
 
-C function : gtk_tree_view_column_get_x_offset
+C function
+
+gtk_tree_view_column_get_x_offset
 */
 func (recv *TreeViewColumn) GetXOffset() int32 {
 	retC := C.gtk_tree_view_column_get_x_offset((*C.GtkTreeViewColumn)(recv.native))
@@ -556,7 +604,9 @@ func (recv *TreeViewColumn) GetXOffset() int32 {
 // to @icon. See the docs for #GtkIconTheme for more details.
 /*
 
-C function : gtk_drag_source_set_icon_gicon
+C function
+
+gtk_drag_source_set_icon_gicon
 */
 func (recv *Widget) DragSourceSetIconGicon(icon *gio.Icon) {
 	c_icon := (*C.GIcon)(icon.ToC())
@@ -577,7 +627,9 @@ func (recv *Widget) DragSourceSetIconGicon(icon *gio.Icon) {
 // gtk_widget_has_focus().
 /*
 
-C function : gtk_widget_has_visible_focus
+C function
+
+gtk_widget_has_visible_focus
 */
 func (recv *Widget) HasVisibleFocus() bool {
 	retC := C.gtk_widget_has_visible_focus((*C.GtkWidget)(recv.native))
@@ -589,7 +641,9 @@ func (recv *Widget) HasVisibleFocus() bool {
 // Gets the value of the #GtkWindow:focus-visible property.
 /*
 
-C function : gtk_window_get_focus_visible
+C function
+
+gtk_window_get_focus_visible
 */
 func (recv *Window) GetFocusVisible() bool {
 	retC := C.gtk_window_get_focus_visible((*C.GtkWindow)(recv.native))
@@ -601,7 +655,9 @@ func (recv *Window) GetFocusVisible() bool {
 // Sets the #GtkWindow:focus-visible property.
 /*
 
-C function : gtk_window_set_focus_visible
+C function
+
+gtk_window_set_focus_visible
 */
 func (recv *Window) SetFocusVisible(setting bool) {
 	c_setting :=

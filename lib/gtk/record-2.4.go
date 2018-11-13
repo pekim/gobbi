@@ -14,7 +14,9 @@ import "C"
 // gtk_text_iter_backward_cursor_position() for details.
 /*
 
-C function : gtk_text_iter_backward_visible_cursor_position
+C function
+
+gtk_text_iter_backward_visible_cursor_position
 */
 func (recv *TextIter) BackwardVisibleCursorPosition() bool {
 	retC := C.gtk_text_iter_backward_visible_cursor_position((*C.GtkTextIter)(recv.native))
@@ -27,7 +29,9 @@ func (recv *TextIter) BackwardVisibleCursorPosition() bool {
 // gtk_text_iter_backward_cursor_position() for details.
 /*
 
-C function : gtk_text_iter_backward_visible_cursor_positions
+C function
+
+gtk_text_iter_backward_visible_cursor_positions
 */
 func (recv *TextIter) BackwardVisibleCursorPositions(count int32) bool {
 	c_count := (C.gint)(count)
@@ -45,7 +49,9 @@ func (recv *TextIter) BackwardVisibleCursorPositions(count int32) bool {
 // algorithms).
 /*
 
-C function : gtk_text_iter_backward_visible_word_start
+C function
+
+gtk_text_iter_backward_visible_word_start
 */
 func (recv *TextIter) BackwardVisibleWordStart() bool {
 	retC := C.gtk_text_iter_backward_visible_word_start((*C.GtkTextIter)(recv.native))
@@ -57,7 +63,9 @@ func (recv *TextIter) BackwardVisibleWordStart() bool {
 // Calls gtk_text_iter_backward_visible_word_start() up to @count times.
 /*
 
-C function : gtk_text_iter_backward_visible_word_starts
+C function
+
+gtk_text_iter_backward_visible_word_starts
 */
 func (recv *TextIter) BackwardVisibleWordStarts(count int32) bool {
 	c_count := (C.gint)(count)
@@ -72,7 +80,9 @@ func (recv *TextIter) BackwardVisibleWordStarts(count int32) bool {
 // gtk_text_iter_forward_cursor_position() for details.
 /*
 
-C function : gtk_text_iter_forward_visible_cursor_position
+C function
+
+gtk_text_iter_forward_visible_cursor_position
 */
 func (recv *TextIter) ForwardVisibleCursorPosition() bool {
 	retC := C.gtk_text_iter_forward_visible_cursor_position((*C.GtkTextIter)(recv.native))
@@ -85,7 +95,9 @@ func (recv *TextIter) ForwardVisibleCursorPosition() bool {
 // gtk_text_iter_forward_cursor_position() for details.
 /*
 
-C function : gtk_text_iter_forward_visible_cursor_positions
+C function
+
+gtk_text_iter_forward_visible_cursor_positions
 */
 func (recv *TextIter) ForwardVisibleCursorPositions(count int32) bool {
 	c_count := (C.gint)(count)
@@ -103,7 +115,9 @@ func (recv *TextIter) ForwardVisibleCursorPositions(count int32) bool {
 // algorithms).
 /*
 
-C function : gtk_text_iter_forward_visible_word_end
+C function
+
+gtk_text_iter_forward_visible_word_end
 */
 func (recv *TextIter) ForwardVisibleWordEnd() bool {
 	retC := C.gtk_text_iter_forward_visible_word_end((*C.GtkTextIter)(recv.native))
@@ -115,7 +129,9 @@ func (recv *TextIter) ForwardVisibleWordEnd() bool {
 // Calls gtk_text_iter_forward_visible_word_end() up to @count times.
 /*
 
-C function : gtk_text_iter_forward_visible_word_ends
+C function
+
+gtk_text_iter_forward_visible_word_ends
 */
 func (recv *TextIter) ForwardVisibleWordEnds(count int32) bool {
 	c_count := (C.gint)(count)

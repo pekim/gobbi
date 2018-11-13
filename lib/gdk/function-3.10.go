@@ -18,7 +18,9 @@ import "C"
 // the pixbuf.
 /*
 
-C function : gdk_cairo_surface_create_from_pixbuf
+C function
+
+gdk_cairo_surface_create_from_pixbuf
 */
 func CairoSurfaceCreateFromPixbuf(pixbuf *gdkpixbuf.Pixbuf, scale int32, forWindow *Window) *cairo.Surface {
 	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
@@ -68,7 +70,9 @@ func CairoSurfaceCreateFromPixbuf(pixbuf *gdkpixbuf.Pixbuf, scale int32, forWind
 // in order to take effect.
 /*
 
-C function : gdk_set_allowed_backends
+C function
+
+gdk_set_allowed_backends
 */
 func SetAllowedBackends(backends string) {
 	c_backends := C.CString(backends)

@@ -16,7 +16,9 @@ import "C"
 // Gets the font description for the layout, if any.
 /*
 
-C function : pango_layout_get_font_description
+C function
+
+pango_layout_get_font_description
 */
 func (recv *Layout) GetFontDescription() *FontDescription {
 	retC := C.pango_layout_get_font_description((*C.PangoLayout)(recv.native))
@@ -35,7 +37,9 @@ func (recv *Layout) GetFontDescription() *FontDescription {
 // #PangoLayout.
 /*
 
-C record/class : PangoRenderer
+C type
+
+PangoRenderer
 */
 type Renderer struct {
 	native *C.PangoRenderer
@@ -83,7 +87,9 @@ func CastToRenderer(object *gobject.Object) *Renderer {
 // deinitialized once.
 /*
 
-C function : pango_renderer_activate
+C function
+
+pango_renderer_activate
 */
 func (recv *Renderer) Activate() {
 	C.pango_renderer_activate((*C.PangoRenderer)(recv.native))
@@ -95,7 +101,9 @@ func (recv *Renderer) Activate() {
 // docs for pango_renderer_activate().
 /*
 
-C function : pango_renderer_deactivate
+C function
+
+pango_renderer_deactivate
 */
 func (recv *Renderer) Deactivate() {
 	C.pango_renderer_deactivate((*C.PangoRenderer)(recv.native))
@@ -113,7 +121,9 @@ func (recv *Renderer) Deactivate() {
 // pango_renderer_activate() to activate a renderer.
 /*
 
-C function : pango_renderer_draw_error_underline
+C function
+
+pango_renderer_draw_error_underline
 */
 func (recv *Renderer) DrawErrorUnderline(x int32, y int32, width int32, height int32) {
 	c_x := (C.int)(x)
@@ -132,7 +142,9 @@ func (recv *Renderer) DrawErrorUnderline(x int32, y int32, width int32, height i
 // Draws a single glyph with coordinates in device space.
 /*
 
-C function : pango_renderer_draw_glyph
+C function
+
+pango_renderer_draw_glyph
 */
 func (recv *Renderer) DrawGlyph(font *Font, glyph Glyph, x float64, y float64) {
 	c_font := (*C.PangoFont)(C.NULL)
@@ -156,7 +168,9 @@ func (recv *Renderer) DrawGlyph(font *Font, glyph Glyph, x float64, y float64) {
 // Draws @layout with the specified #PangoRenderer.
 /*
 
-C function : pango_renderer_draw_layout
+C function
+
+pango_renderer_draw_layout
 */
 func (recv *Renderer) DrawLayout(layout *Layout, x int32, y int32) {
 	c_layout := (*C.PangoLayout)(C.NULL)
@@ -176,7 +190,9 @@ func (recv *Renderer) DrawLayout(layout *Layout, x int32, y int32) {
 // Draws @line with the specified #PangoRenderer.
 /*
 
-C function : pango_renderer_draw_layout_line
+C function
+
+pango_renderer_draw_layout_line
 */
 func (recv *Renderer) DrawLayoutLine(line *LayoutLine, x int32, y int32) {
 	c_line := (*C.PangoLayoutLine)(C.NULL)
@@ -200,7 +216,9 @@ func (recv *Renderer) DrawLayoutLine(line *LayoutLine, x int32, y int32) {
 // pango_renderer_activate() to activate a renderer.
 /*
 
-C function : pango_renderer_draw_rectangle
+C function
+
+pango_renderer_draw_rectangle
 */
 func (recv *Renderer) DrawRectangle(part RenderPart, x int32, y int32, width int32, height int32) {
 	c_part := (C.PangoRenderPart)(part)
@@ -222,7 +240,9 @@ func (recv *Renderer) DrawRectangle(part RenderPart, x int32, y int32, width int
 // using the given #PangoRenderer; coordinates are in device space.
 /*
 
-C function : pango_renderer_draw_trapezoid
+C function
+
+pango_renderer_draw_trapezoid
 */
 func (recv *Renderer) DrawTrapezoid(part RenderPart, y1 float64, x11 float64, x21 float64, y2 float64, x12 float64, x22 float64) {
 	c_part := (C.PangoRenderPart)(part)
@@ -247,7 +267,9 @@ func (recv *Renderer) DrawTrapezoid(part RenderPart, y1 float64, x11 float64, x2
 // Gets the current rendering color for the specified part.
 /*
 
-C function : pango_renderer_get_color
+C function
+
+pango_renderer_get_color
 */
 func (recv *Renderer) GetColor(part RenderPart) *Color {
 	c_part := (C.PangoRenderPart)(part)
@@ -267,7 +289,9 @@ func (recv *Renderer) GetColor(part RenderPart) *Color {
 // rendering. See pango_renderer_set_matrix().
 /*
 
-C function : pango_renderer_get_matrix
+C function
+
+pango_renderer_get_matrix
 */
 func (recv *Renderer) GetMatrix() *Matrix {
 	retC := C.pango_renderer_get_matrix((*C.PangoRenderer)(recv.native))
@@ -296,7 +320,9 @@ func (recv *Renderer) GetMatrix() *Matrix {
 // changes to colors. (See pango_renderer_set_color())
 /*
 
-C function : pango_renderer_part_changed
+C function
+
+pango_renderer_part_changed
 */
 func (recv *Renderer) PartChanged(part RenderPart) {
 	c_part := (C.PangoRenderPart)(part)
@@ -310,7 +336,9 @@ func (recv *Renderer) PartChanged(part RenderPart) {
 // Also see pango_renderer_set_alpha().
 /*
 
-C function : pango_renderer_set_color
+C function
+
+pango_renderer_set_color
 */
 func (recv *Renderer) SetColor(part RenderPart, color *Color) {
 	c_part := (C.PangoRenderPart)(part)
@@ -328,7 +356,9 @@ func (recv *Renderer) SetColor(part RenderPart, color *Color) {
 // Sets the transformation matrix that will be applied when rendering.
 /*
 
-C function : pango_renderer_set_matrix
+C function
+
+pango_renderer_set_matrix
 */
 func (recv *Renderer) SetMatrix(matrix *Matrix) {
 	c_matrix := (*C.PangoMatrix)(C.NULL)

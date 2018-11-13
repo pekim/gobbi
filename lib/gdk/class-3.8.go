@@ -18,7 +18,9 @@ import "C"
 // number of times.
 /*
 
-C function : gdk_frame_clock_begin_updating
+C function
+
+gdk_frame_clock_begin_updating
 */
 func (recv *FrameClock) BeginUpdating() {
 	C.gdk_frame_clock_begin_updating((*C.GdkFrameClock)(recv.native))
@@ -30,7 +32,9 @@ func (recv *FrameClock) BeginUpdating() {
 // gdk_frame_clock_begin_updating().
 /*
 
-C function : gdk_frame_clock_end_updating
+C function
+
+gdk_frame_clock_end_updating
 */
 func (recv *FrameClock) EndUpdating() {
 	C.gdk_frame_clock_end_updating((*C.GdkFrameClock)(recv.native))
@@ -41,7 +45,9 @@ func (recv *FrameClock) EndUpdating() {
 // Gets the frame timings for the current frame.
 /*
 
-C function : gdk_frame_clock_get_current_timings
+C function
+
+gdk_frame_clock_get_current_timings
 */
 func (recv *FrameClock) GetCurrentTimings() *FrameTimings {
 	retC := C.gdk_frame_clock_get_current_timings((*C.GdkFrameClock)(recv.native))
@@ -59,7 +65,9 @@ func (recv *FrameClock) GetCurrentTimings() *FrameTimings {
 // each frame drawn.
 /*
 
-C function : gdk_frame_clock_get_frame_counter
+C function
+
+gdk_frame_clock_get_frame_counter
 */
 func (recv *FrameClock) GetFrameCounter() int64 {
 	retC := C.gdk_frame_clock_get_frame_counter((*C.GdkFrameClock)(recv.native))
@@ -76,7 +84,9 @@ func (recv *FrameClock) GetFrameCounter() int64 {
 // time.
 /*
 
-C function : gdk_frame_clock_get_frame_time
+C function
+
+gdk_frame_clock_get_frame_time
 */
 func (recv *FrameClock) GetFrameTime() int64 {
 	retC := C.gdk_frame_clock_get_frame_time((*C.GdkFrameClock)(recv.native))
@@ -93,7 +103,9 @@ func (recv *FrameClock) GetFrameTime() int64 {
 // gdk_frame_clock_get_frame_counter(), inclusive.
 /*
 
-C function : gdk_frame_clock_get_history_start
+C function
+
+gdk_frame_clock_get_history_start
 */
 func (recv *FrameClock) GetHistoryStart() int64 {
 	retC := C.gdk_frame_clock_get_history_start((*C.GdkFrameClock)(recv.native))
@@ -109,7 +121,9 @@ func (recv *FrameClock) GetHistoryStart() int64 {
 // interval after the last presentation time, and later than @base_time.
 /*
 
-C function : gdk_frame_clock_get_refresh_info
+C function
+
+gdk_frame_clock_get_refresh_info
 */
 func (recv *FrameClock) GetRefreshInfo(baseTime int64) (int64, int64) {
 	c_base_time := (C.gint64)(baseTime)
@@ -132,7 +146,9 @@ func (recv *FrameClock) GetRefreshInfo(baseTime int64) (int64, int64) {
 // object may not yet be complete: see gdk_frame_timings_get_complete().
 /*
 
-C function : gdk_frame_clock_get_timings
+C function
+
+gdk_frame_clock_get_timings
 */
 func (recv *FrameClock) GetTimings(frameCounter int64) *FrameTimings {
 	c_frame_counter := (C.gint64)(frameCounter)
@@ -160,7 +176,9 @@ func (recv *FrameClock) GetTimings(frameCounter int64) *FrameTimings {
 // smooth animations.
 /*
 
-C function : gdk_frame_clock_request_phase
+C function
+
+gdk_frame_clock_request_phase
 */
 func (recv *FrameClock) RequestPhase(phase FrameClockPhase) {
 	c_phase := (C.GdkFrameClockPhase)(phase)
@@ -175,7 +193,9 @@ func (recv *FrameClock) RequestPhase(phase FrameClockPhase) {
 // window.
 /*
 
-C function : gdk_window_get_frame_clock
+C function
+
+gdk_window_get_frame_clock
 */
 func (recv *Window) GetFrameClock() *FrameClock {
 	retC := C.gdk_window_get_frame_clock((*C.GdkWindow)(recv.native))
@@ -187,7 +207,9 @@ func (recv *Window) GetFrameClock() *FrameClock {
 // Obtains the #GdkFullscreenMode of the @window.
 /*
 
-C function : gdk_window_get_fullscreen_mode
+C function
+
+gdk_window_get_fullscreen_mode
 */
 func (recv *Window) GetFullscreenMode() FullscreenMode {
 	retC := C.gdk_window_get_fullscreen_mode((*C.GdkWindow)(recv.native))
@@ -215,7 +237,9 @@ func (recv *Window) GetFullscreenMode() FullscreenMode {
 // is specified.
 /*
 
-C function : gdk_window_set_fullscreen_mode
+C function
+
+gdk_window_set_fullscreen_mode
 */
 func (recv *Window) SetFullscreenMode(mode FullscreenMode) {
 	c_mode := (C.GdkFullscreenMode)(mode)

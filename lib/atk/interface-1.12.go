@@ -18,7 +18,9 @@ import "C"
 // (fully opaque).
 /*
 
-C function : atk_component_get_alpha
+C function
+
+atk_component_get_alpha
 */
 func (recv *Component) GetAlpha() float64 {
 	retC := C.atk_component_get_alpha((*C.AtkComponent)(recv.native))
@@ -29,7 +31,9 @@ func (recv *Component) GetAlpha() float64 {
 
 /*
 
-C function : atk_document_get_attribute_value
+C function
+
+atk_document_get_attribute_value
 */
 func (recv *Document) GetAttributeValue(attributeName string) string {
 	c_attribute_name := C.CString(attributeName)
@@ -45,7 +49,9 @@ func (recv *Document) GetAttributeValue(attributeName string) string {
 // attributes as name-value pairs.
 /*
 
-C function : atk_document_get_attributes
+C function
+
+atk_document_get_attributes
 */
 func (recv *Document) GetAttributes() *AttributeSet {
 	retC := C.atk_document_get_attributes((*C.AtkDocument)(recv.native))
@@ -56,7 +62,9 @@ func (recv *Document) GetAttributes() *AttributeSet {
 
 /*
 
-C function : atk_document_set_attribute_value
+C function
+
+atk_document_set_attribute_value
 */
 func (recv *Document) SetAttributeValue(attributeName string, attributeValue string) bool {
 	c_attribute_name := C.CString(attributeName)
@@ -74,7 +82,9 @@ func (recv *Document) SetAttributeValue(attributeName string, attributeValue str
 // Gets the hyperlink associated with this object.
 /*
 
-C function : atk_hyperlink_impl_get_hyperlink
+C function
+
+atk_hyperlink_impl_get_hyperlink
 */
 func (recv *HyperlinkImpl) GetHyperlink() *Hyperlink {
 	retC := C.atk_hyperlink_impl_get_hyperlink((*C.AtkHyperlinkImpl)(recv.native))
@@ -85,7 +95,9 @@ func (recv *HyperlinkImpl) GetHyperlink() *Hyperlink {
 
 /*
 
-C function : atk_image_get_image_locale
+C function
+
+atk_image_get_image_locale
 */
 func (recv *Image) GetImageLocale() string {
 	retC := C.atk_image_get_image_locale((*C.AtkImage)(recv.native))
@@ -104,7 +116,9 @@ func (recv *Image) GetImageLocale() string {
 // get_stream to work nonetheless, since not all GIOChannels connect to URIs.
 /*
 
-C function : atk_streamable_content_get_uri
+C function
+
+atk_streamable_content_get_uri
 */
 func (recv *StreamableContent) GetUri(mimeType string) string {
 	c_mime_type := C.CString(mimeType)
@@ -121,7 +135,9 @@ func (recv *StreamableContent) GetUri(mimeType string) string {
 // floating point precision of the platform.
 /*
 
-C function : atk_value_get_minimum_increment
+C function
+
+atk_value_get_minimum_increment
 */
 func (recv *Value) GetMinimumIncrement() *gobject.Value {
 	var c_value C.GValue

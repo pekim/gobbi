@@ -34,7 +34,9 @@ import "C"
 // which allows delayed/lazy loading of modules.
 /*
 
-C function : g_io_modules_load_all_in_directory_with_scope
+C function
+
+g_io_modules_load_all_in_directory_with_scope
 */
 func IoModulesLoadAllInDirectoryWithScope(dirname string, scope *IOModuleScope) *glib.List {
 	c_dirname := C.CString(dirname)
@@ -64,7 +66,9 @@ func IoModulesLoadAllInDirectoryWithScope(dirname string, scope *IOModuleScope) 
 // use g_io_modules_load_all_in_directory().
 /*
 
-C function : g_io_modules_scan_all_in_directory_with_scope
+C function
+
+g_io_modules_scan_all_in_directory_with_scope
 */
 func IoModulesScanAllInDirectoryWithScope(dirname string, scope *IOModuleScope) {
 	c_dirname := C.CString(dirname)
@@ -86,7 +90,9 @@ func IoModulesScanAllInDirectoryWithScope(dirname string, scope *IOModuleScope) 
 // The certificates in @anchors must be PEM encoded.
 /*
 
-C function : g_tls_file_database_new
+C function
+
+g_tls_file_database_new
 */
 func TlsFileDatabaseNew(anchors string) (*TlsFileDatabase, error) {
 	c_anchors := C.CString(anchors)

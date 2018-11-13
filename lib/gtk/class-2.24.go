@@ -17,7 +17,9 @@ import "C"
 // Creates a new empty #GtkComboBox with an entry.
 /*
 
-C function : gtk_combo_box_new_with_entry
+C function
+
+gtk_combo_box_new_with_entry
 */
 func ComboBoxNewWithEntry() *ComboBox {
 	retC := C.gtk_combo_box_new_with_entry()
@@ -30,7 +32,9 @@ func ComboBoxNewWithEntry() *ComboBox {
 // and with the model initialized to @model.
 /*
 
-C function : gtk_combo_box_new_with_model_and_entry
+C function
+
+gtk_combo_box_new_with_model_and_entry
 */
 func ComboBoxNewWithModelAndEntry(model *TreeModel) *ComboBox {
 	c_model := (*C.GtkTreeModel)(model.ToC())
@@ -45,7 +49,9 @@ func ComboBoxNewWithModelAndEntry(model *TreeModel) *ComboBox {
 // from to display in the internal entry.
 /*
 
-C function : gtk_combo_box_get_entry_text_column
+C function
+
+gtk_combo_box_get_entry_text_column
 */
 func (recv *ComboBox) GetEntryTextColumn() int32 {
 	retC := C.gtk_combo_box_get_entry_text_column((*C.GtkComboBox)(recv.native))
@@ -57,7 +63,9 @@ func (recv *ComboBox) GetEntryTextColumn() int32 {
 // Returns whether the combo box has an entry.
 /*
 
-C function : gtk_combo_box_get_has_entry
+C function
+
+gtk_combo_box_get_has_entry
 */
 func (recv *ComboBox) GetHasEntry() bool {
 	retC := C.gtk_combo_box_get_has_entry((*C.GtkComboBox)(recv.native))
@@ -74,7 +82,9 @@ func (recv *ComboBox) GetHasEntry() bool {
 // #GtkComboBox:has-entry as %TRUE.
 /*
 
-C function : gtk_combo_box_set_entry_text_column
+C function
+
+gtk_combo_box_set_entry_text_column
 */
 func (recv *ComboBox) SetEntryTextColumn(textColumn int32) {
 	c_text_column := (C.gint)(textColumn)
@@ -88,7 +98,9 @@ func (recv *ComboBox) SetEntryTextColumn(textColumn int32) {
 // strings.
 /*
 
-C function : gtk_combo_box_text_new
+C function
+
+gtk_combo_box_text_new
 */
 func ComboBoxTextNew() *ComboBoxText {
 	retC := C.gtk_combo_box_text_new()
@@ -101,7 +113,9 @@ func ComboBoxTextNew() *ComboBoxText {
 // strings. The combo box created by this function has an entry.
 /*
 
-C function : gtk_combo_box_text_new_with_entry
+C function
+
+gtk_combo_box_text_new_with_entry
 */
 func ComboBoxTextNewWithEntry() *ComboBoxText {
 	retC := C.gtk_combo_box_text_new_with_entry()
@@ -117,7 +131,9 @@ func ComboBoxTextNewWithEntry() *ComboBoxText {
 // position of -1.
 /*
 
-C function : gtk_combo_box_text_append
+C function
+
+gtk_combo_box_text_append
 */
 func (recv *ComboBoxText) Append(id string, text string) {
 	c_id := C.CString(id)
@@ -137,7 +153,9 @@ func (recv *ComboBoxText) Append(id string, text string) {
 // position of -1.
 /*
 
-C function : gtk_combo_box_text_append_text
+C function
+
+gtk_combo_box_text_append_text
 */
 func (recv *ComboBoxText) AppendText(text string) {
 	c_text := C.CString(text)
@@ -154,7 +172,9 @@ func (recv *ComboBoxText) AppendText(text string) {
 // be an item from the list).
 /*
 
-C function : gtk_combo_box_text_get_active_text
+C function
+
+gtk_combo_box_text_get_active_text
 */
 func (recv *ComboBoxText) GetActiveText() string {
 	retC := C.gtk_combo_box_text_get_active_text((*C.GtkComboBoxText)(recv.native))
@@ -172,7 +192,9 @@ func (recv *ComboBoxText) GetActiveText() string {
 // ID string.
 /*
 
-C function : gtk_combo_box_text_insert_text
+C function
+
+gtk_combo_box_text_insert_text
 */
 func (recv *ComboBoxText) InsertText(position int32, text string) {
 	c_position := (C.gint)(position)
@@ -192,7 +214,9 @@ func (recv *ComboBoxText) InsertText(position int32, text string) {
 // position of 0.
 /*
 
-C function : gtk_combo_box_text_prepend
+C function
+
+gtk_combo_box_text_prepend
 */
 func (recv *ComboBoxText) Prepend(id string, text string) {
 	c_id := C.CString(id)
@@ -212,7 +236,9 @@ func (recv *ComboBoxText) Prepend(id string, text string) {
 // position of 0.
 /*
 
-C function : gtk_combo_box_text_prepend_text
+C function
+
+gtk_combo_box_text_prepend_text
 */
 func (recv *ComboBoxText) PrependText(text string) {
 	c_text := C.CString(text)
@@ -226,7 +252,9 @@ func (recv *ComboBoxText) PrependText(text string) {
 // Removes the string at @position from @combo_box.
 /*
 
-C function : gtk_combo_box_text_remove
+C function
+
+gtk_combo_box_text_remove
 */
 func (recv *ComboBoxText) Remove(position int32) {
 	c_position := (C.gint)(position)
@@ -239,7 +267,9 @@ func (recv *ComboBoxText) Remove(position int32) {
 // Gets the current group name for @notebook.
 /*
 
-C function : gtk_notebook_get_group_name
+C function
+
+gtk_notebook_get_group_name
 */
 func (recv *Notebook) GetGroupName() string {
 	retC := C.gtk_notebook_get_group_name((*C.GtkNotebook)(recv.native))
@@ -255,7 +285,9 @@ func (recv *Notebook) GetGroupName() string {
 // not be able to exchange tabs with any other notebook.
 /*
 
-C function : gtk_notebook_set_group_name
+C function
+
+gtk_notebook_set_group_name
 */
 func (recv *Notebook) SetGroupName(groupName string) {
 	c_group_name := C.CString(groupName)
@@ -270,7 +302,9 @@ func (recv *Notebook) SetGroupName(groupName string) {
 // it changes. See #GtkRange::change-value.
 /*
 
-C function : gtk_range_get_round_digits
+C function
+
+gtk_range_get_round_digits
 */
 func (recv *Range) GetRoundDigits() int32 {
 	retC := C.gtk_range_get_round_digits((*C.GtkRange)(recv.native))
@@ -283,7 +317,9 @@ func (recv *Range) GetRoundDigits() int32 {
 // it changes. See #GtkRange::change-value.
 /*
 
-C function : gtk_range_set_round_digits
+C function
+
+gtk_range_set_round_digits
 */
 func (recv *Range) SetRoundDigits(roundDigits int32) {
 	c_round_digits := (C.gint)(roundDigits)

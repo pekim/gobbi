@@ -20,7 +20,9 @@ import "C"
 // describing how the child should be added.
 /*
 
-C function : gtk_buildable_add_child
+C function
+
+gtk_buildable_add_child
 */
 func (recv *Buildable) AddChild(builder *Builder, child *gobject.Object, type_ string) {
 	c_builder := (*C.GtkBuilder)(C.NULL)
@@ -47,7 +49,9 @@ func (recv *Buildable) AddChild(builder *Builder, child *gobject.Object, type_ s
 // specified in the UI definition.
 /*
 
-C function : gtk_buildable_construct_child
+C function
+
+gtk_buildable_construct_child
 */
 func (recv *Buildable) ConstructChild(builder *Builder, name string) *gobject.Object {
 	c_builder := (*C.GtkBuilder)(C.NULL)
@@ -68,7 +72,9 @@ func (recv *Buildable) ConstructChild(builder *Builder, name string) *gobject.Ob
 // called once for each custom tag handled by the @buildable.
 /*
 
-C function : gtk_buildable_custom_finished
+C function
+
+gtk_buildable_custom_finished
 */
 func (recv *Buildable) CustomFinished(builder *Builder, child *gobject.Object, tagname string, data uintptr) {
 	c_builder := (*C.GtkBuilder)(C.NULL)
@@ -95,7 +101,9 @@ func (recv *Buildable) CustomFinished(builder *Builder, child *gobject.Object, t
 // the buildable.
 /*
 
-C function : gtk_buildable_custom_tag_end
+C function
+
+gtk_buildable_custom_tag_end
 */
 func (recv *Buildable) CustomTagEnd(builder *Builder, child *gobject.Object, tagname string, data uintptr) {
 	c_builder := (*C.GtkBuilder)(C.NULL)
@@ -121,7 +129,9 @@ func (recv *Buildable) CustomTagEnd(builder *Builder, child *gobject.Object, tag
 // This is called for each unknown element under <child>.
 /*
 
-C function : gtk_buildable_custom_tag_start
+C function
+
+gtk_buildable_custom_tag_start
 */
 func (recv *Buildable) CustomTagStart(builder *Builder, child *gobject.Object, tagname string) (bool, *glib.MarkupParser, uintptr) {
 	c_builder := (*C.GtkBuilder)(C.NULL)
@@ -154,7 +164,9 @@ func (recv *Buildable) CustomTagStart(builder *Builder, child *gobject.Object, t
 // Get the internal child called @childname of the @buildable object.
 /*
 
-C function : gtk_buildable_get_internal_child
+C function
+
+gtk_buildable_get_internal_child
 */
 func (recv *Buildable) GetInternalChild(builder *Builder, childname string) *gobject.Object {
 	c_builder := (*C.GtkBuilder)(C.NULL)
@@ -178,7 +190,9 @@ func (recv *Buildable) GetInternalChild(builder *Builder, childname string) *gob
 // used to construct the @buildable.
 /*
 
-C function : gtk_buildable_get_name
+C function
+
+gtk_buildable_get_name
 */
 func (recv *Buildable) GetName() string {
 	retC := C.gtk_buildable_get_name((*C.GtkBuildable)(recv.native))
@@ -194,7 +208,9 @@ func (recv *Buildable) GetName() string {
 // is called on a builder.
 /*
 
-C function : gtk_buildable_parser_finished
+C function
+
+gtk_buildable_parser_finished
 */
 func (recv *Buildable) ParserFinished(builder *Builder) {
 	c_builder := (*C.GtkBuilder)(C.NULL)
@@ -210,7 +226,9 @@ func (recv *Buildable) ParserFinished(builder *Builder) {
 // Sets the property name @name to @value on the @buildable object.
 /*
 
-C function : gtk_buildable_set_buildable_property
+C function
+
+gtk_buildable_set_buildable_property
 */
 func (recv *Buildable) SetBuildableProperty(builder *Builder, name string, value *gobject.Value) {
 	c_builder := (*C.GtkBuilder)(C.NULL)
@@ -234,7 +252,9 @@ func (recv *Buildable) SetBuildableProperty(builder *Builder, name string, value
 // Sets the name of the @buildable object.
 /*
 
-C function : gtk_buildable_set_name
+C function
+
+gtk_buildable_set_name
 */
 func (recv *Buildable) SetName(name string) {
 	c_name := C.CString(name)
@@ -248,7 +268,9 @@ func (recv *Buildable) SetName(name string) {
 // Returns the cell renderers which have been added to @cell_layout.
 /*
 
-C function : gtk_cell_layout_get_cells
+C function
+
+gtk_cell_layout_get_cells
 */
 func (recv *CellLayout) GetCells() *glib.List {
 	retC := C.gtk_cell_layout_get_cells((*C.GtkCellLayout)(recv.native))

@@ -89,7 +89,9 @@ import "C"
 // #GBinding is available since GObject 2.26
 /*
 
-C record/class : GBinding
+C type
+
+GBinding
 */
 type Binding struct {
 	native *C.GBinding
@@ -125,7 +127,9 @@ func CastToBinding(object *Object) *Binding {
 // Retrieves the flags passed when constructing the #GBinding.
 /*
 
-C function : g_binding_get_flags
+C function
+
+g_binding_get_flags
 */
 func (recv *Binding) GetFlags() BindingFlags {
 	retC := C.g_binding_get_flags((*C.GBinding)(recv.native))
@@ -137,7 +141,9 @@ func (recv *Binding) GetFlags() BindingFlags {
 // Retrieves the #GObject instance used as the source of the binding.
 /*
 
-C function : g_binding_get_source
+C function
+
+g_binding_get_source
 */
 func (recv *Binding) GetSource() *Object {
 	retC := C.g_binding_get_source((*C.GBinding)(recv.native))
@@ -150,7 +156,9 @@ func (recv *Binding) GetSource() *Object {
 // of the binding.
 /*
 
-C function : g_binding_get_source_property
+C function
+
+g_binding_get_source_property
 */
 func (recv *Binding) GetSourceProperty() string {
 	retC := C.g_binding_get_source_property((*C.GBinding)(recv.native))
@@ -162,7 +170,9 @@ func (recv *Binding) GetSourceProperty() string {
 // Retrieves the #GObject instance used as the target of the binding.
 /*
 
-C function : g_binding_get_target
+C function
+
+g_binding_get_target
 */
 func (recv *Binding) GetTarget() *Object {
 	retC := C.g_binding_get_target((*C.GBinding)(recv.native))
@@ -175,7 +185,9 @@ func (recv *Binding) GetTarget() *Object {
 // of the binding.
 /*
 
-C function : g_binding_get_target_property
+C function
+
+g_binding_get_target_property
 */
 func (recv *Binding) GetTargetProperty() string {
 	retC := C.g_binding_get_target_property((*C.GBinding)(recv.native))
@@ -208,7 +220,9 @@ func (recv *Binding) GetTargetProperty() string {
 // A #GObject can have multiple bindings.
 /*
 
-C function : g_object_bind_property
+C function
+
+g_object_bind_property
 */
 func (recv *Object) BindProperty(sourceProperty string, target uintptr, targetProperty string, flags BindingFlags) *Binding {
 	c_source_property := C.CString(sourceProperty)
@@ -238,7 +252,9 @@ func (recv *Object) BindProperty(sourceProperty string, target uintptr, targetPr
 // function pointers.
 /*
 
-C function : g_object_bind_property_with_closures
+C function
+
+g_object_bind_property_with_closures
 */
 func (recv *Object) BindPropertyWithClosures(sourceProperty string, target uintptr, targetProperty string, flags BindingFlags, transformTo *Closure, transformFrom *Closure) *Binding {
 	c_source_property := C.CString(sourceProperty)
@@ -272,7 +288,9 @@ func (recv *Object) BindPropertyWithClosures(sourceProperty string, target uintp
 // A #GParamSpec derived structure that contains the meta data for #GVariant properties.
 /*
 
-C record/class : GParamSpecVariant
+C type
+
+GParamSpecVariant
 */
 type ParamSpecVariant struct {
 	native *C.GParamSpecVariant

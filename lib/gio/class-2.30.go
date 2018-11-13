@@ -33,7 +33,9 @@ import "C"
 // Abstract base class for D-Bus interfaces on the service side.
 /*
 
-C record/class : GDBusInterfaceSkeleton
+C type
+
+GDBusInterfaceSkeleton
 */
 type DBusInterfaceSkeleton struct {
 	native *C.GDBusInterfaceSkeleton
@@ -77,7 +79,9 @@ func CastToDBusInterfaceSkeleton(object *gobject.Object) *DBusInterfaceSkeleton 
 // Use g_dbus_interface_skeleton_unexport() to unexport the object.
 /*
 
-C function : g_dbus_interface_skeleton_export
+C function
+
+g_dbus_interface_skeleton_export
 */
 func (recv *DBusInterfaceSkeleton) Export(connection *DBusConnection, objectPath string) (bool, error) {
 	c_connection := (*C.GDBusConnection)(C.NULL)
@@ -111,7 +115,9 @@ func (recv *DBusInterfaceSkeleton) Export(connection *DBusConnection, objectPath
 // for collapsing multiple property changes into one.
 /*
 
-C function : g_dbus_interface_skeleton_flush
+C function
+
+g_dbus_interface_skeleton_flush
 */
 func (recv *DBusInterfaceSkeleton) Flush() {
 	C.g_dbus_interface_skeleton_flush((*C.GDBusInterfaceSkeleton)(recv.native))
@@ -122,7 +128,9 @@ func (recv *DBusInterfaceSkeleton) Flush() {
 // Gets the first connection that @interface_ is exported on, if any.
 /*
 
-C function : g_dbus_interface_skeleton_get_connection
+C function
+
+g_dbus_interface_skeleton_get_connection
 */
 func (recv *DBusInterfaceSkeleton) GetConnection() *DBusConnection {
 	retC := C.g_dbus_interface_skeleton_get_connection((*C.GDBusInterfaceSkeleton)(recv.native))
@@ -135,7 +143,9 @@ func (recv *DBusInterfaceSkeleton) GetConnection() *DBusConnection {
 // of @interface_
 /*
 
-C function : g_dbus_interface_skeleton_get_flags
+C function
+
+g_dbus_interface_skeleton_get_flags
 */
 func (recv *DBusInterfaceSkeleton) GetFlags() DBusInterfaceSkeletonFlags {
 	retC := C.g_dbus_interface_skeleton_get_flags((*C.GDBusInterfaceSkeleton)(recv.native))
@@ -148,7 +158,9 @@ func (recv *DBusInterfaceSkeleton) GetFlags() DBusInterfaceSkeletonFlags {
 // implemented by @interface_.
 /*
 
-C function : g_dbus_interface_skeleton_get_info
+C function
+
+g_dbus_interface_skeleton_get_info
 */
 func (recv *DBusInterfaceSkeleton) GetInfo() *DBusInterfaceInfo {
 	retC := C.g_dbus_interface_skeleton_get_info((*C.GDBusInterfaceSkeleton)(recv.native))
@@ -160,7 +172,9 @@ func (recv *DBusInterfaceSkeleton) GetInfo() *DBusInterfaceInfo {
 // Gets the object path that @interface_ is exported on, if any.
 /*
 
-C function : g_dbus_interface_skeleton_get_object_path
+C function
+
+g_dbus_interface_skeleton_get_object_path
 */
 func (recv *DBusInterfaceSkeleton) GetObjectPath() string {
 	retC := C.g_dbus_interface_skeleton_get_object_path((*C.GDBusInterfaceSkeleton)(recv.native))
@@ -176,7 +190,9 @@ func (recv *DBusInterfaceSkeleton) GetObjectPath() string {
 // itself to be passed as @user_data.
 /*
 
-C function : g_dbus_interface_skeleton_get_vtable
+C function
+
+g_dbus_interface_skeleton_get_vtable
 */
 func (recv *DBusInterfaceSkeleton) GetVtable() *DBusInterfaceVTable {
 	retC := C.g_dbus_interface_skeleton_get_vtable((*C.GDBusInterfaceSkeleton)(recv.native))
@@ -188,7 +204,9 @@ func (recv *DBusInterfaceSkeleton) GetVtable() *DBusInterfaceVTable {
 // Sets flags describing what the behavior of @skeleton should be.
 /*
 
-C function : g_dbus_interface_skeleton_set_flags
+C function
+
+g_dbus_interface_skeleton_set_flags
 */
 func (recv *DBusInterfaceSkeleton) SetFlags(flags DBusInterfaceSkeletonFlags) {
 	c_flags := (C.GDBusInterfaceSkeletonFlags)(flags)
@@ -204,7 +222,9 @@ func (recv *DBusInterfaceSkeleton) SetFlags(flags DBusInterfaceSkeletonFlags) {
 // g_dbus_interface_skeleton_unexport_from_connection()
 /*
 
-C function : g_dbus_interface_skeleton_unexport
+C function
+
+g_dbus_interface_skeleton_unexport
 */
 func (recv *DBusInterfaceSkeleton) Unexport() {
 	C.g_dbus_interface_skeleton_unexport((*C.GDBusInterfaceSkeleton)(recv.native))
@@ -222,7 +242,9 @@ func (recv *DBusInterfaceSkeleton) Unexport() {
 // @invocation.
 /*
 
-C function : g_dbus_method_invocation_take_error
+C function
+
+g_dbus_method_invocation_take_error
 */
 func (recv *DBusMethodInvocation) TakeError(error *glib.Error) {
 	c_error := (*C.GError)(C.NULL)
@@ -312,7 +334,9 @@ func (recv *DBusMethodInvocation) TakeError(error *glib.Error) {
 // same main loop.
 /*
 
-C record/class : GDBusObjectManagerClient
+C type
+
+GDBusObjectManagerClient
 */
 type DBusObjectManagerClient struct {
 	native *C.GDBusObjectManagerClient
@@ -350,7 +374,9 @@ func CastToDBusObjectManagerClient(object *gobject.Object) *DBusObjectManagerCli
 // Finishes an operation started with g_dbus_object_manager_client_new().
 /*
 
-C function : g_dbus_object_manager_client_new_finish
+C function
+
+g_dbus_object_manager_client_new_finish
 */
 func DBusObjectManagerClientNewFinish(res *AsyncResult) (*DBusObjectManagerClient, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
@@ -371,7 +397,9 @@ func DBusObjectManagerClientNewFinish(res *AsyncResult) (*DBusObjectManagerClien
 // Finishes an operation started with g_dbus_object_manager_client_new_for_bus().
 /*
 
-C function : g_dbus_object_manager_client_new_for_bus_finish
+C function
+
+g_dbus_object_manager_client_new_for_bus_finish
 */
 func DBusObjectManagerClientNewForBusFinish(res *AsyncResult) (*DBusObjectManagerClient, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
@@ -396,7 +424,9 @@ func DBusObjectManagerClientNewForBusFinish(res *AsyncResult) (*DBusObjectManage
 // Gets the #GDBusConnection used by @manager.
 /*
 
-C function : g_dbus_object_manager_client_get_connection
+C function
+
+g_dbus_object_manager_client_get_connection
 */
 func (recv *DBusObjectManagerClient) GetConnection() *DBusConnection {
 	retC := C.g_dbus_object_manager_client_get_connection((*C.GDBusObjectManagerClient)(recv.native))
@@ -408,7 +438,9 @@ func (recv *DBusObjectManagerClient) GetConnection() *DBusConnection {
 // Gets the flags that @manager was constructed with.
 /*
 
-C function : g_dbus_object_manager_client_get_flags
+C function
+
+g_dbus_object_manager_client_get_flags
 */
 func (recv *DBusObjectManagerClient) GetFlags() DBusObjectManagerClientFlags {
 	retC := C.g_dbus_object_manager_client_get_flags((*C.GDBusObjectManagerClient)(recv.native))
@@ -421,7 +453,9 @@ func (recv *DBusObjectManagerClient) GetFlags() DBusObjectManagerClientFlags {
 // connection.
 /*
 
-C function : g_dbus_object_manager_client_get_name
+C function
+
+g_dbus_object_manager_client_get_name
 */
 func (recv *DBusObjectManagerClient) GetName() string {
 	retC := C.g_dbus_object_manager_client_get_name((*C.GDBusObjectManagerClient)(recv.native))
@@ -436,7 +470,9 @@ func (recv *DBusObjectManagerClient) GetName() string {
 // #GDBusObjectManagerClient:name-owner property.
 /*
 
-C function : g_dbus_object_manager_client_get_name_owner
+C function
+
+g_dbus_object_manager_client_get_name_owner
 */
 func (recv *DBusObjectManagerClient) GetNameOwner() string {
 	retC := C.g_dbus_object_manager_client_get_name_owner((*C.GDBusObjectManagerClient)(recv.native))
@@ -470,7 +506,9 @@ func (recv *DBusObjectManagerClient) GetNameOwner() string {
 // interface.
 /*
 
-C record/class : GDBusObjectManagerServer
+C type
+
+GDBusObjectManagerServer
 */
 type DBusObjectManagerServer struct {
 	native *C.GDBusObjectManagerServer
@@ -514,7 +552,9 @@ func CastToDBusObjectManagerServer(object *gobject.Object) *DBusObjectManagerSer
 // signals being emitted.
 /*
 
-C function : g_dbus_object_manager_server_new
+C function
+
+g_dbus_object_manager_server_new
 */
 func DBusObjectManagerServerNew(objectPath string) *DBusObjectManagerServer {
 	c_object_path := C.CString(objectPath)
@@ -538,7 +578,9 @@ func DBusObjectManagerServerNew(objectPath string) *DBusObjectManagerServer {
 // it is exported.
 /*
 
-C function : g_dbus_object_manager_server_export
+C function
+
+g_dbus_object_manager_server_export
 */
 func (recv *DBusObjectManagerServer) Export(object *DBusObjectSkeleton) {
 	c_object := (*C.GDBusObjectSkeleton)(C.NULL)
@@ -557,7 +599,9 @@ func (recv *DBusObjectManagerServer) Export(object *DBusObjectSkeleton) {
 // #GDBusObjectProxy:g-object-path property of @object may be modified.
 /*
 
-C function : g_dbus_object_manager_server_export_uniquely
+C function
+
+g_dbus_object_manager_server_export_uniquely
 */
 func (recv *DBusObjectManagerServer) ExportUniquely(object *DBusObjectSkeleton) {
 	c_object := (*C.GDBusObjectSkeleton)(C.NULL)
@@ -573,7 +617,9 @@ func (recv *DBusObjectManagerServer) ExportUniquely(object *DBusObjectSkeleton) 
 // Gets the #GDBusConnection used by @manager.
 /*
 
-C function : g_dbus_object_manager_server_get_connection
+C function
+
+g_dbus_object_manager_server_get_connection
 */
 func (recv *DBusObjectManagerServer) GetConnection() *DBusConnection {
 	retC := C.g_dbus_object_manager_server_get_connection((*C.GDBusObjectManagerServer)(recv.native))
@@ -586,7 +632,9 @@ func (recv *DBusObjectManagerServer) GetConnection() *DBusConnection {
 // @connection is %NULL, stops exporting objects.
 /*
 
-C function : g_dbus_object_manager_server_set_connection
+C function
+
+g_dbus_object_manager_server_set_connection
 */
 func (recv *DBusObjectManagerServer) SetConnection(connection *DBusConnection) {
 	c_connection := (*C.GDBusConnection)(C.NULL)
@@ -606,7 +654,9 @@ func (recv *DBusObjectManagerServer) SetConnection(connection *DBusConnection) {
 // object path for @manager.
 /*
 
-C function : g_dbus_object_manager_server_unexport
+C function
+
+g_dbus_object_manager_server_unexport
 */
 func (recv *DBusObjectManagerServer) Unexport(objectPath string) bool {
 	c_object_path := C.CString(objectPath)
@@ -624,7 +674,9 @@ func (recv *DBusObjectManagerServer) Unexport(objectPath string) bool {
 // is used to obtain it.
 /*
 
-C record/class : GDBusObjectProxy
+C type
+
+GDBusObjectProxy
 */
 type DBusObjectProxy struct {
 	native *C.GDBusObjectProxy
@@ -663,7 +715,9 @@ func CastToDBusObjectProxy(object *gobject.Object) *DBusObjectProxy {
 // object path.
 /*
 
-C function : g_dbus_object_proxy_new
+C function
+
+g_dbus_object_proxy_new
 */
 func DBusObjectProxyNew(connection *DBusConnection, objectPath string) *DBusObjectProxy {
 	c_connection := (*C.GDBusConnection)(C.NULL)
@@ -683,7 +737,9 @@ func DBusObjectProxyNew(connection *DBusConnection, objectPath string) *DBusObje
 // Gets the connection that @proxy is for.
 /*
 
-C function : g_dbus_object_proxy_get_connection
+C function
+
+g_dbus_object_proxy_get_connection
 */
 func (recv *DBusObjectProxy) GetConnection() *DBusConnection {
 	retC := C.g_dbus_object_proxy_get_connection((*C.GDBusObjectProxy)(recv.native))
@@ -699,7 +755,9 @@ func (recv *DBusObjectProxy) GetConnection() *DBusConnection {
 // This type is intended to be used with #GDBusObjectManager.
 /*
 
-C record/class : GDBusObjectSkeleton
+C type
+
+GDBusObjectSkeleton
 */
 type DBusObjectSkeleton struct {
 	native *C.GDBusObjectSkeleton
@@ -737,7 +795,9 @@ func CastToDBusObjectSkeleton(object *gobject.Object) *DBusObjectSkeleton {
 // Creates a new #GDBusObjectSkeleton.
 /*
 
-C function : g_dbus_object_skeleton_new
+C function
+
+g_dbus_object_skeleton_new
 */
 func DBusObjectSkeletonNew(objectPath string) *DBusObjectSkeleton {
 	c_object_path := C.CString(objectPath)
@@ -758,7 +818,9 @@ func DBusObjectSkeletonNew(objectPath string) *DBusObjectSkeleton {
 // it until removed.
 /*
 
-C function : g_dbus_object_skeleton_add_interface
+C function
+
+g_dbus_object_skeleton_add_interface
 */
 func (recv *DBusObjectSkeleton) AddInterface(interface_ *DBusInterfaceSkeleton) {
 	c_interface_ := (*C.GDBusInterfaceSkeleton)(C.NULL)
@@ -776,7 +838,9 @@ func (recv *DBusObjectSkeleton) AddInterface(interface_ *DBusInterfaceSkeleton) 
 // is useful.
 /*
 
-C function : g_dbus_object_skeleton_flush
+C function
+
+g_dbus_object_skeleton_flush
 */
 func (recv *DBusObjectSkeleton) Flush() {
 	C.g_dbus_object_skeleton_flush((*C.GDBusObjectSkeleton)(recv.native))
@@ -787,7 +851,9 @@ func (recv *DBusObjectSkeleton) Flush() {
 // Removes @interface_ from @object.
 /*
 
-C function : g_dbus_object_skeleton_remove_interface
+C function
+
+g_dbus_object_skeleton_remove_interface
 */
 func (recv *DBusObjectSkeleton) RemoveInterface(interface_ *DBusInterfaceSkeleton) {
 	c_interface_ := (*C.GDBusInterfaceSkeleton)(C.NULL)
@@ -806,7 +872,9 @@ func (recv *DBusObjectSkeleton) RemoveInterface(interface_ *DBusInterfaceSkeleto
 // does nothing.
 /*
 
-C function : g_dbus_object_skeleton_remove_interface_by_name
+C function
+
+g_dbus_object_skeleton_remove_interface_by_name
 */
 func (recv *DBusObjectSkeleton) RemoveInterfaceByName(interfaceName string) {
 	c_interface_name := C.CString(interfaceName)
@@ -820,7 +888,9 @@ func (recv *DBusObjectSkeleton) RemoveInterfaceByName(interfaceName string) {
 // Sets the object path for @object.
 /*
 
-C function : g_dbus_object_skeleton_set_object_path
+C function
+
+g_dbus_object_skeleton_set_object_path
 */
 func (recv *DBusObjectSkeleton) SetObjectPath(objectPath string) {
 	c_object_path := C.CString(objectPath)
@@ -841,7 +911,9 @@ func (recv *DBusObjectSkeleton) SetObjectPath(objectPath string) {
 // g_data_input_stream_read_line_async().
 /*
 
-C function : g_data_input_stream_read_line_finish_utf8
+C function
+
+g_data_input_stream_read_line_finish_utf8
 */
 func (recv *DataInputStream) ReadLineFinishUtf8(result *AsyncResult) (string, uint64, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -871,7 +943,9 @@ func (recv *DataInputStream) ReadLineFinishUtf8(result *AsyncResult) (string, ui
 // was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
 /*
 
-C function : g_data_input_stream_read_line_utf8
+C function
+
+g_data_input_stream_read_line_utf8
 */
 func (recv *DataInputStream) ReadLineUtf8(cancellable *Cancellable) (string, uint64, error) {
 	var c_length C.gsize
@@ -902,7 +976,9 @@ func (recv *DataInputStream) ReadLineUtf8(cancellable *Cancellable) (string, uin
 // #G_KEY_FILE_DESKTOP_KEY_NO_DISPLAY and g_app_info_should_show().
 /*
 
-C function : g_desktop_app_info_get_nodisplay
+C function
+
+g_desktop_app_info_get_nodisplay
 */
 func (recv *DesktopAppInfo) GetNodisplay() bool {
 	retC := C.g_desktop_app_info_get_nodisplay((*C.GDesktopAppInfo)(recv.native))
@@ -924,7 +1000,9 @@ func (recv *DesktopAppInfo) GetNodisplay() bool {
 // %NULL for @desktop_env) as well as additional checks.
 /*
 
-C function : g_desktop_app_info_get_show_in
+C function
+
+g_desktop_app_info_get_show_in
 */
 func (recv *DesktopAppInfo) GetShowIn(desktopEnv string) bool {
 	c_desktop_env := C.CString(desktopEnv)
@@ -939,7 +1017,9 @@ func (recv *DesktopAppInfo) GetShowIn(desktopEnv string) bool {
 // Checks if two #GInetAddress instances are equal, e.g. the same address.
 /*
 
-C function : g_inet_address_equal
+C function
+
+g_inet_address_equal
 */
 func (recv *InetAddress) Equal(otherAddress *InetAddress) bool {
 	c_other_address := (*C.GInetAddress)(C.NULL)
@@ -962,7 +1042,9 @@ func (recv *InetAddress) Equal(otherAddress *InetAddress) bool {
 // having a uint32 type in the schema for @settings.
 /*
 
-C function : g_settings_get_uint
+C function
+
+g_settings_get_uint
 */
 func (recv *Settings) GetUint(key string) uint32 {
 	c_key := C.CString(key)
@@ -983,7 +1065,9 @@ func (recv *Settings) GetUint(key string) uint32 {
 // having a uint32 type in the schema for @settings.
 /*
 
-C function : g_settings_set_uint
+C function
+
+g_settings_set_uint
 */
 func (recv *Settings) SetUint(key string, value uint32) bool {
 	c_key := C.CString(key)
@@ -1007,7 +1091,9 @@ func (recv *Settings) SetUint(key string, value uint32) bool {
 // peer certificates. See g_tls_connection_set_database().
 /*
 
-C function : g_tls_connection_get_database
+C function
+
+g_tls_connection_get_database
 */
 func (recv *TlsConnection) GetDatabase() *TlsDatabase {
 	retC := C.g_tls_connection_get_database((*C.GTlsConnection)(recv.native))
@@ -1021,7 +1107,9 @@ func (recv *TlsConnection) GetDatabase() *TlsDatabase {
 // no user interaction will occur for this connection.
 /*
 
-C function : g_tls_connection_get_interaction
+C function
+
+g_tls_connection_get_interaction
 */
 func (recv *TlsConnection) GetInteraction() *TlsInteraction {
 	retC := C.g_tls_connection_get_interaction((*C.GTlsConnection)(recv.native))
@@ -1040,7 +1128,9 @@ func (recv *TlsConnection) GetInteraction() *TlsInteraction {
 // #GTlsClientConnection:validation-flags).
 /*
 
-C function : g_tls_connection_set_database
+C function
+
+g_tls_connection_set_database
 */
 func (recv *TlsConnection) SetDatabase(database *TlsDatabase) {
 	c_database := (*C.GTlsDatabase)(C.NULL)
@@ -1061,7 +1151,9 @@ func (recv *TlsConnection) SetDatabase(database *TlsDatabase) {
 // should occur for this connection.
 /*
 
-C function : g_tls_connection_set_interaction
+C function
+
+g_tls_connection_set_interaction
 */
 func (recv *TlsConnection) SetInteraction(interaction *TlsInteraction) {
 	c_interaction := (*C.GTlsInteraction)(C.NULL)
@@ -1082,7 +1174,9 @@ func (recv *TlsConnection) SetInteraction(interaction *TlsInteraction) {
 // #GTlsDatabase. It is used internally by #GTlsConnection.
 /*
 
-C record/class : GTlsDatabase
+C type
+
+GTlsDatabase
 */
 type TlsDatabase struct {
 	native *C.GTlsDatabase
@@ -1127,7 +1221,9 @@ func CastToTlsDatabase(object *gobject.Object) *TlsDatabase {
 // then it is not guaranteed that this handle will continue to point to it.
 /*
 
-C function : g_tls_database_create_certificate_handle
+C function
+
+g_tls_database_create_certificate_handle
 */
 func (recv *TlsDatabase) CreateCertificateHandle(certificate *TlsCertificate) string {
 	c_certificate := (*C.GTlsCertificate)(C.NULL)
@@ -1156,7 +1252,9 @@ func (recv *TlsDatabase) CreateCertificateHandle(certificate *TlsCertificate) st
 // the lookup operation asynchronously.
 /*
 
-C function : g_tls_database_lookup_certificate_for_handle
+C function
+
+g_tls_database_lookup_certificate_for_handle
 */
 func (recv *TlsDatabase) LookupCertificateForHandle(handle string, interaction *TlsInteraction, flags TlsDatabaseLookupFlags, cancellable *Cancellable) (*TlsCertificate, error) {
 	c_handle := C.CString(handle)
@@ -1201,7 +1299,9 @@ func (recv *TlsDatabase) LookupCertificateForHandle(handle string, interaction *
 // this database, then %NULL will be returned.
 /*
 
-C function : g_tls_database_lookup_certificate_for_handle_finish
+C function
+
+g_tls_database_lookup_certificate_for_handle_finish
 */
 func (recv *TlsDatabase) LookupCertificateForHandleFinish(result *AsyncResult) (*TlsCertificate, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -1229,7 +1329,9 @@ func (recv *TlsDatabase) LookupCertificateForHandleFinish(result *AsyncResult) (
 // the lookup operation asynchronously.
 /*
 
-C function : g_tls_database_lookup_certificate_issuer
+C function
+
+g_tls_database_lookup_certificate_issuer
 */
 func (recv *TlsDatabase) LookupCertificateIssuer(certificate *TlsCertificate, interaction *TlsInteraction, flags TlsDatabaseLookupFlags, cancellable *Cancellable) (*TlsCertificate, error) {
 	c_certificate := (*C.GTlsCertificate)(C.NULL)
@@ -1268,7 +1370,9 @@ func (recv *TlsDatabase) LookupCertificateIssuer(certificate *TlsCertificate, in
 // g_tls_database_lookup_certificate_issuer() for more information.
 /*
 
-C function : g_tls_database_lookup_certificate_issuer_finish
+C function
+
+g_tls_database_lookup_certificate_issuer_finish
 */
 func (recv *TlsDatabase) LookupCertificateIssuerFinish(result *AsyncResult) (*TlsCertificate, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -1292,7 +1396,9 @@ func (recv *TlsDatabase) LookupCertificateIssuerFinish(result *AsyncResult) (*Tl
 // the lookup operation asynchronously.
 /*
 
-C function : g_tls_database_lookup_certificates_issued_by
+C function
+
+g_tls_database_lookup_certificates_issued_by
 */
 func (recv *TlsDatabase) LookupCertificatesIssuedBy(issuerRawDn []uint8, interaction *TlsInteraction, flags TlsDatabaseLookupFlags, cancellable *Cancellable) (*glib.List, error) {
 	c_issuer_raw_dn := &issuerRawDn[0]
@@ -1328,7 +1434,9 @@ func (recv *TlsDatabase) LookupCertificatesIssuedBy(issuerRawDn []uint8, interac
 // g_tls_database_lookup_certificates_issued_by() for more information.
 /*
 
-C function : g_tls_database_lookup_certificates_issued_by_finish
+C function
+
+g_tls_database_lookup_certificates_issued_by_finish
 */
 func (recv *TlsDatabase) LookupCertificatesIssuedByFinish(result *AsyncResult) (*glib.List, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -1381,7 +1489,9 @@ func (recv *TlsDatabase) LookupCertificatesIssuedByFinish(result *AsyncResult) (
 // the verification operation asynchronously.
 /*
 
-C function : g_tls_database_verify_chain
+C function
+
+g_tls_database_verify_chain
 */
 func (recv *TlsDatabase) VerifyChain(chain *TlsCertificate, purpose string, identity *SocketConnectable, interaction *TlsInteraction, flags TlsDatabaseVerifyFlags, cancellable *Cancellable) (TlsCertificateFlags, error) {
 	c_chain := (*C.GTlsCertificate)(C.NULL)
@@ -1434,7 +1544,9 @@ func (recv *TlsDatabase) VerifyChain(chain *TlsCertificate, purpose string, iden
 // but found to be invalid.
 /*
 
-C function : g_tls_database_verify_chain_finish
+C function
+
+g_tls_database_verify_chain_finish
 */
 func (recv *TlsDatabase) VerifyChainFinish(result *AsyncResult) (TlsCertificateFlags, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -1474,7 +1586,9 @@ func (recv *TlsDatabase) VerifyChainFinish(result *AsyncResult) (TlsCertificateF
 // it must also implement the corresponding finish method.
 /*
 
-C record/class : GTlsInteraction
+C type
+
+GTlsInteraction
 */
 type TlsInteraction struct {
 	native *C.GTlsInteraction
@@ -1524,7 +1638,9 @@ func CastToTlsInteraction(object *gobject.Object) *TlsInteraction {
 // not support immediate cancellation.
 /*
 
-C function : g_tls_interaction_ask_password
+C function
+
+g_tls_interaction_ask_password
 */
 func (recv *TlsInteraction) AskPassword(password *TlsPassword, cancellable *Cancellable) (TlsInteractionResult, error) {
 	c_password := (*C.GTlsPassword)(C.NULL)
@@ -1563,7 +1679,9 @@ func (recv *TlsInteraction) AskPassword(password *TlsPassword, cancellable *Canc
 // contains a %G_IO_ERROR_CANCELLED error code.
 /*
 
-C function : g_tls_interaction_ask_password_finish
+C function
+
+g_tls_interaction_ask_password_finish
 */
 func (recv *TlsInteraction) AskPasswordFinish(result *AsyncResult) (TlsInteractionResult, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -1602,7 +1720,9 @@ func (recv *TlsInteraction) AskPasswordFinish(result *AsyncResult) (TlsInteracti
 // not support immediate cancellation.
 /*
 
-C function : g_tls_interaction_invoke_ask_password
+C function
+
+g_tls_interaction_invoke_ask_password
 */
 func (recv *TlsInteraction) InvokeAskPassword(password *TlsPassword, cancellable *Cancellable) (TlsInteractionResult, error) {
 	c_password := (*C.GTlsPassword)(C.NULL)
@@ -1631,7 +1751,9 @@ func (recv *TlsInteraction) InvokeAskPassword(password *TlsPassword, cancellable
 // Holds a password used in TLS.
 /*
 
-C record/class : GTlsPassword
+C type
+
+GTlsPassword
 */
 type TlsPassword struct {
 	native *C.GTlsPassword
@@ -1669,7 +1791,9 @@ func CastToTlsPassword(object *gobject.Object) *TlsPassword {
 // Create a new #GTlsPassword object.
 /*
 
-C function : g_tls_password_new
+C function
+
+g_tls_password_new
 */
 func TlsPasswordNew(flags TlsPasswordFlags, description string) *TlsPassword {
 	c_flags := (C.GTlsPasswordFlags)(flags)
@@ -1686,7 +1810,9 @@ func TlsPasswordNew(flags TlsPasswordFlags, description string) *TlsPassword {
 // Get a description string about what the password will be used for.
 /*
 
-C function : g_tls_password_get_description
+C function
+
+g_tls_password_get_description
 */
 func (recv *TlsPassword) GetDescription() string {
 	retC := C.g_tls_password_get_description((*C.GTlsPassword)(recv.native))
@@ -1698,7 +1824,9 @@ func (recv *TlsPassword) GetDescription() string {
 // Get flags about the password.
 /*
 
-C function : g_tls_password_get_flags
+C function
+
+g_tls_password_get_flags
 */
 func (recv *TlsPassword) GetFlags() TlsPasswordFlags {
 	retC := C.g_tls_password_get_flags((*C.GTlsPassword)(recv.native))
@@ -1714,7 +1842,9 @@ func (recv *TlsPassword) GetFlags() TlsPasswordFlags {
 // g_tls_password_get_flags().
 /*
 
-C function : g_tls_password_get_warning
+C function
+
+g_tls_password_get_warning
 */
 func (recv *TlsPassword) GetWarning() string {
 	retC := C.g_tls_password_get_warning((*C.GTlsPassword)(recv.native))
@@ -1726,7 +1856,9 @@ func (recv *TlsPassword) GetWarning() string {
 // Set a description string about what the password will be used for.
 /*
 
-C function : g_tls_password_set_description
+C function
+
+g_tls_password_set_description
 */
 func (recv *TlsPassword) SetDescription(description string) {
 	c_description := C.CString(description)
@@ -1740,7 +1872,9 @@ func (recv *TlsPassword) SetDescription(description string) {
 // Set flags about the password.
 /*
 
-C function : g_tls_password_set_flags
+C function
+
+g_tls_password_set_flags
 */
 func (recv *TlsPassword) SetFlags(flags TlsPasswordFlags) {
 	c_flags := (C.GTlsPasswordFlags)(flags)
@@ -1759,7 +1893,9 @@ func (recv *TlsPassword) SetFlags(flags TlsPasswordFlags) {
 // considered part of the password in this case.)
 /*
 
-C function : g_tls_password_set_value
+C function
+
+g_tls_password_set_value
 */
 func (recv *TlsPassword) SetValue(value []uint8) {
 	c_value := &value[0]
@@ -1778,7 +1914,9 @@ func (recv *TlsPassword) SetValue(value []uint8) {
 // g_tls_password_get_flags().
 /*
 
-C function : g_tls_password_set_warning
+C function
+
+g_tls_password_set_warning
 */
 func (recv *TlsPassword) SetWarning(warning string) {
 	c_warning := C.CString(warning)

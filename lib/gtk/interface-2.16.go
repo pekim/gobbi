@@ -29,7 +29,9 @@ import "C"
 // > previous action.
 /*
 
-C function : gtk_activatable_do_set_related_action
+C function
+
+gtk_activatable_do_set_related_action
 */
 func (recv *Activatable) DoSetRelatedAction(action *Action) {
 	c_action := (*C.GtkAction)(C.NULL)
@@ -45,7 +47,9 @@ func (recv *Activatable) DoSetRelatedAction(action *Action) {
 // Gets the related #GtkAction for @activatable.
 /*
 
-C function : gtk_activatable_get_related_action
+C function
+
+gtk_activatable_get_related_action
 */
 func (recv *Activatable) GetRelatedAction() *Action {
 	retC := C.gtk_activatable_get_related_action((*C.GtkActivatable)(recv.native))
@@ -59,7 +63,9 @@ func (recv *Activatable) GetRelatedAction() *Action {
 // the action changes appearance.
 /*
 
-C function : gtk_activatable_get_use_action_appearance
+C function
+
+gtk_activatable_get_use_action_appearance
 */
 func (recv *Activatable) GetUseActionAppearance() bool {
 	retC := C.gtk_activatable_get_use_action_appearance((*C.GtkActivatable)(recv.native))
@@ -74,7 +80,9 @@ func (recv *Activatable) GetUseActionAppearance() bool {
 // > property and call gtk_activatable_do_set_related_action() when it changes.
 /*
 
-C function : gtk_activatable_set_related_action
+C function
+
+gtk_activatable_set_related_action
 */
 func (recv *Activatable) SetRelatedAction(action *Action) {
 	c_action := (*C.GtkAction)(C.NULL)
@@ -96,7 +104,9 @@ func (recv *Activatable) SetRelatedAction(action *Action) {
 // > if needed.
 /*
 
-C function : gtk_activatable_set_use_action_appearance
+C function
+
+gtk_activatable_set_use_action_appearance
 */
 func (recv *Activatable) SetUseActionAppearance(useAppearance bool) {
 	c_use_appearance :=
@@ -113,7 +123,9 @@ func (recv *Activatable) SetUseActionAppearance(useAppearance bool) {
 // #GtkActivatable:use-action-appearance changes.
 /*
 
-C function : gtk_activatable_sync_action_properties
+C function
+
+gtk_activatable_sync_action_properties
 */
 func (recv *Activatable) SyncActionProperties(action *Action) {
 	c_action := (*C.GtkAction)(C.NULL)
@@ -129,7 +141,9 @@ func (recv *Activatable) SyncActionProperties(action *Action) {
 // Retrieves the orientation of the @orientable.
 /*
 
-C function : gtk_orientable_get_orientation
+C function
+
+gtk_orientable_get_orientation
 */
 func (recv *Orientable) GetOrientation() Orientation {
 	retC := C.gtk_orientable_get_orientation((*C.GtkOrientable)(recv.native))
@@ -141,7 +155,9 @@ func (recv *Orientable) GetOrientation() Orientation {
 // Sets the orientation of the @orientable.
 /*
 
-C function : gtk_orientable_set_orientation
+C function
+
+gtk_orientable_set_orientation
 */
 func (recv *Orientable) SetOrientation(orientation Orientation) {
 	c_orientation := (C.GtkOrientation)(orientation)

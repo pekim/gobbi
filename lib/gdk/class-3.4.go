@@ -19,7 +19,9 @@ import "C"
 // expected result.
 /*
 
-C function : gdk_keymap_get_modifier_mask
+C function
+
+gdk_keymap_get_modifier_mask
 */
 func (recv *Keymap) GetModifierMask(intent ModifierIntent) ModifierType {
 	c_intent := (C.GdkModifierIntent)(intent)
@@ -33,7 +35,9 @@ func (recv *Keymap) GetModifierMask(intent ModifierIntent) ModifierType {
 // Returns the current modifier state.
 /*
 
-C function : gdk_keymap_get_modifier_state
+C function
+
+gdk_keymap_get_modifier_state
 */
 func (recv *Keymap) GetModifierState() uint32 {
 	retC := C.gdk_keymap_get_modifier_state((*C.GdkKeymap)(recv.native))
@@ -51,7 +55,9 @@ func (recv *Keymap) GetModifierState() uint32 {
 // but has a fallback implementation for other window managers.
 /*
 
-C function : gdk_window_begin_move_drag_for_device
+C function
+
+gdk_window_begin_move_drag_for_device
 */
 func (recv *Window) BeginMoveDragForDevice(device *Device, button int32, rootX int32, rootY int32, timestamp uint32) {
 	c_device := (*C.GdkDevice)(C.NULL)
@@ -80,7 +86,9 @@ func (recv *Window) BeginMoveDragForDevice(device *Device, button int32, rootX i
 // but has a fallback implementation for other window managers.
 /*
 
-C function : gdk_window_begin_resize_drag_for_device
+C function
+
+gdk_window_begin_resize_drag_for_device
 */
 func (recv *Window) BeginResizeDragForDevice(edge WindowEdge, device *Device, button int32, rootX int32, rootY int32, timestamp uint32) {
 	c_edge := (C.GdkWindowEdge)(edge)

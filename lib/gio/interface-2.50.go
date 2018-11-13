@@ -22,7 +22,9 @@ import "C"
 // See g_drive_is_media_removable().
 /*
 
-C function : g_drive_is_removable
+C function
+
+g_drive_is_removable
 */
 func (recv *Drive) IsRemovable() bool {
 	retC := C.g_drive_is_removable((*C.GDrive)(recv.native))

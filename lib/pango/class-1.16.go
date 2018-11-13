@@ -17,7 +17,9 @@ import "C"
 // pango_context_set_base_gravity().
 /*
 
-C function : pango_context_get_base_gravity
+C function
+
+pango_context_get_base_gravity
 */
 func (recv *Context) GetBaseGravity() Gravity {
 	retC := C.pango_context_get_base_gravity((*C.PangoContext)(recv.native))
@@ -32,7 +34,9 @@ func (recv *Context) GetBaseGravity() Gravity {
 // to return the gravity from the current context matrix.
 /*
 
-C function : pango_context_get_gravity
+C function
+
+pango_context_get_gravity
 */
 func (recv *Context) GetGravity() Gravity {
 	retC := C.pango_context_get_gravity((*C.PangoContext)(recv.native))
@@ -45,7 +49,9 @@ func (recv *Context) GetGravity() Gravity {
 // pango_context_set_gravity_hint() for details.
 /*
 
-C function : pango_context_get_gravity_hint
+C function
+
+pango_context_get_gravity_hint
 */
 func (recv *Context) GetGravityHint() GravityHint {
 	retC := C.pango_context_get_gravity_hint((*C.PangoContext)(recv.native))
@@ -59,7 +65,9 @@ func (recv *Context) GetGravityHint() GravityHint {
 // The base gravity is used in laying vertical text out.
 /*
 
-C function : pango_context_set_base_gravity
+C function
+
+pango_context_set_base_gravity
 */
 func (recv *Context) SetBaseGravity(gravity Gravity) {
 	c_gravity := (C.PangoGravity)(gravity)
@@ -76,7 +84,9 @@ func (recv *Context) SetBaseGravity(gravity Gravity) {
 // is set %PANGO_GRAVITY_EAST or %PANGO_GRAVITY_WEST.
 /*
 
-C function : pango_context_set_gravity_hint
+C function
+
+pango_context_set_gravity_hint
 */
 func (recv *Context) SetGravityHint(hint GravityHint) {
 	c_hint := (C.PangoGravityHint)(hint)
@@ -93,7 +103,9 @@ func (recv *Context) SetGravityHint(hint GravityHint) {
 // to modify the contents of the line (glyphs, glyph widths, etc.).
 /*
 
-C function : pango_layout_get_line_readonly
+C function
+
+pango_layout_get_line_readonly
 */
 func (recv *Layout) GetLineReadonly(line int32) *LayoutLine {
 	c_line := (C.int)(line)
@@ -116,7 +128,9 @@ func (recv *Layout) GetLineReadonly(line int32) *LayoutLine {
 // to modify the contents of the lines (glyphs, glyph widths, etc.).
 /*
 
-C function : pango_layout_get_lines_readonly
+C function
+
+pango_layout_get_lines_readonly
 */
 func (recv *Layout) GetLinesReadonly() *glib.SList {
 	retC := C.pango_layout_get_lines_readonly((*C.PangoLayout)(recv.native))
@@ -135,7 +149,9 @@ func (recv *Layout) GetLinesReadonly() *glib.SList {
 // certain font supports all the characters in the string.
 /*
 
-C function : pango_layout_get_unknown_glyphs_count
+C function
+
+pango_layout_get_unknown_glyphs_count
 */
 func (recv *Layout) GetUnknownGlyphsCount() int32 {
 	retC := C.pango_layout_get_unknown_glyphs_count((*C.PangoLayout)(recv.native))
@@ -152,7 +168,9 @@ func (recv *Layout) GetUnknownGlyphsCount() int32 {
 // ellipsized.
 /*
 
-C function : pango_layout_is_ellipsized
+C function
+
+pango_layout_is_ellipsized
 */
 func (recv *Layout) IsEllipsized() bool {
 	retC := C.pango_layout_is_ellipsized((*C.PangoLayout)(recv.native))
@@ -169,7 +187,9 @@ func (recv *Layout) IsEllipsized() bool {
 // to be wrapped.
 /*
 
-C function : pango_layout_is_wrapped
+C function
+
+pango_layout_is_wrapped
 */
 func (recv *Layout) IsWrapped() bool {
 	retC := C.pango_layout_is_wrapped((*C.PangoLayout)(recv.native))

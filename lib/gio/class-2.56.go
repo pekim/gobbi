@@ -28,7 +28,9 @@ import "C"
 // See g_option_context_set_description() for more information.
 /*
 
-C function : g_application_set_option_context_description
+C function
+
+g_application_set_option_context_description
 */
 func (recv *Application) SetOptionContextDescription(description string) {
 	c_description := C.CString(description)
@@ -47,7 +49,9 @@ func (recv *Application) SetOptionContextDescription(description string) {
 // See g_option_context_new() for more information about @parameter_string.
 /*
 
-C function : g_application_set_option_context_parameter_string
+C function
+
+g_application_set_option_context_parameter_string
 */
 func (recv *Application) SetOptionContextParameterString(parameterString string) {
 	c_parameter_string := C.CString(parameterString)
@@ -63,7 +67,9 @@ func (recv *Application) SetOptionContextParameterString(parameterString string)
 // See g_option_context_set_summary() for more information.
 /*
 
-C function : g_application_set_option_context_summary
+C function
+
+g_application_set_option_context_summary
 */
 func (recv *Application) SetOptionContextSummary(summary string) {
 	c_summary := C.CString(summary)
@@ -80,7 +86,9 @@ func (recv *Application) SetOptionContextSummary(summary string) {
 // The @key is looked up in the "Desktop Entry" group.
 /*
 
-C function : g_desktop_app_info_get_locale_string
+C function
+
+g_desktop_app_info_get_locale_string
 */
 func (recv *DesktopAppInfo) GetLocaleString(key string) string {
 	c_key := C.CString(key)
@@ -110,7 +118,9 @@ func (recv *DesktopAppInfo) GetLocaleString(key string) string {
 // packets from more than one source.
 /*
 
-C function : g_socket_join_multicast_group_ssm
+C function
+
+g_socket_join_multicast_group_ssm
 */
 func (recv *Socket) JoinMulticastGroupSsm(group *InetAddress, sourceSpecific *InetAddress, iface string) (bool, error) {
 	c_group := (*C.GInetAddress)(C.NULL)
@@ -147,7 +157,9 @@ func (recv *Socket) JoinMulticastGroupSsm(group *InetAddress, sourceSpecific *In
 // unicast messages after calling this.
 /*
 
-C function : g_socket_leave_multicast_group_ssm
+C function
+
+g_socket_leave_multicast_group_ssm
 */
 func (recv *Socket) LeaveMulticastGroupSsm(group *InetAddress, sourceSpecific *InetAddress, iface string) (bool, error) {
 	c_group := (*C.GInetAddress)(C.NULL)

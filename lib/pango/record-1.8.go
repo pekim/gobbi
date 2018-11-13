@@ -14,7 +14,9 @@ import "C"
 // See pango_font_description_set_size() and pango_font_description_set_absolute_size().
 /*
 
-C function : pango_font_description_get_size_is_absolute
+C function
+
+pango_font_description_get_size_is_absolute
 */
 func (recv *FontDescription) GetSizeIsAbsolute() bool {
 	retC := C.pango_font_description_get_size_is_absolute((*C.PangoFontDescription)(recv.native))
@@ -28,7 +30,9 @@ func (recv *FontDescription) GetSizeIsAbsolute() bool {
 // in points.
 /*
 
-C function : pango_font_description_set_absolute_size
+C function
+
+pango_font_description_set_absolute_size
 */
 func (recv *FontDescription) SetAbsoluteSize(size float64) {
 	c_size := (C.double)(size)
@@ -41,7 +45,9 @@ func (recv *FontDescription) SetAbsoluteSize(size float64) {
 // Class structure for #PangoRenderer.
 /*
 
-C record/class : PangoRendererClass
+C type
+
+PangoRendererClass
 */
 type RendererClass struct {
 	native *C.PangoRendererClass

@@ -16,7 +16,9 @@ import "C"
 // which usually just needs to be sunken by calling g_object_ref_sink().
 /*
 
-C function : g_object_force_floating
+C function
+
+g_object_force_floating
 */
 func (recv *Object) ForceFloating() {
 	C.g_object_force_floating((*C.GObject)(recv.native))
@@ -27,7 +29,9 @@ func (recv *Object) ForceFloating() {
 // Checks whether @object has a [floating][floating-ref] reference.
 /*
 
-C function : g_object_is_floating
+C function
+
+g_object_is_floating
 */
 func (recv *Object) IsFloating() bool {
 	retC := C.g_object_is_floating((C.gpointer)(recv.native))
@@ -49,7 +53,9 @@ func (recv *Object) IsFloating() bool {
 // under the same conditions as for g_object_ref().
 /*
 
-C function : g_object_ref_sink
+C function
+
+g_object_ref_sink
 */
 func (recv *Object) RefSink() uintptr {
 	retC := C.g_object_ref_sink((C.gpointer)(recv.native))
@@ -61,7 +67,9 @@ func (recv *Object) RefSink() uintptr {
 // A #GParamSpec derived structure that contains the meta data for #GType properties.
 /*
 
-C record/class : GParamSpecGType
+C type
+
+GParamSpecGType
 */
 type ParamSpecGType struct {
 	native *C.GParamSpecGType

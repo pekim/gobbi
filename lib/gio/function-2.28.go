@@ -29,7 +29,9 @@ import "C"
 // by MIME type subclassing and not directly.
 /*
 
-C function : g_app_info_get_fallback_for_type
+C function
+
+g_app_info_get_fallback_for_type
 */
 func AppInfoGetFallbackForType(contentType string) *glib.List {
 	c_content_type := C.CString(contentType)
@@ -49,7 +51,9 @@ func AppInfoGetFallbackForType(contentType string) *glib.List {
 // called.
 /*
 
-C function : g_app_info_get_recommended_for_type
+C function
+
+g_app_info_get_recommended_for_type
 */
 func AppInfoGetRecommendedForType(contentType string) *glib.List {
 	c_content_type := C.CString(contentType)
@@ -72,7 +76,9 @@ func AppInfoGetRecommendedForType(contentType string) *glib.List {
 // sources to it to cause it to trigger.
 /*
 
-C function : g_pollable_source_new
+C function
+
+g_pollable_source_new
 */
 func PollableSourceNew(pollableStream *gobject.Object) *glib.Source {
 	c_pollable_stream := (*C.GObject)(C.NULL)
@@ -91,7 +97,9 @@ func PollableSourceNew(pollableStream *gobject.Object) *glib.Source {
 // Gets the default #GTlsBackend for the system.
 /*
 
-C function : g_tls_backend_get_default
+C function
+
+g_tls_backend_get_default
 */
 func TlsBackendGetDefault() *TlsBackend {
 	retC := C.g_tls_backend_get_default()
@@ -109,7 +117,9 @@ func TlsBackendGetDefault() *TlsBackend {
 // this function has returned.
 /*
 
-C function : g_tls_client_connection_new
+C function
+
+g_tls_client_connection_new
 */
 func TlsClientConnectionNew(baseIoStream *IOStream, serverIdentity *SocketConnectable) (*TlsClientConnection, error) {
 	c_base_io_stream := (*C.GIOStream)(C.NULL)
@@ -135,7 +145,9 @@ func TlsClientConnectionNew(baseIoStream *IOStream, serverIdentity *SocketConnec
 // Gets the TLS error quark.
 /*
 
-C function : g_tls_error_quark
+C function
+
+g_tls_error_quark
 */
 func TlsErrorQuark() glib.Quark {
 	retC := C.g_tls_error_quark()
@@ -152,7 +164,9 @@ func TlsErrorQuark() glib.Quark {
 // this function has returned.
 /*
 
-C function : g_tls_server_connection_new
+C function
+
+g_tls_server_connection_new
 */
 func TlsServerConnectionNew(baseIoStream *IOStream, certificate *TlsCertificate) (*TlsServerConnection, error) {
 	c_base_io_stream := (*C.GIOStream)(C.NULL)

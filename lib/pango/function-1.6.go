@@ -13,7 +13,9 @@ import "C"
 // Create a new letter-spacing attribute.
 /*
 
-C function : pango_attr_letter_spacing_new
+C function
+
+pango_attr_letter_spacing_new
 */
 func AttrLetterSpacingNew(letterSpacing int32) *Attribute {
 	c_letter_spacing := (C.int)(letterSpacing)

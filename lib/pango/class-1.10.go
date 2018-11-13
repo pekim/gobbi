@@ -21,7 +21,9 @@ import "C"
 // a reference to the font map.
 /*
 
-C function : pango_font_get_font_map
+C function
+
+pango_font_get_font_map
 */
 func (recv *Font) GetFontMap() *FontMap {
 	retC := C.pango_font_get_font_map((*C.PangoFont)(recv.native))

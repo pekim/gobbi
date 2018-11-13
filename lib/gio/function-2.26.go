@@ -38,7 +38,9 @@ import "C"
 // the #GDBusConnection:exit-on-close property set to %TRUE.
 /*
 
-C function : g_bus_get_finish
+C function
+
+g_bus_get_finish
 */
 func BusGetFinish(res *AsyncResult) (*DBusConnection, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
@@ -74,7 +76,9 @@ func BusGetFinish(res *AsyncResult) (*DBusConnection, error) {
 // the #GDBusConnection:exit-on-close property set to %TRUE.
 /*
 
-C function : g_bus_get_sync
+C function
+
+g_bus_get_sync
 */
 func BusGetSync(busType BusType, cancellable *Cancellable) (*DBusConnection, error) {
 	c_bus_type := (C.GBusType)(busType)
@@ -105,7 +109,9 @@ func BusGetSync(busType BusType, cancellable *Cancellable) (*DBusConnection, err
 // callbacks for easier binding in other languages.
 /*
 
-C function : g_bus_own_name_on_connection_with_closures
+C function
+
+g_bus_own_name_on_connection_with_closures
 */
 func BusOwnNameOnConnectionWithClosures(connection *DBusConnection, name string, flags BusNameOwnerFlags, nameAcquiredClosure *gobject.Closure, nameLostClosure *gobject.Closure) uint32 {
 	c_connection := (*C.GDBusConnection)(C.NULL)
@@ -138,7 +144,9 @@ func BusOwnNameOnConnectionWithClosures(connection *DBusConnection, name string,
 // easier binding in other languages.
 /*
 
-C function : g_bus_own_name_with_closures
+C function
+
+g_bus_own_name_with_closures
 */
 func BusOwnNameWithClosures(busType BusType, name string, flags BusNameOwnerFlags, busAcquiredClosure *gobject.Closure, nameAcquiredClosure *gobject.Closure, nameLostClosure *gobject.Closure) uint32 {
 	c_bus_type := (C.GBusType)(busType)
@@ -172,7 +180,9 @@ func BusOwnNameWithClosures(busType BusType, name string, flags BusNameOwnerFlag
 // Stops owning a name.
 /*
 
-C function : g_bus_unown_name
+C function
+
+g_bus_unown_name
 */
 func BusUnownName(ownerId uint32) {
 	c_owner_id := (C.guint)(ownerId)
@@ -185,7 +195,9 @@ func BusUnownName(ownerId uint32) {
 // Stops watching a name.
 /*
 
-C function : g_bus_unwatch_name
+C function
+
+g_bus_unwatch_name
 */
 func BusUnwatchName(watcherId uint32) {
 	c_watcher_id := (C.guint)(watcherId)
@@ -203,7 +215,9 @@ func BusUnwatchName(watcherId uint32) {
 // easier binding in other languages.
 /*
 
-C function : g_bus_watch_name_on_connection_with_closures
+C function
+
+g_bus_watch_name_on_connection_with_closures
 */
 func BusWatchNameOnConnectionWithClosures(connection *DBusConnection, name string, flags BusNameWatcherFlags, nameAppearedClosure *gobject.Closure, nameVanishedClosure *gobject.Closure) uint32 {
 	c_connection := (*C.GDBusConnection)(C.NULL)
@@ -236,7 +250,9 @@ func BusWatchNameOnConnectionWithClosures(connection *DBusConnection, name strin
 // easier binding in other languages.
 /*
 
-C function : g_bus_watch_name_with_closures
+C function
+
+g_bus_watch_name_with_closures
 */
 func BusWatchNameWithClosures(busType BusType, name string, flags BusNameWatcherFlags, nameAppearedClosure *gobject.Closure, nameVanishedClosure *gobject.Closure) uint32 {
 	c_bus_type := (C.GBusType)(busType)
@@ -270,7 +286,9 @@ func BusWatchNameWithClosures(busType BusType, name string, flags BusNameWatcher
 // [D-Bus address format](https://dbus.freedesktop.org/doc/dbus-specification.html#addresses).
 /*
 
-C function : g_dbus_address_get_for_bus_sync
+C function
+
+g_dbus_address_get_for_bus_sync
 */
 func DbusAddressGetForBusSync(busType BusType, cancellable *Cancellable) (string, error) {
 	c_bus_type := (C.GBusType)(busType)
@@ -299,7 +317,9 @@ func DbusAddressGetForBusSync(busType BusType, cancellable *Cancellable) (string
 // Finishes an operation started with g_dbus_address_get_stream().
 /*
 
-C function : g_dbus_address_get_stream_finish
+C function
+
+g_dbus_address_get_stream_finish
 */
 func DbusAddressGetStreamFinish(res *AsyncResult) (*IOStream, string, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
@@ -331,7 +351,9 @@ func DbusAddressGetStreamFinish(res *AsyncResult) (*IOStream, string, error) {
 // g_dbus_address_get_stream() for the asynchronous version.
 /*
 
-C function : g_dbus_address_get_stream_sync
+C function
+
+g_dbus_address_get_stream_sync
 */
 func DbusAddressGetStreamSync(address string, cancellable *Cancellable) (*IOStream, string, error) {
 	c_address := C.CString(address)
@@ -375,7 +397,9 @@ func DbusAddressGetStreamSync(address string, cancellable *Cancellable) (*IOStre
 // #GError on the wire. Regular applications should not use it.
 /*
 
-C function : g_dbus_error_encode_gerror
+C function
+
+g_dbus_error_encode_gerror
 */
 func DbusErrorEncodeGerror(error *glib.Error) string {
 	c_error := (*C.GError)(C.NULL)
@@ -398,7 +422,9 @@ func DbusErrorEncodeGerror(error *glib.Error) string {
 // g_dbus_error_strip_remote_error() has been used on @error.
 /*
 
-C function : g_dbus_error_get_remote_error
+C function
+
+g_dbus_error_get_remote_error
 */
 func DbusErrorGetRemoteError(error *glib.Error) string {
 	c_error := (*C.GError)(C.NULL)
@@ -417,7 +443,9 @@ func DbusErrorGetRemoteError(error *glib.Error) string {
 // use g_dbus_error_get_remote_error() to get the name of the error.
 /*
 
-C function : g_dbus_error_is_remote_error
+C function
+
+g_dbus_error_is_remote_error
 */
 func DbusErrorIsRemoteError(error *glib.Error) bool {
 	c_error := (*C.GError)(C.NULL)
@@ -459,7 +487,9 @@ func DbusErrorIsRemoteError(error *glib.Error) bool {
 // it.
 /*
 
-C function : g_dbus_error_new_for_dbus_error
+C function
+
+g_dbus_error_new_for_dbus_error
 */
 func DbusErrorNewForDbusError(dbusErrorName string, dbusErrorMessage string) *glib.Error {
 	c_dbus_error_name := C.CString(dbusErrorName)
@@ -481,7 +511,9 @@ func DbusErrorNewForDbusError(dbusErrorName string, dbusErrorMessage string) *gl
 // an error domain.
 /*
 
-C function : g_dbus_error_register_error
+C function
+
+g_dbus_error_register_error
 */
 func DbusErrorRegisterError(errorDomain glib.Quark, errorCode int32, dbusErrorName string) bool {
 	c_error_domain := (C.GQuark)(errorDomain)
@@ -507,7 +539,9 @@ func DbusErrorRegisterError(errorDomain glib.Quark, errorCode int32, dbusErrorNa
 // This is typically used when presenting errors to the end user.
 /*
 
-C function : g_dbus_error_strip_remote_error
+C function
+
+g_dbus_error_strip_remote_error
 */
 func DbusErrorStripRemoteError(error *glib.Error) bool {
 	c_error := (*C.GError)(C.NULL)
@@ -524,7 +558,9 @@ func DbusErrorStripRemoteError(error *glib.Error) bool {
 // Destroys an association previously set up with g_dbus_error_register_error().
 /*
 
-C function : g_dbus_error_unregister_error
+C function
+
+g_dbus_error_unregister_error
 */
 func DbusErrorUnregisterError(errorDomain glib.Quark, errorCode int32, dbusErrorName string) bool {
 	c_error_domain := (C.GQuark)(errorDomain)
@@ -547,7 +583,9 @@ func DbusErrorUnregisterError(errorDomain glib.Quark, errorCode int32, dbusError
 // GUID (for example, D-Bus GUIDs are not RFC-4122 compliant).
 /*
 
-C function : g_dbus_generate_guid
+C function
+
+g_dbus_generate_guid
 */
 func DbusGenerateGuid() string {
 	retC := C.g_dbus_generate_guid()
@@ -565,7 +603,9 @@ func DbusGenerateGuid() string {
 // checks.
 /*
 
-C function : g_dbus_is_address
+C function
+
+g_dbus_is_address
 */
 func DbusIsAddress(string string) bool {
 	c_string := C.CString(string)
@@ -583,7 +623,9 @@ func DbusIsAddress(string string) bool {
 // GUID (for example, D-Bus GUIDs are not RFC-4122 compliant).
 /*
 
-C function : g_dbus_is_guid
+C function
+
+g_dbus_is_guid
 */
 func DbusIsGuid(string string) bool {
 	c_string := C.CString(string)
@@ -598,7 +640,9 @@ func DbusIsGuid(string string) bool {
 // Checks if @string is a valid D-Bus interface name.
 /*
 
-C function : g_dbus_is_interface_name
+C function
+
+g_dbus_is_interface_name
 */
 func DbusIsInterfaceName(string string) bool {
 	c_string := C.CString(string)
@@ -613,7 +657,9 @@ func DbusIsInterfaceName(string string) bool {
 // Checks if @string is a valid D-Bus member (e.g. signal or method) name.
 /*
 
-C function : g_dbus_is_member_name
+C function
+
+g_dbus_is_member_name
 */
 func DbusIsMemberName(string string) bool {
 	c_string := C.CString(string)
@@ -628,7 +674,9 @@ func DbusIsMemberName(string string) bool {
 // Checks if @string is a valid D-Bus bus name (either unique or well-known).
 /*
 
-C function : g_dbus_is_name
+C function
+
+g_dbus_is_name
 */
 func DbusIsName(string string) bool {
 	c_string := C.CString(string)
@@ -646,7 +694,9 @@ func DbusIsName(string string) bool {
 // [D-Bus address format](https://dbus.freedesktop.org/doc/dbus-specification.html#addresses).
 /*
 
-C function : g_dbus_is_supported_address
+C function
+
+g_dbus_is_supported_address
 */
 func DbusIsSupportedAddress(string string) (bool, error) {
 	c_string := C.CString(string)
@@ -668,7 +718,9 @@ func DbusIsSupportedAddress(string string) (bool, error) {
 // Checks if @string is a valid D-Bus unique bus name.
 /*
 
-C function : g_dbus_is_unique_name
+C function
+
+g_dbus_is_unique_name
 */
 func DbusIsUniqueName(string string) bool {
 	c_string := C.CString(string)
@@ -684,7 +736,9 @@ func DbusIsUniqueName(string string) bool {
 // specified protocol.
 /*
 
-C function : g_proxy_get_default_for_protocol
+C function
+
+g_proxy_get_default_for_protocol
 */
 func ProxyGetDefaultForProtocol(protocol string) *Proxy {
 	c_protocol := C.CString(protocol)
@@ -699,7 +753,9 @@ func ProxyGetDefaultForProtocol(protocol string) *Proxy {
 // Gets the default #GProxyResolver for the system.
 /*
 
-C function : g_proxy_resolver_get_default
+C function
+
+g_proxy_resolver_get_default
 */
 func ProxyResolverGetDefault() *ProxyResolver {
 	retC := C.g_proxy_resolver_get_default()

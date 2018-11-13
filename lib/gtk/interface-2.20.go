@@ -20,7 +20,9 @@ import "C"
 // instead.
 /*
 
-C function : gtk_tool_shell_get_ellipsize_mode
+C function
+
+gtk_tool_shell_get_ellipsize_mode
 */
 func (recv *ToolShell) GetEllipsizeMode() pango.EllipsizeMode {
 	retC := C.gtk_tool_shell_get_ellipsize_mode((*C.GtkToolShell)(recv.native))
@@ -34,7 +36,9 @@ func (recv *ToolShell) GetEllipsizeMode() pango.EllipsizeMode {
 // instead.
 /*
 
-C function : gtk_tool_shell_get_text_alignment
+C function
+
+gtk_tool_shell_get_text_alignment
 */
 func (recv *ToolShell) GetTextAlignment() float32 {
 	retC := C.gtk_tool_shell_get_text_alignment((*C.GtkToolShell)(recv.native))
@@ -48,7 +52,9 @@ func (recv *ToolShell) GetTextAlignment() float32 {
 // instead.
 /*
 
-C function : gtk_tool_shell_get_text_orientation
+C function
+
+gtk_tool_shell_get_text_orientation
 */
 func (recv *ToolShell) GetTextOrientation() Orientation {
 	retC := C.gtk_tool_shell_get_text_orientation((*C.GtkToolShell)(recv.native))
@@ -62,7 +68,9 @@ func (recv *ToolShell) GetTextOrientation() Orientation {
 // instead.
 /*
 
-C function : gtk_tool_shell_get_text_size_group
+C function
+
+gtk_tool_shell_get_text_size_group
 */
 func (recv *ToolShell) GetTextSizeGroup() *SizeGroup {
 	retC := C.gtk_tool_shell_get_text_size_group((*C.GtkToolShell)(recv.native))

@@ -32,7 +32,9 @@ import "C"
 // finalized.
 /*
 
-C function : g_application_bind_busy_property
+C function
+
+g_application_bind_busy_property
 */
 func (recv *Application) BindBusyProperty(object uintptr, property string) {
 	c_object := (C.gpointer)(object)
@@ -49,7 +51,9 @@ func (recv *Application) BindBusyProperty(object uintptr, property string) {
 // g_application_mark_busy() or g_application_bind_busy_property().
 /*
 
-C function : g_application_get_is_busy
+C function
+
+g_application_get_is_busy
 */
 func (recv *Application) GetIsBusy() bool {
 	retC := C.g_application_get_is_busy((*C.GApplication)(recv.native))
@@ -63,7 +67,9 @@ func (recv *Application) GetIsBusy() bool {
 // g_application_bind_busy_property().
 /*
 
-C function : g_application_unbind_busy_property
+C function
+
+g_application_unbind_busy_property
 */
 func (recv *Application) UnbindBusyProperty(object uintptr, property string) {
 	c_object := (C.gpointer)(object)
@@ -116,7 +122,9 @@ func (recv *Application) UnbindBusyProperty(object uintptr, property string) {
 // ]|
 /*
 
-C function : g_file_enumerator_iterate
+C function
+
+g_file_enumerator_iterate
 */
 func (recv *FileEnumerator) Iterate(cancellable *Cancellable) (bool, *FileInfo, *File, error) {
 	var c_out_info *C.GFileInfo
@@ -158,7 +166,9 @@ func (recv *FileEnumerator) Iterate(cancellable *Cancellable) (bool, *FileInfo, 
 // write your own loop around g_input_stream_read_async().
 /*
 
-C function : g_input_stream_read_all_finish
+C function
+
+g_input_stream_read_all_finish
 */
 func (recv *InputStream) ReadAllFinish(result *AsyncResult) (bool, uint64, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -184,7 +194,9 @@ func (recv *InputStream) ReadAllFinish(result *AsyncResult) (bool, uint64, error
 // must be a subclass of #GObject.
 /*
 
-C function : g_list_store_new
+C function
+
+g_list_store_new
 */
 func ListStoreNew(itemType gobject.Type) *ListStore {
 	c_item_type := (C.GType)(itemType)
@@ -203,7 +215,9 @@ func ListStoreNew(itemType gobject.Type) *ListStore {
 // efficiently.
 /*
 
-C function : g_list_store_append
+C function
+
+g_list_store_append
 */
 func (recv *ListStore) Append(item uintptr) {
 	c_item := (C.gpointer)(item)
@@ -223,7 +237,9 @@ func (recv *ListStore) Append(item uintptr) {
 // efficiently.
 /*
 
-C function : g_list_store_insert
+C function
+
+g_list_store_insert
 */
 func (recv *ListStore) Insert(position uint32, item uintptr) {
 	c_position := (C.guint)(position)
@@ -244,7 +260,9 @@ func (recv *ListStore) Insert(position uint32, item uintptr) {
 // efficiently.
 /*
 
-C function : g_list_store_remove
+C function
+
+g_list_store_remove
 */
 func (recv *ListStore) Remove(position uint32) {
 	c_position := (C.guint)(position)
@@ -257,7 +275,9 @@ func (recv *ListStore) Remove(position uint32) {
 // Removes all items from @store.
 /*
 
-C function : g_list_store_remove_all
+C function
+
+g_list_store_remove_all
 */
 func (recv *ListStore) RemoveAll() {
 	C.g_list_store_remove_all((*C.GListStore)(recv.native))
@@ -281,7 +301,9 @@ func (recv *ListStore) RemoveAll() {
 // #GNetworkAddresses created with this constructor.
 /*
 
-C function : g_network_address_new_loopback
+C function
+
+g_network_address_new_loopback
 */
 func NetworkAddressNewLoopback(port uint16) *NetworkAddress {
 	c_port := (C.guint16)(port)
@@ -306,7 +328,9 @@ func NetworkAddressNewLoopback(port uint16) *NetworkAddress {
 // g_output_stream_write_async().
 /*
 
-C function : g_output_stream_write_all_finish
+C function
+
+g_output_stream_write_all_finish
 */
 func (recv *OutputStream) WriteAllFinish(result *AsyncResult) (bool, uint64, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -340,7 +364,9 @@ func (recv *OutputStream) WriteAllFinish(result *AsyncResult) (bool, uint64, err
 // to take advantage of the methods provided by #GIOStream.
 /*
 
-C record/class : GSimpleIOStream
+C type
+
+GSimpleIOStream
 */
 type SimpleIOStream struct {
 	native *C.GSimpleIOStream
@@ -382,7 +408,9 @@ func CastToSimpleIOStream(object *gobject.Object) *SimpleIOStream {
 // See also #GIOStream.
 /*
 
-C function : g_simple_io_stream_new
+C function
+
+g_simple_io_stream_new
 */
 func SimpleIOStreamNew(inputStream *InputStream, outputStream *OutputStream) *SimpleIOStream {
 	c_input_stream := (*C.GInputStream)(C.NULL)
@@ -408,7 +436,9 @@ func SimpleIOStreamNew(inputStream *InputStream, outputStream *OutputStream) *Si
 // the callback.
 /*
 
-C function : g_task_get_completed
+C function
+
+g_task_get_completed
 */
 func (recv *Task) GetCompleted() bool {
 	retC := C.g_task_get_completed((*C.GTask)(recv.native))

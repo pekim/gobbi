@@ -49,7 +49,9 @@ import "C"
 // None of the members of a #PangoGlyphItemIter should be modified manually.
 /*
 
-C record/class : PangoGlyphItemIter
+C type
+
+PangoGlyphItemIter
 */
 type GlyphItemIter struct {
 	native *C.PangoGlyphItemIter
@@ -105,7 +107,9 @@ func (recv *GlyphItemIter) ToC() unsafe.Pointer {
 // Make a shallow copy of an existing #PangoGlyphItemIter structure.
 /*
 
-C function : pango_glyph_item_iter_copy
+C function
+
+pango_glyph_item_iter_copy
 */
 func (recv *GlyphItemIter) Copy() *GlyphItemIter {
 	retC := C.pango_glyph_item_iter_copy((*C.PangoGlyphItemIter)(recv.native))
@@ -122,7 +126,9 @@ func (recv *GlyphItemIter) Copy() *GlyphItemIter {
 // Frees a #PangoGlyphItemIter created by pango_glyph_item_iter_copy().
 /*
 
-C function : pango_glyph_item_iter_free
+C function
+
+pango_glyph_item_iter_free
 */
 func (recv *GlyphItemIter) Free() {
 	C.pango_glyph_item_iter_free((*C.PangoGlyphItemIter)(recv.native))
@@ -135,7 +141,9 @@ func (recv *GlyphItemIter) Free() {
 // See #PangoGlyphItemIter for details of cluster orders.
 /*
 
-C function : pango_glyph_item_iter_init_end
+C function
+
+pango_glyph_item_iter_init_end
 */
 func (recv *GlyphItemIter) InitEnd(glyphItem *GlyphItem, text string) bool {
 	c_glyph_item := (*C.PangoGlyphItem)(C.NULL)
@@ -157,7 +165,9 @@ func (recv *GlyphItemIter) InitEnd(glyphItem *GlyphItem, text string) bool {
 // See #PangoGlyphItemIter for details of cluster orders.
 /*
 
-C function : pango_glyph_item_iter_init_start
+C function
+
+pango_glyph_item_iter_init_start
 */
 func (recv *GlyphItemIter) InitStart(glyphItem *GlyphItem, text string) bool {
 	c_glyph_item := (*C.PangoGlyphItem)(C.NULL)
@@ -178,7 +188,9 @@ func (recv *GlyphItemIter) InitStart(glyphItem *GlyphItem, text string) bool {
 // See #PangoGlyphItemIter for details of cluster orders.
 /*
 
-C function : pango_glyph_item_iter_next_cluster
+C function
+
+pango_glyph_item_iter_next_cluster
 */
 func (recv *GlyphItemIter) NextCluster() bool {
 	retC := C.pango_glyph_item_iter_next_cluster((*C.PangoGlyphItemIter)(recv.native))
@@ -191,7 +203,9 @@ func (recv *GlyphItemIter) NextCluster() bool {
 // See #PangoGlyphItemIter for details of cluster orders.
 /*
 
-C function : pango_glyph_item_iter_prev_cluster
+C function
+
+pango_glyph_item_iter_prev_cluster
 */
 func (recv *GlyphItemIter) PrevCluster() bool {
 	retC := C.pango_glyph_item_iter_prev_cluster((*C.PangoGlyphItemIter)(recv.native))

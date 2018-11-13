@@ -15,7 +15,9 @@ import "C"
 // The result must be freed through gdk_rgba_free().
 /*
 
-C function : gdk_rgba_copy
+C function
+
+gdk_rgba_copy
 */
 func (recv *RGBA) Copy() *RGBA {
 	retC := C.gdk_rgba_copy((*C.GdkRGBA)(recv.native))
@@ -27,7 +29,9 @@ func (recv *RGBA) Copy() *RGBA {
 // Compares two RGBA colors.
 /*
 
-C function : gdk_rgba_equal
+C function
+
+gdk_rgba_equal
 */
 func (recv *RGBA) Equal(p2 uintptr) bool {
 	c_p2 := (C.gconstpointer)(p2)
@@ -41,7 +45,9 @@ func (recv *RGBA) Equal(p2 uintptr) bool {
 // Frees a #GdkRGBA created with gdk_rgba_copy()
 /*
 
-C function : gdk_rgba_free
+C function
+
+gdk_rgba_free
 */
 func (recv *RGBA) Free() {
 	C.gdk_rgba_free((*C.GdkRGBA)(recv.native))
@@ -53,7 +59,9 @@ func (recv *RGBA) Free() {
 // table that stores #GdkRGBAs.
 /*
 
-C function : gdk_rgba_hash
+C function
+
+gdk_rgba_hash
 */
 func (recv *RGBA) Hash() uint32 {
 	retC := C.gdk_rgba_hash((C.gconstpointer)(recv.native))
@@ -79,7 +87,9 @@ func (recv *RGBA) Hash() uint32 {
 // a is a floating point value in the range 0 to 1.
 /*
 
-C function : gdk_rgba_parse
+C function
+
+gdk_rgba_parse
 */
 func (recv *RGBA) Parse(spec string) bool {
 	c_spec := C.CString(spec)
@@ -108,7 +118,9 @@ func (recv *RGBA) Parse(spec string) bool {
 // different representation.
 /*
 
-C function : gdk_rgba_to_string
+C function
+
+gdk_rgba_to_string
 */
 func (recv *RGBA) ToString() string {
 	retC := C.gdk_rgba_to_string((*C.GdkRGBA)(recv.native))

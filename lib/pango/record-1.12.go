@@ -14,7 +14,9 @@ import "C"
 // coordinate is needed as well, use pango_matrix_get_font_scale_factors().
 /*
 
-C function : pango_matrix_get_font_scale_factor
+C function
+
+pango_matrix_get_font_scale_factor
 */
 func (recv *Matrix) GetFontScaleFactor() float64 {
 	retC := C.pango_matrix_get_font_scale_factor((*C.PangoMatrix)(recv.native))

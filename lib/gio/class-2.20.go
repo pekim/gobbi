@@ -43,7 +43,9 @@ import "C"
 // g_data_input_stream_read_until_async().
 /*
 
-C function : g_data_input_stream_read_until_finish
+C function
+
+g_data_input_stream_read_until_finish
 */
 func (recv *DataInputStream) ReadUntilFinish(result *AsyncResult) (string, uint64, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -127,7 +129,9 @@ func mountoperation_abortedHandler(_ *C.GObject, data C.gpointer) {
 // closed when the stream is closed.
 /*
 
-C function : g_unix_input_stream_get_close_fd
+C function
+
+g_unix_input_stream_get_close_fd
 */
 func (recv *UnixInputStream) GetCloseFd() bool {
 	retC := C.g_unix_input_stream_get_close_fd((*C.GUnixInputStream)(recv.native))
@@ -139,7 +143,9 @@ func (recv *UnixInputStream) GetCloseFd() bool {
 // Return the UNIX file descriptor that the stream reads from.
 /*
 
-C function : g_unix_input_stream_get_fd
+C function
+
+g_unix_input_stream_get_fd
 */
 func (recv *UnixInputStream) GetFd() int32 {
 	retC := C.g_unix_input_stream_get_fd((*C.GUnixInputStream)(recv.native))
@@ -152,7 +158,9 @@ func (recv *UnixInputStream) GetFd() int32 {
 // when the stream is closed.
 /*
 
-C function : g_unix_input_stream_set_close_fd
+C function
+
+g_unix_input_stream_set_close_fd
 */
 func (recv *UnixInputStream) SetCloseFd(closeFd bool) {
 	c_close_fd :=
@@ -167,7 +175,9 @@ func (recv *UnixInputStream) SetCloseFd(closeFd bool) {
 // closed when the stream is closed.
 /*
 
-C function : g_unix_output_stream_get_close_fd
+C function
+
+g_unix_output_stream_get_close_fd
 */
 func (recv *UnixOutputStream) GetCloseFd() bool {
 	retC := C.g_unix_output_stream_get_close_fd((*C.GUnixOutputStream)(recv.native))
@@ -179,7 +189,9 @@ func (recv *UnixOutputStream) GetCloseFd() bool {
 // Return the UNIX file descriptor that the stream writes to.
 /*
 
-C function : g_unix_output_stream_get_fd
+C function
+
+g_unix_output_stream_get_fd
 */
 func (recv *UnixOutputStream) GetFd() int32 {
 	retC := C.g_unix_output_stream_get_fd((*C.GUnixOutputStream)(recv.native))
@@ -192,7 +204,9 @@ func (recv *UnixOutputStream) GetFd() int32 {
 // when the stream is closed.
 /*
 
-C function : g_unix_output_stream_set_close_fd
+C function
+
+g_unix_output_stream_set_close_fd
 */
 func (recv *UnixOutputStream) SetCloseFd(closeFd bool) {
 	c_close_fd :=

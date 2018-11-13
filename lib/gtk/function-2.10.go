@@ -19,7 +19,9 @@ import "C"
 // depends on the current locale.
 /*
 
-C function : gtk_paper_size_get_default
+C function
+
+gtk_paper_size_get_default
 */
 func PaperSizeGetDefault() string {
 	retC := C.gtk_paper_size_get_default()
@@ -31,7 +33,9 @@ func PaperSizeGetDefault() string {
 // Registers an error quark for #GtkPrintOperation if necessary.
 /*
 
-C function : gtk_print_error_quark
+C function
+
+gtk_print_error_quark
 */
 func PrintErrorQuark() glib.Quark {
 	retC := C.gtk_print_error_quark()
@@ -50,7 +54,9 @@ func PrintErrorQuark() glib.Quark {
 // a problem.
 /*
 
-C function : gtk_print_run_page_setup_dialog
+C function
+
+gtk_print_run_page_setup_dialog
 */
 func PrintRunPageSetupDialog(parent *Window, pageSetup *PageSetup, settings *PrintSettings) *PageSetup {
 	c_parent := (*C.GtkWindow)(C.NULL)

@@ -33,7 +33,9 @@ import "C"
 // use g_io_modules_load_all_in_directory().
 /*
 
-C function : g_io_modules_scan_all_in_directory
+C function
+
+g_io_modules_scan_all_in_directory
 */
 func IoModulesScanAllInDirectory(dirname string) {
 	c_dirname := C.CString(dirname)

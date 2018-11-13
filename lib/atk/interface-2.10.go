@@ -42,7 +42,9 @@ import "C"
 // of the following paragraph after the offset.
 /*
 
-C function : atk_text_get_string_at_offset
+C function
+
+atk_text_get_string_at_offset
 */
 func (recv *Text) GetStringAtOffset(offset int32, granularity TextGranularity) (string, int32, int32) {
 	c_offset := (C.gint)(offset)

@@ -13,7 +13,9 @@ import "C"
 // Returns the number of keys the device currently has.
 /*
 
-C function : gdk_device_get_n_keys
+C function
+
+gdk_device_get_n_keys
 */
 func (recv *Device) GetNKeys() int32 {
 	retC := C.gdk_device_get_n_keys((*C.GdkDevice)(recv.native))
@@ -25,7 +27,9 @@ func (recv *Device) GetNKeys() int32 {
 // Gets the #GdkDisplay associated with a #GdkWindow.
 /*
 
-C function : gdk_window_get_display
+C function
+
+gdk_window_get_display
 */
 func (recv *Window) GetDisplay() *Display {
 	retC := C.gdk_window_get_display((*C.GdkWindow)(recv.native))
@@ -41,7 +45,9 @@ func (recv *Window) GetDisplay() *Display {
 // size on the X server.
 /*
 
-C function : gdk_window_get_height
+C function
+
+gdk_window_get_height
 */
 func (recv *Window) GetHeight() int32 {
 	retC := C.gdk_window_get_height((*C.GdkWindow)(recv.native))
@@ -53,7 +59,9 @@ func (recv *Window) GetHeight() int32 {
 // Gets the #GdkScreen associated with a #GdkWindow.
 /*
 
-C function : gdk_window_get_screen
+C function
+
+gdk_window_get_screen
 */
 func (recv *Window) GetScreen() *Screen {
 	retC := C.gdk_window_get_screen((*C.GdkWindow)(recv.native))
@@ -65,7 +73,9 @@ func (recv *Window) GetScreen() *Screen {
 // Gets the #GdkVisual describing the pixel format of @window.
 /*
 
-C function : gdk_window_get_visual
+C function
+
+gdk_window_get_visual
 */
 func (recv *Window) GetVisual() *Visual {
 	retC := C.gdk_window_get_visual((*C.GdkWindow)(recv.native))
@@ -81,7 +91,9 @@ func (recv *Window) GetVisual() *Visual {
 // size on the X server.
 /*
 
-C function : gdk_window_get_width
+C function
+
+gdk_window_get_width
 */
 func (recv *Window) GetWidth() int32 {
 	retC := C.gdk_window_get_width((*C.GdkWindow)(recv.native))

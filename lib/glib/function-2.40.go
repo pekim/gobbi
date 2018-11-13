@@ -16,7 +16,9 @@ import "C"
 // contains no bytes with the high bit set.
 /*
 
-C function : g_str_is_ascii
+C function
+
+g_str_is_ascii
 */
 func StrIsAscii(str string) bool {
 	c_str := C.CString(str)
@@ -52,7 +54,9 @@ func StrIsAscii(str string) bool {
 // Baz’, but not ‘SFO’ (because no word has ‘fo’ as a prefix).
 /*
 
-C function : g_str_match_string
+C function
+
+g_str_match_string
 */
 func StrMatchString(searchTerm string, potentialHit string, acceptAlternates bool) bool {
 	c_search_term := C.CString(searchTerm)
@@ -90,7 +94,9 @@ func StrMatchString(searchTerm string, potentialHit string, acceptAlternates boo
 // @from_locale.
 /*
 
-C function : g_str_to_ascii
+C function
+
+g_str_to_ascii
 */
 func StrToAscii(str string, fromLocale string) string {
 	c_str := C.CString(str)
@@ -139,7 +145,9 @@ func StrToAscii(str string, fromLocale string) string {
 // function.
 /*
 
-C function : g_variant_parse_error_print_context
+C function
+
+g_variant_parse_error_print_context
 */
 func VariantParseErrorPrintContext(error *Error, sourceStr string) string {
 	c_error := (*C.GError)(C.NULL)

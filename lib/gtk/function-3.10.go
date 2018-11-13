@@ -15,7 +15,9 @@ import "C"
 // Renders the icon in @surface at the specified @x and @y coordinates.
 /*
 
-C function : gtk_render_icon_surface
+C function
+
+gtk_render_icon_surface
 */
 func RenderIconSurface(context *StyleContext, cr *cairo.Context, surface *cairo.Surface, x float64, y float64) {
 	c_context := (*C.GtkStyleContext)(C.NULL)
@@ -51,7 +53,9 @@ func RenderIconSurface(context *StyleContext, cr *cairo.Context, surface *cairo.
 // server.
 /*
 
-C function : gtk_test_widget_wait_for_draw
+C function
+
+gtk_test_widget_wait_for_draw
 */
 func TestWidgetWaitForDraw(widget *Widget) {
 	c_widget := (*C.GtkWidget)(C.NULL)

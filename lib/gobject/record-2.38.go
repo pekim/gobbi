@@ -18,7 +18,9 @@ import "C"
 // data area for @g_class using g_type_class_add_private().
 /*
 
-C function : g_type_class_get_instance_private_offset
+C function
+
+g_type_class_get_instance_private_offset
 */
 func (recv *TypeClass) GetInstancePrivateOffset() int32 {
 	retC := C.g_type_class_get_instance_private_offset((C.gpointer)(recv.native))

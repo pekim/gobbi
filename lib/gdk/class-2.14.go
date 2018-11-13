@@ -26,7 +26,9 @@ import "C"
 // Creates a new #GdkAppLaunchContext.
 /*
 
-C function : gdk_app_launch_context_new
+C function
+
+gdk_app_launch_context_new
 */
 func AppLaunchContextNew() *AppLaunchContext {
 	retC := C.gdk_app_launch_context_new()
@@ -45,7 +47,9 @@ func AppLaunchContextNew() *AppLaunchContext {
 // be the current workspace.
 /*
 
-C function : gdk_app_launch_context_set_desktop
+C function
+
+gdk_app_launch_context_set_desktop
 */
 func (recv *AppLaunchContext) SetDesktop(desktop int32) {
 	c_desktop := (C.gint)(desktop)
@@ -59,7 +63,9 @@ func (recv *AppLaunchContext) SetDesktop(desktop int32) {
 // using this context. See also gdk_app_launch_context_set_screen().
 /*
 
-C function : gdk_app_launch_context_set_display
+C function
+
+gdk_app_launch_context_set_display
 */
 func (recv *AppLaunchContext) SetDisplay(display *Display) {
 	c_display := (*C.GdkDisplay)(C.NULL)
@@ -81,7 +87,9 @@ func (recv *AppLaunchContext) SetDisplay(display *Display) {
 // See also gdk_app_launch_context_set_icon_name().
 /*
 
-C function : gdk_app_launch_context_set_icon
+C function
+
+gdk_app_launch_context_set_icon
 */
 func (recv *AppLaunchContext) SetIcon(icon *gio.Icon) {
 	c_icon := (*C.GIcon)(icon.ToC())
@@ -101,7 +109,9 @@ func (recv *AppLaunchContext) SetIcon(icon *gio.Icon) {
 // for the launched application itself.
 /*
 
-C function : gdk_app_launch_context_set_icon_name
+C function
+
+gdk_app_launch_context_set_icon_name
 */
 func (recv *AppLaunchContext) SetIconName(iconName string) {
 	c_icon_name := C.CString(iconName)
@@ -120,7 +130,9 @@ func (recv *AppLaunchContext) SetIconName(iconName string) {
 // display are used.
 /*
 
-C function : gdk_app_launch_context_set_screen
+C function
+
+gdk_app_launch_context_set_screen
 */
 func (recv *AppLaunchContext) SetScreen(screen *Screen) {
 	c_screen := (*C.GdkScreen)(C.NULL)
@@ -142,7 +154,9 @@ func (recv *AppLaunchContext) SetScreen(screen *Screen) {
 // prevention'.
 /*
 
-C function : gdk_app_launch_context_set_timestamp
+C function
+
+gdk_app_launch_context_set_timestamp
 */
 func (recv *AppLaunchContext) SetTimestamp(timestamp uint32) {
 	c_timestamp := (C.guint32)(timestamp)
@@ -212,7 +226,9 @@ func screen_monitorsChangedHandler(_ *C.GObject, data C.gpointer) {
 // Gets the height in millimeters of the specified monitor.
 /*
 
-C function : gdk_screen_get_monitor_height_mm
+C function
+
+gdk_screen_get_monitor_height_mm
 */
 func (recv *Screen) GetMonitorHeightMm(monitorNum int32) int32 {
 	c_monitor_num := (C.gint)(monitorNum)
@@ -228,7 +244,9 @@ func (recv *Screen) GetMonitorHeightMm(monitorNum int32) int32 {
 // product name of the display device.
 /*
 
-C function : gdk_screen_get_monitor_plug_name
+C function
+
+gdk_screen_get_monitor_plug_name
 */
 func (recv *Screen) GetMonitorPlugName(monitorNum int32) string {
 	c_monitor_num := (C.gint)(monitorNum)
@@ -243,7 +261,9 @@ func (recv *Screen) GetMonitorPlugName(monitorNum int32) string {
 // Gets the width in millimeters of the specified monitor, if available.
 /*
 
-C function : gdk_screen_get_monitor_width_mm
+C function
+
+gdk_screen_get_monitor_width_mm
 */
 func (recv *Screen) GetMonitorWidthMm(monitorNum int32) int32 {
 	c_monitor_num := (C.gint)(monitorNum)

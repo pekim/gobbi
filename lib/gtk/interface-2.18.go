@@ -14,7 +14,9 @@ import "C"
 // See gtk_file_chooser_set_create_folders().
 /*
 
-C function : gtk_file_chooser_get_create_folders
+C function
+
+gtk_file_chooser_get_create_folders
 */
 func (recv *FileChooser) GetCreateFolders() bool {
 	retC := C.gtk_file_chooser_get_create_folders((*C.GtkFileChooser)(recv.native))
@@ -28,7 +30,9 @@ func (recv *FileChooser) GetCreateFolders() bool {
 // %GTK_FILE_CHOOSER_ACTION_OPEN.
 /*
 
-C function : gtk_file_chooser_set_create_folders
+C function
+
+gtk_file_chooser_set_create_folders
 */
 func (recv *FileChooser) SetCreateFolders(createFolders bool) {
 	c_create_folders :=

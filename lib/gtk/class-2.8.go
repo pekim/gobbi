@@ -31,7 +31,9 @@ import "C"
 // automatically wrapped.
 /*
 
-C function : gtk_about_dialog_get_wrap_license
+C function
+
+gtk_about_dialog_get_wrap_license
 */
 func (recv *AboutDialog) GetWrapLicense() bool {
 	retC := C.gtk_about_dialog_get_wrap_license((*C.GtkAboutDialog)(recv.native))
@@ -44,7 +46,9 @@ func (recv *AboutDialog) GetWrapLicense() bool {
 // automatically wrapped.
 /*
 
-C function : gtk_about_dialog_set_wrap_license
+C function
+
+gtk_about_dialog_set_wrap_license
 */
 func (recv *AboutDialog) SetWrapLicense(wrapLicense bool) {
 	c_wrap_license :=
@@ -58,7 +62,9 @@ func (recv *AboutDialog) SetWrapLicense(wrapLicense bool) {
 // Returns the accel closure for this action.
 /*
 
-C function : gtk_action_get_accel_closure
+C function
+
+gtk_action_get_accel_closure
 */
 func (recv *Action) GetAccelClosure() *gobject.Closure {
 	retC := C.gtk_action_get_accel_closure((*C.GtkAction)(recv.native))
@@ -71,7 +77,9 @@ func (recv *Action) GetAccelClosure() *gobject.Closure {
 // of a dialog.
 /*
 
-C function : gtk_dialog_get_response_for_widget
+C function
+
+gtk_dialog_get_response_for_widget
 */
 func (recv *Dialog) GetResponseForWidget(widget *Widget) int32 {
 	c_widget := (*C.GtkWidget)(C.NULL)
@@ -89,7 +97,9 @@ func (recv *Dialog) GetResponseForWidget(widget *Widget) int32 {
 // width of the entry.
 /*
 
-C function : gtk_entry_completion_get_popup_set_width
+C function
+
+gtk_entry_completion_get_popup_set_width
 */
 func (recv *EntryCompletion) GetPopupSetWidth() bool {
 	retC := C.gtk_entry_completion_get_popup_set_width((*C.GtkEntryCompletion)(recv.native))
@@ -102,7 +112,9 @@ func (recv *EntryCompletion) GetPopupSetWidth() bool {
 // only a single match.
 /*
 
-C function : gtk_entry_completion_get_popup_single_match
+C function
+
+gtk_entry_completion_get_popup_single_match
 */
 func (recv *EntryCompletion) GetPopupSingleMatch() bool {
 	retC := C.gtk_entry_completion_get_popup_single_match((*C.GtkEntryCompletion)(recv.native))
@@ -115,7 +127,9 @@ func (recv *EntryCompletion) GetPopupSingleMatch() bool {
 // width as the entry.
 /*
 
-C function : gtk_entry_completion_set_popup_set_width
+C function
+
+gtk_entry_completion_set_popup_set_width
 */
 func (recv *EntryCompletion) SetPopupSetWidth(popupSetWidth bool) {
 	c_popup_set_width :=
@@ -131,7 +145,9 @@ func (recv *EntryCompletion) SetPopupSetWidth(popupSetWidth bool) {
 // are using [inline completion][GtkEntryCompletion--inline-completion].
 /*
 
-C function : gtk_entry_completion_set_popup_single_match
+C function
+
+gtk_entry_completion_set_popup_single_match
 */
 func (recv *EntryCompletion) SetPopupSingleMatch(popupSingleMatch bool) {
 	c_popup_single_match :=
@@ -146,7 +162,9 @@ func (recv *EntryCompletion) SetPopupSingleMatch(popupSingleMatch bool) {
 // This image is used for a drag icon.
 /*
 
-C function : gtk_icon_view_create_drag_icon
+C function
+
+gtk_icon_view_create_drag_icon
 */
 func (recv *IconView) CreateDragIcon(path *TreePath) *cairo.Surface {
 	c_path := (*C.GtkTreePath)(C.NULL)
@@ -171,7 +189,9 @@ func (recv *IconView) CreateDragIcon(path *TreePath) *cairo.Surface {
 // The returned #GtkTreePath must be freed with gtk_tree_path_free().
 /*
 
-C function : gtk_icon_view_get_cursor
+C function
+
+gtk_icon_view_get_cursor
 */
 func (recv *IconView) GetCursor() (bool, *TreePath, *CellRenderer) {
 	var c_path *C.GtkTreePath
@@ -200,7 +220,9 @@ func (recv *IconView) GetCursor() (bool, *TreePath, *CellRenderer) {
 // widget coordinates to bin_window coordinates.
 /*
 
-C function : gtk_icon_view_get_item_at_pos
+C function
+
+gtk_icon_view_get_item_at_pos
 */
 func (recv *IconView) GetItemAtPos(x int32, y int32) (bool, *TreePath, *CellRenderer) {
 	c_x := (C.gint)(x)
@@ -225,7 +247,9 @@ func (recv *IconView) GetItemAtPos(x int32, y int32) (bool, *TreePath, *CellRend
 // See gtk_icon_view_set_reorderable().
 /*
 
-C function : gtk_icon_view_get_reorderable
+C function
+
+gtk_icon_view_get_reorderable
 */
 func (recv *IconView) GetReorderable() bool {
 	retC := C.gtk_icon_view_get_reorderable((*C.GtkIconView)(recv.native))
@@ -240,7 +264,9 @@ func (recv *IconView) GetReorderable() bool {
 // Both paths should be freed with gtk_tree_path_free() after use.
 /*
 
-C function : gtk_icon_view_get_visible_range
+C function
+
+gtk_icon_view_get_visible_range
 */
 func (recv *IconView) GetVisibleRange() (bool, *TreePath, *TreePath) {
 	var c_start_path *C.GtkTreePath
@@ -273,7 +299,9 @@ func (recv *IconView) GetVisibleRange() (bool, *TreePath, *TreePath) {
 // centered path will be modified to reflect this change.
 /*
 
-C function : gtk_icon_view_scroll_to_path
+C function
+
+gtk_icon_view_scroll_to_path
 */
 func (recv *IconView) ScrollToPath(path *TreePath, useAlign bool, rowAlign float32, colAlign float32) {
 	c_path := (*C.GtkTreePath)(C.NULL)
@@ -304,7 +332,9 @@ func (recv *IconView) ScrollToPath(path *TreePath, useAlign bool, rowAlign float
 // Please note that editing can only happen when the widget is realized.
 /*
 
-C function : gtk_icon_view_set_cursor
+C function
+
+gtk_icon_view_set_cursor
 */
 func (recv *IconView) SetCursor(path *TreePath, cell *CellRenderer, startEditing bool) {
 	c_path := (*C.GtkTreePath)(C.NULL)
@@ -328,7 +358,9 @@ func (recv *IconView) SetCursor(path *TreePath, cell *CellRenderer, startEditing
 // Sets the item that is highlighted for feedback.
 /*
 
-C function : gtk_icon_view_set_drag_dest_item
+C function
+
+gtk_icon_view_set_drag_dest_item
 */
 func (recv *IconView) SetDragDestItem(path *TreePath, pos IconViewDropPosition) {
 	c_path := (*C.GtkTreePath)(C.NULL)
@@ -357,7 +389,9 @@ func (recv *IconView) SetDragDestItem(path *TreePath, pos IconViewDropPosition) 
 // handle drag and drop manually.
 /*
 
-C function : gtk_icon_view_set_reorderable
+C function
+
+gtk_icon_view_set_reorderable
 */
 func (recv *IconView) SetReorderable(reorderable bool) {
 	c_reorderable :=
@@ -372,7 +406,9 @@ func (recv *IconView) SetReorderable(reorderable bool) {
 // method sets #GtkIconView:reorderable to %FALSE.
 /*
 
-C function : gtk_icon_view_unset_model_drag_dest
+C function
+
+gtk_icon_view_unset_model_drag_dest
 */
 func (recv *IconView) UnsetModelDragDest() {
 	C.gtk_icon_view_unset_model_drag_dest((*C.GtkIconView)(recv.native))
@@ -384,7 +420,9 @@ func (recv *IconView) UnsetModelDragDest() {
 // method sets #GtkIconView:reorderable to %FALSE.
 /*
 
-C function : gtk_icon_view_unset_model_drag_source
+C function
+
+gtk_icon_view_unset_model_drag_source
 */
 func (recv *IconView) UnsetModelDragSource() {
 	C.gtk_icon_view_unset_model_drag_source((*C.GtkIconView)(recv.native))
@@ -395,7 +433,9 @@ func (recv *IconView) UnsetModelDragSource() {
 // Resets the image to be empty.
 /*
 
-C function : gtk_image_clear
+C function
+
+gtk_image_clear
 */
 func (recv *Image) Clear() {
 	C.gtk_image_clear((*C.GtkImage)(recv.native))
@@ -407,7 +447,9 @@ func (recv *Image) Clear() {
 // See gtk_menu_bar_set_child_pack_direction().
 /*
 
-C function : gtk_menu_bar_get_child_pack_direction
+C function
+
+gtk_menu_bar_get_child_pack_direction
 */
 func (recv *MenuBar) GetChildPackDirection() PackDirection {
 	retC := C.gtk_menu_bar_get_child_pack_direction((*C.GtkMenuBar)(recv.native))
@@ -420,7 +462,9 @@ func (recv *MenuBar) GetChildPackDirection() PackDirection {
 // See gtk_menu_bar_set_pack_direction().
 /*
 
-C function : gtk_menu_bar_get_pack_direction
+C function
+
+gtk_menu_bar_get_pack_direction
 */
 func (recv *MenuBar) GetPackDirection() PackDirection {
 	retC := C.gtk_menu_bar_get_pack_direction((*C.GtkMenuBar)(recv.native))
@@ -432,7 +476,9 @@ func (recv *MenuBar) GetPackDirection() PackDirection {
 // Sets how widgets should be packed inside the children of a menubar.
 /*
 
-C function : gtk_menu_bar_set_child_pack_direction
+C function
+
+gtk_menu_bar_set_child_pack_direction
 */
 func (recv *MenuBar) SetChildPackDirection(childPackDir PackDirection) {
 	c_child_pack_dir := (C.GtkPackDirection)(childPackDir)
@@ -445,7 +491,9 @@ func (recv *MenuBar) SetChildPackDirection(childPackDir PackDirection) {
 // Sets how items should be packed inside a menubar.
 /*
 
-C function : gtk_menu_bar_set_pack_direction
+C function
+
+gtk_menu_bar_set_pack_direction
 */
 func (recv *MenuBar) SetPackDirection(packDir PackDirection) {
 	c_pack_dir := (C.GtkPackDirection)(packDir)
@@ -458,7 +506,9 @@ func (recv *MenuBar) SetPackDirection(packDir PackDirection) {
 // Returns %TRUE if the menu shell will take the keyboard focus on popup.
 /*
 
-C function : gtk_menu_shell_get_take_focus
+C function
+
+gtk_menu_shell_get_take_focus
 */
 func (recv *MenuShell) GetTakeFocus() bool {
 	retC := C.gtk_menu_shell_get_take_focus((*C.GtkMenuShell)(recv.native))
@@ -495,7 +545,9 @@ func (recv *MenuShell) GetTakeFocus() bool {
 // See also gdk_keyboard_grab()
 /*
 
-C function : gtk_menu_shell_set_take_focus
+C function
+
+gtk_menu_shell_set_take_focus
 */
 func (recv *MenuShell) SetTakeFocus(takeFocus bool) {
 	c_take_focus :=
@@ -509,7 +561,9 @@ func (recv *MenuShell) SetTakeFocus(takeFocus bool) {
 // Returns the horizontal scrollbar of @scrolled_window.
 /*
 
-C function : gtk_scrolled_window_get_hscrollbar
+C function
+
+gtk_scrolled_window_get_hscrollbar
 */
 func (recv *ScrolledWindow) GetHscrollbar() *Widget {
 	retC := C.gtk_scrolled_window_get_hscrollbar((*C.GtkScrolledWindow)(recv.native))
@@ -521,7 +575,9 @@ func (recv *ScrolledWindow) GetHscrollbar() *Widget {
 // Returns the vertical scrollbar of @scrolled_window.
 /*
 
-C function : gtk_scrolled_window_get_vscrollbar
+C function
+
+gtk_scrolled_window_get_vscrollbar
 */
 func (recv *ScrolledWindow) GetVscrollbar() *Widget {
 	retC := C.gtk_scrolled_window_get_vscrollbar((*C.GtkScrolledWindow)(recv.native))
@@ -533,7 +589,9 @@ func (recv *ScrolledWindow) GetVscrollbar() *Widget {
 // Returns if invisible widgets are ignored when calculating the size.
 /*
 
-C function : gtk_size_group_get_ignore_hidden
+C function
+
+gtk_size_group_get_ignore_hidden
 */
 func (recv *SizeGroup) GetIgnoreHidden() bool {
 	retC := C.gtk_size_group_get_ignore_hidden((*C.GtkSizeGroup)(recv.native))
@@ -546,7 +604,9 @@ func (recv *SizeGroup) GetIgnoreHidden() bool {
 // calculating the size.
 /*
 
-C function : gtk_size_group_set_ignore_hidden
+C function
+
+gtk_size_group_set_ignore_hidden
 */
 func (recv *SizeGroup) SetIgnoreHidden(ignoreHidden bool) {
 	c_ignore_hidden :=
@@ -561,7 +621,9 @@ func (recv *SizeGroup) SetIgnoreHidden(ignoreHidden bool) {
 // see gtk_tool_button_set_icon_name().
 /*
 
-C function : gtk_tool_button_get_icon_name
+C function
+
+gtk_tool_button_get_icon_name
 */
 func (recv *ToolButton) GetIconName() string {
 	retC := C.gtk_tool_button_get_icon_name((*C.GtkToolButton)(recv.native))
@@ -577,7 +639,9 @@ func (recv *ToolButton) GetIconName() string {
 // #GtkToolButton:icon-widget and #GtkToolButton:stock-id properties.
 /*
 
-C function : gtk_tool_button_set_icon_name
+C function
+
+gtk_tool_button_set_icon_name
 */
 func (recv *ToolButton) SetIconName(iconName string) {
 	c_icon_name := C.CString(iconName)
@@ -594,7 +658,9 @@ func (recv *ToolButton) SetIconName(iconName string) {
 // The paths should be freed with gtk_tree_path_free() after use.
 /*
 
-C function : gtk_tree_view_get_visible_range
+C function
+
+gtk_tree_view_get_visible_range
 */
 func (recv *TreeView) GetVisibleRange() (bool, *TreePath, *TreePath) {
 	var c_start_path *C.GtkTreePath
@@ -615,7 +681,9 @@ func (recv *TreeView) GetVisibleRange() (bool, *TreePath, *TreePath) {
 // their sizes renegotiated.
 /*
 
-C function : gtk_tree_view_column_queue_resize
+C function
+
+gtk_tree_view_column_queue_resize
 */
 func (recv *TreeViewColumn) QueueResize() {
 	C.gtk_tree_view_column_queue_resize((*C.GtkTreeViewColumn)(recv.native))
@@ -689,7 +757,9 @@ func widget_grabBrokenEventHandler(_ *C.GObject, c_event *C.GdkEventGrabBroken, 
 // to a themed icon. See the docs for #GtkIconTheme for more details.
 /*
 
-C function : gtk_drag_source_set_icon_name
+C function
+
+gtk_drag_source_set_icon_name
 */
 func (recv *Widget) DragSourceSetIconName(iconName string) {
 	c_icon_name := C.CString(iconName)
@@ -703,7 +773,9 @@ func (recv *Widget) DragSourceSetIconName(iconName string) {
 // Gets the value set by gtk_window_set_urgency_hint()
 /*
 
-C function : gtk_window_get_urgency_hint
+C function
+
+gtk_window_get_urgency_hint
 */
 func (recv *Window) GetUrgencyHint() bool {
 	retC := C.gtk_window_get_urgency_hint((*C.GtkWindow)(recv.native))
@@ -717,7 +789,9 @@ func (recv *Window) GetUrgencyHint() bool {
 // gtk_window_present(). See gtk_window_present() for details.
 /*
 
-C function : gtk_window_present_with_time
+C function
+
+gtk_window_present_with_time
 */
 func (recv *Window) PresentWithTime(timestamp uint32) {
 	c_timestamp := (C.guint32)(timestamp)
@@ -731,7 +805,9 @@ func (recv *Window) PresentWithTime(timestamp uint32) {
 // the users attention to the window. This function sets this hint.
 /*
 
-C function : gtk_window_set_urgency_hint
+C function
+
+gtk_window_set_urgency_hint
 */
 func (recv *Window) SetUrgencyHint(setting bool) {
 	c_setting :=

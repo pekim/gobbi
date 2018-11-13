@@ -13,7 +13,9 @@ import "C"
 // Gets the #PangoFontMap used to look up fonts for this context.
 /*
 
-C function : pango_context_get_font_map
+C function
+
+pango_context_get_font_map
 */
 func (recv *Context) GetFontMap() *FontMap {
 	retC := C.pango_context_get_font_map((*C.PangoContext)(recv.native))
@@ -26,7 +28,9 @@ func (recv *Context) GetFontMap() *FontMap {
 // rendering with this context. See pango_context_set_matrix().
 /*
 
-C function : pango_context_get_matrix
+C function
+
+pango_context_get_matrix
 */
 func (recv *Context) GetMatrix() *Matrix {
 	retC := C.pango_context_get_matrix((*C.PangoContext)(recv.native))
@@ -48,7 +52,9 @@ func (recv *Context) GetMatrix() *Matrix {
 // matrices, depending on how the text is fit to the pixel grid.
 /*
 
-C function : pango_context_set_matrix
+C function
+
+pango_context_set_matrix
 */
 func (recv *Context) SetMatrix(matrix *Matrix) {
 	c_matrix := (*C.PangoMatrix)(C.NULL)
@@ -65,7 +71,9 @@ func (recv *Context) SetMatrix(matrix *Matrix) {
 // See pango_layout_set_ellipsize()
 /*
 
-C function : pango_layout_get_ellipsize
+C function
+
+pango_layout_get_ellipsize
 */
 func (recv *Layout) GetEllipsize() EllipsizeMode {
 	retC := C.pango_layout_get_ellipsize((*C.PangoLayout)(recv.native))
@@ -87,7 +95,9 @@ func (recv *Layout) GetEllipsize() EllipsizeMode {
 // See pango_layout_set_height() for details.
 /*
 
-C function : pango_layout_set_ellipsize
+C function
+
+pango_layout_set_ellipsize
 */
 func (recv *Layout) SetEllipsize(ellipsize EllipsizeMode) {
 	c_ellipsize := (C.PangoEllipsizeMode)(ellipsize)

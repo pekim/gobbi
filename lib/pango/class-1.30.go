@@ -12,7 +12,9 @@ import "C"
 // the text of @layout.
 /*
 
-C function : pango_layout_get_character_count
+C function
+
+pango_layout_get_character_count
 */
 func (recv *Layout) GetCharacterCount() int32 {
 	retC := C.pango_layout_get_character_count((*C.PangoLayout)(recv.native))

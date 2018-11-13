@@ -156,7 +156,9 @@ import "C"
 // gtk_widget_insert_action_group() will be consulted as well.
 /*
 
-C record/class : GtkActionable
+C type
+
+GtkActionable
 */
 type Actionable struct {
 	native *C.GtkActionable
@@ -196,7 +198,7 @@ func (recv *Actionable) ToC() unsafe.Pointer {
 // gtk_activatable_do_set_related_action() and
 // gtk_activatable_sync_action_properties() at the appropriate times.
 //
-// ## A class fragment implementing #GtkActivatable
+// A class fragment implementing #GtkActivatable
 //
 // |[<!-- language="C" -->
 //
@@ -414,7 +416,9 @@ func (recv *Actionable) ToC() unsafe.Pointer {
 // ]|
 /*
 
-C record/class : GtkActivatable
+C type
+
+GtkActivatable
 */
 type Activatable struct {
 	native *C.GtkActivatable
@@ -455,7 +459,9 @@ func (recv *Activatable) ToC() unsafe.Pointer {
 // use gtk_app_chooser_get_app_info().
 /*
 
-C record/class : GtkAppChooser
+C type
+
+GtkAppChooser
 */
 type AppChooser struct {
 	native *C.GtkAppChooser
@@ -491,7 +497,9 @@ func (recv *AppChooser) ToC() unsafe.Pointer {
 // #GtkBuilder format or run any extra routines at deserialization time.
 /*
 
-C record/class : GtkBuildable
+C type
+
+GtkBuildable
 */
 type Buildable struct {
 	native *C.GtkBuildable
@@ -515,7 +523,9 @@ func (recv *Buildable) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkCellAccessibleParent
+C type
+
+GtkCellAccessibleParent
 */
 type CellAccessibleParent struct {
 	native *C.GtkCellAccessibleParent
@@ -539,7 +549,9 @@ func (recv *CellAccessibleParent) ToC() unsafe.Pointer {
 
 /*
 
-C function : gtk_cell_accessible_parent_activate
+C function
+
+gtk_cell_accessible_parent_activate
 */
 func (recv *CellAccessibleParent) Activate(cell *CellAccessible) {
 	c_cell := (*C.GtkCellAccessible)(C.NULL)
@@ -554,7 +566,9 @@ func (recv *CellAccessibleParent) Activate(cell *CellAccessible) {
 
 /*
 
-C function : gtk_cell_accessible_parent_edit
+C function
+
+gtk_cell_accessible_parent_edit
 */
 func (recv *CellAccessibleParent) Edit(cell *CellAccessible) {
 	c_cell := (*C.GtkCellAccessible)(C.NULL)
@@ -569,7 +583,9 @@ func (recv *CellAccessibleParent) Edit(cell *CellAccessible) {
 
 /*
 
-C function : gtk_cell_accessible_parent_expand_collapse
+C function
+
+gtk_cell_accessible_parent_expand_collapse
 */
 func (recv *CellAccessibleParent) ExpandCollapse(cell *CellAccessible) {
 	c_cell := (*C.GtkCellAccessible)(C.NULL)
@@ -586,7 +602,9 @@ func (recv *CellAccessibleParent) ExpandCollapse(cell *CellAccessible) {
 
 /*
 
-C function : gtk_cell_accessible_parent_get_cell_extents
+C function
+
+gtk_cell_accessible_parent_get_cell_extents
 */
 func (recv *CellAccessibleParent) GetCellExtents(cell *CellAccessible, x int32, y int32, width int32, height int32, coordType atk.CoordType) {
 	c_cell := (*C.GtkCellAccessible)(C.NULL)
@@ -611,7 +629,9 @@ func (recv *CellAccessibleParent) GetCellExtents(cell *CellAccessible, x int32, 
 
 /*
 
-C function : gtk_cell_accessible_parent_get_child_index
+C function
+
+gtk_cell_accessible_parent_get_child_index
 */
 func (recv *CellAccessibleParent) GetChildIndex(cell *CellAccessible) int32 {
 	c_cell := (*C.GtkCellAccessible)(C.NULL)
@@ -627,7 +647,9 @@ func (recv *CellAccessibleParent) GetChildIndex(cell *CellAccessible) int32 {
 
 /*
 
-C function : gtk_cell_accessible_parent_get_renderer_state
+C function
+
+gtk_cell_accessible_parent_get_renderer_state
 */
 func (recv *CellAccessibleParent) GetRendererState(cell *CellAccessible) CellRendererState {
 	c_cell := (*C.GtkCellAccessible)(C.NULL)
@@ -643,7 +665,9 @@ func (recv *CellAccessibleParent) GetRendererState(cell *CellAccessible) CellRen
 
 /*
 
-C function : gtk_cell_accessible_parent_grab_focus
+C function
+
+gtk_cell_accessible_parent_grab_focus
 */
 func (recv *CellAccessibleParent) GrabFocus(cell *CellAccessible) bool {
 	c_cell := (*C.GtkCellAccessible)(C.NULL)
@@ -659,7 +683,9 @@ func (recv *CellAccessibleParent) GrabFocus(cell *CellAccessible) bool {
 
 /*
 
-C function : gtk_cell_accessible_parent_update_relationset
+C function
+
+gtk_cell_accessible_parent_update_relationset
 */
 func (recv *CellAccessibleParent) UpdateRelationset(cell *CellAccessible, relationset *atk.RelationSet) {
 	c_cell := (*C.GtkCellAccessible)(C.NULL)
@@ -681,7 +707,9 @@ func (recv *CellAccessibleParent) UpdateRelationset(cell *CellAccessible, relati
 // when editing the contents of a #GtkTreeView cell.
 /*
 
-C record/class : GtkCellEditable
+C type
+
+GtkCellEditable
 */
 type CellEditable struct {
 	native *C.GtkCellEditable
@@ -820,7 +848,9 @@ func celleditable_removeWidgetHandler(_ *C.GObject, data C.gpointer) {
 // Emits the #GtkCellEditable::editing-done signal.
 /*
 
-C function : gtk_cell_editable_editing_done
+C function
+
+gtk_cell_editable_editing_done
 */
 func (recv *CellEditable) EditingDone() {
 	C.gtk_cell_editable_editing_done((*C.GtkCellEditable)(recv.native))
@@ -831,7 +861,9 @@ func (recv *CellEditable) EditingDone() {
 // Emits the #GtkCellEditable::remove-widget signal.
 /*
 
-C function : gtk_cell_editable_remove_widget
+C function
+
+gtk_cell_editable_remove_widget
 */
 func (recv *CellEditable) RemoveWidget() {
 	C.gtk_cell_editable_remove_widget((*C.GtkCellEditable)(recv.native))
@@ -946,7 +978,9 @@ func (recv *CellEditable) RemoveWidget() {
 // for your class.
 /*
 
-C record/class : GtkCellLayout
+C type
+
+GtkCellLayout
 */
 type CellLayout struct {
 	native *C.GtkCellLayout
@@ -976,7 +1010,9 @@ func (recv *CellLayout) ToC() unsafe.Pointer {
 // #GtkColorChooserWidget, #GtkColorChooserDialog and #GtkColorButton.
 /*
 
-C record/class : GtkColorChooser
+C type
+
+GtkColorChooser
 */
 type ColorChooser struct {
 	native *C.GtkColorChooser
@@ -1008,7 +1044,7 @@ func (recv *ColorChooser) ToC() unsafe.Pointer {
 // the following handler to #GtkEditable::insert-text, an application
 // can convert all entry into a widget into uppercase.
 //
-// ## Forcing entry to uppercase.
+// Forcing entry to uppercase.
 //
 // |[<!-- language="C" -->
 // #include <ctype.h>;
@@ -1035,7 +1071,9 @@ func (recv *ColorChooser) ToC() unsafe.Pointer {
 // ]|
 /*
 
-C record/class : GtkEditable
+C type
+
+GtkEditable
 */
 type Editable struct {
 	native *C.GtkEditable
@@ -1122,7 +1160,9 @@ func editable_changedHandler(_ *C.GObject, data C.gpointer) {
 // puts it on the clipboard.
 /*
 
-C function : gtk_editable_copy_clipboard
+C function
+
+gtk_editable_copy_clipboard
 */
 func (recv *Editable) CopyClipboard() {
 	C.gtk_editable_copy_clipboard((*C.GtkEditable)(recv.native))
@@ -1134,7 +1174,9 @@ func (recv *Editable) CopyClipboard() {
 // puts it on the clipboard.
 /*
 
-C function : gtk_editable_cut_clipboard
+C function
+
+gtk_editable_cut_clipboard
 */
 func (recv *Editable) CutClipboard() {
 	C.gtk_editable_cut_clipboard((*C.GtkEditable)(recv.native))
@@ -1146,7 +1188,9 @@ func (recv *Editable) CutClipboard() {
 // This call doesn’t do anything if there is no selected text.
 /*
 
-C function : gtk_editable_delete_selection
+C function
+
+gtk_editable_delete_selection
 */
 func (recv *Editable) DeleteSelection() {
 	C.gtk_editable_delete_selection((*C.GtkEditable)(recv.native))
@@ -1162,7 +1206,9 @@ func (recv *Editable) DeleteSelection() {
 // Note that the positions are specified in characters, not bytes.
 /*
 
-C function : gtk_editable_delete_text
+C function
+
+gtk_editable_delete_text
 */
 func (recv *Editable) DeleteText(startPos int32, endPos int32) {
 	c_start_pos := (C.gint)(startPos)
@@ -1182,7 +1228,9 @@ func (recv *Editable) DeleteText(startPos int32, endPos int32) {
 // Note that positions are specified in characters, not bytes.
 /*
 
-C function : gtk_editable_get_chars
+C function
+
+gtk_editable_get_chars
 */
 func (recv *Editable) GetChars(startPos int32, endPos int32) string {
 	c_start_pos := (C.gint)(startPos)
@@ -1200,7 +1248,9 @@ func (recv *Editable) GetChars(startPos int32, endPos int32) string {
 // gtk_editable_set_editable().
 /*
 
-C function : gtk_editable_get_editable
+C function
+
+gtk_editable_get_editable
 */
 func (recv *Editable) GetEditable() bool {
 	retC := C.gtk_editable_get_editable((*C.GtkEditable)(recv.native))
@@ -1215,7 +1265,9 @@ func (recv *Editable) GetEditable() bool {
 // Note that this position is in characters, not in bytes.
 /*
 
-C function : gtk_editable_get_position
+C function
+
+gtk_editable_get_position
 */
 func (recv *Editable) GetPosition() int32 {
 	retC := C.gtk_editable_get_position((*C.GtkEditable)(recv.native))
@@ -1231,7 +1283,9 @@ func (recv *Editable) GetPosition() int32 {
 // Note that positions are specified in characters, not bytes.
 /*
 
-C function : gtk_editable_get_selection_bounds
+C function
+
+gtk_editable_get_selection_bounds
 */
 func (recv *Editable) GetSelectionBounds() (bool, int32, int32) {
 	var c_start_pos C.gint
@@ -1255,7 +1309,9 @@ func (recv *Editable) GetSelectionBounds() (bool, int32, int32) {
 // The function updates @position to point after the newly inserted text.
 /*
 
-C function : gtk_editable_insert_text
+C function
+
+gtk_editable_insert_text
 */
 func (recv *Editable) InsertText(newText string, newTextLength int32, position int32) {
 	c_new_text := C.CString(newText)
@@ -1274,7 +1330,9 @@ func (recv *Editable) InsertText(newText string, newTextLength int32, position i
 // cursor in the editable.
 /*
 
-C function : gtk_editable_paste_clipboard
+C function
+
+gtk_editable_paste_clipboard
 */
 func (recv *Editable) PasteClipboard() {
 	C.gtk_editable_paste_clipboard((*C.GtkEditable)(recv.native))
@@ -1291,7 +1349,9 @@ func (recv *Editable) PasteClipboard() {
 // Note that positions are specified in characters, not bytes.
 /*
 
-C function : gtk_editable_select_region
+C function
+
+gtk_editable_select_region
 */
 func (recv *Editable) SelectRegion(startPos int32, endPos int32) {
 	c_start_pos := (C.gint)(startPos)
@@ -1307,7 +1367,9 @@ func (recv *Editable) SelectRegion(startPos int32, endPos int32) {
 // widget or not.
 /*
 
-C function : gtk_editable_set_editable
+C function
+
+gtk_editable_set_editable
 */
 func (recv *Editable) SetEditable(isEditable bool) {
 	c_is_editable :=
@@ -1327,7 +1389,9 @@ func (recv *Editable) SetEditable(isEditable bool) {
 // of the editable. Note that @position is in characters, not in bytes.
 /*
 
-C function : gtk_editable_set_position
+C function
+
+gtk_editable_set_position
 */
 func (recv *Editable) SetPosition(position int32) {
 	c_position := (C.gint)(position)
@@ -1398,7 +1462,11 @@ func (recv *Editable) SetPosition(position int32) {
 // flag that indicates whether your callback could successfully
 // generate a preview.
 //
-// ## Example: Using a Preview Widget ## {#gtkfilechooser-preview}
+/*
+Example: Using a Preview Widget
+
+(see gtkfilechooser-preview)
+*/
 // |[<!-- language="C" -->
 // {
 // GtkImage *preview;
@@ -1463,7 +1531,9 @@ func (recv *Editable) SetPosition(position int32) {
 // the whole extra widget.
 /*
 
-C record/class : GtkFileChooser
+C type
+
+GtkFileChooser
 */
 type FileChooser struct {
 	native *C.GtkFileChooser
@@ -1717,7 +1787,9 @@ func filechooser_updatePreviewHandler(_ *C.GObject, data C.gpointer) {
 // file.  See gtk_file_chooser_set_use_preview_label().
 /*
 
-C function : gtk_file_chooser_get_use_preview_label
+C function
+
+gtk_file_chooser_get_use_preview_label
 */
 func (recv *FileChooser) GetUsePreviewLabel() bool {
 	retC := C.gtk_file_chooser_get_use_preview_label((*C.GtkFileChooser)(recv.native))
@@ -1733,7 +1805,9 @@ func (recv *FileChooser) GetUsePreviewLabel() bool {
 // has been introducted in GTK+ 3.2.
 /*
 
-C record/class : GtkFontChooser
+C type
+
+GtkFontChooser
 */
 type FontChooser struct {
 	native *C.GtkFontChooser
@@ -1767,7 +1841,9 @@ func (recv *FontChooser) ToC() unsafe.Pointer {
 // #GtkOrientable was introduced in GTK+ 2.16.
 /*
 
-C record/class : GtkOrientable
+C type
+
+GtkOrientable
 */
 type Orientable struct {
 	native *C.GtkOrientable
@@ -1791,7 +1867,9 @@ func (recv *Orientable) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkPrintOperationPreview
+C type
+
+GtkPrintOperationPreview
 */
 type PrintOperationPreview struct {
 	native *C.GtkPrintOperationPreview
@@ -1941,7 +2019,9 @@ func printoperationpreview_readyHandler(_ *C.GObject, c_context *C.GtkPrintConte
 // Recently used files are supported since GTK+ 2.10.
 /*
 
-C record/class : GtkRecentChooser
+C type
+
+GtkRecentChooser
 */
 type RecentChooser struct {
 	native *C.GtkRecentChooser
@@ -1969,7 +2049,7 @@ func (recv *RecentChooser) ToC() unsafe.Pointer {
 // To implement this interface you should override the
 // #GtkScrollable:hadjustment and #GtkScrollable:vadjustment properties.
 //
-// ## Creating a scrollable widget
+// Creating a scrollable widget
 //
 // All scrollable widgets should do the following.
 //
@@ -1992,7 +2072,9 @@ func (recv *RecentChooser) ToC() unsafe.Pointer {
 // the scrollable widget should scroll its contents.
 /*
 
-C record/class : GtkScrollable
+C type
+
+GtkScrollable
 */
 type Scrollable struct {
 	native *C.GtkScrollable
@@ -2018,7 +2100,9 @@ func (recv *Scrollable) ToC() unsafe.Pointer {
 // See gtk_style_context_add_provider() and gtk_style_context_add_provider_for_screen().
 /*
 
-C record/class : GtkStyleProvider
+C type
+
+GtkStyleProvider
 */
 type StyleProvider struct {
 	native *C.GtkStyleProvider
@@ -2044,7 +2128,9 @@ func (recv *StyleProvider) ToC() unsafe.Pointer {
 // information when embedding #GtkToolItem widgets.
 /*
 
-C record/class : GtkToolShell
+C type
+
+GtkToolShell
 */
 type ToolShell struct {
 	native *C.GtkToolShell
@@ -2068,7 +2154,9 @@ func (recv *ToolShell) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkTreeDragDest
+C type
+
+GtkTreeDragDest
 */
 type TreeDragDest struct {
 	native *C.GtkTreeDragDest
@@ -2098,7 +2186,9 @@ func (recv *TreeDragDest) ToC() unsafe.Pointer {
 // a @dest no longer found in the model!
 /*
 
-C function : gtk_tree_drag_dest_drag_data_received
+C function
+
+gtk_tree_drag_dest_drag_data_received
 */
 func (recv *TreeDragDest) DragDataReceived(dest *TreePath, selectionData *SelectionData) bool {
 	c_dest := (*C.GtkTreePath)(C.NULL)
@@ -2124,7 +2214,9 @@ func (recv *TreeDragDest) DragDataReceived(dest *TreePath, selectionData *Select
 // parent of @dest_path doesn’t exist, though.
 /*
 
-C function : gtk_tree_drag_dest_row_drop_possible
+C function
+
+gtk_tree_drag_dest_row_drop_possible
 */
 func (recv *TreeDragDest) RowDropPossible(destPath *TreePath, selectionData *SelectionData) bool {
 	c_dest_path := (*C.GtkTreePath)(C.NULL)
@@ -2145,7 +2237,9 @@ func (recv *TreeDragDest) RowDropPossible(destPath *TreePath, selectionData *Sel
 
 /*
 
-C record/class : GtkTreeDragSource
+C type
+
+GtkTreeDragSource
 */
 type TreeDragSource struct {
 	native *C.GtkTreeDragSource
@@ -2174,7 +2268,9 @@ func (recv *TreeDragSource) ToC() unsafe.Pointer {
 // longer found in the model!
 /*
 
-C function : gtk_tree_drag_source_drag_data_delete
+C function
+
+gtk_tree_drag_source_drag_data_delete
 */
 func (recv *TreeDragSource) DragDataDelete(path *TreePath) bool {
 	c_path := (*C.GtkTreePath)(C.NULL)
@@ -2194,7 +2290,9 @@ func (recv *TreeDragSource) DragDataDelete(path *TreePath) bool {
 // longer found in the model!
 /*
 
-C function : gtk_tree_drag_source_drag_data_get
+C function
+
+gtk_tree_drag_source_drag_data_get
 */
 func (recv *TreeDragSource) DragDataGet(path *TreePath, selectionData *SelectionData) bool {
 	c_path := (*C.GtkTreePath)(C.NULL)
@@ -2218,7 +2316,9 @@ func (recv *TreeDragSource) DragDataGet(path *TreePath, selectionData *Selection
 // this interface, the row is assumed draggable.
 /*
 
-C function : gtk_tree_drag_source_row_draggable
+C function
+
+gtk_tree_drag_source_row_draggable
 */
 func (recv *TreeDragSource) RowDraggable(path *TreePath) bool {
 	c_path := (*C.GtkTreePath)(C.NULL)
@@ -2310,7 +2410,7 @@ func (recv *TreeDragSource) RowDraggable(path *TreePath) bool {
 // easier, the second is much more common, as you often get paths from
 // callbacks.
 //
-// ## Acquiring a #GtkTreeIter-struct
+// Acquiring a #GtkTreeIter-struct
 //
 // |[<!-- language="C" -->
 // Three ways of getting the iter pointing to the location
@@ -2345,7 +2445,7 @@ func (recv *TreeDragSource) RowDraggable(path *TreePath) bool {
 // shown, as it is specific to the #GtkListStore. For information on
 // how to write such a function, see the #GtkListStore documentation.
 //
-// ## Reading data from a #GtkTreeModel
+// Reading data from a #GtkTreeModel
 //
 // |[<!-- language="C" -->
 // enum
@@ -2428,7 +2528,9 @@ func (recv *TreeDragSource) RowDraggable(path *TreePath) bool {
 // is always referenced when any view is attached).
 /*
 
-C record/class : GtkTreeModel
+C type
+
+GtkTreeModel
 */
 type TreeModel struct {
 	native *C.GtkTreeModel
@@ -2701,7 +2803,9 @@ func treemodel_rowInsertedHandler(_ *C.GObject, c_path *C.GtkTreePath, c_iter *C
 // Returns the type of the column.
 /*
 
-C function : gtk_tree_model_get_column_type
+C function
+
+gtk_tree_model_get_column_type
 */
 func (recv *TreeModel) GetColumnType(index int32) gobject.Type {
 	c_index_ := (C.gint)(index)
@@ -2719,7 +2823,9 @@ func (recv *TreeModel) GetColumnType(index int32) gobject.Type {
 // of the @tree_model.
 /*
 
-C function : gtk_tree_model_get_flags
+C function
+
+gtk_tree_model_get_flags
 */
 func (recv *TreeModel) GetFlags() TreeModelFlags {
 	retC := C.gtk_tree_model_get_flags((*C.GtkTreeModel)(recv.native))
@@ -2732,7 +2838,9 @@ func (recv *TreeModel) GetFlags() TreeModelFlags {
 // not exist, @iter is set to an invalid iterator and %FALSE is returned.
 /*
 
-C function : gtk_tree_model_get_iter
+C function
+
+gtk_tree_model_get_iter
 */
 func (recv *TreeModel) GetIter(path *TreePath) (bool, *TreeIter) {
 	var c_iter C.GtkTreeIter
@@ -2755,7 +2863,9 @@ func (recv *TreeModel) GetIter(path *TreePath) (bool, *TreeIter) {
 // %FALSE if the tree is empty.
 /*
 
-C function : gtk_tree_model_get_iter_first
+C function
+
+gtk_tree_model_get_iter_first
 */
 func (recv *TreeModel) GetIterFirst() (bool, *TreeIter) {
 	var c_iter C.GtkTreeIter
@@ -2772,7 +2882,9 @@ func (recv *TreeModel) GetIterFirst() (bool, *TreeIter) {
 // exists. Otherwise, @iter is left invalid and %FALSE is returned.
 /*
 
-C function : gtk_tree_model_get_iter_from_string
+C function
+
+gtk_tree_model_get_iter_from_string
 */
 func (recv *TreeModel) GetIterFromString(pathString string) (bool, *TreeIter) {
 	var c_iter C.GtkTreeIter
@@ -2791,7 +2903,9 @@ func (recv *TreeModel) GetIterFromString(pathString string) (bool, *TreeIter) {
 // Returns the number of columns supported by @tree_model.
 /*
 
-C function : gtk_tree_model_get_n_columns
+C function
+
+gtk_tree_model_get_n_columns
 */
 func (recv *TreeModel) GetNColumns() int32 {
 	retC := C.gtk_tree_model_get_n_columns((*C.GtkTreeModel)(recv.native))
@@ -2805,7 +2919,9 @@ func (recv *TreeModel) GetNColumns() int32 {
 // This path should be freed with gtk_tree_path_free().
 /*
 
-C function : gtk_tree_model_get_path
+C function
+
+gtk_tree_model_get_path
 */
 func (recv *TreeModel) GetPath(iter *TreeIter) *TreePath {
 	c_iter := (*C.GtkTreeIter)(C.NULL)
@@ -2827,7 +2943,9 @@ func (recv *TreeModel) GetPath(iter *TreeIter) *TreePath {
 // to free any allocated memory.
 /*
 
-C function : gtk_tree_model_get_value
+C function
+
+gtk_tree_model_get_value
 */
 func (recv *TreeModel) GetValue(iter *TreeIter, column int32) *gobject.Value {
 	c_iter := (*C.GtkTreeIter)(C.NULL)
@@ -2856,7 +2974,9 @@ func (recv *TreeModel) GetValue(iter *TreeIter, column int32) *gobject.Value {
 // `gtk_tree_model_get_iter_first (tree_model, iter);`
 /*
 
-C function : gtk_tree_model_iter_children
+C function
+
+gtk_tree_model_iter_children
 */
 func (recv *TreeModel) IterChildren(parent *TreeIter) (bool, *TreeIter) {
 	var c_iter C.GtkTreeIter
@@ -2877,7 +2997,9 @@ func (recv *TreeModel) IterChildren(parent *TreeIter) (bool, *TreeIter) {
 // Returns %TRUE if @iter has children, %FALSE otherwise.
 /*
 
-C function : gtk_tree_model_iter_has_child
+C function
+
+gtk_tree_model_iter_has_child
 */
 func (recv *TreeModel) IterHasChild(iter *TreeIter) bool {
 	c_iter := (*C.GtkTreeIter)(C.NULL)
@@ -2897,7 +3019,9 @@ func (recv *TreeModel) IterHasChild(iter *TreeIter) bool {
 // of toplevel nodes is returned.
 /*
 
-C function : gtk_tree_model_iter_n_children
+C function
+
+gtk_tree_model_iter_n_children
 */
 func (recv *TreeModel) IterNChildren(iter *TreeIter) int32 {
 	c_iter := (*C.GtkTreeIter)(C.NULL)
@@ -2917,7 +3041,9 @@ func (recv *TreeModel) IterNChildren(iter *TreeIter) int32 {
 // to be invalid.
 /*
 
-C function : gtk_tree_model_iter_next
+C function
+
+gtk_tree_model_iter_next
 */
 func (recv *TreeModel) IterNext(iter *TreeIter) bool {
 	c_iter := (*C.GtkTreeIter)(C.NULL)
@@ -2940,7 +3066,9 @@ func (recv *TreeModel) IterNext(iter *TreeIter) bool {
 // is set.
 /*
 
-C function : gtk_tree_model_iter_nth_child
+C function
+
+gtk_tree_model_iter_nth_child
 */
 func (recv *TreeModel) IterNthChild(parent *TreeIter, n int32) (bool, *TreeIter) {
 	var c_iter C.GtkTreeIter
@@ -2971,7 +3099,9 @@ func (recv *TreeModel) IterNthChild(parent *TreeIter, n int32) (bool, *TreeIter)
 // and @iter cannot point to the same memory location.
 /*
 
-C function : gtk_tree_model_iter_parent
+C function
+
+gtk_tree_model_iter_parent
 */
 func (recv *TreeModel) IterParent(child *TreeIter) (bool, *TreeIter) {
 	var c_iter C.GtkTreeIter
@@ -3008,7 +3138,9 @@ func (recv *TreeModel) IterParent(child *TreeIter) (bool, *TreeIter) {
 // of its reffed state.
 /*
 
-C function : gtk_tree_model_ref_node
+C function
+
+gtk_tree_model_ref_node
 */
 func (recv *TreeModel) RefNode(iter *TreeIter) {
 	c_iter := (*C.GtkTreeIter)(C.NULL)
@@ -3024,7 +3156,9 @@ func (recv *TreeModel) RefNode(iter *TreeIter) {
 // Emits the #GtkTreeModel::row-changed signal on @tree_model.
 /*
 
-C function : gtk_tree_model_row_changed
+C function
+
+gtk_tree_model_row_changed
 */
 func (recv *TreeModel) RowChanged(path *TreePath, iter *TreeIter) {
 	c_path := (*C.GtkTreePath)(C.NULL)
@@ -3052,7 +3186,9 @@ func (recv *TreeModel) RowChanged(path *TreePath, iter *TreeIter) {
 // outstanding references on the deleted node should not be released.
 /*
 
-C function : gtk_tree_model_row_deleted
+C function
+
+gtk_tree_model_row_deleted
 */
 func (recv *TreeModel) RowDeleted(path *TreePath) {
 	c_path := (*C.GtkTreePath)(C.NULL)
@@ -3070,7 +3206,9 @@ func (recv *TreeModel) RowDeleted(path *TreePath) {
 // state of a node changes.
 /*
 
-C function : gtk_tree_model_row_has_child_toggled
+C function
+
+gtk_tree_model_row_has_child_toggled
 */
 func (recv *TreeModel) RowHasChildToggled(path *TreePath, iter *TreeIter) {
 	c_path := (*C.GtkTreePath)(C.NULL)
@@ -3091,7 +3229,9 @@ func (recv *TreeModel) RowHasChildToggled(path *TreePath, iter *TreeIter) {
 // Emits the #GtkTreeModel::row-inserted signal on @tree_model.
 /*
 
-C function : gtk_tree_model_row_inserted
+C function
+
+gtk_tree_model_row_inserted
 */
 func (recv *TreeModel) RowInserted(path *TreePath, iter *TreeIter) {
 	c_path := (*C.GtkTreePath)(C.NULL)
@@ -3115,7 +3255,9 @@ func (recv *TreeModel) RowInserted(path *TreePath, iter *TreeIter) {
 // reordered.
 /*
 
-C function : gtk_tree_model_rows_reordered
+C function
+
+gtk_tree_model_rows_reordered
 */
 func (recv *TreeModel) RowsReordered(path *TreePath, iter *TreeIter, newOrder int32) {
 	c_path := (*C.GtkTreePath)(C.NULL)
@@ -3138,7 +3280,9 @@ func (recv *TreeModel) RowsReordered(path *TreePath, iter *TreeIter, newOrder in
 // Creates a new #GtkTreeModel, with @child_model as the child model.
 /*
 
-C function : gtk_tree_model_sort_new_with_model
+C function
+
+gtk_tree_model_sort_new_with_model
 */
 func (recv *TreeModel) SortNewWithModel() *TreeModel {
 	retC := C.gtk_tree_model_sort_new_with_model((*C.GtkTreeModel)(recv.native))
@@ -3157,7 +3301,9 @@ func (recv *TreeModel) SortNewWithModel() *TreeModel {
 // Please note that nodes that are deleted are not unreffed.
 /*
 
-C function : gtk_tree_model_unref_node
+C function
+
+gtk_tree_model_unref_node
 */
 func (recv *TreeModel) UnrefNode(iter *TreeIter) {
 	c_iter := (*C.GtkTreeIter)(C.NULL)
@@ -3175,7 +3321,9 @@ func (recv *TreeModel) UnrefNode(iter *TreeIter) {
 // to sort the model.
 /*
 
-C record/class : GtkTreeSortable
+C type
+
+GtkTreeSortable
 */
 type TreeSortable struct {
 	native *C.GtkTreeSortable
@@ -3261,7 +3409,9 @@ func treesortable_sortColumnChangedHandler(_ *C.GObject, data C.gpointer) {
 // go back to the default state, or not.
 /*
 
-C function : gtk_tree_sortable_has_default_sort_func
+C function
+
+gtk_tree_sortable_has_default_sort_func
 */
 func (recv *TreeSortable) HasDefaultSortFunc() bool {
 	retC := C.gtk_tree_sortable_has_default_sort_func((*C.GtkTreeSortable)(recv.native))
@@ -3283,7 +3433,9 @@ func (recv *TreeSortable) HasDefaultSortFunc() bool {
 // - %GTK_TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID: no sorting will occur
 /*
 
-C function : gtk_tree_sortable_set_sort_column_id
+C function
+
+gtk_tree_sortable_set_sort_column_id
 */
 func (recv *TreeSortable) SetSortColumnId(sortColumnId int32, order SortType) {
 	c_sort_column_id := (C.gint)(sortColumnId)
@@ -3300,7 +3452,9 @@ func (recv *TreeSortable) SetSortColumnId(sortColumnId int32, order SortType) {
 // Emits a #GtkTreeSortable::sort-column-changed signal on @sortable.
 /*
 
-C function : gtk_tree_sortable_sort_column_changed
+C function
+
+gtk_tree_sortable_sort_column_changed
 */
 func (recv *TreeSortable) SortColumnChanged() {
 	C.gtk_tree_sortable_sort_column_changed((*C.GtkTreeSortable)(recv.native))

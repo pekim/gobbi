@@ -17,7 +17,9 @@ import "C"
 // implemented in O(1) running time.
 /*
 
-C function : g_sequence_is_empty
+C function
+
+g_sequence_is_empty
 */
 func (recv *Sequence) IsEmpty() bool {
 	retC := C.g_sequence_is_empty((*C.GSequence)(recv.native))

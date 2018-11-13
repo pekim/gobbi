@@ -21,7 +21,9 @@ import "C"
 // The hexadecimal string returned will be in lower case.
 /*
 
-C function : g_compute_checksum_for_bytes
+C function
+
+g_compute_checksum_for_bytes
 */
 func ComputeChecksumForBytes(checksumType ChecksumType, data *Bytes) string {
 	c_checksum_type := (C.GChecksumType)(checksumType)
@@ -80,7 +82,9 @@ func ComputeChecksumForBytes(checksumType ChecksumType, data *Bytes) string {
 // change in future versions of GLib.
 /*
 
-C function : g_spawn_check_exit_status
+C function
+
+g_spawn_check_exit_status
 */
 func SpawnCheckExitStatus(exitStatus int32) (bool, error) {
 	c_exit_status := (C.gint)(exitStatus)
@@ -136,7 +140,9 @@ func SpawnCheckExitStatus(exitStatus int32) (bool, error) {
 // expected via g_test_expect_message() then they will be ignored.
 /*
 
-C function : g_test_expect_message
+C function
+
+g_test_expect_message
 */
 func TestExpectMessage(logDomain string, logLevel LogLevelFlags, pattern string) {
 	c_log_domain := C.CString(logDomain)

@@ -13,7 +13,9 @@ import "C"
 // Gets the currently focused object.
 /*
 
-C function : atk_get_focus_object
+C function
+
+atk_get_focus_object
 */
 func GetFocusObject() *Object {
 	retC := C.atk_get_focus_object()

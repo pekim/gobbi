@@ -17,7 +17,9 @@ import "C"
 // and such data is changed.
 /*
 
-C function : pango_font_map_changed
+C function
+
+pango_font_map_changed
 */
 func (recv *FontMap) Changed() {
 	C.pango_font_map_changed((*C.PangoFontMap)(recv.native))

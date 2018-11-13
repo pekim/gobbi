@@ -16,7 +16,9 @@ import "C"
 // Not all objects have explicit "name-value pair" #AtkAttributeSet properties.
 /*
 
-C function : atk_object_get_attributes
+C function
+
+atk_object_get_attributes
 */
 func (recv *Object) GetAttributes() *AttributeSet {
 	retC := C.atk_object_get_attributes((*C.AtkObject)(recv.native))

@@ -28,7 +28,9 @@ import "C"
 // Calling this may change the current GL context.
 /*
 
-C function : gdk_cairo_draw_from_gl
+C function
+
+gdk_cairo_draw_from_gl
 */
 func CairoDrawFromGl(cr *cairo.Context, window *Window, source int32, sourceType int32, bufferScale int32, x int32, y int32, width int32, height int32) {
 	c_cr := (*C.cairo_t)(C.NULL)

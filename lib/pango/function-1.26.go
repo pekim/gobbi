@@ -23,7 +23,9 @@ import "C"
 // preferred gravity of @script.
 /*
 
-C function : pango_gravity_get_for_script_and_width
+C function
+
+pango_gravity_get_for_script_and_width
 */
 func GravityGetForScriptAndWidth(script Script, wide bool, baseGravity Gravity, hint GravityHint) Gravity {
 	c_script := (C.PangoScript)(script)

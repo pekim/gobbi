@@ -19,7 +19,9 @@ import "C"
 // g_file_set_contents() may fail.
 /*
 
-C function : g_key_file_save_to_file
+C function
+
+g_key_file_save_to_file
 */
 func (recv *KeyFile) SaveToFile(filename string) (bool, error) {
 	c_filename := C.CString(filename)
@@ -76,7 +78,7 @@ func (recv *KeyFile) SaveToFile(filename string) (bool, error) {
 // key is not found.  Each returns the new dictionary as a floating
 // #GVariant.
 //
-// ## Using a stack-allocated GVariantDict
+// Using a stack-allocated GVariantDict
 //
 // |[<!-- language="C" -->
 // GVariant *
@@ -100,7 +102,7 @@ func (recv *KeyFile) SaveToFile(filename string) (bool, error) {
 // }
 // ]|
 //
-// ## Using heap-allocated GVariantDict
+// Using heap-allocated GVariantDict
 //
 // |[<!-- language="C" -->
 // GVariant *
@@ -131,7 +133,9 @@ func (recv *KeyFile) SaveToFile(filename string) (bool, error) {
 // ]|
 /*
 
-C record/class : GVariantDict
+C type
+
+GVariantDict
 */
 type VariantDict struct {
 	native *C.GVariantDict
@@ -171,7 +175,9 @@ func (recv *VariantDict) ToC() unsafe.Pointer {
 // on uninitialised memory.
 /*
 
-C function : g_variant_dict_clear
+C function
+
+g_variant_dict_clear
 */
 func (recv *VariantDict) Clear() {
 	C.g_variant_dict_clear((*C.GVariantDict)(recv.native))
@@ -182,7 +188,9 @@ func (recv *VariantDict) Clear() {
 // Checks if @key exists in @dict.
 /*
 
-C function : g_variant_dict_contains
+C function
+
+g_variant_dict_contains
 */
 func (recv *VariantDict) Contains(key string) bool {
 	c_key := C.CString(key)
@@ -212,7 +220,9 @@ func (recv *VariantDict) Contains(key string) bool {
 // things will happen.
 /*
 
-C function : g_variant_dict_ref
+C function
+
+g_variant_dict_ref
 */
 func (recv *VariantDict) Ref() *VariantDict {
 	retC := C.g_variant_dict_ref((*C.GVariantDict)(recv.native))
@@ -224,7 +234,9 @@ func (recv *VariantDict) Ref() *VariantDict {
 // Removes a key and its associated value from a #GVariantDict.
 /*
 
-C function : g_variant_dict_remove
+C function
+
+g_variant_dict_remove
 */
 func (recv *VariantDict) Remove(key string) bool {
 	c_key := C.CString(key)
@@ -245,7 +257,9 @@ func (recv *VariantDict) Remove(key string) bool {
 // things will happen.
 /*
 
-C function : g_variant_dict_unref
+C function
+
+g_variant_dict_unref
 */
 func (recv *VariantDict) Unref() {
 	C.g_variant_dict_unref((*C.GVariantDict)(recv.native))

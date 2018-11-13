@@ -20,7 +20,9 @@ import "C"
 // #AtkSocket, so it could embed the plug.
 /*
 
-C function : atk_plug_get_id
+C function
+
+atk_plug_get_id
 */
 func (recv *Plug) GetId() string {
 	retC := C.atk_plug_get_id((*C.AtkPlug)(recv.native))
@@ -42,7 +44,9 @@ func (recv *Plug) GetId() string {
 // as needed.
 /*
 
-C function : atk_socket_embed
+C function
+
+atk_socket_embed
 */
 func (recv *Socket) Embed(plugId string) {
 	c_plug_id := C.CString(plugId)
@@ -56,7 +60,9 @@ func (recv *Socket) Embed(plugId string) {
 // Determines whether or not the socket has an embedded plug.
 /*
 
-C function : atk_socket_is_occupied
+C function
+
+atk_socket_is_occupied
 */
 func (recv *Socket) IsOccupied() bool {
 	retC := C.atk_socket_is_occupied((*C.AtkSocket)(recv.native))

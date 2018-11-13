@@ -17,7 +17,9 @@ import "C"
 // Returns the cursor type for this cursor.
 /*
 
-C function : gdk_cursor_get_cursor_type
+C function
+
+gdk_cursor_get_cursor_type
 */
 func (recv *Cursor) GetCursorType() CursorType {
 	retC := C.gdk_cursor_get_cursor_type((*C.GdkCursor)(recv.native))
@@ -29,7 +31,9 @@ func (recv *Cursor) GetCursorType() CursorType {
 // Finds out if the display has been closed.
 /*
 
-C function : gdk_display_is_closed
+C function
+
+gdk_display_is_closed
 */
 func (recv *Display) IsClosed() bool {
 	retC := C.gdk_display_is_closed((*C.GdkDisplay)(recv.native))
@@ -42,7 +46,9 @@ func (recv *Display) IsClosed() bool {
 // gdk_drag_context_get_suggested_action() returns %GDK_ACTION_ASK.
 /*
 
-C function : gdk_drag_context_get_actions
+C function
+
+gdk_drag_context_get_actions
 */
 func (recv *DragContext) GetActions() DragAction {
 	retC := C.gdk_drag_context_get_actions((*C.GdkDragContext)(recv.native))
@@ -54,7 +60,9 @@ func (recv *DragContext) GetActions() DragAction {
 // Determines the action chosen by the drag destination.
 /*
 
-C function : gdk_drag_context_get_selected_action
+C function
+
+gdk_drag_context_get_selected_action
 */
 func (recv *DragContext) GetSelectedAction() DragAction {
 	retC := C.gdk_drag_context_get_selected_action((*C.GdkDragContext)(recv.native))
@@ -66,7 +74,9 @@ func (recv *DragContext) GetSelectedAction() DragAction {
 // Returns the #GdkWindow where the DND operation started.
 /*
 
-C function : gdk_drag_context_get_source_window
+C function
+
+gdk_drag_context_get_source_window
 */
 func (recv *DragContext) GetSourceWindow() *Window {
 	retC := C.gdk_drag_context_get_source_window((*C.GdkDragContext)(recv.native))
@@ -78,7 +88,9 @@ func (recv *DragContext) GetSourceWindow() *Window {
 // Determines the suggested drag action of the context.
 /*
 
-C function : gdk_drag_context_get_suggested_action
+C function
+
+gdk_drag_context_get_suggested_action
 */
 func (recv *DragContext) GetSuggestedAction() DragAction {
 	retC := C.gdk_drag_context_get_suggested_action((*C.GdkDragContext)(recv.native))
@@ -90,7 +102,9 @@ func (recv *DragContext) GetSuggestedAction() DragAction {
 // Retrieves the list of targets of the context.
 /*
 
-C function : gdk_drag_context_list_targets
+C function
+
+gdk_drag_context_list_targets
 */
 func (recv *DragContext) ListTargets() *glib.List {
 	retC := C.gdk_drag_context_list_targets((*C.GdkDragContext)(recv.native))
@@ -104,7 +118,9 @@ func (recv *DragContext) ListTargets() *glib.List {
 // Not all GDK backend provide a meaningful value for this function.
 /*
 
-C function : gdk_visual_get_bits_per_rgb
+C function
+
+gdk_visual_get_bits_per_rgb
 */
 func (recv *Visual) GetBitsPerRgb() int32 {
 	retC := C.gdk_visual_get_bits_per_rgb((*C.GdkVisual)(recv.native))
@@ -120,7 +136,9 @@ func (recv *Visual) GetBitsPerRgb() int32 {
 // to how much precision the pixel value contains for a particular primary.
 /*
 
-C function : gdk_visual_get_blue_pixel_details
+C function
+
+gdk_visual_get_blue_pixel_details
 */
 func (recv *Visual) GetBluePixelDetails() (uint32, int32, int32) {
 	var c_mask C.guint32
@@ -147,7 +165,9 @@ func (recv *Visual) GetBluePixelDetails() (uint32, int32, int32) {
 // meaningful information for this.
 /*
 
-C function : gdk_visual_get_byte_order
+C function
+
+gdk_visual_get_byte_order
 */
 func (recv *Visual) GetByteOrder() ByteOrder {
 	retC := C.gdk_visual_get_byte_order((*C.GdkVisual)(recv.native))
@@ -161,7 +181,9 @@ func (recv *Visual) GetByteOrder() ByteOrder {
 // You have to use platform-specific APIs to manipulate colormaps.
 /*
 
-C function : gdk_visual_get_colormap_size
+C function
+
+gdk_visual_get_colormap_size
 */
 func (recv *Visual) GetColormapSize() int32 {
 	retC := C.gdk_visual_get_colormap_size((*C.GdkVisual)(recv.native))
@@ -173,7 +195,9 @@ func (recv *Visual) GetColormapSize() int32 {
 // Returns the bit depth of this visual.
 /*
 
-C function : gdk_visual_get_depth
+C function
+
+gdk_visual_get_depth
 */
 func (recv *Visual) GetDepth() int32 {
 	retC := C.gdk_visual_get_depth((*C.GdkVisual)(recv.native))
@@ -189,7 +213,9 @@ func (recv *Visual) GetDepth() int32 {
 // to how much precision the pixel value contains for a particular primary.
 /*
 
-C function : gdk_visual_get_green_pixel_details
+C function
+
+gdk_visual_get_green_pixel_details
 */
 func (recv *Visual) GetGreenPixelDetails() (uint32, int32, int32) {
 	var c_mask C.guint32
@@ -216,7 +242,9 @@ func (recv *Visual) GetGreenPixelDetails() (uint32, int32, int32) {
 // to how much precision the pixel value contains for a particular primary.
 /*
 
-C function : gdk_visual_get_red_pixel_details
+C function
+
+gdk_visual_get_red_pixel_details
 */
 func (recv *Visual) GetRedPixelDetails() (uint32, int32, int32) {
 	var c_mask C.guint32
@@ -239,7 +267,9 @@ func (recv *Visual) GetRedPixelDetails() (uint32, int32, int32) {
 // Returns the type of visual this is (PseudoColor, TrueColor, etc).
 /*
 
-C function : gdk_visual_get_visual_type
+C function
+
+gdk_visual_get_visual_type
 */
 func (recv *Visual) GetVisualType() VisualType {
 	retC := C.gdk_visual_get_visual_type((*C.GdkVisual)(recv.native))
@@ -266,7 +296,9 @@ func (recv *Visual) GetVisualType() VisualType {
 // See also: gdk_window_coords_to_parent()
 /*
 
-C function : gdk_window_coords_from_parent
+C function
+
+gdk_window_coords_from_parent
 */
 func (recv *Window) CoordsFromParent(parentX float64, parentY float64) (float64, float64) {
 	c_parent_x := (C.gdouble)(parentX)
@@ -304,7 +336,9 @@ func (recv *Window) CoordsFromParent(parentX float64, parentY float64) (float64,
 // See also: gdk_window_coords_from_parent()
 /*
 
-C function : gdk_window_coords_to_parent
+C function
+
+gdk_window_coords_to_parent
 */
 func (recv *Window) CoordsToParent(x float64, y float64) (float64, float64) {
 	c_x := (C.gdouble)(x)
@@ -335,7 +369,9 @@ func (recv *Window) CoordsToParent(x float64, y float64) (float64, float64) {
 // have transparency, black otherwise.)
 /*
 
-C function : gdk_window_create_similar_surface
+C function
+
+gdk_window_create_similar_surface
 */
 func (recv *Window) CreateSimilarSurface(content cairo.Content, width int32, height int32) *cairo.Surface {
 	c_content := (C.cairo_content_t)(content)
@@ -354,7 +390,9 @@ func (recv *Window) CreateSimilarSurface(content cairo.Content, width int32, hei
 // the window does not want to receive input focus.
 /*
 
-C function : gdk_window_get_accept_focus
+C function
+
+gdk_window_get_accept_focus
 */
 func (recv *Window) GetAcceptFocus() bool {
 	retC := C.gdk_window_get_accept_focus((*C.GdkWindow)(recv.native))
@@ -368,7 +406,9 @@ func (recv *Window) GetAcceptFocus() bool {
 // returned and you’ll have to query it yourself.
 /*
 
-C function : gdk_window_get_background_pattern
+C function
+
+gdk_window_get_background_pattern
 */
 func (recv *Window) GetBackgroundPattern() *cairo.Pattern {
 	retC := C.gdk_window_get_background_pattern((*C.GdkWindow)(recv.native))
@@ -387,7 +427,9 @@ func (recv *Window) GetBackgroundPattern() *cairo.Pattern {
 // See gdk_window_set_composited().
 /*
 
-C function : gdk_window_get_composited
+C function
+
+gdk_window_get_composited
 */
 func (recv *Window) GetComposited() bool {
 	retC := C.gdk_window_get_composited((*C.GdkWindow)(recv.native))
@@ -403,7 +445,9 @@ func (recv *Window) GetComposited() bool {
 // See also: gdk_offscreen_window_get_embedder()
 /*
 
-C function : gdk_window_get_effective_parent
+C function
+
+gdk_window_get_effective_parent
 */
 func (recv *Window) GetEffectiveParent() *Window {
 	retC := C.gdk_window_get_effective_parent((*C.GdkWindow)(recv.native))
@@ -420,7 +464,9 @@ func (recv *Window) GetEffectiveParent() *Window {
 // See also: gdk_offscreen_window_get_embedder()
 /*
 
-C function : gdk_window_get_effective_toplevel
+C function
+
+gdk_window_get_effective_toplevel
 */
 func (recv *Window) GetEffectiveToplevel() *Window {
 	retC := C.gdk_window_get_effective_toplevel((*C.GdkWindow)(recv.native))
@@ -433,7 +479,9 @@ func (recv *Window) GetEffectiveToplevel() *Window {
 // window does not want to receive input focus when it is mapped.
 /*
 
-C function : gdk_window_get_focus_on_map
+C function
+
+gdk_window_get_focus_on_map
 */
 func (recv *Window) GetFocusOnMap() bool {
 	retC := C.gdk_window_get_focus_on_map((*C.GdkWindow)(recv.native))
@@ -446,7 +494,9 @@ func (recv *Window) GetFocusOnMap() bool {
 // has modal behaviour.
 /*
 
-C function : gdk_window_get_modal_hint
+C function
+
+gdk_window_get_modal_hint
 */
 func (recv *Window) GetModalHint() bool {
 	retC := C.gdk_window_get_modal_hint((*C.GdkWindow)(recv.native))
@@ -459,7 +509,9 @@ func (recv *Window) GetModalHint() bool {
 // you can use gdk_window_ensure_native() if a native window is needed.
 /*
 
-C function : gdk_window_has_native
+C function
+
+gdk_window_has_native
 */
 func (recv *Window) HasNative() bool {
 	retC := C.gdk_window_has_native((*C.GdkWindow)(recv.native))
@@ -471,7 +523,9 @@ func (recv *Window) HasNative() bool {
 // Determines whether or not the window is an input only window.
 /*
 
-C function : gdk_window_is_input_only
+C function
+
+gdk_window_is_input_only
 */
 func (recv *Window) IsInputOnly() bool {
 	retC := C.gdk_window_is_input_only((*C.GdkWindow)(recv.native))
@@ -483,7 +537,9 @@ func (recv *Window) IsInputOnly() bool {
 // Determines whether or not the window is shaped.
 /*
 
-C function : gdk_window_is_shaped
+C function
+
+gdk_window_is_shaped
 */
 func (recv *Window) IsShaped() bool {
 	retC := C.gdk_window_is_shaped((*C.GdkWindow)(recv.native))

@@ -17,7 +17,9 @@ import "C"
 // application's windows.
 /*
 
-C function : gdk_device_get_last_event_window
+C function
+
+gdk_device_get_last_event_window
 */
 func (recv *Device) GetLastEventWindow() *Window {
 	retC := C.gdk_device_get_last_event_window((*C.GdkDevice)(recv.native))
@@ -34,7 +36,9 @@ func (recv *Device) GetLastEventWindow() *Window {
 // Get the current event compression setting for this window.
 /*
 
-C function : gdk_window_get_event_compression
+C function
+
+gdk_window_get_event_compression
 */
 func (recv *Window) GetEventCompression() bool {
 	retC := C.gdk_window_get_event_compression((*C.GdkWindow)(recv.native))
@@ -53,7 +57,9 @@ func (recv *Window) GetEventCompression() bool {
 // By default, event compression is enabled.
 /*
 
-C function : gdk_window_set_event_compression
+C function
+
+gdk_window_set_event_compression
 */
 func (recv *Window) SetEventCompression(eventCompression bool) {
 	c_event_compression :=
@@ -75,7 +81,9 @@ func (recv *Window) SetEventCompression(eventCompression bool) {
 // to create toplevel windows.
 /*
 
-C function : gdk_window_set_shadow_width
+C function
+
+gdk_window_set_shadow_width
 */
 func (recv *Window) SetShadowWidth(left int32, right int32, top int32, bottom int32) {
 	c_left := (C.gint)(left)

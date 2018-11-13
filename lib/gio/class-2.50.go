@@ -28,7 +28,9 @@ import "C"
 // having a int64 type in the schema for @settings.
 /*
 
-C function : g_settings_get_int64
+C function
+
+g_settings_get_int64
 */
 func (recv *Settings) GetInt64(key string) int64 {
 	c_key := C.CString(key)
@@ -49,7 +51,9 @@ func (recv *Settings) GetInt64(key string) int64 {
 // having a uint64 type in the schema for @settings.
 /*
 
-C function : g_settings_get_uint64
+C function
+
+g_settings_get_uint64
 */
 func (recv *Settings) GetUint64(key string) uint64 {
 	c_key := C.CString(key)
@@ -69,7 +73,9 @@ func (recv *Settings) GetUint64(key string) uint64 {
 // having a int64 type in the schema for @settings.
 /*
 
-C function : g_settings_set_int64
+C function
+
+g_settings_set_int64
 */
 func (recv *Settings) SetInt64(key string, value int64) bool {
 	c_key := C.CString(key)
@@ -92,7 +98,9 @@ func (recv *Settings) SetInt64(key string, value int64) bool {
 // having a uint64 type in the schema for @settings.
 /*
 
-C function : g_settings_set_uint64
+C function
+
+g_settings_set_uint64
 */
 func (recv *Settings) SetUint64(key string, value uint64) bool {
 	c_key := C.CString(key)
@@ -112,7 +120,9 @@ func (recv *Settings) SetUint64(key string, value uint64) bool {
 // g_vfs_register_uri_scheme().
 /*
 
-C function : g_vfs_unregister_uri_scheme
+C function
+
+g_vfs_unregister_uri_scheme
 */
 func (recv *Vfs) UnregisterUriScheme(scheme string) bool {
 	c_scheme := C.CString(scheme)

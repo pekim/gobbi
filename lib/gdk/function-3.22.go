@@ -18,7 +18,9 @@ import "C"
 // context @cr.
 /*
 
-C function : gdk_cairo_get_drawing_context
+C function
+
+gdk_cairo_get_drawing_context
 */
 func CairoGetDrawingContext(cr *cairo.Context) *DrawingContext {
 	c_cr := (*C.cairo_t)(C.NULL)
@@ -52,7 +54,9 @@ func CairoGetDrawingContext(cr *cairo.Context) *DrawingContext {
 // changes to the font rendering settings.
 /*
 
-C function : gdk_pango_context_get_for_display
+C function
+
+gdk_pango_context_get_for_display
 */
 func PangoContextGetForDisplay(display *Display) *pango.Context {
 	c_display := (*C.GdkDisplay)(C.NULL)

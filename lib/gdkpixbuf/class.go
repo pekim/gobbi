@@ -40,7 +40,9 @@ import "C"
 // one row and the start of the next).
 /*
 
-C record/class : GdkPixbuf
+C type
+
+GdkPixbuf
 */
 type Pixbuf struct {
 	native *C.GdkPixbuf
@@ -78,7 +80,9 @@ func CastToPixbuf(object *gobject.Object) *Pixbuf {
 // you will have to fill it completely yourself.
 /*
 
-C function : gdk_pixbuf_new
+C function
+
+gdk_pixbuf_new
 */
 func PixbufNew(colorspace Colorspace, hasAlpha bool, bitsPerSample int32, width int32, height int32) *Pixbuf {
 	c_colorspace := (C.GdkColorspace)(colorspace)
@@ -105,7 +109,9 @@ func PixbufNew(colorspace Colorspace, hasAlpha bool, bitsPerSample int32, width 
 // Possible errors are in the #GDK_PIXBUF_ERROR and #G_FILE_ERROR domains.
 /*
 
-C function : gdk_pixbuf_new_from_file
+C function
+
+gdk_pixbuf_new_from_file
 */
 func PixbufNewFromFile(filename string) (*Pixbuf, error) {
 	c_filename := C.CString(filename)
@@ -156,7 +162,9 @@ func PixbufNewFromFile(filename string) (*Pixbuf, error) {
 // addition.
 /*
 
-C function : gdk_pixbuf_new_from_inline
+C function
+
+gdk_pixbuf_new_from_inline
 */
 func PixbufNewFromInline(data []uint8, copyPixels bool) (*Pixbuf, error) {
 	c_data_length := (C.gint)(len(data))
@@ -191,7 +199,9 @@ func PixbufNewFromInline(data []uint8, copyPixels bool) (*Pixbuf, error) {
 // substitute color, all white pixels will become fully transparent.
 /*
 
-C function : gdk_pixbuf_add_alpha
+C function
+
+gdk_pixbuf_add_alpha
 */
 func (recv *Pixbuf) AddAlpha(substituteColor bool, r uint8, g uint8, b uint8) *Pixbuf {
 	c_substitute_color :=
@@ -223,7 +233,9 @@ func (recv *Pixbuf) AddAlpha(substituteColor bool, r uint8, g uint8, b uint8) *P
 // ![](composite.png)
 /*
 
-C function : gdk_pixbuf_composite
+C function
+
+gdk_pixbuf_composite
 */
 func (recv *Pixbuf) Composite(dest *Pixbuf, destX int32, destY int32, destWidth int32, destHeight int32, offsetX float64, offsetY float64, scaleX float64, scaleY float64, interpType InterpType, overallAlpha int32) {
 	c_dest := (*C.GdkPixbuf)(C.NULL)
@@ -270,7 +282,9 @@ func (recv *Pixbuf) Composite(dest *Pixbuf, destX int32, destY int32, destWidth 
 // function suitable for many tasks.
 /*
 
-C function : gdk_pixbuf_composite_color
+C function
+
+gdk_pixbuf_composite_color
 */
 func (recv *Pixbuf) CompositeColor(dest *Pixbuf, destX int32, destY int32, destWidth int32, destHeight int32, offsetX float64, offsetY float64, scaleX float64, scaleY float64, interpType InterpType, overallAlpha int32, checkX int32, checkY int32, checkSize int32, color1 uint32, color2 uint32) {
 	c_dest := (*C.GdkPixbuf)(C.NULL)
@@ -318,7 +332,9 @@ func (recv *Pixbuf) CompositeColor(dest *Pixbuf, destX int32, destY int32, destW
 // @color1 and @color2.
 /*
 
-C function : gdk_pixbuf_composite_color_simple
+C function
+
+gdk_pixbuf_composite_color_simple
 */
 func (recv *Pixbuf) CompositeColorSimple(destWidth int32, destHeight int32, interpType InterpType, overallAlpha int32, checkSize int32, color1 uint32, color2 uint32) *Pixbuf {
 	c_dest_width := (C.int)(destWidth)
@@ -346,7 +362,9 @@ func (recv *Pixbuf) CompositeColorSimple(destWidth int32, destHeight int32, inte
 // use gdk_pixbuf_copy_options() for this.
 /*
 
-C function : gdk_pixbuf_copy
+C function
+
+gdk_pixbuf_copy
 */
 func (recv *Pixbuf) Copy() *Pixbuf {
 	retC := C.gdk_pixbuf_copy((*C.GdkPixbuf)(recv.native))
@@ -363,7 +381,9 @@ func (recv *Pixbuf) Copy() *Pixbuf {
 // Therefore, you can not use this function to scroll a pixbuf.
 /*
 
-C function : gdk_pixbuf_copy_area
+C function
+
+gdk_pixbuf_copy_area
 */
 func (recv *Pixbuf) CopyArea(srcX int32, srcY int32, width int32, height int32, destPixbuf *Pixbuf, destX int32, destY int32) {
 	c_src_x := (C.int)(srcX)
@@ -393,7 +413,9 @@ func (recv *Pixbuf) CopyArea(srcX int32, srcY int32, width int32, height int32, 
 // doesn't have an alpha channel.
 /*
 
-C function : gdk_pixbuf_fill
+C function
+
+gdk_pixbuf_fill
 */
 func (recv *Pixbuf) Fill(pixel uint32) {
 	c_pixel := (C.guint32)(pixel)
@@ -406,7 +428,9 @@ func (recv *Pixbuf) Fill(pixel uint32) {
 // Queries the number of bits per color sample in a pixbuf.
 /*
 
-C function : gdk_pixbuf_get_bits_per_sample
+C function
+
+gdk_pixbuf_get_bits_per_sample
 */
 func (recv *Pixbuf) GetBitsPerSample() int32 {
 	retC := C.gdk_pixbuf_get_bits_per_sample((*C.GdkPixbuf)(recv.native))
@@ -418,7 +442,9 @@ func (recv *Pixbuf) GetBitsPerSample() int32 {
 // Queries the color space of a pixbuf.
 /*
 
-C function : gdk_pixbuf_get_colorspace
+C function
+
+gdk_pixbuf_get_colorspace
 */
 func (recv *Pixbuf) GetColorspace() Colorspace {
 	retC := C.gdk_pixbuf_get_colorspace((*C.GdkPixbuf)(recv.native))
@@ -430,7 +456,9 @@ func (recv *Pixbuf) GetColorspace() Colorspace {
 // Queries whether a pixbuf has an alpha channel (opacity information).
 /*
 
-C function : gdk_pixbuf_get_has_alpha
+C function
+
+gdk_pixbuf_get_has_alpha
 */
 func (recv *Pixbuf) GetHasAlpha() bool {
 	retC := C.gdk_pixbuf_get_has_alpha((*C.GdkPixbuf)(recv.native))
@@ -442,7 +470,9 @@ func (recv *Pixbuf) GetHasAlpha() bool {
 // Queries the height of a pixbuf.
 /*
 
-C function : gdk_pixbuf_get_height
+C function
+
+gdk_pixbuf_get_height
 */
 func (recv *Pixbuf) GetHeight() int32 {
 	retC := C.gdk_pixbuf_get_height((*C.GdkPixbuf)(recv.native))
@@ -454,7 +484,9 @@ func (recv *Pixbuf) GetHeight() int32 {
 // Queries the number of channels of a pixbuf.
 /*
 
-C function : gdk_pixbuf_get_n_channels
+C function
+
+gdk_pixbuf_get_n_channels
 */
 func (recv *Pixbuf) GetNChannels() int32 {
 	retC := C.gdk_pixbuf_get_n_channels((*C.GdkPixbuf)(recv.native))
@@ -480,7 +512,9 @@ func (recv *Pixbuf) GetNChannels() int32 {
 // EXIF tag.
 /*
 
-C function : gdk_pixbuf_get_option
+C function
+
+gdk_pixbuf_get_option
 */
 func (recv *Pixbuf) GetOption(key string) string {
 	c_key := C.CString(key)
@@ -498,7 +532,9 @@ func (recv *Pixbuf) GetOption(key string) string {
 // the start of a row and the start of the next row.
 /*
 
-C function : gdk_pixbuf_get_rowstride
+C function
+
+gdk_pixbuf_get_rowstride
 */
 func (recv *Pixbuf) GetRowstride() int32 {
 	retC := C.gdk_pixbuf_get_rowstride((*C.GdkPixbuf)(recv.native))
@@ -510,7 +546,9 @@ func (recv *Pixbuf) GetRowstride() int32 {
 // Queries the width of a pixbuf.
 /*
 
-C function : gdk_pixbuf_get_width
+C function
+
+gdk_pixbuf_get_width
 */
 func (recv *Pixbuf) GetWidth() int32 {
 	retC := C.gdk_pixbuf_get_width((*C.GdkPixbuf)(recv.native))
@@ -529,7 +567,9 @@ func (recv *Pixbuf) GetWidth() int32 {
 // to be mutable.
 /*
 
-C function : gdk_pixbuf_new_subpixbuf
+C function
+
+gdk_pixbuf_new_subpixbuf
 */
 func (recv *Pixbuf) NewSubpixbuf(srcX int32, srcY int32, width int32, height int32) *Pixbuf {
 	c_src_x := (C.int)(srcX)
@@ -549,7 +589,9 @@ func (recv *Pixbuf) NewSubpixbuf(srcX int32, srcY int32, width int32, height int
 // Adds a reference to a pixbuf.
 /*
 
-C function : gdk_pixbuf_ref
+C function
+
+gdk_pixbuf_ref
 */
 func (recv *Pixbuf) Ref() *Pixbuf {
 	retC := C.gdk_pixbuf_ref((*C.GdkPixbuf)(recv.native))
@@ -568,7 +610,9 @@ func (recv *Pixbuf) Ref() *Pixbuf {
 // rowstride.
 /*
 
-C function : gdk_pixbuf_saturate_and_pixelate
+C function
+
+gdk_pixbuf_saturate_and_pixelate
 */
 func (recv *Pixbuf) SaturateAndPixelate(dest *Pixbuf, saturation float32, pixelate bool) {
 	c_dest := (*C.GdkPixbuf)(C.NULL)
@@ -605,7 +649,9 @@ func (recv *Pixbuf) SaturateAndPixelate(dest *Pixbuf, saturation float32, pixela
 // results in rendering artifacts.
 /*
 
-C function : gdk_pixbuf_scale
+C function
+
+gdk_pixbuf_scale
 */
 func (recv *Pixbuf) Scale(dest *Pixbuf, destX int32, destY int32, destWidth int32, destHeight int32, offsetX float64, offsetY float64, scaleX float64, scaleY float64, interpType InterpType) {
 	c_dest := (*C.GdkPixbuf)(C.NULL)
@@ -653,7 +699,9 @@ func (recv *Pixbuf) Scale(dest *Pixbuf, destX int32, destY int32, destWidth int3
 // and gdk_pixbuf_composite().
 /*
 
-C function : gdk_pixbuf_scale_simple
+C function
+
+gdk_pixbuf_scale_simple
 */
 func (recv *Pixbuf) ScaleSimple(destWidth int32, destHeight int32, interpType InterpType) *Pixbuf {
 	c_dest_width := (C.int)(destWidth)
@@ -671,7 +719,9 @@ func (recv *Pixbuf) ScaleSimple(destWidth int32, destHeight int32, interpType In
 // Removes a reference from a pixbuf.
 /*
 
-C function : gdk_pixbuf_unref
+C function
+
+gdk_pixbuf_unref
 */
 func (recv *Pixbuf) Unref() {
 	C.gdk_pixbuf_unref((*C.GdkPixbuf)(recv.native))
@@ -692,7 +742,9 @@ func (recv *Pixbuf) LoadableIcon() *gio.LoadableIcon {
 // An opaque struct representing an animation.
 /*
 
-C record/class : GdkPixbufAnimation
+C type
+
+GdkPixbufAnimation
 */
 type PixbufAnimation struct {
 	native *C.GdkPixbufAnimation
@@ -731,7 +783,9 @@ func CastToPixbufAnimation(object *gobject.Object) *PixbufAnimation {
 // are in the #GDK_PIXBUF_ERROR and #G_FILE_ERROR domains.
 /*
 
-C function : gdk_pixbuf_animation_new_from_file
+C function
+
+gdk_pixbuf_animation_new_from_file
 */
 func PixbufAnimationNewFromFile(filename string) (*PixbufAnimation, error) {
 	c_filename := C.CString(filename)
@@ -753,7 +807,9 @@ func PixbufAnimationNewFromFile(filename string) (*PixbufAnimation, error) {
 // Queries the height of the bounding box of a pixbuf animation.
 /*
 
-C function : gdk_pixbuf_animation_get_height
+C function
+
+gdk_pixbuf_animation_get_height
 */
 func (recv *PixbufAnimation) GetHeight() int32 {
 	retC := C.gdk_pixbuf_animation_get_height((*C.GdkPixbufAnimation)(recv.native))
@@ -797,7 +853,9 @@ func (recv *PixbufAnimation) GetHeight() int32 {
 // A delay time of -1 is possible, indicating "infinite."
 /*
 
-C function : gdk_pixbuf_animation_get_iter
+C function
+
+gdk_pixbuf_animation_get_iter
 */
 func (recv *PixbufAnimation) GetIter(startTime *glib.TimeVal) *PixbufAnimationIter {
 	c_start_time := (*C.GTimeVal)(C.NULL)
@@ -819,7 +877,9 @@ func (recv *PixbufAnimation) GetIter(startTime *glib.TimeVal) *PixbufAnimationIt
 // function will return %NULL.
 /*
 
-C function : gdk_pixbuf_animation_get_static_image
+C function
+
+gdk_pixbuf_animation_get_static_image
 */
 func (recv *PixbufAnimation) GetStaticImage() *Pixbuf {
 	retC := C.gdk_pixbuf_animation_get_static_image((*C.GdkPixbufAnimation)(recv.native))
@@ -831,7 +891,9 @@ func (recv *PixbufAnimation) GetStaticImage() *Pixbuf {
 // Queries the width of the bounding box of a pixbuf animation.
 /*
 
-C function : gdk_pixbuf_animation_get_width
+C function
+
+gdk_pixbuf_animation_get_width
 */
 func (recv *PixbufAnimation) GetWidth() int32 {
 	retC := C.gdk_pixbuf_animation_get_width((*C.GdkPixbufAnimation)(recv.native))
@@ -846,7 +908,9 @@ func (recv *PixbufAnimation) GetWidth() int32 {
 // the image.
 /*
 
-C function : gdk_pixbuf_animation_is_static_image
+C function
+
+gdk_pixbuf_animation_is_static_image
 */
 func (recv *PixbufAnimation) IsStaticImage() bool {
 	retC := C.gdk_pixbuf_animation_is_static_image((*C.GdkPixbufAnimation)(recv.native))
@@ -858,7 +922,9 @@ func (recv *PixbufAnimation) IsStaticImage() bool {
 // Adds a reference to an animation.
 /*
 
-C function : gdk_pixbuf_animation_ref
+C function
+
+gdk_pixbuf_animation_ref
 */
 func (recv *PixbufAnimation) Ref() *PixbufAnimation {
 	retC := C.gdk_pixbuf_animation_ref((*C.GdkPixbufAnimation)(recv.native))
@@ -870,7 +936,9 @@ func (recv *PixbufAnimation) Ref() *PixbufAnimation {
 // Removes a reference from an animation.
 /*
 
-C function : gdk_pixbuf_animation_unref
+C function
+
+gdk_pixbuf_animation_unref
 */
 func (recv *PixbufAnimation) Unref() {
 	C.gdk_pixbuf_animation_unref((*C.GdkPixbufAnimation)(recv.native))
@@ -882,7 +950,9 @@ func (recv *PixbufAnimation) Unref() {
 // certain position in an animation.
 /*
 
-C record/class : GdkPixbufAnimationIter
+C type
+
+GdkPixbufAnimationIter
 */
 type PixbufAnimationIter struct {
 	native *C.GdkPixbufAnimationIter
@@ -936,7 +1006,9 @@ func CastToPixbufAnimationIter(object *gobject.Object) *PixbufAnimationIter {
 // and update the display with the new pixbuf.
 /*
 
-C function : gdk_pixbuf_animation_iter_advance
+C function
+
+gdk_pixbuf_animation_iter_advance
 */
 func (recv *PixbufAnimationIter) Advance(currentTime *glib.TimeVal) bool {
 	c_current_time := (*C.GTimeVal)(C.NULL)
@@ -960,7 +1032,9 @@ func (recv *PixbufAnimationIter) Advance(currentTime *glib.TimeVal) bool {
 // for GIF images is currently 20 milliseconds.
 /*
 
-C function : gdk_pixbuf_animation_iter_get_delay_time
+C function
+
+gdk_pixbuf_animation_iter_get_delay_time
 */
 func (recv *PixbufAnimationIter) GetDelayTime() int32 {
 	retC := C.gdk_pixbuf_animation_iter_get_delay_time((*C.GdkPixbufAnimationIter)(recv.native))
@@ -982,7 +1056,9 @@ func (recv *PixbufAnimationIter) GetDelayTime() int32 {
 // the iterator.
 /*
 
-C function : gdk_pixbuf_animation_iter_get_pixbuf
+C function
+
+gdk_pixbuf_animation_iter_get_pixbuf
 */
 func (recv *PixbufAnimationIter) GetPixbuf() *Pixbuf {
 	retC := C.gdk_pixbuf_animation_iter_get_pixbuf((*C.GdkPixbufAnimationIter)(recv.native))
@@ -998,7 +1074,9 @@ func (recv *PixbufAnimationIter) GetPixbuf() *Pixbuf {
 // the updated area.
 /*
 
-C function : gdk_pixbuf_animation_iter_on_currently_loading_frame
+C function
+
+gdk_pixbuf_animation_iter_on_currently_loading_frame
 */
 func (recv *PixbufAnimationIter) OnCurrentlyLoadingFrame() bool {
 	retC := C.gdk_pixbuf_animation_iter_on_currently_loading_frame((*C.GdkPixbufAnimationIter)(recv.native))
@@ -1011,7 +1089,9 @@ func (recv *PixbufAnimationIter) OnCurrentlyLoadingFrame() bool {
 // fields.
 /*
 
-C record/class : GdkPixbufLoader
+C type
+
+GdkPixbufLoader
 */
 type PixbufLoader struct {
 	native *C.GdkPixbufLoader
@@ -1167,7 +1247,9 @@ func pixbufloader_closedHandler(_ *C.GObject, data C.gpointer) {
 // Creates a new pixbuf loader object.
 /*
 
-C function : gdk_pixbuf_loader_new
+C function
+
+gdk_pixbuf_loader_new
 */
 func PixbufLoaderNew() *PixbufLoader {
 	retC := C.gdk_pixbuf_loader_new()
@@ -1190,7 +1272,9 @@ func PixbufLoaderNew() *PixbufLoader {
 // of the #GdkPixbufFormat structs returned by gdk_pixbuf_get_formats().
 /*
 
-C function : gdk_pixbuf_loader_new_with_type
+C function
+
+gdk_pixbuf_loader_new_with_type
 */
 func PixbufLoaderNewWithType(imageType string) (*PixbufLoader, error) {
 	c_image_type := C.CString(imageType)
@@ -1223,7 +1307,9 @@ func PixbufLoaderNewWithType(imageType string) (*PixbufLoader, error) {
 // use it anymore, please g_object_unref() it.
 /*
 
-C function : gdk_pixbuf_loader_close
+C function
+
+gdk_pixbuf_loader_close
 */
 func (recv *PixbufLoader) Close() (bool, error) {
 	var cThrowableError *C.GError
@@ -1246,7 +1332,9 @@ func (recv *PixbufLoader) Close() (bool, error) {
 // return %NULL.
 /*
 
-C function : gdk_pixbuf_loader_get_animation
+C function
+
+gdk_pixbuf_loader_get_animation
 */
 func (recv *PixbufLoader) GetAnimation() *PixbufAnimation {
 	retC := C.gdk_pixbuf_loader_get_animation((*C.GdkPixbufLoader)(recv.native))
@@ -1268,7 +1356,9 @@ func (recv *PixbufLoader) GetAnimation() *PixbufAnimation {
 // (see gdk_pixbuf_animation_get_static_image()).
 /*
 
-C function : gdk_pixbuf_loader_get_pixbuf
+C function
+
+gdk_pixbuf_loader_get_pixbuf
 */
 func (recv *PixbufLoader) GetPixbuf() *Pixbuf {
 	retC := C.gdk_pixbuf_loader_get_pixbuf((*C.GdkPixbufLoader)(recv.native))
@@ -1285,7 +1375,9 @@ func (recv *PixbufLoader) GetPixbuf() *Pixbuf {
 // or #G_FILE_ERROR domains.
 /*
 
-C function : gdk_pixbuf_loader_write
+C function
+
+gdk_pixbuf_loader_write
 */
 func (recv *PixbufLoader) Write(buf []uint8) (bool, error) {
 	c_buf := &buf[0]
@@ -1308,7 +1400,9 @@ func (recv *PixbufLoader) Write(buf []uint8) (bool, error) {
 // An opaque struct representing a simple animation.
 /*
 
-C record/class : GdkPixbufSimpleAnim
+C type
+
+GdkPixbufSimpleAnim
 */
 type PixbufSimpleAnim struct {
 	native *C.GdkPixbufSimpleAnim

@@ -12,7 +12,9 @@ import "C"
 // of @accessible.
 /*
 
-C function : atk_object_get_object_locale
+C function
+
+atk_object_get_object_locale
 */
 func (recv *Object) GetObjectLocale() string {
 	retC := C.atk_object_get_object_locale((*C.AtkObject)(recv.native))

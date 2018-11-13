@@ -19,7 +19,9 @@ import "C"
 // @key_file.
 /*
 
-C function : gtk_paper_size_new_from_key_file
+C function
+
+gtk_paper_size_new_from_key_file
 */
 func PaperSizeNewFromKeyFile(keyFile *glib.KeyFile, groupName string) (*PaperSize, error) {
 	c_key_file := (*C.GKeyFile)(C.NULL)
@@ -46,7 +48,9 @@ func PaperSizeNewFromKeyFile(keyFile *glib.KeyFile, groupName string) (*PaperSiz
 // This function adds the paper size from @size to @key_file.
 /*
 
-C function : gtk_paper_size_to_key_file
+C function
+
+gtk_paper_size_to_key_file
 */
 func (recv *PaperSize) ToKeyFile(keyFile *glib.KeyFile, groupName string) {
 	c_key_file := (*C.GKeyFile)(C.NULL)

@@ -21,7 +21,9 @@ import "C"
 
 /*
 
-C record/class : GtkAboutDialogClass
+C type
+
+GtkAboutDialogClass
 */
 type AboutDialogClass struct {
 	native *C.GtkAboutDialogClass
@@ -51,7 +53,9 @@ func (recv *AboutDialogClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkAboutDialogPrivate
+C type
+
+GtkAboutDialogPrivate
 */
 type AboutDialogPrivate struct {
 	native *C.GtkAboutDialogPrivate
@@ -75,7 +79,9 @@ func (recv *AboutDialogPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkAccelGroupClass
+C type
+
+GtkAccelGroupClass
 */
 type AccelGroupClass struct {
 	native *C.GtkAccelGroupClass
@@ -105,7 +111,9 @@ func (recv *AccelGroupClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkAccelGroupEntry
+C type
+
+GtkAccelGroupEntry
 */
 type AccelGroupEntry struct {
 	native *C.GtkAccelGroupEntry
@@ -137,7 +145,9 @@ func (recv *AccelGroupEntry) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkAccelGroupPrivate
+C type
+
+GtkAccelGroupPrivate
 */
 type AccelGroupPrivate struct {
 	native *C.GtkAccelGroupPrivate
@@ -161,7 +171,9 @@ func (recv *AccelGroupPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkAccelKey
+C type
+
+GtkAccelKey
 */
 type AccelKey struct {
 	native    *C.GtkAccelKey
@@ -196,7 +208,9 @@ func (recv *AccelKey) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkAccelLabelClass
+C type
+
+GtkAccelLabelClass
 */
 type AccelLabelClass struct {
 	native *C.GtkAccelLabelClass
@@ -251,7 +265,9 @@ func (recv *AccelLabelClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkAccelLabelPrivate
+C type
+
+GtkAccelLabelPrivate
 */
 type AccelLabelPrivate struct {
 	native *C.GtkAccelLabelPrivate
@@ -275,7 +291,9 @@ func (recv *AccelLabelPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkAccelMapClass
+C type
+
+GtkAccelMapClass
 */
 type AccelMapClass struct {
 	native *C.GtkAccelMapClass
@@ -299,7 +317,9 @@ func (recv *AccelMapClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkAccessibleClass
+C type
+
+GtkAccessibleClass
 */
 type AccessibleClass struct {
 	native *C.GtkAccessibleClass
@@ -329,7 +349,9 @@ func (recv *AccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkAccessiblePrivate
+C type
+
+GtkAccessiblePrivate
 */
 type AccessiblePrivate struct {
 	native *C.GtkAccessiblePrivate
@@ -353,7 +375,9 @@ func (recv *AccessiblePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkActionBarClass
+C type
+
+GtkActionBarClass
 */
 type ActionBarClass struct {
 	native *C.GtkActionBarClass
@@ -382,7 +406,9 @@ func (recv *ActionBarClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkActionBarPrivate
+C type
+
+GtkActionBarPrivate
 */
 type ActionBarPrivate struct {
 	native *C.GtkActionBarPrivate
@@ -406,7 +432,9 @@ func (recv *ActionBarPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkActionClass
+C type
+
+GtkActionClass
 */
 type ActionClass struct {
 	native *C.GtkActionClass
@@ -445,7 +473,9 @@ func (recv *ActionClass) ToC() unsafe.Pointer {
 // construct actions.
 /*
 
-C record/class : GtkActionEntry
+C type
+
+GtkActionEntry
 */
 type ActionEntry struct {
 	native      *C.GtkActionEntry
@@ -492,7 +522,9 @@ func (recv *ActionEntry) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkActionGroupClass
+C type
+
+GtkActionGroupClass
 */
 type ActionGroupClass struct {
 	native *C.GtkActionGroupClass
@@ -522,7 +554,9 @@ func (recv *ActionGroupClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkActionGroupPrivate
+C type
+
+GtkActionGroupPrivate
 */
 type ActionGroupPrivate struct {
 	native *C.GtkActionGroupPrivate
@@ -546,7 +580,9 @@ func (recv *ActionGroupPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkActionPrivate
+C type
+
+GtkActionPrivate
 */
 type ActionPrivate struct {
 	native *C.GtkActionPrivate
@@ -571,7 +607,9 @@ func (recv *ActionPrivate) ToC() unsafe.Pointer {
 // The interface vtable for #GtkActionable.
 /*
 
-C record/class : GtkActionableInterface
+C type
+
+GtkActionableInterface
 */
 type ActionableInterface struct {
 	native *C.GtkActionableInterface
@@ -600,7 +638,9 @@ func (recv *ActionableInterface) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkAdjustmentClass
+C type
+
+GtkAdjustmentClass
 */
 type AdjustmentClass struct {
 	native *C.GtkAdjustmentClass
@@ -631,7 +671,9 @@ func (recv *AdjustmentClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkAdjustmentPrivate
+C type
+
+GtkAdjustmentPrivate
 */
 type AdjustmentPrivate struct {
 	native *C.GtkAdjustmentPrivate
@@ -655,7 +697,9 @@ func (recv *AdjustmentPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkAlignmentClass
+C type
+
+GtkAlignmentClass
 */
 type AlignmentClass struct {
 	native *C.GtkAlignmentClass
@@ -684,7 +728,9 @@ func (recv *AlignmentClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkAlignmentPrivate
+C type
+
+GtkAlignmentPrivate
 */
 type AlignmentPrivate struct {
 	native *C.GtkAlignmentPrivate
@@ -708,7 +754,9 @@ func (recv *AlignmentPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkAppChooserButtonClass
+C type
+
+GtkAppChooserButtonClass
 */
 type AppChooserButtonClass struct {
 	native *C.GtkAppChooserButtonClass
@@ -735,7 +783,9 @@ func (recv *AppChooserButtonClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkAppChooserButtonPrivate
+C type
+
+GtkAppChooserButtonPrivate
 */
 type AppChooserButtonPrivate struct {
 	native *C.GtkAppChooserButtonPrivate
@@ -759,7 +809,9 @@ func (recv *AppChooserButtonPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkAppChooserDialogClass
+C type
+
+GtkAppChooserDialogClass
 */
 type AppChooserDialogClass struct {
 	native *C.GtkAppChooserDialogClass
@@ -785,7 +837,9 @@ func (recv *AppChooserDialogClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkAppChooserDialogPrivate
+C type
+
+GtkAppChooserDialogPrivate
 */
 type AppChooserDialogPrivate struct {
 	native *C.GtkAppChooserDialogPrivate
@@ -809,7 +863,9 @@ func (recv *AppChooserDialogPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkAppChooserWidgetClass
+C type
+
+GtkAppChooserWidgetClass
 */
 type AppChooserWidgetClass struct {
 	native *C.GtkAppChooserWidgetClass
@@ -838,7 +894,9 @@ func (recv *AppChooserWidgetClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkAppChooserWidgetPrivate
+C type
+
+GtkAppChooserWidgetPrivate
 */
 type AppChooserWidgetPrivate struct {
 	native *C.GtkAppChooserWidgetPrivate
@@ -862,7 +920,9 @@ func (recv *AppChooserWidgetPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkApplicationClass
+C type
+
+GtkApplicationClass
 */
 type ApplicationClass struct {
 	native *C.GtkApplicationClass
@@ -890,7 +950,9 @@ func (recv *ApplicationClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkApplicationPrivate
+C type
+
+GtkApplicationPrivate
 */
 type ApplicationPrivate struct {
 	native *C.GtkApplicationPrivate
@@ -914,7 +976,9 @@ func (recv *ApplicationPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkApplicationWindowClass
+C type
+
+GtkApplicationWindowClass
 */
 type ApplicationWindowClass struct {
 	native *C.GtkApplicationWindowClass
@@ -940,7 +1004,9 @@ func (recv *ApplicationWindowClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkApplicationWindowPrivate
+C type
+
+GtkApplicationWindowPrivate
 */
 type ApplicationWindowPrivate struct {
 	native *C.GtkApplicationWindowPrivate
@@ -964,7 +1030,9 @@ func (recv *ApplicationWindowPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkArrowAccessibleClass
+C type
+
+GtkArrowAccessibleClass
 */
 type ArrowAccessibleClass struct {
 	native *C.GtkArrowAccessibleClass
@@ -989,7 +1057,9 @@ func (recv *ArrowAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkArrowAccessiblePrivate
+C type
+
+GtkArrowAccessiblePrivate
 */
 type ArrowAccessiblePrivate struct {
 	native *C.GtkArrowAccessiblePrivate
@@ -1013,7 +1083,9 @@ func (recv *ArrowAccessiblePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkArrowClass
+C type
+
+GtkArrowClass
 */
 type ArrowClass struct {
 	native *C.GtkArrowClass
@@ -1042,7 +1114,9 @@ func (recv *ArrowClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkArrowPrivate
+C type
+
+GtkArrowPrivate
 */
 type ArrowPrivate struct {
 	native *C.GtkArrowPrivate
@@ -1066,7 +1140,9 @@ func (recv *ArrowPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkAspectFrameClass
+C type
+
+GtkAspectFrameClass
 */
 type AspectFrameClass struct {
 	native *C.GtkAspectFrameClass
@@ -1095,7 +1171,9 @@ func (recv *AspectFrameClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkAspectFramePrivate
+C type
+
+GtkAspectFramePrivate
 */
 type AspectFramePrivate struct {
 	native *C.GtkAspectFramePrivate
@@ -1119,7 +1197,9 @@ func (recv *AspectFramePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkAssistantClass
+C type
+
+GtkAssistantClass
 */
 type AssistantClass struct {
 	native *C.GtkAssistantClass
@@ -1153,7 +1233,9 @@ func (recv *AssistantClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkAssistantPrivate
+C type
+
+GtkAssistantPrivate
 */
 type AssistantPrivate struct {
 	native *C.GtkAssistantPrivate
@@ -1177,7 +1259,9 @@ func (recv *AssistantPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkBinClass
+C type
+
+GtkBinClass
 */
 type BinClass struct {
 	native *C.GtkBinClass
@@ -1206,7 +1290,9 @@ func (recv *BinClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkBinPrivate
+C type
+
+GtkBinPrivate
 */
 type BinPrivate struct {
 	native *C.GtkBinPrivate
@@ -1233,7 +1319,9 @@ func (recv *BinPrivate) ToC() unsafe.Pointer {
 // stored in #GtkBindingSignal.
 /*
 
-C record/class : GtkBindingArg
+C type
+
+GtkBindingArg
 */
 type BindingArg struct {
 	native  *C.GtkBindingArg
@@ -1265,7 +1353,9 @@ func (recv *BindingArg) ToC() unsafe.Pointer {
 // represented by a GtkBindingEntry.
 /*
 
-C record/class : GtkBindingEntry
+C type
+
+GtkBindingEntry
 */
 type BindingEntry struct {
 	native    *C.GtkBindingEntry
@@ -1312,7 +1402,9 @@ func (recv *BindingEntry) ToC() unsafe.Pointer {
 // the actual activation.
 /*
 
-C record/class : GtkBindingSet
+C type
+
+GtkBindingSet
 */
 type BindingSet struct {
 	native   *C.GtkBindingSet
@@ -1354,7 +1446,9 @@ func (recv *BindingSet) ToC() unsafe.Pointer {
 // @binding_set and activate the binding on @object.
 /*
 
-C function : gtk_binding_set_activate
+C function
+
+gtk_binding_set_activate
 */
 func (recv *BindingSet) Activate(keyval uint32, modifiers gdk.ModifierType, object *gobject.Object) bool {
 	c_keyval := (C.guint)(keyval)
@@ -1378,7 +1472,9 @@ func (recv *BindingSet) Activate(keyval uint32, modifiers gdk.ModifierType, obje
 // In GTK+ 3, these match patterns are unused.
 /*
 
-C function : gtk_binding_set_add_path
+C function
+
+gtk_binding_set_add_path
 */
 func (recv *BindingSet) AddPath(pathType PathType, pathPattern string, priority PathPriorityType) {
 	c_path_type := (C.GtkPathType)(pathType)
@@ -1398,7 +1494,9 @@ func (recv *BindingSet) AddPath(pathType PathType, pathPattern string, priority 
 // emission.
 /*
 
-C record/class : GtkBindingSignal
+C type
+
+GtkBindingSignal
 */
 type BindingSignal struct {
 	native *C.GtkBindingSignal
@@ -1434,7 +1532,9 @@ func (recv *BindingSignal) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkBooleanCellAccessibleClass
+C type
+
+GtkBooleanCellAccessibleClass
 */
 type BooleanCellAccessibleClass struct {
 	native *C.GtkBooleanCellAccessibleClass
@@ -1459,7 +1559,9 @@ func (recv *BooleanCellAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkBooleanCellAccessiblePrivate
+C type
+
+GtkBooleanCellAccessiblePrivate
 */
 type BooleanCellAccessiblePrivate struct {
 	native *C.GtkBooleanCellAccessiblePrivate
@@ -1485,7 +1587,9 @@ func (recv *BooleanCellAccessiblePrivate) ToC() unsafe.Pointer {
 // that can be of different width on each side.
 /*
 
-C record/class : GtkBorder
+C type
+
+GtkBorder
 */
 type Border struct {
 	native *C.GtkBorder
@@ -1528,7 +1632,9 @@ func (recv *Border) ToC() unsafe.Pointer {
 // Copies a #GtkBorder-struct.
 /*
 
-C function : gtk_border_copy
+C function
+
+gtk_border_copy
 */
 func (recv *Border) Copy() *Border {
 	retC := C.gtk_border_copy((*C.GtkBorder)(recv.native))
@@ -1540,7 +1646,9 @@ func (recv *Border) Copy() *Border {
 // Frees a #GtkBorder-struct.
 /*
 
-C function : gtk_border_free
+C function
+
+gtk_border_free
 */
 func (recv *Border) Free() {
 	C.gtk_border_free((*C.GtkBorder)(recv.native))
@@ -1550,7 +1658,9 @@ func (recv *Border) Free() {
 
 /*
 
-C record/class : GtkBoxClass
+C type
+
+GtkBoxClass
 */
 type BoxClass struct {
 	native *C.GtkBoxClass
@@ -1579,7 +1689,9 @@ func (recv *BoxClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkBoxPrivate
+C type
+
+GtkBoxPrivate
 */
 type BoxPrivate struct {
 	native *C.GtkBoxPrivate
@@ -1606,7 +1718,9 @@ func (recv *BoxPrivate) ToC() unsafe.Pointer {
 // a #GtkBuilder UI definition.
 /*
 
-C record/class : GtkBuildableIface
+C type
+
+GtkBuildableIface
 */
 type BuildableIface struct {
 	native *C.GtkBuildableIface
@@ -1641,7 +1755,9 @@ func (recv *BuildableIface) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkBuilderClass
+C type
+
+GtkBuilderClass
 */
 type BuilderClass struct {
 	native *C.GtkBuilderClass
@@ -1675,7 +1791,9 @@ func (recv *BuilderClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkBuilderPrivate
+C type
+
+GtkBuilderPrivate
 */
 type BuilderPrivate struct {
 	native *C.GtkBuilderPrivate
@@ -1699,7 +1817,9 @@ func (recv *BuilderPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkButtonAccessibleClass
+C type
+
+GtkButtonAccessibleClass
 */
 type ButtonAccessibleClass struct {
 	native *C.GtkButtonAccessibleClass
@@ -1724,7 +1844,9 @@ func (recv *ButtonAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkButtonAccessiblePrivate
+C type
+
+GtkButtonAccessiblePrivate
 */
 type ButtonAccessiblePrivate struct {
 	native *C.GtkButtonAccessiblePrivate
@@ -1748,7 +1870,9 @@ func (recv *ButtonAccessiblePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkButtonBoxClass
+C type
+
+GtkButtonBoxClass
 */
 type ButtonBoxClass struct {
 	native *C.GtkButtonBoxClass
@@ -1777,7 +1901,9 @@ func (recv *ButtonBoxClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkButtonBoxPrivate
+C type
+
+GtkButtonBoxPrivate
 */
 type ButtonBoxPrivate struct {
 	native *C.GtkButtonBoxPrivate
@@ -1801,7 +1927,9 @@ func (recv *ButtonBoxPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkButtonClass
+C type
+
+GtkButtonClass
 */
 type ButtonClass struct {
 	native *C.GtkButtonClass
@@ -1836,7 +1964,9 @@ func (recv *ButtonClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkButtonPrivate
+C type
+
+GtkButtonPrivate
 */
 type ButtonPrivate struct {
 	native *C.GtkButtonPrivate
@@ -1860,7 +1990,9 @@ func (recv *ButtonPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkCalendarClass
+C type
+
+GtkCalendarClass
 */
 type CalendarClass struct {
 	native *C.GtkCalendarClass
@@ -1896,7 +2028,9 @@ func (recv *CalendarClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkCalendarPrivate
+C type
+
+GtkCalendarPrivate
 */
 type CalendarPrivate struct {
 	native *C.GtkCalendarPrivate
@@ -1920,7 +2054,9 @@ func (recv *CalendarPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkCellAccessibleClass
+C type
+
+GtkCellAccessibleClass
 */
 type CellAccessibleClass struct {
 	native *C.GtkCellAccessibleClass
@@ -1946,7 +2082,9 @@ func (recv *CellAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkCellAccessibleParentIface
+C type
+
+GtkCellAccessibleParentIface
 */
 type CellAccessibleParentIface struct {
 	native *C.GtkCellAccessibleParentIface
@@ -1980,7 +2118,9 @@ func (recv *CellAccessibleParentIface) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkCellAccessiblePrivate
+C type
+
+GtkCellAccessiblePrivate
 */
 type CellAccessiblePrivate struct {
 	native *C.GtkCellAccessiblePrivate
@@ -2004,7 +2144,9 @@ func (recv *CellAccessiblePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkCellAreaBoxClass
+C type
+
+GtkCellAreaBoxClass
 */
 type CellAreaBoxClass struct {
 	native *C.GtkCellAreaBoxClass
@@ -2033,7 +2175,9 @@ func (recv *CellAreaBoxClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkCellAreaBoxPrivate
+C type
+
+GtkCellAreaBoxPrivate
 */
 type CellAreaBoxPrivate struct {
 	native *C.GtkCellAreaBoxPrivate
@@ -2057,7 +2201,9 @@ func (recv *CellAreaBoxPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkCellAreaClass
+C type
+
+GtkCellAreaClass
 */
 type CellAreaClass struct {
 	native *C.GtkCellAreaClass
@@ -2109,7 +2255,9 @@ func (recv *CellAreaClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkCellAreaContextClass
+C type
+
+GtkCellAreaContextClass
 */
 type CellAreaContextClass struct {
 	native *C.GtkCellAreaContextClass
@@ -2144,7 +2292,9 @@ func (recv *CellAreaContextClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkCellAreaContextPrivate
+C type
+
+GtkCellAreaContextPrivate
 */
 type CellAreaContextPrivate struct {
 	native *C.GtkCellAreaContextPrivate
@@ -2168,7 +2318,9 @@ func (recv *CellAreaContextPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkCellAreaPrivate
+C type
+
+GtkCellAreaPrivate
 */
 type CellAreaPrivate struct {
 	native *C.GtkCellAreaPrivate
@@ -2192,7 +2344,9 @@ func (recv *CellAreaPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkCellEditableIface
+C type
+
+GtkCellEditableIface
 */
 type CellEditableIface struct {
 	native *C.GtkCellEditableIface
@@ -2220,7 +2374,9 @@ func (recv *CellEditableIface) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkCellLayoutIface
+C type
+
+GtkCellLayoutIface
 */
 type CellLayoutIface struct {
 	native *C.GtkCellLayoutIface
@@ -2254,7 +2410,9 @@ func (recv *CellLayoutIface) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkCellRendererAccelClass
+C type
+
+GtkCellRendererAccelClass
 */
 type CellRendererAccelClass struct {
 	native *C.GtkCellRendererAccelClass
@@ -2286,7 +2444,9 @@ func (recv *CellRendererAccelClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkCellRendererAccelPrivate
+C type
+
+GtkCellRendererAccelPrivate
 */
 type CellRendererAccelPrivate struct {
 	native *C.GtkCellRendererAccelPrivate
@@ -2310,7 +2470,9 @@ func (recv *CellRendererAccelPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkCellRendererClass
+C type
+
+GtkCellRendererClass
 */
 type CellRendererClass struct {
 	native *C.GtkCellRendererClass
@@ -2357,7 +2519,9 @@ func (recv *CellRendererClass) ToC() unsafe.Pointer {
 // renderers.
 /*
 
-C function : gtk_cell_renderer_class_set_accessible_type
+C function
+
+gtk_cell_renderer_class_set_accessible_type
 */
 func (recv *CellRendererClass) SetAccessibleType(type_ gobject.Type) {
 	c_type := (C.GType)(type_)
@@ -2369,7 +2533,9 @@ func (recv *CellRendererClass) SetAccessibleType(type_ gobject.Type) {
 
 /*
 
-C record/class : GtkCellRendererClassPrivate
+C type
+
+GtkCellRendererClassPrivate
 */
 type CellRendererClassPrivate struct {
 	native *C.GtkCellRendererClassPrivate
@@ -2393,7 +2559,9 @@ func (recv *CellRendererClassPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkCellRendererComboClass
+C type
+
+GtkCellRendererComboClass
 */
 type CellRendererComboClass struct {
 	native *C.GtkCellRendererComboClass
@@ -2422,7 +2590,9 @@ func (recv *CellRendererComboClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkCellRendererComboPrivate
+C type
+
+GtkCellRendererComboPrivate
 */
 type CellRendererComboPrivate struct {
 	native *C.GtkCellRendererComboPrivate
@@ -2446,7 +2616,9 @@ func (recv *CellRendererComboPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkCellRendererPixbufClass
+C type
+
+GtkCellRendererPixbufClass
 */
 type CellRendererPixbufClass struct {
 	native *C.GtkCellRendererPixbufClass
@@ -2475,7 +2647,9 @@ func (recv *CellRendererPixbufClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkCellRendererPixbufPrivate
+C type
+
+GtkCellRendererPixbufPrivate
 */
 type CellRendererPixbufPrivate struct {
 	native *C.GtkCellRendererPixbufPrivate
@@ -2499,7 +2673,9 @@ func (recv *CellRendererPixbufPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkCellRendererPrivate
+C type
+
+GtkCellRendererPrivate
 */
 type CellRendererPrivate struct {
 	native *C.GtkCellRendererPrivate
@@ -2523,7 +2699,9 @@ func (recv *CellRendererPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkCellRendererProgressClass
+C type
+
+GtkCellRendererProgressClass
 */
 type CellRendererProgressClass struct {
 	native *C.GtkCellRendererProgressClass
@@ -2552,7 +2730,9 @@ func (recv *CellRendererProgressClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkCellRendererProgressPrivate
+C type
+
+GtkCellRendererProgressPrivate
 */
 type CellRendererProgressPrivate struct {
 	native *C.GtkCellRendererProgressPrivate
@@ -2576,7 +2756,9 @@ func (recv *CellRendererProgressPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkCellRendererSpinClass
+C type
+
+GtkCellRendererSpinClass
 */
 type CellRendererSpinClass struct {
 	native *C.GtkCellRendererSpinClass
@@ -2605,7 +2787,9 @@ func (recv *CellRendererSpinClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkCellRendererSpinPrivate
+C type
+
+GtkCellRendererSpinPrivate
 */
 type CellRendererSpinPrivate struct {
 	native *C.GtkCellRendererSpinPrivate
@@ -2629,7 +2813,9 @@ func (recv *CellRendererSpinPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkCellRendererSpinnerClass
+C type
+
+GtkCellRendererSpinnerClass
 */
 type CellRendererSpinnerClass struct {
 	native *C.GtkCellRendererSpinnerClass
@@ -2658,7 +2844,9 @@ func (recv *CellRendererSpinnerClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkCellRendererSpinnerPrivate
+C type
+
+GtkCellRendererSpinnerPrivate
 */
 type CellRendererSpinnerPrivate struct {
 	native *C.GtkCellRendererSpinnerPrivate
@@ -2682,7 +2870,9 @@ func (recv *CellRendererSpinnerPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkCellRendererTextClass
+C type
+
+GtkCellRendererTextClass
 */
 type CellRendererTextClass struct {
 	native *C.GtkCellRendererTextClass
@@ -2712,7 +2902,9 @@ func (recv *CellRendererTextClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkCellRendererTextPrivate
+C type
+
+GtkCellRendererTextPrivate
 */
 type CellRendererTextPrivate struct {
 	native *C.GtkCellRendererTextPrivate
@@ -2736,7 +2928,9 @@ func (recv *CellRendererTextPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkCellRendererToggleClass
+C type
+
+GtkCellRendererToggleClass
 */
 type CellRendererToggleClass struct {
 	native *C.GtkCellRendererToggleClass
@@ -2766,7 +2960,9 @@ func (recv *CellRendererToggleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkCellRendererTogglePrivate
+C type
+
+GtkCellRendererTogglePrivate
 */
 type CellRendererTogglePrivate struct {
 	native *C.GtkCellRendererTogglePrivate
@@ -2790,7 +2986,9 @@ func (recv *CellRendererTogglePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkCellViewClass
+C type
+
+GtkCellViewClass
 */
 type CellViewClass struct {
 	native *C.GtkCellViewClass
@@ -2819,7 +3017,9 @@ func (recv *CellViewClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkCellViewPrivate
+C type
+
+GtkCellViewPrivate
 */
 type CellViewPrivate struct {
 	native *C.GtkCellViewPrivate
@@ -2843,7 +3043,9 @@ func (recv *CellViewPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkCheckButtonClass
+C type
+
+GtkCheckButtonClass
 */
 type CheckButtonClass struct {
 	native *C.GtkCheckButtonClass
@@ -2873,7 +3075,9 @@ func (recv *CheckButtonClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkCheckMenuItemAccessibleClass
+C type
+
+GtkCheckMenuItemAccessibleClass
 */
 type CheckMenuItemAccessibleClass struct {
 	native *C.GtkCheckMenuItemAccessibleClass
@@ -2898,7 +3102,9 @@ func (recv *CheckMenuItemAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkCheckMenuItemAccessiblePrivate
+C type
+
+GtkCheckMenuItemAccessiblePrivate
 */
 type CheckMenuItemAccessiblePrivate struct {
 	native *C.GtkCheckMenuItemAccessiblePrivate
@@ -2922,7 +3128,9 @@ func (recv *CheckMenuItemAccessiblePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkCheckMenuItemClass
+C type
+
+GtkCheckMenuItemClass
 */
 type CheckMenuItemClass struct {
 	native *C.GtkCheckMenuItemClass
@@ -2953,7 +3161,9 @@ func (recv *CheckMenuItemClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkCheckMenuItemPrivate
+C type
+
+GtkCheckMenuItemPrivate
 */
 type CheckMenuItemPrivate struct {
 	native *C.GtkCheckMenuItemPrivate
@@ -2977,7 +3187,9 @@ func (recv *CheckMenuItemPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkColorButtonClass
+C type
+
+GtkColorButtonClass
 */
 type ColorButtonClass struct {
 	native *C.GtkColorButtonClass
@@ -3007,7 +3219,9 @@ func (recv *ColorButtonClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkColorButtonPrivate
+C type
+
+GtkColorButtonPrivate
 */
 type ColorButtonPrivate struct {
 	native *C.GtkColorButtonPrivate
@@ -3031,7 +3245,9 @@ func (recv *ColorButtonPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkColorChooserDialogClass
+C type
+
+GtkColorChooserDialogClass
 */
 type ColorChooserDialogClass struct {
 	native *C.GtkColorChooserDialogClass
@@ -3060,7 +3276,9 @@ func (recv *ColorChooserDialogClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkColorChooserDialogPrivate
+C type
+
+GtkColorChooserDialogPrivate
 */
 type ColorChooserDialogPrivate struct {
 	native *C.GtkColorChooserDialogPrivate
@@ -3084,7 +3302,9 @@ func (recv *ColorChooserDialogPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkColorChooserInterface
+C type
+
+GtkColorChooserInterface
 */
 type ColorChooserInterface struct {
 	native *C.GtkColorChooserInterface
@@ -3114,7 +3334,9 @@ func (recv *ColorChooserInterface) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkColorChooserWidgetClass
+C type
+
+GtkColorChooserWidgetClass
 */
 type ColorChooserWidgetClass struct {
 	native *C.GtkColorChooserWidgetClass
@@ -3147,7 +3369,9 @@ func (recv *ColorChooserWidgetClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkColorChooserWidgetPrivate
+C type
+
+GtkColorChooserWidgetPrivate
 */
 type ColorChooserWidgetPrivate struct {
 	native *C.GtkColorChooserWidgetPrivate
@@ -3171,7 +3395,9 @@ func (recv *ColorChooserWidgetPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkColorSelectionClass
+C type
+
+GtkColorSelectionClass
 */
 type ColorSelectionClass struct {
 	native *C.GtkColorSelectionClass
@@ -3201,7 +3427,9 @@ func (recv *ColorSelectionClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkColorSelectionDialogClass
+C type
+
+GtkColorSelectionDialogClass
 */
 type ColorSelectionDialogClass struct {
 	native *C.GtkColorSelectionDialogClass
@@ -3230,7 +3458,9 @@ func (recv *ColorSelectionDialogClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkColorSelectionDialogPrivate
+C type
+
+GtkColorSelectionDialogPrivate
 */
 type ColorSelectionDialogPrivate struct {
 	native *C.GtkColorSelectionDialogPrivate
@@ -3254,7 +3484,9 @@ func (recv *ColorSelectionDialogPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkColorSelectionPrivate
+C type
+
+GtkColorSelectionPrivate
 */
 type ColorSelectionPrivate struct {
 	native *C.GtkColorSelectionPrivate
@@ -3278,7 +3510,9 @@ func (recv *ColorSelectionPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkComboBoxAccessibleClass
+C type
+
+GtkComboBoxAccessibleClass
 */
 type ComboBoxAccessibleClass struct {
 	native *C.GtkComboBoxAccessibleClass
@@ -3303,7 +3537,9 @@ func (recv *ComboBoxAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkComboBoxAccessiblePrivate
+C type
+
+GtkComboBoxAccessiblePrivate
 */
 type ComboBoxAccessiblePrivate struct {
 	native *C.GtkComboBoxAccessiblePrivate
@@ -3327,7 +3563,9 @@ func (recv *ComboBoxAccessiblePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkComboBoxClass
+C type
+
+GtkComboBoxClass
 */
 type ComboBoxClass struct {
 	native *C.GtkComboBoxClass
@@ -3357,7 +3595,9 @@ func (recv *ComboBoxClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkComboBoxPrivate
+C type
+
+GtkComboBoxPrivate
 */
 type ComboBoxPrivate struct {
 	native *C.GtkComboBoxPrivate
@@ -3381,7 +3621,9 @@ func (recv *ComboBoxPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkComboBoxTextClass
+C type
+
+GtkComboBoxTextClass
 */
 type ComboBoxTextClass struct {
 	native *C.GtkComboBoxTextClass
@@ -3410,7 +3652,9 @@ func (recv *ComboBoxTextClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkComboBoxTextPrivate
+C type
+
+GtkComboBoxTextPrivate
 */
 type ComboBoxTextPrivate struct {
 	native *C.GtkComboBoxTextPrivate
@@ -3434,7 +3678,9 @@ func (recv *ComboBoxTextPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkContainerAccessibleClass
+C type
+
+GtkContainerAccessibleClass
 */
 type ContainerAccessibleClass struct {
 	native *C.GtkContainerAccessibleClass
@@ -3461,7 +3707,9 @@ func (recv *ContainerAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkContainerAccessiblePrivate
+C type
+
+GtkContainerAccessiblePrivate
 */
 type ContainerAccessiblePrivate struct {
 	native *C.GtkContainerAccessiblePrivate
@@ -3485,7 +3733,9 @@ func (recv *ContainerAccessiblePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkContainerCellAccessibleClass
+C type
+
+GtkContainerCellAccessibleClass
 */
 type ContainerCellAccessibleClass struct {
 	native *C.GtkContainerCellAccessibleClass
@@ -3510,7 +3760,9 @@ func (recv *ContainerCellAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkContainerCellAccessiblePrivate
+C type
+
+GtkContainerCellAccessiblePrivate
 */
 type ContainerCellAccessiblePrivate struct {
 	native *C.GtkContainerCellAccessiblePrivate
@@ -3535,7 +3787,9 @@ func (recv *ContainerCellAccessiblePrivate) ToC() unsafe.Pointer {
 // Base class for containers.
 /*
 
-C record/class : GtkContainerClass
+C type
+
+GtkContainerClass
 */
 type ContainerClass struct {
 	native *C.GtkContainerClass
@@ -3591,7 +3845,9 @@ func (recv *ContainerClass) ToC() unsafe.Pointer {
 // for them.
 /*
 
-C function : gtk_container_class_handle_border_width
+C function
+
+gtk_container_class_handle_border_width
 */
 func (recv *ContainerClass) HandleBorderWidth() {
 	C.gtk_container_class_handle_border_width((*C.GtkContainerClass)(recv.native))
@@ -3605,7 +3861,9 @@ func (recv *ContainerClass) HandleBorderWidth() {
 
 /*
 
-C record/class : GtkContainerPrivate
+C type
+
+GtkContainerPrivate
 */
 type ContainerPrivate struct {
 	native *C.GtkContainerPrivate
@@ -3629,7 +3887,9 @@ func (recv *ContainerPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkCssProviderClass
+C type
+
+GtkCssProviderClass
 */
 type CssProviderClass struct {
 	native *C.GtkCssProviderClass
@@ -3658,7 +3918,9 @@ func (recv *CssProviderClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkCssProviderPrivate
+C type
+
+GtkCssProviderPrivate
 */
 type CssProviderPrivate struct {
 	native *C.GtkCssProviderPrivate
@@ -3682,7 +3944,9 @@ func (recv *CssProviderPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkDialogClass
+C type
+
+GtkDialogClass
 */
 type DialogClass struct {
 	native *C.GtkDialogClass
@@ -3713,7 +3977,9 @@ func (recv *DialogClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkDialogPrivate
+C type
+
+GtkDialogPrivate
 */
 type DialogPrivate struct {
 	native *C.GtkDialogPrivate
@@ -3737,7 +4003,9 @@ func (recv *DialogPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkDrawingAreaClass
+C type
+
+GtkDrawingAreaClass
 */
 type DrawingAreaClass struct {
 	native *C.GtkDrawingAreaClass
@@ -3766,7 +4034,9 @@ func (recv *DrawingAreaClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkEditableInterface
+C type
+
+GtkEditableInterface
 */
 type EditableInterface struct {
 	native *C.GtkEditableInterface
@@ -3801,7 +4071,9 @@ func (recv *EditableInterface) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkEntryAccessibleClass
+C type
+
+GtkEntryAccessibleClass
 */
 type EntryAccessibleClass struct {
 	native *C.GtkEntryAccessibleClass
@@ -3826,7 +4098,9 @@ func (recv *EntryAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkEntryAccessiblePrivate
+C type
+
+GtkEntryAccessiblePrivate
 */
 type EntryAccessiblePrivate struct {
 	native *C.GtkEntryAccessiblePrivate
@@ -3850,7 +4124,9 @@ func (recv *EntryAccessiblePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkEntryBufferClass
+C type
+
+GtkEntryBufferClass
 */
 type EntryBufferClass struct {
 	native *C.GtkEntryBufferClass
@@ -3889,7 +4165,9 @@ func (recv *EntryBufferClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkEntryBufferPrivate
+C type
+
+GtkEntryBufferPrivate
 */
 type EntryBufferPrivate struct {
 	native *C.GtkEntryBufferPrivate
@@ -3918,7 +4196,9 @@ func (recv *EntryBufferPrivate) ToC() unsafe.Pointer {
 // a custom one.
 /*
 
-C record/class : GtkEntryClass
+C type
+
+GtkEntryClass
 */
 type EntryClass struct {
 	native *C.GtkEntryClass
@@ -3962,7 +4242,9 @@ func (recv *EntryClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkEntryCompletionClass
+C type
+
+GtkEntryCompletionClass
 */
 type EntryCompletionClass struct {
 	native *C.GtkEntryCompletionClass
@@ -3995,7 +4277,9 @@ func (recv *EntryCompletionClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkEntryCompletionPrivate
+C type
+
+GtkEntryCompletionPrivate
 */
 type EntryCompletionPrivate struct {
 	native *C.GtkEntryCompletionPrivate
@@ -4019,7 +4303,9 @@ func (recv *EntryCompletionPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkEntryPrivate
+C type
+
+GtkEntryPrivate
 */
 type EntryPrivate struct {
 	native *C.GtkEntryPrivate
@@ -4043,7 +4329,9 @@ func (recv *EntryPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkEventBoxClass
+C type
+
+GtkEventBoxClass
 */
 type EventBoxClass struct {
 	native *C.GtkEventBoxClass
@@ -4072,7 +4360,9 @@ func (recv *EventBoxClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkEventBoxPrivate
+C type
+
+GtkEventBoxPrivate
 */
 type EventBoxPrivate struct {
 	native *C.GtkEventBoxPrivate
@@ -4096,7 +4386,9 @@ func (recv *EventBoxPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkEventControllerClass
+C type
+
+GtkEventControllerClass
 */
 type EventControllerClass struct {
 	native *C.GtkEventControllerClass
@@ -4120,7 +4412,9 @@ func (recv *EventControllerClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkExpanderAccessibleClass
+C type
+
+GtkExpanderAccessibleClass
 */
 type ExpanderAccessibleClass struct {
 	native *C.GtkExpanderAccessibleClass
@@ -4145,7 +4439,9 @@ func (recv *ExpanderAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkExpanderAccessiblePrivate
+C type
+
+GtkExpanderAccessiblePrivate
 */
 type ExpanderAccessiblePrivate struct {
 	native *C.GtkExpanderAccessiblePrivate
@@ -4169,7 +4465,9 @@ func (recv *ExpanderAccessiblePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkExpanderClass
+C type
+
+GtkExpanderClass
 */
 type ExpanderClass struct {
 	native *C.GtkExpanderClass
@@ -4199,7 +4497,9 @@ func (recv *ExpanderClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkExpanderPrivate
+C type
+
+GtkExpanderPrivate
 */
 type ExpanderPrivate struct {
 	native *C.GtkExpanderPrivate
@@ -4223,7 +4523,9 @@ func (recv *ExpanderPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkFileChooserButtonClass
+C type
+
+GtkFileChooserButtonClass
 */
 type FileChooserButtonClass struct {
 	native *C.GtkFileChooserButtonClass
@@ -4253,7 +4555,9 @@ func (recv *FileChooserButtonClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkFileChooserButtonPrivate
+C type
+
+GtkFileChooserButtonPrivate
 */
 type FileChooserButtonPrivate struct {
 	native *C.GtkFileChooserButtonPrivate
@@ -4277,7 +4581,9 @@ func (recv *FileChooserButtonPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkFileChooserDialogClass
+C type
+
+GtkFileChooserDialogClass
 */
 type FileChooserDialogClass struct {
 	native *C.GtkFileChooserDialogClass
@@ -4306,7 +4612,9 @@ func (recv *FileChooserDialogClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkFileChooserDialogPrivate
+C type
+
+GtkFileChooserDialogPrivate
 */
 type FileChooserDialogPrivate struct {
 	native *C.GtkFileChooserDialogPrivate
@@ -4330,7 +4638,9 @@ func (recv *FileChooserDialogPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkFileChooserWidgetClass
+C type
+
+GtkFileChooserWidgetClass
 */
 type FileChooserWidgetClass struct {
 	native *C.GtkFileChooserWidgetClass
@@ -4359,7 +4669,9 @@ func (recv *FileChooserWidgetClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkFileChooserWidgetPrivate
+C type
+
+GtkFileChooserWidgetPrivate
 */
 type FileChooserWidgetPrivate struct {
 	native *C.GtkFileChooserWidgetPrivate
@@ -4385,7 +4697,9 @@ func (recv *FileChooserWidgetPrivate) ToC() unsafe.Pointer {
 // tested file to gtk_file_filter_filter().
 /*
 
-C record/class : GtkFileFilterInfo
+C type
+
+GtkFileFilterInfo
 */
 type FileFilterInfo struct {
 	native      *C.GtkFileFilterInfo
@@ -4431,7 +4745,9 @@ func (recv *FileFilterInfo) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkFixedChild
+C type
+
+GtkFixedChild
 */
 type FixedChild struct {
 	native *C.GtkFixedChild
@@ -4466,7 +4782,9 @@ func (recv *FixedChild) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkFixedClass
+C type
+
+GtkFixedClass
 */
 type FixedClass struct {
 	native *C.GtkFixedClass
@@ -4495,7 +4813,9 @@ func (recv *FixedClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkFixedPrivate
+C type
+
+GtkFixedPrivate
 */
 type FixedPrivate struct {
 	native *C.GtkFixedPrivate
@@ -4519,7 +4839,9 @@ func (recv *FixedPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkFlowBoxAccessibleClass
+C type
+
+GtkFlowBoxAccessibleClass
 */
 type FlowBoxAccessibleClass struct {
 	native *C.GtkFlowBoxAccessibleClass
@@ -4544,7 +4866,9 @@ func (recv *FlowBoxAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkFlowBoxAccessiblePrivate
+C type
+
+GtkFlowBoxAccessiblePrivate
 */
 type FlowBoxAccessiblePrivate struct {
 	native *C.GtkFlowBoxAccessiblePrivate
@@ -4568,7 +4892,9 @@ func (recv *FlowBoxAccessiblePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkFlowBoxChildAccessibleClass
+C type
+
+GtkFlowBoxChildAccessibleClass
 */
 type FlowBoxChildAccessibleClass struct {
 	native *C.GtkFlowBoxChildAccessibleClass
@@ -4593,7 +4919,9 @@ func (recv *FlowBoxChildAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkFlowBoxChildClass
+C type
+
+GtkFlowBoxChildClass
 */
 type FlowBoxChildClass struct {
 	native *C.GtkFlowBoxChildClass
@@ -4621,7 +4949,9 @@ func (recv *FlowBoxChildClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkFlowBoxClass
+C type
+
+GtkFlowBoxClass
 */
 type FlowBoxClass struct {
 	native *C.GtkFlowBoxClass
@@ -4659,7 +4989,9 @@ func (recv *FlowBoxClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkFontButtonClass
+C type
+
+GtkFontButtonClass
 */
 type FontButtonClass struct {
 	native *C.GtkFontButtonClass
@@ -4689,7 +5021,9 @@ func (recv *FontButtonClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkFontButtonPrivate
+C type
+
+GtkFontButtonPrivate
 */
 type FontButtonPrivate struct {
 	native *C.GtkFontButtonPrivate
@@ -4713,7 +5047,9 @@ func (recv *FontButtonPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkFontChooserDialogClass
+C type
+
+GtkFontChooserDialogClass
 */
 type FontChooserDialogClass struct {
 	native *C.GtkFontChooserDialogClass
@@ -4742,7 +5078,9 @@ func (recv *FontChooserDialogClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkFontChooserDialogPrivate
+C type
+
+GtkFontChooserDialogPrivate
 */
 type FontChooserDialogPrivate struct {
 	native *C.GtkFontChooserDialogPrivate
@@ -4766,7 +5104,9 @@ func (recv *FontChooserDialogPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkFontChooserIface
+C type
+
+GtkFontChooserIface
 */
 type FontChooserIface struct {
 	native *C.GtkFontChooserIface
@@ -4799,7 +5139,9 @@ func (recv *FontChooserIface) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkFontChooserWidgetClass
+C type
+
+GtkFontChooserWidgetClass
 */
 type FontChooserWidgetClass struct {
 	native *C.GtkFontChooserWidgetClass
@@ -4832,7 +5174,9 @@ func (recv *FontChooserWidgetClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkFontChooserWidgetPrivate
+C type
+
+GtkFontChooserWidgetPrivate
 */
 type FontChooserWidgetPrivate struct {
 	native *C.GtkFontChooserWidgetPrivate
@@ -4856,7 +5200,9 @@ func (recv *FontChooserWidgetPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkFontSelectionClass
+C type
+
+GtkFontSelectionClass
 */
 type FontSelectionClass struct {
 	native *C.GtkFontSelectionClass
@@ -4885,7 +5231,9 @@ func (recv *FontSelectionClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkFontSelectionDialogClass
+C type
+
+GtkFontSelectionDialogClass
 */
 type FontSelectionDialogClass struct {
 	native *C.GtkFontSelectionDialogClass
@@ -4914,7 +5262,9 @@ func (recv *FontSelectionDialogClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkFontSelectionDialogPrivate
+C type
+
+GtkFontSelectionDialogPrivate
 */
 type FontSelectionDialogPrivate struct {
 	native *C.GtkFontSelectionDialogPrivate
@@ -4938,7 +5288,9 @@ func (recv *FontSelectionDialogPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkFontSelectionPrivate
+C type
+
+GtkFontSelectionPrivate
 */
 type FontSelectionPrivate struct {
 	native *C.GtkFontSelectionPrivate
@@ -4962,7 +5314,9 @@ func (recv *FontSelectionPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkFrameAccessibleClass
+C type
+
+GtkFrameAccessibleClass
 */
 type FrameAccessibleClass struct {
 	native *C.GtkFrameAccessibleClass
@@ -4987,7 +5341,9 @@ func (recv *FrameAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkFrameAccessiblePrivate
+C type
+
+GtkFrameAccessiblePrivate
 */
 type FrameAccessiblePrivate struct {
 	native *C.GtkFrameAccessiblePrivate
@@ -5011,7 +5367,9 @@ func (recv *FrameAccessiblePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkFrameClass
+C type
+
+GtkFrameClass
 */
 type FrameClass struct {
 	native *C.GtkFrameClass
@@ -5041,7 +5399,9 @@ func (recv *FrameClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkFramePrivate
+C type
+
+GtkFramePrivate
 */
 type FramePrivate struct {
 	native *C.GtkFramePrivate
@@ -5065,7 +5425,9 @@ func (recv *FramePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkGestureClass
+C type
+
+GtkGestureClass
 */
 type GestureClass struct {
 	native *C.GtkGestureClass
@@ -5089,7 +5451,9 @@ func (recv *GestureClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkGestureDragClass
+C type
+
+GtkGestureDragClass
 */
 type GestureDragClass struct {
 	native *C.GtkGestureDragClass
@@ -5113,7 +5477,9 @@ func (recv *GestureDragClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkGestureLongPressClass
+C type
+
+GtkGestureLongPressClass
 */
 type GestureLongPressClass struct {
 	native *C.GtkGestureLongPressClass
@@ -5137,7 +5503,9 @@ func (recv *GestureLongPressClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkGestureMultiPressClass
+C type
+
+GtkGestureMultiPressClass
 */
 type GestureMultiPressClass struct {
 	native *C.GtkGestureMultiPressClass
@@ -5161,7 +5529,9 @@ func (recv *GestureMultiPressClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkGesturePanClass
+C type
+
+GtkGesturePanClass
 */
 type GesturePanClass struct {
 	native *C.GtkGesturePanClass
@@ -5185,7 +5555,9 @@ func (recv *GesturePanClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkGestureRotateClass
+C type
+
+GtkGestureRotateClass
 */
 type GestureRotateClass struct {
 	native *C.GtkGestureRotateClass
@@ -5209,7 +5581,9 @@ func (recv *GestureRotateClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkGestureSingleClass
+C type
+
+GtkGestureSingleClass
 */
 type GestureSingleClass struct {
 	native *C.GtkGestureSingleClass
@@ -5233,7 +5607,9 @@ func (recv *GestureSingleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkGestureSwipeClass
+C type
+
+GtkGestureSwipeClass
 */
 type GestureSwipeClass struct {
 	native *C.GtkGestureSwipeClass
@@ -5257,7 +5633,9 @@ func (recv *GestureSwipeClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkGestureZoomClass
+C type
+
+GtkGestureZoomClass
 */
 type GestureZoomClass struct {
 	native *C.GtkGestureZoomClass
@@ -5297,7 +5675,9 @@ func (recv *GestureZoomClass) ToC() unsafe.Pointer {
 // your own code, please use Cairo directly.
 /*
 
-C record/class : GtkGradient
+C type
+
+GtkGradient
 */
 type Gradient struct {
 	native *C.GtkGradient
@@ -5321,7 +5701,9 @@ func (recv *Gradient) ToC() unsafe.Pointer {
 
 /*
 
-C function : gtk_gradient_resolve_for_context
+C function
+
+gtk_gradient_resolve_for_context
 */
 func (recv *Gradient) ResolveForContext(context *StyleContext) *cairo.Pattern {
 	c_context := (*C.GtkStyleContext)(C.NULL)
@@ -5339,7 +5721,9 @@ func (recv *Gradient) ResolveForContext(context *StyleContext) *cairo.Pattern {
 // for using in GTK CSS files.
 /*
 
-C function : gtk_gradient_to_string
+C function
+
+gtk_gradient_to_string
 */
 func (recv *Gradient) ToString() string {
 	retC := C.gtk_gradient_to_string((*C.GtkGradient)(recv.native))
@@ -5351,7 +5735,9 @@ func (recv *Gradient) ToString() string {
 
 /*
 
-C record/class : GtkGridClass
+C type
+
+GtkGridClass
 */
 type GridClass struct {
 	native *C.GtkGridClass
@@ -5384,7 +5770,9 @@ func (recv *GridClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkGridPrivate
+C type
+
+GtkGridPrivate
 */
 type GridPrivate struct {
 	native *C.GtkGridPrivate
@@ -5408,7 +5796,9 @@ func (recv *GridPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkHBoxClass
+C type
+
+GtkHBoxClass
 */
 type HBoxClass struct {
 	native *C.GtkHBoxClass
@@ -5433,7 +5823,9 @@ func (recv *HBoxClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkHButtonBoxClass
+C type
+
+GtkHButtonBoxClass
 */
 type HButtonBoxClass struct {
 	native *C.GtkHButtonBoxClass
@@ -5458,7 +5850,9 @@ func (recv *HButtonBoxClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkHPanedClass
+C type
+
+GtkHPanedClass
 */
 type HPanedClass struct {
 	native *C.GtkHPanedClass
@@ -5483,7 +5877,9 @@ func (recv *HPanedClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkHSVClass
+C type
+
+GtkHSVClass
 */
 type HSVClass struct {
 	native *C.GtkHSVClass
@@ -5514,7 +5910,9 @@ func (recv *HSVClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkHSVPrivate
+C type
+
+GtkHSVPrivate
 */
 type HSVPrivate struct {
 	native *C.GtkHSVPrivate
@@ -5538,7 +5936,9 @@ func (recv *HSVPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkHScaleClass
+C type
+
+GtkHScaleClass
 */
 type HScaleClass struct {
 	native *C.GtkHScaleClass
@@ -5563,7 +5963,9 @@ func (recv *HScaleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkHScrollbarClass
+C type
+
+GtkHScrollbarClass
 */
 type HScrollbarClass struct {
 	native *C.GtkHScrollbarClass
@@ -5588,7 +5990,9 @@ func (recv *HScrollbarClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkHSeparatorClass
+C type
+
+GtkHSeparatorClass
 */
 type HSeparatorClass struct {
 	native *C.GtkHSeparatorClass
@@ -5613,7 +6017,9 @@ func (recv *HSeparatorClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkHandleBoxClass
+C type
+
+GtkHandleBoxClass
 */
 type HandleBoxClass struct {
 	native *C.GtkHandleBoxClass
@@ -5644,7 +6050,9 @@ func (recv *HandleBoxClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkHandleBoxPrivate
+C type
+
+GtkHandleBoxPrivate
 */
 type HandleBoxPrivate struct {
 	native *C.GtkHandleBoxPrivate
@@ -5668,7 +6076,9 @@ func (recv *HandleBoxPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkHeaderBarClass
+C type
+
+GtkHeaderBarClass
 */
 type HeaderBarClass struct {
 	native *C.GtkHeaderBarClass
@@ -5697,7 +6107,9 @@ func (recv *HeaderBarClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkHeaderBarPrivate
+C type
+
+GtkHeaderBarPrivate
 */
 type HeaderBarPrivate struct {
 	native *C.GtkHeaderBarPrivate
@@ -5721,7 +6133,9 @@ func (recv *HeaderBarPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkIMContextClass
+C type
+
+GtkIMContextClass
 */
 type IMContextClass struct {
 	native *C.GtkIMContextClass
@@ -5769,7 +6183,9 @@ func (recv *IMContextClass) ToC() unsafe.Pointer {
 // Bookkeeping information about a loadable input method.
 /*
 
-C record/class : GtkIMContextInfo
+C type
+
+GtkIMContextInfo
 */
 type IMContextInfo struct {
 	native         *C.GtkIMContextInfo
@@ -5815,7 +6231,9 @@ func (recv *IMContextInfo) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkIMContextSimpleClass
+C type
+
+GtkIMContextSimpleClass
 */
 type IMContextSimpleClass struct {
 	native *C.GtkIMContextSimpleClass
@@ -5840,7 +6258,9 @@ func (recv *IMContextSimpleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkIMContextSimplePrivate
+C type
+
+GtkIMContextSimplePrivate
 */
 type IMContextSimplePrivate struct {
 	native *C.GtkIMContextSimplePrivate
@@ -5864,7 +6284,9 @@ func (recv *IMContextSimplePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkIMMulticontextClass
+C type
+
+GtkIMMulticontextClass
 */
 type IMMulticontextClass struct {
 	native *C.GtkIMMulticontextClass
@@ -5893,7 +6315,9 @@ func (recv *IMMulticontextClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkIMMulticontextPrivate
+C type
+
+GtkIMMulticontextPrivate
 */
 type IMMulticontextPrivate struct {
 	native *C.GtkIMMulticontextPrivate
@@ -5917,7 +6341,9 @@ func (recv *IMMulticontextPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkIconFactoryClass
+C type
+
+GtkIconFactoryClass
 */
 type IconFactoryClass struct {
 	native *C.GtkIconFactoryClass
@@ -5946,7 +6372,9 @@ func (recv *IconFactoryClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkIconFactoryPrivate
+C type
+
+GtkIconFactoryPrivate
 */
 type IconFactoryPrivate struct {
 	native *C.GtkIconFactoryPrivate
@@ -5970,7 +6398,9 @@ func (recv *IconFactoryPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkIconInfoClass
+C type
+
+GtkIconInfoClass
 */
 type IconInfoClass struct {
 	native *C.GtkIconInfoClass
@@ -5994,7 +6424,9 @@ func (recv *IconInfoClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkIconSet
+C type
+
+GtkIconSet
 */
 type IconSet struct {
 	native *C.GtkIconSet
@@ -6027,7 +6459,9 @@ func (recv *IconSet) ToC() unsafe.Pointer {
 // a #GtkIconFactory.
 /*
 
-C function : gtk_icon_set_new
+C function
+
+gtk_icon_set_new
 */
 func IconSetNew() *IconSet {
 	retC := C.gtk_icon_set_new()
@@ -6043,7 +6477,9 @@ func IconSetNew() *IconSet {
 // or make the icon look insensitive/prelighted.
 /*
 
-C function : gtk_icon_set_new_from_pixbuf
+C function
+
+gtk_icon_set_new_from_pixbuf
 */
 func IconSetNewFromPixbuf(pixbuf *gdkpixbuf.Pixbuf) *IconSet {
 	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
@@ -6084,7 +6520,9 @@ func IconSetNewFromPixbuf(pixbuf *gdkpixbuf.Pixbuf) *IconSet {
 // default icon source based on the given pixbuf.
 /*
 
-C function : gtk_icon_set_add_source
+C function
+
+gtk_icon_set_add_source
 */
 func (recv *IconSet) AddSource(source *IconSource) {
 	c_source := (*C.GtkIconSource)(C.NULL)
@@ -6100,7 +6538,9 @@ func (recv *IconSet) AddSource(source *IconSource) {
 // Copies @icon_set by value.
 /*
 
-C function : gtk_icon_set_copy
+C function
+
+gtk_icon_set_copy
 */
 func (recv *IconSet) Copy() *IconSet {
 	retC := C.gtk_icon_set_copy((*C.GtkIconSet)(recv.native))
@@ -6114,7 +6554,9 @@ func (recv *IconSet) Copy() *IconSet {
 // Increments the reference count on @icon_set.
 /*
 
-C function : gtk_icon_set_ref
+C function
+
+gtk_icon_set_ref
 */
 func (recv *IconSet) Ref() *IconSet {
 	retC := C.gtk_icon_set_ref((*C.GtkIconSet)(recv.native))
@@ -6131,7 +6573,9 @@ func (recv *IconSet) Ref() *IconSet {
 // image" icon will be returned instead.
 /*
 
-C function : gtk_icon_set_render_icon
+C function
+
+gtk_icon_set_render_icon
 */
 func (recv *IconSet) RenderIcon(style *Style, direction TextDirection, state StateType, size IconSize, widget *Widget, detail string) *gdkpixbuf.Pixbuf {
 	c_style := (*C.GtkStyle)(C.NULL)
@@ -6163,7 +6607,9 @@ func (recv *IconSet) RenderIcon(style *Style, direction TextDirection, state Sta
 // if the reference count reaches 0.
 /*
 
-C function : gtk_icon_set_unref
+C function
+
+gtk_icon_set_unref
 */
 func (recv *IconSet) Unref() {
 	C.gtk_icon_set_unref((*C.GtkIconSet)(recv.native))
@@ -6173,7 +6619,9 @@ func (recv *IconSet) Unref() {
 
 /*
 
-C record/class : GtkIconSource
+C type
+
+GtkIconSource
 */
 type IconSource struct {
 	native *C.GtkIconSource
@@ -6225,7 +6673,9 @@ func (recv *IconSource) ToC() unsafe.Pointer {
 // direction, widget state, or icon size.
 /*
 
-C function : gtk_icon_source_new
+C function
+
+gtk_icon_source_new
 */
 func IconSourceNew() *IconSource {
 	retC := C.gtk_icon_source_new()
@@ -6237,7 +6687,9 @@ func IconSourceNew() *IconSource {
 // Creates a copy of @source; mostly useful for language bindings.
 /*
 
-C function : gtk_icon_source_copy
+C function
+
+gtk_icon_source_copy
 */
 func (recv *IconSource) Copy() *IconSource {
 	retC := C.gtk_icon_source_copy((*C.GtkIconSource)(recv.native))
@@ -6250,7 +6702,9 @@ func (recv *IconSource) Copy() *IconSource {
 // filename, size, and pixbuf fields if those are not %NULL.
 /*
 
-C function : gtk_icon_source_free
+C function
+
+gtk_icon_source_free
 */
 func (recv *IconSource) Free() {
 	C.gtk_icon_source_free((*C.GtkIconSource)(recv.native))
@@ -6263,7 +6717,9 @@ func (recv *IconSource) Free() {
 // wildcarded.
 /*
 
-C function : gtk_icon_source_get_direction
+C function
+
+gtk_icon_source_get_direction
 */
 func (recv *IconSource) GetDirection() TextDirection {
 	retC := C.gtk_icon_source_get_direction((*C.GtkIconSource)(recv.native))
@@ -6275,7 +6731,9 @@ func (recv *IconSource) GetDirection() TextDirection {
 // Gets the value set by gtk_icon_source_set_direction_wildcarded().
 /*
 
-C function : gtk_icon_source_get_direction_wildcarded
+C function
+
+gtk_icon_source_get_direction_wildcarded
 */
 func (recv *IconSource) GetDirectionWildcarded() bool {
 	retC := C.gtk_icon_source_get_direction_wildcarded((*C.GtkIconSource)(recv.native))
@@ -6289,7 +6747,9 @@ func (recv *IconSource) GetDirectionWildcarded() bool {
 // persist beyond the lifetime of the icon source.
 /*
 
-C function : gtk_icon_source_get_filename
+C function
+
+gtk_icon_source_get_filename
 */
 func (recv *IconSource) GetFilename() string {
 	retC := C.gtk_icon_source_get_filename((*C.GtkIconSource)(recv.native))
@@ -6303,7 +6763,9 @@ func (recv *IconSource) GetFilename() string {
 // persist beyond the lifetime of the icon source.
 /*
 
-C function : gtk_icon_source_get_icon_name
+C function
+
+gtk_icon_source_get_icon_name
 */
 func (recv *IconSource) GetIconName() string {
 	retC := C.gtk_icon_source_get_icon_name((*C.GtkIconSource)(recv.native))
@@ -6321,7 +6783,9 @@ func (recv *IconSource) GetIconName() string {
 // not incremented.
 /*
 
-C function : gtk_icon_source_get_pixbuf
+C function
+
+gtk_icon_source_get_pixbuf
 */
 func (recv *IconSource) GetPixbuf() *gdkpixbuf.Pixbuf {
 	retC := C.gtk_icon_source_get_pixbuf((*C.GtkIconSource)(recv.native))
@@ -6334,7 +6798,9 @@ func (recv *IconSource) GetPixbuf() *gdkpixbuf.Pixbuf {
 // is only useful/meaningful if the icon size is not wildcarded.
 /*
 
-C function : gtk_icon_source_get_size
+C function
+
+gtk_icon_source_get_size
 */
 func (recv *IconSource) GetSize() IconSize {
 	retC := C.gtk_icon_source_get_size((*C.GtkIconSource)(recv.native))
@@ -6346,7 +6812,9 @@ func (recv *IconSource) GetSize() IconSize {
 // Gets the value set by gtk_icon_source_set_size_wildcarded().
 /*
 
-C function : gtk_icon_source_get_size_wildcarded
+C function
+
+gtk_icon_source_get_size_wildcarded
 */
 func (recv *IconSource) GetSizeWildcarded() bool {
 	retC := C.gtk_icon_source_get_size_wildcarded((*C.GtkIconSource)(recv.native))
@@ -6360,7 +6828,9 @@ func (recv *IconSource) GetSizeWildcarded() bool {
 // wildcarded.
 /*
 
-C function : gtk_icon_source_get_state
+C function
+
+gtk_icon_source_get_state
 */
 func (recv *IconSource) GetState() StateType {
 	retC := C.gtk_icon_source_get_state((*C.GtkIconSource)(recv.native))
@@ -6372,7 +6842,9 @@ func (recv *IconSource) GetState() StateType {
 // Gets the value set by gtk_icon_source_set_state_wildcarded().
 /*
 
-C function : gtk_icon_source_get_state_wildcarded
+C function
+
+gtk_icon_source_get_state_wildcarded
 */
 func (recv *IconSource) GetStateWildcarded() bool {
 	retC := C.gtk_icon_source_get_state_wildcarded((*C.GtkIconSource)(recv.native))
@@ -6390,7 +6862,9 @@ func (recv *IconSource) GetStateWildcarded() bool {
 // in addition to calling this function.
 /*
 
-C function : gtk_icon_source_set_direction
+C function
+
+gtk_icon_source_set_direction
 */
 func (recv *IconSource) SetDirection(direction TextDirection) {
 	c_direction := (C.GtkTextDirection)(direction)
@@ -6411,7 +6885,9 @@ func (recv *IconSource) SetDirection(direction TextDirection) {
 // wildcarded sources, and will use an exact match when possible.
 /*
 
-C function : gtk_icon_source_set_direction_wildcarded
+C function
+
+gtk_icon_source_set_direction_wildcarded
 */
 func (recv *IconSource) SetDirectionWildcarded(setting bool) {
 	c_setting :=
@@ -6426,7 +6902,9 @@ func (recv *IconSource) SetDirectionWildcarded(setting bool) {
 // icon variants for #GtkIconSet. The filename must be absolute.
 /*
 
-C function : gtk_icon_source_set_filename
+C function
+
+gtk_icon_source_set_filename
 */
 func (recv *IconSource) SetFilename(filename string) {
 	c_filename := C.CString(filename)
@@ -6441,7 +6919,9 @@ func (recv *IconSource) SetFilename(filename string) {
 // to use as a base image when creating icon variants for #GtkIconSet.
 /*
 
-C function : gtk_icon_source_set_icon_name
+C function
+
+gtk_icon_source_set_icon_name
 */
 func (recv *IconSource) SetIconName(iconName string) {
 	c_icon_name := C.CString(iconName)
@@ -6456,7 +6936,9 @@ func (recv *IconSource) SetIconName(iconName string) {
 // for #GtkIconSet.
 /*
 
-C function : gtk_icon_source_set_pixbuf
+C function
+
+gtk_icon_source_set_pixbuf
 */
 func (recv *IconSource) SetPixbuf(pixbuf *gdkpixbuf.Pixbuf) {
 	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
@@ -6478,7 +6960,9 @@ func (recv *IconSource) SetPixbuf(pixbuf *gdkpixbuf.Pixbuf) {
 // in addition to calling this function.
 /*
 
-C function : gtk_icon_source_set_size
+C function
+
+gtk_icon_source_set_size
 */
 func (recv *IconSource) SetSize(size IconSize) {
 	c_size := (C.GtkIconSize)(size)
@@ -6502,7 +6986,9 @@ func (recv *IconSource) SetSize(size IconSize) {
 // of source images that match exactly.
 /*
 
-C function : gtk_icon_source_set_size_wildcarded
+C function
+
+gtk_icon_source_set_size_wildcarded
 */
 func (recv *IconSource) SetSizeWildcarded(setting bool) {
 	c_setting :=
@@ -6522,7 +7008,9 @@ func (recv *IconSource) SetSizeWildcarded(setting bool) {
 // in addition to calling this function.
 /*
 
-C function : gtk_icon_source_set_state
+C function
+
+gtk_icon_source_set_state
 */
 func (recv *IconSource) SetState(state StateType) {
 	c_state := (C.GtkStateType)(state)
@@ -6547,7 +7035,9 @@ func (recv *IconSource) SetState(state StateType) {
 // that match exactly.
 /*
 
-C function : gtk_icon_source_set_state_wildcarded
+C function
+
+gtk_icon_source_set_state_wildcarded
 */
 func (recv *IconSource) SetStateWildcarded(setting bool) {
 	c_setting :=
@@ -6560,7 +7050,9 @@ func (recv *IconSource) SetStateWildcarded(setting bool) {
 
 /*
 
-C record/class : GtkIconThemeClass
+C type
+
+GtkIconThemeClass
 */
 type IconThemeClass struct {
 	native *C.GtkIconThemeClass
@@ -6590,7 +7082,9 @@ func (recv *IconThemeClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkIconThemePrivate
+C type
+
+GtkIconThemePrivate
 */
 type IconThemePrivate struct {
 	native *C.GtkIconThemePrivate
@@ -6614,7 +7108,9 @@ func (recv *IconThemePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkIconViewAccessibleClass
+C type
+
+GtkIconViewAccessibleClass
 */
 type IconViewAccessibleClass struct {
 	native *C.GtkIconViewAccessibleClass
@@ -6639,7 +7135,9 @@ func (recv *IconViewAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkIconViewAccessiblePrivate
+C type
+
+GtkIconViewAccessiblePrivate
 */
 type IconViewAccessiblePrivate struct {
 	native *C.GtkIconViewAccessiblePrivate
@@ -6663,7 +7161,9 @@ func (recv *IconViewAccessiblePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkIconViewClass
+C type
+
+GtkIconViewClass
 */
 type IconViewClass struct {
 	native *C.GtkIconViewClass
@@ -6700,7 +7200,9 @@ func (recv *IconViewClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkIconViewPrivate
+C type
+
+GtkIconViewPrivate
 */
 type IconViewPrivate struct {
 	native *C.GtkIconViewPrivate
@@ -6724,7 +7226,9 @@ func (recv *IconViewPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkImageAccessibleClass
+C type
+
+GtkImageAccessibleClass
 */
 type ImageAccessibleClass struct {
 	native *C.GtkImageAccessibleClass
@@ -6749,7 +7253,9 @@ func (recv *ImageAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkImageAccessiblePrivate
+C type
+
+GtkImageAccessiblePrivate
 */
 type ImageAccessiblePrivate struct {
 	native *C.GtkImageAccessiblePrivate
@@ -6773,7 +7279,9 @@ func (recv *ImageAccessiblePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkImageCellAccessibleClass
+C type
+
+GtkImageCellAccessibleClass
 */
 type ImageCellAccessibleClass struct {
 	native *C.GtkImageCellAccessibleClass
@@ -6798,7 +7306,9 @@ func (recv *ImageCellAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkImageCellAccessiblePrivate
+C type
+
+GtkImageCellAccessiblePrivate
 */
 type ImageCellAccessiblePrivate struct {
 	native *C.GtkImageCellAccessiblePrivate
@@ -6822,7 +7332,9 @@ func (recv *ImageCellAccessiblePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkImageClass
+C type
+
+GtkImageClass
 */
 type ImageClass struct {
 	native *C.GtkImageClass
@@ -6851,7 +7363,9 @@ func (recv *ImageClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkImageMenuItemClass
+C type
+
+GtkImageMenuItemClass
 */
 type ImageMenuItemClass struct {
 	native *C.GtkImageMenuItemClass
@@ -6880,7 +7394,9 @@ func (recv *ImageMenuItemClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkImageMenuItemPrivate
+C type
+
+GtkImageMenuItemPrivate
 */
 type ImageMenuItemPrivate struct {
 	native *C.GtkImageMenuItemPrivate
@@ -6904,7 +7420,9 @@ func (recv *ImageMenuItemPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkImagePrivate
+C type
+
+GtkImagePrivate
 */
 type ImagePrivate struct {
 	native *C.GtkImagePrivate
@@ -6928,7 +7446,9 @@ func (recv *ImagePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkInfoBarClass
+C type
+
+GtkInfoBarClass
 */
 type InfoBarClass struct {
 	native *C.GtkInfoBarClass
@@ -6959,7 +7479,9 @@ func (recv *InfoBarClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkInfoBarPrivate
+C type
+
+GtkInfoBarPrivate
 */
 type InfoBarPrivate struct {
 	native *C.GtkInfoBarPrivate
@@ -6983,7 +7505,9 @@ func (recv *InfoBarPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkInvisibleClass
+C type
+
+GtkInvisibleClass
 */
 type InvisibleClass struct {
 	native *C.GtkInvisibleClass
@@ -7012,7 +7536,9 @@ func (recv *InvisibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkInvisiblePrivate
+C type
+
+GtkInvisiblePrivate
 */
 type InvisiblePrivate struct {
 	native *C.GtkInvisiblePrivate
@@ -7036,7 +7562,9 @@ func (recv *InvisiblePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkLabelAccessibleClass
+C type
+
+GtkLabelAccessibleClass
 */
 type LabelAccessibleClass struct {
 	native *C.GtkLabelAccessibleClass
@@ -7061,7 +7589,9 @@ func (recv *LabelAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkLabelAccessiblePrivate
+C type
+
+GtkLabelAccessiblePrivate
 */
 type LabelAccessiblePrivate struct {
 	native *C.GtkLabelAccessiblePrivate
@@ -7085,7 +7615,9 @@ func (recv *LabelAccessiblePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkLabelClass
+C type
+
+GtkLabelClass
 */
 type LabelClass struct {
 	native *C.GtkLabelClass
@@ -7122,7 +7654,9 @@ func (recv *LabelClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkLabelPrivate
+C type
+
+GtkLabelPrivate
 */
 type LabelPrivate struct {
 	native *C.GtkLabelPrivate
@@ -7146,7 +7680,9 @@ func (recv *LabelPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkLabelSelectionInfo
+C type
+
+GtkLabelSelectionInfo
 */
 type LabelSelectionInfo struct {
 	native *C.GtkLabelSelectionInfo
@@ -7170,7 +7706,9 @@ func (recv *LabelSelectionInfo) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkLayoutClass
+C type
+
+GtkLayoutClass
 */
 type LayoutClass struct {
 	native *C.GtkLayoutClass
@@ -7199,7 +7737,9 @@ func (recv *LayoutClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkLayoutPrivate
+C type
+
+GtkLayoutPrivate
 */
 type LayoutPrivate struct {
 	native *C.GtkLayoutPrivate
@@ -7223,7 +7763,9 @@ func (recv *LayoutPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkLevelBarAccessibleClass
+C type
+
+GtkLevelBarAccessibleClass
 */
 type LevelBarAccessibleClass struct {
 	native *C.GtkLevelBarAccessibleClass
@@ -7248,7 +7790,9 @@ func (recv *LevelBarAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkLevelBarAccessiblePrivate
+C type
+
+GtkLevelBarAccessiblePrivate
 */
 type LevelBarAccessiblePrivate struct {
 	native *C.GtkLevelBarAccessiblePrivate
@@ -7272,7 +7816,9 @@ func (recv *LevelBarAccessiblePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkLevelBarClass
+C type
+
+GtkLevelBarClass
 */
 type LevelBarClass struct {
 	native *C.GtkLevelBarClass
@@ -7299,7 +7845,9 @@ func (recv *LevelBarClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkLevelBarPrivate
+C type
+
+GtkLevelBarPrivate
 */
 type LevelBarPrivate struct {
 	native *C.GtkLevelBarPrivate
@@ -7323,7 +7871,9 @@ func (recv *LevelBarPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkLinkButtonAccessibleClass
+C type
+
+GtkLinkButtonAccessibleClass
 */
 type LinkButtonAccessibleClass struct {
 	native *C.GtkLinkButtonAccessibleClass
@@ -7348,7 +7898,9 @@ func (recv *LinkButtonAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkLinkButtonAccessiblePrivate
+C type
+
+GtkLinkButtonAccessiblePrivate
 */
 type LinkButtonAccessiblePrivate struct {
 	native *C.GtkLinkButtonAccessiblePrivate
@@ -7374,7 +7926,9 @@ func (recv *LinkButtonAccessiblePrivate) ToC() unsafe.Pointer {
 // private data.
 /*
 
-C record/class : GtkLinkButtonClass
+C type
+
+GtkLinkButtonClass
 */
 type LinkButtonClass struct {
 	native *C.GtkLinkButtonClass
@@ -7404,7 +7958,9 @@ func (recv *LinkButtonClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkLinkButtonPrivate
+C type
+
+GtkLinkButtonPrivate
 */
 type LinkButtonPrivate struct {
 	native *C.GtkLinkButtonPrivate
@@ -7428,7 +7984,9 @@ func (recv *LinkButtonPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkListBoxAccessibleClass
+C type
+
+GtkListBoxAccessibleClass
 */
 type ListBoxAccessibleClass struct {
 	native *C.GtkListBoxAccessibleClass
@@ -7453,7 +8011,9 @@ func (recv *ListBoxAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkListBoxAccessiblePrivate
+C type
+
+GtkListBoxAccessiblePrivate
 */
 type ListBoxAccessiblePrivate struct {
 	native *C.GtkListBoxAccessiblePrivate
@@ -7477,7 +8037,9 @@ func (recv *ListBoxAccessiblePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkListBoxClass
+C type
+
+GtkListBoxClass
 */
 type ListBoxClass struct {
 	native *C.GtkListBoxClass
@@ -7513,7 +8075,9 @@ func (recv *ListBoxClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkListBoxRowAccessibleClass
+C type
+
+GtkListBoxRowAccessibleClass
 */
 type ListBoxRowAccessibleClass struct {
 	native *C.GtkListBoxRowAccessibleClass
@@ -7538,7 +8102,9 @@ func (recv *ListBoxRowAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkListBoxRowClass
+C type
+
+GtkListBoxRowClass
 */
 type ListBoxRowClass struct {
 	native *C.GtkListBoxRowClass
@@ -7566,7 +8132,9 @@ func (recv *ListBoxRowClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkListStoreClass
+C type
+
+GtkListStoreClass
 */
 type ListStoreClass struct {
 	native *C.GtkListStoreClass
@@ -7595,7 +8163,9 @@ func (recv *ListStoreClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkListStorePrivate
+C type
+
+GtkListStorePrivate
 */
 type ListStorePrivate struct {
 	native *C.GtkListStorePrivate
@@ -7619,7 +8189,9 @@ func (recv *ListStorePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkLockButtonAccessibleClass
+C type
+
+GtkLockButtonAccessibleClass
 */
 type LockButtonAccessibleClass struct {
 	native *C.GtkLockButtonAccessibleClass
@@ -7644,7 +8216,9 @@ func (recv *LockButtonAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkLockButtonAccessiblePrivate
+C type
+
+GtkLockButtonAccessiblePrivate
 */
 type LockButtonAccessiblePrivate struct {
 	native *C.GtkLockButtonAccessiblePrivate
@@ -7668,7 +8242,9 @@ func (recv *LockButtonAccessiblePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkLockButtonClass
+C type
+
+GtkLockButtonClass
 */
 type LockButtonClass struct {
 	native *C.GtkLockButtonClass
@@ -7701,7 +8277,9 @@ func (recv *LockButtonClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkLockButtonPrivate
+C type
+
+GtkLockButtonPrivate
 */
 type LockButtonPrivate struct {
 	native *C.GtkLockButtonPrivate
@@ -7725,7 +8303,9 @@ func (recv *LockButtonPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkMenuAccessibleClass
+C type
+
+GtkMenuAccessibleClass
 */
 type MenuAccessibleClass struct {
 	native *C.GtkMenuAccessibleClass
@@ -7750,7 +8330,9 @@ func (recv *MenuAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkMenuAccessiblePrivate
+C type
+
+GtkMenuAccessiblePrivate
 */
 type MenuAccessiblePrivate struct {
 	native *C.GtkMenuAccessiblePrivate
@@ -7774,7 +8356,9 @@ func (recv *MenuAccessiblePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkMenuBarClass
+C type
+
+GtkMenuBarClass
 */
 type MenuBarClass struct {
 	native *C.GtkMenuBarClass
@@ -7803,7 +8387,9 @@ func (recv *MenuBarClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkMenuBarPrivate
+C type
+
+GtkMenuBarPrivate
 */
 type MenuBarPrivate struct {
 	native *C.GtkMenuBarPrivate
@@ -7827,7 +8413,9 @@ func (recv *MenuBarPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkMenuButtonAccessibleClass
+C type
+
+GtkMenuButtonAccessibleClass
 */
 type MenuButtonAccessibleClass struct {
 	native *C.GtkMenuButtonAccessibleClass
@@ -7852,7 +8440,9 @@ func (recv *MenuButtonAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkMenuButtonAccessiblePrivate
+C type
+
+GtkMenuButtonAccessiblePrivate
 */
 type MenuButtonAccessiblePrivate struct {
 	native *C.GtkMenuButtonAccessiblePrivate
@@ -7876,7 +8466,9 @@ func (recv *MenuButtonAccessiblePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkMenuButtonClass
+C type
+
+GtkMenuButtonClass
 */
 type MenuButtonClass struct {
 	native *C.GtkMenuButtonClass
@@ -7905,7 +8497,9 @@ func (recv *MenuButtonClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkMenuButtonPrivate
+C type
+
+GtkMenuButtonPrivate
 */
 type MenuButtonPrivate struct {
 	native *C.GtkMenuButtonPrivate
@@ -7929,7 +8523,9 @@ func (recv *MenuButtonPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkMenuClass
+C type
+
+GtkMenuClass
 */
 type MenuClass struct {
 	native *C.GtkMenuClass
@@ -7958,7 +8554,9 @@ func (recv *MenuClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkMenuItemAccessibleClass
+C type
+
+GtkMenuItemAccessibleClass
 */
 type MenuItemAccessibleClass struct {
 	native *C.GtkMenuItemAccessibleClass
@@ -7983,7 +8581,9 @@ func (recv *MenuItemAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkMenuItemAccessiblePrivate
+C type
+
+GtkMenuItemAccessiblePrivate
 */
 type MenuItemAccessiblePrivate struct {
 	native *C.GtkMenuItemAccessiblePrivate
@@ -8007,7 +8607,9 @@ func (recv *MenuItemAccessiblePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkMenuItemClass
+C type
+
+GtkMenuItemClass
 */
 type MenuItemClass struct {
 	native *C.GtkMenuItemClass
@@ -8045,7 +8647,9 @@ func (recv *MenuItemClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkMenuItemPrivate
+C type
+
+GtkMenuItemPrivate
 */
 type MenuItemPrivate struct {
 	native *C.GtkMenuItemPrivate
@@ -8069,7 +8673,9 @@ func (recv *MenuItemPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkMenuPrivate
+C type
+
+GtkMenuPrivate
 */
 type MenuPrivate struct {
 	native *C.GtkMenuPrivate
@@ -8093,7 +8699,9 @@ func (recv *MenuPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkMenuShellAccessibleClass
+C type
+
+GtkMenuShellAccessibleClass
 */
 type MenuShellAccessibleClass struct {
 	native *C.GtkMenuShellAccessibleClass
@@ -8118,7 +8726,9 @@ func (recv *MenuShellAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkMenuShellAccessiblePrivate
+C type
+
+GtkMenuShellAccessiblePrivate
 */
 type MenuShellAccessiblePrivate struct {
 	native *C.GtkMenuShellAccessiblePrivate
@@ -8142,7 +8752,9 @@ func (recv *MenuShellAccessiblePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkMenuShellClass
+C type
+
+GtkMenuShellClass
 */
 type MenuShellClass struct {
 	native *C.GtkMenuShellClass
@@ -8181,7 +8793,9 @@ func (recv *MenuShellClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkMenuShellPrivate
+C type
+
+GtkMenuShellPrivate
 */
 type MenuShellPrivate struct {
 	native *C.GtkMenuShellPrivate
@@ -8205,7 +8819,9 @@ func (recv *MenuShellPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkMenuToolButtonClass
+C type
+
+GtkMenuToolButtonClass
 */
 type MenuToolButtonClass struct {
 	native *C.GtkMenuToolButtonClass
@@ -8235,7 +8851,9 @@ func (recv *MenuToolButtonClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkMenuToolButtonPrivate
+C type
+
+GtkMenuToolButtonPrivate
 */
 type MenuToolButtonPrivate struct {
 	native *C.GtkMenuToolButtonPrivate
@@ -8259,7 +8877,9 @@ func (recv *MenuToolButtonPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkMessageDialogClass
+C type
+
+GtkMessageDialogClass
 */
 type MessageDialogClass struct {
 	native *C.GtkMessageDialogClass
@@ -8288,7 +8908,9 @@ func (recv *MessageDialogClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkMessageDialogPrivate
+C type
+
+GtkMessageDialogPrivate
 */
 type MessageDialogPrivate struct {
 	native *C.GtkMessageDialogPrivate
@@ -8312,7 +8934,9 @@ func (recv *MessageDialogPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkMiscClass
+C type
+
+GtkMiscClass
 */
 type MiscClass struct {
 	native *C.GtkMiscClass
@@ -8341,7 +8965,9 @@ func (recv *MiscClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkMiscPrivate
+C type
+
+GtkMiscPrivate
 */
 type MiscPrivate struct {
 	native *C.GtkMiscPrivate
@@ -8365,7 +8991,9 @@ func (recv *MiscPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkMountOperationClass
+C type
+
+GtkMountOperationClass
 */
 type MountOperationClass struct {
 	native *C.GtkMountOperationClass
@@ -8394,7 +9022,9 @@ func (recv *MountOperationClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkMountOperationPrivate
+C type
+
+GtkMountOperationPrivate
 */
 type MountOperationPrivate struct {
 	native *C.GtkMountOperationPrivate
@@ -8418,7 +9048,9 @@ func (recv *MountOperationPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkNotebookAccessibleClass
+C type
+
+GtkNotebookAccessibleClass
 */
 type NotebookAccessibleClass struct {
 	native *C.GtkNotebookAccessibleClass
@@ -8443,7 +9075,9 @@ func (recv *NotebookAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkNotebookAccessiblePrivate
+C type
+
+GtkNotebookAccessiblePrivate
 */
 type NotebookAccessiblePrivate struct {
 	native *C.GtkNotebookAccessiblePrivate
@@ -8467,7 +9101,9 @@ func (recv *NotebookAccessiblePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkNotebookClass
+C type
+
+GtkNotebookClass
 */
 type NotebookClass struct {
 	native *C.GtkNotebookClass
@@ -8511,7 +9147,9 @@ func (recv *NotebookClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkNotebookPageAccessibleClass
+C type
+
+GtkNotebookPageAccessibleClass
 */
 type NotebookPageAccessibleClass struct {
 	native *C.GtkNotebookPageAccessibleClass
@@ -8536,7 +9174,9 @@ func (recv *NotebookPageAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkNotebookPageAccessiblePrivate
+C type
+
+GtkNotebookPageAccessiblePrivate
 */
 type NotebookPageAccessiblePrivate struct {
 	native *C.GtkNotebookPageAccessiblePrivate
@@ -8560,7 +9200,9 @@ func (recv *NotebookPageAccessiblePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkNotebookPrivate
+C type
+
+GtkNotebookPrivate
 */
 type NotebookPrivate struct {
 	native *C.GtkNotebookPrivate
@@ -8584,7 +9226,9 @@ func (recv *NotebookPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkNumerableIconClass
+C type
+
+GtkNumerableIconClass
 */
 type NumerableIconClass struct {
 	native *C.GtkNumerableIconClass
@@ -8610,7 +9254,9 @@ func (recv *NumerableIconClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkNumerableIconPrivate
+C type
+
+GtkNumerableIconPrivate
 */
 type NumerableIconPrivate struct {
 	native *C.GtkNumerableIconPrivate
@@ -8634,7 +9280,9 @@ func (recv *NumerableIconPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkOffscreenWindowClass
+C type
+
+GtkOffscreenWindowClass
 */
 type OffscreenWindowClass struct {
 	native *C.GtkOffscreenWindowClass
@@ -8663,7 +9311,9 @@ func (recv *OffscreenWindowClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkOrientableIface
+C type
+
+GtkOrientableIface
 */
 type OrientableIface struct {
 	native *C.GtkOrientableIface
@@ -8688,7 +9338,9 @@ func (recv *OrientableIface) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkOverlayClass
+C type
+
+GtkOverlayClass
 */
 type OverlayClass struct {
 	native *C.GtkOverlayClass
@@ -8722,7 +9374,9 @@ func (recv *OverlayClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkOverlayPrivate
+C type
+
+GtkOverlayPrivate
 */
 type OverlayPrivate struct {
 	native *C.GtkOverlayPrivate
@@ -8747,7 +9401,9 @@ func (recv *OverlayPrivate) ToC() unsafe.Pointer {
 // See also gtk_print_settings_set_page_ranges().
 /*
 
-C record/class : GtkPageRange
+C type
+
+GtkPageRange
 */
 type PageRange struct {
 	native *C.GtkPageRange
@@ -8781,7 +9437,9 @@ func (recv *PageRange) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkPanedAccessibleClass
+C type
+
+GtkPanedAccessibleClass
 */
 type PanedAccessibleClass struct {
 	native *C.GtkPanedAccessibleClass
@@ -8806,7 +9464,9 @@ func (recv *PanedAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkPanedAccessiblePrivate
+C type
+
+GtkPanedAccessiblePrivate
 */
 type PanedAccessiblePrivate struct {
 	native *C.GtkPanedAccessiblePrivate
@@ -8830,7 +9490,9 @@ func (recv *PanedAccessiblePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkPanedClass
+C type
+
+GtkPanedClass
 */
 type PanedClass struct {
 	native *C.GtkPanedClass
@@ -8865,7 +9527,9 @@ func (recv *PanedClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkPanedPrivate
+C type
+
+GtkPanedPrivate
 */
 type PanedPrivate struct {
 	native *C.GtkPanedPrivate
@@ -8900,7 +9564,9 @@ func (recv *PanedPrivate) ToC() unsafe.Pointer {
 // Printing support has been added in GTK+ 2.10.
 /*
 
-C record/class : GtkPaperSize
+C type
+
+GtkPaperSize
 */
 type PaperSize struct {
 	native *C.GtkPaperSize
@@ -8925,7 +9591,9 @@ func (recv *PaperSize) ToC() unsafe.Pointer {
 // Returns %TRUE if @size is not a standard paper size.
 /*
 
-C function : gtk_paper_size_is_custom
+C function
+
+gtk_paper_size_is_custom
 */
 func (recv *PaperSize) IsCustom() bool {
 	retC := C.gtk_paper_size_is_custom((*C.GtkPaperSize)(recv.native))
@@ -8937,7 +9605,9 @@ func (recv *PaperSize) IsCustom() bool {
 // Returns %TRUE if @size is an IPP standard paper size.
 /*
 
-C function : gtk_paper_size_is_ipp
+C function
+
+gtk_paper_size_is_ipp
 */
 func (recv *PaperSize) IsIpp() bool {
 	retC := C.gtk_paper_size_is_ipp((*C.GtkPaperSize)(recv.native))
@@ -8948,7 +9618,9 @@ func (recv *PaperSize) IsIpp() bool {
 
 /*
 
-C record/class : GtkPlacesSidebarClass
+C type
+
+GtkPlacesSidebarClass
 */
 type PlacesSidebarClass struct {
 	native *C.GtkPlacesSidebarClass
@@ -8972,7 +9644,9 @@ func (recv *PlacesSidebarClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkPlugClass
+C type
+
+GtkPlugClass
 */
 type PlugClass struct {
 	native *C.GtkPlugClass
@@ -9002,7 +9676,9 @@ func (recv *PlugClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkPlugPrivate
+C type
+
+GtkPlugPrivate
 */
 type PlugPrivate struct {
 	native *C.GtkPlugPrivate
@@ -9026,7 +9702,9 @@ func (recv *PlugPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkPopoverAccessibleClass
+C type
+
+GtkPopoverAccessibleClass
 */
 type PopoverAccessibleClass struct {
 	native *C.GtkPopoverAccessibleClass
@@ -9051,7 +9729,9 @@ func (recv *PopoverAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkPopoverClass
+C type
+
+GtkPopoverClass
 */
 type PopoverClass struct {
 	native *C.GtkPopoverClass
@@ -9078,7 +9758,9 @@ func (recv *PopoverClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkPopoverMenuClass
+C type
+
+GtkPopoverMenuClass
 */
 type PopoverMenuClass struct {
 	native *C.GtkPopoverMenuClass
@@ -9104,7 +9786,9 @@ func (recv *PopoverMenuClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkPopoverPrivate
+C type
+
+GtkPopoverPrivate
 */
 type PopoverPrivate struct {
 	native *C.GtkPopoverPrivate
@@ -9128,7 +9812,9 @@ func (recv *PopoverPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkPrintOperationClass
+C type
+
+GtkPrintOperationClass
 */
 type PrintOperationClass struct {
 	native *C.GtkPrintOperationClass
@@ -9172,7 +9858,9 @@ func (recv *PrintOperationClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkPrintOperationPreviewIface
+C type
+
+GtkPrintOperationPreviewIface
 */
 type PrintOperationPreviewIface struct {
 	native *C.GtkPrintOperationPreviewIface
@@ -9210,7 +9898,9 @@ func (recv *PrintOperationPreviewIface) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkPrintOperationPrivate
+C type
+
+GtkPrintOperationPrivate
 */
 type PrintOperationPrivate struct {
 	native *C.GtkPrintOperationPrivate
@@ -9234,7 +9924,9 @@ func (recv *PrintOperationPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkProgressBarAccessibleClass
+C type
+
+GtkProgressBarAccessibleClass
 */
 type ProgressBarAccessibleClass struct {
 	native *C.GtkProgressBarAccessibleClass
@@ -9259,7 +9951,9 @@ func (recv *ProgressBarAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkProgressBarAccessiblePrivate
+C type
+
+GtkProgressBarAccessiblePrivate
 */
 type ProgressBarAccessiblePrivate struct {
 	native *C.GtkProgressBarAccessiblePrivate
@@ -9283,7 +9977,9 @@ func (recv *ProgressBarAccessiblePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkProgressBarClass
+C type
+
+GtkProgressBarClass
 */
 type ProgressBarClass struct {
 	native *C.GtkProgressBarClass
@@ -9312,7 +10008,9 @@ func (recv *ProgressBarClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkProgressBarPrivate
+C type
+
+GtkProgressBarPrivate
 */
 type ProgressBarPrivate struct {
 	native *C.GtkProgressBarPrivate
@@ -9336,7 +10034,9 @@ func (recv *ProgressBarPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkRadioActionClass
+C type
+
+GtkRadioActionClass
 */
 type RadioActionClass struct {
 	native *C.GtkRadioActionClass
@@ -9368,7 +10068,9 @@ func (recv *RadioActionClass) ToC() unsafe.Pointer {
 // gtk_action_group_add_radio_actions() to construct groups of radio actions.
 /*
 
-C record/class : GtkRadioActionEntry
+C type
+
+GtkRadioActionEntry
 */
 type RadioActionEntry struct {
 	native      *C.GtkRadioActionEntry
@@ -9418,7 +10120,9 @@ func (recv *RadioActionEntry) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkRadioActionPrivate
+C type
+
+GtkRadioActionPrivate
 */
 type RadioActionPrivate struct {
 	native *C.GtkRadioActionPrivate
@@ -9442,7 +10146,9 @@ func (recv *RadioActionPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkRadioButtonAccessibleClass
+C type
+
+GtkRadioButtonAccessibleClass
 */
 type RadioButtonAccessibleClass struct {
 	native *C.GtkRadioButtonAccessibleClass
@@ -9467,7 +10173,9 @@ func (recv *RadioButtonAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkRadioButtonAccessiblePrivate
+C type
+
+GtkRadioButtonAccessiblePrivate
 */
 type RadioButtonAccessiblePrivate struct {
 	native *C.GtkRadioButtonAccessiblePrivate
@@ -9491,7 +10199,9 @@ func (recv *RadioButtonAccessiblePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkRadioButtonClass
+C type
+
+GtkRadioButtonClass
 */
 type RadioButtonClass struct {
 	native *C.GtkRadioButtonClass
@@ -9521,7 +10231,9 @@ func (recv *RadioButtonClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkRadioButtonPrivate
+C type
+
+GtkRadioButtonPrivate
 */
 type RadioButtonPrivate struct {
 	native *C.GtkRadioButtonPrivate
@@ -9545,7 +10257,9 @@ func (recv *RadioButtonPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkRadioMenuItemAccessibleClass
+C type
+
+GtkRadioMenuItemAccessibleClass
 */
 type RadioMenuItemAccessibleClass struct {
 	native *C.GtkRadioMenuItemAccessibleClass
@@ -9570,7 +10284,9 @@ func (recv *RadioMenuItemAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkRadioMenuItemAccessiblePrivate
+C type
+
+GtkRadioMenuItemAccessiblePrivate
 */
 type RadioMenuItemAccessiblePrivate struct {
 	native *C.GtkRadioMenuItemAccessiblePrivate
@@ -9594,7 +10310,9 @@ func (recv *RadioMenuItemAccessiblePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkRadioMenuItemClass
+C type
+
+GtkRadioMenuItemClass
 */
 type RadioMenuItemClass struct {
 	native *C.GtkRadioMenuItemClass
@@ -9624,7 +10342,9 @@ func (recv *RadioMenuItemClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkRadioMenuItemPrivate
+C type
+
+GtkRadioMenuItemPrivate
 */
 type RadioMenuItemPrivate struct {
 	native *C.GtkRadioMenuItemPrivate
@@ -9648,7 +10368,9 @@ func (recv *RadioMenuItemPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkRadioToolButtonClass
+C type
+
+GtkRadioToolButtonClass
 */
 type RadioToolButtonClass struct {
 	native *C.GtkRadioToolButtonClass
@@ -9677,7 +10399,9 @@ func (recv *RadioToolButtonClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkRangeAccessibleClass
+C type
+
+GtkRangeAccessibleClass
 */
 type RangeAccessibleClass struct {
 	native *C.GtkRangeAccessibleClass
@@ -9702,7 +10426,9 @@ func (recv *RangeAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkRangeAccessiblePrivate
+C type
+
+GtkRangeAccessiblePrivate
 */
 type RangeAccessiblePrivate struct {
 	native *C.GtkRangeAccessiblePrivate
@@ -9726,7 +10452,9 @@ func (recv *RangeAccessiblePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkRangeClass
+C type
+
+GtkRangeClass
 */
 type RangeClass struct {
 	native *C.GtkRangeClass
@@ -9770,7 +10498,9 @@ func (recv *RangeClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkRangePrivate
+C type
+
+GtkRangePrivate
 */
 type RangePrivate struct {
 	native *C.GtkRangePrivate
@@ -9794,7 +10524,9 @@ func (recv *RangePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkRcContext
+C type
+
+GtkRcContext
 */
 type RcContext struct {
 	native *C.GtkRcContext
@@ -9819,7 +10551,9 @@ func (recv *RcContext) ToC() unsafe.Pointer {
 // Deprecated
 /*
 
-C record/class : GtkRcProperty
+C type
+
+GtkRcProperty
 */
 type RcProperty struct {
 	native       *C.GtkRcProperty
@@ -9858,7 +10592,9 @@ func (recv *RcProperty) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkRcStyleClass
+C type
+
+GtkRcStyleClass
 */
 type RcStyleClass struct {
 	native *C.GtkRcStyleClass
@@ -9891,7 +10627,9 @@ func (recv *RcStyleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkRecentActionClass
+C type
+
+GtkRecentActionClass
 */
 type RecentActionClass struct {
 	native *C.GtkRecentActionClass
@@ -9920,7 +10658,9 @@ func (recv *RecentActionClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkRecentActionPrivate
+C type
+
+GtkRecentActionPrivate
 */
 type RecentActionPrivate struct {
 	native *C.GtkRecentActionPrivate
@@ -9944,7 +10684,9 @@ func (recv *RecentActionPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkRecentChooserDialogClass
+C type
+
+GtkRecentChooserDialogClass
 */
 type RecentChooserDialogClass struct {
 	native *C.GtkRecentChooserDialogClass
@@ -9973,7 +10715,9 @@ func (recv *RecentChooserDialogClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkRecentChooserDialogPrivate
+C type
+
+GtkRecentChooserDialogPrivate
 */
 type RecentChooserDialogPrivate struct {
 	native *C.GtkRecentChooserDialogPrivate
@@ -9997,7 +10741,9 @@ func (recv *RecentChooserDialogPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkRecentChooserIface
+C type
+
+GtkRecentChooserIface
 */
 type RecentChooserIface struct {
 	native *C.GtkRecentChooserIface
@@ -10036,7 +10782,9 @@ func (recv *RecentChooserIface) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkRecentChooserMenuClass
+C type
+
+GtkRecentChooserMenuClass
 */
 type RecentChooserMenuClass struct {
 	native *C.GtkRecentChooserMenuClass
@@ -10065,7 +10813,9 @@ func (recv *RecentChooserMenuClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkRecentChooserMenuPrivate
+C type
+
+GtkRecentChooserMenuPrivate
 */
 type RecentChooserMenuPrivate struct {
 	native *C.GtkRecentChooserMenuPrivate
@@ -10089,7 +10839,9 @@ func (recv *RecentChooserMenuPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkRecentChooserWidgetClass
+C type
+
+GtkRecentChooserWidgetClass
 */
 type RecentChooserWidgetClass struct {
 	native *C.GtkRecentChooserWidgetClass
@@ -10118,7 +10870,9 @@ func (recv *RecentChooserWidgetClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkRecentChooserWidgetPrivate
+C type
+
+GtkRecentChooserWidgetPrivate
 */
 type RecentChooserWidgetPrivate struct {
 	native *C.GtkRecentChooserWidgetPrivate
@@ -10144,7 +10898,9 @@ func (recv *RecentChooserWidgetPrivate) ToC() unsafe.Pointer {
 // registering a recently used resource.
 /*
 
-C record/class : GtkRecentData
+C type
+
+GtkRecentData
 */
 type RecentData struct {
 	native      *C.GtkRecentData
@@ -10197,7 +10953,9 @@ func (recv *RecentData) ToC() unsafe.Pointer {
 // to pass information about the tested file to gtk_recent_filter_filter().
 /*
 
-C record/class : GtkRecentFilterInfo
+C type
+
+GtkRecentFilterInfo
 */
 type RecentFilterInfo struct {
 	native      *C.GtkRecentFilterInfo
@@ -10245,7 +11003,9 @@ func (recv *RecentFilterInfo) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkRecentManagerPrivate
+C type
+
+GtkRecentManagerPrivate
 */
 type RecentManagerPrivate struct {
 	native *C.GtkRecentManagerPrivate
@@ -10269,7 +11029,9 @@ func (recv *RecentManagerPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkRendererCellAccessibleClass
+C type
+
+GtkRendererCellAccessibleClass
 */
 type RendererCellAccessibleClass struct {
 	native *C.GtkRendererCellAccessibleClass
@@ -10294,7 +11056,9 @@ func (recv *RendererCellAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkRendererCellAccessiblePrivate
+C type
+
+GtkRendererCellAccessiblePrivate
 */
 type RendererCellAccessiblePrivate struct {
 	native *C.GtkRendererCellAccessiblePrivate
@@ -10321,7 +11085,9 @@ func (recv *RendererCellAccessiblePrivate) ToC() unsafe.Pointer {
 // size for children calling. See gtk_distribute_natural_allocation().
 /*
 
-C record/class : GtkRequestedSize
+C type
+
+GtkRequestedSize
 */
 type RequestedSize struct {
 	native      *C.GtkRequestedSize
@@ -10362,7 +11128,9 @@ func (recv *RequestedSize) ToC() unsafe.Pointer {
 // more information.
 /*
 
-C record/class : GtkRequisition
+C type
+
+GtkRequisition
 */
 type Requisition struct {
 	native *C.GtkRequisition
@@ -10397,7 +11165,9 @@ func (recv *Requisition) ToC() unsafe.Pointer {
 // Copies a #GtkRequisition.
 /*
 
-C function : gtk_requisition_copy
+C function
+
+gtk_requisition_copy
 */
 func (recv *Requisition) Copy() *Requisition {
 	retC := C.gtk_requisition_copy((*C.GtkRequisition)(recv.native))
@@ -10409,7 +11179,9 @@ func (recv *Requisition) Copy() *Requisition {
 // Frees a #GtkRequisition.
 /*
 
-C function : gtk_requisition_free
+C function
+
+gtk_requisition_free
 */
 func (recv *Requisition) Free() {
 	C.gtk_requisition_free((*C.GtkRequisition)(recv.native))
@@ -10419,7 +11191,9 @@ func (recv *Requisition) Free() {
 
 /*
 
-C record/class : GtkRevealerClass
+C type
+
+GtkRevealerClass
 */
 type RevealerClass struct {
 	native *C.GtkRevealerClass
@@ -10444,7 +11218,9 @@ func (recv *RevealerClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkScaleAccessibleClass
+C type
+
+GtkScaleAccessibleClass
 */
 type ScaleAccessibleClass struct {
 	native *C.GtkScaleAccessibleClass
@@ -10469,7 +11245,9 @@ func (recv *ScaleAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkScaleAccessiblePrivate
+C type
+
+GtkScaleAccessiblePrivate
 */
 type ScaleAccessiblePrivate struct {
 	native *C.GtkScaleAccessiblePrivate
@@ -10493,7 +11271,9 @@ func (recv *ScaleAccessiblePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkScaleButtonAccessibleClass
+C type
+
+GtkScaleButtonAccessibleClass
 */
 type ScaleButtonAccessibleClass struct {
 	native *C.GtkScaleButtonAccessibleClass
@@ -10518,7 +11298,9 @@ func (recv *ScaleButtonAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkScaleButtonAccessiblePrivate
+C type
+
+GtkScaleButtonAccessiblePrivate
 */
 type ScaleButtonAccessiblePrivate struct {
 	native *C.GtkScaleButtonAccessiblePrivate
@@ -10542,7 +11324,9 @@ func (recv *ScaleButtonAccessiblePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkScaleButtonClass
+C type
+
+GtkScaleButtonClass
 */
 type ScaleButtonClass struct {
 	native *C.GtkScaleButtonClass
@@ -10572,7 +11356,9 @@ func (recv *ScaleButtonClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkScaleButtonPrivate
+C type
+
+GtkScaleButtonPrivate
 */
 type ScaleButtonPrivate struct {
 	native *C.GtkScaleButtonPrivate
@@ -10596,7 +11382,9 @@ func (recv *ScaleButtonPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkScaleClass
+C type
+
+GtkScaleClass
 */
 type ScaleClass struct {
 	native *C.GtkScaleClass
@@ -10628,7 +11416,9 @@ func (recv *ScaleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkScalePrivate
+C type
+
+GtkScalePrivate
 */
 type ScalePrivate struct {
 	native *C.GtkScalePrivate
@@ -10652,7 +11442,9 @@ func (recv *ScalePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkScrollableInterface
+C type
+
+GtkScrollableInterface
 */
 type ScrollableInterface struct {
 	native *C.GtkScrollableInterface
@@ -10678,7 +11470,9 @@ func (recv *ScrollableInterface) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkScrollbarClass
+C type
+
+GtkScrollbarClass
 */
 type ScrollbarClass struct {
 	native *C.GtkScrollbarClass
@@ -10707,7 +11501,9 @@ func (recv *ScrollbarClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkScrolledWindowAccessibleClass
+C type
+
+GtkScrolledWindowAccessibleClass
 */
 type ScrolledWindowAccessibleClass struct {
 	native *C.GtkScrolledWindowAccessibleClass
@@ -10732,7 +11528,9 @@ func (recv *ScrolledWindowAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkScrolledWindowAccessiblePrivate
+C type
+
+GtkScrolledWindowAccessiblePrivate
 */
 type ScrolledWindowAccessiblePrivate struct {
 	native *C.GtkScrolledWindowAccessiblePrivate
@@ -10756,7 +11554,9 @@ func (recv *ScrolledWindowAccessiblePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkScrolledWindowClass
+C type
+
+GtkScrolledWindowClass
 */
 type ScrolledWindowClass struct {
 	native *C.GtkScrolledWindowClass
@@ -10793,7 +11593,9 @@ func (recv *ScrolledWindowClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkScrolledWindowPrivate
+C type
+
+GtkScrolledWindowPrivate
 */
 type ScrolledWindowPrivate struct {
 	native *C.GtkScrolledWindowPrivate
@@ -10817,7 +11619,9 @@ func (recv *ScrolledWindowPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkSearchBarClass
+C type
+
+GtkSearchBarClass
 */
 type SearchBarClass struct {
 	native *C.GtkSearchBarClass
@@ -10846,7 +11650,9 @@ func (recv *SearchBarClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkSearchEntryClass
+C type
+
+GtkSearchEntryClass
 */
 type SearchEntryClass struct {
 	native *C.GtkSearchEntryClass
@@ -10875,7 +11681,9 @@ func (recv *SearchEntryClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkSelectionData
+C type
+
+GtkSelectionData
 */
 type SelectionData struct {
 	native *C.GtkSelectionData
@@ -10900,7 +11708,9 @@ func (recv *SelectionData) ToC() unsafe.Pointer {
 // Makes a copy of a #GtkSelectionData-struct and its data.
 /*
 
-C function : gtk_selection_data_copy
+C function
+
+gtk_selection_data_copy
 */
 func (recv *SelectionData) Copy() *SelectionData {
 	retC := C.gtk_selection_data_copy((*C.GtkSelectionData)(recv.native))
@@ -10913,7 +11723,9 @@ func (recv *SelectionData) Copy() *SelectionData {
 // gtk_selection_data_copy().
 /*
 
-C function : gtk_selection_data_free
+C function
+
+gtk_selection_data_free
 */
 func (recv *SelectionData) Free() {
 	C.gtk_selection_data_free((*C.GtkSelectionData)(recv.native))
@@ -10932,7 +11744,9 @@ func (recv *SelectionData) Free() {
 // @selection_data->target.
 /*
 
-C function : gtk_selection_data_set_text
+C function
+
+gtk_selection_data_set_text
 */
 func (recv *SelectionData) SetText(str string, len int32) bool {
 	c_str := C.CString(str)
@@ -10951,7 +11765,9 @@ func (recv *SelectionData) SetText(str string, len int32) bool {
 // provide text.
 /*
 
-C function : gtk_selection_data_targets_include_text
+C function
+
+gtk_selection_data_targets_include_text
 */
 func (recv *SelectionData) TargetsIncludeText() bool {
 	retC := C.gtk_selection_data_targets_include_text((*C.GtkSelectionData)(recv.native))
@@ -10962,7 +11778,9 @@ func (recv *SelectionData) TargetsIncludeText() bool {
 
 /*
 
-C record/class : GtkSeparatorClass
+C type
+
+GtkSeparatorClass
 */
 type SeparatorClass struct {
 	native *C.GtkSeparatorClass
@@ -10991,7 +11809,9 @@ func (recv *SeparatorClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkSeparatorMenuItemClass
+C type
+
+GtkSeparatorMenuItemClass
 */
 type SeparatorMenuItemClass struct {
 	native *C.GtkSeparatorMenuItemClass
@@ -11020,7 +11840,9 @@ func (recv *SeparatorMenuItemClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkSeparatorPrivate
+C type
+
+GtkSeparatorPrivate
 */
 type SeparatorPrivate struct {
 	native *C.GtkSeparatorPrivate
@@ -11044,7 +11866,9 @@ func (recv *SeparatorPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkSeparatorToolItemClass
+C type
+
+GtkSeparatorToolItemClass
 */
 type SeparatorToolItemClass struct {
 	native *C.GtkSeparatorToolItemClass
@@ -11073,7 +11897,9 @@ func (recv *SeparatorToolItemClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkSeparatorToolItemPrivate
+C type
+
+GtkSeparatorToolItemPrivate
 */
 type SeparatorToolItemPrivate struct {
 	native *C.GtkSeparatorToolItemPrivate
@@ -11097,7 +11923,9 @@ func (recv *SeparatorToolItemPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkSettingsClass
+C type
+
+GtkSettingsClass
 */
 type SettingsClass struct {
 	native *C.GtkSettingsClass
@@ -11126,7 +11954,9 @@ func (recv *SettingsClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkSettingsPrivate
+C type
+
+GtkSettingsPrivate
 */
 type SettingsPrivate struct {
 	native *C.GtkSettingsPrivate
@@ -11150,7 +11980,9 @@ func (recv *SettingsPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkSettingsValue
+C type
+
+GtkSettingsValue
 */
 type SettingsValue struct {
 	native *C.GtkSettingsValue
@@ -11181,7 +12013,9 @@ func (recv *SettingsValue) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkSizeGroupClass
+C type
+
+GtkSizeGroupClass
 */
 type SizeGroupClass struct {
 	native *C.GtkSizeGroupClass
@@ -11210,7 +12044,9 @@ func (recv *SizeGroupClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkSizeGroupPrivate
+C type
+
+GtkSizeGroupPrivate
 */
 type SizeGroupPrivate struct {
 	native *C.GtkSizeGroupPrivate
@@ -11234,7 +12070,9 @@ func (recv *SizeGroupPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkSocketClass
+C type
+
+GtkSocketClass
 */
 type SocketClass struct {
 	native *C.GtkSocketClass
@@ -11265,7 +12103,9 @@ func (recv *SocketClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkSocketPrivate
+C type
+
+GtkSocketPrivate
 */
 type SocketPrivate struct {
 	native *C.GtkSocketPrivate
@@ -11289,7 +12129,9 @@ func (recv *SocketPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkSpinButtonAccessibleClass
+C type
+
+GtkSpinButtonAccessibleClass
 */
 type SpinButtonAccessibleClass struct {
 	native *C.GtkSpinButtonAccessibleClass
@@ -11314,7 +12156,9 @@ func (recv *SpinButtonAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkSpinButtonAccessiblePrivate
+C type
+
+GtkSpinButtonAccessiblePrivate
 */
 type SpinButtonAccessiblePrivate struct {
 	native *C.GtkSpinButtonAccessiblePrivate
@@ -11338,7 +12182,9 @@ func (recv *SpinButtonAccessiblePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkSpinButtonClass
+C type
+
+GtkSpinButtonClass
 */
 type SpinButtonClass struct {
 	native *C.GtkSpinButtonClass
@@ -11372,7 +12218,9 @@ func (recv *SpinButtonClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkSpinButtonPrivate
+C type
+
+GtkSpinButtonPrivate
 */
 type SpinButtonPrivate struct {
 	native *C.GtkSpinButtonPrivate
@@ -11396,7 +12244,9 @@ func (recv *SpinButtonPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkSpinnerAccessibleClass
+C type
+
+GtkSpinnerAccessibleClass
 */
 type SpinnerAccessibleClass struct {
 	native *C.GtkSpinnerAccessibleClass
@@ -11421,7 +12271,9 @@ func (recv *SpinnerAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkSpinnerAccessiblePrivate
+C type
+
+GtkSpinnerAccessiblePrivate
 */
 type SpinnerAccessiblePrivate struct {
 	native *C.GtkSpinnerAccessiblePrivate
@@ -11445,7 +12297,9 @@ func (recv *SpinnerAccessiblePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkSpinnerClass
+C type
+
+GtkSpinnerClass
 */
 type SpinnerClass struct {
 	native *C.GtkSpinnerClass
@@ -11474,7 +12328,9 @@ func (recv *SpinnerClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkSpinnerPrivate
+C type
+
+GtkSpinnerPrivate
 */
 type SpinnerPrivate struct {
 	native *C.GtkSpinnerPrivate
@@ -11500,7 +12356,9 @@ func (recv *SpinnerPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkStackClass
+C type
+
+GtkStackClass
 */
 type StackClass struct {
 	native *C.GtkStackClass
@@ -11525,7 +12383,9 @@ func (recv *StackClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkStackSidebarClass
+C type
+
+GtkStackSidebarClass
 */
 type StackSidebarClass struct {
 	native *C.GtkStackSidebarClass
@@ -11554,7 +12414,9 @@ func (recv *StackSidebarClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkStackSidebarPrivate
+C type
+
+GtkStackSidebarPrivate
 */
 type StackSidebarPrivate struct {
 	native *C.GtkStackSidebarPrivate
@@ -11578,7 +12440,9 @@ func (recv *StackSidebarPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkStackSwitcherClass
+C type
+
+GtkStackSwitcherClass
 */
 type StackSwitcherClass struct {
 	native *C.GtkStackSwitcherClass
@@ -11607,7 +12471,9 @@ func (recv *StackSwitcherClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkStatusIconClass
+C type
+
+GtkStatusIconClass
 */
 type StatusIconClass struct {
 	native *C.GtkStatusIconClass
@@ -11643,7 +12509,9 @@ func (recv *StatusIconClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkStatusIconPrivate
+C type
+
+GtkStatusIconPrivate
 */
 type StatusIconPrivate struct {
 	native *C.GtkStatusIconPrivate
@@ -11667,7 +12535,9 @@ func (recv *StatusIconPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkStatusbarAccessibleClass
+C type
+
+GtkStatusbarAccessibleClass
 */
 type StatusbarAccessibleClass struct {
 	native *C.GtkStatusbarAccessibleClass
@@ -11692,7 +12562,9 @@ func (recv *StatusbarAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkStatusbarAccessiblePrivate
+C type
+
+GtkStatusbarAccessiblePrivate
 */
 type StatusbarAccessiblePrivate struct {
 	native *C.GtkStatusbarAccessiblePrivate
@@ -11716,7 +12588,9 @@ func (recv *StatusbarAccessiblePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkStatusbarClass
+C type
+
+GtkStatusbarClass
 */
 type StatusbarClass struct {
 	native *C.GtkStatusbarClass
@@ -11753,7 +12627,9 @@ func (recv *StatusbarClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkStatusbarPrivate
+C type
+
+GtkStatusbarPrivate
 */
 type StatusbarPrivate struct {
 	native *C.GtkStatusbarPrivate
@@ -11777,7 +12653,9 @@ func (recv *StatusbarPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkStockItem
+C type
+
+GtkStockItem
 */
 type StockItem struct {
 	native            *C.GtkStockItem
@@ -11824,7 +12702,9 @@ func (recv *StockItem) ToC() unsafe.Pointer {
 // Copies a stock item, mostly useful for language bindings and not in applications.
 /*
 
-C function : gtk_stock_item_copy
+C function
+
+gtk_stock_item_copy
 */
 func (recv *StockItem) Copy() *StockItem {
 	retC := C.gtk_stock_item_copy((*C.GtkStockItem)(recv.native))
@@ -11838,7 +12718,9 @@ func (recv *StockItem) Copy() *StockItem {
 // if they are not %NULL.
 /*
 
-C function : gtk_stock_item_free
+C function
+
+gtk_stock_item_free
 */
 func (recv *StockItem) Free() {
 	C.gtk_stock_item_free((*C.GtkStockItem)(recv.native))
@@ -11848,7 +12730,9 @@ func (recv *StockItem) Free() {
 
 /*
 
-C record/class : GtkStyleClass
+C type
+
+GtkStyleClass
 */
 type StyleClass struct {
 	native *C.GtkStyleClass
@@ -11911,7 +12795,9 @@ func (recv *StyleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkStyleContextClass
+C type
+
+GtkStyleContextClass
 */
 type StyleContextClass struct {
 	native *C.GtkStyleContextClass
@@ -11941,7 +12827,9 @@ func (recv *StyleContextClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkStyleContextPrivate
+C type
+
+GtkStyleContextPrivate
 */
 type StyleContextPrivate struct {
 	native *C.GtkStyleContextPrivate
@@ -11965,7 +12853,9 @@ func (recv *StyleContextPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkStylePropertiesClass
+C type
+
+GtkStylePropertiesClass
 */
 type StylePropertiesClass struct {
 	native *C.GtkStylePropertiesClass
@@ -11994,7 +12884,9 @@ func (recv *StylePropertiesClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkStylePropertiesPrivate
+C type
+
+GtkStylePropertiesPrivate
 */
 type StylePropertiesPrivate struct {
 	native *C.GtkStylePropertiesPrivate
@@ -12018,7 +12910,9 @@ func (recv *StylePropertiesPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkStyleProviderIface
+C type
+
+GtkStyleProviderIface
 */
 type StyleProviderIface struct {
 	native *C.GtkStyleProviderIface
@@ -12046,7 +12940,9 @@ func (recv *StyleProviderIface) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkSwitchAccessibleClass
+C type
+
+GtkSwitchAccessibleClass
 */
 type SwitchAccessibleClass struct {
 	native *C.GtkSwitchAccessibleClass
@@ -12071,7 +12967,9 @@ func (recv *SwitchAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkSwitchAccessiblePrivate
+C type
+
+GtkSwitchAccessiblePrivate
 */
 type SwitchAccessiblePrivate struct {
 	native *C.GtkSwitchAccessiblePrivate
@@ -12095,7 +12993,9 @@ func (recv *SwitchAccessiblePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkSwitchClass
+C type
+
+GtkSwitchClass
 */
 type SwitchClass struct {
 	native *C.GtkSwitchClass
@@ -12127,7 +13027,9 @@ func (recv *SwitchClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkSwitchPrivate
+C type
+
+GtkSwitchPrivate
 */
 type SwitchPrivate struct {
 	native *C.GtkSwitchPrivate
@@ -12166,7 +13068,9 @@ func (recv *SwitchPrivate) ToC() unsafe.Pointer {
 // implementation detail of GTK+.
 /*
 
-C record/class : GtkSymbolicColor
+C type
+
+GtkSymbolicColor
 */
 type SymbolicColor struct {
 	native *C.GtkSymbolicColor
@@ -12195,7 +13099,9 @@ func (recv *SymbolicColor) ToC() unsafe.Pointer {
 // create the same symbolic color from it.
 /*
 
-C function : gtk_symbolic_color_to_string
+C function
+
+gtk_symbolic_color_to_string
 */
 func (recv *SymbolicColor) ToString() string {
 	retC := C.gtk_symbolic_color_to_string((*C.GtkSymbolicColor)(recv.native))
@@ -12207,7 +13113,9 @@ func (recv *SymbolicColor) ToString() string {
 
 /*
 
-C record/class : GtkTableChild
+C type
+
+GtkTableChild
 */
 type TableChild struct {
 	native *C.GtkTableChild
@@ -12264,7 +13172,9 @@ func (recv *TableChild) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkTableClass
+C type
+
+GtkTableClass
 */
 type TableClass struct {
 	native *C.GtkTableClass
@@ -12293,7 +13203,9 @@ func (recv *TableClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkTablePrivate
+C type
+
+GtkTablePrivate
 */
 type TablePrivate struct {
 	native *C.GtkTablePrivate
@@ -12317,7 +13229,9 @@ func (recv *TablePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkTableRowCol
+C type
+
+GtkTableRowCol
 */
 type TableRowCol struct {
 	native      *C.GtkTableRowCol
@@ -12363,7 +13277,9 @@ func (recv *TableRowCol) ToC() unsafe.Pointer {
 // or for supplied or received during drag-and-drop.
 /*
 
-C record/class : GtkTargetEntry
+C type
+
+GtkTargetEntry
 */
 type TargetEntry struct {
 	native *C.GtkTargetEntry
@@ -12402,7 +13318,9 @@ func (recv *TargetEntry) ToC() unsafe.Pointer {
 // Makes a new #GtkTargetEntry.
 /*
 
-C function : gtk_target_entry_new
+C function
+
+gtk_target_entry_new
 */
 func TargetEntryNew(target string, flags uint32, info uint32) *TargetEntry {
 	c_target := C.CString(target)
@@ -12421,7 +13339,9 @@ func TargetEntryNew(target string, flags uint32, info uint32) *TargetEntry {
 // Makes a copy of a #GtkTargetEntry and its data.
 /*
 
-C function : gtk_target_entry_copy
+C function
+
+gtk_target_entry_copy
 */
 func (recv *TargetEntry) Copy() *TargetEntry {
 	retC := C.gtk_target_entry_copy((*C.GtkTargetEntry)(recv.native))
@@ -12434,7 +13354,9 @@ func (recv *TargetEntry) Copy() *TargetEntry {
 // gtk_target_entry_new() or gtk_target_entry_copy().
 /*
 
-C function : gtk_target_entry_free
+C function
+
+gtk_target_entry_free
 */
 func (recv *TargetEntry) Free() {
 	C.gtk_target_entry_free((*C.GtkTargetEntry)(recv.native))
@@ -12447,7 +13369,9 @@ func (recv *TargetEntry) Free() {
 // opaque.
 /*
 
-C record/class : GtkTargetList
+C type
+
+GtkTargetList
 */
 type TargetList struct {
 	native *C.GtkTargetList
@@ -12480,7 +13404,9 @@ func (recv *TargetList) ToC() unsafe.Pointer {
 // Increases the reference count of a #GtkTargetList by one.
 /*
 
-C function : gtk_target_list_ref
+C function
+
+gtk_target_list_ref
 */
 func (recv *TargetList) Ref() *TargetList {
 	retC := C.gtk_target_list_ref((*C.GtkTargetList)(recv.native))
@@ -12495,7 +13421,9 @@ func (recv *TargetList) Ref() *TargetList {
 // If the resulting reference count is zero, frees the list.
 /*
 
-C function : gtk_target_list_unref
+C function
+
+gtk_target_list_unref
 */
 func (recv *TargetList) Unref() {
 	C.gtk_target_list_unref((*C.GtkTargetList)(recv.native))
@@ -12508,7 +13436,9 @@ func (recv *TargetList) Unref() {
 // an efficient form.
 /*
 
-C record/class : GtkTargetPair
+C type
+
+GtkTargetPair
 */
 type TargetPair struct {
 	native *C.GtkTargetPair
@@ -12543,7 +13473,9 @@ func (recv *TargetPair) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkTearoffMenuItemClass
+C type
+
+GtkTearoffMenuItemClass
 */
 type TearoffMenuItemClass struct {
 	native *C.GtkTearoffMenuItemClass
@@ -12572,7 +13504,9 @@ func (recv *TearoffMenuItemClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkTearoffMenuItemPrivate
+C type
+
+GtkTearoffMenuItemPrivate
 */
 type TearoffMenuItemPrivate struct {
 	native *C.GtkTearoffMenuItemPrivate
@@ -12596,7 +13530,9 @@ func (recv *TearoffMenuItemPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkTextAppearance
+C type
+
+GtkTextAppearance
 */
 type TextAppearance struct {
 	native *C.GtkTextAppearance
@@ -12637,7 +13573,9 @@ func (recv *TextAppearance) ToC() unsafe.Pointer {
 // be read, never modified directly.
 /*
 
-C record/class : GtkTextAttributes
+C type
+
+GtkTextAttributes
 */
 type TextAttributes struct {
 	native *C.GtkTextAttributes
@@ -12720,7 +13658,9 @@ func (recv *TextAttributes) ToC() unsafe.Pointer {
 // a set of properties on some text.
 /*
 
-C function : gtk_text_attributes_new
+C function
+
+gtk_text_attributes_new
 */
 func TextAttributesNew() *TextAttributes {
 	retC := C.gtk_text_attributes_new()
@@ -12732,7 +13672,9 @@ func TextAttributesNew() *TextAttributes {
 // Copies @src and returns a new #GtkTextAttributes.
 /*
 
-C function : gtk_text_attributes_copy
+C function
+
+gtk_text_attributes_copy
 */
 func (recv *TextAttributes) Copy() *TextAttributes {
 	retC := C.gtk_text_attributes_copy((*C.GtkTextAttributes)(recv.native))
@@ -12745,7 +13687,9 @@ func (recv *TextAttributes) Copy() *TextAttributes {
 // the same values as @src. Frees existing values in @dest.
 /*
 
-C function : gtk_text_attributes_copy_values
+C function
+
+gtk_text_attributes_copy_values
 */
 func (recv *TextAttributes) CopyValues(dest *TextAttributes) {
 	c_dest := (*C.GtkTextAttributes)(C.NULL)
@@ -12761,7 +13705,9 @@ func (recv *TextAttributes) CopyValues(dest *TextAttributes) {
 // Increments the reference count on @values.
 /*
 
-C function : gtk_text_attributes_ref
+C function
+
+gtk_text_attributes_ref
 */
 func (recv *TextAttributes) Ref() *TextAttributes {
 	retC := C.gtk_text_attributes_ref((*C.GtkTextAttributes)(recv.native))
@@ -12774,7 +13720,9 @@ func (recv *TextAttributes) Ref() *TextAttributes {
 // if the reference count reaches 0.
 /*
 
-C function : gtk_text_attributes_unref
+C function
+
+gtk_text_attributes_unref
 */
 func (recv *TextAttributes) Unref() {
 	C.gtk_text_attributes_unref((*C.GtkTextAttributes)(recv.native))
@@ -12784,7 +13732,9 @@ func (recv *TextAttributes) Unref() {
 
 /*
 
-C record/class : GtkTextBTree
+C type
+
+GtkTextBTree
 */
 type TextBTree struct {
 	native *C.GtkTextBTree
@@ -12808,7 +13758,9 @@ func (recv *TextBTree) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkTextBufferClass
+C type
+
+GtkTextBufferClass
 */
 type TextBufferClass struct {
 	native *C.GtkTextBufferClass
@@ -12850,7 +13802,9 @@ func (recv *TextBufferClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkTextBufferPrivate
+C type
+
+GtkTextBufferPrivate
 */
 type TextBufferPrivate struct {
 	native *C.GtkTextBufferPrivate
@@ -12874,7 +13828,9 @@ func (recv *TextBufferPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkTextCellAccessibleClass
+C type
+
+GtkTextCellAccessibleClass
 */
 type TextCellAccessibleClass struct {
 	native *C.GtkTextCellAccessibleClass
@@ -12899,7 +13855,9 @@ func (recv *TextCellAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkTextCellAccessiblePrivate
+C type
+
+GtkTextCellAccessiblePrivate
 */
 type TextCellAccessiblePrivate struct {
 	native *C.GtkTextCellAccessiblePrivate
@@ -12923,7 +13881,9 @@ func (recv *TextCellAccessiblePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkTextChildAnchorClass
+C type
+
+GtkTextChildAnchorClass
 */
 type TextChildAnchorClass struct {
 	native *C.GtkTextChildAnchorClass
@@ -12956,7 +13916,9 @@ func (recv *TextChildAnchorClass) ToC() unsafe.Pointer {
 // types related to the text widget and how they work together.
 /*
 
-C record/class : GtkTextIter
+C type
+
+GtkTextIter
 */
 type TextIter struct {
 	native *C.GtkTextIter
@@ -12998,7 +13960,9 @@ func (recv *TextIter) ToC() unsafe.Pointer {
 // writing loops.
 /*
 
-C function : gtk_text_iter_backward_char
+C function
+
+gtk_text_iter_backward_char
 */
 func (recv *TextIter) BackwardChar() bool {
 	retC := C.gtk_text_iter_backward_char((*C.GtkTextIter)(recv.native))
@@ -13015,7 +13979,9 @@ func (recv *TextIter) BackwardChar() bool {
 // the function does nothing and returns %FALSE.
 /*
 
-C function : gtk_text_iter_backward_chars
+C function
+
+gtk_text_iter_backward_chars
 */
 func (recv *TextIter) BackwardChars(count int32) bool {
 	c_count := (C.gint)(count)
@@ -13029,7 +13995,9 @@ func (recv *TextIter) BackwardChars(count int32) bool {
 // Like gtk_text_iter_forward_cursor_position(), but moves backward.
 /*
 
-C function : gtk_text_iter_backward_cursor_position
+C function
+
+gtk_text_iter_backward_cursor_position
 */
 func (recv *TextIter) BackwardCursorPosition() bool {
 	retC := C.gtk_text_iter_backward_cursor_position((*C.GtkTextIter)(recv.native))
@@ -13042,7 +14010,9 @@ func (recv *TextIter) BackwardCursorPosition() bool {
 // gtk_text_iter_forward_cursor_position() for details.
 /*
 
-C function : gtk_text_iter_backward_cursor_positions
+C function
+
+gtk_text_iter_backward_cursor_positions
 */
 func (recv *TextIter) BackwardCursorPositions(count int32) bool {
 	c_count := (C.gint)(count)
@@ -13064,7 +14034,9 @@ func (recv *TextIter) BackwardCursorPositions(count int32) bool {
 // every iteration, if your first iteration is on line 0.)
 /*
 
-C function : gtk_text_iter_backward_line
+C function
+
+gtk_text_iter_backward_line
 */
 func (recv *TextIter) BackwardLine() bool {
 	retC := C.gtk_text_iter_backward_line((*C.GtkTextIter)(recv.native))
@@ -13082,7 +14054,9 @@ func (recv *TextIter) BackwardLine() bool {
 // moves forward by 0 - @count lines.
 /*
 
-C function : gtk_text_iter_backward_lines
+C function
+
+gtk_text_iter_backward_lines
 */
 func (recv *TextIter) BackwardLines(count int32) bool {
 	c_count := (C.gint)(count)
@@ -13099,7 +14073,9 @@ func (recv *TextIter) BackwardLines(count int32) bool {
 // there is a possible @match_start before or at @iter.
 /*
 
-C function : gtk_text_iter_backward_search
+C function
+
+gtk_text_iter_backward_search
 */
 func (recv *TextIter) BackwardSearch(str string, flags TextSearchFlags, limit *TextIter) (bool, *TextIter, *TextIter) {
 	c_str := C.CString(str)
@@ -13133,7 +14109,9 @@ func (recv *TextIter) BackwardSearch(str string, flags TextSearchFlags, limit *T
 // boundary algorithms).
 /*
 
-C function : gtk_text_iter_backward_sentence_start
+C function
+
+gtk_text_iter_backward_sentence_start
 */
 func (recv *TextIter) BackwardSentenceStart() bool {
 	retC := C.gtk_text_iter_backward_sentence_start((*C.GtkTextIter)(recv.native))
@@ -13147,7 +14125,9 @@ func (recv *TextIter) BackwardSentenceStart() bool {
 // instead of backward.
 /*
 
-C function : gtk_text_iter_backward_sentence_starts
+C function
+
+gtk_text_iter_backward_sentence_starts
 */
 func (recv *TextIter) BackwardSentenceStarts(count int32) bool {
 	c_count := (C.gint)(count)
@@ -13167,7 +14147,9 @@ func (recv *TextIter) BackwardSentenceStarts(count int32) bool {
 // if no toggle is found.
 /*
 
-C function : gtk_text_iter_backward_to_tag_toggle
+C function
+
+gtk_text_iter_backward_to_tag_toggle
 */
 func (recv *TextIter) BackwardToTagToggle(tag *TextTag) bool {
 	c_tag := (*C.GtkTextTag)(C.NULL)
@@ -13188,7 +14170,9 @@ func (recv *TextIter) BackwardToTagToggle(tag *TextTag) bool {
 // algorithms).
 /*
 
-C function : gtk_text_iter_backward_word_start
+C function
+
+gtk_text_iter_backward_word_start
 */
 func (recv *TextIter) BackwardWordStart() bool {
 	retC := C.gtk_text_iter_backward_word_start((*C.GtkTextIter)(recv.native))
@@ -13200,7 +14184,9 @@ func (recv *TextIter) BackwardWordStart() bool {
 // Calls gtk_text_iter_backward_word_start() up to @count times.
 /*
 
-C function : gtk_text_iter_backward_word_starts
+C function
+
+gtk_text_iter_backward_word_starts
 */
 func (recv *TextIter) BackwardWordStarts(count int32) bool {
 	c_count := (C.gint)(count)
@@ -13222,7 +14208,9 @@ func (recv *TextIter) BackwardWordStarts(count int32) bool {
 // parameters.
 /*
 
-C function : gtk_text_iter_begins_tag
+C function
+
+gtk_text_iter_begins_tag
 */
 func (recv *TextIter) BeginsTag(tag *TextTag) bool {
 	c_tag := (*C.GtkTextTag)(C.NULL)
@@ -13244,7 +14232,9 @@ func (recv *TextIter) BeginsTag(tag *TextTag) bool {
 // whether insertions are allowed at a given position.
 /*
 
-C function : gtk_text_iter_can_insert
+C function
+
+gtk_text_iter_can_insert
 */
 func (recv *TextIter) CanInsert(defaultEditability bool) bool {
 	c_default_editability :=
@@ -13262,7 +14252,9 @@ func (recv *TextIter) CanInsert(defaultEditability bool) bool {
 // is less than the second character in the buffer.
 /*
 
-C function : gtk_text_iter_compare
+C function
+
+gtk_text_iter_compare
 */
 func (recv *TextIter) Compare(rhs *TextIter) int32 {
 	c_rhs := (*C.GtkTextIter)(C.NULL)
@@ -13282,7 +14274,9 @@ func (recv *TextIter) Compare(rhs *TextIter) int32 {
 // function is used by language bindings.
 /*
 
-C function : gtk_text_iter_copy
+C function
+
+gtk_text_iter_copy
 */
 func (recv *TextIter) Copy() *TextIter {
 	retC := C.gtk_text_iter_copy((*C.GtkTextIter)(recv.native))
@@ -13305,7 +14299,9 @@ func (recv *TextIter) Copy() *TextIter {
 // case.
 /*
 
-C function : gtk_text_iter_editable
+C function
+
+gtk_text_iter_editable
 */
 func (recv *TextIter) Editable(defaultSetting bool) bool {
 	c_default_setting :=
@@ -13327,7 +14323,9 @@ func (recv *TextIter) Editable(defaultSetting bool) bool {
 // paragraph delimiter chars there.
 /*
 
-C function : gtk_text_iter_ends_line
+C function
+
+gtk_text_iter_ends_line
 */
 func (recv *TextIter) EndsLine() bool {
 	retC := C.gtk_text_iter_ends_line((*C.GtkTextIter)(recv.native))
@@ -13342,7 +14340,9 @@ func (recv *TextIter) EndsLine() bool {
 // algorithms).
 /*
 
-C function : gtk_text_iter_ends_sentence
+C function
+
+gtk_text_iter_ends_sentence
 */
 func (recv *TextIter) EndsSentence() bool {
 	retC := C.gtk_text_iter_ends_sentence((*C.GtkTextIter)(recv.native))
@@ -13361,7 +14361,9 @@ func (recv *TextIter) EndsSentence() bool {
 // gtk_text_iter_has_tag() will return %FALSE for the same parameters.
 /*
 
-C function : gtk_text_iter_ends_tag
+C function
+
+gtk_text_iter_ends_tag
 */
 func (recv *TextIter) EndsTag(tag *TextTag) bool {
 	c_tag := (*C.GtkTextTag)(C.NULL)
@@ -13381,7 +14383,9 @@ func (recv *TextIter) EndsTag(tag *TextTag) bool {
 // algorithms).
 /*
 
-C function : gtk_text_iter_ends_word
+C function
+
+gtk_text_iter_ends_word
 */
 func (recv *TextIter) EndsWord() bool {
 	retC := C.gtk_text_iter_ends_word((*C.GtkTextIter)(recv.native))
@@ -13397,7 +14401,9 @@ func (recv *TextIter) EndsWord() bool {
 // gtk_text_iter_compare().
 /*
 
-C function : gtk_text_iter_equal
+C function
+
+gtk_text_iter_equal
 */
 func (recv *TextIter) Equal(rhs *TextIter) bool {
 	c_rhs := (*C.GtkTextIter)(C.NULL)
@@ -13420,7 +14426,9 @@ func (recv *TextIter) Equal(rhs *TextIter) bool {
 // convenience when writing loops.
 /*
 
-C function : gtk_text_iter_forward_char
+C function
+
+gtk_text_iter_forward_char
 */
 func (recv *TextIter) ForwardChar() bool {
 	retC := C.gtk_text_iter_forward_char((*C.GtkTextIter)(recv.native))
@@ -13437,7 +14445,9 @@ func (recv *TextIter) ForwardChar() bool {
 // is 0, the function does nothing and returns %FALSE.
 /*
 
-C function : gtk_text_iter_forward_chars
+C function
+
+gtk_text_iter_forward_chars
 */
 func (recv *TextIter) ForwardChars(count int32) bool {
 	c_count := (C.gint)(count)
@@ -13460,7 +14470,9 @@ func (recv *TextIter) ForwardChars(count int32) bool {
 // pango_break() function.
 /*
 
-C function : gtk_text_iter_forward_cursor_position
+C function
+
+gtk_text_iter_forward_cursor_position
 */
 func (recv *TextIter) ForwardCursorPosition() bool {
 	retC := C.gtk_text_iter_forward_cursor_position((*C.GtkTextIter)(recv.native))
@@ -13473,7 +14485,9 @@ func (recv *TextIter) ForwardCursorPosition() bool {
 // gtk_text_iter_forward_cursor_position() for details.
 /*
 
-C function : gtk_text_iter_forward_cursor_positions
+C function
+
+gtk_text_iter_forward_cursor_positions
 */
 func (recv *TextIter) ForwardCursorPositions(count int32) bool {
 	c_count := (C.gint)(count)
@@ -13492,7 +14506,9 @@ func (recv *TextIter) ForwardCursorPositions(count int32) bool {
 // dereferencable, returns %FALSE. Otherwise, returns %TRUE.
 /*
 
-C function : gtk_text_iter_forward_line
+C function
+
+gtk_text_iter_forward_line
 */
 func (recv *TextIter) ForwardLine() bool {
 	retC := C.gtk_text_iter_forward_line((*C.GtkTextIter)(recv.native))
@@ -13510,7 +14526,9 @@ func (recv *TextIter) ForwardLine() bool {
 // moves backward by 0 - @count lines.
 /*
 
-C function : gtk_text_iter_forward_lines
+C function
+
+gtk_text_iter_forward_lines
 */
 func (recv *TextIter) ForwardLines(count int32) bool {
 	c_count := (C.gint)(count)
@@ -13532,7 +14550,9 @@ func (recv *TextIter) ForwardLines(count int32) bool {
 // there is a possible @match_end after or at @iter.
 /*
 
-C function : gtk_text_iter_forward_search
+C function
+
+gtk_text_iter_forward_search
 */
 func (recv *TextIter) ForwardSearch(str string, flags TextSearchFlags, limit *TextIter) (bool, *TextIter, *TextIter) {
 	c_str := C.CString(str)
@@ -13566,7 +14586,9 @@ func (recv *TextIter) ForwardSearch(str string, flags TextSearchFlags, limit *Te
 // boundary algorithms).
 /*
 
-C function : gtk_text_iter_forward_sentence_end
+C function
+
+gtk_text_iter_forward_sentence_end
 */
 func (recv *TextIter) ForwardSentenceEnd() bool {
 	retC := C.gtk_text_iter_forward_sentence_end((*C.GtkTextIter)(recv.native))
@@ -13580,7 +14602,9 @@ func (recv *TextIter) ForwardSentenceEnd() bool {
 // negative, moves backward instead of forward.
 /*
 
-C function : gtk_text_iter_forward_sentence_ends
+C function
+
+gtk_text_iter_forward_sentence_ends
 */
 func (recv *TextIter) ForwardSentenceEnds(count int32) bool {
 	c_count := (C.gint)(count)
@@ -13596,7 +14620,9 @@ func (recv *TextIter) ForwardSentenceEnds(count int32) bool {
 // end iterator returns 0, which is convenient for writing loops.
 /*
 
-C function : gtk_text_iter_forward_to_end
+C function
+
+gtk_text_iter_forward_to_end
 */
 func (recv *TextIter) ForwardToEnd() {
 	C.gtk_text_iter_forward_to_end((*C.GtkTextIter)(recv.native))
@@ -13614,7 +14640,9 @@ func (recv *TextIter) ForwardToEnd() {
 // the last line), and returns %FALSE.
 /*
 
-C function : gtk_text_iter_forward_to_line_end
+C function
+
+gtk_text_iter_forward_to_line_end
 */
 func (recv *TextIter) ForwardToLineEnd() bool {
 	retC := C.gtk_text_iter_forward_to_line_end((*C.GtkTextIter)(recv.native))
@@ -13632,7 +14660,9 @@ func (recv *TextIter) ForwardToLineEnd() bool {
 // if no toggle is found.
 /*
 
-C function : gtk_text_iter_forward_to_tag_toggle
+C function
+
+gtk_text_iter_forward_to_tag_toggle
 */
 func (recv *TextIter) ForwardToTagToggle(tag *TextTag) bool {
 	c_tag := (*C.GtkTextTag)(C.NULL)
@@ -13653,7 +14683,9 @@ func (recv *TextIter) ForwardToTagToggle(tag *TextTag) bool {
 // algorithms).
 /*
 
-C function : gtk_text_iter_forward_word_end
+C function
+
+gtk_text_iter_forward_word_end
 */
 func (recv *TextIter) ForwardWordEnd() bool {
 	retC := C.gtk_text_iter_forward_word_end((*C.GtkTextIter)(recv.native))
@@ -13665,7 +14697,9 @@ func (recv *TextIter) ForwardWordEnd() bool {
 // Calls gtk_text_iter_forward_word_end() up to @count times.
 /*
 
-C function : gtk_text_iter_forward_word_ends
+C function
+
+gtk_text_iter_forward_word_ends
 */
 func (recv *TextIter) ForwardWordEnds(count int32) bool {
 	c_count := (C.gint)(count)
@@ -13682,7 +14716,9 @@ func (recv *TextIter) ForwardWordEnds(count int32) bool {
 // simply be allocated on the stack.
 /*
 
-C function : gtk_text_iter_free
+C function
+
+gtk_text_iter_free
 */
 func (recv *TextIter) Free() {
 	C.gtk_text_iter_free((*C.GtkTextIter)(recv.native))
@@ -13700,7 +14736,9 @@ func (recv *TextIter) Free() {
 // the function returns %TRUE.
 /*
 
-C function : gtk_text_iter_get_attributes
+C function
+
+gtk_text_iter_get_attributes
 */
 func (recv *TextIter) GetAttributes() (bool, *TextAttributes) {
 	var c_values C.GtkTextAttributes
@@ -13716,7 +14754,9 @@ func (recv *TextIter) GetAttributes() (bool, *TextAttributes) {
 // Returns the #GtkTextBuffer this iterator is associated with.
 /*
 
-C function : gtk_text_iter_get_buffer
+C function
+
+gtk_text_iter_get_buffer
 */
 func (recv *TextIter) GetBuffer() *TextBuffer {
 	retC := C.gtk_text_iter_get_buffer((*C.GtkTextIter)(recv.native))
@@ -13729,7 +14769,9 @@ func (recv *TextIter) GetBuffer() *TextBuffer {
 // including the paragraph delimiters.
 /*
 
-C function : gtk_text_iter_get_bytes_in_line
+C function
+
+gtk_text_iter_get_bytes_in_line
 */
 func (recv *TextIter) GetBytesInLine() int32 {
 	retC := C.gtk_text_iter_get_bytes_in_line((*C.GtkTextIter)(recv.native))
@@ -13747,7 +14789,9 @@ func (recv *TextIter) GetBytesInLine() int32 {
 // returns 0.
 /*
 
-C function : gtk_text_iter_get_char
+C function
+
+gtk_text_iter_get_char
 */
 func (recv *TextIter) GetChar() rune {
 	retC := C.gtk_text_iter_get_char((*C.GtkTextIter)(recv.native))
@@ -13760,7 +14804,9 @@ func (recv *TextIter) GetChar() rune {
 // including the paragraph delimiters.
 /*
 
-C function : gtk_text_iter_get_chars_in_line
+C function
+
+gtk_text_iter_get_chars_in_line
 */
 func (recv *TextIter) GetCharsInLine() int32 {
 	retC := C.gtk_text_iter_get_chars_in_line((*C.GtkTextIter)(recv.native))
@@ -13774,7 +14820,9 @@ func (recv *TextIter) GetCharsInLine() int32 {
 // %NULL is returned.
 /*
 
-C function : gtk_text_iter_get_child_anchor
+C function
+
+gtk_text_iter_get_child_anchor
 */
 func (recv *TextIter) GetChildAnchor() *TextChildAnchor {
 	retC := C.gtk_text_iter_get_child_anchor((*C.GtkTextIter)(recv.native))
@@ -13789,7 +14837,9 @@ func (recv *TextIter) GetChildAnchor() *TextChildAnchor {
 // gtk_get_default_language().
 /*
 
-C function : gtk_text_iter_get_language
+C function
+
+gtk_text_iter_get_language
 */
 func (recv *TextIter) GetLanguage() *pango.Language {
 	retC := C.gtk_text_iter_get_language((*C.GtkTextIter)(recv.native))
@@ -13803,7 +14853,9 @@ func (recv *TextIter) GetLanguage() *pango.Language {
 // line in the buffer.
 /*
 
-C function : gtk_text_iter_get_line
+C function
+
+gtk_text_iter_get_line
 */
 func (recv *TextIter) GetLine() int32 {
 	retC := C.gtk_text_iter_get_line((*C.GtkTextIter)(recv.native))
@@ -13819,7 +14871,9 @@ func (recv *TextIter) GetLine() int32 {
 // number of bytes to represent.
 /*
 
-C function : gtk_text_iter_get_line_index
+C function
+
+gtk_text_iter_get_line_index
 */
 func (recv *TextIter) GetLineIndex() int32 {
 	retC := C.gtk_text_iter_get_line_index((*C.GtkTextIter)(recv.native))
@@ -13833,7 +14887,9 @@ func (recv *TextIter) GetLineIndex() int32 {
 // The first character on the line has offset 0.
 /*
 
-C function : gtk_text_iter_get_line_offset
+C function
+
+gtk_text_iter_get_line_offset
 */
 func (recv *TextIter) GetLineOffset() int32 {
 	retC := C.gtk_text_iter_get_line_offset((*C.GtkTextIter)(recv.native))
@@ -13849,7 +14905,9 @@ func (recv *TextIter) GetLineOffset() int32 {
 // meaningful order.
 /*
 
-C function : gtk_text_iter_get_marks
+C function
+
+gtk_text_iter_get_marks
 */
 func (recv *TextIter) GetMarks() *glib.SList {
 	retC := C.gtk_text_iter_get_marks((*C.GtkTextIter)(recv.native))
@@ -13865,7 +14923,9 @@ func (recv *TextIter) GetMarks() *glib.SList {
 // offset back into an iterator.
 /*
 
-C function : gtk_text_iter_get_offset
+C function
+
+gtk_text_iter_get_offset
 */
 func (recv *TextIter) GetOffset() int32 {
 	retC := C.gtk_text_iter_get_offset((*C.GtkTextIter)(recv.native))
@@ -13879,7 +14939,9 @@ func (recv *TextIter) GetOffset() int32 {
 // %NULL is returned.
 /*
 
-C function : gtk_text_iter_get_pixbuf
+C function
+
+gtk_text_iter_get_pixbuf
 */
 func (recv *TextIter) GetPixbuf() *gdkpixbuf.Pixbuf {
 	retC := C.gtk_text_iter_get_pixbuf((*C.GtkTextIter)(recv.native))
@@ -13898,7 +14960,9 @@ func (recv *TextIter) GetPixbuf() *gdkpixbuf.Pixbuf {
 // widget is in the buffer.
 /*
 
-C function : gtk_text_iter_get_slice
+C function
+
+gtk_text_iter_get_slice
 */
 func (recv *TextIter) GetSlice(end *TextIter) string {
 	c_end := (*C.GtkTextIter)(C.NULL)
@@ -13919,7 +14983,9 @@ func (recv *TextIter) GetSlice(end *TextIter) string {
 // itself.
 /*
 
-C function : gtk_text_iter_get_tags
+C function
+
+gtk_text_iter_get_tags
 */
 func (recv *TextIter) GetTags() *glib.SList {
 	retC := C.gtk_text_iter_get_tags((*C.GtkTextIter)(recv.native))
@@ -13935,7 +15001,9 @@ func (recv *TextIter) GetTags() *glib.SList {
 // gtk_text_iter_get_slice().
 /*
 
-C function : gtk_text_iter_get_text
+C function
+
+gtk_text_iter_get_text
 */
 func (recv *TextIter) GetText(end *TextIter) string {
 	c_end := (*C.GtkTextIter)(C.NULL)
@@ -13958,7 +15026,9 @@ func (recv *TextIter) GetText(end *TextIter) string {
 // does not have the tag applied to it.
 /*
 
-C function : gtk_text_iter_get_toggled_tags
+C function
+
+gtk_text_iter_get_toggled_tags
 */
 func (recv *TextIter) GetToggledTags(toggledOn bool) *glib.SList {
 	c_toggled_on :=
@@ -13976,7 +15046,9 @@ func (recv *TextIter) GetToggledTags(toggledOn bool) *glib.SList {
 // toggled on.
 /*
 
-C function : gtk_text_iter_get_visible_line_index
+C function
+
+gtk_text_iter_get_visible_line_index
 */
 func (recv *TextIter) GetVisibleLineIndex() int32 {
 	retC := C.gtk_text_iter_get_visible_line_index((*C.GtkTextIter)(recv.native))
@@ -13991,7 +15063,9 @@ func (recv *TextIter) GetVisibleLineIndex() int32 {
 // toggled on.
 /*
 
-C function : gtk_text_iter_get_visible_line_offset
+C function
+
+gtk_text_iter_get_visible_line_offset
 */
 func (recv *TextIter) GetVisibleLineOffset() int32 {
 	retC := C.gtk_text_iter_get_visible_line_offset((*C.GtkTextIter)(recv.native))
@@ -14005,7 +15079,9 @@ func (recv *TextIter) GetVisibleLineOffset() int32 {
 // “invisible” attribute turned on has been applied to it.
 /*
 
-C function : gtk_text_iter_get_visible_slice
+C function
+
+gtk_text_iter_get_visible_slice
 */
 func (recv *TextIter) GetVisibleSlice(end *TextIter) string {
 	c_end := (*C.GtkTextIter)(C.NULL)
@@ -14025,7 +15101,9 @@ func (recv *TextIter) GetVisibleSlice(end *TextIter) string {
 // “invisible” attribute turned on has been applied to it.
 /*
 
-C function : gtk_text_iter_get_visible_text
+C function
+
+gtk_text_iter_get_visible_text
 */
 func (recv *TextIter) GetVisibleText(end *TextIter) string {
 	c_end := (*C.GtkTextIter)(C.NULL)
@@ -14044,7 +15122,9 @@ func (recv *TextIter) GetVisibleText(end *TextIter) string {
 // with @tag. See also gtk_text_iter_starts_tag() and gtk_text_iter_ends_tag().
 /*
 
-C function : gtk_text_iter_has_tag
+C function
+
+gtk_text_iter_has_tag
 */
 func (recv *TextIter) HasTag(tag *TextTag) bool {
 	c_tag := (*C.GtkTextTag)(C.NULL)
@@ -14062,7 +15142,9 @@ func (recv *TextIter) HasTag(tag *TextTag) bool {
 // @start and @end must be in ascending order.
 /*
 
-C function : gtk_text_iter_in_range
+C function
+
+gtk_text_iter_in_range
 */
 func (recv *TextIter) InRange(start *TextIter, end *TextIter) bool {
 	c_start := (*C.GtkTextIter)(C.NULL)
@@ -14088,7 +15170,9 @@ func (recv *TextIter) InRange(start *TextIter, end *TextIter) bool {
 // correct fix would be to the Pango text boundary algorithms).
 /*
 
-C function : gtk_text_iter_inside_sentence
+C function
+
+gtk_text_iter_inside_sentence
 */
 func (recv *TextIter) InsideSentence() bool {
 	retC := C.gtk_text_iter_inside_sentence((*C.GtkTextIter)(recv.native))
@@ -14106,7 +15190,9 @@ func (recv *TextIter) InsideSentence() bool {
 // returns %TRUE too, since @iter points to the first character of the word.
 /*
 
-C function : gtk_text_iter_inside_word
+C function
+
+gtk_text_iter_inside_word
 */
 func (recv *TextIter) InsideWord() bool {
 	retC := C.gtk_text_iter_inside_word((*C.GtkTextIter)(recv.native))
@@ -14119,7 +15205,9 @@ func (recv *TextIter) InsideWord() bool {
 // pango_break() for details on what a cursor position is.
 /*
 
-C function : gtk_text_iter_is_cursor_position
+C function
+
+gtk_text_iter_is_cursor_position
 */
 func (recv *TextIter) IsCursorPosition() bool {
 	retC := C.gtk_text_iter_is_cursor_position((*C.GtkTextIter)(recv.native))
@@ -14134,7 +15222,9 @@ func (recv *TextIter) IsCursorPosition() bool {
 // iterator.
 /*
 
-C function : gtk_text_iter_is_end
+C function
+
+gtk_text_iter_is_end
 */
 func (recv *TextIter) IsEnd() bool {
 	retC := C.gtk_text_iter_is_end((*C.GtkTextIter)(recv.native))
@@ -14147,7 +15237,9 @@ func (recv *TextIter) IsEnd() bool {
 // if @iter has a character offset of 0.
 /*
 
-C function : gtk_text_iter_is_start
+C function
+
+gtk_text_iter_is_start
 */
 func (recv *TextIter) IsStart() bool {
 	retC := C.gtk_text_iter_is_start((*C.GtkTextIter)(recv.native))
@@ -14164,7 +15256,9 @@ func (recv *TextIter) IsStart() bool {
 // that expect a pre-sorted range.
 /*
 
-C function : gtk_text_iter_order
+C function
+
+gtk_text_iter_order
 */
 func (recv *TextIter) Order(second *TextIter) {
 	c_second := (*C.GtkTextIter)(C.NULL)
@@ -14182,7 +15276,9 @@ func (recv *TextIter) Order(second *TextIter) {
 // buffer, moves @iter to the start of the last line in the buffer.
 /*
 
-C function : gtk_text_iter_set_line
+C function
+
+gtk_text_iter_set_line
 */
 func (recv *TextIter) SetLine(lineNumber int32) {
 	c_line_number := (C.gint)(lineNumber)
@@ -14198,7 +15294,9 @@ func (recv *TextIter) SetLine(lineNumber int32) {
 // encoded character.
 /*
 
-C function : gtk_text_iter_set_line_index
+C function
+
+gtk_text_iter_set_line_index
 */
 func (recv *TextIter) SetLineIndex(byteOnLine int32) {
 	c_byte_on_line := (C.gint)(byteOnLine)
@@ -14216,7 +15314,9 @@ func (recv *TextIter) SetLineIndex(byteOnLine int32) {
 // a character offset.
 /*
 
-C function : gtk_text_iter_set_line_offset
+C function
+
+gtk_text_iter_set_line_offset
 */
 func (recv *TextIter) SetLineOffset(charOnLine int32) {
 	c_char_on_line := (C.gint)(charOnLine)
@@ -14230,7 +15330,9 @@ func (recv *TextIter) SetLineOffset(charOnLine int32) {
 // of the entire text buffer, starting with 0.
 /*
 
-C function : gtk_text_iter_set_offset
+C function
+
+gtk_text_iter_set_offset
 */
 func (recv *TextIter) SetOffset(charOffset int32) {
 	c_char_offset := (C.gint)(charOffset)
@@ -14245,7 +15347,9 @@ func (recv *TextIter) SetOffset(charOffset int32) {
 // in the index.
 /*
 
-C function : gtk_text_iter_set_visible_line_index
+C function
+
+gtk_text_iter_set_visible_line_index
 */
 func (recv *TextIter) SetVisibleLineIndex(byteOnLine int32) {
 	c_byte_on_line := (C.gint)(byteOnLine)
@@ -14260,7 +15364,9 @@ func (recv *TextIter) SetVisibleLineIndex(byteOnLine int32) {
 // counted in the offset.
 /*
 
-C function : gtk_text_iter_set_visible_line_offset
+C function
+
+gtk_text_iter_set_visible_line_offset
 */
 func (recv *TextIter) SetVisibleLineOffset(charOnLine int32) {
 	c_char_on_line := (C.gint)(charOnLine)
@@ -14277,7 +15383,9 @@ func (recv *TextIter) SetVisibleLineOffset(charOnLine int32) {
 // the offset, it just has to see whether it’s 0.
 /*
 
-C function : gtk_text_iter_starts_line
+C function
+
+gtk_text_iter_starts_line
 */
 func (recv *TextIter) StartsLine() bool {
 	retC := C.gtk_text_iter_starts_line((*C.GtkTextIter)(recv.native))
@@ -14292,7 +15400,9 @@ func (recv *TextIter) StartsLine() bool {
 // algorithms).
 /*
 
-C function : gtk_text_iter_starts_sentence
+C function
+
+gtk_text_iter_starts_sentence
 */
 func (recv *TextIter) StartsSentence() bool {
 	retC := C.gtk_text_iter_starts_sentence((*C.GtkTextIter)(recv.native))
@@ -14307,7 +15417,9 @@ func (recv *TextIter) StartsSentence() bool {
 // algorithms).
 /*
 
-C function : gtk_text_iter_starts_word
+C function
+
+gtk_text_iter_starts_word
 */
 func (recv *TextIter) StartsWord() bool {
 	retC := C.gtk_text_iter_starts_word((*C.GtkTextIter)(recv.native))
@@ -14321,7 +15433,9 @@ func (recv *TextIter) StartsWord() bool {
 // @tag applied to it begins or ends at @iter.
 /*
 
-C function : gtk_text_iter_toggles_tag
+C function
+
+gtk_text_iter_toggles_tag
 */
 func (recv *TextIter) TogglesTag(tag *TextTag) bool {
 	c_tag := (*C.GtkTextTag)(C.NULL)
@@ -14337,7 +15451,9 @@ func (recv *TextIter) TogglesTag(tag *TextTag) bool {
 
 /*
 
-C record/class : GtkTextMarkClass
+C type
+
+GtkTextMarkClass
 */
 type TextMarkClass struct {
 	native *C.GtkTextMarkClass
@@ -14366,7 +15482,9 @@ func (recv *TextMarkClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkTextTagClass
+C type
+
+GtkTextTagClass
 */
 type TextTagClass struct {
 	native *C.GtkTextTagClass
@@ -14396,7 +15514,9 @@ func (recv *TextTagClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkTextTagPrivate
+C type
+
+GtkTextTagPrivate
 */
 type TextTagPrivate struct {
 	native *C.GtkTextTagPrivate
@@ -14420,7 +15540,9 @@ func (recv *TextTagPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkTextTagTableClass
+C type
+
+GtkTextTagTableClass
 */
 type TextTagTableClass struct {
 	native *C.GtkTextTagTableClass
@@ -14452,7 +15574,9 @@ func (recv *TextTagTableClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkTextTagTablePrivate
+C type
+
+GtkTextTagTablePrivate
 */
 type TextTagTablePrivate struct {
 	native *C.GtkTextTagTablePrivate
@@ -14476,7 +15600,9 @@ func (recv *TextTagTablePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkTextViewAccessibleClass
+C type
+
+GtkTextViewAccessibleClass
 */
 type TextViewAccessibleClass struct {
 	native *C.GtkTextViewAccessibleClass
@@ -14501,7 +15627,9 @@ func (recv *TextViewAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkTextViewAccessiblePrivate
+C type
+
+GtkTextViewAccessiblePrivate
 */
 type TextViewAccessiblePrivate struct {
 	native *C.GtkTextViewAccessiblePrivate
@@ -14525,7 +15653,9 @@ func (recv *TextViewAccessiblePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkTextViewClass
+C type
+
+GtkTextViewClass
 */
 type TextViewClass struct {
 	native *C.GtkTextViewClass
@@ -14568,7 +15698,9 @@ func (recv *TextViewClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkTextViewPrivate
+C type
+
+GtkTextViewPrivate
 */
 type TextViewPrivate struct {
 	native *C.GtkTextViewPrivate
@@ -14592,7 +15724,9 @@ func (recv *TextViewPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkThemeEngine
+C type
+
+GtkThemeEngine
 */
 type ThemeEngine struct {
 	native *C.GtkThemeEngine
@@ -14617,7 +15751,9 @@ func (recv *ThemeEngine) ToC() unsafe.Pointer {
 // Base class for theming engines.
 /*
 
-C record/class : GtkThemingEngineClass
+C type
+
+GtkThemingEngineClass
 */
 type ThemingEngineClass struct {
 	native *C.GtkThemingEngineClass
@@ -14660,7 +15796,9 @@ func (recv *ThemingEngineClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkThemingEnginePrivate
+C type
+
+GtkThemingEnginePrivate
 */
 type ThemingEnginePrivate struct {
 	native *C.GtkThemingEnginePrivate
@@ -14684,7 +15822,9 @@ func (recv *ThemingEnginePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkToggleActionClass
+C type
+
+GtkToggleActionClass
 */
 type ToggleActionClass struct {
 	native *C.GtkToggleActionClass
@@ -14716,7 +15856,9 @@ func (recv *ToggleActionClass) ToC() unsafe.Pointer {
 // gtk_action_group_add_toggle_actions() to construct toggle actions.
 /*
 
-C record/class : GtkToggleActionEntry
+C type
+
+GtkToggleActionEntry
 */
 type ToggleActionEntry struct {
 	native      *C.GtkToggleActionEntry
@@ -14767,7 +15909,9 @@ func (recv *ToggleActionEntry) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkToggleActionPrivate
+C type
+
+GtkToggleActionPrivate
 */
 type ToggleActionPrivate struct {
 	native *C.GtkToggleActionPrivate
@@ -14791,7 +15935,9 @@ func (recv *ToggleActionPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkToggleButtonAccessibleClass
+C type
+
+GtkToggleButtonAccessibleClass
 */
 type ToggleButtonAccessibleClass struct {
 	native *C.GtkToggleButtonAccessibleClass
@@ -14816,7 +15962,9 @@ func (recv *ToggleButtonAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkToggleButtonAccessiblePrivate
+C type
+
+GtkToggleButtonAccessiblePrivate
 */
 type ToggleButtonAccessiblePrivate struct {
 	native *C.GtkToggleButtonAccessiblePrivate
@@ -14840,7 +15988,9 @@ func (recv *ToggleButtonAccessiblePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkToggleButtonClass
+C type
+
+GtkToggleButtonClass
 */
 type ToggleButtonClass struct {
 	native *C.GtkToggleButtonClass
@@ -14870,7 +16020,9 @@ func (recv *ToggleButtonClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkToggleButtonPrivate
+C type
+
+GtkToggleButtonPrivate
 */
 type ToggleButtonPrivate struct {
 	native *C.GtkToggleButtonPrivate
@@ -14894,7 +16046,9 @@ func (recv *ToggleButtonPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkToggleToolButtonClass
+C type
+
+GtkToggleToolButtonClass
 */
 type ToggleToolButtonClass struct {
 	native *C.GtkToggleToolButtonClass
@@ -14924,7 +16078,9 @@ func (recv *ToggleToolButtonClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkToggleToolButtonPrivate
+C type
+
+GtkToggleToolButtonPrivate
 */
 type ToggleToolButtonPrivate struct {
 	native *C.GtkToggleToolButtonPrivate
@@ -14948,7 +16104,9 @@ func (recv *ToggleToolButtonPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkToolButtonClass
+C type
+
+GtkToolButtonClass
 */
 type ToolButtonClass struct {
 	native *C.GtkToolButtonClass
@@ -14984,7 +16142,9 @@ func (recv *ToolButtonClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkToolButtonPrivate
+C type
+
+GtkToolButtonPrivate
 */
 type ToolButtonPrivate struct {
 	native *C.GtkToolButtonPrivate
@@ -15008,7 +16168,9 @@ func (recv *ToolButtonPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkToolItemClass
+C type
+
+GtkToolItemClass
 */
 type ToolItemClass struct {
 	native *C.GtkToolItemClass
@@ -15039,7 +16201,9 @@ func (recv *ToolItemClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkToolItemGroupClass
+C type
+
+GtkToolItemGroupClass
 */
 type ToolItemGroupClass struct {
 	native *C.GtkToolItemGroupClass
@@ -15068,7 +16232,9 @@ func (recv *ToolItemGroupClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkToolItemGroupPrivate
+C type
+
+GtkToolItemGroupPrivate
 */
 type ToolItemGroupPrivate struct {
 	native *C.GtkToolItemGroupPrivate
@@ -15092,7 +16258,9 @@ func (recv *ToolItemGroupPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkToolItemPrivate
+C type
+
+GtkToolItemPrivate
 */
 type ToolItemPrivate struct {
 	native *C.GtkToolItemPrivate
@@ -15116,7 +16284,9 @@ func (recv *ToolItemPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkToolPaletteClass
+C type
+
+GtkToolPaletteClass
 */
 type ToolPaletteClass struct {
 	native *C.GtkToolPaletteClass
@@ -15145,7 +16315,9 @@ func (recv *ToolPaletteClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkToolPalettePrivate
+C type
+
+GtkToolPalettePrivate
 */
 type ToolPalettePrivate struct {
 	native *C.GtkToolPalettePrivate
@@ -15170,7 +16342,9 @@ func (recv *ToolPalettePrivate) ToC() unsafe.Pointer {
 // Virtual function table for the #GtkToolShell interface.
 /*
 
-C record/class : GtkToolShellIface
+C type
+
+GtkToolShellIface
 */
 type ToolShellIface struct {
 	native *C.GtkToolShellIface
@@ -15204,7 +16378,9 @@ func (recv *ToolShellIface) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkToolbarClass
+C type
+
+GtkToolbarClass
 */
 type ToolbarClass struct {
 	native *C.GtkToolbarClass
@@ -15236,7 +16412,9 @@ func (recv *ToolbarClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkToolbarPrivate
+C type
+
+GtkToolbarPrivate
 */
 type ToolbarPrivate struct {
 	native *C.GtkToolbarPrivate
@@ -15260,7 +16438,9 @@ func (recv *ToolbarPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkToplevelAccessibleClass
+C type
+
+GtkToplevelAccessibleClass
 */
 type ToplevelAccessibleClass struct {
 	native *C.GtkToplevelAccessibleClass
@@ -15285,7 +16465,9 @@ func (recv *ToplevelAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkToplevelAccessiblePrivate
+C type
+
+GtkToplevelAccessiblePrivate
 */
 type ToplevelAccessiblePrivate struct {
 	native *C.GtkToplevelAccessiblePrivate
@@ -15309,7 +16491,9 @@ func (recv *ToplevelAccessiblePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkTreeDragDestIface
+C type
+
+GtkTreeDragDestIface
 */
 type TreeDragDestIface struct {
 	native *C.GtkTreeDragDestIface
@@ -15336,7 +16520,9 @@ func (recv *TreeDragDestIface) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkTreeDragSourceIface
+C type
+
+GtkTreeDragSourceIface
 */
 type TreeDragSourceIface struct {
 	native *C.GtkTreeDragSourceIface
@@ -15369,7 +16555,9 @@ func (recv *TreeDragSourceIface) ToC() unsafe.Pointer {
 // members.
 /*
 
-C record/class : GtkTreeIter
+C type
+
+GtkTreeIter
 */
 type TreeIter struct {
 	native    *C.GtkTreeIter
@@ -15417,7 +16605,9 @@ func (recv *TreeIter) ToC() unsafe.Pointer {
 // You must free this iter with gtk_tree_iter_free().
 /*
 
-C function : gtk_tree_iter_copy
+C function
+
+gtk_tree_iter_copy
 */
 func (recv *TreeIter) Copy() *TreeIter {
 	retC := C.gtk_tree_iter_copy((*C.GtkTreeIter)(recv.native))
@@ -15431,7 +16621,9 @@ func (recv *TreeIter) Copy() *TreeIter {
 // This function is mainly used for language bindings.
 /*
 
-C function : gtk_tree_iter_free
+C function
+
+gtk_tree_iter_free
 */
 func (recv *TreeIter) Free() {
 	C.gtk_tree_iter_free((*C.GtkTreeIter)(recv.native))
@@ -15441,7 +16633,9 @@ func (recv *TreeIter) Free() {
 
 /*
 
-C record/class : GtkTreeModelFilterClass
+C type
+
+GtkTreeModelFilterClass
 */
 type TreeModelFilterClass struct {
 	native *C.GtkTreeModelFilterClass
@@ -15472,7 +16666,9 @@ func (recv *TreeModelFilterClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkTreeModelFilterPrivate
+C type
+
+GtkTreeModelFilterPrivate
 */
 type TreeModelFilterPrivate struct {
 	native *C.GtkTreeModelFilterPrivate
@@ -15496,7 +16692,9 @@ func (recv *TreeModelFilterPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkTreeModelIface
+C type
+
+GtkTreeModelIface
 */
 type TreeModelIface struct {
 	native *C.GtkTreeModelIface
@@ -15541,7 +16739,9 @@ func (recv *TreeModelIface) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkTreeModelSortClass
+C type
+
+GtkTreeModelSortClass
 */
 type TreeModelSortClass struct {
 	native *C.GtkTreeModelSortClass
@@ -15570,7 +16770,9 @@ func (recv *TreeModelSortClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkTreeModelSortPrivate
+C type
+
+GtkTreeModelSortPrivate
 */
 type TreeModelSortPrivate struct {
 	native *C.GtkTreeModelSortPrivate
@@ -15594,7 +16796,9 @@ func (recv *TreeModelSortPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkTreePath
+C type
+
+GtkTreePath
 */
 type TreePath struct {
 	native *C.GtkTreePath
@@ -15620,7 +16824,9 @@ func (recv *TreePath) ToC() unsafe.Pointer {
 // This refers to a row.
 /*
 
-C function : gtk_tree_path_new
+C function
+
+gtk_tree_path_new
 */
 func TreePathNew() *TreePath {
 	retC := C.gtk_tree_path_new()
@@ -15634,7 +16840,9 @@ func TreePathNew() *TreePath {
 // The string representation of this path is “0”.
 /*
 
-C function : gtk_tree_path_new_first
+C function
+
+gtk_tree_path_new_first
 */
 func TreePathNewFirst() *TreePath {
 	retC := C.gtk_tree_path_new_first()
@@ -15652,7 +16860,9 @@ func TreePathNewFirst() *TreePath {
 // If an invalid path string is passed in, %NULL is returned.
 /*
 
-C function : gtk_tree_path_new_from_string
+C function
+
+gtk_tree_path_new_from_string
 */
 func TreePathNewFromString(path string) *TreePath {
 	c_path := C.CString(path)
@@ -15669,7 +16879,9 @@ func TreePathNewFromString(path string) *TreePath {
 // As a result, the depth of the path is increased.
 /*
 
-C function : gtk_tree_path_append_index
+C function
+
+gtk_tree_path_append_index
 */
 func (recv *TreePath) AppendIndex(index int32) {
 	c_index_ := (C.gint)(index)
@@ -15686,7 +16898,9 @@ func (recv *TreePath) AppendIndex(index int32) {
 // If the two nodes are equal, then 0 is returned.
 /*
 
-C function : gtk_tree_path_compare
+C function
+
+gtk_tree_path_compare
 */
 func (recv *TreePath) Compare(b *TreePath) int32 {
 	c_b := (*C.GtkTreePath)(C.NULL)
@@ -15703,7 +16917,9 @@ func (recv *TreePath) Compare(b *TreePath) int32 {
 // Creates a new #GtkTreePath-struct as a copy of @path.
 /*
 
-C function : gtk_tree_path_copy
+C function
+
+gtk_tree_path_copy
 */
 func (recv *TreePath) Copy() *TreePath {
 	retC := C.gtk_tree_path_copy((*C.GtkTreePath)(recv.native))
@@ -15715,7 +16931,9 @@ func (recv *TreePath) Copy() *TreePath {
 // Moves @path to point to the first child of the current path.
 /*
 
-C function : gtk_tree_path_down
+C function
+
+gtk_tree_path_down
 */
 func (recv *TreePath) Down() {
 	C.gtk_tree_path_down((*C.GtkTreePath)(recv.native))
@@ -15726,7 +16944,9 @@ func (recv *TreePath) Down() {
 // Frees @path. If @path is %NULL, it simply returns.
 /*
 
-C function : gtk_tree_path_free
+C function
+
+gtk_tree_path_free
 */
 func (recv *TreePath) Free() {
 	C.gtk_tree_path_free((*C.GtkTreePath)(recv.native))
@@ -15737,7 +16957,9 @@ func (recv *TreePath) Free() {
 // Returns the current depth of @path.
 /*
 
-C function : gtk_tree_path_get_depth
+C function
+
+gtk_tree_path_get_depth
 */
 func (recv *TreePath) GetDepth() int32 {
 	retC := C.gtk_tree_path_get_depth((*C.GtkTreePath)(recv.native))
@@ -15751,7 +16973,9 @@ func (recv *TreePath) GetDepth() int32 {
 // Returns %TRUE if @descendant is a descendant of @path.
 /*
 
-C function : gtk_tree_path_is_ancestor
+C function
+
+gtk_tree_path_is_ancestor
 */
 func (recv *TreePath) IsAncestor(descendant *TreePath) bool {
 	c_descendant := (*C.GtkTreePath)(C.NULL)
@@ -15768,7 +16992,9 @@ func (recv *TreePath) IsAncestor(descendant *TreePath) bool {
 // Returns %TRUE if @path is a descendant of @ancestor.
 /*
 
-C function : gtk_tree_path_is_descendant
+C function
+
+gtk_tree_path_is_descendant
 */
 func (recv *TreePath) IsDescendant(ancestor *TreePath) bool {
 	c_ancestor := (*C.GtkTreePath)(C.NULL)
@@ -15785,7 +17011,9 @@ func (recv *TreePath) IsDescendant(ancestor *TreePath) bool {
 // Moves the @path to point to the next node at the current depth.
 /*
 
-C function : gtk_tree_path_next
+C function
+
+gtk_tree_path_next
 */
 func (recv *TreePath) Next() {
 	C.gtk_tree_path_next((*C.GtkTreePath)(recv.native))
@@ -15798,7 +17026,9 @@ func (recv *TreePath) Next() {
 // As a result, the depth of the path is increased.
 /*
 
-C function : gtk_tree_path_prepend_index
+C function
+
+gtk_tree_path_prepend_index
 */
 func (recv *TreePath) PrependIndex(index int32) {
 	c_index_ := (C.gint)(index)
@@ -15812,7 +17042,9 @@ func (recv *TreePath) PrependIndex(index int32) {
 // current depth, if it exists.
 /*
 
-C function : gtk_tree_path_prev
+C function
+
+gtk_tree_path_prev
 */
 func (recv *TreePath) Prev() bool {
 	retC := C.gtk_tree_path_prev((*C.GtkTreePath)(recv.native))
@@ -15828,7 +17060,9 @@ func (recv *TreePath) Prev() bool {
 // return value for this string.
 /*
 
-C function : gtk_tree_path_to_string
+C function
+
+gtk_tree_path_to_string
 */
 func (recv *TreePath) ToString() string {
 	retC := C.gtk_tree_path_to_string((*C.GtkTreePath)(recv.native))
@@ -15841,7 +17075,9 @@ func (recv *TreePath) ToString() string {
 // Moves the @path to point to its parent node, if it has a parent.
 /*
 
-C function : gtk_tree_path_up
+C function
+
+gtk_tree_path_up
 */
 func (recv *TreePath) Up() bool {
 	retC := C.gtk_tree_path_up((*C.GtkTreePath)(recv.native))
@@ -15855,7 +17091,9 @@ func (recv *TreePath) Up() bool {
 // new GtkTreeRowReference with gtk_tree_row_reference_new().
 /*
 
-C record/class : GtkTreeRowReference
+C type
+
+GtkTreeRowReference
 */
 type TreeRowReference struct {
 	native *C.GtkTreeRowReference
@@ -15885,7 +17123,9 @@ func (recv *TreeRowReference) ToC() unsafe.Pointer {
 // @path isn’t a valid path in @model, then %NULL is returned.
 /*
 
-C function : gtk_tree_row_reference_new
+C function
+
+gtk_tree_row_reference_new
 */
 func TreeRowReferenceNew(model *TreeModel, path *TreePath) *TreeRowReference {
 	c_model := (*C.GtkTreeModel)(model.ToC())
@@ -15927,7 +17167,9 @@ func TreeRowReferenceNew(model *TreeModel, path *TreePath) *TreeRowReference {
 // itself, and is not generally needed by most applications.
 /*
 
-C function : gtk_tree_row_reference_new_proxy
+C function
+
+gtk_tree_row_reference_new_proxy
 */
 func TreeRowReferenceNewProxy(proxy *gobject.Object, model *TreeModel, path *TreePath) *TreeRowReference {
 	c_proxy := (*C.GObject)(C.NULL)
@@ -15951,7 +17193,9 @@ func TreeRowReferenceNewProxy(proxy *gobject.Object, model *TreeModel, path *Tre
 // Free’s @reference. @reference may be %NULL
 /*
 
-C function : gtk_tree_row_reference_free
+C function
+
+gtk_tree_row_reference_free
 */
 func (recv *TreeRowReference) Free() {
 	C.gtk_tree_row_reference_free((*C.GtkTreeRowReference)(recv.native))
@@ -15963,7 +17207,9 @@ func (recv *TreeRowReference) Free() {
 // or %NULL if the path pointed to is no longer valid.
 /*
 
-C function : gtk_tree_row_reference_get_path
+C function
+
+gtk_tree_row_reference_get_path
 */
 func (recv *TreeRowReference) GetPath() *TreePath {
 	retC := C.gtk_tree_row_reference_get_path((*C.GtkTreeRowReference)(recv.native))
@@ -15981,7 +17227,9 @@ func (recv *TreeRowReference) GetPath() *TreePath {
 // a current valid path.
 /*
 
-C function : gtk_tree_row_reference_valid
+C function
+
+gtk_tree_row_reference_valid
 */
 func (recv *TreeRowReference) Valid() bool {
 	retC := C.gtk_tree_row_reference_valid((*C.GtkTreeRowReference)(recv.native))
@@ -15992,7 +17240,9 @@ func (recv *TreeRowReference) Valid() bool {
 
 /*
 
-C record/class : GtkTreeSelectionClass
+C type
+
+GtkTreeSelectionClass
 */
 type TreeSelectionClass struct {
 	native *C.GtkTreeSelectionClass
@@ -16022,7 +17272,9 @@ func (recv *TreeSelectionClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkTreeSelectionPrivate
+C type
+
+GtkTreeSelectionPrivate
 */
 type TreeSelectionPrivate struct {
 	native *C.GtkTreeSelectionPrivate
@@ -16046,7 +17298,9 @@ func (recv *TreeSelectionPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkTreeSortableIface
+C type
+
+GtkTreeSortableIface
 */
 type TreeSortableIface struct {
 	native *C.GtkTreeSortableIface
@@ -16077,7 +17331,9 @@ func (recv *TreeSortableIface) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkTreeStoreClass
+C type
+
+GtkTreeStoreClass
 */
 type TreeStoreClass struct {
 	native *C.GtkTreeStoreClass
@@ -16106,7 +17362,9 @@ func (recv *TreeStoreClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkTreeStorePrivate
+C type
+
+GtkTreeStorePrivate
 */
 type TreeStorePrivate struct {
 	native *C.GtkTreeStorePrivate
@@ -16130,7 +17388,9 @@ func (recv *TreeStorePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkTreeViewAccessibleClass
+C type
+
+GtkTreeViewAccessibleClass
 */
 type TreeViewAccessibleClass struct {
 	native *C.GtkTreeViewAccessibleClass
@@ -16155,7 +17415,9 @@ func (recv *TreeViewAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkTreeViewAccessiblePrivate
+C type
+
+GtkTreeViewAccessiblePrivate
 */
 type TreeViewAccessiblePrivate struct {
 	native *C.GtkTreeViewAccessiblePrivate
@@ -16179,7 +17441,9 @@ func (recv *TreeViewAccessiblePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkTreeViewClass
+C type
+
+GtkTreeViewClass
 */
 type TreeViewClass struct {
 	native *C.GtkTreeViewClass
@@ -16227,7 +17491,9 @@ func (recv *TreeViewClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkTreeViewColumnClass
+C type
+
+GtkTreeViewColumnClass
 */
 type TreeViewColumnClass struct {
 	native *C.GtkTreeViewColumnClass
@@ -16257,7 +17523,9 @@ func (recv *TreeViewColumnClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkTreeViewColumnPrivate
+C type
+
+GtkTreeViewColumnPrivate
 */
 type TreeViewColumnPrivate struct {
 	native *C.GtkTreeViewColumnPrivate
@@ -16281,7 +17549,9 @@ func (recv *TreeViewColumnPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkTreeViewPrivate
+C type
+
+GtkTreeViewPrivate
 */
 type TreeViewPrivate struct {
 	native *C.GtkTreeViewPrivate
@@ -16305,7 +17575,9 @@ func (recv *TreeViewPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkUIManagerClass
+C type
+
+GtkUIManagerClass
 */
 type UIManagerClass struct {
 	native *C.GtkUIManagerClass
@@ -16342,7 +17614,9 @@ func (recv *UIManagerClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkUIManagerPrivate
+C type
+
+GtkUIManagerPrivate
 */
 type UIManagerPrivate struct {
 	native *C.GtkUIManagerPrivate
@@ -16366,7 +17640,9 @@ func (recv *UIManagerPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkVBoxClass
+C type
+
+GtkVBoxClass
 */
 type VBoxClass struct {
 	native *C.GtkVBoxClass
@@ -16391,7 +17667,9 @@ func (recv *VBoxClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkVButtonBoxClass
+C type
+
+GtkVButtonBoxClass
 */
 type VButtonBoxClass struct {
 	native *C.GtkVButtonBoxClass
@@ -16416,7 +17694,9 @@ func (recv *VButtonBoxClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkVPanedClass
+C type
+
+GtkVPanedClass
 */
 type VPanedClass struct {
 	native *C.GtkVPanedClass
@@ -16441,7 +17721,9 @@ func (recv *VPanedClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkVScaleClass
+C type
+
+GtkVScaleClass
 */
 type VScaleClass struct {
 	native *C.GtkVScaleClass
@@ -16466,7 +17748,9 @@ func (recv *VScaleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkVScrollbarClass
+C type
+
+GtkVScrollbarClass
 */
 type VScrollbarClass struct {
 	native *C.GtkVScrollbarClass
@@ -16491,7 +17775,9 @@ func (recv *VScrollbarClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkVSeparatorClass
+C type
+
+GtkVSeparatorClass
 */
 type VSeparatorClass struct {
 	native *C.GtkVSeparatorClass
@@ -16516,7 +17802,9 @@ func (recv *VSeparatorClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkViewportClass
+C type
+
+GtkViewportClass
 */
 type ViewportClass struct {
 	native *C.GtkViewportClass
@@ -16545,7 +17833,9 @@ func (recv *ViewportClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkViewportPrivate
+C type
+
+GtkViewportPrivate
 */
 type ViewportPrivate struct {
 	native *C.GtkViewportPrivate
@@ -16569,7 +17859,9 @@ func (recv *ViewportPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkVolumeButtonClass
+C type
+
+GtkVolumeButtonClass
 */
 type VolumeButtonClass struct {
 	native *C.GtkVolumeButtonClass
@@ -16598,7 +17890,9 @@ func (recv *VolumeButtonClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkWidgetAccessibleClass
+C type
+
+GtkWidgetAccessibleClass
 */
 type WidgetAccessibleClass struct {
 	native *C.GtkWidgetAccessibleClass
@@ -16624,7 +17918,9 @@ func (recv *WidgetAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkWidgetAccessiblePrivate
+C type
+
+GtkWidgetAccessiblePrivate
 */
 type WidgetAccessiblePrivate struct {
 	native *C.GtkWidgetAccessiblePrivate
@@ -16648,7 +17944,9 @@ func (recv *WidgetAccessiblePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkWidgetClass
+C type
+
+GtkWidgetClass
 */
 type WidgetClass struct {
 	native *C.GtkWidgetClass
@@ -16768,7 +18066,9 @@ func (recv *WidgetClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkWidgetClassPrivate
+C type
+
+GtkWidgetClassPrivate
 */
 type WidgetClassPrivate struct {
 	native *C.GtkWidgetClassPrivate
@@ -16802,7 +18102,7 @@ func (recv *WidgetClassPrivate) ToC() unsafe.Pointer {
 //
 // The widget path generation is generally simple:
 //
-// ## Defining a button within a window
+// Defining a button within a window
 //
 // |[<!-- language="C" -->
 // {
@@ -16818,7 +18118,7 @@ func (recv *WidgetClassPrivate) ToC() unsafe.Pointer {
 // different classes (property that may be used by other widget
 // types) and intermediate regions may be included:
 //
-// ## Defining the first tab widget in a notebook
+// Defining the first tab widget in a notebook
 //
 // |[<!-- language="C" -->
 // {
@@ -16839,7 +18139,9 @@ func (recv *WidgetClassPrivate) ToC() unsafe.Pointer {
 // that applies to the described widget.
 /*
 
-C record/class : GtkWidgetPath
+C type
+
+GtkWidgetPath
 */
 type WidgetPath struct {
 	native *C.GtkWidgetPath
@@ -16866,7 +18168,9 @@ func (recv *WidgetPath) ToC() unsafe.Pointer {
 // @path
 /*
 
-C function : gtk_widget_path_iter_get_name
+C function
+
+gtk_widget_path_iter_get_name
 */
 func (recv *WidgetPath) IterGetName(pos int32) string {
 	c_pos := (C.gint)(pos)
@@ -16883,7 +18187,9 @@ func (recv *WidgetPath) IterGetName(pos int32) string {
 // will return 0.
 /*
 
-C function : gtk_widget_path_iter_get_sibling_index
+C function
+
+gtk_widget_path_iter_get_sibling_index
 */
 func (recv *WidgetPath) IterGetSiblingIndex(pos int32) uint32 {
 	c_pos := (C.gint)(pos)
@@ -16898,7 +18204,9 @@ func (recv *WidgetPath) IterGetSiblingIndex(pos int32) uint32 {
 // was not added with siblings, %NULL is returned.
 /*
 
-C function : gtk_widget_path_iter_get_siblings
+C function
+
+gtk_widget_path_iter_get_siblings
 */
 func (recv *WidgetPath) IterGetSiblings(pos int32) *WidgetPath {
 	c_pos := (C.gint)(pos)
@@ -16911,7 +18219,9 @@ func (recv *WidgetPath) IterGetSiblings(pos int32) *WidgetPath {
 
 /*
 
-C record/class : GtkWidgetPrivate
+C type
+
+GtkWidgetPrivate
 */
 type WidgetPrivate struct {
 	native *C.GtkWidgetPrivate
@@ -16935,7 +18245,9 @@ func (recv *WidgetPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkWindowAccessibleClass
+C type
+
+GtkWindowAccessibleClass
 */
 type WindowAccessibleClass struct {
 	native *C.GtkWindowAccessibleClass
@@ -16960,7 +18272,9 @@ func (recv *WindowAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkWindowAccessiblePrivate
+C type
+
+GtkWindowAccessiblePrivate
 */
 type WindowAccessiblePrivate struct {
 	native *C.GtkWindowAccessiblePrivate
@@ -16984,7 +18298,9 @@ func (recv *WindowAccessiblePrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkWindowClass
+C type
+
+GtkWindowClass
 */
 type WindowClass struct {
 	native *C.GtkWindowClass
@@ -17017,7 +18333,9 @@ func (recv *WindowClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkWindowGeometryInfo
+C type
+
+GtkWindowGeometryInfo
 */
 type WindowGeometryInfo struct {
 	native *C.GtkWindowGeometryInfo
@@ -17041,7 +18359,9 @@ func (recv *WindowGeometryInfo) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkWindowGroupClass
+C type
+
+GtkWindowGroupClass
 */
 type WindowGroupClass struct {
 	native *C.GtkWindowGroupClass
@@ -17070,7 +18390,9 @@ func (recv *WindowGroupClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkWindowGroupPrivate
+C type
+
+GtkWindowGroupPrivate
 */
 type WindowGroupPrivate struct {
 	native *C.GtkWindowGroupPrivate
@@ -17094,7 +18416,9 @@ func (recv *WindowGroupPrivate) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkWindowPrivate
+C type
+
+GtkWindowPrivate
 */
 type WindowPrivate struct {
 	native *C.GtkWindowPrivate

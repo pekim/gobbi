@@ -16,7 +16,9 @@ import "C"
 // to ISO 8601.
 /*
 
-C function : g_date_get_iso8601_week_of_year
+C function
+
+g_date_get_iso8601_week_of_year
 */
 func (recv *Date) GetIso8601WeekOfYear() uint32 {
 	retC := C.g_date_get_iso8601_week_of_year((*C.GDate)(recv.native))
@@ -31,7 +33,9 @@ func (recv *Date) GetIso8601WeekOfYear() uint32 {
 // read an existing key file.
 /*
 
-C function : g_key_file_new
+C function
+
+g_key_file_new
 */
 func KeyFileNew() *KeyFile {
 	retC := C.g_key_file_new()
@@ -45,7 +49,9 @@ func KeyFileNew() *KeyFile {
 // frees the key file and all its allocated memory.
 /*
 
-C function : g_key_file_free
+C function
+
+g_key_file_free
 */
 func (recv *KeyFile) Free() {
 	C.g_key_file_free((*C.GKeyFile)(recv.native))
@@ -62,7 +68,9 @@ func (recv *KeyFile) Free() {
 // is returned and @error is set to #G_KEY_FILE_ERROR_INVALID_VALUE.
 /*
 
-C function : g_key_file_get_boolean
+C function
+
+g_key_file_get_boolean
 */
 func (recv *KeyFile) GetBoolean(groupName string, key string) (bool, error) {
 	c_group_name := C.CString(groupName)
@@ -94,7 +102,9 @@ func (recv *KeyFile) GetBoolean(groupName string, key string) (bool, error) {
 // Note that the returned string includes the '#' comment markers.
 /*
 
-C function : g_key_file_get_comment
+C function
+
+g_key_file_get_comment
 */
 func (recv *KeyFile) GetComment(groupName string, key string) (string, error) {
 	c_group_name := C.CString(groupName)
@@ -129,7 +139,9 @@ func (recv *KeyFile) GetComment(groupName string, key string) (string, error) {
 // and @error is set to #G_KEY_FILE_ERROR_INVALID_VALUE.
 /*
 
-C function : g_key_file_get_integer
+C function
+
+g_key_file_get_integer
 */
 func (recv *KeyFile) GetInteger(groupName string, key string) (int32, error) {
 	c_group_name := C.CString(groupName)
@@ -169,7 +181,9 @@ func (recv *KeyFile) GetInteger(groupName string, key string) (int32, error) {
 // be found then the untranslated value is returned.
 /*
 
-C function : g_key_file_get_locale_string
+C function
+
+g_key_file_get_locale_string
 */
 func (recv *KeyFile) GetLocaleString(groupName string, key string, locale string) (string, error) {
 	c_group_name := C.CString(groupName)
@@ -200,7 +214,9 @@ func (recv *KeyFile) GetLocaleString(groupName string, key string, locale string
 // Returns the name of the start group of the file.
 /*
 
-C function : g_key_file_get_start_group
+C function
+
+g_key_file_get_start_group
 */
 func (recv *KeyFile) GetStartGroup() string {
 	retC := C.g_key_file_get_start_group((*C.GKeyFile)(recv.native))
@@ -220,7 +236,9 @@ func (recv *KeyFile) GetStartGroup() string {
 // and @error is set to #G_KEY_FILE_ERROR_GROUP_NOT_FOUND.
 /*
 
-C function : g_key_file_get_string
+C function
+
+g_key_file_get_string
 */
 func (recv *KeyFile) GetString(groupName string, key string) (string, error) {
 	c_group_name := C.CString(groupName)
@@ -254,7 +272,9 @@ func (recv *KeyFile) GetString(groupName string, key string) (string, error) {
 // and @error is set to #G_KEY_FILE_ERROR_GROUP_NOT_FOUND.
 /*
 
-C function : g_key_file_get_value
+C function
+
+g_key_file_get_value
 */
 func (recv *KeyFile) GetValue(groupName string, key string) (string, error) {
 	c_group_name := C.CString(groupName)
@@ -280,7 +300,9 @@ func (recv *KeyFile) GetValue(groupName string, key string) (string, error) {
 // Looks whether the key file has the group @group_name.
 /*
 
-C function : g_key_file_has_group
+C function
+
+g_key_file_has_group
 */
 func (recv *KeyFile) HasGroup(groupName string) bool {
 	c_group_name := C.CString(groupName)
@@ -304,7 +326,9 @@ func (recv *KeyFile) HasGroup(groupName string) bool {
 // or not a key exists.
 /*
 
-C function : g_key_file_has_key
+C function
+
+g_key_file_has_key
 */
 func (recv *KeyFile) HasKey(groupName string, key string) (bool, error) {
 	c_group_name := C.CString(groupName)
@@ -330,7 +354,9 @@ func (recv *KeyFile) HasKey(groupName string, key string) (bool, error) {
 // If the object cannot be created then %error is set to a #GKeyFileError.
 /*
 
-C function : g_key_file_load_from_data
+C function
+
+g_key_file_load_from_data
 */
 func (recv *KeyFile) LoadFromData(data string, length uint64, flags KeyFileFlags) (bool, error) {
 	c_data := C.CString(data)
@@ -360,7 +386,9 @@ func (recv *KeyFile) LoadFromData(data string, length uint64, flags KeyFileFlags
 // set to either a #GFileError or #GKeyFileError.
 /*
 
-C function : g_key_file_load_from_data_dirs
+C function
+
+g_key_file_load_from_data_dirs
 */
 func (recv *KeyFile) LoadFromDataDirs(file string, flags KeyFileFlags) (bool, string, error) {
 	c_file := C.CString(file)
@@ -396,7 +424,9 @@ func (recv *KeyFile) LoadFromDataDirs(file string, flags KeyFileFlags) (bool, st
 // @file is not found, %G_FILE_ERROR_NOENT is returned.
 /*
 
-C function : g_key_file_load_from_file
+C function
+
+g_key_file_load_from_file
 */
 func (recv *KeyFile) LoadFromFile(file string, flags KeyFileFlags) (bool, error) {
 	c_file := C.CString(file)
@@ -423,7 +453,9 @@ func (recv *KeyFile) LoadFromFile(file string, flags KeyFileFlags) (bool, error)
 // be removed above the first group in the file.
 /*
 
-C function : g_key_file_remove_comment
+C function
+
+g_key_file_remove_comment
 */
 func (recv *KeyFile) RemoveComment(groupName string, key string) (bool, error) {
 	c_group_name := C.CString(groupName)
@@ -449,7 +481,9 @@ func (recv *KeyFile) RemoveComment(groupName string, key string) (bool, error) {
 // from the key file.
 /*
 
-C function : g_key_file_remove_group
+C function
+
+g_key_file_remove_group
 */
 func (recv *KeyFile) RemoveGroup(groupName string) (bool, error) {
 	c_group_name := C.CString(groupName)
@@ -471,7 +505,9 @@ func (recv *KeyFile) RemoveGroup(groupName string) (bool, error) {
 // Removes @key in @group_name from the key file.
 /*
 
-C function : g_key_file_remove_key
+C function
+
+g_key_file_remove_key
 */
 func (recv *KeyFile) RemoveKey(groupName string, key string) (bool, error) {
 	c_group_name := C.CString(groupName)
@@ -497,7 +533,9 @@ func (recv *KeyFile) RemoveKey(groupName string, key string) (bool, error) {
 // If @key cannot be found then it is created.
 /*
 
-C function : g_key_file_set_boolean
+C function
+
+g_key_file_set_boolean
 */
 func (recv *KeyFile) SetBoolean(groupName string, key string, value bool) {
 	c_group_name := C.CString(groupName)
@@ -519,7 +557,9 @@ func (recv *KeyFile) SetBoolean(groupName string, key string, value bool) {
 // If @group_name is %NULL, the start_group is used.
 /*
 
-C function : g_key_file_set_boolean_list
+C function
+
+g_key_file_set_boolean_list
 */
 func (recv *KeyFile) SetBooleanList(groupName string, key string, list []bool) {
 	c_group_name := C.CString(groupName)
@@ -547,7 +587,9 @@ func (recv *KeyFile) SetBooleanList(groupName string, key string, list []bool) {
 // each line of @comment.
 /*
 
-C function : g_key_file_set_comment
+C function
+
+g_key_file_set_comment
 */
 func (recv *KeyFile) SetComment(groupName string, key string, comment string) (bool, error) {
 	c_group_name := C.CString(groupName)
@@ -576,7 +618,9 @@ func (recv *KeyFile) SetComment(groupName string, key string, comment string) (b
 // If @key cannot be found then it is created.
 /*
 
-C function : g_key_file_set_integer
+C function
+
+g_key_file_set_integer
 */
 func (recv *KeyFile) SetInteger(groupName string, key string, value int32) {
 	c_group_name := C.CString(groupName)
@@ -596,7 +640,9 @@ func (recv *KeyFile) SetInteger(groupName string, key string, value int32) {
 // If @key cannot be found then it is created.
 /*
 
-C function : g_key_file_set_integer_list
+C function
+
+g_key_file_set_integer_list
 */
 func (recv *KeyFile) SetIntegerList(groupName string, key string, list []int32) {
 	c_group_name := C.CString(groupName)
@@ -619,7 +665,9 @@ func (recv *KeyFile) SetIntegerList(groupName string, key string, list []int32) 
 // as separators. The default list separator is ';'.
 /*
 
-C function : g_key_file_set_list_separator
+C function
+
+g_key_file_set_list_separator
 */
 func (recv *KeyFile) SetListSeparator(separator rune) {
 	c_separator := (C.gchar)(separator)
@@ -633,7 +681,9 @@ func (recv *KeyFile) SetListSeparator(separator rune) {
 // If the translation for @key cannot be found then it is created.
 /*
 
-C function : g_key_file_set_locale_string
+C function
+
+g_key_file_set_locale_string
 */
 func (recv *KeyFile) SetLocaleString(groupName string, key string, locale string, string string) {
 	c_group_name := C.CString(groupName)
@@ -662,7 +712,9 @@ func (recv *KeyFile) SetLocaleString(groupName string, key string, locale string
 // that need escaping, such as newlines.
 /*
 
-C function : g_key_file_set_string
+C function
+
+g_key_file_set_string
 */
 func (recv *KeyFile) SetString(groupName string, key string, string string) {
 	c_group_name := C.CString(groupName)
@@ -689,7 +741,9 @@ func (recv *KeyFile) SetString(groupName string, key string, string string) {
 // g_key_file_set_string().
 /*
 
-C function : g_key_file_set_value
+C function
+
+g_key_file_set_value
 */
 func (recv *KeyFile) SetValue(groupName string, key string, value string) {
 	c_group_name := C.CString(groupName)
@@ -712,7 +766,9 @@ func (recv *KeyFile) SetValue(groupName string, key string, value string) {
 // so it is safe to pass %NULL as @error.
 /*
 
-C function : g_key_file_to_data
+C function
+
+g_key_file_to_data
 */
 func (recv *KeyFile) ToData() (string, uint64, error) {
 	var c_length C.gsize
@@ -738,7 +794,9 @@ func (recv *KeyFile) ToData() (string, uint64, error) {
 // ownership of the @group and thus the @group should not be freed.
 /*
 
-C function : g_option_context_add_group
+C function
+
+g_option_context_add_group
 */
 func (recv *OptionContext) AddGroup(group *OptionGroup) {
 	c_group := (*C.GOptionGroup)(C.NULL)
@@ -755,7 +813,9 @@ func (recv *OptionContext) AddGroup(group *OptionGroup) {
 // exist, adds the @entries to it and sets the translation domain.
 /*
 
-C function : g_option_context_add_main_entries
+C function
+
+g_option_context_add_main_entries
 */
 func (recv *OptionContext) AddMainEntries(entries *OptionEntry, translationDomain string) {
 	c_entries := (*C.GOptionEntry)(C.NULL)
@@ -778,7 +838,9 @@ func (recv *OptionContext) AddMainEntries(entries *OptionEntry, translationDomai
 // #GOptionEntry).
 /*
 
-C function : g_option_context_free
+C function
+
+g_option_context_free
 */
 func (recv *OptionContext) Free() {
 	C.g_option_context_free((*C.GOptionContext)(recv.native))
@@ -790,7 +852,9 @@ func (recv *OptionContext) Free() {
 // is turned on for @context. See g_option_context_set_help_enabled().
 /*
 
-C function : g_option_context_get_help_enabled
+C function
+
+g_option_context_get_help_enabled
 */
 func (recv *OptionContext) GetHelpEnabled() bool {
 	retC := C.g_option_context_get_help_enabled((*C.GOptionContext)(recv.native))
@@ -803,7 +867,9 @@ func (recv *OptionContext) GetHelpEnabled() bool {
 // g_option_context_set_ignore_unknown_options().
 /*
 
-C function : g_option_context_get_ignore_unknown_options
+C function
+
+g_option_context_get_ignore_unknown_options
 */
 func (recv *OptionContext) GetIgnoreUnknownOptions() bool {
 	retC := C.g_option_context_get_ignore_unknown_options((*C.GOptionContext)(recv.native))
@@ -815,7 +881,9 @@ func (recv *OptionContext) GetIgnoreUnknownOptions() bool {
 // Returns a pointer to the main group of @context.
 /*
 
-C function : g_option_context_get_main_group
+C function
+
+g_option_context_get_main_group
 */
 func (recv *OptionContext) GetMainGroup() *OptionGroup {
 	retC := C.g_option_context_get_main_group((*C.GOptionContext)(recv.native))
@@ -847,7 +915,9 @@ func (recv *OptionContext) GetMainGroup() *OptionGroup {
 // arguments.
 /*
 
-C function : g_option_context_parse
+C function
+
+g_option_context_parse
 */
 func (recv *OptionContext) Parse(args []string) (bool, []string, error) {
 	cArgc, cArgv := argsIn(args)
@@ -873,7 +943,9 @@ func (recv *OptionContext) Parse(args []string) (bool, []string, error) {
 // output to stdout.
 /*
 
-C function : g_option_context_set_help_enabled
+C function
+
+g_option_context_set_help_enabled
 */
 func (recv *OptionContext) SetHelpEnabled(helpEnabled bool) {
 	c_help_enabled :=
@@ -893,7 +965,9 @@ func (recv *OptionContext) SetHelpEnabled(helpEnabled bool) {
 // determine whether a non-option belongs to a preceding unknown option.
 /*
 
-C function : g_option_context_set_ignore_unknown_options
+C function
+
+g_option_context_set_ignore_unknown_options
 */
 func (recv *OptionContext) SetIgnoreUnknownOptions(ignoreUnknown bool) {
 	c_ignore_unknown :=
@@ -910,7 +984,9 @@ func (recv *OptionContext) SetIgnoreUnknownOptions(ignoreUnknown bool) {
 // treated differently when generating `--help` output.
 /*
 
-C function : g_option_context_set_main_group
+C function
+
+g_option_context_set_main_group
 */
 func (recv *OptionContext) SetMainGroup(group *OptionGroup) {
 	c_group := (*C.GOptionGroup)(C.NULL)
@@ -928,7 +1004,9 @@ func (recv *OptionContext) SetMainGroup(group *OptionGroup) {
 // Adds the options specified in @entries to @group.
 /*
 
-C function : g_option_group_add_entries
+C function
+
+g_option_group_add_entries
 */
 func (recv *OptionGroup) AddEntries(entries *OptionEntry) {
 	c_entries := (*C.GOptionEntry)(C.NULL)
@@ -945,7 +1023,9 @@ func (recv *OptionGroup) AddEntries(entries *OptionEntry) {
 // which have been added to a #GOptionContext.
 /*
 
-C function : g_option_group_free
+C function
+
+g_option_group_free
 */
 func (recv *OptionGroup) Free() {
 	C.g_option_group_free((*C.GOptionGroup)(recv.native))
@@ -963,7 +1043,9 @@ func (recv *OptionGroup) Free() {
 // user-visible strings.
 /*
 
-C function : g_option_group_set_translation_domain
+C function
+
+g_option_group_set_translation_domain
 */
 func (recv *OptionGroup) SetTranslationDomain(domain string) {
 	c_domain := C.CString(domain)

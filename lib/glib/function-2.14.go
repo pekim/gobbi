@@ -24,7 +24,9 @@ import "C"
 // will not reflect any change once the special directories are loaded.
 /*
 
-C function : g_get_user_special_dir
+C function
+
+g_get_user_special_dir
 */
 func GetUserSpecialDir(directory UserDirectory) string {
 	c_directory := (C.GUserDirectory)(directory)
@@ -50,7 +52,9 @@ func GetUserSpecialDir(directory UserDirectory) string {
 // subpattern) requires valid #GMatchInfo object.
 /*
 
-C function : g_regex_check_replacement
+C function
+
+g_regex_check_replacement
 */
 func RegexCheckReplacement(replacement string) (bool, bool, error) {
 	c_replacement := C.CString(replacement)
@@ -87,7 +91,9 @@ func RegexCheckReplacement(replacement string) (bool, bool, error) {
 // g_regex_new() and then use g_regex_match().
 /*
 
-C function : g_regex_match_simple
+C function
+
+g_regex_match_simple
 */
 func RegexMatchSimple(pattern string, string string, compileOptions RegexCompileFlags, matchOptions RegexMatchFlags) bool {
 	c_pattern := C.CString(pattern)
@@ -111,7 +117,9 @@ func RegexMatchSimple(pattern string, string string, compileOptions RegexCompile
 // Returns the data that @iter points to.
 /*
 
-C function : g_sequence_get
+C function
+
+g_sequence_get
 */
 func SequenceGet(iter *SequenceIter) uintptr {
 	c_iter := (*C.GSequenceIter)(C.NULL)
@@ -128,7 +136,9 @@ func SequenceGet(iter *SequenceIter) uintptr {
 // Inserts a new item just before the item pointed to by @iter.
 /*
 
-C function : g_sequence_insert_before
+C function
+
+g_sequence_insert_before
 */
 func SequenceInsertBefore(iter *SequenceIter, data uintptr) *SequenceIter {
 	c_iter := (*C.GSequenceIter)(C.NULL)
@@ -150,7 +160,9 @@ func SequenceInsertBefore(iter *SequenceIter, data uintptr) *SequenceIter {
 // sequences.
 /*
 
-C function : g_sequence_move
+C function
+
+g_sequence_move
 */
 func SequenceMove(src *SequenceIter, dest *SequenceIter) {
 	c_src := (*C.GSequenceIter)(C.NULL)
@@ -178,7 +190,9 @@ func SequenceMove(src *SequenceIter, dest *SequenceIter) {
 // the (@begin, @end) range, the range does not move.
 /*
 
-C function : g_sequence_move_range
+C function
+
+g_sequence_move_range
 */
 func SequenceMoveRange(dest *SequenceIter, begin *SequenceIter, end *SequenceIter) {
 	c_dest := (*C.GSequenceIter)(C.NULL)
@@ -209,7 +223,9 @@ func SequenceMoveRange(dest *SequenceIter, begin *SequenceIter, end *SequenceIte
 // and @begin must come before or be equal to @end in the sequence.
 /*
 
-C function : g_sequence_range_get_midpoint
+C function
+
+g_sequence_range_get_midpoint
 */
 func SequenceRangeGetMidpoint(begin *SequenceIter, end *SequenceIter) *SequenceIter {
 	c_begin := (*C.GSequenceIter)(C.NULL)
@@ -235,7 +251,9 @@ func SequenceRangeGetMidpoint(begin *SequenceIter, end *SequenceIter) *SequenceI
 // function is called on the data for the removed item.
 /*
 
-C function : g_sequence_remove
+C function
+
+g_sequence_remove
 */
 func SequenceRemove(iter *SequenceIter) {
 	c_iter := (*C.GSequenceIter)(C.NULL)
@@ -254,7 +272,9 @@ func SequenceRemove(iter *SequenceIter) {
 // function is called on the data for the removed items.
 /*
 
-C function : g_sequence_remove_range
+C function
+
+g_sequence_remove_range
 */
 func SequenceRemoveRange(begin *SequenceIter, end *SequenceIter) {
 	c_begin := (*C.GSequenceIter)(C.NULL)
@@ -277,7 +297,9 @@ func SequenceRemoveRange(begin *SequenceIter, end *SequenceIter) {
 // function is called on the existing data that @iter pointed to.
 /*
 
-C function : g_sequence_set
+C function
+
+g_sequence_set
 */
 func SequenceSet(iter *SequenceIter, data uintptr) {
 	c_iter := (*C.GSequenceIter)(C.NULL)
@@ -296,7 +318,9 @@ func SequenceSet(iter *SequenceIter, data uintptr) {
 // to point into difference sequences.
 /*
 
-C function : g_sequence_swap
+C function
+
+g_sequence_swap
 */
 func SequenceSwap(a *SequenceIter, b *SequenceIter) {
 	c_a := (*C.GSequenceIter)(C.NULL)
@@ -320,7 +344,9 @@ func SequenceSwap(a *SequenceIter, b *SequenceIter) {
 // @mem_block must be non-%NULL if @block_size is non-zero.
 /*
 
-C function : g_slice_copy
+C function
+
+g_slice_copy
 */
 func SliceCopy(blockSize uint64, memBlock uintptr) uintptr {
 	c_block_size := (C.gsize)(blockSize)
@@ -350,7 +376,9 @@ func SliceCopy(blockSize uint64, memBlock uintptr) uintptr {
 // See g_get_monotonic_time().
 /*
 
-C function : g_timeout_source_new_seconds
+C function
+
+g_timeout_source_new_seconds
 */
 func TimeoutSourceNewSeconds(interval uint32) *Source {
 	c_interval := (C.guint)(interval)
@@ -364,7 +392,9 @@ func TimeoutSourceNewSeconds(interval uint32) *Source {
 // Determines the canonical combining class of a Unicode character.
 /*
 
-C function : g_unichar_combining_class
+C function
+
+g_unichar_combining_class
 */
 func UnicharCombiningClass(uc rune) int32 {
 	c_uc := (C.gunichar)(uc)
@@ -384,7 +414,9 @@ func UnicharCombiningClass(uc rune) int32 {
 // two are interchangeable.
 /*
 
-C function : g_unichar_get_script
+C function
+
+g_unichar_get_script
 */
 func UnicharGetScript(ch rune) UnicodeScript {
 	c_ch := (C.gunichar)(ch)
@@ -406,7 +438,9 @@ func UnicharGetScript(ch rune) UnicodeScript {
 // scripts.
 /*
 
-C function : g_unichar_ismark
+C function
+
+g_unichar_ismark
 */
 func UnicharIsmark(c rune) bool {
 	c_c := (C.gunichar)(c)
@@ -428,7 +462,9 @@ func UnicharIsmark(c rune) bool {
 // terminals support zero-width rendering of zero-width marks.
 /*
 
-C function : g_unichar_iszerowidth
+C function
+
+g_unichar_iszerowidth
 */
 func UnicharIszerowidth(c rune) bool {
 	c_c := (C.gunichar)(c)

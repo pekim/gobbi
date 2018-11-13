@@ -27,7 +27,9 @@ import "C"
 // descriptive to the user than the name itself.
 /*
 
-C function : g_app_info_get_display_name
+C function
+
+g_app_info_get_display_name
 */
 func (recv *AppInfo) GetDisplayName() string {
 	retC := C.g_app_info_get_display_name((*C.GAppInfo)(recv.native))
@@ -45,7 +47,9 @@ func (recv *AppInfo) GetDisplayName() string {
 // replace.
 /*
 
-C record/class : GConverter
+C type
+
+GConverter
 */
 type Converter struct {
 	native *C.GConverter
@@ -151,7 +155,9 @@ func (recv *Converter) ToC() unsafe.Pointer {
 // (typically %G_IO_ERROR_PARTIAL_INPUT).
 /*
 
-C function : g_converter_convert
+C function
+
+g_converter_convert
 */
 func (recv *Converter) Convert(inbuf []uint8, outbuf []uint8, flags ConverterFlags) (ConverterResult, uint64, uint64, error) {
 	c_inbuf := &inbuf[0]
@@ -190,7 +196,9 @@ func (recv *Converter) Convert(inbuf []uint8, outbuf []uint8, flags ConverterFla
 // state that would produce output then that output is lost.
 /*
 
-C function : g_converter_reset
+C function
+
+g_converter_reset
 */
 func (recv *Converter) Reset() {
 	C.g_converter_reset((*C.GConverter)(recv.native))
@@ -205,7 +213,9 @@ func (recv *Converter) Reset() {
 // if @file is an immediate child of @parent.
 /*
 
-C function : g_file_has_parent
+C function
+
+g_file_has_parent
 */
 func (recv *File) HasParent(parent *File) bool {
 	c_parent := (*C.GFile)(parent.ToC())
@@ -219,7 +229,9 @@ func (recv *File) HasParent(parent *File) bool {
 // Gets the underlying file descriptor.
 /*
 
-C function : g_file_descriptor_based_get_fd
+C function
+
+g_file_descriptor_based_get_fd
 */
 func (recv *FileDescriptorBased) GetFd() int32 {
 	retC := C.g_file_descriptor_based_get_fd((*C.GFileDescriptorBased)(recv.native))

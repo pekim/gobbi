@@ -36,7 +36,9 @@ import "C"
 // to call this function on uninitialised memory.
 /*
 
-C function : g_variant_builder_clear
+C function
+
+g_variant_builder_clear
 */
 func (recv *VariantBuilder) Clear() {
 	C.g_variant_builder_clear((*C.GVariantBuilder)(recv.native))
@@ -52,7 +54,9 @@ func (recv *VariantBuilder) Clear() {
 // subcontainer).
 /*
 
-C function : g_variant_builder_close
+C function
+
+g_variant_builder_close
 */
 func (recv *VariantBuilder) Close() {
 	C.g_variant_builder_close((*C.GVariantBuilder)(recv.native))
@@ -72,7 +76,9 @@ func (recv *VariantBuilder) Close() {
 // things will happen.
 /*
 
-C function : g_variant_builder_ref
+C function
+
+g_variant_builder_ref
 */
 func (recv *VariantBuilder) Ref() *VariantBuilder {
 	retC := C.g_variant_builder_ref((*C.GVariantBuilder)(recv.native))
@@ -90,7 +96,9 @@ func (recv *VariantBuilder) Ref() *VariantBuilder {
 // things will happen.
 /*
 
-C function : g_variant_builder_unref
+C function
+
+g_variant_builder_unref
 */
 func (recv *VariantBuilder) Unref() {
 	C.g_variant_builder_unref((*C.GVariantBuilder)(recv.native))
@@ -110,7 +118,9 @@ func (recv *VariantBuilder) Unref() {
 // and will be releated only when g_variant_iter_free() is called.
 /*
 
-C function : g_variant_iter_copy
+C function
+
+g_variant_iter_copy
 */
 func (recv *VariantIter) Copy() *VariantIter {
 	retC := C.g_variant_iter_copy((*C.GVariantIter)(recv.native))
@@ -124,7 +134,9 @@ func (recv *VariantIter) Copy() *VariantIter {
 // g_variant_iter_copy().
 /*
 
-C function : g_variant_iter_free
+C function
+
+g_variant_iter_free
 */
 func (recv *VariantIter) Free() {
 	C.g_variant_iter_free((*C.GVariantIter)(recv.native))
@@ -143,7 +155,9 @@ func (recv *VariantIter) Free() {
 // This function might be useful for preallocation of arrays.
 /*
 
-C function : g_variant_iter_n_children
+C function
+
+g_variant_iter_n_children
 */
 func (recv *VariantIter) NChildren() uint64 {
 	retC := C.g_variant_iter_n_children((*C.GVariantIter)(recv.native))

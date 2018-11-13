@@ -70,7 +70,9 @@ import "C"
 // Retrieves the license set using gtk_about_dialog_set_license_type()
 /*
 
-C function : gtk_about_dialog_get_license_type
+C function
+
+gtk_about_dialog_get_license_type
 */
 func (recv *AboutDialog) GetLicenseType() License {
 	retC := C.gtk_about_dialog_get_license_type((*C.GtkAboutDialog)(recv.native))
@@ -86,7 +88,9 @@ func (recv *AboutDialog) GetLicenseType() License {
 // gtk_about_dialog_set_license().
 /*
 
-C function : gtk_about_dialog_set_license_type
+C function
+
+gtk_about_dialog_set_license_type
 */
 func (recv *AboutDialog) SetLicenseType(licenseType License) {
 	c_license_type := (C.GtkLicense)(licenseType)
@@ -100,7 +104,9 @@ func (recv *AboutDialog) SetLicenseType(licenseType License) {
 // that can handle content of the given type.
 /*
 
-C function : gtk_app_chooser_button_new
+C function
+
+gtk_app_chooser_button_new
 */
 func AppChooserButtonNew(contentType string) *AppChooserButton {
 	c_content_type := C.CString(contentType)
@@ -120,7 +126,9 @@ func AppChooserButtonNew(contentType string) *AppChooserButton {
 // See also gtk_app_chooser_button_append_separator().
 /*
 
-C function : gtk_app_chooser_button_append_custom_item
+C function
+
+gtk_app_chooser_button_append_custom_item
 */
 func (recv *AppChooserButton) AppendCustomItem(name string, label string, icon *gio.Icon) {
 	c_name := C.CString(name)
@@ -140,7 +148,9 @@ func (recv *AppChooserButton) AppendCustomItem(name string, label string, icon *
 // in the popup.
 /*
 
-C function : gtk_app_chooser_button_append_separator
+C function
+
+gtk_app_chooser_button_append_separator
 */
 func (recv *AppChooserButton) AppendSeparator() {
 	C.gtk_app_chooser_button_append_separator((*C.GtkAppChooserButton)(recv.native))
@@ -152,7 +162,9 @@ func (recv *AppChooserButton) AppendSeparator() {
 // property.
 /*
 
-C function : gtk_app_chooser_button_get_show_dialog_item
+C function
+
+gtk_app_chooser_button_get_show_dialog_item
 */
 func (recv *AppChooserButton) GetShowDialogItem() bool {
 	retC := C.gtk_app_chooser_button_get_show_dialog_item((*C.GtkAppChooserButton)(recv.native))
@@ -168,7 +180,9 @@ func (recv *AppChooserButton) GetShowDialogItem() bool {
 // to its initial state.
 /*
 
-C function : gtk_app_chooser_button_set_active_custom_item
+C function
+
+gtk_app_chooser_button_set_active_custom_item
 */
 func (recv *AppChooserButton) SetActiveCustomItem(name string) {
 	c_name := C.CString(name)
@@ -183,7 +197,9 @@ func (recv *AppChooserButton) SetActiveCustomItem(name string) {
 // entry to trigger a #GtkAppChooserDialog.
 /*
 
-C function : gtk_app_chooser_button_set_show_dialog_item
+C function
+
+gtk_app_chooser_button_set_show_dialog_item
 */
 func (recv *AppChooserButton) SetShowDialogItem(setting bool) {
 	c_setting :=
@@ -198,7 +214,9 @@ func (recv *AppChooserButton) SetShowDialogItem(setting bool) {
 // to allow the user to select an application for it.
 /*
 
-C function : gtk_app_chooser_dialog_new
+C function
+
+gtk_app_chooser_dialog_new
 */
 func AppChooserDialogNew(parent *Window, flags DialogFlags, file *gio.File) *AppChooserDialog {
 	c_parent := (*C.GtkWindow)(C.NULL)
@@ -220,7 +238,9 @@ func AppChooserDialogNew(parent *Window, flags DialogFlags, file *gio.File) *App
 // to allow the user to select an application for it.
 /*
 
-C function : gtk_app_chooser_dialog_new_for_content_type
+C function
+
+gtk_app_chooser_dialog_new_for_content_type
 */
 func AppChooserDialogNewForContentType(parent *Window, flags DialogFlags, contentType string) *AppChooserDialog {
 	c_parent := (*C.GtkWindow)(C.NULL)
@@ -242,7 +262,9 @@ func AppChooserDialogNewForContentType(parent *Window, flags DialogFlags, conten
 // Returns the #GtkAppChooserWidget of this dialog.
 /*
 
-C function : gtk_app_chooser_dialog_get_widget
+C function
+
+gtk_app_chooser_dialog_get_widget
 */
 func (recv *AppChooserDialog) GetWidget() *Widget {
 	retC := C.gtk_app_chooser_dialog_get_widget((*C.GtkAppChooserDialog)(recv.native))
@@ -255,7 +277,9 @@ func (recv *AppChooserDialog) GetWidget() *Widget {
 // that can handle content of the given type.
 /*
 
-C function : gtk_app_chooser_widget_new
+C function
+
+gtk_app_chooser_widget_new
 */
 func AppChooserWidgetNew(contentType string) *AppChooserWidget {
 	c_content_type := C.CString(contentType)
@@ -271,7 +295,9 @@ func AppChooserWidgetNew(contentType string) *AppChooserWidget {
 // that can handle the content type.
 /*
 
-C function : gtk_app_chooser_widget_get_default_text
+C function
+
+gtk_app_chooser_widget_get_default_text
 */
 func (recv *AppChooserWidget) GetDefaultText() string {
 	retC := C.gtk_app_chooser_widget_get_default_text((*C.GtkAppChooserWidget)(recv.native))
@@ -284,7 +310,9 @@ func (recv *AppChooserWidget) GetDefaultText() string {
 // property.
 /*
 
-C function : gtk_app_chooser_widget_get_show_all
+C function
+
+gtk_app_chooser_widget_get_show_all
 */
 func (recv *AppChooserWidget) GetShowAll() bool {
 	retC := C.gtk_app_chooser_widget_get_show_all((*C.GtkAppChooserWidget)(recv.native))
@@ -297,7 +325,9 @@ func (recv *AppChooserWidget) GetShowAll() bool {
 // property.
 /*
 
-C function : gtk_app_chooser_widget_get_show_default
+C function
+
+gtk_app_chooser_widget_get_show_default
 */
 func (recv *AppChooserWidget) GetShowDefault() bool {
 	retC := C.gtk_app_chooser_widget_get_show_default((*C.GtkAppChooserWidget)(recv.native))
@@ -310,7 +340,9 @@ func (recv *AppChooserWidget) GetShowDefault() bool {
 // property.
 /*
 
-C function : gtk_app_chooser_widget_get_show_fallback
+C function
+
+gtk_app_chooser_widget_get_show_fallback
 */
 func (recv *AppChooserWidget) GetShowFallback() bool {
 	retC := C.gtk_app_chooser_widget_get_show_fallback((*C.GtkAppChooserWidget)(recv.native))
@@ -323,7 +355,9 @@ func (recv *AppChooserWidget) GetShowFallback() bool {
 // property.
 /*
 
-C function : gtk_app_chooser_widget_get_show_other
+C function
+
+gtk_app_chooser_widget_get_show_other
 */
 func (recv *AppChooserWidget) GetShowOther() bool {
 	retC := C.gtk_app_chooser_widget_get_show_other((*C.GtkAppChooserWidget)(recv.native))
@@ -336,7 +370,9 @@ func (recv *AppChooserWidget) GetShowOther() bool {
 // property.
 /*
 
-C function : gtk_app_chooser_widget_get_show_recommended
+C function
+
+gtk_app_chooser_widget_get_show_recommended
 */
 func (recv *AppChooserWidget) GetShowRecommended() bool {
 	retC := C.gtk_app_chooser_widget_get_show_recommended((*C.GtkAppChooserWidget)(recv.native))
@@ -349,7 +385,9 @@ func (recv *AppChooserWidget) GetShowRecommended() bool {
 // in a flat list.
 /*
 
-C function : gtk_app_chooser_widget_set_show_all
+C function
+
+gtk_app_chooser_widget_set_show_all
 */
 func (recv *AppChooserWidget) SetShowAll(setting bool) {
 	c_setting :=
@@ -364,7 +402,9 @@ func (recv *AppChooserWidget) SetShowAll(setting bool) {
 // for the content type in a separate section.
 /*
 
-C function : gtk_app_chooser_widget_set_show_default
+C function
+
+gtk_app_chooser_widget_set_show_default
 */
 func (recv *AppChooserWidget) SetShowDefault(setting bool) {
 	c_setting :=
@@ -379,7 +419,9 @@ func (recv *AppChooserWidget) SetShowDefault(setting bool) {
 // for the content type in a separate section.
 /*
 
-C function : gtk_app_chooser_widget_set_show_fallback
+C function
+
+gtk_app_chooser_widget_set_show_fallback
 */
 func (recv *AppChooserWidget) SetShowFallback(setting bool) {
 	c_setting :=
@@ -394,7 +436,9 @@ func (recv *AppChooserWidget) SetShowFallback(setting bool) {
 // which are unrelated to the content type.
 /*
 
-C function : gtk_app_chooser_widget_set_show_other
+C function
+
+gtk_app_chooser_widget_set_show_other
 */
 func (recv *AppChooserWidget) SetShowOther(setting bool) {
 	c_setting :=
@@ -409,7 +453,9 @@ func (recv *AppChooserWidget) SetShowOther(setting bool) {
 // for the content type in a separate section.
 /*
 
-C function : gtk_app_chooser_widget_set_show_recommended
+C function
+
+gtk_app_chooser_widget_set_show_recommended
 */
 func (recv *AppChooserWidget) SetShowRecommended(setting bool) {
 	c_setting :=
@@ -446,7 +492,9 @@ func (recv *AppChooserWidget) SetShowRecommended(setting bool) {
 // GTK+ 3.6 or later.
 /*
 
-C function : gtk_application_new
+C function
+
+gtk_application_new
 */
 func ApplicationNew(applicationId string, flags gio.ApplicationFlags) *Application {
 	c_application_id := C.CString(applicationId)
@@ -477,7 +525,9 @@ func ApplicationNew(applicationId string, flags gio.ApplicationFlags) *Applicati
 // any windows.
 /*
 
-C function : gtk_application_add_window
+C function
+
+gtk_application_add_window
 */
 func (recv *Application) AddWindow(window *Window) {
 	c_window := (*C.GtkWindow)(C.NULL)
@@ -501,7 +551,9 @@ func (recv *Application) AddWindow(window *Window) {
 // deletion.
 /*
 
-C function : gtk_application_get_windows
+C function
+
+gtk_application_get_windows
 */
 func (recv *Application) GetWindows() *glib.List {
 	retC := C.gtk_application_get_windows((*C.GtkApplication)(recv.native))
@@ -520,7 +572,9 @@ func (recv *Application) GetWindows() *glib.List {
 // function.
 /*
 
-C function : gtk_application_remove_window
+C function
+
+gtk_application_remove_window
 */
 func (recv *Application) RemoveWindow(window *Window) {
 	c_window := (*C.GtkWindow)(C.NULL)
@@ -542,7 +596,9 @@ func (recv *Application) RemoveWindow(window *Window) {
 // #GTK_ASSISTANT_PAGE_CUSTOM type.
 /*
 
-C function : gtk_assistant_next_page
+C function
+
+gtk_assistant_next_page
 */
 func (recv *Assistant) NextPage() {
 	C.gtk_assistant_next_page((*C.GtkAssistant)(recv.native))
@@ -559,7 +615,9 @@ func (recv *Assistant) NextPage() {
 // #GTK_ASSISTANT_PAGE_CUSTOM type.
 /*
 
-C function : gtk_assistant_previous_page
+C function
+
+gtk_assistant_previous_page
 */
 func (recv *Assistant) PreviousPage() {
 	C.gtk_assistant_previous_page((*C.GtkAssistant)(recv.native))
@@ -570,7 +628,9 @@ func (recv *Assistant) PreviousPage() {
 // Creates a new #GtkBox.
 /*
 
-C function : gtk_box_new
+C function
+
+gtk_box_new
 */
 func BoxNew(orientation Orientation, spacing int32) *Box {
 	c_orientation := (C.GtkOrientation)(orientation)
@@ -586,7 +646,9 @@ func BoxNew(orientation Orientation, spacing int32) *Box {
 // Creates a new #GtkButtonBox.
 /*
 
-C function : gtk_button_box_new
+C function
+
+gtk_button_box_new
 */
 func ButtonBoxNew(orientation Orientation) *ButtonBox {
 	c_orientation := (C.GtkOrientation)(orientation)
@@ -600,7 +662,9 @@ func ButtonBoxNew(orientation Orientation) *ButtonBox {
 // Returns if the @day of the @calendar is already marked.
 /*
 
-C function : gtk_calendar_get_day_is_marked
+C function
+
+gtk_calendar_get_day_is_marked
 */
 func (recv *Calendar) GetDayIsMarked(day uint32) bool {
 	c_day := (C.guint)(day)
@@ -748,7 +812,9 @@ func cellarea_removeEditableHandler(_ *C.GObject, c_renderer *C.GtkCellRenderer,
 // Adds @renderer to @area with the default child cell properties.
 /*
 
-C function : gtk_cell_area_add
+C function
+
+gtk_cell_area_add
 */
 func (recv *CellArea) Add(renderer *CellRenderer) {
 	c_renderer := (*C.GtkCellRenderer)(C.NULL)
@@ -769,7 +835,9 @@ func (recv *CellArea) Add(renderer *CellRenderer) {
 // focusable @renderer.
 /*
 
-C function : gtk_cell_area_add_focus_sibling
+C function
+
+gtk_cell_area_add_focus_sibling
 */
 func (recv *CellArea) AddFocusSibling(renderer *CellRenderer, sibling *CellRenderer) {
 	c_renderer := (*C.GtkCellRenderer)(C.NULL)
@@ -793,7 +861,9 @@ func (recv *CellArea) AddFocusSibling(renderer *CellRenderer, sibling *CellRende
 // @area by pulling the values from @tree_model.
 /*
 
-C function : gtk_cell_area_apply_attributes
+C function
+
+gtk_cell_area_apply_attributes
 */
 func (recv *CellArea) ApplyAttributes(treeModel *TreeModel, iter *TreeIter, isExpander bool, isExpanded bool) {
 	c_tree_model := (*C.GtkTreeModel)(treeModel.ToC())
@@ -818,7 +888,9 @@ func (recv *CellArea) ApplyAttributes(treeModel *TreeModel, iter *TreeIter, isEx
 // #GtkTreeModel in use.
 /*
 
-C function : gtk_cell_area_attribute_connect
+C function
+
+gtk_cell_area_attribute_connect
 */
 func (recv *CellArea) AttributeConnect(renderer *CellRenderer, attribute string, column int32) {
 	c_renderer := (*C.GtkCellRenderer)(C.NULL)
@@ -841,7 +913,9 @@ func (recv *CellArea) AttributeConnect(renderer *CellRenderer, attribute string,
 // model.
 /*
 
-C function : gtk_cell_area_attribute_disconnect
+C function
+
+gtk_cell_area_attribute_disconnect
 */
 func (recv *CellArea) AttributeDisconnect(renderer *CellRenderer, attribute string) {
 	c_renderer := (*C.GtkCellRenderer)(C.NULL)
@@ -862,7 +936,9 @@ func (recv *CellArea) AttributeDisconnect(renderer *CellRenderer, attribute stri
 // Gets the value of a cell property for @renderer in @area.
 /*
 
-C function : gtk_cell_area_cell_get_property
+C function
+
+gtk_cell_area_cell_get_property
 */
 func (recv *CellArea) CellGetProperty(renderer *CellRenderer, propertyName string, value *gobject.Value) {
 	c_renderer := (*C.GtkCellRenderer)(C.NULL)
@@ -890,7 +966,9 @@ func (recv *CellArea) CellGetProperty(renderer *CellRenderer, propertyName strin
 // Sets a cell property for @renderer in @area.
 /*
 
-C function : gtk_cell_area_cell_set_property
+C function
+
+gtk_cell_area_cell_set_property
 */
 func (recv *CellArea) CellSetProperty(renderer *CellRenderer, propertyName string, value *gobject.Value) {
 	c_renderer := (*C.GtkCellRenderer)(C.NULL)
@@ -926,7 +1004,9 @@ func (recv *CellArea) CellSetProperty(renderer *CellRenderer, propertyName strin
 // to be displayed.
 /*
 
-C function : gtk_cell_area_copy_context
+C function
+
+gtk_cell_area_copy_context
 */
 func (recv *CellArea) CopyContext(context *CellAreaContext) *CellAreaContext {
 	c_context := (*C.GtkCellAreaContext)(C.NULL)
@@ -948,7 +1028,9 @@ func (recv *CellArea) CopyContext(context *CellAreaContext) *CellAreaContext {
 // which was used to request the size of those rows of data).
 /*
 
-C function : gtk_cell_area_create_context
+C function
+
+gtk_cell_area_create_context
 */
 func (recv *CellArea) CreateContext() *CellAreaContext {
 	retC := C.gtk_cell_area_create_context((*C.GtkCellArea)(recv.native))
@@ -968,7 +1050,9 @@ func (recv *CellArea) CreateContext() *CellAreaContext {
 // to how it lays out cells.
 /*
 
-C function : gtk_cell_area_focus
+C function
+
+gtk_cell_area_focus
 */
 func (recv *CellArea) Focus(direction DirectionType) bool {
 	c_direction := (C.GtkDirectionType)(direction)
@@ -994,7 +1078,9 @@ func (recv *CellArea) Focus(direction DirectionType) bool {
 // subclasses.
 /*
 
-C function : gtk_cell_area_get_current_path_string
+C function
+
+gtk_cell_area_get_current_path_string
 */
 func (recv *CellArea) GetCurrentPathString() string {
 	retC := C.gtk_cell_area_get_current_path_string((*C.GtkCellArea)(recv.native))
@@ -1007,7 +1093,9 @@ func (recv *CellArea) GetCurrentPathString() string {
 // to edit the currently edited cell.
 /*
 
-C function : gtk_cell_area_get_edit_widget
+C function
+
+gtk_cell_area_get_edit_widget
 */
 func (recv *CellArea) GetEditWidget() *CellEditable {
 	retC := C.gtk_cell_area_get_edit_widget((*C.GtkCellArea)(recv.native))
@@ -1020,7 +1108,9 @@ func (recv *CellArea) GetEditWidget() *CellEditable {
 // being edited.
 /*
 
-C function : gtk_cell_area_get_edited_cell
+C function
+
+gtk_cell_area_get_edited_cell
 */
 func (recv *CellArea) GetEditedCell() *CellRenderer {
 	retC := C.gtk_cell_area_get_edited_cell((*C.GtkCellArea)(recv.native))
@@ -1032,7 +1122,9 @@ func (recv *CellArea) GetEditedCell() *CellRenderer {
 // Retrieves the currently focused cell for @area
 /*
 
-C function : gtk_cell_area_get_focus_cell
+C function
+
+gtk_cell_area_get_focus_cell
 */
 func (recv *CellArea) GetFocusCell() *CellRenderer {
 	retC := C.gtk_cell_area_get_focus_cell((*C.GtkCellArea)(recv.native))
@@ -1050,7 +1142,9 @@ func (recv *CellArea) GetFocusCell() *CellRenderer {
 // cell may have been a sibling.
 /*
 
-C function : gtk_cell_area_get_focus_from_sibling
+C function
+
+gtk_cell_area_get_focus_from_sibling
 */
 func (recv *CellArea) GetFocusFromSibling(renderer *CellRenderer) *CellRenderer {
 	c_renderer := (*C.GtkCellRenderer)(C.NULL)
@@ -1072,7 +1166,9 @@ func (recv *CellArea) GetFocusFromSibling(renderer *CellRenderer) *CellRenderer 
 // Gets the focus sibling cell renderers for @renderer.
 /*
 
-C function : gtk_cell_area_get_focus_siblings
+C function
+
+gtk_cell_area_get_focus_siblings
 */
 func (recv *CellArea) GetFocusSiblings(renderer *CellRenderer) *glib.List {
 	c_renderer := (*C.GtkCellRenderer)(C.NULL)
@@ -1095,7 +1191,9 @@ func (recv *CellArea) GetFocusSiblings(renderer *CellRenderer) *glib.List {
 // requests.
 /*
 
-C function : gtk_cell_area_get_preferred_height
+C function
+
+gtk_cell_area_get_preferred_height
 */
 func (recv *CellArea) GetPreferredHeight(context *CellAreaContext, widget *Widget) (int32, int32) {
 	c_context := (*C.GtkCellAreaContext)(C.NULL)
@@ -1137,7 +1235,9 @@ func (recv *CellArea) GetPreferredHeight(context *CellAreaContext, widget *Widge
 // gtk_cell_area_context_get_preferred_width().
 /*
 
-C function : gtk_cell_area_get_preferred_height_for_width
+C function
+
+gtk_cell_area_get_preferred_height_for_width
 */
 func (recv *CellArea) GetPreferredHeightForWidth(context *CellAreaContext, widget *Widget, width int32) (int32, int32) {
 	c_context := (*C.GtkCellAreaContext)(C.NULL)
@@ -1174,7 +1274,9 @@ func (recv *CellArea) GetPreferredHeightForWidth(context *CellAreaContext, widge
 // requests.
 /*
 
-C function : gtk_cell_area_get_preferred_width
+C function
+
+gtk_cell_area_get_preferred_width
 */
 func (recv *CellArea) GetPreferredWidth(context *CellAreaContext, widget *Widget) (int32, int32) {
 	c_context := (*C.GtkCellAreaContext)(C.NULL)
@@ -1216,7 +1318,9 @@ func (recv *CellArea) GetPreferredWidth(context *CellAreaContext, widget *Widget
 // gtk_cell_area_context_get_preferred_height().
 /*
 
-C function : gtk_cell_area_get_preferred_width_for_height
+C function
+
+gtk_cell_area_get_preferred_width_for_height
 */
 func (recv *CellArea) GetPreferredWidthForHeight(context *CellAreaContext, widget *Widget, height int32) (int32, int32) {
 	c_context := (*C.GtkCellAreaContext)(C.NULL)
@@ -1248,7 +1352,9 @@ func (recv *CellArea) GetPreferredWidthForHeight(context *CellAreaContext, widge
 // or a width-for-height layout.
 /*
 
-C function : gtk_cell_area_get_request_mode
+C function
+
+gtk_cell_area_get_request_mode
 */
 func (recv *CellArea) GetRequestMode() SizeRequestMode {
 	retC := C.gtk_cell_area_get_request_mode((*C.GtkCellArea)(recv.native))
@@ -1260,7 +1366,9 @@ func (recv *CellArea) GetRequestMode() SizeRequestMode {
 // Checks if @area contains @renderer.
 /*
 
-C function : gtk_cell_area_has_renderer
+C function
+
+gtk_cell_area_has_renderer
 */
 func (recv *CellArea) HasRenderer(renderer *CellRenderer) bool {
 	c_renderer := (*C.GtkCellRenderer)(C.NULL)
@@ -1280,7 +1388,9 @@ func (recv *CellArea) HasRenderer(renderer *CellRenderer) bool {
 // after applying new attributes to @area.
 /*
 
-C function : gtk_cell_area_is_activatable
+C function
+
+gtk_cell_area_is_activatable
 */
 func (recv *CellArea) IsActivatable() bool {
 	retC := C.gtk_cell_area_is_activatable((*C.GtkCellArea)(recv.native))
@@ -1293,7 +1403,9 @@ func (recv *CellArea) IsActivatable() bool {
 // (see gtk_cell_area_add_focus_sibling()).
 /*
 
-C function : gtk_cell_area_is_focus_sibling
+C function
+
+gtk_cell_area_is_focus_sibling
 */
 func (recv *CellArea) IsFocusSibling(renderer *CellRenderer, sibling *CellRenderer) bool {
 	c_renderer := (*C.GtkCellRenderer)(C.NULL)
@@ -1315,7 +1427,9 @@ func (recv *CellArea) IsFocusSibling(renderer *CellRenderer, sibling *CellRender
 // Removes @renderer from @area.
 /*
 
-C function : gtk_cell_area_remove
+C function
+
+gtk_cell_area_remove
 */
 func (recv *CellArea) Remove(renderer *CellRenderer) {
 	c_renderer := (*C.GtkCellRenderer)(C.NULL)
@@ -1332,7 +1446,9 @@ func (recv *CellArea) Remove(renderer *CellRenderer) {
 // (see gtk_cell_area_add_focus_sibling()).
 /*
 
-C function : gtk_cell_area_remove_focus_sibling
+C function
+
+gtk_cell_area_remove_focus_sibling
 */
 func (recv *CellArea) RemoveFocusSibling(renderer *CellRenderer, sibling *CellRenderer) {
 	c_renderer := (*C.GtkCellRenderer)(C.NULL)
@@ -1359,7 +1475,9 @@ func (recv *CellArea) RemoveFocusSibling(renderer *CellRenderer, sibling *CellRe
 // around the cell for focus painting.
 /*
 
-C function : gtk_cell_area_request_renderer
+C function
+
+gtk_cell_area_request_renderer
 */
 func (recv *CellArea) RequestRenderer(renderer *CellRenderer, orientation Orientation, widget *Widget, forSize int32) (int32, int32) {
 	c_renderer := (*C.GtkCellRenderer)(C.NULL)
@@ -1397,7 +1515,9 @@ func (recv *CellArea) RequestRenderer(renderer *CellRenderer, orientation Orient
 // as gtk_tree_view_set_cursor_on_cell().
 /*
 
-C function : gtk_cell_area_set_focus_cell
+C function
+
+gtk_cell_area_set_focus_cell
 */
 func (recv *CellArea) SetFocusCell(renderer *CellRenderer) {
 	c_renderer := (*C.GtkCellRenderer)(C.NULL)
@@ -1420,7 +1540,9 @@ func (recv *CellArea) SetFocusCell(renderer *CellRenderer) {
 // See gtk_cell_area_get_edited_cell() and gtk_cell_area_get_edit_widget().
 /*
 
-C function : gtk_cell_area_stop_editing
+C function
+
+gtk_cell_area_stop_editing
 */
 func (recv *CellArea) StopEditing(canceled bool) {
 	c_canceled :=
@@ -1434,7 +1556,9 @@ func (recv *CellArea) StopEditing(canceled bool) {
 // Creates a new #GtkCellAreaBox.
 /*
 
-C function : gtk_cell_area_box_new
+C function
+
+gtk_cell_area_box_new
 */
 func CellAreaBoxNew() *CellAreaBox {
 	retC := C.gtk_cell_area_box_new()
@@ -1446,7 +1570,9 @@ func CellAreaBoxNew() *CellAreaBox {
 // Gets the spacing added between cell renderers.
 /*
 
-C function : gtk_cell_area_box_get_spacing
+C function
+
+gtk_cell_area_box_get_spacing
 */
 func (recv *CellAreaBox) GetSpacing() int32 {
 	retC := C.gtk_cell_area_box_get_spacing((*C.GtkCellAreaBox)(recv.native))
@@ -1461,7 +1587,9 @@ func (recv *CellAreaBox) GetSpacing() int32 {
 // #GtkCellRenderer packed with reference to the end of @box.
 /*
 
-C function : gtk_cell_area_box_pack_end
+C function
+
+gtk_cell_area_box_pack_end
 */
 func (recv *CellAreaBox) PackEnd(renderer *CellRenderer, expand bool, align bool, fixed bool) {
 	c_renderer := (*C.GtkCellRenderer)(C.NULL)
@@ -1489,7 +1617,9 @@ func (recv *CellAreaBox) PackEnd(renderer *CellRenderer, expand bool, align bool
 // with reference to the start of @box.
 /*
 
-C function : gtk_cell_area_box_pack_start
+C function
+
+gtk_cell_area_box_pack_start
 */
 func (recv *CellAreaBox) PackStart(renderer *CellRenderer, expand bool, align bool, fixed bool) {
 	c_renderer := (*C.GtkCellRenderer)(C.NULL)
@@ -1514,7 +1644,9 @@ func (recv *CellAreaBox) PackStart(renderer *CellRenderer, expand bool, align bo
 // Sets the spacing to add between cell renderers in @box.
 /*
 
-C function : gtk_cell_area_box_set_spacing
+C function
+
+gtk_cell_area_box_set_spacing
 */
 func (recv *CellAreaBox) SetSpacing(spacing int32) {
 	c_spacing := (C.gint)(spacing)
@@ -1531,7 +1663,9 @@ func (recv *CellAreaBox) SetSpacing(spacing int32) {
 // the returned value will be -1.
 /*
 
-C function : gtk_cell_area_context_get_allocation
+C function
+
+gtk_cell_area_context_get_allocation
 */
 func (recv *CellAreaContext) GetAllocation() (int32, int32) {
 	var c_width C.gint
@@ -1559,7 +1693,9 @@ func (recv *CellAreaContext) GetAllocation() (int32, int32) {
 // compute a proper allocation.
 /*
 
-C function : gtk_cell_area_context_get_area
+C function
+
+gtk_cell_area_context_get_area
 */
 func (recv *CellAreaContext) GetArea() *CellArea {
 	retC := C.gtk_cell_area_context_get_area((*C.GtkCellAreaContext)(recv.native))
@@ -1575,7 +1711,9 @@ func (recv *CellAreaContext) GetArea() *CellArea {
 // requesting the size of a #GtkCellArea, the returned values are 0.
 /*
 
-C function : gtk_cell_area_context_get_preferred_height
+C function
+
+gtk_cell_area_context_get_preferred_height
 */
 func (recv *CellAreaContext) GetPreferredHeight() (int32, int32) {
 	var c_minimum_height C.gint
@@ -1598,7 +1736,9 @@ func (recv *CellAreaContext) GetPreferredHeight() (int32, int32) {
 // requesting the size of a #GtkCellArea, the returned values are -1.
 /*
 
-C function : gtk_cell_area_context_get_preferred_height_for_width
+C function
+
+gtk_cell_area_context_get_preferred_height_for_width
 */
 func (recv *CellAreaContext) GetPreferredHeightForWidth(width int32) (int32, int32) {
 	c_width := (C.gint)(width)
@@ -1623,7 +1763,9 @@ func (recv *CellAreaContext) GetPreferredHeightForWidth(width int32) (int32, int
 // requesting the size of a #GtkCellArea, the returned values are 0.
 /*
 
-C function : gtk_cell_area_context_get_preferred_width
+C function
+
+gtk_cell_area_context_get_preferred_width
 */
 func (recv *CellAreaContext) GetPreferredWidth() (int32, int32) {
 	var c_minimum_width C.gint
@@ -1646,7 +1788,9 @@ func (recv *CellAreaContext) GetPreferredWidth() (int32, int32) {
 // requesting the size of a #GtkCellArea, the returned values are -1.
 /*
 
-C function : gtk_cell_area_context_get_preferred_width_for_height
+C function
+
+gtk_cell_area_context_get_preferred_width_for_height
 */
 func (recv *CellAreaContext) GetPreferredWidthForHeight(height int32) (int32, int32) {
 	c_height := (C.gint)(height)
@@ -1673,7 +1817,9 @@ func (recv *CellAreaContext) GetPreferredWidthForHeight(height int32) (int32, in
 // gtk_cell_area_get_preferred_height() requests.
 /*
 
-C function : gtk_cell_area_context_push_preferred_height
+C function
+
+gtk_cell_area_context_push_preferred_height
 */
 func (recv *CellAreaContext) PushPreferredHeight(minimumHeight int32, naturalHeight int32) {
 	c_minimum_height := (C.gint)(minimumHeight)
@@ -1694,7 +1840,9 @@ func (recv *CellAreaContext) PushPreferredHeight(minimumHeight int32, naturalHei
 // gtk_cell_area_get_preferred_width() requests.
 /*
 
-C function : gtk_cell_area_context_push_preferred_width
+C function
+
+gtk_cell_area_context_push_preferred_width
 */
 func (recv *CellAreaContext) PushPreferredWidth(minimumWidth int32, naturalWidth int32) {
 	c_minimum_width := (C.gint)(minimumWidth)
@@ -1711,7 +1859,9 @@ func (recv *CellAreaContext) PushPreferredWidth(minimumWidth int32, naturalWidth
 // Retreives a renderer’s natural size when rendered to @widget.
 /*
 
-C function : gtk_cell_renderer_get_preferred_height
+C function
+
+gtk_cell_renderer_get_preferred_height
 */
 func (recv *CellRenderer) GetPreferredHeight(widget *Widget) (int32, int32) {
 	c_widget := (*C.GtkWidget)(C.NULL)
@@ -1736,7 +1886,9 @@ func (recv *CellRenderer) GetPreferredHeight(widget *Widget) (int32, int32) {
 // @widget with the specified @width.
 /*
 
-C function : gtk_cell_renderer_get_preferred_height_for_width
+C function
+
+gtk_cell_renderer_get_preferred_height_for_width
 */
 func (recv *CellRenderer) GetPreferredHeightForWidth(widget *Widget, width int32) (int32, int32) {
 	c_widget := (*C.GtkWidget)(C.NULL)
@@ -1763,7 +1915,9 @@ func (recv *CellRenderer) GetPreferredHeightForWidth(widget *Widget, width int32
 // into account the widget’s preference for height-for-width management.
 /*
 
-C function : gtk_cell_renderer_get_preferred_size
+C function
+
+gtk_cell_renderer_get_preferred_size
 */
 func (recv *CellRenderer) GetPreferredSize(widget *Widget) (*Requisition, *Requisition) {
 	c_widget := (*C.GtkWidget)(C.NULL)
@@ -1787,7 +1941,9 @@ func (recv *CellRenderer) GetPreferredSize(widget *Widget) (*Requisition, *Requi
 // Retreives a renderer’s natural size when rendered to @widget.
 /*
 
-C function : gtk_cell_renderer_get_preferred_width
+C function
+
+gtk_cell_renderer_get_preferred_width
 */
 func (recv *CellRenderer) GetPreferredWidth(widget *Widget) (int32, int32) {
 	c_widget := (*C.GtkWidget)(C.NULL)
@@ -1812,7 +1968,9 @@ func (recv *CellRenderer) GetPreferredWidth(widget *Widget) (int32, int32) {
 // @widget with the specified @height.
 /*
 
-C function : gtk_cell_renderer_get_preferred_width_for_height
+C function
+
+gtk_cell_renderer_get_preferred_width_for_height
 */
 func (recv *CellRenderer) GetPreferredWidthForHeight(widget *Widget, height int32) (int32, int32) {
 	c_widget := (*C.GtkWidget)(C.NULL)
@@ -1839,7 +1997,9 @@ func (recv *CellRenderer) GetPreferredWidthForHeight(widget *Widget, height int3
 // or a width-for-height layout.
 /*
 
-C function : gtk_cell_renderer_get_request_mode
+C function
+
+gtk_cell_renderer_get_request_mode
 */
 func (recv *CellRenderer) GetRequestMode() SizeRequestMode {
 	retC := C.gtk_cell_renderer_get_request_mode((*C.GtkCellRenderer)(recv.native))
@@ -1853,7 +2013,9 @@ func (recv *CellRenderer) GetRequestMode() SizeRequestMode {
 // the given #GtkCellRendererState.
 /*
 
-C function : gtk_cell_renderer_get_state
+C function
+
+gtk_cell_renderer_get_state
 */
 func (recv *CellRenderer) GetState(widget *Widget, cellState CellRendererState) StateFlags {
 	c_widget := (*C.GtkWidget)(C.NULL)
@@ -1872,7 +2034,9 @@ func (recv *CellRenderer) GetState(widget *Widget, cellState CellRendererState) 
 // Checks whether the cell renderer can do something when activated.
 /*
 
-C function : gtk_cell_renderer_is_activatable
+C function
+
+gtk_cell_renderer_is_activatable
 */
 func (recv *CellRenderer) IsActivatable() bool {
 	retC := C.gtk_cell_renderer_is_activatable((*C.GtkCellRenderer)(recv.native))
@@ -1885,7 +2049,9 @@ func (recv *CellRenderer) IsActivatable() bool {
 // cells in a sensitive state.
 /*
 
-C function : gtk_cell_view_get_draw_sensitive
+C function
+
+gtk_cell_view_get_draw_sensitive
 */
 func (recv *CellView) GetDrawSensitive() bool {
 	retC := C.gtk_cell_view_get_draw_sensitive((*C.GtkCellView)(recv.native))
@@ -1898,7 +2064,9 @@ func (recv *CellView) GetDrawSensitive() bool {
 // to fit the entire #GtkTreeModel.
 /*
 
-C function : gtk_cell_view_get_fit_model
+C function
+
+gtk_cell_view_get_fit_model
 */
 func (recv *CellView) GetFitModel() bool {
 	retC := C.gtk_cell_view_get_fit_model((*C.GtkCellView)(recv.native))
@@ -1910,7 +2078,9 @@ func (recv *CellView) GetFitModel() bool {
 // Sets the background color of @cell_view.
 /*
 
-C function : gtk_cell_view_set_background_rgba
+C function
+
+gtk_cell_view_set_background_rgba
 */
 func (recv *CellView) SetBackgroundRgba(rgba *gdk.RGBA) {
 	c_rgba := (*C.GdkRGBA)(C.NULL)
@@ -1929,7 +2099,9 @@ func (recv *CellView) SetBackgroundRgba(rgba *gdk.RGBA) {
 // children appear sensitive in the parent menu item.
 /*
 
-C function : gtk_cell_view_set_draw_sensitive
+C function
+
+gtk_cell_view_set_draw_sensitive
 */
 func (recv *CellView) SetDrawSensitive(drawSensitive bool) {
 	c_draw_sensitive :=
@@ -1947,7 +2119,9 @@ func (recv *CellView) SetDrawSensitive(drawSensitive bool) {
 // when selection changes.
 /*
 
-C function : gtk_cell_view_set_fit_model
+C function
+
+gtk_cell_view_set_fit_model
 */
 func (recv *CellView) SetFitModel(fitModel bool) {
 	c_fit_model :=
@@ -1961,7 +2135,9 @@ func (recv *CellView) SetFitModel(fitModel bool) {
 // Creates a new color button.
 /*
 
-C function : gtk_color_button_new_with_rgba
+C function
+
+gtk_color_button_new_with_rgba
 */
 func ColorButtonNewWithRgba(rgba *gdk.RGBA) *ColorButton {
 	c_rgba := (*C.GdkRGBA)(C.NULL)
@@ -1978,7 +2154,9 @@ func ColorButtonNewWithRgba(rgba *gdk.RGBA) *ColorButton {
 // Sets @rgba to be the current color in the #GtkColorButton widget.
 /*
 
-C function : gtk_color_button_get_rgba
+C function
+
+gtk_color_button_get_rgba
 */
 func (recv *ColorButton) GetRgba() *gdk.RGBA {
 	var c_rgba C.GdkRGBA
@@ -1993,7 +2171,9 @@ func (recv *ColorButton) GetRgba() *gdk.RGBA {
 // Sets the current color to be @rgba.
 /*
 
-C function : gtk_color_button_set_rgba
+C function
+
+gtk_color_button_set_rgba
 */
 func (recv *ColorButton) SetRgba(rgba *gdk.RGBA) {
 	c_rgba := (*C.GdkRGBA)(C.NULL)
@@ -2009,7 +2189,9 @@ func (recv *ColorButton) SetRgba(rgba *gdk.RGBA) {
 // Sets @rgba to be the current color in the GtkColorSelection widget.
 /*
 
-C function : gtk_color_selection_get_current_rgba
+C function
+
+gtk_color_selection_get_current_rgba
 */
 func (recv *ColorSelection) GetCurrentRgba() *gdk.RGBA {
 	var c_rgba C.GdkRGBA
@@ -2024,7 +2206,9 @@ func (recv *ColorSelection) GetCurrentRgba() *gdk.RGBA {
 // Fills @rgba in with the original color value.
 /*
 
-C function : gtk_color_selection_get_previous_rgba
+C function
+
+gtk_color_selection_get_previous_rgba
 */
 func (recv *ColorSelection) GetPreviousRgba() *gdk.RGBA {
 	var c_rgba C.GdkRGBA
@@ -2042,7 +2226,9 @@ func (recv *ColorSelection) GetPreviousRgba() *gdk.RGBA {
 // the original color to be @rgba too.
 /*
 
-C function : gtk_color_selection_set_current_rgba
+C function
+
+gtk_color_selection_set_current_rgba
 */
 func (recv *ColorSelection) SetCurrentRgba(rgba *gdk.RGBA) {
 	c_rgba := (*C.GdkRGBA)(C.NULL)
@@ -2063,7 +2249,9 @@ func (recv *ColorSelection) SetCurrentRgba(rgba *gdk.RGBA) {
 // set this color the first time it is called.
 /*
 
-C function : gtk_color_selection_set_previous_rgba
+C function
+
+gtk_color_selection_set_previous_rgba
 */
 func (recv *ColorSelection) SetPreviousRgba(rgba *gdk.RGBA) {
 	c_rgba := (*C.GdkRGBA)(C.NULL)
@@ -2089,7 +2277,9 @@ func (recv *ColorSelection) SetPreviousRgba(rgba *gdk.RGBA) {
 // is returned.
 /*
 
-C function : gtk_combo_box_get_active_id
+C function
+
+gtk_combo_box_get_active_id
 */
 func (recv *ComboBox) GetActiveId() string {
 	retC := C.gtk_combo_box_get_active_id((*C.GtkComboBox)(recv.native))
@@ -2102,7 +2292,9 @@ func (recv *ComboBox) GetActiveId() string {
 // for values from.
 /*
 
-C function : gtk_combo_box_get_id_column
+C function
+
+gtk_combo_box_get_id_column
 */
 func (recv *ComboBox) GetIdColumn() int32 {
 	retC := C.gtk_combo_box_get_id_column((*C.GtkComboBox)(recv.native))
@@ -2115,7 +2307,9 @@ func (recv *ComboBox) GetIdColumn() int32 {
 // the allocated width of the combo box.
 /*
 
-C function : gtk_combo_box_get_popup_fixed_width
+C function
+
+gtk_combo_box_get_popup_fixed_width
 */
 func (recv *ComboBox) GetPopupFixedWidth() bool {
 	retC := C.gtk_combo_box_get_popup_fixed_width((*C.GtkComboBox)(recv.native))
@@ -2129,7 +2323,9 @@ func (recv *ComboBox) GetPopupFixedWidth() bool {
 // are the only #GdkDevices able to send events to it.
 /*
 
-C function : gtk_combo_box_popup_for_device
+C function
+
+gtk_combo_box_popup_for_device
 */
 func (recv *ComboBox) PopupForDevice(device *gdk.Device) {
 	c_device := (*C.GdkDevice)(C.NULL)
@@ -2150,7 +2346,9 @@ func (recv *ComboBox) PopupForDevice(device *gdk.Device) {
 // row has the given ID then the function does nothing and returns %FALSE.
 /*
 
-C function : gtk_combo_box_set_active_id
+C function
+
+gtk_combo_box_set_active_id
 */
 func (recv *ComboBox) SetActiveId(activeId string) bool {
 	c_active_id := C.CString(activeId)
@@ -2167,7 +2365,9 @@ func (recv *ComboBox) SetActiveId(activeId string) bool {
 // must be of type %G_TYPE_STRING.
 /*
 
-C function : gtk_combo_box_set_id_column
+C function
+
+gtk_combo_box_set_id_column
 */
 func (recv *ComboBox) SetIdColumn(idColumn int32) {
 	c_id_column := (C.gint)(idColumn)
@@ -2181,7 +2381,9 @@ func (recv *ComboBox) SetIdColumn(idColumn int32) {
 // matching the allocated width of the combo box.
 /*
 
-C function : gtk_combo_box_set_popup_fixed_width
+C function
+
+gtk_combo_box_set_popup_fixed_width
 */
 func (recv *ComboBox) SetPopupFixedWidth(fixed bool) {
 	c_fixed :=
@@ -2199,7 +2401,9 @@ func (recv *ComboBox) SetPopupFixedWidth(fixed bool) {
 // If @position is negative then @text is appended.
 /*
 
-C function : gtk_combo_box_text_insert
+C function
+
+gtk_combo_box_text_insert
 */
 func (recv *ComboBoxText) Insert(position int32, id string, text string) {
 	c_position := (C.gint)(position)
@@ -2218,7 +2422,9 @@ func (recv *ComboBoxText) Insert(position int32, id string, text string) {
 // Removes all the text entries from the combo box.
 /*
 
-C function : gtk_combo_box_text_remove_all
+C function
+
+gtk_combo_box_text_remove_all
 */
 func (recv *ComboBoxText) RemoveAll() {
 	C.gtk_combo_box_text_remove_all((*C.GtkComboBoxText)(recv.native))
@@ -2235,7 +2441,9 @@ func (recv *ComboBoxText) RemoveAll() {
 // #GtkTreeViewColumn for the drop-down menu.
 /*
 
-C function : gtk_entry_completion_new_with_area
+C function
+
+gtk_entry_completion_new_with_area
 */
 func EntryCompletionNewWithArea(area *CellArea) *EntryCompletion {
 	c_area := (*C.GtkCellArea)(C.NULL)
@@ -2267,7 +2475,9 @@ func EntryCompletionNewWithArea(area *CellArea) *EntryCompletion {
 // for more information about symbolic icons.
 /*
 
-C function : gtk_icon_info_load_symbolic
+C function
+
+gtk_icon_info_load_symbolic
 */
 func (recv *IconInfo) LoadSymbolic(fg *gdk.RGBA, successColor *gdk.RGBA, warningColor *gdk.RGBA, errorColor *gdk.RGBA) (*gdkpixbuf.Pixbuf, bool, error) {
 	c_fg := (*C.GdkRGBA)(C.NULL)
@@ -2319,7 +2529,9 @@ func (recv *IconInfo) LoadSymbolic(fg *gdk.RGBA, successColor *gdk.RGBA, warning
 // See gtk_icon_info_load_symbolic() for more details.
 /*
 
-C function : gtk_icon_info_load_symbolic_for_context
+C function
+
+gtk_icon_info_load_symbolic_for_context
 */
 func (recv *IconInfo) LoadSymbolicForContext(context *StyleContext) (*gdkpixbuf.Pixbuf, bool, error) {
 	c_context := (*C.GtkStyleContext)(C.NULL)
@@ -2353,7 +2565,9 @@ func (recv *IconInfo) LoadSymbolicForContext(context *StyleContext) (*gdkpixbuf.
 // See gtk_icon_info_load_symbolic() for more details.
 /*
 
-C function : gtk_icon_info_load_symbolic_for_style
+C function
+
+gtk_icon_info_load_symbolic_for_style
 */
 func (recv *IconInfo) LoadSymbolicForStyle(style *Style, state StateType) (*gdkpixbuf.Pixbuf, bool, error) {
 	c_style := (*C.GtkStyle)(C.NULL)
@@ -2384,7 +2598,9 @@ func (recv *IconInfo) LoadSymbolicForStyle(style *Style, state StateType) (*gdkp
 // specified @area to layout cells inside the icons.
 /*
 
-C function : gtk_icon_view_new_with_area
+C function
+
+gtk_icon_view_new_with_area
 */
 func IconViewNewWithArea(area *CellArea) *IconView {
 	c_area := (*C.GtkCellArea)(C.NULL)
@@ -2405,7 +2621,9 @@ func IconViewNewWithArea(area *CellArea) *IconView {
 // or not.
 /*
 
-C function : gtk_menu_item_get_reserve_indicator
+C function
+
+gtk_menu_item_get_reserve_indicator
 */
 func (recv *MenuItem) GetReserveIndicator() bool {
 	retC := C.gtk_menu_item_get_reserve_indicator((*C.GtkMenuItem)(recv.native))
@@ -2422,7 +2640,9 @@ func (recv *MenuItem) GetReserveIndicator() bool {
 // this functions.
 /*
 
-C function : gtk_menu_item_set_reserve_indicator
+C function
+
+gtk_menu_item_set_reserve_indicator
 */
 func (recv *MenuItem) SetReserveIndicator(reserve bool) {
 	c_reserve :=
@@ -2439,7 +2659,9 @@ func (recv *MenuItem) SetReserveIndicator(reserve bool) {
 // from which it was opened up.
 /*
 
-C function : gtk_menu_shell_get_parent_shell
+C function
+
+gtk_menu_shell_get_parent_shell
 */
 func (recv *MenuShell) GetParentShell() *Widget {
 	retC := C.gtk_menu_shell_get_parent_shell((*C.GtkMenuShell)(recv.native))
@@ -2451,7 +2673,9 @@ func (recv *MenuShell) GetParentShell() *Widget {
 // Gets the currently selected item.
 /*
 
-C function : gtk_menu_shell_get_selected_item
+C function
+
+gtk_menu_shell_get_selected_item
 */
 func (recv *MenuShell) GetSelectedItem() *Widget {
 	retC := C.gtk_menu_shell_get_selected_item((*C.GtkMenuShell)(recv.native))
@@ -2465,7 +2689,9 @@ func (recv *MenuShell) GetSelectedItem() *Widget {
 // a reference to the returned #GIcon.
 /*
 
-C function : gtk_numerable_icon_get_background_gicon
+C function
+
+gtk_numerable_icon_get_background_gicon
 */
 func (recv *NumerableIcon) GetBackgroundGicon() *gio.Icon {
 	retC := C.gtk_numerable_icon_get_background_gicon((*C.GtkNumerableIcon)(recv.native))
@@ -2483,7 +2709,9 @@ func (recv *NumerableIcon) GetBackgroundGicon() *gio.Icon {
 // or %NULL if there’s none.
 /*
 
-C function : gtk_numerable_icon_get_background_icon_name
+C function
+
+gtk_numerable_icon_get_background_icon_name
 */
 func (recv *NumerableIcon) GetBackgroundIconName() string {
 	retC := C.gtk_numerable_icon_get_background_icon_name((*C.GtkNumerableIcon)(recv.native))
@@ -2495,7 +2723,9 @@ func (recv *NumerableIcon) GetBackgroundIconName() string {
 // Returns the value currently displayed by @self.
 /*
 
-C function : gtk_numerable_icon_get_count
+C function
+
+gtk_numerable_icon_get_count
 */
 func (recv *NumerableIcon) GetCount() int32 {
 	retC := C.gtk_numerable_icon_get_count((*C.GtkNumerableIcon)(recv.native))
@@ -2507,7 +2737,9 @@ func (recv *NumerableIcon) GetCount() int32 {
 // Returns the currently displayed label of the icon, or %NULL.
 /*
 
-C function : gtk_numerable_icon_get_label
+C function
+
+gtk_numerable_icon_get_label
 */
 func (recv *NumerableIcon) GetLabel() string {
 	retC := C.gtk_numerable_icon_get_label((*C.GtkNumerableIcon)(recv.native))
@@ -2520,7 +2752,9 @@ func (recv *NumerableIcon) GetLabel() string {
 // or %NULL if there’s none.
 /*
 
-C function : gtk_numerable_icon_get_style_context
+C function
+
+gtk_numerable_icon_get_style_context
 */
 func (recv *NumerableIcon) GetStyleContext() *StyleContext {
 	retC := C.gtk_numerable_icon_get_style_context((*C.GtkNumerableIcon)(recv.native))
@@ -2544,7 +2778,9 @@ func (recv *NumerableIcon) GetStyleContext() *StyleContext {
 // gtk_numerable_icon_set_background_icon_name() has always priority.
 /*
 
-C function : gtk_numerable_icon_set_background_gicon
+C function
+
+gtk_numerable_icon_set_background_gicon
 */
 func (recv *NumerableIcon) SetBackgroundGicon(icon *gio.Icon) {
 	c_icon := (*C.GIcon)(icon.ToC())
@@ -2565,7 +2801,9 @@ func (recv *NumerableIcon) SetBackgroundGicon(icon *gio.Icon) {
 // and gtk_numerable_icon_set_background_gicon() has always priority.
 /*
 
-C function : gtk_numerable_icon_set_background_icon_name
+C function
+
+gtk_numerable_icon_set_background_icon_name
 */
 func (recv *NumerableIcon) SetBackgroundIconName(iconName string) {
 	c_icon_name := C.CString(iconName)
@@ -2586,7 +2824,9 @@ func (recv *NumerableIcon) SetBackgroundIconName(iconName string) {
 // and gtk_numerable_icon_set_label() has always priority.
 /*
 
-C function : gtk_numerable_icon_set_count
+C function
+
+gtk_numerable_icon_set_count
 */
 func (recv *NumerableIcon) SetCount(count int32) {
 	c_count := (C.gint)(count)
@@ -2611,7 +2851,9 @@ func (recv *NumerableIcon) SetCount(count int32) {
 // has always priority.
 /*
 
-C function : gtk_numerable_icon_set_label
+C function
+
+gtk_numerable_icon_set_label
 */
 func (recv *NumerableIcon) SetLabel(label string) {
 	c_label := C.CString(label)
@@ -2626,7 +2868,9 @@ func (recv *NumerableIcon) SetLabel(label string) {
 // given #GtkStyleContext.
 /*
 
-C function : gtk_numerable_icon_set_style_context
+C function
+
+gtk_numerable_icon_set_style_context
 */
 func (recv *NumerableIcon) SetStyleContext(style *StyleContext) {
 	c_style := (*C.GtkStyleContext)(C.NULL)
@@ -2642,7 +2886,9 @@ func (recv *NumerableIcon) SetStyleContext(style *StyleContext) {
 // Creates a new #GtkPaned widget.
 /*
 
-C function : gtk_paned_new
+C function
+
+gtk_paned_new
 */
 func PanedNew(orientation Orientation) *Paned {
 	c_orientation := (C.GtkOrientation)(orientation)
@@ -2657,7 +2903,9 @@ func PanedNew(orientation Orientation) *Paned {
 // See gtk_progress_bar_set_show_text().
 /*
 
-C function : gtk_progress_bar_get_show_text
+C function
+
+gtk_progress_bar_get_show_text
 */
 func (recv *ProgressBar) GetShowText() bool {
 	retC := C.gtk_progress_bar_get_show_text((*C.GtkProgressBar)(recv.native))
@@ -2676,7 +2924,9 @@ func (recv *ProgressBar) GetShowText() bool {
 // %TRUE and #GtkProgressBar:text to the empty string (not %NULL).
 /*
 
-C function : gtk_progress_bar_set_show_text
+C function
+
+gtk_progress_bar_set_show_text
 */
 func (recv *ProgressBar) SetShowText(showText bool) {
 	c_show_text :=
@@ -2707,7 +2957,9 @@ func (recv *ProgressBar) SetShowText(showText bool) {
 // ]|
 /*
 
-C function : gtk_radio_action_join_group
+C function
+
+gtk_radio_action_join_group
 */
 func (recv *RadioAction) JoinGroup(groupSource *RadioAction) {
 	c_group_source := (*C.GtkRadioAction)(C.NULL)
@@ -2740,7 +2992,9 @@ func (recv *RadioAction) JoinGroup(groupSource *RadioAction) {
 // ]|
 /*
 
-C function : gtk_radio_button_join_group
+C function
+
+gtk_radio_button_join_group
 */
 func (recv *RadioButton) JoinGroup(groupSource *RadioButton) {
 	c_group_source := (*C.GtkRadioButton)(C.NULL)
@@ -2756,7 +3010,9 @@ func (recv *RadioButton) JoinGroup(groupSource *RadioButton) {
 // Creates a new #GtkScale.
 /*
 
-C function : gtk_scale_new
+C function
+
+gtk_scale_new
 */
 func ScaleNew(orientation Orientation, adjustment *Adjustment) *Scale {
 	c_orientation := (C.GtkOrientation)(orientation)
@@ -2783,7 +3039,9 @@ func ScaleNew(orientation Orientation, adjustment *Adjustment) *Scale {
 // needs, use gtk_scale_set_digits() to correct it.
 /*
 
-C function : gtk_scale_new_with_range
+C function
+
+gtk_scale_new_with_range
 */
 func ScaleNewWithRange(orientation Orientation, min float64, max float64, step float64) *Scale {
 	c_orientation := (C.GtkOrientation)(orientation)
@@ -2803,7 +3061,9 @@ func ScaleNewWithRange(orientation Orientation, min float64, max float64, step f
 // Creates a new scrollbar with the given orientation.
 /*
 
-C function : gtk_scrollbar_new
+C function
+
+gtk_scrollbar_new
 */
 func ScrollbarNew(orientation Orientation, adjustment *Adjustment) *Scrollbar {
 	c_orientation := (C.GtkOrientation)(orientation)
@@ -2822,7 +3082,9 @@ func ScrollbarNew(orientation Orientation, adjustment *Adjustment) *Scrollbar {
 // Gets the minimal content height of @scrolled_window, or -1 if not set.
 /*
 
-C function : gtk_scrolled_window_get_min_content_height
+C function
+
+gtk_scrolled_window_get_min_content_height
 */
 func (recv *ScrolledWindow) GetMinContentHeight() int32 {
 	retC := C.gtk_scrolled_window_get_min_content_height((*C.GtkScrolledWindow)(recv.native))
@@ -2834,7 +3096,9 @@ func (recv *ScrolledWindow) GetMinContentHeight() int32 {
 // Gets the minimum content width of @scrolled_window, or -1 if not set.
 /*
 
-C function : gtk_scrolled_window_get_min_content_width
+C function
+
+gtk_scrolled_window_get_min_content_width
 */
 func (recv *ScrolledWindow) GetMinContentWidth() int32 {
 	retC := C.gtk_scrolled_window_get_min_content_width((*C.GtkScrolledWindow)(recv.native))
@@ -2851,7 +3115,9 @@ func (recv *ScrolledWindow) GetMinContentWidth() int32 {
 // value greater than #GtkScrolledWindow:max-content-height.
 /*
 
-C function : gtk_scrolled_window_set_min_content_height
+C function
+
+gtk_scrolled_window_set_min_content_height
 */
 func (recv *ScrolledWindow) SetMinContentHeight(height int32) {
 	c_height := (C.gint)(height)
@@ -2869,7 +3135,9 @@ func (recv *ScrolledWindow) SetMinContentHeight(height int32) {
 // value greater than #GtkScrolledWindow:max-content-width.
 /*
 
-C function : gtk_scrolled_window_set_min_content_width
+C function
+
+gtk_scrolled_window_set_min_content_width
 */
 func (recv *ScrolledWindow) SetMinContentWidth(width int32) {
 	c_width := (C.gint)(width)
@@ -2882,7 +3150,9 @@ func (recv *ScrolledWindow) SetMinContentWidth(width int32) {
 // Creates a new #GtkSeparator with the given orientation.
 /*
 
-C function : gtk_separator_new
+C function
+
+gtk_separator_new
 */
 func SeparatorNew(orientation Orientation) *Separator {
 	c_orientation := (C.GtkOrientation)(orientation)
@@ -2896,7 +3166,9 @@ func SeparatorNew(orientation Orientation) *Separator {
 // Returns whether @style has an associated #GtkStyleContext.
 /*
 
-C function : gtk_style_has_context
+C function
+
+gtk_style_has_context
 */
 func (recv *Style) HasContext() bool {
 	retC := C.gtk_style_has_context((*C.GtkStyle)(recv.native))
@@ -2980,7 +3252,9 @@ func stylecontext_changedHandler(_ *C.GObject, data C.gpointer) {
 // ]|
 /*
 
-C function : gtk_style_context_add_class
+C function
+
+gtk_style_context_add_class
 */
 func (recv *StyleContext) AddClass(className string) {
 	c_class_name := C.CString(className)
@@ -3002,7 +3276,9 @@ func (recv *StyleContext) AddClass(className string) {
 // through gtk_style_context_add_provider_for_screen().
 /*
 
-C function : gtk_style_context_add_provider
+C function
+
+gtk_style_context_add_provider
 */
 func (recv *StyleContext) AddProvider(provider *StyleProvider, priority uint32) {
 	c_provider := (*C.GtkStyleProvider)(provider.ToC())
@@ -3038,7 +3314,9 @@ func (recv *StyleContext) AddProvider(provider *StyleProvider, priority uint32) 
 // and “-”, starting always with a lowercase letter.
 /*
 
-C function : gtk_style_context_add_region
+C function
+
+gtk_style_context_add_region
 */
 func (recv *StyleContext) AddRegion(regionName string, flags RegionFlags) {
 	c_region_name := C.CString(regionName)
@@ -3062,7 +3340,9 @@ func (recv *StyleContext) AddRegion(regionName string, flags RegionFlags) {
 // animatable regions.
 /*
 
-C function : gtk_style_context_cancel_animations
+C function
+
+gtk_style_context_cancel_animations
 */
 func (recv *StyleContext) CancelAnimations(regionId uintptr) {
 	c_region_id := (C.gpointer)(regionId)
@@ -3086,7 +3366,9 @@ func (recv *StyleContext) CancelAnimations(regionId uintptr) {
 // style classes to modify the color to be rendered.
 /*
 
-C function : gtk_style_context_get_background_color
+C function
+
+gtk_style_context_get_background_color
 */
 func (recv *StyleContext) GetBackgroundColor(state StateFlags) *gdk.RGBA {
 	c_state := (C.GtkStateFlags)(state)
@@ -3106,7 +3388,9 @@ func (recv *StyleContext) GetBackgroundColor(state StateFlags) *gdk.RGBA {
 // #GTK_STYLE_PROPERTY_BORDER_WIDTH for details.
 /*
 
-C function : gtk_style_context_get_border
+C function
+
+gtk_style_context_get_border
 */
 func (recv *StyleContext) GetBorder(state StateFlags) *Border {
 	c_state := (C.GtkStateFlags)(state)
@@ -3123,7 +3407,9 @@ func (recv *StyleContext) GetBorder(state StateFlags) *Border {
 // Gets the border color for a given state.
 /*
 
-C function : gtk_style_context_get_border_color
+C function
+
+gtk_style_context_get_border_color
 */
 func (recv *StyleContext) GetBorderColor(state StateFlags) *gdk.RGBA {
 	c_state := (C.GtkStateFlags)(state)
@@ -3143,7 +3429,9 @@ func (recv *StyleContext) GetBorderColor(state StateFlags) *gdk.RGBA {
 // #GTK_STYLE_PROPERTY_COLOR for details.
 /*
 
-C function : gtk_style_context_get_color
+C function
+
+gtk_style_context_get_color
 */
 func (recv *StyleContext) GetColor(state StateFlags) *gdk.RGBA {
 	c_state := (C.GtkStateFlags)(state)
@@ -3160,7 +3448,9 @@ func (recv *StyleContext) GetColor(state StateFlags) *gdk.RGBA {
 // Returns the widget direction used for rendering.
 /*
 
-C function : gtk_style_context_get_direction
+C function
+
+gtk_style_context_get_direction
 */
 func (recv *StyleContext) GetDirection() TextDirection {
 	retC := C.gtk_style_context_get_direction((*C.GtkStyleContext)(recv.native))
@@ -3174,7 +3464,9 @@ func (recv *StyleContext) GetDirection() TextDirection {
 // #GtkStyleContext::changed signal happens.
 /*
 
-C function : gtk_style_context_get_font
+C function
+
+gtk_style_context_get_font
 */
 func (recv *StyleContext) GetFont(state StateFlags) *pango.FontDescription {
 	c_state := (C.GtkStateFlags)(state)
@@ -3188,7 +3480,9 @@ func (recv *StyleContext) GetFont(state StateFlags) *pango.FontDescription {
 // Returns the sides where rendered elements connect visually with others.
 /*
 
-C function : gtk_style_context_get_junction_sides
+C function
+
+gtk_style_context_get_junction_sides
 */
 func (recv *StyleContext) GetJunctionSides() JunctionSides {
 	retC := C.gtk_style_context_get_junction_sides((*C.GtkStyleContext)(recv.native))
@@ -3202,7 +3496,9 @@ func (recv *StyleContext) GetJunctionSides() JunctionSides {
 // for details.
 /*
 
-C function : gtk_style_context_get_margin
+C function
+
+gtk_style_context_get_margin
 */
 func (recv *StyleContext) GetMargin(state StateFlags) *Border {
 	c_state := (C.GtkStateFlags)(state)
@@ -3221,7 +3517,9 @@ func (recv *StyleContext) GetMargin(state StateFlags) *Border {
 // for details.
 /*
 
-C function : gtk_style_context_get_padding
+C function
+
+gtk_style_context_get_padding
 */
 func (recv *StyleContext) GetPadding(state StateFlags) *Border {
 	c_state := (C.GtkStateFlags)(state)
@@ -3238,7 +3536,9 @@ func (recv *StyleContext) GetPadding(state StateFlags) *Border {
 // Returns the widget path used for style matching.
 /*
 
-C function : gtk_style_context_get_path
+C function
+
+gtk_style_context_get_path
 */
 func (recv *StyleContext) GetPath() *WidgetPath {
 	retC := C.gtk_style_context_get_path((*C.GtkStyleContext)(recv.native))
@@ -3262,7 +3562,9 @@ func (recv *StyleContext) GetPath() *WidgetPath {
 // to free any allocated memory.
 /*
 
-C function : gtk_style_context_get_property
+C function
+
+gtk_style_context_get_property
 */
 func (recv *StyleContext) GetProperty(property string, state StateFlags) *gobject.Value {
 	c_property := C.CString(property)
@@ -3287,7 +3589,9 @@ func (recv *StyleContext) GetProperty(property string, state StateFlags) *gobjec
 // gtk_widget_get_state_flags().
 /*
 
-C function : gtk_style_context_get_state
+C function
+
+gtk_style_context_get_state
 */
 func (recv *StyleContext) GetState() StateFlags {
 	retC := C.gtk_style_context_get_state((*C.GtkStyleContext)(recv.native))
@@ -3306,7 +3610,9 @@ func (recv *StyleContext) GetState() StateFlags {
 // given class name.
 /*
 
-C function : gtk_style_context_has_class
+C function
+
+gtk_style_context_has_class
 */
 func (recv *StyleContext) HasClass(className string) bool {
 	c_class_name := C.CString(className)
@@ -3325,7 +3631,9 @@ func (recv *StyleContext) HasClass(className string) bool {
 // information immediately.
 /*
 
-C function : gtk_style_context_invalidate
+C function
+
+gtk_style_context_invalidate
 */
 func (recv *StyleContext) Invalidate() {
 	C.gtk_style_context_invalidate((*C.GtkStyleContext)(recv.native))
@@ -3336,7 +3644,9 @@ func (recv *StyleContext) Invalidate() {
 // Returns the list of classes currently defined in @context.
 /*
 
-C function : gtk_style_context_list_classes
+C function
+
+gtk_style_context_list_classes
 */
 func (recv *StyleContext) ListClasses() *glib.List {
 	retC := C.gtk_style_context_list_classes((*C.GtkStyleContext)(recv.native))
@@ -3348,7 +3658,9 @@ func (recv *StyleContext) ListClasses() *glib.List {
 // Returns the list of regions currently defined in @context.
 /*
 
-C function : gtk_style_context_list_regions
+C function
+
+gtk_style_context_list_regions
 */
 func (recv *StyleContext) ListRegions() *glib.List {
 	retC := C.gtk_style_context_list_regions((*C.GtkStyleContext)(recv.native))
@@ -3399,7 +3711,9 @@ func (recv *StyleContext) ListRegions() *glib.List {
 // is why the style places the transition under the :hover pseudo-class.
 /*
 
-C function : gtk_style_context_notify_state_change
+C function
+
+gtk_style_context_notify_state_change
 */
 func (recv *StyleContext) NotifyStateChange(window *gdk.Window, regionId uintptr, state StateType, stateValue bool) {
 	c_window := (*C.GdkWindow)(C.NULL)
@@ -3423,7 +3737,9 @@ func (recv *StyleContext) NotifyStateChange(window *gdk.Window, regionId uintptr
 // See gtk_style_context_push_animatable_region().
 /*
 
-C function : gtk_style_context_pop_animatable_region
+C function
+
+gtk_style_context_pop_animatable_region
 */
 func (recv *StyleContext) PopAnimatableRegion() {
 	C.gtk_style_context_pop_animatable_region((*C.GtkStyleContext)(recv.native))
@@ -3442,7 +3758,9 @@ func (recv *StyleContext) PopAnimatableRegion() {
 // can uniquely identify rendered elements subject to a state transition.
 /*
 
-C function : gtk_style_context_push_animatable_region
+C function
+
+gtk_style_context_push_animatable_region
 */
 func (recv *StyleContext) PushAnimatableRegion(regionId uintptr) {
 	c_region_id := (C.gpointer)(regionId)
@@ -3455,7 +3773,9 @@ func (recv *StyleContext) PushAnimatableRegion(regionId uintptr) {
 // Removes @class_name from @context.
 /*
 
-C function : gtk_style_context_remove_class
+C function
+
+gtk_style_context_remove_class
 */
 func (recv *StyleContext) RemoveClass(className string) {
 	c_class_name := C.CString(className)
@@ -3469,7 +3789,9 @@ func (recv *StyleContext) RemoveClass(className string) {
 // Removes @provider from the style providers list in @context.
 /*
 
-C function : gtk_style_context_remove_provider
+C function
+
+gtk_style_context_remove_provider
 */
 func (recv *StyleContext) RemoveProvider(provider *StyleProvider) {
 	c_provider := (*C.GtkStyleProvider)(provider.ToC())
@@ -3482,7 +3804,9 @@ func (recv *StyleContext) RemoveProvider(provider *StyleProvider) {
 // Removes a region from @context.
 /*
 
-C function : gtk_style_context_remove_region
+C function
+
+gtk_style_context_remove_region
 */
 func (recv *StyleContext) RemoveRegion(regionName string) {
 	c_region_name := C.CString(regionName)
@@ -3497,7 +3821,9 @@ func (recv *StyleContext) RemoveRegion(regionName string) {
 // See gtk_style_context_save().
 /*
 
-C function : gtk_style_context_restore
+C function
+
+gtk_style_context_restore
 */
 func (recv *StyleContext) Restore() {
 	C.gtk_style_context_restore((*C.GtkStyleContext)(recv.native))
@@ -3514,7 +3840,9 @@ func (recv *StyleContext) Restore() {
 // before GTK returns to the main loop.
 /*
 
-C function : gtk_style_context_save
+C function
+
+gtk_style_context_save
 */
 func (recv *StyleContext) Save() {
 	C.gtk_style_context_save((*C.GtkStyleContext)(recv.native))
@@ -3528,7 +3856,9 @@ func (recv *StyleContext) Save() {
 // with it.
 /*
 
-C function : gtk_style_context_scroll_animations
+C function
+
+gtk_style_context_scroll_animations
 */
 func (recv *StyleContext) ScrollAnimations(window *gdk.Window, dx int32, dy int32) {
 	c_window := (*C.GdkWindow)(C.NULL)
@@ -3549,7 +3879,9 @@ func (recv *StyleContext) ScrollAnimations(window *gdk.Window, dx int32, dy int3
 // color specified in @context for its current state.
 /*
 
-C function : gtk_style_context_set_background
+C function
+
+gtk_style_context_set_background
 */
 func (recv *StyleContext) SetBackground(window *gdk.Window) {
 	c_window := (*C.GdkWindow)(C.NULL)
@@ -3569,7 +3901,9 @@ func (recv *StyleContext) SetBackground(window *gdk.Window) {
 // call this yourself.
 /*
 
-C function : gtk_style_context_set_direction
+C function
+
+gtk_style_context_set_direction
 */
 func (recv *StyleContext) SetDirection(direction TextDirection) {
 	c_direction := (C.GtkTextDirection)(direction)
@@ -3590,7 +3924,9 @@ func (recv *StyleContext) SetDirection(direction TextDirection) {
 // this function manually.
 /*
 
-C function : gtk_style_context_set_junction_sides
+C function
+
+gtk_style_context_set_junction_sides
 */
 func (recv *StyleContext) SetJunctionSides(sides JunctionSides) {
 	c_sides := (C.GtkJunctionSides)(sides)
@@ -3609,7 +3945,9 @@ func (recv *StyleContext) SetJunctionSides(sides JunctionSides) {
 // this yourself.
 /*
 
-C function : gtk_style_context_set_path
+C function
+
+gtk_style_context_set_path
 */
 func (recv *StyleContext) SetPath(path *WidgetPath) {
 	c_path := (*C.GtkWidgetPath)(C.NULL)
@@ -3632,7 +3970,9 @@ func (recv *StyleContext) SetPath(path *WidgetPath) {
 // call this yourself.
 /*
 
-C function : gtk_style_context_set_screen
+C function
+
+gtk_style_context_set_screen
 */
 func (recv *StyleContext) SetScreen(screen *gdk.Screen) {
 	c_screen := (*C.GdkScreen)(C.NULL)
@@ -3648,7 +3988,9 @@ func (recv *StyleContext) SetScreen(screen *gdk.Screen) {
 // Sets the state to be used for style matching.
 /*
 
-C function : gtk_style_context_set_state
+C function
+
+gtk_style_context_set_state
 */
 func (recv *StyleContext) SetState(flags StateFlags) {
 	c_flags := (C.GtkStateFlags)(flags)
@@ -3668,7 +4010,9 @@ func (recv *StyleContext) SetState(flags StateFlags) {
 // it’s being unset.
 /*
 
-C function : gtk_style_context_state_is_running
+C function
+
+gtk_style_context_state_is_running
 */
 func (recv *StyleContext) StateIsRunning(state StateType) (bool, float64) {
 	c_state := (C.GtkStateType)(state)
@@ -3689,7 +4033,9 @@ func (recv *StyleContext) StateIsRunning(state StateType) (bool, float64) {
 // g_value_unset() needs to be called to free any allocated memory.
 /*
 
-C function : gtk_style_properties_get_property
+C function
+
+gtk_style_properties_get_property
 */
 func (recv *StyleProperties) GetProperty(property string, state StateFlags) (bool, *gobject.Value) {
 	c_property := C.CString(property)
@@ -3713,7 +4059,9 @@ func (recv *StyleProperties) GetProperty(property string, state StateFlags) (boo
 // to @name.
 /*
 
-C function : gtk_style_properties_lookup_color
+C function
+
+gtk_style_properties_lookup_color
 */
 func (recv *StyleProperties) LookupColor(name string) *SymbolicColor {
 	c_name := C.CString(name)
@@ -3729,7 +4077,9 @@ func (recv *StyleProperties) LookupColor(name string) *SymbolicColor {
 // gtk_style_properties_lookup_color()
 /*
 
-C function : gtk_style_properties_map_color
+C function
+
+gtk_style_properties_map_color
 */
 func (recv *StyleProperties) MapColor(name string, color *SymbolicColor) {
 	c_name := C.CString(name)
@@ -3751,7 +4101,9 @@ func (recv *StyleProperties) MapColor(name string, color *SymbolicColor) {
 // will prevail.
 /*
 
-C function : gtk_style_properties_merge
+C function
+
+gtk_style_properties_merge
 */
 func (recv *StyleProperties) Merge(propsToMerge *StyleProperties, replace bool) {
 	c_props_to_merge := (*C.GtkStyleProperties)(C.NULL)
@@ -3772,7 +4124,9 @@ func (recv *StyleProperties) Merge(propsToMerge *StyleProperties, replace bool) 
 // Sets a styling property in @props.
 /*
 
-C function : gtk_style_properties_set_property
+C function
+
+gtk_style_properties_set_property
 */
 func (recv *StyleProperties) SetProperty(property string, state StateFlags, value *gobject.Value) {
 	c_property := C.CString(property)
@@ -3795,7 +4149,9 @@ func (recv *StyleProperties) SetProperty(property string, state StateFlags, valu
 // Unsets a style property in @props.
 /*
 
-C function : gtk_style_properties_unset_property
+C function
+
+gtk_style_properties_unset_property
 */
 func (recv *StyleProperties) UnsetProperty(property string, state StateFlags) {
 	c_property := C.CString(property)
@@ -3811,7 +4167,9 @@ func (recv *StyleProperties) UnsetProperty(property string, state StateFlags) {
 // Creates a new #GtkSwitch widget.
 /*
 
-C function : gtk_switch_new
+C function
+
+gtk_switch_new
 */
 func SwitchNew() *Switch {
 	retC := C.gtk_switch_new()
@@ -3823,7 +4181,9 @@ func SwitchNew() *Switch {
 // Gets whether the #GtkSwitch is in its “on” or “off” state.
 /*
 
-C function : gtk_switch_get_active
+C function
+
+gtk_switch_get_active
 */
 func (recv *Switch) GetActive() bool {
 	retC := C.gtk_switch_get_active((*C.GtkSwitch)(recv.native))
@@ -3835,7 +4195,9 @@ func (recv *Switch) GetActive() bool {
 // Changes the state of @sw to the desired one.
 /*
 
-C function : gtk_switch_set_active
+C function
+
+gtk_switch_set_active
 */
 func (recv *Switch) SetActive(isActive bool) {
 	c_is_active :=
@@ -3853,7 +4215,9 @@ func (recv *Switch) SetActive(isActive bool) {
 // Gets the background color for a given state.
 /*
 
-C function : gtk_theming_engine_get_background_color
+C function
+
+gtk_theming_engine_get_background_color
 */
 func (recv *ThemingEngine) GetBackgroundColor(state StateFlags) *gdk.RGBA {
 	c_state := (C.GtkStateFlags)(state)
@@ -3870,7 +4234,9 @@ func (recv *ThemingEngine) GetBackgroundColor(state StateFlags) *gdk.RGBA {
 // Gets the border for a given state as a #GtkBorder.
 /*
 
-C function : gtk_theming_engine_get_border
+C function
+
+gtk_theming_engine_get_border
 */
 func (recv *ThemingEngine) GetBorder(state StateFlags) *Border {
 	c_state := (C.GtkStateFlags)(state)
@@ -3887,7 +4253,9 @@ func (recv *ThemingEngine) GetBorder(state StateFlags) *Border {
 // Gets the border color for a given state.
 /*
 
-C function : gtk_theming_engine_get_border_color
+C function
+
+gtk_theming_engine_get_border_color
 */
 func (recv *ThemingEngine) GetBorderColor(state StateFlags) *gdk.RGBA {
 	c_state := (C.GtkStateFlags)(state)
@@ -3904,7 +4272,9 @@ func (recv *ThemingEngine) GetBorderColor(state StateFlags) *gdk.RGBA {
 // Gets the foreground color for a given state.
 /*
 
-C function : gtk_theming_engine_get_color
+C function
+
+gtk_theming_engine_get_color
 */
 func (recv *ThemingEngine) GetColor(state StateFlags) *gdk.RGBA {
 	c_state := (C.GtkStateFlags)(state)
@@ -3921,7 +4291,9 @@ func (recv *ThemingEngine) GetColor(state StateFlags) *gdk.RGBA {
 // Returns the widget direction used for rendering.
 /*
 
-C function : gtk_theming_engine_get_direction
+C function
+
+gtk_theming_engine_get_direction
 */
 func (recv *ThemingEngine) GetDirection() TextDirection {
 	retC := C.gtk_theming_engine_get_direction((*C.GtkThemingEngine)(recv.native))
@@ -3933,7 +4305,9 @@ func (recv *ThemingEngine) GetDirection() TextDirection {
 // Returns the font description for a given state.
 /*
 
-C function : gtk_theming_engine_get_font
+C function
+
+gtk_theming_engine_get_font
 */
 func (recv *ThemingEngine) GetFont(state StateFlags) *pango.FontDescription {
 	c_state := (C.GtkStateFlags)(state)
@@ -3947,7 +4321,9 @@ func (recv *ThemingEngine) GetFont(state StateFlags) *pango.FontDescription {
 // Returns the widget direction used for rendering.
 /*
 
-C function : gtk_theming_engine_get_junction_sides
+C function
+
+gtk_theming_engine_get_junction_sides
 */
 func (recv *ThemingEngine) GetJunctionSides() JunctionSides {
 	retC := C.gtk_theming_engine_get_junction_sides((*C.GtkThemingEngine)(recv.native))
@@ -3959,7 +4335,9 @@ func (recv *ThemingEngine) GetJunctionSides() JunctionSides {
 // Gets the margin for a given state as a #GtkBorder.
 /*
 
-C function : gtk_theming_engine_get_margin
+C function
+
+gtk_theming_engine_get_margin
 */
 func (recv *ThemingEngine) GetMargin(state StateFlags) *Border {
 	c_state := (C.GtkStateFlags)(state)
@@ -3976,7 +4354,9 @@ func (recv *ThemingEngine) GetMargin(state StateFlags) *Border {
 // Gets the padding for a given state as a #GtkBorder.
 /*
 
-C function : gtk_theming_engine_get_padding
+C function
+
+gtk_theming_engine_get_padding
 */
 func (recv *ThemingEngine) GetPadding(state StateFlags) *Border {
 	c_state := (C.GtkStateFlags)(state)
@@ -3993,7 +4373,9 @@ func (recv *ThemingEngine) GetPadding(state StateFlags) *Border {
 // Returns the widget path used for style matching.
 /*
 
-C function : gtk_theming_engine_get_path
+C function
+
+gtk_theming_engine_get_path
 */
 func (recv *ThemingEngine) GetPath() *WidgetPath {
 	retC := C.gtk_theming_engine_get_path((*C.GtkThemingEngine)(recv.native))
@@ -4006,7 +4388,9 @@ func (recv *ThemingEngine) GetPath() *WidgetPath {
 // to the currently rendered element.
 /*
 
-C function : gtk_theming_engine_get_property
+C function
+
+gtk_theming_engine_get_property
 */
 func (recv *ThemingEngine) GetProperty(property string, state StateFlags) *gobject.Value {
 	c_property := C.CString(property)
@@ -4026,7 +4410,9 @@ func (recv *ThemingEngine) GetProperty(property string, state StateFlags) *gobje
 // returns the state used when rendering.
 /*
 
-C function : gtk_theming_engine_get_state
+C function
+
+gtk_theming_engine_get_state
 */
 func (recv *ThemingEngine) GetState() StateFlags {
 	retC := C.gtk_theming_engine_get_state((*C.GtkThemingEngine)(recv.native))
@@ -4040,7 +4426,9 @@ func (recv *ThemingEngine) GetState() StateFlags {
 // Gets the value for a widget style property.
 /*
 
-C function : gtk_theming_engine_get_style_property
+C function
+
+gtk_theming_engine_get_style_property
 */
 func (recv *ThemingEngine) GetStyleProperty(propertyName string) *gobject.Value {
 	c_property_name := C.CString(propertyName)
@@ -4063,7 +4451,9 @@ func (recv *ThemingEngine) GetStyleProperty(propertyName string) *gobject.Value 
 // defined the given class name.
 /*
 
-C function : gtk_theming_engine_has_class
+C function
+
+gtk_theming_engine_has_class
 */
 func (recv *ThemingEngine) HasClass(styleClass string) bool {
 	c_style_class := C.CString(styleClass)
@@ -4080,7 +4470,9 @@ func (recv *ThemingEngine) HasClass(styleClass string) bool {
 // Looks up and resolves a color name in the current style’s color map.
 /*
 
-C function : gtk_theming_engine_lookup_color
+C function
+
+gtk_theming_engine_lookup_color
 */
 func (recv *ThemingEngine) LookupColor(colorName string) (bool, *gdk.RGBA) {
 	c_color_name := C.CString(colorName)
@@ -4106,7 +4498,9 @@ func (recv *ThemingEngine) LookupColor(colorName string) (bool, *gdk.RGBA) {
 // it’s being set to %FALSE.
 /*
 
-C function : gtk_theming_engine_state_is_running
+C function
+
+gtk_theming_engine_state_is_running
 */
 func (recv *ThemingEngine) StateIsRunning(state StateType) (bool, float64) {
 	c_state := (C.GtkStateType)(state)
@@ -4140,7 +4534,9 @@ func (recv *ThemingEngine) StateIsRunning(state StateType) (bool, float64) {
 // gtk_tree_view_get_path_at_pos() for more information.
 /*
 
-C function : gtk_tree_view_is_blank_at_pos
+C function
+
+gtk_tree_view_is_blank_at_pos
 */
 func (recv *TreeView) IsBlankAtPos(x int32, y int32) (bool, *TreePath, *TreeViewColumn, int32, int32) {
 	c_x := (C.gint)(x)
@@ -4172,7 +4568,9 @@ func (recv *TreeView) IsBlankAtPos(x int32, y int32) (bool, *TreePath, *TreeView
 // Creates a new #GtkTreeViewColumn using @area to render its cells.
 /*
 
-C function : gtk_tree_view_column_new_with_area
+C function
+
+gtk_tree_view_column_new_with_area
 */
 func TreeViewColumnNewWithArea(area *CellArea) *TreeViewColumn {
 	c_area := (*C.GtkCellArea)(C.NULL)
@@ -4189,7 +4587,9 @@ func TreeViewColumnNewWithArea(area *CellArea) *TreeViewColumn {
 // Returns the button used in the treeview column header
 /*
 
-C function : gtk_tree_view_column_get_button
+C function
+
+gtk_tree_view_column_get_button
 */
 func (recv *TreeViewColumn) GetButton() *Widget {
 	retC := C.gtk_tree_view_column_get_button((*C.GtkTreeViewColumn)(recv.native))
@@ -4323,7 +4723,9 @@ func widget_styleUpdatedHandler(_ *C.GObject, data C.gpointer) {
 // @widget. See gtk_widget_set_device_events() for details.
 /*
 
-C function : gtk_widget_add_device_events
+C function
+
+gtk_widget_add_device_events
 */
 func (recv *Widget) AddDeviceEvents(device *gdk.Device, events gdk.EventMask) {
 	c_device := (*C.GdkDevice)(C.NULL)
@@ -4345,7 +4747,9 @@ func (recv *Widget) AddDeviceEvents(device *gdk.Device, events gdk.EventMask) {
 // devices. See gtk_device_grab_add().
 /*
 
-C function : gtk_widget_device_is_shadowed
+C function
+
+gtk_widget_device_is_shadowed
 */
 func (recv *Widget) DeviceIsShadowed(device *gdk.Device) bool {
 	c_device := (*C.GdkDevice)(C.NULL)
@@ -4378,7 +4782,9 @@ func (recv *Widget) DeviceIsShadowed(device *gdk.Device) bool {
 // and when rendered using gtk_widget_draw().
 /*
 
-C function : gtk_widget_draw
+C function
+
+gtk_widget_draw
 */
 func (recv *Widget) Draw(cr *cairo.Context) {
 	c_cr := (*C.cairo_t)(C.NULL)
@@ -4395,7 +4801,9 @@ func (recv *Widget) Draw(cr *cairo.Context) {
 // children. See gtk_widget_set_device_enabled().
 /*
 
-C function : gtk_widget_get_device_enabled
+C function
+
+gtk_widget_get_device_enabled
 */
 func (recv *Widget) GetDeviceEnabled(device *gdk.Device) bool {
 	c_device := (*C.GdkDevice)(C.NULL)
@@ -4413,7 +4821,9 @@ func (recv *Widget) GetDeviceEnabled(device *gdk.Device) bool {
 // are the events that the widget will receive when @device operates on it.
 /*
 
-C function : gtk_widget_get_device_events
+C function
+
+gtk_widget_get_device_events
 */
 func (recv *Widget) GetDeviceEvents(device *gdk.Device) gdk.EventMask {
 	c_device := (*C.GdkDevice)(C.NULL)
@@ -4430,7 +4840,9 @@ func (recv *Widget) GetDeviceEvents(device *gdk.Device) gdk.EventMask {
 // Gets the value of the #GtkWidget:margin-bottom property.
 /*
 
-C function : gtk_widget_get_margin_bottom
+C function
+
+gtk_widget_get_margin_bottom
 */
 func (recv *Widget) GetMarginBottom() int32 {
 	retC := C.gtk_widget_get_margin_bottom((*C.GtkWidget)(recv.native))
@@ -4442,7 +4854,9 @@ func (recv *Widget) GetMarginBottom() int32 {
 // Gets the value of the #GtkWidget:margin-left property.
 /*
 
-C function : gtk_widget_get_margin_left
+C function
+
+gtk_widget_get_margin_left
 */
 func (recv *Widget) GetMarginLeft() int32 {
 	retC := C.gtk_widget_get_margin_left((*C.GtkWidget)(recv.native))
@@ -4454,7 +4868,9 @@ func (recv *Widget) GetMarginLeft() int32 {
 // Gets the value of the #GtkWidget:margin-right property.
 /*
 
-C function : gtk_widget_get_margin_right
+C function
+
+gtk_widget_get_margin_right
 */
 func (recv *Widget) GetMarginRight() int32 {
 	retC := C.gtk_widget_get_margin_right((*C.GtkWidget)(recv.native))
@@ -4466,7 +4882,9 @@ func (recv *Widget) GetMarginRight() int32 {
 // Gets the value of the #GtkWidget:margin-top property.
 /*
 
-C function : gtk_widget_get_margin_top
+C function
+
+gtk_widget_get_margin_top
 */
 func (recv *Widget) GetMarginTop() int32 {
 	retC := C.gtk_widget_get_margin_top((*C.GtkWidget)(recv.native))
@@ -4486,7 +4904,9 @@ func (recv *Widget) GetMarginTop() int32 {
 // returned by the widget itself.
 /*
 
-C function : gtk_widget_get_preferred_height
+C function
+
+gtk_widget_get_preferred_height
 */
 func (recv *Widget) GetPreferredHeight() (int32, int32) {
 	var c_minimum_height C.gint
@@ -4512,7 +4932,9 @@ func (recv *Widget) GetPreferredHeight() (int32, int32) {
 // returned by the widget itself.
 /*
 
-C function : gtk_widget_get_preferred_height_for_width
+C function
+
+gtk_widget_get_preferred_height_for_width
 */
 func (recv *Widget) GetPreferredHeightForWidth(width int32) (int32, int32) {
 	c_width := (C.gint)(width)
@@ -4547,7 +4969,9 @@ func (recv *Widget) GetPreferredHeightForWidth(width int32) (int32, int32) {
 // baseline alignment.
 /*
 
-C function : gtk_widget_get_preferred_size
+C function
+
+gtk_widget_get_preferred_size
 */
 func (recv *Widget) GetPreferredSize() (*Requisition, *Requisition) {
 	var c_minimum_size C.GtkRequisition
@@ -4574,7 +4998,9 @@ func (recv *Widget) GetPreferredSize() (*Requisition, *Requisition) {
 // returned by the widget itself.
 /*
 
-C function : gtk_widget_get_preferred_width
+C function
+
+gtk_widget_get_preferred_width
 */
 func (recv *Widget) GetPreferredWidth() (int32, int32) {
 	var c_minimum_width C.gint
@@ -4600,7 +5026,9 @@ func (recv *Widget) GetPreferredWidth() (int32, int32) {
 // returned by the widget itself.
 /*
 
-C function : gtk_widget_get_preferred_width_for_height
+C function
+
+gtk_widget_get_preferred_width_for_height
 */
 func (recv *Widget) GetPreferredWidthForHeight(height int32) (int32, int32) {
 	c_height := (C.gint)(height)
@@ -4627,7 +5055,9 @@ func (recv *Widget) GetPreferredWidthForHeight(height int32) (int32, int32) {
 // capabilities.
 /*
 
-C function : gtk_widget_get_request_mode
+C function
+
+gtk_widget_get_request_mode
 */
 func (recv *Widget) GetRequestMode() SizeRequestMode {
 	retC := C.gtk_widget_get_request_mode((*C.GtkWidget)(recv.native))
@@ -4646,7 +5076,9 @@ func (recv *Widget) GetRequestMode() SizeRequestMode {
 // should look at gtk_style_context_get_state().
 /*
 
-C function : gtk_widget_get_state_flags
+C function
+
+gtk_widget_get_state_flags
 */
 func (recv *Widget) GetStateFlags() StateFlags {
 	retC := C.gtk_widget_get_state_flags((*C.GtkWidget)(recv.native))
@@ -4660,7 +5092,9 @@ func (recv *Widget) GetStateFlags() StateFlags {
 // gdk_window_input_shape_combine_region() for more information.
 /*
 
-C function : gtk_widget_input_shape_combine_region
+C function
+
+gtk_widget_input_shape_combine_region
 */
 func (recv *Widget) InputShapeCombineRegion(region *cairo.Region) {
 	c_region := (*C.cairo_region_t)(C.NULL)
@@ -4679,7 +5113,9 @@ func (recv *Widget) InputShapeCombineRegion(region *cairo.Region) {
 // See gtk_widget_override_color().
 /*
 
-C function : gtk_widget_override_background_color
+C function
+
+gtk_widget_override_background_color
 */
 func (recv *Widget) OverrideBackgroundColor(state StateFlags, color *gdk.RGBA) {
 	c_state := (C.GtkStateFlags)(state)
@@ -4721,7 +5157,9 @@ func (recv *Widget) OverrideBackgroundColor(state StateFlags, color *gdk.RGBA) {
 // priority.
 /*
 
-C function : gtk_widget_override_color
+C function
+
+gtk_widget_override_color
 */
 func (recv *Widget) OverrideColor(state StateFlags, color *gdk.RGBA) {
 	c_state := (C.GtkStateFlags)(state)
@@ -4745,7 +5183,9 @@ func (recv *Widget) OverrideColor(state StateFlags, color *gdk.RGBA) {
 // so the alpha value in @primary and @secondary will be ignored.
 /*
 
-C function : gtk_widget_override_cursor
+C function
+
+gtk_widget_override_cursor
 */
 func (recv *Widget) OverrideCursor(cursor *gdk.RGBA, secondaryCursor *gdk.RGBA) {
 	c_cursor := (*C.GdkRGBA)(C.NULL)
@@ -4767,7 +5207,9 @@ func (recv *Widget) OverrideCursor(cursor *gdk.RGBA, secondaryCursor *gdk.RGBA) 
 // left untouched. See gtk_widget_override_color().
 /*
 
-C function : gtk_widget_override_font
+C function
+
+gtk_widget_override_font
 */
 func (recv *Widget) OverrideFont(fontDesc *pango.FontDescription) {
 	c_font_desc := (*C.PangoFontDescription)(C.NULL)
@@ -4787,7 +5229,9 @@ func (recv *Widget) OverrideFont(fontDesc *pango.FontDescription) {
 // or background color.
 /*
 
-C function : gtk_widget_override_symbolic_color
+C function
+
+gtk_widget_override_symbolic_color
 */
 func (recv *Widget) OverrideSymbolicColor(name string, color *gdk.RGBA) {
 	c_name := C.CString(name)
@@ -4815,7 +5259,9 @@ func (recv *Widget) OverrideSymbolicColor(name string, color *gdk.RGBA) {
 // #GtkDrawingArea or some portion thereof.
 /*
 
-C function : gtk_widget_queue_draw_region
+C function
+
+gtk_widget_queue_draw_region
 */
 func (recv *Widget) QueueDrawRegion(region *cairo.Region) {
 	c_region := (*C.cairo_region_t)(C.NULL)
@@ -4839,7 +5285,9 @@ func (recv *Widget) QueueDrawRegion(region *cairo.Region) {
 // after use with g_object_unref().
 /*
 
-C function : gtk_widget_render_icon_pixbuf
+C function
+
+gtk_widget_render_icon_pixbuf
 */
 func (recv *Widget) RenderIconPixbuf(stockId string, size IconSize) *gdkpixbuf.Pixbuf {
 	c_stock_id := C.CString(stockId)
@@ -4864,7 +5312,9 @@ func (recv *Widget) RenderIconPixbuf(stockId string, size IconSize) *gdkpixbuf.P
 // style might apply to it. See also gtk_container_get_path_for_child().
 /*
 
-C function : gtk_widget_reset_style
+C function
+
+gtk_widget_reset_style
 */
 func (recv *Widget) ResetStyle() {
 	C.gtk_widget_reset_style((*C.GtkWidget)(recv.native))
@@ -4880,7 +5330,9 @@ func (recv *Widget) ResetStyle() {
 // (i.e. the one that gdk_window_get_events() returns).
 /*
 
-C function : gtk_widget_set_device_enabled
+C function
+
+gtk_widget_set_device_enabled
 */
 func (recv *Widget) SetDeviceEnabled(device *gdk.Device, enabled bool) {
 	c_device := (*C.GdkDevice)(C.NULL)
@@ -4909,7 +5361,9 @@ func (recv *Widget) SetDeviceEnabled(device *gdk.Device, enabled bool) {
 // and receive events on the event box.
 /*
 
-C function : gtk_widget_set_device_events
+C function
+
+gtk_widget_set_device_events
 */
 func (recv *Widget) SetDeviceEvents(device *gdk.Device, events gdk.EventMask) {
 	c_device := (*C.GdkDevice)(C.NULL)
@@ -4928,7 +5382,9 @@ func (recv *Widget) SetDeviceEvents(device *gdk.Device, events gdk.EventMask) {
 // See the #GtkWidget:margin-bottom property.
 /*
 
-C function : gtk_widget_set_margin_bottom
+C function
+
+gtk_widget_set_margin_bottom
 */
 func (recv *Widget) SetMarginBottom(margin int32) {
 	c_margin := (C.gint)(margin)
@@ -4942,7 +5398,9 @@ func (recv *Widget) SetMarginBottom(margin int32) {
 // See the #GtkWidget:margin-left property.
 /*
 
-C function : gtk_widget_set_margin_left
+C function
+
+gtk_widget_set_margin_left
 */
 func (recv *Widget) SetMarginLeft(margin int32) {
 	c_margin := (C.gint)(margin)
@@ -4956,7 +5414,9 @@ func (recv *Widget) SetMarginLeft(margin int32) {
 // See the #GtkWidget:margin-right property.
 /*
 
-C function : gtk_widget_set_margin_right
+C function
+
+gtk_widget_set_margin_right
 */
 func (recv *Widget) SetMarginRight(margin int32) {
 	c_margin := (C.gint)(margin)
@@ -4970,7 +5430,9 @@ func (recv *Widget) SetMarginRight(margin int32) {
 // See the #GtkWidget:margin-top property.
 /*
 
-C function : gtk_widget_set_margin_top
+C function
+
+gtk_widget_set_margin_top
 */
 func (recv *Widget) SetMarginTop(margin int32) {
 	c_margin := (C.gint)(margin)
@@ -4995,7 +5457,9 @@ func (recv *Widget) SetMarginTop(margin int32) {
 // gtk_widget_is_sensitive() will make use of these.
 /*
 
-C function : gtk_widget_set_state_flags
+C function
+
+gtk_widget_set_state_flags
 */
 func (recv *Widget) SetStateFlags(flags StateFlags, clear bool) {
 	c_flags := (C.GtkStateFlags)(flags)
@@ -5014,7 +5478,9 @@ func (recv *Widget) SetStateFlags(flags StateFlags, clear bool) {
 // gdk_window_set_support_multidevice() will have to be called manually on them.
 /*
 
-C function : gtk_widget_set_support_multidevice
+C function
+
+gtk_widget_set_support_multidevice
 */
 func (recv *Widget) SetSupportMultidevice(supportMultidevice bool) {
 	c_support_multidevice :=
@@ -5030,7 +5496,9 @@ func (recv *Widget) SetSupportMultidevice(supportMultidevice bool) {
 // for more information.
 /*
 
-C function : gtk_widget_shape_combine_region
+C function
+
+gtk_widget_shape_combine_region
 */
 func (recv *Widget) ShapeCombineRegion(region *cairo.Region) {
 	c_region := (*C.cairo_region_t)(C.NULL)
@@ -5048,7 +5516,9 @@ func (recv *Widget) ShapeCombineRegion(region *cairo.Region) {
 // See gtk_widget_set_state_flags().
 /*
 
-C function : gtk_widget_unset_state_flags
+C function
+
+gtk_widget_unset_state_flags
 */
 func (recv *Widget) UnsetStateFlags(flags StateFlags) {
 	c_flags := (C.GtkStateFlags)(flags)
@@ -5061,7 +5531,9 @@ func (recv *Widget) UnsetStateFlags(flags StateFlags) {
 // Gets the #GtkApplication associated with the window (if any).
 /*
 
-C function : gtk_window_get_application
+C function
+
+gtk_window_get_application
 */
 func (recv *Window) GetApplication() *Application {
 	retC := C.gtk_window_get_application((*C.GtkWindow)(recv.native))
@@ -5078,7 +5550,9 @@ func (recv *Window) GetApplication() *Application {
 // Determines whether the window may have a resize grip.
 /*
 
-C function : gtk_window_get_has_resize_grip
+C function
+
+gtk_window_get_has_resize_grip
 */
 func (recv *Window) GetHasResizeGrip() bool {
 	retC := C.gtk_window_get_has_resize_grip((*C.GtkWindow)(recv.native))
@@ -5092,7 +5566,9 @@ func (recv *Window) GetHasResizeGrip() bool {
 // Determines whether a resize grip is visible for the specified window.
 /*
 
-C function : gtk_window_resize_grip_is_visible
+C function
+
+gtk_window_resize_grip_is_visible
 */
 func (recv *Window) ResizeGripIsVisible() bool {
 	retC := C.gtk_window_resize_grip_is_visible((*C.GtkWindow)(recv.native))
@@ -5106,7 +5582,9 @@ func (recv *Window) ResizeGripIsVisible() bool {
 // gtk_window_set_geometry_hints.
 /*
 
-C function : gtk_window_resize_to_geometry
+C function
+
+gtk_window_resize_to_geometry
 */
 func (recv *Window) ResizeToGeometry(width int32, height int32) {
 	c_width := (C.gint)(width)
@@ -5132,7 +5610,9 @@ func (recv *Window) ResizeToGeometry(width int32, height int32) {
 // gtk_application_add_window() on the old/new applications as relevant.
 /*
 
-C function : gtk_window_set_application
+C function
+
+gtk_window_set_application
 */
 func (recv *Window) SetApplication(application *Application) {
 	c_application := (*C.GtkApplication)(C.NULL)
@@ -5150,7 +5630,9 @@ func (recv *Window) SetApplication(application *Application) {
 // gtk_window_set_geometry_hints.
 /*
 
-C function : gtk_window_set_default_geometry
+C function
+
+gtk_window_set_default_geometry
 */
 func (recv *Window) SetDefaultGeometry(width int32, height int32) {
 	c_width := (C.gint)(width)
@@ -5170,7 +5652,9 @@ func (recv *Window) SetDefaultGeometry(width int32, height int32) {
 // resize grip is currently shown.
 /*
 
-C function : gtk_window_set_has_resize_grip
+C function
+
+gtk_window_set_has_resize_grip
 */
 func (recv *Window) SetHasResizeGrip(value bool) {
 	c_value :=
@@ -5190,7 +5674,9 @@ func (recv *Window) SetHasResizeGrip(value bool) {
 // for ever calling this function in an application.
 /*
 
-C function : gtk_window_set_has_user_ref_count
+C function
+
+gtk_window_set_has_user_ref_count
 */
 func (recv *Window) SetHasUserRefCount(setting bool) {
 	c_setting :=
@@ -5204,7 +5690,9 @@ func (recv *Window) SetHasUserRefCount(setting bool) {
 // Returns the current grab widget for @device, or %NULL if none.
 /*
 
-C function : gtk_window_group_get_current_device_grab
+C function
+
+gtk_window_group_get_current_device_grab
 */
 func (recv *WindowGroup) GetCurrentDeviceGrab(device *gdk.Device) *Widget {
 	c_device := (*C.GdkDevice)(C.NULL)

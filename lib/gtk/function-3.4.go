@@ -26,7 +26,9 @@ import "C"
 // should use gtk_accelerator_parse() instead.
 /*
 
-C function : gtk_accelerator_get_label_with_keycode
+C function
+
+gtk_accelerator_get_label_with_keycode
 */
 func AcceleratorGetLabelWithKeycode(display *gdk.Display, acceleratorKey uint32, keycode uint32, acceleratorMods gdk.ModifierType) string {
 	c_display := (*C.GdkDisplay)(C.NULL)
@@ -54,7 +56,9 @@ func AcceleratorGetLabelWithKeycode(display *gdk.Display, acceleratorKey uint32,
 // should use gtk_accelerator_parse() instead.
 /*
 
-C function : gtk_accelerator_name_with_keycode
+C function
+
+gtk_accelerator_name_with_keycode
 */
 func AcceleratorNameWithKeycode(display *gdk.Display, acceleratorKey uint32, keycode uint32, acceleratorMods gdk.ModifierType) string {
 	c_display := (*C.GdkDisplay)(C.NULL)
@@ -80,7 +84,9 @@ func AcceleratorNameWithKeycode(display *gdk.Display, acceleratorKey uint32, key
 // Draws a text caret on @cr at the specified index of @layout.
 /*
 
-C function : gtk_render_insertion_cursor
+C function
+
+gtk_render_insertion_cursor
 */
 func RenderInsertionCursor(context *StyleContext, cr *cairo.Context, x float64, y float64, layout *pango.Layout, index int32, direction pango.Direction) {
 	c_context := (*C.GtkStyleContext)(C.NULL)

@@ -18,7 +18,9 @@ import "C"
 // it was on the top of the stack).
 /*
 
-C function : g_main_context_pop_thread_default
+C function
+
+g_main_context_pop_thread_default
 */
 func (recv *MainContext) PopThreadDefault() {
 	C.g_main_context_pop_thread_default((*C.GMainContext)(recv.native))
@@ -66,7 +68,9 @@ func (recv *MainContext) PopThreadDefault() {
 // see g_file_supports_thread_contexts().
 /*
 
-C function : g_main_context_push_thread_default
+C function
+
+g_main_context_push_thread_default
 */
 func (recv *MainContext) PushThreadDefault() {
 	C.g_main_context_push_thread_default((*C.GMainContext)(recv.native))
@@ -78,7 +82,9 @@ func (recv *MainContext) PushThreadDefault() {
 // this function from any thread.
 /*
 
-C function : g_mapped_file_ref
+C function
+
+g_mapped_file_ref
 */
 func (recv *MappedFile) Ref() *MappedFile {
 	retC := C.g_mapped_file_ref((*C.GMappedFile)(recv.native))
@@ -92,7 +98,9 @@ func (recv *MappedFile) Ref() *MappedFile {
 // It is safe to call this function from any thread.
 /*
 
-C function : g_tree_ref
+C function
+
+g_tree_ref
 */
 func (recv *Tree) Ref() *Tree {
 	retC := C.g_tree_ref((*C.GTree)(recv.native))
@@ -109,7 +117,9 @@ func (recv *Tree) Ref() *Tree {
 // It is safe to call this function from any thread.
 /*
 
-C function : g_tree_unref
+C function
+
+g_tree_unref
 */
 func (recv *Tree) Unref() {
 	C.g_tree_unref((*C.GTree)(recv.native))

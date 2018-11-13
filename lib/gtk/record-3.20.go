@@ -14,7 +14,9 @@ import "C"
 
 /*
 
-C record/class : GtkFileChooserNativeClass
+C type
+
+GtkFileChooserNativeClass
 */
 type FileChooserNativeClass struct {
 	native *C.GtkFileChooserNativeClass
@@ -39,7 +41,9 @@ func (recv *FileChooserNativeClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkNativeDialogClass
+C type
+
+GtkNativeDialogClass
 */
 type NativeDialogClass struct {
 	native *C.GtkNativeDialogClass
@@ -72,7 +76,9 @@ func (recv *NativeDialogClass) ToC() unsafe.Pointer {
 // Struct defining a pad action entry.
 /*
 
-C record/class : GtkPadActionEntry
+C type
+
+GtkPadActionEntry
 */
 type PadActionEntry struct {
 	native     *C.GtkPadActionEntry
@@ -118,7 +124,9 @@ func (recv *PadActionEntry) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkPadControllerClass
+C type
+
+GtkPadControllerClass
 */
 type PadControllerClass struct {
 	native *C.GtkPadControllerClass
@@ -142,7 +150,9 @@ func (recv *PadControllerClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkShortcutLabelClass
+C type
+
+GtkShortcutLabelClass
 */
 type ShortcutLabelClass struct {
 	native *C.GtkShortcutLabelClass
@@ -166,7 +176,9 @@ func (recv *ShortcutLabelClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkShortcutsGroupClass
+C type
+
+GtkShortcutsGroupClass
 */
 type ShortcutsGroupClass struct {
 	native *C.GtkShortcutsGroupClass
@@ -190,7 +202,9 @@ func (recv *ShortcutsGroupClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkShortcutsSectionClass
+C type
+
+GtkShortcutsSectionClass
 */
 type ShortcutsSectionClass struct {
 	native *C.GtkShortcutsSectionClass
@@ -214,7 +228,9 @@ func (recv *ShortcutsSectionClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkShortcutsShortcutClass
+C type
+
+GtkShortcutsShortcutClass
 */
 type ShortcutsShortcutClass struct {
 	native *C.GtkShortcutsShortcutClass
@@ -238,7 +254,9 @@ func (recv *ShortcutsShortcutClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GtkShortcutsWindowClass
+C type
+
+GtkShortcutsWindowClass
 */
 type ShortcutsWindowClass struct {
 	native *C.GtkShortcutsWindowClass
@@ -274,7 +292,9 @@ func (recv *ShortcutsWindowClass) ToC() unsafe.Pointer {
 // parameters.
 /*
 
-C function : gtk_text_iter_starts_tag
+C function
+
+gtk_text_iter_starts_tag
 */
 func (recv *TextIter) StartsTag(tag *TextTag) bool {
 	c_tag := (*C.GtkTextTag)(C.NULL)
@@ -292,7 +312,9 @@ func (recv *TextIter) StartsTag(tag *TextTag) bool {
 // gtk_widget_class_set_css_name() for details.
 /*
 
-C function : gtk_widget_class_get_css_name
+C function
+
+gtk_widget_class_get_css_name
 */
 func (recv *WidgetClass) GetCssName() string {
 	retC := C.gtk_widget_class_get_css_name((*C.GtkWidgetClass)(recv.native))
@@ -307,7 +329,9 @@ func (recv *WidgetClass) GetCssName() string {
 // of the parent class is used.
 /*
 
-C function : gtk_widget_class_set_css_name
+C function
+
+gtk_widget_class_set_css_name
 */
 func (recv *WidgetClass) SetCssName(name string) {
 	c_name := C.CString(name)
@@ -322,7 +346,9 @@ func (recv *WidgetClass) SetCssName(name string) {
 // hierarchy defined in @path.
 /*
 
-C function : gtk_widget_path_iter_get_object_name
+C function
+
+gtk_widget_path_iter_get_object_name
 */
 func (recv *WidgetPath) IterGetObjectName(pos int32) string {
 	c_pos := (C.gint)(pos)
@@ -340,7 +366,9 @@ func (recv *WidgetPath) IterGetObjectName(pos int32) string {
 // CSS.
 /*
 
-C function : gtk_widget_path_iter_set_object_name
+C function
+
+gtk_widget_path_iter_set_object_name
 */
 func (recv *WidgetPath) IterSetObjectName(pos int32, name string) {
 	c_pos := (C.gint)(pos)

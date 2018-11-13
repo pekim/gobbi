@@ -30,7 +30,9 @@ import "C"
 // environment when @context is used to launch an application.
 /*
 
-C function : g_app_launch_context_setenv
+C function
+
+g_app_launch_context_setenv
 */
 func (recv *AppLaunchContext) Setenv(variable string, value string) {
 	c_variable := C.CString(variable)
@@ -48,7 +50,9 @@ func (recv *AppLaunchContext) Setenv(variable string, value string) {
 // when @context is used to launch an application.
 /*
 
-C function : g_app_launch_context_unsetenv
+C function
+
+g_app_launch_context_unsetenv
 */
 func (recv *AppLaunchContext) Unsetenv(variable string) {
 	c_variable := C.CString(variable)
@@ -74,7 +78,9 @@ func (recv *AppLaunchContext) Unsetenv(variable string) {
 // unspecified.
 /*
 
-C function : g_application_quit
+C function
+
+g_application_quit
 */
 func (recv *Application) Quit() {
 	C.g_application_quit((*C.GApplication)(recv.native))
@@ -90,7 +96,9 @@ func (recv *Application) Quit() {
 // back to %NULL.
 /*
 
-C function : g_application_set_default
+C function
+
+g_application_set_default
 */
 func (recv *Application) SetDefault() {
 	C.g_application_set_default((*C.GApplication)(recv.native))
@@ -121,7 +129,9 @@ func (recv *Application) SetDefault() {
 // context.
 /*
 
-C function : g_dbus_connection_export_action_group
+C function
+
+g_dbus_connection_export_action_group
 */
 func (recv *DBusConnection) ExportActionGroup(objectPath string, actionGroup *ActionGroup) (uint32, error) {
 	c_object_path := C.CString(objectPath)
@@ -156,7 +166,9 @@ func (recv *DBusConnection) ExportActionGroup(objectPath string, actionGroup *Ac
 // this function.
 /*
 
-C function : g_dbus_connection_export_menu_model
+C function
+
+g_dbus_connection_export_menu_model
 */
 func (recv *DBusConnection) ExportMenuModel(objectPath string, menu *MenuModel) (uint32, error) {
 	c_object_path := C.CString(objectPath)
@@ -188,7 +200,9 @@ func (recv *DBusConnection) ExportMenuModel(objectPath string, menu *MenuModel) 
 // same ID more than once.
 /*
 
-C function : g_dbus_connection_unexport_action_group
+C function
+
+g_dbus_connection_unexport_action_group
 */
 func (recv *DBusConnection) UnexportActionGroup(exportId uint32) {
 	c_export_id := (C.guint)(exportId)
@@ -206,7 +220,9 @@ func (recv *DBusConnection) UnexportActionGroup(exportId uint32) {
 // same ID more than once.
 /*
 
-C function : g_dbus_connection_unexport_menu_model
+C function
+
+g_dbus_connection_unexport_menu_model
 */
 func (recv *DBusConnection) UnexportMenuModel(exportId uint32) {
 	c_export_id := (C.guint)(exportId)
@@ -219,7 +235,9 @@ func (recv *DBusConnection) UnexportMenuModel(exportId uint32) {
 // Gets a list of the connections that @interface_ is exported on.
 /*
 
-C function : g_dbus_interface_skeleton_get_connections
+C function
+
+g_dbus_interface_skeleton_get_connections
 */
 func (recv *DBusInterfaceSkeleton) GetConnections() *glib.List {
 	retC := C.g_dbus_interface_skeleton_get_connections((*C.GDBusInterfaceSkeleton)(recv.native))
@@ -231,7 +249,9 @@ func (recv *DBusInterfaceSkeleton) GetConnections() *glib.List {
 // Checks if @interface_ is exported on @connection.
 /*
 
-C function : g_dbus_interface_skeleton_has_connection
+C function
+
+g_dbus_interface_skeleton_has_connection
 */
 func (recv *DBusInterfaceSkeleton) HasConnection(connection *DBusConnection) bool {
 	c_connection := (*C.GDBusConnection)(C.NULL)
@@ -251,7 +271,9 @@ func (recv *DBusInterfaceSkeleton) HasConnection(connection *DBusConnection) boo
 // use g_dbus_interface_skeleton_unexport().
 /*
 
-C function : g_dbus_interface_skeleton_unexport_from_connection
+C function
+
+g_dbus_interface_skeleton_unexport_from_connection
 */
 func (recv *DBusInterfaceSkeleton) UnexportFromConnection(connection *DBusConnection) {
 	c_connection := (*C.GDBusConnection)(C.NULL)
@@ -272,7 +294,9 @@ func (recv *DBusInterfaceSkeleton) UnexportFromConnection(connection *DBusConnec
 // often given in string form. Eg, "10.0.0.0/8", or "fe80::/10".
 /*
 
-C record/class : GInetAddressMask
+C type
+
+GInetAddressMask
 */
 type InetAddressMask struct {
 	native *C.GInetAddressMask
@@ -311,7 +335,9 @@ func CastToInetAddressMask(object *gobject.Object) *InetAddressMask {
 // first @length bits match @addr.
 /*
 
-C function : g_inet_address_mask_new
+C function
+
+g_inet_address_mask_new
 */
 func InetAddressMaskNew(addr *InetAddress, length uint32) (*InetAddressMask, error) {
 	c_addr := (*C.GInetAddress)(C.NULL)
@@ -340,7 +366,9 @@ func InetAddressMaskNew(addr *InetAddress, length uint32) (*InetAddressMask, err
 // assumed to be the full length of the address.
 /*
 
-C function : g_inet_address_mask_new_from_string
+C function
+
+g_inet_address_mask_new_from_string
 */
 func InetAddressMaskNewFromString(maskString string) (*InetAddressMask, error) {
 	c_mask_string := C.CString(maskString)
@@ -362,7 +390,9 @@ func InetAddressMaskNewFromString(maskString string) (*InetAddressMask, error) {
 // Tests if @mask and @mask2 are the same mask.
 /*
 
-C function : g_inet_address_mask_equal
+C function
+
+g_inet_address_mask_equal
 */
 func (recv *InetAddressMask) Equal(mask2 *InetAddressMask) bool {
 	c_mask2 := (*C.GInetAddressMask)(C.NULL)
@@ -379,7 +409,9 @@ func (recv *InetAddressMask) Equal(mask2 *InetAddressMask) bool {
 // Gets @mask's base address
 /*
 
-C function : g_inet_address_mask_get_address
+C function
+
+g_inet_address_mask_get_address
 */
 func (recv *InetAddressMask) GetAddress() *InetAddress {
 	retC := C.g_inet_address_mask_get_address((*C.GInetAddressMask)(recv.native))
@@ -391,7 +423,9 @@ func (recv *InetAddressMask) GetAddress() *InetAddress {
 // Gets the #GSocketFamily of @mask's address
 /*
 
-C function : g_inet_address_mask_get_family
+C function
+
+g_inet_address_mask_get_family
 */
 func (recv *InetAddressMask) GetFamily() SocketFamily {
 	retC := C.g_inet_address_mask_get_family((*C.GInetAddressMask)(recv.native))
@@ -403,7 +437,9 @@ func (recv *InetAddressMask) GetFamily() SocketFamily {
 // Gets @mask's length
 /*
 
-C function : g_inet_address_mask_get_length
+C function
+
+g_inet_address_mask_get_length
 */
 func (recv *InetAddressMask) GetLength() uint32 {
 	retC := C.g_inet_address_mask_get_length((*C.GInetAddressMask)(recv.native))
@@ -415,7 +451,9 @@ func (recv *InetAddressMask) GetLength() uint32 {
 // Tests if @address falls within the range described by @mask.
 /*
 
-C function : g_inet_address_mask_matches
+C function
+
+g_inet_address_mask_matches
 */
 func (recv *InetAddressMask) Matches(address *InetAddress) bool {
 	c_address := (*C.GInetAddress)(C.NULL)
@@ -432,7 +470,9 @@ func (recv *InetAddressMask) Matches(address *InetAddress) bool {
 // Converts @mask back to its corresponding string form.
 /*
 
-C function : g_inet_address_mask_to_string
+C function
+
+g_inet_address_mask_to_string
 */
 func (recv *InetAddressMask) ToString() string {
 	retC := C.g_inet_address_mask_to_string((*C.GInetAddressMask)(recv.native))
@@ -446,7 +486,9 @@ func (recv *InetAddressMask) ToString() string {
 // which must be an IPv6 address.
 /*
 
-C function : g_inet_socket_address_get_flowinfo
+C function
+
+g_inet_socket_address_get_flowinfo
 */
 func (recv *InetSocketAddress) GetFlowinfo() uint32 {
 	retC := C.g_inet_socket_address_get_flowinfo((*C.GInetSocketAddress)(recv.native))
@@ -459,7 +501,9 @@ func (recv *InetSocketAddress) GetFlowinfo() uint32 {
 // which must be an IPv6 address.
 /*
 
-C function : g_inet_socket_address_get_scope_id
+C function
+
+g_inet_socket_address_get_scope_id
 */
 func (recv *InetSocketAddress) GetScopeId() uint32 {
 	retC := C.g_inet_socket_address_get_scope_id((*C.GInetSocketAddress)(recv.native))
@@ -478,7 +522,9 @@ func (recv *InetSocketAddress) GetScopeId() uint32 {
 // g_menu_insert_submenu().
 /*
 
-C record/class : GMenu
+C type
+
+GMenu
 */
 type Menu struct {
 	native *C.GMenu
@@ -521,7 +567,9 @@ func CastToMenu(object *gobject.Object) *Menu {
 // The new menu has no items.
 /*
 
-C function : g_menu_new
+C function
+
+g_menu_new
 */
 func MenuNew() *Menu {
 	retC := C.g_menu_new()
@@ -535,7 +583,9 @@ func MenuNew() *Menu {
 // flexible alternative.
 /*
 
-C function : g_menu_append
+C function
+
+g_menu_append
 */
 func (recv *Menu) Append(label string, detailedAction string) {
 	c_label := C.CString(label)
@@ -554,7 +604,9 @@ func (recv *Menu) Append(label string, detailedAction string) {
 // See g_menu_insert_item() for more information.
 /*
 
-C function : g_menu_append_item
+C function
+
+g_menu_append_item
 */
 func (recv *Menu) AppendItem(item *MenuItem) {
 	c_item := (*C.GMenuItem)(C.NULL)
@@ -572,7 +624,9 @@ func (recv *Menu) AppendItem(item *MenuItem) {
 // more flexible alternative.
 /*
 
-C function : g_menu_append_section
+C function
+
+g_menu_append_section
 */
 func (recv *Menu) AppendSection(label string, section *MenuModel) {
 	c_label := C.CString(label)
@@ -593,7 +647,9 @@ func (recv *Menu) AppendSection(label string, section *MenuModel) {
 // more flexible alternative.
 /*
 
-C function : g_menu_append_submenu
+C function
+
+g_menu_append_submenu
 */
 func (recv *Menu) AppendSubmenu(label string, submenu *MenuModel) {
 	c_label := C.CString(label)
@@ -619,7 +675,9 @@ func (recv *Menu) AppendSubmenu(label string, submenu *MenuModel) {
 // %FALSE, which has some positive performance implications.
 /*
 
-C function : g_menu_freeze
+C function
+
+g_menu_freeze
 */
 func (recv *Menu) Freeze() {
 	C.g_menu_freeze((*C.GMenu)(recv.native))
@@ -632,7 +690,9 @@ func (recv *Menu) Freeze() {
 // alternative.
 /*
 
-C function : g_menu_insert
+C function
+
+g_menu_insert
 */
 func (recv *Menu) Insert(position int32, label string, detailedAction string) {
 	c_position := (C.gint)(position)
@@ -667,7 +727,9 @@ func (recv *Menu) Insert(position int32, label string, detailedAction string) {
 // each of these functions.
 /*
 
-C function : g_menu_insert_item
+C function
+
+g_menu_insert_item
 */
 func (recv *Menu) InsertItem(position int32, item *MenuItem) {
 	c_position := (C.gint)(position)
@@ -687,7 +749,9 @@ func (recv *Menu) InsertItem(position int32, item *MenuItem) {
 // flexible alternative.
 /*
 
-C function : g_menu_insert_section
+C function
+
+g_menu_insert_section
 */
 func (recv *Menu) InsertSection(position int32, label string, section *MenuModel) {
 	c_position := (C.gint)(position)
@@ -710,7 +774,9 @@ func (recv *Menu) InsertSection(position int32, label string, section *MenuModel
 // flexible alternative.
 /*
 
-C function : g_menu_insert_submenu
+C function
+
+g_menu_insert_submenu
 */
 func (recv *Menu) InsertSubmenu(position int32, label string, submenu *MenuModel) {
 	c_position := (C.gint)(position)
@@ -733,7 +799,9 @@ func (recv *Menu) InsertSubmenu(position int32, label string, submenu *MenuModel
 // flexible alternative.
 /*
 
-C function : g_menu_prepend
+C function
+
+g_menu_prepend
 */
 func (recv *Menu) Prepend(label string, detailedAction string) {
 	c_label := C.CString(label)
@@ -752,7 +820,9 @@ func (recv *Menu) Prepend(label string, detailedAction string) {
 // See g_menu_insert_item() for more information.
 /*
 
-C function : g_menu_prepend_item
+C function
+
+g_menu_prepend_item
 */
 func (recv *Menu) PrependItem(item *MenuItem) {
 	c_item := (*C.GMenuItem)(C.NULL)
@@ -770,7 +840,9 @@ func (recv *Menu) PrependItem(item *MenuItem) {
 // a more flexible alternative.
 /*
 
-C function : g_menu_prepend_section
+C function
+
+g_menu_prepend_section
 */
 func (recv *Menu) PrependSection(label string, section *MenuModel) {
 	c_label := C.CString(label)
@@ -791,7 +863,9 @@ func (recv *Menu) PrependSection(label string, section *MenuModel) {
 // a more flexible alternative.
 /*
 
-C function : g_menu_prepend_submenu
+C function
+
+g_menu_prepend_submenu
 */
 func (recv *Menu) PrependSubmenu(label string, submenu *MenuModel) {
 	c_label := C.CString(label)
@@ -819,7 +893,9 @@ func (recv *Menu) PrependSubmenu(label string, submenu *MenuModel) {
 // identity of the item itself is not preserved).
 /*
 
-C function : g_menu_remove
+C function
+
+g_menu_remove
 */
 func (recv *Menu) Remove(position int32) {
 	c_position := (C.gint)(position)
@@ -833,7 +909,9 @@ func (recv *Menu) Remove(position int32) {
 // using the functions below.
 /*
 
-C record/class : GMenuAttributeIter
+C type
+
+GMenuAttributeIter
 */
 type MenuAttributeIter struct {
 	native *C.GMenuAttributeIter
@@ -874,7 +952,9 @@ func CastToMenuAttributeIter(object *gobject.Object) *MenuAttributeIter {
 // The iterator is not advanced.
 /*
 
-C function : g_menu_attribute_iter_get_name
+C function
+
+g_menu_attribute_iter_get_name
 */
 func (recv *MenuAttributeIter) GetName() string {
 	retC := C.g_menu_attribute_iter_get_name((*C.GMenuAttributeIter)(recv.native))
@@ -898,7 +978,9 @@ func (recv *MenuAttributeIter) GetName() string {
 // attribute exists at all).
 /*
 
-C function : g_menu_attribute_iter_next
+C function
+
+g_menu_attribute_iter_next
 */
 func (recv *MenuAttributeIter) Next() bool {
 	retC := C.g_menu_attribute_iter_next((*C.GMenuAttributeIter)(recv.native))
@@ -911,7 +993,9 @@ func (recv *MenuAttributeIter) Next() bool {
 // functions below.
 /*
 
-C record/class : GMenuItem
+C type
+
+GMenuItem
 */
 type MenuItem struct {
 	native *C.GMenuItem
@@ -954,7 +1038,9 @@ func CastToMenuItem(object *gobject.Object) *MenuItem {
 // g_menu_item_set_detailed_action() for more information.
 /*
 
-C function : g_menu_item_new
+C function
+
+g_menu_item_new
 */
 func MenuItemNew(label string, detailedAction string) *MenuItem {
 	c_label := C.CString(label)
@@ -1031,7 +1117,9 @@ func MenuItemNew(label string, detailedAction string) *MenuItem {
 // ]|
 /*
 
-C function : g_menu_item_new_section
+C function
+
+g_menu_item_new_section
 */
 func MenuItemNewSection(label string, section *MenuModel) *MenuItem {
 	c_label := C.CString(label)
@@ -1054,7 +1142,9 @@ func MenuItemNewSection(label string, section *MenuModel) *MenuItem {
 // g_menu_item_set_submenu().
 /*
 
-C function : g_menu_item_new_submenu
+C function
+
+g_menu_item_new_submenu
 */
 func MenuItemNewSubmenu(label string, submenu *MenuModel) *MenuItem {
 	c_label := C.CString(label)
@@ -1092,7 +1182,9 @@ func MenuItemNewSubmenu(label string, submenu *MenuModel) *MenuItem {
 // the semantics of the action and target attributes.
 /*
 
-C function : g_menu_item_set_detailed_action
+C function
+
+g_menu_item_set_detailed_action
 */
 func (recv *MenuItem) SetDetailedAction(detailedAction string) {
 	c_detailed_action := C.CString(detailedAction)
@@ -1109,7 +1201,9 @@ func (recv *MenuItem) SetDetailedAction(detailedAction string) {
 // it is %NULL then the label attribute is unset.
 /*
 
-C function : g_menu_item_set_label
+C function
+
+g_menu_item_set_label
 */
 func (recv *MenuItem) SetLabel(label string) {
 	c_label := C.CString(label)
@@ -1132,7 +1226,9 @@ func (recv *MenuItem) SetLabel(label string) {
 // must not end with a '-', and must not contain consecutive dashes.
 /*
 
-C function : g_menu_item_set_link
+C function
+
+g_menu_item_set_link
 */
 func (recv *MenuItem) SetLink(link string, model *MenuModel) {
 	c_link := C.CString(link)
@@ -1157,7 +1253,9 @@ func (recv *MenuItem) SetLink(link string, model *MenuModel) {
 // section.
 /*
 
-C function : g_menu_item_set_section
+C function
+
+g_menu_item_set_section
 */
 func (recv *MenuItem) SetSection(section *MenuModel) {
 	c_section := (*C.GMenuModel)(C.NULL)
@@ -1179,7 +1277,9 @@ func (recv *MenuItem) SetSection(section *MenuModel) {
 // exactly as it sounds.
 /*
 
-C function : g_menu_item_set_submenu
+C function
+
+g_menu_item_set_submenu
 */
 func (recv *MenuItem) SetSubmenu(submenu *MenuModel) {
 	c_submenu := (*C.GMenuModel)(C.NULL)
@@ -1196,7 +1296,9 @@ func (recv *MenuItem) SetSubmenu(submenu *MenuModel) {
 // the functions below.
 /*
 
-C record/class : GMenuLinkIter
+C type
+
+GMenuLinkIter
 */
 type MenuLinkIter struct {
 	native *C.GMenuLinkIter
@@ -1236,7 +1338,9 @@ func CastToMenuLinkIter(object *gobject.Object) *MenuLinkIter {
 // The iterator is not advanced.
 /*
 
-C function : g_menu_link_iter_get_name
+C function
+
+g_menu_link_iter_get_name
 */
 func (recv *MenuLinkIter) GetName() string {
 	retC := C.g_menu_link_iter_get_name((*C.GMenuLinkIter)(recv.native))
@@ -1261,7 +1365,9 @@ func (recv *MenuLinkIter) GetName() string {
 // be unreffed using g_object_unref() when it is no longer in use.
 /*
 
-C function : g_menu_link_iter_get_next
+C function
+
+g_menu_link_iter_get_next
 */
 func (recv *MenuLinkIter) GetNext() (bool, string, *MenuModel) {
 	var c_out_link *C.gchar
@@ -1283,7 +1389,9 @@ func (recv *MenuLinkIter) GetNext() (bool, string, *MenuModel) {
 // The iterator is not advanced.
 /*
 
-C function : g_menu_link_iter_get_value
+C function
+
+g_menu_link_iter_get_value
 */
 func (recv *MenuLinkIter) GetValue() *MenuModel {
 	retC := C.g_menu_link_iter_get_value((*C.GMenuLinkIter)(recv.native))
@@ -1302,7 +1410,9 @@ func (recv *MenuLinkIter) GetValue() *MenuModel {
 // at all).
 /*
 
-C function : g_menu_link_iter_next
+C function
+
+g_menu_link_iter_next
 */
 func (recv *MenuLinkIter) Next() bool {
 	retC := C.g_menu_link_iter_next((*C.GMenuLinkIter)(recv.native))
@@ -1328,7 +1438,7 @@ func (recv *MenuLinkIter) Next() bool {
 //
 // As an example, consider the visible portions of this menu:
 //
-// ## An example menu # {#menu-example}
+// An example menu # {#menu-example}
 //
 // ![](menu-example.png)
 //
@@ -1349,7 +1459,7 @@ func (recv *MenuLinkIter) Next() bool {
 // smaller blocks within the large block represent items in that menu. Some
 // items contain references to other menus.
 //
-// ## A menu example # {#menu-model}
+// A menu example # {#menu-model}
 //
 // ![](menu-model.png)
 //
@@ -1397,13 +1507,13 @@ func (recv *MenuLinkIter) Next() bool {
 // - an action with no parameter type and boolean state
 // - an action with string parameter type and string state
 //
-// ## Stateless
+// Stateless
 //
 // A stateless action typically corresponds to an ordinary menu item.
 //
 // Selecting such a menu item will activate the action (with no parameter).
 //
-// ## Boolean State
+// Boolean State
 //
 // An action with a boolean state will most typically be used with a "toggle"
 // or "switch" menu item. The state can be set directly, but activating the
@@ -1412,7 +1522,7 @@ func (recv *MenuLinkIter) Next() bool {
 // Selecting a toggle menu item will activate the action. The menu item should
 // be rendered as "checked" when the state is true.
 //
-// ## String Parameter and State
+// String Parameter and State
 //
 // Actions with string parameters and state will most typically be used to
 // represent an enumerated choice over the items available for a group of
@@ -1426,7 +1536,9 @@ func (recv *MenuLinkIter) Next() bool {
 // target value of the menu item.
 /*
 
-C record/class : GMenuModel
+C type
+
+GMenuModel
 */
 type MenuModel struct {
 	native *C.GMenuModel
@@ -1474,7 +1586,9 @@ func CastToMenuModel(object *gobject.Object) *MenuModel {
 // does not exist, %NULL is returned.
 /*
 
-C function : g_menu_model_get_item_link
+C function
+
+g_menu_model_get_item_link
 */
 func (recv *MenuModel) GetItemLink(itemIndex int32, link string) *MenuModel {
 	c_item_index := (C.gint)(itemIndex)
@@ -1491,7 +1605,9 @@ func (recv *MenuModel) GetItemLink(itemIndex int32, link string) *MenuModel {
 // Query the number of items in @model.
 /*
 
-C function : g_menu_model_get_n_items
+C function
+
+g_menu_model_get_n_items
 */
 func (recv *MenuModel) GetNItems() int32 {
 	retC := C.g_menu_model_get_n_items((*C.GMenuModel)(recv.native))
@@ -1506,7 +1622,9 @@ func (recv *MenuModel) GetNItems() int32 {
 // signal. Consumers of the model may make optimisations accordingly.
 /*
 
-C function : g_menu_model_is_mutable
+C function
+
+g_menu_model_is_mutable
 */
 func (recv *MenuModel) IsMutable() bool {
 	retC := C.g_menu_model_is_mutable((*C.GMenuModel)(recv.native))
@@ -1532,7 +1650,9 @@ func (recv *MenuModel) IsMutable() bool {
 // user code is running without returning to the mainloop.
 /*
 
-C function : g_menu_model_items_changed
+C function
+
+g_menu_model_items_changed
 */
 func (recv *MenuModel) ItemsChanged(position int32, removed int32, added int32) {
 	c_position := (C.gint)(position)
@@ -1552,7 +1672,9 @@ func (recv *MenuModel) ItemsChanged(position int32, removed int32, added int32) 
 // You must free the iterator with g_object_unref() when you are done.
 /*
 
-C function : g_menu_model_iterate_item_attributes
+C function
+
+g_menu_model_iterate_item_attributes
 */
 func (recv *MenuModel) IterateItemAttributes(itemIndex int32) *MenuAttributeIter {
 	c_item_index := (C.gint)(itemIndex)
@@ -1569,7 +1691,9 @@ func (recv *MenuModel) IterateItemAttributes(itemIndex int32) *MenuAttributeIter
 // You must free the iterator with g_object_unref() when you are done.
 /*
 
-C function : g_menu_model_iterate_item_links
+C function
+
+g_menu_model_iterate_item_links
 */
 func (recv *MenuModel) IterateItemLinks(itemIndex int32) *MenuLinkIter {
 	c_item_index := (C.gint)(itemIndex)
@@ -1605,7 +1729,9 @@ func (recv *MenuModel) IterateItemLinks(itemIndex int32) *MenuLinkIter {
 // have.
 /*
 
-C function : g_settings_new_full
+C function
+
+g_settings_new_full
 */
 func SettingsNewFull(schema *SettingsSchema, backend *SettingsBackend, path string) *Settings {
 	c_schema := (*C.GSettingsSchema)(C.NULL)
@@ -1643,7 +1769,9 @@ func SettingsNewFull(schema *SettingsSchema, backend *SettingsBackend, path stri
 // correct type).
 /*
 
-C function : g_settings_create_action
+C function
+
+g_settings_create_action
 */
 func (recv *Settings) CreateAction(key string) *Action {
 	c_key := C.CString(key)
@@ -1672,7 +1800,9 @@ func (recv *Settings) CreateAction(key string) *Action {
 // unrelated g_simple_async_result_set_handle_cancellation() function.
 /*
 
-C function : g_simple_async_result_set_check_cancellable
+C function
+
+g_simple_async_result_set_check_cancellable
 */
 func (recv *SimpleAsyncResult) SetCheckCancellable(checkCancellable *Cancellable) {
 	c_check_cancellable := (*C.GCancellable)(C.NULL)
@@ -1703,7 +1833,9 @@ func (recv *SimpleAsyncResult) SetCheckCancellable(checkCancellable *Cancellable
 // exact number of milliseconds.
 /*
 
-C function : g_socket_condition_timed_wait
+C function
+
+g_socket_condition_timed_wait
 */
 func (recv *Socket) ConditionTimedWait(condition glib.IOCondition, timeout int64, cancellable *Cancellable) (bool, error) {
 	c_condition := (C.GIOCondition)(condition)
@@ -1742,7 +1874,9 @@ func (recv *Socket) ConditionTimedWait(condition glib.IOCondition, timeout int64
 // exactly the right size.
 /*
 
-C function : g_socket_get_available_bytes
+C function
+
+g_socket_get_available_bytes
 */
 func (recv *Socket) GetAvailableBytes() int64 {
 	retC := C.g_socket_get_available_bytes((*C.GSocket)(recv.native))
@@ -1756,7 +1890,9 @@ func (recv *Socket) GetAvailableBytes() int64 {
 // addresses.
 /*
 
-C function : g_socket_get_broadcast
+C function
+
+g_socket_get_broadcast
 */
 func (recv *Socket) GetBroadcast() bool {
 	retC := C.g_socket_get_broadcast((*C.GSocket)(recv.native))
@@ -1770,7 +1906,9 @@ func (recv *Socket) GetBroadcast() bool {
 // multicast listeners on the same host.
 /*
 
-C function : g_socket_get_multicast_loopback
+C function
+
+g_socket_get_multicast_loopback
 */
 func (recv *Socket) GetMulticastLoopback() bool {
 	retC := C.g_socket_get_multicast_loopback((*C.GSocket)(recv.native))
@@ -1783,7 +1921,9 @@ func (recv *Socket) GetMulticastLoopback() bool {
 // g_socket_set_multicast_ttl() for more details.
 /*
 
-C function : g_socket_get_multicast_ttl
+C function
+
+g_socket_get_multicast_ttl
 */
 func (recv *Socket) GetMulticastTtl() uint32 {
 	retC := C.g_socket_get_multicast_ttl((*C.GSocket)(recv.native))
@@ -1796,7 +1936,9 @@ func (recv *Socket) GetMulticastTtl() uint32 {
 // g_socket_set_ttl() for more details.
 /*
 
-C function : g_socket_get_ttl
+C function
+
+g_socket_get_ttl
 */
 func (recv *Socket) GetTtl() uint32 {
 	retC := C.g_socket_get_ttl((*C.GSocket)(recv.native))
@@ -1821,7 +1963,9 @@ func (recv *Socket) GetTtl() uint32 {
 // g_socket_join_multicast_group_ssm() instead.
 /*
 
-C function : g_socket_join_multicast_group
+C function
+
+g_socket_join_multicast_group
 */
 func (recv *Socket) JoinMulticastGroup(group *InetAddress, sourceSpecific bool, iface string) (bool, error) {
 	c_group := (*C.GInetAddress)(C.NULL)
@@ -1859,7 +2003,9 @@ func (recv *Socket) JoinMulticastGroup(group *InetAddress, sourceSpecific bool, 
 // g_socket_leave_multicast_group_ssm() instead.
 /*
 
-C function : g_socket_leave_multicast_group
+C function
+
+g_socket_leave_multicast_group
 */
 func (recv *Socket) LeaveMulticastGroup(group *InetAddress, sourceSpecific bool, iface string) (bool, error) {
 	c_group := (*C.GInetAddress)(C.NULL)
@@ -1890,7 +2036,9 @@ func (recv *Socket) LeaveMulticastGroup(group *InetAddress, sourceSpecific bool,
 // This is %FALSE by default.
 /*
 
-C function : g_socket_set_broadcast
+C function
+
+g_socket_set_broadcast
 */
 func (recv *Socket) SetBroadcast(broadcast bool) {
 	c_broadcast :=
@@ -1906,7 +2054,9 @@ func (recv *Socket) SetBroadcast(broadcast bool) {
 // by default.
 /*
 
-C function : g_socket_set_multicast_loopback
+C function
+
+g_socket_set_multicast_loopback
 */
 func (recv *Socket) SetMulticastLoopback(loopback bool) {
 	c_loopback :=
@@ -1922,7 +2072,9 @@ func (recv *Socket) SetMulticastLoopback(loopback bool) {
 // the local network.
 /*
 
-C function : g_socket_set_multicast_ttl
+C function
+
+g_socket_set_multicast_ttl
 */
 func (recv *Socket) SetMulticastTtl(ttl uint32) {
 	c_ttl := (C.guint)(ttl)
@@ -1936,7 +2088,9 @@ func (recv *Socket) SetMulticastTtl(ttl uint32) {
 // By default the platform-specific default value is used.
 /*
 
-C function : g_socket_set_ttl
+C function
+
+g_socket_set_ttl
 */
 func (recv *Socket) SetTtl(ttl uint32) {
 	c_ttl := (C.guint)(ttl)
@@ -1949,7 +2103,9 @@ func (recv *Socket) SetTtl(ttl uint32) {
 // Connect @connection to the specified remote address.
 /*
 
-C function : g_socket_connection_connect
+C function
+
+g_socket_connection_connect
 */
 func (recv *SocketConnection) Connect(address *SocketAddress, cancellable *Cancellable) (bool, error) {
 	c_address := (*C.GSocketAddress)(C.NULL)
@@ -1980,7 +2136,9 @@ func (recv *SocketConnection) Connect(address *SocketAddress, cancellable *Cance
 // Gets the result of a g_socket_connection_connect_async() call.
 /*
 
-C function : g_socket_connection_connect_finish
+C function
+
+g_socket_connection_connect_finish
 */
 func (recv *SocketConnection) ConnectFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -2002,7 +2160,9 @@ func (recv *SocketConnection) ConnectFinish(result *AsyncResult) (bool, error) {
 // g_socket_is_connected() on @connection's underlying #GSocket.
 /*
 
-C function : g_socket_connection_is_connected
+C function
+
+g_socket_connection_is_connected
 */
 func (recv *SocketConnection) IsConnected() bool {
 	retC := C.g_socket_connection_is_connected((*C.GSocketConnection)(recv.native))
@@ -2017,7 +2177,9 @@ func (recv *SocketConnection) IsConnected() bool {
 // g_unix_connection_receive_credentials_async().
 /*
 
-C function : g_unix_connection_receive_credentials_finish
+C function
+
+g_unix_connection_receive_credentials_finish
 */
 func (recv *UnixConnection) ReceiveCredentialsFinish(result *AsyncResult) (*Credentials, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -2041,7 +2203,9 @@ func (recv *UnixConnection) ReceiveCredentialsFinish(result *AsyncResult) (*Cred
 // g_unix_connection_send_credentials_async().
 /*
 
-C function : g_unix_connection_send_credentials_finish
+C function
+
+g_unix_connection_send_credentials_finish
 */
 func (recv *UnixConnection) SendCredentialsFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())

@@ -17,7 +17,9 @@ import "C"
 // and such data is changed.
 /*
 
-C function : pango_context_changed
+C function
+
+pango_context_changed
 */
 func (recv *Context) Changed() {
 	C.pango_context_changed((*C.PangoContext)(recv.native))
@@ -37,7 +39,9 @@ func (recv *Context) Changed() {
 // #PangoContext changes, like #PangoLayout.
 /*
 
-C function : pango_context_get_serial
+C function
+
+pango_context_get_serial
 */
 func (recv *Context) GetSerial() uint32 {
 	retC := C.pango_context_get_serial((*C.PangoContext)(recv.native))
@@ -59,7 +63,9 @@ func (recv *Context) GetSerial() uint32 {
 // in #PangoContext.
 /*
 
-C function : pango_font_map_get_serial
+C function
+
+pango_font_map_get_serial
 */
 func (recv *FontMap) GetSerial() uint32 {
 	retC := C.pango_font_map_get_serial((*C.PangoFontMap)(recv.native))
@@ -80,7 +86,9 @@ func (recv *FontMap) GetSerial() uint32 {
 // To force the serial to be increased, use pango_layout_context_changed().
 /*
 
-C function : pango_layout_get_serial
+C function
+
+pango_layout_get_serial
 */
 func (recv *Layout) GetSerial() uint32 {
 	retC := C.pango_layout_get_serial((*C.PangoLayout)(recv.native))

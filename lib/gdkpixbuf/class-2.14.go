@@ -25,7 +25,9 @@ import "C"
 // The stream is not closed.
 /*
 
-C function : gdk_pixbuf_new_from_stream
+C function
+
+gdk_pixbuf_new_from_stream
 */
 func PixbufNewFromStream(stream *gio.InputStream, cancellable *gio.Cancellable) (*Pixbuf, error) {
 	c_stream := (*C.GInputStream)(C.NULL)
@@ -74,7 +76,9 @@ func PixbufNewFromStream(stream *gio.InputStream, cancellable *gio.Cancellable) 
 // The stream is not closed.
 /*
 
-C function : gdk_pixbuf_new_from_stream_at_scale
+C function
+
+gdk_pixbuf_new_from_stream_at_scale
 */
 func PixbufNewFromStreamAtScale(stream *gio.InputStream, width int32, height int32, preserveAspectRatio bool, cancellable *gio.Cancellable) (*Pixbuf, error) {
 	c_stream := (*C.GInputStream)(C.NULL)

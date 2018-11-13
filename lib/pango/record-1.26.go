@@ -18,7 +18,9 @@ import "C"
 // See also pango_glyph_string_get_logical_widths().
 /*
 
-C function : pango_glyph_item_get_logical_widths
+C function
+
+pango_glyph_item_get_logical_widths
 */
 func (recv *GlyphItem) GetLogicalWidths(text string, logicalWidths []int32) {
 	c_text := C.CString(text)

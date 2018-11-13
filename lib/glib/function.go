@@ -16,7 +16,9 @@ import "C"
 // there's no worry about sign extension if characters are signed.
 /*
 
-C function : g_ascii_digit_value
+C function
+
+g_ascii_digit_value
 */
 func AsciiDigitValue(c rune) int32 {
 	c_c := (C.gchar)(c)
@@ -38,7 +40,9 @@ func AsciiDigitValue(c rune) int32 {
 // nul character, which is always added.
 /*
 
-C function : g_ascii_dtostr
+C function
+
+g_ascii_dtostr
 */
 func AsciiDtostr(buffer string, bufLen int32, d float64) string {
 	c_buffer := C.CString(buffer)
@@ -66,7 +70,9 @@ func AsciiDtostr(buffer string, bufLen int32, d float64) string {
 // string, use g_ascii_dtostr().
 /*
 
-C function : g_ascii_formatd
+C function
+
+g_ascii_formatd
 */
 func AsciiFormatd(buffer string, bufLen int32, format string, d float64) string {
 	c_buffer := C.CString(buffer)
@@ -103,7 +109,9 @@ func AsciiFormatd(buffer string, bufLen int32, format string, d float64) string 
 // Both @s1 and @s2 must be non-%NULL.
 /*
 
-C function : g_ascii_strcasecmp
+C function
+
+g_ascii_strcasecmp
 */
 func AsciiStrcasecmp(s1 string, s2 string) int32 {
 	c_s1 := C.CString(s1)
@@ -121,7 +129,9 @@ func AsciiStrcasecmp(s1 string, s2 string) int32 {
 // Converts all upper case ASCII letters to lower case ASCII letters.
 /*
 
-C function : g_ascii_strdown
+C function
+
+g_ascii_strdown
 */
 func AsciiStrdown(str string, len int64) string {
 	c_str := C.CString(str)
@@ -148,7 +158,9 @@ func AsciiStrdown(str string, len int64) string {
 // corresponding to ASCII letters always represent themselves.
 /*
 
-C function : g_ascii_strncasecmp
+C function
+
+g_ascii_strncasecmp
 */
 func AsciiStrncasecmp(s1 string, s2 string, n uint64) int32 {
 	c_s1 := C.CString(s1)
@@ -190,7 +202,9 @@ func AsciiStrncasecmp(s1 string, s2 string, n uint64) int32 {
 // you can reliably detect overflow and underflow.
 /*
 
-C function : g_ascii_strtod
+C function
+
+g_ascii_strtod
 */
 func AsciiStrtod(nptr string) (float64, string) {
 	c_nptr := C.CString(nptr)
@@ -209,7 +223,9 @@ func AsciiStrtod(nptr string) (float64, string) {
 // Converts all lower case ASCII letters to upper case ASCII letters.
 /*
 
-C function : g_ascii_strup
+C function
+
+g_ascii_strup
 */
 func AsciiStrup(str string, len int64) string {
 	c_str := C.CString(str)
@@ -235,7 +251,9 @@ func AsciiStrup(str string, len int64) string {
 // before passing a possibly non-ASCII character in.
 /*
 
-C function : g_ascii_tolower
+C function
+
+g_ascii_tolower
 */
 func AsciiTolower(c rune) rune {
 	c_c := (C.gchar)(c)
@@ -257,7 +275,9 @@ func AsciiTolower(c rune) rune {
 // before passing a possibly non-ASCII character in.
 /*
 
-C function : g_ascii_toupper
+C function
+
+g_ascii_toupper
 */
 func AsciiToupper(c rune) rune {
 	c_c := (C.gchar)(c)
@@ -274,7 +294,9 @@ func AsciiToupper(c rune) rune {
 // are signed.
 /*
 
-C function : g_ascii_xdigit_value
+C function
+
+g_ascii_xdigit_value
 */
 func AsciiXdigitValue(c rune) int32 {
 	c_c := (C.gchar)(c)
@@ -287,7 +309,9 @@ func AsciiXdigitValue(c rune) int32 {
 
 /*
 
-C function : g_assert_warning
+C function
+
+g_assert_warning
 */
 func AssertWarning(logDomain string, file string, line int32, prettyFunction string, expression string) {
 	c_log_domain := C.CString(logDomain)
@@ -311,7 +335,9 @@ func AssertWarning(logDomain string, file string, line int32, prettyFunction str
 
 /*
 
-C function : g_assertion_message
+C function
+
+g_assertion_message
 */
 func AssertionMessage(domain string, file string, line int32, func_ string, message string) {
 	c_domain := C.CString(domain)
@@ -337,7 +363,9 @@ func AssertionMessage(domain string, file string, line int32, func_ string, mess
 
 /*
 
-C function : g_assertion_message_cmpstr
+C function
+
+g_assertion_message_cmpstr
 */
 func AssertionMessageCmpstr(domain string, file string, line int32, func_ string, expr string, arg1 string, cmp string, arg2 string) {
 	c_domain := C.CString(domain)
@@ -370,7 +398,9 @@ func AssertionMessageCmpstr(domain string, file string, line int32, func_ string
 
 /*
 
-C function : g_assertion_message_error
+C function
+
+g_assertion_message_error
 */
 func AssertionMessageError(domain string, file string, line int32, func_ string, expr string, error *Error, errorDomain Quark, errorCode int32) {
 	c_domain := C.CString(domain)
@@ -403,7 +433,9 @@ func AssertionMessageError(domain string, file string, line int32, func_ string,
 
 /*
 
-C function : g_assertion_message_expr
+C function
+
+g_assertion_message_expr
 */
 func AssertionMessageExpr(domain string, file string, line int32, func_ string, expr string) {
 	c_domain := C.CString(domain)
@@ -432,7 +464,9 @@ func AssertionMessageExpr(domain string, file string, line int32, func_ string, 
 // string.
 /*
 
-C function : g_basename
+C function
+
+g_basename
 */
 func Basename(fileName string) string {
 	c_file_name := C.CString(fileName)
@@ -450,7 +484,9 @@ func Basename(fileName string) string {
 // usually). To start searching from the 0th bit, set @nth_bit to -1.
 /*
 
-C function : g_bit_nth_lsf
+C function
+
+g_bit_nth_lsf
 */
 func BitNthLsf(mask uint64, nthBit int32) int32 {
 	c_mask := (C.gulong)(mask)
@@ -470,7 +506,9 @@ func BitNthLsf(mask uint64, nthBit int32) int32 {
 // -1 or GLIB_SIZEOF_LONG * 8.
 /*
 
-C function : g_bit_nth_msf
+C function
+
+g_bit_nth_msf
 */
 func BitNthMsf(mask uint64, nthBit int32) int32 {
 	c_mask := (C.gulong)(mask)
@@ -487,7 +525,9 @@ func BitNthMsf(mask uint64, nthBit int32) int32 {
 // e.g. if @number is 4, 3 bits are needed.
 /*
 
-C function : g_bit_storage
+C function
+
+g_bit_storage
 */
 func BitStorage(number uint64) uint32 {
 	c_number := (C.gulong)(number)
@@ -500,7 +540,9 @@ func BitStorage(number uint64) uint32 {
 
 /*
 
-C function : g_bookmark_file_error_quark
+C function
+
+g_bookmark_file_error_quark
 */
 func BookmarkFileErrorQuark() Quark {
 	retC := C.g_bookmark_file_error_quark()
@@ -521,7 +563,9 @@ func BookmarkFileErrorQuark() Quark {
 // calls g_error_free() on *@err and sets *@err to %NULL.
 /*
 
-C function : g_clear_error
+C function
+
+g_clear_error
 */
 func ClearError() error {
 	var cThrowableError *C.GError
@@ -540,7 +584,9 @@ func ClearError() error {
 
 /*
 
-C function : g_convert_error_quark
+C function
+
+g_convert_error_quark
 */
 func ConvertErrorQuark() Quark {
 	retC := C.g_convert_error_quark()
@@ -558,7 +604,9 @@ func ConvertErrorQuark() Quark {
 // if they have been set.
 /*
 
-C function : g_datalist_clear
+C function
+
+g_datalist_clear
 */
 func DatalistClear(datalist *Data) {
 	c_datalist := (**C.GData)(C.NULL)
@@ -577,7 +625,9 @@ func DatalistClear(datalist *Data) {
 // g_datalist_id_get_data() because it compares strings.
 /*
 
-C function : g_datalist_get_data
+C function
+
+g_datalist_get_data
 */
 func DatalistGetData(datalist *Data, key string) uintptr {
 	c_datalist := (**C.GData)(C.NULL)
@@ -597,7 +647,9 @@ func DatalistGetData(datalist *Data, key string) uintptr {
 // Retrieves the data element corresponding to @key_id.
 /*
 
-C function : g_datalist_id_get_data
+C function
+
+g_datalist_id_get_data
 */
 func DatalistIdGetData(datalist *Data, keyId Quark) uintptr {
 	c_datalist := (**C.GData)(C.NULL)
@@ -617,7 +669,9 @@ func DatalistIdGetData(datalist *Data, keyId Quark) uintptr {
 // function.
 /*
 
-C function : g_datalist_id_remove_no_notify
+C function
+
+g_datalist_id_remove_no_notify
 */
 func DatalistIdRemoveNoNotify(datalist *Data, keyId Quark) uintptr {
 	c_datalist := (**C.GData)(C.NULL)
@@ -639,7 +693,9 @@ func DatalistIdRemoveNoNotify(datalist *Data, keyId Quark) uintptr {
 // any destroy functions.
 /*
 
-C function : g_datalist_init
+C function
+
+g_datalist_init
 */
 func DatalistInit(datalist *Data) {
 	c_datalist := (**C.GData)(C.NULL)
@@ -656,7 +712,9 @@ func DatalistInit(datalist *Data) {
 // destroy functions set for data elements.
 /*
 
-C function : g_dataset_destroy
+C function
+
+g_dataset_destroy
 */
 func DatasetDestroy(datasetLocation uintptr) {
 	c_dataset_location := (C.gconstpointer)(datasetLocation)
@@ -671,7 +729,9 @@ func DatasetDestroy(datasetLocation uintptr) {
 // Gets the data element corresponding to a #GQuark.
 /*
 
-C function : g_dataset_id_get_data
+C function
+
+g_dataset_id_get_data
 */
 func DatasetIdGetData(datasetLocation uintptr, keyId Quark) uintptr {
 	c_dataset_location := (C.gconstpointer)(datasetLocation)
@@ -688,7 +748,9 @@ func DatasetIdGetData(datasetLocation uintptr, keyId Quark) uintptr {
 // function.
 /*
 
-C function : g_dataset_id_remove_no_notify
+C function
+
+g_dataset_id_remove_no_notify
 */
 func DatasetIdRemoveNoNotify(datasetLocation uintptr, keyId Quark) uintptr {
 	c_dataset_location := (C.gconstpointer)(datasetLocation)
@@ -707,7 +769,9 @@ func DatasetIdRemoveNoNotify(datasetLocation uintptr, keyId Quark) uintptr {
 // years into account.
 /*
 
-C function : g_date_get_days_in_month
+C function
+
+g_date_get_days_in_month
 */
 func DateGetDaysInMonth(month DateMonth, year DateYear) uint8 {
 	c_month := (C.GDateMonth)(month)
@@ -729,7 +793,9 @@ func DateGetDaysInMonth(month DateMonth, year DateYear) uint8 {
 // one of the extra days happens to be a Monday.)
 /*
 
-C function : g_date_get_monday_weeks_in_year
+C function
+
+g_date_get_monday_weeks_in_year
 */
 func DateGetMondayWeeksInYear(year DateYear) uint8 {
 	c_year := (C.GDateYear)(year)
@@ -749,7 +815,9 @@ func DateGetMondayWeeksInYear(year DateYear) uint8 {
 // one of the extra days happens to be a Sunday.)
 /*
 
-C function : g_date_get_sunday_weeks_in_year
+C function
+
+g_date_get_sunday_weeks_in_year
 */
 func DateGetSundayWeeksInYear(year DateYear) uint8 {
 	c_year := (C.GDateYear)(year)
@@ -768,7 +836,9 @@ func DateGetSundayWeeksInYear(year DateYear) uint8 {
 // is also divisible by 400.
 /*
 
-C function : g_date_is_leap_year
+C function
+
+g_date_is_leap_year
 */
 func DateIsLeapYear(year DateYear) bool {
 	c_year := (C.GDateYear)(year)
@@ -794,7 +864,9 @@ func DateIsLeapYear(year DateYear) bool {
 // where the C library only complies to C89.
 /*
 
-C function : g_date_strftime
+C function
+
+g_date_strftime
 */
 func DateStrftime(s string, slen uint64, format string, date *Date) uint64 {
 	c_s := C.CString(s)
@@ -820,7 +892,9 @@ func DateStrftime(s string, slen uint64, format string, date *Date) uint64 {
 // between 1 and 31 inclusive).
 /*
 
-C function : g_date_valid_day
+C function
+
+g_date_valid_day
 */
 func DateValidDay(day DateDay) bool {
 	c_day := (C.GDateDay)(day)
@@ -836,7 +910,9 @@ func DateValidDay(day DateDay) bool {
 // a few thousand years in the future).
 /*
 
-C function : g_date_valid_dmy
+C function
+
+g_date_valid_dmy
 */
 func DateValidDmy(day DateDay, month DateMonth, year DateYear) bool {
 	c_day := (C.GDateDay)(day)
@@ -855,7 +931,9 @@ func DateValidDmy(day DateDay, month DateMonth, year DateYear) bool {
 // is basically a valid Julian, though there is a 32-bit limit.
 /*
 
-C function : g_date_valid_julian
+C function
+
+g_date_valid_julian
 */
 func DateValidJulian(julianDate uint32) bool {
 	c_julian_date := (C.guint32)(julianDate)
@@ -870,7 +948,9 @@ func DateValidJulian(julianDate uint32) bool {
 // enumeration values are the only valid months.
 /*
 
-C function : g_date_valid_month
+C function
+
+g_date_valid_month
 */
 func DateValidMonth(month DateMonth) bool {
 	c_month := (C.GDateMonth)(month)
@@ -885,7 +965,9 @@ func DateValidMonth(month DateMonth) bool {
 // values are the only valid weekdays.
 /*
 
-C function : g_date_valid_weekday
+C function
+
+g_date_valid_weekday
 */
 func DateValidWeekday(weekday DateWeekday) bool {
 	c_weekday := (C.GDateWeekday)(weekday)
@@ -900,7 +982,9 @@ func DateValidWeekday(weekday DateWeekday) bool {
 // though there is a 16-bit limit to what #GDate will understand.
 /*
 
-C function : g_date_valid_year
+C function
+
+g_date_valid_year
 */
 func DateValidYear(year DateYear) bool {
 	c_year := (C.GDateYear)(year)
@@ -920,7 +1004,9 @@ func DateValidYear(year DateYear) bool {
 // stored in pointers, such as `GINT_TO_POINTER (n)`.
 /*
 
-C function : g_direct_equal
+C function
+
+g_direct_equal
 */
 func DirectEqual(v1 uintptr, v2 uintptr) bool {
 	c_v1 := (C.gconstpointer)(v1)
@@ -942,7 +1028,9 @@ func DirectEqual(v1 uintptr, v2 uintptr) bool {
 // stored in pointers, such as `GINT_TO_POINTER (n)`.
 /*
 
-C function : g_direct_hash
+C function
+
+g_direct_hash
 */
 func DirectHash(v uintptr) uint32 {
 	c_v := (C.gconstpointer)(v)
@@ -963,7 +1051,9 @@ func DirectHash(v uintptr) uint32 {
 // g_file_error_from_errno() when constructing a #GError.
 /*
 
-C function : g_file_error_from_errno
+C function
+
+g_file_error_from_errno
 */
 func FileErrorFromErrno(errNo int32) FileError {
 	c_err_no := (C.gint)(errNo)
@@ -976,7 +1066,9 @@ func FileErrorFromErrno(errNo int32) FileError {
 
 /*
 
-C function : g_file_error_quark
+C function
+
+g_file_error_quark
 */
 func FileErrorQuark() Quark {
 	retC := C.g_file_error_quark()
@@ -1005,7 +1097,9 @@ func FileErrorQuark() Quark {
 // name encoding.
 /*
 
-C function : g_file_open_tmp
+C function
+
+g_file_open_tmp
 */
 func FileOpenTmp(tmpl string) (int32, string, error) {
 	c_tmpl := C.CString(tmpl)
@@ -1072,7 +1166,9 @@ func FileOpenTmp(tmpl string) (int32, string, error) {
 // extensions and those listed in the `PATHEXT` environment variable.
 /*
 
-C function : g_file_test
+C function
+
+g_file_test
 */
 func FileTest(filename string, test GFileTest) bool {
 	c_filename := C.CString(filename)
@@ -1090,7 +1186,9 @@ func FileTest(filename string, test GFileTest) bool {
 // encoding used for filenames.
 /*
 
-C function : g_filename_from_uri
+C function
+
+g_filename_from_uri
 */
 func FilenameFromUri(uri string) (string, string, error) {
 	c_uri := C.CString(uri)
@@ -1127,7 +1225,9 @@ func FilenameFromUri(uri string) (string, string, error) {
 // %G_CONVERT_ERROR_EMBEDDED_NUL is set and the function returns %NULL.
 /*
 
-C function : g_filename_from_utf8
+C function
+
+g_filename_from_utf8
 */
 func FilenameFromUtf8(utf8string string, len int64) (string, uint64, uint64, error) {
 	c_utf8string := C.CString(utf8string)
@@ -1161,7 +1261,9 @@ func FilenameFromUtf8(utf8string string, len int64) (string, uint64, uint64, err
 // component following Section 3.3. of RFC 2396.
 /*
 
-C function : g_filename_to_uri
+C function
+
+g_filename_to_uri
 */
 func FilenameToUri(filename string, hostname string) (string, error) {
 	c_filename := C.CString(filename)
@@ -1198,7 +1300,9 @@ func FilenameToUri(filename string, hostname string) (string, error) {
 // may contain embedded nul characters.
 /*
 
-C function : g_filename_to_utf8
+C function
+
+g_filename_to_utf8
 */
 func FilenameToUtf8(opsysstring string, len int64) (string, uint64, uint64, error) {
 	c_opsysstring := C.CString(opsysstring)
@@ -1247,7 +1351,9 @@ func FilenameToUtf8(opsysstring string, len int64) (string, uint64, uint64, erro
 // including the type suffix.
 /*
 
-C function : g_find_program_in_path
+C function
+
+g_find_program_in_path
 */
 func FindProgramInPath(program string) string {
 	c_program := C.CString(program)
@@ -1266,7 +1372,9 @@ func FindProgramInPath(program string) string {
 // against %NULL before calling this function.
 /*
 
-C function : g_free
+C function
+
+g_free
 */
 func Free(mem uintptr) {
 	c_mem := (C.gpointer)(mem)
@@ -1298,7 +1406,9 @@ func Free(mem uintptr) {
 // freed.
 /*
 
-C function : g_get_charset
+C function
+
+g_get_charset
 */
 func GetCharset() (bool, string) {
 	var c_charset *C.char
@@ -1314,7 +1424,9 @@ func GetCharset() (bool, string) {
 // Gets the character set for the current locale.
 /*
 
-C function : g_get_codeset
+C function
+
+g_get_codeset
 */
 func GetCodeset() string {
 	retC := C.g_get_codeset()
@@ -1336,7 +1448,9 @@ func GetCodeset() string {
 // the current directory is the target of a symbolic link.
 /*
 
-C function : g_get_current_dir
+C function
+
+g_get_current_dir
 */
 func GetCurrentDir() string {
 	retC := C.g_get_current_dir()
@@ -1351,7 +1465,9 @@ func GetCurrentDir() string {
 // You may find g_get_real_time() to be more convenient.
 /*
 
-C function : g_get_current_time
+C function
+
+g_get_current_time
 */
 func GetCurrentTime(result *TimeVal) {
 	c_result := (*C.GTimeVal)(C.NULL)
@@ -1386,7 +1502,9 @@ func GetCurrentTime(result *TimeVal) {
 // or unset it before calling any functions in GLib.
 /*
 
-C function : g_get_home_dir
+C function
+
+g_get_home_dir
 */
 func GetHomeDir() string {
 	retC := C.g_get_home_dir()
@@ -1405,7 +1523,9 @@ func GetHomeDir() string {
 // taking the last component of @argv[0].
 /*
 
-C function : g_get_prgname
+C function
+
+g_get_prgname
 */
 func GetPrgname() string {
 	retC := C.g_get_prgname()
@@ -1421,7 +1541,9 @@ func GetPrgname() string {
 // returned.
 /*
 
-C function : g_get_real_name
+C function
+
+g_get_real_name
 */
 func GetRealName() string {
 	retC := C.g_get_real_name()
@@ -1446,7 +1568,9 @@ func GetRealName() string {
 // string.
 /*
 
-C function : g_get_tmp_dir
+C function
+
+g_get_tmp_dir
 */
 func GetTmpDir() string {
 	retC := C.g_get_tmp_dir()
@@ -1461,7 +1585,9 @@ func GetTmpDir() string {
 // consistent on a machine. On Windows, it is always UTF-8.
 /*
 
-C function : g_get_user_name
+C function
+
+g_get_user_name
 */
 func GetUserName() string {
 	retC := C.g_get_user_name()
@@ -1479,7 +1605,9 @@ func GetUserName() string {
 // references to other environment variables, they are expanded.
 /*
 
-C function : g_getenv
+C function
+
+g_getenv
 */
 func Getenv(variable string) string {
 	c_variable := C.CString(variable)
@@ -1499,7 +1627,9 @@ func Getenv(variable string) string {
 // destruction phase.
 /*
 
-C function : g_hash_table_destroy
+C function
+
+g_hash_table_destroy
 */
 func HashTableDestroy(hashTable *HashTable) {
 	c_hash_table := (*C.GHashTable)(C.NULL)
@@ -1526,7 +1656,9 @@ func HashTableDestroy(hashTable *HashTable) {
 // or not.
 /*
 
-C function : g_hash_table_insert
+C function
+
+g_hash_table_insert
 */
 func HashTableInsert(hashTable *HashTable, key uintptr, value uintptr) bool {
 	c_hash_table := (*C.GHashTable)(C.NULL)
@@ -1550,7 +1682,9 @@ func HashTableInsert(hashTable *HashTable, key uintptr, value uintptr) bool {
 // g_hash_table_lookup_extended().
 /*
 
-C function : g_hash_table_lookup
+C function
+
+g_hash_table_lookup
 */
 func HashTableLookup(hashTable *HashTable, key uintptr) uintptr {
 	c_hash_table := (*C.GHashTable)(C.NULL)
@@ -1576,7 +1710,9 @@ func HashTableLookup(hashTable *HashTable, key uintptr) uintptr {
 // of @hash_table are %NULL-safe.
 /*
 
-C function : g_hash_table_lookup_extended
+C function
+
+g_hash_table_lookup_extended
 */
 func HashTableLookupExtended(hashTable *HashTable, lookupKey uintptr) (bool, uintptr, uintptr) {
 	c_hash_table := (*C.GHashTable)(C.NULL)
@@ -1608,7 +1744,9 @@ func HashTableLookupExtended(hashTable *HashTable, lookupKey uintptr) (bool, uin
 // yourself.
 /*
 
-C function : g_hash_table_remove
+C function
+
+g_hash_table_remove
 */
 func HashTableRemove(hashTable *HashTable, key uintptr) bool {
 	c_hash_table := (*C.GHashTable)(C.NULL)
@@ -1637,7 +1775,9 @@ func HashTableRemove(hashTable *HashTable, key uintptr) bool {
 // or not.
 /*
 
-C function : g_hash_table_replace
+C function
+
+g_hash_table_replace
 */
 func HashTableReplace(hashTable *HashTable, key uintptr, value uintptr) bool {
 	c_hash_table := (*C.GHashTable)(C.NULL)
@@ -1658,7 +1798,9 @@ func HashTableReplace(hashTable *HashTable, key uintptr, value uintptr) bool {
 // Returns the number of elements contained in the #GHashTable.
 /*
 
-C function : g_hash_table_size
+C function
+
+g_hash_table_size
 */
 func HashTableSize(hashTable *HashTable) uint32 {
 	c_hash_table := (*C.GHashTable)(C.NULL)
@@ -1676,7 +1818,9 @@ func HashTableSize(hashTable *HashTable) uint32 {
 // calling the key and value destroy functions.
 /*
 
-C function : g_hash_table_steal
+C function
+
+g_hash_table_steal
 */
 func HashTableSteal(hashTable *HashTable, key uintptr) bool {
 	c_hash_table := (*C.GHashTable)(C.NULL)
@@ -1695,7 +1839,9 @@ func HashTableSteal(hashTable *HashTable, key uintptr) bool {
 // Destroys a #GHook, given its ID.
 /*
 
-C function : g_hook_destroy
+C function
+
+g_hook_destroy
 */
 func HookDestroy(hookList *HookList, hookId uint64) bool {
 	c_hook_list := (*C.GHookList)(C.NULL)
@@ -1715,7 +1861,9 @@ func HookDestroy(hookList *HookList, hookId uint64) bool {
 // inactive and calling g_hook_unref() on it.
 /*
 
-C function : g_hook_destroy_link
+C function
+
+g_hook_destroy_link
 */
 func HookDestroyLink(hookList *HookList, hook *Hook) {
 	c_hook_list := (*C.GHookList)(C.NULL)
@@ -1737,7 +1885,9 @@ func HookDestroyLink(hookList *HookList, hook *Hook) {
 // and frees the memory allocated for the #GHook.
 /*
 
-C function : g_hook_free
+C function
+
+g_hook_free
 */
 func HookFree(hookList *HookList, hook *Hook) {
 	c_hook_list := (*C.GHookList)(C.NULL)
@@ -1758,7 +1908,9 @@ func HookFree(hookList *HookList, hook *Hook) {
 // Inserts a #GHook into a #GHookList, before a given #GHook.
 /*
 
-C function : g_hook_insert_before
+C function
+
+g_hook_insert_before
 */
 func HookInsertBefore(hookList *HookList, sibling *Hook, hook *Hook) {
 	c_hook_list := (*C.GHookList)(C.NULL)
@@ -1784,7 +1936,9 @@ func HookInsertBefore(hookList *HookList, sibling *Hook, hook *Hook) {
 // Prepends a #GHook on the start of a #GHookList.
 /*
 
-C function : g_hook_prepend
+C function
+
+g_hook_prepend
 */
 func HookPrepend(hookList *HookList, hook *Hook) {
 	c_hook_list := (*C.GHookList)(C.NULL)
@@ -1807,7 +1961,9 @@ func HookPrepend(hookList *HookList, hook *Hook) {
 // from the #GHookList and g_hook_free() is called to free it.
 /*
 
-C function : g_hook_unref
+C function
+
+g_hook_unref
 */
 func HookUnref(hookList *HookList, hook *Hook) {
 	c_hook_list := (*C.GHookList)(C.NULL)
@@ -1836,7 +1992,9 @@ func HookUnref(hookList *HookList, hook *Hook) {
 // Removes the idle function with the given data.
 /*
 
-C function : g_idle_remove_by_data
+C function
+
+g_idle_remove_by_data
 */
 func IdleRemoveByData(data uintptr) bool {
 	c_data := (C.gpointer)(data)
@@ -1856,7 +2014,9 @@ func IdleRemoveByData(data uintptr) bool {
 // have a default priority of %G_PRIORITY_DEFAULT.
 /*
 
-C function : g_idle_source_new
+C function
+
+g_idle_source_new
 */
 func IdleSourceNew() *Source {
 	retC := C.g_idle_source_new()
@@ -1876,7 +2036,9 @@ func IdleSourceNew() *Source {
 // `GINT_TO_POINTER (n)`, use g_direct_equal() instead.
 /*
 
-C function : g_int_equal
+C function
+
+g_int_equal
 */
 func IntEqual(v1 uintptr, v2 uintptr) bool {
 	c_v1 := (C.gconstpointer)(v1)
@@ -1898,7 +2060,9 @@ func IntEqual(v1 uintptr, v2 uintptr) bool {
 // `GINT_TO_POINTER (n)`, use g_direct_hash() instead.
 /*
 
-C function : g_int_hash
+C function
+
+g_int_hash
 */
 func IntHash(v uintptr) uint32 {
 	c_v := (C.gconstpointer)(v)
@@ -1916,7 +2080,9 @@ func IntHash(v uintptr) uint32 {
 // Converts an `errno` error number to a #GIOChannelError.
 /*
 
-C function : g_io_channel_error_from_errno
+C function
+
+g_io_channel_error_from_errno
 */
 func IoChannelErrorFromErrno(en int32) IOChannelError {
 	c_en := (C.gint)(en)
@@ -1929,7 +2095,9 @@ func IoChannelErrorFromErrno(en int32) IOChannelError {
 
 /*
 
-C function : g_io_channel_error_quark
+C function
+
+g_io_channel_error_quark
 */
 func IoChannelErrorQuark() Quark {
 	retC := C.g_io_channel_error_quark()
@@ -1942,7 +2110,9 @@ func IoChannelErrorQuark() Quark {
 
 /*
 
-C function : g_key_file_error_quark
+C function
+
+g_key_file_error_quark
 */
 func KeyFileErrorQuark() Quark {
 	retC := C.g_key_file_error_quark()
@@ -1966,7 +2136,9 @@ func KeyFileErrorQuark() Quark {
 // may contain embedded nul characters.
 /*
 
-C function : g_locale_to_utf8
+C function
+
+g_locale_to_utf8
 */
 func LocaleToUtf8(opsysstring []uint8) (string, uint64, uint64, error) {
 	c_opsysstring := &opsysstring[0]
@@ -2024,7 +2196,9 @@ func LocaleToUtf8(opsysstring []uint8) (string, uint64, uint64, error) {
 // [Using Structured Logging][using-structured-logging].
 /*
 
-C function : g_log_default_handler
+C function
+
+g_log_default_handler
 */
 func LogDefaultHandler(logDomain string, logLevel LogLevelFlags, message string, unusedData uintptr) {
 	c_log_domain := C.CString(logDomain)
@@ -2048,7 +2222,9 @@ func LogDefaultHandler(logDomain string, logLevel LogLevelFlags, message string,
 // [Using Structured Logging][using-structured-logging].
 /*
 
-C function : g_log_remove_handler
+C function
+
+g_log_remove_handler
 */
 func LogRemoveHandler(logDomain string, handlerId uint32) {
 	c_log_domain := C.CString(logDomain)
@@ -2079,7 +2255,9 @@ func LogRemoveHandler(logDomain string, handlerId uint32) {
 // are fatal. See [Using Structured Logging][using-structured-logging].
 /*
 
-C function : g_log_set_always_fatal
+C function
+
+g_log_set_always_fatal
 */
 func LogSetAlwaysFatal(fatalMask LogLevelFlags) LogLevelFlags {
 	c_fatal_mask := (C.GLogLevelFlags)(fatalMask)
@@ -2100,7 +2278,9 @@ func LogSetAlwaysFatal(fatalMask LogLevelFlags) LogLevelFlags {
 // [Using Structured Logging][using-structured-logging].
 /*
 
-C function : g_log_set_fatal_mask
+C function
+
+g_log_set_fatal_mask
 */
 func LogSetFatalMask(logDomain string, fatalMask LogLevelFlags) LogLevelFlags {
 	c_log_domain := C.CString(logDomain)
@@ -2126,7 +2306,9 @@ func LogSetFatalMask(logDomain string, fatalMask LogLevelFlags) LogLevelFlags {
 // g_main_context_get_thread_default().
 /*
 
-C function : g_main_context_default
+C function
+
+g_main_context_default
 */
 func MainContextDefault() *MainContext {
 	retC := C.g_main_context_default()
@@ -2238,7 +2420,9 @@ func MainContextDefault() *MainContext {
 // there is more work to do.
 /*
 
-C function : g_main_depth
+C function
+
+g_main_depth
 */
 func MainDepth() int32 {
 	retC := C.g_main_depth()
@@ -2251,7 +2435,9 @@ func MainDepth() int32 {
 // If @n_bytes is 0 it returns %NULL.
 /*
 
-C function : g_malloc
+C function
+
+g_malloc
 */
 func Malloc(nBytes uint64) uintptr {
 	c_n_bytes := (C.gsize)(nBytes)
@@ -2266,7 +2452,9 @@ func Malloc(nBytes uint64) uintptr {
 // If @n_bytes is 0 it returns %NULL.
 /*
 
-C function : g_malloc0
+C function
+
+g_malloc0
 */
 func Malloc0(nBytes uint64) uintptr {
 	c_n_bytes := (C.gsize)(nBytes)
@@ -2279,7 +2467,9 @@ func Malloc0(nBytes uint64) uintptr {
 
 /*
 
-C function : g_markup_error_quark
+C function
+
+g_markup_error_quark
 */
 func MarkupErrorQuark() Quark {
 	retC := C.g_markup_error_quark()
@@ -2304,7 +2494,9 @@ func MarkupErrorQuark() Quark {
 // valid XML 1.1 and will be accepted by the GMarkup parser.
 /*
 
-C function : g_markup_escape_text
+C function
+
+g_markup_escape_text
 */
 func MarkupEscapeText(text string) string {
 	c_text := C.CString(text)
@@ -2326,7 +2518,9 @@ func MarkupEscapeText(text string) string {
 // by a non-GLib-based API.
 /*
 
-C function : g_mem_is_system_malloc
+C function
+
+g_mem_is_system_malloc
 */
 func MemIsSystemMalloc() bool {
 	retC := C.g_mem_is_system_malloc()
@@ -2340,7 +2534,9 @@ func MemIsSystemMalloc() bool {
 // profiling these days which can be used instead.
 /*
 
-C function : g_mem_profile
+C function
+
+g_mem_profile
 */
 func MemProfile() {
 	C.g_mem_profile()
@@ -2354,7 +2550,9 @@ func MemProfile() {
 // reached. Therefore this function is now deprecated and is just a stub.
 /*
 
-C function : g_mem_set_vtable
+C function
+
+g_mem_set_vtable
 */
 func MemSetVtable(vtable *MemVTable) {
 	c_vtable := (*C.GMemVTable)(C.NULL)
@@ -2371,7 +2569,9 @@ func MemSetVtable(vtable *MemVTable) {
 // from @mem. If @mem is %NULL it returns %NULL.
 /*
 
-C function : g_memdup
+C function
+
+g_memdup
 */
 func Memdup(mem uintptr, byteSize uint32) uintptr {
 	c_mem := (C.gconstpointer)(mem)
@@ -2396,7 +2596,9 @@ func Memdup(mem uintptr, byteSize uint32) uintptr {
 // Most importantly, on Windows it should be in UTF-8.
 /*
 
-C function : g_mkstemp
+C function
+
+g_mkstemp
 */
 func Mkstemp(tmpl string) int32 {
 	c_tmpl := C.CString(tmpl)
@@ -2411,7 +2613,9 @@ func Mkstemp(tmpl string) int32 {
 // Set the pointer at the specified location to %NULL.
 /*
 
-C function : g_nullify_pointer
+C function
+
+g_nullify_pointer
 */
 func NullifyPointer(nullifyLocation uintptr) {
 	c_nullify_location := (C.gpointer)(nullifyLocation)
@@ -2467,7 +2671,9 @@ func NullifyPointer(nullifyLocation uintptr) {
 // This function may cause different actions on non-UNIX platforms.
 /*
 
-C function : g_on_error_query
+C function
+
+g_on_error_query
 */
 func OnErrorQuery(prgName string) {
 	c_prg_name := C.CString(prgName)
@@ -2487,7 +2693,9 @@ func OnErrorQuery(prgName string) {
 // This function may cause different actions on non-UNIX platforms.
 /*
 
-C function : g_on_error_stack_trace
+C function
+
+g_on_error_stack_trace
 */
 func OnErrorStackTrace(prgName string) {
 	c_prg_name := C.CString(prgName)
@@ -2500,7 +2708,9 @@ func OnErrorStackTrace(prgName string) {
 
 /*
 
-C function : g_option_error_quark
+C function
+
+g_option_error_quark
 */
 func OptionErrorQuark() Quark {
 	retC := C.g_option_error_quark()
@@ -2519,7 +2729,9 @@ func OptionErrorQuark() Quark {
 // separator is returned. If @file_name is empty, it gets ".".
 /*
 
-C function : g_path_get_basename
+C function
+
+g_path_get_basename
 */
 func PathGetBasename(fileName string) string {
 	c_file_name := C.CString(fileName)
@@ -2538,7 +2750,9 @@ func PathGetBasename(fileName string) string {
 // The returned string should be freed when no longer needed.
 /*
 
-C function : g_path_get_dirname
+C function
+
+g_path_get_dirname
 */
 func PathGetDirname(fileName string) string {
 	c_file_name := C.CString(fileName)
@@ -2577,7 +2791,9 @@ func PathGetDirname(fileName string) string {
 // Windows-specific code.
 /*
 
-C function : g_path_is_absolute
+C function
+
+g_path_is_absolute
 */
 func PathIsAbsolute(fileName string) bool {
 	c_file_name := C.CString(fileName)
@@ -2594,7 +2810,9 @@ func PathIsAbsolute(fileName string) bool {
 // is not an absolute path it returns %NULL.
 /*
 
-C function : g_path_skip_root
+C function
+
+g_path_skip_root
 */
 func PathSkipRoot(fileName string) string {
 	c_file_name := C.CString(fileName)
@@ -2625,7 +2843,9 @@ func PathSkipRoot(fileName string) string {
 // g_utf8_strreverse() function to reverse UTF-8 encoded strings.
 /*
 
-C function : g_pattern_match
+C function
+
+g_pattern_match
 */
 func PatternMatch(pspec *PatternSpec, stringLength uint32, string string, stringReversed string) bool {
 	c_pspec := (*C.GPatternSpec)(C.NULL)
@@ -2653,7 +2873,9 @@ func PatternMatch(pspec *PatternSpec, stringLength uint32, string string, string
 // g_pattern_match_string() repeatedly.
 /*
 
-C function : g_pattern_match_simple
+C function
+
+g_pattern_match_simple
 */
 func PatternMatchSimple(pattern string, string string) bool {
 	c_pattern := C.CString(pattern)
@@ -2673,7 +2895,9 @@ func PatternMatchSimple(pattern string, string string) bool {
 // g_pattern_match() instead while supplying the reversed string.
 /*
 
-C function : g_pattern_match_string
+C function
+
+g_pattern_match_string
 */
 func PatternMatchString(pspec *PatternSpec, string string) bool {
 	c_pspec := (*C.GPatternSpec)(C.NULL)
@@ -2706,7 +2930,9 @@ func PatternMatchString(pspec *PatternSpec, string string) bool {
 // after calling this function on it.
 /*
 
-C function : g_propagate_error
+C function
+
+g_propagate_error
 */
 func PropagateError(src *Error) *Error {
 	var c_dest *C.GError
@@ -2739,7 +2965,9 @@ func PropagateError(src *Error) *Error {
 // function in GTK+ theme engines).
 /*
 
-C function : g_quark_from_static_string
+C function
+
+g_quark_from_static_string
 */
 func QuarkFromStaticString(string string) Quark {
 	c_string := C.CString(string)
@@ -2756,7 +2984,9 @@ func QuarkFromStaticString(string string) Quark {
 // using a copy of the string.
 /*
 
-C function : g_quark_from_string
+C function
+
+g_quark_from_string
 */
 func QuarkFromString(string string) Quark {
 	c_string := C.CString(string)
@@ -2771,7 +3001,9 @@ func QuarkFromString(string string) Quark {
 // Gets the string associated with the given #GQuark.
 /*
 
-C function : g_quark_to_string
+C function
+
+g_quark_to_string
 */
 func QuarkToString(quark Quark) string {
 	c_quark := (C.GQuark)(quark)
@@ -2789,7 +3021,9 @@ func QuarkToString(quark Quark) string {
 // use g_quark_from_string() or g_quark_from_static_string().
 /*
 
-C function : g_quark_try_string
+C function
+
+g_quark_try_string
 */
 func QuarkTryString(string string) Quark {
 	c_string := C.CString(string)
@@ -2804,7 +3038,9 @@ func QuarkTryString(string string) Quark {
 // Returns a random #gdouble equally distributed over the range [0..1).
 /*
 
-C function : g_random_double
+C function
+
+g_random_double
 */
 func RandomDouble() float64 {
 	retC := C.g_random_double()
@@ -2817,7 +3053,9 @@ func RandomDouble() float64 {
 // [@begin..@end).
 /*
 
-C function : g_random_double_range
+C function
+
+g_random_double_range
 */
 func RandomDoubleRange(begin float64, end float64) float64 {
 	c_begin := (C.gdouble)(begin)
@@ -2834,7 +3072,9 @@ func RandomDoubleRange(begin float64, end float64) float64 {
 // [0..2^32-1].
 /*
 
-C function : g_random_int
+C function
+
+g_random_int
 */
 func RandomInt() uint32 {
 	retC := C.g_random_int()
@@ -2847,7 +3087,9 @@ func RandomInt() uint32 {
 // [@begin..@end-1].
 /*
 
-C function : g_random_int_range
+C function
+
+g_random_int_range
 */
 func RandomIntRange(begin int32, end int32) int32 {
 	c_begin := (C.gint32)(begin)
@@ -2864,7 +3106,9 @@ func RandomIntRange(begin int32, end int32) int32 {
 // by the g_random_* functions, to @seed.
 /*
 
-C function : g_random_set_seed
+C function
+
+g_random_set_seed
 */
 func RandomSetSeed(seed uint32) {
 	c_seed := (C.guint32)(seed)
@@ -2881,7 +3125,9 @@ func RandomSetSeed(seed uint32) {
 // and @mem will be freed unless it is %NULL.
 /*
 
-C function : g_realloc
+C function
+
+g_realloc
 */
 func Realloc(mem uintptr, nBytes uint64) uintptr {
 	c_mem := (C.gpointer)(mem)
@@ -2896,7 +3142,9 @@ func Realloc(mem uintptr, nBytes uint64) uintptr {
 
 /*
 
-C function : g_regex_error_quark
+C function
+
+g_regex_error_quark
 */
 func RegexErrorQuark() Quark {
 	retC := C.g_regex_error_quark()
@@ -2907,7 +3155,9 @@ func RegexErrorQuark() Quark {
 
 /*
 
-C function : g_return_if_fail_warning
+C function
+
+g_return_if_fail_warning
 */
 func ReturnIfFailWarning(logDomain string, prettyFunction string, expression string) {
 	c_log_domain := C.CString(logDomain)
@@ -2938,7 +3188,9 @@ func ReturnIfFailWarning(logDomain string, prettyFunction string, expression str
 // Note that for thread-safety reasons this function can only be called once.
 /*
 
-C function : g_set_prgname
+C function
+
+g_set_prgname
 */
 func SetPrgname(prgname string) {
 	c_prgname := C.CString(prgname)
@@ -2955,7 +3207,9 @@ func SetPrgname(prgname string) {
 
 /*
 
-C function : g_shell_error_quark
+C function
+
+g_shell_error_quark
 */
 func ShellErrorQuark() Quark {
 	retC := C.g_shell_error_quark()
@@ -2974,7 +3228,9 @@ func ShellErrorQuark() Quark {
 // used).
 /*
 
-C function : g_shell_quote
+C function
+
+g_shell_quote
 */
 func ShellQuote(unquotedString string) string {
 	c_unquoted_string := C.CString(unquotedString)
@@ -3010,7 +3266,9 @@ func ShellQuote(unquotedString string) string {
 // literally.
 /*
 
-C function : g_shell_unquote
+C function
+
+g_shell_unquote
 */
 func ShellUnquote(quotedString string) (string, error) {
 	c_quoted_string := C.CString(quotedString)
@@ -3032,7 +3290,9 @@ func ShellUnquote(quotedString string) (string, error) {
 
 /*
 
-C function : g_slice_get_config
+C function
+
+g_slice_get_config
 */
 func SliceGetConfig(ckey SliceConfig) int64 {
 	c_ckey := (C.GSliceConfig)(ckey)
@@ -3047,7 +3307,9 @@ func SliceGetConfig(ckey SliceConfig) int64 {
 
 /*
 
-C function : g_slice_set_config
+C function
+
+g_slice_set_config
 */
 func SliceSetConfig(ckey SliceConfig, value int64) {
 	c_ckey := (C.GSliceConfig)(ckey)
@@ -3082,7 +3344,9 @@ func SliceSetConfig(ckey SliceConfig, value int64) {
 // wrong source.
 /*
 
-C function : g_source_remove
+C function
+
+g_source_remove
 */
 func SourceRemove(tag uint32) bool {
 	c_tag := (C.guint)(tag)
@@ -3098,7 +3362,9 @@ func SourceRemove(tag uint32) bool {
 // same source functions and user data, only one will be destroyed.
 /*
 
-C function : g_source_remove_by_funcs_user_data
+C function
+
+g_source_remove_by_funcs_user_data
 */
 func SourceRemoveByFuncsUserData(funcs *SourceFuncs, userData uintptr) bool {
 	c_funcs := (*C.GSourceFuncs)(C.NULL)
@@ -3119,7 +3385,9 @@ func SourceRemoveByFuncsUserData(funcs *SourceFuncs, userData uintptr) bool {
 // data, only one will be destroyed.
 /*
 
-C function : g_source_remove_by_user_data
+C function
+
+g_source_remove_by_user_data
 */
 func SourceRemoveByUserData(userData uintptr) bool {
 	c_user_data := (C.gpointer)(userData)
@@ -3138,7 +3406,9 @@ func SourceRemoveByUserData(userData uintptr) bool {
 // each prime is approximately 1.5-2 times the previous prime.
 /*
 
-C function : g_spaced_primes_closest
+C function
+
+g_spaced_primes_closest
 */
 func SpacedPrimesClosest(num uint32) uint32 {
 	c_num := (C.guint)(num)
@@ -3159,7 +3429,9 @@ func SpacedPrimesClosest(num uint32) uint32 {
 // though it doesn't do anything under UNIX.
 /*
 
-C function : g_spawn_close_pid
+C function
+
+g_spawn_close_pid
 */
 func SpawnClosePid(pid Pid) {
 	c_pid := (C.GPid)(pid)
@@ -3180,7 +3452,9 @@ func SpawnClosePid(pid Pid) {
 // The same concerns on Windows apply as for g_spawn_command_line_sync().
 /*
 
-C function : g_spawn_command_line_async
+C function
+
+g_spawn_command_line_async
 */
 func SpawnCommandLineAsync(commandLine string) (bool, error) {
 	c_command_line := C.CString(commandLine)
@@ -3203,7 +3477,9 @@ func SpawnCommandLineAsync(commandLine string) (bool, error) {
 
 /*
 
-C function : g_spawn_error_quark
+C function
+
+g_spawn_error_quark
 */
 func SpawnErrorQuark() Quark {
 	retC := C.g_spawn_error_quark()
@@ -3214,7 +3490,9 @@ func SpawnErrorQuark() Quark {
 
 /*
 
-C function : g_spawn_exit_error_quark
+C function
+
+g_spawn_exit_error_quark
 */
 func SpawnExitErrorQuark() Quark {
 	retC := C.g_spawn_exit_error_quark()
@@ -3231,7 +3509,9 @@ func SpawnExitErrorQuark() Quark {
 // without having to repeatedly scan for the end.
 /*
 
-C function : g_stpcpy
+C function
+
+g_stpcpy
 */
 func Stpcpy(dest string, src string) string {
 	c_dest := C.CString(dest)
@@ -3257,7 +3537,9 @@ func Stpcpy(dest string, src string) string {
 // see g_strcmp0().
 /*
 
-C function : g_str_equal
+C function
+
+g_str_equal
 */
 func StrEqual(v1 uintptr, v2 uintptr) bool {
 	c_v1 := (C.gconstpointer)(v1)
@@ -3286,7 +3568,9 @@ func StrEqual(v1 uintptr, v2 uintptr) bool {
 // as 2.
 /*
 
-C function : g_str_hash
+C function
+
+g_str_hash
 */
 func StrHash(v uintptr) uint32 {
 	c_v := (C.gconstpointer)(v)
@@ -3306,7 +3590,9 @@ func StrHash(v uintptr) uint32 {
 // ]|
 /*
 
-C function : g_strcanon
+C function
+
+g_strcanon
 */
 func Strcanon(string string, validChars string, substitutor rune) string {
 	c_string := C.CString(string)
@@ -3328,7 +3614,9 @@ func Strcanon(string string, validChars string, substitutor rune) string {
 // strcasecmp() function on platforms which support it.
 /*
 
-C function : g_strcasecmp
+C function
+
+g_strcasecmp
 */
 func Strcasecmp(s1 string, s2 string) int32 {
 	c_s1 := C.CString(s1)
@@ -3354,7 +3642,9 @@ func Strcasecmp(s1 string, s2 string) int32 {
 // Also see g_strchug() and g_strstrip().
 /*
 
-C function : g_strchomp
+C function
+
+g_strchomp
 */
 func Strchomp(string string) string {
 	c_string := C.CString(string)
@@ -3379,7 +3669,9 @@ func Strchomp(string string) string {
 // Also see g_strchomp() and g_strstrip().
 /*
 
-C function : g_strchug
+C function
+
+g_strchug
 */
 func Strchug(string string) string {
 	c_string := C.CString(string)
@@ -3397,7 +3689,9 @@ func Strchug(string string) string {
 // This function does the reverse conversion of g_strescape().
 /*
 
-C function : g_strcompress
+C function
+
+g_strcompress
 */
 func Strcompress(source string) string {
 	c_source := C.CString(source)
@@ -3422,7 +3716,9 @@ func Strcompress(source string) string {
 // ]|
 /*
 
-C function : g_strdelimit
+C function
+
+g_strdelimit
 */
 func Strdelimit(string string, delimiters string, newDelimiter rune) string {
 	c_string := C.CString(string)
@@ -3443,7 +3739,9 @@ func Strdelimit(string string, delimiters string, newDelimiter rune) string {
 // Converts a string to lower case.
 /*
 
-C function : g_strdown
+C function
+
+g_strdown
 */
 func Strdown(string string) string {
 	c_string := C.CString(string)
@@ -3461,7 +3759,9 @@ func Strdown(string string) string {
 // when no longer needed.
 /*
 
-C function : g_strdup
+C function
+
+g_strdup
 */
 func Strdup(str string) string {
 	c_str := C.CString(str)
@@ -3500,7 +3800,9 @@ func Strdup(str string) string {
 // ]|
 /*
 
-C function : g_strerror
+C function
+
+g_strerror
 */
 func Strerror(errnum int32) string {
 	c_errnum := (C.gint)(errnum)
@@ -3521,7 +3823,9 @@ func Strerror(errnum int32) string {
 // g_strcompress() does the reverse conversion.
 /*
 
-C function : g_strescape
+C function
+
+g_strescape
 */
 func Strescape(source string, exceptions string) string {
 	c_source := C.CString(source)
@@ -3542,7 +3846,9 @@ func Strescape(source string, exceptions string) string {
 // Creates a new #GString, initialized with the given string.
 /*
 
-C function : g_string_new
+C function
+
+g_string_new
 */
 func StringNew(init string) *String {
 	c_init := C.CString(init)
@@ -3563,7 +3869,9 @@ func StringNew(init string) *String {
 // bytes.
 /*
 
-C function : g_string_new_len
+C function
+
+g_string_new_len
 */
 func StringNewLen(init string, len int64) *String {
 	c_init := C.CString(init)
@@ -3583,7 +3891,9 @@ func StringNewLen(init string, len int64) *String {
 // too often.
 /*
 
-C function : g_string_sized_new
+C function
+
+g_string_sized_new
 */
 func StringSizedNew(dflSize uint64) *String {
 	c_dfl_size := (C.gsize)(dflSize)
@@ -3613,7 +3923,9 @@ func StringSizedNew(dflSize uint64) *String {
 // strncat(), but for real security g_strconcat() is harder to mess up.
 /*
 
-C function : g_strlcat
+C function
+
+g_strlcat
 */
 func Strlcat(dest string, src string, destSize uint64) uint64 {
 	c_dest := C.CString(dest)
@@ -3646,7 +3958,9 @@ func Strlcat(dest string, src string, destSize uint64) uint64 {
 // idea.
 /*
 
-C function : g_strlcpy
+C function
+
+g_strlcpy
 */
 func Strlcpy(dest string, src string, destSize uint64) uint64 {
 	c_dest := C.CString(dest)
@@ -3669,7 +3983,9 @@ func Strlcpy(dest string, src string, destSize uint64) uint64 {
 // the strings.
 /*
 
-C function : g_strncasecmp
+C function
+
+g_strncasecmp
 */
 func Strncasecmp(s1 string, s2 string, n uint32) int32 {
 	c_s1 := C.CString(s1)
@@ -3696,7 +4012,9 @@ func Strncasecmp(s1 string, s2 string, n uint32) int32 {
 // use g_utf8_strncpy() instead.
 /*
 
-C function : g_strndup
+C function
+
+g_strndup
 */
 func Strndup(str string, n uint64) string {
 	c_str := C.CString(str)
@@ -3715,7 +4033,9 @@ func Strndup(str string, n uint64) string {
 // The returned string should be freed when no longer needed.
 /*
 
-C function : g_strnfill
+C function
+
+g_strnfill
 */
 func Strnfill(length uint64, fillChar rune) string {
 	c_length := (C.gsize)(length)
@@ -3737,7 +4057,9 @@ func Strnfill(length uint64, fillChar rune) string {
 // g_utf8_strreverse().
 /*
 
-C function : g_strreverse
+C function
+
+g_strreverse
 */
 func Strreverse(string string) string {
 	c_string := C.CString(string)
@@ -3753,7 +4075,9 @@ func Strreverse(string string) string {
 // of the string @needle.
 /*
 
-C function : g_strrstr
+C function
+
+g_strrstr
 */
 func Strrstr(haystack string, needle string) string {
 	c_haystack := C.CString(haystack)
@@ -3774,7 +4098,9 @@ func Strrstr(haystack string, needle string) string {
 // to @haystack_len.
 /*
 
-C function : g_strrstr_len
+C function
+
+g_strrstr_len
 */
 func StrrstrLen(haystack string, haystackLen int64, needle string) string {
 	c_haystack := C.CString(haystack)
@@ -3798,7 +4124,9 @@ func StrrstrLen(haystack string, haystackLen int64, needle string) string {
 // the strsignal() function.
 /*
 
-C function : g_strsignal
+C function
+
+g_strsignal
 */
 func Strsignal(signum int32) string {
 	c_signum := (C.gint)(signum)
@@ -3816,7 +4144,9 @@ func Strsignal(signum int32) string {
 // to @haystack_len.
 /*
 
-C function : g_strstr_len
+C function
+
+g_strstr_len
 */
 func StrstrLen(haystack string, haystackLen int64, needle string) string {
 	c_haystack := C.CString(haystack)
@@ -3847,7 +4177,9 @@ func StrstrLen(haystack string, haystackLen int64, needle string) string {
 // point in some locales, causing unexpected results.
 /*
 
-C function : g_strtod
+C function
+
+g_strtod
 */
 func Strtod(nptr string) (float64, string) {
 	c_nptr := C.CString(nptr)
@@ -3866,7 +4198,9 @@ func Strtod(nptr string) (float64, string) {
 // Converts a string to upper case.
 /*
 
-C function : g_strup
+C function
+
+g_strup
 */
 func Strup(string string) string {
 	c_string := C.CString(string)
@@ -3885,7 +4219,9 @@ func Strup(string string) string {
 
 /*
 
-C function : g_test_assert_expected_messages_internal
+C function
+
+g_test_assert_expected_messages_internal
 */
 func TestAssertExpectedMessagesInternal(domain string, file string, line int32, func_ string) {
 	c_domain := C.CString(domain)
@@ -3906,7 +4242,9 @@ func TestAssertExpectedMessagesInternal(domain string, file string, line int32, 
 
 /*
 
-C function : g_test_log_type_name
+C function
+
+g_test_log_type_name
 */
 func TestLogTypeName(logType TestLogType) string {
 	c_log_type := (C.GTestLogType)(logType)
@@ -3919,7 +4257,9 @@ func TestLogTypeName(logType TestLogType) string {
 
 /*
 
-C function : g_test_trap_assertions
+C function
+
+g_test_trap_assertions
 */
 func TestTrapAssertions(domain string, file string, line int32, func_ string, assertionFlags uint64, pattern string) {
 	c_domain := C.CString(domain)
@@ -3945,7 +4285,9 @@ func TestTrapAssertions(domain string, file string, line int32, func_ string, as
 
 /*
 
-C function : g_thread_error_quark
+C function
+
+g_thread_error_quark
 */
 func ThreadErrorQuark() Quark {
 	retC := C.g_thread_error_quark()
@@ -3969,7 +4311,9 @@ func ThreadErrorQuark() Quark {
 // or or from within a #GThreadPool.
 /*
 
-C function : g_thread_exit
+C function
+
+g_thread_exit
 */
 func ThreadExit(retval uintptr) {
 	c_retval := (C.gpointer)(retval)
@@ -3982,7 +4326,9 @@ func ThreadExit(retval uintptr) {
 // Returns the maximal allowed number of unused threads.
 /*
 
-C function : g_thread_pool_get_max_unused_threads
+C function
+
+g_thread_pool_get_max_unused_threads
 */
 func ThreadPoolGetMaxUnusedThreads() int32 {
 	retC := C.g_thread_pool_get_max_unused_threads()
@@ -3994,7 +4340,9 @@ func ThreadPoolGetMaxUnusedThreads() int32 {
 // Returns the number of currently unused threads.
 /*
 
-C function : g_thread_pool_get_num_unused_threads
+C function
+
+g_thread_pool_get_num_unused_threads
 */
 func ThreadPoolGetNumUnusedThreads() uint32 {
 	retC := C.g_thread_pool_get_num_unused_threads()
@@ -4010,7 +4358,9 @@ func ThreadPoolGetNumUnusedThreads() uint32 {
 // The default value is 2.
 /*
 
-C function : g_thread_pool_set_max_unused_threads
+C function
+
+g_thread_pool_set_max_unused_threads
 */
 func ThreadPoolSetMaxUnusedThreads(maxThreads int32) {
 	c_max_threads := (C.gint)(maxThreads)
@@ -4025,7 +4375,9 @@ func ThreadPoolSetMaxUnusedThreads(maxThreads int32) {
 // regularly stop all unused threads e.g. from g_timeout_add().
 /*
 
-C function : g_thread_pool_stop_unused_threads
+C function
+
+g_thread_pool_stop_unused_threads
 */
 func ThreadPoolStopUnusedThreads() {
 	C.g_thread_pool_stop_unused_threads()
@@ -4044,7 +4396,9 @@ func ThreadPoolStopUnusedThreads() {
 // as g_thread_join()) on these threads.
 /*
 
-C function : g_thread_self
+C function
+
+g_thread_self
 */
 func ThreadSelf() *Thread {
 	retC := C.g_thread_self()
@@ -4059,7 +4413,9 @@ func ThreadSelf() *Thread {
 // This function is often used as a method to make busy wait less evil.
 /*
 
-C function : g_thread_yield
+C function
+
+g_thread_yield
 */
 func ThreadYield() {
 	C.g_thread_yield()
@@ -4081,7 +4437,9 @@ func ThreadYield() {
 // time.  See g_get_monotonic_time().
 /*
 
-C function : g_timeout_source_new
+C function
+
+g_timeout_source_new
 */
 func TimeoutSourceNew(interval uint32) *Source {
 	c_interval := (C.guint)(interval)
@@ -4098,7 +4456,9 @@ func TimeoutSourceNew(interval uint32) *Source {
 // where N denotes the number of items on the stack.
 /*
 
-C function : g_trash_stack_height
+C function
+
+g_trash_stack_height
 */
 func TrashStackHeight(stackP *TrashStack) uint32 {
 	c_stack_p := (**C.GTrashStack)(C.NULL)
@@ -4116,7 +4476,9 @@ func TrashStackHeight(stackP *TrashStack) uint32 {
 // which may be %NULL.
 /*
 
-C function : g_trash_stack_peek
+C function
+
+g_trash_stack_peek
 */
 func TrashStackPeek(stackP *TrashStack) uintptr {
 	c_stack_p := (**C.GTrashStack)(C.NULL)
@@ -4133,7 +4495,9 @@ func TrashStackPeek(stackP *TrashStack) uintptr {
 // Pops a piece of memory off a #GTrashStack.
 /*
 
-C function : g_trash_stack_pop
+C function
+
+g_trash_stack_pop
 */
 func TrashStackPop(stackP *TrashStack) uintptr {
 	c_stack_p := (**C.GTrashStack)(C.NULL)
@@ -4150,7 +4514,9 @@ func TrashStackPop(stackP *TrashStack) uintptr {
 // Pushes a piece of memory onto a #GTrashStack.
 /*
 
-C function : g_trash_stack_push
+C function
+
+g_trash_stack_push
 */
 func TrashStackPush(stackP *TrashStack, dataP uintptr) {
 	c_stack_p := (**C.GTrashStack)(C.NULL)
@@ -4169,7 +4535,9 @@ func TrashStackPush(stackP *TrashStack, dataP uintptr) {
 // Contrast with g_malloc(), which aborts the program on failure.
 /*
 
-C function : g_try_malloc
+C function
+
+g_try_malloc
 */
 func TryMalloc(nBytes uint64) uintptr {
 	c_n_bytes := (C.gsize)(nBytes)
@@ -4187,7 +4555,9 @@ func TryMalloc(nBytes uint64) uintptr {
 // If @mem is %NULL, behaves the same as g_try_malloc().
 /*
 
-C function : g_try_realloc
+C function
+
+g_try_realloc
 */
 func TryRealloc(mem uintptr, nBytes uint64) uintptr {
 	c_mem := (C.gpointer)(mem)
@@ -4206,7 +4576,9 @@ func TryRealloc(mem uintptr, nBytes uint64) uintptr {
 // to UTF-8. The result will be terminated with a 0 byte.
 /*
 
-C function : g_ucs4_to_utf8
+C function
+
+g_ucs4_to_utf8
 */
 func Ucs4ToUtf8(str rune, len int64) (string, int64, int64, error) {
 	c_str := (C.gunichar)(str)
@@ -4243,7 +4615,9 @@ func Ucs4ToUtf8(str rune, len int64) (string, int64, int64, error) {
 // as pango_break() instead of caring about break types yourself.
 /*
 
-C function : g_unichar_break_type
+C function
+
+g_unichar_break_type
 */
 func UnicharBreakType(c rune) UnicodeBreakType {
 	c_c := (C.gunichar)(c)
@@ -4258,7 +4632,9 @@ func UnicharBreakType(c rune) UnicodeBreakType {
 // digit.
 /*
 
-C function : g_unichar_digit_value
+C function
+
+g_unichar_digit_value
 */
 func UnicharDigitValue(c rune) int32 {
 	c_c := (C.gunichar)(c)
@@ -4274,7 +4650,9 @@ func UnicharDigitValue(c rune) int32 {
 // with g_utf8_get_char().
 /*
 
-C function : g_unichar_isalnum
+C function
+
+g_unichar_isalnum
 */
 func UnicharIsalnum(c rune) bool {
 	c_c := (C.gunichar)(c)
@@ -4290,7 +4668,9 @@ func UnicharIsalnum(c rune) bool {
 // g_utf8_get_char().
 /*
 
-C function : g_unichar_isalpha
+C function
+
+g_unichar_isalpha
 */
 func UnicharIsalpha(c rune) bool {
 	c_c := (C.gunichar)(c)
@@ -4306,7 +4686,9 @@ func UnicharIsalpha(c rune) bool {
 // g_utf8_get_char().
 /*
 
-C function : g_unichar_iscntrl
+C function
+
+g_unichar_iscntrl
 */
 func UnicharIscntrl(c rune) bool {
 	c_c := (C.gunichar)(c)
@@ -4321,7 +4703,9 @@ func UnicharIscntrl(c rune) bool {
 // standard.
 /*
 
-C function : g_unichar_isdefined
+C function
+
+g_unichar_isdefined
 */
 func UnicharIsdefined(c rune) bool {
 	c_c := (C.gunichar)(c)
@@ -4337,7 +4721,9 @@ func UnicharIsdefined(c rune) bool {
 // some UTF-8 text, obtain a character value with g_utf8_get_char().
 /*
 
-C function : g_unichar_isdigit
+C function
+
+g_unichar_isdigit
 */
 func UnicharIsdigit(c rune) bool {
 	c_c := (C.gunichar)(c)
@@ -4355,7 +4741,9 @@ func UnicharIsdigit(c rune) bool {
 // g_utf8_get_char().
 /*
 
-C function : g_unichar_isgraph
+C function
+
+g_unichar_isgraph
 */
 func UnicharIsgraph(c rune) bool {
 	c_c := (C.gunichar)(c)
@@ -4371,7 +4759,9 @@ func UnicharIsgraph(c rune) bool {
 // g_utf8_get_char().
 /*
 
-C function : g_unichar_islower
+C function
+
+g_unichar_islower
 */
 func UnicharIslower(c rune) bool {
 	c_c := (C.gunichar)(c)
@@ -4388,7 +4778,9 @@ func UnicharIslower(c rune) bool {
 // g_utf8_get_char().
 /*
 
-C function : g_unichar_isprint
+C function
+
+g_unichar_isprint
 */
 func UnicharIsprint(c rune) bool {
 	c_c := (C.gunichar)(c)
@@ -4404,7 +4796,9 @@ func UnicharIsprint(c rune) bool {
 // g_utf8_get_char().
 /*
 
-C function : g_unichar_ispunct
+C function
+
+g_unichar_ispunct
 */
 func UnicharIspunct(c rune) bool {
 	c_c := (C.gunichar)(c)
@@ -4424,7 +4818,9 @@ func UnicharIspunct(c rune) bool {
 // is fairly complex.)
 /*
 
-C function : g_unichar_isspace
+C function
+
+g_unichar_isspace
 */
 func UnicharIsspace(c rune) bool {
 	c_c := (C.gunichar)(c)
@@ -4443,7 +4839,9 @@ func UnicharIsspace(c rune) bool {
 // digraph is U+01F2 LATIN CAPITAL LETTTER D WITH SMALL LETTER Z.
 /*
 
-C function : g_unichar_istitle
+C function
+
+g_unichar_istitle
 */
 func UnicharIstitle(c rune) bool {
 	c_c := (C.gunichar)(c)
@@ -4457,7 +4855,9 @@ func UnicharIstitle(c rune) bool {
 // Determines if a character is uppercase.
 /*
 
-C function : g_unichar_isupper
+C function
+
+g_unichar_isupper
 */
 func UnicharIsupper(c rune) bool {
 	c_c := (C.gunichar)(c)
@@ -4472,7 +4872,9 @@ func UnicharIsupper(c rune) bool {
 // cell.
 /*
 
-C function : g_unichar_iswide
+C function
+
+g_unichar_iswide
 */
 func UnicharIswide(c rune) bool {
 	c_c := (C.gunichar)(c)
@@ -4486,7 +4888,9 @@ func UnicharIswide(c rune) bool {
 // Determines if a character is a hexidecimal digit.
 /*
 
-C function : g_unichar_isxdigit
+C function
+
+g_unichar_isxdigit
 */
 func UnicharIsxdigit(c rune) bool {
 	c_c := (C.gunichar)(c)
@@ -4502,7 +4906,9 @@ func UnicharIsxdigit(c rune) bool {
 // Converts a character to lower case.
 /*
 
-C function : g_unichar_tolower
+C function
+
+g_unichar_tolower
 */
 func UnicharTolower(c rune) rune {
 	c_c := (C.gunichar)(c)
@@ -4516,7 +4922,9 @@ func UnicharTolower(c rune) rune {
 // Converts a character to the titlecase.
 /*
 
-C function : g_unichar_totitle
+C function
+
+g_unichar_totitle
 */
 func UnicharTotitle(c rune) rune {
 	c_c := (C.gunichar)(c)
@@ -4530,7 +4938,9 @@ func UnicharTotitle(c rune) rune {
 // Converts a character to uppercase.
 /*
 
-C function : g_unichar_toupper
+C function
+
+g_unichar_toupper
 */
 func UnicharToupper(c rune) rune {
 	c_c := (C.gunichar)(c)
@@ -4544,7 +4954,9 @@ func UnicharToupper(c rune) rune {
 // Classifies a Unicode character by type.
 /*
 
-C function : g_unichar_type
+C function
+
+g_unichar_type
 */
 func UnicharType(c rune) UnicodeType {
 	c_c := (C.gunichar)(c)
@@ -4560,7 +4972,9 @@ func UnicharType(c rune) UnicodeType {
 // character, though it's normally a string terminator.
 /*
 
-C function : g_unichar_validate
+C function
+
+g_unichar_validate
 */
 func UnicharValidate(ch rune) bool {
 	c_ch := (C.gunichar)(ch)
@@ -4575,7 +4989,9 @@ func UnicharValidate(ch rune) bool {
 // digit.
 /*
 
-C function : g_unichar_xdigit_value
+C function
+
+g_unichar_xdigit_value
 */
 func UnicharXdigitValue(c rune) int32 {
 	c_c := (C.gunichar)(c)
@@ -4594,7 +5010,9 @@ func UnicharXdigitValue(c rune) int32 {
 // manual for more information.
 /*
 
-C function : g_unicode_canonical_ordering
+C function
+
+g_unicode_canonical_ordering
 */
 func UnicodeCanonicalOrdering(string rune, len uint64) {
 	c_string := (C.gunichar)(string)
@@ -4616,7 +5034,9 @@ func UnicodeCanonicalOrdering(string rune, len uint64) {
 // length of the sleep.
 /*
 
-C function : g_usleep
+C function
+
+g_usleep
 */
 func Usleep(microseconds uint64) {
 	c_microseconds := (C.gulong)(microseconds)
@@ -4643,7 +5063,9 @@ func Usleep(microseconds uint64) {
 // provide such a function.
 /*
 
-C function : g_utf8_casefold
+C function
+
+g_utf8_casefold
 */
 func Utf8Casefold(str string, len int64) string {
 	c_str := C.CString(str)
@@ -4666,7 +5088,9 @@ func Utf8Casefold(str string, len int64) string {
 // the original strings.
 /*
 
-C function : g_utf8_collate
+C function
+
+g_utf8_collate
 */
 func Utf8Collate(str1 string, str2 string) int32 {
 	c_str1 := C.CString(str1)
@@ -4692,7 +5116,9 @@ func Utf8Collate(str1 string, str2 string) int32 {
 // Note that this function depends on the [current locale][setlocale].
 /*
 
-C function : g_utf8_collate_key
+C function
+
+g_utf8_collate_key
 */
 func Utf8CollateKey(str string, len int64) string {
 	c_str := C.CString(str)
@@ -4719,7 +5145,9 @@ func Utf8CollateKey(str string, len int64) string {
 // is reached.
 /*
 
-C function : g_utf8_find_next_char
+C function
+
+g_utf8_find_next_char
 */
 func Utf8FindNextChar(p string, end string) string {
 	c_p := C.CString(p)
@@ -4744,7 +5172,9 @@ func Utf8FindNextChar(p string, end string) string {
 // it starts with an appropriate byte.
 /*
 
-C function : g_utf8_find_prev_char
+C function
+
+g_utf8_find_prev_char
 */
 func Utf8FindPrevChar(str string, p string) string {
 	c_str := C.CString(str)
@@ -4768,7 +5198,9 @@ func Utf8FindPrevChar(str string, p string) string {
 // instead.
 /*
 
-C function : g_utf8_get_char
+C function
+
+g_utf8_get_char
 */
 func Utf8GetChar(p string) rune {
 	c_p := C.CString(p)
@@ -4790,7 +5222,9 @@ func Utf8GetChar(p string) rune {
 // sequence are nul.
 /*
 
-C function : g_utf8_get_char_validated
+C function
+
+g_utf8_get_char_validated
 */
 func Utf8GetCharValidated(p string, maxLen int64) rune {
 	c_p := C.CString(p)
@@ -4831,7 +5265,9 @@ func Utf8GetCharValidated(p string, maxLen int64) rune {
 // less capable Unicode handling.
 /*
 
-C function : g_utf8_normalize
+C function
+
+g_utf8_normalize
 */
 func Utf8Normalize(str string, len int64, mode NormalizeMode) string {
 	c_str := C.CString(str)
@@ -4863,7 +5299,9 @@ func Utf8Normalize(str string, len int64, mode NormalizeMode) string {
 // text rendering and therefore has to be as fast as possible.
 /*
 
-C function : g_utf8_offset_to_pointer
+C function
+
+g_utf8_offset_to_pointer
 */
 func Utf8OffsetToPointer(str string, offset int64) string {
 	c_str := C.CString(str)
@@ -4885,7 +5323,9 @@ func Utf8OffsetToPointer(str string, offset int64) string {
 // a negative offset in this case.
 /*
 
-C function : g_utf8_pointer_to_offset
+C function
+
+g_utf8_pointer_to_offset
 */
 func Utf8PointerToOffset(str string, pos string) int64 {
 	c_str := C.CString(str)
@@ -4908,7 +5348,9 @@ func Utf8PointerToOffset(str string, pos string) int64 {
 // character of the string, you must use g_utf8_find_prev_char() instead.
 /*
 
-C function : g_utf8_prev_char
+C function
+
+g_utf8_prev_char
 */
 func Utf8PrevChar(p string) string {
 	c_p := C.CString(p)
@@ -4926,7 +5368,9 @@ func Utf8PrevChar(p string) string {
 // If @len is -1, allow unbounded search.
 /*
 
-C function : g_utf8_strchr
+C function
+
+g_utf8_strchr
 */
 func Utf8Strchr(p string, len int64, c rune) string {
 	c_p := C.CString(p)
@@ -4949,7 +5393,9 @@ func Utf8Strchr(p string, len int64, c rune) string {
 // characters in the string changing.
 /*
 
-C function : g_utf8_strdown
+C function
+
+g_utf8_strdown
 */
 func Utf8Strdown(str string, len int64) string {
 	c_str := C.CString(str)
@@ -4969,7 +5415,9 @@ func Utf8Strdown(str string, len int64) string {
 // middle of a character, the last (partial) character is not counted.
 /*
 
-C function : g_utf8_strlen
+C function
+
+g_utf8_strlen
 */
 func Utf8Strlen(p string, max int64) int64 {
 	c_p := C.CString(p)
@@ -4992,7 +5440,9 @@ func Utf8Strlen(p string, max int64) int64 {
 // largest possible UTF-8 characters
 /*
 
-C function : g_utf8_strncpy
+C function
+
+g_utf8_strncpy
 */
 func Utf8Strncpy(dest string, src string, n uint64) string {
 	c_dest := C.CString(dest)
@@ -5015,7 +5465,9 @@ func Utf8Strncpy(dest string, src string, n uint64) string {
 // If @len is -1, allow unbounded search.
 /*
 
-C function : g_utf8_strrchr
+C function
+
+g_utf8_strrchr
 */
 func Utf8Strrchr(p string, len int64, c rune) string {
 	c_p := C.CString(p)
@@ -5039,7 +5491,9 @@ func Utf8Strrchr(p string, len int64, c rune) string {
 // German ess-zet will be changed to SS.)
 /*
 
-C function : g_utf8_strup
+C function
+
+g_utf8_strup
 */
 func Utf8Strup(str string, len int64) string {
 	c_str := C.CString(str)
@@ -5077,7 +5531,9 @@ func Utf8Strup(str string, len int64) string {
 // doing anything else with it.
 /*
 
-C function : g_utf8_validate
+C function
+
+g_utf8_validate
 */
 func Utf8Validate(str []uint8) (bool, string) {
 	c_str := &str[0]
@@ -5100,7 +5556,9 @@ func Utf8Validate(str []uint8) (bool, string) {
 
 /*
 
-C function : g_variant_parse_error_quark
+C function
+
+g_variant_parse_error_quark
 */
 func VariantParseErrorQuark() Quark {
 	retC := C.g_variant_parse_error_quark()
@@ -5112,7 +5570,9 @@ func VariantParseErrorQuark() Quark {
 // Same as g_variant_error_quark().
 /*
 
-C function : g_variant_parser_get_error_quark
+C function
+
+g_variant_parser_get_error_quark
 */
 func VariantParserGetErrorQuark() Quark {
 	retC := C.g_variant_parser_get_error_quark()
@@ -5128,7 +5588,9 @@ func VariantParserGetErrorQuark() Quark {
 // that the following character is a nul terminator.
 /*
 
-C function : g_variant_type_string_is_valid
+C function
+
+g_variant_type_string_is_valid
 */
 func VariantTypeStringIsValid(typeString string) bool {
 	c_type_string := C.CString(typeString)
@@ -5144,7 +5606,9 @@ func VariantTypeStringIsValid(typeString string) bool {
 
 /*
 
-C function : g_warn_message
+C function
+
+g_warn_message
 */
 func WarnMessage(domain string, file string, line int32, func_ string, warnexpr string) {
 	c_domain := C.CString(domain)

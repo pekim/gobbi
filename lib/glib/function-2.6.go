@@ -28,7 +28,9 @@ import "C"
 // (same major version.)
 /*
 
-C function : glib_check_version
+C function
+
+glib_check_version
 */
 func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint32) string {
 	c_required_major := (C.guint)(requiredMajor)
@@ -61,7 +63,9 @@ func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint
 // whole path, as it allows translation.
 /*
 
-C function : g_filename_display_basename
+C function
+
+g_filename_display_basename
 */
 func FilenameDisplayBasename(filename string) string {
 	c_filename := C.CString(filename)
@@ -91,7 +95,9 @@ func FilenameDisplayBasename(filename string) string {
 // translation of filenames.
 /*
 
-C function : g_filename_display_name
+C function
+
+g_filename_display_name
 */
 func FilenameDisplayName(filename string) string {
 	c_filename := C.CString(filename)
@@ -127,7 +133,9 @@ func FilenameDisplayName(filename string) string {
 // See the [documentation for `CSIDL_INTERNET_CACHE`](https://msdn.microsoft.com/en-us/library/windows/desktop/bb762494%28v=vs.85%29.aspx#csidl_internet_cache).
 /*
 
-C function : g_get_user_cache_dir
+C function
+
+g_get_user_cache_dir
 */
 func GetUserCacheDir() string {
 	retC := C.g_get_user_cache_dir()
@@ -152,7 +160,9 @@ func GetUserCacheDir() string {
 // as what g_get_user_data_dir() returns.
 /*
 
-C function : g_get_user_config_dir
+C function
+
+g_get_user_config_dir
 */
 func GetUserConfigDir() string {
 	retC := C.g_get_user_config_dir()
@@ -177,7 +187,9 @@ func GetUserConfigDir() string {
 // as what g_get_user_config_dir() returns.
 /*
 
-C function : g_get_user_data_dir
+C function
+
+g_get_user_data_dir
 */
 func GetUserDataDir() string {
 	retC := C.g_get_user_data_dir()
@@ -195,7 +207,9 @@ func GetUserDataDir() string {
 // on your system.
 /*
 
-C function : g_rmdir
+C function
+
+g_rmdir
 */
 func Rmdir(filename string) int32 {
 	c_filename := C.CString(filename)
@@ -219,7 +233,9 @@ func Rmdir(filename string) int32 {
 // are open to some process, or mapped into memory.
 /*
 
-C function : g_unlink
+C function
+
+g_unlink
 */
 func Unlink(filename string) int32 {
 	c_filename := C.CString(filename)

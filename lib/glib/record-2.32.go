@@ -38,7 +38,9 @@ import "C"
 // a mutable #GByteArray, use the g_byte_array_free_to_bytes() function.
 /*
 
-C record/class : GBytes
+C type
+
+GBytes
 */
 type Bytes struct {
 	native *C.GBytes
@@ -65,7 +67,9 @@ func (recv *Bytes) ToC() unsafe.Pointer {
 // @data is copied. If @size is 0, @data may be %NULL.
 /*
 
-C function : g_bytes_new
+C function
+
+g_bytes_new
 */
 func BytesNew(data []uint8) *Bytes {
 	c_data := &data[0]
@@ -84,7 +88,9 @@ func BytesNew(data []uint8) *Bytes {
 // is 0.
 /*
 
-C function : g_bytes_new_static
+C function
+
+g_bytes_new_static
 */
 func BytesNewStatic(data []uint8) *Bytes {
 	c_data := &data[0]
@@ -111,7 +117,9 @@ func BytesNewStatic(data []uint8) *Bytes {
 // @data may be %NULL if @size is 0.
 /*
 
-C function : g_bytes_new_take
+C function
+
+g_bytes_new_take
 */
 func BytesNewTake(data []uint8) *Bytes {
 	c_data := &data[0]
@@ -131,7 +139,9 @@ func BytesNewTake(data []uint8) *Bytes {
 // This function can be used to sort GBytes instances in lexographical order.
 /*
 
-C function : g_bytes_compare
+C function
+
+g_bytes_compare
 */
 func (recv *Bytes) Compare(bytes2 uintptr) int32 {
 	c_bytes2 := (C.gconstpointer)(bytes2)
@@ -149,7 +159,9 @@ func (recv *Bytes) Compare(bytes2 uintptr) int32 {
 // parameter, when using non-%NULL #GBytes pointers as keys in a #GHashTable.
 /*
 
-C function : g_bytes_equal
+C function
+
+g_bytes_equal
 */
 func (recv *Bytes) Equal(bytes2 uintptr) bool {
 	c_bytes2 := (C.gconstpointer)(bytes2)
@@ -167,7 +179,9 @@ func (recv *Bytes) Equal(bytes2 uintptr) bool {
 // This function will always return the same value for a given #GBytes.
 /*
 
-C function : g_bytes_get_size
+C function
+
+g_bytes_get_size
 */
 func (recv *Bytes) GetSize() uint64 {
 	retC := C.g_bytes_get_size((*C.GBytes)(recv.native))
@@ -182,7 +196,9 @@ func (recv *Bytes) GetSize() uint64 {
 // parameter, when using non-%NULL #GBytes pointers as keys in a #GHashTable.
 /*
 
-C function : g_bytes_hash
+C function
+
+g_bytes_hash
 */
 func (recv *Bytes) Hash() uint32 {
 	retC := C.g_bytes_hash((C.gconstpointer)(recv.native))
@@ -204,7 +220,9 @@ func (recv *Bytes) Hash() uint32 {
 // usage of #GBytes when asynchronously writing to streams.
 /*
 
-C function : g_bytes_new_from_bytes
+C function
+
+g_bytes_new_from_bytes
 */
 func (recv *Bytes) NewFromBytes(offset uint64, length uint64) *Bytes {
 	c_offset := (C.gsize)(offset)
@@ -220,7 +238,9 @@ func (recv *Bytes) NewFromBytes(offset uint64, length uint64) *Bytes {
 // Increase the reference count on @bytes.
 /*
 
-C function : g_bytes_ref
+C function
+
+g_bytes_ref
 */
 func (recv *Bytes) Ref() *Bytes {
 	retC := C.g_bytes_ref((*C.GBytes)(recv.native))
@@ -233,7 +253,9 @@ func (recv *Bytes) Ref() *Bytes {
 // freed. If @bytes is %NULL, it will return immediately.
 /*
 
-C function : g_bytes_unref
+C function
+
+g_bytes_unref
 */
 func (recv *Bytes) Unref() {
 	C.g_bytes_unref((*C.GBytes)(recv.native))
@@ -254,7 +276,9 @@ func (recv *Bytes) Unref() {
 // blocking leads to undefined behaviour.
 /*
 
-C function : g_cond_clear
+C function
+
+g_cond_clear
 */
 func (recv *Cond) Clear() {
 	C.g_cond_clear((*C.GCond)(recv.native))
@@ -275,7 +299,9 @@ func (recv *Cond) Clear() {
 // to undefined behaviour.
 /*
 
-C function : g_cond_init
+C function
+
+g_cond_init
 */
 func (recv *Cond) Init() {
 	C.g_cond_init((*C.GCond)(recv.native))
@@ -288,7 +314,9 @@ func (recv *Cond) Init() {
 // Increases the reference count of @key_file.
 /*
 
-C function : g_key_file_ref
+C function
+
+g_key_file_ref
 */
 func (recv *KeyFile) Ref() *KeyFile {
 	retC := C.g_key_file_ref((*C.GKeyFile)(recv.native))
@@ -301,7 +329,9 @@ func (recv *KeyFile) Ref() *KeyFile {
 // reaches zero, frees the key file and all its allocated memory.
 /*
 
-C function : g_key_file_unref
+C function
+
+g_key_file_unref
 */
 func (recv *KeyFile) Unref() {
 	C.g_key_file_unref((*C.GKeyFile)(recv.native))
@@ -322,7 +352,9 @@ func (recv *KeyFile) Unref() {
 // atomically (e.g. using g_file_set_contents()).
 /*
 
-C function : g_mapped_file_new_from_fd
+C function
+
+g_mapped_file_new_from_fd
 */
 func MappedFileNewFromFd(fd int32, writable bool) (*MappedFile, error) {
 	c_fd := (C.gint)(fd)
@@ -351,7 +383,9 @@ func MappedFileNewFromFd(fd int32, writable bool) (*MappedFile, error) {
 // @key is run on it.
 /*
 
-C function : g_private_replace
+C function
+
+g_private_replace
 */
 func (recv *Private) Replace(value uintptr) {
 	c_value := (C.gpointer)(value)
@@ -424,7 +458,9 @@ func (recv *Private) Replace(value uintptr) {
 // A GRWLock should only be accessed with the g_rw_lock_ functions.
 /*
 
-C record/class : GRWLock
+C type
+
+GRWLock
 */
 type RWLock struct {
 	native *C.GRWLock
@@ -459,7 +495,9 @@ func (recv *RWLock) ToC() unsafe.Pointer {
 // Sine: 2.32
 /*
 
-C function : g_rw_lock_clear
+C function
+
+g_rw_lock_clear
 */
 func (recv *RWLock) Clear() {
 	C.g_rw_lock_clear((*C.GRWLock)(recv.native))
@@ -493,7 +531,9 @@ func (recv *RWLock) Clear() {
 // to undefined behaviour.
 /*
 
-C function : g_rw_lock_init
+C function
+
+g_rw_lock_init
 */
 func (recv *RWLock) Init() {
 	C.g_rw_lock_init((*C.GRWLock)(recv.native))
@@ -510,7 +550,9 @@ func (recv *RWLock) Init() {
 // or if a deadlock is detected, a critical warning will be emitted.
 /*
 
-C function : g_rw_lock_reader_lock
+C function
+
+g_rw_lock_reader_lock
 */
 func (recv *RWLock) ReaderLock() {
 	C.g_rw_lock_reader_lock((*C.GRWLock)(recv.native))
@@ -523,7 +565,9 @@ func (recv *RWLock) ReaderLock() {
 // returns %FALSE.
 /*
 
-C function : g_rw_lock_reader_trylock
+C function
+
+g_rw_lock_reader_trylock
 */
 func (recv *RWLock) ReaderTrylock() bool {
 	retC := C.g_rw_lock_reader_trylock((*C.GRWLock)(recv.native))
@@ -538,7 +582,9 @@ func (recv *RWLock) ReaderTrylock() bool {
 // by the current thread leads to undefined behaviour.
 /*
 
-C function : g_rw_lock_reader_unlock
+C function
+
+g_rw_lock_reader_unlock
 */
 func (recv *RWLock) ReaderUnlock() {
 	C.g_rw_lock_reader_unlock((*C.GRWLock)(recv.native))
@@ -551,7 +597,9 @@ func (recv *RWLock) ReaderUnlock() {
 // until all other threads have dropped their locks on @rw_lock.
 /*
 
-C function : g_rw_lock_writer_lock
+C function
+
+g_rw_lock_writer_lock
 */
 func (recv *RWLock) WriterLock() {
 	C.g_rw_lock_writer_lock((*C.GRWLock)(recv.native))
@@ -564,7 +612,9 @@ func (recv *RWLock) WriterLock() {
 // Otherwise it locks @rw_lock and returns %TRUE.
 /*
 
-C function : g_rw_lock_writer_trylock
+C function
+
+g_rw_lock_writer_trylock
 */
 func (recv *RWLock) WriterTrylock() bool {
 	retC := C.g_rw_lock_writer_trylock((*C.GRWLock)(recv.native))
@@ -579,7 +629,9 @@ func (recv *RWLock) WriterTrylock() bool {
 // by the current thread leads to undefined behaviour.
 /*
 
-C function : g_rw_lock_writer_unlock
+C function
+
+g_rw_lock_writer_unlock
 */
 func (recv *RWLock) WriterUnlock() {
 	C.g_rw_lock_writer_unlock((*C.GRWLock)(recv.native))
@@ -601,7 +653,9 @@ func (recv *RWLock) WriterUnlock() {
 // g_rec_mutex_ functions.
 /*
 
-C record/class : GRecMutex
+C type
+
+GRecMutex
 */
 type RecMutex struct {
 	native *C.GRecMutex
@@ -637,7 +691,9 @@ func (recv *RecMutex) ToC() unsafe.Pointer {
 // Sine: 2.32
 /*
 
-C function : g_rec_mutex_clear
+C function
+
+g_rec_mutex_clear
 */
 func (recv *RecMutex) Clear() {
 	C.g_rec_mutex_clear((*C.GRecMutex)(recv.native))
@@ -673,7 +729,9 @@ func (recv *RecMutex) Clear() {
 // is no longer needed, use g_rec_mutex_clear().
 /*
 
-C function : g_rec_mutex_init
+C function
+
+g_rec_mutex_init
 */
 func (recv *RecMutex) Init() {
 	C.g_rec_mutex_init((*C.GRecMutex)(recv.native))
@@ -689,7 +747,9 @@ func (recv *RecMutex) Init() {
 // as many times as it has been locked.
 /*
 
-C function : g_rec_mutex_lock
+C function
+
+g_rec_mutex_lock
 */
 func (recv *RecMutex) Lock() {
 	C.g_rec_mutex_lock((*C.GRecMutex)(recv.native))
@@ -702,7 +762,9 @@ func (recv *RecMutex) Lock() {
 // it locks @rec_mutex and returns %TRUE.
 /*
 
-C function : g_rec_mutex_trylock
+C function
+
+g_rec_mutex_trylock
 */
 func (recv *RecMutex) Trylock() bool {
 	retC := C.g_rec_mutex_trylock((*C.GRecMutex)(recv.native))
@@ -719,7 +781,9 @@ func (recv *RecMutex) Trylock() bool {
 // locked by the current thread leads to undefined behaviour.
 /*
 
-C function : g_rec_mutex_unlock
+C function
+
+g_rec_mutex_unlock
 */
 func (recv *RecMutex) Unlock() {
 	C.g_rec_mutex_unlock((*C.GRecMutex)(recv.native))
@@ -734,7 +798,9 @@ func (recv *RecMutex) Unlock() {
 // Increase the reference count on @thread.
 /*
 
-C function : g_thread_ref
+C function
+
+g_thread_ref
 */
 func (recv *Thread) Ref() *Thread {
 	retC := C.g_thread_ref((*C.GThread)(recv.native))
@@ -751,7 +817,9 @@ func (recv *Thread) Ref() *Thread {
 // if you don't need it anymore.
 /*
 
-C function : g_thread_unref
+C function
+
+g_thread_unref
 */
 func (recv *Thread) Unref() {
 	C.g_thread_unref((*C.GThread)(recv.native))

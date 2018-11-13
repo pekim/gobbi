@@ -19,7 +19,9 @@ import "C"
 // The hexadecimal string returned will be in lower case.
 /*
 
-C function : g_compute_hmac_for_bytes
+C function
+
+g_compute_hmac_for_bytes
 */
 func ComputeHmacForBytes(digestType ChecksumType, key *Bytes, data *Bytes) string {
 	c_digest_type := (C.GChecksumType)(digestType)
@@ -64,7 +66,9 @@ func ComputeHmacForBytes(digestType ChecksumType, key *Bytes, data *Bytes) strin
 // ]|
 /*
 
-C function : g_log_writer_is_journald
+C function
+
+g_log_writer_is_journald
 */
 func LogWriterIsJournald(outputFd int32) bool {
 	c_output_fd := (C.gint)(outputFd)
@@ -84,7 +88,9 @@ func LogWriterIsJournald(outputFd int32) bool {
 // messages.
 /*
 
-C function : g_log_writer_supports_color
+C function
+
+g_log_writer_supports_color
 */
 func LogWriterSupportsColor(outputFd int32) bool {
 	c_output_fd := (C.gint)(outputFd)

@@ -15,7 +15,9 @@ import "C"
 // and is at best misnamed.
 /*
 
-C function : pango_is_zero_width
+C function
+
+pango_is_zero_width
 */
 func IsZeroWidth(ch rune) bool {
 	c_ch := (C.gunichar)(ch)

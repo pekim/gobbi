@@ -33,7 +33,9 @@ import "C"
 // contains references.
 /*
 
-C function : g_match_info_expand_references
+C function
+
+g_match_info_expand_references
 */
 func (recv *MatchInfo) ExpandReferences(stringToExpand string) (string, error) {
 	c_string_to_expand := C.CString(stringToExpand)
@@ -71,7 +73,9 @@ func (recv *MatchInfo) ExpandReferences(stringToExpand string) (string, error) {
 // so you cannot call this function after freeing the string.
 /*
 
-C function : g_match_info_fetch
+C function
+
+g_match_info_fetch
 */
 func (recv *MatchInfo) Fetch(matchNum int32) string {
 	c_match_num := (C.gint)(matchNum)
@@ -95,7 +99,9 @@ func (recv *MatchInfo) Fetch(matchNum int32) string {
 // so you cannot call this function after freeing the string.
 /*
 
-C function : g_match_info_fetch_named
+C function
+
+g_match_info_fetch_named
 */
 func (recv *MatchInfo) FetchNamed(name string) string {
 	c_name := C.CString(name)
@@ -115,7 +121,9 @@ func (recv *MatchInfo) FetchNamed(name string) string {
 // then @start_pos and @end_pos are set to -1 and %TRUE is returned.
 /*
 
-C function : g_match_info_fetch_named_pos
+C function
+
+g_match_info_fetch_named_pos
 */
 func (recv *MatchInfo) FetchNamedPos(name string) (bool, int32, int32) {
 	c_name := C.CString(name)
@@ -150,7 +158,9 @@ func (recv *MatchInfo) FetchNamedPos(name string) (bool, int32, int32) {
 // 0 is the longest match.
 /*
 
-C function : g_match_info_fetch_pos
+C function
+
+g_match_info_fetch_pos
 */
 func (recv *MatchInfo) FetchPos(matchNum int32) (bool, int32, int32) {
 	c_match_num := (C.gint)(matchNum)
@@ -173,7 +183,9 @@ func (recv *MatchInfo) FetchPos(matchNum int32) (bool, int32, int32) {
 // nothing.
 /*
 
-C function : g_match_info_free
+C function
+
+g_match_info_free
 */
 func (recv *MatchInfo) Free() {
 	C.g_match_info_free((*C.GMatchInfo)(recv.native))
@@ -191,7 +203,9 @@ func (recv *MatchInfo) Free() {
 // the number of matched substrings.
 /*
 
-C function : g_match_info_get_match_count
+C function
+
+g_match_info_get_match_count
 */
 func (recv *MatchInfo) GetMatchCount() int32 {
 	retC := C.g_match_info_get_match_count((*C.GMatchInfo)(recv.native))
@@ -205,7 +219,9 @@ func (recv *MatchInfo) GetMatchCount() int32 {
 // after you free @match_info object.
 /*
 
-C function : g_match_info_get_regex
+C function
+
+g_match_info_get_regex
 */
 func (recv *MatchInfo) GetRegex() *Regex {
 	retC := C.g_match_info_get_regex((*C.GMatchInfo)(recv.native))
@@ -219,7 +235,9 @@ func (recv *MatchInfo) GetRegex() *Regex {
 // you may not free it before calling this function.
 /*
 
-C function : g_match_info_get_string
+C function
+
+g_match_info_get_string
 */
 func (recv *MatchInfo) GetString() string {
 	retC := C.g_match_info_get_string((*C.GMatchInfo)(recv.native))
@@ -263,7 +281,9 @@ func (recv *MatchInfo) GetString() string {
 // See pcrepartial(3) for more information on partial matching.
 /*
 
-C function : g_match_info_is_partial_match
+C function
+
+g_match_info_is_partial_match
 */
 func (recv *MatchInfo) IsPartialMatch() bool {
 	retC := C.g_match_info_is_partial_match((*C.GMatchInfo)(recv.native))
@@ -275,7 +295,9 @@ func (recv *MatchInfo) IsPartialMatch() bool {
 // Returns whether the previous match operation succeeded.
 /*
 
-C function : g_match_info_matches
+C function
+
+g_match_info_matches
 */
 func (recv *MatchInfo) Matches() bool {
 	retC := C.g_match_info_matches((*C.GMatchInfo)(recv.native))
@@ -292,7 +314,9 @@ func (recv *MatchInfo) Matches() bool {
 // cannot free it before calling this function.
 /*
 
-C function : g_match_info_next
+C function
+
+g_match_info_next
 */
 func (recv *MatchInfo) Next() (bool, error) {
 	var cThrowableError *C.GError
@@ -317,7 +341,9 @@ func (recv *MatchInfo) Next() (bool, error) {
 // `g_option_context_get_help (context, FALSE, group)`.
 /*
 
-C function : g_option_context_get_help
+C function
+
+g_option_context_get_help
 */
 func (recv *OptionContext) GetHelp(mainHelp bool, group *OptionGroup) string {
 	c_main_help :=
@@ -339,7 +365,9 @@ func (recv *OptionContext) GetHelp(mainHelp bool, group *OptionGroup) string {
 // dynamically-allocated memory, they should be freed first.
 /*
 
-C function : g_queue_clear
+C function
+
+g_queue_clear
 */
 func (recv *Queue) Clear() {
 	C.g_queue_clear((*C.GQueue)(recv.native))
@@ -353,7 +381,9 @@ func (recv *Queue) Clear() {
 // g_queue_new().
 /*
 
-C function : g_queue_init
+C function
+
+g_queue_init
 */
 func (recv *Queue) Init() {
 	C.g_queue_init((*C.GQueue)(recv.native))
@@ -428,7 +458,9 @@ func (recv *Queue) Init() {
 // library written by Philip Hazel.
 /*
 
-C record/class : GRegex
+C type
+
+GRegex
 */
 type Regex struct {
 	native *C.GRegex
@@ -454,7 +486,9 @@ func (recv *Regex) ToC() unsafe.Pointer {
 // the initial setup of the #GRegex structure.
 /*
 
-C function : g_regex_new
+C function
+
+g_regex_new
 */
 func RegexNew(pattern string, compileOptions RegexCompileFlags, matchOptions RegexMatchFlags) (*Regex, error) {
 	c_pattern := C.CString(pattern)
@@ -485,7 +519,9 @@ func RegexNew(pattern string, compileOptions RegexCompileFlags, matchOptions Reg
 // Returns the number of capturing subpatterns in the pattern.
 /*
 
-C function : g_regex_get_capture_count
+C function
+
+g_regex_get_capture_count
 */
 func (recv *Regex) GetCaptureCount() int32 {
 	retC := C.g_regex_get_capture_count((*C.GRegex)(recv.native))
@@ -499,7 +535,9 @@ func (recv *Regex) GetCaptureCount() int32 {
 // back references.
 /*
 
-C function : g_regex_get_max_backref
+C function
+
+g_regex_get_max_backref
 */
 func (recv *Regex) GetMaxBackref() int32 {
 	retC := C.g_regex_get_max_backref((*C.GRegex)(recv.native))
@@ -512,7 +550,9 @@ func (recv *Regex) GetMaxBackref() int32 {
 // the string passed to g_regex_new().
 /*
 
-C function : g_regex_get_pattern
+C function
+
+g_regex_get_pattern
 */
 func (recv *Regex) GetPattern() string {
 	retC := C.g_regex_get_pattern((*C.GRegex)(recv.native))
@@ -524,7 +564,9 @@ func (recv *Regex) GetPattern() string {
 // Retrieves the number of the subexpression named @name.
 /*
 
-C function : g_regex_get_string_number
+C function
+
+g_regex_get_string_number
 */
 func (recv *Regex) GetStringNumber(name string) int32 {
 	c_name := C.CString(name)
@@ -576,7 +618,9 @@ func (recv *Regex) GetStringNumber(name string) int32 {
 // freeing or modifying @string then the behaviour is undefined.
 /*
 
-C function : g_regex_match
+C function
+
+g_regex_match
 */
 func (recv *Regex) Match(string string, matchOptions RegexMatchFlags) (bool, *MatchInfo) {
 	c_string := C.CString(string)
@@ -610,7 +654,9 @@ func (recv *Regex) Match(string string, matchOptions RegexMatchFlags) (bool, *Ma
 // freeing or modifying @string then the behaviour is undefined.
 /*
 
-C function : g_regex_match_all
+C function
+
+g_regex_match_all
 */
 func (recv *Regex) MatchAll(string string, matchOptions RegexMatchFlags) (bool, *MatchInfo) {
 	c_string := C.CString(string)
@@ -635,7 +681,9 @@ func (recv *Regex) MatchAll(string string, matchOptions RegexMatchFlags) (bool, 
 // Increases reference count of @regex by 1.
 /*
 
-C function : g_regex_ref
+C function
+
+g_regex_ref
 */
 func (recv *Regex) Ref() *Regex {
 	retC := C.g_regex_ref((*C.GRegex)(recv.native))
@@ -658,7 +706,9 @@ func (recv *Regex) Ref() *Regex {
 // to zero, it frees all the memory associated with the regex structure.
 /*
 
-C function : g_regex_unref
+C function
+
+g_regex_unref
 */
 func (recv *Regex) Unref() {
 	C.g_regex_unref((*C.GRegex)(recv.native))
@@ -669,7 +719,9 @@ func (recv *Regex) Unref() {
 // Adds a new item to the end of @seq.
 /*
 
-C function : g_sequence_append
+C function
+
+g_sequence_append
 */
 func (recv *Sequence) Append(data uintptr) *SequenceIter {
 	c_data := (C.gpointer)(data)
@@ -687,7 +739,9 @@ func (recv *Sequence) Append(data uintptr) *SequenceIter {
 // in @seq.
 /*
 
-C function : g_sequence_free
+C function
+
+g_sequence_free
 */
 func (recv *Sequence) Free() {
 	C.g_sequence_free((*C.GSequence)(recv.native))
@@ -698,7 +752,9 @@ func (recv *Sequence) Free() {
 // Returns the begin iterator for @seq.
 /*
 
-C function : g_sequence_get_begin_iter
+C function
+
+g_sequence_get_begin_iter
 */
 func (recv *Sequence) GetBeginIter() *SequenceIter {
 	retC := C.g_sequence_get_begin_iter((*C.GSequence)(recv.native))
@@ -710,7 +766,9 @@ func (recv *Sequence) GetBeginIter() *SequenceIter {
 // Returns the end iterator for @seg
 /*
 
-C function : g_sequence_get_end_iter
+C function
+
+g_sequence_get_end_iter
 */
 func (recv *Sequence) GetEndIter() *SequenceIter {
 	retC := C.g_sequence_get_end_iter((*C.GSequence)(recv.native))
@@ -723,7 +781,9 @@ func (recv *Sequence) GetEndIter() *SequenceIter {
 // than the number of items in @seq, the end iterator is returned.
 /*
 
-C function : g_sequence_get_iter_at_pos
+C function
+
+g_sequence_get_iter_at_pos
 */
 func (recv *Sequence) GetIterAtPos(pos int32) *SequenceIter {
 	c_pos := (C.gint)(pos)
@@ -739,7 +799,9 @@ func (recv *Sequence) GetIterAtPos(pos int32) *SequenceIter {
 // when comparing the length to zero.
 /*
 
-C function : g_sequence_get_length
+C function
+
+g_sequence_get_length
 */
 func (recv *Sequence) GetLength() int32 {
 	retC := C.g_sequence_get_length((*C.GSequence)(recv.native))
@@ -755,7 +817,9 @@ func (recv *Sequence) GetLength() int32 {
 // Adds a new item to the front of @seq
 /*
 
-C function : g_sequence_prepend
+C function
+
+g_sequence_prepend
 */
 func (recv *Sequence) Prepend(data uintptr) *SequenceIter {
 	c_data := (C.gpointer)(data)
@@ -780,7 +844,9 @@ func (recv *Sequence) Prepend(data uintptr) *SequenceIter {
 // The @a and @b iterators must point into the same sequence.
 /*
 
-C function : g_sequence_iter_compare
+C function
+
+g_sequence_iter_compare
 */
 func (recv *SequenceIter) Compare(b *SequenceIter) int32 {
 	c_b := (*C.GSequenceIter)(C.NULL)
@@ -797,7 +863,9 @@ func (recv *SequenceIter) Compare(b *SequenceIter) int32 {
 // Returns the position of @iter
 /*
 
-C function : g_sequence_iter_get_position
+C function
+
+g_sequence_iter_get_position
 */
 func (recv *SequenceIter) GetPosition() int32 {
 	retC := C.g_sequence_iter_get_position((*C.GSequenceIter)(recv.native))
@@ -809,7 +877,9 @@ func (recv *SequenceIter) GetPosition() int32 {
 // Returns the #GSequence that @iter points into.
 /*
 
-C function : g_sequence_iter_get_sequence
+C function
+
+g_sequence_iter_get_sequence
 */
 func (recv *SequenceIter) GetSequence() *Sequence {
 	retC := C.g_sequence_iter_get_sequence((*C.GSequenceIter)(recv.native))
@@ -821,7 +891,9 @@ func (recv *SequenceIter) GetSequence() *Sequence {
 // Returns whether @iter is the begin iterator
 /*
 
-C function : g_sequence_iter_is_begin
+C function
+
+g_sequence_iter_is_begin
 */
 func (recv *SequenceIter) IsBegin() bool {
 	retC := C.g_sequence_iter_is_begin((*C.GSequenceIter)(recv.native))
@@ -833,7 +905,9 @@ func (recv *SequenceIter) IsBegin() bool {
 // Returns whether @iter is the end iterator
 /*
 
-C function : g_sequence_iter_is_end
+C function
+
+g_sequence_iter_is_end
 */
 func (recv *SequenceIter) IsEnd() bool {
 	retC := C.g_sequence_iter_is_end((*C.GSequenceIter)(recv.native))
@@ -848,7 +922,9 @@ func (recv *SequenceIter) IsEnd() bool {
 // to the end of the sequence, the end iterator is returned.
 /*
 
-C function : g_sequence_iter_move
+C function
+
+g_sequence_iter_move
 */
 func (recv *SequenceIter) Move(delta int32) *SequenceIter {
 	c_delta := (C.gint)(delta)
@@ -863,7 +939,9 @@ func (recv *SequenceIter) Move(delta int32) *SequenceIter {
 // If @iter is the end iterator, the end iterator is returned.
 /*
 
-C function : g_sequence_iter_next
+C function
+
+g_sequence_iter_next
 */
 func (recv *SequenceIter) Next() *SequenceIter {
 	retC := C.g_sequence_iter_next((*C.GSequenceIter)(recv.native))
@@ -876,7 +954,9 @@ func (recv *SequenceIter) Next() *SequenceIter {
 // If @iter is the begin iterator, the begin iterator is returned.
 /*
 
-C function : g_sequence_iter_prev
+C function
+
+g_sequence_iter_prev
 */
 func (recv *SequenceIter) Prev() *SequenceIter {
 	retC := C.g_sequence_iter_prev((*C.GSequenceIter)(recv.native))
@@ -890,7 +970,9 @@ func (recv *SequenceIter) Prev() *SequenceIter {
 // Overwrites part of a string, lengthening it if necessary.
 /*
 
-C function : g_string_overwrite
+C function
+
+g_string_overwrite
 */
 func (recv *String) Overwrite(pos uint64, val string) *String {
 	c_pos := (C.gsize)(pos)
@@ -908,7 +990,9 @@ func (recv *String) Overwrite(pos uint64, val string) *String {
 // This function will work with embedded nuls.
 /*
 
-C function : g_string_overwrite_len
+C function
+
+g_string_overwrite_len
 */
 func (recv *String) OverwriteLen(pos uint64, val string, len int64) *String {
 	c_pos := (C.gsize)(pos)
@@ -931,7 +1015,9 @@ func (recv *String) OverwriteLen(pos uint64, val string, len int64) *String {
 // access any of the strings which were contained within it.
 /*
 
-C function : g_string_chunk_clear
+C function
+
+g_string_chunk_clear
 */
 func (recv *StringChunk) Clear() {
 	C.g_string_chunk_clear((*C.GStringChunk)(recv.native))

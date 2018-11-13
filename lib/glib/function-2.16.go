@@ -15,7 +15,9 @@ import "C"
 // Gets the length in bytes of digests of type @checksum_type
 /*
 
-C function : g_checksum_type_get_length
+C function
+
+g_checksum_type_get_length
 */
 func ChecksumTypeGetLength(checksumType ChecksumType) int64 {
 	c_checksum_type := (C.GChecksumType)(checksumType)
@@ -33,7 +35,9 @@ func ChecksumTypeGetLength(checksumType ChecksumType) int64 {
 // The hexadecimal string returned will be in lower case.
 /*
 
-C function : g_compute_checksum_for_data
+C function
+
+g_compute_checksum_for_data
 */
 func ComputeChecksumForData(checksumType ChecksumType, data []uint8) string {
 	c_checksum_type := (C.GChecksumType)(checksumType)
@@ -54,7 +58,9 @@ func ComputeChecksumForData(checksumType ChecksumType, data []uint8) string {
 // The hexadecimal string returned will be in lower case.
 /*
 
-C function : g_compute_checksum_for_string
+C function
+
+g_compute_checksum_for_string
 */
 func ComputeChecksumForString(checksumType ChecksumType, str string) string {
 	c_checksum_type := (C.GChecksumType)(checksumType)
@@ -86,7 +92,9 @@ func ComputeChecksumForString(checksumType ChecksumType, str string) string {
 // but use the C_() macro for translations with context.
 /*
 
-C function : g_dpgettext
+C function
+
+g_dpgettext
 */
 func Dpgettext(domain string, msgctxtid string, msgidoffset uint64) string {
 	c_domain := C.CString(domain)
@@ -114,7 +122,9 @@ func Dpgettext(domain string, msgctxtid string, msgidoffset uint64) string {
 // This string should be freed with g_free() when not needed any longer.
 /*
 
-C function : g_format_size_for_display
+C function
+
+g_format_size_for_display
 */
 func FormatSizeForDisplay(size uint64) string {
 	c_size := (C.goffset)(size)
@@ -137,7 +147,9 @@ func FormatSizeForDisplay(size uint64) string {
 // Comparing two %NULL pointers returns 0.
 /*
 
-C function : g_strcmp0
+C function
+
+g_strcmp0
 */
 func Strcmp0(str1 string, str2 string) int32 {
 	c_str1 := C.CString(str1)
@@ -162,7 +174,9 @@ func Strcmp0(str1 string, str2 string) int32 {
 // and @bug_uri_snippet.
 /*
 
-C function : g_test_bug
+C function
+
+g_test_bug
 */
 func TestBug(bugUriSnippet string) {
 	c_bug_uri_snippet := C.CString(bugUriSnippet)
@@ -186,7 +200,9 @@ func TestBug(bugUriSnippet string) {
 // '\%s' within @uri_pattern if that is present.
 /*
 
-C function : g_test_bug_base
+C function
+
+g_test_bug_base
 */
 func TestBugBase(uriPattern string) {
 	c_uri_pattern := C.CString(uriPattern)
@@ -202,7 +218,9 @@ func TestBugBase(uriPattern string) {
 // Create a new test suite with the name @suite_name.
 /*
 
-C function : g_test_create_suite
+C function
+
+g_test_create_suite
 */
 func TestCreateSuite(suiteName string) *TestSuite {
 	c_suite_name := C.CString(suiteName)
@@ -217,7 +235,9 @@ func TestCreateSuite(suiteName string) *TestSuite {
 // Get the toplevel test suite for the test path API.
 /*
 
-C function : g_test_get_root
+C function
+
+g_test_get_root
 */
 func TestGetRoot() *TestSuite {
 	retC := C.g_test_get_root()
@@ -241,7 +261,9 @@ func TestGetRoot() *TestSuite {
 // with a destroy callback of g_free().
 /*
 
-C function : g_test_queue_free
+C function
+
+g_test_queue_free
 */
 func TestQueueFree(gfreePointer uintptr) {
 	c_gfree_pointer := (C.gpointer)(gfreePointer)
@@ -255,7 +277,9 @@ func TestQueueFree(gfreePointer uintptr) {
 // see g_test_rand_int() for details on test case random numbers.
 /*
 
-C function : g_test_rand_double
+C function
+
+g_test_rand_double
 */
 func TestRandDouble() float64 {
 	retC := C.g_test_rand_double()
@@ -268,7 +292,9 @@ func TestRandDouble() float64 {
 // see g_test_rand_int() for details on test case random numbers.
 /*
 
-C function : g_test_rand_double_range
+C function
+
+g_test_rand_double_range
 */
 func TestRandDoubleRange(rangeStart float64, rangeEnd float64) float64 {
 	c_range_start := (C.double)(rangeStart)
@@ -292,7 +318,9 @@ func TestRandDoubleRange(rangeStart float64, rangeEnd float64) float64 {
 // effective for all test cases.
 /*
 
-C function : g_test_rand_int
+C function
+
+g_test_rand_int
 */
 func TestRandInt() int32 {
 	retC := C.g_test_rand_int()
@@ -305,7 +333,9 @@ func TestRandInt() int32 {
 // see g_test_rand_int() for details on test case random numbers.
 /*
 
-C function : g_test_rand_int_range
+C function
+
+g_test_rand_int_range
 */
 func TestRandIntRange(begin int32, end int32) int32 {
 	c_begin := (C.gint32)(begin)
@@ -351,7 +381,9 @@ func TestRandIntRange(begin int32, end int32) int32 {
 // producing TAP output, or 77 (treated as "skip test" by Automake) otherwise.
 /*
 
-C function : g_test_run
+C function
+
+g_test_run
 */
 func TestRun() int32 {
 	retC := C.g_test_run()
@@ -370,7 +402,9 @@ func TestRun() int32 {
 // in a program.
 /*
 
-C function : g_test_run_suite
+C function
+
+g_test_run_suite
 */
 func TestRunSuite(suite *TestSuite) int32 {
 	c_suite := (*C.GTestSuite)(C.NULL)
@@ -387,7 +421,9 @@ func TestRunSuite(suite *TestSuite) int32 {
 // Get the time since the last start of the timer with g_test_timer_start().
 /*
 
-C function : g_test_timer_elapsed
+C function
+
+g_test_timer_elapsed
 */
 func TestTimerElapsed() float64 {
 	retC := C.g_test_timer_elapsed()
@@ -399,7 +435,9 @@ func TestTimerElapsed() float64 {
 // Report the last result of g_test_timer_elapsed().
 /*
 
-C function : g_test_timer_last
+C function
+
+g_test_timer_last
 */
 func TestTimerLast() float64 {
 	retC := C.g_test_timer_last()
@@ -412,7 +450,9 @@ func TestTimerLast() float64 {
 // to be done. Call this function again to restart the timer.
 /*
 
-C function : g_test_timer_start
+C function
+
+g_test_timer_start
 */
 func TestTimerStart() {
 	C.g_test_timer_start()
@@ -450,7 +490,9 @@ func TestTimerStart() {
 // ]|
 /*
 
-C function : g_test_trap_fork
+C function
+
+g_test_trap_fork
 */
 func TestTrapFork(usecTimeout uint64, testTrapFlags TestTrapFlags) bool {
 	c_usec_timeout := (C.guint64)(usecTimeout)
@@ -466,7 +508,9 @@ func TestTrapFork(usecTimeout uint64, testTrapFlags TestTrapFlags) bool {
 // Check the result of the last g_test_trap_subprocess() call.
 /*
 
-C function : g_test_trap_has_passed
+C function
+
+g_test_trap_has_passed
 */
 func TestTrapHasPassed() bool {
 	retC := C.g_test_trap_has_passed()
@@ -478,7 +522,9 @@ func TestTrapHasPassed() bool {
 // Check the result of the last g_test_trap_subprocess() call.
 /*
 
-C function : g_test_trap_reached_timeout
+C function
+
+g_test_trap_reached_timeout
 */
 func TestTrapReachedTimeout() bool {
 	retC := C.g_test_trap_reached_timeout()
@@ -497,7 +543,9 @@ func TestTrapReachedTimeout() bool {
 // a URI.
 /*
 
-C function : g_uri_escape_string
+C function
+
+g_uri_escape_string
 */
 func UriEscapeString(unescaped string, reservedCharsAllowed string, allowUtf8 bool) string {
 	c_unescaped := C.CString(unescaped)
@@ -523,7 +571,9 @@ func UriEscapeString(unescaped string, reservedCharsAllowed string, allowUtf8 bo
 // Common schemes include "file", "http", "svn+ssh", etc.
 /*
 
-C function : g_uri_parse_scheme
+C function
+
+g_uri_parse_scheme
 */
 func UriParseScheme(uri string) string {
 	c_uri := C.CString(uri)
@@ -545,7 +595,9 @@ func UriParseScheme(uri string) string {
 // handling.
 /*
 
-C function : g_uri_unescape_segment
+C function
+
+g_uri_unescape_segment
 */
 func UriUnescapeSegment(escapedString string, escapedStringEnd string, illegalCharacters string) string {
 	c_escaped_string := C.CString(escapedString)
@@ -573,7 +625,9 @@ func UriUnescapeSegment(escapedString string, escapedStringEnd string, illegalCh
 // handling.
 /*
 
-C function : g_uri_unescape_string
+C function
+
+g_uri_unescape_string
 */
 func UriUnescapeString(escapedString string, illegalCharacters string) string {
 	c_escaped_string := C.CString(escapedString)

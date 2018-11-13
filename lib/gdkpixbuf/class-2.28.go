@@ -20,7 +20,9 @@ import "C"
 // @error will be set.
 /*
 
-C function : gdk_pixbuf_animation_new_from_resource
+C function
+
+gdk_pixbuf_animation_new_from_resource
 */
 func PixbufAnimationNewFromResource(resourcePath string) (*PixbufAnimation, error) {
 	c_resource_path := C.CString(resourcePath)
@@ -50,7 +52,9 @@ func PixbufAnimationNewFromResource(resourcePath string) (*PixbufAnimation, erro
 // The stream is not closed.
 /*
 
-C function : gdk_pixbuf_animation_new_from_stream
+C function
+
+gdk_pixbuf_animation_new_from_stream
 */
 func PixbufAnimationNewFromStream(stream *gio.InputStream, cancellable *gio.Cancellable) (*PixbufAnimation, error) {
 	c_stream := (*C.GInputStream)(C.NULL)
@@ -80,7 +84,9 @@ func PixbufAnimationNewFromStream(stream *gio.InputStream, cancellable *gio.Canc
 // gdk_pixbuf_animation_new_from_stream_async().
 /*
 
-C function : gdk_pixbuf_animation_new_from_stream_finish
+C function
+
+gdk_pixbuf_animation_new_from_stream_finish
 */
 func PixbufAnimationNewFromStreamFinish(asyncResult *gio.AsyncResult) (*PixbufAnimation, error) {
 	c_async_result := (*C.GAsyncResult)(asyncResult.ToC())

@@ -22,7 +22,9 @@ import "C"
 // @hot_x and @hot_y have to be used with care.
 /*
 
-C function : gtk_drag_set_icon_name
+C function
+
+gtk_drag_set_icon_name
 */
 func DragSetIconName(context *gdk.DragContext, iconName string, hotX int32, hotY int32) {
 	c_context := (*C.GdkDragContext)(C.NULL)

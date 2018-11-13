@@ -26,7 +26,9 @@ import "C"
 // Providing an @accelerator_key of 0 removes the manual setting.
 /*
 
-C function : gtk_accel_label_set_accel
+C function
+
+gtk_accel_label_set_accel
 */
 func (recv *AccelLabel) SetAccel(acceleratorKey uint32, acceleratorMods gdk.ModifierType) {
 	c_accelerator_key := (C.guint)(acceleratorKey)
@@ -41,7 +43,9 @@ func (recv *AccelLabel) SetAccel(acceleratorKey uint32, acceleratorMods gdk.Modi
 // Gets the accelerator group.
 /*
 
-C function : gtk_action_group_get_accel_group
+C function
+
+gtk_action_group_get_accel_group
 */
 func (recv *ActionGroup) GetAccelGroup() *AccelGroup {
 	retC := C.gtk_action_group_get_accel_group((*C.GtkActionGroup)(recv.native))
@@ -53,7 +57,9 @@ func (recv *ActionGroup) GetAccelGroup() *AccelGroup {
 // Sets the accelerator group to be used by every action in this group.
 /*
 
-C function : gtk_action_group_set_accel_group
+C function
+
+gtk_action_group_set_accel_group
 */
 func (recv *ActionGroup) SetAccelGroup(accelGroup *AccelGroup) {
 	c_accel_group := (*C.GtkAccelGroup)(C.NULL)
@@ -74,7 +80,9 @@ func (recv *ActionGroup) SetAccelGroup(accelGroup *AccelGroup) {
 // recently-focused window within this application.
 /*
 
-C function : gtk_application_get_active_window
+C function
+
+gtk_application_get_active_window
 */
 func (recv *Application) GetActiveWindow() *Window {
 	retC := C.gtk_application_get_active_window((*C.GtkApplication)(recv.native))
@@ -94,7 +102,9 @@ func (recv *Application) GetActiveWindow() *Window {
 // gtk_application_window_get_id().
 /*
 
-C function : gtk_application_get_window_by_id
+C function
+
+gtk_application_get_window_by_id
 */
 func (recv *Application) GetWindowById(id uint32) *Window {
 	c_id := (C.guint)(id)
@@ -114,7 +124,9 @@ func (recv *Application) GetWindowById(id uint32) *Window {
 // a #GtkApplication, returns `0`.
 /*
 
-C function : gtk_application_window_get_id
+C function
+
+gtk_application_window_get_id
 */
 func (recv *ApplicationWindow) GetId() uint32 {
 	retC := C.gtk_application_window_get_id((*C.GtkApplicationWindow)(recv.native))
@@ -127,7 +139,9 @@ func (recv *ApplicationWindow) GetId() uint32 {
 // setting and always show the image, if available.
 /*
 
-C function : gtk_button_get_always_show_image
+C function
+
+gtk_button_get_always_show_image
 */
 func (recv *Button) GetAlwaysShowImage() bool {
 	retC := C.gtk_button_get_always_show_image((*C.GtkButton)(recv.native))
@@ -143,7 +157,9 @@ func (recv *Button) GetAlwaysShowImage() bool {
 // without the image.
 /*
 
-C function : gtk_button_set_always_show_image
+C function
+
+gtk_button_set_always_show_image
 */
 func (recv *Button) SetAlwaysShowImage(alwaysShow bool) {
 	c_always_show :=
@@ -158,7 +174,9 @@ func (recv *Button) SetAlwaysShowImage(alwaysShow bool) {
 // gtk_entry_set_attributes(), if any.
 /*
 
-C function : gtk_entry_get_attributes
+C function
+
+gtk_entry_get_attributes
 */
 func (recv *Entry) GetAttributes() *pango.AttrList {
 	retC := C.gtk_entry_get_attributes((*C.GtkEntry)(recv.native))
@@ -175,7 +193,9 @@ func (recv *Entry) GetAttributes() *pango.AttrList {
 // Gets the value of the #GtkEntry:input-hints property.
 /*
 
-C function : gtk_entry_get_input_hints
+C function
+
+gtk_entry_get_input_hints
 */
 func (recv *Entry) GetInputHints() InputHints {
 	retC := C.gtk_entry_get_input_hints((*C.GtkEntry)(recv.native))
@@ -187,7 +207,9 @@ func (recv *Entry) GetInputHints() InputHints {
 // Gets the value of the #GtkEntry:input-purpose property.
 /*
 
-C function : gtk_entry_get_input_purpose
+C function
+
+gtk_entry_get_input_purpose
 */
 func (recv *Entry) GetInputPurpose() InputPurpose {
 	retC := C.gtk_entry_get_input_purpose((*C.GtkEntry)(recv.native))
@@ -200,7 +222,9 @@ func (recv *Entry) GetInputPurpose() InputPurpose {
 // entry text.
 /*
 
-C function : gtk_entry_set_attributes
+C function
+
+gtk_entry_set_attributes
 */
 func (recv *Entry) SetAttributes(attrs *pango.AttrList) {
 	c_attrs := (*C.PangoAttrList)(C.NULL)
@@ -217,7 +241,9 @@ func (recv *Entry) SetAttributes(attrs *pango.AttrList) {
 // allows input methods to fine-tune their behaviour.
 /*
 
-C function : gtk_entry_set_input_hints
+C function
+
+gtk_entry_set_input_hints
 */
 func (recv *Entry) SetInputHints(hints InputHints) {
 	c_hints := (C.GtkInputHints)(hints)
@@ -232,7 +258,9 @@ func (recv *Entry) SetInputHints(hints InputHints) {
 // methods to adjust their behaviour.
 /*
 
-C function : gtk_entry_set_input_purpose
+C function
+
+gtk_entry_set_input_purpose
 */
 func (recv *Entry) SetInputPurpose(purpose InputPurpose) {
 	c_purpose := (C.GtkInputPurpose)(purpose)
@@ -249,7 +277,9 @@ func (recv *Entry) SetInputPurpose(purpose InputPurpose) {
 // Creates a new #GtkLevelBar.
 /*
 
-C function : gtk_level_bar_new
+C function
+
+gtk_level_bar_new
 */
 func LevelBarNew() *LevelBar {
 	retC := C.gtk_level_bar_new()
@@ -262,7 +292,9 @@ func LevelBarNew() *LevelBar {
 // interval.
 /*
 
-C function : gtk_level_bar_new_for_interval
+C function
+
+gtk_level_bar_new_for_interval
 */
 func LevelBarNewForInterval(minValue float64, maxValue float64) *LevelBar {
 	c_min_value := (C.gdouble)(minValue)
@@ -284,7 +316,9 @@ func LevelBarNewForInterval(minValue float64, maxValue float64) *LevelBar {
 // replaced by @value.
 /*
 
-C function : gtk_level_bar_add_offset_value
+C function
+
+gtk_level_bar_add_offset_value
 */
 func (recv *LevelBar) AddOffsetValue(name string, value float64) {
 	c_name := C.CString(name)
@@ -300,7 +334,9 @@ func (recv *LevelBar) AddOffsetValue(name string, value float64) {
 // Returns the value of the #GtkLevelBar:max-value property.
 /*
 
-C function : gtk_level_bar_get_max_value
+C function
+
+gtk_level_bar_get_max_value
 */
 func (recv *LevelBar) GetMaxValue() float64 {
 	retC := C.gtk_level_bar_get_max_value((*C.GtkLevelBar)(recv.native))
@@ -312,7 +348,9 @@ func (recv *LevelBar) GetMaxValue() float64 {
 // Returns the value of the #GtkLevelBar:min-value property.
 /*
 
-C function : gtk_level_bar_get_min_value
+C function
+
+gtk_level_bar_get_min_value
 */
 func (recv *LevelBar) GetMinValue() float64 {
 	retC := C.gtk_level_bar_get_min_value((*C.GtkLevelBar)(recv.native))
@@ -324,7 +362,9 @@ func (recv *LevelBar) GetMinValue() float64 {
 // Returns the value of the #GtkLevelBar:mode property.
 /*
 
-C function : gtk_level_bar_get_mode
+C function
+
+gtk_level_bar_get_mode
 */
 func (recv *LevelBar) GetMode() LevelBarMode {
 	retC := C.gtk_level_bar_get_mode((*C.GtkLevelBar)(recv.native))
@@ -337,7 +377,9 @@ func (recv *LevelBar) GetMode() LevelBarMode {
 // returning %TRUE in case an offset named @name was found.
 /*
 
-C function : gtk_level_bar_get_offset_value
+C function
+
+gtk_level_bar_get_offset_value
 */
 func (recv *LevelBar) GetOffsetValue(name string) (bool, float64) {
 	c_name := C.CString(name)
@@ -356,7 +398,9 @@ func (recv *LevelBar) GetOffsetValue(name string) (bool, float64) {
 // Returns the value of the #GtkLevelBar:value property.
 /*
 
-C function : gtk_level_bar_get_value
+C function
+
+gtk_level_bar_get_value
 */
 func (recv *LevelBar) GetValue() float64 {
 	retC := C.gtk_level_bar_get_value((*C.GtkLevelBar)(recv.native))
@@ -369,7 +413,9 @@ func (recv *LevelBar) GetValue() float64 {
 // gtk_level_bar_add_offset_value().
 /*
 
-C function : gtk_level_bar_remove_offset_value
+C function
+
+gtk_level_bar_remove_offset_value
 */
 func (recv *LevelBar) RemoveOffsetValue(name string) {
 	c_name := C.CString(name)
@@ -386,7 +432,9 @@ func (recv *LevelBar) RemoveOffsetValue(name string) {
 // this function.
 /*
 
-C function : gtk_level_bar_set_max_value
+C function
+
+gtk_level_bar_set_max_value
 */
 func (recv *LevelBar) SetMaxValue(value float64) {
 	c_value := (C.gdouble)(value)
@@ -402,7 +450,9 @@ func (recv *LevelBar) SetMaxValue(value float64) {
 // this function.
 /*
 
-C function : gtk_level_bar_set_min_value
+C function
+
+gtk_level_bar_set_min_value
 */
 func (recv *LevelBar) SetMinValue(value float64) {
 	c_value := (C.gdouble)(value)
@@ -415,7 +465,9 @@ func (recv *LevelBar) SetMinValue(value float64) {
 // Sets the value of the #GtkLevelBar:mode property.
 /*
 
-C function : gtk_level_bar_set_mode
+C function
+
+gtk_level_bar_set_mode
 */
 func (recv *LevelBar) SetMode(mode LevelBarMode) {
 	c_mode := (C.GtkLevelBarMode)(mode)
@@ -428,7 +480,9 @@ func (recv *LevelBar) SetMode(mode LevelBarMode) {
 // Sets the value of the #GtkLevelBar:value property.
 /*
 
-C function : gtk_level_bar_set_value
+C function
+
+gtk_level_bar_set_value
 */
 func (recv *LevelBar) SetValue(value float64) {
 	c_value := (C.gdouble)(value)
@@ -443,7 +497,9 @@ func (recv *LevelBar) SetValue(value float64) {
 // with another #GtkWidget should you wish to.
 /*
 
-C function : gtk_menu_button_new
+C function
+
+gtk_menu_button_new
 */
 func MenuButtonNew() *MenuButton {
 	retC := C.gtk_menu_button_new()
@@ -455,7 +511,9 @@ func MenuButtonNew() *MenuButton {
 // Returns the parent #GtkWidget to use to line up with menu.
 /*
 
-C function : gtk_menu_button_get_align_widget
+C function
+
+gtk_menu_button_get_align_widget
 */
 func (recv *MenuButton) GetAlignWidget() *Widget {
 	retC := C.gtk_menu_button_get_align_widget((*C.GtkMenuButton)(recv.native))
@@ -472,7 +530,9 @@ func (recv *MenuButton) GetAlignWidget() *Widget {
 // Returns the direction the popup will be pointing at when popped up.
 /*
 
-C function : gtk_menu_button_get_direction
+C function
+
+gtk_menu_button_get_direction
 */
 func (recv *MenuButton) GetDirection() ArrowType {
 	retC := C.gtk_menu_button_get_direction((*C.GtkMenuButton)(recv.native))
@@ -484,7 +544,9 @@ func (recv *MenuButton) GetDirection() ArrowType {
 // Returns the #GMenuModel used to generate the popup.
 /*
 
-C function : gtk_menu_button_get_menu_model
+C function
+
+gtk_menu_button_get_menu_model
 */
 func (recv *MenuButton) GetMenuModel() *gio.MenuModel {
 	retC := C.gtk_menu_button_get_menu_model((*C.GtkMenuButton)(recv.native))
@@ -503,7 +565,9 @@ func (recv *MenuButton) GetMenuModel() *gio.MenuModel {
 // returns %NULL.
 /*
 
-C function : gtk_menu_button_get_popup
+C function
+
+gtk_menu_button_get_popup
 */
 func (recv *MenuButton) GetPopup() *Menu {
 	retC := C.gtk_menu_button_get_popup((*C.GtkMenuButton)(recv.native))
@@ -527,7 +591,9 @@ func (recv *MenuButton) GetPopup() *Menu {
 // and not for popovers.
 /*
 
-C function : gtk_menu_button_set_align_widget
+C function
+
+gtk_menu_button_set_align_widget
 */
 func (recv *MenuButton) SetAlignWidget(alignWidget *Widget) {
 	c_align_widget := (*C.GtkWidget)(C.NULL)
@@ -551,7 +617,9 @@ func (recv *MenuButton) SetAlignWidget(alignWidget *Widget) {
 // as if you passed %GTK_ARROW_DOWN (although you won’t see any arrows).
 /*
 
-C function : gtk_menu_button_set_direction
+C function
+
+gtk_menu_button_set_direction
 */
 func (recv *MenuButton) SetDirection(direction ArrowType) {
 	c_direction := (C.GtkArrowType)(direction)
@@ -573,7 +641,9 @@ func (recv *MenuButton) SetDirection(direction ArrowType) {
 // their content will be lost and replaced by the newly created popup.
 /*
 
-C function : gtk_menu_button_set_menu_model
+C function
+
+gtk_menu_button_set_menu_model
 */
 func (recv *MenuButton) SetMenuModel(menuModel *gio.MenuModel) {
 	c_menu_model := (*C.GMenuModel)(C.NULL)
@@ -591,7 +661,9 @@ func (recv *MenuButton) SetMenuModel(menuModel *gio.MenuModel) {
 // #GtkMenuButton:popover are set, they will be set to %NULL.
 /*
 
-C function : gtk_menu_button_set_popup
+C function
+
+gtk_menu_button_set_popup
 */
 func (recv *MenuButton) SetPopup(menu *Widget) {
 	c_menu := (*C.GtkWidget)(C.NULL)
@@ -639,7 +711,9 @@ func (recv *MenuButton) SetPopup(menu *Widget) {
 // gtk_application_set_menubar().
 /*
 
-C function : gtk_menu_shell_bind_model
+C function
+
+gtk_menu_shell_bind_model
 */
 func (recv *MenuShell) BindModel(model *gio.MenuModel, actionNamespace string, withSeparators bool) {
 	c_model := (*C.GMenuModel)(C.NULL)
@@ -662,7 +736,9 @@ func (recv *MenuShell) BindModel(model *gio.MenuModel, actionNamespace string, w
 // empty, and a clear icon when it isn't.
 /*
 
-C function : gtk_search_entry_new
+C function
+
+gtk_search_entry_new
 */
 func SearchEntryNew() *SearchEntry {
 	retC := C.gtk_search_entry_new()
@@ -674,7 +750,9 @@ func SearchEntryNew() *SearchEntry {
 // Gets the value of the #GtkTextView:input-hints property.
 /*
 
-C function : gtk_text_view_get_input_hints
+C function
+
+gtk_text_view_get_input_hints
 */
 func (recv *TextView) GetInputHints() InputHints {
 	retC := C.gtk_text_view_get_input_hints((*C.GtkTextView)(recv.native))
@@ -686,7 +764,9 @@ func (recv *TextView) GetInputHints() InputHints {
 // Gets the value of the #GtkTextView:input-purpose property.
 /*
 
-C function : gtk_text_view_get_input_purpose
+C function
+
+gtk_text_view_get_input_purpose
 */
 func (recv *TextView) GetInputPurpose() InputPurpose {
 	retC := C.gtk_text_view_get_input_purpose((*C.GtkTextView)(recv.native))
@@ -699,7 +779,9 @@ func (recv *TextView) GetInputPurpose() InputPurpose {
 // allows input methods to fine-tune their behaviour.
 /*
 
-C function : gtk_text_view_set_input_hints
+C function
+
+gtk_text_view_set_input_hints
 */
 func (recv *TextView) SetInputHints(hints InputHints) {
 	c_hints := (C.GtkInputHints)(hints)
@@ -714,7 +796,9 @@ func (recv *TextView) SetInputHints(hints InputHints) {
 // methods to adjust their behaviour.
 /*
 
-C function : gtk_text_view_set_input_purpose
+C function
+
+gtk_text_view_set_input_purpose
 */
 func (recv *TextView) SetInputPurpose(purpose InputPurpose) {
 	c_purpose := (C.GtkInputPurpose)(purpose)
@@ -733,7 +817,9 @@ func (recv *TextView) SetInputPurpose(purpose InputPurpose) {
 // from @widget.
 /*
 
-C function : gtk_widget_insert_action_group
+C function
+
+gtk_widget_insert_action_group
 */
 func (recv *Widget) InsertActionGroup(name string, group *gio.ActionGroup) {
 	c_name := C.CString(name)

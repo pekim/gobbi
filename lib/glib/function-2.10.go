@@ -18,7 +18,9 @@ import "C"
 // This function is MT-safe and may be called from any thread.
 /*
 
-C function : g_hash_table_unref
+C function
+
+g_hash_table_unref
 */
 func HashTableUnref(hashTable *HashTable) {
 	c_hash_table := (*C.GHashTable)(C.NULL)
@@ -37,7 +39,9 @@ func HashTableUnref(hashTable *HashTable) {
 // therefore @string must not be freed or modified.
 /*
 
-C function : g_intern_static_string
+C function
+
+g_intern_static_string
 */
 func InternStaticString(string string) string {
 	c_string := C.CString(string)
@@ -54,7 +58,9 @@ func InternStaticString(string string) string {
 // using strcmp().
 /*
 
-C function : g_intern_string
+C function
+
+g_intern_string
 */
 func InternString(string string) string {
 	c_string := C.CString(string)
@@ -77,7 +83,9 @@ func InternString(string string) string {
 // environment variable.
 /*
 
-C function : g_slice_alloc
+C function
+
+g_slice_alloc
 */
 func SliceAlloc(blockSize uint64) uintptr {
 	c_block_size := (C.gsize)(blockSize)
@@ -94,7 +102,9 @@ func SliceAlloc(blockSize uint64) uintptr {
 // environment variable.
 /*
 
-C function : g_slice_alloc0
+C function
+
+g_slice_alloc0
 */
 func SliceAlloc0(blockSize uint64) uintptr {
 	c_block_size := (C.gsize)(blockSize)
@@ -116,7 +126,9 @@ func SliceAlloc0(blockSize uint64) uintptr {
 // If @mem_block is %NULL, this function does nothing.
 /*
 
-C function : g_slice_free1
+C function
+
+g_slice_free1
 */
 func SliceFree1(blockSize uint64, memBlock uintptr) {
 	c_block_size := (C.gsize)(blockSize)
@@ -141,7 +153,9 @@ func SliceFree1(blockSize uint64, memBlock uintptr) {
 // If @mem_chain is %NULL, this function does nothing.
 /*
 
-C function : g_slice_free_chain_with_offset
+C function
+
+g_slice_free_chain_with_offset
 */
 func SliceFreeChainWithOffset(blockSize uint64, memChain uintptr, nextOffset uint64) {
 	c_block_size := (C.gsize)(blockSize)
@@ -163,7 +177,9 @@ func SliceFreeChainWithOffset(blockSize uint64, memChain uintptr, nextOffset uin
 // pool for new work are not stopped.
 /*
 
-C function : g_thread_pool_get_max_idle_time
+C function
+
+g_thread_pool_get_max_idle_time
 */
 func ThreadPoolGetMaxIdleTime() uint32 {
 	retC := C.g_thread_pool_get_max_idle_time()
@@ -183,7 +199,9 @@ func ThreadPoolGetMaxIdleTime() uint32 {
 // The default value is 15000 (15 seconds).
 /*
 
-C function : g_thread_pool_set_max_idle_time
+C function
+
+g_thread_pool_set_max_idle_time
 */
 func ThreadPoolSetMaxIdleTime(interval uint32) {
 	c_interval := (C.guint)(interval)

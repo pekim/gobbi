@@ -69,7 +69,9 @@ import "C"
 // Gets the value set by gtk_box_set_baseline_position().
 /*
 
-C function : gtk_box_get_baseline_position
+C function
+
+gtk_box_get_baseline_position
 */
 func (recv *Box) GetBaselinePosition() BaselinePosition {
 	retC := C.gtk_box_get_baseline_position((*C.GtkBox)(recv.native))
@@ -86,7 +88,9 @@ func (recv *Box) GetBaselinePosition() BaselinePosition {
 // extra space available.
 /*
 
-C function : gtk_box_set_baseline_position
+C function
+
+gtk_box_set_baseline_position
 */
 func (recv *Box) SetBaselinePosition(position BaselinePosition) {
 	c_position := (C.GtkBaselinePosition)(position)
@@ -104,7 +108,9 @@ func (recv *Box) SetBaselinePosition(position BaselinePosition) {
 // user interface descriptions that are shipped as part of your program.
 /*
 
-C function : gtk_builder_new_from_file
+C function
+
+gtk_builder_new_from_file
 */
 func BuilderNewFromFile(filename string) *Builder {
 	c_filename := C.CString(filename)
@@ -123,7 +129,9 @@ func BuilderNewFromFile(filename string) *Builder {
 // description, then the program will be aborted.
 /*
 
-C function : gtk_builder_new_from_resource
+C function
+
+gtk_builder_new_from_resource
 */
 func BuilderNewFromResource(resourcePath string) *Builder {
 	c_resource_path := C.CString(resourcePath)
@@ -146,7 +154,9 @@ func BuilderNewFromResource(resourcePath string) *Builder {
 // from untrusted sources.
 /*
 
-C function : gtk_builder_new_from_string
+C function
+
+gtk_builder_new_from_string
 */
 func BuilderNewFromString(string string) *Builder {
 	c_string := C.CString(string)
@@ -174,7 +184,9 @@ func BuilderNewFromString(string string) *Builder {
 // for constructing proxies, use gtk_builder_set_application().
 /*
 
-C function : gtk_builder_get_application
+C function
+
+gtk_builder_get_application
 */
 func (recv *Builder) GetApplication() *Application {
 	retC := C.gtk_builder_get_application((*C.GtkBuilder)(recv.native))
@@ -196,7 +208,9 @@ func (recv *Builder) GetApplication() *Application {
 // in your process. @application cannot be %NULL.
 /*
 
-C function : gtk_builder_set_application
+C function
+
+gtk_builder_set_application
 */
 func (recv *Builder) SetApplication(application *Application) {
 	c_application := (*C.GtkApplication)(C.NULL)
@@ -219,7 +233,9 @@ func (recv *Builder) SetApplication(application *Application) {
 // gtk_button_set_image().
 /*
 
-C function : gtk_button_new_from_icon_name
+C function
+
+gtk_button_new_from_icon_name
 */
 func ButtonNewFromIconName(iconName string, size IconSize) *Button {
 	c_icon_name := C.CString(iconName)
@@ -237,7 +253,9 @@ func ButtonNewFromIconName(iconName string, size IconSize) *Button {
 // any.
 /*
 
-C function : gtk_entry_get_tabs
+C function
+
+gtk_entry_get_tabs
 */
 func (recv *Entry) GetTabs() *pango.TabArray {
 	retC := C.gtk_entry_get_tabs((*C.GtkEntry)(recv.native))
@@ -255,7 +273,9 @@ func (recv *Entry) GetTabs() *pango.TabArray {
 // text.
 /*
 
-C function : gtk_entry_set_tabs
+C function
+
+gtk_entry_set_tabs
 */
 func (recv *Entry) SetTabs(tabs *pango.TabArray) {
 	c_tabs := (*C.PangoTabArray)(C.NULL)
@@ -271,7 +291,9 @@ func (recv *Entry) SetTabs(tabs *pango.TabArray) {
 // Returns which row defines the global baseline of @grid.
 /*
 
-C function : gtk_grid_get_baseline_row
+C function
+
+gtk_grid_get_baseline_row
 */
 func (recv *Grid) GetBaselineRow() int32 {
 	retC := C.gtk_grid_get_baseline_row((*C.GtkGrid)(recv.native))
@@ -285,7 +307,9 @@ func (recv *Grid) GetBaselineRow() int32 {
 // %GTK_BASELINE_POSITION_CENTER.
 /*
 
-C function : gtk_grid_get_row_baseline_position
+C function
+
+gtk_grid_get_row_baseline_position
 */
 func (recv *Grid) GetRowBaselinePosition(row int32) BaselinePosition {
 	c_row := (C.gint)(row)
@@ -304,7 +328,9 @@ func (recv *Grid) GetRowBaselinePosition(row int32) BaselinePosition {
 // are moved to the left.
 /*
 
-C function : gtk_grid_remove_column
+C function
+
+gtk_grid_remove_column
 */
 func (recv *Grid) RemoveColumn(position int32) {
 	c_position := (C.gint)(position)
@@ -322,7 +348,9 @@ func (recv *Grid) RemoveColumn(position int32) {
 // are moved up.
 /*
 
-C function : gtk_grid_remove_row
+C function
+
+gtk_grid_remove_row
 */
 func (recv *Grid) RemoveRow(position int32) {
 	c_position := (C.gint)(position)
@@ -338,7 +366,9 @@ func (recv *Grid) RemoveRow(position int32) {
 // parent of the @grid.
 /*
 
-C function : gtk_grid_set_baseline_row
+C function
+
+gtk_grid_set_baseline_row
 */
 func (recv *Grid) SetBaselineRow(row int32) {
 	c_row := (C.gint)(row)
@@ -352,7 +382,9 @@ func (recv *Grid) SetBaselineRow(row int32) {
 // grid, in case that row is assigned more space than is requested.
 /*
 
-C function : gtk_grid_set_row_baseline_position
+C function
+
+gtk_grid_set_row_baseline_position
 */
 func (recv *Grid) SetRowBaselinePosition(row int32, pos BaselinePosition) {
 	c_row := (C.gint)(row)
@@ -367,7 +399,9 @@ func (recv *Grid) SetRowBaselinePosition(row int32, pos BaselinePosition) {
 // Creates a new #GtkHeaderBar widget.
 /*
 
-C function : gtk_header_bar_new
+C function
+
+gtk_header_bar_new
 */
 func HeaderBarNew() *HeaderBar {
 	retC := C.gtk_header_bar_new()
@@ -380,7 +414,9 @@ func HeaderBarNew() *HeaderBar {
 // gtk_header_bar_set_custom_title().
 /*
 
-C function : gtk_header_bar_get_custom_title
+C function
+
+gtk_header_bar_get_custom_title
 */
 func (recv *HeaderBar) GetCustomTitle() *Widget {
 	retC := C.gtk_header_bar_get_custom_title((*C.GtkHeaderBar)(recv.native))
@@ -398,7 +434,9 @@ func (recv *HeaderBar) GetCustomTitle() *Widget {
 // decorations.
 /*
 
-C function : gtk_header_bar_get_show_close_button
+C function
+
+gtk_header_bar_get_show_close_button
 */
 func (recv *HeaderBar) GetShowCloseButton() bool {
 	retC := C.gtk_header_bar_get_show_close_button((*C.GtkHeaderBar)(recv.native))
@@ -410,7 +448,9 @@ func (recv *HeaderBar) GetShowCloseButton() bool {
 // Retrieves the subtitle of the header. See gtk_header_bar_set_subtitle().
 /*
 
-C function : gtk_header_bar_get_subtitle
+C function
+
+gtk_header_bar_get_subtitle
 */
 func (recv *HeaderBar) GetSubtitle() string {
 	retC := C.gtk_header_bar_get_subtitle((*C.GtkHeaderBar)(recv.native))
@@ -422,7 +462,9 @@ func (recv *HeaderBar) GetSubtitle() string {
 // Retrieves the title of the header. See gtk_header_bar_set_title().
 /*
 
-C function : gtk_header_bar_get_title
+C function
+
+gtk_header_bar_get_title
 */
 func (recv *HeaderBar) GetTitle() string {
 	retC := C.gtk_header_bar_get_title((*C.GtkHeaderBar)(recv.native))
@@ -435,7 +477,9 @@ func (recv *HeaderBar) GetTitle() string {
 // end of the @bar.
 /*
 
-C function : gtk_header_bar_pack_end
+C function
+
+gtk_header_bar_pack_end
 */
 func (recv *HeaderBar) PackEnd(child *Widget) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -452,7 +496,9 @@ func (recv *HeaderBar) PackEnd(child *Widget) {
 // start of the @bar.
 /*
 
-C function : gtk_header_bar_pack_start
+C function
+
+gtk_header_bar_pack_start
 */
 func (recv *HeaderBar) PackStart(child *Widget) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -477,7 +523,9 @@ func (recv *HeaderBar) PackStart(child *Widget) {
 // label to be visible again.
 /*
 
-C function : gtk_header_bar_set_custom_title
+C function
+
+gtk_header_bar_set_custom_title
 */
 func (recv *HeaderBar) SetCustomTitle(titleWidget *Widget) {
 	c_title_widget := (*C.GtkWidget)(C.NULL)
@@ -494,7 +542,9 @@ func (recv *HeaderBar) SetCustomTitle(titleWidget *Widget) {
 // including close, maximize, and minimize.
 /*
 
-C function : gtk_header_bar_set_show_close_button
+C function
+
+gtk_header_bar_set_show_close_button
 */
 func (recv *HeaderBar) SetShowCloseButton(setting bool) {
 	c_setting :=
@@ -513,7 +563,9 @@ func (recv *HeaderBar) SetShowCloseButton(setting bool) {
 // #GtkHeaderBar:has-subtitle property to %FALSE.
 /*
 
-C function : gtk_header_bar_set_subtitle
+C function
+
+gtk_header_bar_set_subtitle
 */
 func (recv *HeaderBar) SetSubtitle(subtitle string) {
 	c_subtitle := C.CString(subtitle)
@@ -529,7 +581,9 @@ func (recv *HeaderBar) SetSubtitle(subtitle string) {
 // application name.
 /*
 
-C function : gtk_header_bar_set_title
+C function
+
+gtk_header_bar_set_title
 */
 func (recv *HeaderBar) SetTitle(title string) {
 	c_title := C.CString(title)
@@ -547,7 +601,9 @@ func (recv *HeaderBar) SetTitle(title string) {
 // a base scale of 2.
 /*
 
-C function : gtk_icon_info_get_base_scale
+C function
+
+gtk_icon_info_get_base_scale
 */
 func (recv *IconInfo) GetBaseScale() int32 {
 	retC := C.gtk_icon_info_get_base_scale((*C.GtkIconInfo)(recv.native))
@@ -569,7 +625,9 @@ func (recv *IconInfo) GetBaseScale() int32 {
 // returned by this function will be scaled to the exact size.
 /*
 
-C function : gtk_icon_info_load_surface
+C function
+
+gtk_icon_info_load_surface
 */
 func (recv *IconInfo) LoadSurface(forWindow *gdk.Window) (*cairo.Surface, error) {
 	c_for_window := (*C.GdkWindow)(C.NULL)
@@ -607,7 +665,9 @@ func (recv *IconInfo) LoadSurface(forWindow *gdk.Window) (*cairo.Surface, error)
 // icon theme loaded, which would be a waste of memory.
 /*
 
-C function : gtk_icon_theme_load_icon_for_scale
+C function
+
+gtk_icon_theme_load_icon_for_scale
 */
 func (recv *IconTheme) LoadIconForScale(iconName string, size int32, scale int32, flags IconLookupFlags) (*gdkpixbuf.Pixbuf, error) {
 	c_icon_name := C.CString(iconName)
@@ -648,7 +708,9 @@ func (recv *IconTheme) LoadIconForScale(iconName string, size int32, scale int32
 // GtkWidget::style-set signal.
 /*
 
-C function : gtk_icon_theme_load_surface
+C function
+
+gtk_icon_theme_load_surface
 */
 func (recv *IconTheme) LoadSurface(iconName string, size int32, scale int32, forWindow *gdk.Window, flags IconLookupFlags) (*cairo.Surface, error) {
 	c_icon_name := C.CString(iconName)
@@ -688,7 +750,9 @@ func (recv *IconTheme) LoadSurface(iconName string, size int32, scale int32, for
 // a pixbuf using gtk_icon_info_load_icon().
 /*
 
-C function : gtk_icon_theme_lookup_by_gicon_for_scale
+C function
+
+gtk_icon_theme_lookup_by_gicon_for_scale
 */
 func (recv *IconTheme) LookupByGiconForScale(icon *gio.Icon, size int32, scale int32, flags IconLookupFlags) *IconInfo {
 	c_icon := (*C.GIcon)(icon.ToC())
@@ -717,7 +781,9 @@ func (recv *IconTheme) LookupByGiconForScale(icon *gio.Icon, size int32, scale i
 // these two steps if all you need is the pixbuf.)
 /*
 
-C function : gtk_icon_theme_lookup_icon_for_scale
+C function
+
+gtk_icon_theme_lookup_icon_for_scale
 */
 func (recv *IconTheme) LookupIconForScale(iconName string, size int32, scale int32, flags IconLookupFlags) *IconInfo {
 	c_icon_name := C.CString(iconName)
@@ -746,7 +812,9 @@ func (recv *IconTheme) LookupIconForScale(iconName string, size int32, scale int
 // #GtkImage will add its own reference rather than adopting yours.
 /*
 
-C function : gtk_image_new_from_surface
+C function
+
+gtk_image_new_from_surface
 */
 func ImageNewFromSurface(surface *cairo.Surface) *Image {
 	c_surface := (*C.cairo_surface_t)(C.NULL)
@@ -763,7 +831,9 @@ func ImageNewFromSurface(surface *cairo.Surface) *Image {
 // See gtk_image_new_from_surface() for details.
 /*
 
-C function : gtk_image_set_from_surface
+C function
+
+gtk_image_set_from_surface
 */
 func (recv *Image) SetFromSurface(surface *cairo.Surface) {
 	c_surface := (*C.cairo_surface_t)(C.NULL)
@@ -779,7 +849,9 @@ func (recv *Image) SetFromSurface(surface *cairo.Surface) {
 // Returns whether the widget will display a standard close button.
 /*
 
-C function : gtk_info_bar_get_show_close_button
+C function
+
+gtk_info_bar_get_show_close_button
 */
 func (recv *InfoBar) GetShowCloseButton() bool {
 	retC := C.gtk_info_bar_get_show_close_button((*C.GtkInfoBar)(recv.native))
@@ -792,7 +864,9 @@ func (recv *InfoBar) GetShowCloseButton() bool {
 // the response %GTK_RESPONSE_CLOSE.
 /*
 
-C function : gtk_info_bar_set_show_close_button
+C function
+
+gtk_info_bar_set_show_close_button
 */
 func (recv *InfoBar) SetShowCloseButton(setting bool) {
 	c_setting :=
@@ -807,7 +881,9 @@ func (recv *InfoBar) SetShowCloseButton(setting bool) {
 // label should be limited. See gtk_label_set_lines().
 /*
 
-C function : gtk_label_get_lines
+C function
+
+gtk_label_get_lines
 */
 func (recv *Label) GetLines() int32 {
 	retC := C.gtk_label_get_lines((*C.GtkLabel)(recv.native))
@@ -822,7 +898,9 @@ func (recv *Label) GetLines() int32 {
 // number of lines.
 /*
 
-C function : gtk_label_set_lines
+C function
+
+gtk_label_set_lines
 */
 func (recv *Label) SetLines(lines int32) {
 	c_lines := (C.gint)(lines)
@@ -953,7 +1031,9 @@ func listbox_rowSelectedHandler(_ *C.GObject, c_row *C.GtkListBoxRow, data C.gpo
 // Creates a new #GtkListBox container.
 /*
 
-C function : gtk_list_box_new
+C function
+
+gtk_list_box_new
 */
 func ListBoxNew() *ListBox {
 	retC := C.gtk_list_box_new()
@@ -970,7 +1050,9 @@ func ListBoxNew() *ListBox {
 // a drag leave event.
 /*
 
-C function : gtk_list_box_drag_highlight_row
+C function
+
+gtk_list_box_drag_highlight_row
 */
 func (recv *ListBox) DragHighlightRow(row *ListBoxRow) {
 	c_row := (*C.GtkListBoxRow)(C.NULL)
@@ -987,7 +1069,9 @@ func (recv *ListBox) DragHighlightRow(row *ListBoxRow) {
 // it will have the highlight removed.
 /*
 
-C function : gtk_list_box_drag_unhighlight_row
+C function
+
+gtk_list_box_drag_unhighlight_row
 */
 func (recv *ListBox) DragUnhighlightRow() {
 	C.gtk_list_box_drag_unhighlight_row((*C.GtkListBox)(recv.native))
@@ -998,7 +1082,9 @@ func (recv *ListBox) DragUnhighlightRow() {
 // Returns whether rows activate on single clicks.
 /*
 
-C function : gtk_list_box_get_activate_on_single_click
+C function
+
+gtk_list_box_get_activate_on_single_click
 */
 func (recv *ListBox) GetActivateOnSingleClick() bool {
 	retC := C.gtk_list_box_get_activate_on_single_click((*C.GtkListBox)(recv.native))
@@ -1011,7 +1097,9 @@ func (recv *ListBox) GetActivateOnSingleClick() bool {
 // for vertical scrolling.
 /*
 
-C function : gtk_list_box_get_adjustment
+C function
+
+gtk_list_box_get_adjustment
 */
 func (recv *ListBox) GetAdjustment() *Adjustment {
 	retC := C.gtk_list_box_get_adjustment((*C.GtkListBox)(recv.native))
@@ -1025,7 +1113,9 @@ func (recv *ListBox) GetAdjustment() *Adjustment {
 // list, %NULL is returned.
 /*
 
-C function : gtk_list_box_get_row_at_index
+C function
+
+gtk_list_box_get_row_at_index
 */
 func (recv *ListBox) GetRowAtIndex(index int32) *ListBoxRow {
 	c_index_ := (C.gint)(index)
@@ -1044,7 +1134,9 @@ func (recv *ListBox) GetRowAtIndex(index int32) *ListBoxRow {
 // Gets the row at the @y position.
 /*
 
-C function : gtk_list_box_get_row_at_y
+C function
+
+gtk_list_box_get_row_at_y
 */
 func (recv *ListBox) GetRowAtY(y int32) *ListBoxRow {
 	c_y := (C.gint)(y)
@@ -1067,7 +1159,9 @@ func (recv *ListBox) GetRowAtY(y int32) *ListBoxRow {
 // find all selected rows.
 /*
 
-C function : gtk_list_box_get_selected_row
+C function
+
+gtk_list_box_get_selected_row
 */
 func (recv *ListBox) GetSelectedRow() *ListBoxRow {
 	retC := C.gtk_list_box_get_selected_row((*C.GtkListBox)(recv.native))
@@ -1079,7 +1173,9 @@ func (recv *ListBox) GetSelectedRow() *ListBoxRow {
 // Gets the selection mode of the listbox.
 /*
 
-C function : gtk_list_box_get_selection_mode
+C function
+
+gtk_list_box_get_selection_mode
 */
 func (recv *ListBox) GetSelectionMode() SelectionMode {
 	retC := C.gtk_list_box_get_selection_mode((*C.GtkListBox)(recv.native))
@@ -1096,7 +1192,9 @@ func (recv *ListBox) GetSelectionMode() SelectionMode {
 // @box, then the @child will be appended to the end.
 /*
 
-C function : gtk_list_box_insert
+C function
+
+gtk_list_box_insert
 */
 func (recv *ListBox) Insert(child *Widget, position int32) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -1118,7 +1216,9 @@ func (recv *ListBox) Insert(child *Widget, position int32) {
 // string and the entry with the search string has changed.
 /*
 
-C function : gtk_list_box_invalidate_filter
+C function
+
+gtk_list_box_invalidate_filter
 */
 func (recv *ListBox) InvalidateFilter() {
 	C.gtk_list_box_invalidate_filter((*C.GtkListBox)(recv.native))
@@ -1131,7 +1231,9 @@ func (recv *ListBox) InvalidateFilter() {
 // to an external factor.
 /*
 
-C function : gtk_list_box_invalidate_headers
+C function
+
+gtk_list_box_invalidate_headers
 */
 func (recv *ListBox) InvalidateHeaders() {
 	C.gtk_list_box_invalidate_headers((*C.GtkListBox)(recv.native))
@@ -1144,7 +1246,9 @@ func (recv *ListBox) InvalidateHeaders() {
 // to an external factor.
 /*
 
-C function : gtk_list_box_invalidate_sort
+C function
+
+gtk_list_box_invalidate_sort
 */
 func (recv *ListBox) InvalidateSort() {
 	C.gtk_list_box_invalidate_sort((*C.GtkListBox)(recv.native))
@@ -1157,7 +1261,9 @@ func (recv *ListBox) InvalidateSort() {
 // same effect of gtk_container_add().
 /*
 
-C function : gtk_list_box_prepend
+C function
+
+gtk_list_box_prepend
 */
 func (recv *ListBox) Prepend(child *Widget) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -1173,7 +1279,9 @@ func (recv *ListBox) Prepend(child *Widget) {
 // Make @row the currently selected row.
 /*
 
-C function : gtk_list_box_select_row
+C function
+
+gtk_list_box_select_row
 */
 func (recv *ListBox) SelectRow(row *ListBoxRow) {
 	c_row := (*C.GtkListBoxRow)(C.NULL)
@@ -1190,7 +1298,9 @@ func (recv *ListBox) SelectRow(row *ListBoxRow) {
 // otherwise you need to double-click.
 /*
 
-C function : gtk_list_box_set_activate_on_single_click
+C function
+
+gtk_list_box_set_activate_on_single_click
 */
 func (recv *ListBox) SetActivateOnSingleClick(single bool) {
 	c_single :=
@@ -1211,7 +1321,9 @@ func (recv *ListBox) SetActivateOnSingleClick(single bool) {
 // to manually do that.
 /*
 
-C function : gtk_list_box_set_adjustment
+C function
+
+gtk_list_box_set_adjustment
 */
 func (recv *ListBox) SetAdjustment(adjustment *Adjustment) {
 	c_adjustment := (*C.GtkAdjustment)(C.NULL)
@@ -1232,7 +1344,9 @@ func (recv *ListBox) SetAdjustment(adjustment *Adjustment) {
 // it doesn't display any visible children.
 /*
 
-C function : gtk_list_box_set_placeholder
+C function
+
+gtk_list_box_set_placeholder
 */
 func (recv *ListBox) SetPlaceholder(placeholder *Widget) {
 	c_placeholder := (*C.GtkWidget)(C.NULL)
@@ -1249,7 +1363,9 @@ func (recv *ListBox) SetPlaceholder(placeholder *Widget) {
 // See #GtkSelectionMode for details.
 /*
 
-C function : gtk_list_box_set_selection_mode
+C function
+
+gtk_list_box_set_selection_mode
 */
 func (recv *ListBox) SetSelectionMode(mode SelectionMode) {
 	c_mode := (C.GtkSelectionMode)(mode)
@@ -1321,7 +1437,9 @@ func listboxrow_activateHandler(_ *C.GObject, data C.gpointer) {
 // Creates a new #GtkListBoxRow, to be used as a child of a #GtkListBox.
 /*
 
-C function : gtk_list_box_row_new
+C function
+
+gtk_list_box_row_new
 */
 func ListBoxRowNew() *ListBoxRow {
 	retC := C.gtk_list_box_row_new()
@@ -1348,7 +1466,9 @@ func ListBoxRowNew() *ListBoxRow {
 // but that is more expensive.
 /*
 
-C function : gtk_list_box_row_changed
+C function
+
+gtk_list_box_row_changed
 */
 func (recv *ListBoxRow) Changed() {
 	C.gtk_list_box_row_changed((*C.GtkListBoxRow)(recv.native))
@@ -1361,7 +1481,9 @@ func (recv *ListBoxRow) Changed() {
 // set already, and if so to update the state of it.
 /*
 
-C function : gtk_list_box_row_get_header
+C function
+
+gtk_list_box_row_get_header
 */
 func (recv *ListBoxRow) GetHeader() *Widget {
 	retC := C.gtk_list_box_row_get_header((*C.GtkListBoxRow)(recv.native))
@@ -1378,7 +1500,9 @@ func (recv *ListBoxRow) GetHeader() *Widget {
 // Gets the current index of the @row in its #GtkListBox container.
 /*
 
-C function : gtk_list_box_row_get_index
+C function
+
+gtk_list_box_row_get_index
 */
 func (recv *ListBoxRow) GetIndex() int32 {
 	retC := C.gtk_list_box_row_get_index((*C.GtkListBoxRow)(recv.native))
@@ -1392,7 +1516,9 @@ func (recv *ListBoxRow) GetIndex() int32 {
 // header in the row, and be shown in front of the row in the listbox.
 /*
 
-C function : gtk_list_box_row_set_header
+C function
+
+gtk_list_box_row_set_header
 */
 func (recv *ListBoxRow) SetHeader(header *Widget) {
 	c_header := (*C.GtkWidget)(C.NULL)
@@ -1485,7 +1611,9 @@ func placessidebar_populatePopupHandler(_ *C.GObject, c_container *C.GtkWidget, 
 // when the user makes a selection in the sidebar.
 /*
 
-C function : gtk_places_sidebar_new
+C function
+
+gtk_places_sidebar_new
 */
 func PlacesSidebarNew() *PlacesSidebar {
 	retC := C.gtk_places_sidebar_new()
@@ -1506,7 +1634,9 @@ func PlacesSidebarNew() *PlacesSidebar {
 // to the sidebar’s list in the same order as the function is called.
 /*
 
-C function : gtk_places_sidebar_add_shortcut
+C function
+
+gtk_places_sidebar_add_shortcut
 */
 func (recv *PlacesSidebar) AddShortcut(location *gio.File) {
 	c_location := (*C.GFile)(location.ToC())
@@ -1527,7 +1657,9 @@ func (recv *PlacesSidebar) AddShortcut(location *gio.File) {
 // for your menu items.
 /*
 
-C function : gtk_places_sidebar_get_location
+C function
+
+gtk_places_sidebar_get_location
 */
 func (recv *PlacesSidebar) GetLocation() *gio.File {
 	retC := C.gtk_places_sidebar_get_location((*C.GtkPlacesSidebar)(recv.native))
@@ -1546,7 +1678,9 @@ func (recv *PlacesSidebar) GetLocation() *gio.File {
 // the “Alt-1”, “Alt-2”, etc. shortcuts, which activate the cooresponding bookmark.
 /*
 
-C function : gtk_places_sidebar_get_nth_bookmark
+C function
+
+gtk_places_sidebar_get_nth_bookmark
 */
 func (recv *PlacesSidebar) GetNthBookmark(n int32) *gio.File {
 	c_n := (C.gint)(n)
@@ -1565,7 +1699,9 @@ func (recv *PlacesSidebar) GetNthBookmark(n int32) *gio.File {
 // Gets the open flags.
 /*
 
-C function : gtk_places_sidebar_get_open_flags
+C function
+
+gtk_places_sidebar_get_open_flags
 */
 func (recv *PlacesSidebar) GetOpenFlags() PlacesOpenFlags {
 	retC := C.gtk_places_sidebar_get_open_flags((*C.GtkPlacesSidebar)(recv.native))
@@ -1577,7 +1713,9 @@ func (recv *PlacesSidebar) GetOpenFlags() PlacesOpenFlags {
 // Returns the value previously set with gtk_places_sidebar_set_show_desktop()
 /*
 
-C function : gtk_places_sidebar_get_show_desktop
+C function
+
+gtk_places_sidebar_get_show_desktop
 */
 func (recv *PlacesSidebar) GetShowDesktop() bool {
 	retC := C.gtk_places_sidebar_get_show_desktop((*C.GtkPlacesSidebar)(recv.native))
@@ -1589,7 +1727,9 @@ func (recv *PlacesSidebar) GetShowDesktop() bool {
 // Gets the list of shortcuts.
 /*
 
-C function : gtk_places_sidebar_list_shortcuts
+C function
+
+gtk_places_sidebar_list_shortcuts
 */
 func (recv *PlacesSidebar) ListShortcuts() *glib.SList {
 	retC := C.gtk_places_sidebar_list_shortcuts((*C.GtkPlacesSidebar)(recv.native))
@@ -1603,7 +1743,9 @@ func (recv *PlacesSidebar) ListShortcuts() *glib.SList {
 // shortcut in the sidebar, then nothing is done.
 /*
 
-C function : gtk_places_sidebar_remove_shortcut
+C function
+
+gtk_places_sidebar_remove_shortcut
 */
 func (recv *PlacesSidebar) RemoveShortcut(location *gio.File) {
 	c_location := (*C.GFile)(location.ToC())
@@ -1620,7 +1762,9 @@ func (recv *PlacesSidebar) RemoveShortcut(location *gio.File) {
 // places in the list.
 /*
 
-C function : gtk_places_sidebar_set_location
+C function
+
+gtk_places_sidebar_set_location
 */
 func (recv *PlacesSidebar) SetLocation(location *gio.File) {
 	c_location := (*C.GFile)(location.ToC())
@@ -1647,7 +1791,9 @@ func (recv *PlacesSidebar) SetLocation(location *gio.File) {
 // to callbacks for the “open-location” signal.
 /*
 
-C function : gtk_places_sidebar_set_open_flags
+C function
+
+gtk_places_sidebar_set_open_flags
 */
 func (recv *PlacesSidebar) SetOpenFlags(flags PlacesOpenFlags) {
 	c_flags := (C.GtkPlacesOpenFlags)(flags)
@@ -1665,7 +1811,9 @@ func (recv *PlacesSidebar) SetOpenFlags(flags PlacesOpenFlags) {
 // #GtkPlacesSidebar::show-connect-to-server signal.
 /*
 
-C function : gtk_places_sidebar_set_show_connect_to_server
+C function
+
+gtk_places_sidebar_set_show_connect_to_server
 */
 func (recv *PlacesSidebar) SetShowConnectToServer(showConnectToServer bool) {
 	c_show_connect_to_server :=
@@ -1682,7 +1830,9 @@ func (recv *PlacesSidebar) SetShowConnectToServer(showConnectToServer bool) {
 // used to override it on a per-application basis.
 /*
 
-C function : gtk_places_sidebar_set_show_desktop
+C function
+
+gtk_places_sidebar_set_show_desktop
 */
 func (recv *PlacesSidebar) SetShowDesktop(showDesktop bool) {
 	c_show_desktop :=
@@ -1696,7 +1846,9 @@ func (recv *PlacesSidebar) SetShowDesktop(showDesktop bool) {
 // Creates a new #GtkRevealer.
 /*
 
-C function : gtk_revealer_new
+C function
+
+gtk_revealer_new
 */
 func RevealerNew() *Revealer {
 	retC := C.gtk_revealer_new()
@@ -1709,7 +1861,9 @@ func RevealerNew() *Revealer {
 // the transition to the revealed state is completed.
 /*
 
-C function : gtk_revealer_get_child_revealed
+C function
+
+gtk_revealer_get_child_revealed
 */
 func (recv *Revealer) GetChildRevealed() bool {
 	retC := C.gtk_revealer_get_child_revealed((*C.GtkRevealer)(recv.native))
@@ -1727,7 +1881,9 @@ func (recv *Revealer) GetChildRevealed() bool {
 // use gtk_revealer_get_child_revealed().
 /*
 
-C function : gtk_revealer_get_reveal_child
+C function
+
+gtk_revealer_get_reveal_child
 */
 func (recv *Revealer) GetRevealChild() bool {
 	retC := C.gtk_revealer_get_reveal_child((*C.GtkRevealer)(recv.native))
@@ -1740,7 +1896,9 @@ func (recv *Revealer) GetRevealChild() bool {
 // transitions will take.
 /*
 
-C function : gtk_revealer_get_transition_duration
+C function
+
+gtk_revealer_get_transition_duration
 */
 func (recv *Revealer) GetTransitionDuration() uint32 {
 	retC := C.gtk_revealer_get_transition_duration((*C.GtkRevealer)(recv.native))
@@ -1753,7 +1911,9 @@ func (recv *Revealer) GetTransitionDuration() uint32 {
 // for transitions in @revealer.
 /*
 
-C function : gtk_revealer_get_transition_type
+C function
+
+gtk_revealer_get_transition_type
 */
 func (recv *Revealer) GetTransitionType() RevealerTransitionType {
 	retC := C.gtk_revealer_get_transition_type((*C.GtkRevealer)(recv.native))
@@ -1768,7 +1928,9 @@ func (recv *Revealer) GetTransitionType() RevealerTransitionType {
 // transition type of @revealer.
 /*
 
-C function : gtk_revealer_set_reveal_child
+C function
+
+gtk_revealer_set_reveal_child
 */
 func (recv *Revealer) SetRevealChild(revealChild bool) {
 	c_reveal_child :=
@@ -1782,7 +1944,9 @@ func (recv *Revealer) SetRevealChild(revealChild bool) {
 // Sets the duration that transitions will take.
 /*
 
-C function : gtk_revealer_set_transition_duration
+C function
+
+gtk_revealer_set_transition_duration
 */
 func (recv *Revealer) SetTransitionDuration(duration uint32) {
 	c_duration := (C.guint)(duration)
@@ -1797,7 +1961,9 @@ func (recv *Revealer) SetTransitionDuration(duration uint32) {
 // various kinds of fades and slides.
 /*
 
-C function : gtk_revealer_set_transition_type
+C function
+
+gtk_revealer_set_transition_type
 */
 func (recv *Revealer) SetTransitionType(transition RevealerTransitionType) {
 	c_transition := (C.GtkRevealerTransitionType)(transition)
@@ -1812,7 +1978,9 @@ func (recv *Revealer) SetTransitionType(transition RevealerTransitionType) {
 // gtk_search_bar_connect_entry().
 /*
 
-C function : gtk_search_bar_new
+C function
+
+gtk_search_bar_new
 */
 func SearchBarNew() *SearchBar {
 	retC := C.gtk_search_bar_new()
@@ -1827,7 +1995,9 @@ func SearchBarNew() *SearchBar {
 // search bar (as in our main example).
 /*
 
-C function : gtk_search_bar_connect_entry
+C function
+
+gtk_search_bar_connect_entry
 */
 func (recv *SearchBar) ConnectEntry(entry *Entry) {
 	c_entry := (*C.GtkEntry)(C.NULL)
@@ -1843,7 +2013,9 @@ func (recv *SearchBar) ConnectEntry(entry *Entry) {
 // Returns whether the search mode is on or off.
 /*
 
-C function : gtk_search_bar_get_search_mode
+C function
+
+gtk_search_bar_get_search_mode
 */
 func (recv *SearchBar) GetSearchMode() bool {
 	retC := C.gtk_search_bar_get_search_mode((*C.GtkSearchBar)(recv.native))
@@ -1855,7 +2027,9 @@ func (recv *SearchBar) GetSearchMode() bool {
 // Returns whether the close button is shown.
 /*
 
-C function : gtk_search_bar_get_show_close_button
+C function
+
+gtk_search_bar_get_show_close_button
 */
 func (recv *SearchBar) GetShowCloseButton() bool {
 	retC := C.gtk_search_bar_get_show_close_button((*C.GtkSearchBar)(recv.native))
@@ -1869,7 +2043,9 @@ func (recv *SearchBar) GetShowCloseButton() bool {
 // Switches the search mode on or off.
 /*
 
-C function : gtk_search_bar_set_search_mode
+C function
+
+gtk_search_bar_set_search_mode
 */
 func (recv *SearchBar) SetSearchMode(searchMode bool) {
 	c_search_mode :=
@@ -1886,7 +2062,9 @@ func (recv *SearchBar) SetSearchMode(searchMode bool) {
 // toggle button.
 /*
 
-C function : gtk_search_bar_set_show_close_button
+C function
+
+gtk_search_bar_set_show_close_button
 */
 func (recv *SearchBar) SetShowCloseButton(visible bool) {
 	c_visible :=
@@ -1957,7 +2135,9 @@ func searchentry_searchChangedHandler(_ *C.GObject, data C.gpointer) {
 // Creates a new #GtkStack container.
 /*
 
-C function : gtk_stack_new
+C function
+
+gtk_stack_new
 */
 func StackNew() *Stack {
 	retC := C.gtk_stack_new()
@@ -1970,7 +2150,9 @@ func StackNew() *Stack {
 // The child is identified by the @name.
 /*
 
-C function : gtk_stack_add_named
+C function
+
+gtk_stack_add_named
 */
 func (recv *Stack) AddNamed(child *Widget, name string) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -1992,7 +2174,9 @@ func (recv *Stack) AddNamed(child *Widget, name string) {
 // @child in a tab bar, so it should be short.
 /*
 
-C function : gtk_stack_add_titled
+C function
+
+gtk_stack_add_titled
 */
 func (recv *Stack) AddTitled(child *Widget, name string, title string) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -2015,7 +2199,9 @@ func (recv *Stack) AddTitled(child *Widget, name string, title string) {
 // See gtk_stack_set_homogeneous().
 /*
 
-C function : gtk_stack_get_homogeneous
+C function
+
+gtk_stack_get_homogeneous
 */
 func (recv *Stack) GetHomogeneous() bool {
 	retC := C.gtk_stack_get_homogeneous((*C.GtkStack)(recv.native))
@@ -2028,7 +2214,9 @@ func (recv *Stack) GetHomogeneous() bool {
 // transitions between pages in @stack will take.
 /*
 
-C function : gtk_stack_get_transition_duration
+C function
+
+gtk_stack_get_transition_duration
 */
 func (recv *Stack) GetTransitionDuration() uint32 {
 	retC := C.gtk_stack_get_transition_duration((*C.GtkStack)(recv.native))
@@ -2041,7 +2229,9 @@ func (recv *Stack) GetTransitionDuration() uint32 {
 // for transitions between pages in @stack.
 /*
 
-C function : gtk_stack_get_transition_type
+C function
+
+gtk_stack_get_transition_type
 */
 func (recv *Stack) GetTransitionType() StackTransitionType {
 	retC := C.gtk_stack_get_transition_type((*C.GtkStack)(recv.native))
@@ -2054,7 +2244,9 @@ func (recv *Stack) GetTransitionType() StackTransitionType {
 // there are no visible children.
 /*
 
-C function : gtk_stack_get_visible_child
+C function
+
+gtk_stack_get_visible_child
 */
 func (recv *Stack) GetVisibleChild() *Widget {
 	retC := C.gtk_stack_get_visible_child((*C.GtkStack)(recv.native))
@@ -2072,7 +2264,9 @@ func (recv *Stack) GetVisibleChild() *Widget {
 // %NULL if there is no visible child.
 /*
 
-C function : gtk_stack_get_visible_child_name
+C function
+
+gtk_stack_get_visible_child_name
 */
 func (recv *Stack) GetVisibleChildName() string {
 	retC := C.gtk_stack_get_visible_child_name((*C.GtkStack)(recv.native))
@@ -2091,7 +2285,9 @@ func (recv *Stack) GetVisibleChildName() string {
 // #GtkStack:hhomogeneous and #GtkStack:vhomogeneous.
 /*
 
-C function : gtk_stack_set_homogeneous
+C function
+
+gtk_stack_set_homogeneous
 */
 func (recv *Stack) SetHomogeneous(homogeneous bool) {
 	c_homogeneous :=
@@ -2106,7 +2302,9 @@ func (recv *Stack) SetHomogeneous(homogeneous bool) {
 // will take.
 /*
 
-C function : gtk_stack_set_transition_duration
+C function
+
+gtk_stack_set_transition_duration
 */
 func (recv *Stack) SetTransitionDuration(duration uint32) {
 	c_duration := (C.guint)(duration)
@@ -2125,7 +2323,9 @@ func (recv *Stack) SetTransitionDuration(duration uint32) {
 // based on the page that is about to become current.
 /*
 
-C function : gtk_stack_set_transition_type
+C function
+
+gtk_stack_set_transition_type
 */
 func (recv *Stack) SetTransitionType(transition StackTransitionType) {
 	c_transition := (C.GtkStackTransitionType)(transition)
@@ -2147,7 +2347,9 @@ func (recv *Stack) SetTransitionType(transition StackTransitionType) {
 // child of @stack.
 /*
 
-C function : gtk_stack_set_visible_child
+C function
+
+gtk_stack_set_visible_child
 */
 func (recv *Stack) SetVisibleChild(child *Widget) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -2167,7 +2369,9 @@ func (recv *Stack) SetVisibleChild(child *Widget) {
 // child of @stack.
 /*
 
-C function : gtk_stack_set_visible_child_full
+C function
+
+gtk_stack_set_visible_child_full
 */
 func (recv *Stack) SetVisibleChildFull(name string, transition StackTransitionType) {
 	c_name := C.CString(name)
@@ -2192,7 +2396,9 @@ func (recv *Stack) SetVisibleChildFull(name string, transition StackTransitionTy
 // child of @stack.
 /*
 
-C function : gtk_stack_set_visible_child_name
+C function
+
+gtk_stack_set_visible_child_name
 */
 func (recv *Stack) SetVisibleChildName(name string) {
 	c_name := C.CString(name)
@@ -2206,7 +2412,9 @@ func (recv *Stack) SetVisibleChildName(name string) {
 // Create a new #GtkStackSwitcher.
 /*
 
-C function : gtk_stack_switcher_new
+C function
+
+gtk_stack_switcher_new
 */
 func StackSwitcherNew() *StackSwitcher {
 	retC := C.gtk_stack_switcher_new()
@@ -2219,7 +2427,9 @@ func StackSwitcherNew() *StackSwitcher {
 // See gtk_stack_switcher_set_stack().
 /*
 
-C function : gtk_stack_switcher_get_stack
+C function
+
+gtk_stack_switcher_get_stack
 */
 func (recv *StackSwitcher) GetStack() *Stack {
 	retC := C.gtk_stack_switcher_get_stack((*C.GtkStackSwitcher)(recv.native))
@@ -2236,7 +2446,9 @@ func (recv *StackSwitcher) GetStack() *Stack {
 // Sets the stack to control.
 /*
 
-C function : gtk_stack_switcher_set_stack
+C function
+
+gtk_stack_switcher_set_stack
 */
 func (recv *StackSwitcher) SetStack(stack *Stack) {
 	c_stack := (*C.GtkStack)(C.NULL)
@@ -2252,7 +2464,9 @@ func (recv *StackSwitcher) SetStack(stack *Stack) {
 // Returns the scale used for assets.
 /*
 
-C function : gtk_style_context_get_scale
+C function
+
+gtk_style_context_get_scale
 */
 func (recv *StyleContext) GetScale() int32 {
 	retC := C.gtk_style_context_get_scale((*C.GtkStyleContext)(recv.native))
@@ -2264,7 +2478,9 @@ func (recv *StyleContext) GetScale() int32 {
 // Sets the scale to use when getting image assets for the style.
 /*
 
-C function : gtk_style_context_set_scale
+C function
+
+gtk_style_context_set_scale
 */
 func (recv *StyleContext) SetScale(scale int32) {
 	c_scale := (C.gint)(scale)
@@ -2282,7 +2498,9 @@ func (recv *StyleContext) SetScale(scale int32) {
 // widgets in #GtkWidget::size_allocate.
 /*
 
-C function : gtk_widget_get_allocated_baseline
+C function
+
+gtk_widget_get_allocated_baseline
 */
 func (recv *Widget) GetAllocatedBaseline() int32 {
 	retC := C.gtk_widget_get_allocated_baseline((*C.GtkWidget)(recv.native))
@@ -2302,7 +2520,9 @@ func (recv *Widget) GetAllocatedBaseline() int32 {
 // returned by the widget itself.
 /*
 
-C function : gtk_widget_get_preferred_height_and_baseline_for_width
+C function
+
+gtk_widget_get_preferred_height_and_baseline_for_width
 */
 func (recv *Widget) GetPreferredHeightAndBaselineForWidth(width int32) (int32, int32, int32, int32) {
 	c_width := (C.gint)(width)
@@ -2335,7 +2555,9 @@ func (recv *Widget) GetPreferredHeightAndBaselineForWidth(width int32) (int32, i
 // See gdk_window_get_scale_factor().
 /*
 
-C function : gtk_widget_get_scale_factor
+C function
+
+gtk_widget_get_scale_factor
 */
 func (recv *Widget) GetScaleFactor() int32 {
 	retC := C.gtk_widget_get_scale_factor((*C.GtkWidget)(recv.native))
@@ -2348,7 +2570,9 @@ func (recv *Widget) GetScaleFactor() int32 {
 // %GTK_ALIGN_BASELINE.
 /*
 
-C function : gtk_widget_get_valign_with_baseline
+C function
+
+gtk_widget_get_valign_with_baseline
 */
 func (recv *Widget) GetValignWithBaseline() Align {
 	retC := C.gtk_widget_get_valign_with_baseline((*C.GtkWidget)(recv.native))
@@ -2375,7 +2599,9 @@ func (recv *Widget) GetValignWithBaseline() Align {
 // should take precedence over properties set in the private template XML.
 /*
 
-C function : gtk_widget_init_template
+C function
+
+gtk_widget_init_template
 */
 func (recv *Widget) InitTemplate() {
 	C.gtk_widget_init_template((*C.GtkWidget)(recv.native))
@@ -2392,7 +2618,9 @@ func (recv *Widget) InitTemplate() {
 // titlebars.
 /*
 
-C function : gtk_window_close
+C function
+
+gtk_window_close
 */
 func (recv *Window) Close() {
 	C.gtk_window_close((*C.GtkWindow)(recv.native))
@@ -2412,7 +2640,9 @@ func (recv *Window) Close() {
 // gtk_widget_show().
 /*
 
-C function : gtk_window_set_titlebar
+C function
+
+gtk_window_set_titlebar
 */
 func (recv *Window) SetTitlebar(titlebar *Widget) {
 	c_titlebar := (*C.GtkWidget)(C.NULL)

@@ -26,7 +26,9 @@ import "C"
 // #GtkWidget::drag-failed is set to @GTK_DRAG_RESULT_ERROR.
 /*
 
-C function : gtk_drag_cancel
+C function
+
+gtk_drag_cancel
 */
 func DragCancel(context *gdk.DragContext) {
 	c_context := (*C.GdkDragContext)(C.NULL)

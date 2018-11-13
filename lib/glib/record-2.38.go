@@ -15,7 +15,9 @@ import "C"
 // the partial matching facilities.
 /*
 
-C function : g_regex_get_max_lookbehind
+C function
+
+g_regex_get_max_lookbehind
 */
 func (recv *Regex) GetMaxLookbehind() int32 {
 	retC := C.g_regex_get_max_lookbehind((*C.GRegex)(recv.native))

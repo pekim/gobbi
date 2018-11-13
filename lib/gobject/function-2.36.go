@@ -15,7 +15,9 @@ import "C"
 // time by comparing the current serial with the one at the type lookup.
 /*
 
-C function : g_type_get_type_registration_serial
+C function
+
+g_type_get_type_registration_serial
 */
 func TypeGetTypeRegistrationSerial() uint32 {
 	retC := C.g_type_get_type_registration_serial()

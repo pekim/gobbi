@@ -15,7 +15,9 @@ import "C"
 // Create a new background color attribute.
 /*
 
-C function : pango_attr_background_new
+C function
+
+pango_attr_background_new
 */
 func AttrBackgroundNew(red uint16, green uint16, blue uint16) *Attribute {
 	c_red := (C.guint16)(red)
@@ -33,7 +35,9 @@ func AttrBackgroundNew(red uint16, green uint16, blue uint16) *Attribute {
 // Create a new font family attribute.
 /*
 
-C function : pango_attr_family_new
+C function
+
+pango_attr_family_new
 */
 func AttrFamilyNew(family string) *Attribute {
 	c_family := C.CString(family)
@@ -48,7 +52,9 @@ func AttrFamilyNew(family string) *Attribute {
 // Create a new foreground color attribute.
 /*
 
-C function : pango_attr_foreground_new
+C function
+
+pango_attr_foreground_new
 */
 func AttrForegroundNew(red uint16, green uint16, blue uint16) *Attribute {
 	c_red := (C.guint16)(red)
@@ -66,7 +72,9 @@ func AttrForegroundNew(red uint16, green uint16, blue uint16) *Attribute {
 // Create a new baseline displacement attribute.
 /*
 
-C function : pango_attr_rise_new
+C function
+
+pango_attr_rise_new
 */
 func AttrRiseNew(rise int32) *Attribute {
 	c_rise := (C.int)(rise)
@@ -81,7 +89,9 @@ func AttrRiseNew(rise int32) *Attribute {
 // affected text will have its size multiplied by @scale_factor.
 /*
 
-C function : pango_attr_scale_new
+C function
+
+pango_attr_scale_new
 */
 func AttrScaleNew(scaleFactor float64) *Attribute {
 	c_scale_factor := (C.double)(scaleFactor)
@@ -95,7 +105,9 @@ func AttrScaleNew(scaleFactor float64) *Attribute {
 // Create a new font stretch attribute
 /*
 
-C function : pango_attr_stretch_new
+C function
+
+pango_attr_stretch_new
 */
 func AttrStretchNew(stretch Stretch) *Attribute {
 	c_stretch := (C.PangoStretch)(stretch)
@@ -109,7 +121,9 @@ func AttrStretchNew(stretch Stretch) *Attribute {
 // Create a new strike-through attribute.
 /*
 
-C function : pango_attr_strikethrough_new
+C function
+
+pango_attr_strikethrough_new
 */
 func AttrStrikethroughNew(strikethrough bool) *Attribute {
 	c_strikethrough :=
@@ -124,7 +138,9 @@ func AttrStrikethroughNew(strikethrough bool) *Attribute {
 // Create a new font slant style attribute.
 /*
 
-C function : pango_attr_style_new
+C function
+
+pango_attr_style_new
 */
 func AttrStyleNew(style Style) *Attribute {
 	c_style := (C.PangoStyle)(style)
@@ -139,7 +155,9 @@ func AttrStyleNew(style Style) *Attribute {
 // later by using pango_attr_type_get_name().
 /*
 
-C function : pango_attr_type_register
+C function
+
+pango_attr_type_register
 */
 func AttrTypeRegister(name string) AttrType {
 	c_name := C.CString(name)
@@ -154,7 +172,9 @@ func AttrTypeRegister(name string) AttrType {
 // Create a new underline-style attribute.
 /*
 
-C function : pango_attr_underline_new
+C function
+
+pango_attr_underline_new
 */
 func AttrUnderlineNew(underline Underline) *Attribute {
 	c_underline := (C.PangoUnderline)(underline)
@@ -168,7 +188,9 @@ func AttrUnderlineNew(underline Underline) *Attribute {
 // Create a new font variant attribute (normal or small caps)
 /*
 
-C function : pango_attr_variant_new
+C function
+
+pango_attr_variant_new
 */
 func AttrVariantNew(variant Variant) *Attribute {
 	c_variant := (C.PangoVariant)(variant)
@@ -182,7 +204,9 @@ func AttrVariantNew(variant Variant) *Attribute {
 // Create a new font weight attribute.
 /*
 
-C function : pango_attr_weight_new
+C function
+
+pango_attr_weight_new
 */
 func AttrWeightNew(weight Weight) *Attribute {
 	c_weight := (C.PangoWeight)(weight)
@@ -215,7 +239,9 @@ func AttrWeightNew(weight Weight) *Attribute {
 // off the end).
 /*
 
-C function : pango_find_paragraph_boundary
+C function
+
+pango_find_paragraph_boundary
 */
 func FindParagraphBoundary(text string, length int32) (int32, int32) {
 	c_text := C.CString(text)
@@ -250,7 +276,9 @@ func FindParagraphBoundary(text string, length int32) (int32, int32) {
 // description will be set to 0.
 /*
 
-C function : pango_font_description_from_string
+C function
+
+pango_font_description_from_string
 */
 func FontDescriptionFromString(str string) *FontDescription {
 	c_str := C.CString(str)
@@ -274,7 +302,9 @@ func FontDescriptionFromString(str string) *FontDescription {
 // provide full details.
 /*
 
-C function : pango_get_mirror_char
+C function
+
+pango_get_mirror_char
 */
 func GetMirrorChar(ch rune, mirroredCh rune) bool {
 	c_ch := (C.gunichar)(ch)
@@ -301,7 +331,9 @@ func GetMirrorChar(ch rune, mirroredCh rune) bool {
 // (i.e. if itemizing in a loop, just keep passing in the same @cached_iter).
 /*
 
-C function : pango_itemize
+C function
+
+pango_itemize
 */
 func Itemize(context *Context, text string, startIndex int32, length int32, attrs *AttrList, cachedIter *AttrIterator) *glib.List {
 	c_context := (*C.PangoContext)(C.NULL)
@@ -345,7 +377,9 @@ func Itemize(context *Context, text string, startIndex int32, length int32, attr
 // the current locale of the process.
 /*
 
-C function : pango_language_from_string
+C function
+
+pango_language_from_string
 */
 func LanguageFromString(language string) *Language {
 	c_language := C.CString(language)
@@ -384,7 +418,9 @@ func LanguageFromString(language string) *Language {
 // for @error.
 /*
 
-C function : pango_parse_markup
+C function
+
+pango_parse_markup
 */
 func ParseMarkup(markupText string, length int32, accelMarker rune) (bool, *AttrList, string, rune, error) {
 	c_markup_text := C.CString(markupText)
@@ -435,7 +471,9 @@ func ParseMarkup(markupText string, length int32, accelMarker rune) (bool, *Attr
 // The original list is unmodified.
 /*
 
-C function : pango_reorder_items
+C function
+
+pango_reorder_items
 */
 func ReorderItems(logicalItems *glib.List) *glib.List {
 	c_logical_items := (*C.GList)(C.NULL)
@@ -464,7 +502,9 @@ func ReorderItems(logicalItems *glib.List) *glib.List {
 // Trims leading and trailing whitespace from a string.
 /*
 
-C function : pango_trim_string
+C function
+
+pango_trim_string
 */
 func TrimString(str string) string {
 	c_str := C.CString(str)
@@ -487,7 +527,9 @@ func TrimString(str string) string {
 // pango_bidi_type_for_unichar() can be used instead.
 /*
 
-C function : pango_unichar_direction
+C function
+
+pango_unichar_direction
 */
 func UnicharDirection(ch rune) Direction {
 	c_ch := (C.gunichar)(ch)

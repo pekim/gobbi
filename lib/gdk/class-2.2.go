@@ -54,7 +54,9 @@ import "C"
 // Creates a new cursor from the set of builtin cursors.
 /*
 
-C function : gdk_cursor_new_for_display
+C function
+
+gdk_cursor_new_for_display
 */
 func CursorNewForDisplay(display *Display, cursorType CursorType) *Cursor {
 	c_display := (*C.GdkDisplay)(C.NULL)
@@ -73,7 +75,9 @@ func CursorNewForDisplay(display *Display, cursorType CursorType) *Cursor {
 // Returns the display on which the #GdkCursor is defined.
 /*
 
-C function : gdk_cursor_get_display
+C function
+
+gdk_cursor_get_display
 */
 func (recv *Cursor) GetDisplay() *Display {
 	retC := C.gdk_cursor_get_display((*C.GdkCursor)(recv.native))
@@ -144,7 +148,9 @@ func display_closedHandler(_ *C.GObject, c_is_error C.gboolean, data C.gpointer)
 // Emits a short beep on @display
 /*
 
-C function : gdk_display_beep
+C function
+
+gdk_display_beep
 */
 func (recv *Display) Beep() {
 	C.gdk_display_beep((*C.GdkDisplay)(recv.native))
@@ -156,7 +162,9 @@ func (recv *Display) Beep() {
 // and cleans up associated resources.
 /*
 
-C function : gdk_display_close
+C function
+
+gdk_display_close
 */
 func (recv *Display) Close() {
 	C.gdk_display_close((*C.GdkDisplay)(recv.native))
@@ -167,7 +175,9 @@ func (recv *Display) Close() {
 // Get the default #GdkScreen for @display.
 /*
 
-C function : gdk_display_get_default_screen
+C function
+
+gdk_display_get_default_screen
 */
 func (recv *Display) GetDefaultScreen() *Screen {
 	retC := C.gdk_display_get_default_screen((*C.GdkDisplay)(recv.native))
@@ -181,7 +191,9 @@ func (recv *Display) GetDefaultScreen() *Screen {
 // Gets the number of screen managed by the @display.
 /*
 
-C function : gdk_display_get_n_screens
+C function
+
+gdk_display_get_n_screens
 */
 func (recv *Display) GetNScreens() int32 {
 	retC := C.gdk_display_get_n_screens((*C.GdkDisplay)(recv.native))
@@ -193,7 +205,9 @@ func (recv *Display) GetNScreens() int32 {
 // Gets the name of the display.
 /*
 
-C function : gdk_display_get_name
+C function
+
+gdk_display_get_name
 */
 func (recv *Display) GetName() string {
 	retC := C.gdk_display_get_name((*C.GdkDisplay)(recv.native))
@@ -207,7 +221,9 @@ func (recv *Display) GetName() string {
 // Returns a screen object for one of the screens of the display.
 /*
 
-C function : gdk_display_get_screen
+C function
+
+gdk_display_get_screen
 */
 func (recv *Display) GetScreen(screenNum int32) *Screen {
 	c_screen_num := (C.gint)(screenNum)
@@ -224,7 +240,9 @@ func (recv *Display) GetScreen(screenNum int32) *Screen {
 // belongs to another application).
 /*
 
-C function : gdk_display_get_window_at_pointer
+C function
+
+gdk_display_get_window_at_pointer
 */
 func (recv *Display) GetWindowAtPointer() (*Window, int32, int32) {
 	var c_win_x C.gint
@@ -249,7 +267,9 @@ func (recv *Display) GetWindowAtPointer() (*Window, int32, int32) {
 // Release any keyboard grab
 /*
 
-C function : gdk_display_keyboard_ungrab
+C function
+
+gdk_display_keyboard_ungrab
 */
 func (recv *Display) KeyboardUngrab(time uint32) {
 	c_time_ := (C.guint32)(time)
@@ -263,7 +283,9 @@ func (recv *Display) KeyboardUngrab(time uint32) {
 // The list is statically allocated and should not be freed.
 /*
 
-C function : gdk_display_list_devices
+C function
+
+gdk_display_list_devices
 */
 func (recv *Display) ListDevices() *glib.List {
 	retC := C.gdk_display_list_devices((*C.GdkDisplay)(recv.native))
@@ -277,7 +299,9 @@ func (recv *Display) ListDevices() *glib.List {
 // Test if the pointer is grabbed.
 /*
 
-C function : gdk_display_pointer_is_grabbed
+C function
+
+gdk_display_pointer_is_grabbed
 */
 func (recv *Display) PointerIsGrabbed() bool {
 	retC := C.gdk_display_pointer_is_grabbed((*C.GdkDisplay)(recv.native))
@@ -289,7 +313,9 @@ func (recv *Display) PointerIsGrabbed() bool {
 // Release any pointer grab.
 /*
 
-C function : gdk_display_pointer_ungrab
+C function
+
+gdk_display_pointer_ungrab
 */
 func (recv *Display) PointerUngrab(time uint32) {
 	c_time_ := (C.guint32)(time)
@@ -307,7 +333,9 @@ func (recv *Display) PointerUngrab(time uint32) {
 // user-configured setting.
 /*
 
-C function : gdk_display_set_double_click_time
+C function
+
+gdk_display_set_double_click_time
 */
 func (recv *Display) SetDoubleClickTime(msec uint32) {
 	c_msec := (C.guint)(msec)
@@ -328,7 +356,9 @@ func (recv *Display) SetDoubleClickTime(msec uint32) {
 // handled synchronously, this function will do nothing.
 /*
 
-C function : gdk_display_sync
+C function
+
+gdk_display_sync
 */
 func (recv *Display) Sync() {
 	C.gdk_display_sync((*C.GdkDisplay)(recv.native))
@@ -398,7 +428,9 @@ func displaymanager_displayOpenedHandler(_ *C.GObject, c_display *C.GdkDisplay, 
 // Gets the default #GdkDisplay.
 /*
 
-C function : gdk_display_manager_get_default_display
+C function
+
+gdk_display_manager_get_default_display
 */
 func (recv *DisplayManager) GetDefaultDisplay() *Display {
 	retC := C.gdk_display_manager_get_default_display((*C.GdkDisplayManager)(recv.native))
@@ -415,7 +447,9 @@ func (recv *DisplayManager) GetDefaultDisplay() *Display {
 // List all currently open displays.
 /*
 
-C function : gdk_display_manager_list_displays
+C function
+
+gdk_display_manager_list_displays
 */
 func (recv *DisplayManager) ListDisplays() *glib.SList {
 	retC := C.gdk_display_manager_list_displays((*C.GdkDisplayManager)(recv.native))
@@ -427,7 +461,9 @@ func (recv *DisplayManager) ListDisplays() *glib.SList {
 // Sets @display as the default display.
 /*
 
-C function : gdk_display_manager_set_default_display
+C function
+
+gdk_display_manager_set_default_display
 */
 func (recv *DisplayManager) SetDefaultDisplay(display *Display) {
 	c_display := (*C.GdkDisplay)(C.NULL)
@@ -557,7 +593,9 @@ func screen_sizeChangedHandler(_ *C.GObject, data C.gpointer) {
 // Gets the display to which the @screen belongs.
 /*
 
-C function : gdk_screen_get_display
+C function
+
+gdk_screen_get_display
 */
 func (recv *Screen) GetDisplay() *Display {
 	retC := C.gdk_screen_get_display((*C.GdkScreen)(recv.native))
@@ -571,7 +609,9 @@ func (recv *Screen) GetDisplay() *Display {
 // gdk_screen_get_monitor_scale_factor()).
 /*
 
-C function : gdk_screen_get_height
+C function
+
+gdk_screen_get_height
 */
 func (recv *Screen) GetHeight() int32 {
 	retC := C.gdk_screen_get_height((*C.GdkScreen)(recv.native))
@@ -587,7 +627,9 @@ func (recv *Screen) GetHeight() int32 {
 // to use the monitor dimensions instead.
 /*
 
-C function : gdk_screen_get_height_mm
+C function
+
+gdk_screen_get_height_mm
 */
 func (recv *Screen) GetHeightMm() int32 {
 	retC := C.gdk_screen_get_height_mm((*C.GdkScreen)(recv.native))
@@ -599,7 +641,9 @@ func (recv *Screen) GetHeightMm() int32 {
 // Returns the monitor number in which the point (@x,@y) is located.
 /*
 
-C function : gdk_screen_get_monitor_at_point
+C function
+
+gdk_screen_get_monitor_at_point
 */
 func (recv *Screen) GetMonitorAtPoint(x int32, y int32) int32 {
 	c_x := (C.gint)(x)
@@ -616,7 +660,9 @@ func (recv *Screen) GetMonitorAtPoint(x int32, y int32) int32 {
 // bounding rectangle of @window resides.
 /*
 
-C function : gdk_screen_get_monitor_at_window
+C function
+
+gdk_screen_get_monitor_at_window
 */
 func (recv *Screen) GetMonitorAtWindow(window *Window) int32 {
 	c_window := (*C.GdkWindow)(C.NULL)
@@ -635,7 +681,9 @@ func (recv *Screen) GetMonitorAtWindow(window *Window) int32 {
 // Returns the number of monitors which @screen consists of.
 /*
 
-C function : gdk_screen_get_n_monitors
+C function
+
+gdk_screen_get_n_monitors
 */
 func (recv *Screen) GetNMonitors() int32 {
 	retC := C.gdk_screen_get_n_monitors((*C.GdkScreen)(recv.native))
@@ -648,7 +696,9 @@ func (recv *Screen) GetNMonitors() int32 {
 // to which it belongs. (See gdk_screen_get_display())
 /*
 
-C function : gdk_screen_get_number
+C function
+
+gdk_screen_get_number
 */
 func (recv *Screen) GetNumber() int32 {
 	retC := C.gdk_screen_get_number((*C.GdkScreen)(recv.native))
@@ -660,7 +710,9 @@ func (recv *Screen) GetNumber() int32 {
 // Gets the root window of @screen.
 /*
 
-C function : gdk_screen_get_root_window
+C function
+
+gdk_screen_get_root_window
 */
 func (recv *Screen) GetRootWindow() *Window {
 	retC := C.gdk_screen_get_root_window((*C.GdkScreen)(recv.native))
@@ -676,7 +728,9 @@ func (recv *Screen) GetRootWindow() *Window {
 // more information.
 /*
 
-C function : gdk_screen_get_setting
+C function
+
+gdk_screen_get_setting
 */
 func (recv *Screen) GetSetting(name string, value *gobject.Value) bool {
 	c_name := C.CString(name)
@@ -698,7 +752,9 @@ func (recv *Screen) GetSetting(name string, value *gobject.Value) bool {
 // The return value should not be freed.
 /*
 
-C function : gdk_screen_get_system_visual
+C function
+
+gdk_screen_get_system_visual
 */
 func (recv *Screen) GetSystemVisual() *Visual {
 	retC := C.gdk_screen_get_system_visual((*C.GdkScreen)(recv.native))
@@ -715,7 +771,9 @@ func (recv *Screen) GetSystemVisual() *Visual {
 // its elements need not be freed.
 /*
 
-C function : gdk_screen_get_toplevel_windows
+C function
+
+gdk_screen_get_toplevel_windows
 */
 func (recv *Screen) GetToplevelWindows() *glib.List {
 	retC := C.gdk_screen_get_toplevel_windows((*C.GdkScreen)(recv.native))
@@ -729,7 +787,9 @@ func (recv *Screen) GetToplevelWindows() *glib.List {
 // gdk_screen_get_monitor_scale_factor()).
 /*
 
-C function : gdk_screen_get_width
+C function
+
+gdk_screen_get_width
 */
 func (recv *Screen) GetWidth() int32 {
 	retC := C.gdk_screen_get_width((*C.GdkScreen)(recv.native))
@@ -745,7 +805,9 @@ func (recv *Screen) GetWidth() int32 {
 // to use the monitor dimensions instead.
 /*
 
-C function : gdk_screen_get_width_mm
+C function
+
+gdk_screen_get_width_mm
 */
 func (recv *Screen) GetWidthMm() int32 {
 	retC := C.gdk_screen_get_width_mm((*C.GdkScreen)(recv.native))
@@ -762,7 +824,9 @@ func (recv *Screen) GetWidthMm() int32 {
 // Call g_list_free() on the return value when you’re finished with it.
 /*
 
-C function : gdk_screen_list_visuals
+C function
+
+gdk_screen_list_visuals
 */
 func (recv *Screen) ListVisuals() *glib.List {
 	retC := C.gdk_screen_list_visuals((*C.GdkScreen)(recv.native))
@@ -775,7 +839,9 @@ func (recv *Screen) ListVisuals() *glib.List {
 // a #GdkDisplay with this screen as the default screen.
 /*
 
-C function : gdk_screen_make_display_name
+C function
+
+gdk_screen_make_display_name
 */
 func (recv *Screen) MakeDisplayName() string {
 	retC := C.gdk_screen_make_display_name((*C.GdkScreen)(recv.native))
@@ -788,7 +854,9 @@ func (recv *Screen) MakeDisplayName() string {
 // Gets the screen to which this visual belongs
 /*
 
-C function : gdk_visual_get_screen
+C function
+
+gdk_visual_get_screen
 */
 func (recv *Visual) GetScreen() *Screen {
 	retC := C.gdk_visual_get_screen((*C.GdkVisual)(recv.native))
@@ -812,7 +880,9 @@ func (recv *Visual) GetScreen() *Screen {
 // it to happen.
 /*
 
-C function : gdk_window_fullscreen
+C function
+
+gdk_window_fullscreen
 */
 func (recv *Window) Fullscreen() {
 	C.gdk_window_fullscreen((*C.GdkWindow)(recv.native))
@@ -830,7 +900,9 @@ func (recv *Window) Fullscreen() {
 // its semantic type.
 /*
 
-C function : gdk_window_set_skip_pager_hint
+C function
+
+gdk_window_set_skip_pager_hint
 */
 func (recv *Window) SetSkipPagerHint(skipsPager bool) {
 	c_skips_pager :=
@@ -849,7 +921,9 @@ func (recv *Window) SetSkipPagerHint(skipsPager bool) {
 // standard policy for its semantic type.
 /*
 
-C function : gdk_window_set_skip_taskbar_hint
+C function
+
+gdk_window_set_skip_taskbar_hint
 */
 func (recv *Window) SetSkipTaskbarHint(skipsTaskbar bool) {
 	c_skips_taskbar :=
@@ -872,7 +946,9 @@ func (recv *Window) SetSkipTaskbarHint(skipsTaskbar bool) {
 // it to happen.
 /*
 
-C function : gdk_window_unfullscreen
+C function
+
+gdk_window_unfullscreen
 */
 func (recv *Window) Unfullscreen() {
 	C.gdk_window_unfullscreen((*C.GdkWindow)(recv.native))

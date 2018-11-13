@@ -14,7 +14,9 @@ import "C"
 // variable to include instance-count).
 /*
 
-C function : g_type_get_instance_count
+C function
+
+g_type_get_instance_count
 */
 func TypeGetInstanceCount(type_ Type) int32 {
 	c_type := (C.GType)(type_)

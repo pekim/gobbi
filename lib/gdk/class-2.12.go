@@ -17,7 +17,9 @@ import "C"
 // XDamage extensions available.
 /*
 
-C function : gdk_display_supports_composite
+C function
+
+gdk_display_supports_composite
 */
 func (recv *Display) SupportsComposite() bool {
 	retC := C.gdk_display_supports_composite((*C.GdkDisplay)(recv.native))
@@ -30,7 +32,9 @@ func (recv *Display) SupportsComposite() bool {
 // languages are in use.
 /*
 
-C function : gdk_keymap_have_bidi_layouts
+C function
+
+gdk_keymap_have_bidi_layouts
 */
 func (recv *Keymap) HaveBidiLayouts() bool {
 	retC := C.gdk_keymap_have_bidi_layouts((*C.GdkKeymap)(recv.native))
@@ -44,7 +48,9 @@ func (recv *Keymap) HaveBidiLayouts() bool {
 // the display just as gdk_display_beep().
 /*
 
-C function : gdk_window_beep
+C function
+
+gdk_window_beep
 */
 func (recv *Window) Beep() {
 	C.gdk_window_beep((*C.GdkWindow)(recv.native))
@@ -76,7 +82,9 @@ func (recv *Window) Beep() {
 // attempting to do so.
 /*
 
-C function : gdk_window_set_composited
+C function
+
+gdk_window_set_composited
 */
 func (recv *Window) SetComposited(composited bool) {
 	c_composited :=
@@ -108,7 +116,9 @@ func (recv *Window) SetComposited(composited bool) {
 // Support for non-toplevel windows was added in 3.8.
 /*
 
-C function : gdk_window_set_opacity
+C function
+
+gdk_window_set_opacity
 */
 func (recv *Window) SetOpacity(opacity float64) {
 	c_opacity := (C.gdouble)(opacity)
@@ -122,7 +132,9 @@ func (recv *Window) SetOpacity(opacity float64) {
 // instead of this low-level function.
 /*
 
-C function : gdk_window_set_startup_id
+C function
+
+gdk_window_set_startup_id
 */
 func (recv *Window) SetStartupId(startupId string) {
 	c_startup_id := C.CString(startupId)

@@ -36,7 +36,9 @@ import "C"
 // If no bookmark for @uri is found, one is created.
 /*
 
-C function : g_bookmark_file_add_application
+C function
+
+g_bookmark_file_add_application
 */
 func (recv *BookmarkFile) AddApplication(uri string, name string, exec string) {
 	c_uri := C.CString(uri)
@@ -59,7 +61,9 @@ func (recv *BookmarkFile) AddApplication(uri string, name string, exec string) {
 // If no bookmark for @uri is found then it is created.
 /*
 
-C function : g_bookmark_file_add_group
+C function
+
+g_bookmark_file_add_group
 */
 func (recv *BookmarkFile) AddGroup(uri string, group string) {
 	c_uri := C.CString(uri)
@@ -76,7 +80,9 @@ func (recv *BookmarkFile) AddGroup(uri string, group string) {
 // Frees a #GBookmarkFile.
 /*
 
-C function : g_bookmark_file_free
+C function
+
+g_bookmark_file_free
 */
 func (recv *BookmarkFile) Free() {
 	C.g_bookmark_file_free((*C.GBookmarkFile)(recv.native))
@@ -96,7 +102,9 @@ func (recv *BookmarkFile) Free() {
 // @error is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
 /*
 
-C function : g_bookmark_file_get_description
+C function
+
+g_bookmark_file_get_description
 */
 func (recv *BookmarkFile) GetDescription(uri string) (string, error) {
 	c_uri := C.CString(uri)
@@ -124,7 +132,9 @@ func (recv *BookmarkFile) GetDescription(uri string) (string, error) {
 // @error is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
 /*
 
-C function : g_bookmark_file_get_icon
+C function
+
+g_bookmark_file_get_icon
 */
 func (recv *BookmarkFile) GetIcon(uri string) (bool, string, string, error) {
 	c_uri := C.CString(uri)
@@ -161,7 +171,9 @@ func (recv *BookmarkFile) GetIcon(uri string) (bool, string, string, error) {
 // @error is set to #G_BOOKMARK_FILE_ERROR_INVALID_VALUE.
 /*
 
-C function : g_bookmark_file_get_is_private
+C function
+
+g_bookmark_file_get_is_private
 */
 func (recv *BookmarkFile) GetIsPrivate(uri string) (bool, error) {
 	c_uri := C.CString(uri)
@@ -188,7 +200,9 @@ func (recv *BookmarkFile) GetIsPrivate(uri string) (bool, error) {
 // @error is set to #G_BOOKMARK_FILE_ERROR_INVALID_VALUE.
 /*
 
-C function : g_bookmark_file_get_mime_type
+C function
+
+g_bookmark_file_get_mime_type
 */
 func (recv *BookmarkFile) GetMimeType(uri string) (string, error) {
 	c_uri := C.CString(uri)
@@ -213,7 +227,9 @@ func (recv *BookmarkFile) GetMimeType(uri string) (string, error) {
 // Gets the number of bookmarks inside @bookmark.
 /*
 
-C function : g_bookmark_file_get_size
+C function
+
+g_bookmark_file_get_size
 */
 func (recv *BookmarkFile) GetSize() int32 {
 	retC := C.g_bookmark_file_get_size((*C.GBookmarkFile)(recv.native))
@@ -230,7 +246,9 @@ func (recv *BookmarkFile) GetSize() int32 {
 // @error is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
 /*
 
-C function : g_bookmark_file_get_title
+C function
+
+g_bookmark_file_get_title
 */
 func (recv *BookmarkFile) GetTitle(uri string) (string, error) {
 	c_uri := C.CString(uri)
@@ -261,7 +279,9 @@ func (recv *BookmarkFile) GetTitle(uri string) (string, error) {
 // @error is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
 /*
 
-C function : g_bookmark_file_has_application
+C function
+
+g_bookmark_file_has_application
 */
 func (recv *BookmarkFile) HasApplication(uri string, name string) (bool, error) {
 	c_uri := C.CString(uri)
@@ -290,7 +310,9 @@ func (recv *BookmarkFile) HasApplication(uri string, name string) (bool, error) 
 // @error is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
 /*
 
-C function : g_bookmark_file_has_group
+C function
+
+g_bookmark_file_has_group
 */
 func (recv *BookmarkFile) HasGroup(uri string, group string) (bool, error) {
 	c_uri := C.CString(uri)
@@ -315,7 +337,9 @@ func (recv *BookmarkFile) HasGroup(uri string, group string) (bool, error) {
 // Looks whether the desktop bookmark has an item with its URI set to @uri.
 /*
 
-C function : g_bookmark_file_has_item
+C function
+
+g_bookmark_file_has_item
 */
 func (recv *BookmarkFile) HasItem(uri string) bool {
 	c_uri := C.CString(uri)
@@ -332,7 +356,9 @@ func (recv *BookmarkFile) HasItem(uri string) bool {
 // #GBookmarkFileError.
 /*
 
-C function : g_bookmark_file_load_from_data
+C function
+
+g_bookmark_file_load_from_data
 */
 func (recv *BookmarkFile) LoadFromData(data []uint8) (bool, error) {
 	c_data := &data[0]
@@ -359,7 +385,9 @@ func (recv *BookmarkFile) LoadFromData(data []uint8) (bool, error) {
 // set to either a #GFileError or #GBookmarkFileError.
 /*
 
-C function : g_bookmark_file_load_from_data_dirs
+C function
+
+g_bookmark_file_load_from_data_dirs
 */
 func (recv *BookmarkFile) LoadFromDataDirs(file string) (bool, string, error) {
 	c_file := C.CString(file)
@@ -388,7 +416,9 @@ func (recv *BookmarkFile) LoadFromDataDirs(file string) (bool, string, error) {
 // or #GBookmarkFileError.
 /*
 
-C function : g_bookmark_file_load_from_file
+C function
+
+g_bookmark_file_load_from_file
 */
 func (recv *BookmarkFile) LoadFromFile(filename string) (bool, error) {
 	c_filename := C.CString(filename)
@@ -415,7 +445,9 @@ func (recv *BookmarkFile) LoadFromFile(filename string) (bool, error) {
 // @error is set to #G_BOOKMARK_FILE_ERROR_URI_NOT_FOUND.
 /*
 
-C function : g_bookmark_file_move_item
+C function
+
+g_bookmark_file_move_item
 */
 func (recv *BookmarkFile) MoveItem(oldUri string, newUri string) (bool, error) {
 	c_old_uri := C.CString(oldUri)
@@ -447,7 +479,9 @@ func (recv *BookmarkFile) MoveItem(oldUri string, newUri string) (bool, error) {
 // #G_BOOKMARK_FILE_ERROR_APP_NOT_REGISTERED.
 /*
 
-C function : g_bookmark_file_remove_application
+C function
+
+g_bookmark_file_remove_application
 */
 func (recv *BookmarkFile) RemoveApplication(uri string, name string) (bool, error) {
 	c_uri := C.CString(uri)
@@ -478,7 +512,9 @@ func (recv *BookmarkFile) RemoveApplication(uri string, name string) (bool, erro
 // @error is set to #G_BOOKMARK_FILE_ERROR_INVALID_VALUE.
 /*
 
-C function : g_bookmark_file_remove_group
+C function
+
+g_bookmark_file_remove_group
 */
 func (recv *BookmarkFile) RemoveGroup(uri string, group string) (bool, error) {
 	c_uri := C.CString(uri)
@@ -503,7 +539,9 @@ func (recv *BookmarkFile) RemoveGroup(uri string, group string) (bool, error) {
 // Removes the bookmark for @uri from the bookmark file @bookmark.
 /*
 
-C function : g_bookmark_file_remove_item
+C function
+
+g_bookmark_file_remove_item
 */
 func (recv *BookmarkFile) RemoveItem(uri string) (bool, error) {
 	c_uri := C.CString(uri)
@@ -533,7 +571,9 @@ func (recv *BookmarkFile) RemoveItem(uri string) (bool, error) {
 // If a bookmark for @uri cannot be found then it is created.
 /*
 
-C function : g_bookmark_file_set_description
+C function
+
+g_bookmark_file_set_description
 */
 func (recv *BookmarkFile) SetDescription(uri string, description string) {
 	c_uri := C.CString(uri)
@@ -556,7 +596,9 @@ func (recv *BookmarkFile) SetDescription(uri string, description string) {
 // If no bookmark for @uri is found one is created.
 /*
 
-C function : g_bookmark_file_set_icon
+C function
+
+g_bookmark_file_set_icon
 */
 func (recv *BookmarkFile) SetIcon(uri string, href string, mimeType string) {
 	c_uri := C.CString(uri)
@@ -578,7 +620,9 @@ func (recv *BookmarkFile) SetIcon(uri string, href string, mimeType string) {
 // If a bookmark for @uri cannot be found then it is created.
 /*
 
-C function : g_bookmark_file_set_is_private
+C function
+
+g_bookmark_file_set_is_private
 */
 func (recv *BookmarkFile) SetIsPrivate(uri string, isPrivate bool) {
 	c_uri := C.CString(uri)
@@ -597,7 +641,9 @@ func (recv *BookmarkFile) SetIsPrivate(uri string, isPrivate bool) {
 // If a bookmark for @uri cannot be found then it is created.
 /*
 
-C function : g_bookmark_file_set_mime_type
+C function
+
+g_bookmark_file_set_mime_type
 */
 func (recv *BookmarkFile) SetMimeType(uri string, mimeType string) {
 	c_uri := C.CString(uri)
@@ -621,7 +667,9 @@ func (recv *BookmarkFile) SetMimeType(uri string, mimeType string) {
 // If a bookmark for @uri cannot be found then it is created.
 /*
 
-C function : g_bookmark_file_set_title
+C function
+
+g_bookmark_file_set_title
 */
 func (recv *BookmarkFile) SetTitle(uri string, title string) {
 	c_uri := C.CString(uri)
@@ -643,7 +691,9 @@ func (recv *BookmarkFile) SetTitle(uri string, title string) {
 // guaranteed to be atomic by using g_file_set_contents() internally.
 /*
 
-C function : g_bookmark_file_to_file
+C function
+
+g_bookmark_file_to_file
 */
 func (recv *BookmarkFile) ToFile(filename string) (bool, error) {
 	c_filename := C.CString(filename)
@@ -671,7 +721,9 @@ func (recv *BookmarkFile) ToFile(filename string) (bool, error) {
 // and @error is set to #G_KEY_FILE_ERROR_INVALID_VALUE.
 /*
 
-C function : g_key_file_get_double
+C function
+
+g_key_file_get_double
 */
 func (recv *KeyFile) GetDouble(groupName string, key string) (float64, error) {
 	c_group_name := C.CString(groupName)
@@ -699,7 +751,9 @@ func (recv *KeyFile) GetDouble(groupName string, key string) (float64, error) {
 // If @key cannot be found then it is created.
 /*
 
-C function : g_key_file_set_double
+C function
+
+g_key_file_set_double
 */
 func (recv *KeyFile) SetDouble(groupName string, key string, value float64) {
 	c_group_name := C.CString(groupName)
@@ -719,7 +773,9 @@ func (recv *KeyFile) SetDouble(groupName string, key string, value float64) {
 // @group_name.  If @key cannot be found then it is created.
 /*
 
-C function : g_key_file_set_double_list
+C function
+
+g_key_file_set_double_list
 */
 func (recv *KeyFile) SetDoubleList(groupName string, key string, list []float64) {
 	c_group_name := C.CString(groupName)
@@ -740,7 +796,9 @@ func (recv *KeyFile) SetDoubleList(groupName string, key string, list []float64)
 // Returns the description. See g_option_context_set_description().
 /*
 
-C function : g_option_context_get_description
+C function
+
+g_option_context_get_description
 */
 func (recv *OptionContext) GetDescription() string {
 	retC := C.g_option_context_get_description((*C.GOptionContext)(recv.native))
@@ -752,7 +810,9 @@ func (recv *OptionContext) GetDescription() string {
 // Returns the summary. See g_option_context_set_summary().
 /*
 
-C function : g_option_context_get_summary
+C function
+
+g_option_context_get_summary
 */
 func (recv *OptionContext) GetSummary() string {
 	retC := C.g_option_context_get_summary((*C.GOptionContext)(recv.native))
@@ -768,7 +828,9 @@ func (recv *OptionContext) GetSummary() string {
 // g_option_context_set_translate_func()).
 /*
 
-C function : g_option_context_set_description
+C function
+
+g_option_context_set_description
 */
 func (recv *OptionContext) SetDescription(description string) {
 	c_description := C.CString(description)
@@ -787,7 +849,9 @@ func (recv *OptionContext) SetDescription(description string) {
 // g_option_context_set_translation_domain()).
 /*
 
-C function : g_option_context_set_summary
+C function
+
+g_option_context_set_summary
 */
 func (recv *OptionContext) SetSummary(summary string) {
 	c_summary := C.CString(summary)
@@ -804,7 +868,9 @@ func (recv *OptionContext) SetSummary(summary string) {
 // user-visible strings.
 /*
 
-C function : g_option_context_set_translation_domain
+C function
+
+g_option_context_set_translation_domain
 */
 func (recv *OptionContext) SetTranslationDomain(domain string) {
 	c_domain := C.CString(domain)
@@ -883,7 +949,9 @@ func (recv *OptionContext) SetTranslationDomain(domain string) {
 // used for opportunistic checks from any thread.
 /*
 
-C function : g_source_is_destroyed
+C function
+
+g_source_is_destroyed
 */
 func (recv *Source) IsDestroyed() bool {
 	retC := C.g_source_is_destroyed((*C.GSource)(recv.native))
@@ -896,7 +964,9 @@ func (recv *Source) IsDestroyed() bool {
 // default implementations) of an unattached source.
 /*
 
-C function : g_source_set_funcs
+C function
+
+g_source_set_funcs
 */
 func (recv *Source) SetFuncs(funcs *SourceFuncs) {
 	c_funcs := (*C.GSourceFuncs)(C.NULL)
@@ -937,7 +1007,9 @@ func (recv *Source) SetFuncs(funcs *SourceFuncs) {
 // same conditions.
 /*
 
-C function : g_time_val_to_iso8601
+C function
+
+g_time_val_to_iso8601
 */
 func (recv *TimeVal) ToIso8601() string {
 	retC := C.g_time_val_to_iso8601((*C.GTimeVal)(recv.native))

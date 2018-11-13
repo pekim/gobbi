@@ -46,7 +46,9 @@ import "C"
 // Fills in @xalign and @yalign with the appropriate values of @cell.
 /*
 
-C function : gtk_cell_renderer_get_alignment
+C function
+
+gtk_cell_renderer_get_alignment
 */
 func (recv *CellRenderer) GetAlignment() (float32, float32) {
 	var c_xalign C.gfloat
@@ -65,7 +67,9 @@ func (recv *CellRenderer) GetAlignment() (float32, float32) {
 // Fills in @xpad and @ypad with the appropriate values of @cell.
 /*
 
-C function : gtk_cell_renderer_get_padding
+C function
+
+gtk_cell_renderer_get_padding
 */
 func (recv *CellRenderer) GetPadding() (int32, int32) {
 	var c_xpad C.gint
@@ -84,7 +88,9 @@ func (recv *CellRenderer) GetPadding() (int32, int32) {
 // Returns the cell renderer’s sensitivity.
 /*
 
-C function : gtk_cell_renderer_get_sensitive
+C function
+
+gtk_cell_renderer_get_sensitive
 */
 func (recv *CellRenderer) GetSensitive() bool {
 	retC := C.gtk_cell_renderer_get_sensitive((*C.GtkCellRenderer)(recv.native))
@@ -96,7 +102,9 @@ func (recv *CellRenderer) GetSensitive() bool {
 // Returns the cell renderer’s visibility.
 /*
 
-C function : gtk_cell_renderer_get_visible
+C function
+
+gtk_cell_renderer_get_visible
 */
 func (recv *CellRenderer) GetVisible() bool {
 	retC := C.gtk_cell_renderer_get_visible((*C.GtkCellRenderer)(recv.native))
@@ -108,7 +116,9 @@ func (recv *CellRenderer) GetVisible() bool {
 // Sets the renderer’s alignment within its available space.
 /*
 
-C function : gtk_cell_renderer_set_alignment
+C function
+
+gtk_cell_renderer_set_alignment
 */
 func (recv *CellRenderer) SetAlignment(xalign float32, yalign float32) {
 	c_xalign := (C.gfloat)(xalign)
@@ -123,7 +133,9 @@ func (recv *CellRenderer) SetAlignment(xalign float32, yalign float32) {
 // Sets the renderer’s padding.
 /*
 
-C function : gtk_cell_renderer_set_padding
+C function
+
+gtk_cell_renderer_set_padding
 */
 func (recv *CellRenderer) SetPadding(xpad int32, ypad int32) {
 	c_xpad := (C.gint)(xpad)
@@ -138,7 +150,9 @@ func (recv *CellRenderer) SetPadding(xpad int32, ypad int32) {
 // Sets the cell renderer’s sensitivity.
 /*
 
-C function : gtk_cell_renderer_set_sensitive
+C function
+
+gtk_cell_renderer_set_sensitive
 */
 func (recv *CellRenderer) SetSensitive(sensitive bool) {
 	c_sensitive :=
@@ -152,7 +166,9 @@ func (recv *CellRenderer) SetSensitive(sensitive bool) {
 // Sets the cell renderer’s visibility.
 /*
 
-C function : gtk_cell_renderer_set_visible
+C function
+
+gtk_cell_renderer_set_visible
 */
 func (recv *CellRenderer) SetVisible(visible bool) {
 	c_visible :=
@@ -167,7 +183,9 @@ func (recv *CellRenderer) SetVisible(visible bool) {
 // gtk_cell_renderer_toggle_set_activatable().
 /*
 
-C function : gtk_cell_renderer_toggle_get_activatable
+C function
+
+gtk_cell_renderer_toggle_get_activatable
 */
 func (recv *CellRendererToggle) GetActivatable() bool {
 	retC := C.gtk_cell_renderer_toggle_get_activatable((*C.GtkCellRendererToggle)(recv.native))
@@ -179,7 +197,9 @@ func (recv *CellRendererToggle) GetActivatable() bool {
 // Makes the cell renderer activatable.
 /*
 
-C function : gtk_cell_renderer_toggle_set_activatable
+C function
+
+gtk_cell_renderer_toggle_set_activatable
 */
 func (recv *CellRendererToggle) SetActivatable(setting bool) {
 	c_setting :=
@@ -193,7 +213,9 @@ func (recv *CellRendererToggle) SetActivatable(setting bool) {
 // Creates a new entry with the specified text buffer.
 /*
 
-C function : gtk_entry_new_with_buffer
+C function
+
+gtk_entry_new_with_buffer
 */
 func EntryNewWithBuffer(buffer *EntryBuffer) *Entry {
 	c_buffer := (*C.GtkEntryBuffer)(C.NULL)
@@ -211,7 +233,9 @@ func EntryNewWithBuffer(buffer *EntryBuffer) *Entry {
 // this widget.
 /*
 
-C function : gtk_entry_get_buffer
+C function
+
+gtk_entry_get_buffer
 */
 func (recv *Entry) GetBuffer() *EntryBuffer {
 	retC := C.gtk_entry_get_buffer((*C.GtkEntry)(recv.native))
@@ -224,7 +248,9 @@ func (recv *Entry) GetBuffer() *EntryBuffer {
 // this widget.
 /*
 
-C function : gtk_entry_set_buffer
+C function
+
+gtk_entry_set_buffer
 */
 func (recv *Entry) SetBuffer(buffer *EntryBuffer) {
 	c_buffer := (*C.GtkEntryBuffer)(C.NULL)
@@ -246,7 +272,9 @@ func (recv *Entry) SetBuffer(buffer *EntryBuffer) {
 // Optionally, specify initial text to set in the buffer.
 /*
 
-C function : gtk_entry_buffer_new
+C function
+
+gtk_entry_buffer_new
 */
 func EntryBufferNew(initialChars string, nInitialChars int32) *EntryBuffer {
 	c_initial_chars := C.CString(initialChars)
@@ -270,7 +298,9 @@ func EntryBufferNew(initialChars string, nInitialChars int32) *EntryBuffer {
 // Note that the positions are specified in characters, not bytes.
 /*
 
-C function : gtk_entry_buffer_delete_text
+C function
+
+gtk_entry_buffer_delete_text
 */
 func (recv *EntryBuffer) DeleteText(position uint32, nChars int32) uint32 {
 	c_position := (C.guint)(position)
@@ -286,7 +316,9 @@ func (recv *EntryBuffer) DeleteText(position uint32, nChars int32) uint32 {
 // Used when subclassing #GtkEntryBuffer
 /*
 
-C function : gtk_entry_buffer_emit_deleted_text
+C function
+
+gtk_entry_buffer_emit_deleted_text
 */
 func (recv *EntryBuffer) EmitDeletedText(position uint32, nChars uint32) {
 	c_position := (C.guint)(position)
@@ -301,7 +333,9 @@ func (recv *EntryBuffer) EmitDeletedText(position uint32, nChars uint32) {
 // Used when subclassing #GtkEntryBuffer
 /*
 
-C function : gtk_entry_buffer_emit_inserted_text
+C function
+
+gtk_entry_buffer_emit_inserted_text
 */
 func (recv *EntryBuffer) EmitInsertedText(position uint32, chars string, nChars uint32) {
 	c_position := (C.guint)(position)
@@ -320,7 +354,9 @@ func (recv *EntryBuffer) EmitInsertedText(position uint32, chars string, nChars 
 // See gtk_entry_buffer_get_length().
 /*
 
-C function : gtk_entry_buffer_get_bytes
+C function
+
+gtk_entry_buffer_get_bytes
 */
 func (recv *EntryBuffer) GetBytes() uint64 {
 	retC := C.gtk_entry_buffer_get_bytes((*C.GtkEntryBuffer)(recv.native))
@@ -332,7 +368,9 @@ func (recv *EntryBuffer) GetBytes() uint64 {
 // Retrieves the length in characters of the buffer.
 /*
 
-C function : gtk_entry_buffer_get_length
+C function
+
+gtk_entry_buffer_get_length
 */
 func (recv *EntryBuffer) GetLength() uint32 {
 	retC := C.gtk_entry_buffer_get_length((*C.GtkEntryBuffer)(recv.native))
@@ -345,7 +383,9 @@ func (recv *EntryBuffer) GetLength() uint32 {
 // @buffer. See gtk_entry_buffer_set_max_length().
 /*
 
-C function : gtk_entry_buffer_get_max_length
+C function
+
+gtk_entry_buffer_get_max_length
 */
 func (recv *EntryBuffer) GetMaxLength() int32 {
 	retC := C.gtk_entry_buffer_get_max_length((*C.GtkEntryBuffer)(recv.native))
@@ -360,7 +400,9 @@ func (recv *EntryBuffer) GetMaxLength() int32 {
 // unless this object emits a signal, or is finalized.
 /*
 
-C function : gtk_entry_buffer_get_text
+C function
+
+gtk_entry_buffer_get_text
 */
 func (recv *EntryBuffer) GetText() string {
 	retC := C.gtk_entry_buffer_get_text((*C.GtkEntryBuffer)(recv.native))
@@ -380,7 +422,9 @@ func (recv *EntryBuffer) GetText() string {
 // Note that the position and length are in characters, not in bytes.
 /*
 
-C function : gtk_entry_buffer_insert_text
+C function
+
+gtk_entry_buffer_insert_text
 */
 func (recv *EntryBuffer) InsertText(position uint32, chars string, nChars int32) uint32 {
 	c_position := (C.guint)(position)
@@ -401,7 +445,9 @@ func (recv *EntryBuffer) InsertText(position uint32, chars string, nChars int32)
 // will be truncated to fit.
 /*
 
-C function : gtk_entry_buffer_set_max_length
+C function
+
+gtk_entry_buffer_set_max_length
 */
 func (recv *EntryBuffer) SetMaxLength(maxLength int32) {
 	c_max_length := (C.gint)(maxLength)
@@ -419,7 +465,9 @@ func (recv *EntryBuffer) SetMaxLength(maxLength int32) {
 // Note that @n_chars is in characters, not in bytes.
 /*
 
-C function : gtk_entry_buffer_set_text
+C function
+
+gtk_entry_buffer_set_text
 */
 func (recv *EntryBuffer) SetText(chars string, nChars int32) {
 	c_chars := C.CString(chars)
@@ -435,7 +483,9 @@ func (recv *EntryBuffer) SetText(chars string, nChars int32) {
 // Returns the value of the ::item-padding property.
 /*
 
-C function : gtk_icon_view_get_item_padding
+C function
+
+gtk_icon_view_get_item_padding
 */
 func (recv *IconView) GetItemPadding() int32 {
 	retC := C.gtk_icon_view_get_item_padding((*C.GtkIconView)(recv.native))
@@ -448,7 +498,9 @@ func (recv *IconView) GetItemPadding() int32 {
 // around each of the icon view’s items.
 /*
 
-C function : gtk_icon_view_set_item_padding
+C function
+
+gtk_icon_view_set_item_padding
 */
 func (recv *IconView) SetItemPadding(itemPadding int32) {
 	c_item_padding := (C.gint)(itemPadding)
@@ -520,7 +572,9 @@ func infobar_closeHandler(_ *C.GObject, data C.gpointer) {
 // Creates a new #GtkInfoBar object.
 /*
 
-C function : gtk_info_bar_new
+C function
+
+gtk_info_bar_new
 */
 func InfoBarNew() *InfoBar {
 	retC := C.gtk_info_bar_new()
@@ -535,7 +589,9 @@ func InfoBarNew() *InfoBar {
 // is appended to the end of the message areas action area.
 /*
 
-C function : gtk_info_bar_add_action_widget
+C function
+
+gtk_info_bar_add_action_widget
 */
 func (recv *InfoBar) AddActionWidget(child *Widget, responseId int32) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -557,7 +613,9 @@ func (recv *InfoBar) AddActionWidget(child *Widget, responseId int32) {
 // need it.
 /*
 
-C function : gtk_info_bar_add_button
+C function
+
+gtk_info_bar_add_button
 */
 func (recv *InfoBar) AddButton(buttonText string, responseId int32) *Button {
 	c_button_text := C.CString(buttonText)
@@ -576,7 +634,9 @@ func (recv *InfoBar) AddButton(buttonText string, responseId int32) *Button {
 // Returns the action area of @info_bar.
 /*
 
-C function : gtk_info_bar_get_action_area
+C function
+
+gtk_info_bar_get_action_area
 */
 func (recv *InfoBar) GetActionArea() *Widget {
 	retC := C.gtk_info_bar_get_action_area((*C.GtkInfoBar)(recv.native))
@@ -588,7 +648,9 @@ func (recv *InfoBar) GetActionArea() *Widget {
 // Returns the content area of @info_bar.
 /*
 
-C function : gtk_info_bar_get_content_area
+C function
+
+gtk_info_bar_get_content_area
 */
 func (recv *InfoBar) GetContentArea() *Widget {
 	retC := C.gtk_info_bar_get_content_area((*C.GtkInfoBar)(recv.native))
@@ -600,7 +662,9 @@ func (recv *InfoBar) GetContentArea() *Widget {
 // Returns the message type of the message area.
 /*
 
-C function : gtk_info_bar_get_message_type
+C function
+
+gtk_info_bar_get_message_type
 */
 func (recv *InfoBar) GetMessageType() MessageType {
 	retC := C.gtk_info_bar_get_message_type((*C.GtkInfoBar)(recv.native))
@@ -612,7 +676,9 @@ func (recv *InfoBar) GetMessageType() MessageType {
 // Emits the “response” signal with the given @response_id.
 /*
 
-C function : gtk_info_bar_response
+C function
+
+gtk_info_bar_response
 */
 func (recv *InfoBar) Response(responseId int32) {
 	c_response_id := (C.gint)(responseId)
@@ -630,7 +696,9 @@ func (recv *InfoBar) Response(responseId int32) {
 // be added to a widget hierarchy.
 /*
 
-C function : gtk_info_bar_set_default_response
+C function
+
+gtk_info_bar_set_default_response
 */
 func (recv *InfoBar) SetDefaultResponse(responseId int32) {
 	c_response_id := (C.gint)(responseId)
@@ -645,7 +713,9 @@ func (recv *InfoBar) SetDefaultResponse(responseId int32) {
 // GTK+ uses this type to determine how the message is displayed.
 /*
 
-C function : gtk_info_bar_set_message_type
+C function
+
+gtk_info_bar_set_message_type
 */
 func (recv *InfoBar) SetMessageType(messageType MessageType) {
 	c_message_type := (C.GtkMessageType)(messageType)
@@ -660,7 +730,9 @@ func (recv *InfoBar) SetMessageType(messageType MessageType) {
 // A convenient way to sensitize/desensitize dialog buttons.
 /*
 
-C function : gtk_info_bar_set_response_sensitive
+C function
+
+gtk_info_bar_set_response_sensitive
 */
 func (recv *InfoBar) SetResponseSensitive(responseId int32, setting bool) {
 	c_response_id := (C.gint)(responseId)
@@ -741,7 +813,9 @@ func label_activateCurrentLinkHandler(_ *C.GObject, data C.gpointer) {
 // or for use in a #GtkWidget::query-tooltip handler.
 /*
 
-C function : gtk_label_get_current_uri
+C function
+
+gtk_label_get_current_uri
 */
 func (recv *Label) GetCurrentUri() string {
 	retC := C.gtk_label_get_current_uri((*C.GtkLabel)(recv.native))
@@ -754,7 +828,9 @@ func (recv *Label) GetCurrentUri() string {
 // of clicked links.
 /*
 
-C function : gtk_label_get_track_visited_links
+C function
+
+gtk_label_get_track_visited_links
 */
 func (recv *Label) GetTrackVisitedLinks() bool {
 	retC := C.gtk_label_get_track_visited_links((*C.GtkLabel)(recv.native))
@@ -767,7 +843,9 @@ func (recv *Label) GetTrackVisitedLinks() bool {
 // links (and use a different color for them).
 /*
 
-C function : gtk_label_set_track_visited_links
+C function
+
+gtk_label_set_track_visited_links
 */
 func (recv *Label) SetTrackVisitedLinks(trackLinks bool) {
 	c_track_links :=
@@ -782,7 +860,9 @@ func (recv *Label) SetTrackVisitedLinks(trackLinks bool) {
 // icons, regardless of their actual presence.
 /*
 
-C function : gtk_menu_get_reserve_toggle_size
+C function
+
+gtk_menu_get_reserve_toggle_size
 */
 func (recv *Menu) GetReserveToggleSize() bool {
 	retC := C.gtk_menu_get_reserve_toggle_size((*C.GtkMenu)(recv.native))
@@ -795,7 +875,9 @@ func (recv *Menu) GetReserveToggleSize() bool {
 // or icons, regardless of their actual presence.
 /*
 
-C function : gtk_menu_set_reserve_toggle_size
+C function
+
+gtk_menu_set_reserve_toggle_size
 */
 func (recv *Menu) SetReserveToggleSize(reserveToggleSize bool) {
 	c_reserve_toggle_size :=
@@ -872,7 +954,9 @@ func printoperation_updateCustomWidgetHandler(_ *C.GObject, c_widget *C.GtkWidge
 // Gets the value of #GtkPrintOperation:embed-page-setup property.
 /*
 
-C function : gtk_print_operation_get_embed_page_setup
+C function
+
+gtk_print_operation_get_embed_page_setup
 */
 func (recv *PrintOperation) GetEmbedPageSetup() bool {
 	retC := C.gtk_print_operation_get_embed_page_setup((*C.GtkPrintOperation)(recv.native))
@@ -884,7 +968,9 @@ func (recv *PrintOperation) GetEmbedPageSetup() bool {
 // Gets the value of #GtkPrintOperation:has-selection property.
 /*
 
-C function : gtk_print_operation_get_has_selection
+C function
+
+gtk_print_operation_get_has_selection
 */
 func (recv *PrintOperation) GetHasSelection() bool {
 	retC := C.gtk_print_operation_get_has_selection((*C.GtkPrintOperation)(recv.native))
@@ -904,7 +990,9 @@ func (recv *PrintOperation) GetHasSelection() bool {
 // This is typically used to track the progress of print operation.
 /*
 
-C function : gtk_print_operation_get_n_pages_to_print
+C function
+
+gtk_print_operation_get_n_pages_to_print
 */
 func (recv *PrintOperation) GetNPagesToPrint() int32 {
 	retC := C.gtk_print_operation_get_n_pages_to_print((*C.GtkPrintOperation)(recv.native))
@@ -916,7 +1004,9 @@ func (recv *PrintOperation) GetNPagesToPrint() int32 {
 // Gets the value of #GtkPrintOperation:support-selection property.
 /*
 
-C function : gtk_print_operation_get_support_selection
+C function
+
+gtk_print_operation_get_support_selection
 */
 func (recv *PrintOperation) GetSupportSelection() bool {
 	retC := C.gtk_print_operation_get_support_selection((*C.GtkPrintOperation)(recv.native))
@@ -929,7 +1019,9 @@ func (recv *PrintOperation) GetSupportSelection() bool {
 // Selected page setup is stored as default page setup in #GtkPrintOperation.
 /*
 
-C function : gtk_print_operation_set_embed_page_setup
+C function
+
+gtk_print_operation_set_embed_page_setup
 */
 func (recv *PrintOperation) SetEmbedPageSetup(embed bool) {
 	c_embed :=
@@ -947,7 +1039,9 @@ func (recv *PrintOperation) SetEmbedPageSetup(embed bool) {
 // #GtkPrintOperation::begin-print.
 /*
 
-C function : gtk_print_operation_set_has_selection
+C function
+
+gtk_print_operation_set_has_selection
 */
 func (recv *PrintOperation) SetHasSelection(hasSelection bool) {
 	c_has_selection :=
@@ -961,7 +1055,9 @@ func (recv *PrintOperation) SetHasSelection(hasSelection bool) {
 // Sets whether selection is supported by #GtkPrintOperation.
 /*
 
-C function : gtk_print_operation_set_support_selection
+C function
+
+gtk_print_operation_set_support_selection
 */
 func (recv *PrintOperation) SetSupportSelection(supportSelection bool) {
 	c_support_selection :=
@@ -975,7 +1071,9 @@ func (recv *PrintOperation) SetSupportSelection(supportSelection bool) {
 // Gets the value set by gtk_range_set_flippable().
 /*
 
-C function : gtk_range_get_flippable
+C function
+
+gtk_range_get_flippable
 */
 func (recv *Range) GetFlippable() bool {
 	retC := C.gtk_range_get_flippable((*C.GtkRange)(recv.native))
@@ -990,7 +1088,9 @@ func (recv *Range) GetFlippable() bool {
 // See gtk_widget_get_direction().
 /*
 
-C function : gtk_range_set_flippable
+C function
+
+gtk_range_set_flippable
 */
 func (recv *Range) SetFlippable(flippable bool) {
 	c_flippable :=
@@ -1004,7 +1104,9 @@ func (recv *Range) SetFlippable(flippable bool) {
 // Gets the title of this tray icon. See gtk_status_icon_set_title().
 /*
 
-C function : gtk_status_icon_get_title
+C function
+
+gtk_status_icon_get_title
 */
 func (recv *StatusIcon) GetTitle() string {
 	retC := C.gtk_status_icon_get_title((*C.GtkStatusIcon)(recv.native))
@@ -1019,7 +1121,9 @@ func (recv *StatusIcon) GetTitle() string {
 // readers to render the tray icon.
 /*
 
-C function : gtk_status_icon_set_title
+C function
+
+gtk_status_icon_set_title
 */
 func (recv *StatusIcon) SetTitle(title string) {
 	c_title := C.CString(title)
@@ -1038,7 +1142,9 @@ func (recv *StatusIcon) SetTitle(title string) {
 // See gtk_widget_set_app_paintable()
 /*
 
-C function : gtk_widget_get_app_paintable
+C function
+
+gtk_widget_get_app_paintable
 */
 func (recv *Widget) GetAppPaintable() bool {
 	retC := C.gtk_widget_get_app_paintable((*C.GtkWidget)(recv.native))
@@ -1051,7 +1157,9 @@ func (recv *Widget) GetAppPaintable() bool {
 // gtk_widget_set_can_default().
 /*
 
-C function : gtk_widget_get_can_default
+C function
+
+gtk_widget_get_can_default
 */
 func (recv *Widget) GetCanDefault() bool {
 	retC := C.gtk_widget_get_can_default((*C.GtkWidget)(recv.native))
@@ -1064,7 +1172,9 @@ func (recv *Widget) GetCanDefault() bool {
 // gtk_widget_set_can_focus().
 /*
 
-C function : gtk_widget_get_can_focus
+C function
+
+gtk_widget_get_can_focus
 */
 func (recv *Widget) GetCanFocus() bool {
 	retC := C.gtk_widget_get_can_focus((*C.GtkWidget)(recv.native))
@@ -1078,7 +1188,9 @@ func (recv *Widget) GetCanFocus() bool {
 // See gtk_widget_set_double_buffered()
 /*
 
-C function : gtk_widget_get_double_buffered
+C function
+
+gtk_widget_get_double_buffered
 */
 func (recv *Widget) GetDoubleBuffered() bool {
 	retC := C.gtk_widget_get_double_buffered((*C.GtkWidget)(recv.native))
@@ -1091,7 +1203,9 @@ func (recv *Widget) GetDoubleBuffered() bool {
 // gtk_widget_set_has_window().
 /*
 
-C function : gtk_widget_get_has_window
+C function
+
+gtk_widget_get_has_window
 */
 func (recv *Widget) GetHasWindow() bool {
 	retC := C.gtk_widget_get_has_window((*C.GtkWidget)(recv.native))
@@ -1107,7 +1221,9 @@ func (recv *Widget) GetHasWindow() bool {
 // See gtk_widget_set_receives_default().
 /*
 
-C function : gtk_widget_get_receives_default
+C function
+
+gtk_widget_get_receives_default
 */
 func (recv *Widget) GetReceivesDefault() bool {
 	retC := C.gtk_widget_get_receives_default((*C.GtkWidget)(recv.native))
@@ -1123,7 +1239,9 @@ func (recv *Widget) GetReceivesDefault() bool {
 // own and its parent widget’s sensitivity. See gtk_widget_is_sensitive().
 /*
 
-C function : gtk_widget_get_sensitive
+C function
+
+gtk_widget_get_sensitive
 */
 func (recv *Widget) GetSensitive() bool {
 	retC := C.gtk_widget_get_sensitive((*C.GtkWidget)(recv.native))
@@ -1135,7 +1253,9 @@ func (recv *Widget) GetSensitive() bool {
 // Returns the widget’s state. See gtk_widget_set_state().
 /*
 
-C function : gtk_widget_get_state
+C function
+
+gtk_widget_get_state
 */
 func (recv *Widget) GetState() StateType {
 	retC := C.gtk_widget_get_state((*C.GtkWidget)(recv.native))
@@ -1153,7 +1273,9 @@ func (recv *Widget) GetState() StateType {
 // See gtk_widget_set_visible().
 /*
 
-C function : gtk_widget_get_visible
+C function
+
+gtk_widget_get_visible
 */
 func (recv *Widget) GetVisible() bool {
 	retC := C.gtk_widget_get_visible((*C.GtkWidget)(recv.native))
@@ -1166,7 +1288,9 @@ func (recv *Widget) GetVisible() bool {
 // toplevel. See gtk_widget_set_can_default().
 /*
 
-C function : gtk_widget_has_default
+C function
+
+gtk_widget_has_default
 */
 func (recv *Widget) HasDefault() bool {
 	retC := C.gtk_widget_has_default((*C.GtkWidget)(recv.native))
@@ -1180,7 +1304,9 @@ func (recv *Widget) HasDefault() bool {
 // input focus, and only having the focus within a toplevel.
 /*
 
-C function : gtk_widget_has_focus
+C function
+
+gtk_widget_has_focus
 */
 func (recv *Widget) HasFocus() bool {
 	retC := C.gtk_widget_has_focus((*C.GtkWidget)(recv.native))
@@ -1195,7 +1321,9 @@ func (recv *Widget) HasFocus() bool {
 // See also gtk_grab_add().
 /*
 
-C function : gtk_widget_has_grab
+C function
+
+gtk_widget_has_grab
 */
 func (recv *Widget) HasGrab() bool {
 	retC := C.gtk_widget_has_grab((*C.GtkWidget)(recv.native))
@@ -1208,7 +1336,9 @@ func (recv *Widget) HasGrab() bool {
 // to if it is mapped and visible.
 /*
 
-C function : gtk_widget_is_drawable
+C function
+
+gtk_widget_is_drawable
 */
 func (recv *Widget) IsDrawable() bool {
 	retC := C.gtk_widget_is_drawable((*C.GtkWidget)(recv.native))
@@ -1221,7 +1351,9 @@ func (recv *Widget) IsDrawable() bool {
 // it is sensitive itself and also its parent widget is sensitive
 /*
 
-C function : gtk_widget_is_sensitive
+C function
+
+gtk_widget_is_sensitive
 */
 func (recv *Widget) IsSensitive() bool {
 	retC := C.gtk_widget_is_sensitive((*C.GtkWidget)(recv.native))
@@ -1237,7 +1369,9 @@ func (recv *Widget) IsSensitive() bool {
 // widget.
 /*
 
-C function : gtk_widget_is_toplevel
+C function
+
+gtk_widget_is_toplevel
 */
 func (recv *Widget) IsToplevel() bool {
 	retC := C.gtk_widget_is_toplevel((*C.GtkWidget)(recv.native))
@@ -1253,7 +1387,9 @@ func (recv *Widget) IsToplevel() bool {
 // “default”.
 /*
 
-C function : gtk_widget_set_can_default
+C function
+
+gtk_widget_set_can_default
 */
 func (recv *Widget) SetCanDefault(canDefault bool) {
 	c_can_default :=
@@ -1269,7 +1405,9 @@ func (recv *Widget) SetCanDefault(canDefault bool) {
 // widget.
 /*
 
-C function : gtk_widget_set_can_focus
+C function
+
+gtk_widget_set_can_focus
 */
 func (recv *Widget) SetCanFocus(canFocus bool) {
 	c_can_focus :=
@@ -1292,7 +1430,9 @@ func (recv *Widget) SetCanFocus(canFocus bool) {
 // and they should call it in their init() function.
 /*
 
-C function : gtk_widget_set_has_window
+C function
+
+gtk_widget_set_has_window
 */
 func (recv *Widget) SetHasWindow(hasWindow bool) {
 	c_has_window :=
@@ -1311,7 +1451,9 @@ func (recv *Widget) SetHasWindow(hasWindow bool) {
 // “default”.
 /*
 
-C function : gtk_widget_set_receives_default
+C function
+
+gtk_widget_set_receives_default
 */
 func (recv *Widget) SetReceivesDefault(receivesDefault bool) {
 	c_receives_default :=
@@ -1331,7 +1473,9 @@ func (recv *Widget) SetReceivesDefault(receivesDefault bool) {
 // some condition.
 /*
 
-C function : gtk_widget_set_visible
+C function
+
+gtk_widget_set_visible
 */
 func (recv *Widget) SetVisible(visible bool) {
 	c_visible :=
@@ -1355,7 +1499,9 @@ func (recv *Widget) SetVisible(visible bool) {
 // Note that this function does not add any reference to @window.
 /*
 
-C function : gtk_widget_set_window
+C function
+
+gtk_widget_set_window
 */
 func (recv *Widget) SetWindow(window *gdk.Window) {
 	c_window := (*C.GdkWindow)(C.NULL)

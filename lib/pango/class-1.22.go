@@ -20,7 +20,9 @@ import "C"
 // gtk_widget_get_pango_context().  Use those instead.
 /*
 
-C function : pango_font_map_create_context
+C function
+
+pango_font_map_create_context
 */
 func (recv *FontMap) CreateContext() *Context {
 	retC := C.pango_font_map_create_context((*C.PangoFontMap)(recv.native))
@@ -32,7 +34,9 @@ func (recv *FontMap) CreateContext() *Context {
 // Gets the Y position of baseline of the first line in @layout.
 /*
 
-C function : pango_layout_get_baseline
+C function
+
+pango_layout_get_baseline
 */
 func (recv *Layout) GetBaseline() int32 {
 	retC := C.pango_layout_get_baseline((*C.PangoLayout)(recv.native))
@@ -54,7 +58,9 @@ func (recv *Layout) GetBaseline() int32 {
 // pango_renderer_draw_glyphs().
 /*
 
-C function : pango_renderer_draw_glyph_item
+C function
+
+pango_renderer_draw_glyph_item
 */
 func (recv *Renderer) DrawGlyphItem(text string, glyphItem *GlyphItem, x int32, y int32) {
 	c_text := C.CString(text)

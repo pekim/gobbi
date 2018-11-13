@@ -21,7 +21,9 @@ import "C"
 // every iteration, if your first iteration is on line 0.)
 /*
 
-C function : gtk_text_iter_backward_visible_line
+C function
+
+gtk_text_iter_backward_visible_line
 */
 func (recv *TextIter) BackwardVisibleLine() bool {
 	retC := C.gtk_text_iter_backward_visible_line((*C.GtkTextIter)(recv.native))
@@ -39,7 +41,9 @@ func (recv *TextIter) BackwardVisibleLine() bool {
 // moves forward by 0 - @count lines.
 /*
 
-C function : gtk_text_iter_backward_visible_lines
+C function
+
+gtk_text_iter_backward_visible_lines
 */
 func (recv *TextIter) BackwardVisibleLines(count int32) bool {
 	c_count := (C.gint)(count)
@@ -56,7 +60,9 @@ func (recv *TextIter) BackwardVisibleLines(count int32) bool {
 // already at the end of the buffer.
 /*
 
-C function : gtk_text_iter_forward_visible_line
+C function
+
+gtk_text_iter_forward_visible_line
 */
 func (recv *TextIter) ForwardVisibleLine() bool {
 	retC := C.gtk_text_iter_forward_visible_line((*C.GtkTextIter)(recv.native))
@@ -74,7 +80,9 @@ func (recv *TextIter) ForwardVisibleLine() bool {
 // moves backward by 0 - @count lines.
 /*
 
-C function : gtk_text_iter_forward_visible_lines
+C function
+
+gtk_text_iter_forward_visible_lines
 */
 func (recv *TextIter) ForwardVisibleLines(count int32) bool {
 	c_count := (C.gint)(count)
@@ -88,7 +96,9 @@ func (recv *TextIter) ForwardVisibleLines(count int32) bool {
 // Returns the model that the row reference is monitoring.
 /*
 
-C function : gtk_tree_row_reference_get_model
+C function
+
+gtk_tree_row_reference_get_model
 */
 func (recv *TreeRowReference) GetModel() *TreeModel {
 	retC := C.gtk_tree_row_reference_get_model((*C.GtkTreeRowReference)(recv.native))

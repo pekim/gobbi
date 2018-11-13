@@ -22,7 +22,9 @@ import "C"
 // type's _get_type() method is called.
 /*
 
-C function : g_type_ensure
+C function
+
+g_type_ensure
 */
 func TypeEnsure(type_ Type) {
 	c_type := (C.GType)(type_)

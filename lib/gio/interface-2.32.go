@@ -33,7 +33,9 @@ import "C"
 // The action map takes its own reference on @action.
 /*
 
-C function : g_action_map_add_action
+C function
+
+g_action_map_add_action
 */
 func (recv *ActionMap) AddAction(action *Action) {
 	c_action := (*C.GAction)(action.ToC())
@@ -50,7 +52,9 @@ func (recv *ActionMap) AddAction(action *Action) {
 // If no such action exists, returns %NULL.
 /*
 
-C function : g_action_map_lookup_action
+C function
+
+g_action_map_lookup_action
 */
 func (recv *ActionMap) LookupAction(actionName string) *Action {
 	c_action_name := C.CString(actionName)
@@ -67,7 +71,9 @@ func (recv *ActionMap) LookupAction(actionName string) *Action {
 // If no action of this name is in the map then nothing happens.
 /*
 
-C function : g_action_map_remove_action
+C function
+
+g_action_map_remove_action
 */
 func (recv *ActionMap) RemoveAction(actionName string) {
 	c_action_name := C.CString(actionName)
@@ -81,7 +87,9 @@ func (recv *ActionMap) RemoveAction(actionName string) {
 // Gets the #GDBusObject that @interface_ belongs to, if any.
 /*
 
-C function : g_dbus_interface_dup_object
+C function
+
+g_dbus_interface_dup_object
 */
 func (recv *DBusInterface) DupObject() *DBusObject {
 	retC := C.g_dbus_interface_dup_object((*C.GDBusInterface)(recv.native))
@@ -93,7 +101,9 @@ func (recv *DBusInterface) DupObject() *DBusObject {
 // Gets the sort key for @drive, if any.
 /*
 
-C function : g_drive_get_sort_key
+C function
+
+g_drive_get_sort_key
 */
 func (recv *Drive) GetSortKey() string {
 	retC := C.g_drive_get_sort_key((*C.GDrive)(recv.native))
@@ -105,7 +115,9 @@ func (recv *Drive) GetSortKey() string {
 // Gets the sort key for @mount, if any.
 /*
 
-C function : g_mount_get_sort_key
+C function
+
+g_mount_get_sort_key
 */
 func (recv *Mount) GetSortKey() string {
 	retC := C.g_mount_get_sort_key((*C.GMount)(recv.native))
@@ -122,7 +134,9 @@ func (recv *Mount) GetSortKey() string {
 // There is also an implementation for use inside Flatpak sandboxes.
 /*
 
-C record/class : GNetworkMonitor
+C type
+
+GNetworkMonitor
 */
 type NetworkMonitor struct {
 	native *C.GNetworkMonitor
@@ -163,7 +177,9 @@ func (recv *NetworkMonitor) ToC() unsafe.Pointer {
 // want to block, you should use g_network_monitor_can_reach_async().
 /*
 
-C function : g_network_monitor_can_reach
+C function
+
+g_network_monitor_can_reach
 */
 func (recv *NetworkMonitor) CanReach(connectable *SocketConnectable, cancellable *Cancellable) (bool, error) {
 	c_connectable := (*C.GSocketConnectable)(connectable.ToC())
@@ -192,7 +208,9 @@ func (recv *NetworkMonitor) CanReach(connectable *SocketConnectable, cancellable
 // See g_network_monitor_can_reach_async().
 /*
 
-C function : g_network_monitor_can_reach_finish
+C function
+
+g_network_monitor_can_reach_finish
 */
 func (recv *NetworkMonitor) CanReachFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -216,7 +234,9 @@ func (recv *NetworkMonitor) CanReachFinish(result *AsyncResult) (bool, error) {
 // reachable. See #GNetworkMonitor:network-available for more details.
 /*
 
-C function : g_network_monitor_get_network_available
+C function
+
+g_network_monitor_get_network_available
 */
 func (recv *NetworkMonitor) GetNetworkAvailable() bool {
 	retC := C.g_network_monitor_get_network_available((*C.GNetworkMonitor)(recv.native))
@@ -232,7 +252,9 @@ func (recv *NetworkMonitor) GetNetworkAvailable() bool {
 // Gets the sort key for @volume, if any.
 /*
 
-C function : g_volume_get_sort_key
+C function
+
+g_volume_get_sort_key
 */
 func (recv *Volume) GetSortKey() string {
 	retC := C.g_volume_get_sort_key((*C.GVolume)(recv.native))

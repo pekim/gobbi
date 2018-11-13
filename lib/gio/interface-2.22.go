@@ -143,7 +143,9 @@ import "C"
 // ]|
 /*
 
-C record/class : GAsyncInitable
+C type
+
+GAsyncInitable
 */
 type AsyncInitable struct {
 	native *C.GAsyncInitable
@@ -171,7 +173,9 @@ func (recv *AsyncInitable) ToC() unsafe.Pointer {
 // See g_async_initable_init_async().
 /*
 
-C function : g_async_initable_init_finish
+C function
+
+g_async_initable_init_finish
 */
 func (recv *AsyncInitable) InitFinish(res *AsyncResult) (bool, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
@@ -193,7 +197,9 @@ func (recv *AsyncInitable) InitFinish(res *AsyncResult) (bool, error) {
 // calls, returning the created object or %NULL on error.
 /*
 
-C function : g_async_initable_new_finish
+C function
+
+g_async_initable_new_finish
 */
 func (recv *AsyncInitable) NewFinish(res *AsyncResult) (*gobject.Object, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
@@ -271,7 +277,9 @@ func drive_stopButtonHandler(_ *C.GObject, data C.gpointer) {
 // Checks if a drive can be started.
 /*
 
-C function : g_drive_can_start
+C function
+
+g_drive_can_start
 */
 func (recv *Drive) CanStart() bool {
 	retC := C.g_drive_can_start((*C.GDrive)(recv.native))
@@ -283,7 +291,9 @@ func (recv *Drive) CanStart() bool {
 // Checks if a drive can be started degraded.
 /*
 
-C function : g_drive_can_start_degraded
+C function
+
+g_drive_can_start_degraded
 */
 func (recv *Drive) CanStartDegraded() bool {
 	retC := C.g_drive_can_start_degraded((*C.GDrive)(recv.native))
@@ -295,7 +305,9 @@ func (recv *Drive) CanStartDegraded() bool {
 // Checks if a drive can be stopped.
 /*
 
-C function : g_drive_can_stop
+C function
+
+g_drive_can_stop
 */
 func (recv *Drive) CanStop() bool {
 	retC := C.g_drive_can_stop((*C.GDrive)(recv.native))
@@ -310,7 +322,9 @@ func (recv *Drive) CanStop() bool {
 // @error will be set to contain the errors and %FALSE will be returned.
 /*
 
-C function : g_drive_eject_with_operation_finish
+C function
+
+g_drive_eject_with_operation_finish
 */
 func (recv *Drive) EjectWithOperationFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -331,7 +345,9 @@ func (recv *Drive) EjectWithOperationFinish(result *AsyncResult) (bool, error) {
 // Gets a hint about how a drive can be started/stopped.
 /*
 
-C function : g_drive_get_start_stop_type
+C function
+
+g_drive_get_start_stop_type
 */
 func (recv *Drive) GetStartStopType() DriveStartStopType {
 	retC := C.g_drive_get_start_stop_type((*C.GDrive)(recv.native))
@@ -345,7 +361,9 @@ func (recv *Drive) GetStartStopType() DriveStartStopType {
 // Finishes starting a drive.
 /*
 
-C function : g_drive_start_finish
+C function
+
+g_drive_start_finish
 */
 func (recv *Drive) StartFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -368,7 +386,9 @@ func (recv *Drive) StartFinish(result *AsyncResult) (bool, error) {
 // Finishes stopping a drive.
 /*
 
-C function : g_drive_stop_finish
+C function
+
+g_drive_stop_finish
 */
 func (recv *Drive) StopFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -411,7 +431,9 @@ func (recv *Drive) StopFinish(result *AsyncResult) (bool, error) {
 // streaming, rather than just opening for reading or writing.
 /*
 
-C function : g_file_create_readwrite
+C function
+
+g_file_create_readwrite
 */
 func (recv *File) CreateReadwrite(flags FileCreateFlags, cancellable *Cancellable) (*FileIOStream, error) {
 	c_flags := (C.GFileCreateFlags)(flags)
@@ -440,7 +462,9 @@ func (recv *File) CreateReadwrite(flags FileCreateFlags, cancellable *Cancellabl
 // g_file_create_readwrite_async().
 /*
 
-C function : g_file_create_readwrite_finish
+C function
+
+g_file_create_readwrite_finish
 */
 func (recv *File) CreateReadwriteFinish(res *AsyncResult) (*FileIOStream, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
@@ -464,7 +488,9 @@ func (recv *File) CreateReadwriteFinish(res *AsyncResult) (*FileIOStream, error)
 // g_file_eject_mountable_with_operation().
 /*
 
-C function : g_file_eject_mountable_with_operation_finish
+C function
+
+g_file_eject_mountable_with_operation_finish
 */
 func (recv *File) EjectMountableWithOperationFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -500,7 +526,9 @@ func (recv *File) EjectMountableWithOperationFinish(result *AsyncResult) (bool, 
 // for reading or writing.
 /*
 
-C function : g_file_open_readwrite
+C function
+
+g_file_open_readwrite
 */
 func (recv *File) OpenReadwrite(cancellable *Cancellable) (*FileIOStream, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -527,7 +555,9 @@ func (recv *File) OpenReadwrite(cancellable *Cancellable) (*FileIOStream, error)
 // g_file_open_readwrite_async().
 /*
 
-C function : g_file_open_readwrite_finish
+C function
+
+g_file_open_readwrite_finish
 */
 func (recv *File) OpenReadwriteFinish(res *AsyncResult) (*FileIOStream, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
@@ -553,7 +583,9 @@ func (recv *File) OpenReadwriteFinish(res *AsyncResult) (*FileIOStream, error) {
 // with g_file_poll_mountable().
 /*
 
-C function : g_file_poll_mountable_finish
+C function
+
+g_file_poll_mountable_finish
 */
 func (recv *File) PollMountableFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -583,7 +615,9 @@ func (recv *File) PollMountableFinish(result *AsyncResult) (bool, error) {
 // rather than just opening for reading or writing.
 /*
 
-C function : g_file_replace_readwrite
+C function
+
+g_file_replace_readwrite
 */
 func (recv *File) ReplaceReadwrite(etag string, makeBackup bool, flags FileCreateFlags, cancellable *Cancellable) (*FileIOStream, error) {
 	c_etag := C.CString(etag)
@@ -618,7 +652,9 @@ func (recv *File) ReplaceReadwrite(etag string, makeBackup bool, flags FileCreat
 // g_file_replace_readwrite_async().
 /*
 
-C function : g_file_replace_readwrite_finish
+C function
+
+g_file_replace_readwrite_finish
 */
 func (recv *File) ReplaceReadwriteFinish(res *AsyncResult) (*FileIOStream, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
@@ -644,7 +680,9 @@ func (recv *File) ReplaceReadwriteFinish(res *AsyncResult) (*FileIOStream, error
 // with g_file_start_mountable().
 /*
 
-C function : g_file_start_mountable_finish
+C function
+
+g_file_start_mountable_finish
 */
 func (recv *File) StartMountableFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -670,7 +708,9 @@ func (recv *File) StartMountableFinish(result *AsyncResult) (bool, error) {
 // with g_file_stop_mountable().
 /*
 
-C function : g_file_stop_mountable_finish
+C function
+
+g_file_stop_mountable_finish
 */
 func (recv *File) StopMountableFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -694,7 +734,9 @@ func (recv *File) StopMountableFinish(result *AsyncResult) (bool, error) {
 // @file in a thread that has a thread-default context.
 /*
 
-C function : g_file_supports_thread_contexts
+C function
+
+g_file_supports_thread_contexts
 */
 func (recv *File) SupportsThreadContexts() bool {
 	retC := C.g_file_supports_thread_contexts((*C.GFile)(recv.native))
@@ -712,7 +754,9 @@ func (recv *File) SupportsThreadContexts() bool {
 // with g_file_unmount_mountable_with_operation().
 /*
 
-C function : g_file_unmount_mountable_with_operation_finish
+C function
+
+g_file_unmount_mountable_with_operation_finish
 */
 func (recv *File) UnmountMountableWithOperationFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -756,7 +800,9 @@ func (recv *File) UnmountMountableWithOperationFinish(result *AsyncResult) (bool
 // an exception on failure.
 /*
 
-C record/class : GInitable
+C type
+
+GInitable
 */
 type Initable struct {
 	native *C.GInitable
@@ -818,7 +864,9 @@ func (recv *Initable) ToC() unsafe.Pointer {
 // instance.
 /*
 
-C function : g_initable_init
+C function
+
+g_initable_init
 */
 func (recv *Initable) Init(cancellable *Cancellable) (bool, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -902,7 +950,9 @@ func mount_preUnmountHandler(_ *C.GObject, data C.gpointer) {
 // @error will be set to contain the errors and %FALSE will be returned.
 /*
 
-C function : g_mount_eject_with_operation_finish
+C function
+
+g_mount_eject_with_operation_finish
 */
 func (recv *Mount) EjectWithOperationFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -926,7 +976,9 @@ func (recv *Mount) EjectWithOperationFinish(result *AsyncResult) (bool, error) {
 // @error will be set to contain the errors and %FALSE will be returned.
 /*
 
-C function : g_mount_unmount_with_operation_finish
+C function
+
+g_mount_unmount_with_operation_finish
 */
 func (recv *Mount) UnmountWithOperationFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -947,7 +999,9 @@ func (recv *Mount) UnmountWithOperationFinish(result *AsyncResult) (bool, error)
 // Creates a #GSocketAddressEnumerator for @connectable.
 /*
 
-C function : g_socket_connectable_enumerate
+C function
+
+g_socket_connectable_enumerate
 */
 func (recv *SocketConnectable) Enumerate() *SocketAddressEnumerator {
 	retC := C.g_socket_connectable_enumerate((*C.GSocketConnectable)(recv.native))
@@ -962,7 +1016,9 @@ func (recv *SocketConnectable) Enumerate() *SocketAddressEnumerator {
 // @error will be set to contain the errors and %FALSE will be returned.
 /*
 
-C function : g_volume_eject_with_operation_finish
+C function
+
+g_volume_eject_with_operation_finish
 */
 func (recv *Volume) EjectWithOperationFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())

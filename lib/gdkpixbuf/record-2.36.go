@@ -15,7 +15,9 @@ import "C"
 // See gdk_pixbuf_save() for more information about option keys.
 /*
 
-C function : gdk_pixbuf_format_is_save_option_supported
+C function
+
+gdk_pixbuf_format_is_save_option_supported
 */
 func (recv *PixbufFormat) IsSaveOptionSupported(optionKey string) bool {
 	c_option_key := C.CString(optionKey)

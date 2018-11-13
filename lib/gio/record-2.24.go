@@ -25,7 +25,9 @@ import "C"
 // and may fail at any place.
 /*
 
-C record/class : GConverterIface
+C type
+
+GConverterIface
 */
 type ConverterIface struct {
 	native *C.GConverterIface

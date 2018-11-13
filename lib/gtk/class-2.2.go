@@ -19,7 +19,9 @@ import "C"
 // Gets the #GdkDisplay associated with @clipboard
 /*
 
-C function : gtk_clipboard_get_display
+C function
+
+gtk_clipboard_get_display
 */
 func (recv *Clipboard) GetDisplay() *gdk.Display {
 	retC := C.gtk_clipboard_get_display((*C.GtkClipboard)(recv.native))
@@ -31,7 +33,9 @@ func (recv *Clipboard) GetDisplay() *gdk.Display {
 // Creates a new #GtkInvisible object for a specified screen
 /*
 
-C function : gtk_invisible_new_for_screen
+C function
+
+gtk_invisible_new_for_screen
 */
 func InvisibleNewForScreen(screen *gdk.Screen) *Invisible {
 	c_screen := (*C.GdkScreen)(C.NULL)
@@ -48,7 +52,9 @@ func InvisibleNewForScreen(screen *gdk.Screen) *Invisible {
 // Returns the #GdkScreen object associated with @invisible
 /*
 
-C function : gtk_invisible_get_screen
+C function
+
+gtk_invisible_get_screen
 */
 func (recv *Invisible) GetScreen() *gdk.Screen {
 	retC := C.gtk_invisible_get_screen((*C.GtkInvisible)(recv.native))
@@ -60,7 +66,9 @@ func (recv *Invisible) GetScreen() *gdk.Screen {
 // Sets the #GdkScreen where the #GtkInvisible object will be displayed.
 /*
 
-C function : gtk_invisible_set_screen
+C function
+
+gtk_invisible_set_screen
 */
 func (recv *Invisible) SetScreen(screen *gdk.Screen) {
 	c_screen := (*C.GdkScreen)(C.NULL)
@@ -79,7 +87,9 @@ func (recv *Invisible) SetScreen(screen *gdk.Screen) {
 // Checks if the given iter is a valid iter for this #GtkListStore.
 /*
 
-C function : gtk_list_store_iter_is_valid
+C function
+
+gtk_list_store_iter_is_valid
 */
 func (recv *ListStore) IterIsValid(iter *TreeIter) bool {
 	c_iter := (*C.GtkTreeIter)(C.NULL)
@@ -98,7 +108,9 @@ func (recv *ListStore) IterIsValid(iter *TreeIter) bool {
 // will be moved to the start of the list.
 /*
 
-C function : gtk_list_store_move_after
+C function
+
+gtk_list_store_move_after
 */
 func (recv *ListStore) MoveAfter(iter *TreeIter, position *TreeIter) {
 	c_iter := (*C.GtkTreeIter)(C.NULL)
@@ -121,7 +133,9 @@ func (recv *ListStore) MoveAfter(iter *TreeIter, position *TreeIter) {
 // will be moved to the end of the list.
 /*
 
-C function : gtk_list_store_move_before
+C function
+
+gtk_list_store_move_before
 */
 func (recv *ListStore) MoveBefore(iter *TreeIter, position *TreeIter) {
 	c_iter := (*C.GtkTreeIter)(C.NULL)
@@ -143,7 +157,9 @@ func (recv *ListStore) MoveBefore(iter *TreeIter, position *TreeIter) {
 // this function only works with unsorted stores.
 /*
 
-C function : gtk_list_store_reorder
+C function
+
+gtk_list_store_reorder
 */
 func (recv *ListStore) Reorder(newOrder []int32) {
 	c_new_order := &newOrder[0]
@@ -157,7 +173,9 @@ func (recv *ListStore) Reorder(newOrder []int32) {
 // unsorted stores.
 /*
 
-C function : gtk_list_store_swap
+C function
+
+gtk_list_store_swap
 */
 func (recv *ListStore) Swap(a *TreeIter, b *TreeIter) {
 	c_a := (*C.GtkTreeIter)(C.NULL)
@@ -178,7 +196,9 @@ func (recv *ListStore) Swap(a *TreeIter, b *TreeIter) {
 // Sets the #GdkScreen on which the menu will be displayed.
 /*
 
-C function : gtk_menu_set_screen
+C function
+
+gtk_menu_set_screen
 */
 func (recv *Menu) SetScreen(screen *gdk.Screen) {
 	c_screen := (*C.GdkScreen)(C.NULL)
@@ -196,7 +216,9 @@ func (recv *Menu) SetScreen(screen *gdk.Screen) {
 // item.
 /*
 
-C function : gtk_menu_shell_select_first
+C function
+
+gtk_menu_shell_select_first
 */
 func (recv *MenuShell) SelectFirst(searchSensitive bool) {
 	c_search_sensitive :=
@@ -210,7 +232,9 @@ func (recv *MenuShell) SelectFirst(searchSensitive bool) {
 // Gets the number of pages in a notebook.
 /*
 
-C function : gtk_notebook_get_n_pages
+C function
+
+gtk_notebook_get_n_pages
 */
 func (recv *Notebook) GetNPages() int32 {
 	retC := C.gtk_notebook_get_n_pages((*C.GtkNotebook)(recv.native))
@@ -225,7 +249,9 @@ func (recv *Notebook) GetNPages() int32 {
 // Checks if the given iter is a valid iter for this #GtkTreeModelSort.
 /*
 
-C function : gtk_tree_model_sort_iter_is_valid
+C function
+
+gtk_tree_model_sort_iter_is_valid
 */
 func (recv *TreeModelSort) IterIsValid(iter *TreeIter) bool {
 	c_iter := (*C.GtkTreeIter)(C.NULL)
@@ -242,7 +268,9 @@ func (recv *TreeModelSort) IterIsValid(iter *TreeIter) bool {
 // Returns the number of rows that have been selected in @tree.
 /*
 
-C function : gtk_tree_selection_count_selected_rows
+C function
+
+gtk_tree_selection_count_selected_rows
 */
 func (recv *TreeSelection) CountSelectedRows() int32 {
 	retC := C.gtk_tree_selection_count_selected_rows((*C.GtkTreeSelection)(recv.native))
@@ -262,7 +290,9 @@ func (recv *TreeSelection) CountSelectedRows() int32 {
 // ]|
 /*
 
-C function : gtk_tree_selection_get_selected_rows
+C function
+
+gtk_tree_selection_get_selected_rows
 */
 func (recv *TreeSelection) GetSelectedRows() (*glib.List, *TreeModel) {
 	var c_model *C.GtkTreeModel
@@ -279,7 +309,9 @@ func (recv *TreeSelection) GetSelectedRows() (*glib.List, *TreeModel) {
 // inclusive.
 /*
 
-C function : gtk_tree_selection_unselect_range
+C function
+
+gtk_tree_selection_unselect_range
 */
 func (recv *TreeSelection) UnselectRange(startPath *TreePath, endPath *TreePath) {
 	c_start_path := (*C.GtkTreePath)(C.NULL)
@@ -303,7 +335,9 @@ func (recv *TreeSelection) UnselectRange(startPath *TreePath, endPath *TreePath)
 // Checks if the given iter is a valid iter for this #GtkTreeStore.
 /*
 
-C function : gtk_tree_store_iter_is_valid
+C function
+
+gtk_tree_store_iter_is_valid
 */
 func (recv *TreeStore) IterIsValid(iter *TreeIter) bool {
 	c_iter := (*C.GtkTreeIter)(C.NULL)
@@ -323,7 +357,9 @@ func (recv *TreeStore) IterIsValid(iter *TreeIter) bool {
 // to the start of the level.
 /*
 
-C function : gtk_tree_store_move_after
+C function
+
+gtk_tree_store_move_after
 */
 func (recv *TreeStore) MoveAfter(iter *TreeIter, position *TreeIter) {
 	c_iter := (*C.GtkTreeIter)(C.NULL)
@@ -347,7 +383,9 @@ func (recv *TreeStore) MoveAfter(iter *TreeIter, position *TreeIter) {
 // moved to the end of the level.
 /*
 
-C function : gtk_tree_store_move_before
+C function
+
+gtk_tree_store_move_before
 */
 func (recv *TreeStore) MoveBefore(iter *TreeIter, position *TreeIter) {
 	c_iter := (*C.GtkTreeIter)(C.NULL)
@@ -370,7 +408,9 @@ func (recv *TreeStore) MoveBefore(iter *TreeIter, position *TreeIter) {
 // unsorted stores.
 /*
 
-C function : gtk_tree_store_reorder
+C function
+
+gtk_tree_store_reorder
 */
 func (recv *TreeStore) Reorder(parent *TreeIter, newOrder []int32) {
 	c_parent := (*C.GtkTreeIter)(C.NULL)
@@ -389,7 +429,9 @@ func (recv *TreeStore) Reorder(parent *TreeIter, newOrder []int32) {
 // only works with unsorted stores.
 /*
 
-C function : gtk_tree_store_swap
+C function
+
+gtk_tree_store_swap
 */
 func (recv *TreeStore) Swap(a *TreeIter, b *TreeIter) {
 	c_a := (*C.GtkTreeIter)(C.NULL)
@@ -411,7 +453,9 @@ func (recv *TreeStore) Swap(a *TreeIter, b *TreeIter) {
 // @path as necessary.
 /*
 
-C function : gtk_tree_view_expand_to_path
+C function
+
+gtk_tree_view_expand_to_path
 */
 func (recv *TreeView) ExpandToPath(path *TreePath) {
 	c_path := (*C.GtkTreePath)(C.NULL)
@@ -440,7 +484,9 @@ func (recv *TreeView) ExpandToPath(path *TreePath) {
 // and the function will return without failing.
 /*
 
-C function : gtk_tree_view_set_cursor_on_cell
+C function
+
+gtk_tree_view_set_cursor_on_cell
 */
 func (recv *TreeView) SetCursorOnCell(path *TreePath, focusColumn *TreeViewColumn, focusCell *CellRenderer, startEditing bool) {
 	c_path := (*C.GtkTreePath)(C.NULL)
@@ -470,7 +516,9 @@ func (recv *TreeView) SetCursorOnCell(path *TreePath, focusColumn *TreeViewColum
 // 2 or more editable and activatable cells.
 /*
 
-C function : gtk_tree_view_column_focus_cell
+C function
+
+gtk_tree_view_column_focus_cell
 */
 func (recv *TreeViewColumn) FocusCell(cell *CellRenderer) {
 	c_cell := (*C.GtkCellRenderer)(C.NULL)
@@ -494,7 +542,9 @@ func (recv *TreeViewColumn) FocusCell(cell *CellRenderer) {
 // free those resources when the widget is unrealized.
 /*
 
-C function : gtk_widget_get_display
+C function
+
+gtk_widget_get_display
 */
 func (recv *Widget) GetDisplay() *gdk.Display {
 	retC := C.gtk_widget_get_display((*C.GtkWidget)(recv.native))
@@ -513,7 +563,9 @@ func (recv *Widget) GetDisplay() *gdk.Display {
 // and you should free those resources when the widget is unrealized.
 /*
 
-C function : gtk_widget_get_root_window
+C function
+
+gtk_widget_get_root_window
 */
 func (recv *Widget) GetRootWindow() *gdk.Window {
 	retC := C.gtk_widget_get_root_window((*C.GtkWidget)(recv.native))
@@ -532,7 +584,9 @@ func (recv *Widget) GetRootWindow() *gdk.Window {
 // free those resources when the widget is unrealized.
 /*
 
-C function : gtk_widget_get_screen
+C function
+
+gtk_widget_get_screen
 */
 func (recv *Widget) GetScreen() *gdk.Screen {
 	retC := C.gtk_widget_get_screen((*C.GtkWidget)(recv.native))
@@ -547,7 +601,9 @@ func (recv *Widget) GetScreen() *gdk.Screen {
 // window at the top.
 /*
 
-C function : gtk_widget_has_screen
+C function
+
+gtk_widget_has_screen
 */
 func (recv *Widget) HasScreen() bool {
 	retC := C.gtk_widget_has_screen((*C.GtkWidget)(recv.native))
@@ -568,7 +624,9 @@ func (recv *Widget) HasScreen() bool {
 // on #GtkWidget.
 /*
 
-C function : gtk_window_fullscreen
+C function
+
+gtk_window_fullscreen
 */
 func (recv *Window) Fullscreen() {
 	C.gtk_window_fullscreen((*C.GtkWindow)(recv.native))
@@ -579,7 +637,9 @@ func (recv *Window) Fullscreen() {
 // Returns the #GdkScreen associated with @window.
 /*
 
-C function : gtk_window_get_screen
+C function
+
+gtk_window_get_screen
 */
 func (recv *Window) GetScreen() *gdk.Screen {
 	retC := C.gtk_window_get_screen((*C.GtkWindow)(recv.native))
@@ -591,7 +651,9 @@ func (recv *Window) GetScreen() *gdk.Screen {
 // Gets the value set by gtk_window_set_skip_pager_hint().
 /*
 
-C function : gtk_window_get_skip_pager_hint
+C function
+
+gtk_window_get_skip_pager_hint
 */
 func (recv *Window) GetSkipPagerHint() bool {
 	retC := C.gtk_window_get_skip_pager_hint((*C.GtkWindow)(recv.native))
@@ -603,7 +665,9 @@ func (recv *Window) GetSkipPagerHint() bool {
 // Gets the value set by gtk_window_set_skip_taskbar_hint()
 /*
 
-C function : gtk_window_get_skip_taskbar_hint
+C function
+
+gtk_window_get_skip_taskbar_hint
 */
 func (recv *Window) GetSkipTaskbarHint() bool {
 	retC := C.gtk_window_get_skip_taskbar_hint((*C.GtkWindow)(recv.native))
@@ -619,7 +683,9 @@ func (recv *Window) GetSkipTaskbarHint() bool {
 // with a pixbuf created by loading the image from @filename.
 /*
 
-C function : gtk_window_set_icon_from_file
+C function
+
+gtk_window_set_icon_from_file
 */
 func (recv *Window) SetIconFromFile(filename string) (bool, error) {
 	c_filename := C.CString(filename)
@@ -643,7 +709,9 @@ func (recv *Window) SetIconFromFile(filename string) (bool, error) {
 // then remapped on the new screen.
 /*
 
-C function : gtk_window_set_screen
+C function
+
+gtk_window_set_screen
 */
 func (recv *Window) SetScreen(screen *gdk.Screen) {
 	c_screen := (*C.GdkScreen)(C.NULL)
@@ -663,7 +731,9 @@ func (recv *Window) SetScreen(screen *gdk.Screen) {
 // on the screen.)
 /*
 
-C function : gtk_window_set_skip_pager_hint
+C function
+
+gtk_window_set_skip_pager_hint
 */
 func (recv *Window) SetSkipPagerHint(setting bool) {
 	c_setting :=
@@ -678,7 +748,9 @@ func (recv *Window) SetSkipPagerHint(setting bool) {
 // the window in the task bar. This function sets this hint.
 /*
 
-C function : gtk_window_set_skip_taskbar_hint
+C function
+
+gtk_window_set_skip_taskbar_hint
 */
 func (recv *Window) SetSkipTaskbarHint(setting bool) {
 	c_setting :=
@@ -701,7 +773,9 @@ func (recv *Window) SetSkipTaskbarHint(setting bool) {
 // on #GtkWidget.
 /*
 
-C function : gtk_window_unfullscreen
+C function
+
+gtk_window_unfullscreen
 */
 func (recv *Window) Unfullscreen() {
 	C.gtk_window_unfullscreen((*C.GtkWindow)(recv.native))

@@ -15,7 +15,9 @@ import "C"
 // extension.
 /*
 
-C record/class : GdkEventOwnerChange
+C type
+
+GdkEventOwnerChange
 */
 type EventOwnerChange struct {
 	native *C.GdkEventOwnerChange

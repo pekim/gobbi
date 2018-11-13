@@ -22,7 +22,9 @@ import "C"
 // for more details about using icons in drag and drop.
 /*
 
-C function : gtk_drag_set_icon_gicon
+C function
+
+gtk_drag_set_icon_gicon
 */
 func DragSetIconGicon(context *gdk.DragContext, icon *gio.Icon, hotX int32, hotY int32) {
 	c_context := (*C.GdkDragContext)(C.NULL)
@@ -51,7 +53,9 @@ func DragSetIconGicon(context *gdk.DragContext, icon *gio.Icon, hotX int32, hotY
 // already have a Cairo surface.
 /*
 
-C function : gtk_render_icon
+C function
+
+gtk_render_icon
 */
 func RenderIcon(context *StyleContext, cr *cairo.Context, pixbuf *gdkpixbuf.Pixbuf, x float64, y float64) {
 	c_context := (*C.GtkStyleContext)(C.NULL)

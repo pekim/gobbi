@@ -23,7 +23,9 @@ import "C"
 // Tries to find a content type based on the mime type name.
 /*
 
-C function : g_content_type_from_mime_type
+C function
+
+g_content_type_from_mime_type
 */
 func ContentTypeFromMimeType(mimeType string) string {
 	c_mime_type := C.CString(mimeType)

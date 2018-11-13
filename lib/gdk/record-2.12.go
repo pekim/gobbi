@@ -17,7 +17,9 @@ import "C"
 // The returned string can be parsed by gdk_color_parse().
 /*
 
-C function : gdk_color_to_string
+C function
+
+gdk_color_to_string
 */
 func (recv *Color) ToString() string {
 	retC := C.gdk_color_to_string((*C.GdkColor)(recv.native))

@@ -14,7 +14,9 @@ import "C"
 // See gtk_file_chooser_set_show_hidden().
 /*
 
-C function : gtk_file_chooser_get_show_hidden
+C function
+
+gtk_file_chooser_get_show_hidden
 */
 func (recv *FileChooser) GetShowHidden() bool {
 	retC := C.gtk_file_chooser_get_show_hidden((*C.GtkFileChooser)(recv.native))
@@ -26,7 +28,9 @@ func (recv *FileChooser) GetShowHidden() bool {
 // Sets whether hidden files and folders are displayed in the file selector.
 /*
 
-C function : gtk_file_chooser_set_show_hidden
+C function
+
+gtk_file_chooser_set_show_hidden
 */
 func (recv *FileChooser) SetShowHidden(showHidden bool) {
 	c_show_hidden :=

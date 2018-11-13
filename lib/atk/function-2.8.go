@@ -12,7 +12,9 @@ import "C"
 // library the process is running against.
 /*
 
-C function : atk_get_binary_age
+C function
+
+atk_get_binary_age
 */
 func GetBinaryAge() uint32 {
 	retC := C.atk_get_binary_age()
@@ -25,7 +27,9 @@ func GetBinaryAge() uint32 {
 // ATK library the process is running against.
 /*
 
-C function : atk_get_interface_age
+C function
+
+atk_get_interface_age
 */
 func GetInterfaceAge() uint32 {
 	retC := C.atk_get_interface_age()
@@ -43,7 +47,9 @@ func GetInterfaceAge() uint32 {
 // included when compiling your code.
 /*
 
-C function : atk_get_major_version
+C function
+
+atk_get_major_version
 */
 func GetMajorVersion() uint32 {
 	retC := C.atk_get_major_version()
@@ -61,7 +67,9 @@ func GetMajorVersion() uint32 {
 // headers you have included when compiling your code.
 /*
 
-C function : atk_get_micro_version
+C function
+
+atk_get_micro_version
 */
 func GetMicroVersion() uint32 {
 	retC := C.atk_get_micro_version()
@@ -79,7 +87,9 @@ func GetMicroVersion() uint32 {
 // headers you have included when compiling your code.
 /*
 
-C function : atk_get_minor_version
+C function
+
+atk_get_minor_version
 */
 func GetMinorVersion() uint32 {
 	retC := C.atk_get_minor_version()

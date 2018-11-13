@@ -23,7 +23,9 @@ import "C"
 // The virtual function table for #GListModel.
 /*
 
-C record/class : GListModelInterface
+C type
+
+GListModelInterface
 */
 type ListModelInterface struct {
 	native *C.GListModelInterface
@@ -58,7 +60,9 @@ func (recv *ListModelInterface) ToC() unsafe.Pointer {
 // (as previously set by g_socket_connect()).
 /*
 
-C record/class : GOutputMessage
+C type
+
+GOutputMessage
 */
 type OutputMessage struct {
 	native *C.GOutputMessage
@@ -102,7 +106,9 @@ func (recv *OutputMessage) ToC() unsafe.Pointer {
 // Gets the name of @key.
 /*
 
-C function : g_settings_schema_key_get_name
+C function
+
+g_settings_schema_key_get_name
 */
 func (recv *SettingsSchemaKey) GetName() string {
 	retC := C.g_settings_schema_key_get_name((*C.GSettingsSchemaKey)(recv.native))

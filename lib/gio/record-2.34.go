@@ -36,7 +36,9 @@ import "C"
 // directory.
 /*
 
-C function : g_settings_schema_key_get_description
+C function
+
+g_settings_schema_key_get_description
 */
 func (recv *SettingsSchemaKey) GetDescription() string {
 	retC := C.g_settings_schema_key_get_description((*C.GSettingsSchemaKey)(recv.native))
@@ -60,7 +62,9 @@ func (recv *SettingsSchemaKey) GetDescription() string {
 // directory.
 /*
 
-C function : g_settings_schema_key_get_summary
+C function
+
+g_settings_schema_key_get_summary
 */
 func (recv *SettingsSchemaKey) GetSummary() string {
 	retC := C.g_settings_schema_key_get_summary((*C.GSettingsSchemaKey)(recv.native))
@@ -72,7 +76,9 @@ func (recv *SettingsSchemaKey) GetSummary() string {
 // Guesses the symbolic icon of a Unix mount point.
 /*
 
-C function : g_unix_mount_point_guess_symbolic_icon
+C function
+
+g_unix_mount_point_guess_symbolic_icon
 */
 func (recv *UnixMountPoint) GuessSymbolicIcon() *Icon {
 	retC := C.g_unix_mount_point_guess_symbolic_icon((*C.GUnixMountPoint)(recv.native))

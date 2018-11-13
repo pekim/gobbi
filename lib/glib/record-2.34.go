@@ -17,7 +17,9 @@ import "C"
 // bytes object, because a #GBytes should be immutable.
 /*
 
-C function : g_mapped_file_get_bytes
+C function
+
+g_mapped_file_get_bytes
 */
 func (recv *MappedFile) GetBytes() *Bytes {
 	retC := C.g_mapped_file_get_bytes((*C.GMappedFile)(recv.native))
@@ -29,7 +31,9 @@ func (recv *MappedFile) GetBytes() *Bytes {
 // Checks whether the pattern contains explicit CR or LF references.
 /*
 
-C function : g_regex_get_has_cr_or_lf
+C function
+
+g_regex_get_has_cr_or_lf
 */
 func (recv *Regex) GetHasCrOrLf() bool {
 	retC := C.g_regex_get_has_cr_or_lf((*C.GRegex)(recv.native))
@@ -48,7 +52,9 @@ func (recv *Regex) GetHasCrOrLf() bool {
 // equal to the "len" member.
 /*
 
-C function : g_string_free_to_bytes
+C function
+
+g_string_free_to_bytes
 */
 func (recv *String) FreeToBytes() *Bytes {
 	retC := C.g_string_free_to_bytes((*C.GString)(recv.native))

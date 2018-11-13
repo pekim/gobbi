@@ -23,7 +23,9 @@ import "C"
 // output values will be in the same range.
 /*
 
-C function : gtk_rgb_to_hsv
+C function
+
+gtk_rgb_to_hsv
 */
 func RgbToHsv(r float64, g float64, b float64) (float64, float64, float64) {
 	c_r := (C.gdouble)(r)
@@ -58,7 +60,9 @@ func RgbToHsv(r float64, g float64, b float64) (float64, float64, float64) {
 // sandboxed applications for example.
 /*
 
-C function : gtk_show_uri
+C function
+
+gtk_show_uri
 */
 func ShowUri(screen *gdk.Screen, uri string, timestamp uint32) (bool, error) {
 	c_screen := (*C.GdkScreen)(C.NULL)
@@ -90,7 +94,9 @@ func ShowUri(screen *gdk.Screen, uri string, timestamp uint32) (bool, error) {
 // will automatically be destroyed upon test function teardown.
 /*
 
-C function : gtk_test_create_simple_window
+C function
+
+gtk_test_create_simple_window
 */
 func TestCreateSimpleWindow(windowTitle string, dialogText string) *Widget {
 	c_window_title := C.CString(windowTitle)
@@ -118,7 +124,9 @@ func TestCreateSimpleWindow(windowTitle string, dialogText string) *Widget {
 // predetermined locales, see gtk_test_init() for more details.
 /*
 
-C function : gtk_test_find_label
+C function
+
+gtk_test_find_label
 */
 func TestFindLabel(widget *Widget, labelPattern string) *Widget {
 	c_widget := (*C.GtkWidget)(C.NULL)
@@ -144,7 +152,9 @@ func TestFindLabel(widget *Widget, labelPattern string) *Widget {
 // button or text entry widget, given its corresponding label widget.
 /*
 
-C function : gtk_test_find_sibling
+C function
+
+gtk_test_find_sibling
 */
 func TestFindSibling(baseWidget *Widget, widgetType gobject.Type) *Widget {
 	c_base_widget := (*C.GtkWidget)(C.NULL)
@@ -169,7 +179,9 @@ func TestFindSibling(baseWidget *Widget, widgetType gobject.Type) *Widget {
 // such widgets and synthesizing widget events.
 /*
 
-C function : gtk_test_find_widget
+C function
+
+gtk_test_find_widget
 */
 func TestFindWidget(widget *Widget, labelPattern string, widgetType gobject.Type) *Widget {
 	c_widget := (*C.GtkWidget)(C.NULL)
@@ -202,7 +214,9 @@ func TestFindWidget(widget *Widget, labelPattern string, widgetType gobject.Type
 // g_type_from_name() after calling this function.
 /*
 
-C function : gtk_test_register_all_types
+C function
+
+gtk_test_register_all_types
 */
 func TestRegisterAllTypes() {
 	C.gtk_test_register_all_types()
@@ -217,7 +231,9 @@ func TestRegisterAllTypes() {
 // as passed in to gtk_test_slider_set_perc().
 /*
 
-C function : gtk_test_slider_get_value
+C function
+
+gtk_test_slider_get_value
 */
 func TestSliderGetValue(widget *Widget) float64 {
 	c_widget := (*C.GtkWidget)(C.NULL)
@@ -238,7 +254,9 @@ func TestSliderGetValue(widget *Widget) float64 {
 // @percentage argument.
 /*
 
-C function : gtk_test_slider_set_perc
+C function
+
+gtk_test_slider_set_perc
 */
 func TestSliderSetPerc(widget *Widget, percentage float64) {
 	c_widget := (*C.GtkWidget)(C.NULL)
@@ -258,7 +276,9 @@ func TestSliderSetPerc(widget *Widget, percentage float64) {
 // spin button’s value.
 /*
 
-C function : gtk_test_spin_button_click
+C function
+
+gtk_test_spin_button_click
 */
 func TestSpinButtonClick(spinner *SpinButton, button uint32, upwards bool) bool {
 	c_spinner := (*C.GtkSpinButton)(C.NULL)
@@ -281,7 +301,9 @@ func TestSpinButtonClick(spinner *SpinButton, button uint32, upwards bool) bool 
 // GtkEditable (entry and text widgets) or GtkTextView.
 /*
 
-C function : gtk_test_text_get
+C function
+
+gtk_test_text_get
 */
 func TestTextGet(widget *Widget) string {
 	c_widget := (*C.GtkWidget)(C.NULL)
@@ -300,7 +322,9 @@ func TestTextGet(widget *Widget) string {
 // GtkEditable (entry and text widgets) or GtkTextView.
 /*
 
-C function : gtk_test_text_set
+C function
+
+gtk_test_text_set
 */
 func TestTextSet(widget *Widget, string string) {
 	c_widget := (*C.GtkWidget)(C.NULL)
@@ -327,7 +351,9 @@ func TestTextSet(widget *Widget, string string) {
 // location, see gdk_test_simulate_button() for details.
 /*
 
-C function : gtk_test_widget_click
+C function
+
+gtk_test_widget_click
 */
 func TestWidgetClick(widget *Widget, button uint32, modifiers gdk.ModifierType) bool {
 	c_widget := (*C.GtkWidget)(C.NULL)
@@ -355,7 +381,9 @@ func TestWidgetClick(widget *Widget, button uint32, modifiers gdk.ModifierType) 
 // location, see gdk_test_simulate_key() for details.
 /*
 
-C function : gtk_test_widget_send_key
+C function
+
+gtk_test_widget_send_key
 */
 func TestWidgetSendKey(widget *Widget, keyval uint32, modifiers gdk.ModifierType) bool {
 	c_widget := (*C.GtkWidget)(C.NULL)

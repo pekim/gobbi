@@ -20,7 +20,9 @@ import "C"
 // is oriented correctly.
 /*
 
-C function : gdk_pixbuf_apply_embedded_orientation
+C function
+
+gdk_pixbuf_apply_embedded_orientation
 */
 func (recv *Pixbuf) ApplyEmbeddedOrientation() *Pixbuf {
 	retC := C.gdk_pixbuf_apply_embedded_orientation((*C.GdkPixbuf)(recv.native))

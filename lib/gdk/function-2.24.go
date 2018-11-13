@@ -20,7 +20,9 @@ import "C"
 // visible part of @window, so use this function with care.
 /*
 
-C function : gdk_cairo_set_source_window
+C function
+
+gdk_cairo_set_source_window
 */
 func CairoSetSourceWindow(cr *cairo.Context, window *Window, x float64, y float64) {
 	c_cr := (*C.cairo_t)(C.NULL)

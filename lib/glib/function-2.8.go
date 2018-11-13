@@ -26,7 +26,9 @@ import "C"
 // See your C library manual for more details about access().
 /*
 
-C function : g_access
+C function
+
+g_access
 */
 func Access(filename string, mode int32) int32 {
 	c_filename := C.CString(filename)
@@ -50,7 +52,9 @@ func Access(filename string, mode int32) int32 {
 // See your C library manual for more details about chdir().
 /*
 
-C function : g_chdir
+C function
+
+g_chdir
 */
 func Chdir(path string) int32 {
 	c_path := C.CString(path)
@@ -66,7 +70,9 @@ func Chdir(path string) int32 {
 // See g_datalist_set_flags().
 /*
 
-C function : g_datalist_get_flags
+C function
+
+g_datalist_get_flags
 */
 func DatalistGetFlags(datalist *Data) uint32 {
 	c_datalist := (**C.GData)(C.NULL)
@@ -88,7 +94,9 @@ func DatalistGetFlags(datalist *Data) uint32 {
 // example.)
 /*
 
-C function : g_datalist_set_flags
+C function
+
+g_datalist_set_flags
 */
 func DatalistSetFlags(datalist *Data, flags uint32) {
 	c_datalist := (**C.GData)(C.NULL)
@@ -106,7 +114,9 @@ func DatalistSetFlags(datalist *Data, flags uint32) {
 // Turns off flag values for a data list. See g_datalist_unset_flags()
 /*
 
-C function : g_datalist_unset_flags
+C function
+
+g_datalist_unset_flags
 */
 func DatalistUnsetFlags(datalist *Data, flags uint32) {
 	c_datalist := (**C.GData)(C.NULL)
@@ -148,7 +158,9 @@ func DatalistUnsetFlags(datalist *Data, flags uint32) {
 // to 7 characters to @filename.
 /*
 
-C function : g_file_set_contents
+C function
+
+g_file_set_contents
 */
 func FileSetContents(filename string, contents []uint8) (bool, error) {
 	c_filename := C.CString(filename)
@@ -187,7 +199,9 @@ func FileSetContents(filename string, contents []uint8) (bool, error) {
 // The encoding of the returned string is UTF-8.
 /*
 
-C function : g_get_host_name
+C function
+
+g_get_host_name
 */
 func GetHostName() string {
 	retC := C.g_get_host_name()
@@ -202,7 +216,9 @@ func GetHostName() string {
 // parent directories as needed, too.
 /*
 
-C function : g_mkdir_with_parents
+C function
+
+g_mkdir_with_parents
 */
 func MkdirWithParents(pathname string, mode int32) int32 {
 	c_pathname := C.CString(pathname)
@@ -220,7 +236,9 @@ func MkdirWithParents(pathname string, mode int32) int32 {
 // failure. Contrast with g_malloc0(), which aborts the program on failure.
 /*
 
-C function : g_try_malloc0
+C function
+
+g_try_malloc0
 */
 func TryMalloc0(nBytes uint64) uintptr {
 	c_n_bytes := (C.gsize)(nBytes)
@@ -244,7 +262,9 @@ func TryMalloc0(nBytes uint64) uintptr {
 // Note that this function depends on the [current locale][setlocale].
 /*
 
-C function : g_utf8_collate_key_for_filename
+C function
+
+g_utf8_collate_key_for_filename
 */
 func Utf8CollateKeyForFilename(str string, len int64) string {
 	c_str := C.CString(str)

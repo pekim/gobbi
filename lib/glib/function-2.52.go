@@ -23,7 +23,9 @@ import "C"
 // readable as-is.
 /*
 
-C function : g_utf8_make_valid
+C function
+
+g_utf8_make_valid
 */
 func Utf8MakeValid(str string, len int64) string {
 	c_str := C.CString(str)
@@ -48,7 +50,9 @@ func Utf8MakeValid(str string, len int64) string {
 // as per the aforementioned RFC.
 /*
 
-C function : g_uuid_string_is_valid
+C function
+
+g_uuid_string_is_valid
 */
 func UuidStringIsValid(str string) bool {
 	c_str := C.CString(str)
@@ -63,7 +67,9 @@ func UuidStringIsValid(str string) bool {
 // Generates a random UUID (RFC 4122 version 4) as a string.
 /*
 
-C function : g_uuid_string_random
+C function
+
+g_uuid_string_random
 */
 func UuidStringRandom() string {
 	retC := C.g_uuid_string_random()

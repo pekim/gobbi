@@ -35,7 +35,9 @@ import "C"
 // a temporary file could not be created.
 /*
 
-C function : g_file_new_tmp
+C function
+
+g_file_new_tmp
 */
 func FileNewTmp(tmpl string) (*File, *FileIOStream, error) {
 	c_tmpl := C.CString(tmpl)
@@ -61,7 +63,9 @@ func FileNewTmp(tmpl string) (*File, *FileIOStream, error) {
 // Gets the default #GNetworkMonitor for the system.
 /*
 
-C function : g_network_monitor_get_default
+C function
+
+g_network_monitor_get_default
 */
 func NetworkMonitorGetDefault() *NetworkMonitor {
 	retC := C.g_network_monitor_get_default()
@@ -73,7 +77,9 @@ func NetworkMonitorGetDefault() *NetworkMonitor {
 // Gets the #GResource Error Quark.
 /*
 
-C function : g_resource_error_quark
+C function
+
+g_resource_error_quark
 */
 func ResourceErrorQuark() glib.Quark {
 	retC := C.g_resource_error_quark()
@@ -89,7 +95,9 @@ func ResourceErrorQuark() glib.Quark {
 // to register it with g_resources_register().
 /*
 
-C function : g_resource_load
+C function
+
+g_resource_load
 */
 func ResourceLoad(filename string) (*Resource, error) {
 	c_filename := C.CString(filename)
@@ -116,7 +124,9 @@ func ResourceLoad(filename string) (*Resource, error) {
 // @lookup_flags controls the behaviour of the lookup.
 /*
 
-C function : g_resources_get_info
+C function
+
+g_resources_get_info
 */
 func ResourcesGetInfo(path string, lookupFlags ResourceLookupFlags) (bool, uint64, uint32, error) {
 	c_path := C.CString(path)
@@ -161,7 +171,9 @@ func ResourcesGetInfo(path string, lookupFlags ResourceLookupFlags) (bool, uint6
 // @lookup_flags controls the behaviour of the lookup.
 /*
 
-C function : g_resources_lookup_data
+C function
+
+g_resources_lookup_data
 */
 func ResourcesLookupData(path string, lookupFlags ResourceLookupFlags) (*glib.Bytes, error) {
 	c_path := C.CString(path)
@@ -189,7 +201,9 @@ func ResourcesLookupData(path string, lookupFlags ResourceLookupFlags) (*glib.By
 // @lookup_flags controls the behaviour of the lookup.
 /*
 
-C function : g_resources_open_stream
+C function
+
+g_resources_open_stream
 */
 func ResourcesOpenStream(path string, lookupFlags ResourceLookupFlags) (*InputStream, error) {
 	c_path := C.CString(path)
@@ -215,7 +229,9 @@ func ResourcesOpenStream(path string, lookupFlags ResourceLookupFlags) (*InputSt
 // with the global resource lookup functions like g_resources_lookup_data().
 /*
 
-C function : g_resources_register
+C function
+
+g_resources_register
 */
 func ResourcesRegister(resource *Resource) {
 	c_resource := (*C.GResource)(C.NULL)
@@ -231,7 +247,9 @@ func ResourcesRegister(resource *Resource) {
 // Unregisters the resource from the process-global set of resources.
 /*
 
-C function : g_resources_unregister
+C function
+
+g_resources_unregister
 */
 func ResourcesUnregister(resource *Resource) {
 	c_resource := (*C.GResource)(C.NULL)
@@ -259,7 +277,9 @@ func ResourcesUnregister(resource *Resource) {
 // recursively.
 /*
 
-C function : g_settings_schema_source_get_default
+C function
+
+g_settings_schema_source_get_default
 */
 func SettingsSchemaSourceGetDefault() *SettingsSchemaSource {
 	retC := C.g_settings_schema_source_get_default()

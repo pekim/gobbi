@@ -13,7 +13,9 @@ import "C"
 // Frees a #PangoGlyphItem and resources to which it points.
 /*
 
-C function : pango_glyph_item_free
+C function
+
+pango_glyph_item_free
 */
 func (recv *GlyphItem) Free() {
 	C.pango_glyph_item_free((*C.PangoGlyphItem)(recv.native))
@@ -33,7 +35,9 @@ func (recv *GlyphItem) Free() {
 // </programlisting>
 /*
 
-C record/class : PangoMatrix
+C type
+
+PangoMatrix
 */
 type Matrix struct {
 	native *C.PangoMatrix
@@ -86,7 +90,9 @@ func (recv *Matrix) ToC() unsafe.Pointer {
 // given by @new_matrix then applying the original transformation.
 /*
 
-C function : pango_matrix_concat
+C function
+
+pango_matrix_concat
 */
 func (recv *Matrix) Concat(newMatrix *Matrix) {
 	c_new_matrix := (*C.PangoMatrix)(C.NULL)
@@ -102,7 +108,9 @@ func (recv *Matrix) Concat(newMatrix *Matrix) {
 // Copies a #PangoMatrix.
 /*
 
-C function : pango_matrix_copy
+C function
+
+pango_matrix_copy
 */
 func (recv *Matrix) Copy() *Matrix {
 	retC := C.pango_matrix_copy((*C.PangoMatrix)(recv.native))
@@ -119,7 +127,9 @@ func (recv *Matrix) Copy() *Matrix {
 // Free a #PangoMatrix created with pango_matrix_copy().
 /*
 
-C function : pango_matrix_free
+C function
+
+pango_matrix_free
 */
 func (recv *Matrix) Free() {
 	C.pango_matrix_free((*C.PangoMatrix)(recv.native))
@@ -132,7 +142,9 @@ func (recv *Matrix) Free() {
 // counter-clockwise then applying the original transformation.
 /*
 
-C function : pango_matrix_rotate
+C function
+
+pango_matrix_rotate
 */
 func (recv *Matrix) Rotate(degrees float64) {
 	c_degrees := (C.double)(degrees)
@@ -148,7 +160,9 @@ func (recv *Matrix) Rotate(degrees float64) {
 // transformation.
 /*
 
-C function : pango_matrix_scale
+C function
+
+pango_matrix_scale
 */
 func (recv *Matrix) Scale(scaleX float64, scaleY float64) {
 	c_scale_x := (C.double)(scaleX)
@@ -165,7 +179,9 @@ func (recv *Matrix) Scale(scaleX float64, scaleY float64) {
 // then applying the original transformation.
 /*
 
-C function : pango_matrix_translate
+C function
+
+pango_matrix_translate
 */
 func (recv *Matrix) Translate(tx float64, ty float64) {
 	c_tx := (C.double)(tx)

@@ -27,7 +27,9 @@ import "C"
 // assumed to communicate with the server identified by @server_identity.
 /*
 
-C function : g_dtls_client_connection_new
+C function
+
+g_dtls_client_connection_new
 */
 func DtlsClientConnectionNew(baseSocket *DatagramBased, serverIdentity *SocketConnectable) (*DtlsClientConnection, error) {
 	c_base_socket := (*C.GDatagramBased)(baseSocket.ToC())
@@ -50,7 +52,9 @@ func DtlsClientConnectionNew(baseSocket *DatagramBased, serverIdentity *SocketCo
 // Creates a new #GDtlsServerConnection wrapping @base_socket.
 /*
 
-C function : g_dtls_server_connection_new
+C function
+
+g_dtls_server_connection_new
 */
 func DtlsServerConnectionNew(baseSocket *DatagramBased, certificate *TlsCertificate) (*DtlsServerConnection, error) {
 	c_base_socket := (*C.GDatagramBased)(baseSocket.ToC())

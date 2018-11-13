@@ -53,7 +53,9 @@ import "C"
 // #GtkCssProvider::parsing-error signal.
 /*
 
-C function : gtk_css_provider_load_from_resource
+C function
+
+gtk_css_provider_load_from_resource
 */
 func (recv *CssProvider) LoadFromResource(resourcePath string) {
 	c_resource_path := C.CString(resourcePath)
@@ -73,7 +75,9 @@ func (recv *CssProvider) LoadFromResource(resourcePath string) {
 // such as search-as-you-type entries.
 /*
 
-C function : gtk_entry_grab_focus_without_selecting
+C function
+
+gtk_entry_grab_focus_without_selecting
 */
 func (recv *Entry) GrabFocusWithoutSelecting() {
 	C.gtk_entry_grab_focus_without_selecting((*C.GtkEntry)(recv.native))
@@ -96,7 +100,7 @@ func (recv *Entry) GrabFocusWithoutSelecting() {
 // the widget's drawing area, and it is kept updated when the size and
 // position of the drawing area changes.
 //
-// ## Drawing with GtkGLArea ##
+// Drawing with GtkGLArea ##
 //
 // The simplest way to draw using OpenGL commands in a #GtkGLArea is to
 // create a widget instance and connect to the #GtkGLArea::render signal:
@@ -182,7 +186,9 @@ func (recv *Entry) GrabFocusWithoutSelecting() {
 // you should use the #GtkGLArea::create-context signal.
 /*
 
-C record/class : GtkGLArea
+C type
+
+GtkGLArea
 */
 type GLArea struct {
 	native *C.GtkGLArea
@@ -229,7 +235,9 @@ func CastToGLArea(object *gobject.Object) *GLArea {
 // Creates a new #GtkGLArea widget.
 /*
 
-C function : gtk_gl_area_new
+C function
+
+gtk_gl_area_new
 */
 func GLAreaNew() *GLArea {
 	retC := C.gtk_gl_area_new()
@@ -247,7 +255,9 @@ func GLAreaNew() *GLArea {
 // by application code.
 /*
 
-C function : gtk_gl_area_attach_buffers
+C function
+
+gtk_gl_area_attach_buffers
 */
 func (recv *GLArea) AttachBuffers() {
 	C.gtk_gl_area_attach_buffers((*C.GtkGLArea)(recv.native))
@@ -258,7 +268,9 @@ func (recv *GLArea) AttachBuffers() {
 // Returns whether the area is in auto render mode or not.
 /*
 
-C function : gtk_gl_area_get_auto_render
+C function
+
+gtk_gl_area_get_auto_render
 */
 func (recv *GLArea) GetAutoRender() bool {
 	retC := C.gtk_gl_area_get_auto_render((*C.GtkGLArea)(recv.native))
@@ -270,7 +282,9 @@ func (recv *GLArea) GetAutoRender() bool {
 // Retrieves the #GdkGLContext used by @area.
 /*
 
-C function : gtk_gl_area_get_context
+C function
+
+gtk_gl_area_get_context
 */
 func (recv *GLArea) GetContext() *gdk.GLContext {
 	retC := C.gtk_gl_area_get_context((*C.GtkGLArea)(recv.native))
@@ -282,7 +296,9 @@ func (recv *GLArea) GetContext() *gdk.GLContext {
 // Gets the current error set on the @area.
 /*
 
-C function : gtk_gl_area_get_error
+C function
+
+gtk_gl_area_get_error
 */
 func (recv *GLArea) GetError() *glib.Error {
 	retC := C.gtk_gl_area_get_error((*C.GtkGLArea)(recv.native))
@@ -299,7 +315,9 @@ func (recv *GLArea) GetError() *glib.Error {
 // Returns whether the area has an alpha component.
 /*
 
-C function : gtk_gl_area_get_has_alpha
+C function
+
+gtk_gl_area_get_has_alpha
 */
 func (recv *GLArea) GetHasAlpha() bool {
 	retC := C.gtk_gl_area_get_has_alpha((*C.GtkGLArea)(recv.native))
@@ -311,7 +329,9 @@ func (recv *GLArea) GetHasAlpha() bool {
 // Returns whether the area has a depth buffer.
 /*
 
-C function : gtk_gl_area_get_has_depth_buffer
+C function
+
+gtk_gl_area_get_has_depth_buffer
 */
 func (recv *GLArea) GetHasDepthBuffer() bool {
 	retC := C.gtk_gl_area_get_has_depth_buffer((*C.GtkGLArea)(recv.native))
@@ -323,7 +343,9 @@ func (recv *GLArea) GetHasDepthBuffer() bool {
 // Returns whether the area has a stencil buffer.
 /*
 
-C function : gtk_gl_area_get_has_stencil_buffer
+C function
+
+gtk_gl_area_get_has_stencil_buffer
 */
 func (recv *GLArea) GetHasStencilBuffer() bool {
 	retC := C.gtk_gl_area_get_has_stencil_buffer((*C.GtkGLArea)(recv.native))
@@ -336,7 +358,9 @@ func (recv *GLArea) GetHasStencilBuffer() bool {
 // using gtk_gl_area_set_required_version().
 /*
 
-C function : gtk_gl_area_get_required_version
+C function
+
+gtk_gl_area_get_required_version
 */
 func (recv *GLArea) GetRequiredVersion() (int32, int32) {
 	var c_major C.gint
@@ -360,7 +384,9 @@ func (recv *GLArea) GetRequiredVersion() (int32, int32) {
 // by application code.
 /*
 
-C function : gtk_gl_area_make_current
+C function
+
+gtk_gl_area_make_current
 */
 func (recv *GLArea) MakeCurrent() {
 	C.gtk_gl_area_make_current((*C.GtkGLArea)(recv.native))
@@ -377,7 +403,9 @@ func (recv *GLArea) MakeCurrent() {
 // emit #GtkGLArea::render on each draw.
 /*
 
-C function : gtk_gl_area_queue_render
+C function
+
+gtk_gl_area_queue_render
 */
 func (recv *GLArea) QueueRender() {
 	C.gtk_gl_area_queue_render((*C.GtkGLArea)(recv.native))
@@ -396,7 +424,9 @@ func (recv *GLArea) QueueRender() {
 // the scene changes seldomly, but takes a long time to redraw.
 /*
 
-C function : gtk_gl_area_set_auto_render
+C function
+
+gtk_gl_area_set_auto_render
 */
 func (recv *GLArea) SetAutoRender(autoRender bool) {
 	c_auto_render :=
@@ -412,7 +442,9 @@ func (recv *GLArea) SetAutoRender(autoRender bool) {
 // signal if GL context creation fails.
 /*
 
-C function : gtk_gl_area_set_error
+C function
+
+gtk_gl_area_set_error
 */
 func (recv *GLArea) SetError(error *glib.Error) {
 	c_error := (*C.GError)(C.NULL)
@@ -433,7 +465,9 @@ func (recv *GLArea) SetError(error *glib.Error) {
 // buffer will fully replace anything below the widget.
 /*
 
-C function : gtk_gl_area_set_has_alpha
+C function
+
+gtk_gl_area_set_has_alpha
 */
 func (recv *GLArea) SetHasAlpha(hasAlpha bool) {
 	c_has_alpha :=
@@ -449,7 +483,9 @@ func (recv *GLArea) SetHasAlpha(hasAlpha bool) {
 // there will be none.
 /*
 
-C function : gtk_gl_area_set_has_depth_buffer
+C function
+
+gtk_gl_area_set_has_depth_buffer
 */
 func (recv *GLArea) SetHasDepthBuffer(hasDepthBuffer bool) {
 	c_has_depth_buffer :=
@@ -465,7 +501,9 @@ func (recv *GLArea) SetHasDepthBuffer(hasDepthBuffer bool) {
 // there will be none.
 /*
 
-C function : gtk_gl_area_set_has_stencil_buffer
+C function
+
+gtk_gl_area_set_has_stencil_buffer
 */
 func (recv *GLArea) SetHasStencilBuffer(hasStencilBuffer bool) {
 	c_has_stencil_buffer :=
@@ -482,7 +520,9 @@ func (recv *GLArea) SetHasStencilBuffer(hasStencilBuffer bool) {
 // This function must be called before the area has been realized.
 /*
 
-C function : gtk_gl_area_set_required_version
+C function
+
+gtk_gl_area_set_required_version
 */
 func (recv *GLArea) SetRequiredVersion(major int32, minor int32) {
 	c_major := (C.gint)(major)
@@ -497,7 +537,9 @@ func (recv *GLArea) SetRequiredVersion(major int32, minor int32) {
 // Gets the #GtkLabel:xalign property for @label.
 /*
 
-C function : gtk_label_get_xalign
+C function
+
+gtk_label_get_xalign
 */
 func (recv *Label) GetXalign() float32 {
 	retC := C.gtk_label_get_xalign((*C.GtkLabel)(recv.native))
@@ -509,7 +551,9 @@ func (recv *Label) GetXalign() float32 {
 // Gets the #GtkLabel:yalign property for @label.
 /*
 
-C function : gtk_label_get_yalign
+C function
+
+gtk_label_get_yalign
 */
 func (recv *Label) GetYalign() float32 {
 	retC := C.gtk_label_get_yalign((*C.GtkLabel)(recv.native))
@@ -521,7 +565,9 @@ func (recv *Label) GetYalign() float32 {
 // Sets the #GtkLabel:xalign property for @label.
 /*
 
-C function : gtk_label_set_xalign
+C function
+
+gtk_label_set_xalign
 */
 func (recv *Label) SetXalign(xalign float32) {
 	c_xalign := (C.gfloat)(xalign)
@@ -534,7 +580,9 @@ func (recv *Label) SetXalign(xalign float32) {
 // Sets the #GtkLabel:yalign property for @label.
 /*
 
-C function : gtk_label_set_yalign
+C function
+
+gtk_label_set_yalign
 */
 func (recv *Label) SetYalign(yalign float32) {
 	c_yalign := (C.gfloat)(yalign)
@@ -549,7 +597,9 @@ func (recv *Label) SetYalign(yalign float32) {
 // Creates a new GtkModelButton.
 /*
 
-C function : gtk_model_button_new
+C function
+
+gtk_model_button_new
 */
 func ModelButtonNew() *ModelButton {
 	retC := C.gtk_model_button_new()
@@ -566,7 +616,9 @@ func ModelButtonNew() *ModelButton {
 // not be cancelled.
 /*
 
-C function : gtk_notebook_detach_tab
+C function
+
+gtk_notebook_detach_tab
 */
 func (recv *Notebook) DetachTab(child *Widget) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -582,7 +634,9 @@ func (recv *Notebook) DetachTab(child *Widget) {
 // Gets the #GtkPaned:wide-handle property.
 /*
 
-C function : gtk_paned_get_wide_handle
+C function
+
+gtk_paned_get_wide_handle
 */
 func (recv *Paned) GetWideHandle() bool {
 	retC := C.gtk_paned_get_wide_handle((*C.GtkPaned)(recv.native))
@@ -594,7 +648,9 @@ func (recv *Paned) GetWideHandle() bool {
 // Sets the #GtkPaned:wide-handle property.
 /*
 
-C function : gtk_paned_set_wide_handle
+C function
+
+gtk_paned_set_wide_handle
 */
 func (recv *Paned) SetWideHandle(wide bool) {
 	c_wide :=
@@ -608,7 +664,9 @@ func (recv *Paned) SetWideHandle(wide bool) {
 // Returns whether show/hide transitions are enabled on this popover.
 /*
 
-C function : gtk_popover_get_transitions_enabled
+C function
+
+gtk_popover_get_transitions_enabled
 */
 func (recv *Popover) GetTransitionsEnabled() bool {
 	retC := C.gtk_popover_get_transitions_enabled((*C.GtkPopover)(recv.native))
@@ -620,7 +678,9 @@ func (recv *Popover) GetTransitionsEnabled() bool {
 // Sets whether show/hide transitions are enabled on this popover
 /*
 
-C function : gtk_popover_set_transitions_enabled
+C function
+
+gtk_popover_set_transitions_enabled
 */
 func (recv *Popover) SetTransitionsEnabled(transitionsEnabled bool) {
 	c_transitions_enabled :=
@@ -634,7 +694,9 @@ func (recv *Popover) SetTransitionsEnabled(transitionsEnabled bool) {
 // Creates a new popover menu.
 /*
 
-C function : gtk_popover_menu_new
+C function
+
+gtk_popover_menu_new
 */
 func PopoverMenuNew() *PopoverMenu {
 	retC := C.gtk_popover_menu_new()
@@ -654,7 +716,9 @@ func PopoverMenuNew() *PopoverMenu {
 // other kinds of widgets to initiate menu changes.
 /*
 
-C function : gtk_popover_menu_open_submenu
+C function
+
+gtk_popover_menu_open_submenu
 */
 func (recv *PopoverMenu) OpenSubmenu(name string) {
 	c_name := C.CString(name)
@@ -672,7 +736,9 @@ func (recv *PopoverMenu) OpenSubmenu(name string) {
 // Returns whether overlay scrolling is enabled for this scrolled window.
 /*
 
-C function : gtk_scrolled_window_get_overlay_scrolling
+C function
+
+gtk_scrolled_window_get_overlay_scrolling
 */
 func (recv *ScrolledWindow) GetOverlayScrolling() bool {
 	retC := C.gtk_scrolled_window_get_overlay_scrolling((*C.GtkScrolledWindow)(recv.native))
@@ -684,7 +750,9 @@ func (recv *ScrolledWindow) GetOverlayScrolling() bool {
 // Enables or disables overlay scrolling for this scrolled window.
 /*
 
-C function : gtk_scrolled_window_set_overlay_scrolling
+C function
+
+gtk_scrolled_window_set_overlay_scrolling
 */
 func (recv *ScrolledWindow) SetOverlayScrolling(overlayScrolling bool) {
 	c_overlay_scrolling :=
@@ -872,7 +940,9 @@ func searchentry_stopSearchHandler(_ *C.GObject, data C.gpointer) {
 // See gtk_stack_set_hhomogeneous().
 /*
 
-C function : gtk_stack_get_hhomogeneous
+C function
+
+gtk_stack_get_hhomogeneous
 */
 func (recv *Stack) GetHhomogeneous() bool {
 	retC := C.gtk_stack_get_hhomogeneous((*C.GtkStack)(recv.native))
@@ -885,7 +955,9 @@ func (recv *Stack) GetHhomogeneous() bool {
 // See gtk_stack_set_vhomogeneous().
 /*
 
-C function : gtk_stack_get_vhomogeneous
+C function
+
+gtk_stack_get_vhomogeneous
 */
 func (recv *Stack) GetVhomogeneous() bool {
 	retC := C.gtk_stack_get_vhomogeneous((*C.GtkStack)(recv.native))
@@ -900,7 +972,9 @@ func (recv *Stack) GetVhomogeneous() bool {
 // may change width when a different child becomes visible.
 /*
 
-C function : gtk_stack_set_hhomogeneous
+C function
+
+gtk_stack_set_hhomogeneous
 */
 func (recv *Stack) SetHhomogeneous(hhomogeneous bool) {
 	c_hhomogeneous :=
@@ -917,7 +991,9 @@ func (recv *Stack) SetHhomogeneous(hhomogeneous bool) {
 // may change height when a different child becomes visible.
 /*
 
-C function : gtk_stack_set_vhomogeneous
+C function
+
+gtk_stack_set_vhomogeneous
 */
 func (recv *Stack) SetVhomogeneous(vhomogeneous bool) {
 	c_vhomogeneous :=
@@ -931,7 +1007,9 @@ func (recv *Stack) SetVhomogeneous(vhomogeneous bool) {
 // Creates a new sidebar.
 /*
 
-C function : gtk_stack_sidebar_new
+C function
+
+gtk_stack_sidebar_new
 */
 func StackSidebarNew() *StackSidebar {
 	retC := C.gtk_stack_sidebar_new()
@@ -944,7 +1022,9 @@ func StackSidebarNew() *StackSidebar {
 // See gtk_stack_sidebar_set_stack().
 /*
 
-C function : gtk_stack_sidebar_get_stack
+C function
+
+gtk_stack_sidebar_get_stack
 */
 func (recv *StackSidebar) GetStack() *Stack {
 	retC := C.gtk_stack_sidebar_get_stack((*C.GtkStackSidebar)(recv.native))
@@ -964,7 +1044,9 @@ func (recv *StackSidebar) GetStack() *Stack {
 // (packing) and items within the given #GtkStack.
 /*
 
-C function : gtk_stack_sidebar_set_stack
+C function
+
+gtk_stack_sidebar_set_stack
 */
 func (recv *StackSidebar) SetStack(stack *Stack) {
 	c_stack := (*C.GtkStack)(C.NULL)
@@ -984,7 +1066,9 @@ func (recv *StackSidebar) SetStack(stack *Stack) {
 // to the end of the inserted text on return.
 /*
 
-C function : gtk_text_buffer_insert_markup
+C function
+
+gtk_text_buffer_insert_markup
 */
 func (recv *TextBuffer) InsertMarkup(iter *TextIter, markup string, len int32) {
 	c_iter := (*C.GtkTextIter)(C.NULL)
@@ -1007,7 +1091,9 @@ func (recv *TextBuffer) InsertMarkup(iter *TextIter, markup string, len int32) {
 // Gets the value of the #GtkTextView:monospace property.
 /*
 
-C function : gtk_text_view_get_monospace
+C function
+
+gtk_text_view_get_monospace
 */
 func (recv *TextView) GetMonospace() bool {
 	retC := C.gtk_text_view_get_monospace((*C.GtkTextView)(recv.native))
@@ -1021,7 +1107,9 @@ func (recv *TextView) GetMonospace() bool {
 // fonts.
 /*
 
-C function : gtk_text_view_set_monospace
+C function
+
+gtk_text_view_set_monospace
 */
 func (recv *TextView) SetMonospace(monospace bool) {
 	c_monospace :=
@@ -1039,7 +1127,9 @@ func (recv *TextView) SetMonospace(monospace bool) {
 // If no action group was found matching @prefix, then %NULL is returned.
 /*
 
-C function : gtk_widget_get_action_group
+C function
+
+gtk_widget_get_action_group
 */
 func (recv *Widget) GetActionGroup(prefix string) *gio.ActionGroup {
 	c_prefix := C.CString(prefix)
@@ -1062,7 +1152,9 @@ func (recv *Widget) GetActionGroup(prefix string) *gio.ActionGroup {
 // gtk_window_set_titlebar().
 /*
 
-C function : gtk_window_get_titlebar
+C function
+
+gtk_window_get_titlebar
 */
 func (recv *Window) GetTitlebar() *Widget {
 	retC := C.gtk_window_get_titlebar((*C.GtkWindow)(recv.native))

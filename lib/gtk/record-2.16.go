@@ -15,7 +15,9 @@ import "C"
 // > This method can be called with a %NULL action at times.
 /*
 
-C record/class : GtkActivatableIface
+C type
+
+GtkActivatableIface
 */
 type ActivatableIface struct {
 	native *C.GtkActivatableIface

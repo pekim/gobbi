@@ -16,7 +16,9 @@ import "C"
 // cannot be accessed directly.
 /*
 
-C record/class : GDateTime
+C type
+
+GDateTime
 */
 type DateTime struct {
 	native *C.GDateTime
@@ -68,7 +70,9 @@ func (recv *DateTime) ToC() unsafe.Pointer {
 // when you are done with it.
 /*
 
-C function : g_date_time_new
+C function
+
+g_date_time_new
 */
 func DateTimeNew(tz *TimeZone, year int32, month int32, day int32, hour int32, minute int32, seconds float64) *DateTime {
 	c_tz := (*C.GTimeZone)(C.NULL)
@@ -108,7 +112,9 @@ func DateTimeNew(tz *TimeZone, year int32, month int32, day int32, hour int32, m
 // when you are done with it.
 /*
 
-C function : g_date_time_new_from_timeval_local
+C function
+
+g_date_time_new_from_timeval_local
 */
 func DateTimeNewFromTimevalLocal(tv *TimeVal) *DateTime {
 	c_tv := (*C.GTimeVal)(C.NULL)
@@ -134,7 +140,9 @@ func DateTimeNewFromTimevalLocal(tv *TimeVal) *DateTime {
 // when you are done with it.
 /*
 
-C function : g_date_time_new_from_timeval_utc
+C function
+
+g_date_time_new_from_timeval_utc
 */
 func DateTimeNewFromTimevalUtc(tv *TimeVal) *DateTime {
 	c_tv := (*C.GTimeVal)(C.NULL)
@@ -161,7 +169,9 @@ func DateTimeNewFromTimevalUtc(tv *TimeVal) *DateTime {
 // when you are done with it.
 /*
 
-C function : g_date_time_new_from_unix_local
+C function
+
+g_date_time_new_from_unix_local
 */
 func DateTimeNewFromUnixLocal(t int64) *DateTime {
 	c_t := (C.gint64)(t)
@@ -184,7 +194,9 @@ func DateTimeNewFromUnixLocal(t int64) *DateTime {
 // when you are done with it.
 /*
 
-C function : g_date_time_new_from_unix_utc
+C function
+
+g_date_time_new_from_unix_utc
 */
 func DateTimeNewFromUnixUtc(t int64) *DateTime {
 	c_t := (C.gint64)(t)
@@ -202,7 +214,9 @@ func DateTimeNewFromUnixUtc(t int64) *DateTime {
 // zone returned by g_time_zone_new_local().
 /*
 
-C function : g_date_time_new_local
+C function
+
+g_date_time_new_local
 */
 func DateTimeNewLocal(year int32, month int32, day int32, hour int32, minute int32, seconds float64) *DateTime {
 	c_year := (C.gint)(year)
@@ -235,7 +249,9 @@ func DateTimeNewLocal(year int32, month int32, day int32, hour int32, minute int
 // when you are done with it.
 /*
 
-C function : g_date_time_new_now
+C function
+
+g_date_time_new_now
 */
 func DateTimeNewNow(tz *TimeZone) *DateTime {
 	c_tz := (*C.GTimeZone)(C.NULL)
@@ -256,7 +272,9 @@ func DateTimeNewNow(tz *TimeZone) *DateTime {
 // zone returned by g_time_zone_new_local().
 /*
 
-C function : g_date_time_new_now_local
+C function
+
+g_date_time_new_now_local
 */
 func DateTimeNewNowLocal() *DateTime {
 	retC := C.g_date_time_new_now_local()
@@ -271,7 +289,9 @@ func DateTimeNewNowLocal() *DateTime {
 // zone returned by g_time_zone_new_utc().
 /*
 
-C function : g_date_time_new_now_utc
+C function
+
+g_date_time_new_now_utc
 */
 func DateTimeNewNowUtc() *DateTime {
 	retC := C.g_date_time_new_now_utc()
@@ -287,7 +307,9 @@ func DateTimeNewNowUtc() *DateTime {
 // zone returned by g_time_zone_new_utc().
 /*
 
-C function : g_date_time_new_utc
+C function
+
+g_date_time_new_utc
 */
 func DateTimeNewUtc(year int32, month int32, day int32, hour int32, minute int32, seconds float64) *DateTime {
 	c_year := (C.gint)(year)
@@ -311,7 +333,9 @@ func DateTimeNewUtc(year int32, month int32, day int32, hour int32, minute int32
 // Creates a copy of @datetime and adds the specified timespan to the copy.
 /*
 
-C function : g_date_time_add
+C function
+
+g_date_time_add
 */
 func (recv *DateTime) Add(timespan TimeSpan) *DateTime {
 	c_timespan := (C.GTimeSpan)(timespan)
@@ -326,7 +350,9 @@ func (recv *DateTime) Add(timespan TimeSpan) *DateTime {
 // copy. Add negative values to subtract days.
 /*
 
-C function : g_date_time_add_days
+C function
+
+g_date_time_add_days
 */
 func (recv *DateTime) AddDays(days int32) *DateTime {
 	c_days := (C.gint)(days)
@@ -341,7 +367,9 @@ func (recv *DateTime) AddDays(days int32) *DateTime {
 // time in @datetime. Add negative values to subtract.
 /*
 
-C function : g_date_time_add_full
+C function
+
+g_date_time_add_full
 */
 func (recv *DateTime) AddFull(years int32, months int32, days int32, hours int32, minutes int32, seconds float64) *DateTime {
 	c_years := (C.gint)(years)
@@ -366,7 +394,9 @@ func (recv *DateTime) AddFull(years int32, months int32, days int32, hours int32
 // Add negative values to subtract hours.
 /*
 
-C function : g_date_time_add_hours
+C function
+
+g_date_time_add_hours
 */
 func (recv *DateTime) AddHours(hours int32) *DateTime {
 	c_hours := (C.gint)(hours)
@@ -381,7 +411,9 @@ func (recv *DateTime) AddHours(hours int32) *DateTime {
 // Add negative values to subtract minutes.
 /*
 
-C function : g_date_time_add_minutes
+C function
+
+g_date_time_add_minutes
 */
 func (recv *DateTime) AddMinutes(minutes int32) *DateTime {
 	c_minutes := (C.gint)(minutes)
@@ -401,7 +433,9 @@ func (recv *DateTime) AddMinutes(minutes int32) *DateTime {
 // year), the result would be 29th February.
 /*
 
-C function : g_date_time_add_months
+C function
+
+g_date_time_add_months
 */
 func (recv *DateTime) AddMonths(months int32) *DateTime {
 	c_months := (C.gint)(months)
@@ -416,7 +450,9 @@ func (recv *DateTime) AddMonths(months int32) *DateTime {
 // Add negative values to subtract seconds.
 /*
 
-C function : g_date_time_add_seconds
+C function
+
+g_date_time_add_seconds
 */
 func (recv *DateTime) AddSeconds(seconds float64) *DateTime {
 	c_seconds := (C.gdouble)(seconds)
@@ -431,7 +467,9 @@ func (recv *DateTime) AddSeconds(seconds float64) *DateTime {
 // copy. Add negative values to subtract weeks.
 /*
 
-C function : g_date_time_add_weeks
+C function
+
+g_date_time_add_weeks
 */
 func (recv *DateTime) AddWeeks(weeks int32) *DateTime {
 	c_weeks := (C.gint)(weeks)
@@ -449,7 +487,9 @@ func (recv *DateTime) AddWeeks(weeks int32) *DateTime {
 // February on a non-leap year, the day will be clamped to 28th February.
 /*
 
-C function : g_date_time_add_years
+C function
+
+g_date_time_add_years
 */
 func (recv *DateTime) AddYears(years int32) *DateTime {
 	c_years := (C.gint)(years)
@@ -465,7 +505,9 @@ func (recv *DateTime) AddYears(years int32) *DateTime {
 // positive if the first parameter is larger).
 /*
 
-C function : g_date_time_difference
+C function
+
+g_date_time_difference
 */
 func (recv *DateTime) Difference(begin *DateTime) TimeSpan {
 	c_begin := (*C.GDateTime)(C.NULL)
@@ -575,7 +617,9 @@ func (recv *DateTime) Difference(begin *DateTime) TimeSpan {
 // \%Ob and \%Oh are GNU strftime() extensions. Since: 2.56
 /*
 
-C function : g_date_time_format
+C function
+
+g_date_time_format
 */
 func (recv *DateTime) Format(format string) string {
 	c_format := C.CString(format)
@@ -592,7 +636,9 @@ func (recv *DateTime) Format(format string) string {
 // calendar.
 /*
 
-C function : g_date_time_get_day_of_month
+C function
+
+g_date_time_get_day_of_month
 */
 func (recv *DateTime) GetDayOfMonth() int32 {
 	retC := C.g_date_time_get_day_of_month((*C.GDateTime)(recv.native))
@@ -605,7 +651,9 @@ func (recv *DateTime) GetDayOfMonth() int32 {
 // Monday, 2 is Tuesday... 7 is Sunday).
 /*
 
-C function : g_date_time_get_day_of_week
+C function
+
+g_date_time_get_day_of_week
 */
 func (recv *DateTime) GetDayOfWeek() int32 {
 	retC := C.g_date_time_get_day_of_week((*C.GDateTime)(recv.native))
@@ -618,7 +666,9 @@ func (recv *DateTime) GetDayOfWeek() int32 {
 // calendar.
 /*
 
-C function : g_date_time_get_day_of_year
+C function
+
+g_date_time_get_day_of_year
 */
 func (recv *DateTime) GetDayOfYear() int32 {
 	retC := C.g_date_time_get_day_of_year((*C.GDateTime)(recv.native))
@@ -630,7 +680,9 @@ func (recv *DateTime) GetDayOfYear() int32 {
 // Retrieves the hour of the day represented by @datetime
 /*
 
-C function : g_date_time_get_hour
+C function
+
+g_date_time_get_hour
 */
 func (recv *DateTime) GetHour() int32 {
 	retC := C.g_date_time_get_hour((*C.GDateTime)(recv.native))
@@ -642,7 +694,9 @@ func (recv *DateTime) GetHour() int32 {
 // Retrieves the microsecond of the date represented by @datetime
 /*
 
-C function : g_date_time_get_microsecond
+C function
+
+g_date_time_get_microsecond
 */
 func (recv *DateTime) GetMicrosecond() int32 {
 	retC := C.g_date_time_get_microsecond((*C.GDateTime)(recv.native))
@@ -654,7 +708,9 @@ func (recv *DateTime) GetMicrosecond() int32 {
 // Retrieves the minute of the hour represented by @datetime
 /*
 
-C function : g_date_time_get_minute
+C function
+
+g_date_time_get_minute
 */
 func (recv *DateTime) GetMinute() int32 {
 	retC := C.g_date_time_get_minute((*C.GDateTime)(recv.native))
@@ -667,7 +723,9 @@ func (recv *DateTime) GetMinute() int32 {
 // calendar.
 /*
 
-C function : g_date_time_get_month
+C function
+
+g_date_time_get_month
 */
 func (recv *DateTime) GetMonth() int32 {
 	retC := C.g_date_time_get_month((*C.GDateTime)(recv.native))
@@ -679,7 +737,9 @@ func (recv *DateTime) GetMonth() int32 {
 // Retrieves the second of the minute represented by @datetime
 /*
 
-C function : g_date_time_get_second
+C function
+
+g_date_time_get_second
 */
 func (recv *DateTime) GetSecond() int32 {
 	retC := C.g_date_time_get_second((*C.GDateTime)(recv.native))
@@ -692,7 +752,9 @@ func (recv *DateTime) GetSecond() int32 {
 // including the fractional part.
 /*
 
-C function : g_date_time_get_seconds
+C function
+
+g_date_time_get_seconds
 */
 func (recv *DateTime) GetSeconds() float64 {
 	retC := C.g_date_time_get_seconds((*C.GDateTime)(recv.native))
@@ -709,7 +771,9 @@ func (recv *DateTime) GetSeconds() float64 {
 // time is in effect.
 /*
 
-C function : g_date_time_get_timezone_abbreviation
+C function
+
+g_date_time_get_timezone_abbreviation
 */
 func (recv *DateTime) GetTimezoneAbbreviation() string {
 	retC := C.g_date_time_get_timezone_abbreviation((*C.GDateTime)(recv.native))
@@ -728,7 +792,9 @@ func (recv *DateTime) GetTimezoneAbbreviation() string {
 // If @datetime represents UTC time, then the offset is always zero.
 /*
 
-C function : g_date_time_get_utc_offset
+C function
+
+g_date_time_get_utc_offset
 */
 func (recv *DateTime) GetUtcOffset() TimeSpan {
 	retC := C.g_date_time_get_utc_offset((*C.GDateTime)(recv.native))
@@ -770,7 +836,9 @@ func (recv *DateTime) GetUtcOffset() TimeSpan {
 // Monday, so this function never returns 0.
 /*
 
-C function : g_date_time_get_week_numbering_year
+C function
+
+g_date_time_get_week_numbering_year
 */
 func (recv *DateTime) GetWeekNumberingYear() int32 {
 	retC := C.g_date_time_get_week_numbering_year((*C.GDateTime)(recv.native))
@@ -796,7 +864,9 @@ func (recv *DateTime) GetWeekNumberingYear() int32 {
 // if 4 or more days of that week are contained within the new year.
 /*
 
-C function : g_date_time_get_week_of_year
+C function
+
+g_date_time_get_week_of_year
 */
 func (recv *DateTime) GetWeekOfYear() int32 {
 	retC := C.g_date_time_get_week_of_year((*C.GDateTime)(recv.native))
@@ -808,7 +878,9 @@ func (recv *DateTime) GetWeekOfYear() int32 {
 // Retrieves the year represented by @datetime in the Gregorian calendar.
 /*
 
-C function : g_date_time_get_year
+C function
+
+g_date_time_get_year
 */
 func (recv *DateTime) GetYear() int32 {
 	retC := C.g_date_time_get_year((*C.GDateTime)(recv.native))
@@ -820,7 +892,9 @@ func (recv *DateTime) GetYear() int32 {
 // Retrieves the Gregorian day, month, and year of a given #GDateTime.
 /*
 
-C function : g_date_time_get_ymd
+C function
+
+g_date_time_get_ymd
 */
 func (recv *DateTime) GetYmd() (int32, int32, int32) {
 	var c_year C.gint
@@ -844,7 +918,9 @@ func (recv *DateTime) GetYmd() (int32, int32, int32) {
 // the time zone of @datetime.
 /*
 
-C function : g_date_time_is_daylight_savings
+C function
+
+g_date_time_is_daylight_savings
 */
 func (recv *DateTime) IsDaylightSavings() bool {
 	retC := C.g_date_time_is_daylight_savings((*C.GDateTime)(recv.native))
@@ -856,7 +932,9 @@ func (recv *DateTime) IsDaylightSavings() bool {
 // Atomically increments the reference count of @datetime by one.
 /*
 
-C function : g_date_time_ref
+C function
+
+g_date_time_ref
 */
 func (recv *DateTime) Ref() *DateTime {
 	retC := C.g_date_time_ref((*C.GDateTime)(recv.native))
@@ -872,7 +950,9 @@ func (recv *DateTime) Ref() *DateTime {
 // time zone returned by g_time_zone_new_local().
 /*
 
-C function : g_date_time_to_local
+C function
+
+g_date_time_to_local
 */
 func (recv *DateTime) ToLocal() *DateTime {
 	retC := C.g_date_time_to_local((*C.GDateTime)(recv.native))
@@ -896,7 +976,9 @@ func (recv *DateTime) ToLocal() *DateTime {
 // On systems where 'long' is 64bit, this function never fails.
 /*
 
-C function : g_date_time_to_timeval
+C function
+
+g_date_time_to_timeval
 */
 func (recv *DateTime) ToTimeval(tv *TimeVal) bool {
 	c_tv := (*C.GTimeVal)(C.NULL)
@@ -921,7 +1003,9 @@ func (recv *DateTime) ToTimeval(tv *TimeVal) bool {
 // when you are done with it.
 /*
 
-C function : g_date_time_to_timezone
+C function
+
+g_date_time_to_timezone
 */
 func (recv *DateTime) ToTimezone(tz *TimeZone) *DateTime {
 	c_tz := (*C.GTimeZone)(C.NULL)
@@ -942,7 +1026,9 @@ func (recv *DateTime) ToTimezone(tz *TimeZone) *DateTime {
 // 00:00:00 UTC, regardless of the time zone associated with @datetime.
 /*
 
-C function : g_date_time_to_unix
+C function
+
+g_date_time_to_unix
 */
 func (recv *DateTime) ToUnix() int64 {
 	retC := C.g_date_time_to_unix((*C.GDateTime)(recv.native))
@@ -958,7 +1044,9 @@ func (recv *DateTime) ToUnix() int64 {
 // time zone returned by g_time_zone_new_utc().
 /*
 
-C function : g_date_time_to_utc
+C function
+
+g_date_time_to_utc
 */
 func (recv *DateTime) ToUtc() *DateTime {
 	retC := C.g_date_time_to_utc((*C.GDateTime)(recv.native))
@@ -973,7 +1061,9 @@ func (recv *DateTime) ToUtc() *DateTime {
 // @datetime are freed
 /*
 
-C function : g_date_time_unref
+C function
+
+g_date_time_unref
 */
 func (recv *DateTime) Unref() {
 	C.g_date_time_unref((*C.GDateTime)(recv.native))
@@ -986,7 +1076,9 @@ func (recv *DateTime) Unref() {
 // 64-bit results without truncation.
 /*
 
-C function : g_key_file_get_int64
+C function
+
+g_key_file_get_int64
 */
 func (recv *KeyFile) GetInt64(groupName string, key string) (int64, error) {
 	c_group_name := C.CString(groupName)
@@ -1013,7 +1105,9 @@ func (recv *KeyFile) GetInt64(groupName string, key string) (int64, error) {
 // large positive results without truncation.
 /*
 
-C function : g_key_file_get_uint64
+C function
+
+g_key_file_get_uint64
 */
 func (recv *KeyFile) GetUint64(groupName string, key string) (uint64, error) {
 	c_group_name := C.CString(groupName)
@@ -1039,7 +1133,9 @@ func (recv *KeyFile) GetUint64(groupName string, key string) (uint64, error) {
 // If @key cannot be found then it is created.
 /*
 
-C function : g_key_file_set_int64
+C function
+
+g_key_file_set_int64
 */
 func (recv *KeyFile) SetInt64(groupName string, key string, value int64) {
 	c_group_name := C.CString(groupName)
@@ -1059,7 +1155,9 @@ func (recv *KeyFile) SetInt64(groupName string, key string, value int64) {
 // If @key cannot be found then it is created.
 /*
 
-C function : g_key_file_set_uint64
+C function
+
+g_key_file_set_uint64
 */
 func (recv *KeyFile) SetUint64(groupName string, key string, value uint64) {
 	c_group_name := C.CString(groupName)
@@ -1082,7 +1180,9 @@ func (recv *KeyFile) SetUint64(groupName string, key string, value uint64) {
 // top-level within the compiled pattern.
 /*
 
-C function : g_regex_get_compile_flags
+C function
+
+g_regex_get_compile_flags
 */
 func (recv *Regex) GetCompileFlags() RegexCompileFlags {
 	retC := C.g_regex_get_compile_flags((*C.GRegex)(recv.native))
@@ -1094,7 +1194,9 @@ func (recv *Regex) GetCompileFlags() RegexCompileFlags {
 // Returns the match options that @regex was created with.
 /*
 
-C function : g_regex_get_match_flags
+C function
+
+g_regex_get_match_flags
 */
 func (recv *Regex) GetMatchFlags() RegexMatchFlags {
 	retC := C.g_regex_get_match_flags((*C.GRegex)(recv.native))
@@ -1107,7 +1209,9 @@ func (recv *Regex) GetMatchFlags() RegexMatchFlags {
 // name may be #NULL if it has never been set with g_source_set_name().
 /*
 
-C function : g_source_get_name
+C function
+
+g_source_get_name
 */
 func (recv *Source) GetName() string {
 	retC := C.g_source_get_name((*C.GSource)(recv.native))
@@ -1134,7 +1238,9 @@ func (recv *Source) GetName() string {
 // may be attempting to use it.
 /*
 
-C function : g_source_set_name
+C function
+
+g_source_set_name
 */
 func (recv *Source) SetName(name string) {
 	c_name := C.CString(name)
@@ -1149,7 +1255,9 @@ func (recv *Source) SetName(name string) {
 // directly.
 /*
 
-C record/class : GTimeZone
+C type
+
+GTimeZone
 */
 type TimeZone struct {
 	native *C.GTimeZone
@@ -1236,7 +1344,9 @@ func (recv *TimeZone) ToC() unsafe.Pointer {
 // when you are done with it.
 /*
 
-C function : g_time_zone_new
+C function
+
+g_time_zone_new
 */
 func TimeZoneNew(identifier string) *TimeZone {
 	c_identifier := C.CString(identifier)
@@ -1259,7 +1369,9 @@ func TimeZoneNew(identifier string) *TimeZone {
 // when you are done with it.
 /*
 
-C function : g_time_zone_new_local
+C function
+
+g_time_zone_new_local
 */
 func TimeZoneNewLocal() *TimeZone {
 	retC := C.g_time_zone_new_local()
@@ -1277,7 +1389,9 @@ func TimeZoneNewLocal() *TimeZone {
 // when you are done with it.
 /*
 
-C function : g_time_zone_new_utc
+C function
+
+g_time_zone_new_utc
 */
 func TimeZoneNewUtc() *TimeZone {
 	retC := C.g_time_zone_new_utc()
@@ -1304,7 +1418,9 @@ func TimeZoneNewUtc() *TimeZone {
 // adjusted time.
 /*
 
-C function : g_time_zone_adjust_time
+C function
+
+g_time_zone_adjust_time
 */
 func (recv *TimeZone) AdjustTime(type_ TimeType, time int64) int32 {
 	c_type := (C.GTimeType)(type_)
@@ -1337,7 +1453,9 @@ func (recv *TimeZone) AdjustTime(type_ TimeType, time int64) int32 {
 // case.
 /*
 
-C function : g_time_zone_find_interval
+C function
+
+g_time_zone_find_interval
 */
 func (recv *TimeZone) FindInterval(type_ TimeType, time int64) int32 {
 	c_type := (C.GTimeType)(type_)
@@ -1358,7 +1476,9 @@ func (recv *TimeZone) FindInterval(type_ TimeType, time int64) int32 {
 // is in effect.
 /*
 
-C function : g_time_zone_get_abbreviation
+C function
+
+g_time_zone_get_abbreviation
 */
 func (recv *TimeZone) GetAbbreviation(interval int32) string {
 	c_interval := (C.gint)(interval)
@@ -1377,7 +1497,9 @@ func (recv *TimeZone) GetAbbreviation(interval int32) string {
 // west of GMT, positive numbers for east).
 /*
 
-C function : g_time_zone_get_offset
+C function
+
+g_time_zone_get_offset
 */
 func (recv *TimeZone) GetOffset(interval int32) int32 {
 	c_interval := (C.gint)(interval)
@@ -1392,7 +1514,9 @@ func (recv *TimeZone) GetOffset(interval int32) int32 {
 // @interval of time in the time zone @tz.
 /*
 
-C function : g_time_zone_is_dst
+C function
+
+g_time_zone_is_dst
 */
 func (recv *TimeZone) IsDst(interval int32) bool {
 	c_interval := (C.gint)(interval)
@@ -1406,7 +1530,9 @@ func (recv *TimeZone) IsDst(interval int32) bool {
 // Increases the reference count on @tz.
 /*
 
-C function : g_time_zone_ref
+C function
+
+g_time_zone_ref
 */
 func (recv *TimeZone) Ref() *TimeZone {
 	retC := C.g_time_zone_ref((*C.GTimeZone)(recv.native))
@@ -1418,7 +1544,9 @@ func (recv *TimeZone) Ref() *TimeZone {
 // Decreases the reference count on @tz.
 /*
 
-C function : g_time_zone_unref
+C function
+
+g_time_zone_unref
 */
 func (recv *TimeZone) Unref() {
 	C.g_time_zone_unref((*C.GTimeZone)(recv.native))

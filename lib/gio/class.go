@@ -164,7 +164,9 @@ import "C"
 // on the same screen as the launching window.
 /*
 
-C record/class : GAppLaunchContext
+C type
+
+GAppLaunchContext
 */
 type AppLaunchContext struct {
 	native *C.GAppLaunchContext
@@ -203,7 +205,9 @@ func CastToAppLaunchContext(object *gobject.Object) *AppLaunchContext {
 // instead you instantiate a subclass of this, such as #GdkAppLaunchContext.
 /*
 
-C function : g_app_launch_context_new
+C function
+
+g_app_launch_context_new
 */
 func AppLaunchContextNew() *AppLaunchContext {
 	retC := C.g_app_launch_context_new()
@@ -217,7 +221,9 @@ func AppLaunchContextNew() *AppLaunchContext {
 // application, by setting the `DISPLAY` environment variable.
 /*
 
-C function : g_app_launch_context_get_display
+C function
+
+g_app_launch_context_get_display
 */
 func (recv *AppLaunchContext) GetDisplay(info *AppInfo, files *glib.List) string {
 	c_info := (*C.GAppInfo)(info.ToC())
@@ -241,7 +247,9 @@ func (recv *AppLaunchContext) GetDisplay(info *AppInfo, files *glib.List) string
 // [FreeDesktop.Org Startup Notifications standard](http://standards.freedesktop.org/startup-notification-spec/startup-notification-latest.txt").
 /*
 
-C function : g_app_launch_context_get_startup_notify_id
+C function
+
+g_app_launch_context_get_startup_notify_id
 */
 func (recv *AppLaunchContext) GetStartupNotifyId(info *AppInfo, files *glib.List) string {
 	c_info := (*C.GAppInfo)(info.ToC())
@@ -262,7 +270,9 @@ func (recv *AppLaunchContext) GetStartupNotifyId(info *AppInfo, files *glib.List
 // the application startup notification started in g_app_launch_context_get_startup_notify_id().
 /*
 
-C function : g_app_launch_context_launch_failed
+C function
+
+g_app_launch_context_launch_failed
 */
 func (recv *AppLaunchContext) LaunchFailed(startupNotifyId string) {
 	c_startup_notify_id := C.CString(startupNotifyId)
@@ -429,7 +439,9 @@ func (recv *AppLaunchContext) LaunchFailed(startupNotifyId string) {
 // [gapplication-example-cmdline3.c](https://git.gnome.org/browse/glib/tree/gio/tests/gapplication-example-cmdline3.c)
 /*
 
-C record/class : GApplicationCommandLine
+C type
+
+GApplicationCommandLine
 */
 type ApplicationCommandLine struct {
 	native *C.GApplicationCommandLine
@@ -480,7 +492,9 @@ func CastToApplicationCommandLine(object *gobject.Object) *ApplicationCommandLin
 // cannot be reduced below the size of the data within the buffer.
 /*
 
-C record/class : GBufferedInputStream
+C type
+
+GBufferedInputStream
 */
 type BufferedInputStream struct {
 	native *C.GBufferedInputStream
@@ -529,7 +543,9 @@ func CastToBufferedInputStream(object *gobject.Object) *BufferedInputStream {
 // a buffer set to the default size (4 kilobytes).
 /*
 
-C function : g_buffered_input_stream_new
+C function
+
+g_buffered_input_stream_new
 */
 func BufferedInputStreamNew(baseStream *InputStream) *BufferedInputStream {
 	c_base_stream := (*C.GInputStream)(C.NULL)
@@ -547,7 +563,9 @@ func BufferedInputStreamNew(baseStream *InputStream) *BufferedInputStream {
 // with a buffer set to @size.
 /*
 
-C function : g_buffered_input_stream_new_sized
+C function
+
+g_buffered_input_stream_new_sized
 */
 func BufferedInputStreamNewSized(baseStream *InputStream, size uint64) *BufferedInputStream {
 	c_base_stream := (*C.GInputStream)(C.NULL)
@@ -589,7 +607,9 @@ func BufferedInputStreamNewSized(baseStream *InputStream, size uint64) *Buffered
 // g_buffered_input_stream_fill_async().
 /*
 
-C function : g_buffered_input_stream_fill
+C function
+
+g_buffered_input_stream_fill
 */
 func (recv *BufferedInputStream) Fill(count int64, cancellable *Cancellable) (int64, error) {
 	c_count := (C.gssize)(count)
@@ -617,7 +637,9 @@ func (recv *BufferedInputStream) Fill(count int64, cancellable *Cancellable) (in
 // Finishes an asynchronous read.
 /*
 
-C function : g_buffered_input_stream_fill_finish
+C function
+
+g_buffered_input_stream_fill_finish
 */
 func (recv *BufferedInputStream) FillFinish(result *AsyncResult) (int64, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -638,7 +660,9 @@ func (recv *BufferedInputStream) FillFinish(result *AsyncResult) (int64, error) 
 // Gets the size of the available data within the stream.
 /*
 
-C function : g_buffered_input_stream_get_available
+C function
+
+g_buffered_input_stream_get_available
 */
 func (recv *BufferedInputStream) GetAvailable() uint64 {
 	retC := C.g_buffered_input_stream_get_available((*C.GBufferedInputStream)(recv.native))
@@ -650,7 +674,9 @@ func (recv *BufferedInputStream) GetAvailable() uint64 {
 // Gets the size of the input buffer.
 /*
 
-C function : g_buffered_input_stream_get_buffer_size
+C function
+
+g_buffered_input_stream_get_buffer_size
 */
 func (recv *BufferedInputStream) GetBufferSize() uint64 {
 	retC := C.g_buffered_input_stream_get_buffer_size((*C.GBufferedInputStream)(recv.native))
@@ -663,7 +689,9 @@ func (recv *BufferedInputStream) GetBufferSize() uint64 {
 // offset @offset bytes.
 /*
 
-C function : g_buffered_input_stream_peek
+C function
+
+g_buffered_input_stream_peek
 */
 func (recv *BufferedInputStream) Peek(buffer []uint8, offset uint64) uint64 {
 	c_buffer := &buffer[0]
@@ -695,7 +723,9 @@ func (recv *BufferedInputStream) Peek(buffer []uint8, offset uint64) uint64 {
 // On error -1 is returned and @error is set accordingly.
 /*
 
-C function : g_buffered_input_stream_read_byte
+C function
+
+g_buffered_input_stream_read_byte
 */
 func (recv *BufferedInputStream) ReadByte(cancellable *Cancellable) (int32, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -721,7 +751,9 @@ func (recv *BufferedInputStream) ReadByte(cancellable *Cancellable) (int32, erro
 // smaller than its current contents.
 /*
 
-C function : g_buffered_input_stream_set_buffer_size
+C function
+
+g_buffered_input_stream_set_buffer_size
 */
 func (recv *BufferedInputStream) SetBufferSize(size uint64) {
 	c_size := (C.gsize)(size)
@@ -752,7 +784,9 @@ func (recv *BufferedInputStream) Seekable() *Seekable {
 // size cannot be reduced below the size of the data within the buffer.
 /*
 
-C record/class : GBufferedOutputStream
+C type
+
+GBufferedOutputStream
 */
 type BufferedOutputStream struct {
 	native *C.GBufferedOutputStream
@@ -800,7 +834,9 @@ func CastToBufferedOutputStream(object *gobject.Object) *BufferedOutputStream {
 // Creates a new buffered output stream for a base stream.
 /*
 
-C function : g_buffered_output_stream_new
+C function
+
+g_buffered_output_stream_new
 */
 func BufferedOutputStreamNew(baseStream *OutputStream) *BufferedOutputStream {
 	c_base_stream := (*C.GOutputStream)(C.NULL)
@@ -817,7 +853,9 @@ func BufferedOutputStreamNew(baseStream *OutputStream) *BufferedOutputStream {
 // Creates a new buffered output stream with a given buffer size.
 /*
 
-C function : g_buffered_output_stream_new_sized
+C function
+
+g_buffered_output_stream_new_sized
 */
 func BufferedOutputStreamNewSized(baseStream *OutputStream, size uint64) *BufferedOutputStream {
 	c_base_stream := (*C.GOutputStream)(C.NULL)
@@ -836,7 +874,9 @@ func BufferedOutputStreamNewSized(baseStream *OutputStream, size uint64) *Buffer
 // Checks if the buffer automatically grows as data is added.
 /*
 
-C function : g_buffered_output_stream_get_auto_grow
+C function
+
+g_buffered_output_stream_get_auto_grow
 */
 func (recv *BufferedOutputStream) GetAutoGrow() bool {
 	retC := C.g_buffered_output_stream_get_auto_grow((*C.GBufferedOutputStream)(recv.native))
@@ -848,7 +888,9 @@ func (recv *BufferedOutputStream) GetAutoGrow() bool {
 // Gets the size of the buffer in the @stream.
 /*
 
-C function : g_buffered_output_stream_get_buffer_size
+C function
+
+g_buffered_output_stream_get_buffer_size
 */
 func (recv *BufferedOutputStream) GetBufferSize() uint64 {
 	retC := C.g_buffered_output_stream_get_buffer_size((*C.GBufferedOutputStream)(recv.native))
@@ -863,7 +905,9 @@ func (recv *BufferedOutputStream) GetBufferSize() uint64 {
 // the data to the underlying stream.
 /*
 
-C function : g_buffered_output_stream_set_auto_grow
+C function
+
+g_buffered_output_stream_set_auto_grow
 */
 func (recv *BufferedOutputStream) SetAutoGrow(autoGrow bool) {
 	c_auto_grow :=
@@ -877,7 +921,9 @@ func (recv *BufferedOutputStream) SetAutoGrow(autoGrow bool) {
 // Sets the size of the internal buffer to @size.
 /*
 
-C function : g_buffered_output_stream_set_buffer_size
+C function
+
+g_buffered_output_stream_set_buffer_size
 */
 func (recv *BufferedOutputStream) SetBufferSize(size uint64) {
 	c_size := (C.gsize)(size)
@@ -896,7 +942,9 @@ func (recv *BufferedOutputStream) Seekable() *Seekable {
 // png) to be used as icon.
 /*
 
-C record/class : GBytesIcon
+C type
+
+GBytesIcon
 */
 type BytesIcon struct {
 	native *C.GBytesIcon
@@ -944,7 +992,9 @@ func (recv *BytesIcon) LoadableIcon() *LoadableIcon {
 // asynchronous operations.
 /*
 
-C record/class : GCancellable
+C type
+
+GCancellable
 */
 type Cancellable struct {
 	native *C.GCancellable
@@ -1046,7 +1096,9 @@ func cancellable_cancelledHandler(_ *C.GObject, data C.gpointer) {
 // operations or in multiple concurrent operations.
 /*
 
-C function : g_cancellable_new
+C function
+
+g_cancellable_new
 */
 func CancellableNew() *Cancellable {
 	retC := C.g_cancellable_new()
@@ -1073,7 +1125,9 @@ func CancellableNew() *Cancellable {
 // the application returns to the main loop.
 /*
 
-C function : g_cancellable_cancel
+C function
+
+g_cancellable_cancel
 */
 func (recv *Cancellable) Cancel() {
 	C.g_cancellable_cancel((*C.GCancellable)(recv.native))
@@ -1096,7 +1150,9 @@ func (recv *Cancellable) Cancel() {
 // See also g_cancellable_make_pollfd().
 /*
 
-C function : g_cancellable_get_fd
+C function
+
+g_cancellable_get_fd
 */
 func (recv *Cancellable) GetFd() int32 {
 	retC := C.g_cancellable_get_fd((*C.GCancellable)(recv.native))
@@ -1108,7 +1164,9 @@ func (recv *Cancellable) GetFd() int32 {
 // Checks if a cancellable job has been cancelled.
 /*
 
-C function : g_cancellable_is_cancelled
+C function
+
+g_cancellable_is_cancelled
 */
 func (recv *Cancellable) IsCancelled() bool {
 	retC := C.g_cancellable_is_cancelled((*C.GCancellable)(recv.native))
@@ -1121,7 +1179,9 @@ func (recv *Cancellable) IsCancelled() bool {
 // is on the top of the stack).
 /*
 
-C function : g_cancellable_pop_current
+C function
+
+g_cancellable_pop_current
 */
 func (recv *Cancellable) PopCurrent() {
 	C.g_cancellable_pop_current((*C.GCancellable)(recv.native))
@@ -1139,7 +1199,9 @@ func (recv *Cancellable) PopCurrent() {
 // so you rarely have to call this yourself.
 /*
 
-C function : g_cancellable_push_current
+C function
+
+g_cancellable_push_current
 */
 func (recv *Cancellable) PushCurrent() {
 	C.g_cancellable_push_current((*C.GCancellable)(recv.native))
@@ -1160,7 +1222,9 @@ func (recv *Cancellable) PushCurrent() {
 // create a fresh cancellable for further async operations.
 /*
 
-C function : g_cancellable_reset
+C function
+
+g_cancellable_reset
 */
 func (recv *Cancellable) Reset() {
 	C.g_cancellable_reset((*C.GCancellable)(recv.native))
@@ -1172,7 +1236,9 @@ func (recv *Cancellable) Reset() {
 // that the operation was cancelled.
 /*
 
-C function : g_cancellable_set_error_if_cancelled
+C function
+
+g_cancellable_set_error_if_cancelled
 */
 func (recv *Cancellable) SetErrorIfCancelled() (bool, error) {
 	var cThrowableError *C.GError
@@ -1192,7 +1258,9 @@ func (recv *Cancellable) SetErrorIfCancelled() (bool, error) {
 // GIConv.
 /*
 
-C record/class : GCharsetConverter
+C type
+
+GCharsetConverter
 */
 type CharsetConverter struct {
 	native *C.GCharsetConverter
@@ -1242,7 +1310,9 @@ func (recv *CharsetConverter) Initable() *Initable {
 // #GPollableInputStream.
 /*
 
-C record/class : GConverterInputStream
+C type
+
+GConverterInputStream
 */
 type ConverterInputStream struct {
 	native *C.GConverterInputStream
@@ -1290,7 +1360,9 @@ func CastToConverterInputStream(object *gobject.Object) *ConverterInputStream {
 // Creates a new converter input stream for the @base_stream.
 /*
 
-C function : g_converter_input_stream_new
+C function
+
+g_converter_input_stream_new
 */
 func ConverterInputStreamNew(baseStream *InputStream, converter *Converter) *ConverterInputStream {
 	c_base_stream := (*C.GInputStream)(C.NULL)
@@ -1318,7 +1390,9 @@ func (recv *ConverterInputStream) PollableInputStream() *PollableInputStream {
 // #GPollableOutputStream.
 /*
 
-C record/class : GConverterOutputStream
+C type
+
+GConverterOutputStream
 */
 type ConverterOutputStream struct {
 	native *C.GConverterOutputStream
@@ -1366,7 +1440,9 @@ func CastToConverterOutputStream(object *gobject.Object) *ConverterOutputStream 
 // Creates a new converter output stream for the @base_stream.
 /*
 
-C function : g_converter_output_stream_new
+C function
+
+g_converter_output_stream_new
 */
 func ConverterOutputStreamNew(baseStream *OutputStream, converter *Converter) *ConverterOutputStream {
 	c_base_stream := (*C.GOutputStream)(C.NULL)
@@ -1392,7 +1468,9 @@ func (recv *ConverterOutputStream) PollableOutputStream() *PollableOutputStream 
 // that is exported over D-Bus with g_dbus_connection_export_action_group().
 /*
 
-C record/class : GDBusActionGroup
+C type
+
+GDBusActionGroup
 */
 type DBusActionGroup struct {
 	native *C.GDBusActionGroup
@@ -1440,7 +1518,9 @@ func (recv *DBusActionGroup) RemoteActionGroup() *RemoteActionGroup {
 // g_dbus_connection_export_menu_model().
 /*
 
-C record/class : GDBusMenuModel
+C type
+
+GDBusMenuModel
 */
 type DBusMenuModel struct {
 	native *C.GDBusMenuModel
@@ -1482,7 +1562,9 @@ func CastToDBusMenuModel(object *gobject.Object) *DBusMenuModel {
 // reading structured data directly from a binary input stream.
 /*
 
-C record/class : GDataInputStream
+C type
+
+GDataInputStream
 */
 type DataInputStream struct {
 	native *C.GDataInputStream
@@ -1535,7 +1617,9 @@ func CastToDataInputStream(object *gobject.Object) *DataInputStream {
 // Creates a new data input stream for the @base_stream.
 /*
 
-C function : g_data_input_stream_new
+C function
+
+g_data_input_stream_new
 */
 func DataInputStreamNew(baseStream *InputStream) *DataInputStream {
 	c_base_stream := (*C.GInputStream)(C.NULL)
@@ -1552,7 +1636,9 @@ func DataInputStreamNew(baseStream *InputStream) *DataInputStream {
 // Gets the byte order for the data input stream.
 /*
 
-C function : g_data_input_stream_get_byte_order
+C function
+
+g_data_input_stream_get_byte_order
 */
 func (recv *DataInputStream) GetByteOrder() DataStreamByteOrder {
 	retC := C.g_data_input_stream_get_byte_order((*C.GDataInputStream)(recv.native))
@@ -1564,7 +1650,9 @@ func (recv *DataInputStream) GetByteOrder() DataStreamByteOrder {
 // Gets the current newline type for the @stream.
 /*
 
-C function : g_data_input_stream_get_newline_type
+C function
+
+g_data_input_stream_get_newline_type
 */
 func (recv *DataInputStream) GetNewlineType() DataStreamNewlineType {
 	retC := C.g_data_input_stream_get_newline_type((*C.GDataInputStream)(recv.native))
@@ -1576,7 +1664,9 @@ func (recv *DataInputStream) GetNewlineType() DataStreamNewlineType {
 // Reads an unsigned 8-bit/1-byte value from @stream.
 /*
 
-C function : g_data_input_stream_read_byte
+C function
+
+g_data_input_stream_read_byte
 */
 func (recv *DataInputStream) ReadByte(cancellable *Cancellable) (uint8, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -1603,7 +1693,9 @@ func (recv *DataInputStream) ReadByte(cancellable *Cancellable) (uint8, error) {
 // see g_data_input_stream_get_byte_order() and g_data_input_stream_set_byte_order().
 /*
 
-C function : g_data_input_stream_read_int16
+C function
+
+g_data_input_stream_read_int16
 */
 func (recv *DataInputStream) ReadInt16(cancellable *Cancellable) (int16, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -1634,7 +1726,9 @@ func (recv *DataInputStream) ReadInt16(cancellable *Cancellable) (int16, error) 
 // was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
 /*
 
-C function : g_data_input_stream_read_int32
+C function
+
+g_data_input_stream_read_int32
 */
 func (recv *DataInputStream) ReadInt32(cancellable *Cancellable) (int32, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -1665,7 +1759,9 @@ func (recv *DataInputStream) ReadInt32(cancellable *Cancellable) (int32, error) 
 // was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
 /*
 
-C function : g_data_input_stream_read_int64
+C function
+
+g_data_input_stream_read_int64
 */
 func (recv *DataInputStream) ReadInt64(cancellable *Cancellable) (int64, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -1694,7 +1790,9 @@ func (recv *DataInputStream) ReadInt64(cancellable *Cancellable) (int64, error) 
 // see g_data_input_stream_get_byte_order() and g_data_input_stream_set_byte_order().
 /*
 
-C function : g_data_input_stream_read_uint16
+C function
+
+g_data_input_stream_read_uint16
 */
 func (recv *DataInputStream) ReadUint16(cancellable *Cancellable) (uint16, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -1725,7 +1823,9 @@ func (recv *DataInputStream) ReadUint16(cancellable *Cancellable) (uint16, error
 // was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
 /*
 
-C function : g_data_input_stream_read_uint32
+C function
+
+g_data_input_stream_read_uint32
 */
 func (recv *DataInputStream) ReadUint32(cancellable *Cancellable) (uint32, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -1756,7 +1856,9 @@ func (recv *DataInputStream) ReadUint32(cancellable *Cancellable) (uint32, error
 // was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
 /*
 
-C function : g_data_input_stream_read_uint64
+C function
+
+g_data_input_stream_read_uint64
 */
 func (recv *DataInputStream) ReadUint64(cancellable *Cancellable) (uint64, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -1790,7 +1892,9 @@ func (recv *DataInputStream) ReadUint64(cancellable *Cancellable) (uint64, error
 // does not consume the stop character.
 /*
 
-C function : g_data_input_stream_read_until
+C function
+
+g_data_input_stream_read_until
 */
 func (recv *DataInputStream) ReadUntil(stopChars string, cancellable *Cancellable) (string, uint64, error) {
 	c_stop_chars := C.CString(stopChars)
@@ -1823,7 +1927,9 @@ func (recv *DataInputStream) ReadUntil(stopChars string, cancellable *Cancellabl
 // reads from the @stream will be read in the given @order.
 /*
 
-C function : g_data_input_stream_set_byte_order
+C function
+
+g_data_input_stream_set_byte_order
 */
 func (recv *DataInputStream) SetByteOrder(order DataStreamByteOrder) {
 	c_order := (C.GDataStreamByteOrder)(order)
@@ -1840,7 +1946,9 @@ func (recv *DataInputStream) SetByteOrder(order DataStreamByteOrder) {
 // "CR LF", and this might block if there is no more data available.
 /*
 
-C function : g_data_input_stream_set_newline_type
+C function
+
+g_data_input_stream_set_newline_type
 */
 func (recv *DataInputStream) SetNewlineType(type_ DataStreamNewlineType) {
 	c_type := (C.GDataStreamNewlineType)(type_)
@@ -1859,7 +1967,9 @@ func (recv *DataInputStream) Seekable() *Seekable {
 // writing data directly to an output stream.
 /*
 
-C record/class : GDataOutputStream
+C type
+
+GDataOutputStream
 */
 type DataOutputStream struct {
 	native *C.GDataOutputStream
@@ -1907,7 +2017,9 @@ func CastToDataOutputStream(object *gobject.Object) *DataOutputStream {
 // Creates a new data output stream for @base_stream.
 /*
 
-C function : g_data_output_stream_new
+C function
+
+g_data_output_stream_new
 */
 func DataOutputStreamNew(baseStream *OutputStream) *DataOutputStream {
 	c_base_stream := (*C.GOutputStream)(C.NULL)
@@ -1924,7 +2036,9 @@ func DataOutputStreamNew(baseStream *OutputStream) *DataOutputStream {
 // Gets the byte order for the stream.
 /*
 
-C function : g_data_output_stream_get_byte_order
+C function
+
+g_data_output_stream_get_byte_order
 */
 func (recv *DataOutputStream) GetByteOrder() DataStreamByteOrder {
 	retC := C.g_data_output_stream_get_byte_order((*C.GDataOutputStream)(recv.native))
@@ -1936,7 +2050,9 @@ func (recv *DataOutputStream) GetByteOrder() DataStreamByteOrder {
 // Puts a byte into the output stream.
 /*
 
-C function : g_data_output_stream_put_byte
+C function
+
+g_data_output_stream_put_byte
 */
 func (recv *DataOutputStream) PutByte(data uint8, cancellable *Cancellable) (bool, error) {
 	c_data := (C.guchar)(data)
@@ -1962,7 +2078,9 @@ func (recv *DataOutputStream) PutByte(data uint8, cancellable *Cancellable) (boo
 // Puts a signed 16-bit integer into the output stream.
 /*
 
-C function : g_data_output_stream_put_int16
+C function
+
+g_data_output_stream_put_int16
 */
 func (recv *DataOutputStream) PutInt16(data int16, cancellable *Cancellable) (bool, error) {
 	c_data := (C.gint16)(data)
@@ -1988,7 +2106,9 @@ func (recv *DataOutputStream) PutInt16(data int16, cancellable *Cancellable) (bo
 // Puts a signed 32-bit integer into the output stream.
 /*
 
-C function : g_data_output_stream_put_int32
+C function
+
+g_data_output_stream_put_int32
 */
 func (recv *DataOutputStream) PutInt32(data int32, cancellable *Cancellable) (bool, error) {
 	c_data := (C.gint32)(data)
@@ -2014,7 +2134,9 @@ func (recv *DataOutputStream) PutInt32(data int32, cancellable *Cancellable) (bo
 // Puts a signed 64-bit integer into the stream.
 /*
 
-C function : g_data_output_stream_put_int64
+C function
+
+g_data_output_stream_put_int64
 */
 func (recv *DataOutputStream) PutInt64(data int64, cancellable *Cancellable) (bool, error) {
 	c_data := (C.gint64)(data)
@@ -2040,7 +2162,9 @@ func (recv *DataOutputStream) PutInt64(data int64, cancellable *Cancellable) (bo
 // Puts a string into the output stream.
 /*
 
-C function : g_data_output_stream_put_string
+C function
+
+g_data_output_stream_put_string
 */
 func (recv *DataOutputStream) PutString(str string, cancellable *Cancellable) (bool, error) {
 	c_str := C.CString(str)
@@ -2067,7 +2191,9 @@ func (recv *DataOutputStream) PutString(str string, cancellable *Cancellable) (b
 // Puts an unsigned 16-bit integer into the output stream.
 /*
 
-C function : g_data_output_stream_put_uint16
+C function
+
+g_data_output_stream_put_uint16
 */
 func (recv *DataOutputStream) PutUint16(data uint16, cancellable *Cancellable) (bool, error) {
 	c_data := (C.guint16)(data)
@@ -2093,7 +2219,9 @@ func (recv *DataOutputStream) PutUint16(data uint16, cancellable *Cancellable) (
 // Puts an unsigned 32-bit integer into the stream.
 /*
 
-C function : g_data_output_stream_put_uint32
+C function
+
+g_data_output_stream_put_uint32
 */
 func (recv *DataOutputStream) PutUint32(data uint32, cancellable *Cancellable) (bool, error) {
 	c_data := (C.guint32)(data)
@@ -2119,7 +2247,9 @@ func (recv *DataOutputStream) PutUint32(data uint32, cancellable *Cancellable) (
 // Puts an unsigned 64-bit integer into the stream.
 /*
 
-C function : g_data_output_stream_put_uint64
+C function
+
+g_data_output_stream_put_uint64
 */
 func (recv *DataOutputStream) PutUint64(data uint64, cancellable *Cancellable) (bool, error) {
 	c_data := (C.guint64)(data)
@@ -2145,7 +2275,9 @@ func (recv *DataOutputStream) PutUint64(data uint64, cancellable *Cancellable) (
 // Sets the byte order of the data output stream to @order.
 /*
 
-C function : g_data_output_stream_set_byte_order
+C function
+
+g_data_output_stream_set_byte_order
 */
 func (recv *DataOutputStream) SetByteOrder(order DataStreamByteOrder) {
 	c_order := (C.GDataStreamByteOrder)(order)
@@ -2168,7 +2300,9 @@ func (recv *DataOutputStream) Seekable() *Seekable {
 // file when using it.
 /*
 
-C record/class : GDesktopAppInfo
+C type
+
+GDesktopAppInfo
 */
 type DesktopAppInfo struct {
 	native *C.GDesktopAppInfo
@@ -2214,7 +2348,9 @@ func CastToDesktopAppInfo(object *gobject.Object) *DesktopAppInfo {
 // `/usr/share/applications/kde/foo.desktop`).
 /*
 
-C function : g_desktop_app_info_new
+C function
+
+g_desktop_app_info_new
 */
 func DesktopAppInfoNew(desktopId string) *DesktopAppInfo {
 	c_desktop_id := C.CString(desktopId)
@@ -2229,7 +2365,9 @@ func DesktopAppInfoNew(desktopId string) *DesktopAppInfo {
 // Creates a new #GDesktopAppInfo.
 /*
 
-C function : g_desktop_app_info_new_from_filename
+C function
+
+g_desktop_app_info_new_from_filename
 */
 func DesktopAppInfoNewFromFilename(filename string) *DesktopAppInfo {
 	c_filename := C.CString(filename)
@@ -2244,7 +2382,9 @@ func DesktopAppInfoNewFromFilename(filename string) *DesktopAppInfo {
 // Gets the categories from the desktop file.
 /*
 
-C function : g_desktop_app_info_get_categories
+C function
+
+g_desktop_app_info_get_categories
 */
 func (recv *DesktopAppInfo) GetCategories() string {
 	retC := C.g_desktop_app_info_get_categories((*C.GDesktopAppInfo)(recv.native))
@@ -2256,7 +2396,9 @@ func (recv *DesktopAppInfo) GetCategories() string {
 // Gets the generic name from the destkop file.
 /*
 
-C function : g_desktop_app_info_get_generic_name
+C function
+
+g_desktop_app_info_get_generic_name
 */
 func (recv *DesktopAppInfo) GetGenericName() string {
 	retC := C.g_desktop_app_info_get_generic_name((*C.GDesktopAppInfo)(recv.native))
@@ -2269,7 +2411,9 @@ func (recv *DesktopAppInfo) GetGenericName() string {
 // set to True.
 /*
 
-C function : g_desktop_app_info_get_is_hidden
+C function
+
+g_desktop_app_info_get_is_hidden
 */
 func (recv *DesktopAppInfo) GetIsHidden() bool {
 	retC := C.g_desktop_app_info_get_is_hidden((*C.GDesktopAppInfo)(recv.native))
@@ -2293,7 +2437,9 @@ func (recv *DesktopAppInfo) AppInfo() *AppInfo {
 // supported. More may be added in the future.
 /*
 
-C record/class : GEmblem
+C type
+
+GEmblem
 */
 type Emblem struct {
 	native *C.GEmblem
@@ -2339,7 +2485,9 @@ func (recv *Emblem) Icon() *Icon {
 // of the emblems. See also #GEmblem for more information.
 /*
 
-C record/class : GEmblemedIcon
+C type
+
+GEmblemedIcon
 */
 type EmblemedIcon struct {
 	native *C.GEmblemedIcon
@@ -2407,7 +2555,9 @@ func (recv *EmblemedIcon) Icon() *Icon {
 // on it, and it should be freed with g_object_unref().
 /*
 
-C record/class : GFileEnumerator
+C type
+
+GFileEnumerator
 */
 type FileEnumerator struct {
 	native *C.GFileEnumerator
@@ -2450,7 +2600,9 @@ func CastToFileEnumerator(object *gobject.Object) *FileEnumerator {
 // sure resources are released as early as possible.
 /*
 
-C function : g_file_enumerator_close
+C function
+
+g_file_enumerator_close
 */
 func (recv *FileEnumerator) Close(cancellable *Cancellable) (bool, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -2485,7 +2637,9 @@ func (recv *FileEnumerator) Close(cancellable *Cancellable) (bool, error) {
 // returned.
 /*
 
-C function : g_file_enumerator_close_finish
+C function
+
+g_file_enumerator_close_finish
 */
 func (recv *FileEnumerator) CloseFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -2506,7 +2660,9 @@ func (recv *FileEnumerator) CloseFinish(result *AsyncResult) (bool, error) {
 // Checks if the file enumerator has pending operations.
 /*
 
-C function : g_file_enumerator_has_pending
+C function
+
+g_file_enumerator_has_pending
 */
 func (recv *FileEnumerator) HasPending() bool {
 	retC := C.g_file_enumerator_has_pending((*C.GFileEnumerator)(recv.native))
@@ -2518,7 +2674,9 @@ func (recv *FileEnumerator) HasPending() bool {
 // Checks if the file enumerator has been closed.
 /*
 
-C function : g_file_enumerator_is_closed
+C function
+
+g_file_enumerator_is_closed
 */
 func (recv *FileEnumerator) IsClosed() bool {
 	retC := C.g_file_enumerator_is_closed((*C.GFileEnumerator)(recv.native))
@@ -2540,7 +2698,9 @@ func (recv *FileEnumerator) IsClosed() bool {
 // be unset.
 /*
 
-C function : g_file_enumerator_next_file
+C function
+
+g_file_enumerator_next_file
 */
 func (recv *FileEnumerator) NextFile(cancellable *Cancellable) (*FileInfo, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -2571,7 +2731,9 @@ func (recv *FileEnumerator) NextFile(cancellable *Cancellable) (*FileInfo, error
 // Finishes the asynchronous operation started with g_file_enumerator_next_files_async().
 /*
 
-C function : g_file_enumerator_next_files_finish
+C function
+
+g_file_enumerator_next_files_finish
 */
 func (recv *FileEnumerator) NextFilesFinish(result *AsyncResult) (*glib.List, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -2592,7 +2754,9 @@ func (recv *FileEnumerator) NextFilesFinish(result *AsyncResult) (*glib.List, er
 // Sets the file enumerator as having pending operations.
 /*
 
-C function : g_file_enumerator_set_pending
+C function
+
+g_file_enumerator_set_pending
 */
 func (recv *FileEnumerator) SetPending(pending bool) {
 	c_pending :=
@@ -2625,7 +2789,9 @@ func (recv *FileEnumerator) SetPending(pending bool) {
 // on the output stream.
 /*
 
-C record/class : GFileIOStream
+C type
+
+GFileIOStream
 */
 type FileIOStream struct {
 	native *C.GFileIOStream
@@ -2674,7 +2840,9 @@ func (recv *FileIOStream) Seekable() *Seekable {
 // to be used as icon.
 /*
 
-C record/class : GFileIcon
+C type
+
+GFileIcon
 */
 type FileIcon struct {
 	native *C.GFileIcon
@@ -2710,7 +2878,9 @@ func CastToFileIcon(object *gobject.Object) *FileIcon {
 // Creates a new icon for a file.
 /*
 
-C function : g_file_icon_new
+C function
+
+g_file_icon_new
 */
 func FileIconNew(file *File) *FileIcon {
 	c_file := (*C.GFile)(file.ToC())
@@ -2724,7 +2894,9 @@ func FileIconNew(file *File) *FileIcon {
 // Gets the #GFile associated with the given @icon.
 /*
 
-C function : g_file_icon_get_file
+C function
+
+g_file_icon_get_file
 */
 func (recv *FileIcon) GetFile() *File {
 	retC := C.g_file_icon_get_file((*C.GFileIcon)(recv.native))
@@ -2769,7 +2941,9 @@ func (recv *FileIcon) LoadableIcon() *LoadableIcon {
 // attributes.
 /*
 
-C record/class : GFileInfo
+C type
+
+GFileInfo
 */
 type FileInfo struct {
 	native *C.GFileInfo
@@ -2805,7 +2979,9 @@ func CastToFileInfo(object *gobject.Object) *FileInfo {
 // Creates a new file info structure.
 /*
 
-C function : g_file_info_new
+C function
+
+g_file_info_new
 */
 func FileInfoNew() *FileInfo {
 	retC := C.g_file_info_new()
@@ -2817,7 +2993,9 @@ func FileInfoNew() *FileInfo {
 // Clears the status information from @info.
 /*
 
-C function : g_file_info_clear_status
+C function
+
+g_file_info_clear_status
 */
 func (recv *FileInfo) ClearStatus() {
 	C.g_file_info_clear_status((*C.GFileInfo)(recv.native))
@@ -2829,7 +3007,9 @@ func (recv *FileInfo) ClearStatus() {
 // and then copies all of the file attributes from @src_info to @dest_info.
 /*
 
-C function : g_file_info_copy_into
+C function
+
+g_file_info_copy_into
 */
 func (recv *FileInfo) CopyInto(destInfo *FileInfo) {
 	c_dest_info := (*C.GFileInfo)(C.NULL)
@@ -2845,7 +3025,9 @@ func (recv *FileInfo) CopyInto(destInfo *FileInfo) {
 // Duplicates a file info structure.
 /*
 
-C function : g_file_info_dup
+C function
+
+g_file_info_dup
 */
 func (recv *FileInfo) Dup() *FileInfo {
 	retC := C.g_file_info_dup((*C.GFileInfo)(recv.native))
@@ -2859,7 +3041,9 @@ func (recv *FileInfo) Dup() *FileInfo {
 // utf8.
 /*
 
-C function : g_file_info_get_attribute_as_string
+C function
+
+g_file_info_get_attribute_as_string
 */
 func (recv *FileInfo) GetAttributeAsString(attribute string) string {
 	c_attribute := C.CString(attribute)
@@ -2876,7 +3060,9 @@ func (recv *FileInfo) GetAttributeAsString(attribute string) string {
 // contain a boolean value, %FALSE will be returned.
 /*
 
-C function : g_file_info_get_attribute_boolean
+C function
+
+g_file_info_get_attribute_boolean
 */
 func (recv *FileInfo) GetAttributeBoolean(attribute string) bool {
 	c_attribute := C.CString(attribute)
@@ -2892,7 +3078,9 @@ func (recv *FileInfo) GetAttributeBoolean(attribute string) bool {
 // not contain a byte string, %NULL will be returned.
 /*
 
-C function : g_file_info_get_attribute_byte_string
+C function
+
+g_file_info_get_attribute_byte_string
 */
 func (recv *FileInfo) GetAttributeByteString(attribute string) string {
 	c_attribute := C.CString(attribute)
@@ -2911,7 +3099,9 @@ func (recv *FileInfo) GetAttributeByteString(attribute string) string {
 // 0 will be returned.
 /*
 
-C function : g_file_info_get_attribute_int32
+C function
+
+g_file_info_get_attribute_int32
 */
 func (recv *FileInfo) GetAttributeInt32(attribute string) int32 {
 	c_attribute := C.CString(attribute)
@@ -2928,7 +3118,9 @@ func (recv *FileInfo) GetAttributeInt32(attribute string) int32 {
 // 0 will be returned.
 /*
 
-C function : g_file_info_get_attribute_int64
+C function
+
+g_file_info_get_attribute_int64
 */
 func (recv *FileInfo) GetAttributeInt64(attribute string) int64 {
 	c_attribute := C.CString(attribute)
@@ -2944,7 +3136,9 @@ func (recv *FileInfo) GetAttributeInt64(attribute string) int64 {
 // not contain a #GObject, %NULL will be returned.
 /*
 
-C function : g_file_info_get_attribute_object
+C function
+
+g_file_info_get_attribute_object
 */
 func (recv *FileInfo) GetAttributeObject(attribute string) *gobject.Object {
 	c_attribute := C.CString(attribute)
@@ -2959,7 +3153,9 @@ func (recv *FileInfo) GetAttributeObject(attribute string) *gobject.Object {
 // Gets the attribute status for an attribute key.
 /*
 
-C function : g_file_info_get_attribute_status
+C function
+
+g_file_info_get_attribute_status
 */
 func (recv *FileInfo) GetAttributeStatus(attribute string) FileAttributeStatus {
 	c_attribute := C.CString(attribute)
@@ -2975,7 +3171,9 @@ func (recv *FileInfo) GetAttributeStatus(attribute string) FileAttributeStatus {
 // not contain a string, %NULL will be returned.
 /*
 
-C function : g_file_info_get_attribute_string
+C function
+
+g_file_info_get_attribute_string
 */
 func (recv *FileInfo) GetAttributeString(attribute string) string {
 	c_attribute := C.CString(attribute)
@@ -2990,7 +3188,9 @@ func (recv *FileInfo) GetAttributeString(attribute string) string {
 // Gets the attribute type for an attribute key.
 /*
 
-C function : g_file_info_get_attribute_type
+C function
+
+g_file_info_get_attribute_type
 */
 func (recv *FileInfo) GetAttributeType(attribute string) FileAttributeType {
 	c_attribute := C.CString(attribute)
@@ -3007,7 +3207,9 @@ func (recv *FileInfo) GetAttributeType(attribute string) FileAttributeType {
 // 0 will be returned.
 /*
 
-C function : g_file_info_get_attribute_uint32
+C function
+
+g_file_info_get_attribute_uint32
 */
 func (recv *FileInfo) GetAttributeUint32(attribute string) uint32 {
 	c_attribute := C.CString(attribute)
@@ -3024,7 +3226,9 @@ func (recv *FileInfo) GetAttributeUint32(attribute string) uint32 {
 // 0 will be returned.
 /*
 
-C function : g_file_info_get_attribute_uint64
+C function
+
+g_file_info_get_attribute_uint64
 */
 func (recv *FileInfo) GetAttributeUint64(attribute string) uint64 {
 	c_attribute := C.CString(attribute)
@@ -3039,7 +3243,9 @@ func (recv *FileInfo) GetAttributeUint64(attribute string) uint64 {
 // Gets the file's content type.
 /*
 
-C function : g_file_info_get_content_type
+C function
+
+g_file_info_get_content_type
 */
 func (recv *FileInfo) GetContentType() string {
 	retC := C.g_file_info_get_content_type((*C.GFileInfo)(recv.native))
@@ -3051,7 +3257,9 @@ func (recv *FileInfo) GetContentType() string {
 // Gets a display name for a file.
 /*
 
-C function : g_file_info_get_display_name
+C function
+
+g_file_info_get_display_name
 */
 func (recv *FileInfo) GetDisplayName() string {
 	retC := C.g_file_info_get_display_name((*C.GFileInfo)(recv.native))
@@ -3063,7 +3271,9 @@ func (recv *FileInfo) GetDisplayName() string {
 // Gets the edit name for a file.
 /*
 
-C function : g_file_info_get_edit_name
+C function
+
+g_file_info_get_edit_name
 */
 func (recv *FileInfo) GetEditName() string {
 	retC := C.g_file_info_get_edit_name((*C.GFileInfo)(recv.native))
@@ -3076,7 +3286,9 @@ func (recv *FileInfo) GetEditName() string {
 // #GFileInfo. See %G_FILE_ATTRIBUTE_ETAG_VALUE.
 /*
 
-C function : g_file_info_get_etag
+C function
+
+g_file_info_get_etag
 */
 func (recv *FileInfo) GetEtag() string {
 	retC := C.g_file_info_get_etag((*C.GFileInfo)(recv.native))
@@ -3089,7 +3301,9 @@ func (recv *FileInfo) GetEtag() string {
 // This is different from the file's content type, see g_file_info_get_content_type().
 /*
 
-C function : g_file_info_get_file_type
+C function
+
+g_file_info_get_file_type
 */
 func (recv *FileInfo) GetFileType() FileType {
 	retC := C.g_file_info_get_file_type((*C.GFileInfo)(recv.native))
@@ -3101,7 +3315,9 @@ func (recv *FileInfo) GetFileType() FileType {
 // Gets the icon for a file.
 /*
 
-C function : g_file_info_get_icon
+C function
+
+g_file_info_get_icon
 */
 func (recv *FileInfo) GetIcon() *Icon {
 	retC := C.g_file_info_get_icon((*C.GFileInfo)(recv.native))
@@ -3113,7 +3329,9 @@ func (recv *FileInfo) GetIcon() *Icon {
 // Checks if a file is a backup file.
 /*
 
-C function : g_file_info_get_is_backup
+C function
+
+g_file_info_get_is_backup
 */
 func (recv *FileInfo) GetIsBackup() bool {
 	retC := C.g_file_info_get_is_backup((*C.GFileInfo)(recv.native))
@@ -3125,7 +3343,9 @@ func (recv *FileInfo) GetIsBackup() bool {
 // Checks if a file is hidden.
 /*
 
-C function : g_file_info_get_is_hidden
+C function
+
+g_file_info_get_is_hidden
 */
 func (recv *FileInfo) GetIsHidden() bool {
 	retC := C.g_file_info_get_is_hidden((*C.GFileInfo)(recv.native))
@@ -3137,7 +3357,9 @@ func (recv *FileInfo) GetIsHidden() bool {
 // Checks if a file is a symlink.
 /*
 
-C function : g_file_info_get_is_symlink
+C function
+
+g_file_info_get_is_symlink
 */
 func (recv *FileInfo) GetIsSymlink() bool {
 	retC := C.g_file_info_get_is_symlink((*C.GFileInfo)(recv.native))
@@ -3150,7 +3372,9 @@ func (recv *FileInfo) GetIsSymlink() bool {
 // in @result.
 /*
 
-C function : g_file_info_get_modification_time
+C function
+
+g_file_info_get_modification_time
 */
 func (recv *FileInfo) GetModificationTime() *glib.TimeVal {
 	var c_result C.GTimeVal
@@ -3165,7 +3389,9 @@ func (recv *FileInfo) GetModificationTime() *glib.TimeVal {
 // Gets the name for a file.
 /*
 
-C function : g_file_info_get_name
+C function
+
+g_file_info_get_name
 */
 func (recv *FileInfo) GetName() string {
 	retC := C.g_file_info_get_name((*C.GFileInfo)(recv.native))
@@ -3177,7 +3403,9 @@ func (recv *FileInfo) GetName() string {
 // Gets the file's size.
 /*
 
-C function : g_file_info_get_size
+C function
+
+g_file_info_get_size
 */
 func (recv *FileInfo) GetSize() uint64 {
 	retC := C.g_file_info_get_size((*C.GFileInfo)(recv.native))
@@ -3190,7 +3418,9 @@ func (recv *FileInfo) GetSize() uint64 {
 // See %G_FILE_ATTRIBUTE_STANDARD_SORT_ORDER.
 /*
 
-C function : g_file_info_get_sort_order
+C function
+
+g_file_info_get_sort_order
 */
 func (recv *FileInfo) GetSortOrder() int32 {
 	retC := C.g_file_info_get_sort_order((*C.GFileInfo)(recv.native))
@@ -3202,7 +3432,9 @@ func (recv *FileInfo) GetSortOrder() int32 {
 // Gets the symlink target for a given #GFileInfo.
 /*
 
-C function : g_file_info_get_symlink_target
+C function
+
+g_file_info_get_symlink_target
 */
 func (recv *FileInfo) GetSymlinkTarget() string {
 	retC := C.g_file_info_get_symlink_target((*C.GFileInfo)(recv.native))
@@ -3214,7 +3446,9 @@ func (recv *FileInfo) GetSymlinkTarget() string {
 // Checks if a file info structure has an attribute named @attribute.
 /*
 
-C function : g_file_info_has_attribute
+C function
+
+g_file_info_has_attribute
 */
 func (recv *FileInfo) HasAttribute(attribute string) bool {
 	c_attribute := C.CString(attribute)
@@ -3231,7 +3465,9 @@ func (recv *FileInfo) HasAttribute(attribute string) bool {
 // Removes all cases of @attribute from @info if it exists.
 /*
 
-C function : g_file_info_remove_attribute
+C function
+
+g_file_info_remove_attribute
 */
 func (recv *FileInfo) RemoveAttribute(attribute string) {
 	c_attribute := C.CString(attribute)
@@ -3246,7 +3482,9 @@ func (recv *FileInfo) RemoveAttribute(attribute string) {
 // attribute, use %G_ATTRIBUTE_TYPE_INVALID for @type.
 /*
 
-C function : g_file_info_set_attribute
+C function
+
+g_file_info_set_attribute
 */
 func (recv *FileInfo) SetAttribute(attribute string, type_ FileAttributeType, valueP uintptr) {
 	c_attribute := C.CString(attribute)
@@ -3265,7 +3503,9 @@ func (recv *FileInfo) SetAttribute(attribute string, type_ FileAttributeType, va
 // if possible.
 /*
 
-C function : g_file_info_set_attribute_boolean
+C function
+
+g_file_info_set_attribute_boolean
 */
 func (recv *FileInfo) SetAttributeBoolean(attribute string, attrValue bool) {
 	c_attribute := C.CString(attribute)
@@ -3283,7 +3523,9 @@ func (recv *FileInfo) SetAttributeBoolean(attribute string, attrValue bool) {
 // if possible.
 /*
 
-C function : g_file_info_set_attribute_byte_string
+C function
+
+g_file_info_set_attribute_byte_string
 */
 func (recv *FileInfo) SetAttributeByteString(attribute string, attrValue string) {
 	c_attribute := C.CString(attribute)
@@ -3301,7 +3543,9 @@ func (recv *FileInfo) SetAttributeByteString(attribute string, attrValue string)
 // if possible.
 /*
 
-C function : g_file_info_set_attribute_int32
+C function
+
+g_file_info_set_attribute_int32
 */
 func (recv *FileInfo) SetAttributeInt32(attribute string, attrValue int32) {
 	c_attribute := C.CString(attribute)
@@ -3318,7 +3562,9 @@ func (recv *FileInfo) SetAttributeInt32(attribute string, attrValue int32) {
 // if possible.
 /*
 
-C function : g_file_info_set_attribute_int64
+C function
+
+g_file_info_set_attribute_int64
 */
 func (recv *FileInfo) SetAttributeInt64(attribute string, attrValue int64) {
 	c_attribute := C.CString(attribute)
@@ -3334,7 +3580,9 @@ func (recv *FileInfo) SetAttributeInt64(attribute string, attrValue int64) {
 // Sets @mask on @info to match specific attribute types.
 /*
 
-C function : g_file_info_set_attribute_mask
+C function
+
+g_file_info_set_attribute_mask
 */
 func (recv *FileInfo) SetAttributeMask(mask *FileAttributeMatcher) {
 	c_mask := (*C.GFileAttributeMatcher)(C.NULL)
@@ -3351,7 +3599,9 @@ func (recv *FileInfo) SetAttributeMask(mask *FileAttributeMatcher) {
 // if possible.
 /*
 
-C function : g_file_info_set_attribute_object
+C function
+
+g_file_info_set_attribute_object
 */
 func (recv *FileInfo) SetAttributeObject(attribute string, attrValue *gobject.Object) {
 	c_attribute := C.CString(attribute)
@@ -3371,7 +3621,9 @@ func (recv *FileInfo) SetAttributeObject(attribute string, attrValue *gobject.Ob
 // if possible.
 /*
 
-C function : g_file_info_set_attribute_string
+C function
+
+g_file_info_set_attribute_string
 */
 func (recv *FileInfo) SetAttributeString(attribute string, attrValue string) {
 	c_attribute := C.CString(attribute)
@@ -3391,7 +3643,9 @@ func (recv *FileInfo) SetAttributeString(attribute string, attrValue string) {
 // if possible.
 /*
 
-C function : g_file_info_set_attribute_uint32
+C function
+
+g_file_info_set_attribute_uint32
 */
 func (recv *FileInfo) SetAttributeUint32(attribute string, attrValue uint32) {
 	c_attribute := C.CString(attribute)
@@ -3408,7 +3662,9 @@ func (recv *FileInfo) SetAttributeUint32(attribute string, attrValue uint32) {
 // if possible.
 /*
 
-C function : g_file_info_set_attribute_uint64
+C function
+
+g_file_info_set_attribute_uint64
 */
 func (recv *FileInfo) SetAttributeUint64(attribute string, attrValue uint64) {
 	c_attribute := C.CString(attribute)
@@ -3425,7 +3681,9 @@ func (recv *FileInfo) SetAttributeUint64(attribute string, attrValue uint64) {
 // See %G_FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE.
 /*
 
-C function : g_file_info_set_content_type
+C function
+
+g_file_info_set_content_type
 */
 func (recv *FileInfo) SetContentType(contentType string) {
 	c_content_type := C.CString(contentType)
@@ -3440,7 +3698,9 @@ func (recv *FileInfo) SetContentType(contentType string) {
 // See %G_FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME.
 /*
 
-C function : g_file_info_set_display_name
+C function
+
+g_file_info_set_display_name
 */
 func (recv *FileInfo) SetDisplayName(displayName string) {
 	c_display_name := C.CString(displayName)
@@ -3455,7 +3715,9 @@ func (recv *FileInfo) SetDisplayName(displayName string) {
 // See %G_FILE_ATTRIBUTE_STANDARD_EDIT_NAME.
 /*
 
-C function : g_file_info_set_edit_name
+C function
+
+g_file_info_set_edit_name
 */
 func (recv *FileInfo) SetEditName(editName string) {
 	c_edit_name := C.CString(editName)
@@ -3470,7 +3732,9 @@ func (recv *FileInfo) SetEditName(editName string) {
 // See %G_FILE_ATTRIBUTE_STANDARD_TYPE.
 /*
 
-C function : g_file_info_set_file_type
+C function
+
+g_file_info_set_file_type
 */
 func (recv *FileInfo) SetFileType(type_ FileType) {
 	c_type := (C.GFileType)(type_)
@@ -3484,7 +3748,9 @@ func (recv *FileInfo) SetFileType(type_ FileType) {
 // See %G_FILE_ATTRIBUTE_STANDARD_ICON.
 /*
 
-C function : g_file_info_set_icon
+C function
+
+g_file_info_set_icon
 */
 func (recv *FileInfo) SetIcon(icon *Icon) {
 	c_icon := (*C.GIcon)(icon.ToC())
@@ -3498,7 +3764,9 @@ func (recv *FileInfo) SetIcon(icon *Icon) {
 // See %G_FILE_ATTRIBUTE_STANDARD_IS_HIDDEN.
 /*
 
-C function : g_file_info_set_is_hidden
+C function
+
+g_file_info_set_is_hidden
 */
 func (recv *FileInfo) SetIsHidden(isHidden bool) {
 	c_is_hidden :=
@@ -3513,7 +3781,9 @@ func (recv *FileInfo) SetIsHidden(isHidden bool) {
 // See %G_FILE_ATTRIBUTE_STANDARD_IS_SYMLINK.
 /*
 
-C function : g_file_info_set_is_symlink
+C function
+
+g_file_info_set_is_symlink
 */
 func (recv *FileInfo) SetIsSymlink(isSymlink bool) {
 	c_is_symlink :=
@@ -3528,7 +3798,9 @@ func (recv *FileInfo) SetIsSymlink(isSymlink bool) {
 // info to the given time value.
 /*
 
-C function : g_file_info_set_modification_time
+C function
+
+g_file_info_set_modification_time
 */
 func (recv *FileInfo) SetModificationTime(mtime *glib.TimeVal) {
 	c_mtime := (*C.GTimeVal)(C.NULL)
@@ -3545,7 +3817,9 @@ func (recv *FileInfo) SetModificationTime(mtime *glib.TimeVal) {
 // See %G_FILE_ATTRIBUTE_STANDARD_NAME.
 /*
 
-C function : g_file_info_set_name
+C function
+
+g_file_info_set_name
 */
 func (recv *FileInfo) SetName(name string) {
 	c_name := C.CString(name)
@@ -3560,7 +3834,9 @@ func (recv *FileInfo) SetName(name string) {
 // to the given size.
 /*
 
-C function : g_file_info_set_size
+C function
+
+g_file_info_set_size
 */
 func (recv *FileInfo) SetSize(size uint64) {
 	c_size := (C.goffset)(size)
@@ -3574,7 +3850,9 @@ func (recv *FileInfo) SetSize(size uint64) {
 // %G_FILE_ATTRIBUTE_STANDARD_SORT_ORDER.
 /*
 
-C function : g_file_info_set_sort_order
+C function
+
+g_file_info_set_sort_order
 */
 func (recv *FileInfo) SetSortOrder(sortOrder int32) {
 	c_sort_order := (C.gint32)(sortOrder)
@@ -3588,7 +3866,9 @@ func (recv *FileInfo) SetSortOrder(sortOrder int32) {
 // to the given symlink target.
 /*
 
-C function : g_file_info_set_symlink_target
+C function
+
+g_file_info_set_symlink_target
 */
 func (recv *FileInfo) SetSymlinkTarget(symlinkTarget string) {
 	c_symlink_target := C.CString(symlinkTarget)
@@ -3603,7 +3883,9 @@ func (recv *FileInfo) SetSymlinkTarget(symlinkTarget string) {
 // is set.
 /*
 
-C function : g_file_info_unset_attribute_mask
+C function
+
+g_file_info_unset_attribute_mask
 */
 func (recv *FileInfo) UnsetAttributeMask() {
 	C.g_file_info_unset_attribute_mask((*C.GFileInfo)(recv.native))
@@ -3622,7 +3904,9 @@ func (recv *FileInfo) UnsetAttributeMask() {
 // To position a file input stream, use g_seekable_seek().
 /*
 
-C record/class : GFileInputStream
+C type
+
+GFileInputStream
 */
 type FileInputStream struct {
 	native *C.GFileInputStream
@@ -3669,7 +3953,9 @@ func CastToFileInputStream(object *gobject.Object) *FileInputStream {
 // any other operations on the stream will fail with %G_IO_ERROR_PENDING.
 /*
 
-C function : g_file_input_stream_query_info
+C function
+
+g_file_input_stream_query_info
 */
 func (recv *FileInputStream) QueryInfo(attributes string, cancellable *Cancellable) (*FileInfo, error) {
 	c_attributes := C.CString(attributes)
@@ -3698,7 +3984,9 @@ func (recv *FileInputStream) QueryInfo(attributes string, cancellable *Cancellab
 // Finishes an asynchronous info query operation.
 /*
 
-C function : g_file_input_stream_query_info_finish
+C function
+
+g_file_input_stream_query_info_finish
 */
 func (recv *FileInputStream) QueryInfoFinish(result *AsyncResult) (*FileInfo, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -3737,7 +4025,9 @@ func (recv *FileInputStream) Seekable() *Seekable {
 // context is still running).
 /*
 
-C record/class : GFileMonitor
+C type
+
+GFileMonitor
 */
 type FileMonitor struct {
 	native *C.GFileMonitor
@@ -3777,7 +4067,9 @@ func CastToFileMonitor(object *gobject.Object) *FileMonitor {
 // Cancels a file monitor.
 /*
 
-C function : g_file_monitor_cancel
+C function
+
+g_file_monitor_cancel
 */
 func (recv *FileMonitor) Cancel() bool {
 	retC := C.g_file_monitor_cancel((*C.GFileMonitor)(recv.native))
@@ -3795,7 +4087,9 @@ func (recv *FileMonitor) Cancel() bool {
 // thread that the monitor was created in.
 /*
 
-C function : g_file_monitor_emit_event
+C function
+
+g_file_monitor_emit_event
 */
 func (recv *FileMonitor) EmitEvent(child *File, otherFile *File, eventType FileMonitorEvent) {
 	c_child := (*C.GFile)(child.ToC())
@@ -3812,7 +4106,9 @@ func (recv *FileMonitor) EmitEvent(child *File, otherFile *File, eventType FileM
 // Returns whether the monitor is canceled.
 /*
 
-C function : g_file_monitor_is_cancelled
+C function
+
+g_file_monitor_is_cancelled
 */
 func (recv *FileMonitor) IsCancelled() bool {
 	retC := C.g_file_monitor_is_cancelled((*C.GFileMonitor)(recv.native))
@@ -3825,7 +4121,9 @@ func (recv *FileMonitor) IsCancelled() bool {
 // consecutive change events to the same file.
 /*
 
-C function : g_file_monitor_set_rate_limit
+C function
+
+g_file_monitor_set_rate_limit
 */
 func (recv *FileMonitor) SetRateLimit(limitMsecs int32) {
 	c_limit_msecs := (C.gint)(limitMsecs)
@@ -3851,7 +4149,9 @@ func (recv *FileMonitor) SetRateLimit(limitMsecs int32) {
 // stream, use g_seekable_truncate().
 /*
 
-C record/class : GFileOutputStream
+C type
+
+GFileOutputStream
 */
 type FileOutputStream struct {
 	native *C.GFileOutputStream
@@ -3896,7 +4196,9 @@ func CastToFileOutputStream(object *gobject.Object) *FileOutputStream {
 // and closed, as the etag can change while writing.
 /*
 
-C function : g_file_output_stream_get_etag
+C function
+
+g_file_output_stream_get_etag
 */
 func (recv *FileOutputStream) GetEtag() string {
 	retC := C.g_file_output_stream_get_etag((*C.GFileOutputStream)(recv.native))
@@ -3925,7 +4227,9 @@ func (recv *FileOutputStream) GetEtag() string {
 // be returned.
 /*
 
-C function : g_file_output_stream_query_info
+C function
+
+g_file_output_stream_query_info
 */
 func (recv *FileOutputStream) QueryInfo(attributes string, cancellable *Cancellable) (*FileInfo, error) {
 	c_attributes := C.CString(attributes)
@@ -3955,7 +4259,9 @@ func (recv *FileOutputStream) QueryInfo(attributes string, cancellable *Cancella
 // by g_file_output_stream_query_info_async().
 /*
 
-C function : g_file_output_stream_query_info_finish
+C function
+
+g_file_output_stream_query_info_finish
 */
 func (recv *FileOutputStream) QueryInfoFinish(result *AsyncResult) (*FileInfo, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -3983,7 +4289,9 @@ func (recv *FileOutputStream) Seekable() *Seekable {
 // completion strings for widget implementations.
 /*
 
-C record/class : GFilenameCompleter
+C type
+
+GFilenameCompleter
 */
 type FilenameCompleter struct {
 	native *C.GFilenameCompleter
@@ -4076,7 +4384,9 @@ func filenamecompleter_gotCompletionDataHandler(_ *C.GObject, data C.gpointer) {
 // Creates a new filename completer.
 /*
 
-C function : g_filename_completer_new
+C function
+
+g_filename_completer_new
 */
 func FilenameCompleterNew() *FilenameCompleter {
 	retC := C.g_filename_completer_new()
@@ -4088,7 +4398,9 @@ func FilenameCompleterNew() *FilenameCompleter {
 // Obtains a completion for @initial_text from @completer.
 /*
 
-C function : g_filename_completer_get_completion_suffix
+C function
+
+g_filename_completer_get_completion_suffix
 */
 func (recv *FilenameCompleter) GetCompletionSuffix(initialText string) string {
 	c_initial_text := C.CString(initialText)
@@ -4107,7 +4419,9 @@ func (recv *FilenameCompleter) GetCompletionSuffix(initialText string) string {
 // complete directory names, and not file names.
 /*
 
-C function : g_filename_completer_set_dirs_only
+C function
+
+g_filename_completer_set_dirs_only
 */
 func (recv *FilenameCompleter) SetDirsOnly(dirsOnly bool) {
 	c_dirs_only :=
@@ -4124,7 +4438,9 @@ func (recv *FilenameCompleter) SetDirsOnly(dirsOnly bool) {
 // and byte order flipping.
 /*
 
-C record/class : GFilterInputStream
+C type
+
+GFilterInputStream
 */
 type FilterInputStream struct {
 	native *C.GFilterInputStream
@@ -4167,7 +4483,9 @@ func CastToFilterInputStream(object *gobject.Object) *FilterInputStream {
 // Gets the base stream for the filter stream.
 /*
 
-C function : g_filter_input_stream_get_base_stream
+C function
+
+g_filter_input_stream_get_base_stream
 */
 func (recv *FilterInputStream) GetBaseStream() *InputStream {
 	retC := C.g_filter_input_stream_get_base_stream((*C.GFilterInputStream)(recv.native))
@@ -4180,7 +4498,9 @@ func (recv *FilterInputStream) GetBaseStream() *InputStream {
 // closed.
 /*
 
-C function : g_filter_input_stream_get_close_base_stream
+C function
+
+g_filter_input_stream_get_close_base_stream
 */
 func (recv *FilterInputStream) GetCloseBaseStream() bool {
 	retC := C.g_filter_input_stream_get_close_base_stream((*C.GFilterInputStream)(recv.native))
@@ -4192,7 +4512,9 @@ func (recv *FilterInputStream) GetCloseBaseStream() bool {
 // Sets whether the base stream will be closed when @stream is closed.
 /*
 
-C function : g_filter_input_stream_set_close_base_stream
+C function
+
+g_filter_input_stream_set_close_base_stream
 */
 func (recv *FilterInputStream) SetCloseBaseStream(closeBase bool) {
 	c_close_base :=
@@ -4209,7 +4531,9 @@ func (recv *FilterInputStream) SetCloseBaseStream(closeBase bool) {
 // and byte order flipping.
 /*
 
-C record/class : GFilterOutputStream
+C type
+
+GFilterOutputStream
 */
 type FilterOutputStream struct {
 	native *C.GFilterOutputStream
@@ -4252,7 +4576,9 @@ func CastToFilterOutputStream(object *gobject.Object) *FilterOutputStream {
 // Gets the base stream for the filter stream.
 /*
 
-C function : g_filter_output_stream_get_base_stream
+C function
+
+g_filter_output_stream_get_base_stream
 */
 func (recv *FilterOutputStream) GetBaseStream() *OutputStream {
 	retC := C.g_filter_output_stream_get_base_stream((*C.GFilterOutputStream)(recv.native))
@@ -4265,7 +4591,9 @@ func (recv *FilterOutputStream) GetBaseStream() *OutputStream {
 // closed.
 /*
 
-C function : g_filter_output_stream_get_close_base_stream
+C function
+
+g_filter_output_stream_get_close_base_stream
 */
 func (recv *FilterOutputStream) GetCloseBaseStream() bool {
 	retC := C.g_filter_output_stream_get_close_base_stream((*C.GFilterOutputStream)(recv.native))
@@ -4277,7 +4605,9 @@ func (recv *FilterOutputStream) GetCloseBaseStream() bool {
 // Sets whether the base stream will be closed when @stream is closed.
 /*
 
-C function : g_filter_output_stream_set_close_base_stream
+C function
+
+g_filter_output_stream_set_close_base_stream
 */
 func (recv *FilterOutputStream) SetCloseBaseStream(closeBase bool) {
 	c_close_base :=
@@ -4293,7 +4623,9 @@ func (recv *FilterOutputStream) SetCloseBaseStream(closeBase bool) {
 // be used by others to implement module loading.
 /*
 
-C record/class : GIOModule
+C type
+
+GIOModule
 */
 type IOModule struct {
 	native *C.GIOModule
@@ -4325,7 +4657,9 @@ func CastToIOModule(object *gobject.Object) *IOModule {
 // shared library when in use.
 /*
 
-C function : g_io_module_new
+C function
+
+g_io_module_new
 */
 func IOModuleNew(filename string) *IOModule {
 	c_filename := C.CString(filename)
@@ -4394,7 +4728,9 @@ func (recv *IOModule) TypePlugin() *gobject.TypePlugin {
 // stream in (though they are guaranteed not to crash).
 /*
 
-C record/class : GIOStream
+C type
+
+GIOStream
 */
 type IOStream struct {
 	native *C.GIOStream
@@ -4441,7 +4777,9 @@ func CastToIOStream(object *gobject.Object) *IOStream {
 // port number).
 /*
 
-C record/class : GInetAddress
+C type
+
+GInetAddress
 */
 type InetAddress struct {
 	native *C.GInetAddress
@@ -4480,7 +4818,9 @@ func CastToInetAddress(object *gobject.Object) *InetAddress {
 // #GInetAddress and a port number.
 /*
 
-C record/class : GInetSocketAddress
+C type
+
+GInetSocketAddress
 */
 type InetSocketAddress struct {
 	native *C.GInetSocketAddress
@@ -4538,7 +4878,9 @@ func (recv *InetSocketAddress) SocketConnectable() *SocketConnectable {
 // All of these functions have async variants too.
 /*
 
-C record/class : GInputStream
+C type
+
+GInputStream
 */
 type InputStream struct {
 	native *C.GInputStream
@@ -4576,7 +4918,9 @@ func CastToInputStream(object *gobject.Object) *InputStream {
 // Clears the pending flag on @stream.
 /*
 
-C function : g_input_stream_clear_pending
+C function
+
+g_input_stream_clear_pending
 */
 func (recv *InputStream) ClearPending() {
 	C.g_input_stream_clear_pending((*C.GInputStream)(recv.native))
@@ -4609,7 +4953,9 @@ func (recv *InputStream) ClearPending() {
 // can use a faster close that doesn't block to e.g. check errors.
 /*
 
-C function : g_input_stream_close
+C function
+
+g_input_stream_close
 */
 func (recv *InputStream) Close(cancellable *Cancellable) (bool, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -4635,7 +4981,9 @@ func (recv *InputStream) Close(cancellable *Cancellable) (bool, error) {
 // Finishes closing a stream asynchronously, started from g_input_stream_close_async().
 /*
 
-C function : g_input_stream_close_finish
+C function
+
+g_input_stream_close_finish
 */
 func (recv *InputStream) CloseFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -4656,7 +5004,9 @@ func (recv *InputStream) CloseFinish(result *AsyncResult) (bool, error) {
 // Checks if an input stream has pending actions.
 /*
 
-C function : g_input_stream_has_pending
+C function
+
+g_input_stream_has_pending
 */
 func (recv *InputStream) HasPending() bool {
 	retC := C.g_input_stream_has_pending((*C.GInputStream)(recv.native))
@@ -4668,7 +5018,9 @@ func (recv *InputStream) HasPending() bool {
 // Checks if an input stream is closed.
 /*
 
-C function : g_input_stream_is_closed
+C function
+
+g_input_stream_is_closed
 */
 func (recv *InputStream) IsClosed() bool {
 	retC := C.g_input_stream_is_closed((*C.GInputStream)(recv.native))
@@ -4700,7 +5052,9 @@ func (recv *InputStream) IsClosed() bool {
 // On error -1 is returned and @error is set accordingly.
 /*
 
-C function : g_input_stream_read
+C function
+
+g_input_stream_read
 */
 func (recv *InputStream) Read(buffer []uint8, cancellable *Cancellable) (int64, error) {
 	c_buffer := &buffer[0]
@@ -4746,7 +5100,9 @@ func (recv *InputStream) Read(buffer []uint8, cancellable *Cancellable) (int64, 
 // write your own loop around g_input_stream_read().
 /*
 
-C function : g_input_stream_read_all
+C function
+
+g_input_stream_read_all
 */
 func (recv *InputStream) ReadAll(buffer []uint8, cancellable *Cancellable) (bool, uint64, error) {
 	c_buffer := &buffer[0]
@@ -4780,7 +5136,9 @@ func (recv *InputStream) ReadAll(buffer []uint8, cancellable *Cancellable) (bool
 // Finishes an asynchronous stream read operation.
 /*
 
-C function : g_input_stream_read_finish
+C function
+
+g_input_stream_read_finish
 */
 func (recv *InputStream) ReadFinish(result *AsyncResult) (int64, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -4803,7 +5161,9 @@ func (recv *InputStream) ReadFinish(result *AsyncResult) (int64, error) {
 // @error.
 /*
 
-C function : g_input_stream_set_pending
+C function
+
+g_input_stream_set_pending
 */
 func (recv *InputStream) SetPending() (bool, error) {
 	var cThrowableError *C.GError
@@ -4835,7 +5195,9 @@ func (recv *InputStream) SetPending() (bool, error) {
 // partial result will be returned, without an error.
 /*
 
-C function : g_input_stream_skip
+C function
+
+g_input_stream_skip
 */
 func (recv *InputStream) Skip(count uint64, cancellable *Cancellable) (int64, error) {
 	c_count := (C.gsize)(count)
@@ -4863,7 +5225,9 @@ func (recv *InputStream) Skip(count uint64, cancellable *Cancellable) (int64, er
 // Finishes a stream skip operation.
 /*
 
-C function : g_input_stream_skip_finish
+C function
+
+g_input_stream_skip_finish
 */
 func (recv *InputStream) SkipFinish(result *AsyncResult) (int64, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -4888,7 +5252,9 @@ func (recv *InputStream) SkipFinish(result *AsyncResult) (int64, error) {
 // with a fast path for the common case of iterating the list linearly.
 /*
 
-C record/class : GListStore
+C type
+
+GListStore
 */
 type ListStore struct {
 	native *C.GListStore
@@ -4933,7 +5299,9 @@ func (recv *ListStore) ListModel() *ListModel {
 // #GPollableInputStream.
 /*
 
-C record/class : GMemoryInputStream
+C type
+
+GMemoryInputStream
 */
 type MemoryInputStream struct {
 	native *C.GMemoryInputStream
@@ -4976,7 +5344,9 @@ func CastToMemoryInputStream(object *gobject.Object) *MemoryInputStream {
 // Creates a new empty #GMemoryInputStream.
 /*
 
-C function : g_memory_input_stream_new
+C function
+
+g_memory_input_stream_new
 */
 func MemoryInputStreamNew() *MemoryInputStream {
 	retC := C.g_memory_input_stream_new()
@@ -5006,7 +5376,9 @@ func (recv *MemoryInputStream) Seekable() *Seekable {
 // #GPollableOutputStream: it always polls as ready.
 /*
 
-C record/class : GMemoryOutputStream
+C type
+
+GMemoryOutputStream
 */
 type MemoryOutputStream struct {
 	native *C.GMemoryOutputStream
@@ -5054,7 +5426,9 @@ func CastToMemoryOutputStream(object *gobject.Object) *MemoryOutputStream {
 // write or truncate operation on the stream.
 /*
 
-C function : g_memory_output_stream_get_data
+C function
+
+g_memory_output_stream_get_data
 */
 func (recv *MemoryOutputStream) GetData() uintptr {
 	retC := C.g_memory_output_stream_get_data((*C.GMemoryOutputStream)(recv.native))
@@ -5080,7 +5454,9 @@ func (recv *MemoryOutputStream) GetData() uintptr {
 // stream, use g_memory_output_stream_get_data_size().
 /*
 
-C function : g_memory_output_stream_get_size
+C function
+
+g_memory_output_stream_get_size
 */
 func (recv *MemoryOutputStream) GetSize() uint64 {
 	retC := C.g_memory_output_stream_get_size((*C.GMemoryOutputStream)(recv.native))
@@ -5116,7 +5492,9 @@ func (recv *MemoryOutputStream) Seekable() *Seekable {
 // passed, see each method taking a #GMountOperation for details.
 /*
 
-C record/class : GMountOperation
+C type
+
+GMountOperation
 */
 type MountOperation struct {
 	native *C.GMountOperation
@@ -5160,7 +5538,9 @@ func CastToMountOperation(object *gobject.Object) *MountOperation {
 // Creates a new mount operation.
 /*
 
-C function : g_mount_operation_new
+C function
+
+g_mount_operation_new
 */
 func MountOperationNew() *MountOperation {
 	retC := C.g_mount_operation_new()
@@ -5173,7 +5553,9 @@ func MountOperationNew() *MountOperation {
 // for an anonymous user.
 /*
 
-C function : g_mount_operation_get_anonymous
+C function
+
+g_mount_operation_get_anonymous
 */
 func (recv *MountOperation) GetAnonymous() bool {
 	retC := C.g_mount_operation_get_anonymous((*C.GMountOperation)(recv.native))
@@ -5185,7 +5567,9 @@ func (recv *MountOperation) GetAnonymous() bool {
 // Gets a choice from the mount operation.
 /*
 
-C function : g_mount_operation_get_choice
+C function
+
+g_mount_operation_get_choice
 */
 func (recv *MountOperation) GetChoice() int32 {
 	retC := C.g_mount_operation_get_choice((*C.GMountOperation)(recv.native))
@@ -5197,7 +5581,9 @@ func (recv *MountOperation) GetChoice() int32 {
 // Gets the domain of the mount operation.
 /*
 
-C function : g_mount_operation_get_domain
+C function
+
+g_mount_operation_get_domain
 */
 func (recv *MountOperation) GetDomain() string {
 	retC := C.g_mount_operation_get_domain((*C.GMountOperation)(recv.native))
@@ -5209,7 +5595,9 @@ func (recv *MountOperation) GetDomain() string {
 // Gets a password from the mount operation.
 /*
 
-C function : g_mount_operation_get_password
+C function
+
+g_mount_operation_get_password
 */
 func (recv *MountOperation) GetPassword() string {
 	retC := C.g_mount_operation_get_password((*C.GMountOperation)(recv.native))
@@ -5221,7 +5609,9 @@ func (recv *MountOperation) GetPassword() string {
 // Gets the state of saving passwords for the mount operation.
 /*
 
-C function : g_mount_operation_get_password_save
+C function
+
+g_mount_operation_get_password_save
 */
 func (recv *MountOperation) GetPasswordSave() PasswordSave {
 	retC := C.g_mount_operation_get_password_save((*C.GMountOperation)(recv.native))
@@ -5233,7 +5623,9 @@ func (recv *MountOperation) GetPasswordSave() PasswordSave {
 // Get the user name from the mount operation.
 /*
 
-C function : g_mount_operation_get_username
+C function
+
+g_mount_operation_get_username
 */
 func (recv *MountOperation) GetUsername() string {
 	retC := C.g_mount_operation_get_username((*C.GMountOperation)(recv.native))
@@ -5245,7 +5637,9 @@ func (recv *MountOperation) GetUsername() string {
 // Emits the #GMountOperation::reply signal.
 /*
 
-C function : g_mount_operation_reply
+C function
+
+g_mount_operation_reply
 */
 func (recv *MountOperation) Reply(result MountOperationResult) {
 	c_result := (C.GMountOperationResult)(result)
@@ -5258,7 +5652,9 @@ func (recv *MountOperation) Reply(result MountOperationResult) {
 // Sets the mount operation to use an anonymous user if @anonymous is %TRUE.
 /*
 
-C function : g_mount_operation_set_anonymous
+C function
+
+g_mount_operation_set_anonymous
 */
 func (recv *MountOperation) SetAnonymous(anonymous bool) {
 	c_anonymous :=
@@ -5272,7 +5668,9 @@ func (recv *MountOperation) SetAnonymous(anonymous bool) {
 // Sets a default choice for the mount operation.
 /*
 
-C function : g_mount_operation_set_choice
+C function
+
+g_mount_operation_set_choice
 */
 func (recv *MountOperation) SetChoice(choice int32) {
 	c_choice := (C.int)(choice)
@@ -5285,7 +5683,9 @@ func (recv *MountOperation) SetChoice(choice int32) {
 // Sets the mount operation's domain.
 /*
 
-C function : g_mount_operation_set_domain
+C function
+
+g_mount_operation_set_domain
 */
 func (recv *MountOperation) SetDomain(domain string) {
 	c_domain := C.CString(domain)
@@ -5299,7 +5699,9 @@ func (recv *MountOperation) SetDomain(domain string) {
 // Sets the mount operation's password to @password.
 /*
 
-C function : g_mount_operation_set_password
+C function
+
+g_mount_operation_set_password
 */
 func (recv *MountOperation) SetPassword(password string) {
 	c_password := C.CString(password)
@@ -5313,7 +5715,9 @@ func (recv *MountOperation) SetPassword(password string) {
 // Sets the state of saving passwords for the mount operation.
 /*
 
-C function : g_mount_operation_set_password_save
+C function
+
+g_mount_operation_set_password_save
 */
 func (recv *MountOperation) SetPasswordSave(save PasswordSave) {
 	c_save := (C.GPasswordSave)(save)
@@ -5326,7 +5730,9 @@ func (recv *MountOperation) SetPasswordSave(save PasswordSave) {
 // Sets the user name within @op to @username.
 /*
 
-C function : g_mount_operation_set_username
+C function
+
+g_mount_operation_set_username
 */
 func (recv *MountOperation) SetUsername(username string) {
 	c_username := C.CString(username)
@@ -5339,7 +5745,9 @@ func (recv *MountOperation) SetUsername(username string) {
 
 /*
 
-C record/class : GNativeVolumeMonitor
+C type
+
+GNativeVolumeMonitor
 */
 type NativeVolumeMonitor struct {
 	native *C.GNativeVolumeMonitor
@@ -5386,7 +5794,9 @@ func CastToNativeVolumeMonitor(object *gobject.Object) *NativeVolumeMonitor {
 // interface.
 /*
 
-C record/class : GNetworkAddress
+C type
+
+GNetworkAddress
 */
 type NetworkAddress struct {
 	native *C.GNetworkAddress
@@ -5437,7 +5847,9 @@ func (recv *NetworkAddress) SocketConnectable() *SocketConnectable {
 // interface.
 /*
 
-C record/class : GNetworkService
+C type
+
+GNetworkService
 */
 type NetworkService struct {
 	native *C.GNetworkService
@@ -5490,7 +5902,9 @@ func (recv *NetworkService) SocketConnectable() *SocketConnectable {
 // All of these functions have async variants too.
 /*
 
-C record/class : GOutputStream
+C type
+
+GOutputStream
 */
 type OutputStream struct {
 	native *C.GOutputStream
@@ -5528,7 +5942,9 @@ func CastToOutputStream(object *gobject.Object) *OutputStream {
 // Clears the pending flag on @stream.
 /*
 
-C function : g_output_stream_clear_pending
+C function
+
+g_output_stream_clear_pending
 */
 func (recv *OutputStream) ClearPending() {
 	C.g_output_stream_clear_pending((*C.GOutputStream)(recv.native))
@@ -5567,7 +5983,9 @@ func (recv *OutputStream) ClearPending() {
 // data will reach the target.
 /*
 
-C function : g_output_stream_close
+C function
+
+g_output_stream_close
 */
 func (recv *OutputStream) Close(cancellable *Cancellable) (bool, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -5593,7 +6011,9 @@ func (recv *OutputStream) Close(cancellable *Cancellable) (bool, error) {
 // Closes an output stream.
 /*
 
-C function : g_output_stream_close_finish
+C function
+
+g_output_stream_close_finish
 */
 func (recv *OutputStream) CloseFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -5622,7 +6042,9 @@ func (recv *OutputStream) CloseFinish(result *AsyncResult) (bool, error) {
 // was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
 /*
 
-C function : g_output_stream_flush
+C function
+
+g_output_stream_flush
 */
 func (recv *OutputStream) Flush(cancellable *Cancellable) (bool, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -5648,7 +6070,9 @@ func (recv *OutputStream) Flush(cancellable *Cancellable) (bool, error) {
 // Finishes flushing an output stream.
 /*
 
-C function : g_output_stream_flush_finish
+C function
+
+g_output_stream_flush_finish
 */
 func (recv *OutputStream) FlushFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -5669,7 +6093,9 @@ func (recv *OutputStream) FlushFinish(result *AsyncResult) (bool, error) {
 // Checks if an output stream has pending actions.
 /*
 
-C function : g_output_stream_has_pending
+C function
+
+g_output_stream_has_pending
 */
 func (recv *OutputStream) HasPending() bool {
 	retC := C.g_output_stream_has_pending((*C.GOutputStream)(recv.native))
@@ -5681,7 +6107,9 @@ func (recv *OutputStream) HasPending() bool {
 // Checks if an output stream has already been closed.
 /*
 
-C function : g_output_stream_is_closed
+C function
+
+g_output_stream_is_closed
 */
 func (recv *OutputStream) IsClosed() bool {
 	retC := C.g_output_stream_is_closed((*C.GOutputStream)(recv.native))
@@ -5695,7 +6123,9 @@ func (recv *OutputStream) IsClosed() bool {
 // @error.
 /*
 
-C function : g_output_stream_set_pending
+C function
+
+g_output_stream_set_pending
 */
 func (recv *OutputStream) SetPending() (bool, error) {
 	var cThrowableError *C.GError
@@ -5714,7 +6144,9 @@ func (recv *OutputStream) SetPending() (bool, error) {
 // Splices an input stream into an output stream.
 /*
 
-C function : g_output_stream_splice
+C function
+
+g_output_stream_splice
 */
 func (recv *OutputStream) Splice(source *InputStream, flags OutputStreamSpliceFlags, cancellable *Cancellable) (int64, error) {
 	c_source := (*C.GInputStream)(C.NULL)
@@ -5747,7 +6179,9 @@ func (recv *OutputStream) Splice(source *InputStream, flags OutputStreamSpliceFl
 // Finishes an asynchronous stream splice operation.
 /*
 
-C function : g_output_stream_splice_finish
+C function
+
+g_output_stream_splice_finish
 */
 func (recv *OutputStream) SpliceFinish(result *AsyncResult) (int64, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -5787,7 +6221,9 @@ func (recv *OutputStream) SpliceFinish(result *AsyncResult) (int64, error) {
 // On error -1 is returned and @error is set accordingly.
 /*
 
-C function : g_output_stream_write
+C function
+
+g_output_stream_write
 */
 func (recv *OutputStream) Write(buffer []uint8, cancellable *Cancellable) (int64, error) {
 	c_buffer := &buffer[0]
@@ -5833,7 +6269,9 @@ func (recv *OutputStream) Write(buffer []uint8, cancellable *Cancellable) (int64
 // g_output_stream_write().
 /*
 
-C function : g_output_stream_write_all
+C function
+
+g_output_stream_write_all
 */
 func (recv *OutputStream) WriteAll(buffer []uint8, cancellable *Cancellable) (bool, uint64, error) {
 	c_buffer := &buffer[0]
@@ -5871,7 +6309,9 @@ func (recv *OutputStream) WriteAll(buffer []uint8, cancellable *Cancellable) (bo
 // Finishes a stream write-from-#GBytes operation.
 /*
 
-C function : g_output_stream_write_bytes_finish
+C function
+
+g_output_stream_write_bytes_finish
 */
 func (recv *OutputStream) WriteBytesFinish(result *AsyncResult) (int64, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -5892,7 +6332,9 @@ func (recv *OutputStream) WriteBytesFinish(result *AsyncResult) (int64, error) {
 // Finishes a stream write operation.
 /*
 
-C function : g_output_stream_write_finish
+C function
+
+g_output_stream_write_finish
 */
 func (recv *OutputStream) WriteFinish(result *AsyncResult) (int64, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -5927,7 +6369,9 @@ func (recv *OutputStream) WriteFinish(result *AsyncResult) (int64, error) {
 // when that button is clicked.
 /*
 
-C record/class : GPermission
+C type
+
+GPermission
 */
 type Permission struct {
 	native *C.GPermission
@@ -5967,7 +6411,9 @@ func CastToPermission(object *gobject.Object) *Permission {
 // directed by the default #GProxyResolver.
 /*
 
-C record/class : GProxyAddressEnumerator
+C type
+
+GProxyAddressEnumerator
 */
 type ProxyAddressEnumerator struct {
 	native *C.GProxyAddressEnumerator
@@ -6017,7 +6463,9 @@ func CastToProxyAddressEnumerator(object *gobject.Object) *ProxyAddressEnumerato
 // making it easy to connect to a remote host/service.
 /*
 
-C record/class : GResolver
+C type
+
+GResolver
 */
 type Resolver struct {
 	native *C.GResolver
@@ -6280,7 +6728,7 @@ func resolver_reloadHandler(_ *C.GObject, data C.gpointer) {
 // </schemalist>
 // ]|
 //
-// ## Vendor overrides
+// Vendor overrides
 //
 // Default values are defined in the schemas that get installed by
 // an application. Sometimes, it is necessary for a vendor or distributor
@@ -6300,7 +6748,7 @@ func resolver_reloadHandler(_ *C.GObject, data C.gpointer) {
 // glib-compile-schemas expects schema files to have the extension
 // `.gschema.override`.
 //
-// ## Binding
+// Binding
 //
 // A very convenient feature of GSettings lets you bind #GObject properties
 // directly to settings, using g_settings_bind(). Once a GObject property
@@ -6315,7 +6763,7 @@ func resolver_reloadHandler(_ *C.GObject, data C.gpointer) {
 // If this 'magic' gets in the way, it can be suppressed with the
 // #G_SETTINGS_BIND_NO_SENSITIVITY flag.
 //
-// ## Relocatable schemas # {#gsettings-relocatable}
+// Relocatable schemas # {#gsettings-relocatable}
 //
 // A relocatable schema is one with no `path` attribute specified on its
 // <schema> element. By using g_settings_new_with_path(), a #GSettings object
@@ -6338,7 +6786,7 @@ func resolver_reloadHandler(_ *C.GObject, data C.gpointer) {
 // </schema>
 // ]|
 //
-// ## Build system integration # {#gsettings-build-system}
+// Build system integration # {#gsettings-build-system}
 //
 // GSettings comes with autotools integration to simplify compiling and
 // installing schemas. To add GSettings support to an application, add the
@@ -6393,7 +6841,9 @@ func resolver_reloadHandler(_ *C.GObject, data C.gpointer) {
 // `EXTRA_DIST`.
 /*
 
-C record/class : GSettings
+C type
+
+GSettings
 */
 type Settings struct {
 	native *C.GSettings
@@ -6442,7 +6892,9 @@ func CastToSettings(object *gobject.Object) *Settings {
 // applied immediately.
 /*
 
-C function : g_settings_apply
+C function
+
+g_settings_apply
 */
 func (recv *Settings) Apply() {
 	C.g_settings_apply((*C.GSettings)(recv.native))
@@ -6463,7 +6915,9 @@ func (recv *Settings) Apply() {
 // administrator.
 /*
 
-C function : g_settings_reset
+C function
+
+g_settings_reset
 */
 func (recv *Settings) Reset(key string) {
 	c_key := C.CString(key)
@@ -6482,7 +6936,9 @@ func (recv *Settings) Reset(key string) {
 // Change notifications will be emitted for affected keys.
 /*
 
-C function : g_settings_revert
+C function
+
+g_settings_revert
 */
 func (recv *Settings) Revert() {
 	C.g_settings_revert((*C.GSettings)(recv.native))
@@ -6502,7 +6958,9 @@ func (recv *Settings) Revert() {
 // @value.
 /*
 
-C function : g_settings_set_enum
+C function
+
+g_settings_set_enum
 */
 func (recv *Settings) SetEnum(key string, value int32) bool {
 	c_key := C.CString(key)
@@ -6529,7 +6987,9 @@ func (recv *Settings) SetEnum(key string, value int32) bool {
 // bit in @value.
 /*
 
-C function : g_settings_set_flags
+C function
+
+g_settings_set_flags
 */
 func (recv *Settings) SetFlags(key string, value uint32) bool {
 	c_key := C.CString(key)
@@ -6569,7 +7029,9 @@ func (recv *Settings) SetFlags(key string, value uint32) bool {
 // `gio/gsettingsbackend.h`.
 /*
 
-C record/class : GSettingsBackend
+C type
+
+GSettingsBackend
 */
 type SettingsBackend struct {
 	native *C.GSettingsBackend
@@ -6611,7 +7073,9 @@ func CastToSettingsBackend(object *gobject.Object) *SettingsBackend {
 // See also #GtkAction.
 /*
 
-C record/class : GSimpleAction
+C type
+
+GSimpleAction
 */
 type SimpleAction struct {
 	native *C.GSimpleAction
@@ -6816,7 +7280,9 @@ func (recv *SimpleAction) Action() *Action {
 // ]|
 /*
 
-C record/class : GSimpleAsyncResult
+C type
+
+GSimpleAsyncResult
 */
 type SimpleAsyncResult struct {
 	native *C.GSimpleAsyncResult
@@ -6864,7 +7330,9 @@ func CastToSimpleAsyncResult(object *gobject.Object) *SimpleAsyncResult {
 // is needed to complete the call.
 /*
 
-C function : g_simple_async_result_complete
+C function
+
+g_simple_async_result_complete
 */
 func (recv *SimpleAsyncResult) Complete() {
 	C.g_simple_async_result_complete((*C.GSimpleAsyncResult)(recv.native))
@@ -6881,7 +7349,9 @@ func (recv *SimpleAsyncResult) Complete() {
 // is needed to complete the call.
 /*
 
-C function : g_simple_async_result_complete_in_idle
+C function
+
+g_simple_async_result_complete_in_idle
 */
 func (recv *SimpleAsyncResult) CompleteInIdle() {
 	C.g_simple_async_result_complete_in_idle((*C.GSimpleAsyncResult)(recv.native))
@@ -6892,7 +7362,9 @@ func (recv *SimpleAsyncResult) CompleteInIdle() {
 // Gets the operation result boolean from within the asynchronous result.
 /*
 
-C function : g_simple_async_result_get_op_res_gboolean
+C function
+
+g_simple_async_result_get_op_res_gboolean
 */
 func (recv *SimpleAsyncResult) GetOpResGboolean() bool {
 	retC := C.g_simple_async_result_get_op_res_gboolean((*C.GSimpleAsyncResult)(recv.native))
@@ -6904,7 +7376,9 @@ func (recv *SimpleAsyncResult) GetOpResGboolean() bool {
 // Gets a pointer result as returned by the asynchronous function.
 /*
 
-C function : g_simple_async_result_get_op_res_gpointer
+C function
+
+g_simple_async_result_get_op_res_gpointer
 */
 func (recv *SimpleAsyncResult) GetOpResGpointer() uintptr {
 	retC := C.g_simple_async_result_get_op_res_gpointer((*C.GSimpleAsyncResult)(recv.native))
@@ -6916,7 +7390,9 @@ func (recv *SimpleAsyncResult) GetOpResGpointer() uintptr {
 // Gets a gssize from the asynchronous result.
 /*
 
-C function : g_simple_async_result_get_op_res_gssize
+C function
+
+g_simple_async_result_get_op_res_gssize
 */
 func (recv *SimpleAsyncResult) GetOpResGssize() int64 {
 	retC := C.g_simple_async_result_get_op_res_gssize((*C.GSimpleAsyncResult)(recv.native))
@@ -6928,7 +7404,9 @@ func (recv *SimpleAsyncResult) GetOpResGssize() int64 {
 // Gets the source tag for the #GSimpleAsyncResult.
 /*
 
-C function : g_simple_async_result_get_source_tag
+C function
+
+g_simple_async_result_get_source_tag
 */
 func (recv *SimpleAsyncResult) GetSourceTag() uintptr {
 	retC := C.g_simple_async_result_get_source_tag((*C.GSimpleAsyncResult)(recv.native))
@@ -6945,7 +7423,9 @@ func (recv *SimpleAsyncResult) GetSourceTag() uintptr {
 // function will return %TRUE with @dest set appropriately.
 /*
 
-C function : g_simple_async_result_propagate_error
+C function
+
+g_simple_async_result_propagate_error
 */
 func (recv *SimpleAsyncResult) PropagateError() (bool, error) {
 	var cThrowableError *C.GError
@@ -6970,7 +7450,9 @@ func (recv *SimpleAsyncResult) PropagateError() (bool, error) {
 // Sets the result from a #GError.
 /*
 
-C function : g_simple_async_result_set_from_error
+C function
+
+g_simple_async_result_set_from_error
 */
 func (recv *SimpleAsyncResult) SetFromError(error *glib.Error) {
 	c_error := (*C.GError)(C.NULL)
@@ -6990,7 +7472,9 @@ func (recv *SimpleAsyncResult) SetFromError(error *glib.Error) {
 // #GCancellable passed to g_simple_async_result_run_in_thread().
 /*
 
-C function : g_simple_async_result_set_handle_cancellation
+C function
+
+g_simple_async_result_set_handle_cancellation
 */
 func (recv *SimpleAsyncResult) SetHandleCancellation(handleCancellation bool) {
 	c_handle_cancellation :=
@@ -7004,7 +7488,9 @@ func (recv *SimpleAsyncResult) SetHandleCancellation(handleCancellation bool) {
 // Sets the operation result to a boolean within the asynchronous result.
 /*
 
-C function : g_simple_async_result_set_op_res_gboolean
+C function
+
+g_simple_async_result_set_op_res_gboolean
 */
 func (recv *SimpleAsyncResult) SetOpResGboolean(opRes bool) {
 	c_op_res :=
@@ -7021,7 +7507,9 @@ func (recv *SimpleAsyncResult) SetOpResGboolean(opRes bool) {
 // the given @op_res.
 /*
 
-C function : g_simple_async_result_set_op_res_gssize
+C function
+
+g_simple_async_result_set_op_res_gssize
 */
 func (recv *SimpleAsyncResult) SetOpResGssize(opRes int64) {
 	c_op_res := (C.gssize)(opRes)
@@ -7043,7 +7531,9 @@ func (recv *SimpleAsyncResult) AsyncResult() *AsyncResult {
 // Calling request or release will result in errors.
 /*
 
-C record/class : GSimplePermission
+C type
+
+GSimplePermission
 */
 type SimplePermission struct {
 	native *C.GSimplePermission
@@ -7091,7 +7581,9 @@ func CastToSimplePermission(object *gobject.Object) *SimplePermission {
 // with g_socket_client_set_proxy_resolver().
 /*
 
-C record/class : GSimpleProxyResolver
+C type
+
+GSimpleProxyResolver
 */
 type SimpleProxyResolver struct {
 	native *C.GSimpleProxyResolver
@@ -7136,7 +7628,9 @@ func (recv *SimpleProxyResolver) ProxyResolver() *ProxyResolver {
 // for internet sockets, or #GUnixSocketAddress for UNIX domain sockets.
 /*
 
-C record/class : GSocketAddress
+C type
+
+GSocketAddress
 */
 type SocketAddress struct {
 	native *C.GSocketAddress
@@ -7179,7 +7673,9 @@ func (recv *SocketAddress) SocketConnectable() *SocketConnectable {
 // #GSocketAddress instances.
 /*
 
-C record/class : GSocketAddressEnumerator
+C type
+
+GSocketAddressEnumerator
 */
 type SocketAddressEnumerator struct {
 	native *C.GSocketAddressEnumerator
@@ -7228,7 +7724,9 @@ func CastToSocketAddressEnumerator(object *gobject.Object) *SocketAddressEnumera
 // ignored.
 /*
 
-C function : g_socket_address_enumerator_next
+C function
+
+g_socket_address_enumerator_next
 */
 func (recv *SocketAddressEnumerator) Next(cancellable *Cancellable) (*SocketAddress, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -7257,7 +7755,9 @@ func (recv *SocketAddressEnumerator) Next(cancellable *Cancellable) (*SocketAddr
 // error handling.
 /*
 
-C function : g_socket_address_enumerator_next_finish
+C function
+
+g_socket_address_enumerator_next_finish
 */
 func (recv *SocketAddressEnumerator) NextFinish(result *AsyncResult) (*SocketAddress, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -7297,7 +7797,9 @@ func (recv *SocketAddressEnumerator) NextFinish(result *AsyncResult) (*SocketAdd
 // g_socket_receive_message() to read such a message.
 /*
 
-C record/class : GSocketControlMessage
+C type
+
+GSocketControlMessage
 */
 type SocketControlMessage struct {
 	native *C.GSocketControlMessage
@@ -7334,7 +7836,7 @@ func CastToSocketControlMessage(object *gobject.Object) *SocketControlMessage {
 
 // A #GTask represents and manages a cancellable "task".
 //
-// ## Asynchronous operations
+// Asynchronous operations
 //
 // The most common usage of #GTask is as a #GAsyncResult, to
 // manage data during an asynchronous operation. You call
@@ -7448,7 +7950,7 @@ func CastToSocketControlMessage(object *gobject.Object) *SocketControlMessage {
 // }
 // ]|
 //
-// ## Chained asynchronous operations
+// Chained asynchronous operations
 //
 // #GTask also tries to simplify asynchronous operations that
 // internally chain together several smaller asynchronous
@@ -7587,7 +8089,7 @@ func CastToSocketControlMessage(object *gobject.Object) *SocketControlMessage {
 // }
 // ]|
 //
-// ## Asynchronous operations from synchronous ones
+// Asynchronous operations from synchronous ones
 //
 // You can use g_task_run_in_thread() to turn a synchronous
 // operation into an asynchronous one, by running it in a thread.
@@ -7666,7 +8168,7 @@ func CastToSocketControlMessage(object *gobject.Object) *SocketControlMessage {
 // }
 // ]|
 //
-// ## Adding cancellability to uncancellable tasks
+// Adding cancellability to uncancellable tasks
 //
 // Finally, g_task_run_in_thread() and g_task_run_in_thread_sync()
 // can be used to turn an uncancellable operation into a
@@ -7772,7 +8274,7 @@ func CastToSocketControlMessage(object *gobject.Object) *SocketControlMessage {
 // }
 // ]|
 //
-// ## Porting from GSimpleAsyncResult
+// Porting from GSimpleAsyncResult
 //
 // #GTask's API attempts to be simpler than #GSimpleAsyncResult's
 // in several ways:
@@ -7829,7 +8331,9 @@ func CastToSocketControlMessage(object *gobject.Object) *SocketControlMessage {
 // 0 to g_input_stream_read_async()).
 /*
 
-C record/class : GTask
+C type
+
+GTask
 */
 type Task struct {
 	native *C.GTask
@@ -7874,7 +8378,9 @@ func (recv *Task) AsyncResult() *AsyncResult {
 // actually created is not directly a #GSocketConnection.
 /*
 
-C record/class : GTcpWrapperConnection
+C type
+
+GTcpWrapperConnection
 */
 type TcpWrapperConnection struct {
 	native *C.GTcpWrapperConnection
@@ -7927,7 +8433,9 @@ func CastToTcpWrapperConnection(object *gobject.Object) *TcpWrapperConnection {
 // Get's @conn's base #GIOStream
 /*
 
-C function : g_tcp_wrapper_connection_get_base_io_stream
+C function
+
+g_tcp_wrapper_connection_get_base_io_stream
 */
 func (recv *TcpWrapperConnection) GetBaseIoStream() *IOStream {
 	retC := C.g_tcp_wrapper_connection_get_base_io_stream((*C.GTcpWrapperConnection)(recv.native))
@@ -7945,7 +8453,9 @@ func (recv *TcpWrapperConnection) GetBaseIoStream() *IOStream {
 // themes that inherit other themes.
 /*
 
-C record/class : GThemedIcon
+C type
+
+GThemedIcon
 */
 type ThemedIcon struct {
 	native *C.GThemedIcon
@@ -7981,7 +8491,9 @@ func CastToThemedIcon(object *gobject.Object) *ThemedIcon {
 // Creates a new themed icon for @iconname.
 /*
 
-C function : g_themed_icon_new
+C function
+
+g_themed_icon_new
 */
 func ThemedIconNew(iconname string) *ThemedIcon {
 	c_iconname := C.CString(iconname)
@@ -8012,7 +8524,9 @@ func ThemedIconNew(iconname string) *ThemedIcon {
 // ]|
 /*
 
-C function : g_themed_icon_new_with_default_fallbacks
+C function
+
+g_themed_icon_new_with_default_fallbacks
 */
 func ThemedIconNewWithDefaultFallbacks(iconname string) *ThemedIcon {
 	c_iconname := C.CString(iconname)
@@ -8030,7 +8544,9 @@ func ThemedIconNewWithDefaultFallbacks(iconname string) *ThemedIcon {
 // to g_icon_hash().
 /*
 
-C function : g_themed_icon_append_name
+C function
+
+g_themed_icon_append_name
 */
 func (recv *ThemedIcon) AppendName(iconname string) {
 	c_iconname := C.CString(iconname)
@@ -8059,7 +8575,9 @@ func (recv *ThemedIcon) Icon() *Icon {
 // pkg-config file when using it.
 /*
 
-C record/class : GUnixConnection
+C type
+
+GUnixConnection
 */
 type UnixConnection struct {
 	native *C.GUnixConnection
@@ -8116,7 +8634,9 @@ func CastToUnixConnection(object *gobject.Object) *UnixConnection {
 // file when using it.
 /*
 
-C record/class : GUnixFDList
+C type
+
+GUnixFDList
 */
 type UnixFDList struct {
 	native *C.GUnixFDList
@@ -8166,7 +8686,9 @@ func CastToUnixFDList(object *gobject.Object) *UnixFDList {
 // file when using it.
 /*
 
-C record/class : GUnixFDMessage
+C type
+
+GUnixFDMessage
 */
 type UnixFDMessage struct {
 	native *C.GUnixFDMessage
@@ -8217,7 +8739,9 @@ func CastToUnixFDMessage(object *gobject.Object) *UnixFDMessage {
 // file when using it.
 /*
 
-C record/class : GUnixInputStream
+C type
+
+GUnixInputStream
 */
 type UnixInputStream struct {
 	native *C.GUnixInputStream
@@ -8263,7 +8787,9 @@ func CastToUnixInputStream(object *gobject.Object) *UnixInputStream {
 // when the stream is closed.
 /*
 
-C function : g_unix_input_stream_new
+C function
+
+g_unix_input_stream_new
 */
 func UnixInputStreamNew(fd int32, closeFd bool) *UnixInputStream {
 	c_fd := (C.gint)(fd)
@@ -8290,7 +8816,9 @@ func (recv *UnixInputStream) PollableInputStream() *PollableInputStream {
 // Watches #GUnixMounts for changes.
 /*
 
-C record/class : GUnixMountMonitor
+C type
+
+GUnixMountMonitor
 */
 type UnixMountMonitor struct {
 	native *C.GUnixMountMonitor
@@ -8443,7 +8971,9 @@ func unixmountmonitor_mountsChangedHandler(_ *C.GObject, data C.gpointer) {
 // renamed.
 /*
 
-C function : g_unix_mount_monitor_new
+C function
+
+g_unix_mount_monitor_new
 */
 func UnixMountMonitorNew() *UnixMountMonitor {
 	retC := C.g_unix_mount_monitor_new()
@@ -8463,7 +8993,9 @@ func UnixMountMonitorNew() *UnixMountMonitor {
 // when using it.
 /*
 
-C record/class : GUnixOutputStream
+C type
+
+GUnixOutputStream
 */
 type UnixOutputStream struct {
 	native *C.GUnixOutputStream
@@ -8509,7 +9041,9 @@ func CastToUnixOutputStream(object *gobject.Object) *UnixOutputStream {
 // the output stream is destroyed.
 /*
 
-C function : g_unix_output_stream_new
+C function
+
+g_unix_output_stream_new
 */
 func UnixOutputStreamNew(fd int32, closeFd bool) *UnixOutputStream {
 	c_fd := (C.gint)(fd)
@@ -8549,7 +9083,9 @@ func (recv *UnixOutputStream) PollableOutputStream() *PollableOutputStream {
 // when using it.
 /*
 
-C record/class : GUnixSocketAddress
+C type
+
+GUnixSocketAddress
 */
 type UnixSocketAddress struct {
 	native *C.GUnixSocketAddress
@@ -8593,7 +9129,9 @@ func CastToUnixSocketAddress(object *gobject.Object) *UnixSocketAddress {
 // #GUnixSocketAddress for @path.
 /*
 
-C function : g_unix_socket_address_new_abstract
+C function
+
+g_unix_socket_address_new_abstract
 */
 func UnixSocketAddressNewAbstract(path []rune) *UnixSocketAddress {
 	c_path := &path[0]
@@ -8614,7 +9152,9 @@ func (recv *UnixSocketAddress) SocketConnectable() *SocketConnectable {
 // Entry point for using GIO functionality.
 /*
 
-C record/class : GVfs
+C type
+
+GVfs
 */
 type Vfs struct {
 	native *C.GVfs
@@ -8651,7 +9191,9 @@ func CastToVfs(object *gobject.Object) *Vfs {
 // Gets a #GFile for @path.
 /*
 
-C function : g_vfs_get_file_for_path
+C function
+
+g_vfs_get_file_for_path
 */
 func (recv *Vfs) GetFileForPath(path string) *File {
 	c_path := C.CString(path)
@@ -8670,7 +9212,9 @@ func (recv *Vfs) GetFileForPath(path string) *File {
 // is malformed or if the URI scheme is not supported.
 /*
 
-C function : g_vfs_get_file_for_uri
+C function
+
+g_vfs_get_file_for_uri
 */
 func (recv *Vfs) GetFileForUri(uri string) *File {
 	c_uri := C.CString(uri)
@@ -8687,7 +9231,9 @@ func (recv *Vfs) GetFileForUri(uri string) *File {
 // Checks if the VFS is active.
 /*
 
-C function : g_vfs_is_active
+C function
+
+g_vfs_is_active
 */
 func (recv *Vfs) IsActive() bool {
 	retC := C.g_vfs_is_active((*C.GVfs)(recv.native))
@@ -8701,7 +9247,9 @@ func (recv *Vfs) IsActive() bool {
 // be parsed by the #GVfs module.
 /*
 
-C function : g_vfs_parse_name
+C function
+
+g_vfs_parse_name
 */
 func (recv *Vfs) ParseName(parseName string) *File {
 	c_parse_name := C.CString(parseName)
@@ -8723,7 +9271,9 @@ func (recv *Vfs) ParseName(parseName string) *File {
 // thread-default-context active.
 /*
 
-C record/class : GVolumeMonitor
+C type
+
+GVolumeMonitor
 */
 type VolumeMonitor struct {
 	native *C.GVolumeMonitor
@@ -9354,7 +9904,9 @@ func volumemonitor_volumeRemovedHandler(_ *C.GObject, c_volume *C.GVolume, data 
 // its elements have been unreffed with g_object_unref().
 /*
 
-C function : g_volume_monitor_get_connected_drives
+C function
+
+g_volume_monitor_get_connected_drives
 */
 func (recv *VolumeMonitor) GetConnectedDrives() *glib.List {
 	retC := C.g_volume_monitor_get_connected_drives((*C.GVolumeMonitor)(recv.native))
@@ -9366,7 +9918,9 @@ func (recv *VolumeMonitor) GetConnectedDrives() *glib.List {
 // Finds a #GMount object by its UUID (see g_mount_get_uuid())
 /*
 
-C function : g_volume_monitor_get_mount_for_uuid
+C function
+
+g_volume_monitor_get_mount_for_uuid
 */
 func (recv *VolumeMonitor) GetMountForUuid(uuid string) *Mount {
 	c_uuid := C.CString(uuid)
@@ -9384,7 +9938,9 @@ func (recv *VolumeMonitor) GetMountForUuid(uuid string) *Mount {
 // its elements have been unreffed with g_object_unref().
 /*
 
-C function : g_volume_monitor_get_mounts
+C function
+
+g_volume_monitor_get_mounts
 */
 func (recv *VolumeMonitor) GetMounts() *glib.List {
 	retC := C.g_volume_monitor_get_mounts((*C.GVolumeMonitor)(recv.native))
@@ -9396,7 +9952,9 @@ func (recv *VolumeMonitor) GetMounts() *glib.List {
 // Finds a #GVolume object by its UUID (see g_volume_get_uuid())
 /*
 
-C function : g_volume_monitor_get_volume_for_uuid
+C function
+
+g_volume_monitor_get_volume_for_uuid
 */
 func (recv *VolumeMonitor) GetVolumeForUuid(uuid string) *Volume {
 	c_uuid := C.CString(uuid)
@@ -9414,7 +9972,9 @@ func (recv *VolumeMonitor) GetVolumeForUuid(uuid string) *Volume {
 // its elements have been unreffed with g_object_unref().
 /*
 
-C function : g_volume_monitor_get_volumes
+C function
+
+g_volume_monitor_get_volumes
 */
 func (recv *VolumeMonitor) GetVolumes() *glib.List {
 	retC := C.g_volume_monitor_get_volumes((*C.GVolumeMonitor)(recv.native))
@@ -9426,7 +9986,9 @@ func (recv *VolumeMonitor) GetVolumes() *glib.List {
 // Zlib decompression
 /*
 
-C record/class : GZlibCompressor
+C type
+
+GZlibCompressor
 */
 type ZlibCompressor struct {
 	native *C.GZlibCompressor
@@ -9467,7 +10029,9 @@ func (recv *ZlibCompressor) Converter() *Converter {
 // Zlib decompression
 /*
 
-C record/class : GZlibDecompressor
+C type
+
+GZlibDecompressor
 */
 type ZlibDecompressor struct {
 	native *C.GZlibDecompressor

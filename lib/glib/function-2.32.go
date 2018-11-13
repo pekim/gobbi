@@ -22,7 +22,9 @@ import "C"
 // together.
 /*
 
-C function : g_byte_array_free_to_bytes
+C function
+
+g_byte_array_free_to_bytes
 */
 func ByteArrayFreeToBytes(array []uint8) *Bytes {
 	c_array := &array[0]
@@ -54,7 +56,9 @@ func ByteArrayFreeToBytes(array []uint8) *Bytes {
 // or not.
 /*
 
-C function : g_hash_table_add
+C function
+
+g_hash_table_add
 */
 func HashTableAdd(hashTable *HashTable, key uintptr) bool {
 	c_hash_table := (*C.GHashTable)(C.NULL)
@@ -73,7 +77,9 @@ func HashTableAdd(hashTable *HashTable, key uintptr) bool {
 // Checks if @key is in @hash_table.
 /*
 
-C function : g_hash_table_contains
+C function
+
+g_hash_table_contains
 */
 func HashTableContains(hashTable *HashTable, key uintptr) bool {
 	c_hash_table := (*C.GHashTable)(C.NULL)
@@ -97,7 +103,9 @@ func HashTableContains(hashTable *HashTable, key uintptr) bool {
 // (with a ref added to it) rather than returning %NULL.
 /*
 
-C function : g_main_context_ref_thread_default
+C function
+
+g_main_context_ref_thread_default
 */
 func MainContextRefThreadDefault() *MainContext {
 	retC := C.g_main_context_ref_thread_default()

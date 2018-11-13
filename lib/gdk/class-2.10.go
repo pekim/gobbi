@@ -28,7 +28,9 @@ import "C"
 // be used to modify the input shape of windows on @display.
 /*
 
-C function : gdk_display_supports_input_shapes
+C function
+
+gdk_display_supports_input_shapes
 */
 func (recv *Display) SupportsInputShapes() bool {
 	retC := C.gdk_display_supports_input_shapes((*C.GdkDisplay)(recv.native))
@@ -41,7 +43,9 @@ func (recv *Display) SupportsInputShapes() bool {
 // be used to create shaped windows on @display.
 /*
 
-C function : gdk_display_supports_shapes
+C function
+
+gdk_display_supports_shapes
 */
 func (recv *Display) SupportsShapes() bool {
 	retC := C.gdk_display_supports_shapes((*C.GdkDisplay)(recv.native))
@@ -123,7 +127,9 @@ func screen_compositedChangedHandler(_ *C.GObject, data C.gpointer) {
 // no longer needed.
 /*
 
-C function : gdk_screen_get_active_window
+C function
+
+gdk_screen_get_active_window
 */
 func (recv *Screen) GetActiveWindow() *Window {
 	retC := C.gdk_screen_get_active_window((*C.GdkScreen)(recv.native))
@@ -140,7 +146,9 @@ func (recv *Screen) GetActiveWindow() *Window {
 // Gets any options previously set with gdk_screen_set_font_options().
 /*
 
-C function : gdk_screen_get_font_options
+C function
+
+gdk_screen_get_font_options
 */
 func (recv *Screen) GetFontOptions() *cairo.FontOptions {
 	retC := C.gdk_screen_get_font_options((*C.GdkScreen)(recv.native))
@@ -158,7 +166,9 @@ func (recv *Screen) GetFontOptions() *cairo.FontOptions {
 // gdk_screen_set_resolution() for full details.
 /*
 
-C function : gdk_screen_get_resolution
+C function
+
+gdk_screen_get_resolution
 */
 func (recv *Screen) GetResolution() float64 {
 	retC := C.gdk_screen_get_resolution((*C.GdkScreen)(recv.native))
@@ -184,7 +194,9 @@ func (recv *Screen) GetResolution() float64 {
 // its windows unrefed using g_object_unref() when no longer needed.
 /*
 
-C function : gdk_screen_get_window_stack
+C function
+
+gdk_screen_get_window_stack
 */
 func (recv *Screen) GetWindowStack() *glib.List {
 	retC := C.gdk_screen_get_window_stack((*C.GdkScreen)(recv.native))
@@ -206,7 +218,9 @@ func (recv *Screen) GetWindowStack() *glib.List {
 // compositing @screen.
 /*
 
-C function : gdk_screen_is_composited
+C function
+
+gdk_screen_is_composited
 */
 func (recv *Screen) IsComposited() bool {
 	retC := C.gdk_screen_is_composited((*C.GdkScreen)(recv.native))
@@ -222,7 +236,9 @@ func (recv *Screen) IsComposited() bool {
 // have already been created.
 /*
 
-C function : gdk_screen_set_font_options
+C function
+
+gdk_screen_set_font_options
 */
 func (recv *Screen) SetFontOptions(options *cairo.FontOptions) {
 	c_options := (*C.cairo_font_options_t)(C.NULL)
@@ -241,7 +257,9 @@ func (recv *Screen) SetFontOptions(options *cairo.FontOptions) {
 // font will be 13 units high. (10 * 96. / 72. = 13.3).
 /*
 
-C function : gdk_screen_set_resolution
+C function
+
+gdk_screen_set_resolution
 */
 func (recv *Screen) SetResolution(dpi float64) {
 	c_dpi := (C.gdouble)(dpi)
@@ -254,7 +272,9 @@ func (recv *Screen) SetResolution(dpi float64) {
 // This function returns the type hint set for a window.
 /*
 
-C function : gdk_window_get_type_hint
+C function
+
+gdk_window_get_type_hint
 */
 func (recv *Window) GetTypeHint() WindowTypeHint {
 	retC := C.gdk_window_get_type_hint((*C.GdkWindow)(recv.native))
@@ -281,7 +301,9 @@ func (recv *Window) GetTypeHint() WindowTypeHint {
 // function does nothing.
 /*
 
-C function : gdk_window_input_shape_combine_region
+C function
+
+gdk_window_input_shape_combine_region
 */
 func (recv *Window) InputShapeCombineRegion(shapeRegion *cairo.Region, offsetX int32, offsetY int32) {
 	c_shape_region := (*C.cairo_region_t)(C.NULL)
@@ -308,7 +330,9 @@ func (recv *Window) InputShapeCombineRegion(shapeRegion *cairo.Region, offsetX i
 // shapes to be merged.
 /*
 
-C function : gdk_window_merge_child_input_shapes
+C function
+
+gdk_window_merge_child_input_shapes
 */
 func (recv *Window) MergeChildInputShapes() {
 	C.gdk_window_merge_child_input_shapes((*C.GdkWindow)(recv.native))
@@ -322,7 +346,9 @@ func (recv *Window) MergeChildInputShapes() {
 // the input shape mask of @window in the masks to be merged.
 /*
 
-C function : gdk_window_set_child_input_shapes
+C function
+
+gdk_window_set_child_input_shapes
 */
 func (recv *Window) SetChildInputShapes() {
 	C.gdk_window_set_child_input_shapes((*C.GdkWindow)(recv.native))

@@ -11,7 +11,9 @@ import "C"
 
 /*
 
-C function : gdk_pixbuf_error_quark
+C function
+
+gdk_pixbuf_error_quark
 */
 func PixbufErrorQuark() glib.Quark {
 	retC := C.gdk_pixbuf_error_quark()

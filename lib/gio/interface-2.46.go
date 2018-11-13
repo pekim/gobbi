@@ -22,7 +22,9 @@ import "C"
 // See #GNetworkMonitor:network-metered for more details.
 /*
 
-C function : g_network_monitor_get_network_metered
+C function
+
+g_network_monitor_get_network_metered
 */
 func (recv *NetworkMonitor) GetNetworkMetered() bool {
 	retC := C.g_network_monitor_get_network_metered((*C.GNetworkMonitor)(recv.native))
@@ -39,7 +41,9 @@ func (recv *NetworkMonitor) GetNetworkMetered() bool {
 // completed a handshake.
 /*
 
-C function : g_tls_client_connection_copy_session_state
+C function
+
+g_tls_client_connection_copy_session_state
 */
 func (recv *TlsClientConnection) CopySessionState(source *TlsClientConnection) {
 	c_source := (*C.GTlsClientConnection)(source.ToC())

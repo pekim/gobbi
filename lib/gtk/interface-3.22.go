@@ -17,7 +17,9 @@ import "C"
 // Gets the currently selected option in the 'choice' with the given ID.
 /*
 
-C function : gtk_file_chooser_get_choice
+C function
+
+gtk_file_chooser_get_choice
 */
 func (recv *FileChooser) GetChoice(id string) string {
 	c_id := C.CString(id)
@@ -32,7 +34,9 @@ func (recv *FileChooser) GetChoice(id string) string {
 // Removes a 'choice' that has been added with gtk_file_chooser_add_choice().
 /*
 
-C function : gtk_file_chooser_remove_choice
+C function
+
+gtk_file_chooser_remove_choice
 */
 func (recv *FileChooser) RemoveChoice(id string) {
 	c_id := C.CString(id)
@@ -48,7 +52,9 @@ func (recv *FileChooser) RemoveChoice(id string) {
 // possible options are "true" and "false".
 /*
 
-C function : gtk_file_chooser_set_choice
+C function
+
+gtk_file_chooser_set_choice
 */
 func (recv *FileChooser) SetChoice(id string, option string) {
 	c_id := C.CString(id)

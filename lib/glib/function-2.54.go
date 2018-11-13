@@ -35,7 +35,9 @@ import "C"
 // characters.
 /*
 
-C function : g_ascii_string_to_signed
+C function
+
+g_ascii_string_to_signed
 */
 func AsciiStringToSigned(str string, base uint32, min int64, max int64) (bool, int64, error) {
 	c_str := C.CString(str)
@@ -87,7 +89,9 @@ func AsciiStringToSigned(str string, base uint32, min int64, max int64) (bool, i
 // characters.
 /*
 
-C function : g_ascii_string_to_unsigned
+C function
+
+g_ascii_string_to_unsigned
 */
 func AsciiStringToUnsigned(str string, base uint32, min uint64, max uint64) (bool, uint64, error) {
 	c_str := C.CString(str)
@@ -125,7 +129,9 @@ func AsciiStringToUnsigned(str string, base uint32, min uint64, max uint64) (boo
 // checks, such as string comparisons, use g_ptr_array_find_with_equal_func().
 /*
 
-C function : g_ptr_array_find
+C function
+
+g_ptr_array_find
 */
 func PtrArrayFind(haystack []uintptr, needle uintptr) (bool, uint32) {
 	c_haystack := &haystack[0]

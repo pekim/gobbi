@@ -36,7 +36,9 @@ import "C"
 // freed with g_bytes_unref() when no longer in use.
 /*
 
-C function : g_file_load_bytes
+C function
+
+g_file_load_bytes
 */
 func (recv *File) LoadBytes(cancellable *Cancellable) (*glib.Bytes, string, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -75,7 +77,9 @@ func (recv *File) LoadBytes(cancellable *Cancellable) (*glib.Bytes, string, erro
 // See g_file_load_bytes() for more information.
 /*
 
-C function : g_file_load_bytes_finish
+C function
+
+g_file_load_bytes_finish
 */
 func (recv *File) LoadBytesFinish(result *AsyncResult) (*glib.Bytes, string, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -107,7 +111,9 @@ func (recv *File) LoadBytesFinish(result *AsyncResult) (*glib.Bytes, string, err
 // This call does no blocking I/O.
 /*
 
-C function : g_file_peek_path
+C function
+
+g_file_peek_path
 */
 func (recv *File) PeekPath() string {
 	retC := C.g_file_peek_path((*C.GFile)(recv.native))

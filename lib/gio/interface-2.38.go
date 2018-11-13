@@ -29,7 +29,9 @@ import "C"
 // g_file_make_directory_async().
 /*
 
-C function : g_file_make_directory_finish
+C function
+
+g_file_make_directory_finish
 */
 func (recv *File) MakeDirectoryFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -56,7 +58,9 @@ func (recv *File) MakeDirectoryFinish(result *AsyncResult) (bool, error) {
 // more information.
 /*
 
-C function : g_file_measure_disk_usage_finish
+C function
+
+g_file_measure_disk_usage_finish
 */
 func (recv *File) MeasureDiskUsageFinish(result *AsyncResult) (bool, uint64, uint64, uint64, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -92,7 +96,9 @@ func (recv *File) MeasureDiskUsageFinish(result *AsyncResult) (bool, uint64, uin
 // g_file_trash_async().
 /*
 
-C function : g_file_trash_finish
+C function
+
+g_file_trash_finish
 */
 func (recv *File) TrashFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())

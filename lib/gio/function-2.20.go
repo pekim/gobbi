@@ -30,7 +30,9 @@ import "C"
 // g_app_info_remove_supports_type().
 /*
 
-C function : g_app_info_reset_type_associations
+C function
+
+g_app_info_reset_type_associations
 */
 func AppInfoResetTypeAssociations(contentType string) {
 	c_content_type := C.CString(contentType)
@@ -49,7 +51,9 @@ func AppInfoResetTypeAssociations(contentType string) {
 // with the type system prior to calling g_icon_new_for_string().
 /*
 
-C function : g_icon_new_for_string
+C function
+
+g_icon_new_for_string
 */
 func IconNewForString(str string) (*Icon, error) {
 	c_str := C.CString(str)

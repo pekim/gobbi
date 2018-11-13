@@ -20,7 +20,9 @@ import "C"
 // pointer casts.
 /*
 
-C function : g_clear_object
+C function
+
+g_clear_object
 */
 func ClearObject(objectPtr *Object) {
 	c_object_ptr := (**C.GObject)(C.NULL)
@@ -45,7 +47,9 @@ func ClearObject(objectPtr *Object) {
 // any further handlers (ie: the first handler "wins").
 /*
 
-C function : g_signal_accumulator_first_wins
+C function
+
+g_signal_accumulator_first_wins
 */
 func SignalAccumulatorFirstWins(ihint *SignalInvocationHint, returnAccu *Value, handlerReturn *Value, dummy uintptr) bool {
 	c_ihint := (*C.GSignalInvocationHint)(C.NULL)

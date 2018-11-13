@@ -11,7 +11,9 @@ import "C"
 // Get the contents of a %G_TYPE_CHAR #GValue.
 /*
 
-C function : g_value_get_schar
+C function
+
+g_value_get_schar
 */
 func (recv *Value) GetSchar() int8 {
 	retC := C.g_value_get_schar((*C.GValue)(recv.native))
@@ -23,7 +25,9 @@ func (recv *Value) GetSchar() int8 {
 // Set the contents of a %G_TYPE_CHAR #GValue to @v_char.
 /*
 
-C function : g_value_set_schar
+C function
+
+g_value_set_schar
 */
 func (recv *Value) SetSchar(vChar int8) {
 	c_v_char := (C.gint8)(vChar)
@@ -40,7 +44,9 @@ func (recv *Value) SetSchar(vChar int8) {
 // g_weak_ref_init() called on it.
 /*
 
-C function : g_weak_ref_clear
+C function
+
+g_weak_ref_clear
 */
 func (recv *WeakRef) Clear() {
 	C.g_weak_ref_clear((*C.GWeakRef)(recv.native))
@@ -59,7 +65,9 @@ func (recv *WeakRef) Clear() {
 // by using g_object_unref().
 /*
 
-C function : g_weak_ref_get
+C function
+
+g_weak_ref_get
 */
 func (recv *WeakRef) Get() uintptr {
 	retC := C.g_weak_ref_get((*C.GWeakRef)(recv.native))
@@ -79,7 +87,9 @@ func (recv *WeakRef) Get() uintptr {
 // properly initialised.  Just use g_weak_ref_set() directly.
 /*
 
-C function : g_weak_ref_init
+C function
+
+g_weak_ref_init
 */
 func (recv *WeakRef) Init(object uintptr) {
 	c_object := (C.gpointer)(object)
@@ -96,7 +106,9 @@ func (recv *WeakRef) Init(object uintptr) {
 // function.
 /*
 
-C function : g_weak_ref_set
+C function
+
+g_weak_ref_set
 */
 func (recv *WeakRef) Set(object uintptr) {
 	c_object := (C.gpointer)(object)

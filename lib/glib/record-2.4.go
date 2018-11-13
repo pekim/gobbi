@@ -19,7 +19,9 @@ import "C"
 // struct.
 /*
 
-C record/class : GOnce
+C type
+
+GOnce
 */
 type Once struct {
 	native *C.GOnce
@@ -58,7 +60,9 @@ func (recv *Once) ToC() unsafe.Pointer {
 // actual data is not.
 /*
 
-C function : g_queue_copy
+C function
+
+g_queue_copy
 */
 func (recv *Queue) Copy() *Queue {
 	retC := C.g_queue_copy((*C.GQueue)(recv.native))
@@ -72,7 +76,9 @@ func (recv *Queue) Copy() *Queue {
 // @link_ must be part of @queue.
 /*
 
-C function : g_queue_delete_link
+C function
+
+g_queue_delete_link
 */
 func (recv *Queue) DeleteLink(link *List) {
 	c_link_ := (*C.GList)(C.NULL)
@@ -88,7 +94,9 @@ func (recv *Queue) DeleteLink(link *List) {
 // Finds the first link in @queue which contains @data.
 /*
 
-C function : g_queue_find
+C function
+
+g_queue_find
 */
 func (recv *Queue) Find(data uintptr) *List {
 	c_data := (C.gconstpointer)(data)
@@ -106,7 +114,9 @@ func (recv *Queue) Find(data uintptr) *List {
 // Returns the number of items in @queue.
 /*
 
-C function : g_queue_get_length
+C function
+
+g_queue_get_length
 */
 func (recv *Queue) GetLength() uint32 {
 	retC := C.g_queue_get_length((*C.GQueue)(recv.native))
@@ -118,7 +128,9 @@ func (recv *Queue) GetLength() uint32 {
 // Returns the position of the first element in @queue which contains @data.
 /*
 
-C function : g_queue_index
+C function
+
+g_queue_index
 */
 func (recv *Queue) Index(data uintptr) int32 {
 	c_data := (C.gconstpointer)(data)
@@ -135,7 +147,9 @@ func (recv *Queue) Index(data uintptr) int32 {
 // data at the head of the queue.
 /*
 
-C function : g_queue_insert_after
+C function
+
+g_queue_insert_after
 */
 func (recv *Queue) InsertAfter(sibling *List, data uintptr) {
 	c_sibling := (*C.GList)(C.NULL)
@@ -156,7 +170,9 @@ func (recv *Queue) InsertAfter(sibling *List, data uintptr) {
 // data at the tail of the queue.
 /*
 
-C function : g_queue_insert_before
+C function
+
+g_queue_insert_before
 */
 func (recv *Queue) InsertBefore(sibling *List, data uintptr) {
 	c_sibling := (*C.GList)(C.NULL)
@@ -176,7 +192,9 @@ func (recv *Queue) InsertBefore(sibling *List, data uintptr) {
 // Returns the position of @link_ in @queue.
 /*
 
-C function : g_queue_link_index
+C function
+
+g_queue_link_index
 */
 func (recv *Queue) LinkIndex(link *List) int32 {
 	c_link_ := (*C.GList)(C.NULL)
@@ -193,7 +211,9 @@ func (recv *Queue) LinkIndex(link *List) int32 {
 // Returns the first link in @queue.
 /*
 
-C function : g_queue_peek_head_link
+C function
+
+g_queue_peek_head_link
 */
 func (recv *Queue) PeekHeadLink() *List {
 	retC := C.g_queue_peek_head_link((*C.GQueue)(recv.native))
@@ -205,7 +225,9 @@ func (recv *Queue) PeekHeadLink() *List {
 // Returns the @n'th element of @queue.
 /*
 
-C function : g_queue_peek_nth
+C function
+
+g_queue_peek_nth
 */
 func (recv *Queue) PeekNth(n uint32) uintptr {
 	c_n := (C.guint)(n)
@@ -219,7 +241,9 @@ func (recv *Queue) PeekNth(n uint32) uintptr {
 // Returns the link at the given position
 /*
 
-C function : g_queue_peek_nth_link
+C function
+
+g_queue_peek_nth_link
 */
 func (recv *Queue) PeekNthLink(n uint32) *List {
 	c_n := (C.guint)(n)
@@ -233,7 +257,9 @@ func (recv *Queue) PeekNthLink(n uint32) *List {
 // Returns the last link in @queue.
 /*
 
-C function : g_queue_peek_tail_link
+C function
+
+g_queue_peek_tail_link
 */
 func (recv *Queue) PeekTailLink() *List {
 	retC := C.g_queue_peek_tail_link((*C.GQueue)(recv.native))
@@ -245,7 +271,9 @@ func (recv *Queue) PeekTailLink() *List {
 // Removes the @n'th element of @queue and returns its data.
 /*
 
-C function : g_queue_pop_nth
+C function
+
+g_queue_pop_nth
 */
 func (recv *Queue) PopNth(n uint32) uintptr {
 	c_n := (C.guint)(n)
@@ -259,7 +287,9 @@ func (recv *Queue) PopNth(n uint32) uintptr {
 // Removes and returns the link at the given position.
 /*
 
-C function : g_queue_pop_nth_link
+C function
+
+g_queue_pop_nth_link
 */
 func (recv *Queue) PopNthLink(n uint32) *List {
 	c_n := (C.guint)(n)
@@ -273,7 +303,9 @@ func (recv *Queue) PopNthLink(n uint32) *List {
 // Inserts a new element into @queue at the given position.
 /*
 
-C function : g_queue_push_nth
+C function
+
+g_queue_push_nth
 */
 func (recv *Queue) PushNth(data uintptr, n int32) {
 	c_data := (C.gpointer)(data)
@@ -288,7 +320,9 @@ func (recv *Queue) PushNth(data uintptr, n int32) {
 // Inserts @link into @queue at the given position.
 /*
 
-C function : g_queue_push_nth_link
+C function
+
+g_queue_push_nth_link
 */
 func (recv *Queue) PushNthLink(n int32, link *List) {
 	c_n := (C.gint)(n)
@@ -306,7 +340,9 @@ func (recv *Queue) PushNthLink(n int32, link *List) {
 // Removes the first element in @queue that contains @data.
 /*
 
-C function : g_queue_remove
+C function
+
+g_queue_remove
 */
 func (recv *Queue) Remove(data uintptr) bool {
 	c_data := (C.gconstpointer)(data)
@@ -320,7 +356,9 @@ func (recv *Queue) Remove(data uintptr) bool {
 // Remove all elements whose data equals @data from @queue.
 /*
 
-C function : g_queue_remove_all
+C function
+
+g_queue_remove_all
 */
 func (recv *Queue) RemoveAll(data uintptr) uint32 {
 	c_data := (C.gconstpointer)(data)
@@ -334,7 +372,9 @@ func (recv *Queue) RemoveAll(data uintptr) uint32 {
 // Reverses the order of the items in @queue.
 /*
 
-C function : g_queue_reverse
+C function
+
+g_queue_reverse
 */
 func (recv *Queue) Reverse() {
 	C.g_queue_reverse((*C.GQueue)(recv.native))
@@ -350,7 +390,9 @@ func (recv *Queue) Reverse() {
 // @link_ must be part of @queue.
 /*
 
-C function : g_queue_unlink
+C function
+
+g_queue_unlink
 */
 func (recv *Queue) Unlink(link *List) {
 	c_link_ := (*C.GList)(C.NULL)
@@ -368,7 +410,9 @@ func (recv *Queue) Unlink(link *List) {
 // replaying later.
 /*
 
-C function : g_rand_copy
+C function
+
+g_rand_copy
 */
 func (recv *Rand) Copy() *Rand {
 	retC := C.g_rand_copy((*C.GRand)(recv.native))
@@ -384,7 +428,9 @@ func (recv *Rand) Copy() *Rand {
 // your application.
 /*
 
-C function : g_rand_set_seed_array
+C function
+
+g_rand_set_seed_array
 */
 func (recv *Rand) SetSeedArray(seed uint32, seedLength uint32) {
 	c_seed := (C.guint32)(seed)
@@ -407,7 +453,9 @@ func (recv *Rand) SetSeedArray(seed uint32, seedLength uint32) {
 // though you should not change anything after the end of the string.
 /*
 
-C function : g_string_chunk_insert_len
+C function
+
+g_string_chunk_insert_len
 */
 func (recv *StringChunk) InsertLen(string string, len int64) string {
 	c_string := C.CString(string)
@@ -427,7 +475,9 @@ func (recv *StringChunk) InsertLen(string string, len int64) string {
 // function.
 /*
 
-C function : g_timer_continue
+C function
+
+g_timer_continue
 */
 func (recv *Timer) Continue() {
 	C.g_timer_continue((*C.GTimer)(recv.native))

@@ -36,7 +36,9 @@ import "C"
 // Creates a new #GDesktopAppInfo.
 /*
 
-C function : g_desktop_app_info_new_from_keyfile
+C function
+
+g_desktop_app_info_new_from_keyfile
 */
 func DesktopAppInfoNewFromKeyfile(keyFile *glib.KeyFile) *DesktopAppInfo {
 	c_key_file := (*C.GKeyFile)(C.NULL)
@@ -53,7 +55,9 @@ func DesktopAppInfoNewFromKeyfile(keyFile *glib.KeyFile) *DesktopAppInfo {
 // Creates a new emblem for @icon.
 /*
 
-C function : g_emblem_new
+C function
+
+g_emblem_new
 */
 func EmblemNew(icon *Icon) *Emblem {
 	c_icon := (*C.GIcon)(icon.ToC())
@@ -67,7 +71,9 @@ func EmblemNew(icon *Icon) *Emblem {
 // Creates a new emblem for @icon.
 /*
 
-C function : g_emblem_new_with_origin
+C function
+
+g_emblem_new_with_origin
 */
 func EmblemNewWithOrigin(icon *Icon, origin EmblemOrigin) *Emblem {
 	c_icon := (*C.GIcon)(icon.ToC())
@@ -83,7 +89,9 @@ func EmblemNewWithOrigin(icon *Icon, origin EmblemOrigin) *Emblem {
 // Gives back the icon from @emblem.
 /*
 
-C function : g_emblem_get_icon
+C function
+
+g_emblem_get_icon
 */
 func (recv *Emblem) GetIcon() *Icon {
 	retC := C.g_emblem_get_icon((*C.GEmblem)(recv.native))
@@ -95,7 +103,9 @@ func (recv *Emblem) GetIcon() *Icon {
 // Gets the origin of the emblem.
 /*
 
-C function : g_emblem_get_origin
+C function
+
+g_emblem_get_origin
 */
 func (recv *Emblem) GetOrigin() EmblemOrigin {
 	retC := C.g_emblem_get_origin((*C.GEmblem)(recv.native))
@@ -107,7 +117,9 @@ func (recv *Emblem) GetOrigin() EmblemOrigin {
 // Creates a new emblemed icon for @icon with the emblem @emblem.
 /*
 
-C function : g_emblemed_icon_new
+C function
+
+g_emblemed_icon_new
 */
 func EmblemedIconNew(icon *Icon, emblem *Emblem) *EmblemedIcon {
 	c_icon := (*C.GIcon)(icon.ToC())
@@ -126,7 +138,9 @@ func EmblemedIconNew(icon *Icon, emblem *Emblem) *EmblemedIcon {
 // Adds @emblem to the #GList of #GEmblems.
 /*
 
-C function : g_emblemed_icon_add_emblem
+C function
+
+g_emblemed_icon_add_emblem
 */
 func (recv *EmblemedIcon) AddEmblem(emblem *Emblem) {
 	c_emblem := (*C.GEmblem)(C.NULL)
@@ -142,7 +156,9 @@ func (recv *EmblemedIcon) AddEmblem(emblem *Emblem) {
 // Gets the list of emblems for the @icon.
 /*
 
-C function : g_emblemed_icon_get_emblems
+C function
+
+g_emblemed_icon_get_emblems
 */
 func (recv *EmblemedIcon) GetEmblems() *glib.List {
 	retC := C.g_emblemed_icon_get_emblems((*C.GEmblemedIcon)(recv.native))
@@ -154,7 +170,9 @@ func (recv *EmblemedIcon) GetEmblems() *glib.List {
 // Gets the main icon for @emblemed.
 /*
 
-C function : g_emblemed_icon_get_icon
+C function
+
+g_emblemed_icon_get_icon
 */
 func (recv *EmblemedIcon) GetIcon() *Icon {
 	retC := C.g_emblemed_icon_get_icon((*C.GEmblemedIcon)(recv.native))
@@ -166,7 +184,9 @@ func (recv *EmblemedIcon) GetIcon() *Icon {
 // Get the #GFile container which is being enumerated.
 /*
 
-C function : g_file_enumerator_get_container
+C function
+
+g_file_enumerator_get_container
 */
 func (recv *FileEnumerator) GetContainer() *File {
 	retC := C.g_file_enumerator_get_container((*C.GFileEnumerator)(recv.native))
@@ -179,7 +199,9 @@ func (recv *FileEnumerator) GetContainer() *File {
 // byte written in the stream that has not been truncated away.
 /*
 
-C function : g_memory_output_stream_get_data_size
+C function
+
+g_memory_output_stream_get_data_size
 */
 func (recv *MemoryOutputStream) GetDataSize() uint64 {
 	retC := C.g_memory_output_stream_get_data_size((*C.GMemoryOutputStream)(recv.native))
@@ -194,7 +216,9 @@ func (recv *MemoryOutputStream) GetDataSize() uint64 {
 // to g_icon_hash().
 /*
 
-C function : g_themed_icon_prepend_name
+C function
+
+g_themed_icon_prepend_name
 */
 func (recv *ThemedIcon) PrependName(iconname string) {
 	c_iconname := C.CString(iconname)
@@ -214,7 +238,9 @@ func (recv *ThemedIcon) PrependName(iconname string) {
 // the monitor.
 /*
 
-C function : g_unix_mount_monitor_set_rate_limit
+C function
+
+g_unix_mount_monitor_set_rate_limit
 */
 func (recv *UnixMountMonitor) SetRateLimit(limitMsec int32) {
 	c_limit_msec := (C.int)(limitMsec)

@@ -23,7 +23,9 @@ import "C"
 // The virtual function table for #GActionGroup.
 /*
 
-C record/class : GActionGroupInterface
+C type
+
+GActionGroupInterface
 */
 type ActionGroupInterface struct {
 	native *C.GActionGroupInterface
@@ -63,7 +65,9 @@ func (recv *ActionGroupInterface) ToC() unsafe.Pointer {
 // The virtual function table for #GAction.
 /*
 
-C record/class : GActionInterface
+C type
+
+GActionInterface
 */
 type ActionInterface struct {
 	native *C.GActionInterface
@@ -97,7 +101,9 @@ func (recv *ActionInterface) ToC() unsafe.Pointer {
 // Virtual function table for #GApplication.
 /*
 
-C record/class : GApplicationClass
+C type
+
+GApplicationClass
 */
 type ApplicationClass struct {
 	native *C.GApplicationClass
@@ -139,7 +145,9 @@ func (recv *ApplicationClass) ToC() unsafe.Pointer {
 // contains private data only.
 /*
 
-C record/class : GApplicationCommandLineClass
+C type
+
+GApplicationCommandLineClass
 */
 type ApplicationCommandLineClass struct {
 	native *C.GApplicationCommandLineClass
@@ -178,7 +186,9 @@ func (recv *ApplicationCommandLineClass) ToC() unsafe.Pointer {
 // readable.
 /*
 
-C record/class : GPollableInputStreamInterface
+C type
+
+GPollableInputStreamInterface
 */
 type PollableInputStreamInterface struct {
 	native *C.GPollableInputStreamInterface
@@ -217,7 +227,9 @@ func (recv *PollableInputStreamInterface) ToC() unsafe.Pointer {
 // writable.
 /*
 
-C record/class : GPollableOutputStreamInterface
+C type
+
+GPollableOutputStreamInterface
 */
 type PollableOutputStreamInterface struct {
 	native *C.GPollableOutputStreamInterface
@@ -247,7 +259,9 @@ func (recv *PollableOutputStreamInterface) ToC() unsafe.Pointer {
 // Provides an interface for describing TLS-related types.
 /*
 
-C record/class : GTlsBackendInterface
+C type
+
+GTlsBackendInterface
 */
 type TlsBackendInterface struct {
 	native *C.GTlsBackendInterface

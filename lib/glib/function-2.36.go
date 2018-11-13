@@ -21,7 +21,9 @@ import "C"
 // semantics.
 /*
 
-C function : g_close
+C function
+
+g_close
 */
 func Close(fd int32) (bool, error) {
 	c_fd := (C.gint)(fd)
@@ -45,7 +47,9 @@ func Close(fd int32) (bool, error) {
 // similar cases.
 /*
 
-C function : g_get_num_processors
+C function
+
+g_get_num_processors
 */
 func GetNumProcessors() uint32 {
 	retC := C.g_get_num_processors()
@@ -64,7 +68,9 @@ func GetNumProcessors() uint32 {
 // The source will never close the fd -- you must do it yourself.
 /*
 
-C function : g_unix_fd_source_new
+C function
+
+g_unix_fd_source_new
 */
 func UnixFdSourceNew(fd int32, condition IOCondition) *Source {
 	c_fd := (C.gint)(fd)

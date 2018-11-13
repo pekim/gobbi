@@ -1690,7 +1690,9 @@ import "C"
 // the “Close” button returns the #GTK_RESPONSE_CANCEL response id.
 /*
 
-C record/class : GtkAboutDialog
+C type
+
+GtkAboutDialog
 */
 type AboutDialog struct {
 	native *C.GtkAboutDialog
@@ -1782,7 +1784,9 @@ func (recv *AboutDialog) Buildable() *Buildable {
 // and mnemonics, of course.
 /*
 
-C record/class : GtkAccelGroup
+C type
+
+GtkAccelGroup
 */
 type AccelGroup struct {
 	native *C.GtkAccelGroup
@@ -1824,7 +1828,9 @@ func CastToAccelGroup(object *gobject.Object) *AccelGroup {
 // Creates a new #GtkAccelGroup.
 /*
 
-C function : gtk_accel_group_new
+C function
+
+gtk_accel_group_new
 */
 func AccelGroupNew() *AccelGroup {
 	retC := C.gtk_accel_group_new()
@@ -1837,7 +1843,9 @@ func AccelGroupNew() *AccelGroup {
 // @accel_key and @accel_mods, and activates it.
 /*
 
-C function : gtk_accel_group_activate
+C function
+
+gtk_accel_group_activate
 */
 func (recv *AccelGroup) Activate(accelQuark glib.Quark, acceleratable *gobject.Object, accelKey uint32, accelMods gdk.ModifierType) bool {
 	c_accel_quark := (C.GQuark)(accelQuark)
@@ -1868,7 +1876,9 @@ func (recv *AccelGroup) Activate(accelQuark glib.Quark, acceleratable *gobject.O
 // only be connected to one accelerator group.
 /*
 
-C function : gtk_accel_group_connect
+C function
+
+gtk_accel_group_connect
 */
 func (recv *AccelGroup) Connect(accelKey uint32, accelMods gdk.ModifierType, accelFlags AccelFlags, closure *gobject.Closure) {
 	c_accel_key := (C.guint)(accelKey)
@@ -1901,7 +1911,9 @@ func (recv *AccelGroup) Connect(accelKey uint32, accelMods gdk.ModifierType, acc
 // first with g_intern_static_string().
 /*
 
-C function : gtk_accel_group_connect_by_path
+C function
+
+gtk_accel_group_connect_by_path
 */
 func (recv *AccelGroup) ConnectByPath(accelPath string, closure *gobject.Closure) {
 	c_accel_path := C.CString(accelPath)
@@ -1923,7 +1935,9 @@ func (recv *AccelGroup) ConnectByPath(accelPath string, closure *gobject.Closure
 // Since 2.20 @closure can be %NULL.
 /*
 
-C function : gtk_accel_group_disconnect
+C function
+
+gtk_accel_group_disconnect
 */
 func (recv *AccelGroup) Disconnect(closure *gobject.Closure) bool {
 	c_closure := (*C.GClosure)(C.NULL)
@@ -1941,7 +1955,9 @@ func (recv *AccelGroup) Disconnect(closure *gobject.Closure) bool {
 // gtk_accel_group_connect().
 /*
 
-C function : gtk_accel_group_disconnect_key
+C function
+
+gtk_accel_group_disconnect_key
 */
 func (recv *AccelGroup) DisconnectKey(accelKey uint32, accelMods gdk.ModifierType) bool {
 	c_accel_key := (C.guint)(accelKey)
@@ -1967,7 +1983,9 @@ func (recv *AccelGroup) DisconnectKey(accelKey uint32, accelMods gdk.ModifierTyp
 // of times.
 /*
 
-C function : gtk_accel_group_lock
+C function
+
+gtk_accel_group_lock
 */
 func (recv *AccelGroup) Lock() {
 	C.gtk_accel_group_lock((*C.GtkAccelGroup)(recv.native))
@@ -1980,7 +1998,9 @@ func (recv *AccelGroup) Lock() {
 // Undoes the last call to gtk_accel_group_lock() on this @accel_group.
 /*
 
-C function : gtk_accel_group_unlock
+C function
+
+gtk_accel_group_unlock
 */
 func (recv *AccelGroup) Unlock() {
 	C.gtk_accel_group_unlock((*C.GtkAccelGroup)(recv.native))
@@ -2013,7 +2033,7 @@ func (recv *AccelGroup) Unlock() {
 // A #GtkAccelLabel can display multiple accelerators and even signal names,
 // though it is almost always used to display just one accelerator key.
 //
-// ## Creating a simple menu item with an accelerator key.
+// Creating a simple menu item with an accelerator key.
 //
 // |[<!-- language="C" -->
 // GtkWidget *window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
@@ -2050,7 +2070,9 @@ func (recv *AccelGroup) Unlock() {
 // It adds a subnode with name accelerator.
 /*
 
-C record/class : GtkAccelLabel
+C type
+
+GtkAccelLabel
 */
 type AccelLabel struct {
 	native *C.GtkAccelLabel
@@ -2108,7 +2130,9 @@ func CastToAccelLabel(object *gobject.Object) *AccelLabel {
 // Creates a new #GtkAccelLabel.
 /*
 
-C function : gtk_accel_label_new
+C function
+
+gtk_accel_label_new
 */
 func AccelLabelNew(string string) *AccelLabel {
 	c_string := C.CString(string)
@@ -2124,7 +2148,9 @@ func AccelLabelNew(string string) *AccelLabel {
 // gtk_accel_label_set_accel_widget().
 /*
 
-C function : gtk_accel_label_get_accel_widget
+C function
+
+gtk_accel_label_get_accel_widget
 */
 func (recv *AccelLabel) GetAccelWidget() *Widget {
 	retC := C.gtk_accel_label_get_accel_widget((*C.GtkAccelLabel)(recv.native))
@@ -2143,7 +2169,9 @@ func (recv *AccelLabel) GetAccelWidget() *Widget {
 // be needed by applications.
 /*
 
-C function : gtk_accel_label_get_accel_width
+C function
+
+gtk_accel_label_get_accel_width
 */
 func (recv *AccelLabel) GetAccelWidth() uint32 {
 	retC := C.gtk_accel_label_get_accel_width((*C.GtkAccelLabel)(recv.native))
@@ -2157,7 +2185,9 @@ func (recv *AccelLabel) GetAccelWidth() uint32 {
 // accelerators are added or removed from the associated widget.
 /*
 
-C function : gtk_accel_label_refetch
+C function
+
+gtk_accel_label_refetch
 */
 func (recv *AccelLabel) Refetch() bool {
 	retC := C.gtk_accel_label_refetch((*C.GtkAccelLabel)(recv.native))
@@ -2172,7 +2202,9 @@ func (recv *AccelLabel) Refetch() bool {
 // current closure, if any.
 /*
 
-C function : gtk_accel_label_set_accel_closure
+C function
+
+gtk_accel_label_set_accel_closure
 */
 func (recv *AccelLabel) SetAccelClosure(accelClosure *gobject.Closure) {
 	c_accel_closure := (*C.GClosure)(C.NULL)
@@ -2189,7 +2221,9 @@ func (recv *AccelLabel) SetAccelClosure(accelClosure *gobject.Closure) {
 // @accel_widget will dissociate @accel_label from its current widget, if any.
 /*
 
-C function : gtk_accel_label_set_accel_widget
+C function
+
+gtk_accel_label_set_accel_widget
 */
 func (recv *AccelLabel) SetAccelWidget(accelWidget *Widget) {
 	c_accel_widget := (*C.GtkWidget)(C.NULL)
@@ -2267,7 +2301,9 @@ func (recv *AccelLabel) Buildable() *Buildable {
 // the #GtkAccelMap::changed signal.
 /*
 
-C record/class : GtkAccelMap
+C type
+
+GtkAccelMap
 */
 type AccelMap struct {
 	native *C.GtkAccelMap
@@ -2313,7 +2349,9 @@ func CastToAccelMap(object *gobject.Object) *AccelMap {
 // in #GtkWidgetClass.
 /*
 
-C record/class : GtkAccessible
+C type
+
+GtkAccessible
 */
 type Accessible struct {
 	native *C.GtkAccessible
@@ -2352,7 +2390,9 @@ func CastToAccessible(object *gobject.Object) *Accessible {
 // when the widget corresponding to a GtkAccessible is destroyed.
 /*
 
-C function : gtk_accessible_connect_widget_destroyed
+C function
+
+gtk_accessible_connect_widget_destroyed
 */
 func (recv *Accessible) ConnectWidgetDestroyed() {
 	C.gtk_accessible_connect_widget_destroyed((*C.GtkAccessible)(recv.native))
@@ -2409,7 +2449,9 @@ func (recv *Accessible) ConnectWidgetDestroyed() {
 // When the proxy is activated, it should activate its action.
 /*
 
-C record/class : GtkAction
+C type
+
+GtkAction
 */
 type Action struct {
 	native *C.GtkAction
@@ -2463,7 +2505,9 @@ func (recv *Action) Buildable() *Buildable {
 // GtkActionBar has a single CSS node with name actionbar.
 /*
 
-C record/class : GtkActionBar
+C type
+
+GtkActionBar
 */
 type ActionBar struct {
 	native *C.GtkActionBar
@@ -2540,7 +2584,11 @@ func (recv *ActionBar) Buildable() *Buildable {
 // window’s menus would be constructed from a combination of two action
 // groups.
 //
-// ## Accelerators ## {#Action-Accel}
+/*
+Accelerators
+
+(see Action-Accel)
+*/
 //
 // Accelerators are handled by the GTK+ accelerator map. All actions are
 // assigned an accelerator path (which normally has the form
@@ -2563,7 +2611,7 @@ func (recv *ActionBar) Buildable() *Buildable {
 // <accelerator> element of #GtkWidget, the main difference is that
 // it doesn’t allow you to specify a signal.
 //
-// ## A #GtkDialog UI definition fragment. ##
+// A #GtkDialog UI definition fragment. ##
 // |[
 // <object class="GtkActionGroup" id="actiongroup">
 // <child>
@@ -2578,7 +2626,9 @@ func (recv *ActionBar) Buildable() *Buildable {
 // ]|
 /*
 
-C record/class : GtkActionGroup
+C type
+
+GtkActionGroup
 */
 type ActionGroup struct {
 	native *C.GtkActionGroup
@@ -2627,7 +2677,9 @@ func (recv *ActionGroup) Buildable() *Buildable {
 // it is left up to the owner of the #GtkAdjustment to control the value.
 /*
 
-C record/class : GtkAdjustment
+C type
+
+GtkAdjustment
 */
 type Adjustment struct {
 	native *C.GtkAdjustment
@@ -2784,7 +2836,9 @@ func adjustment_valueChangedHandler(_ *C.GObject, data C.gpointer) {
 // Creates a new #GtkAdjustment.
 /*
 
-C function : gtk_adjustment_new
+C function
+
+gtk_adjustment_new
 */
 func AdjustmentNew(value float64, lower float64, upper float64, stepIncrement float64, pageIncrement float64, pageSize float64) *Adjustment {
 	c_value := (C.gdouble)(value)
@@ -2810,7 +2864,9 @@ func AdjustmentNew(value float64, lower float64, upper float64, stepIncrement fl
 // changed any of the #GtkAdjustment properties other than the value.
 /*
 
-C function : gtk_adjustment_changed
+C function
+
+gtk_adjustment_changed
 */
 func (recv *Adjustment) Changed() {
 	C.gtk_adjustment_changed((*C.GtkAdjustment)(recv.native))
@@ -2827,7 +2883,9 @@ func (recv *Adjustment) Changed() {
 // A #GtkAdjustment::value-changed signal will be emitted if the value is changed.
 /*
 
-C function : gtk_adjustment_clamp_page
+C function
+
+gtk_adjustment_clamp_page
 */
 func (recv *Adjustment) ClampPage(lower float64, upper float64) {
 	c_lower := (C.gdouble)(lower)
@@ -2843,7 +2901,9 @@ func (recv *Adjustment) ClampPage(lower float64, upper float64) {
 // See gtk_adjustment_set_value().
 /*
 
-C function : gtk_adjustment_get_value
+C function
+
+gtk_adjustment_get_value
 */
 func (recv *Adjustment) GetValue() float64 {
 	retC := C.gtk_adjustment_get_value((*C.GtkAdjustment)(recv.native))
@@ -2860,7 +2920,9 @@ func (recv *Adjustment) GetValue() float64 {
 // #GtkAdjustment:upper - #GtkAdjustment:page-size.
 /*
 
-C function : gtk_adjustment_set_value
+C function
+
+gtk_adjustment_set_value
 */
 func (recv *Adjustment) SetValue(value float64) {
 	c_value := (C.gdouble)(value)
@@ -2875,7 +2937,9 @@ func (recv *Adjustment) SetValue(value float64) {
 // changed the #GtkAdjustment:value property.
 /*
 
-C function : gtk_adjustment_value_changed
+C function
+
+gtk_adjustment_value_changed
 */
 func (recv *Adjustment) ValueChanged() {
 	C.gtk_adjustment_value_changed((*C.GtkAdjustment)(recv.native))
@@ -2902,7 +2966,9 @@ func (recv *Adjustment) ValueChanged() {
 // child widget.
 /*
 
-C record/class : GtkAlignment
+C type
+
+GtkAlignment
 */
 type Alignment struct {
 	native *C.GtkAlignment
@@ -2960,7 +3026,9 @@ func CastToAlignment(object *gobject.Object) *Alignment {
 // Creates a new #GtkAlignment.
 /*
 
-C function : gtk_alignment_new
+C function
+
+gtk_alignment_new
 */
 func AlignmentNew(xalign float32, yalign float32, xscale float32, yscale float32) *Alignment {
 	c_xalign := (C.gfloat)(xalign)
@@ -2980,7 +3048,9 @@ func AlignmentNew(xalign float32, yalign float32, xscale float32, yscale float32
 // Sets the #GtkAlignment values.
 /*
 
-C function : gtk_alignment_set
+C function
+
+gtk_alignment_set
 */
 func (recv *Alignment) Set(xalign float32, yalign float32, xscale float32, yscale float32) {
 	c_xalign := (C.gfloat)(xalign)
@@ -3030,7 +3100,9 @@ func (recv *Alignment) Buildable() *Buildable {
 // #GtkComboBox::changed signal.
 /*
 
-C record/class : GtkAppChooserButton
+C type
+
+GtkAppChooserButton
 */
 type AppChooserButton struct {
 	native *C.GtkAppChooserButton
@@ -3095,7 +3167,9 @@ func CastToAppChooserButton(object *gobject.Object) *AppChooserButton {
 // Returns the text to display at the top of the dialog.
 /*
 
-C function : gtk_app_chooser_button_get_heading
+C function
+
+gtk_app_chooser_button_get_heading
 */
 func (recv *AppChooserButton) GetHeading() string {
 	retC := C.gtk_app_chooser_button_get_heading((*C.GtkAppChooserButton)(recv.native))
@@ -3108,7 +3182,9 @@ func (recv *AppChooserButton) GetHeading() string {
 // If the heading is not set, the dialog displays a default text.
 /*
 
-C function : gtk_app_chooser_button_set_heading
+C function
+
+gtk_app_chooser_button_set_heading
 */
 func (recv *AppChooserButton) SetHeading(heading string) {
 	c_heading := C.CString(heading)
@@ -3155,7 +3231,9 @@ func (recv *AppChooserButton) CellLayout() *CellLayout {
 // use gtk_app_chooser_dialog_set_heading().
 /*
 
-C record/class : GtkAppChooserDialog
+C type
+
+GtkAppChooserDialog
 */
 type AppChooserDialog struct {
 	native *C.GtkAppChooserDialog
@@ -3223,7 +3301,9 @@ func CastToAppChooserDialog(object *gobject.Object) *AppChooserDialog {
 // Returns the text to display at the top of the dialog.
 /*
 
-C function : gtk_app_chooser_dialog_get_heading
+C function
+
+gtk_app_chooser_dialog_get_heading
 */
 func (recv *AppChooserDialog) GetHeading() string {
 	retC := C.gtk_app_chooser_dialog_get_heading((*C.GtkAppChooserDialog)(recv.native))
@@ -3236,7 +3316,9 @@ func (recv *AppChooserDialog) GetHeading() string {
 // If the heading is not set, the dialog displays a default text.
 /*
 
-C function : gtk_app_chooser_dialog_set_heading
+C function
+
+gtk_app_chooser_dialog_set_heading
 */
 func (recv *AppChooserDialog) SetHeading(heading string) {
 	c_heading := C.CString(heading)
@@ -3285,7 +3367,9 @@ func (recv *AppChooserDialog) Buildable() *Buildable {
 // GtkAppChooserWidget has a single CSS node with name appchooser.
 /*
 
-C record/class : GtkAppChooserWidget
+C type
+
+GtkAppChooserWidget
 */
 type AppChooserWidget struct {
 	native *C.GtkAppChooserWidget
@@ -3523,7 +3607,9 @@ func appchooserwidget_populatePopupHandler(_ *C.GObject, c_menu *C.GtkMenu, c_ap
 // that can handle the content type.
 /*
 
-C function : gtk_app_chooser_widget_set_default_text
+C function
+
+gtk_app_chooser_widget_set_default_text
 */
 func (recv *AppChooserWidget) SetDefaultText(text string) {
 	c_text := C.CString(text)
@@ -3576,7 +3662,11 @@ func (recv *AppChooserWidget) Orientable() *Orientable {
 // associated with #GtkApplicationWindow and to the “activate” and
 // “open” #GApplication methods.
 //
-// ## Automatic resources ## {#automatic-resources}
+/*
+Automatic resources
+
+(see automatic-resources)
+*/
 //
 // #GtkApplication will automatically load menus from the #GtkBuilder
 // resource located at "gtk/menus.ui", relative to the application's
@@ -3610,7 +3700,11 @@ func (recv *AppChooserWidget) Orientable() *Orientable {
 // and Control-?) to open it. To create a menu item that displays the
 // shortcuts window, associate the item with the action win.show-help-overlay.
 //
-// ## A simple application ## {#gtkapplication}
+/*
+A simple application
+
+(see gtkapplication)
+*/
 //
 // [A simple example](https://git.gnome.org/browse/gtk+/tree/examples/bp/bloatpad.c)
 //
@@ -3627,12 +3721,18 @@ func (recv *AppChooserWidget) Orientable() *Orientable {
 // inform the user about the negative consequences of ending the
 // session while inhibitors are present.
 //
-// ## See Also ## {#seealso}
+/*
+See Also
+
+(see seealso)
+*/
 // [HowDoI: Using GtkApplication](https://wiki.gnome.org/HowDoI/GtkApplication),
 // [Getting Started with GTK+: Basics](https://developer.gnome.org/gtk3/stable/gtk-getting-started.html#id-1.2.3.3)
 /*
 
-C record/class : GtkApplication
+C type
+
+GtkApplication
 */
 type Application struct {
 	native *C.GtkApplication
@@ -3719,7 +3819,7 @@ func (recv *Application) ActionMap() *gio.ActionMap {
 // menu, then it will automatically be included in the menubar or in the
 // windows client-side decorations.
 //
-// ## A GtkApplicationWindow with a menubar
+// A GtkApplicationWindow with a menubar
 //
 // |[<!-- language="C" -->
 // GtkApplication *app = gtk_application_new ("org.gtk.test", 0);
@@ -3745,7 +3845,7 @@ func (recv *Application) ActionMap() *gio.ActionMap {
 // GtkWidget *window = gtk_application_window_new (app);
 // ]|
 //
-// ## Handling fallback yourself
+// Handling fallback yourself
 //
 // [A simple example](https://git.gnome.org/browse/gtk+/tree/examples/sunny.c)
 //
@@ -3787,7 +3887,9 @@ func (recv *Application) ActionMap() *gio.ActionMap {
 // - "icon": icon name to display
 /*
 
-C record/class : GtkApplicationWindow
+C type
+
+GtkApplicationWindow
 */
 type ApplicationWindow struct {
 	native *C.GtkApplicationWindow
@@ -3889,7 +3991,9 @@ func (recv *ApplicationWindow) Buildable() *Buildable {
 // react to the text direction.
 /*
 
-C record/class : GtkArrow
+C type
+
+GtkArrow
 */
 type Arrow struct {
 	native *C.GtkArrow
@@ -3942,7 +4046,9 @@ func CastToArrow(object *gobject.Object) *Arrow {
 // Creates a new #GtkArrow widget.
 /*
 
-C function : gtk_arrow_new
+C function
+
+gtk_arrow_new
 */
 func ArrowNew(arrowType ArrowType, shadowType ShadowType) *Arrow {
 	c_arrow_type := (C.GtkArrowType)(arrowType)
@@ -3958,7 +4064,9 @@ func ArrowNew(arrowType ArrowType, shadowType ShadowType) *Arrow {
 // Sets the direction and style of the #GtkArrow, @arrow.
 /*
 
-C function : gtk_arrow_set
+C function
+
+gtk_arrow_set
 */
 func (recv *Arrow) Set(arrowType ArrowType, shadowType ShadowType) {
 	c_arrow_type := (C.GtkArrowType)(arrowType)
@@ -3982,7 +4090,9 @@ func (recv *Arrow) Buildable() *Buildable {
 
 /*
 
-C record/class : GtkArrowAccessible
+C type
+
+GtkArrowAccessible
 */
 type ArrowAccessible struct {
 	native *C.GtkArrowAccessible
@@ -4050,7 +4160,9 @@ func (recv *ArrowAccessible) Image() *atk.Image {
 // GtkAspectFrame uses a CSS node with name frame.
 /*
 
-C record/class : GtkAspectFrame
+C type
+
+GtkAspectFrame
 */
 type AspectFrame struct {
 	native *C.GtkAspectFrame
@@ -4113,7 +4225,9 @@ func CastToAspectFrame(object *gobject.Object) *AspectFrame {
 // Create a new #GtkAspectFrame.
 /*
 
-C function : gtk_aspect_frame_new
+C function
+
+gtk_aspect_frame_new
 */
 func AspectFrameNew(label string, xalign float32, yalign float32, ratio float32, obeyChild bool) *AspectFrame {
 	c_label := C.CString(label)
@@ -4137,7 +4251,9 @@ func AspectFrameNew(label string, xalign float32, yalign float32, ratio float32,
 // Set parameters for an existing #GtkAspectFrame.
 /*
 
-C function : gtk_aspect_frame_set
+C function
+
+gtk_aspect_frame_set
 */
 func (recv *AspectFrame) Set(xalign float32, yalign float32, ratio float32, obeyChild bool) {
 	c_xalign := (C.gfloat)(xalign)
@@ -4194,7 +4310,9 @@ func (recv *AspectFrame) Buildable() *Buildable {
 // GtkAssistant has a single CSS node with the name assistant.
 /*
 
-C record/class : GtkAssistant
+C type
+
+GtkAssistant
 */
 type Assistant struct {
 	native *C.GtkAssistant
@@ -4329,7 +4447,9 @@ func (recv *Assistant) Buildable() *Buildable {
 // #GtkButton, #GtkFrame, #GtkHandleBox or #GtkScrolledWindow.
 /*
 
-C record/class : GtkBin
+C type
+
+GtkBin
 */
 type Bin struct {
 	native *C.GtkBin
@@ -4384,7 +4504,9 @@ func CastToBin(object *gobject.Object) *Bin {
 // added, so you do not need to unref it.
 /*
 
-C function : gtk_bin_get_child
+C function
+
+gtk_bin_get_child
 */
 func (recv *Bin) GetChild() *Widget {
 	retC := C.gtk_bin_get_child((*C.GtkBin)(recv.native))
@@ -4410,7 +4532,9 @@ func (recv *Bin) Buildable() *Buildable {
 
 /*
 
-C record/class : GtkBooleanCellAccessible
+C type
+
+GtkBooleanCellAccessible
 */
 type BooleanCellAccessible struct {
 	native *C.GtkBooleanCellAccessible
@@ -4523,7 +4647,9 @@ func (recv *BooleanCellAccessible) Component() *atk.Component {
 // regardless of text direction.
 /*
 
-C record/class : GtkBox
+C type
+
+GtkBox
 */
 type Box struct {
 	native *C.GtkBox
@@ -4577,7 +4703,9 @@ func CastToBox(object *gobject.Object) *Box {
 // same size). See gtk_box_set_homogeneous().
 /*
 
-C function : gtk_box_get_homogeneous
+C function
+
+gtk_box_get_homogeneous
 */
 func (recv *Box) GetHomogeneous() bool {
 	retC := C.gtk_box_get_homogeneous((*C.GtkBox)(recv.native))
@@ -4589,7 +4717,9 @@ func (recv *Box) GetHomogeneous() bool {
 // Gets the value set by gtk_box_set_spacing().
 /*
 
-C function : gtk_box_get_spacing
+C function
+
+gtk_box_get_spacing
 */
 func (recv *Box) GetSpacing() int32 {
 	retC := C.gtk_box_get_spacing((*C.GtkBox)(recv.native))
@@ -4603,7 +4733,9 @@ func (recv *Box) GetSpacing() int32 {
 // packed with reference to the end of @box.
 /*
 
-C function : gtk_box_pack_end
+C function
+
+gtk_box_pack_end
 */
 func (recv *Box) PackEnd(child *Widget, expand bool, fill bool, padding uint32) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -4629,7 +4761,9 @@ func (recv *Box) PackEnd(child *Widget, expand bool, fill bool, padding uint32) 
 // to the start of @box.
 /*
 
-C function : gtk_box_pack_start
+C function
+
+gtk_box_pack_start
 */
 func (recv *Box) PackStart(child *Widget, expand bool, fill bool, padding uint32) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -4663,7 +4797,9 @@ func (recv *Box) PackStart(child *Widget, expand bool, fill bool, padding uint32
 // same packing type that appear earlier in the list.
 /*
 
-C function : gtk_box_reorder_child
+C function
+
+gtk_box_reorder_child
 */
 func (recv *Box) ReorderChild(child *Widget, position int32) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -4681,7 +4817,9 @@ func (recv *Box) ReorderChild(child *Widget, position int32) {
 // Sets the way @child is packed into @box.
 /*
 
-C function : gtk_box_set_child_packing
+C function
+
+gtk_box_set_child_packing
 */
 func (recv *Box) SetChildPacking(child *Widget, expand bool, fill bool, padding uint32, packType PackType) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -4709,7 +4847,9 @@ func (recv *Box) SetChildPacking(child *Widget, expand bool, fill bool, padding 
 // in the box.
 /*
 
-C function : gtk_box_set_homogeneous
+C function
+
+gtk_box_set_homogeneous
 */
 func (recv *Box) SetHomogeneous(homogeneous bool) {
 	c_homogeneous :=
@@ -4724,7 +4864,9 @@ func (recv *Box) SetHomogeneous(homogeneous bool) {
 // number of pixels to place between children of @box.
 /*
 
-C function : gtk_box_set_spacing
+C function
+
+gtk_box_set_spacing
 */
 func (recv *Box) SetSpacing(spacing int32) {
 	c_spacing := (C.gint)(spacing)
@@ -4933,7 +5075,9 @@ func (recv *Box) Orientable() *Orientable {
 // See the [GtkWidget documentation][composite-templates] for details.
 /*
 
-C record/class : GtkBuilder
+C type
+
+GtkBuilder
 */
 type Builder struct {
 	native *C.GtkBuilder
@@ -4994,7 +5138,9 @@ func CastToBuilder(object *gobject.Object) *Builder {
 // to differentiate themselves from a plain GtkButton.
 /*
 
-C record/class : GtkButton
+C type
+
+GtkButton
 */
 type Button struct {
 	native *C.GtkButton
@@ -5395,7 +5541,9 @@ func button_releasedHandler(_ *C.GObject, data C.gpointer) {
 // use gtk_container_add().
 /*
 
-C function : gtk_button_new
+C function
+
+gtk_button_new
 */
 func ButtonNew() *Button {
 	retC := C.gtk_button_new()
@@ -5412,7 +5560,9 @@ func ButtonNew() *Button {
 // label (as for gtk_button_new_with_mnemonic()).
 /*
 
-C function : gtk_button_new_from_stock
+C function
+
+gtk_button_new_from_stock
 */
 func ButtonNewFromStock(stockId string) *Button {
 	c_stock_id := C.CString(stockId)
@@ -5428,7 +5578,9 @@ func ButtonNewFromStock(stockId string) *Button {
 // text.
 /*
 
-C function : gtk_button_new_with_label
+C function
+
+gtk_button_new_with_label
 */
 func ButtonNewWithLabel(label string) *Button {
 	c_label := C.CString(label)
@@ -5448,7 +5600,9 @@ func ButtonNewWithLabel(label string) *Button {
 // Pressing Alt and that key activates the button.
 /*
 
-C function : gtk_button_new_with_mnemonic
+C function
+
+gtk_button_new_with_mnemonic
 */
 func ButtonNewWithMnemonic(label string) *Button {
 	c_label := C.CString(label)
@@ -5463,7 +5617,9 @@ func ButtonNewWithMnemonic(label string) *Button {
 // Emits a #GtkButton::clicked signal to the given #GtkButton.
 /*
 
-C function : gtk_button_clicked
+C function
+
+gtk_button_clicked
 */
 func (recv *Button) Clicked() {
 	C.gtk_button_clicked((*C.GtkButton)(recv.native))
@@ -5474,7 +5630,9 @@ func (recv *Button) Clicked() {
 // Emits a #GtkButton::enter signal to the given #GtkButton.
 /*
 
-C function : gtk_button_enter
+C function
+
+gtk_button_enter
 */
 func (recv *Button) Enter() {
 	C.gtk_button_enter((*C.GtkButton)(recv.native))
@@ -5489,7 +5647,9 @@ func (recv *Button) Enter() {
 // use as a container.
 /*
 
-C function : gtk_button_get_label
+C function
+
+gtk_button_get_label
 */
 func (recv *Button) GetLabel() string {
 	retC := C.gtk_button_get_label((*C.GtkButton)(recv.native))
@@ -5501,7 +5661,9 @@ func (recv *Button) GetLabel() string {
 // Returns the current relief style of the given #GtkButton.
 /*
 
-C function : gtk_button_get_relief
+C function
+
+gtk_button_get_relief
 */
 func (recv *Button) GetRelief() ReliefStyle {
 	retC := C.gtk_button_get_relief((*C.GtkButton)(recv.native))
@@ -5513,7 +5675,9 @@ func (recv *Button) GetRelief() ReliefStyle {
 // Returns whether the button label is a stock item.
 /*
 
-C function : gtk_button_get_use_stock
+C function
+
+gtk_button_get_use_stock
 */
 func (recv *Button) GetUseStock() bool {
 	retC := C.gtk_button_get_use_stock((*C.GtkButton)(recv.native))
@@ -5526,7 +5690,9 @@ func (recv *Button) GetUseStock() bool {
 // mnemonic. See gtk_button_set_use_underline ().
 /*
 
-C function : gtk_button_get_use_underline
+C function
+
+gtk_button_get_use_underline
 */
 func (recv *Button) GetUseUnderline() bool {
 	retC := C.gtk_button_get_use_underline((*C.GtkButton)(recv.native))
@@ -5538,7 +5704,9 @@ func (recv *Button) GetUseUnderline() bool {
 // Emits a #GtkButton::leave signal to the given #GtkButton.
 /*
 
-C function : gtk_button_leave
+C function
+
+gtk_button_leave
 */
 func (recv *Button) Leave() {
 	C.gtk_button_leave((*C.GtkButton)(recv.native))
@@ -5549,7 +5717,9 @@ func (recv *Button) Leave() {
 // Emits a #GtkButton::pressed signal to the given #GtkButton.
 /*
 
-C function : gtk_button_pressed
+C function
+
+gtk_button_pressed
 */
 func (recv *Button) Pressed() {
 	C.gtk_button_pressed((*C.GtkButton)(recv.native))
@@ -5560,7 +5730,9 @@ func (recv *Button) Pressed() {
 // Emits a #GtkButton::released signal to the given #GtkButton.
 /*
 
-C function : gtk_button_released
+C function
+
+gtk_button_released
 */
 func (recv *Button) Released() {
 	C.gtk_button_released((*C.GtkButton)(recv.native))
@@ -5575,7 +5747,9 @@ func (recv *Button) Released() {
 // This will also clear any previously set labels.
 /*
 
-C function : gtk_button_set_label
+C function
+
+gtk_button_set_label
 */
 func (recv *Button) SetLabel(label string) {
 	c_label := C.CString(label)
@@ -5593,7 +5767,9 @@ func (recv *Button) SetLabel(label string) {
 // %GTK_RELIEF_NORMAL.
 /*
 
-C function : gtk_button_set_relief
+C function
+
+gtk_button_set_relief
 */
 func (recv *Button) SetRelief(relief ReliefStyle) {
 	c_relief := (C.GtkReliefStyle)(relief)
@@ -5607,7 +5783,9 @@ func (recv *Button) SetRelief(relief ReliefStyle) {
 // stock id to select the stock item for the button.
 /*
 
-C function : gtk_button_set_use_stock
+C function
+
+gtk_button_set_use_stock
 */
 func (recv *Button) SetUseStock(useStock bool) {
 	c_use_stock :=
@@ -5622,7 +5800,9 @@ func (recv *Button) SetUseStock(useStock bool) {
 // the next character should be used for the mnemonic accelerator key.
 /*
 
-C function : gtk_button_set_use_underline
+C function
+
+gtk_button_set_use_underline
 */
 func (recv *Button) SetUseUnderline(useUnderline bool) {
 	c_use_underline :=
@@ -5655,7 +5835,9 @@ func (recv *Button) Buildable() *Buildable {
 
 /*
 
-C record/class : GtkButtonAccessible
+C type
+
+GtkButtonAccessible
 */
 type ButtonAccessible struct {
 	native *C.GtkButtonAccessible
@@ -5722,7 +5904,9 @@ func (recv *ButtonAccessible) Image() *atk.Image {
 
 /*
 
-C record/class : GtkButtonBox
+C type
+
+GtkButtonBox
 */
 type ButtonBox struct {
 	native *C.GtkButtonBox
@@ -5780,7 +5964,9 @@ func CastToButtonBox(object *gobject.Object) *ButtonBox {
 // Retrieves the method being used to arrange the buttons in a button box.
 /*
 
-C function : gtk_button_box_get_layout
+C function
+
+gtk_button_box_get_layout
 */
 func (recv *ButtonBox) GetLayout() ButtonBoxStyle {
 	retC := C.gtk_button_box_get_layout((*C.GtkButtonBox)(recv.native))
@@ -5803,7 +5989,9 @@ func (recv *ButtonBox) GetLayout() ButtonBoxStyle {
 // other styles, they appear immediately next to the main children.
 /*
 
-C function : gtk_button_box_set_child_secondary
+C function
+
+gtk_button_box_set_child_secondary
 */
 func (recv *ButtonBox) SetChildSecondary(child *Widget, isSecondary bool) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -5822,7 +6010,9 @@ func (recv *ButtonBox) SetChildSecondary(child *Widget, isSecondary bool) {
 // Changes the way buttons are arranged in their container.
 /*
 
-C function : gtk_button_box_set_layout
+C function
+
+gtk_button_box_set_layout
 */
 func (recv *ButtonBox) SetLayout(layoutStyle ButtonBoxStyle) {
 	c_layout_style := (C.GtkButtonBoxStyle)(layoutStyle)
@@ -5870,7 +6060,9 @@ func (recv *ButtonBox) Orientable() *Orientable {
 // historically incorrect.
 /*
 
-C record/class : GtkCalendar
+C type
+
+GtkCalendar
 */
 type Calendar struct {
 	native *C.GtkCalendar
@@ -6317,7 +6509,9 @@ func calendar_prevYearHandler(_ *C.GObject, data C.gpointer) {
 // Creates a new calendar, with the current date being selected.
 /*
 
-C function : gtk_calendar_new
+C function
+
+gtk_calendar_new
 */
 func CalendarNew() *Calendar {
 	retC := C.gtk_calendar_new()
@@ -6329,7 +6523,9 @@ func CalendarNew() *Calendar {
 // Remove all visual markers.
 /*
 
-C function : gtk_calendar_clear_marks
+C function
+
+gtk_calendar_clear_marks
 */
 func (recv *Calendar) ClearMarks() {
 	C.gtk_calendar_clear_marks((*C.GtkCalendar)(recv.native))
@@ -6340,7 +6536,9 @@ func (recv *Calendar) ClearMarks() {
 // Obtains the selected date from a #GtkCalendar.
 /*
 
-C function : gtk_calendar_get_date
+C function
+
+gtk_calendar_get_date
 */
 func (recv *Calendar) GetDate() (uint32, uint32, uint32) {
 	var c_year C.guint
@@ -6363,7 +6561,9 @@ func (recv *Calendar) GetDate() (uint32, uint32, uint32) {
 // Places a visual marker on a particular day.
 /*
 
-C function : gtk_calendar_mark_day
+C function
+
+gtk_calendar_mark_day
 */
 func (recv *Calendar) MarkDay(day uint32) {
 	c_day := (C.guint)(day)
@@ -6376,7 +6576,9 @@ func (recv *Calendar) MarkDay(day uint32) {
 // Selects a day from the current month.
 /*
 
-C function : gtk_calendar_select_day
+C function
+
+gtk_calendar_select_day
 */
 func (recv *Calendar) SelectDay(day uint32) {
 	c_day := (C.guint)(day)
@@ -6389,7 +6591,9 @@ func (recv *Calendar) SelectDay(day uint32) {
 // Shifts the calendar to a different month.
 /*
 
-C function : gtk_calendar_select_month
+C function
+
+gtk_calendar_select_month
 */
 func (recv *Calendar) SelectMonth(month uint32, year uint32) {
 	c_month := (C.guint)(month)
@@ -6404,7 +6608,9 @@ func (recv *Calendar) SelectMonth(month uint32, year uint32) {
 // Removes the visual marker from a particular day.
 /*
 
-C function : gtk_calendar_unmark_day
+C function
+
+gtk_calendar_unmark_day
 */
 func (recv *Calendar) UnmarkDay(day uint32) {
 	c_day := (C.guint)(day)
@@ -6426,7 +6632,9 @@ func (recv *Calendar) Buildable() *Buildable {
 
 /*
 
-C record/class : GtkCellAccessible
+C type
+
+GtkCellAccessible
 */
 type CellAccessible struct {
 	native *C.GtkCellAccessible
@@ -6791,7 +6999,9 @@ func (recv *CellAccessible) Component() *atk.Component {
 // gtk_cell_area_cell_get() or gtk_cell_area_cell_get_valist().
 /*
 
-C record/class : GtkCellArea
+C type
+
+GtkCellArea
 */
 type CellArea struct {
 	native *C.GtkCellArea
@@ -6860,7 +7070,9 @@ func (recv *CellArea) CellLayout() *CellLayout {
 // argument to gtk_cell_area_box_pack_start() and gtk_cell_area_box_pack_end().
 /*
 
-C record/class : GtkCellAreaBox
+C type
+
+GtkCellAreaBox
 */
 type CellAreaBox struct {
 	native *C.GtkCellAreaBox
@@ -6932,7 +7144,9 @@ func (recv *CellAreaBox) Orientable() *Orientable {
 // such as gtk_cell_area_render() and gtk_cell_area_event().
 /*
 
-C record/class : GtkCellAreaContext
+C type
+
+GtkCellAreaContext
 */
 type CellAreaContext struct {
 	native *C.GtkCellAreaContext
@@ -6981,7 +7195,9 @@ func CastToCellAreaContext(object *gobject.Object) *CellAreaContext {
 // Since 3.0
 /*
 
-C function : gtk_cell_area_context_allocate
+C function
+
+gtk_cell_area_context_allocate
 */
 func (recv *CellAreaContext) Allocate(width int32, height int32) {
 	c_width := (C.gint)(width)
@@ -7019,7 +7235,9 @@ func (recv *CellAreaContext) Allocate(width int32, height int32) {
 // Since 3.0
 /*
 
-C function : gtk_cell_area_context_reset
+C function
+
+gtk_cell_area_context_reset
 */
 func (recv *CellAreaContext) Reset() {
 	C.gtk_cell_area_context_reset((*C.GtkCellAreaContext)(recv.native))
@@ -7063,7 +7281,9 @@ func (recv *CellAreaContext) Reset() {
 // has been set or not. You should not set them independently.
 /*
 
-C record/class : GtkCellRenderer
+C type
+
+GtkCellRenderer
 */
 type CellRenderer struct {
 	native *C.GtkCellRenderer
@@ -7108,7 +7328,9 @@ func CastToCellRenderer(object *gobject.Object) *CellRenderer {
 // Fills in @width and @height with the appropriate size of @cell.
 /*
 
-C function : gtk_cell_renderer_get_fixed_size
+C function
+
+gtk_cell_renderer_get_fixed_size
 */
 func (recv *CellRenderer) GetFixedSize() (int32, int32) {
 	var c_width C.gint
@@ -7131,7 +7353,9 @@ func (recv *CellRenderer) GetFixedSize() (int32, int32) {
 // Sets the renderer size to be explicit, independent of the properties set.
 /*
 
-C function : gtk_cell_renderer_set_fixed_size
+C function
+
+gtk_cell_renderer_set_fixed_size
 */
 func (recv *CellRenderer) SetFixedSize(width int32, height int32) {
 	c_width := (C.gint)(width)
@@ -7152,7 +7376,9 @@ func (recv *CellRenderer) SetFixedSize(width int32, height int32) {
 // The #GtkCellRendererAccel cell renderer was added in GTK+ 2.10.
 /*
 
-C record/class : GtkCellRendererAccel
+C type
+
+GtkCellRendererAccel
 */
 type CellRendererAccel struct {
 	native *C.GtkCellRendererAccel
@@ -7216,7 +7442,9 @@ func CastToCellRendererAccel(object *gobject.Object) *CellRendererAccel {
 // The #GtkCellRendererCombo cell renderer was added in GTK+ 2.6.
 /*
 
-C record/class : GtkCellRendererCombo
+C type
+
+GtkCellRendererCombo
 */
 type CellRendererCombo struct {
 	native *C.GtkCellRendererCombo
@@ -7280,7 +7508,9 @@ func CastToCellRendererCombo(object *gobject.Object) *CellRendererCombo {
 // pixbuf, it renders that one.
 /*
 
-C record/class : GtkCellRendererPixbuf
+C type
+
+GtkCellRendererPixbuf
 */
 type CellRendererPixbuf struct {
 	native *C.GtkCellRendererPixbuf
@@ -7334,7 +7564,9 @@ func CastToCellRendererPixbuf(object *gobject.Object) *CellRendererPixbuf {
 // #GtkTreeView.
 /*
 
-C function : gtk_cell_renderer_pixbuf_new
+C function
+
+gtk_cell_renderer_pixbuf_new
 */
 func CellRendererPixbufNew() *CellRendererPixbuf {
 	retC := C.gtk_cell_renderer_pixbuf_new()
@@ -7349,7 +7581,9 @@ func CellRendererPixbufNew() *CellRendererPixbuf {
 // The #GtkCellRendererProgress cell renderer was added in GTK+ 2.6.
 /*
 
-C record/class : GtkCellRendererProgress
+C type
+
+GtkCellRendererProgress
 */
 type CellRendererProgress struct {
 	native *C.GtkCellRendererProgress
@@ -7414,7 +7648,9 @@ func (recv *CellRendererProgress) Orientable() *Orientable {
 // The #GtkCellRendererSpin cell renderer was added in GTK+ 2.10.
 /*
 
-C record/class : GtkCellRendererSpin
+C type
+
+GtkCellRendererSpin
 */
 type CellRendererSpin struct {
 	native *C.GtkCellRendererSpin
@@ -7476,7 +7712,9 @@ func CastToCellRendererSpin(object *gobject.Object) *CellRendererSpin {
 // gtk_tree_view_column_add_attribute().
 /*
 
-C record/class : GtkCellRendererSpinner
+C type
+
+GtkCellRendererSpinner
 */
 type CellRendererSpinner struct {
 	native *C.GtkCellRendererSpinner
@@ -7529,7 +7767,9 @@ func CastToCellRendererSpinner(object *gobject.Object) *CellRendererSpinner {
 // the #GtkCellRendererText allows to edit its text using an entry.
 /*
 
-C record/class : GtkCellRendererText
+C type
+
+GtkCellRendererText
 */
 type CellRendererText struct {
 	native *C.GtkCellRendererText
@@ -7585,7 +7825,9 @@ func CastToCellRendererText(object *gobject.Object) *CellRendererText {
 // of the #GtkTreeView
 /*
 
-C function : gtk_cell_renderer_text_new
+C function
+
+gtk_cell_renderer_text_new
 */
 func CellRendererTextNew() *CellRendererText {
 	retC := C.gtk_cell_renderer_text_new()
@@ -7603,7 +7845,9 @@ func CellRendererTextNew() *CellRendererText {
 // the height is determined by the properties again.
 /*
 
-C function : gtk_cell_renderer_text_set_fixed_height_from_font
+C function
+
+gtk_cell_renderer_text_set_fixed_height_from_font
 */
 func (recv *CellRendererText) SetFixedHeightFromFont(numberOfRows int32) {
 	c_number_of_rows := (C.gint)(numberOfRows)
@@ -7619,7 +7863,9 @@ func (recv *CellRendererText) SetFixedHeightFromFont(numberOfRows int32) {
 // When activated, it emits the #GtkCellRendererToggle::toggled signal.
 /*
 
-C record/class : GtkCellRendererToggle
+C type
+
+GtkCellRendererToggle
 */
 type CellRendererToggle struct {
 	native *C.GtkCellRendererToggle
@@ -7675,7 +7921,9 @@ func CastToCellRendererToggle(object *gobject.Object) *CellRendererToggle {
 // the model.
 /*
 
-C function : gtk_cell_renderer_toggle_new
+C function
+
+gtk_cell_renderer_toggle_new
 */
 func CellRendererToggleNew() *CellRendererToggle {
 	retC := C.gtk_cell_renderer_toggle_new()
@@ -7688,7 +7936,9 @@ func CellRendererToggleNew() *CellRendererToggle {
 // gtk_cell_renderer_toggle_set_active().
 /*
 
-C function : gtk_cell_renderer_toggle_get_active
+C function
+
+gtk_cell_renderer_toggle_get_active
 */
 func (recv *CellRendererToggle) GetActive() bool {
 	retC := C.gtk_cell_renderer_toggle_get_active((*C.GtkCellRendererToggle)(recv.native))
@@ -7700,7 +7950,9 @@ func (recv *CellRendererToggle) GetActive() bool {
 // Returns whether we’re rendering radio toggles rather than checkboxes.
 /*
 
-C function : gtk_cell_renderer_toggle_get_radio
+C function
+
+gtk_cell_renderer_toggle_get_radio
 */
 func (recv *CellRendererToggle) GetRadio() bool {
 	retC := C.gtk_cell_renderer_toggle_get_radio((*C.GtkCellRendererToggle)(recv.native))
@@ -7712,7 +7964,9 @@ func (recv *CellRendererToggle) GetRadio() bool {
 // Activates or deactivates a cell renderer.
 /*
 
-C function : gtk_cell_renderer_toggle_set_active
+C function
+
+gtk_cell_renderer_toggle_set_active
 */
 func (recv *CellRendererToggle) SetActive(setting bool) {
 	c_setting :=
@@ -7732,7 +7986,9 @@ func (recv *CellRendererToggle) SetActive(setting bool) {
 // columns with cell renderer properties).
 /*
 
-C function : gtk_cell_renderer_toggle_set_radio
+C function
+
+gtk_cell_renderer_toggle_set_radio
 */
 func (recv *CellRendererToggle) SetRadio(radio bool) {
 	c_radio :=
@@ -7762,7 +8018,9 @@ func (recv *CellRendererToggle) SetRadio(radio bool) {
 // GtkCellView has a single CSS node with name cellview.
 /*
 
-C record/class : GtkCellView
+C type
+
+GtkCellView
 */
 type CellView struct {
 	native *C.GtkCellView
@@ -7856,7 +8114,9 @@ func (recv *CellView) Orientable() *Orientable {
 // in this case.
 /*
 
-C record/class : GtkCheckButton
+C type
+
+GtkCheckButton
 */
 type CheckButton struct {
 	native *C.GtkCheckButton
@@ -7923,7 +8183,9 @@ func CastToCheckButton(object *gobject.Object) *CheckButton {
 // Creates a new #GtkCheckButton.
 /*
 
-C function : gtk_check_button_new
+C function
+
+gtk_check_button_new
 */
 func CheckButtonNew() *CheckButton {
 	retC := C.gtk_check_button_new()
@@ -7935,7 +8197,9 @@ func CheckButtonNew() *CheckButton {
 // Creates a new #GtkCheckButton with a #GtkLabel to the right of it.
 /*
 
-C function : gtk_check_button_new_with_label
+C function
+
+gtk_check_button_new_with_label
 */
 func CheckButtonNewWithLabel(label string) *CheckButton {
 	c_label := C.CString(label)
@@ -7952,7 +8216,9 @@ func CheckButtonNewWithLabel(label string) *CheckButton {
 // in @label indicate the mnemonic for the check button.
 /*
 
-C function : gtk_check_button_new_with_mnemonic
+C function
+
+gtk_check_button_new_with_mnemonic
 */
 func CheckButtonNewWithMnemonic(label string) *CheckButton {
 	c_label := C.CString(label)
@@ -8004,7 +8270,9 @@ func (recv *CheckButton) Buildable() *Buildable {
 // with name check, which gets the .left or .right style class.
 /*
 
-C record/class : GtkCheckMenuItem
+C type
+
+GtkCheckMenuItem
 */
 type CheckMenuItem struct {
 	native *C.GtkCheckMenuItem
@@ -8124,7 +8392,9 @@ func checkmenuitem_toggledHandler(_ *C.GObject, data C.gpointer) {
 // Creates a new #GtkCheckMenuItem.
 /*
 
-C function : gtk_check_menu_item_new
+C function
+
+gtk_check_menu_item_new
 */
 func CheckMenuItemNew() *CheckMenuItem {
 	retC := C.gtk_check_menu_item_new()
@@ -8136,7 +8406,9 @@ func CheckMenuItemNew() *CheckMenuItem {
 // Creates a new #GtkCheckMenuItem with a label.
 /*
 
-C function : gtk_check_menu_item_new_with_label
+C function
+
+gtk_check_menu_item_new_with_label
 */
 func CheckMenuItemNewWithLabel(label string) *CheckMenuItem {
 	c_label := C.CString(label)
@@ -8153,7 +8425,9 @@ func CheckMenuItemNewWithLabel(label string) *CheckMenuItem {
 // in @label indicate the mnemonic for the menu item.
 /*
 
-C function : gtk_check_menu_item_new_with_mnemonic
+C function
+
+gtk_check_menu_item_new_with_mnemonic
 */
 func CheckMenuItemNewWithMnemonic(label string) *CheckMenuItem {
 	c_label := C.CString(label)
@@ -8169,7 +8443,9 @@ func CheckMenuItemNewWithMnemonic(label string) *CheckMenuItem {
 // gtk_check_menu_item_set_active ().
 /*
 
-C function : gtk_check_menu_item_get_active
+C function
+
+gtk_check_menu_item_get_active
 */
 func (recv *CheckMenuItem) GetActive() bool {
 	retC := C.gtk_check_menu_item_get_active((*C.GtkCheckMenuItem)(recv.native))
@@ -8181,7 +8457,9 @@ func (recv *CheckMenuItem) GetActive() bool {
 // Retrieves the value set by gtk_check_menu_item_set_inconsistent().
 /*
 
-C function : gtk_check_menu_item_get_inconsistent
+C function
+
+gtk_check_menu_item_get_inconsistent
 */
 func (recv *CheckMenuItem) GetInconsistent() bool {
 	retC := C.gtk_check_menu_item_get_inconsistent((*C.GtkCheckMenuItem)(recv.native))
@@ -8193,7 +8471,9 @@ func (recv *CheckMenuItem) GetInconsistent() bool {
 // Sets the active state of the menu item’s check box.
 /*
 
-C function : gtk_check_menu_item_set_active
+C function
+
+gtk_check_menu_item_set_active
 */
 func (recv *CheckMenuItem) SetActive(isActive bool) {
 	c_is_active :=
@@ -8214,7 +8494,9 @@ func (recv *CheckMenuItem) SetActive(isActive bool) {
 // visual appearance, it doesn’t affect the semantics of the widget.
 /*
 
-C function : gtk_check_menu_item_set_inconsistent
+C function
+
+gtk_check_menu_item_set_inconsistent
 */
 func (recv *CheckMenuItem) SetInconsistent(setting bool) {
 	c_setting :=
@@ -8228,7 +8510,9 @@ func (recv *CheckMenuItem) SetInconsistent(setting bool) {
 // Emits the #GtkCheckMenuItem::toggled signal.
 /*
 
-C function : gtk_check_menu_item_toggled
+C function
+
+gtk_check_menu_item_toggled
 */
 func (recv *CheckMenuItem) Toggled() {
 	C.gtk_check_menu_item_toggled((*C.GtkCheckMenuItem)(recv.native))
@@ -8258,7 +8542,9 @@ func (recv *CheckMenuItem) Buildable() *Buildable {
 
 /*
 
-C record/class : GtkCheckMenuItemAccessible
+C type
+
+GtkCheckMenuItemAccessible
 */
 type CheckMenuItemAccessible struct {
 	native *C.GtkCheckMenuItemAccessible
@@ -8387,7 +8673,9 @@ func (recv *CheckMenuItemAccessible) Selection() *atk.Selection {
 // form for representing strings in GTK+.)
 /*
 
-C record/class : GtkClipboard
+C type
+
+GtkClipboard
 */
 type Clipboard struct {
 	native *C.GtkClipboard
@@ -8427,7 +8715,9 @@ func CastToClipboard(object *gobject.Object) *Clipboard {
 // clipboard may be owned by someone else.
 /*
 
-C function : gtk_clipboard_clear
+C function
+
+gtk_clipboard_clear
 */
 func (recv *Clipboard) Clear() {
 	C.gtk_clipboard_clear((*C.GtkClipboard)(recv.native))
@@ -8441,7 +8731,9 @@ func (recv *Clipboard) Clear() {
 // by gtk_clipboard_set_with_owner().
 /*
 
-C function : gtk_clipboard_get_owner
+C function
+
+gtk_clipboard_get_owner
 */
 func (recv *Clipboard) GetOwner() *gobject.Object {
 	retC := C.gtk_clipboard_get_owner((*C.GtkClipboard)(recv.native))
@@ -8465,7 +8757,9 @@ func (recv *Clipboard) GetOwner() *gobject.Object {
 // the requested format.
 /*
 
-C function : gtk_clipboard_set_text
+C function
+
+gtk_clipboard_set_text
 */
 func (recv *Clipboard) SetText(text string, len int32) {
 	c_text := C.CString(text)
@@ -8490,7 +8784,9 @@ func (recv *Clipboard) SetText(text string, len int32) {
 // timeouts, etc, may be dispatched during the wait.
 /*
 
-C function : gtk_clipboard_wait_for_text
+C function
+
+gtk_clipboard_wait_for_text
 */
 func (recv *Clipboard) WaitForText() string {
 	retC := C.gtk_clipboard_wait_for_text((*C.GtkClipboard)(recv.native))
@@ -8511,7 +8807,9 @@ func (recv *Clipboard) WaitForText() string {
 // the actual text.
 /*
 
-C function : gtk_clipboard_wait_is_text_available
+C function
+
+gtk_clipboard_wait_is_text_available
 */
 func (recv *Clipboard) WaitIsTextAvailable() bool {
 	retC := C.gtk_clipboard_wait_is_text_available((*C.GtkClipboard)(recv.native))
@@ -8530,7 +8828,9 @@ func (recv *Clipboard) WaitIsTextAvailable() bool {
 // it from a plain #GtkButton, it gets the .color style class.
 /*
 
-C record/class : GtkColorButton
+C type
+
+GtkColorButton
 */
 type ColorButton struct {
 	native *C.GtkColorButton
@@ -8619,7 +8919,9 @@ func (recv *ColorButton) ColorChooser() *ColorChooser {
 // a color. It implements the #GtkColorChooser interface.
 /*
 
-C record/class : GtkColorChooserDialog
+C type
+
+GtkColorChooserDialog
 */
 type ColorChooserDialog struct {
 	native *C.GtkColorChooserDialog
@@ -8721,7 +9023,9 @@ func (recv *ColorChooserDialog) ColorChooser() *ColorChooser {
 // GtkColorChooserWidget has a single CSS node with name colorchooser.
 /*
 
-C record/class : GtkColorChooserWidget
+C type
+
+GtkColorChooserWidget
 */
 type ColorChooserWidget struct {
 	native *C.GtkColorChooserWidget
@@ -8798,7 +9102,9 @@ func (recv *ColorChooserWidget) Orientable() *Orientable {
 
 /*
 
-C record/class : GtkColorSelection
+C type
+
+GtkColorSelection
 */
 type ColorSelection struct {
 	native *C.GtkColorSelection
@@ -8913,7 +9219,9 @@ func colorselection_colorChangedHandler(_ *C.GObject, data C.gpointer) {
 // Creates a new GtkColorSelection.
 /*
 
-C function : gtk_color_selection_new
+C function
+
+gtk_color_selection_new
 */
 func ColorSelectionNew() *ColorSelection {
 	retC := C.gtk_color_selection_new()
@@ -8925,7 +9233,9 @@ func ColorSelectionNew() *ColorSelection {
 // Returns the current alpha value.
 /*
 
-C function : gtk_color_selection_get_current_alpha
+C function
+
+gtk_color_selection_get_current_alpha
 */
 func (recv *ColorSelection) GetCurrentAlpha() uint16 {
 	retC := C.gtk_color_selection_get_current_alpha((*C.GtkColorSelection)(recv.native))
@@ -8937,7 +9247,9 @@ func (recv *ColorSelection) GetCurrentAlpha() uint16 {
 // Sets @color to be the current color in the GtkColorSelection widget.
 /*
 
-C function : gtk_color_selection_get_current_color
+C function
+
+gtk_color_selection_get_current_color
 */
 func (recv *ColorSelection) GetCurrentColor() *gdk.Color {
 	var c_color C.GdkColor
@@ -8952,7 +9264,9 @@ func (recv *ColorSelection) GetCurrentColor() *gdk.Color {
 // Determines whether the colorsel has an opacity control.
 /*
 
-C function : gtk_color_selection_get_has_opacity_control
+C function
+
+gtk_color_selection_get_has_opacity_control
 */
 func (recv *ColorSelection) GetHasOpacityControl() bool {
 	retC := C.gtk_color_selection_get_has_opacity_control((*C.GtkColorSelection)(recv.native))
@@ -8964,7 +9278,9 @@ func (recv *ColorSelection) GetHasOpacityControl() bool {
 // Determines whether the color selector has a color palette.
 /*
 
-C function : gtk_color_selection_get_has_palette
+C function
+
+gtk_color_selection_get_has_palette
 */
 func (recv *ColorSelection) GetHasPalette() bool {
 	retC := C.gtk_color_selection_get_has_palette((*C.GtkColorSelection)(recv.native))
@@ -8976,7 +9292,9 @@ func (recv *ColorSelection) GetHasPalette() bool {
 // Returns the previous alpha value.
 /*
 
-C function : gtk_color_selection_get_previous_alpha
+C function
+
+gtk_color_selection_get_previous_alpha
 */
 func (recv *ColorSelection) GetPreviousAlpha() uint16 {
 	retC := C.gtk_color_selection_get_previous_alpha((*C.GtkColorSelection)(recv.native))
@@ -8988,7 +9306,9 @@ func (recv *ColorSelection) GetPreviousAlpha() uint16 {
 // Fills @color in with the original color value.
 /*
 
-C function : gtk_color_selection_get_previous_color
+C function
+
+gtk_color_selection_get_previous_color
 */
 func (recv *ColorSelection) GetPreviousColor() *gdk.Color {
 	var c_color C.GdkColor
@@ -9003,7 +9323,9 @@ func (recv *ColorSelection) GetPreviousColor() *gdk.Color {
 // Gets the current state of the @colorsel.
 /*
 
-C function : gtk_color_selection_is_adjusting
+C function
+
+gtk_color_selection_is_adjusting
 */
 func (recv *ColorSelection) IsAdjusting() bool {
 	retC := C.gtk_color_selection_is_adjusting((*C.GtkColorSelection)(recv.native))
@@ -9018,7 +9340,9 @@ func (recv *ColorSelection) IsAdjusting() bool {
 // the original opacity to be @alpha too.
 /*
 
-C function : gtk_color_selection_set_current_alpha
+C function
+
+gtk_color_selection_set_current_alpha
 */
 func (recv *ColorSelection) SetCurrentAlpha(alpha uint16) {
 	c_alpha := (C.guint16)(alpha)
@@ -9034,7 +9358,9 @@ func (recv *ColorSelection) SetCurrentAlpha(alpha uint16) {
 // the original color to be @color too.
 /*
 
-C function : gtk_color_selection_set_current_color
+C function
+
+gtk_color_selection_set_current_color
 */
 func (recv *ColorSelection) SetCurrentColor(color *gdk.Color) {
 	c_color := (*C.GdkColor)(C.NULL)
@@ -9050,7 +9376,9 @@ func (recv *ColorSelection) SetCurrentColor(color *gdk.Color) {
 // Sets the @colorsel to use or not use opacity.
 /*
 
-C function : gtk_color_selection_set_has_opacity_control
+C function
+
+gtk_color_selection_set_has_opacity_control
 */
 func (recv *ColorSelection) SetHasOpacityControl(hasOpacity bool) {
 	c_has_opacity :=
@@ -9064,7 +9392,9 @@ func (recv *ColorSelection) SetHasOpacityControl(hasOpacity bool) {
 // Shows and hides the palette based upon the value of @has_palette.
 /*
 
-C function : gtk_color_selection_set_has_palette
+C function
+
+gtk_color_selection_set_has_palette
 */
 func (recv *ColorSelection) SetHasPalette(hasPalette bool) {
 	c_has_palette :=
@@ -9081,7 +9411,9 @@ func (recv *ColorSelection) SetHasPalette(hasPalette bool) {
 // as it might seem confusing to have that alpha change.
 /*
 
-C function : gtk_color_selection_set_previous_alpha
+C function
+
+gtk_color_selection_set_previous_alpha
 */
 func (recv *ColorSelection) SetPreviousAlpha(alpha uint16) {
 	c_alpha := (C.guint16)(alpha)
@@ -9099,7 +9431,9 @@ func (recv *ColorSelection) SetPreviousAlpha(alpha uint16) {
 // set this color the first time it is called.
 /*
 
-C function : gtk_color_selection_set_previous_color
+C function
+
+gtk_color_selection_set_previous_color
 */
 func (recv *ColorSelection) SetPreviousColor(color *gdk.Color) {
 	c_color := (*C.GdkColor)(C.NULL)
@@ -9129,7 +9463,9 @@ func (recv *ColorSelection) Orientable() *Orientable {
 
 /*
 
-C record/class : GtkColorSelectionDialog
+C type
+
+GtkColorSelectionDialog
 */
 type ColorSelectionDialog struct {
 	native *C.GtkColorSelectionDialog
@@ -9197,7 +9533,9 @@ func CastToColorSelectionDialog(object *gobject.Object) *ColorSelectionDialog {
 // Creates a new #GtkColorSelectionDialog.
 /*
 
-C function : gtk_color_selection_dialog_new
+C function
+
+gtk_color_selection_dialog_new
 */
 func ColorSelectionDialogNew(title string) *ColorSelectionDialog {
 	c_title := C.CString(title)
@@ -9275,7 +9613,9 @@ func (recv *ColorSelectionDialog) Buildable() *Buildable {
 // The button also contains another node with name arrow.
 /*
 
-C record/class : GtkComboBox
+C type
+
+GtkComboBox
 */
 type ComboBox struct {
 	native *C.GtkComboBox
@@ -9333,7 +9673,9 @@ func CastToComboBox(object *gobject.Object) *ComboBox {
 // Creates a new empty #GtkComboBox using @area to layout cells.
 /*
 
-C function : gtk_combo_box_new_with_area
+C function
+
+gtk_combo_box_new_with_area
 */
 func ComboBoxNewWithArea(area *CellArea) *ComboBox {
 	c_area := (*C.GtkCellArea)(C.NULL)
@@ -9352,7 +9694,9 @@ func ComboBoxNewWithArea(area *CellArea) *ComboBox {
 // The new combo box will use @area to layout cells.
 /*
 
-C function : gtk_combo_box_new_with_area_and_entry
+C function
+
+gtk_combo_box_new_with_area_and_entry
 */
 func ComboBoxNewWithAreaAndEntry(area *CellArea) *ComboBox {
 	c_area := (*C.GtkCellArea)(C.NULL)
@@ -9369,7 +9713,9 @@ func ComboBoxNewWithAreaAndEntry(area *CellArea) *ComboBox {
 // Gets the current value of the :add-tearoffs property.
 /*
 
-C function : gtk_combo_box_get_add_tearoffs
+C function
+
+gtk_combo_box_get_add_tearoffs
 */
 func (recv *ComboBox) GetAddTearoffs() bool {
 	retC := C.gtk_combo_box_get_add_tearoffs((*C.GtkComboBox)(recv.native))
@@ -9400,7 +9746,9 @@ func (recv *ComboBox) CellLayout() *CellLayout {
 
 /*
 
-C record/class : GtkComboBoxAccessible
+C type
+
+GtkComboBoxAccessible
 */
 type ComboBoxAccessible struct {
 	native *C.GtkComboBoxAccessible
@@ -9518,7 +9866,9 @@ func (recv *ComboBoxAccessible) Selection() *atk.Selection {
 // children, and the .linked class to the node of its internal box.
 /*
 
-C record/class : GtkComboBoxText
+C type
+
+GtkComboBoxText
 */
 type ComboBoxText struct {
 	native *C.GtkComboBoxText
@@ -9800,7 +10150,9 @@ func (recv *ComboBoxText) CellLayout() *CellLayout {
 // ]|
 /*
 
-C record/class : GtkContainer
+C type
+
+GtkContainer
 */
 type Container struct {
 	native *C.GtkContainer
@@ -10093,7 +10445,9 @@ func container_setFocusChildHandler(_ *C.GObject, c_object *C.GtkWidget, data C.
 // container.
 /*
 
-C function : gtk_container_add
+C function
+
+gtk_container_add
 */
 func (recv *Container) Add(widget *Widget) {
 	c_widget := (*C.GtkWidget)(C.NULL)
@@ -10110,7 +10464,9 @@ func (recv *Container) Add(widget *Widget) {
 
 /*
 
-C function : gtk_container_check_resize
+C function
+
+gtk_container_check_resize
 */
 func (recv *Container) CheckResize() {
 	C.gtk_container_check_resize((*C.GtkContainer)(recv.native))
@@ -10123,7 +10479,9 @@ func (recv *Container) CheckResize() {
 // Gets the value of a child property for @child and @container.
 /*
 
-C function : gtk_container_child_get_property
+C function
+
+gtk_container_child_get_property
 */
 func (recv *Container) ChildGetProperty(child *Widget, propertyName string, value *gobject.Value) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -10151,7 +10509,9 @@ func (recv *Container) ChildGetProperty(child *Widget, propertyName string, valu
 // Sets a child property for @child and @container.
 /*
 
-C function : gtk_container_child_set_property
+C function
+
+gtk_container_child_set_property
 */
 func (recv *Container) ChildSetProperty(child *Widget, propertyName string, value *gobject.Value) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -10181,7 +10541,9 @@ func (recv *Container) ChildSetProperty(child *Widget, propertyName string, valu
 // children.
 /*
 
-C function : gtk_container_child_type
+C function
+
+gtk_container_child_type
 */
 func (recv *Container) ChildType() gobject.Type {
 	retC := C.gtk_container_child_type((*C.GtkContainer)(recv.native))
@@ -10198,7 +10560,9 @@ func (recv *Container) ChildType() gobject.Type {
 // gtk_container_set_border_width().
 /*
 
-C function : gtk_container_get_border_width
+C function
+
+gtk_container_get_border_width
 */
 func (recv *Container) GetBorderWidth() uint32 {
 	retC := C.gtk_container_get_border_width((*C.GtkContainer)(recv.native))
@@ -10211,7 +10575,9 @@ func (recv *Container) GetBorderWidth() uint32 {
 // gtk_container_forall() for details on what constitutes an "internal" child.
 /*
 
-C function : gtk_container_get_children
+C function
+
+gtk_container_get_children
 */
 func (recv *Container) GetChildren() *glib.List {
 	retC := C.gtk_container_get_children((*C.GtkContainer)(recv.native))
@@ -10227,7 +10593,9 @@ func (recv *Container) GetChildren() *glib.List {
 // @focusable_widgets and returns %FALSE.
 /*
 
-C function : gtk_container_get_focus_chain
+C function
+
+gtk_container_get_focus_chain
 */
 func (recv *Container) GetFocusChain() (bool, *glib.List) {
 	var c_focusable_widgets *C.GList
@@ -10244,7 +10612,9 @@ func (recv *Container) GetFocusChain() (bool, *glib.List) {
 // gtk_container_set_focus_hadjustment ().
 /*
 
-C function : gtk_container_get_focus_hadjustment
+C function
+
+gtk_container_get_focus_hadjustment
 */
 func (recv *Container) GetFocusHadjustment() *Adjustment {
 	retC := C.gtk_container_get_focus_hadjustment((*C.GtkContainer)(recv.native))
@@ -10262,7 +10632,9 @@ func (recv *Container) GetFocusHadjustment() *Adjustment {
 // gtk_container_set_focus_vadjustment().
 /*
 
-C function : gtk_container_get_focus_vadjustment
+C function
+
+gtk_container_get_focus_vadjustment
 */
 func (recv *Container) GetFocusVadjustment() *Adjustment {
 	retC := C.gtk_container_get_focus_vadjustment((*C.GtkContainer)(recv.native))
@@ -10280,7 +10652,9 @@ func (recv *Container) GetFocusVadjustment() *Adjustment {
 // from the toplevel down to and including @child.
 /*
 
-C function : gtk_container_get_path_for_child
+C function
+
+gtk_container_get_path_for_child
 */
 func (recv *Container) GetPathForChild(child *Widget) *WidgetPath {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -10298,7 +10672,9 @@ func (recv *Container) GetPathForChild(child *Widget) *WidgetPath {
 // gtk_container_set_resize_mode ().
 /*
 
-C function : gtk_container_get_resize_mode
+C function
+
+gtk_container_get_resize_mode
 */
 func (recv *Container) GetResizeMode() ResizeMode {
 	retC := C.gtk_container_get_resize_mode((*C.GtkContainer)(recv.native))
@@ -10324,7 +10700,9 @@ func (recv *Container) GetResizeMode() ResizeMode {
 // and then chain to the ::draw implementation from #GtkContainer.
 /*
 
-C function : gtk_container_propagate_draw
+C function
+
+gtk_container_propagate_draw
 */
 func (recv *Container) PropagateDraw(child *Widget, cr *cairo.Context) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -10353,7 +10731,9 @@ func (recv *Container) PropagateDraw(child *Widget, cr *cairo.Context) {
 // container and help break any circular reference count cycles.
 /*
 
-C function : gtk_container_remove
+C function
+
+gtk_container_remove
 */
 func (recv *Container) Remove(widget *Widget) {
 	c_widget := (*C.GtkWidget)(C.NULL)
@@ -10368,7 +10748,9 @@ func (recv *Container) Remove(widget *Widget) {
 
 /*
 
-C function : gtk_container_resize_children
+C function
+
+gtk_container_resize_children
 */
 func (recv *Container) ResizeChildren() {
 	C.gtk_container_resize_children((*C.GtkContainer)(recv.native))
@@ -10387,7 +10769,9 @@ func (recv *Container) ResizeChildren() {
 // #GtkWidget:margin-top.
 /*
 
-C function : gtk_container_set_border_width
+C function
+
+gtk_container_set_border_width
 */
 func (recv *Container) SetBorderWidth(borderWidth uint32) {
 	c_border_width := (C.guint)(borderWidth)
@@ -10406,7 +10790,9 @@ func (recv *Container) SetBorderWidth(borderWidth uint32) {
 // when the focus chain is actually traversed.
 /*
 
-C function : gtk_container_set_focus_chain
+C function
+
+gtk_container_set_focus_chain
 */
 func (recv *Container) SetFocusChain(focusableWidgets *glib.List) {
 	c_focusable_widgets := (*C.GList)(C.NULL)
@@ -10429,7 +10815,9 @@ func (recv *Container) SetFocusChain(focusableWidgets *glib.List) {
 // gtk_widget_grab_focus() to manually set the focus to a specific widget.
 /*
 
-C function : gtk_container_set_focus_child
+C function
+
+gtk_container_set_focus_child
 */
 func (recv *Container) SetFocusChild(child *Widget) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -10453,7 +10841,9 @@ func (recv *Container) SetFocusChild(child *Widget) {
 // system as the allocation for immediate children of the container.
 /*
 
-C function : gtk_container_set_focus_hadjustment
+C function
+
+gtk_container_set_focus_hadjustment
 */
 func (recv *Container) SetFocusHadjustment(adjustment *Adjustment) {
 	c_adjustment := (*C.GtkAdjustment)(C.NULL)
@@ -10477,7 +10867,9 @@ func (recv *Container) SetFocusHadjustment(adjustment *Adjustment) {
 // system as the allocation for immediate children of the container.
 /*
 
-C function : gtk_container_set_focus_vadjustment
+C function
+
+gtk_container_set_focus_vadjustment
 */
 func (recv *Container) SetFocusVadjustment(adjustment *Adjustment) {
 	c_adjustment := (*C.GtkAdjustment)(C.NULL)
@@ -10496,7 +10888,9 @@ func (recv *Container) SetFocusVadjustment(adjustment *Adjustment) {
 // redrawn if any of their children changed allocation.
 /*
 
-C function : gtk_container_set_reallocate_redraws
+C function
+
+gtk_container_set_reallocate_redraws
 */
 func (recv *Container) SetReallocateRedraws(needsRedraws bool) {
 	c_needs_redraws :=
@@ -10514,7 +10908,9 @@ func (recv *Container) SetReallocateRedraws(needsRedraws bool) {
 // or executed immediately.
 /*
 
-C function : gtk_container_set_resize_mode
+C function
+
+gtk_container_set_resize_mode
 */
 func (recv *Container) SetResizeMode(resizeMode ResizeMode) {
 	c_resize_mode := (C.GtkResizeMode)(resizeMode)
@@ -10527,7 +10923,9 @@ func (recv *Container) SetResizeMode(resizeMode ResizeMode) {
 // Removes a focus chain explicitly set with gtk_container_set_focus_chain().
 /*
 
-C function : gtk_container_unset_focus_chain
+C function
+
+gtk_container_unset_focus_chain
 */
 func (recv *Container) UnsetFocusChain() {
 	C.gtk_container_unset_focus_chain((*C.GtkContainer)(recv.native))
@@ -10547,7 +10945,9 @@ func (recv *Container) Buildable() *Buildable {
 
 /*
 
-C record/class : GtkContainerAccessible
+C type
+
+GtkContainerAccessible
 */
 type ContainerAccessible struct {
 	native *C.GtkContainerAccessible
@@ -10599,7 +10999,9 @@ func (recv *ContainerAccessible) Component() *atk.Component {
 
 /*
 
-C record/class : GtkContainerCellAccessible
+C type
+
+GtkContainerCellAccessible
 */
 type ContainerCellAccessible struct {
 	native *C.GtkContainerCellAccessible
@@ -10646,7 +11048,9 @@ func CastToContainerCellAccessible(object *gobject.Object) *ContainerCellAccessi
 
 /*
 
-C function : gtk_container_cell_accessible_new
+C function
+
+gtk_container_cell_accessible_new
 */
 func ContainerCellAccessibleNew() *ContainerCellAccessible {
 	retC := C.gtk_container_cell_accessible_new()
@@ -10657,7 +11061,9 @@ func ContainerCellAccessibleNew() *ContainerCellAccessible {
 
 /*
 
-C function : gtk_container_cell_accessible_add_child
+C function
+
+gtk_container_cell_accessible_add_child
 */
 func (recv *ContainerCellAccessible) AddChild(child *CellAccessible) {
 	c_child := (*C.GtkCellAccessible)(C.NULL)
@@ -10673,7 +11079,9 @@ func (recv *ContainerCellAccessible) AddChild(child *CellAccessible) {
 // Get a list of children.
 /*
 
-C function : gtk_container_cell_accessible_get_children
+C function
+
+gtk_container_cell_accessible_get_children
 */
 func (recv *ContainerCellAccessible) GetChildren() *glib.List {
 	retC := C.gtk_container_cell_accessible_get_children((*C.GtkContainerCellAccessible)(recv.native))
@@ -10684,7 +11092,9 @@ func (recv *ContainerCellAccessible) GetChildren() *glib.List {
 
 /*
 
-C function : gtk_container_cell_accessible_remove_child
+C function
+
+gtk_container_cell_accessible_remove_child
 */
 func (recv *ContainerCellAccessible) RemoveChild(child *CellAccessible) {
 	c_child := (*C.GtkCellAccessible)(C.NULL)
@@ -10732,7 +11142,9 @@ func (recv *ContainerCellAccessible) Component() *atk.Component {
 // key theme, as defined by #GtkSettings:gtk-key-theme-name.
 /*
 
-C record/class : GtkCssProvider
+C type
+
+GtkCssProvider
 */
 type CssProvider struct {
 	native *C.GtkCssProvider
@@ -10831,7 +11243,9 @@ func cssprovider_parsingErrorHandler(_ *C.GObject, c_section *C.GtkCssSection, c
 // Returns a newly created #GtkCssProvider.
 /*
 
-C function : gtk_css_provider_new
+C function
+
+gtk_css_provider_new
 */
 func CssProviderNew() *CssProvider {
 	retC := C.gtk_css_provider_new()
@@ -10844,7 +11258,9 @@ func CssProviderNew() *CssProvider {
 // information.
 /*
 
-C function : gtk_css_provider_load_from_data
+C function
+
+gtk_css_provider_load_from_data
 */
 func (recv *CssProvider) LoadFromData(data []uint8) (bool, error) {
 	c_data := &data[0]
@@ -10868,7 +11284,9 @@ func (recv *CssProvider) LoadFromData(data []uint8) (bool, error) {
 // clear any previously loaded information.
 /*
 
-C function : gtk_css_provider_load_from_file
+C function
+
+gtk_css_provider_load_from_file
 */
 func (recv *CssProvider) LoadFromFile(file *gio.File) (bool, error) {
 	c_file := (*C.GFile)(file.ToC())
@@ -10890,7 +11308,9 @@ func (recv *CssProvider) LoadFromFile(file *gio.File) (bool, error) {
 // any previously loaded information.
 /*
 
-C function : gtk_css_provider_load_from_path
+C function
+
+gtk_css_provider_load_from_path
 */
 func (recv *CssProvider) LoadFromPath(path string) (bool, error) {
 	c_path := C.CString(path)
@@ -11033,7 +11453,9 @@ func (recv *CssProvider) StyleProvider() *StyleProvider {
 // ]|
 /*
 
-C record/class : GtkDialog
+C type
+
+GtkDialog
 */
 type Dialog struct {
 	native *C.GtkDialog
@@ -11158,7 +11580,9 @@ func dialog_closeHandler(_ *C.GObject, data C.gpointer) {
 // directly, but into the @vbox and @action_area, as described above.
 /*
 
-C function : gtk_dialog_new
+C function
+
+gtk_dialog_new
 */
 func DialogNew() *Dialog {
 	retC := C.gtk_dialog_new()
@@ -11177,7 +11601,9 @@ func DialogNew() *Dialog {
 // of the #GtkDialog struct.
 /*
 
-C function : gtk_dialog_add_action_widget
+C function
+
+gtk_dialog_add_action_widget
 */
 func (recv *Dialog) AddActionWidget(child *Widget, responseId int32) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -11199,7 +11625,9 @@ func (recv *Dialog) AddActionWidget(child *Widget, responseId int32) {
 // you don’t need it.
 /*
 
-C function : gtk_dialog_add_button
+C function
+
+gtk_dialog_add_button
 */
 func (recv *Dialog) AddButton(buttonText string, responseId int32) *Widget {
 	c_button_text := C.CString(buttonText)
@@ -11221,7 +11649,9 @@ func (recv *Dialog) AddButton(buttonText string, responseId int32) *Widget {
 // ::response signal and take appropriate action.
 /*
 
-C function : gtk_dialog_response
+C function
+
+gtk_dialog_response
 */
 func (recv *Dialog) Response(responseId int32) {
 	c_response_id := (C.gint)(responseId)
@@ -11278,7 +11708,9 @@ func (recv *Dialog) Response(responseId int32) {
 // be triggered during a gtk_dialog_run() call.
 /*
 
-C function : gtk_dialog_run
+C function
+
+gtk_dialog_run
 */
 func (recv *Dialog) Run() int32 {
 	retC := C.gtk_dialog_run((*C.GtkDialog)(recv.native))
@@ -11292,7 +11724,9 @@ func (recv *Dialog) Run() int32 {
 // the default widget.
 /*
 
-C function : gtk_dialog_set_default_response
+C function
+
+gtk_dialog_set_default_response
 */
 func (recv *Dialog) SetDefaultResponse(responseId int32) {
 	c_response_id := (C.gint)(responseId)
@@ -11307,7 +11741,9 @@ func (recv *Dialog) SetDefaultResponse(responseId int32) {
 // A convenient way to sensitize/desensitize dialog buttons.
 /*
 
-C function : gtk_dialog_set_response_sensitive
+C function
+
+gtk_dialog_set_response_sensitive
 */
 func (recv *Dialog) SetResponseSensitive(responseId int32, setting bool) {
 	c_response_id := (C.gint)(responseId)
@@ -11357,7 +11793,7 @@ func (recv *Dialog) Buildable() *Buildable {
 // area. If you want to have a theme-provided background, you need
 // to call gtk_render_background() in your ::draw method.
 //
-// ## Simple GtkDrawingArea usage
+// Simple GtkDrawingArea usage
 //
 // |[<!-- language="C" -->
 // gboolean
@@ -11415,7 +11851,9 @@ func (recv *Dialog) Buildable() *Buildable {
 // gtk_render_focus() for one way to draw focus.
 /*
 
-C record/class : GtkDrawingArea
+C type
+
+GtkDrawingArea
 */
 type DrawingArea struct {
 	native *C.GtkDrawingArea
@@ -11463,7 +11901,9 @@ func CastToDrawingArea(object *gobject.Object) *DrawingArea {
 // Creates a new drawing area.
 /*
 
-C function : gtk_drawing_area_new
+C function
+
+gtk_drawing_area_new
 */
 func DrawingAreaNew() *DrawingArea {
 	retC := C.gtk_drawing_area_new()
@@ -11556,7 +11996,9 @@ func (recv *DrawingArea) Buildable() *Buildable {
 // .insertion-cursor.
 /*
 
-C record/class : GtkEntry
+C type
+
+GtkEntry
 */
 type Entry struct {
 	native *C.GtkEntry
@@ -12011,7 +12453,9 @@ func entry_toggleOverwriteHandler(_ *C.GObject, data C.gpointer) {
 // Creates a new entry.
 /*
 
-C function : gtk_entry_new
+C function
+
+gtk_entry_new
 */
 func EntryNew() *Entry {
 	retC := C.gtk_entry_new()
@@ -12023,7 +12467,9 @@ func EntryNew() *Entry {
 // Retrieves the value set by gtk_entry_set_activates_default().
 /*
 
-C function : gtk_entry_get_activates_default
+C function
+
+gtk_entry_get_activates_default
 */
 func (recv *Entry) GetActivatesDefault() bool {
 	retC := C.gtk_entry_get_activates_default((*C.GtkEntry)(recv.native))
@@ -12035,7 +12481,9 @@ func (recv *Entry) GetActivatesDefault() bool {
 // Gets the value set by gtk_entry_set_has_frame().
 /*
 
-C function : gtk_entry_get_has_frame
+C function
+
+gtk_entry_get_has_frame
 */
 func (recv *Entry) GetHasFrame() bool {
 	retC := C.gtk_entry_get_has_frame((*C.GtkEntry)(recv.native))
@@ -12048,7 +12496,9 @@ func (recv *Entry) GetHasFrame() bool {
 // for entries with visibility set to false. See gtk_entry_set_invisible_char().
 /*
 
-C function : gtk_entry_get_invisible_char
+C function
+
+gtk_entry_get_invisible_char
 */
 func (recv *Entry) GetInvisibleChar() rune {
 	retC := C.gtk_entry_get_invisible_char((*C.GtkEntry)(recv.native))
@@ -12069,7 +12519,9 @@ func (recv *Entry) GetInvisibleChar() rune {
 // indices in the layout to byte indices in the entry contents.
 /*
 
-C function : gtk_entry_get_layout
+C function
+
+gtk_entry_get_layout
 */
 func (recv *Entry) GetLayout() *pango.Layout {
 	retC := C.gtk_entry_get_layout((*C.GtkEntry)(recv.native))
@@ -12099,7 +12551,9 @@ func (recv *Entry) GetLayout() *pango.Layout {
 // indices in the layout to byte indices in the entry contents.
 /*
 
-C function : gtk_entry_get_layout_offsets
+C function
+
+gtk_entry_get_layout_offsets
 */
 func (recv *Entry) GetLayoutOffsets() (int32, int32) {
 	var c_x C.gint
@@ -12122,7 +12576,9 @@ func (recv *Entry) GetLayoutOffsets() (int32, int32) {
 // calling gtk_entry_buffer_get_max_length() on it.
 /*
 
-C function : gtk_entry_get_max_length
+C function
+
+gtk_entry_get_max_length
 */
 func (recv *Entry) GetMaxLength() int32 {
 	retC := C.gtk_entry_get_max_length((*C.GtkEntry)(recv.native))
@@ -12138,7 +12594,9 @@ func (recv *Entry) GetMaxLength() int32 {
 // gtk_entry_buffer_get_text() on it.
 /*
 
-C function : gtk_entry_get_text
+C function
+
+gtk_entry_get_text
 */
 func (recv *Entry) GetText() string {
 	retC := C.gtk_entry_get_text((*C.GtkEntry)(recv.native))
@@ -12151,7 +12609,9 @@ func (recv *Entry) GetText() string {
 // gtk_entry_set_visibility().
 /*
 
-C function : gtk_entry_get_visibility
+C function
+
+gtk_entry_get_visibility
 */
 func (recv *Entry) GetVisibility() bool {
 	retC := C.gtk_entry_get_visibility((*C.GtkEntry)(recv.native))
@@ -12163,7 +12623,9 @@ func (recv *Entry) GetVisibility() bool {
 // Gets the value set by gtk_entry_set_width_chars().
 /*
 
-C function : gtk_entry_get_width_chars
+C function
+
+gtk_entry_get_width_chars
 */
 func (recv *Entry) GetWidthChars() int32 {
 	retC := C.gtk_entry_get_width_chars((*C.GtkEntry)(recv.native))
@@ -12177,7 +12639,9 @@ func (recv *Entry) GetWidthChars() int32 {
 // (returned by gtk_entry_get_text()).
 /*
 
-C function : gtk_entry_layout_index_to_text_index
+C function
+
+gtk_entry_layout_index_to_text_index
 */
 func (recv *Entry) LayoutIndexToTextIndex(layoutIndex int32) int32 {
 	c_layout_index := (C.gint)(layoutIndex)
@@ -12198,7 +12662,9 @@ func (recv *Entry) LayoutIndexToTextIndex(layoutIndex int32) int32 {
 // the default handler for the #GtkEntry::activate signal.)
 /*
 
-C function : gtk_entry_set_activates_default
+C function
+
+gtk_entry_set_activates_default
 */
 func (recv *Entry) SetActivatesDefault(setting bool) {
 	c_setting :=
@@ -12212,7 +12678,9 @@ func (recv *Entry) SetActivatesDefault(setting bool) {
 // Sets whether the entry has a beveled frame around it.
 /*
 
-C function : gtk_entry_set_has_frame
+C function
+
+gtk_entry_set_has_frame
 */
 func (recv *Entry) SetHasFrame(setting bool) {
 	c_setting :=
@@ -12232,7 +12700,9 @@ func (recv *Entry) SetHasFrame(setting bool) {
 // at all; there will be no text on the screen as they type.
 /*
 
-C function : gtk_entry_set_invisible_char
+C function
+
+gtk_entry_set_invisible_char
 */
 func (recv *Entry) SetInvisibleChar(ch rune) {
 	c_ch := (C.gunichar)(ch)
@@ -12251,7 +12721,9 @@ func (recv *Entry) SetInvisibleChar(ch rune) {
 // ]|
 /*
 
-C function : gtk_entry_set_max_length
+C function
+
+gtk_entry_set_max_length
 */
 func (recv *Entry) SetMaxLength(max int32) {
 	c_max := (C.gint)(max)
@@ -12267,7 +12739,9 @@ func (recv *Entry) SetMaxLength(max int32) {
 // See gtk_entry_buffer_set_text().
 /*
 
-C function : gtk_entry_set_text
+C function
+
+gtk_entry_set_text
 */
 func (recv *Entry) SetText(text string) {
 	c_text := C.CString(text)
@@ -12293,7 +12767,9 @@ func (recv *Entry) SetText(text string) {
 // in addition to setting visibility to %FALSE.
 /*
 
-C function : gtk_entry_set_visibility
+C function
+
+gtk_entry_set_visibility
 */
 func (recv *Entry) SetVisibility(visible bool) {
 	c_visible :=
@@ -12311,7 +12787,9 @@ func (recv *Entry) SetVisibility(visible bool) {
 // size reverts to the default entry size.
 /*
 
-C function : gtk_entry_set_width_chars
+C function
+
+gtk_entry_set_width_chars
 */
 func (recv *Entry) SetWidthChars(nChars int32) {
 	c_n_chars := (C.gint)(nChars)
@@ -12327,7 +12805,9 @@ func (recv *Entry) SetWidthChars(nChars int32) {
 // with text retrieved via pango_layout_get_text()).
 /*
 
-C function : gtk_entry_text_index_to_layout_index
+C function
+
+gtk_entry_text_index_to_layout_index
 */
 func (recv *Entry) TextIndexToLayoutIndex(textIndex int32) int32 {
 	c_text_index := (C.gint)(textIndex)
@@ -12360,7 +12840,9 @@ func (recv *Entry) Editable() *Editable {
 
 /*
 
-C record/class : GtkEntryAccessible
+C type
+
+GtkEntryAccessible
 */
 type EntryAccessible struct {
 	native *C.GtkEntryAccessible
@@ -12438,7 +12920,9 @@ func (recv *EntryAccessible) Text() *atk.Text {
 // integrate with an application’s concept of undo/redo.
 /*
 
-C record/class : GtkEntryBuffer
+C type
+
+GtkEntryBuffer
 */
 type EntryBuffer struct {
 	native *C.GtkEntryBuffer
@@ -12515,7 +12999,9 @@ func CastToEntryBuffer(object *gobject.Object) *EntryBuffer {
 // matching iter.
 /*
 
-C record/class : GtkEntryCompletion
+C type
+
+GtkEntryCompletion
 */
 type EntryCompletion struct {
 	native *C.GtkEntryCompletion
@@ -12567,7 +13053,9 @@ func (recv *EntryCompletion) CellLayout() *CellLayout {
 // which do not have their own window.
 /*
 
-C record/class : GtkEventBox
+C type
+
+GtkEventBox
 */
 type EventBox struct {
 	native *C.GtkEventBox
@@ -12625,7 +13113,9 @@ func CastToEventBox(object *gobject.Object) *EventBox {
 // Creates a new #GtkEventBox.
 /*
 
-C function : gtk_event_box_new
+C function
+
+gtk_event_box_new
 */
 func EventBoxNew() *EventBox {
 	retC := C.gtk_event_box_new()
@@ -12649,7 +13139,9 @@ func (recv *EventBox) Buildable() *Buildable {
 // actions as a consequence of those.
 /*
 
-C record/class : GtkEventController
+C type
+
+GtkEventController
 */
 type EventController struct {
 	native *C.GtkEventController
@@ -12765,7 +13257,9 @@ func CastToEventController(object *gobject.Object) *EventController {
 // expander that is showing its child gets the :checked pseudoclass added to it.
 /*
 
-C record/class : GtkExpander
+C type
+
+GtkExpander
 */
 type Expander struct {
 	native *C.GtkExpander
@@ -12889,7 +13383,9 @@ func (recv *Expander) Buildable() *Buildable {
 
 /*
 
-C record/class : GtkExpanderAccessible
+C type
+
+GtkExpanderAccessible
 */
 type ExpanderAccessible struct {
 	native *C.GtkExpanderAccessible
@@ -12956,7 +13452,7 @@ func (recv *ExpanderAccessible) Component() *atk.Component {
 // that button.  This widget does not support setting the
 // #GtkFileChooser:select-multiple property to %TRUE.
 //
-// ## Create a button to let the user select a file in /etc
+// Create a button to let the user select a file in /etc
 //
 // |[<!-- language="C" -->
 // {
@@ -12980,7 +13476,9 @@ func (recv *ExpanderAccessible) Component() *atk.Component {
 // > widget.
 /*
 
-C record/class : GtkFileChooserButton
+C type
+
+GtkFileChooserButton
 */
 type FileChooserButton struct {
 	native *C.GtkFileChooserButton
@@ -13071,7 +13569,11 @@ func (recv *FileChooserButton) Orientable() *Orientable {
 // dialog if available and fall back to GtkFileChooserDialog
 // otherwise.
 //
-// ## Typical usage ## {#gtkfilechooser-typical-usage}
+/*
+Typical usage
+
+(see gtkfilechooser-typical-usage)
+*/
 //
 // In the simplest of cases, you can the following code to use
 // #GtkFileChooserDialog to select a file for opening:
@@ -13143,7 +13645,11 @@ func (recv *FileChooserButton) Orientable() *Orientable {
 // gtk_widget_destroy (dialog);
 // ]|
 //
-// ## Setting up a file chooser dialog ## {#gtkfilechooserdialog-setting-up}
+/*
+Setting up a file chooser dialog
+
+(see gtkfilechooserdialog-setting-up)
+*/
 //
 // There are various cases in which you may need to use a #GtkFileChooserDialog:
 //
@@ -13168,7 +13674,11 @@ func (recv *FileChooserButton) Orientable() *Orientable {
 // i.e. when you are doing a Save As command and you already
 // have a file saved somewhere.
 //
-// ## Response Codes ## {#gtkfilechooserdialog-responses}
+/*
+Response Codes
+
+(see gtkfilechooserdialog-responses)
+*/
 //
 // #GtkFileChooserDialog inherits from #GtkDialog, so buttons that
 // go in its action area have response codes such as
@@ -13212,7 +13722,9 @@ func (recv *FileChooserButton) Orientable() *Orientable {
 // when you use #GtkFileChooserDialog to ensure proper operation.
 /*
 
-C record/class : GtkFileChooserDialog
+C type
+
+GtkFileChooserDialog
 */
 type FileChooserDialog struct {
 	native *C.GtkFileChooserDialog
@@ -13302,7 +13814,9 @@ func (recv *FileChooserDialog) FileChooser() *FileChooser {
 // GtkFileChooserWidget has a single CSS node with name filechooser.
 /*
 
-C record/class : GtkFileChooserWidget
+C type
+
+GtkFileChooserWidget
 */
 type FileChooserWidget struct {
 	native *C.GtkFileChooserWidget
@@ -13991,7 +14505,9 @@ func (recv *FileChooserWidget) Orientable() *Orientable {
 // ]|
 /*
 
-C record/class : GtkFileFilter
+C type
+
+GtkFileFilter
 */
 type FileFilter struct {
 	native *C.GtkFileFilter
@@ -14076,7 +14592,9 @@ func (recv *FileFilter) Buildable() *Buildable {
 // of child widgets and additionally adds custom drawing and scrollability.
 /*
 
-C record/class : GtkFixed
+C type
+
+GtkFixed
 */
 type Fixed struct {
 	native *C.GtkFixed
@@ -14129,7 +14647,9 @@ func CastToFixed(object *gobject.Object) *Fixed {
 // Creates a new #GtkFixed.
 /*
 
-C function : gtk_fixed_new
+C function
+
+gtk_fixed_new
 */
 func FixedNew() *Fixed {
 	retC := C.gtk_fixed_new()
@@ -14141,7 +14661,9 @@ func FixedNew() *Fixed {
 // Moves a child of a #GtkFixed container to the given position.
 /*
 
-C function : gtk_fixed_move
+C function
+
+gtk_fixed_move
 */
 func (recv *Fixed) Move(widget *Widget, x int32, y int32) {
 	c_widget := (*C.GtkWidget)(C.NULL)
@@ -14161,7 +14683,9 @@ func (recv *Fixed) Move(widget *Widget, x int32, y int32) {
 // Adds a widget to a #GtkFixed container at the given position.
 /*
 
-C function : gtk_fixed_put
+C function
+
+gtk_fixed_put
 */
 func (recv *Fixed) Put(widget *Widget, x int32, y int32) {
 	c_widget := (*C.GtkWidget)(C.NULL)
@@ -14233,7 +14757,9 @@ func (recv *Fixed) Buildable() *Buildable {
 // For rubberband selection, a subnode with name rubberband is used.
 /*
 
-C record/class : GtkFlowBox
+C type
+
+GtkFlowBox
 */
 type FlowBox struct {
 	native *C.GtkFlowBox
@@ -14645,7 +15171,9 @@ func (recv *FlowBox) Orientable() *Orientable {
 
 /*
 
-C record/class : GtkFlowBoxAccessible
+C type
+
+GtkFlowBoxAccessible
 */
 type FlowBoxAccessible struct {
 	native *C.GtkFlowBoxAccessible
@@ -14707,7 +15235,9 @@ func (recv *FlowBoxAccessible) Selection() *atk.Selection {
 
 /*
 
-C record/class : GtkFlowBoxChild
+C type
+
+GtkFlowBoxChild
 */
 type FlowBoxChild struct {
 	native *C.GtkFlowBoxChild
@@ -14830,7 +15360,9 @@ func (recv *FlowBoxChild) Buildable() *Buildable {
 
 /*
 
-C record/class : GtkFlowBoxChildAccessible
+C type
+
+GtkFlowBoxChildAccessible
 */
 type FlowBoxChildAccessible struct {
 	native *C.GtkFlowBoxChildAccessible
@@ -14893,7 +15425,9 @@ func (recv *FlowBoxChildAccessible) Component() *atk.Component {
 // GtkFontButton has a single CSS node with name button and style class .font.
 /*
 
-C record/class : GtkFontButton
+C type
+
+GtkFontButton
 */
 type FontButton struct {
 	native *C.GtkFontButton
@@ -14988,7 +15522,9 @@ func (recv *FontButton) FontChooser() *FontChooser {
 // and “cancel_button”.
 /*
 
-C record/class : GtkFontChooserDialog
+C type
+
+GtkFontChooserDialog
 */
 type FontChooserDialog struct {
 	native *C.GtkFontChooserDialog
@@ -15087,7 +15623,9 @@ func (recv *FontChooserDialog) FontChooser() *FontChooser {
 // GtkFontChooserWidget has a single CSS node with name fontchooser.
 /*
 
-C record/class : GtkFontChooserWidget
+C type
+
+GtkFontChooserWidget
 */
 type FontChooserWidget struct {
 	native *C.GtkFontChooserWidget
@@ -15164,7 +15702,9 @@ func (recv *FontChooserWidget) Orientable() *Orientable {
 
 /*
 
-C record/class : GtkFontSelection
+C type
+
+GtkFontSelection
 */
 type FontSelection struct {
 	native *C.GtkFontSelection
@@ -15222,7 +15762,9 @@ func CastToFontSelection(object *gobject.Object) *FontSelection {
 // Creates a new #GtkFontSelection.
 /*
 
-C function : gtk_font_selection_new
+C function
+
+gtk_font_selection_new
 */
 func FontSelectionNew() *FontSelection {
 	retC := C.gtk_font_selection_new()
@@ -15241,7 +15783,9 @@ func FontSelectionNew() *FontSelection {
 // if you want to compare two font descriptions.
 /*
 
-C function : gtk_font_selection_get_font_name
+C function
+
+gtk_font_selection_get_font_name
 */
 func (recv *FontSelection) GetFontName() string {
 	retC := C.gtk_font_selection_get_font_name((*C.GtkFontSelection)(recv.native))
@@ -15254,7 +15798,9 @@ func (recv *FontSelection) GetFontName() string {
 // Gets the text displayed in the preview area.
 /*
 
-C function : gtk_font_selection_get_preview_text
+C function
+
+gtk_font_selection_get_preview_text
 */
 func (recv *FontSelection) GetPreviewText() string {
 	retC := C.gtk_font_selection_get_preview_text((*C.GtkFontSelection)(recv.native))
@@ -15270,7 +15816,9 @@ func (recv *FontSelection) GetPreviewText() string {
 // @fontsel is inserted in a toplevel window before you call this function.
 /*
 
-C function : gtk_font_selection_set_font_name
+C function
+
+gtk_font_selection_set_font_name
 */
 func (recv *FontSelection) SetFontName(fontname string) bool {
 	c_fontname := C.CString(fontname)
@@ -15286,7 +15834,9 @@ func (recv *FontSelection) SetFontName(fontname string) bool {
 // The @text is used to show how the selected font looks.
 /*
 
-C function : gtk_font_selection_set_preview_text
+C function
+
+gtk_font_selection_set_preview_text
 */
 func (recv *FontSelection) SetPreviewText(text string) {
 	c_text := C.CString(text)
@@ -15314,7 +15864,9 @@ func (recv *FontSelection) Orientable() *Orientable {
 
 /*
 
-C record/class : GtkFontSelectionDialog
+C type
+
+GtkFontSelectionDialog
 */
 type FontSelectionDialog struct {
 	native *C.GtkFontSelectionDialog
@@ -15382,7 +15934,9 @@ func CastToFontSelectionDialog(object *gobject.Object) *FontSelectionDialog {
 // Creates a new #GtkFontSelectionDialog.
 /*
 
-C function : gtk_font_selection_dialog_new
+C function
+
+gtk_font_selection_dialog_new
 */
 func FontSelectionDialogNew(title string) *FontSelectionDialog {
 	c_title := C.CString(title)
@@ -15404,7 +15958,9 @@ func FontSelectionDialogNew(title string) *FontSelectionDialog {
 // if you want to compare two font descriptions.
 /*
 
-C function : gtk_font_selection_dialog_get_font_name
+C function
+
+gtk_font_selection_dialog_get_font_name
 */
 func (recv *FontSelectionDialog) GetFontName() string {
 	retC := C.gtk_font_selection_dialog_get_font_name((*C.GtkFontSelectionDialog)(recv.native))
@@ -15417,7 +15973,9 @@ func (recv *FontSelectionDialog) GetFontName() string {
 // Gets the text displayed in the preview area.
 /*
 
-C function : gtk_font_selection_dialog_get_preview_text
+C function
+
+gtk_font_selection_dialog_get_preview_text
 */
 func (recv *FontSelectionDialog) GetPreviewText() string {
 	retC := C.gtk_font_selection_dialog_get_preview_text((*C.GtkFontSelectionDialog)(recv.native))
@@ -15429,7 +15987,9 @@ func (recv *FontSelectionDialog) GetPreviewText() string {
 // Sets the currently selected font.
 /*
 
-C function : gtk_font_selection_dialog_set_font_name
+C function
+
+gtk_font_selection_dialog_set_font_name
 */
 func (recv *FontSelectionDialog) SetFontName(fontname string) bool {
 	c_fontname := C.CString(fontname)
@@ -15444,7 +16004,9 @@ func (recv *FontSelectionDialog) SetFontName(fontname string) bool {
 // Sets the text displayed in the preview area.
 /*
 
-C function : gtk_font_selection_dialog_set_preview_text
+C function
+
+gtk_font_selection_dialog_set_preview_text
 */
 func (recv *FontSelectionDialog) SetPreviewText(text string) {
 	c_text := C.CString(text)
@@ -15508,7 +16070,9 @@ func (recv *FontSelectionDialog) Buildable() *Buildable {
 // any other shadow type to remove it.
 /*
 
-C record/class : GtkFrame
+C type
+
+GtkFrame
 */
 type Frame struct {
 	native *C.GtkFrame
@@ -15567,7 +16131,9 @@ func CastToFrame(object *gobject.Object) *Frame {
 // If @label is %NULL, the label is omitted.
 /*
 
-C function : gtk_frame_new
+C function
+
+gtk_frame_new
 */
 func FrameNew(label string) *Frame {
 	c_label := C.CString(label)
@@ -15585,7 +16151,9 @@ func FrameNew(label string) *Frame {
 // to gtk_frame_new().)
 /*
 
-C function : gtk_frame_get_label
+C function
+
+gtk_frame_get_label
 */
 func (recv *Frame) GetLabel() string {
 	retC := C.gtk_frame_get_label((*C.GtkFrame)(recv.native))
@@ -15598,7 +16166,9 @@ func (recv *Frame) GetLabel() string {
 // gtk_frame_set_label_align().
 /*
 
-C function : gtk_frame_get_label_align
+C function
+
+gtk_frame_get_label_align
 */
 func (recv *Frame) GetLabelAlign() (float32, float32) {
 	var c_xalign C.gfloat
@@ -15618,7 +16188,9 @@ func (recv *Frame) GetLabelAlign() (float32, float32) {
 // gtk_frame_set_label_widget().
 /*
 
-C function : gtk_frame_get_label_widget
+C function
+
+gtk_frame_get_label_widget
 */
 func (recv *Frame) GetLabelWidget() *Widget {
 	retC := C.gtk_frame_get_label_widget((*C.GtkFrame)(recv.native))
@@ -15636,7 +16208,9 @@ func (recv *Frame) GetLabelWidget() *Widget {
 // gtk_frame_set_shadow_type().
 /*
 
-C function : gtk_frame_get_shadow_type
+C function
+
+gtk_frame_get_shadow_type
 */
 func (recv *Frame) GetShadowType() ShadowType {
 	retC := C.gtk_frame_get_shadow_type((*C.GtkFrame)(recv.native))
@@ -15649,7 +16223,9 @@ func (recv *Frame) GetShadowType() ShadowType {
 // new #GtkLabel with that text and adds it as the #GtkFrame:label-widget.
 /*
 
-C function : gtk_frame_set_label
+C function
+
+gtk_frame_set_label
 */
 func (recv *Frame) SetLabel(label string) {
 	c_label := C.CString(label)
@@ -15664,7 +16240,9 @@ func (recv *Frame) SetLabel(label string) {
 // default values for a newly created frame are 0.0 and 0.5.
 /*
 
-C function : gtk_frame_set_label_align
+C function
+
+gtk_frame_set_label_align
 */
 func (recv *Frame) SetLabelAlign(xalign float32, yalign float32) {
 	c_xalign := (C.gfloat)(xalign)
@@ -15680,7 +16258,9 @@ func (recv *Frame) SetLabelAlign(xalign float32, yalign float32) {
 // will appear embedded in the top edge of the frame as a title.
 /*
 
-C function : gtk_frame_set_label_widget
+C function
+
+gtk_frame_set_label_widget
 */
 func (recv *Frame) SetLabelWidget(labelWidget *Widget) {
 	c_label_widget := (*C.GtkWidget)(C.NULL)
@@ -15699,7 +16279,9 @@ func (recv *Frame) SetLabelWidget(labelWidget *Widget) {
 // applied by removing or adding the .flat class to the CSS node named border.
 /*
 
-C function : gtk_frame_set_shadow_type
+C function
+
+gtk_frame_set_shadow_type
 */
 func (recv *Frame) SetShadowType(type_ ShadowType) {
 	c_type := (C.GtkShadowType)(type_)
@@ -15721,7 +16303,9 @@ func (recv *Frame) Buildable() *Buildable {
 
 /*
 
-C record/class : GtkFrameAccessible
+C type
+
+GtkFrameAccessible
 */
 type FrameAccessible struct {
 	native *C.GtkFrameAccessible
@@ -15796,7 +16380,7 @@ func (recv *FrameAccessible) Component() *atk.Component {
 // - A number of #GtkGesture::update, whenever an input event is processed.
 // - #GtkGesture::end when the gesture is no longer recognized.
 //
-// ## Event propagation
+// Event propagation
 //
 // In order to receive events, a gesture needs to either set a propagation phase
 // through gtk_event_controller_set_propagation_phase(), or feed those manually
@@ -15815,7 +16399,7 @@ func (recv *FrameAccessible) Component() *atk.Component {
 // toplevel, and gestures that are attached to containers above the widget get
 // a chance to interact with events that have not been handled yet.
 //
-// ## States of a sequence # {#touch-sequence-states}
+// States of a sequence # {#touch-sequence-states}
 //
 // Whenever input interaction happens, a single event may trigger a cascade of
 // #GtkGestures, both across the parents of the widget receiving the event and
@@ -15857,7 +16441,7 @@ func (recv *FrameAccessible) Component() *atk.Component {
 // Sequence states can't be changed freely, see gtk_gesture_set_sequence_state()
 // to know about the possible lifetimes of a #GdkEventSequence.
 //
-// ## Touchpad gestures
+// Touchpad gestures
 //
 // On the platforms that support it, #GtkGesture will handle transparently
 // touchpad gesture events. The only precautions users of #GtkGesture should do
@@ -15867,7 +16451,9 @@ func (recv *FrameAccessible) Component() *atk.Component {
 // %GDK_TOUCHPAD_SWIPE and %GDK_TOUCHPAD_PINCH are handled by the #GtkGesture
 /*
 
-C record/class : GtkGesture
+C type
+
+GtkGesture
 */
 type Gesture struct {
 	native *C.GtkGesture
@@ -15915,7 +16501,9 @@ func CastToGesture(object *gobject.Object) *Gesture {
 // gtk_gesture_drag_get_start_point().
 /*
 
-C record/class : GtkGestureDrag
+C type
+
+GtkGestureDrag
 */
 type GestureDrag struct {
 	native *C.GtkGestureDrag
@@ -15972,7 +16560,9 @@ func CastToGestureDrag(object *gobject.Object) *GestureDrag {
 // signal will be emitted.
 /*
 
-C record/class : GtkGestureLongPress
+C type
+
+GtkGestureLongPress
 */
 type GestureLongPress struct {
 	native *C.GtkGestureLongPress
@@ -16032,7 +16622,9 @@ func CastToGestureLongPress(object *gobject.Object) *GestureLongPress {
 // its own.
 /*
 
-C record/class : GtkGestureMultiPress
+C type
+
+GtkGestureMultiPress
 */
 type GestureMultiPress struct {
 	native *C.GtkGestureMultiPress
@@ -16096,7 +16688,9 @@ func CastToGestureMultiPress(object *gobject.Object) *GestureMultiPress {
 // are received, containing the offset in the given axis.
 /*
 
-C record/class : GtkGesturePan
+C type
+
+GtkGesturePan
 */
 type GesturePan struct {
 	native *C.GtkGesturePan
@@ -16154,7 +16748,9 @@ func CastToGesturePan(object *gobject.Object) *GesturePan {
 // changes, the #GtkGestureRotate::angle-changed signal is emitted.
 /*
 
-C record/class : GtkGestureRotate
+C type
+
+GtkGestureRotate
 */
 type GestureRotate struct {
 	native *C.GtkGestureRotate
@@ -16211,7 +16807,9 @@ func CastToGestureRotate(object *gobject.Object) *GestureRotate {
 // currently pressed can be known through gtk_gesture_single_get_current_button().
 /*
 
-C record/class : GtkGestureSingle
+C type
+
+GtkGestureSingle
 */
 type GestureSingle struct {
 	native *C.GtkGestureSingle
@@ -16266,7 +16864,9 @@ func CastToGestureSingle(object *gobject.Object) *GestureSingle {
 // All velocities are reported in pixels/sec units.
 /*
 
-C record/class : GtkGestureSwipe
+C type
+
+GtkGestureSwipe
 */
 type GestureSwipe struct {
 	native *C.GtkGestureSwipe
@@ -16320,7 +16920,9 @@ func CastToGestureSwipe(object *gobject.Object) *GestureSwipe {
 // emitted to report the scale factor.
 /*
 
-C record/class : GtkGestureZoom
+C type
+
+GtkGestureZoom
 */
 type GestureZoom struct {
 	native *C.GtkGestureZoom
@@ -16383,7 +16985,9 @@ func CastToGestureZoom(object *gobject.Object) *GestureZoom {
 // GtkGrid uses a single CSS node with name grid.
 /*
 
-C record/class : GtkGrid
+C type
+
+GtkGrid
 */
 type Grid struct {
 	native *C.GtkGrid
@@ -16436,7 +17040,9 @@ func CastToGrid(object *gobject.Object) *Grid {
 // Creates a new grid widget.
 /*
 
-C function : gtk_grid_new
+C function
+
+gtk_grid_new
 */
 func GridNew() *Grid {
 	retC := C.gtk_grid_new()
@@ -16452,7 +17058,9 @@ func GridNew() *Grid {
 // @width and @height.
 /*
 
-C function : gtk_grid_attach
+C function
+
+gtk_grid_attach
 */
 func (recv *Grid) Attach(child *Widget, left int32, top int32, width int32, height int32) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -16484,7 +17092,9 @@ func (recv *Grid) Attach(child *Widget, left int32, top int32, width int32, heig
 // @side == %GTK_POS_LEFT yields a layout of [3][2][1].
 /*
 
-C function : gtk_grid_attach_next_to
+C function
+
+gtk_grid_attach_next_to
 */
 func (recv *Grid) AttachNextTo(child *Widget, sibling *Widget, side PositionType, width int32, height int32) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -16511,7 +17121,9 @@ func (recv *Grid) AttachNextTo(child *Widget, sibling *Widget, side PositionType
 // Returns whether all columns of @grid have the same width.
 /*
 
-C function : gtk_grid_get_column_homogeneous
+C function
+
+gtk_grid_get_column_homogeneous
 */
 func (recv *Grid) GetColumnHomogeneous() bool {
 	retC := C.gtk_grid_get_column_homogeneous((*C.GtkGrid)(recv.native))
@@ -16523,7 +17135,9 @@ func (recv *Grid) GetColumnHomogeneous() bool {
 // Returns the amount of space between the columns of @grid.
 /*
 
-C function : gtk_grid_get_column_spacing
+C function
+
+gtk_grid_get_column_spacing
 */
 func (recv *Grid) GetColumnSpacing() uint32 {
 	retC := C.gtk_grid_get_column_spacing((*C.GtkGrid)(recv.native))
@@ -16535,7 +17149,9 @@ func (recv *Grid) GetColumnSpacing() uint32 {
 // Returns whether all rows of @grid have the same height.
 /*
 
-C function : gtk_grid_get_row_homogeneous
+C function
+
+gtk_grid_get_row_homogeneous
 */
 func (recv *Grid) GetRowHomogeneous() bool {
 	retC := C.gtk_grid_get_row_homogeneous((*C.GtkGrid)(recv.native))
@@ -16547,7 +17163,9 @@ func (recv *Grid) GetRowHomogeneous() bool {
 // Returns the amount of space between the rows of @grid.
 /*
 
-C function : gtk_grid_get_row_spacing
+C function
+
+gtk_grid_get_row_spacing
 */
 func (recv *Grid) GetRowSpacing() uint32 {
 	retC := C.gtk_grid_get_row_spacing((*C.GtkGrid)(recv.native))
@@ -16559,7 +17177,9 @@ func (recv *Grid) GetRowSpacing() uint32 {
 // Sets whether all columns of @grid will have the same width.
 /*
 
-C function : gtk_grid_set_column_homogeneous
+C function
+
+gtk_grid_set_column_homogeneous
 */
 func (recv *Grid) SetColumnHomogeneous(homogeneous bool) {
 	c_homogeneous :=
@@ -16573,7 +17193,9 @@ func (recv *Grid) SetColumnHomogeneous(homogeneous bool) {
 // Sets the amount of space between columns of @grid.
 /*
 
-C function : gtk_grid_set_column_spacing
+C function
+
+gtk_grid_set_column_spacing
 */
 func (recv *Grid) SetColumnSpacing(spacing uint32) {
 	c_spacing := (C.guint)(spacing)
@@ -16586,7 +17208,9 @@ func (recv *Grid) SetColumnSpacing(spacing uint32) {
 // Sets whether all rows of @grid will have the same height.
 /*
 
-C function : gtk_grid_set_row_homogeneous
+C function
+
+gtk_grid_set_row_homogeneous
 */
 func (recv *Grid) SetRowHomogeneous(homogeneous bool) {
 	c_homogeneous :=
@@ -16600,7 +17224,9 @@ func (recv *Grid) SetRowHomogeneous(homogeneous bool) {
 // Sets the amount of space between rows of @grid.
 /*
 
-C function : gtk_grid_set_row_spacing
+C function
+
+gtk_grid_set_row_spacing
 */
 func (recv *Grid) SetRowSpacing(spacing uint32) {
 	c_spacing := (C.guint)(spacing)
@@ -16644,7 +17270,9 @@ func (recv *Grid) Orientable() *Orientable {
 // see [Migrating from other containers to GtkGrid][gtk-migrating-GtkGrid].
 /*
 
-C record/class : GtkHBox
+C type
+
+GtkHBox
 */
 type HBox struct {
 	native *C.GtkHBox
@@ -16701,7 +17329,9 @@ func CastToHBox(object *gobject.Object) *HBox {
 // Creates a new #GtkHBox.
 /*
 
-C function : gtk_hbox_new
+C function
+
+gtk_hbox_new
 */
 func HBoxNew(homogeneous bool, spacing int32) *HBox {
 	c_homogeneous :=
@@ -16732,7 +17362,9 @@ func (recv *HBox) Orientable() *Orientable {
 
 /*
 
-C record/class : GtkHButtonBox
+C type
+
+GtkHButtonBox
 */
 type HButtonBox struct {
 	native *C.GtkHButtonBox
@@ -16794,7 +17426,9 @@ func CastToHButtonBox(object *gobject.Object) *HButtonBox {
 // Creates a new horizontal button box.
 /*
 
-C function : gtk_hbutton_box_new
+C function
+
+gtk_hbutton_box_new
 */
 func HButtonBoxNew() *HButtonBox {
 	retC := C.gtk_hbutton_box_new()
@@ -16826,7 +17460,9 @@ func (recv *HButtonBox) Orientable() *Orientable {
 // GtkHPaned has been deprecated, use #GtkPaned instead.
 /*
 
-C record/class : GtkHPaned
+C type
+
+GtkHPaned
 */
 type HPaned struct {
 	native *C.GtkHPaned
@@ -16883,7 +17519,9 @@ func CastToHPaned(object *gobject.Object) *HPaned {
 // Create a new #GtkHPaned
 /*
 
-C function : gtk_hpaned_new
+C function
+
+gtk_hpaned_new
 */
 func HPanedNew() *HPaned {
 	retC := C.gtk_hpaned_new()
@@ -16917,7 +17555,9 @@ func (recv *HPaned) Orientable() *Orientable {
 // it was used.
 /*
 
-C record/class : GtkHSV
+C type
+
+GtkHSV
 */
 type HSV struct {
 	native *C.GtkHSV
@@ -17040,7 +17680,9 @@ func (recv *HSV) Buildable() *Buildable {
 // GtkHScale has been deprecated, use #GtkScale instead.
 /*
 
-C record/class : GtkHScale
+C type
+
+GtkHScale
 */
 type HScale struct {
 	native *C.GtkHScale
@@ -17097,7 +17739,9 @@ func CastToHScale(object *gobject.Object) *HScale {
 // Creates a new #GtkHScale.
 /*
 
-C function : gtk_hscale_new
+C function
+
+gtk_hscale_new
 */
 func HScaleNew(adjustment *Adjustment) *HScale {
 	c_adjustment := (*C.GtkAdjustment)(C.NULL)
@@ -17121,7 +17765,9 @@ func HScaleNew(adjustment *Adjustment) *HScale {
 // needs, use gtk_scale_set_digits() to correct it.
 /*
 
-C function : gtk_hscale_new_with_range
+C function
+
+gtk_hscale_new_with_range
 */
 func HScaleNewWithRange(min float64, max float64, step float64) *HScale {
 	c_min := (C.gdouble)(min)
@@ -17161,7 +17807,9 @@ func (recv *HScale) Orientable() *Orientable {
 // GtkHScrollbar has been deprecated, use #GtkScrollbar instead.
 /*
 
-C record/class : GtkHScrollbar
+C type
+
+GtkHScrollbar
 */
 type HScrollbar struct {
 	native *C.GtkHScrollbar
@@ -17218,7 +17866,9 @@ func CastToHScrollbar(object *gobject.Object) *HScrollbar {
 // Creates a new horizontal scrollbar.
 /*
 
-C function : gtk_hscrollbar_new
+C function
+
+gtk_hscrollbar_new
 */
 func HScrollbarNew(adjustment *Adjustment) *HScrollbar {
 	c_adjustment := (*C.GtkAdjustment)(C.NULL)
@@ -17259,7 +17909,9 @@ func (recv *HScrollbar) Orientable() *Orientable {
 // GtkHSeparator has been deprecated, use #GtkSeparator instead.
 /*
 
-C record/class : GtkHSeparator
+C type
+
+GtkHSeparator
 */
 type HSeparator struct {
 	native *C.GtkHSeparator
@@ -17311,7 +17963,9 @@ func CastToHSeparator(object *gobject.Object) *HSeparator {
 // Creates a new #GtkHSeparator.
 /*
 
-C function : gtk_hseparator_new
+C function
+
+gtk_hseparator_new
 */
 func HSeparatorNew() *HSeparator {
 	retC := C.gtk_hseparator_new()
@@ -17362,7 +18016,9 @@ func (recv *HSeparator) Orientable() *Orientable {
 // > application design. Do not use it. There is no replacement.
 /*
 
-C record/class : GtkHandleBox
+C type
+
+GtkHandleBox
 */
 type HandleBox struct {
 	native *C.GtkHandleBox
@@ -17538,7 +18194,9 @@ func handlebox_childDetachedHandler(_ *C.GObject, c_widget *C.GtkWidget, data C.
 // Create a new handle box.
 /*
 
-C function : gtk_handle_box_new
+C function
+
+gtk_handle_box_new
 */
 func HandleBoxNew() *HandleBox {
 	retC := C.gtk_handle_box_new()
@@ -17551,7 +18209,9 @@ func HandleBoxNew() *HandleBox {
 // gtk_handle_box_set_handle_position().
 /*
 
-C function : gtk_handle_box_get_handle_position
+C function
+
+gtk_handle_box_get_handle_position
 */
 func (recv *HandleBox) GetHandlePosition() PositionType {
 	retC := C.gtk_handle_box_get_handle_position((*C.GtkHandleBox)(recv.native))
@@ -17564,7 +18224,9 @@ func (recv *HandleBox) GetHandlePosition() PositionType {
 // gtk_handle_box_set_shadow_type().
 /*
 
-C function : gtk_handle_box_get_shadow_type
+C function
+
+gtk_handle_box_get_shadow_type
 */
 func (recv *HandleBox) GetShadowType() ShadowType {
 	retC := C.gtk_handle_box_get_shadow_type((*C.GtkHandleBox)(recv.native))
@@ -17577,7 +18239,9 @@ func (recv *HandleBox) GetShadowType() ShadowType {
 // See gtk_handle_box_set_snap_edge().
 /*
 
-C function : gtk_handle_box_get_snap_edge
+C function
+
+gtk_handle_box_get_snap_edge
 */
 func (recv *HandleBox) GetSnapEdge() PositionType {
 	retC := C.gtk_handle_box_get_snap_edge((*C.GtkHandleBox)(recv.native))
@@ -17589,7 +18253,9 @@ func (recv *HandleBox) GetSnapEdge() PositionType {
 // Sets the side of the handlebox where the handle is drawn.
 /*
 
-C function : gtk_handle_box_set_handle_position
+C function
+
+gtk_handle_box_set_handle_position
 */
 func (recv *HandleBox) SetHandlePosition(position PositionType) {
 	c_position := (C.GtkPositionType)(position)
@@ -17603,7 +18269,9 @@ func (recv *HandleBox) SetHandlePosition(position PositionType) {
 // of the handle box.
 /*
 
-C function : gtk_handle_box_set_shadow_type
+C function
+
+gtk_handle_box_set_shadow_type
 */
 func (recv *HandleBox) SetShadowType(type_ ShadowType) {
 	c_type := (C.GtkShadowType)(type_)
@@ -17628,7 +18296,9 @@ func (recv *HandleBox) SetShadowType(type_ ShadowType) {
 // it will be %GTK_POS_LEFT.
 /*
 
-C function : gtk_handle_box_set_snap_edge
+C function
+
+gtk_handle_box_set_snap_edge
 */
 func (recv *HandleBox) SetSnapEdge(edge PositionType) {
 	c_edge := (C.GtkPositionType)(edge)
@@ -17665,7 +18335,9 @@ func (recv *HandleBox) Buildable() *Buildable {
 // features typical of titlebars while allowing the addition of child widgets.
 /*
 
-C record/class : GtkHeaderBar
+C type
+
+GtkHeaderBar
 */
 type HeaderBar struct {
 	native *C.GtkHeaderBar
@@ -17792,7 +18464,9 @@ func (recv *HeaderBar) Buildable() *Buildable {
 // in order for the new input method to become available to GTK+ applications.
 /*
 
-C record/class : GtkIMContext
+C type
+
+GtkIMContext
 */
 type IMContext struct {
 	native *C.GtkIMContext
@@ -18079,7 +18753,9 @@ func imcontext_retrieveSurroundingHandler(_ *C.GObject, data C.gpointer) C.gbool
 // not useful for applications.
 /*
 
-C function : gtk_im_context_delete_surrounding
+C function
+
+gtk_im_context_delete_surrounding
 */
 func (recv *IMContext) DeleteSurrounding(offset int32, nChars int32) bool {
 	c_offset := (C.gint)(offset)
@@ -18097,7 +18773,9 @@ func (recv *IMContext) DeleteSurrounding(offset int32, nChars int32) bool {
 // should be done for this key event.
 /*
 
-C function : gtk_im_context_filter_keypress
+C function
+
+gtk_im_context_filter_keypress
 */
 func (recv *IMContext) FilterKeypress(event *gdk.EventKey) bool {
 	c_event := (*C.GdkEventKey)(C.NULL)
@@ -18117,7 +18795,9 @@ func (recv *IMContext) FilterKeypress(event *gdk.EventKey) bool {
 // this change.
 /*
 
-C function : gtk_im_context_focus_in
+C function
+
+gtk_im_context_focus_in
 */
 func (recv *IMContext) FocusIn() {
 	C.gtk_im_context_focus_in((*C.GtkIMContext)(recv.native))
@@ -18131,7 +18811,9 @@ func (recv *IMContext) FocusIn() {
 // state to reflect this change.
 /*
 
-C function : gtk_im_context_focus_out
+C function
+
+gtk_im_context_focus_out
 */
 func (recv *IMContext) FocusOut() {
 	C.gtk_im_context_focus_out((*C.GtkIMContext)(recv.native))
@@ -18145,7 +18827,9 @@ func (recv *IMContext) FocusOut() {
 // point.
 /*
 
-C function : gtk_im_context_get_preedit_string
+C function
+
+gtk_im_context_get_preedit_string
 */
 func (recv *IMContext) GetPreeditString() (string, *pango.AttrList, int32) {
 	var c_str *C.gchar
@@ -18180,7 +18864,9 @@ func (recv *IMContext) GetPreeditString() (string, *pango.AttrList, int32) {
 // methods must be prepared to function without context.
 /*
 
-C function : gtk_im_context_get_surrounding
+C function
+
+gtk_im_context_get_surrounding
 */
 func (recv *IMContext) GetSurrounding() (bool, string, int32) {
 	var c_text *C.gchar
@@ -18203,7 +18889,9 @@ func (recv *IMContext) GetSurrounding() (bool, string, int32) {
 // method to clear the preedit state.
 /*
 
-C function : gtk_im_context_reset
+C function
+
+gtk_im_context_reset
 */
 func (recv *IMContext) Reset() {
 	C.gtk_im_context_reset((*C.GtkIMContext)(recv.native))
@@ -18217,7 +18905,9 @@ func (recv *IMContext) Reset() {
 // also be used for purposes internal to the input method.
 /*
 
-C function : gtk_im_context_set_client_window
+C function
+
+gtk_im_context_set_client_window
 */
 func (recv *IMContext) SetClientWindow(window *gdk.Window) {
 	c_window := (*C.GdkWindow)(C.NULL)
@@ -18238,7 +18928,9 @@ func (recv *IMContext) SetClientWindow(window *gdk.Window) {
 // effect if called at other times.
 /*
 
-C function : gtk_im_context_set_surrounding
+C function
+
+gtk_im_context_set_surrounding
 */
 func (recv *IMContext) SetSurrounding(text string, len int32, cursorIndex int32) {
 	c_text := C.CString(text)
@@ -18259,7 +18951,9 @@ func (recv *IMContext) SetSurrounding(text string, len int32, cursorIndex int32)
 // feedback, such as displaying it in a child of the root window.
 /*
 
-C function : gtk_im_context_set_use_preedit
+C function
+
+gtk_im_context_set_use_preedit
 */
 func (recv *IMContext) SetUsePreedit(usePreedit bool) {
 	c_use_preedit :=
@@ -18280,14 +18974,14 @@ func (recv *IMContext) SetUsePreedit(usePreedit bool) {
 // Compose file). The syntax of these files is described in the Compose(5)
 // manual page.
 //
-// ## Unicode characters
+// Unicode characters
 //
 // GtkIMContextSimple also supports numeric entry of Unicode characters
 // by typing Ctrl-Shift-u, followed by a hexadecimal Unicode codepoint.
 // For example, Ctrl-Shift-u 1 2 3 Enter yields U+0123 LATIN SMALL LETTER
 // G WITH CEDILLA, i.e. ģ.
 //
-// ## Emoji
+// Emoji
 //
 // GtkIMContextSimple also supports entry of Emoji by their name.
 // This works by first typing Ctrl-Shift-e, followed by an Emoji name.
@@ -18329,7 +19023,9 @@ func (recv *IMContext) SetUsePreedit(usePreedit bool) {
 // - }:) 😈
 /*
 
-C record/class : GtkIMContextSimple
+C type
+
+GtkIMContextSimple
 */
 type IMContextSimple struct {
 	native *C.GtkIMContextSimple
@@ -18372,7 +19068,9 @@ func CastToIMContextSimple(object *gobject.Object) *IMContextSimple {
 // Creates a new #GtkIMContextSimple.
 /*
 
-C function : gtk_im_context_simple_new
+C function
+
+gtk_im_context_simple_new
 */
 func IMContextSimpleNew() *IMContextSimple {
 	retC := C.gtk_im_context_simple_new()
@@ -18394,7 +19092,9 @@ func IMContextSimpleNew() *IMContextSimple {
 // the length of the sequence should be zero.)
 /*
 
-C function : gtk_im_context_simple_add_table
+C function
+
+gtk_im_context_simple_add_table
 */
 func (recv *IMContextSimple) AddTable(data []uint16, maxSeqLen int32, nSeqs int32) {
 	c_data := &data[0]
@@ -18410,7 +19110,9 @@ func (recv *IMContextSimple) AddTable(data []uint16, maxSeqLen int32, nSeqs int3
 
 /*
 
-C record/class : GtkIMMulticontext
+C type
+
+GtkIMMulticontext
 */
 type IMMulticontext struct {
 	native *C.GtkIMMulticontext
@@ -18453,7 +19155,9 @@ func CastToIMMulticontext(object *gobject.Object) *IMMulticontext {
 // Creates a new #GtkIMMulticontext.
 /*
 
-C function : gtk_im_multicontext_new
+C function
+
+gtk_im_multicontext_new
 */
 func IMMulticontextNew() *IMMulticontext {
 	retC := C.gtk_im_multicontext_new()
@@ -18467,7 +19171,9 @@ func IMMulticontextNew() *IMMulticontext {
 // for the context and the global default input method.
 /*
 
-C function : gtk_im_multicontext_append_menuitems
+C function
+
+gtk_im_multicontext_append_menuitems
 */
 func (recv *IMMulticontext) AppendMenuitems(menushell *MenuShell) {
 	c_menushell := (*C.GtkMenuShell)(C.NULL)
@@ -18533,7 +19239,7 @@ func (recv *IMMulticontext) AppendMenuitems(menushell *MenuShell) {
 // attribute is optional.
 //
 //
-// ## A #GtkIconFactory UI definition fragment. ##
+// A #GtkIconFactory UI definition fragment. ##
 //
 // |[
 // <object class="GtkIconFactory" id="iconfactory1">
@@ -18552,7 +19258,9 @@ func (recv *IMMulticontext) AppendMenuitems(menushell *MenuShell) {
 // ]|
 /*
 
-C record/class : GtkIconFactory
+C type
+
+GtkIconFactory
 */
 type IconFactory struct {
 	native *C.GtkIconFactory
@@ -18602,7 +19310,9 @@ func CastToIconFactory(object *gobject.Object) *IconFactory {
 // themes to override the icons for the application.
 /*
 
-C function : gtk_icon_factory_new
+C function
+
+gtk_icon_factory_new
 */
 func IconFactoryNew() *IconFactory {
 	retC := C.gtk_icon_factory_new()
@@ -18623,7 +19333,9 @@ func IconFactoryNew() *IconFactory {
 // with the new @icon_set.
 /*
 
-C function : gtk_icon_factory_add
+C function
+
+gtk_icon_factory_add
 */
 func (recv *IconFactory) Add(stockId string, iconSet *IconSet) {
 	c_stock_id := C.CString(stockId)
@@ -18647,7 +19359,9 @@ func (recv *IconFactory) Add(stockId string, iconSet *IconSet) {
 // can be overridden by themes.
 /*
 
-C function : gtk_icon_factory_add_default
+C function
+
+gtk_icon_factory_add_default
 */
 func (recv *IconFactory) AddDefault() {
 	C.gtk_icon_factory_add_default((*C.GtkIconFactory)(recv.native))
@@ -18662,7 +19376,9 @@ func (recv *IconFactory) AddDefault() {
 // function directly, so that themes are taken into account.
 /*
 
-C function : gtk_icon_factory_lookup
+C function
+
+gtk_icon_factory_lookup
 */
 func (recv *IconFactory) Lookup(stockId string) *IconSet {
 	c_stock_id := C.CString(stockId)
@@ -18679,7 +19395,9 @@ func (recv *IconFactory) Lookup(stockId string) *IconSet {
 // can be unloaded or shut down.
 /*
 
-C function : gtk_icon_factory_remove_default
+C function
+
+gtk_icon_factory_remove_default
 */
 func (recv *IconFactory) RemoveDefault() {
 	C.gtk_icon_factory_remove_default((*C.GtkIconFactory)(recv.native))
@@ -18696,7 +19414,9 @@ func (recv *IconFactory) Buildable() *Buildable {
 // an icon theme.
 /*
 
-C record/class : GtkIconInfo
+C type
+
+GtkIconInfo
 */
 type IconInfo struct {
 	native *C.GtkIconInfo
@@ -18799,7 +19519,9 @@ func CastToIconInfo(object *gobject.Object) *IconInfo {
 // ]|
 /*
 
-C record/class : GtkIconTheme
+C type
+
+GtkIconTheme
 */
 type IconTheme struct {
 	native *C.GtkIconTheme
@@ -18914,7 +19636,9 @@ func icontheme_changedHandler(_ *C.GObject, data C.gpointer) {
 // For rubberband selection, a subnode with name rubberband is used.
 /*
 
-C record/class : GtkIconView
+C type
+
+GtkIconView
 */
 type IconView struct {
 	native *C.GtkIconView
@@ -19392,7 +20116,9 @@ func (recv *IconView) Scrollable() *Scrollable {
 
 /*
 
-C record/class : GtkIconViewAccessible
+C type
+
+GtkIconViewAccessible
 */
 type IconViewAccessible struct {
 	native *C.GtkIconViewAccessible
@@ -19480,7 +20206,7 @@ func (recv *IconViewAccessible) Selection() *atk.Selection {
 // on the image, such as button clicks, place the image inside a
 // #GtkEventBox, then connect to the event signals on the event box.
 //
-// ## Handling button press events on a #GtkImage.
+// Handling button press events on a #GtkImage.
 //
 // |[<!-- language="C" -->
 // static gboolean
@@ -19537,7 +20263,9 @@ func (recv *IconViewAccessible) Selection() *atk.Selection {
 // GtkImage has a single CSS node with the name image.
 /*
 
-C record/class : GtkImage
+C type
+
+GtkImage
 */
 type Image struct {
 	native *C.GtkImage
@@ -19590,7 +20318,9 @@ func CastToImage(object *gobject.Object) *Image {
 // Creates a new empty #GtkImage widget.
 /*
 
-C function : gtk_image_new
+C function
+
+gtk_image_new
 */
 func ImageNew() *Image {
 	retC := C.gtk_image_new()
@@ -19610,7 +20340,9 @@ func ImageNew() *Image {
 // is not busy with something that has a higher priority.
 /*
 
-C function : gtk_image_new_from_animation
+C function
+
+gtk_image_new_from_animation
 */
 func ImageNewFromAnimation(animation *gdkpixbuf.PixbufAnimation) *Image {
 	c_animation := (*C.GdkPixbufAnimation)(C.NULL)
@@ -19642,7 +20374,9 @@ func ImageNewFromAnimation(animation *gdkpixbuf.PixbufAnimation) *Image {
 // displaying the file.
 /*
 
-C function : gtk_image_new_from_file
+C function
+
+gtk_image_new_from_file
 */
 func ImageNewFromFile(filename string) *Image {
 	c_filename := C.CString(filename)
@@ -19667,7 +20401,9 @@ func ImageNewFromFile(filename string) *Image {
 // #GtkImage will add its own reference rather than adopting yours.
 /*
 
-C function : gtk_image_new_from_icon_set
+C function
+
+gtk_image_new_from_icon_set
 */
 func ImageNewFromIconSet(iconSet *IconSet, size IconSize) *Image {
 	c_icon_set := (*C.GtkIconSet)(C.NULL)
@@ -19693,7 +20429,9 @@ func ImageNewFromIconSet(iconSet *IconSet, size IconSize) *Image {
 // you should use gtk_image_new_from_icon_name().
 /*
 
-C function : gtk_image_new_from_pixbuf
+C function
+
+gtk_image_new_from_pixbuf
 */
 func ImageNewFromPixbuf(pixbuf *gdkpixbuf.Pixbuf) *Image {
 	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
@@ -19715,7 +20453,9 @@ func ImageNewFromPixbuf(pixbuf *gdkpixbuf.Pixbuf) *Image {
 // gtk_icon_factory_add_default() and gtk_icon_factory_add().
 /*
 
-C function : gtk_image_new_from_stock
+C function
+
+gtk_image_new_from_stock
 */
 func ImageNewFromStock(stockId string, size IconSize) *Image {
 	c_stock_id := C.CString(stockId)
@@ -19736,7 +20476,9 @@ func ImageNewFromStock(stockId string, size IconSize) *Image {
 // returned animation.
 /*
 
-C function : gtk_image_get_animation
+C function
+
+gtk_image_get_animation
 */
 func (recv *Image) GetAnimation() *gdkpixbuf.PixbufAnimation {
 	retC := C.gtk_image_get_animation((*C.GtkImage)(recv.native))
@@ -19759,7 +20501,9 @@ func (recv *Image) GetAnimation() *gdkpixbuf.PixbufAnimation {
 // returned pixbuf.
 /*
 
-C function : gtk_image_get_pixbuf
+C function
+
+gtk_image_get_pixbuf
 */
 func (recv *Image) GetPixbuf() *gdkpixbuf.Pixbuf {
 	retC := C.gtk_image_get_pixbuf((*C.GtkImage)(recv.native))
@@ -19780,7 +20524,9 @@ func (recv *Image) GetPixbuf() *gdkpixbuf.Pixbuf {
 // the return value will be %GTK_IMAGE_EMPTY.
 /*
 
-C function : gtk_image_get_storage_type
+C function
+
+gtk_image_get_storage_type
 */
 func (recv *Image) GetStorageType() ImageType {
 	retC := C.gtk_image_get_storage_type((*C.GtkImage)(recv.native))
@@ -19793,7 +20539,9 @@ func (recv *Image) GetStorageType() ImageType {
 // nothing, if you set the animation to %NULL).
 /*
 
-C function : gtk_image_set_from_animation
+C function
+
+gtk_image_set_from_animation
 */
 func (recv *Image) SetFromAnimation(animation *gdkpixbuf.PixbufAnimation) {
 	c_animation := (*C.GdkPixbufAnimation)(C.NULL)
@@ -19809,7 +20557,9 @@ func (recv *Image) SetFromAnimation(animation *gdkpixbuf.PixbufAnimation) {
 // See gtk_image_new_from_file() for details.
 /*
 
-C function : gtk_image_set_from_file
+C function
+
+gtk_image_set_from_file
 */
 func (recv *Image) SetFromFile(filename string) {
 	c_filename := C.CString(filename)
@@ -19823,7 +20573,9 @@ func (recv *Image) SetFromFile(filename string) {
 // See gtk_image_new_from_icon_set() for details.
 /*
 
-C function : gtk_image_set_from_icon_set
+C function
+
+gtk_image_set_from_icon_set
 */
 func (recv *Image) SetFromIconSet(iconSet *IconSet, size IconSize) {
 	c_icon_set := (*C.GtkIconSet)(C.NULL)
@@ -19841,7 +20593,9 @@ func (recv *Image) SetFromIconSet(iconSet *IconSet, size IconSize) {
 // See gtk_image_new_from_pixbuf() for details.
 /*
 
-C function : gtk_image_set_from_pixbuf
+C function
+
+gtk_image_set_from_pixbuf
 */
 func (recv *Image) SetFromPixbuf(pixbuf *gdkpixbuf.Pixbuf) {
 	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
@@ -19857,7 +20611,9 @@ func (recv *Image) SetFromPixbuf(pixbuf *gdkpixbuf.Pixbuf) {
 // See gtk_image_new_from_resource() for details.
 /*
 
-C function : gtk_image_set_from_resource
+C function
+
+gtk_image_set_from_resource
 */
 func (recv *Image) SetFromResource(resourcePath string) {
 	c_resource_path := C.CString(resourcePath)
@@ -19871,7 +20627,9 @@ func (recv *Image) SetFromResource(resourcePath string) {
 // See gtk_image_new_from_stock() for details.
 /*
 
-C function : gtk_image_set_from_stock
+C function
+
+gtk_image_set_from_stock
 */
 func (recv *Image) SetFromStock(stockId string, size IconSize) {
 	c_stock_id := C.CString(stockId)
@@ -19896,7 +20654,9 @@ func (recv *Image) Buildable() *Buildable {
 
 /*
 
-C record/class : GtkImageAccessible
+C type
+
+GtkImageAccessible
 */
 type ImageAccessible struct {
 	native *C.GtkImageAccessible
@@ -19953,7 +20713,9 @@ func (recv *ImageAccessible) Image() *atk.Image {
 
 /*
 
-C record/class : GtkImageCellAccessible
+C type
+
+GtkImageCellAccessible
 */
 type ImageCellAccessible struct {
 	native *C.GtkImageCellAccessible
@@ -20081,7 +20843,9 @@ func (recv *ImageCellAccessible) Image() *atk.Image {
 // ]|
 /*
 
-C record/class : GtkImageMenuItem
+C type
+
+GtkImageMenuItem
 */
 type ImageMenuItem struct {
 	native *C.GtkImageMenuItem
@@ -20144,7 +20908,9 @@ func CastToImageMenuItem(object *gobject.Object) *ImageMenuItem {
 // Creates a new #GtkImageMenuItem with an empty label.
 /*
 
-C function : gtk_image_menu_item_new
+C function
+
+gtk_image_menu_item_new
 */
 func ImageMenuItemNew() *ImageMenuItem {
 	retC := C.gtk_image_menu_item_new()
@@ -20164,7 +20930,9 @@ func ImageMenuItemNew() *ImageMenuItem {
 // gtk_accel_map_add_entry() to register it.
 /*
 
-C function : gtk_image_menu_item_new_from_stock
+C function
+
+gtk_image_menu_item_new_from_stock
 */
 func ImageMenuItemNewFromStock(stockId string, accelGroup *AccelGroup) *ImageMenuItem {
 	c_stock_id := C.CString(stockId)
@@ -20184,7 +20952,9 @@ func ImageMenuItemNewFromStock(stockId string, accelGroup *AccelGroup) *ImageMen
 // Creates a new #GtkImageMenuItem containing a label.
 /*
 
-C function : gtk_image_menu_item_new_with_label
+C function
+
+gtk_image_menu_item_new_with_label
 */
 func ImageMenuItemNewWithLabel(label string) *ImageMenuItem {
 	c_label := C.CString(label)
@@ -20201,7 +20971,9 @@ func ImageMenuItemNewWithLabel(label string) *ImageMenuItem {
 // in @label indicate the mnemonic for the menu item.
 /*
 
-C function : gtk_image_menu_item_new_with_mnemonic
+C function
+
+gtk_image_menu_item_new_with_mnemonic
 */
 func ImageMenuItemNewWithMnemonic(label string) *ImageMenuItem {
 	c_label := C.CString(label)
@@ -20217,7 +20989,9 @@ func ImageMenuItemNewWithMnemonic(label string) *ImageMenuItem {
 // See gtk_image_menu_item_set_image().
 /*
 
-C function : gtk_image_menu_item_get_image
+C function
+
+gtk_image_menu_item_get_image
 */
 func (recv *ImageMenuItem) GetImage() *Widget {
 	retC := C.gtk_image_menu_item_get_image((*C.GtkImageMenuItem)(recv.native))
@@ -20231,7 +21005,9 @@ func (recv *ImageMenuItem) GetImage() *Widget {
 // the image will be displayed or not.
 /*
 
-C function : gtk_image_menu_item_set_image
+C function
+
+gtk_image_menu_item_set_image
 */
 func (recv *ImageMenuItem) SetImage(image *Widget) {
 	c_image := (*C.GtkWidget)(C.NULL)
@@ -20336,7 +21112,9 @@ func (recv *ImageMenuItem) Buildable() *Buildable {
 // on the message type.
 /*
 
-C record/class : GtkInfoBar
+C type
+
+GtkInfoBar
 */
 type InfoBar struct {
 	native *C.GtkInfoBar
@@ -20415,7 +21193,9 @@ func (recv *InfoBar) Orientable() *Orientable {
 // for drag-and-drop.
 /*
 
-C record/class : GtkInvisible
+C type
+
+GtkInvisible
 */
 type Invisible struct {
 	native *C.GtkInvisible
@@ -20463,7 +21243,9 @@ func CastToInvisible(object *gobject.Object) *Invisible {
 // Creates a new #GtkInvisible.
 /*
 
-C function : gtk_invisible_new
+C function
+
+gtk_invisible_new
 */
 func InvisibleNew() *Invisible {
 	retC := C.gtk_invisible_new()
@@ -20660,7 +21442,9 @@ func (recv *Invisible) Buildable() *Buildable {
 // the #GtkLabel::activate-link signal and the gtk_label_get_current_uri() function.
 /*
 
-C record/class : GtkLabel
+C type
+
+GtkLabel
 */
 type Label struct {
 	native *C.GtkLabel
@@ -20832,7 +21616,9 @@ func label_populatePopupHandler(_ *C.GObject, c_menu *C.GtkMenu, data C.gpointer
 // pass %NULL to get an empty label widget.
 /*
 
-C function : gtk_label_new
+C function
+
+gtk_label_new
 */
 func LabelNew(str string) *Label {
 	c_str := C.CString(str)
@@ -20860,7 +21646,9 @@ func LabelNew(str string) *Label {
 // and be activated by the mnemonic.
 /*
 
-C function : gtk_label_new_with_mnemonic
+C function
+
+gtk_label_new_with_mnemonic
 */
 func LabelNewWithMnemonic(str string) *Label {
 	c_str := C.CString(str)
@@ -20880,7 +21668,9 @@ func LabelNewWithMnemonic(str string) *Label {
 // pango_layout_get_attribute (gtk_label_get_layout (label)).
 /*
 
-C function : gtk_label_get_attributes
+C function
+
+gtk_label_get_attributes
 */
 func (recv *Label) GetAttributes() *pango.AttrList {
 	retC := C.gtk_label_get_attributes((*C.GtkLabel)(recv.native))
@@ -20897,7 +21687,9 @@ func (recv *Label) GetAttributes() *pango.AttrList {
 // Returns the justification of the label. See gtk_label_set_justify().
 /*
 
-C function : gtk_label_get_justify
+C function
+
+gtk_label_get_justify
 */
 func (recv *Label) GetJustify() Justification {
 	retC := C.gtk_label_get_justify((*C.GtkLabel)(recv.native))
@@ -20911,7 +21703,9 @@ func (recv *Label) GetJustify() Justification {
 // gtk_label_get_text()).
 /*
 
-C function : gtk_label_get_label
+C function
+
+gtk_label_get_label
 */
 func (recv *Label) GetLabel() string {
 	retC := C.gtk_label_get_label((*C.GtkLabel)(recv.native))
@@ -20928,7 +21722,9 @@ func (recv *Label) GetLabel() string {
 // any time, so it should be considered read-only.
 /*
 
-C function : gtk_label_get_layout
+C function
+
+gtk_label_get_layout
 */
 func (recv *Label) GetLayout() *pango.Layout {
 	retC := C.gtk_label_get_layout((*C.GtkLabel)(recv.native))
@@ -20948,7 +21744,9 @@ func (recv *Label) GetLayout() *pango.Layout {
 // and from pixels using PANGO_PIXELS() or #PANGO_SCALE.
 /*
 
-C function : gtk_label_get_layout_offsets
+C function
+
+gtk_label_get_layout_offsets
 */
 func (recv *Label) GetLayoutOffsets() (int32, int32) {
 	var c_x C.gint
@@ -20968,7 +21766,9 @@ func (recv *Label) GetLayoutOffsets() (int32, int32) {
 // See gtk_label_set_line_wrap().
 /*
 
-C function : gtk_label_get_line_wrap
+C function
+
+gtk_label_get_line_wrap
 */
 func (recv *Label) GetLineWrap() bool {
 	retC := C.gtk_label_get_line_wrap((*C.GtkLabel)(recv.native))
@@ -20982,7 +21782,9 @@ func (recv *Label) GetLineWrap() bool {
 // mnemonic set up it returns #GDK_KEY_VoidSymbol.
 /*
 
-C function : gtk_label_get_mnemonic_keyval
+C function
+
+gtk_label_get_mnemonic_keyval
 */
 func (recv *Label) GetMnemonicKeyval() uint32 {
 	retC := C.gtk_label_get_mnemonic_keyval((*C.GtkLabel)(recv.native))
@@ -20995,7 +21797,9 @@ func (recv *Label) GetMnemonicKeyval() uint32 {
 // label. See gtk_label_set_mnemonic_widget().
 /*
 
-C function : gtk_label_get_mnemonic_widget
+C function
+
+gtk_label_get_mnemonic_widget
 */
 func (recv *Label) GetMnemonicWidget() *Widget {
 	retC := C.gtk_label_get_mnemonic_widget((*C.GtkLabel)(recv.native))
@@ -21012,7 +21816,9 @@ func (recv *Label) GetMnemonicWidget() *Widget {
 // Gets the value set by gtk_label_set_selectable().
 /*
 
-C function : gtk_label_get_selectable
+C function
+
+gtk_label_get_selectable
 */
 func (recv *Label) GetSelectable() bool {
 	retC := C.gtk_label_get_selectable((*C.GtkLabel)(recv.native))
@@ -21025,7 +21831,9 @@ func (recv *Label) GetSelectable() bool {
 // if there’s a selection.
 /*
 
-C function : gtk_label_get_selection_bounds
+C function
+
+gtk_label_get_selection_bounds
 */
 func (recv *Label) GetSelectionBounds() (bool, int32, int32) {
 	var c_start C.gint
@@ -21047,7 +21855,9 @@ func (recv *Label) GetSelectionBounds() (bool, int32, int32) {
 // indicating mnemonics or Pango markup. (See gtk_label_get_label())
 /*
 
-C function : gtk_label_get_text
+C function
+
+gtk_label_get_text
 */
 func (recv *Label) GetText() string {
 	retC := C.gtk_label_get_text((*C.GtkLabel)(recv.native))
@@ -21061,7 +21871,9 @@ func (recv *Label) GetText() string {
 // See gtk_label_set_use_markup ().
 /*
 
-C function : gtk_label_get_use_markup
+C function
+
+gtk_label_get_use_markup
 */
 func (recv *Label) GetUseMarkup() bool {
 	retC := C.gtk_label_get_use_markup((*C.GtkLabel)(recv.native))
@@ -21074,7 +21886,9 @@ func (recv *Label) GetUseMarkup() bool {
 // mnemonic. See gtk_label_set_use_underline().
 /*
 
-C function : gtk_label_get_use_underline
+C function
+
+gtk_label_get_use_underline
 */
 func (recv *Label) GetUseUnderline() bool {
 	retC := C.gtk_label_get_use_underline((*C.GtkLabel)(recv.native))
@@ -21089,7 +21903,9 @@ func (recv *Label) GetUseUnderline() bool {
 // @end_offset are -1, then the end of the label will be substituted.
 /*
 
-C function : gtk_label_select_region
+C function
+
+gtk_label_select_region
 */
 func (recv *Label) SelectRegion(startOffset int32, endOffset int32) {
 	c_start_offset := (C.gint)(startOffset)
@@ -21112,7 +21928,9 @@ func (recv *Label) SelectRegion(startOffset int32, endOffset int32) {
 // to the label after the markup string is parsed.
 /*
 
-C function : gtk_label_set_attributes
+C function
+
+gtk_label_set_attributes
 */
 func (recv *Label) SetAttributes(attrs *pango.AttrList) {
 	c_attrs := (*C.PangoAttrList)(C.NULL)
@@ -21133,7 +21951,9 @@ func (recv *Label) SetAttributes(attrs *pango.AttrList) {
 // single line.
 /*
 
-C function : gtk_label_set_justify
+C function
+
+gtk_label_set_justify
 */
 func (recv *Label) SetJustify(jtype Justification) {
 	c_jtype := (C.GtkJustification)(jtype)
@@ -21149,7 +21969,9 @@ func (recv *Label) SetJustify(jtype Justification) {
 // #GtkLabel:use-markup properties.
 /*
 
-C function : gtk_label_set_label
+C function
+
+gtk_label_set_label
 */
 func (recv *Label) SetLabel(str string) {
 	c_str := C.CString(str)
@@ -21171,7 +21993,9 @@ func (recv *Label) SetLabel(str string) {
 // set the label’s width using gtk_widget_set_size_request().
 /*
 
-C function : gtk_label_set_line_wrap
+C function
+
+gtk_label_set_line_wrap
 */
 func (recv *Label) SetLineWrap(wrap bool) {
 	c_wrap :=
@@ -21210,7 +22034,9 @@ func (recv *Label) SetLineWrap(wrap bool) {
 // See also: gtk_label_set_text()
 /*
 
-C function : gtk_label_set_markup
+C function
+
+gtk_label_set_markup
 */
 func (recv *Label) SetMarkup(str string) {
 	c_str := C.CString(str)
@@ -21231,7 +22057,9 @@ func (recv *Label) SetMarkup(str string) {
 // automatically, or explicitly using gtk_label_set_mnemonic_widget().
 /*
 
-C function : gtk_label_set_markup_with_mnemonic
+C function
+
+gtk_label_set_markup_with_mnemonic
 */
 func (recv *Label) SetMarkupWithMnemonic(str string) {
 	c_str := C.CString(str)
@@ -21258,7 +22086,9 @@ func (recv *Label) SetMarkupWithMnemonic(str string) {
 // and toggle focus between the colliding widgets otherwise.
 /*
 
-C function : gtk_label_set_mnemonic_widget
+C function
+
+gtk_label_set_mnemonic_widget
 */
 func (recv *Label) SetMnemonicWidget(widget *Widget) {
 	c_widget := (*C.GtkWidget)(C.NULL)
@@ -21277,7 +22107,9 @@ func (recv *Label) SetMnemonicWidget(widget *Widget) {
 // “Foo” and “Baz” but not “Bar”.
 /*
 
-C function : gtk_label_set_pattern
+C function
+
+gtk_label_set_pattern
 */
 func (recv *Label) SetPattern(pattern string) {
 	c_pattern := C.CString(pattern)
@@ -21292,7 +22124,9 @@ func (recv *Label) SetPattern(pattern string) {
 // copy-and-paste.
 /*
 
-C function : gtk_label_set_selectable
+C function
+
+gtk_label_set_selectable
 */
 func (recv *Label) SetSelectable(setting bool) {
 	c_setting :=
@@ -21315,7 +22149,9 @@ func (recv *Label) SetSelectable(setting bool) {
 // See also: gtk_label_set_markup()
 /*
 
-C function : gtk_label_set_text
+C function
+
+gtk_label_set_text
 */
 func (recv *Label) SetText(str string) {
 	c_str := C.CString(str)
@@ -21333,7 +22169,9 @@ func (recv *Label) SetText(str string) {
 // automatically, or explicitly using gtk_label_set_mnemonic_widget().
 /*
 
-C function : gtk_label_set_text_with_mnemonic
+C function
+
+gtk_label_set_text_with_mnemonic
 */
 func (recv *Label) SetTextWithMnemonic(str string) {
 	c_str := C.CString(str)
@@ -21349,7 +22187,9 @@ func (recv *Label) SetTextWithMnemonic(str string) {
 // See gtk_label_set_markup().
 /*
 
-C function : gtk_label_set_use_markup
+C function
+
+gtk_label_set_use_markup
 */
 func (recv *Label) SetUseMarkup(setting bool) {
 	c_setting :=
@@ -21364,7 +22204,9 @@ func (recv *Label) SetUseMarkup(setting bool) {
 // used for the mnemonic accelerator key.
 /*
 
-C function : gtk_label_set_use_underline
+C function
+
+gtk_label_set_use_underline
 */
 func (recv *Label) SetUseUnderline(setting bool) {
 	c_setting :=
@@ -21387,7 +22229,9 @@ func (recv *Label) Buildable() *Buildable {
 
 /*
 
-C record/class : GtkLabelAccessible
+C type
+
+GtkLabelAccessible
 */
 type LabelAccessible struct {
 	native *C.GtkLabelAccessible
@@ -21461,7 +22305,9 @@ func (recv *LabelAccessible) Text() *atk.Text {
 // gtk_widget_get_window() as you would for a #GtkDrawingArea.
 /*
 
-C record/class : GtkLayout
+C type
+
+GtkLayout
 */
 type Layout struct {
 	native *C.GtkLayout
@@ -21516,7 +22362,9 @@ func CastToLayout(object *gobject.Object) *Layout {
 // @hadjustment and @vadjustment.
 /*
 
-C function : gtk_layout_new
+C function
+
+gtk_layout_new
 */
 func LayoutNew(hadjustment *Adjustment, vadjustment *Adjustment) *Layout {
 	c_hadjustment := (*C.GtkAdjustment)(C.NULL)
@@ -21543,7 +22391,9 @@ func LayoutNew(hadjustment *Adjustment, vadjustment *Adjustment) *Layout {
 // See #GtkScrolledWindow, #GtkScrollbar, #GtkAdjustment for details.
 /*
 
-C function : gtk_layout_get_hadjustment
+C function
+
+gtk_layout_get_hadjustment
 */
 func (recv *Layout) GetHadjustment() *Adjustment {
 	retC := C.gtk_layout_get_hadjustment((*C.GtkLayout)(recv.native))
@@ -21557,7 +22407,9 @@ func (recv *Layout) GetHadjustment() *Adjustment {
 // gtk_layout_set_size ().
 /*
 
-C function : gtk_layout_get_size
+C function
+
+gtk_layout_get_size
 */
 func (recv *Layout) GetSize() (uint32, uint32) {
 	var c_width C.guint
@@ -21581,7 +22433,9 @@ func (recv *Layout) GetSize() (uint32, uint32) {
 // See #GtkScrolledWindow, #GtkScrollbar, #GtkAdjustment for details.
 /*
 
-C function : gtk_layout_get_vadjustment
+C function
+
+gtk_layout_get_vadjustment
 */
 func (recv *Layout) GetVadjustment() *Adjustment {
 	retC := C.gtk_layout_get_vadjustment((*C.GtkLayout)(recv.native))
@@ -21593,7 +22447,9 @@ func (recv *Layout) GetVadjustment() *Adjustment {
 // Moves a current child of @layout to a new position.
 /*
 
-C function : gtk_layout_move
+C function
+
+gtk_layout_move
 */
 func (recv *Layout) Move(childWidget *Widget, x int32, y int32) {
 	c_child_widget := (*C.GtkWidget)(C.NULL)
@@ -21614,7 +22470,9 @@ func (recv *Layout) Move(childWidget *Widget, x int32, y int32) {
 // @layout becomes the new parent container of @child_widget.
 /*
 
-C function : gtk_layout_put
+C function
+
+gtk_layout_put
 */
 func (recv *Layout) Put(childWidget *Widget, x int32, y int32) {
 	c_child_widget := (*C.GtkWidget)(C.NULL)
@@ -21636,7 +22494,9 @@ func (recv *Layout) Put(childWidget *Widget, x int32, y int32) {
 // See #GtkScrolledWindow, #GtkScrollbar, #GtkAdjustment for details.
 /*
 
-C function : gtk_layout_set_hadjustment
+C function
+
+gtk_layout_set_hadjustment
 */
 func (recv *Layout) SetHadjustment(adjustment *Adjustment) {
 	c_adjustment := (*C.GtkAdjustment)(C.NULL)
@@ -21652,7 +22512,9 @@ func (recv *Layout) SetHadjustment(adjustment *Adjustment) {
 // Sets the size of the scrollable area of the layout.
 /*
 
-C function : gtk_layout_set_size
+C function
+
+gtk_layout_set_size
 */
 func (recv *Layout) SetSize(width uint32, height uint32) {
 	c_width := (C.guint)(width)
@@ -21669,7 +22531,9 @@ func (recv *Layout) SetSize(width uint32, height uint32) {
 // See #GtkScrolledWindow, #GtkScrollbar, #GtkAdjustment for details.
 /*
 
-C function : gtk_layout_set_vadjustment
+C function
+
+gtk_layout_set_vadjustment
 */
 func (recv *Layout) SetVadjustment(adjustment *Adjustment) {
 	c_adjustment := (*C.GtkAdjustment)(C.NULL)
@@ -21712,7 +22576,7 @@ func (recv *Layout) Scrollable() *Scrollable {
 // when changing the minimum or maximum value. GTK+ will simply clamp
 // them to the new range.
 //
-// ## Adding a custom offset on the bar
+// Adding a custom offset on the bar
 //
 // |[<!-- language="C" -->
 //
@@ -21792,7 +22656,9 @@ func (recv *Layout) Scrollable() *Scrollable {
 // regardless of text direction.
 /*
 
-C record/class : GtkLevelBar
+C type
+
+GtkLevelBar
 */
 type LevelBar struct {
 	native *C.GtkLevelBar
@@ -21854,7 +22720,9 @@ func (recv *LevelBar) Orientable() *Orientable {
 
 /*
 
-C record/class : GtkLevelBarAccessible
+C type
+
+GtkLevelBarAccessible
 */
 type LevelBarAccessible struct {
 	native *C.GtkLevelBarAccessible
@@ -21931,7 +22799,9 @@ func (recv *LevelBarAccessible) Value() *atk.Value {
 // it from a plain #GtkButton, it gets the .link style class.
 /*
 
-C record/class : GtkLinkButton
+C type
+
+GtkLinkButton
 */
 type LinkButton struct {
 	native *C.GtkLinkButton
@@ -22073,7 +22943,9 @@ func (recv *LinkButton) Buildable() *Buildable {
 
 /*
 
-C record/class : GtkLinkButtonAccessible
+C type
+
+GtkLinkButtonAccessible
 */
 type LinkButtonAccessible struct {
 	native *C.GtkLinkButtonAccessible
@@ -22182,7 +23054,9 @@ func (recv *LinkButtonAccessible) Image() *atk.Image {
 // style class added when appropriate.
 /*
 
-C record/class : GtkListBox
+C type
+
+GtkListBox
 */
 type ListBox struct {
 	native *C.GtkListBox
@@ -22359,7 +23233,9 @@ func (recv *ListBox) Buildable() *Buildable {
 
 /*
 
-C record/class : GtkListBoxAccessible
+C type
+
+GtkListBoxAccessible
 */
 type ListBoxAccessible struct {
 	native *C.GtkListBoxAccessible
@@ -22421,7 +23297,9 @@ func (recv *ListBoxAccessible) Selection() *atk.Selection {
 
 /*
 
-C record/class : GtkListBoxRow
+C type
+
+GtkListBoxRow
 */
 type ListBoxRow struct {
 	native *C.GtkListBoxRow
@@ -22492,7 +23370,9 @@ func (recv *ListBoxRow) Buildable() *Buildable {
 
 /*
 
-C record/class : GtkListBoxRowAccessible
+C type
+
+GtkListBoxRowAccessible
 */
 type ListBoxRowAccessible struct {
 	native *C.GtkListBoxRowAccessible
@@ -22683,7 +23563,9 @@ func (recv *ListBoxRowAccessible) Component() *atk.Component {
 // ]|
 /*
 
-C record/class : GtkListStore
+C type
+
+GtkListStore
 */
 type ListStore struct {
 	native *C.GtkListStore
@@ -22723,7 +23605,9 @@ func CastToListStore(object *gobject.Object) *ListStore {
 // Non-vararg creation function.  Used primarily by language bindings.
 /*
 
-C function : gtk_list_store_newv
+C function
+
+gtk_list_store_newv
 */
 func ListStoreNewv(types []gobject.Type) *ListStore {
 	c_n_columns := (C.gint)(len(types))
@@ -22741,7 +23625,9 @@ func ListStoreNewv(types []gobject.Type) *ListStore {
 // values, you need to call gtk_list_store_set() or gtk_list_store_set_value().
 /*
 
-C function : gtk_list_store_append
+C function
+
+gtk_list_store_append
 */
 func (recv *ListStore) Append() *TreeIter {
 	var c_iter C.GtkTreeIter
@@ -22756,7 +23642,9 @@ func (recv *ListStore) Append() *TreeIter {
 // Removes all rows from the list store.
 /*
 
-C function : gtk_list_store_clear
+C function
+
+gtk_list_store_clear
 */
 func (recv *ListStore) Clear() {
 	C.gtk_list_store_clear((*C.GtkListStore)(recv.native))
@@ -22771,7 +23659,9 @@ func (recv *ListStore) Clear() {
 // gtk_list_store_set() or gtk_list_store_set_value().
 /*
 
-C function : gtk_list_store_insert
+C function
+
+gtk_list_store_insert
 */
 func (recv *ListStore) Insert(position int32) *TreeIter {
 	var c_iter C.GtkTreeIter
@@ -22791,7 +23681,9 @@ func (recv *ListStore) Insert(position int32) *TreeIter {
 // in values, you need to call gtk_list_store_set() or gtk_list_store_set_value().
 /*
 
-C function : gtk_list_store_insert_after
+C function
+
+gtk_list_store_insert_after
 */
 func (recv *ListStore) InsertAfter(sibling *TreeIter) *TreeIter {
 	var c_iter C.GtkTreeIter
@@ -22814,7 +23706,9 @@ func (recv *ListStore) InsertAfter(sibling *TreeIter) *TreeIter {
 // values, you need to call gtk_list_store_set() or gtk_list_store_set_value().
 /*
 
-C function : gtk_list_store_insert_before
+C function
+
+gtk_list_store_insert_before
 */
 func (recv *ListStore) InsertBefore(sibling *TreeIter) *TreeIter {
 	var c_iter C.GtkTreeIter
@@ -22836,7 +23730,9 @@ func (recv *ListStore) InsertBefore(sibling *TreeIter) *TreeIter {
 // values, you need to call gtk_list_store_set() or gtk_list_store_set_value().
 /*
 
-C function : gtk_list_store_prepend
+C function
+
+gtk_list_store_prepend
 */
 func (recv *ListStore) Prepend() *TreeIter {
 	var c_iter C.GtkTreeIter
@@ -22853,7 +23749,9 @@ func (recv *ListStore) Prepend() *TreeIter {
 // to the last row in @list_store.
 /*
 
-C function : gtk_list_store_remove
+C function
+
+gtk_list_store_remove
 */
 func (recv *ListStore) Remove(iter *TreeIter) bool {
 	c_iter := (*C.GtkTreeIter)(C.NULL)
@@ -22875,7 +23773,9 @@ func (recv *ListStore) Remove(iter *TreeIter) bool {
 // interface is called.
 /*
 
-C function : gtk_list_store_set_column_types
+C function
+
+gtk_list_store_set_column_types
 */
 func (recv *ListStore) SetColumnTypes(types []gobject.Type) {
 	c_n_columns := (C.gint)(len(types))
@@ -22894,7 +23794,9 @@ func (recv *ListStore) SetColumnTypes(types []gobject.Type) {
 // column.
 /*
 
-C function : gtk_list_store_set_value
+C function
+
+gtk_list_store_set_value
 */
 func (recv *ListStore) SetValue(iter *TreeIter, column int32, value *gobject.Value) {
 	c_iter := (*C.GtkTreeIter)(C.NULL)
@@ -22971,7 +23873,9 @@ func (recv *ListStore) TreeSortable() *TreeSortable {
 // #GtkLockButton:tooltip-not-authorized properties.
 /*
 
-C record/class : GtkLockButton
+C type
+
+GtkLockButton
 */
 type LockButton struct {
 	native *C.GtkLockButton
@@ -23053,7 +23957,9 @@ func (recv *LockButton) Buildable() *Buildable {
 
 /*
 
-C record/class : GtkLockButtonAccessible
+C type
+
+GtkLockButtonAccessible
 */
 type LockButtonAccessible struct {
 	native *C.GtkLockButtonAccessible
@@ -23139,7 +24045,7 @@ func (recv *LockButtonAccessible) Image() *atk.Image {
 // gtk_menu_popup() function.  The example below shows how an application
 // can pop up a menu when the 3rd mouse button is pressed.
 //
-// ## Connecting the popup signal handler.
+// Connecting the popup signal handler.
 //
 // |[<!-- language="C" -->
 // connect our handler which will popup the menu
@@ -23147,7 +24053,7 @@ func (recv *LockButtonAccessible) Image() *atk.Image {
 // G_CALLBACK (my_popup_handler), menu);
 // ]|
 //
-// ## Signal handler which displays a popup menu.
+// Signal handler which displays a popup menu.
 //
 // |[<!-- language="C" -->
 // static gint
@@ -23195,7 +24101,9 @@ func (recv *LockButtonAccessible) Image() *atk.Image {
 // .top and .bottom style classes.
 /*
 
-C record/class : GtkMenu
+C type
+
+GtkMenu
 */
 type Menu struct {
 	native *C.GtkMenu
@@ -23255,7 +24163,9 @@ func CastToMenu(object *gobject.Object) *Menu {
 // Creates a new #GtkMenu
 /*
 
-C function : gtk_menu_new
+C function
+
+gtk_menu_new
 */
 func MenuNew() *Menu {
 	retC := C.gtk_menu_new()
@@ -23271,7 +24181,9 @@ func MenuNew() *Menu {
 // when the gtk_menu_attach_to_widget() function was called.
 /*
 
-C function : gtk_menu_detach
+C function
+
+gtk_menu_detach
 */
 func (recv *Menu) Detach() {
 	C.gtk_menu_detach((*C.GtkMenu)(recv.native))
@@ -23283,7 +24195,9 @@ func (recv *Menu) Detach() {
 // menu. See gtk_menu_set_accel_group().
 /*
 
-C function : gtk_menu_get_accel_group
+C function
+
+gtk_menu_get_accel_group
 */
 func (recv *Menu) GetAccelGroup() *AccelGroup {
 	retC := C.gtk_menu_get_accel_group((*C.GtkMenu)(recv.native))
@@ -23296,7 +24210,9 @@ func (recv *Menu) GetAccelGroup() *AccelGroup {
 // #GtkComboBox.
 /*
 
-C function : gtk_menu_get_active
+C function
+
+gtk_menu_get_active
 */
 func (recv *Menu) GetActive() *Widget {
 	retC := C.gtk_menu_get_active((*C.GtkMenu)(recv.native))
@@ -23308,7 +24224,9 @@ func (recv *Menu) GetActive() *Widget {
 // Returns the #GtkWidget that the menu is attached to.
 /*
 
-C function : gtk_menu_get_attach_widget
+C function
+
+gtk_menu_get_attach_widget
 */
 func (recv *Menu) GetAttachWidget() *Widget {
 	retC := C.gtk_menu_get_attach_widget((*C.GtkMenu)(recv.native))
@@ -23321,7 +24239,9 @@ func (recv *Menu) GetAttachWidget() *Widget {
 // See gtk_menu_set_tearoff_state().
 /*
 
-C function : gtk_menu_get_tearoff_state
+C function
+
+gtk_menu_get_tearoff_state
 */
 func (recv *Menu) GetTearoffState() bool {
 	retC := C.gtk_menu_get_tearoff_state((*C.GtkMenu)(recv.native))
@@ -23333,7 +24253,9 @@ func (recv *Menu) GetTearoffState() bool {
 // Returns the title of the menu. See gtk_menu_set_title().
 /*
 
-C function : gtk_menu_get_title
+C function
+
+gtk_menu_get_title
 */
 func (recv *Menu) GetTitle() string {
 	retC := C.gtk_menu_get_title((*C.GtkMenu)(recv.native))
@@ -23345,7 +24267,9 @@ func (recv *Menu) GetTitle() string {
 // Removes the menu from the screen.
 /*
 
-C function : gtk_menu_popdown
+C function
+
+gtk_menu_popdown
 */
 func (recv *Menu) Popdown() {
 	C.gtk_menu_popdown((*C.GtkMenu)(recv.native))
@@ -23359,7 +24283,9 @@ func (recv *Menu) Popdown() {
 // children.
 /*
 
-C function : gtk_menu_reorder_child
+C function
+
+gtk_menu_reorder_child
 */
 func (recv *Menu) ReorderChild(child *Widget, position int32) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -23377,7 +24303,9 @@ func (recv *Menu) ReorderChild(child *Widget, position int32) {
 // Repositions the menu according to its position function.
 /*
 
-C function : gtk_menu_reposition
+C function
+
+gtk_menu_reposition
 */
 func (recv *Menu) Reposition() {
 	C.gtk_menu_reposition((*C.GtkMenu)(recv.native))
@@ -23392,7 +24320,9 @@ func (recv *Menu) Reposition() {
 // contained in this group.
 /*
 
-C function : gtk_menu_set_accel_group
+C function
+
+gtk_menu_set_accel_group
 */
 func (recv *Menu) SetAccelGroup(accelGroup *AccelGroup) {
 	c_accel_group := (*C.GtkAccelGroup)(C.NULL)
@@ -23428,7 +24358,9 @@ func (recv *Menu) SetAccelGroup(accelGroup *AccelGroup) {
 // it first with g_intern_static_string().
 /*
 
-C function : gtk_menu_set_accel_path
+C function
+
+gtk_menu_set_accel_path
 */
 func (recv *Menu) SetAccelPath(accelPath string) {
 	c_accel_path := C.CString(accelPath)
@@ -23443,7 +24375,9 @@ func (recv *Menu) SetAccelPath(accelPath string) {
 // the #GtkComboBox and should not be used by anyone else.
 /*
 
-C function : gtk_menu_set_active
+C function
+
+gtk_menu_set_active
 */
 func (recv *Menu) SetActive(index uint32) {
 	c_index := (C.guint)(index)
@@ -23459,7 +24393,9 @@ func (recv *Menu) SetActive(index uint32) {
 // until it is closed or reattached.
 /*
 
-C function : gtk_menu_set_tearoff_state
+C function
+
+gtk_menu_set_tearoff_state
 */
 func (recv *Menu) SetTearoffState(tornOff bool) {
 	c_torn_off :=
@@ -23478,7 +24414,9 @@ func (recv *Menu) SetTearoffState(tornOff bool) {
 // text as that menu item’s label.
 /*
 
-C function : gtk_menu_set_title
+C function
+
+gtk_menu_set_title
 */
 func (recv *Menu) SetTitle(title string) {
 	c_title := C.CString(title)
@@ -23501,7 +24439,9 @@ func (recv *Menu) Buildable() *Buildable {
 
 /*
 
-C record/class : GtkMenuAccessible
+C type
+
+GtkMenuAccessible
 */
 type MenuAccessible struct {
 	native *C.GtkMenuAccessible
@@ -23575,7 +24515,9 @@ func (recv *MenuAccessible) Selection() *atk.Selection {
 // GtkMenuBar has a single CSS node with name menubar.
 /*
 
-C record/class : GtkMenuBar
+C type
+
+GtkMenuBar
 */
 type MenuBar struct {
 	native *C.GtkMenuBar
@@ -23633,7 +24575,9 @@ func CastToMenuBar(object *gobject.Object) *MenuBar {
 // Creates a new #GtkMenuBar
 /*
 
-C function : gtk_menu_bar_new
+C function
+
+gtk_menu_bar_new
 */
 func MenuBarNew() *MenuBar {
 	retC := C.gtk_menu_bar_new()
@@ -23675,7 +24619,7 @@ func (recv *MenuBar) Buildable() *Buildable {
 // menu is popped up above the button instead. If the alignment would move
 // part of the menu offscreen, it is “pushed in”.
 //
-// ## Direction = Down
+// Direction = Down
 //
 // - halign = start
 //
@@ -23689,7 +24633,7 @@ func (recv *MenuBar) Buildable() *Buildable {
 //
 // ![](down-end.png)
 //
-// ## Direction = Up
+// Direction = Up
 //
 // - halign = start
 //
@@ -23703,7 +24647,7 @@ func (recv *MenuBar) Buildable() *Buildable {
 //
 // ![](up-end.png)
 //
-// ## Direction = Left
+// Direction = Left
 //
 // - valign = start
 //
@@ -23717,7 +24661,7 @@ func (recv *MenuBar) Buildable() *Buildable {
 //
 // ![](left-end.png)
 //
-// ## Direction = Right
+// Direction = Right
 //
 // - valign = start
 //
@@ -23737,7 +24681,9 @@ func (recv *MenuBar) Buildable() *Buildable {
 // it from a plain #GtkButton, it gets the .popup style class.
 /*
 
-C record/class : GtkMenuButton
+C type
+
+GtkMenuButton
 */
 type MenuButton struct {
 	native *C.GtkMenuButton
@@ -23824,7 +24770,9 @@ func (recv *MenuButton) Buildable() *Buildable {
 
 /*
 
-C record/class : GtkMenuButtonAccessible
+C type
+
+GtkMenuButtonAccessible
 */
 type MenuButtonAccessible struct {
 	native *C.GtkMenuButtonAccessible
@@ -23947,7 +24895,9 @@ func (recv *MenuButtonAccessible) Image() *atk.Image {
 // the .left or .right style class.
 /*
 
-C record/class : GtkMenuItem
+C type
+
+GtkMenuItem
 */
 type MenuItem struct {
 	native *C.GtkMenuItem
@@ -24237,7 +25187,9 @@ func menuitem_selectHandler(_ *C.GObject, data C.gpointer) {
 // Creates a new #GtkMenuItem.
 /*
 
-C function : gtk_menu_item_new
+C function
+
+gtk_menu_item_new
 */
 func MenuItemNew() *MenuItem {
 	retC := C.gtk_menu_item_new()
@@ -24249,7 +25201,9 @@ func MenuItemNew() *MenuItem {
 // Creates a new #GtkMenuItem whose child is a #GtkLabel.
 /*
 
-C function : gtk_menu_item_new_with_label
+C function
+
+gtk_menu_item_new_with_label
 */
 func MenuItemNewWithLabel(label string) *MenuItem {
 	c_label := C.CString(label)
@@ -24267,7 +25221,9 @@ func MenuItemNewWithLabel(label string) *MenuItem {
 // so underscores in @label indicate the mnemonic for the menu item.
 /*
 
-C function : gtk_menu_item_new_with_mnemonic
+C function
+
+gtk_menu_item_new_with_mnemonic
 */
 func MenuItemNewWithMnemonic(label string) *MenuItem {
 	c_label := C.CString(label)
@@ -24282,7 +25238,9 @@ func MenuItemNewWithMnemonic(label string) *MenuItem {
 // Emits the #GtkMenuItem::activate signal on the given item
 /*
 
-C function : gtk_menu_item_activate
+C function
+
+gtk_menu_item_activate
 */
 func (recv *MenuItem) Activate() {
 	C.gtk_menu_item_activate((*C.GtkMenuItem)(recv.native))
@@ -24293,7 +25251,9 @@ func (recv *MenuItem) Activate() {
 // Emits the #GtkMenuItem::deselect signal on the given item.
 /*
 
-C function : gtk_menu_item_deselect
+C function
+
+gtk_menu_item_deselect
 */
 func (recv *MenuItem) Deselect() {
 	C.gtk_menu_item_deselect((*C.GtkMenuItem)(recv.native))
@@ -24305,7 +25265,9 @@ func (recv *MenuItem) Deselect() {
 // side of the menu bar.
 /*
 
-C function : gtk_menu_item_get_right_justified
+C function
+
+gtk_menu_item_get_right_justified
 */
 func (recv *MenuItem) GetRightJustified() bool {
 	retC := C.gtk_menu_item_get_right_justified((*C.GtkMenuItem)(recv.native))
@@ -24318,7 +25280,9 @@ func (recv *MenuItem) GetRightJustified() bool {
 // See gtk_menu_item_set_submenu().
 /*
 
-C function : gtk_menu_item_get_submenu
+C function
+
+gtk_menu_item_get_submenu
 */
 func (recv *MenuItem) GetSubmenu() *Widget {
 	retC := C.gtk_menu_item_get_submenu((*C.GtkMenuItem)(recv.native))
@@ -24335,7 +25299,9 @@ func (recv *MenuItem) GetSubmenu() *Widget {
 // Emits the #GtkMenuItem::select signal on the given item.
 /*
 
-C function : gtk_menu_item_select
+C function
+
+gtk_menu_item_select
 */
 func (recv *MenuItem) Select() {
 	C.gtk_menu_item_select((*C.GtkMenuItem)(recv.native))
@@ -24364,7 +25330,9 @@ func (recv *MenuItem) Select() {
 // by interning it first with g_intern_static_string().
 /*
 
-C function : gtk_menu_item_set_accel_path
+C function
+
+gtk_menu_item_set_accel_path
 */
 func (recv *MenuItem) SetAccelPath(accelPath string) {
 	c_accel_path := C.CString(accelPath)
@@ -24382,7 +25350,9 @@ func (recv *MenuItem) SetAccelPath(accelPath string) {
 // or Arabic, right-justified-menu-items appear at the left.)
 /*
 
-C function : gtk_menu_item_set_right_justified
+C function
+
+gtk_menu_item_set_right_justified
 */
 func (recv *MenuItem) SetRightJustified(rightJustified bool) {
 	c_right_justified :=
@@ -24397,7 +25367,9 @@ func (recv *MenuItem) SetRightJustified(rightJustified bool) {
 // submenu is passed.
 /*
 
-C function : gtk_menu_item_set_submenu
+C function
+
+gtk_menu_item_set_submenu
 */
 func (recv *MenuItem) SetSubmenu(submenu *Menu) {
 	c_submenu := (*C.GtkWidget)(C.NULL)
@@ -24413,7 +25385,9 @@ func (recv *MenuItem) SetSubmenu(submenu *Menu) {
 // Emits the #GtkMenuItem::toggle-size-allocate signal on the given item.
 /*
 
-C function : gtk_menu_item_toggle_size_allocate
+C function
+
+gtk_menu_item_toggle_size_allocate
 */
 func (recv *MenuItem) ToggleSizeAllocate(allocation int32) {
 	c_allocation := (C.gint)(allocation)
@@ -24426,7 +25400,9 @@ func (recv *MenuItem) ToggleSizeAllocate(allocation int32) {
 // Emits the #GtkMenuItem::toggle-size-request signal on the given item.
 /*
 
-C function : gtk_menu_item_toggle_size_request
+C function
+
+gtk_menu_item_toggle_size_request
 */
 func (recv *MenuItem) ToggleSizeRequest(requisition int32) {
 	c_requisition := (C.gint)(requisition)
@@ -24458,7 +25434,9 @@ func (recv *MenuItem) Buildable() *Buildable {
 
 /*
 
-C record/class : GtkMenuItemAccessible
+C type
+
+GtkMenuItemAccessible
 */
 type MenuItemAccessible struct {
 	native *C.GtkMenuItemAccessible
@@ -24552,7 +25530,9 @@ func (recv *MenuItemAccessible) Selection() *atk.Selection {
 // grab and receive all key presses.
 /*
 
-C record/class : GtkMenuShell
+C type
+
+GtkMenuShell
 */
 type MenuShell struct {
 	native *C.GtkMenuShell
@@ -24839,7 +25819,9 @@ func menushell_selectionDoneHandler(_ *C.GObject, data C.gpointer) {
 // Activates the menu item within the menu shell.
 /*
 
-C function : gtk_menu_shell_activate_item
+C function
+
+gtk_menu_shell_activate_item
 */
 func (recv *MenuShell) ActivateItem(menuItem *Widget, forceDeactivate bool) {
 	c_menu_item := (*C.GtkWidget)(C.NULL)
@@ -24859,7 +25841,9 @@ func (recv *MenuShell) ActivateItem(menuItem *Widget, forceDeactivate bool) {
 // item list.
 /*
 
-C function : gtk_menu_shell_append
+C function
+
+gtk_menu_shell_append
 */
 func (recv *MenuShell) Append(child *MenuItem) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -24878,7 +25862,9 @@ func (recv *MenuShell) Append(child *MenuItem) {
 // from the screen.
 /*
 
-C function : gtk_menu_shell_deactivate
+C function
+
+gtk_menu_shell_deactivate
 */
 func (recv *MenuShell) Deactivate() {
 	C.gtk_menu_shell_deactivate((*C.GtkMenuShell)(recv.native))
@@ -24890,7 +25876,9 @@ func (recv *MenuShell) Deactivate() {
 // if any.
 /*
 
-C function : gtk_menu_shell_deselect
+C function
+
+gtk_menu_shell_deselect
 */
 func (recv *MenuShell) Deselect() {
 	C.gtk_menu_shell_deselect((*C.GtkMenuShell)(recv.native))
@@ -24902,7 +25890,9 @@ func (recv *MenuShell) Deselect() {
 // at the position indicated by @position.
 /*
 
-C function : gtk_menu_shell_insert
+C function
+
+gtk_menu_shell_insert
 */
 func (recv *MenuShell) Insert(child *Widget, position int32) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -24921,7 +25911,9 @@ func (recv *MenuShell) Insert(child *Widget, position int32) {
 // item list.
 /*
 
-C function : gtk_menu_shell_prepend
+C function
+
+gtk_menu_shell_prepend
 */
 func (recv *MenuShell) Prepend(child *Widget) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -24937,7 +25929,9 @@ func (recv *MenuShell) Prepend(child *Widget) {
 // Selects the menu item from the menu shell.
 /*
 
-C function : gtk_menu_shell_select_item
+C function
+
+gtk_menu_shell_select_item
 */
 func (recv *MenuShell) SelectItem(menuItem *Widget) {
 	c_menu_item := (*C.GtkWidget)(C.NULL)
@@ -24962,7 +25956,9 @@ func (recv *MenuShell) Buildable() *Buildable {
 
 /*
 
-C record/class : GtkMenuShellAccessible
+C type
+
+GtkMenuShellAccessible
 */
 type MenuShellAccessible struct {
 	native *C.GtkMenuShellAccessible
@@ -25045,7 +26041,9 @@ func (recv *MenuShellAccessible) Selection() *atk.Selection {
 // ]|
 /*
 
-C record/class : GtkMenuToolButton
+C type
+
+GtkMenuToolButton
 */
 type MenuToolButton struct {
 	native *C.GtkMenuToolButton
@@ -25241,7 +26239,9 @@ func (recv *MenuToolButton) Buildable() *Buildable {
 // the message area as an internal child with the name “message_area”.
 /*
 
-C record/class : GtkMessageDialog
+C type
+
+GtkMessageDialog
 */
 type MessageDialog struct {
 	native *C.GtkMessageDialog
@@ -25335,7 +26335,9 @@ func (recv *MessageDialog) Buildable() *Buildable {
 // this fact, all #GtkMisc API has been deprecated.
 /*
 
-C record/class : GtkMisc
+C type
+
+GtkMisc
 */
 type Misc struct {
 	native *C.GtkMisc
@@ -25384,7 +26386,9 @@ func CastToMisc(object *gobject.Object) *Misc {
 // See gtk_misc_set_alignment().
 /*
 
-C function : gtk_misc_get_alignment
+C function
+
+gtk_misc_get_alignment
 */
 func (recv *Misc) GetAlignment() (float32, float32) {
 	var c_xalign C.gfloat
@@ -25404,7 +26408,9 @@ func (recv *Misc) GetAlignment() (float32, float32) {
 // See gtk_misc_set_padding().
 /*
 
-C function : gtk_misc_get_padding
+C function
+
+gtk_misc_get_padding
 */
 func (recv *Misc) GetPadding() (int32, int32) {
 	var c_xpad C.gint
@@ -25423,7 +26429,9 @@ func (recv *Misc) GetPadding() (int32, int32) {
 // Sets the alignment of the widget.
 /*
 
-C function : gtk_misc_set_alignment
+C function
+
+gtk_misc_set_alignment
 */
 func (recv *Misc) SetAlignment(xalign float32, yalign float32) {
 	c_xalign := (C.gfloat)(xalign)
@@ -25438,7 +26446,9 @@ func (recv *Misc) SetAlignment(xalign float32, yalign float32) {
 // Sets the amount of space to add around the widget.
 /*
 
-C function : gtk_misc_set_padding
+C function
+
+gtk_misc_set_padding
 */
 func (recv *Misc) SetPadding(xpad int32, ypad int32) {
 	c_xpad := (C.gint)(xpad)
@@ -25561,7 +26571,9 @@ func (recv *Misc) Buildable() *Buildable {
 // subnode is invisible in this case.
 /*
 
-C record/class : GtkModelButton
+C type
+
+GtkModelButton
 */
 type ModelButton struct {
 	native *C.GtkModelButton
@@ -25642,7 +26654,9 @@ func (recv *ModelButton) Buildable() *Buildable {
 // This should not be accessed directly. Use the accessor functions below.
 /*
 
-C record/class : GtkMountOperation
+C type
+
+GtkMountOperation
 */
 type MountOperation struct {
 	native *C.GtkMountOperation
@@ -25764,7 +26778,9 @@ func CastToMountOperation(object *gobject.Object) *MountOperation {
 // The nodes are always arranged from left-to-right, regarldess of text direction.
 /*
 
-C record/class : GtkNotebook
+C type
+
+GtkNotebook
 */
 type Notebook struct {
 	native *C.GtkNotebook
@@ -25889,7 +26905,9 @@ func notebook_selectPageHandler(_ *C.GObject, c_object C.gboolean, data C.gpoint
 // Creates a new #GtkNotebook widget with no pages.
 /*
 
-C function : gtk_notebook_new
+C function
+
+gtk_notebook_new
 */
 func NotebookNew() *Notebook {
 	retC := C.gtk_notebook_new()
@@ -25901,7 +26919,9 @@ func NotebookNew() *Notebook {
 // Appends a page to @notebook.
 /*
 
-C function : gtk_notebook_append_page
+C function
+
+gtk_notebook_append_page
 */
 func (recv *Notebook) AppendPage(child *Widget, tabLabel *Widget) int32 {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -25924,7 +26944,9 @@ func (recv *Notebook) AppendPage(child *Widget, tabLabel *Widget) int32 {
 // label in the popup menu.
 /*
 
-C function : gtk_notebook_append_page_menu
+C function
+
+gtk_notebook_append_page_menu
 */
 func (recv *Notebook) AppendPageMenu(child *Widget, tabLabel *Widget, menuLabel *Widget) int32 {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -25951,7 +26973,9 @@ func (recv *Notebook) AppendPageMenu(child *Widget, tabLabel *Widget, menuLabel 
 // Returns the page number of the current page.
 /*
 
-C function : gtk_notebook_get_current_page
+C function
+
+gtk_notebook_get_current_page
 */
 func (recv *Notebook) GetCurrentPage() int32 {
 	retC := C.gtk_notebook_get_current_page((*C.GtkNotebook)(recv.native))
@@ -25963,7 +26987,9 @@ func (recv *Notebook) GetCurrentPage() int32 {
 // Retrieves the menu label widget of the page containing @child.
 /*
 
-C function : gtk_notebook_get_menu_label
+C function
+
+gtk_notebook_get_menu_label
 */
 func (recv *Notebook) GetMenuLabel(child *Widget) *Widget {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -25986,7 +27012,9 @@ func (recv *Notebook) GetMenuLabel(child *Widget) *Widget {
 // @child.
 /*
 
-C function : gtk_notebook_get_menu_label_text
+C function
+
+gtk_notebook_get_menu_label_text
 */
 func (recv *Notebook) GetMenuLabelText(child *Widget) string {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -26003,7 +27031,9 @@ func (recv *Notebook) GetMenuLabelText(child *Widget) string {
 // Returns the child widget contained in page number @page_num.
 /*
 
-C function : gtk_notebook_get_nth_page
+C function
+
+gtk_notebook_get_nth_page
 */
 func (recv *Notebook) GetNthPage(pageNum int32) *Widget {
 	c_page_num := (C.gint)(pageNum)
@@ -26023,7 +27053,9 @@ func (recv *Notebook) GetNthPage(pageNum int32) *Widget {
 // See gtk_notebook_set_scrollable().
 /*
 
-C function : gtk_notebook_get_scrollable
+C function
+
+gtk_notebook_get_scrollable
 */
 func (recv *Notebook) GetScrollable() bool {
 	retC := C.gtk_notebook_get_scrollable((*C.GtkNotebook)(recv.native))
@@ -26036,7 +27068,9 @@ func (recv *Notebook) GetScrollable() bool {
 // See gtk_notebook_set_show_border().
 /*
 
-C function : gtk_notebook_get_show_border
+C function
+
+gtk_notebook_get_show_border
 */
 func (recv *Notebook) GetShowBorder() bool {
 	retC := C.gtk_notebook_get_show_border((*C.GtkNotebook)(recv.native))
@@ -26049,7 +27083,9 @@ func (recv *Notebook) GetShowBorder() bool {
 // See gtk_notebook_set_show_tabs().
 /*
 
-C function : gtk_notebook_get_show_tabs
+C function
+
+gtk_notebook_get_show_tabs
 */
 func (recv *Notebook) GetShowTabs() bool {
 	retC := C.gtk_notebook_get_show_tabs((*C.GtkNotebook)(recv.native))
@@ -26063,7 +27099,9 @@ func (recv *Notebook) GetShowTabs() bool {
 // if no tab label has specifically been set for @child.
 /*
 
-C function : gtk_notebook_get_tab_label
+C function
+
+gtk_notebook_get_tab_label
 */
 func (recv *Notebook) GetTabLabel(child *Widget) *Widget {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -26086,7 +27124,9 @@ func (recv *Notebook) GetTabLabel(child *Widget) *Widget {
 // @child.
 /*
 
-C function : gtk_notebook_get_tab_label_text
+C function
+
+gtk_notebook_get_tab_label_text
 */
 func (recv *Notebook) GetTabLabelText(child *Widget) string {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -26104,7 +27144,9 @@ func (recv *Notebook) GetTabLabelText(child *Widget) string {
 // notebook are drawn.
 /*
 
-C function : gtk_notebook_get_tab_pos
+C function
+
+gtk_notebook_get_tab_pos
 */
 func (recv *Notebook) GetTabPos() PositionType {
 	retC := C.gtk_notebook_get_tab_pos((*C.GtkNotebook)(recv.native))
@@ -26116,7 +27158,9 @@ func (recv *Notebook) GetTabPos() PositionType {
 // Insert a page into @notebook at the given position.
 /*
 
-C function : gtk_notebook_insert_page
+C function
+
+gtk_notebook_insert_page
 */
 func (recv *Notebook) InsertPage(child *Widget, tabLabel *Widget, position int32) int32 {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -26141,7 +27185,9 @@ func (recv *Notebook) InsertPage(child *Widget, tabLabel *Widget, position int32
 // the widget to use as the label in the popup menu.
 /*
 
-C function : gtk_notebook_insert_page_menu
+C function
+
+gtk_notebook_insert_page_menu
 */
 func (recv *Notebook) InsertPageMenu(child *Widget, tabLabel *Widget, menuLabel *Widget, position int32) int32 {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -26171,7 +27217,9 @@ func (recv *Notebook) InsertPageMenu(child *Widget, tabLabel *Widget, menuLabel 
 // the last page.
 /*
 
-C function : gtk_notebook_next_page
+C function
+
+gtk_notebook_next_page
 */
 func (recv *Notebook) NextPage() {
 	C.gtk_notebook_next_page((*C.GtkNotebook)(recv.native))
@@ -26183,7 +27231,9 @@ func (recv *Notebook) NextPage() {
 // widget.
 /*
 
-C function : gtk_notebook_page_num
+C function
+
+gtk_notebook_page_num
 */
 func (recv *Notebook) PageNum(child *Widget) int32 {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -26200,7 +27250,9 @@ func (recv *Notebook) PageNum(child *Widget) int32 {
 // Disables the popup menu.
 /*
 
-C function : gtk_notebook_popup_disable
+C function
+
+gtk_notebook_popup_disable
 */
 func (recv *Notebook) PopupDisable() {
 	C.gtk_notebook_popup_disable((*C.GtkNotebook)(recv.native))
@@ -26213,7 +27265,9 @@ func (recv *Notebook) PopupDisable() {
 // will be popped up.
 /*
 
-C function : gtk_notebook_popup_enable
+C function
+
+gtk_notebook_popup_enable
 */
 func (recv *Notebook) PopupEnable() {
 	C.gtk_notebook_popup_enable((*C.GtkNotebook)(recv.native))
@@ -26224,7 +27278,9 @@ func (recv *Notebook) PopupEnable() {
 // Prepends a page to @notebook.
 /*
 
-C function : gtk_notebook_prepend_page
+C function
+
+gtk_notebook_prepend_page
 */
 func (recv *Notebook) PrependPage(child *Widget, tabLabel *Widget) int32 {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -26247,7 +27303,9 @@ func (recv *Notebook) PrependPage(child *Widget, tabLabel *Widget) int32 {
 // label in the popup menu.
 /*
 
-C function : gtk_notebook_prepend_page_menu
+C function
+
+gtk_notebook_prepend_page_menu
 */
 func (recv *Notebook) PrependPageMenu(child *Widget, tabLabel *Widget, menuLabel *Widget) int32 {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -26275,7 +27333,9 @@ func (recv *Notebook) PrependPageMenu(child *Widget, tabLabel *Widget, menuLabel
 // is the first page.
 /*
 
-C function : gtk_notebook_prev_page
+C function
+
+gtk_notebook_prev_page
 */
 func (recv *Notebook) PrevPage() {
 	C.gtk_notebook_prev_page((*C.GtkNotebook)(recv.native))
@@ -26287,7 +27347,9 @@ func (recv *Notebook) PrevPage() {
 // in the notebook.
 /*
 
-C function : gtk_notebook_remove_page
+C function
+
+gtk_notebook_remove_page
 */
 func (recv *Notebook) RemovePage(pageNum int32) {
 	c_page_num := (C.gint)(pageNum)
@@ -26303,7 +27365,9 @@ func (recv *Notebook) RemovePage(pageNum int32) {
 // of the list.
 /*
 
-C function : gtk_notebook_reorder_child
+C function
+
+gtk_notebook_reorder_child
 */
 func (recv *Notebook) ReorderChild(child *Widget, position int32) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -26326,7 +27390,9 @@ func (recv *Notebook) ReorderChild(child *Widget, position int32) {
 // adding them to a notebook.
 /*
 
-C function : gtk_notebook_set_current_page
+C function
+
+gtk_notebook_set_current_page
 */
 func (recv *Notebook) SetCurrentPage(pageNum int32) {
 	c_page_num := (C.gint)(pageNum)
@@ -26339,7 +27405,9 @@ func (recv *Notebook) SetCurrentPage(pageNum int32) {
 // Changes the menu label for the page containing @child.
 /*
 
-C function : gtk_notebook_set_menu_label
+C function
+
+gtk_notebook_set_menu_label
 */
 func (recv *Notebook) SetMenuLabel(child *Widget, menuLabel *Widget) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -26360,7 +27428,9 @@ func (recv *Notebook) SetMenuLabel(child *Widget, menuLabel *Widget) {
 // Creates a new label and sets it as the menu label of @child.
 /*
 
-C function : gtk_notebook_set_menu_label_text
+C function
+
+gtk_notebook_set_menu_label_text
 */
 func (recv *Notebook) SetMenuLabelText(child *Widget, menuText string) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -26380,7 +27450,9 @@ func (recv *Notebook) SetMenuLabelText(child *Widget, menuText string) {
 // scrolling if there are too many tabs to fit in the area.
 /*
 
-C function : gtk_notebook_set_scrollable
+C function
+
+gtk_notebook_set_scrollable
 */
 func (recv *Notebook) SetScrollable(scrollable bool) {
 	c_scrollable :=
@@ -26396,7 +27468,9 @@ func (recv *Notebook) SetScrollable(scrollable bool) {
 // See gtk_notebook_set_show_tabs().
 /*
 
-C function : gtk_notebook_set_show_border
+C function
+
+gtk_notebook_set_show_border
 */
 func (recv *Notebook) SetShowBorder(showBorder bool) {
 	c_show_border :=
@@ -26410,7 +27484,9 @@ func (recv *Notebook) SetShowBorder(showBorder bool) {
 // Sets whether to show the tabs for the notebook or not.
 /*
 
-C function : gtk_notebook_set_show_tabs
+C function
+
+gtk_notebook_set_show_tabs
 */
 func (recv *Notebook) SetShowTabs(showTabs bool) {
 	c_show_tabs :=
@@ -26426,7 +27502,9 @@ func (recv *Notebook) SetShowTabs(showTabs bool) {
 // have the label “page N”.
 /*
 
-C function : gtk_notebook_set_tab_label
+C function
+
+gtk_notebook_set_tab_label
 */
 func (recv *Notebook) SetTabLabel(child *Widget, tabLabel *Widget) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -26448,7 +27526,9 @@ func (recv *Notebook) SetTabLabel(child *Widget, tabLabel *Widget) {
 // containing @child.
 /*
 
-C function : gtk_notebook_set_tab_label_text
+C function
+
+gtk_notebook_set_tab_label_text
 */
 func (recv *Notebook) SetTabLabelText(child *Widget, tabText string) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -26468,7 +27548,9 @@ func (recv *Notebook) SetTabLabelText(child *Widget, tabText string) {
 // notebook are drawn.
 /*
 
-C function : gtk_notebook_set_tab_pos
+C function
+
+gtk_notebook_set_tab_pos
 */
 func (recv *Notebook) SetTabPos(pos PositionType) {
 	c_pos := (C.GtkPositionType)(pos)
@@ -26490,7 +27572,9 @@ func (recv *Notebook) Buildable() *Buildable {
 
 /*
 
-C record/class : GtkNotebookAccessible
+C type
+
+GtkNotebookAccessible
 */
 type NotebookAccessible struct {
 	native *C.GtkNotebookAccessible
@@ -26552,7 +27636,9 @@ func (recv *NotebookAccessible) Selection() *atk.Selection {
 
 /*
 
-C record/class : GtkNotebookPageAccessible
+C type
+
+GtkNotebookPageAccessible
 */
 type NotebookPageAccessible struct {
 	native *C.GtkNotebookPageAccessible
@@ -26589,7 +27675,9 @@ func CastToNotebookPageAccessible(object *gobject.Object) *NotebookPageAccessibl
 
 /*
 
-C function : gtk_notebook_page_accessible_new
+C function
+
+gtk_notebook_page_accessible_new
 */
 func NotebookPageAccessibleNew(notebook *NotebookAccessible, child *Widget) *NotebookPageAccessible {
 	c_notebook := (*C.GtkNotebookAccessible)(C.NULL)
@@ -26610,7 +27698,9 @@ func NotebookPageAccessibleNew(notebook *NotebookAccessible, child *Widget) *Not
 
 /*
 
-C function : gtk_notebook_page_accessible_invalidate
+C function
+
+gtk_notebook_page_accessible_invalidate
 */
 func (recv *NotebookPageAccessible) Invalidate() {
 	C.gtk_notebook_page_accessible_invalidate((*C.GtkNotebookPageAccessible)(recv.native))
@@ -26636,7 +27726,9 @@ func (recv *NotebookPageAccessible) Component() *atk.Component {
 // ![](numerableicon2.png)
 /*
 
-C record/class : GtkNumerableIcon
+C type
+
+GtkNumerableIcon
 */
 type NumerableIcon struct {
 	native *C.GtkNumerableIcon
@@ -26700,7 +27792,9 @@ func (recv *NumerableIcon) Icon() *gio.Icon {
 // will emit a #GtkWidget::damage-event signal.
 /*
 
-C record/class : GtkOffscreenWindow
+C type
+
+GtkOffscreenWindow
 */
 type OffscreenWindow struct {
 	native *C.GtkOffscreenWindow
@@ -26795,7 +27889,9 @@ func (recv *OffscreenWindow) Buildable() *Buildable {
 // “.left”, “.right”, “.top”, and/or “.bottom” according to their position.
 /*
 
-C record/class : GtkOverlay
+C type
+
+GtkOverlay
 */
 type Overlay struct {
 	native *C.GtkOverlay
@@ -26869,7 +27965,11 @@ func (recv *Overlay) Buildable() *Buildable {
 // these affect the actual layout of the page, and thus need to be set
 // long before user prints.
 //
-// ## Margins ## {#print-margins}
+/*
+Margins
+
+(see print-margins)
+*/
 // The margins specified in this object are the “print margins”, i.e. the
 // parts of the page that the printer cannot print on. These are different
 // from the layout margins that a word processor uses; they are typically
@@ -26880,7 +27980,7 @@ func (recv *Overlay) Buildable() *Buildable {
 // or use gtk_print_run_page_setup_dialog() to show the page setup dialog
 // and receive the resulting page setup.
 //
-// ## A page setup dialog
+// A page setup dialog
 //
 // |[<!-- language="C" -->
 // static GtkPrintSettings *settings = NULL;
@@ -26907,7 +28007,9 @@ func (recv *Overlay) Buildable() *Buildable {
 // Printing support was added in GTK+ 2.10.
 /*
 
-C record/class : GtkPageSetup
+C type
+
+GtkPageSetup
 */
 type PageSetup struct {
 	native *C.GtkPageSetup
@@ -26987,7 +28089,7 @@ func CastToPageSetup(object *gobject.Object) *PageSetup {
 // from left to right. So :first-child will always select the leftmost child,
 // regardless of text direction.
 //
-// ## Creating a paned widget with minimum sizes.
+// Creating a paned widget with minimum sizes.
 //
 // |[<!-- language="C" -->
 // GtkWidget *hpaned = gtk_paned_new (GTK_ORIENTATION_HORIZONTAL);
@@ -27006,7 +28108,9 @@ func CastToPageSetup(object *gobject.Object) *PageSetup {
 // ]|
 /*
 
-C record/class : GtkPaned
+C type
+
+GtkPaned
 */
 type Paned struct {
 	native *C.GtkPaned
@@ -27061,7 +28165,9 @@ func CastToPaned(object *gobject.Object) *Paned {
 // `gtk_paned_pack1 (paned, child, FALSE, TRUE)`.
 /*
 
-C function : gtk_paned_add1
+C function
+
+gtk_paned_add1
 */
 func (recv *Paned) Add1(child *Widget) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -27079,7 +28185,9 @@ func (recv *Paned) Add1(child *Widget) {
 // `gtk_paned_pack2 (paned, child, TRUE, TRUE)`.
 /*
 
-C function : gtk_paned_add2
+C function
+
+gtk_paned_add2
 */
 func (recv *Paned) Add2(child *Widget) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -27095,7 +28203,9 @@ func (recv *Paned) Add2(child *Widget) {
 // Obtains the position of the divider between the two panes.
 /*
 
-C function : gtk_paned_get_position
+C function
+
+gtk_paned_get_position
 */
 func (recv *Paned) GetPosition() int32 {
 	retC := C.gtk_paned_get_position((*C.GtkPaned)(recv.native))
@@ -27107,7 +28217,9 @@ func (recv *Paned) GetPosition() int32 {
 // Adds a child to the top or left pane.
 /*
 
-C function : gtk_paned_pack1
+C function
+
+gtk_paned_pack1
 */
 func (recv *Paned) Pack1(child *Widget, resize bool, shrink bool) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -27129,7 +28241,9 @@ func (recv *Paned) Pack1(child *Widget, resize bool, shrink bool) {
 // Adds a child to the bottom or right pane.
 /*
 
-C function : gtk_paned_pack2
+C function
+
+gtk_paned_pack2
 */
 func (recv *Paned) Pack2(child *Widget, resize bool, shrink bool) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -27151,7 +28265,9 @@ func (recv *Paned) Pack2(child *Widget, resize bool, shrink bool) {
 // Sets the position of the divider between the two panes.
 /*
 
-C function : gtk_paned_set_position
+C function
+
+gtk_paned_set_position
 */
 func (recv *Paned) SetPosition(position int32) {
 	c_position := (C.gint)(position)
@@ -27178,7 +28294,9 @@ func (recv *Paned) Orientable() *Orientable {
 
 /*
 
-C record/class : GtkPanedAccessible
+C type
+
+GtkPanedAccessible
 */
 type PanedAccessible struct {
 	native *C.GtkPanedAccessible
@@ -27273,7 +28391,9 @@ func (recv *PanedAccessible) Value() *atk.Value {
 // - .has-open-popup when a popup is open for a row
 /*
 
-C record/class : GtkPlacesSidebar
+C type
+
+GtkPlacesSidebar
 */
 type PlacesSidebar struct {
 	native *C.GtkPlacesSidebar
@@ -27391,7 +28511,9 @@ func placessidebar_showConnectToServerHandler(_ *C.GObject, data C.gpointer) {
 // Returns the value previously set with gtk_places_sidebar_set_show_connect_to_server()
 /*
 
-C function : gtk_places_sidebar_get_show_connect_to_server
+C function
+
+gtk_places_sidebar_get_show_connect_to_server
 */
 func (recv *PlacesSidebar) GetShowConnectToServer() bool {
 	retC := C.gtk_places_sidebar_get_show_connect_to_server((*C.GtkPlacesSidebar)(recv.native))
@@ -27429,7 +28551,7 @@ func (recv *PlacesSidebar) Buildable() *Buildable {
 // is desired on a popover, gtk_popover_set_modal() may be called on it
 // to tweak its behavior.
 //
-// ## GtkPopover as menu replacement
+// GtkPopover as menu replacement
 //
 // GtkPopover is often used to replace menus. To facilitate this, it
 // supports being populated from a #GMenuModel, using
@@ -27475,7 +28597,9 @@ func (recv *PlacesSidebar) Buildable() *Buildable {
 // plain popovers.
 /*
 
-C record/class : GtkPopover
+C type
+
+GtkPopover
 */
 type Popover struct {
 	native *C.GtkPopover
@@ -27592,7 +28716,9 @@ func popover_closedHandler(_ *C.GObject, data C.gpointer) {
 // Returns the preferred position of @popover.
 /*
 
-C function : gtk_popover_get_position
+C function
+
+gtk_popover_get_position
 */
 func (recv *Popover) GetPosition() PositionType {
 	retC := C.gtk_popover_get_position((*C.GtkPopover)(recv.native))
@@ -27613,7 +28739,9 @@ func (recv *Popover) Buildable() *Buildable {
 
 /*
 
-C record/class : GtkPopoverAccessible
+C type
+
+GtkPopoverAccessible
 */
 type PopoverAccessible struct {
 	native *C.GtkPopoverAccessible
@@ -27741,7 +28869,9 @@ func (recv *PopoverAccessible) Component() *atk.Component {
 // and get the .menu style class.
 /*
 
-C record/class : GtkPopoverMenu
+C type
+
+GtkPopoverMenu
 */
 type PopoverMenu struct {
 	native *C.GtkPopoverMenu
@@ -27819,7 +28949,7 @@ func (recv *PopoverMenu) Buildable() *Buildable {
 // #GtkPrintOperation::end-print, #GtkPrintOperation::request-page-setup and
 // #GtkPrintOperation::draw-page signals on the #GtkPrintOperation.
 //
-// ## Using GtkPrintContext in a #GtkPrintOperation::draw-page callback
+// Using GtkPrintContext in a #GtkPrintOperation::draw-page callback
 //
 // |[<!-- language="C" -->
 // static void
@@ -27878,7 +29008,9 @@ func (recv *PopoverMenu) Buildable() *Buildable {
 // Printing support was added in GTK+ 2.10.
 /*
 
-C record/class : GtkPrintContext
+C type
+
+GtkPrintContext
 */
 type PrintContext struct {
 	native *C.GtkPrintContext
@@ -27974,7 +29106,9 @@ func CastToPrintContext(object *gobject.Object) *PrintContext {
 // are useful when implementing a print preview.
 /*
 
-C record/class : GtkPrintOperation
+C type
+
+GtkPrintOperation
 */
 type PrintOperation struct {
 	native *C.GtkPrintOperation
@@ -28028,7 +29162,9 @@ func (recv *PrintOperation) PrintOperationPreview() *PrintOperationPreview {
 // Printing support was added in GTK+ 2.10.
 /*
 
-C record/class : GtkPrintSettings
+C type
+
+GtkPrintSettings
 */
 type PrintSettings struct {
 	native *C.GtkPrintSettings
@@ -28102,7 +29238,9 @@ func CastToPrintSettings(object *gobject.Object) *PrintSettings {
 // in overlays like the one Epiphany has for page loading progress.
 /*
 
-C record/class : GtkProgressBar
+C type
+
+GtkProgressBar
 */
 type ProgressBar struct {
 	native *C.GtkProgressBar
@@ -28150,7 +29288,9 @@ func CastToProgressBar(object *gobject.Object) *ProgressBar {
 // Creates a new #GtkProgressBar.
 /*
 
-C function : gtk_progress_bar_new
+C function
+
+gtk_progress_bar_new
 */
 func ProgressBarNew() *ProgressBar {
 	retC := C.gtk_progress_bar_new()
@@ -28162,7 +29302,9 @@ func ProgressBarNew() *ProgressBar {
 // Returns the current fraction of the task that’s been completed.
 /*
 
-C function : gtk_progress_bar_get_fraction
+C function
+
+gtk_progress_bar_get_fraction
 */
 func (recv *ProgressBar) GetFraction() float64 {
 	retC := C.gtk_progress_bar_get_fraction((*C.GtkProgressBar)(recv.native))
@@ -28174,7 +29316,9 @@ func (recv *ProgressBar) GetFraction() float64 {
 // Gets the value set by gtk_progress_bar_set_inverted().
 /*
 
-C function : gtk_progress_bar_get_inverted
+C function
+
+gtk_progress_bar_get_inverted
 */
 func (recv *ProgressBar) GetInverted() bool {
 	retC := C.gtk_progress_bar_get_inverted((*C.GtkProgressBar)(recv.native))
@@ -28186,7 +29330,9 @@ func (recv *ProgressBar) GetInverted() bool {
 // Retrieves the pulse step set with gtk_progress_bar_set_pulse_step().
 /*
 
-C function : gtk_progress_bar_get_pulse_step
+C function
+
+gtk_progress_bar_get_pulse_step
 */
 func (recv *ProgressBar) GetPulseStep() float64 {
 	retC := C.gtk_progress_bar_get_pulse_step((*C.GtkProgressBar)(recv.native))
@@ -28201,7 +29347,9 @@ func (recv *ProgressBar) GetPulseStep() float64 {
 // if you change the text in the progress bar.
 /*
 
-C function : gtk_progress_bar_get_text
+C function
+
+gtk_progress_bar_get_text
 */
 func (recv *ProgressBar) GetText() string {
 	retC := C.gtk_progress_bar_get_text((*C.GtkProgressBar)(recv.native))
@@ -28217,7 +29365,9 @@ func (recv *ProgressBar) GetText() string {
 // per pulse is determined by gtk_progress_bar_set_pulse_step()).
 /*
 
-C function : gtk_progress_bar_pulse
+C function
+
+gtk_progress_bar_pulse
 */
 func (recv *ProgressBar) Pulse() {
 	C.gtk_progress_bar_pulse((*C.GtkProgressBar)(recv.native))
@@ -28230,7 +29380,9 @@ func (recv *ProgressBar) Pulse() {
 // inclusive.
 /*
 
-C function : gtk_progress_bar_set_fraction
+C function
+
+gtk_progress_bar_set_fraction
 */
 func (recv *ProgressBar) SetFraction(fraction float64) {
 	c_fraction := (C.gdouble)(fraction)
@@ -28244,7 +29396,9 @@ func (recv *ProgressBar) SetFraction(fraction float64) {
 // Inverted progress bars grow in the opposite direction.
 /*
 
-C function : gtk_progress_bar_set_inverted
+C function
+
+gtk_progress_bar_set_inverted
 */
 func (recv *ProgressBar) SetInverted(inverted bool) {
 	c_inverted :=
@@ -28259,7 +29413,9 @@ func (recv *ProgressBar) SetInverted(inverted bool) {
 // bouncing block for each call to gtk_progress_bar_pulse().
 /*
 
-C function : gtk_progress_bar_set_pulse_step
+C function
+
+gtk_progress_bar_set_pulse_step
 */
 func (recv *ProgressBar) SetPulseStep(fraction float64) {
 	c_fraction := (C.gdouble)(fraction)
@@ -28281,7 +29437,9 @@ func (recv *ProgressBar) SetPulseStep(fraction float64) {
 // #GtkProgressBar:show-text is %TRUE.
 /*
 
-C function : gtk_progress_bar_set_text
+C function
+
+gtk_progress_bar_set_text
 */
 func (recv *ProgressBar) SetText(text string) {
 	c_text := C.CString(text)
@@ -28309,7 +29467,9 @@ func (recv *ProgressBar) Orientable() *Orientable {
 
 /*
 
-C record/class : GtkProgressBarAccessible
+C type
+
+GtkProgressBarAccessible
 */
 type ProgressBarAccessible struct {
 	native *C.GtkProgressBarAccessible
@@ -28369,7 +29529,9 @@ func (recv *ProgressBarAccessible) Value() *atk.Value {
 // one time.
 /*
 
-C record/class : GtkRadioAction
+C type
+
+GtkRadioAction
 */
 type RadioAction struct {
 	native *C.GtkRadioAction
@@ -28469,7 +29631,7 @@ func (recv *RadioAction) Buildable() *Buildable {
 // to button and adds a .radio style class to it. The subnode is invisible
 // in this case.
 //
-// ## How to create a group of two radio buttons.
+// How to create a group of two radio buttons.
 //
 // |[<!-- language="C" -->
 // void create_radio_buttons (void) {
@@ -28505,7 +29667,9 @@ func (recv *RadioAction) Buildable() *Buildable {
 // can be used to determine if the button has been selected or deselected.
 /*
 
-C record/class : GtkRadioButton
+C type
+
+GtkRadioButton
 */
 type RadioButton struct {
 	native *C.GtkRadioButton
@@ -28579,7 +29743,9 @@ func CastToRadioButton(object *gobject.Object) *RadioButton {
 // then be packed into the radio button.
 /*
 
-C function : gtk_radio_button_new
+C function
+
+gtk_radio_button_new
 */
 func RadioButtonNew(group *glib.SList) *RadioButton {
 	c_group := (*C.GSList)(C.NULL)
@@ -28598,7 +29764,9 @@ func RadioButtonNew(group *glib.SList) *RadioButton {
 // should be packed into the radio button.
 /*
 
-C function : gtk_radio_button_new_from_widget
+C function
+
+gtk_radio_button_new_from_widget
 */
 func RadioButtonNewFromWidget(radioGroupMember *RadioButton) *RadioButton {
 	c_radio_group_member := (*C.GtkRadioButton)(C.NULL)
@@ -28615,7 +29783,9 @@ func RadioButtonNewFromWidget(radioGroupMember *RadioButton) *RadioButton {
 // Creates a new #GtkRadioButton with a text label.
 /*
 
-C function : gtk_radio_button_new_with_label
+C function
+
+gtk_radio_button_new_with_label
 */
 func RadioButtonNewWithLabel(group *glib.SList, label string) *RadioButton {
 	c_group := (*C.GSList)(C.NULL)
@@ -28636,7 +29806,9 @@ func RadioButtonNewWithLabel(group *glib.SList, label string) *RadioButton {
 // the same group as @radio_group_member.
 /*
 
-C function : gtk_radio_button_new_with_label_from_widget
+C function
+
+gtk_radio_button_new_with_label_from_widget
 */
 func RadioButtonNewWithLabelFromWidget(radioGroupMember *RadioButton, label string) *RadioButton {
 	c_radio_group_member := (*C.GtkRadioButton)(C.NULL)
@@ -28659,7 +29831,9 @@ func RadioButtonNewWithLabelFromWidget(radioGroupMember *RadioButton, label stri
 // mnemonic for the button.
 /*
 
-C function : gtk_radio_button_new_with_mnemonic
+C function
+
+gtk_radio_button_new_with_mnemonic
 */
 func RadioButtonNewWithMnemonic(group *glib.SList, label string) *RadioButton {
 	c_group := (*C.GSList)(C.NULL)
@@ -28681,7 +29855,9 @@ func RadioButtonNewWithMnemonic(group *glib.SList, label string) *RadioButton {
 // in @label indicate the mnemonic for the button.
 /*
 
-C function : gtk_radio_button_new_with_mnemonic_from_widget
+C function
+
+gtk_radio_button_new_with_mnemonic_from_widget
 */
 func RadioButtonNewWithMnemonicFromWidget(radioGroupMember *RadioButton, label string) *RadioButton {
 	c_radio_group_member := (*C.GtkRadioButton)(C.NULL)
@@ -28701,7 +29877,9 @@ func RadioButtonNewWithMnemonicFromWidget(radioGroupMember *RadioButton, label s
 // Retrieves the group assigned to a radio button.
 /*
 
-C function : gtk_radio_button_get_group
+C function
+
+gtk_radio_button_get_group
 */
 func (recv *RadioButton) GetGroup() *glib.SList {
 	retC := C.gtk_radio_button_get_group((*C.GtkRadioButton)(recv.native))
@@ -28716,7 +29894,9 @@ func (recv *RadioButton) GetGroup() *glib.SList {
 // changes.
 /*
 
-C function : gtk_radio_button_set_group
+C function
+
+gtk_radio_button_set_group
 */
 func (recv *RadioButton) SetGroup(group *glib.SList) {
 	c_group := (*C.GSList)(C.NULL)
@@ -28751,7 +29931,9 @@ func (recv *RadioButton) Buildable() *Buildable {
 
 /*
 
-C record/class : GtkRadioButtonAccessible
+C type
+
+GtkRadioButtonAccessible
 */
 type RadioButtonAccessible struct {
 	native *C.GtkRadioButtonAccessible
@@ -28835,7 +30017,7 @@ func (recv *RadioButtonAccessible) Image() *atk.Image {
 // The correct way to create a group of radio menu items is approximatively
 // this:
 //
-// ## How to create a group of radio menu items.
+// How to create a group of radio menu items.
 //
 // |[<!-- language="C" -->
 // GSList *group = NULL;
@@ -28863,7 +30045,9 @@ func (recv *RadioButtonAccessible) Image() *atk.Image {
 // with name radio, which gets the .left or .right style class.
 /*
 
-C record/class : GtkRadioMenuItem
+C type
+
+GtkRadioMenuItem
 */
 type RadioMenuItem struct {
 	native *C.GtkRadioMenuItem
@@ -28988,7 +30172,9 @@ func radiomenuitem_groupChangedHandler(_ *C.GObject, data C.gpointer) {
 // Creates a new #GtkRadioMenuItem.
 /*
 
-C function : gtk_radio_menu_item_new
+C function
+
+gtk_radio_menu_item_new
 */
 func RadioMenuItemNew(group *glib.SList) *RadioMenuItem {
 	c_group := (*C.GSList)(C.NULL)
@@ -29005,7 +30191,9 @@ func RadioMenuItemNew(group *glib.SList) *RadioMenuItem {
 // Creates a new #GtkRadioMenuItem whose child is a simple #GtkLabel.
 /*
 
-C function : gtk_radio_menu_item_new_with_label
+C function
+
+gtk_radio_menu_item_new_with_label
 */
 func RadioMenuItemNewWithLabel(group *glib.SList, label string) *RadioMenuItem {
 	c_group := (*C.GSList)(C.NULL)
@@ -29027,7 +30215,9 @@ func RadioMenuItemNewWithLabel(group *glib.SList, label string) *RadioMenuItem {
 // in @label indicate the mnemonic for the menu item.
 /*
 
-C function : gtk_radio_menu_item_new_with_mnemonic
+C function
+
+gtk_radio_menu_item_new_with_mnemonic
 */
 func RadioMenuItemNewWithMnemonic(group *glib.SList, label string) *RadioMenuItem {
 	c_group := (*C.GSList)(C.NULL)
@@ -29048,7 +30238,9 @@ func RadioMenuItemNewWithMnemonic(group *glib.SList, label string) *RadioMenuIte
 // #GtkRadioMenuItem. The list belongs to GTK+ and should not be freed.
 /*
 
-C function : gtk_radio_menu_item_get_group
+C function
+
+gtk_radio_menu_item_get_group
 */
 func (recv *RadioMenuItem) GetGroup() *glib.SList {
 	retC := C.gtk_radio_menu_item_get_group((*C.GtkRadioMenuItem)(recv.native))
@@ -29060,7 +30252,9 @@ func (recv *RadioMenuItem) GetGroup() *glib.SList {
 // Sets the group of a radio menu item, or changes it.
 /*
 
-C function : gtk_radio_menu_item_set_group
+C function
+
+gtk_radio_menu_item_set_group
 */
 func (recv *RadioMenuItem) SetGroup(group *glib.SList) {
 	c_group := (*C.GSList)(C.NULL)
@@ -29095,7 +30289,9 @@ func (recv *RadioMenuItem) Buildable() *Buildable {
 
 /*
 
-C record/class : GtkRadioMenuItemAccessible
+C type
+
+GtkRadioMenuItemAccessible
 */
 type RadioMenuItemAccessible struct {
 	native *C.GtkRadioMenuItemAccessible
@@ -29183,7 +30379,9 @@ func (recv *RadioMenuItemAccessible) Selection() *atk.Selection {
 // GtkRadioToolButton has a single CSS node with name toolbutton.
 /*
 
-C record/class : GtkRadioToolButton
+C type
+
+GtkRadioToolButton
 */
 type RadioToolButton struct {
 	native *C.GtkRadioToolButton
@@ -29281,7 +30479,9 @@ func (recv *RadioToolButton) Buildable() *Buildable {
 // “fill level” on range widgets. See gtk_range_set_fill_level().
 /*
 
-C record/class : GtkRange
+C type
+
+GtkRange
 */
 type Range struct {
 	native *C.GtkRange
@@ -29393,7 +30593,9 @@ func range_valueChangedHandler(_ *C.GObject, data C.gpointer) {
 // be unreferenced.
 /*
 
-C function : gtk_range_get_adjustment
+C function
+
+gtk_range_get_adjustment
 */
 func (recv *Range) GetAdjustment() *Adjustment {
 	retC := C.gtk_range_get_adjustment((*C.GtkRange)(recv.native))
@@ -29405,7 +30607,9 @@ func (recv *Range) GetAdjustment() *Adjustment {
 // Gets the value set by gtk_range_set_inverted().
 /*
 
-C function : gtk_range_get_inverted
+C function
+
+gtk_range_get_inverted
 */
 func (recv *Range) GetInverted() bool {
 	retC := C.gtk_range_get_inverted((*C.GtkRange)(recv.native))
@@ -29417,7 +30621,9 @@ func (recv *Range) GetInverted() bool {
 // Gets the current value of the range.
 /*
 
-C function : gtk_range_get_value
+C function
+
+gtk_range_get_value
 */
 func (recv *Range) GetValue() float64 {
 	retC := C.gtk_range_get_value((*C.GtkRange)(recv.native))
@@ -29435,7 +30641,9 @@ func (recv *Range) GetValue() float64 {
 // The page size affects the size of the scrollbar slider.
 /*
 
-C function : gtk_range_set_adjustment
+C function
+
+gtk_range_set_adjustment
 */
 func (recv *Range) SetAdjustment(adjustment *Adjustment) {
 	c_adjustment := (*C.GtkAdjustment)(C.NULL)
@@ -29454,7 +30662,9 @@ func (recv *Range) SetAdjustment(adjustment *Adjustment) {
 // is used for example when moving via Page Up or Page Down keys.
 /*
 
-C function : gtk_range_set_increments
+C function
+
+gtk_range_set_increments
 */
 func (recv *Range) SetIncrements(step float64, page float64) {
 	c_step := (C.gdouble)(step)
@@ -29472,7 +30682,9 @@ func (recv *Range) SetIncrements(step float64, page float64) {
 // on the bottom or left.
 /*
 
-C function : gtk_range_set_inverted
+C function
+
+gtk_range_set_inverted
 */
 func (recv *Range) SetInverted(setting bool) {
 	c_setting :=
@@ -29488,7 +30700,9 @@ func (recv *Range) SetInverted(setting bool) {
 // page size, it is clamped between @min and @max - page-size.)
 /*
 
-C function : gtk_range_set_range
+C function
+
+gtk_range_set_range
 */
 func (recv *Range) SetRange(min float64, max float64) {
 	c_min := (C.gdouble)(min)
@@ -29506,7 +30720,9 @@ func (recv *Range) SetRange(min float64, max float64) {
 // value changes.
 /*
 
-C function : gtk_range_set_value
+C function
+
+gtk_range_set_value
 */
 func (recv *Range) SetValue(value float64) {
 	c_value := (C.gdouble)(value)
@@ -29533,7 +30749,9 @@ func (recv *Range) Orientable() *Orientable {
 
 /*
 
-C record/class : GtkRangeAccessible
+C type
+
+GtkRangeAccessible
 */
 type RangeAccessible struct {
 	native *C.GtkRangeAccessible
@@ -29594,7 +30812,9 @@ func (recv *RangeAccessible) Value() *atk.Value {
 // #GtkRcStyle-struct<!-- -->s to form a #GtkStyle.
 /*
 
-C record/class : GtkRcStyle
+C type
+
+GtkRcStyle
 */
 type RcStyle struct {
 	native *C.GtkRcStyle
@@ -29657,7 +30877,9 @@ func CastToRcStyle(object *gobject.Object) *RcStyle {
 // a reference count of 1.
 /*
 
-C function : gtk_rc_style_new
+C function
+
+gtk_rc_style_new
 */
 func RcStyleNew() *RcStyle {
 	retC := C.gtk_rc_style_new()
@@ -29671,7 +30893,9 @@ func RcStyleNew() *RcStyle {
 // derived from #GtkRcStyle.
 /*
 
-C function : gtk_rc_style_copy
+C function
+
+gtk_rc_style_copy
 */
 func (recv *RcStyle) Copy() *RcStyle {
 	retC := C.gtk_rc_style_copy((*C.GtkRcStyle)(recv.native))
@@ -29690,7 +30914,9 @@ func (recv *RcStyle) Copy() *RcStyle {
 // action for a <toolitem> element.
 /*
 
-C record/class : GtkRecentAction
+C type
+
+GtkRecentAction
 */
 type RecentAction struct {
 	native *C.GtkRecentAction
@@ -29749,7 +30975,11 @@ func (recv *RecentAction) RecentChooser() *RecentChooser {
 // Note that #GtkRecentChooserDialog does not have any methods of its own.
 // Instead, you should use the functions that work on a #GtkRecentChooser.
 //
-// ## Typical usage ## {#gtkrecentchooser-typical-usage}
+/*
+Typical usage
+
+(see gtkrecentchooser-typical-usage)
+*/
 //
 // In the simplest of cases, you can use the following code to use
 // a #GtkRecentChooserDialog to select a recently used file:
@@ -29783,7 +31013,9 @@ func (recv *RecentAction) RecentChooser() *RecentChooser {
 // Recently used files are supported since GTK+ 2.10.
 /*
 
-C record/class : GtkRecentChooserDialog
+C type
+
+GtkRecentChooserDialog
 */
 type RecentChooserDialog struct {
 	native *C.GtkRecentChooserDialog
@@ -29883,7 +31115,9 @@ func (recv *RecentChooserDialog) RecentChooser() *RecentChooser {
 // Recently used files are supported since GTK+ 2.10.
 /*
 
-C record/class : GtkRecentChooserMenu
+C type
+
+GtkRecentChooserMenu
 */
 type RecentChooserMenu struct {
 	native *C.GtkRecentChooserMenu
@@ -29974,7 +31208,9 @@ func (recv *RecentChooserMenu) RecentChooser() *RecentChooser {
 // Recently used files are supported since GTK+ 2.10.
 /*
 
-C record/class : GtkRecentChooserWidget
+C type
+
+GtkRecentChooserWidget
 */
 type RecentChooserWidget struct {
 	native *C.GtkRecentChooserWidget
@@ -30068,7 +31304,7 @@ func (recv *RecentChooserWidget) RecentChooser() *RecentChooser {
 //
 // Recently used files are supported since GTK+ 2.10.
 //
-// ## GtkRecentFilter as GtkBuildable
+// GtkRecentFilter as GtkBuildable
 //
 // The GtkRecentFilter implementation of the GtkBuildable interface
 // supports adding rules using the <mime-types>, <patterns> and
@@ -30097,7 +31333,9 @@ func (recv *RecentChooserWidget) RecentChooser() *RecentChooser {
 // ]|
 /*
 
-C record/class : GtkRecentFilter
+C type
+
+GtkRecentFilter
 */
 type RecentFilter struct {
 	native *C.GtkRecentFilter
@@ -30142,7 +31380,9 @@ func (recv *RecentFilter) Buildable() *Buildable {
 
 /*
 
-C record/class : GtkRendererCellAccessible
+C type
+
+GtkRendererCellAccessible
 */
 type RendererCellAccessible struct {
 	native *C.GtkRendererCellAccessible
@@ -30189,7 +31429,9 @@ func CastToRendererCellAccessible(object *gobject.Object) *RendererCellAccessibl
 
 /*
 
-C function : gtk_renderer_cell_accessible_new
+C function
+
+gtk_renderer_cell_accessible_new
 */
 func RendererCellAccessibleNew(renderer *CellRenderer) *RendererCellAccessible {
 	c_renderer := (*C.GtkCellRenderer)(C.NULL)
@@ -30229,7 +31471,9 @@ func (recv *RendererCellAccessible) Component() *atk.Component {
 // The GtkRevealer widget was added in GTK+ 3.10.
 /*
 
-C record/class : GtkRevealer
+C type
+
+GtkRevealer
 */
 type Revealer struct {
 	native *C.GtkRevealer
@@ -30367,7 +31611,9 @@ func (recv *Revealer) Buildable() *Buildable {
 // subnode with name value.
 /*
 
-C record/class : GtkScale
+C type
+
+GtkScale
 */
 type Scale struct {
 	native *C.GtkScale
@@ -30422,7 +31668,9 @@ func CastToScale(object *gobject.Object) *Scale {
 // Gets the number of decimal places that are displayed in the value.
 /*
 
-C function : gtk_scale_get_digits
+C function
+
+gtk_scale_get_digits
 */
 func (recv *Scale) GetDigits() int32 {
 	retC := C.gtk_scale_get_digits((*C.GtkScale)(recv.native))
@@ -30435,7 +31683,9 @@ func (recv *Scale) GetDigits() int32 {
 // next to the slider.
 /*
 
-C function : gtk_scale_get_draw_value
+C function
+
+gtk_scale_get_draw_value
 */
 func (recv *Scale) GetDrawValue() bool {
 	retC := C.gtk_scale_get_draw_value((*C.GtkScale)(recv.native))
@@ -30447,7 +31697,9 @@ func (recv *Scale) GetDrawValue() bool {
 // Gets the position in which the current value is displayed.
 /*
 
-C function : gtk_scale_get_value_pos
+C function
+
+gtk_scale_get_value_pos
 */
 func (recv *Scale) GetValuePos() PositionType {
 	retC := C.gtk_scale_get_value_pos((*C.GtkScale)(recv.native))
@@ -30468,7 +31720,9 @@ func (recv *Scale) GetValuePos() PositionType {
 // value yourself.
 /*
 
-C function : gtk_scale_set_digits
+C function
+
+gtk_scale_set_digits
 */
 func (recv *Scale) SetDigits(digits int32) {
 	c_digits := (C.gint)(digits)
@@ -30482,7 +31736,9 @@ func (recv *Scale) SetDigits(digits int32) {
 // to the slider.
 /*
 
-C function : gtk_scale_set_draw_value
+C function
+
+gtk_scale_set_draw_value
 */
 func (recv *Scale) SetDrawValue(drawValue bool) {
 	c_draw_value :=
@@ -30496,7 +31752,9 @@ func (recv *Scale) SetDrawValue(drawValue bool) {
 // Sets the position in which the current value is displayed.
 /*
 
-C function : gtk_scale_set_value_pos
+C function
+
+gtk_scale_set_value_pos
 */
 func (recv *Scale) SetValuePos(pos PositionType) {
 	c_pos := (C.GtkPositionType)(pos)
@@ -30523,7 +31781,9 @@ func (recv *Scale) Orientable() *Orientable {
 
 /*
 
-C record/class : GtkScaleAccessible
+C type
+
+GtkScaleAccessible
 */
 type ScaleAccessible struct {
 	native *C.GtkScaleAccessible
@@ -30594,7 +31854,9 @@ func (recv *ScaleAccessible) Value() *atk.Value {
 // it from a plain #GtkButton, it gets the .scale style class.
 /*
 
-C record/class : GtkScaleButton
+C type
+
+GtkScaleButton
 */
 type ScaleButton struct {
 	native *C.GtkScaleButton
@@ -30681,7 +31943,9 @@ func (recv *ScaleButton) Orientable() *Orientable {
 
 /*
 
-C record/class : GtkScaleButtonAccessible
+C type
+
+GtkScaleButtonAccessible
 */
 type ScaleButtonAccessible struct {
 	native *C.GtkScaleButtonAccessible
@@ -30797,7 +32061,9 @@ func (recv *ScaleButtonAccessible) Value() *atk.Value {
 // classes related to overlay scrolling (.overlay-indicator, .dragging, .hovering).
 /*
 
-C record/class : GtkScrollbar
+C type
+
+GtkScrollbar
 */
 type Scrollbar struct {
 	native *C.GtkScrollbar
@@ -30940,7 +32206,9 @@ func (recv *Scrollbar) Orientable() *Orientable {
 // with a subnode named junction.
 /*
 
-C record/class : GtkScrolledWindow
+C type
+
+GtkScrolledWindow
 */
 type ScrolledWindow struct {
 	native *C.GtkScrolledWindow
@@ -31007,7 +32275,9 @@ func CastToScrolledWindow(object *gobject.Object) *ScrolledWindow {
 // will cause the scrolled window to create them for you.
 /*
 
-C function : gtk_scrolled_window_new
+C function
+
+gtk_scrolled_window_new
 */
 func ScrolledWindowNew(hadjustment *Adjustment, vadjustment *Adjustment) *ScrolledWindow {
 	c_hadjustment := (*C.GtkAdjustment)(C.NULL)
@@ -31044,7 +32314,9 @@ func ScrolledWindowNew(hadjustment *Adjustment, vadjustment *Adjustment) *Scroll
 // #GtkScrollable interface.
 /*
 
-C function : gtk_scrolled_window_add_with_viewport
+C function
+
+gtk_scrolled_window_add_with_viewport
 */
 func (recv *ScrolledWindow) AddWithViewport(child *Widget) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -31062,7 +32334,9 @@ func (recv *ScrolledWindow) AddWithViewport(child *Widget) {
 // functionality.
 /*
 
-C function : gtk_scrolled_window_get_hadjustment
+C function
+
+gtk_scrolled_window_get_hadjustment
 */
 func (recv *ScrolledWindow) GetHadjustment() *Adjustment {
 	retC := C.gtk_scrolled_window_get_hadjustment((*C.GtkScrolledWindow)(recv.native))
@@ -31075,7 +32349,9 @@ func (recv *ScrolledWindow) GetHadjustment() *Adjustment {
 // for the scrolled window. See gtk_scrolled_window_set_placement().
 /*
 
-C function : gtk_scrolled_window_get_placement
+C function
+
+gtk_scrolled_window_get_placement
 */
 func (recv *ScrolledWindow) GetPlacement() CornerType {
 	retC := C.gtk_scrolled_window_get_placement((*C.GtkScrolledWindow)(recv.native))
@@ -31090,7 +32366,9 @@ func (recv *ScrolledWindow) GetPlacement() CornerType {
 // gtk_scrolled_window_set_shadow_type().
 /*
 
-C function : gtk_scrolled_window_get_shadow_type
+C function
+
+gtk_scrolled_window_get_shadow_type
 */
 func (recv *ScrolledWindow) GetShadowType() ShadowType {
 	retC := C.gtk_scrolled_window_get_shadow_type((*C.GtkScrolledWindow)(recv.native))
@@ -31103,7 +32381,9 @@ func (recv *ScrolledWindow) GetShadowType() ShadowType {
 // vertical scrollbar to the child widget’s vertical scroll functionality.
 /*
 
-C function : gtk_scrolled_window_get_vadjustment
+C function
+
+gtk_scrolled_window_get_vadjustment
 */
 func (recv *ScrolledWindow) GetVadjustment() *Adjustment {
 	retC := C.gtk_scrolled_window_get_vadjustment((*C.GtkScrolledWindow)(recv.native))
@@ -31115,7 +32395,9 @@ func (recv *ScrolledWindow) GetVadjustment() *Adjustment {
 // Sets the #GtkAdjustment for the horizontal scrollbar.
 /*
 
-C function : gtk_scrolled_window_set_hadjustment
+C function
+
+gtk_scrolled_window_set_hadjustment
 */
 func (recv *ScrolledWindow) SetHadjustment(hadjustment *Adjustment) {
 	c_hadjustment := (*C.GtkAdjustment)(C.NULL)
@@ -31140,7 +32422,9 @@ func (recv *ScrolledWindow) SetHadjustment(hadjustment *Adjustment) {
 // gtk_scrolled_window_unset_placement().
 /*
 
-C function : gtk_scrolled_window_set_placement
+C function
+
+gtk_scrolled_window_set_placement
 */
 func (recv *ScrolledWindow) SetPlacement(windowPlacement CornerType) {
 	c_window_placement := (C.GtkCornerType)(windowPlacement)
@@ -31160,7 +32444,9 @@ func (recv *ScrolledWindow) SetPlacement(windowPlacement CornerType) {
 // than the trough — the display is larger than the page size).
 /*
 
-C function : gtk_scrolled_window_set_policy
+C function
+
+gtk_scrolled_window_set_policy
 */
 func (recv *ScrolledWindow) SetPolicy(hscrollbarPolicy PolicyType, vscrollbarPolicy PolicyType) {
 	c_hscrollbar_policy := (C.GtkPolicyType)(hscrollbarPolicy)
@@ -31176,7 +32462,9 @@ func (recv *ScrolledWindow) SetPolicy(hscrollbarPolicy PolicyType, vscrollbarPol
 // @scrolled_window.
 /*
 
-C function : gtk_scrolled_window_set_shadow_type
+C function
+
+gtk_scrolled_window_set_shadow_type
 */
 func (recv *ScrolledWindow) SetShadowType(type_ ShadowType) {
 	c_type := (C.GtkShadowType)(type_)
@@ -31189,7 +32477,9 @@ func (recv *ScrolledWindow) SetShadowType(type_ ShadowType) {
 // Sets the #GtkAdjustment for the vertical scrollbar.
 /*
 
-C function : gtk_scrolled_window_set_vadjustment
+C function
+
+gtk_scrolled_window_set_vadjustment
 */
 func (recv *ScrolledWindow) SetVadjustment(vadjustment *Adjustment) {
 	c_vadjustment := (*C.GtkAdjustment)(C.NULL)
@@ -31214,7 +32504,9 @@ func (recv *ScrolledWindow) Buildable() *Buildable {
 
 /*
 
-C record/class : GtkScrolledWindowAccessible
+C type
+
+GtkScrolledWindowAccessible
 */
 type ScrolledWindowAccessible struct {
 	native *C.GtkScrolledWindowAccessible
@@ -31289,12 +32581,14 @@ func (recv *ScrolledWindowAccessible) Component() *atk.Component {
 //
 // GtkSearchBar has a single CSS node with name searchbar.
 //
-// ## Creating a search bar
+// Creating a search bar
 //
 // [A simple example](https://git.gnome.org/browse/gtk+/tree/examples/search-bar.c)
 /*
 
-C record/class : GtkSearchBar
+C type
+
+GtkSearchBar
 */
 type SearchBar struct {
 	native *C.GtkSearchBar
@@ -31384,7 +32678,9 @@ func (recv *SearchBar) Buildable() *Buildable {
 // you can use gtk_search_entry_handle_event() to pass events.
 /*
 
-C record/class : GtkSearchEntry
+C type
+
+GtkSearchEntry
 */
 type SearchEntry struct {
 	native *C.GtkSearchEntry
@@ -31464,7 +32760,9 @@ func (recv *SearchEntry) Editable() *Editable {
 // gets one of the .horizontal or .vertical style classes.
 /*
 
-C record/class : GtkSeparator
+C type
+
+GtkSeparator
 */
 type Separator struct {
 	native *C.GtkSeparator
@@ -31533,7 +32831,9 @@ func (recv *Separator) Orientable() *Orientable {
 // GtkSeparatorMenuItem has a single CSS node with name separator.
 /*
 
-C record/class : GtkSeparatorMenuItem
+C type
+
+GtkSeparatorMenuItem
 */
 type SeparatorMenuItem struct {
 	native *C.GtkSeparatorMenuItem
@@ -31595,7 +32895,9 @@ func CastToSeparatorMenuItem(object *gobject.Object) *SeparatorMenuItem {
 // Creates a new #GtkSeparatorMenuItem.
 /*
 
-C function : gtk_separator_menu_item_new
+C function
+
+gtk_separator_menu_item_new
 */
 func SeparatorMenuItemNew() *SeparatorMenuItem {
 	retC := C.gtk_separator_menu_item_new()
@@ -31639,7 +32941,9 @@ func (recv *SeparatorMenuItem) Buildable() *Buildable {
 // GtkSeparatorToolItem has a single CSS node with name separator.
 /*
 
-C record/class : GtkSeparatorToolItem
+C type
+
+GtkSeparatorToolItem
 */
 type SeparatorToolItem struct {
 	native *C.GtkSeparatorToolItem
@@ -31752,7 +33056,9 @@ func (recv *SeparatorToolItem) Buildable() *Buildable {
 // GtkSettings instance for the default screen.
 /*
 
-C record/class : GtkSettings
+C type
+
+GtkSettings
 */
 type Settings struct {
 	native *C.GtkSettings
@@ -31789,7 +33095,9 @@ func CastToSettings(object *gobject.Object) *Settings {
 
 /*
 
-C function : gtk_settings_set_double_property
+C function
+
+gtk_settings_set_double_property
 */
 func (recv *Settings) SetDoubleProperty(name string, vDouble float64, origin string) {
 	c_name := C.CString(name)
@@ -31807,7 +33115,9 @@ func (recv *Settings) SetDoubleProperty(name string, vDouble float64, origin str
 
 /*
 
-C function : gtk_settings_set_long_property
+C function
+
+gtk_settings_set_long_property
 */
 func (recv *Settings) SetLongProperty(name string, vLong int64, origin string) {
 	c_name := C.CString(name)
@@ -31825,7 +33135,9 @@ func (recv *Settings) SetLongProperty(name string, vLong int64, origin string) {
 
 /*
 
-C function : gtk_settings_set_property_value
+C function
+
+gtk_settings_set_property_value
 */
 func (recv *Settings) SetPropertyValue(name string, svalue *SettingsValue) {
 	c_name := C.CString(name)
@@ -31843,7 +33155,9 @@ func (recv *Settings) SetPropertyValue(name string, svalue *SettingsValue) {
 
 /*
 
-C function : gtk_settings_set_string_property
+C function
+
+gtk_settings_set_string_property
 */
 func (recv *Settings) SetStringProperty(name string, vString string, origin string) {
 	c_name := C.CString(name)
@@ -31932,7 +33246,9 @@ func (recv *Settings) StyleProvider() *StyleProvider {
 // ]|
 /*
 
-C record/class : GtkSizeGroup
+C type
+
+GtkSizeGroup
 */
 type SizeGroup struct {
 	native *C.GtkSizeGroup
@@ -31970,7 +33286,9 @@ func CastToSizeGroup(object *gobject.Object) *SizeGroup {
 // Create a new #GtkSizeGroup.
 /*
 
-C function : gtk_size_group_new
+C function
+
+gtk_size_group_new
 */
 func SizeGroupNew(mode SizeGroupMode) *SizeGroup {
 	c_mode := (C.GtkSizeGroupMode)(mode)
@@ -31991,7 +33309,9 @@ func SizeGroupNew(mode SizeGroupMode) *SizeGroup {
 // be removed from the size group.
 /*
 
-C function : gtk_size_group_add_widget
+C function
+
+gtk_size_group_add_widget
 */
 func (recv *SizeGroup) AddWidget(widget *Widget) {
 	c_widget := (*C.GtkWidget)(C.NULL)
@@ -32007,7 +33327,9 @@ func (recv *SizeGroup) AddWidget(widget *Widget) {
 // Gets the current mode of the size group. See gtk_size_group_set_mode().
 /*
 
-C function : gtk_size_group_get_mode
+C function
+
+gtk_size_group_get_mode
 */
 func (recv *SizeGroup) GetMode() SizeGroupMode {
 	retC := C.gtk_size_group_get_mode((*C.GtkSizeGroup)(recv.native))
@@ -32019,7 +33341,9 @@ func (recv *SizeGroup) GetMode() SizeGroupMode {
 // Removes a widget from a #GtkSizeGroup.
 /*
 
-C function : gtk_size_group_remove_widget
+C function
+
+gtk_size_group_remove_widget
 */
 func (recv *SizeGroup) RemoveWidget(widget *Widget) {
 	c_widget := (*C.GtkWidget)(C.NULL)
@@ -32040,7 +33364,9 @@ func (recv *SizeGroup) RemoveWidget(widget *Widget) {
 // (%GTK_SIZE_GROUP_BOTH).
 /*
 
-C function : gtk_size_group_set_mode
+C function
+
+gtk_size_group_set_mode
 */
 func (recv *SizeGroup) SetMode(mode SizeGroupMode) {
 	c_mode := (C.GtkSizeGroupMode)(mode)
@@ -32100,7 +33426,7 @@ func (recv *SizeGroup) Buildable() *Buildable {
 // below the entry node. The orientation of the spin button is reflected in
 // the .vertical or .horizontal style class on the main node.
 //
-// ## Using a GtkSpinButton to get an integer
+// Using a GtkSpinButton to get an integer
 //
 // |[<!-- language="C" -->
 // Provides a function to retrieve an integer value from a GtkSpinButton
@@ -32133,7 +33459,7 @@ func (recv *SizeGroup) Buildable() *Buildable {
 // }
 // ]|
 //
-// ## Using a GtkSpinButton to get a floating point value
+// Using a GtkSpinButton to get a floating point value
 //
 // |[<!-- language="C" -->
 // Provides a function to retrieve a floating point value from a
@@ -32166,7 +33492,9 @@ func (recv *SizeGroup) Buildable() *Buildable {
 // ]|
 /*
 
-C record/class : GtkSpinButton
+C type
+
+GtkSpinButton
 */
 type SpinButton struct {
 	native *C.GtkSpinButton
@@ -32340,7 +33668,9 @@ func spinbutton_valueChangedHandler(_ *C.GObject, data C.gpointer) {
 // Creates a new #GtkSpinButton.
 /*
 
-C function : gtk_spin_button_new
+C function
+
+gtk_spin_button_new
 */
 func SpinButtonNew(adjustment *Adjustment, climbRate float64, digits uint32) *SpinButton {
 	c_adjustment := (*C.GtkAdjustment)(C.NULL)
@@ -32369,7 +33699,9 @@ func SpinButtonNew(adjustment *Adjustment, climbRate float64, digits uint32) *Sp
 // needs, use gtk_spin_button_set_digits() to correct it.
 /*
 
-C function : gtk_spin_button_new_with_range
+C function
+
+gtk_spin_button_new_with_range
 */
 func SpinButtonNewWithRange(min float64, max float64, step float64) *SpinButton {
 	c_min := (C.gdouble)(min)
@@ -32388,7 +33720,9 @@ func SpinButtonNewWithRange(min float64, max float64, step float64) *SpinButton 
 // climb rate, and number of decimal places are updated accordingly.
 /*
 
-C function : gtk_spin_button_configure
+C function
+
+gtk_spin_button_configure
 */
 func (recv *SpinButton) Configure(adjustment *Adjustment, climbRate float64, digits uint32) {
 	c_adjustment := (*C.GtkAdjustment)(C.NULL)
@@ -32408,7 +33742,9 @@ func (recv *SpinButton) Configure(adjustment *Adjustment, climbRate float64, dig
 // Get the adjustment associated with a #GtkSpinButton
 /*
 
-C function : gtk_spin_button_get_adjustment
+C function
+
+gtk_spin_button_get_adjustment
 */
 func (recv *SpinButton) GetAdjustment() *Adjustment {
 	retC := C.gtk_spin_button_get_adjustment((*C.GtkSpinButton)(recv.native))
@@ -32420,7 +33756,9 @@ func (recv *SpinButton) GetAdjustment() *Adjustment {
 // Fetches the precision of @spin_button. See gtk_spin_button_set_digits().
 /*
 
-C function : gtk_spin_button_get_digits
+C function
+
+gtk_spin_button_get_digits
 */
 func (recv *SpinButton) GetDigits() uint32 {
 	retC := C.gtk_spin_button_get_digits((*C.GtkSpinButton)(recv.native))
@@ -32433,7 +33771,9 @@ func (recv *SpinButton) GetDigits() uint32 {
 // gtk_spin_button_set_increments().
 /*
 
-C function : gtk_spin_button_get_increments
+C function
+
+gtk_spin_button_get_increments
 */
 func (recv *SpinButton) GetIncrements() (float64, float64) {
 	var c_step C.gdouble
@@ -32453,7 +33793,9 @@ func (recv *SpinButton) GetIncrements() (float64, float64) {
 // See gtk_spin_button_set_numeric().
 /*
 
-C function : gtk_spin_button_get_numeric
+C function
+
+gtk_spin_button_get_numeric
 */
 func (recv *SpinButton) GetNumeric() bool {
 	retC := C.gtk_spin_button_get_numeric((*C.GtkSpinButton)(recv.native))
@@ -32466,7 +33808,9 @@ func (recv *SpinButton) GetNumeric() bool {
 // See gtk_spin_button_set_range().
 /*
 
-C function : gtk_spin_button_get_range
+C function
+
+gtk_spin_button_get_range
 */
 func (recv *SpinButton) GetRange() (float64, float64) {
 	var c_min C.gdouble
@@ -32486,7 +33830,9 @@ func (recv *SpinButton) GetRange() (float64, float64) {
 // See gtk_spin_button_set_snap_to_ticks().
 /*
 
-C function : gtk_spin_button_get_snap_to_ticks
+C function
+
+gtk_spin_button_get_snap_to_ticks
 */
 func (recv *SpinButton) GetSnapToTicks() bool {
 	retC := C.gtk_spin_button_get_snap_to_ticks((*C.GtkSpinButton)(recv.native))
@@ -32499,7 +33845,9 @@ func (recv *SpinButton) GetSnapToTicks() bool {
 // See gtk_spin_button_set_update_policy().
 /*
 
-C function : gtk_spin_button_get_update_policy
+C function
+
+gtk_spin_button_get_update_policy
 */
 func (recv *SpinButton) GetUpdatePolicy() SpinButtonUpdatePolicy {
 	retC := C.gtk_spin_button_get_update_policy((*C.GtkSpinButton)(recv.native))
@@ -32511,7 +33859,9 @@ func (recv *SpinButton) GetUpdatePolicy() SpinButtonUpdatePolicy {
 // Get the value in the @spin_button.
 /*
 
-C function : gtk_spin_button_get_value
+C function
+
+gtk_spin_button_get_value
 */
 func (recv *SpinButton) GetValue() float64 {
 	retC := C.gtk_spin_button_get_value((*C.GtkSpinButton)(recv.native))
@@ -32523,7 +33873,9 @@ func (recv *SpinButton) GetValue() float64 {
 // Get the value @spin_button represented as an integer.
 /*
 
-C function : gtk_spin_button_get_value_as_int
+C function
+
+gtk_spin_button_get_value_as_int
 */
 func (recv *SpinButton) GetValueAsInt() int32 {
 	retC := C.gtk_spin_button_get_value_as_int((*C.GtkSpinButton)(recv.native))
@@ -32537,7 +33889,9 @@ func (recv *SpinButton) GetValueAsInt() int32 {
 // exceeded. See gtk_spin_button_set_wrap().
 /*
 
-C function : gtk_spin_button_get_wrap
+C function
+
+gtk_spin_button_get_wrap
 */
 func (recv *SpinButton) GetWrap() bool {
 	retC := C.gtk_spin_button_get_wrap((*C.GtkSpinButton)(recv.native))
@@ -32549,7 +33903,9 @@ func (recv *SpinButton) GetWrap() bool {
 // Replaces the #GtkAdjustment associated with @spin_button.
 /*
 
-C function : gtk_spin_button_set_adjustment
+C function
+
+gtk_spin_button_set_adjustment
 */
 func (recv *SpinButton) SetAdjustment(adjustment *Adjustment) {
 	c_adjustment := (*C.GtkAdjustment)(C.NULL)
@@ -32566,7 +33922,9 @@ func (recv *SpinButton) SetAdjustment(adjustment *Adjustment) {
 // is allowed.
 /*
 
-C function : gtk_spin_button_set_digits
+C function
+
+gtk_spin_button_set_digits
 */
 func (recv *SpinButton) SetDigits(digits uint32) {
 	c_digits := (C.guint)(digits)
@@ -32580,7 +33938,9 @@ func (recv *SpinButton) SetDigits(digits uint32) {
 // quickly the value changes when the spin button’s arrows are activated.
 /*
 
-C function : gtk_spin_button_set_increments
+C function
+
+gtk_spin_button_set_increments
 */
 func (recv *SpinButton) SetIncrements(step float64, page float64) {
 	c_step := (C.gdouble)(step)
@@ -32596,7 +33956,9 @@ func (recv *SpinButton) SetIncrements(step float64, page float64) {
 // into the spin button.
 /*
 
-C function : gtk_spin_button_set_numeric
+C function
+
+gtk_spin_button_set_numeric
 */
 func (recv *SpinButton) SetNumeric(numeric bool) {
 	c_numeric :=
@@ -32613,7 +33975,9 @@ func (recv *SpinButton) SetNumeric(numeric bool) {
 // to fit within the range, otherwise it will remain unchanged.
 /*
 
-C function : gtk_spin_button_set_range
+C function
+
+gtk_spin_button_set_range
 */
 func (recv *SpinButton) SetRange(min float64, max float64) {
 	c_min := (C.gdouble)(min)
@@ -32630,7 +33994,9 @@ func (recv *SpinButton) SetRange(min float64, max float64) {
 // providing an invalid value.
 /*
 
-C function : gtk_spin_button_set_snap_to_ticks
+C function
+
+gtk_spin_button_set_snap_to_ticks
 */
 func (recv *SpinButton) SetSnapToTicks(snapToTicks bool) {
 	c_snap_to_ticks :=
@@ -32646,7 +34012,9 @@ func (recv *SpinButton) SetSnapToTicks(snapToTicks bool) {
 // or only when a valid value is set.
 /*
 
-C function : gtk_spin_button_set_update_policy
+C function
+
+gtk_spin_button_set_update_policy
 */
 func (recv *SpinButton) SetUpdatePolicy(policy SpinButtonUpdatePolicy) {
 	c_policy := (C.GtkSpinButtonUpdatePolicy)(policy)
@@ -32659,7 +34027,9 @@ func (recv *SpinButton) SetUpdatePolicy(policy SpinButtonUpdatePolicy) {
 // Sets the value of @spin_button.
 /*
 
-C function : gtk_spin_button_set_value
+C function
+
+gtk_spin_button_set_value
 */
 func (recv *SpinButton) SetValue(value float64) {
 	c_value := (C.gdouble)(value)
@@ -32674,7 +34044,9 @@ func (recv *SpinButton) SetValue(value float64) {
 // of the range is exceeded.
 /*
 
-C function : gtk_spin_button_set_wrap
+C function
+
+gtk_spin_button_set_wrap
 */
 func (recv *SpinButton) SetWrap(wrap bool) {
 	c_wrap :=
@@ -32689,7 +34061,9 @@ func (recv *SpinButton) SetWrap(wrap bool) {
 // direction by a specified amount.
 /*
 
-C function : gtk_spin_button_spin
+C function
+
+gtk_spin_button_spin
 */
 func (recv *SpinButton) Spin(direction SpinType, increment float64) {
 	c_direction := (C.GtkSpinType)(direction)
@@ -32704,7 +34078,9 @@ func (recv *SpinButton) Spin(direction SpinType, increment float64) {
 // Manually force an update of the spin button.
 /*
 
-C function : gtk_spin_button_update
+C function
+
+gtk_spin_button_update
 */
 func (recv *SpinButton) Update() {
 	C.gtk_spin_button_update((*C.GtkSpinButton)(recv.native))
@@ -32739,7 +34115,9 @@ func (recv *SpinButton) Orientable() *Orientable {
 
 /*
 
-C record/class : GtkSpinButtonAccessible
+C type
+
+GtkSpinButtonAccessible
 */
 type SpinButtonAccessible struct {
 	native *C.GtkSpinButtonAccessible
@@ -32827,7 +34205,9 @@ func (recv *SpinButtonAccessible) Value() *atk.Value {
 // active, the :checked pseudoclass is added to this node.
 /*
 
-C record/class : GtkSpinner
+C type
+
+GtkSpinner
 */
 type Spinner struct {
 	native *C.GtkSpinner
@@ -32884,7 +34264,9 @@ func (recv *Spinner) Buildable() *Buildable {
 
 /*
 
-C record/class : GtkSpinnerAccessible
+C type
+
+GtkSpinnerAccessible
 */
 type SpinnerAccessible struct {
 	native *C.GtkSpinnerAccessible
@@ -32957,7 +34339,9 @@ func (recv *SpinnerAccessible) Image() *atk.Image {
 // GtkStack has a single CSS node named stack.
 /*
 
-C record/class : GtkStack
+C type
+
+GtkStack
 */
 type Stack struct {
 	native *C.GtkStack
@@ -33036,7 +34420,9 @@ func (recv *Stack) Buildable() *Buildable {
 // pages.
 /*
 
-C record/class : GtkStackSidebar
+C type
+
+GtkStackSidebar
 */
 type StackSidebar struct {
 	native *C.GtkStackSidebar
@@ -33124,7 +34510,9 @@ func (recv *StackSidebar) Buildable() *Buildable {
 // stack pages.
 /*
 
-C record/class : GtkStackSwitcher
+C type
+
+GtkStackSwitcher
 */
 type StackSwitcher struct {
 	native *C.GtkStackSwitcher
@@ -33228,7 +34616,9 @@ func (recv *StackSwitcher) Orientable() *Orientable {
 // for code examples.
 /*
 
-C record/class : GtkStatusIcon
+C type
+
+GtkStatusIcon
 */
 type StatusIcon struct {
 	native *C.GtkStatusIcon
@@ -33298,7 +34688,9 @@ func CastToStatusIcon(object *gobject.Object) *StatusIcon {
 // GtkStatusbar has a single CSS node with name statusbar.
 /*
 
-C record/class : GtkStatusbar
+C type
+
+GtkStatusbar
 */
 type Statusbar struct {
 	native *C.GtkStatusbar
@@ -33360,7 +34752,9 @@ func CastToStatusbar(object *gobject.Object) *Statusbar {
 // Creates a new #GtkStatusbar ready for messages.
 /*
 
-C function : gtk_statusbar_new
+C function
+
+gtk_statusbar_new
 */
 func StatusbarNew() *Statusbar {
 	retC := C.gtk_statusbar_new()
@@ -33374,7 +34768,9 @@ func StatusbarNew() *Statusbar {
 // not shown in the UI.
 /*
 
-C function : gtk_statusbar_get_context_id
+C function
+
+gtk_statusbar_get_context_id
 */
 func (recv *Statusbar) GetContextId(contextDescription string) uint32 {
 	c_context_description := C.CString(contextDescription)
@@ -33394,7 +34790,9 @@ func (recv *Statusbar) GetContextId(contextDescription string) uint32 {
 // context id.
 /*
 
-C function : gtk_statusbar_pop
+C function
+
+gtk_statusbar_pop
 */
 func (recv *Statusbar) Pop(contextId uint32) {
 	c_context_id := (C.guint)(contextId)
@@ -33407,7 +34805,9 @@ func (recv *Statusbar) Pop(contextId uint32) {
 // Pushes a new message onto a statusbar’s stack.
 /*
 
-C function : gtk_statusbar_push
+C function
+
+gtk_statusbar_push
 */
 func (recv *Statusbar) Push(contextId uint32, text string) uint32 {
 	c_context_id := (C.guint)(contextId)
@@ -33425,7 +34825,9 @@ func (recv *Statusbar) Push(contextId uint32, text string) uint32 {
 // The exact @context_id and @message_id must be specified.
 /*
 
-C function : gtk_statusbar_remove
+C function
+
+gtk_statusbar_remove
 */
 func (recv *Statusbar) Remove(contextId uint32, messageId uint32) {
 	c_context_id := (C.guint)(contextId)
@@ -33454,7 +34856,9 @@ func (recv *Statusbar) Orientable() *Orientable {
 
 /*
 
-C record/class : GtkStatusbarAccessible
+C type
+
+GtkStatusbarAccessible
 */
 type StatusbarAccessible struct {
 	native *C.GtkStatusbarAccessible
@@ -33527,7 +34931,9 @@ func (recv *StatusbarAccessible) Component() *atk.Component {
 // their widgets.
 /*
 
-C record/class : GtkStyle
+C type
+
+GtkStyle
 */
 type Style struct {
 	native *C.GtkStyle
@@ -33593,7 +34999,9 @@ func CastToStyle(object *gobject.Object) *Style {
 // Creates a new #GtkStyle.
 /*
 
-C function : gtk_style_new
+C function
+
+gtk_style_new
 */
 func StyleNew() *Style {
 	retC := C.gtk_style_new()
@@ -33604,7 +35012,9 @@ func StyleNew() *Style {
 
 /*
 
-C function : gtk_style_apply_default_background
+C function
+
+gtk_style_apply_default_background
 */
 func (recv *Style) ApplyDefaultBackground(cr *cairo.Context, window *gdk.Window, stateType StateType, x int32, y int32, width int32, height int32) {
 	c_cr := (*C.cairo_t)(C.NULL)
@@ -33643,7 +35053,9 @@ func (recv *Style) ApplyDefaultBackground(cr *cairo.Context, window *gdk.Window,
 // `style = gtk_style_attach (style, window)`
 /*
 
-C function : gtk_style_attach
+C function
+
+gtk_style_attach
 */
 func (recv *Style) Attach(window *gdk.Window) *Style {
 	c_window := (*C.GdkWindow)(C.NULL)
@@ -33660,7 +35072,9 @@ func (recv *Style) Attach(window *gdk.Window) *Style {
 // Creates a copy of the passed in #GtkStyle object.
 /*
 
-C function : gtk_style_copy
+C function
+
+gtk_style_copy
 */
 func (recv *Style) Copy() *Style {
 	retC := C.gtk_style_copy((*C.GtkStyle)(recv.native))
@@ -33673,7 +35087,9 @@ func (recv *Style) Copy() *Style {
 // to any windows anymore, it is unrealized. See gtk_style_attach().
 /*
 
-C function : gtk_style_detach
+C function
+
+gtk_style_detach
 */
 func (recv *Style) Detach() {
 	C.gtk_style_detach((*C.GtkStyle)(recv.native))
@@ -33686,7 +35102,9 @@ func (recv *Style) Detach() {
 // otherwise %NULL.
 /*
 
-C function : gtk_style_lookup_icon_set
+C function
+
+gtk_style_lookup_icon_set
 */
 func (recv *Style) LookupIconSet(stockId string) *IconSet {
 	c_stock_id := C.CString(stockId)
@@ -33703,7 +35121,9 @@ func (recv *Style) LookupIconSet(stockId string) *IconSet {
 // pixbuf.
 /*
 
-C function : gtk_style_render_icon
+C function
+
+gtk_style_render_icon
 */
 func (recv *Style) RenderIcon(source *IconSource, direction TextDirection, state StateType, size IconSize, widget *Widget, detail string) *gdkpixbuf.Pixbuf {
 	c_source := (*C.GtkIconSource)(C.NULL)
@@ -33735,7 +35155,9 @@ func (recv *Style) RenderIcon(source *IconSource, direction TextDirection, state
 // specified by @style for the given state.
 /*
 
-C function : gtk_style_set_background
+C function
+
+gtk_style_set_background
 */
 func (recv *Style) SetBackground(window *gdk.Window, stateType StateType) {
 	c_window := (*C.GdkWindow)(C.NULL)
@@ -33808,7 +35230,9 @@ func (recv *Style) SetBackground(window *gdk.Window, stateType StateType) {
 // %GTK_STYLE_PROVIDER_PRIORITY_USER priority.
 /*
 
-C record/class : GtkStyleContext
+C type
+
+GtkStyleContext
 */
 type StyleContext struct {
 	native *C.GtkStyleContext
@@ -33853,7 +35277,9 @@ func CastToStyleContext(object *gobject.Object) *StyleContext {
 // in order to get a style context ready to theme the widget.
 /*
 
-C function : gtk_style_context_new
+C function
+
+gtk_style_context_new
 */
 func StyleContextNew() *StyleContext {
 	retC := C.gtk_style_context_new()
@@ -33865,7 +35291,9 @@ func StyleContextNew() *StyleContext {
 // Returns the #GdkScreen to which @context is attached.
 /*
 
-C function : gtk_style_context_get_screen
+C function
+
+gtk_style_context_get_screen
 */
 func (recv *StyleContext) GetScreen() *gdk.Screen {
 	retC := C.gtk_style_context_get_screen((*C.GtkStyleContext)(recv.native))
@@ -33888,7 +35316,9 @@ func (recv *StyleContext) GetScreen() *gdk.Screen {
 // always return %NULL.
 /*
 
-C function : gtk_style_context_get_section
+C function
+
+gtk_style_context_get_section
 */
 func (recv *StyleContext) GetSection(property string) *CssSection {
 	c_property := C.CString(property)
@@ -33911,7 +35341,9 @@ func (recv *StyleContext) GetSection(property string) *CssSection {
 // to free any allocated memory.
 /*
 
-C function : gtk_style_context_get_style_property
+C function
+
+gtk_style_context_get_style_property
 */
 func (recv *StyleContext) GetStyleProperty(propertyName string, value *gobject.Value) {
 	c_property_name := C.CString(propertyName)
@@ -33930,7 +35362,9 @@ func (recv *StyleContext) GetStyleProperty(propertyName string, value *gobject.V
 // Looks up and resolves a color name in the @context color map.
 /*
 
-C function : gtk_style_context_lookup_color
+C function
+
+gtk_style_context_lookup_color
 */
 func (recv *StyleContext) LookupColor(colorName string) (bool, *gdk.RGBA) {
 	c_color_name := C.CString(colorName)
@@ -33951,7 +35385,9 @@ func (recv *StyleContext) LookupColor(colorName string) (bool, *gdk.RGBA) {
 // %NULL.
 /*
 
-C function : gtk_style_context_lookup_icon_set
+C function
+
+gtk_style_context_lookup_icon_set
 */
 func (recv *StyleContext) LookupIconSet(stockId string) *IconSet {
 	c_stock_id := C.CString(stockId)
@@ -33986,7 +35422,9 @@ func (recv *StyleContext) LookupIconSet(stockId string) *IconSet {
 // have been deprecated.
 /*
 
-C record/class : GtkStyleProperties
+C type
+
+GtkStyleProperties
 */
 type StyleProperties struct {
 	native *C.GtkStyleProperties
@@ -34024,7 +35462,9 @@ func CastToStyleProperties(object *gobject.Object) *StyleProperties {
 // Returns a newly created #GtkStyleProperties
 /*
 
-C function : gtk_style_properties_new
+C function
+
+gtk_style_properties_new
 */
 func StylePropertiesNew() *StyleProperties {
 	retC := C.gtk_style_properties_new()
@@ -34036,7 +35476,9 @@ func StylePropertiesNew() *StyleProperties {
 // Clears all style information from @props.
 /*
 
-C function : gtk_style_properties_clear
+C function
+
+gtk_style_properties_clear
 */
 func (recv *StyleProperties) Clear() {
 	C.gtk_style_properties_clear((*C.GtkStyleProperties)(recv.native))
@@ -34067,7 +35509,9 @@ func (recv *StyleProperties) StyleProvider() *StyleProvider {
 // named slider. Neither of them is using any style classes.
 /*
 
-C record/class : GtkSwitch
+C type
+
+GtkSwitch
 */
 type Switch struct {
 	native *C.GtkSwitch
@@ -34191,7 +35635,9 @@ func (recv *Switch) Buildable() *Buildable {
 
 /*
 
-C record/class : GtkSwitchAccessible
+C type
+
+GtkSwitchAccessible
 */
 type SwitchAccessible struct {
 	native *C.GtkSwitchAccessible
@@ -34272,7 +35718,9 @@ func (recv *SwitchAccessible) Component() *atk.Component {
 // > does support height-for-width geometry management.
 /*
 
-C record/class : GtkTable
+C type
+
+GtkTable
 */
 type Table struct {
 	native *C.GtkTable
@@ -34329,7 +35777,9 @@ func CastToTable(object *gobject.Object) *Table {
 // as well and is silently interpreted as 1.
 /*
 
-C function : gtk_table_new
+C function
+
+gtk_table_new
 */
 func TableNew(rows uint32, columns uint32, homogeneous bool) *Table {
 	c_rows := (C.guint)(rows)
@@ -34361,7 +35811,9 @@ func TableNew(rows uint32, columns uint32, homogeneous bool) *Table {
 // If you want to make the button span the entire bottom row, use @left_attach == 0 and @right_attach = 2 instead.
 /*
 
-C function : gtk_table_attach
+C function
+
+gtk_table_attach
 */
 func (recv *Table) Attach(child *Widget, leftAttach uint32, rightAttach uint32, topAttach uint32, bottomAttach uint32, xoptions AttachOptions, yoptions AttachOptions, xpadding uint32, ypadding uint32) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -34396,7 +35848,9 @@ func (recv *Table) Attach(child *Widget, leftAttach uint32, rightAttach uint32, 
 // are `GTK_EXPAND | GTK_FILL`, and the padding is set to 0.
 /*
 
-C function : gtk_table_attach_defaults
+C function
+
+gtk_table_attach_defaults
 */
 func (recv *Table) AttachDefaults(widget *Widget, leftAttach uint32, rightAttach uint32, topAttach uint32, bottomAttach uint32) {
 	c_widget := (*C.GtkWidget)(C.NULL)
@@ -34421,7 +35875,9 @@ func (recv *Table) AttachDefaults(widget *Widget, leftAttach uint32, rightAttach
 // column @col + 1. See gtk_table_set_col_spacing().
 /*
 
-C function : gtk_table_get_col_spacing
+C function
+
+gtk_table_get_col_spacing
 */
 func (recv *Table) GetColSpacing(column uint32) uint32 {
 	c_column := (C.guint)(column)
@@ -34437,7 +35893,9 @@ func (recv *Table) GetColSpacing(column uint32) uint32 {
 // (See gtk_table_set_col_spacings())
 /*
 
-C function : gtk_table_get_default_col_spacing
+C function
+
+gtk_table_get_default_col_spacing
 */
 func (recv *Table) GetDefaultColSpacing() uint32 {
 	retC := C.gtk_table_get_default_col_spacing((*C.GtkTable)(recv.native))
@@ -34451,7 +35909,9 @@ func (recv *Table) GetDefaultColSpacing() uint32 {
 // (See gtk_table_set_row_spacings())
 /*
 
-C function : gtk_table_get_default_row_spacing
+C function
+
+gtk_table_get_default_row_spacing
 */
 func (recv *Table) GetDefaultRowSpacing() uint32 {
 	retC := C.gtk_table_get_default_row_spacing((*C.GtkTable)(recv.native))
@@ -34464,7 +35924,9 @@ func (recv *Table) GetDefaultRowSpacing() uint32 {
 // width and height. (See gtk_table_set_homogeneous ())
 /*
 
-C function : gtk_table_get_homogeneous
+C function
+
+gtk_table_get_homogeneous
 */
 func (recv *Table) GetHomogeneous() bool {
 	retC := C.gtk_table_get_homogeneous((*C.GtkTable)(recv.native))
@@ -34477,7 +35939,9 @@ func (recv *Table) GetHomogeneous() bool {
 // row @row + 1. See gtk_table_set_row_spacing().
 /*
 
-C function : gtk_table_get_row_spacing
+C function
+
+gtk_table_get_row_spacing
 */
 func (recv *Table) GetRowSpacing(row uint32) uint32 {
 	c_row := (C.guint)(row)
@@ -34492,7 +35956,9 @@ func (recv *Table) GetRowSpacing(row uint32) uint32 {
 // it has been created, this function allows you to do so.
 /*
 
-C function : gtk_table_resize
+C function
+
+gtk_table_resize
 */
 func (recv *Table) Resize(rows uint32, columns uint32) {
 	c_rows := (C.guint)(rows)
@@ -34508,7 +35974,9 @@ func (recv *Table) Resize(rows uint32, columns uint32) {
 // column.
 /*
 
-C function : gtk_table_set_col_spacing
+C function
+
+gtk_table_set_col_spacing
 */
 func (recv *Table) SetColSpacing(column uint32, spacing uint32) {
 	c_column := (C.guint)(column)
@@ -34523,7 +35991,9 @@ func (recv *Table) SetColSpacing(column uint32, spacing uint32) {
 // Sets the space between every column in @table equal to @spacing.
 /*
 
-C function : gtk_table_set_col_spacings
+C function
+
+gtk_table_set_col_spacings
 */
 func (recv *Table) SetColSpacings(spacing uint32) {
 	c_spacing := (C.guint)(spacing)
@@ -34537,7 +36007,9 @@ func (recv *Table) SetColSpacings(spacing uint32) {
 // an equal size or not.
 /*
 
-C function : gtk_table_set_homogeneous
+C function
+
+gtk_table_set_homogeneous
 */
 func (recv *Table) SetHomogeneous(homogeneous bool) {
 	c_homogeneous :=
@@ -34551,7 +36023,9 @@ func (recv *Table) SetHomogeneous(homogeneous bool) {
 // Changes the space between a given table row and the subsequent row.
 /*
 
-C function : gtk_table_set_row_spacing
+C function
+
+gtk_table_set_row_spacing
 */
 func (recv *Table) SetRowSpacing(row uint32, spacing uint32) {
 	c_row := (C.guint)(row)
@@ -34566,7 +36040,9 @@ func (recv *Table) SetRowSpacing(row uint32, spacing uint32) {
 // Sets the space between every row in @table equal to @spacing.
 /*
 
-C function : gtk_table_set_row_spacings
+C function
+
+gtk_table_set_row_spacings
 */
 func (recv *Table) SetRowSpacings(spacing uint32) {
 	c_spacing := (C.guint)(spacing)
@@ -34603,7 +36079,9 @@ func (recv *Table) Buildable() *Buildable {
 // > written code. Menus are not meant to be torn around.
 /*
 
-C record/class : GtkTearoffMenuItem
+C type
+
+GtkTearoffMenuItem
 */
 type TearoffMenuItem struct {
 	native *C.GtkTearoffMenuItem
@@ -34666,7 +36144,9 @@ func CastToTearoffMenuItem(object *gobject.Object) *TearoffMenuItem {
 // Creates a new #GtkTearoffMenuItem.
 /*
 
-C function : gtk_tearoff_menu_item_new
+C function
+
+gtk_tearoff_menu_item_new
 */
 func TearoffMenuItemNew() *TearoffMenuItem {
 	retC := C.gtk_tearoff_menu_item_new()
@@ -34701,7 +36181,9 @@ func (recv *TearoffMenuItem) Buildable() *Buildable {
 // types related to the text widget and how they work together.
 /*
 
-C record/class : GtkTextBuffer
+C type
+
+GtkTextBuffer
 */
 type TextBuffer struct {
 	native *C.GtkTextBuffer
@@ -35398,7 +36880,9 @@ func textbuffer_removeTagHandler(_ *C.GObject, c_tag *C.GtkTextTag, c_start *C.G
 // Creates a new text buffer.
 /*
 
-C function : gtk_text_buffer_new
+C function
+
+gtk_text_buffer_new
 */
 func TextBufferNew(table *TextTagTable) *TextBuffer {
 	c_table := (*C.GtkTextTagTable)(C.NULL)
@@ -35417,7 +36901,9 @@ func TextBufferNew(table *TextTagTable) *TextBuffer {
 // the #GtkClipboard of type %GDK_SELECTION_PRIMARY for a view of @buffer.
 /*
 
-C function : gtk_text_buffer_add_selection_clipboard
+C function
+
+gtk_text_buffer_add_selection_clipboard
 */
 func (recv *TextBuffer) AddSelectionClipboard(clipboard *Clipboard) {
 	c_clipboard := (*C.GtkClipboard)(C.NULL)
@@ -35435,7 +36921,9 @@ func (recv *TextBuffer) AddSelectionClipboard(clipboard *Clipboard) {
 // @start and @end do not have to be in order.
 /*
 
-C function : gtk_text_buffer_apply_tag
+C function
+
+gtk_text_buffer_apply_tag
 */
 func (recv *TextBuffer) ApplyTag(tag *TextTag, start *TextIter, end *TextIter) {
 	c_tag := (*C.GtkTextTag)(C.NULL)
@@ -35462,7 +36950,9 @@ func (recv *TextBuffer) ApplyTag(tag *TextTag, start *TextIter, end *TextIter) {
 // get a #GtkTextTag, then calls gtk_text_buffer_apply_tag().
 /*
 
-C function : gtk_text_buffer_apply_tag_by_name
+C function
+
+gtk_text_buffer_apply_tag_by_name
 */
 func (recv *TextBuffer) ApplyTagByName(name string, start *TextIter, end *TextIter) {
 	c_name := C.CString(name)
@@ -35502,7 +36992,9 @@ func (recv *TextBuffer) ApplyTagByName(name string, start *TextIter, end *TextIt
 // single call to one of those functions.
 /*
 
-C function : gtk_text_buffer_begin_user_action
+C function
+
+gtk_text_buffer_begin_user_action
 */
 func (recv *TextBuffer) BeginUserAction() {
 	C.gtk_text_buffer_begin_user_action((*C.GtkTextBuffer)(recv.native))
@@ -35513,7 +37005,9 @@ func (recv *TextBuffer) BeginUserAction() {
 // Copies the currently-selected text to a clipboard.
 /*
 
-C function : gtk_text_buffer_copy_clipboard
+C function
+
+gtk_text_buffer_copy_clipboard
 */
 func (recv *TextBuffer) CopyClipboard(clipboard *Clipboard) {
 	c_clipboard := (*C.GtkClipboard)(C.NULL)
@@ -35533,7 +37027,9 @@ func (recv *TextBuffer) CopyClipboard(clipboard *Clipboard) {
 // the caller of gtk_text_buffer_create_child_anchor().
 /*
 
-C function : gtk_text_buffer_create_child_anchor
+C function
+
+gtk_text_buffer_create_child_anchor
 */
 func (recv *TextBuffer) CreateChildAnchor(iter *TextIter) *TextChildAnchor {
 	c_iter := (*C.GtkTextIter)(C.NULL)
@@ -35566,7 +37062,9 @@ func (recv *TextBuffer) CreateChildAnchor(iter *TextIter) *TextChildAnchor {
 // initial placement.
 /*
 
-C function : gtk_text_buffer_create_mark
+C function
+
+gtk_text_buffer_create_mark
 */
 func (recv *TextBuffer) CreateMark(markName string, where *TextIter, leftGravity bool) *TextMark {
 	c_mark_name := C.CString(markName)
@@ -35592,7 +37090,9 @@ func (recv *TextBuffer) CreateMark(markName string, where *TextIter, leftGravity
 // said text if it’s editable.
 /*
 
-C function : gtk_text_buffer_cut_clipboard
+C function
+
+gtk_text_buffer_cut_clipboard
 */
 func (recv *TextBuffer) CutClipboard(clipboard *Clipboard, defaultEditable bool) {
 	c_clipboard := (*C.GtkClipboard)(C.NULL)
@@ -35617,7 +37117,9 @@ func (recv *TextBuffer) CutClipboard(clipboard *Clipboard, defaultEditable bool)
 // re-initialized to point to the location where text was deleted.
 /*
 
-C function : gtk_text_buffer_delete
+C function
+
+gtk_text_buffer_delete
 */
 func (recv *TextBuffer) Delete(start *TextIter, end *TextIter) {
 	c_start := (*C.GtkTextIter)(C.NULL)
@@ -35642,7 +37144,9 @@ func (recv *TextBuffer) Delete(start *TextIter, end *TextIter) {
 // no text was deleted.
 /*
 
-C function : gtk_text_buffer_delete_interactive
+C function
+
+gtk_text_buffer_delete_interactive
 */
 func (recv *TextBuffer) DeleteInteractive(startIter *TextIter, endIter *TextIter, defaultEditable bool) bool {
 	c_start_iter := (*C.GtkTextIter)(C.NULL)
@@ -35675,7 +37179,9 @@ func (recv *TextBuffer) DeleteInteractive(startIter *TextIter, endIter *TextIter
 // the mark is deleted.
 /*
 
-C function : gtk_text_buffer_delete_mark
+C function
+
+gtk_text_buffer_delete_mark
 */
 func (recv *TextBuffer) DeleteMark(mark *TextMark) {
 	c_mark := (*C.GtkTextMark)(C.NULL)
@@ -35692,7 +37198,9 @@ func (recv *TextBuffer) DeleteMark(mark *TextMark) {
 // gtk_text_buffer_delete_mark() for details.
 /*
 
-C function : gtk_text_buffer_delete_mark_by_name
+C function
+
+gtk_text_buffer_delete_mark_by_name
 */
 func (recv *TextBuffer) DeleteMarkByName(name string) {
 	c_name := C.CString(name)
@@ -35709,7 +37217,9 @@ func (recv *TextBuffer) DeleteMarkByName(name string) {
 // uneditable text).
 /*
 
-C function : gtk_text_buffer_delete_selection
+C function
+
+gtk_text_buffer_delete_selection
 */
 func (recv *TextBuffer) DeleteSelection(interactive bool, defaultEditable bool) bool {
 	c_interactive :=
@@ -35728,7 +37238,9 @@ func (recv *TextBuffer) DeleteSelection(interactive bool, defaultEditable bool) 
 // See that function for a full explanation.
 /*
 
-C function : gtk_text_buffer_end_user_action
+C function
+
+gtk_text_buffer_end_user_action
 */
 func (recv *TextBuffer) EndUserAction() {
 	C.gtk_text_buffer_end_user_action((*C.GtkTextBuffer)(recv.native))
@@ -35740,7 +37252,9 @@ func (recv *TextBuffer) EndUserAction() {
 // entire buffer lies within the range [@start,@end).
 /*
 
-C function : gtk_text_buffer_get_bounds
+C function
+
+gtk_text_buffer_get_bounds
 */
 func (recv *TextBuffer) GetBounds() (*TextIter, *TextIter) {
 	var c_start C.GtkTextIter
@@ -35762,7 +37276,9 @@ func (recv *TextBuffer) GetBounds() (*TextIter, *TextIter) {
 // count is cached, so this function is very fast.
 /*
 
-C function : gtk_text_buffer_get_char_count
+C function
+
+gtk_text_buffer_get_char_count
 */
 func (recv *TextBuffer) GetCharCount() int32 {
 	retC := C.gtk_text_buffer_get_char_count((*C.GtkTextBuffer)(recv.native))
@@ -35779,7 +37295,9 @@ func (recv *TextBuffer) GetCharCount() int32 {
 // character position 0) to the end iterator.
 /*
 
-C function : gtk_text_buffer_get_end_iter
+C function
+
+gtk_text_buffer_get_end_iter
 */
 func (recv *TextBuffer) GetEndIter() *TextIter {
 	var c_iter C.GtkTextIter
@@ -35797,7 +37315,9 @@ func (recv *TextBuffer) GetEndIter() *TextIter {
 // typing.
 /*
 
-C function : gtk_text_buffer_get_insert
+C function
+
+gtk_text_buffer_get_insert
 */
 func (recv *TextBuffer) GetInsert() *TextMark {
 	retC := C.gtk_text_buffer_get_insert((*C.GtkTextBuffer)(recv.native))
@@ -35809,7 +37329,9 @@ func (recv *TextBuffer) GetInsert() *TextMark {
 // Obtains the location of @anchor within @buffer.
 /*
 
-C function : gtk_text_buffer_get_iter_at_child_anchor
+C function
+
+gtk_text_buffer_get_iter_at_child_anchor
 */
 func (recv *TextBuffer) GetIterAtChildAnchor(anchor *TextChildAnchor) *TextIter {
 	var c_iter C.GtkTextIter
@@ -35830,7 +37352,9 @@ func (recv *TextBuffer) GetIterAtChildAnchor(anchor *TextChildAnchor) *TextIter 
 // than the number of lines in the @buffer, the end iterator is returned.
 /*
 
-C function : gtk_text_buffer_get_iter_at_line
+C function
+
+gtk_text_buffer_get_iter_at_line
 */
 func (recv *TextBuffer) GetIterAtLine(lineNumber int32) *TextIter {
 	var c_iter C.GtkTextIter
@@ -35855,7 +37379,9 @@ func (recv *TextBuffer) GetIterAtLine(lineNumber int32) *TextIter {
 // end of the line, the iterator at the end of the line is returned.
 /*
 
-C function : gtk_text_buffer_get_iter_at_line_index
+C function
+
+gtk_text_buffer_get_iter_at_line_index
 */
 func (recv *TextBuffer) GetIterAtLineIndex(lineNumber int32, byteIndex int32) *TextIter {
 	var c_iter C.GtkTextIter
@@ -35881,7 +37407,9 @@ func (recv *TextBuffer) GetIterAtLineIndex(lineNumber int32, byteIndex int32) *T
 // end of the line, the iterator at the end of the line is returned.
 /*
 
-C function : gtk_text_buffer_get_iter_at_line_offset
+C function
+
+gtk_text_buffer_get_iter_at_line_offset
 */
 func (recv *TextBuffer) GetIterAtLineOffset(lineNumber int32, charOffset int32) *TextIter {
 	var c_iter C.GtkTextIter
@@ -35900,7 +37428,9 @@ func (recv *TextBuffer) GetIterAtLineOffset(lineNumber int32, charOffset int32) 
 // Initializes @iter with the current position of @mark.
 /*
 
-C function : gtk_text_buffer_get_iter_at_mark
+C function
+
+gtk_text_buffer_get_iter_at_mark
 */
 func (recv *TextBuffer) GetIterAtMark(mark *TextMark) *TextIter {
 	var c_iter C.GtkTextIter
@@ -35923,7 +37453,9 @@ func (recv *TextBuffer) GetIterAtMark(mark *TextMark) *TextIter {
 // the iterator one past the last valid character in the buffer.
 /*
 
-C function : gtk_text_buffer_get_iter_at_offset
+C function
+
+gtk_text_buffer_get_iter_at_offset
 */
 func (recv *TextBuffer) GetIterAtOffset(charOffset int32) *TextIter {
 	var c_iter C.GtkTextIter
@@ -35941,7 +37473,9 @@ func (recv *TextBuffer) GetIterAtOffset(charOffset int32) *TextIter {
 // the function is very fast.
 /*
 
-C function : gtk_text_buffer_get_line_count
+C function
+
+gtk_text_buffer_get_line_count
 */
 func (recv *TextBuffer) GetLineCount() int32 {
 	retC := C.gtk_text_buffer_get_line_count((*C.GtkTextBuffer)(recv.native))
@@ -35954,7 +37488,9 @@ func (recv *TextBuffer) GetLineCount() int32 {
 // mark exists in the buffer.
 /*
 
-C function : gtk_text_buffer_get_mark
+C function
+
+gtk_text_buffer_get_mark
 */
 func (recv *TextBuffer) GetMark(name string) *TextMark {
 	c_name := C.CString(name)
@@ -35977,7 +37513,9 @@ func (recv *TextBuffer) GetMark(name string) *TextMark {
 // editor.
 /*
 
-C function : gtk_text_buffer_get_modified
+C function
+
+gtk_text_buffer_get_modified
 */
 func (recv *TextBuffer) GetModified() bool {
 	retC := C.gtk_text_buffer_get_modified((*C.GtkTextBuffer)(recv.native))
@@ -35999,7 +37537,9 @@ func (recv *TextBuffer) GetModified() bool {
 // selection and what its bounds are.
 /*
 
-C function : gtk_text_buffer_get_selection_bound
+C function
+
+gtk_text_buffer_get_selection_bound
 */
 func (recv *TextBuffer) GetSelectionBound() *TextMark {
 	retC := C.gtk_text_buffer_get_selection_bound((*C.GtkTextBuffer)(recv.native))
@@ -36016,7 +37556,9 @@ func (recv *TextBuffer) GetSelectionBound() *TextMark {
 // whether text is selected.
 /*
 
-C function : gtk_text_buffer_get_selection_bounds
+C function
+
+gtk_text_buffer_get_selection_bounds
 */
 func (recv *TextBuffer) GetSelectionBounds() (bool, *TextIter, *TextIter) {
 	var c_start C.GtkTextIter
@@ -36045,7 +37587,9 @@ func (recv *TextBuffer) GetSelectionBounds() (bool, *TextIter, *TextIter) {
 // widget is in the buffer.
 /*
 
-C function : gtk_text_buffer_get_slice
+C function
+
+gtk_text_buffer_get_slice
 */
 func (recv *TextBuffer) GetSlice(start *TextIter, end *TextIter, includeHiddenChars bool) string {
 	c_start := (*C.GtkTextIter)(C.NULL)
@@ -36073,7 +37617,9 @@ func (recv *TextBuffer) GetSlice(start *TextIter, end *TextIter, includeHiddenCh
 // the iter at character offset 0.
 /*
 
-C function : gtk_text_buffer_get_start_iter
+C function
+
+gtk_text_buffer_get_start_iter
 */
 func (recv *TextBuffer) GetStartIter() *TextIter {
 	var c_iter C.GtkTextIter
@@ -36088,7 +37634,9 @@ func (recv *TextBuffer) GetStartIter() *TextIter {
 // Get the #GtkTextTagTable associated with this buffer.
 /*
 
-C function : gtk_text_buffer_get_tag_table
+C function
+
+gtk_text_buffer_get_tag_table
 */
 func (recv *TextBuffer) GetTagTable() *TextTagTable {
 	retC := C.gtk_text_buffer_get_tag_table((*C.GtkTextBuffer)(recv.native))
@@ -36106,7 +37654,9 @@ func (recv *TextBuffer) GetTagTable() *TextTagTable {
 // gtk_text_buffer_get_slice().
 /*
 
-C function : gtk_text_buffer_get_text
+C function
+
+gtk_text_buffer_get_text
 */
 func (recv *TextBuffer) GetText(start *TextIter, end *TextIter, includeHiddenChars bool) string {
 	c_start := (*C.GtkTextIter)(C.NULL)
@@ -36138,7 +37688,9 @@ func (recv *TextBuffer) GetText(start *TextIter, end *TextIter, includeHiddenCha
 // inserted text.
 /*
 
-C function : gtk_text_buffer_insert
+C function
+
+gtk_text_buffer_insert
 */
 func (recv *TextBuffer) Insert(iter *TextIter, text string, len int32) {
 	c_iter := (*C.GtkTextIter)(C.NULL)
@@ -36160,7 +37712,9 @@ func (recv *TextBuffer) Insert(iter *TextIter, text string, len int32) {
 // cursor position as the insertion point.
 /*
 
-C function : gtk_text_buffer_insert_at_cursor
+C function
+
+gtk_text_buffer_insert_at_cursor
 */
 func (recv *TextBuffer) InsertAtCursor(text string, len int32) {
 	c_text := C.CString(text)
@@ -36186,7 +37740,9 @@ func (recv *TextBuffer) InsertAtCursor(text string, len int32) {
 // the anchor, so you can unref it after insertion.
 /*
 
-C function : gtk_text_buffer_insert_child_anchor
+C function
+
+gtk_text_buffer_insert_child_anchor
 */
 func (recv *TextBuffer) InsertChildAnchor(iter *TextIter, anchor *TextChildAnchor) {
 	c_iter := (*C.GtkTextIter)(C.NULL)
@@ -36214,7 +37770,9 @@ func (recv *TextBuffer) InsertChildAnchor(iter *TextIter, anchor *TextChildAncho
 // result of gtk_text_view_get_editable() is appropriate here.
 /*
 
-C function : gtk_text_buffer_insert_interactive
+C function
+
+gtk_text_buffer_insert_interactive
 */
 func (recv *TextBuffer) InsertInteractive(iter *TextIter, text string, len int32, defaultEditable bool) bool {
 	c_iter := (*C.GtkTextIter)(C.NULL)
@@ -36244,7 +37802,9 @@ func (recv *TextBuffer) InsertInteractive(iter *TextIter, text string, len int32
 // result of gtk_text_view_get_editable() is appropriate here.
 /*
 
-C function : gtk_text_buffer_insert_interactive_at_cursor
+C function
+
+gtk_text_buffer_insert_interactive_at_cursor
 */
 func (recv *TextBuffer) InsertInteractiveAtCursor(text string, len int32, defaultEditable bool) bool {
 	c_text := C.CString(text)
@@ -36271,7 +37831,9 @@ func (recv *TextBuffer) InsertInteractiveAtCursor(text string, len int32, defaul
 // gtk_text_buffer_get_text().
 /*
 
-C function : gtk_text_buffer_insert_pixbuf
+C function
+
+gtk_text_buffer_insert_pixbuf
 */
 func (recv *TextBuffer) InsertPixbuf(iter *TextIter, pixbuf *gdkpixbuf.Pixbuf) {
 	c_iter := (*C.GtkTextIter)(C.NULL)
@@ -36299,7 +37861,9 @@ func (recv *TextBuffer) InsertPixbuf(iter *TextIter, pixbuf *gdkpixbuf.Pixbuf) {
 // so expect those.
 /*
 
-C function : gtk_text_buffer_insert_range
+C function
+
+gtk_text_buffer_insert_range
 */
 func (recv *TextBuffer) InsertRange(iter *TextIter, start *TextIter, end *TextIter) {
 	c_iter := (*C.GtkTextIter)(C.NULL)
@@ -36329,7 +37893,9 @@ func (recv *TextBuffer) InsertRange(iter *TextIter, start *TextIter, end *TextIt
 // gtk_text_view_get_editable() is appropriate here.
 /*
 
-C function : gtk_text_buffer_insert_range_interactive
+C function
+
+gtk_text_buffer_insert_range_interactive
 */
 func (recv *TextBuffer) InsertRangeInteractive(iter *TextIter, start *TextIter, end *TextIter, defaultEditable bool) bool {
 	c_iter := (*C.GtkTextIter)(C.NULL)
@@ -36364,7 +37930,9 @@ func (recv *TextBuffer) InsertRangeInteractive(iter *TextIter, start *TextIter, 
 // signal as notification of the move.
 /*
 
-C function : gtk_text_buffer_move_mark
+C function
+
+gtk_text_buffer_move_mark
 */
 func (recv *TextBuffer) MoveMark(mark *TextMark, where *TextIter) {
 	c_mark := (*C.GtkTextMark)(C.NULL)
@@ -36386,7 +37954,9 @@ func (recv *TextBuffer) MoveMark(mark *TextMark, where *TextIter) {
 // See gtk_text_buffer_move_mark() for details.
 /*
 
-C function : gtk_text_buffer_move_mark_by_name
+C function
+
+gtk_text_buffer_move_mark_by_name
 */
 func (recv *TextBuffer) MoveMarkByName(name string, where *TextIter) {
 	c_name := C.CString(name)
@@ -36411,7 +37981,9 @@ func (recv *TextBuffer) MoveMarkByName(name string, where *TextIter) {
 // be inserted.
 /*
 
-C function : gtk_text_buffer_paste_clipboard
+C function
+
+gtk_text_buffer_paste_clipboard
 */
 func (recv *TextBuffer) PasteClipboard(clipboard *Clipboard, overrideLocation *TextIter, defaultEditable bool) {
 	c_clipboard := (*C.GtkClipboard)(C.NULL)
@@ -36441,7 +38013,9 @@ func (recv *TextBuffer) PasteClipboard(clipboard *Clipboard, overrideLocation *T
 // be optimized.
 /*
 
-C function : gtk_text_buffer_place_cursor
+C function
+
+gtk_text_buffer_place_cursor
 */
 func (recv *TextBuffer) PlaceCursor(where *TextIter) {
 	c_where := (*C.GtkTextIter)(C.NULL)
@@ -36461,7 +38035,9 @@ func (recv *TextBuffer) PlaceCursor(where *TextIter) {
 // that add tags.
 /*
 
-C function : gtk_text_buffer_remove_all_tags
+C function
+
+gtk_text_buffer_remove_all_tags
 */
 func (recv *TextBuffer) RemoveAllTags(start *TextIter, end *TextIter) {
 	c_start := (*C.GtkTextIter)(C.NULL)
@@ -36483,7 +38059,9 @@ func (recv *TextBuffer) RemoveAllTags(start *TextIter, end *TextIter) {
 // gtk_text_buffer_add_selection_clipboard().
 /*
 
-C function : gtk_text_buffer_remove_selection_clipboard
+C function
+
+gtk_text_buffer_remove_selection_clipboard
 */
 func (recv *TextBuffer) RemoveSelectionClipboard(clipboard *Clipboard) {
 	c_clipboard := (*C.GtkClipboard)(C.NULL)
@@ -36501,7 +38079,9 @@ func (recv *TextBuffer) RemoveSelectionClipboard(clipboard *Clipboard) {
 // @end don’t have to be in order.
 /*
 
-C function : gtk_text_buffer_remove_tag
+C function
+
+gtk_text_buffer_remove_tag
 */
 func (recv *TextBuffer) RemoveTag(tag *TextTag, start *TextIter, end *TextIter) {
 	c_tag := (*C.GtkTextTag)(C.NULL)
@@ -36528,7 +38108,9 @@ func (recv *TextBuffer) RemoveTag(tag *TextTag, start *TextIter, end *TextIter) 
 // get a #GtkTextTag, then calls gtk_text_buffer_remove_tag().
 /*
 
-C function : gtk_text_buffer_remove_tag_by_name
+C function
+
+gtk_text_buffer_remove_tag_by_name
 */
 func (recv *TextBuffer) RemoveTagByName(name string, start *TextIter, end *TextIter) {
 	c_name := C.CString(name)
@@ -36556,7 +38138,9 @@ func (recv *TextBuffer) RemoveTagByName(name string, start *TextIter, end *TextI
 // bit flips, the buffer emits the #GtkTextBuffer::modified-changed signal.
 /*
 
-C function : gtk_text_buffer_set_modified
+C function
+
+gtk_text_buffer_set_modified
 */
 func (recv *TextBuffer) SetModified(setting bool) {
 	c_setting :=
@@ -36571,7 +38155,9 @@ func (recv *TextBuffer) SetModified(setting bool) {
 // @len is -1, @text must be nul-terminated. @text must be valid UTF-8.
 /*
 
-C function : gtk_text_buffer_set_text
+C function
+
+gtk_text_buffer_set_text
 */
 func (recv *TextBuffer) SetText(text string, len int32) {
 	c_text := C.CString(text)
@@ -36586,7 +38172,9 @@ func (recv *TextBuffer) SetText(text string, len int32) {
 
 /*
 
-C record/class : GtkTextCellAccessible
+C type
+
+GtkTextCellAccessible
 */
 type TextCellAccessible struct {
 	native *C.GtkTextCellAccessible
@@ -36656,7 +38244,9 @@ func (recv *TextCellAccessible) Text() *atk.Text {
 // can have multiple widgets anchored, to allow for multiple views.
 /*
 
-C record/class : GtkTextChildAnchor
+C type
+
+GtkTextChildAnchor
 */
 type TextChildAnchor struct {
 	native *C.GtkTextChildAnchor
@@ -36697,7 +38287,9 @@ func CastToTextChildAnchor(object *gobject.Object) *TextChildAnchor {
 // convenience function gtk_text_buffer_create_child_anchor().
 /*
 
-C function : gtk_text_child_anchor_new
+C function
+
+gtk_text_child_anchor_new
 */
 func TextChildAnchorNew() *TextChildAnchor {
 	retC := C.gtk_text_child_anchor_new()
@@ -36714,7 +38306,9 @@ func TextChildAnchorNew() *TextChildAnchor {
 // will also be finalized.
 /*
 
-C function : gtk_text_child_anchor_get_deleted
+C function
+
+gtk_text_child_anchor_get_deleted
 */
 func (recv *TextChildAnchor) GetDeleted() bool {
 	retC := C.gtk_text_child_anchor_get_deleted((*C.GtkTextChildAnchor)(recv.native))
@@ -36727,7 +38321,9 @@ func (recv *TextChildAnchor) GetDeleted() bool {
 // The returned list should be freed with g_list_free().
 /*
 
-C function : gtk_text_child_anchor_get_widgets
+C function
+
+gtk_text_child_anchor_get_widgets
 */
 func (recv *TextChildAnchor) GetWidgets() *glib.List {
 	retC := C.gtk_text_child_anchor_get_widgets((*C.GtkTextChildAnchor)(recv.native))
@@ -36767,7 +38363,9 @@ func (recv *TextChildAnchor) GetWidgets() *glib.List {
 // Marks are typically created using the gtk_text_buffer_create_mark() function.
 /*
 
-C record/class : GtkTextMark
+C type
+
+GtkTextMark
 */
 type TextMark struct {
 	native *C.GtkTextMark
@@ -36806,7 +38404,9 @@ func CastToTextMark(object *gobject.Object) *TextMark {
 // or %NULL if the mark is deleted.
 /*
 
-C function : gtk_text_mark_get_buffer
+C function
+
+gtk_text_mark_get_buffer
 */
 func (recv *TextMark) GetBuffer() *TextBuffer {
 	retC := C.gtk_text_mark_get_buffer((*C.GtkTextMark)(recv.native))
@@ -36820,7 +38420,9 @@ func (recv *TextMark) GetBuffer() *TextBuffer {
 // for a way to add it to a buffer again.
 /*
 
-C function : gtk_text_mark_get_deleted
+C function
+
+gtk_text_mark_get_deleted
 */
 func (recv *TextMark) GetDeleted() bool {
 	retC := C.gtk_text_mark_get_deleted((*C.GtkTextMark)(recv.native))
@@ -36832,7 +38434,9 @@ func (recv *TextMark) GetDeleted() bool {
 // Determines whether the mark has left gravity.
 /*
 
-C function : gtk_text_mark_get_left_gravity
+C function
+
+gtk_text_mark_get_left_gravity
 */
 func (recv *TextMark) GetLeftGravity() bool {
 	retC := C.gtk_text_mark_get_left_gravity((*C.GtkTextMark)(recv.native))
@@ -36844,7 +38448,9 @@ func (recv *TextMark) GetLeftGravity() bool {
 // Returns the mark name; returns NULL for anonymous marks.
 /*
 
-C function : gtk_text_mark_get_name
+C function
+
+gtk_text_mark_get_name
 */
 func (recv *TextMark) GetName() string {
 	retC := C.gtk_text_mark_get_name((*C.GtkTextMark)(recv.native))
@@ -36857,7 +38463,9 @@ func (recv *TextMark) GetName() string {
 // for it).
 /*
 
-C function : gtk_text_mark_get_visible
+C function
+
+gtk_text_mark_get_visible
 */
 func (recv *TextMark) GetVisible() bool {
 	retC := C.gtk_text_mark_get_visible((*C.GtkTextMark)(recv.native))
@@ -36873,7 +38481,9 @@ func (recv *TextMark) GetVisible() bool {
 // Marks are not visible by default.
 /*
 
-C function : gtk_text_mark_set_visible
+C function
+
+gtk_text_mark_set_visible
 */
 func (recv *TextMark) SetVisible(setting bool) {
 	c_setting :=
@@ -36901,7 +38511,9 @@ func (recv *TextMark) SetVisible(setting bool) {
 // They are maintained by GTK+ and you should not set them independently.
 /*
 
-C record/class : GtkTextTag
+C type
+
+GtkTextTag
 */
 type TextTag struct {
 	native *C.GtkTextTag
@@ -36942,7 +38554,9 @@ func CastToTextTag(object *gobject.Object) *TextTag {
 // i.e. using g_object_set().
 /*
 
-C function : gtk_text_tag_new
+C function
+
+gtk_text_tag_new
 */
 func TextTagNew(name string) *TextTag {
 	c_name := C.CString(name)
@@ -36959,7 +38573,9 @@ func TextTagNew(name string) *TextTag {
 // Get the tag priority.
 /*
 
-C function : gtk_text_tag_get_priority
+C function
+
+gtk_text_tag_get_priority
 */
 func (recv *TextTag) GetPriority() int32 {
 	retC := C.gtk_text_tag_get_priority((*C.GtkTextTag)(recv.native))
@@ -36981,7 +38597,9 @@ func (recv *TextTag) GetPriority() int32 {
 // automatically.
 /*
 
-C function : gtk_text_tag_set_priority
+C function
+
+gtk_text_tag_set_priority
 */
 func (recv *TextTag) SetPriority(priority int32) {
 	c_priority := (C.gint)(priority)
@@ -37012,7 +38630,9 @@ func (recv *TextTag) SetPriority(priority int32) {
 // ]|
 /*
 
-C record/class : GtkTextTagTable
+C type
+
+GtkTextTagTable
 */
 type TextTagTable struct {
 	native *C.GtkTextTagTable
@@ -37230,7 +38850,9 @@ func texttagtable_tagRemovedHandler(_ *C.GObject, c_tag *C.GtkTextTag, data C.gp
 // default.
 /*
 
-C function : gtk_text_tag_table_new
+C function
+
+gtk_text_tag_table_new
 */
 func TextTagTableNew() *TextTagTable {
 	retC := C.gtk_text_tag_table_new()
@@ -37246,7 +38868,9 @@ func TextTagTableNew() *TextTagTable {
 // the same name as an already-added tag.
 /*
 
-C function : gtk_text_tag_table_add
+C function
+
+gtk_text_tag_table_add
 */
 func (recv *TextTagTable) Add(tag *TextTag) bool {
 	c_tag := (*C.GtkTextTag)(C.NULL)
@@ -37265,7 +38889,9 @@ func (recv *TextTagTable) Add(tag *TextTag) bool {
 // Returns the size of the table (number of tags)
 /*
 
-C function : gtk_text_tag_table_get_size
+C function
+
+gtk_text_tag_table_get_size
 */
 func (recv *TextTagTable) GetSize() int32 {
 	retC := C.gtk_text_tag_table_get_size((*C.GtkTextTagTable)(recv.native))
@@ -37277,7 +38903,9 @@ func (recv *TextTagTable) GetSize() int32 {
 // Look up a named tag.
 /*
 
-C function : gtk_text_tag_table_lookup
+C function
+
+gtk_text_tag_table_lookup
 */
 func (recv *TextTagTable) Lookup(name string) *TextTag {
 	c_name := C.CString(name)
@@ -37300,7 +38928,9 @@ func (recv *TextTagTable) Lookup(name string) *TextTag {
 // it.
 /*
 
-C function : gtk_text_tag_table_remove
+C function
+
+gtk_text_tag_table_remove
 */
 func (recv *TextTagTable) Remove(tag *TextTag) {
 	c_tag := (*C.GtkTextTag)(C.NULL)
@@ -37347,7 +38977,9 @@ func (recv *TextTagTable) Buildable() *Buildable {
 // of the main node.
 /*
 
-C record/class : GtkTextView
+C type
+
+GtkTextView
 */
 type TextView struct {
 	native *C.GtkTextView
@@ -37928,7 +39560,9 @@ func textview_toggleOverwriteHandler(_ *C.GObject, data C.gpointer) {
 // to specify your own buffer, consider gtk_text_view_new_with_buffer().
 /*
 
-C function : gtk_text_view_new
+C function
+
+gtk_text_view_new
 */
 func TextViewNew() *TextView {
 	retC := C.gtk_text_view_new()
@@ -37945,7 +39579,9 @@ func TextViewNew() *TextView {
 // take over an existing reference.
 /*
 
-C function : gtk_text_view_new_with_buffer
+C function
+
+gtk_text_view_new_with_buffer
 */
 func TextViewNewWithBuffer(buffer *TextBuffer) *TextView {
 	c_buffer := (*C.GtkTextBuffer)(C.NULL)
@@ -37962,7 +39598,9 @@ func TextViewNewWithBuffer(buffer *TextBuffer) *TextView {
 // Adds a child widget in the text buffer, at the given @anchor.
 /*
 
-C function : gtk_text_view_add_child_at_anchor
+C function
+
+gtk_text_view_add_child_at_anchor
 */
 func (recv *TextView) AddChildAtAnchor(child *Widget, anchor *TextChildAnchor) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -37992,7 +39630,9 @@ func (recv *TextView) AddChildAtAnchor(child *Widget, anchor *TextChildAnchor) {
 // text window) it will move with the scrolling as needed.
 /*
 
-C function : gtk_text_view_add_child_in_window
+C function
+
+gtk_text_view_add_child_in_window
 */
 func (recv *TextView) AddChildInWindow(child *Widget, whichWindow TextWindowType, xpos int32, ypos int32) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -38021,7 +39661,9 @@ func (recv *TextView) AddChildInWindow(child *Widget, whichWindow TextWindowType
 // views, since they depend on the contents of the #GtkTextBuffer.
 /*
 
-C function : gtk_text_view_backward_display_line
+C function
+
+gtk_text_view_backward_display_line
 */
 func (recv *TextView) BackwardDisplayLine(iter *TextIter) bool {
 	c_iter := (*C.GtkTextIter)(C.NULL)
@@ -38045,7 +39687,9 @@ func (recv *TextView) BackwardDisplayLine(iter *TextIter) bool {
 // views, since they depend on the contents of the #GtkTextBuffer.
 /*
 
-C function : gtk_text_view_backward_display_line_start
+C function
+
+gtk_text_view_backward_display_line_start
 */
 func (recv *TextView) BackwardDisplayLineStart(iter *TextIter) bool {
 	c_iter := (*C.GtkTextIter)(C.NULL)
@@ -38066,7 +39710,9 @@ func (recv *TextView) BackwardDisplayLineStart(iter *TextIter) bool {
 // gtk_text_view_set_border_window_size()).
 /*
 
-C function : gtk_text_view_buffer_to_window_coords
+C function
+
+gtk_text_view_buffer_to_window_coords
 */
 func (recv *TextView) BufferToWindowCoords(win TextWindowType, bufferX int32, bufferY int32) (int32, int32) {
 	c_win := (C.GtkTextWindowType)(win)
@@ -38098,7 +39744,9 @@ func (recv *TextView) BufferToWindowCoords(win TextWindowType, bufferX int32, bu
 // views, since they depend on the contents of the #GtkTextBuffer.
 /*
 
-C function : gtk_text_view_forward_display_line
+C function
+
+gtk_text_view_forward_display_line
 */
 func (recv *TextView) ForwardDisplayLine(iter *TextIter) bool {
 	c_iter := (*C.GtkTextIter)(C.NULL)
@@ -38122,7 +39770,9 @@ func (recv *TextView) ForwardDisplayLine(iter *TextIter) bool {
 // views, since they depend on the contents of the #GtkTextBuffer.
 /*
 
-C function : gtk_text_view_forward_display_line_end
+C function
+
+gtk_text_view_forward_display_line_end
 */
 func (recv *TextView) ForwardDisplayLineEnd(iter *TextIter) bool {
 	c_iter := (*C.GtkTextIter)(C.NULL)
@@ -38140,7 +39790,9 @@ func (recv *TextView) ForwardDisplayLineEnd(iter *TextIter) bool {
 // gtk_text_view_set_border_window_size().
 /*
 
-C function : gtk_text_view_get_border_window_size
+C function
+
+gtk_text_view_get_border_window_size
 */
 func (recv *TextView) GetBorderWindowSize(type_ TextWindowType) int32 {
 	c_type := (C.GtkTextWindowType)(type_)
@@ -38156,7 +39808,9 @@ func (recv *TextView) GetBorderWindowSize(type_ TextWindowType) int32 {
 // of this function won’t own a new reference.
 /*
 
-C function : gtk_text_view_get_buffer
+C function
+
+gtk_text_view_get_buffer
 */
 func (recv *TextView) GetBuffer() *TextBuffer {
 	retC := C.gtk_text_view_get_buffer((*C.GtkTextView)(recv.native))
@@ -38168,7 +39822,9 @@ func (recv *TextView) GetBuffer() *TextBuffer {
 // Find out whether the cursor should be displayed.
 /*
 
-C function : gtk_text_view_get_cursor_visible
+C function
+
+gtk_text_view_get_cursor_visible
 */
 func (recv *TextView) GetCursorVisible() bool {
 	retC := C.gtk_text_view_get_cursor_visible((*C.GtkTextView)(recv.native))
@@ -38187,7 +39843,9 @@ func (recv *TextView) GetCursorVisible() bool {
 // and should be freed with gtk_text_attributes_unref().
 /*
 
-C function : gtk_text_view_get_default_attributes
+C function
+
+gtk_text_view_get_default_attributes
 */
 func (recv *TextView) GetDefaultAttributes() *TextAttributes {
 	retC := C.gtk_text_view_get_default_attributes((*C.GtkTextView)(recv.native))
@@ -38200,7 +39858,9 @@ func (recv *TextView) GetDefaultAttributes() *TextAttributes {
 // buffer may override this setting for some ranges of text.
 /*
 
-C function : gtk_text_view_get_editable
+C function
+
+gtk_text_view_get_editable
 */
 func (recv *TextView) GetEditable() bool {
 	retC := C.gtk_text_view_get_editable((*C.GtkTextView)(recv.native))
@@ -38214,7 +39874,9 @@ func (recv *TextView) GetEditable() bool {
 // The indentation may be negative.
 /*
 
-C function : gtk_text_view_get_indent
+C function
+
+gtk_text_view_get_indent
 */
 func (recv *TextView) GetIndent() int32 {
 	retC := C.gtk_text_view_get_indent((*C.GtkTextView)(recv.native))
@@ -38230,7 +39892,9 @@ func (recv *TextView) GetIndent() int32 {
 // gtk_text_view_window_to_buffer_coords().
 /*
 
-C function : gtk_text_view_get_iter_at_location
+C function
+
+gtk_text_view_get_iter_at_location
 */
 func (recv *TextView) GetIterAtLocation(x int32, y int32) *TextIter {
 	var c_iter C.GtkTextIter
@@ -38252,7 +39916,9 @@ func (recv *TextView) GetIterAtLocation(x int32, y int32) *TextIter {
 // Tags in the buffer may override the default.
 /*
 
-C function : gtk_text_view_get_justification
+C function
+
+gtk_text_view_get_justification
 */
 func (recv *TextView) GetJustification() Justification {
 	retC := C.gtk_text_view_get_justification((*C.GtkTextView)(recv.native))
@@ -38265,7 +39931,9 @@ func (recv *TextView) GetJustification() Justification {
 // Tags in the buffer may override the default.
 /*
 
-C function : gtk_text_view_get_left_margin
+C function
+
+gtk_text_view_get_left_margin
 */
 func (recv *TextView) GetLeftMargin() int32 {
 	retC := C.gtk_text_view_get_left_margin((*C.GtkTextView)(recv.native))
@@ -38281,7 +39949,9 @@ func (recv *TextView) GetLeftMargin() int32 {
 // edge of the line.
 /*
 
-C function : gtk_text_view_get_line_at_y
+C function
+
+gtk_text_view_get_line_at_y
 */
 func (recv *TextView) GetLineAtY(y int32) (*TextIter, int32) {
 	var c_target_iter C.GtkTextIter
@@ -38304,7 +39974,9 @@ func (recv *TextView) GetLineAtY(y int32) (*TextIter, int32) {
 // convert to window coordinates with gtk_text_view_buffer_to_window_coords().
 /*
 
-C function : gtk_text_view_get_line_yrange
+C function
+
+gtk_text_view_get_line_yrange
 */
 func (recv *TextView) GetLineYrange(iter *TextIter) (int32, int32) {
 	c_iter := (*C.GtkTextIter)(C.NULL)
@@ -38330,7 +40002,9 @@ func (recv *TextView) GetLineYrange(iter *TextIter) (int32, int32) {
 // is equal to the line space between each paragraph.
 /*
 
-C function : gtk_text_view_get_pixels_above_lines
+C function
+
+gtk_text_view_get_pixels_above_lines
 */
 func (recv *TextView) GetPixelsAboveLines() int32 {
 	retC := C.gtk_text_view_get_pixels_above_lines((*C.GtkTextView)(recv.native))
@@ -38345,7 +40019,9 @@ func (recv *TextView) GetPixelsAboveLines() int32 {
 // value returned by gtk_text_view_get_pixels_above_lines().
 /*
 
-C function : gtk_text_view_get_pixels_below_lines
+C function
+
+gtk_text_view_get_pixels_below_lines
 */
 func (recv *TextView) GetPixelsBelowLines() int32 {
 	retC := C.gtk_text_view_get_pixels_below_lines((*C.GtkTextView)(recv.native))
@@ -38357,7 +40033,9 @@ func (recv *TextView) GetPixelsBelowLines() int32 {
 // Gets the value set by gtk_text_view_set_pixels_inside_wrap().
 /*
 
-C function : gtk_text_view_get_pixels_inside_wrap
+C function
+
+gtk_text_view_get_pixels_inside_wrap
 */
 func (recv *TextView) GetPixelsInsideWrap() int32 {
 	retC := C.gtk_text_view_get_pixels_inside_wrap((*C.GtkTextView)(recv.native))
@@ -38370,7 +40048,9 @@ func (recv *TextView) GetPixelsInsideWrap() int32 {
 // in the buffer may override the default.
 /*
 
-C function : gtk_text_view_get_right_margin
+C function
+
+gtk_text_view_get_right_margin
 */
 func (recv *TextView) GetRightMargin() int32 {
 	retC := C.gtk_text_view_get_right_margin((*C.GtkTextView)(recv.native))
@@ -38385,7 +40065,9 @@ func (recv *TextView) GetRightMargin() int32 {
 // with pango_tab_array_free().
 /*
 
-C function : gtk_text_view_get_tabs
+C function
+
+gtk_text_view_get_tabs
 */
 func (recv *TextView) GetTabs() *pango.TabArray {
 	retC := C.gtk_text_view_get_tabs((*C.GtkTextView)(recv.native))
@@ -38409,7 +40091,9 @@ func (recv *TextView) GetTabs() *pango.TabArray {
 // realized.
 /*
 
-C function : gtk_text_view_get_window
+C function
+
+gtk_text_view_get_window
 */
 func (recv *TextView) GetWindow(win TextWindowType) *gdk.Window {
 	c_win := (C.GtkTextWindowType)(win)
@@ -38431,7 +40115,9 @@ func (recv *TextView) GetWindow(win TextWindowType) *gdk.Window {
 // should be called on `event->window` to see which window it was.
 /*
 
-C function : gtk_text_view_get_window_type
+C function
+
+gtk_text_view_get_window_type
 */
 func (recv *TextView) GetWindowType(window *gdk.Window) TextWindowType {
 	c_window := (*C.GdkWindow)(C.NULL)
@@ -38448,7 +40134,9 @@ func (recv *TextView) GetWindowType(window *gdk.Window) TextWindowType {
 // Gets the line wrapping for the view.
 /*
 
-C function : gtk_text_view_get_wrap_mode
+C function
+
+gtk_text_view_get_wrap_mode
 */
 func (recv *TextView) GetWrapMode() WrapMode {
 	retC := C.gtk_text_view_get_wrap_mode((*C.GtkTextView)(recv.native))
@@ -38460,7 +40148,9 @@ func (recv *TextView) GetWrapMode() WrapMode {
 // Updates the position of a child, as for gtk_text_view_add_child_in_window().
 /*
 
-C function : gtk_text_view_move_child
+C function
+
+gtk_text_view_move_child
 */
 func (recv *TextView) MoveChild(child *Widget, xpos int32, ypos int32) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -38481,7 +40171,9 @@ func (recv *TextView) MoveChild(child *Widget, xpos int32, ypos int32) {
 // located within the currently-visible text area.
 /*
 
-C function : gtk_text_view_move_mark_onscreen
+C function
+
+gtk_text_view_move_mark_onscreen
 */
 func (recv *TextView) MoveMarkOnscreen(mark *TextMark) bool {
 	c_mark := (*C.GtkTextMark)(C.NULL)
@@ -38508,7 +40200,9 @@ func (recv *TextView) MoveMarkOnscreen(mark *TextMark) bool {
 // is moved off of the end of a run.
 /*
 
-C function : gtk_text_view_move_visually
+C function
+
+gtk_text_view_move_visually
 */
 func (recv *TextView) MoveVisually(iter *TextIter, count int32) bool {
 	c_iter := (*C.GtkTextIter)(C.NULL)
@@ -38528,7 +40222,9 @@ func (recv *TextView) MoveVisually(iter *TextIter, count int32) bool {
 // buffer, it it isn’t there already.
 /*
 
-C function : gtk_text_view_place_cursor_onscreen
+C function
+
+gtk_text_view_place_cursor_onscreen
 */
 func (recv *TextView) PlaceCursorOnscreen() bool {
 	retC := C.gtk_text_view_place_cursor_onscreen((*C.GtkTextView)(recv.native))
@@ -38541,7 +40237,9 @@ func (recv *TextView) PlaceCursorOnscreen() bool {
 // within the visible area of the widget.
 /*
 
-C function : gtk_text_view_scroll_mark_onscreen
+C function
+
+gtk_text_view_scroll_mark_onscreen
 */
 func (recv *TextView) ScrollMarkOnscreen(mark *TextMark) {
 	c_mark := (*C.GtkTextMark)(C.NULL)
@@ -38570,7 +40268,9 @@ func (recv *TextView) ScrollMarkOnscreen(mark *TextMark) {
 // scrolled to after line validation.
 /*
 
-C function : gtk_text_view_scroll_to_iter
+C function
+
+gtk_text_view_scroll_to_iter
 */
 func (recv *TextView) ScrollToIter(iter *TextIter, withinMargin float64, useAlign bool, xalign float64, yalign float64) bool {
 	c_iter := (*C.GtkTextIter)(C.NULL)
@@ -38602,7 +40302,9 @@ func (recv *TextView) ScrollToIter(iter *TextIter, withinMargin float64, useAlig
 // @within_margin.
 /*
 
-C function : gtk_text_view_scroll_to_mark
+C function
+
+gtk_text_view_scroll_to_mark
 */
 func (recv *TextView) ScrollToMark(mark *TextMark, withinMargin float64, useAlign bool, xalign float64, yalign float64) {
 	c_mark := (*C.GtkTextMark)(C.NULL)
@@ -38633,7 +40335,9 @@ func (recv *TextView) ScrollToMark(mark *TextMark, withinMargin float64, useAlig
 // %GTK_TEXT_WINDOW_PRIVATE.
 /*
 
-C function : gtk_text_view_set_border_window_size
+C function
+
+gtk_text_view_set_border_window_size
 */
 func (recv *TextView) SetBorderWindowSize(type_ TextWindowType, size int32) {
 	c_type := (C.GtkTextWindowType)(type_)
@@ -38652,7 +40356,9 @@ func (recv *TextView) SetBorderWindowSize(type_ TextWindowType, size int32) {
 // will not “adopt” it.
 /*
 
-C function : gtk_text_view_set_buffer
+C function
+
+gtk_text_view_set_buffer
 */
 func (recv *TextView) SetBuffer(buffer *TextBuffer) {
 	c_buffer := (*C.GtkTextBuffer)(C.NULL)
@@ -38673,7 +40379,9 @@ func (recv *TextView) SetBuffer(buffer *TextBuffer) {
 // #GtkSettings:gtk-keynave-use-caret settings.
 /*
 
-C function : gtk_text_view_set_cursor_visible
+C function
+
+gtk_text_view_set_cursor_visible
 */
 func (recv *TextView) SetCursorVisible(setting bool) {
 	c_setting :=
@@ -38689,7 +40397,9 @@ func (recv *TextView) SetCursorVisible(setting bool) {
 // attribute of tags.
 /*
 
-C function : gtk_text_view_set_editable
+C function
+
+gtk_text_view_set_editable
 */
 func (recv *TextView) SetEditable(setting bool) {
 	c_setting :=
@@ -38704,7 +40414,9 @@ func (recv *TextView) SetEditable(setting bool) {
 // Tags in the buffer may override the default.
 /*
 
-C function : gtk_text_view_set_indent
+C function
+
+gtk_text_view_set_indent
 */
 func (recv *TextView) SetIndent(indent int32) {
 	c_indent := (C.gint)(indent)
@@ -38718,7 +40430,9 @@ func (recv *TextView) SetIndent(indent int32) {
 // Tags in the view’s buffer may override the default.
 /*
 
-C function : gtk_text_view_set_justification
+C function
+
+gtk_text_view_set_justification
 */
 func (recv *TextView) SetJustification(justification Justification) {
 	c_justification := (C.GtkJustification)(justification)
@@ -38735,7 +40449,9 @@ func (recv *TextView) SetJustification(justification Justification) {
 // In CSS terms, the value set here is padding.
 /*
 
-C function : gtk_text_view_set_left_margin
+C function
+
+gtk_text_view_set_left_margin
 */
 func (recv *TextView) SetLeftMargin(leftMargin int32) {
 	c_left_margin := (C.gint)(leftMargin)
@@ -38749,7 +40465,9 @@ func (recv *TextView) SetLeftMargin(leftMargin int32) {
 // Tags in the buffer for @text_view may override the defaults.
 /*
 
-C function : gtk_text_view_set_pixels_above_lines
+C function
+
+gtk_text_view_set_pixels_above_lines
 */
 func (recv *TextView) SetPixelsAboveLines(pixelsAboveLines int32) {
 	c_pixels_above_lines := (C.gint)(pixelsAboveLines)
@@ -38764,7 +40482,9 @@ func (recv *TextView) SetPixelsAboveLines(pixelsAboveLines int32) {
 // by tags applied to @text_view’s buffer.
 /*
 
-C function : gtk_text_view_set_pixels_below_lines
+C function
+
+gtk_text_view_set_pixels_below_lines
 */
 func (recv *TextView) SetPixelsBelowLines(pixelsBelowLines int32) {
 	c_pixels_below_lines := (C.gint)(pixelsBelowLines)
@@ -38779,7 +40499,9 @@ func (recv *TextView) SetPixelsBelowLines(pixelsBelowLines int32) {
 // tags in @text_view’s buffer.
 /*
 
-C function : gtk_text_view_set_pixels_inside_wrap
+C function
+
+gtk_text_view_set_pixels_inside_wrap
 */
 func (recv *TextView) SetPixelsInsideWrap(pixelsInsideWrap int32) {
 	c_pixels_inside_wrap := (C.gint)(pixelsInsideWrap)
@@ -38796,7 +40518,9 @@ func (recv *TextView) SetPixelsInsideWrap(pixelsInsideWrap int32) {
 // In CSS terms, the value set here is padding.
 /*
 
-C function : gtk_text_view_set_right_margin
+C function
+
+gtk_text_view_set_right_margin
 */
 func (recv *TextView) SetRightMargin(rightMargin int32) {
 	c_right_margin := (C.gint)(rightMargin)
@@ -38810,7 +40534,9 @@ func (recv *TextView) SetRightMargin(rightMargin int32) {
 // Tags in the buffer may override the default.
 /*
 
-C function : gtk_text_view_set_tabs
+C function
+
+gtk_text_view_set_tabs
 */
 func (recv *TextView) SetTabs(tabs *pango.TabArray) {
 	c_tabs := (*C.PangoTabArray)(C.NULL)
@@ -38826,7 +40552,9 @@ func (recv *TextView) SetTabs(tabs *pango.TabArray) {
 // Sets the line wrapping for the view.
 /*
 
-C function : gtk_text_view_set_wrap_mode
+C function
+
+gtk_text_view_set_wrap_mode
 */
 func (recv *TextView) SetWrapMode(wrapMode WrapMode) {
 	c_wrap_mode := (C.GtkWrapMode)(wrapMode)
@@ -38841,7 +40569,9 @@ func (recv *TextView) SetWrapMode(wrapMode WrapMode) {
 // display lines vs. paragraphs.
 /*
 
-C function : gtk_text_view_starts_display_line
+C function
+
+gtk_text_view_starts_display_line
 */
 func (recv *TextView) StartsDisplayLine(iter *TextIter) bool {
 	c_iter := (*C.GtkTextIter)(C.NULL)
@@ -38862,7 +40592,9 @@ func (recv *TextView) StartsDisplayLine(iter *TextIter) bool {
 // gtk_text_view_set_border_window_size()).
 /*
 
-C function : gtk_text_view_window_to_buffer_coords
+C function
+
+gtk_text_view_window_to_buffer_coords
 */
 func (recv *TextView) WindowToBufferCoords(win TextWindowType, windowX int32, windowY int32) (int32, int32) {
 	c_win := (C.GtkTextWindowType)(win)
@@ -38901,7 +40633,9 @@ func (recv *TextView) Scrollable() *Scrollable {
 
 /*
 
-C record/class : GtkTextViewAccessible
+C type
+
+GtkTextViewAccessible
 */
 type TextViewAccessible struct {
 	native *C.GtkTextViewAccessible
@@ -38982,7 +40716,9 @@ func (recv *TextViewAccessible) Text() *atk.Text {
 // to modify source code.
 /*
 
-C record/class : GtkThemingEngine
+C type
+
+GtkThemingEngine
 */
 type ThemingEngine struct {
 	native *C.GtkThemingEngine
@@ -39020,7 +40756,9 @@ func CastToThemingEngine(object *gobject.Object) *ThemingEngine {
 // Returns the #GdkScreen to which @engine currently rendering to.
 /*
 
-C function : gtk_theming_engine_get_screen
+C function
+
+gtk_theming_engine_get_screen
 */
 func (recv *ThemingEngine) GetScreen() *gdk.Screen {
 	retC := C.gtk_theming_engine_get_screen((*C.GtkThemingEngine)(recv.native))
@@ -39038,7 +40776,9 @@ func (recv *ThemingEngine) GetScreen() *gdk.Screen {
 // “active” state specifying whether the action has been checked or not.
 /*
 
-C record/class : GtkToggleAction
+C type
+
+GtkToggleAction
 */
 type ToggleAction struct {
 	native *C.GtkToggleAction
@@ -39160,7 +40900,7 @@ func (recv *ToggleAction) Buildable() *Buildable {
 // GtkToggleButton has a single CSS node with name button. To differentiate
 // it from a plain #GtkButton, it gets the .toggle style class.
 //
-// ## Creating two #GtkToggleButton widgets.
+// Creating two #GtkToggleButton widgets.
 //
 // |[<!-- language="C" -->
 // static void output_state (GtkToggleButton *source, gpointer user_data) {
@@ -39202,7 +40942,9 @@ func (recv *ToggleAction) Buildable() *Buildable {
 // ]|
 /*
 
-C record/class : GtkToggleButton
+C type
+
+GtkToggleButton
 */
 type ToggleButton struct {
 	native *C.GtkToggleButton
@@ -39322,7 +41064,9 @@ func togglebutton_toggledHandler(_ *C.GObject, data C.gpointer) {
 // Creates a new toggle button. A widget should be packed into the button, as in gtk_button_new().
 /*
 
-C function : gtk_toggle_button_new
+C function
+
+gtk_toggle_button_new
 */
 func ToggleButtonNew() *ToggleButton {
 	retC := C.gtk_toggle_button_new()
@@ -39334,7 +41078,9 @@ func ToggleButtonNew() *ToggleButton {
 // Creates a new toggle button with a text label.
 /*
 
-C function : gtk_toggle_button_new_with_label
+C function
+
+gtk_toggle_button_new_with_label
 */
 func ToggleButtonNewWithLabel(label string) *ToggleButton {
 	c_label := C.CString(label)
@@ -39351,7 +41097,9 @@ func ToggleButtonNewWithLabel(label string) *ToggleButton {
 // in @label indicate the mnemonic for the button.
 /*
 
-C function : gtk_toggle_button_new_with_mnemonic
+C function
+
+gtk_toggle_button_new_with_mnemonic
 */
 func ToggleButtonNewWithMnemonic(label string) *ToggleButton {
 	c_label := C.CString(label)
@@ -39367,7 +41115,9 @@ func ToggleButtonNewWithMnemonic(label string) *ToggleButton {
 // the toggle button is pressed in and %FALSE if it is raised.
 /*
 
-C function : gtk_toggle_button_get_active
+C function
+
+gtk_toggle_button_get_active
 */
 func (recv *ToggleButton) GetActive() bool {
 	retC := C.gtk_toggle_button_get_active((*C.GtkToggleButton)(recv.native))
@@ -39379,7 +41129,9 @@ func (recv *ToggleButton) GetActive() bool {
 // Gets the value set by gtk_toggle_button_set_inconsistent().
 /*
 
-C function : gtk_toggle_button_get_inconsistent
+C function
+
+gtk_toggle_button_get_inconsistent
 */
 func (recv *ToggleButton) GetInconsistent() bool {
 	retC := C.gtk_toggle_button_get_inconsistent((*C.GtkToggleButton)(recv.native))
@@ -39392,7 +41144,9 @@ func (recv *ToggleButton) GetInconsistent() bool {
 // and label. See gtk_toggle_button_set_mode().
 /*
 
-C function : gtk_toggle_button_get_mode
+C function
+
+gtk_toggle_button_get_mode
 */
 func (recv *ToggleButton) GetMode() bool {
 	retC := C.gtk_toggle_button_get_mode((*C.GtkToggleButton)(recv.native))
@@ -39407,7 +41161,9 @@ func (recv *ToggleButton) GetMode() bool {
 // #GtkButton::clicked signal to be emitted.
 /*
 
-C function : gtk_toggle_button_set_active
+C function
+
+gtk_toggle_button_set_active
 */
 func (recv *ToggleButton) SetActive(isActive bool) {
 	c_is_active :=
@@ -39428,7 +41184,9 @@ func (recv *ToggleButton) SetActive(isActive bool) {
 // visual appearance, it doesn’t affect the semantics of the button.
 /*
 
-C function : gtk_toggle_button_set_inconsistent
+C function
+
+gtk_toggle_button_set_inconsistent
 */
 func (recv *ToggleButton) SetInconsistent(setting bool) {
 	c_setting :=
@@ -39451,7 +41209,9 @@ func (recv *ToggleButton) SetInconsistent(setting bool) {
 // not instances of #GtkToggleButton itself.
 /*
 
-C function : gtk_toggle_button_set_mode
+C function
+
+gtk_toggle_button_set_mode
 */
 func (recv *ToggleButton) SetMode(drawIndicator bool) {
 	c_draw_indicator :=
@@ -39467,7 +41227,9 @@ func (recv *ToggleButton) SetMode(drawIndicator bool) {
 // application ever to call this function.
 /*
 
-C function : gtk_toggle_button_toggled
+C function
+
+gtk_toggle_button_toggled
 */
 func (recv *ToggleButton) Toggled() {
 	C.gtk_toggle_button_toggled((*C.GtkToggleButton)(recv.native))
@@ -39497,7 +41259,9 @@ func (recv *ToggleButton) Buildable() *Buildable {
 
 /*
 
-C record/class : GtkToggleButtonAccessible
+C type
+
+GtkToggleButtonAccessible
 */
 type ToggleButtonAccessible struct {
 	native *C.GtkToggleButtonAccessible
@@ -39577,7 +41341,9 @@ func (recv *ToggleButtonAccessible) Image() *atk.Image {
 // GtkToggleToolButton has a single CSS node with name togglebutton.
 /*
 
-C record/class : GtkToggleToolButton
+C type
+
+GtkToggleToolButton
 */
 type ToggleToolButton struct {
 	native *C.GtkToggleToolButton
@@ -39743,7 +41509,9 @@ func (recv *ToggleToolButton) Buildable() *Buildable {
 // GtkToolButton has a single CSS node with name toolbutton.
 /*
 
-C record/class : GtkToolButton
+C type
+
+GtkToolButton
 */
 type ToolButton struct {
 	native *C.GtkToolButton
@@ -39892,7 +41660,9 @@ func (recv *ToolButton) Buildable() *Buildable {
 // #GtkToolShell for a description of the tool shell interface.
 /*
 
-C record/class : GtkToolItem
+C type
+
+GtkToolItem
 */
 type ToolItem struct {
 	native *C.GtkToolItem
@@ -40088,7 +41858,9 @@ func (recv *ToolItem) Buildable() *Buildable {
 // GtkToolItemGroup has a single CSS node named toolitemgroup.
 /*
 
-C record/class : GtkToolItemGroup
+C type
+
+GtkToolItemGroup
 */
 type ToolItemGroup struct {
 	native *C.GtkToolItemGroup
@@ -40224,7 +41996,9 @@ func (recv *ToolItemGroup) ToolShell() *ToolShell {
 // GtkToolPalette has a single CSS node named toolpalette.
 /*
 
-C record/class : GtkToolPalette
+C type
+
+GtkToolPalette
 */
 type ToolPalette struct {
 	native *C.GtkToolPalette
@@ -40319,7 +42093,9 @@ func (recv *ToolPalette) Scrollable() *Scrollable {
 // GtkToolbar has a single CSS node with name toolbar.
 /*
 
-C record/class : GtkToolbar
+C type
+
+GtkToolbar
 */
 type Toolbar struct {
 	native *C.GtkToolbar
@@ -40440,7 +42216,9 @@ func toolbar_focusHomeOrEndHandler(_ *C.GObject, c_focus_home C.gboolean, data C
 // Creates a new toolbar.
 /*
 
-C function : gtk_toolbar_new
+C function
+
+gtk_toolbar_new
 */
 func ToolbarNew() *Toolbar {
 	retC := C.gtk_toolbar_new()
@@ -40452,7 +42230,9 @@ func ToolbarNew() *Toolbar {
 // Retrieves the icon size for the toolbar. See gtk_toolbar_set_icon_size().
 /*
 
-C function : gtk_toolbar_get_icon_size
+C function
+
+gtk_toolbar_get_icon_size
 */
 func (recv *Toolbar) GetIconSize() IconSize {
 	retC := C.gtk_toolbar_get_icon_size((*C.GtkToolbar)(recv.native))
@@ -40465,7 +42245,9 @@ func (recv *Toolbar) GetIconSize() IconSize {
 // gtk_toolbar_set_style().
 /*
 
-C function : gtk_toolbar_get_style
+C function
+
+gtk_toolbar_get_style
 */
 func (recv *Toolbar) GetStyle() ToolbarStyle {
 	retC := C.gtk_toolbar_get_style((*C.GtkToolbar)(recv.native))
@@ -40484,7 +42266,9 @@ func (recv *Toolbar) GetStyle() ToolbarStyle {
 // size of icons.
 /*
 
-C function : gtk_toolbar_set_icon_size
+C function
+
+gtk_toolbar_set_icon_size
 */
 func (recv *Toolbar) SetIconSize(iconSize IconSize) {
 	c_icon_size := (C.GtkIconSize)(iconSize)
@@ -40497,7 +42281,9 @@ func (recv *Toolbar) SetIconSize(iconSize IconSize) {
 // Alters the view of @toolbar to display either icons only, text only, or both.
 /*
 
-C function : gtk_toolbar_set_style
+C function
+
+gtk_toolbar_set_style
 */
 func (recv *Toolbar) SetStyle(style ToolbarStyle) {
 	c_style := (C.GtkToolbarStyle)(style)
@@ -40511,7 +42297,9 @@ func (recv *Toolbar) SetStyle(style ToolbarStyle) {
 // user preferences will be used to determine the icon size.
 /*
 
-C function : gtk_toolbar_unset_icon_size
+C function
+
+gtk_toolbar_unset_icon_size
 */
 func (recv *Toolbar) UnsetIconSize() {
 	C.gtk_toolbar_unset_icon_size((*C.GtkToolbar)(recv.native))
@@ -40523,7 +42311,9 @@ func (recv *Toolbar) UnsetIconSize() {
 // user preferences will be used to determine the toolbar style.
 /*
 
-C function : gtk_toolbar_unset_style
+C function
+
+gtk_toolbar_unset_style
 */
 func (recv *Toolbar) UnsetStyle() {
 	C.gtk_toolbar_unset_style((*C.GtkToolbar)(recv.native))
@@ -40587,7 +42377,9 @@ func (recv *Toolbar) ToolShell() *ToolShell {
 // %FALSE to not show it.
 /*
 
-C record/class : GtkTooltip
+C type
+
+GtkTooltip
 */
 type Tooltip struct {
 	native *C.GtkTooltip
@@ -40622,7 +42414,9 @@ func CastToTooltip(object *gobject.Object) *Tooltip {
 
 /*
 
-C record/class : GtkToplevelAccessible
+C type
+
+GtkToplevelAccessible
 */
 type ToplevelAccessible struct {
 	native *C.GtkToplevelAccessible
@@ -40659,7 +42453,9 @@ func CastToToplevelAccessible(object *gobject.Object) *ToplevelAccessible {
 
 /*
 
-C function : gtk_toplevel_accessible_get_children
+C function
+
+gtk_toplevel_accessible_get_children
 */
 func (recv *ToplevelAccessible) GetChildren() *glib.List {
 	retC := C.gtk_toplevel_accessible_get_children((*C.GtkToplevelAccessible)(recv.native))
@@ -40735,7 +42531,9 @@ func (recv *ToplevelAccessible) GetChildren() *glib.List {
 // yourself.
 /*
 
-C record/class : GtkTreeModelFilter
+C type
+
+GtkTreeModelFilter
 */
 type TreeModelFilter struct {
 	native *C.GtkTreeModelFilter
@@ -40796,7 +42594,7 @@ func (recv *TreeModelFilter) TreeModel() *TreeModel {
 // simply put the same model in each widget, then sorting the first would
 // sort the second.
 //
-// ## Using a #GtkTreeModelSort
+// Using a #GtkTreeModelSort
 //
 // |[<!-- language="C" -->
 // {
@@ -40831,7 +42629,7 @@ func (recv *TreeModelFilter) TreeModel() *TreeModel {
 // from COLUMN_1 of the model.  We then modify the string, find the same
 // selected row on the child model, and change the row there.
 //
-// ## Accessing the child model of in a selection changed callback
+// Accessing the child model of in a selection changed callback
 //
 // |[<!-- language="C" -->
 // void
@@ -40876,7 +42674,9 @@ func (recv *TreeModelFilter) TreeModel() *TreeModel {
 // ]|
 /*
 
-C record/class : GtkTreeModelSort
+C type
+
+GtkTreeModelSort
 */
 type TreeModelSort struct {
 	native *C.GtkTreeModelSort
@@ -40919,7 +42719,9 @@ func CastToTreeModelSort(object *gobject.Object) *TreeModelSort {
 // iters will be invalid.
 /*
 
-C function : gtk_tree_model_sort_clear_cache
+C function
+
+gtk_tree_model_sort_clear_cache
 */
 func (recv *TreeModelSort) ClearCache() {
 	C.gtk_tree_model_sort_clear_cache((*C.GtkTreeModelSort)(recv.native))
@@ -40932,7 +42734,9 @@ func (recv *TreeModelSort) ClearCache() {
 // is returned.  Note: a boolean is only returned since 2.14.
 /*
 
-C function : gtk_tree_model_sort_convert_child_iter_to_iter
+C function
+
+gtk_tree_model_sort_convert_child_iter_to_iter
 */
 func (recv *TreeModelSort) ConvertChildIterToIter(childIter *TreeIter) (bool, *TreeIter) {
 	var c_sort_iter C.GtkTreeIter
@@ -40956,7 +42760,9 @@ func (recv *TreeModelSort) ConvertChildIterToIter(childIter *TreeIter) (bool, *T
 // path on the child model, then %NULL is returned.
 /*
 
-C function : gtk_tree_model_sort_convert_child_path_to_path
+C function
+
+gtk_tree_model_sort_convert_child_path_to_path
 */
 func (recv *TreeModelSort) ConvertChildPathToPath(childPath *TreePath) *TreePath {
 	c_child_path := (*C.GtkTreePath)(C.NULL)
@@ -40978,7 +42784,9 @@ func (recv *TreeModelSort) ConvertChildPathToPath(childPath *TreePath) *TreePath
 // Sets @child_iter to point to the row pointed to by @sorted_iter.
 /*
 
-C function : gtk_tree_model_sort_convert_iter_to_child_iter
+C function
+
+gtk_tree_model_sort_convert_iter_to_child_iter
 */
 func (recv *TreeModelSort) ConvertIterToChildIter(sortedIter *TreeIter) *TreeIter {
 	var c_child_iter C.GtkTreeIter
@@ -41002,7 +42810,9 @@ func (recv *TreeModelSort) ConvertIterToChildIter(sortedIter *TreeIter) *TreeIte
 // %NULL is returned.
 /*
 
-C function : gtk_tree_model_sort_convert_path_to_child_path
+C function
+
+gtk_tree_model_sort_convert_path_to_child_path
 */
 func (recv *TreeModelSort) ConvertPathToChildPath(sortedPath *TreePath) *TreePath {
 	c_sorted_path := (*C.GtkTreePath)(C.NULL)
@@ -41024,7 +42834,9 @@ func (recv *TreeModelSort) ConvertPathToChildPath(sortedPath *TreePath) *TreePat
 // Returns the model the #GtkTreeModelSort is sorting.
 /*
 
-C function : gtk_tree_model_sort_get_model
+C function
+
+gtk_tree_model_sort_get_model
 */
 func (recv *TreeModelSort) GetModel() *TreeModel {
 	retC := C.gtk_tree_model_sort_get_model((*C.GtkTreeModelSort)(recv.native))
@@ -41039,7 +42851,9 @@ func (recv *TreeModelSort) GetModel() *TreeModel {
 // is in “unsorted” state.
 /*
 
-C function : gtk_tree_model_sort_reset_default_sort_func
+C function
+
+gtk_tree_model_sort_reset_default_sort_func
 */
 func (recv *TreeModelSort) ResetDefaultSortFunc() {
 	C.gtk_tree_model_sort_reset_default_sort_func((*C.GtkTreeModelSort)(recv.native))
@@ -41087,7 +42901,9 @@ func (recv *TreeModelSort) TreeSortable() *TreeSortable {
 // select_row on an already selected row).
 /*
 
-C record/class : GtkTreeSelection
+C type
+
+GtkTreeSelection
 */
 type TreeSelection struct {
 	native *C.GtkTreeSelection
@@ -41183,7 +42999,9 @@ func treeselection_changedHandler(_ *C.GObject, data C.gpointer) {
 // gtk_tree_selection_set_mode().
 /*
 
-C function : gtk_tree_selection_get_mode
+C function
+
+gtk_tree_selection_get_mode
 */
 func (recv *TreeSelection) GetMode() SelectionMode {
 	retC := C.gtk_tree_selection_get_mode((*C.GtkTreeSelection)(recv.native))
@@ -41199,7 +43017,9 @@ func (recv *TreeSelection) GetMode() SelectionMode {
 // use @selection is #GTK_SELECTION_MULTIPLE.
 /*
 
-C function : gtk_tree_selection_get_selected
+C function
+
+gtk_tree_selection_get_selected
 */
 func (recv *TreeSelection) GetSelected() (bool, *TreeModel, *TreeIter) {
 	var c_model *C.GtkTreeModel
@@ -41219,7 +43039,9 @@ func (recv *TreeSelection) GetSelected() (bool, *TreeModel, *TreeIter) {
 // Returns the tree view associated with @selection.
 /*
 
-C function : gtk_tree_selection_get_tree_view
+C function
+
+gtk_tree_selection_get_tree_view
 */
 func (recv *TreeSelection) GetTreeView() *TreeView {
 	retC := C.gtk_tree_selection_get_tree_view((*C.GtkTreeSelection)(recv.native))
@@ -41231,7 +43053,9 @@ func (recv *TreeSelection) GetTreeView() *TreeView {
 // Returns the user data for the selection function.
 /*
 
-C function : gtk_tree_selection_get_user_data
+C function
+
+gtk_tree_selection_get_user_data
 */
 func (recv *TreeSelection) GetUserData() uintptr {
 	retC := C.gtk_tree_selection_get_user_data((*C.GtkTreeSelection)(recv.native))
@@ -41243,7 +43067,9 @@ func (recv *TreeSelection) GetUserData() uintptr {
 // Returns %TRUE if the row at @iter is currently selected.
 /*
 
-C function : gtk_tree_selection_iter_is_selected
+C function
+
+gtk_tree_selection_iter_is_selected
 */
 func (recv *TreeSelection) IterIsSelected(iter *TreeIter) bool {
 	c_iter := (*C.GtkTreeIter)(C.NULL)
@@ -41261,7 +43087,9 @@ func (recv *TreeSelection) IterIsSelected(iter *TreeIter) bool {
 // does not point to a valid location, %FALSE is returned
 /*
 
-C function : gtk_tree_selection_path_is_selected
+C function
+
+gtk_tree_selection_path_is_selected
 */
 func (recv *TreeSelection) PathIsSelected(path *TreePath) bool {
 	c_path := (*C.GtkTreePath)(C.NULL)
@@ -41279,7 +43107,9 @@ func (recv *TreeSelection) PathIsSelected(path *TreePath) bool {
 // mode.
 /*
 
-C function : gtk_tree_selection_select_all
+C function
+
+gtk_tree_selection_select_all
 */
 func (recv *TreeSelection) SelectAll() {
 	C.gtk_tree_selection_select_all((*C.GtkTreeSelection)(recv.native))
@@ -41290,7 +43120,9 @@ func (recv *TreeSelection) SelectAll() {
 // Selects the specified iterator.
 /*
 
-C function : gtk_tree_selection_select_iter
+C function
+
+gtk_tree_selection_select_iter
 */
 func (recv *TreeSelection) SelectIter(iter *TreeIter) {
 	c_iter := (*C.GtkTreeIter)(C.NULL)
@@ -41306,7 +43138,9 @@ func (recv *TreeSelection) SelectIter(iter *TreeIter) {
 // Select the row at @path.
 /*
 
-C function : gtk_tree_selection_select_path
+C function
+
+gtk_tree_selection_select_path
 */
 func (recv *TreeSelection) SelectPath(path *TreePath) {
 	c_path := (*C.GtkTreePath)(C.NULL)
@@ -41323,7 +43157,9 @@ func (recv *TreeSelection) SelectPath(path *TreePath) {
 // @selection must be set to #GTK_SELECTION_MULTIPLE mode.
 /*
 
-C function : gtk_tree_selection_select_range
+C function
+
+gtk_tree_selection_select_range
 */
 func (recv *TreeSelection) SelectRange(startPath *TreePath, endPath *TreePath) {
 	c_start_path := (*C.GtkTreePath)(C.NULL)
@@ -41348,7 +43184,9 @@ func (recv *TreeSelection) SelectRange(startPath *TreePath, endPath *TreePath) {
 // previously selected.
 /*
 
-C function : gtk_tree_selection_set_mode
+C function
+
+gtk_tree_selection_set_mode
 */
 func (recv *TreeSelection) SetMode(type_ SelectionMode) {
 	c_type := (C.GtkSelectionMode)(type_)
@@ -41363,7 +43201,9 @@ func (recv *TreeSelection) SetMode(type_ SelectionMode) {
 // Unselects all the nodes.
 /*
 
-C function : gtk_tree_selection_unselect_all
+C function
+
+gtk_tree_selection_unselect_all
 */
 func (recv *TreeSelection) UnselectAll() {
 	C.gtk_tree_selection_unselect_all((*C.GtkTreeSelection)(recv.native))
@@ -41374,7 +43214,9 @@ func (recv *TreeSelection) UnselectAll() {
 // Unselects the specified iterator.
 /*
 
-C function : gtk_tree_selection_unselect_iter
+C function
+
+gtk_tree_selection_unselect_iter
 */
 func (recv *TreeSelection) UnselectIter(iter *TreeIter) {
 	c_iter := (*C.GtkTreeIter)(C.NULL)
@@ -41390,7 +43232,9 @@ func (recv *TreeSelection) UnselectIter(iter *TreeIter) {
 // Unselects the row at @path.
 /*
 
-C function : gtk_tree_selection_unselect_path
+C function
+
+gtk_tree_selection_unselect_path
 */
 func (recv *TreeSelection) UnselectPath(path *TreePath) {
 	c_path := (*C.GtkTreePath)(C.NULL)
@@ -41430,7 +43274,9 @@ func (recv *TreeSelection) UnselectPath(path *TreePath) {
 // ]|
 /*
 
-C record/class : GtkTreeStore
+C type
+
+GtkTreeStore
 */
 type TreeStore struct {
 	native *C.GtkTreeStore
@@ -41470,7 +43316,9 @@ func CastToTreeStore(object *gobject.Object) *TreeStore {
 // Non vararg creation function.  Used primarily by language bindings.
 /*
 
-C function : gtk_tree_store_newv
+C function
+
+gtk_tree_store_newv
 */
 func TreeStoreNewv(types []gobject.Type) *TreeStore {
 	c_n_columns := (C.gint)(len(types))
@@ -41490,7 +43338,9 @@ func TreeStoreNewv(types []gobject.Type) *TreeStore {
 // gtk_tree_store_set() or gtk_tree_store_set_value().
 /*
 
-C function : gtk_tree_store_append
+C function
+
+gtk_tree_store_append
 */
 func (recv *TreeStore) Append(parent *TreeIter) *TreeIter {
 	var c_iter C.GtkTreeIter
@@ -41510,7 +43360,9 @@ func (recv *TreeStore) Append(parent *TreeIter) *TreeIter {
 // Removes all rows from @tree_store
 /*
 
-C function : gtk_tree_store_clear
+C function
+
+gtk_tree_store_clear
 */
 func (recv *TreeStore) Clear() {
 	C.gtk_tree_store_clear((*C.GtkTreeStore)(recv.native))
@@ -41527,7 +43379,9 @@ func (recv *TreeStore) Clear() {
 // gtk_tree_store_set_value().
 /*
 
-C function : gtk_tree_store_insert
+C function
+
+gtk_tree_store_insert
 */
 func (recv *TreeStore) Insert(parent *TreeIter, position int32) *TreeIter {
 	var c_iter C.GtkTreeIter
@@ -41557,7 +43411,9 @@ func (recv *TreeStore) Insert(parent *TreeIter, position int32) *TreeIter {
 // gtk_tree_store_set() or gtk_tree_store_set_value().
 /*
 
-C function : gtk_tree_store_insert_after
+C function
+
+gtk_tree_store_insert_after
 */
 func (recv *TreeStore) InsertAfter(parent *TreeIter, sibling *TreeIter) *TreeIter {
 	var c_iter C.GtkTreeIter
@@ -41590,7 +43446,9 @@ func (recv *TreeStore) InsertAfter(parent *TreeIter, sibling *TreeIter) *TreeIte
 // gtk_tree_store_set() or gtk_tree_store_set_value().
 /*
 
-C function : gtk_tree_store_insert_before
+C function
+
+gtk_tree_store_insert_before
 */
 func (recv *TreeStore) InsertBefore(parent *TreeIter, sibling *TreeIter) *TreeIter {
 	var c_iter C.GtkTreeIter
@@ -41616,7 +43474,9 @@ func (recv *TreeStore) InsertBefore(parent *TreeIter, sibling *TreeIter) *TreeIt
 // parent (or grandparent or great-grandparent) of @descendant.
 /*
 
-C function : gtk_tree_store_is_ancestor
+C function
+
+gtk_tree_store_is_ancestor
 */
 func (recv *TreeStore) IsAncestor(iter *TreeIter, descendant *TreeIter) bool {
 	c_iter := (*C.GtkTreeIter)(C.NULL)
@@ -41639,7 +43499,9 @@ func (recv *TreeStore) IsAncestor(iter *TreeIter, descendant *TreeIter) bool {
 // for anything down a level, etc.
 /*
 
-C function : gtk_tree_store_iter_depth
+C function
+
+gtk_tree_store_iter_depth
 */
 func (recv *TreeStore) IterDepth(iter *TreeIter) int32 {
 	c_iter := (*C.GtkTreeIter)(C.NULL)
@@ -41660,7 +43522,9 @@ func (recv *TreeStore) IterDepth(iter *TreeIter) int32 {
 // call gtk_tree_store_set() or gtk_tree_store_set_value().
 /*
 
-C function : gtk_tree_store_prepend
+C function
+
+gtk_tree_store_prepend
 */
 func (recv *TreeStore) Prepend(parent *TreeIter) *TreeIter {
 	var c_iter C.GtkTreeIter
@@ -41682,7 +43546,9 @@ func (recv *TreeStore) Prepend(parent *TreeIter) *TreeIter {
 // last one.
 /*
 
-C function : gtk_tree_store_remove
+C function
+
+gtk_tree_store_remove
 */
 func (recv *TreeStore) Remove(iter *TreeIter) bool {
 	c_iter := (*C.GtkTreeIter)(C.NULL)
@@ -41704,7 +43570,9 @@ func (recv *TreeStore) Remove(iter *TreeIter) bool {
 // or a method on the #GtkTreeModel interface is called.
 /*
 
-C function : gtk_tree_store_set_column_types
+C function
+
+gtk_tree_store_set_column_types
 */
 func (recv *TreeStore) SetColumnTypes(types []gobject.Type) {
 	c_n_columns := (C.gint)(len(types))
@@ -41723,7 +43591,9 @@ func (recv *TreeStore) SetColumnTypes(types []gobject.Type) {
 // column.
 /*
 
-C function : gtk_tree_store_set_value
+C function
+
+gtk_tree_store_set_value
 */
 func (recv *TreeStore) SetValue(iter *TreeIter, column int32, value *gobject.Value) {
 	c_iter := (*C.GtkTreeIter)(C.NULL)
@@ -41843,7 +43713,9 @@ func (recv *TreeStore) TreeSortable() *TreeSortable {
 // For rubberband selection, a subnode with name rubberband is used.
 /*
 
-C record/class : GtkTreeView
+C type
+
+GtkTreeView
 */
 type TreeView struct {
 	native *C.GtkTreeView
@@ -42751,7 +44623,9 @@ func treeview_unselectAllHandler(_ *C.GObject, data C.gpointer) C.gboolean {
 // Creates a new #GtkTreeView widget.
 /*
 
-C function : gtk_tree_view_new
+C function
+
+gtk_tree_view_new
 */
 func TreeViewNew() *TreeView {
 	retC := C.gtk_tree_view_new()
@@ -42763,7 +44637,9 @@ func TreeViewNew() *TreeView {
 // Creates a new #GtkTreeView widget with the model initialized to @model.
 /*
 
-C function : gtk_tree_view_new_with_model
+C function
+
+gtk_tree_view_new_with_model
 */
 func TreeViewNewWithModel(model *TreeModel) *TreeView {
 	c_model := (*C.GtkTreeModel)(model.ToC())
@@ -42779,7 +44655,9 @@ func TreeViewNewWithModel(model *TreeModel) *TreeView {
 // GTK_TREE_VIEW_COLUMN_FIXED.
 /*
 
-C function : gtk_tree_view_append_column
+C function
+
+gtk_tree_view_append_column
 */
 func (recv *TreeView) AppendColumn(column *TreeViewColumn) int32 {
 	c_column := (*C.GtkTreeViewColumn)(C.NULL)
@@ -42796,7 +44674,9 @@ func (recv *TreeView) AppendColumn(column *TreeViewColumn) int32 {
 // Recursively collapses all visible, expanded nodes in @tree_view.
 /*
 
-C function : gtk_tree_view_collapse_all
+C function
+
+gtk_tree_view_collapse_all
 */
 func (recv *TreeView) CollapseAll() {
 	C.gtk_tree_view_collapse_all((*C.GtkTreeView)(recv.native))
@@ -42807,7 +44687,9 @@ func (recv *TreeView) CollapseAll() {
 // Collapses a row (hides its child rows, if they exist).
 /*
 
-C function : gtk_tree_view_collapse_row
+C function
+
+gtk_tree_view_collapse_row
 */
 func (recv *TreeView) CollapseRow(path *TreePath) bool {
 	c_path := (*C.GtkTreePath)(C.NULL)
@@ -42825,7 +44707,9 @@ func (recv *TreeView) CollapseRow(path *TreePath) bool {
 // treeview has been realized.
 /*
 
-C function : gtk_tree_view_columns_autosize
+C function
+
+gtk_tree_view_columns_autosize
 */
 func (recv *TreeView) ColumnsAutosize() {
 	C.gtk_tree_view_columns_autosize((*C.GtkTreeView)(recv.native))
@@ -42837,7 +44721,9 @@ func (recv *TreeView) ColumnsAutosize() {
 // This image is used for a drag icon.
 /*
 
-C function : gtk_tree_view_create_row_drag_icon
+C function
+
+gtk_tree_view_create_row_drag_icon
 */
 func (recv *TreeView) CreateRowDragIcon(path *TreePath) *cairo.Surface {
 	c_path := (*C.GtkTreePath)(C.NULL)
@@ -42858,7 +44744,9 @@ func (recv *TreeView) CreateRowDragIcon(path *TreePath) *cairo.Surface {
 // Recursively expands all nodes in the @tree_view.
 /*
 
-C function : gtk_tree_view_expand_all
+C function
+
+gtk_tree_view_expand_all
 */
 func (recv *TreeView) ExpandAll() {
 	C.gtk_tree_view_expand_all((*C.GtkTreeView)(recv.native))
@@ -42869,7 +44757,9 @@ func (recv *TreeView) ExpandAll() {
 // Opens the row so its children are visible.
 /*
 
-C function : gtk_tree_view_expand_row
+C function
+
+gtk_tree_view_expand_row
 */
 func (recv *TreeView) ExpandRow(path *TreePath, openAll bool) bool {
 	c_path := (*C.GtkTreePath)(C.NULL)
@@ -42893,7 +44783,9 @@ func (recv *TreeView) ExpandRow(path *TreePath, openAll bool) bool {
 // to confirm that the event on @tree_view is on the right window.
 /*
 
-C function : gtk_tree_view_get_bin_window
+C function
+
+gtk_tree_view_get_bin_window
 */
 func (recv *TreeView) GetBinWindow() *gdk.Window {
 	retC := C.gtk_tree_view_get_bin_window((*C.GtkTreeView)(recv.native))
@@ -42912,7 +44804,9 @@ func (recv *TreeView) GetBinWindow() *gdk.Window {
 // Gets the #GtkTreeViewColumn at the given position in the #tree_view.
 /*
 
-C function : gtk_tree_view_get_column
+C function
+
+gtk_tree_view_get_column
 */
 func (recv *TreeView) GetColumn(n int32) *TreeViewColumn {
 	c_n := (C.gint)(n)
@@ -42932,7 +44826,9 @@ func (recv *TreeView) GetColumn(n int32) *TreeViewColumn {
 // The returned list must be freed with g_list_free ().
 /*
 
-C function : gtk_tree_view_get_columns
+C function
+
+gtk_tree_view_get_columns
 */
 func (recv *TreeView) GetColumns() *glib.List {
 	retC := C.gtk_tree_view_get_columns((*C.GtkTreeView)(recv.native))
@@ -42949,7 +44845,9 @@ func (recv *TreeView) GetColumns() *glib.List {
 // you are done with it.
 /*
 
-C function : gtk_tree_view_get_cursor
+C function
+
+gtk_tree_view_get_cursor
 */
 func (recv *TreeView) GetCursor() (*TreePath, *TreeViewColumn) {
 	var c_path *C.GtkTreePath
@@ -42973,7 +44871,9 @@ func (recv *TreeView) GetCursor() (*TreePath, *TreeViewColumn) {
 // by typing in text.
 /*
 
-C function : gtk_tree_view_get_enable_search
+C function
+
+gtk_tree_view_get_enable_search
 */
 func (recv *TreeView) GetEnableSearch() bool {
 	retC := C.gtk_tree_view_get_enable_search((*C.GtkTreeView)(recv.native))
@@ -42986,7 +44886,9 @@ func (recv *TreeView) GetEnableSearch() bool {
 // This column has the expander arrow drawn next to it.
 /*
 
-C function : gtk_tree_view_get_expander_column
+C function
+
+gtk_tree_view_get_expander_column
 */
 func (recv *TreeView) GetExpanderColumn() *TreeViewColumn {
 	retC := C.gtk_tree_view_get_expander_column((*C.GtkTreeView)(recv.native))
@@ -42998,7 +44900,9 @@ func (recv *TreeView) GetExpanderColumn() *TreeViewColumn {
 // Gets the #GtkAdjustment currently being used for the horizontal aspect.
 /*
 
-C function : gtk_tree_view_get_hadjustment
+C function
+
+gtk_tree_view_get_hadjustment
 */
 func (recv *TreeView) GetHadjustment() *Adjustment {
 	retC := C.gtk_tree_view_get_hadjustment((*C.GtkTreeView)(recv.native))
@@ -43010,7 +44914,9 @@ func (recv *TreeView) GetHadjustment() *Adjustment {
 // Returns %TRUE if the headers on the @tree_view are visible.
 /*
 
-C function : gtk_tree_view_get_headers_visible
+C function
+
+gtk_tree_view_get_headers_visible
 */
 func (recv *TreeView) GetHeadersVisible() bool {
 	retC := C.gtk_tree_view_get_headers_visible((*C.GtkTreeView)(recv.native))
@@ -43023,7 +44929,9 @@ func (recv *TreeView) GetHeadersVisible() bool {
 // model is unset.
 /*
 
-C function : gtk_tree_view_get_model
+C function
+
+gtk_tree_view_get_model
 */
 func (recv *TreeView) GetModel() *TreeModel {
 	retC := C.gtk_tree_view_get_model((*C.GtkTreeView)(recv.native))
@@ -43056,7 +44964,9 @@ func (recv *TreeView) GetModel() *TreeModel {
 // gtk_tree_view_convert_widget_to_bin_window_coords().
 /*
 
-C function : gtk_tree_view_get_path_at_pos
+C function
+
+gtk_tree_view_get_path_at_pos
 */
 func (recv *TreeView) GetPathAtPos(x int32, y int32) (bool, *TreePath, *TreeViewColumn, int32, int32) {
 	c_x := (C.gint)(x)
@@ -43089,7 +44999,9 @@ func (recv *TreeView) GetPathAtPos(x int32, y int32) (bool, *TreePath, *TreeView
 // gtk_tree_view_set_reorderable().
 /*
 
-C function : gtk_tree_view_get_reorderable
+C function
+
+gtk_tree_view_get_reorderable
 */
 func (recv *TreeView) GetReorderable() bool {
 	retC := C.gtk_tree_view_get_reorderable((*C.GtkTreeView)(recv.native))
@@ -43101,7 +45013,9 @@ func (recv *TreeView) GetReorderable() bool {
 // Gets the setting set by gtk_tree_view_set_rules_hint().
 /*
 
-C function : gtk_tree_view_get_rules_hint
+C function
+
+gtk_tree_view_get_rules_hint
 */
 func (recv *TreeView) GetRulesHint() bool {
 	retC := C.gtk_tree_view_get_rules_hint((*C.GtkTreeView)(recv.native))
@@ -43113,7 +45027,9 @@ func (recv *TreeView) GetRulesHint() bool {
 // Gets the column searched on by the interactive search code.
 /*
 
-C function : gtk_tree_view_get_search_column
+C function
+
+gtk_tree_view_get_search_column
 */
 func (recv *TreeView) GetSearchColumn() int32 {
 	retC := C.gtk_tree_view_get_search_column((*C.GtkTreeView)(recv.native))
@@ -43127,7 +45043,9 @@ func (recv *TreeView) GetSearchColumn() int32 {
 // Gets the #GtkTreeSelection associated with @tree_view.
 /*
 
-C function : gtk_tree_view_get_selection
+C function
+
+gtk_tree_view_get_selection
 */
 func (recv *TreeView) GetSelection() *TreeSelection {
 	retC := C.gtk_tree_view_get_selection((*C.GtkTreeView)(recv.native))
@@ -43139,7 +45057,9 @@ func (recv *TreeView) GetSelection() *TreeSelection {
 // Gets the #GtkAdjustment currently being used for the vertical aspect.
 /*
 
-C function : gtk_tree_view_get_vadjustment
+C function
+
+gtk_tree_view_get_vadjustment
 */
 func (recv *TreeView) GetVadjustment() *Adjustment {
 	retC := C.gtk_tree_view_get_vadjustment((*C.GtkTreeView)(recv.native))
@@ -43156,7 +45076,9 @@ func (recv *TreeView) GetVadjustment() *Adjustment {
 // set to be GTK_TREE_VIEW_COLUMN_FIXED.
 /*
 
-C function : gtk_tree_view_insert_column
+C function
+
+gtk_tree_view_insert_column
 */
 func (recv *TreeView) InsertColumn(column *TreeViewColumn, position int32) int32 {
 	c_column := (*C.GtkTreeViewColumn)(C.NULL)
@@ -43182,7 +45104,9 @@ func (recv *TreeView) InsertColumn(column *TreeViewColumn, position int32) int32
 // @column is placed in the first position.
 /*
 
-C function : gtk_tree_view_move_column_after
+C function
+
+gtk_tree_view_move_column_after
 */
 func (recv *TreeView) MoveColumnAfter(column *TreeViewColumn, baseColumn *TreeViewColumn) {
 	c_column := (*C.GtkTreeViewColumn)(C.NULL)
@@ -43203,7 +45127,9 @@ func (recv *TreeView) MoveColumnAfter(column *TreeViewColumn, baseColumn *TreeVi
 // Removes @column from @tree_view.
 /*
 
-C function : gtk_tree_view_remove_column
+C function
+
+gtk_tree_view_remove_column
 */
 func (recv *TreeView) RemoveColumn(column *TreeViewColumn) int32 {
 	c_column := (*C.GtkTreeViewColumn)(C.NULL)
@@ -43220,7 +45146,9 @@ func (recv *TreeView) RemoveColumn(column *TreeViewColumn) int32 {
 // Activates the cell determined by @path and @column.
 /*
 
-C function : gtk_tree_view_row_activated
+C function
+
+gtk_tree_view_row_activated
 */
 func (recv *TreeView) RowActivated(path *TreePath, column *TreeViewColumn) {
 	c_path := (*C.GtkTreePath)(C.NULL)
@@ -43241,7 +45169,9 @@ func (recv *TreeView) RowActivated(path *TreePath, column *TreeViewColumn) {
 // Returns %TRUE if the node pointed to by @path is expanded in @tree_view.
 /*
 
-C function : gtk_tree_view_row_expanded
+C function
+
+gtk_tree_view_row_expanded
 */
 func (recv *TreeView) RowExpanded(path *TreePath) bool {
 	c_path := (*C.GtkTreePath)(C.NULL)
@@ -43273,7 +45203,9 @@ func (recv *TreeView) RowExpanded(path *TreePath) bool {
 // path will be modified to reflect this change.
 /*
 
-C function : gtk_tree_view_scroll_to_cell
+C function
+
+gtk_tree_view_scroll_to_cell
 */
 func (recv *TreeView) ScrollToCell(path *TreePath, column *TreeViewColumn, useAlign bool, rowAlign float32, colAlign float32) {
 	c_path := (*C.GtkTreePath)(C.NULL)
@@ -43307,7 +45239,9 @@ func (recv *TreeView) ScrollToCell(path *TreePath, column *TreeViewColumn, useAl
 // If either @tree_x or @tree_y are -1, then that direction isn’t scrolled.
 /*
 
-C function : gtk_tree_view_scroll_to_point
+C function
+
+gtk_tree_view_scroll_to_point
 */
 func (recv *TreeView) ScrollToPoint(treeX int32, treeY int32) {
 	c_tree_x := (C.gint)(treeX)
@@ -43334,7 +45268,9 @@ func (recv *TreeView) ScrollToPoint(treeX int32, treeY int32) {
 // and the function will return without failing.
 /*
 
-C function : gtk_tree_view_set_cursor
+C function
+
+gtk_tree_view_set_cursor
 */
 func (recv *TreeView) SetCursor(path *TreePath, focusColumn *TreeViewColumn, startEditing bool) {
 	c_path := (*C.GtkTreePath)(C.NULL)
@@ -43361,7 +45297,9 @@ func (recv *TreeView) SetCursor(path *TreePath, focusColumn *TreeViewColumn, sta
 // If @path is %NULL, an existing highlight is removed.
 /*
 
-C function : gtk_tree_view_set_drag_dest_row
+C function
+
+gtk_tree_view_set_drag_dest_row
 */
 func (recv *TreeView) SetDragDestRow(path *TreePath, pos TreeViewDropPosition) {
 	c_path := (*C.GtkTreePath)(C.NULL)
@@ -43383,7 +45321,9 @@ func (recv *TreeView) SetDragDestRow(path *TreePath, pos TreeViewDropPosition) {
 // using the “start-interactive-search” key binding.
 /*
 
-C function : gtk_tree_view_set_enable_search
+C function
+
+gtk_tree_view_set_enable_search
 */
 func (recv *TreeView) SetEnableSearch(enableSearch bool) {
 	c_enable_search :=
@@ -43402,7 +45342,9 @@ func (recv *TreeView) SetEnableSearch(enableSearch bool) {
 // expander column to a hidden column.
 /*
 
-C function : gtk_tree_view_set_expander_column
+C function
+
+gtk_tree_view_set_expander_column
 */
 func (recv *TreeView) SetExpanderColumn(column *TreeViewColumn) {
 	c_column := (*C.GtkTreeViewColumn)(C.NULL)
@@ -43418,7 +45360,9 @@ func (recv *TreeView) SetExpanderColumn(column *TreeViewColumn) {
 // Sets the #GtkAdjustment for the current horizontal aspect.
 /*
 
-C function : gtk_tree_view_set_hadjustment
+C function
+
+gtk_tree_view_set_hadjustment
 */
 func (recv *TreeView) SetHadjustment(adjustment *Adjustment) {
 	c_adjustment := (*C.GtkAdjustment)(C.NULL)
@@ -43434,7 +45378,9 @@ func (recv *TreeView) SetHadjustment(adjustment *Adjustment) {
 // Allow the column title buttons to be clicked.
 /*
 
-C function : gtk_tree_view_set_headers_clickable
+C function
+
+gtk_tree_view_set_headers_clickable
 */
 func (recv *TreeView) SetHeadersClickable(setting bool) {
 	c_setting :=
@@ -43448,7 +45394,9 @@ func (recv *TreeView) SetHeadersClickable(setting bool) {
 // Sets the visibility state of the headers.
 /*
 
-C function : gtk_tree_view_set_headers_visible
+C function
+
+gtk_tree_view_set_headers_visible
 */
 func (recv *TreeView) SetHeadersVisible(headersVisible bool) {
 	c_headers_visible :=
@@ -43464,7 +45412,9 @@ func (recv *TreeView) SetHeadersVisible(headersVisible bool) {
 // then it will unset the old model.
 /*
 
-C function : gtk_tree_view_set_model
+C function
+
+gtk_tree_view_set_model
 */
 func (recv *TreeView) SetModel(model *TreeModel) {
 	c_model := (*C.GtkTreeModel)(model.ToC())
@@ -43490,7 +45440,9 @@ func (recv *TreeView) SetModel(model *TreeModel) {
 // handle drag and drop manually.
 /*
 
-C function : gtk_tree_view_set_reorderable
+C function
+
+gtk_tree_view_set_reorderable
 */
 func (recv *TreeView) SetReorderable(reorderable bool) {
 	c_reorderable :=
@@ -43518,7 +45470,9 @@ func (recv *TreeView) SetReorderable(reorderable bool) {
 // generally).
 /*
 
-C function : gtk_tree_view_set_rules_hint
+C function
+
+gtk_tree_view_set_rules_hint
 */
 func (recv *TreeView) SetRulesHint(setting bool) {
 	c_setting :=
@@ -43540,7 +45494,9 @@ func (recv *TreeView) SetRulesHint(setting bool) {
 // column is reset to -1 when the model is changed.
 /*
 
-C function : gtk_tree_view_set_search_column
+C function
+
+gtk_tree_view_set_search_column
 */
 func (recv *TreeView) SetSearchColumn(column int32) {
 	c_column := (C.gint)(column)
@@ -43555,7 +45511,9 @@ func (recv *TreeView) SetSearchColumn(column int32) {
 // Sets the #GtkAdjustment for the current vertical aspect.
 /*
 
-C function : gtk_tree_view_set_vadjustment
+C function
+
+gtk_tree_view_set_vadjustment
 */
 func (recv *TreeView) SetVadjustment(adjustment *Adjustment) {
 	c_adjustment := (*C.GtkAdjustment)(C.NULL)
@@ -43573,7 +45531,9 @@ func (recv *TreeView) SetVadjustment(adjustment *Adjustment) {
 // #GtkTreeView:reorderable to %FALSE.
 /*
 
-C function : gtk_tree_view_unset_rows_drag_dest
+C function
+
+gtk_tree_view_unset_rows_drag_dest
 */
 func (recv *TreeView) UnsetRowsDragDest() {
 	C.gtk_tree_view_unset_rows_drag_dest((*C.GtkTreeView)(recv.native))
@@ -43586,7 +45546,9 @@ func (recv *TreeView) UnsetRowsDragDest() {
 // #GtkTreeView:reorderable to %FALSE.
 /*
 
-C function : gtk_tree_view_unset_rows_drag_source
+C function
+
+gtk_tree_view_unset_rows_drag_source
 */
 func (recv *TreeView) UnsetRowsDragSource() {
 	C.gtk_tree_view_unset_rows_drag_source((*C.GtkTreeView)(recv.native))
@@ -43611,7 +45573,9 @@ func (recv *TreeView) Scrollable() *Scrollable {
 
 /*
 
-C record/class : GtkTreeViewAccessible
+C type
+
+GtkTreeViewAccessible
 */
 type TreeViewAccessible struct {
 	native *C.GtkTreeViewAccessible
@@ -43690,7 +45654,9 @@ func (recv *TreeViewAccessible) CellAccessibleParent() *CellAccessibleParent {
 // they work together.
 /*
 
-C record/class : GtkTreeViewColumn
+C type
+
+GtkTreeViewColumn
 */
 type TreeViewColumn struct {
 	native *C.GtkTreeViewColumn
@@ -43790,7 +45756,9 @@ func treeviewcolumn_clickedHandler(_ *C.GObject, data C.gpointer) {
 // Creates a new #GtkTreeViewColumn.
 /*
 
-C function : gtk_tree_view_column_new
+C function
+
+gtk_tree_view_column_new
 */
 func TreeViewColumnNew() *TreeViewColumn {
 	retC := C.gtk_tree_view_column_new()
@@ -43809,7 +45777,9 @@ func TreeViewColumnNew() *TreeViewColumn {
 // column 2.
 /*
 
-C function : gtk_tree_view_column_add_attribute
+C function
+
+gtk_tree_view_column_add_attribute
 */
 func (recv *TreeViewColumn) AddAttribute(cellRenderer *CellRenderer, attribute string, column int32) {
 	c_cell_renderer := (*C.GtkCellRenderer)(C.NULL)
@@ -43832,7 +45802,9 @@ func (recv *TreeViewColumn) AddAttribute(cellRenderer *CellRenderer, attribute s
 // %FALSE is returned.
 /*
 
-C function : gtk_tree_view_column_cell_get_position
+C function
+
+gtk_tree_view_column_cell_get_position
 */
 func (recv *TreeViewColumn) CellGetPosition(cellRenderer *CellRenderer) (bool, int32, int32) {
 	c_cell_renderer := (*C.GtkCellRenderer)(C.NULL)
@@ -43861,7 +45833,9 @@ func (recv *TreeViewColumn) CellGetPosition(cellRenderer *CellRenderer) (bool, i
 // gtk_tree_view_column_cell_set_cell_data()
 /*
 
-C function : gtk_tree_view_column_cell_is_visible
+C function
+
+gtk_tree_view_column_cell_is_visible
 */
 func (recv *TreeViewColumn) CellIsVisible() bool {
 	retC := C.gtk_tree_view_column_cell_is_visible((*C.GtkTreeViewColumn)(recv.native))
@@ -43876,7 +45850,9 @@ func (recv *TreeViewColumn) CellIsVisible() bool {
 // renderer.  This is used primarily by the #GtkTreeView.
 /*
 
-C function : gtk_tree_view_column_cell_set_cell_data
+C function
+
+gtk_tree_view_column_cell_set_cell_data
 */
 func (recv *TreeViewColumn) CellSetCellData(treeModel *TreeModel, iter *TreeIter, isExpander bool, isExpanded bool) {
 	c_tree_model := (*C.GtkTreeModel)(treeModel.ToC())
@@ -43900,7 +45876,9 @@ func (recv *TreeViewColumn) CellSetCellData(treeModel *TreeModel, iter *TreeIter
 // Unsets all the mappings on all renderers on the @tree_column.
 /*
 
-C function : gtk_tree_view_column_clear
+C function
+
+gtk_tree_view_column_clear
 */
 func (recv *TreeViewColumn) Clear() {
 	C.gtk_tree_view_column_clear((*C.GtkTreeViewColumn)(recv.native))
@@ -43912,7 +45890,9 @@ func (recv *TreeViewColumn) Clear() {
 // gtk_tree_view_column_set_attributes().
 /*
 
-C function : gtk_tree_view_column_clear_attributes
+C function
+
+gtk_tree_view_column_clear_attributes
 */
 func (recv *TreeViewColumn) ClearAttributes(cellRenderer *CellRenderer) {
 	c_cell_renderer := (*C.GtkCellRenderer)(C.NULL)
@@ -43929,7 +45909,9 @@ func (recv *TreeViewColumn) ClearAttributes(cellRenderer *CellRenderer) {
 // @tree_column is clickable.
 /*
 
-C function : gtk_tree_view_column_clicked
+C function
+
+gtk_tree_view_column_clicked
 */
 func (recv *TreeViewColumn) Clicked() {
 	C.gtk_tree_view_column_clicked((*C.GtkTreeViewColumn)(recv.native))
@@ -43941,7 +45923,9 @@ func (recv *TreeViewColumn) Clicked() {
 // between 0.0 and 1.0.
 /*
 
-C function : gtk_tree_view_column_get_alignment
+C function
+
+gtk_tree_view_column_get_alignment
 */
 func (recv *TreeViewColumn) GetAlignment() float32 {
 	retC := C.gtk_tree_view_column_get_alignment((*C.GtkTreeViewColumn)(recv.native))
@@ -43953,7 +45937,9 @@ func (recv *TreeViewColumn) GetAlignment() float32 {
 // Returns %TRUE if the user can click on the header for the column.
 /*
 
-C function : gtk_tree_view_column_get_clickable
+C function
+
+gtk_tree_view_column_get_clickable
 */
 func (recv *TreeViewColumn) GetClickable() bool {
 	retC := C.gtk_tree_view_column_get_clickable((*C.GtkTreeViewColumn)(recv.native))
@@ -43966,7 +45952,9 @@ func (recv *TreeViewColumn) GetClickable() bool {
 // width of the column; for that, use gtk_tree_view_column_get_width().
 /*
 
-C function : gtk_tree_view_column_get_fixed_width
+C function
+
+gtk_tree_view_column_get_fixed_width
 */
 func (recv *TreeViewColumn) GetFixedWidth() int32 {
 	retC := C.gtk_tree_view_column_get_fixed_width((*C.GtkTreeViewColumn)(recv.native))
@@ -43979,7 +45967,9 @@ func (recv *TreeViewColumn) GetFixedWidth() int32 {
 // width is set.
 /*
 
-C function : gtk_tree_view_column_get_max_width
+C function
+
+gtk_tree_view_column_get_max_width
 */
 func (recv *TreeViewColumn) GetMaxWidth() int32 {
 	retC := C.gtk_tree_view_column_get_max_width((*C.GtkTreeViewColumn)(recv.native))
@@ -43992,7 +45982,9 @@ func (recv *TreeViewColumn) GetMaxWidth() int32 {
 // width is set.
 /*
 
-C function : gtk_tree_view_column_get_min_width
+C function
+
+gtk_tree_view_column_get_min_width
 */
 func (recv *TreeViewColumn) GetMinWidth() int32 {
 	retC := C.gtk_tree_view_column_get_min_width((*C.GtkTreeViewColumn)(recv.native))
@@ -44004,7 +45996,9 @@ func (recv *TreeViewColumn) GetMinWidth() int32 {
 // Returns %TRUE if the @tree_column can be reordered by the user.
 /*
 
-C function : gtk_tree_view_column_get_reorderable
+C function
+
+gtk_tree_view_column_get_reorderable
 */
 func (recv *TreeViewColumn) GetReorderable() bool {
 	retC := C.gtk_tree_view_column_get_reorderable((*C.GtkTreeViewColumn)(recv.native))
@@ -44016,7 +46010,9 @@ func (recv *TreeViewColumn) GetReorderable() bool {
 // Returns %TRUE if the @tree_column can be resized by the end user.
 /*
 
-C function : gtk_tree_view_column_get_resizable
+C function
+
+gtk_tree_view_column_get_resizable
 */
 func (recv *TreeViewColumn) GetResizable() bool {
 	retC := C.gtk_tree_view_column_get_resizable((*C.GtkTreeViewColumn)(recv.native))
@@ -44028,7 +46024,9 @@ func (recv *TreeViewColumn) GetResizable() bool {
 // Returns the current type of @tree_column.
 /*
 
-C function : gtk_tree_view_column_get_sizing
+C function
+
+gtk_tree_view_column_get_sizing
 */
 func (recv *TreeViewColumn) GetSizing() TreeViewColumnSizing {
 	retC := C.gtk_tree_view_column_get_sizing((*C.GtkTreeViewColumn)(recv.native))
@@ -44042,7 +46040,9 @@ func (recv *TreeViewColumn) GetSizing() TreeViewColumnSizing {
 // See gtk_tree_view_column_set_sort_column_id().
 /*
 
-C function : gtk_tree_view_column_get_sort_column_id
+C function
+
+gtk_tree_view_column_get_sort_column_id
 */
 func (recv *TreeViewColumn) GetSortColumnId() int32 {
 	retC := C.gtk_tree_view_column_get_sort_column_id((*C.GtkTreeViewColumn)(recv.native))
@@ -44054,7 +46054,9 @@ func (recv *TreeViewColumn) GetSortColumnId() int32 {
 // Gets the value set by gtk_tree_view_column_set_sort_indicator().
 /*
 
-C function : gtk_tree_view_column_get_sort_indicator
+C function
+
+gtk_tree_view_column_get_sort_indicator
 */
 func (recv *TreeViewColumn) GetSortIndicator() bool {
 	retC := C.gtk_tree_view_column_get_sort_indicator((*C.GtkTreeViewColumn)(recv.native))
@@ -44066,7 +46068,9 @@ func (recv *TreeViewColumn) GetSortIndicator() bool {
 // Gets the value set by gtk_tree_view_column_set_sort_order().
 /*
 
-C function : gtk_tree_view_column_get_sort_order
+C function
+
+gtk_tree_view_column_get_sort_order
 */
 func (recv *TreeViewColumn) GetSortOrder() SortType {
 	retC := C.gtk_tree_view_column_get_sort_order((*C.GtkTreeViewColumn)(recv.native))
@@ -44078,7 +46082,9 @@ func (recv *TreeViewColumn) GetSortOrder() SortType {
 // Returns the spacing of @tree_column.
 /*
 
-C function : gtk_tree_view_column_get_spacing
+C function
+
+gtk_tree_view_column_get_spacing
 */
 func (recv *TreeViewColumn) GetSpacing() int32 {
 	retC := C.gtk_tree_view_column_get_spacing((*C.GtkTreeViewColumn)(recv.native))
@@ -44090,7 +46096,9 @@ func (recv *TreeViewColumn) GetSpacing() int32 {
 // Returns the title of the widget.
 /*
 
-C function : gtk_tree_view_column_get_title
+C function
+
+gtk_tree_view_column_get_title
 */
 func (recv *TreeViewColumn) GetTitle() string {
 	retC := C.gtk_tree_view_column_get_title((*C.GtkTreeViewColumn)(recv.native))
@@ -44102,7 +46110,9 @@ func (recv *TreeViewColumn) GetTitle() string {
 // Returns %TRUE if @tree_column is visible.
 /*
 
-C function : gtk_tree_view_column_get_visible
+C function
+
+gtk_tree_view_column_get_visible
 */
 func (recv *TreeViewColumn) GetVisible() bool {
 	retC := C.gtk_tree_view_column_get_visible((*C.GtkTreeViewColumn)(recv.native))
@@ -44115,7 +46125,9 @@ func (recv *TreeViewColumn) GetVisible() bool {
 // If a custom widget has not been set then %NULL is returned.
 /*
 
-C function : gtk_tree_view_column_get_widget
+C function
+
+gtk_tree_view_column_get_widget
 */
 func (recv *TreeViewColumn) GetWidget() *Widget {
 	retC := C.gtk_tree_view_column_get_widget((*C.GtkTreeViewColumn)(recv.native))
@@ -44132,7 +46144,9 @@ func (recv *TreeViewColumn) GetWidget() *Widget {
 // Returns the current size of @tree_column in pixels.
 /*
 
-C function : gtk_tree_view_column_get_width
+C function
+
+gtk_tree_view_column_get_width
 */
 func (recv *TreeViewColumn) GetWidth() int32 {
 	retC := C.gtk_tree_view_column_get_width((*C.GtkTreeViewColumn)(recv.native))
@@ -44146,7 +46160,9 @@ func (recv *TreeViewColumn) GetWidth() int32 {
 // evenly between cells for which @expand is %TRUE.
 /*
 
-C function : gtk_tree_view_column_pack_end
+C function
+
+gtk_tree_view_column_pack_end
 */
 func (recv *TreeViewColumn) PackEnd(cell *CellRenderer, expand bool) {
 	c_cell := (*C.GtkCellRenderer)(C.NULL)
@@ -44167,7 +46183,9 @@ func (recv *TreeViewColumn) PackEnd(cell *CellRenderer, expand bool) {
 // evenly between cells for which @expand is %TRUE.
 /*
 
-C function : gtk_tree_view_column_pack_start
+C function
+
+gtk_tree_view_column_pack_start
 */
 func (recv *TreeViewColumn) PackStart(cell *CellRenderer, expand bool) {
 	c_cell := (*C.GtkCellRenderer)(C.NULL)
@@ -44188,7 +46206,9 @@ func (recv *TreeViewColumn) PackStart(cell *CellRenderer, expand bool) {
 // for center, 1.0 for right.
 /*
 
-C function : gtk_tree_view_column_set_alignment
+C function
+
+gtk_tree_view_column_set_alignment
 */
 func (recv *TreeViewColumn) SetAlignment(xalign float32) {
 	c_xalign := (C.gfloat)(xalign)
@@ -44206,7 +46226,9 @@ func (recv *TreeViewColumn) SetAlignment(xalign float32) {
 // active, then it can take keyboard focus, and can be clicked.
 /*
 
-C function : gtk_tree_view_column_set_clickable
+C function
+
+gtk_tree_view_column_set_clickable
 */
 func (recv *TreeViewColumn) SetClickable(clickable bool) {
 	c_clickable :=
@@ -44230,7 +46252,9 @@ func (recv *TreeViewColumn) SetClickable(clickable bool) {
 // resized by the user.
 /*
 
-C function : gtk_tree_view_column_set_fixed_width
+C function
+
+gtk_tree_view_column_set_fixed_width
 */
 func (recv *TreeViewColumn) SetFixedWidth(fixedWidth int32) {
 	c_fixed_width := (C.gint)(fixedWidth)
@@ -44246,7 +46270,9 @@ func (recv *TreeViewColumn) SetFixedWidth(fixedWidth int32) {
 // fill any extra space.
 /*
 
-C function : gtk_tree_view_column_set_max_width
+C function
+
+gtk_tree_view_column_set_max_width
 */
 func (recv *TreeViewColumn) SetMaxWidth(maxWidth int32) {
 	c_max_width := (C.gint)(maxWidth)
@@ -44260,7 +46286,9 @@ func (recv *TreeViewColumn) SetMaxWidth(maxWidth int32) {
 // minimum width is unset.
 /*
 
-C function : gtk_tree_view_column_set_min_width
+C function
+
+gtk_tree_view_column_set_min_width
 */
 func (recv *TreeViewColumn) SetMinWidth(minWidth int32) {
 	c_min_width := (C.gint)(minWidth)
@@ -44274,7 +46302,9 @@ func (recv *TreeViewColumn) SetMinWidth(minWidth int32) {
 // dragging the header.
 /*
 
-C function : gtk_tree_view_column_set_reorderable
+C function
+
+gtk_tree_view_column_set_reorderable
 */
 func (recv *TreeViewColumn) SetReorderable(reorderable bool) {
 	c_reorderable :=
@@ -44291,7 +46321,9 @@ func (recv *TreeViewColumn) SetReorderable(reorderable bool) {
 // mode is changed to #GTK_TREE_VIEW_COLUMN_GROW_ONLY.
 /*
 
-C function : gtk_tree_view_column_set_resizable
+C function
+
+gtk_tree_view_column_set_resizable
 */
 func (recv *TreeViewColumn) SetResizable(resizable bool) {
 	c_resizable :=
@@ -44305,7 +46337,9 @@ func (recv *TreeViewColumn) SetResizable(resizable bool) {
 // Sets the growth behavior of @tree_column to @type.
 /*
 
-C function : gtk_tree_view_column_set_sizing
+C function
+
+gtk_tree_view_column_set_sizing
 */
 func (recv *TreeViewColumn) SetSizing(type_ TreeViewColumnSizing) {
 	c_type := (C.GtkTreeViewColumnSizing)(type_)
@@ -44319,7 +46353,9 @@ func (recv *TreeViewColumn) SetSizing(type_ TreeViewColumnSizing) {
 // is selected for sorting.  Doing so makes the column header clickable.
 /*
 
-C function : gtk_tree_view_column_set_sort_column_id
+C function
+
+gtk_tree_view_column_set_sort_column_id
 */
 func (recv *TreeViewColumn) SetSortColumnId(sortColumnId int32) {
 	c_sort_column_id := (C.gint)(sortColumnId)
@@ -44335,7 +46371,9 @@ func (recv *TreeViewColumn) SetSortColumnId(sortColumnId int32) {
 // the arrow.
 /*
 
-C function : gtk_tree_view_column_set_sort_indicator
+C function
+
+gtk_tree_view_column_set_sort_indicator
 */
 func (recv *TreeViewColumn) SetSortIndicator(setting bool) {
 	c_setting :=
@@ -44359,7 +46397,9 @@ func (recv *TreeViewColumn) SetSortIndicator(setting bool) {
 // calling this function; see gtk_tree_view_column_set_sort_indicator().
 /*
 
-C function : gtk_tree_view_column_set_sort_order
+C function
+
+gtk_tree_view_column_set_sort_order
 */
 func (recv *TreeViewColumn) SetSortOrder(order SortType) {
 	c_order := (C.GtkSortType)(order)
@@ -44373,7 +46413,9 @@ func (recv *TreeViewColumn) SetSortOrder(order SortType) {
 // place between cell renderers packed into it.
 /*
 
-C function : gtk_tree_view_column_set_spacing
+C function
+
+gtk_tree_view_column_set_spacing
 */
 func (recv *TreeViewColumn) SetSpacing(spacing int32) {
 	c_spacing := (C.gint)(spacing)
@@ -44387,7 +46429,9 @@ func (recv *TreeViewColumn) SetSpacing(spacing int32) {
 // this value is ignored.
 /*
 
-C function : gtk_tree_view_column_set_title
+C function
+
+gtk_tree_view_column_set_title
 */
 func (recv *TreeViewColumn) SetTitle(title string) {
 	c_title := C.CString(title)
@@ -44401,7 +46445,9 @@ func (recv *TreeViewColumn) SetTitle(title string) {
 // Sets the visibility of @tree_column.
 /*
 
-C function : gtk_tree_view_column_set_visible
+C function
+
+gtk_tree_view_column_set_visible
 */
 func (recv *TreeViewColumn) SetVisible(visible bool) {
 	c_visible :=
@@ -44416,7 +46462,9 @@ func (recv *TreeViewColumn) SetVisible(visible bool) {
 // header button is set with a #GtkLabel set to the title of @tree_column.
 /*
 
-C function : gtk_tree_view_column_set_widget
+C function
+
+gtk_tree_view_column_set_widget
 */
 func (recv *TreeViewColumn) SetWidget(widget *Widget) {
 	c_widget := (*C.GtkWidget)(C.NULL)
@@ -44632,7 +46680,7 @@ func (recv *TreeViewColumn) CellLayout() *CellLayout {
 // other parts of the constructed user interface with the help of the
 // “constructor” attribute. See the example below.
 //
-// ## An embedded GtkUIManager UI definition
+// An embedded GtkUIManager UI definition
 //
 // |[
 // <object class="GtkUIManager" id="uiman">
@@ -44660,7 +46708,9 @@ func (recv *TreeViewColumn) CellLayout() *CellLayout {
 // ]|
 /*
 
-C record/class : GtkUIManager
+C type
+
+GtkUIManager
 */
 type UIManager struct {
 	native *C.GtkUIManager
@@ -44723,7 +46773,9 @@ func (recv *UIManager) Buildable() *Buildable {
 // see [Migrating from other containers to GtkGrid][gtk-migrating-GtkGrid].
 /*
 
-C record/class : GtkVBox
+C type
+
+GtkVBox
 */
 type VBox struct {
 	native *C.GtkVBox
@@ -44780,7 +46832,9 @@ func CastToVBox(object *gobject.Object) *VBox {
 // Creates a new #GtkVBox.
 /*
 
-C function : gtk_vbox_new
+C function
+
+gtk_vbox_new
 */
 func VBoxNew(homogeneous bool, spacing int32) *VBox {
 	c_homogeneous :=
@@ -44811,7 +46865,9 @@ func (recv *VBox) Orientable() *Orientable {
 
 /*
 
-C record/class : GtkVButtonBox
+C type
+
+GtkVButtonBox
 */
 type VButtonBox struct {
 	native *C.GtkVButtonBox
@@ -44873,7 +46929,9 @@ func CastToVButtonBox(object *gobject.Object) *VButtonBox {
 // Creates a new vertical button box.
 /*
 
-C function : gtk_vbutton_box_new
+C function
+
+gtk_vbutton_box_new
 */
 func VButtonBoxNew() *VButtonBox {
 	retC := C.gtk_vbutton_box_new()
@@ -44905,7 +46963,9 @@ func (recv *VButtonBox) Orientable() *Orientable {
 // GtkVPaned has been deprecated, use #GtkPaned instead.
 /*
 
-C record/class : GtkVPaned
+C type
+
+GtkVPaned
 */
 type VPaned struct {
 	native *C.GtkVPaned
@@ -44962,7 +47022,9 @@ func CastToVPaned(object *gobject.Object) *VPaned {
 // Create a new #GtkVPaned
 /*
 
-C function : gtk_vpaned_new
+C function
+
+gtk_vpaned_new
 */
 func VPanedNew() *VPaned {
 	retC := C.gtk_vpaned_new()
@@ -44995,7 +47057,9 @@ func (recv *VPaned) Orientable() *Orientable {
 // GtkVScale has been deprecated, use #GtkScale instead.
 /*
 
-C record/class : GtkVScale
+C type
+
+GtkVScale
 */
 type VScale struct {
 	native *C.GtkVScale
@@ -45052,7 +47116,9 @@ func CastToVScale(object *gobject.Object) *VScale {
 // Creates a new #GtkVScale.
 /*
 
-C function : gtk_vscale_new
+C function
+
+gtk_vscale_new
 */
 func VScaleNew(adjustment *Adjustment) *VScale {
 	c_adjustment := (*C.GtkAdjustment)(C.NULL)
@@ -45076,7 +47142,9 @@ func VScaleNew(adjustment *Adjustment) *VScale {
 // needs, use gtk_scale_set_digits() to correct it.
 /*
 
-C function : gtk_vscale_new_with_range
+C function
+
+gtk_vscale_new_with_range
 */
 func VScaleNewWithRange(min float64, max float64, step float64) *VScale {
 	c_min := (C.gdouble)(min)
@@ -45116,7 +47184,9 @@ func (recv *VScale) Orientable() *Orientable {
 // GtkVScrollbar has been deprecated, use #GtkScrollbar instead.
 /*
 
-C record/class : GtkVScrollbar
+C type
+
+GtkVScrollbar
 */
 type VScrollbar struct {
 	native *C.GtkVScrollbar
@@ -45173,7 +47243,9 @@ func CastToVScrollbar(object *gobject.Object) *VScrollbar {
 // Creates a new vertical scrollbar.
 /*
 
-C function : gtk_vscrollbar_new
+C function
+
+gtk_vscrollbar_new
 */
 func VScrollbarNew(adjustment *Adjustment) *VScrollbar {
 	c_adjustment := (*C.GtkAdjustment)(C.NULL)
@@ -45209,7 +47281,9 @@ func (recv *VScrollbar) Orientable() *Orientable {
 // GtkVSeparator has been deprecated, use #GtkSeparator instead.
 /*
 
-C record/class : GtkVSeparator
+C type
+
+GtkVSeparator
 */
 type VSeparator struct {
 	native *C.GtkVSeparator
@@ -45261,7 +47335,9 @@ func CastToVSeparator(object *gobject.Object) *VSeparator {
 // Creates a new #GtkVSeparator.
 /*
 
-C function : gtk_vseparator_new
+C function
+
+gtk_vseparator_new
 */
 func VSeparatorNew() *VSeparator {
 	retC := C.gtk_vseparator_new()
@@ -45306,7 +47382,9 @@ func (recv *VSeparator) Orientable() *Orientable {
 // GtkViewport has a single CSS node with name viewport.
 /*
 
-C record/class : GtkViewport
+C type
+
+GtkViewport
 */
 type Viewport struct {
 	native *C.GtkViewport
@@ -45365,7 +47443,9 @@ func CastToViewport(object *gobject.Object) *Viewport {
 // adjustments if none are given.
 /*
 
-C function : gtk_viewport_new
+C function
+
+gtk_viewport_new
 */
 func ViewportNew(hadjustment *Adjustment, vadjustment *Adjustment) *Viewport {
 	c_hadjustment := (*C.GtkAdjustment)(C.NULL)
@@ -45387,7 +47467,9 @@ func ViewportNew(hadjustment *Adjustment, vadjustment *Adjustment) *Viewport {
 // Returns the horizontal adjustment of the viewport.
 /*
 
-C function : gtk_viewport_get_hadjustment
+C function
+
+gtk_viewport_get_hadjustment
 */
 func (recv *Viewport) GetHadjustment() *Adjustment {
 	retC := C.gtk_viewport_get_hadjustment((*C.GtkViewport)(recv.native))
@@ -45400,7 +47482,9 @@ func (recv *Viewport) GetHadjustment() *Adjustment {
 // gtk_viewport_set_shadow_type().
 /*
 
-C function : gtk_viewport_get_shadow_type
+C function
+
+gtk_viewport_get_shadow_type
 */
 func (recv *Viewport) GetShadowType() ShadowType {
 	retC := C.gtk_viewport_get_shadow_type((*C.GtkViewport)(recv.native))
@@ -45412,7 +47496,9 @@ func (recv *Viewport) GetShadowType() ShadowType {
 // Returns the vertical adjustment of the viewport.
 /*
 
-C function : gtk_viewport_get_vadjustment
+C function
+
+gtk_viewport_get_vadjustment
 */
 func (recv *Viewport) GetVadjustment() *Adjustment {
 	retC := C.gtk_viewport_get_vadjustment((*C.GtkViewport)(recv.native))
@@ -45424,7 +47510,9 @@ func (recv *Viewport) GetVadjustment() *Adjustment {
 // Sets the horizontal adjustment of the viewport.
 /*
 
-C function : gtk_viewport_set_hadjustment
+C function
+
+gtk_viewport_set_hadjustment
 */
 func (recv *Viewport) SetHadjustment(adjustment *Adjustment) {
 	c_adjustment := (*C.GtkAdjustment)(C.NULL)
@@ -45440,7 +47528,9 @@ func (recv *Viewport) SetHadjustment(adjustment *Adjustment) {
 // Sets the shadow type of the viewport.
 /*
 
-C function : gtk_viewport_set_shadow_type
+C function
+
+gtk_viewport_set_shadow_type
 */
 func (recv *Viewport) SetShadowType(type_ ShadowType) {
 	c_type := (C.GtkShadowType)(type_)
@@ -45453,7 +47543,9 @@ func (recv *Viewport) SetShadowType(type_ ShadowType) {
 // Sets the vertical adjustment of the viewport.
 /*
 
-C function : gtk_viewport_set_vadjustment
+C function
+
+gtk_viewport_set_vadjustment
 */
 func (recv *Viewport) SetVadjustment(adjustment *Adjustment) {
 	c_adjustment := (*C.GtkAdjustment)(C.NULL)
@@ -45486,7 +47578,9 @@ func (recv *Viewport) Scrollable() *Scrollable {
 // icons, tooltips and accessible labels.
 /*
 
-C record/class : GtkVolumeButton
+C type
+
+GtkVolumeButton
 */
 type VolumeButton struct {
 	native *C.GtkVolumeButton
@@ -45816,7 +47910,11 @@ func (recv *VolumeButton) Orientable() *Orientable {
 // </object>
 // ]|
 //
-// # Building composite widgets from template XML ## {#composite-templates}
+/*
+# Building composite widgets from template XML
+
+(see composite-templates)
+*/
 //
 // GtkWidget exposes some facilities to automate the procedure
 // of creating composite widgets using #GtkBuilder interface description
@@ -45956,7 +48054,9 @@ func (recv *VolumeButton) Orientable() *Orientable {
 // ]|
 /*
 
-C record/class : GtkWidget
+C type
+
+GtkWidget
 */
 type Widget struct {
 	native *C.GtkWidget
@@ -48510,7 +50610,9 @@ func widget_windowStateEventHandler(_ *C.GObject, c_event *C.GdkEventWindowState
 // activatable, the function returns %FALSE.
 /*
 
-C function : gtk_widget_activate
+C function
+
+gtk_widget_activate
 */
 func (recv *Widget) Activate() bool {
 	retC := C.gtk_widget_activate((*C.GtkWidget)(recv.native))
@@ -48529,7 +50631,9 @@ func (recv *Widget) Activate() bool {
 // gtk_menu_item_set_accel_path() instead.
 /*
 
-C function : gtk_widget_add_accelerator
+C function
+
+gtk_widget_add_accelerator
 */
 func (recv *Widget) AddAccelerator(accelSignal string, accelGroup *AccelGroup, accelKey uint32, accelMods gdk.ModifierType, accelFlags AccelFlags) {
 	c_accel_signal := C.CString(accelSignal)
@@ -48556,7 +50660,9 @@ func (recv *Widget) AddAccelerator(accelSignal string, accelGroup *AccelGroup, a
 // [input handling overview][event-masks] for details.
 /*
 
-C function : gtk_widget_add_events
+C function
+
+gtk_widget_add_events
 */
 func (recv *Widget) AddEvents(events int32) {
 	c_events := (C.gint)(events)
@@ -48587,7 +50693,9 @@ func (recv *Widget) AddEvents(events int32) {
 // if returning %FALSE, they don’t modify the current focus location.
 /*
 
-C function : gtk_widget_child_focus
+C function
+
+gtk_widget_child_focus
 */
 func (recv *Widget) ChildFocus(direction DirectionType) bool {
 	c_direction := (C.GtkDirectionType)(direction)
@@ -48607,7 +50715,9 @@ func (recv *Widget) ChildFocus(direction DirectionType) bool {
 // Also see gtk_container_child_notify().
 /*
 
-C function : gtk_widget_child_notify
+C function
+
+gtk_widget_child_notify
 */
 func (recv *Widget) ChildNotify(childProperty string) {
 	c_child_property := C.CString(childProperty)
@@ -48622,7 +50732,9 @@ func (recv *Widget) ChildNotify(childProperty string) {
 // never uses a custom name set with gtk_widget_set_name().
 /*
 
-C function : gtk_widget_class_path
+C function
+
+gtk_widget_class_path
 */
 func (recv *Widget) ClassPath() (uint32, string, string) {
 	var c_path_length C.guint
@@ -48657,7 +50769,9 @@ func (recv *Widget) ClassPath() (uint32, string, string) {
 // the widget may expand if some of its children do.
 /*
 
-C function : gtk_widget_compute_expand
+C function
+
+gtk_widget_compute_expand
 */
 func (recv *Widget) ComputeExpand(orientation Orientation) bool {
 	c_orientation := (C.GtkOrientation)(orientation)
@@ -48673,7 +50787,9 @@ func (recv *Widget) ComputeExpand(orientation Orientation) bool {
 // text for this widget. See also gtk_widget_get_pango_context().
 /*
 
-C function : gtk_widget_create_pango_context
+C function
+
+gtk_widget_create_pango_context
 */
 func (recv *Widget) CreatePangoContext() *pango.Context {
 	retC := C.gtk_widget_create_pango_context((*C.GtkWidget)(recv.native))
@@ -48692,7 +50808,9 @@ func (recv *Widget) CreatePangoContext() *pango.Context {
 // on the widget.
 /*
 
-C function : gtk_widget_create_pango_layout
+C function
+
+gtk_widget_create_pango_layout
 */
 func (recv *Widget) CreatePangoLayout(text string) *pango.Layout {
 	c_text := C.CString(text)
@@ -48737,7 +50855,9 @@ func (recv *Widget) CreatePangoLayout(text string) *pango.Layout {
 // See also: gtk_container_remove()
 /*
 
-C function : gtk_widget_destroy
+C function
+
+gtk_widget_destroy
 */
 func (recv *Widget) Destroy() {
 	C.gtk_widget_destroy((*C.GtkWidget)(recv.native))
@@ -48754,7 +50874,9 @@ func (recv *Widget) Destroy() {
 // of the same dialog.
 /*
 
-C function : gtk_widget_destroyed
+C function
+
+gtk_widget_destroyed
 */
 func (recv *Widget) Destroyed(widgetPointer *Widget) {
 	c_widget_pointer := (**C.GtkWidget)(C.NULL)
@@ -48774,7 +50896,9 @@ func (recv *Widget) Destroyed(widgetPointer *Widget) {
 // should trigger the beginning of a drag-and-drop operation.
 /*
 
-C function : gtk_drag_check_threshold
+C function
+
+gtk_drag_check_threshold
 */
 func (recv *Widget) DragCheckThreshold(startX int32, startY int32, currentX int32, currentY int32) bool {
 	c_start_x := (C.gint)(startX)
@@ -48797,7 +50921,9 @@ func (recv *Widget) DragCheckThreshold(startX int32, startY int32, currentX int3
 // drag-and-drop.
 /*
 
-C function : gtk_drag_dest_get_target_list
+C function
+
+gtk_drag_dest_get_target_list
 */
 func (recv *Widget) DragDestGetTargetList() *TargetList {
 	retC := C.gtk_drag_dest_get_target_list((*C.GtkWidget)(recv.native))
@@ -48816,7 +50942,9 @@ func (recv *Widget) DragDestGetTargetList() *TargetList {
 // Sets this widget as a proxy for drops to another window.
 /*
 
-C function : gtk_drag_dest_set_proxy
+C function
+
+gtk_drag_dest_set_proxy
 */
 func (recv *Widget) DragDestSetProxy(proxyWindow *gdk.Window, protocol gdk.DragProtocol, useCoordinates bool) {
 	c_proxy_window := (*C.GdkWindow)(C.NULL)
@@ -48839,7 +50967,9 @@ func (recv *Widget) DragDestSetProxy(proxyWindow *gdk.Window, protocol gdk.DragP
 // gtk_drag_dest_set().
 /*
 
-C function : gtk_drag_dest_set_target_list
+C function
+
+gtk_drag_dest_set_target_list
 */
 func (recv *Widget) DragDestSetTargetList(targetList *TargetList) {
 	c_target_list := (*C.GtkTargetList)(C.NULL)
@@ -48857,7 +50987,9 @@ func (recv *Widget) DragDestSetTargetList(targetList *TargetList) {
 // notification of drags.
 /*
 
-C function : gtk_drag_dest_unset
+C function
+
+gtk_drag_dest_unset
 */
 func (recv *Widget) DragDestUnset() {
 	C.gtk_drag_dest_unset((*C.GtkWidget)(recv.native))
@@ -48872,7 +51004,9 @@ func (recv *Widget) DragDestUnset() {
 // GTK+ calls this automatically if %GTK_DEST_DEFAULT_HIGHLIGHT is set.
 /*
 
-C function : gtk_drag_highlight
+C function
+
+gtk_drag_highlight
 */
 func (recv *Widget) DragHighlight() {
 	C.gtk_drag_highlight((*C.GtkWidget)(recv.native))
@@ -48887,7 +51021,9 @@ func (recv *Widget) DragHighlight() {
 // release it when it is no longer needed.
 /*
 
-C function : gtk_drag_source_set_icon_pixbuf
+C function
+
+gtk_drag_source_set_icon_pixbuf
 */
 func (recv *Widget) DragSourceSetIconPixbuf(pixbuf *gdkpixbuf.Pixbuf) {
 	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
@@ -48904,7 +51040,9 @@ func (recv *Widget) DragSourceSetIconPixbuf(pixbuf *gdkpixbuf.Pixbuf) {
 // to a stock icon.
 /*
 
-C function : gtk_drag_source_set_icon_stock
+C function
+
+gtk_drag_source_set_icon_stock
 */
 func (recv *Widget) DragSourceSetIconStock(stockId string) {
 	c_stock_id := C.CString(stockId)
@@ -48918,7 +51056,9 @@ func (recv *Widget) DragSourceSetIconStock(stockId string) {
 // Undoes the effects of gtk_drag_source_set().
 /*
 
-C function : gtk_drag_source_unset
+C function
+
+gtk_drag_source_unset
 */
 func (recv *Widget) DragSourceUnset() {
 	C.gtk_drag_source_unset((*C.GtkWidget)(recv.native))
@@ -48930,7 +51070,9 @@ func (recv *Widget) DragSourceUnset() {
 // a widget.
 /*
 
-C function : gtk_drag_unhighlight
+C function
+
+gtk_drag_unhighlight
 */
 func (recv *Widget) DragUnhighlight() {
 	C.gtk_drag_unhighlight((*C.GtkWidget)(recv.native))
@@ -48945,7 +51087,9 @@ func (recv *Widget) DragUnhighlight() {
 // widgets are guaranteed to have a style already.
 /*
 
-C function : gtk_widget_ensure_style
+C function
+
+gtk_widget_ensure_style
 */
 func (recv *Widget) EnsureStyle() {
 	C.gtk_widget_ensure_style((*C.GtkWidget)(recv.native))
@@ -48962,7 +51106,9 @@ func (recv *Widget) EnsureStyle() {
 // This is the analogue of g_object_freeze_notify() for child properties.
 /*
 
-C function : gtk_widget_freeze_child_notify
+C function
+
+gtk_widget_freeze_child_notify
 */
 func (recv *Widget) FreezeChildNotify() {
 	C.gtk_widget_freeze_child_notify((*C.GtkWidget)(recv.native))
@@ -48984,7 +51130,9 @@ func (recv *Widget) FreezeChildNotify() {
 // library contains more information about accessible objects and their uses.
 /*
 
-C function : gtk_widget_get_accessible
+C function
+
+gtk_widget_get_accessible
 */
 func (recv *Widget) GetAccessible() *atk.Object {
 	retC := C.gtk_widget_get_accessible((*C.GtkWidget)(recv.native))
@@ -48998,7 +51146,9 @@ func (recv *Widget) GetAccessible() *atk.Object {
 // for the #GtkWidget::draw function.
 /*
 
-C function : gtk_widget_get_allocated_height
+C function
+
+gtk_widget_get_allocated_height
 */
 func (recv *Widget) GetAllocatedHeight() int32 {
 	retC := C.gtk_widget_get_allocated_height((*C.GtkWidget)(recv.native))
@@ -49012,7 +51162,9 @@ func (recv *Widget) GetAllocatedHeight() int32 {
 // for the #GtkWidget::draw function.
 /*
 
-C function : gtk_widget_get_allocated_width
+C function
+
+gtk_widget_get_allocated_width
 */
 func (recv *Widget) GetAllocatedWidth() int32 {
 	retC := C.gtk_widget_get_allocated_width((*C.GtkWidget)(recv.native))
@@ -49032,7 +51184,9 @@ func (recv *Widget) GetAllocatedWidth() int32 {
 // considers @widget to be an ancestor of itself.
 /*
 
-C function : gtk_widget_get_ancestor
+C function
+
+gtk_widget_get_ancestor
 */
 func (recv *Widget) GetAncestor(widgetType gobject.Type) *Widget {
 	c_widget_type := (C.GType)(widgetType)
@@ -49068,7 +51222,9 @@ func (recv *Widget) GetAncestor(widgetType gobject.Type) *Widget {
 // gtk_widget_size_request().
 /*
 
-C function : gtk_widget_get_child_requisition
+C function
+
+gtk_widget_get_child_requisition
 */
 func (recv *Widget) GetChildRequisition() *Requisition {
 	var c_requisition C.GtkRequisition
@@ -49088,7 +51244,9 @@ func (recv *Widget) GetChildRequisition() *Requisition {
 // never should be called by an application.
 /*
 
-C function : gtk_widget_get_child_visible
+C function
+
+gtk_widget_get_child_visible
 */
 func (recv *Widget) GetChildVisible() bool {
 	retC := C.gtk_widget_get_child_visible((*C.GtkWidget)(recv.native))
@@ -49100,7 +51258,9 @@ func (recv *Widget) GetChildVisible() bool {
 // Obtains the composite name of a widget.
 /*
 
-C function : gtk_widget_get_composite_name
+C function
+
+gtk_widget_get_composite_name
 */
 func (recv *Widget) GetCompositeName() string {
 	retC := C.gtk_widget_get_composite_name((*C.GtkWidget)(recv.native))
@@ -49114,7 +51274,9 @@ func (recv *Widget) GetCompositeName() string {
 // gtk_widget_set_direction().
 /*
 
-C function : gtk_widget_get_direction
+C function
+
+gtk_widget_get_direction
 */
 func (recv *Widget) GetDirection() TextDirection {
 	retC := C.gtk_widget_get_direction((*C.GtkWidget)(recv.native))
@@ -49132,7 +51294,9 @@ func (recv *Widget) GetDirection() TextDirection {
 // widget.
 /*
 
-C function : gtk_widget_get_events
+C function
+
+gtk_widget_get_events
 */
 func (recv *Widget) GetEvents() int32 {
 	retC := C.gtk_widget_get_events((*C.GtkWidget)(recv.native))
@@ -49149,7 +51313,9 @@ func (recv *Widget) GetEvents() int32 {
 // alignment.
 /*
 
-C function : gtk_widget_get_halign
+C function
+
+gtk_widget_get_halign
 */
 func (recv *Widget) GetHalign() Align {
 	retC := C.gtk_widget_get_halign((*C.GtkWidget)(recv.native))
@@ -49174,7 +51340,9 @@ func (recv *Widget) GetHalign() Align {
 // wants to expand.
 /*
 
-C function : gtk_widget_get_hexpand
+C function
+
+gtk_widget_get_hexpand
 */
 func (recv *Widget) GetHexpand() bool {
 	retC := C.gtk_widget_get_hexpand((*C.GtkWidget)(recv.native))
@@ -49195,7 +51363,9 @@ func (recv *Widget) GetHexpand() bool {
 // for completeness and consistency.
 /*
 
-C function : gtk_widget_get_hexpand_set
+C function
+
+gtk_widget_get_hexpand_set
 */
 func (recv *Widget) GetHexpandSet() bool {
 	retC := C.gtk_widget_get_hexpand_set((*C.GtkWidget)(recv.native))
@@ -49218,7 +51388,9 @@ func (recv *Widget) GetHexpandSet() bool {
 // to the modifier style if you want to keep it alive.
 /*
 
-C function : gtk_widget_get_modifier_style
+C function
+
+gtk_widget_get_modifier_style
 */
 func (recv *Widget) GetModifierStyle() *RcStyle {
 	retC := C.gtk_widget_get_modifier_style((*C.GtkWidget)(recv.native))
@@ -49231,7 +51403,9 @@ func (recv *Widget) GetModifierStyle() *RcStyle {
 // significance of widget names.
 /*
 
-C function : gtk_widget_get_name
+C function
+
+gtk_widget_get_name
 */
 func (recv *Widget) GetName() string {
 	retC := C.gtk_widget_get_name((*C.GtkWidget)(recv.native))
@@ -49249,7 +51423,9 @@ func (recv *Widget) GetName() string {
 // by using the #GtkWidget::screen-changed signal on the widget.
 /*
 
-C function : gtk_widget_get_pango_context
+C function
+
+gtk_widget_get_pango_context
 */
 func (recv *Widget) GetPangoContext() *pango.Context {
 	retC := C.gtk_widget_get_pango_context((*C.GtkWidget)(recv.native))
@@ -49261,7 +51437,9 @@ func (recv *Widget) GetPangoContext() *pango.Context {
 // Returns the parent container of @widget.
 /*
 
-C function : gtk_widget_get_parent
+C function
+
+gtk_widget_get_parent
 */
 func (recv *Widget) GetParent() *Widget {
 	retC := C.gtk_widget_get_parent((*C.GtkWidget)(recv.native))
@@ -49278,7 +51456,9 @@ func (recv *Widget) GetParent() *Widget {
 // Gets @widget’s parent window, or %NULL if it does not have one.
 /*
 
-C function : gtk_widget_get_parent_window
+C function
+
+gtk_widget_get_parent_window
 */
 func (recv *Widget) GetParentWindow() *gdk.Window {
 	retC := C.gtk_widget_get_parent_window((*C.GtkWidget)(recv.native))
@@ -49297,7 +51477,9 @@ func (recv *Widget) GetParentWindow() *gdk.Window {
 // created.
 /*
 
-C function : gtk_widget_get_path
+C function
+
+gtk_widget_get_path
 */
 func (recv *Widget) GetPath() *WidgetPath {
 	retC := C.gtk_widget_get_path((*C.GtkWidget)(recv.native))
@@ -49313,7 +51495,9 @@ func (recv *Widget) GetPath() *WidgetPath {
 // @widget->allocation.y otherwise.
 /*
 
-C function : gtk_widget_get_pointer
+C function
+
+gtk_widget_get_pointer
 */
 func (recv *Widget) GetPointer() (int32, int32) {
 	var c_x C.gint
@@ -49336,7 +51520,9 @@ func (recv *Widget) GetPointer() (int32, int32) {
 // to a particular #GdkScreen.
 /*
 
-C function : gtk_widget_get_settings
+C function
+
+gtk_widget_get_settings
 */
 func (recv *Widget) GetSettings() *Settings {
 	retC := C.gtk_widget_get_settings((*C.GtkWidget)(recv.native))
@@ -49354,7 +51540,9 @@ func (recv *Widget) GetSettings() *Settings {
 // this function.
 /*
 
-C function : gtk_widget_get_size_request
+C function
+
+gtk_widget_get_size_request
 */
 func (recv *Widget) GetSizeRequest() (int32, int32) {
 	var c_width C.gint
@@ -49373,7 +51561,9 @@ func (recv *Widget) GetSizeRequest() (int32, int32) {
 // Simply an accessor function that returns @widget->style.
 /*
 
-C function : gtk_widget_get_style
+C function
+
+gtk_widget_get_style
 */
 func (recv *Widget) GetStyle() *Style {
 	retC := C.gtk_widget_get_style((*C.GtkWidget)(recv.native))
@@ -49386,7 +51576,9 @@ func (recv *Widget) GetStyle() *Style {
 // guaranteed to be the same for the lifetime of @widget.
 /*
 
-C function : gtk_widget_get_style_context
+C function
+
+gtk_widget_get_style_context
 */
 func (recv *Widget) GetStyleContext() *StyleContext {
 	retC := C.gtk_widget_get_style_context((*C.GtkWidget)(recv.native))
@@ -49399,7 +51591,9 @@ func (recv *Widget) GetStyleContext() *StyleContext {
 // gtk_widget_set_support_multidevice() for more information.
 /*
 
-C function : gtk_widget_get_support_multidevice
+C function
+
+gtk_widget_get_support_multidevice
 */
 func (recv *Widget) GetSupportMultidevice() bool {
 	retC := C.gtk_widget_get_support_multidevice((*C.GtkWidget)(recv.native))
@@ -49419,7 +51613,9 @@ func (recv *Widget) GetSupportMultidevice() bool {
 // of the GObject structure offsets.
 /*
 
-C function : gtk_widget_get_template_child
+C function
+
+gtk_widget_get_template_child
 */
 func (recv *Widget) GetTemplateChild(widgetType gobject.Type, name string) *gobject.Object {
 	c_widget_type := (C.GType)(widgetType)
@@ -49466,7 +51662,9 @@ func (recv *Widget) GetTemplateChild(widgetType gobject.Type, name string) *gobj
 // ]|
 /*
 
-C function : gtk_widget_get_toplevel
+C function
+
+gtk_widget_get_toplevel
 */
 func (recv *Widget) GetToplevel() *Widget {
 	retC := C.gtk_widget_get_toplevel((*C.GtkWidget)(recv.native))
@@ -49485,7 +51683,9 @@ func (recv *Widget) GetToplevel() *Widget {
 // also report the true value.
 /*
 
-C function : gtk_widget_get_valign
+C function
+
+gtk_widget_get_valign
 */
 func (recv *Widget) GetValign() Align {
 	retC := C.gtk_widget_get_valign((*C.GtkWidget)(recv.native))
@@ -49500,7 +51700,9 @@ func (recv *Widget) GetValign() Align {
 // See gtk_widget_get_hexpand() for more detail.
 /*
 
-C function : gtk_widget_get_vexpand
+C function
+
+gtk_widget_get_vexpand
 */
 func (recv *Widget) GetVexpand() bool {
 	retC := C.gtk_widget_get_vexpand((*C.GtkWidget)(recv.native))
@@ -49515,7 +51717,9 @@ func (recv *Widget) GetVexpand() bool {
 // See gtk_widget_get_hexpand_set() for more detail.
 /*
 
-C function : gtk_widget_get_vexpand_set
+C function
+
+gtk_widget_get_vexpand_set
 */
 func (recv *Widget) GetVexpandSet() bool {
 	retC := C.gtk_widget_get_vexpand_set((*C.GtkWidget)(recv.native))
@@ -49527,7 +51731,9 @@ func (recv *Widget) GetVexpandSet() bool {
 // Gets the visual that will be used to render @widget.
 /*
 
-C function : gtk_widget_get_visual
+C function
+
+gtk_widget_get_visual
 */
 func (recv *Widget) GetVisual() *gdk.Visual {
 	retC := C.gtk_widget_get_visual((*C.GtkWidget)(recv.native))
@@ -49546,7 +51752,9 @@ func (recv *Widget) GetVisual() *gdk.Visual {
 // grabbed widget and this function does nothing.
 /*
 
-C function : gtk_grab_add
+C function
+
+gtk_grab_add
 */
 func (recv *Widget) GrabAdd() {
 	C.gtk_grab_add((*C.GtkWidget)(recv.native))
@@ -49565,7 +51773,9 @@ func (recv *Widget) GrabAdd() {
 // is pressed and the #GtkEntry is focused.
 /*
 
-C function : gtk_widget_grab_default
+C function
+
+gtk_widget_grab_default
 */
 func (recv *Widget) GrabDefault() {
 	C.gtk_widget_grab_default((*C.GtkWidget)(recv.native))
@@ -49585,7 +51795,9 @@ func (recv *Widget) GrabDefault() {
 // will likely fail and cause critical warnings.
 /*
 
-C function : gtk_widget_grab_focus
+C function
+
+gtk_widget_grab_focus
 */
 func (recv *Widget) GrabFocus() {
 	C.gtk_widget_grab_focus((*C.GtkWidget)(recv.native))
@@ -49600,7 +51812,9 @@ func (recv *Widget) GrabFocus() {
 // If @widget does not have the grab, this function does nothing.
 /*
 
-C function : gtk_grab_remove
+C function
+
+gtk_grab_remove
 */
 func (recv *Widget) GrabRemove() {
 	C.gtk_grab_remove((*C.GtkWidget)(recv.native))
@@ -49612,7 +51826,9 @@ func (recv *Widget) GrabRemove() {
 // hidden (invisible to the user).
 /*
 
-C function : gtk_widget_hide
+C function
+
+gtk_widget_hide
 */
 func (recv *Widget) Hide() {
 	C.gtk_widget_hide((*C.GtkWidget)(recv.native))
@@ -49629,7 +51845,9 @@ func (recv *Widget) Hide() {
 // is received.
 /*
 
-C function : gtk_widget_hide_on_delete
+C function
+
+gtk_widget_hide_on_delete
 */
 func (recv *Widget) HideOnDelete() bool {
 	retC := C.gtk_widget_hide_on_delete((*C.GtkWidget)(recv.native))
@@ -49643,7 +51861,9 @@ func (recv *Widget) HideOnDelete() bool {
 // unnecessary work.
 /*
 
-C function : gtk_widget_in_destruction
+C function
+
+gtk_widget_in_destruction
 */
 func (recv *Widget) InDestruction() bool {
 	retC := C.gtk_widget_in_destruction((*C.GtkWidget)(recv.native))
@@ -49658,7 +51878,9 @@ func (recv *Widget) InDestruction() bool {
 // intermediate containers.
 /*
 
-C function : gtk_widget_is_ancestor
+C function
+
+gtk_widget_is_ancestor
 */
 func (recv *Widget) IsAncestor(ancestor *Widget) bool {
 	c_ancestor := (*C.GtkWidget)(C.NULL)
@@ -49678,7 +51900,9 @@ func (recv *Widget) IsAncestor(ancestor *Widget) bool {
 // toplevel widget additionally has the global input focus.)
 /*
 
-C function : gtk_widget_is_focus
+C function
+
+gtk_widget_is_focus
 */
 func (recv *Widget) IsFocus() bool {
 	retC := C.gtk_widget_is_focus((*C.GtkWidget)(recv.native))
@@ -49695,7 +51919,9 @@ func (recv *Widget) IsFocus() bool {
 // gtk_accel_group_from_accel_closure().
 /*
 
-C function : gtk_widget_list_accel_closures
+C function
+
+gtk_widget_list_accel_closures
 */
 func (recv *Widget) ListAccelClosures() *glib.List {
 	retC := C.gtk_widget_list_accel_closures((*C.GtkWidget)(recv.native))
@@ -49708,7 +51934,9 @@ func (recv *Widget) ListAccelClosures() *glib.List {
 // a widget to be mapped if it isn’t already.
 /*
 
-C function : gtk_widget_map
+C function
+
+gtk_widget_map
 */
 func (recv *Widget) Map() {
 	C.gtk_widget_map((*C.GtkWidget)(recv.native))
@@ -49719,7 +51947,9 @@ func (recv *Widget) Map() {
 // Emits the #GtkWidget::mnemonic-activate signal.
 /*
 
-C function : gtk_widget_mnemonic_activate
+C function
+
+gtk_widget_mnemonic_activate
 */
 func (recv *Widget) MnemonicActivate(groupCycling bool) bool {
 	c_group_cycling :=
@@ -49748,7 +51978,9 @@ func (recv *Widget) MnemonicActivate(groupCycling bool) bool {
 // > a #GtkEventBox widget and setting the base color on that.
 /*
 
-C function : gtk_widget_modify_base
+C function
+
+gtk_widget_modify_base
 */
 func (recv *Widget) ModifyBase(state StateType, color *gdk.Color) {
 	c_state := (C.GtkStateType)(state)
@@ -49779,7 +52011,9 @@ func (recv *Widget) ModifyBase(state StateType, color *gdk.Color) {
 // > a #GtkEventBox widget and setting the background color on that.
 /*
 
-C function : gtk_widget_modify_bg
+C function
+
+gtk_widget_modify_bg
 */
 func (recv *Widget) ModifyBg(state StateType, color *gdk.Color) {
 	c_state := (C.GtkStateType)(state)
@@ -49800,7 +52034,9 @@ func (recv *Widget) ModifyBg(state StateType, color *gdk.Color) {
 // See also gtk_widget_modify_style().
 /*
 
-C function : gtk_widget_modify_fg
+C function
+
+gtk_widget_modify_fg
 */
 func (recv *Widget) ModifyFg(state StateType, color *gdk.Color) {
 	c_state := (C.GtkStateType)(state)
@@ -49821,7 +52057,9 @@ func (recv *Widget) ModifyFg(state StateType, color *gdk.Color) {
 // See also gtk_widget_modify_style().
 /*
 
-C function : gtk_widget_modify_font
+C function
+
+gtk_widget_modify_font
 */
 func (recv *Widget) ModifyFont(fontDesc *pango.FontDescription) {
 	c_font_desc := (*C.PangoFontDescription)(C.NULL)
@@ -49854,7 +52092,9 @@ func (recv *Widget) ModifyFont(fontDesc *pango.FontDescription) {
 // effect with the initial modifications.
 /*
 
-C function : gtk_widget_modify_style
+C function
+
+gtk_widget_modify_style
 */
 func (recv *Widget) ModifyStyle(style *RcStyle) {
 	c_style := (*C.GtkRcStyle)(C.NULL)
@@ -49876,7 +52116,9 @@ func (recv *Widget) ModifyStyle(style *RcStyle) {
 // See also gtk_widget_modify_style().
 /*
 
-C function : gtk_widget_modify_text
+C function
+
+gtk_widget_modify_text
 */
 func (recv *Widget) ModifyText(state StateType, color *gdk.Color) {
 	c_state := (C.GtkStateType)(state)
@@ -49905,7 +52147,9 @@ func (recv *Widget) ModifyText(state StateType, color *gdk.Color) {
 // of @widget’s outermost ancestor.
 /*
 
-C function : gtk_widget_path
+C function
+
+gtk_widget_path
 */
 func (recv *Widget) Path() (uint32, string, string) {
 	var c_path_length C.guint
@@ -49934,7 +52178,9 @@ func (recv *Widget) Path() (uint32, string, string) {
 // See gtk_widget_compute_expand().
 /*
 
-C function : gtk_widget_queue_compute_expand
+C function
+
+gtk_widget_queue_compute_expand
 */
 func (recv *Widget) QueueComputeExpand() {
 	C.gtk_widget_queue_compute_expand((*C.GtkWidget)(recv.native))
@@ -49946,7 +52192,9 @@ func (recv *Widget) QueueComputeExpand() {
 // entire area of a widget.
 /*
 
-C function : gtk_widget_queue_draw
+C function
+
+gtk_widget_queue_draw
 */
 func (recv *Widget) QueueDraw() {
 	C.gtk_widget_queue_draw((*C.GtkWidget)(recv.native))
@@ -49967,7 +52215,9 @@ func (recv *Widget) QueueDraw() {
 // nothing. Negative values for @width and @height are not allowed.
 /*
 
-C function : gtk_widget_queue_draw_area
+C function
+
+gtk_widget_queue_draw_area
 */
 func (recv *Widget) QueueDrawArea(x int32, y int32, width int32, height int32) {
 	c_x := (C.gint)(x)
@@ -49995,7 +52245,9 @@ func (recv *Widget) QueueDrawArea(x int32, y int32, width int32, height int32) {
 // GtkWidgetClass::size_allocate will be silently ignored.
 /*
 
-C function : gtk_widget_queue_resize
+C function
+
+gtk_widget_queue_resize
 */
 func (recv *Widget) QueueResize() {
 	C.gtk_widget_queue_resize((*C.GtkWidget)(recv.native))
@@ -50023,7 +52275,9 @@ func (recv *Widget) QueueResize() {
 // #GtkWidget::realize signal.
 /*
 
-C function : gtk_widget_realize
+C function
+
+gtk_widget_realize
 */
 func (recv *Widget) Realize() {
 	C.gtk_widget_realize((*C.GtkWidget)(recv.native))
@@ -50036,7 +52290,9 @@ func (recv *Widget) Realize() {
 // check.
 /*
 
-C function : gtk_widget_region_intersect
+C function
+
+gtk_widget_region_intersect
 */
 func (recv *Widget) RegionIntersect(region *cairo.Region) *cairo.Region {
 	c_region := (*C.cairo_region_t)(C.NULL)
@@ -50054,7 +52310,9 @@ func (recv *Widget) RegionIntersect(region *cairo.Region) *cairo.Region {
 // gtk_widget_add_accelerator().
 /*
 
-C function : gtk_widget_remove_accelerator
+C function
+
+gtk_widget_remove_accelerator
 */
 func (recv *Widget) RemoveAccelerator(accelGroup *AccelGroup, accelKey uint32, accelMods gdk.ModifierType) bool {
 	c_accel_group := (*C.GtkAccelGroup)(C.NULL)
@@ -50085,7 +52343,9 @@ func (recv *Widget) RemoveAccelerator(accelGroup *AccelGroup, accelKey uint32, a
 // freed after use with g_object_unref().
 /*
 
-C function : gtk_widget_render_icon
+C function
+
+gtk_widget_render_icon
 */
 func (recv *Widget) RenderIcon(stockId string, size IconSize, detail string) *gdkpixbuf.Pixbuf {
 	c_stock_id := C.CString(stockId)
@@ -50111,7 +52371,9 @@ func (recv *Widget) RenderIcon(stockId string, size IconSize, detail string) *gd
 // count issues to avoid destroying the widget.
 /*
 
-C function : gtk_widget_reparent
+C function
+
+gtk_widget_reparent
 */
 func (recv *Widget) Reparent(newParent *Widget) {
 	c_new_parent := (*C.GtkWidget)(C.NULL)
@@ -50131,7 +52393,9 @@ func (recv *Widget) Reparent(newParent *Widget) {
 // This function is not useful for applications.
 /*
 
-C function : gtk_widget_reset_rc_styles
+C function
+
+gtk_widget_reset_rc_styles
 */
 func (recv *Widget) ResetRcStyles() {
 	C.gtk_widget_reset_rc_styles((*C.GtkWidget)(recv.native))
@@ -50164,7 +52428,9 @@ func (recv *Widget) ResetRcStyles() {
 // g_intern_static_string().
 /*
 
-C function : gtk_widget_set_accel_path
+C function
+
+gtk_widget_set_accel_path
 */
 func (recv *Widget) SetAccelPath(accelPath string, accelGroup *AccelGroup) {
 	c_accel_path := C.CString(accelPath)
@@ -50193,7 +52459,9 @@ func (recv *Widget) SetAccelPath(accelPath string, accelGroup *AccelGroup) {
 // Note that the background is still drawn when the widget is mapped.
 /*
 
-C function : gtk_widget_set_app_paintable
+C function
+
+gtk_widget_set_app_paintable
 */
 func (recv *Widget) SetAppPaintable(appPaintable bool) {
 	c_app_paintable :=
@@ -50223,7 +52491,9 @@ func (recv *Widget) SetAppPaintable(appPaintable bool) {
 // never should be called by an application.
 /*
 
-C function : gtk_widget_set_child_visible
+C function
+
+gtk_widget_set_child_visible
 */
 func (recv *Widget) SetChildVisible(isVisible bool) {
 	c_is_visible :=
@@ -50238,7 +52508,9 @@ func (recv *Widget) SetChildVisible(isVisible bool) {
 // a composite child of its parent; see gtk_widget_push_composite_child().
 /*
 
-C function : gtk_widget_set_composite_name
+C function
+
+gtk_widget_set_composite_name
 */
 func (recv *Widget) SetCompositeName(name string) {
 	c_name := C.CString(name)
@@ -50263,7 +52535,9 @@ func (recv *Widget) SetCompositeName(name string) {
 // set by gtk_widget_set_default_direction() will be used.
 /*
 
-C function : gtk_widget_set_direction
+C function
+
+gtk_widget_set_direction
 */
 func (recv *Widget) SetDirection(dir TextDirection) {
 	c_dir := (C.GtkTextDirection)(dir)
@@ -50300,7 +52574,9 @@ func (recv *Widget) SetDirection(dir TextDirection) {
 // increases rendering times significantly.
 /*
 
-C function : gtk_widget_set_double_buffered
+C function
+
+gtk_widget_set_double_buffered
 */
 func (recv *Widget) SetDoubleBuffered(doubleBuffered bool) {
 	c_double_buffered :=
@@ -50324,7 +52600,9 @@ func (recv *Widget) SetDoubleBuffered(doubleBuffered bool) {
 // box.
 /*
 
-C function : gtk_widget_set_events
+C function
+
+gtk_widget_set_events
 */
 func (recv *Widget) SetEvents(events int32) {
 	c_events := (C.gint)(events)
@@ -50338,7 +52616,9 @@ func (recv *Widget) SetEvents(events int32) {
 // See the #GtkWidget:halign property.
 /*
 
-C function : gtk_widget_set_halign
+C function
+
+gtk_widget_set_halign
 */
 func (recv *Widget) SetHalign(align Align) {
 	c_align := (C.GtkAlign)(align)
@@ -50375,7 +52655,9 @@ func (recv *Widget) SetHalign(align Align) {
 // value to be used, rather than looking at children and widget state.
 /*
 
-C function : gtk_widget_set_hexpand
+C function
+
+gtk_widget_set_hexpand
 */
 func (recv *Widget) SetHexpand(expand bool) {
 	c_expand :=
@@ -50403,7 +52685,9 @@ func (recv *Widget) SetHexpand(expand bool) {
 // for completeness and consistency.
 /*
 
-C function : gtk_widget_set_hexpand_set
+C function
+
+gtk_widget_set_hexpand_set
 */
 func (recv *Widget) SetHexpandSet(set bool) {
 	c_set :=
@@ -50425,7 +52709,9 @@ func (recv *Widget) SetHexpandSet(set bool) {
 // of alphanumeric symbols, dashes and underscores will suffice.
 /*
 
-C function : gtk_widget_set_name
+C function
+
+gtk_widget_set_name
 */
 func (recv *Widget) SetName(name string) {
 	c_name := C.CString(name)
@@ -50444,7 +52730,9 @@ func (recv *Widget) SetName(name string) {
 // gtk_widget_unparent().
 /*
 
-C function : gtk_widget_set_parent
+C function
+
+gtk_widget_set_parent
 */
 func (recv *Widget) SetParent(parent *Widget) {
 	c_parent := (*C.GtkWidget)(C.NULL)
@@ -50467,7 +52755,9 @@ func (recv *Widget) SetParent(parent *Widget) {
 // window is realized.
 /*
 
-C function : gtk_widget_set_parent_window
+C function
+
+gtk_widget_set_parent_window
 */
 func (recv *Widget) SetParentWindow(parentWindow *gdk.Window) {
 	c_parent_window := (*C.GdkWindow)(C.NULL)
@@ -50497,7 +52787,9 @@ func (recv *Widget) SetParentWindow(parentWindow *gdk.Window) {
 // regions newly when the widget increases size.
 /*
 
-C function : gtk_widget_set_redraw_on_allocate
+C function
+
+gtk_widget_set_redraw_on_allocate
 */
 func (recv *Widget) SetRedrawOnAllocate(redrawOnAllocate bool) {
 	c_redraw_on_allocate :=
@@ -50514,7 +52806,9 @@ func (recv *Widget) SetRedrawOnAllocate(redrawOnAllocate bool) {
 // “inactive”, “disabled”, or “ghosted” in some other toolkits.
 /*
 
-C function : gtk_widget_set_sensitive
+C function
+
+gtk_widget_set_sensitive
 */
 func (recv *Widget) SetSensitive(sensitive bool) {
 	c_sensitive :=
@@ -50557,7 +52851,9 @@ func (recv *Widget) SetSensitive(sensitive bool) {
 // or border properties set by any subclass of #GtkWidget.
 /*
 
-C function : gtk_widget_set_size_request
+C function
+
+gtk_widget_set_size_request
 */
 func (recv *Widget) SetSizeRequest(width int32, height int32) {
 	c_width := (C.gint)(width)
@@ -50574,7 +52870,9 @@ func (recv *Widget) SetSizeRequest(width int32, height int32) {
 // the state using wrapper functions such as gtk_widget_set_sensitive().
 /*
 
-C function : gtk_widget_set_state
+C function
+
+gtk_widget_set_state
 */
 func (recv *Widget) SetState(state StateType) {
 	c_state := (C.GtkStateType)(state)
@@ -50588,7 +52886,9 @@ func (recv *Widget) SetState(state StateType) {
 // GTK 3, this function does nothing, the passed in style is ignored.
 /*
 
-C function : gtk_widget_set_style
+C function
+
+gtk_widget_set_style
 */
 func (recv *Widget) SetStyle(style *Style) {
 	c_style := (*C.GtkStyle)(C.NULL)
@@ -50605,7 +52905,9 @@ func (recv *Widget) SetStyle(style *Style) {
 // See the #GtkWidget:valign property.
 /*
 
-C function : gtk_widget_set_valign
+C function
+
+gtk_widget_set_valign
 */
 func (recv *Widget) SetValign(align Align) {
 	c_align := (C.GtkAlign)(align)
@@ -50621,7 +52923,9 @@ func (recv *Widget) SetValign(align Align) {
 // See gtk_widget_set_hexpand() for more detail.
 /*
 
-C function : gtk_widget_set_vexpand
+C function
+
+gtk_widget_set_vexpand
 */
 func (recv *Widget) SetVexpand(expand bool) {
 	c_expand :=
@@ -50638,7 +52942,9 @@ func (recv *Widget) SetVexpand(expand bool) {
 // See gtk_widget_set_hexpand_set() for more detail.
 /*
 
-C function : gtk_widget_set_vexpand_set
+C function
+
+gtk_widget_set_vexpand_set
 */
 func (recv *Widget) SetVexpandSet(set bool) {
 	c_set :=
@@ -50658,7 +52964,9 @@ func (recv *Widget) SetVexpandSet(set bool) {
 // so you should call this function before @widget is realized.
 /*
 
-C function : gtk_widget_set_visual
+C function
+
+gtk_widget_set_visual
 */
 func (recv *Widget) SetVisual(visual *gdk.Visual) {
 	c_visual := (*C.GdkVisual)(C.NULL)
@@ -50684,7 +52992,9 @@ func (recv *Widget) SetVisual(visual *gdk.Visual) {
 // toplevel container is realized and mapped.
 /*
 
-C function : gtk_widget_show
+C function
+
+gtk_widget_show
 */
 func (recv *Widget) Show() {
 	C.gtk_widget_show((*C.GtkWidget)(recv.native))
@@ -50696,7 +53006,9 @@ func (recv *Widget) Show() {
 // a container).
 /*
 
-C function : gtk_widget_show_all
+C function
+
+gtk_widget_show_all
 */
 func (recv *Widget) ShowAll() {
 	C.gtk_widget_show_all((*C.GtkWidget)(recv.native))
@@ -50711,7 +53023,9 @@ func (recv *Widget) ShowAll() {
 // this function.
 /*
 
-C function : gtk_widget_show_now
+C function
+
+gtk_widget_show_now
 */
 func (recv *Widget) ShowNow() {
 	C.gtk_widget_show_now((*C.GtkWidget)(recv.native))
@@ -50735,7 +53049,9 @@ func (recv *Widget) ShowNow() {
 // a widget will actually be allocated.
 /*
 
-C function : gtk_widget_size_request
+C function
+
+gtk_widget_size_request
 */
 func (recv *Widget) SizeRequest() *Requisition {
 	var c_requisition C.GtkRequisition
@@ -50752,7 +53068,9 @@ func (recv *Widget) SizeRequest() *Requisition {
 // Gets the value of a style property of @widget.
 /*
 
-C function : gtk_widget_style_get_property
+C function
+
+gtk_widget_style_get_property
 */
 func (recv *Widget) StyleGetProperty(propertyName string, value *gobject.Value) {
 	c_property_name := C.CString(propertyName)
@@ -50775,7 +53093,9 @@ func (recv *Widget) StyleGetProperty(propertyName string, value *gobject.Value) 
 // emitted.
 /*
 
-C function : gtk_widget_thaw_child_notify
+C function
+
+gtk_widget_thaw_child_notify
 */
 func (recv *Widget) ThawChildNotify() {
 	C.gtk_widget_thaw_child_notify((*C.GtkWidget)(recv.native))
@@ -50789,7 +53109,9 @@ func (recv *Widget) ThawChildNotify() {
 // toplevel.
 /*
 
-C function : gtk_widget_translate_coordinates
+C function
+
+gtk_widget_translate_coordinates
 */
 func (recv *Widget) TranslateCoordinates(destWidget *Widget, srcX int32, srcY int32) (bool, int32, int32) {
 	c_dest_widget := (*C.GtkWidget)(C.NULL)
@@ -50819,7 +53141,9 @@ func (recv *Widget) TranslateCoordinates(destWidget *Widget, srcX int32, srcY in
 // a widget to be unmapped if it’s currently mapped.
 /*
 
-C function : gtk_widget_unmap
+C function
+
+gtk_widget_unmap
 */
 func (recv *Widget) Unmap() {
 	C.gtk_widget_unmap((*C.GtkWidget)(recv.native))
@@ -50832,7 +53156,9 @@ func (recv *Widget) Unmap() {
 // on #GtkContainer, to dissociate a child from the container.
 /*
 
-C function : gtk_widget_unparent
+C function
+
+gtk_widget_unparent
 */
 func (recv *Widget) Unparent() {
 	C.gtk_widget_unparent((*C.GtkWidget)(recv.native))
@@ -50845,7 +53171,9 @@ func (recv *Widget) Unparent() {
 // associated with the widget, such as @widget->window).
 /*
 
-C function : gtk_widget_unrealize
+C function
+
+gtk_widget_unrealize
 */
 func (recv *Widget) Unrealize() {
 	C.gtk_widget_unrealize((*C.GtkWidget)(recv.native))
@@ -50865,7 +53193,9 @@ func (recv *Widget) Buildable() *Buildable {
 
 /*
 
-C record/class : GtkWidgetAccessible
+C type
+
+GtkWidgetAccessible
 */
 type WidgetAccessible struct {
 	native *C.GtkWidgetAccessible
@@ -50967,7 +53297,9 @@ func (recv *WidgetAccessible) Component() *atk.Component {
 // widget that is added as a titlebar child.
 /*
 
-C record/class : GtkWindow
+C type
+
+GtkWindow
 */
 type Window struct {
 	native *C.GtkWindow
@@ -51336,7 +53668,9 @@ func window_setFocusHandler(_ *C.GObject, c_object *C.GtkWidget, data C.gpointer
 // To delete a #GtkWindow, call gtk_widget_destroy().
 /*
 
-C function : gtk_window_new
+C function
+
+gtk_window_new
 */
 func WindowNew(type_ WindowType) *Window {
 	c_type := (C.GtkWindowType)(type_)
@@ -51353,7 +53687,9 @@ func WindowNew(type_ WindowType) *Window {
 // focused widget is activated.
 /*
 
-C function : gtk_window_activate_default
+C function
+
+gtk_window_activate_default
 */
 func (recv *Window) ActivateDefault() bool {
 	retC := C.gtk_window_activate_default((*C.GtkWindow)(recv.native))
@@ -51365,7 +53701,9 @@ func (recv *Window) ActivateDefault() bool {
 // Activates the current focused widget within the window.
 /*
 
-C function : gtk_window_activate_focus
+C function
+
+gtk_window_activate_focus
 */
 func (recv *Window) ActivateFocus() bool {
 	retC := C.gtk_window_activate_focus((*C.GtkWindow)(recv.native))
@@ -51379,7 +53717,9 @@ func (recv *Window) ActivateFocus() bool {
 // in @accel_group.
 /*
 
-C function : gtk_window_add_accel_group
+C function
+
+gtk_window_add_accel_group
 */
 func (recv *Window) AddAccelGroup(accelGroup *AccelGroup) {
 	c_accel_group := (*C.GtkAccelGroup)(C.NULL)
@@ -51395,7 +53735,9 @@ func (recv *Window) AddAccelGroup(accelGroup *AccelGroup) {
 // Adds a mnemonic to this window.
 /*
 
-C function : gtk_window_add_mnemonic
+C function
+
+gtk_window_add_mnemonic
 */
 func (recv *Window) AddMnemonic(keyval uint32, target *Widget) {
 	c_keyval := (C.guint)(keyval)
@@ -51418,7 +53760,9 @@ func (recv *Window) AddMnemonic(keyval uint32, target *Widget) {
 // potentially not all that well, depending on the windowing system.
 /*
 
-C function : gtk_window_begin_move_drag
+C function
+
+gtk_window_begin_move_drag
 */
 func (recv *Window) BeginMoveDrag(button int32, rootX int32, rootY int32, timestamp uint32) {
 	c_button := (C.gint)(button)
@@ -51442,7 +53786,9 @@ func (recv *Window) BeginMoveDrag(button int32, rootX int32, rootY int32, timest
 // potentially not all that well, depending on the windowing system.
 /*
 
-C function : gtk_window_begin_resize_drag
+C function
+
+gtk_window_begin_resize_drag
 */
 func (recv *Window) BeginResizeDrag(edge gdk.WindowEdge, button int32, rootX int32, rootY int32, timestamp uint32) {
 	c_edge := (C.GdkWindowEdge)(edge)
@@ -51470,7 +53816,9 @@ func (recv *Window) BeginResizeDrag(edge gdk.WindowEdge, button int32, rootX int
 // on #GtkWidget.
 /*
 
-C function : gtk_window_deiconify
+C function
+
+gtk_window_deiconify
 */
 func (recv *Window) Deiconify() {
 	C.gtk_window_deiconify((*C.GtkWindow)(recv.native))
@@ -51482,7 +53830,9 @@ func (recv *Window) Deiconify() {
 // such as a title bar via gtk_window_set_decorated().
 /*
 
-C function : gtk_window_get_decorated
+C function
+
+gtk_window_get_decorated
 */
 func (recv *Window) GetDecorated() bool {
 	retC := C.gtk_window_get_decorated((*C.GtkWindow)(recv.native))
@@ -51497,7 +53847,9 @@ func (recv *Window) GetDecorated() bool {
 // used.
 /*
 
-C function : gtk_window_get_default_size
+C function
+
+gtk_window_get_default_size
 */
 func (recv *Window) GetDefaultSize() (int32, int32) {
 	var c_width C.gint
@@ -51517,7 +53869,9 @@ func (recv *Window) GetDefaultSize() (int32, int32) {
 // gtk_window_set_destroy_with_parent ().
 /*
 
-C function : gtk_window_get_destroy_with_parent
+C function
+
+gtk_window_get_destroy_with_parent
 */
 func (recv *Window) GetDestroyWithParent() bool {
 	retC := C.gtk_window_get_destroy_with_parent((*C.GtkWindow)(recv.native))
@@ -51533,7 +53887,9 @@ func (recv *Window) GetDestroyWithParent() bool {
 // not be %TRUE for the widget.
 /*
 
-C function : gtk_window_get_focus
+C function
+
+gtk_window_get_focus
 */
 func (recv *Window) GetFocus() *Widget {
 	retC := C.gtk_window_get_focus((*C.GtkWindow)(recv.native))
@@ -51550,7 +53906,9 @@ func (recv *Window) GetFocus() *Widget {
 // Gets the value set by gtk_window_set_gravity().
 /*
 
-C function : gtk_window_get_gravity
+C function
+
+gtk_window_get_gravity
 */
 func (recv *Window) GetGravity() gdk.Gravity {
 	retC := C.gtk_window_get_gravity((*C.GtkWindow)(recv.native))
@@ -51564,7 +53922,9 @@ func (recv *Window) GetGravity() gdk.Gravity {
 // the icon list).
 /*
 
-C function : gtk_window_get_icon
+C function
+
+gtk_window_get_icon
 */
 func (recv *Window) GetIcon() *gdkpixbuf.Pixbuf {
 	retC := C.gtk_window_get_icon((*C.GtkWindow)(recv.native))
@@ -51583,7 +53943,9 @@ func (recv *Window) GetIcon() *gdkpixbuf.Pixbuf {
 // member won’t be incremented.
 /*
 
-C function : gtk_window_get_icon_list
+C function
+
+gtk_window_get_icon_list
 */
 func (recv *Window) GetIconList() *glib.List {
 	retC := C.gtk_window_get_icon_list((*C.GtkWindow)(recv.native))
@@ -51596,7 +53958,9 @@ func (recv *Window) GetIconList() *glib.List {
 // gtk_window_set_mnemonic_modifier().
 /*
 
-C function : gtk_window_get_mnemonic_modifier
+C function
+
+gtk_window_get_mnemonic_modifier
 */
 func (recv *Window) GetMnemonicModifier() gdk.ModifierType {
 	retC := C.gtk_window_get_mnemonic_modifier((*C.GtkWindow)(recv.native))
@@ -51608,7 +53972,9 @@ func (recv *Window) GetMnemonicModifier() gdk.ModifierType {
 // Returns whether the window is modal. See gtk_window_set_modal().
 /*
 
-C function : gtk_window_get_modal
+C function
+
+gtk_window_get_modal
 */
 func (recv *Window) GetModal() bool {
 	retC := C.gtk_window_get_modal((*C.GtkWindow)(recv.native))
@@ -51655,7 +54021,9 @@ func (recv *Window) GetModal() bool {
 // use a platform-specific protocol, wherever that is available.
 /*
 
-C function : gtk_window_get_position
+C function
+
+gtk_window_get_position
 */
 func (recv *Window) GetPosition() (int32, int32) {
 	var c_root_x C.gint
@@ -51674,7 +54042,9 @@ func (recv *Window) GetPosition() (int32, int32) {
 // Gets the value set by gtk_window_set_resizable().
 /*
 
-C function : gtk_window_get_resizable
+C function
+
+gtk_window_get_resizable
 */
 func (recv *Window) GetResizable() bool {
 	retC := C.gtk_window_get_resizable((*C.GtkWindow)(recv.native))
@@ -51687,7 +54057,9 @@ func (recv *Window) GetResizable() bool {
 // further explanation.
 /*
 
-C function : gtk_window_get_role
+C function
+
+gtk_window_get_role
 */
 func (recv *Window) GetRole() string {
 	retC := C.gtk_window_get_role((*C.GtkWindow)(recv.native))
@@ -51770,7 +54142,9 @@ func (recv *Window) GetRole() string {
 // see: gtk_window_set_position().
 /*
 
-C function : gtk_window_get_size
+C function
+
+gtk_window_get_size
 */
 func (recv *Window) GetSize() (int32, int32) {
 	var c_width C.gint
@@ -51789,7 +54163,9 @@ func (recv *Window) GetSize() (int32, int32) {
 // Retrieves the title of the window. See gtk_window_set_title().
 /*
 
-C function : gtk_window_get_title
+C function
+
+gtk_window_get_title
 */
 func (recv *Window) GetTitle() string {
 	retC := C.gtk_window_get_title((*C.GtkWindow)(recv.native))
@@ -51802,7 +54178,9 @@ func (recv *Window) GetTitle() string {
 // gtk_window_set_transient_for().
 /*
 
-C function : gtk_window_get_transient_for
+C function
+
+gtk_window_get_transient_for
 */
 func (recv *Window) GetTransientFor() *Window {
 	retC := C.gtk_window_get_transient_for((*C.GtkWindow)(recv.native))
@@ -51819,7 +54197,9 @@ func (recv *Window) GetTransientFor() *Window {
 // Gets the type hint for this window. See gtk_window_set_type_hint().
 /*
 
-C function : gtk_window_get_type_hint
+C function
+
+gtk_window_get_type_hint
 */
 func (recv *Window) GetTypeHint() gdk.WindowTypeHint {
 	retC := C.gtk_window_get_type_hint((*C.GtkWindow)(recv.native))
@@ -51831,7 +54211,9 @@ func (recv *Window) GetTypeHint() gdk.WindowTypeHint {
 // Returns whether @window has an explicit window group.
 /*
 
-C function : gtk_window_has_group
+C function
+
+gtk_window_has_group
 */
 func (recv *Window) HasGroup() bool {
 	retC := C.gtk_window_has_group((*C.GtkWindow)(recv.native))
@@ -51856,7 +54238,9 @@ func (recv *Window) HasGroup() bool {
 // on #GtkWidget.
 /*
 
-C function : gtk_window_iconify
+C function
+
+gtk_window_iconify
 */
 func (recv *Window) Iconify() {
 	C.gtk_window_iconify((*C.GtkWindow)(recv.native))
@@ -51881,7 +54265,9 @@ func (recv *Window) Iconify() {
 // #GtkWindow:is-maximized property.
 /*
 
-C function : gtk_window_maximize
+C function
+
+gtk_window_maximize
 */
 func (recv *Window) Maximize() {
 	C.gtk_window_maximize((*C.GtkWindow)(recv.native))
@@ -51892,7 +54278,9 @@ func (recv *Window) Maximize() {
 // Activates the targets associated with the mnemonic.
 /*
 
-C function : gtk_window_mnemonic_activate
+C function
+
+gtk_window_mnemonic_activate
 */
 func (recv *Window) MnemonicActivate(keyval uint32, modifier gdk.ModifierType) bool {
 	c_keyval := (C.guint)(keyval)
@@ -51940,7 +54328,9 @@ func (recv *Window) MnemonicActivate(keyval uint32, modifier gdk.ModifierType) b
 // The gtk_window_get_position() documentation may also be relevant.
 /*
 
-C function : gtk_window_move
+C function
+
+gtk_window_move
 */
 func (recv *Window) Move(x int32, y int32) {
 	c_x := (C.gint)(x)
@@ -52025,7 +54415,9 @@ func (recv *Window) Move(x int32, y int32) {
 // ]|
 /*
 
-C function : gtk_window_parse_geometry
+C function
+
+gtk_window_parse_geometry
 */
 func (recv *Window) ParseGeometry(geometry string) bool {
 	c_geometry := C.CString(geometry)
@@ -52055,7 +54447,9 @@ func (recv *Window) ParseGeometry(geometry string) bool {
 // it is preferable to use gtk_window_present_with_time().
 /*
 
-C function : gtk_window_present
+C function
+
+gtk_window_present
 */
 func (recv *Window) Present() {
 	C.gtk_window_present((*C.GtkWindow)(recv.native))
@@ -52066,7 +54460,9 @@ func (recv *Window) Present() {
 // Reverses the effects of gtk_window_add_accel_group().
 /*
 
-C function : gtk_window_remove_accel_group
+C function
+
+gtk_window_remove_accel_group
 */
 func (recv *Window) RemoveAccelGroup(accelGroup *AccelGroup) {
 	c_accel_group := (*C.GtkAccelGroup)(C.NULL)
@@ -52082,7 +54478,9 @@ func (recv *Window) RemoveAccelGroup(accelGroup *AccelGroup) {
 // Removes a mnemonic from this window.
 /*
 
-C function : gtk_window_remove_mnemonic
+C function
+
+gtk_window_remove_mnemonic
 */
 func (recv *Window) RemoveMnemonic(keyval uint32, target *Widget) {
 	c_keyval := (C.guint)(keyval)
@@ -52102,7 +54500,9 @@ func (recv *Window) RemoveMnemonic(keyval uint32, target *Widget) {
 // by GUI builders only.
 /*
 
-C function : gtk_window_reshow_with_initial_size
+C function
+
+gtk_window_reshow_with_initial_size
 */
 func (recv *Window) ReshowWithInitialSize() {
 	C.gtk_window_reshow_with_initial_size((*C.GtkWindow)(recv.native))
@@ -52140,7 +54540,9 @@ func (recv *Window) ReshowWithInitialSize() {
 // a larger window.
 /*
 
-C function : gtk_window_resize
+C function
+
+gtk_window_resize
 */
 func (recv *Window) Resize(width int32, height int32) {
 	c_width := (C.gint)(width)
@@ -52165,7 +54567,9 @@ func (recv *Window) Resize(width int32, height int32) {
 // policy involved.
 /*
 
-C function : gtk_window_set_decorated
+C function
+
+gtk_window_set_decorated
 */
 func (recv *Window) SetDecorated(setting bool) {
 	c_setting :=
@@ -52185,7 +54589,9 @@ func (recv *Window) SetDecorated(setting bool) {
 // the widget you’d like to make the default.
 /*
 
-C function : gtk_window_set_default
+C function
+
+gtk_window_set_default
 */
 func (recv *Window) SetDefault(defaultWidget *Widget) {
 	c_default_widget := (*C.GtkWidget)(C.NULL)
@@ -52233,7 +54639,9 @@ func (recv *Window) SetDefault(defaultWidget *Widget) {
 // work in all circumstances and can lead to growing or shrinking windows.
 /*
 
-C function : gtk_window_set_default_size
+C function
+
+gtk_window_set_default_size
 */
 func (recv *Window) SetDefaultSize(width int32, height int32) {
 	c_width := (C.gint)(width)
@@ -52251,7 +54659,9 @@ func (recv *Window) SetDefaultSize(width int32, height int32) {
 // associated with, for example.
 /*
 
-C function : gtk_window_set_destroy_with_parent
+C function
+
+gtk_window_set_destroy_with_parent
 */
 func (recv *Window) SetDestroyWithParent(setting bool) {
 	c_setting :=
@@ -52269,7 +54679,9 @@ func (recv *Window) SetDestroyWithParent(setting bool) {
 // gtk_widget_grab_focus() instead of this function.
 /*
 
-C function : gtk_window_set_focus
+C function
+
+gtk_window_set_focus
 */
 func (recv *Window) SetFocus(focus *Widget) {
 	c_focus := (*C.GtkWidget)(C.NULL)
@@ -52288,7 +54700,9 @@ func (recv *Window) SetFocus(focus *Widget) {
 // character); aspect ratios; and more. See the #GdkGeometry struct.
 /*
 
-C function : gtk_window_set_geometry_hints
+C function
+
+gtk_window_set_geometry_hints
 */
 func (recv *Window) SetGeometryHints(geometryWidget *Widget, geometry *gdk.Geometry, geomMask gdk.WindowHints) {
 	c_geometry_widget := (*C.GtkWidget)(C.NULL)
@@ -52316,7 +54730,9 @@ func (recv *Window) SetGeometryHints(geometryWidget *Widget, geometry *gdk.Geome
 // typically “do what you mean.”
 /*
 
-C function : gtk_window_set_gravity
+C function
+
+gtk_window_set_gravity
 */
 func (recv *Window) SetGravity(gravity gdk.Gravity) {
 	c_gravity := (C.GdkGravity)(gravity)
@@ -52347,7 +54763,9 @@ func (recv *Window) SetGravity(gravity gdk.Gravity) {
 // for all windows in your application in one go.
 /*
 
-C function : gtk_window_set_icon
+C function
+
+gtk_window_set_icon
 */
 func (recv *Window) SetIcon(icon *gdkpixbuf.Pixbuf) {
 	c_icon := (*C.GdkPixbuf)(C.NULL)
@@ -52387,7 +54805,9 @@ func (recv *Window) SetIcon(icon *gdkpixbuf.Pixbuf) {
 // set the icon on transient windows.
 /*
 
-C function : gtk_window_set_icon_list
+C function
+
+gtk_window_set_icon_list
 */
 func (recv *Window) SetIconList(list *glib.List) {
 	c_list := (*C.GList)(C.NULL)
@@ -52403,7 +54823,9 @@ func (recv *Window) SetIconList(list *glib.List) {
 // Sets the mnemonic modifier for this window.
 /*
 
-C function : gtk_window_set_mnemonic_modifier
+C function
+
+gtk_window_set_mnemonic_modifier
 */
 func (recv *Window) SetMnemonicModifier(modifier gdk.ModifierType) {
 	c_modifier := (C.GdkModifierType)(modifier)
@@ -52421,7 +54843,9 @@ func (recv *Window) SetMnemonicModifier(modifier gdk.ModifierType) {
 // will then disallow lowering the dialog below the parent.
 /*
 
-C function : gtk_window_set_modal
+C function
+
+gtk_window_set_modal
 */
 func (recv *Window) SetModal(modal bool) {
 	c_modal :=
@@ -52437,7 +54861,9 @@ func (recv *Window) SetModal(modal bool) {
 // the window to be repositioned to satisfy the new constraint.
 /*
 
-C function : gtk_window_set_position
+C function
+
+gtk_window_set_position
 */
 func (recv *Window) SetPosition(position WindowPosition) {
 	c_position := (C.GtkWindowPosition)(position)
@@ -52451,7 +54877,9 @@ func (recv *Window) SetPosition(position WindowPosition) {
 // by default.
 /*
 
-C function : gtk_window_set_resizable
+C function
+
+gtk_window_set_resizable
 */
 func (recv *Window) SetResizable(resizable bool) {
 	c_resizable :=
@@ -52476,7 +54904,9 @@ func (recv *Window) SetResizable(resizable bool) {
 // restoring the session.
 /*
 
-C function : gtk_window_set_role
+C function
+
+gtk_window_set_role
 */
 func (recv *Window) SetRole(role string) {
 	c_role := C.CString(role)
@@ -52497,7 +54927,9 @@ func (recv *Window) SetRole(role string) {
 // document filename, for example.
 /*
 
-C function : gtk_window_set_title
+C function
+
+gtk_window_set_title
 */
 func (recv *Window) SetTitle(title string) {
 	c_title := C.CString(title)
@@ -52528,7 +54960,9 @@ func (recv *Window) SetTitle(title string) {
 // much as the window manager would have done on X.
 /*
 
-C function : gtk_window_set_transient_for
+C function
+
+gtk_window_set_transient_for
 */
 func (recv *Window) SetTransientFor(parent *Window) {
 	c_parent := (*C.GtkWindow)(C.NULL)
@@ -52551,7 +54985,9 @@ func (recv *Window) SetTransientFor(parent *Window) {
 // will sometimes call gtk_window_set_type_hint() on your behalf.
 /*
 
-C function : gtk_window_set_type_hint
+C function
+
+gtk_window_set_type_hint
 */
 func (recv *Window) SetTypeHint(hint gdk.WindowTypeHint) {
 	c_hint := (C.GdkWindowTypeHint)(hint)
@@ -52571,7 +55007,9 @@ func (recv *Window) SetTypeHint(hint gdk.WindowTypeHint) {
 // manager to restore window positions when loading a saved session.
 /*
 
-C function : gtk_window_set_wmclass
+C function
+
+gtk_window_set_wmclass
 */
 func (recv *Window) SetWmclass(wmclassName string, wmclassClass string) {
 	c_wmclass_name := C.CString(wmclassName)
@@ -52599,7 +55037,9 @@ func (recv *Window) SetWmclass(wmclassName string, wmclassClass string) {
 // on #GtkWidget.
 /*
 
-C function : gtk_window_stick
+C function
+
+gtk_window_stick
 */
 func (recv *Window) Stick() {
 	C.gtk_window_stick((*C.GtkWindow)(recv.native))
@@ -52618,7 +55058,9 @@ func (recv *Window) Stick() {
 // on #GtkWidget.
 /*
 
-C function : gtk_window_unmaximize
+C function
+
+gtk_window_unmaximize
 */
 func (recv *Window) Unmaximize() {
 	C.gtk_window_unmaximize((*C.GtkWindow)(recv.native))
@@ -52637,7 +55079,9 @@ func (recv *Window) Unmaximize() {
 // on #GtkWidget.
 /*
 
-C function : gtk_window_unstick
+C function
+
+gtk_window_unstick
 */
 func (recv *Window) Unstick() {
 	C.gtk_window_unstick((*C.GtkWindow)(recv.native))
@@ -52657,7 +55101,9 @@ func (recv *Window) Buildable() *Buildable {
 
 /*
 
-C record/class : GtkWindowAccessible
+C type
+
+GtkWindowAccessible
 */
 type WindowAccessible struct {
 	native *C.GtkWindowAccessible
@@ -52734,7 +55180,9 @@ func (recv *WindowAccessible) Window() *atk.Window {
 // freed.
 /*
 
-C record/class : GtkWindowGroup
+C type
+
+GtkWindowGroup
 */
 type WindowGroup struct {
 	native *C.GtkWindowGroup
@@ -52773,7 +55221,9 @@ func CastToWindowGroup(object *gobject.Object) *WindowGroup {
 // gtk_grab_add() only affect windows within the same #GtkWindowGroup.
 /*
 
-C function : gtk_window_group_new
+C function
+
+gtk_window_group_new
 */
 func WindowGroupNew() *WindowGroup {
 	retC := C.gtk_window_group_new()
@@ -52785,7 +55235,9 @@ func WindowGroupNew() *WindowGroup {
 // Adds a window to a #GtkWindowGroup.
 /*
 
-C function : gtk_window_group_add_window
+C function
+
+gtk_window_group_add_window
 */
 func (recv *WindowGroup) AddWindow(window *Window) {
 	c_window := (*C.GtkWindow)(C.NULL)
@@ -52801,7 +55253,9 @@ func (recv *WindowGroup) AddWindow(window *Window) {
 // Removes a window from a #GtkWindowGroup.
 /*
 
-C function : gtk_window_group_remove_window
+C function
+
+gtk_window_group_remove_window
 */
 func (recv *WindowGroup) RemoveWindow(window *Window) {
 	c_window := (*C.GtkWindow)(C.NULL)

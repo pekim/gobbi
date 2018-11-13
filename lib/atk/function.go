@@ -23,7 +23,9 @@ import "C"
 // executed for the object.
 /*
 
-C function : atk_focus_tracker_notify
+C function
+
+atk_focus_tracker_notify
 */
 func FocusTrackerNotify(object *Object) {
 	c_object := (*C.AtkObject)(C.NULL)
@@ -45,7 +47,9 @@ func FocusTrackerNotify(object *Object) {
 // for whom accessibility information will be provided.
 /*
 
-C function : atk_get_default_registry
+C function
+
+atk_get_default_registry
 */
 func GetDefaultRegistry() *Registry {
 	retC := C.atk_get_default_registry()
@@ -57,7 +61,9 @@ func GetDefaultRegistry() *Registry {
 // Gets the root accessible container for the current application.
 /*
 
-C function : atk_get_root
+C function
+
+atk_get_root
 */
 func GetRoot() *Object {
 	retC := C.atk_get_root()
@@ -69,7 +75,9 @@ func GetRoot() *Object {
 // Gets name string for the GUI toolkit implementing ATK for this application.
 /*
 
-C function : atk_get_toolkit_name
+C function
+
+atk_get_toolkit_name
 */
 func GetToolkitName() string {
 	retC := C.atk_get_toolkit_name()
@@ -81,7 +89,9 @@ func GetToolkitName() string {
 // Gets version string for the GUI toolkit implementing ATK for this application.
 /*
 
-C function : atk_get_toolkit_version
+C function
+
+atk_get_toolkit_version
 */
 func GetToolkitVersion() string {
 	retC := C.atk_get_toolkit_version()
@@ -93,7 +103,9 @@ func GetToolkitVersion() string {
 // Get the #AtkRelationType type corresponding to a relation name.
 /*
 
-C function : atk_relation_type_for_name
+C function
+
+atk_relation_type_for_name
 */
 func RelationTypeForName(name string) RelationType {
 	c_name := C.CString(name)
@@ -108,7 +120,9 @@ func RelationTypeForName(name string) RelationType {
 // Gets the description string describing the #AtkRelationType @type.
 /*
 
-C function : atk_relation_type_get_name
+C function
+
+atk_relation_type_get_name
 */
 func RelationTypeGetName(type_ RelationType) string {
 	c_type := (C.AtkRelationType)(type_)
@@ -122,7 +136,9 @@ func RelationTypeGetName(type_ RelationType) string {
 // Associate @name with a new #AtkRelationType
 /*
 
-C function : atk_relation_type_register
+C function
+
+atk_relation_type_register
 */
 func RelationTypeRegister(name string) RelationType {
 	c_name := C.CString(name)
@@ -136,7 +152,9 @@ func RelationTypeRegister(name string) RelationType {
 
 /*
 
-C function : atk_remove_focus_tracker
+C function
+
+atk_remove_focus_tracker
 */
 func RemoveFocusTracker(trackerId uint32) {
 	c_tracker_id := (C.guint)(trackerId)
@@ -159,7 +177,9 @@ func RemoveFocusTracker(trackerId uint32) {
 // Removes the specified event listener
 /*
 
-C function : atk_remove_global_event_listener
+C function
+
+atk_remove_global_event_listener
 */
 func RemoveGlobalEventListener(listenerId uint32) {
 	c_listener_id := (C.guint)(listenerId)
@@ -175,7 +195,9 @@ func RemoveGlobalEventListener(listenerId uint32) {
 // Removes the specified event listener.
 /*
 
-C function : atk_remove_key_event_listener
+C function
+
+atk_remove_key_event_listener
 */
 func RemoveKeyEventListener(listenerId uint32) {
 	c_listener_id := (C.guint)(listenerId)
@@ -188,7 +210,9 @@ func RemoveKeyEventListener(listenerId uint32) {
 // Get the #AtkRole type corresponding to a rolew name.
 /*
 
-C function : atk_role_for_name
+C function
+
+atk_role_for_name
 */
 func RoleForName(name string) Role {
 	c_name := C.CString(name)
@@ -203,7 +227,9 @@ func RoleForName(name string) Role {
 // Gets the localized description string describing the #AtkRole @role.
 /*
 
-C function : atk_role_get_localized_name
+C function
+
+atk_role_get_localized_name
 */
 func RoleGetLocalizedName(role Role) string {
 	c_role := (C.AtkRole)(role)
@@ -217,7 +243,9 @@ func RoleGetLocalizedName(role Role) string {
 // Gets the description string describing the #AtkRole @role.
 /*
 
-C function : atk_role_get_name
+C function
+
+atk_role_get_name
 */
 func RoleGetName(role Role) string {
 	c_role := (C.AtkRole)(role)
@@ -232,7 +260,9 @@ func RoleGetName(role Role) string {
 // name. So it should not be empty, or consisting on whitespaces.
 /*
 
-C function : atk_role_register
+C function
+
+atk_role_register
 */
 func RoleRegister(name string) Role {
 	c_name := C.CString(name)
@@ -247,7 +277,9 @@ func RoleRegister(name string) Role {
 // Gets the #AtkStateType corresponding to the description string @name.
 /*
 
-C function : atk_state_type_for_name
+C function
+
+atk_state_type_for_name
 */
 func StateTypeForName(name string) StateType {
 	c_name := C.CString(name)
@@ -262,7 +294,9 @@ func StateTypeForName(name string) StateType {
 // Gets the description string describing the #AtkStateType @type.
 /*
 
-C function : atk_state_type_get_name
+C function
+
+atk_state_type_get_name
 */
 func StateTypeGetName(type_ StateType) string {
 	c_type := (C.AtkStateType)(type_)
@@ -276,7 +310,9 @@ func StateTypeGetName(type_ StateType) string {
 // Register a new object state.
 /*
 
-C function : atk_state_type_register
+C function
+
+atk_state_type_register
 */
 func StateTypeRegister(name string) StateType {
 	c_name := C.CString(name)
@@ -291,7 +327,9 @@ func StateTypeRegister(name string) StateType {
 // Get the #AtkTextAttribute type corresponding to a text attribute name.
 /*
 
-C function : atk_text_attribute_for_name
+C function
+
+atk_text_attribute_for_name
 */
 func TextAttributeForName(name string) TextAttribute {
 	c_name := C.CString(name)
@@ -306,7 +344,9 @@ func TextAttributeForName(name string) TextAttribute {
 // Gets the name corresponding to the #AtkTextAttribute
 /*
 
-C function : atk_text_attribute_get_name
+C function
+
+atk_text_attribute_get_name
 */
 func TextAttributeGetName(attr TextAttribute) string {
 	c_attr := (C.AtkTextAttribute)(attr)
@@ -320,7 +360,9 @@ func TextAttributeGetName(attr TextAttribute) string {
 // Gets the value for the index of the #AtkTextAttribute
 /*
 
-C function : atk_text_attribute_get_value
+C function
+
+atk_text_attribute_get_value
 */
 func TextAttributeGetValue(attr TextAttribute, index int32) string {
 	c_attr := (C.AtkTextAttribute)(attr)
@@ -336,7 +378,9 @@ func TextAttributeGetValue(attr TextAttribute, index int32) string {
 // Associate @name with a new #AtkTextAttribute
 /*
 
-C function : atk_text_attribute_register
+C function
+
+atk_text_attribute_register
 */
 func TextAttributeRegister(name string) TextAttribute {
 	c_name := C.CString(name)
@@ -351,7 +395,9 @@ func TextAttributeRegister(name string) TextAttribute {
 // Gets the localized description string describing the #AtkValueType @value_type.
 /*
 
-C function : atk_value_type_get_localized_name
+C function
+
+atk_value_type_get_localized_name
 */
 func ValueTypeGetLocalizedName(valueType ValueType) string {
 	c_value_type := (C.AtkValueType)(valueType)
@@ -365,7 +411,9 @@ func ValueTypeGetLocalizedName(valueType ValueType) string {
 // Gets the description string describing the #AtkValueType @value_type.
 /*
 
-C function : atk_value_type_get_name
+C function
+
+atk_value_type_get_name
 */
 func ValueTypeGetName(valueType ValueType) string {
 	c_value_type := (C.AtkValueType)(valueType)

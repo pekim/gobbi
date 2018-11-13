@@ -23,7 +23,9 @@ import "C"
 // Base type for D-Bus interfaces.
 /*
 
-C record/class : GDBusInterfaceIface
+C type
+
+GDBusInterfaceIface
 */
 type DBusInterfaceIface struct {
 	native *C.GDBusInterfaceIface
@@ -62,7 +64,9 @@ func (recv *DBusInterfaceIface) ToC() unsafe.Pointer {
 // g_dbus_interface_info_cache_release() is called.
 /*
 
-C function : g_dbus_interface_info_cache_build
+C function
+
+g_dbus_interface_info_cache_build
 */
 func (recv *DBusInterfaceInfo) CacheBuild() {
 	C.g_dbus_interface_info_cache_build((*C.GDBusInterfaceInfo)(recv.native))
@@ -75,7 +79,9 @@ func (recv *DBusInterfaceInfo) CacheBuild() {
 // resources used by the cache if the usage count drops to zero.
 /*
 
-C function : g_dbus_interface_info_cache_release
+C function
+
+g_dbus_interface_info_cache_release
 */
 func (recv *DBusInterfaceInfo) CacheRelease() {
 	C.g_dbus_interface_info_cache_release((*C.GDBusInterfaceInfo)(recv.native))
@@ -86,7 +92,9 @@ func (recv *DBusInterfaceInfo) CacheRelease() {
 // Class structure for #GDBusInterfaceSkeleton.
 /*
 
-C record/class : GDBusInterfaceSkeletonClass
+C type
+
+GDBusInterfaceSkeletonClass
 */
 type DBusInterfaceSkeletonClass struct {
 	native *C.GDBusInterfaceSkeletonClass
@@ -119,7 +127,9 @@ func (recv *DBusInterfaceSkeletonClass) ToC() unsafe.Pointer {
 // Base object type for D-Bus objects.
 /*
 
-C record/class : GDBusObjectIface
+C type
+
+GDBusObjectIface
 */
 type DBusObjectIface struct {
 	native *C.GDBusObjectIface
@@ -150,7 +160,9 @@ func (recv *DBusObjectIface) ToC() unsafe.Pointer {
 // Class structure for #GDBusObjectManagerClient.
 /*
 
-C record/class : GDBusObjectManagerClientClass
+C type
+
+GDBusObjectManagerClientClass
 */
 type DBusObjectManagerClientClass struct {
 	native *C.GDBusObjectManagerClientClass
@@ -179,7 +191,9 @@ func (recv *DBusObjectManagerClientClass) ToC() unsafe.Pointer {
 // Base type for D-Bus object managers.
 /*
 
-C record/class : GDBusObjectManagerIface
+C type
+
+GDBusObjectManagerIface
 */
 type DBusObjectManagerIface struct {
 	native *C.GDBusObjectManagerIface
@@ -213,7 +227,9 @@ func (recv *DBusObjectManagerIface) ToC() unsafe.Pointer {
 // Class structure for #GDBusObjectManagerServer.
 /*
 
-C record/class : GDBusObjectManagerServerClass
+C type
+
+GDBusObjectManagerServerClass
 */
 type DBusObjectManagerServerClass struct {
 	native *C.GDBusObjectManagerServerClass
@@ -240,7 +256,9 @@ func (recv *DBusObjectManagerServerClass) ToC() unsafe.Pointer {
 // Class structure for #GDBusObjectProxy.
 /*
 
-C record/class : GDBusObjectProxyClass
+C type
+
+GDBusObjectProxyClass
 */
 type DBusObjectProxyClass struct {
 	native *C.GDBusObjectProxyClass
@@ -267,7 +285,9 @@ func (recv *DBusObjectProxyClass) ToC() unsafe.Pointer {
 // Class structure for #GDBusObjectSkeleton.
 /*
 
-C record/class : GDBusObjectSkeletonClass
+C type
+
+GDBusObjectSkeletonClass
 */
 type DBusObjectSkeletonClass struct {
 	native *C.GDBusObjectSkeletonClass
@@ -299,7 +319,9 @@ func (recv *DBusObjectSkeletonClass) ToC() unsafe.Pointer {
 // or g_io_modules_scan_all_in_directory_with_scope().
 /*
 
-C record/class : GIOModuleScope
+C type
+
+GIOModuleScope
 */
 type IOModuleScope struct {
 	native *C.GIOModuleScope
@@ -326,7 +348,9 @@ func (recv *IOModuleScope) ToC() unsafe.Pointer {
 // or g_io_modules_load_all_in_directory_with_scope().
 /*
 
-C function : g_io_module_scope_block
+C function
+
+g_io_module_scope_block
 */
 func (recv *IOModuleScope) Block(basename string) {
 	c_basename := C.CString(basename)
@@ -340,7 +364,9 @@ func (recv *IOModuleScope) Block(basename string) {
 // Free a module scope.
 /*
 
-C function : g_io_module_scope_free
+C function
+
+g_io_module_scope_free
 */
 func (recv *IOModuleScope) Free() {
 	C.g_io_module_scope_free((*C.GIOModuleScope)(recv.native))
@@ -353,7 +379,9 @@ func (recv *IOModuleScope) Free() {
 // implementation that runs the corresponding sync method in a thread.
 /*
 
-C record/class : GTlsDatabaseClass
+C type
+
+GTlsDatabaseClass
 */
 type TlsDatabaseClass struct {
 	native *C.GTlsDatabaseClass
@@ -406,7 +434,9 @@ func (recv *TlsDatabaseClass) ToC() unsafe.Pointer {
 // %G_IO_ERROR and code of %G_IO_ERROR_CANCELLED.
 /*
 
-C record/class : GTlsInteractionClass
+C type
+
+GTlsInteractionClass
 */
 type TlsInteractionClass struct {
 	native *C.GTlsInteractionClass

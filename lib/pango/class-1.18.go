@@ -13,7 +13,9 @@ import "C"
 // or lightening it.
 /*
 
-C function : pango_font_face_is_synthesized
+C function
+
+pango_font_face_is_synthesized
 */
 func (recv *FontFace) IsSynthesized() bool {
 	retC := C.pango_font_face_is_synthesized((*C.PangoFontFace)(recv.native))

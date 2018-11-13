@@ -15,7 +15,9 @@ import "C"
 // Returns the value previously set with gtk_places_sidebar_set_show_starred_location()
 /*
 
-C function : gtk_places_sidebar_get_show_starred_location
+C function
+
+gtk_places_sidebar_get_show_starred_location
 */
 func (recv *PlacesSidebar) GetShowStarredLocation() bool {
 	retC := C.gtk_places_sidebar_get_show_starred_location((*C.GtkPlacesSidebar)(recv.native))
@@ -28,7 +30,9 @@ func (recv *PlacesSidebar) GetShowStarredLocation() bool {
 // #GtkPlacesSidebar::show-starred-location signal.
 /*
 
-C function : gtk_places_sidebar_set_show_starred_location
+C function
+
+gtk_places_sidebar_set_show_starred_location
 */
 func (recv *PlacesSidebar) SetShowStarredLocation(showStarredLocation bool) {
 	c_show_starred_location :=

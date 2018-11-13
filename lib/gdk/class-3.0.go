@@ -24,7 +24,9 @@ import "C"
 // returned, as there is no associated device.
 /*
 
-C function : gdk_device_get_associated_device
+C function
+
+gdk_device_get_associated_device
 */
 func (recv *Device) GetAssociatedDevice() *Device {
 	retC := C.gdk_device_get_associated_device((*C.GdkDevice)(recv.native))
@@ -43,7 +45,9 @@ func (recv *Device) GetAssociatedDevice() *Device {
 // Returns the device type for @device.
 /*
 
-C function : gdk_device_get_device_type
+C function
+
+gdk_device_get_device_type
 */
 func (recv *Device) GetDeviceType() DeviceType {
 	retC := C.gdk_device_get_device_type((*C.GdkDevice)(recv.native))
@@ -55,7 +59,9 @@ func (recv *Device) GetDeviceType() DeviceType {
 // Returns the #GdkDisplay to which @device pertains.
 /*
 
-C function : gdk_device_get_display
+C function
+
+gdk_device_get_display
 */
 func (recv *Device) GetDisplay() *Display {
 	retC := C.gdk_device_get_display((*C.GdkDevice)(recv.native))
@@ -67,7 +73,9 @@ func (recv *Device) GetDisplay() *Display {
 // Returns the number of axes the device currently has.
 /*
 
-C function : gdk_device_get_n_axes
+C function
+
+gdk_device_get_n_axes
 */
 func (recv *Device) GetNAxes() int32 {
 	retC := C.gdk_device_get_n_axes((*C.GdkDevice)(recv.native))
@@ -82,7 +90,9 @@ func (recv *Device) GetNAxes() int32 {
 // unless there is an ongoing grab on them, see gdk_device_grab().
 /*
 
-C function : gdk_device_get_position
+C function
+
+gdk_device_get_position
 */
 func (recv *Device) GetPosition() (*Screen, int32, int32) {
 	var c_screen *C.GdkScreen
@@ -110,7 +120,9 @@ func (recv *Device) GetPosition() (*Screen, int32, int32) {
 // unless there is an ongoing grab on them, see gdk_device_grab().
 /*
 
-C function : gdk_device_get_window_at_position
+C function
+
+gdk_device_get_window_at_position
 */
 func (recv *Device) GetWindowAtPosition() (*Window, int32, int32) {
 	var c_win_x C.gint
@@ -141,7 +153,9 @@ func (recv *Device) GetWindowAtPosition() (*Window, int32, int32) {
 // unless there is an ongoing grab on them, see gdk_device_grab().
 /*
 
-C function : gdk_device_get_window_at_position_double
+C function
+
+gdk_device_get_window_at_position_double
 */
 func (recv *Device) GetWindowAtPositionDouble() (*Window, float64, float64) {
 	var c_win_x C.gdouble
@@ -186,7 +200,9 @@ func (recv *Device) GetWindowAtPositionDouble() (*Window, float64, float64) {
 // events that are emitted when the grab ends unvoluntarily.
 /*
 
-C function : gdk_device_grab
+C function
+
+gdk_device_grab
 */
 func (recv *Device) Grab(window *Window, grabOwnership GrabOwnership, ownerEvents bool, eventMask EventMask, cursor *Cursor, time uint32) GrabStatus {
 	c_window := (*C.GdkWindow)(C.NULL)
@@ -218,7 +234,9 @@ func (recv *Device) Grab(window *Window, grabOwnership GrabOwnership, ownerEvent
 // the axes that @device currently has.
 /*
 
-C function : gdk_device_list_axes
+C function
+
+gdk_device_list_axes
 */
 func (recv *Device) ListAxes() *glib.List {
 	retC := C.gdk_device_list_axes((*C.GdkDevice)(recv.native))
@@ -230,7 +248,9 @@ func (recv *Device) ListAxes() *glib.List {
 // Release any grab on @device.
 /*
 
-C function : gdk_device_ungrab
+C function
+
+gdk_device_ungrab
 */
 func (recv *Device) Ungrab(time uint32) {
 	c_time_ := (C.guint32)(time)
@@ -253,7 +273,9 @@ func (recv *Device) Ungrab(time uint32) {
 // for the color picker in the #GtkColorSelectionDialog.
 /*
 
-C function : gdk_device_warp
+C function
+
+gdk_device_warp
 */
 func (recv *Device) Warp(screen *Screen, x int32, y int32) {
 	c_screen := (*C.GdkScreen)(C.NULL)
@@ -278,7 +300,9 @@ func (recv *Device) Warp(screen *Screen, x int32, y int32) {
 // and there aren’t other means to get a meaningful #GdkDevice to operate on.
 /*
 
-C function : gdk_device_manager_get_client_pointer
+C function
+
+gdk_device_manager_get_client_pointer
 */
 func (recv *DeviceManager) GetClientPointer() *Device {
 	retC := C.gdk_device_manager_get_client_pointer((*C.GdkDeviceManager)(recv.native))
@@ -290,7 +314,9 @@ func (recv *DeviceManager) GetClientPointer() *Device {
 // Gets the #GdkDisplay associated to @device_manager.
 /*
 
-C function : gdk_device_manager_get_display
+C function
+
+gdk_device_manager_get_display
 */
 func (recv *DeviceManager) GetDisplay() *Display {
 	retC := C.gdk_device_manager_get_display((*C.GdkDeviceManager)(recv.native))
@@ -308,7 +334,9 @@ func (recv *DeviceManager) GetDisplay() *Display {
 // @device_manager.
 /*
 
-C function : gdk_device_manager_list_devices
+C function
+
+gdk_device_manager_list_devices
 */
 func (recv *DeviceManager) ListDevices(type_ DeviceType) *glib.List {
 	c_type := (C.GdkDeviceType)(type_)
@@ -323,7 +351,9 @@ func (recv *DeviceManager) ListDevices(type_ DeviceType) *glib.List {
 // applications on the given display.
 /*
 
-C function : gdk_display_get_app_launch_context
+C function
+
+gdk_display_get_app_launch_context
 */
 func (recv *Display) GetAppLaunchContext() *AppLaunchContext {
 	retC := C.gdk_display_get_app_launch_context((*C.GdkDisplay)(recv.native))
@@ -335,7 +365,9 @@ func (recv *Display) GetAppLaunchContext() *AppLaunchContext {
 // Returns the #GdkDeviceManager associated to @display.
 /*
 
-C function : gdk_display_get_device_manager
+C function
+
+gdk_display_get_device_manager
 */
 func (recv *Display) GetDeviceManager() *DeviceManager {
 	retC := C.gdk_display_get_device_manager((*C.GdkDisplay)(recv.native))
@@ -353,7 +385,9 @@ func (recv *Display) GetDeviceManager() *DeviceManager {
 // to be processed.
 /*
 
-C function : gdk_display_has_pending
+C function
+
+gdk_display_has_pending
 */
 func (recv *Display) HasPending() bool {
 	retC := C.gdk_display_has_pending((*C.GdkDisplay)(recv.native))
@@ -371,7 +405,9 @@ func (recv *Display) HasPending() bool {
 // disable that feature.
 /*
 
-C function : gdk_display_notify_startup_complete
+C function
+
+gdk_display_notify_startup_complete
 */
 func (recv *Display) NotifyStartupComplete(startupId string) {
 	c_startup_id := C.CString(startupId)
@@ -385,7 +421,9 @@ func (recv *Display) NotifyStartupComplete(startupId string) {
 // Opens a display.
 /*
 
-C function : gdk_display_manager_open_display
+C function
+
+gdk_display_manager_open_display
 */
 func (recv *DisplayManager) OpenDisplay(name string) *Display {
 	c_name := C.CString(name)
@@ -405,7 +443,9 @@ func (recv *DisplayManager) OpenDisplay(name string) *Display {
 // Returns the destination windw for the DND operation.
 /*
 
-C function : gdk_drag_context_get_dest_window
+C function
+
+gdk_drag_context_get_dest_window
 */
 func (recv *DragContext) GetDestWindow() *Window {
 	retC := C.gdk_drag_context_get_dest_window((*C.GdkDragContext)(recv.native))
@@ -417,7 +457,9 @@ func (recv *DragContext) GetDestWindow() *Window {
 // Returns the drag protocol thats used by this context.
 /*
 
-C function : gdk_drag_context_get_protocol
+C function
+
+gdk_drag_context_get_protocol
 */
 func (recv *DragContext) GetProtocol() DragProtocol {
 	retC := C.gdk_drag_context_get_protocol((*C.GdkDragContext)(recv.native))
@@ -429,7 +471,9 @@ func (recv *DragContext) GetProtocol() DragProtocol {
 // Returns whether the Num Lock modifer is locked.
 /*
 
-C function : gdk_keymap_get_num_lock_state
+C function
+
+gdk_keymap_get_num_lock_state
 */
 func (recv *Keymap) GetNumLockState() bool {
 	retC := C.gdk_keymap_get_num_lock_state((*C.GdkKeymap)(recv.native))
@@ -446,7 +490,9 @@ func (recv *Keymap) GetNumLockState() bool {
 // using the cursor for its parent window.
 /*
 
-C function : gdk_window_get_device_cursor
+C function
+
+gdk_window_get_device_cursor
 */
 func (recv *Window) GetDeviceCursor(device *Device) *Cursor {
 	c_device := (*C.GdkDevice)(C.NULL)
@@ -468,7 +514,9 @@ func (recv *Window) GetDeviceCursor(device *Device) *Cursor {
 // Returns the event mask for @window corresponding to an specific device.
 /*
 
-C function : gdk_window_get_device_events
+C function
+
+gdk_window_get_device_events
 */
 func (recv *Window) GetDeviceEvents(device *Device) EventMask {
 	c_device := (*C.GdkDevice)(C.NULL)
@@ -487,7 +535,9 @@ func (recv *Window) GetDeviceEvents(device *Device) EventMask {
 // Finds out the DND protocol supported by a window.
 /*
 
-C function : gdk_window_get_drag_protocol
+C function
+
+gdk_window_get_drag_protocol
 */
 func (recv *Window) GetDragProtocol() (DragProtocol, *Window) {
 	var c_target *C.GdkWindow
@@ -504,7 +554,9 @@ func (recv *Window) GetDragProtocol() (DragProtocol, *Window) {
 // devices.
 /*
 
-C function : gdk_window_get_support_multidevice
+C function
+
+gdk_window_get_support_multidevice
 */
 func (recv *Window) GetSupportMultidevice() bool {
 	retC := C.gdk_window_get_support_multidevice((*C.GdkWindow)(recv.native))
@@ -521,7 +573,9 @@ func (recv *Window) GetSupportMultidevice() bool {
 // use this default.
 /*
 
-C function : gdk_window_set_device_cursor
+C function
+
+gdk_window_set_device_cursor
 */
 func (recv *Window) SetDeviceCursor(device *Device, cursor *Cursor) {
 	c_device := (*C.GdkDevice)(C.NULL)
@@ -548,7 +602,9 @@ func (recv *Window) SetDeviceCursor(device *Device, cursor *Cursor) {
 // See the [input handling overview][event-masks] for details.
 /*
 
-C function : gdk_window_set_device_events
+C function
+
+gdk_window_set_device_events
 */
 func (recv *Window) SetDeviceEvents(device *Device, eventMask EventMask) {
 	c_device := (*C.GdkDevice)(C.NULL)
@@ -569,7 +625,9 @@ func (recv *Window) SetDeviceEvents(device *Device, eventMask EventMask) {
 // after this call, and devices being attached/detached.
 /*
 
-C function : gdk_window_set_source_events
+C function
+
+gdk_window_set_source_events
 */
 func (recv *Window) SetSourceEvents(source InputSource, eventMask EventMask) {
 	c_source := (C.GdkInputSource)(source)
@@ -587,7 +645,9 @@ func (recv *Window) SetSourceEvents(source InputSource, eventMask EventMask) {
 // per device enter/leave events, device grabs and grab ownerships.
 /*
 
-C function : gdk_window_set_support_multidevice
+C function
+
+gdk_window_set_support_multidevice
 */
 func (recv *Window) SetSupportMultidevice(supportMultidevice bool) {
 	c_support_multidevice :=

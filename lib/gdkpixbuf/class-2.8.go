@@ -13,7 +13,9 @@ import "C"
 // Creates a new, empty animation.
 /*
 
-C function : gdk_pixbuf_simple_anim_new
+C function
+
+gdk_pixbuf_simple_anim_new
 */
 func PixbufSimpleAnimNew(width int32, height int32, rate float32) *PixbufSimpleAnim {
 	c_width := (C.gint)(width)
@@ -33,7 +35,9 @@ func PixbufSimpleAnimNew(width int32, height int32, rate float32) *PixbufSimpleA
 // was constructed.
 /*
 
-C function : gdk_pixbuf_simple_anim_add_frame
+C function
+
+gdk_pixbuf_simple_anim_add_frame
 */
 func (recv *PixbufSimpleAnim) AddFrame(pixbuf *Pixbuf) {
 	c_pixbuf := (*C.GdkPixbuf)(C.NULL)

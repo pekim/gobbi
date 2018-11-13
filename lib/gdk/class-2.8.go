@@ -56,7 +56,9 @@ import "C"
 // - ![](zoom_out_cursor.png) "zoom-out"
 /*
 
-C function : gdk_cursor_new_from_name
+C function
+
+gdk_cursor_new_from_name
 */
 func CursorNewFromName(display *Display, name string) *Cursor {
 	c_display := (*C.GdkDisplay)(C.NULL)
@@ -85,7 +87,9 @@ func CursorNewFromName(display *Display, name string) *Cursor {
 // case, %NULL is returned.
 /*
 
-C function : gdk_cursor_get_image
+C function
+
+gdk_cursor_get_image
 */
 func (recv *Cursor) GetImage() *gdkpixbuf.Pixbuf {
 	retC := C.gdk_cursor_get_image((*C.GdkCursor)(recv.native))
@@ -112,7 +116,9 @@ func (recv *Cursor) GetImage() *gdkpixbuf.Pixbuf {
 // for the color picker in the #GtkColorSelectionDialog.
 /*
 
-C function : gdk_display_warp_pointer
+C function
+
+gdk_display_warp_pointer
 */
 func (recv *Display) WarpPointer(screen *Screen, x int32, y int32) {
 	c_screen := (*C.GdkScreen)(C.NULL)
@@ -144,7 +150,9 @@ func (recv *Display) WarpPointer(screen *Screen, x int32, y int32) {
 // gdk_window_set_opacity().
 /*
 
-C function : gdk_screen_get_rgba_visual
+C function
+
+gdk_screen_get_rgba_visual
 */
 func (recv *Screen) GetRgbaVisual() *Visual {
 	retC := C.gdk_screen_get_rgba_visual((*C.GdkScreen)(recv.native))
@@ -165,7 +173,9 @@ func (recv *Screen) GetRgbaVisual() *Visual {
 // Child windows are not moved.
 /*
 
-C function : gdk_window_move_region
+C function
+
+gdk_window_move_region
 */
 func (recv *Window) MoveRegion(region *cairo.Region, dx int32, dy int32) {
 	c_region := (*C.cairo_region_t)(C.NULL)
@@ -186,7 +196,9 @@ func (recv *Window) MoveRegion(region *cairo.Region, dx int32, dy int32) {
 // urgent attention.
 /*
 
-C function : gdk_window_set_urgency_hint
+C function
+
+gdk_window_set_urgency_hint
 */
 func (recv *Window) SetUrgencyHint(urgent bool) {
 	c_urgent :=

@@ -31,7 +31,9 @@ import "C"
 // (if @endptr is non-%NULL).
 /*
 
-C function : g_ascii_strtoll
+C function
+
+g_ascii_strtoll
 */
 func AsciiStrtoll(nptr string, base uint32) (int64, string) {
 	c_nptr := C.CString(nptr)
@@ -57,7 +59,9 @@ func AsciiStrtoll(nptr string, base uint32) (int64, string) {
 // representation.
 /*
 
-C function : g_base64_encode
+C function
+
+g_base64_encode
 */
 func Base64Encode(data []uint8) string {
 	c_data := &data[0]
@@ -83,7 +87,9 @@ func Base64Encode(data []uint8) string {
 // values are freed yourself.
 /*
 
-C function : g_hash_table_remove_all
+C function
+
+g_hash_table_remove_all
 */
 func HashTableRemoveAll(hashTable *HashTable) {
 	c_hash_table := (*C.GHashTable)(C.NULL)
@@ -100,7 +106,9 @@ func HashTableRemoveAll(hashTable *HashTable) {
 // without calling the key and value destroy functions.
 /*
 
-C function : g_hash_table_steal_all
+C function
+
+g_hash_table_steal_all
 */
 func HashTableStealAll(hashTable *HashTable) {
 	c_hash_table := (*C.GHashTable)(C.NULL)
@@ -116,7 +124,9 @@ func HashTableStealAll(hashTable *HashTable) {
 // Returns the currently firing source for this thread.
 /*
 
-C function : g_main_current_source
+C function
+
+g_main_current_source
 */
 func MainCurrentSource() *Source {
 	retC := C.g_main_current_source()
@@ -134,7 +144,9 @@ func MainCurrentSource() *Source {
 // timestamp is assumed to be in local time.)
 /*
 
-C function : g_time_val_from_iso8601
+C function
+
+g_time_val_from_iso8601
 */
 func TimeValFromIso8601(isoDate string) (bool, *TimeVal) {
 	c_iso_date := C.CString(isoDate)
@@ -162,7 +174,9 @@ func TimeValFromIso8601(isoDate string) (bool, *TimeVal) {
 // pass both this test and g_unichar_iszerowidth().
 /*
 
-C function : g_unichar_iswide_cjk
+C function
+
+g_unichar_iswide_cjk
 */
 func UnicharIswideCjk(c rune) bool {
 	c_c := (C.gunichar)(c)

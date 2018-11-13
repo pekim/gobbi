@@ -32,7 +32,9 @@ import "C"
 // Creates a new #GtkAboutDialog.
 /*
 
-C function : gtk_about_dialog_new
+C function
+
+gtk_about_dialog_new
 */
 func AboutDialogNew() *AboutDialog {
 	retC := C.gtk_about_dialog_new()
@@ -48,7 +50,9 @@ func AboutDialogNew() *AboutDialog {
 // Returns the comments string.
 /*
 
-C function : gtk_about_dialog_get_comments
+C function
+
+gtk_about_dialog_get_comments
 */
 func (recv *AboutDialog) GetComments() string {
 	retC := C.gtk_about_dialog_get_comments((*C.GtkAboutDialog)(recv.native))
@@ -60,7 +64,9 @@ func (recv *AboutDialog) GetComments() string {
 // Returns the copyright string.
 /*
 
-C function : gtk_about_dialog_get_copyright
+C function
+
+gtk_about_dialog_get_copyright
 */
 func (recv *AboutDialog) GetCopyright() string {
 	retC := C.gtk_about_dialog_get_copyright((*C.GtkAboutDialog)(recv.native))
@@ -74,7 +80,9 @@ func (recv *AboutDialog) GetCopyright() string {
 // Returns the license information.
 /*
 
-C function : gtk_about_dialog_get_license
+C function
+
+gtk_about_dialog_get_license
 */
 func (recv *AboutDialog) GetLicense() string {
 	retC := C.gtk_about_dialog_get_license((*C.GtkAboutDialog)(recv.native))
@@ -86,7 +94,9 @@ func (recv *AboutDialog) GetLicense() string {
 // Returns the pixbuf displayed as logo in the about dialog.
 /*
 
-C function : gtk_about_dialog_get_logo
+C function
+
+gtk_about_dialog_get_logo
 */
 func (recv *AboutDialog) GetLogo() *gdkpixbuf.Pixbuf {
 	retC := C.gtk_about_dialog_get_logo((*C.GtkAboutDialog)(recv.native))
@@ -98,7 +108,9 @@ func (recv *AboutDialog) GetLogo() *gdkpixbuf.Pixbuf {
 // Returns the icon name displayed as logo in the about dialog.
 /*
 
-C function : gtk_about_dialog_get_logo_icon_name
+C function
+
+gtk_about_dialog_get_logo_icon_name
 */
 func (recv *AboutDialog) GetLogoIconName() string {
 	retC := C.gtk_about_dialog_get_logo_icon_name((*C.GtkAboutDialog)(recv.native))
@@ -111,7 +123,9 @@ func (recv *AboutDialog) GetLogoIconName() string {
 // in the translators tab of the secondary credits dialog.
 /*
 
-C function : gtk_about_dialog_get_translator_credits
+C function
+
+gtk_about_dialog_get_translator_credits
 */
 func (recv *AboutDialog) GetTranslatorCredits() string {
 	retC := C.gtk_about_dialog_get_translator_credits((*C.GtkAboutDialog)(recv.native))
@@ -123,7 +137,9 @@ func (recv *AboutDialog) GetTranslatorCredits() string {
 // Returns the version string.
 /*
 
-C function : gtk_about_dialog_get_version
+C function
+
+gtk_about_dialog_get_version
 */
 func (recv *AboutDialog) GetVersion() string {
 	retC := C.gtk_about_dialog_get_version((*C.GtkAboutDialog)(recv.native))
@@ -135,7 +151,9 @@ func (recv *AboutDialog) GetVersion() string {
 // Returns the website URL.
 /*
 
-C function : gtk_about_dialog_get_website
+C function
+
+gtk_about_dialog_get_website
 */
 func (recv *AboutDialog) GetWebsite() string {
 	retC := C.gtk_about_dialog_get_website((*C.GtkAboutDialog)(recv.native))
@@ -147,7 +165,9 @@ func (recv *AboutDialog) GetWebsite() string {
 // Returns the label used for the website link.
 /*
 
-C function : gtk_about_dialog_get_website_label
+C function
+
+gtk_about_dialog_get_website_label
 */
 func (recv *AboutDialog) GetWebsiteLabel() string {
 	retC := C.gtk_about_dialog_get_website_label((*C.GtkAboutDialog)(recv.native))
@@ -164,7 +184,9 @@ func (recv *AboutDialog) GetWebsiteLabel() string {
 // This should be a short string of one or two lines.
 /*
 
-C function : gtk_about_dialog_set_comments
+C function
+
+gtk_about_dialog_set_comments
 */
 func (recv *AboutDialog) SetComments(comments string) {
 	c_comments := C.CString(comments)
@@ -179,7 +201,9 @@ func (recv *AboutDialog) SetComments(comments string) {
 // This should be a short string of one or two lines.
 /*
 
-C function : gtk_about_dialog_set_copyright
+C function
+
+gtk_about_dialog_set_copyright
 */
 func (recv *AboutDialog) SetCopyright(copyright string) {
 	c_copyright := C.CString(copyright)
@@ -197,7 +221,9 @@ func (recv *AboutDialog) SetCopyright(copyright string) {
 // hidden.
 /*
 
-C function : gtk_about_dialog_set_license
+C function
+
+gtk_about_dialog_set_license
 */
 func (recv *AboutDialog) SetLicense(license string) {
 	c_license := C.CString(license)
@@ -213,7 +239,9 @@ func (recv *AboutDialog) SetLicense(license string) {
 // gtk_window_set_default_icon() will be used.
 /*
 
-C function : gtk_about_dialog_set_logo
+C function
+
+gtk_about_dialog_set_logo
 */
 func (recv *AboutDialog) SetLogo(logo *gdkpixbuf.Pixbuf) {
 	c_logo := (*C.GdkPixbuf)(C.NULL)
@@ -231,7 +259,9 @@ func (recv *AboutDialog) SetLogo(logo *gdkpixbuf.Pixbuf) {
 // gtk_window_set_default_icon() will be used.
 /*
 
-C function : gtk_about_dialog_set_logo_icon_name
+C function
+
+gtk_about_dialog_set_logo_icon_name
 */
 func (recv *AboutDialog) SetLogoIconName(iconName string) {
 	c_icon_name := C.CString(iconName)
@@ -260,7 +290,9 @@ func (recv *AboutDialog) SetLogoIconName(iconName string) {
 // and hide the tab.
 /*
 
-C function : gtk_about_dialog_set_translator_credits
+C function
+
+gtk_about_dialog_set_translator_credits
 */
 func (recv *AboutDialog) SetTranslatorCredits(translatorCredits string) {
 	c_translator_credits := C.CString(translatorCredits)
@@ -274,7 +306,9 @@ func (recv *AboutDialog) SetTranslatorCredits(translatorCredits string) {
 // Sets the version string to display in the about dialog.
 /*
 
-C function : gtk_about_dialog_set_version
+C function
+
+gtk_about_dialog_set_version
 */
 func (recv *AboutDialog) SetVersion(version string) {
 	c_version := C.CString(version)
@@ -288,7 +322,9 @@ func (recv *AboutDialog) SetVersion(version string) {
 // Sets the URL to use for the website link.
 /*
 
-C function : gtk_about_dialog_set_website
+C function
+
+gtk_about_dialog_set_website
 */
 func (recv *AboutDialog) SetWebsite(website string) {
 	c_website := C.CString(website)
@@ -302,7 +338,9 @@ func (recv *AboutDialog) SetWebsite(website string) {
 // Sets the label to be used for the website link.
 /*
 
-C function : gtk_about_dialog_set_website_label
+C function
+
+gtk_about_dialog_set_website_label
 */
 func (recv *AboutDialog) SetWebsiteLabel(websiteLabel string) {
 	c_website_label := C.CString(websiteLabel)
@@ -316,7 +354,9 @@ func (recv *AboutDialog) SetWebsiteLabel(websiteLabel string) {
 // Returns the accel path for this action.
 /*
 
-C function : gtk_action_get_accel_path
+C function
+
+gtk_action_get_accel_path
 */
 func (recv *Action) GetAccelPath() string {
 	retC := C.gtk_action_get_accel_path((*C.GtkAction)(recv.native))
@@ -331,7 +371,9 @@ func (recv *Action) GetAccelPath() string {
 // for that.
 /*
 
-C function : gtk_action_set_sensitive
+C function
+
+gtk_action_set_sensitive
 */
 func (recv *Action) SetSensitive(sensitive bool) {
 	c_sensitive :=
@@ -348,7 +390,9 @@ func (recv *Action) SetSensitive(sensitive bool) {
 // for that.
 /*
 
-C function : gtk_action_set_visible
+C function
+
+gtk_action_set_visible
 */
 func (recv *Action) SetVisible(visible bool) {
 	c_visible :=
@@ -364,7 +408,9 @@ func (recv *Action) SetVisible(visible bool) {
 // is mainly intended for language bindings.
 /*
 
-C function : gtk_action_group_translate_string
+C function
+
+gtk_action_group_translate_string
 */
 func (recv *ActionGroup) TranslateString(string string) string {
 	c_string := C.CString(string)
@@ -381,7 +427,9 @@ func (recv *ActionGroup) TranslateString(string string) string {
 // or constructed by gtk_button_new_from_stock().
 /*
 
-C function : gtk_button_get_image
+C function
+
+gtk_button_get_image
 */
 func (recv *Button) GetImage() *Widget {
 	retC := C.gtk_button_get_image((*C.GtkButton)(recv.native))
@@ -401,7 +449,9 @@ func (recv *Button) GetImage() *Widget {
 // gtk_widget_show() on @image yourself.
 /*
 
-C function : gtk_button_set_image
+C function
+
+gtk_button_set_image
 */
 func (recv *Button) SetImage(image *Widget) {
 	c_image := (*C.GtkWidget)(C.NULL)
@@ -425,7 +475,9 @@ func (recv *Button) SetImage(image *Widget) {
 // #GtkCellEditable.
 /*
 
-C function : gtk_cell_renderer_stop_editing
+C function
+
+gtk_cell_renderer_stop_editing
 */
 func (recv *CellRenderer) StopEditing(canceled bool) {
 	c_canceled :=
@@ -445,7 +497,9 @@ func (recv *CellRenderer) StopEditing(canceled bool) {
 // a different string in each row of the #GtkTreeView.
 /*
 
-C function : gtk_cell_renderer_combo_new
+C function
+
+gtk_cell_renderer_combo_new
 */
 func CellRendererComboNew() *CellRendererCombo {
 	retC := C.gtk_cell_renderer_combo_new()
@@ -457,7 +511,9 @@ func CellRendererComboNew() *CellRendererCombo {
 // Creates a new #GtkCellRendererProgress.
 /*
 
-C function : gtk_cell_renderer_progress_new
+C function
+
+gtk_cell_renderer_progress_new
 */
 func CellRendererProgressNew() *CellRendererProgress {
 	retC := C.gtk_cell_renderer_progress_new()
@@ -469,7 +525,9 @@ func CellRendererProgressNew() *CellRendererProgress {
 // Creates a new #GtkCellView widget.
 /*
 
-C function : gtk_cell_view_new
+C function
+
+gtk_cell_view_new
 */
 func CellViewNew() *CellView {
 	retC := C.gtk_cell_view_new()
@@ -487,7 +545,9 @@ func CellViewNew() *CellView {
 // possible.
 /*
 
-C function : gtk_cell_view_new_with_context
+C function
+
+gtk_cell_view_new_with_context
 */
 func CellViewNewWithContext(area *CellArea, context *CellAreaContext) *CellView {
 	c_area := (*C.GtkCellArea)(C.NULL)
@@ -511,7 +571,9 @@ func CellViewNewWithContext(area *CellArea, context *CellAreaContext) *CellView 
 // marked up with the [Pango text markup language][PangoMarkupFormat].
 /*
 
-C function : gtk_cell_view_new_with_markup
+C function
+
+gtk_cell_view_new_with_markup
 */
 func CellViewNewWithMarkup(markup string) *CellView {
 	c_markup := C.CString(markup)
@@ -527,7 +589,9 @@ func CellViewNewWithMarkup(markup string) *CellView {
 // to it, and makes it show @pixbuf.
 /*
 
-C function : gtk_cell_view_new_with_pixbuf
+C function
+
+gtk_cell_view_new_with_pixbuf
 */
 func CellViewNewWithPixbuf(pixbuf *gdkpixbuf.Pixbuf) *CellView {
 	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
@@ -545,7 +609,9 @@ func CellViewNewWithPixbuf(pixbuf *gdkpixbuf.Pixbuf) *CellView {
 // to it, and makes it show @text.
 /*
 
-C function : gtk_cell_view_new_with_text
+C function
+
+gtk_cell_view_new_with_text
 */
 func CellViewNewWithText(text string) *CellView {
 	c_text := C.CString(text)
@@ -562,7 +628,9 @@ func CellViewNewWithText(text string) *CellView {
 // %NULL is returned.
 /*
 
-C function : gtk_cell_view_get_displayed_row
+C function
+
+gtk_cell_view_get_displayed_row
 */
 func (recv *CellView) GetDisplayedRow() *TreePath {
 	retC := C.gtk_cell_view_get_displayed_row((*C.GtkCellView)(recv.native))
@@ -580,7 +648,9 @@ func (recv *CellView) GetDisplayedRow() *TreePath {
 // the model row pointed to by @path.
 /*
 
-C function : gtk_cell_view_get_size_of_row
+C function
+
+gtk_cell_view_get_size_of_row
 */
 func (recv *CellView) GetSizeOfRow(path *TreePath) (bool, *Requisition) {
 	c_path := (*C.GtkTreePath)(C.NULL)
@@ -601,7 +671,9 @@ func (recv *CellView) GetSizeOfRow(path *TreePath) (bool, *Requisition) {
 // Sets the background color of @view.
 /*
 
-C function : gtk_cell_view_set_background_color
+C function
+
+gtk_cell_view_set_background_color
 */
 func (recv *CellView) SetBackgroundColor(color *gdk.Color) {
 	c_color := (*C.GdkColor)(C.NULL)
@@ -622,7 +694,9 @@ func (recv *CellView) SetBackgroundColor(color *gdk.Color) {
 // the #GtkCellView becomes temporarily empty.
 /*
 
-C function : gtk_cell_view_set_displayed_row
+C function
+
+gtk_cell_view_set_displayed_row
 */
 func (recv *CellView) SetDisplayedRow(path *TreePath) {
 	c_path := (*C.GtkTreePath)(C.NULL)
@@ -640,7 +714,9 @@ func (recv *CellView) SetDisplayedRow(path *TreePath) {
 // %NULL, then it will unset the old model.
 /*
 
-C function : gtk_cell_view_set_model
+C function
+
+gtk_cell_view_set_model
 */
 func (recv *CellView) SetModel(model *TreeModel) {
 	c_model := (*C.GtkTreeModel)(model.ToC())
@@ -719,7 +795,9 @@ func clipboard_ownerChangeHandler(_ *C.GObject, c_event *C.GdkEventOwnerChange, 
 // requested format.
 /*
 
-C function : gtk_clipboard_set_image
+C function
+
+gtk_clipboard_set_image
 */
 func (recv *Clipboard) SetImage(pixbuf *gdkpixbuf.Pixbuf) {
 	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
@@ -736,7 +814,9 @@ func (recv *Clipboard) SetImage(pixbuf *gdkpixbuf.Pixbuf) {
 // around after the application has quit.
 /*
 
-C function : gtk_clipboard_store
+C function
+
+gtk_clipboard_store
 */
 func (recv *Clipboard) Store() {
 	C.gtk_clipboard_store((*C.GtkClipboard)(recv.native))
@@ -750,7 +830,9 @@ func (recv *Clipboard) Store() {
 // timeouts, etc, may be dispatched during the wait.
 /*
 
-C function : gtk_clipboard_wait_for_image
+C function
+
+gtk_clipboard_wait_for_image
 */
 func (recv *Clipboard) WaitForImage() *gdkpixbuf.Pixbuf {
 	retC := C.gtk_clipboard_wait_for_image((*C.GtkClipboard)(recv.native))
@@ -775,7 +857,9 @@ func (recv *Clipboard) WaitForImage() *gdkpixbuf.Pixbuf {
 // the actual image data.
 /*
 
-C function : gtk_clipboard_wait_is_image_available
+C function
+
+gtk_clipboard_wait_is_image_available
 */
 func (recv *Clipboard) WaitIsImageAvailable() bool {
 	retC := C.gtk_clipboard_wait_is_image_available((*C.GtkClipboard)(recv.native))
@@ -789,7 +873,9 @@ func (recv *Clipboard) WaitIsImageAvailable() bool {
 // Returns the column with column span information for @combo_box.
 /*
 
-C function : gtk_combo_box_get_column_span_column
+C function
+
+gtk_combo_box_get_column_span_column
 */
 func (recv *ComboBox) GetColumnSpanColumn() int32 {
 	retC := C.gtk_combo_box_get_column_span_column((*C.GtkComboBox)(recv.native))
@@ -802,7 +888,9 @@ func (recv *ComboBox) GetColumnSpanColumn() int32 {
 // with the mouse. See gtk_combo_box_set_focus_on_click().
 /*
 
-C function : gtk_combo_box_get_focus_on_click
+C function
+
+gtk_combo_box_get_focus_on_click
 */
 func (recv *ComboBox) GetFocusOnClick() bool {
 	retC := C.gtk_combo_box_get_focus_on_click((*C.GtkComboBox)(recv.native))
@@ -817,7 +905,9 @@ func (recv *ComboBox) GetFocusOnClick() bool {
 // applications should have little use for it.
 /*
 
-C function : gtk_combo_box_get_popup_accessible
+C function
+
+gtk_combo_box_get_popup_accessible
 */
 func (recv *ComboBox) GetPopupAccessible() *atk.Object {
 	retC := C.gtk_combo_box_get_popup_accessible((*C.GtkComboBox)(recv.native))
@@ -831,7 +921,9 @@ func (recv *ComboBox) GetPopupAccessible() *atk.Object {
 // Returns the column with row span information for @combo_box.
 /*
 
-C function : gtk_combo_box_get_row_span_column
+C function
+
+gtk_combo_box_get_row_span_column
 */
 func (recv *ComboBox) GetRowSpanColumn() int32 {
 	retC := C.gtk_combo_box_get_row_span_column((*C.GtkComboBox)(recv.native))
@@ -845,7 +937,9 @@ func (recv *ComboBox) GetRowSpanColumn() int32 {
 // is in table mode.
 /*
 
-C function : gtk_combo_box_get_wrap_width
+C function
+
+gtk_combo_box_get_wrap_width
 */
 func (recv *ComboBox) GetWrapWidth() int32 {
 	retC := C.gtk_combo_box_get_wrap_width((*C.GtkComboBox)(recv.native))
@@ -858,7 +952,9 @@ func (recv *ComboBox) GetWrapWidth() int32 {
 // menu item.
 /*
 
-C function : gtk_combo_box_set_add_tearoffs
+C function
+
+gtk_combo_box_set_add_tearoffs
 */
 func (recv *ComboBox) SetAddTearoffs(addTearoffs bool) {
 	c_add_tearoffs :=
@@ -875,7 +971,9 @@ func (recv *ComboBox) SetAddTearoffs(addTearoffs bool) {
 // the main area of the application.
 /*
 
-C function : gtk_combo_box_set_focus_on_click
+C function
+
+gtk_combo_box_set_focus_on_click
 */
 func (recv *ComboBox) SetFocusOnClick(focusOnClick bool) {
 	c_focus_on_click :=
@@ -900,7 +998,9 @@ func (recv *ComboBox) SetFocusOnClick(focusOnClick bool) {
 // This function is for use by language bindings.
 /*
 
-C function : gtk_dialog_set_alternative_button_order_from_array
+C function
+
+gtk_dialog_set_alternative_button_order_from_array
 */
 func (recv *Dialog) SetAlternativeButtonOrderFromArray(newOrder []int32) {
 	c_n_params := (C.gint)(len(newOrder))
@@ -918,7 +1018,9 @@ func (recv *Dialog) SetAlternativeButtonOrderFromArray(newOrder []int32) {
 // be automatically inserted in the entry.
 /*
 
-C function : gtk_entry_completion_get_inline_completion
+C function
+
+gtk_entry_completion_get_inline_completion
 */
 func (recv *EntryCompletion) GetInlineCompletion() bool {
 	retC := C.gtk_entry_completion_get_inline_completion((*C.GtkEntryCompletion)(recv.native))
@@ -930,7 +1032,9 @@ func (recv *EntryCompletion) GetInlineCompletion() bool {
 // Returns whether the completions should be presented in a popup window.
 /*
 
-C function : gtk_entry_completion_get_popup_completion
+C function
+
+gtk_entry_completion_get_popup_completion
 */
 func (recv *EntryCompletion) GetPopupCompletion() bool {
 	retC := C.gtk_entry_completion_get_popup_completion((*C.GtkEntryCompletion)(recv.native))
@@ -942,7 +1046,9 @@ func (recv *EntryCompletion) GetPopupCompletion() bool {
 // Returns the column in the model of @completion to get strings from.
 /*
 
-C function : gtk_entry_completion_get_text_column
+C function
+
+gtk_entry_completion_get_text_column
 */
 func (recv *EntryCompletion) GetTextColumn() int32 {
 	retC := C.gtk_entry_completion_get_text_column((*C.GtkEntryCompletion)(recv.native))
@@ -954,7 +1060,9 @@ func (recv *EntryCompletion) GetTextColumn() int32 {
 // Requests a prefix insertion.
 /*
 
-C function : gtk_entry_completion_insert_prefix
+C function
+
+gtk_entry_completion_insert_prefix
 */
 func (recv *EntryCompletion) InsertPrefix() {
 	C.gtk_entry_completion_insert_prefix((*C.GtkEntryCompletion)(recv.native))
@@ -966,7 +1074,9 @@ func (recv *EntryCompletion) InsertPrefix() {
 // be automatically inserted in the entry.
 /*
 
-C function : gtk_entry_completion_set_inline_completion
+C function
+
+gtk_entry_completion_set_inline_completion
 */
 func (recv *EntryCompletion) SetInlineCompletion(inlineCompletion bool) {
 	c_inline_completion :=
@@ -980,7 +1090,9 @@ func (recv *EntryCompletion) SetInlineCompletion(inlineCompletion bool) {
 // Sets whether the completions should be presented in a popup window.
 /*
 
-C function : gtk_entry_completion_set_popup_completion
+C function
+
+gtk_entry_completion_set_popup_completion
 */
 func (recv *EntryCompletion) SetPopupCompletion(popupCompletion bool) {
 	c_popup_completion :=
@@ -994,7 +1106,9 @@ func (recv *EntryCompletion) SetPopupCompletion(popupCompletion bool) {
 // Creates a new file-selecting button widget.
 /*
 
-C function : gtk_file_chooser_button_new
+C function
+
+gtk_file_chooser_button_new
 */
 func FileChooserButtonNew(title string, action FileChooserAction) *FileChooserButton {
 	c_title := C.CString(title)
@@ -1020,7 +1134,9 @@ func FileChooserButtonNew(title string, action FileChooserAction) *FileChooserBu
 // order for the button to take over the file selected in the dialog.
 /*
 
-C function : gtk_file_chooser_button_new_with_dialog
+C function
+
+gtk_file_chooser_button_new_with_dialog
 */
 func FileChooserButtonNewWithDialog(dialog *Dialog) *FileChooserButton {
 	c_dialog := (*C.GtkWidget)(C.NULL)
@@ -1038,7 +1154,9 @@ func FileChooserButtonNewWithDialog(dialog *Dialog) *FileChooserButton {
 // should not be modified or freed.
 /*
 
-C function : gtk_file_chooser_button_get_title
+C function
+
+gtk_file_chooser_button_get_title
 */
 func (recv *FileChooserButton) GetTitle() string {
 	retC := C.gtk_file_chooser_button_get_title((*C.GtkFileChooserButton)(recv.native))
@@ -1050,7 +1168,9 @@ func (recv *FileChooserButton) GetTitle() string {
 // Retrieves the width in characters of the @button widget’s entry and/or label.
 /*
 
-C function : gtk_file_chooser_button_get_width_chars
+C function
+
+gtk_file_chooser_button_get_width_chars
 */
 func (recv *FileChooserButton) GetWidthChars() int32 {
 	retC := C.gtk_file_chooser_button_get_width_chars((*C.GtkFileChooserButton)(recv.native))
@@ -1062,7 +1182,9 @@ func (recv *FileChooserButton) GetWidthChars() int32 {
 // Modifies the @title of the browse dialog used by @button.
 /*
 
-C function : gtk_file_chooser_button_set_title
+C function
+
+gtk_file_chooser_button_set_title
 */
 func (recv *FileChooserButton) SetTitle(title string) {
 	c_title := C.CString(title)
@@ -1076,7 +1198,9 @@ func (recv *FileChooserButton) SetTitle(title string) {
 // Sets the width (in characters) that @button will use to @n_chars.
 /*
 
-C function : gtk_file_chooser_button_set_width_chars
+C function
+
+gtk_file_chooser_button_set_width_chars
 */
 func (recv *FileChooserButton) SetWidthChars(nChars int32) {
 	c_n_chars := (C.gint)(nChars)
@@ -1090,7 +1214,9 @@ func (recv *FileChooserButton) SetWidthChars(nChars int32) {
 // by GdkPixbuf.
 /*
 
-C function : gtk_file_filter_add_pixbuf_formats
+C function
+
+gtk_file_filter_add_pixbuf_formats
 */
 func (recv *FileFilter) AddPixbufFormats() {
 	C.gtk_file_filter_add_pixbuf_formats((*C.GtkFileFilter)(recv.native))
@@ -1103,7 +1229,9 @@ func (recv *FileFilter) AddPixbufFormats() {
 // Creates a new #GtkIconView widget
 /*
 
-C function : gtk_icon_view_new
+C function
+
+gtk_icon_view_new
 */
 func IconViewNew() *IconView {
 	retC := C.gtk_icon_view_new()
@@ -1115,7 +1243,9 @@ func IconViewNew() *IconView {
 // Creates a new #GtkIconView widget with the model @model.
 /*
 
-C function : gtk_icon_view_new_with_model
+C function
+
+gtk_icon_view_new_with_model
 */
 func IconViewNewWithModel(model *TreeModel) *IconView {
 	c_model := (*C.GtkTreeModel)(model.ToC())
@@ -1129,7 +1259,9 @@ func IconViewNewWithModel(model *TreeModel) *IconView {
 // Returns the value of the ::column-spacing property.
 /*
 
-C function : gtk_icon_view_get_column_spacing
+C function
+
+gtk_icon_view_get_column_spacing
 */
 func (recv *IconView) GetColumnSpacing() int32 {
 	retC := C.gtk_icon_view_get_column_spacing((*C.GtkIconView)(recv.native))
@@ -1141,7 +1273,9 @@ func (recv *IconView) GetColumnSpacing() int32 {
 // Returns the value of the ::columns property.
 /*
 
-C function : gtk_icon_view_get_columns
+C function
+
+gtk_icon_view_get_columns
 */
 func (recv *IconView) GetColumns() int32 {
 	retC := C.gtk_icon_view_get_columns((*C.GtkIconView)(recv.native))
@@ -1154,7 +1288,9 @@ func (recv *IconView) GetColumns() int32 {
 // whether the labels are drawn beside the icons instead of below.
 /*
 
-C function : gtk_icon_view_get_item_orientation
+C function
+
+gtk_icon_view_get_item_orientation
 */
 func (recv *IconView) GetItemOrientation() Orientation {
 	retC := C.gtk_icon_view_get_item_orientation((*C.GtkIconView)(recv.native))
@@ -1166,7 +1302,9 @@ func (recv *IconView) GetItemOrientation() Orientation {
 // Returns the value of the ::item-width property.
 /*
 
-C function : gtk_icon_view_get_item_width
+C function
+
+gtk_icon_view_get_item_width
 */
 func (recv *IconView) GetItemWidth() int32 {
 	retC := C.gtk_icon_view_get_item_width((*C.GtkIconView)(recv.native))
@@ -1178,7 +1316,9 @@ func (recv *IconView) GetItemWidth() int32 {
 // Returns the value of the ::margin property.
 /*
 
-C function : gtk_icon_view_get_margin
+C function
+
+gtk_icon_view_get_margin
 */
 func (recv *IconView) GetMargin() int32 {
 	retC := C.gtk_icon_view_get_margin((*C.GtkIconView)(recv.native))
@@ -1190,7 +1330,9 @@ func (recv *IconView) GetMargin() int32 {
 // Returns the column with markup text for @icon_view.
 /*
 
-C function : gtk_icon_view_get_markup_column
+C function
+
+gtk_icon_view_get_markup_column
 */
 func (recv *IconView) GetMarkupColumn() int32 {
 	retC := C.gtk_icon_view_get_markup_column((*C.GtkIconView)(recv.native))
@@ -1203,7 +1345,9 @@ func (recv *IconView) GetMarkupColumn() int32 {
 // model is unset.
 /*
 
-C function : gtk_icon_view_get_model
+C function
+
+gtk_icon_view_get_model
 */
 func (recv *IconView) GetModel() *TreeModel {
 	retC := C.gtk_icon_view_get_model((*C.GtkIconView)(recv.native))
@@ -1224,7 +1368,9 @@ func (recv *IconView) GetModel() *TreeModel {
 // widget coordinates to bin_window coordinates.
 /*
 
-C function : gtk_icon_view_get_path_at_pos
+C function
+
+gtk_icon_view_get_path_at_pos
 */
 func (recv *IconView) GetPathAtPos(x int32, y int32) *TreePath {
 	c_x := (C.gint)(x)
@@ -1245,7 +1391,9 @@ func (recv *IconView) GetPathAtPos(x int32, y int32) *TreePath {
 // Returns the column with pixbufs for @icon_view.
 /*
 
-C function : gtk_icon_view_get_pixbuf_column
+C function
+
+gtk_icon_view_get_pixbuf_column
 */
 func (recv *IconView) GetPixbufColumn() int32 {
 	retC := C.gtk_icon_view_get_pixbuf_column((*C.GtkIconView)(recv.native))
@@ -1257,7 +1405,9 @@ func (recv *IconView) GetPixbufColumn() int32 {
 // Returns the value of the ::row-spacing property.
 /*
 
-C function : gtk_icon_view_get_row_spacing
+C function
+
+gtk_icon_view_get_row_spacing
 */
 func (recv *IconView) GetRowSpacing() int32 {
 	retC := C.gtk_icon_view_get_row_spacing((*C.GtkIconView)(recv.native))
@@ -1277,7 +1427,9 @@ func (recv *IconView) GetRowSpacing() int32 {
 // ]|
 /*
 
-C function : gtk_icon_view_get_selected_items
+C function
+
+gtk_icon_view_get_selected_items
 */
 func (recv *IconView) GetSelectedItems() *glib.List {
 	retC := C.gtk_icon_view_get_selected_items((*C.GtkIconView)(recv.native))
@@ -1289,7 +1441,9 @@ func (recv *IconView) GetSelectedItems() *glib.List {
 // Gets the selection mode of the @icon_view.
 /*
 
-C function : gtk_icon_view_get_selection_mode
+C function
+
+gtk_icon_view_get_selection_mode
 */
 func (recv *IconView) GetSelectionMode() SelectionMode {
 	retC := C.gtk_icon_view_get_selection_mode((*C.GtkIconView)(recv.native))
@@ -1301,7 +1455,9 @@ func (recv *IconView) GetSelectionMode() SelectionMode {
 // Returns the value of the ::spacing property.
 /*
 
-C function : gtk_icon_view_get_spacing
+C function
+
+gtk_icon_view_get_spacing
 */
 func (recv *IconView) GetSpacing() int32 {
 	retC := C.gtk_icon_view_get_spacing((*C.GtkIconView)(recv.native))
@@ -1313,7 +1469,9 @@ func (recv *IconView) GetSpacing() int32 {
 // Returns the column with text for @icon_view.
 /*
 
-C function : gtk_icon_view_get_text_column
+C function
+
+gtk_icon_view_get_text_column
 */
 func (recv *IconView) GetTextColumn() int32 {
 	retC := C.gtk_icon_view_get_text_column((*C.GtkIconView)(recv.native))
@@ -1325,7 +1483,9 @@ func (recv *IconView) GetTextColumn() int32 {
 // Activates the item determined by @path.
 /*
 
-C function : gtk_icon_view_item_activated
+C function
+
+gtk_icon_view_item_activated
 */
 func (recv *IconView) ItemActivated(path *TreePath) {
 	c_path := (*C.GtkTreePath)(C.NULL)
@@ -1342,7 +1502,9 @@ func (recv *IconView) ItemActivated(path *TreePath) {
 // selected. If @path does not point to a valid location, %FALSE is returned.
 /*
 
-C function : gtk_icon_view_path_is_selected
+C function
+
+gtk_icon_view_path_is_selected
 */
 func (recv *IconView) PathIsSelected(path *TreePath) bool {
 	c_path := (*C.GtkTreePath)(C.NULL)
@@ -1360,7 +1522,9 @@ func (recv *IconView) PathIsSelected(path *TreePath) bool {
 // to #GTK_SELECTION_MULTIPLE.
 /*
 
-C function : gtk_icon_view_select_all
+C function
+
+gtk_icon_view_select_all
 */
 func (recv *IconView) SelectAll() {
 	C.gtk_icon_view_select_all((*C.GtkIconView)(recv.native))
@@ -1371,7 +1535,9 @@ func (recv *IconView) SelectAll() {
 // Selects the row at @path.
 /*
 
-C function : gtk_icon_view_select_path
+C function
+
+gtk_icon_view_select_path
 */
 func (recv *IconView) SelectPath(path *TreePath) {
 	c_path := (*C.GtkTreePath)(C.NULL)
@@ -1390,7 +1556,9 @@ func (recv *IconView) SelectPath(path *TreePath) {
 // which is inserted between the columns of the icon view.
 /*
 
-C function : gtk_icon_view_set_column_spacing
+C function
+
+gtk_icon_view_set_column_spacing
 */
 func (recv *IconView) SetColumnSpacing(columnSpacing int32) {
 	c_column_spacing := (C.gint)(columnSpacing)
@@ -1406,7 +1574,9 @@ func (recv *IconView) SetColumnSpacing(columnSpacing int32) {
 // to fill the available area.
 /*
 
-C function : gtk_icon_view_set_columns
+C function
+
+gtk_icon_view_set_columns
 */
 func (recv *IconView) SetColumns(columns int32) {
 	c_columns := (C.gint)(columns)
@@ -1420,7 +1590,9 @@ func (recv *IconView) SetColumns(columns int32) {
 // are drawn beside the icons instead of below.
 /*
 
-C function : gtk_icon_view_set_item_orientation
+C function
+
+gtk_icon_view_set_item_orientation
 */
 func (recv *IconView) SetItemOrientation(orientation Orientation) {
 	c_orientation := (C.GtkOrientation)(orientation)
@@ -1435,7 +1607,9 @@ func (recv *IconView) SetItemOrientation(orientation Orientation) {
 // automatically determine a suitable item size.
 /*
 
-C function : gtk_icon_view_set_item_width
+C function
+
+gtk_icon_view_set_item_width
 */
 func (recv *IconView) SetItemWidth(itemWidth int32) {
 	c_item_width := (C.gint)(itemWidth)
@@ -1450,7 +1624,9 @@ func (recv *IconView) SetItemWidth(itemWidth int32) {
 // of the icon view.
 /*
 
-C function : gtk_icon_view_set_margin
+C function
+
+gtk_icon_view_set_margin
 */
 func (recv *IconView) SetMargin(margin int32) {
 	c_margin := (C.gint)(margin)
@@ -1466,7 +1642,9 @@ func (recv *IconView) SetMargin(margin int32) {
 // the text column set by gtk_icon_view_set_text_column().
 /*
 
-C function : gtk_icon_view_set_markup_column
+C function
+
+gtk_icon_view_set_markup_column
 */
 func (recv *IconView) SetMarkupColumn(column int32) {
 	c_column := (C.gint)(column)
@@ -1482,7 +1660,9 @@ func (recv *IconView) SetMarkupColumn(column int32) {
 // it will unset the old model.
 /*
 
-C function : gtk_icon_view_set_model
+C function
+
+gtk_icon_view_set_model
 */
 func (recv *IconView) SetModel(model *TreeModel) {
 	c_model := (*C.GtkTreeModel)(model.ToC())
@@ -1496,7 +1676,9 @@ func (recv *IconView) SetModel(model *TreeModel) {
 // column must be of type #GDK_TYPE_PIXBUF
 /*
 
-C function : gtk_icon_view_set_pixbuf_column
+C function
+
+gtk_icon_view_set_pixbuf_column
 */
 func (recv *IconView) SetPixbufColumn(column int32) {
 	c_column := (C.gint)(column)
@@ -1510,7 +1692,9 @@ func (recv *IconView) SetPixbufColumn(column int32) {
 // which is inserted between the rows of the icon view.
 /*
 
-C function : gtk_icon_view_set_row_spacing
+C function
+
+gtk_icon_view_set_row_spacing
 */
 func (recv *IconView) SetRowSpacing(rowSpacing int32) {
 	c_row_spacing := (C.gint)(rowSpacing)
@@ -1523,7 +1707,9 @@ func (recv *IconView) SetRowSpacing(rowSpacing int32) {
 // Sets the selection mode of the @icon_view.
 /*
 
-C function : gtk_icon_view_set_selection_mode
+C function
+
+gtk_icon_view_set_selection_mode
 */
 func (recv *IconView) SetSelectionMode(mode SelectionMode) {
 	c_mode := (C.GtkSelectionMode)(mode)
@@ -1538,7 +1724,9 @@ func (recv *IconView) SetSelectionMode(mode SelectionMode) {
 // the text) of an item.
 /*
 
-C function : gtk_icon_view_set_spacing
+C function
+
+gtk_icon_view_set_spacing
 */
 func (recv *IconView) SetSpacing(spacing int32) {
 	c_spacing := (C.gint)(spacing)
@@ -1552,7 +1740,9 @@ func (recv *IconView) SetSpacing(spacing int32) {
 // column must be of type #G_TYPE_STRING.
 /*
 
-C function : gtk_icon_view_set_text_column
+C function
+
+gtk_icon_view_set_text_column
 */
 func (recv *IconView) SetTextColumn(column int32) {
 	c_column := (C.gint)(column)
@@ -1565,7 +1755,9 @@ func (recv *IconView) SetTextColumn(column int32) {
 // Unselects all the icons.
 /*
 
-C function : gtk_icon_view_unselect_all
+C function
+
+gtk_icon_view_unselect_all
 */
 func (recv *IconView) UnselectAll() {
 	C.gtk_icon_view_unselect_all((*C.GtkIconView)(recv.native))
@@ -1576,7 +1768,9 @@ func (recv *IconView) UnselectAll() {
 // Unselects the row at @path.
 /*
 
-C function : gtk_icon_view_unselect_path
+C function
+
+gtk_icon_view_unselect_path
 */
 func (recv *IconView) UnselectPath(path *TreePath) {
 	c_path := (*C.GtkTreePath)(C.NULL)
@@ -1595,7 +1789,9 @@ func (recv *IconView) UnselectPath(path *TreePath) {
 // will be updated appropriately.
 /*
 
-C function : gtk_image_new_from_icon_name
+C function
+
+gtk_image_new_from_icon_name
 */
 func ImageNewFromIconName(iconName string, size IconSize) *Image {
 	c_icon_name := C.CString(iconName)
@@ -1614,7 +1810,9 @@ func ImageNewFromIconName(iconName string, size IconSize) *Image {
 // Gets the pixel size used for named icons.
 /*
 
-C function : gtk_image_get_pixel_size
+C function
+
+gtk_image_get_pixel_size
 */
 func (recv *Image) GetPixelSize() int32 {
 	retC := C.gtk_image_get_pixel_size((*C.GtkImage)(recv.native))
@@ -1626,7 +1824,9 @@ func (recv *Image) GetPixelSize() int32 {
 // See gtk_image_new_from_icon_name() for details.
 /*
 
-C function : gtk_image_set_from_icon_name
+C function
+
+gtk_image_set_from_icon_name
 */
 func (recv *Image) SetFromIconName(iconName string, size IconSize) {
 	c_icon_name := C.CString(iconName)
@@ -1644,7 +1844,9 @@ func (recv *Image) SetFromIconName(iconName string, size IconSize) {
 // gtk_image_set_from_icon_name().
 /*
 
-C function : gtk_image_set_pixel_size
+C function
+
+gtk_image_set_pixel_size
 */
 func (recv *Image) SetPixelSize(pixelSize int32) {
 	c_pixel_size := (C.gint)(pixelSize)
@@ -1658,7 +1860,9 @@ func (recv *Image) SetPixelSize(pixelSize int32) {
 // gtk_label_set_angle().
 /*
 
-C function : gtk_label_get_angle
+C function
+
+gtk_label_get_angle
 */
 func (recv *Label) GetAngle() float64 {
 	retC := C.gtk_label_get_angle((*C.GtkLabel)(recv.native))
@@ -1670,7 +1874,9 @@ func (recv *Label) GetAngle() float64 {
 // Returns the ellipsizing position of the label. See gtk_label_set_ellipsize().
 /*
 
-C function : gtk_label_get_ellipsize
+C function
+
+gtk_label_get_ellipsize
 */
 func (recv *Label) GetEllipsize() pango.EllipsizeMode {
 	retC := C.gtk_label_get_ellipsize((*C.GtkLabel)(recv.native))
@@ -1683,7 +1889,9 @@ func (recv *Label) GetEllipsize() pango.EllipsizeMode {
 // gtk_label_set_width_chars().
 /*
 
-C function : gtk_label_get_max_width_chars
+C function
+
+gtk_label_get_max_width_chars
 */
 func (recv *Label) GetMaxWidthChars() int32 {
 	retC := C.gtk_label_get_max_width_chars((*C.GtkLabel)(recv.native))
@@ -1695,7 +1903,9 @@ func (recv *Label) GetMaxWidthChars() int32 {
 // Returns whether the label is in single line mode.
 /*
 
-C function : gtk_label_get_single_line_mode
+C function
+
+gtk_label_get_single_line_mode
 */
 func (recv *Label) GetSingleLineMode() bool {
 	retC := C.gtk_label_get_single_line_mode((*C.GtkLabel)(recv.native))
@@ -1708,7 +1918,9 @@ func (recv *Label) GetSingleLineMode() bool {
 // gtk_label_set_width_chars().
 /*
 
-C function : gtk_label_get_width_chars
+C function
+
+gtk_label_get_width_chars
 */
 func (recv *Label) GetWidthChars() int32 {
 	retC := C.gtk_label_get_width_chars((*C.GtkLabel)(recv.native))
@@ -1723,7 +1935,9 @@ func (recv *Label) GetWidthChars() int32 {
 // wrapped, or ellipsized.
 /*
 
-C function : gtk_label_set_angle
+C function
+
+gtk_label_set_angle
 */
 func (recv *Label) SetAngle(angle float64) {
 	c_angle := (C.gdouble)(angle)
@@ -1737,7 +1951,9 @@ func (recv *Label) SetAngle(angle float64) {
 // if there is not enough space to render the entire string.
 /*
 
-C function : gtk_label_set_ellipsize
+C function
+
+gtk_label_set_ellipsize
 */
 func (recv *Label) SetEllipsize(mode pango.EllipsizeMode) {
 	c_mode := (C.PangoEllipsizeMode)(mode)
@@ -1750,7 +1966,9 @@ func (recv *Label) SetEllipsize(mode pango.EllipsizeMode) {
 // Sets the desired maximum width in characters of @label to @n_chars.
 /*
 
-C function : gtk_label_set_max_width_chars
+C function
+
+gtk_label_set_max_width_chars
 */
 func (recv *Label) SetMaxWidthChars(nChars int32) {
 	c_n_chars := (C.gint)(nChars)
@@ -1763,7 +1981,9 @@ func (recv *Label) SetMaxWidthChars(nChars int32) {
 // Sets whether the label is in single line mode.
 /*
 
-C function : gtk_label_set_single_line_mode
+C function
+
+gtk_label_set_single_line_mode
 */
 func (recv *Label) SetSingleLineMode(singleLineMode bool) {
 	c_single_line_mode :=
@@ -1777,7 +1997,9 @@ func (recv *Label) SetSingleLineMode(singleLineMode bool) {
 // Sets the desired width in characters of @label to @n_chars.
 /*
 
-C function : gtk_label_set_width_chars
+C function
+
+gtk_label_set_width_chars
 */
 func (recv *Label) SetWidthChars(nChars int32) {
 	c_n_chars := (C.gint)(nChars)
@@ -1795,7 +2017,9 @@ func (recv *Label) SetWidthChars(nChars int32) {
 // @label as label.
 /*
 
-C function : gtk_menu_tool_button_new
+C function
+
+gtk_menu_tool_button_new
 */
 func MenuToolButtonNew(iconWidget *Widget, label string) *MenuToolButton {
 	c_icon_widget := (*C.GtkWidget)(C.NULL)
@@ -1817,7 +2041,9 @@ func MenuToolButtonNew(iconWidget *Widget, label string) *MenuToolButton {
 // the stock item indicated by @stock_id.
 /*
 
-C function : gtk_menu_tool_button_new_from_stock
+C function
+
+gtk_menu_tool_button_new_from_stock
 */
 func MenuToolButtonNewFromStock(stockId string) *MenuToolButton {
 	c_stock_id := C.CString(stockId)
@@ -1832,7 +2058,9 @@ func MenuToolButtonNewFromStock(stockId string) *MenuToolButton {
 // Gets the #GtkMenu associated with #GtkMenuToolButton.
 /*
 
-C function : gtk_menu_tool_button_get_menu
+C function
+
+gtk_menu_tool_button_get_menu
 */
 func (recv *MenuToolButton) GetMenu() *Widget {
 	retC := C.gtk_menu_tool_button_get_menu((*C.GtkMenuToolButton)(recv.native))
@@ -1845,7 +2073,9 @@ func (recv *MenuToolButton) GetMenu() *Widget {
 // If @menu is NULL, the arrow button becomes insensitive.
 /*
 
-C function : gtk_menu_tool_button_set_menu
+C function
+
+gtk_menu_tool_button_set_menu
 */
 func (recv *MenuToolButton) SetMenu(menu *Widget) {
 	c_menu := (*C.GtkWidget)(C.NULL)
@@ -1866,7 +2096,9 @@ func (recv *MenuToolButton) SetMenu(menu *Widget) {
 // See gtk_progress_bar_set_ellipsize().
 /*
 
-C function : gtk_progress_bar_get_ellipsize
+C function
+
+gtk_progress_bar_get_ellipsize
 */
 func (recv *ProgressBar) GetEllipsize() pango.EllipsizeMode {
 	retC := C.gtk_progress_bar_get_ellipsize((*C.GtkProgressBar)(recv.native))
@@ -1879,7 +2111,9 @@ func (recv *ProgressBar) GetEllipsize() pango.EllipsizeMode {
 // text if there is not enough space to render the entire string.
 /*
 
-C function : gtk_progress_bar_set_ellipsize
+C function
+
+gtk_progress_bar_set_ellipsize
 */
 func (recv *ProgressBar) SetEllipsize(mode pango.EllipsizeMode) {
 	c_mode := (C.PangoEllipsizeMode)(mode)
@@ -1903,7 +2137,9 @@ func (recv *ProgressBar) SetEllipsize(mode pango.EllipsizeMode) {
 // re-initialized to point to the location where text was deleted.
 /*
 
-C function : gtk_text_buffer_backspace
+C function
+
+gtk_text_buffer_backspace
 */
 func (recv *TextBuffer) Backspace(iter *TextIter, interactive bool, defaultEditable bool) bool {
 	c_iter := (*C.GtkTextIter)(C.NULL)
@@ -1935,7 +2171,9 @@ func (recv *TextBuffer) Backspace(iter *TextIter, interactive bool, defaultEdita
 // characters.
 /*
 
-C function : gtk_text_view_get_iter_at_position
+C function
+
+gtk_text_view_get_iter_at_position
 */
 func (recv *TextView) GetIterAtPosition(x int32, y int32) (*TextIter, int32) {
 	var c_iter C.GtkTextIter
@@ -1964,7 +2202,9 @@ func (recv *TextView) GetIterAtPosition(x int32, y int32) (*TextIter, int32) {
 // will do in response to the #GtkToolItem::create-menu-proxy signal.
 /*
 
-C function : gtk_tool_item_rebuild_menu
+C function
+
+gtk_tool_item_rebuild_menu
 */
 func (recv *ToolItem) RebuildMenu() {
 	C.gtk_tool_item_rebuild_menu((*C.GtkToolItem)(recv.native))
@@ -1975,7 +2215,9 @@ func (recv *ToolItem) RebuildMenu() {
 // Returns whether fixed height mode is turned on for @tree_view.
 /*
 
-C function : gtk_tree_view_get_fixed_height_mode
+C function
+
+gtk_tree_view_get_fixed_height_mode
 */
 func (recv *TreeView) GetFixedHeightMode() bool {
 	retC := C.gtk_tree_view_get_fixed_height_mode((*C.GtkTreeView)(recv.native))
@@ -1987,7 +2229,9 @@ func (recv *TreeView) GetFixedHeightMode() bool {
 // Returns whether hover expansion mode is turned on for @tree_view.
 /*
 
-C function : gtk_tree_view_get_hover_expand
+C function
+
+gtk_tree_view_get_hover_expand
 */
 func (recv *TreeView) GetHoverExpand() bool {
 	retC := C.gtk_tree_view_get_hover_expand((*C.GtkTreeView)(recv.native))
@@ -1999,7 +2243,9 @@ func (recv *TreeView) GetHoverExpand() bool {
 // Returns whether hover selection mode is turned on for @tree_view.
 /*
 
-C function : gtk_tree_view_get_hover_selection
+C function
+
+gtk_tree_view_get_hover_selection
 */
 func (recv *TreeView) GetHoverSelection() bool {
 	retC := C.gtk_tree_view_get_hover_selection((*C.GtkTreeView)(recv.native))
@@ -2017,7 +2263,9 @@ func (recv *TreeView) GetHoverSelection() bool {
 // columns are of type %GTK_TREE_VIEW_COLUMN_FIXED.
 /*
 
-C function : gtk_tree_view_set_fixed_height_mode
+C function
+
+gtk_tree_view_set_fixed_height_mode
 */
 func (recv *TreeView) SetFixedHeightMode(enable bool) {
 	c_enable :=
@@ -2033,7 +2281,9 @@ func (recv *TreeView) SetFixedHeightMode(enable bool) {
 // moves over them.
 /*
 
-C function : gtk_tree_view_set_hover_expand
+C function
+
+gtk_tree_view_set_hover_expand
 */
 func (recv *TreeView) SetHoverExpand(expand bool) {
 	c_expand :=
@@ -2050,7 +2300,9 @@ func (recv *TreeView) SetHoverExpand(expand bool) {
 // %GTK_SELECTION_SINGLE and %GTK_SELECTION_BROWSE.
 /*
 
-C function : gtk_tree_view_set_hover_selection
+C function
+
+gtk_tree_view_set_hover_selection
 */
 func (recv *TreeView) SetHoverSelection(hover bool) {
 	c_hover :=
@@ -2070,7 +2322,9 @@ func (recv *TreeView) SetHoverSelection(hover bool) {
 // gtk_drag_dest_set_target_list().
 /*
 
-C function : gtk_drag_dest_add_image_targets
+C function
+
+gtk_drag_dest_add_image_targets
 */
 func (recv *Widget) DragDestAddImageTargets() {
 	C.gtk_drag_dest_add_image_targets((*C.GtkWidget)(recv.native))
@@ -2085,7 +2339,9 @@ func (recv *Widget) DragDestAddImageTargets() {
 // gtk_drag_dest_set_target_list().
 /*
 
-C function : gtk_drag_dest_add_text_targets
+C function
+
+gtk_drag_dest_add_text_targets
 */
 func (recv *Widget) DragDestAddTextTargets() {
 	C.gtk_drag_dest_add_text_targets((*C.GtkWidget)(recv.native))
@@ -2100,7 +2356,9 @@ func (recv *Widget) DragDestAddTextTargets() {
 // gtk_drag_dest_set_target_list().
 /*
 
-C function : gtk_drag_dest_add_uri_targets
+C function
+
+gtk_drag_dest_add_uri_targets
 */
 func (recv *Widget) DragDestAddUriTargets() {
 	C.gtk_drag_dest_add_uri_targets((*C.GtkWidget)(recv.native))
@@ -2115,7 +2373,9 @@ func (recv *Widget) DragDestAddUriTargets() {
 // gtk_drag_source_set_target_list().
 /*
 
-C function : gtk_drag_source_add_image_targets
+C function
+
+gtk_drag_source_add_image_targets
 */
 func (recv *Widget) DragSourceAddImageTargets() {
 	C.gtk_drag_source_add_image_targets((*C.GtkWidget)(recv.native))
@@ -2130,7 +2390,9 @@ func (recv *Widget) DragSourceAddImageTargets() {
 // gtk_drag_source_set_target_list().
 /*
 
-C function : gtk_drag_source_add_text_targets
+C function
+
+gtk_drag_source_add_text_targets
 */
 func (recv *Widget) DragSourceAddTextTargets() {
 	C.gtk_drag_source_add_text_targets((*C.GtkWidget)(recv.native))
@@ -2145,7 +2407,9 @@ func (recv *Widget) DragSourceAddTextTargets() {
 // gtk_drag_source_set_target_list().
 /*
 
-C function : gtk_drag_source_add_uri_targets
+C function
+
+gtk_drag_source_add_uri_targets
 */
 func (recv *Widget) DragSourceAddUriTargets() {
 	C.gtk_drag_source_add_uri_targets((*C.GtkWidget)(recv.native))
@@ -2156,7 +2420,9 @@ func (recv *Widget) DragSourceAddUriTargets() {
 // Gets the value set by gtk_window_set_focus_on_map().
 /*
 
-C function : gtk_window_get_focus_on_map
+C function
+
+gtk_window_get_focus_on_map
 */
 func (recv *Window) GetFocusOnMap() bool {
 	retC := C.gtk_window_get_focus_on_map((*C.GtkWindow)(recv.native))
@@ -2169,7 +2435,9 @@ func (recv *Window) GetFocusOnMap() bool {
 // see gtk_window_set_icon_name().
 /*
 
-C function : gtk_window_get_icon_name
+C function
+
+gtk_window_get_icon_name
 */
 func (recv *Window) GetIconName() string {
 	retC := C.gtk_window_get_icon_name((*C.GtkWindow)(recv.native))
@@ -2183,7 +2451,9 @@ func (recv *Window) GetIconName() string {
 // hint.
 /*
 
-C function : gtk_window_set_focus_on_map
+C function
+
+gtk_window_set_focus_on_map
 */
 func (recv *Window) SetFocusOnMap(setting bool) {
 	c_setting :=
@@ -2202,7 +2472,9 @@ func (recv *Window) SetFocusOnMap(setting bool) {
 // property which is mentioned in the ICCCM.
 /*
 
-C function : gtk_window_set_icon_name
+C function
+
+gtk_window_set_icon_name
 */
 func (recv *Window) SetIconName(name string) {
 	c_name := C.CString(name)

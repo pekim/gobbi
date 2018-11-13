@@ -16,7 +16,9 @@ import "C"
 // If the object cannot be created then %error is set to a #GKeyFileError.
 /*
 
-C function : g_key_file_load_from_bytes
+C function
+
+g_key_file_load_from_bytes
 */
 func (recv *KeyFile) LoadFromBytes(bytes *Bytes, flags KeyFileFlags) (bool, error) {
 	c_bytes := (*C.GBytes)(C.NULL)
@@ -48,7 +50,9 @@ func (recv *KeyFile) LoadFromBytes(bytes *Bytes, flags KeyFileFlags) (bool, erro
 // value.
 /*
 
-C record/class : GLogField
+C type
+
+GLogField
 */
 type LogField struct {
 	native *C.GLogField

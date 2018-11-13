@@ -13,7 +13,9 @@ import "C"
 // Sets the specified #GdkRGBA as the source color of @cr.
 /*
 
-C function : gdk_cairo_set_source_rgba
+C function
+
+gdk_cairo_set_source_rgba
 */
 func CairoSetSourceRgba(cr *cairo.Context, rgba *RGBA) {
 	c_cr := (*C.cairo_t)(C.NULL)
@@ -41,7 +43,9 @@ func CairoSetSourceRgba(cr *cairo.Context, rgba *RGBA) {
 // any way and doesn’t observe the presence of XInput 2.
 /*
 
-C function : gdk_disable_multidevice
+C function
+
+gdk_disable_multidevice
 */
 func DisableMultidevice() {
 	C.gdk_disable_multidevice()
@@ -55,7 +59,9 @@ func DisableMultidevice() {
 // trap was pushed, that error will be ignored.
 /*
 
-C function : gdk_error_trap_pop_ignored
+C function
+
+gdk_error_trap_pop_ignored
 */
 func ErrorTrapPopIgnored() {
 	C.gdk_error_trap_pop_ignored()

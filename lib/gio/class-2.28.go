@@ -168,7 +168,9 @@ import "C"
 // [gapplication-example-dbushooks.c](https://git.gnome.org/browse/glib/tree/gio/tests/gapplication-example-dbushooks.c).
 /*
 
-C record/class : GApplication
+C type
+
+GApplication
 */
 type Application struct {
 	native *C.GApplication
@@ -387,7 +389,9 @@ func application_startupHandler(_ *C.GObject, data C.gpointer) {
 // (most notably application uniqueness) will be disabled.
 /*
 
-C function : g_application_new
+C function
+
+g_application_new
 */
 func ApplicationNew(applicationId string, flags ApplicationFlags) *Application {
 	c_application_id := C.CString(applicationId)
@@ -409,7 +413,9 @@ func ApplicationNew(applicationId string, flags ApplicationFlags) *Application {
 // The application must be registered before calling this function.
 /*
 
-C function : g_application_activate
+C function
+
+g_application_activate
 */
 func (recv *Application) Activate() {
 	C.g_application_activate((*C.GApplication)(recv.native))
@@ -420,7 +426,9 @@ func (recv *Application) Activate() {
 // Gets the unique identifier for @application.
 /*
 
-C function : g_application_get_application_id
+C function
+
+g_application_get_application_id
 */
 func (recv *Application) GetApplicationId() string {
 	retC := C.g_application_get_application_id((*C.GApplication)(recv.native))
@@ -434,7 +442,9 @@ func (recv *Application) GetApplicationId() string {
 // See #GApplicationFlags.
 /*
 
-C function : g_application_get_flags
+C function
+
+g_application_get_flags
 */
 func (recv *Application) GetFlags() ApplicationFlags {
 	retC := C.g_application_get_flags((*C.GApplication)(recv.native))
@@ -449,7 +459,9 @@ func (recv *Application) GetFlags() ApplicationFlags {
 // g_application_release() before the application stops running.
 /*
 
-C function : g_application_get_inactivity_timeout
+C function
+
+g_application_get_inactivity_timeout
 */
 func (recv *Application) GetInactivityTimeout() uint32 {
 	retC := C.g_application_get_inactivity_timeout((*C.GApplication)(recv.native))
@@ -464,7 +476,9 @@ func (recv *Application) GetInactivityTimeout() uint32 {
 // successfully called.
 /*
 
-C function : g_application_get_is_registered
+C function
+
+g_application_get_is_registered
 */
 func (recv *Application) GetIsRegistered() bool {
 	retC := C.g_application_get_is_registered((*C.GApplication)(recv.native))
@@ -485,7 +499,9 @@ func (recv *Application) GetIsRegistered() bool {
 // g_application_get_is_registered().
 /*
 
-C function : g_application_get_is_remote
+C function
+
+g_application_get_is_remote
 */
 func (recv *Application) GetIsRemote() bool {
 	retC := C.g_application_get_is_remote((*C.GApplication)(recv.native))
@@ -503,7 +519,9 @@ func (recv *Application) GetIsRemote() bool {
 // To cancel the hold, call g_application_release().
 /*
 
-C function : g_application_hold
+C function
+
+g_application_hold
 */
 func (recv *Application) Hold() {
 	C.g_application_hold((*C.GApplication)(recv.native))
@@ -545,7 +563,9 @@ func (recv *Application) Hold() {
 // g_application_get_is_remote() for that.
 /*
 
-C function : g_application_register
+C function
+
+g_application_register
 */
 func (recv *Application) Register(cancellable *Cancellable) (bool, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -574,7 +594,9 @@ func (recv *Application) Register(cancellable *Cancellable) (bool, error) {
 // call to g_application_hold().
 /*
 
-C function : g_application_release
+C function
+
+g_application_release
 */
 func (recv *Application) Release() {
 	C.g_application_release((*C.GApplication)(recv.native))
@@ -659,7 +681,9 @@ func (recv *Application) Release() {
 // what their exit status will be.
 /*
 
-C function : g_application_run
+C function
+
+g_application_run
 */
 func (recv *Application) Run(args []string) int32 {
 	cArgc, cArgv := argsIn(args)
@@ -674,7 +698,9 @@ func (recv *Application) Run(args []string) int32 {
 // Now there is #GActionMap for that.
 /*
 
-C function : g_application_set_action_group
+C function
+
+g_application_set_action_group
 */
 func (recv *Application) SetActionGroup(actionGroup *ActionGroup) {
 	c_action_group := (*C.GActionGroup)(actionGroup.ToC())
@@ -693,7 +719,9 @@ func (recv *Application) SetActionGroup(actionGroup *ActionGroup) {
 // g_application_id_is_valid().
 /*
 
-C function : g_application_set_application_id
+C function
+
+g_application_set_application_id
 */
 func (recv *Application) SetApplicationId(applicationId string) {
 	c_application_id := C.CString(applicationId)
@@ -712,7 +740,9 @@ func (recv *Application) SetApplicationId(applicationId string) {
 // See #GApplicationFlags.
 /*
 
-C function : g_application_set_flags
+C function
+
+g_application_set_flags
 */
 func (recv *Application) SetFlags(flags ApplicationFlags) {
 	c_flags := (C.GApplicationFlags)(flags)
@@ -732,7 +762,9 @@ func (recv *Application) SetFlags(flags ApplicationFlags) {
 // zero.  Any timeouts currently in progress are not impacted.
 /*
 
-C function : g_application_set_inactivity_timeout
+C function
+
+g_application_set_inactivity_timeout
 */
 func (recv *Application) SetInactivityTimeout(inactivityTimeout uint32) {
 	c_inactivity_timeout := (C.guint)(inactivityTimeout)
@@ -754,7 +786,9 @@ func (recv *Application) SetInactivityTimeout(inactivityTimeout uint32) {
 // long as @cmdline exists.
 /*
 
-C function : g_application_command_line_get_cwd
+C function
+
+g_application_command_line_get_cwd
 */
 func (recv *ApplicationCommandLine) GetCwd() string {
 	retC := C.g_application_command_line_get_cwd((*C.GApplicationCommandLine)(recv.native))
@@ -769,7 +803,9 @@ func (recv *ApplicationCommandLine) GetCwd() string {
 // g_application_command_line_set_exit_status() for more information.
 /*
 
-C function : g_application_command_line_get_exit_status
+C function
+
+g_application_command_line_get_exit_status
 */
 func (recv *ApplicationCommandLine) GetExitStatus() int32 {
 	retC := C.g_application_command_line_get_exit_status((*C.GApplicationCommandLine)(recv.native))
@@ -781,7 +817,9 @@ func (recv *ApplicationCommandLine) GetExitStatus() int32 {
 // Determines if @cmdline represents a remote invocation.
 /*
 
-C function : g_application_command_line_get_is_remote
+C function
+
+g_application_command_line_get_is_remote
 */
 func (recv *ApplicationCommandLine) GetIsRemote() bool {
 	retC := C.g_application_command_line_get_is_remote((*C.GApplicationCommandLine)(recv.native))
@@ -805,7 +843,9 @@ func (recv *ApplicationCommandLine) GetIsRemote() bool {
 // long as @cmdline exists.
 /*
 
-C function : g_application_command_line_getenv
+C function
+
+g_application_command_line_getenv
 */
 func (recv *ApplicationCommandLine) Getenv(name string) string {
 	c_name := C.CString(name)
@@ -844,7 +884,9 @@ func (recv *ApplicationCommandLine) Getenv(name string) string {
 // status of the local #GApplicationCommandLine is used.
 /*
 
-C function : g_application_command_line_set_exit_status
+C function
+
+g_application_command_line_set_exit_status
 */
 func (recv *ApplicationCommandLine) SetExitStatus(exitStatus int32) {
 	c_exit_status := (C.int)(exitStatus)
@@ -865,7 +907,9 @@ func (recv *ApplicationCommandLine) SetExitStatus(exitStatus int32) {
 // The new #GSource will hold a reference to the #GCancellable.
 /*
 
-C function : g_cancellable_source_new
+C function
+
+g_cancellable_source_new
 */
 func (recv *Cancellable) SourceNew() *glib.Source {
 	retC := C.g_cancellable_source_new((*C.GCancellable)(recv.native))
@@ -877,7 +921,9 @@ func (recv *Cancellable) SourceNew() *glib.Source {
 // Removes all the emblems from @icon.
 /*
 
-C function : g_emblemed_icon_clear_emblems
+C function
+
+g_emblemed_icon_clear_emblems
 */
 func (recv *EmblemedIcon) ClearEmblems() {
 	C.g_emblemed_icon_clear_emblems((*C.GEmblemedIcon)(recv.native))
@@ -906,7 +952,9 @@ func (recv *EmblemedIcon) ClearEmblems() {
 // of the action should not attempt to modify its enabled flag.
 /*
 
-C function : g_simple_action_set_enabled
+C function
+
+g_simple_action_set_enabled
 */
 func (recv *SimpleAction) SetEnabled(enabled bool) {
 	c_enabled :=
@@ -921,7 +969,9 @@ func (recv *SimpleAction) SetEnabled(enabled bool) {
 // implementing the #GActionGroup and #GActionMap interfaces.
 /*
 
-C record/class : GSimpleActionGroup
+C type
+
+GSimpleActionGroup
 */
 type SimpleActionGroup struct {
 	native *C.GSimpleActionGroup
@@ -959,7 +1009,9 @@ func CastToSimpleActionGroup(object *gobject.Object) *SimpleActionGroup {
 // Creates a new, empty, #GSimpleActionGroup.
 /*
 
-C function : g_simple_action_group_new
+C function
+
+g_simple_action_group_new
 */
 func SimpleActionGroupNew() *SimpleActionGroup {
 	retC := C.g_simple_action_group_new()
@@ -976,7 +1028,9 @@ func SimpleActionGroupNew() *SimpleActionGroup {
 // The action group takes its own reference on @action.
 /*
 
-C function : g_simple_action_group_insert
+C function
+
+g_simple_action_group_insert
 */
 func (recv *SimpleActionGroup) Insert(action *Action) {
 	c_action := (*C.GAction)(action.ToC())
@@ -991,7 +1045,9 @@ func (recv *SimpleActionGroup) Insert(action *Action) {
 // If no such action exists, returns %NULL.
 /*
 
-C function : g_simple_action_group_lookup
+C function
+
+g_simple_action_group_lookup
 */
 func (recv *SimpleActionGroup) Lookup(actionName string) *Action {
 	c_action_name := C.CString(actionName)
@@ -1008,7 +1064,9 @@ func (recv *SimpleActionGroup) Lookup(actionName string) *Action {
 // If no action of this name is in the group then nothing happens.
 /*
 
-C function : g_simple_action_group_remove
+C function
+
+g_simple_action_group_remove
 */
 func (recv *SimpleActionGroup) Remove(actionName string) {
 	c_action_name := C.CString(actionName)
@@ -1025,7 +1083,9 @@ func (recv *SimpleActionGroup) Remove(actionName string) {
 // of @error, so the caller does not need to free it any more.
 /*
 
-C function : g_simple_async_result_take_error
+C function
+
+g_simple_async_result_take_error
 */
 func (recv *SimpleAsyncResult) TakeError(error *glib.Error) {
 	c_error := (*C.GError)(C.NULL)
@@ -1042,7 +1102,9 @@ func (recv *SimpleAsyncResult) TakeError(error *glib.Error) {
 // g_socket_client_set_tls() for details.
 /*
 
-C function : g_socket_client_get_tls
+C function
+
+g_socket_client_get_tls
 */
 func (recv *SocketClient) GetTls() bool {
 	retC := C.g_socket_client_get_tls((*C.GSocketClient)(recv.native))
@@ -1055,7 +1117,9 @@ func (recv *SocketClient) GetTls() bool {
 // @client.
 /*
 
-C function : g_socket_client_get_tls_validation_flags
+C function
+
+g_socket_client_get_tls_validation_flags
 */
 func (recv *SocketClient) GetTlsValidationFlags() TlsCertificateFlags {
 	retC := C.g_socket_client_get_tls_validation_flags((*C.GSocketClient)(recv.native))
@@ -1084,7 +1148,9 @@ func (recv *SocketClient) GetTlsValidationFlags() TlsCertificateFlags {
 // starts.
 /*
 
-C function : g_socket_client_set_tls
+C function
+
+g_socket_client_set_tls
 */
 func (recv *SocketClient) SetTls(tls bool) {
 	c_tls :=
@@ -1099,7 +1165,9 @@ func (recv *SocketClient) SetTls(tls bool) {
 // via @client. The default value is %G_TLS_CERTIFICATE_VALIDATE_ALL.
 /*
 
-C function : g_socket_client_set_tls_validation_flags
+C function
+
+g_socket_client_set_tls_validation_flags
 */
 func (recv *SocketClient) SetTlsValidationFlags(flags TlsCertificateFlags) {
 	c_flags := (C.GTlsCertificateFlags)(flags)
@@ -1112,7 +1180,9 @@ func (recv *SocketClient) SetTlsValidationFlags(flags TlsCertificateFlags) {
 // Wraps @base_io_stream and @socket together as a #GSocketConnection.
 /*
 
-C function : g_tcp_wrapper_connection_new
+C function
+
+g_tcp_wrapper_connection_new
 */
 func TcpWrapperConnectionNew(baseIoStream *IOStream, socket *Socket) *TcpWrapperConnection {
 	c_base_io_stream := (*C.GIOStream)(C.NULL)
@@ -1138,7 +1208,9 @@ func TcpWrapperConnectionNew(baseIoStream *IOStream, socket *Socket) *TcpWrapper
 // #GTlsServerConnection).
 /*
 
-C record/class : GTlsCertificate
+C type
+
+GTlsCertificate
 */
 type TlsCertificate struct {
 	native *C.GTlsCertificate
@@ -1188,7 +1260,9 @@ func CastToTlsCertificate(object *gobject.Object) *TlsCertificate {
 // g_tls_certificate_new_from_pem().
 /*
 
-C function : g_tls_certificate_new_from_file
+C function
+
+g_tls_certificate_new_from_file
 */
 func TlsCertificateNewFromFile(file string) (*TlsCertificate, error) {
 	c_file := C.CString(file)
@@ -1223,7 +1297,9 @@ func TlsCertificateNewFromFile(file string) (*TlsCertificate, error) {
 // g_tls_certificate_new_from_pem().
 /*
 
-C function : g_tls_certificate_new_from_files
+C function
+
+g_tls_certificate_new_from_files
 */
 func TlsCertificateNewFromFiles(certFile string, keyFile string) (*TlsCertificate, error) {
 	c_cert_file := C.CString(certFile)
@@ -1261,7 +1337,9 @@ func TlsCertificateNewFromFiles(certFile string, keyFile string) (*TlsCertificat
 // the file will still be returned.
 /*
 
-C function : g_tls_certificate_new_from_pem
+C function
+
+g_tls_certificate_new_from_pem
 */
 func TlsCertificateNewFromPem(data string) (*TlsCertificate, error) {
 	c_data := C.CString(data)
@@ -1285,7 +1363,9 @@ func TlsCertificateNewFromPem(data string) (*TlsCertificate, error) {
 // Gets the #GTlsCertificate representing @cert's issuer, if known
 /*
 
-C function : g_tls_certificate_get_issuer
+C function
+
+g_tls_certificate_get_issuer
 */
 func (recv *TlsCertificate) GetIssuer() *TlsCertificate {
 	retC := C.g_tls_certificate_get_issuer((*C.GTlsCertificate)(recv.native))
@@ -1315,7 +1395,9 @@ func (recv *TlsCertificate) GetIssuer() *TlsCertificate {
 // as appropriate.)
 /*
 
-C function : g_tls_certificate_verify
+C function
+
+g_tls_certificate_verify
 */
 func (recv *TlsCertificate) Verify(identity *SocketConnectable, trustedCa *TlsCertificate) TlsCertificateFlags {
 	c_identity := (*C.GSocketConnectable)(identity.ToC())
@@ -1339,7 +1421,9 @@ func (recv *TlsCertificate) Verify(identity *SocketConnectable, trustedCa *TlsCe
 // For DTLS (Datagram TLS) support, see #GDtlsConnection.
 /*
 
-C record/class : GTlsConnection
+C type
+
+GTlsConnection
 */
 type TlsConnection struct {
 	native *C.GTlsConnection
@@ -1383,7 +1467,9 @@ func CastToTlsConnection(object *gobject.Object) *TlsConnection {
 // #GTlsConnection::accept-certificate signal.
 /*
 
-C function : g_tls_connection_emit_accept_certificate
+C function
+
+g_tls_connection_emit_accept_certificate
 */
 func (recv *TlsConnection) EmitAcceptCertificate(peerCert *TlsCertificate, errors TlsCertificateFlags) bool {
 	c_peer_cert := (*C.GTlsCertificate)(C.NULL)
@@ -1403,7 +1489,9 @@ func (recv *TlsConnection) EmitAcceptCertificate(peerCert *TlsCertificate, error
 // g_tls_connection_set_certificate().
 /*
 
-C function : g_tls_connection_get_certificate
+C function
+
+g_tls_connection_get_certificate
 */
 func (recv *TlsConnection) GetCertificate() *TlsCertificate {
 	retC := C.g_tls_connection_get_certificate((*C.GTlsConnection)(recv.native))
@@ -1417,7 +1505,9 @@ func (recv *TlsConnection) GetCertificate() *TlsCertificate {
 // #GTlsConnection::accept-certificate.)
 /*
 
-C function : g_tls_connection_get_peer_certificate
+C function
+
+g_tls_connection_get_peer_certificate
 */
 func (recv *TlsConnection) GetPeerCertificate() *TlsCertificate {
 	retC := C.g_tls_connection_get_peer_certificate((*C.GTlsConnection)(recv.native))
@@ -1431,7 +1521,9 @@ func (recv *TlsConnection) GetPeerCertificate() *TlsCertificate {
 // during the emission of #GTlsConnection::accept-certificate.)
 /*
 
-C function : g_tls_connection_get_peer_certificate_errors
+C function
+
+g_tls_connection_get_peer_certificate_errors
 */
 func (recv *TlsConnection) GetPeerCertificateErrors() TlsCertificateFlags {
 	retC := C.g_tls_connection_get_peer_certificate_errors((*C.GTlsConnection)(recv.native))
@@ -1444,7 +1536,9 @@ func (recv *TlsConnection) GetPeerCertificateErrors() TlsCertificateFlags {
 // g_tls_connection_set_rehandshake_mode() for details.
 /*
 
-C function : g_tls_connection_get_rehandshake_mode
+C function
+
+g_tls_connection_get_rehandshake_mode
 */
 func (recv *TlsConnection) GetRehandshakeMode() TlsRehandshakeMode {
 	retC := C.g_tls_connection_get_rehandshake_mode((*C.GTlsConnection)(recv.native))
@@ -1458,7 +1552,9 @@ func (recv *TlsConnection) GetRehandshakeMode() TlsRehandshakeMode {
 // g_tls_connection_set_require_close_notify() for details.
 /*
 
-C function : g_tls_connection_get_require_close_notify
+C function
+
+g_tls_connection_get_require_close_notify
 */
 func (recv *TlsConnection) GetRequireCloseNotify() bool {
 	retC := C.g_tls_connection_get_require_close_notify((*C.GTlsConnection)(recv.native))
@@ -1471,7 +1567,9 @@ func (recv *TlsConnection) GetRequireCloseNotify() bool {
 // peer certificates. See g_tls_connection_set_use_system_certdb().
 /*
 
-C function : g_tls_connection_get_use_system_certdb
+C function
+
+g_tls_connection_get_use_system_certdb
 */
 func (recv *TlsConnection) GetUseSystemCertdb() bool {
 	retC := C.g_tls_connection_get_use_system_certdb((*C.GTlsConnection)(recv.native))
@@ -1504,7 +1602,9 @@ func (recv *TlsConnection) GetUseSystemCertdb() bool {
 // handshake.
 /*
 
-C function : g_tls_connection_handshake
+C function
+
+g_tls_connection_handshake
 */
 func (recv *TlsConnection) Handshake(cancellable *Cancellable) (bool, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -1531,7 +1631,9 @@ func (recv *TlsConnection) Handshake(cancellable *Cancellable) (bool, error) {
 // g_tls_connection_handshake() for more information.
 /*
 
-C function : g_tls_connection_handshake_finish
+C function
+
+g_tls_connection_handshake_finish
 */
 func (recv *TlsConnection) HandshakeFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -1569,7 +1671,9 @@ func (recv *TlsConnection) HandshakeFinish(result *AsyncResult) (bool, error) {
 // non-%NULL.)
 /*
 
-C function : g_tls_connection_set_certificate
+C function
+
+g_tls_connection_set_certificate
 */
 func (recv *TlsConnection) SetCertificate(certificate *TlsCertificate) {
 	c_certificate := (*C.GTlsCertificate)(C.NULL)
@@ -1604,7 +1708,9 @@ func (recv *TlsConnection) SetCertificate(certificate *TlsCertificate) {
 // software.
 /*
 
-C function : g_tls_connection_set_rehandshake_mode
+C function
+
+g_tls_connection_set_rehandshake_mode
 */
 func (recv *TlsConnection) SetRehandshakeMode(mode TlsRehandshakeMode) {
 	c_mode := (C.GTlsRehandshakeMode)(mode)
@@ -1643,7 +1749,9 @@ func (recv *TlsConnection) SetRehandshakeMode(mode TlsRehandshakeMode) {
 // operations are pending on @conn or the base I/O stream.
 /*
 
-C function : g_tls_connection_set_require_close_notify
+C function
+
+g_tls_connection_set_require_close_notify
 */
 func (recv *TlsConnection) SetRequireCloseNotify(requireCloseNotify bool) {
 	c_require_close_notify :=
@@ -1663,7 +1771,9 @@ func (recv *TlsConnection) SetRequireCloseNotify(requireCloseNotify bool) {
 // #GTlsClientConnection:validation-flags).
 /*
 
-C function : g_tls_connection_set_use_system_certdb
+C function
+
+g_tls_connection_set_use_system_certdb
 */
 func (recv *TlsConnection) SetUseSystemCertdb(useSystemCertdb bool) {
 	c_use_system_certdb :=

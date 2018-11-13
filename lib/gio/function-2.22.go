@@ -30,7 +30,9 @@ import "C"
 // Gets the #GResolver Error Quark.
 /*
 
-C function : g_resolver_error_quark
+C function
+
+g_resolver_error_quark
 */
 func ResolverErrorQuark() glib.Quark {
 	retC := C.g_resolver_error_quark()
@@ -42,7 +44,9 @@ func ResolverErrorQuark() glib.Quark {
 // Sorts @targets in place according to the algorithm in RFC 2782.
 /*
 
-C function : g_srv_target_list_sort
+C function
+
+g_srv_target_list_sort
 */
 func SrvTargetListSort(targets *glib.List) *glib.List {
 	c_targets := (*C.GList)(C.NULL)

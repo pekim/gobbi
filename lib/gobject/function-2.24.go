@@ -20,7 +20,9 @@ import "C"
 // G_TYPE_CLASS_GET_PRIVATE() macro.
 /*
 
-C function : g_type_add_class_private
+C function
+
+g_type_add_class_private
 */
 func TypeAddClassPrivate(classType Type, privateSize uint64) {
 	c_class_type := (C.GType)(classType)

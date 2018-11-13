@@ -30,7 +30,9 @@ import "C"
 // to the #GFileError value #G_FILE_ERROR_INVAL.
 /*
 
-C function : g_mapped_file_new
+C function
+
+g_mapped_file_new
 */
 func MappedFileNew(filename string, writable bool) (*MappedFile, error) {
 	c_filename := C.CString(filename)
@@ -56,7 +58,9 @@ func MappedFileNew(filename string, writable bool) (*MappedFile, error) {
 // exactly the same as g_mapped_file_unref().
 /*
 
-C function : g_mapped_file_free
+C function
+
+g_mapped_file_free
 */
 func (recv *MappedFile) Free() {
 	C.g_mapped_file_free((*C.GMappedFile)(recv.native))
@@ -72,7 +76,9 @@ func (recv *MappedFile) Free() {
 // If the file is empty then %NULL is returned.
 /*
 
-C function : g_mapped_file_get_contents
+C function
+
+g_mapped_file_get_contents
 */
 func (recv *MappedFile) GetContents() string {
 	retC := C.g_mapped_file_get_contents((*C.GMappedFile)(recv.native))
@@ -85,7 +91,9 @@ func (recv *MappedFile) GetContents() string {
 // Returns the length of the contents of a #GMappedFile.
 /*
 
-C function : g_mapped_file_get_length
+C function
+
+g_mapped_file_get_length
 */
 func (recv *MappedFile) GetLength() uint64 {
 	retC := C.g_mapped_file_get_length((*C.GMappedFile)(recv.native))

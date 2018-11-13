@@ -18,7 +18,9 @@ import "C"
 // This function is called by the drag source.
 /*
 
-C function : gdk_drag_begin_from_point
+C function
+
+gdk_drag_begin_from_point
 */
 func DragBeginFromPoint(window *Window, device *Device, targets *glib.List, xRoot int32, yRoot int32) *DragContext {
 	c_window := (*C.GdkWindow)(C.NULL)
@@ -58,7 +60,9 @@ func DragBeginFromPoint(window *Window, device *Device, targets *glib.List, xRoo
 // all subsequent calls will be ignored.
 /*
 
-C function : gdk_drag_drop_done
+C function
+
+gdk_drag_drop_done
 */
 func DragDropDone(context *DragContext, success bool) {
 	c_context := (*C.GdkDragContext)(C.NULL)

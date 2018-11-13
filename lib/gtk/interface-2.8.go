@@ -16,7 +16,9 @@ import "C"
 // types a file name that already exists.
 /*
 
-C function : gtk_file_chooser_get_do_overwrite_confirmation
+C function
+
+gtk_file_chooser_get_do_overwrite_confirmation
 */
 func (recv *FileChooser) GetDoOverwriteConfirmation() bool {
 	retC := C.gtk_file_chooser_get_do_overwrite_confirmation((*C.GtkFileChooser)(recv.native))
@@ -38,7 +40,9 @@ func (recv *FileChooser) GetDoOverwriteConfirmation() bool {
 // for the details.
 /*
 
-C function : gtk_file_chooser_set_do_overwrite_confirmation
+C function
+
+gtk_file_chooser_set_do_overwrite_confirmation
 */
 func (recv *FileChooser) SetDoOverwriteConfirmation(doOverwriteConfirmation bool) {
 	c_do_overwrite_confirmation :=

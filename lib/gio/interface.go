@@ -118,7 +118,9 @@ import "C"
 // inside of a #GSimpleActionGroup.
 /*
 
-C record/class : GAction
+C type
+
+GAction
 */
 type Action struct {
 	native *C.GAction
@@ -187,7 +189,9 @@ func (recv *Action) ToC() unsafe.Pointer {
 // calls to g_action_group_query_action().
 /*
 
-C record/class : GActionGroup
+C type
+
+GActionGroup
 */
 type ActionGroup struct {
 	native *C.GActionGroup
@@ -220,7 +224,9 @@ func (recv *ActionGroup) ToC() unsafe.Pointer {
 // name.
 /*
 
-C record/class : GActionMap
+C type
+
+GActionMap
 */
 type ActionMap struct {
 	native *C.GActionMap
@@ -292,7 +298,9 @@ func (recv *ActionMap) ToC() unsafe.Pointer {
 // different ideas of what a given URI means.
 /*
 
-C record/class : GAppInfo
+C type
+
+GAppInfo
 */
 type AppInfo struct {
 	native *C.GAppInfo
@@ -318,7 +326,9 @@ func (recv *AppInfo) ToC() unsafe.Pointer {
 // application is capable of opening files with the given content type.
 /*
 
-C function : g_app_info_add_supports_type
+C function
+
+g_app_info_add_supports_type
 */
 func (recv *AppInfo) AddSupportsType(contentType string) (bool, error) {
 	c_content_type := C.CString(contentType)
@@ -340,7 +350,9 @@ func (recv *AppInfo) AddSupportsType(contentType string) (bool, error) {
 // Checks if a supported content type can be removed from an application.
 /*
 
-C function : g_app_info_can_remove_supports_type
+C function
+
+g_app_info_can_remove_supports_type
 */
 func (recv *AppInfo) CanRemoveSupportsType() bool {
 	retC := C.g_app_info_can_remove_supports_type((*C.GAppInfo)(recv.native))
@@ -352,7 +364,9 @@ func (recv *AppInfo) CanRemoveSupportsType() bool {
 // Creates a duplicate of a #GAppInfo.
 /*
 
-C function : g_app_info_dup
+C function
+
+g_app_info_dup
 */
 func (recv *AppInfo) Dup() *AppInfo {
 	retC := C.g_app_info_dup((*C.GAppInfo)(recv.native))
@@ -368,7 +382,9 @@ func (recv *AppInfo) Dup() *AppInfo {
 // contents is needed, program code must additionally compare relevant fields.
 /*
 
-C function : g_app_info_equal
+C function
+
+g_app_info_equal
 */
 func (recv *AppInfo) Equal(appinfo2 *AppInfo) bool {
 	c_appinfo2 := (*C.GAppInfo)(appinfo2.ToC())
@@ -382,7 +398,9 @@ func (recv *AppInfo) Equal(appinfo2 *AppInfo) bool {
 // Gets a human-readable description of an installed application.
 /*
 
-C function : g_app_info_get_description
+C function
+
+g_app_info_get_description
 */
 func (recv *AppInfo) GetDescription() string {
 	retC := C.g_app_info_get_description((*C.GAppInfo)(recv.native))
@@ -394,7 +412,9 @@ func (recv *AppInfo) GetDescription() string {
 // Gets the executable's name for the installed application.
 /*
 
-C function : g_app_info_get_executable
+C function
+
+g_app_info_get_executable
 */
 func (recv *AppInfo) GetExecutable() string {
 	retC := C.g_app_info_get_executable((*C.GAppInfo)(recv.native))
@@ -406,7 +426,9 @@ func (recv *AppInfo) GetExecutable() string {
 // Gets the icon for the application.
 /*
 
-C function : g_app_info_get_icon
+C function
+
+g_app_info_get_icon
 */
 func (recv *AppInfo) GetIcon() *Icon {
 	retC := C.g_app_info_get_icon((*C.GAppInfo)(recv.native))
@@ -424,7 +446,9 @@ func (recv *AppInfo) GetIcon() *Icon {
 // the @appinfo has been constructed.
 /*
 
-C function : g_app_info_get_id
+C function
+
+g_app_info_get_id
 */
 func (recv *AppInfo) GetId() string {
 	retC := C.g_app_info_get_id((*C.GAppInfo)(recv.native))
@@ -436,7 +460,9 @@ func (recv *AppInfo) GetId() string {
 // Gets the installed name of the application.
 /*
 
-C function : g_app_info_get_name
+C function
+
+g_app_info_get_name
 */
 func (recv *AppInfo) GetName() string {
 	retC := C.g_app_info_get_name((*C.GAppInfo)(recv.native))
@@ -474,7 +500,9 @@ func (recv *AppInfo) GetName() string {
 // on information provided in @context.
 /*
 
-C function : g_app_info_launch
+C function
+
+g_app_info_launch
 */
 func (recv *AppInfo) Launch(files *glib.List, context *AppLaunchContext) (bool, error) {
 	c_files := (*C.GList)(C.NULL)
@@ -512,7 +540,9 @@ func (recv *AppInfo) Launch(files *glib.List, context *AppLaunchContext) (bool, 
 // no way to detect this.
 /*
 
-C function : g_app_info_launch_uris
+C function
+
+g_app_info_launch_uris
 */
 func (recv *AppInfo) LaunchUris(uris *glib.List, context *AppLaunchContext) (bool, error) {
 	c_uris := (*C.GList)(C.NULL)
@@ -541,7 +571,9 @@ func (recv *AppInfo) LaunchUris(uris *glib.List, context *AppLaunchContext) (boo
 // Removes a supported type from an application, if possible.
 /*
 
-C function : g_app_info_remove_supports_type
+C function
+
+g_app_info_remove_supports_type
 */
 func (recv *AppInfo) RemoveSupportsType(contentType string) (bool, error) {
 	c_content_type := C.CString(contentType)
@@ -563,7 +595,9 @@ func (recv *AppInfo) RemoveSupportsType(contentType string) (bool, error) {
 // Sets the application as the default handler for the given file extension.
 /*
 
-C function : g_app_info_set_as_default_for_extension
+C function
+
+g_app_info_set_as_default_for_extension
 */
 func (recv *AppInfo) SetAsDefaultForExtension(extension string) (bool, error) {
 	c_extension := C.CString(extension)
@@ -585,7 +619,9 @@ func (recv *AppInfo) SetAsDefaultForExtension(extension string) (bool, error) {
 // Sets the application as the default handler for a given type.
 /*
 
-C function : g_app_info_set_as_default_for_type
+C function
+
+g_app_info_set_as_default_for_type
 */
 func (recv *AppInfo) SetAsDefaultForType(contentType string) (bool, error) {
 	c_content_type := C.CString(contentType)
@@ -610,7 +646,9 @@ func (recv *AppInfo) SetAsDefaultForType(contentType string) (bool, error) {
 // application for that content type.
 /*
 
-C function : g_app_info_set_as_last_used_for_type
+C function
+
+g_app_info_set_as_last_used_for_type
 */
 func (recv *AppInfo) SetAsLastUsedForType(contentType string) (bool, error) {
 	c_content_type := C.CString(contentType)
@@ -633,7 +671,9 @@ func (recv *AppInfo) SetAsLastUsedForType(contentType string) (bool, error) {
 // list available applications.
 /*
 
-C function : g_app_info_should_show
+C function
+
+g_app_info_should_show
 */
 func (recv *AppInfo) ShouldShow() bool {
 	retC := C.g_app_info_should_show((*C.GAppInfo)(recv.native))
@@ -645,7 +685,9 @@ func (recv *AppInfo) ShouldShow() bool {
 // Checks if the application accepts files as arguments.
 /*
 
-C function : g_app_info_supports_files
+C function
+
+g_app_info_supports_files
 */
 func (recv *AppInfo) SupportsFiles() bool {
 	retC := C.g_app_info_supports_files((*C.GAppInfo)(recv.native))
@@ -657,7 +699,9 @@ func (recv *AppInfo) SupportsFiles() bool {
 // Checks if the application supports reading files and directories from URIs.
 /*
 
-C function : g_app_info_supports_uris
+C function
+
+g_app_info_supports_uris
 */
 func (recv *AppInfo) SupportsUris() bool {
 	retC := C.g_app_info_supports_uris((*C.GAppInfo)(recv.native))
@@ -741,7 +785,7 @@ func (recv *AppInfo) SupportsUris() bool {
 // always called, even in the case of a cancelled operation. On cancellation
 // the result is a %G_IO_ERROR_CANCELLED error.
 //
-// ## I/O Priority # {#io-priority}
+// I/O Priority # {#io-priority}
 //
 // Many I/O-related asynchronous operations have a priority parameter,
 // which is used in certain cases to determine the order in which
@@ -752,7 +796,9 @@ func (recv *AppInfo) SupportsUris() bool {
 // as a default.
 /*
 
-C record/class : GAsyncResult
+C type
+
+GAsyncResult
 */
 type AsyncResult struct {
 	native *C.GAsyncResult
@@ -777,7 +823,9 @@ func (recv *AsyncResult) ToC() unsafe.Pointer {
 // Gets the source object from a #GAsyncResult.
 /*
 
-C function : g_async_result_get_source_object
+C function
+
+g_async_result_get_source_object
 */
 func (recv *AsyncResult) GetSourceObject() *gobject.Object {
 	retC := C.g_async_result_get_source_object((*C.GAsyncResult)(recv.native))
@@ -794,7 +842,9 @@ func (recv *AsyncResult) GetSourceObject() *gobject.Object {
 // Gets the user data from a #GAsyncResult.
 /*
 
-C function : g_async_result_get_user_data
+C function
+
+g_async_result_get_user_data
 */
 func (recv *AsyncResult) GetUserData() uintptr {
 	retC := C.g_async_result_get_user_data((*C.GAsyncResult)(recv.native))
@@ -809,7 +859,9 @@ func (recv *AsyncResult) GetUserData() uintptr {
 // interfaces.
 /*
 
-C record/class : GDBusObject
+C type
+
+GDBusObject
 */
 type DBusObject struct {
 	native *C.GDBusObject
@@ -840,7 +892,9 @@ func (recv *DBusObject) ToC() unsafe.Pointer {
 // and #GDBusObjectManagerServer for the service-side implementation.
 /*
 
-C record/class : GDBusObjectManager
+C type
+
+GDBusObjectManager
 */
 type DBusObjectManager struct {
 	native *C.GDBusObjectManager
@@ -866,7 +920,9 @@ func (recv *DBusObjectManager) ToC() unsafe.Pointer {
 // using the following functions.
 /*
 
-C record/class : GDesktopAppInfoLookup
+C type
+
+GDesktopAppInfoLookup
 */
 type DesktopAppInfoLookup struct {
 	native *C.GDesktopAppInfoLookup
@@ -898,7 +954,9 @@ func (recv *DesktopAppInfoLookup) ToC() unsafe.Pointer {
 // directly. Applications should use g_app_info_get_default_for_uri_scheme().
 /*
 
-C function : g_desktop_app_info_lookup_get_default_for_uri_scheme
+C function
+
+g_desktop_app_info_lookup_get_default_for_uri_scheme
 */
 func (recv *DesktopAppInfoLookup) GetDefaultForUriScheme(uriScheme string) *AppInfo {
 	c_uri_scheme := C.CString(uriScheme)
@@ -938,7 +996,9 @@ func (recv *DesktopAppInfoLookup) GetDefaultForUriScheme(uriScheme string) *AppI
 // #GDrive in that API.
 /*
 
-C record/class : GDrive
+C type
+
+GDrive
 */
 type Drive struct {
 	native *C.GDrive
@@ -1134,7 +1194,9 @@ func drive_ejectButtonHandler(_ *C.GObject, data C.gpointer) {
 // Checks if a drive can be ejected.
 /*
 
-C function : g_drive_can_eject
+C function
+
+g_drive_can_eject
 */
 func (recv *Drive) CanEject() bool {
 	retC := C.g_drive_can_eject((*C.GDrive)(recv.native))
@@ -1146,7 +1208,9 @@ func (recv *Drive) CanEject() bool {
 // Checks if a drive can be polled for media changes.
 /*
 
-C function : g_drive_can_poll_for_media
+C function
+
+g_drive_can_poll_for_media
 */
 func (recv *Drive) CanPollForMedia() bool {
 	retC := C.g_drive_can_poll_for_media((*C.GDrive)(recv.native))
@@ -1160,7 +1224,9 @@ func (recv *Drive) CanPollForMedia() bool {
 // Finishes ejecting a drive.
 /*
 
-C function : g_drive_eject_finish
+C function
+
+g_drive_eject_finish
 */
 func (recv *Drive) EjectFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -1183,7 +1249,9 @@ func (recv *Drive) EjectFinish(result *AsyncResult) (bool, error) {
 // Gets the icon for @drive.
 /*
 
-C function : g_drive_get_icon
+C function
+
+g_drive_get_icon
 */
 func (recv *Drive) GetIcon() *Icon {
 	retC := C.g_drive_get_icon((*C.GDrive)(recv.native))
@@ -1195,7 +1263,9 @@ func (recv *Drive) GetIcon() *Icon {
 // Gets the identifier of the given kind for @drive.
 /*
 
-C function : g_drive_get_identifier
+C function
+
+g_drive_get_identifier
 */
 func (recv *Drive) GetIdentifier(kind string) string {
 	c_kind := C.CString(kind)
@@ -1211,7 +1281,9 @@ func (recv *Drive) GetIdentifier(kind string) string {
 // Gets the name of @drive.
 /*
 
-C function : g_drive_get_name
+C function
+
+g_drive_get_name
 */
 func (recv *Drive) GetName() string {
 	retC := C.g_drive_get_name((*C.GDrive)(recv.native))
@@ -1227,7 +1299,9 @@ func (recv *Drive) GetName() string {
 // its elements have been unreffed with g_object_unref().
 /*
 
-C function : g_drive_get_volumes
+C function
+
+g_drive_get_volumes
 */
 func (recv *Drive) GetVolumes() *glib.List {
 	retC := C.g_drive_get_volumes((*C.GDrive)(recv.native))
@@ -1241,7 +1315,9 @@ func (recv *Drive) GetVolumes() *glib.List {
 // for more details.
 /*
 
-C function : g_drive_has_media
+C function
+
+g_drive_has_media
 */
 func (recv *Drive) HasMedia() bool {
 	retC := C.g_drive_has_media((*C.GDrive)(recv.native))
@@ -1253,7 +1329,9 @@ func (recv *Drive) HasMedia() bool {
 // Check if @drive has any mountable volumes.
 /*
 
-C function : g_drive_has_volumes
+C function
+
+g_drive_has_volumes
 */
 func (recv *Drive) HasVolumes() bool {
 	retC := C.g_drive_has_volumes((*C.GDrive)(recv.native))
@@ -1265,7 +1343,9 @@ func (recv *Drive) HasVolumes() bool {
 // Checks if @drive is capabable of automatically detecting media changes.
 /*
 
-C function : g_drive_is_media_check_automatic
+C function
+
+g_drive_is_media_check_automatic
 */
 func (recv *Drive) IsMediaCheckAutomatic() bool {
 	retC := C.g_drive_is_media_check_automatic((*C.GDrive)(recv.native))
@@ -1277,7 +1357,9 @@ func (recv *Drive) IsMediaCheckAutomatic() bool {
 // Checks if the @drive supports removable media.
 /*
 
-C function : g_drive_is_media_removable
+C function
+
+g_drive_is_media_removable
 */
 func (recv *Drive) IsMediaRemovable() bool {
 	retC := C.g_drive_is_media_removable((*C.GDrive)(recv.native))
@@ -1291,7 +1373,9 @@ func (recv *Drive) IsMediaRemovable() bool {
 // Finishes an operation started with g_drive_poll_for_media() on a drive.
 /*
 
-C function : g_drive_poll_for_media_finish
+C function
+
+g_drive_poll_for_media_finish
 */
 func (recv *Drive) PollForMediaFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -1381,7 +1465,7 @@ func (recv *Drive) PollForMediaFinish(result *AsyncResult) (bool, error) {
 // - g_file_unmount_mountable_with_operation() to unmount a mountable file.
 // - g_file_eject_mountable_with_operation() to eject a mountable file.
 //
-// ## Entity Tags # {#gfile-etag}
+// Entity Tags # {#gfile-etag}
 //
 // One notable feature of #GFiles are entity tags, or "etags" for
 // short. Entity tags are somewhat like a more abstract version of the
@@ -1392,7 +1476,9 @@ func (recv *Drive) PollForMediaFinish(result *AsyncResult) (bool, error) {
 // for HTTP Etag headers, which are a very similar concept.
 /*
 
-C record/class : GFile
+C type
+
+GFile
 */
 type File struct {
 	native *C.GFile
@@ -1433,7 +1519,9 @@ func (recv *File) ToC() unsafe.Pointer {
 // possible too, and depend on what kind of filesystem the file is on.
 /*
 
-C function : g_file_append_to
+C function
+
+g_file_append_to
 */
 func (recv *File) AppendTo(flags FileCreateFlags, cancellable *Cancellable) (*FileOutputStream, error) {
 	c_flags := (C.GFileCreateFlags)(flags)
@@ -1462,7 +1550,9 @@ func (recv *File) AppendTo(flags FileCreateFlags, cancellable *Cancellable) (*Fi
 // g_file_append_to_async().
 /*
 
-C function : g_file_append_to_finish
+C function
+
+g_file_append_to_finish
 */
 func (recv *File) AppendToFinish(res *AsyncResult) (*FileOutputStream, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
@@ -1494,7 +1584,9 @@ func (recv *File) AppendToFinish(res *AsyncResult) (*FileOutputStream, error) {
 // is useful when implementing move by copy + delete source.
 /*
 
-C function : g_file_copy_attributes
+C function
+
+g_file_copy_attributes
 */
 func (recv *File) CopyAttributes(destination *File, flags FileCopyFlags, cancellable *Cancellable) (bool, error) {
 	c_destination := (*C.GFile)(destination.ToC())
@@ -1522,7 +1614,9 @@ func (recv *File) CopyAttributes(destination *File, flags FileCopyFlags, cancell
 // Finishes copying the file started with g_file_copy_async().
 /*
 
-C function : g_file_copy_finish
+C function
+
+g_file_copy_finish
 */
 func (recv *File) CopyFinish(res *AsyncResult) (bool, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
@@ -1561,7 +1655,9 @@ func (recv *File) CopyFinish(res *AsyncResult) (bool, error) {
 // of filesystem the file is on.
 /*
 
-C function : g_file_create
+C function
+
+g_file_create
 */
 func (recv *File) Create(flags FileCreateFlags, cancellable *Cancellable) (*FileOutputStream, error) {
 	c_flags := (C.GFileCreateFlags)(flags)
@@ -1590,7 +1686,9 @@ func (recv *File) Create(flags FileCreateFlags, cancellable *Cancellable) (*File
 // g_file_create_async().
 /*
 
-C function : g_file_create_finish
+C function
+
+g_file_create_finish
 */
 func (recv *File) CreateFinish(res *AsyncResult) (*FileOutputStream, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
@@ -1616,7 +1714,9 @@ func (recv *File) CreateFinish(res *AsyncResult) (*FileOutputStream, error) {
 // was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
 /*
 
-C function : g_file_delete
+C function
+
+g_file_delete
 */
 func (recv *File) Delete(cancellable *Cancellable) (bool, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -1644,7 +1744,9 @@ func (recv *File) Delete(cancellable *Cancellable) (bool, error) {
 // This call does no blocking I/O.
 /*
 
-C function : g_file_dup
+C function
+
+g_file_dup
 */
 func (recv *File) Dup() *File {
 	retC := C.g_file_dup((*C.GFile)(recv.native))
@@ -1659,7 +1761,9 @@ func (recv *File) Dup() *File {
 // g_file_eject_mountable().
 /*
 
-C function : g_file_eject_mountable_finish
+C function
+
+g_file_eject_mountable_finish
 */
 func (recv *File) EjectMountableFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -1702,7 +1806,9 @@ func (recv *File) EjectMountableFinish(result *AsyncResult) (bool, error) {
 // error will be returned. Other errors are possible too.
 /*
 
-C function : g_file_enumerate_children
+C function
+
+g_file_enumerate_children
 */
 func (recv *File) EnumerateChildren(attributes string, flags FileQueryInfoFlags, cancellable *Cancellable) (*FileEnumerator, error) {
 	c_attributes := C.CString(attributes)
@@ -1734,7 +1840,9 @@ func (recv *File) EnumerateChildren(attributes string, flags FileQueryInfoFlags,
 // See g_file_enumerate_children_async().
 /*
 
-C function : g_file_enumerate_children_finish
+C function
+
+g_file_enumerate_children_finish
 */
 func (recv *File) EnumerateChildrenFinish(res *AsyncResult) (*FileEnumerator, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
@@ -1761,7 +1869,9 @@ func (recv *File) EnumerateChildrenFinish(res *AsyncResult) (*FileEnumerator, er
 // This call does no blocking I/O.
 /*
 
-C function : g_file_equal
+C function
+
+g_file_equal
 */
 func (recv *File) Equal(file2 *File) bool {
 	c_file2 := (*C.GFile)(file2.ToC())
@@ -1783,7 +1893,9 @@ func (recv *File) Equal(file2 *File) bool {
 // was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
 /*
 
-C function : g_file_find_enclosing_mount
+C function
+
+g_file_find_enclosing_mount
 */
 func (recv *File) FindEnclosingMount(cancellable *Cancellable) (*Mount, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -1810,7 +1922,9 @@ func (recv *File) FindEnclosingMount(cancellable *Cancellable) (*Mount, error) {
 // See g_file_find_enclosing_mount_async().
 /*
 
-C function : g_file_find_enclosing_mount_finish
+C function
+
+g_file_find_enclosing_mount_finish
 */
 func (recv *File) FindEnclosingMountFinish(res *AsyncResult) (*Mount, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
@@ -1843,7 +1957,9 @@ func (recv *File) FindEnclosingMountFinish(res *AsyncResult) (*Mount, error) {
 // This call does no blocking I/O.
 /*
 
-C function : g_file_get_basename
+C function
+
+g_file_get_basename
 */
 func (recv *File) GetBasename() string {
 	retC := C.g_file_get_basename((*C.GFile)(recv.native))
@@ -1862,7 +1978,9 @@ func (recv *File) GetBasename() string {
 // This call does no blocking I/O.
 /*
 
-C function : g_file_get_child
+C function
+
+g_file_get_child
 */
 func (recv *File) GetChild(name string) *File {
 	c_name := C.CString(name)
@@ -1884,7 +2002,9 @@ func (recv *File) GetChild(name string) *File {
 // This call does no blocking I/O.
 /*
 
-C function : g_file_get_child_for_display_name
+C function
+
+g_file_get_child_for_display_name
 */
 func (recv *File) GetChildForDisplayName(displayName string) (*File, error) {
 	c_display_name := C.CString(displayName)
@@ -1910,7 +2030,9 @@ func (recv *File) GetChildForDisplayName(displayName string) (*File, error) {
 // This call does no blocking I/O.
 /*
 
-C function : g_file_get_parent
+C function
+
+g_file_get_parent
 */
 func (recv *File) GetParent() *File {
 	retC := C.g_file_get_parent((*C.GFile)(recv.native))
@@ -1940,7 +2062,9 @@ func (recv *File) GetParent() *File {
 // This call does no blocking I/O.
 /*
 
-C function : g_file_get_parse_name
+C function
+
+g_file_get_parse_name
 */
 func (recv *File) GetParseName() string {
 	retC := C.g_file_get_parse_name((*C.GFile)(recv.native))
@@ -1956,7 +2080,9 @@ func (recv *File) GetParseName() string {
 // This call does no blocking I/O.
 /*
 
-C function : g_file_get_path
+C function
+
+g_file_get_path
 */
 func (recv *File) GetPath() string {
 	retC := C.g_file_get_path((*C.GFile)(recv.native))
@@ -1971,7 +2097,9 @@ func (recv *File) GetPath() string {
 // This call does no blocking I/O.
 /*
 
-C function : g_file_get_relative_path
+C function
+
+g_file_get_relative_path
 */
 func (recv *File) GetRelativePath(descendant *File) string {
 	c_descendant := (*C.GFile)(descendant.ToC())
@@ -1988,7 +2116,9 @@ func (recv *File) GetRelativePath(descendant *File) string {
 // This call does no blocking I/O.
 /*
 
-C function : g_file_get_uri
+C function
+
+g_file_get_uri
 */
 func (recv *File) GetUri() string {
 	retC := C.g_file_get_uri((*C.GFile)(recv.native))
@@ -2008,7 +2138,9 @@ func (recv *File) GetUri() string {
 // This call does no blocking I/O.
 /*
 
-C function : g_file_get_uri_scheme
+C function
+
+g_file_get_uri_scheme
 */
 func (recv *File) GetUriScheme() string {
 	retC := C.g_file_get_uri_scheme((*C.GFile)(recv.native))
@@ -2034,7 +2166,9 @@ func (recv *File) GetUriScheme() string {
 // of @prefix.
 /*
 
-C function : g_file_has_prefix
+C function
+
+g_file_has_prefix
 */
 func (recv *File) HasPrefix(prefix *File) bool {
 	c_prefix := (*C.GFile)(prefix.ToC())
@@ -2050,7 +2184,9 @@ func (recv *File) HasPrefix(prefix *File) bool {
 // This call does no blocking I/O.
 /*
 
-C function : g_file_has_uri_scheme
+C function
+
+g_file_has_uri_scheme
 */
 func (recv *File) HasUriScheme(uriScheme string) bool {
 	c_uri_scheme := C.CString(uriScheme)
@@ -2067,7 +2203,9 @@ func (recv *File) HasUriScheme(uriScheme string) bool {
 // This call does no blocking I/O.
 /*
 
-C function : g_file_hash
+C function
+
+g_file_hash
 */
 func (recv *File) Hash() uint32 {
 	retC := C.g_file_hash((C.gconstpointer)(recv.native))
@@ -2089,7 +2227,9 @@ func (recv *File) Hash() uint32 {
 // This call does no blocking I/O.
 /*
 
-C function : g_file_is_native
+C function
+
+g_file_is_native
 */
 func (recv *File) IsNative() bool {
 	retC := C.g_file_is_native((*C.GFile)(recv.native))
@@ -2124,7 +2264,9 @@ func (recv *File) IsNative() bool {
 // was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
 /*
 
-C function : g_file_make_directory
+C function
+
+g_file_make_directory
 */
 func (recv *File) MakeDirectory(cancellable *Cancellable) (bool, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -2153,7 +2295,9 @@ func (recv *File) MakeDirectory(cancellable *Cancellable) (bool, error) {
 // was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
 /*
 
-C function : g_file_make_symbolic_link
+C function
+
+g_file_make_symbolic_link
 */
 func (recv *File) MakeSymbolicLink(symlinkValue string, cancellable *Cancellable) (bool, error) {
 	c_symlink_value := C.CString(symlinkValue)
@@ -2191,7 +2335,9 @@ func (recv *File) MakeSymbolicLink(symlinkValue string, cancellable *Cancellable
 // you must register individual watches with g_file_monitor().
 /*
 
-C function : g_file_monitor_directory
+C function
+
+g_file_monitor_directory
 */
 func (recv *File) MonitorDirectory(flags FileMonitorFlags, cancellable *Cancellable) (*FileMonitor, error) {
 	c_flags := (C.GFileMonitorFlags)(flags)
@@ -2230,7 +2376,9 @@ func (recv *File) MonitorDirectory(flags FileMonitorFlags, cancellable *Cancella
 // backend and/or filesystem type.
 /*
 
-C function : g_file_monitor_file
+C function
+
+g_file_monitor_file
 */
 func (recv *File) MonitorFile(flags FileMonitorFlags, cancellable *Cancellable) (*FileMonitor, error) {
 	c_flags := (C.GFileMonitorFlags)(flags)
@@ -2258,7 +2406,9 @@ func (recv *File) MonitorFile(flags FileMonitorFlags, cancellable *Cancellable) 
 // Finishes a mount operation started by g_file_mount_enclosing_volume().
 /*
 
-C function : g_file_mount_enclosing_volume_finish
+C function
+
+g_file_mount_enclosing_volume_finish
 */
 func (recv *File) MountEnclosingVolumeFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -2284,7 +2434,9 @@ func (recv *File) MountEnclosingVolumeFinish(result *AsyncResult) (bool, error) 
 // with g_file_mount_mountable().
 /*
 
-C function : g_file_mount_mountable_finish
+C function
+
+g_file_mount_mountable_finish
 */
 func (recv *File) MountMountableFinish(result *AsyncResult) (*File, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -2312,7 +2464,9 @@ func (recv *File) MountMountableFinish(result *AsyncResult) (*File, error) {
 // was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
 /*
 
-C function : g_file_query_default_handler
+C function
+
+g_file_query_default_handler
 */
 func (recv *File) QueryDefaultHandler(cancellable *Cancellable) (*AppInfo, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -2357,7 +2511,9 @@ func (recv *File) QueryDefaultHandler(cancellable *Cancellable) (*AppInfo, error
 // that can happen due to races when you execute the operation.
 /*
 
-C function : g_file_query_exists
+C function
+
+g_file_query_exists
 */
 func (recv *File) QueryExists(cancellable *Cancellable) bool {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -2398,7 +2554,9 @@ func (recv *File) QueryExists(cancellable *Cancellable) bool {
 // kind of filesystem the file is on.
 /*
 
-C function : g_file_query_filesystem_info
+C function
+
+g_file_query_filesystem_info
 */
 func (recv *File) QueryFilesystemInfo(attributes string, cancellable *Cancellable) (*FileInfo, error) {
 	c_attributes := C.CString(attributes)
@@ -2428,7 +2586,9 @@ func (recv *File) QueryFilesystemInfo(attributes string, cancellable *Cancellabl
 // See g_file_query_filesystem_info_async().
 /*
 
-C function : g_file_query_filesystem_info_finish
+C function
+
+g_file_query_filesystem_info_finish
 */
 func (recv *File) QueryFilesystemInfoFinish(res *AsyncResult) (*FileInfo, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
@@ -2478,7 +2638,9 @@ func (recv *File) QueryFilesystemInfoFinish(res *AsyncResult) (*FileInfo, error)
 // filesystem the file is on.
 /*
 
-C function : g_file_query_info
+C function
+
+g_file_query_info
 */
 func (recv *File) QueryInfo(attributes string, flags FileQueryInfoFlags, cancellable *Cancellable) (*FileInfo, error) {
 	c_attributes := C.CString(attributes)
@@ -2510,7 +2672,9 @@ func (recv *File) QueryInfo(attributes string, flags FileQueryInfoFlags, cancell
 // See g_file_query_info_async().
 /*
 
-C function : g_file_query_info_finish
+C function
+
+g_file_query_info_finish
 */
 func (recv *File) QueryInfoFinish(res *AsyncResult) (*FileInfo, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
@@ -2540,7 +2704,9 @@ func (recv *File) QueryInfoFinish(res *AsyncResult) (*FileInfo, error) {
 // was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
 /*
 
-C function : g_file_query_settable_attributes
+C function
+
+g_file_query_settable_attributes
 */
 func (recv *File) QuerySettableAttributes(cancellable *Cancellable) (*FileAttributeInfoList, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -2570,7 +2736,9 @@ func (recv *File) QuerySettableAttributes(cancellable *Cancellable) (*FileAttrib
 // was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
 /*
 
-C function : g_file_query_writable_namespaces
+C function
+
+g_file_query_writable_namespaces
 */
 func (recv *File) QueryWritableNamespaces(cancellable *Cancellable) (*FileAttributeInfoList, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -2604,7 +2772,9 @@ func (recv *File) QueryWritableNamespaces(cancellable *Cancellable) (*FileAttrib
 // on what kind of filesystem the file is on.
 /*
 
-C function : g_file_read
+C function
+
+g_file_read
 */
 func (recv *File) Read(cancellable *Cancellable) (*FileInputStream, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -2631,7 +2801,9 @@ func (recv *File) Read(cancellable *Cancellable) (*FileInputStream, error) {
 // g_file_read_async().
 /*
 
-C function : g_file_read_finish
+C function
+
+g_file_read_finish
 */
 func (recv *File) ReadFinish(res *AsyncResult) (*FileInputStream, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
@@ -2692,7 +2864,9 @@ func (recv *File) ReadFinish(res *AsyncResult) (*FileInputStream, error) {
 // possible too, and depend on what kind of filesystem the file is on.
 /*
 
-C function : g_file_replace
+C function
+
+g_file_replace
 */
 func (recv *File) Replace(etag string, makeBackup bool, flags FileCreateFlags, cancellable *Cancellable) (*FileOutputStream, error) {
 	c_etag := C.CString(etag)
@@ -2741,7 +2915,9 @@ func (recv *File) Replace(etag string, makeBackup bool, flags FileCreateFlags, c
 // changed the next time it is saved over.
 /*
 
-C function : g_file_replace_contents
+C function
+
+g_file_replace_contents
 */
 func (recv *File) ReplaceContents(contents []uint8, etag string, makeBackup bool, flags FileCreateFlags, cancellable *Cancellable) (bool, string, error) {
 	c_contents := &contents[0]
@@ -2786,7 +2962,9 @@ func (recv *File) ReplaceContents(contents []uint8, etag string, makeBackup bool
 // tag for the document, if present.
 /*
 
-C function : g_file_replace_contents_finish
+C function
+
+g_file_replace_contents_finish
 */
 func (recv *File) ReplaceContentsFinish(res *AsyncResult) (bool, string, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
@@ -2813,7 +2991,9 @@ func (recv *File) ReplaceContentsFinish(res *AsyncResult) (bool, string, error) 
 // g_file_replace_async().
 /*
 
-C function : g_file_replace_finish
+C function
+
+g_file_replace_finish
 */
 func (recv *File) ReplaceFinish(res *AsyncResult) (*FileOutputStream, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
@@ -2836,7 +3016,9 @@ func (recv *File) ReplaceFinish(res *AsyncResult) (*FileOutputStream, error) {
 // This call does no blocking I/O.
 /*
 
-C function : g_file_resolve_relative_path
+C function
+
+g_file_resolve_relative_path
 */
 func (recv *File) ResolveRelativePath(relativePath string) *File {
 	c_relative_path := C.CString(relativePath)
@@ -2858,7 +3040,9 @@ func (recv *File) ResolveRelativePath(relativePath string) *File {
 // was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
 /*
 
-C function : g_file_set_attribute
+C function
+
+g_file_set_attribute
 */
 func (recv *File) SetAttribute(attribute string, type_ FileAttributeType, valueP uintptr, flags FileQueryInfoFlags, cancellable *Cancellable) (bool, error) {
 	c_attribute := C.CString(attribute)
@@ -2897,7 +3081,9 @@ func (recv *File) SetAttribute(attribute string, type_ FileAttributeType, valueP
 // was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
 /*
 
-C function : g_file_set_attribute_byte_string
+C function
+
+g_file_set_attribute_byte_string
 */
 func (recv *File) SetAttributeByteString(attribute string, value string, flags FileQueryInfoFlags, cancellable *Cancellable) (bool, error) {
 	c_attribute := C.CString(attribute)
@@ -2934,7 +3120,9 @@ func (recv *File) SetAttributeByteString(attribute string, value string, flags F
 // was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
 /*
 
-C function : g_file_set_attribute_int32
+C function
+
+g_file_set_attribute_int32
 */
 func (recv *File) SetAttributeInt32(attribute string, value int32, flags FileQueryInfoFlags, cancellable *Cancellable) (bool, error) {
 	c_attribute := C.CString(attribute)
@@ -2970,7 +3158,9 @@ func (recv *File) SetAttributeInt32(attribute string, value int32, flags FileQue
 // was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
 /*
 
-C function : g_file_set_attribute_int64
+C function
+
+g_file_set_attribute_int64
 */
 func (recv *File) SetAttributeInt64(attribute string, value int64, flags FileQueryInfoFlags, cancellable *Cancellable) (bool, error) {
 	c_attribute := C.CString(attribute)
@@ -3006,7 +3196,9 @@ func (recv *File) SetAttributeInt64(attribute string, value int64, flags FileQue
 // was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
 /*
 
-C function : g_file_set_attribute_string
+C function
+
+g_file_set_attribute_string
 */
 func (recv *File) SetAttributeString(attribute string, value string, flags FileQueryInfoFlags, cancellable *Cancellable) (bool, error) {
 	c_attribute := C.CString(attribute)
@@ -3043,7 +3235,9 @@ func (recv *File) SetAttributeString(attribute string, value string, flags FileQ
 // was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
 /*
 
-C function : g_file_set_attribute_uint32
+C function
+
+g_file_set_attribute_uint32
 */
 func (recv *File) SetAttributeUint32(attribute string, value uint32, flags FileQueryInfoFlags, cancellable *Cancellable) (bool, error) {
 	c_attribute := C.CString(attribute)
@@ -3079,7 +3273,9 @@ func (recv *File) SetAttributeUint32(attribute string, value uint32, flags FileQ
 // was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
 /*
 
-C function : g_file_set_attribute_uint64
+C function
+
+g_file_set_attribute_uint64
 */
 func (recv *File) SetAttributeUint64(attribute string, value uint64, flags FileQueryInfoFlags, cancellable *Cancellable) (bool, error) {
 	c_attribute := C.CString(attribute)
@@ -3112,7 +3308,9 @@ func (recv *File) SetAttributeUint64(attribute string, value uint64, flags FileQ
 // Finishes setting an attribute started in g_file_set_attributes_async().
 /*
 
-C function : g_file_set_attributes_finish
+C function
+
+g_file_set_attributes_finish
 */
 func (recv *File) SetAttributesFinish(result *AsyncResult) (bool, *FileInfo, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -3148,7 +3346,9 @@ func (recv *File) SetAttributesFinish(result *AsyncResult) (bool, *FileInfo, err
 // was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
 /*
 
-C function : g_file_set_attributes_from_info
+C function
+
+g_file_set_attributes_from_info
 */
 func (recv *File) SetAttributesFromInfo(info *FileInfo, flags FileQueryInfoFlags, cancellable *Cancellable) (bool, error) {
 	c_info := (*C.GFileInfo)(C.NULL)
@@ -3193,7 +3393,9 @@ func (recv *File) SetAttributesFromInfo(info *FileInfo, flags FileQueryInfoFlags
 // was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
 /*
 
-C function : g_file_set_display_name
+C function
+
+g_file_set_display_name
 */
 func (recv *File) SetDisplayName(displayName string, cancellable *Cancellable) (*File, error) {
 	c_display_name := C.CString(displayName)
@@ -3223,7 +3425,9 @@ func (recv *File) SetDisplayName(displayName string, cancellable *Cancellable) (
 // g_file_set_display_name_async().
 /*
 
-C function : g_file_set_display_name_finish
+C function
+
+g_file_set_display_name_finish
 */
 func (recv *File) SetDisplayNameFinish(res *AsyncResult) (*File, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
@@ -3251,7 +3455,9 @@ func (recv *File) SetDisplayNameFinish(res *AsyncResult) (*File, error) {
 // was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
 /*
 
-C function : g_file_trash
+C function
+
+g_file_trash
 */
 func (recv *File) Trash(cancellable *Cancellable) (bool, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -3280,7 +3486,9 @@ func (recv *File) Trash(cancellable *Cancellable) (bool, error) {
 // with g_file_unmount_mountable().
 /*
 
-C function : g_file_unmount_mountable_finish
+C function
+
+g_file_unmount_mountable_finish
 */
 func (recv *File) UnmountMountableFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -3306,7 +3514,9 @@ func (recv *File) UnmountMountableFinish(result *AsyncResult) (bool, error) {
 // file when using it.
 /*
 
-C record/class : GFileDescriptorBased
+C type
+
+GFileDescriptorBased
 */
 type FileDescriptorBased struct {
 	native *C.GFileDescriptorBased
@@ -3358,7 +3568,9 @@ func (recv *FileDescriptorBased) ToC() unsafe.Pointer {
 // types.
 /*
 
-C record/class : GIcon
+C type
+
+GIcon
 */
 type Icon struct {
 	native *C.GIcon
@@ -3383,7 +3595,9 @@ func (recv *Icon) ToC() unsafe.Pointer {
 // Checks if two icons are equal.
 /*
 
-C function : g_icon_equal
+C function
+
+g_icon_equal
 */
 func (recv *Icon) Equal(icon2 *Icon) bool {
 	c_icon2 := (*C.GIcon)(icon2.ToC())
@@ -3443,7 +3657,9 @@ func (recv *Icon) Equal(icon2 *Icon) bool {
 // in effect at the time that the model was created.
 /*
 
-C record/class : GListModel
+C type
+
+GListModel
 */
 type ListModel struct {
 	native *C.GListModel
@@ -3469,7 +3685,9 @@ func (recv *ListModel) ToC() unsafe.Pointer {
 // load icons from streams.
 /*
 
-C record/class : GLoadableIcon
+C type
+
+GLoadableIcon
 */
 type LoadableIcon struct {
 	native *C.GLoadableIcon
@@ -3495,7 +3713,9 @@ func (recv *LoadableIcon) ToC() unsafe.Pointer {
 // see g_loadable_icon_load_async().
 /*
 
-C function : g_loadable_icon_load
+C function
+
+g_loadable_icon_load
 */
 func (recv *LoadableIcon) Load(size int32, cancellable *Cancellable) (*InputStream, string, error) {
 	c_size := (C.int)(size)
@@ -3528,7 +3748,9 @@ func (recv *LoadableIcon) Load(size int32, cancellable *Cancellable) (*InputStre
 // Finishes an asynchronous icon load started in g_loadable_icon_load_async().
 /*
 
-C function : g_loadable_icon_load_finish
+C function
+
+g_loadable_icon_load_finish
 */
 func (recv *LoadableIcon) LoadFinish(res *AsyncResult) (*InputStream, string, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
@@ -3572,7 +3794,9 @@ func (recv *LoadableIcon) LoadFinish(res *AsyncResult) (*InputStream, string, er
 // is called, then it will be filled with any error information.
 /*
 
-C record/class : GMount
+C type
+
+GMount
 */
 type Mount struct {
 	native *C.GMount
@@ -3711,7 +3935,9 @@ func mount_unmountedHandler(_ *C.GObject, data C.gpointer) {
 // Checks if @mount can be ejected.
 /*
 
-C function : g_mount_can_eject
+C function
+
+g_mount_can_eject
 */
 func (recv *Mount) CanEject() bool {
 	retC := C.g_mount_can_eject((*C.GMount)(recv.native))
@@ -3723,7 +3949,9 @@ func (recv *Mount) CanEject() bool {
 // Checks if @mount can be unmounted.
 /*
 
-C function : g_mount_can_unmount
+C function
+
+g_mount_can_unmount
 */
 func (recv *Mount) CanUnmount() bool {
 	retC := C.g_mount_can_unmount((*C.GMount)(recv.native))
@@ -3738,7 +3966,9 @@ func (recv *Mount) CanUnmount() bool {
 // @error will be set to contain the errors and %FALSE will be returned.
 /*
 
-C function : g_mount_eject_finish
+C function
+
+g_mount_eject_finish
 */
 func (recv *Mount) EjectFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -3761,7 +3991,9 @@ func (recv *Mount) EjectFinish(result *AsyncResult) (bool, error) {
 // the home directory, or the root of the volume).
 /*
 
-C function : g_mount_get_default_location
+C function
+
+g_mount_get_default_location
 */
 func (recv *Mount) GetDefaultLocation() *File {
 	retC := C.g_mount_get_default_location((*C.GMount)(recv.native))
@@ -3776,7 +4008,9 @@ func (recv *Mount) GetDefaultLocation() *File {
 // using that object to get the #GDrive.
 /*
 
-C function : g_mount_get_drive
+C function
+
+g_mount_get_drive
 */
 func (recv *Mount) GetDrive() *Drive {
 	retC := C.g_mount_get_drive((*C.GMount)(recv.native))
@@ -3788,7 +4022,9 @@ func (recv *Mount) GetDrive() *Drive {
 // Gets the icon for @mount.
 /*
 
-C function : g_mount_get_icon
+C function
+
+g_mount_get_icon
 */
 func (recv *Mount) GetIcon() *Icon {
 	retC := C.g_mount_get_icon((*C.GMount)(recv.native))
@@ -3800,7 +4036,9 @@ func (recv *Mount) GetIcon() *Icon {
 // Gets the name of @mount.
 /*
 
-C function : g_mount_get_name
+C function
+
+g_mount_get_name
 */
 func (recv *Mount) GetName() string {
 	retC := C.g_mount_get_name((*C.GMount)(recv.native))
@@ -3813,7 +4051,9 @@ func (recv *Mount) GetName() string {
 // Gets the root directory on @mount.
 /*
 
-C function : g_mount_get_root
+C function
+
+g_mount_get_root
 */
 func (recv *Mount) GetRoot() *File {
 	retC := C.g_mount_get_root((*C.GMount)(recv.native))
@@ -3828,7 +4068,9 @@ func (recv *Mount) GetRoot() *File {
 // available.
 /*
 
-C function : g_mount_get_uuid
+C function
+
+g_mount_get_uuid
 */
 func (recv *Mount) GetUuid() string {
 	retC := C.g_mount_get_uuid((*C.GMount)(recv.native))
@@ -3841,7 +4083,9 @@ func (recv *Mount) GetUuid() string {
 // Gets the volume for the @mount.
 /*
 
-C function : g_mount_get_volume
+C function
+
+g_mount_get_volume
 */
 func (recv *Mount) GetVolume() *Volume {
 	retC := C.g_mount_get_volume((*C.GMount)(recv.native))
@@ -3856,7 +4100,9 @@ func (recv *Mount) GetVolume() *Volume {
 // @error will be set to contain the errors and %FALSE will be returned.
 /*
 
-C function : g_mount_remount_finish
+C function
+
+g_mount_remount_finish
 */
 func (recv *Mount) RemountFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -3880,7 +4126,9 @@ func (recv *Mount) RemountFinish(result *AsyncResult) (bool, error) {
 // @error will be set to contain the errors and %FALSE will be returned.
 /*
 
-C function : g_mount_unmount_finish
+C function
+
+g_mount_unmount_finish
 */
 func (recv *Mount) UnmountFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -3921,7 +4169,9 @@ func (recv *Mount) UnmountFinish(result *AsyncResult) (bool, error) {
 // invocations that arrive by way of D-Bus.
 /*
 
-C record/class : GRemoteActionGroup
+C type
+
+GRemoteActionGroup
 */
 type RemoteActionGroup struct {
 	native *C.GRemoteActionGroup
@@ -3959,7 +4209,9 @@ func (recv *RemoteActionGroup) ToC() unsafe.Pointer {
 // usually cause the stream to resize by introducing zero bytes.
 /*
 
-C record/class : GSeekable
+C type
+
+GSeekable
 */
 type Seekable struct {
 	native *C.GSeekable
@@ -3984,7 +4236,9 @@ func (recv *Seekable) ToC() unsafe.Pointer {
 // Tests if the stream supports the #GSeekableIface.
 /*
 
-C function : g_seekable_can_seek
+C function
+
+g_seekable_can_seek
 */
 func (recv *Seekable) CanSeek() bool {
 	retC := C.g_seekable_can_seek((*C.GSeekable)(recv.native))
@@ -3997,7 +4251,9 @@ func (recv *Seekable) CanSeek() bool {
 // g_seekable_truncate().
 /*
 
-C function : g_seekable_can_truncate
+C function
+
+g_seekable_can_truncate
 */
 func (recv *Seekable) CanTruncate() bool {
 	retC := C.g_seekable_can_truncate((*C.GSeekable)(recv.native))
@@ -4022,7 +4278,9 @@ func (recv *Seekable) CanTruncate() bool {
 // was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
 /*
 
-C function : g_seekable_seek
+C function
+
+g_seekable_seek
 */
 func (recv *Seekable) Seek(offset uint64, type_ glib.SeekType, cancellable *Cancellable) (bool, error) {
 	c_offset := (C.goffset)(offset)
@@ -4050,7 +4308,9 @@ func (recv *Seekable) Seek(offset uint64, type_ glib.SeekType, cancellable *Canc
 // Tells the current position within the stream.
 /*
 
-C function : g_seekable_tell
+C function
+
+g_seekable_tell
 */
 func (recv *Seekable) Tell() uint64 {
 	retC := C.g_seekable_tell((*C.GSeekable)(recv.native))
@@ -4070,7 +4330,9 @@ func (recv *Seekable) Tell() uint64 {
 // partial result will be returned, without an error.
 /*
 
-C function : g_seekable_truncate
+C function
+
+g_seekable_truncate
 */
 func (recv *Seekable) Truncate(offset uint64, cancellable *Cancellable) (bool, error) {
 	c_offset := (C.goffset)(offset)
@@ -4152,7 +4414,9 @@ func (recv *Seekable) Truncate(offset uint64, cancellable *Cancellable) (bool, e
 // ]|
 /*
 
-C record/class : GSocketConnectable
+C type
+
+GSocketConnectable
 */
 type SocketConnectable struct {
 	native *C.GSocketConnectable
@@ -4197,7 +4461,7 @@ func (recv *SocketConnectable) ToC() unsafe.Pointer {
 // successfully.  If an @error is present when g_volume_mount_finish()
 // is called, then it will be filled with any error information.
 //
-// ## Volume Identifiers # {#volume-identifier}
+// Volume Identifiers # {#volume-identifier}
 //
 // It is sometimes necessary to directly access the underlying
 // operating system object behind a volume (e.g. for passing a volume
@@ -4217,7 +4481,9 @@ func (recv *SocketConnectable) ToC() unsafe.Pointer {
 // libhal_manager_find_device_string_match().
 /*
 
-C record/class : GVolume
+C type
+
+GVolume
 */
 type Volume struct {
 	native *C.GVolume
@@ -4356,7 +4622,9 @@ func volume_removedHandler(_ *C.GObject, data C.gpointer) {
 // Checks if a volume can be ejected.
 /*
 
-C function : g_volume_can_eject
+C function
+
+g_volume_can_eject
 */
 func (recv *Volume) CanEject() bool {
 	retC := C.g_volume_can_eject((*C.GVolume)(recv.native))
@@ -4368,7 +4636,9 @@ func (recv *Volume) CanEject() bool {
 // Checks if a volume can be mounted.
 /*
 
-C function : g_volume_can_mount
+C function
+
+g_volume_can_mount
 */
 func (recv *Volume) CanMount() bool {
 	retC := C.g_volume_can_mount((*C.GVolume)(recv.native))
@@ -4383,7 +4653,9 @@ func (recv *Volume) CanMount() bool {
 // @error will be set to contain the errors and %FALSE will be returned.
 /*
 
-C function : g_volume_eject_finish
+C function
+
+g_volume_eject_finish
 */
 func (recv *Volume) EjectFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -4406,7 +4678,9 @@ func (recv *Volume) EjectFinish(result *AsyncResult) (bool, error) {
 // Gets the drive for the @volume.
 /*
 
-C function : g_volume_get_drive
+C function
+
+g_volume_get_drive
 */
 func (recv *Volume) GetDrive() *Drive {
 	retC := C.g_volume_get_drive((*C.GVolume)(recv.native))
@@ -4418,7 +4692,9 @@ func (recv *Volume) GetDrive() *Drive {
 // Gets the icon for @volume.
 /*
 
-C function : g_volume_get_icon
+C function
+
+g_volume_get_icon
 */
 func (recv *Volume) GetIcon() *Icon {
 	retC := C.g_volume_get_icon((*C.GVolume)(recv.native))
@@ -4432,7 +4708,9 @@ func (recv *Volume) GetIcon() *Icon {
 // information about volume identifiers.
 /*
 
-C function : g_volume_get_identifier
+C function
+
+g_volume_get_identifier
 */
 func (recv *Volume) GetIdentifier(kind string) string {
 	c_kind := C.CString(kind)
@@ -4448,7 +4726,9 @@ func (recv *Volume) GetIdentifier(kind string) string {
 // Gets the mount for the @volume.
 /*
 
-C function : g_volume_get_mount
+C function
+
+g_volume_get_mount
 */
 func (recv *Volume) GetMount() *Mount {
 	retC := C.g_volume_get_mount((*C.GVolume)(recv.native))
@@ -4460,7 +4740,9 @@ func (recv *Volume) GetMount() *Mount {
 // Gets the name of @volume.
 /*
 
-C function : g_volume_get_name
+C function
+
+g_volume_get_name
 */
 func (recv *Volume) GetName() string {
 	retC := C.g_volume_get_name((*C.GVolume)(recv.native))
@@ -4476,7 +4758,9 @@ func (recv *Volume) GetName() string {
 // available.
 /*
 
-C function : g_volume_get_uuid
+C function
+
+g_volume_get_uuid
 */
 func (recv *Volume) GetUuid() string {
 	retC := C.g_volume_get_uuid((*C.GVolume)(recv.native))
@@ -4497,7 +4781,9 @@ func (recv *Volume) GetUuid() string {
 // #GVolumeMonitor.
 /*
 
-C function : g_volume_mount_finish
+C function
+
+g_volume_mount_finish
 */
 func (recv *Volume) MountFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -4518,7 +4804,9 @@ func (recv *Volume) MountFinish(result *AsyncResult) (bool, error) {
 // Returns whether the volume should be automatically mounted.
 /*
 
-C function : g_volume_should_automount
+C function
+
+g_volume_should_automount
 */
 func (recv *Volume) ShouldAutomount() bool {
 	retC := C.g_volume_should_automount((*C.GVolume)(recv.native))

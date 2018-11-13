@@ -28,7 +28,9 @@ import "C"
 // g_param_spec_get_redirect_target().
 /*
 
-C function : g_object_class_override_property
+C function
+
+g_object_class_override_property
 */
 func (recv *ObjectClass) OverrideProperty(propertyId uint32, name string) {
 	c_property_id := (C.guint)(propertyId)
@@ -105,7 +107,9 @@ func (recv *ObjectClass) OverrideProperty(propertyId uint32, name string) {
 // ]|
 /*
 
-C function : g_type_class_add_private
+C function
+
+g_type_class_add_private
 */
 func (recv *TypeClass) AddPrivate(privateSize uint64) {
 	c_private_size := (C.gsize)(privateSize)
@@ -120,7 +124,9 @@ func (recv *TypeClass) AddPrivate(privateSize uint64) {
 // the caller doesn't have to unref it any more.
 /*
 
-C function : g_value_take_boxed
+C function
+
+g_value_take_boxed
 */
 func (recv *Value) TakeBoxed(vBoxed uintptr) {
 	c_v_boxed := (C.gconstpointer)(vBoxed)
@@ -139,7 +145,9 @@ func (recv *Value) TakeBoxed(vBoxed uintptr) {
 // g_value_set_object() instead.
 /*
 
-C function : g_value_take_object
+C function
+
+g_value_take_object
 */
 func (recv *Value) TakeObject(vObject uintptr) {
 	c_v_object := (C.gpointer)(vObject)
@@ -154,7 +162,9 @@ func (recv *Value) TakeObject(vObject uintptr) {
 // Sets the contents of a %G_TYPE_STRING #GValue to @v_string.
 /*
 
-C function : g_value_take_string
+C function
+
+g_value_take_string
 */
 func (recv *Value) TakeString(vString string) {
 	c_v_string := C.CString(vString)

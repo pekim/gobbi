@@ -26,7 +26,9 @@ import "C"
 // if it is called from inside a test function.
 /*
 
-C function : g_test_failed
+C function
+
+g_test_failed
 */
 func TestFailed() bool {
 	retC := C.g_test_failed()
@@ -42,7 +44,9 @@ func TestFailed() bool {
 // but you don't need to free the return value.
 /*
 
-C function : g_test_get_dir
+C function
+
+g_test_get_dir
 */
 func TestGetDir(fileType TestFileType) string {
 	c_file_type := (C.GTestFileType)(fileType)
@@ -67,7 +71,9 @@ func TestGetDir(fileType TestFileType) string {
 // If not called from inside a test, this function does nothing.
 /*
 
-C function : g_test_incomplete
+C function
+
+g_test_incomplete
 */
 func TestIncomplete(msg string) {
 	c_msg := C.CString(msg)
@@ -93,7 +99,9 @@ func TestIncomplete(msg string) {
 // This function can only be called after g_test_init().
 /*
 
-C function : g_test_set_nonfatal_assertions
+C function
+
+g_test_set_nonfatal_assertions
 */
 func TestSetNonfatalAssertions() {
 	C.g_test_set_nonfatal_assertions()
@@ -111,7 +119,9 @@ func TestSetNonfatalAssertions() {
 // If not called from inside a test, this function does nothing.
 /*
 
-C function : g_test_skip
+C function
+
+g_test_skip
 */
 func TestSkip(msg string) {
 	c_msg := C.CString(msg)
@@ -126,7 +136,9 @@ func TestSkip(msg string) {
 // program is running under g_test_trap_subprocess().
 /*
 
-C function : g_test_subprocess
+C function
+
+g_test_subprocess
 */
 func TestSubprocess() bool {
 	retC := C.g_test_subprocess()
@@ -198,7 +210,9 @@ func TestSubprocess() bool {
 // ]|
 /*
 
-C function : g_test_trap_subprocess
+C function
+
+g_test_trap_subprocess
 */
 func TestTrapSubprocess(testPath string, usecTimeout uint64, testFlags TestSubprocessFlags) {
 	c_test_path := C.CString(testPath)

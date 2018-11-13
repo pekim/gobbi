@@ -15,7 +15,9 @@ import "C"
 // Get the bounding box for text within the specified range.
 /*
 
-C function : atk_text_get_range_extents
+C function
+
+atk_text_get_range_extents
 */
 func (recv *Text) GetRangeExtents(startOffset int32, endOffset int32, coordType CoordType) *TextRectangle {
 	c_start_offset := (C.gint)(startOffset)

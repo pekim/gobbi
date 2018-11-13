@@ -19,7 +19,9 @@ import "C"
 // to gdk_init() or gdk_parse_args(), if any.
 /*
 
-C function : gdk_get_display_arg_name
+C function
+
+gdk_get_display_arg_name
 */
 func GetDisplayArgName() string {
 	retC := C.gdk_get_display_arg_name()
@@ -38,7 +40,9 @@ func GetDisplayArgName() string {
 // to disable that feature.
 /*
 
-C function : gdk_notify_startup_complete
+C function
+
+gdk_notify_startup_complete
 */
 func NotifyStartupComplete() {
 	C.gdk_notify_startup_complete()
@@ -61,7 +65,9 @@ func NotifyStartupComplete() {
 // changes to the screen’s font rendering settings.
 /*
 
-C function : gdk_pango_context_get_for_screen
+C function
+
+gdk_pango_context_get_for_screen
 */
 func PangoContextGetForScreen(screen *Screen) *pango.Context {
 	c_screen := (*C.GdkScreen)(C.NULL)
@@ -85,7 +91,9 @@ func PangoContextGetForScreen(screen *Screen) *pango.Context {
 // gtk_init(), gtk_init_check(), gdk_init(), or gdk_init_check().
 /*
 
-C function : gdk_parse_args
+C function
+
+gdk_parse_args
 */
 func ParseArgs(args []string) []string {
 	cArgc, cArgv := argsIn(args)

@@ -21,7 +21,9 @@ import "C"
 // to be activated.
 /*
 
-C function : gtk_binding_entry_skip
+C function
+
+gtk_binding_entry_skip
 */
 func BindingEntrySkip(bindingSet *BindingSet, keyval uint32, modifiers gdk.ModifierType) {
 	c_binding_set := (*C.GtkBindingSet)(C.NULL)
@@ -41,7 +43,9 @@ func BindingEntrySkip(bindingSet *BindingSet, keyval uint32, modifiers gdk.Modif
 // Creates a list of known paper sizes.
 /*
 
-C function : gtk_paper_size_get_paper_sizes
+C function
+
+gtk_paper_size_get_paper_sizes
 */
 func PaperSizeGetPaperSizes(includeCustom bool) *glib.List {
 	c_include_custom :=
@@ -58,7 +62,9 @@ func PaperSizeGetPaperSizes(includeCustom bool) *glib.List {
 // references to symbolic colors.
 /*
 
-C function : gtk_rc_parse_color_full
+C function
+
+gtk_rc_parse_color_full
 */
 func RcParseColorFull(scanner *glib.Scanner, style *RcStyle) (uint32, *gdk.Color) {
 	c_scanner := (*C.GScanner)(C.NULL)

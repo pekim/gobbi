@@ -29,7 +29,9 @@ import "C"
 // The list of device paths considered ‘system’ ones may change over time.
 /*
 
-C function : g_unix_is_system_device_path
+C function
+
+g_unix_is_system_device_path
 */
 func UnixIsSystemDevicePath(devicePath string) bool {
 	c_device_path := C.CString(devicePath)
@@ -50,7 +52,9 @@ func UnixIsSystemDevicePath(devicePath string) bool {
 // The list of file system types considered ‘system’ ones may change over time.
 /*
 
-C function : g_unix_is_system_fs_type
+C function
+
+g_unix_is_system_fs_type
 */
 func UnixIsSystemFsType(fsType string) bool {
 	c_fs_type := C.CString(fsType)

@@ -20,7 +20,9 @@ import "C"
 // See gtk_file_chooser_get_current_folder_uri().
 /*
 
-C function : gtk_file_chooser_get_current_folder_file
+C function
+
+gtk_file_chooser_get_current_folder_file
 */
 func (recv *FileChooser) GetCurrentFolderFile() *gio.File {
 	retC := C.gtk_file_chooser_get_current_folder_file((*C.GtkFileChooser)(recv.native))
@@ -37,7 +39,9 @@ func (recv *FileChooser) GetCurrentFolderFile() *gio.File {
 // folder.
 /*
 
-C function : gtk_file_chooser_get_file
+C function
+
+gtk_file_chooser_get_file
 */
 func (recv *FileChooser) GetFile() *gio.File {
 	retC := C.gtk_file_chooser_get_file((*C.GtkFileChooser)(recv.native))
@@ -50,7 +54,9 @@ func (recv *FileChooser) GetFile() *gio.File {
 // as #GFile. An internal function, see gtk_file_chooser_get_uris().
 /*
 
-C function : gtk_file_chooser_get_files
+C function
+
+gtk_file_chooser_get_files
 */
 func (recv *FileChooser) GetFiles() *glib.SList {
 	retC := C.gtk_file_chooser_get_files((*C.GtkFileChooser)(recv.native))
@@ -63,7 +69,9 @@ func (recv *FileChooser) GetFiles() *glib.SList {
 // Internal function, see gtk_file_chooser_get_preview_uri().
 /*
 
-C function : gtk_file_chooser_get_preview_file
+C function
+
+gtk_file_chooser_get_preview_file
 */
 func (recv *FileChooser) GetPreviewFile() *gio.File {
 	retC := C.gtk_file_chooser_get_preview_file((*C.GtkFileChooser)(recv.native))
@@ -81,7 +89,9 @@ func (recv *FileChooser) GetPreviewFile() *gio.File {
 // _gtk_file_chooser_select_uri().
 /*
 
-C function : gtk_file_chooser_select_file
+C function
+
+gtk_file_chooser_select_file
 */
 func (recv *FileChooser) SelectFile(file *gio.File) (bool, error) {
 	c_file := (*C.GFile)(file.ToC())
@@ -103,7 +113,9 @@ func (recv *FileChooser) SelectFile(file *gio.File) (bool, error) {
 // Internal function, see gtk_file_chooser_set_current_folder_uri().
 /*
 
-C function : gtk_file_chooser_set_current_folder_file
+C function
+
+gtk_file_chooser_set_current_folder_file
 */
 func (recv *FileChooser) SetCurrentFolderFile(file *gio.File) (bool, error) {
 	c_file := (*C.GFile)(file.ToC())
@@ -156,7 +168,9 @@ func (recv *FileChooser) SetCurrentFolderFile(file *gio.File) (bool, error) {
 // ]|
 /*
 
-C function : gtk_file_chooser_set_file
+C function
+
+gtk_file_chooser_set_file
 */
 func (recv *FileChooser) SetFile(file *gio.File) (bool, error) {
 	c_file := (*C.GFile)(file.ToC())
@@ -178,7 +192,9 @@ func (recv *FileChooser) SetFile(file *gio.File) (bool, error) {
 // directory, does not exist, or is otherwise not currently selected, does nothing.
 /*
 
-C function : gtk_file_chooser_unselect_file
+C function
+
+gtk_file_chooser_unselect_file
 */
 func (recv *FileChooser) UnselectFile(file *gio.File) {
 	c_file := (*C.GFile)(file.ToC())
@@ -192,7 +208,9 @@ func (recv *FileChooser) UnselectFile(file *gio.File) {
 // function directly, but rely on gtk_tool_item_get_icon_size() instead.
 /*
 
-C function : gtk_tool_shell_get_icon_size
+C function
+
+gtk_tool_shell_get_icon_size
 */
 func (recv *ToolShell) GetIconSize() IconSize {
 	retC := C.gtk_tool_shell_get_icon_size((*C.GtkToolShell)(recv.native))
@@ -206,7 +224,9 @@ func (recv *ToolShell) GetIconSize() IconSize {
 // instead.
 /*
 
-C function : gtk_tool_shell_get_orientation
+C function
+
+gtk_tool_shell_get_orientation
 */
 func (recv *ToolShell) GetOrientation() Orientation {
 	retC := C.gtk_tool_shell_get_orientation((*C.GtkToolShell)(recv.native))
@@ -219,7 +239,9 @@ func (recv *ToolShell) GetOrientation() Orientation {
 // function directly, but rely on gtk_tool_item_get_relief_style() instead.
 /*
 
-C function : gtk_tool_shell_get_relief_style
+C function
+
+gtk_tool_shell_get_relief_style
 */
 func (recv *ToolShell) GetReliefStyle() ReliefStyle {
 	retC := C.gtk_tool_shell_get_relief_style((*C.GtkToolShell)(recv.native))
@@ -233,7 +255,9 @@ func (recv *ToolShell) GetReliefStyle() ReliefStyle {
 // instead.
 /*
 
-C function : gtk_tool_shell_get_style
+C function
+
+gtk_tool_shell_get_style
 */
 func (recv *ToolShell) GetStyle() ToolbarStyle {
 	retC := C.gtk_tool_shell_get_style((*C.GtkToolShell)(recv.native))
@@ -250,7 +274,9 @@ func (recv *ToolShell) GetStyle() ToolbarStyle {
 // gtk_tool_item_rebuild_menu() instead.
 /*
 
-C function : gtk_tool_shell_rebuild_menu
+C function
+
+gtk_tool_shell_rebuild_menu
 */
 func (recv *ToolShell) RebuildMenu() {
 	C.gtk_tool_shell_rebuild_menu((*C.GtkToolShell)(recv.native))

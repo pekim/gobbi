@@ -23,7 +23,9 @@ import "C"
 // other object built by builder.
 /*
 
-C function : gtk_builder_expose_object
+C function
+
+gtk_builder_expose_object
 */
 func (recv *Builder) ExposeObject(name string, object *gobject.Object) {
 	c_name := C.CString(name)
@@ -44,7 +46,9 @@ func (recv *Builder) ExposeObject(name string, object *gobject.Object) {
 // Finishes an async icon load, see gtk_icon_info_load_icon_async().
 /*
 
-C function : gtk_icon_info_load_icon_finish
+C function
+
+gtk_icon_info_load_icon_finish
 */
 func (recv *IconInfo) LoadIconFinish(res *gio.AsyncResult) (*gdkpixbuf.Pixbuf, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
@@ -67,7 +71,9 @@ func (recv *IconInfo) LoadIconFinish(res *gio.AsyncResult) (*gdkpixbuf.Pixbuf, e
 // Finishes an async icon load, see gtk_icon_info_load_symbolic_async().
 /*
 
-C function : gtk_icon_info_load_symbolic_finish
+C function
+
+gtk_icon_info_load_symbolic_finish
 */
 func (recv *IconInfo) LoadSymbolicFinish(res *gio.AsyncResult) (*gdkpixbuf.Pixbuf, bool, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
@@ -94,7 +100,9 @@ func (recv *IconInfo) LoadSymbolicFinish(res *gio.AsyncResult) (*gdkpixbuf.Pixbu
 // Finishes an async icon load, see gtk_icon_info_load_symbolic_for_context_async().
 /*
 
-C function : gtk_icon_info_load_symbolic_for_context_finish
+C function
+
+gtk_icon_info_load_symbolic_for_context_finish
 */
 func (recv *IconInfo) LoadSymbolicForContextFinish(res *gio.AsyncResult) (*gdkpixbuf.Pixbuf, bool, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
@@ -119,7 +127,9 @@ func (recv *IconInfo) LoadSymbolicForContextFinish(res *gio.AsyncResult) (*gdkpi
 // Gets the setting set by gtk_icon_view_set_activate_on_single_click().
 /*
 
-C function : gtk_icon_view_get_activate_on_single_click
+C function
+
+gtk_icon_view_get_activate_on_single_click
 */
 func (recv *IconView) GetActivateOnSingleClick() bool {
 	retC := C.gtk_icon_view_get_activate_on_single_click((*C.GtkIconView)(recv.native))
@@ -132,7 +142,9 @@ func (recv *IconView) GetActivateOnSingleClick() bool {
 // a single click instead of a double click.
 /*
 
-C function : gtk_icon_view_set_activate_on_single_click
+C function
+
+gtk_icon_view_set_activate_on_single_click
 */
 func (recv *IconView) SetActivateOnSingleClick(single bool) {
 	c_single :=
@@ -146,7 +158,9 @@ func (recv *IconView) SetActivateOnSingleClick(single bool) {
 // Return the value of the #GtkLevelBar:inverted property.
 /*
 
-C function : gtk_level_bar_get_inverted
+C function
+
+gtk_level_bar_get_inverted
 */
 func (recv *LevelBar) GetInverted() bool {
 	retC := C.gtk_level_bar_get_inverted((*C.GtkLevelBar)(recv.native))
@@ -158,7 +172,9 @@ func (recv *LevelBar) GetInverted() bool {
 // Sets the value of the #GtkLevelBar:inverted property.
 /*
 
-C function : gtk_level_bar_set_inverted
+C function
+
+gtk_level_bar_set_inverted
 */
 func (recv *LevelBar) SetInverted(inverted bool) {
 	c_inverted :=
@@ -172,7 +188,9 @@ func (recv *LevelBar) SetInverted(inverted bool) {
 // Returns the #GdkFrameClock to which @context is attached.
 /*
 
-C function : gtk_style_context_get_frame_clock
+C function
+
+gtk_style_context_get_frame_clock
 */
 func (recv *StyleContext) GetFrameClock() *gdk.FrameClock {
 	retC := C.gtk_style_context_get_frame_clock((*C.GtkStyleContext)(recv.native))
@@ -195,7 +213,9 @@ func (recv *StyleContext) GetFrameClock() *gdk.FrameClock {
 // call this yourself.
 /*
 
-C function : gtk_style_context_set_frame_clock
+C function
+
+gtk_style_context_set_frame_clock
 */
 func (recv *StyleContext) SetFrameClock(frameClock *gdk.FrameClock) {
 	c_frame_clock := (*C.GdkFrameClock)(C.NULL)
@@ -211,7 +231,9 @@ func (recv *StyleContext) SetFrameClock(frameClock *gdk.FrameClock) {
 // Gets the setting set by gtk_tree_view_set_activate_on_single_click().
 /*
 
-C function : gtk_tree_view_get_activate_on_single_click
+C function
+
+gtk_tree_view_get_activate_on_single_click
 */
 func (recv *TreeView) GetActivateOnSingleClick() bool {
 	retC := C.gtk_tree_view_get_activate_on_single_click((*C.GtkTreeView)(recv.native))
@@ -224,7 +246,9 @@ func (recv *TreeView) GetActivateOnSingleClick() bool {
 // on a single click instead of a double click.
 /*
 
-C function : gtk_tree_view_set_activate_on_single_click
+C function
+
+gtk_tree_view_set_activate_on_single_click
 */
 func (recv *TreeView) SetActivateOnSingleClick(single bool) {
 	c_single :=
@@ -260,7 +284,9 @@ func (recv *TreeView) SetActivateOnSingleClick(single bool) {
 // Unrealized widgets do not have a frame clock.
 /*
 
-C function : gtk_widget_get_frame_clock
+C function
+
+gtk_widget_get_frame_clock
 */
 func (recv *Widget) GetFrameClock() *gdk.FrameClock {
 	retC := C.gtk_widget_get_frame_clock((*C.GtkWidget)(recv.native))
@@ -278,7 +304,9 @@ func (recv *Widget) GetFrameClock() *gdk.FrameClock {
 // See gtk_widget_set_opacity().
 /*
 
-C function : gtk_widget_get_opacity
+C function
+
+gtk_widget_get_opacity
 */
 func (recv *Widget) GetOpacity() float64 {
 	retC := C.gtk_widget_get_opacity((*C.GtkWidget)(recv.native))
@@ -295,7 +323,9 @@ func (recv *Widget) GetOpacity() float64 {
 // See also gtk_widget_get_visible() and gtk_widget_set_visible()
 /*
 
-C function : gtk_widget_is_visible
+C function
+
+gtk_widget_is_visible
 */
 func (recv *Widget) IsVisible() bool {
 	retC := C.gtk_widget_is_visible((*C.GtkWidget)(recv.native))
@@ -314,7 +344,9 @@ func (recv *Widget) IsVisible() bool {
 // transparency might not work perfectly.
 /*
 
-C function : gtk_widget_register_window
+C function
+
+gtk_widget_register_window
 */
 func (recv *Widget) RegisterWindow(window *gdk.Window) {
 	c_window := (*C.GdkWindow)(C.NULL)
@@ -331,7 +363,9 @@ func (recv *Widget) RegisterWindow(window *gdk.Window) {
 // gtk_widget_add_tick_callback().
 /*
 
-C function : gtk_widget_remove_tick_callback
+C function
+
+gtk_widget_remove_tick_callback
 */
 func (recv *Widget) RemoveTickCallback(id uint32) {
 	c_id := (C.guint)(id)
@@ -357,7 +391,9 @@ func (recv *Widget) RemoveTickCallback(id uint32) {
 // disables double buffering.
 /*
 
-C function : gtk_widget_set_opacity
+C function
+
+gtk_widget_set_opacity
 */
 func (recv *Widget) SetOpacity(opacity float64) {
 	c_opacity := (C.double)(opacity)
@@ -372,7 +408,9 @@ func (recv *Widget) SetOpacity(opacity float64) {
 // no longer used by the widget, such as when you destroy it.
 /*
 
-C function : gtk_widget_unregister_window
+C function
+
+gtk_widget_unregister_window
 */
 func (recv *Widget) UnregisterWindow(window *gdk.Window) {
 	c_window := (*C.GdkWindow)(C.NULL)

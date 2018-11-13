@@ -32,7 +32,9 @@ import "C"
 // of the list.  See g_list_model_get_n_items().
 /*
 
-C function : g_list_model_get_item
+C function
+
+g_list_model_get_item
 */
 func (recv *ListModel) GetItem(position uint32) uintptr {
 	c_position := (C.guint)(position)
@@ -51,7 +53,9 @@ func (recv *ListModel) GetItem(position uint32) uintptr {
 // model.
 /*
 
-C function : g_list_model_get_item_type
+C function
+
+g_list_model_get_item_type
 */
 func (recv *ListModel) GetItemType() gobject.Type {
 	retC := C.g_list_model_get_item_type((*C.GListModel)(recv.native))
@@ -67,7 +71,9 @@ func (recv *ListModel) GetItemType() gobject.Type {
 // @position until g_list_model_get_item() returns %NULL.
 /*
 
-C function : g_list_model_get_n_items
+C function
+
+g_list_model_get_n_items
 */
 func (recv *ListModel) GetNItems() uint32 {
 	retC := C.g_list_model_get_n_items((*C.GListModel)(recv.native))
@@ -83,7 +89,9 @@ func (recv *ListModel) GetNItems() uint32 {
 // of the list.  See g_list_model_get_n_items().
 /*
 
-C function : g_list_model_get_object
+C function
+
+g_list_model_get_object
 */
 func (recv *ListModel) GetObject(position uint32) *gobject.Object {
 	c_position := (C.guint)(position)
@@ -121,7 +129,9 @@ func (recv *ListModel) GetObject(position uint32) *gobject.Object {
 // same contents of the model.
 /*
 
-C function : g_list_model_items_changed
+C function
+
+g_list_model_items_changed
 */
 func (recv *ListModel) ItemsChanged(position uint32, removed uint32, added uint32) {
 	c_position := (C.guint)(position)
@@ -156,7 +166,9 @@ func (recv *ListModel) ItemsChanged(position uint32, removed uint32, added uint3
 // back to their "offline" behavior if the connection attempt fails.
 /*
 
-C function : g_network_monitor_get_connectivity
+C function
+
+g_network_monitor_get_connectivity
 */
 func (recv *NetworkMonitor) GetConnectivity() NetworkConnectivity {
 	retC := C.g_network_monitor_get_connectivity((*C.GNetworkMonitor)(recv.native))

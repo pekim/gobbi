@@ -33,7 +33,9 @@ import "C"
 // sufficently new version of the X Render extension.
 /*
 
-C function : gdk_cursor_new_from_pixbuf
+C function
+
+gdk_cursor_new_from_pixbuf
 */
 func CursorNewFromPixbuf(display *Display, pixbuf *gdkpixbuf.Pixbuf, x int32, y int32) *Cursor {
 	c_display := (*C.GdkDisplay)(C.NULL)
@@ -67,7 +69,9 @@ func CursorNewFromPixbuf(display *Display, pixbuf *gdkpixbuf.Pixbuf, x int32, y 
 // handled synchronously, this function will do nothing.
 /*
 
-C function : gdk_display_flush
+C function
+
+gdk_display_flush
 */
 func (recv *Display) Flush() {
 	C.gdk_display_flush((*C.GdkDisplay)(recv.native))
@@ -78,7 +82,9 @@ func (recv *Display) Flush() {
 // Returns the default size to use for cursors on @display.
 /*
 
-C function : gdk_display_get_default_cursor_size
+C function
+
+gdk_display_get_default_cursor_size
 */
 func (recv *Display) GetDefaultCursorSize() uint32 {
 	retC := C.gdk_display_get_default_cursor_size((*C.GdkDisplay)(recv.native))
@@ -92,7 +98,9 @@ func (recv *Display) GetDefaultCursorSize() uint32 {
 // See gdk_window_set_group().
 /*
 
-C function : gdk_display_get_default_group
+C function
+
+gdk_display_get_default_group
 */
 func (recv *Display) GetDefaultGroup() *Window {
 	retC := C.gdk_display_get_default_group((*C.GdkDisplay)(recv.native))
@@ -104,7 +112,9 @@ func (recv *Display) GetDefaultGroup() *Window {
 // Gets the maximal size to use for cursors on @display.
 /*
 
-C function : gdk_display_get_maximal_cursor_size
+C function
+
+gdk_display_get_maximal_cursor_size
 */
 func (recv *Display) GetMaximalCursorSize() (uint32, uint32) {
 	var c_width C.guint
@@ -127,7 +137,9 @@ func (recv *Display) GetMaximalCursorSize() (uint32, uint32) {
 // user-configured setting.
 /*
 
-C function : gdk_display_set_double_click_distance
+C function
+
+gdk_display_set_double_click_distance
 */
 func (recv *Display) SetDoubleClickDistance(distance uint32) {
 	c_distance := (C.guint)(distance)
@@ -142,7 +154,9 @@ func (recv *Display) SetDoubleClickDistance(distance uint32) {
 // alpha (i.e. a mask).
 /*
 
-C function : gdk_display_supports_cursor_alpha
+C function
+
+gdk_display_supports_cursor_alpha
 */
 func (recv *Display) SupportsCursorAlpha() bool {
 	retC := C.gdk_display_supports_cursor_alpha((*C.GdkDisplay)(recv.native))
@@ -156,7 +170,9 @@ func (recv *Display) SupportsCursorAlpha() bool {
 // and a background color.
 /*
 
-C function : gdk_display_supports_cursor_color
+C function
+
+gdk_display_supports_cursor_color
 */
 func (recv *Display) SupportsCursorColor() bool {
 	retC := C.gdk_display_supports_cursor_color((*C.GdkDisplay)(recv.native))
@@ -168,7 +184,9 @@ func (recv *Display) SupportsCursorColor() bool {
 // Returns the group leader window for @window. See gdk_window_set_group().
 /*
 
-C function : gdk_window_get_group
+C function
+
+gdk_window_get_group
 */
 func (recv *Window) GetGroup() *Window {
 	retC := C.gdk_window_get_group((*C.GdkWindow)(recv.native))
@@ -184,7 +202,9 @@ func (recv *Window) GetGroup() *Window {
 // hint. ICCCM-compliant window manager usually respect it.
 /*
 
-C function : gdk_window_set_accept_focus
+C function
+
+gdk_window_set_accept_focus
 */
 func (recv *Window) SetAcceptFocus(acceptFocus bool) {
 	c_accept_focus :=
@@ -206,7 +226,9 @@ func (recv *Window) SetAcceptFocus(acceptFocus bool) {
 // and GDK makes a best effort to get it to happen.
 /*
 
-C function : gdk_window_set_keep_above
+C function
+
+gdk_window_set_keep_above
 */
 func (recv *Window) SetKeepAbove(setting bool) {
 	c_setting :=
@@ -228,7 +250,9 @@ func (recv *Window) SetKeepAbove(setting bool) {
 // and GDK makes a best effort to get it to happen.
 /*
 
-C function : gdk_window_set_keep_below
+C function
+
+gdk_window_set_keep_below
 */
 func (recv *Window) SetKeepBelow(setting bool) {
 	c_setting :=

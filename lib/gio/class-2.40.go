@@ -53,7 +53,9 @@ import "C"
 // rescanning the list on every change is pointless and expensive.
 /*
 
-C record/class : GAppInfoMonitor
+C type
+
+GAppInfoMonitor
 */
 type AppInfoMonitor struct {
 	native *C.GAppInfoMonitor
@@ -172,7 +174,9 @@ func appinfomonitor_changedHandler(_ *C.GObject, data C.gpointer) {
 // %G_APPLICATION_HANDLES_COMMAND_LINE was given.
 /*
 
-C function : g_application_add_option_group
+C function
+
+g_application_add_option_group
 */
 func (recv *Application) AddOptionGroup(group *glib.OptionGroup) {
 	c_group := (*C.GOptionGroup)(C.NULL)
@@ -213,7 +217,9 @@ func (recv *Application) AddOptionGroup(group *glib.OptionGroup) {
 // g_application_withdraw_notification().
 /*
 
-C function : g_application_send_notification
+C function
+
+g_application_send_notification
 */
 func (recv *Application) SendNotification(id string, notification *Notification) {
 	c_id := C.CString(id)
@@ -244,7 +250,9 @@ func (recv *Application) SendNotification(id string, notification *Notification)
 // there is no need to explicitly withdraw the notification in that case.
 /*
 
-C function : g_application_withdraw_notification
+C function
+
+g_application_withdraw_notification
 */
 func (recv *Application) WithdrawNotification(id string) {
 	c_id := C.CString(id)
@@ -266,7 +274,9 @@ func (recv *Application) WithdrawNotification(id string) {
 // you don't need to check for %NULL.
 /*
 
-C function : g_application_command_line_get_options_dict
+C function
+
+g_application_command_line_get_options_dict
 */
 func (recv *ApplicationCommandLine) GetOptionsDict() *glib.VariantDict {
 	retC := C.g_application_command_line_get_options_dict((*C.GApplicationCommandLine)(recv.native))
@@ -281,7 +291,9 @@ func (recv *ApplicationCommandLine) GetOptionsDict() *glib.VariantDict {
 // (separated from the address by a `%`).
 /*
 
-C function : g_inet_socket_address_new_from_string
+C function
+
+g_inet_socket_address_new_from_string
 */
 func InetSocketAddressNewFromString(address string, port uint32) *InetSocketAddress {
 	c_address := C.CString(address)
@@ -318,7 +330,9 @@ func InetSocketAddressNewFromString(address string, port uint32) *InetSocketAddr
 // A notification can be sent with g_application_send_notification().
 /*
 
-C record/class : GNotification
+C type
+
+GNotification
 */
 type Notification struct {
 	native *C.GNotification
@@ -359,7 +373,9 @@ func CastToNotification(object *gobject.Object) *Notification {
 // resending @notification.
 /*
 
-C function : g_notification_new
+C function
+
+g_notification_new
 */
 func NotificationNew(title string) *Notification {
 	c_title := C.CString(title)
@@ -381,7 +397,9 @@ func NotificationNew(title string) *Notification {
 // for @detailed_action.
 /*
 
-C function : g_notification_add_button
+C function
+
+g_notification_add_button
 */
 func (recv *Notification) AddButton(label string, detailedAction string) {
 	c_label := C.CString(label)
@@ -402,7 +420,9 @@ func (recv *Notification) AddButton(label string, detailedAction string) {
 // Sets the body of @notification to @body.
 /*
 
-C function : g_notification_set_body
+C function
+
+g_notification_set_body
 */
 func (recv *Notification) SetBody(body string) {
 	c_body := C.CString(body)
@@ -426,7 +446,9 @@ func (recv *Notification) SetBody(body string) {
 // was sent on is activated.
 /*
 
-C function : g_notification_set_default_action
+C function
+
+g_notification_set_default_action
 */
 func (recv *Notification) SetDefaultAction(detailedAction string) {
 	c_detailed_action := C.CString(detailedAction)
@@ -444,7 +466,9 @@ func (recv *Notification) SetDefaultAction(detailedAction string) {
 // Sets the icon of @notification to @icon.
 /*
 
-C function : g_notification_set_icon
+C function
+
+g_notification_set_icon
 */
 func (recv *Notification) SetIcon(icon *Icon) {
 	c_icon := (*C.GIcon)(icon.ToC())
@@ -458,7 +482,9 @@ func (recv *Notification) SetIcon(icon *Icon) {
 // #GNotificationPriority for possible values.
 /*
 
-C function : g_notification_set_priority
+C function
+
+g_notification_set_priority
 */
 func (recv *Notification) SetPriority(priority NotificationPriority) {
 	c_priority := (C.GNotificationPriority)(priority)
@@ -471,7 +497,9 @@ func (recv *Notification) SetPriority(priority NotificationPriority) {
 // Sets the title of @notification to @title.
 /*
 
-C function : g_notification_set_title
+C function
+
+g_notification_set_title
 */
 func (recv *Notification) SetTitle(title string) {
 	c_title := C.CString(title)
@@ -485,7 +513,9 @@ func (recv *Notification) SetTitle(title string) {
 // Deprecated in favor of g_notification_set_priority().
 /*
 
-C function : g_notification_set_urgent
+C function
+
+g_notification_set_urgent
 */
 func (recv *Notification) SetUrgent(urgent bool) {
 	c_urgent :=
@@ -560,7 +590,9 @@ func (recv *Notification) SetUrgent(urgent bool) {
 // are similar to the familiar WIFEXITED-style POSIX macros).
 /*
 
-C record/class : GSubprocess
+C type
+
+GSubprocess
 */
 type Subprocess struct {
 	native *C.GSubprocess
@@ -640,7 +672,9 @@ func CastToSubprocess(object *gobject.Object) *Subprocess {
 // (either from another thread or if using the asynchronous version).
 /*
 
-C function : g_subprocess_communicate
+C function
+
+g_subprocess_communicate
 */
 func (recv *Subprocess) Communicate(stdinBuf *glib.Bytes, cancellable *Cancellable) (bool, *glib.Bytes, *glib.Bytes, error) {
 	c_stdin_buf := (*C.GBytes)(C.NULL)
@@ -679,7 +713,9 @@ func (recv *Subprocess) Communicate(stdinBuf *glib.Bytes, cancellable *Cancellab
 // Complete an invocation of g_subprocess_communicate_async().
 /*
 
-C function : g_subprocess_communicate_finish
+C function
+
+g_subprocess_communicate_finish
 */
 func (recv *Subprocess) CommunicateFinish(result *AsyncResult) (bool, *glib.Bytes, *glib.Bytes, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -709,7 +745,9 @@ func (recv *Subprocess) CommunicateFinish(result *AsyncResult) (bool, *glib.Byte
 // process as UTF-8, and returns it as a regular NUL terminated string.
 /*
 
-C function : g_subprocess_communicate_utf8
+C function
+
+g_subprocess_communicate_utf8
 */
 func (recv *Subprocess) CommunicateUtf8(stdinBuf string, cancellable *Cancellable) (bool, string, string, error) {
 	c_stdin_buf := C.CString(stdinBuf)
@@ -748,7 +786,9 @@ func (recv *Subprocess) CommunicateUtf8(stdinBuf string, cancellable *Cancellabl
 // Complete an invocation of g_subprocess_communicate_utf8_async().
 /*
 
-C function : g_subprocess_communicate_utf8_finish
+C function
+
+g_subprocess_communicate_utf8_finish
 */
 func (recv *Subprocess) CommunicateUtf8Finish(result *AsyncResult) (bool, string, string, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -785,7 +825,9 @@ func (recv *Subprocess) CommunicateUtf8Finish(result *AsyncResult) (bool, string
 // On Unix, this function sends %SIGKILL.
 /*
 
-C function : g_subprocess_force_exit
+C function
+
+g_subprocess_force_exit
 */
 func (recv *Subprocess) ForceExit() {
 	C.g_subprocess_force_exit((*C.GSubprocess)(recv.native))
@@ -803,7 +845,9 @@ func (recv *Subprocess) ForceExit() {
 // unless g_subprocess_get_if_exited() returned %TRUE.
 /*
 
-C function : g_subprocess_get_exit_status
+C function
+
+g_subprocess_get_exit_status
 */
 func (recv *Subprocess) GetExitStatus() int32 {
 	retC := C.g_subprocess_get_exit_status((*C.GSubprocess)(recv.native))
@@ -816,7 +860,9 @@ func (recv *Subprocess) GetExitStatus() int32 {
 // On Windows, returns the result of GetProcessId() also as a string.
 /*
 
-C function : g_subprocess_get_identifier
+C function
+
+g_subprocess_get_identifier
 */
 func (recv *Subprocess) GetIdentifier() string {
 	retC := C.g_subprocess_get_identifier((*C.GSubprocess)(recv.native))
@@ -834,7 +880,9 @@ func (recv *Subprocess) GetIdentifier() string {
 // returned.
 /*
 
-C function : g_subprocess_get_if_exited
+C function
+
+g_subprocess_get_if_exited
 */
 func (recv *Subprocess) GetIfExited() bool {
 	retC := C.g_subprocess_get_if_exited((*C.GSubprocess)(recv.native))
@@ -851,7 +899,9 @@ func (recv *Subprocess) GetIfExited() bool {
 // returned.
 /*
 
-C function : g_subprocess_get_if_signaled
+C function
+
+g_subprocess_get_if_signaled
 */
 func (recv *Subprocess) GetIfSignaled() bool {
 	retC := C.g_subprocess_get_if_signaled((*C.GSubprocess)(recv.native))
@@ -873,7 +923,9 @@ func (recv *Subprocess) GetIfSignaled() bool {
 // returned.
 /*
 
-C function : g_subprocess_get_status
+C function
+
+g_subprocess_get_status
 */
 func (recv *Subprocess) GetStatus() int32 {
 	retC := C.g_subprocess_get_status((*C.GSubprocess)(recv.native))
@@ -889,7 +941,9 @@ func (recv *Subprocess) GetStatus() int32 {
 // %G_SUBPROCESS_FLAGS_STDERR_PIPE.
 /*
 
-C function : g_subprocess_get_stderr_pipe
+C function
+
+g_subprocess_get_stderr_pipe
 */
 func (recv *Subprocess) GetStderrPipe() *InputStream {
 	retC := C.g_subprocess_get_stderr_pipe((*C.GSubprocess)(recv.native))
@@ -905,7 +959,9 @@ func (recv *Subprocess) GetStderrPipe() *InputStream {
 // %G_SUBPROCESS_FLAGS_STDIN_PIPE.
 /*
 
-C function : g_subprocess_get_stdin_pipe
+C function
+
+g_subprocess_get_stdin_pipe
 */
 func (recv *Subprocess) GetStdinPipe() *OutputStream {
 	retC := C.g_subprocess_get_stdin_pipe((*C.GSubprocess)(recv.native))
@@ -921,7 +977,9 @@ func (recv *Subprocess) GetStdinPipe() *OutputStream {
 // %G_SUBPROCESS_FLAGS_STDOUT_PIPE.
 /*
 
-C function : g_subprocess_get_stdout_pipe
+C function
+
+g_subprocess_get_stdout_pipe
 */
 func (recv *Subprocess) GetStdoutPipe() *InputStream {
 	retC := C.g_subprocess_get_stdout_pipe((*C.GSubprocess)(recv.native))
@@ -938,7 +996,9 @@ func (recv *Subprocess) GetStdoutPipe() *InputStream {
 // returned.
 /*
 
-C function : g_subprocess_get_successful
+C function
+
+g_subprocess_get_successful
 */
 func (recv *Subprocess) GetSuccessful() bool {
 	retC := C.g_subprocess_get_successful((*C.GSubprocess)(recv.native))
@@ -956,7 +1016,9 @@ func (recv *Subprocess) GetSuccessful() bool {
 // unless g_subprocess_get_if_signaled() returned %TRUE.
 /*
 
-C function : g_subprocess_get_term_sig
+C function
+
+g_subprocess_get_term_sig
 */
 func (recv *Subprocess) GetTermSig() int32 {
 	retC := C.g_subprocess_get_term_sig((*C.GSubprocess)(recv.native))
@@ -974,7 +1036,9 @@ func (recv *Subprocess) GetTermSig() int32 {
 // This API is not available on Windows.
 /*
 
-C function : g_subprocess_send_signal
+C function
+
+g_subprocess_send_signal
 */
 func (recv *Subprocess) SendSignal(signalNum int32) {
 	c_signal_num := (C.gint)(signalNum)
@@ -997,7 +1061,9 @@ func (recv *Subprocess) SendSignal(signalNum int32) {
 // g_subprocess_force_exit() if it is desirable.
 /*
 
-C function : g_subprocess_wait
+C function
+
+g_subprocess_wait
 */
 func (recv *Subprocess) Wait(cancellable *Cancellable) (bool, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -1023,7 +1089,9 @@ func (recv *Subprocess) Wait(cancellable *Cancellable) (bool, error) {
 // Combines g_subprocess_wait() with g_spawn_check_exit_status().
 /*
 
-C function : g_subprocess_wait_check
+C function
+
+g_subprocess_wait_check
 */
 func (recv *Subprocess) WaitCheck(cancellable *Cancellable) (bool, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -1050,7 +1118,9 @@ func (recv *Subprocess) WaitCheck(cancellable *Cancellable) (bool, error) {
 // g_subprocess_wait_check_async().
 /*
 
-C function : g_subprocess_wait_check_finish
+C function
+
+g_subprocess_wait_check_finish
 */
 func (recv *Subprocess) WaitCheckFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -1072,7 +1142,9 @@ func (recv *Subprocess) WaitCheckFinish(result *AsyncResult) (bool, error) {
 // g_subprocess_wait_async().
 /*
 
-C function : g_subprocess_wait_finish
+C function
+
+g_subprocess_wait_finish
 */
 func (recv *Subprocess) WaitFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -1100,7 +1172,9 @@ func (recv *Subprocess) WaitFinish(result *AsyncResult) (bool, error) {
 // a similar configuration.
 /*
 
-C record/class : GSubprocessLauncher
+C type
+
+GSubprocessLauncher
 */
 type SubprocessLauncher struct {
 	native *C.GSubprocessLauncher
@@ -1140,7 +1214,9 @@ func CastToSubprocessLauncher(object *gobject.Object) *SubprocessLauncher {
 // and will be used as the environment that the process is launched in.
 /*
 
-C function : g_subprocess_launcher_new
+C function
+
+g_subprocess_launcher_new
 */
 func SubprocessLauncherNew(flags SubprocessFlags) *SubprocessLauncher {
 	c_flags := (C.GSubprocessFlags)(flags)
@@ -1158,7 +1234,9 @@ func SubprocessLauncherNew(flags SubprocessFlags) *SubprocessLauncher {
 // On Windows, it will be UTF-8.
 /*
 
-C function : g_subprocess_launcher_getenv
+C function
+
+g_subprocess_launcher_getenv
 */
 func (recv *SubprocessLauncher) Getenv(variable string) string {
 	c_variable := C.CString(variable)
@@ -1179,7 +1257,9 @@ func (recv *SubprocessLauncher) Getenv(variable string) string {
 // of the launching process at the time of launch.
 /*
 
-C function : g_subprocess_launcher_set_cwd
+C function
+
+g_subprocess_launcher_set_cwd
 */
 func (recv *SubprocessLauncher) SetCwd(cwd string) {
 	c_cwd := C.CString(cwd)
@@ -1206,7 +1286,9 @@ func (recv *SubprocessLauncher) SetCwd(cwd string) {
 // g_subprocess_launcher_take_stdout_fd().
 /*
 
-C function : g_subprocess_launcher_set_flags
+C function
+
+g_subprocess_launcher_set_flags
 */
 func (recv *SubprocessLauncher) SetFlags(flags SubprocessFlags) {
 	c_flags := (C.GSubprocessFlags)(flags)
@@ -1232,7 +1314,9 @@ func (recv *SubprocessLauncher) SetFlags(flags SubprocessFlags) {
 // This feature is only available on UNIX.
 /*
 
-C function : g_subprocess_launcher_set_stderr_file_path
+C function
+
+g_subprocess_launcher_set_stderr_file_path
 */
 func (recv *SubprocessLauncher) SetStderrFilePath(path string) {
 	c_path := C.CString(path)
@@ -1255,7 +1339,9 @@ func (recv *SubprocessLauncher) SetStderrFilePath(path string) {
 // This feature is only available on UNIX.
 /*
 
-C function : g_subprocess_launcher_set_stdin_file_path
+C function
+
+g_subprocess_launcher_set_stdin_file_path
 */
 func (recv *SubprocessLauncher) SetStdinFilePath(path string) {
 	c_path := C.CString(path)
@@ -1279,7 +1365,9 @@ func (recv *SubprocessLauncher) SetStdinFilePath(path string) {
 // This feature is only available on UNIX.
 /*
 
-C function : g_subprocess_launcher_set_stdout_file_path
+C function
+
+g_subprocess_launcher_set_stdout_file_path
 */
 func (recv *SubprocessLauncher) SetStdoutFilePath(path string) {
 	c_path := C.CString(path)
@@ -1298,7 +1386,9 @@ func (recv *SubprocessLauncher) SetStdoutFilePath(path string) {
 // On Windows, they should be in UTF-8.
 /*
 
-C function : g_subprocess_launcher_setenv
+C function
+
+g_subprocess_launcher_setenv
 */
 func (recv *SubprocessLauncher) Setenv(variable string, value string, overwrite bool) {
 	c_variable := C.CString(variable)
@@ -1333,7 +1423,9 @@ func (recv *SubprocessLauncher) Setenv(variable string, value string, overwrite 
 // the passphrase to be written.
 /*
 
-C function : g_subprocess_launcher_take_fd
+C function
+
+g_subprocess_launcher_take_fd
 */
 func (recv *SubprocessLauncher) TakeFd(sourceFd int32, targetFd int32) {
 	c_source_fd := (C.gint)(sourceFd)
@@ -1363,7 +1455,9 @@ func (recv *SubprocessLauncher) TakeFd(sourceFd int32, targetFd int32) {
 // This feature is only available on UNIX.
 /*
 
-C function : g_subprocess_launcher_take_stderr_fd
+C function
+
+g_subprocess_launcher_take_stderr_fd
 */
 func (recv *SubprocessLauncher) TakeStderrFd(fd int32) {
 	c_fd := (C.gint)(fd)
@@ -1393,7 +1487,9 @@ func (recv *SubprocessLauncher) TakeStderrFd(fd int32) {
 // This feature is only available on UNIX.
 /*
 
-C function : g_subprocess_launcher_take_stdin_fd
+C function
+
+g_subprocess_launcher_take_stdin_fd
 */
 func (recv *SubprocessLauncher) TakeStdinFd(fd int32) {
 	c_fd := (C.gint)(fd)
@@ -1422,7 +1518,9 @@ func (recv *SubprocessLauncher) TakeStdinFd(fd int32) {
 // This feature is only available on UNIX.
 /*
 
-C function : g_subprocess_launcher_take_stdout_fd
+C function
+
+g_subprocess_launcher_take_stdout_fd
 */
 func (recv *SubprocessLauncher) TakeStdoutFd(fd int32) {
 	c_fd := (C.gint)(fd)
@@ -1439,7 +1537,9 @@ func (recv *SubprocessLauncher) TakeStdoutFd(fd int32) {
 // containing '='. On Windows, it should be in UTF-8.
 /*
 
-C function : g_subprocess_launcher_unsetenv
+C function
+
+g_subprocess_launcher_unsetenv
 */
 func (recv *SubprocessLauncher) Unsetenv(variable string) {
 	c_variable := C.CString(variable)
@@ -1472,7 +1572,9 @@ func (recv *SubprocessLauncher) Unsetenv(variable string) {
 // not support immediate cancellation.
 /*
 
-C function : g_tls_interaction_invoke_request_certificate
+C function
+
+g_tls_interaction_invoke_request_certificate
 */
 func (recv *TlsInteraction) InvokeRequestCertificate(connection *TlsConnection, flags TlsCertificateRequestFlags, cancellable *Cancellable) (TlsInteractionResult, error) {
 	c_connection := (*C.GTlsConnection)(C.NULL)
@@ -1518,7 +1620,9 @@ func (recv *TlsInteraction) InvokeRequestCertificate(connection *TlsConnection, 
 // not support immediate cancellation.
 /*
 
-C function : g_tls_interaction_request_certificate
+C function
+
+g_tls_interaction_request_certificate
 */
 func (recv *TlsInteraction) RequestCertificate(connection *TlsConnection, flags TlsCertificateRequestFlags, cancellable *Cancellable) (TlsInteractionResult, error) {
 	c_connection := (*C.GTlsConnection)(C.NULL)
@@ -1560,7 +1664,9 @@ func (recv *TlsInteraction) RequestCertificate(connection *TlsConnection, flags 
 // contains a %G_IO_ERROR_CANCELLED error code.
 /*
 
-C function : g_tls_interaction_request_certificate_finish
+C function
+
+g_tls_interaction_request_certificate_finish
 */
 func (recv *TlsInteraction) RequestCertificateFinish(result *AsyncResult) (TlsInteractionResult, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())

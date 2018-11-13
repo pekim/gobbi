@@ -29,7 +29,9 @@ import "C"
 // pointer indicating the function @res was created by).
 /*
 
-C function : g_async_result_is_tagged
+C function
+
+g_async_result_is_tagged
 */
 func (recv *AsyncResult) IsTagged(sourceTag uintptr) bool {
 	c_source_tag := (C.gpointer)(sourceTag)
@@ -52,7 +54,9 @@ func (recv *AsyncResult) IsTagged(sourceTag uintptr) bool {
 // to enable subclasses to chain up correctly.
 /*
 
-C function : g_async_result_legacy_propagate_error
+C function
+
+g_async_result_legacy_propagate_error
 */
 func (recv *AsyncResult) LegacyPropagateError() (bool, error) {
 	var cThrowableError *C.GError
@@ -71,7 +75,9 @@ func (recv *AsyncResult) LegacyPropagateError() (bool, error) {
 // Gets the icon for @drive.
 /*
 
-C function : g_drive_get_symbolic_icon
+C function
+
+g_drive_get_symbolic_icon
 */
 func (recv *Drive) GetSymbolicIcon() *Icon {
 	retC := C.g_drive_get_symbolic_icon((*C.GDrive)(recv.native))
@@ -85,7 +91,9 @@ func (recv *Drive) GetSymbolicIcon() *Icon {
 // Finishes deleting a file started with g_file_delete_async().
 /*
 
-C function : g_file_delete_finish
+C function
+
+g_file_delete_finish
 */
 func (recv *File) DeleteFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -106,7 +114,9 @@ func (recv *File) DeleteFinish(result *AsyncResult) (bool, error) {
 // Gets the symbolic icon for @mount.
 /*
 
-C function : g_mount_get_symbolic_icon
+C function
+
+g_mount_get_symbolic_icon
 */
 func (recv *Mount) GetSymbolicIcon() *Icon {
 	retC := C.g_mount_get_symbolic_icon((*C.GMount)(recv.native))
@@ -118,7 +128,9 @@ func (recv *Mount) GetSymbolicIcon() *Icon {
 // Gets the symbolic icon for @volume.
 /*
 
-C function : g_volume_get_symbolic_icon
+C function
+
+g_volume_get_symbolic_icon
 */
 func (recv *Volume) GetSymbolicIcon() *Icon {
 	retC := C.g_volume_get_symbolic_icon((*C.GVolume)(recv.native))

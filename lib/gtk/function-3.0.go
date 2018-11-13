@@ -40,7 +40,9 @@ import "C"
 // gtk_accelerator_parse().
 /*
 
-C function : gtk_binding_entry_add_signal_from_string
+C function
+
+gtk_binding_entry_add_signal_from_string
 */
 func BindingEntryAddSignalFromString(bindingSet *BindingSet, signalDesc string) glib.TokenType {
 	c_binding_set := (*C.GtkBindingSet)(C.NULL)
@@ -68,7 +70,9 @@ func BindingEntryAddSignalFromString(bindingSet *BindingSet, signalDesc string) 
 // use “else if” statements to check which window should be drawn.
 /*
 
-C function : gtk_cairo_should_draw_window
+C function
+
+gtk_cairo_should_draw_window
 */
 func CairoShouldDrawWindow(cr *cairo.Context, window *gdk.Window) bool {
 	c_cr := (*C.cairo_t)(C.NULL)
@@ -98,7 +102,9 @@ func CairoShouldDrawWindow(cr *cairo.Context, window *gdk.Window) bool {
 // GTK+ 2 to the rendering architecture of GTK+ 3.
 /*
 
-C function : gtk_cairo_transform_to_window
+C function
+
+gtk_cairo_transform_to_window
 */
 func CairoTransformToWindow(cr *cairo.Context, widget *Widget, window *gdk.Window) {
 	c_cr := (*C.cairo_t)(C.NULL)
@@ -127,7 +133,9 @@ func CairoTransformToWindow(cr *cairo.Context, widget *Widget, window *gdk.Windo
 // unable to interact with @widget during the grab.
 /*
 
-C function : gtk_device_grab_add
+C function
+
+gtk_device_grab_add
 */
 func DeviceGrabAdd(widget *Widget, device *gdk.Device, blockOthers bool) {
 	c_widget := (*C.GtkWidget)(C.NULL)
@@ -154,7 +162,9 @@ func DeviceGrabAdd(widget *Widget, device *gdk.Device, blockOthers bool) {
 // gtk_device_grab_remove().
 /*
 
-C function : gtk_device_grab_remove
+C function
+
+gtk_device_grab_remove
 */
 func DeviceGrabRemove(widget *Widget, device *gdk.Device) {
 	c_widget := (*C.GtkWidget)(C.NULL)
@@ -180,7 +190,9 @@ func DeviceGrabRemove(widget *Widget, device *gdk.Device) {
 // worry about it.
 /*
 
-C function : gtk_get_binary_age
+C function
+
+gtk_get_binary_age
 */
 func GetBinaryAge() uint32 {
 	retC := C.gtk_get_binary_age()
@@ -195,7 +207,9 @@ func GetBinaryAge() uint32 {
 // worry about it.
 /*
 
-C function : gtk_get_interface_age
+C function
+
+gtk_get_interface_age
 */
 func GetInterfaceAge() uint32 {
 	retC := C.gtk_get_interface_age()
@@ -213,7 +227,9 @@ func GetInterfaceAge() uint32 {
 // have included when compiling your code.
 /*
 
-C function : gtk_get_major_version
+C function
+
+gtk_get_major_version
 */
 func GetMajorVersion() uint32 {
 	retC := C.gtk_get_major_version()
@@ -231,7 +247,9 @@ func GetMajorVersion() uint32 {
 // GTK+ headers you have included when compiling your code.
 /*
 
-C function : gtk_get_micro_version
+C function
+
+gtk_get_micro_version
 */
 func GetMicroVersion() uint32 {
 	retC := C.gtk_get_micro_version()
@@ -249,7 +267,9 @@ func GetMicroVersion() uint32 {
 // GTK+ headers you have included when compiling your code.
 /*
 
-C function : gtk_get_minor_version
+C function
+
+gtk_get_minor_version
 */
 func GetMinorVersion() uint32 {
 	retC := C.gtk_get_minor_version()
@@ -263,7 +283,9 @@ func GetMinorVersion() uint32 {
 // activity going on.
 /*
 
-C function : gtk_render_activity
+C function
+
+gtk_render_activity
 */
 func RenderActivity(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
 	c_context := (*C.GtkStyleContext)(C.NULL)
@@ -296,7 +318,9 @@ func RenderActivity(context *StyleContext, cr *cairo.Context, x float64, y float
 // ![](arrows.png)
 /*
 
-C function : gtk_render_arrow
+C function
+
+gtk_render_arrow
 */
 func RenderArrow(context *StyleContext, cr *cairo.Context, angle float64, x float64, y float64, size float64) {
 	c_context := (*C.GtkStyleContext)(C.NULL)
@@ -333,7 +357,9 @@ func RenderArrow(context *StyleContext, cr *cairo.Context, angle float64, x floa
 // ![](checks.png)
 /*
 
-C function : gtk_render_check
+C function
+
+gtk_render_check
 */
 func RenderCheck(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
 	c_context := (*C.GtkStyleContext)(C.NULL)
@@ -368,7 +394,9 @@ func RenderCheck(context *StyleContext, cr *cairo.Context, x float64, y float64,
 // ![](expanders.png)
 /*
 
-C function : gtk_render_expander
+C function
+
+gtk_render_expander
 */
 func RenderExpander(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
 	c_context := (*C.GtkStyleContext)(C.NULL)
@@ -403,7 +431,9 @@ func RenderExpander(context *StyleContext, cr *cairo.Context, x float64, y float
 // ![](extensions.png)
 /*
 
-C function : gtk_render_extension
+C function
+
+gtk_render_extension
 */
 func RenderExtension(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64, gapSide PositionType) {
 	c_context := (*C.GtkStyleContext)(C.NULL)
@@ -438,7 +468,9 @@ func RenderExtension(context *StyleContext, cr *cairo.Context, x float64, y floa
 // ![](focus.png)
 /*
 
-C function : gtk_render_focus
+C function
+
+gtk_render_focus
 */
 func RenderFocus(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
 	c_context := (*C.GtkStyleContext)(C.NULL)
@@ -472,7 +504,9 @@ func RenderFocus(context *StyleContext, cr *cairo.Context, x float64, y float64,
 // ![](frames.png)
 /*
 
-C function : gtk_render_frame
+C function
+
+gtk_render_frame
 */
 func RenderFrame(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
 	c_context := (*C.GtkStyleContext)(C.NULL)
@@ -508,7 +542,9 @@ func RenderFrame(context *StyleContext, cr *cairo.Context, x float64, y float64,
 // ![](frame-gap.png)
 /*
 
-C function : gtk_render_frame_gap
+C function
+
+gtk_render_frame_gap
 */
 func RenderFrameGap(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64, gapSide PositionType, xy0Gap float64, xy1Gap float64) {
 	c_context := (*C.GtkStyleContext)(C.NULL)
@@ -549,7 +585,9 @@ func RenderFrameGap(context *StyleContext, cr *cairo.Context, x float64, y float
 // ![](handles.png)
 /*
 
-C function : gtk_render_handle
+C function
+
+gtk_render_handle
 */
 func RenderHandle(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
 	c_context := (*C.GtkStyleContext)(C.NULL)
@@ -579,7 +617,9 @@ func RenderHandle(context *StyleContext, cr *cairo.Context, x float64, y float64
 // in a pixbuf.
 /*
 
-C function : gtk_render_icon_pixbuf
+C function
+
+gtk_render_icon_pixbuf
 */
 func RenderIconPixbuf(context *StyleContext, source *IconSource, size IconSize) *gdkpixbuf.Pixbuf {
 	c_context := (*C.GtkStyleContext)(C.NULL)
@@ -603,7 +643,9 @@ func RenderIconPixbuf(context *StyleContext, source *IconSource, size IconSize) 
 // Renders @layout on the coordinates @x, @y
 /*
 
-C function : gtk_render_layout
+C function
+
+gtk_render_layout
 */
 func RenderLayout(context *StyleContext, cr *cairo.Context, x float64, y float64, layout *pango.Layout) {
 	c_context := (*C.GtkStyleContext)(C.NULL)
@@ -633,7 +675,9 @@ func RenderLayout(context *StyleContext, cr *cairo.Context, x float64, y float64
 // Renders a line from (x0, y0) to (x1, y1).
 /*
 
-C function : gtk_render_line
+C function
+
+gtk_render_line
 */
 func RenderLine(context *StyleContext, cr *cairo.Context, x0 float64, y0 float64, x1 float64, y1 float64) {
 	c_context := (*C.GtkStyleContext)(C.NULL)
@@ -668,7 +712,9 @@ func RenderLine(context *StyleContext, cr *cairo.Context, x0 float64, y0 float64
 // ![](options.png)
 /*
 
-C function : gtk_render_option
+C function
+
+gtk_render_option
 */
 func RenderOption(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64) {
 	c_context := (*C.GtkStyleContext)(C.NULL)
@@ -703,7 +749,9 @@ func RenderOption(context *StyleContext, cr *cairo.Context, x float64, y float64
 // ![](sliders.png)
 /*
 
-C function : gtk_render_slider
+C function
+
+gtk_render_slider
 */
 func RenderSlider(context *StyleContext, cr *cairo.Context, x float64, y float64, width float64, height float64, orientation Orientation) {
 	c_context := (*C.GtkStyleContext)(C.NULL)

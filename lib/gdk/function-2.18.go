@@ -13,7 +13,9 @@ import "C"
 // Gets the window that @window is embedded in.
 /*
 
-C function : gdk_offscreen_window_get_embedder
+C function
+
+gdk_offscreen_window_get_embedder
 */
 func OffscreenWindowGetEmbedder(window *Window) *Window {
 	c_window := (*C.GdkWindow)(C.NULL)
@@ -40,7 +42,9 @@ func OffscreenWindowGetEmbedder(window *Window) *Window {
 // #GdkWindow::from-embedder signals on @window.
 /*
 
-C function : gdk_offscreen_window_set_embedder
+C function
+
+gdk_offscreen_window_set_embedder
 */
 func OffscreenWindowSetEmbedder(window *Window, embedder *Window) {
 	c_window := (*C.GdkWindow)(C.NULL)

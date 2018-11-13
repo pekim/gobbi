@@ -22,7 +22,9 @@ import "C"
 // containing region.
 /*
 
-C record/class : GtkCssSection
+C type
+
+GtkCssSection
 */
 type CssSection struct {
 	native *C.GtkCssSection
@@ -55,7 +57,9 @@ func (recv *CssSection) ToC() unsafe.Pointer {
 // successfully.
 /*
 
-C function : gtk_css_section_get_end_line
+C function
+
+gtk_css_section_get_end_line
 */
 func (recv *CssSection) GetEndLine() uint32 {
 	retC := C.gtk_css_section_get_end_line((*C.GtkCssSection)(recv.native))
@@ -74,7 +78,9 @@ func (recv *CssSection) GetEndLine() uint32 {
 // successfully.
 /*
 
-C function : gtk_css_section_get_end_position
+C function
+
+gtk_css_section_get_end_position
 */
 func (recv *CssSection) GetEndPosition() uint32 {
 	retC := C.gtk_css_section_get_end_position((*C.GtkCssSection)(recv.native))
@@ -88,7 +94,9 @@ func (recv *CssSection) GetEndPosition() uint32 {
 // @gtk_css_provider_load_from_data(), then %NULL is returned.
 /*
 
-C function : gtk_css_section_get_file
+C function
+
+gtk_css_section_get_file
 */
 func (recv *CssSection) GetFile() *gio.File {
 	retC := C.gtk_css_section_get_file((*C.GtkCssSection)(recv.native))
@@ -106,7 +114,9 @@ func (recv *CssSection) GetFile() *gio.File {
 // a different file.
 /*
 
-C function : gtk_css_section_get_parent
+C function
+
+gtk_css_section_get_parent
 */
 func (recv *CssSection) GetParent() *CssSection {
 	retC := C.gtk_css_section_get_parent((*C.GtkCssSection)(recv.native))
@@ -123,7 +133,9 @@ func (recv *CssSection) GetParent() *CssSection {
 // Gets the type of information that @section describes.
 /*
 
-C function : gtk_css_section_get_section_type
+C function
+
+gtk_css_section_get_section_type
 */
 func (recv *CssSection) GetSectionType() CssSectionType {
 	retC := C.gtk_css_section_get_section_type((*C.GtkCssSection)(recv.native))
@@ -137,7 +149,9 @@ func (recv *CssSection) GetSectionType() CssSectionType {
 // will return 0.
 /*
 
-C function : gtk_css_section_get_start_line
+C function
+
+gtk_css_section_get_start_line
 */
 func (recv *CssSection) GetStartLine() uint32 {
 	retC := C.gtk_css_section_get_start_line((*C.GtkCssSection)(recv.native))
@@ -150,7 +164,9 @@ func (recv *CssSection) GetStartLine() uint32 {
 // returned via gtk_css_section_get_start_line().
 /*
 
-C function : gtk_css_section_get_start_position
+C function
+
+gtk_css_section_get_start_position
 */
 func (recv *CssSection) GetStartPosition() uint32 {
 	retC := C.gtk_css_section_get_start_position((*C.GtkCssSection)(recv.native))
@@ -162,7 +178,9 @@ func (recv *CssSection) GetStartPosition() uint32 {
 // Increments the reference count on @section.
 /*
 
-C function : gtk_css_section_ref
+C function
+
+gtk_css_section_ref
 */
 func (recv *CssSection) Ref() *CssSection {
 	retC := C.gtk_css_section_ref((*C.GtkCssSection)(recv.native))
@@ -175,7 +193,9 @@ func (recv *CssSection) Ref() *CssSection {
 // structure if the reference count reaches 0.
 /*
 
-C function : gtk_css_section_unref
+C function
+
+gtk_css_section_unref
 */
 func (recv *CssSection) Unref() {
 	C.gtk_css_section_unref((*C.GtkCssSection)(recv.native))
@@ -189,7 +209,9 @@ func (recv *CssSection) Unref() {
 // function is used by language bindings.
 /*
 
-C function : gtk_text_iter_assign
+C function
+
+gtk_text_iter_assign
 */
 func (recv *TextIter) Assign(other *TextIter) {
 	c_other := (*C.GtkTextIter)(C.NULL)
@@ -218,7 +240,9 @@ func (recv *TextIter) Assign(other *TextIter) {
 // This function should only be called from class init functions of widgets.
 /*
 
-C function : gtk_widget_class_set_accessible_role
+C function
+
+gtk_widget_class_set_accessible_role
 */
 func (recv *WidgetClass) SetAccessibleRole(role atk.Role) {
 	c_role := (C.AtkRole)(role)
@@ -235,7 +259,9 @@ func (recv *WidgetClass) SetAccessibleRole(role atk.Role) {
 // This function should only be called from class init functions of widgets.
 /*
 
-C function : gtk_widget_class_set_accessible_type
+C function
+
+gtk_widget_class_set_accessible_type
 */
 func (recv *WidgetClass) SetAccessibleType(type_ gobject.Type) {
 	c_type := (C.GType)(type_)
@@ -251,7 +277,9 @@ func (recv *WidgetClass) SetAccessibleType(type_ gobject.Type) {
 // adding the style classes from @widget.
 /*
 
-C function : gtk_widget_path_append_for_widget
+C function
+
+gtk_widget_path_append_for_widget
 */
 func (recv *WidgetPath) AppendForWidget(widget *Widget) int32 {
 	c_widget := (*C.GtkWidget)(C.NULL)
@@ -274,7 +302,9 @@ func (recv *WidgetPath) AppendForWidget(widget *Widget) int32 {
 // involved widgets when the @siblings path changes.
 /*
 
-C function : gtk_widget_path_append_with_siblings
+C function
+
+gtk_widget_path_append_with_siblings
 */
 func (recv *WidgetPath) AppendWithSiblings(siblings *WidgetPath, siblingIndex uint32) int32 {
 	c_siblings := (*C.GtkWidgetPath)(C.NULL)
@@ -293,7 +323,9 @@ func (recv *WidgetPath) AppendWithSiblings(siblings *WidgetPath, siblingIndex ui
 // Increments the reference count on @path.
 /*
 
-C function : gtk_widget_path_ref
+C function
+
+gtk_widget_path_ref
 */
 func (recv *WidgetPath) Ref() *WidgetPath {
 	retC := C.gtk_widget_path_ref((*C.GtkWidgetPath)(recv.native))
@@ -310,7 +342,9 @@ func (recv *WidgetPath) Ref() *WidgetPath {
 // g_print() the path or dump it in a gdb session.
 /*
 
-C function : gtk_widget_path_to_string
+C function
+
+gtk_widget_path_to_string
 */
 func (recv *WidgetPath) ToString() string {
 	retC := C.gtk_widget_path_to_string((*C.GtkWidgetPath)(recv.native))
@@ -324,7 +358,9 @@ func (recv *WidgetPath) ToString() string {
 // if the reference count reaches 0.
 /*
 
-C function : gtk_widget_path_unref
+C function
+
+gtk_widget_path_unref
 */
 func (recv *WidgetPath) Unref() {
 	C.gtk_widget_path_unref((*C.GtkWidgetPath)(recv.native))

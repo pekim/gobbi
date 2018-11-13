@@ -25,7 +25,9 @@ import "C"
 // image" icon will be returned instead.
 /*
 
-C function : gtk_icon_set_render_icon_surface
+C function
+
+gtk_icon_set_render_icon_surface
 */
 func (recv *IconSet) RenderIconSurface(context *StyleContext, size IconSize, scale int32, forWindow *gdk.Window) *cairo.Surface {
 	c_context := (*C.GtkStyleContext)(C.NULL)
@@ -74,7 +76,9 @@ func (recv *IconSet) RenderIconSurface(context *StyleContext, size IconSize, sca
 // initializer after calling gtk_widget_class_set_template().
 /*
 
-C function : gtk_widget_class_bind_template_child_full
+C function
+
+gtk_widget_class_bind_template_child_full
 */
 func (recv *WidgetClass) BindTemplateChildFull(name string, internalChild bool, structOffset int64) {
 	c_name := C.CString(name)
@@ -101,7 +105,9 @@ func (recv *WidgetClass) BindTemplateChildFull(name string, internalChild bool, 
 // in the widget’s instance initializer.
 /*
 
-C function : gtk_widget_class_set_template
+C function
+
+gtk_widget_class_set_template
 */
 func (recv *WidgetClass) SetTemplate(templateBytes *glib.Bytes) {
 	c_template_bytes := (*C.GBytes)(C.NULL)
@@ -120,7 +126,9 @@ func (recv *WidgetClass) SetTemplate(templateBytes *glib.Bytes) {
 // in the widget’s instance initializer.
 /*
 
-C function : gtk_widget_class_set_template_from_resource
+C function
+
+gtk_widget_class_set_template_from_resource
 */
 func (recv *WidgetClass) SetTemplateFromResource(resourceName string) {
 	c_resource_name := C.CString(resourceName)

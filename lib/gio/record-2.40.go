@@ -26,7 +26,9 @@ import "C"
 // g_settings_schema_list_keys().
 /*
 
-C function : g_settings_schema_get_key
+C function
+
+g_settings_schema_get_key
 */
 func (recv *SettingsSchema) GetKey(name string) *SettingsSchemaKey {
 	c_name := C.CString(name)
@@ -41,7 +43,9 @@ func (recv *SettingsSchema) GetKey(name string) *SettingsSchemaKey {
 // Checks if @schema has a key named @name.
 /*
 
-C function : g_settings_schema_has_key
+C function
+
+g_settings_schema_has_key
 */
 func (recv *SettingsSchema) HasKey(name string) bool {
 	c_name := C.CString(name)
@@ -64,7 +68,9 @@ func (recv *SettingsSchema) HasKey(name string) bool {
 // Increase the reference count of @key, returning a new reference.
 /*
 
-C function : g_settings_schema_key_ref
+C function
+
+g_settings_schema_key_ref
 */
 func (recv *SettingsSchemaKey) Ref() *SettingsSchemaKey {
 	retC := C.g_settings_schema_key_ref((*C.GSettingsSchemaKey)(recv.native))
@@ -76,7 +82,9 @@ func (recv *SettingsSchemaKey) Ref() *SettingsSchemaKey {
 // Decrease the reference count of @key, possibly freeing it.
 /*
 
-C function : g_settings_schema_key_unref
+C function
+
+g_settings_schema_key_unref
 */
 func (recv *SettingsSchemaKey) Unref() {
 	C.g_settings_schema_key_unref((*C.GSettingsSchemaKey)(recv.native))

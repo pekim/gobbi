@@ -29,7 +29,9 @@ import "C"
 // `unix:nonce-tcp:host=127.0.0.1,port=42,noncefile=/run/bus-for-%3A0`.
 /*
 
-C function : g_dbus_address_escape_value
+C function
+
+g_dbus_address_escape_value
 */
 func DbusAddressEscapeValue(string string) string {
 	c_string := C.CString(string)
@@ -55,7 +57,9 @@ func DbusAddressEscapeValue(string string) string {
 // See also g_application_command_line_create_file_for_arg().
 /*
 
-C function : g_file_new_for_commandline_arg_and_cwd
+C function
+
+g_file_new_for_commandline_arg_and_cwd
 */
 func FileNewForCommandlineArgAndCwd(arg string, cwd string) *File {
 	c_arg := C.CString(arg)
@@ -76,7 +80,9 @@ func FileNewForCommandlineArgAndCwd(arg string, cwd string) *File {
 // functions (without calling any GLib networking functions first).
 /*
 
-C function : g_networking_init
+C function
+
+g_networking_init
 */
 func NetworkingInit() {
 	C.g_networking_init()

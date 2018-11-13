@@ -32,7 +32,9 @@ import "C"
 // necessary for sandbox helpers to parent their dialogs properly.
 /*
 
-C function : gtk_show_uri_on_window
+C function
+
+gtk_show_uri_on_window
 */
 func ShowUriOnWindow(parent *Window, uri string, timestamp uint32) (bool, error) {
 	c_parent := (*C.GtkWindow)(C.NULL)

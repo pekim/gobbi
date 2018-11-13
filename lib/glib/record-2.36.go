@@ -15,7 +15,9 @@ import "C"
 // Increases the reference count of @context.
 /*
 
-C function : g_markup_parse_context_ref
+C function
+
+g_markup_parse_context_ref
 */
 func (recv *MarkupParseContext) Ref() *MarkupParseContext {
 	retC := C.g_markup_parse_context_ref((*C.GMarkupParseContext)(recv.native))
@@ -28,7 +30,9 @@ func (recv *MarkupParseContext) Ref() *MarkupParseContext {
 // drops to 0, it is freed.
 /*
 
-C function : g_markup_parse_context_unref
+C function
+
+g_markup_parse_context_unref
 */
 func (recv *MarkupParseContext) Unref() {
 	C.g_markup_parse_context_unref((*C.GMarkupParseContext)(recv.native))
@@ -51,7 +55,9 @@ func (recv *MarkupParseContext) Unref() {
 // As the name suggests, this function is not available on Windows.
 /*
 
-C function : g_source_add_unix_fd
+C function
+
+g_source_add_unix_fd
 */
 func (recv *Source) AddUnixFd(fd int32, events IOCondition) uintptr {
 	c_fd := (C.gint)(fd)
@@ -77,7 +83,9 @@ func (recv *Source) AddUnixFd(fd int32, events IOCondition) uintptr {
 // As the name suggests, this function is not available on Windows.
 /*
 
-C function : g_source_modify_unix_fd
+C function
+
+g_source_modify_unix_fd
 */
 func (recv *Source) ModifyUnixFd(tag uintptr, newEvents IOCondition) {
 	c_tag := (C.gpointer)(tag)
@@ -101,7 +109,9 @@ func (recv *Source) ModifyUnixFd(tag uintptr, newEvents IOCondition) {
 // As the name suggests, this function is not available on Windows.
 /*
 
-C function : g_source_query_unix_fd
+C function
+
+g_source_query_unix_fd
 */
 func (recv *Source) QueryUnixFd(tag uintptr) IOCondition {
 	c_tag := (C.gpointer)(tag)
@@ -124,7 +134,9 @@ func (recv *Source) QueryUnixFd(tag uintptr) IOCondition {
 // As the name suggests, this function is not available on Windows.
 /*
 
-C function : g_source_remove_unix_fd
+C function
+
+g_source_remove_unix_fd
 */
 func (recv *Source) RemoveUnixFd(tag uintptr) {
 	c_tag := (C.gpointer)(tag)
@@ -158,7 +170,9 @@ func (recv *Source) RemoveUnixFd(tag uintptr) {
 // Do not call this API on a #GSource that you did not create.
 /*
 
-C function : g_source_set_ready_time
+C function
+
+g_source_set_ready_time
 */
 func (recv *Source) SetReadyTime(readyTime int64) {
 	c_ready_time := (C.gint64)(readyTime)

@@ -11,7 +11,9 @@ import "C"
 // Gets the current alpha for the specified part.
 /*
 
-C function : pango_renderer_get_alpha
+C function
+
+pango_renderer_get_alpha
 */
 func (recv *Renderer) GetAlpha(part RenderPart) uint16 {
 	c_part := (C.PangoRenderPart)(part)
@@ -27,7 +29,9 @@ func (recv *Renderer) GetAlpha(part RenderPart) uint16 {
 // specified for @part as well.
 /*
 
-C function : pango_renderer_set_alpha
+C function
+
+pango_renderer_set_alpha
 */
 func (recv *Renderer) SetAlpha(part RenderPart, alpha uint16) {
 	c_part := (C.PangoRenderPart)(part)

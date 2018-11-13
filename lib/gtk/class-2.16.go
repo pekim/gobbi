@@ -45,7 +45,9 @@ import "C"
 // cases (updating toggle state for instance).
 /*
 
-C function : gtk_action_block_activate
+C function
+
+gtk_action_block_activate
 */
 func (recv *Action) BlockActivate() {
 	C.gtk_action_block_activate((*C.GtkAction)(recv.native))
@@ -56,7 +58,9 @@ func (recv *Action) BlockActivate() {
 // Gets the gicon of @action.
 /*
 
-C function : gtk_action_get_gicon
+C function
+
+gtk_action_get_gicon
 */
 func (recv *Action) GetGicon() *gio.Icon {
 	retC := C.gtk_action_get_gicon((*C.GtkAction)(recv.native))
@@ -68,7 +72,9 @@ func (recv *Action) GetGicon() *gio.Icon {
 // Gets the icon name of @action.
 /*
 
-C function : gtk_action_get_icon_name
+C function
+
+gtk_action_get_icon_name
 */
 func (recv *Action) GetIconName() string {
 	retC := C.gtk_action_get_icon_name((*C.GtkAction)(recv.native))
@@ -80,7 +86,9 @@ func (recv *Action) GetIconName() string {
 // Checks whether @action is important or not
 /*
 
-C function : gtk_action_get_is_important
+C function
+
+gtk_action_get_is_important
 */
 func (recv *Action) GetIsImportant() bool {
 	retC := C.gtk_action_get_is_important((*C.GtkAction)(recv.native))
@@ -92,7 +100,9 @@ func (recv *Action) GetIsImportant() bool {
 // Gets the label text of @action.
 /*
 
-C function : gtk_action_get_label
+C function
+
+gtk_action_get_label
 */
 func (recv *Action) GetLabel() string {
 	retC := C.gtk_action_get_label((*C.GtkAction)(recv.native))
@@ -104,7 +114,9 @@ func (recv *Action) GetLabel() string {
 // Gets the short label text of @action.
 /*
 
-C function : gtk_action_get_short_label
+C function
+
+gtk_action_get_short_label
 */
 func (recv *Action) GetShortLabel() string {
 	retC := C.gtk_action_get_short_label((*C.GtkAction)(recv.native))
@@ -116,7 +128,9 @@ func (recv *Action) GetShortLabel() string {
 // Gets the stock id of @action.
 /*
 
-C function : gtk_action_get_stock_id
+C function
+
+gtk_action_get_stock_id
 */
 func (recv *Action) GetStockId() string {
 	retC := C.gtk_action_get_stock_id((*C.GtkAction)(recv.native))
@@ -128,7 +142,9 @@ func (recv *Action) GetStockId() string {
 // Gets the tooltip text of @action.
 /*
 
-C function : gtk_action_get_tooltip
+C function
+
+gtk_action_get_tooltip
 */
 func (recv *Action) GetTooltip() string {
 	retC := C.gtk_action_get_tooltip((*C.GtkAction)(recv.native))
@@ -140,7 +156,9 @@ func (recv *Action) GetTooltip() string {
 // Checks whether @action is visible when horizontal
 /*
 
-C function : gtk_action_get_visible_horizontal
+C function
+
+gtk_action_get_visible_horizontal
 */
 func (recv *Action) GetVisibleHorizontal() bool {
 	retC := C.gtk_action_get_visible_horizontal((*C.GtkAction)(recv.native))
@@ -152,7 +170,9 @@ func (recv *Action) GetVisibleHorizontal() bool {
 // Checks whether @action is visible when horizontal
 /*
 
-C function : gtk_action_get_visible_vertical
+C function
+
+gtk_action_get_visible_vertical
 */
 func (recv *Action) GetVisibleVertical() bool {
 	retC := C.gtk_action_get_visible_vertical((*C.GtkAction)(recv.native))
@@ -164,7 +184,9 @@ func (recv *Action) GetVisibleVertical() bool {
 // Sets the icon of @action.
 /*
 
-C function : gtk_action_set_gicon
+C function
+
+gtk_action_set_gicon
 */
 func (recv *Action) SetGicon(icon *gio.Icon) {
 	c_icon := (*C.GIcon)(icon.ToC())
@@ -177,7 +199,9 @@ func (recv *Action) SetGicon(icon *gio.Icon) {
 // Sets the icon name on @action
 /*
 
-C function : gtk_action_set_icon_name
+C function
+
+gtk_action_set_icon_name
 */
 func (recv *Action) SetIconName(iconName string) {
 	c_icon_name := C.CString(iconName)
@@ -193,7 +217,9 @@ func (recv *Action) SetIconName(iconName string) {
 // or not.
 /*
 
-C function : gtk_action_set_is_important
+C function
+
+gtk_action_set_is_important
 */
 func (recv *Action) SetIsImportant(isImportant bool) {
 	c_is_important :=
@@ -207,7 +233,9 @@ func (recv *Action) SetIsImportant(isImportant bool) {
 // Sets the label of @action.
 /*
 
-C function : gtk_action_set_label
+C function
+
+gtk_action_set_label
 */
 func (recv *Action) SetLabel(label string) {
 	c_label := C.CString(label)
@@ -221,7 +249,9 @@ func (recv *Action) SetLabel(label string) {
 // Sets a shorter label text on @action.
 /*
 
-C function : gtk_action_set_short_label
+C function
+
+gtk_action_set_short_label
 */
 func (recv *Action) SetShortLabel(shortLabel string) {
 	c_short_label := C.CString(shortLabel)
@@ -235,7 +265,9 @@ func (recv *Action) SetShortLabel(shortLabel string) {
 // Sets the stock id on @action
 /*
 
-C function : gtk_action_set_stock_id
+C function
+
+gtk_action_set_stock_id
 */
 func (recv *Action) SetStockId(stockId string) {
 	c_stock_id := C.CString(stockId)
@@ -249,7 +281,9 @@ func (recv *Action) SetStockId(stockId string) {
 // Sets the tooltip text on @action
 /*
 
-C function : gtk_action_set_tooltip
+C function
+
+gtk_action_set_tooltip
 */
 func (recv *Action) SetTooltip(tooltip string) {
 	c_tooltip := C.CString(tooltip)
@@ -263,7 +297,9 @@ func (recv *Action) SetTooltip(tooltip string) {
 // Sets whether @action is visible when horizontal
 /*
 
-C function : gtk_action_set_visible_horizontal
+C function
+
+gtk_action_set_visible_horizontal
 */
 func (recv *Action) SetVisibleHorizontal(visibleHorizontal bool) {
 	c_visible_horizontal :=
@@ -277,7 +313,9 @@ func (recv *Action) SetVisibleHorizontal(visibleHorizontal bool) {
 // Sets whether @action is visible when vertical
 /*
 
-C function : gtk_action_set_visible_vertical
+C function
+
+gtk_action_set_visible_vertical
 */
 func (recv *Action) SetVisibleVertical(visibleVertical bool) {
 	c_visible_vertical :=
@@ -291,7 +329,9 @@ func (recv *Action) SetVisibleVertical(visibleVertical bool) {
 // Reenable activation signals from the action
 /*
 
-C function : gtk_action_unblock_activate
+C function
+
+gtk_action_unblock_activate
 */
 func (recv *Action) UnblockActivate() {
 	C.gtk_action_unblock_activate((*C.GtkAction)(recv.native))
@@ -303,7 +343,9 @@ func (recv *Action) UnblockActivate() {
 // returned.
 /*
 
-C function : gtk_cell_view_get_model
+C function
+
+gtk_cell_view_get_model
 */
 func (recv *CellView) GetModel() *TreeModel {
 	retC := C.gtk_cell_view_get_model((*C.GtkCellView)(recv.native))
@@ -328,7 +370,9 @@ func (recv *CellView) GetModel() *TreeModel {
 // callback.
 /*
 
-C function : gtk_entry_get_current_icon_drag_source
+C function
+
+gtk_entry_get_current_icon_drag_source
 */
 func (recv *Entry) GetCurrentIconDragSource() int32 {
 	retC := C.gtk_entry_get_current_icon_drag_source((*C.GtkEntry)(recv.native))
@@ -340,7 +384,9 @@ func (recv *Entry) GetCurrentIconDragSource() int32 {
 // Returns whether the icon is activatable.
 /*
 
-C function : gtk_entry_get_icon_activatable
+C function
+
+gtk_entry_get_icon_activatable
 */
 func (recv *Entry) GetIconActivatable(iconPos EntryIconPosition) bool {
 	c_icon_pos := (C.GtkEntryIconPosition)(iconPos)
@@ -358,7 +404,9 @@ func (recv *Entry) GetIconActivatable(iconPos EntryIconPosition) bool {
 // signal handler.
 /*
 
-C function : gtk_entry_get_icon_at_pos
+C function
+
+gtk_entry_get_icon_at_pos
 */
 func (recv *Entry) GetIconAtPos(x int32, y int32) int32 {
 	c_x := (C.gint)(x)
@@ -376,7 +424,9 @@ func (recv *Entry) GetIconAtPos(x int32, y int32) int32 {
 // stock, pixbuf, or icon name).
 /*
 
-C function : gtk_entry_get_icon_gicon
+C function
+
+gtk_entry_get_icon_gicon
 */
 func (recv *Entry) GetIconGicon(iconPos EntryIconPosition) *gio.Icon {
 	c_icon_pos := (C.GtkEntryIconPosition)(iconPos)
@@ -397,7 +447,9 @@ func (recv *Entry) GetIconGicon(iconPos EntryIconPosition) *gio.Icon {
 // pixbuf, stock or gicon).
 /*
 
-C function : gtk_entry_get_icon_name
+C function
+
+gtk_entry_get_icon_name
 */
 func (recv *Entry) GetIconName(iconPos EntryIconPosition) string {
 	c_icon_pos := (C.GtkEntryIconPosition)(iconPos)
@@ -415,7 +467,9 @@ func (recv *Entry) GetIconName(iconPos EntryIconPosition) string {
 // #GdkPixbuf, a #GIcon, a stock item, or an icon name.
 /*
 
-C function : gtk_entry_get_icon_pixbuf
+C function
+
+gtk_entry_get_icon_pixbuf
 */
 func (recv *Entry) GetIconPixbuf(iconPos EntryIconPosition) *gdkpixbuf.Pixbuf {
 	c_icon_pos := (C.GtkEntryIconPosition)(iconPos)
@@ -434,7 +488,9 @@ func (recv *Entry) GetIconPixbuf(iconPos EntryIconPosition) *gdkpixbuf.Pixbuf {
 // Returns whether the icon appears sensitive or insensitive.
 /*
 
-C function : gtk_entry_get_icon_sensitive
+C function
+
+gtk_entry_get_icon_sensitive
 */
 func (recv *Entry) GetIconSensitive(iconPos EntryIconPosition) bool {
 	c_icon_pos := (C.GtkEntryIconPosition)(iconPos)
@@ -450,7 +506,9 @@ func (recv *Entry) GetIconSensitive(iconPos EntryIconPosition) bool {
 // pixbuf, icon name or gicon).
 /*
 
-C function : gtk_entry_get_icon_stock
+C function
+
+gtk_entry_get_icon_stock
 */
 func (recv *Entry) GetIconStock(iconPos EntryIconPosition) string {
 	c_icon_pos := (C.GtkEntryIconPosition)(iconPos)
@@ -466,7 +524,9 @@ func (recv *Entry) GetIconStock(iconPos EntryIconPosition) string {
 // the return value will be %GTK_IMAGE_EMPTY.
 /*
 
-C function : gtk_entry_get_icon_storage_type
+C function
+
+gtk_entry_get_icon_storage_type
 */
 func (recv *Entry) GetIconStorageType(iconPos EntryIconPosition) ImageType {
 	c_icon_pos := (C.GtkEntryIconPosition)(iconPos)
@@ -481,7 +541,9 @@ func (recv *Entry) GetIconStorageType(iconPos EntryIconPosition) ImageType {
 // position in @entry.
 /*
 
-C function : gtk_entry_get_icon_tooltip_markup
+C function
+
+gtk_entry_get_icon_tooltip_markup
 */
 func (recv *Entry) GetIconTooltipMarkup(iconPos EntryIconPosition) string {
 	c_icon_pos := (C.GtkEntryIconPosition)(iconPos)
@@ -497,7 +559,9 @@ func (recv *Entry) GetIconTooltipMarkup(iconPos EntryIconPosition) string {
 // position in @entry.
 /*
 
-C function : gtk_entry_get_icon_tooltip_text
+C function
+
+gtk_entry_get_icon_tooltip_text
 */
 func (recv *Entry) GetIconTooltipText(iconPos EntryIconPosition) string {
 	c_icon_pos := (C.GtkEntryIconPosition)(iconPos)
@@ -513,7 +577,9 @@ func (recv *Entry) GetIconTooltipText(iconPos EntryIconPosition) string {
 // See gtk_entry_set_progress_fraction().
 /*
 
-C function : gtk_entry_get_progress_fraction
+C function
+
+gtk_entry_get_progress_fraction
 */
 func (recv *Entry) GetProgressFraction() float64 {
 	retC := C.gtk_entry_get_progress_fraction((*C.GtkEntry)(recv.native))
@@ -525,7 +591,9 @@ func (recv *Entry) GetProgressFraction() float64 {
 // Retrieves the pulse step set with gtk_entry_set_progress_pulse_step().
 /*
 
-C function : gtk_entry_get_progress_pulse_step
+C function
+
+gtk_entry_get_progress_pulse_step
 */
 func (recv *Entry) GetProgressPulseStep() float64 {
 	retC := C.gtk_entry_get_progress_pulse_step((*C.GtkEntry)(recv.native))
@@ -542,7 +610,9 @@ func (recv *Entry) GetProgressPulseStep() float64 {
 // gtk_entry_set_progress_pulse_step()).
 /*
 
-C function : gtk_entry_progress_pulse
+C function
+
+gtk_entry_progress_pulse
 */
 func (recv *Entry) ProgressPulse() {
 	C.gtk_entry_progress_pulse((*C.GtkEntry)(recv.native))
@@ -553,7 +623,9 @@ func (recv *Entry) ProgressPulse() {
 // Sets whether the icon is activatable.
 /*
 
-C function : gtk_entry_set_icon_activatable
+C function
+
+gtk_entry_set_icon_activatable
 */
 func (recv *Entry) SetIconActivatable(iconPos EntryIconPosition, activatable bool) {
 	c_icon_pos := (C.GtkEntryIconPosition)(iconPos)
@@ -581,7 +653,9 @@ func (recv *Entry) SetIconActivatable(iconPos EntryIconPosition, activatable boo
 // gets executed after the default handler.
 /*
 
-C function : gtk_entry_set_icon_drag_source
+C function
+
+gtk_entry_set_icon_drag_source
 */
 func (recv *Entry) SetIconDragSource(iconPos EntryIconPosition, targetList *TargetList, actions gdk.DragAction) {
 	c_icon_pos := (C.GtkEntryIconPosition)(iconPos)
@@ -606,7 +680,9 @@ func (recv *Entry) SetIconDragSource(iconPos EntryIconPosition, targetList *Targ
 // If @icon is %NULL, no icon will be shown in the specified position.
 /*
 
-C function : gtk_entry_set_icon_from_gicon
+C function
+
+gtk_entry_set_icon_from_gicon
 */
 func (recv *Entry) SetIconFromGicon(iconPos EntryIconPosition, icon *gio.Icon) {
 	c_icon_pos := (C.GtkEntryIconPosition)(iconPos)
@@ -627,7 +703,9 @@ func (recv *Entry) SetIconFromGicon(iconPos EntryIconPosition, icon *gio.Icon) {
 // If @icon_name is %NULL, no icon will be shown in the specified position.
 /*
 
-C function : gtk_entry_set_icon_from_icon_name
+C function
+
+gtk_entry_set_icon_from_icon_name
 */
 func (recv *Entry) SetIconFromIconName(iconPos EntryIconPosition, iconName string) {
 	c_icon_pos := (C.GtkEntryIconPosition)(iconPos)
@@ -645,7 +723,9 @@ func (recv *Entry) SetIconFromIconName(iconPos EntryIconPosition, iconName strin
 // If @pixbuf is %NULL, no icon will be shown in the specified position.
 /*
 
-C function : gtk_entry_set_icon_from_pixbuf
+C function
+
+gtk_entry_set_icon_from_pixbuf
 */
 func (recv *Entry) SetIconFromPixbuf(iconPos EntryIconPosition, pixbuf *gdkpixbuf.Pixbuf) {
 	c_icon_pos := (C.GtkEntryIconPosition)(iconPos)
@@ -666,7 +746,9 @@ func (recv *Entry) SetIconFromPixbuf(iconPos EntryIconPosition, pixbuf *gdkpixbu
 // If @stock_id is %NULL, no icon will be shown in the specified position.
 /*
 
-C function : gtk_entry_set_icon_from_stock
+C function
+
+gtk_entry_set_icon_from_stock
 */
 func (recv *Entry) SetIconFromStock(iconPos EntryIconPosition, stockId string) {
 	c_icon_pos := (C.GtkEntryIconPosition)(iconPos)
@@ -682,7 +764,9 @@ func (recv *Entry) SetIconFromStock(iconPos EntryIconPosition, stockId string) {
 // Sets the sensitivity for the specified icon.
 /*
 
-C function : gtk_entry_set_icon_sensitive
+C function
+
+gtk_entry_set_icon_sensitive
 */
 func (recv *Entry) SetIconSensitive(iconPos EntryIconPosition, sensitive bool) {
 	c_icon_pos := (C.GtkEntryIconPosition)(iconPos)
@@ -705,7 +789,9 @@ func (recv *Entry) SetIconSensitive(iconPos EntryIconPosition, sensitive bool) {
 // gtk_entry_set_icon_tooltip_text().
 /*
 
-C function : gtk_entry_set_icon_tooltip_markup
+C function
+
+gtk_entry_set_icon_tooltip_markup
 */
 func (recv *Entry) SetIconTooltipMarkup(iconPos EntryIconPosition, tooltip string) {
 	c_icon_pos := (C.GtkEntryIconPosition)(iconPos)
@@ -733,7 +819,9 @@ func (recv *Entry) SetIconTooltipMarkup(iconPos EntryIconPosition, tooltip strin
 // setting at least one non-empty tooltip on any icon achieves the same result.
 /*
 
-C function : gtk_entry_set_icon_tooltip_text
+C function
+
+gtk_entry_set_icon_tooltip_text
 */
 func (recv *Entry) SetIconTooltipText(iconPos EntryIconPosition, tooltip string) {
 	c_icon_pos := (C.GtkEntryIconPosition)(iconPos)
@@ -751,7 +839,9 @@ func (recv *Entry) SetIconTooltipText(iconPos EntryIconPosition, tooltip string)
 // inclusive.
 /*
 
-C function : gtk_entry_set_progress_fraction
+C function
+
+gtk_entry_set_progress_fraction
 */
 func (recv *Entry) SetProgressFraction(fraction float64) {
 	c_fraction := (C.gdouble)(fraction)
@@ -765,7 +855,9 @@ func (recv *Entry) SetProgressFraction(fraction float64) {
 // bouncing block for each call to gtk_entry_progress_pulse().
 /*
 
-C function : gtk_entry_set_progress_pulse_step
+C function
+
+gtk_entry_set_progress_pulse_step
 */
 func (recv *Entry) SetProgressPulseStep(fraction float64) {
 	c_fraction := (C.gdouble)(fraction)
@@ -780,7 +872,9 @@ func (recv *Entry) SetProgressPulseStep(fraction float64) {
 // default invisible char is used again.
 /*
 
-C function : gtk_entry_unset_invisible_char
+C function
+
+gtk_entry_unset_invisible_char
 */
 func (recv *Entry) UnsetInvisibleChar() {
 	C.gtk_entry_unset_invisible_char((*C.GtkEntry)(recv.native))
@@ -791,7 +885,9 @@ func (recv *Entry) UnsetInvisibleChar() {
 // Gets the id of the currently active slave of the @context.
 /*
 
-C function : gtk_im_multicontext_get_context_id
+C function
+
+gtk_im_multicontext_get_context_id
 */
 func (recv *IMMulticontext) GetContextId() string {
 	retC := C.gtk_im_multicontext_get_context_id((*C.GtkIMMulticontext)(recv.native))
@@ -806,7 +902,9 @@ func (recv *IMMulticontext) GetContextId() string {
 // replaced by the slave corresponding to the new context id.
 /*
 
-C function : gtk_im_multicontext_set_context_id
+C function
+
+gtk_im_multicontext_set_context_id
 */
 func (recv *IMMulticontext) SetContextId(contextId string) {
 	c_context_id := C.CString(contextId)
@@ -821,7 +919,9 @@ func (recv *IMMulticontext) SetContextId(contextId string) {
 // setting and always show the image, if available.
 /*
 
-C function : gtk_image_menu_item_get_always_show_image
+C function
+
+gtk_image_menu_item_get_always_show_image
 */
 func (recv *ImageMenuItem) GetAlwaysShowImage() bool {
 	retC := C.gtk_image_menu_item_get_always_show_image((*C.GtkImageMenuItem)(recv.native))
@@ -834,7 +934,9 @@ func (recv *ImageMenuItem) GetAlwaysShowImage() bool {
 // stock id to select the stock item for the item.
 /*
 
-C function : gtk_image_menu_item_get_use_stock
+C function
+
+gtk_image_menu_item_get_use_stock
 */
 func (recv *ImageMenuItem) GetUseStock() bool {
 	retC := C.gtk_image_menu_item_get_use_stock((*C.GtkImageMenuItem)(recv.native))
@@ -852,7 +954,9 @@ func (recv *ImageMenuItem) GetUseStock() bool {
 // you shouldnt need this (see gtk_image_menu_item_new_from_stock()).
 /*
 
-C function : gtk_image_menu_item_set_accel_group
+C function
+
+gtk_image_menu_item_set_accel_group
 */
 func (recv *ImageMenuItem) SetAccelGroup(accelGroup *AccelGroup) {
 	c_accel_group := (*C.GtkAccelGroup)(C.NULL)
@@ -872,7 +976,9 @@ func (recv *ImageMenuItem) SetAccelGroup(accelGroup *AccelGroup) {
 // without the image.
 /*
 
-C function : gtk_image_menu_item_set_always_show_image
+C function
+
+gtk_image_menu_item_set_always_show_image
 */
 func (recv *ImageMenuItem) SetAlwaysShowImage(alwaysShow bool) {
 	c_always_show :=
@@ -887,7 +993,9 @@ func (recv *ImageMenuItem) SetAlwaysShowImage(alwaysShow bool) {
 // stock id to select the stock item for the item.
 /*
 
-C function : gtk_image_menu_item_set_use_stock
+C function
+
+gtk_image_menu_item_set_use_stock
 */
 func (recv *ImageMenuItem) SetUseStock(useStock bool) {
 	c_use_stock :=
@@ -901,7 +1009,9 @@ func (recv *ImageMenuItem) SetUseStock(useStock bool) {
 // Sets @text on the @menu_item label
 /*
 
-C function : gtk_menu_item_get_label
+C function
+
+gtk_menu_item_get_label
 */
 func (recv *MenuItem) GetLabel() string {
 	retC := C.gtk_menu_item_get_label((*C.GtkMenuItem)(recv.native))
@@ -914,7 +1024,9 @@ func (recv *MenuItem) GetLabel() string {
 // should be used for the mnemonic accelerator key.
 /*
 
-C function : gtk_menu_item_get_use_underline
+C function
+
+gtk_menu_item_get_use_underline
 */
 func (recv *MenuItem) GetUseUnderline() bool {
 	retC := C.gtk_menu_item_get_use_underline((*C.GtkMenuItem)(recv.native))
@@ -926,7 +1038,9 @@ func (recv *MenuItem) GetUseUnderline() bool {
 // Sets @text on the @menu_item label
 /*
 
-C function : gtk_menu_item_set_label
+C function
+
+gtk_menu_item_set_label
 */
 func (recv *MenuItem) SetLabel(label string) {
 	c_label := C.CString(label)
@@ -941,7 +1055,9 @@ func (recv *MenuItem) SetLabel(label string) {
 // should be used for the mnemonic accelerator key.
 /*
 
-C function : gtk_menu_item_set_use_underline
+C function
+
+gtk_menu_item_set_use_underline
 */
 func (recv *MenuItem) SetUseUnderline(setting bool) {
 	c_setting :=
@@ -961,7 +1077,9 @@ func (recv *MenuItem) SetUseUnderline(setting bool) {
 // itself.
 /*
 
-C function : gtk_print_operation_draw_page_finish
+C function
+
+gtk_print_operation_draw_page_finish
 */
 func (recv *PrintOperation) DrawPageFinish() {
 	C.gtk_print_operation_draw_page_finish((*C.GtkPrintOperation)(recv.native))
@@ -976,7 +1094,9 @@ func (recv *PrintOperation) DrawPageFinish() {
 // This function must be called in the callback of “draw-page” signal.
 /*
 
-C function : gtk_print_operation_set_defer_drawing
+C function
+
+gtk_print_operation_set_defer_drawing
 */
 func (recv *PrintOperation) SetDeferDrawing() {
 	C.gtk_print_operation_set_defer_drawing((*C.GtkPrintOperation)(recv.native))
@@ -987,7 +1107,9 @@ func (recv *PrintOperation) SetDeferDrawing() {
 // Gets the value of %GTK_PRINT_SETTINGS_PRINTER_LPI.
 /*
 
-C function : gtk_print_settings_get_printer_lpi
+C function
+
+gtk_print_settings_get_printer_lpi
 */
 func (recv *PrintSettings) GetPrinterLpi() float64 {
 	retC := C.gtk_print_settings_get_printer_lpi((*C.GtkPrintSettings)(recv.native))
@@ -999,7 +1121,9 @@ func (recv *PrintSettings) GetPrinterLpi() float64 {
 // Gets the value of %GTK_PRINT_SETTINGS_RESOLUTION_X.
 /*
 
-C function : gtk_print_settings_get_resolution_x
+C function
+
+gtk_print_settings_get_resolution_x
 */
 func (recv *PrintSettings) GetResolutionX() int32 {
 	retC := C.gtk_print_settings_get_resolution_x((*C.GtkPrintSettings)(recv.native))
@@ -1011,7 +1135,9 @@ func (recv *PrintSettings) GetResolutionX() int32 {
 // Gets the value of %GTK_PRINT_SETTINGS_RESOLUTION_Y.
 /*
 
-C function : gtk_print_settings_get_resolution_y
+C function
+
+gtk_print_settings_get_resolution_y
 */
 func (recv *PrintSettings) GetResolutionY() int32 {
 	retC := C.gtk_print_settings_get_resolution_y((*C.GtkPrintSettings)(recv.native))
@@ -1023,7 +1149,9 @@ func (recv *PrintSettings) GetResolutionY() int32 {
 // Sets the value of %GTK_PRINT_SETTINGS_PRINTER_LPI.
 /*
 
-C function : gtk_print_settings_set_printer_lpi
+C function
+
+gtk_print_settings_set_printer_lpi
 */
 func (recv *PrintSettings) SetPrinterLpi(lpi float64) {
 	c_lpi := (C.gdouble)(lpi)
@@ -1038,7 +1166,9 @@ func (recv *PrintSettings) SetPrinterLpi(lpi float64) {
 // %GTK_PRINT_SETTINGS_RESOLUTION_Y.
 /*
 
-C function : gtk_print_settings_set_resolution_xy
+C function
+
+gtk_print_settings_set_resolution_xy
 */
 func (recv *PrintSettings) SetResolutionXy(resolutionX int32, resolutionY int32) {
 	c_resolution_x := (C.gint)(resolutionX)
@@ -1061,7 +1191,9 @@ func (recv *PrintSettings) SetResolutionXy(resolutionX int32, resolutionY int32)
 // To remove marks from a scale, use gtk_scale_clear_marks().
 /*
 
-C function : gtk_scale_add_mark
+C function
+
+gtk_scale_add_mark
 */
 func (recv *Scale) AddMark(value float64, position PositionType, markup string) {
 	c_value := (C.gdouble)(value)
@@ -1079,7 +1211,9 @@ func (recv *Scale) AddMark(value float64, position PositionType, markup string) 
 // Removes any marks that have been added with gtk_scale_add_mark().
 /*
 
-C function : gtk_scale_clear_marks
+C function
+
+gtk_scale_clear_marks
 */
 func (recv *Scale) ClearMarks() {
 	C.gtk_scale_clear_marks((*C.GtkScale)(recv.native))
@@ -1155,7 +1289,9 @@ func statusicon_scrollEventHandler(_ *C.GObject, c_event *C.GdkEventScroll, data
 // See #GtkStatusIcon:has-tooltip for more information.
 /*
 
-C function : gtk_status_icon_get_has_tooltip
+C function
+
+gtk_status_icon_get_has_tooltip
 */
 func (recv *StatusIcon) GetHasTooltip() bool {
 	retC := C.gtk_status_icon_get_has_tooltip((*C.GtkStatusIcon)(recv.native))
@@ -1167,7 +1303,9 @@ func (recv *StatusIcon) GetHasTooltip() bool {
 // Gets the contents of the tooltip for @status_icon.
 /*
 
-C function : gtk_status_icon_get_tooltip_markup
+C function
+
+gtk_status_icon_get_tooltip_markup
 */
 func (recv *StatusIcon) GetTooltipMarkup() string {
 	retC := C.gtk_status_icon_get_tooltip_markup((*C.GtkStatusIcon)(recv.native))
@@ -1180,7 +1318,9 @@ func (recv *StatusIcon) GetTooltipMarkup() string {
 // Gets the contents of the tooltip for @status_icon.
 /*
 
-C function : gtk_status_icon_get_tooltip_text
+C function
+
+gtk_status_icon_get_tooltip_text
 */
 func (recv *StatusIcon) GetTooltipText() string {
 	retC := C.gtk_status_icon_get_tooltip_text((*C.GtkStatusIcon)(recv.native))
@@ -1194,7 +1334,9 @@ func (recv *StatusIcon) GetTooltipText() string {
 // See #GtkStatusIcon:has-tooltip for more information.
 /*
 
-C function : gtk_status_icon_set_has_tooltip
+C function
+
+gtk_status_icon_set_has_tooltip
 */
 func (recv *StatusIcon) SetHasTooltip(hasTooltip bool) {
 	c_has_tooltip :=
@@ -1215,7 +1357,9 @@ func (recv *StatusIcon) SetHasTooltip(hasTooltip bool) {
 // gtk_tooltip_set_markup().
 /*
 
-C function : gtk_status_icon_set_tooltip_markup
+C function
+
+gtk_status_icon_set_tooltip_markup
 */
 func (recv *StatusIcon) SetTooltipMarkup(markup string) {
 	c_markup := C.CString(markup)
@@ -1236,7 +1380,9 @@ func (recv *StatusIcon) SetTooltipMarkup(markup string) {
 // gtk_tooltip_set_text().
 /*
 
-C function : gtk_status_icon_set_tooltip_text
+C function
+
+gtk_status_icon_set_tooltip_text
 */
 func (recv *StatusIcon) SetTooltipText(text string) {
 	c_text := C.CString(text)
@@ -1253,7 +1399,9 @@ func (recv *StatusIcon) SetTooltipText(text string) {
 // widget class is in the given style.
 /*
 
-C function : gtk_style_get_style_property
+C function
+
+gtk_style_get_style_property
 */
 func (recv *Style) GetStyleProperty(widgetType gobject.Type, propertyName string) *gobject.Value {
 	c_widget_type := (C.GType)(widgetType)

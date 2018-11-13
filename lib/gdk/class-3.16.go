@@ -19,7 +19,9 @@ import "C"
 // it. See gdk_device_get_vendor_id() for more information.
 /*
 
-C function : gdk_device_get_product_id
+C function
+
+gdk_device_get_product_id
 */
 func (recv *Device) GetProductId() string {
 	retC := C.gdk_device_get_product_id((*C.GdkDevice)(recv.native))
@@ -56,7 +58,9 @@ func (recv *Device) GetProductId() string {
 // ]|
 /*
 
-C function : gdk_device_get_vendor_id
+C function
+
+gdk_device_get_vendor_id
 */
 func (recv *Device) GetVendorId() string {
 	retC := C.gdk_device_get_vendor_id((*C.GdkDevice)(recv.native))
@@ -68,7 +72,9 @@ func (recv *Device) GetVendorId() string {
 // Retrieves the value set using gdk_gl_context_set_debug_enabled().
 /*
 
-C function : gdk_gl_context_get_debug_enabled
+C function
+
+gdk_gl_context_get_debug_enabled
 */
 func (recv *GLContext) GetDebugEnabled() bool {
 	retC := C.gdk_gl_context_get_debug_enabled((*C.GdkGLContext)(recv.native))
@@ -80,7 +86,9 @@ func (recv *GLContext) GetDebugEnabled() bool {
 // Retrieves the #GdkDisplay the @context is created for
 /*
 
-C function : gdk_gl_context_get_display
+C function
+
+gdk_gl_context_get_display
 */
 func (recv *GLContext) GetDisplay() *Display {
 	retC := C.gdk_gl_context_get_display((*C.GdkGLContext)(recv.native))
@@ -97,7 +105,9 @@ func (recv *GLContext) GetDisplay() *Display {
 // Retrieves the value set using gdk_gl_context_set_forward_compatible().
 /*
 
-C function : gdk_gl_context_get_forward_compatible
+C function
+
+gdk_gl_context_get_forward_compatible
 */
 func (recv *GLContext) GetForwardCompatible() bool {
 	retC := C.gdk_gl_context_get_forward_compatible((*C.GdkGLContext)(recv.native))
@@ -110,7 +120,9 @@ func (recv *GLContext) GetForwardCompatible() bool {
 // gdk_gl_context_set_required_version().
 /*
 
-C function : gdk_gl_context_get_required_version
+C function
+
+gdk_gl_context_get_required_version
 */
 func (recv *GLContext) GetRequiredVersion() (int32, int32) {
 	var c_major C.int
@@ -129,7 +141,9 @@ func (recv *GLContext) GetRequiredVersion() (int32, int32) {
 // Retrieves the #GdkGLContext that this @context share data with.
 /*
 
-C function : gdk_gl_context_get_shared_context
+C function
+
+gdk_gl_context_get_shared_context
 */
 func (recv *GLContext) GetSharedContext() *GLContext {
 	retC := C.gdk_gl_context_get_shared_context((*C.GdkGLContext)(recv.native))
@@ -148,7 +162,9 @@ func (recv *GLContext) GetSharedContext() *GLContext {
 // The @context must be realized prior to calling this function.
 /*
 
-C function : gdk_gl_context_get_version
+C function
+
+gdk_gl_context_get_version
 */
 func (recv *GLContext) GetVersion() (int32, int32) {
 	var c_major C.int
@@ -167,7 +183,9 @@ func (recv *GLContext) GetVersion() (int32, int32) {
 // Retrieves the #GdkWindow used by the @context.
 /*
 
-C function : gdk_gl_context_get_window
+C function
+
+gdk_gl_context_get_window
 */
 func (recv *GLContext) GetWindow() *Window {
 	retC := C.gdk_gl_context_get_window((*C.GdkGLContext)(recv.native))
@@ -184,7 +202,9 @@ func (recv *GLContext) GetWindow() *Window {
 // Makes the @context the current one.
 /*
 
-C function : gdk_gl_context_make_current
+C function
+
+gdk_gl_context_make_current
 */
 func (recv *GLContext) MakeCurrent() {
 	C.gdk_gl_context_make_current((*C.GdkGLContext)(recv.native))
@@ -197,7 +217,9 @@ func (recv *GLContext) MakeCurrent() {
 // It is safe to call this function on a realized #GdkGLContext.
 /*
 
-C function : gdk_gl_context_realize
+C function
+
+gdk_gl_context_realize
 */
 func (recv *GLContext) Realize() (bool, error) {
 	var cThrowableError *C.GError
@@ -221,7 +243,9 @@ func (recv *GLContext) Realize() (bool, error) {
 // calling this function.
 /*
 
-C function : gdk_gl_context_set_debug_enabled
+C function
+
+gdk_gl_context_set_debug_enabled
 */
 func (recv *GLContext) SetDebugEnabled(enabled bool) {
 	c_enabled :=
@@ -243,7 +267,9 @@ func (recv *GLContext) SetDebugEnabled(enabled bool) {
 // this function.
 /*
 
-C function : gdk_gl_context_set_forward_compatible
+C function
+
+gdk_gl_context_set_forward_compatible
 */
 func (recv *GLContext) SetForwardCompatible(compatible bool) {
 	c_compatible :=
@@ -262,7 +288,9 @@ func (recv *GLContext) SetForwardCompatible(compatible bool) {
 // this function.
 /*
 
-C function : gdk_gl_context_set_required_version
+C function
+
+gdk_gl_context_set_required_version
 */
 func (recv *GLContext) SetRequiredVersion(major int32, minor int32) {
 	c_major := (C.int)(major)
@@ -284,7 +312,9 @@ func (recv *GLContext) SetRequiredVersion(major int32, minor int32) {
 // call gdk_gl_context_make_current() or gdk_gl_context_realize().
 /*
 
-C function : gdk_window_create_gl_context
+C function
+
+gdk_window_create_gl_context
 */
 func (recv *Window) CreateGlContext() (*GLContext, error) {
 	var cThrowableError *C.GError
@@ -310,7 +340,9 @@ func (recv *Window) CreateGlContext() (*GLContext, error) {
 // to care about this.
 /*
 
-C function : gdk_window_mark_paint_from_clip
+C function
+
+gdk_window_mark_paint_from_clip
 */
 func (recv *Window) MarkPaintFromClip(cr *cairo.Context) {
 	c_cr := (*C.cairo_t)(C.NULL)

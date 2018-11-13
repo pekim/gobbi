@@ -11,7 +11,9 @@ import "C"
 // Get the contents of a %G_TYPE_GTYPE #GValue.
 /*
 
-C function : g_value_get_gtype
+C function
+
+g_value_get_gtype
 */
 func (recv *Value) GetGtype() Type {
 	retC := C.g_value_get_gtype((*C.GValue)(recv.native))
@@ -23,7 +25,9 @@ func (recv *Value) GetGtype() Type {
 // Set the contents of a %G_TYPE_GTYPE #GValue to @v_gtype.
 /*
 
-C function : g_value_set_gtype
+C function
+
+g_value_set_gtype
 */
 func (recv *Value) SetGtype(vGtype Type) {
 	c_v_gtype := (C.GType)(vGtype)

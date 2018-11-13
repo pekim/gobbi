@@ -12,7 +12,9 @@ import "C"
 
 /*
 
-C function : gtk_info_bar_get_revealed
+C function
+
+gtk_info_bar_get_revealed
 */
 func (recv *InfoBar) GetRevealed() bool {
 	retC := C.gtk_info_bar_get_revealed((*C.GtkInfoBar)(recv.native))
@@ -28,7 +30,9 @@ func (recv *InfoBar) GetRevealed() bool {
 // have any effect if it is invisible.
 /*
 
-C function : gtk_info_bar_set_revealed
+C function
+
+gtk_info_bar_set_revealed
 */
 func (recv *InfoBar) SetRevealed(revealed bool) {
 	c_revealed :=

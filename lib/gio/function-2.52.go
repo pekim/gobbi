@@ -24,7 +24,9 @@ import "C"
 // Convenience wrapper around g_content_type_is_a().
 /*
 
-C function : g_content_type_is_mime_type
+C function
+
+g_content_type_is_mime_type
 */
 func ContentTypeIsMimeType(type_ string, mimeType string) bool {
 	c_type := C.CString(type_)
@@ -44,7 +46,9 @@ func ContentTypeIsMimeType(type_ string, mimeType string) bool {
 // if the mounts have changed since with g_unix_mounts_changed_since().
 /*
 
-C function : g_unix_mount_for
+C function
+
+g_unix_mount_for
 */
 func UnixMountFor(filePath string) (*UnixMountEntry, uint64) {
 	c_file_path := C.CString(filePath)

@@ -30,7 +30,9 @@ import "C"
 // specification for more on the generic icon name.
 /*
 
-C function : g_content_type_get_generic_icon_name
+C function
+
+g_content_type_get_generic_icon_name
 */
 func ContentTypeGetGenericIconName(type_ string) string {
 	c_type := C.CString(type_)
@@ -46,7 +48,9 @@ func ContentTypeGetGenericIconName(type_ string) string {
 // Gets the symbolic icon for a content type.
 /*
 
-C function : g_content_type_get_symbolic_icon
+C function
+
+g_content_type_get_symbolic_icon
 */
 func ContentTypeGetSymbolicIcon(type_ string) *Icon {
 	c_type := C.CString(type_)
@@ -64,7 +68,9 @@ func ContentTypeGetSymbolicIcon(type_ string) *Icon {
 // dummy callback), and @cancellable, if they are non-%NULL.
 /*
 
-C function : g_pollable_source_new_full
+C function
+
+g_pollable_source_new_full
 */
 func PollableSourceNewFull(pollableStream uintptr, childSource *glib.Source, cancellable *Cancellable) *glib.Source {
 	c_pollable_stream := (C.gpointer)(pollableStream)
@@ -96,7 +102,9 @@ func PollableSourceNewFull(pollableStream uintptr, childSource *glib.Source, can
 // %TRUE, then @stream does not need to be a #GPollableInputStream.
 /*
 
-C function : g_pollable_stream_read
+C function
+
+g_pollable_stream_read
 */
 func PollableStreamRead(stream *InputStream, buffer []uint8, blocking bool, cancellable *Cancellable) (int64, error) {
 	c_stream := (*C.GInputStream)(C.NULL)
@@ -141,7 +149,9 @@ func PollableStreamRead(stream *InputStream, buffer []uint8, blocking bool, canc
 // need to be a #GPollableOutputStream.
 /*
 
-C function : g_pollable_stream_write
+C function
+
+g_pollable_stream_write
 */
 func PollableStreamWrite(stream *OutputStream, buffer []uint8, blocking bool, cancellable *Cancellable) (int64, error) {
 	c_stream := (*C.GOutputStream)(C.NULL)
@@ -194,7 +204,9 @@ func PollableStreamWrite(stream *OutputStream, buffer []uint8, blocking bool, ca
 // need to be a #GPollableOutputStream.
 /*
 
-C function : g_pollable_stream_write_all
+C function
+
+g_pollable_stream_write_all
 */
 func PollableStreamWriteAll(stream *OutputStream, buffer []uint8, blocking bool, cancellable *Cancellable) (bool, uint64, error) {
 	c_stream := (*C.GOutputStream)(C.NULL)
@@ -234,7 +246,9 @@ func PollableStreamWriteAll(stream *OutputStream, buffer []uint8, blocking bool,
 // Guesses the symbolic icon of a Unix mount.
 /*
 
-C function : g_unix_mount_guess_symbolic_icon
+C function
+
+g_unix_mount_guess_symbolic_icon
 */
 func UnixMountGuessSymbolicIcon(mountEntry *UnixMountEntry) *Icon {
 	c_mount_entry := (*C.GUnixMountEntry)(C.NULL)

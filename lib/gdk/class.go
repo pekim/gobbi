@@ -130,7 +130,7 @@ import "C"
 // startup notification and allows to launch applications on a specific
 // screen or workspace.
 //
-// ## Launching an application
+// Launching an application
 //
 // |[<!-- language="C" -->
 // GdkAppLaunchContext *context;
@@ -147,7 +147,9 @@ import "C"
 // ]|
 /*
 
-C record/class : GdkAppLaunchContext
+C type
+
+GdkAppLaunchContext
 */
 type AppLaunchContext struct {
 	native *C.GdkAppLaunchContext
@@ -188,7 +190,9 @@ func CastToAppLaunchContext(object *gobject.Object) *AppLaunchContext {
 // A #GdkCursor represents a cursor. Its contents are private.
 /*
 
-C record/class : GdkCursor
+C type
+
+GdkCursor
 */
 type Cursor struct {
 	native *C.GdkCursor
@@ -227,7 +231,9 @@ func CastToCursor(object *gobject.Object) *Cursor {
 // To make the cursor invisible, use %GDK_BLANK_CURSOR.
 /*
 
-C function : gdk_cursor_new
+C function
+
+gdk_cursor_new
 */
 func CursorNew(cursorType CursorType) *Cursor {
 	c_cursor_type := (C.GdkCursorType)(cursorType)
@@ -241,7 +247,9 @@ func CursorNew(cursorType CursorType) *Cursor {
 // Adds a reference to @cursor.
 /*
 
-C function : gdk_cursor_ref
+C function
+
+gdk_cursor_ref
 */
 func (recv *Cursor) Ref() *Cursor {
 	retC := C.gdk_cursor_ref((*C.GdkCursor)(recv.native))
@@ -254,7 +262,9 @@ func (recv *Cursor) Ref() *Cursor {
 // if no references remain.
 /*
 
-C function : gdk_cursor_unref
+C function
+
+gdk_cursor_unref
 */
 func (recv *Cursor) Unref() {
 	C.gdk_cursor_unref((*C.GdkCursor)(recv.native))
@@ -270,7 +280,9 @@ func (recv *Cursor) Unref() {
 // relationships.
 /*
 
-C record/class : GdkDevice
+C type
+
+GdkDevice
 */
 type Device struct {
 	native *C.GdkDevice
@@ -364,7 +376,9 @@ func device_changedHandler(_ *C.GObject, data C.gpointer) {
 // and locates the value in the array for a given axis use.
 /*
 
-C function : gdk_device_get_axis
+C function
+
+gdk_device_get_axis
 */
 func (recv *Device) GetAxis(axes []float64, use AxisUse) (bool, float64) {
 	c_axes := &axes[0]
@@ -390,7 +404,9 @@ func (recv *Device) GetAxis(axes []float64, use AxisUse) (bool, float64) {
 // %NULL
 /*
 
-C function : gdk_device_list_slave_devices
+C function
+
+gdk_device_list_slave_devices
 */
 func (recv *Device) ListSlaveDevices() *glib.List {
 	retC := C.gdk_device_list_slave_devices((*C.GdkDevice)(recv.native))
@@ -407,7 +423,9 @@ func (recv *Device) ListSlaveDevices() *glib.List {
 // Specifies how an axis of a device is used.
 /*
 
-C function : gdk_device_set_axis_use
+C function
+
+gdk_device_set_axis_use
 */
 func (recv *Device) SetAxisUse(index uint32, use AxisUse) {
 	c_index_ := (C.guint)(index)
@@ -423,7 +441,9 @@ func (recv *Device) SetAxisUse(index uint32, use AxisUse) {
 // is pressed.
 /*
 
-C function : gdk_device_set_key
+C function
+
+gdk_device_set_key
 */
 func (recv *Device) SetKey(index uint32, keyval uint32, modifiers ModifierType) {
 	c_index_ := (C.guint)(index)
@@ -446,7 +466,9 @@ func (recv *Device) SetKey(index uint32, keyval uint32, modifiers ModifierType) 
 // by the input mode.
 /*
 
-C function : gdk_device_set_mode
+C function
+
+gdk_device_set_mode
 */
 func (recv *Device) SetMode(mode InputMode) bool {
 	c_mode := (C.GdkInputMode)(mode)
@@ -573,7 +595,9 @@ func (recv *Device) SetMode(mode InputMode) bool {
 // written code.
 /*
 
-C record/class : GdkDeviceManager
+C type
+
+GdkDeviceManager
 */
 type DeviceManager struct {
 	native *C.GdkDeviceManager
@@ -803,7 +827,9 @@ func devicemanager_deviceRemovedHandler(_ *C.GObject, c_device *C.GdkDevice, dat
 // gdk_display_get_device_manager().
 /*
 
-C record/class : GdkDisplay
+C type
+
+GdkDisplay
 */
 type Display struct {
 	native *C.GdkDisplay
@@ -896,7 +922,9 @@ func display_openedHandler(_ *C.GObject, data C.gpointer) {
 // Returns %TRUE if there is an ongoing grab on @device for @display.
 /*
 
-C function : gdk_display_device_is_grabbed
+C function
+
+gdk_display_device_is_grabbed
 */
 func (recv *Display) DeviceIsGrabbed(device *Device) bool {
 	c_device := (*C.GdkDevice)(C.NULL)
@@ -930,7 +958,11 @@ func (recv *Display) DeviceIsGrabbed(device *Device) bool {
 // you are building your application against. At runtime, use type-check
 // macros like GDK_IS_X11_DISPLAY() to find out which backend is in use:
 //
-// ## Backend-specific code ## {#backend-specific}
+/*
+Backend-specific code
+
+(see backend-specific)
+*/
 //
 // |[<!-- language="C" -->
 // #ifdef GDK_WINDOWING_X11
@@ -951,7 +983,9 @@ func (recv *Display) DeviceIsGrabbed(device *Device) bool {
 // ]|
 /*
 
-C record/class : GdkDisplayManager
+C type
+
+GdkDisplayManager
 */
 type DisplayManager struct {
 	native *C.GdkDisplayManager
@@ -986,7 +1020,9 @@ func CastToDisplayManager(object *gobject.Object) *DisplayManager {
 
 /*
 
-C record/class : GdkDragContext
+C type
+
+GdkDragContext
 */
 type DragContext struct {
 	native *C.GdkDragContext
@@ -1022,7 +1058,9 @@ func CastToDragContext(object *gobject.Object) *DragContext {
 // Returns the #GdkDevice associated to the drag context.
 /*
 
-C function : gdk_drag_context_get_device
+C function
+
+gdk_drag_context_get_device
 */
 func (recv *DragContext) GetDevice() *Device {
 	retC := C.gdk_drag_context_get_device((*C.GdkDragContext)(recv.native))
@@ -1035,7 +1073,9 @@ func (recv *DragContext) GetDevice() *Device {
 // for @context are emitted as if they came from this device.
 /*
 
-C function : gdk_drag_context_set_device
+C function
+
+gdk_drag_context_set_device
 */
 func (recv *DragContext) SetDevice(device *Device) {
 	c_device := (*C.GdkDevice)(C.NULL)
@@ -1083,7 +1123,9 @@ func (recv *DragContext) SetDevice(device *Device) {
 // they will stay exactly synchronized.
 /*
 
-C record/class : GdkFrameClock
+C type
+
+GdkFrameClock
 */
 type FrameClock struct {
 	native *C.GdkFrameClock
@@ -1535,7 +1577,7 @@ func frameclock_updateHandler(_ *C.GObject, data C.gpointer) {
 // A #GdkGLContext has to be made "current" in order to start using
 // it, otherwise any OpenGL call will be ignored.
 //
-// ## Creating a new OpenGL context ##
+// Creating a new OpenGL context ##
 //
 // In order to create a new #GdkGLContext instance you need a
 // #GdkWindow, which you typically get during the realize call
@@ -1549,7 +1591,7 @@ func frameclock_updateHandler(_ *C.GObject, data C.gpointer) {
 // If the realization fails you have the option to change the settings of the
 // #GdkGLContext and try again.
 //
-// ## Using a GdkGLContext ##
+// Using a GdkGLContext ##
 //
 // You will need to make the #GdkGLContext the current context
 // before issuing OpenGL calls; the system sends OpenGL commands to
@@ -1568,7 +1610,9 @@ func frameclock_updateHandler(_ *C.GObject, data C.gpointer) {
 // that is currently set by calling gdk_gl_context_clear_current().
 /*
 
-C record/class : GdkGLContext
+C type
+
+GdkGLContext
 */
 type GLContext struct {
 	native *C.GdkGLContext
@@ -1609,7 +1653,9 @@ func CastToGLContext(object *gobject.Object) *GLContext {
 // in the keymap and see what keyval it corresponds to.
 /*
 
-C record/class : GdkKeymap
+C type
+
+GdkKeymap
 */
 type Keymap struct {
 	native *C.GdkKeymap
@@ -1645,7 +1691,9 @@ func CastToKeymap(object *gobject.Object) *Keymap {
 // Returns the direction of effective layout of the keymap.
 /*
 
-C function : gdk_keymap_get_direction
+C function
+
+gdk_keymap_get_direction
 */
 func (recv *Keymap) GetDirection() pango.Direction {
 	retC := C.gdk_keymap_get_direction((*C.GdkKeymap)(recv.native))
@@ -1665,7 +1713,9 @@ func (recv *Keymap) GetDirection() pango.Direction {
 // the same as the current keyboard state.
 /*
 
-C function : gdk_keymap_lookup_key
+C function
+
+gdk_keymap_lookup_key
 */
 func (recv *Keymap) LookupKey(key *KeymapKey) uint32 {
 	c_key := (*C.GdkKeymapKey)(C.NULL)
@@ -1694,7 +1744,9 @@ func (recv *Keymap) LookupKey(key *KeymapKey) uint32 {
 // of the physical monitors (gdk_screen_get_monitor_geometry()), etc.
 /*
 
-C record/class : GdkScreen
+C type
+
+GdkScreen
 */
 type Screen struct {
 	native *C.GdkScreen
@@ -1731,7 +1783,9 @@ func CastToScreen(object *gobject.Object) *Screen {
 // a particular visual.
 /*
 
-C record/class : GdkVisual
+C type
+
+GdkVisual
 */
 type Visual struct {
 	native *C.GdkVisual
@@ -1766,7 +1820,9 @@ func CastToVisual(object *gobject.Object) *Visual {
 
 /*
 
-C record/class : GdkWindow
+C type
+
+GdkWindow
 */
 type Window struct {
 	native *C.GdkWindow
@@ -1805,7 +1861,9 @@ func CastToWindow(object *gobject.Object) *Window {
 // display, @parent must be specified.
 /*
 
-C function : gdk_window_new
+C function
+
+gdk_window_new
 */
 func WindowNew(parent *Window, attributes *WindowAttr, attributesMask int32) *Window {
 	c_parent := (*C.GdkWindow)(C.NULL)
@@ -1835,7 +1893,9 @@ func WindowNew(parent *Window, attributes *WindowAttr, attributesMask int32) *Wi
 // to begin a drag with a different device.
 /*
 
-C function : gdk_window_begin_move_drag
+C function
+
+gdk_window_begin_move_drag
 */
 func (recv *Window) BeginMoveDrag(button int32, rootX int32, rootY int32, timestamp uint32) {
 	c_button := (C.gint)(button)
@@ -1893,7 +1953,9 @@ func (recv *Window) BeginMoveDrag(button int32, rootX int32, rootY int32, timest
 // gdk_window_begin_paint_region().
 /*
 
-C function : gdk_window_begin_paint_region
+C function
+
+gdk_window_begin_paint_region
 */
 func (recv *Window) BeginPaintRegion(region *cairo.Region) {
 	c_region := (*C.cairo_region_t)(C.NULL)
@@ -1913,7 +1975,9 @@ func (recv *Window) BeginPaintRegion(region *cairo.Region) {
 // to begin a drag with a different device.
 /*
 
-C function : gdk_window_begin_resize_drag
+C function
+
+gdk_window_begin_resize_drag
 */
 func (recv *Window) BeginResizeDrag(edge WindowEdge, button int32, rootX int32, rootY int32, timestamp uint32) {
 	c_edge := (C.GdkWindowEdge)(edge)
@@ -1938,7 +2002,9 @@ func (recv *Window) BeginResizeDrag(edge WindowEdge, button int32, rootX int32, 
 // unminimizes it, and puts it on the current desktop.
 /*
 
-C function : gdk_window_deiconify
+C function
+
+gdk_window_deiconify
 */
 func (recv *Window) Deiconify() {
 	C.gdk_window_deiconify((*C.GdkWindow)(recv.native))
@@ -1954,7 +2020,9 @@ func (recv *Window) Deiconify() {
 // reaches zero. You must call this function yourself before that happens.
 /*
 
-C function : gdk_window_destroy
+C function
+
+gdk_window_destroy
 */
 func (recv *Window) Destroy() {
 	C.gdk_window_destroy((*C.GdkWindow)(recv.native))
@@ -1974,7 +2042,9 @@ func (recv *Window) Destroy() {
 // gdk_window_begin_paint_region() first.
 /*
 
-C function : gdk_window_end_paint
+C function
+
+gdk_window_end_paint
 */
 func (recv *Window) EndPaint() {
 	C.gdk_window_end_paint((*C.GdkWindow)(recv.native))
@@ -1986,7 +2056,9 @@ func (recv *Window) EndPaint() {
 // should be used on a #GtkWindow, rather than calling this function.
 /*
 
-C function : gdk_window_focus
+C function
+
+gdk_window_focus
 */
 func (recv *Window) Focus(timestamp uint32) {
 	c_timestamp := (C.guint32)(timestamp)
@@ -2008,7 +2080,9 @@ func (recv *Window) Focus(timestamp uint32) {
 // for use by GTK+.
 /*
 
-C function : gdk_window_freeze_toplevel_updates_libgtk_only
+C function
+
+gdk_window_freeze_toplevel_updates_libgtk_only
 */
 func (recv *Window) FreezeToplevelUpdatesLibgtkOnly() {
 	C.gdk_window_freeze_toplevel_updates_libgtk_only((*C.GdkWindow)(recv.native))
@@ -2023,7 +2097,9 @@ func (recv *Window) FreezeToplevelUpdatesLibgtkOnly() {
 // an equal number of times to begin processing exposes.
 /*
 
-C function : gdk_window_freeze_updates
+C function
+
+gdk_window_freeze_updates
 */
 func (recv *Window) FreezeUpdates() {
 	C.gdk_window_freeze_updates((*C.GdkWindow)(recv.native))
@@ -2037,7 +2113,9 @@ func (recv *Window) FreezeUpdates() {
 // If the window was already fullscreen, then this function does nothing.
 /*
 
-C function : gdk_window_fullscreen_on_monitor
+C function
+
+gdk_window_fullscreen_on_monitor
 */
 func (recv *Window) FullscreenOnMonitor(monitor int32) {
 	c_monitor := (C.gint)(monitor)
@@ -2056,7 +2134,9 @@ func (recv *Window) FullscreenOnMonitor(monitor int32) {
 // list need not be.
 /*
 
-C function : gdk_window_get_children
+C function
+
+gdk_window_get_children
 */
 func (recv *Window) GetChildren() *glib.List {
 	retC := C.gdk_window_get_children((*C.GdkWindow)(recv.native))
@@ -2072,7 +2152,9 @@ func (recv *Window) GetChildren() *glib.List {
 // primitives.
 /*
 
-C function : gdk_window_get_clip_region
+C function
+
+gdk_window_get_clip_region
 */
 func (recv *Window) GetClipRegion() *cairo.Region {
 	retC := C.gdk_window_get_clip_region((*C.GdkWindow)(recv.native))
@@ -2087,7 +2169,9 @@ func (recv *Window) GetClipRegion() *cairo.Region {
 // gdk_window_set_events().
 /*
 
-C function : gdk_window_get_events
+C function
+
+gdk_window_get_events
 */
 func (recv *Window) GetEvents() EventMask {
 	retC := C.gdk_window_get_events((*C.GdkWindow)(recv.native))
@@ -2120,7 +2204,9 @@ func (recv *Window) GetEvents() EventMask {
 // the 16-bit coordinates of X11.
 /*
 
-C function : gdk_window_get_geometry
+C function
+
+gdk_window_get_geometry
 */
 func (recv *Window) GetGeometry() (int32, int32, int32, int32) {
 	var c_x C.gint
@@ -2150,7 +2236,9 @@ func (recv *Window) GetGeometry() (int32, int32, int32, int32) {
 // relative to its parent window.)
 /*
 
-C function : gdk_window_get_origin
+C function
+
+gdk_window_get_origin
 */
 func (recv *Window) GetOrigin() (int32, int32, int32) {
 	var c_x C.gint
@@ -2180,7 +2268,9 @@ func (recv *Window) GetOrigin() (int32, int32, int32) {
 // there are offscreen windows in the hierarchy.
 /*
 
-C function : gdk_window_get_parent
+C function
+
+gdk_window_get_parent
 */
 func (recv *Window) GetParent() *Window {
 	retC := C.gdk_window_get_parent((*C.GdkWindow)(recv.native))
@@ -2200,7 +2290,9 @@ func (recv *Window) GetParent() *Window {
 // The position coordinates are relative to the window’s parent window.
 /*
 
-C function : gdk_window_get_position
+C function
+
+gdk_window_get_position
 */
 func (recv *Window) GetPosition() (int32, int32) {
 	var c_x C.gint
@@ -2220,7 +2312,9 @@ func (recv *Window) GetPosition() (int32, int32) {
 // window coordinates.
 /*
 
-C function : gdk_window_get_root_origin
+C function
+
+gdk_window_get_root_origin
 */
 func (recv *Window) GetRootOrigin() (int32, int32) {
 	var c_x C.gint
@@ -2240,7 +2334,9 @@ func (recv *Window) GetRootOrigin() (int32, int32) {
 // by @source.
 /*
 
-C function : gdk_window_get_source_events
+C function
+
+gdk_window_get_source_events
 */
 func (recv *Window) GetSourceEvents(source InputSource) EventMask {
 	c_source := (C.GdkInputSource)(source)
@@ -2255,7 +2351,9 @@ func (recv *Window) GetSourceEvents(source InputSource) EventMask {
 // from the #GdkWindowState enumeration.
 /*
 
-C function : gdk_window_get_state
+C function
+
+gdk_window_get_state
 */
 func (recv *Window) GetState() WindowState {
 	retC := C.gdk_window_get_state((*C.GdkWindow)(recv.native))
@@ -2276,7 +2374,9 @@ func (recv *Window) GetState() WindowState {
 // if there are offscreen windows in the hierarchy.
 /*
 
-C function : gdk_window_get_toplevel
+C function
+
+gdk_window_get_toplevel
 */
 func (recv *Window) GetToplevel() *Window {
 	retC := C.gdk_window_get_toplevel((*C.GdkWindow)(recv.native))
@@ -2293,7 +2393,9 @@ func (recv *Window) GetToplevel() *Window {
 // calling cairo_region_destroy() on the returned region if it’s non-%NULL.
 /*
 
-C function : gdk_window_get_update_area
+C function
+
+gdk_window_get_update_area
 */
 func (recv *Window) GetUpdateArea() *cairo.Region {
 	retC := C.gdk_window_get_update_area((*C.GdkWindow)(recv.native))
@@ -2306,7 +2408,9 @@ func (recv *Window) GetUpdateArea() *cairo.Region {
 // that @window belongs to. See gdk_window_set_user_data().
 /*
 
-C function : gdk_window_get_user_data
+C function
+
+gdk_window_get_user_data
 */
 func (recv *Window) GetUserData() uintptr {
 	var c_data C.gpointer
@@ -2324,7 +2428,9 @@ func (recv *Window) GetUserData() uintptr {
 // is visible.
 /*
 
-C function : gdk_window_get_visible_region
+C function
+
+gdk_window_get_visible_region
 */
 func (recv *Window) GetVisibleRegion() *cairo.Region {
 	retC := C.gdk_window_get_visible_region((*C.GdkWindow)(recv.native))
@@ -2336,7 +2442,9 @@ func (recv *Window) GetVisibleRegion() *cairo.Region {
 // Gets the type of the window. See #GdkWindowType.
 /*
 
-C function : gdk_window_get_window_type
+C function
+
+gdk_window_get_window_type
 */
 func (recv *Window) GetWindowType() WindowType {
 	retC := C.gdk_window_get_window_type((*C.GdkWindow)(recv.native))
@@ -2351,7 +2459,9 @@ func (recv *Window) GetWindowType() WindowType {
 // part of gtk_widget_hide().
 /*
 
-C function : gdk_window_hide
+C function
+
+gdk_window_hide
 */
 func (recv *Window) Hide() {
 	C.gdk_window_hide((*C.GdkWindow)(recv.native))
@@ -2366,7 +2476,9 @@ func (recv *Window) Hide() {
 // This function only makes sense when @window is a toplevel window.
 /*
 
-C function : gdk_window_iconify
+C function
+
+gdk_window_iconify
 */
 func (recv *Window) Iconify() {
 	C.gdk_window_iconify((*C.GdkWindow)(recv.native))
@@ -2397,7 +2509,9 @@ func (recv *Window) Iconify() {
 // fine grained control over which children are invalidated.
 /*
 
-C function : gdk_window_invalidate_region
+C function
+
+gdk_window_invalidate_region
 */
 func (recv *Window) InvalidateRegion(region *cairo.Region, invalidateChildren bool) {
 	c_region := (*C.cairo_region_t)(C.NULL)
@@ -2419,7 +2533,9 @@ func (recv *Window) InvalidateRegion(region *cairo.Region, invalidateChildren bo
 // window.)
 /*
 
-C function : gdk_window_is_viewable
+C function
+
+gdk_window_is_viewable
 */
 func (recv *Window) IsViewable() bool {
 	retC := C.gdk_window_is_viewable((*C.GdkWindow)(recv.native))
@@ -2432,7 +2548,9 @@ func (recv *Window) IsViewable() bool {
 // gdk_window_show_unraised()).
 /*
 
-C function : gdk_window_is_visible
+C function
+
+gdk_window_is_visible
 */
 func (recv *Window) IsVisible() bool {
 	retC := C.gdk_window_is_visible((*C.GdkWindow)(recv.native))
@@ -2453,7 +2571,9 @@ func (recv *Window) IsVisible() bool {
 // function before gdk_window_show(). (Try gdk_window_show_unraised().)
 /*
 
-C function : gdk_window_lower
+C function
+
+gdk_window_lower
 */
 func (recv *Window) Lower() {
 	C.gdk_window_lower((*C.GdkWindow)(recv.native))
@@ -2474,7 +2594,9 @@ func (recv *Window) Lower() {
 // On Windows, reliably maximizes the window.
 /*
 
-C function : gdk_window_maximize
+C function
+
+gdk_window_maximize
 */
 func (recv *Window) Maximize() {
 	C.gdk_window_maximize((*C.GdkWindow)(recv.native))
@@ -2492,7 +2614,9 @@ func (recv *Window) Maximize() {
 // be merged.
 /*
 
-C function : gdk_window_merge_child_shapes
+C function
+
+gdk_window_merge_child_shapes
 */
 func (recv *Window) MergeChildShapes() {
 	C.gdk_window_merge_child_shapes((*C.GdkWindow)(recv.native))
@@ -2510,7 +2634,9 @@ func (recv *Window) MergeChildShapes() {
 // to both move and resize simultaneously, for a nicer visual effect.
 /*
 
-C function : gdk_window_move
+C function
+
+gdk_window_move
 */
 func (recv *Window) Move(x int32, y int32) {
 	c_x := (C.gint)(x)
@@ -2528,7 +2654,9 @@ func (recv *Window) Move(x int32, y int32) {
 // move, then resize, if you don’t use gdk_window_move_resize().)
 /*
 
-C function : gdk_window_move_resize
+C function
+
+gdk_window_move_resize
 */
 func (recv *Window) MoveResize(x int32, y int32, width int32, height int32) {
 	c_x := (C.gint)(x)
@@ -2548,7 +2676,9 @@ func (recv *Window) MoveResize(x int32, y int32, width int32, height int32) {
 // children, so the list does not need to be freed.
 /*
 
-C function : gdk_window_peek_children
+C function
+
+gdk_window_peek_children
 */
 func (recv *Window) PeekChildren() *glib.List {
 	retC := C.gdk_window_peek_children((*C.GdkWindow)(recv.native))
@@ -2567,7 +2697,9 @@ func (recv *Window) PeekChildren() *glib.List {
 // this is useful to produce nicer scrolling behavior, for example.
 /*
 
-C function : gdk_window_process_updates
+C function
+
+gdk_window_process_updates
 */
 func (recv *Window) ProcessUpdates(updateChildren bool) {
 	c_update_children :=
@@ -2587,7 +2719,9 @@ func (recv *Window) ProcessUpdates(updateChildren bool) {
 // requests the restack, does not guarantee it.
 /*
 
-C function : gdk_window_raise
+C function
+
+gdk_window_raise
 */
 func (recv *Window) Raise() {
 	C.gdk_window_raise((*C.GdkWindow)(recv.native))
@@ -2598,7 +2732,9 @@ func (recv *Window) Raise() {
 // Registers a window as a potential drop destination.
 /*
 
-C function : gdk_window_register_dnd
+C function
+
+gdk_window_register_dnd
 */
 func (recv *Window) RegisterDnd() {
 	C.gdk_window_register_dnd((*C.GdkWindow)(recv.native))
@@ -2612,7 +2748,9 @@ func (recv *Window) RegisterDnd() {
 // reparented will be unmapped as a side effect.
 /*
 
-C function : gdk_window_reparent
+C function
+
+gdk_window_reparent
 */
 func (recv *Window) Reparent(newParent *Window, x int32, y int32) {
 	c_new_parent := (*C.GdkWindow)(C.NULL)
@@ -2639,7 +2777,9 @@ func (recv *Window) Reparent(newParent *Window, x int32, y int32) {
 // to both move and resize simultaneously, for a nicer visual effect.
 /*
 
-C function : gdk_window_resize
+C function
+
+gdk_window_resize
 */
 func (recv *Window) Resize(width int32, height int32) {
 	c_width := (C.gint)(width)
@@ -2664,7 +2804,9 @@ func (recv *Window) Resize(width int32, height int32) {
 // artifacts and unnecessary invalidations.
 /*
 
-C function : gdk_window_scroll
+C function
+
+gdk_window_scroll
 */
 func (recv *Window) Scroll(dx int32, dy int32) {
 	c_dx := (C.gint)(dx)
@@ -2684,7 +2826,9 @@ func (recv *Window) Scroll(dx int32, dy int32) {
 // custom widget.
 /*
 
-C function : gdk_window_set_background
+C function
+
+gdk_window_set_background
 */
 func (recv *Window) SetBackground(color *Color) {
 	c_color := (*C.GdkColor)(C.NULL)
@@ -2706,7 +2850,9 @@ func (recv *Window) SetBackground(color *Color) {
 // when the window is obscured then exposed.
 /*
 
-C function : gdk_window_set_background_pattern
+C function
+
+gdk_window_set_background_pattern
 */
 func (recv *Window) SetBackgroundPattern(pattern *cairo.Pattern) {
 	c_pattern := (*C.cairo_pattern_t)(C.NULL)
@@ -2724,7 +2870,9 @@ func (recv *Window) SetBackgroundPattern(pattern *cairo.Pattern) {
 // See also gdk_window_set_background_pattern().
 /*
 
-C function : gdk_window_set_background_rgba
+C function
+
+gdk_window_set_background_rgba
 */
 func (recv *Window) SetBackgroundRgba(rgba *RGBA) {
 	c_rgba := (*C.GdkRGBA)(C.NULL)
@@ -2743,7 +2891,9 @@ func (recv *Window) SetBackgroundRgba(rgba *RGBA) {
 // the shape mask of @window in the masks to be merged.
 /*
 
-C function : gdk_window_set_child_shapes
+C function
+
+gdk_window_set_child_shapes
 */
 func (recv *Window) SetChildShapes() {
 	C.gdk_window_set_child_shapes((*C.GdkWindow)(recv.native))
@@ -2762,7 +2912,9 @@ func (recv *Window) SetChildShapes() {
 // should use this default.
 /*
 
-C function : gdk_window_set_cursor
+C function
+
+gdk_window_set_cursor
 */
 func (recv *Window) SetCursor(cursor *Cursor) {
 	c_cursor := (*C.GdkCursor)(C.NULL)
@@ -2791,7 +2943,9 @@ func (recv *Window) SetCursor(cursor *Cursor) {
 // but very few honor all possible combinations of bits.
 /*
 
-C function : gdk_window_set_decorations
+C function
+
+gdk_window_set_decorations
 */
 func (recv *Window) SetDecorations(decorations WMDecoration) {
 	c_decorations := (C.GdkWMDecoration)(decorations)
@@ -2810,7 +2964,9 @@ func (recv *Window) SetDecorations(decorations WMDecoration) {
 // See the [input handling overview][event-masks] for details.
 /*
 
-C function : gdk_window_set_events
+C function
+
+gdk_window_set_events
 */
 func (recv *Window) SetEvents(eventMask EventMask) {
 	c_event_mask := (C.GdkEventMask)(eventMask)
@@ -2835,7 +2991,9 @@ func (recv *Window) SetEvents(eventMask EventMask) {
 // enable.
 /*
 
-C function : gdk_window_set_functions
+C function
+
+gdk_window_set_functions
 */
 func (recv *Window) SetFunctions(functions WMFunction) {
 	c_functions := (C.GdkWMFunction)(functions)
@@ -2868,7 +3026,9 @@ func (recv *Window) SetFunctions(functions WMFunction) {
 // appropriate sizes.
 /*
 
-C function : gdk_window_set_geometry_hints
+C function
+
+gdk_window_set_geometry_hints
 */
 func (recv *Window) SetGeometryHints(geometry *Geometry, geomMask WindowHints) {
 	c_geometry := (*C.GdkGeometry)(C.NULL)
@@ -2895,7 +3055,9 @@ func (recv *Window) SetGeometryHints(geometry *Geometry, geomMask WindowHints) {
 // if your application pretends to be multiple applications.
 /*
 
-C function : gdk_window_set_group
+C function
+
+gdk_window_set_group
 */
 func (recv *Window) SetGroup(leader *Window) {
 	c_leader := (*C.GdkWindow)(C.NULL)
@@ -2919,7 +3081,9 @@ func (recv *Window) SetGroup(leader *Window) {
 // Note that some platforms don't support window icons.
 /*
 
-C function : gdk_window_set_icon_list
+C function
+
+gdk_window_set_icon_list
 */
 func (recv *Window) SetIconList(pixbufs *glib.List) {
 	c_pixbufs := (*C.GList)(C.NULL)
@@ -2946,7 +3110,9 @@ func (recv *Window) SetIconList(pixbufs *glib.List) {
 // Note that some platforms don't support window icons.
 /*
 
-C function : gdk_window_set_icon_name
+C function
+
+gdk_window_set_icon_name
 */
 func (recv *Window) SetIconName(name string) {
 	c_name := C.CString(name)
@@ -2966,7 +3132,9 @@ func (recv *Window) SetIconName(name string) {
 // previously called gdk_window_set_transient_for()
 /*
 
-C function : gdk_window_set_modal_hint
+C function
+
+gdk_window_set_modal_hint
 */
 func (recv *Window) SetModalHint(modal bool) {
 	c_modal :=
@@ -2987,7 +3155,9 @@ func (recv *Window) SetModalHint(modal bool) {
 // window in its implementation, for example.
 /*
 
-C function : gdk_window_set_override_redirect
+C function
+
+gdk_window_set_override_redirect
 */
 func (recv *Window) SetOverrideRedirect(overrideRedirect bool) {
 	c_override_redirect :=
@@ -3012,7 +3182,9 @@ func (recv *Window) SetOverrideRedirect(overrideRedirect bool) {
 // non-interchangeable kind of window.
 /*
 
-C function : gdk_window_set_role
+C function
+
+gdk_window_set_role
 */
 func (recv *Window) SetRole(role string) {
 	c_role := C.CString(role)
@@ -3029,7 +3201,9 @@ func (recv *Window) SetRole(role string) {
 // windowing system. Don’t worry about it.
 /*
 
-C function : gdk_window_set_static_gravities
+C function
+
+gdk_window_set_static_gravities
 */
 func (recv *Window) SetStaticGravities(useStatic bool) bool {
 	c_use_static :=
@@ -3048,7 +3222,9 @@ func (recv *Window) SetStaticGravities(useStatic bool) bool {
 // user-readable strings in GDK/GTK+). @title may not be %NULL.
 /*
 
-C function : gdk_window_set_title
+C function
+
+gdk_window_set_title
 */
 func (recv *Window) SetTitle(title string) {
 	c_title := C.CString(title)
@@ -3068,7 +3244,9 @@ func (recv *Window) SetTitle(title string) {
 // #GtkDialog.
 /*
 
-C function : gdk_window_set_transient_for
+C function
+
+gdk_window_set_transient_for
 */
 func (recv *Window) SetTransientFor(parent *Window) {
 	c_parent := (*C.GdkWindow)(C.NULL)
@@ -3089,7 +3267,9 @@ func (recv *Window) SetTransientFor(parent *Window) {
 // The hint must be set before the window is mapped.
 /*
 
-C function : gdk_window_set_type_hint
+C function
+
+gdk_window_set_type_hint
 */
 func (recv *Window) SetTypeHint(hint WindowTypeHint) {
 	c_hint := (C.GdkWindowTypeHint)(hint)
@@ -3108,7 +3288,9 @@ func (recv *Window) SetTypeHint(hint WindowTypeHint) {
 // user data is a #GtkWidget, and forward the event to that widget.
 /*
 
-C function : gdk_window_set_user_data
+C function
+
+gdk_window_set_user_data
 */
 func (recv *Window) SetUserData(userData uintptr) {
 	c_user_data := (C.gpointer)(userData)
@@ -3134,7 +3316,9 @@ func (recv *Window) SetUserData(userData uintptr) {
 // This function works on both toplevel and child windows.
 /*
 
-C function : gdk_window_shape_combine_region
+C function
+
+gdk_window_shape_combine_region
 */
 func (recv *Window) ShapeCombineRegion(shapeRegion *cairo.Region, offsetX int32, offsetY int32) {
 	c_shape_region := (*C.cairo_region_t)(C.NULL)
@@ -3162,7 +3346,9 @@ func (recv *Window) ShapeCombineRegion(shapeRegion *cairo.Region, offsetX int32,
 // #GdkWindow as part of the “map” method.
 /*
 
-C function : gdk_window_show
+C function
+
+gdk_window_show
 */
 func (recv *Window) Show() {
 	C.gdk_window_show((*C.GdkWindow)(recv.native))
@@ -3179,7 +3365,9 @@ func (recv *Window) Show() {
 // that you can’t really use XMapWindow() directly on a GDK window).
 /*
 
-C function : gdk_window_show_unraised
+C function
+
+gdk_window_show_unraised
 */
 func (recv *Window) ShowUnraised() {
 	C.gdk_window_show_unraised((*C.GdkWindow)(recv.native))
@@ -3198,7 +3386,9 @@ func (recv *Window) ShowUnraised() {
 // there’s nothing you can do to force it to happen.
 /*
 
-C function : gdk_window_stick
+C function
+
+gdk_window_stick
 */
 func (recv *Window) Stick() {
 	C.gdk_window_stick((*C.GdkWindow)(recv.native))
@@ -3213,7 +3403,9 @@ func (recv *Window) Stick() {
 // for use by GTK+.
 /*
 
-C function : gdk_window_thaw_toplevel_updates_libgtk_only
+C function
+
+gdk_window_thaw_toplevel_updates_libgtk_only
 */
 func (recv *Window) ThawToplevelUpdatesLibgtkOnly() {
 	C.gdk_window_thaw_toplevel_updates_libgtk_only((*C.GdkWindow)(recv.native))
@@ -3224,7 +3416,9 @@ func (recv *Window) ThawToplevelUpdatesLibgtkOnly() {
 // Thaws a window frozen with gdk_window_freeze_updates().
 /*
 
-C function : gdk_window_thaw_updates
+C function
+
+gdk_window_thaw_updates
 */
 func (recv *Window) ThawUpdates() {
 	C.gdk_window_thaw_updates((*C.GdkWindow)(recv.native))
@@ -3245,7 +3439,9 @@ func (recv *Window) ThawUpdates() {
 // On Windows, reliably unmaximizes the window.
 /*
 
-C function : gdk_window_unmaximize
+C function
+
+gdk_window_unmaximize
 */
 func (recv *Window) Unmaximize() {
 	C.gdk_window_unmaximize((*C.GdkWindow)(recv.native))
@@ -3257,7 +3453,9 @@ func (recv *Window) Unmaximize() {
 // and gtk_window_unstick().
 /*
 
-C function : gdk_window_unstick
+C function
+
+gdk_window_unstick
 */
 func (recv *Window) Unstick() {
 	C.gdk_window_unstick((*C.GdkWindow)(recv.native))
@@ -3270,7 +3468,9 @@ func (recv *Window) Unstick() {
 // withdraws toplevel windows before hiding them.
 /*
 
-C function : gdk_window_withdraw
+C function
+
+gdk_window_withdraw
 */
 func (recv *Window) Withdraw() {
 	C.gdk_window_withdraw((*C.GdkWindow)(recv.native))

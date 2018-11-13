@@ -39,7 +39,9 @@ import "C"
 // This function must be called to finish a custom print preview.
 /*
 
-C function : gtk_print_operation_preview_end_preview
+C function
+
+gtk_print_operation_preview_end_preview
 */
 func (recv *PrintOperationPreview) EndPreview() {
 	C.gtk_print_operation_preview_end_preview((*C.GtkPrintOperationPreview)(recv.native))
@@ -51,7 +53,9 @@ func (recv *PrintOperationPreview) EndPreview() {
 // have been selected for printing.
 /*
 
-C function : gtk_print_operation_preview_is_selected
+C function
+
+gtk_print_operation_preview_is_selected
 */
 func (recv *PrintOperationPreview) IsSelected(pageNr int32) bool {
 	c_page_nr := (C.gint)(pageNr)
@@ -73,7 +77,9 @@ func (recv *PrintOperationPreview) IsSelected(pageNr int32) bool {
 // be associated with the print context.
 /*
 
-C function : gtk_print_operation_preview_render_page
+C function
+
+gtk_print_operation_preview_render_page
 */
 func (recv *PrintOperationPreview) RenderPage(pageNr int32) {
 	c_page_nr := (C.gint)(pageNr)
@@ -203,7 +209,9 @@ func recentchooser_selectionChangedHandler(_ *C.GObject, data C.gpointer) {
 // gtk_recent_chooser_set_filter().
 /*
 
-C function : gtk_recent_chooser_add_filter
+C function
+
+gtk_recent_chooser_add_filter
 */
 func (recv *RecentChooser) AddFilter(filter *RecentFilter) {
 	c_filter := (*C.GtkRecentFilter)(C.NULL)
@@ -219,7 +227,9 @@ func (recv *RecentChooser) AddFilter(filter *RecentFilter) {
 // Gets the #GtkRecentInfo currently selected by @chooser.
 /*
 
-C function : gtk_recent_chooser_get_current_item
+C function
+
+gtk_recent_chooser_get_current_item
 */
 func (recv *RecentChooser) GetCurrentItem() *RecentInfo {
 	retC := C.gtk_recent_chooser_get_current_item((*C.GtkRecentChooser)(recv.native))
@@ -231,7 +241,9 @@ func (recv *RecentChooser) GetCurrentItem() *RecentInfo {
 // Gets the URI currently selected by @chooser.
 /*
 
-C function : gtk_recent_chooser_get_current_uri
+C function
+
+gtk_recent_chooser_get_current_uri
 */
 func (recv *RecentChooser) GetCurrentUri() string {
 	retC := C.gtk_recent_chooser_get_current_uri((*C.GtkRecentChooser)(recv.native))
@@ -245,7 +257,9 @@ func (recv *RecentChooser) GetCurrentUri() string {
 // the display of the recently used resources.
 /*
 
-C function : gtk_recent_chooser_get_filter
+C function
+
+gtk_recent_chooser_get_filter
 */
 func (recv *RecentChooser) GetFilter() *RecentFilter {
 	retC := C.gtk_recent_chooser_get_filter((*C.GtkRecentChooser)(recv.native))
@@ -260,7 +274,9 @@ func (recv *RecentChooser) GetFilter() *RecentFilter {
 // “limit” properties of @chooser.
 /*
 
-C function : gtk_recent_chooser_get_items
+C function
+
+gtk_recent_chooser_get_items
 */
 func (recv *RecentChooser) GetItems() *glib.List {
 	retC := C.gtk_recent_chooser_get_items((*C.GtkRecentChooser)(recv.native))
@@ -273,7 +289,9 @@ func (recv *RecentChooser) GetItems() *glib.List {
 // and gtk_recent_chooser_get_uris().
 /*
 
-C function : gtk_recent_chooser_get_limit
+C function
+
+gtk_recent_chooser_get_limit
 */
 func (recv *RecentChooser) GetLimit() int32 {
 	retC := C.gtk_recent_chooser_get_limit((*C.GtkRecentChooser)(recv.native))
@@ -286,7 +304,9 @@ func (recv *RecentChooser) GetLimit() int32 {
 // resources selector.  See gtk_recent_chooser_set_local_only()
 /*
 
-C function : gtk_recent_chooser_get_local_only
+C function
+
+gtk_recent_chooser_get_local_only
 */
 func (recv *RecentChooser) GetLocalOnly() bool {
 	retC := C.gtk_recent_chooser_get_local_only((*C.GtkRecentChooser)(recv.native))
@@ -298,7 +318,9 @@ func (recv *RecentChooser) GetLocalOnly() bool {
 // Gets whether @chooser can select multiple items.
 /*
 
-C function : gtk_recent_chooser_get_select_multiple
+C function
+
+gtk_recent_chooser_get_select_multiple
 */
 func (recv *RecentChooser) GetSelectMultiple() bool {
 	retC := C.gtk_recent_chooser_get_select_multiple((*C.GtkRecentChooser)(recv.native))
@@ -310,7 +332,9 @@ func (recv *RecentChooser) GetSelectMultiple() bool {
 // Retrieves whether @chooser should show an icon near the resource.
 /*
 
-C function : gtk_recent_chooser_get_show_icons
+C function
+
+gtk_recent_chooser_get_show_icons
 */
 func (recv *RecentChooser) GetShowIcons() bool {
 	retC := C.gtk_recent_chooser_get_show_icons((*C.GtkRecentChooser)(recv.native))
@@ -323,7 +347,9 @@ func (recv *RecentChooser) GetShowIcons() bool {
 // were not found.
 /*
 
-C function : gtk_recent_chooser_get_show_not_found
+C function
+
+gtk_recent_chooser_get_show_not_found
 */
 func (recv *RecentChooser) GetShowNotFound() bool {
 	retC := C.gtk_recent_chooser_get_show_not_found((*C.GtkRecentChooser)(recv.native))
@@ -336,7 +362,9 @@ func (recv *RecentChooser) GetShowNotFound() bool {
 // registered as private.
 /*
 
-C function : gtk_recent_chooser_get_show_private
+C function
+
+gtk_recent_chooser_get_show_private
 */
 func (recv *RecentChooser) GetShowPrivate() bool {
 	retC := C.gtk_recent_chooser_get_show_private((*C.GtkRecentChooser)(recv.native))
@@ -349,7 +377,9 @@ func (recv *RecentChooser) GetShowPrivate() bool {
 // of a recently user resource.
 /*
 
-C function : gtk_recent_chooser_get_show_tips
+C function
+
+gtk_recent_chooser_get_show_tips
 */
 func (recv *RecentChooser) GetShowTips() bool {
 	retC := C.gtk_recent_chooser_get_show_tips((*C.GtkRecentChooser)(recv.native))
@@ -361,7 +391,9 @@ func (recv *RecentChooser) GetShowTips() bool {
 // Gets the value set by gtk_recent_chooser_set_sort_type().
 /*
 
-C function : gtk_recent_chooser_get_sort_type
+C function
+
+gtk_recent_chooser_get_sort_type
 */
 func (recv *RecentChooser) GetSortType() RecentSortType {
 	retC := C.gtk_recent_chooser_get_sort_type((*C.GtkRecentChooser)(recv.native))
@@ -375,7 +407,9 @@ func (recv *RecentChooser) GetSortType() RecentSortType {
 // Gets the #GtkRecentFilter objects held by @chooser.
 /*
 
-C function : gtk_recent_chooser_list_filters
+C function
+
+gtk_recent_chooser_list_filters
 */
 func (recv *RecentChooser) ListFilters() *glib.SList {
 	retC := C.gtk_recent_chooser_list_filters((*C.GtkRecentChooser)(recv.native))
@@ -387,7 +421,9 @@ func (recv *RecentChooser) ListFilters() *glib.SList {
 // Removes @filter from the list of #GtkRecentFilter objects held by @chooser.
 /*
 
-C function : gtk_recent_chooser_remove_filter
+C function
+
+gtk_recent_chooser_remove_filter
 */
 func (recv *RecentChooser) RemoveFilter(filter *RecentFilter) {
 	c_filter := (*C.GtkRecentFilter)(C.NULL)
@@ -404,7 +440,9 @@ func (recv *RecentChooser) RemoveFilter(filter *RecentFilter) {
 // multiple selection.
 /*
 
-C function : gtk_recent_chooser_select_all
+C function
+
+gtk_recent_chooser_select_all
 */
 func (recv *RecentChooser) SelectAll() {
 	C.gtk_recent_chooser_select_all((*C.GtkRecentChooser)(recv.native))
@@ -415,7 +453,9 @@ func (recv *RecentChooser) SelectAll() {
 // Selects @uri inside @chooser.
 /*
 
-C function : gtk_recent_chooser_select_uri
+C function
+
+gtk_recent_chooser_select_uri
 */
 func (recv *RecentChooser) SelectUri(uri string) (bool, error) {
 	c_uri := C.CString(uri)
@@ -437,7 +477,9 @@ func (recv *RecentChooser) SelectUri(uri string) (bool, error) {
 // Sets @uri as the current URI for @chooser.
 /*
 
-C function : gtk_recent_chooser_set_current_uri
+C function
+
+gtk_recent_chooser_set_current_uri
 */
 func (recv *RecentChooser) SetCurrentUri(uri string) (bool, error) {
 	c_uri := C.CString(uri)
@@ -460,7 +502,9 @@ func (recv *RecentChooser) SetCurrentUri(uri string) (bool, error) {
 // to affect the displayed recently used resources.
 /*
 
-C function : gtk_recent_chooser_set_filter
+C function
+
+gtk_recent_chooser_set_filter
 */
 func (recv *RecentChooser) SetFilter(filter *RecentFilter) {
 	c_filter := (*C.GtkRecentFilter)(C.NULL)
@@ -477,7 +521,9 @@ func (recv *RecentChooser) SetFilter(filter *RecentFilter) {
 // gtk_recent_chooser_get_items() and gtk_recent_chooser_get_uris().
 /*
 
-C function : gtk_recent_chooser_set_limit
+C function
+
+gtk_recent_chooser_set_limit
 */
 func (recv *RecentChooser) SetLimit(limit int32) {
 	c_limit := (C.gint)(limit)
@@ -493,7 +539,9 @@ func (recv *RecentChooser) SetLimit(limit int32) {
 // to be accessible through the operating system native file system.
 /*
 
-C function : gtk_recent_chooser_set_local_only
+C function
+
+gtk_recent_chooser_set_local_only
 */
 func (recv *RecentChooser) SetLocalOnly(localOnly bool) {
 	c_local_only :=
@@ -507,7 +555,9 @@ func (recv *RecentChooser) SetLocalOnly(localOnly bool) {
 // Sets whether @chooser can select multiple items.
 /*
 
-C function : gtk_recent_chooser_set_select_multiple
+C function
+
+gtk_recent_chooser_set_select_multiple
 */
 func (recv *RecentChooser) SetSelectMultiple(selectMultiple bool) {
 	c_select_multiple :=
@@ -522,7 +572,9 @@ func (recv *RecentChooser) SetSelectMultiple(selectMultiple bool) {
 // displaying it.
 /*
 
-C function : gtk_recent_chooser_set_show_icons
+C function
+
+gtk_recent_chooser_set_show_icons
 */
 func (recv *RecentChooser) SetShowIcons(showIcons bool) {
 	c_show_icons :=
@@ -537,7 +589,9 @@ func (recv *RecentChooser) SetShowIcons(showIcons bool) {
 // it didn’t find.  This only applies to local resources.
 /*
 
-C function : gtk_recent_chooser_set_show_not_found
+C function
+
+gtk_recent_chooser_set_show_not_found
 */
 func (recv *RecentChooser) SetShowNotFound(showNotFound bool) {
 	c_show_not_found :=
@@ -551,7 +605,9 @@ func (recv *RecentChooser) SetShowNotFound(showNotFound bool) {
 // Whether to show recently used resources marked registered as private.
 /*
 
-C function : gtk_recent_chooser_set_show_private
+C function
+
+gtk_recent_chooser_set_show_private
 */
 func (recv *RecentChooser) SetShowPrivate(showPrivate bool) {
 	c_show_private :=
@@ -566,7 +622,9 @@ func (recv *RecentChooser) SetShowPrivate(showPrivate bool) {
 // recently used resource in a #GtkRecentChooser widget.
 /*
 
-C function : gtk_recent_chooser_set_show_tips
+C function
+
+gtk_recent_chooser_set_show_tips
 */
 func (recv *RecentChooser) SetShowTips(showTips bool) {
 	c_show_tips :=
@@ -583,7 +641,9 @@ func (recv *RecentChooser) SetShowTips(showTips bool) {
 // @chooser.
 /*
 
-C function : gtk_recent_chooser_set_sort_type
+C function
+
+gtk_recent_chooser_set_sort_type
 */
 func (recv *RecentChooser) SetSortType(sortType RecentSortType) {
 	c_sort_type := (C.GtkRecentSortType)(sortType)
@@ -596,7 +656,9 @@ func (recv *RecentChooser) SetSortType(sortType RecentSortType) {
 // Unselects all the items inside @chooser.
 /*
 
-C function : gtk_recent_chooser_unselect_all
+C function
+
+gtk_recent_chooser_unselect_all
 */
 func (recv *RecentChooser) UnselectAll() {
 	C.gtk_recent_chooser_unselect_all((*C.GtkRecentChooser)(recv.native))
@@ -607,7 +669,9 @@ func (recv *RecentChooser) UnselectAll() {
 // Unselects @uri inside @chooser.
 /*
 
-C function : gtk_recent_chooser_unselect_uri
+C function
+
+gtk_recent_chooser_unselect_uri
 */
 func (recv *RecentChooser) UnselectUri(uri string) {
 	c_uri := C.CString(uri)

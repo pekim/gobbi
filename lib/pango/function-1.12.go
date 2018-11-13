@@ -18,7 +18,9 @@ import "C"
 // of rounding.
 /*
 
-C function : pango_quantize_line_geometry
+C function
+
+pango_quantize_line_geometry
 */
 func QuantizeLineGeometry(thickness int32, position int32) {
 	c_thickness := (C.int)(thickness)

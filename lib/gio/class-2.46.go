@@ -28,7 +28,9 @@ import "C"
 // #GDBusInterfaceVTable for easier binding in other languages.
 /*
 
-C function : g_dbus_connection_register_object_with_closures
+C function
+
+g_dbus_connection_register_object_with_closures
 */
 func (recv *DBusConnection) RegisterObjectWithClosures(objectPath string, interfaceInfo *DBusInterfaceInfo, methodCallClosure *gobject.Closure, getPropertyClosure *gobject.Closure, setPropertyClosure *gobject.Closure) (uint32, error) {
 	c_object_path := C.CString(objectPath)

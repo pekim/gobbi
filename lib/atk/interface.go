@@ -122,7 +122,9 @@ import "C"
 // using "mouse centric" terminology for #AtkAction names.
 /*
 
-C record/class : AtkAction
+C type
+
+AtkAction
 */
 type Action struct {
 	native *C.AtkAction
@@ -147,7 +149,9 @@ func (recv *Action) ToC() unsafe.Pointer {
 // Perform the specified action on the object.
 /*
 
-C function : atk_action_do_action
+C function
+
+atk_action_do_action
 */
 func (recv *Action) DoAction(i int32) bool {
 	c_i := (C.gint)(i)
@@ -161,7 +165,9 @@ func (recv *Action) DoAction(i int32) bool {
 // Returns a description of the specified action of the object.
 /*
 
-C function : atk_action_get_description
+C function
+
+atk_action_get_description
 */
 func (recv *Action) GetDescription(i int32) string {
 	c_i := (C.gint)(i)
@@ -196,7 +202,9 @@ func (recv *Action) GetDescription(i int32) string {
 // it would be represented by ";;Ctrl+N" and ";;Strg+N" respectively.
 /*
 
-C function : atk_action_get_keybinding
+C function
+
+atk_action_get_keybinding
 */
 func (recv *Action) GetKeybinding(i int32) string {
 	c_i := (C.gint)(i)
@@ -210,7 +218,9 @@ func (recv *Action) GetKeybinding(i int32) string {
 // Returns the localized name of the specified action of the object.
 /*
 
-C function : atk_action_get_localized_name
+C function
+
+atk_action_get_localized_name
 */
 func (recv *Action) GetLocalizedName(i int32) string {
 	c_i := (C.gint)(i)
@@ -226,7 +236,9 @@ func (recv *Action) GetLocalizedName(i int32) string {
 // "default" action of the object.
 /*
 
-C function : atk_action_get_n_actions
+C function
+
+atk_action_get_n_actions
 */
 func (recv *Action) GetNActions() int32 {
 	retC := C.atk_action_get_n_actions((*C.AtkAction)(recv.native))
@@ -251,7 +263,9 @@ func (recv *Action) GetNActions() int32 {
 // NIL.
 /*
 
-C function : atk_action_get_name
+C function
+
+atk_action_get_name
 */
 func (recv *Action) GetName(i int32) string {
 	c_i := (C.gint)(i)
@@ -265,7 +279,9 @@ func (recv *Action) GetName(i int32) string {
 // Sets a description of the specified action of the object.
 /*
 
-C function : atk_action_set_description
+C function
+
+atk_action_set_description
 */
 func (recv *Action) SetDescription(i int32, desc string) bool {
 	c_i := (C.gint)(i)
@@ -291,7 +307,9 @@ func (recv *Action) SetDescription(i int32, desc string) bool {
 // information is provided by #AtkText.
 /*
 
-C record/class : AtkComponent
+C type
+
+AtkComponent
 */
 type Component struct {
 	native *C.AtkComponent
@@ -381,7 +399,9 @@ func component_boundsChangedHandler(_ *C.GObject, c_arg1 *C.AtkRectangle, data C
 // re-implement it.
 /*
 
-C function : atk_component_contains
+C function
+
+atk_component_contains
 */
 func (recv *Component) Contains(x int32, y int32, coordType CoordType) bool {
 	c_x := (C.gint)(x)
@@ -399,7 +419,9 @@ func (recv *Component) Contains(x int32, y int32, coordType CoordType) bool {
 // Gets the rectangle which gives the extent of the @component.
 /*
 
-C function : atk_component_get_extents
+C function
+
+atk_component_get_extents
 */
 func (recv *Component) GetExtents(coordType CoordType) (int32, int32, int32, int32) {
 	var c_x C.gint
@@ -428,7 +450,9 @@ func (recv *Component) GetExtents(coordType CoordType) (int32, int32, int32, int
 // Gets the layer of the component.
 /*
 
-C function : atk_component_get_layer
+C function
+
+atk_component_get_layer
 */
 func (recv *Component) GetLayer() Layer {
 	retC := C.atk_component_get_layer((*C.AtkComponent)(recv.native))
@@ -441,7 +465,9 @@ func (recv *Component) GetLayer() Layer {
 // if the layer of the component is not ATK_LAYER_MDI or ATK_LAYER_WINDOW.
 /*
 
-C function : atk_component_get_mdi_zorder
+C function
+
+atk_component_get_mdi_zorder
 */
 func (recv *Component) GetMdiZorder() int32 {
 	retC := C.atk_component_get_mdi_zorder((*C.AtkComponent)(recv.native))
@@ -454,7 +480,9 @@ func (recv *Component) GetMdiZorder() int32 {
 // a point specifying @component's top-left corner.
 /*
 
-C function : atk_component_get_position
+C function
+
+atk_component_get_position
 */
 func (recv *Component) GetPosition(coordType CoordType) (int32, int32) {
 	var c_x C.gint
@@ -475,7 +503,9 @@ func (recv *Component) GetPosition(coordType CoordType) (int32, int32) {
 // Gets the size of the @component in terms of width and height.
 /*
 
-C function : atk_component_get_size
+C function
+
+atk_component_get_size
 */
 func (recv *Component) GetSize() (int32, int32) {
 	var c_width C.gint
@@ -494,7 +524,9 @@ func (recv *Component) GetSize() (int32, int32) {
 // Grabs focus for this @component.
 /*
 
-C function : atk_component_grab_focus
+C function
+
+atk_component_grab_focus
 */
 func (recv *Component) GrabFocus() bool {
 	retC := C.atk_component_grab_focus((*C.AtkComponent)(recv.native))
@@ -507,7 +539,9 @@ func (recv *Component) GrabFocus() bool {
 // coordinate point specified by @x and @y.
 /*
 
-C function : atk_component_ref_accessible_at_point
+C function
+
+atk_component_ref_accessible_at_point
 */
 func (recv *Component) RefAccessibleAtPoint(x int32, y int32, coordType CoordType) *Object {
 	c_x := (C.gint)(x)
@@ -532,7 +566,9 @@ func (recv *Component) RefAccessibleAtPoint(x int32, y int32, coordType CoordTyp
 // (in or out).
 /*
 
-C function : atk_component_remove_focus_handler
+C function
+
+atk_component_remove_focus_handler
 */
 func (recv *Component) RemoveFocusHandler(handlerId uint32) {
 	c_handler_id := (C.guint)(handlerId)
@@ -545,7 +581,9 @@ func (recv *Component) RemoveFocusHandler(handlerId uint32) {
 // Sets the extents of @component.
 /*
 
-C function : atk_component_set_extents
+C function
+
+atk_component_set_extents
 */
 func (recv *Component) SetExtents(x int32, y int32, width int32, height int32, coordType CoordType) bool {
 	c_x := (C.gint)(x)
@@ -567,7 +605,9 @@ func (recv *Component) SetExtents(x int32, y int32, width int32, height int32, c
 // Sets the postition of @component.
 /*
 
-C function : atk_component_set_position
+C function
+
+atk_component_set_position
 */
 func (recv *Component) SetPosition(x int32, y int32, coordType CoordType) bool {
 	c_x := (C.gint)(x)
@@ -585,7 +625,9 @@ func (recv *Component) SetPosition(x int32, y int32, coordType CoordType) bool {
 // Set the size of the @component in terms of width and height.
 /*
 
-C function : atk_component_set_size
+C function
+
+atk_component_set_size
 */
 func (recv *Component) SetSize(width int32, height int32) bool {
 	c_width := (C.gint)(width)
@@ -607,7 +649,9 @@ func (recv *Component) SetSize(width int32, height int32) bool {
 // reasonably be considered a document in its own right.
 /*
 
-C record/class : AtkDocument
+C type
+
+AtkDocument
 */
 type Document struct {
 	native *C.AtkDocument
@@ -805,7 +849,9 @@ func document_reloadHandler(_ *C.GObject, data C.gpointer) {
 // how to cast this pointer.
 /*
 
-C function : atk_document_get_document
+C function
+
+atk_document_get_document
 */
 func (recv *Document) GetDocument() uintptr {
 	retC := C.atk_document_get_document((*C.AtkDocument)(recv.native))
@@ -817,7 +863,9 @@ func (recv *Document) GetDocument() uintptr {
 // Gets a string indicating the document type.
 /*
 
-C function : atk_document_get_document_type
+C function
+
+atk_document_get_document_type
 */
 func (recv *Document) GetDocumentType() string {
 	retC := C.atk_document_get_document_type((*C.AtkDocument)(recv.native))
@@ -833,7 +881,9 @@ func (recv *Document) GetDocumentType() string {
 // atk_image_get_image_locale.
 /*
 
-C function : atk_document_get_locale
+C function
+
+atk_document_get_locale
 */
 func (recv *Document) GetLocale() string {
 	retC := C.atk_document_get_locale((*C.AtkDocument)(recv.native))
@@ -853,7 +903,9 @@ func (recv *Document) GetLocale() string {
 // See also: #AtkText
 /*
 
-C record/class : AtkEditableText
+C type
+
+AtkEditableText
 */
 type EditableText struct {
 	native *C.AtkEditableText
@@ -879,7 +931,9 @@ func (recv *EditableText) ToC() unsafe.Pointer {
 // to the clipboard.
 /*
 
-C function : atk_editable_text_copy_text
+C function
+
+atk_editable_text_copy_text
 */
 func (recv *EditableText) CopyText(startPos int32, endPos int32) {
 	c_start_pos := (C.gint)(startPos)
@@ -895,7 +949,9 @@ func (recv *EditableText) CopyText(startPos int32, endPos int32) {
 // to the clipboard and then delete from the widget.
 /*
 
-C function : atk_editable_text_cut_text
+C function
+
+atk_editable_text_cut_text
 */
 func (recv *EditableText) CutText(startPos int32, endPos int32) {
 	c_start_pos := (C.gint)(startPos)
@@ -910,7 +966,9 @@ func (recv *EditableText) CutText(startPos int32, endPos int32) {
 // Delete text @start_pos up to, but not including @end_pos.
 /*
 
-C function : atk_editable_text_delete_text
+C function
+
+atk_editable_text_delete_text
 */
 func (recv *EditableText) DeleteText(startPos int32, endPos int32) {
 	c_start_pos := (C.gint)(startPos)
@@ -925,7 +983,9 @@ func (recv *EditableText) DeleteText(startPos int32, endPos int32) {
 // Insert text at a given position.
 /*
 
-C function : atk_editable_text_insert_text
+C function
+
+atk_editable_text_insert_text
 */
 func (recv *EditableText) InsertText(string string, length int32, position int32) {
 	c_string := C.CString(string)
@@ -943,7 +1003,9 @@ func (recv *EditableText) InsertText(string string, length int32, position int32
 // Paste text from clipboard to specified @position.
 /*
 
-C function : atk_editable_text_paste_text
+C function
+
+atk_editable_text_paste_text
 */
 func (recv *EditableText) PasteText(position int32) {
 	c_position := (C.gint)(position)
@@ -958,7 +1020,9 @@ func (recv *EditableText) PasteText(position int32) {
 // Set text contents of @text.
 /*
 
-C function : atk_editable_text_set_text_contents
+C function
+
+atk_editable_text_set_text_contents
 */
 func (recv *EditableText) SetTextContents(string string) {
 	c_string := C.CString(string)
@@ -999,7 +1063,9 @@ func (recv *EditableText) SetTextContents(string string) {
 // AtkHyperlink semantics, a new interface was required.
 /*
 
-C record/class : AtkHyperlinkImpl
+C type
+
+AtkHyperlinkImpl
 */
 type HyperlinkImpl struct {
 	native *C.AtkHyperlinkImpl
@@ -1031,7 +1097,9 @@ func (recv *HyperlinkImpl) ToC() unsafe.Pointer {
 // as well, and Hyperlinks need not have non-zero text offsets.
 /*
 
-C record/class : AtkHypertext
+C type
+
+AtkHypertext
 */
 type Hypertext struct {
 	native *C.AtkHypertext
@@ -1059,7 +1127,9 @@ func (recv *Hypertext) ToC() unsafe.Pointer {
 // @link_index
 /*
 
-C function : atk_hypertext_get_link
+C function
+
+atk_hypertext_get_link
 */
 func (recv *Hypertext) GetLink(linkIndex int32) *Hyperlink {
 	c_link_index := (C.gint)(linkIndex)
@@ -1074,7 +1144,9 @@ func (recv *Hypertext) GetLink(linkIndex int32) *Hyperlink {
 // the character specified by @char_index.
 /*
 
-C function : atk_hypertext_get_link_index
+C function
+
+atk_hypertext_get_link_index
 */
 func (recv *Hypertext) GetLinkIndex(charIndex int32) int32 {
 	c_char_index := (C.gint)(charIndex)
@@ -1088,7 +1160,9 @@ func (recv *Hypertext) GetLinkIndex(charIndex int32) int32 {
 // Gets the number of links within this hypertext document.
 /*
 
-C function : atk_hypertext_get_n_links
+C function
+
+atk_hypertext_get_n_links
 */
 func (recv *Hypertext) GetNLinks() int32 {
 	retC := C.atk_hypertext_get_n_links((*C.AtkHypertext)(recv.native))
@@ -1112,7 +1186,9 @@ func (recv *Hypertext) GetNLinks() int32 {
 // image.
 /*
 
-C record/class : AtkImage
+C type
+
+AtkImage
 */
 type Image struct {
 	native *C.AtkImage
@@ -1137,7 +1213,9 @@ func (recv *Image) ToC() unsafe.Pointer {
 // Get a textual description of this image.
 /*
 
-C function : atk_image_get_image_description
+C function
+
+atk_image_get_image_description
 */
 func (recv *Image) GetImageDescription() string {
 	retC := C.atk_image_get_image_description((*C.AtkImage)(recv.native))
@@ -1150,7 +1228,9 @@ func (recv *Image) GetImageDescription() string {
 // images top-left corner.
 /*
 
-C function : atk_image_get_image_position
+C function
+
+atk_image_get_image_position
 */
 func (recv *Image) GetImagePosition(coordType CoordType) (int32, int32) {
 	var c_x C.gint
@@ -1173,7 +1253,9 @@ func (recv *Image) GetImagePosition(coordType CoordType) (int32, int32) {
 // values cannot be obtained (for instance, if the object is not onscreen).
 /*
 
-C function : atk_image_get_image_size
+C function
+
+atk_image_get_image_size
 */
 func (recv *Image) GetImageSize() (int32, int32) {
 	var c_width C.gint
@@ -1192,7 +1274,9 @@ func (recv *Image) GetImageSize() (int32, int32) {
 // Sets the textual description for this image.
 /*
 
-C function : atk_image_set_image_description
+C function
+
+atk_image_set_image_description
 */
 func (recv *Image) SetImageDescription(description string) bool {
 	c_description := C.CString(description)
@@ -1209,7 +1293,9 @@ func (recv *Image) SetImageDescription(description string) bool {
 // iface->(ref_accessible)(implementor);
 /*
 
-C record/class : AtkImplementorIface
+C type
+
+AtkImplementorIface
 */
 type ImplementorIface struct {
 	native *C.AtkImplementorIface
@@ -1243,7 +1329,9 @@ func (recv *ImplementorIface) ToC() unsafe.Pointer {
 // to the selection/deselection of children.
 /*
 
-C record/class : AtkSelection
+C type
+
+AtkSelection
 */
 type Selection struct {
 	native *C.AtkSelection
@@ -1326,7 +1414,9 @@ func selection_selectionChangedHandler(_ *C.GObject, data C.gpointer) {
 // object's selection.
 /*
 
-C function : atk_selection_add_selection
+C function
+
+atk_selection_add_selection
 */
 func (recv *Selection) AddSelection(i int32) bool {
 	c_i := (C.gint)(i)
@@ -1341,7 +1431,9 @@ func (recv *Selection) AddSelection(i int32) bool {
 // are selected.
 /*
 
-C function : atk_selection_clear_selection
+C function
+
+atk_selection_clear_selection
 */
 func (recv *Selection) ClearSelection() bool {
 	retC := C.atk_selection_clear_selection((*C.AtkSelection)(recv.native))
@@ -1357,7 +1449,9 @@ func (recv *Selection) ClearSelection() bool {
 // atk_get_accessible_value() convenience method.
 /*
 
-C function : atk_selection_get_selection_count
+C function
+
+atk_selection_get_selection_count
 */
 func (recv *Selection) GetSelectionCount() int32 {
 	retC := C.atk_selection_get_selection_count((*C.AtkSelection)(recv.native))
@@ -1373,7 +1467,9 @@ func (recv *Selection) GetSelectionCount() int32 {
 // atk_get_accessible_value() convenience method.
 /*
 
-C function : atk_selection_is_child_selected
+C function
+
+atk_selection_is_child_selected
 */
 func (recv *Selection) IsChildSelected(i int32) bool {
 	c_i := (C.gint)(i)
@@ -1392,7 +1488,9 @@ func (recv *Selection) IsChildSelected(i int32) bool {
 // atk_get_accessible_value() convenience method.
 /*
 
-C function : atk_selection_ref_selection
+C function
+
+atk_selection_ref_selection
 */
 func (recv *Selection) RefSelection(i int32) *Object {
 	c_i := (C.gint)(i)
@@ -1411,7 +1509,9 @@ func (recv *Selection) RefSelection(i int32) *Object {
 // Removes the specified child of the object from the object's selection.
 /*
 
-C function : atk_selection_remove_selection
+C function
+
+atk_selection_remove_selection
 */
 func (recv *Selection) RemoveSelection(i int32) bool {
 	c_i := (C.gint)(i)
@@ -1426,7 +1526,9 @@ func (recv *Selection) RemoveSelection(i int32) bool {
 // supports multiple selections.
 /*
 
-C function : atk_selection_select_all_selection
+C function
+
+atk_selection_select_all_selection
 */
 func (recv *Selection) SelectAllSelection() bool {
 	retC := C.atk_selection_select_all_selection((*C.AtkSelection)(recv.native))
@@ -1453,7 +1555,9 @@ func (recv *Selection) SelectAllSelection() bool {
 // but may in some cases give access to the underlying model data.
 /*
 
-C record/class : AtkStreamableContent
+C type
+
+AtkStreamableContent
 */
 type StreamableContent struct {
 	native *C.AtkStreamableContent
@@ -1479,7 +1583,9 @@ func (recv *StreamableContent) ToC() unsafe.Pointer {
 // type is at position 0, the second at position 1, and so on.
 /*
 
-C function : atk_streamable_content_get_mime_type
+C function
+
+atk_streamable_content_get_mime_type
 */
 func (recv *StreamableContent) GetMimeType(i int32) string {
 	c_i := (C.gint)(i)
@@ -1493,7 +1599,9 @@ func (recv *StreamableContent) GetMimeType(i int32) string {
 // Gets the number of mime types supported by this object.
 /*
 
-C function : atk_streamable_content_get_n_mime_types
+C function
+
+atk_streamable_content_get_n_mime_types
 */
 func (recv *StreamableContent) GetNMimeTypes() int32 {
 	retC := C.atk_streamable_content_get_n_mime_types((*C.AtkStreamableContent)(recv.native))
@@ -1534,7 +1642,9 @@ func (recv *StreamableContent) GetNMimeTypes() int32 {
 // index-based methods are deprecated.
 /*
 
-C record/class : AtkTable
+C type
+
+AtkTable
 */
 type Table struct {
 	native *C.AtkTable
@@ -1738,7 +1848,9 @@ func table_rowReorderedHandler(_ *C.GObject, data C.gpointer) {
 // Adds the specified @column to the selection.
 /*
 
-C function : atk_table_add_column_selection
+C function
+
+atk_table_add_column_selection
 */
 func (recv *Table) AddColumnSelection(column int32) bool {
 	c_column := (C.gint)(column)
@@ -1752,7 +1864,9 @@ func (recv *Table) AddColumnSelection(column int32) bool {
 // Adds the specified @row to the selection.
 /*
 
-C function : atk_table_add_row_selection
+C function
+
+atk_table_add_row_selection
 */
 func (recv *Table) AddRowSelection(row int32) bool {
 	c_row := (C.gint)(row)
@@ -1766,7 +1880,9 @@ func (recv *Table) AddRowSelection(row int32) bool {
 // Gets the caption for the @table.
 /*
 
-C function : atk_table_get_caption
+C function
+
+atk_table_get_caption
 */
 func (recv *Table) GetCaption() *Object {
 	retC := C.atk_table_get_caption((*C.AtkTable)(recv.native))
@@ -1783,7 +1899,9 @@ func (recv *Table) GetCaption() *Object {
 // Gets a #gint representing the column at the specified @index_.
 /*
 
-C function : atk_table_get_column_at_index
+C function
+
+atk_table_get_column_at_index
 */
 func (recv *Table) GetColumnAtIndex(index int32) int32 {
 	c_index_ := (C.gint)(index)
@@ -1797,7 +1915,9 @@ func (recv *Table) GetColumnAtIndex(index int32) int32 {
 // Gets the description text of the specified @column in the table
 /*
 
-C function : atk_table_get_column_description
+C function
+
+atk_table_get_column_description
 */
 func (recv *Table) GetColumnDescription(column int32) string {
 	c_column := (C.gint)(column)
@@ -1812,7 +1932,9 @@ func (recv *Table) GetColumnDescription(column int32) string {
 // at the specified @row and @column in the @table.
 /*
 
-C function : atk_table_get_column_extent_at
+C function
+
+atk_table_get_column_extent_at
 */
 func (recv *Table) GetColumnExtentAt(row int32, column int32) int32 {
 	c_row := (C.gint)(row)
@@ -1828,7 +1950,9 @@ func (recv *Table) GetColumnExtentAt(row int32, column int32) int32 {
 // Gets the column header of a specified column in an accessible table.
 /*
 
-C function : atk_table_get_column_header
+C function
+
+atk_table_get_column_header
 */
 func (recv *Table) GetColumnHeader(column int32) *Object {
 	c_column := (C.gint)(column)
@@ -1848,7 +1972,9 @@ func (recv *Table) GetColumnHeader(column int32) *Object {
 // @column.
 /*
 
-C function : atk_table_get_index_at
+C function
+
+atk_table_get_index_at
 */
 func (recv *Table) GetIndexAt(row int32, column int32) int32 {
 	c_row := (C.gint)(row)
@@ -1864,7 +1990,9 @@ func (recv *Table) GetIndexAt(row int32, column int32) int32 {
 // Gets the number of columns in the table.
 /*
 
-C function : atk_table_get_n_columns
+C function
+
+atk_table_get_n_columns
 */
 func (recv *Table) GetNColumns() int32 {
 	retC := C.atk_table_get_n_columns((*C.AtkTable)(recv.native))
@@ -1876,7 +2004,9 @@ func (recv *Table) GetNColumns() int32 {
 // Gets the number of rows in the table.
 /*
 
-C function : atk_table_get_n_rows
+C function
+
+atk_table_get_n_rows
 */
 func (recv *Table) GetNRows() int32 {
 	retC := C.atk_table_get_n_rows((*C.AtkTable)(recv.native))
@@ -1888,7 +2018,9 @@ func (recv *Table) GetNRows() int32 {
 // Gets a #gint representing the row at the specified @index_.
 /*
 
-C function : atk_table_get_row_at_index
+C function
+
+atk_table_get_row_at_index
 */
 func (recv *Table) GetRowAtIndex(index int32) int32 {
 	c_index_ := (C.gint)(index)
@@ -1902,7 +2034,9 @@ func (recv *Table) GetRowAtIndex(index int32) int32 {
 // Gets the description text of the specified row in the table
 /*
 
-C function : atk_table_get_row_description
+C function
+
+atk_table_get_row_description
 */
 func (recv *Table) GetRowDescription(row int32) string {
 	c_row := (C.gint)(row)
@@ -1917,7 +2051,9 @@ func (recv *Table) GetRowDescription(row int32) string {
 // at a specified @row and @column in the @table.
 /*
 
-C function : atk_table_get_row_extent_at
+C function
+
+atk_table_get_row_extent_at
 */
 func (recv *Table) GetRowExtentAt(row int32, column int32) int32 {
 	c_row := (C.gint)(row)
@@ -1933,7 +2069,9 @@ func (recv *Table) GetRowExtentAt(row int32, column int32) int32 {
 // Gets the row header of a specified row in an accessible table.
 /*
 
-C function : atk_table_get_row_header
+C function
+
+atk_table_get_row_header
 */
 func (recv *Table) GetRowHeader(row int32) *Object {
 	c_row := (C.gint)(row)
@@ -1956,7 +2094,9 @@ func (recv *Table) GetRowHeader(row int32) *Object {
 // Gets the summary description of the table.
 /*
 
-C function : atk_table_get_summary
+C function
+
+atk_table_get_summary
 */
 func (recv *Table) GetSummary() *Object {
 	retC := C.atk_table_get_summary((*C.AtkTable)(recv.native))
@@ -1969,7 +2109,9 @@ func (recv *Table) GetSummary() *Object {
 // is selected
 /*
 
-C function : atk_table_is_column_selected
+C function
+
+atk_table_is_column_selected
 */
 func (recv *Table) IsColumnSelected(column int32) bool {
 	c_column := (C.gint)(column)
@@ -1984,7 +2126,9 @@ func (recv *Table) IsColumnSelected(column int32) bool {
 // is selected
 /*
 
-C function : atk_table_is_row_selected
+C function
+
+atk_table_is_row_selected
 */
 func (recv *Table) IsRowSelected(row int32) bool {
 	c_row := (C.gint)(row)
@@ -1999,7 +2143,9 @@ func (recv *Table) IsRowSelected(row int32) bool {
 // at the specified @row and @column is selected
 /*
 
-C function : atk_table_is_selected
+C function
+
+atk_table_is_selected
 */
 func (recv *Table) IsSelected(row int32, column int32) bool {
 	c_row := (C.gint)(row)
@@ -2016,7 +2162,9 @@ func (recv *Table) IsSelected(row int32, column int32) bool {
 // should implement the interface #AtkTableCell
 /*
 
-C function : atk_table_ref_at
+C function
+
+atk_table_ref_at
 */
 func (recv *Table) RefAt(row int32, column int32) *Object {
 	c_row := (C.gint)(row)
@@ -2032,7 +2180,9 @@ func (recv *Table) RefAt(row int32, column int32) *Object {
 // Adds the specified @column to the selection.
 /*
 
-C function : atk_table_remove_column_selection
+C function
+
+atk_table_remove_column_selection
 */
 func (recv *Table) RemoveColumnSelection(column int32) bool {
 	c_column := (C.gint)(column)
@@ -2046,7 +2196,9 @@ func (recv *Table) RemoveColumnSelection(column int32) bool {
 // Removes the specified @row from the selection.
 /*
 
-C function : atk_table_remove_row_selection
+C function
+
+atk_table_remove_row_selection
 */
 func (recv *Table) RemoveRowSelection(row int32) bool {
 	c_row := (C.gint)(row)
@@ -2060,7 +2212,9 @@ func (recv *Table) RemoveRowSelection(row int32) bool {
 // Sets the caption for the table.
 /*
 
-C function : atk_table_set_caption
+C function
+
+atk_table_set_caption
 */
 func (recv *Table) SetCaption(caption *Object) {
 	c_caption := (*C.AtkObject)(C.NULL)
@@ -2076,7 +2230,9 @@ func (recv *Table) SetCaption(caption *Object) {
 // Sets the description text for the specified @column of the @table.
 /*
 
-C function : atk_table_set_column_description
+C function
+
+atk_table_set_column_description
 */
 func (recv *Table) SetColumnDescription(column int32, description string) {
 	c_column := (C.gint)(column)
@@ -2092,7 +2248,9 @@ func (recv *Table) SetColumnDescription(column int32, description string) {
 // Sets the specified column header to @header.
 /*
 
-C function : atk_table_set_column_header
+C function
+
+atk_table_set_column_header
 */
 func (recv *Table) SetColumnHeader(column int32, header *Object) {
 	c_column := (C.gint)(column)
@@ -2110,7 +2268,9 @@ func (recv *Table) SetColumnHeader(column int32, header *Object) {
 // Sets the description text for the specified @row of @table.
 /*
 
-C function : atk_table_set_row_description
+C function
+
+atk_table_set_row_description
 */
 func (recv *Table) SetRowDescription(row int32, description string) {
 	c_row := (C.gint)(row)
@@ -2126,7 +2286,9 @@ func (recv *Table) SetRowDescription(row int32, description string) {
 // Sets the specified row header to @header.
 /*
 
-C function : atk_table_set_row_header
+C function
+
+atk_table_set_row_header
 */
 func (recv *Table) SetRowHeader(row int32, header *Object) {
 	c_row := (C.gint)(row)
@@ -2144,7 +2306,9 @@ func (recv *Table) SetRowHeader(row int32, header *Object) {
 // Sets the summary description of the table.
 /*
 
-C function : atk_table_set_summary
+C function
+
+atk_table_set_summary
 */
 func (recv *Table) SetSummary(accessible *Object) {
 	c_accessible := (*C.AtkObject)(C.NULL)
@@ -2164,7 +2328,9 @@ func (recv *Table) SetSummary(accessible *Object) {
 // See also #AtkTable.
 /*
 
-C record/class : AtkTableCell
+C type
+
+AtkTableCell
 */
 type TableCell struct {
 	native *C.AtkTableCell
@@ -2207,7 +2373,9 @@ func (recv *TableCell) ToC() unsafe.Pointer {
 // complex for languages which use ligatures.
 /*
 
-C record/class : AtkText
+C type
+
+AtkText
 */
 type Text struct {
 	native *C.AtkText
@@ -2354,7 +2522,9 @@ func text_textSelectionChangedHandler(_ *C.GObject, data C.gpointer) {
 // Adds a selection bounded by the specified offsets.
 /*
 
-C function : atk_text_add_selection
+C function
+
+atk_text_add_selection
 */
 func (recv *Text) AddSelection(startOffset int32, endOffset int32) bool {
 	c_start_offset := (C.gint)(startOffset)
@@ -2370,7 +2540,9 @@ func (recv *Text) AddSelection(startOffset int32, endOffset int32) bool {
 // Gets the offset position of the caret (cursor).
 /*
 
-C function : atk_text_get_caret_offset
+C function
+
+atk_text_get_caret_offset
 */
 func (recv *Text) GetCaretOffset() int32 {
 	retC := C.atk_text_get_caret_offset((*C.AtkText)(recv.native))
@@ -2382,7 +2554,9 @@ func (recv *Text) GetCaretOffset() int32 {
 // Gets the specified text.
 /*
 
-C function : atk_text_get_character_at_offset
+C function
+
+atk_text_get_character_at_offset
 */
 func (recv *Text) GetCharacterAtOffset(offset int32) rune {
 	c_offset := (C.gint)(offset)
@@ -2396,7 +2570,9 @@ func (recv *Text) GetCharacterAtOffset(offset int32) rune {
 // Gets the character count.
 /*
 
-C function : atk_text_get_character_count
+C function
+
+atk_text_get_character_count
 */
 func (recv *Text) GetCharacterCount() int32 {
 	retC := C.atk_text_get_character_count((*C.AtkText)(recv.native))
@@ -2409,7 +2585,9 @@ func (recv *Text) GetCharacterCount() int32 {
 // a particular text offset.
 /*
 
-C function : atk_text_get_character_extents
+C function
+
+atk_text_get_character_extents
 */
 func (recv *Text) GetCharacterExtents(offset int32, coords CoordType) (int32, int32, int32, int32) {
 	c_offset := (C.gint)(offset)
@@ -2442,7 +2620,9 @@ func (recv *Text) GetCharacterExtents(offset int32, coords CoordType) (int32, in
 // Gets the number of selected regions.
 /*
 
-C function : atk_text_get_n_selections
+C function
+
+atk_text_get_n_selections
 */
 func (recv *Text) GetNSelections() int32 {
 	retC := C.atk_text_get_n_selections((*C.AtkText)(recv.native))
@@ -2456,7 +2636,9 @@ func (recv *Text) GetNSelections() int32 {
 // depending on @coords.
 /*
 
-C function : atk_text_get_offset_at_point
+C function
+
+atk_text_get_offset_at_point
 */
 func (recv *Text) GetOffsetAtPoint(x int32, y int32, coords CoordType) int32 {
 	c_x := (C.gint)(x)
@@ -2476,7 +2658,9 @@ func (recv *Text) GetOffsetAtPoint(x int32, y int32, coords CoordType) int32 {
 // Gets the text from the specified selection.
 /*
 
-C function : atk_text_get_selection
+C function
+
+atk_text_get_selection
 */
 func (recv *Text) GetSelection(selectionNum int32) (string, int32, int32) {
 	c_selection_num := (C.gint)(selectionNum)
@@ -2499,7 +2683,9 @@ func (recv *Text) GetSelection(selectionNum int32) (string, int32, int32) {
 // Gets the specified text.
 /*
 
-C function : atk_text_get_text
+C function
+
+atk_text_get_text
 */
 func (recv *Text) GetText(startOffset int32, endOffset int32) string {
 	c_start_offset := (C.gint)(startOffset)
@@ -2516,7 +2702,9 @@ func (recv *Text) GetText(startOffset int32, endOffset int32) string {
 // Gets the specified text.
 /*
 
-C function : atk_text_get_text_after_offset
+C function
+
+atk_text_get_text_after_offset
 */
 func (recv *Text) GetTextAfterOffset(offset int32, boundaryType TextBoundary) (string, int32, int32) {
 	c_offset := (C.gint)(offset)
@@ -2564,7 +2752,9 @@ func (recv *Text) GetTextAfterOffset(offset int32, boundaryType TextBoundary) (s
 // start after the offset.
 /*
 
-C function : atk_text_get_text_at_offset
+C function
+
+atk_text_get_text_at_offset
 */
 func (recv *Text) GetTextAtOffset(offset int32, boundaryType TextBoundary) (string, int32, int32) {
 	c_offset := (C.gint)(offset)
@@ -2589,7 +2779,9 @@ func (recv *Text) GetTextAtOffset(offset int32, boundaryType TextBoundary) (stri
 // Gets the specified text.
 /*
 
-C function : atk_text_get_text_before_offset
+C function
+
+atk_text_get_text_before_offset
 */
 func (recv *Text) GetTextBeforeOffset(offset int32, boundaryType TextBoundary) (string, int32, int32) {
 	c_offset := (C.gint)(offset)
@@ -2614,7 +2806,9 @@ func (recv *Text) GetTextBeforeOffset(offset int32, boundaryType TextBoundary) (
 // Removes the specified selection.
 /*
 
-C function : atk_text_remove_selection
+C function
+
+atk_text_remove_selection
 */
 func (recv *Text) RemoveSelection(selectionNum int32) bool {
 	c_selection_num := (C.gint)(selectionNum)
@@ -2628,7 +2822,9 @@ func (recv *Text) RemoveSelection(selectionNum int32) bool {
 // Sets the caret (cursor) position to the specified @offset.
 /*
 
-C function : atk_text_set_caret_offset
+C function
+
+atk_text_set_caret_offset
 */
 func (recv *Text) SetCaretOffset(offset int32) bool {
 	c_offset := (C.gint)(offset)
@@ -2642,7 +2838,9 @@ func (recv *Text) SetCaretOffset(offset int32) bool {
 // Changes the start and end offset of the specified selection.
 /*
 
-C function : atk_text_set_selection
+C function
+
+atk_text_set_selection
 */
 func (recv *Text) SetSelection(selectionNum int32, startOffset int32, endOffset int32) bool {
 	c_selection_num := (C.gint)(selectionNum)
@@ -2799,7 +2997,9 @@ func (recv *Text) SetSelection(selectionNum int32, startOffset int32, endOffset 
 // </refsect1>
 /*
 
-C record/class : AtkValue
+C type
+
+AtkValue
 */
 type Value struct {
 	native *C.AtkValue
@@ -2824,7 +3024,9 @@ func (recv *Value) ToC() unsafe.Pointer {
 // Gets the value of this object.
 /*
 
-C function : atk_value_get_current_value
+C function
+
+atk_value_get_current_value
 */
 func (recv *Value) GetCurrentValue() *gobject.Value {
 	var c_value C.GValue
@@ -2839,7 +3041,9 @@ func (recv *Value) GetCurrentValue() *gobject.Value {
 // Gets the maximum value of this object.
 /*
 
-C function : atk_value_get_maximum_value
+C function
+
+atk_value_get_maximum_value
 */
 func (recv *Value) GetMaximumValue() *gobject.Value {
 	var c_value C.GValue
@@ -2854,7 +3058,9 @@ func (recv *Value) GetMaximumValue() *gobject.Value {
 // Gets the minimum value of this object.
 /*
 
-C function : atk_value_get_minimum_value
+C function
+
+atk_value_get_minimum_value
 */
 func (recv *Value) GetMinimumValue() *gobject.Value {
 	var c_value C.GValue
@@ -2869,7 +3075,9 @@ func (recv *Value) GetMinimumValue() *gobject.Value {
 // Sets the value of this object.
 /*
 
-C function : atk_value_set_current_value
+C function
+
+atk_value_set_current_value
 */
 func (recv *Value) SetCurrentValue(value *gobject.Value) bool {
 	c_value := (*C.GValue)(C.NULL)
@@ -2888,7 +3096,9 @@ func (recv *Value) SetCurrentValue(value *gobject.Value) bool {
 // dialog.
 /*
 
-C record/class : AtkWindow
+C type
+
+AtkWindow
 */
 type Window struct {
 	native *C.AtkWindow

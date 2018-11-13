@@ -23,7 +23,9 @@ import "C"
 // See also: gdk_pixbuf_loader_write()
 /*
 
-C function : gdk_pixbuf_loader_write_bytes
+C function
+
+gdk_pixbuf_loader_write_bytes
 */
 func (recv *PixbufLoader) WriteBytes(buffer *glib.Bytes) (bool, error) {
 	c_buffer := (*C.GBytes)(C.NULL)

@@ -39,7 +39,9 @@ import "C"
 // registered.  See g_application_get_is_registered().
 /*
 
-C function : g_application_get_dbus_connection
+C function
+
+g_application_get_dbus_connection
 */
 func (recv *Application) GetDbusConnection() *DBusConnection {
 	retC := C.g_application_get_dbus_connection((*C.GApplication)(recv.native))
@@ -64,7 +66,9 @@ func (recv *Application) GetDbusConnection() *DBusConnection {
 // registered.  See g_application_get_is_registered().
 /*
 
-C function : g_application_get_dbus_object_path
+C function
+
+g_application_get_dbus_object_path
 */
 func (recv *Application) GetDbusObjectPath() string {
 	retC := C.g_application_get_dbus_object_path((*C.GApplication)(recv.native))
@@ -85,7 +89,9 @@ func (recv *Application) GetDbusObjectPath() string {
 // You must only call this function once per commandline invocation.
 /*
 
-C function : g_application_command_line_get_stdin
+C function
+
+g_application_command_line_get_stdin
 */
 func (recv *ApplicationCommandLine) GetStdin() *InputStream {
 	retC := C.g_application_command_line_get_stdin((*C.GApplicationCommandLine)(recv.native))
@@ -97,7 +103,9 @@ func (recv *ApplicationCommandLine) GetStdin() *InputStream {
 // Emits the #GDBusAuthObserver::allow-mechanism signal on @observer.
 /*
 
-C function : g_dbus_auth_observer_allow_mechanism
+C function
+
+g_dbus_auth_observer_allow_mechanism
 */
 func (recv *DBusAuthObserver) AllowMechanism(mechanism string) bool {
 	c_mechanism := C.CString(mechanism)
@@ -116,7 +124,9 @@ func (recv *DBusAuthObserver) AllowMechanism(mechanism string) bool {
 // g_dbus_connection_call() or g_dbus_proxy_call().
 /*
 
-C function : g_dbus_connection_get_last_serial
+C function
+
+g_dbus_connection_get_last_serial
 */
 func (recv *DBusConnection) GetLastSerial() uint32 {
 	retC := C.g_dbus_connection_get_last_serial((*C.GDBusConnection)(recv.native))
@@ -128,7 +138,9 @@ func (recv *DBusConnection) GetLastSerial() uint32 {
 // Returns whether @object is currently exported on @manager.
 /*
 
-C function : g_dbus_object_manager_server_is_exported
+C function
+
+g_dbus_object_manager_server_is_exported
 */
 func (recv *DBusObjectManagerServer) IsExported(object *DBusObjectSkeleton) bool {
 	c_object := (*C.GDBusObjectSkeleton)(C.NULL)
@@ -147,7 +159,9 @@ func (recv *DBusObjectManagerServer) IsExported(object *DBusObjectSkeleton) bool
 // through @info.
 /*
 
-C function : g_desktop_app_info_get_startup_wm_class
+C function
+
+g_desktop_app_info_get_startup_wm_class
 */
 func (recv *DesktopAppInfo) GetStartupWmClass() string {
 	retC := C.g_desktop_app_info_get_startup_wm_class((*C.GDesktopAppInfo)(recv.native))
@@ -159,7 +173,9 @@ func (recv *DesktopAppInfo) GetStartupWmClass() string {
 // Gets the symbolic icon for a file.
 /*
 
-C function : g_file_info_get_symbolic_icon
+C function
+
+g_file_info_get_symbolic_icon
 */
 func (recv *FileInfo) GetSymbolicIcon() *Icon {
 	retC := C.g_file_info_get_symbolic_icon((*C.GFileInfo)(recv.native))
@@ -172,7 +188,9 @@ func (recv *FileInfo) GetSymbolicIcon() *Icon {
 // See %G_FILE_ATTRIBUTE_STANDARD_SYMBOLIC_ICON.
 /*
 
-C function : g_file_info_set_symbolic_icon
+C function
+
+g_file_info_set_symbolic_icon
 */
 func (recv *FileInfo) SetSymbolicIcon(icon *Icon) {
 	c_icon := (*C.GIcon)(icon.ToC())
@@ -207,7 +225,9 @@ func (recv *FileInfo) SetSymbolicIcon(icon *Icon) {
 // On error %NULL is returned and @error is set accordingly.
 /*
 
-C function : g_input_stream_read_bytes
+C function
+
+g_input_stream_read_bytes
 */
 func (recv *InputStream) ReadBytes(count uint64, cancellable *Cancellable) (*glib.Bytes, error) {
 	c_count := (C.gsize)(count)
@@ -235,7 +255,9 @@ func (recv *InputStream) ReadBytes(count uint64, cancellable *Cancellable) (*gli
 // Finishes an asynchronous stream read-into-#GBytes operation.
 /*
 
-C function : g_input_stream_read_bytes_finish
+C function
+
+g_input_stream_read_bytes_finish
 */
 func (recv *InputStream) ReadBytesFinish(result *AsyncResult) (*glib.Bytes, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -256,7 +278,9 @@ func (recv *InputStream) ReadBytesFinish(result *AsyncResult) (*glib.Bytes, erro
 // Creates a new #GMemoryInputStream with data from the given @bytes.
 /*
 
-C function : g_memory_input_stream_new_from_bytes
+C function
+
+g_memory_input_stream_new_from_bytes
 */
 func MemoryInputStreamNewFromBytes(bytes *glib.Bytes) *MemoryInputStream {
 	c_bytes := (*C.GBytes)(C.NULL)
@@ -273,7 +297,9 @@ func MemoryInputStreamNewFromBytes(bytes *glib.Bytes) *MemoryInputStream {
 // Appends @bytes to data that can be read from the input stream.
 /*
 
-C function : g_memory_input_stream_add_bytes
+C function
+
+g_memory_input_stream_add_bytes
 */
 func (recv *MemoryInputStream) AddBytes(bytes *glib.Bytes) {
 	c_bytes := (*C.GBytes)(C.NULL)
@@ -290,7 +316,9 @@ func (recv *MemoryInputStream) AddBytes(bytes *glib.Bytes) {
 // closed before calling this function.
 /*
 
-C function : g_memory_output_stream_steal_as_bytes
+C function
+
+g_memory_output_stream_steal_as_bytes
 */
 func (recv *MemoryOutputStream) StealAsBytes() *glib.Bytes {
 	retC := C.g_memory_output_stream_steal_as_bytes((*C.GMemoryOutputStream)(recv.native))
@@ -306,7 +334,9 @@ func (recv *MemoryOutputStream) StealAsBytes() *glib.Bytes {
 // g_menu_model_get_n_items() first).
 /*
 
-C function : g_menu_item_new_from_model
+C function
+
+g_menu_item_new_from_model
 */
 func MenuItemNewFromModel(model *MenuModel, itemIndex int32) *MenuItem {
 	c_model := (*C.GMenuModel)(C.NULL)
@@ -329,7 +359,9 @@ func MenuItemNewFromModel(model *MenuModel, itemIndex int32) *MenuItem {
 // Queries the named @link on @menu_item.
 /*
 
-C function : g_menu_item_get_link
+C function
+
+g_menu_item_get_link
 */
 func (recv *MenuItem) GetLink(link string) *MenuModel {
 	c_link := C.CString(link)
@@ -347,7 +379,9 @@ func (recv *MenuItem) GetLink(link string) *MenuModel {
 // server; eg, "http" or "ftp".
 /*
 
-C function : g_proxy_address_get_destination_protocol
+C function
+
+g_proxy_address_get_destination_protocol
 */
 func (recv *ProxyAddress) GetDestinationProtocol() string {
 	retC := C.g_proxy_address_get_destination_protocol((*C.GProxyAddress)(recv.native))
@@ -359,7 +393,9 @@ func (recv *ProxyAddress) GetDestinationProtocol() string {
 // Gets the proxy URI that @proxy was constructed from.
 /*
 
-C function : g_proxy_address_get_uri
+C function
+
+g_proxy_address_get_uri
 */
 func (recv *ProxyAddress) GetUri() string {
 	retC := C.g_proxy_address_get_uri((*C.GProxyAddress)(recv.native))
@@ -380,7 +416,9 @@ func (recv *ProxyAddress) GetUri() string {
 // %G_IO_ERROR_CANCELLED.
 /*
 
-C function : g_resolver_lookup_records
+C function
+
+g_resolver_lookup_records
 */
 func (recv *Resolver) LookupRecords(rrname string, recordType ResolverRecordType, cancellable *Cancellable) (*glib.List, error) {
 	c_rrname := C.CString(rrname)
@@ -418,7 +456,9 @@ func (recv *Resolver) LookupRecords(rrname string, recordType ResolverRecordType
 // @error will be set to %G_IO_ERROR_CANCELLED.
 /*
 
-C function : g_resolver_lookup_records_finish
+C function
+
+g_resolver_lookup_records_finish
 */
 func (recv *Resolver) LookupRecordsFinish(result *AsyncResult) (*glib.List, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -445,7 +485,7 @@ func (recv *Resolver) LookupRecordsFinish(result *AsyncResult) (*glib.List, erro
 // conflicts to environment variables shared between #GTestDBus and other
 // threads.
 //
-// ## Creating unit tests using GTestDBus
+// Creating unit tests using GTestDBus
 //
 // Testing of D-Bus services can be tricky because normally we only ever run
 // D-Bus services over an existing instance of the D-Bus daemon thus we
@@ -510,7 +550,9 @@ func (recv *Resolver) LookupRecordsFinish(result *AsyncResult) (*glib.List, erro
 // ]|
 /*
 
-C record/class : GTestDBus
+C type
+
+GTestDBus
 */
 type TestDBus struct {
 	native *C.GTestDBus
@@ -546,7 +588,9 @@ func CastToTestDBus(object *gobject.Object) *TestDBus {
 // Create a new #GTestDBus object.
 /*
 
-C function : g_test_dbus_new
+C function
+
+g_test_dbus_new
 */
 func TestDBusNew(flags TestDBusFlags) *TestDBus {
 	c_flags := (C.GTestDBusFlags)(flags)
@@ -561,7 +605,9 @@ func TestDBusNew(flags TestDBusFlags) *TestDBus {
 // called after g_test_dbus_up().
 /*
 
-C function : g_test_dbus_add_service_dir
+C function
+
+g_test_dbus_add_service_dir
 */
 func (recv *TestDBus) AddServiceDir(path string) {
 	c_path := C.CString(path)
@@ -579,7 +625,9 @@ func (recv *TestDBus) AddServiceDir(path string) {
 // leaked singleton from this test.
 /*
 
-C function : g_test_dbus_down
+C function
+
+g_test_dbus_down
 */
 func (recv *TestDBus) Down() {
 	C.g_test_dbus_down((*C.GTestDBus)(recv.native))
@@ -592,7 +640,9 @@ func (recv *TestDBus) Down() {
 // g_dbus_connection_new_for_address().
 /*
 
-C function : g_test_dbus_get_bus_address
+C function
+
+g_test_dbus_get_bus_address
 */
 func (recv *TestDBus) GetBusAddress() string {
 	retC := C.g_test_dbus_get_bus_address((*C.GTestDBus)(recv.native))
@@ -604,7 +654,9 @@ func (recv *TestDBus) GetBusAddress() string {
 // Get the flags of the #GTestDBus object.
 /*
 
-C function : g_test_dbus_get_flags
+C function
+
+g_test_dbus_get_flags
 */
 func (recv *TestDBus) GetFlags() TestDBusFlags {
 	retC := C.g_test_dbus_get_flags((*C.GTestDBus)(recv.native))
@@ -621,7 +673,9 @@ func (recv *TestDBus) GetFlags() TestDBusFlags {
 // can use this function but should still call g_test_dbus_down() when done.
 /*
 
-C function : g_test_dbus_stop
+C function
+
+g_test_dbus_stop
 */
 func (recv *TestDBus) Stop() {
 	C.g_test_dbus_stop((*C.GTestDBus)(recv.native))
@@ -639,7 +693,9 @@ func (recv *TestDBus) Stop() {
 // must be called after g_test_run().
 /*
 
-C function : g_test_dbus_up
+C function
+
+g_test_dbus_up
 */
 func (recv *TestDBus) Up() {
 	C.g_test_dbus_up((*C.GTestDBus)(recv.native))
@@ -654,7 +710,9 @@ func (recv *TestDBus) Up() {
 // #GTlsCertificate:private-key-pem properties differ.
 /*
 
-C function : g_tls_certificate_is_same
+C function
+
+g_tls_certificate_is_same
 */
 func (recv *TlsCertificate) IsSame(certTwo *TlsCertificate) bool {
 	c_cert_two := (*C.GTlsCertificate)(C.NULL)

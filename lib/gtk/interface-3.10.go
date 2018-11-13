@@ -22,7 +22,9 @@ import "C"
 // from “.jpg” to “.png”.
 /*
 
-C function : gtk_file_chooser_get_current_name
+C function
+
+gtk_file_chooser_get_current_name
 */
 func (recv *FileChooser) GetCurrentName() string {
 	retC := C.gtk_file_chooser_get_current_name((*C.GtkFileChooser)(recv.native))
@@ -38,7 +40,9 @@ func (recv *FileChooser) GetCurrentName() string {
 // reordered.
 /*
 
-C function : gtk_tree_model_rows_reordered_with_length
+C function
+
+gtk_tree_model_rows_reordered_with_length
 */
 func (recv *TreeModel) RowsReorderedWithLength(path *TreePath, iter *TreeIter, newOrder []int32) {
 	c_path := (*C.GtkTreePath)(C.NULL)

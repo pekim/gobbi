@@ -29,7 +29,9 @@ import "C"
 // event.
 /*
 
-C record/class : GdkDevicePad
+C type
+
+GdkDevicePad
 */
 type DevicePad struct {
 	native *C.GdkDevicePad
@@ -55,7 +57,9 @@ func (recv *DevicePad) ToC() unsafe.Pointer {
 // or -1 if feature/index do not exist in @pad.
 /*
 
-C function : gdk_device_pad_get_feature_group
+C function
+
+gdk_device_pad_get_feature_group
 */
 func (recv *DevicePad) GetFeatureGroup(feature DevicePadFeature, featureIdx int32) int32 {
 	c_feature := (C.GdkDevicePadFeature)(feature)
@@ -71,7 +75,9 @@ func (recv *DevicePad) GetFeatureGroup(feature DevicePadFeature, featureIdx int3
 // Returns the number of modes that @group may have.
 /*
 
-C function : gdk_device_pad_get_group_n_modes
+C function
+
+gdk_device_pad_get_group_n_modes
 */
 func (recv *DevicePad) GetGroupNModes(groupIdx int32) int32 {
 	c_group_idx := (C.gint)(groupIdx)
@@ -85,7 +91,9 @@ func (recv *DevicePad) GetGroupNModes(groupIdx int32) int32 {
 // Returns the number of features a tablet pad has.
 /*
 
-C function : gdk_device_pad_get_n_features
+C function
+
+gdk_device_pad_get_n_features
 */
 func (recv *DevicePad) GetNFeatures(feature DevicePadFeature) int32 {
 	c_feature := (C.GdkDevicePadFeature)(feature)
@@ -102,7 +110,9 @@ func (recv *DevicePad) GetNFeatures(feature DevicePadFeature) int32 {
 // current mode.
 /*
 
-C function : gdk_device_pad_get_n_groups
+C function
+
+gdk_device_pad_get_n_groups
 */
 func (recv *DevicePad) GetNGroups() int32 {
 	retC := C.gdk_device_pad_get_n_groups((*C.GdkDevicePad)(recv.native))

@@ -15,7 +15,9 @@ import "C"
 // Gets the child in the (@x, @y) position.
 /*
 
-C function : gtk_flow_box_get_child_at_pos
+C function
+
+gtk_flow_box_get_child_at_pos
 */
 func (recv *FlowBox) GetChildAtPos(x int32, y int32) *FlowBoxChild {
 	c_x := (C.gint)(x)

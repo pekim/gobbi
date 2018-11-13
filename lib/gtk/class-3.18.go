@@ -30,7 +30,9 @@ import "C"
 // Gets whether page has padding.
 /*
 
-C function : gtk_assistant_get_page_has_padding
+C function
+
+gtk_assistant_get_page_has_padding
 */
 func (recv *Assistant) GetPageHasPadding(page *Widget) bool {
 	c_page := (*C.GtkWidget)(C.NULL)
@@ -48,7 +50,9 @@ func (recv *Assistant) GetPageHasPadding(page *Widget) bool {
 // the page.
 /*
 
-C function : gtk_assistant_set_page_has_padding
+C function
+
+gtk_assistant_set_page_has_padding
 */
 func (recv *Assistant) SetPageHasPadding(page *Widget, hasPadding bool) {
 	c_page := (*C.GtkWidget)(C.NULL)
@@ -72,7 +76,9 @@ func (recv *Assistant) SetPageHasPadding(page *Widget, hasPadding bool) {
 // child property for @widget.
 /*
 
-C function : gtk_overlay_get_overlay_pass_through
+C function
+
+gtk_overlay_get_overlay_pass_through
 */
 func (recv *Overlay) GetOverlayPassThrough(widget *Widget) bool {
 	c_widget := (*C.GtkWidget)(C.NULL)
@@ -95,7 +101,9 @@ func (recv *Overlay) GetOverlayPassThrough(widget *Widget) bool {
 // the bottom. It also affects the default focus chain order.
 /*
 
-C function : gtk_overlay_reorder_overlay
+C function
+
+gtk_overlay_reorder_overlay
 */
 func (recv *Overlay) ReorderOverlay(child *Widget, position int32) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -114,7 +122,9 @@ func (recv *Overlay) ReorderOverlay(child *Widget, position int32) {
 // child property for @widget.
 /*
 
-C function : gtk_overlay_set_overlay_pass_through
+C function
+
+gtk_overlay_set_overlay_pass_through
 */
 func (recv *Overlay) SetOverlayPassThrough(widget *Widget, passThrough bool) {
 	c_widget := (*C.GtkWidget)(C.NULL)
@@ -190,7 +200,9 @@ func placessidebar_showOtherLocationsHandler(_ *C.GObject, data C.gpointer) {
 // Returns the value previously set with gtk_places_sidebar_set_show_other_locations()
 /*
 
-C function : gtk_places_sidebar_get_show_other_locations
+C function
+
+gtk_places_sidebar_get_show_other_locations
 */
 func (recv *PlacesSidebar) GetShowOtherLocations() bool {
 	retC := C.gtk_places_sidebar_get_show_other_locations((*C.GtkPlacesSidebar)(recv.native))
@@ -202,7 +214,9 @@ func (recv *PlacesSidebar) GetShowOtherLocations() bool {
 // Returns the value previously set with gtk_places_sidebar_set_show_recent()
 /*
 
-C function : gtk_places_sidebar_get_show_recent
+C function
+
+gtk_places_sidebar_get_show_recent
 */
 func (recv *PlacesSidebar) GetShowRecent() bool {
 	retC := C.gtk_places_sidebar_get_show_recent((*C.GtkPlacesSidebar)(recv.native))
@@ -214,7 +228,9 @@ func (recv *PlacesSidebar) GetShowRecent() bool {
 // Returns the value previously set with gtk_places_sidebar_set_show_trash()
 /*
 
-C function : gtk_places_sidebar_get_show_trash
+C function
+
+gtk_places_sidebar_get_show_trash
 */
 func (recv *PlacesSidebar) GetShowTrash() bool {
 	retC := C.gtk_places_sidebar_get_show_trash((*C.GtkPlacesSidebar)(recv.native))
@@ -234,7 +250,9 @@ func (recv *PlacesSidebar) GetShowTrash() bool {
 // to unset the state when the drag ends on some other widget on your application.
 /*
 
-C function : gtk_places_sidebar_set_drop_targets_visible
+C function
+
+gtk_places_sidebar_set_drop_targets_visible
 */
 func (recv *PlacesSidebar) SetDropTargetsVisible(visible bool, context *gdk.DragContext) {
 	c_visible :=
@@ -260,7 +278,9 @@ func (recv *PlacesSidebar) SetDropTargetsVisible(visible bool, context *gdk.Drag
 // #GtkPlacesSidebar::show-other-locations signal.
 /*
 
-C function : gtk_places_sidebar_set_show_other_locations
+C function
+
+gtk_places_sidebar_set_show_other_locations
 */
 func (recv *PlacesSidebar) SetShowOtherLocations(showOtherLocations bool) {
 	c_show_other_locations :=
@@ -277,7 +297,9 @@ func (recv *PlacesSidebar) SetShowOtherLocations(showOtherLocations bool) {
 // per-application basis.
 /*
 
-C function : gtk_places_sidebar_set_show_recent
+C function
+
+gtk_places_sidebar_set_show_recent
 */
 func (recv *PlacesSidebar) SetShowRecent(showRecent bool) {
 	c_show_recent :=
@@ -291,7 +313,9 @@ func (recv *PlacesSidebar) SetShowRecent(showRecent bool) {
 // Sets whether the @sidebar should show an item for the Trash location.
 /*
 
-C function : gtk_places_sidebar_set_show_trash
+C function
+
+gtk_places_sidebar_set_show_trash
 */
 func (recv *PlacesSidebar) SetShowTrash(showTrash bool) {
 	c_show_trash :=
@@ -306,7 +330,9 @@ func (recv *PlacesSidebar) SetShowTrash(showTrash bool) {
 // the popover is shown.
 /*
 
-C function : gtk_popover_get_default_widget
+C function
+
+gtk_popover_get_default_widget
 */
 func (recv *Popover) GetDefaultWidget() *Widget {
 	retC := C.gtk_popover_get_default_widget((*C.GtkPopover)(recv.native))
@@ -326,7 +352,9 @@ func (recv *Popover) GetDefaultWidget() *Widget {
 // when the popover is dismissed.
 /*
 
-C function : gtk_popover_set_default_widget
+C function
+
+gtk_popover_set_default_widget
 */
 func (recv *Popover) SetDefaultWidget(widget *Widget) {
 	c_widget := (*C.GtkWidget)(C.NULL)
@@ -363,7 +391,9 @@ func (recv *Popover) SetDefaultWidget(widget *Widget) {
 // ]|
 /*
 
-C function : gtk_radio_menu_item_join_group
+C function
+
+gtk_radio_menu_item_join_group
 */
 func (recv *RadioMenuItem) JoinGroup(groupSource *RadioMenuItem) {
 	c_group_source := (*C.GtkRadioMenuItem)(C.NULL)
@@ -380,7 +410,9 @@ func (recv *RadioMenuItem) JoinGroup(groupSource *RadioMenuItem) {
 // the sizes of children on page switch.
 /*
 
-C function : gtk_stack_get_interpolate_size
+C function
+
+gtk_stack_get_interpolate_size
 */
 func (recv *Stack) GetInterpolateSize() bool {
 	retC := C.gtk_stack_get_interpolate_size((*C.GtkStack)(recv.native))
@@ -396,7 +428,9 @@ func (recv *Stack) GetInterpolateSize() bool {
 // visible child, according to the set transition duration.
 /*
 
-C function : gtk_stack_set_interpolate_size
+C function
+
+gtk_stack_set_interpolate_size
 */
 func (recv *Stack) SetInterpolateSize(interpolateSize bool) {
 	c_interpolate_size :=
@@ -410,7 +444,9 @@ func (recv *Stack) SetInterpolateSize(interpolateSize bool) {
 // Gets the bottom margin for text in the @text_view.
 /*
 
-C function : gtk_text_view_get_bottom_margin
+C function
+
+gtk_text_view_get_bottom_margin
 */
 func (recv *TextView) GetBottomMargin() int32 {
 	retC := C.gtk_text_view_get_bottom_margin((*C.GtkTextView)(recv.native))
@@ -422,7 +458,9 @@ func (recv *TextView) GetBottomMargin() int32 {
 // Gets the top margin for text in the @text_view.
 /*
 
-C function : gtk_text_view_get_top_margin
+C function
+
+gtk_text_view_get_top_margin
 */
 func (recv *TextView) GetTopMargin() int32 {
 	retC := C.gtk_text_view_get_top_margin((*C.GtkTextView)(recv.native))
@@ -437,7 +475,9 @@ func (recv *TextView) GetTopMargin() int32 {
 // In CSS terms, the value set here is padding.
 /*
 
-C function : gtk_text_view_set_bottom_margin
+C function
+
+gtk_text_view_set_bottom_margin
 */
 func (recv *TextView) SetBottomMargin(bottomMargin int32) {
 	c_bottom_margin := (C.gint)(bottomMargin)
@@ -453,7 +493,9 @@ func (recv *TextView) SetBottomMargin(bottomMargin int32) {
 // In CSS terms, the value set here is padding.
 /*
 
-C function : gtk_text_view_set_top_margin
+C function
+
+gtk_text_view_set_top_margin
 */
 func (recv *TextView) SetTopMargin(topMargin int32) {
 	c_top_margin := (C.gint)(topMargin)
@@ -466,7 +508,9 @@ func (recv *TextView) SetTopMargin(topMargin int32) {
 // Gets the font map that has been set with gtk_widget_set_font_map().
 /*
 
-C function : gtk_widget_get_font_map
+C function
+
+gtk_widget_get_font_map
 */
 func (recv *Widget) GetFontMap() *pango.FontMap {
 	retC := C.gtk_widget_get_font_map((*C.GtkWidget)(recv.native))
@@ -484,7 +528,9 @@ func (recv *Widget) GetFontMap() *pango.FontMap {
 // the defaults font options for the #GdkScreen will be used.
 /*
 
-C function : gtk_widget_get_font_options
+C function
+
+gtk_widget_get_font_options
 */
 func (recv *Widget) GetFontOptions() *cairo.FontOptions {
 	retC := C.gtk_widget_get_font_options((*C.GtkWidget)(recv.native))
@@ -502,7 +548,9 @@ func (recv *Widget) GetFontOptions() *cairo.FontOptions {
 // will inherit the font map from its parent.
 /*
 
-C function : gtk_widget_set_font_map
+C function
+
+gtk_widget_set_font_map
 */
 func (recv *Widget) SetFontMap(fontMap *pango.FontMap) {
 	c_font_map := (*C.PangoFontMap)(C.NULL)
@@ -519,7 +567,9 @@ func (recv *Widget) SetFontMap(fontMap *pango.FontMap) {
 // When not set, the default font options for the #GdkScreen will be used.
 /*
 
-C function : gtk_widget_set_font_options
+C function
+
+gtk_widget_set_font_options
 */
 func (recv *Widget) SetFontOptions(options *cairo.FontOptions) {
 	c_options := (*C.cairo_font_options_t)(C.NULL)
@@ -539,7 +589,9 @@ func (recv *Widget) SetFontOptions(options *cairo.FontOptions) {
 // on #GtkWidget.
 /*
 
-C function : gtk_window_fullscreen_on_monitor
+C function
+
+gtk_window_fullscreen_on_monitor
 */
 func (recv *Window) FullscreenOnMonitor(screen *gdk.Screen, monitor int32) {
 	c_screen := (*C.GdkScreen)(C.NULL)

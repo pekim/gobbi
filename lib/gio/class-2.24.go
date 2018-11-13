@@ -27,7 +27,9 @@ import "C"
 // Creates a new #GCharsetConverter.
 /*
 
-C function : g_charset_converter_new
+C function
+
+g_charset_converter_new
 */
 func CharsetConverterNew(toCharset string, fromCharset string) (*CharsetConverter, error) {
 	c_to_charset := C.CString(toCharset)
@@ -52,7 +54,9 @@ func CharsetConverterNew(toCharset string, fromCharset string) (*CharsetConverte
 // Gets the number of fallbacks that @converter has applied so far.
 /*
 
-C function : g_charset_converter_get_num_fallbacks
+C function
+
+g_charset_converter_get_num_fallbacks
 */
 func (recv *CharsetConverter) GetNumFallbacks() uint32 {
 	retC := C.g_charset_converter_get_num_fallbacks((*C.GCharsetConverter)(recv.native))
@@ -64,7 +68,9 @@ func (recv *CharsetConverter) GetNumFallbacks() uint32 {
 // Gets the #GCharsetConverter:use-fallback property.
 /*
 
-C function : g_charset_converter_get_use_fallback
+C function
+
+g_charset_converter_get_use_fallback
 */
 func (recv *CharsetConverter) GetUseFallback() bool {
 	retC := C.g_charset_converter_get_use_fallback((*C.GCharsetConverter)(recv.native))
@@ -76,7 +82,9 @@ func (recv *CharsetConverter) GetUseFallback() bool {
 // Sets the #GCharsetConverter:use-fallback property.
 /*
 
-C function : g_charset_converter_set_use_fallback
+C function
+
+g_charset_converter_set_use_fallback
 */
 func (recv *CharsetConverter) SetUseFallback(useFallback bool) {
 	c_use_fallback :=
@@ -90,7 +98,9 @@ func (recv *CharsetConverter) SetUseFallback(useFallback bool) {
 // Gets the #GConverter that is used by @converter_stream.
 /*
 
-C function : g_converter_input_stream_get_converter
+C function
+
+g_converter_input_stream_get_converter
 */
 func (recv *ConverterInputStream) GetConverter() *Converter {
 	retC := C.g_converter_input_stream_get_converter((*C.GConverterInputStream)(recv.native))
@@ -102,7 +112,9 @@ func (recv *ConverterInputStream) GetConverter() *Converter {
 // Gets the #GConverter that is used by @converter_stream.
 /*
 
-C function : g_converter_output_stream_get_converter
+C function
+
+g_converter_output_stream_get_converter
 */
 func (recv *ConverterOutputStream) GetConverter() *Converter {
 	retC := C.g_converter_output_stream_get_converter((*C.GConverterOutputStream)(recv.native))
@@ -121,7 +133,9 @@ func (recv *ConverterOutputStream) GetConverter() *Converter {
 // The returned string will always be nul-terminated on success.
 /*
 
-C function : g_data_input_stream_read_upto_finish
+C function
+
+g_data_input_stream_read_upto_finish
 */
 func (recv *DataInputStream) ReadUptoFinish(result *AsyncResult) (string, uint64, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -149,7 +163,9 @@ func (recv *DataInputStream) ReadUptoFinish(result *AsyncResult) (string, uint64
 // g_desktop_app_info_new_from_keyfile(), this function will return %NULL.
 /*
 
-C function : g_desktop_app_info_get_filename
+C function
+
+g_desktop_app_info_get_filename
 */
 func (recv *DesktopAppInfo) GetFilename() string {
 	retC := C.g_desktop_app_info_get_filename((*C.GDesktopAppInfo)(recv.native))
@@ -164,7 +180,9 @@ func (recv *DesktopAppInfo) GetFilename() string {
 // the closing operation.
 /*
 
-C function : g_output_stream_is_closing
+C function
+
+g_output_stream_is_closing
 */
 func (recv *OutputStream) IsClosing() bool {
 	retC := C.g_output_stream_is_closing((*C.GOutputStream)(recv.native))
@@ -185,7 +203,9 @@ func (recv *OutputStream) IsClosing() bool {
 // different things depending on what address is connected to.
 /*
 
-C function : g_socket_listener_add_any_inet_port
+C function
+
+g_socket_listener_add_any_inet_port
 */
 func (recv *SocketListener) AddAnyInetPort(sourceObject *gobject.Object) (uint16, error) {
 	c_source_object := (*C.GObject)(C.NULL)
@@ -209,7 +229,9 @@ func (recv *SocketListener) AddAnyInetPort(sourceObject *gobject.Object) (uint16
 // Creates a new #GUnixFDList containing no file descriptors.
 /*
 
-C function : g_unix_fd_list_new
+C function
+
+g_unix_fd_list_new
 */
 func UnixFDListNew() *UnixFDList {
 	retC := C.g_unix_fd_list_new()
@@ -228,7 +250,9 @@ func UnixFDListNew() *UnixFDList {
 // If @n_fds is -1 then @fds must be terminated with -1.
 /*
 
-C function : g_unix_fd_list_new_from_array
+C function
+
+g_unix_fd_list_new_from_array
 */
 func UnixFDListNewFromArray(fds []int32) *UnixFDList {
 	c_fds := &fds[0]
@@ -255,7 +279,9 @@ func UnixFDListNewFromArray(fds []int32) *UnixFDList {
 // duplicated copy of the same file descriptor.
 /*
 
-C function : g_unix_fd_list_append
+C function
+
+g_unix_fd_list_append
 */
 func (recv *UnixFDList) Append(fd int32) (int32, error) {
 	c_fd := (C.gint)(fd)
@@ -287,7 +313,9 @@ func (recv *UnixFDList) Append(fd int32) (int32, error) {
 // system-wide file descriptor limit.
 /*
 
-C function : g_unix_fd_list_get
+C function
+
+g_unix_fd_list_get
 */
 func (recv *UnixFDList) Get(index int32) (int32, error) {
 	c_index_ := (C.gint)(index)
@@ -309,7 +337,9 @@ func (recv *UnixFDList) Get(index int32) (int32, error) {
 // contained within).
 /*
 
-C function : g_unix_fd_list_get_length
+C function
+
+g_unix_fd_list_get_length
 */
 func (recv *UnixFDList) GetLength() int32 {
 	retC := C.g_unix_fd_list_get_length((*C.GUnixFDList)(recv.native))
@@ -325,7 +355,9 @@ func (recv *UnixFDList) GetLength() int32 {
 // Creates a new #GUnixFDMessage containing @list.
 /*
 
-C function : g_unix_fd_message_new_with_fd_list
+C function
+
+g_unix_fd_message_new_with_fd_list
 */
 func UnixFDMessageNewWithFdList(fdList *UnixFDList) *UnixFDMessage {
 	c_fd_list := (*C.GUnixFDList)(C.NULL)
@@ -344,7 +376,9 @@ func UnixFDMessageNewWithFdList(fdList *UnixFDList) *UnixFDMessage {
 // the lifetime of @message.
 /*
 
-C function : g_unix_fd_message_get_fd_list
+C function
+
+g_unix_fd_message_get_fd_list
 */
 func (recv *UnixFDMessage) GetFdList() *UnixFDList {
 	retC := C.g_unix_fd_message_get_fd_list((*C.GUnixFDMessage)(recv.native))
@@ -356,7 +390,9 @@ func (recv *UnixFDMessage) GetFdList() *UnixFDList {
 // Creates a new #GZlibCompressor.
 /*
 
-C function : g_zlib_compressor_new
+C function
+
+g_zlib_compressor_new
 */
 func ZlibCompressorNew(format ZlibCompressorFormat, level int32) *ZlibCompressor {
 	c_format := (C.GZlibCompressorFormat)(format)
@@ -372,7 +408,9 @@ func ZlibCompressorNew(format ZlibCompressorFormat, level int32) *ZlibCompressor
 // Creates a new #GZlibDecompressor.
 /*
 
-C function : g_zlib_decompressor_new
+C function
+
+g_zlib_decompressor_new
 */
 func ZlibDecompressorNew(format ZlibCompressorFormat) *ZlibDecompressor {
 	c_format := (C.GZlibCompressorFormat)(format)

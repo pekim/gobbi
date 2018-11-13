@@ -14,7 +14,9 @@ import "C"
 // for instance, for GTK+, GAIL implements this via GDK_THREADS_ENTER).
 /*
 
-C function : atk_misc_threads_enter
+C function
+
+atk_misc_threads_enter
 */
 func (recv *Misc) ThreadsEnter() {
 	C.atk_misc_threads_enter((*C.AtkMisc)(recv.native))
@@ -33,7 +35,9 @@ func (recv *Misc) ThreadsEnter() {
 // for instance, for GTK+, GAIL implements this via GDK_THREADS_LEAVE).
 /*
 
-C function : atk_misc_threads_leave
+C function
+
+atk_misc_threads_leave
 */
 func (recv *Misc) ThreadsLeave() {
 	C.atk_misc_threads_leave((*C.AtkMisc)(recv.native))

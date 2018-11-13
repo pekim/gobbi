@@ -133,7 +133,9 @@ import "C"
 // for more information.
 /*
 
-C function : gtk_application_get_menu_by_id
+C function
+
+gtk_application_get_menu_by_id
 */
 func (recv *Application) GetMenuById(id string) *gio.Menu {
 	c_id := C.CString(id)
@@ -181,7 +183,9 @@ func (recv *Application) GetMenuById(id string) *gio.Menu {
 // replaced with your own.
 /*
 
-C function : gtk_application_prefers_app_menu
+C function
+
+gtk_application_prefers_app_menu
 */
 func (recv *Application) PrefersAppMenu() bool {
 	retC := C.gtk_application_prefers_app_menu((*C.GtkApplication)(recv.native))
@@ -194,7 +198,9 @@ func (recv *Application) PrefersAppMenu() bool {
 // or -1 if the attribute is not mapped.
 /*
 
-C function : gtk_cell_area_attribute_get_column
+C function
+
+gtk_cell_area_attribute_get_column
 */
 func (recv *CellArea) AttributeGetColumn(renderer *CellRenderer, attribute string) int32 {
 	c_renderer := (*C.GtkCellRenderer)(C.NULL)
@@ -271,7 +277,9 @@ func entrycompletion_noMatchesHandler(_ *C.GObject, data C.gpointer) {
 // Gets the propagation phase at which @controller handles events.
 /*
 
-C function : gtk_event_controller_get_propagation_phase
+C function
+
+gtk_event_controller_get_propagation_phase
 */
 func (recv *EventController) GetPropagationPhase() PropagationPhase {
 	retC := C.gtk_event_controller_get_propagation_phase((*C.GtkEventController)(recv.native))
@@ -283,7 +291,9 @@ func (recv *EventController) GetPropagationPhase() PropagationPhase {
 // Returns the #GtkWidget this controller relates to.
 /*
 
-C function : gtk_event_controller_get_widget
+C function
+
+gtk_event_controller_get_widget
 */
 func (recv *EventController) GetWidget() *Widget {
 	retC := C.gtk_event_controller_get_widget((*C.GtkEventController)(recv.native))
@@ -299,7 +309,9 @@ func (recv *EventController) GetWidget() *Widget {
 // will be dropped at this point.
 /*
 
-C function : gtk_event_controller_reset
+C function
+
+gtk_event_controller_reset
 */
 func (recv *EventController) Reset() {
 	C.gtk_event_controller_reset((*C.GtkEventController)(recv.native))
@@ -314,7 +326,9 @@ func (recv *EventController) Reset() {
 // the events can be managed by calling gtk_event_controller_handle_event().
 /*
 
-C function : gtk_event_controller_set_propagation_phase
+C function
+
+gtk_event_controller_set_propagation_phase
 */
 func (recv *EventController) SetPropagationPhase(phase PropagationPhase) {
 	c_phase := (C.GtkPropagationPhase)(phase)
@@ -570,7 +584,9 @@ func gesture_updateHandler(_ *C.GObject, c_sequence *C.GdkEventSequence, data C.
 // will be returned.
 /*
 
-C function : gtk_gesture_get_bounding_box_center
+C function
+
+gtk_gesture_get_bounding_box_center
 */
 func (recv *Gesture) GetBoundingBoxCenter() (bool, float64, float64) {
 	var c_x C.gdouble
@@ -591,7 +607,9 @@ func (recv *Gesture) GetBoundingBoxCenter() (bool, float64, float64) {
 // on @gesture, or %NULL if the gesture is not being interacted.
 /*
 
-C function : gtk_gesture_get_device
+C function
+
+gtk_gesture_get_device
 */
 func (recv *Gesture) GetDevice() *gdk.Device {
 	retC := C.gtk_gesture_get_device((*C.GtkGesture)(recv.native))
@@ -608,7 +626,9 @@ func (recv *Gesture) GetDevice() *gdk.Device {
 // Returns all gestures in the group of @gesture
 /*
 
-C function : gtk_gesture_get_group
+C function
+
+gtk_gesture_get_group
 */
 func (recv *Gesture) GetGroup() *glib.List {
 	retC := C.gtk_gesture_get_group((*C.GtkGesture)(recv.native))
@@ -620,7 +640,9 @@ func (recv *Gesture) GetGroup() *glib.List {
 // Returns the #GdkEventSequence that was last updated on @gesture.
 /*
 
-C function : gtk_gesture_get_last_updated_sequence
+C function
+
+gtk_gesture_get_last_updated_sequence
 */
 func (recv *Gesture) GetLastUpdatedSequence() *gdk.EventSequence {
 	retC := C.gtk_gesture_get_last_updated_sequence((*C.GtkGesture)(recv.native))
@@ -640,7 +662,9 @@ func (recv *Gesture) GetLastUpdatedSequence() *gdk.EventSequence {
 // widget allocation.
 /*
 
-C function : gtk_gesture_get_point
+C function
+
+gtk_gesture_get_point
 */
 func (recv *Gesture) GetPoint(sequence *gdk.EventSequence) (bool, float64, float64) {
 	c_sequence := (*C.GdkEventSequence)(C.NULL)
@@ -665,7 +689,9 @@ func (recv *Gesture) GetPoint(sequence *gdk.EventSequence) (bool, float64, float
 // Returns the @sequence state, as seen by @gesture.
 /*
 
-C function : gtk_gesture_get_sequence_state
+C function
+
+gtk_gesture_get_sequence_state
 */
 func (recv *Gesture) GetSequenceState(sequence *gdk.EventSequence) EventSequenceState {
 	c_sequence := (*C.GdkEventSequence)(C.NULL)
@@ -683,7 +709,9 @@ func (recv *Gesture) GetSequenceState(sequence *gdk.EventSequence) EventSequence
 // by @gesture.
 /*
 
-C function : gtk_gesture_get_sequences
+C function
+
+gtk_gesture_get_sequences
 */
 func (recv *Gesture) GetSequences() *glib.List {
 	retC := C.gtk_gesture_get_sequences((*C.GtkGesture)(recv.native))
@@ -697,7 +725,9 @@ func (recv *Gesture) GetSequences() *glib.List {
 // information.
 /*
 
-C function : gtk_gesture_get_window
+C function
+
+gtk_gesture_get_window
 */
 func (recv *Gesture) GetWindow() *gdk.Window {
 	retC := C.gtk_gesture_get_window((*C.GtkGesture)(recv.native))
@@ -724,7 +754,9 @@ func (recv *Gesture) GetWindow() *gdk.Window {
 // state for that sequence to #GTK_EVENT_SEQUENCE_DENIED.
 /*
 
-C function : gtk_gesture_group
+C function
+
+gtk_gesture_group
 */
 func (recv *Gesture) Group(gesture *Gesture) {
 	c_gesture := (*C.GtkGesture)(C.NULL)
@@ -741,7 +773,9 @@ func (recv *Gesture) Group(gesture *Gesture) {
 // @sequence.
 /*
 
-C function : gtk_gesture_handles_sequence
+C function
+
+gtk_gesture_handles_sequence
 */
 func (recv *Gesture) HandlesSequence(sequence *gdk.EventSequence) bool {
 	c_sequence := (*C.GdkEventSequence)(C.NULL)
@@ -760,7 +794,9 @@ func (recv *Gesture) HandlesSequence(sequence *gdk.EventSequence) bool {
 // interacting with it.
 /*
 
-C function : gtk_gesture_is_active
+C function
+
+gtk_gesture_is_active
 */
 func (recv *Gesture) IsActive() bool {
 	retC := C.gtk_gesture_is_active((*C.GtkGesture)(recv.native))
@@ -772,7 +808,9 @@ func (recv *Gesture) IsActive() bool {
 // Returns %TRUE if both gestures pertain to the same group.
 /*
 
-C function : gtk_gesture_is_grouped_with
+C function
+
+gtk_gesture_is_grouped_with
 */
 func (recv *Gesture) IsGroupedWith(other *Gesture) bool {
 	c_other := (*C.GtkGesture)(C.NULL)
@@ -792,7 +830,9 @@ func (recv *Gesture) IsGroupedWith(other *Gesture) bool {
 // returned %TRUE for the sequences being currently interpreted.
 /*
 
-C function : gtk_gesture_is_recognized
+C function
+
+gtk_gesture_is_recognized
 */
 func (recv *Gesture) IsRecognized() bool {
 	retC := C.gtk_gesture_is_recognized((*C.GtkGesture)(recv.native))
@@ -845,7 +885,9 @@ func (recv *Gesture) IsRecognized() bool {
 // gesture processes the event.
 /*
 
-C function : gtk_gesture_set_sequence_state
+C function
+
+gtk_gesture_set_sequence_state
 */
 func (recv *Gesture) SetSequenceState(sequence *gdk.EventSequence, state EventSequenceState) bool {
 	c_sequence := (*C.GdkEventSequence)(C.NULL)
@@ -866,7 +908,9 @@ func (recv *Gesture) SetSequenceState(sequence *gdk.EventSequence, state EventSe
 // for more details on sequence states.
 /*
 
-C function : gtk_gesture_set_state
+C function
+
+gtk_gesture_set_state
 */
 func (recv *Gesture) SetState(state EventSequenceState) bool {
 	c_state := (C.GtkEventSequenceState)(state)
@@ -882,7 +926,9 @@ func (recv *Gesture) SetState(state EventSequenceState) bool {
 // a child of it. @window must pertain to gtk_event_controller_get_widget().
 /*
 
-C function : gtk_gesture_set_window
+C function
+
+gtk_gesture_set_window
 */
 func (recv *Gesture) SetWindow(window *gdk.Window) {
 	c_window := (*C.GdkWindow)(C.NULL)
@@ -898,7 +944,9 @@ func (recv *Gesture) SetWindow(window *gdk.Window) {
 // Separates @gesture into an isolated group.
 /*
 
-C function : gtk_gesture_ungroup
+C function
+
+gtk_gesture_ungroup
 */
 func (recv *Gesture) Ungroup() {
 	C.gtk_gesture_ungroup((*C.GtkGesture)(recv.native))
@@ -915,7 +963,9 @@ func (recv *Gesture) Ungroup() {
 // Returns a newly created #GtkGesture that recognizes drags.
 /*
 
-C function : gtk_gesture_drag_new
+C function
+
+gtk_gesture_drag_new
 */
 func GestureDragNew(widget *Widget) *GestureDrag {
 	c_widget := (*C.GtkWidget)(C.NULL)
@@ -934,7 +984,9 @@ func GestureDragNew(widget *Widget) *GestureDrag {
 // as an offset to the starting drag point.
 /*
 
-C function : gtk_gesture_drag_get_offset
+C function
+
+gtk_gesture_drag_get_offset
 */
 func (recv *GestureDrag) GetOffset() (bool, float64, float64) {
 	var c_x C.gdouble
@@ -956,7 +1008,9 @@ func (recv *GestureDrag) GetOffset() (bool, float64, float64) {
 // in window-relative coordinates.
 /*
 
-C function : gtk_gesture_drag_get_start_point
+C function
+
+gtk_gesture_drag_get_start_point
 */
 func (recv *GestureDrag) GetStartPoint() (bool, float64, float64) {
 	var c_x C.gdouble
@@ -1035,7 +1089,9 @@ func gesturelongpress_cancelledHandler(_ *C.GObject, data C.gpointer) {
 // Returns a newly created #GtkGesture that recognizes long presses.
 /*
 
-C function : gtk_gesture_long_press_new
+C function
+
+gtk_gesture_long_press_new
 */
 func GestureLongPressNew(widget *Widget) *GestureLongPress {
 	c_widget := (*C.GtkWidget)(C.NULL)
@@ -1114,7 +1170,9 @@ func gesturemultipress_stoppedHandler(_ *C.GObject, data C.gpointer) {
 // presses.
 /*
 
-C function : gtk_gesture_multi_press_new
+C function
+
+gtk_gesture_multi_press_new
 */
 func GestureMultiPressNew(widget *Widget) *GestureMultiPress {
 	c_widget := (*C.GtkWidget)(C.NULL)
@@ -1137,7 +1195,9 @@ func GestureMultiPressNew(widget *Widget) *GestureMultiPress {
 // Returns a newly created #GtkGesture that recognizes pan gestures.
 /*
 
-C function : gtk_gesture_pan_new
+C function
+
+gtk_gesture_pan_new
 */
 func GesturePanNew(widget *Widget, orientation Orientation) *GesturePan {
 	c_widget := (*C.GtkWidget)(C.NULL)
@@ -1156,7 +1216,9 @@ func GesturePanNew(widget *Widget, orientation Orientation) *GesturePan {
 // Returns the orientation of the pan gestures that this @gesture expects.
 /*
 
-C function : gtk_gesture_pan_get_orientation
+C function
+
+gtk_gesture_pan_get_orientation
 */
 func (recv *GesturePan) GetOrientation() Orientation {
 	retC := C.gtk_gesture_pan_get_orientation((*C.GtkGesturePan)(recv.native))
@@ -1168,7 +1230,9 @@ func (recv *GesturePan) GetOrientation() Orientation {
 // Sets the orientation to be expected on pan gestures.
 /*
 
-C function : gtk_gesture_pan_set_orientation
+C function
+
+gtk_gesture_pan_set_orientation
 */
 func (recv *GesturePan) SetOrientation(orientation Orientation) {
 	c_orientation := (C.GtkOrientation)(orientation)
@@ -1184,7 +1248,9 @@ func (recv *GesturePan) SetOrientation(orientation Orientation) {
 // rotation gestures.
 /*
 
-C function : gtk_gesture_rotate_new
+C function
+
+gtk_gesture_rotate_new
 */
 func GestureRotateNew(widget *Widget) *GestureRotate {
 	c_widget := (*C.GtkWidget)(C.NULL)
@@ -1203,7 +1269,9 @@ func GestureRotateNew(widget *Widget) *GestureRotate {
 // not active, 0 is returned.
 /*
 
-C function : gtk_gesture_rotate_get_angle_delta
+C function
+
+gtk_gesture_rotate_get_angle_delta
 */
 func (recv *GestureRotate) GetAngleDelta() float64 {
 	retC := C.gtk_gesture_rotate_get_angle_delta((*C.GtkGestureRotate)(recv.native))
@@ -1216,7 +1284,9 @@ func (recv *GestureRotate) GetAngleDelta() float64 {
 // reacts to any button press.
 /*
 
-C function : gtk_gesture_single_get_button
+C function
+
+gtk_gesture_single_get_button
 */
 func (recv *GestureSingle) GetButton() uint32 {
 	retC := C.gtk_gesture_single_get_button((*C.GtkGestureSingle)(recv.native))
@@ -1229,7 +1299,9 @@ func (recv *GestureSingle) GetButton() uint32 {
 // is none.
 /*
 
-C function : gtk_gesture_single_get_current_button
+C function
+
+gtk_gesture_single_get_current_button
 */
 func (recv *GestureSingle) GetCurrentButton() uint32 {
 	retC := C.gtk_gesture_single_get_current_button((*C.GtkGestureSingle)(recv.native))
@@ -1242,7 +1314,9 @@ func (recv *GestureSingle) GetCurrentButton() uint32 {
 // This is only meaningful if gtk_gesture_is_active() returns %TRUE.
 /*
 
-C function : gtk_gesture_single_get_current_sequence
+C function
+
+gtk_gesture_single_get_current_sequence
 */
 func (recv *GestureSingle) GetCurrentSequence() *gdk.EventSequence {
 	retC := C.gtk_gesture_single_get_current_sequence((*C.GtkGestureSingle)(recv.native))
@@ -1260,7 +1334,9 @@ func (recv *GestureSingle) GetCurrentSequence() *gdk.EventSequence {
 // gtk_gesture_single_set_exclusive().
 /*
 
-C function : gtk_gesture_single_get_exclusive
+C function
+
+gtk_gesture_single_get_exclusive
 */
 func (recv *GestureSingle) GetExclusive() bool {
 	retC := C.gtk_gesture_single_get_exclusive((*C.GtkGestureSingle)(recv.native))
@@ -1272,7 +1348,9 @@ func (recv *GestureSingle) GetExclusive() bool {
 // Returns %TRUE if the gesture is only triggered by touch events.
 /*
 
-C function : gtk_gesture_single_get_touch_only
+C function
+
+gtk_gesture_single_get_touch_only
 */
 func (recv *GestureSingle) GetTouchOnly() bool {
 	retC := C.gtk_gesture_single_get_touch_only((*C.GtkGestureSingle)(recv.native))
@@ -1286,7 +1364,9 @@ func (recv *GestureSingle) GetTouchOnly() bool {
 // Touch events implicitly match with button 1.
 /*
 
-C function : gtk_gesture_single_set_button
+C function
+
+gtk_gesture_single_set_button
 */
 func (recv *GestureSingle) SetButton(button uint32) {
 	c_button := (C.guint)(button)
@@ -1302,7 +1382,9 @@ func (recv *GestureSingle) SetButton(button uint32) {
 // those.
 /*
 
-C function : gtk_gesture_single_set_exclusive
+C function
+
+gtk_gesture_single_set_exclusive
 */
 func (recv *GestureSingle) SetExclusive(exclusive bool) {
 	c_exclusive :=
@@ -1318,7 +1400,9 @@ func (recv *GestureSingle) SetExclusive(exclusive bool) {
 // mouse events will be handled too.
 /*
 
-C function : gtk_gesture_single_set_touch_only
+C function
+
+gtk_gesture_single_set_touch_only
 */
 func (recv *GestureSingle) SetTouchOnly(touchOnly bool) {
 	c_touch_only :=
@@ -1334,7 +1418,9 @@ func (recv *GestureSingle) SetTouchOnly(touchOnly bool) {
 // Returns a newly created #GtkGesture that recognizes swipes.
 /*
 
-C function : gtk_gesture_swipe_new
+C function
+
+gtk_gesture_swipe_new
 */
 func GestureSwipeNew(widget *Widget) *GestureSwipe {
 	c_widget := (*C.GtkWidget)(C.NULL)
@@ -1353,7 +1439,9 @@ func GestureSwipeNew(widget *Widget) *GestureSwipe {
 // last event(s) processed.
 /*
 
-C function : gtk_gesture_swipe_get_velocity
+C function
+
+gtk_gesture_swipe_get_velocity
 */
 func (recv *GestureSwipe) GetVelocity() (bool, float64, float64) {
 	var c_velocity_x C.gdouble
@@ -1376,7 +1464,9 @@ func (recv *GestureSwipe) GetVelocity() (bool, float64, float64) {
 // in/out gestures (usually known as pinch/zoom).
 /*
 
-C function : gtk_gesture_zoom_new
+C function
+
+gtk_gesture_zoom_new
 */
 func GestureZoomNew(widget *Widget) *GestureZoom {
 	c_widget := (*C.GtkWidget)(C.NULL)
@@ -1395,7 +1485,9 @@ func GestureZoomNew(widget *Widget) *GestureZoom {
 // considered 1:1). If @gesture is not active, 1 is returned.
 /*
 
-C function : gtk_gesture_zoom_get_scale_delta
+C function
+
+gtk_gesture_zoom_get_scale_delta
 */
 func (recv *GestureZoom) GetScaleDelta() float64 {
 	retC := C.gtk_gesture_zoom_get_scale_delta((*C.GtkGestureZoom)(recv.native))
@@ -1417,7 +1509,9 @@ func (recv *GestureZoom) GetScaleDelta() float64 {
 // of a subdirectory are also considered as ultimate fallback.
 /*
 
-C function : gtk_icon_theme_add_resource_path
+C function
+
+gtk_icon_theme_add_resource_path
 */
 func (recv *IconTheme) AddResourcePath(path string) {
 	c_path := C.CString(path)
@@ -1602,7 +1696,9 @@ func listbox_unselectAllHandler(_ *C.GObject, data C.gpointer) {
 // Creates a list of all selected children.
 /*
 
-C function : gtk_list_box_get_selected_rows
+C function
+
+gtk_list_box_get_selected_rows
 */
 func (recv *ListBox) GetSelectedRows() *glib.List {
 	retC := C.gtk_list_box_get_selected_rows((*C.GtkListBox)(recv.native))
@@ -1614,7 +1710,9 @@ func (recv *ListBox) GetSelectedRows() *glib.List {
 // Select all children of @box, if the selection mode allows it.
 /*
 
-C function : gtk_list_box_select_all
+C function
+
+gtk_list_box_select_all
 */
 func (recv *ListBox) SelectAll() {
 	C.gtk_list_box_select_all((*C.GtkListBox)(recv.native))
@@ -1627,7 +1725,9 @@ func (recv *ListBox) SelectAll() {
 // Unselect all children of @box, if the selection mode allows it.
 /*
 
-C function : gtk_list_box_unselect_all
+C function
+
+gtk_list_box_unselect_all
 */
 func (recv *ListBox) UnselectAll() {
 	C.gtk_list_box_unselect_all((*C.GtkListBox)(recv.native))
@@ -1638,7 +1738,9 @@ func (recv *ListBox) UnselectAll() {
 // Unselects a single row of @box, if the selection mode allows it.
 /*
 
-C function : gtk_list_box_unselect_row
+C function
+
+gtk_list_box_unselect_row
 */
 func (recv *ListBox) UnselectRow(row *ListBoxRow) {
 	c_row := (*C.GtkListBoxRow)(C.NULL)
@@ -1655,7 +1757,9 @@ func (recv *ListBox) UnselectRow(row *ListBoxRow) {
 // for this row.
 /*
 
-C function : gtk_list_box_row_get_activatable
+C function
+
+gtk_list_box_row_get_activatable
 */
 func (recv *ListBoxRow) GetActivatable() bool {
 	retC := C.gtk_list_box_row_get_activatable((*C.GtkListBoxRow)(recv.native))
@@ -1668,7 +1772,9 @@ func (recv *ListBoxRow) GetActivatable() bool {
 // for this row.
 /*
 
-C function : gtk_list_box_row_get_selectable
+C function
+
+gtk_list_box_row_get_selectable
 */
 func (recv *ListBoxRow) GetSelectable() bool {
 	retC := C.gtk_list_box_row_get_selectable((*C.GtkListBoxRow)(recv.native))
@@ -1681,7 +1787,9 @@ func (recv *ListBoxRow) GetSelectable() bool {
 // #GtkListBox container.
 /*
 
-C function : gtk_list_box_row_is_selected
+C function
+
+gtk_list_box_row_is_selected
 */
 func (recv *ListBoxRow) IsSelected() bool {
 	retC := C.gtk_list_box_row_is_selected((*C.GtkListBoxRow)(recv.native))
@@ -1693,7 +1801,9 @@ func (recv *ListBoxRow) IsSelected() bool {
 // Set the #GtkListBoxRow:activatable property for this row.
 /*
 
-C function : gtk_list_box_row_set_activatable
+C function
+
+gtk_list_box_row_set_activatable
 */
 func (recv *ListBoxRow) SetActivatable(activatable bool) {
 	c_activatable :=
@@ -1707,7 +1817,9 @@ func (recv *ListBoxRow) SetActivatable(activatable bool) {
 // Set the #GtkListBoxRow:selectable property for this row.
 /*
 
-C function : gtk_list_box_row_set_selectable
+C function
+
+gtk_list_box_row_set_selectable
 */
 func (recv *ListBoxRow) SetSelectable(selectable bool) {
 	c_selectable :=
@@ -1778,7 +1890,9 @@ func placessidebar_showEnterLocationHandler(_ *C.GObject, data C.gpointer) {
 // Returns the value previously set with gtk_places_sidebar_set_show_enter_location()
 /*
 
-C function : gtk_places_sidebar_get_show_enter_location
+C function
+
+gtk_places_sidebar_get_show_enter_location
 */
 func (recv *PlacesSidebar) GetShowEnterLocation() bool {
 	retC := C.gtk_places_sidebar_get_show_enter_location((*C.GtkPlacesSidebar)(recv.native))
@@ -1795,7 +1909,9 @@ func (recv *PlacesSidebar) GetShowEnterLocation() bool {
 // #GtkPlacesSidebar::show-enter-location signal.
 /*
 
-C function : gtk_places_sidebar_set_show_enter_location
+C function
+
+gtk_places_sidebar_set_show_enter_location
 */
 func (recv *PlacesSidebar) SetShowEnterLocation(showEnterLocation bool) {
 	c_show_enter_location :=
@@ -1871,7 +1987,9 @@ func switch_stateSetHandler(_ *C.GObject, c_state C.gboolean, data C.gpointer) C
 // Gets the underlying state of the #GtkSwitch.
 /*
 
-C function : gtk_switch_get_state
+C function
+
+gtk_switch_get_state
 */
 func (recv *Switch) GetState() bool {
 	retC := C.gtk_switch_get_state((*C.GtkSwitch)(recv.native))
@@ -1889,7 +2007,9 @@ func (recv *Switch) GetState() bool {
 // See #GtkSwitch::state-set for details.
 /*
 
-C function : gtk_switch_set_state
+C function
+
+gtk_switch_set_state
 */
 func (recv *Switch) SetState(state bool) {
 	c_state :=

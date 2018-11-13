@@ -16,7 +16,9 @@ import "C"
 // Create a new gravity hint attribute.
 /*
 
-C function : pango_attr_gravity_hint_new
+C function
+
+pango_attr_gravity_hint_new
 */
 func AttrGravityHintNew(hint GravityHint) *Attribute {
 	c_hint := (C.PangoGravityHint)(hint)
@@ -30,7 +32,9 @@ func AttrGravityHintNew(hint GravityHint) *Attribute {
 // Create a new gravity attribute.
 /*
 
-C function : pango_attr_gravity_new
+C function
+
+pango_attr_gravity_new
 */
 func AttrGravityNew(gravity Gravity) *Attribute {
 	c_gravity := (C.PangoGravity)(gravity)
@@ -58,7 +62,9 @@ func AttrGravityNew(gravity Gravity) *Attribute {
 // as @nearest.
 /*
 
-C function : pango_extents_to_pixels
+C function
+
+pango_extents_to_pixels
 */
 func ExtentsToPixels(inclusive *Rectangle, nearest *Rectangle) {
 	c_inclusive := (*C.PangoRectangle)(C.NULL)
@@ -80,7 +86,9 @@ func ExtentsToPixels(inclusive *Rectangle, nearest *Rectangle) {
 // in a #PangoMatrix.
 /*
 
-C function : pango_gravity_get_for_matrix
+C function
+
+pango_gravity_get_for_matrix
 */
 func GravityGetForMatrix(matrix *Matrix) Gravity {
 	c_matrix := (*C.PangoMatrix)(C.NULL)
@@ -102,7 +110,9 @@ func GravityGetForMatrix(matrix *Matrix) Gravity {
 // pass %PANGO_GRAVITY_AUTO and %PANGO_GRAVITY_HINT_STRONG in.
 /*
 
-C function : pango_gravity_get_for_script
+C function
+
+pango_gravity_get_for_script
 */
 func GravityGetForScript(script Script, baseGravity Gravity, hint GravityHint) Gravity {
 	c_script := (C.PangoScript)(script)
@@ -125,7 +135,9 @@ func GravityGetForScript(script Script, baseGravity Gravity, hint GravityHint) G
 // you should multiply it by (180. / G_PI).
 /*
 
-C function : pango_gravity_to_rotation
+C function
+
+pango_gravity_to_rotation
 */
 func GravityToRotation(gravity Gravity) float64 {
 	c_gravity := (C.PangoGravity)(gravity)
@@ -164,7 +176,9 @@ func GravityToRotation(gravity Gravity) float64 {
 // See <literal>man setlocale</literal> for more details.
 /*
 
-C function : pango_language_get_default
+C function
+
+pango_language_get_default
 */
 func LanguageGetDefault() *Language {
 	retC := C.pango_language_get_default()
@@ -184,7 +198,9 @@ func LanguageGetDefault() *Language {
 // returned string should be freed using g_free().
 /*
 
-C function : pango_parse_enum
+C function
+
+pango_parse_enum
 */
 func ParseEnum(type_ gobject.Type, str string, warn bool) (bool, int32, string) {
 	c_type := (C.GType)(type_)
@@ -214,7 +230,9 @@ func ParseEnum(type_ gobject.Type, str string, warn bool) (bool, int32, string) 
 // it by %PANGO_SCALE and rounds to nearest integer.
 /*
 
-C function : pango_units_from_double
+C function
+
+pango_units_from_double
 */
 func UnitsFromDouble(d float64) int32 {
 	c_d := (C.double)(d)
@@ -229,7 +247,9 @@ func UnitsFromDouble(d float64) int32 {
 // it by %PANGO_SCALE.
 /*
 
-C function : pango_units_to_double
+C function
+
+pango_units_to_double
 */
 func UnitsToDouble(i int32) float64 {
 	c_i := (C.int)(i)
@@ -248,7 +268,9 @@ func UnitsToDouble(i int32) float64 {
 // PANGO_VERSION_ENCODE().
 /*
 
-C function : pango_version
+C function
+
+pango_version
 */
 func Version() int32 {
 	retC := C.pango_version()
@@ -274,7 +296,9 @@ func Version() int32 {
 // For compile-time version checking use PANGO_VERSION_CHECK().
 /*
 
-C function : pango_version_check
+C function
+
+pango_version_check
 */
 func VersionCheck(requiredMajor int32, requiredMinor int32, requiredMicro int32) string {
 	c_required_major := (C.int)(requiredMajor)
@@ -294,7 +318,9 @@ func VersionCheck(requiredMajor int32, requiredMinor int32, requiredMicro int32)
 // the version available at compile-time.
 /*
 
-C function : pango_version_string
+C function
+
+pango_version_string
 */
 func VersionString() string {
 	retC := C.pango_version_string()

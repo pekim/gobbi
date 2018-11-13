@@ -24,7 +24,9 @@ import "C"
 // See g_app_info_delete().
 /*
 
-C function : g_app_info_can_delete
+C function
+
+g_app_info_can_delete
 */
 func (recv *AppInfo) CanDelete() bool {
 	retC := C.g_app_info_can_delete((*C.GAppInfo)(recv.native))
@@ -40,7 +42,9 @@ func (recv *AppInfo) CanDelete() bool {
 // See g_app_info_can_delete().
 /*
 
-C function : g_app_info_delete
+C function
+
+g_app_info_delete
 */
 func (recv *AppInfo) Delete() bool {
 	retC := C.g_app_info_delete((*C.GAppInfo)(recv.native))
@@ -53,7 +57,9 @@ func (recv *AppInfo) Delete() bool {
 // started.
 /*
 
-C function : g_app_info_get_commandline
+C function
+
+g_app_info_get_commandline
 */
 func (recv *AppInfo) GetCommandline() string {
 	retC := C.g_app_info_get_commandline((*C.GAppInfo)(recv.native))
@@ -80,7 +86,9 @@ func (recv *AppInfo) GetCommandline() string {
 // simply the name (such as `network-server`).
 /*
 
-C function : g_icon_to_string
+C function
+
+g_icon_to_string
 */
 func (recv *Icon) ToString() string {
 	retC := C.g_icon_to_string((*C.GIcon)(recv.native))
@@ -115,7 +123,9 @@ func (recv *Icon) ToString() string {
 // activation root on a #GVolume is set.
 /*
 
-C function : g_mount_is_shadowed
+C function
+
+g_mount_is_shadowed
 */
 func (recv *Mount) IsShadowed() bool {
 	retC := C.g_mount_is_shadowed((*C.GMount)(recv.native))
@@ -130,7 +140,9 @@ func (recv *Mount) IsShadowed() bool {
 // will need to emit the #GMount::changed signal on @mount manually.
 /*
 
-C function : g_mount_shadow
+C function
+
+g_mount_shadow
 */
 func (recv *Mount) Shadow() {
 	C.g_mount_shadow((*C.GMount)(recv.native))
@@ -144,7 +156,9 @@ func (recv *Mount) Shadow() {
 // will need to emit the #GMount::changed signal on @mount manually.
 /*
 
-C function : g_mount_unshadow
+C function
+
+g_mount_unshadow
 */
 func (recv *Mount) Unshadow() {
 	C.g_mount_unshadow((*C.GMount)(recv.native))

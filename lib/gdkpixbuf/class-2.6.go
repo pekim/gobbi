@@ -27,7 +27,9 @@ import "C"
 // allowed since 2.8.
 /*
 
-C function : gdk_pixbuf_new_from_file_at_scale
+C function
+
+gdk_pixbuf_new_from_file_at_scale
 */
 func PixbufNewFromFileAtScale(filename string, width int32, height int32, preserveAspectRatio bool) (*Pixbuf, error) {
 	c_filename := C.CString(filename)
@@ -57,7 +59,9 @@ func PixbufNewFromFileAtScale(filename string, width int32, height int32, preser
 // result in a new pixbuf.
 /*
 
-C function : gdk_pixbuf_flip
+C function
+
+gdk_pixbuf_flip
 */
 func (recv *Pixbuf) Flip(horizontal bool) *Pixbuf {
 	c_horizontal :=
@@ -80,7 +84,9 @@ func (recv *Pixbuf) Flip(horizontal bool) *Pixbuf {
 // If @angle is 0, a copy of @src is returned, avoiding any rotation.
 /*
 
-C function : gdk_pixbuf_rotate_simple
+C function
+
+gdk_pixbuf_rotate_simple
 */
 func (recv *Pixbuf) RotateSimple(angle PixbufRotation) *Pixbuf {
 	c_angle := (C.GdkPixbufRotation)(angle)

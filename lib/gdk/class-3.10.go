@@ -29,7 +29,9 @@ import "C"
 // sufficently new version of the X Render extension.
 /*
 
-C function : gdk_cursor_new_from_surface
+C function
+
+gdk_cursor_new_from_surface
 */
 func CursorNewFromSurface(display *Display, surface *cairo.Surface, x float64, y float64) *Cursor {
 	c_display := (*C.GdkDisplay)(C.NULL)
@@ -59,7 +61,9 @@ func CursorNewFromSurface(display *Display, surface *cairo.Surface, x float64, y
 // case, %NULL is returned.
 /*
 
-C function : gdk_cursor_get_surface
+C function
+
+gdk_cursor_get_surface
 */
 func (recv *Cursor) GetSurface() (*cairo.Surface, float64, float64) {
 	var c_x_hot C.gdouble
@@ -87,7 +91,9 @@ func (recv *Cursor) GetSurface() (*cairo.Surface, float64, float64) {
 // unless there is an ongoing grab on them. See gdk_device_grab().
 /*
 
-C function : gdk_device_get_position_double
+C function
+
+gdk_device_get_position_double
 */
 func (recv *Device) GetPositionDouble() (*Screen, float64, float64) {
 	var c_screen *C.GdkScreen
@@ -116,7 +122,9 @@ func (recv *Device) GetPositionDouble() (*Screen, float64, float64) {
 // where it is better to use gdk_window_get_scale_factor() instead.
 /*
 
-C function : gdk_screen_get_monitor_scale_factor
+C function
+
+gdk_screen_get_monitor_scale_factor
 */
 func (recv *Screen) GetMonitorScaleFactor(monitorNum int32) int32 {
 	c_monitor_num := (C.gint)(monitorNum)
@@ -139,7 +147,9 @@ func (recv *Screen) GetMonitorScaleFactor(monitorNum int32) int32 {
 // lowest window is first.
 /*
 
-C function : gdk_window_get_children_with_user_data
+C function
+
+gdk_window_get_children_with_user_data
 */
 func (recv *Window) GetChildrenWithUserData(userData uintptr) *glib.List {
 	c_user_data := (C.gpointer)(userData)
@@ -166,7 +176,9 @@ func (recv *Window) GetChildrenWithUserData(userData uintptr) *glib.List {
 // a configure event will be sent to the toplevel window.
 /*
 
-C function : gdk_window_get_scale_factor
+C function
+
+gdk_window_get_scale_factor
 */
 func (recv *Window) GetScaleFactor() int32 {
 	retC := C.gdk_window_get_scale_factor((*C.GdkWindow)(recv.native))
@@ -192,7 +204,9 @@ func (recv *Window) GetScaleFactor() int32 {
 // property in your #GtkWidget::style-updated handler.
 /*
 
-C function : gdk_window_set_opaque_region
+C function
+
+gdk_window_set_opaque_region
 */
 func (recv *Window) SetOpaqueRegion(region *cairo.Region) {
 	c_region := (*C.cairo_region_t)(C.NULL)

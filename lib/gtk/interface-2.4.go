@@ -23,7 +23,9 @@ import "C"
 // “text” attribute of a #GtkCellRendererText get its values from column 2.
 /*
 
-C function : gtk_cell_layout_add_attribute
+C function
+
+gtk_cell_layout_add_attribute
 */
 func (recv *CellLayout) AddAttribute(cell *CellRenderer, attribute string, column int32) {
 	c_cell := (*C.GtkCellRenderer)(C.NULL)
@@ -45,7 +47,9 @@ func (recv *CellLayout) AddAttribute(cell *CellRenderer, attribute string, colum
 // removes all renderers from @cell_layout.
 /*
 
-C function : gtk_cell_layout_clear
+C function
+
+gtk_cell_layout_clear
 */
 func (recv *CellLayout) Clear() {
 	C.gtk_cell_layout_clear((*C.GtkCellLayout)(recv.native))
@@ -57,7 +61,9 @@ func (recv *CellLayout) Clear() {
 // gtk_cell_layout_set_attributes().
 /*
 
-C function : gtk_cell_layout_clear_attributes
+C function
+
+gtk_cell_layout_clear_attributes
 */
 func (recv *CellLayout) ClearAttributes(cell *CellRenderer) {
 	c_cell := (*C.GtkCellRenderer)(C.NULL)
@@ -77,7 +83,9 @@ func (recv *CellLayout) ClearAttributes(cell *CellRenderer) {
 // Note that reusing the same cell renderer is not supported.
 /*
 
-C function : gtk_cell_layout_pack_end
+C function
+
+gtk_cell_layout_pack_end
 */
 func (recv *CellLayout) PackEnd(cell *CellRenderer, expand bool) {
 	c_cell := (*C.GtkCellRenderer)(C.NULL)
@@ -100,7 +108,9 @@ func (recv *CellLayout) PackEnd(cell *CellRenderer, expand bool) {
 // Note that reusing the same cell renderer is not supported.
 /*
 
-C function : gtk_cell_layout_pack_start
+C function
+
+gtk_cell_layout_pack_start
 */
 func (recv *CellLayout) PackStart(cell *CellRenderer, expand bool) {
 	c_cell := (*C.GtkCellRenderer)(C.NULL)
@@ -122,7 +132,9 @@ func (recv *CellLayout) PackStart(cell *CellRenderer, expand bool) {
 // for this to function properly.
 /*
 
-C function : gtk_cell_layout_reorder
+C function
+
+gtk_cell_layout_reorder
 */
 func (recv *CellLayout) Reorder(cell *CellRenderer, position int32) {
 	c_cell := (*C.GtkCellRenderer)(C.NULL)
@@ -149,7 +161,9 @@ func (recv *CellLayout) Reorder(cell *CellRenderer, position int32) {
 // ref and sink it if you want to keep a reference.
 /*
 
-C function : gtk_file_chooser_add_filter
+C function
+
+gtk_file_chooser_add_filter
 */
 func (recv *FileChooser) AddFilter(filter *FileFilter) {
 	c_filter := (*C.GtkFileFilter)(C.NULL)
@@ -168,7 +182,9 @@ func (recv *FileChooser) AddFilter(filter *FileFilter) {
 // “/usr/share/mydrawprogram/Clipart” folder to the volume list.
 /*
 
-C function : gtk_file_chooser_add_shortcut_folder
+C function
+
+gtk_file_chooser_add_shortcut_folder
 */
 func (recv *FileChooser) AddShortcutFolder(folder string) (bool, error) {
 	c_folder := C.CString(folder)
@@ -193,7 +209,9 @@ func (recv *FileChooser) AddShortcutFolder(folder string) (bool, error) {
 // “file:///usr/share/mydrawprogram/Clipart” folder to the volume list.
 /*
 
-C function : gtk_file_chooser_add_shortcut_folder_uri
+C function
+
+gtk_file_chooser_add_shortcut_folder_uri
 */
 func (recv *FileChooser) AddShortcutFolderUri(uri string) (bool, error) {
 	c_uri := C.CString(uri)
@@ -216,7 +234,9 @@ func (recv *FileChooser) AddShortcutFolderUri(uri string) (bool, error) {
 // gtk_file_chooser_set_action().
 /*
 
-C function : gtk_file_chooser_get_action
+C function
+
+gtk_file_chooser_get_action
 */
 func (recv *FileChooser) GetAction() FileChooserAction {
 	retC := C.gtk_file_chooser_get_action((*C.GtkFileChooser)(recv.native))
@@ -237,7 +257,9 @@ func (recv *FileChooser) GetAction() FileChooserAction {
 // usual way to get the selection.
 /*
 
-C function : gtk_file_chooser_get_current_folder
+C function
+
+gtk_file_chooser_get_current_folder
 */
 func (recv *FileChooser) GetCurrentFolder() string {
 	retC := C.gtk_file_chooser_get_current_folder((*C.GtkFileChooser)(recv.native))
@@ -259,7 +281,9 @@ func (recv *FileChooser) GetCurrentFolder() string {
 // usual way to get the selection.
 /*
 
-C function : gtk_file_chooser_get_current_folder_uri
+C function
+
+gtk_file_chooser_get_current_folder_uri
 */
 func (recv *FileChooser) GetCurrentFolderUri() string {
 	retC := C.gtk_file_chooser_get_current_folder_uri((*C.GtkFileChooser)(recv.native))
@@ -273,7 +297,9 @@ func (recv *FileChooser) GetCurrentFolderUri() string {
 // gtk_file_chooser_set_extra_widget().
 /*
 
-C function : gtk_file_chooser_get_extra_widget
+C function
+
+gtk_file_chooser_get_extra_widget
 */
 func (recv *FileChooser) GetExtraWidget() *Widget {
 	retC := C.gtk_file_chooser_get_extra_widget((*C.GtkFileChooser)(recv.native))
@@ -296,7 +322,9 @@ func (recv *FileChooser) GetExtraWidget() *Widget {
 // folder.
 /*
 
-C function : gtk_file_chooser_get_filename
+C function
+
+gtk_file_chooser_get_filename
 */
 func (recv *FileChooser) GetFilename() string {
 	retC := C.gtk_file_chooser_get_filename((*C.GtkFileChooser)(recv.native))
@@ -312,7 +340,9 @@ func (recv *FileChooser) GetFilename() string {
 // gtk_file_chooser_get_uris())
 /*
 
-C function : gtk_file_chooser_get_filenames
+C function
+
+gtk_file_chooser_get_filenames
 */
 func (recv *FileChooser) GetFilenames() *glib.SList {
 	retC := C.gtk_file_chooser_get_filenames((*C.GtkFileChooser)(recv.native))
@@ -324,7 +354,9 @@ func (recv *FileChooser) GetFilenames() *glib.SList {
 // Gets the current filter; see gtk_file_chooser_set_filter().
 /*
 
-C function : gtk_file_chooser_get_filter
+C function
+
+gtk_file_chooser_get_filter
 */
 func (recv *FileChooser) GetFilter() *FileFilter {
 	retC := C.gtk_file_chooser_get_filter((*C.GtkFileChooser)(recv.native))
@@ -342,7 +374,9 @@ func (recv *FileChooser) GetFilter() *FileFilter {
 // file selector. See gtk_file_chooser_set_local_only()
 /*
 
-C function : gtk_file_chooser_get_local_only
+C function
+
+gtk_file_chooser_get_local_only
 */
 func (recv *FileChooser) GetLocalOnly() bool {
 	retC := C.gtk_file_chooser_get_local_only((*C.GtkFileChooser)(recv.native))
@@ -355,7 +389,9 @@ func (recv *FileChooser) GetLocalOnly() bool {
 // widget. See gtk_file_chooser_set_preview_widget().
 /*
 
-C function : gtk_file_chooser_get_preview_filename
+C function
+
+gtk_file_chooser_get_preview_filename
 */
 func (recv *FileChooser) GetPreviewFilename() string {
 	retC := C.gtk_file_chooser_get_preview_filename((*C.GtkFileChooser)(recv.native))
@@ -369,7 +405,9 @@ func (recv *FileChooser) GetPreviewFilename() string {
 // widget. See gtk_file_chooser_set_preview_widget().
 /*
 
-C function : gtk_file_chooser_get_preview_uri
+C function
+
+gtk_file_chooser_get_preview_uri
 */
 func (recv *FileChooser) GetPreviewUri() string {
 	retC := C.gtk_file_chooser_get_preview_uri((*C.GtkFileChooser)(recv.native))
@@ -383,7 +421,9 @@ func (recv *FileChooser) GetPreviewUri() string {
 // gtk_file_chooser_set_preview_widget().
 /*
 
-C function : gtk_file_chooser_get_preview_widget
+C function
+
+gtk_file_chooser_get_preview_widget
 */
 func (recv *FileChooser) GetPreviewWidget() *Widget {
 	retC := C.gtk_file_chooser_get_preview_widget((*C.GtkFileChooser)(recv.native))
@@ -402,7 +442,9 @@ func (recv *FileChooser) GetPreviewWidget() *Widget {
 // gtk_file_chooser_set_preview_widget_active().
 /*
 
-C function : gtk_file_chooser_get_preview_widget_active
+C function
+
+gtk_file_chooser_get_preview_widget_active
 */
 func (recv *FileChooser) GetPreviewWidgetActive() bool {
 	retC := C.gtk_file_chooser_get_preview_widget_active((*C.GtkFileChooser)(recv.native))
@@ -415,7 +457,9 @@ func (recv *FileChooser) GetPreviewWidgetActive() bool {
 // selector. See gtk_file_chooser_set_select_multiple().
 /*
 
-C function : gtk_file_chooser_get_select_multiple
+C function
+
+gtk_file_chooser_get_select_multiple
 */
 func (recv *FileChooser) GetSelectMultiple() bool {
 	retC := C.gtk_file_chooser_get_select_multiple((*C.GtkFileChooser)(recv.native))
@@ -432,7 +476,9 @@ func (recv *FileChooser) GetSelectMultiple() bool {
 // folder.
 /*
 
-C function : gtk_file_chooser_get_uri
+C function
+
+gtk_file_chooser_get_uri
 */
 func (recv *FileChooser) GetUri() string {
 	retC := C.gtk_file_chooser_get_uri((*C.GtkFileChooser)(recv.native))
@@ -446,7 +492,9 @@ func (recv *FileChooser) GetUri() string {
 // @chooser. The returned names are full absolute URIs.
 /*
 
-C function : gtk_file_chooser_get_uris
+C function
+
+gtk_file_chooser_get_uris
 */
 func (recv *FileChooser) GetUris() *glib.SList {
 	retC := C.gtk_file_chooser_get_uris((*C.GtkFileChooser)(recv.native))
@@ -459,7 +507,9 @@ func (recv *FileChooser) GetUris() *glib.SList {
 // gtk_file_chooser_add_filter(), gtk_file_chooser_remove_filter().
 /*
 
-C function : gtk_file_chooser_list_filters
+C function
+
+gtk_file_chooser_list_filters
 */
 func (recv *FileChooser) ListFilters() *glib.SList {
 	retC := C.gtk_file_chooser_list_filters((*C.GtkFileChooser)(recv.native))
@@ -472,7 +522,9 @@ func (recv *FileChooser) ListFilters() *glib.SList {
 // gtk_file_chooser_add_shortcut_folder_uri().
 /*
 
-C function : gtk_file_chooser_list_shortcut_folder_uris
+C function
+
+gtk_file_chooser_list_shortcut_folder_uris
 */
 func (recv *FileChooser) ListShortcutFolderUris() *glib.SList {
 	retC := C.gtk_file_chooser_list_shortcut_folder_uris((*C.GtkFileChooser)(recv.native))
@@ -490,7 +542,9 @@ func (recv *FileChooser) ListShortcutFolderUris() *glib.SList {
 // gtk_file_chooser_add_shortcut_folder().
 /*
 
-C function : gtk_file_chooser_list_shortcut_folders
+C function
+
+gtk_file_chooser_list_shortcut_folders
 */
 func (recv *FileChooser) ListShortcutFolders() *glib.SList {
 	retC := C.gtk_file_chooser_list_shortcut_folders((*C.GtkFileChooser)(recv.native))
@@ -507,7 +561,9 @@ func (recv *FileChooser) ListShortcutFolders() *glib.SList {
 // Removes @filter from the list of filters that the user can select between.
 /*
 
-C function : gtk_file_chooser_remove_filter
+C function
+
+gtk_file_chooser_remove_filter
 */
 func (recv *FileChooser) RemoveFilter(filter *FileFilter) {
 	c_filter := (*C.GtkFileFilter)(C.NULL)
@@ -523,7 +579,9 @@ func (recv *FileChooser) RemoveFilter(filter *FileFilter) {
 // Removes a folder from a file chooser’s list of shortcut folders.
 /*
 
-C function : gtk_file_chooser_remove_shortcut_folder
+C function
+
+gtk_file_chooser_remove_shortcut_folder
 */
 func (recv *FileChooser) RemoveShortcutFolder(folder string) (bool, error) {
 	c_folder := C.CString(folder)
@@ -545,7 +603,9 @@ func (recv *FileChooser) RemoveShortcutFolder(folder string) (bool, error) {
 // Removes a folder URI from a file chooser’s list of shortcut folders.
 /*
 
-C function : gtk_file_chooser_remove_shortcut_folder_uri
+C function
+
+gtk_file_chooser_remove_shortcut_folder_uri
 */
 func (recv *FileChooser) RemoveShortcutFolderUri(uri string) (bool, error) {
 	c_uri := C.CString(uri)
@@ -567,7 +627,9 @@ func (recv *FileChooser) RemoveShortcutFolderUri(uri string) (bool, error) {
 // Selects all the files in the current folder of a file chooser.
 /*
 
-C function : gtk_file_chooser_select_all
+C function
+
+gtk_file_chooser_select_all
 */
 func (recv *FileChooser) SelectAll() {
 	C.gtk_file_chooser_select_all((*C.GtkFileChooser)(recv.native))
@@ -580,7 +642,9 @@ func (recv *FileChooser) SelectAll() {
 // be changed to the folder containing @filename.
 /*
 
-C function : gtk_file_chooser_select_filename
+C function
+
+gtk_file_chooser_select_filename
 */
 func (recv *FileChooser) SelectFilename(filename string) bool {
 	c_filename := C.CString(filename)
@@ -597,7 +661,9 @@ func (recv *FileChooser) SelectFilename(filename string) bool {
 // @chooser will be changed to the folder containing @filename.
 /*
 
-C function : gtk_file_chooser_select_uri
+C function
+
+gtk_file_chooser_select_uri
 */
 func (recv *FileChooser) SelectUri(uri string) bool {
 	c_uri := C.CString(uri)
@@ -616,7 +682,9 @@ func (recv *FileChooser) SelectUri(uri string) bool {
 // %GTK_FILE_CHOOSER_ACTION_OPEN.
 /*
 
-C function : gtk_file_chooser_set_action
+C function
+
+gtk_file_chooser_set_action
 */
 func (recv *FileChooser) SetAction(action FileChooserAction) {
 	c_action := (C.GtkFileChooserAction)(action)
@@ -635,7 +703,9 @@ func (recv *FileChooser) SetAction(action FileChooserAction) {
 // for the rationale behind this.
 /*
 
-C function : gtk_file_chooser_set_current_folder
+C function
+
+gtk_file_chooser_set_current_folder
 */
 func (recv *FileChooser) SetCurrentFolder(filename string) bool {
 	c_filename := C.CString(filename)
@@ -656,7 +726,9 @@ func (recv *FileChooser) SetCurrentFolder(filename string) bool {
 // for the rationale behind this.
 /*
 
-C function : gtk_file_chooser_set_current_folder_uri
+C function
+
+gtk_file_chooser_set_current_folder_uri
 */
 func (recv *FileChooser) SetCurrentFolderUri(uri string) bool {
 	c_uri := C.CString(uri)
@@ -680,7 +752,9 @@ func (recv *FileChooser) SetCurrentFolderUri(uri string) bool {
 // gtk_file_chooser_set_current_name() as well.
 /*
 
-C function : gtk_file_chooser_set_current_name
+C function
+
+gtk_file_chooser_set_current_name
 */
 func (recv *FileChooser) SetCurrentName(name string) {
 	c_name := C.CString(name)
@@ -694,7 +768,9 @@ func (recv *FileChooser) SetCurrentName(name string) {
 // Sets an application-supplied widget to provide extra options to the user.
 /*
 
-C function : gtk_file_chooser_set_extra_widget
+C function
+
+gtk_file_chooser_set_extra_widget
 */
 func (recv *FileChooser) SetExtraWidget(extraWidget *Widget) {
 	c_extra_widget := (*C.GtkWidget)(C.NULL)
@@ -741,7 +817,9 @@ func (recv *FileChooser) SetExtraWidget(extraWidget *Widget) {
 // is already known, so the file chooser will use it.
 /*
 
-C function : gtk_file_chooser_set_filename
+C function
+
+gtk_file_chooser_set_filename
 */
 func (recv *FileChooser) SetFilename(filename string) bool {
 	c_filename := C.CString(filename)
@@ -761,7 +839,9 @@ func (recv *FileChooser) SetFilename(filename string) bool {
 // set of files without letting the user change it.
 /*
 
-C function : gtk_file_chooser_set_filter
+C function
+
+gtk_file_chooser_set_filter
 */
 func (recv *FileChooser) SetFilter(filter *FileFilter) {
 	c_filter := (*C.GtkFileFilter)(C.NULL)
@@ -789,7 +869,9 @@ func (recv *FileChooser) SetFilter(filter *FileFilter) {
 // filesystem (FUSE).
 /*
 
-C function : gtk_file_chooser_set_local_only
+C function
+
+gtk_file_chooser_set_local_only
 */
 func (recv *FileChooser) SetLocalOnly(localOnly bool) {
 	c_local_only :=
@@ -814,7 +896,9 @@ func (recv *FileChooser) SetLocalOnly(localOnly bool) {
 // will display no preview at all.
 /*
 
-C function : gtk_file_chooser_set_preview_widget
+C function
+
+gtk_file_chooser_set_preview_widget
 */
 func (recv *FileChooser) SetPreviewWidget(previewWidget *Widget) {
 	c_preview_widget := (*C.GtkWidget)(C.NULL)
@@ -835,7 +919,9 @@ func (recv *FileChooser) SetPreviewWidget(previewWidget *Widget) {
 // gtk_file_chooser_set_preview_widget() for more details.
 /*
 
-C function : gtk_file_chooser_set_preview_widget_active
+C function
+
+gtk_file_chooser_set_preview_widget_active
 */
 func (recv *FileChooser) SetPreviewWidgetActive(active bool) {
 	c_active :=
@@ -851,7 +937,9 @@ func (recv *FileChooser) SetPreviewWidgetActive(active bool) {
 // %GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER.
 /*
 
-C function : gtk_file_chooser_set_select_multiple
+C function
+
+gtk_file_chooser_set_select_multiple
 */
 func (recv *FileChooser) SetSelectMultiple(selectMultiple bool) {
 	c_select_multiple :=
@@ -896,7 +984,9 @@ func (recv *FileChooser) SetSelectMultiple(selectMultiple bool) {
 // is already known, so the file chooser will use it.
 /*
 
-C function : gtk_file_chooser_set_uri
+C function
+
+gtk_file_chooser_set_uri
 */
 func (recv *FileChooser) SetUri(uri string) bool {
 	c_uri := C.CString(uri)
@@ -916,7 +1006,9 @@ func (recv *FileChooser) SetUri(uri string) bool {
 // See also: gtk_file_chooser_set_preview_widget()
 /*
 
-C function : gtk_file_chooser_set_use_preview_label
+C function
+
+gtk_file_chooser_set_use_preview_label
 */
 func (recv *FileChooser) SetUsePreviewLabel(useLabel bool) {
 	c_use_label :=
@@ -930,7 +1022,9 @@ func (recv *FileChooser) SetUsePreviewLabel(useLabel bool) {
 // Unselects all the files in the current folder of a file chooser.
 /*
 
-C function : gtk_file_chooser_unselect_all
+C function
+
+gtk_file_chooser_unselect_all
 */
 func (recv *FileChooser) UnselectAll() {
 	C.gtk_file_chooser_unselect_all((*C.GtkFileChooser)(recv.native))
@@ -943,7 +1037,9 @@ func (recv *FileChooser) UnselectAll() {
 // is otherwise not currently selected, does nothing.
 /*
 
-C function : gtk_file_chooser_unselect_filename
+C function
+
+gtk_file_chooser_unselect_filename
 */
 func (recv *FileChooser) UnselectFilename(filename string) {
 	c_filename := C.CString(filename)
@@ -959,7 +1055,9 @@ func (recv *FileChooser) UnselectFilename(filename string) {
 // is otherwise not currently selected, does nothing.
 /*
 
-C function : gtk_file_chooser_unselect_uri
+C function
+
+gtk_file_chooser_unselect_uri
 */
 func (recv *FileChooser) UnselectUri(uri string) {
 	c_uri := C.CString(uri)
@@ -974,7 +1072,9 @@ func (recv *FileChooser) UnselectUri(uri string) {
 // and @root as the virtual root.
 /*
 
-C function : gtk_tree_model_filter_new
+C function
+
+gtk_tree_model_filter_new
 */
 func (recv *TreeModel) FilterNew(root *TreePath) *TreeModel {
 	c_root := (*C.GtkTreePath)(C.NULL)

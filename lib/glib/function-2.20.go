@@ -31,7 +31,9 @@ import "C"
 // #GPollFDs with g_io_channel_win32_make_pollfd().
 /*
 
-C function : g_poll
+C function
+
+g_poll
 */
 func Poll(fds *PollFD, nfds uint32, timeout int32) int32 {
 	c_fds := (*C.GPollFD)(C.NULL)

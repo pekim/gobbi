@@ -35,7 +35,9 @@ import "C"
 // the invoking process rather than the local process.
 /*
 
-C function : g_application_command_line_create_file_for_arg
+C function
+
+g_application_command_line_create_file_for_arg
 */
 func (recv *ApplicationCommandLine) CreateFileForArg(arg string) *File {
 	c_arg := C.CString(arg)
@@ -54,7 +56,9 @@ func (recv *ApplicationCommandLine) CreateFileForArg(arg string) *File {
 // The @key is looked up in the "Desktop Entry" group.
 /*
 
-C function : g_desktop_app_info_get_boolean
+C function
+
+g_desktop_app_info_get_boolean
 */
 func (recv *DesktopAppInfo) GetBoolean(key string) bool {
 	c_key := C.CString(key)
@@ -71,7 +75,9 @@ func (recv *DesktopAppInfo) GetBoolean(key string) bool {
 // The @key is looked up in the "Desktop Entry" group.
 /*
 
-C function : g_desktop_app_info_get_string
+C function
+
+g_desktop_app_info_get_string
 */
 func (recv *DesktopAppInfo) GetString(key string) string {
 	c_key := C.CString(key)
@@ -88,7 +94,9 @@ func (recv *DesktopAppInfo) GetString(key string) string {
 // of the keyfile backing @info.
 /*
 
-C function : g_desktop_app_info_has_key
+C function
+
+g_desktop_app_info_has_key
 */
 func (recv *DesktopAppInfo) HasKey(key string) bool {
 	c_key := C.CString(key)
@@ -112,7 +120,9 @@ func (recv *DesktopAppInfo) HasKey(key string) bool {
 // ]|
 /*
 
-C function : g_file_enumerator_get_child
+C function
+
+g_file_enumerator_get_child
 */
 func (recv *FileEnumerator) GetChild(info *FileInfo) *File {
 	c_info := (*C.GFileInfo)(C.NULL)
@@ -131,7 +141,9 @@ func (recv *FileEnumerator) GetChild(info *FileInfo) *File {
 // G_FILE_ATTRIBUTE_TRASH_DELETION_DATE attribute is unset, %NULL is returned.
 /*
 
-C function : g_file_info_get_deletion_date
+C function
+
+g_file_info_get_deletion_date
 */
 func (recv *FileInfo) GetDeletionDate() *glib.DateTime {
 	retC := C.g_file_info_get_deletion_date((*C.GFileInfo)(recv.native))
@@ -144,7 +156,9 @@ func (recv *FileInfo) GetDeletionDate() *glib.DateTime {
 // for memory allocation.
 /*
 
-C function : g_memory_output_stream_new_resizable
+C function
+
+g_memory_output_stream_new_resizable
 */
 func MemoryOutputStreamNewResizable() *MemoryOutputStream {
 	retC := C.g_memory_output_stream_new_resizable()
@@ -162,7 +176,9 @@ func MemoryOutputStreamNewResizable() *MemoryOutputStream {
 // the socks5, socks4a, and socks4 proxy types.
 /*
 
-C function : g_simple_proxy_resolver_set_default_proxy
+C function
+
+g_simple_proxy_resolver_set_default_proxy
 */
 func (recv *SimpleProxyResolver) SetDefaultProxy(defaultProxy string) {
 	c_default_proxy := C.CString(defaultProxy)
@@ -185,7 +201,9 @@ func (recv *SimpleProxyResolver) SetDefaultProxy(defaultProxy string) {
 // types.
 /*
 
-C function : g_simple_proxy_resolver_set_uri_proxy
+C function
+
+g_simple_proxy_resolver_set_uri_proxy
 */
 func (recv *SimpleProxyResolver) SetUriProxy(uriScheme string, proxy string) {
 	c_uri_scheme := C.CString(uriScheme)
@@ -214,7 +232,9 @@ func (recv *SimpleProxyResolver) SetUriProxy(uriScheme string, proxy string) {
 // g_socket_get_option() will handle the conversion internally.
 /*
 
-C function : g_socket_get_option
+C function
+
+g_socket_get_option
 */
 func (recv *Socket) GetOption(level int32, optname int32) (bool, int32, error) {
 	c_level := (C.gint)(level)
@@ -249,7 +269,9 @@ func (recv *Socket) GetOption(level int32, optname int32) (bool, int32, error) {
 // headers.
 /*
 
-C function : g_socket_set_option
+C function
+
+g_socket_set_option
 */
 func (recv *Socket) SetOption(level int32, optname int32, value int32) (bool, error) {
 	c_level := (C.gint)(level)
@@ -276,7 +298,9 @@ func (recv *Socket) SetOption(level int32, optname int32, value int32) (bool, er
 // can override it with g_socket_client_set_proxy_resolver().
 /*
 
-C function : g_socket_client_get_proxy_resolver
+C function
+
+g_socket_client_get_proxy_resolver
 */
 func (recv *SocketClient) GetProxyResolver() *ProxyResolver {
 	retC := C.g_socket_client_get_proxy_resolver((*C.GSocketClient)(recv.native))
@@ -294,7 +318,9 @@ func (recv *SocketClient) GetProxyResolver() *ProxyResolver {
 // changed by this function (but which is %TRUE by default)
 /*
 
-C function : g_socket_client_set_proxy_resolver
+C function
+
+g_socket_client_set_proxy_resolver
 */
 func (recv *SocketClient) SetProxyResolver(proxyResolver *ProxyResolver) {
 	c_proxy_resolver := (*C.GProxyResolver)(proxyResolver.ToC())
@@ -311,7 +337,9 @@ func (recv *SocketClient) SetProxyResolver(proxyResolver *ProxyResolver) {
 // Gets @task's #GCancellable
 /*
 
-C function : g_task_get_cancellable
+C function
+
+g_task_get_cancellable
 */
 func (recv *Task) GetCancellable() *Cancellable {
 	retC := C.g_task_get_cancellable((*C.GTask)(recv.native))
@@ -324,7 +352,9 @@ func (recv *Task) GetCancellable() *Cancellable {
 // g_task_set_check_cancellable() for more details.
 /*
 
-C function : g_task_get_check_cancellable
+C function
+
+g_task_get_check_cancellable
 */
 func (recv *Task) GetCheckCancellable() bool {
 	retC := C.g_task_get_check_cancellable((*C.GTask)(recv.native))
@@ -342,7 +372,9 @@ func (recv *Task) GetCheckCancellable() bool {
 // context is the default #GMainContext.
 /*
 
-C function : g_task_get_context
+C function
+
+g_task_get_context
 */
 func (recv *Task) GetContext() *glib.MainContext {
 	retC := C.g_task_get_context((*C.GTask)(recv.native))
@@ -354,7 +386,9 @@ func (recv *Task) GetContext() *glib.MainContext {
 // Gets @task's priority
 /*
 
-C function : g_task_get_priority
+C function
+
+g_task_get_priority
 */
 func (recv *Task) GetPriority() int32 {
 	retC := C.g_task_get_priority((*C.GTask)(recv.native))
@@ -367,7 +401,9 @@ func (recv *Task) GetPriority() int32 {
 // g_task_set_return_on_cancel() for more details.
 /*
 
-C function : g_task_get_return_on_cancel
+C function
+
+g_task_get_return_on_cancel
 */
 func (recv *Task) GetReturnOnCancel() bool {
 	retC := C.g_task_get_return_on_cancel((*C.GTask)(recv.native))
@@ -380,7 +416,9 @@ func (recv *Task) GetReturnOnCancel() bool {
 // g_async_result_get_source_object(), but does not ref the object.
 /*
 
-C function : g_task_get_source_object
+C function
+
+g_task_get_source_object
 */
 func (recv *Task) GetSourceObject() uintptr {
 	retC := C.g_task_get_source_object((*C.GTask)(recv.native))
@@ -392,7 +430,9 @@ func (recv *Task) GetSourceObject() uintptr {
 // Gets @task's source tag. See g_task_set_source_tag().
 /*
 
-C function : g_task_get_source_tag
+C function
+
+g_task_get_source_tag
 */
 func (recv *Task) GetSourceTag() uintptr {
 	retC := C.g_task_get_source_tag((*C.GTask)(recv.native))
@@ -404,7 +444,9 @@ func (recv *Task) GetSourceTag() uintptr {
 // Gets @task's `task_data`.
 /*
 
-C function : g_task_get_task_data
+C function
+
+g_task_get_task_data
 */
 func (recv *Task) GetTaskData() uintptr {
 	retC := C.g_task_get_task_data((*C.GTask)(recv.native))
@@ -416,7 +458,9 @@ func (recv *Task) GetTaskData() uintptr {
 // Tests if @task resulted in an error.
 /*
 
-C function : g_task_had_error
+C function
+
+g_task_had_error
 */
 func (recv *Task) HadError() bool {
 	retC := C.g_task_had_error((*C.GTask)(recv.native))
@@ -434,7 +478,9 @@ func (recv *Task) HadError() bool {
 // error) to the caller, you may only call it once.
 /*
 
-C function : g_task_propagate_boolean
+C function
+
+g_task_propagate_boolean
 */
 func (recv *Task) PropagateBoolean() (bool, error) {
 	var cThrowableError *C.GError
@@ -459,7 +505,9 @@ func (recv *Task) PropagateBoolean() (bool, error) {
 // error) to the caller, you may only call it once.
 /*
 
-C function : g_task_propagate_int
+C function
+
+g_task_propagate_int
 */
 func (recv *Task) PropagateInt() (int64, error) {
 	var cThrowableError *C.GError
@@ -485,7 +533,9 @@ func (recv *Task) PropagateInt() (int64, error) {
 // error) to the caller, you may only call it once.
 /*
 
-C function : g_task_propagate_pointer
+C function
+
+g_task_propagate_pointer
 */
 func (recv *Task) PropagatePointer() (uintptr, error) {
 	var cThrowableError *C.GError
@@ -506,7 +556,9 @@ func (recv *Task) PropagatePointer() (uintptr, error) {
 // means).
 /*
 
-C function : g_task_return_boolean
+C function
+
+g_task_return_boolean
 */
 func (recv *Task) ReturnBoolean(result bool) {
 	c_result :=
@@ -530,7 +582,9 @@ func (recv *Task) ReturnBoolean(result bool) {
 // See also g_task_return_new_error().
 /*
 
-C function : g_task_return_error
+C function
+
+g_task_return_error
 */
 func (recv *Task) ReturnError(error *glib.Error) {
 	c_error := (*C.GError)(C.NULL)
@@ -549,7 +603,9 @@ func (recv *Task) ReturnError(error *glib.Error) {
 // means).
 /*
 
-C function : g_task_return_error_if_cancelled
+C function
+
+g_task_return_error_if_cancelled
 */
 func (recv *Task) ReturnErrorIfCancelled() bool {
 	retC := C.g_task_return_error_if_cancelled((*C.GTask)(recv.native))
@@ -563,7 +619,9 @@ func (recv *Task) ReturnErrorIfCancelled() bool {
 // means).
 /*
 
-C function : g_task_return_int
+C function
+
+g_task_return_int
 */
 func (recv *Task) ReturnInt(result int64) {
 	c_result := (C.gssize)(result)
@@ -597,7 +655,9 @@ func (recv *Task) ReturnInt(result int64) {
 // you must leave check-cancellable set %TRUE.
 /*
 
-C function : g_task_set_check_cancellable
+C function
+
+g_task_set_check_cancellable
 */
 func (recv *Task) SetCheckCancellable(checkCancellable bool) {
 	c_check_cancellable :=
@@ -617,7 +677,9 @@ func (recv *Task) SetCheckCancellable(checkCancellable bool) {
 // g_task_get_priority().
 /*
 
-C function : g_task_set_priority
+C function
+
+g_task_set_priority
 */
 func (recv *Task) SetPriority(priority int32) {
 	c_priority := (C.gint)(priority)
@@ -657,7 +719,9 @@ func (recv *Task) SetPriority(priority int32) {
 // will also be completed right away.
 /*
 
-C function : g_task_set_return_on_cancel
+C function
+
+g_task_set_return_on_cancel
 */
 func (recv *Task) SetReturnOnCancel(returnOnCancel bool) bool {
 	c_return_on_cancel :=
@@ -677,7 +741,9 @@ func (recv *Task) SetReturnOnCancel(returnOnCancel bool) bool {
 // particular place.
 /*
 
-C function : g_task_set_source_tag
+C function
+
+g_task_set_source_tag
 */
 func (recv *Task) SetSourceTag(sourceTag uintptr) {
 	c_source_tag := (C.gpointer)(sourceTag)

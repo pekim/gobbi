@@ -22,7 +22,9 @@ import "C"
 // the usual size.
 /*
 
-C function : gtk_icon_size_lookup_for_settings
+C function
+
+gtk_icon_size_lookup_for_settings
 */
 func IconSizeLookupForSettings(settings *Settings, size IconSize) (bool, int32, int32) {
 	c_settings := (*C.GtkSettings)(C.NULL)

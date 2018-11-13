@@ -28,7 +28,9 @@ import "C"
 // Finishes an asynchronous launch-default-for-uri operation.
 /*
 
-C function : g_app_info_launch_default_for_uri_finish
+C function
+
+g_app_info_launch_default_for_uri_finish
 */
 func AppInfoLaunchDefaultForUriFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())

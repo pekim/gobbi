@@ -18,7 +18,9 @@ import "C"
 // running.
 /*
 
-C function : gdk_display_supports_clipboard_persistence
+C function
+
+gdk_display_supports_clipboard_persistence
 */
 func (recv *Display) SupportsClipboardPersistence() bool {
 	retC := C.gdk_display_supports_clipboard_persistence((*C.GdkDisplay)(recv.native))
@@ -31,7 +33,9 @@ func (recv *Display) SupportsClipboardPersistence() bool {
 // sent when the owner of a selection changes.
 /*
 
-C function : gdk_display_supports_selection_notification
+C function
+
+gdk_display_supports_selection_notification
 */
 func (recv *Display) SupportsSelectionNotification() bool {
 	retC := C.gdk_display_supports_selection_notification((*C.GdkDisplay)(recv.native))
@@ -43,7 +47,9 @@ func (recv *Display) SupportsSelectionNotification() bool {
 // Does nothing, present only for compatiblity.
 /*
 
-C function : gdk_window_configure_finished
+C function
+
+gdk_window_configure_finished
 */
 func (recv *Window) ConfigureFinished() {
 	C.gdk_window_configure_finished((*C.GdkWindow)(recv.native))
@@ -54,7 +60,9 @@ func (recv *Window) ConfigureFinished() {
 // Does nothing, present only for compatiblity.
 /*
 
-C function : gdk_window_enable_synchronized_configure
+C function
+
+gdk_window_enable_synchronized_configure
 */
 func (recv *Window) EnableSynchronizedConfigure() {
 	C.gdk_window_enable_synchronized_configure((*C.GdkWindow)(recv.native))
@@ -72,7 +80,9 @@ func (recv *Window) EnableSynchronizedConfigure() {
 // manager extension specification should respect it.
 /*
 
-C function : gdk_window_set_focus_on_map
+C function
+
+gdk_window_set_focus_on_map
 */
 func (recv *Window) SetFocusOnMap(focusOnMap bool) {
 	c_focus_on_map :=

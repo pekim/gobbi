@@ -19,7 +19,9 @@ import "C"
 // return value for this string.
 /*
 
-C function : gtk_tree_model_get_string_from_iter
+C function
+
+gtk_tree_model_get_string_from_iter
 */
 func (recv *TreeModel) GetStringFromIter(iter *TreeIter) string {
 	c_iter := (*C.GtkTreeIter)(C.NULL)

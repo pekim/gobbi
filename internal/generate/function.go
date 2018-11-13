@@ -102,7 +102,7 @@ func (f *Function) generate(g *jen.Group, version *Version) {
 	}
 
 	generateDoc(f.Doc, g)
-	g.Commentf("\nC function : %s", f.CIdentifier)
+	g.Commentf("\nC function\n\n%s", f.CIdentifier)
 
 	g.
 		Func().

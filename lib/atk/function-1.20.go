@@ -11,7 +11,9 @@ import "C"
 // Gets the current version for ATK.
 /*
 
-C function : atk_get_version
+C function
+
+atk_get_version
 */
 func GetVersion() string {
 	retC := C.atk_get_version()

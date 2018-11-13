@@ -18,7 +18,9 @@ import "C"
 // Returns the currently selected application.
 /*
 
-C function : gtk_app_chooser_get_app_info
+C function
+
+gtk_app_chooser_get_app_info
 */
 func (recv *AppChooser) GetAppInfo() *gio.AppInfo {
 	retC := C.gtk_app_chooser_get_app_info((*C.GtkAppChooser)(recv.native))
@@ -35,7 +37,9 @@ func (recv *AppChooser) GetAppInfo() *gio.AppInfo {
 // Returns the current value of the #GtkAppChooser:content-type property.
 /*
 
-C function : gtk_app_chooser_get_content_type
+C function
+
+gtk_app_chooser_get_content_type
 */
 func (recv *AppChooser) GetContentType() string {
 	retC := C.gtk_app_chooser_get_content_type((*C.GtkAppChooser)(recv.native))
@@ -48,7 +52,9 @@ func (recv *AppChooser) GetContentType() string {
 // Reloads the list of applications.
 /*
 
-C function : gtk_app_chooser_refresh
+C function
+
+gtk_app_chooser_refresh
 */
 func (recv *AppChooser) Refresh() {
 	C.gtk_app_chooser_refresh((*C.GtkAppChooser)(recv.native))
@@ -61,7 +67,9 @@ func (recv *AppChooser) Refresh() {
 // is used by @cell_layout.
 /*
 
-C function : gtk_cell_layout_get_area
+C function
+
+gtk_cell_layout_get_area
 */
 func (recv *CellLayout) GetArea() *CellArea {
 	retC := C.gtk_cell_layout_get_area((*C.GtkCellLayout)(recv.native))
@@ -78,7 +86,9 @@ func (recv *CellLayout) GetArea() *CellArea {
 // Retrieves the #GtkAdjustment used for horizontal scrolling.
 /*
 
-C function : gtk_scrollable_get_hadjustment
+C function
+
+gtk_scrollable_get_hadjustment
 */
 func (recv *Scrollable) GetHadjustment() *Adjustment {
 	retC := C.gtk_scrollable_get_hadjustment((*C.GtkScrollable)(recv.native))
@@ -90,7 +100,9 @@ func (recv *Scrollable) GetHadjustment() *Adjustment {
 // Gets the horizontal #GtkScrollablePolicy.
 /*
 
-C function : gtk_scrollable_get_hscroll_policy
+C function
+
+gtk_scrollable_get_hscroll_policy
 */
 func (recv *Scrollable) GetHscrollPolicy() ScrollablePolicy {
 	retC := C.gtk_scrollable_get_hscroll_policy((*C.GtkScrollable)(recv.native))
@@ -102,7 +114,9 @@ func (recv *Scrollable) GetHscrollPolicy() ScrollablePolicy {
 // Retrieves the #GtkAdjustment used for vertical scrolling.
 /*
 
-C function : gtk_scrollable_get_vadjustment
+C function
+
+gtk_scrollable_get_vadjustment
 */
 func (recv *Scrollable) GetVadjustment() *Adjustment {
 	retC := C.gtk_scrollable_get_vadjustment((*C.GtkScrollable)(recv.native))
@@ -114,7 +128,9 @@ func (recv *Scrollable) GetVadjustment() *Adjustment {
 // Gets the vertical #GtkScrollablePolicy.
 /*
 
-C function : gtk_scrollable_get_vscroll_policy
+C function
+
+gtk_scrollable_get_vscroll_policy
 */
 func (recv *Scrollable) GetVscrollPolicy() ScrollablePolicy {
 	retC := C.gtk_scrollable_get_vscroll_policy((*C.GtkScrollable)(recv.native))
@@ -126,7 +142,9 @@ func (recv *Scrollable) GetVscrollPolicy() ScrollablePolicy {
 // Sets the horizontal adjustment of the #GtkScrollable.
 /*
 
-C function : gtk_scrollable_set_hadjustment
+C function
+
+gtk_scrollable_set_hadjustment
 */
 func (recv *Scrollable) SetHadjustment(hadjustment *Adjustment) {
 	c_hadjustment := (*C.GtkAdjustment)(C.NULL)
@@ -144,7 +162,9 @@ func (recv *Scrollable) SetHadjustment(hadjustment *Adjustment) {
 // below the natural width.
 /*
 
-C function : gtk_scrollable_set_hscroll_policy
+C function
+
+gtk_scrollable_set_hscroll_policy
 */
 func (recv *Scrollable) SetHscrollPolicy(policy ScrollablePolicy) {
 	c_policy := (C.GtkScrollablePolicy)(policy)
@@ -157,7 +177,9 @@ func (recv *Scrollable) SetHscrollPolicy(policy ScrollablePolicy) {
 // Sets the vertical adjustment of the #GtkScrollable.
 /*
 
-C function : gtk_scrollable_set_vadjustment
+C function
+
+gtk_scrollable_set_vadjustment
 */
 func (recv *Scrollable) SetVadjustment(vadjustment *Adjustment) {
 	c_vadjustment := (*C.GtkAdjustment)(C.NULL)
@@ -175,7 +197,9 @@ func (recv *Scrollable) SetVadjustment(vadjustment *Adjustment) {
 // below the natural height.
 /*
 
-C function : gtk_scrollable_set_vscroll_policy
+C function
+
+gtk_scrollable_set_vscroll_policy
 */
 func (recv *Scrollable) SetVscrollPolicy(policy ScrollablePolicy) {
 	c_policy := (C.GtkScrollablePolicy)(policy)
@@ -189,7 +213,9 @@ func (recv *Scrollable) SetVscrollPolicy(policy ScrollablePolicy) {
 // is defined.
 /*
 
-C function : gtk_style_provider_get_icon_factory
+C function
+
+gtk_style_provider_get_icon_factory
 */
 func (recv *StyleProvider) GetIconFactory(path *WidgetPath) *IconFactory {
 	c_path := (*C.GtkWidgetPath)(C.NULL)
@@ -212,7 +238,9 @@ func (recv *StyleProvider) GetIconFactory(path *WidgetPath) *IconFactory {
 // @provider doesn’t contemplate styling @path.
 /*
 
-C function : gtk_style_provider_get_style
+C function
+
+gtk_style_provider_get_style
 */
 func (recv *StyleProvider) GetStyle(path *WidgetPath) *StyleProperties {
 	c_path := (*C.GtkWidgetPath)(C.NULL)
@@ -239,7 +267,9 @@ func (recv *StyleProvider) GetStyle(path *WidgetPath) *StyleProperties {
 // set to be invalid.
 /*
 
-C function : gtk_tree_model_iter_previous
+C function
+
+gtk_tree_model_iter_previous
 */
 func (recv *TreeModel) IterPrevious(iter *TreeIter) bool {
 	c_iter := (*C.GtkTreeIter)(C.NULL)

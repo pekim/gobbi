@@ -86,7 +86,9 @@ import "C"
 // (see #GDBusProxy).
 /*
 
-C record/class : GDBusInterface
+C type
+
+GDBusInterface
 */
 type DBusInterface struct {
 	native *C.GDBusInterface
@@ -112,7 +114,9 @@ func (recv *DBusInterface) ToC() unsafe.Pointer {
 // implemented by @interface_.
 /*
 
-C function : g_dbus_interface_get_info
+C function
+
+g_dbus_interface_get_info
 */
 func (recv *DBusInterface) GetInfo() *DBusInterfaceInfo {
 	retC := C.g_dbus_interface_get_info((*C.GDBusInterface)(recv.native))
@@ -128,7 +132,9 @@ func (recv *DBusInterface) GetInfo() *DBusInterfaceInfo {
 // g_dbus_interface_dup_object() for a thread-safe alternative.
 /*
 
-C function : g_dbus_interface_get_object
+C function
+
+g_dbus_interface_get_object
 */
 func (recv *DBusInterface) GetObject() *DBusObject {
 	retC := C.g_dbus_interface_get_object((*C.GDBusInterface)(recv.native))
@@ -142,7 +148,9 @@ func (recv *DBusInterface) GetObject() *DBusObject {
 // Note that @interface_ will hold a weak reference to @object.
 /*
 
-C function : g_dbus_interface_set_object
+C function
+
+g_dbus_interface_set_object
 */
 func (recv *DBusInterface) SetObject(object *DBusObject) {
 	c_object := (*C.GDBusObject)(object.ToC())
@@ -274,7 +282,9 @@ func dbusobject_interfaceRemovedHandler(_ *C.GObject, c_interface *C.GDBusInterf
 // @object, if any.
 /*
 
-C function : g_dbus_object_get_interface
+C function
+
+g_dbus_object_get_interface
 */
 func (recv *DBusObject) GetInterface(interfaceName string) *DBusInterface {
 	c_interface_name := C.CString(interfaceName)
@@ -289,7 +299,9 @@ func (recv *DBusObject) GetInterface(interfaceName string) *DBusInterface {
 // Gets the D-Bus interfaces associated with @object.
 /*
 
-C function : g_dbus_object_get_interfaces
+C function
+
+g_dbus_object_get_interfaces
 */
 func (recv *DBusObject) GetInterfaces() *glib.List {
 	retC := C.g_dbus_object_get_interfaces((*C.GDBusObject)(recv.native))
@@ -301,7 +313,9 @@ func (recv *DBusObject) GetInterfaces() *glib.List {
 // Gets the object path for @object.
 /*
 
-C function : g_dbus_object_get_object_path
+C function
+
+g_dbus_object_get_object_path
 */
 func (recv *DBusObject) GetObjectPath() string {
 	retC := C.g_dbus_object_get_object_path((*C.GDBusObject)(recv.native))
@@ -554,7 +568,9 @@ func dbusobjectmanager_objectRemovedHandler(_ *C.GObject, c_object *C.GDBusObjec
 // any.
 /*
 
-C function : g_dbus_object_manager_get_interface
+C function
+
+g_dbus_object_manager_get_interface
 */
 func (recv *DBusObjectManager) GetInterface(objectPath string, interfaceName string) *DBusInterface {
 	c_object_path := C.CString(objectPath)
@@ -572,7 +588,9 @@ func (recv *DBusObjectManager) GetInterface(objectPath string, interfaceName str
 // Gets the #GDBusObjectProxy at @object_path, if any.
 /*
 
-C function : g_dbus_object_manager_get_object
+C function
+
+g_dbus_object_manager_get_object
 */
 func (recv *DBusObjectManager) GetObject(objectPath string) *DBusObject {
 	c_object_path := C.CString(objectPath)
@@ -587,7 +605,9 @@ func (recv *DBusObjectManager) GetObject(objectPath string) *DBusObject {
 // Gets the object path that @manager is for.
 /*
 
-C function : g_dbus_object_manager_get_object_path
+C function
+
+g_dbus_object_manager_get_object_path
 */
 func (recv *DBusObjectManager) GetObjectPath() string {
 	retC := C.g_dbus_object_manager_get_object_path((*C.GDBusObjectManager)(recv.native))
@@ -599,7 +619,9 @@ func (recv *DBusObjectManager) GetObjectPath() string {
 // Gets all #GDBusObject objects known to @manager.
 /*
 
-C function : g_dbus_object_manager_get_objects
+C function
+
+g_dbus_object_manager_get_objects
 */
 func (recv *DBusObjectManager) GetObjects() *glib.List {
 	retC := C.g_dbus_object_manager_get_objects((*C.GDBusObjectManager)(recv.native))
@@ -611,7 +633,9 @@ func (recv *DBusObjectManager) GetObjects() *glib.List {
 // Gets the default #GTlsDatabase used to verify TLS connections.
 /*
 
-C function : g_tls_backend_get_default_database
+C function
+
+g_tls_backend_get_default_database
 */
 func (recv *TlsBackend) GetDefaultDatabase() *TlsDatabase {
 	retC := C.g_tls_backend_get_default_database((*C.GTlsBackend)(recv.native))
@@ -623,7 +647,9 @@ func (recv *TlsBackend) GetDefaultDatabase() *TlsDatabase {
 // Gets the #GType of @backend's #GTlsFileDatabase implementation.
 /*
 
-C function : g_tls_backend_get_file_database_type
+C function
+
+g_tls_backend_get_file_database_type
 */
 func (recv *TlsBackend) GetFileDatabaseType() gobject.Type {
 	retC := C.g_tls_backend_get_file_database_type((*C.GTlsBackend)(recv.native))
@@ -637,7 +663,9 @@ func (recv *TlsBackend) GetFileDatabaseType() gobject.Type {
 // TLS library specific subtypes implement.
 /*
 
-C record/class : GTlsFileDatabase
+C type
+
+GTlsFileDatabase
 */
 type TlsFileDatabase struct {
 	native *C.GTlsFileDatabase

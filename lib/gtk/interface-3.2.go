@@ -27,7 +27,9 @@ import "C"
 // font descriptions.
 /*
 
-C function : gtk_font_chooser_get_font
+C function
+
+gtk_font_chooser_get_font
 */
 func (recv *FontChooser) GetFont() string {
 	retC := C.gtk_font_chooser_get_font((*C.GtkFontChooser)(recv.native))
@@ -49,7 +51,9 @@ func (recv *FontChooser) GetFont() string {
 // font descriptions.
 /*
 
-C function : gtk_font_chooser_get_font_desc
+C function
+
+gtk_font_chooser_get_font_desc
 */
 func (recv *FontChooser) GetFontDesc() *pango.FontDescription {
 	retC := C.gtk_font_chooser_get_font_desc((*C.GtkFontChooser)(recv.native))
@@ -69,7 +73,9 @@ func (recv *FontChooser) GetFontDesc() *pango.FontDescription {
 // If the selected font is not installed, returns %NULL.
 /*
 
-C function : gtk_font_chooser_get_font_face
+C function
+
+gtk_font_chooser_get_font_face
 */
 func (recv *FontChooser) GetFontFace() *pango.FontFace {
 	retC := C.gtk_font_chooser_get_font_face((*C.GtkFontChooser)(recv.native))
@@ -89,7 +95,9 @@ func (recv *FontChooser) GetFontFace() *pango.FontFace {
 // If the selected font is not installed, returns %NULL.
 /*
 
-C function : gtk_font_chooser_get_font_family
+C function
+
+gtk_font_chooser_get_font_family
 */
 func (recv *FontChooser) GetFontFamily() *pango.FontFamily {
 	retC := C.gtk_font_chooser_get_font_family((*C.GtkFontChooser)(recv.native))
@@ -106,7 +114,9 @@ func (recv *FontChooser) GetFontFamily() *pango.FontFamily {
 // The selected font size.
 /*
 
-C function : gtk_font_chooser_get_font_size
+C function
+
+gtk_font_chooser_get_font_size
 */
 func (recv *FontChooser) GetFontSize() int32 {
 	retC := C.gtk_font_chooser_get_font_size((*C.GtkFontChooser)(recv.native))
@@ -118,7 +128,9 @@ func (recv *FontChooser) GetFontSize() int32 {
 // Gets the text displayed in the preview area.
 /*
 
-C function : gtk_font_chooser_get_preview_text
+C function
+
+gtk_font_chooser_get_preview_text
 */
 func (recv *FontChooser) GetPreviewText() string {
 	retC := C.gtk_font_chooser_get_preview_text((*C.GtkFontChooser)(recv.native))
@@ -131,7 +143,9 @@ func (recv *FontChooser) GetPreviewText() string {
 // Returns whether the preview entry is shown or not.
 /*
 
-C function : gtk_font_chooser_get_show_preview_entry
+C function
+
+gtk_font_chooser_get_show_preview_entry
 */
 func (recv *FontChooser) GetShowPreviewEntry() bool {
 	retC := C.gtk_font_chooser_get_show_preview_entry((*C.GtkFontChooser)(recv.native))
@@ -145,7 +159,9 @@ func (recv *FontChooser) GetShowPreviewEntry() bool {
 // Sets the currently-selected font.
 /*
 
-C function : gtk_font_chooser_set_font
+C function
+
+gtk_font_chooser_set_font
 */
 func (recv *FontChooser) SetFont(fontname string) {
 	c_fontname := C.CString(fontname)
@@ -159,7 +175,9 @@ func (recv *FontChooser) SetFont(fontname string) {
 // Sets the currently-selected font from @font_desc.
 /*
 
-C function : gtk_font_chooser_set_font_desc
+C function
+
+gtk_font_chooser_set_font_desc
 */
 func (recv *FontChooser) SetFontDesc(fontDesc *pango.FontDescription) {
 	c_font_desc := (*C.PangoFontDescription)(C.NULL)
@@ -176,7 +194,9 @@ func (recv *FontChooser) SetFontDesc(fontDesc *pango.FontDescription) {
 // The @text is used to show how the selected font looks.
 /*
 
-C function : gtk_font_chooser_set_preview_text
+C function
+
+gtk_font_chooser_set_preview_text
 */
 func (recv *FontChooser) SetPreviewText(text string) {
 	c_text := C.CString(text)
@@ -190,7 +210,9 @@ func (recv *FontChooser) SetPreviewText(text string) {
 // Shows or hides the editable preview entry.
 /*
 
-C function : gtk_font_chooser_set_show_preview_entry
+C function
+
+gtk_font_chooser_set_show_preview_entry
 */
 func (recv *FontChooser) SetShowPreviewEntry(showPreviewEntry bool) {
 	c_show_preview_entry :=

@@ -27,7 +27,9 @@ import "C"
 // reliably.
 /*
 
-C function : g_bit_lock
+C function
+
+g_bit_lock
 */
 func BitLock(address int32, lockBit int32) {
 	c_address := (C.gint)(address)
@@ -53,7 +55,9 @@ func BitLock(address int32, lockBit int32) {
 // reliably.
 /*
 
-C function : g_bit_trylock
+C function
+
+g_bit_trylock
 */
 func BitTrylock(address int32, lockBit int32) bool {
 	c_address := (C.gint)(address)
@@ -75,7 +79,9 @@ func BitTrylock(address int32, lockBit int32) bool {
 // reliably.
 /*
 
-C function : g_bit_unlock
+C function
+
+g_bit_unlock
 */
 func BitUnlock(address int32, lockBit int32) {
 	c_address := (C.gint)(address)
@@ -91,7 +97,9 @@ func BitUnlock(address int32, lockBit int32) {
 // but care is taken to detect possible overflow during multiplication.
 /*
 
-C function : g_malloc0_n
+C function
+
+g_malloc0_n
 */
 func Malloc0N(nBlocks uint64, nBlockBytes uint64) uintptr {
 	c_n_blocks := (C.gsize)(nBlocks)
@@ -108,7 +116,9 @@ func Malloc0N(nBlocks uint64, nBlockBytes uint64) uintptr {
 // but care is taken to detect possible overflow during multiplication.
 /*
 
-C function : g_malloc_n
+C function
+
+g_malloc_n
 */
 func MallocN(nBlocks uint64, nBlockBytes uint64) uintptr {
 	c_n_blocks := (C.gsize)(nBlocks)
@@ -125,7 +135,9 @@ func MallocN(nBlocks uint64, nBlockBytes uint64) uintptr {
 // but care is taken to detect possible overflow during multiplication.
 /*
 
-C function : g_realloc_n
+C function
+
+g_realloc_n
 */
 func ReallocN(mem uintptr, nBlocks uint64, nBlockBytes uint64) uintptr {
 	c_mem := (C.gpointer)(mem)
@@ -144,7 +156,9 @@ func ReallocN(mem uintptr, nBlocks uint64, nBlockBytes uint64) uintptr {
 // but care is taken to detect possible overflow during multiplication.
 /*
 
-C function : g_try_malloc0_n
+C function
+
+g_try_malloc0_n
 */
 func TryMalloc0N(nBlocks uint64, nBlockBytes uint64) uintptr {
 	c_n_blocks := (C.gsize)(nBlocks)
@@ -161,7 +175,9 @@ func TryMalloc0N(nBlocks uint64, nBlockBytes uint64) uintptr {
 // but care is taken to detect possible overflow during multiplication.
 /*
 
-C function : g_try_malloc_n
+C function
+
+g_try_malloc_n
 */
 func TryMallocN(nBlocks uint64, nBlockBytes uint64) uintptr {
 	c_n_blocks := (C.gsize)(nBlocks)
@@ -178,7 +194,9 @@ func TryMallocN(nBlocks uint64, nBlockBytes uint64) uintptr {
 // but care is taken to detect possible overflow during multiplication.
 /*
 
-C function : g_try_realloc_n
+C function
+
+g_try_realloc_n
 */
 func TryReallocN(mem uintptr, nBlocks uint64, nBlockBytes uint64) uintptr {
 	c_mem := (C.gpointer)(mem)
@@ -203,7 +221,9 @@ func TryReallocN(mem uintptr, nBlocks uint64, nBlockBytes uint64) uintptr {
 // (including the one following the final '/' character) may be empty.
 /*
 
-C function : g_variant_is_object_path
+C function
+
+g_variant_is_object_path
 */
 func VariantIsObjectPath(string string) bool {
 	c_string := C.CString(string)
@@ -223,7 +243,9 @@ func VariantIsObjectPath(string string) bool {
 // strings in sequence.
 /*
 
-C function : g_variant_is_signature
+C function
+
+g_variant_is_signature
 */
 func VariantIsSignature(string string) bool {
 	c_string := C.CString(string)
@@ -250,7 +272,9 @@ func VariantIsSignature(string string) bool {
 // see g_variant_type_string_is_valid().
 /*
 
-C function : g_variant_type_string_scan
+C function
+
+g_variant_type_string_scan
 */
 func VariantTypeStringScan(string string, limit string) (bool, string) {
 	c_string := C.CString(string)

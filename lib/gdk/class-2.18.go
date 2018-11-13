@@ -24,7 +24,9 @@ import "C"
 // Some backends may not support native child windows.
 /*
 
-C function : gdk_window_ensure_native
+C function
+
+gdk_window_ensure_native
 */
 func (recv *Window) EnsureNative() bool {
 	retC := C.gdk_window_ensure_native((*C.GdkWindow)(recv.native))
@@ -36,7 +38,9 @@ func (recv *Window) EnsureNative() bool {
 // This function does nothing.
 /*
 
-C function : gdk_window_flush
+C function
+
+gdk_window_flush
 */
 func (recv *Window) Flush() {
 	C.gdk_window_flush((*C.GdkWindow)(recv.native))
@@ -49,7 +53,9 @@ func (recv *Window) Flush() {
 // track of which offscreen window the pointer is in.
 /*
 
-C function : gdk_window_geometry_changed
+C function
+
+gdk_window_geometry_changed
 */
 func (recv *Window) GeometryChanged() {
 	C.gdk_window_geometry_changed((*C.GdkWindow)(recv.native))
@@ -63,7 +69,9 @@ func (recv *Window) GeometryChanged() {
 // using the cursor for its parent window.
 /*
 
-C function : gdk_window_get_cursor
+C function
+
+gdk_window_get_cursor
 */
 func (recv *Window) GetCursor() *Cursor {
 	retC := C.gdk_window_get_cursor((*C.GdkWindow)(recv.native))
@@ -83,7 +91,9 @@ func (recv *Window) GetCursor() *Cursor {
 // in any position in the window, not just the origin.
 /*
 
-C function : gdk_window_get_root_coords
+C function
+
+gdk_window_get_root_coords
 */
 func (recv *Window) GetRootCoords(x int32, y int32) (int32, int32) {
 	c_x := (C.gint)(x)
@@ -106,7 +116,9 @@ func (recv *Window) GetRootCoords(x int32, y int32) (int32, int32) {
 // Check to see if a window is destroyed..
 /*
 
-C function : gdk_window_is_destroyed
+C function
+
+gdk_window_is_destroyed
 */
 func (recv *Window) IsDestroyed() bool {
 	retC := C.gdk_window_is_destroyed((*C.GdkWindow)(recv.native))
@@ -127,7 +139,9 @@ func (recv *Window) IsDestroyed() bool {
 // requests the restack, does not guarantee it.
 /*
 
-C function : gdk_window_restack
+C function
+
+gdk_window_restack
 */
 func (recv *Window) Restack(sibling *Window, above bool) {
 	c_sibling := (*C.GdkWindow)(C.NULL)

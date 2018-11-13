@@ -26,7 +26,9 @@ import "C"
 // may not always be possible to do this.
 /*
 
-C function : g_get_monotonic_time
+C function
+
+g_get_monotonic_time
 */
 func GetMonotonicTime() int64 {
 	retC := C.g_get_monotonic_time()
@@ -46,7 +48,9 @@ func GetMonotonicTime() int64 {
 // measuring intervals.
 /*
 
-C function : g_get_real_time
+C function
+
+g_get_real_time
 */
 func GetRealTime() int64 {
 	retC := C.g_get_real_time()
@@ -67,7 +71,9 @@ func GetRealTime() int64 {
 // g_get_user_cache_dir(), after verifying that it exists.
 /*
 
-C function : g_get_user_runtime_dir
+C function
+
+g_get_user_runtime_dir
 */
 func GetUserRuntimeDir() string {
 	retC := C.g_get_user_runtime_dir()

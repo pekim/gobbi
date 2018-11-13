@@ -17,7 +17,9 @@ import "C"
 // as is into the new object.
 /*
 
-C function : g_date_copy
+C function
+
+g_date_copy
 */
 func (recv *Date) Copy() *Date {
 	retC := C.g_date_copy((*C.GDate)(recv.native))
@@ -63,7 +65,9 @@ func (recv *Date) Copy() *Date {
 // when you are done with it.
 /*
 
-C function : g_date_time_new_from_iso8601
+C function
+
+g_date_time_new_from_iso8601
 */
 func DateTimeNewFromIso8601(text string, defaultTz *TimeZone) *DateTime {
 	c_text := C.CString(text)
@@ -96,7 +100,9 @@ func DateTimeNewFromIso8601(text string, defaultTz *TimeZone) *DateTime {
 // this function.
 /*
 
-C function : g_key_file_get_locale_for_key
+C function
+
+g_key_file_get_locale_for_key
 */
 func (recv *KeyFile) GetLocaleForKey(groupName string, key string, locale string) string {
 	c_group_name := C.CString(groupName)

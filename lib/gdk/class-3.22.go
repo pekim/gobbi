@@ -113,7 +113,9 @@ func device_toolChangedHandler(_ *C.GObject, c_tool *C.GdkDeviceTool, data C.gpo
 // Returns the axes currently available on the device.
 /*
 
-C function : gdk_device_get_axes
+C function
+
+gdk_device_get_axes
 */
 func (recv *Device) GetAxes() AxisFlags {
 	retC := C.gdk_device_get_axes((*C.GdkDevice)(recv.native))
@@ -124,7 +126,9 @@ func (recv *Device) GetAxes() AxisFlags {
 
 /*
 
-C record/class : GdkDeviceTool
+C type
+
+GdkDeviceTool
 */
 type DeviceTool struct {
 	native *C.GdkDeviceTool
@@ -168,7 +172,9 @@ func CastToDeviceTool(object *gobject.Object) *DeviceTool {
 // but having different hardware identificators.
 /*
 
-C function : gdk_device_tool_get_hardware_id
+C function
+
+gdk_device_tool_get_hardware_id
 */
 func (recv *DeviceTool) GetHardwareId() uint64 {
 	retC := C.gdk_device_tool_get_hardware_id((*C.GdkDeviceTool)(recv.native))
@@ -181,7 +187,9 @@ func (recv *DeviceTool) GetHardwareId() uint64 {
 // physical tool (eg. a tablet pen) across program executions.
 /*
 
-C function : gdk_device_tool_get_serial
+C function
+
+gdk_device_tool_get_serial
 */
 func (recv *DeviceTool) GetSerial() uint64 {
 	retC := C.gdk_device_tool_get_serial((*C.GdkDeviceTool)(recv.native))
@@ -193,7 +201,9 @@ func (recv *DeviceTool) GetSerial() uint64 {
 // Gets the #GdkDeviceToolType of the tool.
 /*
 
-C function : gdk_device_tool_get_tool_type
+C function
+
+gdk_device_tool_get_tool_type
 */
 func (recv *DeviceTool) GetToolType() DeviceToolType {
 	retC := C.gdk_device_tool_get_tool_type((*C.GdkDeviceTool)(recv.native))
@@ -323,7 +333,9 @@ func display_monitorRemovedHandler(_ *C.GObject, c_monitor *C.GdkMonitor, data C
 // Gets a monitor associated with this display.
 /*
 
-C function : gdk_display_get_monitor
+C function
+
+gdk_display_get_monitor
 */
 func (recv *Display) GetMonitor(monitorNum int32) *Monitor {
 	c_monitor_num := (C.int)(monitorNum)
@@ -343,7 +355,9 @@ func (recv *Display) GetMonitor(monitorNum int32) *Monitor {
 // or a nearby monitor if the point is not in any monitor.
 /*
 
-C function : gdk_display_get_monitor_at_point
+C function
+
+gdk_display_get_monitor_at_point
 */
 func (recv *Display) GetMonitorAtPoint(x int32, y int32) *Monitor {
 	c_x := (C.int)(x)
@@ -361,7 +375,9 @@ func (recv *Display) GetMonitorAtPoint(x int32, y int32) *Monitor {
 // of all monitors.
 /*
 
-C function : gdk_display_get_monitor_at_window
+C function
+
+gdk_display_get_monitor_at_window
 */
 func (recv *Display) GetMonitorAtWindow(window *Window) *Monitor {
 	c_window := (*C.GdkWindow)(C.NULL)
@@ -381,7 +397,9 @@ func (recv *Display) GetMonitorAtWindow(window *Window) *Monitor {
 // #GdkDisplay::monitor-added or #GdkDisplay::monitor-removed signal.
 /*
 
-C function : gdk_display_get_n_monitors
+C function
+
+gdk_display_get_n_monitors
 */
 func (recv *Display) GetNMonitors() int32 {
 	retC := C.gdk_display_get_n_monitors((*C.GdkDisplay)(recv.native))
@@ -398,7 +416,9 @@ func (recv *Display) GetNMonitors() int32 {
 // such as panels should place themselves on the primary monitor.
 /*
 
-C function : gdk_display_get_primary_monitor
+C function
+
+gdk_display_get_primary_monitor
 */
 func (recv *Display) GetPrimaryMonitor() *Monitor {
 	retC := C.gdk_display_get_primary_monitor((*C.GdkDisplay)(recv.native))
@@ -424,7 +444,9 @@ func (recv *Display) GetPrimaryMonitor() *Monitor {
 // #GdkDrawingContext is available since GDK 3.22
 /*
 
-C record/class : GdkDrawingContext
+C type
+
+GdkDrawingContext
 */
 type DrawingContext struct {
 	native *C.GdkDrawingContext
@@ -465,7 +487,9 @@ func CastToDrawingContext(object *gobject.Object) *DrawingContext {
 // gdk_window_begin_draw_frame() and gdk_window_end_draw_frame().
 /*
 
-C function : gdk_drawing_context_get_cairo_context
+C function
+
+gdk_drawing_context_get_cairo_context
 */
 func (recv *DrawingContext) GetCairoContext() *cairo.Context {
 	retC := C.gdk_drawing_context_get_cairo_context((*C.GdkDrawingContext)(recv.native))
@@ -477,7 +501,9 @@ func (recv *DrawingContext) GetCairoContext() *cairo.Context {
 // Retrieves a copy of the clip region used when creating the @context.
 /*
 
-C function : gdk_drawing_context_get_clip
+C function
+
+gdk_drawing_context_get_clip
 */
 func (recv *DrawingContext) GetClip() *cairo.Region {
 	retC := C.gdk_drawing_context_get_clip((*C.GdkDrawingContext)(recv.native))
@@ -494,7 +520,9 @@ func (recv *DrawingContext) GetClip() *cairo.Region {
 // Retrieves the window that created the drawing @context.
 /*
 
-C function : gdk_drawing_context_get_window
+C function
+
+gdk_drawing_context_get_window
 */
 func (recv *DrawingContext) GetWindow() *Window {
 	retC := C.gdk_drawing_context_get_window((*C.GdkDrawingContext)(recv.native))
@@ -506,7 +534,9 @@ func (recv *DrawingContext) GetWindow() *Window {
 // Checks whether the given #GdkDrawingContext is valid.
 /*
 
-C function : gdk_drawing_context_is_valid
+C function
+
+gdk_drawing_context_is_valid
 */
 func (recv *DrawingContext) IsValid() bool {
 	retC := C.gdk_drawing_context_is_valid((*C.GdkDrawingContext)(recv.native))
@@ -518,7 +548,9 @@ func (recv *DrawingContext) IsValid() bool {
 // Checks whether the @context is using an OpenGL or OpenGL ES profile.
 /*
 
-C function : gdk_gl_context_get_use_es
+C function
+
+gdk_gl_context_get_use_es
 */
 func (recv *GLContext) GetUseEs() bool {
 	retC := C.gdk_gl_context_get_use_es((*C.GdkGLContext)(recv.native))
@@ -541,7 +573,9 @@ func (recv *GLContext) GetUseEs() bool {
 // OpenGL ES API, extensions, or shaders.
 /*
 
-C function : gdk_gl_context_set_use_es
+C function
+
+gdk_gl_context_set_use_es
 */
 func (recv *GLContext) SetUseEs(useEs int32) {
 	c_use_es := (C.int)(useEs)
@@ -561,7 +595,9 @@ func (recv *GLContext) SetUseEs(useEs int32) {
 // APIs in GdkScreen to obtain monitor-related information.
 /*
 
-C record/class : GdkMonitor
+C type
+
+GdkMonitor
 */
 type Monitor struct {
 	native *C.GdkMonitor
@@ -654,7 +690,9 @@ func monitor_invalidateHandler(_ *C.GObject, data C.gpointer) {
 // Gets the display that this monitor belongs to.
 /*
 
-C function : gdk_monitor_get_display
+C function
+
+gdk_monitor_get_display
 */
 func (recv *Monitor) GetDisplay() *Display {
 	retC := C.gdk_monitor_get_display((*C.GdkMonitor)(recv.native))
@@ -668,7 +706,9 @@ func (recv *Monitor) GetDisplay() *Display {
 // Gets the height in millimeters of the monitor.
 /*
 
-C function : gdk_monitor_get_height_mm
+C function
+
+gdk_monitor_get_height_mm
 */
 func (recv *Monitor) GetHeightMm() int32 {
 	retC := C.gdk_monitor_get_height_mm((*C.GdkMonitor)(recv.native))
@@ -680,7 +720,9 @@ func (recv *Monitor) GetHeightMm() int32 {
 // Gets the name of the monitor's manufacturer, if available.
 /*
 
-C function : gdk_monitor_get_manufacturer
+C function
+
+gdk_monitor_get_manufacturer
 */
 func (recv *Monitor) GetManufacturer() string {
 	retC := C.gdk_monitor_get_manufacturer((*C.GdkMonitor)(recv.native))
@@ -692,7 +734,9 @@ func (recv *Monitor) GetManufacturer() string {
 // Gets the a string identifying the monitor model, if available.
 /*
 
-C function : gdk_monitor_get_model
+C function
+
+gdk_monitor_get_model
 */
 func (recv *Monitor) GetModel() string {
 	retC := C.gdk_monitor_get_model((*C.GdkMonitor)(recv.native))
@@ -707,7 +751,9 @@ func (recv *Monitor) GetModel() string {
 // is returned as 60000.
 /*
 
-C function : gdk_monitor_get_refresh_rate
+C function
+
+gdk_monitor_get_refresh_rate
 */
 func (recv *Monitor) GetRefreshRate() int32 {
 	retC := C.gdk_monitor_get_refresh_rate((*C.GdkMonitor)(recv.native))
@@ -725,7 +771,9 @@ func (recv *Monitor) GetRefreshRate() int32 {
 // where it is better to use gdk_window_get_scale_factor() instead.
 /*
 
-C function : gdk_monitor_get_scale_factor
+C function
+
+gdk_monitor_get_scale_factor
 */
 func (recv *Monitor) GetScaleFactor() int32 {
 	retC := C.gdk_monitor_get_scale_factor((*C.GdkMonitor)(recv.native))
@@ -738,7 +786,9 @@ func (recv *Monitor) GetScaleFactor() int32 {
 // primaries for each pixel in this monitor, if available.
 /*
 
-C function : gdk_monitor_get_subpixel_layout
+C function
+
+gdk_monitor_get_subpixel_layout
 */
 func (recv *Monitor) GetSubpixelLayout() SubpixelLayout {
 	retC := C.gdk_monitor_get_subpixel_layout((*C.GdkMonitor)(recv.native))
@@ -750,7 +800,9 @@ func (recv *Monitor) GetSubpixelLayout() SubpixelLayout {
 // Gets the width in millimeters of the monitor.
 /*
 
-C function : gdk_monitor_get_width_mm
+C function
+
+gdk_monitor_get_width_mm
 */
 func (recv *Monitor) GetWidthMm() int32 {
 	retC := C.gdk_monitor_get_width_mm((*C.GdkMonitor)(recv.native))
@@ -765,7 +817,9 @@ func (recv *Monitor) GetWidthMm() int32 {
 // (see gdk_display_get_primary_monitor()).
 /*
 
-C function : gdk_monitor_is_primary
+C function
+
+gdk_monitor_is_primary
 */
 func (recv *Monitor) IsPrimary() bool {
 	retC := C.gdk_monitor_is_primary((*C.GdkMonitor)(recv.native))
@@ -778,7 +832,9 @@ func (recv *Monitor) IsPrimary() bool {
 // that belong to a user.
 /*
 
-C record/class : GdkSeat
+C type
+
+GdkSeat
 */
 type Seat struct {
 	native *C.GdkSeat
@@ -815,7 +871,9 @@ func CastToSeat(object *gobject.Object) *Seat {
 // Returns the #GdkDisplay this seat belongs to.
 /*
 
-C function : gdk_seat_get_display
+C function
+
+gdk_seat_get_display
 */
 func (recv *Seat) GetDisplay() *Display {
 	retC := C.gdk_seat_get_display((*C.GdkSeat)(recv.native))
@@ -855,7 +913,9 @@ func (recv *Seat) GetDisplay() *Display {
 // explicitly.
 /*
 
-C function : gdk_window_begin_draw_frame
+C function
+
+gdk_window_begin_draw_frame
 */
 func (recv *Window) BeginDrawFrame(region *cairo.Region) *DrawingContext {
 	c_region := (*C.cairo_region_t)(C.NULL)
@@ -878,7 +938,9 @@ func (recv *Window) BeginDrawFrame(region *cairo.Region) *DrawingContext {
 // gdk_window_begin_frame() first.
 /*
 
-C function : gdk_window_end_draw_frame
+C function
+
+gdk_window_end_draw_frame
 */
 func (recv *Window) EndDrawFrame(context *DrawingContext) {
 	c_context := (*C.GdkDrawingContext)(C.NULL)

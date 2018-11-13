@@ -13,7 +13,9 @@ import "C"
 // Increase the reference count of the given attribute list by one.
 /*
 
-C function : pango_attr_list_ref
+C function
+
+pango_attr_list_ref
 */
 func (recv *AttrList) Ref() *AttrList {
 	retC := C.pango_attr_list_ref((*C.PangoAttrList)(recv.native))
@@ -25,7 +27,9 @@ func (recv *AttrList) Ref() *AttrList {
 // Increase the reference count of a #PangoLayoutLine by one.
 /*
 
-C function : pango_layout_line_ref
+C function
+
+pango_layout_line_ref
 */
 func (recv *LayoutLine) Ref() *LayoutLine {
 	retC := C.pango_layout_line_ref((*C.PangoLayoutLine)(recv.native))

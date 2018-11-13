@@ -17,7 +17,9 @@ import "C"
 // to the entire text by default.
 /*
 
-C function : pango_attribute_init
+C function
+
+pango_attribute_init
 */
 func (recv *Attribute) Init(klass *AttrClass) {
 	c_klass := (*C.PangoAttrClass)(C.NULL)
@@ -33,7 +35,9 @@ func (recv *Attribute) Init(klass *AttrClass) {
 // Make a deep copy of an existing #PangoGlyphItem structure.
 /*
 
-C function : pango_glyph_item_copy
+C function
+
+pango_glyph_item_copy
 */
 func (recv *GlyphItem) Copy() *GlyphItem {
 	retC := C.pango_glyph_item_copy((*C.PangoGlyphItem)(recv.native))

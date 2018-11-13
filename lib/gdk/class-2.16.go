@@ -79,7 +79,9 @@ func keymap_stateChangedHandler(_ *C.GObject, data C.gpointer) {
 // Returns whether the Caps Lock modifer is locked.
 /*
 
-C function : gdk_keymap_get_caps_lock_state
+C function
+
+gdk_keymap_get_caps_lock_state
 */
 func (recv *Keymap) GetCapsLockState() bool {
 	retC := C.gdk_keymap_get_caps_lock_state((*C.GdkKeymap)(recv.native))

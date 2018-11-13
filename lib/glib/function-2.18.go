@@ -46,7 +46,9 @@ import "C"
 // but use the _() macro for translations.
 /*
 
-C function : g_dgettext
+C function
+
+g_dgettext
 */
 func Dgettext(domain string, msgid string) string {
 	c_domain := C.CString(domain)
@@ -69,7 +71,9 @@ func Dgettext(domain string, msgid string) string {
 // proper.
 /*
 
-C function : g_dngettext
+C function
+
+g_dngettext
 */
 func Dngettext(domain string, msgid string, msgidPlural string, n uint64) string {
 	c_domain := C.CString(domain)
@@ -101,7 +105,9 @@ func Dngettext(domain string, msgid string, msgidPlural string, n uint64) string
 // thus you may use non-string-literals as context and msgid arguments.
 /*
 
-C function : g_dpgettext2
+C function
+
+g_dpgettext2
 */
 func Dpgettext2(domain string, context string, msgid string) string {
 	c_domain := C.CString(domain)
@@ -126,7 +132,9 @@ func Dpgettext2(domain string, context string, msgid string) string {
 // that could include printf() escape sequences.
 /*
 
-C function : g_set_error_literal
+C function
+
+g_set_error_literal
 */
 func SetErrorLiteral(domain Quark, code int32, message string) *Error {
 	var c_err *C.GError

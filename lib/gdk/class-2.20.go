@@ -11,7 +11,9 @@ import "C"
 // Returns the axis use for @index_.
 /*
 
-C function : gdk_device_get_axis_use
+C function
+
+gdk_device_get_axis_use
 */
 func (recv *Device) GetAxisUse(index uint32) AxisUse {
 	c_index_ := (C.guint)(index)
@@ -26,7 +28,9 @@ func (recv *Device) GetAxisUse(index uint32) AxisUse {
 // This is not meaningful for keyboard devices, which don't have a pointer.
 /*
 
-C function : gdk_device_get_has_cursor
+C function
+
+gdk_device_get_has_cursor
 */
 func (recv *Device) GetHasCursor() bool {
 	retC := C.gdk_device_get_has_cursor((*C.GdkDevice)(recv.native))
@@ -40,7 +44,9 @@ func (recv *Device) GetHasCursor() bool {
 // Determines the mode of the device.
 /*
 
-C function : gdk_device_get_mode
+C function
+
+gdk_device_get_mode
 */
 func (recv *Device) GetMode() InputMode {
 	retC := C.gdk_device_get_mode((*C.GdkDevice)(recv.native))
@@ -52,7 +58,9 @@ func (recv *Device) GetMode() InputMode {
 // Determines the name of the device.
 /*
 
-C function : gdk_device_get_name
+C function
+
+gdk_device_get_name
 */
 func (recv *Device) GetName() string {
 	retC := C.gdk_device_get_name((*C.GdkDevice)(recv.native))
@@ -64,7 +72,9 @@ func (recv *Device) GetName() string {
 // Determines the type of the device.
 /*
 
-C function : gdk_device_get_source
+C function
+
+gdk_device_get_source
 */
 func (recv *Device) GetSource() InputSource {
 	retC := C.gdk_device_get_source((*C.GdkDevice)(recv.native))
@@ -87,7 +97,9 @@ func (recv *Device) GetSource() InputSource {
 // will be 0, defaulting to the first monitor.
 /*
 
-C function : gdk_screen_get_primary_monitor
+C function
+
+gdk_screen_get_primary_monitor
 */
 func (recv *Screen) GetPrimaryMonitor() int32 {
 	retC := C.gdk_screen_get_primary_monitor((*C.GdkScreen)(recv.native))

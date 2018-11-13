@@ -17,7 +17,9 @@ import "C"
 // Copies a #GtkTreeRowReference.
 /*
 
-C function : gtk_tree_row_reference_copy
+C function
+
+gtk_tree_row_reference_copy
 */
 func (recv *TreeRowReference) Copy() *TreeRowReference {
 	retC := C.gtk_tree_row_reference_copy((*C.GtkTreeRowReference)(recv.native))

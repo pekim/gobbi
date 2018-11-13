@@ -16,7 +16,9 @@ import "C"
 // as a #GCompareFunc. Both #GDateTimes must be non-%NULL.
 /*
 
-C function : g_date_time_compare
+C function
+
+g_date_time_compare
 */
 func DateTimeCompare(dt1 uintptr, dt2 uintptr) int32 {
 	c_dt1 := (C.gconstpointer)(dt1)
@@ -35,7 +37,9 @@ func DateTimeCompare(dt1 uintptr, dt2 uintptr) int32 {
 // them to the same time zone.
 /*
 
-C function : g_date_time_equal
+C function
+
+g_date_time_equal
 */
 func DateTimeEqual(dt1 uintptr, dt2 uintptr) bool {
 	c_dt1 := (C.gconstpointer)(dt1)
@@ -51,7 +55,9 @@ func DateTimeEqual(dt1 uintptr, dt2 uintptr) bool {
 // Hashes @datetime into a #guint, suitable for use within #GHashTable.
 /*
 
-C function : g_date_time_hash
+C function
+
+g_date_time_hash
 */
 func DateTimeHash(datetime uintptr) uint32 {
 	c_datetime := (C.gconstpointer)(datetime)
@@ -68,7 +74,9 @@ func DateTimeHash(datetime uintptr) uint32 {
 // dcgettext() directly.
 /*
 
-C function : g_dcgettext
+C function
+
+g_dcgettext
 */
 func Dcgettext(domain string, msgid string, category int32) string {
 	c_domain := C.CString(domain)
@@ -103,7 +111,9 @@ func Dcgettext(domain string, msgid string, category int32) string {
 // wrong source.
 /*
 
-C function : g_source_set_name_by_id
+C function
+
+g_source_set_name_by_id
 */
 func SourceSetNameById(tag uint32, name string) {
 	c_tag := (C.guint)(tag)

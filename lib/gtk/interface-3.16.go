@@ -19,7 +19,9 @@ import "C"
 // at the right position.
 /*
 
-C function : gtk_scrollable_get_border
+C function
+
+gtk_scrollable_get_border
 */
 func (recv *Scrollable) GetBorder() (bool, *Border) {
 	var c_border C.GtkBorder

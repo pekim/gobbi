@@ -33,7 +33,9 @@ import "C"
 // ]|
 /*
 
-C function : gtk_get_locale_direction
+C function
+
+gtk_get_locale_direction
 */
 func GetLocaleDirection() TextDirection {
 	retC := C.gtk_get_locale_direction()

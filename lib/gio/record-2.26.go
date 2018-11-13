@@ -26,7 +26,9 @@ import "C"
 // Class structure for #GCredentials.
 /*
 
-C record/class : GCredentialsClass
+C type
+
+GCredentialsClass
 */
 type CredentialsClass struct {
 	native *C.GCredentialsClass
@@ -51,7 +53,9 @@ func (recv *CredentialsClass) ToC() unsafe.Pointer {
 // Information about an annotation.
 /*
 
-C record/class : GDBusAnnotationInfo
+C type
+
+GDBusAnnotationInfo
 */
 type DBusAnnotationInfo struct {
 	native   *C.GDBusAnnotationInfo
@@ -92,7 +96,9 @@ func (recv *DBusAnnotationInfo) ToC() unsafe.Pointer {
 // the reference count.
 /*
 
-C function : g_dbus_annotation_info_ref
+C function
+
+g_dbus_annotation_info_ref
 */
 func (recv *DBusAnnotationInfo) Ref() *DBusAnnotationInfo {
 	retC := C.g_dbus_annotation_info_ref((*C.GDBusAnnotationInfo)(recv.native))
@@ -106,7 +112,9 @@ func (recv *DBusAnnotationInfo) Ref() *DBusAnnotationInfo {
 // the memory used is freed.
 /*
 
-C function : g_dbus_annotation_info_unref
+C function
+
+g_dbus_annotation_info_unref
 */
 func (recv *DBusAnnotationInfo) Unref() {
 	C.g_dbus_annotation_info_unref((*C.GDBusAnnotationInfo)(recv.native))
@@ -117,7 +125,9 @@ func (recv *DBusAnnotationInfo) Unref() {
 // Information about an argument for a method or a signal.
 /*
 
-C record/class : GDBusArgInfo
+C type
+
+GDBusArgInfo
 */
 type DBusArgInfo struct {
 	native    *C.GDBusArgInfo
@@ -158,7 +168,9 @@ func (recv *DBusArgInfo) ToC() unsafe.Pointer {
 // the reference count.
 /*
 
-C function : g_dbus_arg_info_ref
+C function
+
+g_dbus_arg_info_ref
 */
 func (recv *DBusArgInfo) Ref() *DBusArgInfo {
 	retC := C.g_dbus_arg_info_ref((*C.GDBusArgInfo)(recv.native))
@@ -172,7 +184,9 @@ func (recv *DBusArgInfo) Ref() *DBusArgInfo {
 // the memory used is freed.
 /*
 
-C function : g_dbus_arg_info_unref
+C function
+
+g_dbus_arg_info_unref
 */
 func (recv *DBusArgInfo) Unref() {
 	C.g_dbus_arg_info_unref((*C.GDBusArgInfo)(recv.native))
@@ -183,7 +197,9 @@ func (recv *DBusArgInfo) Unref() {
 // Struct used in g_dbus_error_register_error_domain().
 /*
 
-C record/class : GDBusErrorEntry
+C type
+
+GDBusErrorEntry
 */
 type DBusErrorEntry struct {
 	native        *C.GDBusErrorEntry
@@ -218,7 +234,9 @@ func (recv *DBusErrorEntry) ToC() unsafe.Pointer {
 // Information about a D-Bus interface.
 /*
 
-C record/class : GDBusInterfaceInfo
+C type
+
+GDBusInterfaceInfo
 */
 type DBusInterfaceInfo struct {
 	native   *C.GDBusInterfaceInfo
@@ -262,7 +280,9 @@ func (recv *DBusInterfaceInfo) ToC() unsafe.Pointer {
 // method.
 /*
 
-C function : g_dbus_interface_info_generate_xml
+C function
+
+g_dbus_interface_info_generate_xml
 */
 func (recv *DBusInterfaceInfo) GenerateXml(indent uint32, stringBuilder *glib.String) {
 	c_indent := (C.guint)(indent)
@@ -283,7 +303,9 @@ func (recv *DBusInterfaceInfo) GenerateXml(indent uint32, stringBuilder *glib.St
 // g_dbus_interface_info_cache_build() has been used on @info.
 /*
 
-C function : g_dbus_interface_info_lookup_method
+C function
+
+g_dbus_interface_info_lookup_method
 */
 func (recv *DBusInterfaceInfo) LookupMethod(name string) *DBusMethodInfo {
 	c_name := C.CString(name)
@@ -301,7 +323,9 @@ func (recv *DBusInterfaceInfo) LookupMethod(name string) *DBusMethodInfo {
 // g_dbus_interface_info_cache_build() has been used on @info.
 /*
 
-C function : g_dbus_interface_info_lookup_property
+C function
+
+g_dbus_interface_info_lookup_property
 */
 func (recv *DBusInterfaceInfo) LookupProperty(name string) *DBusPropertyInfo {
 	c_name := C.CString(name)
@@ -319,7 +343,9 @@ func (recv *DBusInterfaceInfo) LookupProperty(name string) *DBusPropertyInfo {
 // g_dbus_interface_info_cache_build() has been used on @info.
 /*
 
-C function : g_dbus_interface_info_lookup_signal
+C function
+
+g_dbus_interface_info_lookup_signal
 */
 func (recv *DBusInterfaceInfo) LookupSignal(name string) *DBusSignalInfo {
 	c_name := C.CString(name)
@@ -335,7 +361,9 @@ func (recv *DBusInterfaceInfo) LookupSignal(name string) *DBusSignalInfo {
 // the reference count.
 /*
 
-C function : g_dbus_interface_info_ref
+C function
+
+g_dbus_interface_info_ref
 */
 func (recv *DBusInterfaceInfo) Ref() *DBusInterfaceInfo {
 	retC := C.g_dbus_interface_info_ref((*C.GDBusInterfaceInfo)(recv.native))
@@ -349,7 +377,9 @@ func (recv *DBusInterfaceInfo) Ref() *DBusInterfaceInfo {
 // the memory used is freed.
 /*
 
-C function : g_dbus_interface_info_unref
+C function
+
+g_dbus_interface_info_unref
 */
 func (recv *DBusInterfaceInfo) Unref() {
 	C.g_dbus_interface_info_unref((*C.GDBusInterfaceInfo)(recv.native))
@@ -400,7 +430,9 @@ func (recv *DBusInterfaceInfo) Unref() {
 // the call, you must return the value of type %G_VARIANT_TYPE_UNIT.
 /*
 
-C record/class : GDBusInterfaceVTable
+C type
+
+GDBusInterfaceVTable
 */
 type DBusInterfaceVTable struct {
 	native *C.GDBusInterfaceVTable
@@ -429,7 +461,9 @@ func (recv *DBusInterfaceVTable) ToC() unsafe.Pointer {
 // Information about a method on an D-Bus interface.
 /*
 
-C record/class : GDBusMethodInfo
+C type
+
+GDBusMethodInfo
 */
 type DBusMethodInfo struct {
 	native   *C.GDBusMethodInfo
@@ -468,7 +502,9 @@ func (recv *DBusMethodInfo) ToC() unsafe.Pointer {
 // the reference count.
 /*
 
-C function : g_dbus_method_info_ref
+C function
+
+g_dbus_method_info_ref
 */
 func (recv *DBusMethodInfo) Ref() *DBusMethodInfo {
 	retC := C.g_dbus_method_info_ref((*C.GDBusMethodInfo)(recv.native))
@@ -482,7 +518,9 @@ func (recv *DBusMethodInfo) Ref() *DBusMethodInfo {
 // the memory used is freed.
 /*
 
-C function : g_dbus_method_info_unref
+C function
+
+g_dbus_method_info_unref
 */
 func (recv *DBusMethodInfo) Unref() {
 	C.g_dbus_method_info_unref((*C.GDBusMethodInfo)(recv.native))
@@ -493,7 +531,9 @@ func (recv *DBusMethodInfo) Unref() {
 // Information about nodes in a remote object hierarchy.
 /*
 
-C record/class : GDBusNodeInfo
+C type
+
+GDBusNodeInfo
 */
 type DBusNodeInfo struct {
 	native   *C.GDBusNodeInfo
@@ -538,7 +578,9 @@ func (recv *DBusNodeInfo) ToC() unsafe.Pointer {
 // parser that only accepts a subset of valid XML documents.
 /*
 
-C function : g_dbus_node_info_new_for_xml
+C function
+
+g_dbus_node_info_new_for_xml
 */
 func DBusNodeInfoNewForXml(xmlData string) (*DBusNodeInfo, error) {
 	c_xml_data := C.CString(xmlData)
@@ -563,7 +605,9 @@ func DBusNodeInfoNewForXml(xmlData string) (*DBusNodeInfo, error) {
 // handling the `org.freedesktop.DBus.Introspectable.Introspect`  method.
 /*
 
-C function : g_dbus_node_info_generate_xml
+C function
+
+g_dbus_node_info_generate_xml
 */
 func (recv *DBusNodeInfo) GenerateXml(indent uint32, stringBuilder *glib.String) {
 	c_indent := (C.guint)(indent)
@@ -583,7 +627,9 @@ func (recv *DBusNodeInfo) GenerateXml(indent uint32, stringBuilder *glib.String)
 // The cost of this function is O(n) in number of interfaces.
 /*
 
-C function : g_dbus_node_info_lookup_interface
+C function
+
+g_dbus_node_info_lookup_interface
 */
 func (recv *DBusNodeInfo) LookupInterface(name string) *DBusInterfaceInfo {
 	c_name := C.CString(name)
@@ -599,7 +645,9 @@ func (recv *DBusNodeInfo) LookupInterface(name string) *DBusInterfaceInfo {
 // the reference count.
 /*
 
-C function : g_dbus_node_info_ref
+C function
+
+g_dbus_node_info_ref
 */
 func (recv *DBusNodeInfo) Ref() *DBusNodeInfo {
 	retC := C.g_dbus_node_info_ref((*C.GDBusNodeInfo)(recv.native))
@@ -613,7 +661,9 @@ func (recv *DBusNodeInfo) Ref() *DBusNodeInfo {
 // the memory used is freed.
 /*
 
-C function : g_dbus_node_info_unref
+C function
+
+g_dbus_node_info_unref
 */
 func (recv *DBusNodeInfo) Unref() {
 	C.g_dbus_node_info_unref((*C.GDBusNodeInfo)(recv.native))
@@ -624,7 +674,9 @@ func (recv *DBusNodeInfo) Unref() {
 // Information about a D-Bus property on a D-Bus interface.
 /*
 
-C record/class : GDBusPropertyInfo
+C type
+
+GDBusPropertyInfo
 */
 type DBusPropertyInfo struct {
 	native    *C.GDBusPropertyInfo
@@ -669,7 +721,9 @@ func (recv *DBusPropertyInfo) ToC() unsafe.Pointer {
 // the reference count.
 /*
 
-C function : g_dbus_property_info_ref
+C function
+
+g_dbus_property_info_ref
 */
 func (recv *DBusPropertyInfo) Ref() *DBusPropertyInfo {
 	retC := C.g_dbus_property_info_ref((*C.GDBusPropertyInfo)(recv.native))
@@ -683,7 +737,9 @@ func (recv *DBusPropertyInfo) Ref() *DBusPropertyInfo {
 // the memory used is freed.
 /*
 
-C function : g_dbus_property_info_unref
+C function
+
+g_dbus_property_info_unref
 */
 func (recv *DBusPropertyInfo) Unref() {
 	C.g_dbus_property_info_unref((*C.GDBusPropertyInfo)(recv.native))
@@ -694,7 +750,9 @@ func (recv *DBusPropertyInfo) Unref() {
 // Class structure for #GDBusProxy.
 /*
 
-C record/class : GDBusProxyClass
+C type
+
+GDBusProxyClass
 */
 type DBusProxyClass struct {
 	native *C.GDBusProxyClass
@@ -723,7 +781,9 @@ func (recv *DBusProxyClass) ToC() unsafe.Pointer {
 // Information about a signal on a D-Bus interface.
 /*
 
-C record/class : GDBusSignalInfo
+C type
+
+GDBusSignalInfo
 */
 type DBusSignalInfo struct {
 	native   *C.GDBusSignalInfo
@@ -761,7 +821,9 @@ func (recv *DBusSignalInfo) ToC() unsafe.Pointer {
 // the reference count.
 /*
 
-C function : g_dbus_signal_info_ref
+C function
+
+g_dbus_signal_info_ref
 */
 func (recv *DBusSignalInfo) Ref() *DBusSignalInfo {
 	retC := C.g_dbus_signal_info_ref((*C.GDBusSignalInfo)(recv.native))
@@ -775,7 +837,9 @@ func (recv *DBusSignalInfo) Ref() *DBusSignalInfo {
 // the memory used is freed.
 /*
 
-C function : g_dbus_signal_info_unref
+C function
+
+g_dbus_signal_info_unref
 */
 func (recv *DBusSignalInfo) Unref() {
 	C.g_dbus_signal_info_unref((*C.GDBusSignalInfo)(recv.native))
@@ -786,7 +850,9 @@ func (recv *DBusSignalInfo) Unref() {
 // Virtual table for handling subtrees registered with g_dbus_connection_register_subtree().
 /*
 
-C record/class : GDBusSubtreeVTable
+C type
+
+GDBusSubtreeVTable
 */
 type DBusSubtreeVTable struct {
 	native *C.GDBusSubtreeVTable
@@ -815,7 +881,9 @@ func (recv *DBusSubtreeVTable) ToC() unsafe.Pointer {
 // Class structure for #GProxyAddress.
 /*
 
-C record/class : GProxyAddressClass
+C type
+
+GProxyAddressClass
 */
 type ProxyAddressClass struct {
 	native *C.GProxyAddressClass
@@ -841,7 +909,9 @@ func (recv *ProxyAddressClass) ToC() unsafe.Pointer {
 // Provides an interface for handling proxy connection and payload.
 /*
 
-C record/class : GProxyInterface
+C type
+
+GProxyInterface
 */
 type ProxyInterface struct {
 	native *C.GProxyInterface
@@ -871,7 +941,9 @@ func (recv *ProxyInterface) ToC() unsafe.Pointer {
 // vtable for a #GTlsClientConnection implementation.
 /*
 
-C record/class : GTlsClientConnectionInterface
+C type
+
+GTlsClientConnectionInterface
 */
 type TlsClientConnectionInterface struct {
 	native *C.GTlsClientConnectionInterface
@@ -898,7 +970,9 @@ func (recv *TlsClientConnectionInterface) ToC() unsafe.Pointer {
 // vtable for a #GTlsServerConnection implementation.
 /*
 
-C record/class : GTlsServerConnectionInterface
+C type
+
+GTlsServerConnectionInterface
 */
 type TlsServerConnectionInterface struct {
 	native *C.GTlsServerConnectionInterface
@@ -924,7 +998,9 @@ func (recv *TlsServerConnectionInterface) ToC() unsafe.Pointer {
 // Class structure for #GUnixCredentialsMessage.
 /*
 
-C record/class : GUnixCredentialsMessageClass
+C type
+
+GUnixCredentialsMessageClass
 */
 type UnixCredentialsMessageClass struct {
 	native *C.GUnixCredentialsMessageClass

@@ -11,7 +11,9 @@ import "C"
 
 /*
 
-C record/class : GdkPixbufFormat
+C type
+
+GdkPixbufFormat
 */
 type PixbufFormat struct {
 	native *C.GdkPixbufFormat
@@ -35,7 +37,9 @@ func (recv *PixbufFormat) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GdkPixbufLoaderClass
+C type
+
+GdkPixbufLoaderClass
 */
 type PixbufLoaderClass struct {
 	native *C.GdkPixbufLoaderClass
@@ -64,7 +68,9 @@ func (recv *PixbufLoaderClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GdkPixbufSimpleAnimClass
+C type
+
+GdkPixbufSimpleAnimClass
 */
 type PixbufSimpleAnimClass struct {
 	native *C.GdkPixbufSimpleAnimClass

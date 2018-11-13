@@ -32,7 +32,9 @@ import "C"
 // have its state changed from outside callers.
 /*
 
-C function : g_action_get_enabled
+C function
+
+g_action_get_enabled
 */
 func (recv *Action) GetEnabled() bool {
 	retC := C.g_action_get_enabled((*C.GAction)(recv.native))
@@ -44,7 +46,9 @@ func (recv *Action) GetEnabled() bool {
 // Queries the name of @action.
 /*
 
-C function : g_action_get_name
+C function
+
+g_action_get_name
 */
 func (recv *Action) GetName() string {
 	retC := C.g_action_get_name((*C.GAction)(recv.native))
@@ -74,7 +78,9 @@ func (recv *Action) GetName() string {
 // This function should only be called by #GActionGroup implementations.
 /*
 
-C function : g_action_group_action_added
+C function
+
+g_action_group_action_added
 */
 func (recv *ActionGroup) ActionAdded(actionName string) {
 	c_action_name := C.CString(actionName)
@@ -90,7 +96,9 @@ func (recv *ActionGroup) ActionAdded(actionName string) {
 // This function should only be called by #GActionGroup implementations.
 /*
 
-C function : g_action_group_action_enabled_changed
+C function
+
+g_action_group_action_enabled_changed
 */
 func (recv *ActionGroup) ActionEnabledChanged(actionName string, enabled bool) {
 	c_action_name := C.CString(actionName)
@@ -109,7 +117,9 @@ func (recv *ActionGroup) ActionEnabledChanged(actionName string, enabled bool) {
 // This function should only be called by #GActionGroup implementations.
 /*
 
-C function : g_action_group_action_removed
+C function
+
+g_action_group_action_removed
 */
 func (recv *ActionGroup) ActionRemoved(actionName string) {
 	c_action_name := C.CString(actionName)
@@ -132,7 +142,9 @@ func (recv *ActionGroup) ActionRemoved(actionName string) {
 // have its state changed from outside callers.
 /*
 
-C function : g_action_group_get_action_enabled
+C function
+
+g_action_group_get_action_enabled
 */
 func (recv *ActionGroup) GetActionEnabled(actionName string) bool {
 	c_action_name := C.CString(actionName)
@@ -155,7 +167,9 @@ func (recv *ActionGroup) GetActionEnabled(actionName string) bool {
 // Checks if the named action exists within @action_group.
 /*
 
-C function : g_action_group_has_action
+C function
+
+g_action_group_has_action
 */
 func (recv *ActionGroup) HasAction(actionName string) bool {
 	c_action_name := C.CString(actionName)
@@ -175,7 +189,9 @@ func (recv *ActionGroup) HasAction(actionName string) bool {
 // UNIX-file-descriptor-style asynchronous I/O rather than GIO-style.
 /*
 
-C record/class : GPollableInputStream
+C type
+
+GPollableInputStream
 */
 type PollableInputStream struct {
 	native *C.GPollableInputStream
@@ -206,7 +222,9 @@ func (recv *PollableInputStream) ToC() unsafe.Pointer {
 // a stream cannot switch from pollable to non-pollable or vice versa.
 /*
 
-C function : g_pollable_input_stream_can_poll
+C function
+
+g_pollable_input_stream_can_poll
 */
 func (recv *PollableInputStream) CanPoll() bool {
 	retC := C.g_pollable_input_stream_can_poll((*C.GPollableInputStream)(recv.native))
@@ -225,7 +243,9 @@ func (recv *PollableInputStream) CanPoll() bool {
 // rather than g_input_stream_read() from the callback.
 /*
 
-C function : g_pollable_input_stream_create_source
+C function
+
+g_pollable_input_stream_create_source
 */
 func (recv *PollableInputStream) CreateSource(cancellable *Cancellable) *glib.Source {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -249,7 +269,9 @@ func (recv *PollableInputStream) CreateSource(cancellable *Cancellable) *glib.So
 // %G_IO_ERROR_WOULD_BLOCK error rather than blocking.
 /*
 
-C function : g_pollable_input_stream_is_readable
+C function
+
+g_pollable_input_stream_is_readable
 */
 func (recv *PollableInputStream) IsReadable() bool {
 	retC := C.g_pollable_input_stream_is_readable((*C.GPollableInputStream)(recv.native))
@@ -271,7 +293,9 @@ func (recv *PollableInputStream) IsReadable() bool {
 // to having been cancelled.
 /*
 
-C function : g_pollable_input_stream_read_nonblocking
+C function
+
+g_pollable_input_stream_read_nonblocking
 */
 func (recv *PollableInputStream) ReadNonblocking(buffer []uint8, cancellable *Cancellable) (int64, error) {
 	c_buffer := &buffer[0]
@@ -302,7 +326,9 @@ func (recv *PollableInputStream) ReadNonblocking(buffer []uint8, cancellable *Ca
 // UNIX-file-descriptor-style asynchronous I/O rather than GIO-style.
 /*
 
-C record/class : GPollableOutputStream
+C type
+
+GPollableOutputStream
 */
 type PollableOutputStream struct {
 	native *C.GPollableOutputStream
@@ -333,7 +359,9 @@ func (recv *PollableOutputStream) ToC() unsafe.Pointer {
 // a stream cannot switch from pollable to non-pollable or vice versa.
 /*
 
-C function : g_pollable_output_stream_can_poll
+C function
+
+g_pollable_output_stream_can_poll
 */
 func (recv *PollableOutputStream) CanPoll() bool {
 	retC := C.g_pollable_output_stream_can_poll((*C.GPollableOutputStream)(recv.native))
@@ -352,7 +380,9 @@ func (recv *PollableOutputStream) CanPoll() bool {
 // rather than g_output_stream_write() from the callback.
 /*
 
-C function : g_pollable_output_stream_create_source
+C function
+
+g_pollable_output_stream_create_source
 */
 func (recv *PollableOutputStream) CreateSource(cancellable *Cancellable) *glib.Source {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -376,7 +406,9 @@ func (recv *PollableOutputStream) CreateSource(cancellable *Cancellable) *glib.S
 // %G_IO_ERROR_WOULD_BLOCK error rather than blocking.
 /*
 
-C function : g_pollable_output_stream_is_writable
+C function
+
+g_pollable_output_stream_is_writable
 */
 func (recv *PollableOutputStream) IsWritable() bool {
 	retC := C.g_pollable_output_stream_is_writable((*C.GPollableOutputStream)(recv.native))
@@ -401,7 +433,9 @@ func (recv *PollableOutputStream) IsWritable() bool {
 // transports like D/TLS require that you send the same @buffer and @count.
 /*
 
-C function : g_pollable_output_stream_write_nonblocking
+C function
+
+g_pollable_output_stream_write_nonblocking
 */
 func (recv *PollableOutputStream) WriteNonblocking(buffer []uint8, cancellable *Cancellable) (int64, error) {
 	c_buffer := &buffer[0]
@@ -429,7 +463,9 @@ func (recv *PollableOutputStream) WriteNonblocking(buffer []uint8, cancellable *
 // TLS (Transport Layer Security, aka SSL) and DTLS backend.
 /*
 
-C record/class : GTlsBackend
+C type
+
+GTlsBackend
 */
 type TlsBackend struct {
 	native *C.GTlsBackend
@@ -454,7 +490,9 @@ func (recv *TlsBackend) ToC() unsafe.Pointer {
 // Gets the #GType of @backend's #GTlsCertificate implementation.
 /*
 
-C function : g_tls_backend_get_certificate_type
+C function
+
+g_tls_backend_get_certificate_type
 */
 func (recv *TlsBackend) GetCertificateType() gobject.Type {
 	retC := C.g_tls_backend_get_certificate_type((*C.GTlsBackend)(recv.native))
@@ -466,7 +504,9 @@ func (recv *TlsBackend) GetCertificateType() gobject.Type {
 // Gets the #GType of @backend's #GTlsClientConnection implementation.
 /*
 
-C function : g_tls_backend_get_client_connection_type
+C function
+
+g_tls_backend_get_client_connection_type
 */
 func (recv *TlsBackend) GetClientConnectionType() gobject.Type {
 	retC := C.g_tls_backend_get_client_connection_type((*C.GTlsBackend)(recv.native))
@@ -478,7 +518,9 @@ func (recv *TlsBackend) GetClientConnectionType() gobject.Type {
 // Gets the #GType of @backend's #GTlsServerConnection implementation.
 /*
 
-C function : g_tls_backend_get_server_connection_type
+C function
+
+g_tls_backend_get_server_connection_type
 */
 func (recv *TlsBackend) GetServerConnectionType() gobject.Type {
 	retC := C.g_tls_backend_get_server_connection_type((*C.GTlsBackend)(recv.native))
@@ -491,7 +533,9 @@ func (recv *TlsBackend) GetServerConnectionType() gobject.Type {
 // #GTlsBackend, it means no "real" TLS backend is available.
 /*
 
-C function : g_tls_backend_supports_tls
+C function
+
+g_tls_backend_supports_tls
 */
 func (recv *TlsBackend) SupportsTls() bool {
 	retC := C.g_tls_backend_supports_tls((*C.GTlsBackend)(recv.native))
@@ -504,7 +548,9 @@ func (recv *TlsBackend) SupportsTls() bool {
 // #GTlsConnection, representing a client-side TLS connection.
 /*
 
-C record/class : GTlsClientConnection
+C type
+
+GTlsClientConnection
 */
 type TlsClientConnection struct {
 	native *C.GTlsClientConnection
@@ -535,7 +581,9 @@ func (recv *TlsClientConnection) ToC() unsafe.Pointer {
 // subject DN of the certificate authority.
 /*
 
-C function : g_tls_client_connection_get_accepted_cas
+C function
+
+g_tls_client_connection_get_accepted_cas
 */
 func (recv *TlsClientConnection) GetAcceptedCas() *glib.List {
 	retC := C.g_tls_client_connection_get_accepted_cas((*C.GTlsClientConnection)(recv.native))
@@ -547,7 +595,9 @@ func (recv *TlsClientConnection) GetAcceptedCas() *glib.List {
 // Gets @conn's expected server identity
 /*
 
-C function : g_tls_client_connection_get_server_identity
+C function
+
+g_tls_client_connection_get_server_identity
 */
 func (recv *TlsClientConnection) GetServerIdentity() *SocketConnectable {
 	retC := C.g_tls_client_connection_get_server_identity((*C.GTlsClientConnection)(recv.native))
@@ -561,7 +611,9 @@ func (recv *TlsClientConnection) GetServerIdentity() *SocketConnectable {
 // supported version of TLS; see g_tls_client_connection_set_use_ssl3().
 /*
 
-C function : g_tls_client_connection_get_use_ssl3
+C function
+
+g_tls_client_connection_get_use_ssl3
 */
 func (recv *TlsClientConnection) GetUseSsl3() bool {
 	retC := C.g_tls_client_connection_get_use_ssl3((*C.GTlsClientConnection)(recv.native))
@@ -573,7 +625,9 @@ func (recv *TlsClientConnection) GetUseSsl3() bool {
 // Gets @conn's validation flags
 /*
 
-C function : g_tls_client_connection_get_validation_flags
+C function
+
+g_tls_client_connection_get_validation_flags
 */
 func (recv *TlsClientConnection) GetValidationFlags() TlsCertificateFlags {
 	retC := C.g_tls_client_connection_get_validation_flags((*C.GTlsClientConnection)(recv.native))
@@ -588,7 +642,9 @@ func (recv *TlsClientConnection) GetValidationFlags() TlsCertificateFlags {
 // performing %G_TLS_CERTIFICATE_BAD_IDENTITY validation, if enabled.
 /*
 
-C function : g_tls_client_connection_set_server_identity
+C function
+
+g_tls_client_connection_set_server_identity
 */
 func (recv *TlsClientConnection) SetServerIdentity(identity *SocketConnectable) {
 	c_identity := (*C.GSocketConnectable)(identity.ToC())
@@ -608,7 +664,9 @@ func (recv *TlsClientConnection) SetServerIdentity(identity *SocketConnectable) 
 // the lowest-supported protocol version is probably not SSL 3.0.
 /*
 
-C function : g_tls_client_connection_set_use_ssl3
+C function
+
+g_tls_client_connection_set_use_ssl3
 */
 func (recv *TlsClientConnection) SetUseSsl3(useSsl3 bool) {
 	c_use_ssl3 :=
@@ -624,7 +682,9 @@ func (recv *TlsClientConnection) SetUseSsl3(useSsl3 bool) {
 // %G_TLS_CERTIFICATE_VALIDATE_ALL is used.
 /*
 
-C function : g_tls_client_connection_set_validation_flags
+C function
+
+g_tls_client_connection_set_validation_flags
 */
 func (recv *TlsClientConnection) SetValidationFlags(flags TlsCertificateFlags) {
 	c_flags := (C.GTlsCertificateFlags)(flags)
@@ -638,7 +698,9 @@ func (recv *TlsClientConnection) SetValidationFlags(flags TlsCertificateFlags) {
 // representing a server-side TLS connection.
 /*
 
-C record/class : GTlsServerConnection
+C type
+
+GTlsServerConnection
 */
 type TlsServerConnection struct {
 	native *C.GTlsServerConnection

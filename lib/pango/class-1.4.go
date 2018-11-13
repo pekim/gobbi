@@ -24,7 +24,9 @@ import "C"
 // by double-width characters.
 /*
 
-C function : pango_font_family_is_monospace
+C function
+
+pango_font_family_is_monospace
 */
 func (recv *FontFamily) IsMonospace() bool {
 	retC := C.pango_font_family_is_monospace((*C.PangoFontFamily)(recv.native))
@@ -38,7 +40,9 @@ func (recv *FontFamily) IsMonospace() bool {
 // #PangoEngineInfo.
 /*
 
-C function : pango_font_map_get_shape_engine_type
+C function
+
+pango_font_map_get_shape_engine_type
 */
 func (recv *FontMap) GetShapeEngineType() string {
 	retC := C.pango_font_map_get_shape_engine_type((*C.PangoFontMap)(recv.native))
@@ -54,7 +58,9 @@ func (recv *FontMap) GetShapeEngineType() string {
 // See pango_layout_set_auto_dir().
 /*
 
-C function : pango_layout_get_auto_dir
+C function
+
+pango_layout_get_auto_dir
 */
 func (recv *Layout) GetAutoDir() bool {
 	retC := C.pango_layout_get_auto_dir((*C.PangoLayout)(recv.native))
@@ -81,7 +87,9 @@ func (recv *Layout) GetAutoDir() bool {
 // %PANGO_ALIGN_LEFT and %PANGO_ALIGN_RIGHT are swapped.
 /*
 
-C function : pango_layout_set_auto_dir
+C function
+
+pango_layout_set_auto_dir
 */
 func (recv *Layout) SetAutoDir(autoDir bool) {
 	c_auto_dir :=

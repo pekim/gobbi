@@ -12,7 +12,9 @@ import "C"
 
 /*
 
-C record/class : GdkDevicePadInterface
+C type
+
+GdkDevicePadInterface
 */
 type DevicePadInterface struct {
 	native *C.GdkDevicePadInterface
@@ -36,7 +38,9 @@ func (recv *DevicePadInterface) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GdkDrawingContextClass
+C type
+
+GdkDrawingContextClass
 */
 type DrawingContextClass struct {
 	native *C.GdkDrawingContextClass
@@ -61,7 +65,9 @@ func (recv *DrawingContextClass) ToC() unsafe.Pointer {
 // Generated during %GDK_SOURCE_TABLET_PAD interaction with tactile sensors.
 /*
 
-C record/class : GdkEventPadAxis
+C type
+
+GdkEventPadAxis
 */
 type EventPadAxis struct {
 	native *C.GdkEventPadAxis
@@ -117,7 +123,9 @@ func (recv *EventPadAxis) ToC() unsafe.Pointer {
 // Generated during %GDK_SOURCE_TABLET_PAD button presses and releases.
 /*
 
-C record/class : GdkEventPadButton
+C type
+
+GdkEventPadButton
 */
 type EventPadButton struct {
 	native *C.GdkEventPadButton
@@ -169,7 +177,9 @@ func (recv *EventPadButton) ToC() unsafe.Pointer {
 // Generated during %GDK_SOURCE_TABLET_PAD mode switches in a group.
 /*
 
-C record/class : GdkEventPadGroupMode
+C type
+
+GdkEventPadGroupMode
 */
 type EventPadGroupMode struct {
 	native *C.GdkEventPadGroupMode
@@ -216,7 +226,9 @@ func (recv *EventPadGroupMode) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GdkMonitorClass
+C type
+
+GdkMonitorClass
 */
 type MonitorClass struct {
 	native *C.GdkMonitorClass

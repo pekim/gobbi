@@ -24,7 +24,9 @@ import "C"
 // initialization may fail.
 /*
 
-C record/class : GAsyncInitableIface
+C type
+
+GAsyncInitableIface
 */
 type AsyncInitableIface struct {
 	native *C.GAsyncInitableIface
@@ -53,7 +55,9 @@ func (recv *AsyncInitableIface) ToC() unsafe.Pointer {
 // may fail.
 /*
 
-C record/class : GInitableIface
+C type
+
+GInitableIface
 */
 type InitableIface struct {
 	native *C.GInitableIface
@@ -83,7 +87,9 @@ func (recv *InitableIface) ToC() unsafe.Pointer {
 // first buffer, switching to the next as needed.
 /*
 
-C record/class : GInputVector
+C type
+
+GInputVector
 */
 type InputVector struct {
 	native *C.GInputVector
@@ -121,7 +127,9 @@ func (recv *InputVector) ToC() unsafe.Pointer {
 // one buffer.
 /*
 
-C record/class : GOutputVector
+C type
+
+GOutputVector
 */
 type OutputVector struct {
 	native *C.GOutputVector
@@ -159,7 +167,9 @@ func (recv *OutputVector) ToC() unsafe.Pointer {
 // created by #GResolver.
 /*
 
-C function : g_srv_target_new
+C function
+
+g_srv_target_new
 */
 func SrvTargetNew(hostname string, port uint16, priority uint16, weight uint16) *SrvTarget {
 	c_hostname := C.CString(hostname)
@@ -180,7 +190,9 @@ func SrvTargetNew(hostname string, port uint16, priority uint16, weight uint16) 
 // Copies @target
 /*
 
-C function : g_srv_target_copy
+C function
+
+g_srv_target_copy
 */
 func (recv *SrvTarget) Copy() *SrvTarget {
 	retC := C.g_srv_target_copy((*C.GSrvTarget)(recv.native))
@@ -192,7 +204,9 @@ func (recv *SrvTarget) Copy() *SrvTarget {
 // Frees @target
 /*
 
-C function : g_srv_target_free
+C function
+
+g_srv_target_free
 */
 func (recv *SrvTarget) Free() {
 	C.g_srv_target_free((*C.GSrvTarget)(recv.native))
@@ -206,7 +220,9 @@ func (recv *SrvTarget) Free() {
 // g_hostname_to_unicode() to convert it if it does.)
 /*
 
-C function : g_srv_target_get_hostname
+C function
+
+g_srv_target_get_hostname
 */
 func (recv *SrvTarget) GetHostname() string {
 	retC := C.g_srv_target_get_hostname((*C.GSrvTarget)(recv.native))
@@ -218,7 +234,9 @@ func (recv *SrvTarget) GetHostname() string {
 // Gets @target's port
 /*
 
-C function : g_srv_target_get_port
+C function
+
+g_srv_target_get_port
 */
 func (recv *SrvTarget) GetPort() uint16 {
 	retC := C.g_srv_target_get_port((*C.GSrvTarget)(recv.native))
@@ -232,7 +250,9 @@ func (recv *SrvTarget) GetPort() uint16 {
 // RFC 2782.
 /*
 
-C function : g_srv_target_get_priority
+C function
+
+g_srv_target_get_priority
 */
 func (recv *SrvTarget) GetPriority() uint16 {
 	retC := C.g_srv_target_get_priority((*C.GSrvTarget)(recv.native))
@@ -246,7 +266,9 @@ func (recv *SrvTarget) GetPriority() uint16 {
 // RFC 2782.
 /*
 
-C function : g_srv_target_get_weight
+C function
+
+g_srv_target_get_weight
 */
 func (recv *SrvTarget) GetWeight() uint16 {
 	retC := C.g_srv_target_get_weight((*C.GSrvTarget)(recv.native))

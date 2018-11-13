@@ -32,7 +32,9 @@ import "C"
 // being swallowed by Exec key unquoting. See the specification for exact quoting rules.
 /*
 
-C function : g_app_info_create_from_commandline
+C function
+
+g_app_info_create_from_commandline
 */
 func AppInfoCreateFromCommandline(commandline string, applicationName string, flags AppInfoCreateFlags) (*AppInfo, error) {
 	c_commandline := C.CString(commandline)
@@ -66,7 +68,9 @@ func AppInfoCreateFromCommandline(commandline string, applicationName string, fl
 // the `Hidden` key set.
 /*
 
-C function : g_app_info_get_all
+C function
+
+g_app_info_get_all
 */
 func AppInfoGetAll() *glib.List {
 	retC := C.g_app_info_get_all()
@@ -81,7 +85,9 @@ func AppInfoGetAll() *glib.List {
 // g_app_info_get_fallback_for_type().
 /*
 
-C function : g_app_info_get_all_for_type
+C function
+
+g_app_info_get_all_for_type
 */
 func AppInfoGetAllForType(contentType string) *glib.List {
 	c_content_type := C.CString(contentType)
@@ -96,7 +102,9 @@ func AppInfoGetAllForType(contentType string) *glib.List {
 // Gets the default #GAppInfo for a given content type.
 /*
 
-C function : g_app_info_get_default_for_type
+C function
+
+g_app_info_get_default_for_type
 */
 func AppInfoGetDefaultForType(contentType string, mustSupportUris bool) *AppInfo {
 	c_content_type := C.CString(contentType)
@@ -117,7 +125,9 @@ func AppInfoGetDefaultForType(contentType string, mustSupportUris bool) *AppInfo
 // "ftp" or "sip".
 /*
 
-C function : g_app_info_get_default_for_uri_scheme
+C function
+
+g_app_info_get_default_for_uri_scheme
 */
 func AppInfoGetDefaultForUriScheme(uriScheme string) *AppInfo {
 	c_uri_scheme := C.CString(uriScheme)
@@ -135,7 +145,9 @@ func AppInfoGetDefaultForUriScheme(uriScheme string) *AppInfo {
 // required.
 /*
 
-C function : g_app_info_launch_default_for_uri
+C function
+
+g_app_info_launch_default_for_uri
 */
 func AppInfoLaunchDefaultForUri(uri string, context *AppLaunchContext) (bool, error) {
 	c_uri := C.CString(uri)
@@ -163,7 +175,9 @@ func AppInfoLaunchDefaultForUri(uri string, context *AppLaunchContext) (bool, er
 // things like text files can be executables (i.e. scripts and batch files).
 /*
 
-C function : g_content_type_can_be_executable
+C function
+
+g_content_type_can_be_executable
 */
 func ContentTypeCanBeExecutable(type_ string) bool {
 	c_type := C.CString(type_)
@@ -178,7 +192,9 @@ func ContentTypeCanBeExecutable(type_ string) bool {
 // Compares two content types for equality.
 /*
 
-C function : g_content_type_equals
+C function
+
+g_content_type_equals
 */
 func ContentTypeEquals(type1 string, type2 string) bool {
 	c_type1 := C.CString(type1)
@@ -196,7 +212,9 @@ func ContentTypeEquals(type1 string, type2 string) bool {
 // Gets the human readable description of the content type.
 /*
 
-C function : g_content_type_get_description
+C function
+
+g_content_type_get_description
 */
 func ContentTypeGetDescription(type_ string) string {
 	c_type := C.CString(type_)
@@ -212,7 +230,9 @@ func ContentTypeGetDescription(type_ string) string {
 // Gets the icon for a content type.
 /*
 
-C function : g_content_type_get_icon
+C function
+
+g_content_type_get_icon
 */
 func ContentTypeGetIcon(type_ string) *Icon {
 	c_type := C.CString(type_)
@@ -227,7 +247,9 @@ func ContentTypeGetIcon(type_ string) *Icon {
 // Gets the mime type for the content type, if one is registered.
 /*
 
-C function : g_content_type_get_mime_type
+C function
+
+g_content_type_get_mime_type
 */
 func ContentTypeGetMimeType(type_ string) string {
 	c_type := C.CString(type_)
@@ -246,7 +268,9 @@ func ContentTypeGetMimeType(type_ string) string {
 // on the other argument.
 /*
 
-C function : g_content_type_guess
+C function
+
+g_content_type_guess
 */
 func ContentTypeGuess(filename string, data []uint8) (string, bool) {
 	c_filename := C.CString(filename)
@@ -270,7 +294,9 @@ func ContentTypeGuess(filename string, data []uint8) (string, bool) {
 // Determines if @type is a subset of @supertype.
 /*
 
-C function : g_content_type_is_a
+C function
+
+g_content_type_is_a
 */
 func ContentTypeIsA(type_ string, supertype string) bool {
 	c_type := C.CString(type_)
@@ -291,7 +317,9 @@ func ContentTypeIsA(type_ string, supertype string) bool {
 // or octet-stream.
 /*
 
-C function : g_content_type_is_unknown
+C function
+
+g_content_type_is_unknown
 */
 func ContentTypeIsUnknown(type_ string) bool {
 	c_type := C.CString(type_)
@@ -308,7 +336,9 @@ func ContentTypeIsUnknown(type_ string) bool {
 // g_list_free_full (list, g_free).
 /*
 
-C function : g_content_types_get_registered
+C function
+
+g_content_types_get_registered
 */
 func ContentTypesGetRegistered() *glib.List {
 	retC := C.g_content_types_get_registered()
@@ -319,7 +349,9 @@ func ContentTypesGetRegistered() *glib.List {
 
 /*
 
-C function : g_dbus_error_quark
+C function
+
+g_dbus_error_quark
 */
 func DbusErrorQuark() glib.Quark {
 	retC := C.g_dbus_error_quark()
@@ -344,7 +376,9 @@ func DbusErrorQuark() glib.Quark {
 // #GOptionContext arguments of type %G_OPTION_ARG_FILENAME.
 /*
 
-C function : g_file_new_for_commandline_arg
+C function
+
+g_file_new_for_commandline_arg
 */
 func FileNewForCommandlineArg(arg string) *File {
 	c_arg := C.CString(arg)
@@ -361,7 +395,9 @@ func FileNewForCommandlineArg(arg string) *File {
 // operation if @path is malformed.
 /*
 
-C function : g_file_new_for_path
+C function
+
+g_file_new_for_path
 */
 func FileNewForPath(path string) *File {
 	c_path := C.CString(path)
@@ -379,7 +415,9 @@ func FileNewForPath(path string) *File {
 // not supported.
 /*
 
-C function : g_file_new_for_uri
+C function
+
+g_file_new_for_uri
 */
 func FileNewForUri(uri string) *File {
 	c_uri := C.CString(uri)
@@ -397,7 +435,9 @@ func FileNewForUri(uri string) *File {
 // the @parse_name cannot be parsed.
 /*
 
-C function : g_file_parse_name
+C function
+
+g_file_parse_name
 */
 func FileParseName(parseName string) *File {
 	c_parse_name := C.CString(parseName)
@@ -412,7 +452,9 @@ func FileParseName(parseName string) *File {
 // Gets a hash for an icon.
 /*
 
-C function : g_icon_hash
+C function
+
+g_icon_hash
 */
 func IconHash(icon uintptr) uint32 {
 	c_icon := (C.gconstpointer)(icon)
@@ -432,7 +474,9 @@ func IconHash(icon uintptr) uint32 {
 // calls, you should save its value as soon as the call which sets it
 /*
 
-C function : g_io_error_from_errno
+C function
+
+g_io_error_from_errno
 */
 func IoErrorFromErrno(errNo int32) IOErrorEnum {
 	c_err_no := (C.gint)(errNo)
@@ -446,7 +490,9 @@ func IoErrorFromErrno(errNo int32) IOErrorEnum {
 // Gets the GIO Error Quark.
 /*
 
-C function : g_io_error_quark
+C function
+
+g_io_error_quark
 */
 func IoErrorQuark() glib.Quark {
 	retC := C.g_io_error_quark()
@@ -462,7 +508,9 @@ func IoErrorQuark() glib.Quark {
 // extension point, the existing #GIOExtension object is returned.
 /*
 
-C function : g_io_extension_point_implement
+C function
+
+g_io_extension_point_implement
 */
 func IoExtensionPointImplement(extensionPointName string, type_ gobject.Type, extensionName string, priority int32) *IOExtension {
 	c_extension_point_name := C.CString(extensionPointName)
@@ -484,7 +532,9 @@ func IoExtensionPointImplement(extensionPointName string, type_ gobject.Type, ex
 // Looks up an existing extension point.
 /*
 
-C function : g_io_extension_point_lookup
+C function
+
+g_io_extension_point_lookup
 */
 func IoExtensionPointLookup(name string) *IOExtensionPoint {
 	c_name := C.CString(name)
@@ -499,7 +549,9 @@ func IoExtensionPointLookup(name string) *IOExtensionPoint {
 // Registers an extension point.
 /*
 
-C function : g_io_extension_point_register
+C function
+
+g_io_extension_point_register
 */
 func IoExtensionPointRegister(name string) *IOExtensionPoint {
 	c_name := C.CString(name)
@@ -518,7 +570,9 @@ func IoExtensionPointRegister(name string) *IOExtensionPoint {
 // which allows delayed/lazy loading of modules.
 /*
 
-C function : g_io_modules_load_all_in_directory
+C function
+
+g_io_modules_load_all_in_directory
 */
 func IoModulesLoadAllInDirectory(dirname string) *glib.List {
 	c_dirname := C.CString(dirname)
@@ -536,7 +590,9 @@ func IoModulesLoadAllInDirectory(dirname string) *glib.List {
 // g_io_scheduler_push_job().
 /*
 
-C function : g_io_scheduler_cancel_all_jobs
+C function
+
+g_io_scheduler_cancel_all_jobs
 */
 func IoSchedulerCancelAllJobs() {
 	C.g_io_scheduler_cancel_all_jobs()
@@ -558,7 +614,9 @@ func IoSchedulerCancelAllJobs() {
 // casual user.
 /*
 
-C function : g_unix_is_mount_path_system_internal
+C function
+
+g_unix_is_mount_path_system_internal
 */
 func UnixIsMountPathSystemInternal(mountPath string) bool {
 	c_mount_path := C.CString(mountPath)
@@ -575,7 +633,9 @@ func UnixIsMountPathSystemInternal(mountPath string) bool {
 // if the mounts have changed since with g_unix_mounts_changed_since().
 /*
 
-C function : g_unix_mount_at
+C function
+
+g_unix_mount_at
 */
 func UnixMountAt(mountPath string) (*UnixMountEntry, uint64) {
 	c_mount_path := C.CString(mountPath)
@@ -594,7 +654,9 @@ func UnixMountAt(mountPath string) (*UnixMountEntry, uint64) {
 // Compares two unix mounts.
 /*
 
-C function : g_unix_mount_compare
+C function
+
+g_unix_mount_compare
 */
 func UnixMountCompare(mount1 *UnixMountEntry, mount2 *UnixMountEntry) int32 {
 	c_mount1 := (*C.GUnixMountEntry)(C.NULL)
@@ -616,7 +678,9 @@ func UnixMountCompare(mount1 *UnixMountEntry, mount2 *UnixMountEntry) int32 {
 // Frees a unix mount.
 /*
 
-C function : g_unix_mount_free
+C function
+
+g_unix_mount_free
 */
 func UnixMountFree(mountEntry *UnixMountEntry) {
 	c_mount_entry := (*C.GUnixMountEntry)(C.NULL)
@@ -632,7 +696,9 @@ func UnixMountFree(mountEntry *UnixMountEntry) {
 // Gets the device path for a unix mount.
 /*
 
-C function : g_unix_mount_get_device_path
+C function
+
+g_unix_mount_get_device_path
 */
 func UnixMountGetDevicePath(mountEntry *UnixMountEntry) string {
 	c_mount_entry := (*C.GUnixMountEntry)(C.NULL)
@@ -649,7 +715,9 @@ func UnixMountGetDevicePath(mountEntry *UnixMountEntry) string {
 // Gets the filesystem type for the unix mount.
 /*
 
-C function : g_unix_mount_get_fs_type
+C function
+
+g_unix_mount_get_fs_type
 */
 func UnixMountGetFsType(mountEntry *UnixMountEntry) string {
 	c_mount_entry := (*C.GUnixMountEntry)(C.NULL)
@@ -666,7 +734,9 @@ func UnixMountGetFsType(mountEntry *UnixMountEntry) string {
 // Gets the mount path for a unix mount.
 /*
 
-C function : g_unix_mount_get_mount_path
+C function
+
+g_unix_mount_get_mount_path
 */
 func UnixMountGetMountPath(mountEntry *UnixMountEntry) string {
 	c_mount_entry := (*C.GUnixMountEntry)(C.NULL)
@@ -683,7 +753,9 @@ func UnixMountGetMountPath(mountEntry *UnixMountEntry) string {
 // Guesses whether a Unix mount can be ejected.
 /*
 
-C function : g_unix_mount_guess_can_eject
+C function
+
+g_unix_mount_guess_can_eject
 */
 func UnixMountGuessCanEject(mountEntry *UnixMountEntry) bool {
 	c_mount_entry := (*C.GUnixMountEntry)(C.NULL)
@@ -700,7 +772,9 @@ func UnixMountGuessCanEject(mountEntry *UnixMountEntry) bool {
 // Guesses the icon of a Unix mount.
 /*
 
-C function : g_unix_mount_guess_icon
+C function
+
+g_unix_mount_guess_icon
 */
 func UnixMountGuessIcon(mountEntry *UnixMountEntry) *Icon {
 	c_mount_entry := (*C.GUnixMountEntry)(C.NULL)
@@ -718,7 +792,9 @@ func UnixMountGuessIcon(mountEntry *UnixMountEntry) *Icon {
 // The result is a translated string.
 /*
 
-C function : g_unix_mount_guess_name
+C function
+
+g_unix_mount_guess_name
 */
 func UnixMountGuessName(mountEntry *UnixMountEntry) string {
 	c_mount_entry := (*C.GUnixMountEntry)(C.NULL)
@@ -736,7 +812,9 @@ func UnixMountGuessName(mountEntry *UnixMountEntry) string {
 // Guesses whether a Unix mount should be displayed in the UI.
 /*
 
-C function : g_unix_mount_guess_should_display
+C function
+
+g_unix_mount_guess_should_display
 */
 func UnixMountGuessShouldDisplay(mountEntry *UnixMountEntry) bool {
 	c_mount_entry := (*C.GUnixMountEntry)(C.NULL)
@@ -753,7 +831,9 @@ func UnixMountGuessShouldDisplay(mountEntry *UnixMountEntry) bool {
 // Checks if a unix mount is mounted read only.
 /*
 
-C function : g_unix_mount_is_readonly
+C function
+
+g_unix_mount_is_readonly
 */
 func UnixMountIsReadonly(mountEntry *UnixMountEntry) bool {
 	c_mount_entry := (*C.GUnixMountEntry)(C.NULL)
@@ -775,7 +855,9 @@ func UnixMountIsReadonly(mountEntry *UnixMountEntry) bool {
 // file system types and device paths are ignored.
 /*
 
-C function : g_unix_mount_is_system_internal
+C function
+
+g_unix_mount_is_system_internal
 */
 func UnixMountIsSystemInternal(mountEntry *UnixMountEntry) bool {
 	c_mount_entry := (*C.GUnixMountEntry)(C.NULL)
@@ -792,7 +874,9 @@ func UnixMountIsSystemInternal(mountEntry *UnixMountEntry) bool {
 // Checks if the unix mount points have changed since a given unix time.
 /*
 
-C function : g_unix_mount_points_changed_since
+C function
+
+g_unix_mount_points_changed_since
 */
 func UnixMountPointsChangedSince(time uint64) bool {
 	c_time := (C.guint64)(time)
@@ -809,7 +893,9 @@ func UnixMountPointsChangedSince(time uint64) bool {
 // g_unix_mount_points_changed_since().
 /*
 
-C function : g_unix_mount_points_get
+C function
+
+g_unix_mount_points_get
 */
 func UnixMountPointsGet() (*glib.List, uint64) {
 	var c_time_read C.guint64
@@ -825,7 +911,9 @@ func UnixMountPointsGet() (*glib.List, uint64) {
 // Checks if the unix mounts have changed since a given unix time.
 /*
 
-C function : g_unix_mounts_changed_since
+C function
+
+g_unix_mounts_changed_since
 */
 func UnixMountsChangedSince(time uint64) bool {
 	c_time := (C.guint64)(time)
@@ -842,7 +930,9 @@ func UnixMountsChangedSince(time uint64) bool {
 // with g_unix_mounts_changed_since().
 /*
 
-C function : g_unix_mounts_get
+C function
+
+g_unix_mounts_get
 */
 func UnixMountsGet() (*glib.List, uint64) {
 	var c_time_read C.guint64

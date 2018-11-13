@@ -19,7 +19,9 @@ import "C"
 // @error will be set.
 /*
 
-C function : gdk_pixbuf_new_from_resource
+C function
+
+gdk_pixbuf_new_from_resource
 */
 func PixbufNewFromResource(resourcePath string) (*Pixbuf, error) {
 	c_resource_path := C.CString(resourcePath)
@@ -53,7 +55,9 @@ func PixbufNewFromResource(resourcePath string) (*Pixbuf, error) {
 // The stream is not closed.
 /*
 
-C function : gdk_pixbuf_new_from_resource_at_scale
+C function
+
+gdk_pixbuf_new_from_resource_at_scale
 */
 func PixbufNewFromResourceAtScale(resourcePath string, width int32, height int32, preserveAspectRatio bool) (*Pixbuf, error) {
 	c_resource_path := C.CString(resourcePath)
@@ -82,7 +86,9 @@ func PixbufNewFromResourceAtScale(resourcePath string, width int32, height int32
 // Returns the length of the pixel data, in bytes.
 /*
 
-C function : gdk_pixbuf_get_byte_length
+C function
+
+gdk_pixbuf_get_byte_length
 */
 func (recv *Pixbuf) GetByteLength() uint64 {
 	retC := C.gdk_pixbuf_get_byte_length((*C.GdkPixbuf)(recv.native))

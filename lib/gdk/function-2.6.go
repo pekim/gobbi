@@ -14,7 +14,9 @@ import "C"
 // meaningless at other times.
 /*
 
-C function : gdk_drag_drop_succeeded
+C function
+
+gdk_drag_drop_succeeded
 */
 func DragDropSucceeded(context *DragContext) bool {
 	c_context := (*C.GdkDragContext)(C.NULL)

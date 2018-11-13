@@ -265,7 +265,9 @@ func action_activateHandler(_ *C.GObject, data C.gpointer) {
 // names.
 /*
 
-C function : gtk_action_new
+C function
+
+gtk_action_new
 */
 func ActionNew(name string, label string, tooltip string, stockId string) *Action {
 	c_name := C.CString(name)
@@ -293,7 +295,9 @@ func ActionNew(name string, label string, tooltip string, stockId string) *Actio
 // It can also be used to manually activate an action.
 /*
 
-C function : gtk_action_activate
+C function
+
+gtk_action_activate
 */
 func (recv *Action) Activate() {
 	C.gtk_action_activate((*C.GtkAction)(recv.native))
@@ -311,7 +315,9 @@ func (recv *Action) Activate() {
 // gtk_action_disconnect_accelerator() has been called as many times.
 /*
 
-C function : gtk_action_connect_accelerator
+C function
+
+gtk_action_connect_accelerator
 */
 func (recv *Action) ConnectAccelerator() {
 	C.gtk_action_connect_accelerator((*C.GtkAction)(recv.native))
@@ -323,7 +329,9 @@ func (recv *Action) ConnectAccelerator() {
 // create icons displayed in the proxy widgets.
 /*
 
-C function : gtk_action_create_icon
+C function
+
+gtk_action_create_icon
 */
 func (recv *Action) CreateIcon(iconSize IconSize) *Widget {
 	c_icon_size := (C.GtkIconSize)(iconSize)
@@ -337,7 +345,9 @@ func (recv *Action) CreateIcon(iconSize IconSize) *Widget {
 // Creates a menu item widget that proxies for the given action.
 /*
 
-C function : gtk_action_create_menu_item
+C function
+
+gtk_action_create_menu_item
 */
 func (recv *Action) CreateMenuItem() *Widget {
 	retC := C.gtk_action_create_menu_item((*C.GtkAction)(recv.native))
@@ -349,7 +359,9 @@ func (recv *Action) CreateMenuItem() *Widget {
 // Creates a toolbar item widget that proxies for the given action.
 /*
 
-C function : gtk_action_create_tool_item
+C function
+
+gtk_action_create_tool_item
 */
 func (recv *Action) CreateToolItem() *Widget {
 	retC := C.gtk_action_create_tool_item((*C.GtkAction)(recv.native))
@@ -361,7 +373,9 @@ func (recv *Action) CreateToolItem() *Widget {
 // Undoes the effect of one call to gtk_action_connect_accelerator().
 /*
 
-C function : gtk_action_disconnect_accelerator
+C function
+
+gtk_action_disconnect_accelerator
 */
 func (recv *Action) DisconnectAccelerator() {
 	C.gtk_action_disconnect_accelerator((*C.GtkAction)(recv.native))
@@ -372,7 +386,9 @@ func (recv *Action) DisconnectAccelerator() {
 // Returns the name of the action.
 /*
 
-C function : gtk_action_get_name
+C function
+
+gtk_action_get_name
 */
 func (recv *Action) GetName() string {
 	retC := C.gtk_action_get_name((*C.GtkAction)(recv.native))
@@ -385,7 +401,9 @@ func (recv *Action) GetName() string {
 // See also gtk_activatable_get_related_action().
 /*
 
-C function : gtk_action_get_proxies
+C function
+
+gtk_action_get_proxies
 */
 func (recv *Action) GetProxies() *glib.SList {
 	retC := C.gtk_action_get_proxies((*C.GtkAction)(recv.native))
@@ -399,7 +417,9 @@ func (recv *Action) GetProxies() *glib.SList {
 // for that.
 /*
 
-C function : gtk_action_get_sensitive
+C function
+
+gtk_action_get_sensitive
 */
 func (recv *Action) GetSensitive() bool {
 	retC := C.gtk_action_get_sensitive((*C.GtkAction)(recv.native))
@@ -413,7 +433,9 @@ func (recv *Action) GetSensitive() bool {
 // for that.
 /*
 
-C function : gtk_action_get_visible
+C function
+
+gtk_action_get_visible
 */
 func (recv *Action) GetVisible() bool {
 	retC := C.gtk_action_get_visible((*C.GtkAction)(recv.native))
@@ -425,7 +447,9 @@ func (recv *Action) GetVisible() bool {
 // Returns whether the action is effectively sensitive.
 /*
 
-C function : gtk_action_is_sensitive
+C function
+
+gtk_action_is_sensitive
 */
 func (recv *Action) IsSensitive() bool {
 	retC := C.gtk_action_is_sensitive((*C.GtkAction)(recv.native))
@@ -437,7 +461,9 @@ func (recv *Action) IsSensitive() bool {
 // Returns whether the action is effectively visible.
 /*
 
-C function : gtk_action_is_visible
+C function
+
+gtk_action_is_visible
 */
 func (recv *Action) IsVisible() bool {
 	retC := C.gtk_action_is_visible((*C.GtkAction)(recv.native))
@@ -450,7 +476,9 @@ func (recv *Action) IsVisible() bool {
 // will be installed.
 /*
 
-C function : gtk_action_set_accel_group
+C function
+
+gtk_action_set_accel_group
 */
 func (recv *Action) SetAccelGroup(accelGroup *AccelGroup) {
 	c_accel_group := (*C.GtkAccelGroup)(C.NULL)
@@ -472,7 +500,9 @@ func (recv *Action) SetAccelGroup(accelGroup *AccelGroup) {
 // g_intern_static_string().
 /*
 
-C function : gtk_action_set_accel_path
+C function
+
+gtk_action_set_accel_path
 */
 func (recv *Action) SetAccelPath(accelPath string) {
 	c_accel_path := C.CString(accelPath)
@@ -728,7 +758,9 @@ func actiongroup_preActivateHandler(_ *C.GObject, c_action *C.GtkAction, data C.
 // with the actions.
 /*
 
-C function : gtk_action_group_new
+C function
+
+gtk_action_group_new
 */
 func ActionGroupNew(name string) *ActionGroup {
 	c_name := C.CString(name)
@@ -748,7 +780,9 @@ func ActionGroupNew(name string) *ActionGroup {
 // `gtk_action_group_add_action_with_accel (..., NULL)`.
 /*
 
-C function : gtk_action_group_add_action
+C function
+
+gtk_action_group_add_action
 */
 func (recv *ActionGroup) AddAction(action *Action) {
 	c_action := (*C.GtkAction)(C.NULL)
@@ -769,7 +803,9 @@ func (recv *ActionGroup) AddAction(action *Action) {
 // Accel paths are set to `<Actions>/group-name/action-name`.
 /*
 
-C function : gtk_action_group_add_action_with_accel
+C function
+
+gtk_action_group_add_action_with_accel
 */
 func (recv *ActionGroup) AddActionWithAccel(action *Action, accelerator string) {
 	c_action := (*C.GtkAction)(C.NULL)
@@ -800,7 +836,9 @@ func (recv *ActionGroup) AddActionWithAccel(action *Action, accelerator string) 
 // Looks up an action in the action group by name.
 /*
 
-C function : gtk_action_group_get_action
+C function
+
+gtk_action_group_get_action
 */
 func (recv *ActionGroup) GetAction(actionName string) *Action {
 	c_action_name := C.CString(actionName)
@@ -815,7 +853,9 @@ func (recv *ActionGroup) GetAction(actionName string) *Action {
 // Gets the name of the action group.
 /*
 
-C function : gtk_action_group_get_name
+C function
+
+gtk_action_group_get_name
 */
 func (recv *ActionGroup) GetName() string {
 	retC := C.gtk_action_group_get_name((*C.GtkActionGroup)(recv.native))
@@ -830,7 +870,9 @@ func (recv *ActionGroup) GetName() string {
 // is sensitive.
 /*
 
-C function : gtk_action_group_get_sensitive
+C function
+
+gtk_action_group_get_sensitive
 */
 func (recv *ActionGroup) GetSensitive() bool {
 	retC := C.gtk_action_group_get_sensitive((*C.GtkActionGroup)(recv.native))
@@ -845,7 +887,9 @@ func (recv *ActionGroup) GetSensitive() bool {
 // is visible.
 /*
 
-C function : gtk_action_group_get_visible
+C function
+
+gtk_action_group_get_visible
 */
 func (recv *ActionGroup) GetVisible() bool {
 	retC := C.gtk_action_group_get_visible((*C.GtkActionGroup)(recv.native))
@@ -857,7 +901,9 @@ func (recv *ActionGroup) GetVisible() bool {
 // Lists the actions in the action group.
 /*
 
-C function : gtk_action_group_list_actions
+C function
+
+gtk_action_group_list_actions
 */
 func (recv *ActionGroup) ListActions() *glib.List {
 	retC := C.gtk_action_group_list_actions((*C.GtkActionGroup)(recv.native))
@@ -869,7 +915,9 @@ func (recv *ActionGroup) ListActions() *glib.List {
 // Removes an action object from the action group.
 /*
 
-C function : gtk_action_group_remove_action
+C function
+
+gtk_action_group_remove_action
 */
 func (recv *ActionGroup) RemoveAction(action *Action) {
 	c_action := (*C.GtkAction)(C.NULL)
@@ -885,7 +933,9 @@ func (recv *ActionGroup) RemoveAction(action *Action) {
 // Changes the sensitivity of @action_group
 /*
 
-C function : gtk_action_group_set_sensitive
+C function
+
+gtk_action_group_set_sensitive
 */
 func (recv *ActionGroup) SetSensitive(sensitive bool) {
 	c_sensitive :=
@@ -906,7 +956,9 @@ func (recv *ActionGroup) SetSensitive(sensitive bool) {
 // gtk_action_group_set_translate_func().
 /*
 
-C function : gtk_action_group_set_translation_domain
+C function
+
+gtk_action_group_set_translation_domain
 */
 func (recv *ActionGroup) SetTranslationDomain(domain string) {
 	c_domain := C.CString(domain)
@@ -920,7 +972,9 @@ func (recv *ActionGroup) SetTranslationDomain(domain string) {
 // Changes the visible of @action_group.
 /*
 
-C function : gtk_action_group_set_visible
+C function
+
+gtk_action_group_set_visible
 */
 func (recv *ActionGroup) SetVisible(visible bool) {
 	c_visible :=
@@ -935,7 +989,9 @@ func (recv *ActionGroup) SetVisible(visible bool) {
 // See gtk_alignment_set_padding ().
 /*
 
-C function : gtk_alignment_get_padding
+C function
+
+gtk_alignment_get_padding
 */
 func (recv *Alignment) GetPadding() (uint32, uint32, uint32, uint32) {
 	var c_padding_top C.guint
@@ -965,7 +1021,9 @@ func (recv *Alignment) GetPadding() (uint32, uint32, uint32, uint32) {
 // padding on the left.
 /*
 
-C function : gtk_alignment_set_padding
+C function
+
+gtk_alignment_set_padding
 */
 func (recv *Alignment) SetPadding(paddingTop uint32, paddingBottom uint32, paddingLeft uint32, paddingRight uint32) {
 	c_padding_top := (C.guint)(paddingTop)
@@ -984,7 +1042,9 @@ func (recv *Alignment) SetPadding(paddingTop uint32, paddingBottom uint32, paddi
 // Gets the alignment of the child in the button.
 /*
 
-C function : gtk_button_get_alignment
+C function
+
+gtk_button_get_alignment
 */
 func (recv *Button) GetAlignment() (float32, float32) {
 	var c_xalign C.gfloat
@@ -1004,7 +1064,9 @@ func (recv *Button) GetAlignment() (float32, float32) {
 // See gtk_button_set_focus_on_click().
 /*
 
-C function : gtk_button_get_focus_on_click
+C function
+
+gtk_button_get_focus_on_click
 */
 func (recv *Button) GetFocusOnClick() bool {
 	retC := C.gtk_button_get_focus_on_click((*C.GtkButton)(recv.native))
@@ -1017,7 +1079,9 @@ func (recv *Button) GetFocusOnClick() bool {
 // the child is a #GtkMisc or a #GtkAlignment.
 /*
 
-C function : gtk_button_set_alignment
+C function
+
+gtk_button_set_alignment
 */
 func (recv *Button) SetAlignment(xalign float32, yalign float32) {
 	c_xalign := (C.gfloat)(xalign)
@@ -1035,7 +1099,9 @@ func (recv *Button) SetAlignment(xalign float32, yalign float32) {
 // application.
 /*
 
-C function : gtk_button_set_focus_on_click
+C function
+
+gtk_button_set_focus_on_click
 */
 func (recv *Button) SetFocusOnClick(focusOnClick bool) {
 	c_focus_on_click :=
@@ -1049,7 +1115,9 @@ func (recv *Button) SetFocusOnClick(focusOnClick bool) {
 // Returns whether @child should appear in a secondary group of children.
 /*
 
-C function : gtk_button_box_get_child_secondary
+C function
+
+gtk_button_box_get_child_secondary
 */
 func (recv *ButtonBox) GetChildSecondary(child *Widget) bool {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -1066,7 +1134,9 @@ func (recv *ButtonBox) GetChildSecondary(child *Widget) bool {
 // Returns the current display options of @calendar.
 /*
 
-C function : gtk_calendar_get_display_options
+C function
+
+gtk_calendar_get_display_options
 */
 func (recv *Calendar) GetDisplayOptions() CalendarDisplayOptions {
 	retC := C.gtk_calendar_get_display_options((*C.GtkCalendar)(recv.native))
@@ -1079,7 +1149,9 @@ func (recv *Calendar) GetDisplayOptions() CalendarDisplayOptions {
 // headings).
 /*
 
-C function : gtk_calendar_set_display_options
+C function
+
+gtk_calendar_set_display_options
 */
 func (recv *Calendar) SetDisplayOptions(flags CalendarDisplayOptions) {
 	c_flags := (C.GtkCalendarDisplayOptions)(flags)
@@ -1149,7 +1221,9 @@ func cellrenderer_editingCanceledHandler(_ *C.GObject, data C.gpointer) {
 // Returns whether @check_menu_item looks like a #GtkRadioMenuItem
 /*
 
-C function : gtk_check_menu_item_get_draw_as_radio
+C function
+
+gtk_check_menu_item_get_draw_as_radio
 */
 func (recv *CheckMenuItem) GetDrawAsRadio() bool {
 	retC := C.gtk_check_menu_item_get_draw_as_radio((*C.GtkCheckMenuItem)(recv.native))
@@ -1161,7 +1235,9 @@ func (recv *CheckMenuItem) GetDrawAsRadio() bool {
 // Sets whether @check_menu_item is drawn like a #GtkRadioMenuItem
 /*
 
-C function : gtk_check_menu_item_set_draw_as_radio
+C function
+
+gtk_check_menu_item_set_draw_as_radio
 */
 func (recv *CheckMenuItem) SetDrawAsRadio(drawAsRadio bool) {
 	c_draw_as_radio :=
@@ -1242,7 +1318,9 @@ func colorbutton_colorSetHandler(_ *C.GObject, data C.gpointer) {
 // color when the user finishes.
 /*
 
-C function : gtk_color_button_new
+C function
+
+gtk_color_button_new
 */
 func ColorButtonNew() *ColorButton {
 	retC := C.gtk_color_button_new()
@@ -1254,7 +1332,9 @@ func ColorButtonNew() *ColorButton {
 // Creates a new color button.
 /*
 
-C function : gtk_color_button_new_with_color
+C function
+
+gtk_color_button_new_with_color
 */
 func ColorButtonNewWithColor(color *gdk.Color) *ColorButton {
 	c_color := (*C.GdkColor)(C.NULL)
@@ -1271,7 +1351,9 @@ func ColorButtonNewWithColor(color *gdk.Color) *ColorButton {
 // Returns the current alpha value.
 /*
 
-C function : gtk_color_button_get_alpha
+C function
+
+gtk_color_button_get_alpha
 */
 func (recv *ColorButton) GetAlpha() uint16 {
 	retC := C.gtk_color_button_get_alpha((*C.GtkColorButton)(recv.native))
@@ -1283,7 +1365,9 @@ func (recv *ColorButton) GetAlpha() uint16 {
 // Sets @color to be the current color in the #GtkColorButton widget.
 /*
 
-C function : gtk_color_button_get_color
+C function
+
+gtk_color_button_get_color
 */
 func (recv *ColorButton) GetColor() *gdk.Color {
 	var c_color C.GdkColor
@@ -1298,7 +1382,9 @@ func (recv *ColorButton) GetColor() *gdk.Color {
 // Gets the title of the color selection dialog.
 /*
 
-C function : gtk_color_button_get_title
+C function
+
+gtk_color_button_get_title
 */
 func (recv *ColorButton) GetTitle() string {
 	retC := C.gtk_color_button_get_title((*C.GtkColorButton)(recv.native))
@@ -1310,7 +1396,9 @@ func (recv *ColorButton) GetTitle() string {
 // Does the color selection dialog use the alpha channel ?
 /*
 
-C function : gtk_color_button_get_use_alpha
+C function
+
+gtk_color_button_get_use_alpha
 */
 func (recv *ColorButton) GetUseAlpha() bool {
 	retC := C.gtk_color_button_get_use_alpha((*C.GtkColorButton)(recv.native))
@@ -1322,7 +1410,9 @@ func (recv *ColorButton) GetUseAlpha() bool {
 // Sets the current opacity to be @alpha.
 /*
 
-C function : gtk_color_button_set_alpha
+C function
+
+gtk_color_button_set_alpha
 */
 func (recv *ColorButton) SetAlpha(alpha uint16) {
 	c_alpha := (C.guint16)(alpha)
@@ -1335,7 +1425,9 @@ func (recv *ColorButton) SetAlpha(alpha uint16) {
 // Sets the current color to be @color.
 /*
 
-C function : gtk_color_button_set_color
+C function
+
+gtk_color_button_set_color
 */
 func (recv *ColorButton) SetColor(color *gdk.Color) {
 	c_color := (*C.GdkColor)(C.NULL)
@@ -1351,7 +1443,9 @@ func (recv *ColorButton) SetColor(color *gdk.Color) {
 // Sets the title for the color selection dialog.
 /*
 
-C function : gtk_color_button_set_title
+C function
+
+gtk_color_button_set_title
 */
 func (recv *ColorButton) SetTitle(title string) {
 	c_title := C.CString(title)
@@ -1365,7 +1459,9 @@ func (recv *ColorButton) SetTitle(title string) {
 // Sets whether or not the color button should use the alpha channel.
 /*
 
-C function : gtk_color_button_set_use_alpha
+C function
+
+gtk_color_button_set_use_alpha
 */
 func (recv *ColorButton) SetUseAlpha(useAlpha bool) {
 	c_use_alpha :=
@@ -1436,7 +1532,9 @@ func combobox_changedHandler(_ *C.GObject, data C.gpointer) {
 // Creates a new empty #GtkComboBox.
 /*
 
-C function : gtk_combo_box_new
+C function
+
+gtk_combo_box_new
 */
 func ComboBoxNew() *ComboBox {
 	retC := C.gtk_combo_box_new()
@@ -1448,7 +1546,9 @@ func ComboBoxNew() *ComboBox {
 // Creates a new #GtkComboBox with the model initialized to @model.
 /*
 
-C function : gtk_combo_box_new_with_model
+C function
+
+gtk_combo_box_new_with_model
 */
 func ComboBoxNewWithModel(model *TreeModel) *ComboBox {
 	c_model := (*C.GtkTreeModel)(model.ToC())
@@ -1466,7 +1566,9 @@ func ComboBoxNewWithModel(model *TreeModel) *ComboBox {
 // `path` is the #GtkTreePath of the active item.
 /*
 
-C function : gtk_combo_box_get_active
+C function
+
+gtk_combo_box_get_active
 */
 func (recv *ComboBox) GetActive() int32 {
 	retC := C.gtk_combo_box_get_active((*C.GtkComboBox)(recv.native))
@@ -1479,7 +1581,9 @@ func (recv *ComboBox) GetActive() int32 {
 // Otherwise, @iter is left unchanged.
 /*
 
-C function : gtk_combo_box_get_active_iter
+C function
+
+gtk_combo_box_get_active_iter
 */
 func (recv *ComboBox) GetActiveIter() (bool, *TreeIter) {
 	var c_iter C.GtkTreeIter
@@ -1495,7 +1599,9 @@ func (recv *ComboBox) GetActiveIter() (bool, *TreeIter) {
 // Returns the #GtkTreeModel which is acting as data source for @combo_box.
 /*
 
-C function : gtk_combo_box_get_model
+C function
+
+gtk_combo_box_get_model
 */
 func (recv *ComboBox) GetModel() *TreeModel {
 	retC := C.gtk_combo_box_get_model((*C.GtkComboBox)(recv.native))
@@ -1510,7 +1616,9 @@ func (recv *ComboBox) GetModel() *TreeModel {
 // applications should have little use for it.
 /*
 
-C function : gtk_combo_box_popdown
+C function
+
+gtk_combo_box_popdown
 */
 func (recv *ComboBox) Popdown() {
 	C.gtk_combo_box_popdown((*C.GtkComboBox)(recv.native))
@@ -1526,7 +1634,9 @@ func (recv *ComboBox) Popdown() {
 // Before calling this, @combo_box must be mapped, or nothing will happen.
 /*
 
-C function : gtk_combo_box_popup
+C function
+
+gtk_combo_box_popup
 */
 func (recv *ComboBox) Popup() {
 	C.gtk_combo_box_popup((*C.GtkComboBox)(recv.native))
@@ -1537,7 +1647,9 @@ func (recv *ComboBox) Popup() {
 // Sets the active item of @combo_box to be the item at @index.
 /*
 
-C function : gtk_combo_box_set_active
+C function
+
+gtk_combo_box_set_active
 */
 func (recv *ComboBox) SetActive(index int32) {
 	c_index_ := (C.gint)(index)
@@ -1551,7 +1663,9 @@ func (recv *ComboBox) SetActive(index int32) {
 // unsets the active item if @iter is %NULL.
 /*
 
-C function : gtk_combo_box_set_active_iter
+C function
+
+gtk_combo_box_set_active_iter
 */
 func (recv *ComboBox) SetActiveIter(iter *TreeIter) {
 	c_iter := (*C.GtkTreeIter)(C.NULL)
@@ -1569,7 +1683,9 @@ func (recv *ComboBox) SetActiveIter(iter *TreeIter) {
 // how many columns an item should span.
 /*
 
-C function : gtk_combo_box_set_column_span_column
+C function
+
+gtk_combo_box_set_column_span_column
 */
 func (recv *ComboBox) SetColumnSpanColumn(columnSpan int32) {
 	c_column_span := (C.gint)(columnSpan)
@@ -1587,7 +1703,9 @@ func (recv *ComboBox) SetColumnSpanColumn(columnSpan int32) {
 // cell renderers for the new model.
 /*
 
-C function : gtk_combo_box_set_model
+C function
+
+gtk_combo_box_set_model
 */
 func (recv *ComboBox) SetModel(model *TreeModel) {
 	c_model := (*C.GtkTreeModel)(model.ToC())
@@ -1602,7 +1720,9 @@ func (recv *ComboBox) SetModel(model *TreeModel) {
 // an item should span.
 /*
 
-C function : gtk_combo_box_set_row_span_column
+C function
+
+gtk_combo_box_set_row_span_column
 */
 func (recv *ComboBox) SetRowSpanColumn(rowSpan int32) {
 	c_row_span := (C.gint)(rowSpan)
@@ -1617,7 +1737,9 @@ func (recv *ComboBox) SetRowSpanColumn(rowSpan int32) {
 // in a table.
 /*
 
-C function : gtk_combo_box_set_wrap_width
+C function
+
+gtk_combo_box_set_wrap_width
 */
 func (recv *ComboBox) SetWrapWidth(width int32) {
 	c_width := (C.gint)(width)
@@ -1630,7 +1752,9 @@ func (recv *ComboBox) SetWrapWidth(width int32) {
 // Gets the value set by gtk_entry_set_alignment().
 /*
 
-C function : gtk_entry_get_alignment
+C function
+
+gtk_entry_get_alignment
 */
 func (recv *Entry) GetAlignment() float32 {
 	retC := C.gtk_entry_get_alignment((*C.GtkEntry)(recv.native))
@@ -1642,7 +1766,9 @@ func (recv *Entry) GetAlignment() float32 {
 // Returns the auxiliary completion object currently in use by @entry.
 /*
 
-C function : gtk_entry_get_completion
+C function
+
+gtk_entry_get_completion
 */
 func (recv *Entry) GetCompletion() *EntryCompletion {
 	retC := C.gtk_entry_get_completion((*C.GtkEntry)(recv.native))
@@ -1656,7 +1782,9 @@ func (recv *Entry) GetCompletion() *EntryCompletion {
 // text is shorter than the width of the entry.
 /*
 
-C function : gtk_entry_set_alignment
+C function
+
+gtk_entry_set_alignment
 */
 func (recv *Entry) SetAlignment(xalign float32) {
 	c_xalign := (C.gfloat)(xalign)
@@ -1672,7 +1800,9 @@ func (recv *Entry) SetAlignment(xalign float32) {
 // @completion is set to %NULL.
 /*
 
-C function : gtk_entry_set_completion
+C function
+
+gtk_entry_set_completion
 */
 func (recv *Entry) SetCompletion(completion *EntryCompletion) {
 	c_completion := (*C.GtkEntryCompletion)(C.NULL)
@@ -1754,7 +1884,9 @@ func entrycompletion_matchSelectedHandler(_ *C.GObject, c_model *C.GtkTreeModel,
 // Creates a new #GtkEntryCompletion object.
 /*
 
-C function : gtk_entry_completion_new
+C function
+
+gtk_entry_completion_new
 */
 func EntryCompletionNew() *EntryCompletion {
 	retC := C.gtk_entry_completion_new()
@@ -1768,7 +1900,9 @@ func EntryCompletionNew() *EntryCompletion {
 // view will be updated accordingly.
 /*
 
-C function : gtk_entry_completion_complete
+C function
+
+gtk_entry_completion_complete
 */
 func (recv *EntryCompletion) Complete() {
 	C.gtk_entry_completion_complete((*C.GtkEntryCompletion)(recv.native))
@@ -1782,7 +1916,9 @@ func (recv *EntryCompletion) Complete() {
 // action may have changed since it was inserted.
 /*
 
-C function : gtk_entry_completion_delete_action
+C function
+
+gtk_entry_completion_delete_action
 */
 func (recv *EntryCompletion) DeleteAction(index int32) {
 	c_index_ := (C.gint)(index)
@@ -1795,7 +1931,9 @@ func (recv *EntryCompletion) DeleteAction(index int32) {
 // Gets the entry @completion has been attached to.
 /*
 
-C function : gtk_entry_completion_get_entry
+C function
+
+gtk_entry_completion_get_entry
 */
 func (recv *EntryCompletion) GetEntry() *Widget {
 	retC := C.gtk_entry_completion_get_entry((*C.GtkEntryCompletion)(recv.native))
@@ -1807,7 +1945,9 @@ func (recv *EntryCompletion) GetEntry() *Widget {
 // Returns the minimum key length as set for @completion.
 /*
 
-C function : gtk_entry_completion_get_minimum_key_length
+C function
+
+gtk_entry_completion_get_minimum_key_length
 */
 func (recv *EntryCompletion) GetMinimumKeyLength() int32 {
 	retC := C.gtk_entry_completion_get_minimum_key_length((*C.GtkEntryCompletion)(recv.native))
@@ -1820,7 +1960,9 @@ func (recv *EntryCompletion) GetMinimumKeyLength() int32 {
 // Returns %NULL if the model is unset.
 /*
 
-C function : gtk_entry_completion_get_model
+C function
+
+gtk_entry_completion_get_model
 */
 func (recv *EntryCompletion) GetModel() *TreeModel {
 	retC := C.gtk_entry_completion_get_model((*C.GtkEntryCompletion)(recv.native))
@@ -1838,7 +1980,9 @@ func (recv *EntryCompletion) GetModel() *TreeModel {
 // with markup @markup.
 /*
 
-C function : gtk_entry_completion_insert_action_markup
+C function
+
+gtk_entry_completion_insert_action_markup
 */
 func (recv *EntryCompletion) InsertActionMarkup(index int32, markup string) {
 	c_index_ := (C.gint)(index)
@@ -1859,7 +2003,9 @@ func (recv *EntryCompletion) InsertActionMarkup(index int32, markup string) {
 // the position of an action can change when deleting a different action.
 /*
 
-C function : gtk_entry_completion_insert_action_text
+C function
+
+gtk_entry_completion_insert_action_text
 */
 func (recv *EntryCompletion) InsertActionText(index int32, text string) {
 	c_index_ := (C.gint)(index)
@@ -1880,7 +2026,9 @@ func (recv *EntryCompletion) InsertActionText(index int32, text string) {
 // (ie, a too large dataset).
 /*
 
-C function : gtk_entry_completion_set_minimum_key_length
+C function
+
+gtk_entry_completion_set_minimum_key_length
 */
 func (recv *EntryCompletion) SetMinimumKeyLength(length int32) {
 	c_length := (C.gint)(length)
@@ -1895,7 +2043,9 @@ func (recv *EntryCompletion) SetMinimumKeyLength(length int32) {
 // If model is %NULL, then it will unset the model.
 /*
 
-C function : gtk_entry_completion_set_model
+C function
+
+gtk_entry_completion_set_model
 */
 func (recv *EntryCompletion) SetModel(model *TreeModel) {
 	c_model := (*C.GtkTreeModel)(model.ToC())
@@ -1916,7 +2066,9 @@ func (recv *EntryCompletion) SetModel(model *TreeModel) {
 // property directly.
 /*
 
-C function : gtk_entry_completion_set_text_column
+C function
+
+gtk_entry_completion_set_text_column
 */
 func (recv *EntryCompletion) SetTextColumn(column int32) {
 	c_column := (C.gint)(column)
@@ -1931,7 +2083,9 @@ func (recv *EntryCompletion) SetTextColumn(column int32) {
 // for details.
 /*
 
-C function : gtk_event_box_get_above_child
+C function
+
+gtk_event_box_get_above_child
 */
 func (recv *EventBox) GetAboveChild() bool {
 	retC := C.gtk_event_box_get_above_child((*C.GtkEventBox)(recv.native))
@@ -1944,7 +2098,9 @@ func (recv *EventBox) GetAboveChild() bool {
 // See gtk_event_box_set_visible_window() for details.
 /*
 
-C function : gtk_event_box_get_visible_window
+C function
+
+gtk_event_box_get_visible_window
 */
 func (recv *EventBox) GetVisibleWindow() bool {
 	retC := C.gtk_event_box_get_visible_window((*C.GtkEventBox)(recv.native))
@@ -1962,7 +2118,9 @@ func (recv *EventBox) GetVisibleWindow() bool {
 // The default is to keep the window below the child.
 /*
 
-C function : gtk_event_box_set_above_child
+C function
+
+gtk_event_box_set_above_child
 */
 func (recv *EventBox) SetAboveChild(aboveChild bool) {
 	c_above_child :=
@@ -2008,7 +2166,9 @@ func (recv *EventBox) SetAboveChild(aboveChild bool) {
 // descendant windows, not just at the same place on the screen.
 /*
 
-C function : gtk_event_box_set_visible_window
+C function
+
+gtk_event_box_set_visible_window
 */
 func (recv *EventBox) SetVisibleWindow(visibleWindow bool) {
 	c_visible_window :=
@@ -2022,7 +2182,9 @@ func (recv *EventBox) SetVisibleWindow(visibleWindow bool) {
 // Creates a new expander using @label as the text of the label.
 /*
 
-C function : gtk_expander_new
+C function
+
+gtk_expander_new
 */
 func ExpanderNew(label string) *Expander {
 	c_label := C.CString(label)
@@ -2042,7 +2204,9 @@ func ExpanderNew(label string) *Expander {
 // Pressing Alt and that key activates the button.
 /*
 
-C function : gtk_expander_new_with_mnemonic
+C function
+
+gtk_expander_new_with_mnemonic
 */
 func ExpanderNewWithMnemonic(label string) *Expander {
 	c_label := C.CString(label)
@@ -2060,7 +2224,9 @@ func ExpanderNewWithMnemonic(label string) *Expander {
 // See gtk_expander_set_expanded().
 /*
 
-C function : gtk_expander_get_expanded
+C function
+
+gtk_expander_get_expanded
 */
 func (recv *Expander) GetExpanded() bool {
 	retC := C.gtk_expander_get_expanded((*C.GtkExpander)(recv.native))
@@ -2082,7 +2248,9 @@ func (recv *Expander) GetExpanded() bool {
 // widget.
 /*
 
-C function : gtk_expander_get_label
+C function
+
+gtk_expander_get_label
 */
 func (recv *Expander) GetLabel() string {
 	retC := C.gtk_expander_get_label((*C.GtkExpander)(recv.native))
@@ -2095,7 +2263,9 @@ func (recv *Expander) GetLabel() string {
 // gtk_expander_set_label_widget().
 /*
 
-C function : gtk_expander_get_label_widget
+C function
+
+gtk_expander_get_label_widget
 */
 func (recv *Expander) GetLabelWidget() *Widget {
 	retC := C.gtk_expander_get_label_widget((*C.GtkExpander)(recv.native))
@@ -2112,7 +2282,9 @@ func (recv *Expander) GetLabelWidget() *Widget {
 // Gets the value set by gtk_expander_set_spacing().
 /*
 
-C function : gtk_expander_get_spacing
+C function
+
+gtk_expander_get_spacing
 */
 func (recv *Expander) GetSpacing() int32 {
 	retC := C.gtk_expander_get_spacing((*C.GtkExpander)(recv.native))
@@ -2126,7 +2298,9 @@ func (recv *Expander) GetSpacing() int32 {
 // See gtk_expander_set_use_markup().
 /*
 
-C function : gtk_expander_get_use_markup
+C function
+
+gtk_expander_get_use_markup
 */
 func (recv *Expander) GetUseMarkup() bool {
 	retC := C.gtk_expander_get_use_markup((*C.GtkExpander)(recv.native))
@@ -2139,7 +2313,9 @@ func (recv *Expander) GetUseMarkup() bool {
 // indicates a mnemonic. See gtk_expander_set_use_underline().
 /*
 
-C function : gtk_expander_get_use_underline
+C function
+
+gtk_expander_get_use_underline
 */
 func (recv *Expander) GetUseUnderline() bool {
 	retC := C.gtk_expander_get_use_underline((*C.GtkExpander)(recv.native))
@@ -2153,7 +2329,9 @@ func (recv *Expander) GetUseUnderline() bool {
 // child widget to be hidden.
 /*
 
-C function : gtk_expander_set_expanded
+C function
+
+gtk_expander_set_expanded
 */
 func (recv *Expander) SetExpanded(expanded bool) {
 	c_expanded :=
@@ -2169,7 +2347,9 @@ func (recv *Expander) SetExpanded(expanded bool) {
 // This will also clear any previously set labels.
 /*
 
-C function : gtk_expander_set_label
+C function
+
+gtk_expander_set_label
 */
 func (recv *Expander) SetLabel(label string) {
 	c_label := C.CString(label)
@@ -2184,7 +2364,9 @@ func (recv *Expander) SetLabel(label string) {
 // that will appear embedded alongside the expander arrow.
 /*
 
-C function : gtk_expander_set_label_widget
+C function
+
+gtk_expander_set_label_widget
 */
 func (recv *Expander) SetLabelWidget(labelWidget *Widget) {
 	c_label_widget := (*C.GtkWidget)(C.NULL)
@@ -2201,7 +2383,9 @@ func (recv *Expander) SetLabelWidget(labelWidget *Widget) {
 // pixels to place between expander and the child.
 /*
 
-C function : gtk_expander_set_spacing
+C function
+
+gtk_expander_set_spacing
 */
 func (recv *Expander) SetSpacing(spacing int32) {
 	c_spacing := (C.gint)(spacing)
@@ -2216,7 +2400,9 @@ func (recv *Expander) SetSpacing(spacing int32) {
 // See gtk_label_set_markup().
 /*
 
-C function : gtk_expander_set_use_markup
+C function
+
+gtk_expander_set_use_markup
 */
 func (recv *Expander) SetUseMarkup(useMarkup bool) {
 	c_use_markup :=
@@ -2231,7 +2417,9 @@ func (recv *Expander) SetUseMarkup(useMarkup bool) {
 // the next character should be used for the mnemonic accelerator key.
 /*
 
-C function : gtk_expander_set_use_underline
+C function
+
+gtk_expander_set_use_underline
 */
 func (recv *Expander) SetUseUnderline(useUnderline bool) {
 	c_use_underline :=
@@ -2249,7 +2437,9 @@ func (recv *Expander) SetUseUnderline(useUnderline bool) {
 // #GtkFileChooserDialog.
 /*
 
-C function : gtk_file_chooser_widget_new
+C function
+
+gtk_file_chooser_widget_new
 */
 func FileChooserWidgetNew(action FileChooserAction) *FileChooserWidget {
 	c_action := (C.GtkFileChooserAction)(action)
@@ -2272,7 +2462,9 @@ func FileChooserWidgetNew(action FileChooserAction) *FileChooserWidget {
 // ]|
 /*
 
-C function : gtk_file_filter_new
+C function
+
+gtk_file_filter_new
 */
 func FileFilterNew() *FileFilter {
 	retC := C.gtk_file_filter_new()
@@ -2286,7 +2478,9 @@ func FileFilterNew() *FileFilter {
 // Adds a rule allowing a given mime type to @filter.
 /*
 
-C function : gtk_file_filter_add_mime_type
+C function
+
+gtk_file_filter_add_mime_type
 */
 func (recv *FileFilter) AddMimeType(mimeType string) {
 	c_mime_type := C.CString(mimeType)
@@ -2300,7 +2494,9 @@ func (recv *FileFilter) AddMimeType(mimeType string) {
 // Adds a rule allowing a shell style glob to a filter.
 /*
 
-C function : gtk_file_filter_add_pattern
+C function
+
+gtk_file_filter_add_pattern
 */
 func (recv *FileFilter) AddPattern(pattern string) {
 	c_pattern := C.CString(pattern)
@@ -2320,7 +2516,9 @@ func (recv *FileFilter) AddPattern(pattern string) {
 // #GtkFileChooser.
 /*
 
-C function : gtk_file_filter_filter
+C function
+
+gtk_file_filter_filter
 */
 func (recv *FileFilter) Filter(filterInfo *FileFilterInfo) bool {
 	c_filter_info := (*C.GtkFileFilterInfo)(C.NULL)
@@ -2337,7 +2535,9 @@ func (recv *FileFilter) Filter(filterInfo *FileFilterInfo) bool {
 // Gets the human-readable name for the filter. See gtk_file_filter_set_name().
 /*
 
-C function : gtk_file_filter_get_name
+C function
+
+gtk_file_filter_get_name
 */
 func (recv *FileFilter) GetName() string {
 	retC := C.gtk_file_filter_get_name((*C.GtkFileFilter)(recv.native))
@@ -2354,7 +2554,9 @@ func (recv *FileFilter) GetName() string {
 // #GtkFileChooser.
 /*
 
-C function : gtk_file_filter_get_needed
+C function
+
+gtk_file_filter_get_needed
 */
 func (recv *FileFilter) GetNeeded() FileFilterFlags {
 	retC := C.gtk_file_filter_get_needed((*C.GtkFileFilter)(recv.native))
@@ -2368,7 +2570,9 @@ func (recv *FileFilter) GetNeeded() FileFilterFlags {
 // there is a selectable list of filters.
 /*
 
-C function : gtk_file_filter_set_name
+C function
+
+gtk_file_filter_set_name
 */
 func (recv *FileFilter) SetName(name string) {
 	c_name := C.CString(name)
@@ -2439,7 +2643,9 @@ func fontbutton_fontSetHandler(_ *C.GObject, data C.gpointer) {
 // Creates a new font picker widget.
 /*
 
-C function : gtk_font_button_new
+C function
+
+gtk_font_button_new
 */
 func FontButtonNew() *FontButton {
 	retC := C.gtk_font_button_new()
@@ -2451,7 +2657,9 @@ func FontButtonNew() *FontButton {
 // Creates a new font picker widget.
 /*
 
-C function : gtk_font_button_new_with_font
+C function
+
+gtk_font_button_new_with_font
 */
 func FontButtonNewWithFont(fontname string) *FontButton {
 	c_fontname := C.CString(fontname)
@@ -2471,7 +2679,9 @@ func FontButtonNewWithFont(fontname string) *FontButton {
 // #PangoFontDescription object.
 /*
 
-C function : gtk_font_button_get_font_name
+C function
+
+gtk_font_button_get_font_name
 */
 func (recv *FontButton) GetFontName() string {
 	retC := C.gtk_font_button_get_font_name((*C.GtkFontButton)(recv.native))
@@ -2483,7 +2693,9 @@ func (recv *FontButton) GetFontName() string {
 // Returns whether the font size will be shown in the label.
 /*
 
-C function : gtk_font_button_get_show_size
+C function
+
+gtk_font_button_get_show_size
 */
 func (recv *FontButton) GetShowSize() bool {
 	retC := C.gtk_font_button_get_show_size((*C.GtkFontButton)(recv.native))
@@ -2495,7 +2707,9 @@ func (recv *FontButton) GetShowSize() bool {
 // Returns whether the name of the font style will be shown in the label.
 /*
 
-C function : gtk_font_button_get_show_style
+C function
+
+gtk_font_button_get_show_style
 */
 func (recv *FontButton) GetShowStyle() bool {
 	retC := C.gtk_font_button_get_show_style((*C.GtkFontButton)(recv.native))
@@ -2507,7 +2721,9 @@ func (recv *FontButton) GetShowStyle() bool {
 // Retrieves the title of the font chooser dialog.
 /*
 
-C function : gtk_font_button_get_title
+C function
+
+gtk_font_button_get_title
 */
 func (recv *FontButton) GetTitle() string {
 	retC := C.gtk_font_button_get_title((*C.GtkFontButton)(recv.native))
@@ -2519,7 +2735,9 @@ func (recv *FontButton) GetTitle() string {
 // Returns whether the selected font is used in the label.
 /*
 
-C function : gtk_font_button_get_use_font
+C function
+
+gtk_font_button_get_use_font
 */
 func (recv *FontButton) GetUseFont() bool {
 	retC := C.gtk_font_button_get_use_font((*C.GtkFontButton)(recv.native))
@@ -2531,7 +2749,9 @@ func (recv *FontButton) GetUseFont() bool {
 // Returns whether the selected size is used in the label.
 /*
 
-C function : gtk_font_button_get_use_size
+C function
+
+gtk_font_button_get_use_size
 */
 func (recv *FontButton) GetUseSize() bool {
 	retC := C.gtk_font_button_get_use_size((*C.GtkFontButton)(recv.native))
@@ -2543,7 +2763,9 @@ func (recv *FontButton) GetUseSize() bool {
 // Sets or updates the currently-displayed font in font picker dialog.
 /*
 
-C function : gtk_font_button_set_font_name
+C function
+
+gtk_font_button_set_font_name
 */
 func (recv *FontButton) SetFontName(fontname string) bool {
 	c_fontname := C.CString(fontname)
@@ -2558,7 +2780,9 @@ func (recv *FontButton) SetFontName(fontname string) bool {
 // If @show_size is %TRUE, the font size will be displayed along with the name of the selected font.
 /*
 
-C function : gtk_font_button_set_show_size
+C function
+
+gtk_font_button_set_show_size
 */
 func (recv *FontButton) SetShowSize(showSize bool) {
 	c_show_size :=
@@ -2572,7 +2796,9 @@ func (recv *FontButton) SetShowSize(showSize bool) {
 // If @show_style is %TRUE, the font style will be displayed along with name of the selected font.
 /*
 
-C function : gtk_font_button_set_show_style
+C function
+
+gtk_font_button_set_show_style
 */
 func (recv *FontButton) SetShowStyle(showStyle bool) {
 	c_show_style :=
@@ -2586,7 +2812,9 @@ func (recv *FontButton) SetShowStyle(showStyle bool) {
 // Sets the title for the font chooser dialog.
 /*
 
-C function : gtk_font_button_set_title
+C function
+
+gtk_font_button_set_title
 */
 func (recv *FontButton) SetTitle(title string) {
 	c_title := C.CString(title)
@@ -2600,7 +2828,9 @@ func (recv *FontButton) SetTitle(title string) {
 // If @use_font is %TRUE, the font name will be written using the selected font.
 /*
 
-C function : gtk_font_button_set_use_font
+C function
+
+gtk_font_button_set_use_font
 */
 func (recv *FontButton) SetUseFont(useFont bool) {
 	c_use_font :=
@@ -2614,7 +2844,9 @@ func (recv *FontButton) SetUseFont(useFont bool) {
 // If @use_size is %TRUE, the font name will be written using the selected size.
 /*
 
-C function : gtk_font_button_set_use_size
+C function
+
+gtk_font_button_set_use_size
 */
 func (recv *FontButton) SetUseSize(useSize bool) {
 	c_use_size :=
@@ -2628,7 +2860,9 @@ func (recv *FontButton) SetUseSize(useSize bool) {
 // Make a copy of a #GtkIconInfo.
 /*
 
-C function : gtk_icon_info_copy
+C function
+
+gtk_icon_info_copy
 */
 func (recv *IconInfo) Copy() *IconInfo {
 	retC := C.gtk_icon_info_copy((*C.GtkIconInfo)(recv.native))
@@ -2640,7 +2874,9 @@ func (recv *IconInfo) Copy() *IconInfo {
 // Free a #GtkIconInfo and associated information
 /*
 
-C function : gtk_icon_info_free
+C function
+
+gtk_icon_info_free
 */
 func (recv *IconInfo) Free() {
 	C.gtk_icon_info_free((*C.GtkIconInfo)(recv.native))
@@ -2663,7 +2899,9 @@ func (recv *IconInfo) Free() {
 // not include the base scale.
 /*
 
-C function : gtk_icon_info_get_base_size
+C function
+
+gtk_icon_info_get_base_size
 */
 func (recv *IconInfo) GetBaseSize() int32 {
 	retC := C.gtk_icon_info_get_base_size((*C.GtkIconInfo)(recv.native))
@@ -2677,7 +2915,9 @@ func (recv *IconInfo) GetBaseSize() int32 {
 // to gtk_icon_theme_lookup_icon().
 /*
 
-C function : gtk_icon_info_get_builtin_pixbuf
+C function
+
+gtk_icon_info_get_builtin_pixbuf
 */
 func (recv *IconInfo) GetBuiltinPixbuf() *gdkpixbuf.Pixbuf {
 	retC := C.gtk_icon_info_get_builtin_pixbuf((*C.GtkIconInfo)(recv.native))
@@ -2694,7 +2934,9 @@ func (recv *IconInfo) GetBuiltinPixbuf() *gdkpixbuf.Pixbuf {
 // This function is deprecated and always returns %NULL.
 /*
 
-C function : gtk_icon_info_get_display_name
+C function
+
+gtk_icon_info_get_display_name
 */
 func (recv *IconInfo) GetDisplayName() string {
 	retC := C.gtk_icon_info_get_display_name((*C.GtkIconInfo)(recv.native))
@@ -2711,7 +2953,9 @@ func (recv *IconInfo) GetDisplayName() string {
 // use gtk_icon_info_get_builtin_pixbuf().
 /*
 
-C function : gtk_icon_info_get_filename
+C function
+
+gtk_icon_info_get_filename
 */
 func (recv *IconInfo) GetFilename() string {
 	retC := C.gtk_icon_info_get_filename((*C.GtkIconInfo)(recv.native))
@@ -2733,7 +2977,9 @@ func (recv *IconInfo) GetFilename() string {
 // returned by this function will be scaled to the exact size.
 /*
 
-C function : gtk_icon_info_load_icon
+C function
+
+gtk_icon_info_load_icon
 */
 func (recv *IconInfo) LoadIcon() (*gdkpixbuf.Pixbuf, error) {
 	var cThrowableError *C.GError
@@ -2765,7 +3011,9 @@ func (recv *IconInfo) LoadIcon() (*gdkpixbuf.Pixbuf, error) {
 // for older API's, and is not expected to be useful for applications.
 /*
 
-C function : gtk_icon_info_set_raw_coordinates
+C function
+
+gtk_icon_info_set_raw_coordinates
 */
 func (recv *IconInfo) SetRawCoordinates(rawCoordinates bool) {
 	c_raw_coordinates :=
@@ -2783,7 +3031,9 @@ func (recv *IconInfo) SetRawCoordinates(rawCoordinates bool) {
 // a new icon theme object for scratch.
 /*
 
-C function : gtk_icon_theme_new
+C function
+
+gtk_icon_theme_new
 */
 func IconThemeNew() *IconTheme {
 	retC := C.gtk_icon_theme_new()
@@ -2796,7 +3046,9 @@ func IconThemeNew() *IconTheme {
 // See gtk_icon_theme_set_search_path().
 /*
 
-C function : gtk_icon_theme_append_search_path
+C function
+
+gtk_icon_theme_append_search_path
 */
 func (recv *IconTheme) AppendSearchPath(path string) {
 	c_path := C.CString(path)
@@ -2812,7 +3064,9 @@ func (recv *IconTheme) AppendSearchPath(path string) {
 // a list of themes to the user.)
 /*
 
-C function : gtk_icon_theme_get_example_icon_name
+C function
+
+gtk_icon_theme_get_example_icon_name
 */
 func (recv *IconTheme) GetExampleIconName() string {
 	retC := C.gtk_icon_theme_get_example_icon_name((*C.GtkIconTheme)(recv.native))
@@ -2828,7 +3082,9 @@ func (recv *IconTheme) GetExampleIconName() string {
 // for a particular name.
 /*
 
-C function : gtk_icon_theme_has_icon
+C function
+
+gtk_icon_theme_has_icon
 */
 func (recv *IconTheme) HasIcon(iconName string) bool {
 	c_icon_name := C.CString(iconName)
@@ -2851,7 +3107,9 @@ func (recv *IconTheme) HasIcon(iconName string) bool {
 // Also see gtk_icon_theme_list_contexts().
 /*
 
-C function : gtk_icon_theme_list_icons
+C function
+
+gtk_icon_theme_list_icons
 */
 func (recv *IconTheme) ListIcons(context string) *glib.List {
 	c_context := C.CString(context)
@@ -2877,7 +3135,9 @@ func (recv *IconTheme) ListIcons(context string) *glib.List {
 // icon theme loaded, which would be a waste of memory.
 /*
 
-C function : gtk_icon_theme_load_icon
+C function
+
+gtk_icon_theme_load_icon
 */
 func (recv *IconTheme) LoadIcon(iconName string, size int32, flags IconLookupFlags) (*gdkpixbuf.Pixbuf, error) {
 	c_icon_name := C.CString(iconName)
@@ -2918,7 +3178,9 @@ func (recv *IconTheme) LoadIcon(iconName string, size int32, flags IconLookupFla
 // for a given scaling factor may be different.
 /*
 
-C function : gtk_icon_theme_lookup_icon
+C function
+
+gtk_icon_theme_lookup_icon
 */
 func (recv *IconTheme) LookupIcon(iconName string, size int32, flags IconLookupFlags) *IconInfo {
 	c_icon_name := C.CString(iconName)
@@ -2943,7 +3205,9 @@ func (recv *IconTheme) LookupIcon(iconName string, size int32, flags IconLookupF
 // See gtk_icon_theme_set_search_path().
 /*
 
-C function : gtk_icon_theme_prepend_search_path
+C function
+
+gtk_icon_theme_prepend_search_path
 */
 func (recv *IconTheme) PrependSearchPath(path string) {
 	c_path := C.CString(path)
@@ -2959,7 +3223,9 @@ func (recv *IconTheme) PrependSearchPath(path string) {
 // next time @icon_theme is accessed.
 /*
 
-C function : gtk_icon_theme_rescan_if_needed
+C function
+
+gtk_icon_theme_rescan_if_needed
 */
 func (recv *IconTheme) RescanIfNeeded() bool {
 	retC := C.gtk_icon_theme_rescan_if_needed((*C.GtkIconTheme)(recv.native))
@@ -2974,7 +3240,9 @@ func (recv *IconTheme) RescanIfNeeded() bool {
 // and gtk_icon_theme_get_for_screen().
 /*
 
-C function : gtk_icon_theme_set_custom_theme
+C function
+
+gtk_icon_theme_set_custom_theme
 */
 func (recv *IconTheme) SetCustomTheme(themeName string) {
 	c_theme_name := C.CString(themeName)
@@ -2990,7 +3258,9 @@ func (recv *IconTheme) SetCustomTheme(themeName string) {
 // which might be different for different screens.
 /*
 
-C function : gtk_icon_theme_set_screen
+C function
+
+gtk_icon_theme_set_screen
 */
 func (recv *IconTheme) SetScreen(screen *gdk.Screen) {
 	c_screen := (*C.GdkScreen)(C.NULL)
@@ -3014,7 +3284,9 @@ func (recv *IconTheme) SetScreen(screen *gdk.Screen) {
 // Note that this function is not related to gtk_menu_detach().
 /*
 
-C function : gtk_menu_attach
+C function
+
+gtk_menu_attach
 */
 func (recv *Menu) Attach(child *Widget, leftAttach uint32, rightAttach uint32, topAttach uint32, bottomAttach uint32) {
 	c_child := (*C.GtkWidget)(C.NULL)
@@ -3046,7 +3318,9 @@ func (recv *Menu) Attach(child *Widget, leftAttach uint32, rightAttach uint32, t
 // the screen boundaries.
 /*
 
-C function : gtk_menu_set_monitor
+C function
+
+gtk_menu_set_monitor
 */
 func (recv *Menu) SetMonitor(monitorNum int32) {
 	c_monitor_num := (C.gint)(monitorNum)
@@ -3059,7 +3333,9 @@ func (recv *Menu) SetMonitor(monitorNum int32) {
 // Cancels the selection within the menu shell.
 /*
 
-C function : gtk_menu_shell_cancel
+C function
+
+gtk_menu_shell_cancel
 */
 func (recv *MenuShell) Cancel() {
 	C.gtk_menu_shell_cancel((*C.GtkMenuShell)(recv.native))
@@ -3073,7 +3349,9 @@ func (recv *MenuShell) Cancel() {
 // up with the [Pango text markup language][PangoMarkupFormat].
 /*
 
-C function : gtk_message_dialog_set_markup
+C function
+
+gtk_message_dialog_set_markup
 */
 func (recv *MessageDialog) SetMarkup(str string) {
 	c_str := C.CString(str)
@@ -3087,7 +3365,9 @@ func (recv *MessageDialog) SetMarkup(str string) {
 // Obtains the first child of the paned widget.
 /*
 
-C function : gtk_paned_get_child1
+C function
+
+gtk_paned_get_child1
 */
 func (recv *Paned) GetChild1() *Widget {
 	retC := C.gtk_paned_get_child1((*C.GtkPaned)(recv.native))
@@ -3104,7 +3384,9 @@ func (recv *Paned) GetChild1() *Widget {
 // Obtains the second child of the paned widget.
 /*
 
-C function : gtk_paned_get_child2
+C function
+
+gtk_paned_get_child2
 */
 func (recv *Paned) GetChild2() *Widget {
 	retC := C.gtk_paned_get_child2((*C.GtkPaned)(recv.native))
@@ -3182,7 +3464,9 @@ func radioaction_changedHandler(_ *C.GObject, c_current *C.GtkRadioAction, data 
 // call gtk_action_group_add_action_with_accel().
 /*
 
-C function : gtk_radio_action_new
+C function
+
+gtk_radio_action_new
 */
 func RadioActionNew(name string, label string, tooltip string, stockId string, value int32) *RadioAction {
 	c_name := C.CString(name)
@@ -3209,7 +3493,9 @@ func RadioActionNew(name string, label string, tooltip string, stockId string, v
 // the group to which @action belongs.
 /*
 
-C function : gtk_radio_action_get_current_value
+C function
+
+gtk_radio_action_get_current_value
 */
 func (recv *RadioAction) GetCurrentValue() int32 {
 	retC := C.gtk_radio_action_get_current_value((*C.GtkRadioAction)(recv.native))
@@ -3237,7 +3523,9 @@ func (recv *RadioAction) GetCurrentValue() int32 {
 // ]|
 /*
 
-C function : gtk_radio_action_get_group
+C function
+
+gtk_radio_action_get_group
 */
 func (recv *RadioAction) GetGroup() *glib.SList {
 	retC := C.gtk_radio_action_get_group((*C.GtkRadioAction)(recv.native))
@@ -3249,7 +3537,9 @@ func (recv *RadioAction) GetGroup() *glib.SList {
 // Sets the radio group for the radio action object.
 /*
 
-C function : gtk_radio_action_set_group
+C function
+
+gtk_radio_action_set_group
 */
 func (recv *RadioAction) SetGroup(group *glib.SList) {
 	c_group := (*C.GSList)(C.NULL)
@@ -3322,7 +3612,9 @@ func radiobutton_groupChangedHandler(_ *C.GObject, data C.gpointer) {
 // Creates a new #GtkRadioMenuItem adding it to the same group as @group.
 /*
 
-C function : gtk_radio_menu_item_new_from_widget
+C function
+
+gtk_radio_menu_item_new_from_widget
 */
 func RadioMenuItemNewFromWidget(group *RadioMenuItem) *RadioMenuItem {
 	c_group := (*C.GtkRadioMenuItem)(C.NULL)
@@ -3340,7 +3632,9 @@ func RadioMenuItemNewFromWidget(group *RadioMenuItem) *RadioMenuItem {
 // The new #GtkRadioMenuItem is added to the same group as @group.
 /*
 
-C function : gtk_radio_menu_item_new_with_label_from_widget
+C function
+
+gtk_radio_menu_item_new_with_label_from_widget
 */
 func RadioMenuItemNewWithLabelFromWidget(group *RadioMenuItem, label string) *RadioMenuItem {
 	c_group := (*C.GtkRadioMenuItem)(C.NULL)
@@ -3364,7 +3658,9 @@ func RadioMenuItemNewWithLabelFromWidget(group *RadioMenuItem, label string) *Ra
 // The new #GtkRadioMenuItem is added to the same group as @group.
 /*
 
-C function : gtk_radio_menu_item_new_with_mnemonic_from_widget
+C function
+
+gtk_radio_menu_item_new_with_mnemonic_from_widget
 */
 func RadioMenuItemNewWithMnemonicFromWidget(group *RadioMenuItem, label string) *RadioMenuItem {
 	c_group := (*C.GtkRadioMenuItem)(C.NULL)
@@ -3384,7 +3680,9 @@ func RadioMenuItemNewWithMnemonicFromWidget(group *RadioMenuItem, label string) 
 // Creates a new #GtkRadioToolButton, adding it to @group.
 /*
 
-C function : gtk_radio_tool_button_new
+C function
+
+gtk_radio_tool_button_new
 */
 func RadioToolButtonNew(group *glib.SList) *RadioToolButton {
 	c_group := (*C.GSList)(C.NULL)
@@ -3403,7 +3701,9 @@ func RadioToolButtonNew(group *glib.SList) *RadioToolButton {
 // stock item indicated by @stock_id.
 /*
 
-C function : gtk_radio_tool_button_new_from_stock
+C function
+
+gtk_radio_tool_button_new_from_stock
 */
 func RadioToolButtonNewFromStock(group *glib.SList, stockId string) *RadioToolButton {
 	c_group := (*C.GSList)(C.NULL)
@@ -3423,7 +3723,9 @@ func RadioToolButtonNewFromStock(group *glib.SList, stockId string) *RadioToolBu
 // Creates a new #GtkRadioToolButton adding it to the same group as @gruup
 /*
 
-C function : gtk_radio_tool_button_new_from_widget
+C function
+
+gtk_radio_tool_button_new_from_widget
 */
 func RadioToolButtonNewFromWidget(group *RadioToolButton) *RadioToolButton {
 	c_group := (*C.GtkRadioToolButton)(C.NULL)
@@ -3442,7 +3744,9 @@ func RadioToolButtonNewFromWidget(group *RadioToolButton) *RadioToolButton {
 // stock item indicated by @stock_id.
 /*
 
-C function : gtk_radio_tool_button_new_with_stock_from_widget
+C function
+
+gtk_radio_tool_button_new_with_stock_from_widget
 */
 func RadioToolButtonNewWithStockFromWidget(group *RadioToolButton, stockId string) *RadioToolButton {
 	c_group := (*C.GtkRadioToolButton)(C.NULL)
@@ -3462,7 +3766,9 @@ func RadioToolButtonNewWithStockFromWidget(group *RadioToolButton, stockId strin
 // Returns the radio button group @button belongs to.
 /*
 
-C function : gtk_radio_tool_button_get_group
+C function
+
+gtk_radio_tool_button_get_group
 */
 func (recv *RadioToolButton) GetGroup() *glib.SList {
 	retC := C.gtk_radio_tool_button_get_group((*C.GtkRadioToolButton)(recv.native))
@@ -3474,7 +3780,9 @@ func (recv *RadioToolButton) GetGroup() *glib.SList {
 // Adds @button to @group, removing it from the group it belonged to before.
 /*
 
-C function : gtk_radio_tool_button_set_group
+C function
+
+gtk_radio_tool_button_set_group
 */
 func (recv *RadioToolButton) SetGroup(group *glib.SList) {
 	c_group := (*C.GSList)(C.NULL)
@@ -3492,7 +3800,9 @@ func (recv *RadioToolButton) SetGroup(group *glib.SList) {
 // the caller.
 /*
 
-C function : gtk_scale_get_layout
+C function
+
+gtk_scale_get_layout
 */
 func (recv *Scale) GetLayout() *pango.Layout {
 	retC := C.gtk_scale_get_layout((*C.GtkScale)(recv.native))
@@ -3515,7 +3825,9 @@ func (recv *Scale) GetLayout() *pango.Layout {
 // values are undefined.
 /*
 
-C function : gtk_scale_get_layout_offsets
+C function
+
+gtk_scale_get_layout_offsets
 */
 func (recv *Scale) GetLayoutOffsets() (int32, int32) {
 	var c_x C.gint
@@ -3534,7 +3846,9 @@ func (recv *Scale) GetLayoutOffsets() (int32, int32) {
 // Create a new #GtkSeparatorToolItem
 /*
 
-C function : gtk_separator_tool_item_new
+C function
+
+gtk_separator_tool_item_new
 */
 func SeparatorToolItemNew() *SeparatorToolItem {
 	retC := C.gtk_separator_tool_item_new()
@@ -3547,7 +3861,9 @@ func SeparatorToolItemNew() *SeparatorToolItem {
 // See gtk_separator_tool_item_set_draw().
 /*
 
-C function : gtk_separator_tool_item_get_draw
+C function
+
+gtk_separator_tool_item_get_draw
 */
 func (recv *SeparatorToolItem) GetDraw() bool {
 	retC := C.gtk_separator_tool_item_get_draw((*C.GtkSeparatorToolItem)(recv.native))
@@ -3561,7 +3877,9 @@ func (recv *SeparatorToolItem) GetDraw() bool {
 // to create an item that forces following items to the end of the toolbar.
 /*
 
-C function : gtk_separator_tool_item_set_draw
+C function
+
+gtk_separator_tool_item_set_draw
 */
 func (recv *SeparatorToolItem) SetDraw(draw bool) {
 	c_draw :=
@@ -3695,7 +4013,9 @@ func style_unrealizeHandler(_ *C.GObject, data C.gpointer) {
 // be optimized.
 /*
 
-C function : gtk_text_buffer_select_range
+C function
+
+gtk_text_buffer_select_range
 */
 func (recv *TextBuffer) SelectRange(ins *TextIter, bound *TextIter) {
 	c_ins := (*C.GtkTextIter)(C.NULL)
@@ -3717,7 +4037,9 @@ func (recv *TextBuffer) SelectRange(ins *TextIter, bound *TextIter) {
 // gtk_text_view_set_accepts_tab().
 /*
 
-C function : gtk_text_view_get_accepts_tab
+C function
+
+gtk_text_view_get_accepts_tab
 */
 func (recv *TextView) GetAcceptsTab() bool {
 	retC := C.gtk_text_view_get_accepts_tab((*C.GtkTextView)(recv.native))
@@ -3729,7 +4051,9 @@ func (recv *TextView) GetAcceptsTab() bool {
 // Returns whether the #GtkTextView is in overwrite mode or not.
 /*
 
-C function : gtk_text_view_get_overwrite
+C function
+
+gtk_text_view_get_overwrite
 */
 func (recv *TextView) GetOverwrite() bool {
 	retC := C.gtk_text_view_get_overwrite((*C.GtkTextView)(recv.native))
@@ -3744,7 +4068,9 @@ func (recv *TextView) GetOverwrite() bool {
 // chain.
 /*
 
-C function : gtk_text_view_set_accepts_tab
+C function
+
+gtk_text_view_set_accepts_tab
 */
 func (recv *TextView) SetAcceptsTab(acceptsTab bool) {
 	c_accepts_tab :=
@@ -3758,7 +4084,9 @@ func (recv *TextView) SetAcceptsTab(acceptsTab bool) {
 // Changes the #GtkTextView overwrite mode.
 /*
 
-C function : gtk_text_view_set_overwrite
+C function
+
+gtk_text_view_set_overwrite
 */
 func (recv *TextView) SetOverwrite(overwrite bool) {
 	c_overwrite :=
@@ -3774,7 +4102,9 @@ func (recv *TextView) SetOverwrite(overwrite bool) {
 // call gtk_action_group_add_action_with_accel().
 /*
 
-C function : gtk_toggle_action_new
+C function
+
+gtk_toggle_action_new
 */
 func ToggleActionNew(name string, label string, tooltip string, stockId string) *ToggleAction {
 	c_name := C.CString(name)
@@ -3798,7 +4128,9 @@ func ToggleActionNew(name string, label string, tooltip string, stockId string) 
 // Returns the checked state of the toggle action.
 /*
 
-C function : gtk_toggle_action_get_active
+C function
+
+gtk_toggle_action_get_active
 */
 func (recv *ToggleAction) GetActive() bool {
 	retC := C.gtk_toggle_action_get_active((*C.GtkToggleAction)(recv.native))
@@ -3810,7 +4142,9 @@ func (recv *ToggleAction) GetActive() bool {
 // Returns whether the action should have proxies like a radio action.
 /*
 
-C function : gtk_toggle_action_get_draw_as_radio
+C function
+
+gtk_toggle_action_get_draw_as_radio
 */
 func (recv *ToggleAction) GetDrawAsRadio() bool {
 	retC := C.gtk_toggle_action_get_draw_as_radio((*C.GtkToggleAction)(recv.native))
@@ -3822,7 +4156,9 @@ func (recv *ToggleAction) GetDrawAsRadio() bool {
 // Sets the checked state on the toggle action.
 /*
 
-C function : gtk_toggle_action_set_active
+C function
+
+gtk_toggle_action_set_active
 */
 func (recv *ToggleAction) SetActive(isActive bool) {
 	c_is_active :=
@@ -3836,7 +4172,9 @@ func (recv *ToggleAction) SetActive(isActive bool) {
 // Sets whether the action should have proxies like a radio action.
 /*
 
-C function : gtk_toggle_action_set_draw_as_radio
+C function
+
+gtk_toggle_action_set_draw_as_radio
 */
 func (recv *ToggleAction) SetDrawAsRadio(drawAsRadio bool) {
 	c_draw_as_radio :=
@@ -3850,7 +4188,9 @@ func (recv *ToggleAction) SetDrawAsRadio(drawAsRadio bool) {
 // Emits the “toggled” signal on the toggle action.
 /*
 
-C function : gtk_toggle_action_toggled
+C function
+
+gtk_toggle_action_toggled
 */
 func (recv *ToggleAction) Toggled() {
 	C.gtk_toggle_action_toggled((*C.GtkToggleAction)(recv.native))
@@ -3861,7 +4201,9 @@ func (recv *ToggleAction) Toggled() {
 // Returns a new #GtkToggleToolButton
 /*
 
-C function : gtk_toggle_tool_button_new
+C function
+
+gtk_toggle_tool_button_new
 */
 func ToggleToolButtonNew() *ToggleToolButton {
 	retC := C.gtk_toggle_tool_button_new()
@@ -3877,7 +4219,9 @@ func ToggleToolButtonNew() *ToggleToolButton {
 // It is an error if @stock_id is not a name of a stock item.
 /*
 
-C function : gtk_toggle_tool_button_new_from_stock
+C function
+
+gtk_toggle_tool_button_new_from_stock
 */
 func ToggleToolButtonNewFromStock(stockId string) *ToggleToolButton {
 	c_stock_id := C.CString(stockId)
@@ -3893,7 +4237,9 @@ func ToggleToolButtonNewFromStock(stockId string) *ToggleToolButton {
 // Returns %TRUE if the toggle button is pressed in and %FALSE if it is raised.
 /*
 
-C function : gtk_toggle_tool_button_get_active
+C function
+
+gtk_toggle_tool_button_get_active
 */
 func (recv *ToggleToolButton) GetActive() bool {
 	retC := C.gtk_toggle_tool_button_get_active((*C.GtkToggleToolButton)(recv.native))
@@ -3907,7 +4253,9 @@ func (recv *ToggleToolButton) GetActive() bool {
 // This action causes the toggled signal to be emitted.
 /*
 
-C function : gtk_toggle_tool_button_set_active
+C function
+
+gtk_toggle_tool_button_set_active
 */
 func (recv *ToggleToolButton) SetActive(isActive bool) {
 	c_is_active :=
@@ -3922,7 +4270,9 @@ func (recv *ToggleToolButton) SetActive(isActive bool) {
 // label.
 /*
 
-C function : gtk_tool_button_new
+C function
+
+gtk_tool_button_new
 */
 func ToolButtonNew(iconWidget *Widget, label string) *ToolButton {
 	c_icon_widget := (*C.GtkWidget)(C.NULL)
@@ -3946,7 +4296,9 @@ func ToolButtonNew(iconWidget *Widget, label string) *ToolButton {
 // It is an error if @stock_id is not a name of a stock item.
 /*
 
-C function : gtk_tool_button_new_from_stock
+C function
+
+gtk_tool_button_new_from_stock
 */
 func ToolButtonNewFromStock(stockId string) *ToolButton {
 	c_stock_id := C.CString(stockId)
@@ -3962,7 +4314,9 @@ func ToolButtonNewFromStock(stockId string) *ToolButton {
 // See gtk_tool_button_set_icon_widget().
 /*
 
-C function : gtk_tool_button_get_icon_widget
+C function
+
+gtk_tool_button_get_icon_widget
 */
 func (recv *ToolButton) GetIconWidget() *Widget {
 	retC := C.gtk_tool_button_get_icon_widget((*C.GtkToolButton)(recv.native))
@@ -3981,7 +4335,9 @@ func (recv *ToolButton) GetIconWidget() *Widget {
 // string is owned by GTK+, and must not be modified or freed.
 /*
 
-C function : gtk_tool_button_get_label
+C function
+
+gtk_tool_button_get_label
 */
 func (recv *ToolButton) GetLabel() string {
 	retC := C.gtk_tool_button_get_label((*C.GtkToolButton)(recv.native))
@@ -3994,7 +4350,9 @@ func (recv *ToolButton) GetLabel() string {
 // See gtk_tool_button_set_label_widget().
 /*
 
-C function : gtk_tool_button_get_label_widget
+C function
+
+gtk_tool_button_get_label_widget
 */
 func (recv *ToolButton) GetLabelWidget() *Widget {
 	retC := C.gtk_tool_button_get_label_widget((*C.GtkToolButton)(recv.native))
@@ -4012,7 +4370,9 @@ func (recv *ToolButton) GetLabelWidget() *Widget {
 // The returned string is owned by GTK+ and must not be freed or modifed.
 /*
 
-C function : gtk_tool_button_get_stock_id
+C function
+
+gtk_tool_button_get_stock_id
 */
 func (recv *ToolButton) GetStockId() string {
 	retC := C.gtk_tool_button_get_stock_id((*C.GtkToolButton)(recv.native))
@@ -4025,7 +4385,9 @@ func (recv *ToolButton) GetStockId() string {
 // on menu items on the overflow menu. See gtk_tool_button_set_use_underline().
 /*
 
-C function : gtk_tool_button_get_use_underline
+C function
+
+gtk_tool_button_get_use_underline
 */
 func (recv *ToolButton) GetUseUnderline() bool {
 	retC := C.gtk_tool_button_get_use_underline((*C.GtkToolButton)(recv.native))
@@ -4039,7 +4401,9 @@ func (recv *ToolButton) GetUseUnderline() bool {
 // #GtkToolButton:stock-id property is also %NULL, @button will not have an icon.
 /*
 
-C function : gtk_tool_button_set_icon_widget
+C function
+
+gtk_tool_button_set_icon_widget
 */
 func (recv *ToolButton) SetIconWidget(iconWidget *Widget) {
 	c_icon_widget := (*C.GtkWidget)(C.NULL)
@@ -4060,7 +4424,9 @@ func (recv *ToolButton) SetIconWidget(iconWidget *Widget) {
 // also %NULL, @button will not have a label.
 /*
 
-C function : gtk_tool_button_set_label
+C function
+
+gtk_tool_button_set_label
 */
 func (recv *ToolButton) SetLabel(label string) {
 	c_label := C.CString(label)
@@ -4078,7 +4444,9 @@ func (recv *ToolButton) SetLabel(label string) {
 // #GtkToolButton:stock-id is also %NULL, @button does not have a label.
 /*
 
-C function : gtk_tool_button_set_label_widget
+C function
+
+gtk_tool_button_set_label_widget
 */
 func (recv *ToolButton) SetLabelWidget(labelWidget *Widget) {
 	c_label_widget := (*C.GtkWidget)(C.NULL)
@@ -4096,7 +4464,9 @@ func (recv *ToolButton) SetLabelWidget(labelWidget *Widget) {
 // #GtkToolButton:label-widget and #GtkToolButton:icon-widget properties.
 /*
 
-C function : gtk_tool_button_set_stock_id
+C function
+
+gtk_tool_button_set_stock_id
 */
 func (recv *ToolButton) SetStockId(stockId string) {
 	c_stock_id := C.CString(stockId)
@@ -4117,7 +4487,9 @@ func (recv *ToolButton) SetStockId(stockId string) {
 // only affects the menu item on the overflow menu.
 /*
 
-C function : gtk_tool_button_set_use_underline
+C function
+
+gtk_tool_button_set_use_underline
 */
 func (recv *ToolButton) SetUseUnderline(useUnderline bool) {
 	c_use_underline :=
@@ -4131,7 +4503,9 @@ func (recv *ToolButton) SetUseUnderline(useUnderline bool) {
 // Creates a new #GtkToolItem
 /*
 
-C function : gtk_tool_item_new
+C function
+
+gtk_tool_item_new
 */
 func ToolItemNew() *ToolItem {
 	retC := C.gtk_tool_item_new()
@@ -4144,7 +4518,9 @@ func ToolItemNew() *ToolItem {
 // See gtk_tool_item_set_expand().
 /*
 
-C function : gtk_tool_item_get_expand
+C function
+
+gtk_tool_item_get_expand
 */
 func (recv *ToolItem) GetExpand() bool {
 	retC := C.gtk_tool_item_get_expand((*C.GtkToolItem)(recv.native))
@@ -4157,7 +4533,9 @@ func (recv *ToolItem) GetExpand() bool {
 // items. See gtk_tool_item_set_homogeneous().
 /*
 
-C function : gtk_tool_item_get_homogeneous
+C function
+
+gtk_tool_item_get_homogeneous
 */
 func (recv *ToolItem) GetHomogeneous() bool {
 	retC := C.gtk_tool_item_get_homogeneous((*C.GtkToolItem)(recv.native))
@@ -4171,7 +4549,9 @@ func (recv *ToolItem) GetHomogeneous() bool {
 // they should use.
 /*
 
-C function : gtk_tool_item_get_icon_size
+C function
+
+gtk_tool_item_get_icon_size
 */
 func (recv *ToolItem) GetIconSize() IconSize {
 	retC := C.gtk_tool_item_get_icon_size((*C.GtkToolItem)(recv.native))
@@ -4184,7 +4564,9 @@ func (recv *ToolItem) GetIconSize() IconSize {
 // gtk_tool_item_set_is_important()
 /*
 
-C function : gtk_tool_item_get_is_important
+C function
+
+gtk_tool_item_get_is_important
 */
 func (recv *ToolItem) GetIsImportant() bool {
 	retC := C.gtk_tool_item_get_is_important((*C.GtkToolItem)(recv.native))
@@ -4198,7 +4580,9 @@ func (recv *ToolItem) GetIsImportant() bool {
 // they should use.
 /*
 
-C function : gtk_tool_item_get_orientation
+C function
+
+gtk_tool_item_get_orientation
 */
 func (recv *ToolItem) GetOrientation() Orientation {
 	retC := C.gtk_tool_item_get_orientation((*C.GtkToolItem)(recv.native))
@@ -4216,7 +4600,9 @@ func (recv *ToolItem) GetOrientation() Orientation {
 // will not inadvertently change a menu item that they did not create.
 /*
 
-C function : gtk_tool_item_get_proxy_menu_item
+C function
+
+gtk_tool_item_get_proxy_menu_item
 */
 func (recv *ToolItem) GetProxyMenuItem(menuItemId string) *Widget {
 	c_menu_item_id := C.CString(menuItemId)
@@ -4239,7 +4625,9 @@ func (recv *ToolItem) GetProxyMenuItem(menuItemId string) *Widget {
 // relief style of buttons.
 /*
 
-C function : gtk_tool_item_get_relief_style
+C function
+
+gtk_tool_item_get_relief_style
 */
 func (recv *ToolItem) GetReliefStyle() ReliefStyle {
 	retC := C.gtk_tool_item_get_relief_style((*C.GtkToolItem)(recv.native))
@@ -4262,7 +4650,9 @@ func (recv *ToolItem) GetReliefStyle() ReliefStyle {
 // both an icon and a label, arranged horizontally
 /*
 
-C function : gtk_tool_item_get_toolbar_style
+C function
+
+gtk_tool_item_get_toolbar_style
 */
 func (recv *ToolItem) GetToolbarStyle() ToolbarStyle {
 	retC := C.gtk_tool_item_get_toolbar_style((*C.GtkToolItem)(recv.native))
@@ -4275,7 +4665,9 @@ func (recv *ToolItem) GetToolbarStyle() ToolbarStyle {
 // gtk_tool_item_set_use_drag_window().
 /*
 
-C function : gtk_tool_item_get_use_drag_window
+C function
+
+gtk_tool_item_get_use_drag_window
 */
 func (recv *ToolItem) GetUseDragWindow() bool {
 	retC := C.gtk_tool_item_get_use_drag_window((*C.GtkToolItem)(recv.native))
@@ -4288,7 +4680,9 @@ func (recv *ToolItem) GetUseDragWindow() bool {
 // docked horizontally.
 /*
 
-C function : gtk_tool_item_get_visible_horizontal
+C function
+
+gtk_tool_item_get_visible_horizontal
 */
 func (recv *ToolItem) GetVisibleHorizontal() bool {
 	retC := C.gtk_tool_item_get_visible_horizontal((*C.GtkToolItem)(recv.native))
@@ -4301,7 +4695,9 @@ func (recv *ToolItem) GetVisibleHorizontal() bool {
 // See gtk_tool_item_set_visible_vertical().
 /*
 
-C function : gtk_tool_item_get_visible_vertical
+C function
+
+gtk_tool_item_get_visible_vertical
 */
 func (recv *ToolItem) GetVisibleVertical() bool {
 	retC := C.gtk_tool_item_get_visible_vertical((*C.GtkToolItem)(recv.native))
@@ -4315,7 +4711,9 @@ func (recv *ToolItem) GetVisibleVertical() bool {
 // that is going to appear in the overflow menu.
 /*
 
-C function : gtk_tool_item_retrieve_proxy_menu_item
+C function
+
+gtk_tool_item_retrieve_proxy_menu_item
 */
 func (recv *ToolItem) RetrieveProxyMenuItem() *Widget {
 	retC := C.gtk_tool_item_retrieve_proxy_menu_item((*C.GtkToolItem)(recv.native))
@@ -4330,7 +4728,9 @@ func (recv *ToolItem) RetrieveProxyMenuItem() *Widget {
 // and smaller when the toolbar gets smaller.
 /*
 
-C function : gtk_tool_item_set_expand
+C function
+
+gtk_tool_item_set_expand
 */
 func (recv *ToolItem) SetExpand(expand bool) {
 	c_expand :=
@@ -4346,7 +4746,9 @@ func (recv *ToolItem) SetExpand(expand bool) {
 // the same width as the widest of the items.
 /*
 
-C function : gtk_tool_item_set_homogeneous
+C function
+
+gtk_tool_item_set_homogeneous
 */
 func (recv *ToolItem) SetHomogeneous(homogeneous bool) {
 	c_homogeneous :=
@@ -4364,7 +4766,9 @@ func (recv *ToolItem) SetHomogeneous(homogeneous bool) {
 // effect known as “priority text”
 /*
 
-C function : gtk_tool_item_set_is_important
+C function
+
+gtk_tool_item_set_is_important
 */
 func (recv *ToolItem) SetIsImportant(isImportant bool) {
 	c_is_important :=
@@ -4382,7 +4786,9 @@ func (recv *ToolItem) SetIsImportant(isImportant bool) {
 // See also #GtkToolItem::create-menu-proxy.
 /*
 
-C function : gtk_tool_item_set_proxy_menu_item
+C function
+
+gtk_tool_item_set_proxy_menu_item
 */
 func (recv *ToolItem) SetProxyMenuItem(menuItemId string, menuItem *Widget) {
 	c_menu_item_id := C.CString(menuItemId)
@@ -4404,7 +4810,9 @@ func (recv *ToolItem) SetProxyMenuItem(menuItemId string, menuItem *Widget) {
 // even those that would otherwise be sent to a child of @tool_item.
 /*
 
-C function : gtk_tool_item_set_use_drag_window
+C function
+
+gtk_tool_item_set_use_drag_window
 */
 func (recv *ToolItem) SetUseDragWindow(useDragWindow bool) {
 	c_use_drag_window :=
@@ -4418,7 +4826,9 @@ func (recv *ToolItem) SetUseDragWindow(useDragWindow bool) {
 // Sets whether @tool_item is visible when the toolbar is docked horizontally.
 /*
 
-C function : gtk_tool_item_set_visible_horizontal
+C function
+
+gtk_tool_item_set_visible_horizontal
 */
 func (recv *ToolItem) SetVisibleHorizontal(visibleHorizontal bool) {
 	c_visible_horizontal :=
@@ -4435,7 +4845,9 @@ func (recv *ToolItem) SetVisibleHorizontal(visibleHorizontal bool) {
 // @tool_item will not appear on toolbars that are docked vertically.
 /*
 
-C function : gtk_tool_item_set_visible_vertical
+C function
+
+gtk_tool_item_set_visible_vertical
 */
 func (recv *ToolItem) SetVisibleVertical(visibleVertical bool) {
 	c_visible_vertical :=
@@ -4454,7 +4866,9 @@ func (recv *ToolItem) SetVisibleVertical(visibleVertical bool) {
 // @x and @y are in @toolbar coordinates.
 /*
 
-C function : gtk_toolbar_get_drop_index
+C function
+
+gtk_toolbar_get_drop_index
 */
 func (recv *Toolbar) GetDropIndex(x int32, y int32) int32 {
 	c_x := (C.gint)(x)
@@ -4471,7 +4885,9 @@ func (recv *Toolbar) GetDropIndex(x int32, y int32) int32 {
 // It is an error if @item is not a child of the toolbar.
 /*
 
-C function : gtk_toolbar_get_item_index
+C function
+
+gtk_toolbar_get_item_index
 */
 func (recv *Toolbar) GetItemIndex(item *ToolItem) int32 {
 	c_item := (*C.GtkToolItem)(C.NULL)
@@ -4488,7 +4904,9 @@ func (recv *Toolbar) GetItemIndex(item *ToolItem) int32 {
 // Returns the number of items on the toolbar.
 /*
 
-C function : gtk_toolbar_get_n_items
+C function
+
+gtk_toolbar_get_n_items
 */
 func (recv *Toolbar) GetNItems() int32 {
 	retC := C.gtk_toolbar_get_n_items((*C.GtkToolbar)(recv.native))
@@ -4501,7 +4919,9 @@ func (recv *Toolbar) GetNItems() int32 {
 // toolbar does not contain an @n'th item.
 /*
 
-C function : gtk_toolbar_get_nth_item
+C function
+
+gtk_toolbar_get_nth_item
 */
 func (recv *Toolbar) GetNthItem(n int32) *ToolItem {
 	c_n := (C.gint)(n)
@@ -4521,7 +4941,9 @@ func (recv *Toolbar) GetNthItem(n int32) *ToolItem {
 // gtk_button_set_relief().
 /*
 
-C function : gtk_toolbar_get_relief_style
+C function
+
+gtk_toolbar_get_relief_style
 */
 func (recv *Toolbar) GetReliefStyle() ReliefStyle {
 	retC := C.gtk_toolbar_get_relief_style((*C.GtkToolbar)(recv.native))
@@ -4534,7 +4956,9 @@ func (recv *Toolbar) GetReliefStyle() ReliefStyle {
 // See gtk_toolbar_set_show_arrow().
 /*
 
-C function : gtk_toolbar_get_show_arrow
+C function
+
+gtk_toolbar_get_show_arrow
 */
 func (recv *Toolbar) GetShowArrow() bool {
 	retC := C.gtk_toolbar_get_show_arrow((*C.GtkToolbar)(recv.native))
@@ -4548,7 +4972,9 @@ func (recv *Toolbar) GetShowArrow() bool {
 // negative, the item is appended to the end of the toolbar.
 /*
 
-C function : gtk_toolbar_insert
+C function
+
+gtk_toolbar_insert
 */
 func (recv *Toolbar) Insert(item *ToolItem, pos int32) {
 	c_item := (*C.GtkToolItem)(C.NULL)
@@ -4574,7 +5000,9 @@ func (recv *Toolbar) Insert(item *ToolItem, pos int32) {
 // toolbar.
 /*
 
-C function : gtk_toolbar_set_drop_highlight_item
+C function
+
+gtk_toolbar_set_drop_highlight_item
 */
 func (recv *Toolbar) SetDropHighlightItem(toolItem *ToolItem, index int32) {
 	c_tool_item := (*C.GtkToolItem)(C.NULL)
@@ -4597,7 +5025,9 @@ func (recv *Toolbar) SetDropHighlightItem(toolItem *ToolItem, index int32) {
 // request enough size to fit all of its child items without any overflow.
 /*
 
-C function : gtk_toolbar_set_show_arrow
+C function
+
+gtk_toolbar_set_show_arrow
 */
 func (recv *Toolbar) SetShowArrow(showArrow bool) {
 	c_show_arrow :=
@@ -4616,7 +5046,9 @@ func (recv *Toolbar) SetShowArrow(showArrow bool) {
 // all unreffed iters will be invalid.
 /*
 
-C function : gtk_tree_model_filter_clear_cache
+C function
+
+gtk_tree_model_filter_clear_cache
 */
 func (recv *TreeModelFilter) ClearCache() {
 	C.gtk_tree_model_filter_clear_cache((*C.GtkTreeModelFilter)(recv.native))
@@ -4629,7 +5061,9 @@ func (recv *TreeModelFilter) ClearCache() {
 // returned.
 /*
 
-C function : gtk_tree_model_filter_convert_child_iter_to_iter
+C function
+
+gtk_tree_model_filter_convert_child_iter_to_iter
 */
 func (recv *TreeModelFilter) ConvertChildIterToIter(childIter *TreeIter) (bool, *TreeIter) {
 	var c_filter_iter C.GtkTreeIter
@@ -4654,7 +5088,9 @@ func (recv *TreeModelFilter) ConvertChildIterToIter(childIter *TreeIter) (bool, 
 // is returned.
 /*
 
-C function : gtk_tree_model_filter_convert_child_path_to_path
+C function
+
+gtk_tree_model_filter_convert_child_path_to_path
 */
 func (recv *TreeModelFilter) ConvertChildPathToPath(childPath *TreePath) *TreePath {
 	c_child_path := (*C.GtkTreePath)(C.NULL)
@@ -4676,7 +5112,9 @@ func (recv *TreeModelFilter) ConvertChildPathToPath(childPath *TreePath) *TreePa
 // Sets @child_iter to point to the row pointed to by @filter_iter.
 /*
 
-C function : gtk_tree_model_filter_convert_iter_to_child_iter
+C function
+
+gtk_tree_model_filter_convert_iter_to_child_iter
 */
 func (recv *TreeModelFilter) ConvertIterToChildIter(filterIter *TreeIter) *TreeIter {
 	var c_child_iter C.GtkTreeIter
@@ -4699,7 +5137,9 @@ func (recv *TreeModelFilter) ConvertIterToChildIter(filterIter *TreeIter) *TreeI
 // does not point to a location in the child model, %NULL is returned.
 /*
 
-C function : gtk_tree_model_filter_convert_path_to_child_path
+C function
+
+gtk_tree_model_filter_convert_path_to_child_path
 */
 func (recv *TreeModelFilter) ConvertPathToChildPath(filterPath *TreePath) *TreePath {
 	c_filter_path := (*C.GtkTreePath)(C.NULL)
@@ -4721,7 +5161,9 @@ func (recv *TreeModelFilter) ConvertPathToChildPath(filterPath *TreePath) *TreeP
 // Returns a pointer to the child model of @filter.
 /*
 
-C function : gtk_tree_model_filter_get_model
+C function
+
+gtk_tree_model_filter_get_model
 */
 func (recv *TreeModelFilter) GetModel() *TreeModel {
 	retC := C.gtk_tree_model_filter_get_model((*C.GtkTreeModelFilter)(recv.native))
@@ -4734,7 +5176,9 @@ func (recv *TreeModelFilter) GetModel() *TreeModel {
 // the filter to re-evaluate whether a row is visible or not.
 /*
 
-C function : gtk_tree_model_filter_refilter
+C function
+
+gtk_tree_model_filter_refilter
 */
 func (recv *TreeModelFilter) Refilter() {
 	C.gtk_tree_model_filter_refilter((*C.GtkTreeModelFilter)(recv.native))
@@ -4754,7 +5198,9 @@ func (recv *TreeModelFilter) Refilter() {
 // once for a given filter model.
 /*
 
-C function : gtk_tree_model_filter_set_visible_column
+C function
+
+gtk_tree_model_filter_set_visible_column
 */
 func (recv *TreeModelFilter) SetVisibleColumn(column int32) {
 	c_column := (C.gint)(column)
@@ -4769,7 +5215,9 @@ func (recv *TreeModelFilter) SetVisibleColumn(column int32) {
 // Returns %TRUE if the column expands to fill available space.
 /*
 
-C function : gtk_tree_view_column_get_expand
+C function
+
+gtk_tree_view_column_get_expand
 */
 func (recv *TreeViewColumn) GetExpand() bool {
 	retC := C.gtk_tree_view_column_get_expand((*C.GtkTreeViewColumn)(recv.native))
@@ -4787,7 +5235,9 @@ func (recv *TreeViewColumn) GetExpand() bool {
 // resized by the user.
 /*
 
-C function : gtk_tree_view_column_set_expand
+C function
+
+gtk_tree_view_column_set_expand
 */
 func (recv *TreeViewColumn) SetExpand(expand bool) {
 	c_expand :=
@@ -5157,7 +5607,9 @@ func uimanager_preActivateHandler(_ *C.GObject, c_action *C.GtkAction, data C.gp
 // Creates a new ui manager object.
 /*
 
-C function : gtk_ui_manager_new
+C function
+
+gtk_ui_manager_new
 */
 func UIManagerNew() *UIManager {
 	retC := C.gtk_ui_manager_new()
@@ -5177,7 +5629,9 @@ func UIManagerNew() *UIManager {
 // before or after this item, depending on @top.
 /*
 
-C function : gtk_ui_manager_add_ui
+C function
+
+gtk_ui_manager_add_ui
 */
 func (recv *UIManager) AddUi(mergeId uint32, path string, name string, action string, type_ UIManagerItemType, top bool) {
 	c_merge_id := (C.guint)(mergeId)
@@ -5205,7 +5659,9 @@ func (recv *UIManager) AddUi(mergeId uint32, path string, name string, action st
 // merges it with the current contents of @manager.
 /*
 
-C function : gtk_ui_manager_add_ui_from_file
+C function
+
+gtk_ui_manager_add_ui_from_file
 */
 func (recv *UIManager) AddUiFromFile(filename string) (uint32, error) {
 	c_filename := C.CString(filename)
@@ -5229,7 +5685,9 @@ func (recv *UIManager) AddUiFromFile(filename string) (uint32, error) {
 // it is missing.
 /*
 
-C function : gtk_ui_manager_add_ui_from_string
+C function
+
+gtk_ui_manager_add_ui_from_string
 */
 func (recv *UIManager) AddUiFromString(buffer string) (uint32, error) {
 	c_buffer := C.CString(buffer)
@@ -5267,7 +5725,9 @@ func (recv *UIManager) AddUiFromString(buffer string) (uint32, error) {
 // ]|
 /*
 
-C function : gtk_ui_manager_ensure_update
+C function
+
+gtk_ui_manager_ensure_update
 */
 func (recv *UIManager) EnsureUpdate() {
 	C.gtk_ui_manager_ensure_update((*C.GtkUIManager)(recv.native))
@@ -5278,7 +5738,9 @@ func (recv *UIManager) EnsureUpdate() {
 // Returns the #GtkAccelGroup associated with @manager.
 /*
 
-C function : gtk_ui_manager_get_accel_group
+C function
+
+gtk_ui_manager_get_accel_group
 */
 func (recv *UIManager) GetAccelGroup() *AccelGroup {
 	retC := C.gtk_ui_manager_get_accel_group((*C.GtkUIManager)(recv.native))
@@ -5291,7 +5753,9 @@ func (recv *UIManager) GetAccelGroup() *AccelGroup {
 // for more information about paths.
 /*
 
-C function : gtk_ui_manager_get_action
+C function
+
+gtk_ui_manager_get_action
 */
 func (recv *UIManager) GetAction(path string) *Action {
 	c_path := C.CString(path)
@@ -5306,7 +5770,9 @@ func (recv *UIManager) GetAction(path string) *Action {
 // Returns the list of action groups associated with @manager.
 /*
 
-C function : gtk_ui_manager_get_action_groups
+C function
+
+gtk_ui_manager_get_action_groups
 */
 func (recv *UIManager) GetActionGroups() *glib.List {
 	retC := C.gtk_ui_manager_get_action_groups((*C.GtkUIManager)(recv.native))
@@ -5319,7 +5785,9 @@ func (recv *UIManager) GetActionGroups() *glib.List {
 // will have tearoff menu items.
 /*
 
-C function : gtk_ui_manager_get_add_tearoffs
+C function
+
+gtk_ui_manager_get_add_tearoffs
 */
 func (recv *UIManager) GetAddTearoffs() bool {
 	retC := C.gtk_ui_manager_get_add_tearoffs((*C.GtkUIManager)(recv.native))
@@ -5331,7 +5799,9 @@ func (recv *UIManager) GetAddTearoffs() bool {
 // Obtains a list of all toplevel widgets of the requested types.
 /*
 
-C function : gtk_ui_manager_get_toplevels
+C function
+
+gtk_ui_manager_get_toplevels
 */
 func (recv *UIManager) GetToplevels(types UIManagerItemType) *glib.SList {
 	c_types := (C.GtkUIManagerItemType)(types)
@@ -5345,7 +5815,9 @@ func (recv *UIManager) GetToplevels(types UIManagerItemType) *glib.SList {
 // Creates a [UI definition][XML-UI] of the merged UI.
 /*
 
-C function : gtk_ui_manager_get_ui
+C function
+
+gtk_ui_manager_get_ui
 */
 func (recv *UIManager) GetUi() string {
 	retC := C.gtk_ui_manager_get_ui((*C.GtkUIManager)(recv.native))
@@ -5371,7 +5843,9 @@ func (recv *UIManager) GetUi() string {
 // destruction of the ui manager.
 /*
 
-C function : gtk_ui_manager_get_widget
+C function
+
+gtk_ui_manager_get_widget
 */
 func (recv *UIManager) GetWidget(path string) *Widget {
 	c_path := C.CString(path)
@@ -5392,7 +5866,9 @@ func (recv *UIManager) GetWidget(path string) *Widget {
 // list.
 /*
 
-C function : gtk_ui_manager_insert_action_group
+C function
+
+gtk_ui_manager_insert_action_group
 */
 func (recv *UIManager) InsertActionGroup(actionGroup *ActionGroup, pos int32) {
 	c_action_group := (*C.GtkActionGroup)(C.NULL)
@@ -5411,7 +5887,9 @@ func (recv *UIManager) InsertActionGroup(actionGroup *ActionGroup, pos int32) {
 // gtk_ui_manager_add_ui().
 /*
 
-C function : gtk_ui_manager_new_merge_id
+C function
+
+gtk_ui_manager_new_merge_id
 */
 func (recv *UIManager) NewMergeId() uint32 {
 	retC := C.gtk_ui_manager_new_merge_id((*C.GtkUIManager)(recv.native))
@@ -5424,7 +5902,9 @@ func (recv *UIManager) NewMergeId() uint32 {
 // with @manager.
 /*
 
-C function : gtk_ui_manager_remove_action_group
+C function
+
+gtk_ui_manager_remove_action_group
 */
 func (recv *UIManager) RemoveActionGroup(actionGroup *ActionGroup) {
 	c_action_group := (*C.GtkActionGroup)(C.NULL)
@@ -5440,7 +5920,9 @@ func (recv *UIManager) RemoveActionGroup(actionGroup *ActionGroup) {
 // Unmerges the part of @manager's content identified by @merge_id.
 /*
 
-C function : gtk_ui_manager_remove_ui
+C function
+
+gtk_ui_manager_remove_ui
 */
 func (recv *UIManager) RemoveUi(mergeId uint32) {
 	c_merge_id := (C.guint)(mergeId)
@@ -5457,7 +5939,9 @@ func (recv *UIManager) RemoveUi(mergeId uint32) {
 // menus never have tearoff menu items.
 /*
 
-C function : gtk_ui_manager_set_add_tearoffs
+C function
+
+gtk_ui_manager_set_add_tearoffs
 */
 func (recv *UIManager) SetAddTearoffs(addTearoffs bool) {
 	c_add_tearoffs :=
@@ -5476,7 +5960,9 @@ func (recv *UIManager) SetAddTearoffs(addTearoffs bool) {
 // to the #GtkWidget::destroy signal or a weak notifier.
 /*
 
-C function : gtk_widget_add_mnemonic_label
+C function
+
+gtk_widget_add_mnemonic_label
 */
 func (recv *Widget) AddMnemonicLabel(label *Widget) {
 	c_label := (*C.GtkWidget)(C.NULL)
@@ -5498,7 +5984,9 @@ func (recv *Widget) AddMnemonicLabel(label *Widget) {
 // its ancestors mapped.
 /*
 
-C function : gtk_widget_can_activate_accel
+C function
+
+gtk_widget_can_activate_accel
 */
 func (recv *Widget) CanActivateAccel(signalId uint32) bool {
 	c_signal_id := (C.guint)(signalId)
@@ -5513,7 +6001,9 @@ func (recv *Widget) CanActivateAccel(signalId uint32) bool {
 // drag-and-drop.
 /*
 
-C function : gtk_drag_source_get_target_list
+C function
+
+gtk_drag_source_get_target_list
 */
 func (recv *Widget) DragSourceGetTargetList() *TargetList {
 	retC := C.gtk_drag_source_get_target_list((*C.GtkWidget)(recv.native))
@@ -5532,7 +6022,9 @@ func (recv *Widget) DragSourceGetTargetList() *TargetList {
 // gtk_drag_source_set().
 /*
 
-C function : gtk_drag_source_set_target_list
+C function
+
+gtk_drag_source_set_target_list
 */
 func (recv *Widget) DragSourceSetTargetList(targetList *TargetList) {
 	c_target_list := (*C.GtkTargetList)(C.NULL)
@@ -5550,7 +6042,9 @@ func (recv *Widget) DragSourceSetTargetList(targetList *TargetList) {
 // will affect this widget.
 /*
 
-C function : gtk_widget_get_no_show_all
+C function
+
+gtk_widget_get_no_show_all
 */
 func (recv *Widget) GetNoShowAll() bool {
 	retC := C.gtk_widget_get_no_show_all((*C.GtkWidget)(recv.native))
@@ -5571,7 +6065,9 @@ func (recv *Widget) GetNoShowAll() bool {
 // widgets afterwards.
 /*
 
-C function : gtk_widget_list_mnemonic_labels
+C function
+
+gtk_widget_list_mnemonic_labels
 */
 func (recv *Widget) ListMnemonicLabels() *glib.List {
 	retC := C.gtk_widget_list_mnemonic_labels((*C.GtkWidget)(recv.native))
@@ -5584,7 +6080,9 @@ func (recv *Widget) ListMnemonicLabels() *glib.List {
 // except that the widget is not invalidated.
 /*
 
-C function : gtk_widget_queue_resize_no_redraw
+C function
+
+gtk_widget_queue_resize_no_redraw
 */
 func (recv *Widget) QueueResizeNoRedraw() {
 	C.gtk_widget_queue_resize_no_redraw((*C.GtkWidget)(recv.native))
@@ -5598,7 +6096,9 @@ func (recv *Widget) QueueResizeNoRedraw() {
 // gtk_widget_add_mnemonic_label().
 /*
 
-C function : gtk_widget_remove_mnemonic_label
+C function
+
+gtk_widget_remove_mnemonic_label
 */
 func (recv *Widget) RemoveMnemonicLabel(label *Widget) {
 	c_label := (*C.GtkWidget)(C.NULL)
@@ -5618,7 +6118,9 @@ func (recv *Widget) RemoveMnemonicLabel(label *Widget) {
 // controlled visibility, see #GtkUIManager.
 /*
 
-C function : gtk_widget_set_no_show_all
+C function
+
+gtk_widget_set_no_show_all
 */
 func (recv *Widget) SetNoShowAll(noShowAll bool) {
 	c_no_show_all :=
@@ -5635,7 +6137,9 @@ func (recv *Widget) SetNoShowAll(noShowAll bool) {
 // overriding the standard key handling for a toplevel window.
 /*
 
-C function : gtk_window_activate_key
+C function
+
+gtk_window_activate_key
 */
 func (recv *Window) ActivateKey(event *gdk.EventKey) bool {
 	c_event := (*C.GdkEventKey)(C.NULL)
@@ -5652,7 +6156,9 @@ func (recv *Window) ActivateKey(event *gdk.EventKey) bool {
 // Gets the value set by gtk_window_set_accept_focus().
 /*
 
-C function : gtk_window_get_accept_focus
+C function
+
+gtk_window_get_accept_focus
 */
 func (recv *Window) GetAcceptFocus() bool {
 	retC := C.gtk_window_get_accept_focus((*C.GtkWindow)(recv.native))
@@ -5666,7 +6172,9 @@ func (recv *Window) GetAcceptFocus() bool {
 // but for embedded windows, like #GtkPlug, the results will differ.
 /*
 
-C function : gtk_window_has_toplevel_focus
+C function
+
+gtk_window_has_toplevel_focus
 */
 func (recv *Window) HasToplevelFocus() bool {
 	retC := C.gtk_window_has_toplevel_focus((*C.GtkWindow)(recv.native))
@@ -5684,7 +6192,9 @@ func (recv *Window) HasToplevelFocus() bool {
 // See gtk_window_has_toplevel_focus()
 /*
 
-C function : gtk_window_is_active
+C function
+
+gtk_window_is_active
 */
 func (recv *Window) IsActive() bool {
 	retC := C.gtk_window_is_active((*C.GtkWindow)(recv.native))
@@ -5701,7 +6211,9 @@ func (recv *Window) IsActive() bool {
 // overriding the standard key handling for a toplevel window.
 /*
 
-C function : gtk_window_propagate_key_event
+C function
+
+gtk_window_propagate_key_event
 */
 func (recv *Window) PropagateKeyEvent(event *gdk.EventKey) bool {
 	c_event := (*C.GdkEventKey)(C.NULL)
@@ -5719,7 +6231,9 @@ func (recv *Window) PropagateKeyEvent(event *gdk.EventKey) bool {
 // the input focus. This function sets this hint.
 /*
 
-C function : gtk_window_set_accept_focus
+C function
+
+gtk_window_set_accept_focus
 */
 func (recv *Window) SetAcceptFocus(setting bool) {
 	c_setting :=
@@ -5752,7 +6266,9 @@ func (recv *Window) SetAcceptFocus(setting bool) {
 // dialogs.
 /*
 
-C function : gtk_window_set_keep_above
+C function
+
+gtk_window_set_keep_above
 */
 func (recv *Window) SetKeepAbove(setting bool) {
 	c_setting :=
@@ -5785,7 +6301,9 @@ func (recv *Window) SetKeepAbove(setting bool) {
 // dialogs.
 /*
 
-C function : gtk_window_set_keep_below
+C function
+
+gtk_window_set_keep_below
 */
 func (recv *Window) SetKeepBelow(setting bool) {
 	c_setting :=

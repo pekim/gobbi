@@ -11,7 +11,9 @@ import "C"
 
 /*
 
-C record/class : AtkActionIface
+C type
+
+AtkActionIface
 */
 type ActionIface struct {
 	native *C.AtkActionIface
@@ -54,7 +56,9 @@ func (recv *ActionIface) ToC() unsafe.Pointer {
 // A string name/value pair representing a generic attribute.
 /*
 
-C record/class : AtkAttribute
+C type
+
+AtkAttribute
 */
 type Attribute struct {
 	native *C.AtkAttribute
@@ -88,7 +92,9 @@ func (recv *Attribute) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : AtkComponentIface
+C type
+
+AtkComponentIface
 */
 type ComponentIface struct {
 	native *C.AtkComponentIface
@@ -128,7 +134,9 @@ func (recv *ComponentIface) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : AtkDocumentIface
+C type
+
+AtkDocumentIface
 */
 type DocumentIface struct {
 	native *C.AtkDocumentIface
@@ -161,7 +169,9 @@ func (recv *DocumentIface) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : AtkEditableTextIface
+C type
+
+AtkEditableTextIface
 */
 type EditableTextIface struct {
 	native *C.AtkEditableTextIface
@@ -193,7 +203,9 @@ func (recv *EditableTextIface) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : AtkGObjectAccessibleClass
+C type
+
+AtkGObjectAccessibleClass
 */
 type GObjectAccessibleClass struct {
 	native *C.AtkGObjectAccessibleClass
@@ -220,7 +232,9 @@ func (recv *GObjectAccessibleClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : AtkHyperlinkClass
+C type
+
+AtkHyperlinkClass
 */
 type HyperlinkClass struct {
 	native *C.AtkHyperlinkClass
@@ -255,7 +269,9 @@ func (recv *HyperlinkClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : AtkHyperlinkImplIface
+C type
+
+AtkHyperlinkImplIface
 */
 type HyperlinkImplIface struct {
 	native *C.AtkHyperlinkImplIface
@@ -281,7 +297,9 @@ func (recv *HyperlinkImplIface) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : AtkHypertextIface
+C type
+
+AtkHypertextIface
 */
 type HypertextIface struct {
 	native *C.AtkHypertextIface
@@ -310,7 +328,9 @@ func (recv *HypertextIface) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : AtkImageIface
+C type
+
+AtkImageIface
 */
 type ImageIface struct {
 	native *C.AtkImageIface
@@ -340,7 +360,9 @@ func (recv *ImageIface) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : AtkImplementor
+C type
+
+AtkImplementor
 */
 type Implementor struct {
 	native *C.AtkImplementor
@@ -366,7 +388,9 @@ func (recv *Implementor) ToC() unsafe.Pointer {
 // the object implements #AtkObjectIface
 /*
 
-C function : atk_implementor_ref_accessible
+C function
+
+atk_implementor_ref_accessible
 */
 func (recv *Implementor) RefAccessible() *Object {
 	retC := C.atk_implementor_ref_accessible((*C.AtkImplementor)(recv.native))
@@ -378,7 +402,9 @@ func (recv *Implementor) RefAccessible() *Object {
 // Encapsulates information about a key event.
 /*
 
-C record/class : AtkKeyEventStruct
+C type
+
+AtkKeyEventStruct
 */
 type KeyEventStruct struct {
 	native    *C.AtkKeyEventStruct
@@ -433,7 +459,9 @@ func (recv *KeyEventStruct) ToC() unsafe.Pointer {
 // Usage of AtkMisc is deprecated since 2.12 and heavily discouraged.
 /*
 
-C record/class : AtkMiscClass
+C type
+
+AtkMiscClass
 */
 type MiscClass struct {
 	native *C.AtkMiscClass
@@ -461,7 +489,9 @@ func (recv *MiscClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : AtkNoOpObjectClass
+C type
+
+AtkNoOpObjectClass
 */
 type NoOpObjectClass struct {
 	native *C.AtkNoOpObjectClass
@@ -486,7 +516,9 @@ func (recv *NoOpObjectClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : AtkNoOpObjectFactoryClass
+C type
+
+AtkNoOpObjectFactoryClass
 */
 type NoOpObjectFactoryClass struct {
 	native *C.AtkNoOpObjectFactoryClass
@@ -511,7 +543,9 @@ func (recv *NoOpObjectFactoryClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : AtkObjectClass
+C type
+
+AtkObjectClass
 */
 type ObjectClass struct {
 	native *C.AtkObjectClass
@@ -563,7 +597,9 @@ func (recv *ObjectClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : AtkObjectFactoryClass
+C type
+
+AtkObjectFactoryClass
 */
 type ObjectFactoryClass struct {
 	native *C.AtkObjectFactoryClass
@@ -593,7 +629,9 @@ func (recv *ObjectFactoryClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : AtkPlugClass
+C type
+
+AtkPlugClass
 */
 type PlugClass struct {
 	native *C.AtkPlugClass
@@ -622,7 +660,9 @@ func (recv *PlugClass) ToC() unsafe.Pointer {
 // the previous value of the property, but is not used anymore.
 /*
 
-C record/class : AtkPropertyValues
+C type
+
+AtkPropertyValues
 */
 type PropertyValues struct {
 	native       *C.AtkPropertyValues
@@ -659,7 +699,9 @@ func (recv *PropertyValues) ToC() unsafe.Pointer {
 // details.
 /*
 
-C record/class : AtkRange
+C type
+
+AtkRange
 */
 type Range struct {
 	native *C.AtkRange
@@ -685,7 +727,9 @@ func (recv *Range) ToC() unsafe.Pointer {
 // relative to the component top-level parent.
 /*
 
-C record/class : AtkRectangle
+C type
+
+AtkRectangle
 */
 type Rectangle struct {
 	native *C.AtkRectangle
@@ -727,7 +771,9 @@ func (recv *Rectangle) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : AtkRegistryClass
+C type
+
+AtkRegistryClass
 */
 type RegistryClass struct {
 	native *C.AtkRegistryClass
@@ -752,7 +798,9 @@ func (recv *RegistryClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : AtkRelationClass
+C type
+
+AtkRelationClass
 */
 type RelationClass struct {
 	native *C.AtkRelationClass
@@ -777,7 +825,9 @@ func (recv *RelationClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : AtkRelationSetClass
+C type
+
+AtkRelationSetClass
 */
 type RelationSetClass struct {
 	native *C.AtkRelationSetClass
@@ -804,7 +854,9 @@ func (recv *RelationSetClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : AtkSelectionIface
+C type
+
+AtkSelectionIface
 */
 type SelectionIface struct {
 	native *C.AtkSelectionIface
@@ -837,7 +889,9 @@ func (recv *SelectionIface) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : AtkSocketClass
+C type
+
+AtkSocketClass
 */
 type SocketClass struct {
 	native *C.AtkSocketClass
@@ -863,7 +917,9 @@ func (recv *SocketClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : AtkStateSetClass
+C type
+
+AtkStateSetClass
 */
 type StateSetClass struct {
 	native *C.AtkStateSetClass
@@ -888,7 +944,9 @@ func (recv *StateSetClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : AtkStreamableContentIface
+C type
+
+AtkStreamableContentIface
 */
 type StreamableContentIface struct {
 	native *C.AtkStreamableContentIface
@@ -920,7 +978,9 @@ func (recv *StreamableContentIface) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : AtkTableCellIface
+C type
+
+AtkTableCellIface
 */
 type TableCellIface struct {
 	native *C.AtkTableCellIface
@@ -952,7 +1012,9 @@ func (recv *TableCellIface) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : AtkTableIface
+C type
+
+AtkTableIface
 */
 type TableIface struct {
 	native *C.AtkTableIface
@@ -1013,7 +1075,9 @@ func (recv *TableIface) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : AtkTextIface
+C type
+
+AtkTextIface
 */
 type TextIface struct {
 	native *C.AtkTextIface
@@ -1063,7 +1127,9 @@ func (recv *TextIface) ToC() unsafe.Pointer {
 // A structure used to describe a text range.
 /*
 
-C record/class : AtkTextRange
+C type
+
+AtkTextRange
 */
 type TextRange struct {
 	native *C.AtkTextRange
@@ -1103,7 +1169,9 @@ func (recv *TextRange) ToC() unsafe.Pointer {
 // A structure used to store a rectangle used by AtkText.
 /*
 
-C record/class : AtkTextRectangle
+C type
+
+AtkTextRectangle
 */
 type TextRectangle struct {
 	native *C.AtkTextRectangle
@@ -1145,7 +1213,9 @@ func (recv *TextRectangle) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : AtkUtilClass
+C type
+
+AtkUtilClass
 */
 type UtilClass struct {
 	native *C.AtkUtilClass
@@ -1177,7 +1247,9 @@ func (recv *UtilClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : AtkValueIface
+C type
+
+AtkValueIface
 */
 type ValueIface struct {
 	native *C.AtkValueIface
@@ -1212,7 +1284,9 @@ func (recv *ValueIface) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : AtkWindowIface
+C type
+
+AtkWindowIface
 */
 type WindowIface struct {
 	native *C.AtkWindowIface

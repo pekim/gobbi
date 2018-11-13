@@ -13,7 +13,9 @@ import "C"
 // Create a new background alpha attribute.
 /*
 
-C function : pango_attr_background_alpha_new
+C function
+
+pango_attr_background_alpha_new
 */
 func AttrBackgroundAlphaNew(alpha uint16) *Attribute {
 	c_alpha := (C.guint16)(alpha)
@@ -27,7 +29,9 @@ func AttrBackgroundAlphaNew(alpha uint16) *Attribute {
 // Create a new foreground alpha attribute.
 /*
 
-C function : pango_attr_foreground_alpha_new
+C function
+
+pango_attr_foreground_alpha_new
 */
 func AttrForegroundAlphaNew(alpha uint16) *Attribute {
 	c_alpha := (C.guint16)(alpha)

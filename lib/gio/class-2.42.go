@@ -27,7 +27,9 @@ import "C"
 // See g_application_set_resource_base_path() for more information.
 /*
 
-C function : g_application_get_resource_base_path
+C function
+
+g_application_get_resource_base_path
 */
 func (recv *Application) GetResourceBasePath() string {
 	retC := C.g_application_get_resource_base_path((*C.GApplication)(recv.native))
@@ -71,7 +73,9 @@ func (recv *Application) GetResourceBasePath() string {
 // before chaining up to the parent implementation.
 /*
 
-C function : g_application_set_resource_base_path
+C function
+
+g_application_set_resource_base_path
 */
 func (recv *Application) SetResourceBasePath(resourcePath string) {
 	c_resource_path := C.CString(resourcePath)

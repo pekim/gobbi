@@ -16,7 +16,9 @@ import "C"
 // string should be freed with g_free() when it's no longer needed.
 /*
 
-C function : gdk_pixbuf_format_get_license
+C function
+
+gdk_pixbuf_format_get_license
 */
 func (recv *PixbufFormat) GetLicense() string {
 	retC := C.gdk_pixbuf_format_get_license((*C.GdkPixbufFormat)(recv.native))
@@ -30,7 +32,9 @@ func (recv *PixbufFormat) GetLicense() string {
 // gdk_pixbuf_format_set_disabled().
 /*
 
-C function : gdk_pixbuf_format_is_disabled
+C function
+
+gdk_pixbuf_format_is_disabled
 */
 func (recv *PixbufFormat) IsDisabled() bool {
 	retC := C.gdk_pixbuf_format_is_disabled((*C.GdkPixbufFormat)(recv.native))
@@ -45,7 +49,9 @@ func (recv *PixbufFormat) IsDisabled() bool {
 // resulting pixbuf to the desired size.
 /*
 
-C function : gdk_pixbuf_format_is_scalable
+C function
+
+gdk_pixbuf_format_is_scalable
 */
 func (recv *PixbufFormat) IsScalable() bool {
 	retC := C.gdk_pixbuf_format_is_scalable((*C.GdkPixbufFormat)(recv.native))
@@ -60,7 +66,9 @@ func (recv *PixbufFormat) IsScalable() bool {
 // with an inappropriate license, see gdk_pixbuf_format_get_license().
 /*
 
-C function : gdk_pixbuf_format_set_disabled
+C function
+
+gdk_pixbuf_format_set_disabled
 */
 func (recv *PixbufFormat) SetDisabled(disabled bool) {
 	c_disabled :=

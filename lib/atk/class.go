@@ -46,7 +46,9 @@ import "C"
 // an accessible object for GnomeCanvasItem in the GAIL library.
 /*
 
-C record/class : AtkGObjectAccessible
+C type
+
+AtkGObjectAccessible
 */
 type GObjectAccessible struct {
 	native *C.AtkGObjectAccessible
@@ -83,7 +85,9 @@ func CastToGObjectAccessible(object *gobject.Object) *GObjectAccessible {
 // Gets the GObject for which @obj is the accessible object.
 /*
 
-C function : atk_gobject_accessible_get_object
+C function
+
+atk_gobject_accessible_get_object
 */
 func (recv *GObjectAccessible) GetObject() *gobject.Object {
 	retC := C.atk_gobject_accessible_get_object((*C.AtkGObjectAccessible)(recv.native))
@@ -100,7 +104,9 @@ func (recv *GObjectAccessible) GetObject() *gobject.Object {
 // AtkHypertext object.
 /*
 
-C record/class : AtkHyperlink
+C type
+
+AtkHyperlink
 */
 type Hyperlink struct {
 	native *C.AtkHyperlink
@@ -194,7 +200,9 @@ func hyperlink_linkActivatedHandler(_ *C.GObject, data C.gpointer) {
 // Gets the index with the hypertext document at which this link ends.
 /*
 
-C function : atk_hyperlink_get_end_index
+C function
+
+atk_hyperlink_get_end_index
 */
 func (recv *Hyperlink) GetEndIndex() int32 {
 	retC := C.atk_hyperlink_get_end_index((*C.AtkHyperlink)(recv.native))
@@ -206,7 +214,9 @@ func (recv *Hyperlink) GetEndIndex() int32 {
 // Gets the number of anchors associated with this hyperlink.
 /*
 
-C function : atk_hyperlink_get_n_anchors
+C function
+
+atk_hyperlink_get_n_anchors
 */
 func (recv *Hyperlink) GetNAnchors() int32 {
 	retC := C.atk_hyperlink_get_n_anchors((*C.AtkHyperlink)(recv.native))
@@ -223,7 +233,9 @@ func (recv *Hyperlink) GetNAnchors() int32 {
 // Multiple anchors are primarily used by client-side image maps.
 /*
 
-C function : atk_hyperlink_get_object
+C function
+
+atk_hyperlink_get_object
 */
 func (recv *Hyperlink) GetObject(i int32) *Object {
 	c_i := (C.gint)(i)
@@ -237,7 +249,9 @@ func (recv *Hyperlink) GetObject(i int32) *Object {
 // Gets the index with the hypertext document at which this link begins.
 /*
 
-C function : atk_hyperlink_get_start_index
+C function
+
+atk_hyperlink_get_start_index
 */
 func (recv *Hyperlink) GetStartIndex() int32 {
 	retC := C.atk_hyperlink_get_start_index((*C.AtkHyperlink)(recv.native))
@@ -252,7 +266,9 @@ func (recv *Hyperlink) GetStartIndex() int32 {
 // Multiple anchors are primarily used by client-side image maps.
 /*
 
-C function : atk_hyperlink_get_uri
+C function
+
+atk_hyperlink_get_uri
 */
 func (recv *Hyperlink) GetUri(i int32) string {
 	c_i := (C.gint)(i)
@@ -270,7 +286,9 @@ func (recv *Hyperlink) GetUri(i int32) string {
 // %TRUE.
 /*
 
-C function : atk_hyperlink_is_inline
+C function
+
+atk_hyperlink_is_inline
 */
 func (recv *Hyperlink) IsInline() bool {
 	retC := C.atk_hyperlink_is_inline((*C.AtkHyperlink)(recv.native))
@@ -284,7 +302,9 @@ func (recv *Hyperlink) IsInline() bool {
 // respect to the document it references) and %FALSE otherwise.
 /*
 
-C function : atk_hyperlink_is_valid
+C function
+
+atk_hyperlink_is_valid
 */
 func (recv *Hyperlink) IsValid() bool {
 	retC := C.atk_hyperlink_is_valid((*C.AtkHyperlink)(recv.native))
@@ -302,7 +322,9 @@ func (recv *Hyperlink) Action() *Action {
 // all his related methods are deprecated since 2.12.
 /*
 
-C record/class : AtkMisc
+C type
+
+AtkMisc
 */
 type Misc struct {
 	native *C.AtkMisc
@@ -342,7 +364,9 @@ func CastToMisc(object *gobject.Object) *Misc {
 // factory type is specified.
 /*
 
-C record/class : AtkNoOpObject
+C type
+
+AtkNoOpObject
 */
 type NoOpObject struct {
 	native *C.AtkNoOpObject
@@ -380,7 +404,9 @@ func CastToNoOpObject(object *gobject.Object) *NoOpObject {
 // Application maintainers should not use this method.
 /*
 
-C function : atk_no_op_object_new
+C function
+
+atk_no_op_object_new
 */
 func NoOpObjectNew(obj *gobject.Object) *NoOpObject {
 	c_obj := (*C.GObject)(C.NULL)
@@ -459,7 +485,9 @@ func (recv *NoOpObject) Window() *Window {
 // specified to create an accessible object of a particular type.
 /*
 
-C record/class : AtkNoOpObjectFactory
+C type
+
+AtkNoOpObjectFactory
 */
 type NoOpObjectFactory struct {
 	native *C.AtkNoOpObjectFactory
@@ -502,7 +530,9 @@ func CastToNoOpObjectFactory(object *gobject.Object) *NoOpObjectFactory {
 // (non-functioning) #AtkObjects.
 /*
 
-C function : atk_no_op_object_factory_new
+C function
+
+atk_no_op_object_factory_new
 */
 func NoOpObjectFactoryNew() *NoOpObjectFactory {
 	retC := C.atk_no_op_object_factory_new()
@@ -533,7 +563,9 @@ func NoOpObjectFactoryNew() *NoOpObjectFactory {
 // #GtkAccessible).
 /*
 
-C record/class : AtkObject
+C type
+
+AtkObject
 */
 type Object struct {
 	native *C.AtkObject
@@ -714,7 +746,9 @@ func object_visibleDataChangedHandler(_ *C.GObject, data C.gpointer) {
 // Adds a relationship of the specified type with the specified target.
 /*
 
-C function : atk_object_add_relationship
+C function
+
+atk_object_add_relationship
 */
 func (recv *Object) AddRelationship(relationship RelationType, target *Object) bool {
 	c_relationship := (C.AtkRelationType)(relationship)
@@ -735,7 +769,9 @@ func (recv *Object) AddRelationship(relationship RelationType, target *Object) b
 // Gets the accessible description of the accessible.
 /*
 
-C function : atk_object_get_description
+C function
+
+atk_object_get_description
 */
 func (recv *Object) GetDescription() string {
 	retC := C.atk_object_get_description((*C.AtkObject)(recv.native))
@@ -748,7 +784,9 @@ func (recv *Object) GetDescription() string {
 // accessible does not have an accessible parent.
 /*
 
-C function : atk_object_get_index_in_parent
+C function
+
+atk_object_get_index_in_parent
 */
 func (recv *Object) GetIndexInParent() int32 {
 	retC := C.atk_object_get_index_in_parent((*C.AtkObject)(recv.native))
@@ -760,7 +798,9 @@ func (recv *Object) GetIndexInParent() int32 {
 // Gets the layer of the accessible.
 /*
 
-C function : atk_object_get_layer
+C function
+
+atk_object_get_layer
 */
 func (recv *Object) GetLayer() Layer {
 	retC := C.atk_object_get_layer((*C.AtkObject)(recv.native))
@@ -773,7 +813,9 @@ func (recv *Object) GetLayer() Layer {
 // if the layer of the accessible is not ATK_LAYER_MDI.
 /*
 
-C function : atk_object_get_mdi_zorder
+C function
+
+atk_object_get_mdi_zorder
 */
 func (recv *Object) GetMdiZorder() int32 {
 	retC := C.atk_object_get_mdi_zorder((*C.AtkObject)(recv.native))
@@ -785,7 +827,9 @@ func (recv *Object) GetMdiZorder() int32 {
 // Gets the number of accessible children of the accessible.
 /*
 
-C function : atk_object_get_n_accessible_children
+C function
+
+atk_object_get_n_accessible_children
 */
 func (recv *Object) GetNAccessibleChildren() int32 {
 	retC := C.atk_object_get_n_accessible_children((*C.AtkObject)(recv.native))
@@ -797,7 +841,9 @@ func (recv *Object) GetNAccessibleChildren() int32 {
 // Gets the accessible name of the accessible.
 /*
 
-C function : atk_object_get_name
+C function
+
+atk_object_get_name
 */
 func (recv *Object) GetName() string {
 	retC := C.atk_object_get_name((*C.AtkObject)(recv.native))
@@ -816,7 +862,9 @@ func (recv *Object) GetName() string {
 // atk_object_set_parent(), use atk_object_peek_parent().
 /*
 
-C function : atk_object_get_parent
+C function
+
+atk_object_get_parent
 */
 func (recv *Object) GetParent() *Object {
 	retC := C.atk_object_get_parent((*C.AtkObject)(recv.native))
@@ -828,7 +876,9 @@ func (recv *Object) GetParent() *Object {
 // Gets the role of the accessible.
 /*
 
-C function : atk_object_get_role
+C function
+
+atk_object_get_role
 */
 func (recv *Object) GetRole() Role {
 	retC := C.atk_object_get_role((*C.AtkObject)(recv.native))
@@ -843,7 +893,9 @@ func (recv *Object) GetRole() Role {
 // to create an instance of a subclass of #AtkObject
 /*
 
-C function : atk_object_initialize
+C function
+
+atk_object_initialize
 */
 func (recv *Object) Initialize(data uintptr) {
 	c_data := (C.gpointer)(data)
@@ -859,7 +911,9 @@ func (recv *Object) Initialize(data uintptr) {
 // emitting a notification is expected.
 /*
 
-C function : atk_object_notify_state_change
+C function
+
+atk_object_notify_state_change
 */
 func (recv *Object) NotifyStateChange(state State, value bool) {
 	c_state := (C.AtkState)(state)
@@ -881,7 +935,9 @@ func (recv *Object) NotifyStateChange(state State, value bool) {
 // further reference.
 /*
 
-C function : atk_object_peek_parent
+C function
+
+atk_object_peek_parent
 */
 func (recv *Object) PeekParent() *Object {
 	retC := C.atk_object_peek_parent((*C.AtkObject)(recv.native))
@@ -895,7 +951,9 @@ func (recv *Object) PeekParent() *Object {
 // at index 0, the second at index 1 and so on.
 /*
 
-C function : atk_object_ref_accessible_child
+C function
+
+atk_object_ref_accessible_child
 */
 func (recv *Object) RefAccessibleChild(i int32) *Object {
 	c_i := (C.gint)(i)
@@ -909,7 +967,9 @@ func (recv *Object) RefAccessibleChild(i int32) *Object {
 // Gets the #AtkRelationSet associated with the object.
 /*
 
-C function : atk_object_ref_relation_set
+C function
+
+atk_object_ref_relation_set
 */
 func (recv *Object) RefRelationSet() *RelationSet {
 	retC := C.atk_object_ref_relation_set((*C.AtkObject)(recv.native))
@@ -922,7 +982,9 @@ func (recv *Object) RefRelationSet() *RelationSet {
 // unreference it when it is no longer needed.
 /*
 
-C function : atk_object_ref_state_set
+C function
+
+atk_object_ref_state_set
 */
 func (recv *Object) RefStateSet() *StateSet {
 	retC := C.atk_object_ref_state_set((*C.AtkObject)(recv.native))
@@ -933,7 +995,9 @@ func (recv *Object) RefStateSet() *StateSet {
 
 /*
 
-C function : atk_object_remove_property_change_handler
+C function
+
+atk_object_remove_property_change_handler
 */
 func (recv *Object) RemovePropertyChangeHandler(handlerId uint32) {
 	c_handler_id := (C.guint)(handlerId)
@@ -946,7 +1010,9 @@ func (recv *Object) RemovePropertyChangeHandler(handlerId uint32) {
 // Removes a relationship of the specified type with the specified target.
 /*
 
-C function : atk_object_remove_relationship
+C function
+
+atk_object_remove_relationship
 */
 func (recv *Object) RemoveRelationship(relationship RelationType, target *Object) bool {
 	c_relationship := (C.AtkRelationType)(relationship)
@@ -968,7 +1034,9 @@ func (recv *Object) RemoveRelationship(relationship RelationType, target *Object
 // the name to a empty value you can use "".
 /*
 
-C function : atk_object_set_description
+C function
+
+atk_object_set_description
 */
 func (recv *Object) SetDescription(description string) {
 	c_description := C.CString(description)
@@ -985,7 +1053,9 @@ func (recv *Object) SetDescription(description string) {
 // a empty value you can use "".
 /*
 
-C function : atk_object_set_name
+C function
+
+atk_object_set_name
 */
 func (recv *Object) SetName(name string) {
 	c_name := C.CString(name)
@@ -999,7 +1069,9 @@ func (recv *Object) SetName(name string) {
 // Sets the accessible parent of the accessible. @parent can be NULL.
 /*
 
-C function : atk_object_set_parent
+C function
+
+atk_object_set_parent
 */
 func (recv *Object) SetParent(parent *Object) {
 	c_parent := (*C.AtkObject)(C.NULL)
@@ -1015,7 +1087,9 @@ func (recv *Object) SetParent(parent *Object) {
 // Sets the role of the accessible.
 /*
 
-C function : atk_object_set_role
+C function
+
+atk_object_set_role
 */
 func (recv *Object) SetRole(role Role) {
 	c_role := (C.AtkRole)(role)
@@ -1032,7 +1106,9 @@ func (recv *Object) SetRole(role Role) {
 // particular GType.
 /*
 
-C record/class : AtkObjectFactory
+C type
+
+AtkObjectFactory
 */
 type ObjectFactory struct {
 	native *C.AtkObjectFactory
@@ -1070,7 +1146,9 @@ func CastToObjectFactory(object *gobject.Object) *ObjectFactory {
 // on behalf of @obj
 /*
 
-C function : atk_object_factory_create_accessible
+C function
+
+atk_object_factory_create_accessible
 */
 func (recv *ObjectFactory) CreateAccessible(obj *gobject.Object) *Object {
 	c_obj := (*C.GObject)(C.NULL)
@@ -1087,7 +1165,9 @@ func (recv *ObjectFactory) CreateAccessible(obj *gobject.Object) *Object {
 // Gets the GType of the accessible which is created by the factory.
 /*
 
-C function : atk_object_factory_get_accessible_type
+C function
+
+atk_object_factory_get_accessible_type
 */
 func (recv *ObjectFactory) GetAccessibleType() gobject.Type {
 	retC := C.atk_object_factory_get_accessible_type((*C.AtkObjectFactory)(recv.native))
@@ -1103,7 +1183,9 @@ func (recv *ObjectFactory) GetAccessibleType() gobject.Type {
 // in object registries.
 /*
 
-C function : atk_object_factory_invalidate
+C function
+
+atk_object_factory_invalidate
 */
 func (recv *ObjectFactory) Invalidate() {
 	C.atk_object_factory_invalidate((*C.AtkObjectFactory)(recv.native))
@@ -1114,7 +1196,9 @@ func (recv *ObjectFactory) Invalidate() {
 // See #AtkSocket
 /*
 
-C record/class : AtkPlug
+C type
+
+AtkPlug
 */
 type Plug struct {
 	native *C.AtkPlug
@@ -1150,7 +1234,9 @@ func CastToPlug(object *gobject.Object) *Plug {
 
 /*
 
-C function : atk_plug_new
+C function
+
+atk_plug_new
 */
 func PlugNew() *Plug {
 	retC := C.atk_plug_new()
@@ -1172,7 +1258,9 @@ func (recv *Plug) Component() *Component {
 // for application custom widget classes.
 /*
 
-C record/class : AtkRegistry
+C type
+
+AtkRegistry
 */
 type Registry struct {
 	native *C.AtkRegistry
@@ -1212,7 +1300,9 @@ func CastToRegistry(object *gobject.Object) *Registry {
 // appropriate for @type.
 /*
 
-C function : atk_registry_get_factory
+C function
+
+atk_registry_get_factory
 */
 func (recv *Registry) GetFactory(type_ gobject.Type) *ObjectFactory {
 	c_type := (C.GType)(type_)
@@ -1227,7 +1317,9 @@ func (recv *Registry) GetFactory(type_ gobject.Type) *ObjectFactory {
 // associated with @type.
 /*
 
-C function : atk_registry_get_factory_type
+C function
+
+atk_registry_get_factory_type
 */
 func (recv *Registry) GetFactoryType(type_ gobject.Type) gobject.Type {
 	c_type := (C.GType)(type_)
@@ -1244,7 +1336,9 @@ func (recv *Registry) GetFactoryType(type_ gobject.Type) gobject.Type {
 // appropriate for @type.
 /*
 
-C function : atk_registry_set_factory_type
+C function
+
+atk_registry_set_factory_type
 */
 func (recv *Registry) SetFactoryType(type_ gobject.Type, factoryType gobject.Type) {
 	c_type := (C.GType)(type_)
@@ -1262,7 +1356,9 @@ func (recv *Registry) SetFactoryType(type_ gobject.Type, factoryType gobject.Typ
 // AtkRelations.
 /*
 
-C record/class : AtkRelation
+C type
+
+AtkRelation
 */
 type Relation struct {
 	native *C.AtkRelation
@@ -1308,7 +1404,9 @@ func CastToRelation(object *gobject.Object) *Relation {
 // Gets the type of @relation
 /*
 
-C function : atk_relation_get_relation_type
+C function
+
+atk_relation_get_relation_type
 */
 func (recv *Relation) GetRelationType() RelationType {
 	retC := C.atk_relation_get_relation_type((*C.AtkRelation)(recv.native))
@@ -1322,7 +1420,9 @@ func (recv *Relation) GetRelationType() RelationType {
 // Remove the specified AtkObject from the target for the relation.
 /*
 
-C function : atk_relation_remove_target
+C function
+
+atk_relation_remove_target
 */
 func (recv *Relation) RemoveTarget(target *Object) bool {
 	c_target := (*C.AtkObject)(C.NULL)
@@ -1346,7 +1446,9 @@ func (recv *Relation) RemoveTarget(target *Object) bool {
 // relationships.
 /*
 
-C record/class : AtkRelationSet
+C type
+
+AtkRelationSet
 */
 type RelationSet struct {
 	native *C.AtkRelationSet
@@ -1384,7 +1486,9 @@ func CastToRelationSet(object *gobject.Object) *RelationSet {
 // Creates a new empty relation set.
 /*
 
-C function : atk_relation_set_new
+C function
+
+atk_relation_set_new
 */
 func RelationSetNew() *RelationSet {
 	retC := C.atk_relation_set_new()
@@ -1400,7 +1504,9 @@ func RelationSetNew() *RelationSet {
 // is destroyed.
 /*
 
-C function : atk_relation_set_add
+C function
+
+atk_relation_set_add
 */
 func (recv *RelationSet) Add(relation *Relation) {
 	c_relation := (*C.AtkRelation)(C.NULL)
@@ -1417,7 +1523,9 @@ func (recv *RelationSet) Add(relation *Relation) {
 // specified type.
 /*
 
-C function : atk_relation_set_contains
+C function
+
+atk_relation_set_contains
 */
 func (recv *RelationSet) Contains(relationship RelationType) bool {
 	c_relationship := (C.AtkRelationType)(relationship)
@@ -1433,7 +1541,9 @@ func (recv *RelationSet) Contains(relationship RelationType) bool {
 // @target.
 /*
 
-C function : atk_relation_set_contains_target
+C function
+
+atk_relation_set_contains_target
 */
 func (recv *RelationSet) ContainsTarget(relationship RelationType, target *Object) bool {
 	c_relationship := (C.AtkRelationType)(relationship)
@@ -1452,7 +1562,9 @@ func (recv *RelationSet) ContainsTarget(relationship RelationType, target *Objec
 // Determines the number of relations in a relation set.
 /*
 
-C function : atk_relation_set_get_n_relations
+C function
+
+atk_relation_set_get_n_relations
 */
 func (recv *RelationSet) GetNRelations() int32 {
 	retC := C.atk_relation_set_get_n_relations((*C.AtkRelationSet)(recv.native))
@@ -1464,7 +1576,9 @@ func (recv *RelationSet) GetNRelations() int32 {
 // Determines the relation at the specified position in the relation set.
 /*
 
-C function : atk_relation_set_get_relation
+C function
+
+atk_relation_set_get_relation
 */
 func (recv *RelationSet) GetRelation(i int32) *Relation {
 	c_i := (C.gint)(i)
@@ -1478,7 +1592,9 @@ func (recv *RelationSet) GetRelation(i int32) *Relation {
 // Finds a relation that matches the specified type.
 /*
 
-C function : atk_relation_set_get_relation_by_type
+C function
+
+atk_relation_set_get_relation_by_type
 */
 func (recv *RelationSet) GetRelationByType(relationship RelationType) *Relation {
 	c_relationship := (C.AtkRelationType)(relationship)
@@ -1494,7 +1610,9 @@ func (recv *RelationSet) GetRelationByType(relationship RelationType) *Relation 
 // is another reference to it.
 /*
 
-C function : atk_relation_set_remove
+C function
+
+atk_relation_set_remove
 */
 func (recv *RelationSet) Remove(relation *Relation) {
 	c_relation := (*C.AtkRelation)(C.NULL)
@@ -1531,7 +1649,9 @@ func (recv *RelationSet) Remove(relation *Relation) {
 // functions will be implemented by the IPC layer.
 /*
 
-C record/class : AtkSocket
+C type
+
+AtkSocket
 */
 type Socket struct {
 	native *C.AtkSocket
@@ -1568,7 +1688,9 @@ func CastToSocket(object *gobject.Object) *Socket {
 
 /*
 
-C function : atk_socket_new
+C function
+
+atk_socket_new
 */
 func SocketNew() *Socket {
 	retC := C.atk_socket_new()
@@ -1587,7 +1709,9 @@ func (recv *Socket) Component() *Component {
 // modified, but rather created when #atk_object_ref_state_set() is called.
 /*
 
-C record/class : AtkStateSet
+C type
+
+AtkStateSet
 */
 type StateSet struct {
 	native *C.AtkStateSet
@@ -1624,7 +1748,9 @@ func CastToStateSet(object *gobject.Object) *StateSet {
 // Creates a new empty state set.
 /*
 
-C function : atk_state_set_new
+C function
+
+atk_state_set_new
 */
 func StateSetNew() *StateSet {
 	retC := C.atk_state_set_new()
@@ -1642,7 +1768,9 @@ func StateSetNew() *StateSet {
 // of an object. See also #atk_object_notify_state_change.
 /*
 
-C function : atk_state_set_add_state
+C function
+
+atk_state_set_add_state
 */
 func (recv *StateSet) AddState(type_ StateType) bool {
 	c_type := (C.AtkStateType)(type_)
@@ -1661,7 +1789,9 @@ func (recv *StateSet) AddState(type_ StateType) bool {
 // of an object. See also #atk_object_notify_state_change.
 /*
 
-C function : atk_state_set_add_states
+C function
+
+atk_state_set_add_states
 */
 func (recv *StateSet) AddStates(types []StateType) {
 	c_types := &types[0]
@@ -1677,7 +1807,9 @@ func (recv *StateSet) AddStates(types []StateType) {
 // intersection is empty.
 /*
 
-C function : atk_state_set_and_sets
+C function
+
+atk_state_set_and_sets
 */
 func (recv *StateSet) AndSets(compareSet *StateSet) *StateSet {
 	c_compare_set := (*C.AtkStateSet)(C.NULL)
@@ -1694,7 +1826,9 @@ func (recv *StateSet) AndSets(compareSet *StateSet) *StateSet {
 // Removes all states from the state set.
 /*
 
-C function : atk_state_set_clear_states
+C function
+
+atk_state_set_clear_states
 */
 func (recv *StateSet) ClearStates() {
 	C.atk_state_set_clear_states((*C.AtkStateSet)(recv.native))
@@ -1705,7 +1839,9 @@ func (recv *StateSet) ClearStates() {
 // Checks whether the state for the specified type is in the specified set.
 /*
 
-C function : atk_state_set_contains_state
+C function
+
+atk_state_set_contains_state
 */
 func (recv *StateSet) ContainsState(type_ StateType) bool {
 	c_type := (C.AtkStateType)(type_)
@@ -1720,7 +1856,9 @@ func (recv *StateSet) ContainsState(type_ StateType) bool {
 // specified set.
 /*
 
-C function : atk_state_set_contains_states
+C function
+
+atk_state_set_contains_states
 */
 func (recv *StateSet) ContainsStates(types []StateType) bool {
 	c_types := &types[0]
@@ -1736,7 +1874,9 @@ func (recv *StateSet) ContainsStates(types []StateType) bool {
 // Checks whether the state set is empty, i.e. has no states set.
 /*
 
-C function : atk_state_set_is_empty
+C function
+
+atk_state_set_is_empty
 */
 func (recv *StateSet) IsEmpty() bool {
 	retC := C.atk_state_set_is_empty((*C.AtkStateSet)(recv.native))
@@ -1748,7 +1888,9 @@ func (recv *StateSet) IsEmpty() bool {
 // Constructs the union of the two sets.
 /*
 
-C function : atk_state_set_or_sets
+C function
+
+atk_state_set_or_sets
 */
 func (recv *StateSet) OrSets(compareSet *StateSet) *StateSet {
 	c_compare_set := (*C.AtkStateSet)(C.NULL)
@@ -1775,7 +1917,9 @@ func (recv *StateSet) OrSets(compareSet *StateSet) *StateSet {
 // state of an object. See also #atk_object_notify_state_change.
 /*
 
-C function : atk_state_set_remove_state
+C function
+
+atk_state_set_remove_state
 */
 func (recv *StateSet) RemoveState(type_ StateType) bool {
 	c_type := (C.AtkStateType)(type_)
@@ -1791,7 +1935,9 @@ func (recv *StateSet) RemoveState(type_ StateType) bool {
 // one of the two sets.
 /*
 
-C function : atk_state_set_xor_sets
+C function
+
+atk_state_set_xor_sets
 */
 func (recv *StateSet) XorSets(compareSet *StateSet) *StateSet {
 	c_compare_set := (*C.AtkStateSet)(C.NULL)
@@ -1811,7 +1957,9 @@ func (recv *StateSet) XorSets(compareSet *StateSet) *StateSet {
 // and toolkit version.
 /*
 
-C record/class : AtkUtil
+C type
+
+AtkUtil
 */
 type Util struct {
 	native *C.AtkUtil

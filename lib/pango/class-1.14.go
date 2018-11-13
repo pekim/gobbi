@@ -15,7 +15,9 @@ import "C"
 // size in points.
 /*
 
-C function : pango_font_describe_with_absolute_size
+C function
+
+pango_font_describe_with_absolute_size
 */
 func (recv *Font) DescribeWithAbsoluteSize() *FontDescription {
 	retC := C.pango_font_describe_with_absolute_size((*C.PangoFont)(recv.native))

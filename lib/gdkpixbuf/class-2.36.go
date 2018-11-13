@@ -16,7 +16,9 @@ import "C"
 // applied, such as the "orientation" option after rotating the image.
 /*
 
-C function : gdk_pixbuf_copy_options
+C function
+
+gdk_pixbuf_copy_options
 */
 func (recv *Pixbuf) CopyOptions(destPixbuf *Pixbuf) bool {
 	c_dest_pixbuf := (*C.GdkPixbuf)(C.NULL)
@@ -33,7 +35,9 @@ func (recv *Pixbuf) CopyOptions(destPixbuf *Pixbuf) bool {
 // Remove the key/value pair option attached to a #GdkPixbuf.
 /*
 
-C function : gdk_pixbuf_remove_option
+C function
+
+gdk_pixbuf_remove_option
 */
 func (recv *Pixbuf) RemoveOption(key string) bool {
 	c_key := C.CString(key)

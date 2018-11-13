@@ -29,7 +29,9 @@ import "C"
 // @action_name must not be %NULL.
 /*
 
-C function : g_action_name_is_valid
+C function
+
+g_action_name_is_valid
 */
 func ActionNameIsValid(actionName string) bool {
 	c_action_name := C.CString(actionName)

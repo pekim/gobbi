@@ -15,7 +15,9 @@ import "C"
 // The `GtkGLAreaClass` structure contains only private data.
 /*
 
-C record/class : GtkGLAreaClass
+C type
+
+GtkGLAreaClass
 */
 type GLAreaClass struct {
 	native *C.GtkGLAreaClass
@@ -50,7 +52,9 @@ func (recv *GLAreaClass) ToC() unsafe.Pointer {
 // construct a custom #GtkPaperSize object.
 /*
 
-C function : gtk_paper_size_new_from_ipp
+C function
+
+gtk_paper_size_new_from_ipp
 */
 func PaperSizeNewFromIpp(ippName string, width float64, height float64) *PaperSize {
 	c_ipp_name := C.CString(ippName)

@@ -14,7 +14,9 @@ import "C"
 // font features as an attribute.
 /*
 
-C record/class : PangoAttrFontFeatures
+C type
+
+PangoAttrFontFeatures
 */
 type AttrFontFeatures struct {
 	native *C.PangoAttrFontFeatures
@@ -51,7 +53,9 @@ func (recv *AttrFontFeatures) ToC() unsafe.Pointer {
 // Note that output numbers will always be non-negative.
 /*
 
-C function : pango_matrix_get_font_scale_factors
+C function
+
+pango_matrix_get_font_scale_factors
 */
 func (recv *Matrix) GetFontScaleFactors() (float64, float64) {
 	var c_xscale C.double

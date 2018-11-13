@@ -20,7 +20,9 @@ import "C"
 // unless you are implementing a new base type similar to GObject.
 /*
 
-C record/class : GParamSpecOverride
+C type
+
+GParamSpecOverride
 */
 type ParamSpecOverride struct {
 	native *C.GParamSpecOverride

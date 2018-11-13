@@ -76,7 +76,9 @@ import "C"
 // Returns the program name displayed in the about dialog.
 /*
 
-C function : gtk_about_dialog_get_program_name
+C function
+
+gtk_about_dialog_get_program_name
 */
 func (recv *AboutDialog) GetProgramName() string {
 	retC := C.gtk_about_dialog_get_program_name((*C.GtkAboutDialog)(recv.native))
@@ -89,7 +91,9 @@ func (recv *AboutDialog) GetProgramName() string {
 // If this is not set, it defaults to g_get_application_name().
 /*
 
-C function : gtk_about_dialog_set_program_name
+C function
+
+gtk_about_dialog_set_program_name
 */
 func (recv *AboutDialog) SetProgramName(name string) {
 	c_name := C.CString(name)
@@ -105,7 +109,9 @@ func (recv *AboutDialog) SetProgramName(name string) {
 // instance of that menu.
 /*
 
-C function : gtk_action_create_menu
+C function
+
+gtk_action_create_menu
 */
 func (recv *Action) CreateMenu() *Widget {
 	retC := C.gtk_action_create_menu((*C.GtkAction)(recv.native))
@@ -125,7 +131,9 @@ func (recv *Action) CreateMenu() *Widget {
 // gtk_builder_new_from_resource() or gtk_builder_new_from_string().
 /*
 
-C function : gtk_builder_new
+C function
+
+gtk_builder_new
 */
 func BuilderNew() *Builder {
 	retC := C.gtk_builder_new()
@@ -151,7 +159,9 @@ func BuilderNew() *Builder {
 // thing to do when an error is detected is to call g_error().
 /*
 
-C function : gtk_builder_add_from_file
+C function
+
+gtk_builder_add_from_file
 */
 func (recv *Builder) AddFromFile(filename string) (uint32, error) {
 	c_filename := C.CString(filename)
@@ -184,7 +194,9 @@ func (recv *Builder) AddFromFile(filename string) (uint32, error) {
 // to call g_error().
 /*
 
-C function : gtk_builder_add_from_string
+C function
+
+gtk_builder_add_from_string
 */
 func (recv *Builder) AddFromString(buffer string, length uint64) (uint32, error) {
 	c_buffer := C.CString(buffer)
@@ -228,7 +240,9 @@ func (recv *Builder) AddFromString(buffer string, length uint64) (uint32, error)
 // gmodule-export-2.0.
 /*
 
-C function : gtk_builder_connect_signals
+C function
+
+gtk_builder_connect_signals
 */
 func (recv *Builder) ConnectSignals(userData uintptr) {
 	c_user_data := (C.gpointer)(userData)
@@ -244,7 +258,9 @@ func (recv *Builder) ConnectSignals(userData uintptr) {
 // increment the reference count of the returned object.
 /*
 
-C function : gtk_builder_get_object
+C function
+
+gtk_builder_get_object
 */
 func (recv *Builder) GetObject(name string) *gobject.Object {
 	c_name := C.CString(name)
@@ -266,7 +282,9 @@ func (recv *Builder) GetObject(name string) *gobject.Object {
 // objects.
 /*
 
-C function : gtk_builder_get_objects
+C function
+
+gtk_builder_get_objects
 */
 func (recv *Builder) GetObjects() *glib.SList {
 	retC := C.gtk_builder_get_objects((*C.GtkBuilder)(recv.native))
@@ -278,7 +296,9 @@ func (recv *Builder) GetObjects() *glib.SList {
 // Gets the translation domain of @builder.
 /*
 
-C function : gtk_builder_get_translation_domain
+C function
+
+gtk_builder_get_translation_domain
 */
 func (recv *Builder) GetTranslationDomain() string {
 	retC := C.gtk_builder_get_translation_domain((*C.GtkBuilder)(recv.native))
@@ -292,7 +312,9 @@ func (recv *Builder) GetTranslationDomain() string {
 // implementing the #GtkBuildable interface on a type.
 /*
 
-C function : gtk_builder_get_type_from_name
+C function
+
+gtk_builder_get_type_from_name
 */
 func (recv *Builder) GetTypeFromName(typeName string) gobject.Type {
 	c_type_name := C.CString(typeName)
@@ -308,7 +330,9 @@ func (recv *Builder) GetTypeFromName(typeName string) gobject.Type {
 // See #GtkBuilder:translation-domain.
 /*
 
-C function : gtk_builder_set_translation_domain
+C function
+
+gtk_builder_set_translation_domain
 */
 func (recv *Builder) SetTranslationDomain(domain string) {
 	c_domain := C.CString(domain)
@@ -330,7 +354,9 @@ func (recv *Builder) SetTranslationDomain(domain string) {
 // #GError from the #GTK_BUILDER_ERROR domain.
 /*
 
-C function : gtk_builder_value_from_string_type
+C function
+
+gtk_builder_value_from_string_type
 */
 func (recv *Builder) ValueFromStringType(type_ gobject.Type, string string) (bool, *gobject.Value, error) {
 	c_type := (C.GType)(type_)
@@ -478,7 +504,9 @@ func combobox_popupHandler(_ *C.GObject, data C.gpointer) {
 // See gtk_entry_set_cursor_hadjustment().
 /*
 
-C function : gtk_entry_get_cursor_hadjustment
+C function
+
+gtk_entry_get_cursor_hadjustment
 */
 func (recv *Entry) GetCursorHadjustment() *Adjustment {
 	retC := C.gtk_entry_get_cursor_hadjustment((*C.GtkEntry)(recv.native))
@@ -501,7 +529,9 @@ func (recv *Entry) GetCursorHadjustment() *Adjustment {
 // as the entry.
 /*
 
-C function : gtk_entry_set_cursor_hadjustment
+C function
+
+gtk_entry_set_cursor_hadjustment
 */
 func (recv *Entry) SetCursorHadjustment(adjustment *Adjustment) {
 	c_adjustment := (*C.GtkAdjustment)(C.NULL)
@@ -582,7 +612,9 @@ func entrycompletion_cursorOnMatchHandler(_ *C.GObject, c_model *C.GtkTreeModel,
 // the completion or %NULL if there’s no completion ongoing.
 /*
 
-C function : gtk_entry_completion_get_completion_prefix
+C function
+
+gtk_entry_completion_get_completion_prefix
 */
 func (recv *EntryCompletion) GetCompletionPrefix() string {
 	retC := C.gtk_entry_completion_get_completion_prefix((*C.GtkEntryCompletion)(recv.native))
@@ -594,7 +626,9 @@ func (recv *EntryCompletion) GetCompletionPrefix() string {
 // Returns %TRUE if inline-selection mode is turned on.
 /*
 
-C function : gtk_entry_completion_get_inline_selection
+C function
+
+gtk_entry_completion_get_inline_selection
 */
 func (recv *EntryCompletion) GetInlineSelection() bool {
 	retC := C.gtk_entry_completion_get_inline_selection((*C.GtkEntryCompletion)(recv.native))
@@ -607,7 +641,9 @@ func (recv *EntryCompletion) GetInlineSelection() bool {
 // inside the entry.
 /*
 
-C function : gtk_entry_completion_set_inline_selection
+C function
+
+gtk_entry_completion_set_inline_selection
 */
 func (recv *EntryCompletion) SetInlineSelection(inlineSelection bool) {
 	c_inline_selection :=
@@ -682,7 +718,9 @@ func filechooserbutton_fileSetHandler(_ *C.GObject, data C.gpointer) {
 // See gtk_icon_theme_list_icons() for details about contexts.
 /*
 
-C function : gtk_icon_theme_list_contexts
+C function
+
+gtk_icon_theme_list_contexts
 */
 func (recv *IconTheme) ListContexts() *glib.List {
 	retC := C.gtk_icon_theme_list_contexts((*C.GtkIconTheme)(recv.native))
@@ -695,7 +733,9 @@ func (recv *IconTheme) ListContexts() *glib.List {
 // as expected by e.g. gtk_icon_view_get_path_at_pos().
 /*
 
-C function : gtk_icon_view_convert_widget_to_bin_window_coords
+C function
+
+gtk_icon_view_convert_widget_to_bin_window_coords
 */
 func (recv *IconView) ConvertWidgetToBinWindowCoords(wx int32, wy int32) (int32, int32) {
 	c_wx := (C.gint)(wx)
@@ -719,7 +759,9 @@ func (recv *IconView) ConvertWidgetToBinWindowCoords(wx int32, wy int32) (int32,
 // displaying tooltips on @icon_view’s rows.
 /*
 
-C function : gtk_icon_view_get_tooltip_column
+C function
+
+gtk_icon_view_get_tooltip_column
 */
 func (recv *IconView) GetTooltipColumn() int32 {
 	retC := C.gtk_icon_view_get_tooltip_column((*C.GtkIconView)(recv.native))
@@ -741,7 +783,9 @@ func (recv *IconView) GetTooltipColumn() int32 {
 // to be relative to @icon_view’s bin_window if @keyboard_tooltip is %FALSE.
 /*
 
-C function : gtk_icon_view_get_tooltip_context
+C function
+
+gtk_icon_view_get_tooltip_context
 */
 func (recv *IconView) GetTooltipContext(x int32, y int32, keyboardTip bool) (bool, *TreeModel, *TreePath, *TreeIter) {
 	c_x := (C.gint)(x)
@@ -775,7 +819,9 @@ func (recv *IconView) GetTooltipContext(x int32, y int32, keyboardTip bool) (boo
 // See also gtk_icon_view_set_tooltip_column() for a simpler alternative.
 /*
 
-C function : gtk_icon_view_set_tooltip_cell
+C function
+
+gtk_icon_view_set_tooltip_cell
 */
 func (recv *IconView) SetTooltipCell(tooltip *Tooltip, path *TreePath, cell *CellRenderer) {
 	c_tooltip := (*C.GtkTooltip)(C.NULL)
@@ -810,7 +856,9 @@ func (recv *IconView) SetTooltipCell(tooltip *Tooltip, path *TreePath, cell *Cel
 // so &, <, etc have to be escaped in the text.
 /*
 
-C function : gtk_icon_view_set_tooltip_column
+C function
+
+gtk_icon_view_set_tooltip_column
 */
 func (recv *IconView) SetTooltipColumn(column int32) {
 	c_column := (C.gint)(column)
@@ -825,7 +873,9 @@ func (recv *IconView) SetTooltipColumn(column int32) {
 // See also gtk_tooltip_set_tip_area().
 /*
 
-C function : gtk_icon_view_set_tooltip_item
+C function
+
+gtk_icon_view_set_tooltip_item
 */
 func (recv *IconView) SetTooltipItem(tooltip *Tooltip, path *TreePath) {
 	c_tooltip := (*C.GtkTooltip)(C.NULL)
@@ -852,7 +902,9 @@ func (recv *IconView) SetTooltipItem(tooltip *Tooltip, path *TreePath) {
 // a tooltip on the whole #GtkMenuToolButton.
 /*
 
-C function : gtk_menu_tool_button_set_arrow_tooltip_markup
+C function
+
+gtk_menu_tool_button_set_arrow_tooltip_markup
 */
 func (recv *MenuToolButton) SetArrowTooltipMarkup(markup string) {
 	c_markup := C.CString(markup)
@@ -868,7 +920,9 @@ func (recv *MenuToolButton) SetArrowTooltipMarkup(markup string) {
 // on the whole #GtkMenuToolButton.
 /*
 
-C function : gtk_menu_tool_button_set_arrow_tooltip_text
+C function
+
+gtk_menu_tool_button_set_arrow_tooltip_text
 */
 func (recv *MenuToolButton) SetArrowTooltipText(text string) {
 	c_text := C.CString(text)
@@ -886,7 +940,9 @@ func (recv *MenuToolButton) SetArrowTooltipText(text string) {
 // or %NULL if an error occurred. See gtk_page_setup_to_file().
 /*
 
-C function : gtk_page_setup_new_from_file
+C function
+
+gtk_page_setup_new_from_file
 */
 func PageSetupNewFromFile(fileName string) (*PageSetup, error) {
 	c_file_name := C.CString(fileName)
@@ -910,7 +966,9 @@ func PageSetupNewFromFile(fileName string) (*PageSetup, error) {
 // page setup, or %NULL if an error occurred.
 /*
 
-C function : gtk_page_setup_new_from_key_file
+C function
+
+gtk_page_setup_new_from_key_file
 */
 func PageSetupNewFromKeyFile(keyFile *glib.KeyFile, groupName string) (*PageSetup, error) {
 	c_key_file := (*C.GKeyFile)(C.NULL)
@@ -937,7 +995,9 @@ func PageSetupNewFromKeyFile(keyFile *glib.KeyFile, groupName string) (*PageSetu
 // This function saves the information from @setup to @file_name.
 /*
 
-C function : gtk_page_setup_to_file
+C function
+
+gtk_page_setup_to_file
 */
 func (recv *PageSetup) ToFile(fileName string) (bool, error) {
 	c_file_name := C.CString(fileName)
@@ -959,7 +1019,9 @@ func (recv *PageSetup) ToFile(fileName string) (bool, error) {
 // This function adds the page setup from @setup to @key_file.
 /*
 
-C function : gtk_page_setup_to_key_file
+C function
+
+gtk_page_setup_to_key_file
 */
 func (recv *PageSetup) ToKeyFile(keyFile *glib.KeyFile, groupName string) {
 	c_key_file := (*C.GKeyFile)(C.NULL)
@@ -981,7 +1043,9 @@ func (recv *PageSetup) ToKeyFile(keyFile *glib.KeyFile, groupName string) {
 // #GKeyFileError.  See gtk_print_settings_to_file().
 /*
 
-C function : gtk_print_settings_new_from_file
+C function
+
+gtk_print_settings_new_from_file
 */
 func PrintSettingsNewFromFile(fileName string) (*PrintSettings, error) {
 	c_file_name := C.CString(fileName)
@@ -1006,7 +1070,9 @@ func PrintSettingsNewFromFile(fileName string) (*PrintSettings, error) {
 // a #GFileError or #GKeyFileError.
 /*
 
-C function : gtk_print_settings_new_from_key_file
+C function
+
+gtk_print_settings_new_from_key_file
 */
 func PrintSettingsNewFromKeyFile(keyFile *glib.KeyFile, groupName string) (*PrintSettings, error) {
 	c_key_file := (*C.GKeyFile)(C.NULL)
@@ -1035,7 +1101,9 @@ func PrintSettingsNewFromKeyFile(keyFile *glib.KeyFile, groupName string) (*Prin
 // #GKeyFileError.
 /*
 
-C function : gtk_print_settings_to_file
+C function
+
+gtk_print_settings_to_file
 */
 func (recv *PrintSettings) ToFile(fileName string) (bool, error) {
 	c_file_name := C.CString(fileName)
@@ -1057,7 +1125,9 @@ func (recv *PrintSettings) ToFile(fileName string) (bool, error) {
 // This function adds the print settings from @settings to @key_file.
 /*
 
-C function : gtk_print_settings_to_key_file
+C function
+
+gtk_print_settings_to_key_file
 */
 func (recv *PrintSettings) ToKeyFile(keyFile *glib.KeyFile, groupName string) {
 	c_key_file := (*C.GKeyFile)(C.NULL)
@@ -1076,7 +1146,9 @@ func (recv *PrintSettings) ToKeyFile(keyFile *glib.KeyFile, groupName string) {
 // Gets the current position of the fill level indicator.
 /*
 
-C function : gtk_range_get_fill_level
+C function
+
+gtk_range_get_fill_level
 */
 func (recv *Range) GetFillLevel() float64 {
 	retC := C.gtk_range_get_fill_level((*C.GtkRange)(recv.native))
@@ -1088,7 +1160,9 @@ func (recv *Range) GetFillLevel() float64 {
 // Gets whether the range is restricted to the fill level.
 /*
 
-C function : gtk_range_get_restrict_to_fill_level
+C function
+
+gtk_range_get_restrict_to_fill_level
 */
 func (recv *Range) GetRestrictToFillLevel() bool {
 	retC := C.gtk_range_get_restrict_to_fill_level((*C.GtkRange)(recv.native))
@@ -1100,7 +1174,9 @@ func (recv *Range) GetRestrictToFillLevel() bool {
 // Gets whether the range displays the fill level graphically.
 /*
 
-C function : gtk_range_get_show_fill_level
+C function
+
+gtk_range_get_show_fill_level
 */
 func (recv *Range) GetShowFillLevel() bool {
 	retC := C.gtk_range_get_show_fill_level((*C.GtkRange)(recv.native))
@@ -1128,7 +1204,9 @@ func (recv *Range) GetShowFillLevel() bool {
 // enabled.
 /*
 
-C function : gtk_range_set_fill_level
+C function
+
+gtk_range_set_fill_level
 */
 func (recv *Range) SetFillLevel(fillLevel float64) {
 	c_fill_level := (C.gdouble)(fillLevel)
@@ -1143,7 +1221,9 @@ func (recv *Range) SetFillLevel(fillLevel float64) {
 // level concept.
 /*
 
-C function : gtk_range_set_restrict_to_fill_level
+C function
+
+gtk_range_set_restrict_to_fill_level
 */
 func (recv *Range) SetRestrictToFillLevel(restrictToFillLevel bool) {
 	c_restrict_to_fill_level :=
@@ -1159,7 +1239,9 @@ func (recv *Range) SetRestrictToFillLevel(restrictToFillLevel bool) {
 // level concept.
 /*
 
-C function : gtk_range_set_show_fill_level
+C function
+
+gtk_range_set_show_fill_level
 */
 func (recv *Range) SetShowFillLevel(showFillLevel bool) {
 	c_show_fill_level :=
@@ -1175,7 +1257,9 @@ func (recv *Range) SetShowFillLevel(showFillLevel bool) {
 // call gtk_action_group_add_action_with_accel().
 /*
 
-C function : gtk_recent_action_new
+C function
+
+gtk_recent_action_new
 */
 func RecentActionNew(name string, label string, tooltip string, stockId string) *RecentAction {
 	c_name := C.CString(name)
@@ -1201,7 +1285,9 @@ func RecentActionNew(name string, label string, tooltip string, stockId string) 
 // call gtk_action_group_add_action_with_accel().
 /*
 
-C function : gtk_recent_action_new_for_manager
+C function
+
+gtk_recent_action_new_for_manager
 */
 func RecentActionNewForManager(name string, label string, tooltip string, stockId string, manager *RecentManager) *RecentAction {
 	c_name := C.CString(name)
@@ -1230,7 +1316,9 @@ func RecentActionNewForManager(name string, label string, tooltip string, stockI
 // Returns the value set by gtk_recent_chooser_menu_set_show_numbers().
 /*
 
-C function : gtk_recent_action_get_show_numbers
+C function
+
+gtk_recent_action_get_show_numbers
 */
 func (recv *RecentAction) GetShowNumbers() bool {
 	retC := C.gtk_recent_action_get_show_numbers((*C.GtkRecentAction)(recv.native))
@@ -1245,7 +1333,9 @@ func (recv *RecentAction) GetShowNumbers() bool {
 // label. Only the first ten items get a number to avoid clashes.
 /*
 
-C function : gtk_recent_action_set_show_numbers
+C function
+
+gtk_recent_action_set_show_numbers
 */
 func (recv *RecentAction) SetShowNumbers(showNumbers bool) {
 	c_show_numbers :=
@@ -1378,7 +1468,9 @@ func scalebutton_popupHandler(_ *C.GObject, data C.gpointer) {
 // See gtk_range_get_adjustment() for details.
 /*
 
-C function : gtk_scale_button_get_adjustment
+C function
+
+gtk_scale_button_get_adjustment
 */
 func (recv *ScaleButton) GetAdjustment() *Adjustment {
 	retC := C.gtk_scale_button_get_adjustment((*C.GtkScaleButton)(recv.native))
@@ -1390,7 +1482,9 @@ func (recv *ScaleButton) GetAdjustment() *Adjustment {
 // Gets the current value of the scale button.
 /*
 
-C function : gtk_scale_button_get_value
+C function
+
+gtk_scale_button_get_value
 */
 func (recv *ScaleButton) GetValue() float64 {
 	retC := C.gtk_scale_button_get_value((*C.GtkScaleButton)(recv.native))
@@ -1404,7 +1498,9 @@ func (recv *ScaleButton) GetValue() float64 {
 // See gtk_range_set_adjustment() for details.
 /*
 
-C function : gtk_scale_button_set_adjustment
+C function
+
+gtk_scale_button_set_adjustment
 */
 func (recv *ScaleButton) SetAdjustment(adjustment *Adjustment) {
 	c_adjustment := (*C.GtkAdjustment)(C.NULL)
@@ -1425,7 +1521,9 @@ func (recv *ScaleButton) SetAdjustment(adjustment *Adjustment) {
 // signal if the value changes.
 /*
 
-C function : gtk_scale_button_set_value
+C function
+
+gtk_scale_button_set_value
 */
 func (recv *ScaleButton) SetValue(value float64) {
 	c_value := (C.gdouble)(value)
@@ -1438,7 +1536,9 @@ func (recv *ScaleButton) SetValue(value float64) {
 // Returns the #GdkScreen associated with @status_icon.
 /*
 
-C function : gtk_status_icon_get_screen
+C function
+
+gtk_status_icon_get_screen
 */
 func (recv *StatusIcon) GetScreen() *gdk.Screen {
 	retC := C.gtk_status_icon_get_screen((*C.GtkStatusIcon)(recv.native))
@@ -1452,7 +1552,9 @@ func (recv *StatusIcon) GetScreen() *gdk.Screen {
 // then remapped on the new screen.
 /*
 
-C function : gtk_status_icon_set_screen
+C function
+
+gtk_status_icon_set_screen
 */
 func (recv *StatusIcon) SetScreen(screen *gdk.Screen) {
 	c_screen := (*C.GdkScreen)(C.NULL)
@@ -1473,7 +1575,9 @@ func (recv *StatusIcon) SetScreen(screen *gdk.Screen) {
 // initial placement.
 /*
 
-C function : gtk_text_buffer_add_mark
+C function
+
+gtk_text_buffer_add_mark
 */
 func (recv *TextBuffer) AddMark(mark *TextMark, where *TextIter) {
 	c_mark := (*C.GtkTextMark)(C.NULL)
@@ -1502,7 +1606,9 @@ func (recv *TextBuffer) AddMark(mark *TextMark, where *TextIter) {
 // side of the text you’re typing).
 /*
 
-C function : gtk_text_mark_new
+C function
+
+gtk_text_mark_new
 */
 func TextMarkNew(name string, leftGravity bool) *TextMark {
 	c_name := C.CString(name)
@@ -1521,7 +1627,9 @@ func TextMarkNew(name string, leftGravity bool) *TextMark {
 // See gtk_widget_set_tooltip_markup().
 /*
 
-C function : gtk_tool_item_set_tooltip_markup
+C function
+
+gtk_tool_item_set_tooltip_markup
 */
 func (recv *ToolItem) SetTooltipMarkup(markup string) {
 	c_markup := C.CString(markup)
@@ -1536,7 +1644,9 @@ func (recv *ToolItem) SetTooltipMarkup(markup string) {
 // See gtk_widget_set_tooltip_text().
 /*
 
-C function : gtk_tool_item_set_tooltip_text
+C function
+
+gtk_tool_item_set_tooltip_text
 */
 func (recv *ToolItem) SetTooltipText(text string) {
 	c_text := C.CString(text)
@@ -1555,7 +1665,9 @@ func (recv *ToolItem) SetTooltipText(text string) {
 // and gtk_tooltip_set_icon().
 /*
 
-C function : gtk_tooltip_set_custom
+C function
+
+gtk_tooltip_set_custom
 */
 func (recv *Tooltip) SetCustom(customWidget *Widget) {
 	c_custom_widget := (*C.GtkWidget)(C.NULL)
@@ -1572,7 +1684,9 @@ func (recv *Tooltip) SetCustom(customWidget *Widget) {
 // @pixbuf.  If @pixbuf is %NULL, the image will be hidden.
 /*
 
-C function : gtk_tooltip_set_icon
+C function
+
+gtk_tooltip_set_icon
 */
 func (recv *Tooltip) SetIcon(pixbuf *gdkpixbuf.Pixbuf) {
 	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
@@ -1590,7 +1704,9 @@ func (recv *Tooltip) SetIcon(pixbuf *gdkpixbuf.Pixbuf) {
 // by @size.  If @stock_id is %NULL, the image will be hidden.
 /*
 
-C function : gtk_tooltip_set_icon_from_stock
+C function
+
+gtk_tooltip_set_icon_from_stock
 */
 func (recv *Tooltip) SetIconFromStock(stockId string, size IconSize) {
 	c_stock_id := C.CString(stockId)
@@ -1608,7 +1724,9 @@ func (recv *Tooltip) SetIconFromStock(stockId string, size IconSize) {
 // If @markup is %NULL, the label will be hidden.
 /*
 
-C function : gtk_tooltip_set_markup
+C function
+
+gtk_tooltip_set_markup
 */
 func (recv *Tooltip) SetMarkup(markup string) {
 	c_markup := C.CString(markup)
@@ -1623,7 +1741,9 @@ func (recv *Tooltip) SetMarkup(markup string) {
 // will be hidden. See also gtk_tooltip_set_markup().
 /*
 
-C function : gtk_tooltip_set_text
+C function
+
+gtk_tooltip_set_text
 */
 func (recv *Tooltip) SetText(text string) {
 	c_text := C.CString(text)
@@ -1642,7 +1762,9 @@ func (recv *Tooltip) SetText(text string) {
 // tree (the full scrollable area of the tree).
 /*
 
-C function : gtk_tree_view_convert_bin_window_to_tree_coords
+C function
+
+gtk_tree_view_convert_bin_window_to_tree_coords
 */
 func (recv *TreeView) ConvertBinWindowToTreeCoords(bx int32, by int32) (int32, int32) {
 	c_bx := (C.gint)(bx)
@@ -1666,7 +1788,9 @@ func (recv *TreeView) ConvertBinWindowToTreeCoords(bx int32, by int32) (int32, i
 // to widget relative coordinates.
 /*
 
-C function : gtk_tree_view_convert_bin_window_to_widget_coords
+C function
+
+gtk_tree_view_convert_bin_window_to_widget_coords
 */
 func (recv *TreeView) ConvertBinWindowToWidgetCoords(bx int32, by int32) (int32, int32) {
 	c_bx := (C.gint)(bx)
@@ -1690,7 +1814,9 @@ func (recv *TreeView) ConvertBinWindowToWidgetCoords(bx int32, by int32) (int32,
 // to bin_window coordinates.
 /*
 
-C function : gtk_tree_view_convert_tree_to_bin_window_coords
+C function
+
+gtk_tree_view_convert_tree_to_bin_window_coords
 */
 func (recv *TreeView) ConvertTreeToBinWindowCoords(tx int32, ty int32) (int32, int32) {
 	c_tx := (C.gint)(tx)
@@ -1714,7 +1840,9 @@ func (recv *TreeView) ConvertTreeToBinWindowCoords(tx int32, ty int32) (int32, i
 // to widget coordinates.
 /*
 
-C function : gtk_tree_view_convert_tree_to_widget_coords
+C function
+
+gtk_tree_view_convert_tree_to_widget_coords
 */
 func (recv *TreeView) ConvertTreeToWidgetCoords(tx int32, ty int32) (int32, int32) {
 	c_tx := (C.gint)(tx)
@@ -1738,7 +1866,9 @@ func (recv *TreeView) ConvertTreeToWidgetCoords(tx int32, ty int32) (int32, int3
 // (see gtk_tree_view_get_bin_window()).
 /*
 
-C function : gtk_tree_view_convert_widget_to_bin_window_coords
+C function
+
+gtk_tree_view_convert_widget_to_bin_window_coords
 */
 func (recv *TreeView) ConvertWidgetToBinWindowCoords(wx int32, wy int32) (int32, int32) {
 	c_wx := (C.gint)(wx)
@@ -1762,7 +1892,9 @@ func (recv *TreeView) ConvertWidgetToBinWindowCoords(wx int32, wy int32) (int32,
 // tree (the full scrollable area of the tree).
 /*
 
-C function : gtk_tree_view_convert_widget_to_tree_coords
+C function
+
+gtk_tree_view_convert_widget_to_tree_coords
 */
 func (recv *TreeView) ConvertWidgetToTreeCoords(wx int32, wy int32) (int32, int32) {
 	c_wx := (C.gint)(wx)
@@ -1786,7 +1918,9 @@ func (recv *TreeView) ConvertWidgetToTreeCoords(wx int32, wy int32) (int32, int3
 // in @tree_view.
 /*
 
-C function : gtk_tree_view_get_level_indentation
+C function
+
+gtk_tree_view_get_level_indentation
 */
 func (recv *TreeView) GetLevelIndentation() int32 {
 	retC := C.gtk_tree_view_get_level_indentation((*C.GtkTreeView)(recv.native))
@@ -1798,7 +1932,9 @@ func (recv *TreeView) GetLevelIndentation() int32 {
 // Returns whether or not expanders are drawn in @tree_view.
 /*
 
-C function : gtk_tree_view_get_show_expanders
+C function
+
+gtk_tree_view_get_show_expanders
 */
 func (recv *TreeView) GetShowExpanders() bool {
 	retC := C.gtk_tree_view_get_show_expanders((*C.GtkTreeView)(recv.native))
@@ -1811,7 +1947,9 @@ func (recv *TreeView) GetShowExpanders() bool {
 // displaying tooltips on @tree_view’s rows.
 /*
 
-C function : gtk_tree_view_get_tooltip_column
+C function
+
+gtk_tree_view_get_tooltip_column
 */
 func (recv *TreeView) GetTooltipColumn() int32 {
 	retC := C.gtk_tree_view_get_tooltip_column((*C.GtkTreeView)(recv.native))
@@ -1833,7 +1971,9 @@ func (recv *TreeView) GetTooltipColumn() int32 {
 // to be relative to @tree_view’s bin_window if @keyboard_tooltip is %FALSE.
 /*
 
-C function : gtk_tree_view_get_tooltip_context
+C function
+
+gtk_tree_view_get_tooltip_context
 */
 func (recv *TreeView) GetTooltipContext(x int32, y int32, keyboardTip bool) (bool, *TreeModel, *TreePath, *TreeIter) {
 	c_x := (C.gint)(x)
@@ -1865,7 +2005,9 @@ func (recv *TreeView) GetTooltipContext(x int32, y int32, keyboardTip bool) (boo
 // in @tree_view.
 /*
 
-C function : gtk_tree_view_is_rubber_banding_active
+C function
+
+gtk_tree_view_is_rubber_banding_active
 */
 func (recv *TreeView) IsRubberBandingActive() bool {
 	retC := C.gtk_tree_view_is_rubber_banding_active((*C.GtkTreeView)(recv.native))
@@ -1881,7 +2023,9 @@ func (recv *TreeView) IsRubberBandingActive() bool {
 // This does not have any visible effects for lists.
 /*
 
-C function : gtk_tree_view_set_level_indentation
+C function
+
+gtk_tree_view_set_level_indentation
 */
 func (recv *TreeView) SetLevelIndentation(indentation int32) {
 	c_indentation := (C.gint)(indentation)
@@ -1900,7 +2044,9 @@ func (recv *TreeView) SetLevelIndentation(indentation int32) {
 // This does not have any visible effects for lists.
 /*
 
-C function : gtk_tree_view_set_show_expanders
+C function
+
+gtk_tree_view_set_show_expanders
 */
 func (recv *TreeView) SetShowExpanders(enabled bool) {
 	c_enabled :=
@@ -1924,7 +2070,9 @@ func (recv *TreeView) SetShowExpanders(enabled bool) {
 // See also gtk_tree_view_set_tooltip_column() for a simpler alternative.
 /*
 
-C function : gtk_tree_view_set_tooltip_cell
+C function
+
+gtk_tree_view_set_tooltip_cell
 */
 func (recv *TreeView) SetTooltipCell(tooltip *Tooltip, path *TreePath, column *TreeViewColumn, cell *CellRenderer) {
 	c_tooltip := (*C.GtkTooltip)(C.NULL)
@@ -1964,7 +2112,9 @@ func (recv *TreeView) SetTooltipCell(tooltip *Tooltip, path *TreePath, column *T
 // so &, <, etc have to be escaped in the text.
 /*
 
-C function : gtk_tree_view_set_tooltip_column
+C function
+
+gtk_tree_view_set_tooltip_column
 */
 func (recv *TreeView) SetTooltipColumn(column int32) {
 	c_column := (C.gint)(column)
@@ -1979,7 +2129,9 @@ func (recv *TreeView) SetTooltipColumn(column int32) {
 // See also gtk_tooltip_set_tip_area().
 /*
 
-C function : gtk_tree_view_set_tooltip_row
+C function
+
+gtk_tree_view_set_tooltip_row
 */
 func (recv *TreeView) SetTooltipRow(tooltip *Tooltip, path *TreePath) {
 	c_tooltip := (*C.GtkTooltip)(C.NULL)
@@ -2002,7 +2154,9 @@ func (recv *TreeView) SetTooltipRow(tooltip *Tooltip, path *TreePath) {
 // returned.
 /*
 
-C function : gtk_tree_view_column_get_tree_view
+C function
+
+gtk_tree_view_column_get_tree_view
 */
 func (recv *TreeViewColumn) GetTreeView() *Widget {
 	retC := C.gtk_tree_view_column_get_tree_view((*C.GtkTreeViewColumn)(recv.native))
@@ -2021,7 +2175,9 @@ func (recv *TreeViewColumn) GetTreeView() *Widget {
 // the functions from #GtkScaleButton.
 /*
 
-C function : gtk_volume_button_new
+C function
+
+gtk_volume_button_new
 */
 func VolumeButtonNew() *VolumeButton {
 	retC := C.gtk_volume_button_new()
@@ -2045,7 +2201,9 @@ func VolumeButtonNew() *VolumeButton {
 // or window manager that is used.
 /*
 
-C function : gtk_widget_error_bell
+C function
+
+gtk_widget_error_bell
 */
 func (recv *Widget) ErrorBell() {
 	C.gtk_widget_error_bell((*C.GtkWidget)(recv.native))
@@ -2057,7 +2215,9 @@ func (recv *Widget) ErrorBell() {
 // #GtkWidget:has-tooltip for more information.
 /*
 
-C function : gtk_widget_get_has_tooltip
+C function
+
+gtk_widget_get_has_tooltip
 */
 func (recv *Widget) GetHasTooltip() bool {
 	retC := C.gtk_widget_get_has_tooltip((*C.GtkWidget)(recv.native))
@@ -2069,7 +2229,9 @@ func (recv *Widget) GetHasTooltip() bool {
 // Gets the contents of the tooltip for @widget.
 /*
 
-C function : gtk_widget_get_tooltip_markup
+C function
+
+gtk_widget_get_tooltip_markup
 */
 func (recv *Widget) GetTooltipMarkup() string {
 	retC := C.gtk_widget_get_tooltip_markup((*C.GtkWidget)(recv.native))
@@ -2082,7 +2244,9 @@ func (recv *Widget) GetTooltipMarkup() string {
 // Gets the contents of the tooltip for @widget.
 /*
 
-C function : gtk_widget_get_tooltip_text
+C function
+
+gtk_widget_get_tooltip_text
 */
 func (recv *Widget) GetTooltipText() string {
 	retC := C.gtk_widget_get_tooltip_text((*C.GtkWidget)(recv.native))
@@ -2097,7 +2261,9 @@ func (recv *Widget) GetTooltipText() string {
 // using gtk_widget_set_tooltip_window().
 /*
 
-C function : gtk_widget_get_tooltip_window
+C function
+
+gtk_widget_get_tooltip_window
 */
 func (recv *Widget) GetTooltipWindow() *Window {
 	retC := C.gtk_widget_get_tooltip_window((*C.GtkWidget)(recv.native))
@@ -2135,7 +2301,9 @@ func (recv *Widget) GetTooltipWindow() *Window {
 // that require entering license keys.
 /*
 
-C function : gtk_widget_keynav_failed
+C function
+
+gtk_widget_keynav_failed
 */
 func (recv *Widget) KeynavFailed(direction DirectionType) bool {
 	c_direction := (C.GtkDirectionType)(direction)
@@ -2154,7 +2322,9 @@ func (recv *Widget) KeynavFailed(direction DirectionType) bool {
 // See also gtk_widget_modify_style().
 /*
 
-C function : gtk_widget_modify_cursor
+C function
+
+gtk_widget_modify_cursor
 */
 func (recv *Widget) ModifyCursor(primary *gdk.Color, secondary *gdk.Color) {
 	c_primary := (*C.GdkColor)(C.NULL)
@@ -2176,7 +2346,9 @@ func (recv *Widget) ModifyCursor(primary *gdk.Color, secondary *gdk.Color) {
 // #GtkWidget:has-tooltip for more information.
 /*
 
-C function : gtk_widget_set_has_tooltip
+C function
+
+gtk_widget_set_has_tooltip
 */
 func (recv *Widget) SetHasTooltip(hasTooltip bool) {
 	c_has_tooltip :=
@@ -2197,7 +2369,9 @@ func (recv *Widget) SetHasTooltip(hasTooltip bool) {
 // gtk_tooltip_set_markup().
 /*
 
-C function : gtk_widget_set_tooltip_markup
+C function
+
+gtk_widget_set_tooltip_markup
 */
 func (recv *Widget) SetTooltipMarkup(markup string) {
 	c_markup := C.CString(markup)
@@ -2215,7 +2389,9 @@ func (recv *Widget) SetTooltipMarkup(markup string) {
 // See also the #GtkWidget:tooltip-text property and gtk_tooltip_set_text().
 /*
 
-C function : gtk_widget_set_tooltip_text
+C function
+
+gtk_widget_set_tooltip_text
 */
 func (recv *Widget) SetTooltipText(text string) {
 	c_text := C.CString(text)
@@ -2233,7 +2409,9 @@ func (recv *Widget) SetTooltipText(text string) {
 // tooltip window will be used.
 /*
 
-C function : gtk_widget_set_tooltip_window
+C function
+
+gtk_widget_set_tooltip_window
 */
 func (recv *Widget) SetTooltipWindow(customWindow *Window) {
 	c_custom_window := (*C.GtkWindow)(C.NULL)
@@ -2251,7 +2429,9 @@ func (recv *Widget) SetTooltipWindow(customWindow *Window) {
 // information.
 /*
 
-C function : gtk_widget_trigger_tooltip_query
+C function
+
+gtk_widget_trigger_tooltip_query
 */
 func (recv *Widget) TriggerTooltipQuery() {
 	C.gtk_widget_trigger_tooltip_query((*C.GtkWidget)(recv.native))
@@ -2263,7 +2443,9 @@ func (recv *Widget) TriggerTooltipQuery() {
 // gtk_window_set_opacity().
 /*
 
-C function : gtk_window_get_opacity
+C function
+
+gtk_window_get_opacity
 */
 func (recv *Window) GetOpacity() float64 {
 	retC := C.gtk_window_get_opacity((*C.GtkWindow)(recv.native))
@@ -2283,7 +2465,9 @@ func (recv *Window) GetOpacity() float64 {
 // shown causes it to flicker once on Windows.
 /*
 
-C function : gtk_window_set_opacity
+C function
+
+gtk_window_set_opacity
 */
 func (recv *Window) SetOpacity(opacity float64) {
 	c_opacity := (C.gdouble)(opacity)
@@ -2305,7 +2489,9 @@ func (recv *Window) SetOpacity(opacity float64) {
 // This function is only useful on X11, not with other GTK+ targets.
 /*
 
-C function : gtk_window_set_startup_id
+C function
+
+gtk_window_set_startup_id
 */
 func (recv *Window) SetStartupId(startupId string) {
 	c_startup_id := C.CString(startupId)

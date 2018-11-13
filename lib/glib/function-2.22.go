@@ -18,7 +18,9 @@ import "C"
 // thread.
 /*
 
-C function : g_byte_array_unref
+C function
+
+g_byte_array_unref
 */
 func ByteArrayUnref(array []uint8) {
 	c_array := &array[0]
@@ -35,7 +37,9 @@ func ByteArrayUnref(array []uint8) {
 // #GHashTable.
 /*
 
-C function : g_double_equal
+C function
+
+g_double_equal
 */
 func DoubleEqual(v1 uintptr, v2 uintptr) bool {
 	c_v1 := (C.gconstpointer)(v1)
@@ -54,7 +58,9 @@ func DoubleEqual(v1 uintptr, v2 uintptr) bool {
 // when using non-%NULL pointers to doubles as keys in a #GHashTable.
 /*
 
-C function : g_double_hash
+C function
+
+g_double_hash
 */
 func DoubleHash(v uintptr) uint32 {
 	c_v := (C.gconstpointer)(v)
@@ -75,7 +81,9 @@ func DoubleHash(v uintptr) uint32 {
 // g_hostname_is_ascii_encoded() to both return %TRUE for a name.
 /*
 
-C function : g_hostname_is_ascii_encoded
+C function
+
+g_hostname_is_ascii_encoded
 */
 func HostnameIsAsciiEncoded(hostname string) bool {
 	c_hostname := C.CString(hostname)
@@ -91,7 +99,9 @@ func HostnameIsAsciiEncoded(hostname string) bool {
 // (Eg, "192.168.0.1".)
 /*
 
-C function : g_hostname_is_ip_address
+C function
+
+g_hostname_is_ip_address
 */
 func HostnameIsIpAddress(hostname string) bool {
 	c_hostname := C.CString(hostname)
@@ -112,7 +122,9 @@ func HostnameIsIpAddress(hostname string) bool {
 // g_hostname_is_ascii_encoded() to both return %TRUE for a name.
 /*
 
-C function : g_hostname_is_non_ascii
+C function
+
+g_hostname_is_non_ascii
 */
 func HostnameIsNonAscii(hostname string) bool {
 	c_hostname := C.CString(hostname)
@@ -129,7 +141,9 @@ func HostnameIsNonAscii(hostname string) bool {
 // trailing dot.
 /*
 
-C function : g_hostname_to_ascii
+C function
+
+g_hostname_to_ascii
 */
 func HostnameToAscii(hostname string) string {
 	c_hostname := C.CString(hostname)
@@ -151,7 +165,9 @@ func HostnameToAscii(hostname string) string {
 // the canonical presentation form will be entirely ASCII.
 /*
 
-C function : g_hostname_to_unicode
+C function
+
+g_hostname_to_unicode
 */
 func HostnameToUnicode(hostname string) string {
 	c_hostname := C.CString(hostname)
@@ -171,7 +187,9 @@ func HostnameToUnicode(hostname string) string {
 // #GHashTable.
 /*
 
-C function : g_int64_equal
+C function
+
+g_int64_equal
 */
 func Int64Equal(v1 uintptr, v2 uintptr) bool {
 	c_v1 := (C.gconstpointer)(v1)
@@ -191,7 +209,9 @@ func Int64Equal(v1 uintptr, v2 uintptr) bool {
 // #GHashTable.
 /*
 
-C function : g_int64_hash
+C function
+
+g_int64_hash
 */
 func Int64Hash(v uintptr) uint32 {
 	c_v := (C.gconstpointer)(v)
@@ -215,7 +235,9 @@ func Int64Hash(v uintptr) uint32 {
 // g_main_context_ref_thread_default() instead.
 /*
 
-C function : g_main_context_get_thread_default
+C function
+
+g_main_context_get_thread_default
 */
 func MainContextGetThreadDefault() *MainContext {
 	retC := C.g_main_context_get_thread_default()
@@ -237,7 +259,9 @@ func MainContextGetThreadDefault() *MainContext {
 // on Windows it should be in UTF-8.
 /*
 
-C function : g_mkstemp_full
+C function
+
+g_mkstemp_full
 */
 func MkstempFull(tmpl string, flags int32, mode int32) int32 {
 	c_tmpl := C.CString(tmpl)
@@ -263,7 +287,9 @@ func MkstempFull(tmpl string, flags int32, mode int32) int32 {
 // the directories that actually changed value though.
 /*
 
-C function : g_reload_user_special_dirs_cache
+C function
+
+g_reload_user_special_dirs_cache
 */
 func ReloadUserSpecialDirsCache() {
 	C.g_reload_user_special_dirs_cache()

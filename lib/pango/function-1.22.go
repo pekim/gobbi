@@ -15,7 +15,9 @@ import "C"
 // that means) that should not be modified or freed.
 /*
 
-C function : pango_attr_type_get_name
+C function
+
+pango_attr_type_get_name
 */
 func AttrTypeGetName(type_ AttrType) string {
 	c_type := (C.PangoAttrType)(type_)
@@ -33,7 +35,9 @@ func AttrTypeGetName(type_ AttrType) string {
 // pango_unichar_direction().
 /*
 
-C function : pango_bidi_type_for_unichar
+C function
+
+pango_bidi_type_for_unichar
 */
 func BidiTypeForUnichar(ch rune) BidiType {
 	c_ch := (C.gunichar)(ch)

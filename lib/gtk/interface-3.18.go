@@ -19,7 +19,9 @@ import "C"
 // or %NULL if it does not have one.
 /*
 
-C function : gtk_font_chooser_get_font_map
+C function
+
+gtk_font_chooser_get_font_map
 */
 func (recv *FontChooser) GetFontMap() *pango.FontMap {
 	retC := C.gtk_font_chooser_get_font_map((*C.GtkFontChooser)(recv.native))
@@ -59,7 +61,9 @@ func (recv *FontChooser) GetFontMap() *pango.FontMap {
 // ]|
 /*
 
-C function : gtk_font_chooser_set_font_map
+C function
+
+gtk_font_chooser_set_font_map
 */
 func (recv *FontChooser) SetFontMap(fontmap *pango.FontMap) {
 	c_fontmap := (*C.PangoFontMap)(C.NULL)

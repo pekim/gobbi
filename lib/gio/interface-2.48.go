@@ -73,7 +73,9 @@ import "C"
 // implement your own locking.
 /*
 
-C record/class : GDatagramBased
+C type
+
+GDatagramBased
 */
 type DatagramBased struct {
 	native *C.GDatagramBased
@@ -133,7 +135,9 @@ func (recv *DatagramBased) ToC() unsafe.Pointer {
 // This call never blocks.
 /*
 
-C function : g_datagram_based_condition_check
+C function
+
+g_datagram_based_condition_check
 */
 func (recv *DatagramBased) ConditionCheck(condition glib.IOCondition) glib.IOCondition {
 	c_condition := (C.GIOCondition)(condition)
@@ -152,7 +156,9 @@ func (recv *DatagramBased) ConditionCheck(condition glib.IOCondition) glib.IOCon
 // set appropriately (%G_IO_ERROR_CANCELLED or %G_IO_ERROR_TIMED_OUT).
 /*
 
-C function : g_datagram_based_condition_wait
+C function
+
+g_datagram_based_condition_wait
 */
 func (recv *DatagramBased) ConditionWait(condition glib.IOCondition, timeout int64, cancellable *Cancellable) (bool, error) {
 	c_condition := (C.GIOCondition)(condition)
@@ -193,7 +199,9 @@ func (recv *DatagramBased) ConditionWait(condition glib.IOCondition, timeout int
 // g_cancellable_is_cancelled().
 /*
 
-C function : g_datagram_based_create_source
+C function
+
+g_datagram_based_create_source
 */
 func (recv *DatagramBased) CreateSource(condition glib.IOCondition, cancellable *Cancellable) *glib.Source {
 	c_condition := (C.GIOCondition)(condition)
@@ -217,7 +225,9 @@ func (recv *DatagramBased) CreateSource(condition glib.IOCondition, cancellable 
 // #GDtlsConnection, representing a client-side DTLS connection.
 /*
 
-C record/class : GDtlsClientConnection
+C type
+
+GDtlsClientConnection
 */
 type DtlsClientConnection struct {
 	native *C.GDtlsClientConnection
@@ -248,7 +258,9 @@ func (recv *DtlsClientConnection) ToC() unsafe.Pointer {
 // subject DN of the certificate authority.
 /*
 
-C function : g_dtls_client_connection_get_accepted_cas
+C function
+
+g_dtls_client_connection_get_accepted_cas
 */
 func (recv *DtlsClientConnection) GetAcceptedCas() *glib.List {
 	retC := C.g_dtls_client_connection_get_accepted_cas((*C.GDtlsClientConnection)(recv.native))
@@ -260,7 +272,9 @@ func (recv *DtlsClientConnection) GetAcceptedCas() *glib.List {
 // Gets @conn's expected server identity
 /*
 
-C function : g_dtls_client_connection_get_server_identity
+C function
+
+g_dtls_client_connection_get_server_identity
 */
 func (recv *DtlsClientConnection) GetServerIdentity() *SocketConnectable {
 	retC := C.g_dtls_client_connection_get_server_identity((*C.GDtlsClientConnection)(recv.native))
@@ -272,7 +286,9 @@ func (recv *DtlsClientConnection) GetServerIdentity() *SocketConnectable {
 // Gets @conn's validation flags
 /*
 
-C function : g_dtls_client_connection_get_validation_flags
+C function
+
+g_dtls_client_connection_get_validation_flags
 */
 func (recv *DtlsClientConnection) GetValidationFlags() TlsCertificateFlags {
 	retC := C.g_dtls_client_connection_get_validation_flags((*C.GDtlsClientConnection)(recv.native))
@@ -287,7 +303,9 @@ func (recv *DtlsClientConnection) GetValidationFlags() TlsCertificateFlags {
 // performing %G_TLS_CERTIFICATE_BAD_IDENTITY validation, if enabled.
 /*
 
-C function : g_dtls_client_connection_set_server_identity
+C function
+
+g_dtls_client_connection_set_server_identity
 */
 func (recv *DtlsClientConnection) SetServerIdentity(identity *SocketConnectable) {
 	c_identity := (*C.GSocketConnectable)(identity.ToC())
@@ -302,7 +320,9 @@ func (recv *DtlsClientConnection) SetServerIdentity(identity *SocketConnectable)
 // %G_TLS_CERTIFICATE_VALIDATE_ALL is used.
 /*
 
-C function : g_dtls_client_connection_set_validation_flags
+C function
+
+g_dtls_client_connection_set_validation_flags
 */
 func (recv *DtlsClientConnection) SetValidationFlags(flags TlsCertificateFlags) {
 	c_flags := (C.GTlsCertificateFlags)(flags)
@@ -333,7 +353,9 @@ func (recv *DtlsClientConnection) SetValidationFlags(flags TlsCertificateFlags) 
 // error on further I/O.
 /*
 
-C record/class : GDtlsConnection
+C type
+
+GDtlsConnection
 */
 type DtlsConnection struct {
 	native *C.GDtlsConnection
@@ -376,7 +398,9 @@ func (recv *DtlsConnection) ToC() unsafe.Pointer {
 // g_dtls_connection_close() again to complete closing the #GDtlsConnection.
 /*
 
-C function : g_dtls_connection_close
+C function
+
+g_dtls_connection_close
 */
 func (recv *DtlsConnection) Close(cancellable *Cancellable) (bool, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -403,7 +427,9 @@ func (recv *DtlsConnection) Close(cancellable *Cancellable) (bool, error) {
 // for more information.
 /*
 
-C function : g_dtls_connection_close_finish
+C function
+
+g_dtls_connection_close_finish
 */
 func (recv *DtlsConnection) CloseFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -425,7 +451,9 @@ func (recv *DtlsConnection) CloseFinish(result *AsyncResult) (bool, error) {
 // #GDtlsConnection::accept-certificate signal.
 /*
 
-C function : g_dtls_connection_emit_accept_certificate
+C function
+
+g_dtls_connection_emit_accept_certificate
 */
 func (recv *DtlsConnection) EmitAcceptCertificate(peerCert *TlsCertificate, errors TlsCertificateFlags) bool {
 	c_peer_cert := (*C.GTlsCertificate)(C.NULL)
@@ -445,7 +473,9 @@ func (recv *DtlsConnection) EmitAcceptCertificate(peerCert *TlsCertificate, erro
 // g_dtls_connection_set_certificate().
 /*
 
-C function : g_dtls_connection_get_certificate
+C function
+
+g_dtls_connection_get_certificate
 */
 func (recv *DtlsConnection) GetCertificate() *TlsCertificate {
 	retC := C.g_dtls_connection_get_certificate((*C.GDtlsConnection)(recv.native))
@@ -458,7 +488,9 @@ func (recv *DtlsConnection) GetCertificate() *TlsCertificate {
 // peer certificates. See g_dtls_connection_set_database().
 /*
 
-C function : g_dtls_connection_get_database
+C function
+
+g_dtls_connection_get_database
 */
 func (recv *DtlsConnection) GetDatabase() *TlsDatabase {
 	retC := C.g_dtls_connection_get_database((*C.GDtlsConnection)(recv.native))
@@ -472,7 +504,9 @@ func (recv *DtlsConnection) GetDatabase() *TlsDatabase {
 // no user interaction will occur for this connection.
 /*
 
-C function : g_dtls_connection_get_interaction
+C function
+
+g_dtls_connection_get_interaction
 */
 func (recv *DtlsConnection) GetInteraction() *TlsInteraction {
 	retC := C.g_dtls_connection_get_interaction((*C.GDtlsConnection)(recv.native))
@@ -486,7 +520,9 @@ func (recv *DtlsConnection) GetInteraction() *TlsInteraction {
 // #GDtlsConnection::accept-certificate.)
 /*
 
-C function : g_dtls_connection_get_peer_certificate
+C function
+
+g_dtls_connection_get_peer_certificate
 */
 func (recv *DtlsConnection) GetPeerCertificate() *TlsCertificate {
 	retC := C.g_dtls_connection_get_peer_certificate((*C.GDtlsConnection)(recv.native))
@@ -500,7 +536,9 @@ func (recv *DtlsConnection) GetPeerCertificate() *TlsCertificate {
 // during the emission of #GDtlsConnection::accept-certificate.)
 /*
 
-C function : g_dtls_connection_get_peer_certificate_errors
+C function
+
+g_dtls_connection_get_peer_certificate_errors
 */
 func (recv *DtlsConnection) GetPeerCertificateErrors() TlsCertificateFlags {
 	retC := C.g_dtls_connection_get_peer_certificate_errors((*C.GDtlsConnection)(recv.native))
@@ -513,7 +551,9 @@ func (recv *DtlsConnection) GetPeerCertificateErrors() TlsCertificateFlags {
 // g_dtls_connection_set_rehandshake_mode() for details.
 /*
 
-C function : g_dtls_connection_get_rehandshake_mode
+C function
+
+g_dtls_connection_get_rehandshake_mode
 */
 func (recv *DtlsConnection) GetRehandshakeMode() TlsRehandshakeMode {
 	retC := C.g_dtls_connection_get_rehandshake_mode((*C.GDtlsConnection)(recv.native))
@@ -527,7 +567,9 @@ func (recv *DtlsConnection) GetRehandshakeMode() TlsRehandshakeMode {
 // g_dtls_connection_set_require_close_notify() for details.
 /*
 
-C function : g_dtls_connection_get_require_close_notify
+C function
+
+g_dtls_connection_get_require_close_notify
 */
 func (recv *DtlsConnection) GetRequireCloseNotify() bool {
 	retC := C.g_dtls_connection_get_require_close_notify((*C.GDtlsConnection)(recv.native))
@@ -560,7 +602,9 @@ func (recv *DtlsConnection) GetRequireCloseNotify() bool {
 // handshake.
 /*
 
-C function : g_dtls_connection_handshake
+C function
+
+g_dtls_connection_handshake
 */
 func (recv *DtlsConnection) Handshake(cancellable *Cancellable) (bool, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -587,7 +631,9 @@ func (recv *DtlsConnection) Handshake(cancellable *Cancellable) (bool, error) {
 // g_dtls_connection_handshake() for more information.
 /*
 
-C function : g_dtls_connection_handshake_finish
+C function
+
+g_dtls_connection_handshake_finish
 */
 func (recv *DtlsConnection) HandshakeFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -625,7 +671,9 @@ func (recv *DtlsConnection) HandshakeFinish(result *AsyncResult) (bool, error) {
 // non-%NULL.)
 /*
 
-C function : g_dtls_connection_set_certificate
+C function
+
+g_dtls_connection_set_certificate
 */
 func (recv *DtlsConnection) SetCertificate(certificate *TlsCertificate) {
 	c_certificate := (*C.GTlsCertificate)(C.NULL)
@@ -648,7 +696,9 @@ func (recv *DtlsConnection) SetCertificate(certificate *TlsCertificate) {
 // #GDtlsClientConnection:validation-flags).
 /*
 
-C function : g_dtls_connection_set_database
+C function
+
+g_dtls_connection_set_database
 */
 func (recv *DtlsConnection) SetDatabase(database *TlsDatabase) {
 	c_database := (*C.GTlsDatabase)(C.NULL)
@@ -669,7 +719,9 @@ func (recv *DtlsConnection) SetDatabase(database *TlsDatabase) {
 // should occur for this connection.
 /*
 
-C function : g_dtls_connection_set_interaction
+C function
+
+g_dtls_connection_set_interaction
 */
 func (recv *DtlsConnection) SetInteraction(interaction *TlsInteraction) {
 	c_interaction := (*C.GTlsInteraction)(C.NULL)
@@ -704,7 +756,9 @@ func (recv *DtlsConnection) SetInteraction(interaction *TlsInteraction) {
 // software.
 /*
 
-C function : g_dtls_connection_set_rehandshake_mode
+C function
+
+g_dtls_connection_set_rehandshake_mode
 */
 func (recv *DtlsConnection) SetRehandshakeMode(mode TlsRehandshakeMode) {
 	c_mode := (C.GTlsRehandshakeMode)(mode)
@@ -741,7 +795,9 @@ func (recv *DtlsConnection) SetRehandshakeMode(mode TlsRehandshakeMode) {
 // than closing @conn itself.
 /*
 
-C function : g_dtls_connection_set_require_close_notify
+C function
+
+g_dtls_connection_set_require_close_notify
 */
 func (recv *DtlsConnection) SetRequireCloseNotify(requireCloseNotify bool) {
 	c_require_close_notify :=
@@ -770,7 +826,9 @@ func (recv *DtlsConnection) SetRequireCloseNotify(requireCloseNotify bool) {
 // g_dtls_connection_shutdown() again to complete closing the #GDtlsConnection.
 /*
 
-C function : g_dtls_connection_shutdown
+C function
+
+g_dtls_connection_shutdown
 */
 func (recv *DtlsConnection) Shutdown(shutdownRead bool, shutdownWrite bool, cancellable *Cancellable) (bool, error) {
 	c_shutdown_read :=
@@ -803,7 +861,9 @@ func (recv *DtlsConnection) Shutdown(shutdownRead bool, shutdownWrite bool, canc
 // g_dtls_connection_shutdown() for more information.
 /*
 
-C function : g_dtls_connection_shutdown_finish
+C function
+
+g_dtls_connection_shutdown_finish
 */
 func (recv *DtlsConnection) ShutdownFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -825,7 +885,9 @@ func (recv *DtlsConnection) ShutdownFinish(result *AsyncResult) (bool, error) {
 // representing a server-side DTLS connection.
 /*
 
-C record/class : GDtlsServerConnection
+C type
+
+GDtlsServerConnection
 */
 type DtlsServerConnection struct {
 	native *C.GDtlsServerConnection
@@ -856,7 +918,9 @@ func (recv *DtlsServerConnection) ToC() unsafe.Pointer {
 // the implementation’s type name will be returned as a fallback.
 /*
 
-C function : g_socket_connectable_to_string
+C function
+
+g_socket_connectable_to_string
 */
 func (recv *SocketConnectable) ToString() string {
 	retC := C.g_socket_connectable_to_string((*C.GSocketConnectable)(recv.native))
@@ -869,7 +933,9 @@ func (recv *SocketConnectable) ToString() string {
 // Gets the #GType of @backend’s #GDtlsClientConnection implementation.
 /*
 
-C function : g_tls_backend_get_dtls_client_connection_type
+C function
+
+g_tls_backend_get_dtls_client_connection_type
 */
 func (recv *TlsBackend) GetDtlsClientConnectionType() gobject.Type {
 	retC := C.g_tls_backend_get_dtls_client_connection_type((*C.GTlsBackend)(recv.native))
@@ -881,7 +947,9 @@ func (recv *TlsBackend) GetDtlsClientConnectionType() gobject.Type {
 // Gets the #GType of @backend’s #GDtlsServerConnection implementation.
 /*
 
-C function : g_tls_backend_get_dtls_server_connection_type
+C function
+
+g_tls_backend_get_dtls_server_connection_type
 */
 func (recv *TlsBackend) GetDtlsServerConnectionType() gobject.Type {
 	retC := C.g_tls_backend_get_dtls_server_connection_type((*C.GTlsBackend)(recv.native))
@@ -894,7 +962,9 @@ func (recv *TlsBackend) GetDtlsServerConnectionType() gobject.Type {
 // support is available, and vice-versa.
 /*
 
-C function : g_tls_backend_supports_dtls
+C function
+
+g_tls_backend_supports_dtls
 */
 func (recv *TlsBackend) SupportsDtls() bool {
 	retC := C.g_tls_backend_supports_dtls((*C.GTlsBackend)(recv.native))

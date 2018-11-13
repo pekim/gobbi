@@ -15,7 +15,9 @@ import "C"
 // lines will use the foreground color.
 /*
 
-C function : pango_attr_strikethrough_color_new
+C function
+
+pango_attr_strikethrough_color_new
 */
 func AttrStrikethroughColorNew(red uint16, green uint16, blue uint16) *Attribute {
 	c_red := (C.guint16)(red)
@@ -35,7 +37,9 @@ func AttrStrikethroughColorNew(red uint16, green uint16, blue uint16) *Attribute
 // will use the foreground color.
 /*
 
-C function : pango_attr_underline_color_new
+C function
+
+pango_attr_underline_color_new
 */
 func AttrUnderlineColorNew(red uint16, green uint16, blue uint16) *Attribute {
 	c_red := (C.guint16)(red)

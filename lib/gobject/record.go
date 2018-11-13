@@ -15,7 +15,9 @@ import "C"
 // A #GCClosure is a specialization of #GClosure for C function callbacks.
 /*
 
-C record/class : GCClosure
+C type
+
+GCClosure
 */
 type CClosure struct {
 	native *C.GCClosure
@@ -87,7 +89,9 @@ func (recv *CClosure) ToC() unsafe.Pointer {
 // automatically removed when the objects they point to go away.
 /*
 
-C record/class : GClosure
+C type
+
+GClosure
 */
 type Closure struct {
 	native *C.GClosure
@@ -128,7 +132,9 @@ func (recv *Closure) ToC() unsafe.Pointer {
 // when implementing new types of closures.
 /*
 
-C function : g_closure_new_object
+C function
+
+g_closure_new_object
 */
 func ClosureNewObject(sizeofClosure uint32, object *Object) *Closure {
 	c_sizeof_closure := (C.guint)(sizeofClosure)
@@ -182,7 +188,9 @@ func ClosureNewObject(sizeofClosure uint32, object *Object) *Closure {
 // ]|
 /*
 
-C function : g_closure_new_simple
+C function
+
+g_closure_new_simple
 */
 func ClosureNewSimple(sizeofClosure uint32, data uintptr) *Closure {
 	c_sizeof_closure := (C.guint)(sizeofClosure)
@@ -216,7 +224,9 @@ func ClosureNewSimple(sizeofClosure uint32, data uintptr) *Closure {
 // been invalidated before).
 /*
 
-C function : g_closure_invalidate
+C function
+
+g_closure_invalidate
 */
 func (recv *Closure) Invalidate() {
 	C.g_closure_invalidate((*C.GClosure)(recv.native))
@@ -230,7 +240,9 @@ func (recv *Closure) Invalidate() {
 // alive while the caller holds a pointer to it.
 /*
 
-C function : g_closure_ref
+C function
+
+g_closure_ref
 */
 func (recv *Closure) Ref() *Closure {
 	retC := C.g_closure_ref((*C.GClosure)(recv.native))
@@ -289,7 +301,9 @@ func (recv *Closure) Ref() *Closure {
 // g_closure_ref() should be called prior to this function.
 /*
 
-C function : g_closure_sink
+C function
+
+g_closure_sink
 */
 func (recv *Closure) Sink() {
 	C.g_closure_sink((*C.GClosure)(recv.native))
@@ -302,7 +316,9 @@ func (recv *Closure) Sink() {
 // closure, then the closure will be destroyed and freed.
 /*
 
-C function : g_closure_unref
+C function
+
+g_closure_unref
 */
 func (recv *Closure) Unref() {
 	C.g_closure_unref((*C.GClosure)(recv.native))
@@ -312,7 +328,9 @@ func (recv *Closure) Unref() {
 
 /*
 
-C record/class : GClosureNotifyData
+C type
+
+GClosureNotifyData
 */
 type ClosureNotifyData struct {
 	native *C.GClosureNotifyData
@@ -345,7 +363,9 @@ func (recv *ClosureNotifyData) ToC() unsafe.Pointer {
 // possible values.
 /*
 
-C record/class : GEnumClass
+C type
+
+GEnumClass
 */
 type EnumClass struct {
 	native *C.GEnumClass
@@ -387,7 +407,9 @@ func (recv *EnumClass) ToC() unsafe.Pointer {
 // nickname.
 /*
 
-C record/class : GEnumValue
+C type
+
+GEnumValue
 */
 type EnumValue struct {
 	native    *C.GEnumValue
@@ -427,7 +449,9 @@ func (recv *EnumValue) ToC() unsafe.Pointer {
 // possible values.
 /*
 
-C record/class : GFlagsClass
+C type
+
+GFlagsClass
 */
 type FlagsClass struct {
 	native *C.GFlagsClass
@@ -465,7 +489,9 @@ func (recv *FlagsClass) ToC() unsafe.Pointer {
 // nickname.
 /*
 
-C record/class : GFlagsValue
+C type
+
+GFlagsValue
 */
 type FlagsValue struct {
 	native    *C.GFlagsValue
@@ -504,7 +530,9 @@ func (recv *FlagsValue) ToC() unsafe.Pointer {
 // The class structure for the GInitiallyUnowned type.
 /*
 
-C record/class : GInitiallyUnownedClass
+C type
+
+GInitiallyUnownedClass
 */
 type InitiallyUnownedClass struct {
 	native *C.GInitiallyUnownedClass
@@ -542,7 +570,9 @@ func (recv *InitiallyUnownedClass) ToC() unsafe.Pointer {
 // used specifically for managing interface types.
 /*
 
-C record/class : GInterfaceInfo
+C type
+
+GInterfaceInfo
 */
 type InterfaceInfo struct {
 	native *C.GInterfaceInfo
@@ -600,7 +630,9 @@ func (recv *InterfaceInfo) ToC() unsafe.Pointer {
 // ]|
 /*
 
-C record/class : GObjectClass
+C type
+
+GObjectClass
 */
 type ObjectClass struct {
 	native *C.GObjectClass
@@ -645,7 +677,9 @@ func (recv *ObjectClass) ToC() unsafe.Pointer {
 // a #GObjectClass.
 /*
 
-C record/class : GObjectConstructParam
+C type
+
+GObjectConstructParam
 */
 type ObjectConstructParam struct {
 	native *C.GObjectConstructParam
@@ -674,7 +708,9 @@ func (recv *ObjectConstructParam) ToC() unsafe.Pointer {
 // g_param_type_register_static().
 /*
 
-C record/class : GParamSpecClass
+C type
+
+GParamSpecClass
 */
 type ParamSpecClass struct {
 	native *C.GParamSpecClass
@@ -714,7 +750,9 @@ func (recv *ParamSpecClass) ToC() unsafe.Pointer {
 // types.
 /*
 
-C record/class : GParamSpecPool
+C type
+
+GParamSpecPool
 */
 type ParamSpecPool struct {
 	native *C.GParamSpecPool
@@ -744,7 +782,9 @@ func (recv *ParamSpecPool) ToC() unsafe.Pointer {
 // the pool.
 /*
 
-C function : g_param_spec_pool_list_owned
+C function
+
+g_param_spec_pool_list_owned
 */
 func (recv *ParamSpecPool) ListOwned(ownerType Type) *glib.List {
 	c_owner_type := (C.GType)(ownerType)
@@ -768,7 +808,9 @@ func (recv *ParamSpecPool) ListOwned(ownerType Type) *glib.List {
 // g_param_type_register_static().
 /*
 
-C record/class : GParamSpecTypeInfo
+C type
+
+GParamSpecTypeInfo
 */
 type ParamSpecTypeInfo struct {
 	native       *C.GParamSpecTypeInfo
@@ -813,7 +855,9 @@ func (recv *ParamSpecTypeInfo) ToC() unsafe.Pointer {
 // to hand parameter name/value pairs to g_object_newv().
 /*
 
-C record/class : GParameter
+C type
+
+GParameter
 */
 type Parameter struct {
 	native *C.GParameter
@@ -846,7 +890,9 @@ func (recv *Parameter) ToC() unsafe.Pointer {
 // to callbacks during a signal emission.
 /*
 
-C record/class : GSignalInvocationHint
+C type
+
+GSignalInvocationHint
 */
 type SignalInvocationHint struct {
 	native   *C.GSignalInvocationHint
@@ -886,7 +932,9 @@ func (recv *SignalInvocationHint) ToC() unsafe.Pointer {
 // filled in by the g_signal_query() function.
 /*
 
-C record/class : GSignalQuery
+C type
+
+GSignalQuery
 */
 type SignalQuery struct {
 	native      *C.GSignalQuery
@@ -938,7 +986,9 @@ func (recv *SignalQuery) ToC() unsafe.Pointer {
 // An opaque structure used as the base of all classes.
 /*
 
-C record/class : GTypeClass
+C type
+
+GTypeClass
 */
 type TypeClass struct {
 	native *C.GTypeClass
@@ -963,7 +1013,9 @@ func (recv *TypeClass) ToC() unsafe.Pointer {
 
 /*
 
-C function : g_type_class_get_private
+C function
+
+g_type_class_get_private
 */
 func (recv *TypeClass) GetPrivate(privateType Type) uintptr {
 	c_private_type := (C.GType)(privateType)
@@ -984,7 +1036,9 @@ func (recv *TypeClass) GetPrivate(privateType Type) uintptr {
 // g_type_class_peek (g_type_parent (G_TYPE_FROM_CLASS (g_class)))
 /*
 
-C function : g_type_class_peek_parent
+C function
+
+g_type_class_peek_parent
 */
 func (recv *TypeClass) PeekParent() uintptr {
 	retC := C.g_type_class_peek_parent((C.gpointer)(recv.native))
@@ -999,7 +1053,9 @@ func (recv *TypeClass) PeekParent() uintptr {
 // class pointer after g_type_class_unref() are invalid.
 /*
 
-C function : g_type_class_unref
+C function
+
+g_type_class_unref
 */
 func (recv *TypeClass) Unref() {
 	C.g_type_class_unref((C.gpointer)(recv.native))
@@ -1013,7 +1069,9 @@ func (recv *TypeClass) Unref() {
 // otherwise.
 /*
 
-C function : g_type_class_unref_uncached
+C function
+
+g_type_class_unref_uncached
 */
 func (recv *TypeClass) UnrefUncached() {
 	C.g_type_class_unref_uncached((C.gpointer)(recv.native))
@@ -1025,7 +1083,9 @@ func (recv *TypeClass) UnrefUncached() {
 // used specifically for managing fundamental types.
 /*
 
-C record/class : GTypeFundamentalInfo
+C type
+
+GTypeFundamentalInfo
 */
 type TypeFundamentalInfo struct {
 	native    *C.GTypeFundamentalInfo
@@ -1064,7 +1124,9 @@ func (recv *TypeFundamentalInfo) ToC() unsafe.Pointer {
 // across invocation of g_type_register_static().
 /*
 
-C record/class : GTypeInfo
+C type
+
+GTypeInfo
 */
 type TypeInfo struct {
 	native    *C.GTypeInfo
@@ -1113,7 +1175,9 @@ func (recv *TypeInfo) ToC() unsafe.Pointer {
 // An opaque structure used as the base of all type instances.
 /*
 
-C record/class : GTypeInstance
+C type
+
+GTypeInstance
 */
 type TypeInstance struct {
 	native *C.GTypeInstance
@@ -1138,7 +1202,9 @@ func (recv *TypeInstance) ToC() unsafe.Pointer {
 
 /*
 
-C function : g_type_instance_get_private
+C function
+
+g_type_instance_get_private
 */
 func (recv *TypeInstance) GetPrivate(privateType Type) uintptr {
 	c_private_type := (C.GType)(privateType)
@@ -1152,7 +1218,9 @@ func (recv *TypeInstance) GetPrivate(privateType Type) uintptr {
 // An opaque structure used as the base of all interface types.
 /*
 
-C record/class : GTypeInterface
+C type
+
+GTypeInterface
 */
 type TypeInterface struct {
 	native *C.GTypeInterface
@@ -1182,7 +1250,9 @@ func (recv *TypeInterface) ToC() unsafe.Pointer {
 // then possibly overriding some methods.
 /*
 
-C function : g_type_interface_peek_parent
+C function
+
+g_type_interface_peek_parent
 */
 func (recv *TypeInterface) PeekParent() uintptr {
 	retC := C.g_type_interface_peek_parent((C.gpointer)(recv.native))
@@ -1195,7 +1265,9 @@ func (recv *TypeInterface) PeekParent() uintptr {
 // the @load and @unload functions in #GTypeModuleClass must be implemented.
 /*
 
-C record/class : GTypeModuleClass
+C type
+
+GTypeModuleClass
 */
 type TypeModuleClass struct {
 	native *C.GTypeModuleClass
@@ -1228,7 +1300,9 @@ func (recv *TypeModuleClass) ToC() unsafe.Pointer {
 // the lifecycle of dynamically loaded types.
 /*
 
-C record/class : GTypePluginClass
+C type
+
+GTypePluginClass
 */
 type TypePluginClass struct {
 	native *C.GTypePluginClass
@@ -1259,7 +1333,9 @@ func (recv *TypePluginClass) ToC() unsafe.Pointer {
 // It is filled in by the g_type_query() function.
 /*
 
-C record/class : GTypeQuery
+C type
+
+GTypeQuery
 */
 type TypeQuery struct {
 	native       *C.GTypeQuery
@@ -1303,7 +1379,9 @@ func (recv *TypeQuery) ToC() unsafe.Pointer {
 // implementation, to serve as a container for values of a type.
 /*
 
-C record/class : GTypeValueTable
+C type
+
+GTypeValueTable
 */
 type TypeValueTable struct {
 	native *C.GTypeValueTable
@@ -1351,7 +1429,9 @@ func (recv *TypeValueTable) ToC() unsafe.Pointer {
 // only be accessed through the G_VALUE_TYPE() macro.
 /*
 
-C record/class : GValue
+C type
+
+GValue
 */
 type Value struct {
 	native *C.GValue
@@ -1378,7 +1458,9 @@ func (recv *Value) ToC() unsafe.Pointer {
 // Copies the value of @src_value into @dest_value.
 /*
 
-C function : g_value_copy
+C function
+
+g_value_copy
 */
 func (recv *Value) Copy(destValue *Value) {
 	c_dest_value := (*C.GValue)(C.NULL)
@@ -1397,7 +1479,9 @@ func (recv *Value) Copy(destValue *Value) {
 // return_value);
 /*
 
-C function : g_value_dup_boxed
+C function
+
+g_value_dup_boxed
 */
 func (recv *Value) DupBoxed() uintptr {
 	retC := C.g_value_dup_boxed((*C.GValue)(recv.native))
@@ -1411,7 +1495,9 @@ func (recv *Value) DupBoxed() uintptr {
 // %NULL will be returned.
 /*
 
-C function : g_value_dup_object
+C function
+
+g_value_dup_object
 */
 func (recv *Value) DupObject() uintptr {
 	retC := C.g_value_dup_object((*C.GValue)(recv.native))
@@ -1425,7 +1511,9 @@ func (recv *Value) DupObject() uintptr {
 // Get a copy the contents of a %G_TYPE_STRING #GValue.
 /*
 
-C function : g_value_dup_string
+C function
+
+g_value_dup_string
 */
 func (recv *Value) DupString() string {
 	retC := C.g_value_dup_string((*C.GValue)(recv.native))
@@ -1439,7 +1527,9 @@ func (recv *Value) DupString() string {
 // This is an internal function introduced mainly for C marshallers.
 /*
 
-C function : g_value_fits_pointer
+C function
+
+g_value_fits_pointer
 */
 func (recv *Value) FitsPointer() bool {
 	retC := C.g_value_fits_pointer((*C.GValue)(recv.native))
@@ -1451,7 +1541,9 @@ func (recv *Value) FitsPointer() bool {
 // Get the contents of a %G_TYPE_BOOLEAN #GValue.
 /*
 
-C function : g_value_get_boolean
+C function
+
+g_value_get_boolean
 */
 func (recv *Value) GetBoolean() bool {
 	retC := C.g_value_get_boolean((*C.GValue)(recv.native))
@@ -1463,7 +1555,9 @@ func (recv *Value) GetBoolean() bool {
 // Get the contents of a %G_TYPE_BOXED derived #GValue.
 /*
 
-C function : g_value_get_boxed
+C function
+
+g_value_get_boxed
 */
 func (recv *Value) GetBoxed() uintptr {
 	retC := C.g_value_get_boxed((*C.GValue)(recv.native))
@@ -1478,7 +1572,9 @@ func (recv *Value) GetBoxed() uintptr {
 // Get the contents of a %G_TYPE_CHAR #GValue.
 /*
 
-C function : g_value_get_char
+C function
+
+g_value_get_char
 */
 func (recv *Value) GetChar() rune {
 	retC := C.g_value_get_char((*C.GValue)(recv.native))
@@ -1490,7 +1586,9 @@ func (recv *Value) GetChar() rune {
 // Get the contents of a %G_TYPE_DOUBLE #GValue.
 /*
 
-C function : g_value_get_double
+C function
+
+g_value_get_double
 */
 func (recv *Value) GetDouble() float64 {
 	retC := C.g_value_get_double((*C.GValue)(recv.native))
@@ -1502,7 +1600,9 @@ func (recv *Value) GetDouble() float64 {
 // Get the contents of a %G_TYPE_ENUM #GValue.
 /*
 
-C function : g_value_get_enum
+C function
+
+g_value_get_enum
 */
 func (recv *Value) GetEnum() int32 {
 	retC := C.g_value_get_enum((*C.GValue)(recv.native))
@@ -1514,7 +1614,9 @@ func (recv *Value) GetEnum() int32 {
 // Get the contents of a %G_TYPE_FLAGS #GValue.
 /*
 
-C function : g_value_get_flags
+C function
+
+g_value_get_flags
 */
 func (recv *Value) GetFlags() uint32 {
 	retC := C.g_value_get_flags((*C.GValue)(recv.native))
@@ -1526,7 +1628,9 @@ func (recv *Value) GetFlags() uint32 {
 // Get the contents of a %G_TYPE_FLOAT #GValue.
 /*
 
-C function : g_value_get_float
+C function
+
+g_value_get_float
 */
 func (recv *Value) GetFloat() float32 {
 	retC := C.g_value_get_float((*C.GValue)(recv.native))
@@ -1538,7 +1642,9 @@ func (recv *Value) GetFloat() float32 {
 // Get the contents of a %G_TYPE_INT #GValue.
 /*
 
-C function : g_value_get_int
+C function
+
+g_value_get_int
 */
 func (recv *Value) GetInt() int32 {
 	retC := C.g_value_get_int((*C.GValue)(recv.native))
@@ -1550,7 +1656,9 @@ func (recv *Value) GetInt() int32 {
 // Get the contents of a %G_TYPE_INT64 #GValue.
 /*
 
-C function : g_value_get_int64
+C function
+
+g_value_get_int64
 */
 func (recv *Value) GetInt64() int64 {
 	retC := C.g_value_get_int64((*C.GValue)(recv.native))
@@ -1562,7 +1670,9 @@ func (recv *Value) GetInt64() int64 {
 // Get the contents of a %G_TYPE_LONG #GValue.
 /*
 
-C function : g_value_get_long
+C function
+
+g_value_get_long
 */
 func (recv *Value) GetLong() int64 {
 	retC := C.g_value_get_long((*C.GValue)(recv.native))
@@ -1574,7 +1684,9 @@ func (recv *Value) GetLong() int64 {
 // Get the contents of a %G_TYPE_OBJECT derived #GValue.
 /*
 
-C function : g_value_get_object
+C function
+
+g_value_get_object
 */
 func (recv *Value) GetObject() uintptr {
 	retC := C.g_value_get_object((*C.GValue)(recv.native))
@@ -1588,7 +1700,9 @@ func (recv *Value) GetObject() uintptr {
 // Get the contents of a pointer #GValue.
 /*
 
-C function : g_value_get_pointer
+C function
+
+g_value_get_pointer
 */
 func (recv *Value) GetPointer() uintptr {
 	retC := C.g_value_get_pointer((*C.GValue)(recv.native))
@@ -1600,7 +1714,9 @@ func (recv *Value) GetPointer() uintptr {
 // Get the contents of a %G_TYPE_STRING #GValue.
 /*
 
-C function : g_value_get_string
+C function
+
+g_value_get_string
 */
 func (recv *Value) GetString() string {
 	retC := C.g_value_get_string((*C.GValue)(recv.native))
@@ -1612,7 +1728,9 @@ func (recv *Value) GetString() string {
 // Get the contents of a %G_TYPE_UCHAR #GValue.
 /*
 
-C function : g_value_get_uchar
+C function
+
+g_value_get_uchar
 */
 func (recv *Value) GetUchar() uint8 {
 	retC := C.g_value_get_uchar((*C.GValue)(recv.native))
@@ -1624,7 +1742,9 @@ func (recv *Value) GetUchar() uint8 {
 // Get the contents of a %G_TYPE_UINT #GValue.
 /*
 
-C function : g_value_get_uint
+C function
+
+g_value_get_uint
 */
 func (recv *Value) GetUint() uint32 {
 	retC := C.g_value_get_uint((*C.GValue)(recv.native))
@@ -1636,7 +1756,9 @@ func (recv *Value) GetUint() uint32 {
 // Get the contents of a %G_TYPE_UINT64 #GValue.
 /*
 
-C function : g_value_get_uint64
+C function
+
+g_value_get_uint64
 */
 func (recv *Value) GetUint64() uint64 {
 	retC := C.g_value_get_uint64((*C.GValue)(recv.native))
@@ -1648,7 +1770,9 @@ func (recv *Value) GetUint64() uint64 {
 // Get the contents of a %G_TYPE_ULONG #GValue.
 /*
 
-C function : g_value_get_ulong
+C function
+
+g_value_get_ulong
 */
 func (recv *Value) GetUlong() uint64 {
 	retC := C.g_value_get_ulong((*C.GValue)(recv.native))
@@ -1660,7 +1784,9 @@ func (recv *Value) GetUlong() uint64 {
 // Initializes @value with the default value of @type.
 /*
 
-C function : g_value_init
+C function
+
+g_value_init
 */
 func (recv *Value) Init(gType Type) *Value {
 	c_g_type := (C.GType)(gType)
@@ -1676,7 +1802,9 @@ func (recv *Value) Init(gType Type) *Value {
 // This is an internal function introduced mainly for C marshallers.
 /*
 
-C function : g_value_peek_pointer
+C function
+
+g_value_peek_pointer
 */
 func (recv *Value) PeekPointer() uintptr {
 	retC := C.g_value_peek_pointer((*C.GValue)(recv.native))
@@ -1689,7 +1817,9 @@ func (recv *Value) PeekPointer() uintptr {
 // (as if the value had just been initialized).
 /*
 
-C function : g_value_reset
+C function
+
+g_value_reset
 */
 func (recv *Value) Reset() *Value {
 	retC := C.g_value_reset((*C.GValue)(recv.native))
@@ -1701,7 +1831,9 @@ func (recv *Value) Reset() *Value {
 // Set the contents of a %G_TYPE_BOOLEAN #GValue to @v_boolean.
 /*
 
-C function : g_value_set_boolean
+C function
+
+g_value_set_boolean
 */
 func (recv *Value) SetBoolean(vBoolean bool) {
 	c_v_boolean :=
@@ -1715,7 +1847,9 @@ func (recv *Value) SetBoolean(vBoolean bool) {
 // Set the contents of a %G_TYPE_BOXED derived #GValue to @v_boxed.
 /*
 
-C function : g_value_set_boxed
+C function
+
+g_value_set_boxed
 */
 func (recv *Value) SetBoxed(vBoxed uintptr) {
 	c_v_boxed := (C.gconstpointer)(vBoxed)
@@ -1728,7 +1862,9 @@ func (recv *Value) SetBoxed(vBoxed uintptr) {
 // This is an internal function introduced mainly for C marshallers.
 /*
 
-C function : g_value_set_boxed_take_ownership
+C function
+
+g_value_set_boxed_take_ownership
 */
 func (recv *Value) SetBoxedTakeOwnership(vBoxed uintptr) {
 	c_v_boxed := (C.gconstpointer)(vBoxed)
@@ -1741,7 +1877,9 @@ func (recv *Value) SetBoxedTakeOwnership(vBoxed uintptr) {
 // Set the contents of a %G_TYPE_CHAR #GValue to @v_char.
 /*
 
-C function : g_value_set_char
+C function
+
+g_value_set_char
 */
 func (recv *Value) SetChar(vChar rune) {
 	c_v_char := (C.gchar)(vChar)
@@ -1754,7 +1892,9 @@ func (recv *Value) SetChar(vChar rune) {
 // Set the contents of a %G_TYPE_DOUBLE #GValue to @v_double.
 /*
 
-C function : g_value_set_double
+C function
+
+g_value_set_double
 */
 func (recv *Value) SetDouble(vDouble float64) {
 	c_v_double := (C.gdouble)(vDouble)
@@ -1767,7 +1907,9 @@ func (recv *Value) SetDouble(vDouble float64) {
 // Set the contents of a %G_TYPE_ENUM #GValue to @v_enum.
 /*
 
-C function : g_value_set_enum
+C function
+
+g_value_set_enum
 */
 func (recv *Value) SetEnum(vEnum int32) {
 	c_v_enum := (C.gint)(vEnum)
@@ -1780,7 +1922,9 @@ func (recv *Value) SetEnum(vEnum int32) {
 // Set the contents of a %G_TYPE_FLAGS #GValue to @v_flags.
 /*
 
-C function : g_value_set_flags
+C function
+
+g_value_set_flags
 */
 func (recv *Value) SetFlags(vFlags uint32) {
 	c_v_flags := (C.guint)(vFlags)
@@ -1793,7 +1937,9 @@ func (recv *Value) SetFlags(vFlags uint32) {
 // Set the contents of a %G_TYPE_FLOAT #GValue to @v_float.
 /*
 
-C function : g_value_set_float
+C function
+
+g_value_set_float
 */
 func (recv *Value) SetFloat(vFloat float32) {
 	c_v_float := (C.gfloat)(vFloat)
@@ -1807,7 +1953,9 @@ func (recv *Value) SetFloat(vFloat float32) {
 // value_table's collect_value() function.
 /*
 
-C function : g_value_set_instance
+C function
+
+g_value_set_instance
 */
 func (recv *Value) SetInstance(instance uintptr) {
 	c_instance := (C.gpointer)(instance)
@@ -1820,7 +1968,9 @@ func (recv *Value) SetInstance(instance uintptr) {
 // Set the contents of a %G_TYPE_INT #GValue to @v_int.
 /*
 
-C function : g_value_set_int
+C function
+
+g_value_set_int
 */
 func (recv *Value) SetInt(vInt int32) {
 	c_v_int := (C.gint)(vInt)
@@ -1833,7 +1983,9 @@ func (recv *Value) SetInt(vInt int32) {
 // Set the contents of a %G_TYPE_INT64 #GValue to @v_int64.
 /*
 
-C function : g_value_set_int64
+C function
+
+g_value_set_int64
 */
 func (recv *Value) SetInt64(vInt64 int64) {
 	c_v_int64 := (C.gint64)(vInt64)
@@ -1846,7 +1998,9 @@ func (recv *Value) SetInt64(vInt64 int64) {
 // Set the contents of a %G_TYPE_LONG #GValue to @v_long.
 /*
 
-C function : g_value_set_long
+C function
+
+g_value_set_long
 */
 func (recv *Value) SetLong(vLong int64) {
 	c_v_long := (C.glong)(vLong)
@@ -1869,7 +2023,9 @@ func (recv *Value) SetLong(vLong int64) {
 // the #GValue still exists).
 /*
 
-C function : g_value_set_object
+C function
+
+g_value_set_object
 */
 func (recv *Value) SetObject(vObject uintptr) {
 	c_v_object := (C.gpointer)(vObject)
@@ -1882,7 +2038,9 @@ func (recv *Value) SetObject(vObject uintptr) {
 // This is an internal function introduced mainly for C marshallers.
 /*
 
-C function : g_value_set_object_take_ownership
+C function
+
+g_value_set_object_take_ownership
 */
 func (recv *Value) SetObjectTakeOwnership(vObject uintptr) {
 	c_v_object := (C.gpointer)(vObject)
@@ -1899,7 +2057,9 @@ func (recv *Value) SetObjectTakeOwnership(vObject uintptr) {
 // Set the contents of a pointer #GValue to @v_pointer.
 /*
 
-C function : g_value_set_pointer
+C function
+
+g_value_set_pointer
 */
 func (recv *Value) SetPointer(vPointer uintptr) {
 	c_v_pointer := (C.gpointer)(vPointer)
@@ -1914,7 +2074,9 @@ func (recv *Value) SetPointer(vPointer uintptr) {
 // when setting the #GValue.
 /*
 
-C function : g_value_set_static_boxed
+C function
+
+g_value_set_static_boxed
 */
 func (recv *Value) SetStaticBoxed(vBoxed uintptr) {
 	c_v_boxed := (C.gconstpointer)(vBoxed)
@@ -1929,7 +2091,9 @@ func (recv *Value) SetStaticBoxed(vBoxed uintptr) {
 // when setting the #GValue.
 /*
 
-C function : g_value_set_static_string
+C function
+
+g_value_set_static_string
 */
 func (recv *Value) SetStaticString(vString string) {
 	c_v_string := C.CString(vString)
@@ -1943,7 +2107,9 @@ func (recv *Value) SetStaticString(vString string) {
 // Set the contents of a %G_TYPE_STRING #GValue to @v_string.
 /*
 
-C function : g_value_set_string
+C function
+
+g_value_set_string
 */
 func (recv *Value) SetString(vString string) {
 	c_v_string := C.CString(vString)
@@ -1957,7 +2123,9 @@ func (recv *Value) SetString(vString string) {
 // This is an internal function introduced mainly for C marshallers.
 /*
 
-C function : g_value_set_string_take_ownership
+C function
+
+g_value_set_string_take_ownership
 */
 func (recv *Value) SetStringTakeOwnership(vString string) {
 	c_v_string := C.CString(vString)
@@ -1971,7 +2139,9 @@ func (recv *Value) SetStringTakeOwnership(vString string) {
 // Set the contents of a %G_TYPE_UCHAR #GValue to @v_uchar.
 /*
 
-C function : g_value_set_uchar
+C function
+
+g_value_set_uchar
 */
 func (recv *Value) SetUchar(vUchar uint8) {
 	c_v_uchar := (C.guchar)(vUchar)
@@ -1984,7 +2154,9 @@ func (recv *Value) SetUchar(vUchar uint8) {
 // Set the contents of a %G_TYPE_UINT #GValue to @v_uint.
 /*
 
-C function : g_value_set_uint
+C function
+
+g_value_set_uint
 */
 func (recv *Value) SetUint(vUint uint32) {
 	c_v_uint := (C.guint)(vUint)
@@ -1997,7 +2169,9 @@ func (recv *Value) SetUint(vUint uint32) {
 // Set the contents of a %G_TYPE_UINT64 #GValue to @v_uint64.
 /*
 
-C function : g_value_set_uint64
+C function
+
+g_value_set_uint64
 */
 func (recv *Value) SetUint64(vUint64 uint64) {
 	c_v_uint64 := (C.guint64)(vUint64)
@@ -2010,7 +2184,9 @@ func (recv *Value) SetUint64(vUint64 uint64) {
 // Set the contents of a %G_TYPE_ULONG #GValue to @v_ulong.
 /*
 
-C function : g_value_set_ulong
+C function
+
+g_value_set_ulong
 */
 func (recv *Value) SetUlong(vUlong uint64) {
 	c_v_ulong := (C.gulong)(vUlong)
@@ -2029,7 +2205,9 @@ func (recv *Value) SetUlong(vUlong uint64) {
 // as rcfile value or object property serialization).
 /*
 
-C function : g_value_transform
+C function
+
+g_value_transform
 */
 func (recv *Value) Transform(destValue *Value) bool {
 	c_dest_value := (*C.GValue)(C.NULL)
@@ -2049,7 +2227,9 @@ func (recv *Value) Transform(destValue *Value) bool {
 // structure.
 /*
 
-C function : g_value_unset
+C function
+
+g_value_unset
 */
 func (recv *Value) Unset() {
 	C.g_value_unset((*C.GValue)(recv.native))
@@ -2060,7 +2240,9 @@ func (recv *Value) Unset() {
 // A #GValueArray contains an array of #GValue elements.
 /*
 
-C record/class : GValueArray
+C type
+
+GValueArray
 */
 type ValueArray struct {
 	native  *C.GValueArray
@@ -2095,7 +2277,9 @@ func (recv *ValueArray) ToC() unsafe.Pointer {
 // regardless of the value of @n_prealloced.
 /*
 
-C function : g_value_array_new
+C function
+
+g_value_array_new
 */
 func ValueArrayNew(nPrealloced uint32) *ValueArray {
 	c_n_prealloced := (C.guint)(nPrealloced)
@@ -2110,7 +2294,9 @@ func ValueArrayNew(nPrealloced uint32) *ValueArray {
 // %NULL, an uninitialized value is appended.
 /*
 
-C function : g_value_array_append
+C function
+
+g_value_array_append
 */
 func (recv *ValueArray) Append(value *Value) *ValueArray {
 	c_value := (*C.GValue)(C.NULL)
@@ -2128,7 +2314,9 @@ func (recv *ValueArray) Append(value *Value) *ValueArray {
 // contents.
 /*
 
-C function : g_value_array_copy
+C function
+
+g_value_array_copy
 */
 func (recv *ValueArray) Copy() *ValueArray {
 	retC := C.g_value_array_copy((*C.GValueArray)(recv.native))
@@ -2140,7 +2328,9 @@ func (recv *ValueArray) Copy() *ValueArray {
 // Free a #GValueArray including its contents.
 /*
 
-C function : g_value_array_free
+C function
+
+g_value_array_free
 */
 func (recv *ValueArray) Free() {
 	C.g_value_array_free((*C.GValueArray)(recv.native))
@@ -2151,7 +2341,9 @@ func (recv *ValueArray) Free() {
 // Return a pointer to the value at @index_ containd in @value_array.
 /*
 
-C function : g_value_array_get_nth
+C function
+
+g_value_array_get_nth
 */
 func (recv *ValueArray) GetNth(index uint32) *Value {
 	c_index_ := (C.guint)(index)
@@ -2166,7 +2358,9 @@ func (recv *ValueArray) GetNth(index uint32) *Value {
 // is %NULL, an uninitialized value is inserted.
 /*
 
-C function : g_value_array_insert
+C function
+
+g_value_array_insert
 */
 func (recv *ValueArray) Insert(index uint32, value *Value) *ValueArray {
 	c_index_ := (C.guint)(index)
@@ -2186,7 +2380,9 @@ func (recv *ValueArray) Insert(index uint32, value *Value) *ValueArray {
 // %NULL, an uninitialized value is prepended.
 /*
 
-C function : g_value_array_prepend
+C function
+
+g_value_array_prepend
 */
 func (recv *ValueArray) Prepend(value *Value) *ValueArray {
 	c_value := (*C.GValue)(C.NULL)
@@ -2203,7 +2399,9 @@ func (recv *ValueArray) Prepend(value *Value) *ValueArray {
 // Remove the value at position @index_ from @value_array.
 /*
 
-C function : g_value_array_remove
+C function
+
+g_value_array_remove
 */
 func (recv *ValueArray) Remove(index uint32) *ValueArray {
 	c_index_ := (C.guint)(index)
@@ -2240,7 +2438,9 @@ func (recv *ValueArray) Remove(index uint32) *ValueArray {
 // goes back to zero, at which point they too will be invalidated.
 /*
 
-C record/class : GWeakRef
+C type
+
+GWeakRef
 */
 type WeakRef struct {
 	native *C.GWeakRef

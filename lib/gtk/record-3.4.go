@@ -20,7 +20,9 @@ import "C"
 // platforms.
 /*
 
-C function : gtk_symbolic_color_new_win32
+C function
+
+gtk_symbolic_color_new_win32
 */
 func SymbolicColorNewWin32(themeClass string, id int32) *SymbolicColor {
 	c_theme_class := C.CString(themeClass)

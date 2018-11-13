@@ -13,7 +13,9 @@ import "C"
 // Creates a copy of @format
 /*
 
-C function : gdk_pixbuf_format_copy
+C function
+
+gdk_pixbuf_format_copy
 */
 func (recv *PixbufFormat) Copy() *PixbufFormat {
 	retC := C.gdk_pixbuf_format_copy((*C.GdkPixbufFormat)(recv.native))
@@ -26,7 +28,9 @@ func (recv *PixbufFormat) Copy() *PixbufFormat {
 // using gdk_pixbuf_format_copy()
 /*
 
-C function : gdk_pixbuf_format_free
+C function
+
+gdk_pixbuf_format_free
 */
 func (recv *PixbufFormat) Free() {
 	C.gdk_pixbuf_format_free((*C.GdkPixbufFormat)(recv.native))

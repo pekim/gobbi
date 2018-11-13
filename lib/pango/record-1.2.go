@@ -17,7 +17,9 @@ import "C"
 // iterator.
 /*
 
-C function : pango_attr_iterator_get_attrs
+C function
+
+pango_attr_iterator_get_attrs
 */
 func (recv *AttrIterator) GetAttrs() *glib.SList {
 	retC := C.pango_attr_iterator_get_attrs((*C.PangoAttrIterator)(recv.native))
@@ -46,7 +48,9 @@ func (recv *AttrIterator) GetAttrs() *glib.SList {
 // as one of the elements in the list.
 /*
 
-C function : pango_glyph_item_apply_attrs
+C function
+
+pango_glyph_item_apply_attrs
 */
 func (recv *GlyphItem) ApplyAttrs(text string, list *AttrList) *glib.SList {
 	c_text := C.CString(text)
@@ -75,7 +79,9 @@ func (recv *GlyphItem) ApplyAttrs(text string, list *AttrList) *glib.SList {
 // it internally.)
 /*
 
-C function : pango_glyph_item_split
+C function
+
+pango_glyph_item_split
 */
 func (recv *GlyphItem) Split(text string, splitIndex int32) *GlyphItem {
 	c_text := C.CString(text)

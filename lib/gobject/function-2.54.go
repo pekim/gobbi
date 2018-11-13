@@ -16,7 +16,9 @@ import "C"
 // may change in the future.
 /*
 
-C function : g_enum_to_string
+C function
+
+g_enum_to_string
 */
 func EnumToString(gEnumType Type, value int32) string {
 	c_g_enum_type := (C.GType)(gEnumType)
@@ -37,7 +39,9 @@ func EnumToString(gEnumType Type, value int32) string {
 // may change in the future.
 /*
 
-C function : g_flags_to_string
+C function
+
+g_flags_to_string
 */
 func FlagsToString(flagsType Type, value uint32) string {
 	c_flags_type := (C.GType)(flagsType)

@@ -19,7 +19,9 @@ import "C"
 // handling is needed.
 /*
 
-C function : g_signal_accumulator_true_handled
+C function
+
+g_signal_accumulator_true_handled
 */
 func SignalAccumulatorTrueHandled(ihint *SignalInvocationHint, returnAccu *Value, handlerReturn *Value, dummy uintptr) bool {
 	c_ihint := (*C.GSignalInvocationHint)(C.NULL)
@@ -51,7 +53,9 @@ func SignalAccumulatorTrueHandled(ihint *SignalInvocationHint, returnAccu *Value
 // static types.
 /*
 
-C function : g_type_class_peek_static
+C function
+
+g_type_class_peek_static
 */
 func TypeClassPeekStatic(type_ Type) uintptr {
 	c_type := (C.GType)(type_)
@@ -66,7 +70,9 @@ func TypeClassPeekStatic(type_ Type) uintptr {
 // default interface vtable.
 /*
 
-C function : g_type_default_interface_peek
+C function
+
+g_type_default_interface_peek
 */
 func TypeDefaultInterfacePeek(gType Type) uintptr {
 	c_g_type := (C.GType)(gType)
@@ -89,7 +95,9 @@ func TypeDefaultInterfacePeek(gType Type) uintptr {
 // have been installed.
 /*
 
-C function : g_type_default_interface_ref
+C function
+
+g_type_default_interface_ref
 */
 func TypeDefaultInterfaceRef(gType Type) uintptr {
 	c_g_type := (C.GType)(gType)
@@ -107,7 +115,9 @@ func TypeDefaultInterfaceRef(gType Type) uintptr {
 // vtable (the @class_finalize member of #GTypeInfo) will be called.
 /*
 
-C function : g_type_default_interface_unref
+C function
+
+g_type_default_interface_unref
 */
 func TypeDefaultInterfaceUnref(gIface uintptr) {
 	c_g_iface := (C.gpointer)(gIface)

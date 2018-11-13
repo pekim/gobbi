@@ -17,7 +17,9 @@ import "C"
 // can also cause #GdkEventGrabBroken events.
 /*
 
-C record/class : GdkEventGrabBroken
+C type
+
+GdkEventGrabBroken
 */
 type EventGrabBroken struct {
 	native *C.GdkEventGrabBroken

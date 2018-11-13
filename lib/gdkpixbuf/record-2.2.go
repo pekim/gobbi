@@ -13,7 +13,9 @@ import "C"
 // Returns a description of the format.
 /*
 
-C function : gdk_pixbuf_format_get_description
+C function
+
+gdk_pixbuf_format_get_description
 */
 func (recv *PixbufFormat) GetDescription() string {
 	retC := C.gdk_pixbuf_format_get_description((*C.GdkPixbufFormat)(recv.native))
@@ -30,7 +32,9 @@ func (recv *PixbufFormat) GetDescription() string {
 // Returns the name of the format.
 /*
 
-C function : gdk_pixbuf_format_get_name
+C function
+
+gdk_pixbuf_format_get_name
 */
 func (recv *PixbufFormat) GetName() string {
 	retC := C.gdk_pixbuf_format_get_name((*C.GdkPixbufFormat)(recv.native))
@@ -43,7 +47,9 @@ func (recv *PixbufFormat) GetName() string {
 // Returns whether pixbufs can be saved in the given format.
 /*
 
-C function : gdk_pixbuf_format_is_writable
+C function
+
+gdk_pixbuf_format_is_writable
 */
 func (recv *PixbufFormat) IsWritable() bool {
 	retC := C.gdk_pixbuf_format_is_writable((*C.GdkPixbufFormat)(recv.native))

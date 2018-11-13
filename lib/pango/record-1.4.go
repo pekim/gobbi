@@ -22,7 +22,9 @@ import "C"
 // This function uses pango_language_get_scripts() internally.
 /*
 
-C function : pango_language_includes_script
+C function
+
+pango_language_includes_script
 */
 func (recv *Language) IncludesScript(script Script) bool {
 	c_script := (C.PangoScript)(script)
@@ -36,7 +38,9 @@ func (recv *Language) IncludesScript(script Script) bool {
 // Frees a #PangoScriptIter created with pango_script_iter_new().
 /*
 
-C function : pango_script_iter_free
+C function
+
+pango_script_iter_free
 */
 func (recv *ScriptIter) Free() {
 	C.pango_script_iter_free((*C.PangoScriptIter)(recv.native))
@@ -51,7 +55,9 @@ func (recv *ScriptIter) Free() {
 // is returned.
 /*
 
-C function : pango_script_iter_next
+C function
+
+pango_script_iter_next
 */
 func (recv *ScriptIter) Next() bool {
 	retC := C.pango_script_iter_next((*C.PangoScriptIter)(recv.native))

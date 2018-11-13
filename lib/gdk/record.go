@@ -15,7 +15,9 @@ import "C"
 // similar to the XColor struct used in the X11 drawing API.
 /*
 
-C record/class : GdkColor
+C type
+
+GdkColor
 */
 type Color struct {
 	native *C.GdkColor
@@ -60,7 +62,9 @@ func (recv *Color) ToC() unsafe.Pointer {
 // The result must be freed using gdk_color_free().
 /*
 
-C function : gdk_color_copy
+C function
+
+gdk_color_copy
 */
 func (recv *Color) Copy() *Color {
 	retC := C.gdk_color_copy((*C.GdkColor)(recv.native))
@@ -72,7 +76,9 @@ func (recv *Color) Copy() *Color {
 // Compares two colors.
 /*
 
-C function : gdk_color_equal
+C function
+
+gdk_color_equal
 */
 func (recv *Color) Equal(colorb *Color) bool {
 	c_colorb := (*C.GdkColor)(C.NULL)
@@ -89,7 +95,9 @@ func (recv *Color) Equal(colorb *Color) bool {
 // Frees a #GdkColor created with gdk_color_copy().
 /*
 
-C function : gdk_color_free
+C function
+
+gdk_color_free
 */
 func (recv *Color) Free() {
 	C.gdk_color_free((*C.GdkColor)(recv.native))
@@ -101,7 +109,9 @@ func (recv *Color) Free() {
 // table that stores #GdkColors.
 /*
 
-C function : gdk_color_hash
+C function
+
+gdk_color_hash
 */
 func (recv *Color) Hash() uint32 {
 	retC := C.gdk_color_hash((*C.GdkColor)(recv.native))
@@ -115,7 +125,9 @@ func (recv *Color) Hash() uint32 {
 // access these fields.
 /*
 
-C record/class : GdkEventAny
+C type
+
+GdkEventAny
 */
 type EventAny struct {
 	native *C.GdkEventAny
@@ -183,7 +195,9 @@ func (recv *EventAny) ToC() unsafe.Pointer {
 // button press must also occur within 1/2 second of the first button press.
 /*
 
-C record/class : GdkEventButton
+C type
+
+GdkEventButton
 */
 type EventButton struct {
 	native *C.GdkEventButton
@@ -249,7 +263,9 @@ func (recv *EventButton) ToC() unsafe.Pointer {
 // Generated when a window size or position has changed.
 /*
 
-C record/class : GdkEventConfigure
+C type
+
+GdkEventConfigure
 */
 type EventConfigure struct {
 	native *C.GdkEventConfigure
@@ -301,7 +317,9 @@ func (recv *EventConfigure) ToC() unsafe.Pointer {
 // Generated when the pointer enters or leaves a window.
 /*
 
-C record/class : GdkEventCrossing
+C type
+
+GdkEventCrossing
 */
 type EventCrossing struct {
 	native *C.GdkEventCrossing
@@ -374,7 +392,9 @@ func (recv *EventCrossing) ToC() unsafe.Pointer {
 // Generated during DND operations.
 /*
 
-C record/class : GdkEventDND
+C type
+
+GdkEventDND
 */
 type EventDND struct {
 	native *C.GdkEventDND
@@ -424,7 +444,9 @@ func (recv *EventDND) ToC() unsafe.Pointer {
 // redrawn.
 /*
 
-C record/class : GdkEventExpose
+C type
+
+GdkEventExpose
 */
 type EventExpose struct {
 	native *C.GdkEventExpose
@@ -466,7 +488,9 @@ func (recv *EventExpose) ToC() unsafe.Pointer {
 // Describes a change of keyboard focus.
 /*
 
-C record/class : GdkEventFocus
+C type
+
+GdkEventFocus
 */
 type EventFocus struct {
 	native *C.GdkEventFocus
@@ -506,7 +530,9 @@ func (recv *EventFocus) ToC() unsafe.Pointer {
 // Describes a key press or key release event.
 /*
 
-C record/class : GdkEventKey
+C type
+
+GdkEventKey
 */
 type EventKey struct {
 	native *C.GdkEventKey
@@ -571,7 +597,9 @@ func (recv *EventKey) ToC() unsafe.Pointer {
 // Generated when the pointer moves.
 /*
 
-C record/class : GdkEventMotion
+C type
+
+GdkEventMotion
 */
 type EventMotion struct {
 	native *C.GdkEventMotion
@@ -637,7 +665,9 @@ func (recv *EventMotion) ToC() unsafe.Pointer {
 // Describes a property change on a window.
 /*
 
-C record/class : GdkEventProperty
+C type
+
+GdkEventProperty
 */
 type EventProperty struct {
 	native *C.GdkEventProperty
@@ -690,7 +720,9 @@ func (recv *EventProperty) ToC() unsafe.Pointer {
 // XInput aware programs that are drawing their own cursor.
 /*
 
-C record/class : GdkEventProximity
+C type
+
+GdkEventProximity
 */
 type EventProximity struct {
 	native *C.GdkEventProximity
@@ -738,7 +770,9 @@ func (recv *EventProximity) ToC() unsafe.Pointer {
 // gdk_event_get_scroll_deltas().
 /*
 
-C record/class : GdkEventScroll
+C type
+
+GdkEventScroll
 */
 type EventScroll struct {
 	native *C.GdkEventScroll
@@ -813,7 +847,9 @@ func (recv *EventScroll) ToC() unsafe.Pointer {
 // is taken over by another client application.
 /*
 
-C record/class : GdkEventSelection
+C type
+
+GdkEventSelection
 */
 type EventSelection struct {
 	native *C.GdkEventSelection
@@ -856,7 +892,9 @@ func (recv *EventSelection) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GdkEventSequence
+C type
+
+GdkEventSequence
 */
 type EventSequence struct {
 	native *C.GdkEventSequence
@@ -881,7 +919,9 @@ func (recv *EventSequence) ToC() unsafe.Pointer {
 // Generated when a setting is modified.
 /*
 
-C record/class : GdkEventSetting
+C type
+
+GdkEventSetting
 */
 type EventSetting struct {
 	native *C.GdkEventSetting
@@ -934,7 +974,9 @@ func (recv *EventSetting) ToC() unsafe.Pointer {
 // several active sequences at the same time.
 /*
 
-C record/class : GdkEventTouch
+C type
+
+GdkEventTouch
 */
 type EventTouch struct {
 	native *C.GdkEventTouch
@@ -1001,7 +1043,9 @@ func (recv *EventTouch) ToC() unsafe.Pointer {
 // Generated during touchpad swipe gestures.
 /*
 
-C record/class : GdkEventTouchpadPinch
+C type
+
+GdkEventTouchpadPinch
 */
 type EventTouchpadPinch struct {
 	native *C.GdkEventTouchpadPinch
@@ -1085,7 +1129,9 @@ func (recv *EventTouchpadPinch) ToC() unsafe.Pointer {
 // Generated during touchpad swipe gestures.
 /*
 
-C record/class : GdkEventTouchpadSwipe
+C type
+
+GdkEventTouchpadSwipe
 */
 type EventTouchpadSwipe struct {
 	native *C.GdkEventTouchpadSwipe
@@ -1161,7 +1207,9 @@ func (recv *EventTouchpadSwipe) ToC() unsafe.Pointer {
 // Generated when the window visibility status has changed.
 /*
 
-C record/class : GdkEventVisibility
+C type
+
+GdkEventVisibility
 */
 type EventVisibility struct {
 	native *C.GdkEventVisibility
@@ -1201,7 +1249,9 @@ func (recv *EventVisibility) ToC() unsafe.Pointer {
 // Generated when the state of a toplevel window changes.
 /*
 
-C record/class : GdkEventWindowState
+C type
+
+GdkEventWindowState
 */
 type EventWindowState struct {
 	native *C.GdkEventWindowState
@@ -1244,7 +1294,9 @@ func (recv *EventWindowState) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GdkFrameClockClass
+C type
+
+GdkFrameClockClass
 */
 type FrameClockClass struct {
 	native *C.GdkFrameClockClass
@@ -1268,7 +1320,9 @@ func (recv *FrameClockClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GdkFrameClockPrivate
+C type
+
+GdkFrameClockPrivate
 */
 type FrameClockPrivate struct {
 	native *C.GdkFrameClockPrivate
@@ -1298,7 +1352,9 @@ func (recv *FrameClockPrivate) ToC() unsafe.Pointer {
 // quality metrics for the application’s display, such as latency and jitter.
 /*
 
-C record/class : GdkFrameTimings
+C type
+
+GdkFrameTimings
 */
 type FrameTimings struct {
 	native *C.GdkFrameTimings
@@ -1325,7 +1381,9 @@ func (recv *FrameTimings) ToC() unsafe.Pointer {
 // gdk_frame_clock_get_frame_time().
 /*
 
-C function : gdk_frame_timings_get_frame_time
+C function
+
+gdk_frame_timings_get_frame_time
 */
 func (recv *FrameTimings) GetFrameTime() int64 {
 	retC := C.gdk_frame_timings_get_frame_time((*C.GdkFrameTimings)(recv.native))
@@ -1391,7 +1449,9 @@ func (recv *FrameTimings) GetFrameTime() int64 {
 // aspect ratio.
 /*
 
-C record/class : GdkGeometry
+C type
+
+GdkGeometry
 */
 type Geometry struct {
 	native     *C.GdkGeometry
@@ -1462,7 +1522,9 @@ func (recv *Geometry) ToC() unsafe.Pointer {
 // A #GdkKeymapKey is a hardware key that can be mapped to a keyval.
 /*
 
-C record/class : GdkKeymapKey
+C type
+
+GdkKeymapKey
 */
 type KeymapKey struct {
 	native  *C.GdkKeymapKey
@@ -1501,7 +1563,9 @@ func (recv *KeymapKey) ToC() unsafe.Pointer {
 // Defines the x and y coordinates of a point.
 /*
 
-C record/class : GdkPoint
+C type
+
+GdkPoint
 */
 type Point struct {
 	native *C.GdkPoint
@@ -1537,7 +1601,9 @@ func (recv *Point) ToC() unsafe.Pointer {
 // color, in a way that is compatible with cairo’s notion of color.
 /*
 
-C record/class : GdkRGBA
+C type
+
+GdkRGBA
 */
 type RGBA struct {
 	native *C.GdkRGBA
@@ -1582,7 +1648,9 @@ func (recv *RGBA) ToC() unsafe.Pointer {
 // A #GdkTimeCoord stores a single event in a motion history.
 /*
 
-C record/class : GdkTimeCoord
+C type
+
+GdkTimeCoord
 */
 type TimeCoord struct {
 	native *C.GdkTimeCoord
@@ -1614,7 +1682,9 @@ func (recv *TimeCoord) ToC() unsafe.Pointer {
 // Attributes to use for a newly-created window.
 /*
 
-C record/class : GdkWindowAttr
+C type
+
+GdkWindowAttr
 */
 type WindowAttr struct {
 	native    *C.GdkWindowAttr
@@ -1690,7 +1760,9 @@ func (recv *WindowAttr) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GdkWindowClass
+C type
+
+GdkWindowClass
 */
 type WindowClass struct {
 	native *C.GdkWindowClass
@@ -1727,7 +1799,9 @@ func (recv *WindowClass) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : GdkWindowRedirect
+C type
+
+GdkWindowRedirect
 */
 type WindowRedirect struct {
 	native *C.GdkWindowRedirect

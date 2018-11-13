@@ -12,7 +12,9 @@ import "C"
 
 /*
 
-C record/class : cairo_t
+C type
+
+cairo_t
 */
 type Context struct {
 	native *C.cairo_t
@@ -36,7 +38,9 @@ func (recv *Context) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : cairo_device_t
+C type
+
+cairo_device_t
 */
 type Device struct {
 	native *C.cairo_device_t
@@ -60,7 +64,9 @@ func (recv *Device) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : cairo_surface_t
+C type
+
+cairo_surface_t
 */
 type Surface struct {
 	native *C.cairo_surface_t
@@ -84,7 +90,9 @@ func (recv *Surface) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : cairo_matrix_t
+C type
+
+cairo_matrix_t
 */
 type Matrix struct {
 	native *C.cairo_matrix_t
@@ -108,7 +116,9 @@ func (recv *Matrix) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : cairo_pattern_t
+C type
+
+cairo_pattern_t
 */
 type Pattern struct {
 	native *C.cairo_pattern_t
@@ -132,7 +142,9 @@ func (recv *Pattern) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : cairo_region_t
+C type
+
+cairo_region_t
 */
 type Region struct {
 	native *C.cairo_region_t
@@ -156,7 +168,9 @@ func (recv *Region) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : cairo_font_options_t
+C type
+
+cairo_font_options_t
 */
 type FontOptions struct {
 	native *C.cairo_font_options_t
@@ -180,7 +194,9 @@ func (recv *FontOptions) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : cairo_font_face_t
+C type
+
+cairo_font_face_t
 */
 type FontFace struct {
 	native *C.cairo_font_face_t
@@ -204,7 +220,9 @@ func (recv *FontFace) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : cairo_scaled_font_t
+C type
+
+cairo_scaled_font_t
 */
 type ScaledFont struct {
 	native *C.cairo_scaled_font_t
@@ -228,7 +246,9 @@ func (recv *ScaledFont) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : cairo_path_t
+C type
+
+cairo_path_t
 */
 type Path struct {
 	native *C.cairo_path_t
@@ -252,7 +272,9 @@ func (recv *Path) ToC() unsafe.Pointer {
 
 /*
 
-C record/class : cairo_rectangle_int_t
+C type
+
+cairo_rectangle_int_t
 */
 type RectangleInt struct {
 	native *C.cairo_rectangle_int_t

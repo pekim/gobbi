@@ -20,7 +20,9 @@ import "C"
 // @event, and if one was found, activate it.
 /*
 
-C function : gtk_bindings_activate_event
+C function
+
+gtk_bindings_activate_event
 */
 func BindingsActivateEvent(object *gobject.Object, event *gdk.EventKey) bool {
 	c_object := (*C.GObject)(C.NULL)
@@ -42,7 +44,9 @@ func BindingsActivateEvent(object *gobject.Object, event *gdk.EventKey) bool {
 // Registers an error quark for #GtkFileChooser if necessary.
 /*
 
-C function : gtk_file_chooser_error_quark
+C function
+
+gtk_file_chooser_error_quark
 */
 func FileChooserErrorQuark() glib.Quark {
 	retC := C.gtk_file_chooser_error_quark()
@@ -63,7 +67,9 @@ func FileChooserErrorQuark() glib.Quark {
 // with gtk_widget_set_style().
 /*
 
-C function : gtk_rc_reset_styles
+C function
+
+gtk_rc_reset_styles
 */
 func RcResetStyles(settings *Settings) {
 	c_settings := (*C.GtkSettings)(C.NULL)

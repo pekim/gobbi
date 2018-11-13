@@ -18,7 +18,9 @@ import "C"
 // Retrieves the icon associated to the resource MIME type.
 /*
 
-C function : gtk_recent_info_get_gicon
+C function
+
+gtk_recent_info_get_gicon
 */
 func (recv *RecentInfo) GetGicon() *gio.Icon {
 	retC := C.gtk_recent_info_get_gicon((*C.GtkRecentInfo)(recv.native))

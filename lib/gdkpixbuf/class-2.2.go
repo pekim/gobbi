@@ -16,7 +16,9 @@ import "C"
 // currently loading image file.
 /*
 
-C function : gdk_pixbuf_loader_get_format
+C function
+
+gdk_pixbuf_loader_get_format
 */
 func (recv *PixbufLoader) GetFormat() *PixbufFormat {
 	retC := C.gdk_pixbuf_loader_get_format((*C.GdkPixbufLoader)(recv.native))
@@ -39,7 +41,9 @@ func (recv *PixbufLoader) GetFormat() *PixbufFormat {
 // emission of the ::size-prepared signal.
 /*
 
-C function : gdk_pixbuf_loader_set_size
+C function
+
+gdk_pixbuf_loader_set_size
 */
 func (recv *PixbufLoader) SetSize(width int32, height int32) {
 	c_width := (C.int)(width)

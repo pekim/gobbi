@@ -61,7 +61,9 @@ import "C"
 // nothing.
 /*
 
-C function : g_cancellable_disconnect
+C function
+
+g_cancellable_disconnect
 */
 func (recv *Cancellable) Disconnect(handlerId uint64) {
 	c_handler_id := (C.gulong)(handlerId)
@@ -91,7 +93,9 @@ func (recv *Cancellable) Disconnect(handlerId uint64) {
 // with g_cancellable_reset().
 /*
 
-C function : g_cancellable_make_pollfd
+C function
+
+g_cancellable_make_pollfd
 */
 func (recv *Cancellable) MakePollfd(pollfd *glib.PollFD) bool {
 	c_pollfd := (*C.GPollFD)(C.NULL)
@@ -116,7 +120,9 @@ func (recv *Cancellable) MakePollfd(pollfd *glib.PollFD) bool {
 // descriptors when many #GCancellables are used at the same time.
 /*
 
-C function : g_cancellable_release_fd
+C function
+
+g_cancellable_release_fd
 */
 func (recv *Cancellable) ReleaseFd() {
 	C.g_cancellable_release_fd((*C.GCancellable)(recv.native))
@@ -129,7 +135,9 @@ func (recv *Cancellable) ReleaseFd() {
 // and closed, as the etag can change while writing.
 /*
 
-C function : g_file_io_stream_get_etag
+C function
+
+g_file_io_stream_get_etag
 */
 func (recv *FileIOStream) GetEtag() string {
 	retC := C.g_file_io_stream_get_etag((*C.GFileIOStream)(recv.native))
@@ -158,7 +166,9 @@ func (recv *FileIOStream) GetEtag() string {
 // be returned.
 /*
 
-C function : g_file_io_stream_query_info
+C function
+
+g_file_io_stream_query_info
 */
 func (recv *FileIOStream) QueryInfo(attributes string, cancellable *Cancellable) (*FileInfo, error) {
 	c_attributes := C.CString(attributes)
@@ -188,7 +198,9 @@ func (recv *FileIOStream) QueryInfo(attributes string, cancellable *Cancellable)
 // by g_file_io_stream_query_info_async().
 /*
 
-C function : g_file_io_stream_query_info_finish
+C function
+
+g_file_io_stream_query_info_finish
 */
 func (recv *FileIOStream) QueryInfoFinish(result *AsyncResult) (*FileInfo, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -212,7 +224,9 @@ func (recv *FileIOStream) QueryInfoFinish(result *AsyncResult) (*FileInfo, error
 // specified @name_space.
 /*
 
-C function : g_file_info_has_namespace
+C function
+
+g_file_info_has_namespace
 */
 func (recv *FileInfo) HasNamespace(nameSpace string) bool {
 	c_name_space := C.CString(nameSpace)
@@ -232,7 +246,9 @@ func (recv *FileInfo) HasNamespace(nameSpace string) bool {
 // is returned and @info is unchanged.
 /*
 
-C function : g_file_info_set_attribute_status
+C function
+
+g_file_info_set_attribute_status
 */
 func (recv *FileInfo) SetAttributeStatus(attribute string, status FileAttributeStatus) bool {
 	c_attribute := C.CString(attribute)
@@ -249,7 +265,9 @@ func (recv *FileInfo) SetAttributeStatus(attribute string, status FileAttributeS
 // Clears the pending flag on @stream.
 /*
 
-C function : g_io_stream_clear_pending
+C function
+
+g_io_stream_clear_pending
 */
 func (recv *IOStream) ClearPending() {
 	C.g_io_stream_clear_pending((*C.GIOStream)(recv.native))
@@ -292,7 +310,9 @@ func (recv *IOStream) ClearPending() {
 // individual input/output streams.
 /*
 
-C function : g_io_stream_close
+C function
+
+g_io_stream_close
 */
 func (recv *IOStream) Close(cancellable *Cancellable) (bool, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -318,7 +338,9 @@ func (recv *IOStream) Close(cancellable *Cancellable) (bool, error) {
 // Closes a stream.
 /*
 
-C function : g_io_stream_close_finish
+C function
+
+g_io_stream_close_finish
 */
 func (recv *IOStream) CloseFinish(result *AsyncResult) (bool, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -340,7 +362,9 @@ func (recv *IOStream) CloseFinish(result *AsyncResult) (bool, error) {
 // for reading.
 /*
 
-C function : g_io_stream_get_input_stream
+C function
+
+g_io_stream_get_input_stream
 */
 func (recv *IOStream) GetInputStream() *InputStream {
 	retC := C.g_io_stream_get_input_stream((*C.GIOStream)(recv.native))
@@ -353,7 +377,9 @@ func (recv *IOStream) GetInputStream() *InputStream {
 // writing.
 /*
 
-C function : g_io_stream_get_output_stream
+C function
+
+g_io_stream_get_output_stream
 */
 func (recv *IOStream) GetOutputStream() *OutputStream {
 	retC := C.g_io_stream_get_output_stream((*C.GIOStream)(recv.native))
@@ -365,7 +391,9 @@ func (recv *IOStream) GetOutputStream() *OutputStream {
 // Checks if a stream has pending actions.
 /*
 
-C function : g_io_stream_has_pending
+C function
+
+g_io_stream_has_pending
 */
 func (recv *IOStream) HasPending() bool {
 	retC := C.g_io_stream_has_pending((*C.GIOStream)(recv.native))
@@ -377,7 +405,9 @@ func (recv *IOStream) HasPending() bool {
 // Checks if a stream is closed.
 /*
 
-C function : g_io_stream_is_closed
+C function
+
+g_io_stream_is_closed
 */
 func (recv *IOStream) IsClosed() bool {
 	retC := C.g_io_stream_is_closed((*C.GIOStream)(recv.native))
@@ -391,7 +421,9 @@ func (recv *IOStream) IsClosed() bool {
 // @error.
 /*
 
-C function : g_io_stream_set_pending
+C function
+
+g_io_stream_set_pending
 */
 func (recv *IOStream) SetPending() (bool, error) {
 	var cThrowableError *C.GError
@@ -411,7 +443,9 @@ func (recv *IOStream) SetPending() (bool, error) {
 // care") for @family.
 /*
 
-C function : g_inet_address_new_any
+C function
+
+g_inet_address_new_any
 */
 func InetAddressNewAny(family SocketFamily) *InetAddress {
 	c_family := (C.GSocketFamily)(family)
@@ -427,7 +461,9 @@ func InetAddressNewAny(family SocketFamily) *InetAddress {
 // %G_SOCKET_FAMILY_IPV6.
 /*
 
-C function : g_inet_address_new_from_bytes
+C function
+
+g_inet_address_new_from_bytes
 */
 func InetAddressNewFromBytes(bytes []uint8, family SocketFamily) *InetAddress {
 	c_bytes := &bytes[0]
@@ -443,7 +479,9 @@ func InetAddressNewFromBytes(bytes []uint8, family SocketFamily) *InetAddress {
 // Parses @string as an IP address and creates a new #GInetAddress.
 /*
 
-C function : g_inet_address_new_from_string
+C function
+
+g_inet_address_new_from_string
 */
 func InetAddressNewFromString(string string) *InetAddress {
 	c_string := C.CString(string)
@@ -458,7 +496,9 @@ func InetAddressNewFromString(string string) *InetAddress {
 // Creates a #GInetAddress for the loopback address for @family.
 /*
 
-C function : g_inet_address_new_loopback
+C function
+
+g_inet_address_new_loopback
 */
 func InetAddressNewLoopback(family SocketFamily) *InetAddress {
 	c_family := (C.GSocketFamily)(family)
@@ -472,7 +512,9 @@ func InetAddressNewLoopback(family SocketFamily) *InetAddress {
 // Gets @address's family
 /*
 
-C function : g_inet_address_get_family
+C function
+
+g_inet_address_get_family
 */
 func (recv *InetAddress) GetFamily() SocketFamily {
 	retC := C.g_inet_address_get_family((*C.GInetAddress)(recv.native))
@@ -484,7 +526,9 @@ func (recv *InetAddress) GetFamily() SocketFamily {
 // Tests whether @address is the "any" address for its family.
 /*
 
-C function : g_inet_address_get_is_any
+C function
+
+g_inet_address_get_is_any
 */
 func (recv *InetAddress) GetIsAny() bool {
 	retC := C.g_inet_address_get_is_any((*C.GInetAddress)(recv.native))
@@ -498,7 +542,9 @@ func (recv *InetAddress) GetIsAny() bool {
 // Internet).
 /*
 
-C function : g_inet_address_get_is_link_local
+C function
+
+g_inet_address_get_is_link_local
 */
 func (recv *InetAddress) GetIsLinkLocal() bool {
 	retC := C.g_inet_address_get_is_link_local((*C.GInetAddress)(recv.native))
@@ -510,7 +556,9 @@ func (recv *InetAddress) GetIsLinkLocal() bool {
 // Tests whether @address is the loopback address for its family.
 /*
 
-C function : g_inet_address_get_is_loopback
+C function
+
+g_inet_address_get_is_loopback
 */
 func (recv *InetAddress) GetIsLoopback() bool {
 	retC := C.g_inet_address_get_is_loopback((*C.GInetAddress)(recv.native))
@@ -522,7 +570,9 @@ func (recv *InetAddress) GetIsLoopback() bool {
 // Tests whether @address is a global multicast address.
 /*
 
-C function : g_inet_address_get_is_mc_global
+C function
+
+g_inet_address_get_is_mc_global
 */
 func (recv *InetAddress) GetIsMcGlobal() bool {
 	retC := C.g_inet_address_get_is_mc_global((*C.GInetAddress)(recv.native))
@@ -534,7 +584,9 @@ func (recv *InetAddress) GetIsMcGlobal() bool {
 // Tests whether @address is a link-local multicast address.
 /*
 
-C function : g_inet_address_get_is_mc_link_local
+C function
+
+g_inet_address_get_is_mc_link_local
 */
 func (recv *InetAddress) GetIsMcLinkLocal() bool {
 	retC := C.g_inet_address_get_is_mc_link_local((*C.GInetAddress)(recv.native))
@@ -546,7 +598,9 @@ func (recv *InetAddress) GetIsMcLinkLocal() bool {
 // Tests whether @address is a node-local multicast address.
 /*
 
-C function : g_inet_address_get_is_mc_node_local
+C function
+
+g_inet_address_get_is_mc_node_local
 */
 func (recv *InetAddress) GetIsMcNodeLocal() bool {
 	retC := C.g_inet_address_get_is_mc_node_local((*C.GInetAddress)(recv.native))
@@ -558,7 +612,9 @@ func (recv *InetAddress) GetIsMcNodeLocal() bool {
 // Tests whether @address is an organization-local multicast address.
 /*
 
-C function : g_inet_address_get_is_mc_org_local
+C function
+
+g_inet_address_get_is_mc_org_local
 */
 func (recv *InetAddress) GetIsMcOrgLocal() bool {
 	retC := C.g_inet_address_get_is_mc_org_local((*C.GInetAddress)(recv.native))
@@ -570,7 +626,9 @@ func (recv *InetAddress) GetIsMcOrgLocal() bool {
 // Tests whether @address is a site-local multicast address.
 /*
 
-C function : g_inet_address_get_is_mc_site_local
+C function
+
+g_inet_address_get_is_mc_site_local
 */
 func (recv *InetAddress) GetIsMcSiteLocal() bool {
 	retC := C.g_inet_address_get_is_mc_site_local((*C.GInetAddress)(recv.native))
@@ -582,7 +640,9 @@ func (recv *InetAddress) GetIsMcSiteLocal() bool {
 // Tests whether @address is a multicast address.
 /*
 
-C function : g_inet_address_get_is_multicast
+C function
+
+g_inet_address_get_is_multicast
 */
 func (recv *InetAddress) GetIsMulticast() bool {
 	retC := C.g_inet_address_get_is_multicast((*C.GInetAddress)(recv.native))
@@ -597,7 +657,9 @@ func (recv *InetAddress) GetIsMulticast() bool {
 // outgoing Internet connectivity via a NAT or firewall).
 /*
 
-C function : g_inet_address_get_is_site_local
+C function
+
+g_inet_address_get_is_site_local
 */
 func (recv *InetAddress) GetIsSiteLocal() bool {
 	retC := C.g_inet_address_get_is_site_local((*C.GInetAddress)(recv.native))
@@ -610,7 +672,9 @@ func (recv *InetAddress) GetIsSiteLocal() bool {
 // is the size of the data that you get from g_inet_address_to_bytes().
 /*
 
-C function : g_inet_address_get_native_size
+C function
+
+g_inet_address_get_native_size
 */
 func (recv *InetAddress) GetNativeSize() uint64 {
 	retC := C.g_inet_address_get_native_size((*C.GInetAddress)(recv.native))
@@ -624,7 +688,9 @@ func (recv *InetAddress) GetNativeSize() uint64 {
 // Converts @address to string form.
 /*
 
-C function : g_inet_address_to_string
+C function
+
+g_inet_address_to_string
 */
 func (recv *InetAddress) ToString() string {
 	retC := C.g_inet_address_to_string((*C.GInetAddress)(recv.native))
@@ -637,7 +703,9 @@ func (recv *InetAddress) ToString() string {
 // Creates a new #GInetSocketAddress for @address and @port.
 /*
 
-C function : g_inet_socket_address_new
+C function
+
+g_inet_socket_address_new
 */
 func InetSocketAddressNew(address *InetAddress, port uint16) *InetSocketAddress {
 	c_address := (*C.GInetAddress)(C.NULL)
@@ -656,7 +724,9 @@ func InetSocketAddressNew(address *InetAddress, port uint16) *InetSocketAddress 
 // Gets @address's #GInetAddress.
 /*
 
-C function : g_inet_socket_address_get_address
+C function
+
+g_inet_socket_address_get_address
 */
 func (recv *InetSocketAddress) GetAddress() *InetAddress {
 	retC := C.g_inet_socket_address_get_address((*C.GInetSocketAddress)(recv.native))
@@ -668,7 +738,9 @@ func (recv *InetSocketAddress) GetAddress() *InetAddress {
 // Gets @address's port.
 /*
 
-C function : g_inet_socket_address_get_port
+C function
+
+g_inet_socket_address_get_port
 */
 func (recv *InetSocketAddress) GetPort() uint16 {
 	retC := C.g_inet_socket_address_get_port((*C.GInetSocketAddress)(recv.native))
@@ -689,7 +761,9 @@ func (recv *InetSocketAddress) GetPort() uint16 {
 // is guaranteed to resolve to both addresses.
 /*
 
-C function : g_network_address_new
+C function
+
+g_network_address_new
 */
 func NetworkAddressNew(hostname string, port uint16) *NetworkAddress {
 	c_hostname := C.CString(hostname)
@@ -707,7 +781,9 @@ func NetworkAddressNew(hostname string, port uint16) *NetworkAddress {
 // depending on what @addr was created with.
 /*
 
-C function : g_network_address_get_hostname
+C function
+
+g_network_address_get_hostname
 */
 func (recv *NetworkAddress) GetHostname() string {
 	retC := C.g_network_address_get_hostname((*C.GNetworkAddress)(recv.native))
@@ -719,7 +795,9 @@ func (recv *NetworkAddress) GetHostname() string {
 // Gets @addr's port number
 /*
 
-C function : g_network_address_get_port
+C function
+
+g_network_address_get_port
 */
 func (recv *NetworkAddress) GetPort() uint16 {
 	retC := C.g_network_address_get_port((*C.GNetworkAddress)(recv.native))
@@ -733,7 +811,9 @@ func (recv *NetworkAddress) GetPort() uint16 {
 // #GSocketConnectable interface to resolve it.
 /*
 
-C function : g_network_service_new
+C function
+
+g_network_service_new
 */
 func NetworkServiceNew(service string, protocol string, domain string) *NetworkService {
 	c_service := C.CString(service)
@@ -755,7 +835,9 @@ func NetworkServiceNew(service string, protocol string, domain string) *NetworkS
 // ASCII-encoded, depending on what @srv was created with.
 /*
 
-C function : g_network_service_get_domain
+C function
+
+g_network_service_get_domain
 */
 func (recv *NetworkService) GetDomain() string {
 	retC := C.g_network_service_get_domain((*C.GNetworkService)(recv.native))
@@ -767,7 +849,9 @@ func (recv *NetworkService) GetDomain() string {
 // Gets @srv's protocol name (eg, "tcp").
 /*
 
-C function : g_network_service_get_protocol
+C function
+
+g_network_service_get_protocol
 */
 func (recv *NetworkService) GetProtocol() string {
 	retC := C.g_network_service_get_protocol((*C.GNetworkService)(recv.native))
@@ -779,7 +863,9 @@ func (recv *NetworkService) GetProtocol() string {
 // Gets @srv's service name (eg, "ldap").
 /*
 
-C function : g_network_service_get_service
+C function
+
+g_network_service_get_service
 */
 func (recv *NetworkService) GetService() string {
 	retC := C.g_network_service_get_service((*C.GNetworkService)(recv.native))
@@ -799,7 +885,9 @@ func (recv *NetworkService) GetService() string {
 // %G_IO_ERROR_CANCELLED.
 /*
 
-C function : g_resolver_lookup_by_address
+C function
+
+g_resolver_lookup_by_address
 */
 func (recv *Resolver) LookupByAddress(address *InetAddress, cancellable *Cancellable) (string, error) {
 	c_address := (*C.GInetAddress)(C.NULL)
@@ -836,7 +924,9 @@ func (recv *Resolver) LookupByAddress(address *InetAddress, cancellable *Cancell
 // @error will be set to %G_IO_ERROR_CANCELLED.
 /*
 
-C function : g_resolver_lookup_by_address_finish
+C function
+
+g_resolver_lookup_by_address_finish
 */
 func (recv *Resolver) LookupByAddressFinish(result *AsyncResult) (string, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -880,7 +970,9 @@ func (recv *Resolver) LookupByAddressFinish(result *AsyncResult) (string, error)
 // #GSocketConnectable interface.
 /*
 
-C function : g_resolver_lookup_by_name
+C function
+
+g_resolver_lookup_by_name
 */
 func (recv *Resolver) LookupByName(hostname string, cancellable *Cancellable) (*glib.List, error) {
 	c_hostname := C.CString(hostname)
@@ -914,7 +1006,9 @@ func (recv *Resolver) LookupByName(hostname string, cancellable *Cancellable) (*
 // @error will be set to %G_IO_ERROR_CANCELLED.
 /*
 
-C function : g_resolver_lookup_by_name_finish
+C function
+
+g_resolver_lookup_by_name_finish
 */
 func (recv *Resolver) LookupByNameFinish(result *AsyncResult) (*glib.List, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -955,7 +1049,9 @@ func (recv *Resolver) LookupByNameFinish(result *AsyncResult) (*glib.List, error
 // interface.
 /*
 
-C function : g_resolver_lookup_service
+C function
+
+g_resolver_lookup_service
 */
 func (recv *Resolver) LookupService(service string, protocol string, domain string, cancellable *Cancellable) (*glib.List, error) {
 	c_service := C.CString(service)
@@ -995,7 +1091,9 @@ func (recv *Resolver) LookupService(service string, protocol string, domain stri
 // @error will be set to %G_IO_ERROR_CANCELLED.
 /*
 
-C function : g_resolver_lookup_service_finish
+C function
+
+g_resolver_lookup_service_finish
 */
 func (recv *Resolver) LookupServiceFinish(result *AsyncResult) (*glib.List, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -1024,7 +1122,9 @@ func (recv *Resolver) LookupServiceFinish(result *AsyncResult) (*glib.List, erro
 // itself as the default resolver for all later code to use.
 /*
 
-C function : g_resolver_set_default
+C function
+
+g_resolver_set_default
 */
 func (recv *Resolver) SetDefault() {
 	C.g_resolver_set_default((*C.GResolver)(recv.native))
@@ -1085,7 +1185,9 @@ func (recv *Resolver) SetDefault() {
 // locking.
 /*
 
-C record/class : GSocket
+C type
+
+GSocket
 */
 type Socket struct {
 	native *C.GSocket
@@ -1135,7 +1237,9 @@ func CastToSocket(object *gobject.Object) *Socket {
 // know the protocol number used for it.
 /*
 
-C function : g_socket_new
+C function
+
+g_socket_new
 */
 func SocketNew(family SocketFamily, type_ SocketType, protocol SocketProtocol) (*Socket, error) {
 	c_family := (C.GSocketFamily)(family)
@@ -1172,7 +1276,9 @@ func SocketNew(family SocketFamily, type_ SocketType, protocol SocketProtocol) (
 // descriptor.  Instead, a GError will be set with code %G_IO_ERROR_FAILED
 /*
 
-C function : g_socket_new_from_fd
+C function
+
+g_socket_new_from_fd
 */
 func SocketNewFromFd(fd int32) (*Socket, error) {
 	c_fd := (C.gint)(fd)
@@ -1202,7 +1308,9 @@ func SocketNewFromFd(fd int32) (*Socket, error) {
 // To be notified of an incoming connection, wait for the %G_IO_IN condition.
 /*
 
-C function : g_socket_accept
+C function
+
+g_socket_accept
 */
 func (recv *Socket) Accept(cancellable *Cancellable) (*Socket, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -1248,7 +1356,9 @@ func (recv *Socket) Accept(cancellable *Cancellable) (*Socket, error) {
 // UDP packets to an address with multiple listeners is not defined.)
 /*
 
-C function : g_socket_bind
+C function
+
+g_socket_bind
 */
 func (recv *Socket) Bind(address *SocketAddress, allowReuse bool) (bool, error) {
 	c_address := (*C.GSocketAddress)(C.NULL)
@@ -1277,7 +1387,9 @@ func (recv *Socket) Bind(address *SocketAddress, allowReuse bool) (bool, error) 
 // used in non-blocking mode.
 /*
 
-C function : g_socket_check_connect_result
+C function
+
+g_socket_check_connect_result
 */
 func (recv *Socket) CheckConnectResult() (bool, error) {
 	var cThrowableError *C.GError
@@ -1324,7 +1436,9 @@ func (recv *Socket) CheckConnectResult() (bool, error) {
 // does.)
 /*
 
-C function : g_socket_close
+C function
+
+g_socket_close
 */
 func (recv *Socket) Close() (bool, error) {
 	var cThrowableError *C.GError
@@ -1359,7 +1473,9 @@ func (recv *Socket) Close() (bool, error) {
 // This call never blocks.
 /*
 
-C function : g_socket_condition_check
+C function
+
+g_socket_condition_check
 */
 func (recv *Socket) ConditionCheck(condition glib.IOCondition) glib.IOCondition {
 	c_condition := (C.GIOCondition)(condition)
@@ -1382,7 +1498,9 @@ func (recv *Socket) ConditionCheck(condition glib.IOCondition) glib.IOCondition 
 // See also g_socket_condition_timed_wait().
 /*
 
-C function : g_socket_condition_wait
+C function
+
+g_socket_condition_wait
 */
 func (recv *Socket) ConditionWait(condition glib.IOCondition, cancellable *Cancellable) (bool, error) {
 	c_condition := (C.GIOCondition)(condition)
@@ -1423,7 +1541,9 @@ func (recv *Socket) ConditionWait(condition glib.IOCondition, cancellable *Cance
 // checked with g_socket_check_connect_result().
 /*
 
-C function : g_socket_connect
+C function
+
+g_socket_connect
 */
 func (recv *Socket) Connect(address *SocketAddress, cancellable *Cancellable) (bool, error) {
 	c_address := (*C.GSocketAddress)(C.NULL)
@@ -1453,7 +1573,9 @@ func (recv *Socket) Connect(address *SocketAddress, cancellable *Cancellable) (b
 // @socket.
 /*
 
-C function : g_socket_connection_factory_create_connection
+C function
+
+g_socket_connection_factory_create_connection
 */
 func (recv *Socket) ConnectionFactoryCreateConnection() *SocketConnection {
 	retC := C.g_socket_connection_factory_create_connection((*C.GSocket)(recv.native))
@@ -1484,7 +1606,9 @@ func (recv *Socket) ConnectionFactoryCreateConnection() *SocketConnection {
 // you call will then fail with a %G_IO_ERROR_TIMED_OUT.
 /*
 
-C function : g_socket_create_source
+C function
+
+g_socket_create_source
 */
 func (recv *Socket) CreateSource(condition glib.IOCondition, cancellable *Cancellable) *glib.Source {
 	c_condition := (C.GIOCondition)(condition)
@@ -1504,7 +1628,9 @@ func (recv *Socket) CreateSource(condition glib.IOCondition, cancellable *Cancel
 // see g_socket_set_blocking().
 /*
 
-C function : g_socket_get_blocking
+C function
+
+g_socket_get_blocking
 */
 func (recv *Socket) GetBlocking() bool {
 	retC := C.g_socket_get_blocking((*C.GSocket)(recv.native))
@@ -1516,7 +1642,9 @@ func (recv *Socket) GetBlocking() bool {
 // Gets the socket family of the socket.
 /*
 
-C function : g_socket_get_family
+C function
+
+g_socket_get_family
 */
 func (recv *Socket) GetFamily() SocketFamily {
 	retC := C.g_socket_get_family((*C.GSocket)(recv.native))
@@ -1532,7 +1660,9 @@ func (recv *Socket) GetFamily() SocketFamily {
 // on the socket.
 /*
 
-C function : g_socket_get_fd
+C function
+
+g_socket_get_fd
 */
 func (recv *Socket) GetFd() int32 {
 	retC := C.g_socket_get_fd((*C.GSocket)(recv.native))
@@ -1545,7 +1675,9 @@ func (recv *Socket) GetFd() int32 {
 // see g_socket_set_keepalive().
 /*
 
-C function : g_socket_get_keepalive
+C function
+
+g_socket_get_keepalive
 */
 func (recv *Socket) GetKeepalive() bool {
 	retC := C.g_socket_get_keepalive((*C.GSocket)(recv.native))
@@ -1558,7 +1690,9 @@ func (recv *Socket) GetKeepalive() bool {
 // see g_socket_set_listen_backlog().
 /*
 
-C function : g_socket_get_listen_backlog
+C function
+
+g_socket_get_listen_backlog
 */
 func (recv *Socket) GetListenBacklog() int32 {
 	retC := C.g_socket_get_listen_backlog((*C.GSocket)(recv.native))
@@ -1573,7 +1707,9 @@ func (recv *Socket) GetListenBacklog() int32 {
 // In case the protocol is unknown, -1 is returned.
 /*
 
-C function : g_socket_get_protocol
+C function
+
+g_socket_get_protocol
 */
 func (recv *Socket) GetProtocol() SocketProtocol {
 	retC := C.g_socket_get_protocol((*C.GSocket)(recv.native))
@@ -1586,7 +1722,9 @@ func (recv *Socket) GetProtocol() SocketProtocol {
 // useful for connection oriented sockets that have been connected.
 /*
 
-C function : g_socket_get_remote_address
+C function
+
+g_socket_get_remote_address
 */
 func (recv *Socket) GetRemoteAddress() (*SocketAddress, error) {
 	var cThrowableError *C.GError
@@ -1605,7 +1743,9 @@ func (recv *Socket) GetRemoteAddress() (*SocketAddress, error) {
 // Gets the socket type of the socket.
 /*
 
-C function : g_socket_get_socket_type
+C function
+
+g_socket_get_socket_type
 */
 func (recv *Socket) GetSocketType() SocketType {
 	retC := C.g_socket_get_socket_type((*C.GSocket)(recv.native))
@@ -1617,7 +1757,9 @@ func (recv *Socket) GetSocketType() SocketType {
 // Checks whether a socket is closed.
 /*
 
-C function : g_socket_is_closed
+C function
+
+g_socket_is_closed
 */
 func (recv *Socket) IsClosed() bool {
 	retC := C.g_socket_is_closed((*C.GSocket)(recv.native))
@@ -1635,7 +1777,9 @@ func (recv *Socket) IsClosed() bool {
 // g_socket_check_connect_result().
 /*
 
-C function : g_socket_is_connected
+C function
+
+g_socket_is_connected
 */
 func (recv *Socket) IsConnected() bool {
 	retC := C.g_socket_is_connected((*C.GSocket)(recv.native))
@@ -1654,7 +1798,9 @@ func (recv *Socket) IsConnected() bool {
 // g_socket_set_listen_backlog().
 /*
 
-C function : g_socket_listen
+C function
+
+g_socket_listen
 */
 func (recv *Socket) Listen() (bool, error) {
 	var cThrowableError *C.GError
@@ -1695,7 +1841,9 @@ func (recv *Socket) Listen() (bool, error) {
 // On error -1 is returned and @error is set accordingly.
 /*
 
-C function : g_socket_receive
+C function
+
+g_socket_receive
 */
 func (recv *Socket) Receive(buffer []uint8, cancellable *Cancellable) (int64, error) {
 	c_buffer := &buffer[0]
@@ -1729,7 +1877,9 @@ func (recv *Socket) Receive(buffer []uint8, cancellable *Cancellable) (int64, er
 // See g_socket_receive() for additional information.
 /*
 
-C function : g_socket_receive_from
+C function
+
+g_socket_receive_from
 */
 func (recv *Socket) ReceiveFrom(buffer []uint8, cancellable *Cancellable) (int64, *SocketAddress, error) {
 	var c_address *C.GSocketAddress
@@ -1776,7 +1926,9 @@ func (recv *Socket) ReceiveFrom(buffer []uint8, cancellable *Cancellable) (int64
 // On error -1 is returned and @error is set accordingly.
 /*
 
-C function : g_socket_send
+C function
+
+g_socket_send
 */
 func (recv *Socket) Send(buffer []uint8, cancellable *Cancellable) (int64, error) {
 	c_buffer := &buffer[0]
@@ -1810,7 +1962,9 @@ func (recv *Socket) Send(buffer []uint8, cancellable *Cancellable) (int64, error
 // See g_socket_send() for additional information.
 /*
 
-C function : g_socket_send_to
+C function
+
+g_socket_send_to
 */
 func (recv *Socket) SendTo(address *SocketAddress, buffer []uint8, cancellable *Cancellable) (int64, error) {
 	c_address := (*C.GSocketAddress)(C.NULL)
@@ -1851,7 +2005,9 @@ func (recv *Socket) SendTo(address *SocketAddress, buffer []uint8, cancellable *
 // is a GSocket level feature.
 /*
 
-C function : g_socket_set_blocking
+C function
+
+g_socket_set_blocking
 */
 func (recv *Socket) SetBlocking(blocking bool) {
 	c_blocking :=
@@ -1879,7 +2035,9 @@ func (recv *Socket) SetBlocking(blocking bool) {
 // garbage-collected if clients crash or become unreachable.
 /*
 
-C function : g_socket_set_keepalive
+C function
+
+g_socket_set_keepalive
 */
 func (recv *Socket) SetKeepalive(keepalive bool) {
 	c_keepalive :=
@@ -1899,7 +2057,9 @@ func (recv *Socket) SetKeepalive(keepalive bool) {
 // effect if called after that.
 /*
 
-C function : g_socket_set_listen_backlog
+C function
+
+g_socket_set_listen_backlog
 */
 func (recv *Socket) SetListenBacklog(backlog int32) {
 	c_backlog := (C.gint)(backlog)
@@ -1925,7 +2085,9 @@ func (recv *Socket) SetListenBacklog(backlog int32) {
 // other side saw all sent data.
 /*
 
-C function : g_socket_shutdown
+C function
+
+g_socket_shutdown
 */
 func (recv *Socket) Shutdown(shutdownRead bool, shutdownWrite bool) (bool, error) {
 	c_shutdown_read :=
@@ -1958,7 +2120,9 @@ func (recv *Socket) Shutdown(shutdownRead bool, shutdownWrite bool) (bool, error
 // of speaking IPv4.
 /*
 
-C function : g_socket_speaks_ipv4
+C function
+
+g_socket_speaks_ipv4
 */
 func (recv *Socket) SpeaksIpv4() bool {
 	retC := C.g_socket_speaks_ipv4((*C.GSocket)(recv.native))
@@ -1971,7 +2135,9 @@ func (recv *Socket) SpeaksIpv4() bool {
 // struct sockaddr @native.
 /*
 
-C function : g_socket_address_new_from_native
+C function
+
+g_socket_address_new_from_native
 */
 func SocketAddressNewFromNative(native uintptr, len uint64) *SocketAddress {
 	c_native := (C.gpointer)(native)
@@ -1987,7 +2153,9 @@ func SocketAddressNewFromNative(native uintptr, len uint64) *SocketAddress {
 // Gets the socket family type of @address.
 /*
 
-C function : g_socket_address_get_family
+C function
+
+g_socket_address_get_family
 */
 func (recv *SocketAddress) GetFamily() SocketFamily {
 	retC := C.g_socket_address_get_family((*C.GSocketAddress)(recv.native))
@@ -2001,7 +2169,9 @@ func (recv *SocketAddress) GetFamily() SocketFamily {
 // g_socket_address_to_native().
 /*
 
-C function : g_socket_address_get_native_size
+C function
+
+g_socket_address_get_native_size
 */
 func (recv *SocketAddress) GetNativeSize() int64 {
 	retC := C.g_socket_address_get_native_size((*C.GSocketAddress)(recv.native))
@@ -2018,7 +2188,9 @@ func (recv *SocketAddress) GetNativeSize() int64 {
 // then a %G_IO_ERROR_NOT_SUPPORTED error is returned.
 /*
 
-C function : g_socket_address_to_native
+C function
+
+g_socket_address_to_native
 */
 func (recv *SocketAddress) ToNative(dest uintptr, destlen uint64) (bool, error) {
 	c_dest := (C.gpointer)(dest)
@@ -2053,7 +2225,9 @@ func (recv *SocketAddress) ToNative(dest uintptr, destlen uint64) (bool, error) 
 // can just create a new one any time you need one.
 /*
 
-C record/class : GSocketClient
+C type
+
+GSocketClient
 */
 type SocketClient struct {
 	native *C.GSocketClient
@@ -2091,7 +2265,9 @@ func CastToSocketClient(object *gobject.Object) *SocketClient {
 // Creates a new #GSocketClient with the default options.
 /*
 
-C function : g_socket_client_new
+C function
+
+g_socket_client_new
 */
 func SocketClientNew() *SocketClient {
 	retC := C.g_socket_client_new()
@@ -2121,7 +2297,9 @@ func SocketClientNew() *SocketClient {
 // specific handshake.
 /*
 
-C function : g_socket_client_add_application_proxy
+C function
+
+g_socket_client_add_application_proxy
 */
 func (recv *SocketClient) AddApplicationProxy(protocol string) {
 	c_protocol := C.CString(protocol)
@@ -2152,7 +2330,9 @@ func (recv *SocketClient) AddApplicationProxy(protocol string) {
 // socket will be bound to this address before connecting.
 /*
 
-C function : g_socket_client_connect
+C function
+
+g_socket_client_connect
 */
 func (recv *SocketClient) Connect(connectable *SocketConnectable, cancellable *Cancellable) (*SocketConnection, error) {
 	c_connectable := (*C.GSocketConnectable)(connectable.ToC())
@@ -2180,7 +2360,9 @@ func (recv *SocketClient) Connect(connectable *SocketConnectable, cancellable *C
 // Finishes an async connect operation. See g_socket_client_connect_async()
 /*
 
-C function : g_socket_client_connect_finish
+C function
+
+g_socket_client_connect_finish
 */
 func (recv *SocketClient) ConnectFinish(result *AsyncResult) (*SocketConnection, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -2230,7 +2412,9 @@ func (recv *SocketClient) ConnectFinish(result *AsyncResult) (*SocketConnection,
 // accordingly.
 /*
 
-C function : g_socket_client_connect_to_host
+C function
+
+g_socket_client_connect_to_host
 */
 func (recv *SocketClient) ConnectToHost(hostAndPort string, defaultPort uint16, cancellable *Cancellable) (*SocketConnection, error) {
 	c_host_and_port := C.CString(hostAndPort)
@@ -2261,7 +2445,9 @@ func (recv *SocketClient) ConnectToHost(hostAndPort string, defaultPort uint16, 
 // Finishes an async connect operation. See g_socket_client_connect_to_host_async()
 /*
 
-C function : g_socket_client_connect_to_host_finish
+C function
+
+g_socket_client_connect_to_host_finish
 */
 func (recv *SocketClient) ConnectToHostFinish(result *AsyncResult) (*SocketConnection, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -2295,7 +2481,9 @@ func (recv *SocketClient) ConnectToHostFinish(result *AsyncResult) (*SocketConne
 // accordingly.
 /*
 
-C function : g_socket_client_connect_to_service
+C function
+
+g_socket_client_connect_to_service
 */
 func (recv *SocketClient) ConnectToService(domain string, service string, cancellable *Cancellable) (*SocketConnection, error) {
 	c_domain := C.CString(domain)
@@ -2327,7 +2515,9 @@ func (recv *SocketClient) ConnectToService(domain string, service string, cancel
 // Finishes an async connect operation. See g_socket_client_connect_to_service_async()
 /*
 
-C function : g_socket_client_connect_to_service_finish
+C function
+
+g_socket_client_connect_to_service_finish
 */
 func (recv *SocketClient) ConnectToServiceFinish(result *AsyncResult) (*SocketConnection, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -2350,7 +2540,9 @@ func (recv *SocketClient) ConnectToServiceFinish(result *AsyncResult) (*SocketCo
 // See g_socket_client_set_family() for details.
 /*
 
-C function : g_socket_client_get_family
+C function
+
+g_socket_client_get_family
 */
 func (recv *SocketClient) GetFamily() SocketFamily {
 	retC := C.g_socket_client_get_family((*C.GSocketClient)(recv.native))
@@ -2364,7 +2556,9 @@ func (recv *SocketClient) GetFamily() SocketFamily {
 // See g_socket_client_set_local_address() for details.
 /*
 
-C function : g_socket_client_get_local_address
+C function
+
+g_socket_client_get_local_address
 */
 func (recv *SocketClient) GetLocalAddress() *SocketAddress {
 	retC := C.g_socket_client_get_local_address((*C.GSocketClient)(recv.native))
@@ -2378,7 +2572,9 @@ func (recv *SocketClient) GetLocalAddress() *SocketAddress {
 // See g_socket_client_set_protocol() for details.
 /*
 
-C function : g_socket_client_get_protocol
+C function
+
+g_socket_client_get_protocol
 */
 func (recv *SocketClient) GetProtocol() SocketProtocol {
 	retC := C.g_socket_client_get_protocol((*C.GSocketClient)(recv.native))
@@ -2392,7 +2588,9 @@ func (recv *SocketClient) GetProtocol() SocketProtocol {
 // See g_socket_client_set_socket_type() for details.
 /*
 
-C function : g_socket_client_get_socket_type
+C function
+
+g_socket_client_get_socket_type
 */
 func (recv *SocketClient) GetSocketType() SocketType {
 	retC := C.g_socket_client_get_socket_type((*C.GSocketClient)(recv.native))
@@ -2411,7 +2609,9 @@ func (recv *SocketClient) GetSocketType() SocketType {
 // be an ipv6 mapped to ipv4 address.
 /*
 
-C function : g_socket_client_set_family
+C function
+
+g_socket_client_set_family
 */
 func (recv *SocketClient) SetFamily(family SocketFamily) {
 	c_family := (C.GSocketFamily)(family)
@@ -2430,7 +2630,9 @@ func (recv *SocketClient) SetFamily(family SocketFamily) {
 // a specific interface.
 /*
 
-C function : g_socket_client_set_local_address
+C function
+
+g_socket_client_set_local_address
 */
 func (recv *SocketClient) SetLocalAddress(address *SocketAddress) {
 	c_address := (*C.GSocketAddress)(C.NULL)
@@ -2451,7 +2653,9 @@ func (recv *SocketClient) SetLocalAddress(address *SocketAddress) {
 // protocol for the socket family and type.
 /*
 
-C function : g_socket_client_set_protocol
+C function
+
+g_socket_client_set_protocol
 */
 func (recv *SocketClient) SetProtocol(protocol SocketProtocol) {
 	c_protocol := (C.GSocketProtocol)(protocol)
@@ -2469,7 +2673,9 @@ func (recv *SocketClient) SetProtocol(protocol SocketProtocol) {
 // as GSocketClient is used for connection oriented services.
 /*
 
-C function : g_socket_client_set_socket_type
+C function
+
+g_socket_client_set_socket_type
 */
 func (recv *SocketClient) SetSocketType(type_ SocketType) {
 	c_type := (C.GSocketType)(type_)
@@ -2497,7 +2703,9 @@ func (recv *SocketClient) SetSocketType(type_ SocketType) {
 // #GSocket.
 /*
 
-C record/class : GSocketConnection
+C type
+
+GSocketConnection
 */
 type SocketConnection struct {
 	native *C.GSocketConnection
@@ -2540,7 +2748,9 @@ func CastToSocketConnection(object *gobject.Object) *SocketConnection {
 // Try to get the local address of a socket connection.
 /*
 
-C function : g_socket_connection_get_local_address
+C function
+
+g_socket_connection_get_local_address
 */
 func (recv *SocketConnection) GetLocalAddress() (*SocketAddress, error) {
 	var cThrowableError *C.GError
@@ -2566,7 +2776,9 @@ func (recv *SocketConnection) GetLocalAddress() (*SocketAddress, error) {
 // (10.42.77.3)...".
 /*
 
-C function : g_socket_connection_get_remote_address
+C function
+
+g_socket_connection_get_remote_address
 */
 func (recv *SocketConnection) GetRemoteAddress() (*SocketAddress, error) {
 	var cThrowableError *C.GError
@@ -2587,7 +2799,9 @@ func (recv *SocketConnection) GetRemoteAddress() (*SocketAddress, error) {
 // not supported by the #GSocketConnection APIs.
 /*
 
-C function : g_socket_connection_get_socket
+C function
+
+g_socket_connection_get_socket
 */
 func (recv *SocketConnection) GetSocket() *Socket {
 	retC := C.g_socket_connection_get_socket((*C.GSocketConnection)(recv.native))
@@ -2600,7 +2814,9 @@ func (recv *SocketConnection) GetSocket() *Socket {
 // This is often SOL_SOCKET.
 /*
 
-C function : g_socket_control_message_get_level
+C function
+
+g_socket_control_message_get_level
 */
 func (recv *SocketControlMessage) GetLevel() int32 {
 	retC := C.g_socket_control_message_get_level((*C.GSocketControlMessage)(recv.native))
@@ -2613,7 +2829,9 @@ func (recv *SocketControlMessage) GetLevel() int32 {
 // For instance, for UNIX fd passing this would be SCM_RIGHTS.
 /*
 
-C function : g_socket_control_message_get_msg_type
+C function
+
+g_socket_control_message_get_msg_type
 */
 func (recv *SocketControlMessage) GetMsgType() int32 {
 	retC := C.g_socket_control_message_get_msg_type((*C.GSocketControlMessage)(recv.native))
@@ -2626,7 +2844,9 @@ func (recv *SocketControlMessage) GetMsgType() int32 {
 // headers or alignment.
 /*
 
-C function : g_socket_control_message_get_size
+C function
+
+g_socket_control_message_get_size
 */
 func (recv *SocketControlMessage) GetSize() uint64 {
 	retC := C.g_socket_control_message_get_size((*C.GSocketControlMessage)(recv.native))
@@ -2643,7 +2863,9 @@ func (recv *SocketControlMessage) GetSize() uint64 {
 // object.
 /*
 
-C function : g_socket_control_message_serialize
+C function
+
+g_socket_control_message_serialize
 */
 func (recv *SocketControlMessage) Serialize(data uintptr) {
 	c_data := (C.gpointer)(data)
@@ -2662,7 +2884,9 @@ func (recv *SocketControlMessage) Serialize(data uintptr) {
 // that makes this even easier.
 /*
 
-C record/class : GSocketListener
+C type
+
+GSocketListener
 */
 type SocketListener struct {
 	native *C.GSocketListener
@@ -2702,7 +2926,9 @@ func CastToSocketListener(object *gobject.Object) *SocketListener {
 // or g_socket_listener_add_inet_port().
 /*
 
-C function : g_socket_listener_new
+C function
+
+g_socket_listener_new
 */
 func SocketListenerNew() *SocketListener {
 	retC := C.g_socket_listener_new()
@@ -2724,7 +2950,9 @@ func SocketListenerNew() *SocketListener {
 // was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
 /*
 
-C function : g_socket_listener_accept
+C function
+
+g_socket_listener_accept
 */
 func (recv *SocketListener) Accept(cancellable *Cancellable) (*SocketConnection, *gobject.Object, error) {
 	var c_source_object *C.GObject
@@ -2754,7 +2982,9 @@ func (recv *SocketListener) Accept(cancellable *Cancellable) (*SocketConnection,
 // Finishes an async accept operation. See g_socket_listener_accept_async()
 /*
 
-C function : g_socket_listener_accept_finish
+C function
+
+g_socket_listener_accept_finish
 */
 func (recv *SocketListener) AcceptFinish(result *AsyncResult) (*SocketConnection, *gobject.Object, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -2792,7 +3022,9 @@ func (recv *SocketListener) AcceptFinish(result *AsyncResult) (*SocketConnection
 // was cancelled, the error %G_IO_ERROR_CANCELLED will be returned.
 /*
 
-C function : g_socket_listener_accept_socket
+C function
+
+g_socket_listener_accept_socket
 */
 func (recv *SocketListener) AcceptSocket(cancellable *Cancellable) (*Socket, *gobject.Object, error) {
 	var c_source_object *C.GObject
@@ -2822,7 +3054,9 @@ func (recv *SocketListener) AcceptSocket(cancellable *Cancellable) (*Socket, *go
 // Finishes an async accept operation. See g_socket_listener_accept_socket_async()
 /*
 
-C function : g_socket_listener_accept_socket_finish
+C function
+
+g_socket_listener_accept_socket_finish
 */
 func (recv *SocketListener) AcceptSocketFinish(result *AsyncResult) (*Socket, *gobject.Object, error) {
 	c_result := (*C.GAsyncResult)(result.ToC())
@@ -2865,7 +3099,9 @@ func (recv *SocketListener) AcceptSocketFinish(result *AsyncResult) (*Socket, *g
 // requested, belongs to the caller and must be freed.
 /*
 
-C function : g_socket_listener_add_address
+C function
+
+g_socket_listener_add_address
 */
 func (recv *SocketListener) AddAddress(address *SocketAddress, type_ SocketType, protocol SocketProtocol, sourceObject *gobject.Object) (bool, *SocketAddress, error) {
 	c_address := (*C.GSocketAddress)(C.NULL)
@@ -2909,7 +3145,9 @@ func (recv *SocketListener) AddAddress(address *SocketAddress, type_ SocketType,
 // different things depending on what address is connected to.
 /*
 
-C function : g_socket_listener_add_inet_port
+C function
+
+g_socket_listener_add_inet_port
 */
 func (recv *SocketListener) AddInetPort(port uint16, sourceObject *gobject.Object) (bool, error) {
 	c_port := (C.guint16)(port)
@@ -2947,7 +3185,9 @@ func (recv *SocketListener) AddInetPort(port uint16, sourceObject *gobject.Objec
 // if references to it were held elsewhere.
 /*
 
-C function : g_socket_listener_add_socket
+C function
+
+g_socket_listener_add_socket
 */
 func (recv *SocketListener) AddSocket(socket *Socket, sourceObject *gobject.Object) (bool, error) {
 	c_socket := (*C.GSocket)(C.NULL)
@@ -2976,7 +3216,9 @@ func (recv *SocketListener) AddSocket(socket *Socket, sourceObject *gobject.Obje
 // Closes all the sockets in the listener.
 /*
 
-C function : g_socket_listener_close
+C function
+
+g_socket_listener_close
 */
 func (recv *SocketListener) Close() {
 	C.g_socket_listener_close((*C.GSocketListener)(recv.native))
@@ -2989,7 +3231,9 @@ func (recv *SocketListener) Close() {
 // See g_socket_set_listen_backlog() for details
 /*
 
-C function : g_socket_listener_set_backlog
+C function
+
+g_socket_listener_set_backlog
 */
 func (recv *SocketListener) SetBacklog(listenBacklog int32) {
 	c_listen_backlog := (C.int)(listenBacklog)
@@ -3027,7 +3271,9 @@ func (recv *SocketListener) SetBacklog(listenBacklog int32) {
 // handle incoming clients.
 /*
 
-C record/class : GSocketService
+C type
+
+GSocketService
 */
 type SocketService struct {
 	native *C.GSocketService
@@ -3076,7 +3322,9 @@ func CastToSocketService(object *gobject.Object) *SocketService {
 // called before.
 /*
 
-C function : g_socket_service_new
+C function
+
+g_socket_service_new
 */
 func SocketServiceNew() *SocketService {
 	retC := C.g_socket_service_new()
@@ -3091,7 +3339,9 @@ func SocketServiceNew() *SocketService {
 // up until the service is started.
 /*
 
-C function : g_socket_service_is_active
+C function
+
+g_socket_service_is_active
 */
 func (recv *SocketService) IsActive() bool {
 	retC := C.g_socket_service_is_active((*C.GSocketService)(recv.native))
@@ -3109,7 +3359,9 @@ func (recv *SocketService) IsActive() bool {
 // handling an incoming client request.
 /*
 
-C function : g_socket_service_start
+C function
+
+g_socket_service_start
 */
 func (recv *SocketService) Start() {
 	C.g_socket_service_start((*C.GSocketService)(recv.native))
@@ -3134,7 +3386,9 @@ func (recv *SocketService) Start() {
 // when a new socket is added.
 /*
 
-C function : g_socket_service_stop
+C function
+
+g_socket_service_stop
 */
 func (recv *SocketService) Stop() {
 	C.g_socket_service_stop((*C.GSocketService)(recv.native))
@@ -3146,7 +3400,9 @@ func (recv *SocketService) Stop() {
 // for TCP/IP sockets.
 /*
 
-C record/class : GTcpConnection
+C type
+
+GTcpConnection
 */
 type TcpConnection struct {
 	native *C.GTcpConnection
@@ -3195,7 +3451,9 @@ func CastToTcpConnection(object *gobject.Object) *TcpConnection {
 // g_tcp_connection_set_graceful_disconnect().
 /*
 
-C function : g_tcp_connection_get_graceful_disconnect
+C function
+
+g_tcp_connection_get_graceful_disconnect
 */
 func (recv *TcpConnection) GetGracefulDisconnect() bool {
 	retC := C.g_tcp_connection_get_graceful_disconnect((*C.GTcpConnection)(recv.native))
@@ -3215,7 +3473,9 @@ func (recv *TcpConnection) GetGracefulDisconnect() bool {
 // take a while. For this reason it is disabled by default.
 /*
 
-C function : g_tcp_connection_set_graceful_disconnect
+C function
+
+g_tcp_connection_set_graceful_disconnect
 */
 func (recv *TcpConnection) SetGracefulDisconnect(gracefulDisconnect bool) {
 	c_graceful_disconnect :=
@@ -3243,7 +3503,9 @@ func (recv *TcpConnection) SetGracefulDisconnect(gracefulDisconnect bool) {
 // or subclass and override the default handler.
 /*
 
-C record/class : GThreadedSocketService
+C type
+
+GThreadedSocketService
 */
 type ThreadedSocketService struct {
 	native *C.GThreadedSocketService
@@ -3356,7 +3618,9 @@ func threadedsocketservice_runHandler(_ *C.GObject, c_connection *C.GSocketConne
 // must be added with one of the #GSocketListener "add" methods.
 /*
 
-C function : g_threaded_socket_service_new
+C function
+
+g_threaded_socket_service_new
 */
 func ThreadedSocketServiceNew(maxThreads int32) *ThreadedSocketService {
 	c_max_threads := (C.int)(maxThreads)
@@ -3376,7 +3640,9 @@ func ThreadedSocketServiceNew(maxThreads int32) *ThreadedSocketService {
 // implementations.
 /*
 
-C function : g_unix_connection_receive_fd
+C function
+
+g_unix_connection_receive_fd
 */
 func (recv *UnixConnection) ReceiveFd(cancellable *Cancellable) (int32, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)
@@ -3406,7 +3672,9 @@ func (recv *UnixConnection) ReceiveFd(cancellable *Cancellable) (int32, error) {
 // implementations.
 /*
 
-C function : g_unix_connection_send_fd
+C function
+
+g_unix_connection_send_fd
 */
 func (recv *UnixConnection) SendFd(fd int32, cancellable *Cancellable) (bool, error) {
 	c_fd := (C.gint)(fd)
@@ -3433,7 +3701,9 @@ func (recv *UnixConnection) SendFd(fd int32, cancellable *Cancellable) (bool, er
 // list.
 /*
 
-C function : g_unix_fd_message_new
+C function
+
+g_unix_fd_message_new
 */
 func UnixFDMessageNew() *UnixFDMessage {
 	retC := C.g_unix_fd_message_new()
@@ -3452,7 +3722,9 @@ func UnixFDMessageNew() *UnixFDMessage {
 // system-wide file descriptor limit.
 /*
 
-C function : g_unix_fd_message_append_fd
+C function
+
+g_unix_fd_message_append_fd
 */
 func (recv *UnixFDMessage) AppendFd(fd int32) (bool, error) {
 	c_fd := (C.gint)(fd)
@@ -3478,7 +3750,9 @@ func (recv *UnixFDMessage) AppendFd(fd int32) (bool, error) {
 // use g_unix_socket_address_new_abstract().
 /*
 
-C function : g_unix_socket_address_new
+C function
+
+g_unix_socket_address_new
 */
 func UnixSocketAddressNew(path string) *UnixSocketAddress {
 	c_path := C.CString(path)
@@ -3493,7 +3767,9 @@ func UnixSocketAddressNew(path string) *UnixSocketAddress {
 // Tests if @address is abstract.
 /*
 
-C function : g_unix_socket_address_get_is_abstract
+C function
+
+g_unix_socket_address_get_is_abstract
 */
 func (recv *UnixSocketAddress) GetIsAbstract() bool {
 	retC := C.g_unix_socket_address_get_is_abstract((*C.GUnixSocketAddress)(recv.native))
@@ -3510,7 +3786,9 @@ func (recv *UnixSocketAddress) GetIsAbstract() bool {
 // of this string.
 /*
 
-C function : g_unix_socket_address_get_path
+C function
+
+g_unix_socket_address_get_path
 */
 func (recv *UnixSocketAddress) GetPath() string {
 	retC := C.g_unix_socket_address_get_path((*C.GUnixSocketAddress)(recv.native))
@@ -3524,7 +3802,9 @@ func (recv *UnixSocketAddress) GetPath() string {
 // For details, see g_unix_socket_address_get_path().
 /*
 
-C function : g_unix_socket_address_get_path_len
+C function
+
+g_unix_socket_address_get_path_len
 */
 func (recv *UnixSocketAddress) GetPathLen() uint64 {
 	retC := C.g_unix_socket_address_get_path_len((*C.GUnixSocketAddress)(recv.native))
