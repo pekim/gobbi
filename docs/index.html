@@ -1,195 +1,218 @@
+
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js">
+<html lang="" >
     <head>
-        <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Introduction - gobbi</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Introduction · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#ffffff" />
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="gitbook/style.css">
 
-        <link rel="shortcut icon" href="favicon.png">
-        <link rel="stylesheet" href="css/variables.css">
-        <link rel="stylesheet" href="css/general.css">
-        <link rel="stylesheet" href="css/chrome.css">
-        <link rel="stylesheet" href="css/print.css" media="print">
-
-        <!-- Fonts -->
-        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
-
-        <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" href="highlight.css">
-        <link rel="stylesheet" href="tomorrow-night.css">
-        <link rel="stylesheet" href="ayu-highlight.css">
-
-        <!-- Custom theme stylesheets -->
+    
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
         
 
+    
+
+    
         
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+
     </head>
-    <body class="light">
-        <!-- Provide site root to javascript -->
-        <script type="text/javascript">var path_to_root = "";</script>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
 
-        <!-- Work around some values being stored in localStorage wrapped in quotes -->
-        <script type="text/javascript">
-            try {
-                var theme = localStorage.getItem('mdbook-theme');
-                var sidebar = localStorage.getItem('mdbook-sidebar');
-
-                if (theme.startsWith('"') && theme.endsWith('"')) {
-                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
-                }
-
-                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
-                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
-                }
-            } catch (e) { }
-        </script>
-
-        <!-- Set the theme before any content is loaded, prevents flash -->
-        <script type="text/javascript">
-            var theme;
-            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { } 
-            if (theme === null || theme === undefined) { theme = 'light'; }
-            document.body.className = theme;
-            document.querySelector('html').className = theme + ' js';
-        </script>
-
-        <!-- Hide / unhide sidebar before it is displayed -->
-        <script type="text/javascript">
-            var html = document.querySelector('html');
-            var sidebar = 'hidden';
-            if (document.body.clientWidth >= 1080) {
-                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
-                sidebar = sidebar || 'visible';
-            }
-            html.classList.remove('sidebar-visible');
-            html.classList.add("sidebar-" + sidebar);
-        </script>
-
-        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li><a href="getting-started.html"><strong aria-hidden="true">2.</strong> Getting started</a></li><li><a href="application-lifecycle.html"><strong aria-hidden="true">3.</strong> Application lifecycle</a></li><li><a href="build-tags.html"><strong aria-hidden="true">4.</strong> Build tags (library versions)</a></li><li><a href="casting.html"><strong aria-hidden="true">5.</strong> Casting</a></li><li><a href="goroutines.html"><strong aria-hidden="true">6.</strong> Goroutines</a></li><li><a href="gvalue.html"><strong aria-hidden="true">7.</strong> gobject.Value</a></li><li><a href="signal-handling.html"><strong aria-hidden="true">8.</strong> Signal handling</a></li><li><a href="api.html"><strong aria-hidden="true">9.</strong> API</a></li><li><ol class="section"><li><a href="lib/atk/package.html"><strong aria-hidden="true">9.1.</strong> atk</a></li><li><ol class="section"><li><a href="lib/atk/bitfields.html"><strong aria-hidden="true">9.1.1.</strong> bitfields</a></li><li><a href="lib/atk/constant.html"><strong aria-hidden="true">9.1.2.</strong> constants</a></li><li><a href="lib/atk/enums.html"><strong aria-hidden="true">9.1.3.</strong> enums</a></li></ol></li><li><a href="lib/glib/package.html"><strong aria-hidden="true">9.2.</strong> glib</a></li><li><ol class="section"><li><a href="lib/glib/bitfields.html"><strong aria-hidden="true">9.2.1.</strong> bitfields</a></li><li><a href="lib/glib/constant.html"><strong aria-hidden="true">9.2.2.</strong> constants</a></li><li><a href="lib/glib/enums.html"><strong aria-hidden="true">9.2.3.</strong> enums</a></li></ol></li><li><a href="lib/gobject/package.html"><strong aria-hidden="true">9.3.</strong> gobject</a></li><li><ol class="section"><li><a href="lib/gobject/bitfields.html"><strong aria-hidden="true">9.3.1.</strong> bitfields</a></li><li><a href="lib/gobject/constant.html"><strong aria-hidden="true">9.3.2.</strong> constants</a></li><li><a href="lib/gobject/enums.html"><strong aria-hidden="true">9.3.3.</strong> enums</a></li></ol></li><li><a href="lib/gdk/package.html"><strong aria-hidden="true">9.4.</strong> gdk</a></li><li><ol class="section"><li><a href="lib/gdk/bitfields.html"><strong aria-hidden="true">9.4.1.</strong> bitfields</a></li><li><a href="lib/gdk/constant.html"><strong aria-hidden="true">9.4.2.</strong> constants</a></li><li><a href="lib/gdk/enums.html"><strong aria-hidden="true">9.4.3.</strong> enums</a></li></ol></li><li><a href="lib/gdkpixbuf/package.html"><strong aria-hidden="true">9.5.</strong> gdkpixbuf</a></li><li><ol class="section"><li><a href="lib/gdkpixbuf/bitfields.html"><strong aria-hidden="true">9.5.1.</strong> bitfields</a></li><li><a href="lib/gdkpixbuf/constant.html"><strong aria-hidden="true">9.5.2.</strong> constants</a></li><li><a href="lib/gdkpixbuf/enums.html"><strong aria-hidden="true">9.5.3.</strong> enums</a></li></ol></li><li><a href="lib/gio/package.html"><strong aria-hidden="true">9.6.</strong> gio</a></li><li><ol class="section"><li><a href="lib/gio/bitfields.html"><strong aria-hidden="true">9.6.1.</strong> bitfields</a></li><li><a href="lib/gio/constant.html"><strong aria-hidden="true">9.6.2.</strong> constants</a></li><li><a href="lib/gio/enums.html"><strong aria-hidden="true">9.6.3.</strong> enums</a></li></ol></li><li><a href="lib/gtk/package.html"><strong aria-hidden="true">9.7.</strong> gtk</a></li><li><ol class="section"><li><a href="lib/gtk/bitfields.html"><strong aria-hidden="true">9.7.1.</strong> bitfields</a></li><li><a href="lib/gtk/constant.html"><strong aria-hidden="true">9.7.2.</strong> constants</a></li><li><a href="lib/gtk/enums.html"><strong aria-hidden="true">9.7.3.</strong> enums</a></li></ol></li><li><a href="lib/pango/package.html"><strong aria-hidden="true">9.8.</strong> pango</a></li><li><ol class="section"><li><a href="lib/pango/bitfields.html"><strong aria-hidden="true">9.8.1.</strong> bitfields</a></li><li><a href="lib/pango/constant.html"><strong aria-hidden="true">9.8.2.</strong> constants</a></li><li><a href="lib/pango/enums.html"><strong aria-hidden="true">9.8.3.</strong> enums</a></li></ol></li><li><a href="lib/cairo/package.html"><strong aria-hidden="true">9.9.</strong> cairo</a></li><li><ol class="section"><li><a href="lib/cairo/bitfields.html"><strong aria-hidden="true">9.9.1.</strong> bitfields</a></li><li><a href="lib/cairo/constant.html"><strong aria-hidden="true">9.9.2.</strong> constants</a></li><li><a href="lib/cairo/enums.html"><strong aria-hidden="true">9.9.3.</strong> enums</a></li></ol></li></ol></li></ol>
-        </nav>
-
-        <div id="page-wrapper" class="page-wrapper">
-
-            <div class="page">
+            
+                <nav role="navigation">
                 
-                <div id="menu-bar" class="menu-bar">
-                    <div id="menu-bar-sticky-container">
-                        <div class="left-buttons">
-                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
-                                <i class="fa fa-bars"></i>
-                            </button>
-                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
-                                <i class="fa fa-paint-brush"></i>
-                            </button>
-                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
-                                <li role="none"><button role="menuitem" class="theme" id="light">Light <span class="default">(default)</span></button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
-                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
-                            </ul>
-                            
-                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
-                                <i class="fa fa-search"></i>
-                            </button>
-                            
-                        </div>
 
-                        <h1 class="menu-title">gobbi</h1> 
 
-                        <div class="right-buttons">
-                            <a href="print.html" title="Print this book" aria-label="Print this book">
-                                <i id="print-button" class="fa fa-print"></i>
-                            </a>
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter active" data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Introduction</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="introduction">Introduction</h1>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
                         </div>
                     </div>
-                </div>
-
                 
-                <div id="search-wrapper" class="hidden">
-                    <form id="searchbar-outer" class="searchbar-outer">
-                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
-                    </form>
-                    <div id="searchresults-outer" class="searchresults-outer hidden">
-                        <div id="searchresults-header" class="searchresults-header"></div>
-                        <ul id="searchresults">
-                        </ul>
-                    </div>
-                </div>
-                
-
-                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
-                <script type="text/javascript">
-                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
-                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
-                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
-                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
-                    });
-                </script>
-
-                <div id="content" class="content">
-                    <main>
-                        <a class="header" href="#gobbi" id="gobbi"><h1>gobbi</h1></a>
-<p><strong>gob</strong>ject <strong>bi</strong>ndings</p>
-<p>gobbi is a set of generated Go bindings for gobject based libraries.
-There are bindings, with varying degrees of completeness,
-for gtk, gdk, gdkpixbuf, gio, gobject, and glib.</p>
-<p>The intention is to provide the bindings required
-for writing gtk applications.
-So the focus is on supporting functions in the higher level
-libraries such as gtk, gdk, gdkpixbuf and gio.
-Much of the functionality provided by the lower level
-libraries, such as glib and gobject, is adequately supported
-in Go core packages.</p>
-
-                    </main>
-
-                    <nav class="nav-wrapper" aria-label="Page navigation">
-                        <!-- Mobile navigation buttons -->
-                        
-
-                        
-
-                        <div style="clear: both"></div>
-                    </nav>
-                </div>
             </div>
 
-            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+            
                 
-
                 
-            </nav>
+            
+        
+    </div>
 
-        </div>
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2018-11-13T19:41:46.504Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-13T19:50:48.526Z"},"basePath":".","book":{"language":""}});
+        });
+    </script>
+</div>
 
         
-
+    <script src="gitbook/gitbook.js"></script>
+    <script src="gitbook/theme.js"></script>
+    
         
-
+        <script src="gitbook/gitbook-plugin-search/search-engine.js"></script>
         
-
+    
         
-        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="gitbook/gitbook-plugin-search/search.js"></script>
         
-
-        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
-        <script src="book.js" type="text/javascript" charset="utf-8"></script>
-
-        <!-- Custom JS scripts -->
+    
         
-
+        <script src="gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
         
+    
+        
+        <script src="gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
 
     </body>
 </html>
+
