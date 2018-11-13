@@ -10,26 +10,24 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
-/*
-Describes primary purpose of the input widget. This information is
-useful for on-screen keyboards and similar input methods to decide
-which keys should be presented to the user.
-
-Note that the purpose is not meant to impose a totally strict rule
-about allowed characters, and does not replace input validation.
-It is fine for an on-screen keyboard to let the user override the
-character set restriction that is expressed by the purpose. The
-application is expected to validate the entry contents, even if
-it specified a purpose.
-
-The difference between @GTK_INPUT_PURPOSE_DIGITS and
-@GTK_INPUT_PURPOSE_NUMBER is that the former accepts only digits
-while the latter also some punctuation (like commas or points, plus,
-minus) and “e” or “E” as in 3.14E+000.
-
-This enumeration may be extended in the future; input methods should
-interpret unknown values as “free form”.
-*/
+// Describes primary purpose of the input widget. This information is
+// useful for on-screen keyboards and similar input methods to decide
+// which keys should be presented to the user.
+//
+// Note that the purpose is not meant to impose a totally strict rule
+// about allowed characters, and does not replace input validation.
+// It is fine for an on-screen keyboard to let the user override the
+// character set restriction that is expressed by the purpose. The
+// application is expected to validate the entry contents, even if
+// it specified a purpose.
+//
+// The difference between @GTK_INPUT_PURPOSE_DIGITS and
+// @GTK_INPUT_PURPOSE_NUMBER is that the former accepts only digits
+// while the latter also some punctuation (like commas or points, plus,
+// minus) and “e” or “E” as in 3.14E+000.
+//
+// This enumeration may be extended in the future; input methods should
+// interpret unknown values as “free form”.
 type InputPurpose C.GtkInputPurpose
 
 const (
@@ -55,11 +53,9 @@ const (
 	GTK_INPUT_PURPOSE_PIN InputPurpose = 9
 )
 
-/*
-Describes how #GtkLevelBar contents should be rendered.
-Note that this enumeration could be extended with additional modes
-in the future.
-*/
+// Describes how #GtkLevelBar contents should be rendered.
+// Note that this enumeration could be extended with additional modes
+// in the future.
 type LevelBarMode C.GtkLevelBarMode
 
 const (

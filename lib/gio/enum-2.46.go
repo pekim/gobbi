@@ -18,12 +18,10 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-/*
-Describes an event occurring on a #GSocketListener. See the
-#GSocketListener::event signal for more details.
-
-Additional values may be added to this type in the future.
-*/
+// Describes an event occurring on a #GSocketListener. See the
+// #GSocketListener::event signal for more details.
+//
+// Additional values may be added to this type in the future.
 type SocketListenerEvent C.GSocketListenerEvent
 
 const (
@@ -31,14 +29,10 @@ const (
 	SOCKET_LISTENER_BINDING SocketListenerEvent = 0
 	// The listener has bound a socket.
 	SOCKET_LISTENER_BOUND SocketListenerEvent = 1
-	/*
-	   The listener is about to start
-	      listening on this socket.
-	*/
+	// The listener is about to start
+	// listening on this socket.
 	SOCKET_LISTENER_LISTENING SocketListenerEvent = 2
-	/*
-	   The listener is now listening on
-	     this socket.
-	*/
+	// The listener is now listening on
+	// this socket.
 	SOCKET_LISTENER_LISTENED SocketListenerEvent = 3
 )

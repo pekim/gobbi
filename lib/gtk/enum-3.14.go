@@ -40,30 +40,22 @@ const (
 type PropagationPhase C.GtkPropagationPhase
 
 const (
-	/*
-	   Events are not delivered automatically. Those can be
-	     manually fed through gtk_event_controller_handle_event(). This should
-	     only be used when full control about when, or whether the controller
-	     handles the event is needed.
-	*/
+	// Events are not delivered automatically. Those can be
+	// manually fed through gtk_event_controller_handle_event(). This should
+	// only be used when full control about when, or whether the controller
+	// handles the event is needed.
 	GTK_PHASE_NONE PropagationPhase = 0
-	/*
-	   Events are delivered in the capture phase. The
-	     capture phase happens before the bubble phase, runs from the toplevel down
-	     to the event widget. This option should only be used on containers that
-	     might possibly handle events before their children do.
-	*/
+	// Events are delivered in the capture phase. The
+	// capture phase happens before the bubble phase, runs from the toplevel down
+	// to the event widget. This option should only be used on containers that
+	// might possibly handle events before their children do.
 	GTK_PHASE_CAPTURE PropagationPhase = 1
-	/*
-	   Events are delivered in the bubble phase. The bubble
-	     phase happens after the capture phase, and before the default handlers
-	     are run. This phase runs from the event widget, up to the toplevel.
-	*/
+	// Events are delivered in the bubble phase. The bubble
+	// phase happens after the capture phase, and before the default handlers
+	// are run. This phase runs from the event widget, up to the toplevel.
 	GTK_PHASE_BUBBLE PropagationPhase = 2
-	/*
-	   Events are delivered in the default widget event handlers,
-	     note that widget implementations must chain up on button, motion, touch and
-	     grab broken handlers for controllers in this phase to be run.
-	*/
+	// Events are delivered in the default widget event handlers,
+	// note that widget implementations must chain up on button, motion, touch and
+	// grab broken handlers for controllers in this phase to be run.
 	GTK_PHASE_TARGET PropagationPhase = 3
 )

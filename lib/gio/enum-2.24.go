@@ -32,10 +32,8 @@ const (
 	CONVERTER_FLUSHED ConverterResult = 3
 )
 
-/*
-Used to select the type of data format to use for #GZlibDecompressor
-and #GZlibCompressor.
-*/
+// Used to select the type of data format to use for #GZlibDecompressor
+// and #GZlibCompressor.
 type ZlibCompressorFormat C.GZlibCompressorFormat
 
 const (

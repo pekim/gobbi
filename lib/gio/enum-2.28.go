@@ -30,10 +30,8 @@ const (
 	TLS_AUTHENTICATION_REQUIRED TlsAuthenticationMode = 2
 )
 
-/*
-An error code used with %G_TLS_ERROR in a #GError returned from a
-TLS-related routine.
-*/
+// An error code used with %G_TLS_ERROR in a #GError returned from a
+// TLS-related routine.
 type TlsError C.GTlsError
 
 const (
@@ -43,34 +41,24 @@ const (
 	TLS_ERROR_MISC TlsError = 1
 	// A certificate could not be parsed
 	TLS_ERROR_BAD_CERTIFICATE TlsError = 2
-	/*
-	   The TLS handshake failed because the
-	     peer does not seem to be a TLS server.
-	*/
+	// The TLS handshake failed because the
+	// peer does not seem to be a TLS server.
 	TLS_ERROR_NOT_TLS TlsError = 3
-	/*
-	   The TLS handshake failed because the
-	     peer's certificate was not acceptable.
-	*/
+	// The TLS handshake failed because the
+	// peer's certificate was not acceptable.
 	TLS_ERROR_HANDSHAKE TlsError = 4
-	/*
-	   The TLS handshake failed because
-	     the server requested a client-side certificate, but none was
-	     provided. See g_tls_connection_set_certificate().
-	*/
+	// The TLS handshake failed because
+	// the server requested a client-side certificate, but none was
+	// provided. See g_tls_connection_set_certificate().
 	TLS_ERROR_CERTIFICATE_REQUIRED TlsError = 5
-	/*
-	   The TLS connection was closed without proper
-	     notice, which may indicate an attack. See
-	     g_tls_connection_set_require_close_notify().
-	*/
+	// The TLS connection was closed without proper
+	// notice, which may indicate an attack. See
+	// g_tls_connection_set_require_close_notify().
 	TLS_ERROR_EOF TlsError = 6
 )
 
-/*
-When to allow rehandshaking. See
-g_tls_connection_set_rehandshake_mode().
-*/
+// When to allow rehandshaking. See
+// g_tls_connection_set_rehandshake_mode().
 type TlsRehandshakeMode C.GTlsRehandshakeMode
 
 const (

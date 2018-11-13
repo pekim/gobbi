@@ -7,11 +7,9 @@ package pango
 // #include <stdlib.h>
 import "C"
 
-/*
-A #PangoAlignment describes how to align the lines of a #PangoLayout within the
-available space. If the #PangoLayout is set to justify
-using pango_layout_set_justify(), this only has effect for partial lines.
-*/
+// A #PangoAlignment describes how to align the lines of a #PangoLayout within the
+// available space. If the #PangoLayout is set to justify
+// using pango_layout_set_justify(), this only has effect for partial lines.
 type Alignment C.PangoAlignment
 
 const (
@@ -23,14 +21,12 @@ const (
 	PANGO_ALIGN_RIGHT Alignment = 2
 )
 
-/*
-The #PangoAttrType
-distinguishes between different types of attributes. Along with the
-predefined values, it is possible to allocate additional values
-for custom attributes using pango_attr_type_register(). The predefined
-values are given below. The type of structure used to store the
-attribute is listed in parentheses after the description.
-*/
+// The #PangoAttrType
+// distinguishes between different types of attributes. Along with the
+// predefined values, it is possible to allocate additional values
+// for custom attributes using pango_attr_type_register(). The predefined
+// values are given below. The type of structure used to store the
+// attribute is listed in parentheses after the description.
 type AttrType C.PangoAttrType
 
 const (
@@ -88,49 +84,41 @@ const (
 	PANGO_ATTR_BACKGROUND_ALPHA AttrType = 25
 )
 
-/*
-Used to indicate how well a font can represent a particular Unicode
-character point for a particular script.
-*/
+// Used to indicate how well a font can represent a particular Unicode
+// character point for a particular script.
 type CoverageLevel C.PangoCoverageLevel
 
 const (
 	// The character is not representable with the font.
 	PANGO_COVERAGE_NONE CoverageLevel = 0
-	/*
-	   The character is represented in a way that may be
-	   comprehensible but is not the correct graphical form.
-	   For instance, a Hangul character represented as a
-	   a sequence of Jamos, or a Latin transliteration of a Cyrillic word.
-	*/
+	// The character is represented in a way that may be
+	// comprehensible but is not the correct graphical form.
+	// For instance, a Hangul character represented as a
+	// a sequence of Jamos, or a Latin transliteration of a Cyrillic word.
 	PANGO_COVERAGE_FALLBACK CoverageLevel = 1
-	/*
-	   The character is represented as basically the correct
-	   graphical form, but with a stylistic variant inappropriate for
-	   the current script.
-	*/
+	// The character is represented as basically the correct
+	// graphical form, but with a stylistic variant inappropriate for
+	// the current script.
 	PANGO_COVERAGE_APPROXIMATE CoverageLevel = 2
 	// The character is represented as the correct graphical form.
 	PANGO_COVERAGE_EXACT CoverageLevel = 3
 )
 
-/*
-The #PangoDirection type represents a direction in the
-Unicode bidirectional algorithm; not every value in this
-enumeration makes sense for every usage of #PangoDirection;
-for example, the return value of pango_unichar_direction()
-and pango_find_base_dir() cannot be %PANGO_DIRECTION_WEAK_LTR
-or %PANGO_DIRECTION_WEAK_RTL, since every character is either
-neutral or has a strong direction; on the other hand
-%PANGO_DIRECTION_NEUTRAL doesn't make sense to pass
-to pango_itemize_with_base_dir().
-
-The %PANGO_DIRECTION_TTB_LTR, %PANGO_DIRECTION_TTB_RTL
-values come from an earlier interpretation of this
-enumeration as the writing direction of a block of
-text and are no longer used; See #PangoGravity for how
-vertical text is handled in Pango.
-*/
+// The #PangoDirection type represents a direction in the
+// Unicode bidirectional algorithm; not every value in this
+// enumeration makes sense for every usage of #PangoDirection;
+// for example, the return value of pango_unichar_direction()
+// and pango_find_base_dir() cannot be %PANGO_DIRECTION_WEAK_LTR
+// or %PANGO_DIRECTION_WEAK_RTL, since every character is either
+// neutral or has a strong direction; on the other hand
+// %PANGO_DIRECTION_NEUTRAL doesn't make sense to pass
+// to pango_itemize_with_base_dir().
+//
+// The %PANGO_DIRECTION_TTB_LTR, %PANGO_DIRECTION_TTB_RTL
+// values come from an earlier interpretation of this
+// enumeration as the writing direction of a block of
+// text and are no longer used; See #PangoGravity for how
+// vertical text is handled in Pango.
 type Direction C.PangoDirection
 
 const (
@@ -138,15 +126,11 @@ const (
 	PANGO_DIRECTION_LTR Direction = 0
 	// A strong right-to-left direction
 	PANGO_DIRECTION_RTL Direction = 1
-	/*
-	   Deprecated value; treated the
-	     same as %PANGO_DIRECTION_RTL.
-	*/
+	// Deprecated value; treated the
+	// same as %PANGO_DIRECTION_RTL.
 	PANGO_DIRECTION_TTB_LTR Direction = 2
-	/*
-	   Deprecated value; treated the
-	     same as %PANGO_DIRECTION_LTR
-	*/
+	// Deprecated value; treated the
+	// same as %PANGO_DIRECTION_LTR
 	PANGO_DIRECTION_TTB_RTL Direction = 3
 	// A weak left-to-right direction
 	PANGO_DIRECTION_WEAK_LTR Direction = 4
@@ -156,13 +140,11 @@ const (
 	PANGO_DIRECTION_NEUTRAL Direction = 6
 )
 
-/*
-The #PangoEllipsizeMode type describes what sort of (if any)
-ellipsization should be applied to a line of text. In
-the ellipsization process characters are removed from the
-text in order to make it fit to a given width and replaced
-with an ellipsis.
-*/
+// The #PangoEllipsizeMode type describes what sort of (if any)
+// ellipsization should be applied to a line of text. In
+// the ellipsization process characters are removed from the
+// text in order to make it fit to a given width and replaced
+// with an ellipsis.
 type EllipsizeMode C.PangoEllipsizeMode
 
 const (
@@ -176,16 +158,14 @@ const (
 	PANGO_ELLIPSIZE_END EllipsizeMode = 3
 )
 
-/*
-The #PangoScript enumeration identifies different writing
-systems. The values correspond to the names as defined in the
-Unicode standard.
-Note that new types may be added in the future. Applications should be ready
-to handle unknown values.  This enumeration is interchangeable with
-#GUnicodeScript.  See <ulink
-url="http://www.unicode.org/reports/tr24/">Unicode Standard Annex
-#24: Script names</ulink>.
-*/
+// The #PangoScript enumeration identifies different writing
+// systems. The values correspond to the names as defined in the
+// Unicode standard.
+// Note that new types may be added in the future. Applications should be ready
+// to handle unknown values.  This enumeration is interchangeable with
+// #GUnicodeScript.  See <ulink
+// url="http://www.unicode.org/reports/tr24/">Unicode Standard Annex
+// #24: Script names</ulink>.
 type Script C.PangoScript
 
 const (
@@ -193,10 +173,8 @@ const (
 	PANGO_SCRIPT_INVALID_CODE Script = -1
 	// a character used by multiple different scripts
 	PANGO_SCRIPT_COMMON Script = 0
-	/*
-	   a mark glyph that takes its script from the
-	   base glyph to which it is attached
-	*/
+	// a mark glyph that takes its script from the
+	// base glyph to which it is attached
 	PANGO_SCRIPT_INHERITED Script = 1
 	// Arabic
 	PANGO_SCRIPT_ARABIC Script = 2
@@ -430,10 +408,8 @@ const (
 	PANGO_SCRIPT_SIGNWRITING Script = 116
 )
 
-/*
-An enumeration specifying the width of the font relative to other designs
-within a family.
-*/
+// An enumeration specifying the width of the font relative to other designs
+// within a family.
 type Stretch C.PangoStretch
 
 const (
@@ -477,11 +453,9 @@ const (
 	PANGO_TAB_LEFT TabAlign = 0
 )
 
-/*
-The #PangoUnderline enumeration is used to specify
-whether text should be underlined, and if so, the type
-of underlining.
-*/
+// The #PangoUnderline enumeration is used to specify
+// whether text should be underlined, and if so, the type
+// of underlining.
 type Underline C.PangoUnderline
 
 const (
@@ -491,22 +465,18 @@ const (
 	PANGO_UNDERLINE_SINGLE Underline = 1
 	// a double underline should be drawn
 	PANGO_UNDERLINE_DOUBLE Underline = 2
-	/*
-	   a single underline should be drawn at a position
-	   beneath the ink extents of the text being
-	   underlined. This should be used only for underlining
-	   single characters, such as for keyboard
-	   accelerators. %PANGO_UNDERLINE_SINGLE should
-	   be used for extended portions of text.
-	*/
+	// a single underline should be drawn at a position
+	// beneath the ink extents of the text being
+	// underlined. This should be used only for underlining
+	// single characters, such as for keyboard
+	// accelerators. %PANGO_UNDERLINE_SINGLE should
+	// be used for extended portions of text.
 	PANGO_UNDERLINE_LOW Underline = 3
-	/*
-	   a wavy underline should be drawn below.
-	   This underline is typically used to indicate
-	   an error such as a possilble mispelling; in some
-	   cases a contrasting color may automatically
-	   be used. This type of underlining is available since Pango 1.4.
-	*/
+	// a wavy underline should be drawn below.
+	// This underline is typically used to indicate
+	// an error such as a possilble mispelling; in some
+	// cases a contrasting color may automatically
+	// be used. This type of underlining is available since Pango 1.4.
 	PANGO_UNDERLINE_ERROR Underline = 4
 )
 
@@ -516,17 +486,13 @@ type Variant C.PangoVariant
 const (
 	// A normal font.
 	PANGO_VARIANT_NORMAL Variant = 0
-	/*
-	   A font with the lower case characters
-	   replaced by smaller variants of the capital characters.
-	*/
+	// A font with the lower case characters
+	// replaced by smaller variants of the capital characters.
 	PANGO_VARIANT_SMALL_CAPS Variant = 1
 )
 
-/*
-An enumeration specifying the weight (boldness) of a font. This is a numerical
-value ranging from 100 to 1000, but there are some predefined values:
-*/
+// An enumeration specifying the weight (boldness) of a font. This is a numerical
+// value ranging from 100 to 1000, but there are some predefined values:
 type Weight C.PangoWeight
 
 const (
@@ -564,9 +530,7 @@ const (
 	PANGO_WRAP_WORD WrapMode = 0
 	// wrap lines at character boundaries.
 	PANGO_WRAP_CHAR WrapMode = 1
-	/*
-	   wrap lines at word boundaries, but fall back to character boundaries if there is not
-	   enough space for a full word.
-	*/
+	// wrap lines at word boundaries, but fall back to character boundaries if there is not
+	// enough space for a full word.
 	PANGO_WRAP_WORD_CHAR WrapMode = 2
 )

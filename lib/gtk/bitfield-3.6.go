@@ -10,17 +10,15 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
-/*
-Describes hints that might be taken into account by input methods
-or applications. Note that input methods may already tailor their
-behaviour according to the #GtkInputPurpose of the entry.
-
-Some common sense is expected when using these flags - mixing
-@GTK_INPUT_HINT_LOWERCASE with any of the uppercase hints makes no sense.
-
-This enumeration may be extended in the future; input methods should
-ignore unknown values.
-*/
+// Describes hints that might be taken into account by input methods
+// or applications. Note that input methods may already tailor their
+// behaviour according to the #GtkInputPurpose of the entry.
+//
+// Some common sense is expected when using these flags - mixing
+// @GTK_INPUT_HINT_LOWERCASE with any of the uppercase hints makes no sense.
+//
+// This enumeration may be extended in the future; input methods should
+// ignore unknown values.
 type InputHints C.GtkInputHints
 
 const (
@@ -36,20 +34,14 @@ const (
 	GTK_INPUT_HINT_LOWERCASE InputHints = 8
 	// Suggest to capitalize all text
 	GTK_INPUT_HINT_UPPERCASE_CHARS InputHints = 16
-	/*
-	   Suggest to capitalize the first
-	       character of each word
-	*/
+	// Suggest to capitalize the first
+	// character of each word
 	GTK_INPUT_HINT_UPPERCASE_WORDS InputHints = 32
-	/*
-	   Suggest to capitalize the
-	       first word of each sentence
-	*/
+	// Suggest to capitalize the
+	// first word of each sentence
 	GTK_INPUT_HINT_UPPERCASE_SENTENCES InputHints = 64
-	/*
-	   Suggest to not show an onscreen keyboard
-	       (e.g for a calculator that already has all the keys).
-	*/
+	// Suggest to not show an onscreen keyboard
+	// (e.g for a calculator that already has all the keys).
 	GTK_INPUT_HINT_INHIBIT_OSK InputHints = 128
 	// The text is vertical. Since 3.18
 	GTK_INPUT_HINT_VERTICAL_WRITING InputHints = 256

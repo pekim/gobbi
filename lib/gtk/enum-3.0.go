@@ -10,20 +10,16 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
-/*
-The type of license for an application.
-
-This enumeration can be expanded at later date.
-*/
+// The type of license for an application.
+//
+// This enumeration can be expanded at later date.
 type License C.GtkLicense
 
 const (
 	// No license specified
 	GTK_LICENSE_UNKNOWN License = 0
-	/*
-	   A license text is going to be specified by the
-	     developer
-	*/
+	// A license text is going to be specified by the
+	// developer
 	GTK_LICENSE_CUSTOM License = 1
 	// The GNU General Public License, version 2.0 or later
 	GTK_LICENSE_GPL_2_0 License = 2

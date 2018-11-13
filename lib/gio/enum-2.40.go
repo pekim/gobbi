@@ -18,11 +18,9 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-/*
-Flags for g_tls_interaction_request_certificate(),
-g_tls_interaction_request_certificate_async(), and
-g_tls_interaction_invoke_request_certificate().
-*/
+// Flags for g_tls_interaction_request_certificate(),
+// g_tls_interaction_request_certificate_async(), and
+// g_tls_interaction_invoke_request_certificate().
 type TlsCertificateRequestFlags C.GTlsCertificateRequestFlags
 
 const (

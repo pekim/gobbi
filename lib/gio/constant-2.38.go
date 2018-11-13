@@ -18,13 +18,11 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-/*
-The menu item attribute which holds the icon of the item.
-
-The icon is stored in the format returned by g_icon_serialize().
-
-This attribute is intended only to represent 'noun' icons such as
-favicons for a webpage, or application icons.  It should not be used
-for 'verbs' (ie: stock icons).
-*/
+// The menu item attribute which holds the icon of the item.
+//
+// The icon is stored in the format returned by g_icon_serialize().
+//
+// This attribute is intended only to represent 'noun' icons such as
+// favicons for a webpage, or application icons.  It should not be used
+// for 'verbs' (ie: stock icons).
 const MENU_ATTRIBUTE_ICON string = C.G_MENU_ATTRIBUTE_ICON

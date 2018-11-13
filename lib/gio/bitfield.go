@@ -31,11 +31,9 @@ const (
 	APP_INFO_CREATE_SUPPORTS_STARTUP_NOTIFICATION AppInfoCreateFlags = 4
 )
 
-/*
-#GAskPasswordFlags are used to request specific information from the
-user, or to notify the user of their choices in an authentication
-situation.
-*/
+// #GAskPasswordFlags are used to request specific information from the
+// user, or to notify the user of their choices in an authentication
+// situation.
 type AskPasswordFlags C.GAskPasswordFlags
 
 const (
@@ -89,21 +87,17 @@ type FileCreateFlags C.GFileCreateFlags
 const (
 	// No flags set.
 	FILE_CREATE_NONE FileCreateFlags = 0
-	/*
-	   Create a file that can only be
-	      accessed by the current user.
-	*/
+	// Create a file that can only be
+	// accessed by the current user.
 	FILE_CREATE_PRIVATE FileCreateFlags = 1
-	/*
-	   Replace the destination
-	      as if it didn't exist before. Don't try to keep any old
-	      permissions, replace instead of following links. This
-	      is generally useful if you're doing a "copy over"
-	      rather than a "save new version of" replace operation.
-	      You can think of it as "unlink destination" before
-	      writing to it, although the implementation may not
-	      be exactly like that. Since 2.20
-	*/
+	// Replace the destination
+	// as if it didn't exist before. Don't try to keep any old
+	// permissions, replace instead of following links. This
+	// is generally useful if you're doing a "copy over"
+	// rather than a "save new version of" replace operation.
+	// You can think of it as "unlink destination" before
+	// writing to it, although the implementation may not
+	// be exactly like that. Since 2.20
 	FILE_CREATE_REPLACE_DESTINATION FileCreateFlags = 2
 )
 
@@ -115,26 +109,20 @@ const (
 	FILE_MONITOR_NONE FileMonitorFlags = 0
 	// Watch for mount events.
 	FILE_MONITOR_WATCH_MOUNTS FileMonitorFlags = 1
-	/*
-	   Pair DELETED and CREATED events caused
-	     by file renames (moves) and send a single G_FILE_MONITOR_EVENT_MOVED
-	     event instead (NB: not supported on all backends; the default
-	     behaviour -without specifying this flag- is to send single DELETED
-	     and CREATED events).  Deprecated since 2.46: use
-	     %G_FILE_MONITOR_WATCH_MOVES instead.
-	*/
+	// Pair DELETED and CREATED events caused
+	// by file renames (moves) and send a single G_FILE_MONITOR_EVENT_MOVED
+	// event instead (NB: not supported on all backends; the default
+	// behaviour -without specifying this flag- is to send single DELETED
+	// and CREATED events).  Deprecated since 2.46: use
+	// %G_FILE_MONITOR_WATCH_MOVES instead.
 	FILE_MONITOR_SEND_MOVED FileMonitorFlags = 2
-	/*
-	   Watch for changes to the file made
-	     via another hard link. Since 2.36.
-	*/
+	// Watch for changes to the file made
+	// via another hard link. Since 2.36.
 	FILE_MONITOR_WATCH_HARD_LINKS FileMonitorFlags = 4
-	/*
-	   Watch for rename operations on a
-	     monitored directory.  This causes %G_FILE_MONITOR_EVENT_RENAMED,
-	     %G_FILE_MONITOR_EVENT_MOVED_IN and %G_FILE_MONITOR_EVENT_MOVED_OUT
-	     events to be emitted when possible.  Since: 2.46.
-	*/
+	// Watch for rename operations on a
+	// monitored directory.  This causes %G_FILE_MONITOR_EVENT_RENAMED,
+	// %G_FILE_MONITOR_EVENT_MOVED_IN and %G_FILE_MONITOR_EVENT_MOVED_OUT
+	// events to be emitted when possible.  Since: 2.46.
 	FILE_MONITOR_WATCH_MOVES FileMonitorFlags = 8
 )
 
@@ -162,10 +150,8 @@ type MountUnmountFlags C.GMountUnmountFlags
 const (
 	// No flags set.
 	MOUNT_UNMOUNT_NONE MountUnmountFlags = 0
-	/*
-	   Unmount even if there are outstanding
-	    file operations on the mount.
-	*/
+	// Unmount even if there are outstanding
+	// file operations on the mount.
 	MOUNT_UNMOUNT_FORCE MountUnmountFlags = 1
 )
 
@@ -175,49 +161,35 @@ type OutputStreamSpliceFlags C.GOutputStreamSpliceFlags
 const (
 	// Do not close either stream.
 	OUTPUT_STREAM_SPLICE_NONE OutputStreamSpliceFlags = 0
-	/*
-	   Close the source stream after
-	       the splice.
-	*/
+	// Close the source stream after
+	// the splice.
 	OUTPUT_STREAM_SPLICE_CLOSE_SOURCE OutputStreamSpliceFlags = 1
-	/*
-	   Close the target stream after
-	       the splice.
-	*/
+	// Close the target stream after
+	// the splice.
 	OUTPUT_STREAM_SPLICE_CLOSE_TARGET OutputStreamSpliceFlags = 2
 )
 
-/*
-Flags used when creating a binding. These flags determine in which
-direction the binding works. The default is to synchronize in both
-directions.
-*/
+// Flags used when creating a binding. These flags determine in which
+// direction the binding works. The default is to synchronize in both
+// directions.
 type SettingsBindFlags C.GSettingsBindFlags
 
 const (
 	// Equivalent to `G_SETTINGS_BIND_GET|G_SETTINGS_BIND_SET`
 	SETTINGS_BIND_DEFAULT SettingsBindFlags = 0
-	/*
-	   Update the #GObject property when the setting changes.
-	       It is an error to use this flag if the property is not writable.
-	*/
+	// Update the #GObject property when the setting changes.
+	// It is an error to use this flag if the property is not writable.
 	SETTINGS_BIND_GET SettingsBindFlags = 1
-	/*
-	   Update the setting when the #GObject property changes.
-	       It is an error to use this flag if the property is not readable.
-	*/
+	// Update the setting when the #GObject property changes.
+	// It is an error to use this flag if the property is not readable.
 	SETTINGS_BIND_SET SettingsBindFlags = 2
 	// Do not try to bind a "sensitivity" property to the writability of the setting
 	SETTINGS_BIND_NO_SENSITIVITY SettingsBindFlags = 4
-	/*
-	   When set in addition to #G_SETTINGS_BIND_GET, set the #GObject property
-	       value initially from the setting, but do not listen for changes of the setting
-	*/
+	// When set in addition to #G_SETTINGS_BIND_GET, set the #GObject property
+	// value initially from the setting, but do not listen for changes of the setting
 	SETTINGS_BIND_GET_NO_CHANGES SettingsBindFlags = 8
-	/*
-	   When passed to g_settings_bind(), uses a pair of mapping functions that invert
-	       the boolean value when mapping between the setting and the property.  The setting and property must both
-	       be booleans.  You cannot pass this flag to g_settings_bind_with_mapping().
-	*/
+	// When passed to g_settings_bind(), uses a pair of mapping functions that invert
+	// the boolean value when mapping between the setting and the property.  The setting and property must both
+	// be booleans.  You cannot pass this flag to g_settings_bind_with_mapping().
 	SETTINGS_BIND_INVERT_BOOLEAN SettingsBindFlags = 16
 )

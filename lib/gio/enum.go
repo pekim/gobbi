@@ -17,10 +17,8 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-/*
-#GDataStreamByteOrder is used to ensure proper endianness of streaming data sources
-across various machine architectures.
-*/
+// #GDataStreamByteOrder is used to ensure proper endianness of streaming data sources
+// across various machine architectures.
 type DataStreamByteOrder C.GDataStreamByteOrder
 
 const (
@@ -102,28 +100,20 @@ const (
 	FILE_MONITOR_EVENT_PRE_UNMOUNT FileMonitorEvent = 5
 	// the file location was unmounted.
 	FILE_MONITOR_EVENT_UNMOUNTED FileMonitorEvent = 6
-	/*
-	   the file was moved -- only sent if the
-	     (deprecated) %G_FILE_MONITOR_SEND_MOVED flag is set
-	*/
+	// the file was moved -- only sent if the
+	// (deprecated) %G_FILE_MONITOR_SEND_MOVED flag is set
 	FILE_MONITOR_EVENT_MOVED FileMonitorEvent = 7
-	/*
-	   the file was renamed within the
-	     current directory -- only sent if the %G_FILE_MONITOR_WATCH_MOVES
-	     flag is set.  Since: 2.46.
-	*/
+	// the file was renamed within the
+	// current directory -- only sent if the %G_FILE_MONITOR_WATCH_MOVES
+	// flag is set.  Since: 2.46.
 	FILE_MONITOR_EVENT_RENAMED FileMonitorEvent = 8
-	/*
-	   the file was moved into the
-	     monitored directory from another location -- only sent if the
-	     %G_FILE_MONITOR_WATCH_MOVES flag is set.  Since: 2.46.
-	*/
+	// the file was moved into the
+	// monitored directory from another location -- only sent if the
+	// %G_FILE_MONITOR_WATCH_MOVES flag is set.  Since: 2.46.
 	FILE_MONITOR_EVENT_MOVED_IN FileMonitorEvent = 9
-	/*
-	   the file was moved out of the
-	     monitored directory to another location -- only sent if the
-	     %G_FILE_MONITOR_WATCH_MOVES flag is set.  Since: 2.46
-	*/
+	// the file was moved out of the
+	// monitored directory to another location -- only sent if the
+	// %G_FILE_MONITOR_WATCH_MOVES flag is set.  Since: 2.46
 	FILE_MONITOR_EVENT_MOVED_OUT FileMonitorEvent = 10
 )
 
@@ -137,15 +127,11 @@ const (
 	FILE_TYPE_REGULAR FileType = 1
 	// File handle represents a directory.
 	FILE_TYPE_DIRECTORY FileType = 2
-	/*
-	   File handle represents a symbolic link
-	      (Unix systems).
-	*/
+	// File handle represents a symbolic link
+	// (Unix systems).
 	FILE_TYPE_SYMBOLIC_LINK FileType = 3
-	/*
-	   File is a "special" file, such as a socket, fifo,
-	      block device, or character device.
-	*/
+	// File is a "special" file, such as a socket, fifo,
+	// block device, or character device.
 	FILE_TYPE_SPECIAL FileType = 4
 	// File is a shortcut (Windows systems).
 	FILE_TYPE_SHORTCUT FileType = 5
@@ -153,11 +139,9 @@ const (
 	FILE_TYPE_MOUNTABLE FileType = 6
 )
 
-/*
-Indicates a hint from the file system whether files should be
-previewed in a file manager. Returned as the value of the key
-#G_FILE_ATTRIBUTE_FILESYSTEM_USE_PREVIEW.
-*/
+// Indicates a hint from the file system whether files should be
+// previewed in a file manager. Returned as the value of the key
+// #G_FILE_ATTRIBUTE_FILESYSTEM_USE_PREVIEW.
 type FilesystemPreviewType C.GFilesystemPreviewType
 
 const (
@@ -169,30 +153,26 @@ const (
 	FILESYSTEM_PREVIEW_TYPE_NEVER FilesystemPreviewType = 2
 )
 
-/*
-Error codes returned by GIO functions.
-
-Note that this domain may be extended in future GLib releases. In
-general, new error codes either only apply to new APIs, or else
-replace %G_IO_ERROR_FAILED in cases that were not explicitly
-distinguished before. You should therefore avoid writing code like
-|[<!-- language="C" -->
-if (g_error_matches (error, G_IO_ERROR, G_IO_ERROR_FAILED))
-  {
-    // Assume that this is EPRINTERONFIRE
-    ...
-  }
-]|
-but should instead treat all unrecognized error codes the same as
-#G_IO_ERROR_FAILED.
-*/
+// Error codes returned by GIO functions.
+//
+// Note that this domain may be extended in future GLib releases. In
+// general, new error codes either only apply to new APIs, or else
+// replace %G_IO_ERROR_FAILED in cases that were not explicitly
+// distinguished before. You should therefore avoid writing code like
+// |[<!-- language="C" -->
+// if (g_error_matches (error, G_IO_ERROR, G_IO_ERROR_FAILED))
+// {
+// Assume that this is EPRINTERONFIRE
+// ...
+// }
+// ]|
+// but should instead treat all unrecognized error codes the same as
+// #G_IO_ERROR_FAILED.
 type IOErrorEnum C.GIOErrorEnum
 
 const (
-	/*
-	   Generic error condition for when an operation fails
-	       and no more specific #GIOErrorEnum value is defined.
-	*/
+	// Generic error condition for when an operation fails
+	// and no more specific #GIOErrorEnum value is defined.
 	IO_ERROR_FAILED IOErrorEnum = 0
 	// File not found.
 	IO_ERROR_NOT_FOUND IOErrorEnum = 1
@@ -252,16 +232,12 @@ const (
 	IO_ERROR_HOST_NOT_FOUND IOErrorEnum = 28
 	// Operation would merge files.
 	IO_ERROR_WOULD_MERGE IOErrorEnum = 29
-	/*
-	   Operation failed and a helper program has
-	       already interacted with the user. Do not display any error dialog.
-	*/
+	// Operation failed and a helper program has
+	// already interacted with the user. Do not display any error dialog.
 	IO_ERROR_FAILED_HANDLED IOErrorEnum = 30
-	/*
-	   The current process has too many files
-	       open and can't open any more. Duplicate descriptors do count toward
-	       this limit. Since 2.20
-	*/
+	// The current process has too many files
+	// open and can't open any more. Duplicate descriptors do count toward
+	// this limit. Since 2.20
 	IO_ERROR_TOO_MANY_OPEN_FILES IOErrorEnum = 31
 	// The object has not been initialized. Since 2.22
 	IO_ERROR_NOT_INITIALIZED IOErrorEnum = 32
@@ -271,13 +247,11 @@ const (
 	IO_ERROR_PARTIAL_INPUT IOErrorEnum = 34
 	// The input data was invalid. Since 2.24
 	IO_ERROR_INVALID_DATA IOErrorEnum = 35
-	/*
-	   A remote object generated an error that
-	       doesn't correspond to a locally registered #GError error
-	       domain. Use g_dbus_error_get_remote_error() to extract the D-Bus
-	       error name and g_dbus_error_strip_remote_error() to fix up the
-	       message so it matches what was received on the wire. Since 2.26.
-	*/
+	// A remote object generated an error that
+	// doesn't correspond to a locally registered #GError error
+	// domain. Use g_dbus_error_get_remote_error() to extract the D-Bus
+	// error name and g_dbus_error_strip_remote_error() to fix up the
+	// message so it matches what was received on the wire. Since 2.26.
 	IO_ERROR_DBUS_ERROR IOErrorEnum = 36
 	// Host unreachable. Since 2.26
 	IO_ERROR_HOST_UNREACHABLE IOErrorEnum = 37
@@ -291,20 +265,16 @@ const (
 	IO_ERROR_PROXY_AUTH_FAILED IOErrorEnum = 41
 	// Proxy server needs authentication. Since 2.26
 	IO_ERROR_PROXY_NEED_AUTH IOErrorEnum = 42
-	/*
-	   Proxy connection is not allowed by ruleset.
-	       Since 2.26
-	*/
+	// Proxy connection is not allowed by ruleset.
+	// Since 2.26
 	IO_ERROR_PROXY_NOT_ALLOWED IOErrorEnum = 43
 	// Broken pipe. Since 2.36
 	IO_ERROR_BROKEN_PIPE IOErrorEnum = 44
-	/*
-	   Connection closed by peer. Note that this
-	       is the same code as %G_IO_ERROR_BROKEN_PIPE; before 2.44 some
-	       "connection closed" errors returned %G_IO_ERROR_BROKEN_PIPE, but others
-	       returned %G_IO_ERROR_FAILED. Now they should all return the same
-	       value, which has this more logical name. Since 2.44.
-	*/
+	// Connection closed by peer. Note that this
+	// is the same code as %G_IO_ERROR_BROKEN_PIPE; before 2.44 some
+	// "connection closed" errors returned %G_IO_ERROR_BROKEN_PIPE, but others
+	// returned %G_IO_ERROR_FAILED. Now they should all return the same
+	// value, which has this more logical name. Since 2.44.
 	IO_ERROR_CONNECTION_CLOSED IOErrorEnum = 44
 	// Transport endpoint is not connected. Since 2.44
 	IO_ERROR_NOT_CONNECTED IOErrorEnum = 45
@@ -312,36 +282,26 @@ const (
 	IO_ERROR_MESSAGE_TOO_LARGE IOErrorEnum = 46
 )
 
-/*
-#GMountOperationResult is returned as a result when a request for
-information is send by the mounting operation.
-*/
+// #GMountOperationResult is returned as a result when a request for
+// information is send by the mounting operation.
 type MountOperationResult C.GMountOperationResult
 
 const (
-	/*
-	   The request was fulfilled and the
-	       user specified data is now available
-	*/
+	// The request was fulfilled and the
+	// user specified data is now available
 	MOUNT_OPERATION_HANDLED MountOperationResult = 0
-	/*
-	   The user requested the mount operation
-	       to be aborted
-	*/
+	// The user requested the mount operation
+	// to be aborted
 	MOUNT_OPERATION_ABORTED MountOperationResult = 1
-	/*
-	   The request was unhandled (i.e. not
-	       implemented)
-	*/
+	// The request was unhandled (i.e. not
+	// implemented)
 	MOUNT_OPERATION_UNHANDLED MountOperationResult = 2
 )
 
-/*
-#GPasswordSave is used to indicate the lifespan of a saved password.
-
-#Gvfs stores passwords in the Gnome keyring when this flag allows it
-to, and later retrieves it again from there.
-*/
+// #GPasswordSave is used to indicate the lifespan of a saved password.
+//
+// #Gvfs stores passwords in the Gnome keyring when this flag allows it
+// to, and later retrieves it again from there.
 type PasswordSave C.GPasswordSave
 
 const (

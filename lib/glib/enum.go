@@ -17,19 +17,15 @@ const (
 	BOOKMARK_FILE_ERROR_INVALID_URI BookmarkFileError = 0
 	// a requested field was not found
 	BOOKMARK_FILE_ERROR_INVALID_VALUE BookmarkFileError = 1
-	/*
-	   a requested application did
-	       not register a bookmark
-	*/
+	// a requested application did
+	// not register a bookmark
 	BOOKMARK_FILE_ERROR_APP_NOT_REGISTERED BookmarkFileError = 2
 	// a requested URI was not found
 	BOOKMARK_FILE_ERROR_URI_NOT_FOUND BookmarkFileError = 3
 	// document was ill formed
 	BOOKMARK_FILE_ERROR_READ BookmarkFileError = 4
-	/*
-	   the text being parsed was
-	       in an unknown encoding
-	*/
+	// the text being parsed was
+	// in an unknown encoding
 	BOOKMARK_FILE_ERROR_UNKNOWN_ENCODING BookmarkFileError = 5
 	// an error occurred while writing
 	BOOKMARK_FILE_ERROR_WRITE BookmarkFileError = 6
@@ -41,16 +37,12 @@ const (
 type ConvertError C.GConvertError
 
 const (
-	/*
-	   Conversion between the requested character
-	       sets is not supported.
-	*/
+	// Conversion between the requested character
+	// sets is not supported.
 	CONVERT_ERROR_NO_CONVERSION ConvertError = 0
-	/*
-	   Invalid byte sequence in conversion input;
-	      or the character sequence could not be represented in the target
-	      character set.
-	*/
+	// Invalid byte sequence in conversion input;
+	// or the character sequence could not be represented in the target
+	// character set.
 	CONVERT_ERROR_ILLEGAL_SEQUENCE ConvertError = 1
 	// Conversion failed for some reason.
 	CONVERT_ERROR_FAILED ConvertError = 2
@@ -62,18 +54,14 @@ const (
 	CONVERT_ERROR_NOT_ABSOLUTE_PATH ConvertError = 5
 	// No memory available. Since: 2.40
 	CONVERT_ERROR_NO_MEMORY ConvertError = 6
-	/*
-	   An embedded NUL character is present in
-	       conversion output where a NUL-terminated string is expected.
-	       Since: 2.56
-	*/
+	// An embedded NUL character is present in
+	// conversion output where a NUL-terminated string is expected.
+	// Since: 2.56
 	CONVERT_ERROR_EMBEDDED_NUL ConvertError = 7
 )
 
-/*
-This enumeration isn't used in the API, but may be useful if you need
-to mark a number as a day, month, or year.
-*/
+// This enumeration isn't used in the API, but may be useful if you need
+// to mark a number as a day, month, or year.
 type DateDMY C.GDateDMY
 
 const (
@@ -85,10 +73,8 @@ const (
 	DATE_YEAR DateDMY = 2
 )
 
-/*
-Enumeration representing a month; values are #G_DATE_JANUARY,
-#G_DATE_FEBRUARY, etc. #G_DATE_BAD_MONTH is the invalid value.
-*/
+// Enumeration representing a month; values are #G_DATE_JANUARY,
+// #G_DATE_FEBRUARY, etc. #G_DATE_BAD_MONTH is the invalid value.
 type DateMonth C.GDateMonth
 
 const (
@@ -120,10 +106,8 @@ const (
 	DATE_DECEMBER DateMonth = 12
 )
 
-/*
-Enumeration representing a day of the week; #G_DATE_MONDAY,
-#G_DATE_TUESDAY, etc. #G_DATE_BAD_WEEKDAY is an invalid weekday.
-*/
+// Enumeration representing a day of the week; #G_DATE_MONDAY,
+// #G_DATE_TUESDAY, etc. #G_DATE_BAD_WEEKDAY is an invalid weekday.
 type DateWeekday C.GDateWeekday
 
 const (
@@ -145,10 +129,8 @@ const (
 	DATE_SUNDAY DateWeekday = 7
 )
 
-/*
-The possible errors, used in the @v_error field
-of #GTokenValue, when the token is a %G_TOKEN_ERROR.
-*/
+// The possible errors, used in the @v_error field
+// of #GTokenValue, when the token is a %G_TOKEN_ERROR.
 type ErrorType C.GErrorType
 
 const (
@@ -170,160 +152,112 @@ const (
 	ERR_FLOAT_MALFORMED ErrorType = 7
 )
 
-/*
-Values corresponding to @errno codes returned from file operations
-on UNIX. Unlike @errno codes, GFileError values are available on
-all systems, even Windows. The exact meaning of each code depends
-on what sort of file operation you were performing; the UNIX
-documentation gives more details. The following error code descriptions
-come from the GNU C Library manual, and are under the copyright
-of that manual.
-
-It's not very portable to make detailed assumptions about exactly
-which errors will be returned from a given operation. Some errors
-don't occur on some systems, etc., sometimes there are subtle
-differences in when a system will report a given error, etc.
-*/
+// Values corresponding to @errno codes returned from file operations
+// on UNIX. Unlike @errno codes, GFileError values are available on
+// all systems, even Windows. The exact meaning of each code depends
+// on what sort of file operation you were performing; the UNIX
+// documentation gives more details. The following error code descriptions
+// come from the GNU C Library manual, and are under the copyright
+// of that manual.
+//
+// It's not very portable to make detailed assumptions about exactly
+// which errors will be returned from a given operation. Some errors
+// don't occur on some systems, etc., sometimes there are subtle
+// differences in when a system will report a given error, etc.
 type FileError C.GFileError
 
 const (
-	/*
-	   Operation not permitted; only the owner of
-	       the file (or other resource) or processes with special privileges
-	       can perform the operation.
-	*/
+	// Operation not permitted; only the owner of
+	// the file (or other resource) or processes with special privileges
+	// can perform the operation.
 	FILE_ERROR_EXIST FileError = 0
-	/*
-	   File is a directory; you cannot open a directory
-	       for writing, or create or remove hard links to it.
-	*/
+	// File is a directory; you cannot open a directory
+	// for writing, or create or remove hard links to it.
 	FILE_ERROR_ISDIR FileError = 1
-	/*
-	   Permission denied; the file permissions do not
-	       allow the attempted operation.
-	*/
+	// Permission denied; the file permissions do not
+	// allow the attempted operation.
 	FILE_ERROR_ACCES FileError = 2
 	// Filename too long.
 	FILE_ERROR_NAMETOOLONG FileError = 3
-	/*
-	   No such file or directory. This is a "file
-	       doesn't exist" error for ordinary files that are referenced in
-	       contexts where they are expected to already exist.
-	*/
+	// No such file or directory. This is a "file
+	// doesn't exist" error for ordinary files that are referenced in
+	// contexts where they are expected to already exist.
 	FILE_ERROR_NOENT FileError = 4
-	/*
-	   A file that isn't a directory was specified when
-	       a directory is required.
-	*/
+	// A file that isn't a directory was specified when
+	// a directory is required.
 	FILE_ERROR_NOTDIR FileError = 5
-	/*
-	   No such device or address. The system tried to
-	       use the device represented by a file you specified, and it
-	       couldn't find the device. This can mean that the device file was
-	       installed incorrectly, or that the physical device is missing or
-	       not correctly attached to the computer.
-	*/
+	// No such device or address. The system tried to
+	// use the device represented by a file you specified, and it
+	// couldn't find the device. This can mean that the device file was
+	// installed incorrectly, or that the physical device is missing or
+	// not correctly attached to the computer.
 	FILE_ERROR_NXIO FileError = 6
-	/*
-	   The underlying file system of the specified file
-	       does not support memory mapping.
-	*/
+	// The underlying file system of the specified file
+	// does not support memory mapping.
 	FILE_ERROR_NODEV FileError = 7
-	/*
-	   The directory containing the new link can't be
-	       modified because it's on a read-only file system.
-	*/
+	// The directory containing the new link can't be
+	// modified because it's on a read-only file system.
 	FILE_ERROR_ROFS FileError = 8
 	// Text file busy.
 	FILE_ERROR_TXTBSY FileError = 9
-	/*
-	   You passed in a pointer to bad memory.
-	       (GLib won't reliably return this, don't pass in pointers to bad
-	       memory.)
-	*/
+	// You passed in a pointer to bad memory.
+	// (GLib won't reliably return this, don't pass in pointers to bad
+	// memory.)
 	FILE_ERROR_FAULT FileError = 10
-	/*
-	   Too many levels of symbolic links were encountered
-	       in looking up a file name. This often indicates a cycle of symbolic
-	       links.
-	*/
+	// Too many levels of symbolic links were encountered
+	// in looking up a file name. This often indicates a cycle of symbolic
+	// links.
 	FILE_ERROR_LOOP FileError = 11
-	/*
-	   No space left on device; write operation on a
-	       file failed because the disk is full.
-	*/
+	// No space left on device; write operation on a
+	// file failed because the disk is full.
 	FILE_ERROR_NOSPC FileError = 12
-	/*
-	   No memory available. The system cannot allocate
-	       more virtual memory because its capacity is full.
-	*/
+	// No memory available. The system cannot allocate
+	// more virtual memory because its capacity is full.
 	FILE_ERROR_NOMEM FileError = 13
-	/*
-	   The current process has too many files open and
-	       can't open any more. Duplicate descriptors do count toward this
-	       limit.
-	*/
+	// The current process has too many files open and
+	// can't open any more. Duplicate descriptors do count toward this
+	// limit.
 	FILE_ERROR_MFILE FileError = 14
-	/*
-	   There are too many distinct file openings in the
-	       entire system.
-	*/
+	// There are too many distinct file openings in the
+	// entire system.
 	FILE_ERROR_NFILE FileError = 15
-	/*
-	   Bad file descriptor; for example, I/O on a
-	       descriptor that has been closed or reading from a descriptor open
-	       only for writing (or vice versa).
-	*/
+	// Bad file descriptor; for example, I/O on a
+	// descriptor that has been closed or reading from a descriptor open
+	// only for writing (or vice versa).
 	FILE_ERROR_BADF FileError = 16
-	/*
-	   Invalid argument. This is used to indicate
-	       various kinds of problems with passing the wrong argument to a
-	       library function.
-	*/
+	// Invalid argument. This is used to indicate
+	// various kinds of problems with passing the wrong argument to a
+	// library function.
 	FILE_ERROR_INVAL FileError = 17
-	/*
-	   Broken pipe; there is no process reading from the
-	       other end of a pipe. Every library function that returns this
-	       error code also generates a 'SIGPIPE' signal; this signal
-	       terminates the program if not handled or blocked. Thus, your
-	       program will never actually see this code unless it has handled
-	       or blocked 'SIGPIPE'.
-	*/
+	// Broken pipe; there is no process reading from the
+	// other end of a pipe. Every library function that returns this
+	// error code also generates a 'SIGPIPE' signal; this signal
+	// terminates the program if not handled or blocked. Thus, your
+	// program will never actually see this code unless it has handled
+	// or blocked 'SIGPIPE'.
 	FILE_ERROR_PIPE FileError = 18
-	/*
-	   Resource temporarily unavailable; the call might
-	       work if you try again later.
-	*/
+	// Resource temporarily unavailable; the call might
+	// work if you try again later.
 	FILE_ERROR_AGAIN FileError = 19
-	/*
-	   Interrupted function call; an asynchronous signal
-	       occurred and prevented completion of the call. When this
-	       happens, you should try the call again.
-	*/
+	// Interrupted function call; an asynchronous signal
+	// occurred and prevented completion of the call. When this
+	// happens, you should try the call again.
 	FILE_ERROR_INTR FileError = 20
-	/*
-	   Input/output error; usually used for physical read
-	      or write errors. i.e. the disk or other physical device hardware
-	      is returning errors.
-	*/
+	// Input/output error; usually used for physical read
+	// or write errors. i.e. the disk or other physical device hardware
+	// is returning errors.
 	FILE_ERROR_IO FileError = 21
-	/*
-	   Operation not permitted; only the owner of the
-	      file (or other resource) or processes with special privileges can
-	      perform the operation.
-	*/
+	// Operation not permitted; only the owner of the
+	// file (or other resource) or processes with special privileges can
+	// perform the operation.
 	FILE_ERROR_PERM FileError = 22
-	/*
-	   Function not implemented; this indicates that
-	      the system is missing some functionality.
-	*/
+	// Function not implemented; this indicates that
+	// the system is missing some functionality.
 	FILE_ERROR_NOSYS FileError = 23
-	/*
-	   Does not correspond to a UNIX error code; this
-	      is the standard "failed for unspecified reason" error code present
-	      in all #GError error code enumerations. Returned if no specific
-	      code applies.
-	*/
+	// Does not correspond to a UNIX error code; this
+	// is the standard "failed for unspecified reason" error code present
+	// in all #GError error code enumerations. Returned if no specific
+	// code applies.
 	FILE_ERROR_FAILED FileError = 24
 )
 
@@ -351,10 +285,8 @@ const (
 	IO_CHANNEL_ERROR_FAILED IOChannelError = 8
 )
 
-/*
-#GIOError is only used by the deprecated functions
-g_io_channel_read(), g_io_channel_write(), and g_io_channel_seek().
-*/
+// #GIOError is only used by the deprecated functions
+// g_io_channel_read(), g_io_channel_write(), and g_io_channel_seek().
 type IOError C.GIOError
 
 const (
@@ -386,10 +318,8 @@ const (
 type KeyFileError C.GKeyFileError
 
 const (
-	/*
-	   the text being parsed was in
-	       an unknown encoding
-	*/
+	// the text being parsed was in
+	// an unknown encoding
 	KEY_FILE_ERROR_UNKNOWN_ENCODING KeyFileError = 0
 	// document was ill-formed
 	KEY_FILE_ERROR_PARSE KeyFileError = 1
@@ -413,77 +343,57 @@ const (
 	MARKUP_ERROR_EMPTY MarkupError = 1
 	// document was ill-formed
 	MARKUP_ERROR_PARSE MarkupError = 2
-	/*
-	   error should be set by #GMarkupParser
-	       functions; element wasn't known
-	*/
+	// error should be set by #GMarkupParser
+	// functions; element wasn't known
 	MARKUP_ERROR_UNKNOWN_ELEMENT MarkupError = 3
-	/*
-	   error should be set by #GMarkupParser
-	       functions; attribute wasn't known
-	*/
+	// error should be set by #GMarkupParser
+	// functions; attribute wasn't known
 	MARKUP_ERROR_UNKNOWN_ATTRIBUTE MarkupError = 4
-	/*
-	   error should be set by #GMarkupParser
-	       functions; content was invalid
-	*/
+	// error should be set by #GMarkupParser
+	// functions; content was invalid
 	MARKUP_ERROR_INVALID_CONTENT MarkupError = 5
-	/*
-	   error should be set by #GMarkupParser
-	       functions; a required attribute was missing
-	*/
+	// error should be set by #GMarkupParser
+	// functions; a required attribute was missing
 	MARKUP_ERROR_MISSING_ATTRIBUTE MarkupError = 6
 )
 
-/*
-Defines how a Unicode string is transformed in a canonical
-form, standardizing such issues as whether a character with
-an accent is represented as a base character and combining
-accent or as a single precomposed character. Unicode strings
-should generally be normalized before comparing them.
-*/
+// Defines how a Unicode string is transformed in a canonical
+// form, standardizing such issues as whether a character with
+// an accent is represented as a base character and combining
+// accent or as a single precomposed character. Unicode strings
+// should generally be normalized before comparing them.
 type NormalizeMode C.GNormalizeMode
 
 const (
-	/*
-	   standardize differences that do not affect the
-	       text content, such as the above-mentioned accent representation
-	*/
+	// standardize differences that do not affect the
+	// text content, such as the above-mentioned accent representation
 	NORMALIZE_DEFAULT NormalizeMode = 0
 	// another name for %G_NORMALIZE_DEFAULT
 	NORMALIZE_NFD NormalizeMode = 0
-	/*
-	   like %G_NORMALIZE_DEFAULT, but with
-	       composed forms rather than a maximally decomposed form
-	*/
+	// like %G_NORMALIZE_DEFAULT, but with
+	// composed forms rather than a maximally decomposed form
 	NORMALIZE_DEFAULT_COMPOSE NormalizeMode = 1
 	// another name for %G_NORMALIZE_DEFAULT_COMPOSE
 	NORMALIZE_NFC NormalizeMode = 1
-	/*
-	   beyond %G_NORMALIZE_DEFAULT also standardize the
-	       "compatibility" characters in Unicode, such as SUPERSCRIPT THREE
-	       to the standard forms (in this case DIGIT THREE). Formatting
-	       information may be lost but for most text operations such
-	       characters should be considered the same
-	*/
+	// beyond %G_NORMALIZE_DEFAULT also standardize the
+	// "compatibility" characters in Unicode, such as SUPERSCRIPT THREE
+	// to the standard forms (in this case DIGIT THREE). Formatting
+	// information may be lost but for most text operations such
+	// characters should be considered the same
 	NORMALIZE_ALL NormalizeMode = 2
 	// another name for %G_NORMALIZE_ALL
 	NORMALIZE_NFKD NormalizeMode = 2
-	/*
-	   like %G_NORMALIZE_ALL, but with composed
-	       forms rather than a maximally decomposed form
-	*/
+	// like %G_NORMALIZE_ALL, but with composed
+	// forms rather than a maximally decomposed form
 	NORMALIZE_ALL_COMPOSE NormalizeMode = 3
 	// another name for %G_NORMALIZE_ALL_COMPOSE
 	NORMALIZE_NFKC NormalizeMode = 3
 )
 
-/*
-The #GOptionArg enum values determine which type of extra argument the
-options expect to find. If an option expects an extra argument, it can
-be specified in several ways; with a short option: `-x arg`, with a long
-option: `--name arg` or combined in a single argument: `--name=arg`.
-*/
+// The #GOptionArg enum values determine which type of extra argument the
+// options expect to find. If an option expects an extra argument, it can
+// be specified in several ways; with a short option: `-x arg`, with a long
+// option: `--name arg` or combined in a single argument: `--name=arg`.
 type OptionArg C.GOptionArg
 
 const (
@@ -493,35 +403,25 @@ const (
 	OPTION_ARG_STRING OptionArg = 1
 	// The option takes an integer argument.
 	OPTION_ARG_INT OptionArg = 2
-	/*
-	   The option provides a callback (of type
-	       #GOptionArgFunc) to parse the extra argument.
-	*/
+	// The option provides a callback (of type
+	// #GOptionArgFunc) to parse the extra argument.
 	OPTION_ARG_CALLBACK OptionArg = 3
 	// The option takes a filename as argument.
 	OPTION_ARG_FILENAME OptionArg = 4
-	/*
-	   The option takes a string argument, multiple
-	       uses of the option are collected into an array of strings.
-	*/
+	// The option takes a string argument, multiple
+	// uses of the option are collected into an array of strings.
 	OPTION_ARG_STRING_ARRAY OptionArg = 5
-	/*
-	   The option takes a filename as argument,
-	       multiple uses of the option are collected into an array of strings.
-	*/
+	// The option takes a filename as argument,
+	// multiple uses of the option are collected into an array of strings.
 	OPTION_ARG_FILENAME_ARRAY OptionArg = 6
-	/*
-	   The option takes a double argument. The argument
-	       can be formatted either for the user's locale or for the "C" locale.
-	       Since 2.12
-	*/
+	// The option takes a double argument. The argument
+	// can be formatted either for the user's locale or for the "C" locale.
+	// Since 2.12
 	OPTION_ARG_DOUBLE OptionArg = 7
-	/*
-	   The option takes a 64-bit integer. Like
-	       %G_OPTION_ARG_INT but for larger numbers. The number can be in
-	       decimal base, or in hexadecimal (when prefixed with `0x`, for
-	       example, `0xffffffff`). Since 2.12
-	*/
+	// The option takes a 64-bit integer. Like
+	// %G_OPTION_ARG_INT but for larger numbers. The number can be in
+	// decimal base, or in hexadecimal (when prefixed with `0x`, for
+	// example, `0xffffffff`). Since 2.12
 	OPTION_ARG_INT64 OptionArg = 8
 )
 
@@ -529,11 +429,9 @@ const (
 type OptionError C.GOptionError
 
 const (
-	/*
-	   An option was not known to the parser.
-	    This error will only be reported, if the parser hasn't been instructed
-	    to ignore unknown options, see g_option_context_set_ignore_unknown_options().
-	*/
+	// An option was not known to the parser.
+	// This error will only be reported, if the parser hasn't been instructed
+	// to ignore unknown options, see g_option_context_set_ignore_unknown_options().
 	OPTION_ERROR_UNKNOWN_OPTION OptionError = 0
 	// A value couldn't be parsed.
 	OPTION_ERROR_BAD_VALUE OptionError = 1
@@ -541,10 +439,8 @@ const (
 	OPTION_ERROR_FAILED OptionError = 2
 )
 
-/*
-An enumeration specifying the base position for a
-g_io_channel_seek_position() operation.
-*/
+// An enumeration specifying the base position for a
+// g_io_channel_seek_position() operation.
 type SeekType C.GSeekType
 
 const (
@@ -623,10 +519,8 @@ const (
 	SPAWN_ERROR_ISDIR SpawnError = 17
 	// execv() returned `ELIBBAD`
 	SPAWN_ERROR_LIBBAD SpawnError = 18
-	/*
-	   Some other fatal failure,
-	     `error->message` should explain.
-	*/
+	// Some other fatal failure,
+	// `error->message` should explain.
 	SPAWN_ERROR_FAILED SpawnError = 19
 )
 
@@ -653,23 +547,19 @@ const (
 type ThreadError C.GThreadError
 
 const (
-	/*
-	   a thread couldn't be created due to resource
-	                          shortage. Try again later.
-	*/
+	// a thread couldn't be created due to resource
+	// shortage. Try again later.
 	THREAD_ERROR_AGAIN ThreadError = 0
 )
 
-/*
-Disambiguates a given time in two ways.
-
-First, specifies if the given time is in universal or local time.
-
-Second, if the time is in local time, specifies if it is local
-standard time or local daylight time.  This is important for the case
-where the same local time occurs twice (during daylight savings time
-transitions, for example).
-*/
+// Disambiguates a given time in two ways.
+//
+// First, specifies if the given time is in universal or local time.
+//
+// Second, if the time is in local time, specifies if it is local
+// standard time or local daylight time.  This is important for the case
+// where the same local time occurs twice (during daylight savings time
+// transitions, for example).
 type TimeType C.GTimeType
 
 const (
@@ -681,10 +571,8 @@ const (
 	TIME_TYPE_UNIVERSAL TimeType = 2
 )
 
-/*
-The possible types of token returned from each
-g_scanner_get_next_token() call.
-*/
+// The possible types of token returned from each
+// g_scanner_get_next_token() call.
 type TokenType C.GTokenType
 
 const (
@@ -736,52 +624,44 @@ const (
 	TOKEN_COMMENT_MULTI TokenType = 269
 )
 
-/*
-Specifies the type of traveral performed by g_tree_traverse(),
-g_node_traverse() and g_node_find(). The different orders are
-illustrated here:
-- In order: A, B, C, D, E, F, G, H, I
-  ![](Sorted_binary_tree_inorder.svg)
-- Pre order: F, B, A, D, C, E, G, I, H
-  ![](Sorted_binary_tree_preorder.svg)
-- Post order: A, C, E, D, B, H, I, G, F
-  ![](Sorted_binary_tree_postorder.svg)
-- Level order: F, B, G, A, D, I, C, E, H
-  ![](Sorted_binary_tree_breadth-first_traversal.svg)
-*/
+// Specifies the type of traveral performed by g_tree_traverse(),
+// g_node_traverse() and g_node_find(). The different orders are
+// illustrated here:
+// - In order: A, B, C, D, E, F, G, H, I
+// ![](Sorted_binary_tree_inorder.svg)
+// - Pre order: F, B, A, D, C, E, G, I, H
+// ![](Sorted_binary_tree_preorder.svg)
+// - Post order: A, C, E, D, B, H, I, G, F
+// ![](Sorted_binary_tree_postorder.svg)
+// - Level order: F, B, G, A, D, I, C, E, H
+// ![](Sorted_binary_tree_breadth-first_traversal.svg)
 type TraverseType C.GTraverseType
 
 const (
-	/*
-	   vists a node's left child first, then the node itself,
-	                then its right child. This is the one to use if you
-	                want the output sorted according to the compare
-	                function.
-	*/
+	// vists a node's left child first, then the node itself,
+	// then its right child. This is the one to use if you
+	// want the output sorted according to the compare
+	// function.
 	IN_ORDER TraverseType = 0
 	// visits a node, then its children.
 	PRE_ORDER TraverseType = 1
 	// visits the node's children, then the node itself.
 	POST_ORDER TraverseType = 2
-	/*
-	   is not implemented for
-	                [balanced binary trees][glib-Balanced-Binary-Trees].
-	                For [n-ary trees][glib-N-ary-Trees], it
-	                vists the root node first, then its children, then
-	                its grandchildren, and so on. Note that this is less
-	                efficient than the other orders.
-	*/
+	// is not implemented for
+	// [balanced binary trees][glib-Balanced-Binary-Trees].
+	// For [n-ary trees][glib-N-ary-Trees], it
+	// vists the root node first, then its children, then
+	// its grandchildren, and so on. Note that this is less
+	// efficient than the other orders.
 	LEVEL_ORDER TraverseType = 3
 )
 
-/*
-These are the possible line break classifications.
-
-Since new unicode versions may add new types here, applications should be ready
-to handle unknown values. They may be regarded as %G_UNICODE_BREAK_UNKNOWN.
-
-See [Unicode Line Breaking Algorithm](http://www.unicode.org/unicode/reports/tr14/).
-*/
+// These are the possible line break classifications.
+//
+// Since new unicode versions may add new types here, applications should be ready
+// to handle unknown values. They may be regarded as %G_UNICODE_BREAK_UNKNOWN.
+//
+// See [Unicode Line Breaking Algorithm](http://www.unicode.org/unicode/reports/tr14/).
 type UnicodeBreakType C.GUnicodeBreakType
 
 const (
@@ -873,16 +753,14 @@ const (
 	UNICODE_BREAK_ZERO_WIDTH_JOINER UnicodeBreakType = 42
 )
 
-/*
-The #GUnicodeScript enumeration identifies different writing
-systems. The values correspond to the names as defined in the
-Unicode standard. The enumeration has been added in GLib 2.14,
-and is interchangeable with #PangoScript.
-
-Note that new types may be added in the future. Applications
-should be ready to handle unknown values.
-See [Unicode Standard Annex #24: Script names](http://www.unicode.org/reports/tr24/).
-*/
+// The #GUnicodeScript enumeration identifies different writing
+// systems. The values correspond to the names as defined in the
+// Unicode standard. The enumeration has been added in GLib 2.14,
+// and is interchangeable with #PangoScript.
+//
+// Note that new types may be added in the future. Applications
+// should be ready to handle unknown values.
+// See [Unicode Standard Annex #24: Script names](http://www.unicode.org/reports/tr24/).
 type UnicodeScript C.GUnicodeScript
 
 const (
@@ -890,10 +768,8 @@ const (
 	UNICODE_SCRIPT_INVALID_CODE UnicodeScript = -1
 	// a character used by multiple different scripts
 	UNICODE_SCRIPT_COMMON UnicodeScript = 0
-	/*
-	   a mark glyph that takes its script from the
-	                                 base glyph to which it is attached
-	*/
+	// a mark glyph that takes its script from the
+	// base glyph to which it is attached
 	UNICODE_SCRIPT_INHERITED UnicodeScript = 1
 	// Arabic
 	UNICODE_SCRIPT_ARABIC UnicodeScript = 2
@@ -1177,11 +1053,9 @@ const (
 	UNICODE_SCRIPT_ZANABAZAR_SQUARE UnicodeScript = 141
 )
 
-/*
-These are the possible character classifications from the
-Unicode specification.
-See [Unicode Character Database](http://www.unicode.org/reports/tr44/#General_Category_Values).
-*/
+// These are the possible character classifications from the
+// Unicode specification.
+// See [Unicode Character Database](http://www.unicode.org/reports/tr44/#General_Category_Values).
 type UnicodeType C.GUnicodeType
 
 const (

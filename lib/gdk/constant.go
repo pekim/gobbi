@@ -2281,15 +2281,11 @@ const KEY_zerosuperior int = C.GDK_KEY_zerosuperior
 const KEY_zstroke int = C.GDK_KEY_zstroke
 const MAX_TIMECOORD_AXES int = C.GDK_MAX_TIMECOORD_AXES
 
-/*
-A special value, indicating that the background
-for a window should be inherited from the parent window.
-*/
+// A special value, indicating that the background
+// for a window should be inherited from the parent window.
 const PARENT_RELATIVE int = C.GDK_PARENT_RELATIVE
 
-/*
-This is the priority that the idle handler processing window updates
-is given in the
-[GLib Main Loop][glib-The-Main-Event-Loop].
-*/
+// This is the priority that the idle handler processing window updates
+// is given in the
+// [GLib Main Loop][glib-The-Main-Event-Loop].
 const PRIORITY_REDRAW int = C.GDK_PRIORITY_REDRAW

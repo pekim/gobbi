@@ -7,10 +7,8 @@ package pango
 // #include <stdlib.h>
 import "C"
 
-/*
-The bits in a #PangoFontMask correspond to fields in a
-#PangoFontDescription that have been set.
-*/
+// The bits in a #PangoFontMask correspond to fields in a
+// #PangoFontDescription that have been set.
 type FontMask C.PangoFontMask
 
 const (

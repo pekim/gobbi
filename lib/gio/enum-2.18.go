@@ -18,10 +18,8 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-/*
-GEmblemOrigin is used to add information about the origin of the emblem
-to #GEmblem.
-*/
+// GEmblemOrigin is used to add information about the origin of the emblem
+// to #GEmblem.
 type EmblemOrigin C.GEmblemOrigin
 
 const (

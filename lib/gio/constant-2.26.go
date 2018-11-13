@@ -18,8 +18,6 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-/*
-Extension point for proxy functionality.
-See [Extending GIO][extending-gio].
-*/
+// Extension point for proxy functionality.
+// See [Extending GIO][extending-gio].
 const PROXY_EXTENSION_POINT_NAME string = C.G_PROXY_EXTENSION_POINT_NAME

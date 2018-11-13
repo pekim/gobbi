@@ -10,10 +10,8 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-/*
-The possible statuses of a one-time initialization function
-controlled by a #GOnce struct.
-*/
+// The possible statuses of a one-time initialization function
+// controlled by a #GOnce struct.
 type OnceStatus C.GOnceStatus
 
 const (

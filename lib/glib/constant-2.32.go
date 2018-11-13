@@ -10,36 +10,28 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-/*
-Use this macro as the return value of a #GSourceFunc to leave
-the #GSource in the main loop.
-*/
+// Use this macro as the return value of a #GSourceFunc to leave
+// the #GSource in the main loop.
 const SOURCE_CONTINUE bool = true // C.G_SOURCE_CONTINUE
-/*
-Use this macro as the return value of a #GSourceFunc to remove
-the #GSource from the main loop.
-*/
+// Use this macro as the return value of a #GSourceFunc to remove
+// the #GSource from the main loop.
 const SOURCE_REMOVE bool = false // C.G_SOURCE_REMOVE
-/*
-The maximum length (in codepoints) of a compatibility or canonical
-decomposition of a single Unicode character.
-
-This is as defined by Unicode 6.1.
-*/
+// The maximum length (in codepoints) of a compatibility or canonical
+// decomposition of a single Unicode character.
+//
+// This is as defined by Unicode 6.1.
 const UNICHAR_MAX_DECOMPOSITION_LENGTH int = C.G_UNICHAR_MAX_DECOMPOSITION_LENGTH
 
-/*
-A macro that should be defined by the user prior to including
-the glib.h header.
-The definition should be one of the predefined GLib version
-macros: %GLIB_VERSION_2_26, %GLIB_VERSION_2_28,...
-
-This macro defines the earliest version of GLib that the package is
-required to be able to compile against.
-
-If the compiler is configured to warn about the use of deprecated
-functions, then using functions that were deprecated in version
-%GLIB_VERSION_MIN_REQUIRED or earlier will cause warnings (but
-using functions deprecated in later releases will not).
-*/
+// A macro that should be defined by the user prior to including
+// the glib.h header.
+// The definition should be one of the predefined GLib version
+// macros: %GLIB_VERSION_2_26, %GLIB_VERSION_2_28,...
+//
+// This macro defines the earliest version of GLib that the package is
+// required to be able to compile against.
+//
+// If the compiler is configured to warn about the use of deprecated
+// functions, then using functions that were deprecated in version
+// %GLIB_VERSION_MIN_REQUIRED or earlier will cause warnings (but
+// using functions deprecated in later releases will not).
 const VERSION_MIN_REQUIRED int = C.GLIB_VERSION_MIN_REQUIRED

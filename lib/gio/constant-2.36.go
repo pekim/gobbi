@@ -18,8 +18,6 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-/*
-The menu item attribute that holds the namespace for all action names in
-menus that are linked from this item.
-*/
+// The menu item attribute that holds the namespace for all action names in
+// menus that are linked from this item.
 const MENU_ATTRIBUTE_ACTION_NAMESPACE string = C.G_MENU_ATTRIBUTE_ACTION_NAMESPACE

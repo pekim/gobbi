@@ -24,22 +24,16 @@ type FileMeasureFlags C.GFileMeasureFlags
 const (
 	// No flags set.
 	FILE_MEASURE_NONE FileMeasureFlags = 0
-	/*
-	   Report any error encountered
-	     while traversing the directory tree.  Normally errors are only
-	     reported for the toplevel file.
-	*/
+	// Report any error encountered
+	// while traversing the directory tree.  Normally errors are only
+	// reported for the toplevel file.
 	FILE_MEASURE_REPORT_ANY_ERROR FileMeasureFlags = 2
-	/*
-	   Tally usage based on apparent file
-	     sizes.  Normally, the block-size is used, if available, as this is a
-	     more accurate representation of disk space used.
-	     Compare with `du --apparent-size`.
-	*/
+	// Tally usage based on apparent file
+	// sizes.  Normally, the block-size is used, if available, as this is a
+	// more accurate representation of disk space used.
+	// Compare with `du --apparent-size`.
 	FILE_MEASURE_APPARENT_SIZE FileMeasureFlags = 4
-	/*
-	   Do not cross mount point boundaries.
-	     Compare with `du -x`.
-	*/
+	// Do not cross mount point boundaries.
+	// Compare with `du -x`.
 	FILE_MEASURE_NO_XDEV FileMeasureFlags = 8
 )

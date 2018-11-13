@@ -18,46 +18,32 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-/*
-A key in the "mountable" namespace for checking if a file (of type G_FILE_TYPE_MOUNTABLE) can be polled.
-Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
-*/
+// A key in the "mountable" namespace for checking if a file (of type G_FILE_TYPE_MOUNTABLE) can be polled.
+// Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
 const FILE_ATTRIBUTE_MOUNTABLE_CAN_POLL string = C.G_FILE_ATTRIBUTE_MOUNTABLE_CAN_POLL
 
-/*
-A key in the "mountable" namespace for checking if a file (of type G_FILE_TYPE_MOUNTABLE) can be started.
-Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
-*/
+// A key in the "mountable" namespace for checking if a file (of type G_FILE_TYPE_MOUNTABLE) can be started.
+// Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
 const FILE_ATTRIBUTE_MOUNTABLE_CAN_START string = C.G_FILE_ATTRIBUTE_MOUNTABLE_CAN_START
 
-/*
-A key in the "mountable" namespace for checking if a file (of type G_FILE_TYPE_MOUNTABLE) can be started
-degraded.
-Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
-*/
+// A key in the "mountable" namespace for checking if a file (of type G_FILE_TYPE_MOUNTABLE) can be started
+// degraded.
+// Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
 const FILE_ATTRIBUTE_MOUNTABLE_CAN_START_DEGRADED string = C.G_FILE_ATTRIBUTE_MOUNTABLE_CAN_START_DEGRADED
 
-/*
-A key in the "mountable" namespace for checking if a file (of type G_FILE_TYPE_MOUNTABLE) can be stopped.
-Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
-*/
+// A key in the "mountable" namespace for checking if a file (of type G_FILE_TYPE_MOUNTABLE) can be stopped.
+// Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
 const FILE_ATTRIBUTE_MOUNTABLE_CAN_STOP string = C.G_FILE_ATTRIBUTE_MOUNTABLE_CAN_STOP
 
-/*
-A key in the "mountable" namespace for checking if a file (of type G_FILE_TYPE_MOUNTABLE)
-is automatically polled for media.
-Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
-*/
+// A key in the "mountable" namespace for checking if a file (of type G_FILE_TYPE_MOUNTABLE)
+// is automatically polled for media.
+// Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN.
 const FILE_ATTRIBUTE_MOUNTABLE_IS_MEDIA_CHECK_AUTOMATIC string = C.G_FILE_ATTRIBUTE_MOUNTABLE_IS_MEDIA_CHECK_AUTOMATIC
 
-/*
-A key in the "mountable" namespace for getting the #GDriveStartStopType.
-Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_UINT32.
-*/
+// A key in the "mountable" namespace for getting the #GDriveStartStopType.
+// Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_UINT32.
 const FILE_ATTRIBUTE_MOUNTABLE_START_STOP_TYPE string = C.G_FILE_ATTRIBUTE_MOUNTABLE_START_STOP_TYPE
 
-/*
-A key in the "mountable" namespace for getting the unix device file.
-Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_STRING.
-*/
+// A key in the "mountable" namespace for getting the unix device file.
+// Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_STRING.
 const FILE_ATTRIBUTE_MOUNTABLE_UNIX_DEVICE_FILE string = C.G_FILE_ATTRIBUTE_MOUNTABLE_UNIX_DEVICE_FILE

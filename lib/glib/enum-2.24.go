@@ -32,17 +32,13 @@ const (
 	VARIANT_CLASS_UINT64 VariantClass = 116
 	// The #GVariant is a file handle index.
 	VARIANT_CLASS_HANDLE VariantClass = 104
-	/*
-	   The #GVariant is a double precision floating
-	                            point value.
-	*/
+	// The #GVariant is a double precision floating
+	// point value.
 	VARIANT_CLASS_DOUBLE VariantClass = 100
 	// The #GVariant is a normal string.
 	VARIANT_CLASS_STRING VariantClass = 115
-	/*
-	   The #GVariant is a D-Bus object path
-	                                 string.
-	*/
+	// The #GVariant is a D-Bus object path
+	// string.
 	VARIANT_CLASS_OBJECT_PATH VariantClass = 111
 	// The #GVariant is a D-Bus signature string.
 	VARIANT_CLASS_SIGNATURE VariantClass = 103

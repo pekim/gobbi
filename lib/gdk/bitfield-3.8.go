@@ -8,11 +8,9 @@ package gdk
 // #include <stdlib.h>
 import "C"
 
-/*
-#GdkFrameClockPhase is used to represent the different paint clock
-phases that can be requested. The elements of the enumeration
-correspond to the signals of #GdkFrameClock.
-*/
+// #GdkFrameClockPhase is used to represent the different paint clock
+// phases that can be requested. The elements of the enumeration
+// correspond to the signals of #GdkFrameClock.
 type FrameClockPhase C.GdkFrameClockPhase
 
 const (

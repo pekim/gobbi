@@ -10,13 +10,11 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-/*
-The hashing algorithm to be used by #GChecksum when performing the
-digest of some data.
-
-Note that the #GChecksumType enumeration may be extended at a later
-date to include new hashing algorithm types.
-*/
+// The hashing algorithm to be used by #GChecksum when performing the
+// digest of some data.
+//
+// Note that the #GChecksumType enumeration may be extended at a later
+// date to include new hashing algorithm types.
 type ChecksumType C.GChecksumType
 
 const (

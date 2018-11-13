@@ -18,199 +18,127 @@ const (
 	REGEX_ERROR_COMPILE RegexError = 0
 	// Optimization of the regular expression failed.
 	REGEX_ERROR_OPTIMIZE RegexError = 1
-	/*
-	   Replacement failed due to an ill-formed replacement
-	       string.
-	*/
+	// Replacement failed due to an ill-formed replacement
+	// string.
 	REGEX_ERROR_REPLACE RegexError = 2
 	// The match process failed.
 	REGEX_ERROR_MATCH RegexError = 3
-	/*
-	   Internal error of the regular expression engine.
-	       Since 2.16
-	*/
+	// Internal error of the regular expression engine.
+	// Since 2.16
 	REGEX_ERROR_INTERNAL RegexError = 4
 	// "\\" at end of pattern. Since 2.16
 	REGEX_ERROR_STRAY_BACKSLASH RegexError = 101
 	// "\\c" at end of pattern. Since 2.16
 	REGEX_ERROR_MISSING_CONTROL_CHAR RegexError = 102
-	/*
-	   Unrecognized character follows "\\".
-	       Since 2.16
-	*/
+	// Unrecognized character follows "\\".
+	// Since 2.16
 	REGEX_ERROR_UNRECOGNIZED_ESCAPE RegexError = 103
-	/*
-	   Numbers out of order in "{}"
-	       quantifier. Since 2.16
-	*/
+	// Numbers out of order in "{}"
+	// quantifier. Since 2.16
 	REGEX_ERROR_QUANTIFIERS_OUT_OF_ORDER RegexError = 104
-	/*
-	   Number too big in "{}" quantifier.
-	       Since 2.16
-	*/
+	// Number too big in "{}" quantifier.
+	// Since 2.16
 	REGEX_ERROR_QUANTIFIER_TOO_BIG RegexError = 105
-	/*
-	   Missing terminating "]" for
-	       character class. Since 2.16
-	*/
+	// Missing terminating "]" for
+	// character class. Since 2.16
 	REGEX_ERROR_UNTERMINATED_CHARACTER_CLASS RegexError = 106
-	/*
-	   Invalid escape sequence
-	       in character class. Since 2.16
-	*/
+	// Invalid escape sequence
+	// in character class. Since 2.16
 	REGEX_ERROR_INVALID_ESCAPE_IN_CHARACTER_CLASS RegexError = 107
-	/*
-	   Range out of order in character class.
-	       Since 2.16
-	*/
+	// Range out of order in character class.
+	// Since 2.16
 	REGEX_ERROR_RANGE_OUT_OF_ORDER RegexError = 108
 	// Nothing to repeat. Since 2.16
 	REGEX_ERROR_NOTHING_TO_REPEAT RegexError = 109
-	/*
-	   Unrecognized character after "(?",
-	       "(?<" or "(?P". Since 2.16
-	*/
+	// Unrecognized character after "(?",
+	// "(?<" or "(?P". Since 2.16
 	REGEX_ERROR_UNRECOGNIZED_CHARACTER RegexError = 112
-	/*
-	   POSIX named classes are
-	       supported only within a class. Since 2.16
-	*/
+	// POSIX named classes are
+	// supported only within a class. Since 2.16
 	REGEX_ERROR_POSIX_NAMED_CLASS_OUTSIDE_CLASS RegexError = 113
-	/*
-	   Missing terminating ")" or ")"
-	       without opening "(". Since 2.16
-	*/
+	// Missing terminating ")" or ")"
+	// without opening "(". Since 2.16
 	REGEX_ERROR_UNMATCHED_PARENTHESIS RegexError = 114
-	/*
-	   Reference to non-existent
-	       subpattern. Since 2.16
-	*/
+	// Reference to non-existent
+	// subpattern. Since 2.16
 	REGEX_ERROR_INEXISTENT_SUBPATTERN_REFERENCE RegexError = 115
-	/*
-	   Missing terminating ")" after comment.
-	       Since 2.16
-	*/
+	// Missing terminating ")" after comment.
+	// Since 2.16
 	REGEX_ERROR_UNTERMINATED_COMMENT RegexError = 118
-	/*
-	   Regular expression too large.
-	       Since 2.16
-	*/
+	// Regular expression too large.
+	// Since 2.16
 	REGEX_ERROR_EXPRESSION_TOO_LARGE RegexError = 120
 	// Failed to get memory. Since 2.16
 	REGEX_ERROR_MEMORY_ERROR RegexError = 121
-	/*
-	   Lookbehind assertion is not
-	       fixed length. Since 2.16
-	*/
+	// Lookbehind assertion is not
+	// fixed length. Since 2.16
 	REGEX_ERROR_VARIABLE_LENGTH_LOOKBEHIND RegexError = 125
-	/*
-	   Malformed number or name after "(?(".
-	       Since 2.16
-	*/
+	// Malformed number or name after "(?(".
+	// Since 2.16
 	REGEX_ERROR_MALFORMED_CONDITION RegexError = 126
-	/*
-	   Conditional group contains
-	       more than two branches. Since 2.16
-	*/
+	// Conditional group contains
+	// more than two branches. Since 2.16
 	REGEX_ERROR_TOO_MANY_CONDITIONAL_BRANCHES RegexError = 127
-	/*
-	   Assertion expected after "(?(".
-	       Since 2.16
-	*/
+	// Assertion expected after "(?(".
+	// Since 2.16
 	REGEX_ERROR_ASSERTION_EXPECTED RegexError = 128
-	/*
-	   Unknown POSIX class name.
-	       Since 2.16
-	*/
+	// Unknown POSIX class name.
+	// Since 2.16
 	REGEX_ERROR_UNKNOWN_POSIX_CLASS_NAME RegexError = 130
-	/*
-	   POSIX collating
-	       elements are not supported. Since 2.16
-	*/
+	// POSIX collating
+	// elements are not supported. Since 2.16
 	REGEX_ERROR_POSIX_COLLATING_ELEMENTS_NOT_SUPPORTED RegexError = 131
-	/*
-	   Character value in "\\x{...}" sequence
-	       is too large. Since 2.16
-	*/
+	// Character value in "\\x{...}" sequence
+	// is too large. Since 2.16
 	REGEX_ERROR_HEX_CODE_TOO_LARGE RegexError = 134
 	// Invalid condition "(?(0)". Since 2.16
 	REGEX_ERROR_INVALID_CONDITION RegexError = 135
-	/*
-	   \\C not allowed in
-	       lookbehind assertion. Since 2.16
-	*/
+	// \\C not allowed in
+	// lookbehind assertion. Since 2.16
 	REGEX_ERROR_SINGLE_BYTE_MATCH_IN_LOOKBEHIND RegexError = 136
-	/*
-	   Recursive call could loop indefinitely.
-	       Since 2.16
-	*/
+	// Recursive call could loop indefinitely.
+	// Since 2.16
 	REGEX_ERROR_INFINITE_LOOP RegexError = 140
-	/*
-	   Missing terminator
-	       in subpattern name. Since 2.16
-	*/
+	// Missing terminator
+	// in subpattern name. Since 2.16
 	REGEX_ERROR_MISSING_SUBPATTERN_NAME_TERMINATOR RegexError = 142
-	/*
-	   Two named subpatterns have
-	       the same name. Since 2.16
-	*/
+	// Two named subpatterns have
+	// the same name. Since 2.16
 	REGEX_ERROR_DUPLICATE_SUBPATTERN_NAME RegexError = 143
-	/*
-	   Malformed "\\P" or "\\p" sequence.
-	       Since 2.16
-	*/
+	// Malformed "\\P" or "\\p" sequence.
+	// Since 2.16
 	REGEX_ERROR_MALFORMED_PROPERTY RegexError = 146
-	/*
-	   Unknown property name after "\\P" or
-	       "\\p". Since 2.16
-	*/
+	// Unknown property name after "\\P" or
+	// "\\p". Since 2.16
 	REGEX_ERROR_UNKNOWN_PROPERTY RegexError = 147
-	/*
-	   Subpattern name is too long
-	       (maximum 32 characters). Since 2.16
-	*/
+	// Subpattern name is too long
+	// (maximum 32 characters). Since 2.16
 	REGEX_ERROR_SUBPATTERN_NAME_TOO_LONG RegexError = 148
-	/*
-	   Too many named subpatterns (maximum
-	       10,000). Since 2.16
-	*/
+	// Too many named subpatterns (maximum
+	// 10,000). Since 2.16
 	REGEX_ERROR_TOO_MANY_SUBPATTERNS RegexError = 149
-	/*
-	   Octal value is greater than "\\377".
-	       Since 2.16
-	*/
+	// Octal value is greater than "\\377".
+	// Since 2.16
 	REGEX_ERROR_INVALID_OCTAL_VALUE RegexError = 151
-	/*
-	   "DEFINE" group contains more
-	       than one branch. Since 2.16
-	*/
+	// "DEFINE" group contains more
+	// than one branch. Since 2.16
 	REGEX_ERROR_TOO_MANY_BRANCHES_IN_DEFINE RegexError = 154
-	/*
-	   Repeating a "DEFINE" group is not allowed.
-	       This error is never raised. Since: 2.16 Deprecated: 2.34
-	*/
+	// Repeating a "DEFINE" group is not allowed.
+	// This error is never raised. Since: 2.16 Deprecated: 2.34
 	REGEX_ERROR_DEFINE_REPETION RegexError = 155
-	/*
-	   Inconsistent newline options.
-	       Since 2.16
-	*/
+	// Inconsistent newline options.
+	// Since 2.16
 	REGEX_ERROR_INCONSISTENT_NEWLINE_OPTIONS RegexError = 156
-	/*
-	   "\\g" is not followed by a braced,
-	        angle-bracketed, or quoted name or number, or by a plain number. Since: 2.16
-	*/
+	// "\\g" is not followed by a braced,
+	// angle-bracketed, or quoted name or number, or by a plain number. Since: 2.16
 	REGEX_ERROR_MISSING_BACK_REFERENCE RegexError = 157
 	// relative reference must not be zero. Since: 2.34
 	REGEX_ERROR_INVALID_RELATIVE_REFERENCE RegexError = 158
-	/*
-	   the backtracing
-	       control verb used does not allow an argument. Since: 2.34
-	*/
+	// the backtracing
+	// control verb used does not allow an argument. Since: 2.34
 	REGEX_ERROR_BACKTRACKING_CONTROL_VERB_ARGUMENT_FORBIDDEN RegexError = 159
-	/*
-	   unknown backtracing
-	       control verb. Since: 2.34
-	*/
+	// unknown backtracing
+	// control verb. Since: 2.34
 	REGEX_ERROR_UNKNOWN_BACKTRACKING_CONTROL_VERB RegexError = 160
 	// number is too big in escape sequence. Since: 2.34
 	REGEX_ERROR_NUMBER_TOO_BIG RegexError = 161
@@ -218,56 +146,40 @@ const (
 	REGEX_ERROR_MISSING_SUBPATTERN_NAME RegexError = 162
 	// Missing digit. Since 2.34
 	REGEX_ERROR_MISSING_DIGIT RegexError = 163
-	/*
-	   In JavaScript compatibility mode,
-	       "[" is an invalid data character. Since: 2.34
-	*/
+	// In JavaScript compatibility mode,
+	// "[" is an invalid data character. Since: 2.34
 	REGEX_ERROR_INVALID_DATA_CHARACTER RegexError = 164
-	/*
-	   different names for subpatterns of the
-	       same number are not allowed. Since: 2.34
-	*/
+	// different names for subpatterns of the
+	// same number are not allowed. Since: 2.34
 	REGEX_ERROR_EXTRA_SUBPATTERN_NAME RegexError = 165
-	/*
-	   the backtracing control
-	       verb requires an argument. Since: 2.34
-	*/
+	// the backtracing control
+	// verb requires an argument. Since: 2.34
 	REGEX_ERROR_BACKTRACKING_CONTROL_VERB_ARGUMENT_REQUIRED RegexError = 166
-	/*
-	   "\\c" must be followed by an ASCII
-	       character. Since: 2.34
-	*/
+	// "\\c" must be followed by an ASCII
+	// character. Since: 2.34
 	REGEX_ERROR_INVALID_CONTROL_CHAR RegexError = 168
-	/*
-	   "\\k" is not followed by a braced, angle-bracketed, or
-	       quoted name. Since: 2.34
-	*/
+	// "\\k" is not followed by a braced, angle-bracketed, or
+	// quoted name. Since: 2.34
 	REGEX_ERROR_MISSING_NAME RegexError = 169
 	// "\\N" is not supported in a class. Since: 2.34
 	REGEX_ERROR_NOT_SUPPORTED_IN_CLASS RegexError = 171
 	// too many forward references. Since: 2.34
 	REGEX_ERROR_TOO_MANY_FORWARD_REFERENCES RegexError = 172
-	/*
-	   the name is too long in "(*MARK)", "(*PRUNE)",
-	       "(*SKIP)", or "(*THEN)". Since: 2.34
-	*/
+	// the name is too long in "(*MARK)", "(*PRUNE)",
+	// "(*SKIP)", or "(*THEN)". Since: 2.34
 	REGEX_ERROR_NAME_TOO_LONG RegexError = 175
-	/*
-	   the character value in the \\u sequence is
-	       too large. Since: 2.34
-	*/
+	// the character value in the \\u sequence is
+	// too large. Since: 2.34
 	REGEX_ERROR_CHARACTER_VALUE_TOO_LARGE RegexError = 176
 )
 
-/*
-These are logical ids for special directories which are defined
-depending on the platform used. You should use g_get_user_special_dir()
-to retrieve the full path associated to the logical id.
-
-The #GUserDirectory enumeration can be extended at later date. Not
-every platform has a directory for every logical id in this
-enumeration.
-*/
+// These are logical ids for special directories which are defined
+// depending on the platform used. You should use g_get_user_special_dir()
+// to retrieve the full path associated to the logical id.
+//
+// The #GUserDirectory enumeration can be extended at later date. Not
+// every platform has a directory for every logical id in this
+// enumeration.
 type UserDirectory C.GUserDirectory
 
 const (

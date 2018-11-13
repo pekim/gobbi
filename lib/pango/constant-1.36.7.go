@@ -8,8 +8,6 @@ package pango
 // #include <stdlib.h>
 import "C"
 
-/*
-This flag is used to mark runs that hold ellipsized text,
-in an ellipsized layout.
-*/
+// This flag is used to mark runs that hold ellipsized text,
+// in an ellipsized layout.
 const ANALYSIS_FLAG_IS_ELLIPSIS int = C.PANGO_ANALYSIS_FLAG_IS_ELLIPSIS

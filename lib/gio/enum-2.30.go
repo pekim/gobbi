@@ -24,51 +24,37 @@ type IOModuleScopeFlags C.GIOModuleScopeFlags
 const (
 	// No module scan flags
 	IO_MODULE_SCOPE_NONE IOModuleScopeFlags = 0
-	/*
-	   When using this scope to load or
-	       scan modules, automatically block a modules which has the same base
-	       basename as previously loaded module.
-	*/
+	// When using this scope to load or
+	// scan modules, automatically block a modules which has the same base
+	// basename as previously loaded module.
 	IO_MODULE_SCOPE_BLOCK_DUPLICATES IOModuleScopeFlags = 1
 )
 
-/*
-Flags for g_tls_database_lookup_certificate_for_handle(),
-g_tls_database_lookup_certificate_issuer(),
-and g_tls_database_lookup_certificates_issued_by().
-*/
+// Flags for g_tls_database_lookup_certificate_for_handle(),
+// g_tls_database_lookup_certificate_issuer(),
+// and g_tls_database_lookup_certificates_issued_by().
 type TlsDatabaseLookupFlags C.GTlsDatabaseLookupFlags
 
 const (
 	// No lookup flags
 	TLS_DATABASE_LOOKUP_NONE TlsDatabaseLookupFlags = 0
-	/*
-	   Restrict lookup to certificates that have
-	       a private key.
-	*/
+	// Restrict lookup to certificates that have
+	// a private key.
 	TLS_DATABASE_LOOKUP_KEYPAIR TlsDatabaseLookupFlags = 1
 )
 
-/*
-#GTlsInteractionResult is returned by various functions in #GTlsInteraction
-when finishing an interaction request.
-*/
+// #GTlsInteractionResult is returned by various functions in #GTlsInteraction
+// when finishing an interaction request.
 type TlsInteractionResult C.GTlsInteractionResult
 
 const (
-	/*
-	   The interaction was unhandled (i.e. not
-	       implemented).
-	*/
+	// The interaction was unhandled (i.e. not
+	// implemented).
 	TLS_INTERACTION_UNHANDLED TlsInteractionResult = 0
-	/*
-	   The interaction completed, and resulting data
-	       is available.
-	*/
+	// The interaction completed, and resulting data
+	// is available.
 	TLS_INTERACTION_HANDLED TlsInteractionResult = 1
-	/*
-	   The interaction has failed, or was cancelled.
-	       and the operation should be aborted.
-	*/
+	// The interaction has failed, or was cancelled.
+	// and the operation should be aborted.
 	TLS_INTERACTION_FAILED TlsInteractionResult = 2
 )

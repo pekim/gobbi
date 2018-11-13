@@ -54,22 +54,16 @@ const (
 type DBusError C.GDBusError
 
 const (
-	/*
-	   A generic error; "something went wrong" - see the error message for
-	   more.
-	*/
+	// A generic error; "something went wrong" - see the error message for
+	// more.
 	DBUS_ERROR_FAILED DBusError = 0
 	// There was not enough memory to complete an operation.
 	DBUS_ERROR_NO_MEMORY DBusError = 1
-	/*
-	   The bus doesn't know how to launch a service to supply the bus name
-	   you wanted.
-	*/
+	// The bus doesn't know how to launch a service to supply the bus name
+	// you wanted.
 	DBUS_ERROR_SERVICE_UNKNOWN DBusError = 2
-	/*
-	   The bus name you referenced doesn't exist (i.e. no application owns
-	   it).
-	*/
+	// The bus name you referenced doesn't exist (i.e. no application owns
+	// it).
 	DBUS_ERROR_NAME_HAS_NO_OWNER DBusError = 3
 	// No reply to a message expecting one, usually means a timeout occurred.
 	DBUS_ERROR_NO_REPLY DBusError = 4
@@ -85,18 +79,14 @@ const (
 	DBUS_ERROR_ACCESS_DENIED DBusError = 9
 	// Authentication didn't work.
 	DBUS_ERROR_AUTH_FAILED DBusError = 10
-	/*
-	   Unable to connect to server (probably caused by ECONNREFUSED on a
-	   socket).
-	*/
+	// Unable to connect to server (probably caused by ECONNREFUSED on a
+	// socket).
 	DBUS_ERROR_NO_SERVER DBusError = 11
-	/*
-	   Certain timeout errors, possibly ETIMEDOUT on a socket.  Note that
-	   %G_DBUS_ERROR_NO_REPLY is used for message reply timeouts. Warning:
-	   this is confusingly-named given that %G_DBUS_ERROR_TIMED_OUT also
-	   exists. We can't fix it for compatibility reasons so just be
-	   careful.
-	*/
+	// Certain timeout errors, possibly ETIMEDOUT on a socket.  Note that
+	// %G_DBUS_ERROR_NO_REPLY is used for message reply timeouts. Warning:
+	// this is confusingly-named given that %G_DBUS_ERROR_TIMED_OUT also
+	// exists. We can't fix it for compatibility reasons so just be
+	// careful.
 	DBUS_ERROR_TIMEOUT DBusError = 12
 	// No network access (probably ENETUNREACH on a socket).
 	DBUS_ERROR_NO_NETWORK DBusError = 13
@@ -112,11 +102,9 @@ const (
 	DBUS_ERROR_FILE_EXISTS DBusError = 18
 	// Method name you invoked isn't known by the object you invoked it on.
 	DBUS_ERROR_UNKNOWN_METHOD DBusError = 19
-	/*
-	   Certain timeout errors, e.g. while starting a service. Warning: this is
-	   confusingly-named given that %G_DBUS_ERROR_TIMEOUT also exists. We
-	   can't fix it for compatibility reasons so just be careful.
-	*/
+	// Certain timeout errors, e.g. while starting a service. Warning: this is
+	// confusingly-named given that %G_DBUS_ERROR_TIMEOUT also exists. We
+	// can't fix it for compatibility reasons so just be careful.
 	DBUS_ERROR_TIMED_OUT DBusError = 20
 	// Tried to remove or modify a match rule that didn't exist.
 	DBUS_ERROR_MATCH_RULE_NOT_FOUND DBusError = 21
@@ -220,21 +208,19 @@ const (
 	DBUS_MESSAGE_TYPE_SIGNAL DBusMessageType = 4
 )
 
-/*
-The type of name used by a #GUnixSocketAddress.
-%G_UNIX_SOCKET_ADDRESS_PATH indicates a traditional unix domain
-socket bound to a filesystem path. %G_UNIX_SOCKET_ADDRESS_ANONYMOUS
-indicates a socket not bound to any name (eg, a client-side socket,
-or a socket created with socketpair()).
-
-For abstract sockets, there are two incompatible ways of naming
-them; the man pages suggest using the entire `struct sockaddr_un`
-as the name, padding the unused parts of the %sun_path field with
-zeroes; this corresponds to %G_UNIX_SOCKET_ADDRESS_ABSTRACT_PADDED.
-However, many programs instead just use a portion of %sun_path, and
-pass an appropriate smaller length to bind() or connect(). This is
-%G_UNIX_SOCKET_ADDRESS_ABSTRACT.
-*/
+// The type of name used by a #GUnixSocketAddress.
+// %G_UNIX_SOCKET_ADDRESS_PATH indicates a traditional unix domain
+// socket bound to a filesystem path. %G_UNIX_SOCKET_ADDRESS_ANONYMOUS
+// indicates a socket not bound to any name (eg, a client-side socket,
+// or a socket created with socketpair()).
+//
+// For abstract sockets, there are two incompatible ways of naming
+// them; the man pages suggest using the entire `struct sockaddr_un`
+// as the name, padding the unused parts of the %sun_path field with
+// zeroes; this corresponds to %G_UNIX_SOCKET_ADDRESS_ABSTRACT_PADDED.
+// However, many programs instead just use a portion of %sun_path, and
+// pass an appropriate smaller length to bind() or connect(). This is
+// %G_UNIX_SOCKET_ADDRESS_ABSTRACT.
 type UnixSocketAddressType C.GUnixSocketAddressType
 
 const (
@@ -246,9 +232,7 @@ const (
 	UNIX_SOCKET_ADDRESS_PATH UnixSocketAddressType = 2
 	// an abstract name
 	UNIX_SOCKET_ADDRESS_ABSTRACT UnixSocketAddressType = 3
-	/*
-	   an abstract name, 0-padded
-	     to the full length of a unix socket name
-	*/
+	// an abstract name, 0-padded
+	// to the full length of a unix socket name
 	UNIX_SOCKET_ADDRESS_ABSTRACT_PADDED UnixSocketAddressType = 4
 )

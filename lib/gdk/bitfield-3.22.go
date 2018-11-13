@@ -8,23 +8,21 @@ package gdk
 // #include <stdlib.h>
 import "C"
 
-/*
-Positioning hints for aligning a window relative to a rectangle.
-
-These hints determine how the window should be positioned in the case that
-the window would fall off-screen if placed in its ideal position.
-
-For example, %GDK_ANCHOR_FLIP_X will replace %GDK_GRAVITY_NORTH_WEST with
-%GDK_GRAVITY_NORTH_EAST and vice versa if the window extends beyond the left
-or right edges of the monitor.
-
-If %GDK_ANCHOR_SLIDE_X is set, the window can be shifted horizontally to fit
-on-screen. If %GDK_ANCHOR_RESIZE_X is set, the window can be shrunken
-horizontally to fit.
-
-In general, when multiple flags are set, flipping should take precedence over
-sliding, which should take precedence over resizing.
-*/
+// Positioning hints for aligning a window relative to a rectangle.
+//
+// These hints determine how the window should be positioned in the case that
+// the window would fall off-screen if placed in its ideal position.
+//
+// For example, %GDK_ANCHOR_FLIP_X will replace %GDK_GRAVITY_NORTH_WEST with
+// %GDK_GRAVITY_NORTH_EAST and vice versa if the window extends beyond the left
+// or right edges of the monitor.
+//
+// If %GDK_ANCHOR_SLIDE_X is set, the window can be shifted horizontally to fit
+// on-screen. If %GDK_ANCHOR_RESIZE_X is set, the window can be shrunken
+// horizontally to fit.
+//
+// In general, when multiple flags are set, flipping should take precedence over
+// sliding, which should take precedence over resizing.
 type AnchorHints C.GdkAnchorHints
 
 const (

@@ -8,10 +8,8 @@ package pango
 // #include <stdlib.h>
 import "C"
 
-/*
-#PangoRenderPart defines different items to render for such
-purposes as setting colors.
-*/
+// #PangoRenderPart defines different items to render for such
+// purposes as setting colors.
 type RenderPart C.PangoRenderPart
 
 const (

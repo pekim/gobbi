@@ -20,10 +20,8 @@ const (
 	GDK_DEVICE_PAD_FEATURE_STRIP DevicePadFeature = 2
 )
 
-/*
-Indicates the specific type of tool being used being a tablet. Such as an
-airbrush, pencil, etc.
-*/
+// Indicates the specific type of tool being used being a tablet. Such as an
+// airbrush, pencil, etc.
 type DeviceToolType C.GdkDeviceToolType
 
 const (
@@ -45,10 +43,8 @@ const (
 	GDK_DEVICE_TOOL_TYPE_LENS DeviceToolType = 7
 )
 
-/*
-This enumeration describes how the red, green and blue components
-of physical pixels on an output device are laid out.
-*/
+// This enumeration describes how the red, green and blue components
+// of physical pixels on an output device are laid out.
 type SubpixelLayout C.GdkSubpixelLayout
 
 const (

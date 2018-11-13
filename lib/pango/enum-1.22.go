@@ -8,11 +8,9 @@ package pango
 // #include <stdlib.h>
 import "C"
 
-/*
-The #PangoBidiType type represents the bidirectional character
-type of a Unicode character as specified by the
-<ulink url="http://www.unicode.org/reports/tr9/">Unicode bidirectional algorithm</ulink>.
-*/
+// The #PangoBidiType type represents the bidirectional character
+// type of a Unicode character as specified by the
+// <ulink url="http://www.unicode.org/reports/tr9/">Unicode bidirectional algorithm</ulink>.
 type BidiType C.PangoBidiType
 
 const (

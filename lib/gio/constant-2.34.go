@@ -18,9 +18,7 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-/*
-A key in the "standard" namespace for getting the symbolic icon for the file.
-Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_OBJECT.
-The value for this key should contain a #GIcon.
-*/
+// A key in the "standard" namespace for getting the symbolic icon for the file.
+// Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_OBJECT.
+// The value for this key should contain a #GIcon.
 const FILE_ATTRIBUTE_STANDARD_SYMBOLIC_ICON string = C.G_FILE_ATTRIBUTE_STANDARD_SYMBOLIC_ICON

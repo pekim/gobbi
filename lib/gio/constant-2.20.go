@@ -18,20 +18,16 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-/*
-A key in the "preview" namespace for getting a #GIcon that can be
-used to get preview of the file. For example, it may be a low
-resolution thumbnail without metadata. Corresponding
-#GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_OBJECT.  The value
-for this key should contain a #GIcon.
-*/
+// A key in the "preview" namespace for getting a #GIcon that can be
+// used to get preview of the file. For example, it may be a low
+// resolution thumbnail without metadata. Corresponding
+// #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_OBJECT.  The value
+// for this key should contain a #GIcon.
 const FILE_ATTRIBUTE_PREVIEW_ICON string = C.G_FILE_ATTRIBUTE_PREVIEW_ICON
 
-/*
-A key in the "standard" namespace for getting the amount of disk space
-that is consumed by the file (in bytes).  This will generally be larger
-than the file size (due to block size overhead) but can occasionally be
-smaller (for example, for sparse files).
-Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_UINT64.
-*/
+// A key in the "standard" namespace for getting the amount of disk space
+// that is consumed by the file (in bytes).  This will generally be larger
+// than the file size (due to block size overhead) but can occasionally be
+// smaller (for example, for sparse files).
+// Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_UINT64.
 const FILE_ATTRIBUTE_STANDARD_ALLOCATED_SIZE string = C.G_FILE_ATTRIBUTE_STANDARD_ALLOCATED_SIZE

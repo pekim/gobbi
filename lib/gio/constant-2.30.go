@@ -18,8 +18,6 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-/*
-Extension point for network status monitoring functionality.
-See [Extending GIO][extending-gio].
-*/
+// Extension point for network status monitoring functionality.
+// See [Extending GIO][extending-gio].
 const NETWORK_MONITOR_EXTENSION_POINT_NAME string = C.G_NETWORK_MONITOR_EXTENSION_POINT_NAME

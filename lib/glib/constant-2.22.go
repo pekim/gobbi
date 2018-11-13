@@ -10,21 +10,15 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-/*
-This is the platform dependent conversion specifier for scanning
-and printing values of type #gintptr.
-*/
+// This is the platform dependent conversion specifier for scanning
+// and printing values of type #gintptr.
 const GINTPTR_FORMAT string = C.G_GINTPTR_FORMAT
 
-/*
-The platform dependent length modifier for conversion specifiers
-for scanning and printing values of type #gintptr or #guintptr.
-It is a string literal.
-*/
+// The platform dependent length modifier for conversion specifiers
+// for scanning and printing values of type #gintptr or #guintptr.
+// It is a string literal.
 const GINTPTR_MODIFIER string = C.G_GINTPTR_MODIFIER
 
-/*
-This is the platform dependent conversion specifier
-for scanning and printing values of type #guintptr.
-*/
+// This is the platform dependent conversion specifier
+// for scanning and printing values of type #guintptr.
 const GUINTPTR_FORMAT string = C.G_GUINTPTR_FORMAT

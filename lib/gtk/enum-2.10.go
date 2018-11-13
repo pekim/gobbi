@@ -10,10 +10,8 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
-/*
-These identify the various errors that can occur while calling
-#GtkRecentChooser functions.
-*/
+// These identify the various errors that can occur while calling
+// #GtkRecentChooser functions.
 type RecentChooserError C.GtkRecentChooserError
 
 const (
@@ -27,62 +25,42 @@ const (
 type RecentManagerError C.GtkRecentManagerError
 
 const (
-	/*
-	   the URI specified does not exists in
-	     the recently used resources list.
-	*/
+	// the URI specified does not exists in
+	// the recently used resources list.
 	GTK_RECENT_MANAGER_ERROR_NOT_FOUND RecentManagerError = 0
 	// the URI specified is not valid.
 	GTK_RECENT_MANAGER_ERROR_INVALID_URI RecentManagerError = 1
-	/*
-	   the supplied string is not
-	     UTF-8 encoded.
-	*/
+	// the supplied string is not
+	// UTF-8 encoded.
 	GTK_RECENT_MANAGER_ERROR_INVALID_ENCODING RecentManagerError = 2
-	/*
-	   no application has registered
-	     the specified item.
-	*/
+	// no application has registered
+	// the specified item.
 	GTK_RECENT_MANAGER_ERROR_NOT_REGISTERED RecentManagerError = 3
-	/*
-	   failure while reading the recently used
-	     resources file.
-	*/
+	// failure while reading the recently used
+	// resources file.
 	GTK_RECENT_MANAGER_ERROR_READ RecentManagerError = 4
-	/*
-	   failure while writing the recently used
-	     resources file.
-	*/
+	// failure while writing the recently used
+	// resources file.
 	GTK_RECENT_MANAGER_ERROR_WRITE RecentManagerError = 5
 	// unspecified error.
 	GTK_RECENT_MANAGER_ERROR_UNKNOWN RecentManagerError = 6
 )
 
-/*
-Used to specify the sorting method to be applyed to the recently
-used resource list.
-*/
+// Used to specify the sorting method to be applyed to the recently
+// used resource list.
 type RecentSortType C.GtkRecentSortType
 
 const (
-	/*
-	   Do not sort the returned list of recently used
-	     resources.
-	*/
+	// Do not sort the returned list of recently used
+	// resources.
 	GTK_RECENT_SORT_NONE RecentSortType = 0
-	/*
-	   Sort the returned list with the most recently used
-	     items first.
-	*/
+	// Sort the returned list with the most recently used
+	// items first.
 	GTK_RECENT_SORT_MRU RecentSortType = 1
-	/*
-	   Sort the returned list with the least recently used
-	     items first.
-	*/
+	// Sort the returned list with the least recently used
+	// items first.
 	GTK_RECENT_SORT_LRU RecentSortType = 2
-	/*
-	   Sort the returned list using a custom sorting
-	     function passed using gtk_recent_chooser_set_sort_func().
-	*/
+	// Sort the returned list using a custom sorting
+	// function passed using gtk_recent_chooser_set_sort_func().
 	GTK_RECENT_SORT_CUSTOM RecentSortType = 3
 )

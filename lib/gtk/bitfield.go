@@ -21,17 +21,13 @@ const (
 	GTK_ACCEL_MASK AccelFlags = 7
 )
 
-/*
-Denotes the expansion properties that a widget will have when it (or its
-parent) is resized.
-*/
+// Denotes the expansion properties that a widget will have when it (or its
+// parent) is resized.
 type AttachOptions C.GtkAttachOptions
 
 const (
-	/*
-	   the widget should expand to take up any extra space in its
-	   container that has been allocated.
-	*/
+	// the widget should expand to take up any extra space in its
+	// container that has been allocated.
 	GTK_EXPAND AttachOptions = 1
 	// the widget should shrink as and when possible.
 	GTK_SHRINK AttachOptions = 2
@@ -49,15 +45,11 @@ const (
 	GTK_CALENDAR_SHOW_DAY_NAMES CalendarDisplayOptions = 2
 	// Prevents the user from switching months with the calendar.
 	GTK_CALENDAR_NO_MONTH_CHANGE CalendarDisplayOptions = 4
-	/*
-	   Displays each week numbers of the current year, down the
-	   left side of the calendar.
-	*/
+	// Displays each week numbers of the current year, down the
+	// left side of the calendar.
 	GTK_CALENDAR_SHOW_WEEK_NUMBERS CalendarDisplayOptions = 8
-	/*
-	   Just show an indicator, not the full details
-	   text when details are provided. See gtk_calendar_set_detail_func().
-	*/
+	// Just show an indicator, not the full details
+	// text when details are provided. See gtk_calendar_set_detail_func().
 	GTK_CALENDAR_SHOW_DETAILS CalendarDisplayOptions = 32
 )
 
@@ -65,10 +57,8 @@ const (
 type CellRendererState C.GtkCellRendererState
 
 const (
-	/*
-	   The cell is currently selected, and
-	    probably has a selection colored background to render to.
-	*/
+	// The cell is currently selected, and
+	// probably has a selection colored background to render to.
 	GTK_CELL_RENDERER_SELECTED CellRendererState = 1
 	// The mouse is hovering over the cell.
 	GTK_CELL_RENDERER_PRELIT CellRendererState = 2
@@ -111,40 +101,30 @@ const (
 	GTK_DEBUG_LAYOUT         DebugFlag = 2097152
 )
 
-/*
-The #GtkDestDefaults enumeration specifies the various
-types of action that will be taken on behalf
-of the user for a drag destination site.
-*/
+// The #GtkDestDefaults enumeration specifies the various
+// types of action that will be taken on behalf
+// of the user for a drag destination site.
 type DestDefaults C.GtkDestDefaults
 
 const (
-	/*
-	   If set for a widget, GTK+, during a drag over this
-	     widget will check if the drag matches this widget’s list of possible targets
-	     and actions.
-	     GTK+ will then call gdk_drag_status() as appropriate.
-	*/
+	// If set for a widget, GTK+, during a drag over this
+	// widget will check if the drag matches this widget’s list of possible targets
+	// and actions.
+	// GTK+ will then call gdk_drag_status() as appropriate.
 	GTK_DEST_DEFAULT_MOTION DestDefaults = 1
-	/*
-	   If set for a widget, GTK+ will draw a highlight on
-	     this widget as long as a drag is over this widget and the widget drag format
-	     and action are acceptable.
-	*/
+	// If set for a widget, GTK+ will draw a highlight on
+	// this widget as long as a drag is over this widget and the widget drag format
+	// and action are acceptable.
 	GTK_DEST_DEFAULT_HIGHLIGHT DestDefaults = 2
-	/*
-	   If set for a widget, when a drop occurs, GTK+ will
-	     will check if the drag matches this widget’s list of possible targets and
-	     actions. If so, GTK+ will call gtk_drag_get_data() on behalf of the widget.
-	     Whether or not the drop is successful, GTK+ will call gtk_drag_finish(). If
-	     the action was a move, then if the drag was successful, then %TRUE will be
-	     passed for the @delete parameter to gtk_drag_finish().
-	*/
+	// If set for a widget, when a drop occurs, GTK+ will
+	// will check if the drag matches this widget’s list of possible targets and
+	// actions. If so, GTK+ will call gtk_drag_get_data() on behalf of the widget.
+	// Whether or not the drop is successful, GTK+ will call gtk_drag_finish(). If
+	// the action was a move, then if the drag was successful, then %TRUE will be
+	// passed for the @delete parameter to gtk_drag_finish().
 	GTK_DEST_DEFAULT_DROP DestDefaults = 4
-	/*
-	   If set, specifies that all default actions should
-	     be taken.
-	*/
+	// If set, specifies that all default actions should
+	// be taken.
 	GTK_DEST_DEFAULT_ALL DestDefaults = 7
 )
 
@@ -152,27 +132,19 @@ const (
 type DialogFlags C.GtkDialogFlags
 
 const (
-	/*
-	   Make the constructed dialog modal,
-	       see gtk_window_set_modal()
-	*/
+	// Make the constructed dialog modal,
+	// see gtk_window_set_modal()
 	GTK_DIALOG_MODAL DialogFlags = 1
-	/*
-	   Destroy the dialog when its
-	       parent is destroyed, see gtk_window_set_destroy_with_parent()
-	*/
+	// Destroy the dialog when its
+	// parent is destroyed, see gtk_window_set_destroy_with_parent()
 	GTK_DIALOG_DESTROY_WITH_PARENT DialogFlags = 2
-	/*
-	   Create dialog with actions in header
-	       bar instead of action area. Since 3.12.
-	*/
+	// Create dialog with actions in header
+	// bar instead of action area. Since 3.12.
 	GTK_DIALOG_USE_HEADER_BAR DialogFlags = 4
 )
 
-/*
-These flags indicate what parts of a #GtkFileFilterInfo struct
-are filled or need to be filled.
-*/
+// These flags indicate what parts of a #GtkFileFilterInfo struct
+// are filled or need to be filled.
 type FileFilterFlags C.GtkFileFilterFlags
 
 const (
@@ -180,10 +152,8 @@ const (
 	GTK_FILE_FILTER_FILENAME FileFilterFlags = 1
 	// the URI for the file being tested
 	GTK_FILE_FILTER_URI FileFilterFlags = 2
-	/*
-	   the string that will be used to
-	     display the file in the file chooser
-	*/
+	// the string that will be used to
+	// display the file in the file chooser
 	GTK_FILE_FILTER_DISPLAY_NAME FileFilterFlags = 4
 	// the mime type of the file
 	GTK_FILE_FILTER_MIME_TYPE FileFilterFlags = 8
@@ -193,55 +163,37 @@ const (
 type IconLookupFlags C.GtkIconLookupFlags
 
 const (
-	/*
-	   Never get SVG icons, even if gdk-pixbuf
-	     supports them. Cannot be used together with %GTK_ICON_LOOKUP_FORCE_SVG.
-	*/
+	// Never get SVG icons, even if gdk-pixbuf
+	// supports them. Cannot be used together with %GTK_ICON_LOOKUP_FORCE_SVG.
 	GTK_ICON_LOOKUP_NO_SVG IconLookupFlags = 1
-	/*
-	   Get SVG icons, even if gdk-pixbuf
-	     doesn’t support them.
-	     Cannot be used together with %GTK_ICON_LOOKUP_NO_SVG.
-	*/
+	// Get SVG icons, even if gdk-pixbuf
+	// doesn’t support them.
+	// Cannot be used together with %GTK_ICON_LOOKUP_NO_SVG.
 	GTK_ICON_LOOKUP_FORCE_SVG IconLookupFlags = 2
-	/*
-	   When passed to
-	     gtk_icon_theme_lookup_icon() includes builtin icons
-	     as well as files. For a builtin icon, gtk_icon_info_get_filename()
-	     is %NULL and you need to call gtk_icon_info_get_builtin_pixbuf().
-	*/
+	// When passed to
+	// gtk_icon_theme_lookup_icon() includes builtin icons
+	// as well as files. For a builtin icon, gtk_icon_info_get_filename()
+	// is %NULL and you need to call gtk_icon_info_get_builtin_pixbuf().
 	GTK_ICON_LOOKUP_USE_BUILTIN IconLookupFlags = 4
-	/*
-	   Try to shorten icon name at '-'
-	     characters before looking at inherited themes. This flag is only
-	     supported in functions that take a single icon name. For more general
-	     fallback, see gtk_icon_theme_choose_icon(). Since 2.12.
-	*/
+	// Try to shorten icon name at '-'
+	// characters before looking at inherited themes. This flag is only
+	// supported in functions that take a single icon name. For more general
+	// fallback, see gtk_icon_theme_choose_icon(). Since 2.12.
 	GTK_ICON_LOOKUP_GENERIC_FALLBACK IconLookupFlags = 8
-	/*
-	   Always get the icon scaled to the
-	     requested size. Since 2.14.
-	*/
+	// Always get the icon scaled to the
+	// requested size. Since 2.14.
 	GTK_ICON_LOOKUP_FORCE_SIZE IconLookupFlags = 16
-	/*
-	   Try to always load regular icons, even
-	     when symbolic icon names are given. Since 3.14.
-	*/
+	// Try to always load regular icons, even
+	// when symbolic icon names are given. Since 3.14.
 	GTK_ICON_LOOKUP_FORCE_REGULAR IconLookupFlags = 32
-	/*
-	   Try to always load symbolic icons, even
-	     when regular icon names are given. Since 3.14.
-	*/
+	// Try to always load symbolic icons, even
+	// when regular icon names are given. Since 3.14.
 	GTK_ICON_LOOKUP_FORCE_SYMBOLIC IconLookupFlags = 64
-	/*
-	   Try to load a variant of the icon for left-to-right
-	     text direction. Since 3.14.
-	*/
+	// Try to load a variant of the icon for left-to-right
+	// text direction. Since 3.14.
 	GTK_ICON_LOOKUP_DIR_LTR IconLookupFlags = 128
-	/*
-	   Try to load a variant of the icon for right-to-left
-	     text direction. Since 3.14.
-	*/
+	// Try to load a variant of the icon for right-to-left
+	// text direction. Since 3.14.
 	GTK_ICON_LOOKUP_DIR_RTL IconLookupFlags = 256
 )
 
@@ -269,42 +221,34 @@ const (
 	GTK_JUNCTION_RIGHT JunctionSides = 10
 )
 
-/*
-These flags serve two purposes.  First, the application can call gtk_places_sidebar_set_open_flags()
-using these flags as a bitmask.  This tells the sidebar that the application is able to open
-folders selected from the sidebar in various ways, for example, in new tabs or in new windows in
-addition to the normal mode.
-
-Second, when one of these values gets passed back to the application in the
-#GtkPlacesSidebar::open-location signal, it means that the application should
-open the selected location in the normal way, in a new tab, or in a new
-window.  The sidebar takes care of determining the desired way to open the location,
-based on the modifier keys that the user is pressing at the time the selection is made.
-
-If the application never calls gtk_places_sidebar_set_open_flags(), then the sidebar will only
-use #GTK_PLACES_OPEN_NORMAL in the #GtkPlacesSidebar::open-location signal.  This is the
-default mode of operation.
-*/
+// These flags serve two purposes.  First, the application can call gtk_places_sidebar_set_open_flags()
+// using these flags as a bitmask.  This tells the sidebar that the application is able to open
+// folders selected from the sidebar in various ways, for example, in new tabs or in new windows in
+// addition to the normal mode.
+//
+// Second, when one of these values gets passed back to the application in the
+// #GtkPlacesSidebar::open-location signal, it means that the application should
+// open the selected location in the normal way, in a new tab, or in a new
+// window.  The sidebar takes care of determining the desired way to open the location,
+// based on the modifier keys that the user is pressing at the time the selection is made.
+//
+// If the application never calls gtk_places_sidebar_set_open_flags(), then the sidebar will only
+// use #GTK_PLACES_OPEN_NORMAL in the #GtkPlacesSidebar::open-location signal.  This is the
+// default mode of operation.
 type PlacesOpenFlags C.GtkPlacesOpenFlags
 
 const (
-	/*
-	   This is the default mode that #GtkPlacesSidebar uses if no other flags
-	    are specified.  It indicates that the calling application should open the selected location
-	    in the normal way, for example, in the folder view beside the sidebar.
-	*/
+	// This is the default mode that #GtkPlacesSidebar uses if no other flags
+	// are specified.  It indicates that the calling application should open the selected location
+	// in the normal way, for example, in the folder view beside the sidebar.
 	GTK_PLACES_OPEN_NORMAL PlacesOpenFlags = 1
-	/*
-	   When passed to gtk_places_sidebar_set_open_flags(), this indicates
-	    that the application can open folders selected from the sidebar in new tabs.  This value
-	    will be passed to the #GtkPlacesSidebar::open-location signal when the user selects
-	    that a location be opened in a new tab instead of in the standard fashion.
-	*/
+	// When passed to gtk_places_sidebar_set_open_flags(), this indicates
+	// that the application can open folders selected from the sidebar in new tabs.  This value
+	// will be passed to the #GtkPlacesSidebar::open-location signal when the user selects
+	// that a location be opened in a new tab instead of in the standard fashion.
 	GTK_PLACES_OPEN_NEW_TAB PlacesOpenFlags = 2
-	/*
-	   Similar to @GTK_PLACES_OPEN_NEW_TAB, but indicates that the application
-	    can open folders in new windows.
-	*/
+	// Similar to @GTK_PLACES_OPEN_NEW_TAB, but indicates that the application
+	// can open folders in new windows.
 	GTK_PLACES_OPEN_NEW_WINDOW PlacesOpenFlags = 4
 )
 
@@ -322,33 +266,25 @@ const (
 	GTK_RC_BASE RcFlags = 8
 )
 
-/*
-These flags indicate what parts of a #GtkRecentFilterInfo struct
-are filled or need to be filled.
-*/
+// These flags indicate what parts of a #GtkRecentFilterInfo struct
+// are filled or need to be filled.
 type RecentFilterFlags C.GtkRecentFilterFlags
 
 const (
 	// the URI of the file being tested
 	GTK_RECENT_FILTER_URI RecentFilterFlags = 1
-	/*
-	   the string that will be used to
-	    display the file in the recent chooser
-	*/
+	// the string that will be used to
+	// display the file in the recent chooser
 	GTK_RECENT_FILTER_DISPLAY_NAME RecentFilterFlags = 2
 	// the mime type of the file
 	GTK_RECENT_FILTER_MIME_TYPE RecentFilterFlags = 4
-	/*
-	   the list of applications that have
-	    registered the file
-	*/
+	// the list of applications that have
+	// registered the file
 	GTK_RECENT_FILTER_APPLICATION RecentFilterFlags = 8
 	// the groups to which the file belongs to
 	GTK_RECENT_FILTER_GROUP RecentFilterFlags = 16
-	/*
-	   the number of days elapsed since the file
-	    has been registered
-	*/
+	// the number of days elapsed since the file
+	// has been registered
 	GTK_RECENT_FILTER_AGE RecentFilterFlags = 32
 )
 
@@ -370,11 +306,9 @@ const (
 	GTK_REGION_SORTED RegionFlags = 32
 )
 
-/*
-Describes a widget state. Widget states are used to match the widget
-against CSS pseudo-classes. Note that GTK extends the regular CSS
-classes and sometimes uses different names.
-*/
+// Describes a widget state. Widget states are used to match the widget
+// against CSS pseudo-classes. Note that GTK extends the regular CSS
+// classes and sometimes uses different names.
 type StateFlags C.GtkStateFlags
 
 const (
@@ -408,59 +342,41 @@ const (
 	GTK_STATE_FLAG_DROP_ACTIVE StateFlags = 4096
 )
 
-/*
-The #GtkTargetFlags enumeration is used to specify
-constraints on a #GtkTargetEntry.
-*/
+// The #GtkTargetFlags enumeration is used to specify
+// constraints on a #GtkTargetEntry.
 type TargetFlags C.GtkTargetFlags
 
 const (
-	/*
-	   If this is set, the target will only be selected
-	     for drags within a single application.
-	*/
+	// If this is set, the target will only be selected
+	// for drags within a single application.
 	GTK_TARGET_SAME_APP TargetFlags = 1
-	/*
-	   If this is set, the target will only be selected
-	     for drags within a single widget.
-	*/
+	// If this is set, the target will only be selected
+	// for drags within a single widget.
 	GTK_TARGET_SAME_WIDGET TargetFlags = 2
-	/*
-	   If this is set, the target will not be selected
-	     for drags within a single application.
-	*/
+	// If this is set, the target will not be selected
+	// for drags within a single application.
 	GTK_TARGET_OTHER_APP TargetFlags = 4
-	/*
-	   If this is set, the target will not be selected
-	     for drags withing a single widget.
-	*/
+	// If this is set, the target will not be selected
+	// for drags withing a single widget.
 	GTK_TARGET_OTHER_WIDGET TargetFlags = 8
 )
 
-/*
-Flags affecting how a search is done.
-
-If neither #GTK_TEXT_SEARCH_VISIBLE_ONLY nor #GTK_TEXT_SEARCH_TEXT_ONLY are
-enabled, the match must be exact; the special 0xFFFC character will match
-embedded pixbufs or child widgets.
-*/
+// Flags affecting how a search is done.
+//
+// If neither #GTK_TEXT_SEARCH_VISIBLE_ONLY nor #GTK_TEXT_SEARCH_TEXT_ONLY are
+// enabled, the match must be exact; the special 0xFFFC character will match
+// embedded pixbufs or child widgets.
 type TextSearchFlags C.GtkTextSearchFlags
 
 const (
-	/*
-	   Search only visible data. A search match may
-	   have invisible text interspersed.
-	*/
+	// Search only visible data. A search match may
+	// have invisible text interspersed.
 	GTK_TEXT_SEARCH_VISIBLE_ONLY TextSearchFlags = 1
-	/*
-	   Search only text. A match may have pixbufs or
-	   child widgets mixed inside the matched range.
-	*/
+	// Search only text. A match may have pixbufs or
+	// child widgets mixed inside the matched range.
 	GTK_TEXT_SEARCH_TEXT_ONLY TextSearchFlags = 2
-	/*
-	   The text will be matched regardless of
-	   what case it is in.
-	*/
+	// The text will be matched regardless of
+	// what case it is in.
 	GTK_TEXT_SEARCH_CASE_INSENSITIVE TextSearchFlags = 4
 )
 
@@ -474,33 +390,25 @@ const (
 	GTK_TOOL_PALETTE_DRAG_GROUPS ToolPaletteDragTargets = 2
 )
 
-/*
-These flags indicate various properties of a #GtkTreeModel.
-
-They are returned by gtk_tree_model_get_flags(), and must be
-static for the lifetime of the object. A more complete description
-of #GTK_TREE_MODEL_ITERS_PERSIST can be found in the overview of
-this section.
-*/
+// These flags indicate various properties of a #GtkTreeModel.
+//
+// They are returned by gtk_tree_model_get_flags(), and must be
+// static for the lifetime of the object. A more complete description
+// of #GTK_TREE_MODEL_ITERS_PERSIST can be found in the overview of
+// this section.
 type TreeModelFlags C.GtkTreeModelFlags
 
 const (
-	/*
-	   iterators survive all signals
-	       emitted by the tree
-	*/
+	// iterators survive all signals
+	// emitted by the tree
 	GTK_TREE_MODEL_ITERS_PERSIST TreeModelFlags = 1
-	/*
-	   the model is a list only, and never
-	       has children
-	*/
+	// the model is a list only, and never
+	// has children
 	GTK_TREE_MODEL_LIST_ONLY TreeModelFlags = 2
 )
 
-/*
-These enumeration values are used by gtk_ui_manager_add_ui() to determine
-what UI element to create.
-*/
+// These enumeration values are used by gtk_ui_manager_add_ui() to determine
+// what UI element to create.
 type UIManagerItemType C.GtkUIManagerItemType
 
 const (
@@ -524,9 +432,7 @@ const (
 	GTK_UI_MANAGER_SEPARATOR UIManagerItemType = 128
 	// Install an accelerator.
 	GTK_UI_MANAGER_ACCELERATOR UIManagerItemType = 256
-	/*
-	   Same as %GTK_UI_MANAGER_POPUP, but the
-	     actions’ accelerators are shown.
-	*/
+	// Same as %GTK_UI_MANAGER_POPUP, but the
+	// actions’ accelerators are shown.
 	GTK_UI_MANAGER_POPUP_WITH_ACCELS UIManagerItemType = 512
 )

@@ -7,19 +7,15 @@ package atk
 // #include <stdlib.h>
 import "C"
 
-/*
-Specifies how xy coordinates are to be interpreted. Used by functions such
-as atk_component_get_position() and atk_text_get_character_extents()
-*/
+// Specifies how xy coordinates are to be interpreted. Used by functions such
+// as atk_component_get_position() and atk_text_get_character_extents()
 type CoordType C.AtkCoordType
 
 const (
 	// specifies xy coordinates relative to the screen
 	ATK_XY_SCREEN CoordType = 0
-	/*
-	   specifies xy coordinates relative to the widget's
-	   top-level window
-	*/
+	// specifies xy coordinates relative to the widget's
+	// top-level window
 	ATK_XY_WINDOW CoordType = 1
 )
 
@@ -35,13 +31,11 @@ const (
 	ATK_KEY_EVENT_LAST_DEFINED KeyEventType = 2
 )
 
-/*
-Describes the layer of a component
-
-These enumerated "layer values" are used when determining which UI
-rendering layer a component is drawn into, which can help in making
-determinations of when components occlude one another.
-*/
+// Describes the layer of a component
+//
+// These enumerated "layer values" are used when determining which UI
+// rendering layer a component is drawn into, which can help in making
+// determinations of when components occlude one another.
 type Layer C.AtkLayer
 
 const (
@@ -81,94 +75,72 @@ const (
 	ATK_RELATION_MEMBER_OF RelationType = 5
 	// Indicates an object is a cell in a treetable which is displayed because a cell in the same column is expanded and identifies that cell.
 	ATK_RELATION_NODE_CHILD_OF RelationType = 6
-	/*
-	   Indicates that the object has content that flows logically to another
-	    AtkObject in a sequential way, (for instance text-flow).
-	*/
+	// Indicates that the object has content that flows logically to another
+	// AtkObject in a sequential way, (for instance text-flow).
 	ATK_RELATION_FLOWS_TO RelationType = 7
-	/*
-	   Indicates that the object has content that flows logically from
-	    another AtkObject in a sequential way, (for instance text-flow).
-	*/
+	// Indicates that the object has content that flows logically from
+	// another AtkObject in a sequential way, (for instance text-flow).
 	ATK_RELATION_FLOWS_FROM RelationType = 8
 	// Indicates a subwindow attached to a component but otherwise has no connection in  the UI heirarchy to that component.
 	ATK_RELATION_SUBWINDOW_OF RelationType = 9
-	/*
-	   Indicates that the object visually embeds
-	    another object's content, i.e. this object's content flows around
-	    another's content.
-	*/
+	// Indicates that the object visually embeds
+	// another object's content, i.e. this object's content flows around
+	// another's content.
 	ATK_RELATION_EMBEDS RelationType = 10
-	/*
-	   Reciprocal of %ATK_RELATION_EMBEDS, indicates that
-	    this object's content is visualy embedded in another object.
-	*/
+	// Reciprocal of %ATK_RELATION_EMBEDS, indicates that
+	// this object's content is visualy embedded in another object.
 	ATK_RELATION_EMBEDDED_BY RelationType = 11
 	// Indicates that an object is a popup for another object.
 	ATK_RELATION_POPUP_FOR RelationType = 12
 	// Indicates that an object is a parent window of another object.
 	ATK_RELATION_PARENT_WINDOW_OF RelationType = 13
-	/*
-	   Reciprocal of %ATK_RELATION_DESCRIPTION_FOR. Indicates that one
-	   or more target objects provide descriptive information about this object. This relation
-	   type is most appropriate for information that is not essential as its presentation may
-	   be user-configurable and/or limited to an on-demand mechanism such as an assistive
-	   technology command. For brief, essential information such as can be found in a widget's
-	   on-screen label, use %ATK_RELATION_LABELLED_BY. For an on-screen error message, use
-	   %ATK_RELATION_ERROR_MESSAGE. For lengthy extended descriptive information contained in
-	   an on-screen object, consider using %ATK_RELATION_DETAILS as assistive technologies may
-	   provide a means for the user to navigate to objects containing detailed descriptions so
-	   that their content can be more closely reviewed.
-	*/
+	// Reciprocal of %ATK_RELATION_DESCRIPTION_FOR. Indicates that one
+	// or more target objects provide descriptive information about this object. This relation
+	// type is most appropriate for information that is not essential as its presentation may
+	// be user-configurable and/or limited to an on-demand mechanism such as an assistive
+	// technology command. For brief, essential information such as can be found in a widget's
+	// on-screen label, use %ATK_RELATION_LABELLED_BY. For an on-screen error message, use
+	// %ATK_RELATION_ERROR_MESSAGE. For lengthy extended descriptive information contained in
+	// an on-screen object, consider using %ATK_RELATION_DETAILS as assistive technologies may
+	// provide a means for the user to navigate to objects containing detailed descriptions so
+	// that their content can be more closely reviewed.
 	ATK_RELATION_DESCRIBED_BY RelationType = 14
-	/*
-	   Reciprocal of %ATK_RELATION_DESCRIBED_BY. Indicates that this
-	   object provides descriptive information about the target object(s). See also
-	   %ATK_RELATION_DETAILS_FOR and %ATK_RELATION_ERROR_FOR.
-	*/
+	// Reciprocal of %ATK_RELATION_DESCRIBED_BY. Indicates that this
+	// object provides descriptive information about the target object(s). See also
+	// %ATK_RELATION_DETAILS_FOR and %ATK_RELATION_ERROR_FOR.
 	ATK_RELATION_DESCRIPTION_FOR RelationType = 15
 	// Indicates an object is a cell in a treetable and is expanded to display other cells in the same column.
 	ATK_RELATION_NODE_PARENT_OF RelationType = 16
-	/*
-	   Reciprocal of %ATK_RELATION_DETAILS_FOR. Indicates that this object
-	   has a detailed or extended description, the contents of which can be found in the target
-	   object(s). This relation type is most appropriate for information that is sufficiently
-	   lengthy as to make navigation to the container of that information desirable. For less
-	   verbose information suitable for announcement only, see %ATK_RELATION_DESCRIBED_BY. If
-	   the detailed information describes an error condition, %ATK_RELATION_ERROR_FOR should be
-	   used instead. @Since: ATK-2.26.
-	*/
+	// Reciprocal of %ATK_RELATION_DETAILS_FOR. Indicates that this object
+	// has a detailed or extended description, the contents of which can be found in the target
+	// object(s). This relation type is most appropriate for information that is sufficiently
+	// lengthy as to make navigation to the container of that information desirable. For less
+	// verbose information suitable for announcement only, see %ATK_RELATION_DESCRIBED_BY. If
+	// the detailed information describes an error condition, %ATK_RELATION_ERROR_FOR should be
+	// used instead. @Since: ATK-2.26.
 	ATK_RELATION_DETAILS RelationType = 17
-	/*
-	   Reciprocal of %ATK_RELATION_DETAILS. Indicates that this object
-	   provides a detailed or extended description about the target object(s). See also
-	   %ATK_RELATION_DESCRIPTION_FOR and %ATK_RELATION_ERROR_FOR. @Since: ATK-2.26.
-	*/
+	// Reciprocal of %ATK_RELATION_DETAILS. Indicates that this object
+	// provides a detailed or extended description about the target object(s). See also
+	// %ATK_RELATION_DESCRIPTION_FOR and %ATK_RELATION_ERROR_FOR. @Since: ATK-2.26.
 	ATK_RELATION_DETAILS_FOR RelationType = 18
-	/*
-	   Reciprocal of %ATK_RELATION_ERROR_FOR. Indicates that this object
-	   has one or more errors, the nature of which is described in the contents of the target
-	   object(s). Objects that have this relation type should also contain %ATK_STATE_INVALID_ENTRY
-	   in their #AtkStateSet. @Since: ATK-2.26.
-	*/
+	// Reciprocal of %ATK_RELATION_ERROR_FOR. Indicates that this object
+	// has one or more errors, the nature of which is described in the contents of the target
+	// object(s). Objects that have this relation type should also contain %ATK_STATE_INVALID_ENTRY
+	// in their #AtkStateSet. @Since: ATK-2.26.
 	ATK_RELATION_ERROR_MESSAGE RelationType = 19
-	/*
-	   Reciprocal of %ATK_RELATION_ERROR_MESSAGE. Indicates that this object
-	   contains an error message describing an invalid condition in the target object(s). @Since:
-	   ATK_2.26.
-	*/
+	// Reciprocal of %ATK_RELATION_ERROR_MESSAGE. Indicates that this object
+	// contains an error message describing an invalid condition in the target object(s). @Since:
+	// ATK_2.26.
 	ATK_RELATION_ERROR_FOR RelationType = 20
 	// Not used, this value indicates the end of the enumeration.
 	ATK_RELATION_LAST_DEFINED RelationType = 21
 )
 
-/*
-Describes the role of an object
-
-These are the built-in enumerated roles that UI components can have in
-ATK.  Other roles may be added at runtime, so an AtkRole >=
-ATK_ROLE_LAST_DEFINED is not necessarily an error.
-*/
+// Describes the role of an object
+//
+// These are the built-in enumerated roles that UI components can have in
+// ATK.  Other roles may be added at runtime, so an AtkRole >=
+// ATK_ROLE_LAST_DEFINED is not necessarily an error.
 type Role C.AtkRole
 
 const (
@@ -292,15 +264,13 @@ const (
 	ATK_ROLE_TEAR_OFF_MENU_ITEM Role = 58
 	// An object that represents an accessible terminal.  @Since: ATK-0.6
 	ATK_ROLE_TERMINAL Role = 59
-	/*
-	   An interactive widget that supports multiple lines of text and
-	   optionally accepts user input, but whose purpose is not to solicit user input.
-	   Thus ATK_ROLE_TEXT is appropriate for the text view in a plain text editor
-	   but inappropriate for an input field in a dialog box or web form. For widgets
-	   whose purpose is to solicit input from the user, see ATK_ROLE_ENTRY and
-	   ATK_ROLE_PASSWORD_TEXT. For generic objects which display a brief amount of
-	   textual information, see ATK_ROLE_STATIC.
-	*/
+	// An interactive widget that supports multiple lines of text and
+	// optionally accepts user input, but whose purpose is not to solicit user input.
+	// Thus ATK_ROLE_TEXT is appropriate for the text view in a plain text editor
+	// but inappropriate for an input field in a dialog box or web form. For widgets
+	// whose purpose is to solicit input from the user, see ATK_ROLE_ENTRY and
+	// ATK_ROLE_PASSWORD_TEXT. For generic objects which display a brief amount of
+	// textual information, see ATK_ROLE_STATIC.
 	ATK_ROLE_TEXT Role = 60
 	// A specialized push button that can be checked or unchecked, but does not provide a separate indicator for the current state
 	ATK_ROLE_TOGGLE_BUTTON Role = 61
@@ -350,26 +320,20 @@ const (
 	ATK_ROLE_SECTION Role = 83
 	// The object is redundant with another object in the hierarchy, and is exposed for purely technical reasons.  Objects of this role should normally be ignored by clients. @Since: ATK-1.11
 	ATK_ROLE_REDUNDANT_OBJECT Role = 84
-	/*
-	   The object is a container for form controls, for instance as part of a
-	   web form or user-input form within a document.  This role is primarily a tag/convenience for
-	   clients when navigating complex documents, it is not expected that ordinary GUI containers will
-	   always have ATK_ROLE_FORM. @Since: ATK-1.12.0
-	*/
+	// The object is a container for form controls, for instance as part of a
+	// web form or user-input form within a document.  This role is primarily a tag/convenience for
+	// clients when navigating complex documents, it is not expected that ordinary GUI containers will
+	// always have ATK_ROLE_FORM. @Since: ATK-1.12.0
 	ATK_ROLE_FORM Role = 85
-	/*
-	   The object is a hypertext anchor, i.e. a "link" in a
-	   hypertext document.  Such objects are distinct from 'inline'
-	   content which may also use the Hypertext/Hyperlink interfaces
-	   to indicate the range/location within a text object where
-	   an inline or embedded object lies.  @Since: ATK-1.12.1
-	*/
+	// The object is a hypertext anchor, i.e. a "link" in a
+	// hypertext document.  Such objects are distinct from 'inline'
+	// content which may also use the Hypertext/Hyperlink interfaces
+	// to indicate the range/location within a text object where
+	// an inline or embedded object lies.  @Since: ATK-1.12.1
 	ATK_ROLE_LINK Role = 86
-	/*
-	   The object is a window or similar viewport
-	   which is used to allow composition or input of a 'complex character',
-	   in other words it is an "input method window." @Since: ATK-1.12.1
-	*/
+	// The object is a window or similar viewport
+	// which is used to allow composition or input of a 'complex character',
+	// in other words it is an "input method window." @Since: ATK-1.12.1
 	ATK_ROLE_INPUT_METHOD_WINDOW Role = 87
 	// A row in a table.  @Since: ATK-2.1.0
 	ATK_ROLE_TABLE_ROW Role = 88
@@ -399,15 +363,11 @@ const (
 	ATK_ROLE_INFO_BAR Role = 100
 	// A bar that serves as a level indicator to, for instance, show the strength of a password or the state of a battery.  @Since: ATK-2.7.3
 	ATK_ROLE_LEVEL_BAR Role = 101
-	/*
-	   A bar that serves as the title of a window or a
-	   dialog. @Since: ATK-2.12
-	*/
+	// A bar that serves as the title of a window or a
+	// dialog. @Since: ATK-2.12
 	ATK_ROLE_TITLE_BAR Role = 102
-	/*
-	   An object which contains a text section
-	   that is quoted from another source. @Since: ATK-2.12
-	*/
+	// An object which contains a text section
+	// that is quoted from another source. @Since: ATK-2.12
 	ATK_ROLE_BLOCK_QUOTE Role = 103
 	// An object which represents an audio element. @Since: ATK-2.12
 	ATK_ROLE_AUDIO Role = 104
@@ -415,106 +375,78 @@ const (
 	ATK_ROLE_VIDEO Role = 105
 	// A definition of a term or concept. @Since: ATK-2.12
 	ATK_ROLE_DEFINITION Role = 106
-	/*
-	   A section of a page that consists of a
-	   composition that forms an independent part of a document, page, or
-	   site. Examples: A blog entry, a news story, a forum post. @Since:
-	   ATK-2.12
-	*/
+	// A section of a page that consists of a
+	// composition that forms an independent part of a document, page, or
+	// site. Examples: A blog entry, a news story, a forum post. @Since:
+	// ATK-2.12
 	ATK_ROLE_ARTICLE Role = 107
-	/*
-	   A region of a web page intended as a
-	   navigational landmark. This is designed to allow Assistive
-	   Technologies to provide quick navigation among key regions within a
-	   document. @Since: ATK-2.12
-	*/
+	// A region of a web page intended as a
+	// navigational landmark. This is designed to allow Assistive
+	// Technologies to provide quick navigation among key regions within a
+	// document. @Since: ATK-2.12
 	ATK_ROLE_LANDMARK Role = 108
-	/*
-	   A text widget or container holding log content, such
-	   as chat history and error logs. In this role there is a
-	   relationship between the arrival of new items in the log and the
-	   reading order. The log contains a meaningful sequence and new
-	   information is added only to the end of the log, not at arbitrary
-	   points. @Since: ATK-2.12
-	*/
+	// A text widget or container holding log content, such
+	// as chat history and error logs. In this role there is a
+	// relationship between the arrival of new items in the log and the
+	// reading order. The log contains a meaningful sequence and new
+	// information is added only to the end of the log, not at arbitrary
+	// points. @Since: ATK-2.12
 	ATK_ROLE_LOG Role = 109
-	/*
-	   A container where non-essential information
-	   changes frequently. Common usages of marquee include stock tickers
-	   and ad banners. The primary difference between a marquee and a log
-	   is that logs usually have a meaningful order or sequence of
-	   important content changes. @Since: ATK-2.12
-	*/
+	// A container where non-essential information
+	// changes frequently. Common usages of marquee include stock tickers
+	// and ad banners. The primary difference between a marquee and a log
+	// is that logs usually have a meaningful order or sequence of
+	// important content changes. @Since: ATK-2.12
 	ATK_ROLE_MARQUEE Role = 110
-	/*
-	   A text widget or container that holds a mathematical
-	   expression. @Since: ATK-2.12
-	*/
+	// A text widget or container that holds a mathematical
+	// expression. @Since: ATK-2.12
 	ATK_ROLE_MATH Role = 111
-	/*
-	   A widget whose purpose is to display a rating,
-	   such as the number of stars associated with a song in a media
-	   player. Objects of this role should also implement
-	   AtkValue. @Since: ATK-2.12
-	*/
+	// A widget whose purpose is to display a rating,
+	// such as the number of stars associated with a song in a media
+	// player. Objects of this role should also implement
+	// AtkValue. @Since: ATK-2.12
 	ATK_ROLE_RATING Role = 112
-	/*
-	   An object containing a numerical counter which
-	   indicates an amount of elapsed time from a start point, or the time
-	   remaining until an end point. @Since: ATK-2.12
-	*/
+	// An object containing a numerical counter which
+	// indicates an amount of elapsed time from a start point, or the time
+	// remaining until an end point. @Since: ATK-2.12
 	ATK_ROLE_TIMER Role = 113
-	/*
-	   An object that represents a list of
-	   term-value groups. A term-value group represents a individual
-	   description and consist of one or more names
-	   (ATK_ROLE_DESCRIPTION_TERM) followed by one or more values
-	   (ATK_ROLE_DESCRIPTION_VALUE). For each list, there should not be
-	   more than one group with the same term name. @Since: ATK-2.12
-	*/
+	// An object that represents a list of
+	// term-value groups. A term-value group represents a individual
+	// description and consist of one or more names
+	// (ATK_ROLE_DESCRIPTION_TERM) followed by one or more values
+	// (ATK_ROLE_DESCRIPTION_VALUE). For each list, there should not be
+	// more than one group with the same term name. @Since: ATK-2.12
 	ATK_ROLE_DESCRIPTION_LIST Role = 114
-	/*
-	   An object that represents a term or phrase
-	   with a corresponding definition. @Since: ATK-2.12
-	*/
+	// An object that represents a term or phrase
+	// with a corresponding definition. @Since: ATK-2.12
 	ATK_ROLE_DESCRIPTION_TERM Role = 115
-	/*
-	   An object that represents the
-	   description, definition or value of a term. @Since: ATK-2.12
-	*/
+	// An object that represents the
+	// description, definition or value of a term. @Since: ATK-2.12
 	ATK_ROLE_DESCRIPTION_VALUE Role = 116
-	/*
-	   A generic non-container object whose purpose is to display a
-	   brief amount of information to the user and whose role is known by the
-	   implementor but lacks semantic value for the user. Examples in which
-	   ATK_ROLE_STATIC is appropriate include the message displayed in a message box
-	   and an image used as an alternative means to display text. ATK_ROLE_STATIC
-	   should not be applied to widgets which are traditionally interactive, objects
-	   which display a significant amount of content, or any object which has an
-	   accessible relation pointing to another object. Implementors should expose the
-	   displayed information through the accessible name of the object. If doing so seems
-	   inappropriate, it may indicate that a different role should be used. For
-	   labels which describe another widget, see ATK_ROLE_LABEL. For text views, see
-	   ATK_ROLE_TEXT. For generic containers, see ATK_ROLE_PANEL. For objects whose
-	   role is not known by the implementor, see ATK_ROLE_UNKNOWN. @Since: ATK-2.16.
-	*/
+	// A generic non-container object whose purpose is to display a
+	// brief amount of information to the user and whose role is known by the
+	// implementor but lacks semantic value for the user. Examples in which
+	// ATK_ROLE_STATIC is appropriate include the message displayed in a message box
+	// and an image used as an alternative means to display text. ATK_ROLE_STATIC
+	// should not be applied to widgets which are traditionally interactive, objects
+	// which display a significant amount of content, or any object which has an
+	// accessible relation pointing to another object. Implementors should expose the
+	// displayed information through the accessible name of the object. If doing so seems
+	// inappropriate, it may indicate that a different role should be used. For
+	// labels which describe another widget, see ATK_ROLE_LABEL. For text views, see
+	// ATK_ROLE_TEXT. For generic containers, see ATK_ROLE_PANEL. For objects whose
+	// role is not known by the implementor, see ATK_ROLE_UNKNOWN. @Since: ATK-2.16.
 	ATK_ROLE_STATIC Role = 117
 	// An object that represents a mathematical fraction.
 	ATK_ROLE_MATH_FRACTION Role = 118
-	/*
-	   An object that represents a mathematical expression
-	   displayed with a radical. @Since: ATK-2.16.
-	*/
+	// An object that represents a mathematical expression
+	// displayed with a radical. @Since: ATK-2.16.
 	ATK_ROLE_MATH_ROOT Role = 119
-	/*
-	   An object that contains text that is displayed as a
-	   subscript. @Since: ATK-2.16.
-	*/
+	// An object that contains text that is displayed as a
+	// subscript. @Since: ATK-2.16.
 	ATK_ROLE_SUBSCRIPT Role = 120
-	/*
-	   An object that contains text that is displayed as a
-	   superscript. @Since: ATK-2.16.
-	*/
+	// An object that contains text that is displayed as a
+	// superscript. @Since: ATK-2.16.
 	ATK_ROLE_SUPERSCRIPT Role = 121
 	// An object that contains the text of a footnote. @Since: ATK-2.26.
 	ATK_ROLE_FOOTNOTE Role = 122
@@ -538,14 +470,12 @@ const (
 	ATK_STATE_CHECKED StateType = 4
 	// Indicates that this object no longer has a valid backing widget (for instance, if its peer object has been destroyed)
 	ATK_STATE_DEFUNCT StateType = 5
-	/*
-	   Indicates that this object can contain text, and that the
-	   user can change the textual contents of this object by editing those contents
-	   directly. For an object which is expected to be editable due to its type, but
-	   which cannot be edited due to the application or platform preventing the user
-	   from doing so, that object's #AtkStateSet should lack ATK_STATE_EDITABLE and
-	   should contain ATK_STATE_READ_ONLY.
-	*/
+	// Indicates that this object can contain text, and that the
+	// user can change the textual contents of this object by editing those contents
+	// directly. For an object which is expected to be editable due to its type, but
+	// which cannot be edited due to the application or platform preventing the user
+	// from doing so, that object's #AtkStateSet should lack ATK_STATE_EDITABLE and
+	// should contain ATK_STATE_READ_ONLY.
 	ATK_STATE_EDITABLE StateType = 6
 	// Indicates that this object is enabled, i.e. that it currently reflects some application state. Objects that are "greyed out" may lack this state, and may lack the STATE_SENSITIVE if direct user interaction cannot cause them to acquire STATE_ENABLED. See also: ATK_STATE_SENSITIVE
 	ATK_STATE_ENABLED StateType = 7
@@ -577,63 +507,51 @@ const (
 	ATK_STATE_SELECTABLE StateType = 20
 	// Indicates this object is the child of an object that allows its children to be selected and that this child is one of those children that has been selected
 	ATK_STATE_SELECTED StateType = 21
-	/*
-	   Indicates this object is sensitive, e.g. to user interaction.
-	   STATE_SENSITIVE usually accompanies STATE_ENABLED for user-actionable controls,
-	   but may be found in the absence of STATE_ENABLED if the current visible state of the
-	   control is "disconnected" from the application state.  In such cases, direct user interaction
-	   can often result in the object gaining STATE_SENSITIVE, for instance if a user makes
-	   an explicit selection using an object whose current state is ambiguous or undefined.
-	   @see STATE_ENABLED, STATE_INDETERMINATE.
-	*/
+	// Indicates this object is sensitive, e.g. to user interaction.
+	// STATE_SENSITIVE usually accompanies STATE_ENABLED for user-actionable controls,
+	// but may be found in the absence of STATE_ENABLED if the current visible state of the
+	// control is "disconnected" from the application state.  In such cases, direct user interaction
+	// can often result in the object gaining STATE_SENSITIVE, for instance if a user makes
+	// an explicit selection using an object whose current state is ambiguous or undefined.
+	// @see STATE_ENABLED, STATE_INDETERMINATE.
 	ATK_STATE_SENSITIVE StateType = 22
-	/*
-	   Indicates this object, the object's parent, the object's parent's parent, and so on,
-	   are all 'shown' to the end-user, i.e. subject to "exposure" if blocking or obscuring objects do not interpose
-	   between this object and the top of the window stack.
-	*/
+	// Indicates this object, the object's parent, the object's parent's parent, and so on,
+	// are all 'shown' to the end-user, i.e. subject to "exposure" if blocking or obscuring objects do not interpose
+	// between this object and the top of the window stack.
 	ATK_STATE_SHOWING StateType = 23
 	// Indicates this (text) object can contain only a single line of text
 	ATK_STATE_SINGLE_LINE StateType = 24
-	/*
-	   Indicates that the information returned for this object may no longer be
-	   synchronized with the application state.  This is implied if the object has STATE_TRANSIENT,
-	   and can also occur towards the end of the object peer's lifecycle. It can also be used to indicate that
-	   the index associated with this object has changed since the user accessed the object (in lieu of
-	   "index-in-parent-changed" events).
-	*/
+	// Indicates that the information returned for this object may no longer be
+	// synchronized with the application state.  This is implied if the object has STATE_TRANSIENT,
+	// and can also occur towards the end of the object peer's lifecycle. It can also be used to indicate that
+	// the index associated with this object has changed since the user accessed the object (in lieu of
+	// "index-in-parent-changed" events).
 	ATK_STATE_STALE StateType = 25
-	/*
-	   Indicates this object is transient, i.e. a snapshot which may not emit events when its
-	   state changes.  Data from objects with ATK_STATE_TRANSIENT should not be cached, since there may be no
-	   notification given when the cached data becomes obsolete.
-	*/
+	// Indicates this object is transient, i.e. a snapshot which may not emit events when its
+	// state changes.  Data from objects with ATK_STATE_TRANSIENT should not be cached, since there may be no
+	// notification given when the cached data becomes obsolete.
 	ATK_STATE_TRANSIENT StateType = 26
 	// Indicates the orientation of this object is vertical
 	ATK_STATE_VERTICAL StateType = 27
 	// Indicates this object is visible, e.g. has been explicitly marked for exposure to the user.
 	ATK_STATE_VISIBLE StateType = 28
-	/*
-	   Indicates that "active-descendant-changed" event
-	   is sent when children become 'active' (i.e. are selected or navigated to onscreen).
-	   Used to prevent need to enumerate all children in very large containers, like tables.
-	   The presence of STATE_MANAGES_DESCENDANTS is an indication to the client.
-	   that the children should not, and need not, be enumerated by the client.
-	   Objects implementing this state are expected to provide relevant state
-	   notifications to listening clients, for instance notifications of visibility
-	   changes and activation of their contained child objects, without the client
-	   having previously requested references to those children.
-	*/
+	// Indicates that "active-descendant-changed" event
+	// is sent when children become 'active' (i.e. are selected or navigated to onscreen).
+	// Used to prevent need to enumerate all children in very large containers, like tables.
+	// The presence of STATE_MANAGES_DESCENDANTS is an indication to the client.
+	// that the children should not, and need not, be enumerated by the client.
+	// Objects implementing this state are expected to provide relevant state
+	// notifications to listening clients, for instance notifications of visibility
+	// changes and activation of their contained child objects, without the client
+	// having previously requested references to those children.
 	ATK_STATE_MANAGES_DESCENDANTS StateType = 29
-	/*
-	   Indicates that the value, or some other quantifiable
-	   property, of this AtkObject cannot be fully determined. In the case of a large
-	   data set in which the total number of items in that set is unknown (e.g. 1 of
-	   999+), implementors should expose the currently-known set size (999) along
-	   with this state. In the case of a check box, this state should be used to
-	   indicate that the check box is a tri-state check box which is currently
-	   neither checked nor unchecked.
-	*/
+	// Indicates that the value, or some other quantifiable
+	// property, of this AtkObject cannot be fully determined. In the case of a large
+	// data set in which the total number of items in that set is unknown (e.g. 1 of
+	// 999+), implementors should expose the currently-known set size (999) along
+	// with this state. In the case of a check box, this state should be used to
+	// indicate that the check box is a tri-state check box which is currently
+	// neither checked nor unchecked.
 	ATK_STATE_INDETERMINATE StateType = 30
 	// Indicates that an object is truncated, e.g. a text value in a speradsheet cell.
 	ATK_STATE_TRUNCATED StateType = 31
@@ -641,57 +559,47 @@ const (
 	ATK_STATE_REQUIRED StateType = 32
 	// Indicates that the object has encountered an error condition due to failure of input validation. For instance, a form control may acquire this state in response to invalid or malformed user input.
 	ATK_STATE_INVALID_ENTRY StateType = 33
-	/*
-	   Indicates that the object in question implements some form of ¨typeahead¨ or
-	   pre-selection behavior whereby entering the first character of one or more sub-elements
-	   causes those elements to scroll into view or become selected.  Subsequent character input
-	   may narrow the selection further as long as one or more sub-elements match the string.
-	   This state is normally only useful and encountered on objects that implement Selection.
-	   In some cases the typeahead behavior may result in full or partial ¨completion¨ of
-	   the data in the input field, in which case these input events may trigger text-changed
-	   events from the AtkText interface.  This state supplants @ATK_ROLE_AUTOCOMPLETE.
-	*/
+	// Indicates that the object in question implements some form of ¨typeahead¨ or
+	// pre-selection behavior whereby entering the first character of one or more sub-elements
+	// causes those elements to scroll into view or become selected.  Subsequent character input
+	// may narrow the selection further as long as one or more sub-elements match the string.
+	// This state is normally only useful and encountered on objects that implement Selection.
+	// In some cases the typeahead behavior may result in full or partial ¨completion¨ of
+	// the data in the input field, in which case these input events may trigger text-changed
+	// events from the AtkText interface.  This state supplants @ATK_ROLE_AUTOCOMPLETE.
 	ATK_STATE_SUPPORTS_AUTOCOMPLETION StateType = 34
 	// Indicates that the object in question supports text selection. It should only be exposed on objects which implement the Text interface, in order to distinguish this state from @ATK_STATE_SELECTABLE, which infers that the object in question is a selectable child of an object which implements Selection. While similar, text selection and subelement selection are distinct operations.
 	ATK_STATE_SELECTABLE_TEXT StateType = 35
 	// Indicates that the object is the "default" active component, i.e. the object which is activated by an end-user press of the "Enter" or "Return" key.  Typically a "close" or "submit" button.
 	ATK_STATE_DEFAULT StateType = 36
-	/*
-	   Indicates that the object changes its appearance dynamically as an inherent part of its presentation.  This state may come and go if an object is only temporarily animated on the way to a 'final' onscreen presentation.
-	   @note some applications, notably content viewers, may not be able to detect
-	   all kinds of animated content.  Therefore the absence of this state should not
-	   be taken as definitive evidence that the object's visual representation is
-	   static; this state is advisory.
-	*/
+	// Indicates that the object changes its appearance dynamically as an inherent part of its presentation.  This state may come and go if an object is only temporarily animated on the way to a 'final' onscreen presentation.
+	// @note some applications, notably content viewers, may not be able to detect
+	// all kinds of animated content.  Therefore the absence of this state should not
+	// be taken as definitive evidence that the object's visual representation is
+	// static; this state is advisory.
 	ATK_STATE_ANIMATED StateType = 37
 	// Indicates that the object (typically a hyperlink) has already been 'activated', and/or its backing data has already been downloaded, rendered, or otherwise "visited".
 	ATK_STATE_VISITED StateType = 38
-	/*
-	   Indicates this object has the potential to be
-	    checked, such as a checkbox or toggle-able table cell. @Since:
-	    ATK-2.12
-	*/
+	// Indicates this object has the potential to be
+	// checked, such as a checkbox or toggle-able table cell. @Since:
+	// ATK-2.12
 	ATK_STATE_CHECKABLE StateType = 39
-	/*
-	   Indicates that the object has a popup context
-	   menu or sub-level menu which may or may not be showing. This means
-	   that activation renders conditional content.  Note that ordinary
-	   tooltips are not considered popups in this context. @Since: ATK-2.12
-	*/
+	// Indicates that the object has a popup context
+	// menu or sub-level menu which may or may not be showing. This means
+	// that activation renders conditional content.  Note that ordinary
+	// tooltips are not considered popups in this context. @Since: ATK-2.12
 	ATK_STATE_HAS_POPUP StateType = 40
 	// Indicates this object has a tooltip. @Since: ATK-2.16
 	ATK_STATE_HAS_TOOLTIP StateType = 41
-	/*
-	   Indicates that a widget which is ENABLED and SENSITIVE
-	   has a value which can be read, but not modified, by the user. Note that this
-	   state should only be applied to widget types whose value is normally directly
-	   user modifiable, such as check boxes, radio buttons, spin buttons, text input
-	   fields, and combo boxes, as a means to convey that the expected interaction
-	   with that widget is not possible. When the expected interaction with a
-	   widget does not include modification by the user, as is the case with
-	   labels and containers, ATK_STATE_READ_ONLY should not be applied. See also
-	   ATK_STATE_EDITABLE. @Since: ATK-2-16
-	*/
+	// Indicates that a widget which is ENABLED and SENSITIVE
+	// has a value which can be read, but not modified, by the user. Note that this
+	// state should only be applied to widget types whose value is normally directly
+	// user modifiable, such as check boxes, radio buttons, spin buttons, text input
+	// fields, and combo boxes, as a means to convey that the expected interaction
+	// with that widget is not possible. When the expected interaction with a
+	// widget does not include modification by the user, as is the case with
+	// labels and containers, ATK_STATE_READ_ONLY should not be applied. See also
+	// ATK_STATE_EDITABLE. @Since: ATK-2-16
 	ATK_STATE_READ_ONLY StateType = 42
 	// Not a valid state, used for finding end of enumeration
 	ATK_STATE_LAST_DEFINED StateType = 43
@@ -761,44 +669,32 @@ const (
 	ATK_TEXT_ATTR_LAST_DEFINED TextAttribute = 28
 )
 
-/*
-Text boundary types used for specifying boundaries for regions of text.
-This enumeration is deprecated since 2.9.4 and should not be used. Use
-AtkTextGranularity with #atk_text_get_string_at_offset instead.
-*/
+// Text boundary types used for specifying boundaries for regions of text.
+// This enumeration is deprecated since 2.9.4 and should not be used. Use
+// AtkTextGranularity with #atk_text_get_string_at_offset instead.
 type TextBoundary C.AtkTextBoundary
 
 const (
-	/*
-	   Boundary is the boundary between characters
-	   (including non-printing characters)
-	*/
+	// Boundary is the boundary between characters
+	// (including non-printing characters)
 	ATK_TEXT_BOUNDARY_CHAR TextBoundary = 0
 	// Boundary is the start (i.e. first character) of a word.
 	ATK_TEXT_BOUNDARY_WORD_START TextBoundary = 1
-	/*
-	   Boundary is the end (i.e. last
-	   character) of a word.
-	*/
+	// Boundary is the end (i.e. last
+	// character) of a word.
 	ATK_TEXT_BOUNDARY_WORD_END TextBoundary = 2
 	// Boundary is the first character in a sentence.
 	ATK_TEXT_BOUNDARY_SENTENCE_START TextBoundary = 3
-	/*
-	   Boundary is the last (terminal)
-	   character in a sentence; in languages which use "sentence stop"
-	   punctuation such as English, the boundary is thus the '.', '?', or
-	   similar terminal punctuation character.
-	*/
+	// Boundary is the last (terminal)
+	// character in a sentence; in languages which use "sentence stop"
+	// punctuation such as English, the boundary is thus the '.', '?', or
+	// similar terminal punctuation character.
 	ATK_TEXT_BOUNDARY_SENTENCE_END TextBoundary = 4
-	/*
-	   Boundary is the initial character of the content or a
-	   character immediately following a newline, linefeed, or return character.
-	*/
+	// Boundary is the initial character of the content or a
+	// character immediately following a newline, linefeed, or return character.
 	ATK_TEXT_BOUNDARY_LINE_START TextBoundary = 5
-	/*
-	   Boundary is the linefeed, or return
-	   character.
-	*/
+	// Boundary is the linefeed, or return
+	// character.
 	ATK_TEXT_BOUNDARY_LINE_END TextBoundary = 6
 )
 
@@ -816,49 +712,35 @@ const (
 	ATK_TEXT_CLIP_BOTH TextClipType = 3
 )
 
-/*
-Text granularity types used for specifying the granularity of the region of
-text we are interested in.
-*/
+// Text granularity types used for specifying the granularity of the region of
+// text we are interested in.
 type TextGranularity C.AtkTextGranularity
 
 const (
-	/*
-	   Granularity is defined by the boundaries between characters
-	   (including non-printing characters)
-	*/
+	// Granularity is defined by the boundaries between characters
+	// (including non-printing characters)
 	ATK_TEXT_GRANULARITY_CHAR TextGranularity = 0
-	/*
-	   Granularity is defined by the boundaries of a word,
-	   starting at the beginning of the current word and finishing at the beginning of
-	   the following one, if present.
-	*/
+	// Granularity is defined by the boundaries of a word,
+	// starting at the beginning of the current word and finishing at the beginning of
+	// the following one, if present.
 	ATK_TEXT_GRANULARITY_WORD TextGranularity = 1
-	/*
-	   Granularity is defined by the boundaries of a sentence,
-	   starting at the beginning of the current sentence and finishing at the beginning of
-	   the following one, if present.
-	*/
+	// Granularity is defined by the boundaries of a sentence,
+	// starting at the beginning of the current sentence and finishing at the beginning of
+	// the following one, if present.
 	ATK_TEXT_GRANULARITY_SENTENCE TextGranularity = 2
-	/*
-	   Granularity is defined by the boundaries of a line,
-	   starting at the beginning of the current line and finishing at the beginning of
-	   the following one, if present.
-	*/
+	// Granularity is defined by the boundaries of a line,
+	// starting at the beginning of the current line and finishing at the beginning of
+	// the following one, if present.
 	ATK_TEXT_GRANULARITY_LINE TextGranularity = 3
-	/*
-	   Granularity is defined by the boundaries of a paragraph,
-	   starting at the beginning of the current paragraph and finishing at the beginning of
-	   the following one, if present.
-	*/
+	// Granularity is defined by the boundaries of a paragraph,
+	// starting at the beginning of the current paragraph and finishing at the beginning of
+	// the following one, if present.
 	ATK_TEXT_GRANULARITY_PARAGRAPH TextGranularity = 4
 )
 
-/*
-Default types for a given value. Those are defined in order to
-easily get localized strings to describe a given value or a given
-subrange, using atk_value_type_get_localized_name().
-*/
+// Default types for a given value. Those are defined in order to
+// easily get localized strings to describe a given value or a given
+// subrange, using atk_value_type_get_localized_name().
 type ValueType C.AtkValueType
 
 const (

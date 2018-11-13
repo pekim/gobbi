@@ -18,10 +18,8 @@ package gio
 // #include <stdlib.h>
 import "C"
 
-/*
-GResourceFlags give information about a particular file inside a resource
-bundle.
-*/
+// GResourceFlags give information about a particular file inside a resource
+// bundle.
 type ResourceFlags C.GResourceFlags
 
 const (

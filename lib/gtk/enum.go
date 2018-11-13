@@ -9,46 +9,36 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
-/*
-Controls how a widget deals with extra space in a single (x or y)
-dimension.
-
-Alignment only matters if the widget receives a “too large” allocation,
-for example if you packed the widget with the #GtkWidget:expand
-flag inside a #GtkBox, then the widget might get extra space.  If
-you have for example a 16x16 icon inside a 32x32 space, the icon
-could be scaled and stretched, it could be centered, or it could be
-positioned to one side of the space.
-
-Note that in horizontal context @GTK_ALIGN_START and @GTK_ALIGN_END
-are interpreted relative to text direction.
-
-GTK_ALIGN_BASELINE support for it is optional for containers and widgets, and
-it is only supported for vertical alignment.  When its not supported by
-a child or a container it is treated as @GTK_ALIGN_FILL.
-*/
+// Controls how a widget deals with extra space in a single (x or y)
+// dimension.
+//
+// Alignment only matters if the widget receives a “too large” allocation,
+// for example if you packed the widget with the #GtkWidget:expand
+// flag inside a #GtkBox, then the widget might get extra space.  If
+// you have for example a 16x16 icon inside a 32x32 space, the icon
+// could be scaled and stretched, it could be centered, or it could be
+// positioned to one side of the space.
+//
+// Note that in horizontal context @GTK_ALIGN_START and @GTK_ALIGN_END
+// are interpreted relative to text direction.
+//
+// GTK_ALIGN_BASELINE support for it is optional for containers and widgets, and
+// it is only supported for vertical alignment.  When its not supported by
+// a child or a container it is treated as @GTK_ALIGN_FILL.
 type Align C.GtkAlign
 
 const (
-	/*
-	   stretch to fill all space if possible, center if
-	       no meaningful way to stretch
-	*/
+	// stretch to fill all space if possible, center if
+	// no meaningful way to stretch
 	GTK_ALIGN_FILL Align = 0
-	/*
-	   snap to left or top side, leaving space on right
-	       or bottom
-	*/
+	// snap to left or top side, leaving space on right
+	// or bottom
 	GTK_ALIGN_START Align = 1
-	/*
-	   snap to right or bottom side, leaving space on left
-	       or top
-	*/
+	// snap to right or bottom side, leaving space on left
+	// or top
 	GTK_ALIGN_END Align = 2
-	/*
-	   center natural width of widget inside the
-	       allocation
-	*/
+	// center natural width of widget inside the
+	// allocation
 	GTK_ALIGN_CENTER Align = 3
 	// align the widget according to the baseline. Since 3.10.
 	GTK_ALIGN_BASELINE Align = 4
@@ -82,52 +72,38 @@ const (
 	GTK_ARROW_NONE ArrowType = 4
 )
 
-/*
-An enum for determining the page role inside the #GtkAssistant. It's
-used to handle buttons sensitivity and visibility.
-
-Note that an assistant needs to end its page flow with a page of type
-%GTK_ASSISTANT_PAGE_CONFIRM, %GTK_ASSISTANT_PAGE_SUMMARY or
-%GTK_ASSISTANT_PAGE_PROGRESS to be correct.
-
-The Cancel button will only be shown if the page isn’t “committed”.
-See gtk_assistant_commit() for details.
-*/
+// An enum for determining the page role inside the #GtkAssistant. It's
+// used to handle buttons sensitivity and visibility.
+//
+// Note that an assistant needs to end its page flow with a page of type
+// %GTK_ASSISTANT_PAGE_CONFIRM, %GTK_ASSISTANT_PAGE_SUMMARY or
+// %GTK_ASSISTANT_PAGE_PROGRESS to be correct.
+//
+// The Cancel button will only be shown if the page isn’t “committed”.
+// See gtk_assistant_commit() for details.
 type AssistantPageType C.GtkAssistantPageType
 
 const (
-	/*
-	   The page has regular contents. Both the
-	    Back and forward buttons will be shown.
-	*/
+	// The page has regular contents. Both the
+	// Back and forward buttons will be shown.
 	GTK_ASSISTANT_PAGE_CONTENT AssistantPageType = 0
-	/*
-	   The page contains an introduction to the
-	    assistant task. Only the Forward button will be shown if there is a
-	     next page.
-	*/
+	// The page contains an introduction to the
+	// assistant task. Only the Forward button will be shown if there is a
+	// next page.
 	GTK_ASSISTANT_PAGE_INTRO AssistantPageType = 1
-	/*
-	   The page lets the user confirm or deny the
-	    changes. The Back and Apply buttons will be shown.
-	*/
+	// The page lets the user confirm or deny the
+	// changes. The Back and Apply buttons will be shown.
 	GTK_ASSISTANT_PAGE_CONFIRM AssistantPageType = 2
-	/*
-	   The page informs the user of the changes
-	    done. Only the Close button will be shown.
-	*/
+	// The page informs the user of the changes
+	// done. Only the Close button will be shown.
 	GTK_ASSISTANT_PAGE_SUMMARY AssistantPageType = 3
-	/*
-	   Used for tasks that take a long time to
-	    complete, blocks the assistant until the page is marked as complete.
-	     Only the back button will be shown.
-	*/
+	// Used for tasks that take a long time to
+	// complete, blocks the assistant until the page is marked as complete.
+	// Only the back button will be shown.
 	GTK_ASSISTANT_PAGE_PROGRESS AssistantPageType = 4
-	/*
-	   Used for when other page types are not
-	    appropriate. No buttons will be shown, and the application must
-	    add its own buttons through gtk_assistant_add_action_widget().
-	*/
+	// Used for when other page types are not
+	// appropriate. No buttons will be shown, and the application must
+	// add its own buttons through gtk_assistant_add_action_widget().
 	GTK_ASSISTANT_PAGE_CUSTOM AssistantPageType = 5
 )
 
@@ -157,59 +133,39 @@ const (
 	GTK_BORDER_STYLE_RIDGE BorderStyle = 9
 )
 
-/*
-Error codes that identify various errors that can occur while using
-#GtkBuilder.
-*/
+// Error codes that identify various errors that can occur while using
+// #GtkBuilder.
 type BuilderError C.GtkBuilderError
 
 const (
-	/*
-	   A type-func attribute didn’t name
-	    a function that returns a #GType.
-	*/
+	// A type-func attribute didn’t name
+	// a function that returns a #GType.
 	GTK_BUILDER_ERROR_INVALID_TYPE_FUNCTION BuilderError = 0
-	/*
-	   The input contained a tag that #GtkBuilder
-	    can’t handle.
-	*/
+	// The input contained a tag that #GtkBuilder
+	// can’t handle.
 	GTK_BUILDER_ERROR_UNHANDLED_TAG BuilderError = 1
-	/*
-	   An attribute that is required by
-	    #GtkBuilder was missing.
-	*/
+	// An attribute that is required by
+	// #GtkBuilder was missing.
 	GTK_BUILDER_ERROR_MISSING_ATTRIBUTE BuilderError = 2
-	/*
-	   #GtkBuilder found an attribute that
-	    it doesn’t understand.
-	*/
+	// #GtkBuilder found an attribute that
+	// it doesn’t understand.
 	GTK_BUILDER_ERROR_INVALID_ATTRIBUTE BuilderError = 3
-	/*
-	   #GtkBuilder found a tag that
-	    it doesn’t understand.
-	*/
+	// #GtkBuilder found a tag that
+	// it doesn’t understand.
 	GTK_BUILDER_ERROR_INVALID_TAG BuilderError = 4
-	/*
-	   A required property value was
-	    missing.
-	*/
+	// A required property value was
+	// missing.
 	GTK_BUILDER_ERROR_MISSING_PROPERTY_VALUE BuilderError = 5
-	/*
-	   #GtkBuilder couldn’t parse
-	    some attribute value.
-	*/
+	// #GtkBuilder couldn’t parse
+	// some attribute value.
 	GTK_BUILDER_ERROR_INVALID_VALUE BuilderError = 6
-	/*
-	   The input file requires a newer version
-	    of GTK+.
-	*/
+	// The input file requires a newer version
+	// of GTK+.
 	GTK_BUILDER_ERROR_VERSION_MISMATCH BuilderError = 7
 	// An object id occurred twice.
 	GTK_BUILDER_ERROR_DUPLICATE_ID BuilderError = 8
-	/*
-	   A specified object type is of the same type or
-	    derived from the type of the composite class being extended with builder XML.
-	*/
+	// A specified object type is of the same type or
+	// derived from the type of the composite class being extended with builder XML.
 	GTK_BUILDER_ERROR_OBJECT_TYPE_REFUSED BuilderError = 9
 	// The wrong type was specified in a composite class’s template XML
 	GTK_BUILDER_ERROR_TEMPLATE_MISMATCH BuilderError = 10
@@ -221,10 +177,8 @@ const (
 	GTK_BUILDER_ERROR_INVALID_ID BuilderError = 13
 )
 
-/*
-Used to dictate the style that a #GtkButtonBox uses to layout the buttons it
-contains.
-*/
+// Used to dictate the style that a #GtkButtonBox uses to layout the buttons it
+// contains.
 type ButtonBoxStyle C.GtkButtonBoxStyle
 
 const (
@@ -232,24 +186,18 @@ const (
 	GTK_BUTTONBOX_SPREAD ButtonBoxStyle = 1
 	// Buttons are placed at the edges of the box.
 	GTK_BUTTONBOX_EDGE ButtonBoxStyle = 2
-	/*
-	   Buttons are grouped towards the start of the box,
-	     (on the left for a HBox, or the top for a VBox).
-	*/
+	// Buttons are grouped towards the start of the box,
+	// (on the left for a HBox, or the top for a VBox).
 	GTK_BUTTONBOX_START ButtonBoxStyle = 3
-	/*
-	   Buttons are grouped towards the end of the box,
-	     (on the right for a HBox, or the bottom for a VBox).
-	*/
+	// Buttons are grouped towards the end of the box,
+	// (on the right for a HBox, or the bottom for a VBox).
 	GTK_BUTTONBOX_END ButtonBoxStyle = 4
 	// Buttons are centered in the box. Since 2.12.
 	GTK_BUTTONBOX_CENTER ButtonBoxStyle = 5
-	/*
-	   Buttons expand to fill the box. This entails giving
-	     buttons a "linked" appearance, making button sizes homogeneous, and
-	     setting spacing to 0 (same as calling gtk_box_set_homogeneous() and
-	     gtk_box_set_spacing() manually). Since 3.12.
-	*/
+	// Buttons expand to fill the box. This entails giving
+	// buttons a "linked" appearance, making button sizes homogeneous, and
+	// setting spacing to 0 (same as calling gtk_box_set_homogeneous() and
+	// gtk_box_set_spacing() manually). Since 3.12.
 	GTK_BUTTONBOX_EXPAND ButtonBoxStyle = 6
 )
 
@@ -265,15 +213,13 @@ const (
 	GTK_BUTTON_ROLE_RADIO ButtonRole = 2
 )
 
-/*
-Prebuilt sets of buttons for the dialog. If
-none of these choices are appropriate, simply use %GTK_BUTTONS_NONE
-then call gtk_dialog_add_buttons().
-
-> Please note that %GTK_BUTTONS_OK, %GTK_BUTTONS_YES_NO
-> and %GTK_BUTTONS_OK_CANCEL are discouraged by the
-> [GNOME Human Interface Guidelines](http://library.gnome.org/devel/hig-book/stable/).
-*/
+// Prebuilt sets of buttons for the dialog. If
+// none of these choices are appropriate, simply use %GTK_BUTTONS_NONE
+// then call gtk_dialog_add_buttons().
+//
+// > Please note that %GTK_BUTTONS_OK, %GTK_BUTTONS_YES_NO
+// > and %GTK_BUTTONS_OK_CANCEL are discouraged by the
+// > [GNOME Human Interface Guidelines](http://library.gnome.org/devel/hig-book/stable/).
 type ButtonsType C.GtkButtonsType
 
 const (
@@ -291,21 +237,17 @@ const (
 	GTK_BUTTONS_OK_CANCEL ButtonsType = 5
 )
 
-/*
-Determines if the edited accelerators are GTK+ accelerators. If
-they are, consumed modifiers are suppressed, only accelerators
-accepted by GTK+ are allowed, and the accelerators are rendered
-in the same way as they are in menus.
-*/
+// Determines if the edited accelerators are GTK+ accelerators. If
+// they are, consumed modifiers are suppressed, only accelerators
+// accepted by GTK+ are allowed, and the accelerators are rendered
+// in the same way as they are in menus.
 type CellRendererAccelMode C.GtkCellRendererAccelMode
 
 const (
 	// GTK+ accelerators mode
 	GTK_CELL_RENDERER_ACCEL_MODE_GTK CellRendererAccelMode = 0
-	/*
-	   Other accelerator mode
-	   GTK_CELL_RENDERER_ACCEL_MODE_MODIFIER_TAP: Bare modifiers mode
-	*/
+	// Other accelerator mode
+	// GTK_CELL_RENDERER_ACCEL_MODE_MODIFIER_TAP: Bare modifiers mode
 	GTK_CELL_RENDERER_ACCEL_MODE_OTHER        CellRendererAccelMode = 1
 	GTK_CELL_RENDERER_ACCEL_MODE_MODIFIER_TAP CellRendererAccelMode = 2
 )
@@ -314,12 +256,10 @@ const (
 type CellRendererMode C.GtkCellRendererMode
 
 const (
-	/*
-	   The cell is just for display
-	    and cannot be interacted with.  Note that this doesn’t mean that eg. the
-	    row being drawn can’t be selected -- just that a particular element of
-	    it cannot be individually modified.
-	*/
+	// The cell is just for display
+	// and cannot be interacted with.  Note that this doesn’t mean that eg. the
+	// row being drawn can’t be selected -- just that a particular element of
+	// it cannot be individually modified.
 	GTK_CELL_RENDERER_MODE_INERT CellRendererMode = 0
 	// The cell can be clicked.
 	GTK_CELL_RENDERER_MODE_ACTIVATABLE CellRendererMode = 1
@@ -327,33 +267,23 @@ const (
 	GTK_CELL_RENDERER_MODE_EDITABLE CellRendererMode = 2
 )
 
-/*
-Specifies which corner a child widget should be placed in when packed into
-a #GtkScrolledWindow. This is effectively the opposite of where the scroll
-bars are placed.
-*/
+// Specifies which corner a child widget should be placed in when packed into
+// a #GtkScrolledWindow. This is effectively the opposite of where the scroll
+// bars are placed.
 type CornerType C.GtkCornerType
 
 const (
-	/*
-	   Place the scrollbars on the right and bottom of the
-	    widget (default behaviour).
-	*/
+	// Place the scrollbars on the right and bottom of the
+	// widget (default behaviour).
 	GTK_CORNER_TOP_LEFT CornerType = 0
-	/*
-	   Place the scrollbars on the top and right of the
-	    widget.
-	*/
+	// Place the scrollbars on the top and right of the
+	// widget.
 	GTK_CORNER_BOTTOM_LEFT CornerType = 1
-	/*
-	   Place the scrollbars on the left and bottom of the
-	    widget.
-	*/
+	// Place the scrollbars on the left and bottom of the
+	// widget.
 	GTK_CORNER_TOP_RIGHT CornerType = 2
-	/*
-	   Place the scrollbars on the top and left of the
-	    widget.
-	*/
+	// Place the scrollbars on the top and left of the
+	// widget.
 	GTK_CORNER_BOTTOM_RIGHT CornerType = 3
 )
 
@@ -381,29 +311,21 @@ type DeleteType C.GtkDeleteType
 const (
 	// Delete characters.
 	GTK_DELETE_CHARS DeleteType = 0
-	/*
-	   Delete only the portion of the word to the
-	     left/right of cursor if we’re in the middle of a word.
-	*/
+	// Delete only the portion of the word to the
+	// left/right of cursor if we’re in the middle of a word.
 	GTK_DELETE_WORD_ENDS DeleteType = 1
 	// Delete words.
 	GTK_DELETE_WORDS DeleteType = 2
-	/*
-	   Delete display-lines. Display-lines
-	     refers to the visible lines, with respect to to the current line
-	     breaks. As opposed to paragraphs, which are defined by line
-	     breaks in the input.
-	*/
+	// Delete display-lines. Display-lines
+	// refers to the visible lines, with respect to to the current line
+	// breaks. As opposed to paragraphs, which are defined by line
+	// breaks in the input.
 	GTK_DELETE_DISPLAY_LINES DeleteType = 3
-	/*
-	   Delete only the portion of the
-	     display-line to the left/right of cursor.
-	*/
+	// Delete only the portion of the
+	// display-line to the left/right of cursor.
 	GTK_DELETE_DISPLAY_LINE_ENDS DeleteType = 4
-	/*
-	   Delete to the end of the
-	     paragraph. Like C-k in Emacs (or its reverse).
-	*/
+	// Delete to the end of the
+	// paragraph. Like C-k in Emacs (or its reverse).
 	GTK_DELETE_PARAGRAPH_ENDS DeleteType = 5
 	// Delete entire line. Like C-k in pico.
 	GTK_DELETE_PARAGRAPHS DeleteType = 6
@@ -429,11 +351,9 @@ const (
 	GTK_DIR_RIGHT DirectionType = 5
 )
 
-/*
-Gives an indication why a drag operation failed.
-The value can by obtained by connecting to the
-#GtkWidget::drag-failed signal.
-*/
+// Gives an indication why a drag operation failed.
+// The value can by obtained by connecting to the
+// #GtkWidget::drag-failed signal.
 type DragResult C.GtkDragResult
 
 const (
@@ -445,15 +365,11 @@ const (
 	GTK_DRAG_RESULT_USER_CANCELLED DragResult = 2
 	// The drag operation timed out.
 	GTK_DRAG_RESULT_TIMEOUT_EXPIRED DragResult = 3
-	/*
-	   The pointer or keyboard grab used
-	    for the drag operation was broken.
-	*/
+	// The pointer or keyboard grab used
+	// for the drag operation was broken.
 	GTK_DRAG_RESULT_GRAB_BROKEN DragResult = 4
-	/*
-	   The drag operation failed due to some
-	    unspecified error.
-	*/
+	// The drag operation failed due to some
+	// unspecified error.
 	GTK_DRAG_RESULT_ERROR DragResult = 5
 )
 
@@ -471,42 +387,30 @@ const (
 	GTK_EXPANDER_EXPANDED ExpanderStyle = 3
 )
 
-/*
-Describes whether a #GtkFileChooser is being used to open existing files
-or to save to a possibly new file.
-*/
+// Describes whether a #GtkFileChooser is being used to open existing files
+// or to save to a possibly new file.
 type FileChooserAction C.GtkFileChooserAction
 
 const (
-	/*
-	   Indicates open mode.  The file chooser
-	    will only let the user pick an existing file.
-	*/
+	// Indicates open mode.  The file chooser
+	// will only let the user pick an existing file.
 	GTK_FILE_CHOOSER_ACTION_OPEN FileChooserAction = 0
-	/*
-	   Indicates save mode.  The file chooser
-	    will let the user pick an existing file, or type in a new
-	    filename.
-	*/
+	// Indicates save mode.  The file chooser
+	// will let the user pick an existing file, or type in a new
+	// filename.
 	GTK_FILE_CHOOSER_ACTION_SAVE FileChooserAction = 1
-	/*
-	   Indicates an Open mode for
-	    selecting folders.  The file chooser will let the user pick an
-	    existing folder.
-	*/
+	// Indicates an Open mode for
+	// selecting folders.  The file chooser will let the user pick an
+	// existing folder.
 	GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER FileChooserAction = 2
-	/*
-	   Indicates a mode for creating a
-	    new folder.  The file chooser will let the user name an existing or
-	    new folder.
-	*/
+	// Indicates a mode for creating a
+	// new folder.  The file chooser will let the user name an existing or
+	// new folder.
 	GTK_FILE_CHOOSER_ACTION_CREATE_FOLDER FileChooserAction = 3
 )
 
-/*
-These identify the various errors that can occur while calling
-#GtkFileChooser functions.
-*/
+// These identify the various errors that can occur while calling
+// #GtkFileChooser functions.
 type FileChooserError C.GtkFileChooserError
 
 const (
@@ -514,19 +418,15 @@ const (
 	GTK_FILE_CHOOSER_ERROR_NONEXISTENT FileChooserError = 0
 	// Indicates a malformed filename.
 	GTK_FILE_CHOOSER_ERROR_BAD_FILENAME FileChooserError = 1
-	/*
-	   Indicates a duplicate path (e.g. when
-	    adding a bookmark).
-	*/
+	// Indicates a duplicate path (e.g. when
+	// adding a bookmark).
 	GTK_FILE_CHOOSER_ERROR_ALREADY_EXISTS FileChooserError = 2
 	// Indicates an incomplete hostname (e.g. "http://foo" without a slash after that).
 	GTK_FILE_CHOOSER_ERROR_INCOMPLETE_HOSTNAME FileChooserError = 3
 )
 
-/*
-Style for input method preedit. See also
-#GtkSettings:gtk-im-preedit-style
-*/
+// Style for input method preedit. See also
+// #GtkSettings:gtk-im-preedit-style
 type IMPreeditStyle C.GtkIMPreeditStyle
 
 const (
@@ -538,10 +438,8 @@ const (
 	GTK_IM_PREEDIT_NONE IMPreeditStyle = 2
 )
 
-/*
-Style for input method status. See also
-#GtkSettings:gtk-im-status-style
-*/
+// Style for input method status. See also
+// #GtkSettings:gtk-im-status-style
 type IMStatusStyle C.GtkIMStatusStyle
 
 const (
@@ -601,15 +499,13 @@ const (
 	GTK_ICON_VIEW_DROP_BELOW IconViewDropPosition = 5
 )
 
-/*
-Describes the image data representation used by a #GtkImage. If you
-want to get the image from the widget, you can only get the
-currently-stored representation. e.g.  if the
-gtk_image_get_storage_type() returns #GTK_IMAGE_PIXBUF, then you can
-call gtk_image_get_pixbuf() but not gtk_image_get_stock().  For empty
-images, you can request any storage type (call any of the "get"
-functions), but they will all return %NULL values.
-*/
+// Describes the image data representation used by a #GtkImage. If you
+// want to get the image from the widget, you can only get the
+// currently-stored representation. e.g.  if the
+// gtk_image_get_storage_type() returns #GTK_IMAGE_PIXBUF, then you can
+// call gtk_image_get_pixbuf() but not gtk_image_get_stock().  For empty
+// images, you can request any storage type (call any of the "get"
+// functions), but they will all return %NULL values.
 type ImageType C.GtkImageType
 
 const (
@@ -623,27 +519,19 @@ const (
 	GTK_IMAGE_ICON_SET ImageType = 3
 	// the widget contains a #GdkPixbufAnimation
 	GTK_IMAGE_ANIMATION ImageType = 4
-	/*
-	   the widget contains a named icon.
-	    This image type was added in GTK+ 2.6
-	*/
+	// the widget contains a named icon.
+	// This image type was added in GTK+ 2.6
 	GTK_IMAGE_ICON_NAME ImageType = 5
-	/*
-	   the widget contains a #GIcon.
-	    This image type was added in GTK+ 2.14
-	*/
+	// the widget contains a #GIcon.
+	// This image type was added in GTK+ 2.14
 	GTK_IMAGE_GICON ImageType = 6
-	/*
-	   the widget contains a #cairo_surface_t.
-	    This image type was added in GTK+ 3.10
-	*/
+	// the widget contains a #cairo_surface_t.
+	// This image type was added in GTK+ 3.10
 	GTK_IMAGE_SURFACE ImageType = 7
 )
 
-/*
-Used for justifying the text inside a #GtkLabel widget. (See also
-#GtkAlignment).
-*/
+// Used for justifying the text inside a #GtkLabel widget. (See also
+// #GtkAlignment).
 type Justification C.GtkJustification
 
 const (
@@ -719,10 +607,8 @@ const (
 	GTK_NOTEBOOK_TAB_LAST  NotebookTab = 1
 )
 
-/*
-Used to determine the layout of pages on a sheet when printing
-multiple pages per sheet.
-*/
+// Used to determine the layout of pages on a sheet when printing
+// multiple pages per sheet.
 type NumberUpLayout C.GtkNumberUpLayout
 
 const (
@@ -744,11 +630,9 @@ const (
 	GTK_NUMBER_UP_LAYOUT_BOTTOM_TO_TOP_RIGHT_TO_LEFT NumberUpLayout = 7
 )
 
-/*
-Represents the orientation of widgets and other objects which can be switched
-between horizontal and vertical orientation on the fly, like #GtkToolbar or
-#GtkGesturePan.
-*/
+// Represents the orientation of widgets and other objects which can be switched
+// between horizontal and vertical orientation on the fly, like #GtkToolbar or
+// #GtkGesturePan.
 type Orientation C.GtkOrientation
 
 const (
@@ -758,10 +642,8 @@ const (
 	GTK_ORIENTATION_VERTICAL Orientation = 1
 )
 
-/*
-Determines how widgets should be packed inside menubars
-and menuitems contained in menubars.
-*/
+// Determines how widgets should be packed inside menubars
+// and menuitems contained in menubars.
 type PackDirection C.GtkPackDirection
 
 const (
@@ -775,10 +657,8 @@ const (
 	GTK_PACK_DIRECTION_BTT PackDirection = 3
 )
 
-/*
-Represents the packing location #GtkBox children. (See: #GtkVBox,
-#GtkHBox, and #GtkButtonBox).
-*/
+// Represents the packing location #GtkBox children. (See: #GtkVBox,
+// #GtkHBox, and #GtkButtonBox).
 type PackType C.GtkPackType
 
 const (
@@ -814,10 +694,8 @@ const (
 	GTK_PAGE_SET_ODD PageSet = 2
 )
 
-/*
-Priorities for path lookups.
-See also gtk_binding_set_add_path().
-*/
+// Priorities for path lookups.
+// See also gtk_binding_set_add_path().
 type PathPriorityType C.GtkPathPriorityType
 
 const (
@@ -835,10 +713,8 @@ const (
 	GTK_PATH_PRIO_HIGHEST PathPriorityType = 15
 )
 
-/*
-Widget path types.
-See also gtk_binding_set_add_path().
-*/
+// Widget path types.
+// See also gtk_binding_set_add_path().
 type PathType C.GtkPathType
 
 const (
@@ -850,41 +726,29 @@ const (
 	GTK_PATH_CLASS PathType = 2
 )
 
-/*
-Determines how the size should be computed to achieve the one of the
-visibility mode for the scrollbars.
-*/
+// Determines how the size should be computed to achieve the one of the
+// visibility mode for the scrollbars.
 type PolicyType C.GtkPolicyType
 
 const (
-	/*
-	   The scrollbar is always visible. The view size is
-	    independent of the content.
-	*/
+	// The scrollbar is always visible. The view size is
+	// independent of the content.
 	GTK_POLICY_ALWAYS PolicyType = 0
-	/*
-	   The scrollbar will appear and disappear as necessary.
-	    For example, when all of a #GtkTreeView can not be seen.
-	*/
+	// The scrollbar will appear and disappear as necessary.
+	// For example, when all of a #GtkTreeView can not be seen.
 	GTK_POLICY_AUTOMATIC PolicyType = 1
-	/*
-	   The scrollbar should never appear. In this mode the
-	    content determines the size.
-	*/
+	// The scrollbar should never appear. In this mode the
+	// content determines the size.
 	GTK_POLICY_NEVER PolicyType = 2
-	/*
-	   Don't show a scrollbar, but don't force the
-	    size to follow the content. This can be used e.g. to make multiple
-	    scrolled windows share a scrollbar. Since: 3.16
-	*/
+	// Don't show a scrollbar, but don't force the
+	// size to follow the content. This can be used e.g. to make multiple
+	// scrolled windows share a scrollbar. Since: 3.16
 	GTK_POLICY_EXTERNAL PolicyType = 3
 )
 
-/*
-Describes which edge of a widget a certain feature is positioned at, e.g. the
-tabs of a #GtkNotebook, the handle of a #GtkHandleBox or the label of a
-#GtkScale.
-*/
+// Describes which edge of a widget a certain feature is positioned at, e.g. the
+// tabs of a #GtkNotebook, the handle of a #GtkHandleBox or the label of a
+// #GtkScale.
 type PositionType C.GtkPositionType
 
 const (
@@ -910,10 +774,8 @@ const (
 	GTK_PRINT_DUPLEX_VERTICAL PrintDuplex = 2
 )
 
-/*
-Error codes that identify various errors that can occur while
-using the GTK+ printing support.
-*/
+// Error codes that identify various errors that can occur while
+// using the GTK+ printing support.
 type PrintError C.GtkPrintError
 
 const (
@@ -923,33 +785,25 @@ const (
 	GTK_PRINT_ERROR_INTERNAL_ERROR PrintError = 1
 	// A memory allocation failed.
 	GTK_PRINT_ERROR_NOMEM PrintError = 2
-	/*
-	   An error occurred while loading a page setup
-	       or paper size from a key file.
-	*/
+	// An error occurred while loading a page setup
+	// or paper size from a key file.
 	GTK_PRINT_ERROR_INVALID_FILE PrintError = 3
 )
 
-/*
-The @action parameter to gtk_print_operation_run()
-determines what action the print operation should perform.
-*/
+// The @action parameter to gtk_print_operation_run()
+// determines what action the print operation should perform.
 type PrintOperationAction C.GtkPrintOperationAction
 
 const (
 	// Show the print dialog.
 	GTK_PRINT_OPERATION_ACTION_PRINT_DIALOG PrintOperationAction = 0
-	/*
-	   Start to print without showing
-	       the print dialog, based on the current print settings.
-	*/
+	// Start to print without showing
+	// the print dialog, based on the current print settings.
 	GTK_PRINT_OPERATION_ACTION_PRINT PrintOperationAction = 1
 	// Show the print preview.
 	GTK_PRINT_OPERATION_ACTION_PREVIEW PrintOperationAction = 2
-	/*
-	   Export to a file. This requires
-	       the export-filename property to be set.
-	*/
+	// Export to a file. This requires
+	// the export-filename property to be set.
 	GTK_PRINT_OPERATION_ACTION_EXPORT PrintOperationAction = 3
 )
 
@@ -961,15 +815,11 @@ const (
 	GTK_PRINT_OPERATION_RESULT_ERROR PrintOperationResult = 0
 	// The print settings should be stored.
 	GTK_PRINT_OPERATION_RESULT_APPLY PrintOperationResult = 1
-	/*
-	   The print operation has been canceled,
-	       the print settings should not be stored.
-	*/
+	// The print operation has been canceled,
+	// the print settings should not be stored.
 	GTK_PRINT_OPERATION_RESULT_CANCEL PrintOperationResult = 2
-	/*
-	   The print operation is not complete
-	       yet. This value will only be returned when running asynchronously.
-	*/
+	// The print operation is not complete
+	// yet. This value will only be returned when running asynchronously.
 	GTK_PRINT_OPERATION_RESULT_IN_PROGRESS PrintOperationResult = 3
 )
 
@@ -1001,42 +851,28 @@ const (
 	GTK_PRINT_QUALITY_DRAFT PrintQuality = 3
 )
 
-/*
-The status gives a rough indication of the completion of a running
-print operation.
-*/
+// The status gives a rough indication of the completion of a running
+// print operation.
 type PrintStatus C.GtkPrintStatus
 
 const (
-	/*
-	   The printing has not started yet; this
-	       status is set initially, and while the print dialog is shown.
-	*/
+	// The printing has not started yet; this
+	// status is set initially, and while the print dialog is shown.
 	GTK_PRINT_STATUS_INITIAL PrintStatus = 0
-	/*
-	   This status is set while the begin-print
-	       signal is emitted and during pagination.
-	*/
+	// This status is set while the begin-print
+	// signal is emitted and during pagination.
 	GTK_PRINT_STATUS_PREPARING PrintStatus = 1
-	/*
-	   This status is set while the
-	       pages are being rendered.
-	*/
+	// This status is set while the
+	// pages are being rendered.
 	GTK_PRINT_STATUS_GENERATING_DATA PrintStatus = 2
-	/*
-	   The print job is being sent off to the
-	       printer.
-	*/
+	// The print job is being sent off to the
+	// printer.
 	GTK_PRINT_STATUS_SENDING_DATA PrintStatus = 3
-	/*
-	   The print job has been sent to the printer,
-	       but is not printed for some reason, e.g. the printer may be stopped.
-	*/
+	// The print job has been sent to the printer,
+	// but is not printed for some reason, e.g. the printer may be stopped.
 	GTK_PRINT_STATUS_PENDING PrintStatus = 4
-	/*
-	   Some problem has occurred during
-	       printing, e.g. a paper jam.
-	*/
+	// Some problem has occurred during
+	// printing, e.g. a paper jam.
 	GTK_PRINT_STATUS_PENDING_ISSUE PrintStatus = 5
 	// The printer is processing the print job.
 	GTK_PRINT_STATUS_PRINTING PrintStatus = 6
@@ -1046,12 +882,10 @@ const (
 	GTK_PRINT_STATUS_FINISHED_ABORTED PrintStatus = 8
 )
 
-/*
-The #GtkRcTokenType enumeration represents the tokens
-in the RC file. It is exposed so that theme engines
-can reuse these tokens when parsing the theme-engine
-specific portions of a RC file.
-*/
+// The #GtkRcTokenType enumeration represents the tokens
+// in the RC file. It is exposed so that theme engines
+// can reuse these tokens when parsing the theme-engine
+// specific portions of a RC file.
 type RcTokenType C.GtkRcTokenType
 
 const (
@@ -1160,18 +994,14 @@ const (
 	GTK_RESIZE_IMMEDIATE ResizeMode = 2
 )
 
-/*
-Predefined values for use as response ids in gtk_dialog_add_button().
-All predefined values are negative; GTK+ leaves values of 0 or greater for
-application-defined response ids.
-*/
+// Predefined values for use as response ids in gtk_dialog_add_button().
+// All predefined values are negative; GTK+ leaves values of 0 or greater for
+// application-defined response ids.
 type ResponseType C.GtkResponseType
 
 const (
-	/*
-	   Returned if an action widget has no response id,
-	       or if the dialog gets programmatically hidden or destroyed
-	*/
+	// Returned if an action widget has no response id,
+	// or if the dialog gets programmatically hidden or destroyed
 	GTK_RESPONSE_NONE ResponseType = -1
 	// Generic response id, not used by GTK+ dialogs
 	GTK_RESPONSE_REJECT ResponseType = -2
@@ -1195,10 +1025,8 @@ const (
 	GTK_RESPONSE_HELP ResponseType = -11
 )
 
-/*
-These enumeration values describe the possible transitions
-when the child of a #GtkRevealer widget is shown or hidden.
-*/
+// These enumeration values describe the possible transitions
+// when the child of a #GtkRevealer widget is shown or hidden.
 type RevealerTransitionType C.GtkRevealerTransitionType
 
 const (
@@ -1271,10 +1099,8 @@ const (
 	GTK_SCROLL_END ScrollType = 15
 )
 
-/*
-Defines the policy to be used in a scrollable widget when updating
-the scrolled window adjustments in a given orientation.
-*/
+// Defines the policy to be used in a scrollable widget when updating
+// the scrolled window adjustments in a given orientation.
 type ScrollablePolicy C.GtkScrollablePolicy
 
 const (
@@ -1292,35 +1118,27 @@ const (
 	GTK_SELECTION_NONE SelectionMode = 0
 	// Zero or one element may be selected.
 	GTK_SELECTION_SINGLE SelectionMode = 1
-	/*
-	   Exactly one element is selected.
-	       In some circumstances, such as initially or during a search
-	       operation, it’s possible for no element to be selected with
-	       %GTK_SELECTION_BROWSE. What is really enforced is that the user
-	       can’t deselect a currently selected element except by selecting
-	       another element.
-	*/
+	// Exactly one element is selected.
+	// In some circumstances, such as initially or during a search
+	// operation, it’s possible for no element to be selected with
+	// %GTK_SELECTION_BROWSE. What is really enforced is that the user
+	// can’t deselect a currently selected element except by selecting
+	// another element.
 	GTK_SELECTION_BROWSE SelectionMode = 2
-	/*
-	   Any number of elements may be selected.
-	        The Ctrl key may be used to enlarge the selection, and Shift
-	        key to select between the focus and the child pointed to.
-	        Some widgets may also allow Click-drag to select a range of elements.
-	*/
+	// Any number of elements may be selected.
+	// The Ctrl key may be used to enlarge the selection, and Shift
+	// key to select between the focus and the child pointed to.
+	// Some widgets may also allow Click-drag to select a range of elements.
 	GTK_SELECTION_MULTIPLE SelectionMode = 3
 )
 
-/*
-Determines how GTK+ handles the sensitivity of stepper arrows
-at the end of range widgets.
-*/
+// Determines how GTK+ handles the sensitivity of stepper arrows
+// at the end of range widgets.
 type SensitivityType C.GtkSensitivityType
 
 const (
-	/*
-	   The arrow is made insensitive if the
-	     thumb is at the end
-	*/
+	// The arrow is made insensitive if the
+	// thumb is at the end
 	GTK_SENSITIVITY_AUTO SensitivityType = 0
 	// The arrow is always sensitive
 	GTK_SENSITIVITY_ON SensitivityType = 1
@@ -1328,13 +1146,11 @@ const (
 	GTK_SENSITIVITY_OFF SensitivityType = 2
 )
 
-/*
-Used to change the appearance of an outline typically provided by a #GtkFrame.
-
-Note that many themes do not differentiate the appearance of the
-various shadow types: Either their is no visible shadow (@GTK_SHADOW_NONE),
-or there is (any other value).
-*/
+// Used to change the appearance of an outline typically provided by a #GtkFrame.
+//
+// Note that many themes do not differentiate the appearance of the
+// various shadow types: Either their is no visible shadow (@GTK_SHADOW_NONE),
+// or there is (any other value).
 type ShadowType C.GtkShadowType
 
 const (
@@ -1350,10 +1166,8 @@ const (
 	GTK_SHADOW_ETCHED_OUT ShadowType = 4
 )
 
-/*
-The mode of the size group determines the directions in which the size
-group affects the requested sizes of its component widgets.
-*/
+// The mode of the size group determines the directions in which the size
+// group affects the requested sizes of its component widgets.
 type SizeGroupMode C.GtkSizeGroupMode
 
 const (
@@ -1367,10 +1181,8 @@ const (
 	GTK_SIZE_GROUP_BOTH SizeGroupMode = 3
 )
 
-/*
-Specifies a preference for height-for-width or
-width-for-height geometry management.
-*/
+// Specifies a preference for height-for-width or
+// width-for-height geometry management.
 type SizeRequestMode C.GtkSizeRequestMode
 
 const (
@@ -1392,31 +1204,23 @@ const (
 	GTK_SORT_DESCENDING SortType = 1
 )
 
-/*
-The spin button update policy determines whether the spin button displays
-values even if they are outside the bounds of its adjustment.
-See gtk_spin_button_set_update_policy().
-*/
+// The spin button update policy determines whether the spin button displays
+// values even if they are outside the bounds of its adjustment.
+// See gtk_spin_button_set_update_policy().
 type SpinButtonUpdatePolicy C.GtkSpinButtonUpdatePolicy
 
 const (
-	/*
-	   When refreshing your #GtkSpinButton, the value is
-	       always displayed
-	*/
+	// When refreshing your #GtkSpinButton, the value is
+	// always displayed
 	GTK_UPDATE_ALWAYS SpinButtonUpdatePolicy = 0
-	/*
-	   When refreshing your #GtkSpinButton, the value is
-	       only displayed if it is valid within the bounds of the spin button's
-	       adjustment
-	*/
+	// When refreshing your #GtkSpinButton, the value is
+	// only displayed if it is valid within the bounds of the spin button's
+	// adjustment
 	GTK_UPDATE_IF_VALID SpinButtonUpdatePolicy = 1
 )
 
-/*
-The values of the GtkSpinType enumeration are used to specify the
-change to make in gtk_spin_button_spin().
-*/
+// The values of the GtkSpinType enumeration are used to specify the
+// change to make in gtk_spin_button_spin().
 type SpinType C.GtkSpinType
 
 const (
@@ -1436,12 +1240,10 @@ const (
 	GTK_SPIN_USER_DEFINED SpinType = 6
 )
 
-/*
-These enumeration values describe the possible transitions
-between pages in a #GtkStack widget.
-
-New values may be added to this enumeration over time.
-*/
+// These enumeration values describe the possible transitions
+// between pages in a #GtkStack widget.
+//
+// New values may be added to this enumeration over time.
 type StackTransitionType C.GtkStackTransitionType
 
 const (
@@ -1487,12 +1289,10 @@ const (
 	GTK_STACK_TRANSITION_TYPE_OVER_RIGHT_LEFT StackTransitionType = 19
 )
 
-/*
-This type indicates the current state of a widget; the state determines how
-the widget is drawn. The #GtkStateType enumeration is also used to
-identify different colors in a #GtkStyle for drawing, so states can be
-used for subparts of a widget as well as entire widgets.
-*/
+// This type indicates the current state of a widget; the state determines how
+// the widget is drawn. The #GtkStateType enumeration is also used to
+// identify different colors in a #GtkStyle for drawing, so states can be
+// used for subparts of a widget as well as entire widgets.
 type StateType C.GtkStateType
 
 const (
@@ -1500,36 +1300,28 @@ const (
 	GTK_STATE_NORMAL StateType = 0
 	// State of a currently active widget, such as a depressed button.
 	GTK_STATE_ACTIVE StateType = 1
-	/*
-	   State indicating that the mouse pointer is over
-	                        the widget and the widget will respond to mouse clicks.
-	*/
+	// State indicating that the mouse pointer is over
+	// the widget and the widget will respond to mouse clicks.
 	GTK_STATE_PRELIGHT StateType = 2
 	// State of a selected item, such the selected row in a list.
 	GTK_STATE_SELECTED StateType = 3
-	/*
-	   State indicating that the widget is
-	                           unresponsive to user actions.
-	*/
+	// State indicating that the widget is
+	// unresponsive to user actions.
 	GTK_STATE_INSENSITIVE StateType = 4
-	/*
-	   The widget is inconsistent, such as checkbuttons
-	                            or radiobuttons that aren’t either set to %TRUE nor %FALSE,
-	                            or buttons requiring the user attention.
-	*/
+	// The widget is inconsistent, such as checkbuttons
+	// or radiobuttons that aren’t either set to %TRUE nor %FALSE,
+	// or buttons requiring the user attention.
 	GTK_STATE_INCONSISTENT StateType = 5
 	// The widget has the keyboard focus.
 	GTK_STATE_FOCUSED StateType = 6
 )
 
-/*
-These values are used as “info” for the targets contained in the
-lists returned by gtk_text_buffer_get_copy_target_list() and
-gtk_text_buffer_get_paste_target_list().
-
-The values counts down from `-1` to avoid clashes
-with application added drag destinations which usually start at 0.
-*/
+// These values are used as “info” for the targets contained in the
+// lists returned by gtk_text_buffer_get_copy_target_list() and
+// gtk_text_buffer_get_paste_target_list().
+//
+// The values counts down from `-1` to avoid clashes
+// with application added drag destinations which usually start at 0.
 type TextBufferTargetInfo C.GtkTextBufferTargetInfo
 
 const (
@@ -1553,10 +1345,8 @@ const (
 	GTK_TEXT_DIR_RTL TextDirection = 2
 )
 
-/*
-Used to reference the layers of #GtkTextView for the purpose of customized
-drawing with the ::draw_layer vfunc.
-*/
+// Used to reference the layers of #GtkTextView for the purpose of customized
+// drawing with the ::draw_layer vfunc.
 type TextViewLayer C.GtkTextViewLayer
 
 const (
@@ -1600,13 +1390,11 @@ const (
 	GTK_TOOLBAR_SPACE_LINE ToolbarSpaceStyle = 1
 )
 
-/*
-Used to customize the appearance of a #GtkToolbar. Note that
-setting the toolbar style overrides the user’s preferences
-for the default toolbar style.  Note that if the button has only
-a label set and GTK_TOOLBAR_ICONS is used, the label will be
-visible, and vice versa.
-*/
+// Used to customize the appearance of a #GtkToolbar. Note that
+// setting the toolbar style overrides the user’s preferences
+// for the default toolbar style.  Note that if the button has only
+// a label set and GTK_TOOLBAR_ICONS is used, the label will be
+// visible, and vice versa.
 type ToolbarStyle C.GtkToolbarStyle
 
 const (
@@ -1616,18 +1404,14 @@ const (
 	GTK_TOOLBAR_TEXT ToolbarStyle = 1
 	// Buttons display text and icons in the toolbar.
 	GTK_TOOLBAR_BOTH ToolbarStyle = 2
-	/*
-	   Buttons display icons and text alongside each
-	    other, rather than vertically stacked
-	*/
+	// Buttons display icons and text alongside each
+	// other, rather than vertically stacked
 	GTK_TOOLBAR_BOTH_HORIZ ToolbarStyle = 3
 )
 
-/*
-The sizing method the column uses to determine its width.  Please note
-that @GTK_TREE_VIEW_COLUMN_AUTOSIZE are inefficient for large views, and
-can make columns appear choppy.
-*/
+// The sizing method the column uses to determine its width.  Please note
+// that @GTK_TREE_VIEW_COLUMN_AUTOSIZE are inefficient for large views, and
+// can make columns appear choppy.
 type TreeViewColumnSizing C.GtkTreeViewColumnSizing
 
 const (
@@ -1691,11 +1475,9 @@ const (
 	GTK_WIDGET_HELP_WHATS_THIS WidgetHelpType = 1
 )
 
-/*
-Window placement can be influenced using this enumeration. Note that
-using #GTK_WIN_POS_CENTER_ALWAYS is almost always a bad idea.
-It won’t necessarily work well with all window managers or on all windowing systems.
-*/
+// Window placement can be influenced using this enumeration. Note that
+// using #GTK_WIN_POS_CENTER_ALWAYS is almost always a bad idea.
+// It won’t necessarily work well with all window managers or on all windowing systems.
 type WindowPosition C.GtkWindowPosition
 
 const (
@@ -1707,28 +1489,24 @@ const (
 	GTK_WIN_POS_MOUSE WindowPosition = 2
 	// Keep window centered as it changes size, etc.
 	GTK_WIN_POS_CENTER_ALWAYS WindowPosition = 3
-	/*
-	   Center the window on its transient
-	    parent (see gtk_window_set_transient_for()).
-	*/
+	// Center the window on its transient
+	// parent (see gtk_window_set_transient_for()).
 	GTK_WIN_POS_CENTER_ON_PARENT WindowPosition = 4
 )
 
-/*
-A #GtkWindow can be one of these types. Most things you’d consider a
-“window” should have type #GTK_WINDOW_TOPLEVEL; windows with this type
-are managed by the window manager and have a frame by default (call
-gtk_window_set_decorated() to toggle the frame).  Windows with type
-#GTK_WINDOW_POPUP are ignored by the window manager; window manager
-keybindings won’t work on them, the window manager won’t decorate the
-window with a frame, many GTK+ features that rely on the window
-manager will not work (e.g. resize grips and
-maximization/minimization). #GTK_WINDOW_POPUP is used to implement
-widgets such as #GtkMenu or tooltips that you normally don’t think of
-as windows per se. Nearly all windows should be #GTK_WINDOW_TOPLEVEL.
-In particular, do not use #GTK_WINDOW_POPUP just to turn off
-the window borders; use gtk_window_set_decorated() for that.
-*/
+// A #GtkWindow can be one of these types. Most things you’d consider a
+// “window” should have type #GTK_WINDOW_TOPLEVEL; windows with this type
+// are managed by the window manager and have a frame by default (call
+// gtk_window_set_decorated() to toggle the frame).  Windows with type
+// #GTK_WINDOW_POPUP are ignored by the window manager; window manager
+// keybindings won’t work on them, the window manager won’t decorate the
+// window with a frame, many GTK+ features that rely on the window
+// manager will not work (e.g. resize grips and
+// maximization/minimization). #GTK_WINDOW_POPUP is used to implement
+// widgets such as #GtkMenu or tooltips that you normally don’t think of
+// as windows per se. Nearly all windows should be #GTK_WINDOW_TOPLEVEL.
+// In particular, do not use #GTK_WINDOW_POPUP just to turn off
+// the window borders; use gtk_window_set_decorated() for that.
 type WindowType C.GtkWindowType
 
 const (
@@ -1744,17 +1522,13 @@ type WrapMode C.GtkWrapMode
 const (
 	// do not wrap lines; just make the text area wider
 	GTK_WRAP_NONE WrapMode = 0
-	/*
-	   wrap text, breaking lines anywhere the cursor can
-	       appear (between characters, usually - if you want to be technical,
-	       between graphemes, see pango_get_log_attrs())
-	*/
+	// wrap text, breaking lines anywhere the cursor can
+	// appear (between characters, usually - if you want to be technical,
+	// between graphemes, see pango_get_log_attrs())
 	GTK_WRAP_CHAR WrapMode = 1
 	// wrap text, breaking lines in between words
 	GTK_WRAP_WORD WrapMode = 2
-	/*
-	   wrap text, breaking lines in between words, or if
-	       that is not enough, also between graphemes
-	*/
+	// wrap text, breaking lines in between words, or if
+	// that is not enough, also between graphemes
 	GTK_WRAP_WORD_CHAR WrapMode = 3
 )
