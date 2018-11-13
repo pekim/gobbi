@@ -8,4 +8,8 @@ package pango
 // #include <stdlib.h>
 import "C"
 
+/*
+Whether the segment should be shifted to center around the baseline.
+Used in vertical writing directions mostly.
+*/
 const ANALYSIS_FLAG_CENTERED_BASELINE int = C.PANGO_ANALYSIS_FLAG_CENTERED_BASELINE

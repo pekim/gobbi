@@ -48,6 +48,10 @@ func (c *Constant) generate(g *jen.Group, version *Version) {
 		return
 	}
 
+	if c.Doc != nil && c.Doc.Text != "" {
+		g.Comment(c.Doc.Text)
+	}
+
 	if c.Type.Name == "gboolean" {
 		g.
 			Const().

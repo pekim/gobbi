@@ -10,8 +10,37 @@ package glib
 // #include <stdlib.h>
 import "C"
 
+/*
+The platform dependent length modifier for conversion specifiers
+for scanning and printing values of type #gint16 or #guint16. It
+is a string literal, but doesn't include the percent-sign, such
+that you can add precision and length modifiers between percent-sign
+and conversion specifier and append a conversion specifier.
+
+The following example prints "0x7b";
+|[<!-- language="C" -->
+gint16 value = 123;
+g_print ("%#" G_GINT16_MODIFIER "x", value);
+]|
+*/
 const GINT16_MODIFIER string = C.G_GINT16_MODIFIER
+
+/*
+The platform dependent length modifier for conversion specifiers
+for scanning and printing values of type #gint32 or #guint32. It
+is a string literal. See also #G_GINT16_MODIFIER.
+*/
 const GINT32_MODIFIER string = C.G_GINT32_MODIFIER
+
+/*
+The platform dependent length modifier for conversion specifiers
+for scanning and printing values of type #gint64 or #guint64.
+It is a string literal.
+
+Some platforms do not support printing 64-bit integers, even
+though the types are supported. On such platforms %G_GINT64_MODIFIER
+is not defined.
+*/
 const GINT64_MODIFIER string = C.G_GINT64_MODIFIER
 
 // Unsupported : type gint16 for MAXINT16

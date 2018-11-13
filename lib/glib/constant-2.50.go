@@ -10,4 +10,8 @@ package glib
 // #include <stdlib.h>
 import "C"
 
+/*
+A format specifier that can be used in printf()-style format strings
+when printing a #GPid.
+*/
 const PID_FORMAT string = C.G_PID_FORMAT

@@ -10,6 +10,28 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
+/*
+A CSS class used when an action (usually a button) is
+one that is expected to remove or destroy something visible
+to the user.
+
+Refer to individual widget documentation for used style classes.
+*/
 const STYLE_CLASS_DESTRUCTIVE_ACTION string = C.GTK_STYLE_CLASS_DESTRUCTIVE_ACTION
+
+/*
+A CSS class used when an element needs the user attention,
+for instance a button in a stack switcher corresponding to
+a hidden page that changed state.
+
+Refer to individual widget documentation for used style classes.
+*/
 const STYLE_CLASS_NEEDS_ATTENTION string = C.GTK_STYLE_CLASS_NEEDS_ATTENTION
+
+/*
+A CSS class used when an action (usually a button) is the
+primary suggested action in a specific context.
+
+Refer to individual widget documentation for used style classes.
+*/
 const STYLE_CLASS_SUGGESTED_ACTION string = C.GTK_STYLE_CLASS_SUGGESTED_ACTION

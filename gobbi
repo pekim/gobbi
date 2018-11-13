@@ -78,6 +78,9 @@ processSubcommand () {
     build)
       build
       ;;
+    docs)
+      docs
+      ;;
     generate)
       generate
       ;;

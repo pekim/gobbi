@@ -7,6 +7,7 @@ package gdk
 // #include <stdlib.h>
 import "C"
 
+// Represents the current time, and can be used anywhere a time is expected.
 const CURRENT_TIME int = C.GDK_CURRENT_TIME
 const KEY_0 int = C.GDK_KEY_0
 const KEY_1 int = C.GDK_KEY_1
@@ -2279,5 +2280,16 @@ const KEY_zerosubscript int = C.GDK_KEY_zerosubscript
 const KEY_zerosuperior int = C.GDK_KEY_zerosuperior
 const KEY_zstroke int = C.GDK_KEY_zstroke
 const MAX_TIMECOORD_AXES int = C.GDK_MAX_TIMECOORD_AXES
+
+/*
+A special value, indicating that the background
+for a window should be inherited from the parent window.
+*/
 const PARENT_RELATIVE int = C.GDK_PARENT_RELATIVE
+
+/*
+This is the priority that the idle handler processing window updates
+is given in the
+[GLib Main Loop][glib-The-Main-Event-Loop].
+*/
 const PRIORITY_REDRAW int = C.GDK_PRIORITY_REDRAW

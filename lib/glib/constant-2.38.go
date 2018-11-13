@@ -10,5 +10,14 @@ package glib
 // #include <stdlib.h>
 import "C"
 
+/*
+A key under #G_KEY_FILE_DESKTOP_GROUP, whose value is a string list
+giving the available application actions.
+*/
 const KEY_FILE_DESKTOP_KEY_ACTIONS string = C.G_KEY_FILE_DESKTOP_KEY_ACTIONS
+
+/*
+A key under #G_KEY_FILE_DESKTOP_GROUP, whose value is a boolean set to true
+if the application is D-Bus activatable.
+*/
 const KEY_FILE_DESKTOP_KEY_DBUS_ACTIVATABLE string = C.G_KEY_FILE_DESKTOP_KEY_DBUS_ACTIVATABLE

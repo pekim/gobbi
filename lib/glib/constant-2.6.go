@@ -10,8 +10,42 @@ package glib
 // #include <stdlib.h>
 import "C"
 
+/*
+This is the platform dependent conversion specifier for scanning
+and printing values of type #gsize. See also #G_GINT16_FORMAT.
+*/
 const GSIZE_FORMAT string = C.G_GSIZE_FORMAT
+
+/*
+The platform dependent length modifier for conversion specifiers
+for scanning and printing values of type #gsize. It
+is a string literal.
+*/
 const GSIZE_MODIFIER string = C.G_GSIZE_MODIFIER
+
+/*
+This is the platform dependent conversion specifier for scanning
+and printing values of type #gssize. See also #G_GINT16_FORMAT.
+*/
 const GSSIZE_FORMAT string = C.G_GSSIZE_FORMAT
+
+/*
+The platform dependent length modifier for conversion specifiers
+for scanning and printing values of type #gssize. It
+is a string literal.
+*/
 const GSSIZE_MODIFIER string = C.G_GSSIZE_MODIFIER
+
+/*
+If a long option in the main group has this name, it is not treated as a
+regular option. Instead it collects all non-option arguments which would
+otherwise be left in `argv`. The option must be of type
+%G_OPTION_ARG_CALLBACK, %G_OPTION_ARG_STRING_ARRAY
+or %G_OPTION_ARG_FILENAME_ARRAY.
+
+
+Using #G_OPTION_REMAINING instead of simply scanning `argv`
+for leftover arguments has the advantage that GOption takes care of
+necessary encoding conversions for strings or filenames.
+*/
 const OPTION_REMAINING string = C.G_OPTION_REMAINING

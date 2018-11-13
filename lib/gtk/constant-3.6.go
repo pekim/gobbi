@@ -10,7 +10,21 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
+// The name used for the stock high offset included by #GtkLevelBar.
 const LEVEL_BAR_OFFSET_HIGH string = C.GTK_LEVEL_BAR_OFFSET_HIGH
+
+// The name used for the stock low offset included by #GtkLevelBar.
 const LEVEL_BAR_OFFSET_LOW string = C.GTK_LEVEL_BAR_OFFSET_LOW
+
+/*
+The key used by the “Print to file” printer to store the file
+name of the output without the path to the directory and the
+file extension.
+*/
 const PRINT_SETTINGS_OUTPUT_BASENAME string = C.GTK_PRINT_SETTINGS_OUTPUT_BASENAME
+
+/*
+The key used by the “Print to file” printer to store the
+directory to which the output should be written.
+*/
 const PRINT_SETTINGS_OUTPUT_DIR string = C.GTK_PRINT_SETTINGS_OUTPUT_DIR

@@ -10,4 +10,5 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
+// The name used for the stock full offset included by #GtkLevelBar.
 const LEVEL_BAR_OFFSET_FULL string = C.GTK_LEVEL_BAR_OFFSET_FULL
