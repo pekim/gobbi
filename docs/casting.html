@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction · GitBook</title>
+        <title>Casting · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -61,8 +61,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="introduction.html" />
+    <link rel="next" href="goroutines.html" />
     
+    
+    <link rel="prev" href="build-tags.html" />
     
 
     </head>
@@ -91,7 +93,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -156,7 +158,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6" data-path="casting.html">
+        <li class="chapter active" data-level="1.6" data-path="casting.html">
             
                 <a href="casting.html">
             
@@ -779,7 +781,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >Casting</a>
     </h1>
 </div>
 
@@ -794,7 +796,54 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="introduction">Introduction</h1>
+                                <h1 id="casting">Casting</h1>
+<p>Gtk classes derive in a hierarchy from the GObject class.</p>
+<p>In gobbi&apos;s implementation of GOBject&apos;s classes,
+each class does not directly extend
+(or embed in Go terms)
+its ancestor classes.
+Instead, for an class instance it is possible to get
+a reference to an ancestor or descendant class instance
+for the same gtk object.  </p>
+<h1 id="upcasting">upcasting</h1>
+<p>In a gtk application there will frequently be a need to
+access members of an object&apos;s ancestor class.</p>
+<p>For example when adding a Label to a Container,
+this will not work.</p>
+<pre><code class="lang-go">window := gtk.WindowNew(gtk.GTK_WINDOW_TOPLEVEL)
+label := gtk.LabelNew(<span class="hljs-string">&quot;a label&quot;</span>)
+window.Add(label)
+</code></pre>
+<p><code>gtk.Window</code> does not directly have a <code>Add</code> method.
+The <code>Add</code> method is a member of <code>gtk.Container</code>,
+which is an ancestor of <code>gtk.Window</code>.</p>
+<p>The <code>gtk.Window</code>&apos;s <code>Container</code> may be obtained by calling
+the <code>Container()</code> method.</p>
+<p>And as the <code>Add</code> method expects a <code>gtk.Widget</code>,
+the <code>gtk.Label</code>&apos;s <code>Widget</code> method is called.</p>
+<pre><code class="lang-go">window := gtk.WindowNew(gtk.GTK_WINDOW_TOPLEVEL)
+label := gtk.LabelNew(<span class="hljs-string">&quot;a label&quot;</span>)
+window.Container().Add(label.Widget())
+</code></pre>
+<h1 id="downcasting">downcasting</h1>
+<p>Downcasting operates in the other direction,
+from a class to a derived class,</p>
+<p>Downcasting is less common that upcasting.
+It is potentially quite dangerous, in that it makes
+it very easy to assert that a widget is something
+that it is not.</p>
+<p>To downcast an instance,
+call one of its <code>CastTo...</code> methods.</p>
+<p>A typically use is when obtaining an object from a builder.</p>
+<pre><code class="lang-go">builder := gtk.BuilderNewFromString(...)
+
+buttonObject := builder.GetObject(<span class="hljs-string">&quot;some-button&quot;</span>)
+button := gtk.CastToButton(buttonObject)
+button.ConnectClicked(...)
+</code></pre>
+<p>See the
+<a href="https://github.com/pekim/gobbi/blob/master/example/builder/main.go" target="_blank">builder</a>
+example to see this in an application. </p>
 
                                 
                                 </section>
@@ -822,8 +871,12 @@
 
             
                 
+                <a href="build-tags.html" class="navigation navigation-prev " aria-label="Previous page: Build tags (library versions)">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="introduction.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Introduction 2">
+                
+                <a href="goroutines.html" class="navigation navigation-next " aria-label="Next page: Goroutines">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -834,7 +887,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"Introduction 2","level":"1.2","depth":1,"path":"introduction.md","ref":"./introduction.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters"],"pluginsConfig":{"expandable-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2018-11-13T19:41:46.504Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-13T20:20:26.014Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Casting","level":"1.6","depth":1,"next":{"title":"Goroutines","level":"1.7","depth":1,"path":"goroutines.md","ref":"./goroutines.md","articles":[]},"previous":{"title":"Build tags (library versions)","level":"1.5","depth":1,"path":"build-tags.md","ref":"./build-tags.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters"],"pluginsConfig":{"expandable-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"casting.md","mtime":"2018-11-11T15:04:06.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-13T20:20:26.014Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

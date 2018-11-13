@@ -10,6 +10,7 @@ usage () {
     echo "  do -h                       Show this help"
     echo "  do build                    Generate libraries and docs, and run tests"
     echo "  do docs                     Generate documentation"
+    echo "  do docs-serve              Serve documentation"
     echo "  do generate                 Generate libraries"
     echo "  do test                     Run tests"
     echo "  do examples                 List the available examples"
@@ -36,9 +37,16 @@ generate () {
     go run internal/cmd/generate/*.go
 }
 
+# pre-requisites
+#   yarn global add gitbook-cli gitbook-plugin-expandable-chapters
+#       (or 'npm -g gitbook-cli install gitbook-plugin-expandable-chapters')
+#   gitbook install gitbook/
 docs () {
-    mdbook clean mdbook/ && \
-    mdbook build mdbook/
+    gitbook build gitbook/ docs/
+}
+
+docsServe () {
+    gitbook serve gitbook/
 }
 
 test () {
@@ -81,6 +89,9 @@ processSubcommand () {
       ;;
     docs)
       docs
+      ;;
+    docs-serve)
+      docsServe
       ;;
     generate)
       generate

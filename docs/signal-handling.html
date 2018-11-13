@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction · GitBook</title>
+        <title>Signal handling · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -61,8 +61,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="introduction.html" />
+    <link rel="next" href="api.md" />
     
+    
+    <link rel="prev" href="gvalue.html" />
     
 
     </head>
@@ -91,7 +93,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -195,7 +197,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9" data-path="signal-handling.html">
+        <li class="chapter active" data-level="1.9" data-path="signal-handling.html">
             
                 <a href="signal-handling.html">
             
@@ -779,7 +781,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >Signal handling</a>
     </h1>
 </div>
 
@@ -794,7 +796,36 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="introduction">Introduction</h1>
+                                <h1 id="signal-handling">Signal handling</h1>
+<h2 id="connecting">connecting</h2>
+<p>To connect an object to a signal that it emits,
+call one of the object&apos;s <code>Connect...</code> methods.</p>
+<p>The connect methods all accept a handler argument
+that is a function with a specific signature.
+Some handlers have no parameters,
+others have one or more parameters that provide event-specific
+information.  </p>
+<pre><code class="lang-go">button := gtk.ButtonNewWithLabel(<span class="hljs-string">&quot;a button&quot;</span>)
+button.Widget().SetEvents(<span class="hljs-keyword">int32</span>(gdk.GDK_POINTER_MOTION_MASK))
+button.Widget().ConnectMotionNotifyEvent(
+    <span class="hljs-keyword">func</span>(event *gdk.EventMotion) <span class="hljs-keyword">bool</span> {
+        fmt.Println(event.Y, event.Y)
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+    })
+</code></pre>
+<p>Remember that it may be necessary to upcast to access the
+desired connect method.</p>
+<h2 id="disconnecting">disconnecting</h2>
+<p>All of the <code>Connect...</code> methods return a handler id.
+The id may be used later to disconnect the handler.</p>
+<pre><code class="lang-go">    connectId := button.ConnectClicked(<span class="hljs-keyword">func</span>() {
+        ...
+    })
+
+    ...
+
+    button.DisconnectClicked(connectId)
+</code></pre>
 
                                 
                                 </section>
@@ -822,8 +853,12 @@
 
             
                 
+                <a href="gvalue.html" class="navigation navigation-prev " aria-label="Previous page: gobject.Value">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="introduction.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Introduction 2">
+                
+                <a href="api.md" class="navigation navigation-next " aria-label="Next page: API">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -834,7 +869,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"Introduction 2","level":"1.2","depth":1,"path":"introduction.md","ref":"./introduction.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters"],"pluginsConfig":{"expandable-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2018-11-13T19:41:46.504Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-13T20:20:26.014Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Signal handling","level":"1.9","depth":1,"next":{"title":"API","level":"1.10","depth":1,"path":"api.md","ref":"./api.md","articles":[{"title":"atk","level":"1.10.1","depth":2,"path":"lib/atk/package.md","ref":"./lib/atk/package.md","articles":[{"title":"bitfields","level":"1.10.1.1","depth":3,"path":"lib/atk/bitfields.md","ref":"./lib/atk/bitfields.md","articles":[]},{"title":"constants","level":"1.10.1.2","depth":3,"path":"lib/atk/constant.md","ref":"./lib/atk/constant.md","articles":[]},{"title":"enums","level":"1.10.1.3","depth":3,"path":"lib/atk/enums.md","ref":"./lib/atk/enums.md","articles":[]}]},{"title":"glib","level":"1.10.2","depth":2,"path":"lib/glib/package.md","ref":"./lib/glib/package.md","articles":[{"title":"bitfields","level":"1.10.2.1","depth":3,"path":"lib/glib/bitfields.md","ref":"./lib/glib/bitfields.md","articles":[]},{"title":"constants","level":"1.10.2.2","depth":3,"path":"lib/glib/constant.md","ref":"./lib/glib/constant.md","articles":[]},{"title":"enums","level":"1.10.2.3","depth":3,"path":"lib/glib/enums.md","ref":"./lib/glib/enums.md","articles":[]}]},{"title":"gobject","level":"1.10.3","depth":2,"path":"lib/gobject/package.md","ref":"./lib/gobject/package.md","articles":[{"title":"bitfields","level":"1.10.3.1","depth":3,"path":"lib/gobject/bitfields.md","ref":"./lib/gobject/bitfields.md","articles":[]},{"title":"constants","level":"1.10.3.2","depth":3,"path":"lib/gobject/constant.md","ref":"./lib/gobject/constant.md","articles":[]},{"title":"enums","level":"1.10.3.3","depth":3,"path":"lib/gobject/enums.md","ref":"./lib/gobject/enums.md","articles":[]}]},{"title":"gdk","level":"1.10.4","depth":2,"path":"lib/gdk/package.md","ref":"./lib/gdk/package.md","articles":[{"title":"bitfields","level":"1.10.4.1","depth":3,"path":"lib/gdk/bitfields.md","ref":"./lib/gdk/bitfields.md","articles":[]},{"title":"constants","level":"1.10.4.2","depth":3,"path":"lib/gdk/constant.md","ref":"./lib/gdk/constant.md","articles":[]},{"title":"enums","level":"1.10.4.3","depth":3,"path":"lib/gdk/enums.md","ref":"./lib/gdk/enums.md","articles":[]}]},{"title":"gdkpixbuf","level":"1.10.5","depth":2,"path":"lib/gdkpixbuf/package.md","ref":"./lib/gdkpixbuf/package.md","articles":[{"title":"bitfields","level":"1.10.5.1","depth":3,"path":"lib/gdkpixbuf/bitfields.md","ref":"./lib/gdkpixbuf/bitfields.md","articles":[]},{"title":"constants","level":"1.10.5.2","depth":3,"path":"lib/gdkpixbuf/constant.md","ref":"./lib/gdkpixbuf/constant.md","articles":[]},{"title":"enums","level":"1.10.5.3","depth":3,"path":"lib/gdkpixbuf/enums.md","ref":"./lib/gdkpixbuf/enums.md","articles":[]}]},{"title":"gio","level":"1.10.6","depth":2,"path":"lib/gio/package.md","ref":"./lib/gio/package.md","articles":[{"title":"bitfields","level":"1.10.6.1","depth":3,"path":"lib/gio/bitfields.md","ref":"./lib/gio/bitfields.md","articles":[]},{"title":"constants","level":"1.10.6.2","depth":3,"path":"lib/gio/constant.md","ref":"./lib/gio/constant.md","articles":[]},{"title":"enums","level":"1.10.6.3","depth":3,"path":"lib/gio/enums.md","ref":"./lib/gio/enums.md","articles":[]}]},{"title":"gtk","level":"1.10.7","depth":2,"path":"lib/gtk/package.md","ref":"./lib/gtk/package.md","articles":[{"title":"bitfields","level":"1.10.7.1","depth":3,"path":"lib/gtk/bitfields.md","ref":"./lib/gtk/bitfields.md","articles":[]},{"title":"constants","level":"1.10.7.2","depth":3,"path":"lib/gtk/constant.md","ref":"./lib/gtk/constant.md","articles":[]},{"title":"enums","level":"1.10.7.3","depth":3,"path":"lib/gtk/enums.md","ref":"./lib/gtk/enums.md","articles":[]}]},{"title":"pango","level":"1.10.8","depth":2,"path":"lib/pango/package.md","ref":"./lib/pango/package.md","articles":[{"title":"bitfields","level":"1.10.8.1","depth":3,"path":"lib/pango/bitfields.md","ref":"./lib/pango/bitfields.md","articles":[]},{"title":"constants","level":"1.10.8.2","depth":3,"path":"lib/pango/constant.md","ref":"./lib/pango/constant.md","articles":[]},{"title":"enums","level":"1.10.8.3","depth":3,"path":"lib/pango/enums.md","ref":"./lib/pango/enums.md","articles":[]}]},{"title":"cairo","level":"1.10.9","depth":2,"path":"lib/cairo/package.md","ref":"./lib/cairo/package.md","articles":[{"title":"bitfields","level":"1.10.9.1","depth":3,"path":"lib/cairo/bitfields.md","ref":"./lib/cairo/bitfields.md","articles":[]},{"title":"constants","level":"1.10.9.2","depth":3,"path":"lib/cairo/constant.md","ref":"./lib/cairo/constant.md","articles":[]},{"title":"enums","level":"1.10.9.3","depth":3,"path":"lib/cairo/enums.md","ref":"./lib/cairo/enums.md","articles":[]}]}]},"previous":{"title":"gobject.Value","level":"1.8","depth":1,"path":"gvalue.md","ref":"./gvalue.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters"],"pluginsConfig":{"expandable-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"signal-handling.md","mtime":"2018-11-11T15:05:56.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-13T20:20:26.014Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

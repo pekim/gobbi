@@ -1,0 +1,11 @@
+[book]
+authors = ["Mike D Pilsbury"]
+multilingual = false
+src = "."
+title = "gobbi"
+
+[build]
+build-dir = "../docs"
+
+[output.html]
+#additional-css = ["custom.css"]

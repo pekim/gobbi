@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Introduction · GitBook</title>
+        <title>Goroutines · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -61,8 +61,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="introduction.html" />
+    <link rel="next" href="gvalue.html" />
     
+    
+    <link rel="prev" href="casting.html" />
     
 
     </head>
@@ -91,7 +93,7 @@
         
         
     
-        <li class="chapter active" data-level="1.1" data-path="./">
+        <li class="chapter " data-level="1.1" data-path="./">
             
                 <a href="./">
             
@@ -169,7 +171,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7" data-path="goroutines.html">
+        <li class="chapter active" data-level="1.7" data-path="goroutines.html">
             
                 <a href="goroutines.html">
             
@@ -779,7 +781,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >Introduction</a>
+        <a href="." >Goroutines</a>
     </h1>
 </div>
 
@@ -794,7 +796,21 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="introduction">Introduction</h1>
+                                <h1 id="goroutines">Goroutines</h1>
+<p>All calls to gtk functions should be performed on
+the main thread.
+To perform such a call from a goroutine,
+use <code>glib.IdleAdd</code> to schedule invocation of a
+callback function on the main thread. </p>
+<pre><code class="lang-go">glib.IdleAdd(<span class="hljs-keyword">func</span>() <span class="hljs-keyword">bool</span> {
+    someLabel.SetText(<span class="hljs-string">&quot;some text&quot;</span>)
+    <span class="hljs-keyword">return</span> glib.SOURCE_REMOVE
+})
+</code></pre>
+<p>Return <code>glib.SOURCE_REMOVE</code> to ensure the function is not
+called again next time the main loop is idle.
+Alternatively return <code>glib.SOURCE_CONTINUE</code> to have
+the function called again.</p>
 
                                 
                                 </section>
@@ -822,8 +838,12 @@
 
             
                 
+                <a href="casting.html" class="navigation navigation-prev " aria-label="Previous page: Casting">
+                    <i class="fa fa-angle-left"></i>
+                </a>
                 
-                <a href="introduction.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Introduction 2">
+                
+                <a href="gvalue.html" class="navigation navigation-next " aria-label="Next page: gobject.Value">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -834,7 +854,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Introduction","level":"1.1","depth":1,"next":{"title":"Introduction 2","level":"1.2","depth":1,"path":"introduction.md","ref":"./introduction.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters"],"pluginsConfig":{"expandable-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"README.md","mtime":"2018-11-13T19:41:46.504Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-13T20:20:26.014Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Goroutines","level":"1.7","depth":1,"next":{"title":"gobject.Value","level":"1.8","depth":1,"path":"gvalue.md","ref":"./gvalue.md","articles":[]},"previous":{"title":"Casting","level":"1.6","depth":1,"path":"casting.md","ref":"./casting.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["expandable-chapters","livereload"],"pluginsConfig":{"expandable-chapters":{},"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"goroutines.md","mtime":"2018-11-11T14:56:59.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-13T20:22:56.313Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
@@ -845,6 +865,10 @@
     
         
         <script src="gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         
