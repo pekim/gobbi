@@ -10,10 +10,29 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
+/*
+Used as a return value of handlers for the
+#GtkFileChooser::confirm-overwrite signal of a #GtkFileChooser. This
+value determines whether the file chooser will present the stock
+confirmation dialog, accept the user’s choice of a filename, or
+let the user choose another filename.
+*/
 type FileChooserConfirmation C.GtkFileChooserConfirmation
 
 const (
-	GTK_FILE_CHOOSER_CONFIRMATION_CONFIRM         FileChooserConfirmation = 0
+	/*
+	   The file chooser will present
+	    its stock dialog to confirm about overwriting an existing file.
+	*/
+	GTK_FILE_CHOOSER_CONFIRMATION_CONFIRM FileChooserConfirmation = 0
+	/*
+	   The file chooser will
+	    terminate and accept the user’s choice of a file name.
+	*/
 	GTK_FILE_CHOOSER_CONFIRMATION_ACCEPT_FILENAME FileChooserConfirmation = 1
-	GTK_FILE_CHOOSER_CONFIRMATION_SELECT_AGAIN    FileChooserConfirmation = 2
+	/*
+	   The file chooser will
+	    continue running, so as to let the user select another file name.
+	*/
+	GTK_FILE_CHOOSER_CONFIRMATION_SELECT_AGAIN FileChooserConfirmation = 2
 )

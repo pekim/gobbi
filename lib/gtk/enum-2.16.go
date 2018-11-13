@@ -10,9 +10,12 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
+// Specifies the side of the entry at which an icon is placed.
 type EntryIconPosition C.GtkEntryIconPosition
 
 const (
-	GTK_ENTRY_ICON_PRIMARY   EntryIconPosition = 0
+	// At the beginning of the entry (depending on the text direction).
+	GTK_ENTRY_ICON_PRIMARY EntryIconPosition = 0
+	// At the end of the entry (depending on the text direction).
 	GTK_ENTRY_ICON_SECONDARY EntryIconPosition = 1
 )

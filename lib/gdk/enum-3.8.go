@@ -8,9 +8,15 @@ package gdk
 // #include <stdlib.h>
 import "C"
 
+/*
+Indicates which monitor (in a multi-head setup) a window should span over
+when in fullscreen mode.
+*/
 type FullscreenMode C.GdkFullscreenMode
 
 const (
+	// Fullscreen on current monitor only.
 	GDK_FULLSCREEN_ON_CURRENT_MONITOR FullscreenMode = 0
-	GDK_FULLSCREEN_ON_ALL_MONITORS    FullscreenMode = 1
+	// Span across all monitors when fullscreen.
+	GDK_FULLSCREEN_ON_ALL_MONITORS FullscreenMode = 1
 )

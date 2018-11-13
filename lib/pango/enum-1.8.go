@@ -8,11 +8,19 @@ package pango
 // #include <stdlib.h>
 import "C"
 
+/*
+#PangoRenderPart defines different items to render for such
+purposes as setting colors.
+*/
 type RenderPart C.PangoRenderPart
 
 const (
-	PANGO_RENDER_PART_FOREGROUND    RenderPart = 0
-	PANGO_RENDER_PART_BACKGROUND    RenderPart = 1
-	PANGO_RENDER_PART_UNDERLINE     RenderPart = 2
+	// the text itself
+	PANGO_RENDER_PART_FOREGROUND RenderPart = 0
+	// the area behind the text
+	PANGO_RENDER_PART_BACKGROUND RenderPart = 1
+	// underlines
+	PANGO_RENDER_PART_UNDERLINE RenderPart = 2
+	// strikethrough lines
 	PANGO_RENDER_PART_STRIKETHROUGH RenderPart = 3
 )

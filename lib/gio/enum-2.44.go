@@ -18,11 +18,30 @@ package gio
 // #include <stdlib.h>
 import "C"
 
+// The host's network connectivity state, as reported by #GNetworkMonitor.
 type NetworkConnectivity C.GNetworkConnectivity
 
 const (
-	NETWORK_CONNECTIVITY_LOCAL   NetworkConnectivity = 1
+	/*
+	   The host is not configured with a
+	     route to the Internet; it may or may not be connected to a local
+	     network.
+	*/
+	NETWORK_CONNECTIVITY_LOCAL NetworkConnectivity = 1
+	/*
+	   The host is connected to a network, but
+	     does not appear to be able to reach the full Internet, perhaps
+	     due to upstream network problems.
+	*/
 	NETWORK_CONNECTIVITY_LIMITED NetworkConnectivity = 2
-	NETWORK_CONNECTIVITY_PORTAL  NetworkConnectivity = 3
-	NETWORK_CONNECTIVITY_FULL    NetworkConnectivity = 4
+	/*
+	   The host is behind a captive portal and
+	     cannot reach the full Internet.
+	*/
+	NETWORK_CONNECTIVITY_PORTAL NetworkConnectivity = 3
+	/*
+	   The host is connected to a network, and
+	     appears to be able to reach the full Internet.
+	*/
+	NETWORK_CONNECTIVITY_FULL NetworkConnectivity = 4
 )

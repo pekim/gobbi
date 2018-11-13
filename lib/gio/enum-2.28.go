@@ -18,30 +18,66 @@ package gio
 // #include <stdlib.h>
 import "C"
 
+// The client authentication mode for a #GTlsServerConnection.
 type TlsAuthenticationMode C.GTlsAuthenticationMode
 
 const (
-	TLS_AUTHENTICATION_NONE      TlsAuthenticationMode = 0
+	// client authentication not required
+	TLS_AUTHENTICATION_NONE TlsAuthenticationMode = 0
+	// client authentication is requested
 	TLS_AUTHENTICATION_REQUESTED TlsAuthenticationMode = 1
-	TLS_AUTHENTICATION_REQUIRED  TlsAuthenticationMode = 2
+	// client authentication is required
+	TLS_AUTHENTICATION_REQUIRED TlsAuthenticationMode = 2
 )
 
+/*
+An error code used with %G_TLS_ERROR in a #GError returned from a
+TLS-related routine.
+*/
 type TlsError C.GTlsError
 
 const (
-	TLS_ERROR_UNAVAILABLE          TlsError = 0
-	TLS_ERROR_MISC                 TlsError = 1
-	TLS_ERROR_BAD_CERTIFICATE      TlsError = 2
-	TLS_ERROR_NOT_TLS              TlsError = 3
-	TLS_ERROR_HANDSHAKE            TlsError = 4
+	// No TLS provider is available
+	TLS_ERROR_UNAVAILABLE TlsError = 0
+	// Miscellaneous TLS error
+	TLS_ERROR_MISC TlsError = 1
+	// A certificate could not be parsed
+	TLS_ERROR_BAD_CERTIFICATE TlsError = 2
+	/*
+	   The TLS handshake failed because the
+	     peer does not seem to be a TLS server.
+	*/
+	TLS_ERROR_NOT_TLS TlsError = 3
+	/*
+	   The TLS handshake failed because the
+	     peer's certificate was not acceptable.
+	*/
+	TLS_ERROR_HANDSHAKE TlsError = 4
+	/*
+	   The TLS handshake failed because
+	     the server requested a client-side certificate, but none was
+	     provided. See g_tls_connection_set_certificate().
+	*/
 	TLS_ERROR_CERTIFICATE_REQUIRED TlsError = 5
-	TLS_ERROR_EOF                  TlsError = 6
+	/*
+	   The TLS connection was closed without proper
+	     notice, which may indicate an attack. See
+	     g_tls_connection_set_require_close_notify().
+	*/
+	TLS_ERROR_EOF TlsError = 6
 )
 
+/*
+When to allow rehandshaking. See
+g_tls_connection_set_rehandshake_mode().
+*/
 type TlsRehandshakeMode C.GTlsRehandshakeMode
 
 const (
-	TLS_REHANDSHAKE_NEVER    TlsRehandshakeMode = 0
-	TLS_REHANDSHAKE_SAFELY   TlsRehandshakeMode = 1
+	// Never allow rehandshaking
+	TLS_REHANDSHAKE_NEVER TlsRehandshakeMode = 0
+	// Allow safe rehandshaking only
+	TLS_REHANDSHAKE_SAFELY TlsRehandshakeMode = 1
+	// Allow unsafe rehandshaking
 	TLS_REHANDSHAKE_UNSAFELY TlsRehandshakeMode = 2
 )

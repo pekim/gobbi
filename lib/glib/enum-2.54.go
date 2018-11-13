@@ -10,9 +10,12 @@ package glib
 // #include <stdlib.h>
 import "C"
 
+// Error codes returned by functions converting a string to a number.
 type NumberParserError C.GNumberParserError
 
 const (
-	NUMBER_PARSER_ERROR_INVALID       NumberParserError = 0
+	// String was not a valid number.
+	NUMBER_PARSER_ERROR_INVALID NumberParserError = 0
+	// String was a number, but out of bounds.
 	NUMBER_PARSER_ERROR_OUT_OF_BOUNDS NumberParserError = 1
 )

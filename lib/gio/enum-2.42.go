@@ -18,11 +18,32 @@ package gio
 // #include <stdlib.h>
 import "C"
 
+// Priority levels for #GNotifications.
 type NotificationPriority C.GNotificationPriority
 
 const (
+	/*
+	   the default priority, to be used for the
+	     majority of notifications (for example email messages, software updates,
+	     completed download/sync operations)
+	*/
 	NOTIFICATION_PRIORITY_NORMAL NotificationPriority = 0
-	NOTIFICATION_PRIORITY_LOW    NotificationPriority = 1
-	NOTIFICATION_PRIORITY_HIGH   NotificationPriority = 2
+	/*
+	   for notifications that do not require
+	     immediate attention - typically used for contextual background
+	     information, such as contact birthdays or local weather
+	*/
+	NOTIFICATION_PRIORITY_LOW NotificationPriority = 1
+	/*
+	   for events that require more attention,
+	     usually because responses are time-sensitive (for example chat and SMS
+	     messages or alarms)
+	*/
+	NOTIFICATION_PRIORITY_HIGH NotificationPriority = 2
+	/*
+	   for urgent notifications, or notifications
+	     that require a response in a short space of time (for example phone calls
+	     or emergency warnings)
+	*/
 	NOTIFICATION_PRIORITY_URGENT NotificationPriority = 3
 )

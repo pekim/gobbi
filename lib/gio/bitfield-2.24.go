@@ -18,10 +18,14 @@ package gio
 // #include <stdlib.h>
 import "C"
 
+// Flags used when calling a g_converter_convert().
 type ConverterFlags C.GConverterFlags
 
 const (
-	CONVERTER_NO_FLAGS     ConverterFlags = 0
+	// No flags.
+	CONVERTER_NO_FLAGS ConverterFlags = 0
+	// At end of input data
 	CONVERTER_INPUT_AT_END ConverterFlags = 1
-	CONVERTER_FLUSH        ConverterFlags = 2
+	// Flush data
+	CONVERTER_FLUSH ConverterFlags = 2
 )

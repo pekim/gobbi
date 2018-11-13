@@ -18,8 +18,10 @@ package gio
 // #include <stdlib.h>
 import "C"
 
+// Flags to define future #GTestDBus behaviour.
 type TestDBusFlags C.GTestDBusFlags
 
 const (
+	// No flags.
 	TEST_DBUS_NONE TestDBusFlags = 0
 )

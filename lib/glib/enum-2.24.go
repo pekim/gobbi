@@ -10,25 +10,50 @@ package glib
 // #include <stdlib.h>
 import "C"
 
+// The range of possible top-level types of #GVariant instances.
 type VariantClass C.GVariantClass
 
 const (
-	VARIANT_CLASS_BOOLEAN     VariantClass = 98
-	VARIANT_CLASS_BYTE        VariantClass = 121
-	VARIANT_CLASS_INT16       VariantClass = 110
-	VARIANT_CLASS_UINT16      VariantClass = 113
-	VARIANT_CLASS_INT32       VariantClass = 105
-	VARIANT_CLASS_UINT32      VariantClass = 117
-	VARIANT_CLASS_INT64       VariantClass = 120
-	VARIANT_CLASS_UINT64      VariantClass = 116
-	VARIANT_CLASS_HANDLE      VariantClass = 104
-	VARIANT_CLASS_DOUBLE      VariantClass = 100
-	VARIANT_CLASS_STRING      VariantClass = 115
+	// The #GVariant is a boolean.
+	VARIANT_CLASS_BOOLEAN VariantClass = 98
+	// The #GVariant is a byte.
+	VARIANT_CLASS_BYTE VariantClass = 121
+	// The #GVariant is a signed 16 bit integer.
+	VARIANT_CLASS_INT16 VariantClass = 110
+	// The #GVariant is an unsigned 16 bit integer.
+	VARIANT_CLASS_UINT16 VariantClass = 113
+	// The #GVariant is a signed 32 bit integer.
+	VARIANT_CLASS_INT32 VariantClass = 105
+	// The #GVariant is an unsigned 32 bit integer.
+	VARIANT_CLASS_UINT32 VariantClass = 117
+	// The #GVariant is a signed 64 bit integer.
+	VARIANT_CLASS_INT64 VariantClass = 120
+	// The #GVariant is an unsigned 64 bit integer.
+	VARIANT_CLASS_UINT64 VariantClass = 116
+	// The #GVariant is a file handle index.
+	VARIANT_CLASS_HANDLE VariantClass = 104
+	/*
+	   The #GVariant is a double precision floating
+	                            point value.
+	*/
+	VARIANT_CLASS_DOUBLE VariantClass = 100
+	// The #GVariant is a normal string.
+	VARIANT_CLASS_STRING VariantClass = 115
+	/*
+	   The #GVariant is a D-Bus object path
+	                                 string.
+	*/
 	VARIANT_CLASS_OBJECT_PATH VariantClass = 111
-	VARIANT_CLASS_SIGNATURE   VariantClass = 103
-	VARIANT_CLASS_VARIANT     VariantClass = 118
-	VARIANT_CLASS_MAYBE       VariantClass = 109
-	VARIANT_CLASS_ARRAY       VariantClass = 97
-	VARIANT_CLASS_TUPLE       VariantClass = 40
-	VARIANT_CLASS_DICT_ENTRY  VariantClass = 123
+	// The #GVariant is a D-Bus signature string.
+	VARIANT_CLASS_SIGNATURE VariantClass = 103
+	// The #GVariant is a variant.
+	VARIANT_CLASS_VARIANT VariantClass = 118
+	// The #GVariant is a maybe-typed value.
+	VARIANT_CLASS_MAYBE VariantClass = 109
+	// The #GVariant is an array.
+	VARIANT_CLASS_ARRAY VariantClass = 97
+	// The #GVariant is a tuple.
+	VARIANT_CLASS_TUPLE VariantClass = 40
+	// The #GVariant is a dictionary entry.
+	VARIANT_CLASS_DICT_ENTRY VariantClass = 123
 )

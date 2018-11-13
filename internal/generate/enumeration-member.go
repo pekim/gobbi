@@ -37,6 +37,7 @@ func (m *Member) generate(g *jen.Group, namePrefix string, goTypeName string) {
 	}
 
 	// declare a member constant
+	generateDoc(m.Doc, g)
 	g.
 		Id(name).
 		Id(goTypeName).

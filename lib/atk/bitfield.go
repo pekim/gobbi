@@ -7,8 +7,10 @@ package atk
 // #include <stdlib.h>
 import "C"
 
+// Describes the type of link
 type HyperlinkStateFlags C.AtkHyperlinkStateFlags
 
 const (
+	// Link is inline
 	ATK_HYPERLINK_IS_INLINE HyperlinkStateFlags = 1
 )

@@ -8,10 +8,14 @@ package gdk
 // #include <stdlib.h>
 import "C"
 
+// Used in #GdkDragContext to the reason of a cancelled DND operation.
 type DragCancelReason C.GdkDragCancelReason
 
 const (
-	GDK_DRAG_CANCEL_NO_TARGET      DragCancelReason = 0
+	// There is no suitable drop target.
+	GDK_DRAG_CANCEL_NO_TARGET DragCancelReason = 0
+	// Drag cancelled by the user
 	GDK_DRAG_CANCEL_USER_CANCELLED DragCancelReason = 1
-	GDK_DRAG_CANCEL_ERROR          DragCancelReason = 2
+	// Unspecified error.
+	GDK_DRAG_CANCEL_ERROR DragCancelReason = 2
 )

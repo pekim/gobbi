@@ -10,10 +10,21 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
+/*
+Whenever a container has some form of natural row it may align
+children in that row along a common typographical baseline. If
+the amount of verical space in the row is taller than the total
+requested height of the baseline-aligned children then it can use a
+#GtkBaselinePosition to select where to put the baseline inside the
+extra availible space.
+*/
 type BaselinePosition C.GtkBaselinePosition
 
 const (
-	GTK_BASELINE_POSITION_TOP    BaselinePosition = 0
+	// Align the baseline at the top
+	GTK_BASELINE_POSITION_TOP BaselinePosition = 0
+	// Center the baseline
 	GTK_BASELINE_POSITION_CENTER BaselinePosition = 1
+	// Align the baseline at the bottom
 	GTK_BASELINE_POSITION_BOTTOM BaselinePosition = 2
 )

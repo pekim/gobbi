@@ -63,6 +63,7 @@ func (e *Enumeration) generate(g *jen.Group, version *Version) {
 	}
 
 	// define the type
+	generateDoc(e.Doc, g)
 	g.
 		Type().
 		Id(e.goTypeName).
