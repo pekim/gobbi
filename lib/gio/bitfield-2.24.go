@@ -24,8 +24,10 @@ type ConverterFlags C.GConverterFlags
 const (
 	// No flags.
 	CONVERTER_NO_FLAGS ConverterFlags = 0
+
 	// At end of input data
 	CONVERTER_INPUT_AT_END ConverterFlags = 1
+
 	// Flush data
 	CONVERTER_FLUSH ConverterFlags = 2
 )

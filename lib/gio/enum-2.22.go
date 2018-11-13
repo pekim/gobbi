@@ -25,17 +25,21 @@ const (
 	// Unknown or drive doesn't support
 	// start/stop.
 	DRIVE_START_STOP_TYPE_UNKNOWN DriveStartStopType = 0
+
 	// The stop method will physically
 	// shut down the drive and e.g. power down the port the drive is
 	// attached to.
 	DRIVE_START_STOP_TYPE_SHUTDOWN DriveStartStopType = 1
+
 	// The start/stop methods are used
 	// for connecting/disconnect to the drive over the network.
 	DRIVE_START_STOP_TYPE_NETWORK DriveStartStopType = 2
+
 	// The start/stop methods will
 	// assemble/disassemble a virtual drive from several physical
 	// drives.
 	DRIVE_START_STOP_TYPE_MULTIDISK DriveStartStopType = 3
+
 	// The start/stop methods will
 	// unlock/lock the disk (for example using the ATA <quote>SECURITY
 	// UNLOCK DEVICE</quote> command)
@@ -50,9 +54,11 @@ const (
 	// the requested name/address/service was not
 	// found
 	RESOLVER_ERROR_NOT_FOUND ResolverError = 0
+
 	// the requested information could not
 	// be looked up due to a network error or similar problem
 	RESOLVER_ERROR_TEMPORARY_FAILURE ResolverError = 1
+
 	// unknown error
 	RESOLVER_ERROR_INTERNAL ResolverError = 2
 )
@@ -65,10 +71,13 @@ type SocketFamily C.GSocketFamily
 const (
 	// no address family
 	SOCKET_FAMILY_INVALID SocketFamily = 0
+
 	// the UNIX domain family
 	SOCKET_FAMILY_UNIX SocketFamily = 1
+
 	// the IPv4 family
 	SOCKET_FAMILY_IPV4 SocketFamily = 2
+
 	// the IPv6 family
 	SOCKET_FAMILY_IPV6 SocketFamily = 10
 )
@@ -85,12 +94,16 @@ type SocketProtocol C.GSocketProtocol
 const (
 	// The protocol type is unknown
 	SOCKET_PROTOCOL_UNKNOWN SocketProtocol = -1
+
 	// The default protocol for the family/type
 	SOCKET_PROTOCOL_DEFAULT SocketProtocol = 0
+
 	// TCP over IP
 	SOCKET_PROTOCOL_TCP SocketProtocol = 6
+
 	// UDP over IP
 	SOCKET_PROTOCOL_UDP SocketProtocol = 17
+
 	// SCTP over IP
 	SOCKET_PROTOCOL_SCTP SocketProtocol = 132
 )
@@ -102,11 +115,14 @@ type SocketType C.GSocketType
 const (
 	// Type unknown or wrong
 	SOCKET_TYPE_INVALID SocketType = 0
+
 	// Reliable connection-based byte streams (e.g. TCP).
 	SOCKET_TYPE_STREAM SocketType = 1
+
 	// Connectionless, unreliable datagram passing.
 	// (e.g. UDP)
 	SOCKET_TYPE_DATAGRAM SocketType = 2
+
 	// Reliable connection-based passing of datagrams
 	// of fixed maximum length (e.g. SCTP).
 	SOCKET_TYPE_SEQPACKET SocketType = 3

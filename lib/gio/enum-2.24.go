@@ -24,10 +24,13 @@ type ConverterResult C.GConverterResult
 const (
 	// There was an error during conversion.
 	CONVERTER_ERROR ConverterResult = 0
+
 	// Some data was consumed or produced
 	CONVERTER_CONVERTED ConverterResult = 1
+
 	// The conversion is finished
 	CONVERTER_FINISHED ConverterResult = 2
+
 	// Flushing is finished
 	CONVERTER_FLUSHED ConverterResult = 3
 )
@@ -39,8 +42,10 @@ type ZlibCompressorFormat C.GZlibCompressorFormat
 const (
 	// deflate compression with zlib header
 	ZLIB_COMPRESSOR_FORMAT_ZLIB ZlibCompressorFormat = 0
+
 	// gzip file format
 	ZLIB_COMPRESSOR_FORMAT_GZIP ZlibCompressorFormat = 1
+
 	// deflate compression with no header
 	ZLIB_COMPRESSOR_FORMAT_RAW ZlibCompressorFormat = 2
 )

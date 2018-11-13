@@ -17,11 +17,14 @@ const (
 	// Inhibit ending the user session
 	// by logging out or by shutting down the computer
 	GTK_APPLICATION_INHIBIT_LOGOUT ApplicationInhibitFlags = 1
+
 	// Inhibit user switching
 	GTK_APPLICATION_INHIBIT_SWITCH ApplicationInhibitFlags = 2
+
 	// Inhibit suspending the
 	// session or computer
 	GTK_APPLICATION_INHIBIT_SUSPEND ApplicationInhibitFlags = 4
+
 	// Inhibit the session being
 	// marked as idle (and possibly locked)
 	GTK_APPLICATION_INHIBIT_IDLE ApplicationInhibitFlags = 8

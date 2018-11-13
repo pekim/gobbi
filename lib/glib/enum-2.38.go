@@ -31,6 +31,7 @@ type TestFileType C.GTestFileType
 const (
 	// a file that was included in the distribution tarball
 	TEST_DIST TestFileType = 0
+
 	// a file that was built on the compiling machine
 	TEST_BUILT TestFileType = 1
 )

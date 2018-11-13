@@ -20,12 +20,16 @@ type ChecksumType C.GChecksumType
 const (
 	// Use the MD5 hashing algorithm
 	CHECKSUM_MD5 ChecksumType = 0
+
 	// Use the SHA-1 hashing algorithm
 	CHECKSUM_SHA1 ChecksumType = 1
+
 	// Use the SHA-256 hashing algorithm
 	CHECKSUM_SHA256 ChecksumType = 2
+
 	// Use the SHA-512 hashing algorithm (Since: 2.36)
 	CHECKSUM_SHA512 ChecksumType = 3
+
 	// Use the SHA-384 hashing algorithm (Since: 2.51)
 	CHECKSUM_SHA384 ChecksumType = 4
 )

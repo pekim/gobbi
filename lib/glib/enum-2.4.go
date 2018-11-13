@@ -17,8 +17,10 @@ type OnceStatus C.GOnceStatus
 const (
 	// the function has not been called yet.
 	ONCE_STATUS_NOTCALLED OnceStatus = 0
+
 	// the function call is currently in progress.
 	ONCE_STATUS_PROGRESS OnceStatus = 1
+
 	// the function has been called.
 	ONCE_STATUS_READY OnceStatus = 2
 )

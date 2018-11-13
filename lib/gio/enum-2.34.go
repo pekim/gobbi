@@ -47,12 +47,16 @@ type ResolverRecordType C.GResolverRecordType
 const (
 	// lookup DNS SRV records for a domain
 	RESOLVER_RECORD_SRV ResolverRecordType = 1
+
 	// lookup DNS MX records for a domain
 	RESOLVER_RECORD_MX ResolverRecordType = 2
+
 	// lookup DNS TXT records for a name
 	RESOLVER_RECORD_TXT ResolverRecordType = 3
+
 	// lookup DNS SOA records for a zone
 	RESOLVER_RECORD_SOA ResolverRecordType = 4
+
 	// lookup DNS NS records for a domain
 	RESOLVER_RECORD_NS ResolverRecordType = 5
 )

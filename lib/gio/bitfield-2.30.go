@@ -24,6 +24,7 @@ type DBusInterfaceSkeletonFlags C.GDBusInterfaceSkeletonFlags
 const (
 	// No flags set.
 	DBUS_INTERFACE_SKELETON_FLAGS_NONE DBusInterfaceSkeletonFlags = 0
+
 	// Each method invocation is handled in
 	// a thread dedicated to the invocation. This means that the method implementation can use blocking IO
 	// without blocking any other part of the process. It also means that the method implementation must
@@ -37,6 +38,7 @@ type DBusObjectManagerClientFlags C.GDBusObjectManagerClientFlags
 const (
 	// No flags set.
 	DBUS_OBJECT_MANAGER_CLIENT_FLAGS_NONE DBusObjectManagerClientFlags = 0
+
 	// If not set and the
 	// manager is for a well-known name, then request the bus to launch
 	// an owner for the name if no-one owns the name. This flag can only
@@ -58,11 +60,14 @@ type TlsPasswordFlags C.GTlsPasswordFlags
 const (
 	// No flags
 	TLS_PASSWORD_NONE TlsPasswordFlags = 0
+
 	// The password was wrong, and the user should retry.
 	TLS_PASSWORD_RETRY TlsPasswordFlags = 2
+
 	// Hint to the user that the password has been
 	// wrong many times, and the user may not have many chances left.
 	TLS_PASSWORD_MANY_TRIES TlsPasswordFlags = 4
+
 	// Hint to the user that this is the last try to get
 	// this password right.
 	TLS_PASSWORD_FINAL_TRY TlsPasswordFlags = 8

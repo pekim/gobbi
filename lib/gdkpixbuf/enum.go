@@ -33,18 +33,21 @@ const (
 	// and lowest quality mode. Quality is normally unacceptable when scaling
 	// down, but may be OK when scaling up.
 	GDK_INTERP_NEAREST InterpType = 0
+
 	// This is an accurate simulation of the PostScript
 	// image operator without any interpolation enabled.  Each pixel is
 	// rendered as a tiny parallelogram of solid color, the edges of which
 	// are implemented with antialiasing.  It resembles nearest neighbor for
 	// enlargement, and bilinear for reduction.
 	GDK_INTERP_TILES InterpType = 1
+
 	// Best quality/speed balance; use this mode by
 	// default. Bilinear interpolation.  For enlargement, it is
 	// equivalent to point-sampling the ideal bilinear-interpolated image.
 	// For reduction, it is equivalent to laying down small tiles and
 	// integrating over the coverage area.
 	GDK_INTERP_BILINEAR InterpType = 2
+
 	// This is the slowest and highest quality
 	// reconstruction function. It is derived from the hyperbolic filters in
 	// Wolberg's "Digital Image Warping", and is formally defined as the
@@ -69,6 +72,7 @@ const (
 	// will be considered fully transparent, and all others will be
 	// considered fully opaque.
 	GDK_PIXBUF_ALPHA_BILEVEL PixbufAlphaMode = 0
+
 	// For now falls back to #GDK_PIXBUF_ALPHA_BILEVEL.
 	// In the future it will do full alpha compositing.
 	GDK_PIXBUF_ALPHA_FULL PixbufAlphaMode = 1
@@ -82,17 +86,23 @@ type PixbufError C.GdkPixbufError
 const (
 	// An image file was broken somehow.
 	GDK_PIXBUF_ERROR_CORRUPT_IMAGE PixbufError = 0
+
 	// Not enough memory.
 	GDK_PIXBUF_ERROR_INSUFFICIENT_MEMORY PixbufError = 1
+
 	// A bad option was passed to a pixbuf save module.
 	GDK_PIXBUF_ERROR_BAD_OPTION PixbufError = 2
+
 	// Unknown image type.
 	GDK_PIXBUF_ERROR_UNKNOWN_TYPE PixbufError = 3
+
 	// Don't know how to perform the
 	// given operation on the type of image at hand.
 	GDK_PIXBUF_ERROR_UNSUPPORTED_OPERATION PixbufError = 4
+
 	// Generic failure code, something went wrong.
 	GDK_PIXBUF_ERROR_FAILED PixbufError = 5
+
 	// Only part of the animation was loaded.
 	GDK_PIXBUF_ERROR_INCOMPLETE_ANIMATION PixbufError = 6
 )
@@ -104,10 +114,13 @@ type PixbufRotation C.GdkPixbufRotation
 const (
 	// No rotation.
 	GDK_PIXBUF_ROTATE_NONE PixbufRotation = 0
+
 	// Rotate by 90 degrees.
 	GDK_PIXBUF_ROTATE_COUNTERCLOCKWISE PixbufRotation = 90
+
 	// Rotate by 180 degrees.
 	GDK_PIXBUF_ROTATE_UPSIDEDOWN PixbufRotation = 180
+
 	// Rotate by 270 degrees.
 	GDK_PIXBUF_ROTATE_CLOCKWISE PixbufRotation = 270
 )

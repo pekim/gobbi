@@ -36,11 +36,14 @@ type SocketMsgFlags C.GSocketMsgFlags
 const (
 	// No flags.
 	SOCKET_MSG_NONE SocketMsgFlags = 0
+
 	// Request to send/receive out of band data.
 	SOCKET_MSG_OOB SocketMsgFlags = 1
+
 	// Read data from the socket without removing it from
 	// the queue.
 	SOCKET_MSG_PEEK SocketMsgFlags = 2
+
 	// Don't use a gateway to send out the packet,
 	// only send to hosts on directly connected networks.
 	SOCKET_MSG_DONTROUTE SocketMsgFlags = 4

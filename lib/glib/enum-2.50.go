@@ -21,6 +21,7 @@ type LogWriterOutput C.GLogWriterOutput
 const (
 	// Log writer has handled the log entry.
 	LOG_WRITER_HANDLED LogWriterOutput = 1
+
 	// Log writer could not handle the log entry.
 	LOG_WRITER_UNHANDLED LogWriterOutput = 0
 )

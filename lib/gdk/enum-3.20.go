@@ -14,8 +14,10 @@ type DragCancelReason C.GdkDragCancelReason
 const (
 	// There is no suitable drop target.
 	GDK_DRAG_CANCEL_NO_TARGET DragCancelReason = 0
+
 	// Drag cancelled by the user
 	GDK_DRAG_CANCEL_USER_CANCELLED DragCancelReason = 1
+
 	// Unspecified error.
 	GDK_DRAG_CANCEL_ERROR DragCancelReason = 2
 )

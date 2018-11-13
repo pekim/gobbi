@@ -18,6 +18,7 @@ const (
 	// Selects the current word. It is triggered by
 	// a double-click for example.
 	GTK_TEXT_EXTEND_SELECTION_WORD TextExtendSelection = 0
+
 	// Selects the current line. It is triggered by
 	// a triple-click for example.
 	GTK_TEXT_EXTEND_SELECTION_LINE TextExtendSelection = 1

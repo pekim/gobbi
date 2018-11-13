@@ -26,13 +26,16 @@ const (
 	// route to the Internet; it may or may not be connected to a local
 	// network.
 	NETWORK_CONNECTIVITY_LOCAL NetworkConnectivity = 1
+
 	// The host is connected to a network, but
 	// does not appear to be able to reach the full Internet, perhaps
 	// due to upstream network problems.
 	NETWORK_CONNECTIVITY_LIMITED NetworkConnectivity = 2
+
 	// The host is behind a captive portal and
 	// cannot reach the full Internet.
 	NETWORK_CONNECTIVITY_PORTAL NetworkConnectivity = 3
+
 	// The host is connected to a network, and
 	// appears to be able to reach the full Internet.
 	NETWORK_CONNECTIVITY_FULL NetworkConnectivity = 4

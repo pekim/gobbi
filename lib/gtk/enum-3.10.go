@@ -21,8 +21,10 @@ type BaselinePosition C.GtkBaselinePosition
 const (
 	// Align the baseline at the top
 	GTK_BASELINE_POSITION_TOP BaselinePosition = 0
+
 	// Center the baseline
 	GTK_BASELINE_POSITION_CENTER BaselinePosition = 1
+
 	// Align the baseline at the bottom
 	GTK_BASELINE_POSITION_BOTTOM BaselinePosition = 2
 )

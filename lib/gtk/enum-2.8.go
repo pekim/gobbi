@@ -21,9 +21,11 @@ const (
 	// The file chooser will present
 	// its stock dialog to confirm about overwriting an existing file.
 	GTK_FILE_CHOOSER_CONFIRMATION_CONFIRM FileChooserConfirmation = 0
+
 	// The file chooser will
 	// terminate and accept the user’s choice of a file name.
 	GTK_FILE_CHOOSER_CONFIRMATION_ACCEPT_FILENAME FileChooserConfirmation = 1
+
 	// The file chooser will
 	// continue running, so as to let the user select another file name.
 	GTK_FILE_CHOOSER_CONFIRMATION_SELECT_AGAIN FileChooserConfirmation = 2

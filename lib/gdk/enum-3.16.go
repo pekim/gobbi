@@ -14,8 +14,10 @@ type GLError C.GdkGLError
 const (
 	// OpenGL support is not available
 	GDK_GL_ERROR_NOT_AVAILABLE GLError = 0
+
 	// The requested visual format is not supported
 	GDK_GL_ERROR_UNSUPPORTED_FORMAT GLError = 1
+
 	// The requested profile is not supported
 	GDK_GL_ERROR_UNSUPPORTED_PROFILE GLError = 2
 )

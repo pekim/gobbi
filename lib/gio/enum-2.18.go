@@ -25,10 +25,13 @@ type EmblemOrigin C.GEmblemOrigin
 const (
 	// Emblem of unknown origin
 	EMBLEM_ORIGIN_UNKNOWN EmblemOrigin = 0
+
 	// Emblem adds device-specific information
 	EMBLEM_ORIGIN_DEVICE EmblemOrigin = 1
+
 	// Emblem depicts live metadata, such as "readonly"
 	EMBLEM_ORIGIN_LIVEMETADATA EmblemOrigin = 2
+
 	// Emblem comes from a user-defined tag, e.g. set by nautilus (in the future)
 	EMBLEM_ORIGIN_TAG EmblemOrigin = 3
 )

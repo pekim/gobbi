@@ -27,11 +27,14 @@ type SocketListenerEvent C.GSocketListenerEvent
 const (
 	// The listener is about to bind a socket.
 	SOCKET_LISTENER_BINDING SocketListenerEvent = 0
+
 	// The listener has bound a socket.
 	SOCKET_LISTENER_BOUND SocketListenerEvent = 1
+
 	// The listener is about to start
 	// listening on this socket.
 	SOCKET_LISTENER_LISTENING SocketListenerEvent = 2
+
 	// The listener is now listening on
 	// this socket.
 	SOCKET_LISTENER_LISTENED SocketListenerEvent = 3

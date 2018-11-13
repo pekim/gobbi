@@ -24,6 +24,7 @@ type IOModuleScopeFlags C.GIOModuleScopeFlags
 const (
 	// No module scan flags
 	IO_MODULE_SCOPE_NONE IOModuleScopeFlags = 0
+
 	// When using this scope to load or
 	// scan modules, automatically block a modules which has the same base
 	// basename as previously loaded module.
@@ -38,6 +39,7 @@ type TlsDatabaseLookupFlags C.GTlsDatabaseLookupFlags
 const (
 	// No lookup flags
 	TLS_DATABASE_LOOKUP_NONE TlsDatabaseLookupFlags = 0
+
 	// Restrict lookup to certificates that have
 	// a private key.
 	TLS_DATABASE_LOOKUP_KEYPAIR TlsDatabaseLookupFlags = 1
@@ -51,9 +53,11 @@ const (
 	// The interaction was unhandled (i.e. not
 	// implemented).
 	TLS_INTERACTION_UNHANDLED TlsInteractionResult = 0
+
 	// The interaction completed, and resulting data
 	// is available.
 	TLS_INTERACTION_HANDLED TlsInteractionResult = 1
+
 	// The interaction has failed, or was cancelled.
 	// and the operation should be aborted.
 	TLS_INTERACTION_FAILED TlsInteractionResult = 2

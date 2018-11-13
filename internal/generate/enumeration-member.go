@@ -43,4 +43,5 @@ func (m *Member) generate(g *jen.Group, namePrefix string, goTypeName string) {
 		Id(goTypeName).
 		Op("=").
 		Lit(m.Value)
+	g.Line()
 }

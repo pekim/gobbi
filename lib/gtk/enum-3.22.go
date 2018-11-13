@@ -16,8 +16,10 @@ type PadActionType C.GtkPadActionType
 const (
 	// Action is triggered by a pad button
 	GTK_PAD_ACTION_BUTTON PadActionType = 0
+
 	// Action is triggered by a pad ring
 	GTK_PAD_ACTION_RING PadActionType = 1
+
 	// Action is triggered by a pad strip
 	GTK_PAD_ACTION_STRIP PadActionType = 2
 )

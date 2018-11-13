@@ -33,22 +33,31 @@ type InputPurpose C.GtkInputPurpose
 const (
 	// Allow any character
 	GTK_INPUT_PURPOSE_FREE_FORM InputPurpose = 0
+
 	// Allow only alphabetic characters
 	GTK_INPUT_PURPOSE_ALPHA InputPurpose = 1
+
 	// Allow only digits
 	GTK_INPUT_PURPOSE_DIGITS InputPurpose = 2
+
 	// Edited field expects numbers
 	GTK_INPUT_PURPOSE_NUMBER InputPurpose = 3
+
 	// Edited field expects phone number
 	GTK_INPUT_PURPOSE_PHONE InputPurpose = 4
+
 	// Edited field expects URL
 	GTK_INPUT_PURPOSE_URL InputPurpose = 5
+
 	// Edited field expects email address
 	GTK_INPUT_PURPOSE_EMAIL InputPurpose = 6
+
 	// Edited field expects the name of a person
 	GTK_INPUT_PURPOSE_NAME InputPurpose = 7
+
 	// Like @GTK_INPUT_PURPOSE_FREE_FORM, but characters are hidden
 	GTK_INPUT_PURPOSE_PASSWORD InputPurpose = 8
+
 	// Like @GTK_INPUT_PURPOSE_DIGITS, but characters are hidden
 	GTK_INPUT_PURPOSE_PIN InputPurpose = 9
 )
@@ -61,6 +70,7 @@ type LevelBarMode C.GtkLevelBarMode
 const (
 	// the bar has a continuous mode
 	GTK_LEVEL_BAR_MODE_CONTINUOUS LevelBarMode = 0
+
 	// the bar has a discrete mode
 	GTK_LEVEL_BAR_MODE_DISCRETE LevelBarMode = 1
 )

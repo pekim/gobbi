@@ -18,33 +18,47 @@ type License C.GtkLicense
 const (
 	// No license specified
 	GTK_LICENSE_UNKNOWN License = 0
+
 	// A license text is going to be specified by the
 	// developer
 	GTK_LICENSE_CUSTOM License = 1
+
 	// The GNU General Public License, version 2.0 or later
 	GTK_LICENSE_GPL_2_0 License = 2
+
 	// The GNU General Public License, version 3.0 or later
 	GTK_LICENSE_GPL_3_0 License = 3
+
 	// The GNU Lesser General Public License, version 2.1 or later
 	GTK_LICENSE_LGPL_2_1 License = 4
+
 	// The GNU Lesser General Public License, version 3.0 or later
 	GTK_LICENSE_LGPL_3_0 License = 5
+
 	// The BSD standard license
 	GTK_LICENSE_BSD License = 6
+
 	// The MIT/X11 standard license
 	GTK_LICENSE_MIT_X11 License = 7
+
 	// The Artistic License, version 2.0
 	GTK_LICENSE_ARTISTIC License = 8
+
 	// The GNU General Public License, version 2.0 only. Since 3.12.
 	GTK_LICENSE_GPL_2_0_ONLY License = 9
+
 	// The GNU General Public License, version 3.0 only. Since 3.12.
 	GTK_LICENSE_GPL_3_0_ONLY License = 10
+
 	// The GNU Lesser General Public License, version 2.1 only. Since 3.12.
 	GTK_LICENSE_LGPL_2_1_ONLY License = 11
+
 	// The GNU Lesser General Public License, version 3.0 only. Since 3.12.
 	GTK_LICENSE_LGPL_3_0_ONLY License = 12
+
 	// The GNU Affero General Public License, version 3.0 or later. Since: 3.22.
 	GTK_LICENSE_AGPL_3_0 License = 13
+
 	// The GNU Affero General Public License, version 3.0 only. Since: 3.22.27.
 	GTK_LICENSE_AGPL_3_0_ONLY License = 14
 )

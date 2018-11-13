@@ -25,6 +25,7 @@ type ResourceFlags C.GResourceFlags
 const (
 	// No flags set.
 	RESOURCE_FLAGS_NONE ResourceFlags = 0
+
 	// The file is compressed.
 	RESOURCE_FLAGS_COMPRESSED ResourceFlags = 1
 )

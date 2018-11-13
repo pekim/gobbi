@@ -15,10 +15,13 @@ type RenderPart C.PangoRenderPart
 const (
 	// the text itself
 	PANGO_RENDER_PART_FOREGROUND RenderPart = 0
+
 	// the area behind the text
 	PANGO_RENDER_PART_BACKGROUND RenderPart = 1
+
 	// underlines
 	PANGO_RENDER_PART_UNDERLINE RenderPart = 2
+
 	// strikethrough lines
 	PANGO_RENDER_PART_STRIKETHROUGH RenderPart = 3
 )

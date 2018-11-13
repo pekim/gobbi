@@ -32,31 +32,39 @@ type SubprocessFlags C.GSubprocessFlags
 const (
 	// No flags.
 	SUBPROCESS_FLAGS_NONE SubprocessFlags = 0
+
 	// create a pipe for the stdin of the
 	// spawned process that can be accessed with
 	// g_subprocess_get_stdin_pipe().
 	SUBPROCESS_FLAGS_STDIN_PIPE SubprocessFlags = 1
+
 	// stdin is inherited from the
 	// calling process.
 	SUBPROCESS_FLAGS_STDIN_INHERIT SubprocessFlags = 2
+
 	// create a pipe for the stdout of the
 	// spawned process that can be accessed with
 	// g_subprocess_get_stdout_pipe().
 	SUBPROCESS_FLAGS_STDOUT_PIPE SubprocessFlags = 4
+
 	// silence the stdout of the spawned
 	// process (ie: redirect to `/dev/null`).
 	SUBPROCESS_FLAGS_STDOUT_SILENCE SubprocessFlags = 8
+
 	// create a pipe for the stderr of the
 	// spawned process that can be accessed with
 	// g_subprocess_get_stderr_pipe().
 	SUBPROCESS_FLAGS_STDERR_PIPE SubprocessFlags = 16
+
 	// silence the stderr of the spawned
 	// process (ie: redirect to `/dev/null`).
 	SUBPROCESS_FLAGS_STDERR_SILENCE SubprocessFlags = 32
+
 	// merge the stderr of the spawned
 	// process with whatever the stdout happens to be.  This is a good way
 	// of directing both streams to a common log file, for example.
 	SUBPROCESS_FLAGS_STDERR_MERGE SubprocessFlags = 64
+
 	// spawned processes will inherit the
 	// file descriptors of their parent, unless those descriptors have
 	// been explicitly marked as close-on-exec.  This flag has no effect

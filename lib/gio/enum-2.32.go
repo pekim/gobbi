@@ -25,6 +25,7 @@ type ResourceError C.GResourceError
 const (
 	// no file was found at the requested path
 	RESOURCE_ERROR_NOT_FOUND ResourceError = 0
+
 	// unknown error
 	RESOURCE_ERROR_INTERNAL ResourceError = 1
 )
@@ -38,26 +39,34 @@ type SocketClientEvent C.GSocketClientEvent
 const (
 	// The client is doing a DNS lookup.
 	SOCKET_CLIENT_RESOLVING SocketClientEvent = 0
+
 	// The client has completed a DNS lookup.
 	SOCKET_CLIENT_RESOLVED SocketClientEvent = 1
+
 	// The client is connecting to a remote
 	// host (either a proxy or the destination server).
 	SOCKET_CLIENT_CONNECTING SocketClientEvent = 2
+
 	// The client has connected to a remote
 	// host.
 	SOCKET_CLIENT_CONNECTED SocketClientEvent = 3
+
 	// The client is negotiating
 	// with a proxy to connect to the destination server.
 	SOCKET_CLIENT_PROXY_NEGOTIATING SocketClientEvent = 4
+
 	// The client has negotiated
 	// with the proxy server.
 	SOCKET_CLIENT_PROXY_NEGOTIATED SocketClientEvent = 5
+
 	// The client is performing a
 	// TLS handshake.
 	SOCKET_CLIENT_TLS_HANDSHAKING SocketClientEvent = 6
+
 	// The client has performed a
 	// TLS handshake.
 	SOCKET_CLIENT_TLS_HANDSHAKED SocketClientEvent = 7
+
 	// The client is done with a particular
 	// #GSocketConnectable.
 	SOCKET_CLIENT_COMPLETE SocketClientEvent = 8
