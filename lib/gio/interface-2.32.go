@@ -114,7 +114,16 @@ func (recv *Mount) GetSortKey() string {
 	return retGo
 }
 
-// NetworkMonitor is a wrapper around the C record GNetworkMonitor.
+// #GNetworkMonitor provides an easy-to-use cross-platform API
+// for monitoring network connectivity. On Linux, the available
+// implementations are based on the kernel's netlink interface and
+// on NetworkManager.
+//
+// There is also an implementation for use inside Flatpak sandboxes.
+/*
+
+C record/class : GNetworkMonitor
+*/
 type NetworkMonitor struct {
 	native *C.GNetworkMonitor
 }

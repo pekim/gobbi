@@ -17,7 +17,13 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// CssSection is a wrapper around the C record GtkCssSection.
+// Defines a part of a CSS document. Because sections are nested into
+// one another, you can use gtk_css_section_get_parent() to get the
+// containing region.
+/*
+
+C record/class : GtkCssSection
+*/
 type CssSection struct {
 	native *C.GtkCssSection
 }

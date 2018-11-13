@@ -12,7 +12,12 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// Analysis is a wrapper around the C record PangoAnalysis.
+// The #PangoAnalysis structure stores information about
+// the properties of a segment of text.
+/*
+
+C record/class : PangoAnalysis
+*/
 type Analysis struct {
 	native *C.PangoAnalysis
 	// shape_engine : record
@@ -56,7 +61,14 @@ func (recv *Analysis) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// AttrClass is a wrapper around the C record PangoAttrClass.
+// The #PangoAttrClass structure stores the type and operations for
+// a particular type of attribute. The functions in this structure should
+// not be called directly. Instead, one should use the wrapper functions
+// provided for #PangoAttribute.
+/*
+
+C record/class : PangoAttrClass
+*/
 type AttrClass struct {
 	native *C.PangoAttrClass
 	Type   AttrType
@@ -86,7 +98,12 @@ func (recv *AttrClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// AttrColor is a wrapper around the C record PangoAttrColor.
+// The #PangoAttrColor structure is used to represent attributes that
+// are colors.
+/*
+
+C record/class : PangoAttrColor
+*/
 type AttrColor struct {
 	native *C.PangoAttrColor
 	// attr : record
@@ -109,7 +126,12 @@ func (recv *AttrColor) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// AttrFloat is a wrapper around the C record PangoAttrFloat.
+// The #PangoAttrFloat structure is used to represent attributes with
+// a float or double value.
+/*
+
+C record/class : PangoAttrFloat
+*/
 type AttrFloat struct {
 	native *C.PangoAttrFloat
 	// attr : record
@@ -137,7 +159,12 @@ func (recv *AttrFloat) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// AttrFontDesc is a wrapper around the C record PangoAttrFontDesc.
+// The #PangoAttrFontDesc structure is used to store an attribute that
+// sets all aspects of the font description at once.
+/*
+
+C record/class : PangoAttrFontDesc
+*/
 type AttrFontDesc struct {
 	native *C.PangoAttrFontDesc
 	// attr : record
@@ -160,7 +187,12 @@ func (recv *AttrFontDesc) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// AttrInt is a wrapper around the C record PangoAttrInt.
+// The #PangoAttrInt structure is used to represent attributes with
+// an integer or enumeration value.
+/*
+
+C record/class : PangoAttrInt
+*/
 type AttrInt struct {
 	native *C.PangoAttrInt
 	// attr : record
@@ -188,7 +220,17 @@ func (recv *AttrInt) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// AttrIterator is a wrapper around the C record PangoAttrIterator.
+// The #PangoAttrIterator structure is used to represent an
+// iterator through a #PangoAttrList. A new iterator is created
+// with pango_attr_list_get_iterator(). Once the iterator
+// is created, it can be advanced through the style changes
+// in the text using pango_attr_iterator_next(). At each
+// style change, the range of the current style segment and the
+// attributes currently in effect can be queried.
+/*
+
+C record/class : PangoAttrIterator
+*/
 type AttrIterator struct {
 	native *C.PangoAttrIterator
 }
@@ -315,7 +357,12 @@ func (recv *AttrIterator) Range() (int32, int32) {
 	return start, end
 }
 
-// AttrLanguage is a wrapper around the C record PangoAttrLanguage.
+// The #PangoAttrLanguage structure is used to represent attributes that
+// are languages.
+/*
+
+C record/class : PangoAttrLanguage
+*/
 type AttrLanguage struct {
 	native *C.PangoAttrLanguage
 	// attr : record
@@ -338,7 +385,20 @@ func (recv *AttrLanguage) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// AttrList is a wrapper around the C record PangoAttrList.
+// The #PangoAttrList structure represents a list of attributes
+// that apply to a section of text. The attributes are, in general,
+// allowed to overlap in an arbitrary fashion, however, if the
+// attributes are manipulated only through pango_attr_list_change(),
+// the overlap between properties will meet stricter criteria.
+//
+// Since the #PangoAttrList structure is stored as a linear list,
+// it is not suitable for storing attributes for large amounts
+// of text. In general, you should not use a single #PangoAttrList
+// for more than one paragraph of text.
+/*
+
+C record/class : PangoAttrList
+*/
 type AttrList struct {
 	native *C.PangoAttrList
 }
@@ -503,7 +563,12 @@ func (recv *AttrList) Unref() {
 	return
 }
 
-// AttrShape is a wrapper around the C record PangoAttrShape.
+// The #PangoAttrShape structure is used to represent attributes which
+// impose shape restrictions.
+/*
+
+C record/class : PangoAttrShape
+*/
 type AttrShape struct {
 	native *C.PangoAttrShape
 	// attr : record
@@ -535,7 +600,12 @@ func (recv *AttrShape) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// AttrSize is a wrapper around the C record PangoAttrSize.
+// The #PangoAttrSize structure is used to represent attributes which
+// set font size.
+/*
+
+C record/class : PangoAttrSize
+*/
 type AttrSize struct {
 	native *C.PangoAttrSize
 	// attr : record
@@ -564,7 +634,12 @@ func (recv *AttrSize) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// AttrString is a wrapper around the C record PangoAttrString.
+// The #PangoAttrString structure is used to represent attributes with
+// a string value.
+/*
+
+C record/class : PangoAttrString
+*/
 type AttrString struct {
 	native *C.PangoAttrString
 	// attr : record
@@ -592,7 +667,16 @@ func (recv *AttrString) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Attribute is a wrapper around the C record PangoAttribute.
+// The #PangoAttribute structure represents the common portions of all
+// attributes. Particular types of attributes include this structure
+// as their initial portion. The common portion of the attribute holds
+// the range to which the value in the type-specific part of the attribute
+// applies and should be initialized using pango_attribute_init().
+// By default an attribute will have an all-inclusive range of [0,%G_MAXUINT].
+/*
+
+C record/class : PangoAttribute
+*/
 type Attribute struct {
 	native *C.PangoAttribute
 	// klass : record
@@ -666,7 +750,12 @@ func (recv *Attribute) Equal(attr2 *Attribute) bool {
 	return retGo
 }
 
-// Color is a wrapper around the C record PangoColor.
+// The #PangoColor structure is used to
+// represent a color in an uncalibrated RGB color-space.
+/*
+
+C record/class : PangoColor
+*/
 type Color struct {
 	native *C.PangoColor
 	Red    uint16
@@ -754,7 +843,10 @@ func (recv *Color) Parse(spec string) bool {
 	return retGo
 }
 
-// ContextClass is a wrapper around the C record PangoContextClass.
+/*
+
+C record/class : PangoContextClass
+*/
 type ContextClass struct {
 	native *C.PangoContextClass
 }
@@ -775,7 +867,12 @@ func (recv *ContextClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Coverage is a wrapper around the C record PangoCoverage.
+// The #PangoCoverage structure represents a map from Unicode characters
+// to #PangoCoverageLevel. It is an opaque structure with no public fields.
+/*
+
+C record/class : PangoCoverage
+*/
 type Coverage struct {
 	native *C.PangoCoverage
 }
@@ -894,7 +991,14 @@ func (recv *Coverage) Unref() {
 
 // Blacklisted : PangoFontClass
 
-// FontDescription is a wrapper around the C record PangoFontDescription.
+// The #PangoFontDescription structure represents the description
+// of an ideal font. These structures are used both to list
+// what fonts are available on the system and also for specifying
+// the characteristics of a font to load.
+/*
+
+C record/class : PangoFontDescription
+*/
 type FontDescription struct {
 	native *C.PangoFontDescription
 }
@@ -1352,7 +1456,12 @@ func (recv *FontDescription) UnsetFields(toUnset FontMask) {
 
 // Blacklisted : PangoFontsetSimpleClass
 
-// GlyphGeometry is a wrapper around the C record PangoGlyphGeometry.
+// The #PangoGlyphGeometry structure contains width and positioning
+// information for a single glyph.
+/*
+
+C record/class : PangoGlyphGeometry
+*/
 type GlyphGeometry struct {
 	native  *C.PangoGlyphGeometry
 	Width   GlyphUnit
@@ -1387,7 +1496,13 @@ func (recv *GlyphGeometry) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// GlyphInfo is a wrapper around the C record PangoGlyphInfo.
+// The #PangoGlyphInfo structure represents a single glyph together with
+// positioning information and visual attributes.
+// It contains the following fields.
+/*
+
+C record/class : PangoGlyphInfo
+*/
 type GlyphInfo struct {
 	native *C.PangoGlyphInfo
 	Glyph  Glyph
@@ -1416,7 +1531,15 @@ func (recv *GlyphInfo) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// GlyphItem is a wrapper around the C record PangoGlyphItem.
+// A #PangoGlyphItem is a pair of a #PangoItem and the glyphs
+// resulting from shaping the text corresponding to an item.
+// As an example of the usage of #PangoGlyphItem, the results
+// of shaping text with #PangoLayout is a list of #PangoLayoutLine,
+// each of which contains a list of #PangoGlyphItem.
+/*
+
+C record/class : PangoGlyphItem
+*/
 type GlyphItem struct {
 	native *C.PangoGlyphItem
 	// item : record
@@ -1441,7 +1564,13 @@ func (recv *GlyphItem) ToC() unsafe.Pointer {
 
 // Blacklisted : PangoGlyphString
 
-// GlyphVisAttr is a wrapper around the C record PangoGlyphVisAttr.
+// The PangoGlyphVisAttr is used to communicate information between
+// the shaping phase and the rendering phase.  More attributes may be
+// added in the future.
+/*
+
+C record/class : PangoGlyphVisAttr
+*/
 type GlyphVisAttr struct {
 	native *C.PangoGlyphVisAttr
 	// Bitfield not supported :  1 is_cluster_start
@@ -1465,7 +1594,11 @@ func (recv *GlyphVisAttr) ToC() unsafe.Pointer {
 
 // Blacklisted : PangoIncludedModule
 
-// Item is a wrapper around the C record PangoItem.
+// The #PangoItem structure stores information about a segment of text.
+/*
+
+C record/class : PangoItem
+*/
 type Item struct {
 	native   *C.PangoItem
 	Offset   int32
@@ -1566,7 +1699,15 @@ func (recv *Item) Split(splitIndex int32, splitOffset int32) *Item {
 	return retGo
 }
 
-// Language is a wrapper around the C record PangoLanguage.
+// The #PangoLanguage structure is used to
+// represent a language.
+//
+// #PangoLanguage pointers can be efficiently
+// copied and compared with each other.
+/*
+
+C record/class : PangoLanguage
+*/
 type Language struct {
 	native *C.PangoLanguage
 }
@@ -1647,7 +1788,10 @@ func (recv *Language) ToString() string {
 	return retGo
 }
 
-// LayoutClass is a wrapper around the C record PangoLayoutClass.
+/*
+
+C record/class : PangoLayoutClass
+*/
 type LayoutClass struct {
 	native *C.PangoLayoutClass
 }
@@ -1670,7 +1814,18 @@ func (recv *LayoutClass) ToC() unsafe.Pointer {
 
 // Blacklisted : PangoLayoutIter
 
-// LayoutLine is a wrapper around the C record PangoLayoutLine.
+// The #PangoLayoutLine structure represents one of the lines resulting
+// from laying out a paragraph via #PangoLayout. #PangoLayoutLine
+// structures are obtained by calling pango_layout_get_line() and
+// are only valid until the text, attributes, or settings of the
+// parent #PangoLayout are modified.
+//
+// Routines for rendering PangoLayout objects are provided in
+// code specific to each rendering system.
+/*
+
+C record/class : PangoLayoutLine
+*/
 type LayoutLine struct {
 	native *C.PangoLayoutLine
 	// layout : record
@@ -1815,7 +1970,12 @@ func (recv *LayoutLine) XToIndex(xPos int32) (bool, int32, int32) {
 	return retGo, index, trailing
 }
 
-// LogAttr is a wrapper around the C record PangoLogAttr.
+// The #PangoLogAttr structure stores information
+// about the attributes of a single character.
+/*
+
+C record/class : PangoLogAttr
+*/
 type LogAttr struct {
 	native *C.PangoLogAttr
 	// Bitfield not supported :  1 is_line_break
@@ -1853,7 +2013,13 @@ func (recv *LogAttr) ToC() unsafe.Pointer {
 
 // Blacklisted : PangoMapEntry
 
-// Rectangle is a wrapper around the C record PangoRectangle.
+// The #PangoRectangle structure represents a rectangle. It is frequently
+// used to represent the logical or ink extents of a single glyph or section
+// of text. (See, for instance, pango_font_get_glyph_extents())
+/*
+
+C record/class : PangoRectangle
+*/
 type Rectangle struct {
 	native *C.PangoRectangle
 	X      int32
@@ -1892,7 +2058,10 @@ func (recv *Rectangle) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// RendererPrivate is a wrapper around the C record PangoRendererPrivate.
+/*
+
+C record/class : PangoRendererPrivate
+*/
 type RendererPrivate struct {
 	native *C.PangoRendererPrivate
 }
@@ -1915,7 +2084,12 @@ func (recv *RendererPrivate) ToC() unsafe.Pointer {
 
 // Blacklisted : PangoScriptForLang
 
-// ScriptIter is a wrapper around the C record PangoScriptIter.
+// A #PangoScriptIter is used to iterate through a string
+// and identify ranges in different scripts.
+/*
+
+C record/class : PangoScriptIter
+*/
 type ScriptIter struct {
 	native *C.PangoScriptIter
 }
@@ -1936,7 +2110,12 @@ func (recv *ScriptIter) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TabArray is a wrapper around the C record PangoTabArray.
+// A #PangoTabArray struct contains an array
+// of tab stops. Each tab stop has an alignment and a position.
+/*
+
+C record/class : PangoTabArray
+*/
 type TabArray struct {
 	native *C.PangoTabArray
 }

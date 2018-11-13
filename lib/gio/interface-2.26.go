@@ -23,7 +23,16 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// Proxy is a wrapper around the C record GProxy.
+// A #GProxy handles connecting to a remote host via a given type of
+// proxy server. It is implemented by the 'gio-proxy' extension point.
+// The extensions are named after their proxy protocol name. As an
+// example, a SOCKS5 proxy implementation can be retrieved with the
+// name 'socks5' using the function
+// g_io_extension_point_get_extension_by_name().
+/*
+
+C record/class : GProxy
+*/
 type Proxy struct {
 	native *C.GProxy
 }
@@ -122,7 +131,17 @@ func (recv *Proxy) SupportsHostname() bool {
 	return retGo
 }
 
-// ProxyResolver is a wrapper around the C record GProxyResolver.
+// #GProxyResolver provides synchronous and asynchronous network proxy
+// resolution. #GProxyResolver is used within #GSocketClient through
+// the method g_socket_connectable_proxy_enumerate().
+//
+// Implementations of #GProxyResolver based on libproxy and GNOME settings can
+// be found in glib-networking. GIO comes with an implementation for use inside
+// Flatpak portals.
+/*
+
+C record/class : GProxyResolver
+*/
 type ProxyResolver struct {
 	native *C.GProxyResolver
 }

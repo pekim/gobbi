@@ -23,7 +23,11 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// CredentialsClass is a wrapper around the C record GCredentialsClass.
+// Class structure for #GCredentials.
+/*
+
+C record/class : GCredentialsClass
+*/
 type CredentialsClass struct {
 	native *C.GCredentialsClass
 }
@@ -44,7 +48,11 @@ func (recv *CredentialsClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// DBusAnnotationInfo is a wrapper around the C record GDBusAnnotationInfo.
+// Information about an annotation.
+/*
+
+C record/class : GDBusAnnotationInfo
+*/
 type DBusAnnotationInfo struct {
 	native   *C.GDBusAnnotationInfo
 	RefCount int32
@@ -106,7 +114,11 @@ func (recv *DBusAnnotationInfo) Unref() {
 	return
 }
 
-// DBusArgInfo is a wrapper around the C record GDBusArgInfo.
+// Information about an argument for a method or a signal.
+/*
+
+C record/class : GDBusArgInfo
+*/
 type DBusArgInfo struct {
 	native    *C.GDBusArgInfo
 	RefCount  int32
@@ -168,7 +180,11 @@ func (recv *DBusArgInfo) Unref() {
 	return
 }
 
-// DBusErrorEntry is a wrapper around the C record GDBusErrorEntry.
+// Struct used in g_dbus_error_register_error_domain().
+/*
+
+C record/class : GDBusErrorEntry
+*/
 type DBusErrorEntry struct {
 	native        *C.GDBusErrorEntry
 	ErrorCode     int32
@@ -199,7 +215,11 @@ func (recv *DBusErrorEntry) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// DBusInterfaceInfo is a wrapper around the C record GDBusInterfaceInfo.
+// Information about a D-Bus interface.
+/*
+
+C record/class : GDBusInterfaceInfo
+*/
 type DBusInterfaceInfo struct {
 	native   *C.GDBusInterfaceInfo
 	RefCount int32
@@ -337,7 +357,51 @@ func (recv *DBusInterfaceInfo) Unref() {
 	return
 }
 
-// DBusInterfaceVTable is a wrapper around the C record GDBusInterfaceVTable.
+// Virtual table for handling properties and method calls for a D-Bus
+// interface.
+//
+// Since 2.38, if you want to handle getting/setting D-Bus properties
+// asynchronously, give %NULL as your get_property() or set_property()
+// function. The D-Bus call will be directed to your @method_call function,
+// with the provided @interface_name set to "org.freedesktop.DBus.Properties".
+//
+// Ownership of the #GDBusMethodInvocation object passed to the
+// method_call() function is transferred to your handler; you must
+// call one of the methods of #GDBusMethodInvocation to return a reply
+// (possibly empty), or an error. These functions also take ownership
+// of the passed-in invocation object, so unless the invocation
+// object has otherwise been referenced, it will be then be freed.
+// Calling one of these functions may be done within your
+// method_call() implementation but it also can be done at a later
+// point to handle the method asynchronously.
+//
+// The usual checks on the validity of the calls is performed. For
+// `Get` calls, an error is automatically returned if the property does
+// not exist or the permissions do not allow access. The same checks are
+// performed for `Set` calls, and the provided value is also checked for
+// being the correct type.
+//
+// For both `Get` and `Set` calls, the #GDBusMethodInvocation
+// passed to the @method_call handler can be queried with
+// g_dbus_method_invocation_get_property_info() to get a pointer
+// to the #GDBusPropertyInfo of the property.
+//
+// If you have readable properties specified in your interface info,
+// you must ensure that you either provide a non-%NULL @get_property()
+// function or provide implementations of both the `Get` and `GetAll`
+// methods on org.freedesktop.DBus.Properties interface in your @method_call
+// function. Note that the required return type of the `Get` call is
+// `(v)`, not the type of the property. `GetAll` expects a return value
+// of type `a{sv}`.
+//
+// If you have writable properties specified in your interface info,
+// you must ensure that you either provide a non-%NULL @set_property()
+// function or provide an implementation of the `Set` call. If implementing
+// the call, you must return the value of type %G_VARIANT_TYPE_UNIT.
+/*
+
+C record/class : GDBusInterfaceVTable
+*/
 type DBusInterfaceVTable struct {
 	native *C.GDBusInterfaceVTable
 	// method_call : no type generator for DBusInterfaceMethodCallFunc, GDBusInterfaceMethodCallFunc
@@ -362,7 +426,11 @@ func (recv *DBusInterfaceVTable) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// DBusMethodInfo is a wrapper around the C record GDBusMethodInfo.
+// Information about a method on an D-Bus interface.
+/*
+
+C record/class : GDBusMethodInfo
+*/
 type DBusMethodInfo struct {
 	native   *C.GDBusMethodInfo
 	RefCount int32
@@ -422,7 +490,11 @@ func (recv *DBusMethodInfo) Unref() {
 	return
 }
 
-// DBusNodeInfo is a wrapper around the C record GDBusNodeInfo.
+// Information about nodes in a remote object hierarchy.
+/*
+
+C record/class : GDBusNodeInfo
+*/
 type DBusNodeInfo struct {
 	native   *C.GDBusNodeInfo
 	RefCount int32
@@ -549,7 +621,11 @@ func (recv *DBusNodeInfo) Unref() {
 	return
 }
 
-// DBusPropertyInfo is a wrapper around the C record GDBusPropertyInfo.
+// Information about a D-Bus property on a D-Bus interface.
+/*
+
+C record/class : GDBusPropertyInfo
+*/
 type DBusPropertyInfo struct {
 	native    *C.GDBusPropertyInfo
 	RefCount  int32
@@ -615,7 +691,11 @@ func (recv *DBusPropertyInfo) Unref() {
 	return
 }
 
-// DBusProxyClass is a wrapper around the C record GDBusProxyClass.
+// Class structure for #GDBusProxy.
+/*
+
+C record/class : GDBusProxyClass
+*/
 type DBusProxyClass struct {
 	native *C.GDBusProxyClass
 	// Private : parent_class
@@ -640,7 +720,11 @@ func (recv *DBusProxyClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// DBusSignalInfo is a wrapper around the C record GDBusSignalInfo.
+// Information about a signal on a D-Bus interface.
+/*
+
+C record/class : GDBusSignalInfo
+*/
 type DBusSignalInfo struct {
 	native   *C.GDBusSignalInfo
 	RefCount int32
@@ -699,7 +783,11 @@ func (recv *DBusSignalInfo) Unref() {
 	return
 }
 
-// DBusSubtreeVTable is a wrapper around the C record GDBusSubtreeVTable.
+// Virtual table for handling subtrees registered with g_dbus_connection_register_subtree().
+/*
+
+C record/class : GDBusSubtreeVTable
+*/
 type DBusSubtreeVTable struct {
 	native *C.GDBusSubtreeVTable
 	// enumerate : no type generator for DBusSubtreeEnumerateFunc, GDBusSubtreeEnumerateFunc
@@ -724,7 +812,11 @@ func (recv *DBusSubtreeVTable) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ProxyAddressClass is a wrapper around the C record GProxyAddressClass.
+// Class structure for #GProxyAddress.
+/*
+
+C record/class : GProxyAddressClass
+*/
 type ProxyAddressClass struct {
 	native *C.GProxyAddressClass
 	// parent_class : record
@@ -746,7 +838,11 @@ func (recv *ProxyAddressClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ProxyInterface is a wrapper around the C record GProxyInterface.
+// Provides an interface for handling proxy connection and payload.
+/*
+
+C record/class : GProxyInterface
+*/
 type ProxyInterface struct {
 	native *C.GProxyInterface
 	// g_iface : record
@@ -772,7 +868,11 @@ func (recv *ProxyInterface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TlsClientConnectionInterface is a wrapper around the C record GTlsClientConnectionInterface.
+// vtable for a #GTlsClientConnection implementation.
+/*
+
+C record/class : GTlsClientConnectionInterface
+*/
 type TlsClientConnectionInterface struct {
 	native *C.GTlsClientConnectionInterface
 	// g_iface : record
@@ -795,7 +895,11 @@ func (recv *TlsClientConnectionInterface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TlsServerConnectionInterface is a wrapper around the C record GTlsServerConnectionInterface.
+// vtable for a #GTlsServerConnection implementation.
+/*
+
+C record/class : GTlsServerConnectionInterface
+*/
 type TlsServerConnectionInterface struct {
 	native *C.GTlsServerConnectionInterface
 	// g_iface : record
@@ -817,7 +921,11 @@ func (recv *TlsServerConnectionInterface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// UnixCredentialsMessageClass is a wrapper around the C record GUnixCredentialsMessageClass.
+// Class structure for #GUnixCredentialsMessage.
+/*
+
+C record/class : GUnixCredentialsMessageClass
+*/
 type UnixCredentialsMessageClass struct {
 	native *C.GUnixCredentialsMessageClass
 	// parent_class : record

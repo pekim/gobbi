@@ -10,7 +10,10 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Context is a wrapper around the C record cairo_t.
+/*
+
+C record/class : cairo_t
+*/
 type Context struct {
 	native *C.cairo_t
 }
@@ -31,7 +34,10 @@ func (recv *Context) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Device is a wrapper around the C record cairo_device_t.
+/*
+
+C record/class : cairo_device_t
+*/
 type Device struct {
 	native *C.cairo_device_t
 }
@@ -52,7 +58,10 @@ func (recv *Device) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Surface is a wrapper around the C record cairo_surface_t.
+/*
+
+C record/class : cairo_surface_t
+*/
 type Surface struct {
 	native *C.cairo_surface_t
 }
@@ -73,7 +82,10 @@ func (recv *Surface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Matrix is a wrapper around the C record cairo_matrix_t.
+/*
+
+C record/class : cairo_matrix_t
+*/
 type Matrix struct {
 	native *C.cairo_matrix_t
 }
@@ -94,7 +106,10 @@ func (recv *Matrix) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Pattern is a wrapper around the C record cairo_pattern_t.
+/*
+
+C record/class : cairo_pattern_t
+*/
 type Pattern struct {
 	native *C.cairo_pattern_t
 }
@@ -115,7 +130,10 @@ func (recv *Pattern) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Region is a wrapper around the C record cairo_region_t.
+/*
+
+C record/class : cairo_region_t
+*/
 type Region struct {
 	native *C.cairo_region_t
 }
@@ -136,7 +154,10 @@ func (recv *Region) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// FontOptions is a wrapper around the C record cairo_font_options_t.
+/*
+
+C record/class : cairo_font_options_t
+*/
 type FontOptions struct {
 	native *C.cairo_font_options_t
 }
@@ -157,7 +178,10 @@ func (recv *FontOptions) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// FontFace is a wrapper around the C record cairo_font_face_t.
+/*
+
+C record/class : cairo_font_face_t
+*/
 type FontFace struct {
 	native *C.cairo_font_face_t
 }
@@ -178,7 +202,10 @@ func (recv *FontFace) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ScaledFont is a wrapper around the C record cairo_scaled_font_t.
+/*
+
+C record/class : cairo_scaled_font_t
+*/
 type ScaledFont struct {
 	native *C.cairo_scaled_font_t
 }
@@ -199,7 +226,10 @@ func (recv *ScaledFont) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Path is a wrapper around the C record cairo_path_t.
+/*
+
+C record/class : cairo_path_t
+*/
 type Path struct {
 	native *C.cairo_path_t
 }
@@ -220,7 +250,10 @@ func (recv *Path) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// RectangleInt is a wrapper around the C record cairo_rectangle_int_t.
+/*
+
+C record/class : cairo_rectangle_int_t
+*/
 type RectangleInt struct {
 	native *C.cairo_rectangle_int_t
 	X      int32

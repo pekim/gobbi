@@ -12,7 +12,34 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Bytes is a wrapper around the C record GBytes.
+// A simple refcounted data type representing an immutable sequence of zero or
+// more bytes from an unspecified origin.
+//
+// The purpose of a #GBytes is to keep the memory region that it holds
+// alive for as long as anyone holds a reference to the bytes.  When
+// the last reference count is dropped, the memory is released. Multiple
+// unrelated callers can use byte data in the #GBytes without coordinating
+// their activities, resting assured that the byte data will not change or
+// move while they hold a reference.
+//
+// A #GBytes can come from many different origins that may have
+// different procedures for freeing the memory region.  Examples are
+// memory from g_malloc(), from memory slices, from a #GMappedFile or
+// memory from other allocators.
+//
+// #GBytes work well as keys in #GHashTable. Use g_bytes_equal() and
+// g_bytes_hash() as parameters to g_hash_table_new() or g_hash_table_new_full().
+// #GBytes can also be used as keys in a #GTree by passing the g_bytes_compare()
+// function to g_tree_new().
+//
+// The data pointed to by this bytes must not be modified. For a mutable
+// array of bytes see #GByteArray. Use g_bytes_unref_to_array() to create a
+// mutable array for a #GBytes sequence. To create an immutable #GBytes from
+// a mutable #GByteArray, use the g_byte_array_free_to_bytes() function.
+/*
+
+C record/class : GBytes
+*/
 type Bytes struct {
 	native *C.GBytes
 }
@@ -336,7 +363,69 @@ func (recv *Private) Replace(value uintptr) {
 
 // Unsupported : g_queue_free_full : unsupported parameter free_func : no type generator for DestroyNotify (GDestroyNotify) for param free_func
 
-// RWLock is a wrapper around the C record GRWLock.
+// The GRWLock struct is an opaque data structure to represent a
+// reader-writer lock. It is similar to a #GMutex in that it allows
+// multiple threads to coordinate access to a shared resource.
+//
+// The difference to a mutex is that a reader-writer lock discriminates
+// between read-only ('reader') and full ('writer') access. While only
+// one thread at a time is allowed write access (by holding the 'writer'
+// lock via g_rw_lock_writer_lock()), multiple threads can gain
+// simultaneous read-only access (by holding the 'reader' lock via
+// g_rw_lock_reader_lock()).
+//
+// Here is an example for an array with access functions:
+// |[<!-- language="C" -->
+// GRWLock lock;
+// GPtrArray *array;
+//
+// gpointer
+// my_array_get (guint index)
+// {
+// gpointer retval = NULL;
+//
+// if (!array)
+// return NULL;
+//
+// g_rw_lock_reader_lock (&lock);
+// if (index < array->len)
+// retval = g_ptr_array_index (array, index);
+// g_rw_lock_reader_unlock (&lock);
+//
+// return retval;
+// }
+//
+// void
+// my_array_set (guint index, gpointer data)
+// {
+// g_rw_lock_writer_lock (&lock);
+//
+// if (!array)
+// array = g_ptr_array_new ();
+//
+// if (index >= array->len)
+// g_ptr_array_set_size (array, index+1);
+// g_ptr_array_index (array, index) = data;
+//
+// g_rw_lock_writer_unlock (&lock);
+// }
+// ]|
+// This example shows an array which can be accessed by many readers
+// (the my_array_get() function) simultaneously, whereas the writers
+// (the my_array_set() function) will only be allowed one at a time
+// and only if no readers currently access the array. This is because
+// of the potentially dangerous resizing of the array. Using these
+// functions is fully multi-thread safe now.
+//
+// If a #GRWLock is allocated in static storage then it can be used
+// without initialisation.  Otherwise, you should call
+// g_rw_lock_init() on it and g_rw_lock_clear() when done.
+//
+// A GRWLock should only be accessed with the g_rw_lock_ functions.
+/*
+
+C record/class : GRWLock
+*/
 type RWLock struct {
 	native *C.GRWLock
 	// Private : p
@@ -498,7 +587,22 @@ func (recv *RWLock) WriterUnlock() {
 	return
 }
 
-// RecMutex is a wrapper around the C record GRecMutex.
+// The GRecMutex struct is an opaque data structure to represent a
+// recursive mutex. It is similar to a #GMutex with the difference
+// that it is possible to lock a GRecMutex multiple times in the same
+// thread without deadlock. When doing so, care has to be taken to
+// unlock the recursive mutex as often as it has been locked.
+//
+// If a #GRecMutex is allocated in static storage then it can be used
+// without initialisation.  Otherwise, you should call
+// g_rec_mutex_init() on it and g_rec_mutex_clear() when done.
+//
+// A GRecMutex should only be accessed with the
+// g_rec_mutex_ functions.
+/*
+
+C record/class : GRecMutex
+*/
 type RecMutex struct {
 	native *C.GRecMutex
 	// Private : p

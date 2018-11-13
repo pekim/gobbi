@@ -12,7 +12,11 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// CClosure is a wrapper around the C record GCClosure.
+// A #GCClosure is a specialization of #GClosure for C function callbacks.
+/*
+
+C record/class : GCClosure
+*/
 type CClosure struct {
 	native *C.GCClosure
 	// closure : record
@@ -40,7 +44,51 @@ func (recv *CClosure) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Closure is a wrapper around the C record GClosure.
+// A #GClosure represents a callback supplied by the programmer. It
+// will generally comprise a function of some kind and a marshaller
+// used to call it. It is the responsibility of the marshaller to
+// convert the arguments for the invocation from #GValues into
+// a suitable form, perform the callback on the converted arguments,
+// and transform the return value back into a #GValue.
+//
+// In the case of C programs, a closure usually just holds a pointer
+// to a function and maybe a data argument, and the marshaller
+// converts between #GValue and native C types. The GObject
+// library provides the #GCClosure type for this purpose. Bindings for
+// other languages need marshallers which convert between #GValues
+// and suitable representations in the runtime of the language in
+// order to use functions written in that languages as callbacks.
+//
+// Within GObject, closures play an important role in the
+// implementation of signals. When a signal is registered, the
+// @c_marshaller argument to g_signal_new() specifies the default C
+// marshaller for any closure which is connected to this
+// signal. GObject provides a number of C marshallers for this
+// purpose, see the g_cclosure_marshal_*() functions. Additional C
+// marshallers can be generated with the [glib-genmarshal][glib-genmarshal]
+// utility.  Closures can be explicitly connected to signals with
+// g_signal_connect_closure(), but it usually more convenient to let
+// GObject create a closure automatically by using one of the
+// g_signal_connect_*() functions which take a callback function/user
+// data pair.
+//
+// Using closures has a number of important advantages over a simple
+// callback function/data pointer combination:
+//
+// - Closures allow the callee to get the types of the callback parameters,
+// which means that language bindings don't have to write individual glue
+// for each callback type.
+//
+// - The reference counting of #GClosure makes it easy to handle reentrancy
+// right; if a callback is removed while it is being invoked, the closure
+// and its parameters won't be freed until the invocation finishes.
+//
+// - g_closure_invalidate() and invalidation notifiers allow callbacks to be
+// automatically removed when the objects they point to go away.
+/*
+
+C record/class : GClosure
+*/
 type Closure struct {
 	native *C.GClosure
 	// Private : ref_count
@@ -262,7 +310,10 @@ func (recv *Closure) Unref() {
 	return
 }
 
-// ClosureNotifyData is a wrapper around the C record GClosureNotifyData.
+/*
+
+C record/class : GClosureNotifyData
+*/
 type ClosureNotifyData struct {
 	native *C.GClosureNotifyData
 	Data   uintptr
@@ -290,7 +341,12 @@ func (recv *ClosureNotifyData) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// EnumClass is a wrapper around the C record GEnumClass.
+// The class of an enumeration type holds information about its
+// possible values.
+/*
+
+C record/class : GEnumClass
+*/
 type EnumClass struct {
 	native *C.GEnumClass
 	// g_type_class : record
@@ -327,7 +383,12 @@ func (recv *EnumClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// EnumValue is a wrapper around the C record GEnumValue.
+// A structure which contains a single enum value, its name, and its
+// nickname.
+/*
+
+C record/class : GEnumValue
+*/
 type EnumValue struct {
 	native    *C.GEnumValue
 	Value     int32
@@ -362,7 +423,12 @@ func (recv *EnumValue) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// FlagsClass is a wrapper around the C record GFlagsClass.
+// The class of a flags type holds information about its
+// possible values.
+/*
+
+C record/class : GFlagsClass
+*/
 type FlagsClass struct {
 	native *C.GFlagsClass
 	// g_type_class : record
@@ -395,7 +461,12 @@ func (recv *FlagsClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// FlagsValue is a wrapper around the C record GFlagsValue.
+// A structure which contains a single flags value, its name, and its
+// nickname.
+/*
+
+C record/class : GFlagsValue
+*/
 type FlagsValue struct {
 	native    *C.GFlagsValue
 	Value     uint32
@@ -430,7 +501,11 @@ func (recv *FlagsValue) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// InitiallyUnownedClass is a wrapper around the C record GInitiallyUnownedClass.
+// The class structure for the GInitiallyUnowned type.
+/*
+
+C record/class : GInitiallyUnownedClass
+*/
 type InitiallyUnownedClass struct {
 	native *C.GInitiallyUnownedClass
 	// g_type_class : record
@@ -463,7 +538,12 @@ func (recv *InitiallyUnownedClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// InterfaceInfo is a wrapper around the C record GInterfaceInfo.
+// A structure that provides information to the type system which is
+// used specifically for managing interface types.
+/*
+
+C record/class : GInterfaceInfo
+*/
 type InterfaceInfo struct {
 	native *C.GInterfaceInfo
 	// interface_init : no type generator for InterfaceInitFunc, GInterfaceInitFunc
@@ -492,7 +572,36 @@ func (recv *InterfaceInfo) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ObjectClass is a wrapper around the C record GObjectClass.
+// The class structure for the GObject type.
+//
+// |[<!-- language="C" -->
+// Example of implementing a singleton using a constructor.
+// static MySingleton *the_singleton = NULL;
+//
+// static GObject*
+// my_singleton_constructor (GType                  type,
+// guint                  n_construct_params,
+// GObjectConstructParam *construct_params)
+// {
+// GObject *object;
+//
+// if (!the_singleton)
+// {
+// object = G_OBJECT_CLASS (parent_class)->constructor (type,
+// n_construct_params,
+// construct_params);
+// the_singleton = MY_SINGLETON (object);
+// }
+// else
+// object = g_object_ref (G_OBJECT (the_singleton));
+//
+// return object;
+// }
+// ]|
+/*
+
+C record/class : GObjectClass
+*/
 type ObjectClass struct {
 	native *C.GObjectClass
 	// g_type_class : record
@@ -531,7 +640,13 @@ func (recv *ObjectClass) ToC() unsafe.Pointer {
 
 // Unsupported : g_object_class_list_properties : no return type
 
-// ObjectConstructParam is a wrapper around the C record GObjectConstructParam.
+// The GObjectConstructParam struct is an auxiliary
+// structure used to hand #GParamSpec/#GValue pairs to the @constructor of
+// a #GObjectClass.
+/*
+
+C record/class : GObjectConstructParam
+*/
 type ObjectConstructParam struct {
 	native *C.GObjectConstructParam
 	// pspec : record
@@ -554,7 +669,13 @@ func (recv *ObjectConstructParam) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ParamSpecClass is a wrapper around the C record GParamSpecClass.
+// The class structure for the GParamSpec type.
+// Normally, GParamSpec classes are filled by
+// g_param_type_register_static().
+/*
+
+C record/class : GParamSpecClass
+*/
 type ParamSpecClass struct {
 	native *C.GParamSpecClass
 	// g_type_class : record
@@ -587,7 +708,14 @@ func (recv *ParamSpecClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ParamSpecPool is a wrapper around the C record GParamSpecPool.
+// A #GParamSpecPool maintains a collection of #GParamSpecs which can be
+// quickly accessed by owner and name. The implementation of the #GObject property
+// system uses such a pool to store the #GParamSpecs of the properties all object
+// types.
+/*
+
+C record/class : GParamSpecPool
+*/
 type ParamSpecPool struct {
 	native *C.GParamSpecPool
 }
@@ -631,7 +759,17 @@ func (recv *ParamSpecPool) ListOwned(ownerType Type) *glib.List {
 
 // Unsupported : g_param_spec_pool_remove : unsupported parameter pspec : Blacklisted record : GParamSpec
 
-// ParamSpecTypeInfo is a wrapper around the C record GParamSpecTypeInfo.
+// This structure is used to provide the type system with the information
+// required to initialize and destruct (finalize) a parameter's class and
+// instances thereof.
+// The initialized structure is passed to the g_param_type_register_static()
+// The type system will perform a deep copy of this structure, so its memory
+// does not need to be persistent across invocation of
+// g_param_type_register_static().
+/*
+
+C record/class : GParamSpecTypeInfo
+*/
 type ParamSpecTypeInfo struct {
 	native       *C.GParamSpecTypeInfo
 	InstanceSize uint16
@@ -671,7 +809,12 @@ func (recv *ParamSpecTypeInfo) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Parameter is a wrapper around the C record GParameter.
+// The GParameter struct is an auxiliary structure used
+// to hand parameter name/value pairs to g_object_newv().
+/*
+
+C record/class : GParameter
+*/
 type Parameter struct {
 	native *C.GParameter
 	Name   string
@@ -699,7 +842,12 @@ func (recv *Parameter) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// SignalInvocationHint is a wrapper around the C record GSignalInvocationHint.
+// The #GSignalInvocationHint structure is used to pass on additional information
+// to callbacks during a signal emission.
+/*
+
+C record/class : GSignalInvocationHint
+*/
 type SignalInvocationHint struct {
 	native   *C.GSignalInvocationHint
 	SignalId uint32
@@ -734,7 +882,12 @@ func (recv *SignalInvocationHint) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// SignalQuery is a wrapper around the C record GSignalQuery.
+// A structure holding in-depth information for a specific signal. It is
+// filled in by the g_signal_query() function.
+/*
+
+C record/class : GSignalQuery
+*/
 type SignalQuery struct {
 	native      *C.GSignalQuery
 	SignalId    uint32
@@ -782,7 +935,11 @@ func (recv *SignalQuery) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TypeClass is a wrapper around the C record GTypeClass.
+// An opaque structure used as the base of all classes.
+/*
+
+C record/class : GTypeClass
+*/
 type TypeClass struct {
 	native *C.GTypeClass
 	// Private : g_type
@@ -864,7 +1021,12 @@ func (recv *TypeClass) UnrefUncached() {
 	return
 }
 
-// TypeFundamentalInfo is a wrapper around the C record GTypeFundamentalInfo.
+// A structure that provides information to the type system which is
+// used specifically for managing fundamental types.
+/*
+
+C record/class : GTypeFundamentalInfo
+*/
 type TypeFundamentalInfo struct {
 	native    *C.GTypeFundamentalInfo
 	TypeFlags TypeFundamentalFlags
@@ -891,7 +1053,19 @@ func (recv *TypeFundamentalInfo) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TypeInfo is a wrapper around the C record GTypeInfo.
+// This structure is used to provide the type system with the information
+// required to initialize and destruct (finalize) a type's class and
+// its instances.
+//
+// The initialized structure is passed to the g_type_register_static() function
+// (or is copied into the provided #GTypeInfo structure in the
+// g_type_plugin_complete_type_info()). The type system will perform a deep
+// copy of this structure, so its memory does not need to be persistent
+// across invocation of g_type_register_static().
+/*
+
+C record/class : GTypeInfo
+*/
 type TypeInfo struct {
 	native    *C.GTypeInfo
 	ClassSize uint16
@@ -936,7 +1110,11 @@ func (recv *TypeInfo) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TypeInstance is a wrapper around the C record GTypeInstance.
+// An opaque structure used as the base of all type instances.
+/*
+
+C record/class : GTypeInstance
+*/
 type TypeInstance struct {
 	native *C.GTypeInstance
 	// Private : g_class
@@ -971,7 +1149,11 @@ func (recv *TypeInstance) GetPrivate(privateType Type) uintptr {
 	return retGo
 }
 
-// TypeInterface is a wrapper around the C record GTypeInterface.
+// An opaque structure used as the base of all interface types.
+/*
+
+C record/class : GTypeInterface
+*/
 type TypeInterface struct {
 	native *C.GTypeInterface
 	// Private : g_type
@@ -1009,7 +1191,12 @@ func (recv *TypeInterface) PeekParent() uintptr {
 	return retGo
 }
 
-// TypeModuleClass is a wrapper around the C record GTypeModuleClass.
+// In order to implement dynamic loading of types based on #GTypeModule,
+// the @load and @unload functions in #GTypeModuleClass must be implemented.
+/*
+
+C record/class : GTypeModuleClass
+*/
 type TypeModuleClass struct {
 	native *C.GTypeModuleClass
 	// parent_class : record
@@ -1037,7 +1224,12 @@ func (recv *TypeModuleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TypePluginClass is a wrapper around the C record GTypePluginClass.
+// The #GTypePlugin interface is used by the type system in order to handle
+// the lifecycle of dynamically loaded types.
+/*
+
+C record/class : GTypePluginClass
+*/
 type TypePluginClass struct {
 	native *C.GTypePluginClass
 	// Private : base_iface
@@ -1063,7 +1255,12 @@ func (recv *TypePluginClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TypeQuery is a wrapper around the C record GTypeQuery.
+// A structure holding information for a specific type.
+// It is filled in by the g_type_query() function.
+/*
+
+C record/class : GTypeQuery
+*/
 type TypeQuery struct {
 	native       *C.GTypeQuery
 	Type         Type
@@ -1102,7 +1299,12 @@ func (recv *TypeQuery) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TypeValueTable is a wrapper around the C record GTypeValueTable.
+// The #GTypeValueTable provides the functions required by the #GValue
+// implementation, to serve as a container for values of a type.
+/*
+
+C record/class : GTypeValueTable
+*/
 type TypeValueTable struct {
 	native *C.GTypeValueTable
 	// no type for value_init
@@ -1139,7 +1341,18 @@ func (recv *TypeValueTable) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Value is a wrapper around the C record GValue.
+// An opaque structure used to hold different types of values.
+// The data within the structure has protected scope: it is accessible only
+// to functions within a #GTypeValueTable structure, or implementations of
+// the g_value_*() API. That is, code portions which implement new fundamental
+// types.
+// #GValue users cannot make any assumptions about how data is stored
+// within the 2 element @data union, and the @g_type member should
+// only be accessed through the G_VALUE_TYPE() macro.
+/*
+
+C record/class : GValue
+*/
 type Value struct {
 	native *C.GValue
 	// Private : g_type
@@ -1844,7 +2057,11 @@ func (recv *Value) Unset() {
 	return
 }
 
-// ValueArray is a wrapper around the C record GValueArray.
+// A #GValueArray contains an array of #GValue elements.
+/*
+
+C record/class : GValueArray
+*/
 type ValueArray struct {
 	native  *C.GValueArray
 	NValues uint32
@@ -2001,7 +2218,30 @@ func (recv *ValueArray) Remove(index uint32) *ValueArray {
 
 // Unsupported : g_value_array_sort_with_data : unsupported parameter compare_func : no type generator for GLib.CompareDataFunc (GCompareDataFunc) for param compare_func
 
-// WeakRef is a wrapper around the C record GWeakRef.
+// A structure containing a weak reference to a #GObject.  It can either
+// be empty (i.e. point to %NULL), or point to an object for as long as
+// at least one "strong" reference to that object exists. Before the
+// object's #GObjectClass.dispose method is called, every #GWeakRef
+// associated with becomes empty (i.e. points to %NULL).
+//
+// Like #GValue, #GWeakRef can be statically allocated, stack- or
+// heap-allocated, or embedded in larger structures.
+//
+// Unlike g_object_weak_ref() and g_object_add_weak_pointer(), this weak
+// reference is thread-safe: converting a weak pointer to a reference is
+// atomic with respect to invalidation of weak pointers to destroyed
+// objects.
+//
+// If the object's #GObjectClass.dispose method results in additional
+// references to the object being held, any #GWeakRefs taken
+// before it was disposed will continue to point to %NULL.  If
+// #GWeakRefs are taken after the object is disposed and
+// re-referenced, they will continue to point to it until its refcount
+// goes back to zero, at which point they too will be invalidated.
+/*
+
+C record/class : GWeakRef
+*/
 type WeakRef struct {
 	native *C.GWeakRef
 }

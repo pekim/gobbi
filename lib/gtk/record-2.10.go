@@ -269,7 +269,15 @@ func (recv *PaperSize) SetSize(width float64, height float64, unit Unit) {
 	return
 }
 
-// RecentInfo is a wrapper around the C record GtkRecentInfo.
+// #GtkRecentInfo-struct contains private data only, and should
+// be accessed using the provided API.
+//
+// #GtkRecentInfo constains all the meta-data
+// associated with an entry in the recently used files list.
+/*
+
+C record/class : GtkRecentInfo
+*/
 type RecentInfo struct {
 	native *C.GtkRecentInfo
 }
@@ -569,7 +577,11 @@ func (recv *RecentInfo) Unref() {
 	return
 }
 
-// RecentManagerClass is a wrapper around the C record GtkRecentManagerClass.
+// #GtkRecentManagerClass contains only private data.
+/*
+
+C record/class : GtkRecentManagerClass
+*/
 type RecentManagerClass struct {
 	native *C.GtkRecentManagerClass
 	// Private : parent_class

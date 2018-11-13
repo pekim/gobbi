@@ -10,7 +10,18 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// ParamSpecOverride is a wrapper around the C record GParamSpecOverride.
+// This is a type of #GParamSpec type that simply redirects operations to
+// another paramspec.  All operations other than getting or
+// setting the value are redirected, including accessing the nick and
+// blurb, validating a value, and so forth. See
+// g_param_spec_get_redirect_target() for retrieving the overidden
+// property. #GParamSpecOverride is used in implementing
+// g_object_class_override_property(), and will not be directly useful
+// unless you are implementing a new base type similar to GObject.
+/*
+
+C record/class : GParamSpecOverride
+*/
 type ParamSpecOverride struct {
 	native *C.GParamSpecOverride
 	// Private : parent_instance

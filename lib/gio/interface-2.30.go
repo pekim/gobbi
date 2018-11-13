@@ -81,7 +81,13 @@ import "C"
 
 // Unsupported : g_action_change_state : unsupported parameter value : Blacklisted record : GVariant
 
-// DBusInterface is a wrapper around the C record GDBusInterface.
+// The #GDBusInterface type is the base type for D-Bus interfaces both
+// on the service side (see #GDBusInterfaceSkeleton) and client side
+// (see #GDBusProxy).
+/*
+
+C record/class : GDBusInterface
+*/
 type DBusInterface struct {
 	native *C.GDBusInterface
 }
@@ -626,7 +632,13 @@ func (recv *TlsBackend) GetFileDatabaseType() gobject.Type {
 	return retGo
 }
 
-// TlsFileDatabase is a wrapper around the C record GTlsFileDatabase.
+// #GTlsFileDatabase is implemented by #GTlsDatabase objects which load
+// their certificate information from a file. It is an interface which
+// TLS library specific subtypes implement.
+/*
+
+C record/class : GTlsFileDatabase
+*/
 type TlsFileDatabase struct {
 	native *C.GTlsFileDatabase
 }

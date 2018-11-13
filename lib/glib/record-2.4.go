@@ -14,7 +14,13 @@ import "C"
 
 // Unsupported : g_node_copy_deep : unsupported parameter copy_func : no type generator for CopyFunc (GCopyFunc) for param copy_func
 
-// Once is a wrapper around the C record GOnce.
+// A #GOnce struct controls a one-time initialization function. Any
+// one-time initialization function must have its own unique #GOnce
+// struct.
+/*
+
+C record/class : GOnce
+*/
 type Once struct {
 	native *C.GOnce
 	Status OnceStatus

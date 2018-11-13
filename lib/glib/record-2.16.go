@@ -12,7 +12,13 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Checksum is a wrapper around the C record GChecksum.
+// An opaque structure representing a checksumming operation.
+// To create a new GChecksum, use g_checksum_new(). To free
+// a GChecksum, use g_checksum_free().
+/*
+
+C record/class : GChecksum
+*/
 type Checksum struct {
 	native *C.GChecksum
 }

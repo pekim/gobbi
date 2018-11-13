@@ -12,7 +12,11 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// GLAreaClass is a wrapper around the C record GtkGLAreaClass.
+// The `GtkGLAreaClass` structure contains only private data.
+/*
+
+C record/class : GtkGLAreaClass
+*/
 type GLAreaClass struct {
 	native *C.GtkGLAreaClass
 	// Private : parent_class

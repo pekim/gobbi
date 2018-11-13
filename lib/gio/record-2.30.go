@@ -20,7 +20,11 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// DBusInterfaceIface is a wrapper around the C record GDBusInterfaceIface.
+// Base type for D-Bus interfaces.
+/*
+
+C record/class : GDBusInterfaceIface
+*/
 type DBusInterfaceIface struct {
 	native *C.GDBusInterfaceIface
 	// parent_iface : record
@@ -79,7 +83,11 @@ func (recv *DBusInterfaceInfo) CacheRelease() {
 	return
 }
 
-// DBusInterfaceSkeletonClass is a wrapper around the C record GDBusInterfaceSkeletonClass.
+// Class structure for #GDBusInterfaceSkeleton.
+/*
+
+C record/class : GDBusInterfaceSkeletonClass
+*/
 type DBusInterfaceSkeletonClass struct {
 	native *C.GDBusInterfaceSkeletonClass
 	// parent_class : record
@@ -108,7 +116,11 @@ func (recv *DBusInterfaceSkeletonClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// DBusObjectIface is a wrapper around the C record GDBusObjectIface.
+// Base object type for D-Bus objects.
+/*
+
+C record/class : GDBusObjectIface
+*/
 type DBusObjectIface struct {
 	native *C.GDBusObjectIface
 	// parent_iface : record
@@ -135,7 +147,11 @@ func (recv *DBusObjectIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// DBusObjectManagerClientClass is a wrapper around the C record GDBusObjectManagerClientClass.
+// Class structure for #GDBusObjectManagerClient.
+/*
+
+C record/class : GDBusObjectManagerClientClass
+*/
 type DBusObjectManagerClientClass struct {
 	native *C.GDBusObjectManagerClientClass
 	// parent_class : record
@@ -160,7 +176,11 @@ func (recv *DBusObjectManagerClientClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// DBusObjectManagerIface is a wrapper around the C record GDBusObjectManagerIface.
+// Base type for D-Bus object managers.
+/*
+
+C record/class : GDBusObjectManagerIface
+*/
 type DBusObjectManagerIface struct {
 	native *C.GDBusObjectManagerIface
 	// parent_iface : record
@@ -190,7 +210,11 @@ func (recv *DBusObjectManagerIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// DBusObjectManagerServerClass is a wrapper around the C record GDBusObjectManagerServerClass.
+// Class structure for #GDBusObjectManagerServer.
+/*
+
+C record/class : GDBusObjectManagerServerClass
+*/
 type DBusObjectManagerServerClass struct {
 	native *C.GDBusObjectManagerServerClass
 	// parent_class : record
@@ -213,7 +237,11 @@ func (recv *DBusObjectManagerServerClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// DBusObjectProxyClass is a wrapper around the C record GDBusObjectProxyClass.
+// Class structure for #GDBusObjectProxy.
+/*
+
+C record/class : GDBusObjectProxyClass
+*/
 type DBusObjectProxyClass struct {
 	native *C.GDBusObjectProxyClass
 	// parent_class : record
@@ -236,7 +264,11 @@ func (recv *DBusObjectProxyClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// DBusObjectSkeletonClass is a wrapper around the C record GDBusObjectSkeletonClass.
+// Class structure for #GDBusObjectSkeleton.
+/*
+
+C record/class : GDBusObjectSkeletonClass
+*/
 type DBusObjectSkeletonClass struct {
 	native *C.GDBusObjectSkeletonClass
 	// parent_class : record
@@ -260,7 +292,15 @@ func (recv *DBusObjectSkeletonClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// IOModuleScope is a wrapper around the C record GIOModuleScope.
+// Represents a scope for loading IO modules. A scope can be used for blocking
+// duplicate modules, or blocking a module you don't want to load.
+//
+// The scope can be used with g_io_modules_load_all_in_directory_with_scope()
+// or g_io_modules_scan_all_in_directory_with_scope().
+/*
+
+C record/class : GIOModuleScope
+*/
 type IOModuleScope struct {
 	native *C.GIOModuleScope
 }
@@ -308,7 +348,13 @@ func (recv *IOModuleScope) Free() {
 	return
 }
 
-// TlsDatabaseClass is a wrapper around the C record GTlsDatabaseClass.
+// The class for #GTlsDatabase. Derived classes should implement the various
+// virtual methods. _async and _finish methods have a default
+// implementation that runs the corresponding sync method in a thread.
+/*
+
+C record/class : GTlsDatabaseClass
+*/
 type TlsDatabaseClass struct {
 	native *C.GTlsDatabaseClass
 	// parent_class : record
@@ -344,7 +390,24 @@ func (recv *TlsDatabaseClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TlsInteractionClass is a wrapper around the C record GTlsInteractionClass.
+// The class for #GTlsInteraction. Derived classes implement the various
+// virtual interaction methods to handle TLS interactions.
+//
+// Derived classes can choose to implement whichever interactions methods they'd
+// like to support by overriding those virtual methods in their class
+// initialization function. If a derived class implements an async method,
+// it must also implement the corresponding finish method.
+//
+// The synchronous interaction methods should implement to display modal dialogs,
+// and the asynchronous methods to display modeless dialogs.
+//
+// If the user cancels an interaction, then the result should be
+// %G_TLS_INTERACTION_FAILED and the error should be set with a domain of
+// %G_IO_ERROR and code of %G_IO_ERROR_CANCELLED.
+/*
+
+C record/class : GTlsInteractionClass
+*/
 type TlsInteractionClass struct {
 	native *C.GTlsInteractionClass
 	// Private : parent_class

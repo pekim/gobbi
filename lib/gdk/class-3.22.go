@@ -122,7 +122,10 @@ func (recv *Device) GetAxes() AxisFlags {
 	return retGo
 }
 
-// DeviceTool is a wrapper around the C record GdkDeviceTool.
+/*
+
+C record/class : GdkDeviceTool
+*/
 type DeviceTool struct {
 	native *C.GdkDeviceTool
 }
@@ -409,7 +412,20 @@ func (recv *Display) GetPrimaryMonitor() *Monitor {
 	return retGo
 }
 
-// DrawingContext is a wrapper around the C record GdkDrawingContext.
+// #GdkDrawingContext is an object that represents the current drawing
+// state of a #GdkWindow.
+//
+// It's possible to use a #GdkDrawingContext to draw on a #GdkWindow
+// via rendering API like Cairo or OpenGL.
+//
+// A #GdkDrawingContext can only be created by calling gdk_window_begin_draw_frame()
+// and will be valid until a call to gdk_window_end_draw_frame().
+//
+// #GdkDrawingContext is available since GDK 3.22
+/*
+
+C record/class : GdkDrawingContext
+*/
 type DrawingContext struct {
 	native *C.GdkDrawingContext
 }
@@ -535,7 +551,18 @@ func (recv *GLContext) SetUseEs(useEs int32) {
 	return
 }
 
-// Monitor is a wrapper around the C record GdkMonitor.
+// GdkMonitor objects represent the individual outputs that are
+// associated with a #GdkDisplay. GdkDisplay has APIs to enumerate
+// monitors with gdk_display_get_n_monitors() and gdk_display_get_monitor(), and
+// to find particular monitors with gdk_display_get_primary_monitor() or
+// gdk_display_get_monitor_at_window().
+//
+// GdkMonitor was introduced in GTK+ 3.22 and supersedes earlier
+// APIs in GdkScreen to obtain monitor-related information.
+/*
+
+C record/class : GdkMonitor
+*/
 type Monitor struct {
 	native *C.GdkMonitor
 }
@@ -747,7 +774,12 @@ func (recv *Monitor) IsPrimary() bool {
 	return retGo
 }
 
-// Seat is a wrapper around the C record GdkSeat.
+// The #GdkSeat object represents a collection of input devices
+// that belong to a user.
+/*
+
+C record/class : GdkSeat
+*/
 type Seat struct {
 	native *C.GdkSeat
 	// parent_instance : record

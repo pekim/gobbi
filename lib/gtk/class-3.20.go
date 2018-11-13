@@ -91,7 +91,166 @@ func (recv *ApplicationWindow) SetHelpOverlay(helpOverlay *ShortcutsWindow) {
 	return
 }
 
-// FileChooserNative is a wrapper around the C record GtkFileChooserNative.
+// #GtkFileChooserNative is an abstraction of a dialog box suitable
+// for use with “File/Open” or “File/Save as” commands. By default, this
+// just uses a #GtkFileChooserDialog to implement the actual dialog.
+// However, on certain platforms, such as Windows and macOS, the native platform
+// file chooser is used instead. When the application is running in a
+// sandboxed environment without direct filesystem access (such as Flatpak),
+// #GtkFileChooserNative may call the proper APIs (portals) to let the user
+// choose a file and make it available to the application.
+//
+// While the API of #GtkFileChooserNative closely mirrors #GtkFileChooserDialog, the main
+// difference is that there is no access to any #GtkWindow or #GtkWidget for the dialog.
+// This is required, as there may not be one in the case of a platform native dialog.
+// Showing, hiding and running the dialog is handled by the #GtkNativeDialog functions.
+//
+// ## Typical usage ## {#gtkfilechoosernative-typical-usage}
+//
+// In the simplest of cases, you can the following code to use
+// #GtkFileChooserDialog to select a file for opening:
+//
+// |[
+// GtkFileChooserNative *native;
+// GtkFileChooserAction action = GTK_FILE_CHOOSER_ACTION_OPEN;
+// gint res;
+//
+// native = gtk_file_chooser_native_new ("Open File",
+// parent_window,
+// action,
+// "_Open",
+// "_Cancel");
+//
+// res = gtk_native_dialog_run (GTK_NATIVE_DIALOG (native));
+// if (res == GTK_RESPONSE_ACCEPT)
+// {
+// char *filename;
+// GtkFileChooser *chooser = GTK_FILE_CHOOSER (native);
+// filename = gtk_file_chooser_get_filename (chooser);
+// open_file (filename);
+// g_free (filename);
+// }
+//
+// g_object_unref (native);
+// ]|
+//
+// To use a dialog for saving, you can use this:
+//
+// |[
+// GtkFileChooserNative *native;
+// GtkFileChooser *chooser;
+// GtkFileChooserAction action = GTK_FILE_CHOOSER_ACTION_SAVE;
+// gint res;
+//
+// native = gtk_file_chooser_native_new ("Save File",
+// parent_window,
+// action,
+// "_Save",
+// "_Cancel");
+// chooser = GTK_FILE_CHOOSER (native);
+//
+// gtk_file_chooser_set_do_overwrite_confirmation (chooser, TRUE);
+//
+// if (user_edited_a_new_document)
+// gtk_file_chooser_set_current_name (chooser,
+// _("Untitled document"));
+// else
+// gtk_file_chooser_set_filename (chooser,
+// existing_filename);
+//
+// res = gtk_native_dialog_run (GTK_NATIVE_DIALOG (native));
+// if (res == GTK_RESPONSE_ACCEPT)
+// {
+// char *filename;
+//
+// filename = gtk_file_chooser_get_filename (chooser);
+// save_to_file (filename);
+// g_free (filename);
+// }
+//
+// g_object_unref (native);
+// ]|
+//
+// For more information on how to best set up a file dialog, see #GtkFileChooserDialog.
+//
+// ## Response Codes ## {#gtkfilechooserdialognative-responses}
+//
+// #GtkFileChooserNative inherits from #GtkNativeDialog, which means it
+// will return #GTK_RESPONSE_ACCEPT if the user accepted, and
+// #GTK_RESPONSE_CANCEL if he pressed cancel. It can also return
+// #GTK_RESPONSE_DELETE_EVENT if the window was unexpectedly closed.
+//
+// ## Differences from #GtkFileChooserDialog ##  {#gtkfilechooserdialognative-differences}
+//
+// There are a few things in the GtkFileChooser API that are not
+// possible to use with #GtkFileChooserNative, as such use would
+// prohibit the use of a native dialog.
+//
+// There is no support for the signals that are emitted when the user
+// navigates in the dialog, including:
+// * #GtkFileChooser::current-folder-changed
+// * #GtkFileChooser::selection-changed
+// * #GtkFileChooser::file-activated
+// * #GtkFileChooser::confirm-overwrite
+//
+// You can also not use the methods that directly control user navigation:
+// * gtk_file_chooser_unselect_filename()
+// * gtk_file_chooser_select_all()
+// * gtk_file_chooser_unselect_all()
+//
+// If you need any of the above you will have to use #GtkFileChooserDialog directly.
+//
+// No operations that change the the dialog work while the dialog is
+// visible. Set all the properties that are required before showing the dialog.
+//
+// ## Win32 details ## {#gtkfilechooserdialognative-win32}
+//
+// On windows the IFileDialog implementation (added in Windows Vista) is
+// used. It supports many of the features that #GtkFileChooserDialog
+// does, but there are some things it does not handle:
+//
+// * Extra widgets added with gtk_file_chooser_set_extra_widget().
+//
+// * Use of custom previews by connecting to #GtkFileChooser::update-preview.
+//
+// * Any #GtkFileFilter added using a mimetype or custom filter.
+//
+// If any of these features are used the regular #GtkFileChooserDialog
+// will be used in place of the native one.
+//
+// ## Portal details ## {#gtkfilechooserdialognative-portal}
+//
+// When the org.freedesktop.portal.FileChooser portal is available on the
+// session bus, it is used to bring up an out-of-process file chooser. Depending
+// on the kind of session the application is running in, this may or may not
+// be a GTK+ file chooser. In this situation, the following things are not
+// supported and will be silently ignored:
+//
+// * Extra widgets added with gtk_file_chooser_set_extra_widget().
+//
+// * Use of custom previews by connecting to #GtkFileChooser::update-preview.
+//
+// * Any #GtkFileFilter added with a custom filter.
+//
+// ## macOS details ## {#gtkfilechooserdialognative-macos}
+//
+// On macOS the NSSavePanel and NSOpenPanel classes are used to provide native
+// file chooser dialogs. Some features provided by #GtkFileChooserDialog are
+// not supported:
+//
+// * Extra widgets added with gtk_file_chooser_set_extra_widget(), unless the
+// widget is an instance of GtkLabel, in which case the label text will be used
+// to set the NSSavePanel message instance property.
+//
+// * Use of custom previews by connecting to #GtkFileChooser::update-preview.
+//
+// * Any #GtkFileFilter added with a custom filter.
+//
+// * Shortcut folders.
+/*
+
+C record/class : GtkFileChooserNative
+*/
 type FileChooserNative struct {
 	native *C.GtkFileChooserNative
 }
@@ -220,7 +379,25 @@ func (recv *FileChooserNative) SetCancelLabel(cancelLabel string) {
 	return
 }
 
-// NativeDialog is a wrapper around the C record GtkNativeDialog.
+// Native dialogs are platform dialogs that don't use #GtkDialog or
+// #GtkWindow. They are used in order to integrate better with a
+// platform, by looking the same as other native applications and
+// supporting platform specific features.
+//
+// The #GtkDialog functions cannot be used on such objects, but we
+// need a similar API in order to drive them. The #GtkNativeDialog
+// object is an API that allows you to do this. It allows you to set
+// various common properties on the dialog, as well as show and hide
+// it and get a #GtkNativeDialog::response signal when the user finished
+// with the dialog.
+//
+// There is also a gtk_native_dialog_run() helper that makes it easy
+// to run any native dialog in a modal way with a recursive mainloop,
+// similar to gtk_dialog_run().
+/*
+
+C record/class : GtkNativeDialog
+*/
 type NativeDialog struct {
 	native *C.GtkNativeDialog
 	// parent_instance : record
@@ -452,7 +629,52 @@ func (recv *NativeDialog) Show() {
 	return
 }
 
-// PadController is a wrapper around the C record GtkPadController.
+// #GtkPadController is an event controller for the pads found in drawing
+// tablets (The collection of buttons and tactile sensors often found around
+// the stylus-sensitive area).
+//
+// These buttons and sensors have no implicit meaning, and by default they
+// perform no action, this event controller is provided to map those to
+// #GAction objects, thus letting the application give those a more semantic
+// meaning.
+//
+// Buttons and sensors are not constrained to triggering a single action, some
+// %GDK_SOURCE_TABLET_PAD devices feature multiple "modes", all these input
+// elements have one current mode, which may determine the final action
+// being triggered. Pad devices often divide buttons and sensors into groups,
+// all elements in a group share the same current mode, but different groups
+// may have different modes. See gdk_device_pad_get_n_groups() and
+// gdk_device_pad_get_group_n_modes().
+//
+// Each of the actions that a given button/strip/ring performs for a given
+// mode is defined by #GtkPadActionEntry, it contains an action name that
+// will be looked up in the given #GActionGroup and activated whenever the
+// specified input element and mode are triggered.
+//
+// A simple example of #GtkPadController usage, assigning button 1 in all
+// modes and pad devices to an "invert-selection" action:
+// |[
+// GtkPadActionEntry *pad_actions[] = {
+// { GTK_PAD_ACTION_BUTTON, 1, -1, "Invert selection", "pad-actions.invert-selection" },
+// …
+// };
+//
+// …
+// action_group = g_simple_action_group_new ();
+// action = g_simple_action_new ("pad-actions.invert-selection", NULL);
+// g_signal_connect (action, "activate", on_invert_selection_activated, NULL);
+// g_action_map_add_action (G_ACTION_MAP (action_group), action);
+// …
+// pad_controller = gtk_pad_controller_new (window, action_group, NULL);
+// ]|
+//
+// The actions belonging to rings/strips will be activated with a parameter
+// of type %G_VARIANT_TYPE_DOUBLE bearing the value of the given axis, it
+// is required that those are made stateful and accepting this #GVariantType.
+/*
+
+C record/class : GtkPadController
+*/
 type PadController struct {
 	native *C.GtkPadController
 }
@@ -655,7 +877,12 @@ func (recv *Settings) ResetProperty(name string) {
 	return
 }
 
-// ShortcutLabel is a wrapper around the C record GtkShortcutLabel.
+// #GtkShortcutLabel is a widget that represents a single keyboard shortcut or gesture
+// in the user interface.
+/*
+
+C record/class : GtkShortcutLabel
+*/
 type ShortcutLabel struct {
 	native *C.GtkShortcutLabel
 }
@@ -707,7 +934,16 @@ func CastToShortcutLabel(object *gobject.Object) *ShortcutLabel {
 	return ShortcutLabelNewFromC(object.ToC())
 }
 
-// ShortcutsGroup is a wrapper around the C record GtkShortcutsGroup.
+// A GtkShortcutsGroup represents a group of related keyboard shortcuts
+// or gestures. The group has a title. It may optionally be associated with
+// a view of the application, which can be used to show only relevant shortcuts
+// depending on the application context.
+//
+// This widget is only meant to be used with #GtkShortcutsWindow.
+/*
+
+C record/class : GtkShortcutsGroup
+*/
 type ShortcutsGroup struct {
 	native *C.GtkShortcutsGroup
 }
@@ -759,7 +995,20 @@ func CastToShortcutsGroup(object *gobject.Object) *ShortcutsGroup {
 	return ShortcutsGroupNewFromC(object.ToC())
 }
 
-// ShortcutsSection is a wrapper around the C record GtkShortcutsSection.
+// A GtkShortcutsSection collects all the keyboard shortcuts and gestures
+// for a major application mode. If your application needs multiple sections,
+// you should give each section a unique #GtkShortcutsSection:section-name and
+// a #GtkShortcutsSection:title that can be shown in the section selector of
+// the GtkShortcutsWindow.
+//
+// The #GtkShortcutsSection:max-height property can be used to influence how
+// the groups in the section are distributed over pages and columns.
+//
+// This widget is only meant to be used with #GtkShortcutsWindow.
+/*
+
+C record/class : GtkShortcutsSection
+*/
 type ShortcutsSection struct {
 	native *C.GtkShortcutsSection
 }
@@ -813,7 +1062,12 @@ func CastToShortcutsSection(object *gobject.Object) *ShortcutsSection {
 
 // Unsupported signal 'change-current-page' for ShortcutsSection : unsupported parameter object : type gint :
 
-// ShortcutsShortcut is a wrapper around the C record GtkShortcutsShortcut.
+// A GtkShortcutsShortcut represents a single keyboard shortcut or gesture
+// with a short text. This widget is only meant to be used with #GtkShortcutsWindow.
+/*
+
+C record/class : GtkShortcutsShortcut
+*/
 type ShortcutsShortcut struct {
 	native *C.GtkShortcutsShortcut
 }
@@ -865,7 +1119,50 @@ func CastToShortcutsShortcut(object *gobject.Object) *ShortcutsShortcut {
 	return ShortcutsShortcutNewFromC(object.ToC())
 }
 
-// ShortcutsWindow is a wrapper around the C record GtkShortcutsWindow.
+// A GtkShortcutsWindow shows brief information about the keyboard shortcuts
+// and gestures of an application. The shortcuts can be grouped, and you can
+// have multiple sections in this window, corresponding to the major modes of
+// your application.
+//
+// Additionally, the shortcuts can be filtered by the current view, to avoid
+// showing information that is not relevant in the current application context.
+//
+// The recommended way to construct a GtkShortcutsWindow is with GtkBuilder,
+// by populating a #GtkShortcutsWindow with one or more #GtkShortcutsSection
+// objects, which contain #GtkShortcutsGroups that in turn contain objects of
+// class #GtkShortcutsShortcut.
+//
+// # A simple example:
+//
+// ![](gedit-shortcuts.png)
+//
+// This example has as single section. As you can see, the shortcut groups
+// are arranged in columns, and spread across several pages if there are too
+// many to find on a single page.
+//
+// The .ui file for this example can be found [here](https://git.gnome.org/browse/gtk+/tree/demos/gtk-demo/shortcuts-gedit.ui).
+//
+// # An example with multiple views:
+//
+// ![](clocks-shortcuts.png)
+//
+// This example shows a #GtkShortcutsWindow that has been configured to show only
+// the shortcuts relevant to the "stopwatch" view.
+//
+// The .ui file for this example can be found [here](https://git.gnome.org/browse/gtk+/tree/demos/gtk-demo/shortcuts-clocks.ui).
+//
+// # An example with multiple sections:
+//
+// ![](builder-shortcuts.png)
+//
+// This example shows a #GtkShortcutsWindow with two sections, "Editor Shortcuts"
+// and "Terminal Shortcuts".
+//
+// The .ui file for this example can be found [here](https://git.gnome.org/browse/gtk+/tree/demos/gtk-demo/shortcuts-builder.ui).
+/*
+
+C record/class : GtkShortcutsWindow
+*/
 type ShortcutsWindow struct {
 	native *C.GtkShortcutsWindow
 	// window : record

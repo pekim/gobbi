@@ -34,7 +34,27 @@ import (
 */
 import "C"
 
-// AppInfoMonitor is a wrapper around the C record GAppInfoMonitor.
+// #GAppInfoMonitor is a very simple object used for monitoring the app
+// info database for changes (ie: newly installed or removed
+// applications).
+//
+// Call g_app_info_monitor_get() to get a #GAppInfoMonitor and connect
+// to the "changed" signal.
+//
+// In the usual case, applications should try to make note of the change
+// (doing things like invalidating caches) but not act on it.  In
+// particular, applications should avoid making calls to #GAppInfo APIs
+// in response to the change signal, deferring these until the time that
+// the data is actually required.  The exception to this case is when
+// application information is actually being displayed on the screen
+// (eg: during a search or when the list of all applications is shown).
+// The reason for this is that changes to the list of installed
+// applications often come in groups (like during system updates) and
+// rescanning the list on every change is pointless and expensive.
+/*
+
+C record/class : GAppInfoMonitor
+*/
 type AppInfoMonitor struct {
 	native *C.GAppInfoMonitor
 }
@@ -275,7 +295,31 @@ func InetSocketAddressNewFromString(address string, port uint32) *InetSocketAddr
 	return retGo
 }
 
-// Notification is a wrapper around the C record GNotification.
+// #GNotification is a mechanism for creating a notification to be shown
+// to the user -- typically as a pop-up notification presented by the
+// desktop environment shell.
+//
+// The key difference between #GNotification and other similar APIs is
+// that, if supported by the desktop environment, notifications sent
+// with #GNotification will persist after the application has exited,
+// and even across system reboots.
+//
+// Since the user may click on a notification while the application is
+// not running, applications using #GNotification should be able to be
+// started as a D-Bus service, using #GApplication.
+//
+// User interaction with a notification (either the default action, or
+// buttons) must be associated with actions on the application (ie:
+// "app." actions).  It is not possible to route user interaction
+// through the notification itself, because the object will not exist if
+// the application is autostarted as a result of a notification being
+// clicked.
+//
+// A notification can be sent with g_application_send_notification().
+/*
+
+C record/class : GNotification
+*/
 type Notification struct {
 	native *C.GNotification
 }
@@ -460,7 +504,64 @@ func (recv *Notification) SetUrgent(urgent bool) {
 
 // Unsupported : g_settings_get_user_value : return type : Blacklisted record : GVariant
 
-// Subprocess is a wrapper around the C record GSubprocess.
+// #GSubprocess allows the creation of and interaction with child
+// processes.
+//
+// Processes can be communicated with using standard GIO-style APIs (ie:
+// #GInputStream, #GOutputStream).  There are GIO-style APIs to wait for
+// process termination (ie: cancellable and with an asynchronous
+// variant).
+//
+// There is an API to force a process to terminate, as well as a
+// race-free API for sending UNIX signals to a subprocess.
+//
+// One major advantage that GIO brings over the core GLib library is
+// comprehensive API for asynchronous I/O, such
+// g_output_stream_splice_async().  This makes GSubprocess
+// significantly more powerful and flexible than equivalent APIs in
+// some other languages such as the `subprocess.py`
+// included with Python.  For example, using #GSubprocess one could
+// create two child processes, reading standard output from the first,
+// processing it, and writing to the input stream of the second, all
+// without blocking the main loop.
+//
+// A powerful g_subprocess_communicate() API is provided similar to the
+// `communicate()` method of `subprocess.py`. This enables very easy
+// interaction with a subprocess that has been opened with pipes.
+//
+// #GSubprocess defaults to tight control over the file descriptors open
+// in the child process, avoiding dangling-fd issues that are caused by
+// a simple fork()/exec().  The only open file descriptors in the
+// spawned process are ones that were explicitly specified by the
+// #GSubprocess API (unless %G_SUBPROCESS_FLAGS_INHERIT_FDS was
+// specified).
+//
+// #GSubprocess will quickly reap all child processes as they exit,
+// avoiding "zombie processes" remaining around for long periods of
+// time.  g_subprocess_wait() can be used to wait for this to happen,
+// but it will happen even without the call being explicitly made.
+//
+// As a matter of principle, #GSubprocess has no API that accepts
+// shell-style space-separated strings.  It will, however, match the
+// typical shell behaviour of searching the PATH for executables that do
+// not contain a directory separator in their name.
+//
+// #GSubprocess attempts to have a very simple API for most uses (ie:
+// spawning a subprocess with arguments and support for most typical
+// kinds of input and output redirection).  See g_subprocess_new(). The
+// #GSubprocessLauncher API is provided for more complicated cases
+// (advanced types of redirection, environment variable manipulation,
+// change of working directory, child setup functions, etc).
+//
+// A typical use of #GSubprocess will involve calling
+// g_subprocess_new(), followed by g_subprocess_wait_async() or
+// g_subprocess_wait().  After the process exits, the status can be
+// checked using functions such as g_subprocess_get_if_exited() (which
+// are similar to the familiar WIFEXITED-style POSIX macros).
+/*
+
+C record/class : GSubprocess
+*/
 type Subprocess struct {
 	native *C.GSubprocess
 }
@@ -989,7 +1090,18 @@ func (recv *Subprocess) WaitFinish(result *AsyncResult) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// SubprocessLauncher is a wrapper around the C record GSubprocessLauncher.
+// This class contains a set of options for launching child processes,
+// such as where its standard input and output will be directed, the
+// argument list, the environment, and more.
+//
+// While the #GSubprocess class has high level functions covering
+// popular cases, use of this class allows access to more advanced
+// options.  It can also be used to launch multiple subprocesses with
+// a similar configuration.
+/*
+
+C record/class : GSubprocessLauncher
+*/
 type SubprocessLauncher struct {
 	native *C.GSubprocessLauncher
 }

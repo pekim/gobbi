@@ -20,7 +20,12 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// AsyncInitableIface is a wrapper around the C record GAsyncInitableIface.
+// Provides an interface for asynchronous initializing object such that
+// initialization may fail.
+/*
+
+C record/class : GAsyncInitableIface
+*/
 type AsyncInitableIface struct {
 	native *C.GAsyncInitableIface
 	// g_iface : record
@@ -44,7 +49,12 @@ func (recv *AsyncInitableIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// InitableIface is a wrapper around the C record GInitableIface.
+// Provides an interface for initializing object such that initialization
+// may fail.
+/*
+
+C record/class : GInitableIface
+*/
 type InitableIface struct {
 	native *C.GInitableIface
 	// g_iface : record
@@ -67,7 +77,14 @@ func (recv *InitableIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// InputVector is a wrapper around the C record GInputVector.
+// Structure used for scatter/gather data input.
+// You generally pass in an array of #GInputVectors
+// and the operation will store the read data starting in the
+// first buffer, switching to the next as needed.
+/*
+
+C record/class : GInputVector
+*/
 type InputVector struct {
 	native *C.GInputVector
 	Buffer uintptr
@@ -98,7 +115,14 @@ func (recv *InputVector) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// OutputVector is a wrapper around the C record GOutputVector.
+// Structure used for scatter/gather data output.
+// You generally pass in an array of #GOutputVectors
+// and the operation will use all the buffers as if they were
+// one buffer.
+/*
+
+C record/class : GOutputVector
+*/
 type OutputVector struct {
 	native *C.GOutputVector
 	Buffer uintptr

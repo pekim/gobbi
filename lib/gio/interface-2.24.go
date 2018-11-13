@@ -36,7 +36,17 @@ func (recv *AppInfo) GetDisplayName() string {
 	return retGo
 }
 
-// Converter is a wrapper around the C record GConverter.
+// #GConverter is implemented by objects that convert
+// binary data in various ways. The conversion can be
+// stateful and may fail at any place.
+//
+// Some example conversions are: character set conversion,
+// compression, decompression and regular expression
+// replace.
+/*
+
+C record/class : GConverter
+*/
 type Converter struct {
 	native *C.GConverter
 }

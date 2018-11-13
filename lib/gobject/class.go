@@ -12,7 +12,13 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// InitiallyUnowned is a wrapper around the C record GInitiallyUnowned.
+// All the fields in the GInitiallyUnowned structure
+// are private to the #GInitiallyUnowned implementation and should never be
+// accessed directly.
+/*
+
+C record/class : GInitiallyUnowned
+*/
 type InitiallyUnowned struct {
 	native *C.GInitiallyUnowned
 	// All fields are private
@@ -45,7 +51,12 @@ func CastToInitiallyUnowned(object *Object) *InitiallyUnowned {
 	return InitiallyUnownedNewFromC(object.ToC())
 }
 
-// Object is a wrapper around the C record GObject.
+// All the fields in the GObject structure are private
+// to the #GObject implementation and should never be accessed directly.
+/*
+
+C record/class : GObject
+*/
 type Object struct {
 	native *C.GObject
 	// All fields are private

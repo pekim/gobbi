@@ -10,7 +10,13 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// EventOwnerChange is a wrapper around the C record GdkEventOwnerChange.
+// Generated when the owner of a selection changes. On X11, this
+// information is only available if the X server supports the XFIXES
+// extension.
+/*
+
+C record/class : GdkEventOwnerChange
+*/
 type EventOwnerChange struct {
 	native *C.GdkEventOwnerChange
 	Type   EventType

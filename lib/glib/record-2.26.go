@@ -12,7 +12,12 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// DateTime is a wrapper around the C record GDateTime.
+// `GDateTime` is an opaque structure whose members
+// cannot be accessed directly.
+/*
+
+C record/class : GDateTime
+*/
 type DateTime struct {
 	native *C.GDateTime
 }
@@ -1140,7 +1145,12 @@ func (recv *Source) SetName(name string) {
 	return
 }
 
-// TimeZone is a wrapper around the C record GTimeZone.
+// #GTimeZone is an opaque structure whose members cannot be accessed
+// directly.
+/*
+
+C record/class : GTimeZone
+*/
 type TimeZone struct {
 	native *C.GTimeZone
 }

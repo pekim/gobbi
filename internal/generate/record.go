@@ -84,7 +84,8 @@ func (r *Record) generate(g *jen.Group, version *Version) {
 }
 
 func (r *Record) generateType(g *jen.Group) {
-	g.Commentf("%s is a wrapper around the C record %s.", r.GoName, r.CType)
+	generateDoc(r.Doc, g)
+	g.Commentf("\nC record/class : %s", r.CType)
 
 	g.
 		Type().

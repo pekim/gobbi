@@ -33,7 +33,15 @@ import (
 */
 import "C"
 
-// Pixbuf is a wrapper around the C record GdkPixbuf.
+// This is the main structure in the gdk-pixbuf library.  It is
+// used to represent images.  It contains information about the
+// image's pixel data, its color space, bits per sample, width and
+// height, and the rowstride (the number of bytes between the start of
+// one row and the start of the next).
+/*
+
+C record/class : GdkPixbuf
+*/
 type Pixbuf struct {
 	native *C.GdkPixbuf
 }
@@ -681,7 +689,11 @@ func (recv *Pixbuf) LoadableIcon() *gio.LoadableIcon {
 	return gio.LoadableIconNewFromC(recv.ToC())
 }
 
-// PixbufAnimation is a wrapper around the C record GdkPixbufAnimation.
+// An opaque struct representing an animation.
+/*
+
+C record/class : GdkPixbufAnimation
+*/
 type PixbufAnimation struct {
 	native *C.GdkPixbufAnimation
 }
@@ -866,7 +878,12 @@ func (recv *PixbufAnimation) Unref() {
 	return
 }
 
-// PixbufAnimationIter is a wrapper around the C record GdkPixbufAnimationIter.
+// An opaque struct representing an iterator which points to a
+// certain position in an animation.
+/*
+
+C record/class : GdkPixbufAnimationIter
+*/
 type PixbufAnimationIter struct {
 	native *C.GdkPixbufAnimationIter
 }
@@ -990,7 +1007,12 @@ func (recv *PixbufAnimationIter) OnCurrentlyLoadingFrame() bool {
 	return retGo
 }
 
-// PixbufLoader is a wrapper around the C record GdkPixbufLoader.
+// The GdkPixbufLoader struct contains only private
+// fields.
+/*
+
+C record/class : GdkPixbufLoader
+*/
 type PixbufLoader struct {
 	native *C.GdkPixbufLoader
 	// parent_instance : record
@@ -1283,7 +1305,11 @@ func (recv *PixbufLoader) Write(buf []uint8) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// PixbufSimpleAnim is a wrapper around the C record GdkPixbufSimpleAnim.
+// An opaque struct representing a simple animation.
+/*
+
+C record/class : GdkPixbufSimpleAnim
+*/
 type PixbufSimpleAnim struct {
 	native *C.GdkPixbufSimpleAnim
 }

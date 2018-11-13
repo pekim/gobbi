@@ -3605,7 +3605,70 @@ func (recv *RecentFilter) SetName(name string) {
 	return
 }
 
-// RecentManager is a wrapper around the C record GtkRecentManager.
+// #GtkRecentManager provides a facility for adding, removing and
+// looking up recently used files. Each recently used file is
+// identified by its URI, and has meta-data associated to it, like
+// the names and command lines of the applications that have
+// registered it, the number of time each application has registered
+// the same file, the mime type of the file and whether the file
+// should be displayed only by the applications that have
+// registered it.
+//
+// The recently used files list is per user.
+//
+// The #GtkRecentManager acts like a database of all the recently
+// used files. You can create new #GtkRecentManager objects, but
+// it is more efficient to use the default manager created by GTK+.
+//
+// Adding a new recently used file is as simple as:
+//
+// |[<!-- language="C" -->
+// GtkRecentManager *manager;
+//
+// manager = gtk_recent_manager_get_default ();
+// gtk_recent_manager_add_item (manager, file_uri);
+// ]|
+//
+// The #GtkRecentManager will try to gather all the needed information
+// from the file itself through GIO.
+//
+// Looking up the meta-data associated with a recently used file
+// given its URI requires calling gtk_recent_manager_lookup_item():
+//
+// |[<!-- language="C" -->
+// GtkRecentManager *manager;
+// GtkRecentInfo *info;
+// GError *error = NULL;
+//
+// manager = gtk_recent_manager_get_default ();
+// info = gtk_recent_manager_lookup_item (manager, file_uri, &error);
+// if (error)
+// {
+// g_warning ("Could not find the file: %s", error->message);
+// g_error_free (error);
+// }
+// else
+// {
+// Use the info object
+// gtk_recent_info_unref (info);
+// }
+// ]|
+//
+// In order to retrieve the list of recently used files, you can use
+// gtk_recent_manager_get_items(), which returns a list of #GtkRecentInfo-structs.
+//
+// A #GtkRecentManager is the model used to populate the contents of
+// one, or more #GtkRecentChooser implementations.
+//
+// Note that the maximum age of the recently used files list is
+// controllable through the #GtkSettings:gtk-recent-files-max-age
+// property.
+//
+// Recently used files are supported since GTK+ 2.10.
+/*
+
+C record/class : GtkRecentManager
+*/
 type RecentManager struct {
 	native *C.GtkRecentManager
 	// Private : parent_instance

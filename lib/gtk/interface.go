@@ -142,7 +142,22 @@ import (
 */
 import "C"
 
-// Actionable is a wrapper around the C record GtkActionable.
+// This interface provides a convenient way of associating widgets with
+// actions on a #GtkApplicationWindow or #GtkApplication.
+//
+// It primarily consists of two properties: #GtkActionable:action-name
+// and #GtkActionable:action-target. There are also some convenience APIs
+// for setting these properties.
+//
+// The action will be looked up in action groups that are found among
+// the widgets ancestors. Most commonly, these will be the actions with
+// the “win.” or “app.” prefix that are associated with the #GtkApplicationWindow
+// or #GtkApplication, but other action groups that are added with
+// gtk_widget_insert_action_group() will be consulted as well.
+/*
+
+C record/class : GtkActionable
+*/
 type Actionable struct {
 	native *C.GtkActionable
 }
@@ -163,7 +178,244 @@ func (recv *Actionable) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Activatable is a wrapper around the C record GtkActivatable.
+// Activatable widgets can be connected to a #GtkAction and reflects
+// the state of its action. A #GtkActivatable can also provide feedback
+// through its action, as they are responsible for activating their
+// related actions.
+//
+// # Implementing GtkActivatable
+//
+// When extending a class that is already #GtkActivatable; it is only
+// necessary to implement the #GtkActivatable->sync_action_properties()
+// and #GtkActivatable->update() methods and chain up to the parent
+// implementation, however when introducing
+// a new #GtkActivatable class; the #GtkActivatable:related-action and
+// #GtkActivatable:use-action-appearance properties need to be handled by
+// the implementor. Handling these properties is mostly a matter of installing
+// the action pointer and boolean flag on your instance, and calling
+// gtk_activatable_do_set_related_action() and
+// gtk_activatable_sync_action_properties() at the appropriate times.
+//
+// ## A class fragment implementing #GtkActivatable
+//
+// |[<!-- language="C" -->
+//
+// enum {
+// ...
+//
+// PROP_ACTIVATABLE_RELATED_ACTION,
+// PROP_ACTIVATABLE_USE_ACTION_APPEARANCE
+// }
+//
+// struct _FooBarPrivate
+// {
+//
+// ...
+//
+// GtkAction      *action;
+// gboolean        use_action_appearance;
+// };
+//
+// ...
+//
+// static void foo_bar_activatable_interface_init         (GtkActivatableIface  *iface);
+// static void foo_bar_activatable_update                 (GtkActivatable       *activatable,
+// GtkAction            *action,
+// const gchar          *property_name);
+// static void foo_bar_activatable_sync_action_properties (GtkActivatable       *activatable,
+// GtkAction            *action);
+// ...
+//
+//
+// static void
+// foo_bar_class_init (FooBarClass *klass)
+// {
+//
+// ...
+//
+// g_object_class_override_property (gobject_class, PROP_ACTIVATABLE_RELATED_ACTION, "related-action");
+// g_object_class_override_property (gobject_class, PROP_ACTIVATABLE_USE_ACTION_APPEARANCE, "use-action-appearance");
+//
+// ...
+// }
+//
+//
+// static void
+// foo_bar_activatable_interface_init (GtkActivatableIface  *iface)
+// {
+// iface->update = foo_bar_activatable_update;
+// iface->sync_action_properties = foo_bar_activatable_sync_action_properties;
+// }
+//
+// ... Break the reference using gtk_activatable_do_set_related_action()...
+//
+// static void
+// foo_bar_dispose (GObject *object)
+// {
+// FooBar *bar = FOO_BAR (object);
+// FooBarPrivate *priv = FOO_BAR_GET_PRIVATE (bar);
+//
+// ...
+//
+// if (priv->action)
+// {
+// gtk_activatable_do_set_related_action (GTK_ACTIVATABLE (bar), NULL);
+// priv->action = NULL;
+// }
+// G_OBJECT_CLASS (foo_bar_parent_class)->dispose (object);
+// }
+//
+// ... Handle the “related-action” and “use-action-appearance” properties ...
+//
+// static void
+// foo_bar_set_property (GObject         *object,
+// guint            prop_id,
+// const GValue    *value,
+// GParamSpec      *pspec)
+// {
+// FooBar *bar = FOO_BAR (object);
+// FooBarPrivate *priv = FOO_BAR_GET_PRIVATE (bar);
+//
+// switch (prop_id)
+// {
+//
+// ...
+//
+// case PROP_ACTIVATABLE_RELATED_ACTION:
+// foo_bar_set_related_action (bar, g_value_get_object (value));
+// break;
+// case PROP_ACTIVATABLE_USE_ACTION_APPEARANCE:
+// foo_bar_set_use_action_appearance (bar, g_value_get_boolean (value));
+// break;
+// default:
+// G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+// break;
+// }
+// }
+//
+// static void
+// foo_bar_get_property (GObject         *object,
+// guint            prop_id,
+// GValue          *value,
+// GParamSpec      *pspec)
+// {
+// FooBar *bar = FOO_BAR (object);
+// FooBarPrivate *priv = FOO_BAR_GET_PRIVATE (bar);
+//
+// switch (prop_id)
+// {
+//
+// ...
+//
+// case PROP_ACTIVATABLE_RELATED_ACTION:
+// g_value_set_object (value, priv->action);
+// break;
+// case PROP_ACTIVATABLE_USE_ACTION_APPEARANCE:
+// g_value_set_boolean (value, priv->use_action_appearance);
+// break;
+// default:
+// G_OBJECT_WARN_INVALID_PROPERTY_ID (object, prop_id, pspec);
+// break;
+// }
+// }
+//
+//
+// static void
+// foo_bar_set_use_action_appearance (FooBar   *bar,
+// gboolean  use_appearance)
+// {
+// FooBarPrivate *priv = FOO_BAR_GET_PRIVATE (bar);
+//
+// if (priv->use_action_appearance != use_appearance)
+// {
+// priv->use_action_appearance = use_appearance;
+//
+// gtk_activatable_sync_action_properties (GTK_ACTIVATABLE (bar), priv->action);
+// }
+// }
+//
+// ... call gtk_activatable_do_set_related_action() and then assign the action pointer,
+// no need to reference the action here since gtk_activatable_do_set_related_action() already
+// holds a reference here for you...
+// static void
+// foo_bar_set_related_action (FooBar    *bar,
+// GtkAction *action)
+// {
+// FooBarPrivate *priv = FOO_BAR_GET_PRIVATE (bar);
+//
+// if (priv->action == action)
+// return;
+//
+// gtk_activatable_do_set_related_action (GTK_ACTIVATABLE (bar), action);
+//
+// priv->action = action;
+// }
+//
+// ... Selectively reset and update activatable depending on the use-action-appearance property ...
+// static void
+// gtk_button_activatable_sync_action_properties (GtkActivatable       *activatable,
+// GtkAction            *action)
+// {
+// GtkButtonPrivate *priv = GTK_BUTTON_GET_PRIVATE (activatable);
+//
+// if (!action)
+// return;
+//
+// if (gtk_action_is_visible (action))
+// gtk_widget_show (GTK_WIDGET (activatable));
+// else
+// gtk_widget_hide (GTK_WIDGET (activatable));
+//
+// gtk_widget_set_sensitive (GTK_WIDGET (activatable), gtk_action_is_sensitive (action));
+//
+// ...
+//
+// if (priv->use_action_appearance)
+// {
+// if (gtk_action_get_stock_id (action))
+// foo_bar_set_stock (button, gtk_action_get_stock_id (action));
+// else if (gtk_action_get_label (action))
+// foo_bar_set_label (button, gtk_action_get_label (action));
+//
+// ...
+//
+// }
+// }
+//
+// static void
+// foo_bar_activatable_update (GtkActivatable       *activatable,
+// GtkAction            *action,
+// const gchar          *property_name)
+// {
+// FooBarPrivate *priv = FOO_BAR_GET_PRIVATE (activatable);
+//
+// if (strcmp (property_name, "visible") == 0)
+// {
+// if (gtk_action_is_visible (action))
+// gtk_widget_show (GTK_WIDGET (activatable));
+// else
+// gtk_widget_hide (GTK_WIDGET (activatable));
+// }
+// else if (strcmp (property_name, "sensitive") == 0)
+// gtk_widget_set_sensitive (GTK_WIDGET (activatable), gtk_action_is_sensitive (action));
+//
+// ...
+//
+// if (!priv->use_action_appearance)
+// return;
+//
+// if (strcmp (property_name, "stock-id") == 0)
+// foo_bar_set_stock (button, gtk_action_get_stock_id (action));
+// else if (strcmp (property_name, "label") == 0)
+// foo_bar_set_label (button, gtk_action_get_label (action));
+//
+// ...
+// }
+// ]|
+/*
+
+C record/class : GtkActivatable
+*/
 type Activatable struct {
 	native *C.GtkActivatable
 }
@@ -184,7 +436,27 @@ func (recv *Activatable) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// AppChooser is a wrapper around the C record GtkAppChooser.
+// #GtkAppChooser is an interface that can be implemented by widgets which
+// allow the user to choose an application (typically for the purpose of
+// opening a file). The main objects that implement this interface are
+// #GtkAppChooserWidget, #GtkAppChooserDialog and #GtkAppChooserButton.
+//
+// Applications are represented by GIO #GAppInfo objects here.
+// GIO has a concept of recommended and fallback applications for a
+// given content type. Recommended applications are those that claim
+// to handle the content type itself, while fallback also includes
+// applications that handle a more generic content type. GIO also
+// knows the default and last-used application for a given content
+// type. The #GtkAppChooserWidget provides detailed control over
+// whether the shown list of applications should include default,
+// recommended or fallback applications.
+//
+// To obtain the application that has been selected in a #GtkAppChooser,
+// use gtk_app_chooser_get_app_info().
+/*
+
+C record/class : GtkAppChooser
+*/
 type AppChooser struct {
 	native *C.GtkAppChooser
 }
@@ -205,7 +477,22 @@ func (recv *AppChooser) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Buildable is a wrapper around the C record GtkBuildable.
+// GtkBuildable allows objects to extend and customize their deserialization
+// from [GtkBuilder UI descriptions][BUILDER-UI].
+// The interface includes methods for setting names and properties of objects,
+// parsing custom tags and constructing child objects.
+//
+// The GtkBuildable interface is implemented by all widgets and
+// many of the non-widget objects that are provided by GTK+. The
+// main user of this interface is #GtkBuilder. There should be
+// very little need for applications to call any of these functions directly.
+//
+// An object only needs to implement this interface if it needs to extend the
+// #GtkBuilder format or run any extra routines at deserialization time.
+/*
+
+C record/class : GtkBuildable
+*/
 type Buildable struct {
 	native *C.GtkBuildable
 }
@@ -226,7 +513,10 @@ func (recv *Buildable) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CellAccessibleParent is a wrapper around the C record GtkCellAccessibleParent.
+/*
+
+C record/class : GtkCellAccessibleParent
+*/
 type CellAccessibleParent struct {
 	native *C.GtkCellAccessibleParent
 }
@@ -387,7 +677,12 @@ func (recv *CellAccessibleParent) UpdateRelationset(cell *CellAccessible, relati
 	return
 }
 
-// CellEditable is a wrapper around the C record GtkCellEditable.
+// The #GtkCellEditable interface must be implemented for widgets to be usable
+// when editing the contents of a #GtkTreeView cell.
+/*
+
+C record/class : GtkCellEditable
+*/
 type CellEditable struct {
 	native *C.GtkCellEditable
 }
@@ -546,7 +841,113 @@ func (recv *CellEditable) RemoveWidget() {
 
 // Unsupported : gtk_cell_editable_start_editing : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
 
-// CellLayout is a wrapper around the C record GtkCellLayout.
+// #GtkCellLayout is an interface to be implemented by all objects which
+// want to provide a #GtkTreeViewColumn like API for packing cells,
+// setting attributes and data funcs.
+//
+// One of the notable features provided by implementations of
+// GtkCellLayout are attributes. Attributes let you set the properties
+// in flexible ways. They can just be set to constant values like regular
+// properties. But they can also be mapped to a column of the underlying
+// tree model with gtk_cell_layout_set_attributes(), which means that the value
+// of the attribute can change from cell to cell as they are rendered by
+// the cell renderer. Finally, it is possible to specify a function with
+// gtk_cell_layout_set_cell_data_func() that is called to determine the
+// value of the attribute for each cell that is rendered.
+//
+// # GtkCellLayouts as GtkBuildable
+//
+// Implementations of GtkCellLayout which also implement the GtkBuildable
+// interface (#GtkCellView, #GtkIconView, #GtkComboBox,
+// #GtkEntryCompletion, #GtkTreeViewColumn) accept GtkCellRenderer objects
+// as <child> elements in UI definitions. They support a custom <attributes>
+// element for their children, which can contain multiple <attribute>
+// elements. Each <attribute> element has a name attribute which specifies
+// a property of the cell renderer; the content of the element is the
+// attribute value.
+//
+// This is an example of a UI definition fragment specifying attributes:
+// |[
+// <object class="GtkCellView">
+// <child>
+// <object class="GtkCellRendererText"/>
+// <attributes>
+// <attribute name="text">0</attribute>
+// </attributes>
+// </child>"
+// </object>
+// ]|
+//
+// Furthermore for implementations of GtkCellLayout that use a #GtkCellArea
+// to lay out cells (all GtkCellLayouts in GTK+ use a GtkCellArea)
+// [cell properties][cell-properties] can also be defined in the format by
+// specifying the custom <cell-packing> attribute which can contain multiple
+// <property> elements defined in the normal way.
+//
+// Here is a UI definition fragment specifying cell properties:
+//
+// |[
+// <object class="GtkTreeViewColumn">
+// <child>
+// <object class="GtkCellRendererText"/>
+// <cell-packing>
+// <property name="align">True</property>
+// <property name="expand">False</property>
+// </cell-packing>
+// </child>"
+// </object>
+// ]|
+//
+// # Subclassing GtkCellLayout implementations
+//
+// When subclassing a widget that implements #GtkCellLayout like
+// #GtkIconView or #GtkComboBox, there are some considerations related
+// to the fact that these widgets internally use a #GtkCellArea.
+// The cell area is exposed as a construct-only property by these
+// widgets. This means that it is possible to e.g. do
+//
+// |[<!-- language="C" -->
+// combo = g_object_new (GTK_TYPE_COMBO_BOX, "cell-area", my_cell_area, NULL);
+// ]|
+//
+// to use a custom cell area with a combo box. But construct properties
+// are only initialized after instance init()
+// functions have run, which means that using functions which rely on
+// the existence of the cell area in your subclass’ init() function will
+// cause the default cell area to be instantiated. In this case, a provided
+// construct property value will be ignored (with a warning, to alert
+// you to the problem).
+//
+// |[<!-- language="C" -->
+// static void
+// my_combo_box_init (MyComboBox *b)
+// {
+// GtkCellRenderer *cell;
+//
+// cell = gtk_cell_renderer_pixbuf_new ();
+// The following call causes the default cell area for combo boxes,
+// a GtkCellAreaBox, to be instantiated
+// gtk_cell_layout_pack_start (GTK_CELL_LAYOUT (b), cell, FALSE);
+// ...
+// }
+//
+// GtkWidget *
+// my_combo_box_new (GtkCellArea *area)
+// {
+// This call is going to cause a warning about area being ignored
+// return g_object_new (MY_TYPE_COMBO_BOX, "cell-area", area, NULL);
+// }
+// ]|
+//
+// If supporting alternative cell areas with your derived widget is
+// not important, then this does not have to concern you. If you want
+// to support alternative cell areas, you can do so by moving the
+// problematic calls out of init() and into a constructor()
+// for your class.
+/*
+
+C record/class : GtkCellLayout
+*/
 type CellLayout struct {
 	native *C.GtkCellLayout
 }
@@ -567,7 +968,16 @@ func (recv *CellLayout) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ColorChooser is a wrapper around the C record GtkColorChooser.
+// #GtkColorChooser is an interface that is implemented by widgets
+// for choosing colors. Depending on the situation, colors may be
+// allowed to have alpha (translucency).
+//
+// In GTK+, the main widgets that implement this interface are
+// #GtkColorChooserWidget, #GtkColorChooserDialog and #GtkColorButton.
+/*
+
+C record/class : GtkColorChooser
+*/
 type ColorChooser struct {
 	native *C.GtkColorChooser
 }
@@ -588,7 +998,45 @@ func (recv *ColorChooser) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Editable is a wrapper around the C record GtkEditable.
+// The #GtkEditable interface is an interface which should be implemented by
+// text editing widgets, such as #GtkEntry and #GtkSpinButton. It contains functions
+// for generically manipulating an editable widget, a large number of action
+// signals used for key bindings, and several signals that an application can
+// connect to to modify the behavior of a widget.
+//
+// As an example of the latter usage, by connecting
+// the following handler to #GtkEditable::insert-text, an application
+// can convert all entry into a widget into uppercase.
+//
+// ## Forcing entry to uppercase.
+//
+// |[<!-- language="C" -->
+// #include <ctype.h>;
+//
+// void
+// insert_text_handler (GtkEditable *editable,
+// const gchar *text,
+// gint         length,
+// gint        *position,
+// gpointer     data)
+// {
+// gchar *result = g_utf8_strup (text, length);
+//
+// g_signal_handlers_block_by_func (editable,
+// (gpointer) insert_text_handler, data);
+// gtk_editable_insert_text (editable, result, length, position);
+// g_signal_handlers_unblock_by_func (editable,
+// (gpointer) insert_text_handler, data);
+//
+// g_signal_stop_emission_by_name (editable, "insert_text");
+//
+// g_free (result);
+// }
+// ]|
+/*
+
+C record/class : GtkEditable
+*/
 type Editable struct {
 	native *C.GtkEditable
 }
@@ -889,7 +1337,134 @@ func (recv *Editable) SetPosition(position int32) {
 	return
 }
 
-// FileChooser is a wrapper around the C record GtkFileChooser.
+// #GtkFileChooser is an interface that can be implemented by file
+// selection widgets.  In GTK+, the main objects that implement this
+// interface are #GtkFileChooserWidget, #GtkFileChooserDialog, and
+// #GtkFileChooserButton.  You do not need to write an object that
+// implements the #GtkFileChooser interface unless you are trying to
+// adapt an existing file selector to expose a standard programming
+// interface.
+//
+// #GtkFileChooser allows for shortcuts to various places in the filesystem.
+// In the default implementation these are displayed in the left pane. It
+// may be a bit confusing at first that these shortcuts come from various
+// sources and in various flavours, so lets explain the terminology here:
+//
+// - Bookmarks: are created by the user, by dragging folders from the
+// right pane to the left pane, or by using the “Add”. Bookmarks
+// can be renamed and deleted by the user.
+//
+// - Shortcuts: can be provided by the application. For example, a Paint
+// program may want to add a shortcut for a Clipart folder. Shortcuts
+// cannot be modified by the user.
+//
+// - Volumes: are provided by the underlying filesystem abstraction. They are
+// the “roots” of the filesystem.
+//
+// # File Names and Encodings
+//
+// When the user is finished selecting files in a
+// #GtkFileChooser, your program can get the selected names
+// either as filenames or as URIs.  For URIs, the normal escaping
+// rules are applied if the URI contains non-ASCII characters.
+// However, filenames are always returned in
+// the character set specified by the
+// `G_FILENAME_ENCODING` environment variable.
+// Please see the GLib documentation for more details about this
+// variable.
+//
+// This means that while you can pass the result of
+// gtk_file_chooser_get_filename() to open() or fopen(),
+// you may not be able to directly set it as the text of a
+// #GtkLabel widget unless you convert it first to UTF-8,
+// which all GTK+ widgets expect. You should use g_filename_to_utf8()
+// to convert filenames into strings that can be passed to GTK+
+// widgets.
+//
+// # Adding a Preview Widget
+//
+// You can add a custom preview widget to a file chooser and then
+// get notification about when the preview needs to be updated.
+// To install a preview widget, use
+// gtk_file_chooser_set_preview_widget().  Then, connect to the
+// #GtkFileChooser::update-preview signal to get notified when
+// you need to update the contents of the preview.
+//
+// Your callback should use
+// gtk_file_chooser_get_preview_filename() to see what needs
+// previewing.  Once you have generated the preview for the
+// corresponding file, you must call
+// gtk_file_chooser_set_preview_widget_active() with a boolean
+// flag that indicates whether your callback could successfully
+// generate a preview.
+//
+// ## Example: Using a Preview Widget ## {#gtkfilechooser-preview}
+// |[<!-- language="C" -->
+// {
+// GtkImage *preview;
+//
+// ...
+//
+// preview = gtk_image_new ();
+//
+// gtk_file_chooser_set_preview_widget (my_file_chooser, preview);
+// g_signal_connect (my_file_chooser, "update-preview",
+// G_CALLBACK (update_preview_cb), preview);
+// }
+//
+// static void
+// update_preview_cb (GtkFileChooser *file_chooser, gpointer data)
+// {
+// GtkWidget *preview;
+// char *filename;
+// GdkPixbuf *pixbuf;
+// gboolean have_preview;
+//
+// preview = GTK_WIDGET (data);
+// filename = gtk_file_chooser_get_preview_filename (file_chooser);
+//
+// pixbuf = gdk_pixbuf_new_from_file_at_size (filename, 128, 128, NULL);
+// have_preview = (pixbuf != NULL);
+// g_free (filename);
+//
+// gtk_image_set_from_pixbuf (GTK_IMAGE (preview), pixbuf);
+// if (pixbuf)
+// g_object_unref (pixbuf);
+//
+// gtk_file_chooser_set_preview_widget_active (file_chooser, have_preview);
+// }
+// ]|
+//
+// # Adding Extra Widgets
+//
+// You can add extra widgets to a file chooser to provide options
+// that are not present in the default design.  For example, you
+// can add a toggle button to give the user the option to open a
+// file in read-only mode.  You can use
+// gtk_file_chooser_set_extra_widget() to insert additional
+// widgets in a file chooser.
+//
+// An example for adding extra widgets:
+// |[<!-- language="C" -->
+//
+// GtkWidget *toggle;
+//
+// ...
+//
+// toggle = gtk_check_button_new_with_label ("Open file read-only");
+// gtk_widget_show (toggle);
+// gtk_file_chooser_set_extra_widget (my_file_chooser, toggle);
+// }
+// ]|
+//
+// If you want to set more than one extra widget in the file
+// chooser, you can a container such as a #GtkBox or a #GtkGrid
+// and include your widgets in it.  Then, set the container as
+// the whole extra widget.
+/*
+
+C record/class : GtkFileChooser
+*/
 type FileChooser struct {
 	native *C.GtkFileChooser
 }
@@ -1151,7 +1726,15 @@ func (recv *FileChooser) GetUsePreviewLabel() bool {
 	return retGo
 }
 
-// FontChooser is a wrapper around the C record GtkFontChooser.
+// #GtkFontChooser is an interface that can be implemented by widgets
+// displaying the list of fonts. In GTK+, the main objects
+// that implement this interface are #GtkFontChooserWidget,
+// #GtkFontChooserDialog and #GtkFontButton. The GtkFontChooser interface
+// has been introducted in GTK+ 3.2.
+/*
+
+C record/class : GtkFontChooser
+*/
 type FontChooser struct {
 	native *C.GtkFontChooser
 }
@@ -1174,7 +1757,18 @@ func (recv *FontChooser) ToC() unsafe.Pointer {
 
 // Unsupported signal 'font-activated' for FontChooser : unsupported parameter fontname : type utf8 :
 
-// Orientable is a wrapper around the C record GtkOrientable.
+// The #GtkOrientable interface is implemented by all widgets that can be
+// oriented horizontally or vertically. Historically, such widgets have been
+// realized as subclasses of a common base class (e.g #GtkBox/#GtkHBox/#GtkVBox
+// or #GtkScale/#GtkHScale/#GtkVScale). #GtkOrientable is more flexible in that
+// it allows the orientation to be changed at runtime, allowing the widgets
+// to “flip”.
+//
+// #GtkOrientable was introduced in GTK+ 2.16.
+/*
+
+C record/class : GtkOrientable
+*/
 type Orientable struct {
 	native *C.GtkOrientable
 }
@@ -1195,7 +1789,10 @@ func (recv *Orientable) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// PrintOperationPreview is a wrapper around the C record GtkPrintOperationPreview.
+/*
+
+C record/class : GtkPrintOperationPreview
+*/
 type PrintOperationPreview struct {
 	native *C.GtkPrintOperationPreview
 }
@@ -1336,7 +1933,16 @@ func printoperationpreview_readyHandler(_ *C.GObject, c_context *C.GtkPrintConte
 	callback(context)
 }
 
-// RecentChooser is a wrapper around the C record GtkRecentChooser.
+// #GtkRecentChooser is an interface that can be implemented by widgets
+// displaying the list of recently used files.  In GTK+, the main objects
+// that implement this interface are #GtkRecentChooserWidget,
+// #GtkRecentChooserDialog and #GtkRecentChooserMenu.
+//
+// Recently used files are supported since GTK+ 2.10.
+/*
+
+C record/class : GtkRecentChooser
+*/
 type RecentChooser struct {
 	native *C.GtkRecentChooser
 }
@@ -1357,7 +1963,37 @@ func (recv *RecentChooser) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Scrollable is a wrapper around the C record GtkScrollable.
+// #GtkScrollable is an interface that is implemented by widgets with native
+// scrolling ability.
+//
+// To implement this interface you should override the
+// #GtkScrollable:hadjustment and #GtkScrollable:vadjustment properties.
+//
+// ## Creating a scrollable widget
+//
+// All scrollable widgets should do the following.
+//
+// - When a parent widget sets the scrollable child widget’s adjustments,
+// the widget should populate the adjustments’
+// #GtkAdjustment:lower, #GtkAdjustment:upper,
+// #GtkAdjustment:step-increment, #GtkAdjustment:page-increment and
+// #GtkAdjustment:page-size properties and connect to the
+// #GtkAdjustment::value-changed signal.
+//
+// - Because its preferred size is the size for a fully expanded widget,
+// the scrollable widget must be able to cope with underallocations.
+// This means that it must accept any value passed to its
+// #GtkWidgetClass.size_allocate() function.
+//
+// - When the parent allocates space to the scrollable child widget,
+// the widget should update the adjustments’ properties with new values.
+//
+// - When any of the adjustments emits the #GtkAdjustment::value-changed signal,
+// the scrollable widget should scroll its contents.
+/*
+
+C record/class : GtkScrollable
+*/
 type Scrollable struct {
 	native *C.GtkScrollable
 }
@@ -1378,7 +2014,12 @@ func (recv *Scrollable) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// StyleProvider is a wrapper around the C record GtkStyleProvider.
+// GtkStyleProvider is an interface used to provide style information to a #GtkStyleContext.
+// See gtk_style_context_add_provider() and gtk_style_context_add_provider_for_screen().
+/*
+
+C record/class : GtkStyleProvider
+*/
 type StyleProvider struct {
 	native *C.GtkStyleProvider
 }
@@ -1399,7 +2040,12 @@ func (recv *StyleProvider) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ToolShell is a wrapper around the C record GtkToolShell.
+// The #GtkToolShell interface allows container widgets to provide additional
+// information when embedding #GtkToolItem widgets.
+/*
+
+C record/class : GtkToolShell
+*/
 type ToolShell struct {
 	native *C.GtkToolShell
 }
@@ -1420,7 +2066,10 @@ func (recv *ToolShell) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TreeDragDest is a wrapper around the C record GtkTreeDragDest.
+/*
+
+C record/class : GtkTreeDragDest
+*/
 type TreeDragDest struct {
 	native *C.GtkTreeDragDest
 }
@@ -1494,7 +2143,10 @@ func (recv *TreeDragDest) RowDropPossible(destPath *TreePath, selectionData *Sel
 	return retGo
 }
 
-// TreeDragSource is a wrapper around the C record GtkTreeDragSource.
+/*
+
+C record/class : GtkTreeDragSource
+*/
 type TreeDragSource struct {
 	native *C.GtkTreeDragSource
 }
@@ -1580,7 +2232,204 @@ func (recv *TreeDragSource) RowDraggable(path *TreePath) bool {
 	return retGo
 }
 
-// TreeModel is a wrapper around the C record GtkTreeModel.
+// The #GtkTreeModel interface defines a generic tree interface for
+// use by the #GtkTreeView widget. It is an abstract interface, and
+// is designed to be usable with any appropriate data structure. The
+// programmer just has to implement this interface on their own data
+// type for it to be viewable by a #GtkTreeView widget.
+//
+// The model is represented as a hierarchical tree of strongly-typed,
+// columned data. In other words, the model can be seen as a tree where
+// every node has different values depending on which column is being
+// queried. The type of data found in a column is determined by using
+// the GType system (ie. #G_TYPE_INT, #GTK_TYPE_BUTTON, #G_TYPE_POINTER,
+// etc). The types are homogeneous per column across all nodes. It is
+// important to note that this interface only provides a way of examining
+// a model and observing changes. The implementation of each individual
+// model decides how and if changes are made.
+//
+// In order to make life simpler for programmers who do not need to
+// write their own specialized model, two generic models are provided
+// — the #GtkTreeStore and the #GtkListStore. To use these, the
+// developer simply pushes data into these models as necessary. These
+// models provide the data structure as well as all appropriate tree
+// interfaces. As a result, implementing drag and drop, sorting, and
+// storing data is trivial. For the vast majority of trees and lists,
+// these two models are sufficient.
+//
+// Models are accessed on a node/column level of granularity. One can
+// query for the value of a model at a certain node and a certain
+// column on that node. There are two structures used to reference a
+// particular node in a model. They are the #GtkTreePath-struct and
+// the #GtkTreeIter-struct (“iter” is short for iterator). Most of the
+// interface consists of operations on a #GtkTreeIter-struct.
+//
+// A path is essentially a potential node. It is a location on a model
+// that may or may not actually correspond to a node on a specific
+// model. The #GtkTreePath-struct can be converted into either an
+// array of unsigned integers or a string. The string form is a list
+// of numbers separated by a colon. Each number refers to the offset
+// at that level. Thus, the path `0` refers to the root
+// node and the path `2:4` refers to the fifth child of
+// the third node.
+//
+// By contrast, a #GtkTreeIter-struct is a reference to a specific node on
+// a specific model. It is a generic struct with an integer and three
+// generic pointers. These are filled in by the model in a model-specific
+// way. One can convert a path to an iterator by calling
+// gtk_tree_model_get_iter(). These iterators are the primary way
+// of accessing a model and are similar to the iterators used by
+// #GtkTextBuffer. They are generally statically allocated on the
+// stack and only used for a short time. The model interface defines
+// a set of operations using them for navigating the model.
+//
+// It is expected that models fill in the iterator with private data.
+// For example, the #GtkListStore model, which is internally a simple
+// linked list, stores a list node in one of the pointers. The
+// #GtkTreeModelSort stores an array and an offset in two of the
+// pointers. Additionally, there is an integer field. This field is
+// generally filled with a unique stamp per model. This stamp is for
+// catching errors resulting from using invalid iterators with a model.
+//
+// The lifecycle of an iterator can be a little confusing at first.
+// Iterators are expected to always be valid for as long as the model
+// is unchanged (and doesn’t emit a signal). The model is considered
+// to own all outstanding iterators and nothing needs to be done to
+// free them from the user’s point of view. Additionally, some models
+// guarantee that an iterator is valid for as long as the node it refers
+// to is valid (most notably the #GtkTreeStore and #GtkListStore).
+// Although generally uninteresting, as one always has to allow for
+// the case where iterators do not persist beyond a signal, some very
+// important performance enhancements were made in the sort model.
+// As a result, the #GTK_TREE_MODEL_ITERS_PERSIST flag was added to
+// indicate this behavior.
+//
+// To help show some common operation of a model, some examples are
+// provided. The first example shows three ways of getting the iter at
+// the location `3:2:5`. While the first method shown is
+// easier, the second is much more common, as you often get paths from
+// callbacks.
+//
+// ## Acquiring a #GtkTreeIter-struct
+//
+// |[<!-- language="C" -->
+// Three ways of getting the iter pointing to the location
+// GtkTreePath *path;
+// GtkTreeIter iter;
+// GtkTreeIter parent_iter;
+//
+// get the iterator from a string
+// gtk_tree_model_get_iter_from_string (model,
+// &iter,
+// "3:2:5");
+//
+// get the iterator from a path
+// path = gtk_tree_path_new_from_string ("3:2:5");
+// gtk_tree_model_get_iter (model, &iter, path);
+// gtk_tree_path_free (path);
+//
+// walk the tree to find the iterator
+// gtk_tree_model_iter_nth_child (model, &iter,
+// NULL, 3);
+// parent_iter = iter;
+// gtk_tree_model_iter_nth_child (model, &iter,
+// &parent_iter, 2);
+// parent_iter = iter;
+// gtk_tree_model_iter_nth_child (model, &iter,
+// &parent_iter, 5);
+// ]|
+//
+// This second example shows a quick way of iterating through a list
+// and getting a string and an integer from each row. The
+// populate_model() function used below is not
+// shown, as it is specific to the #GtkListStore. For information on
+// how to write such a function, see the #GtkListStore documentation.
+//
+// ## Reading data from a #GtkTreeModel
+//
+// |[<!-- language="C" -->
+// enum
+// {
+// STRING_COLUMN,
+// INT_COLUMN,
+// N_COLUMNS
+// };
+//
+// ...
+//
+// GtkTreeModel *list_store;
+// GtkTreeIter iter;
+// gboolean valid;
+// gint row_count = 0;
+//
+// make a new list_store
+// list_store = gtk_list_store_new (N_COLUMNS,
+// G_TYPE_STRING,
+// G_TYPE_INT);
+//
+// Fill the list store with data
+// populate_model (list_store);
+//
+// Get the first iter in the list, check it is valid and walk
+// through the list, reading each row.
+//
+// valid = gtk_tree_model_get_iter_first (list_store,
+// &iter);
+// while (valid)
+// {
+// gchar *str_data;
+// gint   int_data;
+//
+// Make sure you terminate calls to gtk_tree_model_get() with a “-1” value
+// gtk_tree_model_get (list_store, &iter,
+// STRING_COLUMN, &str_data,
+// INT_COLUMN, &int_data,
+// -1);
+//
+// Do something with the data
+// g_print ("Row %d: (%s,%d)\n",
+// row_count, str_data, int_data);
+// g_free (str_data);
+//
+// valid = gtk_tree_model_iter_next (list_store,
+// &iter);
+// row_count++;
+// }
+// ]|
+//
+// The #GtkTreeModel interface contains two methods for reference
+// counting: gtk_tree_model_ref_node() and gtk_tree_model_unref_node().
+// These two methods are optional to implement. The reference counting
+// is meant as a way for views to let models know when nodes are being
+// displayed. #GtkTreeView will take a reference on a node when it is
+// visible, which means the node is either in the toplevel or expanded.
+// Being displayed does not mean that the node is currently directly
+// visible to the user in the viewport. Based on this reference counting
+// scheme a caching model, for example, can decide whether or not to cache
+// a node based on the reference count. A file-system based model would
+// not want to keep the entire file hierarchy in memory, but just the
+// folders that are currently expanded in every current view.
+//
+// When working with reference counting, the following rules must be taken
+// into account:
+//
+// - Never take a reference on a node without owning a reference on its parent.
+// This means that all parent nodes of a referenced node must be referenced
+// as well.
+//
+// - Outstanding references on a deleted node are not released. This is not
+// possible because the node has already been deleted by the time the
+// row-deleted signal is received.
+//
+// - Models are not obligated to emit a signal on rows of which none of its
+// siblings are referenced. To phrase this differently, signals are only
+// required for levels in which nodes are referenced. For the root level
+// however, signals must be emitted at all times (however the root level
+// is always referenced when any view is attached).
+/*
+
+C record/class : GtkTreeModel
+*/
 type TreeModel struct {
 	native *C.GtkTreeModel
 }
@@ -2321,7 +3170,13 @@ func (recv *TreeModel) UnrefNode(iter *TreeIter) {
 	return
 }
 
-// TreeSortable is a wrapper around the C record GtkTreeSortable.
+// #GtkTreeSortable is an interface to be implemented by tree models which
+// support sorting. The #GtkTreeView uses the methods provided by this interface
+// to sort the model.
+/*
+
+C record/class : GtkTreeSortable
+*/
 type TreeSortable struct {
 	native *C.GtkTreeSortable
 }

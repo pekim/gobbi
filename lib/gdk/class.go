@@ -125,7 +125,30 @@ import (
 */
 import "C"
 
-// AppLaunchContext is a wrapper around the C record GdkAppLaunchContext.
+// GdkAppLaunchContext is an implementation of #GAppLaunchContext that
+// handles launching an application in a graphical context. It provides
+// startup notification and allows to launch applications on a specific
+// screen or workspace.
+//
+// ## Launching an application
+//
+// |[<!-- language="C" -->
+// GdkAppLaunchContext *context;
+//
+// context = gdk_display_get_app_launch_context (display);
+//
+// gdk_app_launch_context_set_screen (screen);
+// gdk_app_launch_context_set_timestamp (event->time);
+//
+// if (!g_app_info_launch_default_for_uri ("http://www.gtk.org", context, &error))
+// g_warning ("Launching failed: %s\n", error->message);
+//
+// g_object_unref (context);
+// ]|
+/*
+
+C record/class : GdkAppLaunchContext
+*/
 type AppLaunchContext struct {
 	native *C.GdkAppLaunchContext
 }
@@ -162,7 +185,11 @@ func CastToAppLaunchContext(object *gobject.Object) *AppLaunchContext {
 	return AppLaunchContextNewFromC(object.ToC())
 }
 
-// Cursor is a wrapper around the C record GdkCursor.
+// A #GdkCursor represents a cursor. Its contents are private.
+/*
+
+C record/class : GdkCursor
+*/
 type Cursor struct {
 	native *C.GdkCursor
 }
@@ -235,7 +262,16 @@ func (recv *Cursor) Unref() {
 	return
 }
 
-// Device is a wrapper around the C record GdkDevice.
+// The #GdkDevice object represents a single input device, such
+// as a keyboard, a mouse, a touchpad, etc.
+//
+// See the #GdkDeviceManager documentation for more information
+// about the various kinds of master and slave devices, and their
+// relationships.
+/*
+
+C record/class : GdkDevice
+*/
 type Device struct {
 	native *C.GdkDevice
 }
@@ -421,7 +457,124 @@ func (recv *Device) SetMode(mode InputMode) bool {
 	return retGo
 }
 
-// DeviceManager is a wrapper around the C record GdkDeviceManager.
+// In addition to a single pointer and keyboard for user interface input,
+// GDK contains support for a variety of input devices, including graphics
+// tablets, touchscreens and multiple pointers/keyboards interacting
+// simultaneously with the user interface. Such input devices often have
+// additional features, such as sub-pixel positioning information and
+// additional device-dependent information.
+//
+// In order to query the device hierarchy and be aware of changes in the
+// device hierarchy (such as virtual devices being created or removed, or
+// physical devices being plugged or unplugged), GDK provides
+// #GdkDeviceManager.
+//
+// By default, and if the platform supports it, GDK is aware of multiple
+// keyboard/pointer pairs and multitouch devices. This behavior can be
+// changed by calling gdk_disable_multidevice() before gdk_display_open().
+// There should rarely be a need to do that though, since GDK defaults
+// to a compatibility mode in which it will emit just one enter/leave
+// event pair for all devices on a window. To enable per-device
+// enter/leave events and other multi-pointer interaction features,
+// gdk_window_set_support_multidevice() must be called on
+// #GdkWindows (or gtk_widget_set_support_multidevice() on widgets).
+// window. See the gdk_window_set_support_multidevice() documentation
+// for more information.
+//
+// On X11, multi-device support is implemented through XInput 2.
+// Unless gdk_disable_multidevice() is called, the XInput 2
+// #GdkDeviceManager implementation will be used as the input source.
+// Otherwise either the core or XInput 1 implementations will be used.
+//
+// For simple applications that don’t have any special interest in
+// input devices, the so-called “client pointer”
+// provides a reasonable approximation to a simple setup with a single
+// pointer and keyboard. The device that has been set as the client
+// pointer can be accessed via gdk_device_manager_get_client_pointer().
+//
+// Conceptually, in multidevice mode there are 2 device types. Virtual
+// devices (or master devices) are represented by the pointer cursors
+// and keyboard foci that are seen on the screen. Physical devices (or
+// slave devices) represent the hardware that is controlling the virtual
+// devices, and thus have no visible cursor on the screen.
+//
+// Virtual devices are always paired, so there is a keyboard device for every
+// pointer device. Associations between devices may be inspected through
+// gdk_device_get_associated_device().
+//
+// There may be several virtual devices, and several physical devices could
+// be controlling each of these virtual devices. Physical devices may also
+// be “floating”, which means they are not attached to any virtual device.
+//
+// # Master and slave devices
+//
+// |[
+// carlos@sacarino:~$ xinput list
+// ⎡ Virtual core pointer                          id=2    [master pointer  (3)]
+// ⎜   ↳ Virtual core XTEST pointer                id=4    [slave  pointer  (2)]
+// ⎜   ↳ Wacom ISDv4 E6 Pen stylus                 id=10   [slave  pointer  (2)]
+// ⎜   ↳ Wacom ISDv4 E6 Finger touch               id=11   [slave  pointer  (2)]
+// ⎜   ↳ SynPS/2 Synaptics TouchPad                id=13   [slave  pointer  (2)]
+// ⎜   ↳ TPPS/2 IBM TrackPoint                     id=14   [slave  pointer  (2)]
+// ⎜   ↳ Wacom ISDv4 E6 Pen eraser                 id=16   [slave  pointer  (2)]
+// ⎣ Virtual core keyboard                         id=3    [master keyboard (2)]
+// ↳ Virtual core XTEST keyboard               id=5    [slave  keyboard (3)]
+// ↳ Power Button                              id=6    [slave  keyboard (3)]
+// ↳ Video Bus                                 id=7    [slave  keyboard (3)]
+// ↳ Sleep Button                              id=8    [slave  keyboard (3)]
+// ↳ Integrated Camera                         id=9    [slave  keyboard (3)]
+// ↳ AT Translated Set 2 keyboard              id=12   [slave  keyboard (3)]
+// ↳ ThinkPad Extra Buttons                    id=15   [slave  keyboard (3)]
+// ]|
+//
+// By default, GDK will automatically listen for events coming from all
+// master devices, setting the #GdkDevice for all events coming from input
+// devices. Events containing device information are #GDK_MOTION_NOTIFY,
+// #GDK_BUTTON_PRESS, #GDK_2BUTTON_PRESS, #GDK_3BUTTON_PRESS,
+// #GDK_BUTTON_RELEASE, #GDK_SCROLL, #GDK_KEY_PRESS, #GDK_KEY_RELEASE,
+// #GDK_ENTER_NOTIFY, #GDK_LEAVE_NOTIFY, #GDK_FOCUS_CHANGE,
+// #GDK_PROXIMITY_IN, #GDK_PROXIMITY_OUT, #GDK_DRAG_ENTER, #GDK_DRAG_LEAVE,
+// #GDK_DRAG_MOTION, #GDK_DRAG_STATUS, #GDK_DROP_START, #GDK_DROP_FINISHED
+// and #GDK_GRAB_BROKEN. When dealing with an event on a master device,
+// it is possible to get the source (slave) device that the event originated
+// from via gdk_event_get_source_device().
+//
+// On a standard session, all physical devices are connected by default to
+// the "Virtual Core Pointer/Keyboard" master devices, hence routing all events
+// through these. This behavior is only modified by device grabs, where the
+// slave device is temporarily detached for as long as the grab is held, and
+// more permanently by user modifications to the device hierarchy.
+//
+// On certain application specific setups, it may make sense
+// to detach a physical device from its master pointer, and mapping it to
+// an specific window. This can be achieved by the combination of
+// gdk_device_grab() and gdk_device_set_mode().
+//
+// In order to listen for events coming from devices
+// other than a virtual device, gdk_window_set_device_events() must be
+// called. Generally, this function can be used to modify the event mask
+// for any given device.
+//
+// Input devices may also provide additional information besides X/Y.
+// For example, graphics tablets may also provide pressure and X/Y tilt
+// information. This information is device-dependent, and may be
+// queried through gdk_device_get_axis(). In multidevice mode, virtual
+// devices will change axes in order to always represent the physical
+// device that is routing events through it. Whenever the physical device
+// changes, the #GdkDevice:n-axes property will be notified, and
+// gdk_device_list_axes() will return the new device axes.
+//
+// Devices may also have associated “keys” or
+// macro buttons. Such keys can be globally set to map into normal X
+// keyboard events. The mapping is set using gdk_device_set_key().
+//
+// In GTK+ 3.20, a new #GdkSeat object has been introduced that
+// supersedes #GdkDeviceManager and should be preferred in newly
+// written code.
+/*
+
+C record/class : GdkDeviceManager
+*/
 type DeviceManager struct {
 	native *C.GdkDeviceManager
 }
@@ -630,7 +783,28 @@ func devicemanager_deviceRemovedHandler(_ *C.GObject, c_device *C.GdkDevice, dat
 	callback(device)
 }
 
-// Display is a wrapper around the C record GdkDisplay.
+// #GdkDisplay objects purpose are two fold:
+//
+// - To manage and provide information about input devices (pointers and keyboards)
+//
+// - To manage and provide information about the available #GdkScreens
+//
+// GdkDisplay objects are the GDK representation of an X Display,
+// which can be described as a workstation consisting of
+// a keyboard, a pointing device (such as a mouse) and one or more
+// screens.
+// It is used to open and keep track of various GdkScreen objects
+// currently instantiated by the application. It is also used to
+// access the keyboard(s) and mouse pointer(s) of the display.
+//
+// Most of the input device handling has been factored out into
+// the separate #GdkDeviceManager object. Every display has a
+// device manager, which you can obtain using
+// gdk_display_get_device_manager().
+/*
+
+C record/class : GdkDisplay
+*/
 type Display struct {
 	native *C.GdkDisplay
 }
@@ -736,7 +910,49 @@ func (recv *Display) DeviceIsGrabbed(device *Device) bool {
 	return retGo
 }
 
-// DisplayManager is a wrapper around the C record GdkDisplayManager.
+// The purpose of the #GdkDisplayManager singleton object is to offer
+// notification when displays appear or disappear or the default display
+// changes.
+//
+// You can use gdk_display_manager_get() to obtain the #GdkDisplayManager
+// singleton, but that should be rarely necessary. Typically, initializing
+// GTK+ opens a display that you can work with without ever accessing the
+// #GdkDisplayManager.
+//
+// The GDK library can be built with support for multiple backends.
+// The #GdkDisplayManager object determines which backend is used
+// at runtime.
+//
+// When writing backend-specific code that is supposed to work with
+// multiple GDK backends, you have to consider both compile time and
+// runtime. At compile time, use the #GDK_WINDOWING_X11, #GDK_WINDOWING_WIN32
+// macros, etc. to find out which backends are present in the GDK library
+// you are building your application against. At runtime, use type-check
+// macros like GDK_IS_X11_DISPLAY() to find out which backend is in use:
+//
+// ## Backend-specific code ## {#backend-specific}
+//
+// |[<!-- language="C" -->
+// #ifdef GDK_WINDOWING_X11
+// if (GDK_IS_X11_DISPLAY (display))
+// {
+// make X11-specific calls here
+// }
+// else
+// #endif
+// #ifdef GDK_WINDOWING_QUARTZ
+// if (GDK_IS_QUARTZ_DISPLAY (display))
+// {
+// make Quartz-specific calls here
+// }
+// else
+// #endif
+// g_error ("Unsupported GDK backend");
+// ]|
+/*
+
+C record/class : GdkDisplayManager
+*/
 type DisplayManager struct {
 	native *C.GdkDisplayManager
 }
@@ -768,7 +984,10 @@ func CastToDisplayManager(object *gobject.Object) *DisplayManager {
 	return DisplayManagerNewFromC(object.ToC())
 }
 
-// DragContext is a wrapper around the C record GdkDragContext.
+/*
+
+C record/class : GdkDragContext
+*/
 type DragContext struct {
 	native *C.GdkDragContext
 }
@@ -829,7 +1048,43 @@ func (recv *DragContext) SetDevice(device *Device) {
 	return
 }
 
-// FrameClock is a wrapper around the C record GdkFrameClock.
+// A #GdkFrameClock tells the application when to update and repaint a
+// window. This may be synced to the vertical refresh rate of the
+// monitor, for example. Even when the frame clock uses a simple timer
+// rather than a hardware-based vertical sync, the frame clock helps
+// because it ensures everything paints at the same time (reducing the
+// total number of frames). The frame clock can also automatically
+// stop painting when it knows the frames will not be visible, or
+// scale back animation framerates.
+//
+// #GdkFrameClock is designed to be compatible with an OpenGL-based
+// implementation or with mozRequestAnimationFrame in Firefox,
+// for example.
+//
+// A frame clock is idle until someone requests a frame with
+// gdk_frame_clock_request_phase(). At some later point that makes
+// sense for the synchronization being implemented, the clock will
+// process a frame and emit signals for each phase that has been
+// requested. (See the signals of the #GdkFrameClock class for
+// documentation of the phases. %GDK_FRAME_CLOCK_PHASE_UPDATE and the
+// #GdkFrameClock::update signal are most interesting for application
+// writers, and are used to update the animations, using the frame time
+// given by gdk_frame_clock_get_frame_time().
+//
+// The frame time is reported in microseconds and generally in the same
+// timescale as g_get_monotonic_time(), however, it is not the same
+// as g_get_monotonic_time(). The frame time does not advance during
+// the time a frame is being painted, and outside of a frame, an attempt
+// is made so that all calls to gdk_frame_clock_get_frame_time() that
+// are called at a “similar” time get the same value. This means that
+// if different animations are timed by looking at the difference in
+// time between an initial value from gdk_frame_clock_get_frame_time()
+// and the value inside the #GdkFrameClock::update signal of the clock,
+// they will stay exactly synchronized.
+/*
+
+C record/class : GdkFrameClock
+*/
 type FrameClock struct {
 	native *C.GdkFrameClock
 }
@@ -1260,7 +1515,61 @@ func frameclock_updateHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// GLContext is a wrapper around the C record GdkGLContext.
+// #GdkGLContext is an object representing the platform-specific
+// OpenGL drawing context.
+//
+// #GdkGLContexts are created for a #GdkWindow using
+// gdk_window_create_gl_context(), and the context will match
+// the #GdkVisual of the window.
+//
+// A #GdkGLContext is not tied to any particular normal framebuffer.
+// For instance, it cannot draw to the #GdkWindow back buffer. The GDK
+// repaint system is in full control of the painting to that. Instead,
+// you can create render buffers or textures and use gdk_cairo_draw_from_gl()
+// in the draw function of your widget to draw them. Then GDK will handle
+// the integration of your rendering with that of other widgets.
+//
+// Support for #GdkGLContext is platform-specific, context creation
+// can fail, returning %NULL context.
+//
+// A #GdkGLContext has to be made "current" in order to start using
+// it, otherwise any OpenGL call will be ignored.
+//
+// ## Creating a new OpenGL context ##
+//
+// In order to create a new #GdkGLContext instance you need a
+// #GdkWindow, which you typically get during the realize call
+// of a widget.
+//
+// A #GdkGLContext is not realized until either gdk_gl_context_make_current(),
+// or until it is realized using gdk_gl_context_realize(). It is possible to
+// specify details of the GL context like the OpenGL version to be used, or
+// whether the GL context should have extra state validation enabled after
+// calling gdk_window_create_gl_context() by calling gdk_gl_context_realize().
+// If the realization fails you have the option to change the settings of the
+// #GdkGLContext and try again.
+//
+// ## Using a GdkGLContext ##
+//
+// You will need to make the #GdkGLContext the current context
+// before issuing OpenGL calls; the system sends OpenGL commands to
+// whichever context is current. It is possible to have multiple
+// contexts, so you always need to ensure that the one which you
+// want to draw with is the current one before issuing commands:
+//
+// |[<!-- language="C" -->
+// gdk_gl_context_make_current (context);
+// ]|
+//
+// You can now perform your drawing using OpenGL commands.
+//
+// You can check which #GdkGLContext is the current one by using
+// gdk_gl_context_get_current(); you can also unset any #GdkGLContext
+// that is currently set by calling gdk_gl_context_clear_current().
+/*
+
+C record/class : GdkGLContext
+*/
 type GLContext struct {
 	native *C.GdkGLContext
 }
@@ -1292,7 +1601,16 @@ func CastToGLContext(object *gobject.Object) *GLContext {
 	return GLContextNewFromC(object.ToC())
 }
 
-// Keymap is a wrapper around the C record GdkKeymap.
+// A #GdkKeymap defines the translation from keyboard state
+// (including a hardware key, a modifier mask, and active keyboard group)
+// to a keyval. This translation has two phases. The first phase is
+// to determine the effective keyboard group and level for the keyboard
+// state; the second phase is to look up the keycode/group/level triplet
+// in the keymap and see what keyval it corresponds to.
+/*
+
+C record/class : GdkKeymap
+*/
 type Keymap struct {
 	native *C.GdkKeymap
 }
@@ -1363,7 +1681,21 @@ func (recv *Keymap) LookupKey(key *KeymapKey) uint32 {
 
 // Unsupported : gdk_keymap_translate_keyboard_state : unsupported parameter consumed_modifiers : GdkModifierType* with indirection level of 1
 
-// Screen is a wrapper around the C record GdkScreen.
+// #GdkScreen objects are the GDK representation of the screen on
+// which windows can be displayed and on which the pointer moves.
+// X originally identified screens with physical screens, but
+// nowadays it is more common to have a single #GdkScreen which
+// combines several physical monitors (see gdk_screen_get_n_monitors()).
+//
+// GdkScreen is used throughout GDK and GTK+ to specify which screen
+// the top level windows are to be displayed on. it is also used to
+// query the screen specification and default settings such as
+// the default visual (gdk_screen_get_system_visual()), the dimensions
+// of the physical monitors (gdk_screen_get_monitor_geometry()), etc.
+/*
+
+C record/class : GdkScreen
+*/
 type Screen struct {
 	native *C.GdkScreen
 }
@@ -1395,7 +1727,12 @@ func CastToScreen(object *gobject.Object) *Screen {
 	return ScreenNewFromC(object.ToC())
 }
 
-// Visual is a wrapper around the C record GdkVisual.
+// A #GdkVisual contains information about
+// a particular visual.
+/*
+
+C record/class : GdkVisual
+*/
 type Visual struct {
 	native *C.GdkVisual
 }
@@ -1427,7 +1764,10 @@ func CastToVisual(object *gobject.Object) *Visual {
 	return VisualNewFromC(object.ToC())
 }
 
-// Window is a wrapper around the C record GdkWindow.
+/*
+
+C record/class : GdkWindow
+*/
 type Window struct {
 	native *C.GdkWindow
 }

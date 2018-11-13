@@ -10,7 +10,10 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// DevicePadInterface is a wrapper around the C record GdkDevicePadInterface.
+/*
+
+C record/class : GdkDevicePadInterface
+*/
 type DevicePadInterface struct {
 	native *C.GdkDevicePadInterface
 }
@@ -31,7 +34,10 @@ func (recv *DevicePadInterface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// DrawingContextClass is a wrapper around the C record GdkDrawingContextClass.
+/*
+
+C record/class : GdkDrawingContextClass
+*/
 type DrawingContextClass struct {
 	native *C.GdkDrawingContextClass
 }
@@ -52,7 +58,11 @@ func (recv *DrawingContextClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// EventPadAxis is a wrapper around the C record GdkEventPadAxis.
+// Generated during %GDK_SOURCE_TABLET_PAD interaction with tactile sensors.
+/*
+
+C record/class : GdkEventPadAxis
+*/
 type EventPadAxis struct {
 	native *C.GdkEventPadAxis
 	Type   EventType
@@ -104,7 +114,11 @@ func (recv *EventPadAxis) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// EventPadButton is a wrapper around the C record GdkEventPadButton.
+// Generated during %GDK_SOURCE_TABLET_PAD button presses and releases.
+/*
+
+C record/class : GdkEventPadButton
+*/
 type EventPadButton struct {
 	native *C.GdkEventPadButton
 	Type   EventType
@@ -152,7 +166,11 @@ func (recv *EventPadButton) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// EventPadGroupMode is a wrapper around the C record GdkEventPadGroupMode.
+// Generated during %GDK_SOURCE_TABLET_PAD mode switches in a group.
+/*
+
+C record/class : GdkEventPadGroupMode
+*/
 type EventPadGroupMode struct {
 	native *C.GdkEventPadGroupMode
 	Type   EventType
@@ -196,7 +214,10 @@ func (recv *EventPadGroupMode) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// MonitorClass is a wrapper around the C record GdkMonitorClass.
+/*
+
+C record/class : GdkMonitorClass
+*/
 type MonitorClass struct {
 	native *C.GdkMonitorClass
 }

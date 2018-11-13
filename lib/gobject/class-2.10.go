@@ -58,7 +58,11 @@ func (recv *Object) RefSink() uintptr {
 	return retGo
 }
 
-// ParamSpecGType is a wrapper around the C record GParamSpecGType.
+// A #GParamSpec derived structure that contains the meta data for #GType properties.
+/*
+
+C record/class : GParamSpecGType
+*/
 type ParamSpecGType struct {
 	native *C.GParamSpecGType
 	// parent_instance : record

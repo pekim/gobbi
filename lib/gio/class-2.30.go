@@ -30,7 +30,11 @@ import "C"
 
 // Unsupported : g_dbus_connection_call_with_unix_fd_list_sync : unsupported parameter parameters : Blacklisted record : GVariant
 
-// DBusInterfaceSkeleton is a wrapper around the C record GDBusInterfaceSkeleton.
+// Abstract base class for D-Bus interfaces on the service side.
+/*
+
+C record/class : GDBusInterfaceSkeleton
+*/
 type DBusInterfaceSkeleton struct {
 	native *C.GDBusInterfaceSkeleton
 	// Private : parent_instance
@@ -231,7 +235,85 @@ func (recv *DBusMethodInvocation) TakeError(error *glib.Error) {
 	return
 }
 
-// DBusObjectManagerClient is a wrapper around the C record GDBusObjectManagerClient.
+// #GDBusObjectManagerClient is used to create, monitor and delete object
+// proxies for remote objects exported by a #GDBusObjectManagerServer (or any
+// code implementing the
+// [org.freedesktop.DBus.ObjectManager](http://dbus.freedesktop.org/doc/dbus-specification.html#standard-interfaces-objectmanager)
+// interface).
+//
+// Once an instance of this type has been created, you can connect to
+// the #GDBusObjectManager::object-added and
+// #GDBusObjectManager::object-removed signals and inspect the
+// #GDBusObjectProxy objects returned by
+// g_dbus_object_manager_get_objects().
+//
+// If the name for a #GDBusObjectManagerClient is not owned by anyone at
+// object construction time, the default behavior is to request the
+// message bus to launch an owner for the name. This behavior can be
+// disabled using the %G_DBUS_OBJECT_MANAGER_CLIENT_FLAGS_DO_NOT_AUTO_START
+// flag. It's also worth noting that this only works if the name of
+// interest is activatable in the first place. E.g. in some cases it
+// is not possible to launch an owner for the requested name. In this
+// case, #GDBusObjectManagerClient object construction still succeeds but
+// there will be no object proxies
+// (e.g. g_dbus_object_manager_get_objects() returns the empty list) and
+// the #GDBusObjectManagerClient:name-owner property is %NULL.
+//
+// The owner of the requested name can come and go (for example
+// consider a system service being restarted) – #GDBusObjectManagerClient
+// handles this case too; simply connect to the #GObject::notify
+// signal to watch for changes on the #GDBusObjectManagerClient:name-owner
+// property. When the name owner vanishes, the behavior is that
+// #GDBusObjectManagerClient:name-owner is set to %NULL (this includes
+// emission of the #GObject::notify signal) and then
+// #GDBusObjectManager::object-removed signals are synthesized
+// for all currently existing object proxies. Since
+// #GDBusObjectManagerClient:name-owner is %NULL when this happens, you can
+// use this information to disambiguate a synthesized signal from a
+// genuine signal caused by object removal on the remote
+// #GDBusObjectManager. Similarly, when a new name owner appears,
+// #GDBusObjectManager::object-added signals are synthesized
+// while #GDBusObjectManagerClient:name-owner is still %NULL. Only when all
+// object proxies have been added, the #GDBusObjectManagerClient:name-owner
+// is set to the new name owner (this includes emission of the
+// #GObject::notify signal).  Furthermore, you are guaranteed that
+// #GDBusObjectManagerClient:name-owner will alternate between a name owner
+// (e.g. `:1.42`) and %NULL even in the case where
+// the name of interest is atomically replaced
+//
+// Ultimately, #GDBusObjectManagerClient is used to obtain #GDBusProxy
+// instances. All signals (including the
+// org.freedesktop.DBus.Properties::PropertiesChanged signal)
+// delivered to #GDBusProxy instances are guaranteed to originate
+// from the name owner. This guarantee along with the behavior
+// described above, means that certain race conditions including the
+// "half the proxy is from the old owner and the other half is from
+// the new owner" problem cannot happen.
+//
+// To avoid having the application connect to signals on the returned
+// #GDBusObjectProxy and #GDBusProxy objects, the
+// #GDBusObject::interface-added,
+// #GDBusObject::interface-removed,
+// #GDBusProxy::g-properties-changed and
+// #GDBusProxy::g-signal signals
+// are also emitted on the #GDBusObjectManagerClient instance managing these
+// objects. The signals emitted are
+// #GDBusObjectManager::interface-added,
+// #GDBusObjectManager::interface-removed,
+// #GDBusObjectManagerClient::interface-proxy-properties-changed and
+// #GDBusObjectManagerClient::interface-proxy-signal.
+//
+// Note that all callbacks and signals are emitted in the
+// [thread-default main context][g-main-context-push-thread-default]
+// that the #GDBusObjectManagerClient object was constructed
+// in. Additionally, the #GDBusObjectProxy and #GDBusProxy objects
+// originating from the #GDBusObjectManagerClient object will be created in
+// the same context and, consequently, will deliver signals in the
+// same main loop.
+/*
+
+C record/class : GDBusObjectManagerClient
+*/
 type DBusObjectManagerClient struct {
 	native *C.GDBusObjectManagerClient
 	// Private : parent_instance
@@ -364,7 +446,32 @@ func (recv *DBusObjectManagerClient) GetNameOwner() string {
 	return retGo
 }
 
-// DBusObjectManagerServer is a wrapper around the C record GDBusObjectManagerServer.
+// #GDBusObjectManagerServer is used to export #GDBusObject instances using
+// the standardized
+// [org.freedesktop.DBus.ObjectManager](http://dbus.freedesktop.org/doc/dbus-specification.html#standard-interfaces-objectmanager)
+// interface. For example, remote D-Bus clients can get all objects
+// and properties in a single call. Additionally, any change in the
+// object hierarchy is broadcast using signals. This means that D-Bus
+// clients can keep caches up to date by only listening to D-Bus
+// signals.
+//
+// The recommended path to export an object manager at is the path form of the
+// well-known name of a D-Bus service, or below. For example, if a D-Bus service
+// is available at the well-known name `net.example.ExampleService1`, the object
+// manager should typically be exported at `/net/example/ExampleService1`, or
+// below (to allow for multiple object managers in a service).
+//
+// It is supported, but not recommended, to export an object manager at the root
+// path, `/`.
+//
+// See #GDBusObjectManagerClient for the client-side code that is
+// intended to be used with #GDBusObjectManagerServer or any D-Bus
+// object implementing the org.freedesktop.DBus.ObjectManager
+// interface.
+/*
+
+C record/class : GDBusObjectManagerServer
+*/
 type DBusObjectManagerServer struct {
 	native *C.GDBusObjectManagerServer
 	// Private : parent_instance
@@ -511,7 +618,14 @@ func (recv *DBusObjectManagerServer) Unexport(objectPath string) bool {
 	return retGo
 }
 
-// DBusObjectProxy is a wrapper around the C record GDBusObjectProxy.
+// A #GDBusObjectProxy is an object used to represent a remote object
+// with one or more D-Bus interfaces. Normally, you don't instantiate
+// a #GDBusObjectProxy yourself - typically #GDBusObjectManagerClient
+// is used to obtain it.
+/*
+
+C record/class : GDBusObjectProxy
+*/
 type DBusObjectProxy struct {
 	native *C.GDBusObjectProxy
 	// Private : parent_instance
@@ -578,7 +692,15 @@ func (recv *DBusObjectProxy) GetConnection() *DBusConnection {
 	return retGo
 }
 
-// DBusObjectSkeleton is a wrapper around the C record GDBusObjectSkeleton.
+// A #GDBusObjectSkeleton instance is essentially a group of D-Bus
+// interfaces. The set of exported interfaces on the object may be
+// dynamic and change at runtime.
+//
+// This type is intended to be used with #GDBusObjectManager.
+/*
+
+C record/class : GDBusObjectSkeleton
+*/
 type DBusObjectSkeleton struct {
 	native *C.GDBusObjectSkeleton
 	// Private : parent_instance
@@ -952,7 +1074,16 @@ func (recv *TlsConnection) SetInteraction(interaction *TlsInteraction) {
 	return
 }
 
-// TlsDatabase is a wrapper around the C record GTlsDatabase.
+// #GTlsDatabase is used to lookup certificates and other information
+// from a certificate or key store. It is an abstract base class which
+// TLS library specific subtypes override.
+//
+// Most common client applications will not directly interact with
+// #GTlsDatabase. It is used internally by #GTlsConnection.
+/*
+
+C record/class : GTlsDatabase
+*/
 type TlsDatabase struct {
 	native *C.GTlsDatabase
 	// parent_instance : record
@@ -1321,7 +1452,30 @@ func (recv *TlsDatabase) VerifyChainFinish(result *AsyncResult) (TlsCertificateF
 	return retGo, goThrowableError
 }
 
-// TlsInteraction is a wrapper around the C record GTlsInteraction.
+// #GTlsInteraction provides a mechanism for the TLS connection and database
+// code to interact with the user. It can be used to ask the user for passwords.
+//
+// To use a #GTlsInteraction with a TLS connection use
+// g_tls_connection_set_interaction().
+//
+// Callers should instantiate a derived class that implements the various
+// interaction methods to show the required dialogs.
+//
+// Callers should use the 'invoke' functions like
+// g_tls_interaction_invoke_ask_password() to run interaction methods. These
+// functions make sure that the interaction is invoked in the main loop
+// and not in the current thread, if the current thread is not running the
+// main loop.
+//
+// Derived classes can choose to implement whichever interactions methods they'd
+// like to support by overriding those virtual methods in their class
+// initialization function. Any interactions not implemented will return
+// %G_TLS_INTERACTION_UNHANDLED. If a derived class implements an async method,
+// it must also implement the corresponding finish method.
+/*
+
+C record/class : GTlsInteraction
+*/
 type TlsInteraction struct {
 	native *C.GTlsInteraction
 	// Private : parent_instance
@@ -1474,7 +1628,11 @@ func (recv *TlsInteraction) InvokeAskPassword(password *TlsPassword, cancellable
 	return retGo, goThrowableError
 }
 
-// TlsPassword is a wrapper around the C record GTlsPassword.
+// Holds a password used in TLS.
+/*
+
+C record/class : GTlsPassword
+*/
 type TlsPassword struct {
 	native *C.GTlsPassword
 	// parent_instance : record

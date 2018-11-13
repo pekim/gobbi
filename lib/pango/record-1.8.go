@@ -38,7 +38,11 @@ func (recv *FontDescription) SetAbsoluteSize(size float64) {
 	return
 }
 
-// RendererClass is a wrapper around the C record PangoRendererClass.
+// Class structure for #PangoRenderer.
+/*
+
+C record/class : PangoRendererClass
+*/
 type RendererClass struct {
 	native *C.PangoRendererClass
 	// Private : parent_class

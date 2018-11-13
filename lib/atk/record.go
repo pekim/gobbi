@@ -9,7 +9,10 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// ActionIface is a wrapper around the C record AtkActionIface.
+/*
+
+C record/class : AtkActionIface
+*/
 type ActionIface struct {
 	native *C.AtkActionIface
 	// parent : record
@@ -38,7 +41,21 @@ func (recv *ActionIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Attribute is a wrapper around the C record AtkAttribute.
+// AtkAttribute is a string name/value pair representing a generic
+// attribute. This can be used to expose additional information from
+// an accessible object as a whole (see atk_object_get_attributes())
+// or an document (see atk_document_get_attributes()). In the case of
+// text attributes (see atk_text_get_default_attributes()),
+// #AtkTextAttribute enum defines all the possible text attribute
+// names. You can use atk_text_attribute_get_name() to get the string
+// name from the enum value. See also atk_text_attribute_for_name()
+// and atk_text_attribute_get_value() for more information.
+//
+// A string name/value pair representing a generic attribute.
+/*
+
+C record/class : AtkAttribute
+*/
 type Attribute struct {
 	native *C.AtkAttribute
 	Name   string
@@ -69,7 +86,10 @@ func (recv *Attribute) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ComponentIface is a wrapper around the C record AtkComponentIface.
+/*
+
+C record/class : AtkComponentIface
+*/
 type ComponentIface struct {
 	native *C.AtkComponentIface
 	// parent : record
@@ -106,7 +126,10 @@ func (recv *ComponentIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// DocumentIface is a wrapper around the C record AtkDocumentIface.
+/*
+
+C record/class : AtkDocumentIface
+*/
 type DocumentIface struct {
 	native *C.AtkDocumentIface
 	// parent : record
@@ -136,7 +159,10 @@ func (recv *DocumentIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// EditableTextIface is a wrapper around the C record AtkEditableTextIface.
+/*
+
+C record/class : AtkEditableTextIface
+*/
 type EditableTextIface struct {
 	native *C.AtkEditableTextIface
 	// parent_interface : record
@@ -165,7 +191,10 @@ func (recv *EditableTextIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// GObjectAccessibleClass is a wrapper around the C record AtkGObjectAccessibleClass.
+/*
+
+C record/class : AtkGObjectAccessibleClass
+*/
 type GObjectAccessibleClass struct {
 	native *C.AtkGObjectAccessibleClass
 	// parent_class : record
@@ -189,7 +218,10 @@ func (recv *GObjectAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// HyperlinkClass is a wrapper around the C record AtkHyperlinkClass.
+/*
+
+C record/class : AtkHyperlinkClass
+*/
 type HyperlinkClass struct {
 	native *C.AtkHyperlinkClass
 	// parent : record
@@ -221,7 +253,10 @@ func (recv *HyperlinkClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// HyperlinkImplIface is a wrapper around the C record AtkHyperlinkImplIface.
+/*
+
+C record/class : AtkHyperlinkImplIface
+*/
 type HyperlinkImplIface struct {
 	native *C.AtkHyperlinkImplIface
 	// parent : record
@@ -244,7 +279,10 @@ func (recv *HyperlinkImplIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// HypertextIface is a wrapper around the C record AtkHypertextIface.
+/*
+
+C record/class : AtkHypertextIface
+*/
 type HypertextIface struct {
 	native *C.AtkHypertextIface
 	// parent : record
@@ -270,7 +308,10 @@ func (recv *HypertextIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ImageIface is a wrapper around the C record AtkImageIface.
+/*
+
+C record/class : AtkImageIface
+*/
 type ImageIface struct {
 	native *C.AtkImageIface
 	// parent : record
@@ -297,7 +338,10 @@ func (recv *ImageIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Implementor is a wrapper around the C record AtkImplementor.
+/*
+
+C record/class : AtkImplementor
+*/
 type Implementor struct {
 	native *C.AtkImplementor
 }
@@ -331,7 +375,11 @@ func (recv *Implementor) RefAccessible() *Object {
 	return retGo
 }
 
-// KeyEventStruct is a wrapper around the C record AtkKeyEventStruct.
+// Encapsulates information about a key event.
+/*
+
+C record/class : AtkKeyEventStruct
+*/
 type KeyEventStruct struct {
 	native    *C.AtkKeyEventStruct
 	Type      int32
@@ -382,7 +430,11 @@ func (recv *KeyEventStruct) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// MiscClass is a wrapper around the C record AtkMiscClass.
+// Usage of AtkMisc is deprecated since 2.12 and heavily discouraged.
+/*
+
+C record/class : AtkMiscClass
+*/
 type MiscClass struct {
 	native *C.AtkMiscClass
 	// parent : record
@@ -407,7 +459,10 @@ func (recv *MiscClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// NoOpObjectClass is a wrapper around the C record AtkNoOpObjectClass.
+/*
+
+C record/class : AtkNoOpObjectClass
+*/
 type NoOpObjectClass struct {
 	native *C.AtkNoOpObjectClass
 	// parent_class : record
@@ -429,7 +484,10 @@ func (recv *NoOpObjectClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// NoOpObjectFactoryClass is a wrapper around the C record AtkNoOpObjectFactoryClass.
+/*
+
+C record/class : AtkNoOpObjectFactoryClass
+*/
 type NoOpObjectFactoryClass struct {
 	native *C.AtkNoOpObjectFactoryClass
 	// parent_class : record
@@ -451,7 +509,10 @@ func (recv *NoOpObjectFactoryClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ObjectClass is a wrapper around the C record AtkObjectClass.
+/*
+
+C record/class : AtkObjectClass
+*/
 type ObjectClass struct {
 	native *C.AtkObjectClass
 	// parent : record
@@ -500,7 +561,10 @@ func (recv *ObjectClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ObjectFactoryClass is a wrapper around the C record AtkObjectFactoryClass.
+/*
+
+C record/class : AtkObjectFactoryClass
+*/
 type ObjectFactoryClass struct {
 	native *C.AtkObjectFactoryClass
 	// parent_class : record
@@ -527,7 +591,10 @@ func (recv *ObjectFactoryClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// PlugClass is a wrapper around the C record AtkPlugClass.
+/*
+
+C record/class : AtkPlugClass
+*/
 type PlugClass struct {
 	native *C.AtkPlugClass
 	// parent_class : record
@@ -550,7 +617,13 @@ func (recv *PlugClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// PropertyValues is a wrapper around the C record AtkPropertyValues.
+// Note: @old_value field of #AtkPropertyValues will not contain a
+// valid value. This is a field defined with the purpose of contain
+// the previous value of the property, but is not used anymore.
+/*
+
+C record/class : AtkPropertyValues
+*/
 type PropertyValues struct {
 	native       *C.AtkPropertyValues
 	PropertyName string
@@ -579,7 +652,15 @@ func (recv *PropertyValues) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Range is a wrapper around the C record AtkRange.
+// #AtkRange are used on #AtkValue, in order to represent the full
+// range of a given component (for example an slider or a range
+// control), or to define each individual subrange this full range is
+// splitted if available. See #AtkValue documentation for further
+// details.
+/*
+
+C record/class : AtkRange
+*/
 type Range struct {
 	native *C.AtkRange
 }
@@ -600,7 +681,12 @@ func (recv *Range) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Rectangle is a wrapper around the C record AtkRectangle.
+// A data structure for holding a rectangle. Those coordinates are
+// relative to the component top-level parent.
+/*
+
+C record/class : AtkRectangle
+*/
 type Rectangle struct {
 	native *C.AtkRectangle
 	X      int32
@@ -639,7 +725,10 @@ func (recv *Rectangle) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// RegistryClass is a wrapper around the C record AtkRegistryClass.
+/*
+
+C record/class : AtkRegistryClass
+*/
 type RegistryClass struct {
 	native *C.AtkRegistryClass
 	// parent_class : record
@@ -661,7 +750,10 @@ func (recv *RegistryClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// RelationClass is a wrapper around the C record AtkRelationClass.
+/*
+
+C record/class : AtkRelationClass
+*/
 type RelationClass struct {
 	native *C.AtkRelationClass
 	// parent : record
@@ -683,7 +775,10 @@ func (recv *RelationClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// RelationSetClass is a wrapper around the C record AtkRelationSetClass.
+/*
+
+C record/class : AtkRelationSetClass
+*/
 type RelationSetClass struct {
 	native *C.AtkRelationSetClass
 	// parent : record
@@ -707,7 +802,10 @@ func (recv *RelationSetClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// SelectionIface is a wrapper around the C record AtkSelectionIface.
+/*
+
+C record/class : AtkSelectionIface
+*/
 type SelectionIface struct {
 	native *C.AtkSelectionIface
 	// parent : record
@@ -737,7 +835,10 @@ func (recv *SelectionIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// SocketClass is a wrapper around the C record AtkSocketClass.
+/*
+
+C record/class : AtkSocketClass
+*/
 type SocketClass struct {
 	native *C.AtkSocketClass
 	// parent_class : record
@@ -760,7 +861,10 @@ func (recv *SocketClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// StateSetClass is a wrapper around the C record AtkStateSetClass.
+/*
+
+C record/class : AtkStateSetClass
+*/
 type StateSetClass struct {
 	native *C.AtkStateSetClass
 	// parent : record
@@ -782,7 +886,10 @@ func (recv *StateSetClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// StreamableContentIface is a wrapper around the C record AtkStreamableContentIface.
+/*
+
+C record/class : AtkStreamableContentIface
+*/
 type StreamableContentIface struct {
 	native *C.AtkStreamableContentIface
 	// parent : record
@@ -811,7 +918,10 @@ func (recv *StreamableContentIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TableCellIface is a wrapper around the C record AtkTableCellIface.
+/*
+
+C record/class : AtkTableCellIface
+*/
 type TableCellIface struct {
 	native *C.AtkTableCellIface
 	// parent : record
@@ -840,7 +950,10 @@ func (recv *TableCellIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TableIface is a wrapper around the C record AtkTableIface.
+/*
+
+C record/class : AtkTableIface
+*/
 type TableIface struct {
 	native *C.AtkTableIface
 	// parent : record
@@ -898,7 +1011,10 @@ func (recv *TableIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TextIface is a wrapper around the C record AtkTextIface.
+/*
+
+C record/class : AtkTextIface
+*/
 type TextIface struct {
 	native *C.AtkTextIface
 	// parent : record
@@ -944,7 +1060,11 @@ func (recv *TextIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TextRange is a wrapper around the C record AtkTextRange.
+// A structure used to describe a text range.
+/*
+
+C record/class : AtkTextRange
+*/
 type TextRange struct {
 	native *C.AtkTextRange
 	// bounds : record
@@ -980,7 +1100,11 @@ func (recv *TextRange) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TextRectangle is a wrapper around the C record AtkTextRectangle.
+// A structure used to store a rectangle used by AtkText.
+/*
+
+C record/class : AtkTextRectangle
+*/
 type TextRectangle struct {
 	native *C.AtkTextRectangle
 	X      int32
@@ -1019,7 +1143,10 @@ func (recv *TextRectangle) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// UtilClass is a wrapper around the C record AtkUtilClass.
+/*
+
+C record/class : AtkUtilClass
+*/
 type UtilClass struct {
 	native *C.AtkUtilClass
 	// parent : record
@@ -1048,7 +1175,10 @@ func (recv *UtilClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ValueIface is a wrapper around the C record AtkValueIface.
+/*
+
+C record/class : AtkValueIface
+*/
 type ValueIface struct {
 	native *C.AtkValueIface
 	// parent : record
@@ -1080,7 +1210,10 @@ func (recv *ValueIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// WindowIface is a wrapper around the C record AtkWindowIface.
+/*
+
+C record/class : AtkWindowIface
+*/
 type WindowIface struct {
 	native *C.AtkWindowIface
 	// parent : record

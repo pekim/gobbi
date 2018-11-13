@@ -20,7 +20,11 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// ListModelInterface is a wrapper around the C record GListModelInterface.
+// The virtual function table for #GListModel.
+/*
+
+C record/class : GListModelInterface
+*/
 type ListModelInterface struct {
 	native *C.GListModelInterface
 	// g_iface : record
@@ -45,7 +49,17 @@ func (recv *ListModelInterface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// OutputMessage is a wrapper around the C record GOutputMessage.
+// Structure used for scatter/gather data output when sending multiple
+// messages or packets in one go. You generally pass in an array of
+// #GOutputVectors and the operation will use all the buffers as if they
+// were one buffer.
+//
+// If @address is %NULL then the message is sent to the default receiver
+// (as previously set by g_socket_connect()).
+/*
+
+C record/class : GOutputMessage
+*/
 type OutputMessage struct {
 	native *C.GOutputMessage
 	// address : record

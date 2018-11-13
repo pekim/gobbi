@@ -1032,7 +1032,61 @@ func (recv *Resolver) SetDefault() {
 	return
 }
 
-// Socket is a wrapper around the C record GSocket.
+// A #GSocket is a low-level networking primitive. It is a more or less
+// direct mapping of the BSD socket API in a portable GObject based API.
+// It supports both the UNIX socket implementations and winsock2 on Windows.
+//
+// #GSocket is the platform independent base upon which the higher level
+// network primitives are based. Applications are not typically meant to
+// use it directly, but rather through classes like #GSocketClient,
+// #GSocketService and #GSocketConnection. However there may be cases where
+// direct use of #GSocket is useful.
+//
+// #GSocket implements the #GInitable interface, so if it is manually constructed
+// by e.g. g_object_new() you must call g_initable_init() and check the
+// results before using the object. This is done automatically in
+// g_socket_new() and g_socket_new_from_fd(), so these functions can return
+// %NULL.
+//
+// Sockets operate in two general modes, blocking or non-blocking. When
+// in blocking mode all operations (which don’t take an explicit blocking
+// parameter) block until the requested operation
+// is finished or there is an error. In non-blocking mode all calls that
+// would block return immediately with a %G_IO_ERROR_WOULD_BLOCK error.
+// To know when a call would successfully run you can call g_socket_condition_check(),
+// or g_socket_condition_wait(). You can also use g_socket_create_source() and
+// attach it to a #GMainContext to get callbacks when I/O is possible.
+// Note that all sockets are always set to non blocking mode in the system, and
+// blocking mode is emulated in GSocket.
+//
+// When working in non-blocking mode applications should always be able to
+// handle getting a %G_IO_ERROR_WOULD_BLOCK error even when some other
+// function said that I/O was possible. This can easily happen in case
+// of a race condition in the application, but it can also happen for other
+// reasons. For instance, on Windows a socket is always seen as writable
+// until a write returns %G_IO_ERROR_WOULD_BLOCK.
+//
+// #GSockets can be either connection oriented or datagram based.
+// For connection oriented types you must first establish a connection by
+// either connecting to an address or accepting a connection from another
+// address. For connectionless socket types the target/source address is
+// specified or received in each I/O operation.
+//
+// All socket file descriptors are set to be close-on-exec.
+//
+// Note that creating a #GSocket causes the signal %SIGPIPE to be
+// ignored for the remainder of the program. If you are writing a
+// command-line utility that uses #GSocket, you may need to take into
+// account the fact that your program will not automatically be killed
+// if it tries to write to %stdout after it has been closed.
+//
+// Like most other APIs in GLib, #GSocket is not inherently thread safe. To use
+// a #GSocket concurrently from multiple threads, you must implement your own
+// locking.
+/*
+
+C record/class : GSocket
+*/
 type Socket struct {
 	native *C.GSocket
 	// parent_instance : record
@@ -1984,7 +2038,23 @@ func (recv *SocketAddress) ToNative(dest uintptr, destlen uint64) (bool, error) 
 	return retGo, goThrowableError
 }
 
-// SocketClient is a wrapper around the C record GSocketClient.
+// #GSocketClient is a lightweight high-level utility class for connecting to
+// a network host using a connection oriented socket type.
+//
+// You create a #GSocketClient object, set any options you want, and then
+// call a sync or async connect operation, which returns a #GSocketConnection
+// subclass on success.
+//
+// The type of the #GSocketConnection object returned depends on the type of
+// the underlying socket that is in use. For instance, for a TCP/IP connection
+// it will be a #GTcpConnection.
+//
+// As #GSocketClient is a lightweight object, you don't need to cache it. You
+// can just create a new one any time you need one.
+/*
+
+C record/class : GSocketClient
+*/
 type SocketClient struct {
 	native *C.GSocketClient
 	// parent_instance : record
@@ -2409,7 +2479,26 @@ func (recv *SocketClient) SetSocketType(type_ SocketType) {
 	return
 }
 
-// SocketConnection is a wrapper around the C record GSocketConnection.
+// #GSocketConnection is a #GIOStream for a connected socket. They
+// can be created either by #GSocketClient when connecting to a host,
+// or by #GSocketListener when accepting a new client.
+//
+// The type of the #GSocketConnection object returned from these calls
+// depends on the type of the underlying socket that is in use. For
+// instance, for a TCP/IP connection it will be a #GTcpConnection.
+//
+// Choosing what type of object to construct is done with the socket
+// connection factory, and it is possible for 3rd parties to register
+// custom socket connection types for specific combination of socket
+// family/type/protocol using g_socket_connection_factory_register_type().
+//
+// To close a #GSocketConnection, use g_io_stream_close(). Closing both
+// substreams of the #GIOStream separately will not close the underlying
+// #GSocket.
+/*
+
+C record/class : GSocketConnection
+*/
 type SocketConnection struct {
 	native *C.GSocketConnection
 	// parent_instance : record
@@ -2564,7 +2653,17 @@ func (recv *SocketControlMessage) Serialize(data uintptr) {
 	return
 }
 
-// SocketListener is a wrapper around the C record GSocketListener.
+// A #GSocketListener is an object that keeps track of a set
+// of server sockets and helps you accept sockets from any of the
+// socket, either sync or async.
+//
+// If you want to implement a network server, also look at #GSocketService
+// and #GThreadedSocketService which are subclass of #GSocketListener
+// that makes this even easier.
+/*
+
+C record/class : GSocketListener
+*/
 type SocketListener struct {
 	native *C.GSocketListener
 	// parent_instance : record
@@ -2900,7 +2999,36 @@ func (recv *SocketListener) SetBacklog(listenBacklog int32) {
 	return
 }
 
-// SocketService is a wrapper around the C record GSocketService.
+// A #GSocketService is an object that represents a service that
+// is provided to the network or over local sockets.  When a new
+// connection is made to the service the #GSocketService::incoming
+// signal is emitted.
+//
+// A #GSocketService is a subclass of #GSocketListener and you need
+// to add the addresses you want to accept connections on with the
+// #GSocketListener APIs.
+//
+// There are two options for implementing a network service based on
+// #GSocketService. The first is to create the service using
+// g_socket_service_new() and to connect to the #GSocketService::incoming
+// signal. The second is to subclass #GSocketService and override the
+// default signal handler implementation.
+//
+// In either case, the handler must immediately return, or else it
+// will block additional incoming connections from being serviced.
+// If you are interested in writing connection handlers that contain
+// blocking code then see #GThreadedSocketService.
+//
+// The socket service runs on the main loop of the
+// [thread-default context][g-main-context-push-thread-default-context]
+// of the thread it is created in, and is not
+// threadsafe in general. However, the calls to start and stop the
+// service are thread-safe so these can be used from threads that
+// handle incoming clients.
+/*
+
+C record/class : GSocketService
+*/
 type SocketService struct {
 	native *C.GSocketService
 	// parent_instance : record
@@ -3014,7 +3142,12 @@ func (recv *SocketService) Stop() {
 	return
 }
 
-// TcpConnection is a wrapper around the C record GTcpConnection.
+// This is the subclass of #GSocketConnection that is created
+// for TCP/IP sockets.
+/*
+
+C record/class : GTcpConnection
+*/
 type TcpConnection struct {
 	native *C.GTcpConnection
 	// parent_instance : record
@@ -3093,7 +3226,25 @@ func (recv *TcpConnection) SetGracefulDisconnect(gracefulDisconnect bool) {
 	return
 }
 
-// ThreadedSocketService is a wrapper around the C record GThreadedSocketService.
+// A #GThreadedSocketService is a simple subclass of #GSocketService
+// that handles incoming connections by creating a worker thread and
+// dispatching the connection to it by emitting the
+// #GThreadedSocketService::run signal in the new thread.
+//
+// The signal handler may perform blocking IO and need not return
+// until the connection is closed.
+//
+// The service is implemented using a thread pool, so there is a
+// limited amount of threads available to serve incoming requests.
+// The service automatically stops the #GSocketService from accepting
+// new connections when all threads are busy.
+//
+// As with #GSocketService, you may connect to #GThreadedSocketService::run,
+// or subclass and override the default handler.
+/*
+
+C record/class : GThreadedSocketService
+*/
 type ThreadedSocketService struct {
 	native *C.GThreadedSocketService
 	// parent_instance : record

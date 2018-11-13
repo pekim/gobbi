@@ -19,7 +19,10 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// AboutDialogClass is a wrapper around the C record GtkAboutDialogClass.
+/*
+
+C record/class : GtkAboutDialogClass
+*/
 type AboutDialogClass struct {
 	native *C.GtkAboutDialogClass
 	// parent_class : record
@@ -46,7 +49,10 @@ func (recv *AboutDialogClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// AboutDialogPrivate is a wrapper around the C record GtkAboutDialogPrivate.
+/*
+
+C record/class : GtkAboutDialogPrivate
+*/
 type AboutDialogPrivate struct {
 	native *C.GtkAboutDialogPrivate
 }
@@ -67,7 +73,10 @@ func (recv *AboutDialogPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// AccelGroupClass is a wrapper around the C record GtkAccelGroupClass.
+/*
+
+C record/class : GtkAccelGroupClass
+*/
 type AccelGroupClass struct {
 	native *C.GtkAccelGroupClass
 	// parent_class : record
@@ -94,7 +103,10 @@ func (recv *AccelGroupClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// AccelGroupEntry is a wrapper around the C record GtkAccelGroupEntry.
+/*
+
+C record/class : GtkAccelGroupEntry
+*/
 type AccelGroupEntry struct {
 	native *C.GtkAccelGroupEntry
 	// key : record
@@ -123,7 +135,10 @@ func (recv *AccelGroupEntry) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// AccelGroupPrivate is a wrapper around the C record GtkAccelGroupPrivate.
+/*
+
+C record/class : GtkAccelGroupPrivate
+*/
 type AccelGroupPrivate struct {
 	native *C.GtkAccelGroupPrivate
 }
@@ -144,7 +159,10 @@ func (recv *AccelGroupPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// AccelKey is a wrapper around the C record GtkAccelKey.
+/*
+
+C record/class : GtkAccelKey
+*/
 type AccelKey struct {
 	native    *C.GtkAccelKey
 	AccelKey  uint32
@@ -176,7 +194,10 @@ func (recv *AccelKey) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// AccelLabelClass is a wrapper around the C record GtkAccelLabelClass.
+/*
+
+C record/class : GtkAccelLabelClass
+*/
 type AccelLabelClass struct {
 	native *C.GtkAccelLabelClass
 	// parent_class : record
@@ -228,7 +249,10 @@ func (recv *AccelLabelClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// AccelLabelPrivate is a wrapper around the C record GtkAccelLabelPrivate.
+/*
+
+C record/class : GtkAccelLabelPrivate
+*/
 type AccelLabelPrivate struct {
 	native *C.GtkAccelLabelPrivate
 }
@@ -249,7 +273,10 @@ func (recv *AccelLabelPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// AccelMapClass is a wrapper around the C record GtkAccelMapClass.
+/*
+
+C record/class : GtkAccelMapClass
+*/
 type AccelMapClass struct {
 	native *C.GtkAccelMapClass
 }
@@ -270,7 +297,10 @@ func (recv *AccelMapClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// AccessibleClass is a wrapper around the C record GtkAccessibleClass.
+/*
+
+C record/class : GtkAccessibleClass
+*/
 type AccessibleClass struct {
 	native *C.GtkAccessibleClass
 	// parent_class : record
@@ -297,7 +327,10 @@ func (recv *AccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// AccessiblePrivate is a wrapper around the C record GtkAccessiblePrivate.
+/*
+
+C record/class : GtkAccessiblePrivate
+*/
 type AccessiblePrivate struct {
 	native *C.GtkAccessiblePrivate
 }
@@ -318,7 +351,10 @@ func (recv *AccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ActionBarClass is a wrapper around the C record GtkActionBarClass.
+/*
+
+C record/class : GtkActionBarClass
+*/
 type ActionBarClass struct {
 	native *C.GtkActionBarClass
 	// Private : parent_class
@@ -344,7 +380,10 @@ func (recv *ActionBarClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ActionBarPrivate is a wrapper around the C record GtkActionBarPrivate.
+/*
+
+C record/class : GtkActionBarPrivate
+*/
 type ActionBarPrivate struct {
 	native *C.GtkActionBarPrivate
 }
@@ -365,7 +404,10 @@ func (recv *ActionBarPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ActionClass is a wrapper around the C record GtkActionClass.
+/*
+
+C record/class : GtkActionClass
+*/
 type ActionClass struct {
 	native *C.GtkActionClass
 	// parent_class : record
@@ -399,7 +441,12 @@ func (recv *ActionClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ActionEntry is a wrapper around the C record GtkActionEntry.
+// #GtkActionEntry structs are used with gtk_action_group_add_actions() to
+// construct actions.
+/*
+
+C record/class : GtkActionEntry
+*/
 type ActionEntry struct {
 	native      *C.GtkActionEntry
 	Name        string
@@ -443,7 +490,10 @@ func (recv *ActionEntry) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ActionGroupClass is a wrapper around the C record GtkActionGroupClass.
+/*
+
+C record/class : GtkActionGroupClass
+*/
 type ActionGroupClass struct {
 	native *C.GtkActionGroupClass
 	// parent_class : record
@@ -470,7 +520,10 @@ func (recv *ActionGroupClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ActionGroupPrivate is a wrapper around the C record GtkActionGroupPrivate.
+/*
+
+C record/class : GtkActionGroupPrivate
+*/
 type ActionGroupPrivate struct {
 	native *C.GtkActionGroupPrivate
 }
@@ -491,7 +544,10 @@ func (recv *ActionGroupPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ActionPrivate is a wrapper around the C record GtkActionPrivate.
+/*
+
+C record/class : GtkActionPrivate
+*/
 type ActionPrivate struct {
 	native *C.GtkActionPrivate
 }
@@ -512,7 +568,11 @@ func (recv *ActionPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ActionableInterface is a wrapper around the C record GtkActionableInterface.
+// The interface vtable for #GtkActionable.
+/*
+
+C record/class : GtkActionableInterface
+*/
 type ActionableInterface struct {
 	native *C.GtkActionableInterface
 	// Private : g_iface
@@ -538,7 +598,10 @@ func (recv *ActionableInterface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// AdjustmentClass is a wrapper around the C record GtkAdjustmentClass.
+/*
+
+C record/class : GtkAdjustmentClass
+*/
 type AdjustmentClass struct {
 	native *C.GtkAdjustmentClass
 	// parent_class : record
@@ -566,7 +629,10 @@ func (recv *AdjustmentClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// AdjustmentPrivate is a wrapper around the C record GtkAdjustmentPrivate.
+/*
+
+C record/class : GtkAdjustmentPrivate
+*/
 type AdjustmentPrivate struct {
 	native *C.GtkAdjustmentPrivate
 }
@@ -587,7 +653,10 @@ func (recv *AdjustmentPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// AlignmentClass is a wrapper around the C record GtkAlignmentClass.
+/*
+
+C record/class : GtkAlignmentClass
+*/
 type AlignmentClass struct {
 	native *C.GtkAlignmentClass
 	// parent_class : record
@@ -613,7 +682,10 @@ func (recv *AlignmentClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// AlignmentPrivate is a wrapper around the C record GtkAlignmentPrivate.
+/*
+
+C record/class : GtkAlignmentPrivate
+*/
 type AlignmentPrivate struct {
 	native *C.GtkAlignmentPrivate
 }
@@ -634,7 +706,10 @@ func (recv *AlignmentPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// AppChooserButtonClass is a wrapper around the C record GtkAppChooserButtonClass.
+/*
+
+C record/class : GtkAppChooserButtonClass
+*/
 type AppChooserButtonClass struct {
 	native *C.GtkAppChooserButtonClass
 	// parent_class : record
@@ -658,7 +733,10 @@ func (recv *AppChooserButtonClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// AppChooserButtonPrivate is a wrapper around the C record GtkAppChooserButtonPrivate.
+/*
+
+C record/class : GtkAppChooserButtonPrivate
+*/
 type AppChooserButtonPrivate struct {
 	native *C.GtkAppChooserButtonPrivate
 }
@@ -679,7 +757,10 @@ func (recv *AppChooserButtonPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// AppChooserDialogClass is a wrapper around the C record GtkAppChooserDialogClass.
+/*
+
+C record/class : GtkAppChooserDialogClass
+*/
 type AppChooserDialogClass struct {
 	native *C.GtkAppChooserDialogClass
 	// parent_class : record
@@ -702,7 +783,10 @@ func (recv *AppChooserDialogClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// AppChooserDialogPrivate is a wrapper around the C record GtkAppChooserDialogPrivate.
+/*
+
+C record/class : GtkAppChooserDialogPrivate
+*/
 type AppChooserDialogPrivate struct {
 	native *C.GtkAppChooserDialogPrivate
 }
@@ -723,7 +807,10 @@ func (recv *AppChooserDialogPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// AppChooserWidgetClass is a wrapper around the C record GtkAppChooserWidgetClass.
+/*
+
+C record/class : GtkAppChooserWidgetClass
+*/
 type AppChooserWidgetClass struct {
 	native *C.GtkAppChooserWidgetClass
 	// parent_class : record
@@ -749,7 +836,10 @@ func (recv *AppChooserWidgetClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// AppChooserWidgetPrivate is a wrapper around the C record GtkAppChooserWidgetPrivate.
+/*
+
+C record/class : GtkAppChooserWidgetPrivate
+*/
 type AppChooserWidgetPrivate struct {
 	native *C.GtkAppChooserWidgetPrivate
 }
@@ -770,7 +860,10 @@ func (recv *AppChooserWidgetPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ApplicationClass is a wrapper around the C record GtkApplicationClass.
+/*
+
+C record/class : GtkApplicationClass
+*/
 type ApplicationClass struct {
 	native *C.GtkApplicationClass
 	// parent_class : record
@@ -795,7 +888,10 @@ func (recv *ApplicationClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ApplicationPrivate is a wrapper around the C record GtkApplicationPrivate.
+/*
+
+C record/class : GtkApplicationPrivate
+*/
 type ApplicationPrivate struct {
 	native *C.GtkApplicationPrivate
 }
@@ -816,7 +912,10 @@ func (recv *ApplicationPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ApplicationWindowClass is a wrapper around the C record GtkApplicationWindowClass.
+/*
+
+C record/class : GtkApplicationWindowClass
+*/
 type ApplicationWindowClass struct {
 	native *C.GtkApplicationWindowClass
 	// parent_class : record
@@ -839,7 +938,10 @@ func (recv *ApplicationWindowClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ApplicationWindowPrivate is a wrapper around the C record GtkApplicationWindowPrivate.
+/*
+
+C record/class : GtkApplicationWindowPrivate
+*/
 type ApplicationWindowPrivate struct {
 	native *C.GtkApplicationWindowPrivate
 }
@@ -860,7 +962,10 @@ func (recv *ApplicationWindowPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ArrowAccessibleClass is a wrapper around the C record GtkArrowAccessibleClass.
+/*
+
+C record/class : GtkArrowAccessibleClass
+*/
 type ArrowAccessibleClass struct {
 	native *C.GtkArrowAccessibleClass
 	// parent_class : record
@@ -882,7 +987,10 @@ func (recv *ArrowAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ArrowAccessiblePrivate is a wrapper around the C record GtkArrowAccessiblePrivate.
+/*
+
+C record/class : GtkArrowAccessiblePrivate
+*/
 type ArrowAccessiblePrivate struct {
 	native *C.GtkArrowAccessiblePrivate
 }
@@ -903,7 +1011,10 @@ func (recv *ArrowAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ArrowClass is a wrapper around the C record GtkArrowClass.
+/*
+
+C record/class : GtkArrowClass
+*/
 type ArrowClass struct {
 	native *C.GtkArrowClass
 	// parent_class : record
@@ -929,7 +1040,10 @@ func (recv *ArrowClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ArrowPrivate is a wrapper around the C record GtkArrowPrivate.
+/*
+
+C record/class : GtkArrowPrivate
+*/
 type ArrowPrivate struct {
 	native *C.GtkArrowPrivate
 }
@@ -950,7 +1064,10 @@ func (recv *ArrowPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// AspectFrameClass is a wrapper around the C record GtkAspectFrameClass.
+/*
+
+C record/class : GtkAspectFrameClass
+*/
 type AspectFrameClass struct {
 	native *C.GtkAspectFrameClass
 	// parent_class : record
@@ -976,7 +1093,10 @@ func (recv *AspectFrameClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// AspectFramePrivate is a wrapper around the C record GtkAspectFramePrivate.
+/*
+
+C record/class : GtkAspectFramePrivate
+*/
 type AspectFramePrivate struct {
 	native *C.GtkAspectFramePrivate
 }
@@ -997,7 +1117,10 @@ func (recv *AspectFramePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// AssistantClass is a wrapper around the C record GtkAssistantClass.
+/*
+
+C record/class : GtkAssistantClass
+*/
 type AssistantClass struct {
 	native *C.GtkAssistantClass
 	// parent_class : record
@@ -1028,7 +1151,10 @@ func (recv *AssistantClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// AssistantPrivate is a wrapper around the C record GtkAssistantPrivate.
+/*
+
+C record/class : GtkAssistantPrivate
+*/
 type AssistantPrivate struct {
 	native *C.GtkAssistantPrivate
 }
@@ -1049,7 +1175,10 @@ func (recv *AssistantPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// BinClass is a wrapper around the C record GtkBinClass.
+/*
+
+C record/class : GtkBinClass
+*/
 type BinClass struct {
 	native *C.GtkBinClass
 	// parent_class : record
@@ -1075,7 +1204,10 @@ func (recv *BinClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// BinPrivate is a wrapper around the C record GtkBinPrivate.
+/*
+
+C record/class : GtkBinPrivate
+*/
 type BinPrivate struct {
 	native *C.GtkBinPrivate
 }
@@ -1096,7 +1228,13 @@ func (recv *BinPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// BindingArg is a wrapper around the C record GtkBindingArg.
+// A #GtkBindingArg holds the data associated with
+// an argument for a key binding signal emission as
+// stored in #GtkBindingSignal.
+/*
+
+C record/class : GtkBindingArg
+*/
 type BindingArg struct {
 	native  *C.GtkBindingArg
 	ArgType gobject.Type
@@ -1123,7 +1261,12 @@ func (recv *BindingArg) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// BindingEntry is a wrapper around the C record GtkBindingEntry.
+// Each key binding element of a binding sets binding list is
+// represented by a GtkBindingEntry.
+/*
+
+C record/class : GtkBindingEntry
+*/
 type BindingEntry struct {
 	native    *C.GtkBindingEntry
 	Keyval    uint32
@@ -1161,7 +1304,16 @@ func (recv *BindingEntry) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// BindingSet is a wrapper around the C record GtkBindingSet.
+// A binding set maintains a list of activatable key bindings.
+// A single binding set can match multiple types of widgets.
+// Similar to style contexts, can be matched by any information contained
+// in a widgets #GtkWidgetPath. When a binding within a set is matched upon
+// activation, an action signal is emitted on the target widget to carry out
+// the actual activation.
+/*
+
+C record/class : GtkBindingSet
+*/
 type BindingSet struct {
 	native   *C.GtkBindingSet
 	SetName  string
@@ -1241,7 +1393,13 @@ func (recv *BindingSet) AddPath(pathType PathType, pathPattern string, priority 
 	return
 }
 
-// BindingSignal is a wrapper around the C record GtkBindingSignal.
+// A GtkBindingSignal stores the necessary information to
+// activate a widget in response to a key press via a signal
+// emission.
+/*
+
+C record/class : GtkBindingSignal
+*/
 type BindingSignal struct {
 	native *C.GtkBindingSignal
 	// next : record
@@ -1274,7 +1432,10 @@ func (recv *BindingSignal) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// BooleanCellAccessibleClass is a wrapper around the C record GtkBooleanCellAccessibleClass.
+/*
+
+C record/class : GtkBooleanCellAccessibleClass
+*/
 type BooleanCellAccessibleClass struct {
 	native *C.GtkBooleanCellAccessibleClass
 	// parent_class : record
@@ -1296,7 +1457,10 @@ func (recv *BooleanCellAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// BooleanCellAccessiblePrivate is a wrapper around the C record GtkBooleanCellAccessiblePrivate.
+/*
+
+C record/class : GtkBooleanCellAccessiblePrivate
+*/
 type BooleanCellAccessiblePrivate struct {
 	native *C.GtkBooleanCellAccessiblePrivate
 }
@@ -1317,7 +1481,12 @@ func (recv *BooleanCellAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Border is a wrapper around the C record GtkBorder.
+// A struct that specifies a border around a rectangular area
+// that can be of different width on each side.
+/*
+
+C record/class : GtkBorder
+*/
 type Border struct {
 	native *C.GtkBorder
 	Left   int16
@@ -1379,7 +1548,10 @@ func (recv *Border) Free() {
 	return
 }
 
-// BoxClass is a wrapper around the C record GtkBoxClass.
+/*
+
+C record/class : GtkBoxClass
+*/
 type BoxClass struct {
 	native *C.GtkBoxClass
 	// parent_class : record
@@ -1405,7 +1577,10 @@ func (recv *BoxClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// BoxPrivate is a wrapper around the C record GtkBoxPrivate.
+/*
+
+C record/class : GtkBoxPrivate
+*/
 type BoxPrivate struct {
 	native *C.GtkBoxPrivate
 }
@@ -1426,7 +1601,13 @@ func (recv *BoxPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// BuildableIface is a wrapper around the C record GtkBuildableIface.
+// The #GtkBuildableIface interface contains method that are
+// necessary to allow #GtkBuilder to construct an object from
+// a #GtkBuilder UI definition.
+/*
+
+C record/class : GtkBuildableIface
+*/
 type BuildableIface struct {
 	native *C.GtkBuildableIface
 	// g_iface : record
@@ -1458,7 +1639,10 @@ func (recv *BuildableIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// BuilderClass is a wrapper around the C record GtkBuilderClass.
+/*
+
+C record/class : GtkBuilderClass
+*/
 type BuilderClass struct {
 	native *C.GtkBuilderClass
 	// parent_class : record
@@ -1489,7 +1673,10 @@ func (recv *BuilderClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// BuilderPrivate is a wrapper around the C record GtkBuilderPrivate.
+/*
+
+C record/class : GtkBuilderPrivate
+*/
 type BuilderPrivate struct {
 	native *C.GtkBuilderPrivate
 }
@@ -1510,7 +1697,10 @@ func (recv *BuilderPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ButtonAccessibleClass is a wrapper around the C record GtkButtonAccessibleClass.
+/*
+
+C record/class : GtkButtonAccessibleClass
+*/
 type ButtonAccessibleClass struct {
 	native *C.GtkButtonAccessibleClass
 	// parent_class : record
@@ -1532,7 +1722,10 @@ func (recv *ButtonAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ButtonAccessiblePrivate is a wrapper around the C record GtkButtonAccessiblePrivate.
+/*
+
+C record/class : GtkButtonAccessiblePrivate
+*/
 type ButtonAccessiblePrivate struct {
 	native *C.GtkButtonAccessiblePrivate
 }
@@ -1553,7 +1746,10 @@ func (recv *ButtonAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ButtonBoxClass is a wrapper around the C record GtkButtonBoxClass.
+/*
+
+C record/class : GtkButtonBoxClass
+*/
 type ButtonBoxClass struct {
 	native *C.GtkButtonBoxClass
 	// parent_class : record
@@ -1579,7 +1775,10 @@ func (recv *ButtonBoxClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ButtonBoxPrivate is a wrapper around the C record GtkButtonBoxPrivate.
+/*
+
+C record/class : GtkButtonBoxPrivate
+*/
 type ButtonBoxPrivate struct {
 	native *C.GtkButtonBoxPrivate
 }
@@ -1600,7 +1799,10 @@ func (recv *ButtonBoxPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ButtonClass is a wrapper around the C record GtkButtonClass.
+/*
+
+C record/class : GtkButtonClass
+*/
 type ButtonClass struct {
 	native *C.GtkButtonClass
 	// parent_class : record
@@ -1632,7 +1834,10 @@ func (recv *ButtonClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ButtonPrivate is a wrapper around the C record GtkButtonPrivate.
+/*
+
+C record/class : GtkButtonPrivate
+*/
 type ButtonPrivate struct {
 	native *C.GtkButtonPrivate
 }
@@ -1653,7 +1858,10 @@ func (recv *ButtonPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CalendarClass is a wrapper around the C record GtkCalendarClass.
+/*
+
+C record/class : GtkCalendarClass
+*/
 type CalendarClass struct {
 	native *C.GtkCalendarClass
 	// parent_class : record
@@ -1686,7 +1894,10 @@ func (recv *CalendarClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CalendarPrivate is a wrapper around the C record GtkCalendarPrivate.
+/*
+
+C record/class : GtkCalendarPrivate
+*/
 type CalendarPrivate struct {
 	native *C.GtkCalendarPrivate
 }
@@ -1707,7 +1918,10 @@ func (recv *CalendarPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CellAccessibleClass is a wrapper around the C record GtkCellAccessibleClass.
+/*
+
+C record/class : GtkCellAccessibleClass
+*/
 type CellAccessibleClass struct {
 	native *C.GtkCellAccessibleClass
 	// parent_class : record
@@ -1730,7 +1944,10 @@ func (recv *CellAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CellAccessibleParentIface is a wrapper around the C record GtkCellAccessibleParentIface.
+/*
+
+C record/class : GtkCellAccessibleParentIface
+*/
 type CellAccessibleParentIface struct {
 	native *C.GtkCellAccessibleParentIface
 	// parent : record
@@ -1761,7 +1978,10 @@ func (recv *CellAccessibleParentIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CellAccessiblePrivate is a wrapper around the C record GtkCellAccessiblePrivate.
+/*
+
+C record/class : GtkCellAccessiblePrivate
+*/
 type CellAccessiblePrivate struct {
 	native *C.GtkCellAccessiblePrivate
 }
@@ -1782,7 +2002,10 @@ func (recv *CellAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CellAreaBoxClass is a wrapper around the C record GtkCellAreaBoxClass.
+/*
+
+C record/class : GtkCellAreaBoxClass
+*/
 type CellAreaBoxClass struct {
 	native *C.GtkCellAreaBoxClass
 	// Private : parent_class
@@ -1808,7 +2031,10 @@ func (recv *CellAreaBoxClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CellAreaBoxPrivate is a wrapper around the C record GtkCellAreaBoxPrivate.
+/*
+
+C record/class : GtkCellAreaBoxPrivate
+*/
 type CellAreaBoxPrivate struct {
 	native *C.GtkCellAreaBoxPrivate
 }
@@ -1829,7 +2055,10 @@ func (recv *CellAreaBoxPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CellAreaClass is a wrapper around the C record GtkCellAreaClass.
+/*
+
+C record/class : GtkCellAreaClass
+*/
 type CellAreaClass struct {
 	native *C.GtkCellAreaClass
 	// Private : parent_class
@@ -1878,7 +2107,10 @@ func (recv *CellAreaClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CellAreaContextClass is a wrapper around the C record GtkCellAreaContextClass.
+/*
+
+C record/class : GtkCellAreaContextClass
+*/
 type CellAreaContextClass struct {
 	native *C.GtkCellAreaContextClass
 	// Private : parent_class
@@ -1910,7 +2142,10 @@ func (recv *CellAreaContextClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CellAreaContextPrivate is a wrapper around the C record GtkCellAreaContextPrivate.
+/*
+
+C record/class : GtkCellAreaContextPrivate
+*/
 type CellAreaContextPrivate struct {
 	native *C.GtkCellAreaContextPrivate
 }
@@ -1931,7 +2166,10 @@ func (recv *CellAreaContextPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CellAreaPrivate is a wrapper around the C record GtkCellAreaPrivate.
+/*
+
+C record/class : GtkCellAreaPrivate
+*/
 type CellAreaPrivate struct {
 	native *C.GtkCellAreaPrivate
 }
@@ -1952,7 +2190,10 @@ func (recv *CellAreaPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CellEditableIface is a wrapper around the C record GtkCellEditableIface.
+/*
+
+C record/class : GtkCellEditableIface
+*/
 type CellEditableIface struct {
 	native *C.GtkCellEditableIface
 	// Private : g_iface
@@ -1977,7 +2218,10 @@ func (recv *CellEditableIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CellLayoutIface is a wrapper around the C record GtkCellLayoutIface.
+/*
+
+C record/class : GtkCellLayoutIface
+*/
 type CellLayoutIface struct {
 	native *C.GtkCellLayoutIface
 	// Private : g_iface
@@ -2008,7 +2252,10 @@ func (recv *CellLayoutIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CellRendererAccelClass is a wrapper around the C record GtkCellRendererAccelClass.
+/*
+
+C record/class : GtkCellRendererAccelClass
+*/
 type CellRendererAccelClass struct {
 	native *C.GtkCellRendererAccelClass
 	// parent_class : record
@@ -2037,7 +2284,10 @@ func (recv *CellRendererAccelClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CellRendererAccelPrivate is a wrapper around the C record GtkCellRendererAccelPrivate.
+/*
+
+C record/class : GtkCellRendererAccelPrivate
+*/
 type CellRendererAccelPrivate struct {
 	native *C.GtkCellRendererAccelPrivate
 }
@@ -2058,7 +2308,10 @@ func (recv *CellRendererAccelPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CellRendererClass is a wrapper around the C record GtkCellRendererClass.
+/*
+
+C record/class : GtkCellRendererClass
+*/
 type CellRendererClass struct {
 	native *C.GtkCellRendererClass
 	// Private : parent_class
@@ -2114,7 +2367,10 @@ func (recv *CellRendererClass) SetAccessibleType(type_ gobject.Type) {
 	return
 }
 
-// CellRendererClassPrivate is a wrapper around the C record GtkCellRendererClassPrivate.
+/*
+
+C record/class : GtkCellRendererClassPrivate
+*/
 type CellRendererClassPrivate struct {
 	native *C.GtkCellRendererClassPrivate
 }
@@ -2135,7 +2391,10 @@ func (recv *CellRendererClassPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CellRendererComboClass is a wrapper around the C record GtkCellRendererComboClass.
+/*
+
+C record/class : GtkCellRendererComboClass
+*/
 type CellRendererComboClass struct {
 	native *C.GtkCellRendererComboClass
 	// parent : record
@@ -2161,7 +2420,10 @@ func (recv *CellRendererComboClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CellRendererComboPrivate is a wrapper around the C record GtkCellRendererComboPrivate.
+/*
+
+C record/class : GtkCellRendererComboPrivate
+*/
 type CellRendererComboPrivate struct {
 	native *C.GtkCellRendererComboPrivate
 }
@@ -2182,7 +2444,10 @@ func (recv *CellRendererComboPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CellRendererPixbufClass is a wrapper around the C record GtkCellRendererPixbufClass.
+/*
+
+C record/class : GtkCellRendererPixbufClass
+*/
 type CellRendererPixbufClass struct {
 	native *C.GtkCellRendererPixbufClass
 	// parent_class : record
@@ -2208,7 +2473,10 @@ func (recv *CellRendererPixbufClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CellRendererPixbufPrivate is a wrapper around the C record GtkCellRendererPixbufPrivate.
+/*
+
+C record/class : GtkCellRendererPixbufPrivate
+*/
 type CellRendererPixbufPrivate struct {
 	native *C.GtkCellRendererPixbufPrivate
 }
@@ -2229,7 +2497,10 @@ func (recv *CellRendererPixbufPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CellRendererPrivate is a wrapper around the C record GtkCellRendererPrivate.
+/*
+
+C record/class : GtkCellRendererPrivate
+*/
 type CellRendererPrivate struct {
 	native *C.GtkCellRendererPrivate
 }
@@ -2250,7 +2521,10 @@ func (recv *CellRendererPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CellRendererProgressClass is a wrapper around the C record GtkCellRendererProgressClass.
+/*
+
+C record/class : GtkCellRendererProgressClass
+*/
 type CellRendererProgressClass struct {
 	native *C.GtkCellRendererProgressClass
 	// parent_class : record
@@ -2276,7 +2550,10 @@ func (recv *CellRendererProgressClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CellRendererProgressPrivate is a wrapper around the C record GtkCellRendererProgressPrivate.
+/*
+
+C record/class : GtkCellRendererProgressPrivate
+*/
 type CellRendererProgressPrivate struct {
 	native *C.GtkCellRendererProgressPrivate
 }
@@ -2297,7 +2574,10 @@ func (recv *CellRendererProgressPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CellRendererSpinClass is a wrapper around the C record GtkCellRendererSpinClass.
+/*
+
+C record/class : GtkCellRendererSpinClass
+*/
 type CellRendererSpinClass struct {
 	native *C.GtkCellRendererSpinClass
 	// parent : record
@@ -2323,7 +2603,10 @@ func (recv *CellRendererSpinClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CellRendererSpinPrivate is a wrapper around the C record GtkCellRendererSpinPrivate.
+/*
+
+C record/class : GtkCellRendererSpinPrivate
+*/
 type CellRendererSpinPrivate struct {
 	native *C.GtkCellRendererSpinPrivate
 }
@@ -2344,7 +2627,10 @@ func (recv *CellRendererSpinPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CellRendererSpinnerClass is a wrapper around the C record GtkCellRendererSpinnerClass.
+/*
+
+C record/class : GtkCellRendererSpinnerClass
+*/
 type CellRendererSpinnerClass struct {
 	native *C.GtkCellRendererSpinnerClass
 	// parent_class : record
@@ -2370,7 +2656,10 @@ func (recv *CellRendererSpinnerClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CellRendererSpinnerPrivate is a wrapper around the C record GtkCellRendererSpinnerPrivate.
+/*
+
+C record/class : GtkCellRendererSpinnerPrivate
+*/
 type CellRendererSpinnerPrivate struct {
 	native *C.GtkCellRendererSpinnerPrivate
 }
@@ -2391,7 +2680,10 @@ func (recv *CellRendererSpinnerPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CellRendererTextClass is a wrapper around the C record GtkCellRendererTextClass.
+/*
+
+C record/class : GtkCellRendererTextClass
+*/
 type CellRendererTextClass struct {
 	native *C.GtkCellRendererTextClass
 	// parent_class : record
@@ -2418,7 +2710,10 @@ func (recv *CellRendererTextClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CellRendererTextPrivate is a wrapper around the C record GtkCellRendererTextPrivate.
+/*
+
+C record/class : GtkCellRendererTextPrivate
+*/
 type CellRendererTextPrivate struct {
 	native *C.GtkCellRendererTextPrivate
 }
@@ -2439,7 +2734,10 @@ func (recv *CellRendererTextPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CellRendererToggleClass is a wrapper around the C record GtkCellRendererToggleClass.
+/*
+
+C record/class : GtkCellRendererToggleClass
+*/
 type CellRendererToggleClass struct {
 	native *C.GtkCellRendererToggleClass
 	// parent_class : record
@@ -2466,7 +2764,10 @@ func (recv *CellRendererToggleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CellRendererTogglePrivate is a wrapper around the C record GtkCellRendererTogglePrivate.
+/*
+
+C record/class : GtkCellRendererTogglePrivate
+*/
 type CellRendererTogglePrivate struct {
 	native *C.GtkCellRendererTogglePrivate
 }
@@ -2487,7 +2788,10 @@ func (recv *CellRendererTogglePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CellViewClass is a wrapper around the C record GtkCellViewClass.
+/*
+
+C record/class : GtkCellViewClass
+*/
 type CellViewClass struct {
 	native *C.GtkCellViewClass
 	// parent_class : record
@@ -2513,7 +2817,10 @@ func (recv *CellViewClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CellViewPrivate is a wrapper around the C record GtkCellViewPrivate.
+/*
+
+C record/class : GtkCellViewPrivate
+*/
 type CellViewPrivate struct {
 	native *C.GtkCellViewPrivate
 }
@@ -2534,7 +2841,10 @@ func (recv *CellViewPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CheckButtonClass is a wrapper around the C record GtkCheckButtonClass.
+/*
+
+C record/class : GtkCheckButtonClass
+*/
 type CheckButtonClass struct {
 	native *C.GtkCheckButtonClass
 	// parent_class : record
@@ -2561,7 +2871,10 @@ func (recv *CheckButtonClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CheckMenuItemAccessibleClass is a wrapper around the C record GtkCheckMenuItemAccessibleClass.
+/*
+
+C record/class : GtkCheckMenuItemAccessibleClass
+*/
 type CheckMenuItemAccessibleClass struct {
 	native *C.GtkCheckMenuItemAccessibleClass
 	// parent_class : record
@@ -2583,7 +2896,10 @@ func (recv *CheckMenuItemAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CheckMenuItemAccessiblePrivate is a wrapper around the C record GtkCheckMenuItemAccessiblePrivate.
+/*
+
+C record/class : GtkCheckMenuItemAccessiblePrivate
+*/
 type CheckMenuItemAccessiblePrivate struct {
 	native *C.GtkCheckMenuItemAccessiblePrivate
 }
@@ -2604,7 +2920,10 @@ func (recv *CheckMenuItemAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CheckMenuItemClass is a wrapper around the C record GtkCheckMenuItemClass.
+/*
+
+C record/class : GtkCheckMenuItemClass
+*/
 type CheckMenuItemClass struct {
 	native *C.GtkCheckMenuItemClass
 	// parent_class : record
@@ -2632,7 +2951,10 @@ func (recv *CheckMenuItemClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CheckMenuItemPrivate is a wrapper around the C record GtkCheckMenuItemPrivate.
+/*
+
+C record/class : GtkCheckMenuItemPrivate
+*/
 type CheckMenuItemPrivate struct {
 	native *C.GtkCheckMenuItemPrivate
 }
@@ -2653,7 +2975,10 @@ func (recv *CheckMenuItemPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ColorButtonClass is a wrapper around the C record GtkColorButtonClass.
+/*
+
+C record/class : GtkColorButtonClass
+*/
 type ColorButtonClass struct {
 	native *C.GtkColorButtonClass
 	// parent_class : record
@@ -2680,7 +3005,10 @@ func (recv *ColorButtonClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ColorButtonPrivate is a wrapper around the C record GtkColorButtonPrivate.
+/*
+
+C record/class : GtkColorButtonPrivate
+*/
 type ColorButtonPrivate struct {
 	native *C.GtkColorButtonPrivate
 }
@@ -2701,7 +3029,10 @@ func (recv *ColorButtonPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ColorChooserDialogClass is a wrapper around the C record GtkColorChooserDialogClass.
+/*
+
+C record/class : GtkColorChooserDialogClass
+*/
 type ColorChooserDialogClass struct {
 	native *C.GtkColorChooserDialogClass
 	// parent_class : record
@@ -2727,7 +3058,10 @@ func (recv *ColorChooserDialogClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ColorChooserDialogPrivate is a wrapper around the C record GtkColorChooserDialogPrivate.
+/*
+
+C record/class : GtkColorChooserDialogPrivate
+*/
 type ColorChooserDialogPrivate struct {
 	native *C.GtkColorChooserDialogPrivate
 }
@@ -2748,7 +3082,10 @@ func (recv *ColorChooserDialogPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ColorChooserInterface is a wrapper around the C record GtkColorChooserInterface.
+/*
+
+C record/class : GtkColorChooserInterface
+*/
 type ColorChooserInterface struct {
 	native *C.GtkColorChooserInterface
 	// base_interface : record
@@ -2775,7 +3112,10 @@ func (recv *ColorChooserInterface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ColorChooserWidgetClass is a wrapper around the C record GtkColorChooserWidgetClass.
+/*
+
+C record/class : GtkColorChooserWidgetClass
+*/
 type ColorChooserWidgetClass struct {
 	native *C.GtkColorChooserWidgetClass
 	// parent_class : record
@@ -2805,7 +3145,10 @@ func (recv *ColorChooserWidgetClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ColorChooserWidgetPrivate is a wrapper around the C record GtkColorChooserWidgetPrivate.
+/*
+
+C record/class : GtkColorChooserWidgetPrivate
+*/
 type ColorChooserWidgetPrivate struct {
 	native *C.GtkColorChooserWidgetPrivate
 }
@@ -2826,7 +3169,10 @@ func (recv *ColorChooserWidgetPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ColorSelectionClass is a wrapper around the C record GtkColorSelectionClass.
+/*
+
+C record/class : GtkColorSelectionClass
+*/
 type ColorSelectionClass struct {
 	native *C.GtkColorSelectionClass
 	// parent_class : record
@@ -2853,7 +3199,10 @@ func (recv *ColorSelectionClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ColorSelectionDialogClass is a wrapper around the C record GtkColorSelectionDialogClass.
+/*
+
+C record/class : GtkColorSelectionDialogClass
+*/
 type ColorSelectionDialogClass struct {
 	native *C.GtkColorSelectionDialogClass
 	// parent_class : record
@@ -2879,7 +3228,10 @@ func (recv *ColorSelectionDialogClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ColorSelectionDialogPrivate is a wrapper around the C record GtkColorSelectionDialogPrivate.
+/*
+
+C record/class : GtkColorSelectionDialogPrivate
+*/
 type ColorSelectionDialogPrivate struct {
 	native *C.GtkColorSelectionDialogPrivate
 }
@@ -2900,7 +3252,10 @@ func (recv *ColorSelectionDialogPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ColorSelectionPrivate is a wrapper around the C record GtkColorSelectionPrivate.
+/*
+
+C record/class : GtkColorSelectionPrivate
+*/
 type ColorSelectionPrivate struct {
 	native *C.GtkColorSelectionPrivate
 }
@@ -2921,7 +3276,10 @@ func (recv *ColorSelectionPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ComboBoxAccessibleClass is a wrapper around the C record GtkComboBoxAccessibleClass.
+/*
+
+C record/class : GtkComboBoxAccessibleClass
+*/
 type ComboBoxAccessibleClass struct {
 	native *C.GtkComboBoxAccessibleClass
 	// parent_class : record
@@ -2943,7 +3301,10 @@ func (recv *ComboBoxAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ComboBoxAccessiblePrivate is a wrapper around the C record GtkComboBoxAccessiblePrivate.
+/*
+
+C record/class : GtkComboBoxAccessiblePrivate
+*/
 type ComboBoxAccessiblePrivate struct {
 	native *C.GtkComboBoxAccessiblePrivate
 }
@@ -2964,7 +3325,10 @@ func (recv *ComboBoxAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ComboBoxClass is a wrapper around the C record GtkComboBoxClass.
+/*
+
+C record/class : GtkComboBoxClass
+*/
 type ComboBoxClass struct {
 	native *C.GtkComboBoxClass
 	// parent_class : record
@@ -2991,7 +3355,10 @@ func (recv *ComboBoxClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ComboBoxPrivate is a wrapper around the C record GtkComboBoxPrivate.
+/*
+
+C record/class : GtkComboBoxPrivate
+*/
 type ComboBoxPrivate struct {
 	native *C.GtkComboBoxPrivate
 }
@@ -3012,7 +3379,10 @@ func (recv *ComboBoxPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ComboBoxTextClass is a wrapper around the C record GtkComboBoxTextClass.
+/*
+
+C record/class : GtkComboBoxTextClass
+*/
 type ComboBoxTextClass struct {
 	native *C.GtkComboBoxTextClass
 	// parent_class : record
@@ -3038,7 +3408,10 @@ func (recv *ComboBoxTextClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ComboBoxTextPrivate is a wrapper around the C record GtkComboBoxTextPrivate.
+/*
+
+C record/class : GtkComboBoxTextPrivate
+*/
 type ComboBoxTextPrivate struct {
 	native *C.GtkComboBoxTextPrivate
 }
@@ -3059,7 +3432,10 @@ func (recv *ComboBoxTextPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ContainerAccessibleClass is a wrapper around the C record GtkContainerAccessibleClass.
+/*
+
+C record/class : GtkContainerAccessibleClass
+*/
 type ContainerAccessibleClass struct {
 	native *C.GtkContainerAccessibleClass
 	// parent_class : record
@@ -3083,7 +3459,10 @@ func (recv *ContainerAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ContainerAccessiblePrivate is a wrapper around the C record GtkContainerAccessiblePrivate.
+/*
+
+C record/class : GtkContainerAccessiblePrivate
+*/
 type ContainerAccessiblePrivate struct {
 	native *C.GtkContainerAccessiblePrivate
 }
@@ -3104,7 +3483,10 @@ func (recv *ContainerAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ContainerCellAccessibleClass is a wrapper around the C record GtkContainerCellAccessibleClass.
+/*
+
+C record/class : GtkContainerCellAccessibleClass
+*/
 type ContainerCellAccessibleClass struct {
 	native *C.GtkContainerCellAccessibleClass
 	// parent_class : record
@@ -3126,7 +3508,10 @@ func (recv *ContainerCellAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ContainerCellAccessiblePrivate is a wrapper around the C record GtkContainerCellAccessiblePrivate.
+/*
+
+C record/class : GtkContainerCellAccessiblePrivate
+*/
 type ContainerCellAccessiblePrivate struct {
 	native *C.GtkContainerCellAccessiblePrivate
 }
@@ -3147,7 +3532,11 @@ func (recv *ContainerCellAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ContainerClass is a wrapper around the C record GtkContainerClass.
+// Base class for containers.
+/*
+
+C record/class : GtkContainerClass
+*/
 type ContainerClass struct {
 	native *C.GtkContainerClass
 	// parent_class : record
@@ -3214,7 +3603,10 @@ func (recv *ContainerClass) HandleBorderWidth() {
 
 // Unsupported : gtk_container_class_list_child_properties : no return type
 
-// ContainerPrivate is a wrapper around the C record GtkContainerPrivate.
+/*
+
+C record/class : GtkContainerPrivate
+*/
 type ContainerPrivate struct {
 	native *C.GtkContainerPrivate
 }
@@ -3235,7 +3627,10 @@ func (recv *ContainerPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CssProviderClass is a wrapper around the C record GtkCssProviderClass.
+/*
+
+C record/class : GtkCssProviderClass
+*/
 type CssProviderClass struct {
 	native *C.GtkCssProviderClass
 	// parent_class : record
@@ -3261,7 +3656,10 @@ func (recv *CssProviderClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// CssProviderPrivate is a wrapper around the C record GtkCssProviderPrivate.
+/*
+
+C record/class : GtkCssProviderPrivate
+*/
 type CssProviderPrivate struct {
 	native *C.GtkCssProviderPrivate
 }
@@ -3282,7 +3680,10 @@ func (recv *CssProviderPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// DialogClass is a wrapper around the C record GtkDialogClass.
+/*
+
+C record/class : GtkDialogClass
+*/
 type DialogClass struct {
 	native *C.GtkDialogClass
 	// parent_class : record
@@ -3310,7 +3711,10 @@ func (recv *DialogClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// DialogPrivate is a wrapper around the C record GtkDialogPrivate.
+/*
+
+C record/class : GtkDialogPrivate
+*/
 type DialogPrivate struct {
 	native *C.GtkDialogPrivate
 }
@@ -3331,7 +3735,10 @@ func (recv *DialogPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// DrawingAreaClass is a wrapper around the C record GtkDrawingAreaClass.
+/*
+
+C record/class : GtkDrawingAreaClass
+*/
 type DrawingAreaClass struct {
 	native *C.GtkDrawingAreaClass
 	// parent_class : record
@@ -3357,7 +3764,10 @@ func (recv *DrawingAreaClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// EditableInterface is a wrapper around the C record GtkEditableInterface.
+/*
+
+C record/class : GtkEditableInterface
+*/
 type EditableInterface struct {
 	native *C.GtkEditableInterface
 	// base_iface : record
@@ -3389,7 +3799,10 @@ func (recv *EditableInterface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// EntryAccessibleClass is a wrapper around the C record GtkEntryAccessibleClass.
+/*
+
+C record/class : GtkEntryAccessibleClass
+*/
 type EntryAccessibleClass struct {
 	native *C.GtkEntryAccessibleClass
 	// parent_class : record
@@ -3411,7 +3824,10 @@ func (recv *EntryAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// EntryAccessiblePrivate is a wrapper around the C record GtkEntryAccessiblePrivate.
+/*
+
+C record/class : GtkEntryAccessiblePrivate
+*/
 type EntryAccessiblePrivate struct {
 	native *C.GtkEntryAccessiblePrivate
 }
@@ -3432,7 +3848,10 @@ func (recv *EntryAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// EntryBufferClass is a wrapper around the C record GtkEntryBufferClass.
+/*
+
+C record/class : GtkEntryBufferClass
+*/
 type EntryBufferClass struct {
 	native *C.GtkEntryBufferClass
 	// parent_class : record
@@ -3468,7 +3887,10 @@ func (recv *EntryBufferClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// EntryBufferPrivate is a wrapper around the C record GtkEntryBufferPrivate.
+/*
+
+C record/class : GtkEntryBufferPrivate
+*/
 type EntryBufferPrivate struct {
 	native *C.GtkEntryBufferPrivate
 }
@@ -3489,7 +3911,15 @@ func (recv *EntryBufferPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// EntryClass is a wrapper around the C record GtkEntryClass.
+// Class structure for #GtkEntry. All virtual functions have a default
+// implementation. Derived classes may set the virtual function pointers for the
+// signal handlers to %NULL, but must keep @get_text_area_size and
+// @get_frame_size non-%NULL; either use the default implementation, or provide
+// a custom one.
+/*
+
+C record/class : GtkEntryClass
+*/
 type EntryClass struct {
 	native *C.GtkEntryClass
 	// parent_class : record
@@ -3530,7 +3960,10 @@ func (recv *EntryClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// EntryCompletionClass is a wrapper around the C record GtkEntryCompletionClass.
+/*
+
+C record/class : GtkEntryCompletionClass
+*/
 type EntryCompletionClass struct {
 	native *C.GtkEntryCompletionClass
 	// parent_class : record
@@ -3560,7 +3993,10 @@ func (recv *EntryCompletionClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// EntryCompletionPrivate is a wrapper around the C record GtkEntryCompletionPrivate.
+/*
+
+C record/class : GtkEntryCompletionPrivate
+*/
 type EntryCompletionPrivate struct {
 	native *C.GtkEntryCompletionPrivate
 }
@@ -3581,7 +4017,10 @@ func (recv *EntryCompletionPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// EntryPrivate is a wrapper around the C record GtkEntryPrivate.
+/*
+
+C record/class : GtkEntryPrivate
+*/
 type EntryPrivate struct {
 	native *C.GtkEntryPrivate
 }
@@ -3602,7 +4041,10 @@ func (recv *EntryPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// EventBoxClass is a wrapper around the C record GtkEventBoxClass.
+/*
+
+C record/class : GtkEventBoxClass
+*/
 type EventBoxClass struct {
 	native *C.GtkEventBoxClass
 	// parent_class : record
@@ -3628,7 +4070,10 @@ func (recv *EventBoxClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// EventBoxPrivate is a wrapper around the C record GtkEventBoxPrivate.
+/*
+
+C record/class : GtkEventBoxPrivate
+*/
 type EventBoxPrivate struct {
 	native *C.GtkEventBoxPrivate
 }
@@ -3649,7 +4094,10 @@ func (recv *EventBoxPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// EventControllerClass is a wrapper around the C record GtkEventControllerClass.
+/*
+
+C record/class : GtkEventControllerClass
+*/
 type EventControllerClass struct {
 	native *C.GtkEventControllerClass
 }
@@ -3670,7 +4118,10 @@ func (recv *EventControllerClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ExpanderAccessibleClass is a wrapper around the C record GtkExpanderAccessibleClass.
+/*
+
+C record/class : GtkExpanderAccessibleClass
+*/
 type ExpanderAccessibleClass struct {
 	native *C.GtkExpanderAccessibleClass
 	// parent_class : record
@@ -3692,7 +4143,10 @@ func (recv *ExpanderAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ExpanderAccessiblePrivate is a wrapper around the C record GtkExpanderAccessiblePrivate.
+/*
+
+C record/class : GtkExpanderAccessiblePrivate
+*/
 type ExpanderAccessiblePrivate struct {
 	native *C.GtkExpanderAccessiblePrivate
 }
@@ -3713,7 +4167,10 @@ func (recv *ExpanderAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ExpanderClass is a wrapper around the C record GtkExpanderClass.
+/*
+
+C record/class : GtkExpanderClass
+*/
 type ExpanderClass struct {
 	native *C.GtkExpanderClass
 	// parent_class : record
@@ -3740,7 +4197,10 @@ func (recv *ExpanderClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ExpanderPrivate is a wrapper around the C record GtkExpanderPrivate.
+/*
+
+C record/class : GtkExpanderPrivate
+*/
 type ExpanderPrivate struct {
 	native *C.GtkExpanderPrivate
 }
@@ -3761,7 +4221,10 @@ func (recv *ExpanderPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// FileChooserButtonClass is a wrapper around the C record GtkFileChooserButtonClass.
+/*
+
+C record/class : GtkFileChooserButtonClass
+*/
 type FileChooserButtonClass struct {
 	native *C.GtkFileChooserButtonClass
 	// parent_class : record
@@ -3788,7 +4251,10 @@ func (recv *FileChooserButtonClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// FileChooserButtonPrivate is a wrapper around the C record GtkFileChooserButtonPrivate.
+/*
+
+C record/class : GtkFileChooserButtonPrivate
+*/
 type FileChooserButtonPrivate struct {
 	native *C.GtkFileChooserButtonPrivate
 }
@@ -3809,7 +4275,10 @@ func (recv *FileChooserButtonPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// FileChooserDialogClass is a wrapper around the C record GtkFileChooserDialogClass.
+/*
+
+C record/class : GtkFileChooserDialogClass
+*/
 type FileChooserDialogClass struct {
 	native *C.GtkFileChooserDialogClass
 	// parent_class : record
@@ -3835,7 +4304,10 @@ func (recv *FileChooserDialogClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// FileChooserDialogPrivate is a wrapper around the C record GtkFileChooserDialogPrivate.
+/*
+
+C record/class : GtkFileChooserDialogPrivate
+*/
 type FileChooserDialogPrivate struct {
 	native *C.GtkFileChooserDialogPrivate
 }
@@ -3856,7 +4328,10 @@ func (recv *FileChooserDialogPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// FileChooserWidgetClass is a wrapper around the C record GtkFileChooserWidgetClass.
+/*
+
+C record/class : GtkFileChooserWidgetClass
+*/
 type FileChooserWidgetClass struct {
 	native *C.GtkFileChooserWidgetClass
 	// parent_class : record
@@ -3882,7 +4357,10 @@ func (recv *FileChooserWidgetClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// FileChooserWidgetPrivate is a wrapper around the C record GtkFileChooserWidgetPrivate.
+/*
+
+C record/class : GtkFileChooserWidgetPrivate
+*/
 type FileChooserWidgetPrivate struct {
 	native *C.GtkFileChooserWidgetPrivate
 }
@@ -3903,7 +4381,12 @@ func (recv *FileChooserWidgetPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// FileFilterInfo is a wrapper around the C record GtkFileFilterInfo.
+// A #GtkFileFilterInfo-struct is used to pass information about the
+// tested file to gtk_file_filter_filter().
+/*
+
+C record/class : GtkFileFilterInfo
+*/
 type FileFilterInfo struct {
 	native      *C.GtkFileFilterInfo
 	Contains    FileFilterFlags
@@ -3946,7 +4429,10 @@ func (recv *FileFilterInfo) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// FixedChild is a wrapper around the C record GtkFixedChild.
+/*
+
+C record/class : GtkFixedChild
+*/
 type FixedChild struct {
 	native *C.GtkFixedChild
 	// widget : record
@@ -3978,7 +4464,10 @@ func (recv *FixedChild) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// FixedClass is a wrapper around the C record GtkFixedClass.
+/*
+
+C record/class : GtkFixedClass
+*/
 type FixedClass struct {
 	native *C.GtkFixedClass
 	// parent_class : record
@@ -4004,7 +4493,10 @@ func (recv *FixedClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// FixedPrivate is a wrapper around the C record GtkFixedPrivate.
+/*
+
+C record/class : GtkFixedPrivate
+*/
 type FixedPrivate struct {
 	native *C.GtkFixedPrivate
 }
@@ -4025,7 +4517,10 @@ func (recv *FixedPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// FlowBoxAccessibleClass is a wrapper around the C record GtkFlowBoxAccessibleClass.
+/*
+
+C record/class : GtkFlowBoxAccessibleClass
+*/
 type FlowBoxAccessibleClass struct {
 	native *C.GtkFlowBoxAccessibleClass
 	// parent_class : record
@@ -4047,7 +4542,10 @@ func (recv *FlowBoxAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// FlowBoxAccessiblePrivate is a wrapper around the C record GtkFlowBoxAccessiblePrivate.
+/*
+
+C record/class : GtkFlowBoxAccessiblePrivate
+*/
 type FlowBoxAccessiblePrivate struct {
 	native *C.GtkFlowBoxAccessiblePrivate
 }
@@ -4068,7 +4566,10 @@ func (recv *FlowBoxAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// FlowBoxChildAccessibleClass is a wrapper around the C record GtkFlowBoxChildAccessibleClass.
+/*
+
+C record/class : GtkFlowBoxChildAccessibleClass
+*/
 type FlowBoxChildAccessibleClass struct {
 	native *C.GtkFlowBoxChildAccessibleClass
 	// parent_class : record
@@ -4090,7 +4591,10 @@ func (recv *FlowBoxChildAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// FlowBoxChildClass is a wrapper around the C record GtkFlowBoxChildClass.
+/*
+
+C record/class : GtkFlowBoxChildClass
+*/
 type FlowBoxChildClass struct {
 	native *C.GtkFlowBoxChildClass
 	// parent_class : record
@@ -4115,7 +4619,10 @@ func (recv *FlowBoxChildClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// FlowBoxClass is a wrapper around the C record GtkFlowBoxClass.
+/*
+
+C record/class : GtkFlowBoxClass
+*/
 type FlowBoxClass struct {
 	native *C.GtkFlowBoxClass
 	// parent_class : record
@@ -4150,7 +4657,10 @@ func (recv *FlowBoxClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// FontButtonClass is a wrapper around the C record GtkFontButtonClass.
+/*
+
+C record/class : GtkFontButtonClass
+*/
 type FontButtonClass struct {
 	native *C.GtkFontButtonClass
 	// parent_class : record
@@ -4177,7 +4687,10 @@ func (recv *FontButtonClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// FontButtonPrivate is a wrapper around the C record GtkFontButtonPrivate.
+/*
+
+C record/class : GtkFontButtonPrivate
+*/
 type FontButtonPrivate struct {
 	native *C.GtkFontButtonPrivate
 }
@@ -4198,7 +4711,10 @@ func (recv *FontButtonPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// FontChooserDialogClass is a wrapper around the C record GtkFontChooserDialogClass.
+/*
+
+C record/class : GtkFontChooserDialogClass
+*/
 type FontChooserDialogClass struct {
 	native *C.GtkFontChooserDialogClass
 	// parent_class : record
@@ -4224,7 +4740,10 @@ func (recv *FontChooserDialogClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// FontChooserDialogPrivate is a wrapper around the C record GtkFontChooserDialogPrivate.
+/*
+
+C record/class : GtkFontChooserDialogPrivate
+*/
 type FontChooserDialogPrivate struct {
 	native *C.GtkFontChooserDialogPrivate
 }
@@ -4245,7 +4764,10 @@ func (recv *FontChooserDialogPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// FontChooserIface is a wrapper around the C record GtkFontChooserIface.
+/*
+
+C record/class : GtkFontChooserIface
+*/
 type FontChooserIface struct {
 	native *C.GtkFontChooserIface
 	// base_iface : record
@@ -4275,7 +4797,10 @@ func (recv *FontChooserIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// FontChooserWidgetClass is a wrapper around the C record GtkFontChooserWidgetClass.
+/*
+
+C record/class : GtkFontChooserWidgetClass
+*/
 type FontChooserWidgetClass struct {
 	native *C.GtkFontChooserWidgetClass
 	// parent_class : record
@@ -4305,7 +4830,10 @@ func (recv *FontChooserWidgetClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// FontChooserWidgetPrivate is a wrapper around the C record GtkFontChooserWidgetPrivate.
+/*
+
+C record/class : GtkFontChooserWidgetPrivate
+*/
 type FontChooserWidgetPrivate struct {
 	native *C.GtkFontChooserWidgetPrivate
 }
@@ -4326,7 +4854,10 @@ func (recv *FontChooserWidgetPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// FontSelectionClass is a wrapper around the C record GtkFontSelectionClass.
+/*
+
+C record/class : GtkFontSelectionClass
+*/
 type FontSelectionClass struct {
 	native *C.GtkFontSelectionClass
 	// parent_class : record
@@ -4352,7 +4883,10 @@ func (recv *FontSelectionClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// FontSelectionDialogClass is a wrapper around the C record GtkFontSelectionDialogClass.
+/*
+
+C record/class : GtkFontSelectionDialogClass
+*/
 type FontSelectionDialogClass struct {
 	native *C.GtkFontSelectionDialogClass
 	// parent_class : record
@@ -4378,7 +4912,10 @@ func (recv *FontSelectionDialogClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// FontSelectionDialogPrivate is a wrapper around the C record GtkFontSelectionDialogPrivate.
+/*
+
+C record/class : GtkFontSelectionDialogPrivate
+*/
 type FontSelectionDialogPrivate struct {
 	native *C.GtkFontSelectionDialogPrivate
 }
@@ -4399,7 +4936,10 @@ func (recv *FontSelectionDialogPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// FontSelectionPrivate is a wrapper around the C record GtkFontSelectionPrivate.
+/*
+
+C record/class : GtkFontSelectionPrivate
+*/
 type FontSelectionPrivate struct {
 	native *C.GtkFontSelectionPrivate
 }
@@ -4420,7 +4960,10 @@ func (recv *FontSelectionPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// FrameAccessibleClass is a wrapper around the C record GtkFrameAccessibleClass.
+/*
+
+C record/class : GtkFrameAccessibleClass
+*/
 type FrameAccessibleClass struct {
 	native *C.GtkFrameAccessibleClass
 	// parent_class : record
@@ -4442,7 +4985,10 @@ func (recv *FrameAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// FrameAccessiblePrivate is a wrapper around the C record GtkFrameAccessiblePrivate.
+/*
+
+C record/class : GtkFrameAccessiblePrivate
+*/
 type FrameAccessiblePrivate struct {
 	native *C.GtkFrameAccessiblePrivate
 }
@@ -4463,7 +5009,10 @@ func (recv *FrameAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// FrameClass is a wrapper around the C record GtkFrameClass.
+/*
+
+C record/class : GtkFrameClass
+*/
 type FrameClass struct {
 	native *C.GtkFrameClass
 	// parent_class : record
@@ -4490,7 +5039,10 @@ func (recv *FrameClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// FramePrivate is a wrapper around the C record GtkFramePrivate.
+/*
+
+C record/class : GtkFramePrivate
+*/
 type FramePrivate struct {
 	native *C.GtkFramePrivate
 }
@@ -4511,7 +5063,10 @@ func (recv *FramePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// GestureClass is a wrapper around the C record GtkGestureClass.
+/*
+
+C record/class : GtkGestureClass
+*/
 type GestureClass struct {
 	native *C.GtkGestureClass
 }
@@ -4532,7 +5087,10 @@ func (recv *GestureClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// GestureDragClass is a wrapper around the C record GtkGestureDragClass.
+/*
+
+C record/class : GtkGestureDragClass
+*/
 type GestureDragClass struct {
 	native *C.GtkGestureDragClass
 }
@@ -4553,7 +5111,10 @@ func (recv *GestureDragClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// GestureLongPressClass is a wrapper around the C record GtkGestureLongPressClass.
+/*
+
+C record/class : GtkGestureLongPressClass
+*/
 type GestureLongPressClass struct {
 	native *C.GtkGestureLongPressClass
 }
@@ -4574,7 +5135,10 @@ func (recv *GestureLongPressClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// GestureMultiPressClass is a wrapper around the C record GtkGestureMultiPressClass.
+/*
+
+C record/class : GtkGestureMultiPressClass
+*/
 type GestureMultiPressClass struct {
 	native *C.GtkGestureMultiPressClass
 }
@@ -4595,7 +5159,10 @@ func (recv *GestureMultiPressClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// GesturePanClass is a wrapper around the C record GtkGesturePanClass.
+/*
+
+C record/class : GtkGesturePanClass
+*/
 type GesturePanClass struct {
 	native *C.GtkGesturePanClass
 }
@@ -4616,7 +5183,10 @@ func (recv *GesturePanClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// GestureRotateClass is a wrapper around the C record GtkGestureRotateClass.
+/*
+
+C record/class : GtkGestureRotateClass
+*/
 type GestureRotateClass struct {
 	native *C.GtkGestureRotateClass
 }
@@ -4637,7 +5207,10 @@ func (recv *GestureRotateClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// GestureSingleClass is a wrapper around the C record GtkGestureSingleClass.
+/*
+
+C record/class : GtkGestureSingleClass
+*/
 type GestureSingleClass struct {
 	native *C.GtkGestureSingleClass
 }
@@ -4658,7 +5231,10 @@ func (recv *GestureSingleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// GestureSwipeClass is a wrapper around the C record GtkGestureSwipeClass.
+/*
+
+C record/class : GtkGestureSwipeClass
+*/
 type GestureSwipeClass struct {
 	native *C.GtkGestureSwipeClass
 }
@@ -4679,7 +5255,10 @@ func (recv *GestureSwipeClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// GestureZoomClass is a wrapper around the C record GtkGestureZoomClass.
+/*
+
+C record/class : GtkGestureZoomClass
+*/
 type GestureZoomClass struct {
 	native *C.GtkGestureZoomClass
 }
@@ -4700,7 +5279,26 @@ func (recv *GestureZoomClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Gradient is a wrapper around the C record GtkGradient.
+// GtkGradient is a boxed type that represents a gradient.
+// It is the result of parsing a
+// [gradient expression][gtkcssprovider-gradients].
+// To obtain the gradient represented by a GtkGradient, it has to
+// be resolved with gtk_gradient_resolve(), which replaces all
+// symbolic color references by the colors they refer to (in a given
+// context) and constructs a #cairo_pattern_t value.
+//
+// It is not normally necessary to deal directly with #GtkGradients,
+// since they are mostly used behind the scenes by #GtkStyleContext and
+// #GtkCssProvider.
+//
+// #GtkGradient is deprecated. It was used internally by GTK’s CSS engine
+// to represent gradients. As its handling is not conforming to modern
+// web standards, it is not used anymore. If you want to use gradients in
+// your own code, please use Cairo directly.
+/*
+
+C record/class : GtkGradient
+*/
 type Gradient struct {
 	native *C.GtkGradient
 }
@@ -4751,7 +5349,10 @@ func (recv *Gradient) ToString() string {
 	return retGo
 }
 
-// GridClass is a wrapper around the C record GtkGridClass.
+/*
+
+C record/class : GtkGridClass
+*/
 type GridClass struct {
 	native *C.GtkGridClass
 	// parent_class : record
@@ -4781,7 +5382,10 @@ func (recv *GridClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// GridPrivate is a wrapper around the C record GtkGridPrivate.
+/*
+
+C record/class : GtkGridPrivate
+*/
 type GridPrivate struct {
 	native *C.GtkGridPrivate
 }
@@ -4802,7 +5406,10 @@ func (recv *GridPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// HBoxClass is a wrapper around the C record GtkHBoxClass.
+/*
+
+C record/class : GtkHBoxClass
+*/
 type HBoxClass struct {
 	native *C.GtkHBoxClass
 	// parent_class : record
@@ -4824,7 +5431,10 @@ func (recv *HBoxClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// HButtonBoxClass is a wrapper around the C record GtkHButtonBoxClass.
+/*
+
+C record/class : GtkHButtonBoxClass
+*/
 type HButtonBoxClass struct {
 	native *C.GtkHButtonBoxClass
 	// parent_class : record
@@ -4846,7 +5456,10 @@ func (recv *HButtonBoxClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// HPanedClass is a wrapper around the C record GtkHPanedClass.
+/*
+
+C record/class : GtkHPanedClass
+*/
 type HPanedClass struct {
 	native *C.GtkHPanedClass
 	// parent_class : record
@@ -4868,7 +5481,10 @@ func (recv *HPanedClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// HSVClass is a wrapper around the C record GtkHSVClass.
+/*
+
+C record/class : GtkHSVClass
+*/
 type HSVClass struct {
 	native *C.GtkHSVClass
 	// parent_class : record
@@ -4896,7 +5512,10 @@ func (recv *HSVClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// HSVPrivate is a wrapper around the C record GtkHSVPrivate.
+/*
+
+C record/class : GtkHSVPrivate
+*/
 type HSVPrivate struct {
 	native *C.GtkHSVPrivate
 }
@@ -4917,7 +5536,10 @@ func (recv *HSVPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// HScaleClass is a wrapper around the C record GtkHScaleClass.
+/*
+
+C record/class : GtkHScaleClass
+*/
 type HScaleClass struct {
 	native *C.GtkHScaleClass
 	// parent_class : record
@@ -4939,7 +5561,10 @@ func (recv *HScaleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// HScrollbarClass is a wrapper around the C record GtkHScrollbarClass.
+/*
+
+C record/class : GtkHScrollbarClass
+*/
 type HScrollbarClass struct {
 	native *C.GtkHScrollbarClass
 	// parent_class : record
@@ -4961,7 +5586,10 @@ func (recv *HScrollbarClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// HSeparatorClass is a wrapper around the C record GtkHSeparatorClass.
+/*
+
+C record/class : GtkHSeparatorClass
+*/
 type HSeparatorClass struct {
 	native *C.GtkHSeparatorClass
 	// parent_class : record
@@ -4983,7 +5611,10 @@ func (recv *HSeparatorClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// HandleBoxClass is a wrapper around the C record GtkHandleBoxClass.
+/*
+
+C record/class : GtkHandleBoxClass
+*/
 type HandleBoxClass struct {
 	native *C.GtkHandleBoxClass
 	// parent_class : record
@@ -5011,7 +5642,10 @@ func (recv *HandleBoxClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// HandleBoxPrivate is a wrapper around the C record GtkHandleBoxPrivate.
+/*
+
+C record/class : GtkHandleBoxPrivate
+*/
 type HandleBoxPrivate struct {
 	native *C.GtkHandleBoxPrivate
 }
@@ -5032,7 +5666,10 @@ func (recv *HandleBoxPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// HeaderBarClass is a wrapper around the C record GtkHeaderBarClass.
+/*
+
+C record/class : GtkHeaderBarClass
+*/
 type HeaderBarClass struct {
 	native *C.GtkHeaderBarClass
 	// parent_class : record
@@ -5058,7 +5695,10 @@ func (recv *HeaderBarClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// HeaderBarPrivate is a wrapper around the C record GtkHeaderBarPrivate.
+/*
+
+C record/class : GtkHeaderBarPrivate
+*/
 type HeaderBarPrivate struct {
 	native *C.GtkHeaderBarPrivate
 }
@@ -5079,7 +5719,10 @@ func (recv *HeaderBarPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// IMContextClass is a wrapper around the C record GtkIMContextClass.
+/*
+
+C record/class : GtkIMContextClass
+*/
 type IMContextClass struct {
 	native *C.GtkIMContextClass
 	// Private : parent_class
@@ -5123,7 +5766,11 @@ func (recv *IMContextClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// IMContextInfo is a wrapper around the C record GtkIMContextInfo.
+// Bookkeeping information about a loadable input method.
+/*
+
+C record/class : GtkIMContextInfo
+*/
 type IMContextInfo struct {
 	native         *C.GtkIMContextInfo
 	ContextId      string
@@ -5166,7 +5813,10 @@ func (recv *IMContextInfo) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// IMContextSimpleClass is a wrapper around the C record GtkIMContextSimpleClass.
+/*
+
+C record/class : GtkIMContextSimpleClass
+*/
 type IMContextSimpleClass struct {
 	native *C.GtkIMContextSimpleClass
 	// parent_class : record
@@ -5188,7 +5838,10 @@ func (recv *IMContextSimpleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// IMContextSimplePrivate is a wrapper around the C record GtkIMContextSimplePrivate.
+/*
+
+C record/class : GtkIMContextSimplePrivate
+*/
 type IMContextSimplePrivate struct {
 	native *C.GtkIMContextSimplePrivate
 }
@@ -5209,7 +5862,10 @@ func (recv *IMContextSimplePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// IMMulticontextClass is a wrapper around the C record GtkIMMulticontextClass.
+/*
+
+C record/class : GtkIMMulticontextClass
+*/
 type IMMulticontextClass struct {
 	native *C.GtkIMMulticontextClass
 	// parent_class : record
@@ -5235,7 +5891,10 @@ func (recv *IMMulticontextClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// IMMulticontextPrivate is a wrapper around the C record GtkIMMulticontextPrivate.
+/*
+
+C record/class : GtkIMMulticontextPrivate
+*/
 type IMMulticontextPrivate struct {
 	native *C.GtkIMMulticontextPrivate
 }
@@ -5256,7 +5915,10 @@ func (recv *IMMulticontextPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// IconFactoryClass is a wrapper around the C record GtkIconFactoryClass.
+/*
+
+C record/class : GtkIconFactoryClass
+*/
 type IconFactoryClass struct {
 	native *C.GtkIconFactoryClass
 	// parent_class : record
@@ -5282,7 +5944,10 @@ func (recv *IconFactoryClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// IconFactoryPrivate is a wrapper around the C record GtkIconFactoryPrivate.
+/*
+
+C record/class : GtkIconFactoryPrivate
+*/
 type IconFactoryPrivate struct {
 	native *C.GtkIconFactoryPrivate
 }
@@ -5303,7 +5968,10 @@ func (recv *IconFactoryPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// IconInfoClass is a wrapper around the C record GtkIconInfoClass.
+/*
+
+C record/class : GtkIconInfoClass
+*/
 type IconInfoClass struct {
 	native *C.GtkIconInfoClass
 }
@@ -5324,7 +5992,10 @@ func (recv *IconInfoClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// IconSet is a wrapper around the C record GtkIconSet.
+/*
+
+C record/class : GtkIconSet
+*/
 type IconSet struct {
 	native *C.GtkIconSet
 }
@@ -5500,7 +6171,10 @@ func (recv *IconSet) Unref() {
 	return
 }
 
-// IconSource is a wrapper around the C record GtkIconSource.
+/*
+
+C record/class : GtkIconSource
+*/
 type IconSource struct {
 	native *C.GtkIconSource
 }
@@ -5884,7 +6558,10 @@ func (recv *IconSource) SetStateWildcarded(setting bool) {
 	return
 }
 
-// IconThemeClass is a wrapper around the C record GtkIconThemeClass.
+/*
+
+C record/class : GtkIconThemeClass
+*/
 type IconThemeClass struct {
 	native *C.GtkIconThemeClass
 	// parent_class : record
@@ -5911,7 +6588,10 @@ func (recv *IconThemeClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// IconThemePrivate is a wrapper around the C record GtkIconThemePrivate.
+/*
+
+C record/class : GtkIconThemePrivate
+*/
 type IconThemePrivate struct {
 	native *C.GtkIconThemePrivate
 }
@@ -5932,7 +6612,10 @@ func (recv *IconThemePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// IconViewAccessibleClass is a wrapper around the C record GtkIconViewAccessibleClass.
+/*
+
+C record/class : GtkIconViewAccessibleClass
+*/
 type IconViewAccessibleClass struct {
 	native *C.GtkIconViewAccessibleClass
 	// parent_class : record
@@ -5954,7 +6637,10 @@ func (recv *IconViewAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// IconViewAccessiblePrivate is a wrapper around the C record GtkIconViewAccessiblePrivate.
+/*
+
+C record/class : GtkIconViewAccessiblePrivate
+*/
 type IconViewAccessiblePrivate struct {
 	native *C.GtkIconViewAccessiblePrivate
 }
@@ -5975,7 +6661,10 @@ func (recv *IconViewAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// IconViewClass is a wrapper around the C record GtkIconViewClass.
+/*
+
+C record/class : GtkIconViewClass
+*/
 type IconViewClass struct {
 	native *C.GtkIconViewClass
 	// parent_class : record
@@ -6009,7 +6698,10 @@ func (recv *IconViewClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// IconViewPrivate is a wrapper around the C record GtkIconViewPrivate.
+/*
+
+C record/class : GtkIconViewPrivate
+*/
 type IconViewPrivate struct {
 	native *C.GtkIconViewPrivate
 }
@@ -6030,7 +6722,10 @@ func (recv *IconViewPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ImageAccessibleClass is a wrapper around the C record GtkImageAccessibleClass.
+/*
+
+C record/class : GtkImageAccessibleClass
+*/
 type ImageAccessibleClass struct {
 	native *C.GtkImageAccessibleClass
 	// parent_class : record
@@ -6052,7 +6747,10 @@ func (recv *ImageAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ImageAccessiblePrivate is a wrapper around the C record GtkImageAccessiblePrivate.
+/*
+
+C record/class : GtkImageAccessiblePrivate
+*/
 type ImageAccessiblePrivate struct {
 	native *C.GtkImageAccessiblePrivate
 }
@@ -6073,7 +6771,10 @@ func (recv *ImageAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ImageCellAccessibleClass is a wrapper around the C record GtkImageCellAccessibleClass.
+/*
+
+C record/class : GtkImageCellAccessibleClass
+*/
 type ImageCellAccessibleClass struct {
 	native *C.GtkImageCellAccessibleClass
 	// parent_class : record
@@ -6095,7 +6796,10 @@ func (recv *ImageCellAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ImageCellAccessiblePrivate is a wrapper around the C record GtkImageCellAccessiblePrivate.
+/*
+
+C record/class : GtkImageCellAccessiblePrivate
+*/
 type ImageCellAccessiblePrivate struct {
 	native *C.GtkImageCellAccessiblePrivate
 }
@@ -6116,7 +6820,10 @@ func (recv *ImageCellAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ImageClass is a wrapper around the C record GtkImageClass.
+/*
+
+C record/class : GtkImageClass
+*/
 type ImageClass struct {
 	native *C.GtkImageClass
 	// parent_class : record
@@ -6142,7 +6849,10 @@ func (recv *ImageClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ImageMenuItemClass is a wrapper around the C record GtkImageMenuItemClass.
+/*
+
+C record/class : GtkImageMenuItemClass
+*/
 type ImageMenuItemClass struct {
 	native *C.GtkImageMenuItemClass
 	// parent_class : record
@@ -6168,7 +6878,10 @@ func (recv *ImageMenuItemClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ImageMenuItemPrivate is a wrapper around the C record GtkImageMenuItemPrivate.
+/*
+
+C record/class : GtkImageMenuItemPrivate
+*/
 type ImageMenuItemPrivate struct {
 	native *C.GtkImageMenuItemPrivate
 }
@@ -6189,7 +6902,10 @@ func (recv *ImageMenuItemPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ImagePrivate is a wrapper around the C record GtkImagePrivate.
+/*
+
+C record/class : GtkImagePrivate
+*/
 type ImagePrivate struct {
 	native *C.GtkImagePrivate
 }
@@ -6210,7 +6926,10 @@ func (recv *ImagePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// InfoBarClass is a wrapper around the C record GtkInfoBarClass.
+/*
+
+C record/class : GtkInfoBarClass
+*/
 type InfoBarClass struct {
 	native *C.GtkInfoBarClass
 	// parent_class : record
@@ -6238,7 +6957,10 @@ func (recv *InfoBarClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// InfoBarPrivate is a wrapper around the C record GtkInfoBarPrivate.
+/*
+
+C record/class : GtkInfoBarPrivate
+*/
 type InfoBarPrivate struct {
 	native *C.GtkInfoBarPrivate
 }
@@ -6259,7 +6981,10 @@ func (recv *InfoBarPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// InvisibleClass is a wrapper around the C record GtkInvisibleClass.
+/*
+
+C record/class : GtkInvisibleClass
+*/
 type InvisibleClass struct {
 	native *C.GtkInvisibleClass
 	// parent_class : record
@@ -6285,7 +7010,10 @@ func (recv *InvisibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// InvisiblePrivate is a wrapper around the C record GtkInvisiblePrivate.
+/*
+
+C record/class : GtkInvisiblePrivate
+*/
 type InvisiblePrivate struct {
 	native *C.GtkInvisiblePrivate
 }
@@ -6306,7 +7034,10 @@ func (recv *InvisiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// LabelAccessibleClass is a wrapper around the C record GtkLabelAccessibleClass.
+/*
+
+C record/class : GtkLabelAccessibleClass
+*/
 type LabelAccessibleClass struct {
 	native *C.GtkLabelAccessibleClass
 	// parent_class : record
@@ -6328,7 +7059,10 @@ func (recv *LabelAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// LabelAccessiblePrivate is a wrapper around the C record GtkLabelAccessiblePrivate.
+/*
+
+C record/class : GtkLabelAccessiblePrivate
+*/
 type LabelAccessiblePrivate struct {
 	native *C.GtkLabelAccessiblePrivate
 }
@@ -6349,7 +7083,10 @@ func (recv *LabelAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// LabelClass is a wrapper around the C record GtkLabelClass.
+/*
+
+C record/class : GtkLabelClass
+*/
 type LabelClass struct {
 	native *C.GtkLabelClass
 	// parent_class : record
@@ -6383,7 +7120,10 @@ func (recv *LabelClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// LabelPrivate is a wrapper around the C record GtkLabelPrivate.
+/*
+
+C record/class : GtkLabelPrivate
+*/
 type LabelPrivate struct {
 	native *C.GtkLabelPrivate
 }
@@ -6404,7 +7144,10 @@ func (recv *LabelPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// LabelSelectionInfo is a wrapper around the C record GtkLabelSelectionInfo.
+/*
+
+C record/class : GtkLabelSelectionInfo
+*/
 type LabelSelectionInfo struct {
 	native *C.GtkLabelSelectionInfo
 }
@@ -6425,7 +7168,10 @@ func (recv *LabelSelectionInfo) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// LayoutClass is a wrapper around the C record GtkLayoutClass.
+/*
+
+C record/class : GtkLayoutClass
+*/
 type LayoutClass struct {
 	native *C.GtkLayoutClass
 	// parent_class : record
@@ -6451,7 +7197,10 @@ func (recv *LayoutClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// LayoutPrivate is a wrapper around the C record GtkLayoutPrivate.
+/*
+
+C record/class : GtkLayoutPrivate
+*/
 type LayoutPrivate struct {
 	native *C.GtkLayoutPrivate
 }
@@ -6472,7 +7221,10 @@ func (recv *LayoutPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// LevelBarAccessibleClass is a wrapper around the C record GtkLevelBarAccessibleClass.
+/*
+
+C record/class : GtkLevelBarAccessibleClass
+*/
 type LevelBarAccessibleClass struct {
 	native *C.GtkLevelBarAccessibleClass
 	// parent_class : record
@@ -6494,7 +7246,10 @@ func (recv *LevelBarAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// LevelBarAccessiblePrivate is a wrapper around the C record GtkLevelBarAccessiblePrivate.
+/*
+
+C record/class : GtkLevelBarAccessiblePrivate
+*/
 type LevelBarAccessiblePrivate struct {
 	native *C.GtkLevelBarAccessiblePrivate
 }
@@ -6515,7 +7270,10 @@ func (recv *LevelBarAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// LevelBarClass is a wrapper around the C record GtkLevelBarClass.
+/*
+
+C record/class : GtkLevelBarClass
+*/
 type LevelBarClass struct {
 	native *C.GtkLevelBarClass
 	// Private : parent_class
@@ -6539,7 +7297,10 @@ func (recv *LevelBarClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// LevelBarPrivate is a wrapper around the C record GtkLevelBarPrivate.
+/*
+
+C record/class : GtkLevelBarPrivate
+*/
 type LevelBarPrivate struct {
 	native *C.GtkLevelBarPrivate
 }
@@ -6560,7 +7321,10 @@ func (recv *LevelBarPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// LinkButtonAccessibleClass is a wrapper around the C record GtkLinkButtonAccessibleClass.
+/*
+
+C record/class : GtkLinkButtonAccessibleClass
+*/
 type LinkButtonAccessibleClass struct {
 	native *C.GtkLinkButtonAccessibleClass
 	// parent_class : record
@@ -6582,7 +7346,10 @@ func (recv *LinkButtonAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// LinkButtonAccessiblePrivate is a wrapper around the C record GtkLinkButtonAccessiblePrivate.
+/*
+
+C record/class : GtkLinkButtonAccessiblePrivate
+*/
 type LinkButtonAccessiblePrivate struct {
 	native *C.GtkLinkButtonAccessiblePrivate
 }
@@ -6603,7 +7370,12 @@ func (recv *LinkButtonAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// LinkButtonClass is a wrapper around the C record GtkLinkButtonClass.
+// The #GtkLinkButtonClass contains only
+// private data.
+/*
+
+C record/class : GtkLinkButtonClass
+*/
 type LinkButtonClass struct {
 	native *C.GtkLinkButtonClass
 	// Private : parent_class
@@ -6630,7 +7402,10 @@ func (recv *LinkButtonClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// LinkButtonPrivate is a wrapper around the C record GtkLinkButtonPrivate.
+/*
+
+C record/class : GtkLinkButtonPrivate
+*/
 type LinkButtonPrivate struct {
 	native *C.GtkLinkButtonPrivate
 }
@@ -6651,7 +7426,10 @@ func (recv *LinkButtonPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ListBoxAccessibleClass is a wrapper around the C record GtkListBoxAccessibleClass.
+/*
+
+C record/class : GtkListBoxAccessibleClass
+*/
 type ListBoxAccessibleClass struct {
 	native *C.GtkListBoxAccessibleClass
 	// parent_class : record
@@ -6673,7 +7451,10 @@ func (recv *ListBoxAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ListBoxAccessiblePrivate is a wrapper around the C record GtkListBoxAccessiblePrivate.
+/*
+
+C record/class : GtkListBoxAccessiblePrivate
+*/
 type ListBoxAccessiblePrivate struct {
 	native *C.GtkListBoxAccessiblePrivate
 }
@@ -6694,7 +7475,10 @@ func (recv *ListBoxAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ListBoxClass is a wrapper around the C record GtkListBoxClass.
+/*
+
+C record/class : GtkListBoxClass
+*/
 type ListBoxClass struct {
 	native *C.GtkListBoxClass
 	// parent_class : record
@@ -6727,7 +7511,10 @@ func (recv *ListBoxClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ListBoxRowAccessibleClass is a wrapper around the C record GtkListBoxRowAccessibleClass.
+/*
+
+C record/class : GtkListBoxRowAccessibleClass
+*/
 type ListBoxRowAccessibleClass struct {
 	native *C.GtkListBoxRowAccessibleClass
 	// parent_class : record
@@ -6749,7 +7536,10 @@ func (recv *ListBoxRowAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ListBoxRowClass is a wrapper around the C record GtkListBoxRowClass.
+/*
+
+C record/class : GtkListBoxRowClass
+*/
 type ListBoxRowClass struct {
 	native *C.GtkListBoxRowClass
 	// parent_class : record
@@ -6774,7 +7564,10 @@ func (recv *ListBoxRowClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ListStoreClass is a wrapper around the C record GtkListStoreClass.
+/*
+
+C record/class : GtkListStoreClass
+*/
 type ListStoreClass struct {
 	native *C.GtkListStoreClass
 	// parent_class : record
@@ -6800,7 +7593,10 @@ func (recv *ListStoreClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ListStorePrivate is a wrapper around the C record GtkListStorePrivate.
+/*
+
+C record/class : GtkListStorePrivate
+*/
 type ListStorePrivate struct {
 	native *C.GtkListStorePrivate
 }
@@ -6821,7 +7617,10 @@ func (recv *ListStorePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// LockButtonAccessibleClass is a wrapper around the C record GtkLockButtonAccessibleClass.
+/*
+
+C record/class : GtkLockButtonAccessibleClass
+*/
 type LockButtonAccessibleClass struct {
 	native *C.GtkLockButtonAccessibleClass
 	// parent_class : record
@@ -6843,7 +7642,10 @@ func (recv *LockButtonAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// LockButtonAccessiblePrivate is a wrapper around the C record GtkLockButtonAccessiblePrivate.
+/*
+
+C record/class : GtkLockButtonAccessiblePrivate
+*/
 type LockButtonAccessiblePrivate struct {
 	native *C.GtkLockButtonAccessiblePrivate
 }
@@ -6864,7 +7666,10 @@ func (recv *LockButtonAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// LockButtonClass is a wrapper around the C record GtkLockButtonClass.
+/*
+
+C record/class : GtkLockButtonClass
+*/
 type LockButtonClass struct {
 	native *C.GtkLockButtonClass
 	// parent_class : record
@@ -6894,7 +7699,10 @@ func (recv *LockButtonClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// LockButtonPrivate is a wrapper around the C record GtkLockButtonPrivate.
+/*
+
+C record/class : GtkLockButtonPrivate
+*/
 type LockButtonPrivate struct {
 	native *C.GtkLockButtonPrivate
 }
@@ -6915,7 +7723,10 @@ func (recv *LockButtonPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// MenuAccessibleClass is a wrapper around the C record GtkMenuAccessibleClass.
+/*
+
+C record/class : GtkMenuAccessibleClass
+*/
 type MenuAccessibleClass struct {
 	native *C.GtkMenuAccessibleClass
 	// parent_class : record
@@ -6937,7 +7748,10 @@ func (recv *MenuAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// MenuAccessiblePrivate is a wrapper around the C record GtkMenuAccessiblePrivate.
+/*
+
+C record/class : GtkMenuAccessiblePrivate
+*/
 type MenuAccessiblePrivate struct {
 	native *C.GtkMenuAccessiblePrivate
 }
@@ -6958,7 +7772,10 @@ func (recv *MenuAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// MenuBarClass is a wrapper around the C record GtkMenuBarClass.
+/*
+
+C record/class : GtkMenuBarClass
+*/
 type MenuBarClass struct {
 	native *C.GtkMenuBarClass
 	// parent_class : record
@@ -6984,7 +7801,10 @@ func (recv *MenuBarClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// MenuBarPrivate is a wrapper around the C record GtkMenuBarPrivate.
+/*
+
+C record/class : GtkMenuBarPrivate
+*/
 type MenuBarPrivate struct {
 	native *C.GtkMenuBarPrivate
 }
@@ -7005,7 +7825,10 @@ func (recv *MenuBarPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// MenuButtonAccessibleClass is a wrapper around the C record GtkMenuButtonAccessibleClass.
+/*
+
+C record/class : GtkMenuButtonAccessibleClass
+*/
 type MenuButtonAccessibleClass struct {
 	native *C.GtkMenuButtonAccessibleClass
 	// parent_class : record
@@ -7027,7 +7850,10 @@ func (recv *MenuButtonAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// MenuButtonAccessiblePrivate is a wrapper around the C record GtkMenuButtonAccessiblePrivate.
+/*
+
+C record/class : GtkMenuButtonAccessiblePrivate
+*/
 type MenuButtonAccessiblePrivate struct {
 	native *C.GtkMenuButtonAccessiblePrivate
 }
@@ -7048,7 +7874,10 @@ func (recv *MenuButtonAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// MenuButtonClass is a wrapper around the C record GtkMenuButtonClass.
+/*
+
+C record/class : GtkMenuButtonClass
+*/
 type MenuButtonClass struct {
 	native *C.GtkMenuButtonClass
 	// parent_class : record
@@ -7074,7 +7903,10 @@ func (recv *MenuButtonClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// MenuButtonPrivate is a wrapper around the C record GtkMenuButtonPrivate.
+/*
+
+C record/class : GtkMenuButtonPrivate
+*/
 type MenuButtonPrivate struct {
 	native *C.GtkMenuButtonPrivate
 }
@@ -7095,7 +7927,10 @@ func (recv *MenuButtonPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// MenuClass is a wrapper around the C record GtkMenuClass.
+/*
+
+C record/class : GtkMenuClass
+*/
 type MenuClass struct {
 	native *C.GtkMenuClass
 	// parent_class : record
@@ -7121,7 +7956,10 @@ func (recv *MenuClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// MenuItemAccessibleClass is a wrapper around the C record GtkMenuItemAccessibleClass.
+/*
+
+C record/class : GtkMenuItemAccessibleClass
+*/
 type MenuItemAccessibleClass struct {
 	native *C.GtkMenuItemAccessibleClass
 	// parent_class : record
@@ -7143,7 +7981,10 @@ func (recv *MenuItemAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// MenuItemAccessiblePrivate is a wrapper around the C record GtkMenuItemAccessiblePrivate.
+/*
+
+C record/class : GtkMenuItemAccessiblePrivate
+*/
 type MenuItemAccessiblePrivate struct {
 	native *C.GtkMenuItemAccessiblePrivate
 }
@@ -7164,7 +8005,10 @@ func (recv *MenuItemAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// MenuItemClass is a wrapper around the C record GtkMenuItemClass.
+/*
+
+C record/class : GtkMenuItemClass
+*/
 type MenuItemClass struct {
 	native *C.GtkMenuItemClass
 	// parent_class : record
@@ -7199,7 +8043,10 @@ func (recv *MenuItemClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// MenuItemPrivate is a wrapper around the C record GtkMenuItemPrivate.
+/*
+
+C record/class : GtkMenuItemPrivate
+*/
 type MenuItemPrivate struct {
 	native *C.GtkMenuItemPrivate
 }
@@ -7220,7 +8067,10 @@ func (recv *MenuItemPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// MenuPrivate is a wrapper around the C record GtkMenuPrivate.
+/*
+
+C record/class : GtkMenuPrivate
+*/
 type MenuPrivate struct {
 	native *C.GtkMenuPrivate
 }
@@ -7241,7 +8091,10 @@ func (recv *MenuPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// MenuShellAccessibleClass is a wrapper around the C record GtkMenuShellAccessibleClass.
+/*
+
+C record/class : GtkMenuShellAccessibleClass
+*/
 type MenuShellAccessibleClass struct {
 	native *C.GtkMenuShellAccessibleClass
 	// parent_class : record
@@ -7263,7 +8116,10 @@ func (recv *MenuShellAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// MenuShellAccessiblePrivate is a wrapper around the C record GtkMenuShellAccessiblePrivate.
+/*
+
+C record/class : GtkMenuShellAccessiblePrivate
+*/
 type MenuShellAccessiblePrivate struct {
 	native *C.GtkMenuShellAccessiblePrivate
 }
@@ -7284,7 +8140,10 @@ func (recv *MenuShellAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// MenuShellClass is a wrapper around the C record GtkMenuShellClass.
+/*
+
+C record/class : GtkMenuShellClass
+*/
 type MenuShellClass struct {
 	native *C.GtkMenuShellClass
 	// parent_class : record
@@ -7320,7 +8179,10 @@ func (recv *MenuShellClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// MenuShellPrivate is a wrapper around the C record GtkMenuShellPrivate.
+/*
+
+C record/class : GtkMenuShellPrivate
+*/
 type MenuShellPrivate struct {
 	native *C.GtkMenuShellPrivate
 }
@@ -7341,7 +8203,10 @@ func (recv *MenuShellPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// MenuToolButtonClass is a wrapper around the C record GtkMenuToolButtonClass.
+/*
+
+C record/class : GtkMenuToolButtonClass
+*/
 type MenuToolButtonClass struct {
 	native *C.GtkMenuToolButtonClass
 	// parent_class : record
@@ -7368,7 +8233,10 @@ func (recv *MenuToolButtonClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// MenuToolButtonPrivate is a wrapper around the C record GtkMenuToolButtonPrivate.
+/*
+
+C record/class : GtkMenuToolButtonPrivate
+*/
 type MenuToolButtonPrivate struct {
 	native *C.GtkMenuToolButtonPrivate
 }
@@ -7389,7 +8257,10 @@ func (recv *MenuToolButtonPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// MessageDialogClass is a wrapper around the C record GtkMessageDialogClass.
+/*
+
+C record/class : GtkMessageDialogClass
+*/
 type MessageDialogClass struct {
 	native *C.GtkMessageDialogClass
 	// parent_class : record
@@ -7415,7 +8286,10 @@ func (recv *MessageDialogClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// MessageDialogPrivate is a wrapper around the C record GtkMessageDialogPrivate.
+/*
+
+C record/class : GtkMessageDialogPrivate
+*/
 type MessageDialogPrivate struct {
 	native *C.GtkMessageDialogPrivate
 }
@@ -7436,7 +8310,10 @@ func (recv *MessageDialogPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// MiscClass is a wrapper around the C record GtkMiscClass.
+/*
+
+C record/class : GtkMiscClass
+*/
 type MiscClass struct {
 	native *C.GtkMiscClass
 	// parent_class : record
@@ -7462,7 +8339,10 @@ func (recv *MiscClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// MiscPrivate is a wrapper around the C record GtkMiscPrivate.
+/*
+
+C record/class : GtkMiscPrivate
+*/
 type MiscPrivate struct {
 	native *C.GtkMiscPrivate
 }
@@ -7483,7 +8363,10 @@ func (recv *MiscPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// MountOperationClass is a wrapper around the C record GtkMountOperationClass.
+/*
+
+C record/class : GtkMountOperationClass
+*/
 type MountOperationClass struct {
 	native *C.GtkMountOperationClass
 	// parent_class : record
@@ -7509,7 +8392,10 @@ func (recv *MountOperationClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// MountOperationPrivate is a wrapper around the C record GtkMountOperationPrivate.
+/*
+
+C record/class : GtkMountOperationPrivate
+*/
 type MountOperationPrivate struct {
 	native *C.GtkMountOperationPrivate
 }
@@ -7530,7 +8416,10 @@ func (recv *MountOperationPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// NotebookAccessibleClass is a wrapper around the C record GtkNotebookAccessibleClass.
+/*
+
+C record/class : GtkNotebookAccessibleClass
+*/
 type NotebookAccessibleClass struct {
 	native *C.GtkNotebookAccessibleClass
 	// parent_class : record
@@ -7552,7 +8441,10 @@ func (recv *NotebookAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// NotebookAccessiblePrivate is a wrapper around the C record GtkNotebookAccessiblePrivate.
+/*
+
+C record/class : GtkNotebookAccessiblePrivate
+*/
 type NotebookAccessiblePrivate struct {
 	native *C.GtkNotebookAccessiblePrivate
 }
@@ -7573,7 +8465,10 @@ func (recv *NotebookAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// NotebookClass is a wrapper around the C record GtkNotebookClass.
+/*
+
+C record/class : GtkNotebookClass
+*/
 type NotebookClass struct {
 	native *C.GtkNotebookClass
 	// parent_class : record
@@ -7614,7 +8509,10 @@ func (recv *NotebookClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// NotebookPageAccessibleClass is a wrapper around the C record GtkNotebookPageAccessibleClass.
+/*
+
+C record/class : GtkNotebookPageAccessibleClass
+*/
 type NotebookPageAccessibleClass struct {
 	native *C.GtkNotebookPageAccessibleClass
 	// parent_class : record
@@ -7636,7 +8534,10 @@ func (recv *NotebookPageAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// NotebookPageAccessiblePrivate is a wrapper around the C record GtkNotebookPageAccessiblePrivate.
+/*
+
+C record/class : GtkNotebookPageAccessiblePrivate
+*/
 type NotebookPageAccessiblePrivate struct {
 	native *C.GtkNotebookPageAccessiblePrivate
 }
@@ -7657,7 +8558,10 @@ func (recv *NotebookPageAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// NotebookPrivate is a wrapper around the C record GtkNotebookPrivate.
+/*
+
+C record/class : GtkNotebookPrivate
+*/
 type NotebookPrivate struct {
 	native *C.GtkNotebookPrivate
 }
@@ -7678,7 +8582,10 @@ func (recv *NotebookPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// NumerableIconClass is a wrapper around the C record GtkNumerableIconClass.
+/*
+
+C record/class : GtkNumerableIconClass
+*/
 type NumerableIconClass struct {
 	native *C.GtkNumerableIconClass
 	// parent_class : record
@@ -7701,7 +8608,10 @@ func (recv *NumerableIconClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// NumerableIconPrivate is a wrapper around the C record GtkNumerableIconPrivate.
+/*
+
+C record/class : GtkNumerableIconPrivate
+*/
 type NumerableIconPrivate struct {
 	native *C.GtkNumerableIconPrivate
 }
@@ -7722,7 +8632,10 @@ func (recv *NumerableIconPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// OffscreenWindowClass is a wrapper around the C record GtkOffscreenWindowClass.
+/*
+
+C record/class : GtkOffscreenWindowClass
+*/
 type OffscreenWindowClass struct {
 	native *C.GtkOffscreenWindowClass
 	// parent_class : record
@@ -7748,7 +8661,10 @@ func (recv *OffscreenWindowClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// OrientableIface is a wrapper around the C record GtkOrientableIface.
+/*
+
+C record/class : GtkOrientableIface
+*/
 type OrientableIface struct {
 	native *C.GtkOrientableIface
 	// base_iface : record
@@ -7770,7 +8686,10 @@ func (recv *OrientableIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// OverlayClass is a wrapper around the C record GtkOverlayClass.
+/*
+
+C record/class : GtkOverlayClass
+*/
 type OverlayClass struct {
 	native *C.GtkOverlayClass
 	// parent_class : record
@@ -7801,7 +8720,10 @@ func (recv *OverlayClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// OverlayPrivate is a wrapper around the C record GtkOverlayPrivate.
+/*
+
+C record/class : GtkOverlayPrivate
+*/
 type OverlayPrivate struct {
 	native *C.GtkOverlayPrivate
 }
@@ -7822,7 +8744,11 @@ func (recv *OverlayPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// PageRange is a wrapper around the C record GtkPageRange.
+// See also gtk_print_settings_set_page_ranges().
+/*
+
+C record/class : GtkPageRange
+*/
 type PageRange struct {
 	native *C.GtkPageRange
 	Start  int32
@@ -7853,7 +8779,10 @@ func (recv *PageRange) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// PanedAccessibleClass is a wrapper around the C record GtkPanedAccessibleClass.
+/*
+
+C record/class : GtkPanedAccessibleClass
+*/
 type PanedAccessibleClass struct {
 	native *C.GtkPanedAccessibleClass
 	// parent_class : record
@@ -7875,7 +8804,10 @@ func (recv *PanedAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// PanedAccessiblePrivate is a wrapper around the C record GtkPanedAccessiblePrivate.
+/*
+
+C record/class : GtkPanedAccessiblePrivate
+*/
 type PanedAccessiblePrivate struct {
 	native *C.GtkPanedAccessiblePrivate
 }
@@ -7896,7 +8828,10 @@ func (recv *PanedAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// PanedClass is a wrapper around the C record GtkPanedClass.
+/*
+
+C record/class : GtkPanedClass
+*/
 type PanedClass struct {
 	native *C.GtkPanedClass
 	// parent_class : record
@@ -7928,7 +8863,10 @@ func (recv *PanedClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// PanedPrivate is a wrapper around the C record GtkPanedPrivate.
+/*
+
+C record/class : GtkPanedPrivate
+*/
 type PanedPrivate struct {
 	native *C.GtkPanedPrivate
 }
@@ -7949,7 +8887,21 @@ func (recv *PanedPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// PaperSize is a wrapper around the C record GtkPaperSize.
+// GtkPaperSize handles paper sizes. It uses the standard called
+// [PWG 5101.1-2002 PWG: Standard for Media Standardized Names](http://www.pwg.org/standards.html)
+// to name the paper sizes (and to get the data for the page sizes).
+// In addition to standard paper sizes, GtkPaperSize allows to
+// construct custom paper sizes with arbitrary dimensions.
+//
+// The #GtkPaperSize object stores not only the dimensions (width
+// and height) of a paper size and its name, it also provides
+// default [print margins][print-margins].
+//
+// Printing support has been added in GTK+ 2.10.
+/*
+
+C record/class : GtkPaperSize
+*/
 type PaperSize struct {
 	native *C.GtkPaperSize
 }
@@ -7994,7 +8946,10 @@ func (recv *PaperSize) IsIpp() bool {
 	return retGo
 }
 
-// PlacesSidebarClass is a wrapper around the C record GtkPlacesSidebarClass.
+/*
+
+C record/class : GtkPlacesSidebarClass
+*/
 type PlacesSidebarClass struct {
 	native *C.GtkPlacesSidebarClass
 }
@@ -8015,7 +8970,10 @@ func (recv *PlacesSidebarClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// PlugClass is a wrapper around the C record GtkPlugClass.
+/*
+
+C record/class : GtkPlugClass
+*/
 type PlugClass struct {
 	native *C.GtkPlugClass
 	// parent_class : record
@@ -8042,7 +9000,10 @@ func (recv *PlugClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// PlugPrivate is a wrapper around the C record GtkPlugPrivate.
+/*
+
+C record/class : GtkPlugPrivate
+*/
 type PlugPrivate struct {
 	native *C.GtkPlugPrivate
 }
@@ -8063,7 +9024,10 @@ func (recv *PlugPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// PopoverAccessibleClass is a wrapper around the C record GtkPopoverAccessibleClass.
+/*
+
+C record/class : GtkPopoverAccessibleClass
+*/
 type PopoverAccessibleClass struct {
 	native *C.GtkPopoverAccessibleClass
 	// parent_class : record
@@ -8085,7 +9049,10 @@ func (recv *PopoverAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// PopoverClass is a wrapper around the C record GtkPopoverClass.
+/*
+
+C record/class : GtkPopoverClass
+*/
 type PopoverClass struct {
 	native *C.GtkPopoverClass
 	// parent_class : record
@@ -8109,7 +9076,10 @@ func (recv *PopoverClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// PopoverMenuClass is a wrapper around the C record GtkPopoverMenuClass.
+/*
+
+C record/class : GtkPopoverMenuClass
+*/
 type PopoverMenuClass struct {
 	native *C.GtkPopoverMenuClass
 	// parent_class : record
@@ -8132,7 +9102,10 @@ func (recv *PopoverMenuClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// PopoverPrivate is a wrapper around the C record GtkPopoverPrivate.
+/*
+
+C record/class : GtkPopoverPrivate
+*/
 type PopoverPrivate struct {
 	native *C.GtkPopoverPrivate
 }
@@ -8153,7 +9126,10 @@ func (recv *PopoverPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// PrintOperationClass is a wrapper around the C record GtkPrintOperationClass.
+/*
+
+C record/class : GtkPrintOperationClass
+*/
 type PrintOperationClass struct {
 	native *C.GtkPrintOperationClass
 	// parent_class : record
@@ -8194,7 +9170,10 @@ func (recv *PrintOperationClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// PrintOperationPreviewIface is a wrapper around the C record GtkPrintOperationPreviewIface.
+/*
+
+C record/class : GtkPrintOperationPreviewIface
+*/
 type PrintOperationPreviewIface struct {
 	native *C.GtkPrintOperationPreviewIface
 	// g_iface : record
@@ -8229,7 +9208,10 @@ func (recv *PrintOperationPreviewIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// PrintOperationPrivate is a wrapper around the C record GtkPrintOperationPrivate.
+/*
+
+C record/class : GtkPrintOperationPrivate
+*/
 type PrintOperationPrivate struct {
 	native *C.GtkPrintOperationPrivate
 }
@@ -8250,7 +9232,10 @@ func (recv *PrintOperationPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ProgressBarAccessibleClass is a wrapper around the C record GtkProgressBarAccessibleClass.
+/*
+
+C record/class : GtkProgressBarAccessibleClass
+*/
 type ProgressBarAccessibleClass struct {
 	native *C.GtkProgressBarAccessibleClass
 	// parent_class : record
@@ -8272,7 +9257,10 @@ func (recv *ProgressBarAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ProgressBarAccessiblePrivate is a wrapper around the C record GtkProgressBarAccessiblePrivate.
+/*
+
+C record/class : GtkProgressBarAccessiblePrivate
+*/
 type ProgressBarAccessiblePrivate struct {
 	native *C.GtkProgressBarAccessiblePrivate
 }
@@ -8293,7 +9281,10 @@ func (recv *ProgressBarAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ProgressBarClass is a wrapper around the C record GtkProgressBarClass.
+/*
+
+C record/class : GtkProgressBarClass
+*/
 type ProgressBarClass struct {
 	native *C.GtkProgressBarClass
 	// parent_class : record
@@ -8319,7 +9310,10 @@ func (recv *ProgressBarClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ProgressBarPrivate is a wrapper around the C record GtkProgressBarPrivate.
+/*
+
+C record/class : GtkProgressBarPrivate
+*/
 type ProgressBarPrivate struct {
 	native *C.GtkProgressBarPrivate
 }
@@ -8340,7 +9334,10 @@ func (recv *ProgressBarPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// RadioActionClass is a wrapper around the C record GtkRadioActionClass.
+/*
+
+C record/class : GtkRadioActionClass
+*/
 type RadioActionClass struct {
 	native *C.GtkRadioActionClass
 	// parent_class : record
@@ -8367,7 +9364,12 @@ func (recv *RadioActionClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// RadioActionEntry is a wrapper around the C record GtkRadioActionEntry.
+// #GtkRadioActionEntry structs are used with
+// gtk_action_group_add_radio_actions() to construct groups of radio actions.
+/*
+
+C record/class : GtkRadioActionEntry
+*/
 type RadioActionEntry struct {
 	native      *C.GtkRadioActionEntry
 	Name        string
@@ -8414,7 +9416,10 @@ func (recv *RadioActionEntry) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// RadioActionPrivate is a wrapper around the C record GtkRadioActionPrivate.
+/*
+
+C record/class : GtkRadioActionPrivate
+*/
 type RadioActionPrivate struct {
 	native *C.GtkRadioActionPrivate
 }
@@ -8435,7 +9440,10 @@ func (recv *RadioActionPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// RadioButtonAccessibleClass is a wrapper around the C record GtkRadioButtonAccessibleClass.
+/*
+
+C record/class : GtkRadioButtonAccessibleClass
+*/
 type RadioButtonAccessibleClass struct {
 	native *C.GtkRadioButtonAccessibleClass
 	// parent_class : record
@@ -8457,7 +9465,10 @@ func (recv *RadioButtonAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// RadioButtonAccessiblePrivate is a wrapper around the C record GtkRadioButtonAccessiblePrivate.
+/*
+
+C record/class : GtkRadioButtonAccessiblePrivate
+*/
 type RadioButtonAccessiblePrivate struct {
 	native *C.GtkRadioButtonAccessiblePrivate
 }
@@ -8478,7 +9489,10 @@ func (recv *RadioButtonAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// RadioButtonClass is a wrapper around the C record GtkRadioButtonClass.
+/*
+
+C record/class : GtkRadioButtonClass
+*/
 type RadioButtonClass struct {
 	native *C.GtkRadioButtonClass
 	// parent_class : record
@@ -8505,7 +9519,10 @@ func (recv *RadioButtonClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// RadioButtonPrivate is a wrapper around the C record GtkRadioButtonPrivate.
+/*
+
+C record/class : GtkRadioButtonPrivate
+*/
 type RadioButtonPrivate struct {
 	native *C.GtkRadioButtonPrivate
 }
@@ -8526,7 +9543,10 @@ func (recv *RadioButtonPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// RadioMenuItemAccessibleClass is a wrapper around the C record GtkRadioMenuItemAccessibleClass.
+/*
+
+C record/class : GtkRadioMenuItemAccessibleClass
+*/
 type RadioMenuItemAccessibleClass struct {
 	native *C.GtkRadioMenuItemAccessibleClass
 	// parent_class : record
@@ -8548,7 +9568,10 @@ func (recv *RadioMenuItemAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// RadioMenuItemAccessiblePrivate is a wrapper around the C record GtkRadioMenuItemAccessiblePrivate.
+/*
+
+C record/class : GtkRadioMenuItemAccessiblePrivate
+*/
 type RadioMenuItemAccessiblePrivate struct {
 	native *C.GtkRadioMenuItemAccessiblePrivate
 }
@@ -8569,7 +9592,10 @@ func (recv *RadioMenuItemAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// RadioMenuItemClass is a wrapper around the C record GtkRadioMenuItemClass.
+/*
+
+C record/class : GtkRadioMenuItemClass
+*/
 type RadioMenuItemClass struct {
 	native *C.GtkRadioMenuItemClass
 	// parent_class : record
@@ -8596,7 +9622,10 @@ func (recv *RadioMenuItemClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// RadioMenuItemPrivate is a wrapper around the C record GtkRadioMenuItemPrivate.
+/*
+
+C record/class : GtkRadioMenuItemPrivate
+*/
 type RadioMenuItemPrivate struct {
 	native *C.GtkRadioMenuItemPrivate
 }
@@ -8617,7 +9646,10 @@ func (recv *RadioMenuItemPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// RadioToolButtonClass is a wrapper around the C record GtkRadioToolButtonClass.
+/*
+
+C record/class : GtkRadioToolButtonClass
+*/
 type RadioToolButtonClass struct {
 	native *C.GtkRadioToolButtonClass
 	// parent_class : record
@@ -8643,7 +9675,10 @@ func (recv *RadioToolButtonClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// RangeAccessibleClass is a wrapper around the C record GtkRangeAccessibleClass.
+/*
+
+C record/class : GtkRangeAccessibleClass
+*/
 type RangeAccessibleClass struct {
 	native *C.GtkRangeAccessibleClass
 	// parent_class : record
@@ -8665,7 +9700,10 @@ func (recv *RangeAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// RangeAccessiblePrivate is a wrapper around the C record GtkRangeAccessiblePrivate.
+/*
+
+C record/class : GtkRangeAccessiblePrivate
+*/
 type RangeAccessiblePrivate struct {
 	native *C.GtkRangeAccessiblePrivate
 }
@@ -8686,7 +9724,10 @@ func (recv *RangeAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// RangeClass is a wrapper around the C record GtkRangeClass.
+/*
+
+C record/class : GtkRangeClass
+*/
 type RangeClass struct {
 	native *C.GtkRangeClass
 	// parent_class : record
@@ -8727,7 +9768,10 @@ func (recv *RangeClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// RangePrivate is a wrapper around the C record GtkRangePrivate.
+/*
+
+C record/class : GtkRangePrivate
+*/
 type RangePrivate struct {
 	native *C.GtkRangePrivate
 }
@@ -8748,7 +9792,10 @@ func (recv *RangePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// RcContext is a wrapper around the C record GtkRcContext.
+/*
+
+C record/class : GtkRcContext
+*/
 type RcContext struct {
 	native *C.GtkRcContext
 }
@@ -8769,7 +9816,11 @@ func (recv *RcContext) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// RcProperty is a wrapper around the C record GtkRcProperty.
+// Deprecated
+/*
+
+C record/class : GtkRcProperty
+*/
 type RcProperty struct {
 	native       *C.GtkRcProperty
 	TypeName     glib.Quark
@@ -8805,7 +9856,10 @@ func (recv *RcProperty) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// RcStyleClass is a wrapper around the C record GtkRcStyleClass.
+/*
+
+C record/class : GtkRcStyleClass
+*/
 type RcStyleClass struct {
 	native *C.GtkRcStyleClass
 	// parent_class : record
@@ -8835,7 +9889,10 @@ func (recv *RcStyleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// RecentActionClass is a wrapper around the C record GtkRecentActionClass.
+/*
+
+C record/class : GtkRecentActionClass
+*/
 type RecentActionClass struct {
 	native *C.GtkRecentActionClass
 	// parent_class : record
@@ -8861,7 +9918,10 @@ func (recv *RecentActionClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// RecentActionPrivate is a wrapper around the C record GtkRecentActionPrivate.
+/*
+
+C record/class : GtkRecentActionPrivate
+*/
 type RecentActionPrivate struct {
 	native *C.GtkRecentActionPrivate
 }
@@ -8882,7 +9942,10 @@ func (recv *RecentActionPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// RecentChooserDialogClass is a wrapper around the C record GtkRecentChooserDialogClass.
+/*
+
+C record/class : GtkRecentChooserDialogClass
+*/
 type RecentChooserDialogClass struct {
 	native *C.GtkRecentChooserDialogClass
 	// parent_class : record
@@ -8908,7 +9971,10 @@ func (recv *RecentChooserDialogClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// RecentChooserDialogPrivate is a wrapper around the C record GtkRecentChooserDialogPrivate.
+/*
+
+C record/class : GtkRecentChooserDialogPrivate
+*/
 type RecentChooserDialogPrivate struct {
 	native *C.GtkRecentChooserDialogPrivate
 }
@@ -8929,7 +9995,10 @@ func (recv *RecentChooserDialogPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// RecentChooserIface is a wrapper around the C record GtkRecentChooserIface.
+/*
+
+C record/class : GtkRecentChooserIface
+*/
 type RecentChooserIface struct {
 	native *C.GtkRecentChooserIface
 	// Private : base_iface
@@ -8965,7 +10034,10 @@ func (recv *RecentChooserIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// RecentChooserMenuClass is a wrapper around the C record GtkRecentChooserMenuClass.
+/*
+
+C record/class : GtkRecentChooserMenuClass
+*/
 type RecentChooserMenuClass struct {
 	native *C.GtkRecentChooserMenuClass
 	// parent_class : record
@@ -8991,7 +10063,10 @@ func (recv *RecentChooserMenuClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// RecentChooserMenuPrivate is a wrapper around the C record GtkRecentChooserMenuPrivate.
+/*
+
+C record/class : GtkRecentChooserMenuPrivate
+*/
 type RecentChooserMenuPrivate struct {
 	native *C.GtkRecentChooserMenuPrivate
 }
@@ -9012,7 +10087,10 @@ func (recv *RecentChooserMenuPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// RecentChooserWidgetClass is a wrapper around the C record GtkRecentChooserWidgetClass.
+/*
+
+C record/class : GtkRecentChooserWidgetClass
+*/
 type RecentChooserWidgetClass struct {
 	native *C.GtkRecentChooserWidgetClass
 	// parent_class : record
@@ -9038,7 +10116,10 @@ func (recv *RecentChooserWidgetClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// RecentChooserWidgetPrivate is a wrapper around the C record GtkRecentChooserWidgetPrivate.
+/*
+
+C record/class : GtkRecentChooserWidgetPrivate
+*/
 type RecentChooserWidgetPrivate struct {
 	native *C.GtkRecentChooserWidgetPrivate
 }
@@ -9059,7 +10140,12 @@ func (recv *RecentChooserWidgetPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// RecentData is a wrapper around the C record GtkRecentData.
+// Meta-data to be passed to gtk_recent_manager_add_full() when
+// registering a recently used resource.
+/*
+
+C record/class : GtkRecentData
+*/
 type RecentData struct {
 	native      *C.GtkRecentData
 	DisplayName string
@@ -9107,7 +10193,12 @@ func (recv *RecentData) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// RecentFilterInfo is a wrapper around the C record GtkRecentFilterInfo.
+// A GtkRecentFilterInfo struct is used
+// to pass information about the tested file to gtk_recent_filter_filter().
+/*
+
+C record/class : GtkRecentFilterInfo
+*/
 type RecentFilterInfo struct {
 	native      *C.GtkRecentFilterInfo
 	Contains    RecentFilterFlags
@@ -9152,7 +10243,10 @@ func (recv *RecentFilterInfo) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// RecentManagerPrivate is a wrapper around the C record GtkRecentManagerPrivate.
+/*
+
+C record/class : GtkRecentManagerPrivate
+*/
 type RecentManagerPrivate struct {
 	native *C.GtkRecentManagerPrivate
 }
@@ -9173,7 +10267,10 @@ func (recv *RecentManagerPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// RendererCellAccessibleClass is a wrapper around the C record GtkRendererCellAccessibleClass.
+/*
+
+C record/class : GtkRendererCellAccessibleClass
+*/
 type RendererCellAccessibleClass struct {
 	native *C.GtkRendererCellAccessibleClass
 	// parent_class : record
@@ -9195,7 +10292,10 @@ func (recv *RendererCellAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// RendererCellAccessiblePrivate is a wrapper around the C record GtkRendererCellAccessiblePrivate.
+/*
+
+C record/class : GtkRendererCellAccessiblePrivate
+*/
 type RendererCellAccessiblePrivate struct {
 	native *C.GtkRendererCellAccessiblePrivate
 }
@@ -9216,7 +10316,13 @@ func (recv *RendererCellAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// RequestedSize is a wrapper around the C record GtkRequestedSize.
+// Represents a request of a screen object in a given orientation. These
+// are primarily used in container implementations when allocating a natural
+// size for children calling. See gtk_distribute_natural_allocation().
+/*
+
+C record/class : GtkRequestedSize
+*/
 type RequestedSize struct {
 	native      *C.GtkRequestedSize
 	Data        uintptr
@@ -9251,7 +10357,13 @@ func (recv *RequestedSize) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Requisition is a wrapper around the C record GtkRequisition.
+// A #GtkRequisition-struct represents the desired size of a widget. See
+// [GtkWidget’s geometry management section][geometry-management] for
+// more information.
+/*
+
+C record/class : GtkRequisition
+*/
 type Requisition struct {
 	native *C.GtkRequisition
 	Width  int32
@@ -9305,7 +10417,10 @@ func (recv *Requisition) Free() {
 	return
 }
 
-// RevealerClass is a wrapper around the C record GtkRevealerClass.
+/*
+
+C record/class : GtkRevealerClass
+*/
 type RevealerClass struct {
 	native *C.GtkRevealerClass
 	// parent_class : record
@@ -9327,7 +10442,10 @@ func (recv *RevealerClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ScaleAccessibleClass is a wrapper around the C record GtkScaleAccessibleClass.
+/*
+
+C record/class : GtkScaleAccessibleClass
+*/
 type ScaleAccessibleClass struct {
 	native *C.GtkScaleAccessibleClass
 	// parent_class : record
@@ -9349,7 +10467,10 @@ func (recv *ScaleAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ScaleAccessiblePrivate is a wrapper around the C record GtkScaleAccessiblePrivate.
+/*
+
+C record/class : GtkScaleAccessiblePrivate
+*/
 type ScaleAccessiblePrivate struct {
 	native *C.GtkScaleAccessiblePrivate
 }
@@ -9370,7 +10491,10 @@ func (recv *ScaleAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ScaleButtonAccessibleClass is a wrapper around the C record GtkScaleButtonAccessibleClass.
+/*
+
+C record/class : GtkScaleButtonAccessibleClass
+*/
 type ScaleButtonAccessibleClass struct {
 	native *C.GtkScaleButtonAccessibleClass
 	// parent_class : record
@@ -9392,7 +10516,10 @@ func (recv *ScaleButtonAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ScaleButtonAccessiblePrivate is a wrapper around the C record GtkScaleButtonAccessiblePrivate.
+/*
+
+C record/class : GtkScaleButtonAccessiblePrivate
+*/
 type ScaleButtonAccessiblePrivate struct {
 	native *C.GtkScaleButtonAccessiblePrivate
 }
@@ -9413,7 +10540,10 @@ func (recv *ScaleButtonAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ScaleButtonClass is a wrapper around the C record GtkScaleButtonClass.
+/*
+
+C record/class : GtkScaleButtonClass
+*/
 type ScaleButtonClass struct {
 	native *C.GtkScaleButtonClass
 	// parent_class : record
@@ -9440,7 +10570,10 @@ func (recv *ScaleButtonClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ScaleButtonPrivate is a wrapper around the C record GtkScaleButtonPrivate.
+/*
+
+C record/class : GtkScaleButtonPrivate
+*/
 type ScaleButtonPrivate struct {
 	native *C.GtkScaleButtonPrivate
 }
@@ -9461,7 +10594,10 @@ func (recv *ScaleButtonPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ScaleClass is a wrapper around the C record GtkScaleClass.
+/*
+
+C record/class : GtkScaleClass
+*/
 type ScaleClass struct {
 	native *C.GtkScaleClass
 	// parent_class : record
@@ -9490,7 +10626,10 @@ func (recv *ScaleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ScalePrivate is a wrapper around the C record GtkScalePrivate.
+/*
+
+C record/class : GtkScalePrivate
+*/
 type ScalePrivate struct {
 	native *C.GtkScalePrivate
 }
@@ -9511,7 +10650,10 @@ func (recv *ScalePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ScrollableInterface is a wrapper around the C record GtkScrollableInterface.
+/*
+
+C record/class : GtkScrollableInterface
+*/
 type ScrollableInterface struct {
 	native *C.GtkScrollableInterface
 	// base_iface : record
@@ -9534,7 +10676,10 @@ func (recv *ScrollableInterface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ScrollbarClass is a wrapper around the C record GtkScrollbarClass.
+/*
+
+C record/class : GtkScrollbarClass
+*/
 type ScrollbarClass struct {
 	native *C.GtkScrollbarClass
 	// parent_class : record
@@ -9560,7 +10705,10 @@ func (recv *ScrollbarClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ScrolledWindowAccessibleClass is a wrapper around the C record GtkScrolledWindowAccessibleClass.
+/*
+
+C record/class : GtkScrolledWindowAccessibleClass
+*/
 type ScrolledWindowAccessibleClass struct {
 	native *C.GtkScrolledWindowAccessibleClass
 	// parent_class : record
@@ -9582,7 +10730,10 @@ func (recv *ScrolledWindowAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ScrolledWindowAccessiblePrivate is a wrapper around the C record GtkScrolledWindowAccessiblePrivate.
+/*
+
+C record/class : GtkScrolledWindowAccessiblePrivate
+*/
 type ScrolledWindowAccessiblePrivate struct {
 	native *C.GtkScrolledWindowAccessiblePrivate
 }
@@ -9603,7 +10754,10 @@ func (recv *ScrolledWindowAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ScrolledWindowClass is a wrapper around the C record GtkScrolledWindowClass.
+/*
+
+C record/class : GtkScrolledWindowClass
+*/
 type ScrolledWindowClass struct {
 	native *C.GtkScrolledWindowClass
 	// parent_class : record
@@ -9637,7 +10791,10 @@ func (recv *ScrolledWindowClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ScrolledWindowPrivate is a wrapper around the C record GtkScrolledWindowPrivate.
+/*
+
+C record/class : GtkScrolledWindowPrivate
+*/
 type ScrolledWindowPrivate struct {
 	native *C.GtkScrolledWindowPrivate
 }
@@ -9658,7 +10815,10 @@ func (recv *ScrolledWindowPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// SearchBarClass is a wrapper around the C record GtkSearchBarClass.
+/*
+
+C record/class : GtkSearchBarClass
+*/
 type SearchBarClass struct {
 	native *C.GtkSearchBarClass
 	// parent_class : record
@@ -9684,7 +10844,10 @@ func (recv *SearchBarClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// SearchEntryClass is a wrapper around the C record GtkSearchEntryClass.
+/*
+
+C record/class : GtkSearchEntryClass
+*/
 type SearchEntryClass struct {
 	native *C.GtkSearchEntryClass
 	// parent_class : record
@@ -9710,7 +10873,10 @@ func (recv *SearchEntryClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// SelectionData is a wrapper around the C record GtkSelectionData.
+/*
+
+C record/class : GtkSelectionData
+*/
 type SelectionData struct {
 	native *C.GtkSelectionData
 }
@@ -9794,7 +10960,10 @@ func (recv *SelectionData) TargetsIncludeText() bool {
 	return retGo
 }
 
-// SeparatorClass is a wrapper around the C record GtkSeparatorClass.
+/*
+
+C record/class : GtkSeparatorClass
+*/
 type SeparatorClass struct {
 	native *C.GtkSeparatorClass
 	// parent_class : record
@@ -9820,7 +10989,10 @@ func (recv *SeparatorClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// SeparatorMenuItemClass is a wrapper around the C record GtkSeparatorMenuItemClass.
+/*
+
+C record/class : GtkSeparatorMenuItemClass
+*/
 type SeparatorMenuItemClass struct {
 	native *C.GtkSeparatorMenuItemClass
 	// parent_class : record
@@ -9846,7 +11018,10 @@ func (recv *SeparatorMenuItemClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// SeparatorPrivate is a wrapper around the C record GtkSeparatorPrivate.
+/*
+
+C record/class : GtkSeparatorPrivate
+*/
 type SeparatorPrivate struct {
 	native *C.GtkSeparatorPrivate
 }
@@ -9867,7 +11042,10 @@ func (recv *SeparatorPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// SeparatorToolItemClass is a wrapper around the C record GtkSeparatorToolItemClass.
+/*
+
+C record/class : GtkSeparatorToolItemClass
+*/
 type SeparatorToolItemClass struct {
 	native *C.GtkSeparatorToolItemClass
 	// parent_class : record
@@ -9893,7 +11071,10 @@ func (recv *SeparatorToolItemClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// SeparatorToolItemPrivate is a wrapper around the C record GtkSeparatorToolItemPrivate.
+/*
+
+C record/class : GtkSeparatorToolItemPrivate
+*/
 type SeparatorToolItemPrivate struct {
 	native *C.GtkSeparatorToolItemPrivate
 }
@@ -9914,7 +11095,10 @@ func (recv *SeparatorToolItemPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// SettingsClass is a wrapper around the C record GtkSettingsClass.
+/*
+
+C record/class : GtkSettingsClass
+*/
 type SettingsClass struct {
 	native *C.GtkSettingsClass
 	// parent_class : record
@@ -9940,7 +11124,10 @@ func (recv *SettingsClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// SettingsPrivate is a wrapper around the C record GtkSettingsPrivate.
+/*
+
+C record/class : GtkSettingsPrivate
+*/
 type SettingsPrivate struct {
 	native *C.GtkSettingsPrivate
 }
@@ -9961,7 +11148,10 @@ func (recv *SettingsPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// SettingsValue is a wrapper around the C record GtkSettingsValue.
+/*
+
+C record/class : GtkSettingsValue
+*/
 type SettingsValue struct {
 	native *C.GtkSettingsValue
 	Origin string
@@ -9989,7 +11179,10 @@ func (recv *SettingsValue) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// SizeGroupClass is a wrapper around the C record GtkSizeGroupClass.
+/*
+
+C record/class : GtkSizeGroupClass
+*/
 type SizeGroupClass struct {
 	native *C.GtkSizeGroupClass
 	// parent_class : record
@@ -10015,7 +11208,10 @@ func (recv *SizeGroupClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// SizeGroupPrivate is a wrapper around the C record GtkSizeGroupPrivate.
+/*
+
+C record/class : GtkSizeGroupPrivate
+*/
 type SizeGroupPrivate struct {
 	native *C.GtkSizeGroupPrivate
 }
@@ -10036,7 +11232,10 @@ func (recv *SizeGroupPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// SocketClass is a wrapper around the C record GtkSocketClass.
+/*
+
+C record/class : GtkSocketClass
+*/
 type SocketClass struct {
 	native *C.GtkSocketClass
 	// parent_class : record
@@ -10064,7 +11263,10 @@ func (recv *SocketClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// SocketPrivate is a wrapper around the C record GtkSocketPrivate.
+/*
+
+C record/class : GtkSocketPrivate
+*/
 type SocketPrivate struct {
 	native *C.GtkSocketPrivate
 }
@@ -10085,7 +11287,10 @@ func (recv *SocketPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// SpinButtonAccessibleClass is a wrapper around the C record GtkSpinButtonAccessibleClass.
+/*
+
+C record/class : GtkSpinButtonAccessibleClass
+*/
 type SpinButtonAccessibleClass struct {
 	native *C.GtkSpinButtonAccessibleClass
 	// parent_class : record
@@ -10107,7 +11312,10 @@ func (recv *SpinButtonAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// SpinButtonAccessiblePrivate is a wrapper around the C record GtkSpinButtonAccessiblePrivate.
+/*
+
+C record/class : GtkSpinButtonAccessiblePrivate
+*/
 type SpinButtonAccessiblePrivate struct {
 	native *C.GtkSpinButtonAccessiblePrivate
 }
@@ -10128,7 +11336,10 @@ func (recv *SpinButtonAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// SpinButtonClass is a wrapper around the C record GtkSpinButtonClass.
+/*
+
+C record/class : GtkSpinButtonClass
+*/
 type SpinButtonClass struct {
 	native *C.GtkSpinButtonClass
 	// parent_class : record
@@ -10159,7 +11370,10 @@ func (recv *SpinButtonClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// SpinButtonPrivate is a wrapper around the C record GtkSpinButtonPrivate.
+/*
+
+C record/class : GtkSpinButtonPrivate
+*/
 type SpinButtonPrivate struct {
 	native *C.GtkSpinButtonPrivate
 }
@@ -10180,7 +11394,10 @@ func (recv *SpinButtonPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// SpinnerAccessibleClass is a wrapper around the C record GtkSpinnerAccessibleClass.
+/*
+
+C record/class : GtkSpinnerAccessibleClass
+*/
 type SpinnerAccessibleClass struct {
 	native *C.GtkSpinnerAccessibleClass
 	// parent_class : record
@@ -10202,7 +11419,10 @@ func (recv *SpinnerAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// SpinnerAccessiblePrivate is a wrapper around the C record GtkSpinnerAccessiblePrivate.
+/*
+
+C record/class : GtkSpinnerAccessiblePrivate
+*/
 type SpinnerAccessiblePrivate struct {
 	native *C.GtkSpinnerAccessiblePrivate
 }
@@ -10223,7 +11443,10 @@ func (recv *SpinnerAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// SpinnerClass is a wrapper around the C record GtkSpinnerClass.
+/*
+
+C record/class : GtkSpinnerClass
+*/
 type SpinnerClass struct {
 	native *C.GtkSpinnerClass
 	// parent_class : record
@@ -10249,7 +11472,10 @@ func (recv *SpinnerClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// SpinnerPrivate is a wrapper around the C record GtkSpinnerPrivate.
+/*
+
+C record/class : GtkSpinnerPrivate
+*/
 type SpinnerPrivate struct {
 	native *C.GtkSpinnerPrivate
 }
@@ -10272,7 +11498,10 @@ func (recv *SpinnerPrivate) ToC() unsafe.Pointer {
 
 // Blacklisted : GtkStackAccessibleClass
 
-// StackClass is a wrapper around the C record GtkStackClass.
+/*
+
+C record/class : GtkStackClass
+*/
 type StackClass struct {
 	native *C.GtkStackClass
 	// parent_class : record
@@ -10294,7 +11523,10 @@ func (recv *StackClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// StackSidebarClass is a wrapper around the C record GtkStackSidebarClass.
+/*
+
+C record/class : GtkStackSidebarClass
+*/
 type StackSidebarClass struct {
 	native *C.GtkStackSidebarClass
 	// parent_class : record
@@ -10320,7 +11552,10 @@ func (recv *StackSidebarClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// StackSidebarPrivate is a wrapper around the C record GtkStackSidebarPrivate.
+/*
+
+C record/class : GtkStackSidebarPrivate
+*/
 type StackSidebarPrivate struct {
 	native *C.GtkStackSidebarPrivate
 }
@@ -10341,7 +11576,10 @@ func (recv *StackSidebarPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// StackSwitcherClass is a wrapper around the C record GtkStackSwitcherClass.
+/*
+
+C record/class : GtkStackSwitcherClass
+*/
 type StackSwitcherClass struct {
 	native *C.GtkStackSwitcherClass
 	// parent_class : record
@@ -10367,7 +11605,10 @@ func (recv *StackSwitcherClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// StatusIconClass is a wrapper around the C record GtkStatusIconClass.
+/*
+
+C record/class : GtkStatusIconClass
+*/
 type StatusIconClass struct {
 	native *C.GtkStatusIconClass
 	// parent_class : record
@@ -10400,7 +11641,10 @@ func (recv *StatusIconClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// StatusIconPrivate is a wrapper around the C record GtkStatusIconPrivate.
+/*
+
+C record/class : GtkStatusIconPrivate
+*/
 type StatusIconPrivate struct {
 	native *C.GtkStatusIconPrivate
 }
@@ -10421,7 +11665,10 @@ func (recv *StatusIconPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// StatusbarAccessibleClass is a wrapper around the C record GtkStatusbarAccessibleClass.
+/*
+
+C record/class : GtkStatusbarAccessibleClass
+*/
 type StatusbarAccessibleClass struct {
 	native *C.GtkStatusbarAccessibleClass
 	// parent_class : record
@@ -10443,7 +11690,10 @@ func (recv *StatusbarAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// StatusbarAccessiblePrivate is a wrapper around the C record GtkStatusbarAccessiblePrivate.
+/*
+
+C record/class : GtkStatusbarAccessiblePrivate
+*/
 type StatusbarAccessiblePrivate struct {
 	native *C.GtkStatusbarAccessiblePrivate
 }
@@ -10464,7 +11714,10 @@ func (recv *StatusbarAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// StatusbarClass is a wrapper around the C record GtkStatusbarClass.
+/*
+
+C record/class : GtkStatusbarClass
+*/
 type StatusbarClass struct {
 	native *C.GtkStatusbarClass
 	// parent_class : record
@@ -10498,7 +11751,10 @@ func (recv *StatusbarClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// StatusbarPrivate is a wrapper around the C record GtkStatusbarPrivate.
+/*
+
+C record/class : GtkStatusbarPrivate
+*/
 type StatusbarPrivate struct {
 	native *C.GtkStatusbarPrivate
 }
@@ -10519,7 +11775,10 @@ func (recv *StatusbarPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// StockItem is a wrapper around the C record GtkStockItem.
+/*
+
+C record/class : GtkStockItem
+*/
 type StockItem struct {
 	native            *C.GtkStockItem
 	StockId           string
@@ -10587,7 +11846,10 @@ func (recv *StockItem) Free() {
 	return
 }
 
-// StyleClass is a wrapper around the C record GtkStyleClass.
+/*
+
+C record/class : GtkStyleClass
+*/
 type StyleClass struct {
 	native *C.GtkStyleClass
 	// parent_class : record
@@ -10647,7 +11909,10 @@ func (recv *StyleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// StyleContextClass is a wrapper around the C record GtkStyleContextClass.
+/*
+
+C record/class : GtkStyleContextClass
+*/
 type StyleContextClass struct {
 	native *C.GtkStyleContextClass
 	// parent_class : record
@@ -10674,7 +11939,10 @@ func (recv *StyleContextClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// StyleContextPrivate is a wrapper around the C record GtkStyleContextPrivate.
+/*
+
+C record/class : GtkStyleContextPrivate
+*/
 type StyleContextPrivate struct {
 	native *C.GtkStyleContextPrivate
 }
@@ -10695,7 +11963,10 @@ func (recv *StyleContextPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// StylePropertiesClass is a wrapper around the C record GtkStylePropertiesClass.
+/*
+
+C record/class : GtkStylePropertiesClass
+*/
 type StylePropertiesClass struct {
 	native *C.GtkStylePropertiesClass
 	// Private : parent_class
@@ -10721,7 +11992,10 @@ func (recv *StylePropertiesClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// StylePropertiesPrivate is a wrapper around the C record GtkStylePropertiesPrivate.
+/*
+
+C record/class : GtkStylePropertiesPrivate
+*/
 type StylePropertiesPrivate struct {
 	native *C.GtkStylePropertiesPrivate
 }
@@ -10742,7 +12016,10 @@ func (recv *StylePropertiesPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// StyleProviderIface is a wrapper around the C record GtkStyleProviderIface.
+/*
+
+C record/class : GtkStyleProviderIface
+*/
 type StyleProviderIface struct {
 	native *C.GtkStyleProviderIface
 	// Private : g_iface
@@ -10767,7 +12044,10 @@ func (recv *StyleProviderIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// SwitchAccessibleClass is a wrapper around the C record GtkSwitchAccessibleClass.
+/*
+
+C record/class : GtkSwitchAccessibleClass
+*/
 type SwitchAccessibleClass struct {
 	native *C.GtkSwitchAccessibleClass
 	// parent_class : record
@@ -10789,7 +12069,10 @@ func (recv *SwitchAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// SwitchAccessiblePrivate is a wrapper around the C record GtkSwitchAccessiblePrivate.
+/*
+
+C record/class : GtkSwitchAccessiblePrivate
+*/
 type SwitchAccessiblePrivate struct {
 	native *C.GtkSwitchAccessiblePrivate
 }
@@ -10810,7 +12093,10 @@ func (recv *SwitchAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// SwitchClass is a wrapper around the C record GtkSwitchClass.
+/*
+
+C record/class : GtkSwitchClass
+*/
 type SwitchClass struct {
 	native *C.GtkSwitchClass
 	// parent_class : record
@@ -10839,7 +12125,10 @@ func (recv *SwitchClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// SwitchPrivate is a wrapper around the C record GtkSwitchPrivate.
+/*
+
+C record/class : GtkSwitchPrivate
+*/
 type SwitchPrivate struct {
 	native *C.GtkSwitchPrivate
 }
@@ -10860,7 +12149,25 @@ func (recv *SwitchPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// SymbolicColor is a wrapper around the C record GtkSymbolicColor.
+// GtkSymbolicColor is a boxed type that represents a symbolic color.
+// It is the result of parsing a
+// [color expression][gtkcssprovider-symbolic-colors].
+// To obtain the color represented by a GtkSymbolicColor, it has to
+// be resolved with gtk_symbolic_color_resolve(), which replaces all
+// symbolic color references by the colors they refer to (in a given
+// context) and evaluates mix, shade and other expressions, resulting
+// in a #GdkRGBA value.
+//
+// It is not normally necessary to deal directly with #GtkSymbolicColors,
+// since they are mostly used behind the scenes by #GtkStyleContext and
+// #GtkCssProvider.
+//
+// #GtkSymbolicColor is deprecated. Symbolic colors are considered an
+// implementation detail of GTK+.
+/*
+
+C record/class : GtkSymbolicColor
+*/
 type SymbolicColor struct {
 	native *C.GtkSymbolicColor
 }
@@ -10898,7 +12205,10 @@ func (recv *SymbolicColor) ToString() string {
 	return retGo
 }
 
-// TableChild is a wrapper around the C record GtkTableChild.
+/*
+
+C record/class : GtkTableChild
+*/
 type TableChild struct {
 	native *C.GtkTableChild
 	// widget : record
@@ -10952,7 +12262,10 @@ func (recv *TableChild) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TableClass is a wrapper around the C record GtkTableClass.
+/*
+
+C record/class : GtkTableClass
+*/
 type TableClass struct {
 	native *C.GtkTableClass
 	// parent_class : record
@@ -10978,7 +12291,10 @@ func (recv *TableClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TablePrivate is a wrapper around the C record GtkTablePrivate.
+/*
+
+C record/class : GtkTablePrivate
+*/
 type TablePrivate struct {
 	native *C.GtkTablePrivate
 }
@@ -10999,7 +12315,10 @@ func (recv *TablePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TableRowCol is a wrapper around the C record GtkTableRowCol.
+/*
+
+C record/class : GtkTableRowCol
+*/
 type TableRowCol struct {
 	native      *C.GtkTableRowCol
 	Requisition uint16
@@ -11039,7 +12358,13 @@ func (recv *TableRowCol) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TargetEntry is a wrapper around the C record GtkTargetEntry.
+// A #GtkTargetEntry represents a single type of
+// data than can be supplied for by a widget for a selection
+// or for supplied or received during drag-and-drop.
+/*
+
+C record/class : GtkTargetEntry
+*/
 type TargetEntry struct {
 	native *C.GtkTargetEntry
 	Target string
@@ -11117,7 +12442,13 @@ func (recv *TargetEntry) Free() {
 	return
 }
 
-// TargetList is a wrapper around the C record GtkTargetList.
+// A #GtkTargetList-struct is a reference counted list
+// of #GtkTargetPair and should be treated as
+// opaque.
+/*
+
+C record/class : GtkTargetList
+*/
 type TargetList struct {
 	native *C.GtkTargetList
 }
@@ -11172,7 +12503,13 @@ func (recv *TargetList) Unref() {
 	return
 }
 
-// TargetPair is a wrapper around the C record GtkTargetPair.
+// A #GtkTargetPair is used to represent the same
+// information as a table of #GtkTargetEntry, but in
+// an efficient form.
+/*
+
+C record/class : GtkTargetPair
+*/
 type TargetPair struct {
 	native *C.GtkTargetPair
 	// target : record
@@ -11204,7 +12541,10 @@ func (recv *TargetPair) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TearoffMenuItemClass is a wrapper around the C record GtkTearoffMenuItemClass.
+/*
+
+C record/class : GtkTearoffMenuItemClass
+*/
 type TearoffMenuItemClass struct {
 	native *C.GtkTearoffMenuItemClass
 	// parent_class : record
@@ -11230,7 +12570,10 @@ func (recv *TearoffMenuItemClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TearoffMenuItemPrivate is a wrapper around the C record GtkTearoffMenuItemPrivate.
+/*
+
+C record/class : GtkTearoffMenuItemPrivate
+*/
 type TearoffMenuItemPrivate struct {
 	native *C.GtkTearoffMenuItemPrivate
 }
@@ -11251,7 +12594,10 @@ func (recv *TearoffMenuItemPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TextAppearance is a wrapper around the C record GtkTextAppearance.
+/*
+
+C record/class : GtkTextAppearance
+*/
 type TextAppearance struct {
 	native *C.GtkTextAppearance
 	// bg_color : record
@@ -11285,7 +12631,14 @@ func (recv *TextAppearance) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TextAttributes is a wrapper around the C record GtkTextAttributes.
+// Using #GtkTextAttributes directly should rarely be necessary.
+// It’s primarily useful with gtk_text_iter_get_attributes().
+// As with most GTK+ structs, the fields in this struct should only
+// be read, never modified directly.
+/*
+
+C record/class : GtkTextAttributes
+*/
 type TextAttributes struct {
 	native *C.GtkTextAttributes
 	// Private : refcount
@@ -11429,7 +12782,10 @@ func (recv *TextAttributes) Unref() {
 	return
 }
 
-// TextBTree is a wrapper around the C record GtkTextBTree.
+/*
+
+C record/class : GtkTextBTree
+*/
 type TextBTree struct {
 	native *C.GtkTextBTree
 }
@@ -11450,7 +12806,10 @@ func (recv *TextBTree) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TextBufferClass is a wrapper around the C record GtkTextBufferClass.
+/*
+
+C record/class : GtkTextBufferClass
+*/
 type TextBufferClass struct {
 	native *C.GtkTextBufferClass
 	// parent_class : record
@@ -11489,7 +12848,10 @@ func (recv *TextBufferClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TextBufferPrivate is a wrapper around the C record GtkTextBufferPrivate.
+/*
+
+C record/class : GtkTextBufferPrivate
+*/
 type TextBufferPrivate struct {
 	native *C.GtkTextBufferPrivate
 }
@@ -11510,7 +12872,10 @@ func (recv *TextBufferPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TextCellAccessibleClass is a wrapper around the C record GtkTextCellAccessibleClass.
+/*
+
+C record/class : GtkTextCellAccessibleClass
+*/
 type TextCellAccessibleClass struct {
 	native *C.GtkTextCellAccessibleClass
 	// parent_class : record
@@ -11532,7 +12897,10 @@ func (recv *TextCellAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TextCellAccessiblePrivate is a wrapper around the C record GtkTextCellAccessiblePrivate.
+/*
+
+C record/class : GtkTextCellAccessiblePrivate
+*/
 type TextCellAccessiblePrivate struct {
 	native *C.GtkTextCellAccessiblePrivate
 }
@@ -11553,7 +12921,10 @@ func (recv *TextCellAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TextChildAnchorClass is a wrapper around the C record GtkTextChildAnchorClass.
+/*
+
+C record/class : GtkTextChildAnchorClass
+*/
 type TextChildAnchorClass struct {
 	native *C.GtkTextChildAnchorClass
 	// parent_class : record
@@ -11579,7 +12950,14 @@ func (recv *TextChildAnchorClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TextIter is a wrapper around the C record GtkTextIter.
+// You may wish to begin by reading the
+// [text widget conceptual overview][TextWidget]
+// which gives an overview of all the objects and data
+// types related to the text widget and how they work together.
+/*
+
+C record/class : GtkTextIter
+*/
 type TextIter struct {
 	native *C.GtkTextIter
 	// Private : dummy1
@@ -12957,7 +14335,10 @@ func (recv *TextIter) TogglesTag(tag *TextTag) bool {
 	return retGo
 }
 
-// TextMarkClass is a wrapper around the C record GtkTextMarkClass.
+/*
+
+C record/class : GtkTextMarkClass
+*/
 type TextMarkClass struct {
 	native *C.GtkTextMarkClass
 	// parent_class : record
@@ -12983,7 +14364,10 @@ func (recv *TextMarkClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TextTagClass is a wrapper around the C record GtkTextTagClass.
+/*
+
+C record/class : GtkTextTagClass
+*/
 type TextTagClass struct {
 	native *C.GtkTextTagClass
 	// parent_class : record
@@ -13010,7 +14394,10 @@ func (recv *TextTagClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TextTagPrivate is a wrapper around the C record GtkTextTagPrivate.
+/*
+
+C record/class : GtkTextTagPrivate
+*/
 type TextTagPrivate struct {
 	native *C.GtkTextTagPrivate
 }
@@ -13031,7 +14418,10 @@ func (recv *TextTagPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TextTagTableClass is a wrapper around the C record GtkTextTagTableClass.
+/*
+
+C record/class : GtkTextTagTableClass
+*/
 type TextTagTableClass struct {
 	native *C.GtkTextTagTableClass
 	// parent_class : record
@@ -13060,7 +14450,10 @@ func (recv *TextTagTableClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TextTagTablePrivate is a wrapper around the C record GtkTextTagTablePrivate.
+/*
+
+C record/class : GtkTextTagTablePrivate
+*/
 type TextTagTablePrivate struct {
 	native *C.GtkTextTagTablePrivate
 }
@@ -13081,7 +14474,10 @@ func (recv *TextTagTablePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TextViewAccessibleClass is a wrapper around the C record GtkTextViewAccessibleClass.
+/*
+
+C record/class : GtkTextViewAccessibleClass
+*/
 type TextViewAccessibleClass struct {
 	native *C.GtkTextViewAccessibleClass
 	// parent_class : record
@@ -13103,7 +14499,10 @@ func (recv *TextViewAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TextViewAccessiblePrivate is a wrapper around the C record GtkTextViewAccessiblePrivate.
+/*
+
+C record/class : GtkTextViewAccessiblePrivate
+*/
 type TextViewAccessiblePrivate struct {
 	native *C.GtkTextViewAccessiblePrivate
 }
@@ -13124,7 +14523,10 @@ func (recv *TextViewAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TextViewClass is a wrapper around the C record GtkTextViewClass.
+/*
+
+C record/class : GtkTextViewClass
+*/
 type TextViewClass struct {
 	native *C.GtkTextViewClass
 	// parent_class : record
@@ -13164,7 +14566,10 @@ func (recv *TextViewClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TextViewPrivate is a wrapper around the C record GtkTextViewPrivate.
+/*
+
+C record/class : GtkTextViewPrivate
+*/
 type TextViewPrivate struct {
 	native *C.GtkTextViewPrivate
 }
@@ -13185,7 +14590,10 @@ func (recv *TextViewPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ThemeEngine is a wrapper around the C record GtkThemeEngine.
+/*
+
+C record/class : GtkThemeEngine
+*/
 type ThemeEngine struct {
 	native *C.GtkThemeEngine
 }
@@ -13206,7 +14614,11 @@ func (recv *ThemeEngine) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ThemingEngineClass is a wrapper around the C record GtkThemingEngineClass.
+// Base class for theming engines.
+/*
+
+C record/class : GtkThemingEngineClass
+*/
 type ThemingEngineClass struct {
 	native *C.GtkThemingEngineClass
 	// parent_class : record
@@ -13246,7 +14658,10 @@ func (recv *ThemingEngineClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ThemingEnginePrivate is a wrapper around the C record GtkThemingEnginePrivate.
+/*
+
+C record/class : GtkThemingEnginePrivate
+*/
 type ThemingEnginePrivate struct {
 	native *C.GtkThemingEnginePrivate
 }
@@ -13267,7 +14682,10 @@ func (recv *ThemingEnginePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ToggleActionClass is a wrapper around the C record GtkToggleActionClass.
+/*
+
+C record/class : GtkToggleActionClass
+*/
 type ToggleActionClass struct {
 	native *C.GtkToggleActionClass
 	// parent_class : record
@@ -13294,7 +14712,12 @@ func (recv *ToggleActionClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ToggleActionEntry is a wrapper around the C record GtkToggleActionEntry.
+// #GtkToggleActionEntry structs are used with
+// gtk_action_group_add_toggle_actions() to construct toggle actions.
+/*
+
+C record/class : GtkToggleActionEntry
+*/
 type ToggleActionEntry struct {
 	native      *C.GtkToggleActionEntry
 	Name        string
@@ -13342,7 +14765,10 @@ func (recv *ToggleActionEntry) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ToggleActionPrivate is a wrapper around the C record GtkToggleActionPrivate.
+/*
+
+C record/class : GtkToggleActionPrivate
+*/
 type ToggleActionPrivate struct {
 	native *C.GtkToggleActionPrivate
 }
@@ -13363,7 +14789,10 @@ func (recv *ToggleActionPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ToggleButtonAccessibleClass is a wrapper around the C record GtkToggleButtonAccessibleClass.
+/*
+
+C record/class : GtkToggleButtonAccessibleClass
+*/
 type ToggleButtonAccessibleClass struct {
 	native *C.GtkToggleButtonAccessibleClass
 	// parent_class : record
@@ -13385,7 +14814,10 @@ func (recv *ToggleButtonAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ToggleButtonAccessiblePrivate is a wrapper around the C record GtkToggleButtonAccessiblePrivate.
+/*
+
+C record/class : GtkToggleButtonAccessiblePrivate
+*/
 type ToggleButtonAccessiblePrivate struct {
 	native *C.GtkToggleButtonAccessiblePrivate
 }
@@ -13406,7 +14838,10 @@ func (recv *ToggleButtonAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ToggleButtonClass is a wrapper around the C record GtkToggleButtonClass.
+/*
+
+C record/class : GtkToggleButtonClass
+*/
 type ToggleButtonClass struct {
 	native *C.GtkToggleButtonClass
 	// parent_class : record
@@ -13433,7 +14868,10 @@ func (recv *ToggleButtonClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ToggleButtonPrivate is a wrapper around the C record GtkToggleButtonPrivate.
+/*
+
+C record/class : GtkToggleButtonPrivate
+*/
 type ToggleButtonPrivate struct {
 	native *C.GtkToggleButtonPrivate
 }
@@ -13454,7 +14892,10 @@ func (recv *ToggleButtonPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ToggleToolButtonClass is a wrapper around the C record GtkToggleToolButtonClass.
+/*
+
+C record/class : GtkToggleToolButtonClass
+*/
 type ToggleToolButtonClass struct {
 	native *C.GtkToggleToolButtonClass
 	// parent_class : record
@@ -13481,7 +14922,10 @@ func (recv *ToggleToolButtonClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ToggleToolButtonPrivate is a wrapper around the C record GtkToggleToolButtonPrivate.
+/*
+
+C record/class : GtkToggleToolButtonPrivate
+*/
 type ToggleToolButtonPrivate struct {
 	native *C.GtkToggleToolButtonPrivate
 }
@@ -13502,7 +14946,10 @@ func (recv *ToggleToolButtonPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ToolButtonClass is a wrapper around the C record GtkToolButtonClass.
+/*
+
+C record/class : GtkToolButtonClass
+*/
 type ToolButtonClass struct {
 	native *C.GtkToolButtonClass
 	// parent_class : record
@@ -13535,7 +14982,10 @@ func (recv *ToolButtonClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ToolButtonPrivate is a wrapper around the C record GtkToolButtonPrivate.
+/*
+
+C record/class : GtkToolButtonPrivate
+*/
 type ToolButtonPrivate struct {
 	native *C.GtkToolButtonPrivate
 }
@@ -13556,7 +15006,10 @@ func (recv *ToolButtonPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ToolItemClass is a wrapper around the C record GtkToolItemClass.
+/*
+
+C record/class : GtkToolItemClass
+*/
 type ToolItemClass struct {
 	native *C.GtkToolItemClass
 	// parent_class : record
@@ -13584,7 +15037,10 @@ func (recv *ToolItemClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ToolItemGroupClass is a wrapper around the C record GtkToolItemGroupClass.
+/*
+
+C record/class : GtkToolItemGroupClass
+*/
 type ToolItemGroupClass struct {
 	native *C.GtkToolItemGroupClass
 	// parent_class : record
@@ -13610,7 +15066,10 @@ func (recv *ToolItemGroupClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ToolItemGroupPrivate is a wrapper around the C record GtkToolItemGroupPrivate.
+/*
+
+C record/class : GtkToolItemGroupPrivate
+*/
 type ToolItemGroupPrivate struct {
 	native *C.GtkToolItemGroupPrivate
 }
@@ -13631,7 +15090,10 @@ func (recv *ToolItemGroupPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ToolItemPrivate is a wrapper around the C record GtkToolItemPrivate.
+/*
+
+C record/class : GtkToolItemPrivate
+*/
 type ToolItemPrivate struct {
 	native *C.GtkToolItemPrivate
 }
@@ -13652,7 +15114,10 @@ func (recv *ToolItemPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ToolPaletteClass is a wrapper around the C record GtkToolPaletteClass.
+/*
+
+C record/class : GtkToolPaletteClass
+*/
 type ToolPaletteClass struct {
 	native *C.GtkToolPaletteClass
 	// parent_class : record
@@ -13678,7 +15143,10 @@ func (recv *ToolPaletteClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ToolPalettePrivate is a wrapper around the C record GtkToolPalettePrivate.
+/*
+
+C record/class : GtkToolPalettePrivate
+*/
 type ToolPalettePrivate struct {
 	native *C.GtkToolPalettePrivate
 }
@@ -13699,7 +15167,11 @@ func (recv *ToolPalettePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ToolShellIface is a wrapper around the C record GtkToolShellIface.
+// Virtual function table for the #GtkToolShell interface.
+/*
+
+C record/class : GtkToolShellIface
+*/
 type ToolShellIface struct {
 	native *C.GtkToolShellIface
 	// Private : g_iface
@@ -13730,7 +15202,10 @@ func (recv *ToolShellIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ToolbarClass is a wrapper around the C record GtkToolbarClass.
+/*
+
+C record/class : GtkToolbarClass
+*/
 type ToolbarClass struct {
 	native *C.GtkToolbarClass
 	// parent_class : record
@@ -13759,7 +15234,10 @@ func (recv *ToolbarClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ToolbarPrivate is a wrapper around the C record GtkToolbarPrivate.
+/*
+
+C record/class : GtkToolbarPrivate
+*/
 type ToolbarPrivate struct {
 	native *C.GtkToolbarPrivate
 }
@@ -13780,7 +15258,10 @@ func (recv *ToolbarPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ToplevelAccessibleClass is a wrapper around the C record GtkToplevelAccessibleClass.
+/*
+
+C record/class : GtkToplevelAccessibleClass
+*/
 type ToplevelAccessibleClass struct {
 	native *C.GtkToplevelAccessibleClass
 	// parent_class : record
@@ -13802,7 +15283,10 @@ func (recv *ToplevelAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ToplevelAccessiblePrivate is a wrapper around the C record GtkToplevelAccessiblePrivate.
+/*
+
+C record/class : GtkToplevelAccessiblePrivate
+*/
 type ToplevelAccessiblePrivate struct {
 	native *C.GtkToplevelAccessiblePrivate
 }
@@ -13823,7 +15307,10 @@ func (recv *ToplevelAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TreeDragDestIface is a wrapper around the C record GtkTreeDragDestIface.
+/*
+
+C record/class : GtkTreeDragDestIface
+*/
 type TreeDragDestIface struct {
 	native *C.GtkTreeDragDestIface
 	// Private : g_iface
@@ -13847,7 +15334,10 @@ func (recv *TreeDragDestIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TreeDragSourceIface is a wrapper around the C record GtkTreeDragSourceIface.
+/*
+
+C record/class : GtkTreeDragSourceIface
+*/
 type TreeDragSourceIface struct {
 	native *C.GtkTreeDragSourceIface
 	// Private : g_iface
@@ -13872,7 +15362,15 @@ func (recv *TreeDragSourceIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TreeIter is a wrapper around the C record GtkTreeIter.
+// The #GtkTreeIter is the primary structure
+// for accessing a #GtkTreeModel. Models are expected to put a unique
+// integer in the @stamp member, and put
+// model-specific data in the three @user_data
+// members.
+/*
+
+C record/class : GtkTreeIter
+*/
 type TreeIter struct {
 	native    *C.GtkTreeIter
 	Stamp     int32
@@ -13941,7 +15439,10 @@ func (recv *TreeIter) Free() {
 	return
 }
 
-// TreeModelFilterClass is a wrapper around the C record GtkTreeModelFilterClass.
+/*
+
+C record/class : GtkTreeModelFilterClass
+*/
 type TreeModelFilterClass struct {
 	native *C.GtkTreeModelFilterClass
 	// parent_class : record
@@ -13969,7 +15470,10 @@ func (recv *TreeModelFilterClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TreeModelFilterPrivate is a wrapper around the C record GtkTreeModelFilterPrivate.
+/*
+
+C record/class : GtkTreeModelFilterPrivate
+*/
 type TreeModelFilterPrivate struct {
 	native *C.GtkTreeModelFilterPrivate
 }
@@ -13990,7 +15494,10 @@ func (recv *TreeModelFilterPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TreeModelIface is a wrapper around the C record GtkTreeModelIface.
+/*
+
+C record/class : GtkTreeModelIface
+*/
 type TreeModelIface struct {
 	native *C.GtkTreeModelIface
 	// Private : g_iface
@@ -14032,7 +15539,10 @@ func (recv *TreeModelIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TreeModelSortClass is a wrapper around the C record GtkTreeModelSortClass.
+/*
+
+C record/class : GtkTreeModelSortClass
+*/
 type TreeModelSortClass struct {
 	native *C.GtkTreeModelSortClass
 	// parent_class : record
@@ -14058,7 +15568,10 @@ func (recv *TreeModelSortClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TreeModelSortPrivate is a wrapper around the C record GtkTreeModelSortPrivate.
+/*
+
+C record/class : GtkTreeModelSortPrivate
+*/
 type TreeModelSortPrivate struct {
 	native *C.GtkTreeModelSortPrivate
 }
@@ -14079,7 +15592,10 @@ func (recv *TreeModelSortPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TreePath is a wrapper around the C record GtkTreePath.
+/*
+
+C record/class : GtkTreePath
+*/
 type TreePath struct {
 	native *C.GtkTreePath
 }
@@ -14334,7 +15850,13 @@ func (recv *TreePath) Up() bool {
 	return retGo
 }
 
-// TreeRowReference is a wrapper around the C record GtkTreeRowReference.
+// A GtkTreeRowReference tracks model changes so that it always refers to the
+// same row (a #GtkTreePath refers to a position, not a fixed row). Create a
+// new GtkTreeRowReference with gtk_tree_row_reference_new().
+/*
+
+C record/class : GtkTreeRowReference
+*/
 type TreeRowReference struct {
 	native *C.GtkTreeRowReference
 }
@@ -14468,7 +15990,10 @@ func (recv *TreeRowReference) Valid() bool {
 	return retGo
 }
 
-// TreeSelectionClass is a wrapper around the C record GtkTreeSelectionClass.
+/*
+
+C record/class : GtkTreeSelectionClass
+*/
 type TreeSelectionClass struct {
 	native *C.GtkTreeSelectionClass
 	// parent_class : record
@@ -14495,7 +16020,10 @@ func (recv *TreeSelectionClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TreeSelectionPrivate is a wrapper around the C record GtkTreeSelectionPrivate.
+/*
+
+C record/class : GtkTreeSelectionPrivate
+*/
 type TreeSelectionPrivate struct {
 	native *C.GtkTreeSelectionPrivate
 }
@@ -14516,7 +16044,10 @@ func (recv *TreeSelectionPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TreeSortableIface is a wrapper around the C record GtkTreeSortableIface.
+/*
+
+C record/class : GtkTreeSortableIface
+*/
 type TreeSortableIface struct {
 	native *C.GtkTreeSortableIface
 	// Private : g_iface
@@ -14544,7 +16075,10 @@ func (recv *TreeSortableIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TreeStoreClass is a wrapper around the C record GtkTreeStoreClass.
+/*
+
+C record/class : GtkTreeStoreClass
+*/
 type TreeStoreClass struct {
 	native *C.GtkTreeStoreClass
 	// parent_class : record
@@ -14570,7 +16104,10 @@ func (recv *TreeStoreClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TreeStorePrivate is a wrapper around the C record GtkTreeStorePrivate.
+/*
+
+C record/class : GtkTreeStorePrivate
+*/
 type TreeStorePrivate struct {
 	native *C.GtkTreeStorePrivate
 }
@@ -14591,7 +16128,10 @@ func (recv *TreeStorePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TreeViewAccessibleClass is a wrapper around the C record GtkTreeViewAccessibleClass.
+/*
+
+C record/class : GtkTreeViewAccessibleClass
+*/
 type TreeViewAccessibleClass struct {
 	native *C.GtkTreeViewAccessibleClass
 	// parent_class : record
@@ -14613,7 +16153,10 @@ func (recv *TreeViewAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TreeViewAccessiblePrivate is a wrapper around the C record GtkTreeViewAccessiblePrivate.
+/*
+
+C record/class : GtkTreeViewAccessiblePrivate
+*/
 type TreeViewAccessiblePrivate struct {
 	native *C.GtkTreeViewAccessiblePrivate
 }
@@ -14634,7 +16177,10 @@ func (recv *TreeViewAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TreeViewClass is a wrapper around the C record GtkTreeViewClass.
+/*
+
+C record/class : GtkTreeViewClass
+*/
 type TreeViewClass struct {
 	native *C.GtkTreeViewClass
 	// parent_class : record
@@ -14679,7 +16225,10 @@ func (recv *TreeViewClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TreeViewColumnClass is a wrapper around the C record GtkTreeViewColumnClass.
+/*
+
+C record/class : GtkTreeViewColumnClass
+*/
 type TreeViewColumnClass struct {
 	native *C.GtkTreeViewColumnClass
 	// parent_class : record
@@ -14706,7 +16255,10 @@ func (recv *TreeViewColumnClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TreeViewColumnPrivate is a wrapper around the C record GtkTreeViewColumnPrivate.
+/*
+
+C record/class : GtkTreeViewColumnPrivate
+*/
 type TreeViewColumnPrivate struct {
 	native *C.GtkTreeViewColumnPrivate
 }
@@ -14727,7 +16279,10 @@ func (recv *TreeViewColumnPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TreeViewPrivate is a wrapper around the C record GtkTreeViewPrivate.
+/*
+
+C record/class : GtkTreeViewPrivate
+*/
 type TreeViewPrivate struct {
 	native *C.GtkTreeViewPrivate
 }
@@ -14748,7 +16303,10 @@ func (recv *TreeViewPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// UIManagerClass is a wrapper around the C record GtkUIManagerClass.
+/*
+
+C record/class : GtkUIManagerClass
+*/
 type UIManagerClass struct {
 	native *C.GtkUIManagerClass
 	// parent_class : record
@@ -14782,7 +16340,10 @@ func (recv *UIManagerClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// UIManagerPrivate is a wrapper around the C record GtkUIManagerPrivate.
+/*
+
+C record/class : GtkUIManagerPrivate
+*/
 type UIManagerPrivate struct {
 	native *C.GtkUIManagerPrivate
 }
@@ -14803,7 +16364,10 @@ func (recv *UIManagerPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// VBoxClass is a wrapper around the C record GtkVBoxClass.
+/*
+
+C record/class : GtkVBoxClass
+*/
 type VBoxClass struct {
 	native *C.GtkVBoxClass
 	// parent_class : record
@@ -14825,7 +16389,10 @@ func (recv *VBoxClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// VButtonBoxClass is a wrapper around the C record GtkVButtonBoxClass.
+/*
+
+C record/class : GtkVButtonBoxClass
+*/
 type VButtonBoxClass struct {
 	native *C.GtkVButtonBoxClass
 	// parent_class : record
@@ -14847,7 +16414,10 @@ func (recv *VButtonBoxClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// VPanedClass is a wrapper around the C record GtkVPanedClass.
+/*
+
+C record/class : GtkVPanedClass
+*/
 type VPanedClass struct {
 	native *C.GtkVPanedClass
 	// parent_class : record
@@ -14869,7 +16439,10 @@ func (recv *VPanedClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// VScaleClass is a wrapper around the C record GtkVScaleClass.
+/*
+
+C record/class : GtkVScaleClass
+*/
 type VScaleClass struct {
 	native *C.GtkVScaleClass
 	// parent_class : record
@@ -14891,7 +16464,10 @@ func (recv *VScaleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// VScrollbarClass is a wrapper around the C record GtkVScrollbarClass.
+/*
+
+C record/class : GtkVScrollbarClass
+*/
 type VScrollbarClass struct {
 	native *C.GtkVScrollbarClass
 	// parent_class : record
@@ -14913,7 +16489,10 @@ func (recv *VScrollbarClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// VSeparatorClass is a wrapper around the C record GtkVSeparatorClass.
+/*
+
+C record/class : GtkVSeparatorClass
+*/
 type VSeparatorClass struct {
 	native *C.GtkVSeparatorClass
 	// parent_class : record
@@ -14935,7 +16514,10 @@ func (recv *VSeparatorClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ViewportClass is a wrapper around the C record GtkViewportClass.
+/*
+
+C record/class : GtkViewportClass
+*/
 type ViewportClass struct {
 	native *C.GtkViewportClass
 	// parent_class : record
@@ -14961,7 +16543,10 @@ func (recv *ViewportClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ViewportPrivate is a wrapper around the C record GtkViewportPrivate.
+/*
+
+C record/class : GtkViewportPrivate
+*/
 type ViewportPrivate struct {
 	native *C.GtkViewportPrivate
 }
@@ -14982,7 +16567,10 @@ func (recv *ViewportPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// VolumeButtonClass is a wrapper around the C record GtkVolumeButtonClass.
+/*
+
+C record/class : GtkVolumeButtonClass
+*/
 type VolumeButtonClass struct {
 	native *C.GtkVolumeButtonClass
 	// parent_class : record
@@ -15008,7 +16596,10 @@ func (recv *VolumeButtonClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// WidgetAccessibleClass is a wrapper around the C record GtkWidgetAccessibleClass.
+/*
+
+C record/class : GtkWidgetAccessibleClass
+*/
 type WidgetAccessibleClass struct {
 	native *C.GtkWidgetAccessibleClass
 	// parent_class : record
@@ -15031,7 +16622,10 @@ func (recv *WidgetAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// WidgetAccessiblePrivate is a wrapper around the C record GtkWidgetAccessiblePrivate.
+/*
+
+C record/class : GtkWidgetAccessiblePrivate
+*/
 type WidgetAccessiblePrivate struct {
 	native *C.GtkWidgetAccessiblePrivate
 }
@@ -15052,7 +16646,10 @@ func (recv *WidgetAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// WidgetClass is a wrapper around the C record GtkWidgetClass.
+/*
+
+C record/class : GtkWidgetClass
+*/
 type WidgetClass struct {
 	native *C.GtkWidgetClass
 	// parent_class : record
@@ -15169,7 +16766,10 @@ func (recv *WidgetClass) ToC() unsafe.Pointer {
 
 // Unsupported : gtk_widget_class_install_style_property_parser : unsupported parameter pspec : Blacklisted record : GParamSpec
 
-// WidgetClassPrivate is a wrapper around the C record GtkWidgetClassPrivate.
+/*
+
+C record/class : GtkWidgetClassPrivate
+*/
 type WidgetClassPrivate struct {
 	native *C.GtkWidgetClassPrivate
 }
@@ -15190,7 +16790,57 @@ func (recv *WidgetClassPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// WidgetPath is a wrapper around the C record GtkWidgetPath.
+// GtkWidgetPath is a boxed type that represents a widget hierarchy from
+// the topmost widget, typically a toplevel, to any child. This widget
+// path abstraction is used in #GtkStyleContext on behalf of the real
+// widget in order to query style information.
+//
+// If you are using GTK+ widgets, you probably will not need to use
+// this API directly, as there is gtk_widget_get_path(), and the style
+// context returned by gtk_widget_get_style_context() will be automatically
+// updated on widget hierarchy changes.
+//
+// The widget path generation is generally simple:
+//
+// ## Defining a button within a window
+//
+// |[<!-- language="C" -->
+// {
+// GtkWidgetPath *path;
+//
+// path = gtk_widget_path_new ();
+// gtk_widget_path_append_type (path, GTK_TYPE_WINDOW);
+// gtk_widget_path_append_type (path, GTK_TYPE_BUTTON);
+// }
+// ]|
+//
+// Although more complex information, such as widget names, or
+// different classes (property that may be used by other widget
+// types) and intermediate regions may be included:
+//
+// ## Defining the first tab widget in a notebook
+//
+// |[<!-- language="C" -->
+// {
+// GtkWidgetPath *path;
+// guint pos;
+//
+// path = gtk_widget_path_new ();
+//
+// pos = gtk_widget_path_append_type (path, GTK_TYPE_NOTEBOOK);
+// gtk_widget_path_iter_add_region (path, pos, "tab", GTK_REGION_EVEN | GTK_REGION_FIRST);
+//
+// pos = gtk_widget_path_append_type (path, GTK_TYPE_LABEL);
+// gtk_widget_path_iter_set_name (path, pos, "first tab label");
+// }
+// ]|
+//
+// All this information will be used to match the style information
+// that applies to the described widget.
+/*
+
+C record/class : GtkWidgetPath
+*/
 type WidgetPath struct {
 	native *C.GtkWidgetPath
 }
@@ -15259,7 +16909,10 @@ func (recv *WidgetPath) IterGetSiblings(pos int32) *WidgetPath {
 	return retGo
 }
 
-// WidgetPrivate is a wrapper around the C record GtkWidgetPrivate.
+/*
+
+C record/class : GtkWidgetPrivate
+*/
 type WidgetPrivate struct {
 	native *C.GtkWidgetPrivate
 }
@@ -15280,7 +16933,10 @@ func (recv *WidgetPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// WindowAccessibleClass is a wrapper around the C record GtkWindowAccessibleClass.
+/*
+
+C record/class : GtkWindowAccessibleClass
+*/
 type WindowAccessibleClass struct {
 	native *C.GtkWindowAccessibleClass
 	// parent_class : record
@@ -15302,7 +16958,10 @@ func (recv *WindowAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// WindowAccessiblePrivate is a wrapper around the C record GtkWindowAccessiblePrivate.
+/*
+
+C record/class : GtkWindowAccessiblePrivate
+*/
 type WindowAccessiblePrivate struct {
 	native *C.GtkWindowAccessiblePrivate
 }
@@ -15323,7 +16982,10 @@ func (recv *WindowAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// WindowClass is a wrapper around the C record GtkWindowClass.
+/*
+
+C record/class : GtkWindowClass
+*/
 type WindowClass struct {
 	native *C.GtkWindowClass
 	// parent_class : record
@@ -15353,7 +17015,10 @@ func (recv *WindowClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// WindowGeometryInfo is a wrapper around the C record GtkWindowGeometryInfo.
+/*
+
+C record/class : GtkWindowGeometryInfo
+*/
 type WindowGeometryInfo struct {
 	native *C.GtkWindowGeometryInfo
 }
@@ -15374,7 +17039,10 @@ func (recv *WindowGeometryInfo) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// WindowGroupClass is a wrapper around the C record GtkWindowGroupClass.
+/*
+
+C record/class : GtkWindowGroupClass
+*/
 type WindowGroupClass struct {
 	native *C.GtkWindowGroupClass
 	// parent_class : record
@@ -15400,7 +17068,10 @@ func (recv *WindowGroupClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// WindowGroupPrivate is a wrapper around the C record GtkWindowGroupPrivate.
+/*
+
+C record/class : GtkWindowGroupPrivate
+*/
 type WindowGroupPrivate struct {
 	native *C.GtkWindowGroupPrivate
 }
@@ -15421,7 +17092,10 @@ func (recv *WindowGroupPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// WindowPrivate is a wrapper around the C record GtkWindowPrivate.
+/*
+
+C record/class : GtkWindowPrivate
+*/
 type WindowPrivate struct {
 	native *C.GtkWindowPrivate
 }

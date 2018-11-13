@@ -11,7 +11,12 @@ import "C"
 
 // Blacklisted : GdkAtom
 
-// Color is a wrapper around the C record GdkColor.
+// A #GdkColor is used to describe a color,
+// similar to the XColor struct used in the X11 drawing API.
+/*
+
+C record/class : GdkColor
+*/
 type Color struct {
 	native *C.GdkColor
 	Pixel  uint32
@@ -105,7 +110,13 @@ func (recv *Color) Hash() uint32 {
 	return retGo
 }
 
-// EventAny is a wrapper around the C record GdkEventAny.
+// Contains the fields which are common to all event structs.
+// Any event pointer can safely be cast to a pointer to a #GdkEventAny to
+// access these fields.
+/*
+
+C record/class : GdkEventAny
+*/
 type EventAny struct {
 	native *C.GdkEventAny
 	Type   EventType
@@ -137,7 +148,43 @@ func (recv *EventAny) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// EventButton is a wrapper around the C record GdkEventButton.
+// Used for button press and button release events. The
+// @type field will be one of %GDK_BUTTON_PRESS,
+// %GDK_2BUTTON_PRESS, %GDK_3BUTTON_PRESS or %GDK_BUTTON_RELEASE,
+//
+// Double and triple-clicks result in a sequence of events being received.
+// For double-clicks the order of events will be:
+//
+// - %GDK_BUTTON_PRESS
+// - %GDK_BUTTON_RELEASE
+// - %GDK_BUTTON_PRESS
+// - %GDK_2BUTTON_PRESS
+// - %GDK_BUTTON_RELEASE
+//
+// Note that the first click is received just like a normal
+// button press, while the second click results in a %GDK_2BUTTON_PRESS
+// being received just after the %GDK_BUTTON_PRESS.
+//
+// Triple-clicks are very similar to double-clicks, except that
+// %GDK_3BUTTON_PRESS is inserted after the third click. The order of the
+// events is:
+//
+// - %GDK_BUTTON_PRESS
+// - %GDK_BUTTON_RELEASE
+// - %GDK_BUTTON_PRESS
+// - %GDK_2BUTTON_PRESS
+// - %GDK_BUTTON_RELEASE
+// - %GDK_BUTTON_PRESS
+// - %GDK_3BUTTON_PRESS
+// - %GDK_BUTTON_RELEASE
+//
+// For a double click to occur, the second button press must occur within
+// 1/4 of a second of the first. For a triple click to occur, the third
+// button press must also occur within 1/2 second of the first button press.
+/*
+
+C record/class : GdkEventButton
+*/
 type EventButton struct {
 	native *C.GdkEventButton
 	Type   EventType
@@ -199,7 +246,11 @@ func (recv *EventButton) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// EventConfigure is a wrapper around the C record GdkEventConfigure.
+// Generated when a window size or position has changed.
+/*
+
+C record/class : GdkEventConfigure
+*/
 type EventConfigure struct {
 	native *C.GdkEventConfigure
 	Type   EventType
@@ -247,7 +298,11 @@ func (recv *EventConfigure) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// EventCrossing is a wrapper around the C record GdkEventCrossing.
+// Generated when the pointer enters or leaves a window.
+/*
+
+C record/class : GdkEventCrossing
+*/
 type EventCrossing struct {
 	native *C.GdkEventCrossing
 	Type   EventType
@@ -316,7 +371,11 @@ func (recv *EventCrossing) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// EventDND is a wrapper around the C record GdkEventDND.
+// Generated during DND operations.
+/*
+
+C record/class : GdkEventDND
+*/
 type EventDND struct {
 	native *C.GdkEventDND
 	Type   EventType
@@ -361,7 +420,12 @@ func (recv *EventDND) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// EventExpose is a wrapper around the C record GdkEventExpose.
+// Generated when all or part of a window becomes visible and needs to be
+// redrawn.
+/*
+
+C record/class : GdkEventExpose
+*/
 type EventExpose struct {
 	native *C.GdkEventExpose
 	Type   EventType
@@ -399,7 +463,11 @@ func (recv *EventExpose) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// EventFocus is a wrapper around the C record GdkEventFocus.
+// Describes a change of keyboard focus.
+/*
+
+C record/class : GdkEventFocus
+*/
 type EventFocus struct {
 	native *C.GdkEventFocus
 	Type   EventType
@@ -435,7 +503,11 @@ func (recv *EventFocus) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// EventKey is a wrapper around the C record GdkEventKey.
+// Describes a key press or key release event.
+/*
+
+C record/class : GdkEventKey
+*/
 type EventKey struct {
 	native *C.GdkEventKey
 	Type   EventType
@@ -496,7 +568,11 @@ func (recv *EventKey) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// EventMotion is a wrapper around the C record GdkEventMotion.
+// Generated when the pointer moves.
+/*
+
+C record/class : GdkEventMotion
+*/
 type EventMotion struct {
 	native *C.GdkEventMotion
 	Type   EventType
@@ -558,7 +634,11 @@ func (recv *EventMotion) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// EventProperty is a wrapper around the C record GdkEventProperty.
+// Describes a property change on a window.
+/*
+
+C record/class : GdkEventProperty
+*/
 type EventProperty struct {
 	native *C.GdkEventProperty
 	Type   EventType
@@ -599,7 +679,19 @@ func (recv *EventProperty) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// EventProximity is a wrapper around the C record GdkEventProximity.
+// Proximity events are generated when using GDK’s wrapper for the
+// XInput extension. The XInput extension is an add-on for standard X
+// that allows you to use nonstandard devices such as graphics tablets.
+// A proximity event indicates that the stylus has moved in or out of
+// contact with the tablet, or perhaps that the user’s finger has moved
+// in or out of contact with a touch screen.
+//
+// This event type will be used pretty rarely. It only is important for
+// XInput aware programs that are drawing their own cursor.
+/*
+
+C record/class : GdkEventProximity
+*/
 type EventProximity struct {
 	native *C.GdkEventProximity
 	Type   EventType
@@ -636,7 +728,18 @@ func (recv *EventProximity) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// EventScroll is a wrapper around the C record GdkEventScroll.
+// Generated from button presses for the buttons 4 to 7. Wheel mice are
+// usually configured to generate button press events for buttons 4 and 5
+// when the wheel is turned.
+//
+// Some GDK backends can also generate “smooth” scroll events, which
+// can be recognized by the %GDK_SCROLL_SMOOTH scroll direction. For
+// these, the scroll deltas can be obtained with
+// gdk_event_get_scroll_deltas().
+/*
+
+C record/class : GdkEventScroll
+*/
 type EventScroll struct {
 	native *C.GdkEventScroll
 	Type   EventType
@@ -706,7 +809,12 @@ func (recv *EventScroll) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// EventSelection is a wrapper around the C record GdkEventSelection.
+// Generated when a selection is requested or ownership of a selection
+// is taken over by another client application.
+/*
+
+C record/class : GdkEventSelection
+*/
 type EventSelection struct {
 	native *C.GdkEventSelection
 	Type   EventType
@@ -746,7 +854,10 @@ func (recv *EventSelection) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// EventSequence is a wrapper around the C record GdkEventSequence.
+/*
+
+C record/class : GdkEventSequence
+*/
 type EventSequence struct {
 	native *C.GdkEventSequence
 }
@@ -767,7 +878,11 @@ func (recv *EventSequence) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// EventSetting is a wrapper around the C record GdkEventSetting.
+// Generated when a setting is modified.
+/*
+
+C record/class : GdkEventSetting
+*/
 type EventSetting struct {
 	native *C.GdkEventSetting
 	Type   EventType
@@ -807,7 +922,20 @@ func (recv *EventSetting) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// EventTouch is a wrapper around the C record GdkEventTouch.
+// Used for touch events.
+// @type field will be one of %GDK_TOUCH_BEGIN, %GDK_TOUCH_UPDATE,
+// %GDK_TOUCH_END or %GDK_TOUCH_CANCEL.
+//
+// Touch events are grouped into sequences by means of the @sequence
+// field, which can also be obtained with gdk_event_get_event_sequence().
+// Each sequence begins with a %GDK_TOUCH_BEGIN event, followed by
+// any number of %GDK_TOUCH_UPDATE events, and ends with a %GDK_TOUCH_END
+// (or %GDK_TOUCH_CANCEL) event. With multitouch devices, there may be
+// several active sequences at the same time.
+/*
+
+C record/class : GdkEventTouch
+*/
 type EventTouch struct {
 	native *C.GdkEventTouch
 	Type   EventType
@@ -870,7 +998,11 @@ func (recv *EventTouch) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// EventTouchpadPinch is a wrapper around the C record GdkEventTouchpadPinch.
+// Generated during touchpad swipe gestures.
+/*
+
+C record/class : GdkEventTouchpadPinch
+*/
 type EventTouchpadPinch struct {
 	native *C.GdkEventTouchpadPinch
 	Type   EventType
@@ -950,7 +1082,11 @@ func (recv *EventTouchpadPinch) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// EventTouchpadSwipe is a wrapper around the C record GdkEventTouchpadSwipe.
+// Generated during touchpad swipe gestures.
+/*
+
+C record/class : GdkEventTouchpadSwipe
+*/
 type EventTouchpadSwipe struct {
 	native *C.GdkEventTouchpadSwipe
 	Type   EventType
@@ -1022,7 +1158,11 @@ func (recv *EventTouchpadSwipe) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// EventVisibility is a wrapper around the C record GdkEventVisibility.
+// Generated when the window visibility status has changed.
+/*
+
+C record/class : GdkEventVisibility
+*/
 type EventVisibility struct {
 	native *C.GdkEventVisibility
 	Type   EventType
@@ -1058,7 +1198,11 @@ func (recv *EventVisibility) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// EventWindowState is a wrapper around the C record GdkEventWindowState.
+// Generated when the state of a toplevel window changes.
+/*
+
+C record/class : GdkEventWindowState
+*/
 type EventWindowState struct {
 	native *C.GdkEventWindowState
 	Type   EventType
@@ -1098,7 +1242,10 @@ func (recv *EventWindowState) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// FrameClockClass is a wrapper around the C record GdkFrameClockClass.
+/*
+
+C record/class : GdkFrameClockClass
+*/
 type FrameClockClass struct {
 	native *C.GdkFrameClockClass
 }
@@ -1119,7 +1266,10 @@ func (recv *FrameClockClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// FrameClockPrivate is a wrapper around the C record GdkFrameClockPrivate.
+/*
+
+C record/class : GdkFrameClockPrivate
+*/
 type FrameClockPrivate struct {
 	native *C.GdkFrameClockPrivate
 }
@@ -1140,7 +1290,16 @@ func (recv *FrameClockPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// FrameTimings is a wrapper around the C record GdkFrameTimings.
+// A #GdkFrameTimings object holds timing information for a single frame
+// of the application’s displays. To retrieve #GdkFrameTimings objects,
+// use gdk_frame_clock_get_timings() or gdk_frame_clock_get_current_timings().
+// The information in #GdkFrameTimings is useful for precise synchronization
+// of video with the event or audio streams, and for measuring
+// quality metrics for the application’s display, such as latency and jitter.
+/*
+
+C record/class : GdkFrameTimings
+*/
 type FrameTimings struct {
 	native *C.GdkFrameTimings
 }
@@ -1175,7 +1334,65 @@ func (recv *FrameTimings) GetFrameTime() int64 {
 	return retGo
 }
 
-// Geometry is a wrapper around the C record GdkGeometry.
+// The #GdkGeometry struct gives the window manager information about
+// a window’s geometry constraints. Normally you would set these on
+// the GTK+ level using gtk_window_set_geometry_hints(). #GtkWindow
+// then sets the hints on the #GdkWindow it creates.
+//
+// gdk_window_set_geometry_hints() expects the hints to be fully valid already
+// and simply passes them to the window manager; in contrast,
+// gtk_window_set_geometry_hints() performs some interpretation. For example,
+// #GtkWindow will apply the hints to the geometry widget instead of the
+// toplevel window, if you set a geometry widget. Also, the
+// @min_width/@min_height/@max_width/@max_height fields may be set to -1, and
+// #GtkWindow will substitute the size request of the window or geometry widget.
+// If the minimum size hint is not provided, #GtkWindow will use its requisition
+// as the minimum size. If the minimum size is provided and a geometry widget is
+// set, #GtkWindow will take the minimum size as the minimum size of the
+// geometry widget rather than the entire window. The base size is treated
+// similarly.
+//
+// The canonical use-case for gtk_window_set_geometry_hints() is to get a
+// terminal widget to resize properly. Here, the terminal text area should be
+// the geometry widget; #GtkWindow will then automatically set the base size to
+// the size of other widgets in the terminal window, such as the menubar and
+// scrollbar. Then, the @width_inc and @height_inc fields should be set to the
+// size of one character in the terminal. Finally, the base size should be set
+// to the size of one character. The net effect is that the minimum size of the
+// terminal will have a 1x1 character terminal area, and only terminal sizes on
+// the “character grid” will be allowed.
+//
+// Here’s an example of how the terminal example would be implemented, assuming
+// a terminal area widget called “terminal” and a toplevel window “toplevel”:
+//
+// |[<!-- language="C" -->
+// GdkGeometry hints;
+//
+// hints.base_width = terminal->char_width;
+// hints.base_height = terminal->char_height;
+// hints.min_width = terminal->char_width;
+// hints.min_height = terminal->char_height;
+// hints.width_inc = terminal->char_width;
+// hints.height_inc = terminal->char_height;
+//
+// gtk_window_set_geometry_hints (GTK_WINDOW (toplevel),
+// GTK_WIDGET (terminal),
+// &hints,
+// GDK_HINT_RESIZE_INC |
+// GDK_HINT_MIN_SIZE |
+// GDK_HINT_BASE_SIZE);
+// ]|
+//
+// The other useful fields are the @min_aspect and @max_aspect fields; these
+// contain a width/height ratio as a floating point number. If a geometry widget
+// is set, the aspect applies to the geometry widget rather than the entire
+// window. The most common use of these hints is probably to set @min_aspect and
+// @max_aspect to the same value, thus forcing the window to keep a constant
+// aspect ratio.
+/*
+
+C record/class : GdkGeometry
+*/
 type Geometry struct {
 	native     *C.GdkGeometry
 	MinWidth   int32
@@ -1242,7 +1459,11 @@ func (recv *Geometry) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// KeymapKey is a wrapper around the C record GdkKeymapKey.
+// A #GdkKeymapKey is a hardware key that can be mapped to a keyval.
+/*
+
+C record/class : GdkKeymapKey
+*/
 type KeymapKey struct {
 	native  *C.GdkKeymapKey
 	Keycode uint32
@@ -1277,7 +1498,11 @@ func (recv *KeymapKey) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Point is a wrapper around the C record GdkPoint.
+// Defines the x and y coordinates of a point.
+/*
+
+C record/class : GdkPoint
+*/
 type Point struct {
 	native *C.GdkPoint
 	X      int32
@@ -1308,7 +1533,12 @@ func (recv *Point) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// RGBA is a wrapper around the C record GdkRGBA.
+// A #GdkRGBA is used to represent a (possibly translucent)
+// color, in a way that is compatible with cairo’s notion of color.
+/*
+
+C record/class : GdkRGBA
+*/
 type RGBA struct {
 	native *C.GdkRGBA
 	Red    float64
@@ -1349,7 +1579,11 @@ func (recv *RGBA) ToC() unsafe.Pointer {
 
 // Blacklisted : GdkRectangle
 
-// TimeCoord is a wrapper around the C record GdkTimeCoord.
+// A #GdkTimeCoord stores a single event in a motion history.
+/*
+
+C record/class : GdkTimeCoord
+*/
 type TimeCoord struct {
 	native *C.GdkTimeCoord
 	Time   uint32
@@ -1377,7 +1611,11 @@ func (recv *TimeCoord) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// WindowAttr is a wrapper around the C record GdkWindowAttr.
+// Attributes to use for a newly-created window.
+/*
+
+C record/class : GdkWindowAttr
+*/
 type WindowAttr struct {
 	native    *C.GdkWindowAttr
 	Title     string
@@ -1450,7 +1688,10 @@ func (recv *WindowAttr) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// WindowClass is a wrapper around the C record GdkWindowClass.
+/*
+
+C record/class : GdkWindowClass
+*/
 type WindowClass struct {
 	native *C.GdkWindowClass
 	// parent_class : record
@@ -1484,7 +1725,10 @@ func (recv *WindowClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// WindowRedirect is a wrapper around the C record GdkWindowRedirect.
+/*
+
+C record/class : GdkWindowRedirect
+*/
 type WindowRedirect struct {
 	native *C.GdkWindowRedirect
 }

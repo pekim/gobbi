@@ -13,7 +13,12 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// Context is a wrapper around the C record PangoContext.
+// The #PangoContext structure stores global information
+// used to control the itemization process.
+/*
+
+C record/class : PangoContext
+*/
 type Context struct {
 	native *C.PangoContext
 }
@@ -234,7 +239,16 @@ func (recv *Context) SetLanguage(language *Language) {
 
 // Blacklisted : PangoEngine
 
-// EngineLang is a wrapper around the C record PangoEngineLang.
+// The #PangoEngineLang class is implemented by engines that
+// customize the rendering-system independent part of the
+// Pango pipeline for a particular script or language. For
+// instance, a custom #PangoEngineLang could be provided for
+// Thai to implement the dictionary-based word boundary
+// lookups needed for that language.
+/*
+
+C record/class : PangoEngineLang
+*/
 type EngineLang struct {
 	native *C.PangoEngineLang
 	// Private : parent_instance
@@ -262,7 +276,18 @@ func CastToEngineLang(object *gobject.Object) *EngineLang {
 	return EngineLangNewFromC(object.ToC())
 }
 
-// EngineShape is a wrapper around the C record PangoEngineShape.
+// The #PangoEngineShape class is implemented by engines that
+// customize the rendering-system dependent part of the
+// Pango pipeline for a particular script or language.
+// A #PangoEngineShape implementation is then specific to both
+// a particular rendering system or group of rendering systems
+// and to a particular script. For instance, there is one
+// #PangoEngineShape implementation to handle shaping Arabic
+// for Fontconfig-based backends.
+/*
+
+C record/class : PangoEngineShape
+*/
 type EngineShape struct {
 	native *C.PangoEngineShape
 	// parent_instance : record
@@ -290,7 +315,22 @@ func CastToEngineShape(object *gobject.Object) *EngineShape {
 	return EngineShapeNewFromC(object.ToC())
 }
 
-// Font is a wrapper around the C record PangoFont.
+// The #PangoFont structure is used to represent
+// a font in a rendering-system-independent matter.
+// To create an implementation of a #PangoFont,
+// the rendering-system specific code should allocate
+// a larger structure that contains a nested
+// #PangoFont, fill in the <structfield>klass</structfield> member of
+// the nested #PangoFont with a pointer to
+// a appropriate #PangoFontClass, then call
+// pango_font_init() on the structure.
+//
+// The #PangoFont structure contains one member
+// which the implementation fills in.
+/*
+
+C record/class : PangoFont
+*/
 type Font struct {
 	native *C.PangoFont
 	// parent_instance : record
@@ -406,7 +446,12 @@ func (recv *Font) GetGlyphExtents(glyph Glyph) (*Rectangle, *Rectangle) {
 
 // Unsupported : pango_font_get_metrics : return type : Blacklisted record : PangoFontMetrics
 
-// FontFace is a wrapper around the C record PangoFontFace.
+// The #PangoFontFace structure is used to represent a group of fonts with
+// the same family, slant, weight, width, but varying sizes.
+/*
+
+C record/class : PangoFontFace
+*/
 type FontFace struct {
 	native *C.PangoFontFace
 	// parent_instance : record
@@ -468,7 +513,13 @@ func (recv *FontFace) GetFaceName() string {
 	return retGo
 }
 
-// FontFamily is a wrapper around the C record PangoFontFamily.
+// The #PangoFontFamily structure is used to represent a family of related
+// font faces. The faces in a family share a common design, but differ in
+// slant, weight, width and other aspects.
+/*
+
+C record/class : PangoFontFamily
+*/
 type FontFamily struct {
 	native *C.PangoFontFamily
 	// parent_instance : record
@@ -517,7 +568,21 @@ func (recv *FontFamily) GetName() string {
 
 // Unsupported : pango_font_family_list_faces : unsupported parameter faces : output array param faces
 
-// FontMap is a wrapper around the C record PangoFontMap.
+// The #PangoFontMap represents the set of fonts available for a
+// particular rendering system. This is a virtual object with
+// implementations being specific to particular rendering systems.  To
+// create an implementation of a #PangoFontMap, the rendering-system
+// specific code should allocate a larger structure that contains a nested
+// #PangoFontMap, fill in the <structfield>klass</structfield> member of the nested #PangoFontMap with a
+// pointer to a appropriate #PangoFontMapClass, then call
+// pango_font_map_init() on the structure.
+//
+// The #PangoFontMap structure contains one member which the implementation
+// fills in.
+/*
+
+C record/class : PangoFontMap
+*/
 type FontMap struct {
 	native *C.PangoFontMap
 	// parent_instance : record
@@ -612,7 +677,16 @@ func (recv *FontMap) LoadFontset(context *Context, desc *FontDescription, langua
 	return retGo
 }
 
-// Fontset is a wrapper around the C record PangoFontset.
+// A #PangoFontset represents a set of #PangoFont to use
+// when rendering text. It is the result of resolving a
+// #PangoFontDescription against a particular #PangoContext.
+// It has operations for finding the component font for
+// a particular Unicode character, and for finding a composite
+// set of metrics for the entire fontset.
+/*
+
+C record/class : PangoFontset
+*/
 type Fontset struct {
 	native *C.PangoFontset
 	// parent_instance : record
@@ -664,7 +738,30 @@ func (recv *Fontset) GetFont(wc uint32) *Font {
 
 // Blacklisted : PangoFontsetSimple
 
-// Layout is a wrapper around the C record PangoLayout.
+// The #PangoLayout structure represents an entire paragraph
+// of text. It is initialized with a #PangoContext, UTF-8 string
+// and set of attributes for that string. Once that is done, the
+// set of formatted lines can be extracted from the object,
+// the layout can be rendered, and conversion between logical
+// character positions within the layout's text, and the physical
+// position of the resulting glyphs can be made.
+//
+// There are also a number of parameters to adjust the formatting
+// of a #PangoLayout, which are illustrated in <xref linkend="parameters"/>.
+// It is possible, as well, to ignore the 2-D setup, and simply
+// treat the results of a #PangoLayout as a list of lines.
+//
+// <figure id="parameters">
+// <title>Adjustable parameters for a PangoLayout</title>
+// <graphic fileref="layout.gif" format="GIF"></graphic>
+// </figure>
+//
+// The #PangoLayout structure is opaque, and has no user-visible
+// fields.
+/*
+
+C record/class : PangoLayout
+*/
 type Layout struct {
 	native *C.PangoLayout
 }

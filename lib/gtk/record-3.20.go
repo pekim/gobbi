@@ -12,7 +12,10 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// FileChooserNativeClass is a wrapper around the C record GtkFileChooserNativeClass.
+/*
+
+C record/class : GtkFileChooserNativeClass
+*/
 type FileChooserNativeClass struct {
 	native *C.GtkFileChooserNativeClass
 	// parent_class : record
@@ -34,7 +37,10 @@ func (recv *FileChooserNativeClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// NativeDialogClass is a wrapper around the C record GtkNativeDialogClass.
+/*
+
+C record/class : GtkNativeDialogClass
+*/
 type NativeDialogClass struct {
 	native *C.GtkNativeDialogClass
 	// parent_class : record
@@ -63,7 +69,11 @@ func (recv *NativeDialogClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// PadActionEntry is a wrapper around the C record GtkPadActionEntry.
+// Struct defining a pad action entry.
+/*
+
+C record/class : GtkPadActionEntry
+*/
 type PadActionEntry struct {
 	native     *C.GtkPadActionEntry
 	Type       PadActionType
@@ -106,7 +116,10 @@ func (recv *PadActionEntry) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// PadControllerClass is a wrapper around the C record GtkPadControllerClass.
+/*
+
+C record/class : GtkPadControllerClass
+*/
 type PadControllerClass struct {
 	native *C.GtkPadControllerClass
 }
@@ -127,7 +140,10 @@ func (recv *PadControllerClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ShortcutLabelClass is a wrapper around the C record GtkShortcutLabelClass.
+/*
+
+C record/class : GtkShortcutLabelClass
+*/
 type ShortcutLabelClass struct {
 	native *C.GtkShortcutLabelClass
 }
@@ -148,7 +164,10 @@ func (recv *ShortcutLabelClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ShortcutsGroupClass is a wrapper around the C record GtkShortcutsGroupClass.
+/*
+
+C record/class : GtkShortcutsGroupClass
+*/
 type ShortcutsGroupClass struct {
 	native *C.GtkShortcutsGroupClass
 }
@@ -169,7 +188,10 @@ func (recv *ShortcutsGroupClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ShortcutsSectionClass is a wrapper around the C record GtkShortcutsSectionClass.
+/*
+
+C record/class : GtkShortcutsSectionClass
+*/
 type ShortcutsSectionClass struct {
 	native *C.GtkShortcutsSectionClass
 }
@@ -190,7 +212,10 @@ func (recv *ShortcutsSectionClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ShortcutsShortcutClass is a wrapper around the C record GtkShortcutsShortcutClass.
+/*
+
+C record/class : GtkShortcutsShortcutClass
+*/
 type ShortcutsShortcutClass struct {
 	native *C.GtkShortcutsShortcutClass
 }
@@ -211,7 +236,10 @@ func (recv *ShortcutsShortcutClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ShortcutsWindowClass is a wrapper around the C record GtkShortcutsWindowClass.
+/*
+
+C record/class : GtkShortcutsWindowClass
+*/
 type ShortcutsWindowClass struct {
 	native *C.GtkShortcutsWindowClass
 	// parent_class : record

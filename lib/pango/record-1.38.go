@@ -10,7 +10,12 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// AttrFontFeatures is a wrapper around the C record PangoAttrFontFeatures.
+// The #PangoAttrFontFeatures structure is used to represent OpenType
+// font features as an attribute.
+/*
+
+C record/class : PangoAttrFontFeatures
+*/
 type AttrFontFeatures struct {
 	native *C.PangoAttrFontFeatures
 	// attr : record

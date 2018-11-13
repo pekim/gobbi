@@ -11,7 +11,11 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Array is a wrapper around the C record GArray.
+// Contains the public fields of a GArray.
+/*
+
+C record/class : GArray
+*/
 type Array struct {
 	native *C.GArray
 	Data   string
@@ -42,7 +46,13 @@ func (recv *Array) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// AsyncQueue is a wrapper around the C record GAsyncQueue.
+// The GAsyncQueue struct is an opaque data structure which represents
+// an asynchronous queue. It should only be accessed through the
+// g_async_queue_* functions.
+/*
+
+C record/class : GAsyncQueue
+*/
 type AsyncQueue struct {
 	native *C.GAsyncQueue
 }
@@ -359,7 +369,12 @@ func (recv *AsyncQueue) UnrefAndUnlock() {
 	return
 }
 
-// BookmarkFile is a wrapper around the C record GBookmarkFile.
+// The `GBookmarkFile` structure contains only
+// private data and should not be directly accessed.
+/*
+
+C record/class : GBookmarkFile
+*/
 type BookmarkFile struct {
 	native *C.GBookmarkFile
 }
@@ -382,7 +397,75 @@ func (recv *BookmarkFile) ToC() unsafe.Pointer {
 
 // Blacklisted : GByteArray
 
-// Cond is a wrapper around the C record GCond.
+// The #GCond struct is an opaque data structure that represents a
+// condition. Threads can block on a #GCond if they find a certain
+// condition to be false. If other threads change the state of this
+// condition they signal the #GCond, and that causes the waiting
+// threads to be woken up.
+//
+// Consider the following example of a shared variable.  One or more
+// threads can wait for data to be published to the variable and when
+// another thread publishes the data, it can signal one of the waiting
+// threads to wake up to collect the data.
+//
+// Here is an example for using GCond to block a thread until a condition
+// is satisfied:
+// |[<!-- language="C" -->
+// gpointer current_data = NULL;
+// GMutex data_mutex;
+// GCond data_cond;
+//
+// void
+// push_data (gpointer data)
+// {
+// g_mutex_lock (&data_mutex);
+// current_data = data;
+// g_cond_signal (&data_cond);
+// g_mutex_unlock (&data_mutex);
+// }
+//
+// gpointer
+// pop_data (void)
+// {
+// gpointer data;
+//
+// g_mutex_lock (&data_mutex);
+// while (!current_data)
+// g_cond_wait (&data_cond, &data_mutex);
+// data = current_data;
+// current_data = NULL;
+// g_mutex_unlock (&data_mutex);
+//
+// return data;
+// }
+// ]|
+// Whenever a thread calls pop_data() now, it will wait until
+// current_data is non-%NULL, i.e. until some other thread
+// has called push_data().
+//
+// The example shows that use of a condition variable must always be
+// paired with a mutex.  Without the use of a mutex, there would be a
+// race between the check of @current_data by the while loop in
+// pop_data() and waiting. Specifically, another thread could set
+// @current_data after the check, and signal the cond (with nobody
+// waiting on it) before the first thread goes to sleep. #GCond is
+// specifically useful for its ability to release the mutex and go
+// to sleep atomically.
+//
+// It is also important to use the g_cond_wait() and g_cond_wait_until()
+// functions only inside a loop which checks for the condition to be
+// true.  See g_cond_wait() for an explanation of why the condition may
+// not be true even after it returns.
+//
+// If a #GCond is allocated in static storage then it can be used
+// without initialisation.  Otherwise, you should call g_cond_init()
+// on it and g_cond_clear() when done.
+//
+// A #GCond should only be accessed via the g_cond_ functions.
+/*
+
+C record/class : GCond
+*/
 type Cond struct {
 	native *C.GCond
 	// Private : p
@@ -435,7 +518,13 @@ func (recv *Cond) Signal() {
 
 // Unsupported : g_cond_wait : unsupported parameter mutex : no type generator for Mutex (GMutex*) for param mutex
 
-// Data is a wrapper around the C record GData.
+// The #GData struct is an opaque data structure to represent a
+// [Keyed Data List][glib-Keyed-Data-Lists]. It should only be
+// accessed via the following functions.
+/*
+
+C record/class : GData
+*/
 type Data struct {
 	native *C.GData
 }
@@ -456,7 +545,21 @@ func (recv *Data) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Date is a wrapper around the C record GDate.
+// Represents a day between January 1, Year 1 and a few thousand years in
+// the future. None of its members should be accessed directly.
+//
+// If the #GDate-struct is obtained from g_date_new(), it will be safe
+// to mutate but invalid and thus not safe for calendrical computations.
+//
+// If it's declared on the stack, it will contain garbage so must be
+// initialized with g_date_clear(). g_date_clear() makes the date invalid
+// but sane. An invalid date doesn't represent a day, it's "empty." A date
+// becomes valid after you set it to a Julian day or you set a day, month,
+// and year.
+/*
+
+C record/class : GDate
+*/
 type Date struct {
 	native *C.GDate
 	// Bitfield not supported : 32 julian_days
@@ -995,7 +1098,12 @@ func (recv *Date) Valid() bool {
 	return retGo
 }
 
-// DebugKey is a wrapper around the C record GDebugKey.
+// Associates a string with a bit flag.
+// Used in g_parse_debug_string().
+/*
+
+C record/class : GDebugKey
+*/
 type DebugKey struct {
 	native *C.GDebugKey
 	Key    string
@@ -1026,7 +1134,11 @@ func (recv *DebugKey) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Dir is a wrapper around the C record GDir.
+// An opaque structure representing an opened directory.
+/*
+
+C record/class : GDir
+*/
 type Dir struct {
 	native *C.GDir
 }
@@ -1094,7 +1206,12 @@ func (recv *Dir) Rewind() {
 	return
 }
 
-// Error is a wrapper around the C record GError.
+// The `GError` structure contains information about
+// an error that has occurred.
+/*
+
+C record/class : GError
+*/
 type Error struct {
 	native  *C.GError
 	Domain  Quark
@@ -1201,7 +1318,13 @@ func (recv *Error) Matches(domain Quark, code int32) bool {
 	return retGo
 }
 
-// HashTable is a wrapper around the C record GHashTable.
+// The #GHashTable struct is an opaque data structure to represent a
+// [Hash Table][glib-Hash-Tables]. It should only be accessed via the
+// following functions.
+/*
+
+C record/class : GHashTable
+*/
 type HashTable struct {
 	native *C.GHashTable
 }
@@ -1222,7 +1345,14 @@ func (recv *HashTable) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// HashTableIter is a wrapper around the C record GHashTableIter.
+// A GHashTableIter structure represents an iterator that can be used
+// to iterate over the elements of a #GHashTable. GHashTableIter
+// structures are typically allocated on the stack and then initialized
+// with g_hash_table_iter_init().
+/*
+
+C record/class : GHashTableIter
+*/
 type HashTableIter struct {
 	native *C.GHashTableIter
 	// Private : dummy1
@@ -1249,7 +1379,11 @@ func (recv *HashTableIter) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Hook is a wrapper around the C record GHook.
+// The #GHook struct represents a single hook function in a #GHookList.
+/*
+
+C record/class : GHook
+*/
 type Hook struct {
 	native *C.GHook
 	Data   uintptr
@@ -1313,7 +1447,11 @@ func (recv *Hook) CompareIds(sibling *Hook) int32 {
 	return retGo
 }
 
-// HookList is a wrapper around the C record GHookList.
+// The #GHookList struct represents a list of hook functions.
+/*
+
+C record/class : GHookList
+*/
 type HookList struct {
 	native *C.GHookList
 	SeqId  uint64
@@ -1411,7 +1549,12 @@ func (recv *HookList) InvokeCheck(mayRecurse bool) {
 
 // Blacklisted : GIOChannel
 
-// IOFuncs is a wrapper around the C record GIOFuncs.
+// A table of functions used to handle different types of #GIOChannel
+// in a generic way.
+/*
+
+C record/class : GIOFuncs
+*/
 type IOFuncs struct {
 	native *C.GIOFuncs
 	// no type for io_read
@@ -1440,7 +1583,12 @@ func (recv *IOFuncs) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// KeyFile is a wrapper around the C record GKeyFile.
+// The GKeyFile struct contains only private data
+// and should not be accessed directly.
+/*
+
+C record/class : GKeyFile
+*/
 type KeyFile struct {
 	native *C.GKeyFile
 }
@@ -1461,7 +1609,11 @@ func (recv *KeyFile) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// List is a wrapper around the C record GList.
+// The #GList struct is used for each element in a doubly-linked list.
+/*
+
+C record/class : GList
+*/
 type List struct {
 	native *C.GList
 	Data   uintptr
@@ -1490,7 +1642,12 @@ func (recv *List) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// MainContext is a wrapper around the C record GMainContext.
+// The `GMainContext` struct is an opaque data
+// type representing a set of sources to be handled in a main loop.
+/*
+
+C record/class : GMainContext
+*/
 type MainContext struct {
 	native *C.GMainContext
 }
@@ -1799,7 +1956,12 @@ func (recv *MainContext) Wakeup() {
 	return
 }
 
-// MainLoop is a wrapper around the C record GMainLoop.
+// The `GMainLoop` struct is an opaque data type
+// representing the main event loop of a GLib or GTK+ application.
+/*
+
+C record/class : GMainLoop
+*/
 type MainLoop struct {
 	native *C.GMainLoop
 }
@@ -1917,7 +2079,13 @@ func (recv *MainLoop) Unref() {
 	return
 }
 
-// MappedFile is a wrapper around the C record GMappedFile.
+// The #GMappedFile represents a file mapping created with
+// g_mapped_file_new(). It has only private members and should
+// not be accessed directly.
+/*
+
+C record/class : GMappedFile
+*/
 type MappedFile struct {
 	native *C.GMappedFile
 }
@@ -1954,7 +2122,15 @@ func (recv *MappedFile) Unref() {
 	return
 }
 
-// MarkupParseContext is a wrapper around the C record GMarkupParseContext.
+// A parse context is used to parse a stream of bytes that
+// you expect to contain marked-up text.
+//
+// See g_markup_parse_context_new(), #GMarkupParser, and so
+// on for more details.
+/*
+
+C record/class : GMarkupParseContext
+*/
 type MarkupParseContext struct {
 	native *C.GMarkupParseContext
 }
@@ -2065,7 +2241,17 @@ func (recv *MarkupParseContext) Parse(text string, textLen int64) (bool, error) 
 	return retGo, goThrowableError
 }
 
-// MarkupParser is a wrapper around the C record GMarkupParser.
+// Any of the fields in #GMarkupParser can be %NULL, in which case they
+// will be ignored. Except for the @error function, any of these callbacks
+// can set an error; in particular the %G_MARKUP_ERROR_UNKNOWN_ELEMENT,
+// %G_MARKUP_ERROR_UNKNOWN_ATTRIBUTE, and %G_MARKUP_ERROR_INVALID_CONTENT
+// errors are intended to be set from these callbacks. If you set an error
+// from a callback, g_markup_parse_context_parse() will report that error
+// back to its caller.
+/*
+
+C record/class : GMarkupParser
+*/
 type MarkupParser struct {
 	native *C.GMarkupParser
 	// no type for start_element
@@ -2091,7 +2277,12 @@ func (recv *MarkupParser) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// MatchInfo is a wrapper around the C record GMatchInfo.
+// A GMatchInfo is an opaque struct used to return information about
+// matches.
+/*
+
+C record/class : GMatchInfo
+*/
 type MatchInfo struct {
 	native *C.GMatchInfo
 }
@@ -2112,7 +2303,15 @@ func (recv *MatchInfo) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// MemVTable is a wrapper around the C record GMemVTable.
+// A set of functions used to perform memory allocation. The same #GMemVTable must
+// be used for all allocations in the same program; a call to g_mem_set_vtable(),
+// if it exists, should be prior to any use of GLib.
+//
+// This functions related to this has been deprecated in 2.46, and no longer work.
+/*
+
+C record/class : GMemVTable
+*/
 type MemVTable struct {
 	native *C.GMemVTable
 	// no type for malloc
@@ -2139,7 +2338,11 @@ func (recv *MemVTable) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Node is a wrapper around the C record GNode.
+// The #GNode struct represents one node in a [n-ary tree][glib-N-ary-Trees].
+/*
+
+C record/class : GNode
+*/
 type Node struct {
 	native *C.GNode
 	Data   uintptr
@@ -2512,7 +2715,13 @@ func (recv *Node) Unlink() {
 	return
 }
 
-// OptionContext is a wrapper around the C record GOptionContext.
+// A `GOptionContext` struct defines which options
+// are accepted by the commandline option parser. The struct has only private
+// fields and should not be directly accessed.
+/*
+
+C record/class : GOptionContext
+*/
 type OptionContext struct {
 	native *C.GOptionContext
 }
@@ -2533,7 +2742,13 @@ func (recv *OptionContext) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// OptionEntry is a wrapper around the C record GOptionEntry.
+// A GOptionEntry struct defines a single option. To have an effect, they
+// must be added to a #GOptionGroup with g_option_context_add_main_entries()
+// or g_option_group_add_entries().
+/*
+
+C record/class : GOptionEntry
+*/
 type OptionEntry struct {
 	native         *C.GOptionEntry
 	LongName       string
@@ -2584,7 +2799,17 @@ func (recv *OptionEntry) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// OptionGroup is a wrapper around the C record GOptionGroup.
+// A `GOptionGroup` struct defines the options in a single
+// group. The struct has only private fields and should not be directly accessed.
+//
+// All options in a group share the same translation function. Libraries which
+// need to parse commandline options are expected to provide a function for
+// getting a `GOptionGroup` holding their options, which
+// the application can then add to its #GOptionContext.
+/*
+
+C record/class : GOptionGroup
+*/
 type OptionGroup struct {
 	native *C.GOptionGroup
 }
@@ -2605,7 +2830,12 @@ func (recv *OptionGroup) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// PatternSpec is a wrapper around the C record GPatternSpec.
+// A GPatternSpec struct is the 'compiled' form of a pattern. This
+// structure is opaque and its fields cannot be accessed directly.
+/*
+
+C record/class : GPatternSpec
+*/
 type PatternSpec struct {
 	native *C.GPatternSpec
 }
@@ -2655,7 +2885,12 @@ func (recv *PatternSpec) Free() {
 	return
 }
 
-// PollFD is a wrapper around the C record GPollFD.
+// Represents a file descriptor, which events to poll for, and which events
+// occurred.
+/*
+
+C record/class : GPollFD
+*/
 type PollFD struct {
 	native  *C.GPollFD
 	Fd      int32
@@ -2690,7 +2925,27 @@ func (recv *PollFD) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Private is a wrapper around the C record GPrivate.
+// The #GPrivate struct is an opaque data structure to represent a
+// thread-local data key. It is approximately equivalent to the
+// pthread_setspecific()/pthread_getspecific() APIs on POSIX and to
+// TlsSetValue()/TlsGetValue() on Windows.
+//
+// If you don't already know why you might want this functionality,
+// then you probably don't need it.
+//
+// #GPrivate is a very limited resource (as far as 128 per program,
+// shared between all libraries). It is also not possible to destroy a
+// #GPrivate after it has been used. As such, it is only ever acceptable
+// to use #GPrivate in static scope, and even then sparingly so.
+//
+// See G_PRIVATE_INIT() for a couple of examples.
+//
+// The #GPrivate structure should be considered opaque.  It should only
+// be accessed via the g_private_ functions.
+/*
+
+C record/class : GPrivate
+*/
 type Private struct {
 	native *C.GPrivate
 	// Private : p
@@ -2749,7 +3004,12 @@ func (recv *Private) Set(value uintptr) {
 
 // Blacklisted : GPtrArray
 
-// Queue is a wrapper around the C record GQueue.
+// Contains the public fields of a
+// [Queue][glib-Double-ended-Queues].
+/*
+
+C record/class : GQueue
+*/
 type Queue struct {
 	native *C.GQueue
 	// head : record
@@ -2936,7 +3196,12 @@ func (recv *Queue) PushTailLink(link *List) {
 	return
 }
 
-// Rand is a wrapper around the C record GRand.
+// The GRand struct is an opaque data structure. It should only be
+// accessed through the g_rand_* functions.
+/*
+
+C record/class : GRand
+*/
 type Rand struct {
 	native *C.GRand
 }
@@ -3041,7 +3306,12 @@ func (recv *Rand) SetSeed(seed uint32) {
 	return
 }
 
-// SList is a wrapper around the C record GSList.
+// The #GSList struct is used for each element in the singly-linked
+// list.
+/*
+
+C record/class : GSList
+*/
 type SList struct {
 	native *C.GSList
 	Data   uintptr
@@ -3069,7 +3339,24 @@ func (recv *SList) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Scanner is a wrapper around the C record GScanner.
+// The data structure representing a lexical scanner.
+//
+// You should set @input_name after creating the scanner, since
+// it is used by the default message handler when displaying
+// warnings and errors. If you are scanning a file, the filename
+// would be a good choice.
+//
+// The @user_data and @max_parse_errors fields are not used.
+// If you need to associate extra data with the scanner you
+// can place them here.
+//
+// If you want to use your own message handler you can set the
+// @msg_handler field. The type of the message handler function
+// is declared by #GScannerMsgFunc.
+/*
+
+C record/class : GScanner
+*/
 type Scanner struct {
 	native         *C.GScanner
 	UserData       uintptr
@@ -3412,7 +3699,13 @@ func (recv *Scanner) UnexpToken(expectedToken TokenType, identifierSpec string, 
 
 // Unsupported : g_scanner_warn : unsupported parameter ... : varargs
 
-// ScannerConfig is a wrapper around the C record GScannerConfig.
+// Specifies the #GScanner parser configuration. Most settings can
+// be changed during the parsing phase and will affect the lexical
+// parsing of the next unpeeked token.
+/*
+
+C record/class : GScannerConfig
+*/
 type ScannerConfig struct {
 	native              *C.GScannerConfig
 	CsetSkipCharacters  string
@@ -3474,7 +3767,12 @@ func (recv *ScannerConfig) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Sequence is a wrapper around the C record GSequence.
+// The #GSequence struct is an opaque data type representing a
+// [sequence][glib-Sequences] data type.
+/*
+
+C record/class : GSequence
+*/
 type Sequence struct {
 	native *C.GSequence
 }
@@ -3495,7 +3793,12 @@ func (recv *Sequence) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// SequenceIter is a wrapper around the C record GSequenceIter.
+// The #GSequenceIter struct is an opaque data type representing an
+// iterator pointing into a #GSequence.
+/*
+
+C record/class : GSequenceIter
+*/
 type SequenceIter struct {
 	native *C.GSequenceIter
 }
@@ -3516,7 +3819,12 @@ func (recv *SequenceIter) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Source is a wrapper around the C record GSource.
+// The `GSource` struct is an opaque data type
+// representing an event source.
+/*
+
+C record/class : GSource
+*/
 type Source struct {
 	native *C.GSource
 	// Private : callback_data
@@ -3839,7 +4147,12 @@ func (recv *Source) Unref() {
 	return
 }
 
-// SourceCallbackFuncs is a wrapper around the C record GSourceCallbackFuncs.
+// The `GSourceCallbackFuncs` struct contains
+// functions for managing callback objects.
+/*
+
+C record/class : GSourceCallbackFuncs
+*/
 type SourceCallbackFuncs struct {
 	native *C.GSourceCallbackFuncs
 	// no type for ref
@@ -3863,7 +4176,30 @@ func (recv *SourceCallbackFuncs) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// SourceFuncs is a wrapper around the C record GSourceFuncs.
+// The `GSourceFuncs` struct contains a table of
+// functions used to handle event sources in a generic manner.
+//
+// For idle sources, the prepare and check functions always return %TRUE
+// to indicate that the source is always ready to be processed. The prepare
+// function also returns a timeout value of 0 to ensure that the poll() call
+// doesn't block (since that would be time wasted which could have been spent
+// running the idle function).
+//
+// For timeout sources, the prepare and check functions both return %TRUE
+// if the timeout interval has expired. The prepare function also returns
+// a timeout value to ensure that the poll() call doesn't block too long
+// and miss the next timeout.
+//
+// For file descriptor sources, the prepare function typically returns %FALSE,
+// since it must wait until poll() has been called before it knows whether
+// any events need to be processed. It sets the returned timeout to -1 to
+// indicate that it doesn't mind how long the poll() call blocks. In the
+// check function, it tests the results of the poll() call to see if the
+// required condition has been met, and returns %TRUE if so.
+/*
+
+C record/class : GSourceFuncs
+*/
 type SourceFuncs struct {
 	native *C.GSourceFuncs
 	// no type for prepare
@@ -3890,7 +4226,10 @@ func (recv *SourceFuncs) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// SourcePrivate is a wrapper around the C record GSourcePrivate.
+/*
+
+C record/class : GSourcePrivate
+*/
 type SourcePrivate struct {
 	native *C.GSourcePrivate
 }
@@ -3911,7 +4250,14 @@ func (recv *SourcePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// StatBuf is a wrapper around the C record GStatBuf.
+// A type corresponding to the appropriate struct type for the stat()
+// system call, depending on the platform and/or compiler being used.
+//
+// See g_stat() for more information.
+/*
+
+C record/class : GStatBuf
+*/
 type StatBuf struct {
 	native *C.GStatBuf
 }
@@ -3932,7 +4278,11 @@ func (recv *StatBuf) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// String is a wrapper around the C record GString.
+// The GString struct contains the public fields of a GString.
+/*
+
+C record/class : GString
+*/
 type String struct {
 	native       *C.GString
 	Str          string
@@ -4350,7 +4700,12 @@ func (recv *String) Up() *String {
 	return retGo
 }
 
-// StringChunk is a wrapper around the C record GStringChunk.
+// An opaque data structure representing String Chunks.
+// It should only be accessed by using the following functions.
+/*
+
+C record/class : GStringChunk
+*/
 type StringChunk struct {
 	native *C.GStringChunk
 }
@@ -4438,7 +4793,11 @@ func (recv *StringChunk) InsertConst(string string) string {
 	return retGo
 }
 
-// TestCase is a wrapper around the C record GTestCase.
+// An opaque structure representing a test case.
+/*
+
+C record/class : GTestCase
+*/
 type TestCase struct {
 	native *C.GTestCase
 }
@@ -4459,7 +4818,10 @@ func (recv *TestCase) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TestConfig is a wrapper around the C record GTestConfig.
+/*
+
+C record/class : GTestConfig
+*/
 type TestConfig struct {
 	native          *C.GTestConfig
 	TestInitialized bool
@@ -4510,7 +4872,11 @@ func (recv *TestConfig) ToC() unsafe.Pointer {
 
 // Blacklisted : GTestLogMsg
 
-// TestSuite is a wrapper around the C record GTestSuite.
+// An opaque structure representing a test suite.
+/*
+
+C record/class : GTestSuite
+*/
 type TestSuite struct {
 	native *C.GTestSuite
 }
@@ -4531,7 +4897,23 @@ func (recv *TestSuite) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Thread is a wrapper around the C record GThread.
+// The #GThread struct represents a running thread. This struct
+// is returned by g_thread_new() or g_thread_try_new(). You can
+// obtain the #GThread struct representing the current thread by
+// calling g_thread_self().
+//
+// GThread is refcounted, see g_thread_ref() and g_thread_unref().
+// The thread represented by it holds a reference while it is running,
+// and g_thread_join() consumes the reference that it is given, so
+// it is normally not necessary to manage GThread references
+// explicitly.
+//
+// The structure is opaque -- none of its fields may be directly
+// accessed.
+/*
+
+C record/class : GThread
+*/
 type Thread struct {
 	native *C.GThread
 }
@@ -4579,7 +4961,13 @@ func (recv *Thread) Join() uintptr {
 	return retGo
 }
 
-// ThreadPool is a wrapper around the C record GThreadPool.
+// The #GThreadPool struct represents a thread pool. It has three
+// public read-only members, but the underlying struct is bigger,
+// so you must not copy this struct.
+/*
+
+C record/class : GThreadPool
+*/
 type ThreadPool struct {
 	native *C.GThreadPool
 	// _func : no type generator for Func, GFunc
@@ -4751,7 +5139,17 @@ func (recv *ThreadPool) Unprocessed() uint32 {
 	return retGo
 }
 
-// TimeVal is a wrapper around the C record GTimeVal.
+// Represents a precise time, with seconds and microseconds.
+// Similar to the struct timeval returned by the gettimeofday()
+// UNIX system call.
+//
+// GLib is attempting to unify around the use of 64bit integers to
+// represent microsecond-precision time. As such, this type will be
+// removed from a future version of GLib.
+/*
+
+C record/class : GTimeVal
+*/
 type TimeVal struct {
 	native *C.GTimeVal
 	TvSec  int64
@@ -4796,7 +5194,11 @@ func (recv *TimeVal) Add(microseconds int64) {
 	return
 }
 
-// Timer is a wrapper around the C record GTimer.
+// Opaque datatype that records a start time.
+/*
+
+C record/class : GTimer
+*/
 type Timer struct {
 	native *C.GTimer
 }
@@ -4886,7 +5288,12 @@ func (recv *Timer) Stop() {
 	return
 }
 
-// TrashStack is a wrapper around the C record GTrashStack.
+// Each piece of memory that is pushed onto the stack
+// is cast to a GTrashStack*.
+/*
+
+C record/class : GTrashStack
+*/
 type TrashStack struct {
 	native *C.GTrashStack
 	// next : record
@@ -4908,7 +5315,13 @@ func (recv *TrashStack) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Tree is a wrapper around the C record GTree.
+// The GTree struct is an opaque data structure representing a
+// [balanced binary tree][glib-Balanced-Binary-Trees]. It should be
+// accessed only by using the following functions.
+/*
+
+C record/class : GTree
+*/
 type Tree struct {
 	native *C.GTree
 }
@@ -5099,7 +5512,17 @@ func (recv *Tree) Steal(key uintptr) bool {
 
 // Unsupported : g_tree_traverse : unsupported parameter traverse_func : no type generator for TraverseFunc (GTraverseFunc) for param traverse_func
 
-// VariantBuilder is a wrapper around the C record GVariantBuilder.
+// A utility type for constructing container-type #GVariant instances.
+//
+// This is an opaque structure and may only be accessed using the
+// following functions.
+//
+// #GVariantBuilder is not threadsafe in any way.  Do not attempt to
+// access it from more than one thread.
+/*
+
+C record/class : GVariantBuilder
+*/
 type VariantBuilder struct {
 	native *C.GVariantBuilder
 }
@@ -5120,7 +5543,12 @@ func (recv *VariantBuilder) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// VariantIter is a wrapper around the C record GVariantIter.
+// #GVariantIter is an opaque data structure and can only be accessed
+// using the following functions.
+/*
+
+C record/class : GVariantIter
+*/
 type VariantIter struct {
 	native *C.GVariantIter
 	// Private : x

@@ -87,7 +87,39 @@ import (
 */
 import "C"
 
-// Action is a wrapper around the C record GAction.
+// #GAction represents a single named action.
+//
+// The main interface to an action is that it can be activated with
+// g_action_activate().  This results in the 'activate' signal being
+// emitted.  An activation has a #GVariant parameter (which may be
+// %NULL).  The correct type for the parameter is determined by a static
+// parameter type (which is given at construction time).
+//
+// An action may optionally have a state, in which case the state may be
+// set with g_action_change_state().  This call takes a #GVariant.  The
+// correct type for the state is determined by a static state type
+// (which is given at construction time).
+//
+// The state may have a hint associated with it, specifying its valid
+// range.
+//
+// #GAction is merely the interface to the concept of an action, as
+// described above.  Various implementations of actions exist, including
+// #GSimpleAction.
+//
+// In all cases, the implementing class is responsible for storing the
+// name of the action, the parameter type, the enabled state, the
+// optional state type and the state and emitting the appropriate
+// signals when these change.  The implementor is responsible for filtering
+// calls to g_action_activate() and g_action_change_state() for type
+// safety and for the state being enabled.
+//
+// Probably the only useful thing to do with a #GAction is to put it
+// inside of a #GSimpleActionGroup.
+/*
+
+C record/class : GAction
+*/
 type Action struct {
 	native *C.GAction
 }
@@ -108,7 +140,55 @@ func (recv *Action) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ActionGroup is a wrapper around the C record GActionGroup.
+// #GActionGroup represents a group of actions. Actions can be used to
+// expose functionality in a structured way, either from one part of a
+// program to another, or to the outside world. Action groups are often
+// used together with a #GMenuModel that provides additional
+// representation data for displaying the actions to the user, e.g. in
+// a menu.
+//
+// The main way to interact with the actions in a GActionGroup is to
+// activate them with g_action_group_activate_action(). Activating an
+// action may require a #GVariant parameter. The required type of the
+// parameter can be inquired with g_action_group_get_action_parameter_type().
+// Actions may be disabled, see g_action_group_get_action_enabled().
+// Activating a disabled action has no effect.
+//
+// Actions may optionally have a state in the form of a #GVariant. The
+// current state of an action can be inquired with
+// g_action_group_get_action_state(). Activating a stateful action may
+// change its state, but it is also possible to set the state by calling
+// g_action_group_change_action_state().
+//
+// As typical example, consider a text editing application which has an
+// option to change the current font to 'bold'. A good way to represent
+// this would be a stateful action, with a boolean state. Activating the
+// action would toggle the state.
+//
+// Each action in the group has a unique name (which is a string).  All
+// method calls, except g_action_group_list_actions() take the name of
+// an action as an argument.
+//
+// The #GActionGroup API is meant to be the 'public' API to the action
+// group.  The calls here are exactly the interaction that 'external
+// forces' (eg: UI, incoming D-Bus messages, etc.) are supposed to have
+// with actions.  'Internal' APIs (ie: ones meant only to be accessed by
+// the action group implementation) are found on subclasses.  This is
+// why you will find - for example - g_action_group_get_action_enabled()
+// but not an equivalent set() call.
+//
+// Signals are emitted on the action group in response to state changes
+// on individual actions.
+//
+// Implementations of #GActionGroup should provide implementations for
+// the virtual functions g_action_group_list_actions() and
+// g_action_group_query_action().  The other virtual functions should
+// not be implemented - their "wrappers" are actually implemented with
+// calls to g_action_group_query_action().
+/*
+
+C record/class : GActionGroup
+*/
 type ActionGroup struct {
 	native *C.GActionGroup
 }
@@ -129,7 +209,19 @@ func (recv *ActionGroup) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ActionMap is a wrapper around the C record GActionMap.
+// The GActionMap interface is implemented by #GActionGroup
+// implementations that operate by containing a number of
+// named #GAction instances, such as #GSimpleActionGroup.
+//
+// One useful application of this interface is to map the
+// names of actions from various action groups to unique,
+// prefixed names (e.g. by prepending "app." or "win.").
+// This is the motivation for the 'Map' part of the interface
+// name.
+/*
+
+C record/class : GActionMap
+*/
 type ActionMap struct {
 	native *C.GActionMap
 }
@@ -150,7 +242,58 @@ func (recv *ActionMap) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// AppInfo is a wrapper around the C record GAppInfo.
+// #GAppInfo and #GAppLaunchContext are used for describing and launching
+// applications installed on the system.
+//
+// As of GLib 2.20, URIs will always be converted to POSIX paths
+// (using g_file_get_path()) when using g_app_info_launch() even if
+// the application requested an URI and not a POSIX path. For example
+// for an desktop-file based application with Exec key `totem
+// %U` and a single URI, `sftp://foo/file.avi`, then
+// `/home/user/.gvfs/sftp on foo/file.avi` will be passed. This will
+// only work if a set of suitable GIO extensions (such as gvfs 2.26
+// compiled with FUSE support), is available and operational; if this
+// is not the case, the URI will be passed unmodified to the application.
+// Some URIs, such as `mailto:`, of course cannot be mapped to a POSIX
+// path (in gvfs there's no FUSE mount for it); such URIs will be
+// passed unmodified to the application.
+//
+// Specifically for gvfs 2.26 and later, the POSIX URI will be mapped
+// back to the GIO URI in the #GFile constructors (since gvfs
+// implements the #GVfs extension point). As such, if the application
+// needs to examine the URI, it needs to use g_file_get_uri() or
+// similar on #GFile. In other words, an application cannot assume
+// that the URI passed to e.g. g_file_new_for_commandline_arg() is
+// equal to the result of g_file_get_uri(). The following snippet
+// illustrates this:
+//
+// |[
+// GFile *f;
+// char *uri;
+//
+// file = g_file_new_for_commandline_arg (uri_from_commandline);
+//
+// uri = g_file_get_uri (file);
+// strcmp (uri, uri_from_commandline) == 0;
+// g_free (uri);
+//
+// if (g_file_has_uri_scheme (file, "cdda"))
+// {
+// do something special with uri
+// }
+// g_object_unref (file);
+// ]|
+//
+// This code will work when both `cdda://sr0/Track 1.wav` and
+// `/home/user/.gvfs/cdda on sr0/Track 1.wav` is passed to the
+// application. It should be noted that it's generally not safe
+// for applications to rely on the format of a particular URIs.
+// Different launcher applications (e.g. file managers) may have
+// different ideas of what a given URI means.
+/*
+
+C record/class : GAppInfo
+*/
 type AppInfo struct {
 	native *C.GAppInfo
 }
@@ -523,7 +666,94 @@ func (recv *AppInfo) SupportsUris() bool {
 	return retGo
 }
 
-// AsyncResult is a wrapper around the C record GAsyncResult.
+// Provides a base class for implementing asynchronous function results.
+//
+// Asynchronous operations are broken up into two separate operations
+// which are chained together by a #GAsyncReadyCallback. To begin
+// an asynchronous operation, provide a #GAsyncReadyCallback to the
+// asynchronous function. This callback will be triggered when the
+// operation has completed, and must be run in a later iteration of
+// the [thread-default main context][g-main-context-push-thread-default]
+// from where the operation was initiated. It will be passed a
+// #GAsyncResult instance filled with the details of the operation's
+// success or failure, the object the asynchronous function was
+// started for and any error codes returned. The asynchronous callback
+// function is then expected to call the corresponding "_finish()"
+// function, passing the object the function was called for, the
+// #GAsyncResult instance, and (optionally) an @error to grab any
+// error conditions that may have occurred.
+//
+// The "_finish()" function for an operation takes the generic result
+// (of type #GAsyncResult) and returns the specific result that the
+// operation in question yields (e.g. a #GFileEnumerator for a
+// "enumerate children" operation). If the result or error status of the
+// operation is not needed, there is no need to call the "_finish()"
+// function; GIO will take care of cleaning up the result and error
+// information after the #GAsyncReadyCallback returns. You can pass
+// %NULL for the #GAsyncReadyCallback if you don't need to take any
+// action at all after the operation completes. Applications may also
+// take a reference to the #GAsyncResult and call "_finish()" later;
+// however, the "_finish()" function may be called at most once.
+//
+// Example of a typical asynchronous operation flow:
+// |[<!-- language="C" -->
+// void _theoretical_frobnitz_async (Theoretical         *t,
+// GCancellable        *c,
+// GAsyncReadyCallback  cb,
+// gpointer             u);
+//
+// gboolean _theoretical_frobnitz_finish (Theoretical   *t,
+// GAsyncResult  *res,
+// GError       **e);
+//
+// static void
+// frobnitz_result_func (GObject      *source_object,
+// GAsyncResult *res,
+// gpointer      user_data)
+// {
+// gboolean success = FALSE;
+//
+// success = _theoretical_frobnitz_finish (source_object, res, NULL);
+//
+// if (success)
+// g_printf ("Hurray!\n");
+// else
+// g_printf ("Uh oh!\n");
+//
+// ...
+//
+// }
+//
+// int main (int argc, void *argv[])
+// {
+// ...
+//
+// _theoretical_frobnitz_async (theoretical_data,
+// NULL,
+// frobnitz_result_func,
+// NULL);
+//
+// ...
+// }
+// ]|
+//
+// The callback for an asynchronous operation is called only once, and is
+// always called, even in the case of a cancelled operation. On cancellation
+// the result is a %G_IO_ERROR_CANCELLED error.
+//
+// ## I/O Priority # {#io-priority}
+//
+// Many I/O-related asynchronous operations have a priority parameter,
+// which is used in certain cases to determine the order in which
+// operations are executed. They are not used to determine system-wide
+// I/O scheduling. Priorities are integers, with lower numbers indicating
+// higher priority. It is recommended to choose priorities between
+// %G_PRIORITY_LOW and %G_PRIORITY_HIGH, with %G_PRIORITY_DEFAULT
+// as a default.
+/*
+
+C record/class : GAsyncResult
+*/
 type AsyncResult struct {
 	native *C.GAsyncResult
 }
@@ -573,7 +803,14 @@ func (recv *AsyncResult) GetUserData() uintptr {
 	return retGo
 }
 
-// DBusObject is a wrapper around the C record GDBusObject.
+// The #GDBusObject type is the base type for D-Bus objects on both
+// the service side (see #GDBusObjectSkeleton) and the client side
+// (see #GDBusObjectProxy). It is essentially just a container of
+// interfaces.
+/*
+
+C record/class : GDBusObject
+*/
 type DBusObject struct {
 	native *C.GDBusObject
 }
@@ -594,7 +831,17 @@ func (recv *DBusObject) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// DBusObjectManager is a wrapper around the C record GDBusObjectManager.
+// The #GDBusObjectManager type is the base type for service- and
+// client-side implementations of the standardized
+// [org.freedesktop.DBus.ObjectManager](http://dbus.freedesktop.org/doc/dbus-specification.html#standard-interfaces-objectmanager)
+// interface.
+//
+// See #GDBusObjectManagerClient for the client-side implementation
+// and #GDBusObjectManagerServer for the service-side implementation.
+/*
+
+C record/class : GDBusObjectManager
+*/
 type DBusObjectManager struct {
 	native *C.GDBusObjectManager
 }
@@ -615,7 +862,12 @@ func (recv *DBusObjectManager) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// DesktopAppInfoLookup is a wrapper around the C record GDesktopAppInfoLookup.
+// #GDesktopAppInfoLookup is an opaque data structure and can only be accessed
+// using the following functions.
+/*
+
+C record/class : GDesktopAppInfoLookup
+*/
 type DesktopAppInfoLookup struct {
 	native *C.GDesktopAppInfoLookup
 }
@@ -658,7 +910,36 @@ func (recv *DesktopAppInfoLookup) GetDefaultForUriScheme(uriScheme string) *AppI
 	return retGo
 }
 
-// Drive is a wrapper around the C record GDrive.
+// #GDrive - this represent a piece of hardware connected to the machine.
+// It's generally only created for removable hardware or hardware with
+// removable media.
+//
+// #GDrive is a container class for #GVolume objects that stem from
+// the same piece of media. As such, #GDrive abstracts a drive with
+// (or without) removable media and provides operations for querying
+// whether media is available, determining whether media change is
+// automatically detected and ejecting the media.
+//
+// If the #GDrive reports that media isn't automatically detected, one
+// can poll for media; typically one should not do this periodically
+// as a poll for media operation is potententially expensive and may
+// spin up the drive creating noise.
+//
+// #GDrive supports starting and stopping drives with authentication
+// support for the former. This can be used to support a diverse set
+// of use cases including connecting/disconnecting iSCSI devices,
+// powering down external disk enclosures and starting/stopping
+// multi-disk devices such as RAID devices. Note that the actual
+// semantics and side-effects of starting/stopping a #GDrive may vary
+// according to implementation. To choose the correct verbs in e.g. a
+// file manager, use g_drive_get_start_stop_type().
+//
+// For porting from GnomeVFS note that there is no equivalent of
+// #GDrive in that API.
+/*
+
+C record/class : GDrive
+*/
 type Drive struct {
 	native *C.GDrive
 }
@@ -1028,7 +1309,91 @@ func (recv *Drive) PollForMediaFinish(result *AsyncResult) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// File is a wrapper around the C record GFile.
+// #GFile is a high level abstraction for manipulating files on a
+// virtual file system. #GFiles are lightweight, immutable objects
+// that do no I/O upon creation. It is necessary to understand that
+// #GFile objects do not represent files, merely an identifier for a
+// file. All file content I/O is implemented as streaming operations
+// (see #GInputStream and #GOutputStream).
+//
+// To construct a #GFile, you can use:
+// - g_file_new_for_path() if you have a path.
+// - g_file_new_for_uri() if you have a URI.
+// - g_file_new_for_commandline_arg() for a command line argument.
+// - g_file_new_tmp() to create a temporary file from a template.
+// - g_file_parse_name() from a UTF-8 string gotten from g_file_get_parse_name().
+// - g_file_new_build_filename() to create a file from path elements.
+//
+// One way to think of a #GFile is as an abstraction of a pathname. For
+// normal files the system pathname is what is stored internally, but as
+// #GFiles are extensible it could also be something else that corresponds
+// to a pathname in a userspace implementation of a filesystem.
+//
+// #GFiles make up hierarchies of directories and files that correspond to
+// the files on a filesystem. You can move through the file system with
+// #GFile using g_file_get_parent() to get an identifier for the parent
+// directory, g_file_get_child() to get a child within a directory,
+// g_file_resolve_relative_path() to resolve a relative path between two
+// #GFiles. There can be multiple hierarchies, so you may not end up at
+// the same root if you repeatedly call g_file_get_parent() on two different
+// files.
+//
+// All #GFiles have a basename (get with g_file_get_basename()). These names
+// are byte strings that are used to identify the file on the filesystem
+// (relative to its parent directory) and there is no guarantees that they
+// have any particular charset encoding or even make any sense at all. If
+// you want to use filenames in a user interface you should use the display
+// name that you can get by requesting the
+// %G_FILE_ATTRIBUTE_STANDARD_DISPLAY_NAME attribute with g_file_query_info().
+// This is guaranteed to be in UTF-8 and can be used in a user interface.
+// But always store the real basename or the #GFile to use to actually
+// access the file, because there is no way to go from a display name to
+// the actual name.
+//
+// Using #GFile as an identifier has the same weaknesses as using a path
+// in that there may be multiple aliases for the same file. For instance,
+// hard or soft links may cause two different #GFiles to refer to the same
+// file. Other possible causes for aliases are: case insensitive filesystems,
+// short and long names on FAT/NTFS, or bind mounts in Linux. If you want to
+// check if two #GFiles point to the same file you can query for the
+// %G_FILE_ATTRIBUTE_ID_FILE attribute. Note that #GFile does some trivial
+// canonicalization of pathnames passed in, so that trivial differences in
+// the path string used at creation (duplicated slashes, slash at end of
+// path, "." or ".." path segments, etc) does not create different #GFiles.
+//
+// Many #GFile operations have both synchronous and asynchronous versions
+// to suit your application. Asynchronous versions of synchronous functions
+// simply have _async() appended to their function names. The asynchronous
+// I/O functions call a #GAsyncReadyCallback which is then used to finalize
+// the operation, producing a GAsyncResult which is then passed to the
+// function's matching _finish() operation.
+//
+// It is highly recommended to use asynchronous calls when running within a
+// shared main loop, such as in the main thread of an application. This avoids
+// I/O operations blocking other sources on the main loop from being dispatched.
+// Synchronous I/O operations should be performed from worker threads. See the
+// [introduction to asynchronous programming section][async-programming] for
+// more.
+//
+// Some #GFile operations almost always take a noticeable amount of time, and
+// so do not have synchronous analogs. Notable cases include:
+// - g_file_mount_mountable() to mount a mountable file.
+// - g_file_unmount_mountable_with_operation() to unmount a mountable file.
+// - g_file_eject_mountable_with_operation() to eject a mountable file.
+//
+// ## Entity Tags # {#gfile-etag}
+//
+// One notable feature of #GFiles are entity tags, or "etags" for
+// short. Entity tags are somewhat like a more abstract version of the
+// traditional mtime, and can be used to quickly determine if the file
+// has been modified from the version on the file system. See the
+// HTTP 1.1
+// [specification](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)
+// for HTTP Etag headers, which are a very similar concept.
+/*
+
+C record/class : GFile
+*/
 type File struct {
 	native *C.GFile
 }
@@ -2933,7 +3298,16 @@ func (recv *File) UnmountMountableFinish(result *AsyncResult) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// FileDescriptorBased is a wrapper around the C record GFileDescriptorBased.
+// #GFileDescriptorBased is implemented by streams (implementations of
+// #GInputStream or #GOutputStream) that are based on file descriptors.
+//
+// Note that `<gio/gfiledescriptorbased.h>` belongs to the UNIX-specific
+// GIO interfaces, thus you have to use the `gio-unix-2.0.pc` pkg-config
+// file when using it.
+/*
+
+C record/class : GFileDescriptorBased
+*/
 type FileDescriptorBased struct {
 	native *C.GFileDescriptorBased
 }
@@ -2954,7 +3328,38 @@ func (recv *FileDescriptorBased) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Icon is a wrapper around the C record GIcon.
+// #GIcon is a very minimal interface for icons. It provides functions
+// for checking the equality of two icons, hashing of icons and
+// serializing an icon to and from strings.
+//
+// #GIcon does not provide the actual pixmap for the icon as this is out
+// of GIO's scope, however implementations of #GIcon may contain the name
+// of an icon (see #GThemedIcon), or the path to an icon (see #GLoadableIcon).
+//
+// To obtain a hash of a #GIcon, see g_icon_hash().
+//
+// To check if two #GIcons are equal, see g_icon_equal().
+//
+// For serializing a #GIcon, use g_icon_serialize() and
+// g_icon_deserialize().
+//
+// If you want to consume #GIcon (for example, in a toolkit) you must
+// be prepared to handle at least the three following cases:
+// #GLoadableIcon, #GThemedIcon and #GEmblemedIcon.  It may also make
+// sense to have fast-paths for other cases (like handling #GdkPixbuf
+// directly, for example) but all compliant #GIcon implementations
+// outside of GIO must implement #GLoadableIcon.
+//
+// If your application or library provides one or more #GIcon
+// implementations you need to ensure that your new implementation also
+// implements #GLoadableIcon.  Additionally, you must provide an
+// implementation of g_icon_serialize() that gives a result that is
+// understood by g_icon_deserialize(), yielding one of the built-in icon
+// types.
+/*
+
+C record/class : GIcon
+*/
 type Icon struct {
 	native *C.GIcon
 }
@@ -2989,7 +3394,57 @@ func (recv *Icon) Equal(icon2 *Icon) bool {
 	return retGo
 }
 
-// ListModel is a wrapper around the C record GListModel.
+// #GListModel is an interface that represents a mutable list of
+// #GObjects. Its main intention is as a model for various widgets in
+// user interfaces, such as list views, but it can also be used as a
+// convenient method of returning lists of data, with support for
+// updates.
+//
+// Each object in the list may also report changes in itself via some
+// mechanism (normally the #GObject::notify signal).  Taken together
+// with the #GListModel::items-changed signal, this provides for a list
+// that can change its membership, and in which the members can change
+// their individual properties.
+//
+// A good example would be the list of visible wireless network access
+// points, where each access point can report dynamic properties such as
+// signal strength.
+//
+// It is important to note that the #GListModel itself does not report
+// changes to the individual items.  It only reports changes to the list
+// membership.  If you want to observe changes to the objects themselves
+// then you need to connect signals to the objects that you are
+// interested in.
+//
+// All items in a #GListModel are of (or derived from) the same type.
+// g_list_model_get_item_type() returns that type.  The type may be an
+// interface, in which case all objects in the list must implement it.
+//
+// The semantics are close to that of an array:
+// g_list_model_get_n_items() returns the number of items in the list and
+// g_list_model_get_item() returns an item at a (0-based) position. In
+// order to allow implementations to calculate the list length lazily,
+// you can also iterate over items: starting from 0, repeatedly call
+// g_list_model_get_item() until it returns %NULL.
+//
+// An implementation may create objects lazily, but must take care to
+// return the same object for a given position until all references to
+// it are gone.
+//
+// On the other side, a consumer is expected only to hold references on
+// objects that are currently "user visible", in order to faciliate the
+// maximum level of laziness in the implementation of the list and to
+// reduce the required number of signal connections at a given time.
+//
+// This interface is intended only to be used from a single thread.  The
+// thread in which it is appropriate to use it depends on the particular
+// implementation, but typically it will be from the thread that owns
+// the [thread-default main context][g-main-context-push-thread-default]
+// in effect at the time that the model was created.
+/*
+
+C record/class : GListModel
+*/
 type ListModel struct {
 	native *C.GListModel
 }
@@ -3010,7 +3465,12 @@ func (recv *ListModel) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// LoadableIcon is a wrapper around the C record GLoadableIcon.
+// Extends the #GIcon interface and adds the ability to
+// load icons from streams.
+/*
+
+C record/class : GLoadableIcon
+*/
 type LoadableIcon struct {
 	native *C.GLoadableIcon
 }
@@ -3091,7 +3551,29 @@ func (recv *LoadableIcon) LoadFinish(res *AsyncResult) (*InputStream, string, er
 	return retGo, type_, goThrowableError
 }
 
-// Mount is a wrapper around the C record GMount.
+// The #GMount interface represents user-visible mounts. Note, when
+// porting from GnomeVFS, #GMount is the moral equivalent of #GnomeVFSVolume.
+//
+// #GMount is a "mounted" filesystem that you can access. Mounted is in
+// quotes because it's not the same as a unix mount, it might be a gvfs
+// mount, but you can still access the files on it if you use GIO. Might or
+// might not be related to a volume object.
+//
+// Unmounting a #GMount instance is an asynchronous operation. For
+// more information about asynchronous operations, see #GAsyncResult
+// and #GTask. To unmount a #GMount instance, first call
+// g_mount_unmount_with_operation() with (at least) the #GMount instance and a
+// #GAsyncReadyCallback.  The callback will be fired when the
+// operation has resolved (either with success or failure), and a
+// #GAsyncResult structure will be passed to the callback.  That
+// callback should then call g_mount_unmount_with_operation_finish() with the #GMount
+// and the #GAsyncResult data to see if the operation was completed
+// successfully.  If an @error is present when g_mount_unmount_with_operation_finish()
+// is called, then it will be filled with any error information.
+/*
+
+C record/class : GMount
+*/
 type Mount struct {
 	native *C.GMount
 }
@@ -3416,7 +3898,31 @@ func (recv *Mount) UnmountFinish(result *AsyncResult) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// RemoteActionGroup is a wrapper around the C record GRemoteActionGroup.
+// The GRemoteActionGroup interface is implemented by #GActionGroup
+// instances that either transmit action invocations to other processes
+// or receive action invocations in the local process from other
+// processes.
+//
+// The interface has `_full` variants of the two
+// methods on #GActionGroup used to activate actions:
+// g_action_group_activate_action() and
+// g_action_group_change_action_state(). These variants allow a
+// "platform data" #GVariant to be specified: a dictionary providing
+// context for the action invocation (for example: timestamps, startup
+// notification IDs, etc).
+//
+// #GDBusActionGroup implements #GRemoteActionGroup.  This provides a
+// mechanism to send platform data for action invocations over D-Bus.
+//
+// Additionally, g_dbus_connection_export_action_group() will check if
+// the exported #GActionGroup implements #GRemoteActionGroup and use the
+// `_full` variants of the calls if available.  This
+// provides a mechanism by which to receive platform data for action
+// invocations that arrive by way of D-Bus.
+/*
+
+C record/class : GRemoteActionGroup
+*/
 type RemoteActionGroup struct {
 	native *C.GRemoteActionGroup
 }
@@ -3437,7 +3943,24 @@ func (recv *RemoteActionGroup) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Seekable is a wrapper around the C record GSeekable.
+// #GSeekable is implemented by streams (implementations of
+// #GInputStream or #GOutputStream) that support seeking.
+//
+// Seekable streams largely fall into two categories: resizable and
+// fixed-size.
+//
+// #GSeekable on fixed-sized streams is approximately the same as POSIX
+// lseek() on a block device (for example: attmepting to seek past the
+// end of the device is an error).  Fixed streams typically cannot be
+// truncated.
+//
+// #GSeekable on resizable streams is approximately the same as POSIX
+// lseek() on a normal file.  Seeking past the end and writing data will
+// usually cause the stream to resize by introducing zero bytes.
+/*
+
+C record/class : GSeekable
+*/
 type Seekable struct {
 	native *C.GSeekable
 }
@@ -3570,7 +4093,67 @@ func (recv *Seekable) Truncate(offset uint64, cancellable *Cancellable) (bool, e
 	return retGo, goThrowableError
 }
 
-// SocketConnectable is a wrapper around the C record GSocketConnectable.
+// Objects that describe one or more potential socket endpoints
+// implement #GSocketConnectable. Callers can then use
+// g_socket_connectable_enumerate() to get a #GSocketAddressEnumerator
+// to try out each socket address in turn until one succeeds, as shown
+// in the sample code below.
+//
+// |[<!-- language="C" -->
+// MyConnectionType *
+// connect_to_host (const char    *hostname,
+// guint16        port,
+// GCancellable  *cancellable,
+// GError       **error)
+// {
+// MyConnection *conn = NULL;
+// GSocketConnectable *addr;
+// GSocketAddressEnumerator *enumerator;
+// GSocketAddress *sockaddr;
+// GError *conn_error = NULL;
+//
+// addr = g_network_address_new (hostname, port);
+// enumerator = g_socket_connectable_enumerate (addr);
+// g_object_unref (addr);
+//
+// Try each sockaddr until we succeed. Record the first connection error,
+// but not any further ones (since they'll probably be basically the same
+// as the first).
+// while (!conn && (sockaddr = g_socket_address_enumerator_next (enumerator, cancellable, error))
+// {
+// conn = connect_to_sockaddr (sockaddr, conn_error ? NULL : &conn_error);
+// g_object_unref (sockaddr);
+// }
+// g_object_unref (enumerator);
+//
+// if (conn)
+// {
+// if (conn_error)
+// {
+// We couldn't connect to the first address, but we succeeded
+// in connecting to a later address.
+// g_error_free (conn_error);
+// }
+// return conn;
+// }
+// else if (error)
+// {
+/// Either initial lookup failed, or else the caller cancelled us.
+// if (conn_error)
+// g_error_free (conn_error);
+// return NULL;
+// }
+// else
+// {
+// g_error_propagate (error, conn_error);
+// return NULL;
+// }
+// }
+// ]|
+/*
+
+C record/class : GSocketConnectable
+*/
 type SocketConnectable struct {
 	native *C.GSocketConnectable
 }
@@ -3591,7 +4174,51 @@ func (recv *SocketConnectable) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Volume is a wrapper around the C record GVolume.
+// The #GVolume interface represents user-visible objects that can be
+// mounted. Note, when porting from GnomeVFS, #GVolume is the moral
+// equivalent of #GnomeVFSDrive.
+//
+// Mounting a #GVolume instance is an asynchronous operation. For more
+// information about asynchronous operations, see #GAsyncResult and
+// #GTask. To mount a #GVolume, first call g_volume_mount() with (at
+// least) the #GVolume instance, optionally a #GMountOperation object
+// and a #GAsyncReadyCallback.
+//
+// Typically, one will only want to pass %NULL for the
+// #GMountOperation if automounting all volumes when a desktop session
+// starts since it's not desirable to put up a lot of dialogs asking
+// for credentials.
+//
+// The callback will be fired when the operation has resolved (either
+// with success or failure), and a #GAsyncReady structure will be
+// passed to the callback.  That callback should then call
+// g_volume_mount_finish() with the #GVolume instance and the
+// #GAsyncReady data to see if the operation was completed
+// successfully.  If an @error is present when g_volume_mount_finish()
+// is called, then it will be filled with any error information.
+//
+// ## Volume Identifiers # {#volume-identifier}
+//
+// It is sometimes necessary to directly access the underlying
+// operating system object behind a volume (e.g. for passing a volume
+// to an application via the commandline). For this purpose, GIO
+// allows to obtain an 'identifier' for the volume. There can be
+// different kinds of identifiers, such as Hal UDIs, filesystem labels,
+// traditional Unix devices (e.g. `/dev/sda2`), UUIDs. GIO uses predefined
+// strings as names for the different kinds of identifiers:
+// #G_VOLUME_IDENTIFIER_KIND_HAL_UDI, #G_VOLUME_IDENTIFIER_KIND_LABEL, etc.
+// Use g_volume_get_identifier() to obtain an identifier for a volume.
+//
+//
+// Note that #G_VOLUME_IDENTIFIER_KIND_HAL_UDI will only be available
+// when the gvfs hal volume monitor is in use. Other volume monitors
+// will generally be able to provide the #G_VOLUME_IDENTIFIER_KIND_UNIX_DEVICE
+// identifier, which can be used to obtain a hal device by means of
+// libhal_manager_find_device_string_match().
+/*
+
+C record/class : GVolume
+*/
 type Volume struct {
 	native *C.GVolume
 }

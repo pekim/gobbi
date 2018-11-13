@@ -9,7 +9,10 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// PixbufFormat is a wrapper around the C record GdkPixbufFormat.
+/*
+
+C record/class : GdkPixbufFormat
+*/
 type PixbufFormat struct {
 	native *C.GdkPixbufFormat
 }
@@ -30,7 +33,10 @@ func (recv *PixbufFormat) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// PixbufLoaderClass is a wrapper around the C record GdkPixbufLoaderClass.
+/*
+
+C record/class : GdkPixbufLoaderClass
+*/
 type PixbufLoaderClass struct {
 	native *C.GdkPixbufLoaderClass
 	// parent_class : record
@@ -56,7 +62,10 @@ func (recv *PixbufLoaderClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// PixbufSimpleAnimClass is a wrapper around the C record GdkPixbufSimpleAnimClass.
+/*
+
+C record/class : GdkPixbufSimpleAnimClass
+*/
 type PixbufSimpleAnimClass struct {
 	native *C.GdkPixbufSimpleAnimClass
 }

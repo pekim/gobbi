@@ -40,7 +40,14 @@ import (
 */
 import "C"
 
-// GObjectAccessible is a wrapper around the C record AtkGObjectAccessible.
+// This object class is derived from AtkObject. It can be used as a
+// basis for implementing accessible objects for GObjects which are
+// not derived from GtkWidget. One example of its use is in providing
+// an accessible object for GnomeCanvasItem in the GAIL library.
+/*
+
+C record/class : AtkGObjectAccessible
+*/
 type GObjectAccessible struct {
 	native *C.AtkGObjectAccessible
 	// parent : record
@@ -85,7 +92,16 @@ func (recv *GObjectAccessible) GetObject() *gobject.Object {
 	return retGo
 }
 
-// Hyperlink is a wrapper around the C record AtkHyperlink.
+// An ATK object which encapsulates a link or set of links (for
+// instance in the case of client-side image maps) in a hypertext
+// document.  It may implement the AtkAction interface.  AtkHyperlink
+// may also be used to refer to inline embedded content, since it
+// allows specification of a start and end offset within the host
+// AtkHypertext object.
+/*
+
+C record/class : AtkHyperlink
+*/
 type Hyperlink struct {
 	native *C.AtkHyperlink
 	// parent : record
@@ -282,7 +298,12 @@ func (recv *Hyperlink) Action() *Action {
 	return ActionNewFromC(recv.ToC())
 }
 
-// Misc is a wrapper around the C record AtkMisc.
+// A set of utility functions for thread locking. This interface and
+// all his related methods are deprecated since 2.12.
+/*
+
+C record/class : AtkMisc
+*/
 type Misc struct {
 	native *C.AtkMisc
 	// parent : record
@@ -315,7 +336,14 @@ func CastToMisc(object *gobject.Object) *Misc {
 	return MiscNewFromC(object.ToC())
 }
 
-// NoOpObject is a wrapper around the C record AtkNoOpObject.
+// An AtkNoOpObject is an AtkObject which purports to implement all
+// ATK interfaces. It is the type of AtkObject which is created if an
+// accessible object is requested for an object type for which no
+// factory type is specified.
+/*
+
+C record/class : AtkNoOpObject
+*/
 type NoOpObject struct {
 	native *C.AtkNoOpObject
 	// parent : record
@@ -426,7 +454,13 @@ func (recv *NoOpObject) Window() *Window {
 	return WindowNewFromC(recv.ToC())
 }
 
-// NoOpObjectFactory is a wrapper around the C record AtkNoOpObjectFactory.
+// The AtkObjectFactory which creates an AtkNoOpObject. An instance of
+// this is created by an AtkRegistry if no factory type has not been
+// specified to create an accessible object of a particular type.
+/*
+
+C record/class : AtkNoOpObjectFactory
+*/
 type NoOpObjectFactory struct {
 	native *C.AtkNoOpObjectFactory
 	// parent : record
@@ -477,7 +511,30 @@ func NoOpObjectFactoryNew() *NoOpObjectFactory {
 	return retGo
 }
 
-// Object is a wrapper around the C record AtkObject.
+// This class is the primary class for accessibility support via the
+// Accessibility ToolKit (ATK).  Objects which are instances of
+// #AtkObject (or instances of AtkObject-derived types) are queried
+// for properties which relate basic (and generic) properties of a UI
+// component such as name and description.  Instances of #AtkObject
+// may also be queried as to whether they implement other ATK
+// interfaces (e.g. #AtkAction, #AtkComponent, etc.), as appropriate
+// to the role which a given UI component plays in a user interface.
+//
+// All UI components in an application which provide useful
+// information or services to the user must provide corresponding
+// #AtkObject instances on request (in GTK+, for instance, usually on
+// a call to #gtk_widget_get_accessible ()), either via ATK support
+// built into the toolkit for the widget class or ancestor class, or
+// in the case of custom widgets, if the inherited #AtkObject
+// implementation is insufficient, via instances of a new #AtkObject
+// subclass.
+//
+// See also: #AtkObjectFactory, #AtkRegistry.  (GTK+ users see also
+// #GtkAccessible).
+/*
+
+C record/class : AtkObject
+*/
 type Object struct {
 	native *C.AtkObject
 	// parent : record
@@ -968,7 +1025,15 @@ func (recv *Object) SetRole(role Role) {
 	return
 }
 
-// ObjectFactory is a wrapper around the C record AtkObjectFactory.
+// This class is the base object class for a factory used to create an
+// accessible object for a specific GType. The function
+// atk_registry_set_factory_type() is normally called to store in the
+// registry the factory type to be used to create an accessible of a
+// particular GType.
+/*
+
+C record/class : AtkObjectFactory
+*/
 type ObjectFactory struct {
 	native *C.AtkObjectFactory
 	// parent : record
@@ -1046,7 +1111,11 @@ func (recv *ObjectFactory) Invalidate() {
 	return
 }
 
-// Plug is a wrapper around the C record AtkPlug.
+// See #AtkSocket
+/*
+
+C record/class : AtkPlug
+*/
 type Plug struct {
 	native *C.AtkPlug
 	// parent : record
@@ -1095,7 +1164,16 @@ func (recv *Plug) Component() *Component {
 	return ComponentNewFromC(recv.ToC())
 }
 
-// Registry is a wrapper around the C record AtkRegistry.
+// The AtkRegistry is normally used to create appropriate ATK "peers"
+// for user interface components.  Application developers usually need
+// only interact with the AtkRegistry by associating appropriate ATK
+// implementation classes with GObject classes via the
+// atk_registry_set_factory_type call, passing the appropriate GType
+// for application custom widget classes.
+/*
+
+C record/class : AtkRegistry
+*/
 type Registry struct {
 	native *C.AtkRegistry
 	// parent : record
@@ -1178,7 +1256,14 @@ func (recv *Registry) SetFactoryType(type_ gobject.Type, factoryType gobject.Typ
 	return
 }
 
-// Relation is a wrapper around the C record AtkRelation.
+// An AtkRelation describes a relation between an object and one or
+// more other objects. The actual relations that an object has with
+// other objects are defined as an AtkRelationSet, which is a set of
+// AtkRelations.
+/*
+
+C record/class : AtkRelation
+*/
 type Relation struct {
 	native *C.AtkRelation
 	// parent : record
@@ -1251,7 +1336,18 @@ func (recv *Relation) RemoveTarget(target *Object) bool {
 	return retGo
 }
 
-// RelationSet is a wrapper around the C record AtkRelationSet.
+// The AtkRelationSet held by an object establishes its relationships
+// with objects beyond the normal "parent/child" hierarchical
+// relationships that all user interface objects have.
+// AtkRelationSets establish whether objects are labelled or
+// controlled by other components, share group membership with other
+// components (for instance within a radio-button group), or share
+// content which "flows" between them, among other types of possible
+// relationships.
+/*
+
+C record/class : AtkRelationSet
+*/
 type RelationSet struct {
 	native *C.AtkRelationSet
 	// parent : record
@@ -1411,7 +1507,32 @@ func (recv *RelationSet) Remove(relation *Relation) {
 	return
 }
 
-// Socket is a wrapper around the C record AtkSocket.
+// Together with #AtkPlug, #AtkSocket provides the ability to embed
+// accessibles from one process into another in a fashion that is
+// transparent to assistive technologies. #AtkSocket works as the
+// container of #AtkPlug, embedding it using the method
+// atk_socket_embed(). Any accessible contained in the #AtkPlug will
+// appear to the assistive technologies as being inside the
+// application that created the #AtkSocket.
+//
+// The communication between a #AtkSocket and a #AtkPlug is done by
+// the IPC layer of the accessibility framework, normally implemented
+// by the D-Bus based implementation of AT-SPI (at-spi2). If that is
+// the case, at-spi-atk2 is the responsible to implement the abstract
+// methods atk_plug_get_id() and atk_socket_embed(), so an ATK
+// implementor shouldn't reimplement them. The process that contains
+// the #AtkPlug is responsible to send the ID returned by
+// atk_plug_id() to the process that contains the #AtkSocket, so it
+// could call the method atk_socket_embed() in order to embed it.
+//
+// For the same reasons, an implementor doesn't need to implement
+// atk_object_get_n_accessible_children() and
+// atk_object_ref_accessible_child(). All the logic related to those
+// functions will be implemented by the IPC layer.
+/*
+
+C record/class : AtkSocket
+*/
 type Socket struct {
 	native *C.AtkSocket
 	// parent : record
@@ -1461,7 +1582,13 @@ func (recv *Socket) Component() *Component {
 	return ComponentNewFromC(recv.ToC())
 }
 
-// StateSet is a wrapper around the C record AtkStateSet.
+// An AtkStateSet is a read-only representation of the full set of #AtkStates
+// that apply to an object at a given time. This set is not meant to be
+// modified, but rather created when #atk_object_ref_state_set() is called.
+/*
+
+C record/class : AtkStateSet
+*/
 type StateSet struct {
 	native *C.AtkStateSet
 	// parent : record
@@ -1678,7 +1805,14 @@ func (recv *StateSet) XorSets(compareSet *StateSet) *StateSet {
 	return retGo
 }
 
-// Util is a wrapper around the C record AtkUtil.
+// A set of ATK utility functions which are used to support event
+// registration of various types, and obtaining the 'root' accessible
+// of a process and information about the current ATK implementation
+// and toolkit version.
+/*
+
+C record/class : AtkUtil
+*/
 type Util struct {
 	native *C.AtkUtil
 	// parent : record

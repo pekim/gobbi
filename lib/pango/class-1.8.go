@@ -30,7 +30,13 @@ func (recv *Layout) GetFontDescription() *FontDescription {
 	return retGo
 }
 
-// Renderer is a wrapper around the C record PangoRenderer.
+// #PangoRenderer is a base class for objects that are used to
+// render Pango objects such as #PangoGlyphString and
+// #PangoLayout.
+/*
+
+C record/class : PangoRenderer
+*/
 type Renderer struct {
 	native *C.PangoRenderer
 	// Private : parent_instance

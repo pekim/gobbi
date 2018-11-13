@@ -40,7 +40,99 @@ func (recv *KeyFile) SaveToFile(filename string) (bool, error) {
 
 // Unsupported : g_option_context_parse_strv : unsupported parameter arguments :
 
-// VariantDict is a wrapper around the C record GVariantDict.
+// #GVariantDict is a mutable interface to #GVariant dictionaries.
+//
+// It can be used for doing a sequence of dictionary lookups in an
+// efficient way on an existing #GVariant dictionary or it can be used
+// to construct new dictionaries with a hashtable-like interface.  It
+// can also be used for taking existing dictionaries and modifying them
+// in order to create new ones.
+//
+// #GVariantDict can only be used with %G_VARIANT_TYPE_VARDICT
+// dictionaries.
+//
+// It is possible to use #GVariantDict allocated on the stack or on the
+// heap.  When using a stack-allocated #GVariantDict, you begin with a
+// call to g_variant_dict_init() and free the resources with a call to
+// g_variant_dict_clear().
+//
+// Heap-allocated #GVariantDict follows normal refcounting rules: you
+// allocate it with g_variant_dict_new() and use g_variant_dict_ref()
+// and g_variant_dict_unref().
+//
+// g_variant_dict_end() is used to convert the #GVariantDict back into a
+// dictionary-type #GVariant.  When used with stack-allocated instances,
+// this also implicitly frees all associated memory, but for
+// heap-allocated instances, you must still call g_variant_dict_unref()
+// afterwards.
+//
+// You will typically want to use a heap-allocated #GVariantDict when
+// you expose it as part of an API.  For most other uses, the
+// stack-allocated form will be more convenient.
+//
+// Consider the following two examples that do the same thing in each
+// style: take an existing dictionary and look up the "count" uint32
+// key, adding 1 to it if it is found, or returning an error if the
+// key is not found.  Each returns the new dictionary as a floating
+// #GVariant.
+//
+// ## Using a stack-allocated GVariantDict
+//
+// |[<!-- language="C" -->
+// GVariant *
+// add_to_count (GVariant  *orig,
+// GError   **error)
+// {
+// GVariantDict dict;
+// guint32 count;
+//
+// g_variant_dict_init (&dict, orig);
+// if (!g_variant_dict_lookup (&dict, "count", "u", &count))
+// {
+// g_set_error (...);
+// g_variant_dict_clear (&dict);
+// return NULL;
+// }
+//
+// g_variant_dict_insert (&dict, "count", "u", count + 1);
+//
+// return g_variant_dict_end (&dict);
+// }
+// ]|
+//
+// ## Using heap-allocated GVariantDict
+//
+// |[<!-- language="C" -->
+// GVariant *
+// add_to_count (GVariant  *orig,
+// GError   **error)
+// {
+// GVariantDict *dict;
+// GVariant *result;
+// guint32 count;
+//
+// dict = g_variant_dict_new (orig);
+//
+// if (g_variant_dict_lookup (dict, "count", "u", &count))
+// {
+// g_variant_dict_insert (dict, "count", "u", count + 1);
+// result = g_variant_dict_end (dict);
+// }
+// else
+// {
+// g_set_error (...);
+// result = NULL;
+// }
+//
+// g_variant_dict_unref (dict);
+//
+// return result;
+// }
+// ]|
+/*
+
+C record/class : GVariantDict
+*/
 type VariantDict struct {
 	native *C.GVariantDict
 }

@@ -30,7 +30,13 @@ func (recv *HashTableIter) Replace(value uintptr) {
 	return
 }
 
-// Hmac is a wrapper around the C record GHmac.
+// An opaque structure representing a HMAC operation.
+// To create a new GHmac, use g_hmac_new(). To free
+// a GHmac, use g_hmac_unref().
+/*
+
+C record/class : GHmac
+*/
 type Hmac struct {
 	native *C.GHmac
 }

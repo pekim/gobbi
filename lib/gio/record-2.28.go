@@ -20,7 +20,11 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// ActionGroupInterface is a wrapper around the C record GActionGroupInterface.
+// The virtual function table for #GActionGroup.
+/*
+
+C record/class : GActionGroupInterface
+*/
 type ActionGroupInterface struct {
 	native *C.GActionGroupInterface
 	// g_iface : record
@@ -56,7 +60,11 @@ func (recv *ActionGroupInterface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ActionInterface is a wrapper around the C record GActionInterface.
+// The virtual function table for #GAction.
+/*
+
+C record/class : GActionInterface
+*/
 type ActionInterface struct {
 	native *C.GActionInterface
 	// g_iface : record
@@ -86,7 +94,11 @@ func (recv *ActionInterface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ApplicationClass is a wrapper around the C record GApplicationClass.
+// Virtual function table for #GApplication.
+/*
+
+C record/class : GApplicationClass
+*/
 type ApplicationClass struct {
 	native *C.GApplicationClass
 	// Private : parent_class
@@ -123,7 +135,12 @@ func (recv *ApplicationClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// ApplicationCommandLineClass is a wrapper around the C record GApplicationCommandLineClass.
+// The #GApplicationCommandLineClass-struct
+// contains private data only.
+/*
+
+C record/class : GApplicationCommandLineClass
+*/
 type ApplicationCommandLineClass struct {
 	native *C.GApplicationCommandLineClass
 	// Private : parent_class
@@ -149,7 +166,20 @@ func (recv *ApplicationCommandLineClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// PollableInputStreamInterface is a wrapper around the C record GPollableInputStreamInterface.
+// The interface for pollable input streams.
+//
+// The default implementation of @can_poll always returns %TRUE.
+//
+// The default implementation of @read_nonblocking calls
+// g_pollable_input_stream_is_readable(), and then calls
+// g_input_stream_read() if it returns %TRUE. This means you only need
+// to override it if it is possible that your @is_readable
+// implementation may return %TRUE when the stream is not actually
+// readable.
+/*
+
+C record/class : GPollableInputStreamInterface
+*/
 type PollableInputStreamInterface struct {
 	native *C.GPollableInputStreamInterface
 	// g_iface : record
@@ -175,7 +205,20 @@ func (recv *PollableInputStreamInterface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// PollableOutputStreamInterface is a wrapper around the C record GPollableOutputStreamInterface.
+// The interface for pollable output streams.
+//
+// The default implementation of @can_poll always returns %TRUE.
+//
+// The default implementation of @write_nonblocking calls
+// g_pollable_output_stream_is_writable(), and then calls
+// g_output_stream_write() if it returns %TRUE. This means you only
+// need to override it if it is possible that your @is_writable
+// implementation may return %TRUE when the stream is not actually
+// writable.
+/*
+
+C record/class : GPollableOutputStreamInterface
+*/
 type PollableOutputStreamInterface struct {
 	native *C.GPollableOutputStreamInterface
 	// g_iface : record
@@ -201,7 +244,11 @@ func (recv *PollableOutputStreamInterface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// TlsBackendInterface is a wrapper around the C record GTlsBackendInterface.
+// Provides an interface for describing TLS-related types.
+/*
+
+C record/class : GTlsBackendInterface
+*/
 type TlsBackendInterface struct {
 	native *C.GTlsBackendInterface
 	// g_iface : record

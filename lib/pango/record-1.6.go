@@ -23,7 +23,18 @@ func (recv *GlyphItem) Free() {
 
 // Unsupported : pango_glyph_item_letter_space : unsupported parameter log_attrs :
 
-// Matrix is a wrapper around the C record PangoMatrix.
+// A structure specifying a transformation between user-space
+// coordinates and device coordinates. The transformation
+// is given by
+//
+// <programlisting>
+// x_device = x_user * matrix->xx + y_user * matrix->xy + matrix->x0;
+// y_device = x_user * matrix->yx + y_user * matrix->yy + matrix->y0;
+// </programlisting>
+/*
+
+C record/class : PangoMatrix
+*/
 type Matrix struct {
 	native *C.PangoMatrix
 	Xx     float64

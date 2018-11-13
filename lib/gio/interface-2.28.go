@@ -169,7 +169,14 @@ func (recv *ActionGroup) HasAction(actionName string) bool {
 
 // Unsupported : g_action_group_list_actions : no return type
 
-// PollableInputStream is a wrapper around the C record GPollableInputStream.
+// #GPollableInputStream is implemented by #GInputStreams that
+// can be polled for readiness to read. This can be used when
+// interfacing with a non-GIO API that expects
+// UNIX-file-descriptor-style asynchronous I/O rather than GIO-style.
+/*
+
+C record/class : GPollableInputStream
+*/
 type PollableInputStream struct {
 	native *C.GPollableInputStream
 }
@@ -289,7 +296,14 @@ func (recv *PollableInputStream) ReadNonblocking(buffer []uint8, cancellable *Ca
 	return retGo, goThrowableError
 }
 
-// PollableOutputStream is a wrapper around the C record GPollableOutputStream.
+// #GPollableOutputStream is implemented by #GOutputStreams that
+// can be polled for readiness to write. This can be used when
+// interfacing with a non-GIO API that expects
+// UNIX-file-descriptor-style asynchronous I/O rather than GIO-style.
+/*
+
+C record/class : GPollableOutputStream
+*/
 type PollableOutputStream struct {
 	native *C.GPollableOutputStream
 }
@@ -412,7 +426,11 @@ func (recv *PollableOutputStream) WriteNonblocking(buffer []uint8, cancellable *
 	return retGo, goThrowableError
 }
 
-// TlsBackend is a wrapper around the C record GTlsBackend.
+// TLS (Transport Layer Security, aka SSL) and DTLS backend.
+/*
+
+C record/class : GTlsBackend
+*/
 type TlsBackend struct {
 	native *C.GTlsBackend
 }
@@ -482,7 +500,12 @@ func (recv *TlsBackend) SupportsTls() bool {
 	return retGo
 }
 
-// TlsClientConnection is a wrapper around the C record GTlsClientConnection.
+// #GTlsClientConnection is the client-side subclass of
+// #GTlsConnection, representing a client-side TLS connection.
+/*
+
+C record/class : GTlsClientConnection
+*/
 type TlsClientConnection struct {
 	native *C.GTlsClientConnection
 }
@@ -611,7 +634,12 @@ func (recv *TlsClientConnection) SetValidationFlags(flags TlsCertificateFlags) {
 	return
 }
 
-// TlsServerConnection is a wrapper around the C record GTlsServerConnection.
+// #GTlsServerConnection is the server-side subclass of #GTlsConnection,
+// representing a server-side TLS connection.
+/*
+
+C record/class : GTlsServerConnection
+*/
 type TlsServerConnection struct {
 	native *C.GTlsServerConnection
 }

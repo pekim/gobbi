@@ -12,7 +12,11 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// ActivatableIface is a wrapper around the C record GtkActivatableIface.
+// > This method can be called with a %NULL action at times.
+/*
+
+C record/class : GtkActivatableIface
+*/
 type ActivatableIface struct {
 	native *C.GtkActivatableIface
 	// Private : g_iface

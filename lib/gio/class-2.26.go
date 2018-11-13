@@ -24,7 +24,40 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// Credentials is a wrapper around the C record GCredentials.
+// The #GCredentials type is a reference-counted wrapper for native
+// credentials. This information is typically used for identifying,
+// authenticating and authorizing other processes.
+//
+// Some operating systems supports looking up the credentials of the
+// remote peer of a communication endpoint - see e.g.
+// g_socket_get_credentials().
+//
+// Some operating systems supports securely sending and receiving
+// credentials over a Unix Domain Socket, see
+// #GUnixCredentialsMessage, g_unix_connection_send_credentials() and
+// g_unix_connection_receive_credentials() for details.
+//
+// On Linux, the native credential type is a struct ucred - see the
+// unix(7) man page for details. This corresponds to
+// %G_CREDENTIALS_TYPE_LINUX_UCRED.
+//
+// On FreeBSD, Debian GNU/kFreeBSD, and GNU/Hurd, the native
+// credential type is a struct cmsgcred. This corresponds
+// to %G_CREDENTIALS_TYPE_FREEBSD_CMSGCRED.
+//
+// On NetBSD, the native credential type is a struct unpcbid.
+// This corresponds to %G_CREDENTIALS_TYPE_NETBSD_UNPCBID.
+//
+// On OpenBSD, the native credential type is a struct sockpeercred.
+// This corresponds to %G_CREDENTIALS_TYPE_OPENBSD_SOCKPEERCRED.
+//
+// On Solaris (including OpenSolaris and its derivatives), the native
+// credential type is a ucred_t. This corresponds to
+// %G_CREDENTIALS_TYPE_SOLARIS_UCRED.
+/*
+
+C record/class : GCredentials
+*/
 type Credentials struct {
 	native *C.GCredentials
 }
@@ -154,7 +187,44 @@ func (recv *Credentials) ToString() string {
 	return retGo
 }
 
-// DBusAuthObserver is a wrapper around the C record GDBusAuthObserver.
+// The #GDBusAuthObserver type provides a mechanism for participating
+// in how a #GDBusServer (or a #GDBusConnection) authenticates remote
+// peers. Simply instantiate a #GDBusAuthObserver and connect to the
+// signals you are interested in. Note that new signals may be added
+// in the future
+//
+// ## Controlling Authentication # {#auth-observer}
+//
+// For example, if you only want to allow D-Bus connections from
+// processes owned by the same uid as the server, you would use a
+// signal handler like the following:
+//
+// |[<!-- language="C" -->
+// static gboolean
+// on_authorize_authenticated_peer (GDBusAuthObserver *observer,
+// GIOStream         *stream,
+// GCredentials      *credentials,
+// gpointer           user_data)
+// {
+// gboolean authorized;
+//
+// authorized = FALSE;
+// if (credentials != NULL)
+// {
+// GCredentials *own_credentials;
+// own_credentials = g_credentials_new ();
+// if (g_credentials_is_same_user (credentials, own_credentials, NULL))
+// authorized = TRUE;
+// g_object_unref (own_credentials);
+// }
+//
+// return authorized;
+// }
+// ]|
+/*
+
+C record/class : GDBusAuthObserver
+*/
 type DBusAuthObserver struct {
 	native *C.GDBusAuthObserver
 }
@@ -220,7 +290,59 @@ func (recv *DBusAuthObserver) AuthorizeAuthenticatedPeer(stream *IOStream, crede
 	return retGo
 }
 
-// DBusConnection is a wrapper around the C record GDBusConnection.
+// The #GDBusConnection type is used for D-Bus connections to remote
+// peers such as a message buses. It is a low-level API that offers a
+// lot of flexibility. For instance, it lets you establish a connection
+// over any transport that can by represented as an #GIOStream.
+//
+// This class is rarely used directly in D-Bus clients. If you are writing
+// a D-Bus client, it is often easier to use the g_bus_own_name(),
+// g_bus_watch_name() or g_dbus_proxy_new_for_bus() APIs.
+//
+// As an exception to the usual GLib rule that a particular object must not
+// be used by two threads at the same time, #GDBusConnection's methods may be
+// called from any thread. This is so that g_bus_get() and g_bus_get_sync()
+// can safely return the same #GDBusConnection when called from any thread.
+//
+// Most of the ways to obtain a #GDBusConnection automatically initialize it
+// (i.e. connect to D-Bus): for instance, g_dbus_connection_new() and
+// g_bus_get(), and the synchronous versions of those methods, give you an
+// initialized connection. Language bindings for GIO should use
+// g_initable_new() or g_async_initable_new_async(), which also initialize the
+// connection.
+//
+// If you construct an uninitialized #GDBusConnection, such as via
+// g_object_new(), you must initialize it via g_initable_init() or
+// g_async_initable_init_async() before using its methods or properties.
+// Calling methods or accessing properties on a #GDBusConnection that has not
+// completed initialization successfully is considered to be invalid, and leads
+// to undefined behaviour. In particular, if initialization fails with a
+// #GError, the only valid thing you can do with that #GDBusConnection is to
+// free it with g_object_unref().
+//
+// ## An example D-Bus server # {#gdbus-server}
+//
+// Here is an example for a D-Bus server:
+// [gdbus-example-server.c](https://git.gnome.org/browse/glib/tree/gio/tests/gdbus-example-server.c)
+//
+// ## An example for exporting a subtree # {#gdbus-subtree-server}
+//
+// Here is an example for exporting a subtree:
+// [gdbus-example-subtree.c](https://git.gnome.org/browse/glib/tree/gio/tests/gdbus-example-subtree.c)
+//
+// ## An example for file descriptor passing # {#gdbus-unix-fd-client}
+//
+// Here is an example for passing UNIX file descriptors:
+// [gdbus-unix-fd-client.c](https://git.gnome.org/browse/glib/tree/gio/tests/gdbus-example-unix-fd-client.c)
+//
+// ## An example for exporting a GObject # {#gdbus-export}
+//
+// Here is an example for exporting a #GObject:
+// [gdbus-example-export.c](https://git.gnome.org/browse/glib/tree/gio/tests/gdbus-example-export.c)
+/*
+
+C record/class : GDBusConnection
+*/
 type DBusConnection struct {
 	native *C.GDBusConnection
 }
@@ -860,7 +982,12 @@ func (recv *DBusConnection) UnregisterSubtree(registrationId uint32) bool {
 	return retGo
 }
 
-// DBusMessage is a wrapper around the C record GDBusMessage.
+// A type for representing D-Bus messages that can be sent or received
+// on a #GDBusConnection.
+/*
+
+C record/class : GDBusMessage
+*/
 type DBusMessage struct {
 	native *C.GDBusMessage
 }
@@ -1521,7 +1648,17 @@ func (recv *DBusMessage) ToGerror() (bool, error) {
 	return retGo, goThrowableError
 }
 
-// DBusMethodInvocation is a wrapper around the C record GDBusMethodInvocation.
+// Instances of the #GDBusMethodInvocation class are used when
+// handling D-Bus method calls. It provides a way to asynchronously
+// return results and errors.
+//
+// The normal way to obtain a #GDBusMethodInvocation object is to receive
+// it as an argument to the handle_method_call() function in a
+// #GDBusInterfaceVTable that was passed to g_dbus_connection_register_object().
+/*
+
+C record/class : GDBusMethodInvocation
+*/
 type DBusMethodInvocation struct {
 	native *C.GDBusMethodInvocation
 }
@@ -1738,7 +1875,48 @@ func (recv *DBusMethodInvocation) ReturnGerror(error *glib.Error) {
 
 // Unsupported : g_dbus_method_invocation_return_value : unsupported parameter parameters : Blacklisted record : GVariant
 
-// DBusProxy is a wrapper around the C record GDBusProxy.
+// #GDBusProxy is a base class used for proxies to access a D-Bus
+// interface on a remote object. A #GDBusProxy can be constructed for
+// both well-known and unique names.
+//
+// By default, #GDBusProxy will cache all properties (and listen to
+// changes) of the remote object, and proxy all signals that get
+// emitted. This behaviour can be changed by passing suitable
+// #GDBusProxyFlags when the proxy is created. If the proxy is for a
+// well-known name, the property cache is flushed when the name owner
+// vanishes and reloaded when a name owner appears.
+//
+// If a #GDBusProxy is used for a well-known name, the owner of the
+// name is tracked and can be read from
+// #GDBusProxy:g-name-owner. Connect to the #GObject::notify signal to
+// get notified of changes. Additionally, only signals and property
+// changes emitted from the current name owner are considered and
+// calls are always sent to the current name owner. This avoids a
+// number of race conditions when the name is lost by one owner and
+// claimed by another. However, if no name owner currently exists,
+// then calls will be sent to the well-known name which may result in
+// the message bus launching an owner (unless
+// %G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START is set).
+//
+// The generic #GDBusProxy::g-properties-changed and
+// #GDBusProxy::g-signal signals are not very convenient to work with.
+// Therefore, the recommended way of working with proxies is to subclass
+// #GDBusProxy, and have more natural properties and signals in your derived
+// class. This [example][gdbus-example-gdbus-codegen] shows how this can
+// easily be done using the [gdbus-codegen][gdbus-codegen] tool.
+//
+// A #GDBusProxy instance can be used from multiple threads but note
+// that all signals (e.g. #GDBusProxy::g-signal, #GDBusProxy::g-properties-changed
+// and #GObject::notify) are emitted in the
+// [thread-default main context][g-main-context-push-thread-default]
+// of the thread where the instance was constructed.
+//
+// An example using a proxy for a well-known name can be found in
+// [gdbus-example-watch-proxy.c](https://git.gnome.org/browse/glib/tree/gio/tests/gdbus-example-watch-proxy.c)
+/*
+
+C record/class : GDBusProxy
+*/
 type DBusProxy struct {
 	native *C.GDBusProxy
 	// Private : parent_instance
@@ -2078,7 +2256,21 @@ func (recv *DBusProxy) SetInterfaceInfo(info *DBusInterfaceInfo) {
 	return
 }
 
-// DBusServer is a wrapper around the C record GDBusServer.
+// #GDBusServer is a helper for listening to and accepting D-Bus
+// connections. This can be used to create a new D-Bus server, allowing two
+// peers to use the D-Bus protocol for their own specialized communication.
+// A server instance provided in this way will not perform message routing or
+// implement the org.freedesktop.DBus interface.
+//
+// To just export an object on a well-known name on a message bus, such as the
+// session or system bus, you should instead use g_bus_own_name().
+//
+// An example of peer-to-peer communication with G-DBus can be found
+// in [gdbus-example-peer.c](https://git.gnome.org/browse/glib/tree/gio/tests/gdbus-example-peer.c).
+/*
+
+C record/class : GDBusServer
+*/
 type DBusServer struct {
 	native *C.GDBusServer
 }
@@ -2534,7 +2726,11 @@ func (recv *Permission) ReleaseFinish(result *AsyncResult) (bool, error) {
 	return retGo, goThrowableError
 }
 
-// ProxyAddress is a wrapper around the C record GProxyAddress.
+// Support for proxied #GInetSocketAddress.
+/*
+
+C record/class : GProxyAddress
+*/
 type ProxyAddress struct {
 	native *C.GProxyAddress
 	// parent_instance : record
@@ -3532,7 +3728,21 @@ func (recv *UnixConnection) SendCredentials(cancellable *Cancellable) (bool, err
 	return retGo, goThrowableError
 }
 
-// UnixCredentialsMessage is a wrapper around the C record GUnixCredentialsMessage.
+// This #GSocketControlMessage contains a #GCredentials instance.  It
+// may be sent using g_socket_send_message() and received using
+// g_socket_receive_message() over UNIX sockets (ie: sockets in the
+// %G_SOCKET_FAMILY_UNIX family).
+//
+// For an easier way to send and receive credentials over
+// stream-oriented UNIX sockets, see
+// g_unix_connection_send_credentials() and
+// g_unix_connection_receive_credentials(). To receive credentials of
+// a foreign process connected to a socket, use
+// g_socket_get_credentials().
+/*
+
+C record/class : GUnixCredentialsMessage
+*/
 type UnixCredentialsMessage struct {
 	native *C.GUnixCredentialsMessage
 	// parent_instance : record

@@ -330,7 +330,18 @@ func (recv *OutputStream) WriteAllFinish(result *AsyncResult) (bool, uint64, err
 
 // Unsupported : g_simple_action_set_state_hint : unsupported parameter state_hint : Blacklisted record : GVariant
 
-// SimpleIOStream is a wrapper around the C record GSimpleIOStream.
+// GSimpleIOStream creates a #GIOStream from an arbitrary #GInputStream and
+// #GOutputStream. This allows any pair of input and output streams to be used
+// with #GIOStream methods.
+//
+// This is useful when you obtained a #GInputStream and a #GOutputStream
+// by other means, for instance creating them with platform specific methods as
+// g_unix_input_stream_new() or g_win32_input_stream_new(), and you want
+// to take advantage of the methods provided by #GIOStream.
+/*
+
+C record/class : GSimpleIOStream
+*/
 type SimpleIOStream struct {
 	native *C.GSimpleIOStream
 }

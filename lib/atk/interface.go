@@ -103,7 +103,27 @@ import (
 */
 import "C"
 
-// Action is a wrapper around the C record AtkAction.
+// #AtkAction should be implemented by instances of #AtkObject classes
+// with which the user can interact directly, i.e. buttons,
+// checkboxes, scrollbars, e.g. components which are not "passive"
+// providers of UI information.
+//
+// Exceptions: when the user interaction is already covered by another
+// appropriate interface such as #AtkEditableText (insert/delete text,
+// etc.) or #AtkValue (set value) then these actions should not be
+// exposed by #AtkAction as well.
+//
+// Though most UI interactions on components should be invocable via
+// keyboard as well as mouse, there will generally be a close mapping
+// between "mouse actions" that are possible on a component and the
+// AtkActions.  Where mouse and keyboard actions are redundant in
+// effect, #AtkAction should expose only one action rather than
+// exposing redundant actions if possible.  By convention we have been
+// using "mouse centric" terminology for #AtkAction names.
+/*
+
+C record/class : AtkAction
+*/
 type Action struct {
 	native *C.AtkAction
 }
@@ -259,7 +279,20 @@ func (recv *Action) SetDescription(i int32, desc string) bool {
 	return retGo
 }
 
-// Component is a wrapper around the C record AtkComponent.
+// #AtkComponent should be implemented by most if not all UI elements
+// with an actual on-screen presence, i.e. components which can be
+// said to have a screen-coordinate bounding box.  Virtually all
+// widgets will need to have #AtkComponent implementations provided
+// for their corresponding #AtkObject class.  In short, only UI
+// elements which are *not* GUI elements will omit this ATK interface.
+//
+// A possible exception might be textual information with a
+// transparent background, in which case text glyph bounding box
+// information is provided by #AtkText.
+/*
+
+C record/class : AtkComponent
+*/
 type Component struct {
 	native *C.AtkComponent
 }
@@ -565,7 +598,17 @@ func (recv *Component) SetSize(width int32, height int32) bool {
 	return retGo
 }
 
-// Document is a wrapper around the C record AtkDocument.
+// The AtkDocument interface should be supported by any object whose
+// content is a representation or view of a document.  The AtkDocument
+// interface should appear on the toplevel container for the document
+// content; however AtkDocument instances may be nested (i.e. an
+// AtkDocument may be a descendant of another AtkDocument) in those
+// cases where one document contains "embedded content" which can
+// reasonably be considered a document in its own right.
+/*
+
+C record/class : AtkDocument
+*/
 type Document struct {
 	native *C.AtkDocument
 }
@@ -799,7 +842,19 @@ func (recv *Document) GetLocale() string {
 	return retGo
 }
 
-// EditableText is a wrapper around the C record AtkEditableText.
+// #AtkEditableText should be implemented by UI components which
+// contain text which the user can edit, via the #AtkObject
+// corresponding to that component (see #AtkObject).
+//
+// #AtkEditableText is a subclass of #AtkText, and as such, an object
+// which implements #AtkEditableText is by definition an #AtkText
+// implementor as well.
+//
+// See also: #AtkText
+/*
+
+C record/class : AtkEditableText
+*/
 type EditableText struct {
 	native *C.AtkEditableText
 }
@@ -914,7 +969,38 @@ func (recv *EditableText) SetTextContents(string string) {
 	return
 }
 
-// HyperlinkImpl is a wrapper around the C record AtkHyperlinkImpl.
+// AtkHyperlinkImpl allows AtkObjects to refer to their associated
+// AtkHyperlink instance, if one exists.  AtkHyperlinkImpl differs
+// from AtkHyperlink in that AtkHyperlinkImpl is an interface, whereas
+// AtkHyperlink is a object type.  The AtkHyperlinkImpl interface
+// allows a client to query an AtkObject for the availability of an
+// associated AtkHyperlink instance, and obtain that instance.  It is
+// thus particularly useful in cases where embedded content or inline
+// content within a text object is present, since the embedding text
+// object implements AtkHypertext and the inline/embedded objects are
+// exposed as children which implement AtkHyperlinkImpl, in addition
+// to their being obtainable via AtkHypertext:getLink followed by
+// AtkHyperlink:getObject.
+//
+// The AtkHyperlinkImpl interface should be supported by objects
+// exposed within the hierarchy as children of an AtkHypertext
+// container which correspond to "links" or embedded content within
+// the text.  HTML anchors are not, for instance, normally exposed
+// this way, but embedded images and components which appear inline in
+// the content of a text object are. The AtkHyperlinkIface interface
+// allows a means of determining which children are hyperlinks in this
+// sense of the word, and for obtaining their corresponding
+// AtkHyperlink object, from which the embedding range, URI, etc. can
+// be obtained.
+//
+// To some extent this interface exists because, for historical
+// reasons, AtkHyperlink was defined as an object type, not an
+// interface.  Thus, in order to interact with AtkObjects via
+// AtkHyperlink semantics, a new interface was required.
+/*
+
+C record/class : AtkHyperlinkImpl
+*/
 type HyperlinkImpl struct {
 	native *C.AtkHyperlinkImpl
 }
@@ -935,7 +1021,18 @@ func (recv *HyperlinkImpl) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Hypertext is a wrapper around the C record AtkHypertext.
+// An interface used for objects which implement linking between
+// multiple resource or content locations, or multiple 'markers'
+// within a single document.  A Hypertext instance is associated with
+// one or more Hyperlinks, which are associated with particular
+// offsets within the Hypertext's included content.  While this
+// interface is derived from Text, there is no requirement that
+// Hypertext instances have textual content; they may implement Image
+// as well, and Hyperlinks need not have non-zero text offsets.
+/*
+
+C record/class : AtkHypertext
+*/
 type Hypertext struct {
 	native *C.AtkHypertext
 }
@@ -1000,7 +1097,23 @@ func (recv *Hypertext) GetNLinks() int32 {
 	return retGo
 }
 
-// Image is a wrapper around the C record AtkImage.
+// #AtkImage should be implemented by #AtkObject subtypes on behalf of
+// components which display image/pixmap information onscreen, and
+// which provide information (other than just widget borders, etc.)
+// via that image content.  For instance, icons, buttons with icons,
+// toolbar elements, and image viewing panes typically should
+// implement #AtkImage.
+//
+// #AtkImage primarily provides two types of information: coordinate
+// information (useful for screen review mode of screenreaders, and
+// for use by onscreen magnifiers), and descriptive information.  The
+// descriptive information is provided for alternative, text-only
+// presentation of the most significant information present in the
+// image.
+/*
+
+C record/class : AtkImage
+*/
 type Image struct {
 	native *C.AtkImage
 }
@@ -1091,7 +1204,13 @@ func (recv *Image) SetImageDescription(description string) bool {
 	return retGo
 }
 
-// ImplementorIface is a wrapper around the C record AtkImplementorIface.
+// The AtkImplementor interface is implemented by objects for which
+// AtkObject peers may be obtained via calls to
+// iface->(ref_accessible)(implementor);
+/*
+
+C record/class : AtkImplementorIface
+*/
 type ImplementorIface struct {
 	native *C.AtkImplementorIface
 }
@@ -1112,7 +1231,20 @@ func (recv *ImplementorIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Selection is a wrapper around the C record AtkSelection.
+// #AtkSelection should be implemented by UI components with children
+// which are exposed by #atk_object_ref_child and
+// #atk_object_get_n_children, if the use of the parent UI component
+// ordinarily involves selection of one or more of the objects
+// corresponding to those #AtkObject children - for example,
+// selectable lists.
+//
+// Note that other types of "selection" (for instance text selection)
+// are accomplished a other ATK interfaces - #AtkSelection is limited
+// to the selection/deselection of children.
+/*
+
+C record/class : AtkSelection
+*/
 type Selection struct {
 	native *C.AtkSelection
 }
@@ -1303,7 +1435,26 @@ func (recv *Selection) SelectAllSelection() bool {
 	return retGo
 }
 
-// StreamableContent is a wrapper around the C record AtkStreamableContent.
+// An interface whereby an object allows its backing content to be
+// streamed to clients.  Typical implementors would be images or
+// icons, HTML content, or multimedia display/rendering widgets.
+//
+// Negotiation of content type is allowed. Clients may examine the
+// backing data and transform, convert, or parse the content in order
+// to present it in an alternate form to end-users.
+//
+// The AtkStreamableContent interface is particularly useful for
+// saving, printing, or post-processing entire documents, or for
+// persisting alternate views of a document. If document content
+// itself is being serialized, stored, or converted, then use of the
+// AtkStreamableContent interface can help address performance
+// issues. Unlike most ATK interfaces, this interface is not strongly
+// tied to the current user-agent view of the a particular document,
+// but may in some cases give access to the underlying model data.
+/*
+
+C record/class : AtkStreamableContent
+*/
 type StreamableContent struct {
 	native *C.AtkStreamableContent
 }
@@ -1353,7 +1504,38 @@ func (recv *StreamableContent) GetNMimeTypes() int32 {
 
 // Unsupported : atk_streamable_content_get_stream : return type : Blacklisted record : GIOChannel
 
-// Table is a wrapper around the C record AtkTable.
+// #AtkTable should be implemented by components which present
+// elements ordered via rows and columns.  It may also be used to
+// present tree-structured information if the nodes of the trees can
+// be said to contain multiple "columns".  Individual elements of an
+// #AtkTable are typically referred to as "cells". Those cells should
+// implement the interface #AtkTableCell, but #Atk doesn't require
+// them to be direct children of the current #AtkTable. They can be
+// grand-children, grand-grand-children etc. #AtkTable provides the
+// API needed to get a individual cell based on the row and column
+// numbers.
+//
+// Children of #AtkTable are frequently "lightweight" objects, that
+// is, they may not have backing widgets in the host UI toolkit.  They
+// are therefore often transient.
+//
+// Since tables are often very complex, #AtkTable includes provision
+// for offering simplified summary information, as well as row and
+// column headers and captions.  Headers and captions are #AtkObjects
+// which may implement other interfaces (#AtkText, #AtkImage, etc.) as
+// appropriate.  #AtkTable summaries may themselves be (simplified)
+// #AtkTables, etc.
+//
+// Note for implementors: in the past, #AtkTable required that all the
+// cells should be direct children of #AtkTable, and provided some
+// index based methods to request the cells. The practice showed that
+// that forcing made #AtkTable implementation complex, and hard to
+// expose other kind of children, like rows or captions. Right now,
+// index-based methods are deprecated.
+/*
+
+C record/class : AtkTable
+*/
 type Table struct {
 	native *C.AtkTable
 }
@@ -1975,7 +2157,15 @@ func (recv *Table) SetSummary(accessible *Object) {
 	return
 }
 
-// TableCell is a wrapper around the C record AtkTableCell.
+// Being #AtkTable a component which present elements ordered via rows
+// and columns, an #AtkTableCell is the interface which each of those
+// elements, so "cells" should implement.
+//
+// See also #AtkTable.
+/*
+
+C record/class : AtkTableCell
+*/
 type TableCell struct {
 	native *C.AtkTableCell
 }
@@ -1996,7 +2186,29 @@ func (recv *TableCell) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Text is a wrapper around the C record AtkText.
+// #AtkText should be implemented by #AtkObjects on behalf of widgets
+// that have text content which is either attributed or otherwise
+// non-trivial.  #AtkObjects whose text content is simple,
+// unattributed, and very brief may expose that content via
+// #atk_object_get_name instead; however if the text is editable,
+// multi-line, typically longer than three or four words, attributed,
+// selectable, or if the object already uses the 'name' ATK property
+// for other information, the #AtkText interface should be used to
+// expose the text content.  In the case of editable text content,
+// #AtkEditableText (a subtype of the #AtkText interface) should be
+// implemented instead.
+//
+// #AtkText provides not only traversal facilities and change
+// notification for text content, but also caret tracking and glyph
+// bounding box calculations.  Note that the text strings are exposed
+// as UTF-8, and are therefore potentially multi-byte, and
+// caret-to-byte offset mapping makes no assumptions about the
+// character length; also bounding box glyph-to-offset mapping may be
+// complex for languages which use ligatures.
+/*
+
+C record/class : AtkText
+*/
 type Text struct {
 	native *C.AtkText
 }
@@ -2445,7 +2657,150 @@ func (recv *Text) SetSelection(selectionNum int32, startOffset int32, endOffset 
 	return retGo
 }
 
-// Value is a wrapper around the C record AtkValue.
+// #AtkValue should be implemented for components which either display
+// a value from a bounded range, or which allow the user to specify a
+// value from a bounded range, or both. For instance, most sliders and
+// range controls, as well as dials, should have #AtkObject
+// representations which implement #AtkValue on the component's
+// behalf. #AtKValues may be read-only, in which case attempts to
+// alter the value return would fail.
+//
+// <refsect1 id="current-value-text">
+// <title>On the subject of current value text</title>
+// <para>
+// In addition to providing the current value, implementors can
+// optionally provide an end-user-consumable textual description
+// associated with this value. This description should be included
+// when the numeric value fails to convey the full, on-screen
+// representation seen by users.
+// </para>
+//
+// <example>
+// <title>Password strength</title>
+// A password strength meter whose value changes as the user types
+// their new password. Red is used for values less than 4.0, yellow
+// for values between 4.0 and 7.0, and green for values greater than
+// 7.0. In this instance, value text should be provided by the
+// implementor. Appropriate value text would be "weak", "acceptable,"
+// and "strong" respectively.
+// </example>
+//
+// A level bar whose value changes to reflect the battery charge. The
+// color remains the same regardless of the charge and there is no
+// on-screen text reflecting the fullness of the battery. In this
+// case, because the position within the bar is the only indication
+// the user has of the current charge, value text should not be
+// provided by the implementor.
+//
+// <refsect2 id="implementor-notes">
+// <title>Implementor Notes</title>
+// <para>
+// Implementors should bear in mind that assistive technologies will
+// likely prefer the value text provided over the numeric value when
+// presenting a widget's value. As a result, strings not intended for
+// end users should not be exposed in the value text, and strings
+// which are exposed should be localized. In the case of widgets which
+// display value text on screen, for instance through a separate label
+// in close proximity to the value-displaying widget, it is still
+// expected that implementors will expose the value text using the
+// above API.
+// </para>
+//
+// <para>
+// #AtkValue should NOT be implemented for widgets whose displayed
+// value is not reflective of a meaningful amount. For instance, a
+// progress pulse indicator whose value alternates between 0.0 and 1.0
+// to indicate that some process is still taking place should not
+// implement #AtkValue because the current value does not reflect
+// progress towards completion.
+// </para>
+// </refsect2>
+// </refsect1>
+//
+// <refsect1 id="ranges">
+// <title>On the subject of ranges</title>
+// <para>
+// In addition to providing the minimum and maximum values,
+// implementors can optionally provide details about subranges
+// associated with the widget. These details should be provided by the
+// implementor when both of the following are communicated visually to
+// the end user:
+// </para>
+// <itemizedlist>
+// <listitem>The existence of distinct ranges such as "weak",
+// "acceptable", and "strong" indicated by color, bar tick marks,
+// and/or on-screen text.</listitem>
+// <listitem>Where the current value stands within a given subrange,
+// for instance illustrating progression from very "weak" towards
+// nearly "acceptable" through changes in shade and/or position on
+// the bar within the "weak" subrange.</listitem>
+// </itemizedlist>
+// <para>
+// If both of the above do not apply to the widget, it should be
+// sufficient to expose the numeric value, along with the value text
+// if appropriate, to make the widget accessible.
+// </para>
+//
+// <refsect2 id="ranges-implementor-notes">
+// <title>Implementor Notes</title>
+// <para>
+// If providing subrange details is deemed necessary, all possible
+// values of the widget are expected to fall within one of the
+// subranges defined by the implementor.
+// </para>
+// </refsect2>
+// </refsect1>
+//
+// <refsect1 id="localization">
+// <title>On the subject of localization of end-user-consumable text
+// values</title>
+// <para>
+// Because value text and subrange descriptors are human-consumable,
+// implementors are expected to provide localized strings which can be
+// directly presented to end users via their assistive technology. In
+// order to simplify this for implementors, implementors can use
+// atk_value_type_get_localized_name() with the following
+// already-localized constants for commonly-needed values can be used:
+// </para>
+//
+// <itemizedlist>
+// <listitem>ATK_VALUE_VERY_WEAK</listitem>
+// <listitem>ATK_VALUE_WEAK</listitem>
+// <listitem>ATK_VALUE_ACCEPTABLE</listitem>
+// <listitem>ATK_VALUE_STRONG</listitem>
+// <listitem>ATK_VALUE_VERY_STRONG</listitem>
+// <listitem>ATK_VALUE_VERY_LOW</listitem>
+// <listitem>ATK_VALUE_LOW</listitem>
+// <listitem>ATK_VALUE_MEDIUM</listitem>
+// <listitem>ATK_VALUE_HIGH</listitem>
+// <listitem>ATK_VALUE_VERY_HIGH</listitem>
+// <listitem>ATK_VALUE_VERY_BAD</listitem>
+// <listitem>ATK_VALUE_BAD</listitem>
+// <listitem>ATK_VALUE_GOOD</listitem>
+// <listitem>ATK_VALUE_VERY_GOOD</listitem>
+// <listitem>ATK_VALUE_BEST</listitem>
+// <listitem>ATK_VALUE_SUBSUBOPTIMAL</listitem>
+// <listitem>ATK_VALUE_SUBOPTIMAL</listitem>
+// <listitem>ATK_VALUE_OPTIMAL</listitem>
+// </itemizedlist>
+// <para>
+// Proposals for additional constants, along with their use cases,
+// should be submitted to the GNOME Accessibility Team.
+// </para>
+// </refsect1>
+//
+// <refsect1 id="changes">
+// <title>On the subject of changes</title>
+// <para>
+// Note that if there is a textual description associated with the new
+// numeric value, that description should be included regardless of
+// whether or not it has also changed.
+// </para>
+// </refsect1>
+/*
+
+C record/class : AtkValue
+*/
 type Value struct {
 	native *C.AtkValue
 }
@@ -2528,7 +2883,13 @@ func (recv *Value) SetCurrentValue(value *gobject.Value) bool {
 	return retGo
 }
 
-// Window is a wrapper around the C record AtkWindow.
+// #AtkWindow should be implemented by the UI elements that represent
+// a top-level window, such as the main window of an application or
+// dialog.
+/*
+
+C record/class : AtkWindow
+*/
 type Window struct {
 	native *C.AtkWindow
 }
