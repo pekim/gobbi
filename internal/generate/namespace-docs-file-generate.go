@@ -37,6 +37,11 @@ func (f *DocFile) writef(format string, args ...interface{}) {
 }
 
 func (ns Namespace) generateDocFile(name string, callback func(docfile *DocFile)) {
+	err := os.MkdirAll(ns.docsDir, 0775)
+	if err != nil {
+		panic(err)
+	}
+
 	filename := path.Join(ns.docsDir, name)
 	file, err := os.OpenFile(filename, os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {

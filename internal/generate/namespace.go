@@ -39,7 +39,7 @@ func (ns *Namespace) init(repo *Repository) {
 	ns.repo = repo
 	ns.goPackageName = strings.ToLower(ns.Name)
 	ns.fullGoPackageName = fmt.Sprintf("github.com/pekim/gobbi/lib/%s", ns.goPackageName)
-	ns.docsDir = projectFilepath("mdbook", "lib", ns.goPackageName)
+	ns.docsDir = projectFilepath(bookDir, "lib", ns.goPackageName)
 	ns.libDir = projectFilepath("lib", ns.goPackageName)
 
 	ns.Aliases.init(ns)

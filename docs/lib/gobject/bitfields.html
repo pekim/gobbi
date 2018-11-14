@@ -1,0 +1,1033 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>bitfields · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-theme-api/theme-api.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="constant.html" />
+    
+    
+    <link rel="prev" href="package.md" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../getting-started.html">
+            
+                <a href="../../getting-started.html">
+            
+                    
+                    Getting started
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../application-lifecycle.html">
+            
+                <a href="../../application-lifecycle.html">
+            
+                    
+                    Application lifecycle
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../../build-tags.html">
+            
+                <a href="../../build-tags.html">
+            
+                    
+                    Build tags (library versions)
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../../casting.html">
+            
+                <a href="../../casting.html">
+            
+                    
+                    Casting
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../../goroutines.html">
+            
+                <a href="../../goroutines.html">
+            
+                    
+                    Goroutines
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../../gvalue.html">
+            
+                <a href="../../gvalue.html">
+            
+                    
+                    gobject.Value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../../signal-handling.html">
+            
+                <a href="../../signal-handling.html">
+            
+                    
+                    Signal handling
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../../api.md">
+            
+                <span>
+            
+                    
+                    API
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../atk/package.md">
+            
+                <span>
+            
+                    
+                    atk
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1.1" data-path="../atk/bitfields.html">
+            
+                <a href="../atk/bitfields.html">
+            
+                    
+                    bitfields
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.2" data-path="../atk/constant.html">
+            
+                <a href="../atk/constant.html">
+            
+                    
+                    constants
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.3" data-path="../atk/enums.html">
+            
+                <a href="../atk/enums.html">
+            
+                    
+                    enums
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../glib/package.md">
+            
+                <span>
+            
+                    
+                    glib
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.2.1" data-path="../glib/bitfields.html">
+            
+                <a href="../glib/bitfields.html">
+            
+                    
+                    bitfields
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.2" data-path="../glib/constant.html">
+            
+                <a href="../glib/constant.html">
+            
+                    
+                    constants
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.3" data-path="../glib/enums.html">
+            
+                <a href="../glib/enums.html">
+            
+                    
+                    enums
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="package.md">
+            
+                <span>
+            
+                    
+                    gobject
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.9.3.1" data-path="bitfields.html">
+            
+                <a href="bitfields.html">
+            
+                    
+                    bitfields
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.2" data-path="constant.html">
+            
+                <a href="constant.html">
+            
+                    
+                    constants
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.3" data-path="enums.html">
+            
+                <a href="enums.html">
+            
+                    
+                    enums
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="../gdk/package.md">
+            
+                <span>
+            
+                    
+                    gdk
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.4.1" data-path="../gdk/bitfields.html">
+            
+                <a href="../gdk/bitfields.html">
+            
+                    
+                    bitfields
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.2" data-path="../gdk/constant.html">
+            
+                <a href="../gdk/constant.html">
+            
+                    
+                    constants
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.3" data-path="../gdk/enums.html">
+            
+                <a href="../gdk/enums.html">
+            
+                    
+                    enums
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5" data-path="../gdkpixbuf/package.md">
+            
+                <span>
+            
+                    
+                    gdkpixbuf
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.5.1" data-path="../gdkpixbuf/bitfields.html">
+            
+                <a href="../gdkpixbuf/bitfields.html">
+            
+                    
+                    bitfields
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5.2" data-path="../gdkpixbuf/constant.html">
+            
+                <a href="../gdkpixbuf/constant.html">
+            
+                    
+                    constants
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5.3" data-path="../gdkpixbuf/enums.html">
+            
+                <a href="../gdkpixbuf/enums.html">
+            
+                    
+                    enums
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.6" data-path="../gio/package.md">
+            
+                <span>
+            
+                    
+                    gio
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.6.1" data-path="../gio/bitfields.html">
+            
+                <a href="../gio/bitfields.html">
+            
+                    
+                    bitfields
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.6.2" data-path="../gio/constant.html">
+            
+                <a href="../gio/constant.html">
+            
+                    
+                    constants
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.6.3" data-path="../gio/enums.html">
+            
+                <a href="../gio/enums.html">
+            
+                    
+                    enums
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.7" data-path="../gtk/package.md">
+            
+                <span>
+            
+                    
+                    gtk
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.7.1" data-path="../gtk/bitfields.html">
+            
+                <a href="../gtk/bitfields.html">
+            
+                    
+                    bitfields
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.7.2" data-path="../gtk/constant.html">
+            
+                <a href="../gtk/constant.html">
+            
+                    
+                    constants
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.7.3" data-path="../gtk/enums.html">
+            
+                <a href="../gtk/enums.html">
+            
+                    
+                    enums
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.8" data-path="../pango/package.md">
+            
+                <span>
+            
+                    
+                    pango
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.8.1" data-path="../pango/bitfields.html">
+            
+                <a href="../pango/bitfields.html">
+            
+                    
+                    bitfields
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.8.2" data-path="../pango/constant.html">
+            
+                <a href="../pango/constant.html">
+            
+                    
+                    constants
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.8.3" data-path="../pango/enums.html">
+            
+                <a href="../pango/enums.html">
+            
+                    
+                    enums
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.9" data-path="../cairo/package.md">
+            
+                <span>
+            
+                    
+                    cairo
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.9.1" data-path="../cairo/bitfields.html">
+            
+                <a href="../cairo/bitfields.html">
+            
+                    
+                    bitfields
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.9.2" data-path="../cairo/constant.html">
+            
+                <a href="../cairo/constant.html">
+            
+                    
+                    constants
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.9.3" data-path="../cairo/enums.html">
+            
+                <a href="../cairo/enums.html">
+            
+                    
+                    enums
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >bitfields</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="gobject-bitfields"><code>gobject</code> bitfields</h1>
+<h2 id="bindingflags"><code>BindingFlags</code></h2>
+<p>Flags to be passed to g_object_bind_property() or
+g_object_bind_property_full().</p>
+<p>This enumeration can be extended at later date.</p>
+<p>C - <code>GBindingFlags</code></p>
+<h3 id="bindingdefault--0">BINDING_DEFAULT = 0</h3>
+<p>The default binding; if the source property
+  changes, the target property is updated with its value.</p>
+<h3 id="bindingbidirectional--1">BINDING_BIDIRECTIONAL = 1</h3>
+<p>Bidirectional binding; if either the
+  property of the source or the property of the target changes,
+  the other is updated.</p>
+<h3 id="bindingsynccreate--2">BINDING_SYNC_CREATE = 2</h3>
+<p>Synchronize the values of the source and
+  target properties when creating the binding; the direction of
+  the synchronization is always from the source to the target.</p>
+<h3 id="bindinginvertboolean--4">BINDING_INVERT_BOOLEAN = 4</h3>
+<p>If the two properties being bound are
+  booleans, setting one to %TRUE will result in the other being
+  set to %FALSE and vice versa. This flag will only work for
+  boolean properties, and cannot be used when passing custom
+  transformation functions to g_object_bind_property_full().</p>
+<h2 id="connectflags"><code>ConnectFlags</code></h2>
+<p>The connection flags are used to specify the behaviour of a signal&apos;s
+connection.</p>
+<p>C - <code>GConnectFlags</code></p>
+<h3 id="connectafter--1">CONNECT_AFTER = 1</h3>
+<p>whether the handler should be called before or after the
+ default handler of the signal.</p>
+<h3 id="connectswapped--2">CONNECT_SWAPPED = 2</h3>
+<p>whether the instance and data should be swapped when
+ calling the handler; see g_signal_connect_swapped() for an example.</p>
+<h2 id="paramflags"><code>ParamFlags</code></h2>
+<p>Through the #GParamFlags flag values, certain aspects of parameters
+can be configured. See also #G_PARAM_STATIC_STRINGS.</p>
+<p>C - <code>GParamFlags</code></p>
+<h3 id="paramreadable--1">PARAM_READABLE = 1</h3>
+<p>the parameter is readable</p>
+<h3 id="paramwritable--2">PARAM_WRITABLE = 2</h3>
+<p>the parameter is writable</p>
+<h3 id="paramreadwrite--3">PARAM_READWRITE = 3</h3>
+<p>alias for %G_PARAM_READABLE | %G_PARAM_WRITABLE</p>
+<h3 id="paramconstruct--4">PARAM_CONSTRUCT = 4</h3>
+<p>the parameter will be set upon object construction</p>
+<h3 id="paramconstructonly--8">PARAM_CONSTRUCT_ONLY = 8</h3>
+<p>the parameter can only be set upon object construction</p>
+<h3 id="paramlaxvalidation--16">PARAM_LAX_VALIDATION = 16</h3>
+<p>upon parameter conversion (see g_param_value_convert())
+ strict validation is not required</p>
+<h3 id="paramstaticname--32">PARAM_STATIC_NAME = 32</h3>
+<p>the string used as name when constructing the
+ parameter is guaranteed to remain valid and
+ unmodified for the lifetime of the parameter.
+ Since 2.8</p>
+<h3 id="paramprivate--32">PARAM_PRIVATE = 32</h3>
+<p>internal</p>
+<h3 id="paramstaticnick--64">PARAM_STATIC_NICK = 64</h3>
+<p>the string used as nick when constructing the
+ parameter is guaranteed to remain valid and
+ unmmodified for the lifetime of the parameter.
+ Since 2.8</p>
+<h3 id="paramstaticblurb--128">PARAM_STATIC_BLURB = 128</h3>
+<p>the string used as blurb when constructing the
+ parameter is guaranteed to remain valid and
+ unmodified for the lifetime of the parameter.
+ Since 2.8</p>
+<h3 id="paramexplicitnotify--1073741824">PARAM_EXPLICIT_NOTIFY = 1073741824</h3>
+<p>calls to g_object_set_property() for this
+  property will not automatically result in a &quot;notify&quot; signal being
+  emitted: the implementation must call g_object_notify() themselves
+  in case the property actually changes.  Since: 2.42.</p>
+<h3 id="2147483648">= 2147483648</h3>
+<p>the parameter is deprecated and will be removed
+ in a future version. A warning will be generated if it is used
+ while running with G_ENABLE_DIAGNOSTIC=1.
+ Since 2.26</p>
+<h2 id="signalflags"><code>SignalFlags</code></h2>
+<p>The signal flags are used to specify a signal&apos;s behaviour, the overall
+signal description outlines how especially the RUN flags control the
+stages of a signal emission.</p>
+<p>C - <code>GSignalFlags</code></p>
+<h3 id="signalrunfirst--1">SIGNAL_RUN_FIRST = 1</h3>
+<p>Invoke the object method handler in the first emission stage.</p>
+<h3 id="signalrunlast--2">SIGNAL_RUN_LAST = 2</h3>
+<p>Invoke the object method handler in the third emission stage.</p>
+<h3 id="signalruncleanup--4">SIGNAL_RUN_CLEANUP = 4</h3>
+<p>Invoke the object method handler in the last emission stage.</p>
+<h3 id="signalnorecurse--8">SIGNAL_NO_RECURSE = 8</h3>
+<p>Signals being emitted for an object while currently being in
+ emission for this very object will not be emitted recursively,
+ but instead cause the first emission to be restarted.</p>
+<h3 id="signaldetailed--16">SIGNAL_DETAILED = 16</h3>
+<p>This signal supports &quot;::detail&quot; appendices to the signal name
+ upon handler connections and emissions.</p>
+<h3 id="signalaction--32">SIGNAL_ACTION = 32</h3>
+<p>Action signals are signals that may freely be emitted on alive
+ objects from user code via g_signal_emit() and friends, without
+ the need of being embedded into extra code that performs pre or
+ post emission adjustments on the object. They can also be thought
+ of as object methods which can be called generically by
+ third-party code.</p>
+<h3 id="signalnohooks--64">SIGNAL_NO_HOOKS = 64</h3>
+<p>No emissions hooks are supported for this signal.</p>
+<h3 id="signalmustcollect--128">SIGNAL_MUST_COLLECT = 128</h3>
+<p>Varargs signal emission will always collect the
+  arguments, even if there are no signal handlers connected.  Since 2.30.</p>
+<h3 id="signaldeprecated--256">SIGNAL_DEPRECATED = 256</h3>
+<p>The signal is deprecated and will be removed
+  in a future version. A warning will be generated if it is connected while
+  running with G_ENABLE_DIAGNOSTIC=1.  Since 2.32.</p>
+<h2 id="signalmatchtype"><code>SignalMatchType</code></h2>
+<p>The match types specify what g_signal_handlers_block_matched(),
+g_signal_handlers_unblock_matched() and g_signal_handlers_disconnect_matched()
+match signals by.</p>
+<p>C - <code>GSignalMatchType</code></p>
+<h3 id="signalmatchid--1">SIGNAL_MATCH_ID = 1</h3>
+<p>The signal id must be equal.</p>
+<h3 id="signalmatchdetail--2">SIGNAL_MATCH_DETAIL = 2</h3>
+<p>The signal detail be equal.</p>
+<h3 id="signalmatchclosure--4">SIGNAL_MATCH_CLOSURE = 4</h3>
+<p>The closure must be the same.</p>
+<h3 id="signalmatchfunc--8">SIGNAL_MATCH_FUNC = 8</h3>
+<p>The C closure callback must be the same.</p>
+<h3 id="signalmatchdata--16">SIGNAL_MATCH_DATA = 16</h3>
+<p>The closure data must be the same.</p>
+<h3 id="signalmatchunblocked--32">SIGNAL_MATCH_UNBLOCKED = 32</h3>
+<p>Only unblocked signals may matched.</p>
+<h2 id="typedebugflags"><code>TypeDebugFlags</code></h2>
+<p>These flags used to be passed to g_type_init_with_debug_flags() which
+is now deprecated.</p>
+<p>If you need to enable debugging features, use the GOBJECT_DEBUG
+environment variable.</p>
+<p>C - <code>GTypeDebugFlags</code></p>
+<h3 id="typedebugnone--0">TYPE_DEBUG_NONE = 0</h3>
+<p>Print no messages</p>
+<h3 id="typedebugobjects--1">TYPE_DEBUG_OBJECTS = 1</h3>
+<p>Print messages about object bookkeeping</p>
+<h3 id="typedebugsignals--2">TYPE_DEBUG_SIGNALS = 2</h3>
+<p>Print messages about signal emissions</p>
+<h3 id="typedebuginstancecount--4">TYPE_DEBUG_INSTANCE_COUNT = 4</h3>
+<p>Keep a count of instances of each type</p>
+<h3 id="typedebugmask--7">TYPE_DEBUG_MASK = 7</h3>
+<p>Mask covering all debug flags</p>
+<h2 id="typeflags"><code>TypeFlags</code></h2>
+<p>Bit masks used to check or determine characteristics of a type.</p>
+<p>C - <code>GTypeFlags</code></p>
+<h3 id="typeflagabstract--16">TYPE_FLAG_ABSTRACT = 16</h3>
+<p>Indicates an abstract type. No instances can be
+ created for an abstract type</p>
+<h3 id="typeflagvalueabstract--32">TYPE_FLAG_VALUE_ABSTRACT = 32</h3>
+<p>Indicates an abstract value type, i.e. a type
+ that introduces a value table, but can&apos;t be used for
+ g_value_init()</p>
+<h2 id="typefundamentalflags"><code>TypeFundamentalFlags</code></h2>
+<p>Bit masks used to check or determine specific characteristics of a
+fundamental type.</p>
+<p>C - <code>GTypeFundamentalFlags</code></p>
+<h3 id="typeflagclassed--1">TYPE_FLAG_CLASSED = 1</h3>
+<p>Indicates a classed type</p>
+<h3 id="typeflaginstantiatable--2">TYPE_FLAG_INSTANTIATABLE = 2</h3>
+<p>Indicates an instantiable type (implies classed)</p>
+<h3 id="typeflagderivable--4">TYPE_FLAG_DERIVABLE = 4</h3>
+<p>Indicates a flat derivable type</p>
+<h3 id="typeflagdeepderivable--8">TYPE_FLAG_DEEP_DERIVABLE = 8</h3>
+<p>Indicates a deep derivable type (implies derivable)</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"bitfields","level":"1.9.3.1","depth":3,"next":{"title":"constants","level":"1.9.3.2","depth":3,"path":"lib/gobject/constant.md","ref":"./lib/gobject/constant.md","articles":[]},"previous":{"title":"gobject","level":"1.9.3","depth":2,"path":"lib/gobject/package.md","ref":"./lib/gobject/package.md","articles":[{"title":"bitfields","level":"1.9.3.1","depth":3,"path":"lib/gobject/bitfields.md","ref":"./lib/gobject/bitfields.md","articles":[]},{"title":"constants","level":"1.9.3.2","depth":3,"path":"lib/gobject/constant.md","ref":"./lib/gobject/constant.md","articles":[]},{"title":"enums","level":"1.9.3.3","depth":3,"path":"lib/gobject/enums.md","ref":"./lib/gobject/enums.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["-sharing","expandable-chapters","toolbar","theme-api"],"pluginsConfig":{"theme-api":{"languages":[],"split":true,"theme":"dark"},"toolbar":{"buttons":[{"label":"GitHub","icon":"fa fa-github","url":"https://github.com/pekim/gobbi","target":"_self"}]},"expandable-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"lib/gobject/bitfields.md","mtime":"2018-11-14T07:01:58.023Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-11-14T07:02:00.907Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-toolbar/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-theme-api/theme-api.js"></script>
+        
+    
+
+    </body>
+</html>
+

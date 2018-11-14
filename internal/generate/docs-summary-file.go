@@ -8,9 +8,11 @@ import (
 	"strings"
 )
 
+const bookDir = "gitbook"
+
 func initialiseDocsSummaryFile() {
-	filename := projectFilepath("mdbook", "SUMMARY.md")
-	baseFilename := projectFilepath("mdbook", "SUMMARY-base.md")
+	filename := projectFilepath(bookDir, "SUMMARY.md")
+	baseFilename := projectFilepath(bookDir, "SUMMARY-base.md")
 
 	file, err := os.Create(filename)
 	if err != nil {
@@ -32,14 +34,14 @@ func initialiseDocsSummaryFile() {
 
 func appendDocsSummaryFile(level int, name string, docFilepath string) {
 	relativePath, err := filepath.Rel(
-		projectFilepath("mdbook"),
+		projectFilepath(bookDir),
 		docFilepath,
 	)
 	if err != nil {
 		panic(err)
 	}
 
-	summaryFilename := projectFilepath("mdbook", "SUMMARY.md")
+	summaryFilename := projectFilepath(bookDir, "SUMMARY.md")
 	f, err := os.OpenFile(summaryFilename, os.O_APPEND|os.O_WRONLY, 0644)
 	if err != nil {
 		panic(err)

@@ -1,6 +1,6 @@
 # Summary
 
-- [Introduction](./introduction.md)
+- [Introduction](./README.md)
 - [Getting started](./getting-started.md)
 - [Application lifecycle](./application-lifecycle.md)  
 - [Build tags (library versions)](./build-tags.md)  
