@@ -23,6 +23,10 @@
     }
   },
 
+  "lunr": {
+    "maxIndexSize": 100000000
+  },
+
   "styles": {
     "website": "styles/website.css"
   }
