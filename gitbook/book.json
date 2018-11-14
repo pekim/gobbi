@@ -1,3 +1,11 @@
 {
-  "plugins": ["expandable-chapters"]
+  "plugins": [
+    "expandable-chapters",
+    "theme-api"
+  ],
+  "pluginsConfig": {
+    "theme-api": {
+      "theme": "dark"
+    }
+  }
 }
