@@ -38,8 +38,8 @@ generate () {
 }
 
 # pre-requisites
-#   yarn global add gitbook-cli gitbook-plugin-expandable-chapters
-#       (or 'npm -g gitbook-cli install gitbook-plugin-expandable-chapters')
+#   yarn global add gitbook-cli gitbook-plugin-expandable-chapters gitbook-plugin-nha-theme-api
+#       (OR npm -g gitbook-cli install gitbook-plugin-expandable-chapters gitbook-plugin-nha-theme-api)
 #   gitbook install gitbook/
 docs () {
     gitbook build gitbook/ docs/
