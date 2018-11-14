@@ -24,7 +24,7 @@
   },
 
   "lunr": {
-    "maxIndexSize": 100000000
+    "maxIndexSize": 1000000000
   },
 
   "styles": {

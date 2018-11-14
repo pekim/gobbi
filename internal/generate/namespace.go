@@ -82,7 +82,12 @@ func (ns *Namespace) generate() {
 	fmt.Printf("%-10s %s\n", ns.Name, ns.Version)
 
 	pkgDocFilePath := path.Join(ns.docsDir, "package.md")
-	appendDocsSummaryFile(1, ns.goPackageName, pkgDocFilePath)
+	ns.generateDocFile("package.md", func(file *DocFile) {
+		file.writeLinef("the package : %s", ns.goPackageName)
+		file.writeLine("")
+
+		appendDocsSummaryFile(1, ns.goPackageName, pkgDocFilePath)
+	})
 
 	ns.generateLibDir()
 	ns.generatePackageFile()
