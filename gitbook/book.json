@@ -1,11 +1,25 @@
 {
   "plugins": [
+    "-sharing",
     "expandable-chapters",
+    "toolbar",
     "theme-api"
   ],
+
   "pluginsConfig": {
     "theme-api": {
       "theme": "dark"
+    },
+
+    "toolbar": {
+      "buttons": [
+        {
+          "label": "GitHub",
+          "icon": "fa fa-github",
+          "url": "https://github.com/pekim/gobbi",
+          "target": "_self"
+        }
+      ]
     }
   }
 }
