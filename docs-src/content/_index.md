@@ -2,6 +2,6 @@
 
 qaz qwerty
 
-[top-l-a](./top-level-a.md)
+[top-l-a](./top-level-a)
 
 [other](./stuff/other)

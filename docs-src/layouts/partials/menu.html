@@ -1,6 +1,17 @@
 {{- $currentNode := . }}
 {{- $showvisitedlinks := .Site.Params.showVisitedLinks -}}
 
+<!-- main menu -->
+{{ $currentPage := . }}
+{{ range .Site.Menus.main }}
+    <li class="dd-item {{if eq .URL $currentPage.URL}} active{{end}}">
+        <div>
+            <a href="{{ .URL }}">
+                <span>{{ .Name }}</span>
+            </a>
+        </div>
+    </li>
+{{ end }}
 
 {{- if eq .Site.Params.ordersectionsby "title"}}
   {{- range .Site.Home.Sections.ByTitle}}
