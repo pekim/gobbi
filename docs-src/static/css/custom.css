@@ -1,3 +1,11 @@
+html {
+    font-size: 18px;
+}
+
+article > aside .menu .dd-item {
+    font-size: 16px;
+}
+
 article section.page h1:first-of-type {
     font-family: inherit;
     text-transform: none;
