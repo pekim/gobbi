@@ -1,7 +1,5 @@
 +++
-title="APIs"
-menu="main"
-weight="8"
+title="API"
 +++
 
 There is currently very little Godoc api documentation for gobbi.
