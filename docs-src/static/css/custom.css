@@ -8,5 +8,6 @@ article > aside .menu .dd-item {
 
 article section.page h1:first-of-type {
     font-family: inherit;
+    text-align: start;
     text-transform: none;
 }
