@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-	<meta name="generator" content="Hugo 0.51" />
     <title>gobbi</title>
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="revised" content="2018-11-16T18:09:48 GMT">
-<title>Introduction :: gobbi</title>
+<title>Build tags :: gobbi</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -23,7 +22,7 @@
 
     
   </head>
-  <body data-url="/">
+  <body data-url="/build-tags/">
     
       <header>
   <div class="logo">
@@ -50,7 +49,7 @@
     <ul class="menu">
 
 
-    <li class="dd-item  active">
+    <li class="dd-item ">
         <div>
             <a href="/">
                 <span>Introduction</span>
@@ -74,7 +73,7 @@
         </div>
     </li>
 
-    <li class="dd-item ">
+    <li class="dd-item  active">
         <div>
             <a href="/build-tags/">
                 <span>Build tags</span>
@@ -192,33 +191,70 @@
       </div>
     
 
+    <h1>Build tags</h1>
     
     
     
     
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
-</span>
- 
 
+<p>gobbi uses Go
+<a href="https://golang.org/pkg/go/build/#hdr-Build_Constraints">build tags</a>
+to allow targetting of specific library versions.
+This means that when using Go build tools
+(such as <code>go build</code> and <code>go run</code>)
+to build a gobbi application,
+use of the <code>-tags</code> flag will usually be necessary.</p>
 
-<h1 id="gobbi">gobbi</h1>
+<p>See
+<a href="https://dave.cheney.net/2013/10/12/how-to-use-conditional-compilation-with-the-go-build-tool">How to use conditional compilation with the go build tool</a>
+for more background about build tags.</p>
 
-<p><strong>gob</strong>ject <strong>bi</strong>ndings</p>
+<h2 id="no-tags">no tags</h2>
 
-<p>gobbi is a set of generated Go bindings for gobject based libraries.
-There are bindings, with varying degrees of completeness,
-for gtk, gdk, gdkpixbuf, gio, gobject, and glib.</p>
+<p>If a gobbi application is built with no tags specified,
+the only apis available will be those present in
+all version of the various gnome libraries.</p>
 
-<p>The intention is to provide the bindings required
-for writing gtk applications.
-So the focus is on supporting functions in the higher level
-libraries such as gtk, gdk, gdkpixbuf and gio.
-Much of the functionality provided by the lower level
-libraries, such as glib and gobject, is adequately supported
-in Go core packages.</p>
+<h2 id="tags-targetting-versions">tags targetting versions</h2>
 
+<p>To use an api that is only available from a specific
+version onwards,
+use a tag constructed from the library name and the version.</p>
 
+<p>For example
+<a href="https://developer.gnome.org/gtk3/stable/GtkBuilder.html#gtk-builder-new-from-file">gtk_builder_new_from_file</a>
+is only available from gtk 3.10 onwards.
+So to use it, a tag specifying 3.10 (or a later version)
+is required.</p>
+
+<pre><code>go build -tags gtk_3.10 my_app.go
+</code></pre>
+
+<h2 id="typical-tags">typical tags</h2>
+
+<p>If targetting Ubuntu 16.04 (Xenial Xerus) or later,
+the following tags would be a good starting point.</p>
+
+<pre><code>go build -tags &quot;glib_2.48 gdk_3.4 gdkpixbuf_2.32 gio_2.32 gtk_3.18&quot; my_app.go
+</code></pre>
+
+<h2 id="editors-ides">editors &amp; IDEs</h2>
+
+<p>Editors and IDE can provide better completion
+and error feedback if they are aware of the build
+tags that an application is to be built with.</p>
+
+<h3 id="vs-code">vs code</h3>
+
+<p>The relevant setting is <code>Go: Build Tags</code>.</p>
+
+<h3 id="goland">goland</h3>
+
+<p>In the <code>Settings...</code> dialog, the relevant setting can
+be found under
+- Go
+  - Vendoring &amp; Build Tags
+    - Custom tags</p>
 
 
     

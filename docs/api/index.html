@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-	<meta name="generator" content="Hugo 0.51" />
     <title>gobbi</title>
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="revised" content="2018-11-16T18:09:48 GMT">
-<title>Introduction :: gobbi</title>
+<title>APIs :: gobbi</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -23,7 +22,7 @@
 
     
   </head>
-  <body data-url="/">
+  <body data-url="/api/">
     
       <header>
   <div class="logo">
@@ -50,7 +49,7 @@
     <ul class="menu">
 
 
-    <li class="dd-item  active">
+    <li class="dd-item ">
         <div>
             <a href="/">
                 <span>Introduction</span>
@@ -106,7 +105,7 @@
         </div>
     </li>
 
-    <li class="dd-item ">
+    <li class="dd-item  active">
         <div>
             <a href="/api/">
                 <span>APIs</span>
@@ -192,33 +191,71 @@
       </div>
     
 
+    <h1>APIs</h1>
     
     
     
     
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
-</span>
- 
 
+<p>There is currently very little Godoc api documentation for gobbi.
+As most apis are relatively direct mappings of the C library
+APIs,
+the <a href="https://developer.gnome.org/references">Gnome libraries documentation</a>
+should provide enough information to gain some
+understanding of how to use the Go apis in gobbi.</p>
 
-<h1 id="gobbi">gobbi</h1>
+<h2 id="packages">packages</h2>
 
-<p><strong>gob</strong>ject <strong>bi</strong>ndings</p>
+<p>There is one go package for each Gnome library.</p>
 
-<p>gobbi is a set of generated Go bindings for gobject based libraries.
-There are bindings, with varying degrees of completeness,
-for gtk, gdk, gdkpixbuf, gio, gobject, and glib.</p>
+<h2 id="out-params">out params</h2>
 
-<p>The intention is to provide the bindings required
-for writing gtk applications.
-So the focus is on supporting functions in the higher level
-libraries such as gtk, gdk, gdkpixbuf and gio.
-Much of the functionality provided by the lower level
-libraries, such as glib and gobject, is adequately supported
-in Go core packages.</p>
+<p>Out parameters are mapped as return values in Go functions.
+Inout parameters are not yet supported, but when they are
+the will be exposed as both parameters and return values
+in Go functions.</p>
 
+<h2 id="inout-params">inout params</h2>
 
+<p>Inout parameters are not yet supported.</p>
+
+<h2 id="functions-returning-gerror">functions returning GError</h2>
+
+<p>Functions that have a GError out parameter, may return
+a Go <code>error</code>.
+The <code>error</code> (if not <code>nil</code>) will be a <code>glib.Error</code>,
+which has fields containing details of the error.</p>
+
+<h2 id="variadic-functions">variadic functions</h2>
+
+<p>Variadic api functions are not supported.</p>
+
+<h3 id="array-functions">array functions</h3>
+
+<p>In many cases the library provides an equivalent
+array based function that can be used instead.
+The names of the array-based functions often
+end in a &lsquo;v&rsquo;.</p>
+
+<p>The C arrays are represented as Go slices.</p>
+
+<p>In the case of such functions that accept two slice,
+be certain that they are both of the same length.
+The behaviour when they are not is undefined.</p>
+
+<h3 id="single-item-functions">single item functions</h3>
+
+<p>In other cases, instead of a variadic function
+that would operate on multiple values at once,
+there will be a supported function that operates
+on a single item at a time.</p>
+
+<h2 id="cairo-pango">cairo &amp; pango</h2>
+
+<p>These libraries currently have very little support,
+as the introspection date available for them is inadequate.
+Support may be added later, with manually generated
+bindings.</p>
 
 
     

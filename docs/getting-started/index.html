@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-	<meta name="generator" content="Hugo 0.51" />
     <title>gobbi</title>
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="revised" content="2018-11-16T18:09:48 GMT">
-<title>Introduction :: gobbi</title>
+<title>Getting started :: gobbi</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -23,7 +22,7 @@
 
     
   </head>
-  <body data-url="/">
+  <body data-url="/getting-started/">
     
       <header>
   <div class="logo">
@@ -50,7 +49,7 @@
     <ul class="menu">
 
 
-    <li class="dd-item  active">
+    <li class="dd-item ">
         <div>
             <a href="/">
                 <span>Introduction</span>
@@ -58,7 +57,7 @@
         </div>
     </li>
 
-    <li class="dd-item ">
+    <li class="dd-item  active">
         <div>
             <a href="/getting-started/">
                 <span>Getting started</span>
@@ -192,33 +191,66 @@
       </div>
     
 
+    <h1>Getting started</h1>
     
     
     
     
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
-</span>
- 
 
+<h2 id="pre-requisites">pre-requisites</h2>
 
-<h1 id="gobbi">gobbi</h1>
+<ul>
+<li>go 1.11 or later</li>
+<li>libraries
 
-<p><strong>gob</strong>ject <strong>bi</strong>ndings</p>
+<ul>
+<li>debian/ubuntu packages -
+<code>libatk1.0-dev libcairo2-dev libglib2.0-dev
+libgtk-3-dev libpango1.0-dev</code></li>
+<li>note that dev libraries are required because pkg-config
+and headers are necessary</li>
+</ul></li>
+<li>C compiler, and a linker
 
-<p>gobbi is a set of generated Go bindings for gobject based libraries.
-There are bindings, with varying degrees of completeness,
-for gtk, gdk, gdkpixbuf, gio, gobject, and glib.</p>
+<ul>
+<li>required because of the use of cgo</li>
+<li>for debian based distributions the <code>build-essential</code>
+package should suffice</li>
+</ul></li>
+</ul>
 
-<p>The intention is to provide the bindings required
-for writing gtk applications.
-So the focus is on supporting functions in the higher level
-libraries such as gtk, gdk, gdkpixbuf and gio.
-Much of the functionality provided by the lower level
-libraries, such as glib and gobject, is adequately supported
-in Go core packages.</p>
+<h2 id="running-examples">running examples</h2>
 
+<ul>
+<li><code>git clone https://github.com/pekim/gobbi.git</code></li>
+<li><code>cd gobbi</code></li>
+<li><code>./gobbi example simple_window</code>
 
+<ul>
+<li>Be patient.
+The first <code>go build</code> or <code>go run</code> will take quite a while,
+perhaps a few minutes.
+Subsequent builds of applications will be a <em>lot</em> quicker
+as cached gobbi packages will be used by the Go commands.</li>
+</ul></li>
+</ul>
+
+<p>Run <code>./gobbi examples</code> for a list of the available examples.</p>
+
+<h2 id="use-in-a-application">use in a application</h2>
+
+<p>Using gobbi in an application in no different to using
+most other libraries.</p>
+
+<p>To add gobbi to a project that make use of go modules
+use <code>go get</code>.</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">go get github.com/pekim/gobbi</code></pre></div>
+<p>Then import a package such as gtk.</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">import</span> <span style="color:#d88200">&#34;github.com/pekim/gobbi/lib/gtk&#34;</span></code></pre></div>
+<h2 id="build-tags">build tags</h2>
+
+<p>It will often be necessary to build gobbi applications
+with <a href="/build-tags">build tags</a>.</p>
 
 
     

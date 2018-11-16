@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>/</loc>
+  </url>
+  
+  <url>
+    <loc>/getting-started/</loc>
+  </url>
+  
+  <url>
+    <loc>/application-lifecycle/</loc>
+  </url>
+  
+  <url>
+    <loc>/build-tags/</loc>
+  </url>
+  
+  <url>
+    <loc>/downcasting-upcasting/</loc>
+  </url>
+  
+  <url>
+    <loc>/goroutines/</loc>
+  </url>
+  
+  <url>
+    <loc>/gvalue/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/</loc>
+  </url>
+  
+  <url>
+    <loc>/signal-handling/</loc>
+  </url>
+  
+  <url>
+    <loc>/stuff/</loc>
+  </url>
+  
+  <url>
+    <loc>/stuff/other/</loc>
+  </url>
+  
+  <url>
+    <loc>/_footer/</loc>
+  </url>
+  
+  <url>
+    <loc>/_header/</loc>
+  </url>
+  
+  <url>
+    <loc>/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/dir-2/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/dir-2/d2-f1/</loc>
+  </url>
+  
+</urlset>

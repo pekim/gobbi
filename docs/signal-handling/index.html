@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-	<meta name="generator" content="Hugo 0.51" />
     <title>gobbi</title>
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="revised" content="2018-11-16T18:09:48 GMT">
-<title>Introduction :: gobbi</title>
+<title>Signal handling :: gobbi</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -23,7 +22,7 @@
 
     
   </head>
-  <body data-url="/">
+  <body data-url="/signal-handling/">
     
       <header>
   <div class="logo">
@@ -50,7 +49,7 @@
     <ul class="menu">
 
 
-    <li class="dd-item  active">
+    <li class="dd-item ">
         <div>
             <a href="/">
                 <span>Introduction</span>
@@ -114,7 +113,7 @@
         </div>
     </li>
 
-    <li class="dd-item ">
+    <li class="dd-item  active">
         <div>
             <a href="/signal-handling/">
                 <span>Signal handling</span>
@@ -192,34 +191,43 @@
       </div>
     
 
+    <h1>Signal handling</h1>
     
     
     
     
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
-</span>
- 
 
+<h2 id="connecting">connecting</h2>
 
-<h1 id="gobbi">gobbi</h1>
+<p>To connect an object to a signal that it emits,
+call one of the object&rsquo;s <code>Connect...</code> methods.</p>
 
-<p><strong>gob</strong>ject <strong>bi</strong>ndings</p>
+<p>The connect methods all accept a handler argument
+that is a function with a specific signature.
+Some handlers have no parameters,
+others have one or more parameters that provide event-specific
+information.</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75af00">button</span> <span style="color:#f92672">:=</span> <span style="color:#75af00">gtk</span><span style="color:#111">.</span><span style="color:#75af00">ButtonNewWithLabel</span><span style="color:#111">(</span><span style="color:#d88200">&#34;a button&#34;</span><span style="color:#111">)</span>
+<span style="color:#75af00">button</span><span style="color:#111">.</span><span style="color:#75af00">Widget</span><span style="color:#111">().</span><span style="color:#75af00">SetEvents</span><span style="color:#111">(</span><span style="color:#111">int32</span><span style="color:#111">(</span><span style="color:#75af00">gdk</span><span style="color:#111">.</span><span style="color:#75af00">GDK_POINTER_MOTION_MASK</span><span style="color:#111">))</span>
+<span style="color:#75af00">button</span><span style="color:#111">.</span><span style="color:#75af00">Widget</span><span style="color:#111">().</span><span style="color:#75af00">ConnectMotionNotifyEvent</span><span style="color:#111">(</span>
+    <span style="color:#00a8c8">func</span><span style="color:#111">(</span><span style="color:#75af00">event</span> <span style="color:#f92672">*</span><span style="color:#75af00">gdk</span><span style="color:#111">.</span><span style="color:#75af00">EventMotion</span><span style="color:#111">)</span> <span style="color:#00a8c8">bool</span> <span style="color:#111">{</span>
+        <span style="color:#75af00">fmt</span><span style="color:#111">.</span><span style="color:#75af00">Println</span><span style="color:#111">(</span><span style="color:#75af00">event</span><span style="color:#111">.</span><span style="color:#75af00">Y</span><span style="color:#111">,</span> <span style="color:#75af00">event</span><span style="color:#111">.</span><span style="color:#75af00">Y</span><span style="color:#111">)</span>
+        <span style="color:#00a8c8">return</span> <span style="color:#00a8c8">false</span>
+    <span style="color:#111">})</span></code></pre></div>
+<p>Remember that it may be necessary to upcast to access the
+desired connect method.</p>
 
-<p>gobbi is a set of generated Go bindings for gobject based libraries.
-There are bindings, with varying degrees of completeness,
-for gtk, gdk, gdkpixbuf, gio, gobject, and glib.</p>
+<h1 id="disconnecting">disconnecting</h1>
 
-<p>The intention is to provide the bindings required
-for writing gtk applications.
-So the focus is on supporting functions in the higher level
-libraries such as gtk, gdk, gdkpixbuf and gio.
-Much of the functionality provided by the lower level
-libraries, such as glib and gobject, is adequately supported
-in Go core packages.</p>
-
-
-
+<p>All of the <code>Connect...</code> methods return a handler id.
+The id may be used later to disconnect the handler.</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go">    <span style="color:#75af00">connectId</span> <span style="color:#f92672">:=</span> <span style="color:#75af00">button</span><span style="color:#111">.</span><span style="color:#75af00">ConnectClicked</span><span style="color:#111">(</span><span style="color:#00a8c8">func</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+        <span style="color:#f92672">...</span>
+    <span style="color:#111">})</span>
+    
+    <span style="color:#f92672">...</span>
+    
+    <span style="color:#75af00">button</span><span style="color:#111">.</span><span style="color:#75af00">DisconnectClicked</span><span style="color:#111">(</span><span style="color:#75af00">connectId</span><span style="color:#111">)</span></code></pre></div>
 
     
     

@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-	<meta name="generator" content="Hugo 0.51" />
     <title>gobbi</title>
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="revised" content="2018-11-16T18:09:48 GMT">
-<title>Introduction :: gobbi</title>
+<title>Goroutines :: gobbi</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -23,7 +22,7 @@
 
     
   </head>
-  <body data-url="/">
+  <body data-url="/goroutines/">
     
       <header>
   <div class="logo">
@@ -50,7 +49,7 @@
     <ul class="menu">
 
 
-    <li class="dd-item  active">
+    <li class="dd-item ">
         <div>
             <a href="/">
                 <span>Introduction</span>
@@ -90,7 +89,7 @@
         </div>
     </li>
 
-    <li class="dd-item ">
+    <li class="dd-item  active">
         <div>
             <a href="/goroutines/">
                 <span>Goroutines</span>
@@ -192,33 +191,23 @@
       </div>
     
 
+    <h1>Goroutines</h1>
     
     
     
-    
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
-</span>
- 
-
-
-<h1 id="gobbi">gobbi</h1>
-
-<p><strong>gob</strong>ject <strong>bi</strong>ndings</p>
-
-<p>gobbi is a set of generated Go bindings for gobject based libraries.
-There are bindings, with varying degrees of completeness,
-for gtk, gdk, gdkpixbuf, gio, gobject, and glib.</p>
-
-<p>The intention is to provide the bindings required
-for writing gtk applications.
-So the focus is on supporting functions in the higher level
-libraries such as gtk, gdk, gdkpixbuf and gio.
-Much of the functionality provided by the lower level
-libraries, such as glib and gobject, is adequately supported
-in Go core packages.</p>
-
-
+    <p>All calls to gtk functions should be performed on
+the main thread.
+To perform such a call from a goroutine,
+use <code>glib.IdleAdd</code> to schedule invocation of a
+callback function on the main thread.</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75af00">glib</span><span style="color:#111">.</span><span style="color:#75af00">IdleAdd</span><span style="color:#111">(</span><span style="color:#00a8c8">func</span><span style="color:#111">()</span> <span style="color:#00a8c8">bool</span> <span style="color:#111">{</span>
+    <span style="color:#75af00">someLabel</span><span style="color:#111">.</span><span style="color:#75af00">SetText</span><span style="color:#111">(</span><span style="color:#d88200">&#34;some text&#34;</span><span style="color:#111">)</span>
+    <span style="color:#00a8c8">return</span> <span style="color:#75af00">glib</span><span style="color:#111">.</span><span style="color:#75af00">SOURCE_REMOVE</span>
+<span style="color:#111">})</span></code></pre></div>
+<p>Return <code>glib.SOURCE_REMOVE</code> to ensure the function is not
+called again next time the main loop is idle.
+Alternatively return <code>glib.SOURCE_CONTINUE</code> to have
+the function called again.</p>
 
 
     

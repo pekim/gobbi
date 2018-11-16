@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>gobbi</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="revised" content="2018-11-16T18:09:48 GMT">
+<title>Casting :: gobbi</title>
+<link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
+<link href="/css/font-awesome.min.css" rel="stylesheet">
+<link href="/css/nucleus.css" rel="stylesheet">
+<link href="/theme-flex/style.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<script src="/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "\/";
+</script>
+<link rel="stylesheet" href="/css/custom.css">
+
+
+    
+  </head>
+  <body data-url="/downcasting-upcasting/">
+    
+      <header>
+  <div class="logo">
+    
+	
+  
+    <p>gobbi</p>
+
+  
+
+
+  </div>
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+    <nav class="shortcuts">
+            <li class="" role="">
+                <a href="https://github.com/pekim/gobbi"  rel="noopener">
+                  <i class='fa fa-github'></i> <label>Github repo</label>
+                </a>
+            </li>
+    </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+
+
+    <li class="dd-item ">
+        <div>
+            <a href="/">
+                <span>Introduction</span>
+            </a>
+        </div>
+    </li>
+
+    <li class="dd-item ">
+        <div>
+            <a href="/getting-started/">
+                <span>Getting started</span>
+            </a>
+        </div>
+    </li>
+
+    <li class="dd-item ">
+        <div>
+            <a href="/application-lifecycle/">
+                <span>Application lifecycle</span>
+            </a>
+        </div>
+    </li>
+
+    <li class="dd-item ">
+        <div>
+            <a href="/build-tags/">
+                <span>Build tags</span>
+            </a>
+        </div>
+    </li>
+
+    <li class="dd-item  active">
+        <div>
+            <a href="/downcasting-upcasting/">
+                <span>Casting</span>
+            </a>
+        </div>
+    </li>
+
+    <li class="dd-item ">
+        <div>
+            <a href="/goroutines/">
+                <span>Goroutines</span>
+            </a>
+        </div>
+    </li>
+
+    <li class="dd-item ">
+        <div>
+            <a href="/gvalue/">
+                <span>gobject.Value</span>
+            </a>
+        </div>
+    </li>
+
+    <li class="dd-item ">
+        <div>
+            <a href="/api/">
+                <span>APIs</span>
+            </a>
+        </div>
+    </li>
+
+    <li class="dd-item ">
+        <div>
+            <a href="/signal-handling/">
+                <span>Signal handling</span>
+            </a>
+        </div>
+    </li>
+
+    <li data-nav-id="/stuff/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/stuff/">st title</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/stuff/other/" class="dd-item">
+        <div>
+          <a href="/stuff/other/">
+            st-other
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/dir-2/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/dir-2/">Dir-2s</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/dir-2/d2-f1/" class="dd-item">
+        <div>
+          <a href="/dir-2/d2-f1/">
+            d2 --- f2
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+
+
+
+
+    </ul>
+    <section>
+    </section>
+  </aside>
+  <section class="page">
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/stuff/" >
+   st title</option>
+    <option value="/dir-2/" >
+   Dir-2s</option>
+
+
+
+        </select>
+      </center>
+    </div>
+      <div>
+        <div class="searchbox">
+          <input data-search-input id="search-by" type="text" placeholder="Search...">
+        </div>
+        <script type="text/javascript" src="/js/lunr.min.js"></script>
+        <script type="text/javascript" src="/js/auto-complete.js"></script>
+        <link href="/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+          
+              var baseurl = "\/";
+          
+        </script>
+        <script type="text/javascript" src="/js/search.js"></script>
+      </div>
+    
+
+    <h1>Casting</h1>
+    
+    
+    
+    
+
+<p>Gtk classes derive, in a hierarchy, from the GObject class.</p>
+
+<p>In gobbi&rsquo;s implementation of GOBject&rsquo;s classes,
+each class does not directly extend its ancestor classes.
+Instead, for an class instance it is possible to get
+a reference to a ancestor class instance for the same
+gtk object.</p>
+
+<h1 id="upcasting">upcasting</h1>
+
+<p>In a gtk application there will frequently be a need to
+access members of an object&rsquo;s ancestor class.</p>
+
+<p>For example when adding a Label to a Container,
+this will not work.</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75af00">window</span> <span style="color:#f92672">:=</span> <span style="color:#75af00">gtk</span><span style="color:#111">.</span><span style="color:#75af00">WindowNew</span><span style="color:#111">(</span><span style="color:#75af00">gtk</span><span style="color:#111">.</span><span style="color:#75af00">GTK_WINDOW_TOPLEVEL</span><span style="color:#111">)</span>
+<span style="color:#75af00">label</span> <span style="color:#f92672">:=</span> <span style="color:#75af00">gtk</span><span style="color:#111">.</span><span style="color:#75af00">LabelNew</span><span style="color:#111">(</span><span style="color:#d88200">&#34;a label&#34;</span><span style="color:#111">)</span>
+<span style="color:#75af00">window</span><span style="color:#111">.</span><span style="color:#75af00">Add</span><span style="color:#111">(</span><span style="color:#75af00">label</span><span style="color:#111">)</span></code></pre></div>
+<p><code>gtk.Window</code> does not directly have a <code>Add</code> method.
+The <code>Add</code> method is a member of <code>gtk.Container</code>,
+which is an ancestor of <code>gtk.Window</code>.</p>
+
+<p>The <code>gtk.Window</code>&rsquo;s <code>Container</code> may be obtained by calling
+the <code>Container()</code> method.</p>
+
+<p>And as the <code>Add</code> method expects a <code>gtk.Widget</code>,
+the <code>gtk.Label</code>&rsquo;s <code>Widget</code> method is called.</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75af00">window</span> <span style="color:#f92672">:=</span> <span style="color:#75af00">gtk</span><span style="color:#111">.</span><span style="color:#75af00">WindowNew</span><span style="color:#111">(</span><span style="color:#75af00">gtk</span><span style="color:#111">.</span><span style="color:#75af00">GTK_WINDOW_TOPLEVEL</span><span style="color:#111">)</span>
+<span style="color:#75af00">label</span> <span style="color:#f92672">:=</span> <span style="color:#75af00">gtk</span><span style="color:#111">.</span><span style="color:#75af00">LabelNew</span><span style="color:#111">(</span><span style="color:#d88200">&#34;a label&#34;</span><span style="color:#111">)</span>
+<span style="color:#75af00">window</span><span style="color:#111">.</span><span style="color:#75af00">Container</span><span style="color:#111">().</span><span style="color:#75af00">Add</span><span style="color:#111">(</span><span style="color:#75af00">label</span><span style="color:#111">.</span><span style="color:#75af00">Widget</span><span style="color:#111">())</span></code></pre></div>
+<h1 id="downcasting">downcasting</h1>
+
+<p>Downcasting operates in the other direction,
+from a class to a derived class,</p>
+
+<p>Downcasting is less common that upcasting.
+It is potentially quite dangerous, in that it makes
+it very easy to assert that a widget is something
+that it is not.</p>
+
+<p>To downcast an instance,
+call one of its <code>CastTo...</code> methods.</p>
+
+<p>A typically use is when obtaining an object from a builder.</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75af00">builder</span> <span style="color:#f92672">:=</span> <span style="color:#75af00">gtk</span><span style="color:#111">.</span><span style="color:#75af00">BuilderNewFromString</span><span style="color:#111">(</span><span style="color:#f92672">...</span><span style="color:#111">)</span>
+
+<span style="color:#75af00">buttonObject</span> <span style="color:#f92672">:=</span> <span style="color:#75af00">builder</span><span style="color:#111">.</span><span style="color:#75af00">GetObject</span><span style="color:#111">(</span><span style="color:#d88200">&#34;some-button&#34;</span><span style="color:#111">)</span>
+<span style="color:#75af00">button</span> <span style="color:#f92672">:=</span> <span style="color:#75af00">gtk</span><span style="color:#111">.</span><span style="color:#75af00">CastToButton</span><span style="color:#111">(</span><span style="color:#75af00">buttonObject</span><span style="color:#111">)</span>
+<span style="color:#75af00">button</span><span style="color:#111">.</span><span style="color:#75af00">ConnectClicked</span><span style="color:#111">(</span><span style="color:#f92672">...</span><span style="color:#111">)</span></code></pre></div>
+<p>See the
+<a href="https://github.com/pekim/gobbi/blob/master/example/builder/main.go">builder</a>
+example to see this in an application.</p>
+
+
+    
+    
+        <div class="chevrons">
+    <div id="navigation">
+</div>
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+    
+
+    
+  </div>
+
+
+	<div>
+
+
+  
+    
+  
+
+
+
+	</div>
+</footer>
+
+<script src="/js/clipboard.min.js"></script>
+
+<link href="/css/featherlight.min.css" rel="stylesheet">
+<script src="/js/featherlight.min.js"></script>
+
+
+
+<script src="/theme-flex/script.js"></script>
+
+
+    
+
+    
+    
+
+    
+  </body>
+</html>
