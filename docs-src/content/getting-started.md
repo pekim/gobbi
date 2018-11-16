@@ -46,4 +46,4 @@ import "github.com/pekim/gobbi/lib/gtk"
 
 ## build tags
 It will often be necessary to build gobbi applications
-with [build tags](./build-tags.md).
+with [build tags](/build-tags).
