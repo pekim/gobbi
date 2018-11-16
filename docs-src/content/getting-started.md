@@ -4,8 +4,6 @@ menu="main"
 weight="2"
 +++
 
-# getting started
-
 ## pre-requisites
 * go 1.11 or later
 * libraries

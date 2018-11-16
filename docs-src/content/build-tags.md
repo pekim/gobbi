@@ -4,8 +4,6 @@ menu="main"
 weight="4"
 +++
 
-# build tags
-
 gobbi uses Go 
 [build tags](https://golang.org/pkg/go/build/#hdr-Build_Constraints)
 to allow targetting of specific library versions.

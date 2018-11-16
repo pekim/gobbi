@@ -4,8 +4,6 @@ menu="main"
 weight="7"
 +++
 
-# gobject.Value (GValue)
-
 The gobject library's `GValue` type is represented by
 `gobject.Value`.
 

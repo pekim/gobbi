@@ -4,8 +4,6 @@ menu="main"
 weight="6"
 +++
 
-# goroutines
-
 All calls to gtk functions should be performed on
 the main thread.
 To perform such a call from a goroutine,

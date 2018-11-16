@@ -4,8 +4,6 @@ menu="main"
 weight="5"
 +++
 
-# downcasting and upcasting
-
 Gtk classes derive, in a hierarchy, from the GObject class.
 
 In gobbi's implementation of GOBject's classes,

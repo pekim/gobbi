@@ -4,8 +4,6 @@ menu="main"
 weight="3"
 +++
 
-# Application lifecycle
-
 ## main thread
 The main function, and therefore the main loop,
 should run on the main thread. 

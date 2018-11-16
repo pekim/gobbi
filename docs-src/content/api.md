@@ -4,8 +4,6 @@ menu="main"
 weight="8"
 +++
 
-# APIs
-
 There is currently very little Godoc api documentation for gobbi.
 As most apis are relatively direct mappings of the C library
 APIs,
