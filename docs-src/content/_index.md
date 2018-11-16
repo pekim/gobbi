@@ -4,6 +4,8 @@ menu="main"
 weight="1"
 +++
 
+# gobbi
+
 **gob**ject **bi**ndings
 
 gobbi is a set of generated Go bindings for gobject based libraries.
