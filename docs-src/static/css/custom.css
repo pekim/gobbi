@@ -11,3 +11,7 @@ article section.page h1:first-of-type {
     text-align: start;
     text-transform: none;
 }
+
+.chevrons {
+    display: none;
+}
