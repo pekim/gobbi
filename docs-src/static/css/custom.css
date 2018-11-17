@@ -38,6 +38,14 @@ p {
     max-width: 40em;
 }
 
+article section.page pre {
+    /*
+        Need !imporant because background-color is applied directly to the element,
+        for some reason.
+    */
+    background-color: #f0f0f0 !important;
+}
+
 .chevrons {
     display: none;
 }
