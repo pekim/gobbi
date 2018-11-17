@@ -41,7 +41,13 @@ If targetting Ubuntu 16.04 (Xenial Xerus) or later,
 the following tags would be a good starting point. 
 
 ```
-go build -tags "glib_2.48 gdk_3.4 gdkpixbuf_2.32 gio_2.32 gtk_3.18" my_app.go
+go build -tags " \
+    glib_2.48 \
+    gdk_3.4 \
+    gdkpixbuf_2.32 \
+    gio_2.32 \
+    gtk_3.18" \
+  my_app.go
 ```
 
 ## editors & IDEs

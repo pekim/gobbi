@@ -29,8 +29,13 @@ h3 {
     font-size: 1.7rem;
 }
 
+article section.page {
+    max-width: 55em;
+}
+
 p {
     margin: 1rem 0;
+    max-width: 40em;
 }
 
 .chevrons {

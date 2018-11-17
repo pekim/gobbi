@@ -1,13 +1,11 @@
 +++
 title="API"
+qaz=42
 +++
 
-There is currently very little Godoc api documentation for gobbi.
-As most apis are relatively direct mappings of the C library
-APIs,
-the [Gnome libraries documentation](https://developer.gnome.org/references)
-should provide enough information to gain some
-understanding of how to use the Go apis in gobbi.
+Most of the apis provided by gobbi
+are relatively direct mappings of the
+[Gnome C library APIs](https://developer.gnome.org/references).
 
 ## packages
 There is one go package for each Gnome library.
