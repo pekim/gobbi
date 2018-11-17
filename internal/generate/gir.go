@@ -70,7 +70,8 @@ func girNewRoot(name string, version string) []*Gir {
 		girs = append(girs, gir)
 	}
 	sort.Slice(girs, func(i, j int) bool {
-		return girs[i].repo.Namespace.Name < girs[j].repo.Namespace.Name
+		return girs[i].repo.Namespace.goPackageName <
+			girs[j].repo.Namespace.goPackageName
 	})
 
 	return girs
