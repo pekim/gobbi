@@ -15,8 +15,16 @@ header::after {
     height: 0.3rem;
 }
 
+.searchbox {
+    text-align: start;
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
+}
+
+article section.page {
+    padding-top: 0.5rem;
 }
 
 article section.page h1:first-of-type {
