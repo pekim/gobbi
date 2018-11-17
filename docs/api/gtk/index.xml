@@ -10,5 +10,24 @@
 	<atom:link href="/api/gtk/index.xml" rel="self" type="application/rss+xml" />
     
     
+    <item>
+      <title>constants</title>
+      <link>/api/gtk/constants/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/api/gtk/constants/</guid>
+      <description>BINARY_AGE
+Like gtk_get_binary_age(), but from the headers used at application compile time, rather than from the library linked against at application run time.
+GTK_BINARY_AGE
+INPUT_ERROR
+Constant to return from a signal handler for the #GtkSpinButton::input signal in case of conversion failure.
+GTK_INPUT_ERROR
+INTERFACE_AGE
+Like gtk_get_interface_age(), but from the headers used at application compile time, rather than from the library linked against at application run time.
+GTK_INTERFACE_AGE
+LEVEL_BAR_OFFSET_FULL
+The name used for the stock full offset included by #GtkLevelBar.</description>
+    </item>
+    
   </channel>
 </rss>

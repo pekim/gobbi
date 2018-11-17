@@ -10,5 +10,27 @@
 	<atom:link href="/api/gdk/index.xml" rel="self" type="application/rss+xml" />
     
     
+    <item>
+      <title>constants</title>
+      <link>/api/gdk/constants/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/api/gdk/constants/</guid>
+      <description>BUTTON_MIDDLE
+The middle button.
+GDK_BUTTON_MIDDLE
+BUTTON_PRIMARY
+The primary button. This is typically the left mouse button, or the right button in a left-handed setup.
+GDK_BUTTON_PRIMARY
+BUTTON_SECONDARY
+The secondary button. This is typically the right mouse button, or the left button in a left-handed setup.
+GDK_BUTTON_SECONDARY
+CURRENT_TIME
+Represents the current time, and can be used anywhere a time is expected.
+GDK_CURRENT_TIME
+EVENT_PROPAGATE
+Use this macro as the return value for continuing the propagation of an event handler.</description>
+    </item>
+    
   </channel>
 </rss>

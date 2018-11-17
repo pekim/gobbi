@@ -10,5 +10,14 @@
 	<atom:link href="/api/cairo/index.xml" rel="self" type="application/rss+xml" />
     
     
+    <item>
+      <title>constants</title>
+      <link>/api/cairo/constants/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/api/cairo/constants/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

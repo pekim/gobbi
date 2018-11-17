@@ -1,8 +1,10 @@
 package generate
 
-func (ns *Namespace) generateDocForPackage() {
+func (ns *Namespace) generateDoc() {
 	generateDocFile(ns.writeDocForPackage,
 		"content", "api", ns.goPackageName, "_index.md")
+
+	generateDocFile(ns.Constants.generateDocs, "content", "api", ns.goPackageName, "constants.md")
 }
 
 func (ns *Namespace) writeDocForPackage(file *DocFile) {

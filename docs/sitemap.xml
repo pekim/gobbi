@@ -65,6 +65,42 @@
   </url>
   
   <url>
+    <loc>/api/atk/constants/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/cairo/constants/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/gdk/constants/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/gdkpixbuf/constants/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/gio/constants/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/glib/constants/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/gobject/constants/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/gtk/constants/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/pango/constants/</loc>
+  </url>
+  
+  <url>
     <loc>/api/gdk/</loc>
   </url>
   

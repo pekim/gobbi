@@ -73,3 +73,18 @@ article section.page pre {
 .chevrons {
     display: none;
 }
+
+.api-heading {
+    font-size: 1.2em;
+    font-weight: bold;
+
+    margin-top: 1.5em;
+}
+
+.api-doc {
+
+}
+
+.api-ctype {
+    font-size: 0.8em;
+}

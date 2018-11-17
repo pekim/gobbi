@@ -10,5 +10,23 @@
 	<atom:link href="/api/glib/index.xml" rel="self" type="application/rss+xml" />
     
     
+    <item>
+      <title>constants</title>
+      <link>/api/glib/constants/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/api/glib/constants/</guid>
+      <description>ANALYZER_ANALYZING
+G_ANALYZER_ANALYZING
+ASCII_DTOSTR_BUF_SIZE
+A good size for a buffer to be passed into g_ascii_dtostr(). It is guaranteed to be enough for all output of that function on systems with 64bit IEEE-compatible doubles. The typical usage would be something like: |[char buf[G_ASCII_DTOSTR_BUF_SIZE]; fprintf (out, &#34;value=%s\n&#34;, g_ascii_dtostr (buf, sizeof (buf), value)); ]|
+G_ASCII_DTOSTR_BUF_SIZE
+BIG_ENDIAN
+Specifies one of the possible types of byte order. See #G_BYTE_ORDER.
+G_BIG_ENDIAN
+CSET_A_2_Z
+The set of uppercase ASCII alphabet characters.</description>
+    </item>
+    
   </channel>
 </rss>
