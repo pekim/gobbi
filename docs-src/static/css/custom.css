@@ -38,12 +38,19 @@ p {
     max-width: 40em;
 }
 
+article section.page p > code,
+article section.page li code,
+article section.page table code {
+    padding: 0.1rem 0.25rem;
+    background-color: hsl(0, 0%, 92%);
+}
+
 article section.page pre {
     /*
         Need !imporant because background-color is applied directly to the element,
         for some reason.
     */
-    background-color: #f0f0f0 !important;
+    background-color: hsl(0, 0%, 95%) !important;
 }
 
 .chevrons {
