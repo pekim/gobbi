@@ -25,10 +25,10 @@
 	"title": "Build tags",
 	"tags": [],
 	"description": "",
-	"content": " gobbi uses Go build tags to allow targetting of specific library versions. This means that when using Go build tools (such as go build and go run) to build a gobbi application, use of the -tags flag will usually be necessary.\nSee How to use conditional compilation with the go build tool for more background about build tags.\nno tags If a gobbi application is built with no tags specified, the only apis available will be those present in all version of the various gnome libraries.\ntags targetting versions To use an api that is only available from a specific version onwards, use a tag constructed from the library name and the version.\nFor example gtk_builder_new_from_file is only available from gtk 3.10 onwards. So to use it, a tag specifying 3.10 (or a later version) is required.\ngo build -tags gtk_3.10 my_app.go  typical tags If targetting Ubuntu 16.04 (Xenial Xerus) or later, the following tags would be a good starting point.\ngo build -tags \u0026quot;glib_2.48 gdk_3.4 gdkpixbuf_2.32 gio_2.32 gtk_3.18\u0026quot; my_app.go  editors \u0026amp; IDEs Editors and IDE can provide better completion and error feedback if they are aware of the build tags that an application is to be built with.\nvs code The relevant setting is Go: Build Tags.\ngoland In the Settings... dialog, the relevant setting can be found under - Go - Vendoring \u0026amp; Build Tags - Custom tags\n"
+	"content": " gobbi uses Go build tags to allow targetting of specific library versions. This means that when using Go build tools (such as go build and go run) to build a gobbi application, use of the -tags flag will usually be necessary.\nSee How to use conditional compilation with the go build tool for more background about build tags.\nno tags If a gobbi application is built with no tags specified, the only apis available will be those present in all version of the various gnome libraries.\ntags targetting versions To use an api that is only available from a specific version onwards, use a tag constructed from the library name and the version.\nFor example gtk_builder_new_from_file is only available from gtk 3.10 onwards. So to use it, a tag specifying 3.10 (or a later version) is required.\ngo build -tags gtk_3.10 my_app.go  typical tags If targetting Ubuntu 16.04 (Xenial Xerus) or later, the following tags would be a good starting point.\ngo build -tags \u0026quot; \\ glib_2.48 \\ gdk_3.4 \\ gdkpixbuf_2.32 \\ gio_2.32 \\ gtk_3.18\u0026quot; \\ my_app.go  editors \u0026amp; IDEs Editors and IDE can provide better completion and error feedback if they are aware of the build tags that an application is to be built with.\nvs code The relevant setting is Go: Build Tags.\ngoland In the Settings... dialog, the relevant setting can be found under - Go - Vendoring \u0026amp; Build Tags - Custom tags\n"
 },
 {
-	"uri": "/downcasting-upcasting/",
+	"uri": "/casting/",
 	"title": "Casting",
 	"tags": [],
 	"description": "",
@@ -49,32 +49,11 @@
 	"content": "The gobject library\u0026rsquo;s GValue type is represented by gobject.Value.\nSee the list example for an example of its use.\n"
 },
 {
-	"uri": "/api/",
-	"title": "APIs",
-	"tags": [],
-	"description": "",
-	"content": " There is currently very little Godoc api documentation for gobbi. As most apis are relatively direct mappings of the C library APIs, the Gnome libraries documentation should provide enough information to gain some understanding of how to use the Go apis in gobbi.\npackages There is one go package for each Gnome library.\nout params Out parameters are mapped as return values in Go functions. Inout parameters are not yet supported, but when they are the will be exposed as both parameters and return values in Go functions.\ninout params Inout parameters are not yet supported.\nfunctions returning GError Functions that have a GError out parameter, may return a Go error. The error (if not nil) will be a glib.Error, which has fields containing details of the error.\nvariadic functions Variadic api functions are not supported.\narray functions In many cases the library provides an equivalent array based function that can be used instead. The names of the array-based functions often end in a \u0026lsquo;v\u0026rsquo;.\nThe C arrays are represented as Go slices.\nIn the case of such functions that accept two slice, be certain that they are both of the same length. The behaviour when they are not is undefined.\nsingle item functions In other cases, instead of a variadic function that would operate on multiple values at once, there will be a supported function that operates on a single item at a time.\ncairo \u0026amp; pango These libraries currently have very little support, as the introspection date available for them is inadequate. Support may be added later, with manually generated bindings.\n"
-},
-{
 	"uri": "/signal-handling/",
 	"title": "Signal handling",
 	"tags": [],
 	"description": "",
 	"content": " connecting To connect an object to a signal that it emits, call one of the object\u0026rsquo;s Connect... methods.\nThe connect methods all accept a handler argument that is a function with a specific signature. Some handlers have no parameters, others have one or more parameters that provide event-specific information.\nbutton := gtk.ButtonNewWithLabel(\u0026#34;a button\u0026#34;) button.Widget().SetEvents(int32(gdk.GDK_POINTER_MOTION_MASK)) button.Widget().ConnectMotionNotifyEvent( func(event *gdk.EventMotion) bool { fmt.Println(event.Y, event.Y) return false }) Remember that it may be necessary to upcast to access the desired connect method.\ndisconnecting All of the Connect... methods return a handler id. The id may be used later to disconnect the handler.\nconnectId := button.ConnectClicked(func() { ... }) ... button.DisconnectClicked(connectId)"
-},
-{
-	"uri": "/stuff/",
-	"title": "st title",
-	"tags": [],
-	"description": "",
-	"content": " st "
-},
-{
-	"uri": "/stuff/other/",
-	"title": "st-other",
-	"tags": [],
-	"description": "",
-	"content": " Other other stuff "
 },
 {
 	"uri": "/_footer/",
@@ -91,15 +70,15 @@
 	"content": "gobbi\n"
 },
 {
-	"uri": "/categories/",
-	"title": "Categories",
+	"uri": "/api/",
+	"title": "API",
 	"tags": [],
 	"description": "",
-	"content": ""
+	"content": " Most of the apis provided by gobbi are relatively direct mappings of the Gnome C library APIs.\npackages There is one go package for each Gnome library.\n atk cairo gdk gdkpixbuf gio glib gobject gtk pango  out params Out parameters are mapped as return values in Go functions. Inout parameters are not yet supported, but when they are the will be exposed as both parameters and return values in Go functions.\ninout params Inout parameters are not yet supported.\nfunctions returning GError Functions that have a GError out parameter, may return a Go error. The error (if not nil) will be a glib.Error, which has fields containing details of the error.\nvariadic functions Variadic api functions are not supported.\narray functions In many cases the library provides an equivalent array based function that can be used instead. The names of the array-based functions often end in a \u0026lsquo;v\u0026rsquo;.\nThe C arrays are represented as Go slices.\nIn the case of such functions that accept two slice, be certain that they are both of the same length. The behaviour when they are not is undefined.\nsingle item functions In other cases, instead of a variadic function that would operate on multiple values at once, there will be a supported function that operates on a single item at a time.\ncairo \u0026amp; pango These libraries currently have very little support, as the introspection date available for them is inadequate. Support may be added later, with manually generated bindings.\n"
 },
 {
-	"uri": "/dir-2/",
-	"title": "Dir-2s",
+	"uri": "/categories/",
+	"title": "Categories",
 	"tags": [],
 	"description": "",
 	"content": ""
@@ -112,8 +91,64 @@
 	"content": ""
 },
 {
-	"uri": "/dir-2/d2-f1/",
-	"title": "d2 --- f2",
+	"uri": "/api/atk/",
+	"title": "atk",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/api/cairo/",
+	"title": "cairo",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/api/gdk/",
+	"title": "gdk",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/api/gdkpixbuf/",
+	"title": "gdkpixbuf",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/api/gio/",
+	"title": "gio",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/api/glib/",
+	"title": "glib",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/api/gobject/",
+	"title": "gobject",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/api/gtk/",
+	"title": "gtk",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/api/pango/",
+	"title": "pango",
 	"tags": [],
 	"description": "",
 	"content": ""

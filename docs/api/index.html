@@ -5,8 +5,8 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2018-11-16T18:09:48 GMT">
-<title>APIs :: gobbi</title>
+<meta name="revised" content="2018-11-17T17:05:38 GMT">
+<title>API :: gobbi</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -29,7 +29,7 @@
     
 	
   
-    <p>gobbi</p>
+    <p><a href="/">gobbi</a></p>
 
   
 
@@ -83,7 +83,7 @@
 
     <li class="dd-item ">
         <div>
-            <a href="/downcasting-upcasting/">
+            <a href="/casting/">
                 <span>Casting</span>
             </a>
         </div>
@@ -105,14 +105,6 @@
         </div>
     </li>
 
-    <li class="dd-item  active">
-        <div>
-            <a href="/api/">
-                <span>APIs</span>
-            </a>
-        </div>
-    </li>
-
     <li class="dd-item ">
         <div>
             <a href="/signal-handling/">
@@ -121,33 +113,66 @@
         </div>
     </li>
 
-    <li data-nav-id="/stuff/" class="dd-item haschildren
+    <li data-nav-id="/api/" class="dd-item parent active haschildren
         ">
       <div>
-      <a href="/stuff/">st title</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/api/">API</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/stuff/other/" class="dd-item">
-        <div>
-          <a href="/stuff/other/">
-            st-other
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-        </ul>
-    </li>
-    <li data-nav-id="/dir-2/" class="dd-item haschildren
+    <li data-nav-id="/api/atk/" class="dd-item
         ">
       <div>
-      <a href="/dir-2/">Dir-2s</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/api/atk/">atk</a><i class="fa fa-circle-thin read-icon"></i>
       </div>
-        <ul>
-      <li data-nav-id="/dir-2/d2-f1/" class="dd-item">
-        <div>
-          <a href="/dir-2/d2-f1/">
-            d2 --- f2
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
+    </li>
+    <li data-nav-id="/api/cairo/" class="dd-item
+        ">
+      <div>
+      <a href="/api/cairo/">cairo</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/api/gdk/" class="dd-item
+        ">
+      <div>
+      <a href="/api/gdk/">gdk</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/api/gdkpixbuf/" class="dd-item
+        ">
+      <div>
+      <a href="/api/gdkpixbuf/">gdkpixbuf</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/api/gio/" class="dd-item
+        ">
+      <div>
+      <a href="/api/gio/">gio</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/api/glib/" class="dd-item
+        ">
+      <div>
+      <a href="/api/glib/">glib</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/api/gobject/" class="dd-item
+        ">
+      <div>
+      <a href="/api/gobject/">gobject</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/api/gtk/" class="dd-item
+        ">
+      <div>
+      <a href="/api/gtk/">gtk</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+    </li>
+    <li data-nav-id="/api/pango/" class="dd-item
+        ">
+      <div>
+      <a href="/api/pango/">pango</a><i class="fa fa-circle-thin read-icon"></i>
+      </div>
     </li>
         </ul>
     </li>
@@ -165,10 +190,36 @@
       <center>Navigation : 
         <select onchange="javascript:location.href = this.value;">
           
-    <option value="/stuff/" >
-   st title</option>
-    <option value="/dir-2/" >
-   Dir-2s</option>
+    <option value="/api/"  selected>
+   API</option> 
+    <option value="/api/atk/" >
+  - 
+   atk</option>
+    <option value="/api/cairo/" >
+  - 
+   cairo</option>
+    <option value="/api/gdk/" >
+  - 
+   gdk</option>
+    <option value="/api/gdkpixbuf/" >
+  - 
+   gdkpixbuf</option>
+    <option value="/api/gio/" >
+  - 
+   gio</option>
+    <option value="/api/glib/" >
+  - 
+   glib</option>
+    <option value="/api/gobject/" >
+  - 
+   gobject</option>
+    <option value="/api/gtk/" >
+  - 
+   gtk</option>
+    <option value="/api/pango/" >
+  - 
+   pango</option>
+  
 
 
 
@@ -191,22 +242,42 @@
       </div>
     
 
-    <h1>APIs</h1>
+    <h1>API</h1>
     
     
     
+    <p>
+        The
+        <code></code>
+        package provides Go bindings for the Gnome
+        <a href="https://developer.gnome.org//stable/">
+            
+        </a>
+        library.
+    </p>
+
     
 
-<p>There is currently very little Godoc api documentation for gobbi.
-As most apis are relatively direct mappings of the C library
-APIs,
-the <a href="https://developer.gnome.org/references">Gnome libraries documentation</a>
-should provide enough information to gain some
-understanding of how to use the Go apis in gobbi.</p>
+<p>Most of the apis provided by gobbi
+are relatively direct mappings of the
+<a href="https://developer.gnome.org/references">Gnome C library APIs</a>.</p>
 
 <h2 id="packages">packages</h2>
 
 <p>There is one go package for each Gnome library.</p>
+
+<ul>
+<li><a href='./atk'>atk</a></li>
+<li><a href='./cairo'>cairo</a></li>
+<li><a href='./gdk'>gdk</a></li>
+<li><a href='./gdkpixbuf'>gdkpixbuf</a></li>
+<li><a href='./gio'>gio</a></li>
+<li><a href='./glib'>glib</a></li>
+<li><a href='./gobject'>gobject</a></li>
+<li><a href='./gtk'>gtk</a></li>
+<li><a href='./pango'>pango</a></li>
+</ul>
+
 
 <h2 id="out-params">out params</h2>
 

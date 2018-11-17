@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="revised" content="2018-11-17T17:05:38 GMT">
-<title>Goroutines :: gobbi</title>
+<title>Casting :: gobbi</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -22,7 +22,7 @@
 
     
   </head>
-  <body data-url="/goroutines/">
+  <body data-url="/casting/">
     
       <header>
   <div class="logo">
@@ -81,7 +81,7 @@
         </div>
     </li>
 
-    <li class="dd-item ">
+    <li class="dd-item  active">
         <div>
             <a href="/casting/">
                 <span>Casting</span>
@@ -89,7 +89,7 @@
         </div>
     </li>
 
-    <li class="dd-item  active">
+    <li class="dd-item ">
         <div>
             <a href="/goroutines/">
                 <span>Goroutines</span>
@@ -213,23 +213,64 @@
       </div>
     
 
-    <h1>Goroutines</h1>
+    <h1>Casting</h1>
     
     
     
-    <p>All calls to gtk functions should be performed on
-the main thread.
-To perform such a call from a goroutine,
-use <code>glib.IdleAdd</code> to schedule invocation of a
-callback function on the main thread.</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75af00">glib</span><span style="color:#111">.</span><span style="color:#75af00">IdleAdd</span><span style="color:#111">(</span><span style="color:#00a8c8">func</span><span style="color:#111">()</span> <span style="color:#00a8c8">bool</span> <span style="color:#111">{</span>
-    <span style="color:#75af00">someLabel</span><span style="color:#111">.</span><span style="color:#75af00">SetText</span><span style="color:#111">(</span><span style="color:#d88200">&#34;some text&#34;</span><span style="color:#111">)</span>
-    <span style="color:#00a8c8">return</span> <span style="color:#75af00">glib</span><span style="color:#111">.</span><span style="color:#75af00">SOURCE_REMOVE</span>
-<span style="color:#111">})</span></code></pre></div>
-<p>Return <code>glib.SOURCE_REMOVE</code> to ensure the function is not
-called again next time the main loop is idle.
-Alternatively return <code>glib.SOURCE_CONTINUE</code> to have
-the function called again.</p>
+    
+
+<p>Gtk classes derive, in a hierarchy, from the GObject class.</p>
+
+<p>In gobbi&rsquo;s implementation of GOBject&rsquo;s classes,
+each class does not directly extend its ancestor classes.
+Instead, for an class instance it is possible to get
+a reference to a ancestor class instance for the same
+gtk object.</p>
+
+<h2 id="upcasting">upcasting</h2>
+
+<p>In a gtk application there will frequently be a need to
+access members of an object&rsquo;s ancestor class.</p>
+
+<p>For example when adding a Label to a Container,
+this will not work.</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75af00">window</span> <span style="color:#f92672">:=</span> <span style="color:#75af00">gtk</span><span style="color:#111">.</span><span style="color:#75af00">WindowNew</span><span style="color:#111">(</span><span style="color:#75af00">gtk</span><span style="color:#111">.</span><span style="color:#75af00">GTK_WINDOW_TOPLEVEL</span><span style="color:#111">)</span>
+<span style="color:#75af00">label</span> <span style="color:#f92672">:=</span> <span style="color:#75af00">gtk</span><span style="color:#111">.</span><span style="color:#75af00">LabelNew</span><span style="color:#111">(</span><span style="color:#d88200">&#34;a label&#34;</span><span style="color:#111">)</span>
+<span style="color:#75af00">window</span><span style="color:#111">.</span><span style="color:#75af00">Add</span><span style="color:#111">(</span><span style="color:#75af00">label</span><span style="color:#111">)</span></code></pre></div>
+<p><code>gtk.Window</code> does not directly have a <code>Add</code> method.
+The <code>Add</code> method is a member of <code>gtk.Container</code>,
+which is an ancestor of <code>gtk.Window</code>.</p>
+
+<p>The <code>gtk.Window</code>&rsquo;s <code>Container</code> may be obtained by calling
+the <code>Container()</code> method.</p>
+
+<p>And as the <code>Add</code> method expects a <code>gtk.Widget</code>,
+the <code>gtk.Label</code>&rsquo;s <code>Widget</code> method is called.</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75af00">window</span> <span style="color:#f92672">:=</span> <span style="color:#75af00">gtk</span><span style="color:#111">.</span><span style="color:#75af00">WindowNew</span><span style="color:#111">(</span><span style="color:#75af00">gtk</span><span style="color:#111">.</span><span style="color:#75af00">GTK_WINDOW_TOPLEVEL</span><span style="color:#111">)</span>
+<span style="color:#75af00">label</span> <span style="color:#f92672">:=</span> <span style="color:#75af00">gtk</span><span style="color:#111">.</span><span style="color:#75af00">LabelNew</span><span style="color:#111">(</span><span style="color:#d88200">&#34;a label&#34;</span><span style="color:#111">)</span>
+<span style="color:#75af00">window</span><span style="color:#111">.</span><span style="color:#75af00">Container</span><span style="color:#111">().</span><span style="color:#75af00">Add</span><span style="color:#111">(</span><span style="color:#75af00">label</span><span style="color:#111">.</span><span style="color:#75af00">Widget</span><span style="color:#111">())</span></code></pre></div>
+<h2 id="downcasting">downcasting</h2>
+
+<p>Downcasting operates in the other direction,
+from a class to a derived class,</p>
+
+<p>Downcasting is less common that upcasting.
+It is potentially quite dangerous, in that it makes
+it very easy to assert that a widget is something
+that it is not.</p>
+
+<p>To downcast an instance,
+call one of its <code>CastTo...</code> methods.</p>
+
+<p>A typically use is when obtaining an object from a builder.</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75af00">builder</span> <span style="color:#f92672">:=</span> <span style="color:#75af00">gtk</span><span style="color:#111">.</span><span style="color:#75af00">BuilderNewFromString</span><span style="color:#111">(</span><span style="color:#f92672">...</span><span style="color:#111">)</span>
+
+<span style="color:#75af00">buttonObject</span> <span style="color:#f92672">:=</span> <span style="color:#75af00">builder</span><span style="color:#111">.</span><span style="color:#75af00">GetObject</span><span style="color:#111">(</span><span style="color:#d88200">&#34;some-button&#34;</span><span style="color:#111">)</span>
+<span style="color:#75af00">button</span> <span style="color:#f92672">:=</span> <span style="color:#75af00">gtk</span><span style="color:#111">.</span><span style="color:#75af00">CastToButton</span><span style="color:#111">(</span><span style="color:#75af00">buttonObject</span><span style="color:#111">)</span>
+<span style="color:#75af00">button</span><span style="color:#111">.</span><span style="color:#75af00">ConnectClicked</span><span style="color:#111">(</span><span style="color:#f92672">...</span><span style="color:#111">)</span></code></pre></div>
+<p>See the
+<a href="https://github.com/pekim/gobbi/blob/master/example/builder/main.go">builder</a>
+example to see this in an application.</p>
 
 
     

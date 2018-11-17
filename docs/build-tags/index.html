@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2018-11-16T18:09:48 GMT">
+<meta name="revised" content="2018-11-17T17:05:38 GMT">
 <title>Build tags :: gobbi</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
@@ -29,7 +29,7 @@
     
 	
   
-    <p>gobbi</p>
+    <p><a href="/">gobbi</a></p>
 
   
 
@@ -83,7 +83,7 @@
 
     <li class="dd-item ">
         <div>
-            <a href="/downcasting-upcasting/">
+            <a href="/casting/">
                 <span>Casting</span>
             </a>
         </div>
@@ -107,48 +107,18 @@
 
     <li class="dd-item ">
         <div>
-            <a href="/api/">
-                <span>APIs</span>
-            </a>
-        </div>
-    </li>
-
-    <li class="dd-item ">
-        <div>
             <a href="/signal-handling/">
                 <span>Signal handling</span>
             </a>
         </div>
     </li>
 
-    <li data-nav-id="/stuff/" class="dd-item haschildren
+    <li data-nav-id="/api/" class="dd-item haschildren
         ">
       <div>
-      <a href="/stuff/">st title</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/api/">API</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
-      <li data-nav-id="/stuff/other/" class="dd-item">
-        <div>
-          <a href="/stuff/other/">
-            st-other
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
-        </ul>
-    </li>
-    <li data-nav-id="/dir-2/" class="dd-item haschildren
-        ">
-      <div>
-      <a href="/dir-2/">Dir-2s</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
-      </div>
-        <ul>
-      <li data-nav-id="/dir-2/d2-f1/" class="dd-item">
-        <div>
-          <a href="/dir-2/d2-f1/">
-            d2 --- f2
-          </a><i class="fa fa-circle-thin read-icon"></i>
-        </div>
-    </li>
         </ul>
     </li>
 
@@ -165,10 +135,8 @@
       <center>Navigation : 
         <select onchange="javascript:location.href = this.value;">
           
-    <option value="/stuff/" >
-   st title</option>
-    <option value="/dir-2/" >
-   Dir-2s</option>
+    <option value="/api/" >
+   API</option>
 
 
 
@@ -235,7 +203,13 @@ is required.</p>
 <p>If targetting Ubuntu 16.04 (Xenial Xerus) or later,
 the following tags would be a good starting point.</p>
 
-<pre><code>go build -tags &quot;glib_2.48 gdk_3.4 gdkpixbuf_2.32 gio_2.32 gtk_3.18&quot; my_app.go
+<pre><code>go build -tags &quot; \
+    glib_2.48 \
+    gdk_3.4 \
+    gdkpixbuf_2.32 \
+    gio_2.32 \
+    gtk_3.18&quot; \
+  my_app.go
 </code></pre>
 
 <h2 id="editors-ides">editors &amp; IDEs</h2>

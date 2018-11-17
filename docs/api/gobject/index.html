@@ -6,7 +6,7 @@
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="revised" content="2018-11-17T17:05:38 GMT">
-<title>Goroutines :: gobbi</title>
+<title>gobject :: gobbi</title>
 <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
 <link href="/css/font-awesome.min.css" rel="stylesheet">
 <link href="/css/nucleus.css" rel="stylesheet">
@@ -22,7 +22,7 @@
 
     
   </head>
-  <body data-url="/goroutines/">
+  <body data-url="/api/gobject/">
     
       <header>
   <div class="logo">
@@ -89,7 +89,7 @@
         </div>
     </li>
 
-    <li class="dd-item  active">
+    <li class="dd-item ">
         <div>
             <a href="/goroutines/">
                 <span>Goroutines</span>
@@ -113,10 +113,11 @@
         </div>
     </li>
 
-    <li data-nav-id="/api/" class="dd-item haschildren
+    <li data-nav-id="/api/" class="dd-item parent haschildren
         ">
       <div>
-      <a href="/api/">API</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      <a href="/api/">API</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
       </div>
         <ul>
     <li data-nav-id="/api/atk/" class="dd-item
@@ -155,7 +156,7 @@
       <a href="/api/glib/">glib</a><i class="fa fa-circle-thin read-icon"></i>
       </div>
     </li>
-    <li data-nav-id="/api/gobject/" class="dd-item
+    <li data-nav-id="/api/gobject/" class="dd-item parent active
         ">
       <div>
       <a href="/api/gobject/">gobject</a><i class="fa fa-circle-thin read-icon"></i>
@@ -190,7 +191,36 @@
         <select onchange="javascript:location.href = this.value;">
           
     <option value="/api/" >
-   API</option>
+   API</option> 
+    <option value="/api/atk/" >
+  - 
+   atk</option>
+    <option value="/api/cairo/" >
+  - 
+   cairo</option>
+    <option value="/api/gdk/" >
+  - 
+   gdk</option>
+    <option value="/api/gdkpixbuf/" >
+  - 
+   gdkpixbuf</option>
+    <option value="/api/gio/" >
+  - 
+   gio</option>
+    <option value="/api/glib/" >
+  - 
+   glib</option>
+    <option value="/api/gobject/"  selected>
+  - 
+   gobject</option> 
+  
+    <option value="/api/gtk/" >
+  - 
+   gtk</option>
+    <option value="/api/pango/" >
+  - 
+   pango</option>
+  
 
 
 
@@ -213,24 +243,21 @@
       </div>
     
 
-    <h1>Goroutines</h1>
+    <h1>gobject</h1>
     
     
     
-    <p>All calls to gtk functions should be performed on
-the main thread.
-To perform such a call from a goroutine,
-use <code>glib.IdleAdd</code> to schedule invocation of a
-callback function on the main thread.</p>
-<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75af00">glib</span><span style="color:#111">.</span><span style="color:#75af00">IdleAdd</span><span style="color:#111">(</span><span style="color:#00a8c8">func</span><span style="color:#111">()</span> <span style="color:#00a8c8">bool</span> <span style="color:#111">{</span>
-    <span style="color:#75af00">someLabel</span><span style="color:#111">.</span><span style="color:#75af00">SetText</span><span style="color:#111">(</span><span style="color:#d88200">&#34;some text&#34;</span><span style="color:#111">)</span>
-    <span style="color:#00a8c8">return</span> <span style="color:#75af00">glib</span><span style="color:#111">.</span><span style="color:#75af00">SOURCE_REMOVE</span>
-<span style="color:#111">})</span></code></pre></div>
-<p>Return <code>glib.SOURCE_REMOVE</code> to ensure the function is not
-called again next time the main loop is idle.
-Alternatively return <code>glib.SOURCE_CONTINUE</code> to have
-the function called again.</p>
+    <p>
+        The
+        <code>gobject</code>
+        package provides Go bindings for the Gnome
+        <a href="https://developer.gnome.org/gobject/stable/">
+            GObject
+        </a>
+        library.
+    </p>
 
+    
 
     
     

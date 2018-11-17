@@ -19,7 +19,7 @@
   </url>
   
   <url>
-    <loc>/downcasting-upcasting/</loc>
+    <loc>/casting/</loc>
   </url>
   
   <url>
@@ -31,19 +31,7 @@
   </url>
   
   <url>
-    <loc>/api/</loc>
-  </url>
-  
-  <url>
     <loc>/signal-handling/</loc>
-  </url>
-  
-  <url>
-    <loc>/stuff/</loc>
-  </url>
-  
-  <url>
-    <loc>/stuff/other/</loc>
   </url>
   
   <url>
@@ -55,12 +43,11 @@
   </url>
   
   <url>
-    <loc>/categories/</loc>
-    <priority>0</priority>
+    <loc>/api/</loc>
   </url>
   
   <url>
-    <loc>/dir-2/</loc>
+    <loc>/categories/</loc>
     <priority>0</priority>
   </url>
   
@@ -70,7 +57,39 @@
   </url>
   
   <url>
-    <loc>/dir-2/d2-f1/</loc>
+    <loc>/api/atk/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/cairo/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/gdk/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/gdkpixbuf/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/gio/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/glib/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/gobject/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/gtk/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/pango/</loc>
   </url>
   
 </urlset>
