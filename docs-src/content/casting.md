@@ -12,7 +12,7 @@ Instead, for an class instance it is possible to get
 a reference to a ancestor class instance for the same
 gtk object.  
 
-# upcasting
+## upcasting
 In a gtk application there will frequently be a need to
 access members of an object's ancestor class.
 
@@ -41,7 +41,7 @@ label := gtk.LabelNew("a label")
 window.Container().Add(label.Widget())
 ``` 
 
-# downcasting
+## downcasting
 Downcasting operates in the other direction,
 from a class to a derived class,
 
