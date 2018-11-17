@@ -1,7 +1,6 @@
-
 +++
-title="gdk"
-type="page"
+title = "gdk"
+goPackageName = "gdk"
+libraryName = "Gdk"
+cDocPath = "gdk"
 +++
-
-The `gdk` package provides Go bindings for the Gnome Gdk library.

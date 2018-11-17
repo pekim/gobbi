@@ -1,7 +1,6 @@
-
 +++
-title="glib"
-type="page"
+title = "glib"
+goPackageName = "glib"
+libraryName = "GLib"
+cDocPath = "glib"
 +++
-
-The `glib` package provides Go bindings for the Gnome GLib library.

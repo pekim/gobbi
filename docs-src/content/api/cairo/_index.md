@@ -1,7 +1,6 @@
-
 +++
-title="cairo"
-type="page"
+title = "cairo"
+goPackageName = "cairo"
+libraryName = "cairo"
+cDocPath = "cairo"
 +++
-
-The `cairo` package provides Go bindings for the Gnome cairo library.

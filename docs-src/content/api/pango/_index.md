@@ -1,7 +1,6 @@
-
 +++
-title="pango"
-type="page"
+title = "pango"
+goPackageName = "pango"
+libraryName = "Pango"
+cDocPath = "pango"
 +++
-
-The `pango` package provides Go bindings for the Gnome Pango library.

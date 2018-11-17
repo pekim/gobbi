@@ -11,6 +11,7 @@ type Namespace struct {
 	Name                string       `xml:"name,attr"`
 	Version             string       `xml:"version,attr"`
 	SharedLibrary       string       `xml:"shared-library,attr"`
+	CDocPath            string       `xml:"c-doc-path,attr"`
 	CIdentifierPrefixes string       `xml:"http://www.gtk.org/introspection/c/1.0 identifier-prefixes,attr"`
 	CSymbolPrefixes     string       `xml:"http://www.gtk.org/introspection/c/1.0 symbol-prefixes,attr"`
 	Aliases             Aliases      `xml:"alias"`
@@ -39,6 +40,10 @@ func (ns *Namespace) init(repo *Repository) {
 	ns.fullGoPackageName = fmt.Sprintf("github.com/pekim/gobbi/lib/%s", ns.goPackageName)
 	ns.libDir = projectFilepath("lib", ns.goPackageName)
 
+	if ns.CDocPath == "" {
+		ns.CDocPath = ns.goPackageName
+	}
+
 	ns.Aliases.init(ns)
 	ns.Bitfields.init(ns)
 	ns.Callbacks.init(ns)
@@ -55,6 +60,10 @@ func (ns *Namespace) init(repo *Repository) {
 func (ns *Namespace) mergeAddenda(addenda *Namespace) {
 	if addenda != nil {
 		ns.Blacklist = addenda.Blacklist
+
+		if addenda.CDocPath != "" {
+			ns.CDocPath = addenda.CDocPath
+		}
 
 		ns.Aliases.mergeAddenda(addenda.Aliases)
 		ns.Bitfields.mergeAddenda(addenda.Bitfields)

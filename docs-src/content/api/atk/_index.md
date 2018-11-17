@@ -1,7 +1,6 @@
-
 +++
-title="atk"
-type="page"
+title = "atk"
+goPackageName = "atk"
+libraryName = "Atk"
+cDocPath = "atk"
 +++
-
-The `atk` package provides Go bindings for the Gnome Atk library.

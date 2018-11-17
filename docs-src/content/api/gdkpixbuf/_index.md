@@ -1,7 +1,6 @@
-
 +++
-title="gdkpixbuf"
-type="page"
+title = "gdkpixbuf"
+goPackageName = "gdkpixbuf"
+libraryName = "GdkPixbuf"
+cDocPath = "gdk-pixbuf"
 +++
-
-The `gdkpixbuf` package provides Go bindings for the Gnome GdkPixbuf library.

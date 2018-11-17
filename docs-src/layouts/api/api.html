@@ -1,0 +1,13 @@
+{{ define "main" }}
+    <p>
+        The
+        <code>{{.Params.goPackageName}}</code>
+        package provides Go bindings for the Gnome
+        <a href="https://developer.gnome.org/{{.Params.cDocPath}}/stable/">
+            {{.Params.libraryName}}
+        </a>
+        library.
+    </p>
+
+    {{.Content}}
+{{ end }}

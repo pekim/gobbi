@@ -1,7 +1,6 @@
-
 +++
-title="gobject"
-type="page"
+title = "gobject"
+goPackageName = "gobject"
+libraryName = "GObject"
+cDocPath = "gobject"
 +++
-
-The `gobject` package provides Go bindings for the Gnome GObject library.

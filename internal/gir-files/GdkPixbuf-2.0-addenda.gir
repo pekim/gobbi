@@ -4,7 +4,7 @@
             xmlns:c="http://www.gtk.org/introspection/c/1.0"
             xmlns:glib="http://www.gtk.org/introspection/glib/1.0"
 >
-  <namespace>
+  <namespace c-doc-path="gdk-pixbuf">
     <bitfield blacklist="true" name="PixdataDumpType"/>
     <bitfield blacklist="true" name="PixdataType"/>
 

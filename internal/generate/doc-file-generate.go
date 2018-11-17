@@ -6,6 +6,11 @@ import (
 	"path"
 )
 
+type FrontmatterParam struct {
+	name  string
+	value string
+}
+
 type DocFile struct {
 	file *os.File
 }
@@ -27,6 +32,14 @@ func (df *DocFile) writeLinef(format string, args ...interface{}) {
 
 func (df *DocFile) writeLine(line string) {
 	df.writef(line + "\n")
+}
+
+func (df *DocFile) writeFrontmatter(params ...FrontmatterParam) {
+	df.writeLine("+++")
+	for _, param := range params {
+		df.writeLinef(`%s = "%s"`, param.name, param.value)
+	}
+	df.writeLine("+++")
 }
 
 func generateDocDir(filepath string) {

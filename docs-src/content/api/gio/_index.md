@@ -1,7 +1,6 @@
-
 +++
-title="gio"
-type="page"
+title = "gio"
+goPackageName = "gio"
+libraryName = "Gio"
+cDocPath = "gio"
 +++
-
-The `gio` package provides Go bindings for the Gnome Gio library.

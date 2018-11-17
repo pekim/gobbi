@@ -1,20 +1,15 @@
 package generate
 
-import (
-	"fmt"
-)
-
 func (ns *Namespace) generateDocForPackage() {
-	content := fmt.Sprintf(`
-+++
-title="%s"
-type="page"
-+++
+	generateDocFile(ns.writeDocForPackage,
+		"content", "api", ns.goPackageName, "_index.md")
+}
 
-The %s package provides Go bindings for the Gnome %s library.
-`, ns.goPackageName, "`"+ns.goPackageName+"`", ns.Name)
-
-	generateDocFile(func(file *DocFile) {
-		file.write(content)
-	}, "content", "api", ns.goPackageName, "_index.md")
+func (ns *Namespace) writeDocForPackage(file *DocFile) {
+	file.writeFrontmatter(
+		FrontmatterParam{"title", ns.goPackageName},
+		FrontmatterParam{"goPackageName", ns.goPackageName},
+		FrontmatterParam{"libraryName", ns.Name},
+		FrontmatterParam{"cDocPath", ns.CDocPath},
+	)
 }
