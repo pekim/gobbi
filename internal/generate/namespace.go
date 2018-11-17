@@ -29,7 +29,6 @@ type Namespace struct {
 	fullGoPackageName string
 	allVersions       Versions
 	versionDebug      bool
-	docDir            string
 	libDir            string
 	namespaces        map[string]*Namespace
 }
@@ -38,7 +37,6 @@ func (ns *Namespace) init(repo *Repository) {
 	ns.repo = repo
 	ns.goPackageName = strings.ToLower(ns.Name)
 	ns.fullGoPackageName = fmt.Sprintf("github.com/pekim/gobbi/lib/%s", ns.goPackageName)
-	ns.docDir = projectFilepath("docs-src", "content", "api", ns.goPackageName)
 	ns.libDir = projectFilepath("lib", ns.goPackageName)
 
 	ns.Aliases.init(ns)
@@ -80,7 +78,6 @@ func (ns *Namespace) generate() {
 
 	fmt.Printf("%-10s %s\n", ns.Name, ns.Version)
 
-	ns.generateDocDir()
 	ns.generateLibDir()
 
 	ns.generateDocForPackage()

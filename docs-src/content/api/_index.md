@@ -10,6 +10,8 @@ are relatively direct mappings of the
 ## packages
 There is one go package for each Gnome library.
 
+{{% packages_list %}}
+
 ## out params
 Out parameters are mapped as return values in Go functions.
 Inout parameters are not yet supported, but when they are
