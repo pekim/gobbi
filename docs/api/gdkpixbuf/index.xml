@@ -18,19 +18,16 @@
       <guid>/api/gdkpixbuf/constants/</guid>
       <description>PIXBUF_FEATURES_H
 GDK_PIXBUF_FEATURES_H
-PIXBUF_MAGIC_NUMBER
-Magic number for #GdkPixdata structures.
-GDK_PIXBUF_MAGIC_NUMBER
-PIXBUF_MAJOR
-Major version of gdk-pixbuf library, that is the &#34;0&#34; in &#34;0.8.2&#34; for example.
+ PIXBUF_MAJOR
+Major version of gdk-pixbuf library, that is the &amp;ldquo;0&amp;rdquo; in &amp;ldquo;0.8.2&amp;rdquo; for example.
 GDK_PIXBUF_MAJOR
-PIXBUF_MICRO
-Micro version of gdk-pixbuf library, that is the &#34;2&#34; in &#34;0.8.2&#34; for example.
+ PIXBUF_MICRO
+Micro version of gdk-pixbuf library, that is the &amp;ldquo;2&amp;rdquo; in &amp;ldquo;0.8.2&amp;rdquo; for example.
 GDK_PIXBUF_MICRO
-PIXBUF_MINOR
-Minor version of gdk-pixbuf library, that is the &#34;8&#34; in &#34;0.8.2&#34; for example.
+ PIXBUF_MINOR
+Minor version of gdk-pixbuf library, that is the &amp;ldquo;8&amp;rdquo; in &amp;ldquo;0.8.2&amp;rdquo; for example.
 GDK_PIXBUF_MINOR
-PIXBUF_VERSION
+ PIXBUF_VERSION
 Contains the full version of the gdk-pixbuf header as a string. This is the version being compiled against; contrast with #gdk_pixbuf_version.</description>
     </item>
     

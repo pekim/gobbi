@@ -19,17 +19,19 @@
       <description>BUTTON_MIDDLE
 The middle button.
 GDK_BUTTON_MIDDLE
-BUTTON_PRIMARY
+since 3.4
+ BUTTON_PRIMARY
 The primary button. This is typically the left mouse button, or the right button in a left-handed setup.
 GDK_BUTTON_PRIMARY
-BUTTON_SECONDARY
+since 3.4
+ BUTTON_SECONDARY
 The secondary button. This is typically the right mouse button, or the left button in a left-handed setup.
 GDK_BUTTON_SECONDARY
-CURRENT_TIME
+since 3.4
+ CURRENT_TIME
 Represents the current time, and can be used anywhere a time is expected.
 GDK_CURRENT_TIME
-EVENT_PROPAGATE
-Use this macro as the return value for continuing the propagation of an event handler.</description>
+ EVENT_PROPAGATE</description>
     </item>
     
   </channel>

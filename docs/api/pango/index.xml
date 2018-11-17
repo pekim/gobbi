@@ -19,14 +19,15 @@
       <description>ANALYSIS_FLAG_CENTERED_BASELINE
 Whether the segment should be shifted to center around the baseline. Used in vertical writing directions mostly.
 PANGO_ANALYSIS_FLAG_CENTERED_BASELINE
-ANALYSIS_FLAG_IS_ELLIPSIS
+since 1.16
+ ANALYSIS_FLAG_IS_ELLIPSIS
 This flag is used to mark runs that hold ellipsized text, in an ellipsized layout.
 PANGO_ANALYSIS_FLAG_IS_ELLIPSIS
-ATTR_INDEX_FROM_TEXT_BEGINNING
+since 1.36.7
+ ATTR_INDEX_FROM_TEXT_BEGINNING
 This value can be used to set the start_index member of a #PangoAttribute such that the attribute covers from the beginning of the text.
 PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING
-ENGINE_TYPE_LANG
-A string constant defining the engine type for language engines.</description>
+since 1.24</description>
     </item>
     
   </channel>

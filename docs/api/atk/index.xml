@@ -19,10 +19,12 @@
       <description>BINARY_AGE
 Like atk_get_binary_age(), but from the headers used at application compile time, rather than from the library linked against at application run time.
 ATK_BINARY_AGE
-INTERFACE_AGE
+since 2.7.4
+ INTERFACE_AGE
 Like atk_get_interface_age(), but from the headers used at application compile time, rather than from the library linked against at application run time.
 ATK_INTERFACE_AGE
-MAJOR_VERSION
+since 2.7.4
+ MAJOR_VERSION
 Like atk_get_major_version(), but from the headers used at application compile time, rather than from the library linked against at application run time.</description>
     </item>
     

@@ -85,6 +85,15 @@ article section.page pre {
 
 }
 
+.api-notes > * {
+    margin: 0em;
+}
+
 .api-ctype {
     font-size: 0.8em;
+}
+
+.api-since {
+    font-size: 0.9em;
+    font-style: italic;
 }

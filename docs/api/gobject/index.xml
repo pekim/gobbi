@@ -19,20 +19,20 @@
       <description>PARAM_MASK
 Mask containing the bits of #GParamSpec.flags which are reserved for GLib.
 G_PARAM_MASK
-PARAM_STATIC_STRINGS
-#GParamFlags value alias for %G_PARAM_STATIC_NAME | %G_PARAM_STATIC_NICK | %G_PARAM_STATIC_BLURB. Since 2.13.0
+ PARAM_STATIC_STRINGS
+#GParamFlags value alias for %G_PARAM_STATIC_NAME | %G_PARAM_STATIC_NICK | %G_PARAM_STATIC_BLURB.
+Since 2.13.0
 G_PARAM_STATIC_STRINGS
-PARAM_USER_SHIFT
+ PARAM_USER_SHIFT
 Minimum shift count to be used for user defined flags, to be stored in #GParamSpec.flags. The maximum allowed is 10.
 G_PARAM_USER_SHIFT
-SIGNAL_FLAGS_MASK
+ SIGNAL_FLAGS_MASK
 A mask for all #GSignalFlags bits.
 G_SIGNAL_FLAGS_MASK
-SIGNAL_MATCH_MASK
+ SIGNAL_MATCH_MASK
 A mask for all #GSignalMatchType bits.
 G_SIGNAL_MATCH_MASK
-TYPE_FLAG_RESERVED_ID_BIT
-A bit in the type number that&#39;s supposed to be left untouched.</description>
+ TYPE_FLAG_RESERVED_ID_BIT</description>
     </item>
     
   </channel>
