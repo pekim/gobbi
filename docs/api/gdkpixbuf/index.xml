@@ -46,7 +46,11 @@ Contains the full version of the gdk-pixbuf header as a string. This is the vers
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/api/gdkpixbuf/enums/</guid>
-      <description></description>
+      <description>Colorspace
+This enumeration defines the color spaces that are supported by the gdk-pixbuf library. Currently only RGB is supported.
+GdkColorspace
+  GDK_COLORSPACE_RGB 0 Indicates a red/green/blue additive color space.    InterpType
+This enumeration describes the different interpolation modes that can be used with the scaling functions. @GDK_INTERP_NEAREST is the fastest scaling method, but has horrible quality when scaling down. @GDK_INTERP_BILINEAR is the best choice if you aren&amp;rsquo;t sure what to choose, it has a good speed/quality balance.</description>
     </item>
     
   </channel>

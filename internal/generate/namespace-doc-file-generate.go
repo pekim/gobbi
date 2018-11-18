@@ -7,7 +7,7 @@ func (ns *Namespace) generateDoc() {
 	generateDocFile(ns.Constants.generateDocs, "content", "api", ns.goPackageName, "constants.md")
 	generateDocFile(func(df *DocFile) { ns.Bitfields.generateDocs(df, "bitfields") },
 		"content", "api", ns.goPackageName, "bitfields.md")
-	generateDocFile(func(df *DocFile) { ns.Bitfields.generateDocs(df, "enums") },
+	generateDocFile(func(df *DocFile) { ns.Enumerations.generateDocs(df, "enums") },
 		"content", "api", ns.goPackageName, "enums.md")
 }
 

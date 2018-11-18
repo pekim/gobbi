@@ -50,12 +50,10 @@ The set of uppercase ASCII alphabet characters.</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/api/glib/enums/</guid>
-      <description>AsciiType
-GAsciiType
-  ASCII_ALNUM 1   ASCII_ALPHA 2   ASCII_CNTRL 4   ASCII_DIGIT 8   ASCII_GRAPH 16   ASCII_LOWER 32   ASCII_PRINT 64   ASCII_PUNCT 128   ASCII_SPACE 256   ASCII_UPPER 512   ASCII_XDIGIT 1024    FileTest
-A test to perform on a file using g_file_test().
-GFileTest
-  FILE_TEST_IS_REGULAR 1 %TRUE if the file is a regular file (not a directory).</description>
+      <description>BookmarkFileError
+Error codes returned by bookmark file parsing.
+GBookmarkFileError
+  BOOKMARK_FILE_ERROR_INVALID_URI 0 URI was ill-formed   BOOKMARK_FILE_ERROR_INVALID_VALUE 1 a requested field was not found   BOOKMARK_FILE_ERROR_APP_NOT_REGISTERED 2 a requested application did not register a bookmark   BOOKMARK_FILE_ERROR_URI_NOT_FOUND 3 a requested URI was not found   BOOKMARK_FILE_ERROR_READ 4 document was ill formed   BOOKMARK_FILE_ERROR_UNKNOWN_ENCODING 5 the text being parsed was in an unknown encoding   BOOKMARK_FILE_ERROR_WRITE 6 an error occurred while writing   BOOKMARK_FILE_ERROR_FILE_NOT_FOUND 7 requested file was not found    ChecksumType</description>
     </item>
     
   </channel>

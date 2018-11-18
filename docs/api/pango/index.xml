@@ -48,10 +48,10 @@ since 1.24</description>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/api/pango/enums/</guid>
-      <description>FontMask
-The bits in a #PangoFontMask correspond to fields in a #PangoFontDescription that have been set.
-PangoFontMask
-  PANGO_FONT_MASK_FAMILY 1 the font family is specified.   PANGO_FONT_MASK_STYLE 2 the font style is specified.   PANGO_FONT_MASK_VARIANT 4 the font variant is specified.   PANGO_FONT_MASK_WEIGHT 8 the font weight is specified.   PANGO_FONT_MASK_STRETCH 16 the font stretch is specified.   PANGO_FONT_MASK_SIZE 32 the font size is specified.</description>
+      <description>Alignment
+A #PangoAlignment describes how to align the lines of a #PangoLayout within the available space. If the #PangoLayout is set to justify using pango_layout_set_justify(), this only has effect for partial lines.
+PangoAlignment
+  PANGO_ALIGN_LEFT 0 Put all available space on the right   PANGO_ALIGN_CENTER 1 Center the line within the available space   PANGO_ALIGN_RIGHT 2 Put all available space on the left    AttrType</description>
     </item>
     
   </channel>

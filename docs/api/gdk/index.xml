@@ -53,11 +53,11 @@ GDK_CURRENT_TIME
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/api/gdk/enums/</guid>
-      <description>AnchorHints
-Positioning hints for aligning a window relative to a rectangle.
-These hints determine how the window should be positioned in the case that the window would fall off-screen if placed in its ideal position.
-For example, %GDK_ANCHOR_FLIP_X will replace %GDK_GRAVITY_NORTH_WEST with %GDK_GRAVITY_NORTH_EAST and vice versa if the window extends beyond the left or right edges of the monitor.
-If %GDK_ANCHOR_SLIDE_X is set, the window can be shifted horizontally to fit on-screen.</description>
+      <description>AxisUse
+An enumeration describing the way in which a device axis (valuator) maps onto the predefined valuator types that GTK+ understands.
+Note that the X and Y axes are not really needed; pointer devices report their location via the x/y members of events regardless. Whether X and Y are present as axes depends on the GDK backend.
+GdkAxisUse
+  GDK_AXIS_IGNORE 0 the axis is ignored.   GDK_AXIS_X 1 the axis is used as the x axis.</description>
     </item>
     
   </channel>
