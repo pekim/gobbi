@@ -1,7 +1,5 @@
 +++
 title = "constants"
-layout = "constants"
-type = "api"
 +++
 <p class="api-heading">BUTTON_MIDDLE</p>
 <p class="api-doc">The middle button.</p>

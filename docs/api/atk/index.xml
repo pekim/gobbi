@@ -11,6 +11,18 @@
     
     
     <item>
+      <title>bitfields</title>
+      <link>/api/atk/bitfields/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/api/atk/bitfields/</guid>
+      <description>HyperlinkStateFlags
+Describes the type of link
+AtkHyperlinkStateFlags
+  ATK_HYPERLINK_IS_INLINE 1 Link is inline</description>
+    </item>
+    
+    <item>
       <title>constants</title>
       <link>/api/atk/constants/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -26,6 +38,18 @@ ATK_INTERFACE_AGE
 since 2.7.4
  MAJOR_VERSION
 Like atk_get_major_version(), but from the headers used at application compile time, rather than from the library linked against at application run time.</description>
+    </item>
+    
+    <item>
+      <title>enums</title>
+      <link>/api/atk/enums/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/api/atk/enums/</guid>
+      <description>HyperlinkStateFlags
+Describes the type of link
+AtkHyperlinkStateFlags
+  ATK_HYPERLINK_IS_INLINE 1 Link is inline</description>
     </item>
     
   </channel>

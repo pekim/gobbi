@@ -51,8 +51,8 @@ func (cc Constants) mergeAddenda(addenda Constants) {
 func (cc Constants) generateDocs(df *DocFile) {
 	df.writeFrontmatter(
 		FrontmatterParam{"title", "constants"},
-		FrontmatterParam{"layout", "constants"},
-		FrontmatterParam{"type", "api"},
+		//FrontmatterParam{"layout", "constants"},
+		//FrontmatterParam{"type", "api"},
 	)
 
 	for _, c := range cc {

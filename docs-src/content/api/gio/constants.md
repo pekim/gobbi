@@ -1,7 +1,5 @@
 +++
 title = "constants"
-layout = "constants"
-type = "api"
 +++
 <p class="api-heading">DESKTOP_APP_INFO_LOOKUP_EXTENSION_POINT_NAME</p>
 <p class="api-doc">Extension point for default handler to URI association. See

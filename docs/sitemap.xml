@@ -61,6 +61,42 @@
   </url>
   
   <url>
+    <loc>/api/atk/bitfields/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/cairo/bitfields/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/gdk/bitfields/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/gdkpixbuf/bitfields/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/gio/bitfields/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/glib/bitfields/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/gobject/bitfields/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/gtk/bitfields/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/pango/bitfields/</loc>
+  </url>
+  
+  <url>
     <loc>/api/cairo/</loc>
   </url>
   
@@ -98,6 +134,42 @@
   
   <url>
     <loc>/api/pango/constants/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/atk/enums/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/cairo/enums/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/gdk/enums/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/gdkpixbuf/enums/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/gio/enums/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/glib/enums/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/gobject/enums/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/gtk/enums/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/pango/enums/</loc>
   </url>
   
   <url>

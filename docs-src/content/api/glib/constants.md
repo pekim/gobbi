@@ -1,7 +1,5 @@
 +++
 title = "constants"
-layout = "constants"
-type = "api"
 +++
 <p class="api-heading">ANALYZER_ANALYZING</p>
 <div class="api-notes">

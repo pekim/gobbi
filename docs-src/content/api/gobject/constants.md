@@ -1,7 +1,5 @@
 +++
 title = "constants"
-layout = "constants"
-type = "api"
 +++
 <p class="api-heading">PARAM_MASK</p>
 <p class="api-doc">Mask containing the bits of #GParamSpec.flags which are reserved for GLib.</p>

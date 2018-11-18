@@ -1,7 +1,5 @@
 +++
 title = "constants"
-layout = "constants"
-type = "api"
 +++
 <p class="api-heading">PIXBUF_FEATURES_H</p>
 <div class="api-notes">

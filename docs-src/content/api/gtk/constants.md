@@ -1,7 +1,5 @@
 +++
 title = "constants"
-layout = "constants"
-type = "api"
 +++
 <p class="api-heading">BINARY_AGE</p>
 <p class="api-doc">Like gtk_get_binary_age(), but from the headers used at

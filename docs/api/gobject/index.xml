@@ -11,6 +11,20 @@
     
     
     <item>
+      <title>bitfields</title>
+      <link>/api/gobject/bitfields/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/api/gobject/bitfields/</guid>
+      <description>BindingFlags
+Flags to be passed to g_object_bind_property() or g_object_bind_property_full().
+This enumeration can be extended at later date.
+GBindingFlags
+since 2.26
+  BINDING_DEFAULT 0 The default binding; if the source property changes, the target property is updated with its value.   BINDING_BIDIRECTIONAL 1 Bidirectional binding; if either the property of the source or the property of the target changes, the other is updated.   BINDING_SYNC_CREATE 2 Synchronize the values of the source and target properties when creating the binding; the direction of the synchronization is always from the source to the target.</description>
+    </item>
+    
+    <item>
       <title>constants</title>
       <link>/api/gobject/constants/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -33,6 +47,20 @@ G_SIGNAL_FLAGS_MASK
 A mask for all #GSignalMatchType bits.
 G_SIGNAL_MATCH_MASK
  TYPE_FLAG_RESERVED_ID_BIT</description>
+    </item>
+    
+    <item>
+      <title>enums</title>
+      <link>/api/gobject/enums/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/api/gobject/enums/</guid>
+      <description>BindingFlags
+Flags to be passed to g_object_bind_property() or g_object_bind_property_full().
+This enumeration can be extended at later date.
+GBindingFlags
+since 2.26
+  BINDING_DEFAULT 0 The default binding; if the source property changes, the target property is updated with its value.   BINDING_BIDIRECTIONAL 1 Bidirectional binding; if either the property of the source or the property of the target changes, the other is updated.   BINDING_SYNC_CREATE 2 Synchronize the values of the source and target properties when creating the binding; the direction of the synchronization is always from the source to the target.</description>
     </item>
     
   </channel>

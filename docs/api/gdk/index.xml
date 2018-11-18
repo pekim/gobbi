@@ -11,6 +11,19 @@
     
     
     <item>
+      <title>bitfields</title>
+      <link>/api/gdk/bitfields/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/api/gdk/bitfields/</guid>
+      <description>AnchorHints
+Positioning hints for aligning a window relative to a rectangle.
+These hints determine how the window should be positioned in the case that the window would fall off-screen if placed in its ideal position.
+For example, %GDK_ANCHOR_FLIP_X will replace %GDK_GRAVITY_NORTH_WEST with %GDK_GRAVITY_NORTH_EAST and vice versa if the window extends beyond the left or right edges of the monitor.
+If %GDK_ANCHOR_SLIDE_X is set, the window can be shifted horizontally to fit on-screen.</description>
+    </item>
+    
+    <item>
       <title>constants</title>
       <link>/api/gdk/constants/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -32,6 +45,19 @@ since 3.4
 Represents the current time, and can be used anywhere a time is expected.
 GDK_CURRENT_TIME
  EVENT_PROPAGATE</description>
+    </item>
+    
+    <item>
+      <title>enums</title>
+      <link>/api/gdk/enums/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/api/gdk/enums/</guid>
+      <description>AnchorHints
+Positioning hints for aligning a window relative to a rectangle.
+These hints determine how the window should be positioned in the case that the window would fall off-screen if placed in its ideal position.
+For example, %GDK_ANCHOR_FLIP_X will replace %GDK_GRAVITY_NORTH_WEST with %GDK_GRAVITY_NORTH_EAST and vice versa if the window extends beyond the left or right edges of the monitor.
+If %GDK_ANCHOR_SLIDE_X is set, the window can be shifted horizontally to fit on-screen.</description>
     </item>
     
   </channel>

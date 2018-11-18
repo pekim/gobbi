@@ -11,6 +11,22 @@
     
     
     <item>
+      <title>bitfields</title>
+      <link>/api/gtk/bitfields/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/api/gtk/bitfields/</guid>
+      <description>AccelFlags
+Accelerator flags used with gtk_accel_group_connect().
+GtkAccelFlags
+  GTK_ACCEL_VISIBLE 1 Accelerator is visible   GTK_ACCEL_LOCKED 2 Accelerator not removable   GTK_ACCEL_MASK 7 Mask    ApplicationInhibitFlags
+Types of user actions that may be blocked by gtk_application_inhibit().
+GtkApplicationInhibitFlags
+since 3.4
+  GTK_APPLICATION_INHIBIT_LOGOUT 1 Inhibit ending the user session by logging out or by shutting down the computer   GTK_APPLICATION_INHIBIT_SWITCH 2 Inhibit user switching   GTK_APPLICATION_INHIBIT_SUSPEND 4 Inhibit suspending the session or computer   GTK_APPLICATION_INHIBIT_IDLE 8 Inhibit the session being marked as idle (and possibly locked)    AttachOptions</description>
+    </item>
+    
+    <item>
       <title>constants</title>
       <link>/api/gtk/constants/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -26,6 +42,22 @@ GTK_INPUT_ERROR
 Like gtk_get_interface_age(), but from the headers used at application compile time, rather than from the library linked against at application run time.
 GTK_INTERFACE_AGE
  LEVEL_BAR_OFFSET_FULL</description>
+    </item>
+    
+    <item>
+      <title>enums</title>
+      <link>/api/gtk/enums/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/api/gtk/enums/</guid>
+      <description>AccelFlags
+Accelerator flags used with gtk_accel_group_connect().
+GtkAccelFlags
+  GTK_ACCEL_VISIBLE 1 Accelerator is visible   GTK_ACCEL_LOCKED 2 Accelerator not removable   GTK_ACCEL_MASK 7 Mask    ApplicationInhibitFlags
+Types of user actions that may be blocked by gtk_application_inhibit().
+GtkApplicationInhibitFlags
+since 3.4
+  GTK_APPLICATION_INHIBIT_LOGOUT 1 Inhibit ending the user session by logging out or by shutting down the computer   GTK_APPLICATION_INHIBIT_SWITCH 2 Inhibit user switching   GTK_APPLICATION_INHIBIT_SUSPEND 4 Inhibit suspending the session or computer   GTK_APPLICATION_INHIBIT_IDLE 8 Inhibit the session being marked as idle (and possibly locked)    AttachOptions</description>
     </item>
     
   </channel>

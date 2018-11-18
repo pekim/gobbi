@@ -5,6 +5,10 @@ func (ns *Namespace) generateDoc() {
 		"content", "api", ns.goPackageName, "_index.md")
 
 	generateDocFile(ns.Constants.generateDocs, "content", "api", ns.goPackageName, "constants.md")
+	generateDocFile(func(df *DocFile) { ns.Bitfields.generateDocs(df, "bitfields") },
+		"content", "api", ns.goPackageName, "bitfields.md")
+	generateDocFile(func(df *DocFile) { ns.Bitfields.generateDocs(df, "enums") },
+		"content", "api", ns.goPackageName, "enums.md")
 }
 
 func (ns *Namespace) writeDocForPackage(file *DocFile) {

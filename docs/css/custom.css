@@ -97,3 +97,21 @@ article section.page pre {
     font-size: 0.9em;
     font-style: italic;
 }
+
+article section.page table {
+    table-layout: auto;
+    margin-top: 1.0em;
+}
+
+article section.page table tr td {
+    vertical-align: baseline;
+    padding: 0.5em 1em;
+}
+
+article section.page table tr td.value {
+    text-align: end;
+}
+
+article section.page table tr td.doc {
+    width: 100%;
+}

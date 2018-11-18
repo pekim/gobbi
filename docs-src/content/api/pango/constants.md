@@ -1,7 +1,5 @@
 +++
 title = "constants"
-layout = "constants"
-type = "api"
 +++
 <p class="api-heading">ANALYSIS_FLAG_CENTERED_BASELINE</p>
 <p class="api-doc">Whether the segment should be shifted to center around the baseline.

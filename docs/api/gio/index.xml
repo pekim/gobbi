@@ -11,6 +11,22 @@
     
     
     <item>
+      <title>bitfields</title>
+      <link>/api/gio/bitfields/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/api/gio/bitfields/</guid>
+      <description>AppInfoCreateFlags
+Flags used when creating a #GAppInfo.
+GAppInfoCreateFlags
+  APP_INFO_CREATE_NONE 0 No flags.   APP_INFO_CREATE_NEEDS_TERMINAL 1 Application opens in a terminal window.   APP_INFO_CREATE_SUPPORTS_URIS 2 Application supports URI arguments.   APP_INFO_CREATE_SUPPORTS_STARTUP_NOTIFICATION 4 Application supports startup notification. Since 2.26    ApplicationFlags
+Flags used to define the behaviour of a #GApplication.
+GApplicationFlags
+since 2.28
+  APPLICATION_FLAGS_NONE 0 Default   APPLICATION_IS_SERVICE 1 Run as a service.</description>
+    </item>
+    
+    <item>
       <title>constants</title>
       <link>/api/gio/constants/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -24,6 +40,22 @@ A key in the &amp;ldquo;access&amp;rdquo; namespace for checking deletion privil
 G_FILE_ATTRIBUTE_ACCESS_CAN_DELETE
  FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE
 A key in the &amp;ldquo;access&amp;rdquo; namespace for getting execution privileges. Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN. This attribute will be %TRUE if the user is able to execute the file.</description>
+    </item>
+    
+    <item>
+      <title>enums</title>
+      <link>/api/gio/enums/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/api/gio/enums/</guid>
+      <description>AppInfoCreateFlags
+Flags used when creating a #GAppInfo.
+GAppInfoCreateFlags
+  APP_INFO_CREATE_NONE 0 No flags.   APP_INFO_CREATE_NEEDS_TERMINAL 1 Application opens in a terminal window.   APP_INFO_CREATE_SUPPORTS_URIS 2 Application supports URI arguments.   APP_INFO_CREATE_SUPPORTS_STARTUP_NOTIFICATION 4 Application supports startup notification. Since 2.26    ApplicationFlags
+Flags used to define the behaviour of a #GApplication.
+GApplicationFlags
+since 2.28
+  APPLICATION_FLAGS_NONE 0 Default   APPLICATION_IS_SERVICE 1 Run as a service.</description>
     </item>
     
   </channel>
