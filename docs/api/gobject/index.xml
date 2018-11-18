@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>gobject on gobbi</title>
+    <link>/api/gobject/</link>
+    <description>Recent content in gobject on gobbi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="/api/gobject/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>bitfields</title>
+      <link>/api/gobject/bitfields/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/api/gobject/bitfields/</guid>
+      <description>BindingFlags
+Flags to be passed to g_object_bind_property() or g_object_bind_property_full().
+This enumeration can be extended at later date.
+GBindingFlags
+since 2.26
+  BINDING_DEFAULT 0 The default binding; if the source property changes, the target property is updated with its value.   BINDING_BIDIRECTIONAL 1 Bidirectional binding; if either the property of the source or the property of the target changes, the other is updated.   BINDING_SYNC_CREATE 2 Synchronize the values of the source and target properties when creating the binding; the direction of the synchronization is always from the source to the target.</description>
+    </item>
+    
+    <item>
+      <title>constants</title>
+      <link>/api/gobject/constants/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/api/gobject/constants/</guid>
+      <description>PARAM_MASK
+Mask containing the bits of #GParamSpec.flags which are reserved for GLib.
+G_PARAM_MASK
+ PARAM_STATIC_STRINGS
+#GParamFlags value alias for %G_PARAM_STATIC_NAME | %G_PARAM_STATIC_NICK | %G_PARAM_STATIC_BLURB.
+Since 2.13.0
+G_PARAM_STATIC_STRINGS
+ PARAM_USER_SHIFT
+Minimum shift count to be used for user defined flags, to be stored in #GParamSpec.flags. The maximum allowed is 10.
+G_PARAM_USER_SHIFT
+ SIGNAL_FLAGS_MASK
+A mask for all #GSignalFlags bits.
+G_SIGNAL_FLAGS_MASK
+ SIGNAL_MATCH_MASK
+A mask for all #GSignalMatchType bits.
+G_SIGNAL_MATCH_MASK
+ TYPE_FLAG_RESERVED_ID_BIT</description>
+    </item>
+    
+    <item>
+      <title>enums</title>
+      <link>/api/gobject/enums/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/api/gobject/enums/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

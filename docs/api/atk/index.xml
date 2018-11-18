@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>atk on gobbi</title>
+    <link>/api/atk/</link>
+    <description>Recent content in atk on gobbi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="/api/atk/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>bitfields</title>
+      <link>/api/atk/bitfields/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/api/atk/bitfields/</guid>
+      <description>HyperlinkStateFlags
+Describes the type of link
+AtkHyperlinkStateFlags
+  ATK_HYPERLINK_IS_INLINE 1 Link is inline</description>
+    </item>
+    
+    <item>
+      <title>constants</title>
+      <link>/api/atk/constants/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/api/atk/constants/</guid>
+      <description>BINARY_AGE
+Like atk_get_binary_age(), but from the headers used at application compile time, rather than from the library linked against at application run time.
+ATK_BINARY_AGE
+since 2.7.4
+ INTERFACE_AGE
+Like atk_get_interface_age(), but from the headers used at application compile time, rather than from the library linked against at application run time.
+ATK_INTERFACE_AGE
+since 2.7.4
+ MAJOR_VERSION
+Like atk_get_major_version(), but from the headers used at application compile time, rather than from the library linked against at application run time.</description>
+    </item>
+    
+    <item>
+      <title>enums</title>
+      <link>/api/atk/enums/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/api/atk/enums/</guid>
+      <description>CoordType
+Specifies how xy coordinates are to be interpreted. Used by functions such as atk_component_get_position() and atk_text_get_character_extents()
+AtkCoordType
+  ATK_XY_SCREEN 0 specifies xy coordinates relative to the screen   ATK_XY_WINDOW 1 specifies xy coordinates relative to the widget&amp;rsquo;s top-level window    KeyEventType
+Specifies the type of a keyboard evemt.
+AtkKeyEventType
+  ATK_KEY_EVENT_PRESS 0 specifies a key press event   ATK_KEY_EVENT_RELEASE 1 specifies a key release event   ATK_KEY_EVENT_LAST_DEFINED 2 Not a valid value; specifies end of enumeration    Layer</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -18,18 +18,13 @@ type Member struct {
 	GlibNick    string `xml:"http://www.gtk.org/introspection/glib/1.0 nick,attr"`
 	Doc         *Doc   `xml:"doc"`
 
-	name string
+	ns     *Namespace
+	name   string
+	goName string
 }
 
-func (m *Member) mergeAddenda(addenda *Member) {
-	m.Blacklist = addenda.Blacklist
-}
-
-func (m *Member) generate(g *jen.Group, namePrefix string, goTypeName string) {
-	if m.Blacklist {
-		g.Commentf("Blacklisted member : %s", m.CIdentifier)
-		return
-	}
+func (m *Member) init(ns *Namespace, namePrefix string) {
+	m.ns = ns
 
 	name := strings.TrimPrefix(m.CIdentifier, namePrefix)
 	firstRune, _ := utf8.DecodeRuneInString(name)
@@ -39,9 +34,22 @@ func (m *Member) generate(g *jen.Group, namePrefix string, goTypeName string) {
 	}
 	m.name = name
 
+	m.goName = name
+}
+
+func (m *Member) mergeAddenda(addenda *Member) {
+	m.Blacklist = addenda.Blacklist
+}
+
+func (m *Member) generate(g *jen.Group, goTypeName string) {
+	if m.Blacklist {
+		g.Commentf("Blacklisted member : %s", m.CIdentifier)
+		return
+	}
+
 	// declare a member constant
 	g.
-		Id(name).
+		Id(m.goName).
 		Id(goTypeName).
 		Op("=").
 		Lit(m.Value)

@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>gobbi</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="revised" content="2018-11-18T19:50:29 GMT">
+<title> :: gobbi</title>
+<link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
+<link href="/css/font-awesome.min.css" rel="stylesheet">
+<link href="/css/nucleus.css" rel="stylesheet">
+<link href="/theme-flex/style.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<script src="/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "\/";
+</script>
+<link rel="stylesheet" href="/css/custom.css">
+
+
+    
+  </head>
+  <body data-url="/lib/gtk/bitfields/">
+    
+      <header>
+  <div class="logo">
+    
+	
+  
+    <p><a href="/">gobbi</a></p>
+
+  
+
+
+  </div>
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+    <nav class="shortcuts">
+            <li class="" role="">
+                <a href="https://github.com/pekim/gobbi"  rel="noopener">
+                  <i class='fa fa-github'></i> <label>Github repo</label>
+                </a>
+            </li>
+    </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+
+
+    <li class="dd-item ">
+        <div>
+            <a href="/">
+                <span>Introduction</span>
+            </a>
+        </div>
+    </li>
+
+    <li class="dd-item ">
+        <div>
+            <a href="/application-lifecycle/">
+                <span>Application lifecycle</span>
+            </a>
+        </div>
+    </li>
+
+    <li class="dd-item ">
+        <div>
+            <a href="/gvalue/">
+                <span>gobject.Value</span>
+            </a>
+        </div>
+    </li>
+
+    <li data-nav-id="/api/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/">API</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/api/atk/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/atk/">atk</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/atk/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/atk/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/atk/constants/" class="dd-item">
+        <div>
+          <a href="/api/atk/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/atk/enums/" class="dd-item">
+        <div>
+          <a href="/api/atk/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/cairo/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/cairo/">cairo</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/cairo/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/cairo/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/cairo/constants/" class="dd-item">
+        <div>
+          <a href="/api/cairo/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/cairo/enums/" class="dd-item">
+        <div>
+          <a href="/api/cairo/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/gdk/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/gdk/">gdk</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/gdk/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/gdk/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gdk/constants/" class="dd-item">
+        <div>
+          <a href="/api/gdk/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gdk/enums/" class="dd-item">
+        <div>
+          <a href="/api/gdk/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/gdkpixbuf/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/gdkpixbuf/">gdkpixbuf</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/gdkpixbuf/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/gdkpixbuf/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gdkpixbuf/constants/" class="dd-item">
+        <div>
+          <a href="/api/gdkpixbuf/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gdkpixbuf/enums/" class="dd-item">
+        <div>
+          <a href="/api/gdkpixbuf/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/gio/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/gio/">gio</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/gio/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/gio/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gio/constants/" class="dd-item">
+        <div>
+          <a href="/api/gio/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gio/enums/" class="dd-item">
+        <div>
+          <a href="/api/gio/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/glib/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/glib/">glib</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/glib/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/glib/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/glib/constants/" class="dd-item">
+        <div>
+          <a href="/api/glib/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/glib/enums/" class="dd-item">
+        <div>
+          <a href="/api/glib/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/gobject/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/gobject/">gobject</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/gobject/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/gobject/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gobject/constants/" class="dd-item">
+        <div>
+          <a href="/api/gobject/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gobject/enums/" class="dd-item">
+        <div>
+          <a href="/api/gobject/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/gtk/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/gtk/">gtk</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/gtk/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/gtk/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gtk/constants/" class="dd-item">
+        <div>
+          <a href="/api/gtk/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gtk/enums/" class="dd-item">
+        <div>
+          <a href="/api/gtk/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/pango/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/pango/">pango</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/pango/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/pango/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/pango/constants/" class="dd-item">
+        <div>
+          <a href="/api/pango/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/pango/enums/" class="dd-item">
+        <div>
+          <a href="/api/pango/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/lib/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/lib/">Libs</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/lib/atk/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/atk/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/atk/constant/" class="dd-item">
+        <div>
+          <a href="/lib/atk/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/atk/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/atk/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/atk/enums/" class="dd-item">
+        <div>
+          <a href="/lib/atk/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/atk/package/" class="dd-item">
+        <div>
+          <a href="/lib/atk/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/cairo/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/cairo/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/cairo/constant/" class="dd-item">
+        <div>
+          <a href="/lib/cairo/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/cairo/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/cairo/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/cairo/enums/" class="dd-item">
+        <div>
+          <a href="/lib/cairo/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/cairo/package/" class="dd-item">
+        <div>
+          <a href="/lib/cairo/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdk/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/gdk/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdk/constant/" class="dd-item">
+        <div>
+          <a href="/lib/gdk/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdk/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/gdk/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdk/enums/" class="dd-item">
+        <div>
+          <a href="/lib/gdk/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdk/package/" class="dd-item">
+        <div>
+          <a href="/lib/gdk/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdkpixbuf/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/gdkpixbuf/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdkpixbuf/constant/" class="dd-item">
+        <div>
+          <a href="/lib/gdkpixbuf/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdkpixbuf/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/gdkpixbuf/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdkpixbuf/enums/" class="dd-item">
+        <div>
+          <a href="/lib/gdkpixbuf/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdkpixbuf/package/" class="dd-item">
+        <div>
+          <a href="/lib/gdkpixbuf/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gio/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/gio/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gio/constant/" class="dd-item">
+        <div>
+          <a href="/lib/gio/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gio/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/gio/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gio/enums/" class="dd-item">
+        <div>
+          <a href="/lib/gio/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gio/package/" class="dd-item">
+        <div>
+          <a href="/lib/gio/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/glib/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/glib/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/glib/constant/" class="dd-item">
+        <div>
+          <a href="/lib/glib/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/glib/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/glib/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/glib/enums/" class="dd-item">
+        <div>
+          <a href="/lib/glib/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/glib/package/" class="dd-item">
+        <div>
+          <a href="/lib/glib/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gobject/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/gobject/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gobject/constant/" class="dd-item">
+        <div>
+          <a href="/lib/gobject/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gobject/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/gobject/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gobject/enums/" class="dd-item">
+        <div>
+          <a href="/lib/gobject/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gobject/package/" class="dd-item">
+        <div>
+          <a href="/lib/gobject/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gtk/bitfields/" class="dd-item active">
+        <div>
+          <a href="/lib/gtk/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gtk/constant/" class="dd-item">
+        <div>
+          <a href="/lib/gtk/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gtk/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/gtk/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gtk/enums/" class="dd-item">
+        <div>
+          <a href="/lib/gtk/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gtk/package/" class="dd-item">
+        <div>
+          <a href="/lib/gtk/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/pango/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/pango/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/pango/constant/" class="dd-item">
+        <div>
+          <a href="/lib/pango/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/pango/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/pango/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/pango/enums/" class="dd-item">
+        <div>
+          <a href="/lib/pango/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/pango/package/" class="dd-item">
+        <div>
+          <a href="/lib/pango/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+
+
+
+
+    </ul>
+    <section>
+    </section>
+  </aside>
+  <section class="page">
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/api/" >
+   API</option>
+    <option value="/lib/" >
+   Libs</option> 
+      <option value="/lib/atk/bitfields/" >- </option>
+      <option value="/lib/atk/constant/" >- </option>
+      <option value="/lib/atk/enumeration/" >- </option>
+      <option value="/lib/atk/enums/" >- </option>
+      <option value="/lib/atk/package/" >- </option>
+      <option value="/lib/cairo/bitfields/" >- </option>
+      <option value="/lib/cairo/constant/" >- </option>
+      <option value="/lib/cairo/enumeration/" >- </option>
+      <option value="/lib/cairo/enums/" >- </option>
+      <option value="/lib/cairo/package/" >- </option>
+      <option value="/lib/gdk/bitfields/" >- </option>
+      <option value="/lib/gdk/constant/" >- </option>
+      <option value="/lib/gdk/enumeration/" >- </option>
+      <option value="/lib/gdk/enums/" >- </option>
+      <option value="/lib/gdk/package/" >- </option>
+      <option value="/lib/gdkpixbuf/bitfields/" >- </option>
+      <option value="/lib/gdkpixbuf/constant/" >- </option>
+      <option value="/lib/gdkpixbuf/enumeration/" >- </option>
+      <option value="/lib/gdkpixbuf/enums/" >- </option>
+      <option value="/lib/gdkpixbuf/package/" >- </option>
+      <option value="/lib/gio/bitfields/" >- </option>
+      <option value="/lib/gio/constant/" >- </option>
+      <option value="/lib/gio/enumeration/" >- </option>
+      <option value="/lib/gio/enums/" >- </option>
+      <option value="/lib/gio/package/" >- </option>
+      <option value="/lib/glib/bitfields/" >- </option>
+      <option value="/lib/glib/constant/" >- </option>
+      <option value="/lib/glib/enumeration/" >- </option>
+      <option value="/lib/glib/enums/" >- </option>
+      <option value="/lib/glib/package/" >- </option>
+      <option value="/lib/gobject/bitfields/" >- </option>
+      <option value="/lib/gobject/constant/" >- </option>
+      <option value="/lib/gobject/enumeration/" >- </option>
+      <option value="/lib/gobject/enums/" >- </option>
+      <option value="/lib/gobject/package/" >- </option>
+      <option value="/lib/gtk/bitfields/"  selected>- </option>
+      <option value="/lib/gtk/constant/" >- </option>
+      <option value="/lib/gtk/enumeration/" >- </option>
+      <option value="/lib/gtk/enums/" >- </option>
+      <option value="/lib/gtk/package/" >- </option>
+      <option value="/lib/pango/bitfields/" >- </option>
+      <option value="/lib/pango/constant/" >- </option>
+      <option value="/lib/pango/enumeration/" >- </option>
+      <option value="/lib/pango/enums/" >- </option>
+      <option value="/lib/pango/package/" >- </option>
+  
+
+
+
+        </select>
+      </center>
+    </div>
+      <div>
+        <div class="searchbox">
+          <input data-search-input id="search-by" type="text" placeholder="Search...">
+        </div>
+        <script type="text/javascript" src="/js/lunr.min.js"></script>
+        <script type="text/javascript" src="/js/auto-complete.js"></script>
+        <link href="/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+          
+              var baseurl = "\/";
+          
+        </script>
+        <script type="text/javascript" src="/js/search.js"></script>
+      </div>
+    
+
+    <h1></h1>
+    
+    
+    
+    
+
+<h1 id="gtk-bitfields"><code>gtk</code> bitfields</h1>
+
+<h2 id="accelflags"><code>AccelFlags</code></h2>
+
+<p>Accelerator flags used with gtk_accel_group_connect().</p>
+
+<p>C - <code>GtkAccelFlags</code></p>
+
+<h3 id="gtk-accel-visible-1">GTK_ACCEL_VISIBLE = 1</h3>
+
+<p>Accelerator is visible</p>
+
+<h3 id="gtk-accel-locked-2">GTK_ACCEL_LOCKED = 2</h3>
+
+<p>Accelerator not removable</p>
+
+<h3 id="gtk-accel-mask-7">GTK_ACCEL_MASK = 7</h3>
+
+<p>Mask</p>
+
+<h2 id="applicationinhibitflags"><code>ApplicationInhibitFlags</code></h2>
+
+<p>Types of user actions that may be blocked by gtk_application_inhibit().</p>
+
+<p>C - <code>GtkApplicationInhibitFlags</code></p>
+
+<h3 id="gtk-application-inhibit-logout-1">GTK_APPLICATION_INHIBIT_LOGOUT = 1</h3>
+
+<p>Inhibit ending the user session
+    by logging out or by shutting down the computer</p>
+
+<h3 id="gtk-application-inhibit-switch-2">GTK_APPLICATION_INHIBIT_SWITCH = 2</h3>
+
+<p>Inhibit user switching</p>
+
+<h3 id="gtk-application-inhibit-suspend-4">GTK_APPLICATION_INHIBIT_SUSPEND = 4</h3>
+
+<p>Inhibit suspending the
+    session or computer</p>
+
+<h3 id="gtk-application-inhibit-idle-8">GTK_APPLICATION_INHIBIT_IDLE = 8</h3>
+
+<p>Inhibit the session being
+    marked as idle (and possibly locked)</p>
+
+<h2 id="attachoptions"><code>AttachOptions</code></h2>
+
+<p>Denotes the expansion properties that a widget will have when it (or its
+parent) is resized.</p>
+
+<p>C - <code>GtkAttachOptions</code></p>
+
+<h3 id="gtk-expand-1">GTK_EXPAND = 1</h3>
+
+<p>the widget should expand to take up any extra space in its
+container that has been allocated.</p>
+
+<h3 id="gtk-shrink-2">GTK_SHRINK = 2</h3>
+
+<p>the widget should shrink as and when possible.</p>
+
+<h3 id="gtk-fill-4">GTK_FILL = 4</h3>
+
+<p>the widget should fill the space allocated to it.</p>
+
+<h2 id="calendardisplayoptions"><code>CalendarDisplayOptions</code></h2>
+
+<p>These options can be used to influence the display and behaviour of a #GtkCalendar.</p>
+
+<p>C - <code>GtkCalendarDisplayOptions</code></p>
+
+<h3 id="gtk-calendar-show-heading-1">GTK_CALENDAR_SHOW_HEADING = 1</h3>
+
+<p>Specifies that the month and year should be displayed.</p>
+
+<h3 id="gtk-calendar-show-day-names-2">GTK_CALENDAR_SHOW_DAY_NAMES = 2</h3>
+
+<p>Specifies that three letter day descriptions should be present.</p>
+
+<h3 id="gtk-calendar-no-month-change-4">GTK_CALENDAR_NO_MONTH_CHANGE = 4</h3>
+
+<p>Prevents the user from switching months with the calendar.</p>
+
+<h3 id="gtk-calendar-show-week-numbers-8">GTK_CALENDAR_SHOW_WEEK_NUMBERS = 8</h3>
+
+<p>Displays each week numbers of the current year, down the
+left side of the calendar.</p>
+
+<h3 id="gtk-calendar-show-details-32">GTK_CALENDAR_SHOW_DETAILS = 32</h3>
+
+<p>Just show an indicator, not the full details
+text when details are provided. See gtk_calendar_set_detail_func().</p>
+
+<h2 id="cellrendererstate"><code>CellRendererState</code></h2>
+
+<p>Tells how a cell is to be rendered.</p>
+
+<p>C - <code>GtkCellRendererState</code></p>
+
+<h3 id="gtk-cell-renderer-selected-1">GTK_CELL_RENDERER_SELECTED = 1</h3>
+
+<p>The cell is currently selected, and
+ probably has a selection colored background to render to.</p>
+
+<h3 id="gtk-cell-renderer-prelit-2">GTK_CELL_RENDERER_PRELIT = 2</h3>
+
+<p>The mouse is hovering over the cell.</p>
+
+<h3 id="gtk-cell-renderer-insensitive-4">GTK_CELL_RENDERER_INSENSITIVE = 4</h3>
+
+<p>The cell is drawn in an insensitive manner</p>
+
+<h3 id="gtk-cell-renderer-sorted-8">GTK_CELL_RENDERER_SORTED = 8</h3>
+
+<p>The cell is in a sorted row</p>
+
+<h3 id="gtk-cell-renderer-focused-16">GTK_CELL_RENDERER_FOCUSED = 16</h3>
+
+<p>The cell is in the focus row.</p>
+
+<h3 id="gtk-cell-renderer-expandable-32">GTK_CELL_RENDERER_EXPANDABLE = 32</h3>
+
+<p>The cell is in a row that can be expanded. Since 3.4</p>
+
+<h3 id="gtk-cell-renderer-expanded-64">GTK_CELL_RENDERER_EXPANDED = 64</h3>
+
+<p>The cell is in a row that is expanded. Since 3.4</p>
+
+<h2 id="debugflag"><code>DebugFlag</code></h2>
+
+<p>C - <code>GtkDebugFlag</code></p>
+
+<h3 id="gtk-debug-misc-1">GTK_DEBUG_MISC = 1</h3>
+
+<h3 id="gtk-debug-plugsocket-2">GTK_DEBUG_PLUGSOCKET = 2</h3>
+
+<h3 id="gtk-debug-text-4">GTK_DEBUG_TEXT = 4</h3>
+
+<h3 id="gtk-debug-tree-8">GTK_DEBUG_TREE = 8</h3>
+
+<h3 id="gtk-debug-updates-16">GTK_DEBUG_UPDATES = 16</h3>
+
+<h3 id="gtk-debug-keybindings-32">GTK_DEBUG_KEYBINDINGS = 32</h3>
+
+<h3 id="gtk-debug-multihead-64">GTK_DEBUG_MULTIHEAD = 64</h3>
+
+<h3 id="gtk-debug-modules-128">GTK_DEBUG_MODULES = 128</h3>
+
+<h3 id="gtk-debug-geometry-256">GTK_DEBUG_GEOMETRY = 256</h3>
+
+<h3 id="gtk-debug-icontheme-512">GTK_DEBUG_ICONTHEME = 512</h3>
+
+<h3 id="gtk-debug-printing-1024">GTK_DEBUG_PRINTING = 1024</h3>
+
+<h3 id="gtk-debug-builder-2048">GTK_DEBUG_BUILDER = 2048</h3>
+
+<h3 id="gtk-debug-size-request-4096">GTK_DEBUG_SIZE_REQUEST = 4096</h3>
+
+<h3 id="gtk-debug-no-css-cache-8192">GTK_DEBUG_NO_CSS_CACHE = 8192</h3>
+
+<h3 id="gtk-debug-baselines-16384">GTK_DEBUG_BASELINES = 16384</h3>
+
+<h3 id="gtk-debug-pixel-cache-32768">GTK_DEBUG_PIXEL_CACHE = 32768</h3>
+
+<h3 id="gtk-debug-no-pixel-cache-65536">GTK_DEBUG_NO_PIXEL_CACHE = 65536</h3>
+
+<h3 id="gtk-debug-interactive-131072">GTK_DEBUG_INTERACTIVE = 131072</h3>
+
+<h3 id="gtk-debug-touchscreen-262144">GTK_DEBUG_TOUCHSCREEN = 262144</h3>
+
+<h3 id="gtk-debug-actions-524288">GTK_DEBUG_ACTIONS = 524288</h3>
+
+<h3 id="gtk-debug-resize-1048576">GTK_DEBUG_RESIZE = 1048576</h3>
+
+<h3 id="gtk-debug-layout-2097152">GTK_DEBUG_LAYOUT = 2097152</h3>
+
+<h2 id="destdefaults"><code>DestDefaults</code></h2>
+
+<p>The #GtkDestDefaults enumeration specifies the various
+types of action that will be taken on behalf
+of the user for a drag destination site.</p>
+
+<p>C - <code>GtkDestDefaults</code></p>
+
+<h3 id="gtk-dest-default-motion-1">GTK_DEST_DEFAULT_MOTION = 1</h3>
+
+<p>If set for a widget, GTK+, during a drag over this
+  widget will check if the drag matches this widget’s list of possible targets
+  and actions.
+  GTK+ will then call gdk_drag_status() as appropriate.</p>
+
+<h3 id="gtk-dest-default-highlight-2">GTK_DEST_DEFAULT_HIGHLIGHT = 2</h3>
+
+<p>If set for a widget, GTK+ will draw a highlight on
+  this widget as long as a drag is over this widget and the widget drag format
+  and action are acceptable.</p>
+
+<h3 id="gtk-dest-default-drop-4">GTK_DEST_DEFAULT_DROP = 4</h3>
+
+<p>If set for a widget, when a drop occurs, GTK+ will
+  will check if the drag matches this widget’s list of possible targets and
+  actions. If so, GTK+ will call gtk_drag_get_data() on behalf of the widget.
+  Whether or not the drop is successful, GTK+ will call gtk_drag_finish(). If
+  the action was a move, then if the drag was successful, then %TRUE will be
+  passed for the @delete parameter to gtk_drag_finish().</p>
+
+<h3 id="gtk-dest-default-all-7">GTK_DEST_DEFAULT_ALL = 7</h3>
+
+<p>If set, specifies that all default actions should
+  be taken.</p>
+
+<h2 id="dialogflags"><code>DialogFlags</code></h2>
+
+<p>Flags used to influence dialog construction.</p>
+
+<p>C - <code>GtkDialogFlags</code></p>
+
+<h3 id="gtk-dialog-modal-1">GTK_DIALOG_MODAL = 1</h3>
+
+<p>Make the constructed dialog modal,
+    see gtk_window_set_modal()</p>
+
+<h3 id="gtk-dialog-destroy-with-parent-2">GTK_DIALOG_DESTROY_WITH_PARENT = 2</h3>
+
+<p>Destroy the dialog when its
+    parent is destroyed, see gtk_window_set_destroy_with_parent()</p>
+
+<h3 id="gtk-dialog-use-header-bar-4">GTK_DIALOG_USE_HEADER_BAR = 4</h3>
+
+<p>Create dialog with actions in header
+    bar instead of action area. Since 3.12.</p>
+
+<h2 id="filefilterflags"><code>FileFilterFlags</code></h2>
+
+<p>These flags indicate what parts of a #GtkFileFilterInfo struct
+are filled or need to be filled.</p>
+
+<p>C - <code>GtkFileFilterFlags</code></p>
+
+<h3 id="gtk-file-filter-filename-1">GTK_FILE_FILTER_FILENAME = 1</h3>
+
+<p>the filename of the file being tested</p>
+
+<h3 id="gtk-file-filter-uri-2">GTK_FILE_FILTER_URI = 2</h3>
+
+<p>the URI for the file being tested</p>
+
+<h3 id="gtk-file-filter-display-name-4">GTK_FILE_FILTER_DISPLAY_NAME = 4</h3>
+
+<p>the string that will be used to
+  display the file in the file chooser</p>
+
+<h3 id="gtk-file-filter-mime-type-8">GTK_FILE_FILTER_MIME_TYPE = 8</h3>
+
+<p>the mime type of the file</p>
+
+<h2 id="iconlookupflags"><code>IconLookupFlags</code></h2>
+
+<p>Used to specify options for gtk_icon_theme_lookup_icon()</p>
+
+<p>C - <code>GtkIconLookupFlags</code></p>
+
+<h3 id="gtk-icon-lookup-no-svg-1">GTK_ICON_LOOKUP_NO_SVG = 1</h3>
+
+<p>Never get SVG icons, even if gdk-pixbuf
+  supports them. Cannot be used together with %GTK_ICON_LOOKUP_FORCE_SVG.</p>
+
+<h3 id="gtk-icon-lookup-force-svg-2">GTK_ICON_LOOKUP_FORCE_SVG = 2</h3>
+
+<p>Get SVG icons, even if gdk-pixbuf
+  doesn’t support them.
+  Cannot be used together with %GTK_ICON_LOOKUP_NO_SVG.</p>
+
+<h3 id="gtk-icon-lookup-use-builtin-4">GTK_ICON_LOOKUP_USE_BUILTIN = 4</h3>
+
+<p>When passed to
+  gtk_icon_theme_lookup_icon() includes builtin icons
+  as well as files. For a builtin icon, gtk_icon_info_get_filename()
+  is %NULL and you need to call gtk_icon_info_get_builtin_pixbuf().</p>
+
+<h3 id="gtk-icon-lookup-generic-fallback-8">GTK_ICON_LOOKUP_GENERIC_FALLBACK = 8</h3>
+
+<p>Try to shorten icon name at &lsquo;-&rsquo;
+  characters before looking at inherited themes. This flag is only
+  supported in functions that take a single icon name. For more general
+  fallback, see gtk_icon_theme_choose_icon(). Since 2.12.</p>
+
+<h3 id="gtk-icon-lookup-force-size-16">GTK_ICON_LOOKUP_FORCE_SIZE = 16</h3>
+
+<p>Always get the icon scaled to the
+  requested size. Since 2.14.</p>
+
+<h3 id="gtk-icon-lookup-force-regular-32">GTK_ICON_LOOKUP_FORCE_REGULAR = 32</h3>
+
+<p>Try to always load regular icons, even
+  when symbolic icon names are given. Since 3.14.</p>
+
+<h3 id="gtk-icon-lookup-force-symbolic-64">GTK_ICON_LOOKUP_FORCE_SYMBOLIC = 64</h3>
+
+<p>Try to always load symbolic icons, even
+  when regular icon names are given. Since 3.14.</p>
+
+<h3 id="gtk-icon-lookup-dir-ltr-128">GTK_ICON_LOOKUP_DIR_LTR = 128</h3>
+
+<p>Try to load a variant of the icon for left-to-right
+  text direction. Since 3.14.</p>
+
+<h3 id="gtk-icon-lookup-dir-rtl-256">GTK_ICON_LOOKUP_DIR_RTL = 256</h3>
+
+<p>Try to load a variant of the icon for right-to-left
+  text direction. Since 3.14.</p>
+
+<h2 id="inputhints"><code>InputHints</code></h2>
+
+<p>Describes hints that might be taken into account by input methods
+or applications. Note that input methods may already tailor their
+behaviour according to the #GtkInputPurpose of the entry.</p>
+
+<p>Some common sense is expected when using these flags - mixing
+@GTK_INPUT_HINT_LOWERCASE with any of the uppercase hints makes no sense.</p>
+
+<p>This enumeration may be extended in the future; input methods should
+ignore unknown values.</p>
+
+<p>C - <code>GtkInputHints</code></p>
+
+<h3 id="gtk-input-hint-none-0">GTK_INPUT_HINT_NONE = 0</h3>
+
+<p>No special behaviour suggested</p>
+
+<h3 id="gtk-input-hint-spellcheck-1">GTK_INPUT_HINT_SPELLCHECK = 1</h3>
+
+<p>Suggest checking for typos</p>
+
+<h3 id="gtk-input-hint-no-spellcheck-2">GTK_INPUT_HINT_NO_SPELLCHECK = 2</h3>
+
+<p>Suggest not checking for typos</p>
+
+<h3 id="gtk-input-hint-word-completion-4">GTK_INPUT_HINT_WORD_COMPLETION = 4</h3>
+
+<p>Suggest word completion</p>
+
+<h3 id="gtk-input-hint-lowercase-8">GTK_INPUT_HINT_LOWERCASE = 8</h3>
+
+<p>Suggest to convert all text to lowercase</p>
+
+<h3 id="gtk-input-hint-uppercase-chars-16">GTK_INPUT_HINT_UPPERCASE_CHARS = 16</h3>
+
+<p>Suggest to capitalize all text</p>
+
+<h3 id="gtk-input-hint-uppercase-words-32">GTK_INPUT_HINT_UPPERCASE_WORDS = 32</h3>
+
+<p>Suggest to capitalize the first
+    character of each word</p>
+
+<h3 id="gtk-input-hint-uppercase-sentences-64">GTK_INPUT_HINT_UPPERCASE_SENTENCES = 64</h3>
+
+<p>Suggest to capitalize the
+    first word of each sentence</p>
+
+<h3 id="gtk-input-hint-inhibit-osk-128">GTK_INPUT_HINT_INHIBIT_OSK = 128</h3>
+
+<p>Suggest to not show an onscreen keyboard
+    (e.g for a calculator that already has all the keys).</p>
+
+<h3 id="gtk-input-hint-vertical-writing-256">GTK_INPUT_HINT_VERTICAL_WRITING = 256</h3>
+
+<p>The text is vertical. Since 3.18</p>
+
+<h3 id="gtk-input-hint-emoji-512">GTK_INPUT_HINT_EMOJI = 512</h3>
+
+<p>Suggest offering Emoji support. Since 3.22.20</p>
+
+<h3 id="gtk-input-hint-no-emoji-1024">GTK_INPUT_HINT_NO_EMOJI = 1024</h3>
+
+<p>Suggest not offering Emoji support. Since 3.22.20</p>
+
+<h2 id="junctionsides"><code>JunctionSides</code></h2>
+
+<p>Describes how a rendered element connects to adjacent elements.</p>
+
+<p>C - <code>GtkJunctionSides</code></p>
+
+<h3 id="gtk-junction-none-0">GTK_JUNCTION_NONE = 0</h3>
+
+<p>No junctions.</p>
+
+<h3 id="gtk-junction-corner-topleft-1">GTK_JUNCTION_CORNER_TOPLEFT = 1</h3>
+
+<p>Element connects on the top-left corner.</p>
+
+<h3 id="gtk-junction-corner-topright-2">GTK_JUNCTION_CORNER_TOPRIGHT = 2</h3>
+
+<p>Element connects on the top-right corner.</p>
+
+<h3 id="gtk-junction-corner-bottomleft-4">GTK_JUNCTION_CORNER_BOTTOMLEFT = 4</h3>
+
+<p>Element connects on the bottom-left corner.</p>
+
+<h3 id="gtk-junction-corner-bottomright-8">GTK_JUNCTION_CORNER_BOTTOMRIGHT = 8</h3>
+
+<p>Element connects on the bottom-right corner.</p>
+
+<h3 id="gtk-junction-top-3">GTK_JUNCTION_TOP = 3</h3>
+
+<p>Element connects on the top side.</p>
+
+<h3 id="gtk-junction-bottom-12">GTK_JUNCTION_BOTTOM = 12</h3>
+
+<p>Element connects on the bottom side.</p>
+
+<h3 id="gtk-junction-left-5">GTK_JUNCTION_LEFT = 5</h3>
+
+<p>Element connects on the left side.</p>
+
+<h3 id="gtk-junction-right-10">GTK_JUNCTION_RIGHT = 10</h3>
+
+<p>Element connects on the right side.</p>
+
+<h2 id="placesopenflags"><code>PlacesOpenFlags</code></h2>
+
+<p>These flags serve two purposes.  First, the application can call gtk_places_sidebar_set_open_flags()
+using these flags as a bitmask.  This tells the sidebar that the application is able to open
+folders selected from the sidebar in various ways, for example, in new tabs or in new windows in
+addition to the normal mode.</p>
+
+<p>Second, when one of these values gets passed back to the application in the
+&num;GtkPlacesSidebar::open-location signal, it means that the application should
+open the selected location in the normal way, in a new tab, or in a new
+window.  The sidebar takes care of determining the desired way to open the location,
+based on the modifier keys that the user is pressing at the time the selection is made.</p>
+
+<p>If the application never calls gtk_places_sidebar_set_open_flags(), then the sidebar will only
+use #GTK_PLACES_OPEN_NORMAL in the #GtkPlacesSidebar::open-location signal.  This is the
+default mode of operation.</p>
+
+<p>C - <code>GtkPlacesOpenFlags</code></p>
+
+<h3 id="gtk-places-open-normal-1">GTK_PLACES_OPEN_NORMAL = 1</h3>
+
+<p>This is the default mode that #GtkPlacesSidebar uses if no other flags
+ are specified.  It indicates that the calling application should open the selected location
+ in the normal way, for example, in the folder view beside the sidebar.</p>
+
+<h3 id="gtk-places-open-new-tab-2">GTK_PLACES_OPEN_NEW_TAB = 2</h3>
+
+<p>When passed to gtk_places_sidebar_set_open_flags(), this indicates
+ that the application can open folders selected from the sidebar in new tabs.  This value
+ will be passed to the #GtkPlacesSidebar::open-location signal when the user selects
+ that a location be opened in a new tab instead of in the standard fashion.</p>
+
+<h3 id="gtk-places-open-new-window-4">GTK_PLACES_OPEN_NEW_WINDOW = 4</h3>
+
+<p>Similar to @GTK_PLACES_OPEN_NEW_TAB, but indicates that the application
+ can open folders in new windows.</p>
+
+<h2 id="rcflags"><code>RcFlags</code></h2>
+
+<p>Deprecated</p>
+
+<p>C - <code>GtkRcFlags</code></p>
+
+<h3 id="gtk-rc-fg-1">GTK_RC_FG = 1</h3>
+
+<p>Deprecated</p>
+
+<h3 id="gtk-rc-bg-2">GTK_RC_BG = 2</h3>
+
+<p>Deprecated</p>
+
+<h3 id="gtk-rc-text-4">GTK_RC_TEXT = 4</h3>
+
+<p>Deprecated</p>
+
+<h3 id="gtk-rc-base-8">GTK_RC_BASE = 8</h3>
+
+<p>Deprecated</p>
+
+<h2 id="recentfilterflags"><code>RecentFilterFlags</code></h2>
+
+<p>These flags indicate what parts of a #GtkRecentFilterInfo struct
+are filled or need to be filled.</p>
+
+<p>C - <code>GtkRecentFilterFlags</code></p>
+
+<h3 id="gtk-recent-filter-uri-1">GTK_RECENT_FILTER_URI = 1</h3>
+
+<p>the URI of the file being tested</p>
+
+<h3 id="gtk-recent-filter-display-name-2">GTK_RECENT_FILTER_DISPLAY_NAME = 2</h3>
+
+<p>the string that will be used to
+ display the file in the recent chooser</p>
+
+<h3 id="gtk-recent-filter-mime-type-4">GTK_RECENT_FILTER_MIME_TYPE = 4</h3>
+
+<p>the mime type of the file</p>
+
+<h3 id="gtk-recent-filter-application-8">GTK_RECENT_FILTER_APPLICATION = 8</h3>
+
+<p>the list of applications that have
+ registered the file</p>
+
+<h3 id="gtk-recent-filter-group-16">GTK_RECENT_FILTER_GROUP = 16</h3>
+
+<p>the groups to which the file belongs to</p>
+
+<h3 id="gtk-recent-filter-age-32">GTK_RECENT_FILTER_AGE = 32</h3>
+
+<p>the number of days elapsed since the file
+ has been registered</p>
+
+<h2 id="regionflags"><code>RegionFlags</code></h2>
+
+<p>Describes a region within a widget.</p>
+
+<p>C - <code>GtkRegionFlags</code></p>
+
+<h3 id="gtk-region-even-1">GTK_REGION_EVEN = 1</h3>
+
+<p>Region has an even number within a set.</p>
+
+<h3 id="gtk-region-odd-2">GTK_REGION_ODD = 2</h3>
+
+<p>Region has an odd number within a set.</p>
+
+<h3 id="gtk-region-first-4">GTK_REGION_FIRST = 4</h3>
+
+<p>Region is the first one within a set.</p>
+
+<h3 id="gtk-region-last-8">GTK_REGION_LAST = 8</h3>
+
+<p>Region is the last one within a set.</p>
+
+<h3 id="gtk-region-only-16">GTK_REGION_ONLY = 16</h3>
+
+<p>Region is the only one within a set.</p>
+
+<h3 id="gtk-region-sorted-32">GTK_REGION_SORTED = 32</h3>
+
+<p>Region is part of a sorted area.</p>
+
+<h2 id="stateflags"><code>StateFlags</code></h2>
+
+<p>Describes a widget state. Widget states are used to match the widget
+against CSS pseudo-classes. Note that GTK extends the regular CSS
+classes and sometimes uses different names.</p>
+
+<p>C - <code>GtkStateFlags</code></p>
+
+<h3 id="gtk-state-flag-normal-0">GTK_STATE_FLAG_NORMAL = 0</h3>
+
+<p>State during normal operation.</p>
+
+<h3 id="gtk-state-flag-active-1">GTK_STATE_FLAG_ACTIVE = 1</h3>
+
+<p>Widget is active.</p>
+
+<h3 id="gtk-state-flag-prelight-2">GTK_STATE_FLAG_PRELIGHT = 2</h3>
+
+<p>Widget has a mouse pointer over it.</p>
+
+<h3 id="gtk-state-flag-selected-4">GTK_STATE_FLAG_SELECTED = 4</h3>
+
+<p>Widget is selected.</p>
+
+<h3 id="gtk-state-flag-insensitive-8">GTK_STATE_FLAG_INSENSITIVE = 8</h3>
+
+<p>Widget is insensitive.</p>
+
+<h3 id="gtk-state-flag-inconsistent-16">GTK_STATE_FLAG_INCONSISTENT = 16</h3>
+
+<p>Widget is inconsistent.</p>
+
+<h3 id="gtk-state-flag-focused-32">GTK_STATE_FLAG_FOCUSED = 32</h3>
+
+<p>Widget has the keyboard focus.</p>
+
+<h3 id="gtk-state-flag-backdrop-64">GTK_STATE_FLAG_BACKDROP = 64</h3>
+
+<p>Widget is in a background toplevel window.</p>
+
+<h3 id="gtk-state-flag-dir-ltr-128">GTK_STATE_FLAG_DIR_LTR = 128</h3>
+
+<p>Widget is in left-to-right text direction. Since 3.8</p>
+
+<h3 id="gtk-state-flag-dir-rtl-256">GTK_STATE_FLAG_DIR_RTL = 256</h3>
+
+<p>Widget is in right-to-left text direction. Since 3.8</p>
+
+<h3 id="gtk-state-flag-link-512">GTK_STATE_FLAG_LINK = 512</h3>
+
+<p>Widget is a link. Since 3.12</p>
+
+<h3 id="gtk-state-flag-visited-1024">GTK_STATE_FLAG_VISITED = 1024</h3>
+
+<p>The location the widget points to has already been visited. Since 3.12</p>
+
+<h3 id="gtk-state-flag-checked-2048">GTK_STATE_FLAG_CHECKED = 2048</h3>
+
+<p>Widget is checked. Since 3.14</p>
+
+<h3 id="gtk-state-flag-drop-active-4096">GTK_STATE_FLAG_DROP_ACTIVE = 4096</h3>
+
+<p>Widget is highlighted as a drop target for DND. Since 3.20</p>
+
+<h2 id="stylecontextprintflags"><code>StyleContextPrintFlags</code></h2>
+
+<p>Flags that modify the behavior of gtk_style_context_to_string().
+New values may be added to this enumeration.</p>
+
+<p>C - <code>GtkStyleContextPrintFlags</code></p>
+
+<h3 id="gtk-style-context-print-none-0">GTK_STYLE_CONTEXT_PRINT_NONE = 0</h3>
+
+<h3 id="gtk-style-context-print-recurse-1">GTK_STYLE_CONTEXT_PRINT_RECURSE = 1</h3>
+
+<p>Print the entire tree of
+    CSS nodes starting at the style context&rsquo;s node</p>
+
+<h3 id="gtk-style-context-print-show-style-2">GTK_STYLE_CONTEXT_PRINT_SHOW_STYLE = 2</h3>
+
+<p>Show the values of the
+    CSS properties for each node</p>
+
+<h2 id="targetflags"><code>TargetFlags</code></h2>
+
+<p>The #GtkTargetFlags enumeration is used to specify
+constraints on a #GtkTargetEntry.</p>
+
+<p>C - <code>GtkTargetFlags</code></p>
+
+<h3 id="gtk-target-same-app-1">GTK_TARGET_SAME_APP = 1</h3>
+
+<p>If this is set, the target will only be selected
+  for drags within a single application.</p>
+
+<h3 id="gtk-target-same-widget-2">GTK_TARGET_SAME_WIDGET = 2</h3>
+
+<p>If this is set, the target will only be selected
+  for drags within a single widget.</p>
+
+<h3 id="gtk-target-other-app-4">GTK_TARGET_OTHER_APP = 4</h3>
+
+<p>If this is set, the target will not be selected
+  for drags within a single application.</p>
+
+<h3 id="gtk-target-other-widget-8">GTK_TARGET_OTHER_WIDGET = 8</h3>
+
+<p>If this is set, the target will not be selected
+  for drags withing a single widget.</p>
+
+<h2 id="textsearchflags"><code>TextSearchFlags</code></h2>
+
+<p>Flags affecting how a search is done.</p>
+
+<p>If neither #GTK_TEXT_SEARCH_VISIBLE_ONLY nor #GTK_TEXT_SEARCH_TEXT_ONLY are
+enabled, the match must be exact; the special 0xFFFC character will match
+embedded pixbufs or child widgets.</p>
+
+<p>C - <code>GtkTextSearchFlags</code></p>
+
+<h3 id="gtk-text-search-visible-only-1">GTK_TEXT_SEARCH_VISIBLE_ONLY = 1</h3>
+
+<p>Search only visible data. A search match may
+have invisible text interspersed.</p>
+
+<h3 id="gtk-text-search-text-only-2">GTK_TEXT_SEARCH_TEXT_ONLY = 2</h3>
+
+<p>Search only text. A match may have pixbufs or
+child widgets mixed inside the matched range.</p>
+
+<h3 id="gtk-text-search-case-insensitive-4">GTK_TEXT_SEARCH_CASE_INSENSITIVE = 4</h3>
+
+<p>The text will be matched regardless of
+what case it is in.</p>
+
+<h2 id="toolpalettedragtargets"><code>ToolPaletteDragTargets</code></h2>
+
+<p>Flags used to specify the supported drag targets.</p>
+
+<p>C - <code>GtkToolPaletteDragTargets</code></p>
+
+<h3 id="gtk-tool-palette-drag-items-1">GTK_TOOL_PALETTE_DRAG_ITEMS = 1</h3>
+
+<p>Support drag of items.</p>
+
+<h3 id="gtk-tool-palette-drag-groups-2">GTK_TOOL_PALETTE_DRAG_GROUPS = 2</h3>
+
+<p>Support drag of groups.</p>
+
+<h2 id="treemodelflags"><code>TreeModelFlags</code></h2>
+
+<p>These flags indicate various properties of a #GtkTreeModel.</p>
+
+<p>They are returned by gtk_tree_model_get_flags(), and must be
+static for the lifetime of the object. A more complete description
+of #GTK_TREE_MODEL_ITERS_PERSIST can be found in the overview of
+this section.</p>
+
+<p>C - <code>GtkTreeModelFlags</code></p>
+
+<h3 id="gtk-tree-model-iters-persist-1">GTK_TREE_MODEL_ITERS_PERSIST = 1</h3>
+
+<p>iterators survive all signals
+    emitted by the tree</p>
+
+<h3 id="gtk-tree-model-list-only-2">GTK_TREE_MODEL_LIST_ONLY = 2</h3>
+
+<p>the model is a list only, and never
+    has children</p>
+
+<h2 id="uimanageritemtype"><code>UIManagerItemType</code></h2>
+
+<p>These enumeration values are used by gtk_ui_manager_add_ui() to determine
+what UI element to create.</p>
+
+<p>C - <code>GtkUIManagerItemType</code></p>
+
+<h3 id="gtk-ui-manager-auto-0">GTK_UI_MANAGER_AUTO = 0</h3>
+
+<p>Pick the type of the UI element according to context.</p>
+
+<h3 id="gtk-ui-manager-menubar-1">GTK_UI_MANAGER_MENUBAR = 1</h3>
+
+<p>Create a menubar.</p>
+
+<h3 id="gtk-ui-manager-menu-2">GTK_UI_MANAGER_MENU = 2</h3>
+
+<p>Create a menu.</p>
+
+<h3 id="gtk-ui-manager-toolbar-4">GTK_UI_MANAGER_TOOLBAR = 4</h3>
+
+<p>Create a toolbar.</p>
+
+<h3 id="gtk-ui-manager-placeholder-8">GTK_UI_MANAGER_PLACEHOLDER = 8</h3>
+
+<p>Insert a placeholder.</p>
+
+<h3 id="gtk-ui-manager-popup-16">GTK_UI_MANAGER_POPUP = 16</h3>
+
+<p>Create a popup menu.</p>
+
+<h3 id="gtk-ui-manager-menuitem-32">GTK_UI_MANAGER_MENUITEM = 32</h3>
+
+<p>Create a menuitem.</p>
+
+<h3 id="gtk-ui-manager-toolitem-64">GTK_UI_MANAGER_TOOLITEM = 64</h3>
+
+<p>Create a toolitem.</p>
+
+<h3 id="gtk-ui-manager-separator-128">GTK_UI_MANAGER_SEPARATOR = 128</h3>
+
+<p>Create a separator.</p>
+
+<h3 id="gtk-ui-manager-accelerator-256">GTK_UI_MANAGER_ACCELERATOR = 256</h3>
+
+<p>Install an accelerator.</p>
+
+<h3 id="gtk-ui-manager-popup-with-accels-512">GTK_UI_MANAGER_POPUP_WITH_ACCELS = 512</h3>
+
+<p>Same as %GTK_UI_MANAGER_POPUP, but the
+  actions’ accelerators are shown.</p>
+
+
+    
+    
+        <div class="chevrons">
+    <div id="navigation">
+</div>
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+    
+
+    
+  </div>
+
+
+	<div>
+
+
+  
+    
+  
+
+
+
+	</div>
+</footer>
+
+<script src="/js/clipboard.min.js"></script>
+
+<link href="/css/featherlight.min.css" rel="stylesheet">
+<script src="/js/featherlight.min.js"></script>
+
+
+
+<script src="/theme-flex/script.js"></script>
+
+
+    
+
+    
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>gobbi</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="revised" content="2018-11-18T19:58:57 GMT">
+<title>Getting started :: gobbi</title>
+<link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
+<link href="/css/font-awesome.min.css" rel="stylesheet">
+<link href="/css/nucleus.css" rel="stylesheet">
+<link href="/theme-flex/style.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<script src="/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "\/";
+</script>
+<link rel="stylesheet" href="/css/custom.css">
+
+
+    
+  </head>
+  <body data-url="/getting-started/">
+    
+      <header>
+  <div class="logo">
+    
+	
+  
+    <p><a href="/">gobbi</a></p>
+
+  
+
+
+  </div>
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+    <nav class="shortcuts">
+            <li class="" role="">
+                <a href="https://github.com/pekim/gobbi"  rel="noopener">
+                  <i class='fa fa-github'></i> <label>Github repo</label>
+                </a>
+            </li>
+    </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+
+
+    <li class="dd-item ">
+        <div>
+            <a href="/">
+                <span>Introduction</span>
+            </a>
+        </div>
+    </li>
+
+    <li class="dd-item  active">
+        <div>
+            <a href="/getting-started/">
+                <span>Getting started</span>
+            </a>
+        </div>
+    </li>
+
+    <li class="dd-item ">
+        <div>
+            <a href="/application-lifecycle/">
+                <span>Application lifecycle</span>
+            </a>
+        </div>
+    </li>
+
+    <li class="dd-item ">
+        <div>
+            <a href="/build-tags/">
+                <span>Build tags</span>
+            </a>
+        </div>
+    </li>
+
+    <li class="dd-item ">
+        <div>
+            <a href="/goroutines/">
+                <span>Goroutines</span>
+            </a>
+        </div>
+    </li>
+
+    <li class="dd-item ">
+        <div>
+            <a href="/gvalue/">
+                <span>gobject.Value</span>
+            </a>
+        </div>
+    </li>
+
+    <li class="dd-item ">
+        <div>
+            <a href="/signal-handling/">
+                <span>Signal handling</span>
+            </a>
+        </div>
+    </li>
+
+    <li data-nav-id="/api/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/">API</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/api/atk/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/atk/">atk</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/atk/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/atk/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/atk/constants/" class="dd-item">
+        <div>
+          <a href="/api/atk/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/atk/enums/" class="dd-item">
+        <div>
+          <a href="/api/atk/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/cairo/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/cairo/">cairo</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/cairo/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/cairo/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/cairo/constants/" class="dd-item">
+        <div>
+          <a href="/api/cairo/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/cairo/enums/" class="dd-item">
+        <div>
+          <a href="/api/cairo/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/gdk/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/gdk/">gdk</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/gdk/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/gdk/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gdk/constants/" class="dd-item">
+        <div>
+          <a href="/api/gdk/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gdk/enums/" class="dd-item">
+        <div>
+          <a href="/api/gdk/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/gdkpixbuf/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/gdkpixbuf/">gdkpixbuf</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/gdkpixbuf/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/gdkpixbuf/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gdkpixbuf/constants/" class="dd-item">
+        <div>
+          <a href="/api/gdkpixbuf/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gdkpixbuf/enums/" class="dd-item">
+        <div>
+          <a href="/api/gdkpixbuf/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/gio/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/gio/">gio</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/gio/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/gio/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gio/constants/" class="dd-item">
+        <div>
+          <a href="/api/gio/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gio/enums/" class="dd-item">
+        <div>
+          <a href="/api/gio/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/glib/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/glib/">glib</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/glib/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/glib/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/glib/constants/" class="dd-item">
+        <div>
+          <a href="/api/glib/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/glib/enums/" class="dd-item">
+        <div>
+          <a href="/api/glib/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/gobject/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/gobject/">gobject</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/gobject/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/gobject/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gobject/constants/" class="dd-item">
+        <div>
+          <a href="/api/gobject/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gobject/enums/" class="dd-item">
+        <div>
+          <a href="/api/gobject/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/gtk/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/gtk/">gtk</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/gtk/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/gtk/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gtk/constants/" class="dd-item">
+        <div>
+          <a href="/api/gtk/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gtk/enums/" class="dd-item">
+        <div>
+          <a href="/api/gtk/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/pango/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/pango/">pango</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/pango/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/pango/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/pango/constants/" class="dd-item">
+        <div>
+          <a href="/api/pango/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/pango/enums/" class="dd-item">
+        <div>
+          <a href="/api/pango/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+
+
+
+
+    </ul>
+    <section>
+    </section>
+  </aside>
+  <section class="page">
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/api/" >
+   API</option>
+
+
+
+        </select>
+      </center>
+    </div>
+      <div>
+        <div class="searchbox">
+          <input data-search-input id="search-by" type="text" placeholder="Search...">
+        </div>
+        <script type="text/javascript" src="/js/lunr.min.js"></script>
+        <script type="text/javascript" src="/js/auto-complete.js"></script>
+        <link href="/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+          
+              var baseurl = "\/";
+          
+        </script>
+        <script type="text/javascript" src="/js/search.js"></script>
+      </div>
+    
+
+    <h1>Getting started</h1>
+    
+    
+    
+    
+
+<h2 id="pre-requisites">pre-requisites</h2>
+
+<ul>
+<li>go 1.11 or later</li>
+<li>libraries
+
+<ul>
+<li>debian/ubuntu packages -
+<code>libatk1.0-dev libcairo2-dev libglib2.0-dev
+libgtk-3-dev libpango1.0-dev</code></li>
+<li>note that dev libraries are required because pkg-config
+and headers are necessary</li>
+</ul></li>
+<li>C compiler, and a linker
+
+<ul>
+<li>required because of the use of cgo</li>
+<li>for debian based distributions the <code>build-essential</code>
+package should suffice</li>
+</ul></li>
+</ul>
+
+<h2 id="running-examples">running examples</h2>
+
+<ul>
+<li><code>git clone https://github.com/pekim/gobbi.git</code></li>
+<li><code>cd gobbi</code></li>
+<li><code>./gobbi example simple_window</code>
+
+<ul>
+<li>Be patient.
+The first <code>go build</code> or <code>go run</code> will take quite a while,
+perhaps a few minutes.
+Subsequent builds of applications will be a <em>lot</em> quicker
+as cached gobbi packages will be used by the Go commands.</li>
+</ul></li>
+</ul>
+
+<p>Run <code>./gobbi examples</code> for a list of the available examples.</p>
+
+<h2 id="use-in-a-application">use in a application</h2>
+
+<p>Using gobbi in an application in no different to using
+most other libraries.</p>
+
+<p>To add gobbi to a project that make use of go modules
+use <code>go get</code>.</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">go get github.com/pekim/gobbi</code></pre></div>
+<p>Then import a package such as gtk.</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#f92672">import</span> <span style="color:#d88200">&#34;github.com/pekim/gobbi/lib/gtk&#34;</span></code></pre></div>
+<h2 id="build-tags">build tags</h2>
+
+<p>It will often be necessary to build gobbi applications
+with <a href="/build-tags">build tags</a>.</p>
+
+
+    
+    
+        <div class="chevrons">
+    <div id="navigation">
+</div>
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+    
+
+    
+  </div>
+
+
+	<div>
+
+
+  
+    
+  
+
+
+
+	</div>
+</footer>
+
+<script src="/js/clipboard.min.js"></script>
+
+<link href="/css/featherlight.min.css" rel="stylesheet">
+<script src="/js/featherlight.min.js"></script>
+
+
+
+<script src="/theme-flex/script.js"></script>
+
+
+    
+
+    
+    
+
+    
+  </body>
+</html>

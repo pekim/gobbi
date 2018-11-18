@@ -1,0 +1,2382 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>gobbi</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="revised" content="2018-11-18T19:50:29 GMT">
+<title> :: gobbi</title>
+<link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
+<link href="/css/font-awesome.min.css" rel="stylesheet">
+<link href="/css/nucleus.css" rel="stylesheet">
+<link href="/theme-flex/style.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<script src="/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "\/";
+</script>
+<link rel="stylesheet" href="/css/custom.css">
+
+
+    
+  </head>
+  <body data-url="/lib/gdk/enums/">
+    
+      <header>
+  <div class="logo">
+    
+	
+  
+    <p><a href="/">gobbi</a></p>
+
+  
+
+
+  </div>
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+    <nav class="shortcuts">
+            <li class="" role="">
+                <a href="https://github.com/pekim/gobbi"  rel="noopener">
+                  <i class='fa fa-github'></i> <label>Github repo</label>
+                </a>
+            </li>
+    </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+
+
+    <li class="dd-item ">
+        <div>
+            <a href="/">
+                <span>Introduction</span>
+            </a>
+        </div>
+    </li>
+
+    <li class="dd-item ">
+        <div>
+            <a href="/application-lifecycle/">
+                <span>Application lifecycle</span>
+            </a>
+        </div>
+    </li>
+
+    <li class="dd-item ">
+        <div>
+            <a href="/gvalue/">
+                <span>gobject.Value</span>
+            </a>
+        </div>
+    </li>
+
+    <li data-nav-id="/api/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/">API</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/api/atk/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/atk/">atk</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/atk/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/atk/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/atk/constants/" class="dd-item">
+        <div>
+          <a href="/api/atk/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/atk/enums/" class="dd-item">
+        <div>
+          <a href="/api/atk/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/cairo/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/cairo/">cairo</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/cairo/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/cairo/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/cairo/constants/" class="dd-item">
+        <div>
+          <a href="/api/cairo/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/cairo/enums/" class="dd-item">
+        <div>
+          <a href="/api/cairo/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/gdk/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/gdk/">gdk</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/gdk/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/gdk/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gdk/constants/" class="dd-item">
+        <div>
+          <a href="/api/gdk/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gdk/enums/" class="dd-item">
+        <div>
+          <a href="/api/gdk/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/gdkpixbuf/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/gdkpixbuf/">gdkpixbuf</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/gdkpixbuf/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/gdkpixbuf/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gdkpixbuf/constants/" class="dd-item">
+        <div>
+          <a href="/api/gdkpixbuf/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gdkpixbuf/enums/" class="dd-item">
+        <div>
+          <a href="/api/gdkpixbuf/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/gio/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/gio/">gio</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/gio/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/gio/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gio/constants/" class="dd-item">
+        <div>
+          <a href="/api/gio/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gio/enums/" class="dd-item">
+        <div>
+          <a href="/api/gio/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/glib/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/glib/">glib</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/glib/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/glib/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/glib/constants/" class="dd-item">
+        <div>
+          <a href="/api/glib/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/glib/enums/" class="dd-item">
+        <div>
+          <a href="/api/glib/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/gobject/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/gobject/">gobject</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/gobject/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/gobject/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gobject/constants/" class="dd-item">
+        <div>
+          <a href="/api/gobject/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gobject/enums/" class="dd-item">
+        <div>
+          <a href="/api/gobject/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/gtk/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/gtk/">gtk</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/gtk/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/gtk/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gtk/constants/" class="dd-item">
+        <div>
+          <a href="/api/gtk/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gtk/enums/" class="dd-item">
+        <div>
+          <a href="/api/gtk/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/pango/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/pango/">pango</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/pango/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/pango/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/pango/constants/" class="dd-item">
+        <div>
+          <a href="/api/pango/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/pango/enums/" class="dd-item">
+        <div>
+          <a href="/api/pango/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/lib/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/lib/">Libs</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/lib/atk/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/atk/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/atk/constant/" class="dd-item">
+        <div>
+          <a href="/lib/atk/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/atk/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/atk/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/atk/enums/" class="dd-item">
+        <div>
+          <a href="/lib/atk/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/atk/package/" class="dd-item">
+        <div>
+          <a href="/lib/atk/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/cairo/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/cairo/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/cairo/constant/" class="dd-item">
+        <div>
+          <a href="/lib/cairo/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/cairo/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/cairo/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/cairo/enums/" class="dd-item">
+        <div>
+          <a href="/lib/cairo/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/cairo/package/" class="dd-item">
+        <div>
+          <a href="/lib/cairo/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdk/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/gdk/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdk/constant/" class="dd-item">
+        <div>
+          <a href="/lib/gdk/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdk/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/gdk/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdk/enums/" class="dd-item active">
+        <div>
+          <a href="/lib/gdk/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdk/package/" class="dd-item">
+        <div>
+          <a href="/lib/gdk/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdkpixbuf/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/gdkpixbuf/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdkpixbuf/constant/" class="dd-item">
+        <div>
+          <a href="/lib/gdkpixbuf/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdkpixbuf/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/gdkpixbuf/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdkpixbuf/enums/" class="dd-item">
+        <div>
+          <a href="/lib/gdkpixbuf/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdkpixbuf/package/" class="dd-item">
+        <div>
+          <a href="/lib/gdkpixbuf/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gio/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/gio/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gio/constant/" class="dd-item">
+        <div>
+          <a href="/lib/gio/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gio/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/gio/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gio/enums/" class="dd-item">
+        <div>
+          <a href="/lib/gio/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gio/package/" class="dd-item">
+        <div>
+          <a href="/lib/gio/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/glib/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/glib/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/glib/constant/" class="dd-item">
+        <div>
+          <a href="/lib/glib/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/glib/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/glib/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/glib/enums/" class="dd-item">
+        <div>
+          <a href="/lib/glib/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/glib/package/" class="dd-item">
+        <div>
+          <a href="/lib/glib/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gobject/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/gobject/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gobject/constant/" class="dd-item">
+        <div>
+          <a href="/lib/gobject/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gobject/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/gobject/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gobject/enums/" class="dd-item">
+        <div>
+          <a href="/lib/gobject/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gobject/package/" class="dd-item">
+        <div>
+          <a href="/lib/gobject/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gtk/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/gtk/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gtk/constant/" class="dd-item">
+        <div>
+          <a href="/lib/gtk/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gtk/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/gtk/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gtk/enums/" class="dd-item">
+        <div>
+          <a href="/lib/gtk/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gtk/package/" class="dd-item">
+        <div>
+          <a href="/lib/gtk/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/pango/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/pango/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/pango/constant/" class="dd-item">
+        <div>
+          <a href="/lib/pango/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/pango/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/pango/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/pango/enums/" class="dd-item">
+        <div>
+          <a href="/lib/pango/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/pango/package/" class="dd-item">
+        <div>
+          <a href="/lib/pango/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+
+
+
+
+    </ul>
+    <section>
+    </section>
+  </aside>
+  <section class="page">
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/api/" >
+   API</option>
+    <option value="/lib/" >
+   Libs</option> 
+      <option value="/lib/atk/bitfields/" >- </option>
+      <option value="/lib/atk/constant/" >- </option>
+      <option value="/lib/atk/enumeration/" >- </option>
+      <option value="/lib/atk/enums/" >- </option>
+      <option value="/lib/atk/package/" >- </option>
+      <option value="/lib/cairo/bitfields/" >- </option>
+      <option value="/lib/cairo/constant/" >- </option>
+      <option value="/lib/cairo/enumeration/" >- </option>
+      <option value="/lib/cairo/enums/" >- </option>
+      <option value="/lib/cairo/package/" >- </option>
+      <option value="/lib/gdk/bitfields/" >- </option>
+      <option value="/lib/gdk/constant/" >- </option>
+      <option value="/lib/gdk/enumeration/" >- </option>
+      <option value="/lib/gdk/enums/"  selected>- </option>
+      <option value="/lib/gdk/package/" >- </option>
+      <option value="/lib/gdkpixbuf/bitfields/" >- </option>
+      <option value="/lib/gdkpixbuf/constant/" >- </option>
+      <option value="/lib/gdkpixbuf/enumeration/" >- </option>
+      <option value="/lib/gdkpixbuf/enums/" >- </option>
+      <option value="/lib/gdkpixbuf/package/" >- </option>
+      <option value="/lib/gio/bitfields/" >- </option>
+      <option value="/lib/gio/constant/" >- </option>
+      <option value="/lib/gio/enumeration/" >- </option>
+      <option value="/lib/gio/enums/" >- </option>
+      <option value="/lib/gio/package/" >- </option>
+      <option value="/lib/glib/bitfields/" >- </option>
+      <option value="/lib/glib/constant/" >- </option>
+      <option value="/lib/glib/enumeration/" >- </option>
+      <option value="/lib/glib/enums/" >- </option>
+      <option value="/lib/glib/package/" >- </option>
+      <option value="/lib/gobject/bitfields/" >- </option>
+      <option value="/lib/gobject/constant/" >- </option>
+      <option value="/lib/gobject/enumeration/" >- </option>
+      <option value="/lib/gobject/enums/" >- </option>
+      <option value="/lib/gobject/package/" >- </option>
+      <option value="/lib/gtk/bitfields/" >- </option>
+      <option value="/lib/gtk/constant/" >- </option>
+      <option value="/lib/gtk/enumeration/" >- </option>
+      <option value="/lib/gtk/enums/" >- </option>
+      <option value="/lib/gtk/package/" >- </option>
+      <option value="/lib/pango/bitfields/" >- </option>
+      <option value="/lib/pango/constant/" >- </option>
+      <option value="/lib/pango/enumeration/" >- </option>
+      <option value="/lib/pango/enums/" >- </option>
+      <option value="/lib/pango/package/" >- </option>
+  
+
+
+
+        </select>
+      </center>
+    </div>
+      <div>
+        <div class="searchbox">
+          <input data-search-input id="search-by" type="text" placeholder="Search...">
+        </div>
+        <script type="text/javascript" src="/js/lunr.min.js"></script>
+        <script type="text/javascript" src="/js/auto-complete.js"></script>
+        <link href="/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+          
+              var baseurl = "\/";
+          
+        </script>
+        <script type="text/javascript" src="/js/search.js"></script>
+      </div>
+    
+
+    <h1></h1>
+    
+    
+    
+    
+
+<h1 id="gdk-enums"><code>gdk</code> enums</h1>
+
+<h2 id="axisuse"><code>AxisUse</code></h2>
+
+<p>An enumeration describing the way in which a device
+axis (valuator) maps onto the predefined valuator
+types that GTK+ understands.</p>
+
+<p>Note that the X and Y axes are not really needed; pointer devices
+report their location via the x/y members of events regardless. Whether
+X and Y are present as axes depends on the GDK backend.</p>
+
+<p>C - <code>GdkAxisUse</code></p>
+
+<h3 id="gdk-axis-ignore-0">GDK_AXIS_IGNORE = 0</h3>
+
+<p>the axis is ignored.</p>
+
+<h3 id="gdk-axis-x-1">GDK_AXIS_X = 1</h3>
+
+<p>the axis is used as the x axis.</p>
+
+<h3 id="gdk-axis-y-2">GDK_AXIS_Y = 2</h3>
+
+<p>the axis is used as the y axis.</p>
+
+<h3 id="gdk-axis-pressure-3">GDK_AXIS_PRESSURE = 3</h3>
+
+<p>the axis is used for pressure information.</p>
+
+<h3 id="gdk-axis-xtilt-4">GDK_AXIS_XTILT = 4</h3>
+
+<p>the axis is used for x tilt information.</p>
+
+<h3 id="gdk-axis-ytilt-5">GDK_AXIS_YTILT = 5</h3>
+
+<p>the axis is used for y tilt information.</p>
+
+<h3 id="gdk-axis-wheel-6">GDK_AXIS_WHEEL = 6</h3>
+
+<p>the axis is used for wheel information.</p>
+
+<h3 id="gdk-axis-distance-7">GDK_AXIS_DISTANCE = 7</h3>
+
+<p>the axis is used for pen/tablet distance information. (Since: 3.22)</p>
+
+<h3 id="gdk-axis-rotation-8">GDK_AXIS_ROTATION = 8</h3>
+
+<p>the axis is used for pen rotation information. (Since: 3.22)</p>
+
+<h3 id="gdk-axis-slider-9">GDK_AXIS_SLIDER = 9</h3>
+
+<p>the axis is used for pen slider information. (Since: 3.22)</p>
+
+<h3 id="gdk-axis-last-10">GDK_AXIS_LAST = 10</h3>
+
+<p>a constant equal to the numerically highest axis value.</p>
+
+<h2 id="byteorder"><code>ByteOrder</code></h2>
+
+<p>A set of values describing the possible byte-orders
+for storing pixel values in memory.</p>
+
+<p>C - <code>GdkByteOrder</code></p>
+
+<h3 id="gdk-lsb-first-0">GDK_LSB_FIRST = 0</h3>
+
+<p>The values are stored with the least-significant byte
+  first. For instance, the 32-bit value 0xffeecc would be stored
+  in memory as 0xcc, 0xee, 0xff, 0x00.</p>
+
+<h3 id="gdk-msb-first-1">GDK_MSB_FIRST = 1</h3>
+
+<p>The values are stored with the most-significant byte
+  first. For instance, the 32-bit value 0xffeecc would be stored
+  in memory as 0x00, 0xff, 0xee, 0xcc.</p>
+
+<h2 id="crossingmode"><code>CrossingMode</code></h2>
+
+<p>Specifies the crossing mode for #GdkEventCrossing.</p>
+
+<p>C - <code>GdkCrossingMode</code></p>
+
+<h3 id="gdk-crossing-normal-0">GDK_CROSSING_NORMAL = 0</h3>
+
+<p>crossing because of pointer motion.</p>
+
+<h3 id="gdk-crossing-grab-1">GDK_CROSSING_GRAB = 1</h3>
+
+<p>crossing because a grab is activated.</p>
+
+<h3 id="gdk-crossing-ungrab-2">GDK_CROSSING_UNGRAB = 2</h3>
+
+<p>crossing because a grab is deactivated.</p>
+
+<h3 id="gdk-crossing-gtk-grab-3">GDK_CROSSING_GTK_GRAB = 3</h3>
+
+<p>crossing because a GTK+ grab is activated.</p>
+
+<h3 id="gdk-crossing-gtk-ungrab-4">GDK_CROSSING_GTK_UNGRAB = 4</h3>
+
+<p>crossing because a GTK+ grab is deactivated.</p>
+
+<h3 id="gdk-crossing-state-changed-5">GDK_CROSSING_STATE_CHANGED = 5</h3>
+
+<p>crossing because a GTK+ widget changed
+  state (e.g. sensitivity).</p>
+
+<h3 id="gdk-crossing-touch-begin-6">GDK_CROSSING_TOUCH_BEGIN = 6</h3>
+
+<p>crossing because a touch sequence has begun,
+  this event is synthetic as the pointer might have not left the window.</p>
+
+<h3 id="gdk-crossing-touch-end-7">GDK_CROSSING_TOUCH_END = 7</h3>
+
+<p>crossing because a touch sequence has ended,
+  this event is synthetic as the pointer might have not left the window.</p>
+
+<h3 id="gdk-crossing-device-switch-8">GDK_CROSSING_DEVICE_SWITCH = 8</h3>
+
+<p>crossing because of a device switch (i.e.
+  a mouse taking control of the pointer after a touch device), this event
+  is synthetic as the pointer didn’t leave the window.</p>
+
+<h2 id="cursortype"><code>CursorType</code></h2>
+
+<p>Predefined cursors.</p>
+
+<p>Note that these IDs are directly taken from the X cursor font, and many
+of these cursors are either not useful, or are not available on other platforms.</p>
+
+<p>The recommended way to create cursors is to use gdk_cursor_new_from_name().</p>
+
+<p>C - <code>GdkCursorType</code></p>
+
+<h3 id="gdk-x-cursor-0">GDK_X_CURSOR = 0</h3>
+
+<p><img src="X_cursor.png" alt="" /></p>
+
+<h3 id="gdk-arrow-2">GDK_ARROW = 2</h3>
+
+<p><img src="arrow.png" alt="" /></p>
+
+<h3 id="gdk-based-arrow-down-4">GDK_BASED_ARROW_DOWN = 4</h3>
+
+<p><img src="based_arrow_down.png" alt="" /></p>
+
+<h3 id="gdk-based-arrow-up-6">GDK_BASED_ARROW_UP = 6</h3>
+
+<p><img src="based_arrow_up.png" alt="" /></p>
+
+<h3 id="gdk-boat-8">GDK_BOAT = 8</h3>
+
+<p><img src="boat.png" alt="" /></p>
+
+<h3 id="gdk-bogosity-10">GDK_BOGOSITY = 10</h3>
+
+<p><img src="bogosity.png" alt="" /></p>
+
+<h3 id="gdk-bottom-left-corner-12">GDK_BOTTOM_LEFT_CORNER = 12</h3>
+
+<p><img src="bottom_left_corner.png" alt="" /></p>
+
+<h3 id="gdk-bottom-right-corner-14">GDK_BOTTOM_RIGHT_CORNER = 14</h3>
+
+<p><img src="bottom_right_corner.png" alt="" /></p>
+
+<h3 id="gdk-bottom-side-16">GDK_BOTTOM_SIDE = 16</h3>
+
+<p><img src="bottom_side.png" alt="" /></p>
+
+<h3 id="gdk-bottom-tee-18">GDK_BOTTOM_TEE = 18</h3>
+
+<p><img src="bottom_tee.png" alt="" /></p>
+
+<h3 id="gdk-box-spiral-20">GDK_BOX_SPIRAL = 20</h3>
+
+<p><img src="box_spiral.png" alt="" /></p>
+
+<h3 id="gdk-center-ptr-22">GDK_CENTER_PTR = 22</h3>
+
+<p><img src="center_ptr.png" alt="" /></p>
+
+<h3 id="gdk-circle-24">GDK_CIRCLE = 24</h3>
+
+<p><img src="circle.png" alt="" /></p>
+
+<h3 id="gdk-clock-26">GDK_CLOCK = 26</h3>
+
+<p><img src="clock.png" alt="" /></p>
+
+<h3 id="gdk-coffee-mug-28">GDK_COFFEE_MUG = 28</h3>
+
+<p><img src="coffee_mug.png" alt="" /></p>
+
+<h3 id="gdk-cross-30">GDK_CROSS = 30</h3>
+
+<p><img src="cross.png" alt="" /></p>
+
+<h3 id="gdk-cross-reverse-32">GDK_CROSS_REVERSE = 32</h3>
+
+<p><img src="cross_reverse.png" alt="" /></p>
+
+<h3 id="gdk-crosshair-34">GDK_CROSSHAIR = 34</h3>
+
+<p><img src="crosshair.png" alt="" /></p>
+
+<h3 id="gdk-diamond-cross-36">GDK_DIAMOND_CROSS = 36</h3>
+
+<p><img src="diamond_cross.png" alt="" /></p>
+
+<h3 id="gdk-dot-38">GDK_DOT = 38</h3>
+
+<p><img src="dot.png" alt="" /></p>
+
+<h3 id="gdk-dotbox-40">GDK_DOTBOX = 40</h3>
+
+<p><img src="dotbox.png" alt="" /></p>
+
+<h3 id="gdk-double-arrow-42">GDK_DOUBLE_ARROW = 42</h3>
+
+<p><img src="double_arrow.png" alt="" /></p>
+
+<h3 id="gdk-draft-large-44">GDK_DRAFT_LARGE = 44</h3>
+
+<p><img src="draft_large.png" alt="" /></p>
+
+<h3 id="gdk-draft-small-46">GDK_DRAFT_SMALL = 46</h3>
+
+<p><img src="draft_small.png" alt="" /></p>
+
+<h3 id="gdk-draped-box-48">GDK_DRAPED_BOX = 48</h3>
+
+<p><img src="draped_box.png" alt="" /></p>
+
+<h3 id="gdk-exchange-50">GDK_EXCHANGE = 50</h3>
+
+<p><img src="exchange.png" alt="" /></p>
+
+<h3 id="gdk-fleur-52">GDK_FLEUR = 52</h3>
+
+<p><img src="fleur.png" alt="" /></p>
+
+<h3 id="gdk-gobbler-54">GDK_GOBBLER = 54</h3>
+
+<p><img src="gobbler.png" alt="" /></p>
+
+<h3 id="gdk-gumby-56">GDK_GUMBY = 56</h3>
+
+<p><img src="gumby.png" alt="" /></p>
+
+<h3 id="gdk-hand1-58">GDK_HAND1 = 58</h3>
+
+<p><img src="hand1.png" alt="" /></p>
+
+<h3 id="gdk-hand2-60">GDK_HAND2 = 60</h3>
+
+<p><img src="hand2.png" alt="" /></p>
+
+<h3 id="gdk-heart-62">GDK_HEART = 62</h3>
+
+<p><img src="heart.png" alt="" /></p>
+
+<h3 id="gdk-icon-64">GDK_ICON = 64</h3>
+
+<p><img src="icon.png" alt="" /></p>
+
+<h3 id="gdk-iron-cross-66">GDK_IRON_CROSS = 66</h3>
+
+<p><img src="iron_cross.png" alt="" /></p>
+
+<h3 id="gdk-left-ptr-68">GDK_LEFT_PTR = 68</h3>
+
+<p><img src="left_ptr.png" alt="" /></p>
+
+<h3 id="gdk-left-side-70">GDK_LEFT_SIDE = 70</h3>
+
+<p><img src="left_side.png" alt="" /></p>
+
+<h3 id="gdk-left-tee-72">GDK_LEFT_TEE = 72</h3>
+
+<p><img src="left_tee.png" alt="" /></p>
+
+<h3 id="gdk-leftbutton-74">GDK_LEFTBUTTON = 74</h3>
+
+<p><img src="leftbutton.png" alt="" /></p>
+
+<h3 id="gdk-ll-angle-76">GDK_LL_ANGLE = 76</h3>
+
+<p><img src="ll_angle.png" alt="" /></p>
+
+<h3 id="gdk-lr-angle-78">GDK_LR_ANGLE = 78</h3>
+
+<p><img src="lr_angle.png" alt="" /></p>
+
+<h3 id="gdk-man-80">GDK_MAN = 80</h3>
+
+<p><img src="man.png" alt="" /></p>
+
+<h3 id="gdk-middlebutton-82">GDK_MIDDLEBUTTON = 82</h3>
+
+<p><img src="middlebutton.png" alt="" /></p>
+
+<h3 id="gdk-mouse-84">GDK_MOUSE = 84</h3>
+
+<p><img src="mouse.png" alt="" /></p>
+
+<h3 id="gdk-pencil-86">GDK_PENCIL = 86</h3>
+
+<p><img src="pencil.png" alt="" /></p>
+
+<h3 id="gdk-pirate-88">GDK_PIRATE = 88</h3>
+
+<p><img src="pirate.png" alt="" /></p>
+
+<h3 id="gdk-plus-90">GDK_PLUS = 90</h3>
+
+<p><img src="plus.png" alt="" /></p>
+
+<h3 id="gdk-question-arrow-92">GDK_QUESTION_ARROW = 92</h3>
+
+<p><img src="question_arrow.png" alt="" /></p>
+
+<h3 id="gdk-right-ptr-94">GDK_RIGHT_PTR = 94</h3>
+
+<p><img src="right_ptr.png" alt="" /></p>
+
+<h3 id="gdk-right-side-96">GDK_RIGHT_SIDE = 96</h3>
+
+<p><img src="right_side.png" alt="" /></p>
+
+<h3 id="gdk-right-tee-98">GDK_RIGHT_TEE = 98</h3>
+
+<p><img src="right_tee.png" alt="" /></p>
+
+<h3 id="gdk-rightbutton-100">GDK_RIGHTBUTTON = 100</h3>
+
+<p><img src="rightbutton.png" alt="" /></p>
+
+<h3 id="gdk-rtl-logo-102">GDK_RTL_LOGO = 102</h3>
+
+<p><img src="rtl_logo.png" alt="" /></p>
+
+<h3 id="gdk-sailboat-104">GDK_SAILBOAT = 104</h3>
+
+<p><img src="sailboat.png" alt="" /></p>
+
+<h3 id="gdk-sb-down-arrow-106">GDK_SB_DOWN_ARROW = 106</h3>
+
+<p><img src="sb_down_arrow.png" alt="" /></p>
+
+<h3 id="gdk-sb-h-double-arrow-108">GDK_SB_H_DOUBLE_ARROW = 108</h3>
+
+<p><img src="sb_h_double_arrow.png" alt="" /></p>
+
+<h3 id="gdk-sb-left-arrow-110">GDK_SB_LEFT_ARROW = 110</h3>
+
+<p><img src="sb_left_arrow.png" alt="" /></p>
+
+<h3 id="gdk-sb-right-arrow-112">GDK_SB_RIGHT_ARROW = 112</h3>
+
+<p><img src="sb_right_arrow.png" alt="" /></p>
+
+<h3 id="gdk-sb-up-arrow-114">GDK_SB_UP_ARROW = 114</h3>
+
+<p><img src="sb_up_arrow.png" alt="" /></p>
+
+<h3 id="gdk-sb-v-double-arrow-116">GDK_SB_V_DOUBLE_ARROW = 116</h3>
+
+<p><img src="sb_v_double_arrow.png" alt="" /></p>
+
+<h3 id="gdk-shuttle-118">GDK_SHUTTLE = 118</h3>
+
+<p><img src="shuttle.png" alt="" /></p>
+
+<h3 id="gdk-sizing-120">GDK_SIZING = 120</h3>
+
+<p><img src="sizing.png" alt="" /></p>
+
+<h3 id="gdk-spider-122">GDK_SPIDER = 122</h3>
+
+<p><img src="spider.png" alt="" /></p>
+
+<h3 id="gdk-spraycan-124">GDK_SPRAYCAN = 124</h3>
+
+<p><img src="spraycan.png" alt="" /></p>
+
+<h3 id="gdk-star-126">GDK_STAR = 126</h3>
+
+<p><img src="star.png" alt="" /></p>
+
+<h3 id="gdk-target-128">GDK_TARGET = 128</h3>
+
+<p><img src="target.png" alt="" /></p>
+
+<h3 id="gdk-tcross-130">GDK_TCROSS = 130</h3>
+
+<p><img src="tcross.png" alt="" /></p>
+
+<h3 id="gdk-top-left-arrow-132">GDK_TOP_LEFT_ARROW = 132</h3>
+
+<p><img src="top_left_arrow.png" alt="" /></p>
+
+<h3 id="gdk-top-left-corner-134">GDK_TOP_LEFT_CORNER = 134</h3>
+
+<p><img src="top_left_corner.png" alt="" /></p>
+
+<h3 id="gdk-top-right-corner-136">GDK_TOP_RIGHT_CORNER = 136</h3>
+
+<p><img src="top_right_corner.png" alt="" /></p>
+
+<h3 id="gdk-top-side-138">GDK_TOP_SIDE = 138</h3>
+
+<p><img src="top_side.png" alt="" /></p>
+
+<h3 id="gdk-top-tee-140">GDK_TOP_TEE = 140</h3>
+
+<p><img src="top_tee.png" alt="" /></p>
+
+<h3 id="gdk-trek-142">GDK_TREK = 142</h3>
+
+<p><img src="trek.png" alt="" /></p>
+
+<h3 id="gdk-ul-angle-144">GDK_UL_ANGLE = 144</h3>
+
+<p><img src="ul_angle.png" alt="" /></p>
+
+<h3 id="gdk-umbrella-146">GDK_UMBRELLA = 146</h3>
+
+<p><img src="umbrella.png" alt="" /></p>
+
+<h3 id="gdk-ur-angle-148">GDK_UR_ANGLE = 148</h3>
+
+<p><img src="ur_angle.png" alt="" /></p>
+
+<h3 id="gdk-watch-150">GDK_WATCH = 150</h3>
+
+<p><img src="watch.png" alt="" /></p>
+
+<h3 id="gdk-xterm-152">GDK_XTERM = 152</h3>
+
+<p><img src="xterm.png" alt="" /></p>
+
+<h3 id="gdk-last-cursor-153">GDK_LAST_CURSOR = 153</h3>
+
+<p>last cursor type</p>
+
+<h3 id="gdk-blank-cursor-2">GDK_BLANK_CURSOR = -2</h3>
+
+<p>Blank cursor. Since 2.16</p>
+
+<h3 id="gdk-cursor-is-pixmap-1">GDK_CURSOR_IS_PIXMAP = -1</h3>
+
+<p>type of cursors constructed with
+  gdk_cursor_new_from_pixbuf()</p>
+
+<h2 id="devicepadfeature"><code>DevicePadFeature</code></h2>
+
+<p>A pad feature.</p>
+
+<p>C - <code>GdkDevicePadFeature</code></p>
+
+<h3 id="gdk-device-pad-feature-button-0">GDK_DEVICE_PAD_FEATURE_BUTTON = 0</h3>
+
+<p>a button</p>
+
+<h3 id="gdk-device-pad-feature-ring-1">GDK_DEVICE_PAD_FEATURE_RING = 1</h3>
+
+<p>a ring-shaped interactive area</p>
+
+<h3 id="gdk-device-pad-feature-strip-2">GDK_DEVICE_PAD_FEATURE_STRIP = 2</h3>
+
+<p>a straight interactive area</p>
+
+<h2 id="devicetooltype"><code>DeviceToolType</code></h2>
+
+<p>Indicates the specific type of tool being used being a tablet. Such as an
+airbrush, pencil, etc.</p>
+
+<p>C - <code>GdkDeviceToolType</code></p>
+
+<h3 id="gdk-device-tool-type-unknown-0">GDK_DEVICE_TOOL_TYPE_UNKNOWN = 0</h3>
+
+<p>Tool is of an unknown type.</p>
+
+<h3 id="gdk-device-tool-type-pen-1">GDK_DEVICE_TOOL_TYPE_PEN = 1</h3>
+
+<p>Tool is a standard tablet stylus.</p>
+
+<h3 id="gdk-device-tool-type-eraser-2">GDK_DEVICE_TOOL_TYPE_ERASER = 2</h3>
+
+<p>Tool is standard tablet eraser.</p>
+
+<h3 id="gdk-device-tool-type-brush-3">GDK_DEVICE_TOOL_TYPE_BRUSH = 3</h3>
+
+<p>Tool is a brush stylus.</p>
+
+<h3 id="gdk-device-tool-type-pencil-4">GDK_DEVICE_TOOL_TYPE_PENCIL = 4</h3>
+
+<p>Tool is a pencil stylus.</p>
+
+<h3 id="gdk-device-tool-type-airbrush-5">GDK_DEVICE_TOOL_TYPE_AIRBRUSH = 5</h3>
+
+<p>Tool is an airbrush stylus.</p>
+
+<h3 id="gdk-device-tool-type-mouse-6">GDK_DEVICE_TOOL_TYPE_MOUSE = 6</h3>
+
+<p>Tool is a mouse.</p>
+
+<h3 id="gdk-device-tool-type-lens-7">GDK_DEVICE_TOOL_TYPE_LENS = 7</h3>
+
+<p>Tool is a lens cursor.</p>
+
+<h2 id="devicetype"><code>DeviceType</code></h2>
+
+<p>Indicates the device type. See [above][GdkDeviceManager.description]
+for more information about the meaning of these device types.</p>
+
+<p>C - <code>GdkDeviceType</code></p>
+
+<h3 id="gdk-device-type-master-0">GDK_DEVICE_TYPE_MASTER = 0</h3>
+
+<p>Device is a master (or virtual) device. There will
+                         be an associated focus indicator on the screen.</p>
+
+<h3 id="gdk-device-type-slave-1">GDK_DEVICE_TYPE_SLAVE = 1</h3>
+
+<p>Device is a slave (or physical) device.</p>
+
+<h3 id="gdk-device-type-floating-2">GDK_DEVICE_TYPE_FLOATING = 2</h3>
+
+<p>Device is a physical device, currently not attached to
+                           any virtual device.</p>
+
+<h2 id="dragcancelreason"><code>DragCancelReason</code></h2>
+
+<p>Used in #GdkDragContext to the reason of a cancelled DND operation.</p>
+
+<p>C - <code>GdkDragCancelReason</code></p>
+
+<h3 id="gdk-drag-cancel-no-target-0">GDK_DRAG_CANCEL_NO_TARGET = 0</h3>
+
+<p>There is no suitable drop target.</p>
+
+<h3 id="gdk-drag-cancel-user-cancelled-1">GDK_DRAG_CANCEL_USER_CANCELLED = 1</h3>
+
+<p>Drag cancelled by the user</p>
+
+<h3 id="gdk-drag-cancel-error-2">GDK_DRAG_CANCEL_ERROR = 2</h3>
+
+<p>Unspecified error.</p>
+
+<h2 id="dragprotocol"><code>DragProtocol</code></h2>
+
+<p>Used in #GdkDragContext to indicate the protocol according to
+which DND is done.</p>
+
+<p>C - <code>GdkDragProtocol</code></p>
+
+<h3 id="gdk-drag-proto-none-0">GDK_DRAG_PROTO_NONE = 0</h3>
+
+<p>no protocol.</p>
+
+<h3 id="gdk-drag-proto-motif-1">GDK_DRAG_PROTO_MOTIF = 1</h3>
+
+<p>The Motif DND protocol. No longer supported</p>
+
+<h3 id="gdk-drag-proto-xdnd-2">GDK_DRAG_PROTO_XDND = 2</h3>
+
+<p>The Xdnd protocol.</p>
+
+<h3 id="gdk-drag-proto-rootwin-3">GDK_DRAG_PROTO_ROOTWIN = 3</h3>
+
+<p>An extension to the Xdnd protocol for
+ unclaimed root window drops.</p>
+
+<h3 id="gdk-drag-proto-win32-dropfiles-4">GDK_DRAG_PROTO_WIN32_DROPFILES = 4</h3>
+
+<p>The simple WM_DROPFILES protocol.</p>
+
+<h3 id="gdk-drag-proto-ole2-5">GDK_DRAG_PROTO_OLE2 = 5</h3>
+
+<p>The complex OLE2 DND protocol (not implemented).</p>
+
+<h3 id="gdk-drag-proto-local-6">GDK_DRAG_PROTO_LOCAL = 6</h3>
+
+<p>Intra-application DND.</p>
+
+<h3 id="gdk-drag-proto-wayland-7">GDK_DRAG_PROTO_WAYLAND = 7</h3>
+
+<p>Wayland DND protocol.</p>
+
+<h2 id="eventtype"><code>EventType</code></h2>
+
+<p>Specifies the type of the event.</p>
+
+<p>Do not confuse these events with the signals that GTK+ widgets emit.
+Although many of these events result in corresponding signals being emitted,
+the events are often transformed or filtered along the way.</p>
+
+<p>In some language bindings, the values %GDK_2BUTTON_PRESS and
+%GDK_3BUTTON_PRESS would translate into something syntactically
+invalid (eg <code>Gdk.EventType.2ButtonPress</code>, where a
+symbol is not allowed to start with a number). In that case, the
+aliases %GDK_DOUBLE_BUTTON_PRESS and %GDK_TRIPLE_BUTTON_PRESS can
+be used instead.</p>
+
+<p>C - <code>GdkEventType</code></p>
+
+<h3 id="gdk-nothing-1">GDK_NOTHING = -1</h3>
+
+<p>a special code to indicate a null event.</p>
+
+<h3 id="gdk-delete-0">GDK_DELETE = 0</h3>
+
+<p>the window manager has requested that the toplevel window be
+  hidden or destroyed, usually when the user clicks on a special icon in the
+  title bar.</p>
+
+<h3 id="gdk-destroy-1">GDK_DESTROY = 1</h3>
+
+<p>the window has been destroyed.</p>
+
+<h3 id="gdk-expose-2">GDK_EXPOSE = 2</h3>
+
+<p>all or part of the window has become visible and needs to be
+  redrawn.</p>
+
+<h3 id="gdk-motion-notify-3">GDK_MOTION_NOTIFY = 3</h3>
+
+<p>the pointer (usually a mouse) has moved.</p>
+
+<h3 id="gdk-button-press-4">GDK_BUTTON_PRESS = 4</h3>
+
+<p>a mouse button has been pressed.</p>
+
+<h3 id="gdk-2button-press-5">GDK_2BUTTON_PRESS = 5</h3>
+
+<p>a mouse button has been double-clicked (clicked twice
+  within a short period of time). Note that each click also generates a
+  %GDK_BUTTON_PRESS event.</p>
+
+<h3 id="gdk-double-button-press-5">GDK_DOUBLE_BUTTON_PRESS = 5</h3>
+
+<p>alias for %GDK_2BUTTON_PRESS, added in 3.6.</p>
+
+<h3 id="gdk-3button-press-6">GDK_3BUTTON_PRESS = 6</h3>
+
+<p>a mouse button has been clicked 3 times in a short period
+  of time. Note that each click also generates a %GDK_BUTTON_PRESS event.</p>
+
+<h3 id="gdk-triple-button-press-6">GDK_TRIPLE_BUTTON_PRESS = 6</h3>
+
+<p>alias for %GDK_3BUTTON_PRESS, added in 3.6.</p>
+
+<h3 id="gdk-button-release-7">GDK_BUTTON_RELEASE = 7</h3>
+
+<p>a mouse button has been released.</p>
+
+<h3 id="gdk-key-press-8">GDK_KEY_PRESS = 8</h3>
+
+<p>a key has been pressed.</p>
+
+<h3 id="gdk-key-release-9">GDK_KEY_RELEASE = 9</h3>
+
+<p>a key has been released.</p>
+
+<h3 id="gdk-enter-notify-10">GDK_ENTER_NOTIFY = 10</h3>
+
+<p>the pointer has entered the window.</p>
+
+<h3 id="gdk-leave-notify-11">GDK_LEAVE_NOTIFY = 11</h3>
+
+<p>the pointer has left the window.</p>
+
+<h3 id="gdk-focus-change-12">GDK_FOCUS_CHANGE = 12</h3>
+
+<p>the keyboard focus has entered or left the window.</p>
+
+<h3 id="gdk-configure-13">GDK_CONFIGURE = 13</h3>
+
+<p>the size, position or stacking order of the window has changed.
+  Note that GTK+ discards these events for %GDK_WINDOW_CHILD windows.</p>
+
+<h3 id="gdk-map-14">GDK_MAP = 14</h3>
+
+<p>the window has been mapped.</p>
+
+<h3 id="gdk-unmap-15">GDK_UNMAP = 15</h3>
+
+<p>the window has been unmapped.</p>
+
+<h3 id="gdk-property-notify-16">GDK_PROPERTY_NOTIFY = 16</h3>
+
+<p>a property on the window has been changed or deleted.</p>
+
+<h3 id="gdk-selection-clear-17">GDK_SELECTION_CLEAR = 17</h3>
+
+<p>the application has lost ownership of a selection.</p>
+
+<h3 id="gdk-selection-request-18">GDK_SELECTION_REQUEST = 18</h3>
+
+<p>another application has requested a selection.</p>
+
+<h3 id="gdk-selection-notify-19">GDK_SELECTION_NOTIFY = 19</h3>
+
+<p>a selection has been received.</p>
+
+<h3 id="gdk-proximity-in-20">GDK_PROXIMITY_IN = 20</h3>
+
+<p>an input device has moved into contact with a sensing
+  surface (e.g. a touchscreen or graphics tablet).</p>
+
+<h3 id="gdk-proximity-out-21">GDK_PROXIMITY_OUT = 21</h3>
+
+<p>an input device has moved out of contact with a sensing
+  surface.</p>
+
+<h3 id="gdk-drag-enter-22">GDK_DRAG_ENTER = 22</h3>
+
+<p>the mouse has entered the window while a drag is in progress.</p>
+
+<h3 id="gdk-drag-leave-23">GDK_DRAG_LEAVE = 23</h3>
+
+<p>the mouse has left the window while a drag is in progress.</p>
+
+<h3 id="gdk-drag-motion-24">GDK_DRAG_MOTION = 24</h3>
+
+<p>the mouse has moved in the window while a drag is in
+  progress.</p>
+
+<h3 id="gdk-drag-status-25">GDK_DRAG_STATUS = 25</h3>
+
+<p>the status of the drag operation initiated by the window
+  has changed.</p>
+
+<h3 id="gdk-drop-start-26">GDK_DROP_START = 26</h3>
+
+<p>a drop operation onto the window has started.</p>
+
+<h3 id="gdk-drop-finished-27">GDK_DROP_FINISHED = 27</h3>
+
+<p>the drop operation initiated by the window has completed.</p>
+
+<h3 id="gdk-client-event-28">GDK_CLIENT_EVENT = 28</h3>
+
+<p>a message has been received from another application.</p>
+
+<h3 id="gdk-visibility-notify-29">GDK_VISIBILITY_NOTIFY = 29</h3>
+
+<p>the window visibility status has changed.</p>
+
+<h3 id="gdk-scroll-31">GDK_SCROLL = 31</h3>
+
+<p>the scroll wheel was turned</p>
+
+<h3 id="gdk-window-state-32">GDK_WINDOW_STATE = 32</h3>
+
+<p>the state of a window has changed. See #GdkWindowState
+  for the possible window states</p>
+
+<h3 id="gdk-setting-33">GDK_SETTING = 33</h3>
+
+<p>a setting has been modified.</p>
+
+<h3 id="gdk-owner-change-34">GDK_OWNER_CHANGE = 34</h3>
+
+<p>the owner of a selection has changed. This event type
+  was added in 2.6</p>
+
+<h3 id="gdk-grab-broken-35">GDK_GRAB_BROKEN = 35</h3>
+
+<p>a pointer or keyboard grab was broken. This event type
+  was added in 2.8.</p>
+
+<h3 id="gdk-damage-36">GDK_DAMAGE = 36</h3>
+
+<p>the content of the window has been changed. This event type
+  was added in 2.14.</p>
+
+<h3 id="gdk-touch-begin-37">GDK_TOUCH_BEGIN = 37</h3>
+
+<p>A new touch event sequence has just started. This event
+  type was added in 3.4.</p>
+
+<h3 id="gdk-touch-update-38">GDK_TOUCH_UPDATE = 38</h3>
+
+<p>A touch event sequence has been updated. This event type
+  was added in 3.4.</p>
+
+<h3 id="gdk-touch-end-39">GDK_TOUCH_END = 39</h3>
+
+<p>A touch event sequence has finished. This event type
+  was added in 3.4.</p>
+
+<h3 id="gdk-touch-cancel-40">GDK_TOUCH_CANCEL = 40</h3>
+
+<p>A touch event sequence has been canceled. This event type
+  was added in 3.4.</p>
+
+<h3 id="gdk-touchpad-swipe-41">GDK_TOUCHPAD_SWIPE = 41</h3>
+
+<p>A touchpad swipe gesture event, the current state
+  is determined by its phase field. This event type was added in 3.18.</p>
+
+<h3 id="gdk-touchpad-pinch-42">GDK_TOUCHPAD_PINCH = 42</h3>
+
+<p>A touchpad pinch gesture event, the current state
+  is determined by its phase field. This event type was added in 3.18.</p>
+
+<h3 id="gdk-pad-button-press-43">GDK_PAD_BUTTON_PRESS = 43</h3>
+
+<p>A tablet pad button press event. This event type
+  was added in 3.22.</p>
+
+<h3 id="gdk-pad-button-release-44">GDK_PAD_BUTTON_RELEASE = 44</h3>
+
+<p>A tablet pad button release event. This event type
+  was added in 3.22.</p>
+
+<h3 id="gdk-pad-ring-45">GDK_PAD_RING = 45</h3>
+
+<p>A tablet pad axis event from a &ldquo;ring&rdquo;. This event type was
+  added in 3.22.</p>
+
+<h3 id="gdk-pad-strip-46">GDK_PAD_STRIP = 46</h3>
+
+<p>A tablet pad axis event from a &ldquo;strip&rdquo;. This event type was
+  added in 3.22.</p>
+
+<h3 id="gdk-pad-group-mode-47">GDK_PAD_GROUP_MODE = 47</h3>
+
+<p>A tablet pad group mode change. This event type was
+  added in 3.22.</p>
+
+<h3 id="gdk-event-last-48">GDK_EVENT_LAST = 48</h3>
+
+<p>marks the end of the GdkEventType enumeration. Added in 2.18</p>
+
+<h2 id="filterreturn"><code>FilterReturn</code></h2>
+
+<p>Specifies the result of applying a #GdkFilterFunc to a native event.</p>
+
+<p>C - <code>GdkFilterReturn</code></p>
+
+<h3 id="gdk-filter-continue-0">GDK_FILTER_CONTINUE = 0</h3>
+
+<p>event not handled, continue processing.</p>
+
+<h3 id="gdk-filter-translate-1">GDK_FILTER_TRANSLATE = 1</h3>
+
+<p>native event translated into a GDK event and stored
+ in the <code>event</code> structure that was passed in.</p>
+
+<h3 id="gdk-filter-remove-2">GDK_FILTER_REMOVE = 2</h3>
+
+<p>event handled, terminate processing.</p>
+
+<h2 id="fullscreenmode"><code>FullscreenMode</code></h2>
+
+<p>Indicates which monitor (in a multi-head setup) a window should span over
+when in fullscreen mode.</p>
+
+<p>C - <code>GdkFullscreenMode</code></p>
+
+<h3 id="gdk-fullscreen-on-current-monitor-0">GDK_FULLSCREEN_ON_CURRENT_MONITOR = 0</h3>
+
+<p>Fullscreen on current monitor only.</p>
+
+<h3 id="gdk-fullscreen-on-all-monitors-1">GDK_FULLSCREEN_ON_ALL_MONITORS = 1</h3>
+
+<p>Span across all monitors when fullscreen.</p>
+
+<h2 id="glerror"><code>GLError</code></h2>
+
+<p>Error enumeration for #GdkGLContext.</p>
+
+<p>C - <code>GdkGLError</code></p>
+
+<h3 id="gdk-gl-error-not-available-0">GDK_GL_ERROR_NOT_AVAILABLE = 0</h3>
+
+<p>OpenGL support is not available</p>
+
+<h3 id="gdk-gl-error-unsupported-format-1">GDK_GL_ERROR_UNSUPPORTED_FORMAT = 1</h3>
+
+<p>The requested visual format is not supported</p>
+
+<h3 id="gdk-gl-error-unsupported-profile-2">GDK_GL_ERROR_UNSUPPORTED_PROFILE = 2</h3>
+
+<p>The requested profile is not supported</p>
+
+<h2 id="grabownership"><code>GrabOwnership</code></h2>
+
+<p>Defines how device grabs interact with other devices.</p>
+
+<p>C - <code>GdkGrabOwnership</code></p>
+
+<h3 id="gdk-ownership-none-0">GDK_OWNERSHIP_NONE = 0</h3>
+
+<p>All other devices’ events are allowed.</p>
+
+<h3 id="gdk-ownership-window-1">GDK_OWNERSHIP_WINDOW = 1</h3>
+
+<p>Other devices’ events are blocked for the grab window.</p>
+
+<h3 id="gdk-ownership-application-2">GDK_OWNERSHIP_APPLICATION = 2</h3>
+
+<p>Other devices’ events are blocked for the whole application.</p>
+
+<h2 id="grabstatus"><code>GrabStatus</code></h2>
+
+<p>Returned by gdk_device_grab(), gdk_pointer_grab() and gdk_keyboard_grab() to
+indicate success or the reason for the failure of the grab attempt.</p>
+
+<p>C - <code>GdkGrabStatus</code></p>
+
+<h3 id="gdk-grab-success-0">GDK_GRAB_SUCCESS = 0</h3>
+
+<p>the resource was successfully grabbed.</p>
+
+<h3 id="gdk-grab-already-grabbed-1">GDK_GRAB_ALREADY_GRABBED = 1</h3>
+
+<p>the resource is actively grabbed by another client.</p>
+
+<h3 id="gdk-grab-invalid-time-2">GDK_GRAB_INVALID_TIME = 2</h3>
+
+<p>the resource was grabbed more recently than the
+ specified time.</p>
+
+<h3 id="gdk-grab-not-viewable-3">GDK_GRAB_NOT_VIEWABLE = 3</h3>
+
+<p>the grab window or the @confine_to window are not
+ viewable.</p>
+
+<h3 id="gdk-grab-frozen-4">GDK_GRAB_FROZEN = 4</h3>
+
+<p>the resource is frozen by an active grab of another client.</p>
+
+<h3 id="gdk-grab-failed-5">GDK_GRAB_FAILED = 5</h3>
+
+<p>the grab failed for some other reason. Since 3.16</p>
+
+<h2 id="gravity"><code>Gravity</code></h2>
+
+<p>Defines the reference point of a window and the meaning of coordinates
+passed to gtk_window_move(). See gtk_window_move() and the &ldquo;implementation
+notes&rdquo; section of the
+<a href="http://www.freedesktop.org/Standards/wm-spec">Extended Window Manager Hints</a>
+specification for more details.</p>
+
+<p>C - <code>GdkGravity</code></p>
+
+<h3 id="gdk-gravity-north-west-1">GDK_GRAVITY_NORTH_WEST = 1</h3>
+
+<p>the reference point is at the top left corner.</p>
+
+<h3 id="gdk-gravity-north-2">GDK_GRAVITY_NORTH = 2</h3>
+
+<p>the reference point is in the middle of the top edge.</p>
+
+<h3 id="gdk-gravity-north-east-3">GDK_GRAVITY_NORTH_EAST = 3</h3>
+
+<p>the reference point is at the top right corner.</p>
+
+<h3 id="gdk-gravity-west-4">GDK_GRAVITY_WEST = 4</h3>
+
+<p>the reference point is at the middle of the left edge.</p>
+
+<h3 id="gdk-gravity-center-5">GDK_GRAVITY_CENTER = 5</h3>
+
+<p>the reference point is at the center of the window.</p>
+
+<h3 id="gdk-gravity-east-6">GDK_GRAVITY_EAST = 6</h3>
+
+<p>the reference point is at the middle of the right edge.</p>
+
+<h3 id="gdk-gravity-south-west-7">GDK_GRAVITY_SOUTH_WEST = 7</h3>
+
+<p>the reference point is at the lower left corner.</p>
+
+<h3 id="gdk-gravity-south-8">GDK_GRAVITY_SOUTH = 8</h3>
+
+<p>the reference point is at the middle of the lower edge.</p>
+
+<h3 id="gdk-gravity-south-east-9">GDK_GRAVITY_SOUTH_EAST = 9</h3>
+
+<p>the reference point is at the lower right corner.</p>
+
+<h3 id="gdk-gravity-static-10">GDK_GRAVITY_STATIC = 10</h3>
+
+<p>the reference point is at the top left corner of the
+ window itself, ignoring window manager decorations.</p>
+
+<h2 id="inputmode"><code>InputMode</code></h2>
+
+<p>An enumeration that describes the mode of an input device.</p>
+
+<p>C - <code>GdkInputMode</code></p>
+
+<h3 id="gdk-mode-disabled-0">GDK_MODE_DISABLED = 0</h3>
+
+<p>the device is disabled and will not report any events.</p>
+
+<h3 id="gdk-mode-screen-1">GDK_MODE_SCREEN = 1</h3>
+
+<p>the device is enabled. The device’s coordinate space
+                  maps to the entire screen.</p>
+
+<h3 id="gdk-mode-window-2">GDK_MODE_WINDOW = 2</h3>
+
+<p>the device is enabled. The device’s coordinate space
+                  is mapped to a single window. The manner in which this window
+                  is chosen is undefined, but it will typically be the same
+                  way in which the focus window for key events is determined.</p>
+
+<h2 id="inputsource"><code>InputSource</code></h2>
+
+<p>An enumeration describing the type of an input device in general terms.</p>
+
+<p>C - <code>GdkInputSource</code></p>
+
+<h3 id="gdk-source-mouse-0">GDK_SOURCE_MOUSE = 0</h3>
+
+<p>the device is a mouse. (This will be reported for the core
+                   pointer, even if it is something else, such as a trackball.)</p>
+
+<h3 id="gdk-source-pen-1">GDK_SOURCE_PEN = 1</h3>
+
+<p>the device is a stylus of a graphics tablet or similar device.</p>
+
+<h3 id="gdk-source-eraser-2">GDK_SOURCE_ERASER = 2</h3>
+
+<p>the device is an eraser. Typically, this would be the other end
+                    of a stylus on a graphics tablet.</p>
+
+<h3 id="gdk-source-cursor-3">GDK_SOURCE_CURSOR = 3</h3>
+
+<p>the device is a graphics tablet “puck” or similar device.</p>
+
+<h3 id="gdk-source-keyboard-4">GDK_SOURCE_KEYBOARD = 4</h3>
+
+<p>the device is a keyboard.</p>
+
+<h3 id="gdk-source-touchscreen-5">GDK_SOURCE_TOUCHSCREEN = 5</h3>
+
+<p>the device is a direct-input touch device, such
+    as a touchscreen or tablet. This device type has been added in 3.4.</p>
+
+<h3 id="gdk-source-touchpad-6">GDK_SOURCE_TOUCHPAD = 6</h3>
+
+<p>the device is an indirect touch device, such
+    as a touchpad. This device type has been added in 3.4.</p>
+
+<h3 id="gdk-source-trackpoint-7">GDK_SOURCE_TRACKPOINT = 7</h3>
+
+<p>the device is a trackpoint. This device type has been
+    added in 3.22</p>
+
+<h3 id="gdk-source-tablet-pad-8">GDK_SOURCE_TABLET_PAD = 8</h3>
+
+<p>the device is a &ldquo;pad&rdquo;, a collection of buttons,
+    rings and strips found in drawing tablets. This device type has been
+    added in 3.22.</p>
+
+<h2 id="modifierintent"><code>ModifierIntent</code></h2>
+
+<p>This enum is used with gdk_keymap_get_modifier_mask()
+in order to determine what modifiers the
+currently used windowing system backend uses for particular
+purposes. For example, on X11/Windows, the Control key is used for
+invoking menu shortcuts (accelerators), whereas on Apple computers
+it’s the Command key (which correspond to %GDK_CONTROL_MASK and
+%GDK_MOD2_MASK, respectively).</p>
+
+<p>C - <code>GdkModifierIntent</code></p>
+
+<h3 id="gdk-modifier-intent-primary-accelerator-0">GDK_MODIFIER_INTENT_PRIMARY_ACCELERATOR = 0</h3>
+
+<p>the primary modifier used to invoke
+ menu accelerators.</p>
+
+<h3 id="gdk-modifier-intent-context-menu-1">GDK_MODIFIER_INTENT_CONTEXT_MENU = 1</h3>
+
+<p>the modifier used to invoke context menus.
+ Note that mouse button 3 always triggers context menus. When this modifier
+ is not 0, it additionally triggers context menus when used with mouse button 1.</p>
+
+<h3 id="gdk-modifier-intent-extend-selection-2">GDK_MODIFIER_INTENT_EXTEND_SELECTION = 2</h3>
+
+<p>the modifier used to extend selections
+ using <code>modifier</code>-click or <code>modifier</code>-cursor-key</p>
+
+<h3 id="gdk-modifier-intent-modify-selection-3">GDK_MODIFIER_INTENT_MODIFY_SELECTION = 3</h3>
+
+<p>the modifier used to modify selections,
+ which in most cases means toggling the clicked item into or out of the selection.</p>
+
+<h3 id="gdk-modifier-intent-no-text-input-4">GDK_MODIFIER_INTENT_NO_TEXT_INPUT = 4</h3>
+
+<p>when any of these modifiers is pressed, the
+ key event cannot produce a symbol directly. This is meant to be used for
+ input methods, and for use cases like typeahead search.</p>
+
+<h3 id="gdk-modifier-intent-shift-group-5">GDK_MODIFIER_INTENT_SHIFT_GROUP = 5</h3>
+
+<p>the modifier that switches between keyboard
+ groups (AltGr on X11/Windows and Option/Alt on OS X).</p>
+
+<h3 id="gdk-modifier-intent-default-mod-mask-6">GDK_MODIFIER_INTENT_DEFAULT_MOD_MASK = 6</h3>
+
+<p>The set of modifier masks accepted
+as modifiers in accelerators. Needed because Command is mapped to MOD2 on
+OSX, which is widely used, but on X11 MOD2 is NumLock and using that for a
+mod key is problematic at best.
+Ref: <a href="https://bugzilla.gnome.org/show_bug.cgi?id=736125">https://bugzilla.gnome.org/show_bug.cgi?id=736125</a>.</p>
+
+<h2 id="notifytype"><code>NotifyType</code></h2>
+
+<p>Specifies the kind of crossing for #GdkEventCrossing.</p>
+
+<p>See the X11 protocol specification of LeaveNotify for
+full details of crossing event generation.</p>
+
+<p>C - <code>GdkNotifyType</code></p>
+
+<h3 id="gdk-notify-ancestor-0">GDK_NOTIFY_ANCESTOR = 0</h3>
+
+<p>the window is entered from an ancestor or
+  left towards an ancestor.</p>
+
+<h3 id="gdk-notify-virtual-1">GDK_NOTIFY_VIRTUAL = 1</h3>
+
+<p>the pointer moves between an ancestor and an
+  inferior of the window.</p>
+
+<h3 id="gdk-notify-inferior-2">GDK_NOTIFY_INFERIOR = 2</h3>
+
+<p>the window is entered from an inferior or
+  left towards an inferior.</p>
+
+<h3 id="gdk-notify-nonlinear-3">GDK_NOTIFY_NONLINEAR = 3</h3>
+
+<p>the window is entered from or left towards
+  a window which is neither an ancestor nor an inferior.</p>
+
+<h3 id="gdk-notify-nonlinear-virtual-4">GDK_NOTIFY_NONLINEAR_VIRTUAL = 4</h3>
+
+<p>the pointer moves between two windows
+  which are not ancestors of each other and the window is part of
+  the ancestor chain between one of these windows and their least
+  common ancestor.</p>
+
+<h3 id="gdk-notify-unknown-5">GDK_NOTIFY_UNKNOWN = 5</h3>
+
+<p>an unknown type of enter/leave event occurred.</p>
+
+<h2 id="ownerchange"><code>OwnerChange</code></h2>
+
+<p>Specifies why a selection ownership was changed.</p>
+
+<p>C - <code>GdkOwnerChange</code></p>
+
+<h3 id="gdk-owner-change-new-owner-0">GDK_OWNER_CHANGE_NEW_OWNER = 0</h3>
+
+<p>some other app claimed the ownership</p>
+
+<h3 id="gdk-owner-change-destroy-1">GDK_OWNER_CHANGE_DESTROY = 1</h3>
+
+<p>the window was destroyed</p>
+
+<h3 id="gdk-owner-change-close-2">GDK_OWNER_CHANGE_CLOSE = 2</h3>
+
+<p>the client was closed</p>
+
+<h2 id="propmode"><code>PropMode</code></h2>
+
+<p>Describes how existing data is combined with new data when
+using gdk_property_change().</p>
+
+<p>C - <code>GdkPropMode</code></p>
+
+<h3 id="gdk-prop-mode-replace-0">GDK_PROP_MODE_REPLACE = 0</h3>
+
+<p>the new data replaces the existing data.</p>
+
+<h3 id="gdk-prop-mode-prepend-1">GDK_PROP_MODE_PREPEND = 1</h3>
+
+<p>the new data is prepended to the existing data.</p>
+
+<h3 id="gdk-prop-mode-append-2">GDK_PROP_MODE_APPEND = 2</h3>
+
+<p>the new data is appended to the existing data.</p>
+
+<h2 id="propertystate"><code>PropertyState</code></h2>
+
+<p>Specifies the type of a property change for a #GdkEventProperty.</p>
+
+<p>C - <code>guint</code></p>
+
+<h3 id="gdk-property-new-value-0">GDK_PROPERTY_NEW_VALUE = 0</h3>
+
+<p>the property value was changed.</p>
+
+<h3 id="gdk-property-delete-1">GDK_PROPERTY_DELETE = 1</h3>
+
+<p>the property was deleted.</p>
+
+<h2 id="scrolldirection"><code>ScrollDirection</code></h2>
+
+<p>Specifies the direction for #GdkEventScroll.</p>
+
+<p>C - <code>GdkScrollDirection</code></p>
+
+<h3 id="gdk-scroll-up-0">GDK_SCROLL_UP = 0</h3>
+
+<p>the window is scrolled up.</p>
+
+<h3 id="gdk-scroll-down-1">GDK_SCROLL_DOWN = 1</h3>
+
+<p>the window is scrolled down.</p>
+
+<h3 id="gdk-scroll-left-2">GDK_SCROLL_LEFT = 2</h3>
+
+<p>the window is scrolled to the left.</p>
+
+<h3 id="gdk-scroll-right-3">GDK_SCROLL_RIGHT = 3</h3>
+
+<p>the window is scrolled to the right.</p>
+
+<h3 id="gdk-scroll-smooth-4">GDK_SCROLL_SMOOTH = 4</h3>
+
+<p>the scrolling is determined by the delta values
+  in #GdkEventScroll. See gdk_event_get_scroll_deltas(). Since: 3.4</p>
+
+<h2 id="settingaction"><code>SettingAction</code></h2>
+
+<p>Specifies the kind of modification applied to a setting in a
+&num;GdkEventSetting.</p>
+
+<p>C - <code>GdkSettingAction</code></p>
+
+<h3 id="gdk-setting-action-new-0">GDK_SETTING_ACTION_NEW = 0</h3>
+
+<p>a setting was added.</p>
+
+<h3 id="gdk-setting-action-changed-1">GDK_SETTING_ACTION_CHANGED = 1</h3>
+
+<p>a setting was changed.</p>
+
+<h3 id="gdk-setting-action-deleted-2">GDK_SETTING_ACTION_DELETED = 2</h3>
+
+<p>a setting was deleted.</p>
+
+<h2 id="status"><code>Status</code></h2>
+
+<p>C - <code>GdkStatus</code></p>
+
+<h3 id="gdk-ok-0">GDK_OK = 0</h3>
+
+<h3 id="gdk-error-1">GDK_ERROR = -1</h3>
+
+<h3 id="gdk-error-param-2">GDK_ERROR_PARAM = -2</h3>
+
+<h3 id="gdk-error-file-3">GDK_ERROR_FILE = -3</h3>
+
+<h3 id="gdk-error-mem-4">GDK_ERROR_MEM = -4</h3>
+
+<h2 id="subpixellayout"><code>SubpixelLayout</code></h2>
+
+<p>This enumeration describes how the red, green and blue components
+of physical pixels on an output device are laid out.</p>
+
+<p>C - <code>GdkSubpixelLayout</code></p>
+
+<h3 id="gdk-subpixel-layout-unknown-0">GDK_SUBPIXEL_LAYOUT_UNKNOWN = 0</h3>
+
+<p>The layout is not known</p>
+
+<h3 id="gdk-subpixel-layout-none-1">GDK_SUBPIXEL_LAYOUT_NONE = 1</h3>
+
+<p>Not organized in this way</p>
+
+<h3 id="gdk-subpixel-layout-horizontal-rgb-2">GDK_SUBPIXEL_LAYOUT_HORIZONTAL_RGB = 2</h3>
+
+<p>The layout is horizontal, the order is RGB</p>
+
+<h3 id="gdk-subpixel-layout-horizontal-bgr-3">GDK_SUBPIXEL_LAYOUT_HORIZONTAL_BGR = 3</h3>
+
+<p>The layout is horizontal, the order is BGR</p>
+
+<h3 id="gdk-subpixel-layout-vertical-rgb-4">GDK_SUBPIXEL_LAYOUT_VERTICAL_RGB = 4</h3>
+
+<p>The layout is vertical, the order is RGB</p>
+
+<h3 id="gdk-subpixel-layout-vertical-bgr-5">GDK_SUBPIXEL_LAYOUT_VERTICAL_BGR = 5</h3>
+
+<p>The layout is vertical, the order is BGR</p>
+
+<h2 id="touchpadgesturephase"><code>TouchpadGesturePhase</code></h2>
+
+<p>Specifies the current state of a touchpad gesture. All gestures are
+guaranteed to begin with an event with phase %GDK_TOUCHPAD_GESTURE_PHASE_BEGIN,
+followed by 0 or several events with phase %GDK_TOUCHPAD_GESTURE_PHASE_UPDATE.</p>
+
+<p>A finished gesture may have 2 possible outcomes, an event with phase
+%GDK_TOUCHPAD_GESTURE_PHASE_END will be emitted when the gesture is
+considered successful, this should be used as the hint to perform any
+permanent changes.</p>
+
+<p>Cancelled gestures may be so for a variety of reasons, due to hardware
+or the compositor, or due to the gesture recognition layers hinting the
+gesture did not finish resolutely (eg. a 3rd finger being added during
+a pinch gesture). In these cases, the last event will report the phase
+%GDK_TOUCHPAD_GESTURE_PHASE_CANCEL, this should be used as a hint
+to undo any visible/permanent changes that were done throughout the
+progress of the gesture.</p>
+
+<p>See also #GdkEventTouchpadSwipe and #GdkEventTouchpadPinch.</p>
+
+<p>C - <code>GdkTouchpadGesturePhase</code></p>
+
+<h3 id="gdk-touchpad-gesture-phase-begin-0">GDK_TOUCHPAD_GESTURE_PHASE_BEGIN = 0</h3>
+
+<p>The gesture has begun.</p>
+
+<h3 id="gdk-touchpad-gesture-phase-update-1">GDK_TOUCHPAD_GESTURE_PHASE_UPDATE = 1</h3>
+
+<p>The gesture has been updated.</p>
+
+<h3 id="gdk-touchpad-gesture-phase-end-2">GDK_TOUCHPAD_GESTURE_PHASE_END = 2</h3>
+
+<p>The gesture was finished, changes
+  should be permanently applied.</p>
+
+<h3 id="gdk-touchpad-gesture-phase-cancel-3">GDK_TOUCHPAD_GESTURE_PHASE_CANCEL = 3</h3>
+
+<p>The gesture was cancelled, all
+  changes should be undone.</p>
+
+<h2 id="visibilitystate"><code>VisibilityState</code></h2>
+
+<p>Specifies the visiblity status of a window for a #GdkEventVisibility.</p>
+
+<p>C - <code>GdkVisibilityState</code></p>
+
+<h3 id="gdk-visibility-unobscured-0">GDK_VISIBILITY_UNOBSCURED = 0</h3>
+
+<p>the window is completely visible.</p>
+
+<h3 id="gdk-visibility-partial-1">GDK_VISIBILITY_PARTIAL = 1</h3>
+
+<p>the window is partially visible.</p>
+
+<h3 id="gdk-visibility-fully-obscured-2">GDK_VISIBILITY_FULLY_OBSCURED = 2</h3>
+
+<p>the window is not visible at all.</p>
+
+<h2 id="visualtype"><code>VisualType</code></h2>
+
+<p>A set of values that describe the manner in which the pixel values
+for a visual are converted into RGB values for display.</p>
+
+<p>C - <code>GdkVisualType</code></p>
+
+<h3 id="gdk-visual-static-gray-0">GDK_VISUAL_STATIC_GRAY = 0</h3>
+
+<p>Each pixel value indexes a grayscale value
+    directly.</p>
+
+<h3 id="gdk-visual-grayscale-1">GDK_VISUAL_GRAYSCALE = 1</h3>
+
+<p>Each pixel is an index into a color map that
+    maps pixel values into grayscale values. The color map can be
+    changed by an application.</p>
+
+<h3 id="gdk-visual-static-color-2">GDK_VISUAL_STATIC_COLOR = 2</h3>
+
+<p>Each pixel value is an index into a predefined,
+    unmodifiable color map that maps pixel values into RGB values.</p>
+
+<h3 id="gdk-visual-pseudo-color-3">GDK_VISUAL_PSEUDO_COLOR = 3</h3>
+
+<p>Each pixel is an index into a color map that
+    maps pixel values into rgb values. The color map can be changed by
+    an application.</p>
+
+<h3 id="gdk-visual-true-color-4">GDK_VISUAL_TRUE_COLOR = 4</h3>
+
+<p>Each pixel value directly contains red, green,
+    and blue components. Use gdk_visual_get_red_pixel_details(), etc,
+    to obtain information about how the components are assembled into
+    a pixel value.</p>
+
+<h3 id="gdk-visual-direct-color-5">GDK_VISUAL_DIRECT_COLOR = 5</h3>
+
+<p>Each pixel value contains red, green, and blue
+    components as for %GDK_VISUAL_TRUE_COLOR, but the components are
+    mapped via a color table into the final output table instead of
+    being converted directly.</p>
+
+<h2 id="windowedge"><code>WindowEdge</code></h2>
+
+<p>Determines a window edge or corner.</p>
+
+<p>C - <code>GdkWindowEdge</code></p>
+
+<h3 id="gdk-window-edge-north-west-0">GDK_WINDOW_EDGE_NORTH_WEST = 0</h3>
+
+<p>the top left corner.</p>
+
+<h3 id="gdk-window-edge-north-1">GDK_WINDOW_EDGE_NORTH = 1</h3>
+
+<p>the top edge.</p>
+
+<h3 id="gdk-window-edge-north-east-2">GDK_WINDOW_EDGE_NORTH_EAST = 2</h3>
+
+<p>the top right corner.</p>
+
+<h3 id="gdk-window-edge-west-3">GDK_WINDOW_EDGE_WEST = 3</h3>
+
+<p>the left edge.</p>
+
+<h3 id="gdk-window-edge-east-4">GDK_WINDOW_EDGE_EAST = 4</h3>
+
+<p>the right edge.</p>
+
+<h3 id="gdk-window-edge-south-west-5">GDK_WINDOW_EDGE_SOUTH_WEST = 5</h3>
+
+<p>the lower left corner.</p>
+
+<h3 id="gdk-window-edge-south-6">GDK_WINDOW_EDGE_SOUTH = 6</h3>
+
+<p>the lower edge.</p>
+
+<h3 id="gdk-window-edge-south-east-7">GDK_WINDOW_EDGE_SOUTH_EAST = 7</h3>
+
+<p>the lower right corner.</p>
+
+<h2 id="windowtype"><code>WindowType</code></h2>
+
+<p>Describes the kind of window.</p>
+
+<p>C - <code>GdkWindowType</code></p>
+
+<h3 id="gdk-window-root-0">GDK_WINDOW_ROOT = 0</h3>
+
+<p>root window; this window has no parent, covers the entire
+ screen, and is created by the window system</p>
+
+<h3 id="gdk-window-toplevel-1">GDK_WINDOW_TOPLEVEL = 1</h3>
+
+<p>toplevel window (used to implement #GtkWindow)</p>
+
+<h3 id="gdk-window-child-2">GDK_WINDOW_CHILD = 2</h3>
+
+<p>child window (used to implement e.g. #GtkEntry)</p>
+
+<h3 id="gdk-window-temp-3">GDK_WINDOW_TEMP = 3</h3>
+
+<p>override redirect temporary window (used to implement
+ #GtkMenu)</p>
+
+<h3 id="gdk-window-foreign-4">GDK_WINDOW_FOREIGN = 4</h3>
+
+<p>foreign window (see gdk_window_foreign_new())</p>
+
+<h3 id="gdk-window-offscreen-5">GDK_WINDOW_OFFSCREEN = 5</h3>
+
+<p>offscreen window (see
+ [Offscreen Windows][OFFSCREEN-WINDOWS]). Since 2.18</p>
+
+<h3 id="gdk-window-subsurface-6">GDK_WINDOW_SUBSURFACE = 6</h3>
+
+<p>subsurface-based window; This window is visually
+ tied to a toplevel, and is moved/stacked with it. Currently this window
+ type is only implemented in Wayland. Since 3.14</p>
+
+<h2 id="windowtypehint"><code>WindowTypeHint</code></h2>
+
+<p>These are hints for the window manager that indicate what type of function
+the window has. The window manager can use this when determining decoration
+and behaviour of the window. The hint must be set before mapping the window.</p>
+
+<p>See the <a href="http://www.freedesktop.org/Standards/wm-spec">Extended Window Manager Hints</a>
+specification for more details about window types.</p>
+
+<p>C - <code>GdkWindowTypeHint</code></p>
+
+<h3 id="gdk-window-type-hint-normal-0">GDK_WINDOW_TYPE_HINT_NORMAL = 0</h3>
+
+<p>Normal toplevel window.</p>
+
+<h3 id="gdk-window-type-hint-dialog-1">GDK_WINDOW_TYPE_HINT_DIALOG = 1</h3>
+
+<p>Dialog window.</p>
+
+<h3 id="gdk-window-type-hint-menu-2">GDK_WINDOW_TYPE_HINT_MENU = 2</h3>
+
+<p>Window used to implement a menu; GTK+ uses
+ this hint only for torn-off menus, see #GtkTearoffMenuItem.</p>
+
+<h3 id="gdk-window-type-hint-toolbar-3">GDK_WINDOW_TYPE_HINT_TOOLBAR = 3</h3>
+
+<p>Window used to implement toolbars.</p>
+
+<h3 id="gdk-window-type-hint-splashscreen-4">GDK_WINDOW_TYPE_HINT_SPLASHSCREEN = 4</h3>
+
+<p>Window used to display a splash
+ screen during application startup.</p>
+
+<h3 id="gdk-window-type-hint-utility-5">GDK_WINDOW_TYPE_HINT_UTILITY = 5</h3>
+
+<p>Utility windows which are not detached
+ toolbars or dialogs.</p>
+
+<h3 id="gdk-window-type-hint-dock-6">GDK_WINDOW_TYPE_HINT_DOCK = 6</h3>
+
+<p>Used for creating dock or panel windows.</p>
+
+<h3 id="gdk-window-type-hint-desktop-7">GDK_WINDOW_TYPE_HINT_DESKTOP = 7</h3>
+
+<p>Used for creating the desktop background
+ window.</p>
+
+<h3 id="gdk-window-type-hint-dropdown-menu-8">GDK_WINDOW_TYPE_HINT_DROPDOWN_MENU = 8</h3>
+
+<p>A menu that belongs to a menubar.</p>
+
+<h3 id="gdk-window-type-hint-popup-menu-9">GDK_WINDOW_TYPE_HINT_POPUP_MENU = 9</h3>
+
+<p>A menu that does not belong to a menubar,
+ e.g. a context menu.</p>
+
+<h3 id="gdk-window-type-hint-tooltip-10">GDK_WINDOW_TYPE_HINT_TOOLTIP = 10</h3>
+
+<p>A tooltip.</p>
+
+<h3 id="gdk-window-type-hint-notification-11">GDK_WINDOW_TYPE_HINT_NOTIFICATION = 11</h3>
+
+<p>A notification - typically a “bubble”
+ that belongs to a status icon.</p>
+
+<h3 id="gdk-window-type-hint-combo-12">GDK_WINDOW_TYPE_HINT_COMBO = 12</h3>
+
+<p>A popup from a combo box.</p>
+
+<h3 id="gdk-window-type-hint-dnd-13">GDK_WINDOW_TYPE_HINT_DND = 13</h3>
+
+<p>A window that is used to implement a DND cursor.</p>
+
+<h2 id="windowwindowclass"><code>WindowWindowClass</code></h2>
+
+<p>@GDK_INPUT_OUTPUT windows are the standard kind of window you might expect.
+Such windows receive events and are also displayed on screen.
+@GDK_INPUT_ONLY windows are invisible; they are usually placed above other
+windows in order to trap or filter the events. You can’t draw on
+@GDK_INPUT_ONLY windows.</p>
+
+<p>C - <code>GdkWindowWindowClass</code></p>
+
+<h3 id="gdk-input-output-0">GDK_INPUT_OUTPUT = 0</h3>
+
+<p>window for graphics and events</p>
+
+<h3 id="gdk-input-only-1">GDK_INPUT_ONLY = 1</h3>
+
+<p>window for events only</p>
+
+
+    
+    
+        <div class="chevrons">
+    <div id="navigation">
+</div>
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+    
+
+    
+  </div>
+
+
+	<div>
+
+
+  
+    
+  
+
+
+
+	</div>
+</footer>
+
+<script src="/js/clipboard.min.js"></script>
+
+<link href="/css/featherlight.min.css" rel="stylesheet">
+<script src="/js/featherlight.min.js"></script>
+
+
+
+<script src="/theme-flex/script.js"></script>
+
+
+    
+
+    
+    
+
+    
+  </body>
+</html>

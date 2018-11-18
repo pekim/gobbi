@@ -1,0 +1,2083 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>gobbi</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="revised" content="2018-11-18T19:50:29 GMT">
+<title> :: gobbi</title>
+<link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
+<link href="/css/font-awesome.min.css" rel="stylesheet">
+<link href="/css/nucleus.css" rel="stylesheet">
+<link href="/theme-flex/style.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<script src="/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "\/";
+</script>
+<link rel="stylesheet" href="/css/custom.css">
+
+
+    
+  </head>
+  <body data-url="/lib/atk/enums/">
+    
+      <header>
+  <div class="logo">
+    
+	
+  
+    <p><a href="/">gobbi</a></p>
+
+  
+
+
+  </div>
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+    <nav class="shortcuts">
+            <li class="" role="">
+                <a href="https://github.com/pekim/gobbi"  rel="noopener">
+                  <i class='fa fa-github'></i> <label>Github repo</label>
+                </a>
+            </li>
+    </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+
+
+    <li class="dd-item ">
+        <div>
+            <a href="/">
+                <span>Introduction</span>
+            </a>
+        </div>
+    </li>
+
+    <li class="dd-item ">
+        <div>
+            <a href="/application-lifecycle/">
+                <span>Application lifecycle</span>
+            </a>
+        </div>
+    </li>
+
+    <li class="dd-item ">
+        <div>
+            <a href="/gvalue/">
+                <span>gobject.Value</span>
+            </a>
+        </div>
+    </li>
+
+    <li data-nav-id="/api/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/">API</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/api/atk/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/atk/">atk</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/atk/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/atk/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/atk/constants/" class="dd-item">
+        <div>
+          <a href="/api/atk/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/atk/enums/" class="dd-item">
+        <div>
+          <a href="/api/atk/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/cairo/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/cairo/">cairo</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/cairo/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/cairo/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/cairo/constants/" class="dd-item">
+        <div>
+          <a href="/api/cairo/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/cairo/enums/" class="dd-item">
+        <div>
+          <a href="/api/cairo/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/gdk/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/gdk/">gdk</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/gdk/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/gdk/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gdk/constants/" class="dd-item">
+        <div>
+          <a href="/api/gdk/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gdk/enums/" class="dd-item">
+        <div>
+          <a href="/api/gdk/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/gdkpixbuf/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/gdkpixbuf/">gdkpixbuf</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/gdkpixbuf/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/gdkpixbuf/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gdkpixbuf/constants/" class="dd-item">
+        <div>
+          <a href="/api/gdkpixbuf/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gdkpixbuf/enums/" class="dd-item">
+        <div>
+          <a href="/api/gdkpixbuf/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/gio/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/gio/">gio</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/gio/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/gio/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gio/constants/" class="dd-item">
+        <div>
+          <a href="/api/gio/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gio/enums/" class="dd-item">
+        <div>
+          <a href="/api/gio/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/glib/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/glib/">glib</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/glib/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/glib/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/glib/constants/" class="dd-item">
+        <div>
+          <a href="/api/glib/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/glib/enums/" class="dd-item">
+        <div>
+          <a href="/api/glib/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/gobject/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/gobject/">gobject</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/gobject/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/gobject/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gobject/constants/" class="dd-item">
+        <div>
+          <a href="/api/gobject/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gobject/enums/" class="dd-item">
+        <div>
+          <a href="/api/gobject/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/gtk/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/gtk/">gtk</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/gtk/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/gtk/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gtk/constants/" class="dd-item">
+        <div>
+          <a href="/api/gtk/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gtk/enums/" class="dd-item">
+        <div>
+          <a href="/api/gtk/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/pango/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/pango/">pango</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/pango/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/pango/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/pango/constants/" class="dd-item">
+        <div>
+          <a href="/api/pango/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/pango/enums/" class="dd-item">
+        <div>
+          <a href="/api/pango/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/lib/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/lib/">Libs</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/lib/atk/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/atk/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/atk/constant/" class="dd-item">
+        <div>
+          <a href="/lib/atk/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/atk/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/atk/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/atk/enums/" class="dd-item active">
+        <div>
+          <a href="/lib/atk/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/atk/package/" class="dd-item">
+        <div>
+          <a href="/lib/atk/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/cairo/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/cairo/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/cairo/constant/" class="dd-item">
+        <div>
+          <a href="/lib/cairo/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/cairo/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/cairo/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/cairo/enums/" class="dd-item">
+        <div>
+          <a href="/lib/cairo/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/cairo/package/" class="dd-item">
+        <div>
+          <a href="/lib/cairo/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdk/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/gdk/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdk/constant/" class="dd-item">
+        <div>
+          <a href="/lib/gdk/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdk/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/gdk/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdk/enums/" class="dd-item">
+        <div>
+          <a href="/lib/gdk/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdk/package/" class="dd-item">
+        <div>
+          <a href="/lib/gdk/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdkpixbuf/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/gdkpixbuf/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdkpixbuf/constant/" class="dd-item">
+        <div>
+          <a href="/lib/gdkpixbuf/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdkpixbuf/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/gdkpixbuf/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdkpixbuf/enums/" class="dd-item">
+        <div>
+          <a href="/lib/gdkpixbuf/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdkpixbuf/package/" class="dd-item">
+        <div>
+          <a href="/lib/gdkpixbuf/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gio/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/gio/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gio/constant/" class="dd-item">
+        <div>
+          <a href="/lib/gio/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gio/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/gio/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gio/enums/" class="dd-item">
+        <div>
+          <a href="/lib/gio/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gio/package/" class="dd-item">
+        <div>
+          <a href="/lib/gio/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/glib/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/glib/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/glib/constant/" class="dd-item">
+        <div>
+          <a href="/lib/glib/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/glib/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/glib/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/glib/enums/" class="dd-item">
+        <div>
+          <a href="/lib/glib/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/glib/package/" class="dd-item">
+        <div>
+          <a href="/lib/glib/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gobject/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/gobject/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gobject/constant/" class="dd-item">
+        <div>
+          <a href="/lib/gobject/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gobject/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/gobject/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gobject/enums/" class="dd-item">
+        <div>
+          <a href="/lib/gobject/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gobject/package/" class="dd-item">
+        <div>
+          <a href="/lib/gobject/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gtk/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/gtk/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gtk/constant/" class="dd-item">
+        <div>
+          <a href="/lib/gtk/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gtk/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/gtk/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gtk/enums/" class="dd-item">
+        <div>
+          <a href="/lib/gtk/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gtk/package/" class="dd-item">
+        <div>
+          <a href="/lib/gtk/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/pango/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/pango/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/pango/constant/" class="dd-item">
+        <div>
+          <a href="/lib/pango/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/pango/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/pango/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/pango/enums/" class="dd-item">
+        <div>
+          <a href="/lib/pango/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/pango/package/" class="dd-item">
+        <div>
+          <a href="/lib/pango/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+
+
+
+
+    </ul>
+    <section>
+    </section>
+  </aside>
+  <section class="page">
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/api/" >
+   API</option>
+    <option value="/lib/" >
+   Libs</option> 
+      <option value="/lib/atk/bitfields/" >- </option>
+      <option value="/lib/atk/constant/" >- </option>
+      <option value="/lib/atk/enumeration/" >- </option>
+      <option value="/lib/atk/enums/"  selected>- </option>
+      <option value="/lib/atk/package/" >- </option>
+      <option value="/lib/cairo/bitfields/" >- </option>
+      <option value="/lib/cairo/constant/" >- </option>
+      <option value="/lib/cairo/enumeration/" >- </option>
+      <option value="/lib/cairo/enums/" >- </option>
+      <option value="/lib/cairo/package/" >- </option>
+      <option value="/lib/gdk/bitfields/" >- </option>
+      <option value="/lib/gdk/constant/" >- </option>
+      <option value="/lib/gdk/enumeration/" >- </option>
+      <option value="/lib/gdk/enums/" >- </option>
+      <option value="/lib/gdk/package/" >- </option>
+      <option value="/lib/gdkpixbuf/bitfields/" >- </option>
+      <option value="/lib/gdkpixbuf/constant/" >- </option>
+      <option value="/lib/gdkpixbuf/enumeration/" >- </option>
+      <option value="/lib/gdkpixbuf/enums/" >- </option>
+      <option value="/lib/gdkpixbuf/package/" >- </option>
+      <option value="/lib/gio/bitfields/" >- </option>
+      <option value="/lib/gio/constant/" >- </option>
+      <option value="/lib/gio/enumeration/" >- </option>
+      <option value="/lib/gio/enums/" >- </option>
+      <option value="/lib/gio/package/" >- </option>
+      <option value="/lib/glib/bitfields/" >- </option>
+      <option value="/lib/glib/constant/" >- </option>
+      <option value="/lib/glib/enumeration/" >- </option>
+      <option value="/lib/glib/enums/" >- </option>
+      <option value="/lib/glib/package/" >- </option>
+      <option value="/lib/gobject/bitfields/" >- </option>
+      <option value="/lib/gobject/constant/" >- </option>
+      <option value="/lib/gobject/enumeration/" >- </option>
+      <option value="/lib/gobject/enums/" >- </option>
+      <option value="/lib/gobject/package/" >- </option>
+      <option value="/lib/gtk/bitfields/" >- </option>
+      <option value="/lib/gtk/constant/" >- </option>
+      <option value="/lib/gtk/enumeration/" >- </option>
+      <option value="/lib/gtk/enums/" >- </option>
+      <option value="/lib/gtk/package/" >- </option>
+      <option value="/lib/pango/bitfields/" >- </option>
+      <option value="/lib/pango/constant/" >- </option>
+      <option value="/lib/pango/enumeration/" >- </option>
+      <option value="/lib/pango/enums/" >- </option>
+      <option value="/lib/pango/package/" >- </option>
+  
+
+
+
+        </select>
+      </center>
+    </div>
+      <div>
+        <div class="searchbox">
+          <input data-search-input id="search-by" type="text" placeholder="Search...">
+        </div>
+        <script type="text/javascript" src="/js/lunr.min.js"></script>
+        <script type="text/javascript" src="/js/auto-complete.js"></script>
+        <link href="/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+          
+              var baseurl = "\/";
+          
+        </script>
+        <script type="text/javascript" src="/js/search.js"></script>
+      </div>
+    
+
+    <h1></h1>
+    
+    
+    
+    
+
+<h1 id="atk-enums"><code>atk</code> enums</h1>
+
+<h2 id="coordtype"><code>CoordType</code></h2>
+
+<p>Specifies how xy coordinates are to be interpreted. Used by functions such
+as atk_component_get_position() and atk_text_get_character_extents()</p>
+
+<p>C - <code>AtkCoordType</code></p>
+
+<h3 id="atk-xy-screen-0">ATK_XY_SCREEN = 0</h3>
+
+<p>specifies xy coordinates relative to the screen</p>
+
+<h3 id="atk-xy-window-1">ATK_XY_WINDOW = 1</h3>
+
+<p>specifies xy coordinates relative to the widget&rsquo;s
+top-level window</p>
+
+<h2 id="keyeventtype"><code>KeyEventType</code></h2>
+
+<p>Specifies the type of a keyboard evemt.</p>
+
+<p>C - <code>AtkKeyEventType</code></p>
+
+<h3 id="atk-key-event-press-0">ATK_KEY_EVENT_PRESS = 0</h3>
+
+<p>specifies a key press event</p>
+
+<h3 id="atk-key-event-release-1">ATK_KEY_EVENT_RELEASE = 1</h3>
+
+<p>specifies a key release event</p>
+
+<h3 id="atk-key-event-last-defined-2">ATK_KEY_EVENT_LAST_DEFINED = 2</h3>
+
+<p>Not a valid value; specifies end of enumeration</p>
+
+<h2 id="layer"><code>Layer</code></h2>
+
+<p>Describes the layer of a component</p>
+
+<p>These enumerated &ldquo;layer values&rdquo; are used when determining which UI
+rendering layer a component is drawn into, which can help in making
+determinations of when components occlude one another.</p>
+
+<p>C - <code>AtkLayer</code></p>
+
+<h3 id="atk-layer-invalid-0">ATK_LAYER_INVALID = 0</h3>
+
+<p>The object does not have a layer</p>
+
+<h3 id="atk-layer-background-1">ATK_LAYER_BACKGROUND = 1</h3>
+
+<p>This layer is reserved for the desktop background</p>
+
+<h3 id="atk-layer-canvas-2">ATK_LAYER_CANVAS = 2</h3>
+
+<p>This layer is used for Canvas components</p>
+
+<h3 id="atk-layer-widget-3">ATK_LAYER_WIDGET = 3</h3>
+
+<p>This layer is normally used for components</p>
+
+<h3 id="atk-layer-mdi-4">ATK_LAYER_MDI = 4</h3>
+
+<p>This layer is used for layered components</p>
+
+<h3 id="atk-layer-popup-5">ATK_LAYER_POPUP = 5</h3>
+
+<p>This layer is used for popup components, such as menus</p>
+
+<h3 id="atk-layer-overlay-6">ATK_LAYER_OVERLAY = 6</h3>
+
+<p>This layer is reserved for future use.</p>
+
+<h3 id="atk-layer-window-7">ATK_LAYER_WINDOW = 7</h3>
+
+<p>This layer is used for toplevel windows.</p>
+
+<h2 id="relationtype"><code>RelationType</code></h2>
+
+<p>Describes the type of the relation</p>
+
+<p>C - <code>AtkRelationType</code></p>
+
+<h3 id="atk-relation-null-0">ATK_RELATION_NULL = 0</h3>
+
+<p>Not used, represens &ldquo;no relationship&rdquo; or an error condition.</p>
+
+<h3 id="atk-relation-controlled-by-1">ATK_RELATION_CONTROLLED_BY = 1</h3>
+
+<p>Indicates an object controlled by one or more target objects.</p>
+
+<h3 id="atk-relation-controller-for-2">ATK_RELATION_CONTROLLER_FOR = 2</h3>
+
+<p>Indicates an object is an controller for one or more target objects.</p>
+
+<h3 id="atk-relation-label-for-3">ATK_RELATION_LABEL_FOR = 3</h3>
+
+<p>Indicates an object is a label for one or more target objects.</p>
+
+<h3 id="atk-relation-labelled-by-4">ATK_RELATION_LABELLED_BY = 4</h3>
+
+<p>Indicates an object is labelled by one or more target objects.</p>
+
+<h3 id="atk-relation-member-of-5">ATK_RELATION_MEMBER_OF = 5</h3>
+
+<p>Indicates an object is a member of a group of one or more target objects.</p>
+
+<h3 id="atk-relation-node-child-of-6">ATK_RELATION_NODE_CHILD_OF = 6</h3>
+
+<p>Indicates an object is a cell in a treetable which is displayed because a cell in the same column is expanded and identifies that cell.</p>
+
+<h3 id="atk-relation-flows-to-7">ATK_RELATION_FLOWS_TO = 7</h3>
+
+<p>Indicates that the object has content that flows logically to another
+ AtkObject in a sequential way, (for instance text-flow).</p>
+
+<h3 id="atk-relation-flows-from-8">ATK_RELATION_FLOWS_FROM = 8</h3>
+
+<p>Indicates that the object has content that flows logically from
+ another AtkObject in a sequential way, (for instance text-flow).</p>
+
+<h3 id="atk-relation-subwindow-of-9">ATK_RELATION_SUBWINDOW_OF = 9</h3>
+
+<p>Indicates a subwindow attached to a component but otherwise has no connection in  the UI heirarchy to that component.</p>
+
+<h3 id="atk-relation-embeds-10">ATK_RELATION_EMBEDS = 10</h3>
+
+<p>Indicates that the object visually embeds
+ another object&rsquo;s content, i.e. this object&rsquo;s content flows around
+ another&rsquo;s content.</p>
+
+<h3 id="atk-relation-embedded-by-11">ATK_RELATION_EMBEDDED_BY = 11</h3>
+
+<p>Reciprocal of %ATK_RELATION_EMBEDS, indicates that
+ this object&rsquo;s content is visualy embedded in another object.</p>
+
+<h3 id="atk-relation-popup-for-12">ATK_RELATION_POPUP_FOR = 12</h3>
+
+<p>Indicates that an object is a popup for another object.</p>
+
+<h3 id="atk-relation-parent-window-of-13">ATK_RELATION_PARENT_WINDOW_OF = 13</h3>
+
+<p>Indicates that an object is a parent window of another object.</p>
+
+<h3 id="atk-relation-described-by-14">ATK_RELATION_DESCRIBED_BY = 14</h3>
+
+<p>Reciprocal of %ATK_RELATION_DESCRIPTION_FOR. Indicates that one
+or more target objects provide descriptive information about this object. This relation
+type is most appropriate for information that is not essential as its presentation may
+be user-configurable and/or limited to an on-demand mechanism such as an assistive
+technology command. For brief, essential information such as can be found in a widget&rsquo;s
+on-screen label, use %ATK_RELATION_LABELLED_BY. For an on-screen error message, use
+%ATK_RELATION_ERROR_MESSAGE. For lengthy extended descriptive information contained in
+an on-screen object, consider using %ATK_RELATION_DETAILS as assistive technologies may
+provide a means for the user to navigate to objects containing detailed descriptions so
+that their content can be more closely reviewed.</p>
+
+<h3 id="atk-relation-description-for-15">ATK_RELATION_DESCRIPTION_FOR = 15</h3>
+
+<p>Reciprocal of %ATK_RELATION_DESCRIBED_BY. Indicates that this
+object provides descriptive information about the target object(s). See also
+%ATK_RELATION_DETAILS_FOR and %ATK_RELATION_ERROR_FOR.</p>
+
+<h3 id="atk-relation-node-parent-of-16">ATK_RELATION_NODE_PARENT_OF = 16</h3>
+
+<p>Indicates an object is a cell in a treetable and is expanded to display other cells in the same column.</p>
+
+<h3 id="atk-relation-details-17">ATK_RELATION_DETAILS = 17</h3>
+
+<p>Reciprocal of %ATK_RELATION_DETAILS_FOR. Indicates that this object
+has a detailed or extended description, the contents of which can be found in the target
+object(s). This relation type is most appropriate for information that is sufficiently
+lengthy as to make navigation to the container of that information desirable. For less
+verbose information suitable for announcement only, see %ATK_RELATION_DESCRIBED_BY. If
+the detailed information describes an error condition, %ATK_RELATION_ERROR_FOR should be
+used instead. @Since: ATK-2.26.</p>
+
+<h3 id="atk-relation-details-for-18">ATK_RELATION_DETAILS_FOR = 18</h3>
+
+<p>Reciprocal of %ATK_RELATION_DETAILS. Indicates that this object
+provides a detailed or extended description about the target object(s). See also
+%ATK_RELATION_DESCRIPTION_FOR and %ATK_RELATION_ERROR_FOR. @Since: ATK-2.26.</p>
+
+<h3 id="atk-relation-error-message-19">ATK_RELATION_ERROR_MESSAGE = 19</h3>
+
+<p>Reciprocal of %ATK_RELATION_ERROR_FOR. Indicates that this object
+has one or more errors, the nature of which is described in the contents of the target
+object(s). Objects that have this relation type should also contain %ATK_STATE_INVALID_ENTRY
+in their #AtkStateSet. @Since: ATK-2.26.</p>
+
+<h3 id="atk-relation-error-for-20">ATK_RELATION_ERROR_FOR = 20</h3>
+
+<p>Reciprocal of %ATK_RELATION_ERROR_MESSAGE. Indicates that this object
+contains an error message describing an invalid condition in the target object(s). @Since:
+ATK_2.26.</p>
+
+<h3 id="atk-relation-last-defined-21">ATK_RELATION_LAST_DEFINED = 21</h3>
+
+<p>Not used, this value indicates the end of the enumeration.</p>
+
+<h2 id="role"><code>Role</code></h2>
+
+<p>Describes the role of an object</p>
+
+<p>These are the built-in enumerated roles that UI components can have in
+ATK.  Other roles may be added at runtime, so an AtkRole &gt;=
+ATK_ROLE_LAST_DEFINED is not necessarily an error.</p>
+
+<p>C - <code>AtkRole</code></p>
+
+<h3 id="atk-role-invalid-0">ATK_ROLE_INVALID = 0</h3>
+
+<p>Invalid role</p>
+
+<h3 id="atk-role-accel-label-1">ATK_ROLE_ACCEL_LABEL = 1</h3>
+
+<p>A label which represents an accelerator</p>
+
+<h3 id="atk-role-alert-2">ATK_ROLE_ALERT = 2</h3>
+
+<p>An object which is an alert to the user. Assistive Technologies typically respond to ATK_ROLE_ALERT by reading the entire onscreen contents of containers advertising this role.  Should be used for warning dialogs, etc.</p>
+
+<h3 id="atk-role-animation-3">ATK_ROLE_ANIMATION = 3</h3>
+
+<p>An object which is an animated image</p>
+
+<h3 id="atk-role-arrow-4">ATK_ROLE_ARROW = 4</h3>
+
+<p>An arrow in one of the four cardinal directions</p>
+
+<h3 id="atk-role-calendar-5">ATK_ROLE_CALENDAR = 5</h3>
+
+<p>An object that displays a calendar and allows the user to select a date</p>
+
+<h3 id="atk-role-canvas-6">ATK_ROLE_CANVAS = 6</h3>
+
+<p>An object that can be drawn into and is used to trap events</p>
+
+<h3 id="atk-role-check-box-7">ATK_ROLE_CHECK_BOX = 7</h3>
+
+<p>A choice that can be checked or unchecked and provides a separate indicator for the current state</p>
+
+<h3 id="atk-role-check-menu-item-8">ATK_ROLE_CHECK_MENU_ITEM = 8</h3>
+
+<p>A menu item with a check box</p>
+
+<h3 id="atk-role-color-chooser-9">ATK_ROLE_COLOR_CHOOSER = 9</h3>
+
+<p>A specialized dialog that lets the user choose a color</p>
+
+<h3 id="atk-role-column-header-10">ATK_ROLE_COLUMN_HEADER = 10</h3>
+
+<p>The header for a column of data</p>
+
+<h3 id="atk-role-combo-box-11">ATK_ROLE_COMBO_BOX = 11</h3>
+
+<p>A collapsible list of choices the user can select from</p>
+
+<h3 id="atk-role-date-editor-12">ATK_ROLE_DATE_EDITOR = 12</h3>
+
+<p>An object whose purpose is to allow a user to edit a date</p>
+
+<h3 id="atk-role-desktop-icon-13">ATK_ROLE_DESKTOP_ICON = 13</h3>
+
+<p>An inconifed internal frame within a DESKTOP_PANE</p>
+
+<h3 id="atk-role-desktop-frame-14">ATK_ROLE_DESKTOP_FRAME = 14</h3>
+
+<p>A pane that supports internal frames and iconified versions of those internal frames</p>
+
+<h3 id="atk-role-dial-15">ATK_ROLE_DIAL = 15</h3>
+
+<p>An object whose purpose is to allow a user to set a value</p>
+
+<h3 id="atk-role-dialog-16">ATK_ROLE_DIALOG = 16</h3>
+
+<p>A top level window with title bar and a border</p>
+
+<h3 id="atk-role-directory-pane-17">ATK_ROLE_DIRECTORY_PANE = 17</h3>
+
+<p>A pane that allows the user to navigate through and select the contents of a directory</p>
+
+<h3 id="atk-role-drawing-area-18">ATK_ROLE_DRAWING_AREA = 18</h3>
+
+<p>An object used for drawing custom user interface elements</p>
+
+<h3 id="atk-role-file-chooser-19">ATK_ROLE_FILE_CHOOSER = 19</h3>
+
+<p>A specialized dialog that lets the user choose a file</p>
+
+<h3 id="atk-role-filler-20">ATK_ROLE_FILLER = 20</h3>
+
+<p>A object that fills up space in a user interface</p>
+
+<h3 id="atk-role-font-chooser-21">ATK_ROLE_FONT_CHOOSER = 21</h3>
+
+<p>A specialized dialog that lets the user choose a font</p>
+
+<h3 id="atk-role-frame-22">ATK_ROLE_FRAME = 22</h3>
+
+<p>A top level window with a title bar, border, menubar, etc.</p>
+
+<h3 id="atk-role-glass-pane-23">ATK_ROLE_GLASS_PANE = 23</h3>
+
+<p>A pane that is guaranteed to be painted on top of all panes beneath it</p>
+
+<h3 id="atk-role-html-container-24">ATK_ROLE_HTML_CONTAINER = 24</h3>
+
+<p>A document container for HTML, whose children represent the document content</p>
+
+<h3 id="atk-role-icon-25">ATK_ROLE_ICON = 25</h3>
+
+<p>A small fixed size picture, typically used to decorate components</p>
+
+<h3 id="atk-role-image-26">ATK_ROLE_IMAGE = 26</h3>
+
+<p>An object whose primary purpose is to display an image</p>
+
+<h3 id="atk-role-internal-frame-27">ATK_ROLE_INTERNAL_FRAME = 27</h3>
+
+<p>A frame-like object that is clipped by a desktop pane</p>
+
+<h3 id="atk-role-label-28">ATK_ROLE_LABEL = 28</h3>
+
+<p>An object used to present an icon or short string in an interface</p>
+
+<h3 id="atk-role-layered-pane-29">ATK_ROLE_LAYERED_PANE = 29</h3>
+
+<p>A specialized pane that allows its children to be drawn in layers, providing a form of stacking order</p>
+
+<h3 id="atk-role-list-30">ATK_ROLE_LIST = 30</h3>
+
+<p>An object that presents a list of objects to the user and allows the user to select one or more of them</p>
+
+<h3 id="atk-role-list-item-31">ATK_ROLE_LIST_ITEM = 31</h3>
+
+<p>An object that represents an element of a list</p>
+
+<h3 id="atk-role-menu-32">ATK_ROLE_MENU = 32</h3>
+
+<p>An object usually found inside a menu bar that contains a list of actions the user can choose from</p>
+
+<h3 id="atk-role-menu-bar-33">ATK_ROLE_MENU_BAR = 33</h3>
+
+<p>An object usually drawn at the top of the primary dialog box of an application that contains a list of menus the user can choose from</p>
+
+<h3 id="atk-role-menu-item-34">ATK_ROLE_MENU_ITEM = 34</h3>
+
+<p>An object usually contained in a menu that presents an action the user can choose</p>
+
+<h3 id="atk-role-option-pane-35">ATK_ROLE_OPTION_PANE = 35</h3>
+
+<p>A specialized pane whose primary use is inside a DIALOG</p>
+
+<h3 id="atk-role-page-tab-36">ATK_ROLE_PAGE_TAB = 36</h3>
+
+<p>An object that is a child of a page tab list</p>
+
+<h3 id="atk-role-page-tab-list-37">ATK_ROLE_PAGE_TAB_LIST = 37</h3>
+
+<p>An object that presents a series of panels (or page tabs), one at a time, through some mechanism provided by the object</p>
+
+<h3 id="atk-role-panel-38">ATK_ROLE_PANEL = 38</h3>
+
+<p>A generic container that is often used to group objects</p>
+
+<h3 id="atk-role-password-text-39">ATK_ROLE_PASSWORD_TEXT = 39</h3>
+
+<p>A text object uses for passwords, or other places where the text content is not shown visibly to the user</p>
+
+<h3 id="atk-role-popup-menu-40">ATK_ROLE_POPUP_MENU = 40</h3>
+
+<p>A temporary window that is usually used to offer the user a list of choices, and then hides when the user selects one of those choices</p>
+
+<h3 id="atk-role-progress-bar-41">ATK_ROLE_PROGRESS_BAR = 41</h3>
+
+<p>An object used to indicate how much of a task has been completed</p>
+
+<h3 id="atk-role-push-button-42">ATK_ROLE_PUSH_BUTTON = 42</h3>
+
+<p>An object the user can manipulate to tell the application to do something</p>
+
+<h3 id="atk-role-radio-button-43">ATK_ROLE_RADIO_BUTTON = 43</h3>
+
+<p>A specialized check box that will cause other radio buttons in the same group to become unchecked when this one is checked</p>
+
+<h3 id="atk-role-radio-menu-item-44">ATK_ROLE_RADIO_MENU_ITEM = 44</h3>
+
+<p>A check menu item which belongs to a group. At each instant exactly one of the radio menu items from a group is selected</p>
+
+<h3 id="atk-role-root-pane-45">ATK_ROLE_ROOT_PANE = 45</h3>
+
+<p>A specialized pane that has a glass pane and a layered pane as its children</p>
+
+<h3 id="atk-role-row-header-46">ATK_ROLE_ROW_HEADER = 46</h3>
+
+<p>The header for a row of data</p>
+
+<h3 id="atk-role-scroll-bar-47">ATK_ROLE_SCROLL_BAR = 47</h3>
+
+<p>An object usually used to allow a user to incrementally view a large amount of data.</p>
+
+<h3 id="atk-role-scroll-pane-48">ATK_ROLE_SCROLL_PANE = 48</h3>
+
+<p>An object that allows a user to incrementally view a large amount of information</p>
+
+<h3 id="atk-role-separator-49">ATK_ROLE_SEPARATOR = 49</h3>
+
+<p>An object usually contained in a menu to provide a visible and logical separation of the contents in a menu</p>
+
+<h3 id="atk-role-slider-50">ATK_ROLE_SLIDER = 50</h3>
+
+<p>An object that allows the user to select from a bounded range</p>
+
+<h3 id="atk-role-split-pane-51">ATK_ROLE_SPLIT_PANE = 51</h3>
+
+<p>A specialized panel that presents two other panels at the same time</p>
+
+<h3 id="atk-role-spin-button-52">ATK_ROLE_SPIN_BUTTON = 52</h3>
+
+<p>An object used to get an integer or floating point number from the user</p>
+
+<h3 id="atk-role-statusbar-53">ATK_ROLE_STATUSBAR = 53</h3>
+
+<p>An object which reports messages of minor importance to the user</p>
+
+<h3 id="atk-role-table-54">ATK_ROLE_TABLE = 54</h3>
+
+<p>An object used to represent information in terms of rows and columns</p>
+
+<h3 id="atk-role-table-cell-55">ATK_ROLE_TABLE_CELL = 55</h3>
+
+<p>A cell in a table</p>
+
+<h3 id="atk-role-table-column-header-56">ATK_ROLE_TABLE_COLUMN_HEADER = 56</h3>
+
+<p>The header for a column of a table</p>
+
+<h3 id="atk-role-table-row-header-57">ATK_ROLE_TABLE_ROW_HEADER = 57</h3>
+
+<p>The header for a row of a table</p>
+
+<h3 id="atk-role-tear-off-menu-item-58">ATK_ROLE_TEAR_OFF_MENU_ITEM = 58</h3>
+
+<p>A menu item used to tear off and reattach its menu</p>
+
+<h3 id="atk-role-terminal-59">ATK_ROLE_TERMINAL = 59</h3>
+
+<p>An object that represents an accessible terminal.  @Since: ATK-0.6</p>
+
+<h3 id="atk-role-text-60">ATK_ROLE_TEXT = 60</h3>
+
+<p>An interactive widget that supports multiple lines of text and
+optionally accepts user input, but whose purpose is not to solicit user input.
+Thus ATK_ROLE_TEXT is appropriate for the text view in a plain text editor
+but inappropriate for an input field in a dialog box or web form. For widgets
+whose purpose is to solicit input from the user, see ATK_ROLE_ENTRY and
+ATK_ROLE_PASSWORD_TEXT. For generic objects which display a brief amount of
+textual information, see ATK_ROLE_STATIC.</p>
+
+<h3 id="atk-role-toggle-button-61">ATK_ROLE_TOGGLE_BUTTON = 61</h3>
+
+<p>A specialized push button that can be checked or unchecked, but does not provide a separate indicator for the current state</p>
+
+<h3 id="atk-role-tool-bar-62">ATK_ROLE_TOOL_BAR = 62</h3>
+
+<p>A bar or palette usually composed of push buttons or toggle buttons</p>
+
+<h3 id="atk-role-tool-tip-63">ATK_ROLE_TOOL_TIP = 63</h3>
+
+<p>An object that provides information about another object</p>
+
+<h3 id="atk-role-tree-64">ATK_ROLE_TREE = 64</h3>
+
+<p>An object used to represent hierarchical information to the user</p>
+
+<h3 id="atk-role-tree-table-65">ATK_ROLE_TREE_TABLE = 65</h3>
+
+<p>An object capable of expanding and collapsing rows as well as showing multiple columns of data.   @Since: ATK-0.7</p>
+
+<h3 id="atk-role-unknown-66">ATK_ROLE_UNKNOWN = 66</h3>
+
+<p>The object contains some Accessible information, but its role is not known</p>
+
+<h3 id="atk-role-viewport-67">ATK_ROLE_VIEWPORT = 67</h3>
+
+<p>An object usually used in a scroll pane</p>
+
+<h3 id="atk-role-window-68">ATK_ROLE_WINDOW = 68</h3>
+
+<p>A top level window with no title or border.</p>
+
+<h3 id="atk-role-header-69">ATK_ROLE_HEADER = 69</h3>
+
+<p>An object that serves as a document header. @Since: ATK-1.1.1</p>
+
+<h3 id="atk-role-footer-70">ATK_ROLE_FOOTER = 70</h3>
+
+<p>An object that serves as a document footer.  @Since: ATK-1.1.1</p>
+
+<h3 id="atk-role-paragraph-71">ATK_ROLE_PARAGRAPH = 71</h3>
+
+<p>An object which is contains a paragraph of text content.   @Since: ATK-1.1.1</p>
+
+<h3 id="atk-role-ruler-72">ATK_ROLE_RULER = 72</h3>
+
+<p>An object which describes margins and tab stops, etc. for text objects which it controls (should have CONTROLLER_FOR relation to such).   @Since: ATK-1.1.1</p>
+
+<h3 id="atk-role-application-73">ATK_ROLE_APPLICATION = 73</h3>
+
+<p>The object is an application object, which may contain @ATK_ROLE_FRAME objects or other types of accessibles.  The root accessible of any application&rsquo;s ATK hierarchy should have ATK_ROLE_APPLICATION.   @Since: ATK-1.1.4</p>
+
+<h3 id="atk-role-autocomplete-74">ATK_ROLE_AUTOCOMPLETE = 74</h3>
+
+<p>The object is a dialog or list containing items for insertion into an entry widget, for instance a list of words for completion of a text entry.   @Since: ATK-1.3</p>
+
+<h3 id="atk-role-editbar-75">ATK_ROLE_EDITBAR = 75</h3>
+
+<p>The object is an editable text object in a toolbar.  @Since: ATK-1.5</p>
+
+<h3 id="atk-role-embedded-76">ATK_ROLE_EMBEDDED = 76</h3>
+
+<p>The object is an embedded container within a document or panel.  This role is a grouping &ldquo;hint&rdquo; indicating that the contained objects share a context.  @Since: ATK-1.7.2</p>
+
+<h3 id="atk-role-entry-77">ATK_ROLE_ENTRY = 77</h3>
+
+<p>The object is a component whose textual content may be entered or modified by the user, provided @ATK_STATE_EDITABLE is present.   @Since: ATK-1.11</p>
+
+<h3 id="atk-role-chart-78">ATK_ROLE_CHART = 78</h3>
+
+<p>The object is a graphical depiction of quantitative data. It may contain multiple subelements whose attributes and/or description may be queried to obtain both the quantitative data and information about how the data is being presented. The LABELLED_BY relation is particularly important in interpreting objects of this type, as is the accessible-description property.  @Since: ATK-1.11</p>
+
+<h3 id="atk-role-caption-79">ATK_ROLE_CAPTION = 79</h3>
+
+<p>The object contains descriptive information, usually textual, about another user interface element such as a table, chart, or image.  @Since: ATK-1.11</p>
+
+<h3 id="atk-role-document-frame-80">ATK_ROLE_DOCUMENT_FRAME = 80</h3>
+
+<p>The object is a visual frame or container which contains a view of document content. Document frames may occur within another Document instance, in which case the second document may be said to be embedded in the containing instance. HTML frames are often ROLE_DOCUMENT_FRAME. Either this object, or a singleton descendant, should implement the Document interface.  @Since: ATK-1.11</p>
+
+<h3 id="atk-role-heading-81">ATK_ROLE_HEADING = 81</h3>
+
+<p>The object serves as a heading for content which follows it in a document. The &lsquo;heading level&rsquo; of the heading, if availabe, may be obtained by querying the object&rsquo;s attributes.</p>
+
+<h3 id="atk-role-page-82">ATK_ROLE_PAGE = 82</h3>
+
+<p>The object is a containing instance which encapsulates a page of information. @ATK_ROLE_PAGE is used in documents and content which support a paginated navigation model.  @Since: ATK-1.11</p>
+
+<h3 id="atk-role-section-83">ATK_ROLE_SECTION = 83</h3>
+
+<p>The object is a containing instance of document content which constitutes a particular &lsquo;logical&rsquo; section of the document. The type of content within a section, and the nature of the section division itself, may be obtained by querying the object&rsquo;s attributes. Sections may be nested. @Since: ATK-1.11</p>
+
+<h3 id="atk-role-redundant-object-84">ATK_ROLE_REDUNDANT_OBJECT = 84</h3>
+
+<p>The object is redundant with another object in the hierarchy, and is exposed for purely technical reasons.  Objects of this role should normally be ignored by clients. @Since: ATK-1.11</p>
+
+<h3 id="atk-role-form-85">ATK_ROLE_FORM = 85</h3>
+
+<p>The object is a container for form controls, for instance as part of a
+web form or user-input form within a document.  This role is primarily a tag/convenience for
+clients when navigating complex documents, it is not expected that ordinary GUI containers will
+always have ATK_ROLE_FORM. @Since: ATK-1.12.0</p>
+
+<h3 id="atk-role-link-86">ATK_ROLE_LINK = 86</h3>
+
+<p>The object is a hypertext anchor, i.e. a &ldquo;link&rdquo; in a
+hypertext document.  Such objects are distinct from &lsquo;inline&rsquo;
+content which may also use the Hypertext/Hyperlink interfaces
+to indicate the range/location within a text object where
+an inline or embedded object lies.  @Since: ATK-1.12.1</p>
+
+<h3 id="atk-role-input-method-window-87">ATK_ROLE_INPUT_METHOD_WINDOW = 87</h3>
+
+<p>The object is a window or similar viewport
+which is used to allow composition or input of a &lsquo;complex character&rsquo;,
+in other words it is an &ldquo;input method window.&rdquo; @Since: ATK-1.12.1</p>
+
+<h3 id="atk-role-table-row-88">ATK_ROLE_TABLE_ROW = 88</h3>
+
+<p>A row in a table.  @Since: ATK-2.1.0</p>
+
+<h3 id="atk-role-tree-item-89">ATK_ROLE_TREE_ITEM = 89</h3>
+
+<p>An object that represents an element of a tree.  @Since: ATK-2.1.0</p>
+
+<h3 id="atk-role-document-spreadsheet-90">ATK_ROLE_DOCUMENT_SPREADSHEET = 90</h3>
+
+<p>A document frame which contains a spreadsheet.  @Since: ATK-2.1.0</p>
+
+<h3 id="atk-role-document-presentation-91">ATK_ROLE_DOCUMENT_PRESENTATION = 91</h3>
+
+<p>A document frame which contains a presentation or slide content.  @Since: ATK-2.1.0</p>
+
+<h3 id="atk-role-document-text-92">ATK_ROLE_DOCUMENT_TEXT = 92</h3>
+
+<p>A document frame which contains textual content, such as found in a word processing application.  @Since: ATK-2.1.0</p>
+
+<h3 id="atk-role-document-web-93">ATK_ROLE_DOCUMENT_WEB = 93</h3>
+
+<p>A document frame which contains HTML or other markup suitable for display in a web browser.  @Since: ATK-2.1.0</p>
+
+<h3 id="atk-role-document-email-94">ATK_ROLE_DOCUMENT_EMAIL = 94</h3>
+
+<p>A document frame which contains email content to be displayed or composed either in plain text or HTML.  @Since: ATK-2.1.0</p>
+
+<h3 id="atk-role-comment-95">ATK_ROLE_COMMENT = 95</h3>
+
+<p>An object found within a document and designed to present a comment, note, or other annotation. In some cases, this object might not be visible until activated.  @Since: ATK-2.1.0</p>
+
+<h3 id="atk-role-list-box-96">ATK_ROLE_LIST_BOX = 96</h3>
+
+<p>A non-collapsible list of choices the user can select from. @Since: ATK-2.1.0</p>
+
+<h3 id="atk-role-grouping-97">ATK_ROLE_GROUPING = 97</h3>
+
+<p>A group of related widgets. This group typically has a label. @Since: ATK-2.1.0</p>
+
+<h3 id="atk-role-image-map-98">ATK_ROLE_IMAGE_MAP = 98</h3>
+
+<p>An image map object. Usually a graphic with multiple hotspots, where each hotspot can be activated resulting in the loading of another document or section of a document. @Since: ATK-2.1.0</p>
+
+<h3 id="atk-role-notification-99">ATK_ROLE_NOTIFICATION = 99</h3>
+
+<p>A transitory object designed to present a message to the user, typically at the desktop level rather than inside a particular application.  @Since: ATK-2.1.0</p>
+
+<h3 id="atk-role-info-bar-100">ATK_ROLE_INFO_BAR = 100</h3>
+
+<p>An object designed to present a message to the user within an existing window. @Since: ATK-2.1.0</p>
+
+<h3 id="atk-role-level-bar-101">ATK_ROLE_LEVEL_BAR = 101</h3>
+
+<p>A bar that serves as a level indicator to, for instance, show the strength of a password or the state of a battery.  @Since: ATK-2.7.3</p>
+
+<h3 id="atk-role-title-bar-102">ATK_ROLE_TITLE_BAR = 102</h3>
+
+<p>A bar that serves as the title of a window or a
+dialog. @Since: ATK-2.12</p>
+
+<h3 id="atk-role-block-quote-103">ATK_ROLE_BLOCK_QUOTE = 103</h3>
+
+<p>An object which contains a text section
+that is quoted from another source. @Since: ATK-2.12</p>
+
+<h3 id="atk-role-audio-104">ATK_ROLE_AUDIO = 104</h3>
+
+<p>An object which represents an audio element. @Since: ATK-2.12</p>
+
+<h3 id="atk-role-video-105">ATK_ROLE_VIDEO = 105</h3>
+
+<p>An object which represents a video element. @Since: ATK-2.12</p>
+
+<h3 id="atk-role-definition-106">ATK_ROLE_DEFINITION = 106</h3>
+
+<p>A definition of a term or concept. @Since: ATK-2.12</p>
+
+<h3 id="atk-role-article-107">ATK_ROLE_ARTICLE = 107</h3>
+
+<p>A section of a page that consists of a
+composition that forms an independent part of a document, page, or
+site. Examples: A blog entry, a news story, a forum post. @Since:
+ATK-2.12</p>
+
+<h3 id="atk-role-landmark-108">ATK_ROLE_LANDMARK = 108</h3>
+
+<p>A region of a web page intended as a
+navigational landmark. This is designed to allow Assistive
+Technologies to provide quick navigation among key regions within a
+document. @Since: ATK-2.12</p>
+
+<h3 id="atk-role-log-109">ATK_ROLE_LOG = 109</h3>
+
+<p>A text widget or container holding log content, such
+as chat history and error logs. In this role there is a
+relationship between the arrival of new items in the log and the
+reading order. The log contains a meaningful sequence and new
+information is added only to the end of the log, not at arbitrary
+points. @Since: ATK-2.12</p>
+
+<h3 id="atk-role-marquee-110">ATK_ROLE_MARQUEE = 110</h3>
+
+<p>A container where non-essential information
+changes frequently. Common usages of marquee include stock tickers
+and ad banners. The primary difference between a marquee and a log
+is that logs usually have a meaningful order or sequence of
+important content changes. @Since: ATK-2.12</p>
+
+<h3 id="atk-role-math-111">ATK_ROLE_MATH = 111</h3>
+
+<p>A text widget or container that holds a mathematical
+expression. @Since: ATK-2.12</p>
+
+<h3 id="atk-role-rating-112">ATK_ROLE_RATING = 112</h3>
+
+<p>A widget whose purpose is to display a rating,
+such as the number of stars associated with a song in a media
+player. Objects of this role should also implement
+AtkValue. @Since: ATK-2.12</p>
+
+<h3 id="atk-role-timer-113">ATK_ROLE_TIMER = 113</h3>
+
+<p>An object containing a numerical counter which
+indicates an amount of elapsed time from a start point, or the time
+remaining until an end point. @Since: ATK-2.12</p>
+
+<h3 id="atk-role-description-list-114">ATK_ROLE_DESCRIPTION_LIST = 114</h3>
+
+<p>An object that represents a list of
+term-value groups. A term-value group represents a individual
+description and consist of one or more names
+(ATK_ROLE_DESCRIPTION_TERM) followed by one or more values
+(ATK_ROLE_DESCRIPTION_VALUE). For each list, there should not be
+more than one group with the same term name. @Since: ATK-2.12</p>
+
+<h3 id="atk-role-description-term-115">ATK_ROLE_DESCRIPTION_TERM = 115</h3>
+
+<p>An object that represents a term or phrase
+with a corresponding definition. @Since: ATK-2.12</p>
+
+<h3 id="atk-role-description-value-116">ATK_ROLE_DESCRIPTION_VALUE = 116</h3>
+
+<p>An object that represents the
+description, definition or value of a term. @Since: ATK-2.12</p>
+
+<h3 id="atk-role-static-117">ATK_ROLE_STATIC = 117</h3>
+
+<p>A generic non-container object whose purpose is to display a
+brief amount of information to the user and whose role is known by the
+implementor but lacks semantic value for the user. Examples in which
+ATK_ROLE_STATIC is appropriate include the message displayed in a message box
+and an image used as an alternative means to display text. ATK_ROLE_STATIC
+should not be applied to widgets which are traditionally interactive, objects
+which display a significant amount of content, or any object which has an
+accessible relation pointing to another object. Implementors should expose the
+displayed information through the accessible name of the object. If doing so seems
+inappropriate, it may indicate that a different role should be used. For
+labels which describe another widget, see ATK_ROLE_LABEL. For text views, see
+ATK_ROLE_TEXT. For generic containers, see ATK_ROLE_PANEL. For objects whose
+role is not known by the implementor, see ATK_ROLE_UNKNOWN. @Since: ATK-2.16.</p>
+
+<h3 id="atk-role-math-fraction-118">ATK_ROLE_MATH_FRACTION = 118</h3>
+
+<p>An object that represents a mathematical fraction.</p>
+
+<h3 id="atk-role-math-root-119">ATK_ROLE_MATH_ROOT = 119</h3>
+
+<p>An object that represents a mathematical expression
+displayed with a radical. @Since: ATK-2.16.</p>
+
+<h3 id="atk-role-subscript-120">ATK_ROLE_SUBSCRIPT = 120</h3>
+
+<p>An object that contains text that is displayed as a
+subscript. @Since: ATK-2.16.</p>
+
+<h3 id="atk-role-superscript-121">ATK_ROLE_SUPERSCRIPT = 121</h3>
+
+<p>An object that contains text that is displayed as a
+superscript. @Since: ATK-2.16.</p>
+
+<h3 id="atk-role-footnote-122">ATK_ROLE_FOOTNOTE = 122</h3>
+
+<p>An object that contains the text of a footnote. @Since: ATK-2.26.</p>
+
+<h3 id="atk-role-last-defined-123">ATK_ROLE_LAST_DEFINED = 123</h3>
+
+<p>not a valid role, used for finding end of the enumeration</p>
+
+<h2 id="statetype"><code>StateType</code></h2>
+
+<p>The possible types of states of an object</p>
+
+<p>C - <code>AtkStateType</code></p>
+
+<h3 id="atk-state-invalid-0">ATK_STATE_INVALID = 0</h3>
+
+<p>Indicates an invalid state - probably an error condition.</p>
+
+<h3 id="atk-state-active-1">ATK_STATE_ACTIVE = 1</h3>
+
+<p>Indicates a window is currently the active window, or an object is the active subelement within a container or table. ATK_STATE_ACTIVE should not be used for objects which have ATK_STATE_FOCUSABLE or ATK_STATE_SELECTABLE: Those objects should use ATK_STATE_FOCUSED and ATK_STATE_SELECTED respectively. ATK_STATE_ACTIVE is a means to indicate that an object which is not focusable and not selectable is the currently-active item within its parent container.</p>
+
+<h3 id="atk-state-armed-2">ATK_STATE_ARMED = 2</h3>
+
+<p>Indicates that the object is &lsquo;armed&rsquo;, i.e. will be activated by if a pointer button-release event occurs within its bounds.  Buttons often enter this state when a pointer click occurs within their bounds, as a precursor to activation. ATK_STATE_ARMED has been deprecated since ATK-2.16 and should not be used in newly-written code.</p>
+
+<h3 id="atk-state-busy-3">ATK_STATE_BUSY = 3</h3>
+
+<p>Indicates the current object is busy, i.e. onscreen representation is in the process of changing, or the object is temporarily unavailable for interaction due to activity already in progress.  This state may be used by implementors of Document to indicate that content loading is underway.  It also may indicate other &lsquo;pending&rsquo; conditions; clients may wish to interrogate this object when the ATK_STATE_BUSY flag is removed.</p>
+
+<h3 id="atk-state-checked-4">ATK_STATE_CHECKED = 4</h3>
+
+<p>Indicates this object is currently checked, for instance a checkbox is &lsquo;non-empty&rsquo;.</p>
+
+<h3 id="atk-state-defunct-5">ATK_STATE_DEFUNCT = 5</h3>
+
+<p>Indicates that this object no longer has a valid backing widget (for instance, if its peer object has been destroyed)</p>
+
+<h3 id="atk-state-editable-6">ATK_STATE_EDITABLE = 6</h3>
+
+<p>Indicates that this object can contain text, and that the
+user can change the textual contents of this object by editing those contents
+directly. For an object which is expected to be editable due to its type, but
+which cannot be edited due to the application or platform preventing the user
+from doing so, that object&rsquo;s #AtkStateSet should lack ATK_STATE_EDITABLE and
+should contain ATK_STATE_READ_ONLY.</p>
+
+<h3 id="atk-state-enabled-7">ATK_STATE_ENABLED = 7</h3>
+
+<p>Indicates that this object is enabled, i.e. that it currently reflects some application state. Objects that are &ldquo;greyed out&rdquo; may lack this state, and may lack the STATE_SENSITIVE if direct user interaction cannot cause them to acquire STATE_ENABLED. See also: ATK_STATE_SENSITIVE</p>
+
+<h3 id="atk-state-expandable-8">ATK_STATE_EXPANDABLE = 8</h3>
+
+<p>Indicates this object allows progressive disclosure of its children</p>
+
+<h3 id="atk-state-expanded-9">ATK_STATE_EXPANDED = 9</h3>
+
+<p>Indicates this object its expanded - see ATK_STATE_EXPANDABLE above</p>
+
+<h3 id="atk-state-focusable-10">ATK_STATE_FOCUSABLE = 10</h3>
+
+<p>Indicates this object can accept keyboard focus, which means all events resulting from typing on the keyboard will normally be passed to it when it has focus</p>
+
+<h3 id="atk-state-focused-11">ATK_STATE_FOCUSED = 11</h3>
+
+<p>Indicates this object currently has the keyboard focus</p>
+
+<h3 id="atk-state-horizontal-12">ATK_STATE_HORIZONTAL = 12</h3>
+
+<p>Indicates the orientation of this object is horizontal; used, for instance, by objects of ATK_ROLE_SCROLL_BAR.  For objects where vertical/horizontal orientation is especially meaningful.</p>
+
+<h3 id="atk-state-iconified-13">ATK_STATE_ICONIFIED = 13</h3>
+
+<p>Indicates this object is minimized and is represented only by an icon</p>
+
+<h3 id="atk-state-modal-14">ATK_STATE_MODAL = 14</h3>
+
+<p>Indicates something must be done with this object before the user can interact with an object in a different window</p>
+
+<h3 id="atk-state-multi-line-15">ATK_STATE_MULTI_LINE = 15</h3>
+
+<p>Indicates this (text) object can contain multiple lines of text</p>
+
+<h3 id="atk-state-multiselectable-16">ATK_STATE_MULTISELECTABLE = 16</h3>
+
+<p>Indicates this object allows more than one of its children to be selected at the same time, or in the case of text objects, that the object supports non-contiguous text selections.</p>
+
+<h3 id="atk-state-opaque-17">ATK_STATE_OPAQUE = 17</h3>
+
+<p>Indicates this object paints every pixel within its rectangular region.</p>
+
+<h3 id="atk-state-pressed-18">ATK_STATE_PRESSED = 18</h3>
+
+<p>Indicates this object is currently pressed.</p>
+
+<h3 id="atk-state-resizable-19">ATK_STATE_RESIZABLE = 19</h3>
+
+<p>Indicates the size of this object is not fixed</p>
+
+<h3 id="atk-state-selectable-20">ATK_STATE_SELECTABLE = 20</h3>
+
+<p>Indicates this object is the child of an object that allows its children to be selected and that this child is one of those children that can be selected</p>
+
+<h3 id="atk-state-selected-21">ATK_STATE_SELECTED = 21</h3>
+
+<p>Indicates this object is the child of an object that allows its children to be selected and that this child is one of those children that has been selected</p>
+
+<h3 id="atk-state-sensitive-22">ATK_STATE_SENSITIVE = 22</h3>
+
+<p>Indicates this object is sensitive, e.g. to user interaction.
+STATE_SENSITIVE usually accompanies STATE_ENABLED for user-actionable controls,
+but may be found in the absence of STATE_ENABLED if the current visible state of the
+control is &ldquo;disconnected&rdquo; from the application state.  In such cases, direct user interaction
+can often result in the object gaining STATE_SENSITIVE, for instance if a user makes
+an explicit selection using an object whose current state is ambiguous or undefined.
+@see STATE_ENABLED, STATE_INDETERMINATE.</p>
+
+<h3 id="atk-state-showing-23">ATK_STATE_SHOWING = 23</h3>
+
+<p>Indicates this object, the object&rsquo;s parent, the object&rsquo;s parent&rsquo;s parent, and so on,
+are all &lsquo;shown&rsquo; to the end-user, i.e. subject to &ldquo;exposure&rdquo; if blocking or obscuring objects do not interpose
+between this object and the top of the window stack.</p>
+
+<h3 id="atk-state-single-line-24">ATK_STATE_SINGLE_LINE = 24</h3>
+
+<p>Indicates this (text) object can contain only a single line of text</p>
+
+<h3 id="atk-state-stale-25">ATK_STATE_STALE = 25</h3>
+
+<p>Indicates that the information returned for this object may no longer be
+synchronized with the application state.  This is implied if the object has STATE_TRANSIENT,
+and can also occur towards the end of the object peer&rsquo;s lifecycle. It can also be used to indicate that
+the index associated with this object has changed since the user accessed the object (in lieu of
+&ldquo;index-in-parent-changed&rdquo; events).</p>
+
+<h3 id="atk-state-transient-26">ATK_STATE_TRANSIENT = 26</h3>
+
+<p>Indicates this object is transient, i.e. a snapshot which may not emit events when its
+state changes.  Data from objects with ATK_STATE_TRANSIENT should not be cached, since there may be no
+notification given when the cached data becomes obsolete.</p>
+
+<h3 id="atk-state-vertical-27">ATK_STATE_VERTICAL = 27</h3>
+
+<p>Indicates the orientation of this object is vertical</p>
+
+<h3 id="atk-state-visible-28">ATK_STATE_VISIBLE = 28</h3>
+
+<p>Indicates this object is visible, e.g. has been explicitly marked for exposure to the user.</p>
+
+<h3 id="atk-state-manages-descendants-29">ATK_STATE_MANAGES_DESCENDANTS = 29</h3>
+
+<p>Indicates that &ldquo;active-descendant-changed&rdquo; event
+is sent when children become &lsquo;active&rsquo; (i.e. are selected or navigated to onscreen).
+Used to prevent need to enumerate all children in very large containers, like tables.
+The presence of STATE_MANAGES_DESCENDANTS is an indication to the client.
+that the children should not, and need not, be enumerated by the client.
+Objects implementing this state are expected to provide relevant state
+notifications to listening clients, for instance notifications of visibility
+changes and activation of their contained child objects, without the client
+having previously requested references to those children.</p>
+
+<h3 id="atk-state-indeterminate-30">ATK_STATE_INDETERMINATE = 30</h3>
+
+<p>Indicates that the value, or some other quantifiable
+property, of this AtkObject cannot be fully determined. In the case of a large
+data set in which the total number of items in that set is unknown (e.g. 1 of
+999+), implementors should expose the currently-known set size (999) along
+with this state. In the case of a check box, this state should be used to
+indicate that the check box is a tri-state check box which is currently
+neither checked nor unchecked.</p>
+
+<h3 id="atk-state-truncated-31">ATK_STATE_TRUNCATED = 31</h3>
+
+<p>Indicates that an object is truncated, e.g. a text value in a speradsheet cell.</p>
+
+<h3 id="atk-state-required-32">ATK_STATE_REQUIRED = 32</h3>
+
+<p>Indicates that explicit user interaction with an object is required by the user interface, e.g. a required field in a &ldquo;web-form&rdquo; interface.</p>
+
+<h3 id="atk-state-invalid-entry-33">ATK_STATE_INVALID_ENTRY = 33</h3>
+
+<p>Indicates that the object has encountered an error condition due to failure of input validation. For instance, a form control may acquire this state in response to invalid or malformed user input.</p>
+
+<h3 id="atk-state-supports-autocompletion-34">ATK_STATE_SUPPORTS_AUTOCOMPLETION = 34</h3>
+
+<p>Indicates that the object in question implements some form of ¨typeahead¨ or
+pre-selection behavior whereby entering the first character of one or more sub-elements
+causes those elements to scroll into view or become selected.  Subsequent character input
+may narrow the selection further as long as one or more sub-elements match the string.
+This state is normally only useful and encountered on objects that implement Selection.
+In some cases the typeahead behavior may result in full or partial ¨completion¨ of
+the data in the input field, in which case these input events may trigger text-changed
+events from the AtkText interface.  This state supplants @ATK_ROLE_AUTOCOMPLETE.</p>
+
+<h3 id="atk-state-selectable-text-35">ATK_STATE_SELECTABLE_TEXT = 35</h3>
+
+<p>Indicates that the object in question supports text selection. It should only be exposed on objects which implement the Text interface, in order to distinguish this state from @ATK_STATE_SELECTABLE, which infers that the object in question is a selectable child of an object which implements Selection. While similar, text selection and subelement selection are distinct operations.</p>
+
+<h3 id="atk-state-default-36">ATK_STATE_DEFAULT = 36</h3>
+
+<p>Indicates that the object is the &ldquo;default&rdquo; active component, i.e. the object which is activated by an end-user press of the &ldquo;Enter&rdquo; or &ldquo;Return&rdquo; key.  Typically a &ldquo;close&rdquo; or &ldquo;submit&rdquo; button.</p>
+
+<h3 id="atk-state-animated-37">ATK_STATE_ANIMATED = 37</h3>
+
+<p>Indicates that the object changes its appearance dynamically as an inherent part of its presentation.  This state may come and go if an object is only temporarily animated on the way to a &lsquo;final&rsquo; onscreen presentation.
+@note some applications, notably content viewers, may not be able to detect
+all kinds of animated content.  Therefore the absence of this state should not
+be taken as definitive evidence that the object&rsquo;s visual representation is
+static; this state is advisory.</p>
+
+<h3 id="atk-state-visited-38">ATK_STATE_VISITED = 38</h3>
+
+<p>Indicates that the object (typically a hyperlink) has already been &lsquo;activated&rsquo;, and/or its backing data has already been downloaded, rendered, or otherwise &ldquo;visited&rdquo;.</p>
+
+<h3 id="atk-state-checkable-39">ATK_STATE_CHECKABLE = 39</h3>
+
+<p>Indicates this object has the potential to be
+ checked, such as a checkbox or toggle-able table cell. @Since:
+ ATK-2.12</p>
+
+<h3 id="atk-state-has-popup-40">ATK_STATE_HAS_POPUP = 40</h3>
+
+<p>Indicates that the object has a popup context
+menu or sub-level menu which may or may not be showing. This means
+that activation renders conditional content.  Note that ordinary
+tooltips are not considered popups in this context. @Since: ATK-2.12</p>
+
+<h3 id="atk-state-has-tooltip-41">ATK_STATE_HAS_TOOLTIP = 41</h3>
+
+<p>Indicates this object has a tooltip. @Since: ATK-2.16</p>
+
+<h3 id="atk-state-read-only-42">ATK_STATE_READ_ONLY = 42</h3>
+
+<p>Indicates that a widget which is ENABLED and SENSITIVE
+has a value which can be read, but not modified, by the user. Note that this
+state should only be applied to widget types whose value is normally directly
+user modifiable, such as check boxes, radio buttons, spin buttons, text input
+fields, and combo boxes, as a means to convey that the expected interaction
+with that widget is not possible. When the expected interaction with a
+widget does not include modification by the user, as is the case with
+labels and containers, ATK_STATE_READ_ONLY should not be applied. See also
+ATK_STATE_EDITABLE. @Since: ATK-2-16</p>
+
+<h3 id="atk-state-last-defined-43">ATK_STATE_LAST_DEFINED = 43</h3>
+
+<p>Not a valid state, used for finding end of enumeration</p>
+
+<h2 id="textattribute"><code>TextAttribute</code></h2>
+
+<p>Describes the text attributes supported</p>
+
+<p>C - <code>AtkTextAttribute</code></p>
+
+<h3 id="atk-text-attr-invalid-0">ATK_TEXT_ATTR_INVALID = 0</h3>
+
+<p>Invalid attribute, like bad spelling or grammar.</p>
+
+<h3 id="atk-text-attr-left-margin-1">ATK_TEXT_ATTR_LEFT_MARGIN = 1</h3>
+
+<p>The pixel width of the left margin</p>
+
+<h3 id="atk-text-attr-right-margin-2">ATK_TEXT_ATTR_RIGHT_MARGIN = 2</h3>
+
+<p>The pixel width of the right margin</p>
+
+<h3 id="atk-text-attr-indent-3">ATK_TEXT_ATTR_INDENT = 3</h3>
+
+<p>The number of pixels that the text is indented</p>
+
+<h3 id="atk-text-attr-invisible-4">ATK_TEXT_ATTR_INVISIBLE = 4</h3>
+
+<p>Either &ldquo;true&rdquo; or &ldquo;false&rdquo; indicating whether text is visible or not</p>
+
+<h3 id="atk-text-attr-editable-5">ATK_TEXT_ATTR_EDITABLE = 5</h3>
+
+<p>Either &ldquo;true&rdquo; or &ldquo;false&rdquo; indicating whether text is editable or not</p>
+
+<h3 id="atk-text-attr-pixels-above-lines-6">ATK_TEXT_ATTR_PIXELS_ABOVE_LINES = 6</h3>
+
+<p>Pixels of blank space to leave above each newline-terminated line.</p>
+
+<h3 id="atk-text-attr-pixels-below-lines-7">ATK_TEXT_ATTR_PIXELS_BELOW_LINES = 7</h3>
+
+<p>Pixels of blank space to leave below each newline-terminated line.</p>
+
+<h3 id="atk-text-attr-pixels-inside-wrap-8">ATK_TEXT_ATTR_PIXELS_INSIDE_WRAP = 8</h3>
+
+<p>Pixels of blank space to leave between wrapped lines inside the same newline-terminated line (paragraph).</p>
+
+<h3 id="atk-text-attr-bg-full-height-9">ATK_TEXT_ATTR_BG_FULL_HEIGHT = 9</h3>
+
+<p>&ldquo;true&rdquo; or &ldquo;false&rdquo; whether to make the background color for each character the height of the highest font used on the current line, or the height of the font used for the current character.</p>
+
+<h3 id="atk-text-attr-rise-10">ATK_TEXT_ATTR_RISE = 10</h3>
+
+<p>Number of pixels that the characters are risen above the baseline</p>
+
+<h3 id="atk-text-attr-underline-11">ATK_TEXT_ATTR_UNDERLINE = 11</h3>
+
+<p>&ldquo;none&rdquo;, &ldquo;single&rdquo;, &ldquo;double&rdquo;, &ldquo;low&rdquo;, or &ldquo;error&rdquo;</p>
+
+<h3 id="atk-text-attr-strikethrough-12">ATK_TEXT_ATTR_STRIKETHROUGH = 12</h3>
+
+<p>&ldquo;true&rdquo; or &ldquo;false&rdquo; whether the text is strikethrough</p>
+
+<h3 id="atk-text-attr-size-13">ATK_TEXT_ATTR_SIZE = 13</h3>
+
+<p>The size of the characters in points. eg: 10</p>
+
+<h3 id="atk-text-attr-scale-14">ATK_TEXT_ATTR_SCALE = 14</h3>
+
+<p>The scale of the characters. The value is a string representation of a double</p>
+
+<h3 id="atk-text-attr-weight-15">ATK_TEXT_ATTR_WEIGHT = 15</h3>
+
+<p>The weight of the characters.</p>
+
+<h3 id="atk-text-attr-language-16">ATK_TEXT_ATTR_LANGUAGE = 16</h3>
+
+<p>The language used</p>
+
+<h3 id="atk-text-attr-family-name-17">ATK_TEXT_ATTR_FAMILY_NAME = 17</h3>
+
+<p>The font family name</p>
+
+<h3 id="atk-text-attr-bg-color-18">ATK_TEXT_ATTR_BG_COLOR = 18</h3>
+
+<p>The background color. The value is an RGB value of the format &ldquo;%u,%u,%u&rdquo;</p>
+
+<h3 id="atk-text-attr-fg-color-19">ATK_TEXT_ATTR_FG_COLOR = 19</h3>
+
+<p>The foreground color. The value is an RGB value of the format &ldquo;%u,%u,%u&rdquo;</p>
+
+<h3 id="atk-text-attr-bg-stipple-20">ATK_TEXT_ATTR_BG_STIPPLE = 20</h3>
+
+<p>&ldquo;true&rdquo; if a #GdkBitmap is set for stippling the background color.</p>
+
+<h3 id="atk-text-attr-fg-stipple-21">ATK_TEXT_ATTR_FG_STIPPLE = 21</h3>
+
+<p>&ldquo;true&rdquo; if a #GdkBitmap is set for stippling the foreground color.</p>
+
+<h3 id="atk-text-attr-wrap-mode-22">ATK_TEXT_ATTR_WRAP_MODE = 22</h3>
+
+<p>The wrap mode of the text, if any. Values are &ldquo;none&rdquo;, &ldquo;char&rdquo;, &ldquo;word&rdquo;, or &ldquo;word_char&rdquo;.</p>
+
+<h3 id="atk-text-attr-direction-23">ATK_TEXT_ATTR_DIRECTION = 23</h3>
+
+<p>The direction of the text, if set. Values are &ldquo;none&rdquo;, &ldquo;ltr&rdquo; or &ldquo;rtl&rdquo;</p>
+
+<h3 id="atk-text-attr-justification-24">ATK_TEXT_ATTR_JUSTIFICATION = 24</h3>
+
+<p>The justification of the text, if set. Values are &ldquo;left&rdquo;, &ldquo;right&rdquo;, &ldquo;center&rdquo; or &ldquo;fill&rdquo;</p>
+
+<h3 id="atk-text-attr-stretch-25">ATK_TEXT_ATTR_STRETCH = 25</h3>
+
+<p>The stretch of the text, if set. Values are &ldquo;ultra_condensed&rdquo;, &ldquo;extra_condensed&rdquo;, &ldquo;condensed&rdquo;, &ldquo;semi_condensed&rdquo;, &ldquo;normal&rdquo;, &ldquo;semi_expanded&rdquo;, &ldquo;expanded&rdquo;, &ldquo;extra_expanded&rdquo; or &ldquo;ultra_expanded&rdquo;</p>
+
+<h3 id="atk-text-attr-variant-26">ATK_TEXT_ATTR_VARIANT = 26</h3>
+
+<p>The capitalization variant of the text, if set. Values are &ldquo;normal&rdquo; or &ldquo;small_caps&rdquo;</p>
+
+<h3 id="atk-text-attr-style-27">ATK_TEXT_ATTR_STYLE = 27</h3>
+
+<p>The slant style of the text, if set. Values are &ldquo;normal&rdquo;, &ldquo;oblique&rdquo; or &ldquo;italic&rdquo;</p>
+
+<h3 id="atk-text-attr-last-defined-28">ATK_TEXT_ATTR_LAST_DEFINED = 28</h3>
+
+<p>not a valid text attribute, used for finding end of enumeration</p>
+
+<h2 id="textboundary"><code>TextBoundary</code></h2>
+
+<p>Text boundary types used for specifying boundaries for regions of text.
+This enumeration is deprecated since 2.9.4 and should not be used. Use
+AtkTextGranularity with #atk_text_get_string_at_offset instead.</p>
+
+<p>C - <code>AtkTextBoundary</code></p>
+
+<h3 id="atk-text-boundary-char-0">ATK_TEXT_BOUNDARY_CHAR = 0</h3>
+
+<p>Boundary is the boundary between characters
+(including non-printing characters)</p>
+
+<h3 id="atk-text-boundary-word-start-1">ATK_TEXT_BOUNDARY_WORD_START = 1</h3>
+
+<p>Boundary is the start (i.e. first character) of a word.</p>
+
+<h3 id="atk-text-boundary-word-end-2">ATK_TEXT_BOUNDARY_WORD_END = 2</h3>
+
+<p>Boundary is the end (i.e. last
+character) of a word.</p>
+
+<h3 id="atk-text-boundary-sentence-start-3">ATK_TEXT_BOUNDARY_SENTENCE_START = 3</h3>
+
+<p>Boundary is the first character in a sentence.</p>
+
+<h3 id="atk-text-boundary-sentence-end-4">ATK_TEXT_BOUNDARY_SENTENCE_END = 4</h3>
+
+<p>Boundary is the last (terminal)
+character in a sentence; in languages which use &ldquo;sentence stop&rdquo;
+punctuation such as English, the boundary is thus the &lsquo;.&rsquo;, &lsquo;?&rsquo;, or
+similar terminal punctuation character.</p>
+
+<h3 id="atk-text-boundary-line-start-5">ATK_TEXT_BOUNDARY_LINE_START = 5</h3>
+
+<p>Boundary is the initial character of the content or a
+character immediately following a newline, linefeed, or return character.</p>
+
+<h3 id="atk-text-boundary-line-end-6">ATK_TEXT_BOUNDARY_LINE_END = 6</h3>
+
+<p>Boundary is the linefeed, or return
+character.</p>
+
+<h2 id="textcliptype"><code>TextClipType</code></h2>
+
+<p>Describes the type of clipping required.</p>
+
+<p>C - <code>AtkTextClipType</code></p>
+
+<h3 id="atk-text-clip-none-0">ATK_TEXT_CLIP_NONE = 0</h3>
+
+<p>No clipping to be done</p>
+
+<h3 id="atk-text-clip-min-1">ATK_TEXT_CLIP_MIN = 1</h3>
+
+<p>Text clipped by min coordinate is omitted</p>
+
+<h3 id="atk-text-clip-max-2">ATK_TEXT_CLIP_MAX = 2</h3>
+
+<p>Text clipped by max coordinate is omitted</p>
+
+<h3 id="atk-text-clip-both-3">ATK_TEXT_CLIP_BOTH = 3</h3>
+
+<p>Only text fully within mix/max bound is retained</p>
+
+<h2 id="textgranularity"><code>TextGranularity</code></h2>
+
+<p>Text granularity types used for specifying the granularity of the region of
+text we are interested in.</p>
+
+<p>C - <code>AtkTextGranularity</code></p>
+
+<h3 id="atk-text-granularity-char-0">ATK_TEXT_GRANULARITY_CHAR = 0</h3>
+
+<p>Granularity is defined by the boundaries between characters
+(including non-printing characters)</p>
+
+<h3 id="atk-text-granularity-word-1">ATK_TEXT_GRANULARITY_WORD = 1</h3>
+
+<p>Granularity is defined by the boundaries of a word,
+starting at the beginning of the current word and finishing at the beginning of
+the following one, if present.</p>
+
+<h3 id="atk-text-granularity-sentence-2">ATK_TEXT_GRANULARITY_SENTENCE = 2</h3>
+
+<p>Granularity is defined by the boundaries of a sentence,
+starting at the beginning of the current sentence and finishing at the beginning of
+the following one, if present.</p>
+
+<h3 id="atk-text-granularity-line-3">ATK_TEXT_GRANULARITY_LINE = 3</h3>
+
+<p>Granularity is defined by the boundaries of a line,
+starting at the beginning of the current line and finishing at the beginning of
+the following one, if present.</p>
+
+<h3 id="atk-text-granularity-paragraph-4">ATK_TEXT_GRANULARITY_PARAGRAPH = 4</h3>
+
+<p>Granularity is defined by the boundaries of a paragraph,
+starting at the beginning of the current paragraph and finishing at the beginning of
+the following one, if present.</p>
+
+<h2 id="valuetype"><code>ValueType</code></h2>
+
+<p>Default types for a given value. Those are defined in order to
+easily get localized strings to describe a given value or a given
+subrange, using atk_value_type_get_localized_name().</p>
+
+<p>C - <code>AtkValueType</code></p>
+
+<h3 id="atk-value-very-weak-0">ATK_VALUE_VERY_WEAK = 0</h3>
+
+<h3 id="atk-value-weak-1">ATK_VALUE_WEAK = 1</h3>
+
+<h3 id="atk-value-acceptable-2">ATK_VALUE_ACCEPTABLE = 2</h3>
+
+<h3 id="atk-value-strong-3">ATK_VALUE_STRONG = 3</h3>
+
+<h3 id="atk-value-very-strong-4">ATK_VALUE_VERY_STRONG = 4</h3>
+
+<h3 id="atk-value-very-low-5">ATK_VALUE_VERY_LOW = 5</h3>
+
+<h3 id="atk-value-low-6">ATK_VALUE_LOW = 6</h3>
+
+<h3 id="atk-value-medium-7">ATK_VALUE_MEDIUM = 7</h3>
+
+<h3 id="atk-value-high-8">ATK_VALUE_HIGH = 8</h3>
+
+<h3 id="atk-value-very-high-9">ATK_VALUE_VERY_HIGH = 9</h3>
+
+<h3 id="atk-value-very-bad-10">ATK_VALUE_VERY_BAD = 10</h3>
+
+<h3 id="atk-value-bad-11">ATK_VALUE_BAD = 11</h3>
+
+<h3 id="atk-value-good-12">ATK_VALUE_GOOD = 12</h3>
+
+<h3 id="atk-value-very-good-13">ATK_VALUE_VERY_GOOD = 13</h3>
+
+<h3 id="atk-value-best-14">ATK_VALUE_BEST = 14</h3>
+
+<h3 id="atk-value-last-defined-15">ATK_VALUE_LAST_DEFINED = 15</h3>
+
+
+    
+    
+        <div class="chevrons">
+    <div id="navigation">
+</div>
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+    
+
+    
+  </div>
+
+
+	<div>
+
+
+  
+    
+  
+
+
+
+	</div>
+</footer>
+
+<script src="/js/clipboard.min.js"></script>
+
+<link href="/css/featherlight.min.css" rel="stylesheet">
+<script src="/js/featherlight.min.js"></script>
+
+
+
+<script src="/theme-flex/script.js"></script>
+
+
+    
+
+    
+    
+
+    
+  </body>
+</html>

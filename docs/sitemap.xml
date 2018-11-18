@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>/</loc>
+  </url>
+  
+  <url>
+    <loc>/getting-started/</loc>
+  </url>
+  
+  <url>
+    <loc>/application-lifecycle/</loc>
+  </url>
+  
+  <url>
+    <loc>/build-tags/</loc>
+  </url>
+  
+  <url>
+    <loc>/goroutines/</loc>
+  </url>
+  
+  <url>
+    <loc>/gvalue/</loc>
+  </url>
+  
+  <url>
+    <loc>/signal-handling/</loc>
+  </url>
+  
+  <url>
+    <loc>/summary-base/</loc>
+  </url>
+  
+  <url>
+    <loc>/_footer/</loc>
+  </url>
+  
+  <url>
+    <loc>/_header/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/</loc>
+  </url>
+  
+  <url>
+    <loc>/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>/api/atk/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/atk/bitfields/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/cairo/bitfields/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/gdk/bitfields/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/gdkpixbuf/bitfields/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/gio/bitfields/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/glib/bitfields/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/gobject/bitfields/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/gtk/bitfields/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/pango/bitfields/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/cairo/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/atk/constants/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/cairo/constants/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/gdk/constants/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/gdkpixbuf/constants/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/gio/constants/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/glib/constants/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/gobject/constants/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/gtk/constants/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/pango/constants/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/atk/enums/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/cairo/enums/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/gdk/enums/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/gdkpixbuf/enums/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/gio/enums/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/glib/enums/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/gobject/enums/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/gtk/enums/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/pango/enums/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/gdk/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/gdkpixbuf/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/gio/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/glib/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/gobject/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/gtk/</loc>
+  </url>
+  
+  <url>
+    <loc>/api/pango/</loc>
+  </url>
+  
+</urlset>

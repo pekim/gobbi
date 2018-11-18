@@ -1,0 +1,1907 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>gobbi</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="revised" content="2018-11-18T19:50:29 GMT">
+<title> :: gobbi</title>
+<link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
+<link href="/css/font-awesome.min.css" rel="stylesheet">
+<link href="/css/nucleus.css" rel="stylesheet">
+<link href="/theme-flex/style.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<script src="/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "\/";
+</script>
+<link rel="stylesheet" href="/css/custom.css">
+
+
+    
+  </head>
+  <body data-url="/lib/pango/enums/">
+    
+      <header>
+  <div class="logo">
+    
+	
+  
+    <p><a href="/">gobbi</a></p>
+
+  
+
+
+  </div>
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+    <nav class="shortcuts">
+            <li class="" role="">
+                <a href="https://github.com/pekim/gobbi"  rel="noopener">
+                  <i class='fa fa-github'></i> <label>Github repo</label>
+                </a>
+            </li>
+    </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+
+
+    <li class="dd-item ">
+        <div>
+            <a href="/">
+                <span>Introduction</span>
+            </a>
+        </div>
+    </li>
+
+    <li class="dd-item ">
+        <div>
+            <a href="/application-lifecycle/">
+                <span>Application lifecycle</span>
+            </a>
+        </div>
+    </li>
+
+    <li class="dd-item ">
+        <div>
+            <a href="/gvalue/">
+                <span>gobject.Value</span>
+            </a>
+        </div>
+    </li>
+
+    <li data-nav-id="/api/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/">API</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/api/atk/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/atk/">atk</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/atk/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/atk/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/atk/constants/" class="dd-item">
+        <div>
+          <a href="/api/atk/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/atk/enums/" class="dd-item">
+        <div>
+          <a href="/api/atk/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/cairo/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/cairo/">cairo</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/cairo/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/cairo/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/cairo/constants/" class="dd-item">
+        <div>
+          <a href="/api/cairo/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/cairo/enums/" class="dd-item">
+        <div>
+          <a href="/api/cairo/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/gdk/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/gdk/">gdk</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/gdk/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/gdk/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gdk/constants/" class="dd-item">
+        <div>
+          <a href="/api/gdk/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gdk/enums/" class="dd-item">
+        <div>
+          <a href="/api/gdk/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/gdkpixbuf/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/gdkpixbuf/">gdkpixbuf</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/gdkpixbuf/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/gdkpixbuf/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gdkpixbuf/constants/" class="dd-item">
+        <div>
+          <a href="/api/gdkpixbuf/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gdkpixbuf/enums/" class="dd-item">
+        <div>
+          <a href="/api/gdkpixbuf/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/gio/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/gio/">gio</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/gio/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/gio/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gio/constants/" class="dd-item">
+        <div>
+          <a href="/api/gio/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gio/enums/" class="dd-item">
+        <div>
+          <a href="/api/gio/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/glib/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/glib/">glib</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/glib/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/glib/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/glib/constants/" class="dd-item">
+        <div>
+          <a href="/api/glib/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/glib/enums/" class="dd-item">
+        <div>
+          <a href="/api/glib/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/gobject/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/gobject/">gobject</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/gobject/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/gobject/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gobject/constants/" class="dd-item">
+        <div>
+          <a href="/api/gobject/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gobject/enums/" class="dd-item">
+        <div>
+          <a href="/api/gobject/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/gtk/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/gtk/">gtk</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/gtk/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/gtk/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gtk/constants/" class="dd-item">
+        <div>
+          <a href="/api/gtk/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gtk/enums/" class="dd-item">
+        <div>
+          <a href="/api/gtk/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/pango/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/pango/">pango</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/pango/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/pango/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/pango/constants/" class="dd-item">
+        <div>
+          <a href="/api/pango/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/pango/enums/" class="dd-item">
+        <div>
+          <a href="/api/pango/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/lib/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/lib/">Libs</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/lib/atk/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/atk/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/atk/constant/" class="dd-item">
+        <div>
+          <a href="/lib/atk/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/atk/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/atk/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/atk/enums/" class="dd-item">
+        <div>
+          <a href="/lib/atk/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/atk/package/" class="dd-item">
+        <div>
+          <a href="/lib/atk/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/cairo/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/cairo/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/cairo/constant/" class="dd-item">
+        <div>
+          <a href="/lib/cairo/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/cairo/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/cairo/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/cairo/enums/" class="dd-item">
+        <div>
+          <a href="/lib/cairo/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/cairo/package/" class="dd-item">
+        <div>
+          <a href="/lib/cairo/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdk/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/gdk/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdk/constant/" class="dd-item">
+        <div>
+          <a href="/lib/gdk/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdk/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/gdk/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdk/enums/" class="dd-item">
+        <div>
+          <a href="/lib/gdk/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdk/package/" class="dd-item">
+        <div>
+          <a href="/lib/gdk/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdkpixbuf/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/gdkpixbuf/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdkpixbuf/constant/" class="dd-item">
+        <div>
+          <a href="/lib/gdkpixbuf/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdkpixbuf/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/gdkpixbuf/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdkpixbuf/enums/" class="dd-item">
+        <div>
+          <a href="/lib/gdkpixbuf/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdkpixbuf/package/" class="dd-item">
+        <div>
+          <a href="/lib/gdkpixbuf/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gio/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/gio/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gio/constant/" class="dd-item">
+        <div>
+          <a href="/lib/gio/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gio/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/gio/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gio/enums/" class="dd-item">
+        <div>
+          <a href="/lib/gio/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gio/package/" class="dd-item">
+        <div>
+          <a href="/lib/gio/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/glib/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/glib/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/glib/constant/" class="dd-item">
+        <div>
+          <a href="/lib/glib/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/glib/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/glib/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/glib/enums/" class="dd-item">
+        <div>
+          <a href="/lib/glib/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/glib/package/" class="dd-item">
+        <div>
+          <a href="/lib/glib/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gobject/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/gobject/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gobject/constant/" class="dd-item">
+        <div>
+          <a href="/lib/gobject/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gobject/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/gobject/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gobject/enums/" class="dd-item">
+        <div>
+          <a href="/lib/gobject/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gobject/package/" class="dd-item">
+        <div>
+          <a href="/lib/gobject/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gtk/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/gtk/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gtk/constant/" class="dd-item">
+        <div>
+          <a href="/lib/gtk/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gtk/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/gtk/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gtk/enums/" class="dd-item">
+        <div>
+          <a href="/lib/gtk/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gtk/package/" class="dd-item">
+        <div>
+          <a href="/lib/gtk/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/pango/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/pango/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/pango/constant/" class="dd-item">
+        <div>
+          <a href="/lib/pango/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/pango/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/pango/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/pango/enums/" class="dd-item active">
+        <div>
+          <a href="/lib/pango/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/pango/package/" class="dd-item">
+        <div>
+          <a href="/lib/pango/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+
+
+
+
+    </ul>
+    <section>
+    </section>
+  </aside>
+  <section class="page">
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/api/" >
+   API</option>
+    <option value="/lib/" >
+   Libs</option> 
+      <option value="/lib/atk/bitfields/" >- </option>
+      <option value="/lib/atk/constant/" >- </option>
+      <option value="/lib/atk/enumeration/" >- </option>
+      <option value="/lib/atk/enums/" >- </option>
+      <option value="/lib/atk/package/" >- </option>
+      <option value="/lib/cairo/bitfields/" >- </option>
+      <option value="/lib/cairo/constant/" >- </option>
+      <option value="/lib/cairo/enumeration/" >- </option>
+      <option value="/lib/cairo/enums/" >- </option>
+      <option value="/lib/cairo/package/" >- </option>
+      <option value="/lib/gdk/bitfields/" >- </option>
+      <option value="/lib/gdk/constant/" >- </option>
+      <option value="/lib/gdk/enumeration/" >- </option>
+      <option value="/lib/gdk/enums/" >- </option>
+      <option value="/lib/gdk/package/" >- </option>
+      <option value="/lib/gdkpixbuf/bitfields/" >- </option>
+      <option value="/lib/gdkpixbuf/constant/" >- </option>
+      <option value="/lib/gdkpixbuf/enumeration/" >- </option>
+      <option value="/lib/gdkpixbuf/enums/" >- </option>
+      <option value="/lib/gdkpixbuf/package/" >- </option>
+      <option value="/lib/gio/bitfields/" >- </option>
+      <option value="/lib/gio/constant/" >- </option>
+      <option value="/lib/gio/enumeration/" >- </option>
+      <option value="/lib/gio/enums/" >- </option>
+      <option value="/lib/gio/package/" >- </option>
+      <option value="/lib/glib/bitfields/" >- </option>
+      <option value="/lib/glib/constant/" >- </option>
+      <option value="/lib/glib/enumeration/" >- </option>
+      <option value="/lib/glib/enums/" >- </option>
+      <option value="/lib/glib/package/" >- </option>
+      <option value="/lib/gobject/bitfields/" >- </option>
+      <option value="/lib/gobject/constant/" >- </option>
+      <option value="/lib/gobject/enumeration/" >- </option>
+      <option value="/lib/gobject/enums/" >- </option>
+      <option value="/lib/gobject/package/" >- </option>
+      <option value="/lib/gtk/bitfields/" >- </option>
+      <option value="/lib/gtk/constant/" >- </option>
+      <option value="/lib/gtk/enumeration/" >- </option>
+      <option value="/lib/gtk/enums/" >- </option>
+      <option value="/lib/gtk/package/" >- </option>
+      <option value="/lib/pango/bitfields/" >- </option>
+      <option value="/lib/pango/constant/" >- </option>
+      <option value="/lib/pango/enumeration/" >- </option>
+      <option value="/lib/pango/enums/"  selected>- </option>
+      <option value="/lib/pango/package/" >- </option>
+  
+
+
+
+        </select>
+      </center>
+    </div>
+      <div>
+        <div class="searchbox">
+          <input data-search-input id="search-by" type="text" placeholder="Search...">
+        </div>
+        <script type="text/javascript" src="/js/lunr.min.js"></script>
+        <script type="text/javascript" src="/js/auto-complete.js"></script>
+        <link href="/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+          
+              var baseurl = "\/";
+          
+        </script>
+        <script type="text/javascript" src="/js/search.js"></script>
+      </div>
+    
+
+    <h1></h1>
+    
+    
+    
+    
+
+<h1 id="pango-enums"><code>pango</code> enums</h1>
+
+<h2 id="alignment"><code>Alignment</code></h2>
+
+<p>A #PangoAlignment describes how to align the lines of a #PangoLayout within the
+available space. If the #PangoLayout is set to justify
+using pango_layout_set_justify(), this only has effect for partial lines.</p>
+
+<p>C - <code>PangoAlignment</code></p>
+
+<h3 id="pango-align-left-0">PANGO_ALIGN_LEFT = 0</h3>
+
+<p>Put all available space on the right</p>
+
+<h3 id="pango-align-center-1">PANGO_ALIGN_CENTER = 1</h3>
+
+<p>Center the line within the available space</p>
+
+<h3 id="pango-align-right-2">PANGO_ALIGN_RIGHT = 2</h3>
+
+<p>Put all available space on the left</p>
+
+<h2 id="attrtype"><code>AttrType</code></h2>
+
+<p>The #PangoAttrType
+distinguishes between different types of attributes. Along with the
+predefined values, it is possible to allocate additional values
+for custom attributes using pango_attr_type_register(). The predefined
+values are given below. The type of structure used to store the
+attribute is listed in parentheses after the description.</p>
+
+<p>C - <code>PangoAttrType</code></p>
+
+<h3 id="pango-attr-invalid-0">PANGO_ATTR_INVALID = 0</h3>
+
+<p>does not happen</p>
+
+<h3 id="pango-attr-language-1">PANGO_ATTR_LANGUAGE = 1</h3>
+
+<p>language (#PangoAttrLanguage)</p>
+
+<h3 id="pango-attr-family-2">PANGO_ATTR_FAMILY = 2</h3>
+
+<p>font family name list (#PangoAttrString)</p>
+
+<h3 id="pango-attr-style-3">PANGO_ATTR_STYLE = 3</h3>
+
+<p>font slant style (#PangoAttrInt)</p>
+
+<h3 id="pango-attr-weight-4">PANGO_ATTR_WEIGHT = 4</h3>
+
+<p>font weight (#PangoAttrInt)</p>
+
+<h3 id="pango-attr-variant-5">PANGO_ATTR_VARIANT = 5</h3>
+
+<p>font variant (normal or small caps) (#PangoAttrInt)</p>
+
+<h3 id="pango-attr-stretch-6">PANGO_ATTR_STRETCH = 6</h3>
+
+<p>font stretch (#PangoAttrInt)</p>
+
+<h3 id="pango-attr-size-7">PANGO_ATTR_SIZE = 7</h3>
+
+<p>font size in points scaled by %PANGO_SCALE (#PangoAttrInt)</p>
+
+<h3 id="pango-attr-font-desc-8">PANGO_ATTR_FONT_DESC = 8</h3>
+
+<p>font description (#PangoAttrFontDesc)</p>
+
+<h3 id="pango-attr-foreground-9">PANGO_ATTR_FOREGROUND = 9</h3>
+
+<p>foreground color (#PangoAttrColor)</p>
+
+<h3 id="pango-attr-background-10">PANGO_ATTR_BACKGROUND = 10</h3>
+
+<p>background color (#PangoAttrColor)</p>
+
+<h3 id="pango-attr-underline-11">PANGO_ATTR_UNDERLINE = 11</h3>
+
+<p>whether the text has an underline (#PangoAttrInt)</p>
+
+<h3 id="pango-attr-strikethrough-12">PANGO_ATTR_STRIKETHROUGH = 12</h3>
+
+<p>whether the text is struck-through (#PangoAttrInt)</p>
+
+<h3 id="pango-attr-rise-13">PANGO_ATTR_RISE = 13</h3>
+
+<p>baseline displacement (#PangoAttrInt)</p>
+
+<h3 id="pango-attr-shape-14">PANGO_ATTR_SHAPE = 14</h3>
+
+<p>shape (#PangoAttrShape)</p>
+
+<h3 id="pango-attr-scale-15">PANGO_ATTR_SCALE = 15</h3>
+
+<p>font size scale factor (#PangoAttrFloat)</p>
+
+<h3 id="pango-attr-fallback-16">PANGO_ATTR_FALLBACK = 16</h3>
+
+<p>whether fallback is enabled (#PangoAttrInt)</p>
+
+<h3 id="pango-attr-letter-spacing-17">PANGO_ATTR_LETTER_SPACING = 17</h3>
+
+<p>letter spacing (#PangoAttrInt)</p>
+
+<h3 id="pango-attr-underline-color-18">PANGO_ATTR_UNDERLINE_COLOR = 18</h3>
+
+<p>underline color (#PangoAttrColor)</p>
+
+<h3 id="pango-attr-strikethrough-color-19">PANGO_ATTR_STRIKETHROUGH_COLOR = 19</h3>
+
+<p>strikethrough color (#PangoAttrColor)</p>
+
+<h3 id="pango-attr-absolute-size-20">PANGO_ATTR_ABSOLUTE_SIZE = 20</h3>
+
+<p>font size in pixels scaled by %PANGO_SCALE (#PangoAttrInt)</p>
+
+<h3 id="pango-attr-gravity-21">PANGO_ATTR_GRAVITY = 21</h3>
+
+<p>base text gravity (#PangoAttrInt)</p>
+
+<h3 id="pango-attr-gravity-hint-22">PANGO_ATTR_GRAVITY_HINT = 22</h3>
+
+<p>gravity hint (#PangoAttrInt)</p>
+
+<h3 id="pango-attr-font-features-23">PANGO_ATTR_FONT_FEATURES = 23</h3>
+
+<p>OpenType font features (#PangoAttrString). Since 1.38</p>
+
+<h3 id="pango-attr-foreground-alpha-24">PANGO_ATTR_FOREGROUND_ALPHA = 24</h3>
+
+<p>foreground alpha (#PangoAttrInt). Since 1.38</p>
+
+<h3 id="pango-attr-background-alpha-25">PANGO_ATTR_BACKGROUND_ALPHA = 25</h3>
+
+<p>background alpha (#PangoAttrInt). Since 1.38</p>
+
+<h2 id="biditype"><code>BidiType</code></h2>
+
+<p>The #PangoBidiType type represents the bidirectional character
+type of a Unicode character as specified by the
+<ulink url="http://www.unicode.org/reports/tr9/">Unicode bidirectional algorithm</ulink>.</p>
+
+<p>C - <code>PangoBidiType</code></p>
+
+<h3 id="pango-bidi-type-l-0">PANGO_BIDI_TYPE_L = 0</h3>
+
+<p>Left-to-Right</p>
+
+<h3 id="pango-bidi-type-lre-1">PANGO_BIDI_TYPE_LRE = 1</h3>
+
+<p>Left-to-Right Embedding</p>
+
+<h3 id="pango-bidi-type-lro-2">PANGO_BIDI_TYPE_LRO = 2</h3>
+
+<p>Left-to-Right Override</p>
+
+<h3 id="pango-bidi-type-r-3">PANGO_BIDI_TYPE_R = 3</h3>
+
+<p>Right-to-Left</p>
+
+<h3 id="pango-bidi-type-al-4">PANGO_BIDI_TYPE_AL = 4</h3>
+
+<p>Right-to-Left Arabic</p>
+
+<h3 id="pango-bidi-type-rle-5">PANGO_BIDI_TYPE_RLE = 5</h3>
+
+<p>Right-to-Left Embedding</p>
+
+<h3 id="pango-bidi-type-rlo-6">PANGO_BIDI_TYPE_RLO = 6</h3>
+
+<p>Right-to-Left Override</p>
+
+<h3 id="pango-bidi-type-pdf-7">PANGO_BIDI_TYPE_PDF = 7</h3>
+
+<p>Pop Directional Format</p>
+
+<h3 id="pango-bidi-type-en-8">PANGO_BIDI_TYPE_EN = 8</h3>
+
+<p>European Number</p>
+
+<h3 id="pango-bidi-type-es-9">PANGO_BIDI_TYPE_ES = 9</h3>
+
+<p>European Number Separator</p>
+
+<h3 id="pango-bidi-type-et-10">PANGO_BIDI_TYPE_ET = 10</h3>
+
+<p>European Number Terminator</p>
+
+<h3 id="pango-bidi-type-an-11">PANGO_BIDI_TYPE_AN = 11</h3>
+
+<p>Arabic Number</p>
+
+<h3 id="pango-bidi-type-cs-12">PANGO_BIDI_TYPE_CS = 12</h3>
+
+<p>Common Number Separator</p>
+
+<h3 id="pango-bidi-type-nsm-13">PANGO_BIDI_TYPE_NSM = 13</h3>
+
+<p>Nonspacing Mark</p>
+
+<h3 id="pango-bidi-type-bn-14">PANGO_BIDI_TYPE_BN = 14</h3>
+
+<p>Boundary Neutral</p>
+
+<h3 id="pango-bidi-type-b-15">PANGO_BIDI_TYPE_B = 15</h3>
+
+<p>Paragraph Separator</p>
+
+<h3 id="pango-bidi-type-s-16">PANGO_BIDI_TYPE_S = 16</h3>
+
+<p>Segment Separator</p>
+
+<h3 id="pango-bidi-type-ws-17">PANGO_BIDI_TYPE_WS = 17</h3>
+
+<p>Whitespace</p>
+
+<h3 id="pango-bidi-type-on-18">PANGO_BIDI_TYPE_ON = 18</h3>
+
+<p>Other Neutrals</p>
+
+<h2 id="coveragelevel"><code>CoverageLevel</code></h2>
+
+<p>Used to indicate how well a font can represent a particular Unicode
+character point for a particular script.</p>
+
+<p>C - <code>PangoCoverageLevel</code></p>
+
+<h3 id="pango-coverage-none-0">PANGO_COVERAGE_NONE = 0</h3>
+
+<p>The character is not representable with the font.</p>
+
+<h3 id="pango-coverage-fallback-1">PANGO_COVERAGE_FALLBACK = 1</h3>
+
+<p>The character is represented in a way that may be
+comprehensible but is not the correct graphical form.
+For instance, a Hangul character represented as a
+a sequence of Jamos, or a Latin transliteration of a Cyrillic word.</p>
+
+<h3 id="pango-coverage-approximate-2">PANGO_COVERAGE_APPROXIMATE = 2</h3>
+
+<p>The character is represented as basically the correct
+graphical form, but with a stylistic variant inappropriate for
+the current script.</p>
+
+<h3 id="pango-coverage-exact-3">PANGO_COVERAGE_EXACT = 3</h3>
+
+<p>The character is represented as the correct graphical form.</p>
+
+<h2 id="direction"><code>Direction</code></h2>
+
+<p>The #PangoDirection type represents a direction in the
+Unicode bidirectional algorithm; not every value in this
+enumeration makes sense for every usage of #PangoDirection;
+for example, the return value of pango_unichar_direction()
+and pango_find_base_dir() cannot be %PANGO_DIRECTION_WEAK_LTR
+or %PANGO_DIRECTION_WEAK_RTL, since every character is either
+neutral or has a strong direction; on the other hand
+%PANGO_DIRECTION_NEUTRAL doesn&rsquo;t make sense to pass
+to pango_itemize_with_base_dir().</p>
+
+<p>The %PANGO_DIRECTION_TTB_LTR, %PANGO_DIRECTION_TTB_RTL
+values come from an earlier interpretation of this
+enumeration as the writing direction of a block of
+text and are no longer used; See #PangoGravity for how
+vertical text is handled in Pango.</p>
+
+<p>C - <code>PangoDirection</code></p>
+
+<h3 id="pango-direction-ltr-0">PANGO_DIRECTION_LTR = 0</h3>
+
+<p>A strong left-to-right direction</p>
+
+<h3 id="pango-direction-rtl-1">PANGO_DIRECTION_RTL = 1</h3>
+
+<p>A strong right-to-left direction</p>
+
+<h3 id="pango-direction-ttb-ltr-2">PANGO_DIRECTION_TTB_LTR = 2</h3>
+
+<p>Deprecated value; treated the
+  same as %PANGO_DIRECTION_RTL.</p>
+
+<h3 id="pango-direction-ttb-rtl-3">PANGO_DIRECTION_TTB_RTL = 3</h3>
+
+<p>Deprecated value; treated the
+  same as %PANGO_DIRECTION_LTR</p>
+
+<h3 id="pango-direction-weak-ltr-4">PANGO_DIRECTION_WEAK_LTR = 4</h3>
+
+<p>A weak left-to-right direction</p>
+
+<h3 id="pango-direction-weak-rtl-5">PANGO_DIRECTION_WEAK_RTL = 5</h3>
+
+<p>A weak right-to-left direction</p>
+
+<h3 id="pango-direction-neutral-6">PANGO_DIRECTION_NEUTRAL = 6</h3>
+
+<p>No direction specified</p>
+
+<h2 id="ellipsizemode"><code>EllipsizeMode</code></h2>
+
+<p>The #PangoEllipsizeMode type describes what sort of (if any)
+ellipsization should be applied to a line of text. In
+the ellipsization process characters are removed from the
+text in order to make it fit to a given width and replaced
+with an ellipsis.</p>
+
+<p>C - <code>PangoEllipsizeMode</code></p>
+
+<h3 id="pango-ellipsize-none-0">PANGO_ELLIPSIZE_NONE = 0</h3>
+
+<p>No ellipsization</p>
+
+<h3 id="pango-ellipsize-start-1">PANGO_ELLIPSIZE_START = 1</h3>
+
+<p>Omit characters at the start of the text</p>
+
+<h3 id="pango-ellipsize-middle-2">PANGO_ELLIPSIZE_MIDDLE = 2</h3>
+
+<p>Omit characters in the middle of the text</p>
+
+<h3 id="pango-ellipsize-end-3">PANGO_ELLIPSIZE_END = 3</h3>
+
+<p>Omit characters at the end of the text</p>
+
+<h2 id="gravity"><code>Gravity</code></h2>
+
+<p>The #PangoGravity type represents the orientation of glyphs in a segment
+of text.  This is useful when rendering vertical text layouts.  In
+those situations, the layout is rotated using a non-identity PangoMatrix,
+and then glyph orientation is controlled using #PangoGravity.
+Not every value in this enumeration makes sense for every usage of
+&num;PangoGravity; for example, %PANGO_GRAVITY_AUTO only can be passed to
+pango_context_set_base_gravity() and can only be returned by
+pango_context_get_base_gravity().</p>
+
+<p>See also: #PangoGravityHint</p>
+
+<p>C - <code>PangoGravity</code></p>
+
+<h3 id="pango-gravity-south-0">PANGO_GRAVITY_SOUTH = 0</h3>
+
+<p>Glyphs stand upright (default)</p>
+
+<h3 id="pango-gravity-east-1">PANGO_GRAVITY_EAST = 1</h3>
+
+<p>Glyphs are rotated 90 degrees clockwise</p>
+
+<h3 id="pango-gravity-north-2">PANGO_GRAVITY_NORTH = 2</h3>
+
+<p>Glyphs are upside-down</p>
+
+<h3 id="pango-gravity-west-3">PANGO_GRAVITY_WEST = 3</h3>
+
+<p>Glyphs are rotated 90 degrees counter-clockwise</p>
+
+<h3 id="pango-gravity-auto-4">PANGO_GRAVITY_AUTO = 4</h3>
+
+<p>Gravity is resolved from the context matrix</p>
+
+<h2 id="gravityhint"><code>GravityHint</code></h2>
+
+<p>The #PangoGravityHint defines how horizontal scripts should behave in a
+vertical context.  That is, English excerpt in a vertical paragraph for
+example.</p>
+
+<p>See #PangoGravity.</p>
+
+<p>C - <code>PangoGravityHint</code></p>
+
+<h3 id="pango-gravity-hint-natural-0">PANGO_GRAVITY_HINT_NATURAL = 0</h3>
+
+<p>scripts will take their natural gravity based
+on the base gravity and the script.  This is the default.</p>
+
+<h3 id="pango-gravity-hint-strong-1">PANGO_GRAVITY_HINT_STRONG = 1</h3>
+
+<p>always use the base gravity set, regardless of
+the script.</p>
+
+<h3 id="pango-gravity-hint-line-2">PANGO_GRAVITY_HINT_LINE = 2</h3>
+
+<p>for scripts not in their natural direction (eg.
+Latin in East gravity), choose per-script gravity such that every script
+respects the line progression.  This means, Latin and Arabic will take
+opposite gravities and both flow top-to-bottom for example.</p>
+
+<h2 id="renderpart"><code>RenderPart</code></h2>
+
+<p>#PangoRenderPart defines different items to render for such
+purposes as setting colors.</p>
+
+<p>C - <code>PangoRenderPart</code></p>
+
+<h3 id="pango-render-part-foreground-0">PANGO_RENDER_PART_FOREGROUND = 0</h3>
+
+<p>the text itself</p>
+
+<h3 id="pango-render-part-background-1">PANGO_RENDER_PART_BACKGROUND = 1</h3>
+
+<p>the area behind the text</p>
+
+<h3 id="pango-render-part-underline-2">PANGO_RENDER_PART_UNDERLINE = 2</h3>
+
+<p>underlines</p>
+
+<h3 id="pango-render-part-strikethrough-3">PANGO_RENDER_PART_STRIKETHROUGH = 3</h3>
+
+<p>strikethrough lines</p>
+
+<h2 id="script"><code>Script</code></h2>
+
+<p>The #PangoScript enumeration identifies different writing
+systems. The values correspond to the names as defined in the
+Unicode standard.
+Note that new types may be added in the future. Applications should be ready
+to handle unknown values.  This enumeration is interchangeable with
+&num;GUnicodeScript.  See <ulink
+url="http://www.unicode.org/reports/tr24/">Unicode Standard Annex
+&num;24: Script names</ulink>.</p>
+
+<p>C - <code>PangoScript</code></p>
+
+<h3 id="pango-script-invalid-code-1">PANGO_SCRIPT_INVALID_CODE = -1</h3>
+
+<p>a value never returned from pango_script_for_unichar()</p>
+
+<h3 id="pango-script-common-0">PANGO_SCRIPT_COMMON = 0</h3>
+
+<p>a character used by multiple different scripts</p>
+
+<h3 id="pango-script-inherited-1">PANGO_SCRIPT_INHERITED = 1</h3>
+
+<p>a mark glyph that takes its script from the
+base glyph to which it is attached</p>
+
+<h3 id="pango-script-arabic-2">PANGO_SCRIPT_ARABIC = 2</h3>
+
+<p>Arabic</p>
+
+<h3 id="pango-script-armenian-3">PANGO_SCRIPT_ARMENIAN = 3</h3>
+
+<p>Armenian</p>
+
+<h3 id="pango-script-bengali-4">PANGO_SCRIPT_BENGALI = 4</h3>
+
+<p>Bengali</p>
+
+<h3 id="pango-script-bopomofo-5">PANGO_SCRIPT_BOPOMOFO = 5</h3>
+
+<p>Bopomofo</p>
+
+<h3 id="pango-script-cherokee-6">PANGO_SCRIPT_CHEROKEE = 6</h3>
+
+<p>Cherokee</p>
+
+<h3 id="pango-script-coptic-7">PANGO_SCRIPT_COPTIC = 7</h3>
+
+<p>Coptic</p>
+
+<h3 id="pango-script-cyrillic-8">PANGO_SCRIPT_CYRILLIC = 8</h3>
+
+<p>Cyrillic</p>
+
+<h3 id="pango-script-deseret-9">PANGO_SCRIPT_DESERET = 9</h3>
+
+<p>Deseret</p>
+
+<h3 id="pango-script-devanagari-10">PANGO_SCRIPT_DEVANAGARI = 10</h3>
+
+<p>Devanagari</p>
+
+<h3 id="pango-script-ethiopic-11">PANGO_SCRIPT_ETHIOPIC = 11</h3>
+
+<p>Ethiopic</p>
+
+<h3 id="pango-script-georgian-12">PANGO_SCRIPT_GEORGIAN = 12</h3>
+
+<p>Georgian</p>
+
+<h3 id="pango-script-gothic-13">PANGO_SCRIPT_GOTHIC = 13</h3>
+
+<p>Gothic</p>
+
+<h3 id="pango-script-greek-14">PANGO_SCRIPT_GREEK = 14</h3>
+
+<p>Greek</p>
+
+<h3 id="pango-script-gujarati-15">PANGO_SCRIPT_GUJARATI = 15</h3>
+
+<p>Gujarati</p>
+
+<h3 id="pango-script-gurmukhi-16">PANGO_SCRIPT_GURMUKHI = 16</h3>
+
+<p>Gurmukhi</p>
+
+<h3 id="pango-script-han-17">PANGO_SCRIPT_HAN = 17</h3>
+
+<p>Han</p>
+
+<h3 id="pango-script-hangul-18">PANGO_SCRIPT_HANGUL = 18</h3>
+
+<p>Hangul</p>
+
+<h3 id="pango-script-hebrew-19">PANGO_SCRIPT_HEBREW = 19</h3>
+
+<p>Hebrew</p>
+
+<h3 id="pango-script-hiragana-20">PANGO_SCRIPT_HIRAGANA = 20</h3>
+
+<p>Hiragana</p>
+
+<h3 id="pango-script-kannada-21">PANGO_SCRIPT_KANNADA = 21</h3>
+
+<p>Kannada</p>
+
+<h3 id="pango-script-katakana-22">PANGO_SCRIPT_KATAKANA = 22</h3>
+
+<p>Katakana</p>
+
+<h3 id="pango-script-khmer-23">PANGO_SCRIPT_KHMER = 23</h3>
+
+<p>Khmer</p>
+
+<h3 id="pango-script-lao-24">PANGO_SCRIPT_LAO = 24</h3>
+
+<p>Lao</p>
+
+<h3 id="pango-script-latin-25">PANGO_SCRIPT_LATIN = 25</h3>
+
+<p>Latin</p>
+
+<h3 id="pango-script-malayalam-26">PANGO_SCRIPT_MALAYALAM = 26</h3>
+
+<p>Malayalam</p>
+
+<h3 id="pango-script-mongolian-27">PANGO_SCRIPT_MONGOLIAN = 27</h3>
+
+<p>Mongolian</p>
+
+<h3 id="pango-script-myanmar-28">PANGO_SCRIPT_MYANMAR = 28</h3>
+
+<p>Myanmar</p>
+
+<h3 id="pango-script-ogham-29">PANGO_SCRIPT_OGHAM = 29</h3>
+
+<p>Ogham</p>
+
+<h3 id="pango-script-old-italic-30">PANGO_SCRIPT_OLD_ITALIC = 30</h3>
+
+<p>Old Italic</p>
+
+<h3 id="pango-script-oriya-31">PANGO_SCRIPT_ORIYA = 31</h3>
+
+<p>Oriya</p>
+
+<h3 id="pango-script-runic-32">PANGO_SCRIPT_RUNIC = 32</h3>
+
+<p>Runic</p>
+
+<h3 id="pango-script-sinhala-33">PANGO_SCRIPT_SINHALA = 33</h3>
+
+<p>Sinhala</p>
+
+<h3 id="pango-script-syriac-34">PANGO_SCRIPT_SYRIAC = 34</h3>
+
+<p>Syriac</p>
+
+<h3 id="pango-script-tamil-35">PANGO_SCRIPT_TAMIL = 35</h3>
+
+<p>Tamil</p>
+
+<h3 id="pango-script-telugu-36">PANGO_SCRIPT_TELUGU = 36</h3>
+
+<p>Telugu</p>
+
+<h3 id="pango-script-thaana-37">PANGO_SCRIPT_THAANA = 37</h3>
+
+<p>Thaana</p>
+
+<h3 id="pango-script-thai-38">PANGO_SCRIPT_THAI = 38</h3>
+
+<p>Thai</p>
+
+<h3 id="pango-script-tibetan-39">PANGO_SCRIPT_TIBETAN = 39</h3>
+
+<p>Tibetan</p>
+
+<h3 id="pango-script-canadian-aboriginal-40">PANGO_SCRIPT_CANADIAN_ABORIGINAL = 40</h3>
+
+<p>Canadian Aboriginal</p>
+
+<h3 id="pango-script-yi-41">PANGO_SCRIPT_YI = 41</h3>
+
+<p>Yi</p>
+
+<h3 id="pango-script-tagalog-42">PANGO_SCRIPT_TAGALOG = 42</h3>
+
+<p>Tagalog</p>
+
+<h3 id="pango-script-hanunoo-43">PANGO_SCRIPT_HANUNOO = 43</h3>
+
+<p>Hanunoo</p>
+
+<h3 id="pango-script-buhid-44">PANGO_SCRIPT_BUHID = 44</h3>
+
+<p>Buhid</p>
+
+<h3 id="pango-script-tagbanwa-45">PANGO_SCRIPT_TAGBANWA = 45</h3>
+
+<p>Tagbanwa</p>
+
+<h3 id="pango-script-braille-46">PANGO_SCRIPT_BRAILLE = 46</h3>
+
+<p>Braille</p>
+
+<h3 id="pango-script-cypriot-47">PANGO_SCRIPT_CYPRIOT = 47</h3>
+
+<p>Cypriot</p>
+
+<h3 id="pango-script-limbu-48">PANGO_SCRIPT_LIMBU = 48</h3>
+
+<p>Limbu</p>
+
+<h3 id="pango-script-osmanya-49">PANGO_SCRIPT_OSMANYA = 49</h3>
+
+<p>Osmanya</p>
+
+<h3 id="pango-script-shavian-50">PANGO_SCRIPT_SHAVIAN = 50</h3>
+
+<p>Shavian</p>
+
+<h3 id="pango-script-linear-b-51">PANGO_SCRIPT_LINEAR_B = 51</h3>
+
+<p>Linear B</p>
+
+<h3 id="pango-script-tai-le-52">PANGO_SCRIPT_TAI_LE = 52</h3>
+
+<p>Tai Le</p>
+
+<h3 id="pango-script-ugaritic-53">PANGO_SCRIPT_UGARITIC = 53</h3>
+
+<p>Ugaritic</p>
+
+<h3 id="pango-script-new-tai-lue-54">PANGO_SCRIPT_NEW_TAI_LUE = 54</h3>
+
+<p>New Tai Lue. Since 1.10</p>
+
+<h3 id="pango-script-buginese-55">PANGO_SCRIPT_BUGINESE = 55</h3>
+
+<p>Buginese. Since 1.10</p>
+
+<h3 id="pango-script-glagolitic-56">PANGO_SCRIPT_GLAGOLITIC = 56</h3>
+
+<p>Glagolitic. Since 1.10</p>
+
+<h3 id="pango-script-tifinagh-57">PANGO_SCRIPT_TIFINAGH = 57</h3>
+
+<p>Tifinagh. Since 1.10</p>
+
+<h3 id="pango-script-syloti-nagri-58">PANGO_SCRIPT_SYLOTI_NAGRI = 58</h3>
+
+<p>Syloti Nagri. Since 1.10</p>
+
+<h3 id="pango-script-old-persian-59">PANGO_SCRIPT_OLD_PERSIAN = 59</h3>
+
+<p>Old Persian. Since 1.10</p>
+
+<h3 id="pango-script-kharoshthi-60">PANGO_SCRIPT_KHAROSHTHI = 60</h3>
+
+<p>Kharoshthi. Since 1.10</p>
+
+<h3 id="pango-script-unknown-61">PANGO_SCRIPT_UNKNOWN = 61</h3>
+
+<p>an unassigned code point. Since 1.14</p>
+
+<h3 id="pango-script-balinese-62">PANGO_SCRIPT_BALINESE = 62</h3>
+
+<p>Balinese. Since 1.14</p>
+
+<h3 id="pango-script-cuneiform-63">PANGO_SCRIPT_CUNEIFORM = 63</h3>
+
+<p>Cuneiform. Since 1.14</p>
+
+<h3 id="pango-script-phoenician-64">PANGO_SCRIPT_PHOENICIAN = 64</h3>
+
+<p>Phoenician. Since 1.14</p>
+
+<h3 id="pango-script-phags-pa-65">PANGO_SCRIPT_PHAGS_PA = 65</h3>
+
+<p>Phags-pa. Since 1.14</p>
+
+<h3 id="pango-script-nko-66">PANGO_SCRIPT_NKO = 66</h3>
+
+<p>N&rsquo;Ko. Since 1.14</p>
+
+<h3 id="pango-script-kayah-li-67">PANGO_SCRIPT_KAYAH_LI = 67</h3>
+
+<p>Kayah Li. Since 1.20.1</p>
+
+<h3 id="pango-script-lepcha-68">PANGO_SCRIPT_LEPCHA = 68</h3>
+
+<p>Lepcha. Since 1.20.1</p>
+
+<h3 id="pango-script-rejang-69">PANGO_SCRIPT_REJANG = 69</h3>
+
+<p>Rejang. Since 1.20.1</p>
+
+<h3 id="pango-script-sundanese-70">PANGO_SCRIPT_SUNDANESE = 70</h3>
+
+<p>Sundanese. Since 1.20.1</p>
+
+<h3 id="pango-script-saurashtra-71">PANGO_SCRIPT_SAURASHTRA = 71</h3>
+
+<p>Saurashtra. Since 1.20.1</p>
+
+<h3 id="pango-script-cham-72">PANGO_SCRIPT_CHAM = 72</h3>
+
+<p>Cham. Since 1.20.1</p>
+
+<h3 id="pango-script-ol-chiki-73">PANGO_SCRIPT_OL_CHIKI = 73</h3>
+
+<p>Ol Chiki. Since 1.20.1</p>
+
+<h3 id="pango-script-vai-74">PANGO_SCRIPT_VAI = 74</h3>
+
+<p>Vai. Since 1.20.1</p>
+
+<h3 id="pango-script-carian-75">PANGO_SCRIPT_CARIAN = 75</h3>
+
+<p>Carian. Since 1.20.1</p>
+
+<h3 id="pango-script-lycian-76">PANGO_SCRIPT_LYCIAN = 76</h3>
+
+<p>Lycian. Since 1.20.1</p>
+
+<h3 id="pango-script-lydian-77">PANGO_SCRIPT_LYDIAN = 77</h3>
+
+<p>Lydian. Since 1.20.1</p>
+
+<h3 id="pango-script-batak-78">PANGO_SCRIPT_BATAK = 78</h3>
+
+<p>Batak. Since 1.32</p>
+
+<h3 id="pango-script-brahmi-79">PANGO_SCRIPT_BRAHMI = 79</h3>
+
+<p>Brahmi. Since 1.32</p>
+
+<h3 id="pango-script-mandaic-80">PANGO_SCRIPT_MANDAIC = 80</h3>
+
+<p>Mandaic. Since 1.32</p>
+
+<h3 id="pango-script-chakma-81">PANGO_SCRIPT_CHAKMA = 81</h3>
+
+<p>Chakma. Since: 1.32</p>
+
+<h3 id="pango-script-meroitic-cursive-82">PANGO_SCRIPT_MEROITIC_CURSIVE = 82</h3>
+
+<p>Meroitic Cursive. Since: 1.32</p>
+
+<h3 id="pango-script-meroitic-hieroglyphs-83">PANGO_SCRIPT_MEROITIC_HIEROGLYPHS = 83</h3>
+
+<p>Meroitic Hieroglyphs. Since: 1.32</p>
+
+<h3 id="pango-script-miao-84">PANGO_SCRIPT_MIAO = 84</h3>
+
+<p>Miao. Since: 1.32</p>
+
+<h3 id="pango-script-sharada-85">PANGO_SCRIPT_SHARADA = 85</h3>
+
+<p>Sharada. Since: 1.32</p>
+
+<h3 id="pango-script-sora-sompeng-86">PANGO_SCRIPT_SORA_SOMPENG = 86</h3>
+
+<p>Sora Sompeng. Since: 1.32</p>
+
+<h3 id="pango-script-takri-87">PANGO_SCRIPT_TAKRI = 87</h3>
+
+<p>Takri. Since: 1.32</p>
+
+<h3 id="pango-script-bassa-vah-88">PANGO_SCRIPT_BASSA_VAH = 88</h3>
+
+<p>Bassa. Since: 1.40</p>
+
+<h3 id="pango-script-caucasian-albanian-89">PANGO_SCRIPT_CAUCASIAN_ALBANIAN = 89</h3>
+
+<p>Caucasian Albanian. Since: 1.40</p>
+
+<h3 id="pango-script-duployan-90">PANGO_SCRIPT_DUPLOYAN = 90</h3>
+
+<p>Duployan. Since: 1.40</p>
+
+<h3 id="pango-script-elbasan-91">PANGO_SCRIPT_ELBASAN = 91</h3>
+
+<p>Elbasan. Since: 1.40</p>
+
+<h3 id="pango-script-grantha-92">PANGO_SCRIPT_GRANTHA = 92</h3>
+
+<p>Grantha. Since: 1.40</p>
+
+<h3 id="pango-script-khojki-93">PANGO_SCRIPT_KHOJKI = 93</h3>
+
+<p>Kjohki. Since: 1.40</p>
+
+<h3 id="pango-script-khudawadi-94">PANGO_SCRIPT_KHUDAWADI = 94</h3>
+
+<p>Khudawadi, Sindhi. Since: 1.40</p>
+
+<h3 id="pango-script-linear-a-95">PANGO_SCRIPT_LINEAR_A = 95</h3>
+
+<p>Linear A. Since: 1.40</p>
+
+<h3 id="pango-script-mahajani-96">PANGO_SCRIPT_MAHAJANI = 96</h3>
+
+<p>Mahajani. Since: 1.40</p>
+
+<h3 id="pango-script-manichaean-97">PANGO_SCRIPT_MANICHAEAN = 97</h3>
+
+<p>Manichaean. Since: 1.40</p>
+
+<h3 id="pango-script-mende-kikakui-98">PANGO_SCRIPT_MENDE_KIKAKUI = 98</h3>
+
+<p>Mende Kikakui. Since: 1.40</p>
+
+<h3 id="pango-script-modi-99">PANGO_SCRIPT_MODI = 99</h3>
+
+<p>Modi. Since: 1.40</p>
+
+<h3 id="pango-script-mro-100">PANGO_SCRIPT_MRO = 100</h3>
+
+<p>Mro. Since: 1.40</p>
+
+<h3 id="pango-script-nabataean-101">PANGO_SCRIPT_NABATAEAN = 101</h3>
+
+<p>Nabataean. Since: 1.40</p>
+
+<h3 id="pango-script-old-north-arabian-102">PANGO_SCRIPT_OLD_NORTH_ARABIAN = 102</h3>
+
+<p>Old North Arabian. Since: 1.40</p>
+
+<h3 id="pango-script-old-permic-103">PANGO_SCRIPT_OLD_PERMIC = 103</h3>
+
+<p>Old Permic. Since: 1.40</p>
+
+<h3 id="pango-script-pahawh-hmong-104">PANGO_SCRIPT_PAHAWH_HMONG = 104</h3>
+
+<p>Pahawh Hmong. Since: 1.40</p>
+
+<h3 id="pango-script-palmyrene-105">PANGO_SCRIPT_PALMYRENE = 105</h3>
+
+<p>Palmyrene. Since: 1.40</p>
+
+<h3 id="pango-script-pau-cin-hau-106">PANGO_SCRIPT_PAU_CIN_HAU = 106</h3>
+
+<p>Pau Cin Hau. Since: 1.40</p>
+
+<h3 id="pango-script-psalter-pahlavi-107">PANGO_SCRIPT_PSALTER_PAHLAVI = 107</h3>
+
+<p>Psalter Pahlavi. Since: 1.40</p>
+
+<h3 id="pango-script-siddham-108">PANGO_SCRIPT_SIDDHAM = 108</h3>
+
+<p>Siddham. Since: 1.40</p>
+
+<h3 id="pango-script-tirhuta-109">PANGO_SCRIPT_TIRHUTA = 109</h3>
+
+<p>Tirhuta. Since: 1.40</p>
+
+<h3 id="pango-script-warang-citi-110">PANGO_SCRIPT_WARANG_CITI = 110</h3>
+
+<p>Warang Citi. Since: 1.40</p>
+
+<h3 id="pango-script-ahom-111">PANGO_SCRIPT_AHOM = 111</h3>
+
+<p>Ahom. Since: 1.40</p>
+
+<h3 id="pango-script-anatolian-hieroglyphs-112">PANGO_SCRIPT_ANATOLIAN_HIEROGLYPHS = 112</h3>
+
+<p>Anatolian Hieroglyphs. Since: 1.40</p>
+
+<h3 id="pango-script-hatran-113">PANGO_SCRIPT_HATRAN = 113</h3>
+
+<p>Hatran. Since: 1.40</p>
+
+<h3 id="pango-script-multani-114">PANGO_SCRIPT_MULTANI = 114</h3>
+
+<p>Multani. Since: 1.40</p>
+
+<h3 id="pango-script-old-hungarian-115">PANGO_SCRIPT_OLD_HUNGARIAN = 115</h3>
+
+<p>Old Hungarian. Since: 1.40</p>
+
+<h3 id="pango-script-signwriting-116">PANGO_SCRIPT_SIGNWRITING = 116</h3>
+
+<p>Signwriting. Since: 1.40</p>
+
+<h2 id="stretch"><code>Stretch</code></h2>
+
+<p>An enumeration specifying the width of the font relative to other designs
+within a family.</p>
+
+<p>C - <code>PangoStretch</code></p>
+
+<h3 id="pango-stretch-ultra-condensed-0">PANGO_STRETCH_ULTRA_CONDENSED = 0</h3>
+
+<p>ultra condensed width</p>
+
+<h3 id="pango-stretch-extra-condensed-1">PANGO_STRETCH_EXTRA_CONDENSED = 1</h3>
+
+<p>extra condensed width</p>
+
+<h3 id="pango-stretch-condensed-2">PANGO_STRETCH_CONDENSED = 2</h3>
+
+<p>condensed width</p>
+
+<h3 id="pango-stretch-semi-condensed-3">PANGO_STRETCH_SEMI_CONDENSED = 3</h3>
+
+<p>semi condensed width</p>
+
+<h3 id="pango-stretch-normal-4">PANGO_STRETCH_NORMAL = 4</h3>
+
+<p>the normal width</p>
+
+<h3 id="pango-stretch-semi-expanded-5">PANGO_STRETCH_SEMI_EXPANDED = 5</h3>
+
+<p>semi expanded width</p>
+
+<h3 id="pango-stretch-expanded-6">PANGO_STRETCH_EXPANDED = 6</h3>
+
+<p>expanded width</p>
+
+<h3 id="pango-stretch-extra-expanded-7">PANGO_STRETCH_EXTRA_EXPANDED = 7</h3>
+
+<p>extra expanded width</p>
+
+<h3 id="pango-stretch-ultra-expanded-8">PANGO_STRETCH_ULTRA_EXPANDED = 8</h3>
+
+<p>ultra expanded width</p>
+
+<h2 id="style"><code>Style</code></h2>
+
+<p>An enumeration specifying the various slant styles possible for a font.</p>
+
+<p>C - <code>PangoStyle</code></p>
+
+<h3 id="pango-style-normal-0">PANGO_STYLE_NORMAL = 0</h3>
+
+<p>the font is upright.</p>
+
+<h3 id="pango-style-oblique-1">PANGO_STYLE_OBLIQUE = 1</h3>
+
+<p>the font is slanted, but in a roman style.</p>
+
+<h3 id="pango-style-italic-2">PANGO_STYLE_ITALIC = 2</h3>
+
+<p>the font is slanted in an italic style.</p>
+
+<h2 id="tabalign"><code>TabAlign</code></h2>
+
+<p>A #PangoTabAlign specifies where a tab stop appears relative to the text.</p>
+
+<p>C - <code>PangoTabAlign</code></p>
+
+<h3 id="pango-tab-left-0">PANGO_TAB_LEFT = 0</h3>
+
+<p>the tab stop appears to the left of the text.</p>
+
+<h2 id="underline"><code>Underline</code></h2>
+
+<p>The #PangoUnderline enumeration is used to specify
+whether text should be underlined, and if so, the type
+of underlining.</p>
+
+<p>C - <code>PangoUnderline</code></p>
+
+<h3 id="pango-underline-none-0">PANGO_UNDERLINE_NONE = 0</h3>
+
+<p>no underline should be drawn</p>
+
+<h3 id="pango-underline-single-1">PANGO_UNDERLINE_SINGLE = 1</h3>
+
+<p>a single underline should be drawn</p>
+
+<h3 id="pango-underline-double-2">PANGO_UNDERLINE_DOUBLE = 2</h3>
+
+<p>a double underline should be drawn</p>
+
+<h3 id="pango-underline-low-3">PANGO_UNDERLINE_LOW = 3</h3>
+
+<p>a single underline should be drawn at a position
+beneath the ink extents of the text being
+underlined. This should be used only for underlining
+single characters, such as for keyboard
+accelerators. %PANGO_UNDERLINE_SINGLE should
+be used for extended portions of text.</p>
+
+<h3 id="pango-underline-error-4">PANGO_UNDERLINE_ERROR = 4</h3>
+
+<p>a wavy underline should be drawn below.
+This underline is typically used to indicate
+an error such as a possilble mispelling; in some
+cases a contrasting color may automatically
+be used. This type of underlining is available since Pango 1.4.</p>
+
+<h2 id="variant"><code>Variant</code></h2>
+
+<p>An enumeration specifying capitalization variant of the font.</p>
+
+<p>C - <code>PangoVariant</code></p>
+
+<h3 id="pango-variant-normal-0">PANGO_VARIANT_NORMAL = 0</h3>
+
+<p>A normal font.</p>
+
+<h3 id="pango-variant-small-caps-1">PANGO_VARIANT_SMALL_CAPS = 1</h3>
+
+<p>A font with the lower case characters
+replaced by smaller variants of the capital characters.</p>
+
+<h2 id="weight"><code>Weight</code></h2>
+
+<p>An enumeration specifying the weight (boldness) of a font. This is a numerical
+value ranging from 100 to 1000, but there are some predefined values:</p>
+
+<p>C - <code>PangoWeight</code></p>
+
+<h3 id="pango-weight-thin-100">PANGO_WEIGHT_THIN = 100</h3>
+
+<p>the thin weight (= 100; Since: 1.24)</p>
+
+<h3 id="pango-weight-ultralight-200">PANGO_WEIGHT_ULTRALIGHT = 200</h3>
+
+<p>the ultralight weight (= 200)</p>
+
+<h3 id="pango-weight-light-300">PANGO_WEIGHT_LIGHT = 300</h3>
+
+<p>the light weight (= 300)</p>
+
+<h3 id="pango-weight-semilight-350">PANGO_WEIGHT_SEMILIGHT = 350</h3>
+
+<p>the semilight weight (= 350; Since: 1.36.7)</p>
+
+<h3 id="pango-weight-book-380">PANGO_WEIGHT_BOOK = 380</h3>
+
+<p>the book weight (= 380; Since: 1.24)</p>
+
+<h3 id="pango-weight-normal-400">PANGO_WEIGHT_NORMAL = 400</h3>
+
+<p>the default weight (= 400)</p>
+
+<h3 id="pango-weight-medium-500">PANGO_WEIGHT_MEDIUM = 500</h3>
+
+<p>the normal weight (= 500; Since: 1.24)</p>
+
+<h3 id="pango-weight-semibold-600">PANGO_WEIGHT_SEMIBOLD = 600</h3>
+
+<p>the semibold weight (= 600)</p>
+
+<h3 id="pango-weight-bold-700">PANGO_WEIGHT_BOLD = 700</h3>
+
+<p>the bold weight (= 700)</p>
+
+<h3 id="pango-weight-ultrabold-800">PANGO_WEIGHT_ULTRABOLD = 800</h3>
+
+<p>the ultrabold weight (= 800)</p>
+
+<h3 id="pango-weight-heavy-900">PANGO_WEIGHT_HEAVY = 900</h3>
+
+<p>the heavy weight (= 900)</p>
+
+<h3 id="pango-weight-ultraheavy-1000">PANGO_WEIGHT_ULTRAHEAVY = 1000</h3>
+
+<p>the ultraheavy weight (= 1000; Since: 1.24)</p>
+
+<h2 id="wrapmode"><code>WrapMode</code></h2>
+
+<p>A #PangoWrapMode describes how to wrap the lines of a #PangoLayout to the desired width.</p>
+
+<p>C - <code>PangoWrapMode</code></p>
+
+<h3 id="pango-wrap-word-0">PANGO_WRAP_WORD = 0</h3>
+
+<p>wrap lines at word boundaries.</p>
+
+<h3 id="pango-wrap-char-1">PANGO_WRAP_CHAR = 1</h3>
+
+<p>wrap lines at character boundaries.</p>
+
+<h3 id="pango-wrap-word-char-2">PANGO_WRAP_WORD_CHAR = 2</h3>
+
+<p>wrap lines at word boundaries, but fall back to character boundaries if there is not
+enough space for a full word.</p>
+
+
+    
+    
+        <div class="chevrons">
+    <div id="navigation">
+</div>
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+    
+
+    
+  </div>
+
+
+	<div>
+
+
+  
+    
+  
+
+
+
+	</div>
+</footer>
+
+<script src="/js/clipboard.min.js"></script>
+
+<link href="/css/featherlight.min.css" rel="stylesheet">
+<script src="/js/featherlight.min.js"></script>
+
+
+
+<script src="/theme-flex/script.js"></script>
+
+
+    
+
+    
+    
+
+    
+  </body>
+</html>

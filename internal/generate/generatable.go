@@ -14,5 +14,4 @@ type Generatable interface {
 type Generatables interface {
 	VersionLister
 	entities() []Generatable
-	generateDocs(ns *Namespace, typeName string)
 }

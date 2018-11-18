@@ -1,0 +1,117 @@
+html {
+    /*font-size: 18px;*/
+}
+
+article > aside .menu .dd-item {
+    /*font-size: 16px;*/
+}
+
+header {
+    height: 3rem;
+}
+
+header::after {
+    background: hsl(0, 70%, 50%);
+    height: 0.3rem;
+}
+
+.searchbox {
+    text-align: start;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+}
+
+article section.page {
+    padding-top: 0.5rem;
+}
+
+article section.page h1:first-of-type {
+    font-family: inherit;
+    font-size: 2.8rem;
+    text-align: start;
+    text-transform: none;
+}
+
+article section.page h2 {
+    margin-top: 2.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.7rem;
+}
+
+article section.page {
+    max-width: 55em;
+}
+
+p {
+    margin: 1rem 0;
+    max-width: 40em;
+}
+
+article section.page p > code,
+article section.page li code,
+article section.page table code {
+    padding: 0.1rem 0.25rem;
+    background-color: hsl(0, 0%, 92%);
+}
+
+article section.page pre {
+    /*
+        Need !imporant because background-color is applied directly to the element,
+        for some reason.
+    */
+    background-color: hsl(0, 0%, 95%) !important;
+}
+
+.chevrons {
+    display: none;
+}
+
+.api-heading {
+    font-size: 1.2em;
+    font-weight: bold;
+
+    margin-top: 1.5em;
+}
+
+.api-doc {
+
+}
+
+.api-notes > * {
+    margin: 0em;
+}
+
+.api-ctype {
+    font-size: 0.8em;
+}
+
+.api-since {
+    font-size: 0.9em;
+    font-style: italic;
+}
+
+article section.page table {
+    table-layout: auto;
+    margin-top: 1.0em;
+}
+
+article section.page table tr td {
+    vertical-align: baseline;
+    padding: 0.5em 1em;
+}
+
+article section.page table tr td.value {
+    text-align: end;
+}
+
+article section.page table tr td.doc {
+    width: 100%;
+}

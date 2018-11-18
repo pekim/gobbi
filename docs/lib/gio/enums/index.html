@@ -1,0 +1,2221 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>gobbi</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="revised" content="2018-11-18T19:50:29 GMT">
+<title> :: gobbi</title>
+<link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
+<link href="/css/font-awesome.min.css" rel="stylesheet">
+<link href="/css/nucleus.css" rel="stylesheet">
+<link href="/theme-flex/style.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<script src="/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "\/";
+</script>
+<link rel="stylesheet" href="/css/custom.css">
+
+
+    
+  </head>
+  <body data-url="/lib/gio/enums/">
+    
+      <header>
+  <div class="logo">
+    
+	
+  
+    <p><a href="/">gobbi</a></p>
+
+  
+
+
+  </div>
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+    <nav class="shortcuts">
+            <li class="" role="">
+                <a href="https://github.com/pekim/gobbi"  rel="noopener">
+                  <i class='fa fa-github'></i> <label>Github repo</label>
+                </a>
+            </li>
+    </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+
+
+    <li class="dd-item ">
+        <div>
+            <a href="/">
+                <span>Introduction</span>
+            </a>
+        </div>
+    </li>
+
+    <li class="dd-item ">
+        <div>
+            <a href="/application-lifecycle/">
+                <span>Application lifecycle</span>
+            </a>
+        </div>
+    </li>
+
+    <li class="dd-item ">
+        <div>
+            <a href="/gvalue/">
+                <span>gobject.Value</span>
+            </a>
+        </div>
+    </li>
+
+    <li data-nav-id="/api/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/">API</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/api/atk/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/atk/">atk</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/atk/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/atk/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/atk/constants/" class="dd-item">
+        <div>
+          <a href="/api/atk/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/atk/enums/" class="dd-item">
+        <div>
+          <a href="/api/atk/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/cairo/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/cairo/">cairo</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/cairo/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/cairo/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/cairo/constants/" class="dd-item">
+        <div>
+          <a href="/api/cairo/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/cairo/enums/" class="dd-item">
+        <div>
+          <a href="/api/cairo/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/gdk/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/gdk/">gdk</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/gdk/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/gdk/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gdk/constants/" class="dd-item">
+        <div>
+          <a href="/api/gdk/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gdk/enums/" class="dd-item">
+        <div>
+          <a href="/api/gdk/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/gdkpixbuf/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/gdkpixbuf/">gdkpixbuf</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/gdkpixbuf/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/gdkpixbuf/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gdkpixbuf/constants/" class="dd-item">
+        <div>
+          <a href="/api/gdkpixbuf/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gdkpixbuf/enums/" class="dd-item">
+        <div>
+          <a href="/api/gdkpixbuf/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/gio/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/gio/">gio</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/gio/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/gio/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gio/constants/" class="dd-item">
+        <div>
+          <a href="/api/gio/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gio/enums/" class="dd-item">
+        <div>
+          <a href="/api/gio/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/glib/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/glib/">glib</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/glib/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/glib/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/glib/constants/" class="dd-item">
+        <div>
+          <a href="/api/glib/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/glib/enums/" class="dd-item">
+        <div>
+          <a href="/api/glib/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/gobject/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/gobject/">gobject</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/gobject/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/gobject/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gobject/constants/" class="dd-item">
+        <div>
+          <a href="/api/gobject/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gobject/enums/" class="dd-item">
+        <div>
+          <a href="/api/gobject/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/gtk/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/gtk/">gtk</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/gtk/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/gtk/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gtk/constants/" class="dd-item">
+        <div>
+          <a href="/api/gtk/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gtk/enums/" class="dd-item">
+        <div>
+          <a href="/api/gtk/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/pango/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/pango/">pango</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/pango/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/pango/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/pango/constants/" class="dd-item">
+        <div>
+          <a href="/api/pango/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/pango/enums/" class="dd-item">
+        <div>
+          <a href="/api/pango/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/lib/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/lib/">Libs</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/lib/atk/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/atk/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/atk/constant/" class="dd-item">
+        <div>
+          <a href="/lib/atk/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/atk/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/atk/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/atk/enums/" class="dd-item">
+        <div>
+          <a href="/lib/atk/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/atk/package/" class="dd-item">
+        <div>
+          <a href="/lib/atk/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/cairo/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/cairo/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/cairo/constant/" class="dd-item">
+        <div>
+          <a href="/lib/cairo/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/cairo/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/cairo/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/cairo/enums/" class="dd-item">
+        <div>
+          <a href="/lib/cairo/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/cairo/package/" class="dd-item">
+        <div>
+          <a href="/lib/cairo/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdk/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/gdk/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdk/constant/" class="dd-item">
+        <div>
+          <a href="/lib/gdk/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdk/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/gdk/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdk/enums/" class="dd-item">
+        <div>
+          <a href="/lib/gdk/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdk/package/" class="dd-item">
+        <div>
+          <a href="/lib/gdk/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdkpixbuf/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/gdkpixbuf/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdkpixbuf/constant/" class="dd-item">
+        <div>
+          <a href="/lib/gdkpixbuf/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdkpixbuf/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/gdkpixbuf/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdkpixbuf/enums/" class="dd-item">
+        <div>
+          <a href="/lib/gdkpixbuf/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdkpixbuf/package/" class="dd-item">
+        <div>
+          <a href="/lib/gdkpixbuf/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gio/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/gio/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gio/constant/" class="dd-item">
+        <div>
+          <a href="/lib/gio/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gio/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/gio/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gio/enums/" class="dd-item active">
+        <div>
+          <a href="/lib/gio/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gio/package/" class="dd-item">
+        <div>
+          <a href="/lib/gio/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/glib/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/glib/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/glib/constant/" class="dd-item">
+        <div>
+          <a href="/lib/glib/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/glib/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/glib/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/glib/enums/" class="dd-item">
+        <div>
+          <a href="/lib/glib/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/glib/package/" class="dd-item">
+        <div>
+          <a href="/lib/glib/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gobject/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/gobject/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gobject/constant/" class="dd-item">
+        <div>
+          <a href="/lib/gobject/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gobject/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/gobject/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gobject/enums/" class="dd-item">
+        <div>
+          <a href="/lib/gobject/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gobject/package/" class="dd-item">
+        <div>
+          <a href="/lib/gobject/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gtk/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/gtk/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gtk/constant/" class="dd-item">
+        <div>
+          <a href="/lib/gtk/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gtk/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/gtk/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gtk/enums/" class="dd-item">
+        <div>
+          <a href="/lib/gtk/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gtk/package/" class="dd-item">
+        <div>
+          <a href="/lib/gtk/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/pango/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/pango/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/pango/constant/" class="dd-item">
+        <div>
+          <a href="/lib/pango/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/pango/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/pango/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/pango/enums/" class="dd-item">
+        <div>
+          <a href="/lib/pango/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/pango/package/" class="dd-item">
+        <div>
+          <a href="/lib/pango/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+
+
+
+
+    </ul>
+    <section>
+    </section>
+  </aside>
+  <section class="page">
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/api/" >
+   API</option>
+    <option value="/lib/" >
+   Libs</option> 
+      <option value="/lib/atk/bitfields/" >- </option>
+      <option value="/lib/atk/constant/" >- </option>
+      <option value="/lib/atk/enumeration/" >- </option>
+      <option value="/lib/atk/enums/" >- </option>
+      <option value="/lib/atk/package/" >- </option>
+      <option value="/lib/cairo/bitfields/" >- </option>
+      <option value="/lib/cairo/constant/" >- </option>
+      <option value="/lib/cairo/enumeration/" >- </option>
+      <option value="/lib/cairo/enums/" >- </option>
+      <option value="/lib/cairo/package/" >- </option>
+      <option value="/lib/gdk/bitfields/" >- </option>
+      <option value="/lib/gdk/constant/" >- </option>
+      <option value="/lib/gdk/enumeration/" >- </option>
+      <option value="/lib/gdk/enums/" >- </option>
+      <option value="/lib/gdk/package/" >- </option>
+      <option value="/lib/gdkpixbuf/bitfields/" >- </option>
+      <option value="/lib/gdkpixbuf/constant/" >- </option>
+      <option value="/lib/gdkpixbuf/enumeration/" >- </option>
+      <option value="/lib/gdkpixbuf/enums/" >- </option>
+      <option value="/lib/gdkpixbuf/package/" >- </option>
+      <option value="/lib/gio/bitfields/" >- </option>
+      <option value="/lib/gio/constant/" >- </option>
+      <option value="/lib/gio/enumeration/" >- </option>
+      <option value="/lib/gio/enums/"  selected>- </option>
+      <option value="/lib/gio/package/" >- </option>
+      <option value="/lib/glib/bitfields/" >- </option>
+      <option value="/lib/glib/constant/" >- </option>
+      <option value="/lib/glib/enumeration/" >- </option>
+      <option value="/lib/glib/enums/" >- </option>
+      <option value="/lib/glib/package/" >- </option>
+      <option value="/lib/gobject/bitfields/" >- </option>
+      <option value="/lib/gobject/constant/" >- </option>
+      <option value="/lib/gobject/enumeration/" >- </option>
+      <option value="/lib/gobject/enums/" >- </option>
+      <option value="/lib/gobject/package/" >- </option>
+      <option value="/lib/gtk/bitfields/" >- </option>
+      <option value="/lib/gtk/constant/" >- </option>
+      <option value="/lib/gtk/enumeration/" >- </option>
+      <option value="/lib/gtk/enums/" >- </option>
+      <option value="/lib/gtk/package/" >- </option>
+      <option value="/lib/pango/bitfields/" >- </option>
+      <option value="/lib/pango/constant/" >- </option>
+      <option value="/lib/pango/enumeration/" >- </option>
+      <option value="/lib/pango/enums/" >- </option>
+      <option value="/lib/pango/package/" >- </option>
+  
+
+
+
+        </select>
+      </center>
+    </div>
+      <div>
+        <div class="searchbox">
+          <input data-search-input id="search-by" type="text" placeholder="Search...">
+        </div>
+        <script type="text/javascript" src="/js/lunr.min.js"></script>
+        <script type="text/javascript" src="/js/auto-complete.js"></script>
+        <link href="/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+          
+              var baseurl = "\/";
+          
+        </script>
+        <script type="text/javascript" src="/js/search.js"></script>
+      </div>
+    
+
+    <h1></h1>
+    
+    
+    
+    
+
+<h1 id="gio-enums"><code>gio</code> enums</h1>
+
+<h2 id="bustype"><code>BusType</code></h2>
+
+<p>An enumeration for well-known message buses.</p>
+
+<p>C - <code>GBusType</code></p>
+
+<h3 id="bus-type-starter-1">BUS_TYPE_STARTER = -1</h3>
+
+<p>An alias for the message bus that activated the process, if any.</p>
+
+<h3 id="bus-type-none-0">BUS_TYPE_NONE = 0</h3>
+
+<p>Not a message bus.</p>
+
+<h3 id="bus-type-system-1">BUS_TYPE_SYSTEM = 1</h3>
+
+<p>The system-wide message bus.</p>
+
+<h3 id="bus-type-session-2">BUS_TYPE_SESSION = 2</h3>
+
+<p>The login session message bus.</p>
+
+<h2 id="converterresult"><code>ConverterResult</code></h2>
+
+<p>Results returned from g_converter_convert().</p>
+
+<p>C - <code>GConverterResult</code></p>
+
+<h3 id="converter-error-0">CONVERTER_ERROR = 0</h3>
+
+<p>There was an error during conversion.</p>
+
+<h3 id="converter-converted-1">CONVERTER_CONVERTED = 1</h3>
+
+<p>Some data was consumed or produced</p>
+
+<h3 id="converter-finished-2">CONVERTER_FINISHED = 2</h3>
+
+<p>The conversion is finished</p>
+
+<h3 id="converter-flushed-3">CONVERTER_FLUSHED = 3</h3>
+
+<p>Flushing is finished</p>
+
+<h2 id="credentialstype"><code>CredentialsType</code></h2>
+
+<p>Enumeration describing different kinds of native credential types.</p>
+
+<p>C - <code>GCredentialsType</code></p>
+
+<h3 id="credentials-type-invalid-0">CREDENTIALS_TYPE_INVALID = 0</h3>
+
+<p>Indicates an invalid native credential type.</p>
+
+<h3 id="credentials-type-linux-ucred-1">CREDENTIALS_TYPE_LINUX_UCRED = 1</h3>
+
+<p>The native credentials type is a struct ucred.</p>
+
+<h3 id="credentials-type-freebsd-cmsgcred-2">CREDENTIALS_TYPE_FREEBSD_CMSGCRED = 2</h3>
+
+<p>The native credentials type is a struct cmsgcred.</p>
+
+<h3 id="credentials-type-openbsd-sockpeercred-3">CREDENTIALS_TYPE_OPENBSD_SOCKPEERCRED = 3</h3>
+
+<p>The native credentials type is a struct sockpeercred. Added in 2.30.</p>
+
+<h3 id="credentials-type-solaris-ucred-4">CREDENTIALS_TYPE_SOLARIS_UCRED = 4</h3>
+
+<p>The native credentials type is a ucred_t. Added in 2.40.</p>
+
+<h3 id="credentials-type-netbsd-unpcbid-5">CREDENTIALS_TYPE_NETBSD_UNPCBID = 5</h3>
+
+<p>The native credentials type is a struct unpcbid.</p>
+
+<h2 id="dbuserror"><code>DBusError</code></h2>
+
+<p>Error codes for the %G_DBUS_ERROR error domain.</p>
+
+<p>C - <code>GDBusError</code></p>
+
+<h3 id="dbus-error-failed-0">DBUS_ERROR_FAILED = 0</h3>
+
+<p>A generic error; &ldquo;something went wrong&rdquo; - see the error message for
+more.</p>
+
+<h3 id="dbus-error-no-memory-1">DBUS_ERROR_NO_MEMORY = 1</h3>
+
+<p>There was not enough memory to complete an operation.</p>
+
+<h3 id="dbus-error-service-unknown-2">DBUS_ERROR_SERVICE_UNKNOWN = 2</h3>
+
+<p>The bus doesn&rsquo;t know how to launch a service to supply the bus name
+you wanted.</p>
+
+<h3 id="dbus-error-name-has-no-owner-3">DBUS_ERROR_NAME_HAS_NO_OWNER = 3</h3>
+
+<p>The bus name you referenced doesn&rsquo;t exist (i.e. no application owns
+it).</p>
+
+<h3 id="dbus-error-no-reply-4">DBUS_ERROR_NO_REPLY = 4</h3>
+
+<p>No reply to a message expecting one, usually means a timeout occurred.</p>
+
+<h3 id="dbus-error-io-error-5">DBUS_ERROR_IO_ERROR = 5</h3>
+
+<p>Something went wrong reading or writing to a socket, for example.</p>
+
+<h3 id="dbus-error-bad-address-6">DBUS_ERROR_BAD_ADDRESS = 6</h3>
+
+<p>A D-Bus bus address was malformed.</p>
+
+<h3 id="dbus-error-not-supported-7">DBUS_ERROR_NOT_SUPPORTED = 7</h3>
+
+<p>Requested operation isn&rsquo;t supported (like ENOSYS on UNIX).</p>
+
+<h3 id="dbus-error-limits-exceeded-8">DBUS_ERROR_LIMITS_EXCEEDED = 8</h3>
+
+<p>Some limited resource is exhausted.</p>
+
+<h3 id="dbus-error-access-denied-9">DBUS_ERROR_ACCESS_DENIED = 9</h3>
+
+<p>Security restrictions don&rsquo;t allow doing what you&rsquo;re trying to do.</p>
+
+<h3 id="dbus-error-auth-failed-10">DBUS_ERROR_AUTH_FAILED = 10</h3>
+
+<p>Authentication didn&rsquo;t work.</p>
+
+<h3 id="dbus-error-no-server-11">DBUS_ERROR_NO_SERVER = 11</h3>
+
+<p>Unable to connect to server (probably caused by ECONNREFUSED on a
+socket).</p>
+
+<h3 id="dbus-error-timeout-12">DBUS_ERROR_TIMEOUT = 12</h3>
+
+<p>Certain timeout errors, possibly ETIMEDOUT on a socket.  Note that
+%G_DBUS_ERROR_NO_REPLY is used for message reply timeouts. Warning:
+this is confusingly-named given that %G_DBUS_ERROR_TIMED_OUT also
+exists. We can&rsquo;t fix it for compatibility reasons so just be
+careful.</p>
+
+<h3 id="dbus-error-no-network-13">DBUS_ERROR_NO_NETWORK = 13</h3>
+
+<p>No network access (probably ENETUNREACH on a socket).</p>
+
+<h3 id="dbus-error-address-in-use-14">DBUS_ERROR_ADDRESS_IN_USE = 14</h3>
+
+<p>Can&rsquo;t bind a socket since its address is in use (i.e. EADDRINUSE).</p>
+
+<h3 id="dbus-error-disconnected-15">DBUS_ERROR_DISCONNECTED = 15</h3>
+
+<p>The connection is disconnected and you&rsquo;re trying to use it.</p>
+
+<h3 id="dbus-error-invalid-args-16">DBUS_ERROR_INVALID_ARGS = 16</h3>
+
+<p>Invalid arguments passed to a method call.</p>
+
+<h3 id="dbus-error-file-not-found-17">DBUS_ERROR_FILE_NOT_FOUND = 17</h3>
+
+<p>Missing file.</p>
+
+<h3 id="dbus-error-file-exists-18">DBUS_ERROR_FILE_EXISTS = 18</h3>
+
+<p>Existing file and the operation you&rsquo;re using does not silently overwrite.</p>
+
+<h3 id="dbus-error-unknown-method-19">DBUS_ERROR_UNKNOWN_METHOD = 19</h3>
+
+<p>Method name you invoked isn&rsquo;t known by the object you invoked it on.</p>
+
+<h3 id="dbus-error-timed-out-20">DBUS_ERROR_TIMED_OUT = 20</h3>
+
+<p>Certain timeout errors, e.g. while starting a service. Warning: this is
+confusingly-named given that %G_DBUS_ERROR_TIMEOUT also exists. We
+can&rsquo;t fix it for compatibility reasons so just be careful.</p>
+
+<h3 id="dbus-error-match-rule-not-found-21">DBUS_ERROR_MATCH_RULE_NOT_FOUND = 21</h3>
+
+<p>Tried to remove or modify a match rule that didn&rsquo;t exist.</p>
+
+<h3 id="dbus-error-match-rule-invalid-22">DBUS_ERROR_MATCH_RULE_INVALID = 22</h3>
+
+<p>The match rule isn&rsquo;t syntactically valid.</p>
+
+<h3 id="dbus-error-spawn-exec-failed-23">DBUS_ERROR_SPAWN_EXEC_FAILED = 23</h3>
+
+<p>While starting a new process, the exec() call failed.</p>
+
+<h3 id="dbus-error-spawn-fork-failed-24">DBUS_ERROR_SPAWN_FORK_FAILED = 24</h3>
+
+<p>While starting a new process, the fork() call failed.</p>
+
+<h3 id="dbus-error-spawn-child-exited-25">DBUS_ERROR_SPAWN_CHILD_EXITED = 25</h3>
+
+<p>While starting a new process, the child exited with a status code.</p>
+
+<h3 id="dbus-error-spawn-child-signaled-26">DBUS_ERROR_SPAWN_CHILD_SIGNALED = 26</h3>
+
+<p>While starting a new process, the child exited on a signal.</p>
+
+<h3 id="dbus-error-spawn-failed-27">DBUS_ERROR_SPAWN_FAILED = 27</h3>
+
+<p>While starting a new process, something went wrong.</p>
+
+<h3 id="dbus-error-spawn-setup-failed-28">DBUS_ERROR_SPAWN_SETUP_FAILED = 28</h3>
+
+<p>We failed to setup the environment correctly.</p>
+
+<h3 id="dbus-error-spawn-config-invalid-29">DBUS_ERROR_SPAWN_CONFIG_INVALID = 29</h3>
+
+<p>We failed to setup the config parser correctly.</p>
+
+<h3 id="dbus-error-spawn-service-invalid-30">DBUS_ERROR_SPAWN_SERVICE_INVALID = 30</h3>
+
+<p>Bus name was not valid.</p>
+
+<h3 id="dbus-error-spawn-service-not-found-31">DBUS_ERROR_SPAWN_SERVICE_NOT_FOUND = 31</h3>
+
+<p>Service file not found in system-services directory.</p>
+
+<h3 id="dbus-error-spawn-permissions-invalid-32">DBUS_ERROR_SPAWN_PERMISSIONS_INVALID = 32</h3>
+
+<p>Permissions are incorrect on the setuid helper.</p>
+
+<h3 id="dbus-error-spawn-file-invalid-33">DBUS_ERROR_SPAWN_FILE_INVALID = 33</h3>
+
+<p>Service file invalid (Name, User or Exec missing).</p>
+
+<h3 id="dbus-error-spawn-no-memory-34">DBUS_ERROR_SPAWN_NO_MEMORY = 34</h3>
+
+<p>Tried to get a UNIX process ID and it wasn&rsquo;t available.</p>
+
+<h3 id="dbus-error-unix-process-id-unknown-35">DBUS_ERROR_UNIX_PROCESS_ID_UNKNOWN = 35</h3>
+
+<p>Tried to get a UNIX process ID and it wasn&rsquo;t available.</p>
+
+<h3 id="dbus-error-invalid-signature-36">DBUS_ERROR_INVALID_SIGNATURE = 36</h3>
+
+<p>A type signature is not valid.</p>
+
+<h3 id="dbus-error-invalid-file-content-37">DBUS_ERROR_INVALID_FILE_CONTENT = 37</h3>
+
+<p>A file contains invalid syntax or is otherwise broken.</p>
+
+<h3 id="dbus-error-selinux-security-context-unknown-38">DBUS_ERROR_SELINUX_SECURITY_CONTEXT_UNKNOWN = 38</h3>
+
+<p>Asked for SELinux security context and it wasn&rsquo;t available.</p>
+
+<h3 id="dbus-error-adt-audit-data-unknown-39">DBUS_ERROR_ADT_AUDIT_DATA_UNKNOWN = 39</h3>
+
+<p>Asked for ADT audit data and it wasn&rsquo;t available.</p>
+
+<h3 id="dbus-error-object-path-in-use-40">DBUS_ERROR_OBJECT_PATH_IN_USE = 40</h3>
+
+<p>There&rsquo;s already an object with the requested object path.</p>
+
+<h3 id="dbus-error-unknown-object-41">DBUS_ERROR_UNKNOWN_OBJECT = 41</h3>
+
+<p>Object you invoked a method on isn&rsquo;t known. Since 2.42</p>
+
+<h3 id="dbus-error-unknown-interface-42">DBUS_ERROR_UNKNOWN_INTERFACE = 42</h3>
+
+<p>Interface you invoked a method on isn&rsquo;t known by the object. Since 2.42</p>
+
+<h3 id="dbus-error-unknown-property-43">DBUS_ERROR_UNKNOWN_PROPERTY = 43</h3>
+
+<p>Property you tried to access isn&rsquo;t known by the object. Since 2.42</p>
+
+<h3 id="dbus-error-property-read-only-44">DBUS_ERROR_PROPERTY_READ_ONLY = 44</h3>
+
+<p>Property you tried to set is read-only. Since 2.42</p>
+
+<h2 id="dbusmessagebyteorder"><code>DBusMessageByteOrder</code></h2>
+
+<p>Enumeration used to describe the byte order of a D-Bus message.</p>
+
+<p>C - <code>GDBusMessageByteOrder</code></p>
+
+<h3 id="dbus-message-byte-order-big-endian-66">DBUS_MESSAGE_BYTE_ORDER_BIG_ENDIAN = 66</h3>
+
+<p>The byte order is big endian.</p>
+
+<h3 id="dbus-message-byte-order-little-endian-108">DBUS_MESSAGE_BYTE_ORDER_LITTLE_ENDIAN = 108</h3>
+
+<p>The byte order is little endian.</p>
+
+<h2 id="dbusmessageheaderfield"><code>DBusMessageHeaderField</code></h2>
+
+<p>Header fields used in #GDBusMessage.</p>
+
+<p>C - <code>GDBusMessageHeaderField</code></p>
+
+<h3 id="dbus-message-header-field-invalid-0">DBUS_MESSAGE_HEADER_FIELD_INVALID = 0</h3>
+
+<p>Not a valid header field.</p>
+
+<h3 id="dbus-message-header-field-path-1">DBUS_MESSAGE_HEADER_FIELD_PATH = 1</h3>
+
+<p>The object path.</p>
+
+<h3 id="dbus-message-header-field-interface-2">DBUS_MESSAGE_HEADER_FIELD_INTERFACE = 2</h3>
+
+<p>The interface name.</p>
+
+<h3 id="dbus-message-header-field-member-3">DBUS_MESSAGE_HEADER_FIELD_MEMBER = 3</h3>
+
+<p>The method or signal name.</p>
+
+<h3 id="dbus-message-header-field-error-name-4">DBUS_MESSAGE_HEADER_FIELD_ERROR_NAME = 4</h3>
+
+<p>The name of the error that occurred.</p>
+
+<h3 id="dbus-message-header-field-reply-serial-5">DBUS_MESSAGE_HEADER_FIELD_REPLY_SERIAL = 5</h3>
+
+<p>The serial number the message is a reply to.</p>
+
+<h3 id="dbus-message-header-field-destination-6">DBUS_MESSAGE_HEADER_FIELD_DESTINATION = 6</h3>
+
+<p>The name the message is intended for.</p>
+
+<h3 id="dbus-message-header-field-sender-7">DBUS_MESSAGE_HEADER_FIELD_SENDER = 7</h3>
+
+<p>Unique name of the sender of the message (filled in by the bus).</p>
+
+<h3 id="dbus-message-header-field-signature-8">DBUS_MESSAGE_HEADER_FIELD_SIGNATURE = 8</h3>
+
+<p>The signature of the message body.</p>
+
+<h3 id="dbus-message-header-field-num-unix-fds-9">DBUS_MESSAGE_HEADER_FIELD_NUM_UNIX_FDS = 9</h3>
+
+<p>The number of UNIX file descriptors that accompany the message.</p>
+
+<h2 id="dbusmessagetype"><code>DBusMessageType</code></h2>
+
+<p>Message types used in #GDBusMessage.</p>
+
+<p>C - <code>GDBusMessageType</code></p>
+
+<h3 id="dbus-message-type-invalid-0">DBUS_MESSAGE_TYPE_INVALID = 0</h3>
+
+<p>Message is of invalid type.</p>
+
+<h3 id="dbus-message-type-method-call-1">DBUS_MESSAGE_TYPE_METHOD_CALL = 1</h3>
+
+<p>Method call.</p>
+
+<h3 id="dbus-message-type-method-return-2">DBUS_MESSAGE_TYPE_METHOD_RETURN = 2</h3>
+
+<p>Method reply.</p>
+
+<h3 id="dbus-message-type-error-3">DBUS_MESSAGE_TYPE_ERROR = 3</h3>
+
+<p>Error reply.</p>
+
+<h3 id="dbus-message-type-signal-4">DBUS_MESSAGE_TYPE_SIGNAL = 4</h3>
+
+<p>Signal emission.</p>
+
+<h2 id="datastreambyteorder"><code>DataStreamByteOrder</code></h2>
+
+<p>#GDataStreamByteOrder is used to ensure proper endianness of streaming data sources
+across various machine architectures.</p>
+
+<p>C - <code>GDataStreamByteOrder</code></p>
+
+<h3 id="data-stream-byte-order-big-endian-0">DATA_STREAM_BYTE_ORDER_BIG_ENDIAN = 0</h3>
+
+<p>Selects Big Endian byte order.</p>
+
+<h3 id="data-stream-byte-order-little-endian-1">DATA_STREAM_BYTE_ORDER_LITTLE_ENDIAN = 1</h3>
+
+<p>Selects Little Endian byte order.</p>
+
+<h3 id="data-stream-byte-order-host-endian-2">DATA_STREAM_BYTE_ORDER_HOST_ENDIAN = 2</h3>
+
+<p>Selects endianness based on host machine&rsquo;s architecture.</p>
+
+<h2 id="datastreamnewlinetype"><code>DataStreamNewlineType</code></h2>
+
+<p>#GDataStreamNewlineType is used when checking for or setting the line endings for a given file.</p>
+
+<p>C - <code>GDataStreamNewlineType</code></p>
+
+<h3 id="data-stream-newline-type-lf-0">DATA_STREAM_NEWLINE_TYPE_LF = 0</h3>
+
+<p>Selects &ldquo;LF&rdquo; line endings, common on most modern UNIX platforms.</p>
+
+<h3 id="data-stream-newline-type-cr-1">DATA_STREAM_NEWLINE_TYPE_CR = 1</h3>
+
+<p>Selects &ldquo;CR&rdquo; line endings.</p>
+
+<h3 id="data-stream-newline-type-cr-lf-2">DATA_STREAM_NEWLINE_TYPE_CR_LF = 2</h3>
+
+<p>Selects &ldquo;CR, LF&rdquo; line ending, common on Microsoft Windows.</p>
+
+<h3 id="data-stream-newline-type-any-3">DATA_STREAM_NEWLINE_TYPE_ANY = 3</h3>
+
+<p>Automatically try to handle any line ending type.</p>
+
+<h2 id="drivestartstoptype"><code>DriveStartStopType</code></h2>
+
+<p>Enumeration describing how a drive can be started/stopped.</p>
+
+<p>C - <code>GDriveStartStopType</code></p>
+
+<h3 id="drive-start-stop-type-unknown-0">DRIVE_START_STOP_TYPE_UNKNOWN = 0</h3>
+
+<p>Unknown or drive doesn&rsquo;t support
+   start/stop.</p>
+
+<h3 id="drive-start-stop-type-shutdown-1">DRIVE_START_STOP_TYPE_SHUTDOWN = 1</h3>
+
+<p>The stop method will physically
+   shut down the drive and e.g. power down the port the drive is
+   attached to.</p>
+
+<h3 id="drive-start-stop-type-network-2">DRIVE_START_STOP_TYPE_NETWORK = 2</h3>
+
+<p>The start/stop methods are used
+   for connecting/disconnect to the drive over the network.</p>
+
+<h3 id="drive-start-stop-type-multidisk-3">DRIVE_START_STOP_TYPE_MULTIDISK = 3</h3>
+
+<p>The start/stop methods will
+   assemble/disassemble a virtual drive from several physical
+   drives.</p>
+
+<h3 id="drive-start-stop-type-password-4">DRIVE_START_STOP_TYPE_PASSWORD = 4</h3>
+
+<p>The start/stop methods will
+   unlock/lock the disk (for example using the ATA <quote>SECURITY
+   UNLOCK DEVICE</quote> command)</p>
+
+<h2 id="emblemorigin"><code>EmblemOrigin</code></h2>
+
+<p>GEmblemOrigin is used to add information about the origin of the emblem
+to #GEmblem.</p>
+
+<p>C - <code>GEmblemOrigin</code></p>
+
+<h3 id="emblem-origin-unknown-0">EMBLEM_ORIGIN_UNKNOWN = 0</h3>
+
+<p>Emblem of unknown origin</p>
+
+<h3 id="emblem-origin-device-1">EMBLEM_ORIGIN_DEVICE = 1</h3>
+
+<p>Emblem adds device-specific information</p>
+
+<h3 id="emblem-origin-livemetadata-2">EMBLEM_ORIGIN_LIVEMETADATA = 2</h3>
+
+<p>Emblem depicts live metadata, such as &ldquo;readonly&rdquo;</p>
+
+<h3 id="emblem-origin-tag-3">EMBLEM_ORIGIN_TAG = 3</h3>
+
+<p>Emblem comes from a user-defined tag, e.g. set by nautilus (in the future)</p>
+
+<h2 id="fileattributestatus"><code>FileAttributeStatus</code></h2>
+
+<p>Used by g_file_set_attributes_from_info() when setting file attributes.</p>
+
+<p>C - <code>GFileAttributeStatus</code></p>
+
+<h3 id="file-attribute-status-unset-0">FILE_ATTRIBUTE_STATUS_UNSET = 0</h3>
+
+<p>Attribute value is unset (empty).</p>
+
+<h3 id="file-attribute-status-set-1">FILE_ATTRIBUTE_STATUS_SET = 1</h3>
+
+<p>Attribute value is set.</p>
+
+<h3 id="file-attribute-status-error-setting-2">FILE_ATTRIBUTE_STATUS_ERROR_SETTING = 2</h3>
+
+<p>Indicates an error in setting the value.</p>
+
+<h2 id="fileattributetype"><code>FileAttributeType</code></h2>
+
+<p>The data types for file attributes.</p>
+
+<p>C - <code>GFileAttributeType</code></p>
+
+<h3 id="file-attribute-type-invalid-0">FILE_ATTRIBUTE_TYPE_INVALID = 0</h3>
+
+<p>indicates an invalid or uninitalized type.</p>
+
+<h3 id="file-attribute-type-string-1">FILE_ATTRIBUTE_TYPE_STRING = 1</h3>
+
+<p>a null terminated UTF8 string.</p>
+
+<h3 id="file-attribute-type-byte-string-2">FILE_ATTRIBUTE_TYPE_BYTE_STRING = 2</h3>
+
+<p>a zero terminated string of non-zero bytes.</p>
+
+<h3 id="file-attribute-type-boolean-3">FILE_ATTRIBUTE_TYPE_BOOLEAN = 3</h3>
+
+<p>a boolean value.</p>
+
+<h3 id="file-attribute-type-uint32-4">FILE_ATTRIBUTE_TYPE_UINT32 = 4</h3>
+
+<p>an unsigned 4-byte/32-bit integer.</p>
+
+<h3 id="file-attribute-type-int32-5">FILE_ATTRIBUTE_TYPE_INT32 = 5</h3>
+
+<p>a signed 4-byte/32-bit integer.</p>
+
+<h3 id="file-attribute-type-uint64-6">FILE_ATTRIBUTE_TYPE_UINT64 = 6</h3>
+
+<p>an unsigned 8-byte/64-bit integer.</p>
+
+<h3 id="file-attribute-type-int64-7">FILE_ATTRIBUTE_TYPE_INT64 = 7</h3>
+
+<p>a signed 8-byte/64-bit integer.</p>
+
+<h3 id="file-attribute-type-object-8">FILE_ATTRIBUTE_TYPE_OBJECT = 8</h3>
+
+<p>a #GObject.</p>
+
+<h3 id="file-attribute-type-stringv-9">FILE_ATTRIBUTE_TYPE_STRINGV = 9</h3>
+
+<p>a %NULL terminated char **. Since 2.22</p>
+
+<h2 id="filemonitorevent"><code>FileMonitorEvent</code></h2>
+
+<p>Specifies what type of event a monitor event is.</p>
+
+<p>C - <code>GFileMonitorEvent</code></p>
+
+<h3 id="file-monitor-event-changed-0">FILE_MONITOR_EVENT_CHANGED = 0</h3>
+
+<p>a file changed.</p>
+
+<h3 id="file-monitor-event-changes-done-hint-1">FILE_MONITOR_EVENT_CHANGES_DONE_HINT = 1</h3>
+
+<p>a hint that this was probably the last change in a set of changes.</p>
+
+<h3 id="file-monitor-event-deleted-2">FILE_MONITOR_EVENT_DELETED = 2</h3>
+
+<p>a file was deleted.</p>
+
+<h3 id="file-monitor-event-created-3">FILE_MONITOR_EVENT_CREATED = 3</h3>
+
+<p>a file was created.</p>
+
+<h3 id="file-monitor-event-attribute-changed-4">FILE_MONITOR_EVENT_ATTRIBUTE_CHANGED = 4</h3>
+
+<p>a file attribute was changed.</p>
+
+<h3 id="file-monitor-event-pre-unmount-5">FILE_MONITOR_EVENT_PRE_UNMOUNT = 5</h3>
+
+<p>the file location will soon be unmounted.</p>
+
+<h3 id="file-monitor-event-unmounted-6">FILE_MONITOR_EVENT_UNMOUNTED = 6</h3>
+
+<p>the file location was unmounted.</p>
+
+<h3 id="file-monitor-event-moved-7">FILE_MONITOR_EVENT_MOVED = 7</h3>
+
+<p>the file was moved &ndash; only sent if the
+  (deprecated) %G_FILE_MONITOR_SEND_MOVED flag is set</p>
+
+<h3 id="file-monitor-event-renamed-8">FILE_MONITOR_EVENT_RENAMED = 8</h3>
+
+<p>the file was renamed within the
+  current directory &ndash; only sent if the %G_FILE_MONITOR_WATCH_MOVES
+  flag is set.  Since: 2.46.</p>
+
+<h3 id="file-monitor-event-moved-in-9">FILE_MONITOR_EVENT_MOVED_IN = 9</h3>
+
+<p>the file was moved into the
+  monitored directory from another location &ndash; only sent if the
+  %G_FILE_MONITOR_WATCH_MOVES flag is set.  Since: 2.46.</p>
+
+<h3 id="file-monitor-event-moved-out-10">FILE_MONITOR_EVENT_MOVED_OUT = 10</h3>
+
+<p>the file was moved out of the
+  monitored directory to another location &ndash; only sent if the
+  %G_FILE_MONITOR_WATCH_MOVES flag is set.  Since: 2.46</p>
+
+<h2 id="filetype"><code>FileType</code></h2>
+
+<p>Indicates the file&rsquo;s on-disk type.</p>
+
+<p>C - <code>GFileType</code></p>
+
+<h3 id="file-type-unknown-0">FILE_TYPE_UNKNOWN = 0</h3>
+
+<p>File&rsquo;s type is unknown.</p>
+
+<h3 id="file-type-regular-1">FILE_TYPE_REGULAR = 1</h3>
+
+<p>File handle represents a regular file.</p>
+
+<h3 id="file-type-directory-2">FILE_TYPE_DIRECTORY = 2</h3>
+
+<p>File handle represents a directory.</p>
+
+<h3 id="file-type-symbolic-link-3">FILE_TYPE_SYMBOLIC_LINK = 3</h3>
+
+<p>File handle represents a symbolic link
+   (Unix systems).</p>
+
+<h3 id="file-type-special-4">FILE_TYPE_SPECIAL = 4</h3>
+
+<p>File is a &ldquo;special&rdquo; file, such as a socket, fifo,
+   block device, or character device.</p>
+
+<h3 id="file-type-shortcut-5">FILE_TYPE_SHORTCUT = 5</h3>
+
+<p>File is a shortcut (Windows systems).</p>
+
+<h3 id="file-type-mountable-6">FILE_TYPE_MOUNTABLE = 6</h3>
+
+<p>File is a mountable location.</p>
+
+<h2 id="filesystempreviewtype"><code>FilesystemPreviewType</code></h2>
+
+<p>Indicates a hint from the file system whether files should be
+previewed in a file manager. Returned as the value of the key
+&num;G_FILE_ATTRIBUTE_FILESYSTEM_USE_PREVIEW.</p>
+
+<p>C - <code>GFilesystemPreviewType</code></p>
+
+<h3 id="filesystem-preview-type-if-always-0">FILESYSTEM_PREVIEW_TYPE_IF_ALWAYS = 0</h3>
+
+<p>Only preview files if user has explicitly requested it.</p>
+
+<h3 id="filesystem-preview-type-if-local-1">FILESYSTEM_PREVIEW_TYPE_IF_LOCAL = 1</h3>
+
+<p>Preview files if user has requested preview of &ldquo;local&rdquo; files.</p>
+
+<h3 id="filesystem-preview-type-never-2">FILESYSTEM_PREVIEW_TYPE_NEVER = 2</h3>
+
+<p>Never preview files.</p>
+
+<h2 id="ioerrorenum"><code>IOErrorEnum</code></h2>
+
+<p>Error codes returned by GIO functions.</p>
+
+<p>Note that this domain may be extended in future GLib releases. In
+general, new error codes either only apply to new APIs, or else
+replace %G_IO_ERROR_FAILED in cases that were not explicitly
+distinguished before. You should therefore avoid writing code like
+|[<!-- language="C" -->
+if (g_error_matches (error, G_IO_ERROR, G_IO_ERROR_FAILED))
+  {
+    // Assume that this is EPRINTERONFIRE
+    &hellip;
+  }
+]|
+but should instead treat all unrecognized error codes the same as
+&num;G_IO_ERROR_FAILED.</p>
+
+<p>C - <code>GIOErrorEnum</code></p>
+
+<h3 id="io-error-failed-0">IO_ERROR_FAILED = 0</h3>
+
+<p>Generic error condition for when an operation fails
+    and no more specific #GIOErrorEnum value is defined.</p>
+
+<h3 id="io-error-not-found-1">IO_ERROR_NOT_FOUND = 1</h3>
+
+<p>File not found.</p>
+
+<h3 id="io-error-exists-2">IO_ERROR_EXISTS = 2</h3>
+
+<p>File already exists.</p>
+
+<h3 id="io-error-is-directory-3">IO_ERROR_IS_DIRECTORY = 3</h3>
+
+<p>File is a directory.</p>
+
+<h3 id="io-error-not-directory-4">IO_ERROR_NOT_DIRECTORY = 4</h3>
+
+<p>File is not a directory.</p>
+
+<h3 id="io-error-not-empty-5">IO_ERROR_NOT_EMPTY = 5</h3>
+
+<p>File is a directory that isn&rsquo;t empty.</p>
+
+<h3 id="io-error-not-regular-file-6">IO_ERROR_NOT_REGULAR_FILE = 6</h3>
+
+<p>File is not a regular file.</p>
+
+<h3 id="io-error-not-symbolic-link-7">IO_ERROR_NOT_SYMBOLIC_LINK = 7</h3>
+
+<p>File is not a symbolic link.</p>
+
+<h3 id="io-error-not-mountable-file-8">IO_ERROR_NOT_MOUNTABLE_FILE = 8</h3>
+
+<p>File cannot be mounted.</p>
+
+<h3 id="io-error-filename-too-long-9">IO_ERROR_FILENAME_TOO_LONG = 9</h3>
+
+<p>Filename is too many characters.</p>
+
+<h3 id="io-error-invalid-filename-10">IO_ERROR_INVALID_FILENAME = 10</h3>
+
+<p>Filename is invalid or contains invalid characters.</p>
+
+<h3 id="io-error-too-many-links-11">IO_ERROR_TOO_MANY_LINKS = 11</h3>
+
+<p>File contains too many symbolic links.</p>
+
+<h3 id="io-error-no-space-12">IO_ERROR_NO_SPACE = 12</h3>
+
+<p>No space left on drive.</p>
+
+<h3 id="io-error-invalid-argument-13">IO_ERROR_INVALID_ARGUMENT = 13</h3>
+
+<p>Invalid argument.</p>
+
+<h3 id="io-error-permission-denied-14">IO_ERROR_PERMISSION_DENIED = 14</h3>
+
+<p>Permission denied.</p>
+
+<h3 id="io-error-not-supported-15">IO_ERROR_NOT_SUPPORTED = 15</h3>
+
+<p>Operation (or one of its parameters) not supported</p>
+
+<h3 id="io-error-not-mounted-16">IO_ERROR_NOT_MOUNTED = 16</h3>
+
+<p>File isn&rsquo;t mounted.</p>
+
+<h3 id="io-error-already-mounted-17">IO_ERROR_ALREADY_MOUNTED = 17</h3>
+
+<p>File is already mounted.</p>
+
+<h3 id="io-error-closed-18">IO_ERROR_CLOSED = 18</h3>
+
+<p>File was closed.</p>
+
+<h3 id="io-error-cancelled-19">IO_ERROR_CANCELLED = 19</h3>
+
+<p>Operation was cancelled. See #GCancellable.</p>
+
+<h3 id="io-error-pending-20">IO_ERROR_PENDING = 20</h3>
+
+<p>Operations are still pending.</p>
+
+<h3 id="io-error-read-only-21">IO_ERROR_READ_ONLY = 21</h3>
+
+<p>File is read only.</p>
+
+<h3 id="io-error-cant-create-backup-22">IO_ERROR_CANT_CREATE_BACKUP = 22</h3>
+
+<p>Backup couldn&rsquo;t be created.</p>
+
+<h3 id="io-error-wrong-etag-23">IO_ERROR_WRONG_ETAG = 23</h3>
+
+<p>File&rsquo;s Entity Tag was incorrect.</p>
+
+<h3 id="io-error-timed-out-24">IO_ERROR_TIMED_OUT = 24</h3>
+
+<p>Operation timed out.</p>
+
+<h3 id="io-error-would-recurse-25">IO_ERROR_WOULD_RECURSE = 25</h3>
+
+<p>Operation would be recursive.</p>
+
+<h3 id="io-error-busy-26">IO_ERROR_BUSY = 26</h3>
+
+<p>File is busy.</p>
+
+<h3 id="io-error-would-block-27">IO_ERROR_WOULD_BLOCK = 27</h3>
+
+<p>Operation would block.</p>
+
+<h3 id="io-error-host-not-found-28">IO_ERROR_HOST_NOT_FOUND = 28</h3>
+
+<p>Host couldn&rsquo;t be found (remote operations).</p>
+
+<h3 id="io-error-would-merge-29">IO_ERROR_WOULD_MERGE = 29</h3>
+
+<p>Operation would merge files.</p>
+
+<h3 id="io-error-failed-handled-30">IO_ERROR_FAILED_HANDLED = 30</h3>
+
+<p>Operation failed and a helper program has
+    already interacted with the user. Do not display any error dialog.</p>
+
+<h3 id="io-error-too-many-open-files-31">IO_ERROR_TOO_MANY_OPEN_FILES = 31</h3>
+
+<p>The current process has too many files
+    open and can&rsquo;t open any more. Duplicate descriptors do count toward
+    this limit. Since 2.20</p>
+
+<h3 id="io-error-not-initialized-32">IO_ERROR_NOT_INITIALIZED = 32</h3>
+
+<p>The object has not been initialized. Since 2.22</p>
+
+<h3 id="io-error-address-in-use-33">IO_ERROR_ADDRESS_IN_USE = 33</h3>
+
+<p>The requested address is already in use. Since 2.22</p>
+
+<h3 id="io-error-partial-input-34">IO_ERROR_PARTIAL_INPUT = 34</h3>
+
+<p>Need more input to finish operation. Since 2.24</p>
+
+<h3 id="io-error-invalid-data-35">IO_ERROR_INVALID_DATA = 35</h3>
+
+<p>The input data was invalid. Since 2.24</p>
+
+<h3 id="io-error-dbus-error-36">IO_ERROR_DBUS_ERROR = 36</h3>
+
+<p>A remote object generated an error that
+    doesn&rsquo;t correspond to a locally registered #GError error
+    domain. Use g_dbus_error_get_remote_error() to extract the D-Bus
+    error name and g_dbus_error_strip_remote_error() to fix up the
+    message so it matches what was received on the wire. Since 2.26.</p>
+
+<h3 id="io-error-host-unreachable-37">IO_ERROR_HOST_UNREACHABLE = 37</h3>
+
+<p>Host unreachable. Since 2.26</p>
+
+<h3 id="io-error-network-unreachable-38">IO_ERROR_NETWORK_UNREACHABLE = 38</h3>
+
+<p>Network unreachable. Since 2.26</p>
+
+<h3 id="io-error-connection-refused-39">IO_ERROR_CONNECTION_REFUSED = 39</h3>
+
+<p>Connection refused. Since 2.26</p>
+
+<h3 id="io-error-proxy-failed-40">IO_ERROR_PROXY_FAILED = 40</h3>
+
+<p>Connection to proxy server failed. Since 2.26</p>
+
+<h3 id="io-error-proxy-auth-failed-41">IO_ERROR_PROXY_AUTH_FAILED = 41</h3>
+
+<p>Proxy authentication failed. Since 2.26</p>
+
+<h3 id="io-error-proxy-need-auth-42">IO_ERROR_PROXY_NEED_AUTH = 42</h3>
+
+<p>Proxy server needs authentication. Since 2.26</p>
+
+<h3 id="io-error-proxy-not-allowed-43">IO_ERROR_PROXY_NOT_ALLOWED = 43</h3>
+
+<p>Proxy connection is not allowed by ruleset.
+    Since 2.26</p>
+
+<h3 id="io-error-broken-pipe-44">IO_ERROR_BROKEN_PIPE = 44</h3>
+
+<p>Broken pipe. Since 2.36</p>
+
+<h3 id="io-error-connection-closed-44">IO_ERROR_CONNECTION_CLOSED = 44</h3>
+
+<p>Connection closed by peer. Note that this
+    is the same code as %G_IO_ERROR_BROKEN_PIPE; before 2.44 some
+    &ldquo;connection closed&rdquo; errors returned %G_IO_ERROR_BROKEN_PIPE, but others
+    returned %G_IO_ERROR_FAILED. Now they should all return the same
+    value, which has this more logical name. Since 2.44.</p>
+
+<h3 id="io-error-not-connected-45">IO_ERROR_NOT_CONNECTED = 45</h3>
+
+<p>Transport endpoint is not connected. Since 2.44</p>
+
+<h3 id="io-error-message-too-large-46">IO_ERROR_MESSAGE_TOO_LARGE = 46</h3>
+
+<p>Message too large. Since 2.48.</p>
+
+<h2 id="iomodulescopeflags"><code>IOModuleScopeFlags</code></h2>
+
+<p>Flags for use with g_io_module_scope_new().</p>
+
+<p>C - <code>GIOModuleScopeFlags</code></p>
+
+<h3 id="io-module-scope-none-0">IO_MODULE_SCOPE_NONE = 0</h3>
+
+<p>No module scan flags</p>
+
+<h3 id="io-module-scope-block-duplicates-1">IO_MODULE_SCOPE_BLOCK_DUPLICATES = 1</h3>
+
+<p>When using this scope to load or
+    scan modules, automatically block a modules which has the same base
+    basename as previously loaded module.</p>
+
+<h2 id="mountoperationresult"><code>MountOperationResult</code></h2>
+
+<p>#GMountOperationResult is returned as a result when a request for
+information is send by the mounting operation.</p>
+
+<p>C - <code>GMountOperationResult</code></p>
+
+<h3 id="mount-operation-handled-0">MOUNT_OPERATION_HANDLED = 0</h3>
+
+<p>The request was fulfilled and the
+    user specified data is now available</p>
+
+<h3 id="mount-operation-aborted-1">MOUNT_OPERATION_ABORTED = 1</h3>
+
+<p>The user requested the mount operation
+    to be aborted</p>
+
+<h3 id="mount-operation-unhandled-2">MOUNT_OPERATION_UNHANDLED = 2</h3>
+
+<p>The request was unhandled (i.e. not
+    implemented)</p>
+
+<h2 id="networkconnectivity"><code>NetworkConnectivity</code></h2>
+
+<p>The host&rsquo;s network connectivity state, as reported by #GNetworkMonitor.</p>
+
+<p>C - <code>GNetworkConnectivity</code></p>
+
+<h3 id="network-connectivity-local-1">NETWORK_CONNECTIVITY_LOCAL = 1</h3>
+
+<p>The host is not configured with a
+  route to the Internet; it may or may not be connected to a local
+  network.</p>
+
+<h3 id="network-connectivity-limited-2">NETWORK_CONNECTIVITY_LIMITED = 2</h3>
+
+<p>The host is connected to a network, but
+  does not appear to be able to reach the full Internet, perhaps
+  due to upstream network problems.</p>
+
+<h3 id="network-connectivity-portal-3">NETWORK_CONNECTIVITY_PORTAL = 3</h3>
+
+<p>The host is behind a captive portal and
+  cannot reach the full Internet.</p>
+
+<h3 id="network-connectivity-full-4">NETWORK_CONNECTIVITY_FULL = 4</h3>
+
+<p>The host is connected to a network, and
+  appears to be able to reach the full Internet.</p>
+
+<h2 id="notificationpriority"><code>NotificationPriority</code></h2>
+
+<p>Priority levels for #GNotifications.</p>
+
+<p>C - <code>GNotificationPriority</code></p>
+
+<h3 id="notification-priority-normal-0">NOTIFICATION_PRIORITY_NORMAL = 0</h3>
+
+<p>the default priority, to be used for the
+  majority of notifications (for example email messages, software updates,
+  completed download/sync operations)</p>
+
+<h3 id="notification-priority-low-1">NOTIFICATION_PRIORITY_LOW = 1</h3>
+
+<p>for notifications that do not require
+  immediate attention - typically used for contextual background
+  information, such as contact birthdays or local weather</p>
+
+<h3 id="notification-priority-high-2">NOTIFICATION_PRIORITY_HIGH = 2</h3>
+
+<p>for events that require more attention,
+  usually because responses are time-sensitive (for example chat and SMS
+  messages or alarms)</p>
+
+<h3 id="notification-priority-urgent-3">NOTIFICATION_PRIORITY_URGENT = 3</h3>
+
+<p>for urgent notifications, or notifications
+  that require a response in a short space of time (for example phone calls
+  or emergency warnings)</p>
+
+<h2 id="passwordsave"><code>PasswordSave</code></h2>
+
+<p>#GPasswordSave is used to indicate the lifespan of a saved password.</p>
+
+<p>&num;Gvfs stores passwords in the Gnome keyring when this flag allows it
+to, and later retrieves it again from there.</p>
+
+<p>C - <code>GPasswordSave</code></p>
+
+<h3 id="password-save-never-0">PASSWORD_SAVE_NEVER = 0</h3>
+
+<p>never save a password.</p>
+
+<h3 id="password-save-for-session-1">PASSWORD_SAVE_FOR_SESSION = 1</h3>
+
+<p>save a password for the session.</p>
+
+<h3 id="password-save-permanently-2">PASSWORD_SAVE_PERMANENTLY = 2</h3>
+
+<p>save a password permanently.</p>
+
+<h2 id="resolvererror"><code>ResolverError</code></h2>
+
+<p>An error code used with %G_RESOLVER_ERROR in a #GError returned
+from a #GResolver routine.</p>
+
+<p>C - <code>GResolverError</code></p>
+
+<h3 id="resolver-error-not-found-0">RESOLVER_ERROR_NOT_FOUND = 0</h3>
+
+<p>the requested name/address/service was not
+    found</p>
+
+<h3 id="resolver-error-temporary-failure-1">RESOLVER_ERROR_TEMPORARY_FAILURE = 1</h3>
+
+<p>the requested information could not
+    be looked up due to a network error or similar problem</p>
+
+<h3 id="resolver-error-internal-2">RESOLVER_ERROR_INTERNAL = 2</h3>
+
+<p>unknown error</p>
+
+<h2 id="resolverrecordtype"><code>ResolverRecordType</code></h2>
+
+<p>The type of record that g_resolver_lookup_records() or
+g_resolver_lookup_records_async() should retrieve. The records are returned
+as lists of #GVariant tuples. Each record type has different values in
+the variant tuples returned.</p>
+
+<p>%G_RESOLVER_RECORD_SRV records are returned as variants with the signature
+&lsquo;(qqqs)&rsquo;, containing a guint16 with the priority, a guint16 with the
+weight, a guint16 with the port, and a string of the hostname.</p>
+
+<p>%G_RESOLVER_RECORD_MX records are returned as variants with the signature
+&lsquo;(qs)&rsquo;, representing a guint16 with the preference, and a string containing
+the mail exchanger hostname.</p>
+
+<p>%G_RESOLVER_RECORD_TXT records are returned as variants with the signature
+&lsquo;(as)&rsquo;, representing an array of the strings in the text record.</p>
+
+<p>%G_RESOLVER_RECORD_SOA records are returned as variants with the signature
+&lsquo;(ssuuuuu)&rsquo;, representing a string containing the primary name server, a
+string containing the administrator, the serial as a guint32, the refresh
+interval as guint32, the retry interval as a guint32, the expire timeout
+as a guint32, and the ttl as a guint32.</p>
+
+<p>%G_RESOLVER_RECORD_NS records are returned as variants with the signature
+&lsquo;(s)&rsquo;, representing a string of the hostname of the name server.</p>
+
+<p>C - <code>GResolverRecordType</code></p>
+
+<h3 id="resolver-record-srv-1">RESOLVER_RECORD_SRV = 1</h3>
+
+<p>lookup DNS SRV records for a domain</p>
+
+<h3 id="resolver-record-mx-2">RESOLVER_RECORD_MX = 2</h3>
+
+<p>lookup DNS MX records for a domain</p>
+
+<h3 id="resolver-record-txt-3">RESOLVER_RECORD_TXT = 3</h3>
+
+<p>lookup DNS TXT records for a name</p>
+
+<h3 id="resolver-record-soa-4">RESOLVER_RECORD_SOA = 4</h3>
+
+<p>lookup DNS SOA records for a zone</p>
+
+<h3 id="resolver-record-ns-5">RESOLVER_RECORD_NS = 5</h3>
+
+<p>lookup DNS NS records for a domain</p>
+
+<h2 id="resourceerror"><code>ResourceError</code></h2>
+
+<p>An error code used with %G_RESOURCE_ERROR in a #GError returned
+from a #GResource routine.</p>
+
+<p>C - <code>GResourceError</code></p>
+
+<h3 id="resource-error-not-found-0">RESOURCE_ERROR_NOT_FOUND = 0</h3>
+
+<p>no file was found at the requested path</p>
+
+<h3 id="resource-error-internal-1">RESOURCE_ERROR_INTERNAL = 1</h3>
+
+<p>unknown error</p>
+
+<h2 id="socketclientevent"><code>SocketClientEvent</code></h2>
+
+<p>Describes an event occurring on a #GSocketClient. See the
+&num;GSocketClient::event signal for more details.</p>
+
+<p>Additional values may be added to this type in the future.</p>
+
+<p>C - <code>GSocketClientEvent</code></p>
+
+<h3 id="socket-client-resolving-0">SOCKET_CLIENT_RESOLVING = 0</h3>
+
+<p>The client is doing a DNS lookup.</p>
+
+<h3 id="socket-client-resolved-1">SOCKET_CLIENT_RESOLVED = 1</h3>
+
+<p>The client has completed a DNS lookup.</p>
+
+<h3 id="socket-client-connecting-2">SOCKET_CLIENT_CONNECTING = 2</h3>
+
+<p>The client is connecting to a remote
+  host (either a proxy or the destination server).</p>
+
+<h3 id="socket-client-connected-3">SOCKET_CLIENT_CONNECTED = 3</h3>
+
+<p>The client has connected to a remote
+  host.</p>
+
+<h3 id="socket-client-proxy-negotiating-4">SOCKET_CLIENT_PROXY_NEGOTIATING = 4</h3>
+
+<p>The client is negotiating
+  with a proxy to connect to the destination server.</p>
+
+<h3 id="socket-client-proxy-negotiated-5">SOCKET_CLIENT_PROXY_NEGOTIATED = 5</h3>
+
+<p>The client has negotiated
+  with the proxy server.</p>
+
+<h3 id="socket-client-tls-handshaking-6">SOCKET_CLIENT_TLS_HANDSHAKING = 6</h3>
+
+<p>The client is performing a
+  TLS handshake.</p>
+
+<h3 id="socket-client-tls-handshaked-7">SOCKET_CLIENT_TLS_HANDSHAKED = 7</h3>
+
+<p>The client has performed a
+  TLS handshake.</p>
+
+<h3 id="socket-client-complete-8">SOCKET_CLIENT_COMPLETE = 8</h3>
+
+<p>The client is done with a particular
+  #GSocketConnectable.</p>
+
+<h2 id="socketfamily"><code>SocketFamily</code></h2>
+
+<p>The protocol family of a #GSocketAddress. (These values are
+identical to the system defines %AF_INET, %AF_INET6 and %AF_UNIX,
+if available.)</p>
+
+<p>C - <code>GSocketFamily</code></p>
+
+<h3 id="socket-family-invalid-0">SOCKET_FAMILY_INVALID = 0</h3>
+
+<p>no address family</p>
+
+<h3 id="socket-family-unix-1">SOCKET_FAMILY_UNIX = 1</h3>
+
+<p>the UNIX domain family</p>
+
+<h3 id="socket-family-ipv4-2">SOCKET_FAMILY_IPV4 = 2</h3>
+
+<p>the IPv4 family</p>
+
+<h3 id="socket-family-ipv6-10">SOCKET_FAMILY_IPV6 = 10</h3>
+
+<p>the IPv6 family</p>
+
+<h2 id="socketlistenerevent"><code>SocketListenerEvent</code></h2>
+
+<p>Describes an event occurring on a #GSocketListener. See the
+&num;GSocketListener::event signal for more details.</p>
+
+<p>Additional values may be added to this type in the future.</p>
+
+<p>C - <code>GSocketListenerEvent</code></p>
+
+<h3 id="socket-listener-binding-0">SOCKET_LISTENER_BINDING = 0</h3>
+
+<p>The listener is about to bind a socket.</p>
+
+<h3 id="socket-listener-bound-1">SOCKET_LISTENER_BOUND = 1</h3>
+
+<p>The listener has bound a socket.</p>
+
+<h3 id="socket-listener-listening-2">SOCKET_LISTENER_LISTENING = 2</h3>
+
+<p>The listener is about to start
+   listening on this socket.</p>
+
+<h3 id="socket-listener-listened-3">SOCKET_LISTENER_LISTENED = 3</h3>
+
+<p>The listener is now listening on
+  this socket.</p>
+
+<h2 id="socketprotocol"><code>SocketProtocol</code></h2>
+
+<p>A protocol identifier is specified when creating a #GSocket, which is a
+family/type specific identifier, where 0 means the default protocol for
+the particular family/type.</p>
+
+<p>This enum contains a set of commonly available and used protocols. You
+can also pass any other identifiers handled by the platform in order to
+use protocols not listed here.</p>
+
+<p>C - <code>GSocketProtocol</code></p>
+
+<h3 id="socket-protocol-unknown-1">SOCKET_PROTOCOL_UNKNOWN = -1</h3>
+
+<p>The protocol type is unknown</p>
+
+<h3 id="socket-protocol-default-0">SOCKET_PROTOCOL_DEFAULT = 0</h3>
+
+<p>The default protocol for the family/type</p>
+
+<h3 id="socket-protocol-tcp-6">SOCKET_PROTOCOL_TCP = 6</h3>
+
+<p>TCP over IP</p>
+
+<h3 id="socket-protocol-udp-17">SOCKET_PROTOCOL_UDP = 17</h3>
+
+<p>UDP over IP</p>
+
+<h3 id="socket-protocol-sctp-132">SOCKET_PROTOCOL_SCTP = 132</h3>
+
+<p>SCTP over IP</p>
+
+<h2 id="sockettype"><code>SocketType</code></h2>
+
+<p>Flags used when creating a #GSocket. Some protocols may not implement
+all the socket types.</p>
+
+<p>C - <code>GSocketType</code></p>
+
+<h3 id="socket-type-invalid-0">SOCKET_TYPE_INVALID = 0</h3>
+
+<p>Type unknown or wrong</p>
+
+<h3 id="socket-type-stream-1">SOCKET_TYPE_STREAM = 1</h3>
+
+<p>Reliable connection-based byte streams (e.g. TCP).</p>
+
+<h3 id="socket-type-datagram-2">SOCKET_TYPE_DATAGRAM = 2</h3>
+
+<p>Connectionless, unreliable datagram passing.
+    (e.g. UDP)</p>
+
+<h3 id="socket-type-seqpacket-3">SOCKET_TYPE_SEQPACKET = 3</h3>
+
+<p>Reliable connection-based passing of datagrams
+    of fixed maximum length (e.g. SCTP).</p>
+
+<h2 id="tlsauthenticationmode"><code>TlsAuthenticationMode</code></h2>
+
+<p>The client authentication mode for a #GTlsServerConnection.</p>
+
+<p>C - <code>GTlsAuthenticationMode</code></p>
+
+<h3 id="tls-authentication-none-0">TLS_AUTHENTICATION_NONE = 0</h3>
+
+<p>client authentication not required</p>
+
+<h3 id="tls-authentication-requested-1">TLS_AUTHENTICATION_REQUESTED = 1</h3>
+
+<p>client authentication is requested</p>
+
+<h3 id="tls-authentication-required-2">TLS_AUTHENTICATION_REQUIRED = 2</h3>
+
+<p>client authentication is required</p>
+
+<h2 id="tlscertificaterequestflags"><code>TlsCertificateRequestFlags</code></h2>
+
+<p>Flags for g_tls_interaction_request_certificate(),
+g_tls_interaction_request_certificate_async(), and
+g_tls_interaction_invoke_request_certificate().</p>
+
+<p>C - <code>GTlsCertificateRequestFlags</code></p>
+
+<h3 id="tls-certificate-request-none-0">TLS_CERTIFICATE_REQUEST_NONE = 0</h3>
+
+<p>No flags</p>
+
+<h2 id="tlsdatabaselookupflags"><code>TlsDatabaseLookupFlags</code></h2>
+
+<p>Flags for g_tls_database_lookup_certificate_for_handle(),
+g_tls_database_lookup_certificate_issuer(),
+and g_tls_database_lookup_certificates_issued_by().</p>
+
+<p>C - <code>GTlsDatabaseLookupFlags</code></p>
+
+<h3 id="tls-database-lookup-none-0">TLS_DATABASE_LOOKUP_NONE = 0</h3>
+
+<p>No lookup flags</p>
+
+<h3 id="tls-database-lookup-keypair-1">TLS_DATABASE_LOOKUP_KEYPAIR = 1</h3>
+
+<p>Restrict lookup to certificates that have
+    a private key.</p>
+
+<h2 id="tlserror"><code>TlsError</code></h2>
+
+<p>An error code used with %G_TLS_ERROR in a #GError returned from a
+TLS-related routine.</p>
+
+<p>C - <code>GTlsError</code></p>
+
+<h3 id="tls-error-unavailable-0">TLS_ERROR_UNAVAILABLE = 0</h3>
+
+<p>No TLS provider is available</p>
+
+<h3 id="tls-error-misc-1">TLS_ERROR_MISC = 1</h3>
+
+<p>Miscellaneous TLS error</p>
+
+<h3 id="tls-error-bad-certificate-2">TLS_ERROR_BAD_CERTIFICATE = 2</h3>
+
+<p>A certificate could not be parsed</p>
+
+<h3 id="tls-error-not-tls-3">TLS_ERROR_NOT_TLS = 3</h3>
+
+<p>The TLS handshake failed because the
+  peer does not seem to be a TLS server.</p>
+
+<h3 id="tls-error-handshake-4">TLS_ERROR_HANDSHAKE = 4</h3>
+
+<p>The TLS handshake failed because the
+  peer&rsquo;s certificate was not acceptable.</p>
+
+<h3 id="tls-error-certificate-required-5">TLS_ERROR_CERTIFICATE_REQUIRED = 5</h3>
+
+<p>The TLS handshake failed because
+  the server requested a client-side certificate, but none was
+  provided. See g_tls_connection_set_certificate().</p>
+
+<h3 id="tls-error-eof-6">TLS_ERROR_EOF = 6</h3>
+
+<p>The TLS connection was closed without proper
+  notice, which may indicate an attack. See
+  g_tls_connection_set_require_close_notify().</p>
+
+<h2 id="tlsinteractionresult"><code>TlsInteractionResult</code></h2>
+
+<p>#GTlsInteractionResult is returned by various functions in #GTlsInteraction
+when finishing an interaction request.</p>
+
+<p>C - <code>GTlsInteractionResult</code></p>
+
+<h3 id="tls-interaction-unhandled-0">TLS_INTERACTION_UNHANDLED = 0</h3>
+
+<p>The interaction was unhandled (i.e. not
+    implemented).</p>
+
+<h3 id="tls-interaction-handled-1">TLS_INTERACTION_HANDLED = 1</h3>
+
+<p>The interaction completed, and resulting data
+    is available.</p>
+
+<h3 id="tls-interaction-failed-2">TLS_INTERACTION_FAILED = 2</h3>
+
+<p>The interaction has failed, or was cancelled.
+    and the operation should be aborted.</p>
+
+<h2 id="tlsrehandshakemode"><code>TlsRehandshakeMode</code></h2>
+
+<p>When to allow rehandshaking. See
+g_tls_connection_set_rehandshake_mode().</p>
+
+<p>C - <code>GTlsRehandshakeMode</code></p>
+
+<h3 id="tls-rehandshake-never-0">TLS_REHANDSHAKE_NEVER = 0</h3>
+
+<p>Never allow rehandshaking</p>
+
+<h3 id="tls-rehandshake-safely-1">TLS_REHANDSHAKE_SAFELY = 1</h3>
+
+<p>Allow safe rehandshaking only</p>
+
+<h3 id="tls-rehandshake-unsafely-2">TLS_REHANDSHAKE_UNSAFELY = 2</h3>
+
+<p>Allow unsafe rehandshaking</p>
+
+<h2 id="unixsocketaddresstype"><code>UnixSocketAddressType</code></h2>
+
+<p>The type of name used by a #GUnixSocketAddress.
+%G_UNIX_SOCKET_ADDRESS_PATH indicates a traditional unix domain
+socket bound to a filesystem path. %G_UNIX_SOCKET_ADDRESS_ANONYMOUS
+indicates a socket not bound to any name (eg, a client-side socket,
+or a socket created with socketpair()).</p>
+
+<p>For abstract sockets, there are two incompatible ways of naming
+them; the man pages suggest using the entire <code>struct sockaddr_un</code>
+as the name, padding the unused parts of the %sun_path field with
+zeroes; this corresponds to %G_UNIX_SOCKET_ADDRESS_ABSTRACT_PADDED.
+However, many programs instead just use a portion of %sun_path, and
+pass an appropriate smaller length to bind() or connect(). This is
+%G_UNIX_SOCKET_ADDRESS_ABSTRACT.</p>
+
+<p>C - <code>GUnixSocketAddressType</code></p>
+
+<h3 id="unix-socket-address-invalid-0">UNIX_SOCKET_ADDRESS_INVALID = 0</h3>
+
+<p>invalid</p>
+
+<h3 id="unix-socket-address-anonymous-1">UNIX_SOCKET_ADDRESS_ANONYMOUS = 1</h3>
+
+<p>anonymous</p>
+
+<h3 id="unix-socket-address-path-2">UNIX_SOCKET_ADDRESS_PATH = 2</h3>
+
+<p>a filesystem path</p>
+
+<h3 id="unix-socket-address-abstract-3">UNIX_SOCKET_ADDRESS_ABSTRACT = 3</h3>
+
+<p>an abstract name</p>
+
+<h3 id="unix-socket-address-abstract-padded-4">UNIX_SOCKET_ADDRESS_ABSTRACT_PADDED = 4</h3>
+
+<p>an abstract name, 0-padded
+  to the full length of a unix socket name</p>
+
+<h2 id="zlibcompressorformat"><code>ZlibCompressorFormat</code></h2>
+
+<p>Used to select the type of data format to use for #GZlibDecompressor
+and #GZlibCompressor.</p>
+
+<p>C - <code>GZlibCompressorFormat</code></p>
+
+<h3 id="zlib-compressor-format-zlib-0">ZLIB_COMPRESSOR_FORMAT_ZLIB = 0</h3>
+
+<p>deflate compression with zlib header</p>
+
+<h3 id="zlib-compressor-format-gzip-1">ZLIB_COMPRESSOR_FORMAT_GZIP = 1</h3>
+
+<p>gzip file format</p>
+
+<h3 id="zlib-compressor-format-raw-2">ZLIB_COMPRESSOR_FORMAT_RAW = 2</h3>
+
+<p>deflate compression with no header</p>
+
+
+    
+    
+        <div class="chevrons">
+    <div id="navigation">
+</div>
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+    
+
+    
+  </div>
+
+
+	<div>
+
+
+  
+    
+  
+
+
+
+	</div>
+</footer>
+
+<script src="/js/clipboard.min.js"></script>
+
+<link href="/css/featherlight.min.css" rel="stylesheet">
+<script src="/js/featherlight.min.js"></script>
+
+
+
+<script src="/theme-flex/script.js"></script>
+
+
+    
+
+    
+    
+
+    
+  </body>
+</html>

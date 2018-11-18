@@ -3,7 +3,6 @@ package generate
 import (
 	"fmt"
 	"github.com/dave/jennifer/jen"
-	"path"
 	"strings"
 )
 
@@ -12,6 +11,7 @@ type Namespace struct {
 	Name                string       `xml:"name,attr"`
 	Version             string       `xml:"version,attr"`
 	SharedLibrary       string       `xml:"shared-library,attr"`
+	CDocPath            string       `xml:"c-doc-path,attr"`
 	CIdentifierPrefixes string       `xml:"http://www.gtk.org/introspection/c/1.0 identifier-prefixes,attr"`
 	CSymbolPrefixes     string       `xml:"http://www.gtk.org/introspection/c/1.0 symbol-prefixes,attr"`
 	Aliases             Aliases      `xml:"alias"`
@@ -30,7 +30,6 @@ type Namespace struct {
 	fullGoPackageName string
 	allVersions       Versions
 	versionDebug      bool
-	docsDir           string
 	libDir            string
 	namespaces        map[string]*Namespace
 }
@@ -39,8 +38,11 @@ func (ns *Namespace) init(repo *Repository) {
 	ns.repo = repo
 	ns.goPackageName = strings.ToLower(ns.Name)
 	ns.fullGoPackageName = fmt.Sprintf("github.com/pekim/gobbi/lib/%s", ns.goPackageName)
-	ns.docsDir = projectFilepath("mdbook", "lib", ns.goPackageName)
 	ns.libDir = projectFilepath("lib", ns.goPackageName)
+
+	if ns.CDocPath == "" {
+		ns.CDocPath = ns.goPackageName
+	}
 
 	ns.Aliases.init(ns)
 	ns.Bitfields.init(ns)
@@ -58,6 +60,10 @@ func (ns *Namespace) init(repo *Repository) {
 func (ns *Namespace) mergeAddenda(addenda *Namespace) {
 	if addenda != nil {
 		ns.Blacklist = addenda.Blacklist
+
+		if addenda.CDocPath != "" {
+			ns.CDocPath = addenda.CDocPath
+		}
 
 		ns.Aliases.mergeAddenda(addenda.Aliases)
 		ns.Bitfields.mergeAddenda(addenda.Bitfields)
@@ -81,12 +87,12 @@ func (ns *Namespace) generate() {
 
 	fmt.Printf("%-10s %s\n", ns.Name, ns.Version)
 
-	pkgDocFilePath := path.Join(ns.docsDir, "package.md")
-	appendDocsSummaryFile(1, ns.goPackageName, pkgDocFilePath)
-
 	ns.generateLibDir()
+
+	ns.generateDoc()
 	ns.generatePackageFile()
 	ns.generateTemplatedFiles()
+
 	ns.generateBooleanFile()
 	ns.generateGeneratables("alias", ns.Aliases)
 	ns.generateGeneratables("bitfield", ns.Bitfields)

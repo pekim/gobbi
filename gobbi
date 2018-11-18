@@ -7,13 +7,13 @@ tags="glib_2.48 gdk_3.4 gdkpixbuf_2.32 gio_2.32 gtk_3.18"
 
 usage () {
     echo "Usage:"
-    echo "  do -h                       Show this help"
-    echo "  do build                    Generate libraries and docs, and run tests"
-    echo "  do docs                     Generate documentation"
-    echo "  do generate                 Generate libraries"
-    echo "  do test                     Run tests"
-    echo "  do examples                 List the available examples"
-    echo "  do example <example-name>   Run an example"
+    echo "  gobbi -h                       Show this help"
+    echo "  gobbi build                    Generate libraries and docs, and run tests"
+    echo "  gobbi docs                     Generate documentation"
+    echo "  gobbi generate                 Generate libraries"
+    echo "  gobbi test                     Run tests"
+    echo "  gobbi examples                 List the available examples"
+    echo "  gobbi example <example-name>   Run an example"
 
     exit
 }
@@ -37,8 +37,7 @@ generate () {
 }
 
 docs () {
-    mdbook clean mdbook/ && \
-    mdbook build mdbook/
+    hugo -s docs-src/ -d ../docs
 }
 
 test () {

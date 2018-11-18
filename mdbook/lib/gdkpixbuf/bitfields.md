@@ -1,2 +1,0 @@
-# `gdkpixbuf` bitfields
-

@@ -16,10 +16,21 @@ type Constant struct {
 	CType     string `xml:"http://www.gtk.org/introspection/c/1.0 type,attr"`
 	Doc       *Doc   `xml:"doc"`
 	Type      *Type  `xml:"type"`
+
+	goTypeName string
 }
 
 func (c *Constant) init(ns *Namespace) {
 	c.Namespace = ns
+
+	switch c.Type.Name {
+	case "gboolean":
+		c.goTypeName = "bool"
+	case "gint":
+		c.goTypeName = "int"
+	case "utf8":
+		c.goTypeName = "string"
+	}
 }
 
 func (c *Constant) version() string {
@@ -52,7 +63,7 @@ func (c *Constant) generate(g *jen.Group, version *Version) {
 		g.
 			Const().
 			Id(c.Name).
-			Bool().
+			Id(c.goTypeName).
 			Op("=").
 			Lit(c.Value == "true").
 			Commentf("C.%s", c.CType)
@@ -60,18 +71,10 @@ func (c *Constant) generate(g *jen.Group, version *Version) {
 		return
 	}
 
-	var goTypeName string
-	switch c.Type.Name {
-	case "gint":
-		goTypeName = "int"
-	case "utf8":
-		goTypeName = "string"
-	}
-
 	g.
 		Const().
 		Id(c.Name).
-		Id(goTypeName).
+		Id(c.goTypeName).
 		Op("=").
 		Qual("C", c.CType)
 }

@@ -1,0 +1,1730 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>gobbi</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="revised" content="2018-11-18T19:50:29 GMT">
+<title> :: gobbi</title>
+<link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
+<link href="/css/font-awesome.min.css" rel="stylesheet">
+<link href="/css/nucleus.css" rel="stylesheet">
+<link href="/theme-flex/style.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<script src="/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "\/";
+</script>
+<link rel="stylesheet" href="/css/custom.css">
+
+
+    
+  </head>
+  <body data-url="/lib/gio/bitfields/">
+    
+      <header>
+  <div class="logo">
+    
+	
+  
+    <p><a href="/">gobbi</a></p>
+
+  
+
+
+  </div>
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+    <nav class="shortcuts">
+            <li class="" role="">
+                <a href="https://github.com/pekim/gobbi"  rel="noopener">
+                  <i class='fa fa-github'></i> <label>Github repo</label>
+                </a>
+            </li>
+    </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+
+
+    <li class="dd-item ">
+        <div>
+            <a href="/">
+                <span>Introduction</span>
+            </a>
+        </div>
+    </li>
+
+    <li class="dd-item ">
+        <div>
+            <a href="/application-lifecycle/">
+                <span>Application lifecycle</span>
+            </a>
+        </div>
+    </li>
+
+    <li class="dd-item ">
+        <div>
+            <a href="/gvalue/">
+                <span>gobject.Value</span>
+            </a>
+        </div>
+    </li>
+
+    <li data-nav-id="/api/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/">API</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/api/atk/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/atk/">atk</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/atk/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/atk/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/atk/constants/" class="dd-item">
+        <div>
+          <a href="/api/atk/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/atk/enums/" class="dd-item">
+        <div>
+          <a href="/api/atk/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/cairo/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/cairo/">cairo</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/cairo/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/cairo/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/cairo/constants/" class="dd-item">
+        <div>
+          <a href="/api/cairo/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/cairo/enums/" class="dd-item">
+        <div>
+          <a href="/api/cairo/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/gdk/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/gdk/">gdk</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/gdk/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/gdk/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gdk/constants/" class="dd-item">
+        <div>
+          <a href="/api/gdk/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gdk/enums/" class="dd-item">
+        <div>
+          <a href="/api/gdk/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/gdkpixbuf/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/gdkpixbuf/">gdkpixbuf</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/gdkpixbuf/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/gdkpixbuf/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gdkpixbuf/constants/" class="dd-item">
+        <div>
+          <a href="/api/gdkpixbuf/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gdkpixbuf/enums/" class="dd-item">
+        <div>
+          <a href="/api/gdkpixbuf/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/gio/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/gio/">gio</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/gio/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/gio/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gio/constants/" class="dd-item">
+        <div>
+          <a href="/api/gio/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gio/enums/" class="dd-item">
+        <div>
+          <a href="/api/gio/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/glib/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/glib/">glib</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/glib/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/glib/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/glib/constants/" class="dd-item">
+        <div>
+          <a href="/api/glib/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/glib/enums/" class="dd-item">
+        <div>
+          <a href="/api/glib/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/gobject/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/gobject/">gobject</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/gobject/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/gobject/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gobject/constants/" class="dd-item">
+        <div>
+          <a href="/api/gobject/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gobject/enums/" class="dd-item">
+        <div>
+          <a href="/api/gobject/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/gtk/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/gtk/">gtk</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/gtk/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/gtk/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gtk/constants/" class="dd-item">
+        <div>
+          <a href="/api/gtk/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gtk/enums/" class="dd-item">
+        <div>
+          <a href="/api/gtk/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/pango/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/pango/">pango</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/pango/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/pango/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/pango/constants/" class="dd-item">
+        <div>
+          <a href="/api/pango/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/pango/enums/" class="dd-item">
+        <div>
+          <a href="/api/pango/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/lib/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/lib/">Libs</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/lib/atk/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/atk/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/atk/constant/" class="dd-item">
+        <div>
+          <a href="/lib/atk/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/atk/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/atk/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/atk/enums/" class="dd-item">
+        <div>
+          <a href="/lib/atk/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/atk/package/" class="dd-item">
+        <div>
+          <a href="/lib/atk/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/cairo/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/cairo/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/cairo/constant/" class="dd-item">
+        <div>
+          <a href="/lib/cairo/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/cairo/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/cairo/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/cairo/enums/" class="dd-item">
+        <div>
+          <a href="/lib/cairo/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/cairo/package/" class="dd-item">
+        <div>
+          <a href="/lib/cairo/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdk/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/gdk/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdk/constant/" class="dd-item">
+        <div>
+          <a href="/lib/gdk/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdk/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/gdk/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdk/enums/" class="dd-item">
+        <div>
+          <a href="/lib/gdk/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdk/package/" class="dd-item">
+        <div>
+          <a href="/lib/gdk/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdkpixbuf/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/gdkpixbuf/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdkpixbuf/constant/" class="dd-item">
+        <div>
+          <a href="/lib/gdkpixbuf/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdkpixbuf/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/gdkpixbuf/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdkpixbuf/enums/" class="dd-item">
+        <div>
+          <a href="/lib/gdkpixbuf/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gdkpixbuf/package/" class="dd-item">
+        <div>
+          <a href="/lib/gdkpixbuf/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gio/bitfields/" class="dd-item active">
+        <div>
+          <a href="/lib/gio/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gio/constant/" class="dd-item">
+        <div>
+          <a href="/lib/gio/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gio/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/gio/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gio/enums/" class="dd-item">
+        <div>
+          <a href="/lib/gio/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gio/package/" class="dd-item">
+        <div>
+          <a href="/lib/gio/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/glib/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/glib/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/glib/constant/" class="dd-item">
+        <div>
+          <a href="/lib/glib/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/glib/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/glib/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/glib/enums/" class="dd-item">
+        <div>
+          <a href="/lib/glib/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/glib/package/" class="dd-item">
+        <div>
+          <a href="/lib/glib/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gobject/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/gobject/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gobject/constant/" class="dd-item">
+        <div>
+          <a href="/lib/gobject/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gobject/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/gobject/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gobject/enums/" class="dd-item">
+        <div>
+          <a href="/lib/gobject/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gobject/package/" class="dd-item">
+        <div>
+          <a href="/lib/gobject/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gtk/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/gtk/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gtk/constant/" class="dd-item">
+        <div>
+          <a href="/lib/gtk/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gtk/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/gtk/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gtk/enums/" class="dd-item">
+        <div>
+          <a href="/lib/gtk/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/gtk/package/" class="dd-item">
+        <div>
+          <a href="/lib/gtk/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/pango/bitfields/" class="dd-item">
+        <div>
+          <a href="/lib/pango/bitfields/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/pango/constant/" class="dd-item">
+        <div>
+          <a href="/lib/pango/constant/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/pango/enumeration/" class="dd-item">
+        <div>
+          <a href="/lib/pango/enumeration/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/pango/enums/" class="dd-item">
+        <div>
+          <a href="/lib/pango/enums/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/lib/pango/package/" class="dd-item">
+        <div>
+          <a href="/lib/pango/package/">
+            
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+
+
+
+
+    </ul>
+    <section>
+    </section>
+  </aside>
+  <section class="page">
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/api/" >
+   API</option>
+    <option value="/lib/" >
+   Libs</option> 
+      <option value="/lib/atk/bitfields/" >- </option>
+      <option value="/lib/atk/constant/" >- </option>
+      <option value="/lib/atk/enumeration/" >- </option>
+      <option value="/lib/atk/enums/" >- </option>
+      <option value="/lib/atk/package/" >- </option>
+      <option value="/lib/cairo/bitfields/" >- </option>
+      <option value="/lib/cairo/constant/" >- </option>
+      <option value="/lib/cairo/enumeration/" >- </option>
+      <option value="/lib/cairo/enums/" >- </option>
+      <option value="/lib/cairo/package/" >- </option>
+      <option value="/lib/gdk/bitfields/" >- </option>
+      <option value="/lib/gdk/constant/" >- </option>
+      <option value="/lib/gdk/enumeration/" >- </option>
+      <option value="/lib/gdk/enums/" >- </option>
+      <option value="/lib/gdk/package/" >- </option>
+      <option value="/lib/gdkpixbuf/bitfields/" >- </option>
+      <option value="/lib/gdkpixbuf/constant/" >- </option>
+      <option value="/lib/gdkpixbuf/enumeration/" >- </option>
+      <option value="/lib/gdkpixbuf/enums/" >- </option>
+      <option value="/lib/gdkpixbuf/package/" >- </option>
+      <option value="/lib/gio/bitfields/"  selected>- </option>
+      <option value="/lib/gio/constant/" >- </option>
+      <option value="/lib/gio/enumeration/" >- </option>
+      <option value="/lib/gio/enums/" >- </option>
+      <option value="/lib/gio/package/" >- </option>
+      <option value="/lib/glib/bitfields/" >- </option>
+      <option value="/lib/glib/constant/" >- </option>
+      <option value="/lib/glib/enumeration/" >- </option>
+      <option value="/lib/glib/enums/" >- </option>
+      <option value="/lib/glib/package/" >- </option>
+      <option value="/lib/gobject/bitfields/" >- </option>
+      <option value="/lib/gobject/constant/" >- </option>
+      <option value="/lib/gobject/enumeration/" >- </option>
+      <option value="/lib/gobject/enums/" >- </option>
+      <option value="/lib/gobject/package/" >- </option>
+      <option value="/lib/gtk/bitfields/" >- </option>
+      <option value="/lib/gtk/constant/" >- </option>
+      <option value="/lib/gtk/enumeration/" >- </option>
+      <option value="/lib/gtk/enums/" >- </option>
+      <option value="/lib/gtk/package/" >- </option>
+      <option value="/lib/pango/bitfields/" >- </option>
+      <option value="/lib/pango/constant/" >- </option>
+      <option value="/lib/pango/enumeration/" >- </option>
+      <option value="/lib/pango/enums/" >- </option>
+      <option value="/lib/pango/package/" >- </option>
+  
+
+
+
+        </select>
+      </center>
+    </div>
+      <div>
+        <div class="searchbox">
+          <input data-search-input id="search-by" type="text" placeholder="Search...">
+        </div>
+        <script type="text/javascript" src="/js/lunr.min.js"></script>
+        <script type="text/javascript" src="/js/auto-complete.js"></script>
+        <link href="/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+          
+              var baseurl = "\/";
+          
+        </script>
+        <script type="text/javascript" src="/js/search.js"></script>
+      </div>
+    
+
+    <h1></h1>
+    
+    
+    
+    
+
+<h1 id="gio-bitfields"><code>gio</code> bitfields</h1>
+
+<h2 id="appinfocreateflags"><code>AppInfoCreateFlags</code></h2>
+
+<p>Flags used when creating a #GAppInfo.</p>
+
+<p>C - <code>GAppInfoCreateFlags</code></p>
+
+<h3 id="app-info-create-none-0">APP_INFO_CREATE_NONE = 0</h3>
+
+<p>No flags.</p>
+
+<h3 id="app-info-create-needs-terminal-1">APP_INFO_CREATE_NEEDS_TERMINAL = 1</h3>
+
+<p>Application opens in a terminal window.</p>
+
+<h3 id="app-info-create-supports-uris-2">APP_INFO_CREATE_SUPPORTS_URIS = 2</h3>
+
+<p>Application supports URI arguments.</p>
+
+<h3 id="app-info-create-supports-startup-notification-4">APP_INFO_CREATE_SUPPORTS_STARTUP_NOTIFICATION = 4</h3>
+
+<p>Application supports startup notification. Since 2.26</p>
+
+<h2 id="applicationflags"><code>ApplicationFlags</code></h2>
+
+<p>Flags used to define the behaviour of a #GApplication.</p>
+
+<p>C - <code>GApplicationFlags</code></p>
+
+<h3 id="application-flags-none-0">APPLICATION_FLAGS_NONE = 0</h3>
+
+<p>Default</p>
+
+<h3 id="application-is-service-1">APPLICATION_IS_SERVICE = 1</h3>
+
+<p>Run as a service. In this mode, registration
+     fails if the service is already running, and the application
+     will initially wait up to 10 seconds for an initial activation
+     message to arrive.</p>
+
+<h3 id="application-is-launcher-2">APPLICATION_IS_LAUNCHER = 2</h3>
+
+<p>Don&rsquo;t try to become the primary instance.</p>
+
+<h3 id="application-handles-open-4">APPLICATION_HANDLES_OPEN = 4</h3>
+
+<p>This application handles opening files (in
+    the primary instance). Note that this flag only affects the default
+    implementation of local_command_line(), and has no effect if
+    %G_APPLICATION_HANDLES_COMMAND_LINE is given.
+    See g_application_run() for details.</p>
+
+<h3 id="application-handles-command-line-8">APPLICATION_HANDLES_COMMAND_LINE = 8</h3>
+
+<p>This application handles command line
+    arguments (in the primary instance). Note that this flag only affect
+    the default implementation of local_command_line().
+    See g_application_run() for details.</p>
+
+<h3 id="application-send-environment-16">APPLICATION_SEND_ENVIRONMENT = 16</h3>
+
+<p>Send the environment of the
+    launching process to the primary instance. Set this flag if your
+    application is expected to behave differently depending on certain
+    environment variables. For instance, an editor might be expected
+    to use the <code>GIT_COMMITTER_NAME</code> environment variable
+    when editing a git commit message. The environment is available
+    to the #GApplication::command-line signal handler, via
+    g_application_command_line_getenv().</p>
+
+<h3 id="application-non-unique-32">APPLICATION_NON_UNIQUE = 32</h3>
+
+<p>Make no attempts to do any of the typical
+    single-instance application negotiation, even if the application
+    ID is given.  The application neither attempts to become the
+    owner of the application ID nor does it check if an existing
+    owner already exists.  Everything occurs in the local process.
+    Since: 2.30.</p>
+
+<h3 id="application-can-override-app-id-64">APPLICATION_CAN_OVERRIDE_APP_ID = 64</h3>
+
+<p>Allow users to override the
+    application ID from the command line with <code>--gapplication-app-id</code>.
+    Since: 2.48</p>
+
+<h2 id="askpasswordflags"><code>AskPasswordFlags</code></h2>
+
+<p>#GAskPasswordFlags are used to request specific information from the
+user, or to notify the user of their choices in an authentication
+situation.</p>
+
+<p>C - <code>GAskPasswordFlags</code></p>
+
+<h3 id="ask-password-need-password-1">ASK_PASSWORD_NEED_PASSWORD = 1</h3>
+
+<p>operation requires a password.</p>
+
+<h3 id="ask-password-need-username-2">ASK_PASSWORD_NEED_USERNAME = 2</h3>
+
+<p>operation requires a username.</p>
+
+<h3 id="ask-password-need-domain-4">ASK_PASSWORD_NEED_DOMAIN = 4</h3>
+
+<p>operation requires a domain.</p>
+
+<h3 id="ask-password-saving-supported-8">ASK_PASSWORD_SAVING_SUPPORTED = 8</h3>
+
+<p>operation supports saving settings.</p>
+
+<h3 id="ask-password-anonymous-supported-16">ASK_PASSWORD_ANONYMOUS_SUPPORTED = 16</h3>
+
+<p>operation supports anonymous users.</p>
+
+<h2 id="busnameownerflags"><code>BusNameOwnerFlags</code></h2>
+
+<p>Flags used in g_bus_own_name().</p>
+
+<p>C - <code>GBusNameOwnerFlags</code></p>
+
+<h3 id="bus-name-owner-flags-none-0">BUS_NAME_OWNER_FLAGS_NONE = 0</h3>
+
+<p>No flags set.</p>
+
+<h3 id="bus-name-owner-flags-allow-replacement-1">BUS_NAME_OWNER_FLAGS_ALLOW_REPLACEMENT = 1</h3>
+
+<p>Allow another message bus connection to claim the name.</p>
+
+<h3 id="bus-name-owner-flags-replace-2">BUS_NAME_OWNER_FLAGS_REPLACE = 2</h3>
+
+<p>If another message bus connection owns the name and have
+specified #G_BUS_NAME_OWNER_FLAGS_ALLOW_REPLACEMENT, then take the name from the other connection.</p>
+
+<h3 id="bus-name-owner-flags-do-not-queue-4">BUS_NAME_OWNER_FLAGS_DO_NOT_QUEUE = 4</h3>
+
+<p>If another message bus connection owns the name, immediately
+return an error from g_bus_own_name() rather than entering the waiting queue for that name. (Since 2.54)</p>
+
+<h2 id="busnamewatcherflags"><code>BusNameWatcherFlags</code></h2>
+
+<p>Flags used in g_bus_watch_name().</p>
+
+<p>C - <code>GBusNameWatcherFlags</code></p>
+
+<h3 id="bus-name-watcher-flags-none-0">BUS_NAME_WATCHER_FLAGS_NONE = 0</h3>
+
+<p>No flags set.</p>
+
+<h3 id="bus-name-watcher-flags-auto-start-1">BUS_NAME_WATCHER_FLAGS_AUTO_START = 1</h3>
+
+<p>If no-one owns the name when
+beginning to watch the name, ask the bus to launch an owner for the
+name.</p>
+
+<h2 id="converterflags"><code>ConverterFlags</code></h2>
+
+<p>Flags used when calling a g_converter_convert().</p>
+
+<p>C - <code>GConverterFlags</code></p>
+
+<h3 id="converter-no-flags-0">CONVERTER_NO_FLAGS = 0</h3>
+
+<p>No flags.</p>
+
+<h3 id="converter-input-at-end-1">CONVERTER_INPUT_AT_END = 1</h3>
+
+<p>At end of input data</p>
+
+<h3 id="converter-flush-2">CONVERTER_FLUSH = 2</h3>
+
+<p>Flush data</p>
+
+<h2 id="dbuscallflags"><code>DBusCallFlags</code></h2>
+
+<p>Flags used in g_dbus_connection_call() and similar APIs.</p>
+
+<p>C - <code>GDBusCallFlags</code></p>
+
+<h3 id="dbus-call-flags-none-0">DBUS_CALL_FLAGS_NONE = 0</h3>
+
+<p>No flags set.</p>
+
+<h3 id="dbus-call-flags-no-auto-start-1">DBUS_CALL_FLAGS_NO_AUTO_START = 1</h3>
+
+<p>The bus must not launch
+an owner for the destination name in response to this method
+invocation.</p>
+
+<h3 id="dbus-call-flags-allow-interactive-authorization-2">DBUS_CALL_FLAGS_ALLOW_INTERACTIVE_AUTHORIZATION = 2</h3>
+
+<p>the caller is prepared to
+wait for interactive authorization. Since 2.46.</p>
+
+<h2 id="dbuscapabilityflags"><code>DBusCapabilityFlags</code></h2>
+
+<p>Capabilities negotiated with the remote peer.</p>
+
+<p>C - <code>GDBusCapabilityFlags</code></p>
+
+<h3 id="dbus-capability-flags-none-0">DBUS_CAPABILITY_FLAGS_NONE = 0</h3>
+
+<p>No flags set.</p>
+
+<h3 id="dbus-capability-flags-unix-fd-passing-1">DBUS_CAPABILITY_FLAGS_UNIX_FD_PASSING = 1</h3>
+
+<p>The connection
+supports exchanging UNIX file descriptors with the remote peer.</p>
+
+<h2 id="dbusconnectionflags"><code>DBusConnectionFlags</code></h2>
+
+<p>Flags used when creating a new #GDBusConnection.</p>
+
+<p>C - <code>GDBusConnectionFlags</code></p>
+
+<h3 id="dbus-connection-flags-none-0">DBUS_CONNECTION_FLAGS_NONE = 0</h3>
+
+<p>No flags set.</p>
+
+<h3 id="dbus-connection-flags-authentication-client-1">DBUS_CONNECTION_FLAGS_AUTHENTICATION_CLIENT = 1</h3>
+
+<p>Perform authentication against server.</p>
+
+<h3 id="dbus-connection-flags-authentication-server-2">DBUS_CONNECTION_FLAGS_AUTHENTICATION_SERVER = 2</h3>
+
+<p>Perform authentication against client.</p>
+
+<h3 id="dbus-connection-flags-authentication-allow-anonymous-4">DBUS_CONNECTION_FLAGS_AUTHENTICATION_ALLOW_ANONYMOUS = 4</h3>
+
+<p>When
+authenticating as a server, allow the anonymous authentication
+method.</p>
+
+<h3 id="dbus-connection-flags-message-bus-connection-8">DBUS_CONNECTION_FLAGS_MESSAGE_BUS_CONNECTION = 8</h3>
+
+<p>Pass this flag if connecting to a peer that is a
+message bus. This means that the Hello() method will be invoked as part of the connection setup.</p>
+
+<h3 id="dbus-connection-flags-delay-message-processing-16">DBUS_CONNECTION_FLAGS_DELAY_MESSAGE_PROCESSING = 16</h3>
+
+<p>If set, processing of D-Bus messages is
+delayed until g_dbus_connection_start_message_processing() is called.</p>
+
+<h2 id="dbusinterfaceskeletonflags"><code>DBusInterfaceSkeletonFlags</code></h2>
+
+<p>Flags describing the behavior of a #GDBusInterfaceSkeleton instance.</p>
+
+<p>C - <code>GDBusInterfaceSkeletonFlags</code></p>
+
+<h3 id="dbus-interface-skeleton-flags-none-0">DBUS_INTERFACE_SKELETON_FLAGS_NONE = 0</h3>
+
+<p>No flags set.</p>
+
+<h3 id="dbus-interface-skeleton-flags-handle-method-invocations-in-thread-1">DBUS_INTERFACE_SKELETON_FLAGS_HANDLE_METHOD_INVOCATIONS_IN_THREAD = 1</h3>
+
+<p>Each method invocation is handled in
+  a thread dedicated to the invocation. This means that the method implementation can use blocking IO
+  without blocking any other part of the process. It also means that the method implementation must
+  use locking to access data structures used by other threads.</p>
+
+<h2 id="dbusmessageflags"><code>DBusMessageFlags</code></h2>
+
+<p>Message flags used in #GDBusMessage.</p>
+
+<p>C - <code>GDBusMessageFlags</code></p>
+
+<h3 id="dbus-message-flags-none-0">DBUS_MESSAGE_FLAGS_NONE = 0</h3>
+
+<p>No flags set.</p>
+
+<h3 id="dbus-message-flags-no-reply-expected-1">DBUS_MESSAGE_FLAGS_NO_REPLY_EXPECTED = 1</h3>
+
+<p>A reply is not expected.</p>
+
+<h3 id="dbus-message-flags-no-auto-start-2">DBUS_MESSAGE_FLAGS_NO_AUTO_START = 2</h3>
+
+<p>The bus must not launch an
+owner for the destination name in response to this message.</p>
+
+<h3 id="dbus-message-flags-allow-interactive-authorization-4">DBUS_MESSAGE_FLAGS_ALLOW_INTERACTIVE_AUTHORIZATION = 4</h3>
+
+<p>If set on a method
+call, this flag means that the caller is prepared to wait for interactive
+authorization. Since 2.46.</p>
+
+<h2 id="dbusobjectmanagerclientflags"><code>DBusObjectManagerClientFlags</code></h2>
+
+<p>Flags used when constructing a #GDBusObjectManagerClient.</p>
+
+<p>C - <code>GDBusObjectManagerClientFlags</code></p>
+
+<h3 id="dbus-object-manager-client-flags-none-0">DBUS_OBJECT_MANAGER_CLIENT_FLAGS_NONE = 0</h3>
+
+<p>No flags set.</p>
+
+<h3 id="dbus-object-manager-client-flags-do-not-auto-start-1">DBUS_OBJECT_MANAGER_CLIENT_FLAGS_DO_NOT_AUTO_START = 1</h3>
+
+<p>If not set and the
+  manager is for a well-known name, then request the bus to launch
+  an owner for the name if no-one owns the name. This flag can only
+  be used in managers for well-known names.</p>
+
+<h2 id="dbuspropertyinfoflags"><code>DBusPropertyInfoFlags</code></h2>
+
+<p>Flags describing the access control of a D-Bus property.</p>
+
+<p>C - <code>GDBusPropertyInfoFlags</code></p>
+
+<h3 id="dbus-property-info-flags-none-0">DBUS_PROPERTY_INFO_FLAGS_NONE = 0</h3>
+
+<p>No flags set.</p>
+
+<h3 id="dbus-property-info-flags-readable-1">DBUS_PROPERTY_INFO_FLAGS_READABLE = 1</h3>
+
+<p>Property is readable.</p>
+
+<h3 id="dbus-property-info-flags-writable-2">DBUS_PROPERTY_INFO_FLAGS_WRITABLE = 2</h3>
+
+<p>Property is writable.</p>
+
+<h2 id="dbusproxyflags"><code>DBusProxyFlags</code></h2>
+
+<p>Flags used when constructing an instance of a #GDBusProxy derived class.</p>
+
+<p>C - <code>GDBusProxyFlags</code></p>
+
+<h3 id="dbus-proxy-flags-none-0">DBUS_PROXY_FLAGS_NONE = 0</h3>
+
+<p>No flags set.</p>
+
+<h3 id="dbus-proxy-flags-do-not-load-properties-1">DBUS_PROXY_FLAGS_DO_NOT_LOAD_PROPERTIES = 1</h3>
+
+<p>Don&rsquo;t load properties.</p>
+
+<h3 id="dbus-proxy-flags-do-not-connect-signals-2">DBUS_PROXY_FLAGS_DO_NOT_CONNECT_SIGNALS = 2</h3>
+
+<p>Don&rsquo;t connect to signals on the remote object.</p>
+
+<h3 id="dbus-proxy-flags-do-not-auto-start-4">DBUS_PROXY_FLAGS_DO_NOT_AUTO_START = 4</h3>
+
+<p>If the proxy is for a well-known name,
+do not ask the bus to launch an owner during proxy initialization or a method call.
+This flag is only meaningful in proxies for well-known names.</p>
+
+<h3 id="dbus-proxy-flags-get-invalidated-properties-8">DBUS_PROXY_FLAGS_GET_INVALIDATED_PROPERTIES = 8</h3>
+
+<p>If set, the property value for any <strong>invalidated property</strong> will be (asynchronously) retrieved upon receiving the <a href="http://dbus.freedesktop.org/doc/dbus-specification.html#standard-interfaces-properties"><code>PropertiesChanged</code></a> D-Bus signal and the property will not cause emission of the #GDBusProxy::g-properties-changed signal. When the value is received the #GDBusProxy::g-properties-changed signal is emitted for the property along with the retrieved value. Since 2.32.</p>
+
+<h3 id="dbus-proxy-flags-do-not-auto-start-at-construction-16">DBUS_PROXY_FLAGS_DO_NOT_AUTO_START_AT_CONSTRUCTION = 16</h3>
+
+<p>If the proxy is for a well-known name,
+do not ask the bus to launch an owner during proxy initialization, but allow it to be
+autostarted by a method call. This flag is only meaningful in proxies for well-known names,
+and only if %G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START is not also specified.</p>
+
+<h2 id="dbussendmessageflags"><code>DBusSendMessageFlags</code></h2>
+
+<p>Flags used when sending #GDBusMessages on a #GDBusConnection.</p>
+
+<p>C - <code>GDBusSendMessageFlags</code></p>
+
+<h3 id="dbus-send-message-flags-none-0">DBUS_SEND_MESSAGE_FLAGS_NONE = 0</h3>
+
+<p>No flags set.</p>
+
+<h3 id="dbus-send-message-flags-preserve-serial-1">DBUS_SEND_MESSAGE_FLAGS_PRESERVE_SERIAL = 1</h3>
+
+<p>Do not automatically
+assign a serial number from the #GDBusConnection object when
+sending a message.</p>
+
+<h2 id="dbusserverflags"><code>DBusServerFlags</code></h2>
+
+<p>Flags used when creating a #GDBusServer.</p>
+
+<p>C - <code>GDBusServerFlags</code></p>
+
+<h3 id="dbus-server-flags-none-0">DBUS_SERVER_FLAGS_NONE = 0</h3>
+
+<p>No flags set.</p>
+
+<h3 id="dbus-server-flags-run-in-thread-1">DBUS_SERVER_FLAGS_RUN_IN_THREAD = 1</h3>
+
+<p>All #GDBusServer::new-connection
+signals will run in separated dedicated threads (see signal for
+details).</p>
+
+<h3 id="dbus-server-flags-authentication-allow-anonymous-2">DBUS_SERVER_FLAGS_AUTHENTICATION_ALLOW_ANONYMOUS = 2</h3>
+
+<p>Allow the anonymous
+authentication method.</p>
+
+<h2 id="dbussignalflags"><code>DBusSignalFlags</code></h2>
+
+<p>Flags used when subscribing to signals via g_dbus_connection_signal_subscribe().</p>
+
+<p>C - <code>GDBusSignalFlags</code></p>
+
+<h3 id="dbus-signal-flags-none-0">DBUS_SIGNAL_FLAGS_NONE = 0</h3>
+
+<p>No flags set.</p>
+
+<h3 id="dbus-signal-flags-no-match-rule-1">DBUS_SIGNAL_FLAGS_NO_MATCH_RULE = 1</h3>
+
+<p>Don&rsquo;t actually send the AddMatch
+D-Bus call for this signal subscription.  This gives you more control
+over which match rules you add (but you must add them manually).</p>
+
+<h3 id="dbus-signal-flags-match-arg0-namespace-2">DBUS_SIGNAL_FLAGS_MATCH_ARG0_NAMESPACE = 2</h3>
+
+<p>Match first arguments that
+contain a bus or interface name with the given namespace.</p>
+
+<h3 id="dbus-signal-flags-match-arg0-path-4">DBUS_SIGNAL_FLAGS_MATCH_ARG0_PATH = 4</h3>
+
+<p>Match first arguments that
+contain an object path that is either equivalent to the given path,
+or one of the paths is a subpath of the other.</p>
+
+<h2 id="dbussubtreeflags"><code>DBusSubtreeFlags</code></h2>
+
+<p>Flags passed to g_dbus_connection_register_subtree().</p>
+
+<p>C - <code>GDBusSubtreeFlags</code></p>
+
+<h3 id="dbus-subtree-flags-none-0">DBUS_SUBTREE_FLAGS_NONE = 0</h3>
+
+<p>No flags set.</p>
+
+<h3 id="dbus-subtree-flags-dispatch-to-unenumerated-nodes-1">DBUS_SUBTREE_FLAGS_DISPATCH_TO_UNENUMERATED_NODES = 1</h3>
+
+<p>Method calls to objects not in the enumerated range
+                                                      will still be dispatched. This is useful if you want
+                                                      to dynamically spawn objects in the subtree.</p>
+
+<h2 id="drivestartflags"><code>DriveStartFlags</code></h2>
+
+<p>Flags used when starting a drive.</p>
+
+<p>C - <code>GDriveStartFlags</code></p>
+
+<h3 id="drive-start-none-0">DRIVE_START_NONE = 0</h3>
+
+<p>No flags set.</p>
+
+<h2 id="fileattributeinfoflags"><code>FileAttributeInfoFlags</code></h2>
+
+<p>Flags specifying the behaviour of an attribute.</p>
+
+<p>C - <code>GFileAttributeInfoFlags</code></p>
+
+<h3 id="file-attribute-info-none-0">FILE_ATTRIBUTE_INFO_NONE = 0</h3>
+
+<p>no flags set.</p>
+
+<h3 id="file-attribute-info-copy-with-file-1">FILE_ATTRIBUTE_INFO_COPY_WITH_FILE = 1</h3>
+
+<p>copy the attribute values when the file is copied.</p>
+
+<h3 id="file-attribute-info-copy-when-moved-2">FILE_ATTRIBUTE_INFO_COPY_WHEN_MOVED = 2</h3>
+
+<p>copy the attribute values when the file is moved.</p>
+
+<h2 id="filecopyflags"><code>FileCopyFlags</code></h2>
+
+<p>Flags used when copying or moving files.</p>
+
+<p>C - <code>GFileCopyFlags</code></p>
+
+<h3 id="file-copy-none-0">FILE_COPY_NONE = 0</h3>
+
+<p>No flags set.</p>
+
+<h3 id="file-copy-overwrite-1">FILE_COPY_OVERWRITE = 1</h3>
+
+<p>Overwrite any existing files</p>
+
+<h3 id="file-copy-backup-2">FILE_COPY_BACKUP = 2</h3>
+
+<p>Make a backup of any existing files.</p>
+
+<h3 id="file-copy-nofollow-symlinks-4">FILE_COPY_NOFOLLOW_SYMLINKS = 4</h3>
+
+<p>Don&rsquo;t follow symlinks.</p>
+
+<h3 id="file-copy-all-metadata-8">FILE_COPY_ALL_METADATA = 8</h3>
+
+<p>Copy all file metadata instead of just default set used for copy (see #GFileInfo).</p>
+
+<h3 id="file-copy-no-fallback-for-move-16">FILE_COPY_NO_FALLBACK_FOR_MOVE = 16</h3>
+
+<p>Don&rsquo;t use copy and delete fallback if native move not supported.</p>
+
+<h3 id="file-copy-target-default-perms-32">FILE_COPY_TARGET_DEFAULT_PERMS = 32</h3>
+
+<p>Leaves target file with default perms, instead of setting the source file perms.</p>
+
+<h2 id="filecreateflags"><code>FileCreateFlags</code></h2>
+
+<p>Flags used when an operation may create a file.</p>
+
+<p>C - <code>GFileCreateFlags</code></p>
+
+<h3 id="file-create-none-0">FILE_CREATE_NONE = 0</h3>
+
+<p>No flags set.</p>
+
+<h3 id="file-create-private-1">FILE_CREATE_PRIVATE = 1</h3>
+
+<p>Create a file that can only be
+   accessed by the current user.</p>
+
+<h3 id="file-create-replace-destination-2">FILE_CREATE_REPLACE_DESTINATION = 2</h3>
+
+<p>Replace the destination
+   as if it didn&rsquo;t exist before. Don&rsquo;t try to keep any old
+   permissions, replace instead of following links. This
+   is generally useful if you&rsquo;re doing a &ldquo;copy over&rdquo;
+   rather than a &ldquo;save new version of&rdquo; replace operation.
+   You can think of it as &ldquo;unlink destination&rdquo; before
+   writing to it, although the implementation may not
+   be exactly like that. Since 2.20</p>
+
+<h2 id="filemeasureflags"><code>FileMeasureFlags</code></h2>
+
+<p>Flags that can be used with g_file_measure_disk_usage().</p>
+
+<p>C - <code>GFileMeasureFlags</code></p>
+
+<h3 id="file-measure-none-0">FILE_MEASURE_NONE = 0</h3>
+
+<p>No flags set.</p>
+
+<h3 id="file-measure-report-any-error-2">FILE_MEASURE_REPORT_ANY_ERROR = 2</h3>
+
+<p>Report any error encountered
+  while traversing the directory tree.  Normally errors are only
+  reported for the toplevel file.</p>
+
+<h3 id="file-measure-apparent-size-4">FILE_MEASURE_APPARENT_SIZE = 4</h3>
+
+<p>Tally usage based on apparent file
+  sizes.  Normally, the block-size is used, if available, as this is a
+  more accurate representation of disk space used.
+  Compare with <code>du --apparent-size</code>.</p>
+
+<h3 id="file-measure-no-xdev-8">FILE_MEASURE_NO_XDEV = 8</h3>
+
+<p>Do not cross mount point boundaries.
+  Compare with <code>du -x</code>.</p>
+
+<h2 id="filemonitorflags"><code>FileMonitorFlags</code></h2>
+
+<p>Flags used to set what a #GFileMonitor will watch for.</p>
+
+<p>C - <code>GFileMonitorFlags</code></p>
+
+<h3 id="file-monitor-none-0">FILE_MONITOR_NONE = 0</h3>
+
+<p>No flags set.</p>
+
+<h3 id="file-monitor-watch-mounts-1">FILE_MONITOR_WATCH_MOUNTS = 1</h3>
+
+<p>Watch for mount events.</p>
+
+<h3 id="file-monitor-send-moved-2">FILE_MONITOR_SEND_MOVED = 2</h3>
+
+<p>Pair DELETED and CREATED events caused
+  by file renames (moves) and send a single G_FILE_MONITOR_EVENT_MOVED
+  event instead (NB: not supported on all backends; the default
+  behaviour -without specifying this flag- is to send single DELETED
+  and CREATED events).  Deprecated since 2.46: use
+  %G_FILE_MONITOR_WATCH_MOVES instead.</p>
+
+<h3 id="file-monitor-watch-hard-links-4">FILE_MONITOR_WATCH_HARD_LINKS = 4</h3>
+
+<p>Watch for changes to the file made
+  via another hard link. Since 2.36.</p>
+
+<h3 id="file-monitor-watch-moves-8">FILE_MONITOR_WATCH_MOVES = 8</h3>
+
+<p>Watch for rename operations on a
+  monitored directory.  This causes %G_FILE_MONITOR_EVENT_RENAMED,
+  %G_FILE_MONITOR_EVENT_MOVED_IN and %G_FILE_MONITOR_EVENT_MOVED_OUT
+  events to be emitted when possible.  Since: 2.46.</p>
+
+<h2 id="filequeryinfoflags"><code>FileQueryInfoFlags</code></h2>
+
+<p>Flags used when querying a #GFileInfo.</p>
+
+<p>C - <code>GFileQueryInfoFlags</code></p>
+
+<h3 id="file-query-info-none-0">FILE_QUERY_INFO_NONE = 0</h3>
+
+<p>No flags set.</p>
+
+<h3 id="file-query-info-nofollow-symlinks-1">FILE_QUERY_INFO_NOFOLLOW_SYMLINKS = 1</h3>
+
+<p>Don&rsquo;t follow symlinks.</p>
+
+<h2 id="iostreamspliceflags"><code>IOStreamSpliceFlags</code></h2>
+
+<p>GIOStreamSpliceFlags determine how streams should be spliced.</p>
+
+<p>C - <code>GIOStreamSpliceFlags</code></p>
+
+<h3 id="io-stream-splice-none-0">IO_STREAM_SPLICE_NONE = 0</h3>
+
+<p>Do not close either stream.</p>
+
+<h3 id="io-stream-splice-close-stream1-1">IO_STREAM_SPLICE_CLOSE_STREAM1 = 1</h3>
+
+<p>Close the first stream after
+    the splice.</p>
+
+<h3 id="io-stream-splice-close-stream2-2">IO_STREAM_SPLICE_CLOSE_STREAM2 = 2</h3>
+
+<p>Close the second stream after
+    the splice.</p>
+
+<h3 id="io-stream-splice-wait-for-both-4">IO_STREAM_SPLICE_WAIT_FOR_BOTH = 4</h3>
+
+<p>Wait for both splice operations to finish
+    before calling the callback.</p>
+
+<h2 id="mountmountflags"><code>MountMountFlags</code></h2>
+
+<p>Flags used when mounting a mount.</p>
+
+<p>C - <code>GMountMountFlags</code></p>
+
+<h3 id="mount-mount-none-0">MOUNT_MOUNT_NONE = 0</h3>
+
+<p>No flags set.</p>
+
+<h2 id="mountunmountflags"><code>MountUnmountFlags</code></h2>
+
+<p>Flags used when an unmounting a mount.</p>
+
+<p>C - <code>GMountUnmountFlags</code></p>
+
+<h3 id="mount-unmount-none-0">MOUNT_UNMOUNT_NONE = 0</h3>
+
+<p>No flags set.</p>
+
+<h3 id="mount-unmount-force-1">MOUNT_UNMOUNT_FORCE = 1</h3>
+
+<p>Unmount even if there are outstanding
+ file operations on the mount.</p>
+
+<h2 id="outputstreamspliceflags"><code>OutputStreamSpliceFlags</code></h2>
+
+<p>GOutputStreamSpliceFlags determine how streams should be spliced.</p>
+
+<p>C - <code>GOutputStreamSpliceFlags</code></p>
+
+<h3 id="output-stream-splice-none-0">OUTPUT_STREAM_SPLICE_NONE = 0</h3>
+
+<p>Do not close either stream.</p>
+
+<h3 id="output-stream-splice-close-source-1">OUTPUT_STREAM_SPLICE_CLOSE_SOURCE = 1</h3>
+
+<p>Close the source stream after
+    the splice.</p>
+
+<h3 id="output-stream-splice-close-target-2">OUTPUT_STREAM_SPLICE_CLOSE_TARGET = 2</h3>
+
+<p>Close the target stream after
+    the splice.</p>
+
+<h2 id="resourceflags"><code>ResourceFlags</code></h2>
+
+<p>GResourceFlags give information about a particular file inside a resource
+bundle.</p>
+
+<p>C - <code>GResourceFlags</code></p>
+
+<h3 id="resource-flags-none-0">RESOURCE_FLAGS_NONE = 0</h3>
+
+<p>No flags set.</p>
+
+<h3 id="resource-flags-compressed-1">RESOURCE_FLAGS_COMPRESSED = 1</h3>
+
+<p>The file is compressed.</p>
+
+<h2 id="resourcelookupflags"><code>ResourceLookupFlags</code></h2>
+
+<p>GResourceLookupFlags determine how resource path lookups are handled.</p>
+
+<p>C - <code>GResourceLookupFlags</code></p>
+
+<h3 id="resource-lookup-flags-none-0">RESOURCE_LOOKUP_FLAGS_NONE = 0</h3>
+
+<p>No flags set.</p>
+
+<h2 id="settingsbindflags"><code>SettingsBindFlags</code></h2>
+
+<p>Flags used when creating a binding. These flags determine in which
+direction the binding works. The default is to synchronize in both
+directions.</p>
+
+<p>C - <code>GSettingsBindFlags</code></p>
+
+<h3 id="settings-bind-default-0">SETTINGS_BIND_DEFAULT = 0</h3>
+
+<p>Equivalent to <code>G_SETTINGS_BIND_GET|G_SETTINGS_BIND_SET</code></p>
+
+<h3 id="settings-bind-get-1">SETTINGS_BIND_GET = 1</h3>
+
+<p>Update the #GObject property when the setting changes.
+    It is an error to use this flag if the property is not writable.</p>
+
+<h3 id="settings-bind-set-2">SETTINGS_BIND_SET = 2</h3>
+
+<p>Update the setting when the #GObject property changes.
+    It is an error to use this flag if the property is not readable.</p>
+
+<h3 id="settings-bind-no-sensitivity-4">SETTINGS_BIND_NO_SENSITIVITY = 4</h3>
+
+<p>Do not try to bind a &ldquo;sensitivity&rdquo; property to the writability of the setting</p>
+
+<h3 id="settings-bind-get-no-changes-8">SETTINGS_BIND_GET_NO_CHANGES = 8</h3>
+
+<p>When set in addition to #G_SETTINGS_BIND_GET, set the #GObject property
+    value initially from the setting, but do not listen for changes of the setting</p>
+
+<h3 id="settings-bind-invert-boolean-16">SETTINGS_BIND_INVERT_BOOLEAN = 16</h3>
+
+<p>When passed to g_settings_bind(), uses a pair of mapping functions that invert
+    the boolean value when mapping between the setting and the property.  The setting and property must both
+    be booleans.  You cannot pass this flag to g_settings_bind_with_mapping().</p>
+
+<h2 id="socketmsgflags"><code>SocketMsgFlags</code></h2>
+
+<p>Flags used in g_socket_receive_message() and g_socket_send_message().
+The flags listed in the enum are some commonly available flags, but the
+values used for them are the same as on the platform, and any other flags
+are passed in/out as is. So to use a platform specific flag, just include
+the right system header and pass in the flag.</p>
+
+<p>C - <code>GSocketMsgFlags</code></p>
+
+<h3 id="socket-msg-none-0">SOCKET_MSG_NONE = 0</h3>
+
+<p>No flags.</p>
+
+<h3 id="socket-msg-oob-1">SOCKET_MSG_OOB = 1</h3>
+
+<p>Request to send/receive out of band data.</p>
+
+<h3 id="socket-msg-peek-2">SOCKET_MSG_PEEK = 2</h3>
+
+<p>Read data from the socket without removing it from
+    the queue.</p>
+
+<h3 id="socket-msg-dontroute-4">SOCKET_MSG_DONTROUTE = 4</h3>
+
+<p>Don&rsquo;t use a gateway to send out the packet,
+    only send to hosts on directly connected networks.</p>
+
+<h2 id="subprocessflags"><code>SubprocessFlags</code></h2>
+
+<p>Flags to define the behaviour of a #GSubprocess.</p>
+
+<p>Note that the default for stdin is to redirect from <code>/dev/null</code>.  For
+stdout and stderr the default are for them to inherit the
+corresponding descriptor from the calling process.</p>
+
+<p>Note that it is a programmer error to mix &lsquo;incompatible&rsquo; flags.  For
+example, you may not request both %G_SUBPROCESS_FLAGS_STDOUT_PIPE and
+%G_SUBPROCESS_FLAGS_STDOUT_SILENCE.</p>
+
+<p>C - <code>GSubprocessFlags</code></p>
+
+<h3 id="subprocess-flags-none-0">SUBPROCESS_FLAGS_NONE = 0</h3>
+
+<p>No flags.</p>
+
+<h3 id="subprocess-flags-stdin-pipe-1">SUBPROCESS_FLAGS_STDIN_PIPE = 1</h3>
+
+<p>create a pipe for the stdin of the
+  spawned process that can be accessed with
+  g_subprocess_get_stdin_pipe().</p>
+
+<h3 id="subprocess-flags-stdin-inherit-2">SUBPROCESS_FLAGS_STDIN_INHERIT = 2</h3>
+
+<p>stdin is inherited from the
+  calling process.</p>
+
+<h3 id="subprocess-flags-stdout-pipe-4">SUBPROCESS_FLAGS_STDOUT_PIPE = 4</h3>
+
+<p>create a pipe for the stdout of the
+  spawned process that can be accessed with
+  g_subprocess_get_stdout_pipe().</p>
+
+<h3 id="subprocess-flags-stdout-silence-8">SUBPROCESS_FLAGS_STDOUT_SILENCE = 8</h3>
+
+<p>silence the stdout of the spawned
+  process (ie: redirect to <code>/dev/null</code>).</p>
+
+<h3 id="subprocess-flags-stderr-pipe-16">SUBPROCESS_FLAGS_STDERR_PIPE = 16</h3>
+
+<p>create a pipe for the stderr of the
+  spawned process that can be accessed with
+  g_subprocess_get_stderr_pipe().</p>
+
+<h3 id="subprocess-flags-stderr-silence-32">SUBPROCESS_FLAGS_STDERR_SILENCE = 32</h3>
+
+<p>silence the stderr of the spawned
+  process (ie: redirect to <code>/dev/null</code>).</p>
+
+<h3 id="subprocess-flags-stderr-merge-64">SUBPROCESS_FLAGS_STDERR_MERGE = 64</h3>
+
+<p>merge the stderr of the spawned
+  process with whatever the stdout happens to be.  This is a good way
+  of directing both streams to a common log file, for example.</p>
+
+<h3 id="subprocess-flags-inherit-fds-128">SUBPROCESS_FLAGS_INHERIT_FDS = 128</h3>
+
+<p>spawned processes will inherit the
+  file descriptors of their parent, unless those descriptors have
+  been explicitly marked as close-on-exec.  This flag has no effect
+  over the &ldquo;standard&rdquo; file descriptors (stdin, stdout, stderr).</p>
+
+<h2 id="testdbusflags"><code>TestDBusFlags</code></h2>
+
+<p>Flags to define future #GTestDBus behaviour.</p>
+
+<p>C - <code>GTestDBusFlags</code></p>
+
+<h3 id="test-dbus-none-0">TEST_DBUS_NONE = 0</h3>
+
+<p>No flags.</p>
+
+<h2 id="tlscertificateflags"><code>TlsCertificateFlags</code></h2>
+
+<p>A set of flags describing TLS certification validation. This can be
+used to set which validation steps to perform (eg, with
+g_tls_client_connection_set_validation_flags()), or to describe why
+a particular certificate was rejected (eg, in
+&num;GTlsConnection::accept-certificate).</p>
+
+<p>C - <code>GTlsCertificateFlags</code></p>
+
+<h3 id="tls-certificate-unknown-ca-1">TLS_CERTIFICATE_UNKNOWN_CA = 1</h3>
+
+<p>The signing certificate authority is
+  not known.</p>
+
+<h3 id="tls-certificate-bad-identity-2">TLS_CERTIFICATE_BAD_IDENTITY = 2</h3>
+
+<p>The certificate does not match the
+  expected identity of the site that it was retrieved from.</p>
+
+<h3 id="tls-certificate-not-activated-4">TLS_CERTIFICATE_NOT_ACTIVATED = 4</h3>
+
+<p>The certificate&rsquo;s activation time
+  is still in the future</p>
+
+<h3 id="tls-certificate-expired-8">TLS_CERTIFICATE_EXPIRED = 8</h3>
+
+<p>The certificate has expired</p>
+
+<h3 id="tls-certificate-revoked-16">TLS_CERTIFICATE_REVOKED = 16</h3>
+
+<p>The certificate has been revoked
+  according to the #GTlsConnection&rsquo;s certificate revocation list.</p>
+
+<h3 id="tls-certificate-insecure-32">TLS_CERTIFICATE_INSECURE = 32</h3>
+
+<p>The certificate&rsquo;s algorithm is
+  considered insecure.</p>
+
+<h3 id="tls-certificate-generic-error-64">TLS_CERTIFICATE_GENERIC_ERROR = 64</h3>
+
+<p>Some other error occurred validating
+  the certificate</p>
+
+<h3 id="tls-certificate-validate-all-127">TLS_CERTIFICATE_VALIDATE_ALL = 127</h3>
+
+<p>the combination of all of the above
+  flags</p>
+
+<h2 id="tlsdatabaseverifyflags"><code>TlsDatabaseVerifyFlags</code></h2>
+
+<p>Flags for g_tls_database_verify_chain().</p>
+
+<p>C - <code>GTlsDatabaseVerifyFlags</code></p>
+
+<h3 id="tls-database-verify-none-0">TLS_DATABASE_VERIFY_NONE = 0</h3>
+
+<p>No verification flags</p>
+
+<h2 id="tlspasswordflags"><code>TlsPasswordFlags</code></h2>
+
+<p>Various flags for the password.</p>
+
+<p>C - <code>GTlsPasswordFlags</code></p>
+
+<h3 id="tls-password-none-0">TLS_PASSWORD_NONE = 0</h3>
+
+<p>No flags</p>
+
+<h3 id="tls-password-retry-2">TLS_PASSWORD_RETRY = 2</h3>
+
+<p>The password was wrong, and the user should retry.</p>
+
+<h3 id="tls-password-many-tries-4">TLS_PASSWORD_MANY_TRIES = 4</h3>
+
+<p>Hint to the user that the password has been
+   wrong many times, and the user may not have many chances left.</p>
+
+<h3 id="tls-password-final-try-8">TLS_PASSWORD_FINAL_TRY = 8</h3>
+
+<p>Hint to the user that this is the last try to get
+   this password right.</p>
+
+
+    
+    
+        <div class="chevrons">
+    <div id="navigation">
+</div>
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+    
+
+    
+  </div>
+
+
+	<div>
+
+
+  
+    
+  
+
+
+
+	</div>
+</footer>
+
+<script src="/js/clipboard.min.js"></script>
+
+<link href="/css/featherlight.min.css" rel="stylesheet">
+<script src="/js/featherlight.min.js"></script>
+
+
+
+<script src="/theme-flex/script.js"></script>
+
+
+    
+
+    
+    
+
+    
+  </body>
+</html>

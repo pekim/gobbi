@@ -1,2 +1,0 @@
-# `gobject` enums
-

@@ -1,0 +1,610 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Libs on gobbi</title>
+    <link>/lib/</link>
+    <description>Recent content in Libs on gobbi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="/lib/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>/lib/atk/bitfields/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/atk/bitfields/</guid>
+      <description>atk bitfields HyperlinkStateFlags Describes the type of link
+C - AtkHyperlinkStateFlags
+ATK_HYPERLINK_IS_INLINE = 1 Link is inline</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/lib/atk/constant/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/atk/constant/</guid>
+      <description>atk Constants BINARY_AGE Like atk_get_binary_age(), but from the headers used at application compile time, rather than from the library linked against at application run time.
+C - ATK_BINARY_AGE
+INTERFACE_AGE Like atk_get_interface_age(), but from the headers used at application compile time, rather than from the library linked against at application run time.
+C - ATK_INTERFACE_AGE
+MAJOR_VERSION Like atk_get_major_version(), but from the headers used at application compile time, rather than from the library linked against at application run time.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/lib/atk/enumeration/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/atk/enumeration/</guid>
+      <description>atk Enums CoordType Specifies how xy coordinates are to be interpreted. Used by functions such as atk_component_get_position() and atk_text_get_character_extents()
+C - AtkCoordType
+KeyEventType Specifies the type of a keyboard evemt.
+C - AtkKeyEventType
+Layer Describes the layer of a component
+These enumerated &amp;ldquo;layer values&amp;rdquo; are used when determining which UI rendering layer a component is drawn into, which can help in making determinations of when components occlude one another.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/lib/atk/enums/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/atk/enums/</guid>
+      <description>atk enums CoordType Specifies how xy coordinates are to be interpreted. Used by functions such as atk_component_get_position() and atk_text_get_character_extents()
+C - AtkCoordType
+ATK_XY_SCREEN = 0 specifies xy coordinates relative to the screen
+ATK_XY_WINDOW = 1 specifies xy coordinates relative to the widget&amp;rsquo;s top-level window
+KeyEventType Specifies the type of a keyboard evemt.
+C - AtkKeyEventType
+ATK_KEY_EVENT_PRESS = 0 specifies a key press event
+ATK_KEY_EVENT_RELEASE = 1 specifies a key release event</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/lib/atk/package/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/atk/package/</guid>
+      <description> atk </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/lib/cairo/bitfields/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/cairo/bitfields/</guid>
+      <description> cairo bitfields </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/lib/cairo/constant/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/cairo/constant/</guid>
+      <description>cairo Constants Status C - cairo_status_t
+Content C - cairo_content_t
+Operator C - cairo_operator_t
+Antialias C - cairo_antialias_t
+FillRule C - cairo_fill_rule_t
+LineCap C - cairo_line_cap_t
+LineJoin C - cairo_line_join_t
+TextClusterFlags C - cairo_text_cluster_flags_t
+FontSlant C - cairo_font_slant_t
+FontWeight C - cairo_font_weight_t
+SubpixelOrder C - cairo_subpixel_order_t
+HintStyle C - cairo_hint_style_t
+HintMetrics C - cairo_hint_metrics_t
+FontType C - cairo_font_type_t
+PathDataType C - cairo_path_data_type_t
+DeviceType C - cairo_device_type_t
+SurfaceType C - cairo_surface_type_t</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/lib/cairo/enumeration/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/cairo/enumeration/</guid>
+      <description>cairo Enums Status C - cairo_status_t
+Content C - cairo_content_t
+Operator C - cairo_operator_t
+Antialias C - cairo_antialias_t
+FillRule C - cairo_fill_rule_t
+LineCap C - cairo_line_cap_t
+LineJoin C - cairo_line_join_t
+TextClusterFlags C - cairo_text_cluster_flags_t
+FontSlant C - cairo_font_slant_t
+FontWeight C - cairo_font_weight_t
+SubpixelOrder C - cairo_subpixel_order_t
+HintStyle C - cairo_hint_style_t
+HintMetrics C - cairo_hint_metrics_t
+FontType C - cairo_font_type_t
+PathDataType C - cairo_path_data_type_t
+DeviceType C - cairo_device_type_t
+SurfaceType C - cairo_surface_type_t</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/lib/cairo/enums/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/cairo/enums/</guid>
+      <description>cairo enums Status C - cairo_status_t
+CAIRO_STATUS_SUCCESS = 0 CAIRO_STATUS_NO_MEMORY = 1 CAIRO_STATUS_INVALID_RESTORE = 2 CAIRO_STATUS_INVALID_POP_GROUP = 3 CAIRO_STATUS_NO_CURRENT_POINT = 4 CAIRO_STATUS_INVALID_MATRIX = 5 CAIRO_STATUS_INVALID_STATUS = 6 CAIRO_STATUS_NULL_POINTER = 7 CAIRO_STATUS_INVALID_STRING = 8 CAIRO_STATUS_INVALID_PATH_DATA = 9 CAIRO_STATUS_READ_ERROR = 10 CAIRO_STATUS_WRITE_ERROR = 11 CAIRO_STATUS_SURFACE_FINISHED = 12 CAIRO_STATUS_SURFACE_TYPE_MISMATCH = 13 CAIRO_STATUS_PATTERN_TYPE_MISMATCH = 14 CAIRO_STATUS_INVALID_CONTENT = 15 CAIRO_STATUS_INVALID_FORMAT = 16 CAIRO_STATUS_INVALID_VISUAL = 17 CAIRO_STATUS_FILE_NOT_FOUND = 18 CAIRO_STATUS_INVALID_DASH = 19 CAIRO_STATUS_INVALID_DSC_COMMENT = 20 CAIRO_STATUS_INVALID_INDEX = 21 CAIRO_STATUS_CLIP_NOT_REPRESENTABLE = 22 CAIRO_STATUS_TEMP_FILE_ERROR = 23 CAIRO_STATUS_INVALID_STRIDE = 24 CAIRO_STATUS_FONT_TYPE_MISMATCH = 25 CAIRO_STATUS_USER_FONT_IMMUTABLE = 26 CAIRO_STATUS_USER_FONT_ERROR = 27 CAIRO_STATUS_NEGATIVE_COUNT = 28 CAIRO_STATUS_INVALID_CLUSTERS = 29 CAIRO_STATUS_INVALID_SLANT = 30 CAIRO_STATUS_INVALID_WEIGHT = 31 CAIRO_STATUS_INVALID_SIZE = 32 CAIRO_STATUS_USER_FONT_NOT_IMPLEMENTED = 33 CAIRO_STATUS_DEVICE_TYPE_MISMATCH = 34 CAIRO_STATUS_DEVICE_ERROR = 35 CAIRO_STATUS_INVALID_MESH_CONSTRUCTION = 36 CAIRO_STATUS_DEVICE_FINISHED = 37 CAIRO_STATUS_JBIG2_GLOBAL_MISSING = 38 Content C - cairo_content_t</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/lib/cairo/package/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/cairo/package/</guid>
+      <description> cairo </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/lib/gdk/bitfields/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/gdk/bitfields/</guid>
+      <description>gdk bitfields AnchorHints Positioning hints for aligning a window relative to a rectangle.
+These hints determine how the window should be positioned in the case that the window would fall off-screen if placed in its ideal position.
+For example, %GDK_ANCHOR_FLIP_X will replace %GDK_GRAVITY_NORTH_WEST with %GDK_GRAVITY_NORTH_EAST and vice versa if the window extends beyond the left or right edges of the monitor.
+If %GDK_ANCHOR_SLIDE_X is set, the window can be shifted horizontally to fit on-screen.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/lib/gdk/constant/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/gdk/constant/</guid>
+      <description>gdk Constants BUTTON_MIDDLE The middle button.
+C - GDK_BUTTON_MIDDLE
+BUTTON_PRIMARY The primary button. This is typically the left mouse button, or the right button in a left-handed setup.
+C - GDK_BUTTON_PRIMARY
+BUTTON_SECONDARY The secondary button. This is typically the right mouse button, or the left button in a left-handed setup.
+C - GDK_BUTTON_SECONDARY
+CURRENT_TIME Represents the current time, and can be used anywhere a time is expected.
+C - GDK_CURRENT_TIME</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/lib/gdk/enumeration/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/gdk/enumeration/</guid>
+      <description>gdk Enums AxisUse An enumeration describing the way in which a device axis (valuator) maps onto the predefined valuator types that GTK+ understands.
+Note that the X and Y axes are not really needed; pointer devices report their location via the x/y members of events regardless. Whether X and Y are present as axes depends on the GDK backend.
+C - GdkAxisUse
+ByteOrder A set of values describing the possible byte-orders for storing pixel values in memory.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/lib/gdk/enums/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/gdk/enums/</guid>
+      <description>gdk enums AxisUse An enumeration describing the way in which a device axis (valuator) maps onto the predefined valuator types that GTK+ understands.
+Note that the X and Y axes are not really needed; pointer devices report their location via the x/y members of events regardless. Whether X and Y are present as axes depends on the GDK backend.
+C - GdkAxisUse
+GDK_AXIS_IGNORE = 0 the axis is ignored.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/lib/gdk/package/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/gdk/package/</guid>
+      <description> gdk </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/lib/gdkpixbuf/bitfields/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/gdkpixbuf/bitfields/</guid>
+      <description> gdkpixbuf bitfields </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/lib/gdkpixbuf/constant/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/gdkpixbuf/constant/</guid>
+      <description>gdkpixbuf Constants PIXBUF_FEATURES_H C - GDK_PIXBUF_FEATURES_H
+PIXBUF_MAJOR Major version of gdk-pixbuf library, that is the &amp;ldquo;0&amp;rdquo; in &amp;ldquo;0.8.2&amp;rdquo; for example.
+C - GDK_PIXBUF_MAJOR
+PIXBUF_MICRO Micro version of gdk-pixbuf library, that is the &amp;ldquo;2&amp;rdquo; in &amp;ldquo;0.8.2&amp;rdquo; for example.
+C - GDK_PIXBUF_MICRO
+PIXBUF_MINOR Minor version of gdk-pixbuf library, that is the &amp;ldquo;8&amp;rdquo; in &amp;ldquo;0.8.2&amp;rdquo; for example.
+C - GDK_PIXBUF_MINOR
+PIXBUF_VERSION Contains the full version of the gdk-pixbuf header as a string. This is the version being compiled against; contrast with &amp;num;gdk_pixbuf_version.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/lib/gdkpixbuf/enumeration/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/gdkpixbuf/enumeration/</guid>
+      <description>gdkpixbuf Enums Colorspace This enumeration defines the color spaces that are supported by the gdk-pixbuf library. Currently only RGB is supported.
+C - GdkColorspace
+InterpType This enumeration describes the different interpolation modes that can be used with the scaling functions. @GDK_INTERP_NEAREST is the fastest scaling method, but has horrible quality when scaling down. @GDK_INTERP_BILINEAR is the best choice if you aren&amp;rsquo;t sure what to choose, it has a good speed/quality balance.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/lib/gdkpixbuf/enums/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/gdkpixbuf/enums/</guid>
+      <description>gdkpixbuf enums Colorspace This enumeration defines the color spaces that are supported by the gdk-pixbuf library. Currently only RGB is supported.
+C - GdkColorspace
+GDK_COLORSPACE_RGB = 0 Indicates a red/green/blue additive color space.
+InterpType This enumeration describes the different interpolation modes that can be used with the scaling functions. @GDK_INTERP_NEAREST is the fastest scaling method, but has horrible quality when scaling down. @GDK_INTERP_BILINEAR is the best choice if you aren&amp;rsquo;t sure what to choose, it has a good speed/quality balance.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/lib/gdkpixbuf/package/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/gdkpixbuf/package/</guid>
+      <description> gdkpixbuf </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/lib/gio/bitfields/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/gio/bitfields/</guid>
+      <description>gio bitfields AppInfoCreateFlags Flags used when creating a #GAppInfo.
+C - GAppInfoCreateFlags
+APP_INFO_CREATE_NONE = 0 No flags.
+APP_INFO_CREATE_NEEDS_TERMINAL = 1 Application opens in a terminal window.
+APP_INFO_CREATE_SUPPORTS_URIS = 2 Application supports URI arguments.
+APP_INFO_CREATE_SUPPORTS_STARTUP_NOTIFICATION = 4 Application supports startup notification. Since 2.26
+ApplicationFlags Flags used to define the behaviour of a #GApplication.
+C - GApplicationFlags
+APPLICATION_FLAGS_NONE = 0 Default
+APPLICATION_IS_SERVICE = 1 Run as a service. In this mode, registration fails if the service is already running, and the application will initially wait up to 10 seconds for an initial activation message to arrive.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/lib/gio/constant/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/gio/constant/</guid>
+      <description>gio Constants DESKTOP_APP_INFO_LOOKUP_EXTENSION_POINT_NAME Extension point for default handler to URI association. See [Extending GIO][extending-gio].
+C - G_DESKTOP_APP_INFO_LOOKUP_EXTENSION_POINT_NAME
+FILE_ATTRIBUTE_ACCESS_CAN_DELETE A key in the &amp;ldquo;access&amp;rdquo; namespace for checking deletion privileges. Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN. This attribute will be %TRUE if the user is able to delete the file.
+C - G_FILE_ATTRIBUTE_ACCESS_CAN_DELETE
+FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE A key in the &amp;ldquo;access&amp;rdquo; namespace for getting execution privileges. Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN. This attribute will be %TRUE if the user is able to execute the file.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/lib/gio/enumeration/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/gio/enumeration/</guid>
+      <description>gio Enums BusType An enumeration for well-known message buses.
+C - GBusType
+ConverterResult Results returned from g_converter_convert().
+C - GConverterResult
+CredentialsType Enumeration describing different kinds of native credential types.
+C - GCredentialsType
+DBusError Error codes for the %G_DBUS_ERROR error domain.
+C - GDBusError
+DBusMessageByteOrder Enumeration used to describe the byte order of a D-Bus message.
+C - GDBusMessageByteOrder
+DBusMessageHeaderField Header fields used in #GDBusMessage.
+C - GDBusMessageHeaderField
+DBusMessageType Message types used in #GDBusMessage.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/lib/gio/enums/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/gio/enums/</guid>
+      <description>gio enums BusType An enumeration for well-known message buses.
+C - GBusType
+BUS_TYPE_STARTER = -1 An alias for the message bus that activated the process, if any.
+BUS_TYPE_NONE = 0 Not a message bus.
+BUS_TYPE_SYSTEM = 1 The system-wide message bus.
+BUS_TYPE_SESSION = 2 The login session message bus.
+ConverterResult Results returned from g_converter_convert().
+C - GConverterResult
+CONVERTER_ERROR = 0 There was an error during conversion.
+CONVERTER_CONVERTED = 1 Some data was consumed or produced</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/lib/gio/package/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/gio/package/</guid>
+      <description> gio </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/lib/glib/bitfields/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/glib/bitfields/</guid>
+      <description>glib bitfields AsciiType C - GAsciiType
+ASCII_ALNUM = 1 ASCII_ALPHA = 2 ASCII_CNTRL = 4 ASCII_DIGIT = 8 ASCII_GRAPH = 16 ASCII_LOWER = 32 ASCII_PRINT = 64 ASCII_PUNCT = 128 ASCII_SPACE = 256 ASCII_UPPER = 512 ASCII_XDIGIT = 1024 FileTest A test to perform on a file using g_file_test().
+C - GFileTest
+FILE_TEST_IS_REGULAR = 1 %TRUE if the file is a regular file (not a directory). Note that this test will also return %TRUE if the tested file is a symlink to a regular file.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/lib/glib/constant/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/glib/constant/</guid>
+      <description>glib Constants ANALYZER_ANALYZING C - G_ANALYZER_ANALYZING
+ASCII_DTOSTR_BUF_SIZE A good size for a buffer to be passed into g_ascii_dtostr(). It is guaranteed to be enough for all output of that function on systems with 64bit IEEE-compatible doubles.
+The typical usage would be something like: |[char buf[G_ASCII_DTOSTR_BUF_SIZE];
+fprintf (out, &amp;ldquo;value=%s\n&amp;rdquo;, g_ascii_dtostr (buf, sizeof (buf), value)); ]|
+C - G_ASCII_DTOSTR_BUF_SIZE
+BIG_ENDIAN Specifies one of the possible types of byte order. See #G_BYTE_ORDER.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/lib/glib/enumeration/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/glib/enumeration/</guid>
+      <description>glib Enums BookmarkFileError Error codes returned by bookmark file parsing.
+C - GBookmarkFileError
+ChecksumType The hashing algorithm to be used by #GChecksum when performing the digest of some data.
+Note that the #GChecksumType enumeration may be extended at a later date to include new hashing algorithm types.
+C - GChecksumType
+ConvertError Error codes returned by character set conversion routines.
+C - GConvertError
+DateDMY This enumeration isn&amp;rsquo;t used in the API, but may be useful if you need to mark a number as a day, month, or year.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/lib/glib/enums/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/glib/enums/</guid>
+      <description>glib enums BookmarkFileError Error codes returned by bookmark file parsing.
+C - GBookmarkFileError
+BOOKMARK_FILE_ERROR_INVALID_URI = 0 URI was ill-formed
+BOOKMARK_FILE_ERROR_INVALID_VALUE = 1 a requested field was not found
+BOOKMARK_FILE_ERROR_APP_NOT_REGISTERED = 2 a requested application did not register a bookmark
+BOOKMARK_FILE_ERROR_URI_NOT_FOUND = 3 a requested URI was not found
+BOOKMARK_FILE_ERROR_READ = 4 document was ill formed
+BOOKMARK_FILE_ERROR_UNKNOWN_ENCODING = 5 the text being parsed was in an unknown encoding
+BOOKMARK_FILE_ERROR_WRITE = 6 an error occurred while writing</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/lib/glib/package/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/glib/package/</guid>
+      <description> glib </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/lib/gobject/bitfields/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/gobject/bitfields/</guid>
+      <description>gobject bitfields BindingFlags Flags to be passed to g_object_bind_property() or g_object_bind_property_full().
+This enumeration can be extended at later date.
+C - GBindingFlags
+BINDING_DEFAULT = 0 The default binding; if the source property changes, the target property is updated with its value.
+BINDING_BIDIRECTIONAL = 1 Bidirectional binding; if either the property of the source or the property of the target changes, the other is updated.
+BINDING_SYNC_CREATE = 2 Synchronize the values of the source and target properties when creating the binding; the direction of the synchronization is always from the source to the target.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/lib/gobject/constant/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/gobject/constant/</guid>
+      <description>gobject Constants PARAM_MASK Mask containing the bits of #GParamSpec.flags which are reserved for GLib.
+C - G_PARAM_MASK
+PARAM_STATIC_STRINGS #GParamFlags value alias for %G_PARAM_STATIC_NAME | %G_PARAM_STATIC_NICK | %G_PARAM_STATIC_BLURB.
+Since 2.13.0
+C - G_PARAM_STATIC_STRINGS
+PARAM_USER_SHIFT Minimum shift count to be used for user defined flags, to be stored in &amp;num;GParamSpec.flags. The maximum allowed is 10.
+C - G_PARAM_USER_SHIFT
+SIGNAL_FLAGS_MASK A mask for all #GSignalFlags bits.
+C - G_SIGNAL_FLAGS_MASK
+SIGNAL_MATCH_MASK A mask for all #GSignalMatchType bits.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/lib/gobject/enumeration/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/gobject/enumeration/</guid>
+      <description>gobject Enums BindingFlags Flags to be passed to g_object_bind_property() or g_object_bind_property_full().
+This enumeration can be extended at later date.
+C - GBindingFlags
+ConnectFlags The connection flags are used to specify the behaviour of a signal&amp;rsquo;s connection.
+C - GConnectFlags
+ParamFlags Through the #GParamFlags flag values, certain aspects of parameters can be configured. See also #G_PARAM_STATIC_STRINGS.
+C - GParamFlags
+SignalFlags The signal flags are used to specify a signal&amp;rsquo;s behaviour, the overall signal description outlines how especially the RUN flags control the stages of a signal emission.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/lib/gobject/enums/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/gobject/enums/</guid>
+      <description> gobject enums </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/lib/gobject/package/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/gobject/package/</guid>
+      <description> gobject </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/lib/gtk/bitfields/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/gtk/bitfields/</guid>
+      <description>gtk bitfields AccelFlags Accelerator flags used with gtk_accel_group_connect().
+C - GtkAccelFlags
+GTK_ACCEL_VISIBLE = 1 Accelerator is visible
+GTK_ACCEL_LOCKED = 2 Accelerator not removable
+GTK_ACCEL_MASK = 7 Mask
+ApplicationInhibitFlags Types of user actions that may be blocked by gtk_application_inhibit().
+C - GtkApplicationInhibitFlags
+GTK_APPLICATION_INHIBIT_LOGOUT = 1 Inhibit ending the user session by logging out or by shutting down the computer
+GTK_APPLICATION_INHIBIT_SWITCH = 2 Inhibit user switching
+GTK_APPLICATION_INHIBIT_SUSPEND = 4 Inhibit suspending the session or computer</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/lib/gtk/constant/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/gtk/constant/</guid>
+      <description>gtk Constants BINARY_AGE Like gtk_get_binary_age(), but from the headers used at application compile time, rather than from the library linked against at application run time.
+C - GTK_BINARY_AGE
+INPUT_ERROR Constant to return from a signal handler for the #GtkSpinButton::input signal in case of conversion failure.
+C - GTK_INPUT_ERROR
+INTERFACE_AGE Like gtk_get_interface_age(), but from the headers used at application compile time, rather than from the library linked against at application run time.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/lib/gtk/enumeration/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/gtk/enumeration/</guid>
+      <description>gtk Enums Align Controls how a widget deals with extra space in a single (x or y) dimension.
+Alignment only matters if the widget receives a “too large” allocation, for example if you packed the widget with the #GtkWidget:expand flag inside a #GtkBox, then the widget might get extra space. If you have for example a 16x16 icon inside a 32x32 space, the icon could be scaled and stretched, it could be centered, or it could be positioned to one side of the space.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/lib/gtk/enums/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/gtk/enums/</guid>
+      <description>gtk enums Align Controls how a widget deals with extra space in a single (x or y) dimension.
+Alignment only matters if the widget receives a “too large” allocation, for example if you packed the widget with the #GtkWidget:expand flag inside a #GtkBox, then the widget might get extra space. If you have for example a 16x16 icon inside a 32x32 space, the icon could be scaled and stretched, it could be centered, or it could be positioned to one side of the space.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/lib/gtk/package/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/gtk/package/</guid>
+      <description> gtk </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/lib/pango/bitfields/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/pango/bitfields/</guid>
+      <description>pango bitfields FontMask The bits in a #PangoFontMask correspond to fields in a &amp;num;PangoFontDescription that have been set.
+C - PangoFontMask
+PANGO_FONT_MASK_FAMILY = 1 the font family is specified.
+PANGO_FONT_MASK_STYLE = 2 the font style is specified.
+PANGO_FONT_MASK_VARIANT = 4 the font variant is specified.
+PANGO_FONT_MASK_WEIGHT = 8 the font weight is specified.
+PANGO_FONT_MASK_STRETCH = 16 the font stretch is specified.
+PANGO_FONT_MASK_SIZE = 32 the font size is specified.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/lib/pango/constant/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/pango/constant/</guid>
+      <description>pango Constants ANALYSIS_FLAG_CENTERED_BASELINE Whether the segment should be shifted to center around the baseline. Used in vertical writing directions mostly.
+C - PANGO_ANALYSIS_FLAG_CENTERED_BASELINE
+ANALYSIS_FLAG_IS_ELLIPSIS This flag is used to mark runs that hold ellipsized text, in an ellipsized layout.
+C - PANGO_ANALYSIS_FLAG_IS_ELLIPSIS
+ATTR_INDEX_FROM_TEXT_BEGINNING This value can be used to set the start_index member of a #PangoAttribute such that the attribute covers from the beginning of the text.
+C - PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/lib/pango/enumeration/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/pango/enumeration/</guid>
+      <description>pango Enums Alignment A #PangoAlignment describes how to align the lines of a #PangoLayout within the available space. If the #PangoLayout is set to justify using pango_layout_set_justify(), this only has effect for partial lines.
+C - PangoAlignment
+AttrType The #PangoAttrType distinguishes between different types of attributes. Along with the predefined values, it is possible to allocate additional values for custom attributes using pango_attr_type_register(). The predefined values are given below. The type of structure used to store the attribute is listed in parentheses after the description.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/lib/pango/enums/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/pango/enums/</guid>
+      <description>pango enums Alignment A #PangoAlignment describes how to align the lines of a #PangoLayout within the available space. If the #PangoLayout is set to justify using pango_layout_set_justify(), this only has effect for partial lines.
+C - PangoAlignment
+PANGO_ALIGN_LEFT = 0 Put all available space on the right
+PANGO_ALIGN_CENTER = 1 Center the line within the available space
+PANGO_ALIGN_RIGHT = 2 Put all available space on the left
+AttrType The #PangoAttrType distinguishes between different types of attributes.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/lib/pango/package/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/lib/pango/package/</guid>
+      <description> pango </description>
+    </item>
+    
+  </channel>
+</rss>

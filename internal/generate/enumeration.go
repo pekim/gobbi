@@ -29,8 +29,9 @@ func (e *Enumeration) init(ns *Namespace) {
 		e.goTypeName = e.GoTypeName
 	}
 
+	memberNamePrefix := e.Namespace.CIdentifierPrefixes + "_"
 	for _, member := range e.Members {
-		member.Namespace = ns
+		member.init(ns, memberNamePrefix)
 	}
 }
 
@@ -70,10 +71,9 @@ func (e *Enumeration) generate(g *jen.Group, version *Version) {
 		Qual("C", e.CType)
 
 	// define members
-	memberNamePrefix := e.Namespace.CIdentifierPrefixes + "_"
 	g.Const().DefsFunc(func(g *jen.Group) {
 		for _, member := range e.Members {
-			member.generate(g, memberNamePrefix, e.goTypeName)
+			member.generate(g, e.goTypeName)
 		}
 	})
 }

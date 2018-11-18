@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>gobbi</title>
+    
+      <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="revised" content="2018-11-18T19:58:57 GMT">
+<title>enums :: gobbi</title>
+<link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
+<link href="/css/font-awesome.min.css" rel="stylesheet">
+<link href="/css/nucleus.css" rel="stylesheet">
+<link href="/theme-flex/style.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<script src="/js/jquery-2.x.min.js"></script>
+<script type="text/javascript">
+      var baseurl = "\/";
+</script>
+<link rel="stylesheet" href="/css/custom.css">
+
+
+    
+  </head>
+  <body data-url="/api/cairo/enums/">
+    
+      <header>
+  <div class="logo">
+    
+	
+  
+    <p><a href="/">gobbi</a></p>
+
+  
+
+
+  </div>
+  <div class="burger"><a href="javascript:void(0);" style="font-size:15px;">&#9776;</a></div>
+    <nav class="shortcuts">
+            <li class="" role="">
+                <a href="https://github.com/pekim/gobbi"  rel="noopener">
+                  <i class='fa fa-github'></i> <label>Github repo</label>
+                </a>
+            </li>
+    </nav>
+</header>
+<article>
+  <aside>
+    <ul class="menu">
+
+
+    <li class="dd-item ">
+        <div>
+            <a href="/">
+                <span>Introduction</span>
+            </a>
+        </div>
+    </li>
+
+    <li class="dd-item ">
+        <div>
+            <a href="/getting-started/">
+                <span>Getting started</span>
+            </a>
+        </div>
+    </li>
+
+    <li class="dd-item ">
+        <div>
+            <a href="/application-lifecycle/">
+                <span>Application lifecycle</span>
+            </a>
+        </div>
+    </li>
+
+    <li class="dd-item ">
+        <div>
+            <a href="/build-tags/">
+                <span>Build tags</span>
+            </a>
+        </div>
+    </li>
+
+    <li class="dd-item ">
+        <div>
+            <a href="/goroutines/">
+                <span>Goroutines</span>
+            </a>
+        </div>
+    </li>
+
+    <li class="dd-item ">
+        <div>
+            <a href="/gvalue/">
+                <span>gobject.Value</span>
+            </a>
+        </div>
+    </li>
+
+    <li class="dd-item ">
+        <div>
+            <a href="/signal-handling/">
+                <span>Signal handling</span>
+            </a>
+        </div>
+    </li>
+
+    <li data-nav-id="/api/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/api/">API</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+    <li data-nav-id="/api/atk/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/atk/">atk</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/atk/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/atk/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/atk/constants/" class="dd-item">
+        <div>
+          <a href="/api/atk/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/atk/enums/" class="dd-item">
+        <div>
+          <a href="/api/atk/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/cairo/" class="dd-item parent haschildren
+        ">
+      <div>
+      <a href="/api/cairo/">cairo</a>
+            <i class="fa fa-angle-down fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/cairo/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/cairo/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/cairo/constants/" class="dd-item">
+        <div>
+          <a href="/api/cairo/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/cairo/enums/" class="dd-item active">
+        <div>
+          <a href="/api/cairo/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/gdk/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/gdk/">gdk</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/gdk/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/gdk/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gdk/constants/" class="dd-item">
+        <div>
+          <a href="/api/gdk/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gdk/enums/" class="dd-item">
+        <div>
+          <a href="/api/gdk/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/gdkpixbuf/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/gdkpixbuf/">gdkpixbuf</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/gdkpixbuf/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/gdkpixbuf/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gdkpixbuf/constants/" class="dd-item">
+        <div>
+          <a href="/api/gdkpixbuf/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gdkpixbuf/enums/" class="dd-item">
+        <div>
+          <a href="/api/gdkpixbuf/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/gio/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/gio/">gio</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/gio/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/gio/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gio/constants/" class="dd-item">
+        <div>
+          <a href="/api/gio/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gio/enums/" class="dd-item">
+        <div>
+          <a href="/api/gio/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/glib/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/glib/">glib</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/glib/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/glib/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/glib/constants/" class="dd-item">
+        <div>
+          <a href="/api/glib/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/glib/enums/" class="dd-item">
+        <div>
+          <a href="/api/glib/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/gobject/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/gobject/">gobject</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/gobject/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/gobject/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gobject/constants/" class="dd-item">
+        <div>
+          <a href="/api/gobject/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gobject/enums/" class="dd-item">
+        <div>
+          <a href="/api/gobject/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/gtk/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/gtk/">gtk</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/gtk/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/gtk/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gtk/constants/" class="dd-item">
+        <div>
+          <a href="/api/gtk/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/gtk/enums/" class="dd-item">
+        <div>
+          <a href="/api/gtk/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+    <li data-nav-id="/api/pango/" class="dd-item haschildren
+        ">
+      <div>
+      <a href="/api/pango/">pango</a><i class="fa fa-angle-right fa-lg category-icon"></i><i class="fa fa-circle-thin read-icon"></i>
+      </div>
+        <ul>
+      <li data-nav-id="/api/pango/bitfields/" class="dd-item">
+        <div>
+          <a href="/api/pango/bitfields/">
+            bitfields
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/pango/constants/" class="dd-item">
+        <div>
+          <a href="/api/pango/constants/">
+            constants
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+      <li data-nav-id="/api/pango/enums/" class="dd-item">
+        <div>
+          <a href="/api/pango/enums/">
+            enums
+          </a><i class="fa fa-circle-thin read-icon"></i>
+        </div>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+
+
+
+
+    </ul>
+    <section>
+    </section>
+  </aside>
+  <section class="page">
+    
+    <div class="nav-select">
+      <center>Navigation : 
+        <select onchange="javascript:location.href = this.value;">
+          
+    <option value="/api/" >
+   API</option> 
+    <option value="/api/atk/" >
+  - 
+   atk</option>
+    <option value="/api/cairo/" >
+  - 
+   cairo</option> 
+      <option value="/api/cairo/bitfields/" >-- bitfields</option>
+      <option value="/api/cairo/constants/" >-- constants</option>
+      <option value="/api/cairo/enums/"  selected>-- enums</option>
+  
+    <option value="/api/gdk/" >
+  - 
+   gdk</option>
+    <option value="/api/gdkpixbuf/" >
+  - 
+   gdkpixbuf</option>
+    <option value="/api/gio/" >
+  - 
+   gio</option>
+    <option value="/api/glib/" >
+  - 
+   glib</option>
+    <option value="/api/gobject/" >
+  - 
+   gobject</option>
+    <option value="/api/gtk/" >
+  - 
+   gtk</option>
+    <option value="/api/pango/" >
+  - 
+   pango</option>
+  
+
+
+
+        </select>
+      </center>
+    </div>
+      <div>
+        <div class="searchbox">
+          <input data-search-input id="search-by" type="text" placeholder="Search...">
+        </div>
+        <script type="text/javascript" src="/js/lunr.min.js"></script>
+        <script type="text/javascript" src="/js/auto-complete.js"></script>
+        <link href="/css/auto-complete.css" rel="stylesheet">
+        <script type="text/javascript">
+          
+              var baseurl = "\/";
+          
+        </script>
+        <script type="text/javascript" src="/js/search.js"></script>
+      </div>
+    
+
+    <h1>enums</h1>
+    
+    
+    
+    <p><p class="api-heading">Status</p>
+<div class="api-notes">
+  <p class="api-ctype">cairo_status_t</p>
+<table>
+<tr>
+<td class="name">CAIRO_STATUS_SUCCESS</td>
+<td class="value">0</td>
+</tr>
+<tr>
+<td class="name">CAIRO_STATUS_NO_MEMORY</td>
+<td class="value">1</td>
+</tr>
+<tr>
+<td class="name">CAIRO_STATUS_INVALID_RESTORE</td>
+<td class="value">2</td>
+</tr>
+<tr>
+<td class="name">CAIRO_STATUS_INVALID_POP_GROUP</td>
+<td class="value">3</td>
+</tr>
+<tr>
+<td class="name">CAIRO_STATUS_NO_CURRENT_POINT</td>
+<td class="value">4</td>
+</tr>
+<tr>
+<td class="name">CAIRO_STATUS_INVALID_MATRIX</td>
+<td class="value">5</td>
+</tr>
+<tr>
+<td class="name">CAIRO_STATUS_INVALID_STATUS</td>
+<td class="value">6</td>
+</tr>
+<tr>
+<td class="name">CAIRO_STATUS_NULL_POINTER</td>
+<td class="value">7</td>
+</tr>
+<tr>
+<td class="name">CAIRO_STATUS_INVALID_STRING</td>
+<td class="value">8</td>
+</tr>
+<tr>
+<td class="name">CAIRO_STATUS_INVALID_PATH_DATA</td>
+<td class="value">9</td>
+</tr>
+<tr>
+<td class="name">CAIRO_STATUS_READ_ERROR</td>
+<td class="value">10</td>
+</tr>
+<tr>
+<td class="name">CAIRO_STATUS_WRITE_ERROR</td>
+<td class="value">11</td>
+</tr>
+<tr>
+<td class="name">CAIRO_STATUS_SURFACE_FINISHED</td>
+<td class="value">12</td>
+</tr>
+<tr>
+<td class="name">CAIRO_STATUS_SURFACE_TYPE_MISMATCH</td>
+<td class="value">13</td>
+</tr>
+<tr>
+<td class="name">CAIRO_STATUS_PATTERN_TYPE_MISMATCH</td>
+<td class="value">14</td>
+</tr>
+<tr>
+<td class="name">CAIRO_STATUS_INVALID_CONTENT</td>
+<td class="value">15</td>
+</tr>
+<tr>
+<td class="name">CAIRO_STATUS_INVALID_FORMAT</td>
+<td class="value">16</td>
+</tr>
+<tr>
+<td class="name">CAIRO_STATUS_INVALID_VISUAL</td>
+<td class="value">17</td>
+</tr>
+<tr>
+<td class="name">CAIRO_STATUS_FILE_NOT_FOUND</td>
+<td class="value">18</td>
+</tr>
+<tr>
+<td class="name">CAIRO_STATUS_INVALID_DASH</td>
+<td class="value">19</td>
+</tr>
+<tr>
+<td class="name">CAIRO_STATUS_INVALID_DSC_COMMENT</td>
+<td class="value">20</td>
+</tr>
+<tr>
+<td class="name">CAIRO_STATUS_INVALID_INDEX</td>
+<td class="value">21</td>
+</tr>
+<tr>
+<td class="name">CAIRO_STATUS_CLIP_NOT_REPRESENTABLE</td>
+<td class="value">22</td>
+</tr>
+<tr>
+<td class="name">CAIRO_STATUS_TEMP_FILE_ERROR</td>
+<td class="value">23</td>
+</tr>
+<tr>
+<td class="name">CAIRO_STATUS_INVALID_STRIDE</td>
+<td class="value">24</td>
+</tr>
+<tr>
+<td class="name">CAIRO_STATUS_FONT_TYPE_MISMATCH</td>
+<td class="value">25</td>
+</tr>
+<tr>
+<td class="name">CAIRO_STATUS_USER_FONT_IMMUTABLE</td>
+<td class="value">26</td>
+</tr>
+<tr>
+<td class="name">CAIRO_STATUS_USER_FONT_ERROR</td>
+<td class="value">27</td>
+</tr>
+<tr>
+<td class="name">CAIRO_STATUS_NEGATIVE_COUNT</td>
+<td class="value">28</td>
+</tr>
+<tr>
+<td class="name">CAIRO_STATUS_INVALID_CLUSTERS</td>
+<td class="value">29</td>
+</tr>
+<tr>
+<td class="name">CAIRO_STATUS_INVALID_SLANT</td>
+<td class="value">30</td>
+</tr>
+<tr>
+<td class="name">CAIRO_STATUS_INVALID_WEIGHT</td>
+<td class="value">31</td>
+</tr>
+<tr>
+<td class="name">CAIRO_STATUS_INVALID_SIZE</td>
+<td class="value">32</td>
+</tr>
+<tr>
+<td class="name">CAIRO_STATUS_USER_FONT_NOT_IMPLEMENTED</td>
+<td class="value">33</td>
+</tr>
+<tr>
+<td class="name">CAIRO_STATUS_DEVICE_TYPE_MISMATCH</td>
+<td class="value">34</td>
+</tr>
+<tr>
+<td class="name">CAIRO_STATUS_DEVICE_ERROR</td>
+<td class="value">35</td>
+</tr>
+<tr>
+<td class="name">CAIRO_STATUS_INVALID_MESH_CONSTRUCTION</td>
+<td class="value">36</td>
+</tr>
+<tr>
+<td class="name">CAIRO_STATUS_DEVICE_FINISHED</td>
+<td class="value">37</td>
+</tr>
+<tr>
+<td class="name">CAIRO_STATUS_JBIG2_GLOBAL_MISSING</td>
+<td class="value">38</td>
+</tr>
+</table>
+</div>
+<p class="api-heading">Content</p>
+<div class="api-notes">
+  <p class="api-ctype">cairo_content_t</p>
+<table>
+<tr>
+<td class="name">CAIRO_CONTENT_COLOR</td>
+<td class="value">4096</td>
+</tr>
+<tr>
+<td class="name">CAIRO_CONTENT_ALPHA</td>
+<td class="value">8192</td>
+</tr>
+<tr>
+<td class="name">CAIRO_CONTENT_COLOR_ALPHA</td>
+<td class="value">12288</td>
+</tr>
+</table>
+</div>
+<p class="api-heading">Operator</p>
+<div class="api-notes">
+  <p class="api-ctype">cairo_operator_t</p>
+<table>
+<tr>
+<td class="name">CAIRO_OPERATOR_CLEAR</td>
+<td class="value">0</td>
+</tr>
+<tr>
+<td class="name">CAIRO_OPERATOR_SOURCE</td>
+<td class="value">1</td>
+</tr>
+<tr>
+<td class="name">CAIRO_OPERATOR_OVER</td>
+<td class="value">2</td>
+</tr>
+<tr>
+<td class="name">CAIRO_OPERATOR_IN</td>
+<td class="value">3</td>
+</tr>
+<tr>
+<td class="name">CAIRO_OPERATOR_OUT</td>
+<td class="value">4</td>
+</tr>
+<tr>
+<td class="name">CAIRO_OPERATOR_ATOP</td>
+<td class="value">5</td>
+</tr>
+<tr>
+<td class="name">CAIRO_OPERATOR_DEST</td>
+<td class="value">6</td>
+</tr>
+<tr>
+<td class="name">CAIRO_OPERATOR_DEST_OVER</td>
+<td class="value">7</td>
+</tr>
+<tr>
+<td class="name">CAIRO_OPERATOR_DEST_IN</td>
+<td class="value">8</td>
+</tr>
+<tr>
+<td class="name">CAIRO_OPERATOR_DEST_OUT</td>
+<td class="value">9</td>
+</tr>
+<tr>
+<td class="name">CAIRO_OPERATOR_DEST_ATOP</td>
+<td class="value">10</td>
+</tr>
+<tr>
+<td class="name">CAIRO_OPERATOR_XOR</td>
+<td class="value">11</td>
+</tr>
+<tr>
+<td class="name">CAIRO_OPERATOR_ADD</td>
+<td class="value">12</td>
+</tr>
+<tr>
+<td class="name">CAIRO_OPERATOR_SATURATE</td>
+<td class="value">13</td>
+</tr>
+<tr>
+<td class="name">CAIRO_OPERATOR_MULTIPLY</td>
+<td class="value">14</td>
+</tr>
+<tr>
+<td class="name">CAIRO_OPERATOR_SCREEN</td>
+<td class="value">15</td>
+</tr>
+<tr>
+<td class="name">CAIRO_OPERATOR_OVERLAY</td>
+<td class="value">16</td>
+</tr>
+<tr>
+<td class="name">CAIRO_OPERATOR_DARKEN</td>
+<td class="value">17</td>
+</tr>
+<tr>
+<td class="name">CAIRO_OPERATOR_LIGHTEN</td>
+<td class="value">18</td>
+</tr>
+<tr>
+<td class="name">CAIRO_OPERATOR_COLOR_DODGE</td>
+<td class="value">19</td>
+</tr>
+<tr>
+<td class="name">CAIRO_OPERATOR_COLOR_BURN</td>
+<td class="value">20</td>
+</tr>
+<tr>
+<td class="name">CAIRO_OPERATOR_HARD_LIGHT</td>
+<td class="value">21</td>
+</tr>
+<tr>
+<td class="name">CAIRO_OPERATOR_SOFT_LIGHT</td>
+<td class="value">22</td>
+</tr>
+<tr>
+<td class="name">CAIRO_OPERATOR_DIFFERENCE</td>
+<td class="value">23</td>
+</tr>
+<tr>
+<td class="name">CAIRO_OPERATOR_EXCLUSION</td>
+<td class="value">24</td>
+</tr>
+<tr>
+<td class="name">CAIRO_OPERATOR_HSL_HUE</td>
+<td class="value">25</td>
+</tr>
+<tr>
+<td class="name">CAIRO_OPERATOR_HSL_SATURATION</td>
+<td class="value">26</td>
+</tr>
+<tr>
+<td class="name">CAIRO_OPERATOR_HSL_COLOR</td>
+<td class="value">27</td>
+</tr>
+<tr>
+<td class="name">CAIRO_OPERATOR_HSL_LUMINOSITY</td>
+<td class="value">28</td>
+</tr>
+</table>
+</div>
+<p class="api-heading">Antialias</p>
+<div class="api-notes">
+  <p class="api-ctype">cairo_antialias_t</p>
+<table>
+<tr>
+<td class="name">CAIRO_ANTIALIAS_DEFAULT</td>
+<td class="value">0</td>
+</tr>
+<tr>
+<td class="name">CAIRO_ANTIALIAS_NONE</td>
+<td class="value">1</td>
+</tr>
+<tr>
+<td class="name">CAIRO_ANTIALIAS_GRAY</td>
+<td class="value">2</td>
+</tr>
+<tr>
+<td class="name">CAIRO_ANTIALIAS_SUBPIXEL</td>
+<td class="value">3</td>
+</tr>
+<tr>
+<td class="name">CAIRO_ANTIALIAS_FAST</td>
+<td class="value">4</td>
+</tr>
+<tr>
+<td class="name">CAIRO_ANTIALIAS_GOOD</td>
+<td class="value">5</td>
+</tr>
+<tr>
+<td class="name">CAIRO_ANTIALIAS_BEST</td>
+<td class="value">6</td>
+</tr>
+</table>
+</div>
+<p class="api-heading">FillRule</p>
+<div class="api-notes">
+  <p class="api-ctype">cairo_fill_rule_t</p>
+<table>
+<tr>
+<td class="name">CAIRO_FILL_RULE_WINDING</td>
+<td class="value">0</td>
+</tr>
+<tr>
+<td class="name">CAIRO_FILL_RULE_EVEN_ODD</td>
+<td class="value">1</td>
+</tr>
+</table>
+</div>
+<p class="api-heading">LineCap</p>
+<div class="api-notes">
+  <p class="api-ctype">cairo_line_cap_t</p>
+<table>
+<tr>
+<td class="name">CAIRO_LINE_CAP_BUTT</td>
+<td class="value">0</td>
+</tr>
+<tr>
+<td class="name">CAIRO_LINE_CAP_ROUND</td>
+<td class="value">1</td>
+</tr>
+<tr>
+<td class="name">CAIRO_LINE_CAP_SQUARE</td>
+<td class="value">2</td>
+</tr>
+</table>
+</div>
+<p class="api-heading">LineJoin</p>
+<div class="api-notes">
+  <p class="api-ctype">cairo_line_join_t</p>
+<table>
+<tr>
+<td class="name">CAIRO_LINE_JOIN_MITER</td>
+<td class="value">0</td>
+</tr>
+<tr>
+<td class="name">CAIRO_LINE_JOIN_ROUND</td>
+<td class="value">1</td>
+</tr>
+<tr>
+<td class="name">CAIRO_LINE_JOIN_BEVEL</td>
+<td class="value">2</td>
+</tr>
+</table>
+</div>
+<p class="api-heading">TextClusterFlags</p>
+<div class="api-notes">
+  <p class="api-ctype">cairo_text_cluster_flags_t</p>
+<table>
+<tr>
+<td class="name">CAIRO_TEXT_CLUSTER_FLAG_BACKWARD</td>
+<td class="value">1</td>
+</tr>
+</table>
+</div>
+<p class="api-heading">FontSlant</p>
+<div class="api-notes">
+  <p class="api-ctype">cairo_font_slant_t</p>
+<table>
+<tr>
+<td class="name">CAIRO_FONT_SLANT_NORMAL</td>
+<td class="value">0</td>
+</tr>
+<tr>
+<td class="name">CAIRO_FONT_SLANT_ITALIC</td>
+<td class="value">1</td>
+</tr>
+<tr>
+<td class="name">CAIRO_FONT_SLANT_OBLIQUE</td>
+<td class="value">2</td>
+</tr>
+</table>
+</div>
+<p class="api-heading">FontWeight</p>
+<div class="api-notes">
+  <p class="api-ctype">cairo_font_weight_t</p>
+<table>
+<tr>
+<td class="name">CAIRO_FONT_WEIGHT_NORMAL</td>
+<td class="value">0</td>
+</tr>
+<tr>
+<td class="name">CAIRO_FONT_WEIGHT_BOLD</td>
+<td class="value">1</td>
+</tr>
+</table>
+</div>
+<p class="api-heading">SubpixelOrder</p>
+<div class="api-notes">
+  <p class="api-ctype">cairo_subpixel_order_t</p>
+<table>
+<tr>
+<td class="name">CAIRO_SUBPIXEL_ORDER_DEFAULT</td>
+<td class="value">0</td>
+</tr>
+<tr>
+<td class="name">CAIRO_SUBPIXEL_ORDER_RGB</td>
+<td class="value">1</td>
+</tr>
+<tr>
+<td class="name">CAIRO_SUBPIXEL_ORDER_BGR</td>
+<td class="value">2</td>
+</tr>
+<tr>
+<td class="name">CAIRO_SUBPIXEL_ORDER_VRGB</td>
+<td class="value">3</td>
+</tr>
+<tr>
+<td class="name">CAIRO_SUBPIXEL_ORDER_VBGR</td>
+<td class="value">4</td>
+</tr>
+</table>
+</div>
+<p class="api-heading">HintStyle</p>
+<div class="api-notes">
+  <p class="api-ctype">cairo_hint_style_t</p>
+<table>
+<tr>
+<td class="name">CAIRO_HINT_STYLE_DEFAULT</td>
+<td class="value">0</td>
+</tr>
+<tr>
+<td class="name">CAIRO_HINT_STYLE_NONE</td>
+<td class="value">1</td>
+</tr>
+<tr>
+<td class="name">CAIRO_HINT_STYLE_SLIGHT</td>
+<td class="value">2</td>
+</tr>
+<tr>
+<td class="name">CAIRO_HINT_STYLE_MEDIUM</td>
+<td class="value">3</td>
+</tr>
+<tr>
+<td class="name">CAIRO_HINT_STYLE_FULL</td>
+<td class="value">4</td>
+</tr>
+</table>
+</div>
+<p class="api-heading">HintMetrics</p>
+<div class="api-notes">
+  <p class="api-ctype">cairo_hint_metrics_t</p>
+<table>
+<tr>
+<td class="name">CAIRO_HINT_METRICS_DEFAULT</td>
+<td class="value">0</td>
+</tr>
+<tr>
+<td class="name">CAIRO_HINT_METRICS_OFF</td>
+<td class="value">1</td>
+</tr>
+<tr>
+<td class="name">CAIRO_HINT_METRICS_ON</td>
+<td class="value">2</td>
+</tr>
+</table>
+</div>
+<p class="api-heading">FontType</p>
+<div class="api-notes">
+  <p class="api-ctype">cairo_font_type_t</p>
+<table>
+<tr>
+<td class="name">CAIRO_FONT_TYPE_TOY</td>
+<td class="value">0</td>
+</tr>
+<tr>
+<td class="name">CAIRO_FONT_TYPE_FT</td>
+<td class="value">1</td>
+</tr>
+<tr>
+<td class="name">CAIRO_FONT_TYPE_WIN32</td>
+<td class="value">2</td>
+</tr>
+<tr>
+<td class="name">CAIRO_FONT_TYPE_QUARTZ</td>
+<td class="value">3</td>
+</tr>
+<tr>
+<td class="name">CAIRO_FONT_TYPE_USER</td>
+<td class="value">4</td>
+</tr>
+</table>
+</div>
+<p class="api-heading">PathDataType</p>
+<div class="api-notes">
+  <p class="api-ctype">cairo_path_data_type_t</p>
+<table>
+<tr>
+<td class="name">CAIRO_PATH_MOVE_TO</td>
+<td class="value">0</td>
+</tr>
+<tr>
+<td class="name">CAIRO_PATH_LINE_TO</td>
+<td class="value">1</td>
+</tr>
+<tr>
+<td class="name">CAIRO_PATH_CURVE_TO</td>
+<td class="value">2</td>
+</tr>
+<tr>
+<td class="name">CAIRO_PATH_CLOSE_PATH</td>
+<td class="value">3</td>
+</tr>
+</table>
+</div>
+<p class="api-heading">DeviceType</p>
+<div class="api-notes">
+  <p class="api-ctype">cairo_device_type_t</p>
+<table>
+<tr>
+<td class="name">CAIRO_DEVICE_TYPE_DRM</td>
+<td class="value">0</td>
+</tr>
+<tr>
+<td class="name">CAIRO_DEVICE_TYPE_GL</td>
+<td class="value">1</td>
+</tr>
+<tr>
+<td class="name">CAIRO_DEVICE_TYPE_SCRIPT</td>
+<td class="value">2</td>
+</tr>
+<tr>
+<td class="name">CAIRO_DEVICE_TYPE_XCB</td>
+<td class="value">3</td>
+</tr>
+<tr>
+<td class="name">CAIRO_DEVICE_TYPE_XLIB</td>
+<td class="value">4</td>
+</tr>
+<tr>
+<td class="name">CAIRO_DEVICE_TYPE_XML</td>
+<td class="value">5</td>
+</tr>
+<tr>
+<td class="name">CAIRO_DEVICE_TYPE_COGL</td>
+<td class="value">6</td>
+</tr>
+<tr>
+<td class="name">CAIRO_DEVICE_TYPE_WIN32</td>
+<td class="value">7</td>
+</tr>
+<tr>
+<td class="name">CAIRO_DEVICE_TYPE_INVALID</td>
+<td class="value">-1</td>
+</tr>
+</table>
+</div>
+<p class="api-heading">SurfaceType</p>
+<div class="api-notes">
+  <p class="api-ctype">cairo_surface_type_t</p>
+<table>
+<tr>
+<td class="name">CAIRO_SURFACE_TYPE_IMAGE</td>
+<td class="value">0</td>
+</tr>
+<tr>
+<td class="name">CAIRO_SURFACE_TYPE_PDF</td>
+<td class="value">1</td>
+</tr>
+<tr>
+<td class="name">CAIRO_SURFACE_TYPE_PS</td>
+<td class="value">2</td>
+</tr>
+<tr>
+<td class="name">CAIRO_SURFACE_TYPE_XLIB</td>
+<td class="value">3</td>
+</tr>
+<tr>
+<td class="name">CAIRO_SURFACE_TYPE_XCB</td>
+<td class="value">4</td>
+</tr>
+<tr>
+<td class="name">CAIRO_SURFACE_TYPE_GLITZ</td>
+<td class="value">5</td>
+</tr>
+<tr>
+<td class="name">CAIRO_SURFACE_TYPE_QUARTZ</td>
+<td class="value">6</td>
+</tr>
+<tr>
+<td class="name">CAIRO_SURFACE_TYPE_WIN32</td>
+<td class="value">7</td>
+</tr>
+<tr>
+<td class="name">CAIRO_SURFACE_TYPE_BEOS</td>
+<td class="value">8</td>
+</tr>
+<tr>
+<td class="name">CAIRO_SURFACE_TYPE_DIRECTFB</td>
+<td class="value">9</td>
+</tr>
+<tr>
+<td class="name">CAIRO_SURFACE_TYPE_SVG</td>
+<td class="value">10</td>
+</tr>
+<tr>
+<td class="name">CAIRO_SURFACE_TYPE_OS2</td>
+<td class="value">11</td>
+</tr>
+<tr>
+<td class="name">CAIRO_SURFACE_TYPE_WIN32_PRINTING</td>
+<td class="value">12</td>
+</tr>
+<tr>
+<td class="name">CAIRO_SURFACE_TYPE_QUARTZ_IMAGE</td>
+<td class="value">13</td>
+</tr>
+<tr>
+<td class="name">CAIRO_SURFACE_TYPE_SCRIPT</td>
+<td class="value">14</td>
+</tr>
+<tr>
+<td class="name">CAIRO_SURFACE_TYPE_QT</td>
+<td class="value">15</td>
+</tr>
+<tr>
+<td class="name">CAIRO_SURFACE_TYPE_RECORDING</td>
+<td class="value">16</td>
+</tr>
+<tr>
+<td class="name">CAIRO_SURFACE_TYPE_VG</td>
+<td class="value">17</td>
+</tr>
+<tr>
+<td class="name">CAIRO_SURFACE_TYPE_GL</td>
+<td class="value">18</td>
+</tr>
+<tr>
+<td class="name">CAIRO_SURFACE_TYPE_DRM</td>
+<td class="value">19</td>
+</tr>
+<tr>
+<td class="name">CAIRO_SURFACE_TYPE_TEE</td>
+<td class="value">20</td>
+</tr>
+<tr>
+<td class="name">CAIRO_SURFACE_TYPE_XML</td>
+<td class="value">21</td>
+</tr>
+<tr>
+<td class="name">CAIRO_SURFACE_TYPE_SKIA</td>
+<td class="value">22</td>
+</tr>
+<tr>
+<td class="name">CAIRO_SURFACE_TYPE_SUBSURFACE</td>
+<td class="value">23</td>
+</tr>
+<tr>
+<td class="name">CAIRO_SURFACE_TYPE_COGL</td>
+<td class="value">24</td>
+</tr>
+</table>
+</div>
+<p class="api-heading">Format</p>
+<div class="api-notes">
+  <p class="api-ctype">cairo_format_t</p>
+<table>
+<tr>
+<td class="name">CAIRO_FORMAT_INVALID</td>
+<td class="value">-1</td>
+</tr>
+<tr>
+<td class="name">CAIRO_FORMAT_ARGB32</td>
+<td class="value">0</td>
+</tr>
+<tr>
+<td class="name">CAIRO_FORMAT_RGB24</td>
+<td class="value">1</td>
+</tr>
+<tr>
+<td class="name">CAIRO_FORMAT_A8</td>
+<td class="value">2</td>
+</tr>
+<tr>
+<td class="name">CAIRO_FORMAT_A1</td>
+<td class="value">3</td>
+</tr>
+<tr>
+<td class="name">CAIRO_FORMAT_RGB16_565</td>
+<td class="value">4</td>
+</tr>
+<tr>
+<td class="name">CAIRO_FORMAT_RGB30</td>
+<td class="value">5</td>
+</tr>
+</table>
+</div>
+<p class="api-heading">PatternType</p>
+<div class="api-notes">
+  <p class="api-ctype">cairo_pattern_type_t</p>
+<table>
+<tr>
+<td class="name">CAIRO_PATTERN_TYPE_SOLID</td>
+<td class="value">0</td>
+</tr>
+<tr>
+<td class="name">CAIRO_PATTERN_TYPE_SURFACE</td>
+<td class="value">1</td>
+</tr>
+<tr>
+<td class="name">CAIRO_PATTERN_TYPE_LINEAR</td>
+<td class="value">2</td>
+</tr>
+<tr>
+<td class="name">CAIRO_PATTERN_TYPE_RADIAL</td>
+<td class="value">3</td>
+</tr>
+<tr>
+<td class="name">CAIRO_PATTERN_TYPE_MESH</td>
+<td class="value">4</td>
+</tr>
+<tr>
+<td class="name">CAIRO_PATTERN_TYPE_RASTER_SOURCE</td>
+<td class="value">5</td>
+</tr>
+</table>
+</div>
+<p class="api-heading">Extend</p>
+<div class="api-notes">
+  <p class="api-ctype">cairo_extend_t</p>
+<table>
+<tr>
+<td class="name">CAIRO_EXTEND_NONE</td>
+<td class="value">0</td>
+</tr>
+<tr>
+<td class="name">CAIRO_EXTEND_REPEAT</td>
+<td class="value">1</td>
+</tr>
+<tr>
+<td class="name">CAIRO_EXTEND_REFLECT</td>
+<td class="value">2</td>
+</tr>
+<tr>
+<td class="name">CAIRO_EXTEND_PAD</td>
+<td class="value">3</td>
+</tr>
+</table>
+</div>
+<p class="api-heading">Filter</p>
+<div class="api-notes">
+  <p class="api-ctype">cairo_filter_t</p>
+<table>
+<tr>
+<td class="name">CAIRO_FILTER_FAST</td>
+<td class="value">0</td>
+</tr>
+<tr>
+<td class="name">CAIRO_FILTER_GOOD</td>
+<td class="value">1</td>
+</tr>
+<tr>
+<td class="name">CAIRO_FILTER_BEST</td>
+<td class="value">2</td>
+</tr>
+<tr>
+<td class="name">CAIRO_FILTER_NEAREST</td>
+<td class="value">3</td>
+</tr>
+<tr>
+<td class="name">CAIRO_FILTER_BILINEAR</td>
+<td class="value">4</td>
+</tr>
+<tr>
+<td class="name">CAIRO_FILTER_GAUSSIAN</td>
+<td class="value">5</td>
+</tr>
+</table>
+</div>
+<p class="api-heading">RegionOverlap</p>
+<div class="api-notes">
+  <p class="api-ctype">cairo_region_overlap_t</p>
+<table>
+<tr>
+<td class="name">CAIRO_REGION_OVERLAP_IN</td>
+<td class="value">0</td>
+</tr>
+<tr>
+<td class="name">CAIRO_REGION_OVERLAP_OUT</td>
+<td class="value">1</td>
+</tr>
+<tr>
+<td class="name">CAIRO_REGION_OVERLAP_PART</td>
+<td class="value">2</td>
+</tr>
+</table>
+</div></p>
+
+
+    
+    
+        <div class="chevrons">
+    <div id="navigation">
+</div>
+  </div>
+
+  </section>
+</article>
+
+<footer>
+
+<div class="footline">
+    
+
+    
+
+    
+
+    
+  </div>
+
+
+	<div>
+
+
+  
+    
+  
+
+
+
+	</div>
+</footer>
+
+<script src="/js/clipboard.min.js"></script>
+
+<link href="/css/featherlight.min.css" rel="stylesheet">
+<script src="/js/featherlight.min.js"></script>
+
+
+
+<script src="/theme-flex/script.js"></script>
+
+
+    
+
+    
+    
+
+    
+  </body>
+</html>

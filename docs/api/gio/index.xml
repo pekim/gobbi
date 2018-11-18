@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>gio on gobbi</title>
+    <link>/api/gio/</link>
+    <description>Recent content in gio on gobbi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="/api/gio/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>bitfields</title>
+      <link>/api/gio/bitfields/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/api/gio/bitfields/</guid>
+      <description>AppInfoCreateFlags
+Flags used when creating a #GAppInfo.
+GAppInfoCreateFlags
+  APP_INFO_CREATE_NONE 0 No flags.   APP_INFO_CREATE_NEEDS_TERMINAL 1 Application opens in a terminal window.   APP_INFO_CREATE_SUPPORTS_URIS 2 Application supports URI arguments.   APP_INFO_CREATE_SUPPORTS_STARTUP_NOTIFICATION 4 Application supports startup notification. Since 2.26    ApplicationFlags
+Flags used to define the behaviour of a #GApplication.
+GApplicationFlags
+since 2.28
+  APPLICATION_FLAGS_NONE 0 Default   APPLICATION_IS_SERVICE 1 Run as a service.</description>
+    </item>
+    
+    <item>
+      <title>constants</title>
+      <link>/api/gio/constants/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/api/gio/constants/</guid>
+      <description>DESKTOP_APP_INFO_LOOKUP_EXTENSION_POINT_NAME
+Extension point for default handler to URI association. See [Extending GIO][extending-gio].
+G_DESKTOP_APP_INFO_LOOKUP_EXTENSION_POINT_NAME
+ FILE_ATTRIBUTE_ACCESS_CAN_DELETE
+A key in the &amp;ldquo;access&amp;rdquo; namespace for checking deletion privileges. Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN. This attribute will be %TRUE if the user is able to delete the file.
+G_FILE_ATTRIBUTE_ACCESS_CAN_DELETE
+ FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE
+A key in the &amp;ldquo;access&amp;rdquo; namespace for getting execution privileges. Corresponding #GFileAttributeType is %G_FILE_ATTRIBUTE_TYPE_BOOLEAN. This attribute will be %TRUE if the user is able to execute the file.</description>
+    </item>
+    
+    <item>
+      <title>enums</title>
+      <link>/api/gio/enums/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/api/gio/enums/</guid>
+      <description>BusType
+An enumeration for well-known message buses.
+GBusType
+since 2.26
+  BUS_TYPE_STARTER -1 An alias for the message bus that activated the process, if any.   BUS_TYPE_NONE 0 Not a message bus.   BUS_TYPE_SYSTEM 1 The system-wide message bus.   BUS_TYPE_SESSION 2 The login session message bus.    ConverterResult
+Results returned from g_converter_convert().
+GConverterResult
+since 2.24
+  CONVERTER_ERROR 0 There was an error during conversion.</description>
+    </item>
+    
+  </channel>
+</rss>
