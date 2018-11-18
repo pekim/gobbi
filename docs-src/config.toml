@@ -1,4 +1,4 @@
-baseURL = "/"
+baseURL = "https://pekim.github.io/gobbi/"
 
 languageCode = "en-us"
 DefaultContentLanguage = "en"

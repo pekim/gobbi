@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>glib on gobbi</title>
-    <link>/api/glib/</link>
+    <link>https://pekim.github.io/gobbi/api/glib/</link>
     <description>Recent content in glib on gobbi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="/api/glib/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://pekim.github.io/gobbi/api/glib/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>bitfields</title>
-      <link>/api/glib/bitfields/</link>
+      <link>https://pekim.github.io/gobbi/api/glib/bitfields/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/api/glib/bitfields/</guid>
+      <guid>https://pekim.github.io/gobbi/api/glib/bitfields/</guid>
       <description>AsciiType
 GAsciiType
   ASCII_ALNUM 1   ASCII_ALPHA 2   ASCII_CNTRL 4   ASCII_DIGIT 8   ASCII_GRAPH 16   ASCII_LOWER 32   ASCII_PRINT 64   ASCII_PUNCT 128   ASCII_SPACE 256   ASCII_UPPER 512   ASCII_XDIGIT 1024    FileTest
@@ -26,10 +26,10 @@ GFileTest
     
     <item>
       <title>constants</title>
-      <link>/api/glib/constants/</link>
+      <link>https://pekim.github.io/gobbi/api/glib/constants/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/api/glib/constants/</guid>
+      <guid>https://pekim.github.io/gobbi/api/glib/constants/</guid>
       <description>ANALYZER_ANALYZING
 G_ANALYZER_ANALYZING
  ASCII_DTOSTR_BUF_SIZE
@@ -46,10 +46,10 @@ The set of uppercase ASCII alphabet characters.</description>
     
     <item>
       <title>enums</title>
-      <link>/api/glib/enums/</link>
+      <link>https://pekim.github.io/gobbi/api/glib/enums/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/api/glib/enums/</guid>
+      <guid>https://pekim.github.io/gobbi/api/glib/enums/</guid>
       <description>BookmarkFileError
 Error codes returned by bookmark file parsing.
 GBookmarkFileError

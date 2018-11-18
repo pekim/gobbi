@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>gobject on gobbi</title>
-    <link>/api/gobject/</link>
+    <link>https://pekim.github.io/gobbi/api/gobject/</link>
     <description>Recent content in gobject on gobbi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="/api/gobject/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://pekim.github.io/gobbi/api/gobject/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>bitfields</title>
-      <link>/api/gobject/bitfields/</link>
+      <link>https://pekim.github.io/gobbi/api/gobject/bitfields/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/api/gobject/bitfields/</guid>
+      <guid>https://pekim.github.io/gobbi/api/gobject/bitfields/</guid>
       <description>BindingFlags
 Flags to be passed to g_object_bind_property() or g_object_bind_property_full().
 This enumeration can be extended at later date.
@@ -26,10 +26,10 @@ since 2.26
     
     <item>
       <title>constants</title>
-      <link>/api/gobject/constants/</link>
+      <link>https://pekim.github.io/gobbi/api/gobject/constants/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/api/gobject/constants/</guid>
+      <guid>https://pekim.github.io/gobbi/api/gobject/constants/</guid>
       <description>PARAM_MASK
 Mask containing the bits of #GParamSpec.flags which are reserved for GLib.
 G_PARAM_MASK
@@ -51,10 +51,10 @@ G_SIGNAL_MATCH_MASK
     
     <item>
       <title>enums</title>
-      <link>/api/gobject/enums/</link>
+      <link>https://pekim.github.io/gobbi/api/gobject/enums/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/api/gobject/enums/</guid>
+      <guid>https://pekim.github.io/gobbi/api/gobject/enums/</guid>
       <description></description>
     </item>
     

@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>gio on gobbi</title>
-    <link>/api/gio/</link>
+    <link>https://pekim.github.io/gobbi/api/gio/</link>
     <description>Recent content in gio on gobbi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="/api/gio/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://pekim.github.io/gobbi/api/gio/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>bitfields</title>
-      <link>/api/gio/bitfields/</link>
+      <link>https://pekim.github.io/gobbi/api/gio/bitfields/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/api/gio/bitfields/</guid>
+      <guid>https://pekim.github.io/gobbi/api/gio/bitfields/</guid>
       <description>AppInfoCreateFlags
 Flags used when creating a #GAppInfo.
 GAppInfoCreateFlags
@@ -28,10 +28,10 @@ since 2.28
     
     <item>
       <title>constants</title>
-      <link>/api/gio/constants/</link>
+      <link>https://pekim.github.io/gobbi/api/gio/constants/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/api/gio/constants/</guid>
+      <guid>https://pekim.github.io/gobbi/api/gio/constants/</guid>
       <description>DESKTOP_APP_INFO_LOOKUP_EXTENSION_POINT_NAME
 Extension point for default handler to URI association. See [Extending GIO][extending-gio].
 G_DESKTOP_APP_INFO_LOOKUP_EXTENSION_POINT_NAME
@@ -44,10 +44,10 @@ A key in the &amp;ldquo;access&amp;rdquo; namespace for getting execution privil
     
     <item>
       <title>enums</title>
-      <link>/api/gio/enums/</link>
+      <link>https://pekim.github.io/gobbi/api/gio/enums/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/api/gio/enums/</guid>
+      <guid>https://pekim.github.io/gobbi/api/gio/enums/</guid>
       <description>BusType
 An enumeration for well-known message buses.
 GBusType

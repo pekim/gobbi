@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>gdk on gobbi</title>
-    <link>/api/gdk/</link>
+    <link>https://pekim.github.io/gobbi/api/gdk/</link>
     <description>Recent content in gdk on gobbi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="/api/gdk/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://pekim.github.io/gobbi/api/gdk/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>bitfields</title>
-      <link>/api/gdk/bitfields/</link>
+      <link>https://pekim.github.io/gobbi/api/gdk/bitfields/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/api/gdk/bitfields/</guid>
+      <guid>https://pekim.github.io/gobbi/api/gdk/bitfields/</guid>
       <description>AnchorHints
 Positioning hints for aligning a window relative to a rectangle.
 These hints determine how the window should be positioned in the case that the window would fall off-screen if placed in its ideal position.
@@ -25,10 +25,10 @@ If %GDK_ANCHOR_SLIDE_X is set, the window can be shifted horizontally to fit on-
     
     <item>
       <title>constants</title>
-      <link>/api/gdk/constants/</link>
+      <link>https://pekim.github.io/gobbi/api/gdk/constants/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/api/gdk/constants/</guid>
+      <guid>https://pekim.github.io/gobbi/api/gdk/constants/</guid>
       <description>BUTTON_MIDDLE
 The middle button.
 GDK_BUTTON_MIDDLE
@@ -49,10 +49,10 @@ GDK_CURRENT_TIME
     
     <item>
       <title>enums</title>
-      <link>/api/gdk/enums/</link>
+      <link>https://pekim.github.io/gobbi/api/gdk/enums/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/api/gdk/enums/</guid>
+      <guid>https://pekim.github.io/gobbi/api/gdk/enums/</guid>
       <description>AxisUse
 An enumeration describing the way in which a device axis (valuator) maps onto the predefined valuator types that GTK+ understands.
 Note that the X and Y axes are not really needed; pointer devices report their location via the x/y members of events regardless. Whether X and Y are present as axes depends on the GDK backend.

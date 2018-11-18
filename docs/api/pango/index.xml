@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>pango on gobbi</title>
-    <link>/api/pango/</link>
+    <link>https://pekim.github.io/gobbi/api/pango/</link>
     <description>Recent content in pango on gobbi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="/api/pango/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://pekim.github.io/gobbi/api/pango/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>bitfields</title>
-      <link>/api/pango/bitfields/</link>
+      <link>https://pekim.github.io/gobbi/api/pango/bitfields/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/api/pango/bitfields/</guid>
+      <guid>https://pekim.github.io/gobbi/api/pango/bitfields/</guid>
       <description>FontMask
 The bits in a #PangoFontMask correspond to fields in a #PangoFontDescription that have been set.
 PangoFontMask
@@ -24,10 +24,10 @@ PangoFontMask
     
     <item>
       <title>constants</title>
-      <link>/api/pango/constants/</link>
+      <link>https://pekim.github.io/gobbi/api/pango/constants/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/api/pango/constants/</guid>
+      <guid>https://pekim.github.io/gobbi/api/pango/constants/</guid>
       <description>ANALYSIS_FLAG_CENTERED_BASELINE
 Whether the segment should be shifted to center around the baseline. Used in vertical writing directions mostly.
 PANGO_ANALYSIS_FLAG_CENTERED_BASELINE
@@ -44,10 +44,10 @@ since 1.24</description>
     
     <item>
       <title>enums</title>
-      <link>/api/pango/enums/</link>
+      <link>https://pekim.github.io/gobbi/api/pango/enums/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>/api/pango/enums/</guid>
+      <guid>https://pekim.github.io/gobbi/api/pango/enums/</guid>
       <description>Alignment
 A #PangoAlignment describes how to align the lines of a #PangoLayout within the available space. If the #PangoLayout is set to justify using pango_layout_set_justify(), this only has effect for partial lines.
 PangoAlignment
