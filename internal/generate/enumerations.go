@@ -61,11 +61,7 @@ func (ee Enumerations) generateDocs(df *DocFile, title string) {
 		}
 
 		df.writeLinef(`<p class="api-heading">%s</p>`, e.Name)
-
-		if e.Doc != nil && e.Doc.Text != "" {
-			df.writeLinef(`<p class="api-doc">%s</p>`, e.Doc.Text)
-		}
-
+		df.writeDocTextLine(`<p class="api-doc">%s</p>`, e.Doc)
 		df.writeLine(`<div class="api-notes">`)
 		df.writeLinef(`  <p class="api-ctype">%s</p>`, e.CType)
 		if e.Version != "" {
@@ -77,9 +73,7 @@ func (ee Enumerations) generateDocs(df *DocFile, title string) {
 			df.writeLine("<tr>")
 			df.writeLinef(`<td class="name">%s</td>`, m.goName)
 			df.writeLinef(`<td class="value">%d</td>`, m.Value)
-			if m.Doc != nil && m.Doc.Text != "" {
-				df.writeLinef(`<td class="doc">%s</td>`, m.Doc.Text)
-			}
+			df.writeDocTextLine(`<td class="doc">%s</td>`, m.Doc)
 			df.writeLine("</tr>")
 		}
 		df.writeLine("</table>")

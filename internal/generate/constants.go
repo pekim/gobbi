@@ -61,11 +61,7 @@ func (cc Constants) generateDocs(df *DocFile) {
 		}
 
 		df.writeLinef(`<p class="api-heading">%s</p>`, c.Name)
-
-		if c.Doc != nil && c.Doc.Text != "" {
-			df.writeLinef(`<p class="api-doc">%s</p>`, c.Doc.Text)
-		}
-
+		df.writeDocTextLine(`<p class="api-doc">%s</p>`, c.Doc)
 		df.writeLine(`<div class="api-notes">`)
 		df.writeLinef(`  <p class="api-ctype">%s</p>`, c.CType)
 		if c.Version != "" {

@@ -42,6 +42,20 @@ func (df *DocFile) writeFrontmatter(params ...FrontmatterParam) {
 	df.writeLine("+++")
 }
 
+// writeDocTextConditionally writes a line if there is Doc.Text.
+//
+// More specifically nothing will be written if Doc is nil, or if
+// Doc.Text is an empty string.
+//
+// The format arg should have a single string (%s) placeholder.
+func (df *DocFile) writeDocTextLine(format string, doc *Doc) {
+	if doc == nil || doc.Text == "" {
+		return
+	}
+
+	df.writeLinef(format, doc.Text)
+}
+
 func generateDocDir(filepath string) {
 	err := os.MkdirAll(path.Dir(filepath), 0775)
 	if err != nil {
