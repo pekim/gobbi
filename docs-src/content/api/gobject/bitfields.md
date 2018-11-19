@@ -6,9 +6,6 @@ title = "bitfields"
 g_object_bind_property_full().
 
 This enumeration can be extended at later date.</p>
-<div class="api-notes">
-  <p class="api-ctype">GBindingFlags</p>
-  <p class="api-since">since 2.26</p>
 <table>
 <tr>
 <td class="name">BINDING_DEFAULT</td>
@@ -40,12 +37,13 @@ This enumeration can be extended at later date.</p>
   transformation functions to g_object_bind_property_full().</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.26</p>
+  <p class="api-ctype">C type: GBindingFlags</p>
 </div>
 <p class="api-heading">ConnectFlags</p>
 <p class="api-doc">The connection flags are used to specify the behaviour of a signal's
 connection.</p>
-<div class="api-notes">
-  <p class="api-ctype">GConnectFlags</p>
 <table>
 <tr>
 <td class="name">CONNECT_AFTER</td>
@@ -60,12 +58,12 @@ connection.</p>
  calling the handler; see g_signal_connect_swapped() for an example.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GConnectFlags</p>
 </div>
 <p class="api-heading">ParamFlags</p>
 <p class="api-doc">Through the #GParamFlags flag values, certain aspects of parameters
 can be configured. See also #G_PARAM_STATIC_STRINGS.</p>
-<div class="api-notes">
-  <p class="api-ctype">GParamFlags</p>
 <table>
 <tr>
 <td class="name">PARAM_READABLE</td>
@@ -144,13 +142,13 @@ can be configured. See also #G_PARAM_STATIC_STRINGS.</p>
  Since 2.26</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GParamFlags</p>
 </div>
 <p class="api-heading">SignalFlags</p>
 <p class="api-doc">The signal flags are used to specify a signal's behaviour, the overall
 signal description outlines how especially the RUN flags control the
 stages of a signal emission.</p>
-<div class="api-notes">
-  <p class="api-ctype">GSignalFlags</p>
 <table>
 <tr>
 <td class="name">SIGNAL_RUN_FIRST</td>
@@ -209,13 +207,13 @@ stages of a signal emission.</p>
   running with G_ENABLE_DIAGNOSTIC=1.  Since 2.32.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GSignalFlags</p>
 </div>
 <p class="api-heading">SignalMatchType</p>
 <p class="api-doc">The match types specify what g_signal_handlers_block_matched(),
 g_signal_handlers_unblock_matched() and g_signal_handlers_disconnect_matched()
 match signals by.</p>
-<div class="api-notes">
-  <p class="api-ctype">GSignalMatchType</p>
 <table>
 <tr>
 <td class="name">SIGNAL_MATCH_ID</td>
@@ -248,6 +246,8 @@ match signals by.</p>
 <td class="doc">Only unblocked signals may matched.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GSignalMatchType</p>
 </div>
 <p class="api-heading">TypeDebugFlags</p>
 <p class="api-doc">These flags used to be passed to g_type_init_with_debug_flags() which
@@ -255,8 +255,6 @@ is now deprecated.
 
 If you need to enable debugging features, use the GOBJECT_DEBUG
 environment variable.</p>
-<div class="api-notes">
-  <p class="api-ctype">GTypeDebugFlags</p>
 <table>
 <tr>
 <td class="name">TYPE_DEBUG_NONE</td>
@@ -284,11 +282,11 @@ environment variable.</p>
 <td class="doc">Mask covering all debug flags</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GTypeDebugFlags</p>
 </div>
 <p class="api-heading">TypeFlags</p>
 <p class="api-doc">Bit masks used to check or determine characteristics of a type.</p>
-<div class="api-notes">
-  <p class="api-ctype">GTypeFlags</p>
 <table>
 <tr>
 <td class="name">TYPE_FLAG_ABSTRACT</td>
@@ -304,12 +302,12 @@ environment variable.</p>
  g_value_init()</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GTypeFlags</p>
 </div>
 <p class="api-heading">TypeFundamentalFlags</p>
 <p class="api-doc">Bit masks used to check or determine specific characteristics of a
 fundamental type.</p>
-<div class="api-notes">
-  <p class="api-ctype">GTypeFundamentalFlags</p>
 <table>
 <tr>
 <td class="name">TYPE_FLAG_CLASSED</td>
@@ -332,4 +330,6 @@ fundamental type.</p>
 <td class="doc">Indicates a deep derivable type (implies derivable)</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GTypeFundamentalFlags</p>
 </div>

@@ -9,8 +9,6 @@ types that GTK+ understands.
 Note that the X and Y axes are not really needed; pointer devices
 report their location via the x/y members of events regardless. Whether
 X and Y are present as axes depends on the GDK backend.</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkAxisUse</p>
 <table>
 <tr>
 <td class="name">GDK_AXIS_IGNORE</td>
@@ -68,12 +66,12 @@ X and Y are present as axes depends on the GDK backend.</p>
 <td class="doc">a constant equal to the numerically highest axis value.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GdkAxisUse</p>
 </div>
 <p class="api-heading">ByteOrder</p>
 <p class="api-doc">A set of values describing the possible byte-orders
 for storing pixel values in memory.</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkByteOrder</p>
 <table>
 <tr>
 <td class="name">GDK_LSB_FIRST</td>
@@ -90,11 +88,11 @@ for storing pixel values in memory.</p>
   in memory as 0x00, 0xff, 0xee, 0xcc.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GdkByteOrder</p>
 </div>
 <p class="api-heading">CrossingMode</p>
 <p class="api-doc">Specifies the crossing mode for #GdkEventCrossing.</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkCrossingMode</p>
 <table>
 <tr>
 <td class="name">GDK_CROSSING_NORMAL</td>
@@ -147,6 +145,8 @@ for storing pixel values in memory.</p>
   is synthetic as the pointer didn’t leave the window.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GdkCrossingMode</p>
 </div>
 <p class="api-heading">CursorType</p>
 <p class="api-doc">Predefined cursors.
@@ -155,8 +155,6 @@ Note that these IDs are directly taken from the X cursor font, and many
 of these cursors are either not useful, or are not available on other platforms.
 
 The recommended way to create cursors is to use gdk_cursor_new_from_name().</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkCursorType</p>
 <table>
 <tr>
 <td class="name">GDK_X_CURSOR</td>
@@ -560,12 +558,11 @@ The recommended way to create cursors is to use gdk_cursor_new_from_name().</p>
   gdk_cursor_new_from_pixbuf()</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GdkCursorType</p>
 </div>
 <p class="api-heading">DevicePadFeature</p>
 <p class="api-doc">A pad feature.</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkDevicePadFeature</p>
-  <p class="api-since">since 3.22</p>
 <table>
 <tr>
 <td class="name">GDK_DEVICE_PAD_FEATURE_BUTTON</td>
@@ -583,13 +580,13 @@ The recommended way to create cursors is to use gdk_cursor_new_from_name().</p>
 <td class="doc">a straight interactive area</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 3.22</p>
+  <p class="api-ctype">C type: GdkDevicePadFeature</p>
 </div>
 <p class="api-heading">DeviceToolType</p>
 <p class="api-doc">Indicates the specific type of tool being used being a tablet. Such as an
 airbrush, pencil, etc.</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkDeviceToolType</p>
-  <p class="api-since">since 3.22</p>
 <table>
 <tr>
 <td class="name">GDK_DEVICE_TOOL_TYPE_UNKNOWN</td>
@@ -632,12 +629,13 @@ airbrush, pencil, etc.</p>
 <td class="doc">Tool is a lens cursor.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 3.22</p>
+  <p class="api-ctype">C type: GdkDeviceToolType</p>
 </div>
 <p class="api-heading">DeviceType</p>
 <p class="api-doc">Indicates the device type. See [above][GdkDeviceManager.description]
 for more information about the meaning of these device types.</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkDeviceType</p>
 <table>
 <tr>
 <td class="name">GDK_DEVICE_TYPE_MASTER</td>
@@ -657,12 +655,11 @@ for more information about the meaning of these device types.</p>
                            any virtual device.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GdkDeviceType</p>
 </div>
 <p class="api-heading">DragCancelReason</p>
 <p class="api-doc">Used in #GdkDragContext to the reason of a cancelled DND operation.</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkDragCancelReason</p>
-  <p class="api-since">since 3.20</p>
 <table>
 <tr>
 <td class="name">GDK_DRAG_CANCEL_NO_TARGET</td>
@@ -680,12 +677,13 @@ for more information about the meaning of these device types.</p>
 <td class="doc">Unspecified error.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 3.20</p>
+  <p class="api-ctype">C type: GdkDragCancelReason</p>
 </div>
 <p class="api-heading">DragProtocol</p>
 <p class="api-doc">Used in #GdkDragContext to indicate the protocol according to
 which DND is done.</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkDragProtocol</p>
 <table>
 <tr>
 <td class="name">GDK_DRAG_PROTO_NONE</td>
@@ -729,6 +727,8 @@ which DND is done.</p>
 <td class="doc">Wayland DND protocol.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GdkDragProtocol</p>
 </div>
 <p class="api-heading">EventType</p>
 <p class="api-doc">Specifies the type of the event.
@@ -743,8 +743,6 @@ invalid (eg `Gdk.EventType.2ButtonPress`, where a
 symbol is not allowed to start with a number). In that case, the
 aliases %GDK_DOUBLE_BUTTON_PRESS and %GDK_TRIPLE_BUTTON_PRESS can
 be used instead.</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkEventType</p>
 <table>
 <tr>
 <td class="name">GDK_NOTHING</td>
@@ -1028,11 +1026,11 @@ be used instead.</p>
 <td class="doc">marks the end of the GdkEventType enumeration. Added in 2.18</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GdkEventType</p>
 </div>
 <p class="api-heading">FilterReturn</p>
 <p class="api-doc">Specifies the result of applying a #GdkFilterFunc to a native event.</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkFilterReturn</p>
 <table>
 <tr>
 <td class="name">GDK_FILTER_CONTINUE</td>
@@ -1051,13 +1049,12 @@ be used instead.</p>
 <td class="doc">event handled, terminate processing.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GdkFilterReturn</p>
 </div>
 <p class="api-heading">FullscreenMode</p>
 <p class="api-doc">Indicates which monitor (in a multi-head setup) a window should span over
 when in fullscreen mode.</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkFullscreenMode</p>
-  <p class="api-since">since 3.8</p>
 <table>
 <tr>
 <td class="name">GDK_FULLSCREEN_ON_CURRENT_MONITOR</td>
@@ -1070,12 +1067,12 @@ when in fullscreen mode.</p>
 <td class="doc">Span across all monitors when fullscreen.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 3.8</p>
+  <p class="api-ctype">C type: GdkFullscreenMode</p>
 </div>
 <p class="api-heading">GLError</p>
 <p class="api-doc">Error enumeration for #GdkGLContext.</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkGLError</p>
-  <p class="api-since">since 3.16</p>
 <table>
 <tr>
 <td class="name">GDK_GL_ERROR_NOT_AVAILABLE</td>
@@ -1093,11 +1090,12 @@ when in fullscreen mode.</p>
 <td class="doc">The requested profile is not supported</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 3.16</p>
+  <p class="api-ctype">C type: GdkGLError</p>
 </div>
 <p class="api-heading">GrabOwnership</p>
 <p class="api-doc">Defines how device grabs interact with other devices.</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkGrabOwnership</p>
 <table>
 <tr>
 <td class="name">GDK_OWNERSHIP_NONE</td>
@@ -1115,12 +1113,12 @@ when in fullscreen mode.</p>
 <td class="doc">Other devices’ events are blocked for the whole application.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GdkGrabOwnership</p>
 </div>
 <p class="api-heading">GrabStatus</p>
 <p class="api-doc">Returned by gdk_device_grab(), gdk_pointer_grab() and gdk_keyboard_grab() to
 indicate success or the reason for the failure of the grab attempt.</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkGrabStatus</p>
 <table>
 <tr>
 <td class="name">GDK_GRAB_SUCCESS</td>
@@ -1155,6 +1153,8 @@ indicate success or the reason for the failure of the grab attempt.</p>
 <td class="doc">the grab failed for some other reason. Since 3.16</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GdkGrabStatus</p>
 </div>
 <p class="api-heading">Gravity</p>
 <p class="api-doc">Defines the reference point of a window and the meaning of coordinates
@@ -1162,8 +1162,6 @@ passed to gtk_window_move(). See gtk_window_move() and the "implementation
 notes" section of the
 [Extended Window Manager Hints](http://www.freedesktop.org/Standards/wm-spec)
 specification for more details.</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkGravity</p>
 <table>
 <tr>
 <td class="name">GDK_GRAVITY_NORTH_WEST</td>
@@ -1217,11 +1215,11 @@ specification for more details.</p>
  window itself, ignoring window manager decorations.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GdkGravity</p>
 </div>
 <p class="api-heading">InputMode</p>
 <p class="api-doc">An enumeration that describes the mode of an input device.</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkInputMode</p>
 <table>
 <tr>
 <td class="name">GDK_MODE_DISABLED</td>
@@ -1243,11 +1241,11 @@ specification for more details.</p>
                   way in which the focus window for key events is determined.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GdkInputMode</p>
 </div>
 <p class="api-heading">InputSource</p>
 <p class="api-doc">An enumeration describing the type of an input device in general terms.</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkInputSource</p>
 <table>
 <tr>
 <td class="name">GDK_SOURCE_MOUSE</td>
@@ -1302,6 +1300,8 @@ specification for more details.</p>
     added in 3.22.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GdkInputSource</p>
 </div>
 <p class="api-heading">ModifierIntent</p>
 <p class="api-doc">This enum is used with gdk_keymap_get_modifier_mask()
@@ -1311,9 +1311,6 @@ purposes. For example, on X11/Windows, the Control key is used for
 invoking menu shortcuts (accelerators), whereas on Apple computers
 it’s the Command key (which correspond to %GDK_CONTROL_MASK and
 %GDK_MOD2_MASK, respectively).</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkModifierIntent</p>
-  <p class="api-since">since 3.4</p>
 <table>
 <tr>
 <td class="name">GDK_MODIFIER_INTENT_PRIMARY_ACCELERATOR</td>
@@ -1363,14 +1360,15 @@ mod key is problematic at best.
 Ref: https://bugzilla.gnome.org/show_bug.cgi?id=736125.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 3.4</p>
+  <p class="api-ctype">C type: GdkModifierIntent</p>
 </div>
 <p class="api-heading">NotifyType</p>
 <p class="api-doc">Specifies the kind of crossing for #GdkEventCrossing.
 
 See the X11 protocol specification of LeaveNotify for
 full details of crossing event generation.</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkNotifyType</p>
 <table>
 <tr>
 <td class="name">GDK_NOTIFY_ANCESTOR</td>
@@ -1410,11 +1408,11 @@ full details of crossing event generation.</p>
 <td class="doc">an unknown type of enter/leave event occurred.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GdkNotifyType</p>
 </div>
 <p class="api-heading">OwnerChange</p>
 <p class="api-doc">Specifies why a selection ownership was changed.</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkOwnerChange</p>
 <table>
 <tr>
 <td class="name">GDK_OWNER_CHANGE_NEW_OWNER</td>
@@ -1432,12 +1430,12 @@ full details of crossing event generation.</p>
 <td class="doc">the client was closed</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GdkOwnerChange</p>
 </div>
 <p class="api-heading">PropMode</p>
 <p class="api-doc">Describes how existing data is combined with new data when
 using gdk_property_change().</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkPropMode</p>
 <table>
 <tr>
 <td class="name">GDK_PROP_MODE_REPLACE</td>
@@ -1455,11 +1453,11 @@ using gdk_property_change().</p>
 <td class="doc">the new data is appended to the existing data.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GdkPropMode</p>
 </div>
 <p class="api-heading">PropertyState</p>
 <p class="api-doc">Specifies the type of a property change for a #GdkEventProperty.</p>
-<div class="api-notes">
-  <p class="api-ctype">guint</p>
 <table>
 <tr>
 <td class="name">GDK_PROPERTY_NEW_VALUE</td>
@@ -1472,11 +1470,11 @@ using gdk_property_change().</p>
 <td class="doc">the property was deleted.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: guint</p>
 </div>
 <p class="api-heading">ScrollDirection</p>
 <p class="api-doc">Specifies the direction for #GdkEventScroll.</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkScrollDirection</p>
 <table>
 <tr>
 <td class="name">GDK_SCROLL_UP</td>
@@ -1505,12 +1503,12 @@ using gdk_property_change().</p>
   in #GdkEventScroll. See gdk_event_get_scroll_deltas(). Since: 3.4</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GdkScrollDirection</p>
 </div>
 <p class="api-heading">SettingAction</p>
 <p class="api-doc">Specifies the kind of modification applied to a setting in a
 #GdkEventSetting.</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkSettingAction</p>
 <table>
 <tr>
 <td class="name">GDK_SETTING_ACTION_NEW</td>
@@ -1528,10 +1526,10 @@ using gdk_property_change().</p>
 <td class="doc">a setting was deleted.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GdkSettingAction</p>
 </div>
 <p class="api-heading">Status</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkStatus</p>
 <table>
 <tr>
 <td class="name">GDK_OK</td>
@@ -1554,13 +1552,12 @@ using gdk_property_change().</p>
 <td class="value">-4</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GdkStatus</p>
 </div>
 <p class="api-heading">SubpixelLayout</p>
 <p class="api-doc">This enumeration describes how the red, green and blue components
 of physical pixels on an output device are laid out.</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkSubpixelLayout</p>
-  <p class="api-since">since 3.22</p>
 <table>
 <tr>
 <td class="name">GDK_SUBPIXEL_LAYOUT_UNKNOWN</td>
@@ -1593,6 +1590,9 @@ of physical pixels on an output device are laid out.</p>
 <td class="doc">The layout is vertical, the order is BGR</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 3.22</p>
+  <p class="api-ctype">C type: GdkSubpixelLayout</p>
 </div>
 <p class="api-heading">TouchpadGesturePhase</p>
 <p class="api-doc">Specifies the current state of a touchpad gesture. All gestures are
@@ -1613,8 +1613,6 @@ to undo any visible/permanent changes that were done throughout the
 progress of the gesture.
 
 See also #GdkEventTouchpadSwipe and #GdkEventTouchpadPinch.</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkTouchpadGesturePhase</p>
 <table>
 <tr>
 <td class="name">GDK_TOUCHPAD_GESTURE_PHASE_BEGIN</td>
@@ -1639,11 +1637,11 @@ See also #GdkEventTouchpadSwipe and #GdkEventTouchpadPinch.</p>
   changes should be undone.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GdkTouchpadGesturePhase</p>
 </div>
 <p class="api-heading">VisibilityState</p>
 <p class="api-doc">Specifies the visiblity status of a window for a #GdkEventVisibility.</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkVisibilityState</p>
 <table>
 <tr>
 <td class="name">GDK_VISIBILITY_UNOBSCURED</td>
@@ -1661,12 +1659,12 @@ See also #GdkEventTouchpadSwipe and #GdkEventTouchpadPinch.</p>
 <td class="doc">the window is not visible at all.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GdkVisibilityState</p>
 </div>
 <p class="api-heading">VisualType</p>
 <p class="api-doc">A set of values that describe the manner in which the pixel values
 for a visual are converted into RGB values for display.</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkVisualType</p>
 <table>
 <tr>
 <td class="name">GDK_VISUAL_STATIC_GRAY</td>
@@ -1711,11 +1709,11 @@ for a visual are converted into RGB values for display.</p>
     being converted directly.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GdkVisualType</p>
 </div>
 <p class="api-heading">WindowEdge</p>
 <p class="api-doc">Determines a window edge or corner.</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkWindowEdge</p>
 <table>
 <tr>
 <td class="name">GDK_WINDOW_EDGE_NORTH_WEST</td>
@@ -1758,11 +1756,11 @@ for a visual are converted into RGB values for display.</p>
 <td class="doc">the lower right corner.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GdkWindowEdge</p>
 </div>
 <p class="api-heading">WindowType</p>
 <p class="api-doc">Describes the kind of window.</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkWindowType</p>
 <table>
 <tr>
 <td class="name">GDK_WINDOW_ROOT</td>
@@ -1805,6 +1803,8 @@ for a visual are converted into RGB values for display.</p>
  type is only implemented in Wayland. Since 3.14</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GdkWindowType</p>
 </div>
 <p class="api-heading">WindowTypeHint</p>
 <p class="api-doc">These are hints for the window manager that indicate what type of function
@@ -1813,8 +1813,6 @@ and behaviour of the window. The hint must be set before mapping the window.
 
 See the [Extended Window Manager Hints](http://www.freedesktop.org/Standards/wm-spec)
 specification for more details about window types.</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkWindowTypeHint</p>
 <table>
 <tr>
 <td class="name">GDK_WINDOW_TYPE_HINT_NORMAL</td>
@@ -1893,6 +1891,8 @@ specification for more details about window types.</p>
 <td class="doc">A window that is used to implement a DND cursor.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GdkWindowTypeHint</p>
 </div>
 <p class="api-heading">WindowWindowClass</p>
 <p class="api-doc">@GDK_INPUT_OUTPUT windows are the standard kind of window you might expect.
@@ -1900,8 +1900,6 @@ Such windows receive events and are also displayed on screen.
 @GDK_INPUT_ONLY windows are invisible; they are usually placed above other
 windows in order to trap or filter the events. You can’t draw on
 @GDK_INPUT_ONLY windows.</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkWindowWindowClass</p>
 <table>
 <tr>
 <td class="name">GDK_INPUT_OUTPUT</td>
@@ -1914,4 +1912,6 @@ windows in order to trap or filter the events. You can’t draw on
 <td class="doc">window for events only</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GdkWindowWindowClass</p>
 </div>

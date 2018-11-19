@@ -6,7 +6,7 @@ title = "constants"
 application compile time, rather than from the library linked
 against at application run time.</p>
 <div class="api-notes">
-  <p class="api-ctype">ATK_BINARY_AGE</p>
+  <p class="api-ctype">C type: ATK_BINARY_AGE</p>
   <p class="api-since">since 2.7.4</p>
 </div>
 <p class="api-heading">INTERFACE_AGE</p>
@@ -14,7 +14,7 @@ against at application run time.</p>
 application compile time, rather than from the library linked
 against at application run time.</p>
 <div class="api-notes">
-  <p class="api-ctype">ATK_INTERFACE_AGE</p>
+  <p class="api-ctype">C type: ATK_INTERFACE_AGE</p>
   <p class="api-since">since 2.7.4</p>
 </div>
 <p class="api-heading">MAJOR_VERSION</p>
@@ -22,7 +22,7 @@ against at application run time.</p>
 application compile time, rather than from the library linked
 against at application run time.</p>
 <div class="api-notes">
-  <p class="api-ctype">ATK_MAJOR_VERSION</p>
+  <p class="api-ctype">C type: ATK_MAJOR_VERSION</p>
   <p class="api-since">since 2.7.4</p>
 </div>
 <p class="api-heading">MICRO_VERSION</p>
@@ -30,7 +30,7 @@ against at application run time.</p>
 application compile time, rather than from the library linked
 against at application run time.</p>
 <div class="api-notes">
-  <p class="api-ctype">ATK_MICRO_VERSION</p>
+  <p class="api-ctype">C type: ATK_MICRO_VERSION</p>
   <p class="api-since">since 2.7.4</p>
 </div>
 <p class="api-heading">MINOR_VERSION</p>
@@ -38,7 +38,7 @@ against at application run time.</p>
 application compile time, rather than from the library linked
 against at application run time.</p>
 <div class="api-notes">
-  <p class="api-ctype">ATK_MINOR_VERSION</p>
+  <p class="api-ctype">C type: ATK_MINOR_VERSION</p>
   <p class="api-since">since 2.7.4</p>
 </div>
 <p class="api-heading">VERSION_MIN_REQUIRED</p>
@@ -55,6 +55,6 @@ functions, then using functions that were deprecated in version
 %ATK_VERSION_MIN_REQUIRED or earlier will cause warnings (but
 using functions deprecated in later releases will not).</p>
 <div class="api-notes">
-  <p class="api-ctype">ATK_VERSION_MIN_REQUIRED</p>
+  <p class="api-ctype">C type: ATK_VERSION_MIN_REQUIRED</p>
   <p class="api-since">since 2.14</p>
 </div>

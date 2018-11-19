@@ -4,8 +4,6 @@ title = "bitfields"
 <p class="api-heading">FontMask</p>
 <p class="api-doc">The bits in a #PangoFontMask correspond to fields in a
 #PangoFontDescription that have been set.</p>
-<div class="api-notes">
-  <p class="api-ctype">PangoFontMask</p>
 <table>
 <tr>
 <td class="name">PANGO_FONT_MASK_FAMILY</td>
@@ -43,4 +41,6 @@ title = "bitfields"
 <td class="doc">the font gravity is specified (Since: 1.16.)</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: PangoFontMask</p>
 </div>

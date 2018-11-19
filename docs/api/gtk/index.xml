@@ -18,12 +18,10 @@
       <guid>https://pekim.github.io/gobbi/api/gtk/bitfields/</guid>
       <description>AccelFlags
 Accelerator flags used with gtk_accel_group_connect().
-GtkAccelFlags
-  GTK_ACCEL_VISIBLE 1 Accelerator is visible   GTK_ACCEL_LOCKED 2 Accelerator not removable   GTK_ACCEL_MASK 7 Mask    ApplicationInhibitFlags
+  GTK_ACCEL_VISIBLE 1 Accelerator is visible   GTK_ACCEL_LOCKED 2 Accelerator not removable   GTK_ACCEL_MASK 7 Mask   C type: GtkAccelFlags
+ ApplicationInhibitFlags
 Types of user actions that may be blocked by gtk_application_inhibit().
-GtkApplicationInhibitFlags
-since 3.4
-  GTK_APPLICATION_INHIBIT_LOGOUT 1 Inhibit ending the user session by logging out or by shutting down the computer   GTK_APPLICATION_INHIBIT_SWITCH 2 Inhibit user switching   GTK_APPLICATION_INHIBIT_SUSPEND 4 Inhibit suspending the session or computer   GTK_APPLICATION_INHIBIT_IDLE 8 Inhibit the session being marked as idle (and possibly locked)    AttachOptions</description>
+  GTK_APPLICATION_INHIBIT_LOGOUT 1 Inhibit ending the user session by logging out or by shutting down the computer   GTK_APPLICATION_INHIBIT_SWITCH 2 Inhibit user switching   GTK_APPLICATION_INHIBIT_SUSPEND 4 Inhibit suspending the session or computer   GTK_APPLICATION_INHIBIT_IDLE 8 Inhibit the session being marked as idle (and possibly locked)   since 3.</description>
     </item>
     
     <item>
@@ -34,14 +32,12 @@ since 3.4
       <guid>https://pekim.github.io/gobbi/api/gtk/constants/</guid>
       <description>BINARY_AGE
 Like gtk_get_binary_age(), but from the headers used at application compile time, rather than from the library linked against at application run time.
-GTK_BINARY_AGE
+C type: GTK_BINARY_AGE
  INPUT_ERROR
 Constant to return from a signal handler for the #GtkSpinButton::input signal in case of conversion failure.
-GTK_INPUT_ERROR
+C type: GTK_INPUT_ERROR
  INTERFACE_AGE
-Like gtk_get_interface_age(), but from the headers used at application compile time, rather than from the library linked against at application run time.
-GTK_INTERFACE_AGE
- LEVEL_BAR_OFFSET_FULL</description>
+Like gtk_get_interface_age(), but from the headers used at application compile time, rather than from the library linked against at application run time.</description>
     </item>
     
     <item>

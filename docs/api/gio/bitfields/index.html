@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2018-11-18T20:31:41 GMT">
+<meta name="revised" content="2018-11-19T06:39:16 GMT">
 <title>bitfields :: gobbi</title>
 <link rel="shortcut icon" href="/gobbi/images/favicon.png" type="image/x-icon" />
 <link href="/gobbi/css/font-awesome.min.css" rel="stylesheet">
@@ -452,8 +452,6 @@
     
     <p><p class="api-heading">AppInfoCreateFlags</p>
 <p class="api-doc">Flags used when creating a #GAppInfo.</p>
-<div class="api-notes">
-  <p class="api-ctype">GAppInfoCreateFlags</p>
 <table>
 <tr>
 <td class="name">APP_INFO_CREATE_NONE</td>
@@ -476,12 +474,11 @@
 <td class="doc">Application supports startup notification. Since 2.26</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GAppInfoCreateFlags</p>
 </div>
 <p class="api-heading">ApplicationFlags</p>
 <p class="api-doc">Flags used to define the behaviour of a #GApplication.</p>
-<div class="api-notes">
-  <p class="api-ctype">GApplicationFlags</p>
-  <p class="api-since">since 2.28</p>
 <table>
 <tr>
 <td class="name">APPLICATION_FLAGS_NONE</td>
@@ -548,13 +545,14 @@
     Since: 2.48</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.28</p>
+  <p class="api-ctype">C type: GApplicationFlags</p>
 </div>
 <p class="api-heading">AskPasswordFlags</p>
 <p class="api-doc">#GAskPasswordFlags are used to request specific information from the
 user, or to notify the user of their choices in an authentication
 situation.</p>
-<div class="api-notes">
-  <p class="api-ctype">GAskPasswordFlags</p>
 <table>
 <tr>
 <td class="name">ASK_PASSWORD_NEED_PASSWORD</td>
@@ -582,12 +580,11 @@ situation.</p>
 <td class="doc">operation supports anonymous users.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GAskPasswordFlags</p>
 </div>
 <p class="api-heading">BusNameOwnerFlags</p>
 <p class="api-doc">Flags used in g_bus_own_name().</p>
-<div class="api-notes">
-  <p class="api-ctype">GBusNameOwnerFlags</p>
-  <p class="api-since">since 2.26</p>
 <table>
 <tr>
 <td class="name">BUS_NAME_OWNER_FLAGS_NONE</td>
@@ -612,12 +609,12 @@ specified #G_BUS_NAME_OWNER_FLAGS_ALLOW_REPLACEMENT, then take the name from the
 return an error from g_bus_own_name() rather than entering the waiting queue for that name. (Since 2.54)</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.26</p>
+  <p class="api-ctype">C type: GBusNameOwnerFlags</p>
 </div>
 <p class="api-heading">BusNameWatcherFlags</p>
 <p class="api-doc">Flags used in g_bus_watch_name().</p>
-<div class="api-notes">
-  <p class="api-ctype">GBusNameWatcherFlags</p>
-  <p class="api-since">since 2.26</p>
 <table>
 <tr>
 <td class="name">BUS_NAME_WATCHER_FLAGS_NONE</td>
@@ -632,12 +629,12 @@ beginning to watch the name, ask the bus to launch an owner for the
 name.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.26</p>
+  <p class="api-ctype">C type: GBusNameWatcherFlags</p>
 </div>
 <p class="api-heading">ConverterFlags</p>
 <p class="api-doc">Flags used when calling a g_converter_convert().</p>
-<div class="api-notes">
-  <p class="api-ctype">GConverterFlags</p>
-  <p class="api-since">since 2.24</p>
 <table>
 <tr>
 <td class="name">CONVERTER_NO_FLAGS</td>
@@ -655,12 +652,12 @@ name.</td>
 <td class="doc">Flush data</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.24</p>
+  <p class="api-ctype">C type: GConverterFlags</p>
 </div>
 <p class="api-heading">DBusCallFlags</p>
 <p class="api-doc">Flags used in g_dbus_connection_call() and similar APIs.</p>
-<div class="api-notes">
-  <p class="api-ctype">GDBusCallFlags</p>
-  <p class="api-since">since 2.26</p>
 <table>
 <tr>
 <td class="name">DBUS_CALL_FLAGS_NONE</td>
@@ -681,12 +678,12 @@ invocation.</td>
 wait for interactive authorization. Since 2.46.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.26</p>
+  <p class="api-ctype">C type: GDBusCallFlags</p>
 </div>
 <p class="api-heading">DBusCapabilityFlags</p>
 <p class="api-doc">Capabilities negotiated with the remote peer.</p>
-<div class="api-notes">
-  <p class="api-ctype">GDBusCapabilityFlags</p>
-  <p class="api-since">since 2.26</p>
 <table>
 <tr>
 <td class="name">DBUS_CAPABILITY_FLAGS_NONE</td>
@@ -700,12 +697,12 @@ wait for interactive authorization. Since 2.46.</td>
 supports exchanging UNIX file descriptors with the remote peer.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.26</p>
+  <p class="api-ctype">C type: GDBusCapabilityFlags</p>
 </div>
 <p class="api-heading">DBusConnectionFlags</p>
 <p class="api-doc">Flags used when creating a new #GDBusConnection.</p>
-<div class="api-notes">
-  <p class="api-ctype">GDBusConnectionFlags</p>
-  <p class="api-since">since 2.26</p>
 <table>
 <tr>
 <td class="name">DBUS_CONNECTION_FLAGS_NONE</td>
@@ -742,12 +739,12 @@ message bus. This means that the Hello() method will be invoked as part of the c
 delayed until g_dbus_connection_start_message_processing() is called.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.26</p>
+  <p class="api-ctype">C type: GDBusConnectionFlags</p>
 </div>
 <p class="api-heading">DBusInterfaceSkeletonFlags</p>
 <p class="api-doc">Flags describing the behavior of a #GDBusInterfaceSkeleton instance.</p>
-<div class="api-notes">
-  <p class="api-ctype">GDBusInterfaceSkeletonFlags</p>
-  <p class="api-since">since 2.30</p>
 <table>
 <tr>
 <td class="name">DBUS_INTERFACE_SKELETON_FLAGS_NONE</td>
@@ -763,12 +760,12 @@ delayed until g_dbus_connection_start_message_processing() is called.</td>
   use locking to access data structures used by other threads.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.30</p>
+  <p class="api-ctype">C type: GDBusInterfaceSkeletonFlags</p>
 </div>
 <p class="api-heading">DBusMessageFlags</p>
 <p class="api-doc">Message flags used in #GDBusMessage.</p>
-<div class="api-notes">
-  <p class="api-ctype">GDBusMessageFlags</p>
-  <p class="api-since">since 2.26</p>
 <table>
 <tr>
 <td class="name">DBUS_MESSAGE_FLAGS_NONE</td>
@@ -794,12 +791,12 @@ call, this flag means that the caller is prepared to wait for interactive
 authorization. Since 2.46.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.26</p>
+  <p class="api-ctype">C type: GDBusMessageFlags</p>
 </div>
 <p class="api-heading">DBusObjectManagerClientFlags</p>
 <p class="api-doc">Flags used when constructing a #GDBusObjectManagerClient.</p>
-<div class="api-notes">
-  <p class="api-ctype">GDBusObjectManagerClientFlags</p>
-  <p class="api-since">since 2.30</p>
 <table>
 <tr>
 <td class="name">DBUS_OBJECT_MANAGER_CLIENT_FLAGS_NONE</td>
@@ -815,12 +812,12 @@ authorization. Since 2.46.</td>
   be used in managers for well-known names.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.30</p>
+  <p class="api-ctype">C type: GDBusObjectManagerClientFlags</p>
 </div>
 <p class="api-heading">DBusPropertyInfoFlags</p>
 <p class="api-doc">Flags describing the access control of a D-Bus property.</p>
-<div class="api-notes">
-  <p class="api-ctype">GDBusPropertyInfoFlags</p>
-  <p class="api-since">since 2.26</p>
 <table>
 <tr>
 <td class="name">DBUS_PROPERTY_INFO_FLAGS_NONE</td>
@@ -838,12 +835,12 @@ authorization. Since 2.46.</td>
 <td class="doc">Property is writable.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.26</p>
+  <p class="api-ctype">C type: GDBusPropertyInfoFlags</p>
 </div>
 <p class="api-heading">DBusProxyFlags</p>
 <p class="api-doc">Flags used when constructing an instance of a #GDBusProxy derived class.</p>
-<div class="api-notes">
-  <p class="api-ctype">GDBusProxyFlags</p>
-  <p class="api-since">since 2.26</p>
 <table>
 <tr>
 <td class="name">DBUS_PROXY_FLAGS_NONE</td>
@@ -881,12 +878,12 @@ autostarted by a method call. This flag is only meaningful in proxies for well-k
 and only if %G_DBUS_PROXY_FLAGS_DO_NOT_AUTO_START is not also specified.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.26</p>
+  <p class="api-ctype">C type: GDBusProxyFlags</p>
 </div>
 <p class="api-heading">DBusSendMessageFlags</p>
 <p class="api-doc">Flags used when sending #GDBusMessages on a #GDBusConnection.</p>
-<div class="api-notes">
-  <p class="api-ctype">GDBusSendMessageFlags</p>
-  <p class="api-since">since 2.26</p>
 <table>
 <tr>
 <td class="name">DBUS_SEND_MESSAGE_FLAGS_NONE</td>
@@ -901,12 +898,12 @@ assign a serial number from the #GDBusConnection object when
 sending a message.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.26</p>
+  <p class="api-ctype">C type: GDBusSendMessageFlags</p>
 </div>
 <p class="api-heading">DBusServerFlags</p>
 <p class="api-doc">Flags used when creating a #GDBusServer.</p>
-<div class="api-notes">
-  <p class="api-ctype">GDBusServerFlags</p>
-  <p class="api-since">since 2.26</p>
 <table>
 <tr>
 <td class="name">DBUS_SERVER_FLAGS_NONE</td>
@@ -927,12 +924,12 @@ details).</td>
 authentication method.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.26</p>
+  <p class="api-ctype">C type: GDBusServerFlags</p>
 </div>
 <p class="api-heading">DBusSignalFlags</p>
 <p class="api-doc">Flags used when subscribing to signals via g_dbus_connection_signal_subscribe().</p>
-<div class="api-notes">
-  <p class="api-ctype">GDBusSignalFlags</p>
-  <p class="api-since">since 2.26</p>
 <table>
 <tr>
 <td class="name">DBUS_SIGNAL_FLAGS_NONE</td>
@@ -960,12 +957,12 @@ contain an object path that is either equivalent to the given path,
 or one of the paths is a subpath of the other.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.26</p>
+  <p class="api-ctype">C type: GDBusSignalFlags</p>
 </div>
 <p class="api-heading">DBusSubtreeFlags</p>
 <p class="api-doc">Flags passed to g_dbus_connection_register_subtree().</p>
-<div class="api-notes">
-  <p class="api-ctype">GDBusSubtreeFlags</p>
-  <p class="api-since">since 2.26</p>
 <table>
 <tr>
 <td class="name">DBUS_SUBTREE_FLAGS_NONE</td>
@@ -980,12 +977,12 @@ or one of the paths is a subpath of the other.</td>
                                                       to dynamically spawn objects in the subtree.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.26</p>
+  <p class="api-ctype">C type: GDBusSubtreeFlags</p>
 </div>
 <p class="api-heading">DriveStartFlags</p>
 <p class="api-doc">Flags used when starting a drive.</p>
-<div class="api-notes">
-  <p class="api-ctype">GDriveStartFlags</p>
-  <p class="api-since">since 2.22</p>
 <table>
 <tr>
 <td class="name">DRIVE_START_NONE</td>
@@ -993,11 +990,12 @@ or one of the paths is a subpath of the other.</td>
 <td class="doc">No flags set.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.22</p>
+  <p class="api-ctype">C type: GDriveStartFlags</p>
 </div>
 <p class="api-heading">FileAttributeInfoFlags</p>
 <p class="api-doc">Flags specifying the behaviour of an attribute.</p>
-<div class="api-notes">
-  <p class="api-ctype">GFileAttributeInfoFlags</p>
 <table>
 <tr>
 <td class="name">FILE_ATTRIBUTE_INFO_NONE</td>
@@ -1015,11 +1013,11 @@ or one of the paths is a subpath of the other.</td>
 <td class="doc">copy the attribute values when the file is moved.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GFileAttributeInfoFlags</p>
 </div>
 <p class="api-heading">FileCopyFlags</p>
 <p class="api-doc">Flags used when copying or moving files.</p>
-<div class="api-notes">
-  <p class="api-ctype">GFileCopyFlags</p>
 <table>
 <tr>
 <td class="name">FILE_COPY_NONE</td>
@@ -1057,11 +1055,11 @@ or one of the paths is a subpath of the other.</td>
 <td class="doc">Leaves target file with default perms, instead of setting the source file perms.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GFileCopyFlags</p>
 </div>
 <p class="api-heading">FileCreateFlags</p>
 <p class="api-doc">Flags used when an operation may create a file.</p>
-<div class="api-notes">
-  <p class="api-ctype">GFileCreateFlags</p>
 <table>
 <tr>
 <td class="name">FILE_CREATE_NONE</td>
@@ -1087,12 +1085,11 @@ or one of the paths is a subpath of the other.</td>
    be exactly like that. Since 2.20</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GFileCreateFlags</p>
 </div>
 <p class="api-heading">FileMeasureFlags</p>
 <p class="api-doc">Flags that can be used with g_file_measure_disk_usage().</p>
-<div class="api-notes">
-  <p class="api-ctype">GFileMeasureFlags</p>
-  <p class="api-since">since 2.38</p>
 <table>
 <tr>
 <td class="name">FILE_MEASURE_NONE</td>
@@ -1121,11 +1118,12 @@ or one of the paths is a subpath of the other.</td>
   Compare with <code>du -x</code>.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.38</p>
+  <p class="api-ctype">C type: GFileMeasureFlags</p>
 </div>
 <p class="api-heading">FileMonitorFlags</p>
 <p class="api-doc">Flags used to set what a #GFileMonitor will watch for.</p>
-<div class="api-notes">
-  <p class="api-ctype">GFileMonitorFlags</p>
 <table>
 <tr>
 <td class="name">FILE_MONITOR_NONE</td>
@@ -1162,11 +1160,11 @@ or one of the paths is a subpath of the other.</td>
   events to be emitted when possible.  Since: 2.46.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GFileMonitorFlags</p>
 </div>
 <p class="api-heading">FileQueryInfoFlags</p>
 <p class="api-doc">Flags used when querying a #GFileInfo.</p>
-<div class="api-notes">
-  <p class="api-ctype">GFileQueryInfoFlags</p>
 <table>
 <tr>
 <td class="name">FILE_QUERY_INFO_NONE</td>
@@ -1179,12 +1177,11 @@ or one of the paths is a subpath of the other.</td>
 <td class="doc">Don&rsquo;t follow symlinks.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GFileQueryInfoFlags</p>
 </div>
 <p class="api-heading">IOStreamSpliceFlags</p>
 <p class="api-doc">GIOStreamSpliceFlags determine how streams should be spliced.</p>
-<div class="api-notes">
-  <p class="api-ctype">GIOStreamSpliceFlags</p>
-  <p class="api-since">since 2.28</p>
 <table>
 <tr>
 <td class="name">IO_STREAM_SPLICE_NONE</td>
@@ -1210,11 +1207,12 @@ or one of the paths is a subpath of the other.</td>
     before calling the callback.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.28</p>
+  <p class="api-ctype">C type: GIOStreamSpliceFlags</p>
 </div>
 <p class="api-heading">MountMountFlags</p>
 <p class="api-doc">Flags used when mounting a mount.</p>
-<div class="api-notes">
-  <p class="api-ctype">GMountMountFlags</p>
 <table>
 <tr>
 <td class="name">MOUNT_MOUNT_NONE</td>
@@ -1222,11 +1220,11 @@ or one of the paths is a subpath of the other.</td>
 <td class="doc">No flags set.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GMountMountFlags</p>
 </div>
 <p class="api-heading">MountUnmountFlags</p>
 <p class="api-doc">Flags used when an unmounting a mount.</p>
-<div class="api-notes">
-  <p class="api-ctype">GMountUnmountFlags</p>
 <table>
 <tr>
 <td class="name">MOUNT_UNMOUNT_NONE</td>
@@ -1240,11 +1238,11 @@ or one of the paths is a subpath of the other.</td>
  file operations on the mount.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GMountUnmountFlags</p>
 </div>
 <p class="api-heading">OutputStreamSpliceFlags</p>
 <p class="api-doc">GOutputStreamSpliceFlags determine how streams should be spliced.</p>
-<div class="api-notes">
-  <p class="api-ctype">GOutputStreamSpliceFlags</p>
 <table>
 <tr>
 <td class="name">OUTPUT_STREAM_SPLICE_NONE</td>
@@ -1264,13 +1262,12 @@ or one of the paths is a subpath of the other.</td>
     the splice.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GOutputStreamSpliceFlags</p>
 </div>
 <p class="api-heading">ResourceFlags</p>
 <p class="api-doc">GResourceFlags give information about a particular file inside a resource
 bundle.</p>
-<div class="api-notes">
-  <p class="api-ctype">GResourceFlags</p>
-  <p class="api-since">since 2.32</p>
 <table>
 <tr>
 <td class="name">RESOURCE_FLAGS_NONE</td>
@@ -1283,12 +1280,12 @@ bundle.</p>
 <td class="doc">The file is compressed.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.32</p>
+  <p class="api-ctype">C type: GResourceFlags</p>
 </div>
 <p class="api-heading">ResourceLookupFlags</p>
 <p class="api-doc">GResourceLookupFlags determine how resource path lookups are handled.</p>
-<div class="api-notes">
-  <p class="api-ctype">GResourceLookupFlags</p>
-  <p class="api-since">since 2.32</p>
 <table>
 <tr>
 <td class="name">RESOURCE_LOOKUP_FLAGS_NONE</td>
@@ -1296,13 +1293,14 @@ bundle.</p>
 <td class="doc">No flags set.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.32</p>
+  <p class="api-ctype">C type: GResourceLookupFlags</p>
 </div>
 <p class="api-heading">SettingsBindFlags</p>
 <p class="api-doc">Flags used when creating a binding. These flags determine in which
 direction the binding works. The default is to synchronize in both
 directions.</p>
-<div class="api-notes">
-  <p class="api-ctype">GSettingsBindFlags</p>
 <table>
 <tr>
 <td class="name">SETTINGS_BIND_DEFAULT</td>
@@ -1340,6 +1338,8 @@ directions.</p>
     be booleans.  You cannot pass this flag to g_settings_bind_with_mapping().</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GSettingsBindFlags</p>
 </div>
 <p class="api-heading">SocketMsgFlags</p>
 <p class="api-doc">Flags used in g_socket_receive_message() and g_socket_send_message().
@@ -1347,9 +1347,6 @@ The flags listed in the enum are some commonly available flags, but the
 values used for them are the same as on the platform, and any other flags
 are passed in/out as is. So to use a platform specific flag, just include
 the right system header and pass in the flag.</p>
-<div class="api-notes">
-  <p class="api-ctype">GSocketMsgFlags</p>
-  <p class="api-since">since 2.22</p>
 <table>
 <tr>
 <td class="name">SOCKET_MSG_NONE</td>
@@ -1374,6 +1371,9 @@ the right system header and pass in the flag.</p>
     only send to hosts on directly connected networks.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.22</p>
+  <p class="api-ctype">C type: GSocketMsgFlags</p>
 </div>
 <p class="api-heading">SubprocessFlags</p>
 <p class="api-doc">Flags to define the behaviour of a #GSubprocess.</p>
@@ -1385,9 +1385,6 @@ corresponding descriptor from the calling process.</p>
 <p>Note that it is a programmer error to mix &lsquo;incompatible&rsquo; flags.  For
 example, you may not request both %G_SUBPROCESS_FLAGS_STDOUT_PIPE and
 %G_SUBPROCESS_FLAGS_STDOUT_SILENCE.</p>
-<div class="api-notes">
-  <p class="api-ctype">GSubprocessFlags</p>
-  <p class="api-since">since 2.40</p>
 <table>
 <tr>
 <td class="name">SUBPROCESS_FLAGS_NONE</td>
@@ -1449,12 +1446,12 @@ example, you may not request both %G_SUBPROCESS_FLAGS_STDOUT_PIPE and
   over the &ldquo;standard&rdquo; file descriptors (stdin, stdout, stderr).</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.40</p>
+  <p class="api-ctype">C type: GSubprocessFlags</p>
 </div>
 <p class="api-heading">TestDBusFlags</p>
 <p class="api-doc">Flags to define future #GTestDBus behaviour.</p>
-<div class="api-notes">
-  <p class="api-ctype">GTestDBusFlags</p>
-  <p class="api-since">since 2.34</p>
 <table>
 <tr>
 <td class="name">TEST_DBUS_NONE</td>
@@ -1462,6 +1459,9 @@ example, you may not request both %G_SUBPROCESS_FLAGS_STDOUT_PIPE and
 <td class="doc">No flags.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.34</p>
+  <p class="api-ctype">C type: GTestDBusFlags</p>
 </div>
 <p class="api-heading">TlsCertificateFlags</p>
 <p class="api-doc">A set of flags describing TLS certification validation. This can be
@@ -1469,9 +1469,6 @@ used to set which validation steps to perform (eg, with
 g_tls_client_connection_set_validation_flags()), or to describe why
 a particular certificate was rejected (eg, in
 #GTlsConnection::accept-certificate).</p>
-<div class="api-notes">
-  <p class="api-ctype">GTlsCertificateFlags</p>
-  <p class="api-since">since 2.28</p>
 <table>
 <tr>
 <td class="name">TLS_CERTIFICATE_UNKNOWN_CA</td>
@@ -1521,12 +1518,12 @@ a particular certificate was rejected (eg, in
   flags</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.28</p>
+  <p class="api-ctype">C type: GTlsCertificateFlags</p>
 </div>
 <p class="api-heading">TlsDatabaseVerifyFlags</p>
 <p class="api-doc">Flags for g_tls_database_verify_chain().</p>
-<div class="api-notes">
-  <p class="api-ctype">GTlsDatabaseVerifyFlags</p>
-  <p class="api-since">since 2.30</p>
 <table>
 <tr>
 <td class="name">TLS_DATABASE_VERIFY_NONE</td>
@@ -1534,12 +1531,12 @@ a particular certificate was rejected (eg, in
 <td class="doc">No verification flags</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.30</p>
+  <p class="api-ctype">C type: GTlsDatabaseVerifyFlags</p>
 </div>
 <p class="api-heading">TlsPasswordFlags</p>
 <p class="api-doc">Various flags for the password.</p>
-<div class="api-notes">
-  <p class="api-ctype">GTlsPasswordFlags</p>
-  <p class="api-since">since 2.30</p>
 <table>
 <tr>
 <td class="name">TLS_PASSWORD_NONE</td>
@@ -1564,6 +1561,9 @@ a particular certificate was rejected (eg, in
    this password right.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.30</p>
+  <p class="api-ctype">C type: GTlsPasswordFlags</p>
 </div></p>
 
 

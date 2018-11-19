@@ -2,8 +2,6 @@
 title = "enums"
 +++
 <p class="api-heading">Status</p>
-<div class="api-notes">
-  <p class="api-ctype">cairo_status_t</p>
 <table>
 <tr>
 <td class="name">CAIRO_STATUS_SUCCESS</td>
@@ -162,10 +160,10 @@ title = "enums"
 <td class="value">38</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: cairo_status_t</p>
 </div>
 <p class="api-heading">Content</p>
-<div class="api-notes">
-  <p class="api-ctype">cairo_content_t</p>
 <table>
 <tr>
 <td class="name">CAIRO_CONTENT_COLOR</td>
@@ -180,10 +178,10 @@ title = "enums"
 <td class="value">12288</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: cairo_content_t</p>
 </div>
 <p class="api-heading">Operator</p>
-<div class="api-notes">
-  <p class="api-ctype">cairo_operator_t</p>
 <table>
 <tr>
 <td class="name">CAIRO_OPERATOR_CLEAR</td>
@@ -302,10 +300,10 @@ title = "enums"
 <td class="value">28</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: cairo_operator_t</p>
 </div>
 <p class="api-heading">Antialias</p>
-<div class="api-notes">
-  <p class="api-ctype">cairo_antialias_t</p>
 <table>
 <tr>
 <td class="name">CAIRO_ANTIALIAS_DEFAULT</td>
@@ -336,10 +334,10 @@ title = "enums"
 <td class="value">6</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: cairo_antialias_t</p>
 </div>
 <p class="api-heading">FillRule</p>
-<div class="api-notes">
-  <p class="api-ctype">cairo_fill_rule_t</p>
 <table>
 <tr>
 <td class="name">CAIRO_FILL_RULE_WINDING</td>
@@ -350,10 +348,10 @@ title = "enums"
 <td class="value">1</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: cairo_fill_rule_t</p>
 </div>
 <p class="api-heading">LineCap</p>
-<div class="api-notes">
-  <p class="api-ctype">cairo_line_cap_t</p>
 <table>
 <tr>
 <td class="name">CAIRO_LINE_CAP_BUTT</td>
@@ -368,10 +366,10 @@ title = "enums"
 <td class="value">2</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: cairo_line_cap_t</p>
 </div>
 <p class="api-heading">LineJoin</p>
-<div class="api-notes">
-  <p class="api-ctype">cairo_line_join_t</p>
 <table>
 <tr>
 <td class="name">CAIRO_LINE_JOIN_MITER</td>
@@ -386,20 +384,20 @@ title = "enums"
 <td class="value">2</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: cairo_line_join_t</p>
 </div>
 <p class="api-heading">TextClusterFlags</p>
-<div class="api-notes">
-  <p class="api-ctype">cairo_text_cluster_flags_t</p>
 <table>
 <tr>
 <td class="name">CAIRO_TEXT_CLUSTER_FLAG_BACKWARD</td>
 <td class="value">1</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: cairo_text_cluster_flags_t</p>
 </div>
 <p class="api-heading">FontSlant</p>
-<div class="api-notes">
-  <p class="api-ctype">cairo_font_slant_t</p>
 <table>
 <tr>
 <td class="name">CAIRO_FONT_SLANT_NORMAL</td>
@@ -414,10 +412,10 @@ title = "enums"
 <td class="value">2</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: cairo_font_slant_t</p>
 </div>
 <p class="api-heading">FontWeight</p>
-<div class="api-notes">
-  <p class="api-ctype">cairo_font_weight_t</p>
 <table>
 <tr>
 <td class="name">CAIRO_FONT_WEIGHT_NORMAL</td>
@@ -428,10 +426,10 @@ title = "enums"
 <td class="value">1</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: cairo_font_weight_t</p>
 </div>
 <p class="api-heading">SubpixelOrder</p>
-<div class="api-notes">
-  <p class="api-ctype">cairo_subpixel_order_t</p>
 <table>
 <tr>
 <td class="name">CAIRO_SUBPIXEL_ORDER_DEFAULT</td>
@@ -454,10 +452,10 @@ title = "enums"
 <td class="value">4</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: cairo_subpixel_order_t</p>
 </div>
 <p class="api-heading">HintStyle</p>
-<div class="api-notes">
-  <p class="api-ctype">cairo_hint_style_t</p>
 <table>
 <tr>
 <td class="name">CAIRO_HINT_STYLE_DEFAULT</td>
@@ -480,10 +478,10 @@ title = "enums"
 <td class="value">4</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: cairo_hint_style_t</p>
 </div>
 <p class="api-heading">HintMetrics</p>
-<div class="api-notes">
-  <p class="api-ctype">cairo_hint_metrics_t</p>
 <table>
 <tr>
 <td class="name">CAIRO_HINT_METRICS_DEFAULT</td>
@@ -498,10 +496,10 @@ title = "enums"
 <td class="value">2</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: cairo_hint_metrics_t</p>
 </div>
 <p class="api-heading">FontType</p>
-<div class="api-notes">
-  <p class="api-ctype">cairo_font_type_t</p>
 <table>
 <tr>
 <td class="name">CAIRO_FONT_TYPE_TOY</td>
@@ -524,10 +522,10 @@ title = "enums"
 <td class="value">4</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: cairo_font_type_t</p>
 </div>
 <p class="api-heading">PathDataType</p>
-<div class="api-notes">
-  <p class="api-ctype">cairo_path_data_type_t</p>
 <table>
 <tr>
 <td class="name">CAIRO_PATH_MOVE_TO</td>
@@ -546,10 +544,10 @@ title = "enums"
 <td class="value">3</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: cairo_path_data_type_t</p>
 </div>
 <p class="api-heading">DeviceType</p>
-<div class="api-notes">
-  <p class="api-ctype">cairo_device_type_t</p>
 <table>
 <tr>
 <td class="name">CAIRO_DEVICE_TYPE_DRM</td>
@@ -588,10 +586,10 @@ title = "enums"
 <td class="value">-1</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: cairo_device_type_t</p>
 </div>
 <p class="api-heading">SurfaceType</p>
-<div class="api-notes">
-  <p class="api-ctype">cairo_surface_type_t</p>
 <table>
 <tr>
 <td class="name">CAIRO_SURFACE_TYPE_IMAGE</td>
@@ -694,10 +692,10 @@ title = "enums"
 <td class="value">24</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: cairo_surface_type_t</p>
 </div>
 <p class="api-heading">Format</p>
-<div class="api-notes">
-  <p class="api-ctype">cairo_format_t</p>
 <table>
 <tr>
 <td class="name">CAIRO_FORMAT_INVALID</td>
@@ -728,10 +726,10 @@ title = "enums"
 <td class="value">5</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: cairo_format_t</p>
 </div>
 <p class="api-heading">PatternType</p>
-<div class="api-notes">
-  <p class="api-ctype">cairo_pattern_type_t</p>
 <table>
 <tr>
 <td class="name">CAIRO_PATTERN_TYPE_SOLID</td>
@@ -758,10 +756,10 @@ title = "enums"
 <td class="value">5</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: cairo_pattern_type_t</p>
 </div>
 <p class="api-heading">Extend</p>
-<div class="api-notes">
-  <p class="api-ctype">cairo_extend_t</p>
 <table>
 <tr>
 <td class="name">CAIRO_EXTEND_NONE</td>
@@ -780,10 +778,10 @@ title = "enums"
 <td class="value">3</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: cairo_extend_t</p>
 </div>
 <p class="api-heading">Filter</p>
-<div class="api-notes">
-  <p class="api-ctype">cairo_filter_t</p>
 <table>
 <tr>
 <td class="name">CAIRO_FILTER_FAST</td>
@@ -810,10 +808,10 @@ title = "enums"
 <td class="value">5</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: cairo_filter_t</p>
 </div>
 <p class="api-heading">RegionOverlap</p>
-<div class="api-notes">
-  <p class="api-ctype">cairo_region_overlap_t</p>
 <table>
 <tr>
 <td class="name">CAIRO_REGION_OVERLAP_IN</td>
@@ -828,4 +826,6 @@ title = "enums"
 <td class="value">2</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: cairo_region_overlap_t</p>
 </div>

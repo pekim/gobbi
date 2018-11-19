@@ -18,8 +18,7 @@
       <guid>https://pekim.github.io/gobbi/api/pango/bitfields/</guid>
       <description>FontMask
 The bits in a #PangoFontMask correspond to fields in a #PangoFontDescription that have been set.
-PangoFontMask
-  PANGO_FONT_MASK_FAMILY 1 the font family is specified.   PANGO_FONT_MASK_STYLE 2 the font style is specified.   PANGO_FONT_MASK_VARIANT 4 the font variant is specified.   PANGO_FONT_MASK_WEIGHT 8 the font weight is specified.   PANGO_FONT_MASK_STRETCH 16 the font stretch is specified.   PANGO_FONT_MASK_SIZE 32 the font size is specified.</description>
+  PANGO_FONT_MASK_FAMILY 1 the font family is specified.   PANGO_FONT_MASK_STYLE 2 the font style is specified.   PANGO_FONT_MASK_VARIANT 4 the font variant is specified.   PANGO_FONT_MASK_WEIGHT 8 the font weight is specified.   PANGO_FONT_MASK_STRETCH 16 the font stretch is specified.   PANGO_FONT_MASK_SIZE 32 the font size is specified.   PANGO_FONT_MASK_GRAVITY 64 the font gravity is specified (Since: 1.</description>
     </item>
     
     <item>
@@ -30,16 +29,14 @@ PangoFontMask
       <guid>https://pekim.github.io/gobbi/api/pango/constants/</guid>
       <description>ANALYSIS_FLAG_CENTERED_BASELINE
 Whether the segment should be shifted to center around the baseline. Used in vertical writing directions mostly.
-PANGO_ANALYSIS_FLAG_CENTERED_BASELINE
+C type: PANGO_ANALYSIS_FLAG_CENTERED_BASELINE
 since 1.16
  ANALYSIS_FLAG_IS_ELLIPSIS
 This flag is used to mark runs that hold ellipsized text, in an ellipsized layout.
-PANGO_ANALYSIS_FLAG_IS_ELLIPSIS
+C type: PANGO_ANALYSIS_FLAG_IS_ELLIPSIS
 since 1.36.7
  ATTR_INDEX_FROM_TEXT_BEGINNING
-This value can be used to set the start_index member of a #PangoAttribute such that the attribute covers from the beginning of the text.
-PANGO_ATTR_INDEX_FROM_TEXT_BEGINNING
-since 1.24</description>
+This value can be used to set the start_index member of a #PangoAttribute such that the attribute covers from the beginning of the text.</description>
     </item>
     
     <item>
@@ -50,8 +47,7 @@ since 1.24</description>
       <guid>https://pekim.github.io/gobbi/api/pango/enums/</guid>
       <description>Alignment
 A #PangoAlignment describes how to align the lines of a #PangoLayout within the available space. If the #PangoLayout is set to justify using pango_layout_set_justify(), this only has effect for partial lines.
-PangoAlignment
-  PANGO_ALIGN_LEFT 0 Put all available space on the right   PANGO_ALIGN_CENTER 1 Center the line within the available space   PANGO_ALIGN_RIGHT 2 Put all available space on the left    AttrType</description>
+  PANGO_ALIGN_LEFT 0 Put all available space on the right   PANGO_ALIGN_CENTER 1 Center the line within the available space   PANGO_ALIGN_RIGHT 2 Put all available space on the left   C type: PangoAlignment</description>
     </item>
     
   </channel>

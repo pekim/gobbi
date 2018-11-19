@@ -5,8 +5,6 @@ title = "enums"
 <p class="api-doc">A #PangoAlignment describes how to align the lines of a #PangoLayout within the
 available space. If the #PangoLayout is set to justify
 using pango_layout_set_justify(), this only has effect for partial lines.</p>
-<div class="api-notes">
-  <p class="api-ctype">PangoAlignment</p>
 <table>
 <tr>
 <td class="name">PANGO_ALIGN_LEFT</td>
@@ -24,6 +22,8 @@ using pango_layout_set_justify(), this only has effect for partial lines.</p>
 <td class="doc">Put all available space on the left</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: PangoAlignment</p>
 </div>
 <p class="api-heading">AttrType</p>
 <p class="api-doc">The #PangoAttrType
@@ -32,8 +32,6 @@ predefined values, it is possible to allocate additional values
 for custom attributes using pango_attr_type_register(). The predefined
 values are given below. The type of structure used to store the
 attribute is listed in parentheses after the description.</p>
-<div class="api-notes">
-  <p class="api-ctype">PangoAttrType</p>
 <table>
 <tr>
 <td class="name">PANGO_ATTR_INVALID</td>
@@ -166,14 +164,13 @@ attribute is listed in parentheses after the description.</p>
 <td class="doc">background alpha (#PangoAttrInt). Since 1.38</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: PangoAttrType</p>
 </div>
 <p class="api-heading">BidiType</p>
 <p class="api-doc">The #PangoBidiType type represents the bidirectional character
 type of a Unicode character as specified by the
 <ulink url="http://www.unicode.org/reports/tr9/">Unicode bidirectional algorithm</ulink>.</p>
-<div class="api-notes">
-  <p class="api-ctype">PangoBidiType</p>
-  <p class="api-since">since 1.22</p>
 <table>
 <tr>
 <td class="name">PANGO_BIDI_TYPE_L</td>
@@ -271,12 +268,13 @@ type of a Unicode character as specified by the
 <td class="doc">Other Neutrals</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 1.22</p>
+  <p class="api-ctype">C type: PangoBidiType</p>
 </div>
 <p class="api-heading">CoverageLevel</p>
 <p class="api-doc">Used to indicate how well a font can represent a particular Unicode
 character point for a particular script.</p>
-<div class="api-notes">
-  <p class="api-ctype">PangoCoverageLevel</p>
 <table>
 <tr>
 <td class="name">PANGO_COVERAGE_NONE</td>
@@ -304,6 +302,8 @@ the current script.</td>
 <td class="doc">The character is represented as the correct graphical form.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: PangoCoverageLevel</p>
 </div>
 <p class="api-heading">Direction</p>
 <p class="api-doc">The #PangoDirection type represents a direction in the
@@ -321,8 +321,6 @@ values come from an earlier interpretation of this
 enumeration as the writing direction of a block of
 text and are no longer used; See #PangoGravity for how
 vertical text is handled in Pango.</p>
-<div class="api-notes">
-  <p class="api-ctype">PangoDirection</p>
 <table>
 <tr>
 <td class="name">PANGO_DIRECTION_LTR</td>
@@ -362,6 +360,8 @@ vertical text is handled in Pango.</p>
 <td class="doc">No direction specified</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: PangoDirection</p>
 </div>
 <p class="api-heading">EllipsizeMode</p>
 <p class="api-doc">The #PangoEllipsizeMode type describes what sort of (if any)
@@ -369,8 +369,6 @@ ellipsization should be applied to a line of text. In
 the ellipsization process characters are removed from the
 text in order to make it fit to a given width and replaced
 with an ellipsis.</p>
-<div class="api-notes">
-  <p class="api-ctype">PangoEllipsizeMode</p>
 <table>
 <tr>
 <td class="name">PANGO_ELLIPSIZE_NONE</td>
@@ -393,6 +391,8 @@ with an ellipsis.</p>
 <td class="doc">Omit characters at the end of the text</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: PangoEllipsizeMode</p>
 </div>
 <p class="api-heading">Gravity</p>
 <p class="api-doc">The #PangoGravity type represents the orientation of glyphs in a segment
@@ -405,9 +405,6 @@ pango_context_set_base_gravity() and can only be returned by
 pango_context_get_base_gravity().
 
 See also: #PangoGravityHint</p>
-<div class="api-notes">
-  <p class="api-ctype">PangoGravity</p>
-  <p class="api-since">since 1.16</p>
 <table>
 <tr>
 <td class="name">PANGO_GRAVITY_SOUTH</td>
@@ -435,6 +432,9 @@ See also: #PangoGravityHint</p>
 <td class="doc">Gravity is resolved from the context matrix</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 1.16</p>
+  <p class="api-ctype">C type: PangoGravity</p>
 </div>
 <p class="api-heading">GravityHint</p>
 <p class="api-doc">The #PangoGravityHint defines how horizontal scripts should behave in a
@@ -442,9 +442,6 @@ vertical context.  That is, English excerpt in a vertical paragraph for
 example.
 
 See #PangoGravity.</p>
-<div class="api-notes">
-  <p class="api-ctype">PangoGravityHint</p>
-  <p class="api-since">since 1.16</p>
 <table>
 <tr>
 <td class="name">PANGO_GRAVITY_HINT_NATURAL</td>
@@ -467,13 +464,13 @@ respects the line progression.  This means, Latin and Arabic will take
 opposite gravities and both flow top-to-bottom for example.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 1.16</p>
+  <p class="api-ctype">C type: PangoGravityHint</p>
 </div>
 <p class="api-heading">RenderPart</p>
 <p class="api-doc">#PangoRenderPart defines different items to render for such
 purposes as setting colors.</p>
-<div class="api-notes">
-  <p class="api-ctype">PangoRenderPart</p>
-  <p class="api-since">since 1.8</p>
 <table>
 <tr>
 <td class="name">PANGO_RENDER_PART_FOREGROUND</td>
@@ -496,6 +493,9 @@ purposes as setting colors.</p>
 <td class="doc">strikethrough lines</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 1.8</p>
+  <p class="api-ctype">C type: PangoRenderPart</p>
 </div>
 <p class="api-heading">Script</p>
 <p class="api-doc">The #PangoScript enumeration identifies different writing
@@ -506,8 +506,6 @@ to handle unknown values.  This enumeration is interchangeable with
 #GUnicodeScript.  See <ulink
 url="http://www.unicode.org/reports/tr24/">Unicode Standard Annex
 #24: Script names</ulink>.</p>
-<div class="api-notes">
-  <p class="api-ctype">PangoScript</p>
 <table>
 <tr>
 <td class="name">PANGO_SCRIPT_INVALID_CODE</td>
@@ -1101,12 +1099,12 @@ base glyph to which it is attached</td>
 <td class="doc">Signwriting. Since: 1.40</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: PangoScript</p>
 </div>
 <p class="api-heading">Stretch</p>
 <p class="api-doc">An enumeration specifying the width of the font relative to other designs
 within a family.</p>
-<div class="api-notes">
-  <p class="api-ctype">PangoStretch</p>
 <table>
 <tr>
 <td class="name">PANGO_STRETCH_ULTRA_CONDENSED</td>
@@ -1154,11 +1152,11 @@ within a family.</p>
 <td class="doc">ultra expanded width</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: PangoStretch</p>
 </div>
 <p class="api-heading">Style</p>
 <p class="api-doc">An enumeration specifying the various slant styles possible for a font.</p>
-<div class="api-notes">
-  <p class="api-ctype">PangoStyle</p>
 <table>
 <tr>
 <td class="name">PANGO_STYLE_NORMAL</td>
@@ -1176,11 +1174,11 @@ within a family.</p>
 <td class="doc">the font is slanted in an italic style.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: PangoStyle</p>
 </div>
 <p class="api-heading">TabAlign</p>
 <p class="api-doc">A #PangoTabAlign specifies where a tab stop appears relative to the text.</p>
-<div class="api-notes">
-  <p class="api-ctype">PangoTabAlign</p>
 <table>
 <tr>
 <td class="name">PANGO_TAB_LEFT</td>
@@ -1188,13 +1186,13 @@ within a family.</p>
 <td class="doc">the tab stop appears to the left of the text.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: PangoTabAlign</p>
 </div>
 <p class="api-heading">Underline</p>
 <p class="api-doc">The #PangoUnderline enumeration is used to specify
 whether text should be underlined, and if so, the type
 of underlining.</p>
-<div class="api-notes">
-  <p class="api-ctype">PangoUnderline</p>
 <table>
 <tr>
 <td class="name">PANGO_UNDERLINE_NONE</td>
@@ -1231,11 +1229,11 @@ cases a contrasting color may automatically
 be used. This type of underlining is available since Pango 1.4.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: PangoUnderline</p>
 </div>
 <p class="api-heading">Variant</p>
 <p class="api-doc">An enumeration specifying capitalization variant of the font.</p>
-<div class="api-notes">
-  <p class="api-ctype">PangoVariant</p>
 <table>
 <tr>
 <td class="name">PANGO_VARIANT_NORMAL</td>
@@ -1249,12 +1247,12 @@ be used. This type of underlining is available since Pango 1.4.</td>
 replaced by smaller variants of the capital characters.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: PangoVariant</p>
 </div>
 <p class="api-heading">Weight</p>
 <p class="api-doc">An enumeration specifying the weight (boldness) of a font. This is a numerical
 value ranging from 100 to 1000, but there are some predefined values:</p>
-<div class="api-notes">
-  <p class="api-ctype">PangoWeight</p>
 <table>
 <tr>
 <td class="name">PANGO_WEIGHT_THIN</td>
@@ -1317,11 +1315,11 @@ value ranging from 100 to 1000, but there are some predefined values:</p>
 <td class="doc">the ultraheavy weight (= 1000; Since: 1.24)</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: PangoWeight</p>
 </div>
 <p class="api-heading">WrapMode</p>
 <p class="api-doc">A #PangoWrapMode describes how to wrap the lines of a #PangoLayout to the desired width.</p>
-<div class="api-notes">
-  <p class="api-ctype">PangoWrapMode</p>
 <table>
 <tr>
 <td class="name">PANGO_WRAP_WORD</td>
@@ -1340,4 +1338,6 @@ value ranging from 100 to 1000, but there are some predefined values:</p>
 enough space for a full word.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: PangoWrapMode</p>
 </div>

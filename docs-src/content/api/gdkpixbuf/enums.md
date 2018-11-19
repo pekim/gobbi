@@ -4,8 +4,6 @@ title = "enums"
 <p class="api-heading">Colorspace</p>
 <p class="api-doc">This enumeration defines the color spaces that are supported by
 the gdk-pixbuf library.  Currently only RGB is supported.</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkColorspace</p>
 <table>
 <tr>
 <td class="name">GDK_COLORSPACE_RGB</td>
@@ -13,6 +11,8 @@ the gdk-pixbuf library.  Currently only RGB is supported.</p>
 <td class="doc">Indicates a red/green/blue additive color space.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GdkColorspace</p>
 </div>
 <p class="api-heading">InterpType</p>
 <p class="api-doc">This enumeration describes the different interpolation modes that
@@ -25,8 +25,6 @@ the gdk-pixbuf library.  Currently only RGB is supported.</p>
 	Cubic filtering is missing from the list; hyperbolic
 	interpolation is just as fast and results in higher quality.
  </note></p>
-<div class="api-notes">
-  <p class="api-ctype">GdkInterpType</p>
 <table>
 <tr>
 <td class="name">GDK_INTERP_NEAREST</td>
@@ -63,6 +61,8 @@ the gdk-pixbuf library.  Currently only RGB is supported.</p>
  image (the filter is designed to be idempotent for 1:1 pixel mapping).</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GdkInterpType</p>
 </div>
 <p class="api-heading">PixbufAlphaMode</p>
 <p class="api-doc">These values can be passed to
@@ -73,8 +73,6 @@ the image.  In the future, when the X Window System gets an alpha
 channel extension, it will be possible to do full alpha
 compositing onto arbitrary drawables.  For now both cases fall
 back to a bilevel clipping mask.</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkPixbufAlphaMode</p>
 <table>
 <tr>
 <td class="name">GDK_PIXBUF_ALPHA_BILEVEL</td>
@@ -91,13 +89,13 @@ back to a bilevel clipping mask.</p>
  In the future it will do full alpha compositing.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GdkPixbufAlphaMode</p>
 </div>
 <p class="api-heading">PixbufError</p>
 <p class="api-doc">An error code in the #GDK_PIXBUF_ERROR domain. Many gdk-pixbuf
 operations can cause errors in this domain, or in the #G_FILE_ERROR
 domain.</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkPixbufError</p>
 <table>
 <tr>
 <td class="name">GDK_PIXBUF_ERROR_CORRUPT_IMAGE</td>
@@ -136,12 +134,12 @@ domain.</p>
 <td class="doc">Only part of the animation was loaded.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GdkPixbufError</p>
 </div>
 <p class="api-heading">PixbufRotation</p>
 <p class="api-doc">The possible rotations which can be passed to gdk_pixbuf_rotate_simple().
 To make them easier to use, their numerical values are the actual degrees.</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkPixbufRotation</p>
 <table>
 <tr>
 <td class="name">GDK_PIXBUF_ROTATE_NONE</td>
@@ -164,4 +162,6 @@ To make them easier to use, their numerical values are the actual degrees.</p>
 <td class="doc">Rotate by 270 degrees.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GdkPixbufRotation</p>
 </div>

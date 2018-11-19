@@ -2,8 +2,6 @@
 title = "bitfields"
 +++
 <p class="api-heading">AsciiType</p>
-<div class="api-notes">
-  <p class="api-ctype">GAsciiType</p>
 <table>
 <tr>
 <td class="name">ASCII_ALNUM</td>
@@ -50,11 +48,11 @@ title = "bitfields"
 <td class="value">1024</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GAsciiType</p>
 </div>
 <p class="api-heading">FileTest</p>
 <p class="api-doc">A test to perform on a file using g_file_test().</p>
-<div class="api-notes">
-  <p class="api-ctype">GFileTest</p>
 <table>
 <tr>
 <td class="name">FILE_TEST_IS_REGULAR</td>
@@ -85,11 +83,11 @@ title = "bitfields"
     be a regular file.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GFileTest</p>
 </div>
 <p class="api-heading">FormatSizeFlags</p>
 <p class="api-doc">Flags to modify the format of the string returned by g_format_size_full().</p>
-<div class="api-notes">
-  <p class="api-ctype">GFormatSizeFlags</p>
 <table>
 <tr>
 <td class="name">FORMAT_SIZE_DEFAULT</td>
@@ -117,11 +115,11 @@ title = "bitfields"
     bytes, and return units in bits. For example, ‘Mb’ rather than ‘MB’.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GFormatSizeFlags</p>
 </div>
 <p class="api-heading">HookFlagMask</p>
 <p class="api-doc">Flags used internally in the #GHook implementation.</p>
-<div class="api-notes">
-  <p class="api-ctype">GHookFlagMask</p>
 <table>
 <tr>
 <td class="name">HOOK_FLAG_ACTIVE</td>
@@ -140,12 +138,12 @@ title = "bitfields"
   hook flags; see %G_HOOK_FLAG_USER_SHIFT</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GHookFlagMask</p>
 </div>
 <p class="api-heading">IOCondition</p>
 <p class="api-doc">A bitwise combination representing a condition to watch for on an
 event source.</p>
-<div class="api-notes">
-  <p class="api-ctype">GIOCondition</p>
 <table>
 <tr>
 <td class="name">IO_IN</td>
@@ -179,13 +177,13 @@ event source.</p>
 <td class="doc">Invalid request. The file descriptor is not open.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GIOCondition</p>
 </div>
 <p class="api-heading">IOFlags</p>
 <p class="api-doc">Specifies properties of a #GIOChannel. Some of the flags can only be
 read with g_io_channel_get_flags(), but not changed with
 g_io_channel_set_flags().</p>
-<div class="api-notes">
-  <p class="api-ctype">GIOFlags</p>
 <table>
 <tr>
 <td class="name">IO_FLAG_APPEND</td>
@@ -244,11 +242,11 @@ g_io_channel_set_flags().</p>
     with g_io_channel_set_flags()</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GIOFlags</p>
 </div>
 <p class="api-heading">KeyFileFlags</p>
 <p class="api-doc">Flags which influence the parsing.</p>
-<div class="api-notes">
-  <p class="api-ctype">GKeyFileFlags</p>
 <table>
 <tr>
 <td class="name">KEY_FILE_NONE</td>
@@ -272,14 +270,14 @@ g_io_channel_set_flags().</p>
     written back.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GKeyFileFlags</p>
 </div>
 <p class="api-heading">LogLevelFlags</p>
 <p class="api-doc">Flags specifying the level of log messages.
 
 It is possible to change how GLib treats messages of the various
 levels using g_log_set_handler() and g_log_set_fatal_mask().</p>
-<div class="api-notes">
-  <p class="api-ctype">GLogLevelFlags</p>
 <table>
 <tr>
 <td class="name">LOG_FLAG_RECURSION</td>
@@ -331,6 +329,8 @@ levels using g_log_set_handler() and g_log_set_fatal_mask().</p>
 <td class="doc">a mask including all log levels</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GLogLevelFlags</p>
 </div>
 <p class="api-heading">MarkupCollectType</p>
 <p class="api-doc">A mixed enumerated type and flags field. You must specify one type
@@ -339,8 +339,6 @@ bitwise OR the type with the flag %G_MARKUP_COLLECT_OPTIONAL.
 
 It is likely that this enum will be extended in the future to
 support other types.</p>
-<div class="api-notes">
-  <p class="api-ctype">GMarkupCollectType</p>
 <table>
 <tr>
 <td class="name">MARKUP_COLLECT_INVALID</td>
@@ -388,11 +386,11 @@ support other types.</p>
     is set depending on what value type is used</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GMarkupCollectType</p>
 </div>
 <p class="api-heading">MarkupParseFlags</p>
 <p class="api-doc">Flags that affect the behaviour of the parser.</p>
-<div class="api-notes">
-  <p class="api-ctype">GMarkupParseFlags</p>
 <table>
 <tr>
 <td class="name">MARKUP_DO_NOT_USE_THIS_UNSUPPORTED_FLAG</td>
@@ -426,11 +424,11 @@ support other types.</p>
     another namespace).  Since: 2.40.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GMarkupParseFlags</p>
 </div>
 <p class="api-heading">OptionFlags</p>
 <p class="api-doc">Flags which modify individual options.</p>
-<div class="api-notes">
-  <p class="api-ctype">GOptionFlags</p>
 <table>
 <tr>
 <td class="name">OPTION_FLAG_NONE</td>
@@ -487,12 +485,11 @@ support other types.</p>
     your direct control. Since 2.8.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GOptionFlags</p>
 </div>
 <p class="api-heading">RegexCompileFlags</p>
 <p class="api-doc">Flags specifying compile-time options.</p>
-<div class="api-notes">
-  <p class="api-ctype">GRegexCompileFlags</p>
-  <p class="api-since">since 2.14</p>
 <table>
 <tr>
 <td class="name">REGEX_CASELESS</td>
@@ -636,12 +633,12 @@ support other types.</p>
     JavaScript rather than PCRE. Since: 2.34</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.14</p>
+  <p class="api-ctype">C type: GRegexCompileFlags</p>
 </div>
 <p class="api-heading">RegexMatchFlags</p>
 <p class="api-doc">Flags specifying match-time options.</p>
-<div class="api-notes">
-  <p class="api-ctype">GRegexMatchFlags</p>
-  <p class="api-since">since 2.14</p>
 <table>
 <tr>
 <td class="name">REGEX_MATCH_ANCHORED</td>
@@ -763,11 +760,12 @@ support other types.</p>
     patterns this can only happen for pattern containing "\K". Since: 2.34</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.14</p>
+  <p class="api-ctype">C type: GRegexMatchFlags</p>
 </div>
 <p class="api-heading">SpawnFlags</p>
 <p class="api-doc">Flags passed to g_spawn_sync(), g_spawn_async() and g_spawn_async_with_pipes().</p>
-<div class="api-notes">
-  <p class="api-ctype">GSpawnFlags</p>
 <table>
 <tr>
 <td class="name">SPAWN_DEFAULT</td>
@@ -833,14 +831,14 @@ support other types.</p>
     Since: 2.40</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GSpawnFlags</p>
 </div>
 <p class="api-heading">TestSubprocessFlags</p>
 <p class="api-doc">Flags to pass to g_test_trap_subprocess() to control input and output.
 
 Note that in contrast with g_test_trap_fork(), the default is to
 not show stdout and stderr.</p>
-<div class="api-notes">
-  <p class="api-ctype">GTestSubprocessFlags</p>
 <table>
 <tr>
 <td class="name">TEST_SUBPROCESS_INHERIT_STDIN</td>
@@ -866,12 +864,12 @@ not show stdout and stderr.</p>
     later tests with g_test_trap_assert_stderr().</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GTestSubprocessFlags</p>
 </div>
 <p class="api-heading">TestTrapFlags</p>
 <p class="api-doc">Test traps are guards around forked tests.
 These flags determine what traps to set.</p>
-<div class="api-notes">
-  <p class="api-ctype">GTestTrapFlags</p>
 <table>
 <tr>
 <td class="name">TEST_TRAP_SILENCE_STDOUT</td>
@@ -897,12 +895,12 @@ These flags determine what traps to set.</p>
     It is redirected to `/dev/null` otherwise.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GTestTrapFlags</p>
 </div>
 <p class="api-heading">TraverseFlags</p>
 <p class="api-doc">Specifies which nodes are visited during several of the tree
 functions, including g_node_traverse() and g_node_find().</p>
-<div class="api-notes">
-  <p class="api-ctype">GTraverseFlags</p>
 <table>
 <tr>
 <td class="name">TRAVERSE_LEAVES</td>
@@ -939,4 +937,6 @@ functions, including g_node_traverse() and g_node_find().</p>
 <td class="doc">identical to %G_TRAVERSE_NON_LEAVES.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GTraverseFlags</p>
 </div>

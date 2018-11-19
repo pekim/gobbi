@@ -3,8 +3,6 @@ title = "enums"
 +++
 <p class="api-heading">BookmarkFileError</p>
 <p class="api-doc">Error codes returned by bookmark file parsing.</p>
-<div class="api-notes">
-  <p class="api-ctype">GBookmarkFileError</p>
 <table>
 <tr>
 <td class="name">BOOKMARK_FILE_ERROR_INVALID_URI</td>
@@ -49,6 +47,8 @@ title = "enums"
 <td class="doc">requested file was not found</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GBookmarkFileError</p>
 </div>
 <p class="api-heading">ChecksumType</p>
 <p class="api-doc">The hashing algorithm to be used by #GChecksum when performing the
@@ -56,9 +56,6 @@ digest of some data.
 
 Note that the #GChecksumType enumeration may be extended at a later
 date to include new hashing algorithm types.</p>
-<div class="api-notes">
-  <p class="api-ctype">GChecksumType</p>
-  <p class="api-since">since 2.16</p>
 <table>
 <tr>
 <td class="name">CHECKSUM_MD5</td>
@@ -86,11 +83,12 @@ date to include new hashing algorithm types.</p>
 <td class="doc">Use the SHA-384 hashing algorithm (Since: 2.51)</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.16</p>
+  <p class="api-ctype">C type: GChecksumType</p>
 </div>
 <p class="api-heading">ConvertError</p>
 <p class="api-doc">Error codes returned by character set conversion routines.</p>
-<div class="api-notes">
-  <p class="api-ctype">GConvertError</p>
 <table>
 <tr>
 <td class="name">CONVERT_ERROR_NO_CONVERSION</td>
@@ -138,12 +136,12 @@ date to include new hashing algorithm types.</p>
     Since: 2.56</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GConvertError</p>
 </div>
 <p class="api-heading">DateDMY</p>
 <p class="api-doc">This enumeration isn't used in the API, but may be useful if you need
 to mark a number as a day, month, or year.</p>
-<div class="api-notes">
-  <p class="api-ctype">GDateDMY</p>
 <table>
 <tr>
 <td class="name">DATE_DAY</td>
@@ -161,12 +159,12 @@ to mark a number as a day, month, or year.</p>
 <td class="doc">a year</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GDateDMY</p>
 </div>
 <p class="api-heading">DateMonth</p>
 <p class="api-doc">Enumeration representing a month; values are #G_DATE_JANUARY,
 #G_DATE_FEBRUARY, etc. #G_DATE_BAD_MONTH is the invalid value.</p>
-<div class="api-notes">
-  <p class="api-ctype">GDateMonth</p>
 <table>
 <tr>
 <td class="name">DATE_BAD_MONTH</td>
@@ -234,12 +232,12 @@ to mark a number as a day, month, or year.</p>
 <td class="doc">December</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GDateMonth</p>
 </div>
 <p class="api-heading">DateWeekday</p>
 <p class="api-doc">Enumeration representing a day of the week; #G_DATE_MONDAY,
 #G_DATE_TUESDAY, etc. #G_DATE_BAD_WEEKDAY is an invalid weekday.</p>
-<div class="api-notes">
-  <p class="api-ctype">GDateWeekday</p>
 <table>
 <tr>
 <td class="name">DATE_BAD_WEEKDAY</td>
@@ -282,12 +280,12 @@ to mark a number as a day, month, or year.</p>
 <td class="doc">Sunday</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GDateWeekday</p>
 </div>
 <p class="api-heading">ErrorType</p>
 <p class="api-doc">The possible errors, used in the @v_error field
 of #GTokenValue, when the token is a %G_TOKEN_ERROR.</p>
-<div class="api-notes">
-  <p class="api-ctype">GErrorType</p>
 <table>
 <tr>
 <td class="name">ERR_UNKNOWN</td>
@@ -330,6 +328,8 @@ of #GTokenValue, when the token is a %G_TOKEN_ERROR.</p>
 <td class="doc">malformed floating point number</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GErrorType</p>
 </div>
 <p class="api-heading">FileError</p>
 <p class="api-doc">Values corresponding to @errno codes returned from file operations
@@ -344,8 +344,6 @@ It's not very portable to make detailed assumptions about exactly
 which errors will be returned from a given operation. Some errors
 don't occur on some systems, etc., sometimes there are subtle
 differences in when a system will report a given error, etc.</p>
-<div class="api-notes">
-  <p class="api-ctype">GFileError</p>
 <table>
 <tr>
 <td class="name">FILE_ERROR_EXIST</td>
@@ -515,11 +513,11 @@ differences in when a system will report a given error, etc.</p>
    code applies.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GFileError</p>
 </div>
 <p class="api-heading">IOChannelError</p>
 <p class="api-doc">Error codes returned by #GIOChannel operations.</p>
-<div class="api-notes">
-  <p class="api-ctype">GIOChannelError</p>
 <table>
 <tr>
 <td class="name">IO_CHANNEL_ERROR_FBIG</td>
@@ -567,12 +565,12 @@ differences in when a system will report a given error, etc.</p>
 <td class="doc">Some other error.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GIOChannelError</p>
 </div>
 <p class="api-heading">IOError</p>
 <p class="api-doc">#GIOError is only used by the deprecated functions
 g_io_channel_read(), g_io_channel_write(), and g_io_channel_seek().</p>
-<div class="api-notes">
-  <p class="api-ctype">GIOError</p>
 <table>
 <tr>
 <td class="name">IO_ERROR_NONE</td>
@@ -595,11 +593,11 @@ g_io_channel_read(), g_io_channel_write(), and g_io_channel_seek().</p>
 <td class="doc">another error occurred</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GIOError</p>
 </div>
 <p class="api-heading">IOStatus</p>
 <p class="api-doc">Stati returned by most of the #GIOFuncs functions.</p>
-<div class="api-notes">
-  <p class="api-ctype">GIOStatus</p>
 <table>
 <tr>
 <td class="name">IO_STATUS_ERROR</td>
@@ -622,11 +620,11 @@ g_io_channel_read(), g_io_channel_write(), and g_io_channel_seek().</p>
 <td class="doc">Resource temporarily unavailable.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GIOStatus</p>
 </div>
 <p class="api-heading">KeyFileError</p>
 <p class="api-doc">Error codes returned by key file parsing.</p>
-<div class="api-notes">
-  <p class="api-ctype">GKeyFileError</p>
 <table>
 <tr>
 <td class="name">KEY_FILE_ERROR_UNKNOWN_ENCODING</td>
@@ -660,6 +658,8 @@ g_io_channel_read(), g_io_channel_write(), and g_io_channel_seek().</p>
 <td class="doc">a value could not be parsed</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GKeyFileError</p>
 </div>
 <p class="api-heading">LogWriterOutput</p>
 <p class="api-doc">Return values from #GLogWriterFuncs to indicate whether the given log entry
@@ -668,9 +668,6 @@ handling it (and hence a fallback writer should be used).
 
 If a #GLogWriterFunc ignores a log entry, it should return
 %G_LOG_WRITER_HANDLED.</p>
-<div class="api-notes">
-  <p class="api-ctype">GLogWriterOutput</p>
-  <p class="api-since">since 2.50</p>
 <table>
 <tr>
 <td class="name">LOG_WRITER_HANDLED</td>
@@ -683,11 +680,12 @@ If a #GLogWriterFunc ignores a log entry, it should return
 <td class="doc">Log writer could not handle the log entry.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.50</p>
+  <p class="api-ctype">C type: GLogWriterOutput</p>
 </div>
 <p class="api-heading">MarkupError</p>
 <p class="api-doc">Error codes returned by markup parsing.</p>
-<div class="api-notes">
-  <p class="api-ctype">GMarkupError</p>
 <table>
 <tr>
 <td class="name">MARKUP_ERROR_BAD_UTF8</td>
@@ -729,6 +727,8 @@ If a #GLogWriterFunc ignores a log entry, it should return
     functions; a required attribute was missing</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GMarkupError</p>
 </div>
 <p class="api-heading">NormalizeMode</p>
 <p class="api-doc">Defines how a Unicode string is transformed in a canonical
@@ -736,8 +736,6 @@ form, standardizing such issues as whether a character with
 an accent is represented as a base character and combining
 accent or as a single precomposed character. Unicode strings
 should generally be normalized before comparing them.</p>
-<div class="api-notes">
-  <p class="api-ctype">GNormalizeMode</p>
 <table>
 <tr>
 <td class="name">NORMALIZE_DEFAULT</td>
@@ -787,12 +785,11 @@ should generally be normalized before comparing them.</p>
 <td class="doc">another name for %G_NORMALIZE_ALL_COMPOSE</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GNormalizeMode</p>
 </div>
 <p class="api-heading">NumberParserError</p>
 <p class="api-doc">Error codes returned by functions converting a string to a number.</p>
-<div class="api-notes">
-  <p class="api-ctype">GNumberParserError</p>
-  <p class="api-since">since 2.54</p>
 <table>
 <tr>
 <td class="name">NUMBER_PARSER_ERROR_INVALID</td>
@@ -805,13 +802,13 @@ should generally be normalized before comparing them.</p>
 <td class="doc">String was a number, but out of bounds.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.54</p>
+  <p class="api-ctype">C type: GNumberParserError</p>
 </div>
 <p class="api-heading">OnceStatus</p>
 <p class="api-doc">The possible statuses of a one-time initialization function
 controlled by a #GOnce struct.</p>
-<div class="api-notes">
-  <p class="api-ctype">GOnceStatus</p>
-  <p class="api-since">since 2.4</p>
 <table>
 <tr>
 <td class="name">ONCE_STATUS_NOTCALLED</td>
@@ -829,14 +826,15 @@ controlled by a #GOnce struct.</p>
 <td class="doc">the function has been called.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.4</p>
+  <p class="api-ctype">C type: GOnceStatus</p>
 </div>
 <p class="api-heading">OptionArg</p>
 <p class="api-doc">The #GOptionArg enum values determine which type of extra argument the
 options expect to find. If an option expects an extra argument, it can
 be specified in several ways; with a short option: `-x arg`, with a long
 option: `--name arg` or combined in a single argument: `--name=arg`.</p>
-<div class="api-notes">
-  <p class="api-ctype">GOptionArg</p>
 <table>
 <tr>
 <td class="name">OPTION_ARG_NONE</td>
@@ -892,11 +890,11 @@ option: `--name arg` or combined in a single argument: `--name=arg`.</p>
     example, `0xffffffff`). Since 2.12</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GOptionArg</p>
 </div>
 <p class="api-heading">OptionError</p>
 <p class="api-doc">Error codes returned by option parsing.</p>
-<div class="api-notes">
-  <p class="api-ctype">GOptionError</p>
 <table>
 <tr>
 <td class="name">OPTION_ERROR_UNKNOWN_OPTION</td>
@@ -916,12 +914,11 @@ option: `--name arg` or combined in a single argument: `--name=arg`.</p>
 <td class="doc">A #GOptionArgFunc callback failed.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GOptionError</p>
 </div>
 <p class="api-heading">RegexError</p>
 <p class="api-doc">Error codes returned by regular expressions functions.</p>
-<div class="api-notes">
-  <p class="api-ctype">GRegexError</p>
-  <p class="api-since">since 2.14</p>
 <table>
 <tr>
 <td class="name">REGEX_ERROR_COMPILE</td>
@@ -1252,12 +1249,13 @@ option: `--name arg` or combined in a single argument: `--name=arg`.</p>
     too large. Since: 2.34</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.14</p>
+  <p class="api-ctype">C type: GRegexError</p>
 </div>
 <p class="api-heading">SeekType</p>
 <p class="api-doc">An enumeration specifying the base position for a
 g_io_channel_seek_position() operation.</p>
-<div class="api-notes">
-  <p class="api-ctype">GSeekType</p>
 <table>
 <tr>
 <td class="name">SEEK_CUR</td>
@@ -1275,11 +1273,11 @@ g_io_channel_seek_position() operation.</p>
 <td class="doc">the end of the file.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GSeekType</p>
 </div>
 <p class="api-heading">ShellError</p>
 <p class="api-doc">Error codes returned by shell functions.</p>
-<div class="api-notes">
-  <p class="api-ctype">GShellError</p>
 <table>
 <tr>
 <td class="name">SHELL_ERROR_BAD_QUOTING</td>
@@ -1297,10 +1295,10 @@ g_io_channel_seek_position() operation.</p>
 <td class="doc">Some other error.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GShellError</p>
 </div>
 <p class="api-heading">SliceConfig</p>
-<div class="api-notes">
-  <p class="api-ctype">GSliceConfig</p>
 <table>
 <tr>
 <td class="name">SLICE_CONFIG_ALWAYS_MALLOC</td>
@@ -1327,11 +1325,11 @@ g_io_channel_seek_position() operation.</p>
 <td class="value">6</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GSliceConfig</p>
 </div>
 <p class="api-heading">SpawnError</p>
 <p class="api-doc">Error codes returned by spawning processes.</p>
-<div class="api-notes">
-  <p class="api-ctype">GSpawnError</p>
 <table>
 <tr>
 <td class="name">SPAWN_ERROR_FORK</td>
@@ -1440,6 +1438,8 @@ g_io_channel_seek_position() operation.</p>
   `error->message` should explain.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GSpawnError</p>
 </div>
 <p class="api-heading">TestFileType</p>
 <p class="api-doc">The type of file to return the filename for, when used with
@@ -1458,9 +1458,6 @@ Note: as a general rule of automake, files that are generated only as
 part of the build-from-git process (but then are distributed with the
 tarball) always go in srcdir (even if doing a srcdir != builddir
 build from git) and are considered as distributed files.</p>
-<div class="api-notes">
-  <p class="api-ctype">GTestFileType</p>
-  <p class="api-since">since 2.38</p>
 <table>
 <tr>
 <td class="name">TEST_DIST</td>
@@ -1473,10 +1470,11 @@ build from git) and are considered as distributed files.</p>
 <td class="doc">a file that was built on the compiling machine</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.38</p>
+  <p class="api-ctype">C type: GTestFileType</p>
 </div>
 <p class="api-heading">TestLogType</p>
-<div class="api-notes">
-  <p class="api-ctype">GTestLogType</p>
 <table>
 <tr>
 <td class="name">TEST_LOG_NONE</td>
@@ -1527,11 +1525,11 @@ build from git) and are considered as distributed files.</p>
 <td class="value">11</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GTestLogType</p>
 </div>
 <p class="api-heading">ThreadError</p>
 <p class="api-doc">Possible errors of thread related functions.</p>
-<div class="api-notes">
-  <p class="api-ctype">GThreadError</p>
 <table>
 <tr>
 <td class="name">THREAD_ERROR_AGAIN</td>
@@ -1540,6 +1538,8 @@ build from git) and are considered as distributed files.</p>
                        shortage. Try again later.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GThreadError</p>
 </div>
 <p class="api-heading">TimeType</p>
 <p class="api-doc">Disambiguates a given time in two ways.
@@ -1550,8 +1550,6 @@ Second, if the time is in local time, specifies if it is local
 standard time or local daylight time.  This is important for the case
 where the same local time occurs twice (during daylight savings time
 transitions, for example).</p>
-<div class="api-notes">
-  <p class="api-ctype">GTimeType</p>
 <table>
 <tr>
 <td class="name">TIME_TYPE_STANDARD</td>
@@ -1569,12 +1567,12 @@ transitions, for example).</p>
 <td class="doc">the time is in UTC</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GTimeType</p>
 </div>
 <p class="api-heading">TokenType</p>
 <p class="api-doc">The possible types of token returned from each
 g_scanner_get_next_token() call.</p>
-<div class="api-notes">
-  <p class="api-ctype">GTokenType</p>
 <table>
 <tr>
 <td class="name">TOKEN_EOF</td>
@@ -1692,6 +1690,8 @@ g_scanner_get_next_token() call.</p>
 <td class="doc">multi line comment</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GTokenType</p>
 </div>
 <p class="api-heading">TraverseType</p>
 <p class="api-doc">Specifies the type of traveral performed by g_tree_traverse(),
@@ -1705,8 +1705,6 @@ illustrated here:
   ![](Sorted_binary_tree_postorder.svg)
 - Level order: F, B, G, A, D, I, C, E, H
   ![](Sorted_binary_tree_breadth-first_traversal.svg)</p>
-<div class="api-notes">
-  <p class="api-ctype">GTraverseType</p>
 <table>
 <tr>
 <td class="name">IN_ORDER</td>
@@ -1737,6 +1735,8 @@ illustrated here:
              efficient than the other orders.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GTraverseType</p>
 </div>
 <p class="api-heading">UnicodeBreakType</p>
 <p class="api-doc">These are the possible line break classifications.
@@ -1745,8 +1745,6 @@ Since new unicode versions may add new types here, applications should be ready
 to handle unknown values. They may be regarded as %G_UNICODE_BREAK_UNKNOWN.
 
 See [Unicode Line Breaking Algorithm](http://www.unicode.org/unicode/reports/tr14/).</p>
-<div class="api-notes">
-  <p class="api-ctype">GUnicodeBreakType</p>
 <table>
 <tr>
 <td class="name">UNICODE_BREAK_MANDATORY</td>
@@ -1964,6 +1962,8 @@ See [Unicode Line Breaking Algorithm](http://www.unicode.org/unicode/reports/tr1
 <td class="doc">Zero Width Joiner (ZWJ). Since: 2.50</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GUnicodeBreakType</p>
 </div>
 <p class="api-heading">UnicodeScript</p>
 <p class="api-doc">The #GUnicodeScript enumeration identifies different writing
@@ -1974,8 +1974,6 @@ and is interchangeable with #PangoScript.
 Note that new types may be added in the future. Applications
 should be ready to handle unknown values.
 See [Unicode Standard Annex #24: Script names](http://www.unicode.org/reports/tr24/).</p>
-<div class="api-notes">
-  <p class="api-ctype">GUnicodeScript</p>
 <table>
 <tr>
 <td class="name">UNICODE_SCRIPT_INVALID_CODE</td>
@@ -2694,13 +2692,13 @@ See [Unicode Standard Annex #24: Script names](http://www.unicode.org/reports/tr
 <td class="doc">Zanabazar Square. Since: 2.54</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GUnicodeScript</p>
 </div>
 <p class="api-heading">UnicodeType</p>
 <p class="api-doc">These are the possible character classifications from the
 Unicode specification.
 See [Unicode Character Database](http://www.unicode.org/reports/tr44/#General_Category_Values).</p>
-<div class="api-notes">
-  <p class="api-ctype">GUnicodeType</p>
 <table>
 <tr>
 <td class="name">UNICODE_CONTROL</td>
@@ -2853,6 +2851,8 @@ See [Unicode Character Database](http://www.unicode.org/reports/tr44/#General_Ca
 <td class="doc">General category "Separator, Space" (Zs)</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GUnicodeType</p>
 </div>
 <p class="api-heading">UserDirectory</p>
 <p class="api-doc">These are logical ids for special directories which are defined
@@ -2862,9 +2862,6 @@ to retrieve the full path associated to the logical id.
 The #GUserDirectory enumeration can be extended at later date. Not
 every platform has a directory for every logical id in this
 enumeration.</p>
-<div class="api-notes">
-  <p class="api-ctype">GUserDirectory</p>
-  <p class="api-since">since 2.14</p>
 <table>
 <tr>
 <td class="name">USER_DIRECTORY_DESKTOP</td>
@@ -2912,12 +2909,12 @@ enumeration.</p>
 <td class="doc">the number of enum values</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.14</p>
+  <p class="api-ctype">C type: GUserDirectory</p>
 </div>
 <p class="api-heading">VariantClass</p>
 <p class="api-doc">The range of possible top-level types of #GVariant instances.</p>
-<div class="api-notes">
-  <p class="api-ctype">GVariantClass</p>
-  <p class="api-since">since 2.24</p>
 <table>
 <tr>
 <td class="name">VARIANT_CLASS_BOOLEAN</td>
@@ -3012,11 +3009,12 @@ enumeration.</p>
 <td class="doc">The #GVariant is a dictionary entry.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.24</p>
+  <p class="api-ctype">C type: GVariantClass</p>
 </div>
 <p class="api-heading">VariantParseError</p>
 <p class="api-doc">Error codes returned by parsing text-format GVariants.</p>
-<div class="api-notes">
-  <p class="api-ctype">GVariantParseError</p>
 <table>
 <tr>
 <td class="name">VARIANT_PARSE_ERROR_FAILED</td>
@@ -3109,4 +3107,6 @@ enumeration.</p>
 <td class="doc">no value given</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GVariantParseError</p>
 </div>

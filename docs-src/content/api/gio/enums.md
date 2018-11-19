@@ -3,9 +3,6 @@ title = "enums"
 +++
 <p class="api-heading">BusType</p>
 <p class="api-doc">An enumeration for well-known message buses.</p>
-<div class="api-notes">
-  <p class="api-ctype">GBusType</p>
-  <p class="api-since">since 2.26</p>
 <table>
 <tr>
 <td class="name">BUS_TYPE_STARTER</td>
@@ -28,12 +25,12 @@ title = "enums"
 <td class="doc">The login session message bus.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.26</p>
+  <p class="api-ctype">C type: GBusType</p>
 </div>
 <p class="api-heading">ConverterResult</p>
 <p class="api-doc">Results returned from g_converter_convert().</p>
-<div class="api-notes">
-  <p class="api-ctype">GConverterResult</p>
-  <p class="api-since">since 2.24</p>
 <table>
 <tr>
 <td class="name">CONVERTER_ERROR</td>
@@ -56,12 +53,12 @@ title = "enums"
 <td class="doc">Flushing is finished</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.24</p>
+  <p class="api-ctype">C type: GConverterResult</p>
 </div>
 <p class="api-heading">CredentialsType</p>
 <p class="api-doc">Enumeration describing different kinds of native credential types.</p>
-<div class="api-notes">
-  <p class="api-ctype">GCredentialsType</p>
-  <p class="api-since">since 2.26</p>
 <table>
 <tr>
 <td class="name">CREDENTIALS_TYPE_INVALID</td>
@@ -94,12 +91,12 @@ title = "enums"
 <td class="doc">The native credentials type is a struct unpcbid.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.26</p>
+  <p class="api-ctype">C type: GCredentialsType</p>
 </div>
 <p class="api-heading">DBusError</p>
 <p class="api-doc">Error codes for the %G_DBUS_ERROR error domain.</p>
-<div class="api-notes">
-  <p class="api-ctype">GDBusError</p>
-  <p class="api-since">since 2.26</p>
 <table>
 <tr>
 <td class="name">DBUS_ERROR_FAILED</td>
@@ -337,12 +334,12 @@ can't fix it for compatibility reasons so just be careful.</td>
 <td class="doc">Property you tried to set is read-only. Since 2.42</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.26</p>
+  <p class="api-ctype">C type: GDBusError</p>
 </div>
 <p class="api-heading">DBusMessageByteOrder</p>
 <p class="api-doc">Enumeration used to describe the byte order of a D-Bus message.</p>
-<div class="api-notes">
-  <p class="api-ctype">GDBusMessageByteOrder</p>
-  <p class="api-since">since 2.26</p>
 <table>
 <tr>
 <td class="name">DBUS_MESSAGE_BYTE_ORDER_BIG_ENDIAN</td>
@@ -355,12 +352,12 @@ can't fix it for compatibility reasons so just be careful.</td>
 <td class="doc">The byte order is little endian.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.26</p>
+  <p class="api-ctype">C type: GDBusMessageByteOrder</p>
 </div>
 <p class="api-heading">DBusMessageHeaderField</p>
 <p class="api-doc">Header fields used in #GDBusMessage.</p>
-<div class="api-notes">
-  <p class="api-ctype">GDBusMessageHeaderField</p>
-  <p class="api-since">since 2.26</p>
 <table>
 <tr>
 <td class="name">DBUS_MESSAGE_HEADER_FIELD_INVALID</td>
@@ -413,12 +410,12 @@ can't fix it for compatibility reasons so just be careful.</td>
 <td class="doc">The number of UNIX file descriptors that accompany the message.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.26</p>
+  <p class="api-ctype">C type: GDBusMessageHeaderField</p>
 </div>
 <p class="api-heading">DBusMessageType</p>
 <p class="api-doc">Message types used in #GDBusMessage.</p>
-<div class="api-notes">
-  <p class="api-ctype">GDBusMessageType</p>
-  <p class="api-since">since 2.26</p>
 <table>
 <tr>
 <td class="name">DBUS_MESSAGE_TYPE_INVALID</td>
@@ -446,12 +443,13 @@ can't fix it for compatibility reasons so just be careful.</td>
 <td class="doc">Signal emission.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.26</p>
+  <p class="api-ctype">C type: GDBusMessageType</p>
 </div>
 <p class="api-heading">DataStreamByteOrder</p>
 <p class="api-doc">#GDataStreamByteOrder is used to ensure proper endianness of streaming data sources
 across various machine architectures.</p>
-<div class="api-notes">
-  <p class="api-ctype">GDataStreamByteOrder</p>
 <table>
 <tr>
 <td class="name">DATA_STREAM_BYTE_ORDER_BIG_ENDIAN</td>
@@ -469,11 +467,11 @@ across various machine architectures.</p>
 <td class="doc">Selects endianness based on host machine's architecture.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GDataStreamByteOrder</p>
 </div>
 <p class="api-heading">DataStreamNewlineType</p>
 <p class="api-doc">#GDataStreamNewlineType is used when checking for or setting the line endings for a given file.</p>
-<div class="api-notes">
-  <p class="api-ctype">GDataStreamNewlineType</p>
 <table>
 <tr>
 <td class="name">DATA_STREAM_NEWLINE_TYPE_LF</td>
@@ -496,12 +494,11 @@ across various machine architectures.</p>
 <td class="doc">Automatically try to handle any line ending type.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GDataStreamNewlineType</p>
 </div>
 <p class="api-heading">DriveStartStopType</p>
 <p class="api-doc">Enumeration describing how a drive can be started/stopped.</p>
-<div class="api-notes">
-  <p class="api-ctype">GDriveStartStopType</p>
-  <p class="api-since">since 2.22</p>
 <table>
 <tr>
 <td class="name">DRIVE_START_STOP_TYPE_UNKNOWN</td>
@@ -537,13 +534,13 @@ across various machine architectures.</p>
    UNLOCK DEVICE</quote> command)</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.22</p>
+  <p class="api-ctype">C type: GDriveStartStopType</p>
 </div>
 <p class="api-heading">EmblemOrigin</p>
 <p class="api-doc">GEmblemOrigin is used to add information about the origin of the emblem
 to #GEmblem.</p>
-<div class="api-notes">
-  <p class="api-ctype">GEmblemOrigin</p>
-  <p class="api-since">since 2.18</p>
 <table>
 <tr>
 <td class="name">EMBLEM_ORIGIN_UNKNOWN</td>
@@ -566,11 +563,12 @@ to #GEmblem.</p>
 <td class="doc">Emblem comes from a user-defined tag, e.g. set by nautilus (in the future)</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.18</p>
+  <p class="api-ctype">C type: GEmblemOrigin</p>
 </div>
 <p class="api-heading">FileAttributeStatus</p>
 <p class="api-doc">Used by g_file_set_attributes_from_info() when setting file attributes.</p>
-<div class="api-notes">
-  <p class="api-ctype">GFileAttributeStatus</p>
 <table>
 <tr>
 <td class="name">FILE_ATTRIBUTE_STATUS_UNSET</td>
@@ -588,11 +586,11 @@ to #GEmblem.</p>
 <td class="doc">Indicates an error in setting the value.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GFileAttributeStatus</p>
 </div>
 <p class="api-heading">FileAttributeType</p>
 <p class="api-doc">The data types for file attributes.</p>
-<div class="api-notes">
-  <p class="api-ctype">GFileAttributeType</p>
 <table>
 <tr>
 <td class="name">FILE_ATTRIBUTE_TYPE_INVALID</td>
@@ -645,11 +643,11 @@ to #GEmblem.</p>
 <td class="doc">a %NULL terminated char **. Since 2.22</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GFileAttributeType</p>
 </div>
 <p class="api-heading">FileMonitorEvent</p>
 <p class="api-doc">Specifies what type of event a monitor event is.</p>
-<div class="api-notes">
-  <p class="api-ctype">GFileMonitorEvent</p>
 <table>
 <tr>
 <td class="name">FILE_MONITOR_EVENT_CHANGED</td>
@@ -714,11 +712,11 @@ to #GEmblem.</p>
   %G_FILE_MONITOR_WATCH_MOVES flag is set.  Since: 2.46</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GFileMonitorEvent</p>
 </div>
 <p class="api-heading">FileType</p>
 <p class="api-doc">Indicates the file's on-disk type.</p>
-<div class="api-notes">
-  <p class="api-ctype">GFileType</p>
 <table>
 <tr>
 <td class="name">FILE_TYPE_UNKNOWN</td>
@@ -758,13 +756,13 @@ to #GEmblem.</p>
 <td class="doc">File is a mountable location.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GFileType</p>
 </div>
 <p class="api-heading">FilesystemPreviewType</p>
 <p class="api-doc">Indicates a hint from the file system whether files should be
 previewed in a file manager. Returned as the value of the key
 #G_FILE_ATTRIBUTE_FILESYSTEM_USE_PREVIEW.</p>
-<div class="api-notes">
-  <p class="api-ctype">GFilesystemPreviewType</p>
 <table>
 <tr>
 <td class="name">FILESYSTEM_PREVIEW_TYPE_IF_ALWAYS</td>
@@ -782,6 +780,8 @@ previewed in a file manager. Returned as the value of the key
 <td class="doc">Never preview files.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GFilesystemPreviewType</p>
 </div>
 <p class="api-heading">IOErrorEnum</p>
 <p class="api-doc">Error codes returned by GIO functions.
@@ -799,8 +799,6 @@ if (g_error_matches (error, G_IO_ERROR, G_IO_ERROR_FAILED))
 ]|
 but should instead treat all unrecognized error codes the same as
 #G_IO_ERROR_FAILED.</p>
-<div class="api-notes">
-  <p class="api-ctype">GIOErrorEnum</p>
 <table>
 <tr>
 <td class="name">IO_ERROR_FAILED</td>
@@ -1056,12 +1054,11 @@ but should instead treat all unrecognized error codes the same as
 <td class="doc">Message too large. Since 2.48.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GIOErrorEnum</p>
 </div>
 <p class="api-heading">IOModuleScopeFlags</p>
 <p class="api-doc">Flags for use with g_io_module_scope_new().</p>
-<div class="api-notes">
-  <p class="api-ctype">GIOModuleScopeFlags</p>
-  <p class="api-since">since 2.30</p>
 <table>
 <tr>
 <td class="name">IO_MODULE_SCOPE_NONE</td>
@@ -1076,12 +1073,13 @@ but should instead treat all unrecognized error codes the same as
     basename as previously loaded module.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.30</p>
+  <p class="api-ctype">C type: GIOModuleScopeFlags</p>
 </div>
 <p class="api-heading">MountOperationResult</p>
 <p class="api-doc">#GMountOperationResult is returned as a result when a request for
 information is send by the mounting operation.</p>
-<div class="api-notes">
-  <p class="api-ctype">GMountOperationResult</p>
 <table>
 <tr>
 <td class="name">MOUNT_OPERATION_HANDLED</td>
@@ -1102,12 +1100,11 @@ information is send by the mounting operation.</p>
     implemented)</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GMountOperationResult</p>
 </div>
 <p class="api-heading">NetworkConnectivity</p>
 <p class="api-doc">The host's network connectivity state, as reported by #GNetworkMonitor.</p>
-<div class="api-notes">
-  <p class="api-ctype">GNetworkConnectivity</p>
-  <p class="api-since">since 2.44</p>
 <table>
 <tr>
 <td class="name">NETWORK_CONNECTIVITY_LOCAL</td>
@@ -1136,12 +1133,12 @@ information is send by the mounting operation.</p>
   appears to be able to reach the full Internet.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.44</p>
+  <p class="api-ctype">C type: GNetworkConnectivity</p>
 </div>
 <p class="api-heading">NotificationPriority</p>
 <p class="api-doc">Priority levels for #GNotifications.</p>
-<div class="api-notes">
-  <p class="api-ctype">GNotificationPriority</p>
-  <p class="api-since">since 2.42</p>
 <table>
 <tr>
 <td class="name">NOTIFICATION_PRIORITY_NORMAL</td>
@@ -1172,14 +1169,15 @@ information is send by the mounting operation.</p>
   or emergency warnings)</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.42</p>
+  <p class="api-ctype">C type: GNotificationPriority</p>
 </div>
 <p class="api-heading">PasswordSave</p>
 <p class="api-doc">#GPasswordSave is used to indicate the lifespan of a saved password.
 
 #Gvfs stores passwords in the Gnome keyring when this flag allows it
 to, and later retrieves it again from there.</p>
-<div class="api-notes">
-  <p class="api-ctype">GPasswordSave</p>
 <table>
 <tr>
 <td class="name">PASSWORD_SAVE_NEVER</td>
@@ -1197,13 +1195,12 @@ to, and later retrieves it again from there.</p>
 <td class="doc">save a password permanently.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GPasswordSave</p>
 </div>
 <p class="api-heading">ResolverError</p>
 <p class="api-doc">An error code used with %G_RESOLVER_ERROR in a #GError returned
 from a #GResolver routine.</p>
-<div class="api-notes">
-  <p class="api-ctype">GResolverError</p>
-  <p class="api-since">since 2.22</p>
 <table>
 <tr>
 <td class="name">RESOLVER_ERROR_NOT_FOUND</td>
@@ -1223,6 +1220,9 @@ from a #GResolver routine.</p>
 <td class="doc">unknown error</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.22</p>
+  <p class="api-ctype">C type: GResolverError</p>
 </div>
 <p class="api-heading">ResolverRecordType</p>
 <p class="api-doc">The type of record that g_resolver_lookup_records() or
@@ -1249,9 +1249,6 @@ as a guint32, and the ttl as a guint32.
 
 %G_RESOLVER_RECORD_NS records are returned as variants with the signature
 '(s)', representing a string of the hostname of the name server.</p>
-<div class="api-notes">
-  <p class="api-ctype">GResolverRecordType</p>
-  <p class="api-since">since 2.34</p>
 <table>
 <tr>
 <td class="name">RESOLVER_RECORD_SRV</td>
@@ -1279,13 +1276,13 @@ as a guint32, and the ttl as a guint32.
 <td class="doc">lookup DNS NS records for a domain</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.34</p>
+  <p class="api-ctype">C type: GResolverRecordType</p>
 </div>
 <p class="api-heading">ResourceError</p>
 <p class="api-doc">An error code used with %G_RESOURCE_ERROR in a #GError returned
 from a #GResource routine.</p>
-<div class="api-notes">
-  <p class="api-ctype">GResourceError</p>
-  <p class="api-since">since 2.32</p>
 <table>
 <tr>
 <td class="name">RESOURCE_ERROR_NOT_FOUND</td>
@@ -1298,15 +1295,15 @@ from a #GResource routine.</p>
 <td class="doc">unknown error</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.32</p>
+  <p class="api-ctype">C type: GResourceError</p>
 </div>
 <p class="api-heading">SocketClientEvent</p>
 <p class="api-doc">Describes an event occurring on a #GSocketClient. See the
 #GSocketClient::event signal for more details.
 
 Additional values may be added to this type in the future.</p>
-<div class="api-notes">
-  <p class="api-ctype">GSocketClientEvent</p>
-  <p class="api-since">since 2.32</p>
 <table>
 <tr>
 <td class="name">SOCKET_CLIENT_RESOLVING</td>
@@ -1361,14 +1358,14 @@ Additional values may be added to this type in the future.</p>
   #GSocketConnectable.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.32</p>
+  <p class="api-ctype">C type: GSocketClientEvent</p>
 </div>
 <p class="api-heading">SocketFamily</p>
 <p class="api-doc">The protocol family of a #GSocketAddress. (These values are
 identical to the system defines %AF_INET, %AF_INET6 and %AF_UNIX,
 if available.)</p>
-<div class="api-notes">
-  <p class="api-ctype">GSocketFamily</p>
-  <p class="api-since">since 2.22</p>
 <table>
 <tr>
 <td class="name">SOCKET_FAMILY_INVALID</td>
@@ -1391,15 +1388,15 @@ if available.)</p>
 <td class="doc">the IPv6 family</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.22</p>
+  <p class="api-ctype">C type: GSocketFamily</p>
 </div>
 <p class="api-heading">SocketListenerEvent</p>
 <p class="api-doc">Describes an event occurring on a #GSocketListener. See the
 #GSocketListener::event signal for more details.
 
 Additional values may be added to this type in the future.</p>
-<div class="api-notes">
-  <p class="api-ctype">GSocketListenerEvent</p>
-  <p class="api-since">since 2.46</p>
 <table>
 <tr>
 <td class="name">SOCKET_LISTENER_BINDING</td>
@@ -1424,6 +1421,9 @@ Additional values may be added to this type in the future.</p>
   this socket.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.46</p>
+  <p class="api-ctype">C type: GSocketListenerEvent</p>
 </div>
 <p class="api-heading">SocketProtocol</p>
 <p class="api-doc">A protocol identifier is specified when creating a #GSocket, which is a
@@ -1433,9 +1433,6 @@ the particular family/type.
 This enum contains a set of commonly available and used protocols. You
 can also pass any other identifiers handled by the platform in order to
 use protocols not listed here.</p>
-<div class="api-notes">
-  <p class="api-ctype">GSocketProtocol</p>
-  <p class="api-since">since 2.22</p>
 <table>
 <tr>
 <td class="name">SOCKET_PROTOCOL_UNKNOWN</td>
@@ -1463,13 +1460,13 @@ use protocols not listed here.</p>
 <td class="doc">SCTP over IP</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.22</p>
+  <p class="api-ctype">C type: GSocketProtocol</p>
 </div>
 <p class="api-heading">SocketType</p>
 <p class="api-doc">Flags used when creating a #GSocket. Some protocols may not implement
 all the socket types.</p>
-<div class="api-notes">
-  <p class="api-ctype">GSocketType</p>
-  <p class="api-since">since 2.22</p>
 <table>
 <tr>
 <td class="name">SOCKET_TYPE_INVALID</td>
@@ -1494,12 +1491,12 @@ all the socket types.</p>
     of fixed maximum length (e.g. SCTP).</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.22</p>
+  <p class="api-ctype">C type: GSocketType</p>
 </div>
 <p class="api-heading">TlsAuthenticationMode</p>
 <p class="api-doc">The client authentication mode for a #GTlsServerConnection.</p>
-<div class="api-notes">
-  <p class="api-ctype">GTlsAuthenticationMode</p>
-  <p class="api-since">since 2.28</p>
 <table>
 <tr>
 <td class="name">TLS_AUTHENTICATION_NONE</td>
@@ -1517,14 +1514,14 @@ all the socket types.</p>
 <td class="doc">client authentication is required</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.28</p>
+  <p class="api-ctype">C type: GTlsAuthenticationMode</p>
 </div>
 <p class="api-heading">TlsCertificateRequestFlags</p>
 <p class="api-doc">Flags for g_tls_interaction_request_certificate(),
 g_tls_interaction_request_certificate_async(), and
 g_tls_interaction_invoke_request_certificate().</p>
-<div class="api-notes">
-  <p class="api-ctype">GTlsCertificateRequestFlags</p>
-  <p class="api-since">since 2.40</p>
 <table>
 <tr>
 <td class="name">TLS_CERTIFICATE_REQUEST_NONE</td>
@@ -1532,14 +1529,14 @@ g_tls_interaction_invoke_request_certificate().</p>
 <td class="doc">No flags</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.40</p>
+  <p class="api-ctype">C type: GTlsCertificateRequestFlags</p>
 </div>
 <p class="api-heading">TlsDatabaseLookupFlags</p>
 <p class="api-doc">Flags for g_tls_database_lookup_certificate_for_handle(),
 g_tls_database_lookup_certificate_issuer(),
 and g_tls_database_lookup_certificates_issued_by().</p>
-<div class="api-notes">
-  <p class="api-ctype">GTlsDatabaseLookupFlags</p>
-  <p class="api-since">since 2.30</p>
 <table>
 <tr>
 <td class="name">TLS_DATABASE_LOOKUP_NONE</td>
@@ -1553,13 +1550,13 @@ and g_tls_database_lookup_certificates_issued_by().</p>
     a private key.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.30</p>
+  <p class="api-ctype">C type: GTlsDatabaseLookupFlags</p>
 </div>
 <p class="api-heading">TlsError</p>
 <p class="api-doc">An error code used with %G_TLS_ERROR in a #GError returned from a
 TLS-related routine.</p>
-<div class="api-notes">
-  <p class="api-ctype">GTlsError</p>
-  <p class="api-since">since 2.28</p>
 <table>
 <tr>
 <td class="name">TLS_ERROR_UNAVAILABLE</td>
@@ -1603,13 +1600,13 @@ TLS-related routine.</p>
   g_tls_connection_set_require_close_notify().</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.28</p>
+  <p class="api-ctype">C type: GTlsError</p>
 </div>
 <p class="api-heading">TlsInteractionResult</p>
 <p class="api-doc">#GTlsInteractionResult is returned by various functions in #GTlsInteraction
 when finishing an interaction request.</p>
-<div class="api-notes">
-  <p class="api-ctype">GTlsInteractionResult</p>
-  <p class="api-since">since 2.30</p>
 <table>
 <tr>
 <td class="name">TLS_INTERACTION_UNHANDLED</td>
@@ -1630,13 +1627,13 @@ when finishing an interaction request.</p>
     and the operation should be aborted.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.30</p>
+  <p class="api-ctype">C type: GTlsInteractionResult</p>
 </div>
 <p class="api-heading">TlsRehandshakeMode</p>
 <p class="api-doc">When to allow rehandshaking. See
 g_tls_connection_set_rehandshake_mode().</p>
-<div class="api-notes">
-  <p class="api-ctype">GTlsRehandshakeMode</p>
-  <p class="api-since">since 2.28</p>
 <table>
 <tr>
 <td class="name">TLS_REHANDSHAKE_NEVER</td>
@@ -1654,6 +1651,9 @@ g_tls_connection_set_rehandshake_mode().</p>
 <td class="doc">Allow unsafe rehandshaking</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.28</p>
+  <p class="api-ctype">C type: GTlsRehandshakeMode</p>
 </div>
 <p class="api-heading">UnixSocketAddressType</p>
 <p class="api-doc">The type of name used by a #GUnixSocketAddress.
@@ -1669,9 +1669,6 @@ zeroes; this corresponds to %G_UNIX_SOCKET_ADDRESS_ABSTRACT_PADDED.
 However, many programs instead just use a portion of %sun_path, and
 pass an appropriate smaller length to bind() or connect(). This is
 %G_UNIX_SOCKET_ADDRESS_ABSTRACT.</p>
-<div class="api-notes">
-  <p class="api-ctype">GUnixSocketAddressType</p>
-  <p class="api-since">since 2.26</p>
 <table>
 <tr>
 <td class="name">UNIX_SOCKET_ADDRESS_INVALID</td>
@@ -1700,13 +1697,13 @@ pass an appropriate smaller length to bind() or connect(). This is
   to the full length of a unix socket name</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.26</p>
+  <p class="api-ctype">C type: GUnixSocketAddressType</p>
 </div>
 <p class="api-heading">ZlibCompressorFormat</p>
 <p class="api-doc">Used to select the type of data format to use for #GZlibDecompressor
 and #GZlibCompressor.</p>
-<div class="api-notes">
-  <p class="api-ctype">GZlibCompressorFormat</p>
-  <p class="api-since">since 2.24</p>
 <table>
 <tr>
 <td class="name">ZLIB_COMPRESSOR_FORMAT_ZLIB</td>
@@ -1724,4 +1721,7 @@ and #GZlibCompressor.</p>
 <td class="doc">deflate compression with no header</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.24</p>
+  <p class="api-ctype">C type: GZlibCompressorFormat</p>
 </div>

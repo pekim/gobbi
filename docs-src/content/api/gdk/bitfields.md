@@ -17,9 +17,6 @@ horizontally to fit.
 
 In general, when multiple flags are set, flipping should take precedence over
 sliding, which should take precedence over resizing.</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkAnchorHints</p>
-  <p class="api-since">since 3.22</p>
 <table>
 <tr>
 <td class="name">GDK_ANCHOR_FLIP_X</td>
@@ -67,12 +64,12 @@ sliding, which should take precedence over resizing.</p>
 <td class="doc">allow resizing window on both axes</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 3.22</p>
+  <p class="api-ctype">C type: GdkAnchorHints</p>
 </div>
 <p class="api-heading">AxisFlags</p>
 <p class="api-doc">Flags describing the current capabilities of a device/tool.</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkAxisFlags</p>
-  <p class="api-since">since 3.22</p>
 <table>
 <tr>
 <td class="name">GDK_AXIS_FLAG_X</td>
@@ -120,12 +117,13 @@ sliding, which should take precedence over resizing.</p>
 <td class="doc">Slider axis is present</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 3.22</p>
+  <p class="api-ctype">C type: GdkAxisFlags</p>
 </div>
 <p class="api-heading">DragAction</p>
 <p class="api-doc">Used in #GdkDragContext to indicate what the destination
 should do with the dropped data.</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkDragAction</p>
 <table>
 <tr>
 <td class="name">GDK_ACTION_DEFAULT</td>
@@ -161,6 +159,8 @@ should do with the dropped data.</p>
 <td class="doc">Ask the user what to do with the data.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GdkDragAction</p>
 </div>
 <p class="api-heading">EventMask</p>
 <p class="api-doc">A set of bit-flags to indicate which events a window is to receive.
@@ -189,8 +189,6 @@ with type %GDK_TOUCH_UPDATE, enclosed by two events with
 type %GDK_TOUCH_BEGIN and %GDK_TOUCH_END (or %GDK_TOUCH_CANCEL).
 gdk_event_get_event_sequence() returns the event sequence for these
 events, so different sequences may be distinguished.</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkEventMask</p>
 <table>
 <tr>
 <td class="name">GDK_EXPOSURE_MASK</td>
@@ -324,14 +322,13 @@ events, so different sequences may be distinguished.</p>
 <td class="doc">the combination of all the above event masks.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GdkEventMask</p>
 </div>
 <p class="api-heading">FrameClockPhase</p>
 <p class="api-doc">#GdkFrameClockPhase is used to represent the different paint clock
 phases that can be requested. The elements of the enumeration
 correspond to the signals of #GdkFrameClock.</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkFrameClockPhase</p>
-  <p class="api-since">since 3.8</p>
 <table>
 <tr>
 <td class="name">GDK_FRAME_CLOCK_PHASE_NONE</td>
@@ -374,6 +371,9 @@ correspond to the signals of #GdkFrameClock.</p>
 <td class="doc">corresponds to GdkFrameClock::after-paint. Should not be handled by applications.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 3.8</p>
+  <p class="api-ctype">C type: GdkFrameClockPhase</p>
 </div>
 <p class="api-heading">ModifierType</p>
 <p class="api-doc">A set of bit-flags to indicate the state of modifier keys and mouse buttons
@@ -394,8 +394,6 @@ remove all reserved values.
 Also note that the GDK X backend interprets button press events for button
 4-7 as scroll events, so %GDK_BUTTON4_MASK and %GDK_BUTTON5_MASK will never
 be set.</p>
-<div class="api-notes">
-  <p class="api-ctype">guint</p>
 <table>
 <tr>
 <td class="name">GDK_SHIFT_MASK</td>
@@ -566,12 +564,11 @@ be set.</p>
 <td class="doc">a mask covering all modifier types.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: guint</p>
 </div>
 <p class="api-heading">SeatCapabilities</p>
 <p class="api-doc">Flags describing the seat capabilities.</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkSeatCapabilities</p>
-  <p class="api-since">since 3.20</p>
 <table>
 <tr>
 <td class="name">GDK_SEAT_CAPABILITY_NONE</td>
@@ -609,13 +606,14 @@ be set.</p>
 <td class="doc">The union of all capabilities</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 3.20</p>
+  <p class="api-ctype">C type: GdkSeatCapabilities</p>
 </div>
 <p class="api-heading">WMDecoration</p>
 <p class="api-doc">These are hints originally defined by the Motif toolkit.
 The window manager can use them when determining how to decorate
 the window. The hint must be set before mapping the window.</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkWMDecoration</p>
 <table>
 <tr>
 <td class="name">GDK_DECOR_ALL</td>
@@ -653,13 +651,13 @@ the window. The hint must be set before mapping the window.</p>
 <td class="doc">a maximize button should be included.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GdkWMDecoration</p>
 </div>
 <p class="api-heading">WMFunction</p>
 <p class="api-doc">These are hints originally defined by the Motif toolkit. The window manager
 can use them when determining the functions to offer for the window. The
 hint must be set before mapping the window.</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkWMFunction</p>
 <table>
 <tr>
 <td class="name">GDK_FUNC_ALL</td>
@@ -692,6 +690,8 @@ hint must be set before mapping the window.</p>
 <td class="doc">the window should be closable.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GdkWMFunction</p>
 </div>
 <p class="api-heading">WindowAttributesType</p>
 <p class="api-doc">Used to indicate which fields in the #GdkWindowAttr struct should be honored.
@@ -700,8 +700,6 @@ pass “@GDK_WA_X | @GDK_WA_CURSOR” to gdk_window_new(). Fields in
 #GdkWindowAttr not covered by a bit in this enum are required; for example,
 the @width/@height, @wclass, and @window_type fields are required, they have
 no corresponding flag in #GdkWindowAttributesType.</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkWindowAttributesType</p>
 <table>
 <tr>
 <td class="name">GDK_WA_TITLE</td>
@@ -744,6 +742,8 @@ no corresponding flag in #GdkWindowAttributesType.</p>
 <td class="doc">Honor the type_hint field</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GdkWindowAttributesType</p>
 </div>
 <p class="api-heading">WindowHints</p>
 <p class="api-doc">Used to indicate which fields of a #GdkGeometry struct should be paid
@@ -754,8 +754,6 @@ automatically by #GtkWindow if you call gtk_window_move().
 @GDK_HINT_USER_POS and @GDK_HINT_USER_SIZE should be set if the user
 specified a size/position using a --geometry command-line argument;
 gtk_window_parse_geometry() automatically sets these flags.</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkWindowHints</p>
 <table>
 <tr>
 <td class="name">GDK_HINT_POS</td>
@@ -805,11 +803,11 @@ gtk_window_parse_geometry() automatically sets these flags.</p>
  the user</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GdkWindowHints</p>
 </div>
 <p class="api-heading">WindowState</p>
 <p class="api-doc">Specifies the state of a toplevel window.</p>
-<div class="api-notes">
-  <p class="api-ctype">GdkWindowState</p>
 <table>
 <tr>
 <td class="name">GDK_WINDOW_STATE_WITHDRAWN</td>
@@ -899,4 +897,6 @@ gtk_window_parse_geometry() automatically sets these flags.</p>
 <td class="doc">whether the left edge is resizable, Since 3.22.23</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GdkWindowState</p>
 </div>

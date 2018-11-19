@@ -3,8 +3,6 @@ title = "bitfields"
 +++
 <p class="api-heading">AccelFlags</p>
 <p class="api-doc">Accelerator flags used with gtk_accel_group_connect().</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkAccelFlags</p>
 <table>
 <tr>
 <td class="name">GTK_ACCEL_VISIBLE</td>
@@ -22,12 +20,11 @@ title = "bitfields"
 <td class="doc">Mask</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkAccelFlags</p>
 </div>
 <p class="api-heading">ApplicationInhibitFlags</p>
 <p class="api-doc">Types of user actions that may be blocked by gtk_application_inhibit().</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkApplicationInhibitFlags</p>
-  <p class="api-since">since 3.4</p>
 <table>
 <tr>
 <td class="name">GTK_APPLICATION_INHIBIT_LOGOUT</td>
@@ -53,12 +50,13 @@ title = "bitfields"
     marked as idle (and possibly locked)</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 3.4</p>
+  <p class="api-ctype">C type: GtkApplicationInhibitFlags</p>
 </div>
 <p class="api-heading">AttachOptions</p>
 <p class="api-doc">Denotes the expansion properties that a widget will have when it (or its
 parent) is resized.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkAttachOptions</p>
 <table>
 <tr>
 <td class="name">GTK_EXPAND</td>
@@ -77,11 +75,11 @@ container that has been allocated.</td>
 <td class="doc">the widget should fill the space allocated to it.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkAttachOptions</p>
 </div>
 <p class="api-heading">CalendarDisplayOptions</p>
 <p class="api-doc">These options can be used to influence the display and behaviour of a #GtkCalendar.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkCalendarDisplayOptions</p>
 <table>
 <tr>
 <td class="name">GTK_CALENDAR_SHOW_HEADING</td>
@@ -111,11 +109,11 @@ left side of the calendar.</td>
 text when details are provided. See gtk_calendar_set_detail_func().</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkCalendarDisplayOptions</p>
 </div>
 <p class="api-heading">CellRendererState</p>
 <p class="api-doc">Tells how a cell is to be rendered.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkCellRendererState</p>
 <table>
 <tr>
 <td class="name">GTK_CELL_RENDERER_SELECTED</td>
@@ -154,10 +152,10 @@ text when details are provided. See gtk_calendar_set_detail_func().</td>
 <td class="doc">The cell is in a row that is expanded. Since 3.4</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkCellRendererState</p>
 </div>
 <p class="api-heading">DebugFlag</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkDebugFlag</p>
 <table>
 <tr>
 <td class="name">GTK_DEBUG_MISC</td>
@@ -248,13 +246,13 @@ text when details are provided. See gtk_calendar_set_detail_func().</td>
 <td class="value">2097152</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkDebugFlag</p>
 </div>
 <p class="api-heading">DestDefaults</p>
 <p class="api-doc">The #GtkDestDefaults enumeration specifies the various
 types of action that will be taken on behalf
 of the user for a drag destination site.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkDestDefaults</p>
 <table>
 <tr>
 <td class="name">GTK_DEST_DEFAULT_MOTION</td>
@@ -288,11 +286,11 @@ of the user for a drag destination site.</p>
   be taken.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkDestDefaults</p>
 </div>
 <p class="api-heading">DialogFlags</p>
 <p class="api-doc">Flags used to influence dialog construction.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkDialogFlags</p>
 <table>
 <tr>
 <td class="name">GTK_DIALOG_MODAL</td>
@@ -313,12 +311,12 @@ of the user for a drag destination site.</p>
     bar instead of action area. Since 3.12.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkDialogFlags</p>
 </div>
 <p class="api-heading">FileFilterFlags</p>
 <p class="api-doc">These flags indicate what parts of a #GtkFileFilterInfo struct
 are filled or need to be filled.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkFileFilterFlags</p>
 <table>
 <tr>
 <td class="name">GTK_FILE_FILTER_FILENAME</td>
@@ -342,11 +340,11 @@ are filled or need to be filled.</p>
 <td class="doc">the mime type of the file</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkFileFilterFlags</p>
 </div>
 <p class="api-heading">IconLookupFlags</p>
 <p class="api-doc">Used to specify options for gtk_icon_theme_lookup_icon()</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkIconLookupFlags</p>
 <table>
 <tr>
 <td class="name">GTK_ICON_LOOKUP_NO_SVG</td>
@@ -408,6 +406,8 @@ are filled or need to be filled.</p>
   text direction. Since 3.14.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkIconLookupFlags</p>
 </div>
 <p class="api-heading">InputHints</p>
 <p class="api-doc">Describes hints that might be taken into account by input methods
@@ -419,9 +419,6 @@ Some common sense is expected when using these flags - mixing
 
 This enumeration may be extended in the future; input methods should
 ignore unknown values.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkInputHints</p>
-  <p class="api-since">since 3.6</p>
 <table>
 <tr>
 <td class="name">GTK_INPUT_HINT_NONE</td>
@@ -487,11 +484,12 @@ ignore unknown values.</p>
 <td class="doc">Suggest not offering Emoji support. Since 3.22.20</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 3.6</p>
+  <p class="api-ctype">C type: GtkInputHints</p>
 </div>
 <p class="api-heading">JunctionSides</p>
 <p class="api-doc">Describes how a rendered element connects to adjacent elements.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkJunctionSides</p>
 <table>
 <tr>
 <td class="name">GTK_JUNCTION_NONE</td>
@@ -539,6 +537,8 @@ ignore unknown values.</p>
 <td class="doc">Element connects on the right side.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkJunctionSides</p>
 </div>
 <p class="api-heading">PlacesOpenFlags</p>
 <p class="api-doc">These flags serve two purposes.  First, the application can call gtk_places_sidebar_set_open_flags()
@@ -555,8 +555,6 @@ based on the modifier keys that the user is pressing at the time the selection i
 If the application never calls gtk_places_sidebar_set_open_flags(), then the sidebar will only
 use #GTK_PLACES_OPEN_NORMAL in the #GtkPlacesSidebar::open-location signal.  This is the
 default mode of operation.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkPlacesOpenFlags</p>
 <table>
 <tr>
 <td class="name">GTK_PLACES_OPEN_NORMAL</td>
@@ -580,11 +578,11 @@ default mode of operation.</p>
  can open folders in new windows.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkPlacesOpenFlags</p>
 </div>
 <p class="api-heading">RcFlags</p>
 <p class="api-doc">Deprecated</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkRcFlags</p>
 <table>
 <tr>
 <td class="name">GTK_RC_FG</td>
@@ -607,12 +605,12 @@ default mode of operation.</p>
 <td class="doc">Deprecated</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkRcFlags</p>
 </div>
 <p class="api-heading">RecentFilterFlags</p>
 <p class="api-doc">These flags indicate what parts of a #GtkRecentFilterInfo struct
 are filled or need to be filled.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkRecentFilterFlags</p>
 <table>
 <tr>
 <td class="name">GTK_RECENT_FILTER_URI</td>
@@ -648,11 +646,11 @@ are filled or need to be filled.</p>
  has been registered</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkRecentFilterFlags</p>
 </div>
 <p class="api-heading">RegionFlags</p>
 <p class="api-doc">Describes a region within a widget.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkRegionFlags</p>
 <table>
 <tr>
 <td class="name">GTK_REGION_EVEN</td>
@@ -685,13 +683,13 @@ are filled or need to be filled.</p>
 <td class="doc">Region is part of a sorted area.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkRegionFlags</p>
 </div>
 <p class="api-heading">StateFlags</p>
 <p class="api-doc">Describes a widget state. Widget states are used to match the widget
 against CSS pseudo-classes. Note that GTK extends the regular CSS
 classes and sometimes uses different names.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkStateFlags</p>
 <table>
 <tr>
 <td class="name">GTK_STATE_FLAG_NORMAL</td>
@@ -764,13 +762,12 @@ classes and sometimes uses different names.</p>
 <td class="doc">Widget is highlighted as a drop target for DND. Since 3.20</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkStateFlags</p>
 </div>
 <p class="api-heading">StyleContextPrintFlags</p>
 <p class="api-doc">Flags that modify the behavior of gtk_style_context_to_string().
 New values may be added to this enumeration.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkStyleContextPrintFlags</p>
-  <p class="api-since">since 3.20</p>
 <table>
 <tr>
 <td class="name">GTK_STYLE_CONTEXT_PRINT_NONE</td>
@@ -789,12 +786,13 @@ New values may be added to this enumeration.</p>
     CSS properties for each node</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 3.20</p>
+  <p class="api-ctype">C type: GtkStyleContextPrintFlags</p>
 </div>
 <p class="api-heading">TargetFlags</p>
 <p class="api-doc">The #GtkTargetFlags enumeration is used to specify
 constraints on a #GtkTargetEntry.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkTargetFlags</p>
 <table>
 <tr>
 <td class="name">GTK_TARGET_SAME_APP</td>
@@ -821,6 +819,8 @@ constraints on a #GtkTargetEntry.</p>
   for drags withing a single widget.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkTargetFlags</p>
 </div>
 <p class="api-heading">TextSearchFlags</p>
 <p class="api-doc">Flags affecting how a search is done.
@@ -828,8 +828,6 @@ constraints on a #GtkTargetEntry.</p>
 If neither #GTK_TEXT_SEARCH_VISIBLE_ONLY nor #GTK_TEXT_SEARCH_TEXT_ONLY are
 enabled, the match must be exact; the special 0xFFFC character will match
 embedded pixbufs or child widgets.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkTextSearchFlags</p>
 <table>
 <tr>
 <td class="name">GTK_TEXT_SEARCH_VISIBLE_ONLY</td>
@@ -850,11 +848,11 @@ child widgets mixed inside the matched range.</td>
 what case it is in.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkTextSearchFlags</p>
 </div>
 <p class="api-heading">ToolPaletteDragTargets</p>
 <p class="api-doc">Flags used to specify the supported drag targets.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkToolPaletteDragTargets</p>
 <table>
 <tr>
 <td class="name">GTK_TOOL_PALETTE_DRAG_ITEMS</td>
@@ -867,6 +865,8 @@ what case it is in.</td>
 <td class="doc">Support drag of groups.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkToolPaletteDragTargets</p>
 </div>
 <p class="api-heading">TreeModelFlags</p>
 <p class="api-doc">These flags indicate various properties of a #GtkTreeModel.
@@ -875,8 +875,6 @@ They are returned by gtk_tree_model_get_flags(), and must be
 static for the lifetime of the object. A more complete description
 of #GTK_TREE_MODEL_ITERS_PERSIST can be found in the overview of
 this section.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkTreeModelFlags</p>
 <table>
 <tr>
 <td class="name">GTK_TREE_MODEL_ITERS_PERSIST</td>
@@ -891,12 +889,12 @@ this section.</p>
     has children</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkTreeModelFlags</p>
 </div>
 <p class="api-heading">UIManagerItemType</p>
 <p class="api-doc">These enumeration values are used by gtk_ui_manager_add_ui() to determine
 what UI element to create.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkUIManagerItemType</p>
 <table>
 <tr>
 <td class="name">GTK_UI_MANAGER_AUTO</td>
@@ -955,4 +953,6 @@ what UI element to create.</p>
   actions’ accelerators are shown.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkUIManagerItemType</p>
 </div>

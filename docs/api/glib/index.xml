@@ -17,10 +17,9 @@
       
       <guid>https://pekim.github.io/gobbi/api/glib/bitfields/</guid>
       <description>AsciiType
-GAsciiType
-  ASCII_ALNUM 1   ASCII_ALPHA 2   ASCII_CNTRL 4   ASCII_DIGIT 8   ASCII_GRAPH 16   ASCII_LOWER 32   ASCII_PRINT 64   ASCII_PUNCT 128   ASCII_SPACE 256   ASCII_UPPER 512   ASCII_XDIGIT 1024    FileTest
+  ASCII_ALNUM 1   ASCII_ALPHA 2   ASCII_CNTRL 4   ASCII_DIGIT 8   ASCII_GRAPH 16   ASCII_LOWER 32   ASCII_PRINT 64   ASCII_PUNCT 128   ASCII_SPACE 256   ASCII_UPPER 512   ASCII_XDIGIT 1024   C type: GAsciiType
+ FileTest
 A test to perform on a file using g_file_test().
-GFileTest
   FILE_TEST_IS_REGULAR 1 %TRUE if the file is a regular file (not a directory).</description>
     </item>
     
@@ -31,17 +30,15 @@ GFileTest
       
       <guid>https://pekim.github.io/gobbi/api/glib/constants/</guid>
       <description>ANALYZER_ANALYZING
-G_ANALYZER_ANALYZING
+C type: G_ANALYZER_ANALYZING
  ASCII_DTOSTR_BUF_SIZE
 A good size for a buffer to be passed into g_ascii_dtostr(). It is guaranteed to be enough for all output of that function on systems with 64bit IEEE-compatible doubles.
 The typical usage would be something like: |[char buf[G_ASCII_DTOSTR_BUF_SIZE];
 fprintf (out, &amp;ldquo;value=%s\n&amp;rdquo;, g_ascii_dtostr (buf, sizeof (buf), value)); ]|
-G_ASCII_DTOSTR_BUF_SIZE
+C type: G_ASCII_DTOSTR_BUF_SIZE
  BIG_ENDIAN
 Specifies one of the possible types of byte order. See #G_BYTE_ORDER.
-G_BIG_ENDIAN
- CSET_A_2_Z
-The set of uppercase ASCII alphabet characters.</description>
+C type: G_BIG_ENDIAN</description>
     </item>
     
     <item>
@@ -52,8 +49,7 @@ The set of uppercase ASCII alphabet characters.</description>
       <guid>https://pekim.github.io/gobbi/api/glib/enums/</guid>
       <description>BookmarkFileError
 Error codes returned by bookmark file parsing.
-GBookmarkFileError
-  BOOKMARK_FILE_ERROR_INVALID_URI 0 URI was ill-formed   BOOKMARK_FILE_ERROR_INVALID_VALUE 1 a requested field was not found   BOOKMARK_FILE_ERROR_APP_NOT_REGISTERED 2 a requested application did not register a bookmark   BOOKMARK_FILE_ERROR_URI_NOT_FOUND 3 a requested URI was not found   BOOKMARK_FILE_ERROR_READ 4 document was ill formed   BOOKMARK_FILE_ERROR_UNKNOWN_ENCODING 5 the text being parsed was in an unknown encoding   BOOKMARK_FILE_ERROR_WRITE 6 an error occurred while writing   BOOKMARK_FILE_ERROR_FILE_NOT_FOUND 7 requested file was not found    ChecksumType</description>
+  BOOKMARK_FILE_ERROR_INVALID_URI 0 URI was ill-formed   BOOKMARK_FILE_ERROR_INVALID_VALUE 1 a requested field was not found   BOOKMARK_FILE_ERROR_APP_NOT_REGISTERED 2 a requested application did not register a bookmark   BOOKMARK_FILE_ERROR_URI_NOT_FOUND 3 a requested URI was not found   BOOKMARK_FILE_ERROR_READ 4 document was ill formed   BOOKMARK_FILE_ERROR_UNKNOWN_ENCODING 5 the text being parsed was in an unknown encoding   BOOKMARK_FILE_ERROR_WRITE 6 an error occurred while writing   BOOKMARK_FILE_ERROR_FILE_NOT_FOUND 7 requested file was not found   C type: GBookmarkFileError</description>
     </item>
     
   </channel>

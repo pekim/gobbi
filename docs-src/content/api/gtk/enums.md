@@ -18,8 +18,6 @@ are interpreted relative to text direction.
 GTK_ALIGN_BASELINE support for it is optional for containers and widgets, and
 it is only supported for vertical alignment.  When its not supported by
 a child or a container it is treated as @GTK_ALIGN_FILL.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkAlign</p>
 <table>
 <tr>
 <td class="name">GTK_ALIGN_FILL</td>
@@ -51,11 +49,11 @@ a child or a container it is treated as @GTK_ALIGN_FILL.</p>
 <td class="doc">align the widget according to the baseline. Since 3.10.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkAlign</p>
 </div>
 <p class="api-heading">ArrowPlacement</p>
 <p class="api-doc">Used to specify the placement of scroll arrows in scrolling menus.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkArrowPlacement</p>
 <table>
 <tr>
 <td class="name">GTK_ARROWS_BOTH</td>
@@ -73,11 +71,11 @@ a child or a container it is treated as @GTK_ALIGN_FILL.</p>
 <td class="doc">Place both arrows at the bottom of the menu.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkArrowPlacement</p>
 </div>
 <p class="api-heading">ArrowType</p>
 <p class="api-doc">Used to indicate the direction in which an arrow should point.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkArrowType</p>
 <table>
 <tr>
 <td class="name">GTK_ARROW_UP</td>
@@ -105,6 +103,8 @@ a child or a container it is treated as @GTK_ALIGN_FILL.</p>
 <td class="doc">No arrow. Since 2.10.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkArrowType</p>
 </div>
 <p class="api-heading">AssistantPageType</p>
 <p class="api-doc">An enum for determining the page role inside the #GtkAssistant. It's
@@ -116,8 +116,6 @@ Note that an assistant needs to end its page flow with a page of type
 
 The Cancel button will only be shown if the page isn’t “committed”.
 See gtk_assistant_commit() for details.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkAssistantPageType</p>
 <table>
 <tr>
 <td class="name">GTK_ASSISTANT_PAGE_CONTENT</td>
@@ -159,6 +157,8 @@ See gtk_assistant_commit() for details.</p>
  add its own buttons through gtk_assistant_add_action_widget().</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkAssistantPageType</p>
 </div>
 <p class="api-heading">BaselinePosition</p>
 <p class="api-doc">Whenever a container has some form of natural row it may align
@@ -167,9 +167,6 @@ the amount of verical space in the row is taller than the total
 requested height of the baseline-aligned children then it can use a
 #GtkBaselinePosition to select where to put the baseline inside the
 extra availible space.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkBaselinePosition</p>
-  <p class="api-since">since 3.10</p>
 <table>
 <tr>
 <td class="name">GTK_BASELINE_POSITION_TOP</td>
@@ -187,11 +184,12 @@ extra availible space.</p>
 <td class="doc">Align the baseline at the bottom</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 3.10</p>
+  <p class="api-ctype">C type: GtkBaselinePosition</p>
 </div>
 <p class="api-heading">BorderStyle</p>
 <p class="api-doc">Describes how the border of a UI element should be rendered.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkBorderStyle</p>
 <table>
 <tr>
 <td class="name">GTK_BORDER_STYLE_NONE</td>
@@ -244,12 +242,12 @@ extra availible space.</p>
 <td class="doc">Looks as if it were coming out of the canvas</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkBorderStyle</p>
 </div>
 <p class="api-heading">BuilderError</p>
 <p class="api-doc">Error codes that identify various errors that can occur while using
 #GtkBuilder.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkBuilderError</p>
 <table>
 <tr>
 <td class="name">GTK_BUILDER_ERROR_INVALID_TYPE_FUNCTION</td>
@@ -331,12 +329,12 @@ extra availible space.</p>
 <td class="doc">An object id is unknown</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkBuilderError</p>
 </div>
 <p class="api-heading">ButtonBoxStyle</p>
 <p class="api-doc">Used to dictate the style that a #GtkButtonBox uses to layout the buttons it
 contains.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkButtonBoxStyle</p>
 <table>
 <tr>
 <td class="name">GTK_BUTTONBOX_SPREAD</td>
@@ -374,11 +372,11 @@ contains.</p>
   gtk_box_set_spacing() manually). Since 3.12.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkButtonBoxStyle</p>
 </div>
 <p class="api-heading">ButtonRole</p>
 <p class="api-doc">The role specifies the desired appearance of a #GtkModelButton.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkButtonRole</p>
 <table>
 <tr>
 <td class="name">GTK_BUTTON_ROLE_NORMAL</td>
@@ -396,6 +394,8 @@ contains.</p>
 <td class="doc">A radio button</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkButtonRole</p>
 </div>
 <p class="api-heading">ButtonsType</p>
 <p class="api-doc">Prebuilt sets of buttons for the dialog. If
@@ -405,8 +405,6 @@ then call gtk_dialog_add_buttons().
 > Please note that %GTK_BUTTONS_OK, %GTK_BUTTONS_YES_NO
 > and %GTK_BUTTONS_OK_CANCEL are discouraged by the
 > [GNOME Human Interface Guidelines](http://library.gnome.org/devel/hig-book/stable/).</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkButtonsType</p>
 <table>
 <tr>
 <td class="name">GTK_BUTTONS_NONE</td>
@@ -439,14 +437,14 @@ then call gtk_dialog_add_buttons().
 <td class="doc">OK and Cancel buttons</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkButtonsType</p>
 </div>
 <p class="api-heading">CellRendererAccelMode</p>
 <p class="api-doc">Determines if the edited accelerators are GTK+ accelerators. If
 they are, consumed modifiers are suppressed, only accelerators
 accepted by GTK+ are allowed, and the accelerators are rendered
 in the same way as they are in menus.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkCellRendererAccelMode</p>
 <table>
 <tr>
 <td class="name">GTK_CELL_RENDERER_ACCEL_MODE_GTK</td>
@@ -464,11 +462,11 @@ GTK_CELL_RENDERER_ACCEL_MODE_MODIFIER_TAP: Bare modifiers mode</td>
 <td class="value">2</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkCellRendererAccelMode</p>
 </div>
 <p class="api-heading">CellRendererMode</p>
 <p class="api-doc">Identifies how the user can interact with a particular cell.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkCellRendererMode</p>
 <table>
 <tr>
 <td class="name">GTK_CELL_RENDERER_MODE_INERT</td>
@@ -489,13 +487,13 @@ GTK_CELL_RENDERER_ACCEL_MODE_MODIFIER_TAP: Bare modifiers mode</td>
 <td class="doc">The cell can be edited or otherwise modified.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkCellRendererMode</p>
 </div>
 <p class="api-heading">CornerType</p>
 <p class="api-doc">Specifies which corner a child widget should be placed in when packed into
 a #GtkScrolledWindow. This is effectively the opposite of where the scroll
 bars are placed.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkCornerType</p>
 <table>
 <tr>
 <td class="name">GTK_CORNER_TOP_LEFT</td>
@@ -522,11 +520,11 @@ bars are placed.</p>
  widget.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkCornerType</p>
 </div>
 <p class="api-heading">CssProviderError</p>
 <p class="api-doc">Error codes for %GTK_CSS_PROVIDER_ERROR.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkCssProviderError</p>
 <table>
 <tr>
 <td class="name">GTK_CSS_PROVIDER_ERROR_FAILED</td>
@@ -559,6 +557,8 @@ bars are placed.</p>
 <td class="doc">Unknown value.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkCssProviderError</p>
 </div>
 <p class="api-heading">CssSectionType</p>
 <p class="api-doc">The different types of sections indicate parts of a CSS document as
@@ -568,9 +568,6 @@ but may contain extensions.
 
 More types might be added in the future as the parser incorporates
 more features.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkCssSectionType</p>
-  <p class="api-since">since 3.2</p>
 <table>
 <tr>
 <td class="name">GTK_CSS_SECTION_DOCUMENT</td>
@@ -624,11 +621,12 @@ more features.</p>
   Animations](http://dev.w3.org/csswg/css3-animations/#keyframes) for details. Since 3.6</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 3.2</p>
+  <p class="api-ctype">C type: GtkCssSectionType</p>
 </div>
 <p class="api-heading">DeleteType</p>
 <p class="api-doc">See also: #GtkEntry::delete-from-cursor.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkDeleteType</p>
 <table>
 <tr>
 <td class="name">GTK_DELETE_CHARS</td>
@@ -677,11 +675,11 @@ more features.</p>
 <td class="doc">Delete only whitespace. Like M-\ in Emacs.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkDeleteType</p>
 </div>
 <p class="api-heading">DirectionType</p>
 <p class="api-doc">Focus movement types.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkDirectionType</p>
 <table>
 <tr>
 <td class="name">GTK_DIR_TAB_FORWARD</td>
@@ -714,13 +712,13 @@ more features.</p>
 <td class="doc">Move right.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkDirectionType</p>
 </div>
 <p class="api-heading">DragResult</p>
 <p class="api-doc">Gives an indication why a drag operation failed.
 The value can by obtained by connecting to the
 #GtkWidget::drag-failed signal.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkDragResult</p>
 <table>
 <tr>
 <td class="name">GTK_DRAG_RESULT_SUCCESS</td>
@@ -755,12 +753,11 @@ The value can by obtained by connecting to the
  unspecified error.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkDragResult</p>
 </div>
 <p class="api-heading">EntryIconPosition</p>
 <p class="api-doc">Specifies the side of the entry at which an icon is placed.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkEntryIconPosition</p>
-  <p class="api-since">since 2.16</p>
 <table>
 <tr>
 <td class="name">GTK_ENTRY_ICON_PRIMARY</td>
@@ -773,12 +770,12 @@ The value can by obtained by connecting to the
 <td class="doc">At the end of the entry (depending on the text direction).</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.16</p>
+  <p class="api-ctype">C type: GtkEntryIconPosition</p>
 </div>
 <p class="api-heading">EventSequenceState</p>
 <p class="api-doc">Describes the state of a #GdkEventSequence in a #GtkGesture.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkEventSequenceState</p>
-  <p class="api-since">since 3.14</p>
 <table>
 <tr>
 <td class="name">GTK_EVENT_SEQUENCE_NONE</td>
@@ -796,11 +793,12 @@ The value can by obtained by connecting to the
 <td class="doc">The sequence is denied.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 3.14</p>
+  <p class="api-ctype">C type: GtkEventSequenceState</p>
 </div>
 <p class="api-heading">ExpanderStyle</p>
 <p class="api-doc">Used to specify the style of the expanders drawn by a #GtkTreeView.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkExpanderStyle</p>
 <table>
 <tr>
 <td class="name">GTK_EXPANDER_COLLAPSED</td>
@@ -823,12 +821,12 @@ The value can by obtained by connecting to the
 <td class="doc">The style used for an expanded subtree.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkExpanderStyle</p>
 </div>
 <p class="api-heading">FileChooserAction</p>
 <p class="api-doc">Describes whether a #GtkFileChooser is being used to open existing files
 or to save to a possibly new file.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkFileChooserAction</p>
 <table>
 <tr>
 <td class="name">GTK_FILE_CHOOSER_ACTION_OPEN</td>
@@ -858,6 +856,8 @@ or to save to a possibly new file.</p>
  new folder.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkFileChooserAction</p>
 </div>
 <p class="api-heading">FileChooserConfirmation</p>
 <p class="api-doc">Used as a return value of handlers for the
@@ -865,9 +865,6 @@ or to save to a possibly new file.</p>
 value determines whether the file chooser will present the stock
 confirmation dialog, accept the user’s choice of a filename, or
 let the user choose another filename.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkFileChooserConfirmation</p>
-  <p class="api-since">since 2.8</p>
 <table>
 <tr>
 <td class="name">GTK_FILE_CHOOSER_CONFIRMATION_CONFIRM</td>
@@ -888,12 +885,13 @@ let the user choose another filename.</p>
  continue running, so as to let the user select another file name.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.8</p>
+  <p class="api-ctype">C type: GtkFileChooserConfirmation</p>
 </div>
 <p class="api-heading">FileChooserError</p>
 <p class="api-doc">These identify the various errors that can occur while calling
 #GtkFileChooser functions.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkFileChooserError</p>
 <table>
 <tr>
 <td class="name">GTK_FILE_CHOOSER_ERROR_NONEXISTENT</td>
@@ -917,12 +915,12 @@ let the user choose another filename.</p>
 <td class="doc">Indicates an incomplete hostname (e.g. "http://foo" without a slash after that).</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkFileChooserError</p>
 </div>
 <p class="api-heading">IMPreeditStyle</p>
 <p class="api-doc">Style for input method preedit. See also
 #GtkSettings:gtk-im-preedit-style</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkIMPreeditStyle</p>
 <table>
 <tr>
 <td class="name">GTK_IM_PREEDIT_NOTHING</td>
@@ -940,12 +938,12 @@ let the user choose another filename.</p>
 <td class="doc">Deprecated</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkIMPreeditStyle</p>
 </div>
 <p class="api-heading">IMStatusStyle</p>
 <p class="api-doc">Style for input method status. See also
 #GtkSettings:gtk-im-status-style</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkIMStatusStyle</p>
 <table>
 <tr>
 <td class="name">GTK_IM_STATUS_NOTHING</td>
@@ -963,11 +961,11 @@ let the user choose another filename.</p>
 <td class="doc">Deprecated</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkIMStatusStyle</p>
 </div>
 <p class="api-heading">IconSize</p>
 <p class="api-doc">Built-in stock icon sizes.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkIconSize</p>
 <table>
 <tr>
 <td class="name">GTK_ICON_SIZE_INVALID</td>
@@ -1005,11 +1003,11 @@ let the user choose another filename.</p>
 <td class="doc">Size appropriate for dialogs (48px)</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkIconSize</p>
 </div>
 <p class="api-heading">IconThemeError</p>
 <p class="api-doc">Error codes for GtkIconTheme operations.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkIconThemeError</p>
 <table>
 <tr>
 <td class="name">GTK_ICON_THEME_NOT_FOUND</td>
@@ -1022,11 +1020,11 @@ let the user choose another filename.</p>
 <td class="doc">An unspecified error occurred.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkIconThemeError</p>
 </div>
 <p class="api-heading">IconViewDropPosition</p>
 <p class="api-doc">An enum for determining where a dropped item goes.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkIconViewDropPosition</p>
 <table>
 <tr>
 <td class="name">GTK_ICON_VIEW_NO_DROP</td>
@@ -1059,6 +1057,8 @@ let the user choose another filename.</p>
 <td class="doc">dropped item is inserted below</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkIconViewDropPosition</p>
 </div>
 <p class="api-heading">ImageType</p>
 <p class="api-doc">Describes the image data representation used by a #GtkImage. If you
@@ -1068,8 +1068,6 @@ gtk_image_get_storage_type() returns #GTK_IMAGE_PIXBUF, then you can
 call gtk_image_get_pixbuf() but not gtk_image_get_stock().  For empty
 images, you can request any storage type (call any of the "get"
 functions), but they will all return %NULL values.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkImageType</p>
 <table>
 <tr>
 <td class="name">GTK_IMAGE_EMPTY</td>
@@ -1115,6 +1113,8 @@ functions), but they will all return %NULL values.</p>
  This image type was added in GTK+ 3.10</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkImageType</p>
 </div>
 <p class="api-heading">InputPurpose</p>
 <p class="api-doc">Describes primary purpose of the input widget. This information is
@@ -1135,9 +1135,6 @@ minus) and “e” or “E” as in 3.14E+000.
 
 This enumeration may be extended in the future; input methods should
 interpret unknown values as “free form”.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkInputPurpose</p>
-  <p class="api-since">since 3.6</p>
 <table>
 <tr>
 <td class="name">GTK_INPUT_PURPOSE_FREE_FORM</td>
@@ -1190,12 +1187,13 @@ interpret unknown values as “free form”.</p>
 <td class="doc">Like @GTK_INPUT_PURPOSE_DIGITS, but characters are hidden</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 3.6</p>
+  <p class="api-ctype">C type: GtkInputPurpose</p>
 </div>
 <p class="api-heading">Justification</p>
 <p class="api-doc">Used for justifying the text inside a #GtkLabel widget. (See also
 #GtkAlignment).</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkJustification</p>
 <table>
 <tr>
 <td class="name">GTK_JUSTIFY_LEFT</td>
@@ -1218,14 +1216,13 @@ interpret unknown values as “free form”.</p>
 <td class="doc">The text is placed is distributed across the label.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkJustification</p>
 </div>
 <p class="api-heading">LevelBarMode</p>
 <p class="api-doc">Describes how #GtkLevelBar contents should be rendered.
 Note that this enumeration could be extended with additional modes
 in the future.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkLevelBarMode</p>
-  <p class="api-since">since 3.6</p>
 <table>
 <tr>
 <td class="name">GTK_LEVEL_BAR_MODE_CONTINUOUS</td>
@@ -1238,14 +1235,14 @@ in the future.</p>
 <td class="doc">the bar has a discrete mode</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 3.6</p>
+  <p class="api-ctype">C type: GtkLevelBarMode</p>
 </div>
 <p class="api-heading">License</p>
 <p class="api-doc">The type of license for an application.
 
 This enumeration can be expanded at later date.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkLicense</p>
-  <p class="api-since">since 3.0</p>
 <table>
 <tr>
 <td class="name">GTK_LICENSE_UNKNOWN</td>
@@ -1324,11 +1321,12 @@ This enumeration can be expanded at later date.</p>
 <td class="doc">The GNU Affero General Public License, version 3.0 only. Since: 3.22.27.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 3.0</p>
+  <p class="api-ctype">C type: GtkLicense</p>
 </div>
 <p class="api-heading">MenuDirectionType</p>
 <p class="api-doc">An enumeration representing directional movements within a menu.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkMenuDirectionType</p>
 <table>
 <tr>
 <td class="name">GTK_MENU_DIR_PARENT</td>
@@ -1351,11 +1349,11 @@ This enumeration can be expanded at later date.</p>
 <td class="doc">To the previous menu item</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkMenuDirectionType</p>
 </div>
 <p class="api-heading">MessageType</p>
 <p class="api-doc">The type of message being displayed in the dialog.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkMessageType</p>
 <table>
 <tr>
 <td class="name">GTK_MESSAGE_INFO</td>
@@ -1383,10 +1381,10 @@ This enumeration can be expanded at later date.</p>
 <td class="doc">None of the above</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkMessageType</p>
 </div>
 <p class="api-heading">MovementStep</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkMovementStep</p>
 <table>
 <tr>
 <td class="name">GTK_MOVEMENT_LOGICAL_POSITIONS</td>
@@ -1439,10 +1437,10 @@ This enumeration can be expanded at later date.</p>
 <td class="doc">Move horizontally by pages</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkMovementStep</p>
 </div>
 <p class="api-heading">NotebookTab</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkNotebookTab</p>
 <table>
 <tr>
 <td class="name">GTK_NOTEBOOK_TAB_FIRST</td>
@@ -1453,12 +1451,12 @@ This enumeration can be expanded at later date.</p>
 <td class="value">1</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkNotebookTab</p>
 </div>
 <p class="api-heading">NumberUpLayout</p>
 <p class="api-doc">Used to determine the layout of pages on a sheet when printing
 multiple pages per sheet.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkNumberUpLayout</p>
 <table>
 <tr>
 <td class="name">GTK_NUMBER_UP_LAYOUT_LEFT_TO_RIGHT_TOP_TO_BOTTOM</td>
@@ -1501,13 +1499,13 @@ multiple pages per sheet.</p>
 <td class="doc">![](layout-btrl.png)</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkNumberUpLayout</p>
 </div>
 <p class="api-heading">Orientation</p>
 <p class="api-doc">Represents the orientation of widgets and other objects which can be switched
 between horizontal and vertical orientation on the fly, like #GtkToolbar or
 #GtkGesturePan.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkOrientation</p>
 <table>
 <tr>
 <td class="name">GTK_ORIENTATION_HORIZONTAL</td>
@@ -1520,12 +1518,12 @@ between horizontal and vertical orientation on the fly, like #GtkToolbar or
 <td class="doc">The element is in vertical orientation.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkOrientation</p>
 </div>
 <p class="api-heading">PackDirection</p>
 <p class="api-doc">Determines how widgets should be packed inside menubars
 and menuitems contained in menubars.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkPackDirection</p>
 <table>
 <tr>
 <td class="name">GTK_PACK_DIRECTION_LTR</td>
@@ -1548,12 +1546,12 @@ and menuitems contained in menubars.</p>
 <td class="doc">Widgets are packed bottom-to-top</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkPackDirection</p>
 </div>
 <p class="api-heading">PackType</p>
 <p class="api-doc">Represents the packing location #GtkBox children. (See: #GtkVBox,
 #GtkHBox, and #GtkButtonBox).</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkPackType</p>
 <table>
 <tr>
 <td class="name">GTK_PACK_START</td>
@@ -1566,12 +1564,11 @@ and menuitems contained in menubars.</p>
 <td class="doc">The child is packed into the end of the box</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkPackType</p>
 </div>
 <p class="api-heading">PadActionType</p>
 <p class="api-doc">The type of a pad action.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkPadActionType</p>
-  <p class="api-since">since 3.22</p>
 <table>
 <tr>
 <td class="name">GTK_PAD_ACTION_BUTTON</td>
@@ -1589,11 +1586,12 @@ and menuitems contained in menubars.</p>
 <td class="doc">Action is triggered by a pad strip</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 3.22</p>
+  <p class="api-ctype">C type: GtkPadActionType</p>
 </div>
 <p class="api-heading">PageOrientation</p>
 <p class="api-doc">See also gtk_print_settings_set_orientation().</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkPageOrientation</p>
 <table>
 <tr>
 <td class="name">GTK_PAGE_ORIENTATION_PORTRAIT</td>
@@ -1616,11 +1614,11 @@ and menuitems contained in menubars.</p>
 <td class="doc">Reverse landscape mode.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkPageOrientation</p>
 </div>
 <p class="api-heading">PageSet</p>
 <p class="api-doc">See also gtk_print_job_set_page_set().</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkPageSet</p>
 <table>
 <tr>
 <td class="name">GTK_PAGE_SET_ALL</td>
@@ -1638,12 +1636,11 @@ and menuitems contained in menubars.</p>
 <td class="doc">Odd pages.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkPageSet</p>
 </div>
 <p class="api-heading">PanDirection</p>
 <p class="api-doc">Describes the panning direction of a #GtkGesturePan</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkPanDirection</p>
-  <p class="api-since">since 3.14</p>
 <table>
 <tr>
 <td class="name">GTK_PAN_DIRECTION_LEFT</td>
@@ -1666,12 +1663,13 @@ and menuitems contained in menubars.</p>
 <td class="doc">panned downwards</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 3.14</p>
+  <p class="api-ctype">C type: GtkPanDirection</p>
 </div>
 <p class="api-heading">PathPriorityType</p>
 <p class="api-doc">Priorities for path lookups.
 See also gtk_binding_set_add_path().</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkPathPriorityType</p>
 <table>
 <tr>
 <td class="name">GTK_PATH_PRIO_LOWEST</td>
@@ -1704,12 +1702,12 @@ See also gtk_binding_set_add_path().</p>
 <td class="doc">Deprecated</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkPathPriorityType</p>
 </div>
 <p class="api-heading">PathType</p>
 <p class="api-doc">Widget path types.
 See also gtk_binding_set_add_path().</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkPathType</p>
 <table>
 <tr>
 <td class="name">GTK_PATH_WIDGET</td>
@@ -1727,12 +1725,12 @@ See also gtk_binding_set_add_path().</p>
 <td class="doc">Deprecated</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkPathType</p>
 </div>
 <p class="api-heading">PolicyType</p>
 <p class="api-doc">Determines how the size should be computed to achieve the one of the
 visibility mode for the scrollbars.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkPolicyType</p>
 <table>
 <tr>
 <td class="name">GTK_POLICY_ALWAYS</td>
@@ -1760,13 +1758,12 @@ visibility mode for the scrollbars.</p>
  scrolled windows share a scrollbar. Since: 3.16</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkPolicyType</p>
 </div>
 <p class="api-heading">PopoverConstraint</p>
 <p class="api-doc">Describes constraints to positioning of popovers. More values
 may be added to this enumeration in the future.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkPopoverConstraint</p>
-  <p class="api-since">since 3.20</p>
 <table>
 <tr>
 <td class="name">GTK_POPOVER_CONSTRAINT_NONE</td>
@@ -1781,13 +1778,14 @@ may be added to this enumeration in the future.</p>
   of the window that it is attached to</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 3.20</p>
+  <p class="api-ctype">C type: GtkPopoverConstraint</p>
 </div>
 <p class="api-heading">PositionType</p>
 <p class="api-doc">Describes which edge of a widget a certain feature is positioned at, e.g. the
 tabs of a #GtkNotebook, the handle of a #GtkHandleBox or the label of a
 #GtkScale.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkPositionType</p>
 <table>
 <tr>
 <td class="name">GTK_POS_LEFT</td>
@@ -1810,11 +1808,11 @@ tabs of a #GtkNotebook, the handle of a #GtkHandleBox or the label of a
 <td class="doc">The feature is at the bottom edge.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkPositionType</p>
 </div>
 <p class="api-heading">PrintDuplex</p>
 <p class="api-doc">See also gtk_print_settings_set_duplex().</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkPrintDuplex</p>
 <table>
 <tr>
 <td class="name">GTK_PRINT_DUPLEX_SIMPLEX</td>
@@ -1832,12 +1830,12 @@ tabs of a #GtkNotebook, the handle of a #GtkHandleBox or the label of a
 <td class="doc">Vertical duplex.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkPrintDuplex</p>
 </div>
 <p class="api-heading">PrintError</p>
 <p class="api-doc">Error codes that identify various errors that can occur while
 using the GTK+ printing support.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkPrintError</p>
 <table>
 <tr>
 <td class="name">GTK_PRINT_ERROR_GENERAL</td>
@@ -1861,12 +1859,12 @@ using the GTK+ printing support.</p>
     or paper size from a key file.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkPrintError</p>
 </div>
 <p class="api-heading">PrintOperationAction</p>
 <p class="api-doc">The @action parameter to gtk_print_operation_run()
 determines what action the print operation should perform.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkPrintOperationAction</p>
 <table>
 <tr>
 <td class="name">GTK_PRINT_OPERATION_ACTION_PRINT_DIALOG</td>
@@ -1891,11 +1889,11 @@ determines what action the print operation should perform.</p>
     the export-filename property to be set.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkPrintOperationAction</p>
 </div>
 <p class="api-heading">PrintOperationResult</p>
 <p class="api-doc">A value of this type is returned by gtk_print_operation_run().</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkPrintOperationResult</p>
 <table>
 <tr>
 <td class="name">GTK_PRINT_OPERATION_RESULT_ERROR</td>
@@ -1920,11 +1918,11 @@ determines what action the print operation should perform.</p>
     yet. This value will only be returned when running asynchronously.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkPrintOperationResult</p>
 </div>
 <p class="api-heading">PrintPages</p>
 <p class="api-doc">See also gtk_print_job_set_pages()</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkPrintPages</p>
 <table>
 <tr>
 <td class="name">GTK_PRINT_PAGES_ALL</td>
@@ -1947,11 +1945,11 @@ determines what action the print operation should perform.</p>
 <td class="doc">Selected pages.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkPrintPages</p>
 </div>
 <p class="api-heading">PrintQuality</p>
 <p class="api-doc">See also gtk_print_settings_set_quality().</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkPrintQuality</p>
 <table>
 <tr>
 <td class="name">GTK_PRINT_QUALITY_LOW</td>
@@ -1974,12 +1972,12 @@ determines what action the print operation should perform.</p>
 <td class="doc">Draft quality.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkPrintQuality</p>
 </div>
 <p class="api-heading">PrintStatus</p>
 <p class="api-doc">The status gives a rough indication of the completion of a running
 print operation.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkPrintStatus</p>
 <table>
 <tr>
 <td class="name">GTK_PRINT_STATUS_INITIAL</td>
@@ -2033,12 +2031,11 @@ print operation.</p>
 <td class="doc">The printing has been aborted.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkPrintStatus</p>
 </div>
 <p class="api-heading">PropagationPhase</p>
 <p class="api-doc">Describes the stage at which events are fed into a #GtkEventController.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkPropagationPhase</p>
-  <p class="api-since">since 3.14</p>
 <table>
 <tr>
 <td class="name">GTK_PHASE_NONE</td>
@@ -2071,14 +2068,15 @@ print operation.</p>
   grab broken handlers for controllers in this phase to be run.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 3.14</p>
+  <p class="api-ctype">C type: GtkPropagationPhase</p>
 </div>
 <p class="api-heading">RcTokenType</p>
 <p class="api-doc">The #GtkRcTokenType enumeration represents the tokens
 in the RC file. It is exposed so that theme engines
 can reuse these tokens when parsing the theme-engine
 specific portions of a RC file.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkRcTokenType</p>
 <table>
 <tr>
 <td class="name">GTK_RC_TOKEN_INVALID</td>
@@ -2281,13 +2279,12 @@ specific portions of a RC file.</p>
 <td class="doc">Deprecated</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkRcTokenType</p>
 </div>
 <p class="api-heading">RecentChooserError</p>
 <p class="api-doc">These identify the various errors that can occur while calling
 #GtkRecentChooser functions.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkRecentChooserError</p>
-  <p class="api-since">since 2.10</p>
 <table>
 <tr>
 <td class="name">GTK_RECENT_CHOOSER_ERROR_NOT_FOUND</td>
@@ -2300,12 +2297,12 @@ specific portions of a RC file.</p>
 <td class="doc">Indicates a malformed URI</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.10</p>
+  <p class="api-ctype">C type: GtkRecentChooserError</p>
 </div>
 <p class="api-heading">RecentManagerError</p>
 <p class="api-doc">Error codes for #GtkRecentManager operations</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkRecentManagerError</p>
-  <p class="api-since">since 2.10</p>
 <table>
 <tr>
 <td class="name">GTK_RECENT_MANAGER_ERROR_NOT_FOUND</td>
@@ -2348,13 +2345,13 @@ specific portions of a RC file.</p>
 <td class="doc">unspecified error.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.10</p>
+  <p class="api-ctype">C type: GtkRecentManagerError</p>
 </div>
 <p class="api-heading">RecentSortType</p>
 <p class="api-doc">Used to specify the sorting method to be applyed to the recently
 used resource list.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkRecentSortType</p>
-  <p class="api-since">since 2.10</p>
 <table>
 <tr>
 <td class="name">GTK_RECENT_SORT_NONE</td>
@@ -2381,11 +2378,12 @@ used resource list.</p>
   function passed using gtk_recent_chooser_set_sort_func().</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 2.10</p>
+  <p class="api-ctype">C type: GtkRecentSortType</p>
 </div>
 <p class="api-heading">ReliefStyle</p>
 <p class="api-doc">Indicated the relief to be drawn around a #GtkButton.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkReliefStyle</p>
 <table>
 <tr>
 <td class="name">GTK_RELIEF_NORMAL</td>
@@ -2403,10 +2401,10 @@ used resource list.</p>
 <td class="doc">No relief.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkReliefStyle</p>
 </div>
 <p class="api-heading">ResizeMode</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkResizeMode</p>
 <table>
 <tr>
 <td class="name">GTK_RESIZE_PARENT</td>
@@ -2424,13 +2422,13 @@ used resource list.</p>
 <td class="doc">Resize immediately. Deprecated.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkResizeMode</p>
 </div>
 <p class="api-heading">ResponseType</p>
 <p class="api-doc">Predefined values for use as response ids in gtk_dialog_add_button().
 All predefined values are negative; GTK+ leaves values of 0 or greater for
 application-defined response ids.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkResponseType</p>
 <table>
 <tr>
 <td class="name">GTK_RESPONSE_NONE</td>
@@ -2489,12 +2487,12 @@ application-defined response ids.</p>
 <td class="doc">Returned by Help buttons in GTK+ dialogs</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkResponseType</p>
 </div>
 <p class="api-heading">RevealerTransitionType</p>
 <p class="api-doc">These enumeration values describe the possible transitions
 when the child of a #GtkRevealer widget is shown or hidden.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkRevealerTransitionType</p>
 <table>
 <tr>
 <td class="name">GTK_REVEALER_TRANSITION_TYPE_NONE</td>
@@ -2527,10 +2525,10 @@ when the child of a #GtkRevealer widget is shown or hidden.</p>
 <td class="doc">Slide in from the top</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkRevealerTransitionType</p>
 </div>
 <p class="api-heading">ScrollStep</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkScrollStep</p>
 <table>
 <tr>
 <td class="name">GTK_SCROLL_STEPS</td>
@@ -2563,11 +2561,11 @@ when the child of a #GtkRevealer widget is shown or hidden.</p>
 <td class="doc">Scroll to the horizontal ends.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkScrollStep</p>
 </div>
 <p class="api-heading">ScrollType</p>
 <p class="api-doc">Scrolling types.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkScrollType</p>
 <table>
 <tr>
 <td class="name">GTK_SCROLL_NONE</td>
@@ -2650,12 +2648,12 @@ when the child of a #GtkRevealer widget is shown or hidden.</p>
 <td class="doc">Scroll to end.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkScrollType</p>
 </div>
 <p class="api-heading">ScrollablePolicy</p>
 <p class="api-doc">Defines the policy to be used in a scrollable widget when updating
 the scrolled window adjustments in a given orientation.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkScrollablePolicy</p>
 <table>
 <tr>
 <td class="name">GTK_SCROLL_MINIMUM</td>
@@ -2668,11 +2666,11 @@ the scrolled window adjustments in a given orientation.</p>
 <td class="doc">Scrollable adjustments are based on the natural size</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkScrollablePolicy</p>
 </div>
 <p class="api-heading">SelectionMode</p>
 <p class="api-doc">Used to control what selections users are allowed to make.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkSelectionMode</p>
 <table>
 <tr>
 <td class="name">GTK_SELECTION_NONE</td>
@@ -2703,12 +2701,12 @@ the scrolled window adjustments in a given orientation.</p>
      Some widgets may also allow Click-drag to select a range of elements.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkSelectionMode</p>
 </div>
 <p class="api-heading">SensitivityType</p>
 <p class="api-doc">Determines how GTK+ handles the sensitivity of stepper arrows
 at the end of range widgets.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkSensitivityType</p>
 <table>
 <tr>
 <td class="name">GTK_SENSITIVITY_AUTO</td>
@@ -2727,6 +2725,8 @@ at the end of range widgets.</p>
 <td class="doc">The arrow is always insensitive</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkSensitivityType</p>
 </div>
 <p class="api-heading">ShadowType</p>
 <p class="api-doc">Used to change the appearance of an outline typically provided by a #GtkFrame.
@@ -2734,8 +2734,6 @@ at the end of range widgets.</p>
 Note that many themes do not differentiate the appearance of the
 various shadow types: Either their is no visible shadow (@GTK_SHADOW_NONE),
 or there is (any other value).</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkShadowType</p>
 <table>
 <tr>
 <td class="name">GTK_SHADOW_NONE</td>
@@ -2763,13 +2761,12 @@ or there is (any other value).</p>
 <td class="doc">The outline has a raised 3d appearance.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkShadowType</p>
 </div>
 <p class="api-heading">ShortcutType</p>
 <p class="api-doc">GtkShortcutType specifies the kind of shortcut that is being described.
 More values may be added to this enumeration over time.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkShortcutType</p>
-  <p class="api-since">since 3.20</p>
 <table>
 <tr>
 <td class="name">GTK_SHORTCUT_ACCELERATOR</td>
@@ -2814,12 +2811,13 @@ More values may be added to this enumeration over time.</p>
   used.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 3.20</p>
+  <p class="api-ctype">C type: GtkShortcutType</p>
 </div>
 <p class="api-heading">SizeGroupMode</p>
 <p class="api-doc">The mode of the size group determines the directions in which the size
 group affects the requested sizes of its component widgets.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkSizeGroupMode</p>
 <table>
 <tr>
 <td class="name">GTK_SIZE_GROUP_NONE</td>
@@ -2842,12 +2840,12 @@ group affects the requested sizes of its component widgets.</p>
 <td class="doc">group affects both horizontal and vertical requisition</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkSizeGroupMode</p>
 </div>
 <p class="api-heading">SizeRequestMode</p>
 <p class="api-doc">Specifies a preference for height-for-width or
 width-for-height geometry management.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkSizeRequestMode</p>
 <table>
 <tr>
 <td class="name">GTK_SIZE_REQUEST_HEIGHT_FOR_WIDTH</td>
@@ -2865,11 +2863,11 @@ width-for-height geometry management.</p>
 <td class="doc">Don’t trade height-for-width or width-for-height</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkSizeRequestMode</p>
 </div>
 <p class="api-heading">SortType</p>
 <p class="api-doc">Determines the direction of a sort.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkSortType</p>
 <table>
 <tr>
 <td class="name">GTK_SORT_ASCENDING</td>
@@ -2882,13 +2880,13 @@ width-for-height geometry management.</p>
 <td class="doc">Sorting is in descending order.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkSortType</p>
 </div>
 <p class="api-heading">SpinButtonUpdatePolicy</p>
 <p class="api-doc">The spin button update policy determines whether the spin button displays
 values even if they are outside the bounds of its adjustment.
 See gtk_spin_button_set_update_policy().</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkSpinButtonUpdatePolicy</p>
 <table>
 <tr>
 <td class="name">GTK_UPDATE_ALWAYS</td>
@@ -2904,12 +2902,12 @@ See gtk_spin_button_set_update_policy().</p>
     adjustment</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkSpinButtonUpdatePolicy</p>
 </div>
 <p class="api-heading">SpinType</p>
 <p class="api-doc">The values of the GtkSpinType enumeration are used to specify the
 change to make in gtk_spin_button_spin().</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkSpinType</p>
 <table>
 <tr>
 <td class="name">GTK_SPIN_STEP_FORWARD</td>
@@ -2947,14 +2945,14 @@ change to make in gtk_spin_button_spin().</p>
 <td class="doc">Change by a specified amount.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkSpinType</p>
 </div>
 <p class="api-heading">StackTransitionType</p>
 <p class="api-doc">These enumeration values describe the possible transitions
 between pages in a #GtkStack widget.
 
 New values may be added to this enumeration over time.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkStackTransitionType</p>
 <table>
 <tr>
 <td class="name">GTK_STACK_TRANSITION_TYPE_NONE</td>
@@ -3057,14 +3055,14 @@ New values may be added to this enumeration over time.</p>
 <td class="doc">Cover the old page sliding right or uncover the new page sliding left, according to order. Since: 3.14</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkStackTransitionType</p>
 </div>
 <p class="api-heading">StateType</p>
 <p class="api-doc">This type indicates the current state of a widget; the state determines how
 the widget is drawn. The #GtkStateType enumeration is also used to
 identify different colors in a #GtkStyle for drawing, so states can be
 used for subparts of a widget as well as entire widgets.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkStateType</p>
 <table>
 <tr>
 <td class="name">GTK_STATE_NORMAL</td>
@@ -3106,6 +3104,8 @@ used for subparts of a widget as well as entire widgets.</p>
 <td class="doc">The widget has the keyboard focus.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkStateType</p>
 </div>
 <p class="api-heading">TextBufferTargetInfo</p>
 <p class="api-doc">These values are used as “info” for the targets contained in the
@@ -3114,8 +3114,6 @@ gtk_text_buffer_get_paste_target_list().
 
 The values counts down from `-1` to avoid clashes
 with application added drag destinations which usually start at 0.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkTextBufferTargetInfo</p>
 <table>
 <tr>
 <td class="name">GTK_TEXT_BUFFER_TARGET_INFO_BUFFER_CONTENTS</td>
@@ -3133,11 +3131,11 @@ with application added drag destinations which usually start at 0.</p>
 <td class="doc">Text</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkTextBufferTargetInfo</p>
 </div>
 <p class="api-heading">TextDirection</p>
 <p class="api-doc">Reading directions for text.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkTextDirection</p>
 <table>
 <tr>
 <td class="name">GTK_TEXT_DIR_NONE</td>
@@ -3155,13 +3153,12 @@ with application added drag destinations which usually start at 0.</p>
 <td class="doc">Right to left text direction.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkTextDirection</p>
 </div>
 <p class="api-heading">TextExtendSelection</p>
 <p class="api-doc">Granularity types that extend the text selection. Use the
 #GtkTextView::extend-selection signal to customize the selection.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkTextExtendSelection</p>
-  <p class="api-since">since 3.16</p>
 <table>
 <tr>
 <td class="name">GTK_TEXT_EXTEND_SELECTION_WORD</td>
@@ -3176,12 +3173,13 @@ with application added drag destinations which usually start at 0.</p>
   a triple-click for example.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-since">since 3.16</p>
+  <p class="api-ctype">C type: GtkTextExtendSelection</p>
 </div>
 <p class="api-heading">TextViewLayer</p>
 <p class="api-doc">Used to reference the layers of #GtkTextView for the purpose of customized
 drawing with the ::draw_layer vfunc.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkTextViewLayer</p>
 <table>
 <tr>
 <td class="name">GTK_TEXT_VIEW_LAYER_BELOW</td>
@@ -3204,11 +3202,11 @@ drawing with the ::draw_layer vfunc.</p>
 <td class="doc">The layer rendered above the text.  Since: 3.20</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkTextViewLayer</p>
 </div>
 <p class="api-heading">TextWindowType</p>
 <p class="api-doc">Used to reference the parts of #GtkTextView.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkTextWindowType</p>
 <table>
 <tr>
 <td class="name">GTK_TEXT_WINDOW_PRIVATE</td>
@@ -3246,11 +3244,11 @@ drawing with the ::draw_layer vfunc.</p>
 <td class="doc">Bottom border window.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkTextWindowType</p>
 </div>
 <p class="api-heading">ToolbarSpaceStyle</p>
 <p class="api-doc">Whether spacers are vertical lines or just blank.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkToolbarSpaceStyle</p>
 <table>
 <tr>
 <td class="name">GTK_TOOLBAR_SPACE_EMPTY</td>
@@ -3263,6 +3261,8 @@ drawing with the ::draw_layer vfunc.</p>
 <td class="doc">Use vertical lines for spacers.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkToolbarSpaceStyle</p>
 </div>
 <p class="api-heading">ToolbarStyle</p>
 <p class="api-doc">Used to customize the appearance of a #GtkToolbar. Note that
@@ -3270,8 +3270,6 @@ setting the toolbar style overrides the user’s preferences
 for the default toolbar style.  Note that if the button has only
 a label set and GTK_TOOLBAR_ICONS is used, the label will be
 visible, and vice versa.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkToolbarStyle</p>
 <table>
 <tr>
 <td class="name">GTK_TOOLBAR_ICONS</td>
@@ -3295,13 +3293,13 @@ visible, and vice versa.</p>
  other, rather than vertically stacked</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkToolbarStyle</p>
 </div>
 <p class="api-heading">TreeViewColumnSizing</p>
 <p class="api-doc">The sizing method the column uses to determine its width.  Please note
 that @GTK_TREE_VIEW_COLUMN_AUTOSIZE are inefficient for large views, and
 can make columns appear choppy.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkTreeViewColumnSizing</p>
 <table>
 <tr>
 <td class="name">GTK_TREE_VIEW_COLUMN_GROW_ONLY</td>
@@ -3319,11 +3317,11 @@ can make columns appear choppy.</p>
 <td class="doc">Columns are a fixed numbers of pixels wide.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkTreeViewColumnSizing</p>
 </div>
 <p class="api-heading">TreeViewDropPosition</p>
 <p class="api-doc">An enum for determining where a dropped row goes.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkTreeViewDropPosition</p>
 <table>
 <tr>
 <td class="name">GTK_TREE_VIEW_DROP_BEFORE</td>
@@ -3346,11 +3344,11 @@ can make columns appear choppy.</p>
 <td class="doc">dropped row becomes a child or is inserted after</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkTreeViewDropPosition</p>
 </div>
 <p class="api-heading">TreeViewGridLines</p>
 <p class="api-doc">Used to indicate which grid lines to draw in a tree view.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkTreeViewGridLines</p>
 <table>
 <tr>
 <td class="name">GTK_TREE_VIEW_GRID_LINES_NONE</td>
@@ -3373,11 +3371,11 @@ can make columns appear choppy.</p>
 <td class="doc">Horizontal and vertical grid lines.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkTreeViewGridLines</p>
 </div>
 <p class="api-heading">Unit</p>
 <p class="api-doc">See also gtk_print_settings_set_paper_width().</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkUnit</p>
 <table>
 <tr>
 <td class="name">GTK_UNIT_NONE</td>
@@ -3400,11 +3398,11 @@ can make columns appear choppy.</p>
 <td class="doc">Dimensions in millimeters</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkUnit</p>
 </div>
 <p class="api-heading">WidgetHelpType</p>
 <p class="api-doc">Kinds of widget-specific help. Used by the ::show-help signal.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkWidgetHelpType</p>
 <table>
 <tr>
 <td class="name">GTK_WIDGET_HELP_TOOLTIP</td>
@@ -3417,13 +3415,13 @@ can make columns appear choppy.</p>
 <td class="doc">What’s this.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkWidgetHelpType</p>
 </div>
 <p class="api-heading">WindowPosition</p>
 <p class="api-doc">Window placement can be influenced using this enumeration. Note that
 using #GTK_WIN_POS_CENTER_ALWAYS is almost always a bad idea.
 It won’t necessarily work well with all window managers or on all windowing systems.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkWindowPosition</p>
 <table>
 <tr>
 <td class="name">GTK_WIN_POS_NONE</td>
@@ -3452,6 +3450,8 @@ It won’t necessarily work well with all window managers or on all windowing sy
  parent (see gtk_window_set_transient_for()).</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkWindowPosition</p>
 </div>
 <p class="api-heading">WindowType</p>
 <p class="api-doc">A #GtkWindow can be one of these types. Most things you’d consider a
@@ -3467,8 +3467,6 @@ widgets such as #GtkMenu or tooltips that you normally don’t think of
 as windows per se. Nearly all windows should be #GTK_WINDOW_TOPLEVEL.
 In particular, do not use #GTK_WINDOW_POPUP just to turn off
 the window borders; use gtk_window_set_decorated() for that.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkWindowType</p>
 <table>
 <tr>
 <td class="name">GTK_WINDOW_TOPLEVEL</td>
@@ -3481,11 +3479,11 @@ the window borders; use gtk_window_set_decorated() for that.</p>
 <td class="doc">A special window such as a tooltip.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkWindowType</p>
 </div>
 <p class="api-heading">WrapMode</p>
 <p class="api-doc">Describes a type of line wrapping.</p>
-<div class="api-notes">
-  <p class="api-ctype">GtkWrapMode</p>
 <table>
 <tr>
 <td class="name">GTK_WRAP_NONE</td>
@@ -3511,4 +3509,6 @@ the window borders; use gtk_window_set_decorated() for that.</p>
     that is not enough, also between graphemes</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: GtkWrapMode</p>
 </div>

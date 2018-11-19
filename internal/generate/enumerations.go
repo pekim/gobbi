@@ -62,11 +62,6 @@ func (ee Enumerations) generateDocs(df *DocFile, title string) {
 
 		df.writeLinef(`<p class="api-heading">%s</p>`, e.Name)
 		df.writeDocTextLine(`<p class="api-doc">%s</p>`, e.Doc)
-		df.writeLine(`<div class="api-notes">`)
-		df.writeLinef(`  <p class="api-ctype">%s</p>`, e.CType)
-		if e.Version != "" {
-			df.writeLinef(`  <p class="api-since">since %s</p>`, e.Version)
-		}
 
 		df.writeLine("<table>")
 		for _, m := range e.Members {
@@ -78,6 +73,11 @@ func (ee Enumerations) generateDocs(df *DocFile, title string) {
 		}
 		df.writeLine("</table>")
 
+		df.writeLine(`<div class="api-notes">`)
+		if e.Version != "" {
+			df.writeLinef(`  <p class="api-since">since %s</p>`, e.Version)
+		}
+		df.writeLinef(`  <p class="api-ctype">C type: %s</p>`, e.CType)
 		df.writeLine(`</div>`)
 	}
 }

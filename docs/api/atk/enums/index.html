@@ -5,7 +5,7 @@
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="revised" content="2018-11-18T20:31:41 GMT">
+<meta name="revised" content="2018-11-19T06:39:16 GMT">
 <title>enums :: gobbi</title>
 <link rel="shortcut icon" href="/gobbi/images/favicon.png" type="image/x-icon" />
 <link href="/gobbi/css/font-awesome.min.css" rel="stylesheet">
@@ -453,8 +453,6 @@
     <p><p class="api-heading">CoordType</p>
 <p class="api-doc">Specifies how xy coordinates are to be interpreted. Used by functions such
 as atk_component_get_position() and atk_text_get_character_extents()</p>
-<div class="api-notes">
-  <p class="api-ctype">AtkCoordType</p>
 <table>
 <tr>
 <td class="name">ATK_XY_SCREEN</td>
@@ -468,11 +466,11 @@ as atk_component_get_position() and atk_text_get_character_extents()</p>
 top-level window</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: AtkCoordType</p>
 </div>
 <p class="api-heading">KeyEventType</p>
 <p class="api-doc">Specifies the type of a keyboard evemt.</p>
-<div class="api-notes">
-  <p class="api-ctype">AtkKeyEventType</p>
 <table>
 <tr>
 <td class="name">ATK_KEY_EVENT_PRESS</td>
@@ -490,6 +488,8 @@ top-level window</td>
 <td class="doc">Not a valid value; specifies end of enumeration</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: AtkKeyEventType</p>
 </div>
 <p class="api-heading">Layer</p>
 <p class="api-doc">Describes the layer of a component</p>
@@ -497,8 +497,6 @@ top-level window</td>
 <p>These enumerated &ldquo;layer values&rdquo; are used when determining which UI
 rendering layer a component is drawn into, which can help in making
 determinations of when components occlude one another.</p>
-<div class="api-notes">
-  <p class="api-ctype">AtkLayer</p>
 <table>
 <tr>
 <td class="name">ATK_LAYER_INVALID</td>
@@ -541,11 +539,11 @@ determinations of when components occlude one another.</p>
 <td class="doc">This layer is used for toplevel windows.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: AtkLayer</p>
 </div>
 <p class="api-heading">RelationType</p>
 <p class="api-doc">Describes the type of the relation</p>
-<div class="api-notes">
-  <p class="api-ctype">AtkRelationType</p>
 <table>
 <tr>
 <td class="name">ATK_RELATION_NULL</td>
@@ -687,6 +685,8 @@ ATK_2.26.</td>
 <td class="doc">Not used, this value indicates the end of the enumeration.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: AtkRelationType</p>
 </div>
 <p class="api-heading">Role</p>
 <p class="api-doc">Describes the role of an object</p>
@@ -694,8 +694,6 @@ ATK_2.26.</td>
 <p>These are the built-in enumerated roles that UI components can have in
 ATK.  Other roles may be added at runtime, so an AtkRole &gt;=
 ATK_ROLE_LAST_DEFINED is not necessarily an error.</p>
-<div class="api-notes">
-  <p class="api-ctype">AtkRole</p>
 <table>
 <tr>
 <td class="name">ATK_ROLE_INVALID</td>
@@ -1378,11 +1376,11 @@ superscript. @Since: ATK-2.16.</td>
 <td class="doc">not a valid role, used for finding end of the enumeration</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: AtkRole</p>
 </div>
 <p class="api-heading">StateType</p>
 <p class="api-doc">The possible types of states of an object</p>
-<div class="api-notes">
-  <p class="api-ctype">AtkStateType</p>
 <table>
 <tr>
 <td class="name">ATK_STATE_INVALID</td>
@@ -1662,11 +1660,11 @@ ATK_STATE_EDITABLE. @Since: ATK-2-16</td>
 <td class="doc">Not a valid state, used for finding end of enumeration</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: AtkStateType</p>
 </div>
 <p class="api-heading">TextAttribute</p>
 <p class="api-doc">Describes the text attributes supported</p>
-<div class="api-notes">
-  <p class="api-ctype">AtkTextAttribute</p>
 <table>
 <tr>
 <td class="name">ATK_TEXT_ATTR_INVALID</td>
@@ -1814,13 +1812,13 @@ ATK_STATE_EDITABLE. @Since: ATK-2-16</td>
 <td class="doc">not a valid text attribute, used for finding end of enumeration</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: AtkTextAttribute</p>
 </div>
 <p class="api-heading">TextBoundary</p>
 <p class="api-doc">Text boundary types used for specifying boundaries for regions of text.
 This enumeration is deprecated since 2.9.4 and should not be used. Use
 AtkTextGranularity with #atk_text_get_string_at_offset instead.</p>
-<div class="api-notes">
-  <p class="api-ctype">AtkTextBoundary</p>
 <table>
 <tr>
 <td class="name">ATK_TEXT_BOUNDARY_CHAR</td>
@@ -1865,11 +1863,11 @@ character immediately following a newline, linefeed, or return character.</td>
 character.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: AtkTextBoundary</p>
 </div>
 <p class="api-heading">TextClipType</p>
 <p class="api-doc">Describes the type of clipping required.</p>
-<div class="api-notes">
-  <p class="api-ctype">AtkTextClipType</p>
 <table>
 <tr>
 <td class="name">ATK_TEXT_CLIP_NONE</td>
@@ -1892,12 +1890,12 @@ character.</td>
 <td class="doc">Only text fully within mix/max bound is retained</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: AtkTextClipType</p>
 </div>
 <p class="api-heading">TextGranularity</p>
 <p class="api-doc">Text granularity types used for specifying the granularity of the region of
 text we are interested in.</p>
-<div class="api-notes">
-  <p class="api-ctype">AtkTextGranularity</p>
 <table>
 <tr>
 <td class="name">ATK_TEXT_GRANULARITY_CHAR</td>
@@ -1934,13 +1932,13 @@ starting at the beginning of the current paragraph and finishing at the beginnin
 the following one, if present.</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: AtkTextGranularity</p>
 </div>
 <p class="api-heading">ValueType</p>
 <p class="api-doc">Default types for a given value. Those are defined in order to
 easily get localized strings to describe a given value or a given
 subrange, using atk_value_type_get_localized_name().</p>
-<div class="api-notes">
-  <p class="api-ctype">AtkValueType</p>
 <table>
 <tr>
 <td class="name">ATK_VALUE_VERY_WEAK</td>
@@ -2007,6 +2005,8 @@ subrange, using atk_value_type_get_localized_name().</p>
 <td class="value">15</td>
 </tr>
 </table>
+<div class="api-notes">
+  <p class="api-ctype">C type: AtkValueType</p>
 </div></p>
 
 
