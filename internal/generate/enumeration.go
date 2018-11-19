@@ -2,7 +2,6 @@ package generate
 
 import (
 	"github.com/dave/jennifer/jen"
-	"strings"
 )
 
 type Enumeration struct {
@@ -76,27 +75,4 @@ func (e *Enumeration) generate(g *jen.Group, version *Version) {
 			member.generate(g, e.goTypeName)
 		}
 	})
-}
-
-func (e *Enumeration) generateDocs(file *DocFile) {
-	doc := ""
-	if e.Doc != nil {
-		doc = e.Doc.Text
-		// escape any '#'s
-		doc = strings.Replace(doc, "\n#", "\n&num;", -1)
-	}
-
-	file.writeLinef("## `%s`", e.Name)
-	file.writeLine("")
-
-	file.writeLine(doc)
-	file.writeLine("")
-
-	file.writeLinef("C - `%s`", e.CType)
-	file.writeLine("")
-
-	for _, member := range e.Members {
-		member.generateDocs(file)
-	}
-	file.writeLine("")
 }
