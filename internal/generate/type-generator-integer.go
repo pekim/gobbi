@@ -47,7 +47,7 @@ func (t *TypeGeneratorInteger) isSupportedAsReturnValue() (supported bool, reaso
 }
 
 func (t *TypeGeneratorInteger) isSupportedAsReturnCValue() (supported bool, reason string) {
-	return false, ""
+	return true, ""
 }
 
 func (t *TypeGeneratorInteger) generateDeclaration(g *jen.Group, goVarName string) {
@@ -105,6 +105,7 @@ func (t *TypeGeneratorInteger) generateReturnFunctionDeclaration(g *jen.Group) {
 }
 
 func (t *TypeGeneratorInteger) generateReturnFunctionDeclarationCtype(g *jen.Group) {
+	g.Qual("C", t.typ.CType)
 }
 
 func (t *TypeGeneratorInteger) generateReturnCToGo(g *jen.Group, isParam bool,

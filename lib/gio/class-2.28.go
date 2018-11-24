@@ -34,6 +34,15 @@ import (
 */
 /*
 
+	gint application_commandLineHandler(GObject *, GApplicationCommandLine *, gpointer);
+
+	static gulong Application_signal_connect_command_line(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "command-line", G_CALLBACK(application_commandLineHandler), data);
+	}
+
+*/
+/*
+
 	void application_shutdownHandler(GObject *, gpointer);
 
 	static gulong Application_signal_connect_shutdown(gpointer instance, gpointer data) {
@@ -143,7 +152,67 @@ func application_activateHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// Unsupported signal 'command-line' for Application : return value gint :
+type signalApplicationCommandLineDetail struct {
+	callback  ApplicationSignalCommandLineCallback
+	handlerID C.gulong
+}
+
+var signalApplicationCommandLineId int
+var signalApplicationCommandLineMap = make(map[int]signalApplicationCommandLineDetail)
+var signalApplicationCommandLineLock sync.Mutex
+
+// ApplicationSignalCommandLineCallback is a callback function for a 'command-line' signal emitted from a Application.
+type ApplicationSignalCommandLineCallback func(commandLine *ApplicationCommandLine) int32
+
+/*
+ConnectCommandLine connects the callback to the 'command-line' signal for the Application.
+
+The returned value represents the connection, and may be passed to DisconnectCommandLine to remove it.
+*/
+func (recv *Application) ConnectCommandLine(callback ApplicationSignalCommandLineCallback) int {
+	signalApplicationCommandLineLock.Lock()
+	defer signalApplicationCommandLineLock.Unlock()
+
+	signalApplicationCommandLineId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Application_signal_connect_command_line(instance, C.gpointer(uintptr(signalApplicationCommandLineId)))
+
+	detail := signalApplicationCommandLineDetail{callback, handlerID}
+	signalApplicationCommandLineMap[signalApplicationCommandLineId] = detail
+
+	return signalApplicationCommandLineId
+}
+
+/*
+DisconnectCommandLine disconnects a callback from the 'command-line' signal for the Application.
+
+The connectionID should be a value returned from a call to ConnectCommandLine.
+*/
+func (recv *Application) DisconnectCommandLine(connectionID int) {
+	signalApplicationCommandLineLock.Lock()
+	defer signalApplicationCommandLineLock.Unlock()
+
+	detail, exists := signalApplicationCommandLineMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalApplicationCommandLineMap, connectionID)
+}
+
+//export application_commandLineHandler
+func application_commandLineHandler(_ *C.GObject, c_command_line *C.GApplicationCommandLine, data C.gpointer) C.gint {
+	commandLine := ApplicationCommandLineNewFromC(unsafe.Pointer(c_command_line))
+
+	index := int(uintptr(data))
+	callback := signalApplicationCommandLineMap[index].callback
+	retGo := callback(commandLine)
+	retC :=
+		(C.gint)(retGo)
+	return retC
+}
 
 // Unsupported signal 'open' for Application : unsupported parameter files : no param type
 
