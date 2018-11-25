@@ -425,7 +425,7 @@ func (recv *InetSocketAddress) GetPort() uint16 {
 	return retGo
 }
 
-// Unsupported signal 'show-processes' for MountOperation : unsupported parameter message : type utf8 :
+// Unsupported signal 'show-processes' for MountOperation : unsupported parameter processes :
 
 // NetworkAddressNew is a wrapper around the C function g_network_address_new.
 func NetworkAddressNew(hostname string, port uint16) *NetworkAddress {

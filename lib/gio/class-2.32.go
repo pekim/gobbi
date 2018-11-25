@@ -6,6 +6,7 @@ package gio
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
+	"sync"
 	"unsafe"
 )
 
@@ -22,6 +23,15 @@ import (
 // #include <gio/gunixoutputstream.h>
 // #include <gio/gunixsocketaddress.h>
 // #include <stdlib.h>
+/*
+
+	void menumodel_itemsChangedHandler(GObject *, gint, gint, gint, gpointer);
+
+	static gulong MenuModel_signal_connect_items_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "items-changed", G_CALLBACK(menumodel_itemsChangedHandler), data);
+	}
+
+*/
 import "C"
 
 // Unsupported : g_app_launch_context_get_environment : no return type
@@ -849,7 +859,63 @@ func CastToMenuModel(object *gobject.Object) *MenuModel {
 	return MenuModelNewFromC(object.ToC())
 }
 
-// Unsupported signal 'items-changed' for MenuModel : unsupported parameter position : type gint :
+type signalMenuModelItemsChangedDetail struct {
+	callback  MenuModelSignalItemsChangedCallback
+	handlerID C.gulong
+}
+
+var signalMenuModelItemsChangedId int
+var signalMenuModelItemsChangedMap = make(map[int]signalMenuModelItemsChangedDetail)
+var signalMenuModelItemsChangedLock sync.Mutex
+
+// MenuModelSignalItemsChangedCallback is a callback function for a 'items-changed' signal emitted from a MenuModel.
+type MenuModelSignalItemsChangedCallback func(position int32, removed int32, added int32)
+
+/*
+ConnectItemsChanged connects the callback to the 'items-changed' signal for the MenuModel.
+
+The returned value represents the connection, and may be passed to DisconnectItemsChanged to remove it.
+*/
+func (recv *MenuModel) ConnectItemsChanged(callback MenuModelSignalItemsChangedCallback) int {
+	signalMenuModelItemsChangedLock.Lock()
+	defer signalMenuModelItemsChangedLock.Unlock()
+
+	signalMenuModelItemsChangedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.MenuModel_signal_connect_items_changed(instance, C.gpointer(uintptr(signalMenuModelItemsChangedId)))
+
+	detail := signalMenuModelItemsChangedDetail{callback, handlerID}
+	signalMenuModelItemsChangedMap[signalMenuModelItemsChangedId] = detail
+
+	return signalMenuModelItemsChangedId
+}
+
+/*
+DisconnectItemsChanged disconnects a callback from the 'items-changed' signal for the MenuModel.
+
+The connectionID should be a value returned from a call to ConnectItemsChanged.
+*/
+func (recv *MenuModel) DisconnectItemsChanged(connectionID int) {
+	signalMenuModelItemsChangedLock.Lock()
+	defer signalMenuModelItemsChangedLock.Unlock()
+
+	detail, exists := signalMenuModelItemsChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalMenuModelItemsChangedMap, connectionID)
+}
+
+//export menumodel_itemsChangedHandler
+func menumodel_itemsChangedHandler(_ *C.GObject, c_position C.gint, c_removed C.gint, c_added C.gint, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalMenuModelItemsChangedMap[index].callback
+	callback(position, removed, added)
+}
 
 // Unsupported : g_menu_model_get_item_attribute : unsupported parameter ... : varargs
 

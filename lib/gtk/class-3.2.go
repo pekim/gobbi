@@ -32,6 +32,15 @@ import (
 	}
 
 */
+/*
+
+	void menushell_insertHandler(GObject *, GtkWidget *, gint, gpointer);
+
+	static gulong MenuShell_signal_connect_insert(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "insert", G_CALLBACK(menushell_insertHandler), data);
+	}
+
+*/
 import "C"
 
 // GetMinimumIncrement is a wrapper around the C function gtk_adjustment_get_minimum_increment.
@@ -381,7 +390,64 @@ func (recv *LockButton) SetPermission(permission *gio.Permission) {
 	return
 }
 
-// Unsupported signal 'insert' for MenuShell : unsupported parameter position : type gint :
+type signalMenuShellInsertDetail struct {
+	callback  MenuShellSignalInsertCallback
+	handlerID C.gulong
+}
+
+var signalMenuShellInsertId int
+var signalMenuShellInsertMap = make(map[int]signalMenuShellInsertDetail)
+var signalMenuShellInsertLock sync.Mutex
+
+// MenuShellSignalInsertCallback is a callback function for a 'insert' signal emitted from a MenuShell.
+type MenuShellSignalInsertCallback func(child *Widget, position int32)
+
+/*
+ConnectInsert connects the callback to the 'insert' signal for the MenuShell.
+
+The returned value represents the connection, and may be passed to DisconnectInsert to remove it.
+*/
+func (recv *MenuShell) ConnectInsert(callback MenuShellSignalInsertCallback) int {
+	signalMenuShellInsertLock.Lock()
+	defer signalMenuShellInsertLock.Unlock()
+
+	signalMenuShellInsertId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.MenuShell_signal_connect_insert(instance, C.gpointer(uintptr(signalMenuShellInsertId)))
+
+	detail := signalMenuShellInsertDetail{callback, handlerID}
+	signalMenuShellInsertMap[signalMenuShellInsertId] = detail
+
+	return signalMenuShellInsertId
+}
+
+/*
+DisconnectInsert disconnects a callback from the 'insert' signal for the MenuShell.
+
+The connectionID should be a value returned from a call to ConnectInsert.
+*/
+func (recv *MenuShell) DisconnectInsert(connectionID int) {
+	signalMenuShellInsertLock.Lock()
+	defer signalMenuShellInsertLock.Unlock()
+
+	detail, exists := signalMenuShellInsertMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalMenuShellInsertMap, connectionID)
+}
+
+//export menushell_insertHandler
+func menushell_insertHandler(_ *C.GObject, c_child *C.GtkWidget, c_position C.gint, data C.gpointer) {
+	child := WidgetNewFromC(unsafe.Pointer(c_child))
+
+	index := int(uintptr(data))
+	callback := signalMenuShellInsertMap[index].callback
+	callback(child, position)
+}
 
 // OverlayNew is a wrapper around the C function gtk_overlay_new.
 func OverlayNew() *Overlay {

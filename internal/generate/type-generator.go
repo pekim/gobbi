@@ -11,6 +11,7 @@ type TypeGenerator interface {
 	isSupportedAsParam(direction string) (supported bool, reason string)
 	isSupportedAsParamC() (supported bool, reason string)
 	isSupportedAsArrayParam(direction string) (supported bool, reason string)
+	isSupportedAsArrayParamC(direction string) (supported bool, reason string)
 	isSupportedAsReturnValue() (supported bool, reason string)
 	isSupportedAsReturnCValue() (supported bool, reason string)
 

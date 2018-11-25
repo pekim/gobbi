@@ -51,6 +51,33 @@ import (
 */
 /*
 
+	void settings_changedHandler(GObject *, gchar*, gpointer);
+
+	static gulong Settings_signal_connect_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "changed", G_CALLBACK(settings_changedHandler), data);
+	}
+
+*/
+/*
+
+	gboolean settings_writableChangeEventHandler(GObject *, guint, gpointer);
+
+	static gulong Settings_signal_connect_writable_change_event(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "writable-change-event", G_CALLBACK(settings_writableChangeEventHandler), data);
+	}
+
+*/
+/*
+
+	void settings_writableChangedHandler(GObject *, gchar*, gpointer);
+
+	static gulong Settings_signal_connect_writable_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "writable-changed", G_CALLBACK(settings_writableChangedHandler), data);
+	}
+
+*/
+/*
+
 	void unixmountmonitor_mountpointsChangedHandler(GObject *, gpointer);
 
 	static gulong UnixMountMonitor_signal_connect_mountpoints_changed(gpointer instance, gpointer data) {
@@ -3623,9 +3650,9 @@ func CastToMountOperation(object *gobject.Object) *MountOperation {
 	return MountOperationNewFromC(object.ToC())
 }
 
-// Unsupported signal 'ask-password' for MountOperation : unsupported parameter message : type utf8 :
+// Unsupported signal 'ask-password' for MountOperation : unsupported parameter flags : type AskPasswordFlags :
 
-// Unsupported signal 'ask-question' for MountOperation : unsupported parameter message : type utf8 :
+// Unsupported signal 'ask-question' for MountOperation : unsupported parameter choices :
 
 // Unsupported signal 'reply' for MountOperation : unsupported parameter result : type MountOperationResult :
 
@@ -4354,13 +4381,184 @@ func CastToSettings(object *gobject.Object) *Settings {
 	return SettingsNewFromC(object.ToC())
 }
 
-// Unsupported signal 'change-event' for Settings : unsupported parameter keys : no param type
+// Unsupported signal 'change-event' for Settings : unsupported parameter keys :
 
-// Unsupported signal 'changed' for Settings : unsupported parameter key : type utf8 :
+type signalSettingsChangedDetail struct {
+	callback  SettingsSignalChangedCallback
+	handlerID C.gulong
+}
 
-// Unsupported signal 'writable-change-event' for Settings : unsupported parameter key : type guint :
+var signalSettingsChangedId int
+var signalSettingsChangedMap = make(map[int]signalSettingsChangedDetail)
+var signalSettingsChangedLock sync.Mutex
 
-// Unsupported signal 'writable-changed' for Settings : unsupported parameter key : type utf8 :
+// SettingsSignalChangedCallback is a callback function for a 'changed' signal emitted from a Settings.
+type SettingsSignalChangedCallback func(key string)
+
+/*
+ConnectChanged connects the callback to the 'changed' signal for the Settings.
+
+The returned value represents the connection, and may be passed to DisconnectChanged to remove it.
+*/
+func (recv *Settings) ConnectChanged(callback SettingsSignalChangedCallback) int {
+	signalSettingsChangedLock.Lock()
+	defer signalSettingsChangedLock.Unlock()
+
+	signalSettingsChangedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Settings_signal_connect_changed(instance, C.gpointer(uintptr(signalSettingsChangedId)))
+
+	detail := signalSettingsChangedDetail{callback, handlerID}
+	signalSettingsChangedMap[signalSettingsChangedId] = detail
+
+	return signalSettingsChangedId
+}
+
+/*
+DisconnectChanged disconnects a callback from the 'changed' signal for the Settings.
+
+The connectionID should be a value returned from a call to ConnectChanged.
+*/
+func (recv *Settings) DisconnectChanged(connectionID int) {
+	signalSettingsChangedLock.Lock()
+	defer signalSettingsChangedLock.Unlock()
+
+	detail, exists := signalSettingsChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalSettingsChangedMap, connectionID)
+}
+
+//export settings_changedHandler
+func settings_changedHandler(_ *C.GObject, c_key C.gchar, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalSettingsChangedMap[index].callback
+	callback(key)
+}
+
+type signalSettingsWritableChangeEventDetail struct {
+	callback  SettingsSignalWritableChangeEventCallback
+	handlerID C.gulong
+}
+
+var signalSettingsWritableChangeEventId int
+var signalSettingsWritableChangeEventMap = make(map[int]signalSettingsWritableChangeEventDetail)
+var signalSettingsWritableChangeEventLock sync.Mutex
+
+// SettingsSignalWritableChangeEventCallback is a callback function for a 'writable-change-event' signal emitted from a Settings.
+type SettingsSignalWritableChangeEventCallback func(key uint32) bool
+
+/*
+ConnectWritableChangeEvent connects the callback to the 'writable-change-event' signal for the Settings.
+
+The returned value represents the connection, and may be passed to DisconnectWritableChangeEvent to remove it.
+*/
+func (recv *Settings) ConnectWritableChangeEvent(callback SettingsSignalWritableChangeEventCallback) int {
+	signalSettingsWritableChangeEventLock.Lock()
+	defer signalSettingsWritableChangeEventLock.Unlock()
+
+	signalSettingsWritableChangeEventId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Settings_signal_connect_writable_change_event(instance, C.gpointer(uintptr(signalSettingsWritableChangeEventId)))
+
+	detail := signalSettingsWritableChangeEventDetail{callback, handlerID}
+	signalSettingsWritableChangeEventMap[signalSettingsWritableChangeEventId] = detail
+
+	return signalSettingsWritableChangeEventId
+}
+
+/*
+DisconnectWritableChangeEvent disconnects a callback from the 'writable-change-event' signal for the Settings.
+
+The connectionID should be a value returned from a call to ConnectWritableChangeEvent.
+*/
+func (recv *Settings) DisconnectWritableChangeEvent(connectionID int) {
+	signalSettingsWritableChangeEventLock.Lock()
+	defer signalSettingsWritableChangeEventLock.Unlock()
+
+	detail, exists := signalSettingsWritableChangeEventMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalSettingsWritableChangeEventMap, connectionID)
+}
+
+//export settings_writableChangeEventHandler
+func settings_writableChangeEventHandler(_ *C.GObject, c_key C.guint, data C.gpointer) C.gboolean {
+
+	index := int(uintptr(data))
+	callback := signalSettingsWritableChangeEventMap[index].callback
+	retGo := callback(key)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
+}
+
+type signalSettingsWritableChangedDetail struct {
+	callback  SettingsSignalWritableChangedCallback
+	handlerID C.gulong
+}
+
+var signalSettingsWritableChangedId int
+var signalSettingsWritableChangedMap = make(map[int]signalSettingsWritableChangedDetail)
+var signalSettingsWritableChangedLock sync.Mutex
+
+// SettingsSignalWritableChangedCallback is a callback function for a 'writable-changed' signal emitted from a Settings.
+type SettingsSignalWritableChangedCallback func(key string)
+
+/*
+ConnectWritableChanged connects the callback to the 'writable-changed' signal for the Settings.
+
+The returned value represents the connection, and may be passed to DisconnectWritableChanged to remove it.
+*/
+func (recv *Settings) ConnectWritableChanged(callback SettingsSignalWritableChangedCallback) int {
+	signalSettingsWritableChangedLock.Lock()
+	defer signalSettingsWritableChangedLock.Unlock()
+
+	signalSettingsWritableChangedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Settings_signal_connect_writable_changed(instance, C.gpointer(uintptr(signalSettingsWritableChangedId)))
+
+	detail := signalSettingsWritableChangedDetail{callback, handlerID}
+	signalSettingsWritableChangedMap[signalSettingsWritableChangedId] = detail
+
+	return signalSettingsWritableChangedId
+}
+
+/*
+DisconnectWritableChanged disconnects a callback from the 'writable-changed' signal for the Settings.
+
+The connectionID should be a value returned from a call to ConnectWritableChanged.
+*/
+func (recv *Settings) DisconnectWritableChanged(connectionID int) {
+	signalSettingsWritableChangedLock.Lock()
+	defer signalSettingsWritableChangedLock.Unlock()
+
+	detail, exists := signalSettingsWritableChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalSettingsWritableChangedMap, connectionID)
+}
+
+//export settings_writableChangedHandler
+func settings_writableChangedHandler(_ *C.GObject, c_key C.gchar, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalSettingsWritableChangedMap[index].callback
+	callback(key)
+}
 
 // Apply is a wrapper around the C function g_settings_apply.
 func (recv *Settings) Apply() {

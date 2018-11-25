@@ -39,6 +39,15 @@ import (
 	}
 
 */
+/*
+
+	void dragcontext_dropPerformedHandler(GObject *, gint, gpointer);
+
+	static gulong DragContext_signal_connect_drop_performed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "drop-performed", G_CALLBACK(dragcontext_dropPerformedHandler), data);
+	}
+
+*/
 import "C"
 
 // GetSeat is a wrapper around the C function gdk_device_get_seat.
@@ -244,7 +253,63 @@ func dragcontext_dndFinishedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// Unsupported signal 'drop-performed' for DragContext : unsupported parameter time : type gint :
+type signalDragContextDropPerformedDetail struct {
+	callback  DragContextSignalDropPerformedCallback
+	handlerID C.gulong
+}
+
+var signalDragContextDropPerformedId int
+var signalDragContextDropPerformedMap = make(map[int]signalDragContextDropPerformedDetail)
+var signalDragContextDropPerformedLock sync.Mutex
+
+// DragContextSignalDropPerformedCallback is a callback function for a 'drop-performed' signal emitted from a DragContext.
+type DragContextSignalDropPerformedCallback func(time int32)
+
+/*
+ConnectDropPerformed connects the callback to the 'drop-performed' signal for the DragContext.
+
+The returned value represents the connection, and may be passed to DisconnectDropPerformed to remove it.
+*/
+func (recv *DragContext) ConnectDropPerformed(callback DragContextSignalDropPerformedCallback) int {
+	signalDragContextDropPerformedLock.Lock()
+	defer signalDragContextDropPerformedLock.Unlock()
+
+	signalDragContextDropPerformedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.DragContext_signal_connect_drop_performed(instance, C.gpointer(uintptr(signalDragContextDropPerformedId)))
+
+	detail := signalDragContextDropPerformedDetail{callback, handlerID}
+	signalDragContextDropPerformedMap[signalDragContextDropPerformedId] = detail
+
+	return signalDragContextDropPerformedId
+}
+
+/*
+DisconnectDropPerformed disconnects a callback from the 'drop-performed' signal for the DragContext.
+
+The connectionID should be a value returned from a call to ConnectDropPerformed.
+*/
+func (recv *DragContext) DisconnectDropPerformed(connectionID int) {
+	signalDragContextDropPerformedLock.Lock()
+	defer signalDragContextDropPerformedLock.Unlock()
+
+	detail, exists := signalDragContextDropPerformedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalDragContextDropPerformedMap, connectionID)
+}
+
+//export dragcontext_dropPerformedHandler
+func dragcontext_dropPerformedHandler(_ *C.GObject, c_time C.gint, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalDragContextDropPerformedMap[index].callback
+	callback(time)
+}
 
 // GetDragWindow is a wrapper around the C function gdk_drag_context_get_drag_window.
 func (recv *DragContext) GetDragWindow() *Window {

@@ -22,6 +22,10 @@ func (t *TypeGeneratorBoolean) isSupportedAsArrayParam(direction string) (suppor
 	return true, ""
 }
 
+func (t *TypeGeneratorBoolean) isSupportedAsArrayParamC(direction string) (supported bool, reason string) {
+	return false, ""
+}
+
 func (t *TypeGeneratorBoolean) isSupportedAsParamC() (supported bool, reason string) {
 	return true, ""
 }

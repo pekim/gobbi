@@ -19,6 +19,15 @@ import (
 // #include <stdlib.h>
 /*
 
+	gboolean statusicon_queryTooltipHandler(GObject *, gint, gint, gboolean, GtkTooltip *, gpointer);
+
+	static gulong StatusIcon_signal_connect_query_tooltip(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "query-tooltip", G_CALLBACK(statusicon_queryTooltipHandler), data);
+	}
+
+*/
+/*
+
 	gboolean statusicon_scrollEventHandler(GObject *, GdkEventScroll *, gpointer);
 
 	static gulong StatusIcon_signal_connect_scroll_event(gpointer instance, gpointer data) {
@@ -693,7 +702,70 @@ func (recv *Scale) ClearMarks() {
 	return
 }
 
-// Unsupported signal 'query-tooltip' for StatusIcon : unsupported parameter x : type gint :
+type signalStatusIconQueryTooltipDetail struct {
+	callback  StatusIconSignalQueryTooltipCallback
+	handlerID C.gulong
+}
+
+var signalStatusIconQueryTooltipId int
+var signalStatusIconQueryTooltipMap = make(map[int]signalStatusIconQueryTooltipDetail)
+var signalStatusIconQueryTooltipLock sync.Mutex
+
+// StatusIconSignalQueryTooltipCallback is a callback function for a 'query-tooltip' signal emitted from a StatusIcon.
+type StatusIconSignalQueryTooltipCallback func(x int32, y int32, keyboardMode bool, tooltip *Tooltip) bool
+
+/*
+ConnectQueryTooltip connects the callback to the 'query-tooltip' signal for the StatusIcon.
+
+The returned value represents the connection, and may be passed to DisconnectQueryTooltip to remove it.
+*/
+func (recv *StatusIcon) ConnectQueryTooltip(callback StatusIconSignalQueryTooltipCallback) int {
+	signalStatusIconQueryTooltipLock.Lock()
+	defer signalStatusIconQueryTooltipLock.Unlock()
+
+	signalStatusIconQueryTooltipId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.StatusIcon_signal_connect_query_tooltip(instance, C.gpointer(uintptr(signalStatusIconQueryTooltipId)))
+
+	detail := signalStatusIconQueryTooltipDetail{callback, handlerID}
+	signalStatusIconQueryTooltipMap[signalStatusIconQueryTooltipId] = detail
+
+	return signalStatusIconQueryTooltipId
+}
+
+/*
+DisconnectQueryTooltip disconnects a callback from the 'query-tooltip' signal for the StatusIcon.
+
+The connectionID should be a value returned from a call to ConnectQueryTooltip.
+*/
+func (recv *StatusIcon) DisconnectQueryTooltip(connectionID int) {
+	signalStatusIconQueryTooltipLock.Lock()
+	defer signalStatusIconQueryTooltipLock.Unlock()
+
+	detail, exists := signalStatusIconQueryTooltipMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalStatusIconQueryTooltipMap, connectionID)
+}
+
+//export statusicon_queryTooltipHandler
+func statusicon_queryTooltipHandler(_ *C.GObject, c_x C.gint, c_y C.gint, c_keyboard_mode C.gboolean, c_tooltip *C.GtkTooltip, data C.gpointer) C.gboolean {
+
+	keyboardMode := c_keyboard_mode == C.TRUE
+
+	tooltip := TooltipNewFromC(unsafe.Pointer(c_tooltip))
+
+	index := int(uintptr(data))
+	callback := signalStatusIconQueryTooltipMap[index].callback
+	retGo := callback(x, y, keyboardMode, tooltip)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
+}
 
 type signalStatusIconScrollEventDetail struct {
 	callback  StatusIconSignalScrollEventCallback

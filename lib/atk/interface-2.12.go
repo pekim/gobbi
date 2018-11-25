@@ -5,15 +5,90 @@ package atk
 
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
+	"sync"
 	"unsafe"
 )
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <atk/atk.h>
 // #include <stdlib.h>
+/*
+
+	void document_pageChangedHandler(GObject *, gint, gpointer);
+
+	static gulong Document_signal_connect_page_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "page-changed", G_CALLBACK(document_pageChangedHandler), data);
+	}
+
+*/
+/*
+
+	void value_valueChangedHandler(GObject *, gdouble, gchar*, gpointer);
+
+	static gulong Value_signal_connect_value_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "value-changed", G_CALLBACK(value_valueChangedHandler), data);
+	}
+
+*/
 import "C"
 
-// Unsupported signal 'page-changed' for Document : unsupported parameter page_number : type gint :
+type signalDocumentPageChangedDetail struct {
+	callback  DocumentSignalPageChangedCallback
+	handlerID C.gulong
+}
+
+var signalDocumentPageChangedId int
+var signalDocumentPageChangedMap = make(map[int]signalDocumentPageChangedDetail)
+var signalDocumentPageChangedLock sync.Mutex
+
+// DocumentSignalPageChangedCallback is a callback function for a 'page-changed' signal emitted from a Document.
+type DocumentSignalPageChangedCallback func(pageNumber int32)
+
+/*
+ConnectPageChanged connects the callback to the 'page-changed' signal for the Document.
+
+The returned value represents the connection, and may be passed to DisconnectPageChanged to remove it.
+*/
+func (recv *Document) ConnectPageChanged(callback DocumentSignalPageChangedCallback) int {
+	signalDocumentPageChangedLock.Lock()
+	defer signalDocumentPageChangedLock.Unlock()
+
+	signalDocumentPageChangedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Document_signal_connect_page_changed(instance, C.gpointer(uintptr(signalDocumentPageChangedId)))
+
+	detail := signalDocumentPageChangedDetail{callback, handlerID}
+	signalDocumentPageChangedMap[signalDocumentPageChangedId] = detail
+
+	return signalDocumentPageChangedId
+}
+
+/*
+DisconnectPageChanged disconnects a callback from the 'page-changed' signal for the Document.
+
+The connectionID should be a value returned from a call to ConnectPageChanged.
+*/
+func (recv *Document) DisconnectPageChanged(connectionID int) {
+	signalDocumentPageChangedLock.Lock()
+	defer signalDocumentPageChangedLock.Unlock()
+
+	detail, exists := signalDocumentPageChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalDocumentPageChangedMap, connectionID)
+}
+
+//export document_pageChangedHandler
+func document_pageChangedHandler(_ *C.GObject, c_page_number C.gint, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalDocumentPageChangedMap[index].callback
+	callback(pageNumber)
+}
 
 // GetCurrentPageNumber is a wrapper around the C function atk_document_get_current_page_number.
 func (recv *Document) GetCurrentPageNumber() int32 {
@@ -99,7 +174,63 @@ func (recv *TableCell) GetTable() *Object {
 	return retGo
 }
 
-// Unsupported signal 'value-changed' for Value : unsupported parameter value : type gdouble :
+type signalValueValueChangedDetail struct {
+	callback  ValueSignalValueChangedCallback
+	handlerID C.gulong
+}
+
+var signalValueValueChangedId int
+var signalValueValueChangedMap = make(map[int]signalValueValueChangedDetail)
+var signalValueValueChangedLock sync.Mutex
+
+// ValueSignalValueChangedCallback is a callback function for a 'value-changed' signal emitted from a Value.
+type ValueSignalValueChangedCallback func(value float64, text string)
+
+/*
+ConnectValueChanged connects the callback to the 'value-changed' signal for the Value.
+
+The returned value represents the connection, and may be passed to DisconnectValueChanged to remove it.
+*/
+func (recv *Value) ConnectValueChanged(callback ValueSignalValueChangedCallback) int {
+	signalValueValueChangedLock.Lock()
+	defer signalValueValueChangedLock.Unlock()
+
+	signalValueValueChangedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Value_signal_connect_value_changed(instance, C.gpointer(uintptr(signalValueValueChangedId)))
+
+	detail := signalValueValueChangedDetail{callback, handlerID}
+	signalValueValueChangedMap[signalValueValueChangedId] = detail
+
+	return signalValueValueChangedId
+}
+
+/*
+DisconnectValueChanged disconnects a callback from the 'value-changed' signal for the Value.
+
+The connectionID should be a value returned from a call to ConnectValueChanged.
+*/
+func (recv *Value) DisconnectValueChanged(connectionID int) {
+	signalValueValueChangedLock.Lock()
+	defer signalValueValueChangedLock.Unlock()
+
+	detail, exists := signalValueValueChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalValueValueChangedMap, connectionID)
+}
+
+//export value_valueChangedHandler
+func value_valueChangedHandler(_ *C.GObject, c_value C.gdouble, c_text C.gchar, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalValueValueChangedMap[index].callback
+	callback(value, text)
+}
 
 // GetIncrement is a wrapper around the C function atk_value_get_increment.
 func (recv *Value) GetIncrement() float64 {

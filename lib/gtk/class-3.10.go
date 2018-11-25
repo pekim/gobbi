@@ -48,6 +48,33 @@ import (
 */
 /*
 
+	gint placessidebar_dragActionAskHandler(GObject *, gint, gpointer);
+
+	static gulong PlacesSidebar_signal_connect_drag_action_ask(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "drag-action-ask", G_CALLBACK(placessidebar_dragActionAskHandler), data);
+	}
+
+*/
+/*
+
+	gint placessidebar_dragActionRequestedHandler(GObject *, GdkDragContext *, GFile *, gpointer, gpointer);
+
+	static gulong PlacesSidebar_signal_connect_drag_action_requested(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "drag-action-requested", G_CALLBACK(placessidebar_dragActionRequestedHandler), data);
+	}
+
+*/
+/*
+
+	void placessidebar_dragPerformDropHandler(GObject *, GFile *, gpointer, gint, gpointer);
+
+	static gulong PlacesSidebar_signal_connect_drag_perform_drop(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "drag-perform-drop", G_CALLBACK(placessidebar_dragPerformDropHandler), data);
+	}
+
+*/
+/*
+
 	void placessidebar_populatePopupHandler(GObject *, GtkWidget *, GFile *, GVolume *, gpointer);
 
 	static gulong PlacesSidebar_signal_connect_populate_popup(gpointer instance, gpointer data) {
@@ -970,11 +997,189 @@ func (recv *ListBoxRow) SetHeader(header *Widget) {
 	return
 }
 
-// Unsupported signal 'drag-action-ask' for PlacesSidebar : unsupported parameter actions : type gint :
+type signalPlacesSidebarDragActionAskDetail struct {
+	callback  PlacesSidebarSignalDragActionAskCallback
+	handlerID C.gulong
+}
 
-// Unsupported signal 'drag-action-requested' for PlacesSidebar : unsupported parameter source_file_list : type GLib.List :
+var signalPlacesSidebarDragActionAskId int
+var signalPlacesSidebarDragActionAskMap = make(map[int]signalPlacesSidebarDragActionAskDetail)
+var signalPlacesSidebarDragActionAskLock sync.Mutex
 
-// Unsupported signal 'drag-perform-drop' for PlacesSidebar : unsupported parameter source_file_list : type GLib.List :
+// PlacesSidebarSignalDragActionAskCallback is a callback function for a 'drag-action-ask' signal emitted from a PlacesSidebar.
+type PlacesSidebarSignalDragActionAskCallback func(actions int32) int32
+
+/*
+ConnectDragActionAsk connects the callback to the 'drag-action-ask' signal for the PlacesSidebar.
+
+The returned value represents the connection, and may be passed to DisconnectDragActionAsk to remove it.
+*/
+func (recv *PlacesSidebar) ConnectDragActionAsk(callback PlacesSidebarSignalDragActionAskCallback) int {
+	signalPlacesSidebarDragActionAskLock.Lock()
+	defer signalPlacesSidebarDragActionAskLock.Unlock()
+
+	signalPlacesSidebarDragActionAskId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.PlacesSidebar_signal_connect_drag_action_ask(instance, C.gpointer(uintptr(signalPlacesSidebarDragActionAskId)))
+
+	detail := signalPlacesSidebarDragActionAskDetail{callback, handlerID}
+	signalPlacesSidebarDragActionAskMap[signalPlacesSidebarDragActionAskId] = detail
+
+	return signalPlacesSidebarDragActionAskId
+}
+
+/*
+DisconnectDragActionAsk disconnects a callback from the 'drag-action-ask' signal for the PlacesSidebar.
+
+The connectionID should be a value returned from a call to ConnectDragActionAsk.
+*/
+func (recv *PlacesSidebar) DisconnectDragActionAsk(connectionID int) {
+	signalPlacesSidebarDragActionAskLock.Lock()
+	defer signalPlacesSidebarDragActionAskLock.Unlock()
+
+	detail, exists := signalPlacesSidebarDragActionAskMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalPlacesSidebarDragActionAskMap, connectionID)
+}
+
+//export placessidebar_dragActionAskHandler
+func placessidebar_dragActionAskHandler(_ *C.GObject, c_actions C.gint, data C.gpointer) C.gint {
+
+	index := int(uintptr(data))
+	callback := signalPlacesSidebarDragActionAskMap[index].callback
+	retGo := callback(actions)
+	retC :=
+		(C.gint)(retGo)
+	return retC
+}
+
+type signalPlacesSidebarDragActionRequestedDetail struct {
+	callback  PlacesSidebarSignalDragActionRequestedCallback
+	handlerID C.gulong
+}
+
+var signalPlacesSidebarDragActionRequestedId int
+var signalPlacesSidebarDragActionRequestedMap = make(map[int]signalPlacesSidebarDragActionRequestedDetail)
+var signalPlacesSidebarDragActionRequestedLock sync.Mutex
+
+// PlacesSidebarSignalDragActionRequestedCallback is a callback function for a 'drag-action-requested' signal emitted from a PlacesSidebar.
+type PlacesSidebarSignalDragActionRequestedCallback func(context *gdk.DragContext, destFile *gio.File, sourceFileList uintptr) int32
+
+/*
+ConnectDragActionRequested connects the callback to the 'drag-action-requested' signal for the PlacesSidebar.
+
+The returned value represents the connection, and may be passed to DisconnectDragActionRequested to remove it.
+*/
+func (recv *PlacesSidebar) ConnectDragActionRequested(callback PlacesSidebarSignalDragActionRequestedCallback) int {
+	signalPlacesSidebarDragActionRequestedLock.Lock()
+	defer signalPlacesSidebarDragActionRequestedLock.Unlock()
+
+	signalPlacesSidebarDragActionRequestedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.PlacesSidebar_signal_connect_drag_action_requested(instance, C.gpointer(uintptr(signalPlacesSidebarDragActionRequestedId)))
+
+	detail := signalPlacesSidebarDragActionRequestedDetail{callback, handlerID}
+	signalPlacesSidebarDragActionRequestedMap[signalPlacesSidebarDragActionRequestedId] = detail
+
+	return signalPlacesSidebarDragActionRequestedId
+}
+
+/*
+DisconnectDragActionRequested disconnects a callback from the 'drag-action-requested' signal for the PlacesSidebar.
+
+The connectionID should be a value returned from a call to ConnectDragActionRequested.
+*/
+func (recv *PlacesSidebar) DisconnectDragActionRequested(connectionID int) {
+	signalPlacesSidebarDragActionRequestedLock.Lock()
+	defer signalPlacesSidebarDragActionRequestedLock.Unlock()
+
+	detail, exists := signalPlacesSidebarDragActionRequestedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalPlacesSidebarDragActionRequestedMap, connectionID)
+}
+
+//export placessidebar_dragActionRequestedHandler
+func placessidebar_dragActionRequestedHandler(_ *C.GObject, c_context *C.GdkDragContext, c_dest_file *C.GFile, c_source_file_list C.gpointer, data C.gpointer) C.gint {
+	context := gdk.DragContextNewFromC(unsafe.Pointer(c_context))
+
+	destFile := gio.FileNewFromC(unsafe.Pointer(c_dest_file))
+
+	index := int(uintptr(data))
+	callback := signalPlacesSidebarDragActionRequestedMap[index].callback
+	retGo := callback(context, destFile, sourceFileList)
+	retC :=
+		(C.gint)(retGo)
+	return retC
+}
+
+type signalPlacesSidebarDragPerformDropDetail struct {
+	callback  PlacesSidebarSignalDragPerformDropCallback
+	handlerID C.gulong
+}
+
+var signalPlacesSidebarDragPerformDropId int
+var signalPlacesSidebarDragPerformDropMap = make(map[int]signalPlacesSidebarDragPerformDropDetail)
+var signalPlacesSidebarDragPerformDropLock sync.Mutex
+
+// PlacesSidebarSignalDragPerformDropCallback is a callback function for a 'drag-perform-drop' signal emitted from a PlacesSidebar.
+type PlacesSidebarSignalDragPerformDropCallback func(destFile *gio.File, sourceFileList uintptr, action int32)
+
+/*
+ConnectDragPerformDrop connects the callback to the 'drag-perform-drop' signal for the PlacesSidebar.
+
+The returned value represents the connection, and may be passed to DisconnectDragPerformDrop to remove it.
+*/
+func (recv *PlacesSidebar) ConnectDragPerformDrop(callback PlacesSidebarSignalDragPerformDropCallback) int {
+	signalPlacesSidebarDragPerformDropLock.Lock()
+	defer signalPlacesSidebarDragPerformDropLock.Unlock()
+
+	signalPlacesSidebarDragPerformDropId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.PlacesSidebar_signal_connect_drag_perform_drop(instance, C.gpointer(uintptr(signalPlacesSidebarDragPerformDropId)))
+
+	detail := signalPlacesSidebarDragPerformDropDetail{callback, handlerID}
+	signalPlacesSidebarDragPerformDropMap[signalPlacesSidebarDragPerformDropId] = detail
+
+	return signalPlacesSidebarDragPerformDropId
+}
+
+/*
+DisconnectDragPerformDrop disconnects a callback from the 'drag-perform-drop' signal for the PlacesSidebar.
+
+The connectionID should be a value returned from a call to ConnectDragPerformDrop.
+*/
+func (recv *PlacesSidebar) DisconnectDragPerformDrop(connectionID int) {
+	signalPlacesSidebarDragPerformDropLock.Lock()
+	defer signalPlacesSidebarDragPerformDropLock.Unlock()
+
+	detail, exists := signalPlacesSidebarDragPerformDropMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalPlacesSidebarDragPerformDropMap, connectionID)
+}
+
+//export placessidebar_dragPerformDropHandler
+func placessidebar_dragPerformDropHandler(_ *C.GObject, c_dest_file *C.GFile, c_source_file_list C.gpointer, c_action C.gint, data C.gpointer) {
+	destFile := gio.FileNewFromC(unsafe.Pointer(c_dest_file))
+
+	index := int(uintptr(data))
+	callback := signalPlacesSidebarDragPerformDropMap[index].callback
+	callback(destFile, sourceFileList, action)
+}
 
 // Unsupported signal 'open-location' for PlacesSidebar : unsupported parameter open_flags : type PlacesOpenFlags :
 

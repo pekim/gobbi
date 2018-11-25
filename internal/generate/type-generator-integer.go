@@ -29,8 +29,12 @@ func (t *TypeGeneratorInteger) isSupportedAsArrayParam(direction string) (suppor
 	return true, ""
 }
 
-func (t *TypeGeneratorInteger) isSupportedAsParamC() (supported bool, reason string) {
+func (t *TypeGeneratorInteger) isSupportedAsArrayParamC(direction string) (supported bool, reason string) {
 	return false, ""
+}
+
+func (t *TypeGeneratorInteger) isSupportedAsParamC() (supported bool, reason string) {
+	return true, ""
 }
 
 func (t *TypeGeneratorInteger) isSupportedAsField() (supported bool, reason string) {
@@ -63,7 +67,8 @@ func (t *TypeGeneratorInteger) generateArrayDeclaration(g *jen.Group, goVarName 
 		Do(t.typ.qname.generate)
 }
 
-func (t *TypeGeneratorInteger) generateDeclarationC(g *jen.Group, goVarName string) {
+func (t *TypeGeneratorInteger) generateDeclarationC(g *jen.Group, cVarName string) {
+	g.Id(cVarName).Qual("C", t.typ.CType)
 }
 
 func (t *TypeGeneratorInteger) generateParamCallArgument(g *jen.Group, cVarName string) {

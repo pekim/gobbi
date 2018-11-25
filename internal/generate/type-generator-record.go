@@ -45,6 +45,10 @@ func (t *TypeGeneratorRecord) isSupportedAsArrayParam(direction string) (support
 	return false, ""
 }
 
+func (t *TypeGeneratorRecord) isSupportedAsArrayParamC(direction string) (supported bool, reason string) {
+	return false, ""
+}
+
 func (t *TypeGeneratorRecord) isSupportedAsParamC() (supported bool, reason string) {
 	if t.record.Blacklist {
 		return false, fmt.Sprintf("Blacklisted record : %s", t.record.CType)

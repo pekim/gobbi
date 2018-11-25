@@ -16,10 +16,28 @@ import (
 // #include <stdlib.h>
 /*
 
+	void entrybuffer_deletedTextHandler(GObject *, guint, guint, gpointer);
+
+	static gulong EntryBuffer_signal_connect_deleted_text(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "deleted-text", G_CALLBACK(entrybuffer_deletedTextHandler), data);
+	}
+
+*/
+/*
+
 	void infobar_closeHandler(GObject *, gpointer);
 
 	static gulong InfoBar_signal_connect_close(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "close", G_CALLBACK(infobar_closeHandler), data);
+	}
+
+*/
+/*
+
+	void infobar_responseHandler(GObject *, gint, gpointer);
+
+	static gulong InfoBar_signal_connect_response(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "response", G_CALLBACK(infobar_responseHandler), data);
 	}
 
 */
@@ -182,9 +200,65 @@ func (recv *Entry) SetBuffer(buffer *EntryBuffer) {
 	return
 }
 
-// Unsupported signal 'deleted-text' for EntryBuffer : unsupported parameter position : type guint :
+type signalEntryBufferDeletedTextDetail struct {
+	callback  EntryBufferSignalDeletedTextCallback
+	handlerID C.gulong
+}
 
-// Unsupported signal 'inserted-text' for EntryBuffer : unsupported parameter position : type guint :
+var signalEntryBufferDeletedTextId int
+var signalEntryBufferDeletedTextMap = make(map[int]signalEntryBufferDeletedTextDetail)
+var signalEntryBufferDeletedTextLock sync.Mutex
+
+// EntryBufferSignalDeletedTextCallback is a callback function for a 'deleted-text' signal emitted from a EntryBuffer.
+type EntryBufferSignalDeletedTextCallback func(position uint32, nChars uint32)
+
+/*
+ConnectDeletedText connects the callback to the 'deleted-text' signal for the EntryBuffer.
+
+The returned value represents the connection, and may be passed to DisconnectDeletedText to remove it.
+*/
+func (recv *EntryBuffer) ConnectDeletedText(callback EntryBufferSignalDeletedTextCallback) int {
+	signalEntryBufferDeletedTextLock.Lock()
+	defer signalEntryBufferDeletedTextLock.Unlock()
+
+	signalEntryBufferDeletedTextId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.EntryBuffer_signal_connect_deleted_text(instance, C.gpointer(uintptr(signalEntryBufferDeletedTextId)))
+
+	detail := signalEntryBufferDeletedTextDetail{callback, handlerID}
+	signalEntryBufferDeletedTextMap[signalEntryBufferDeletedTextId] = detail
+
+	return signalEntryBufferDeletedTextId
+}
+
+/*
+DisconnectDeletedText disconnects a callback from the 'deleted-text' signal for the EntryBuffer.
+
+The connectionID should be a value returned from a call to ConnectDeletedText.
+*/
+func (recv *EntryBuffer) DisconnectDeletedText(connectionID int) {
+	signalEntryBufferDeletedTextLock.Lock()
+	defer signalEntryBufferDeletedTextLock.Unlock()
+
+	detail, exists := signalEntryBufferDeletedTextMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalEntryBufferDeletedTextMap, connectionID)
+}
+
+//export entrybuffer_deletedTextHandler
+func entrybuffer_deletedTextHandler(_ *C.GObject, c_position C.guint, c_n_chars C.guint, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalEntryBufferDeletedTextMap[index].callback
+	callback(position, nChars)
+}
+
+// Unsupported signal 'inserted-text' for EntryBuffer : unsupported parameter chars : type utf8 :
 
 // EntryBufferNew is a wrapper around the C function gtk_entry_buffer_new.
 func EntryBufferNew(initialChars string, nInitialChars int32) *EntryBuffer {
@@ -378,7 +452,63 @@ func infobar_closeHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// Unsupported signal 'response' for InfoBar : unsupported parameter response_id : type gint :
+type signalInfoBarResponseDetail struct {
+	callback  InfoBarSignalResponseCallback
+	handlerID C.gulong
+}
+
+var signalInfoBarResponseId int
+var signalInfoBarResponseMap = make(map[int]signalInfoBarResponseDetail)
+var signalInfoBarResponseLock sync.Mutex
+
+// InfoBarSignalResponseCallback is a callback function for a 'response' signal emitted from a InfoBar.
+type InfoBarSignalResponseCallback func(responseId int32)
+
+/*
+ConnectResponse connects the callback to the 'response' signal for the InfoBar.
+
+The returned value represents the connection, and may be passed to DisconnectResponse to remove it.
+*/
+func (recv *InfoBar) ConnectResponse(callback InfoBarSignalResponseCallback) int {
+	signalInfoBarResponseLock.Lock()
+	defer signalInfoBarResponseLock.Unlock()
+
+	signalInfoBarResponseId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.InfoBar_signal_connect_response(instance, C.gpointer(uintptr(signalInfoBarResponseId)))
+
+	detail := signalInfoBarResponseDetail{callback, handlerID}
+	signalInfoBarResponseMap[signalInfoBarResponseId] = detail
+
+	return signalInfoBarResponseId
+}
+
+/*
+DisconnectResponse disconnects a callback from the 'response' signal for the InfoBar.
+
+The connectionID should be a value returned from a call to ConnectResponse.
+*/
+func (recv *InfoBar) DisconnectResponse(connectionID int) {
+	signalInfoBarResponseLock.Lock()
+	defer signalInfoBarResponseLock.Unlock()
+
+	detail, exists := signalInfoBarResponseMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalInfoBarResponseMap, connectionID)
+}
+
+//export infobar_responseHandler
+func infobar_responseHandler(_ *C.GObject, c_response_id C.gint, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalInfoBarResponseMap[index].callback
+	callback(responseId)
+}
 
 // InfoBarNew is a wrapper around the C function gtk_info_bar_new.
 func InfoBarNew() *InfoBar {

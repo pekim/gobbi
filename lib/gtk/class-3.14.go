@@ -63,6 +63,33 @@ import (
 */
 /*
 
+	void gesturedrag_dragBeginHandler(GObject *, gdouble, gdouble, gpointer);
+
+	static gulong GestureDrag_signal_connect_drag_begin(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "drag-begin", G_CALLBACK(gesturedrag_dragBeginHandler), data);
+	}
+
+*/
+/*
+
+	void gesturedrag_dragEndHandler(GObject *, gdouble, gdouble, gpointer);
+
+	static gulong GestureDrag_signal_connect_drag_end(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "drag-end", G_CALLBACK(gesturedrag_dragEndHandler), data);
+	}
+
+*/
+/*
+
+	void gesturedrag_dragUpdateHandler(GObject *, gdouble, gdouble, gpointer);
+
+	static gulong GestureDrag_signal_connect_drag_update(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "drag-update", G_CALLBACK(gesturedrag_dragUpdateHandler), data);
+	}
+
+*/
+/*
+
 	void gesturelongpress_cancelledHandler(GObject *, gpointer);
 
 	static gulong GestureLongPress_signal_connect_cancelled(gpointer instance, gpointer data) {
@@ -72,10 +99,64 @@ import (
 */
 /*
 
+	void gesturelongpress_pressedHandler(GObject *, gdouble, gdouble, gpointer);
+
+	static gulong GestureLongPress_signal_connect_pressed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "pressed", G_CALLBACK(gesturelongpress_pressedHandler), data);
+	}
+
+*/
+/*
+
+	void gesturemultipress_pressedHandler(GObject *, gint, gdouble, gdouble, gpointer);
+
+	static gulong GestureMultiPress_signal_connect_pressed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "pressed", G_CALLBACK(gesturemultipress_pressedHandler), data);
+	}
+
+*/
+/*
+
+	void gesturemultipress_releasedHandler(GObject *, gint, gdouble, gdouble, gpointer);
+
+	static gulong GestureMultiPress_signal_connect_released(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "released", G_CALLBACK(gesturemultipress_releasedHandler), data);
+	}
+
+*/
+/*
+
 	void gesturemultipress_stoppedHandler(GObject *, gpointer);
 
 	static gulong GestureMultiPress_signal_connect_stopped(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "stopped", G_CALLBACK(gesturemultipress_stoppedHandler), data);
+	}
+
+*/
+/*
+
+	void gesturerotate_angleChangedHandler(GObject *, gdouble, gdouble, gpointer);
+
+	static gulong GestureRotate_signal_connect_angle_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "angle-changed", G_CALLBACK(gesturerotate_angleChangedHandler), data);
+	}
+
+*/
+/*
+
+	void gestureswipe_swipeHandler(GObject *, gdouble, gdouble, gpointer);
+
+	static gulong GestureSwipe_signal_connect_swipe(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "swipe", G_CALLBACK(gestureswipe_swipeHandler), data);
+	}
+
+*/
+/*
+
+	void gesturezoom_scaleChangedHandler(GObject *, gdouble, gpointer);
+
+	static gulong GestureZoom_signal_connect_scale_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "scale-changed", G_CALLBACK(gesturezoom_scaleChangedHandler), data);
 	}
 
 */
@@ -697,11 +778,179 @@ func (recv *Gesture) Ungroup() {
 	return
 }
 
-// Unsupported signal 'drag-begin' for GestureDrag : unsupported parameter start_x : type gdouble :
+type signalGestureDragDragBeginDetail struct {
+	callback  GestureDragSignalDragBeginCallback
+	handlerID C.gulong
+}
 
-// Unsupported signal 'drag-end' for GestureDrag : unsupported parameter offset_x : type gdouble :
+var signalGestureDragDragBeginId int
+var signalGestureDragDragBeginMap = make(map[int]signalGestureDragDragBeginDetail)
+var signalGestureDragDragBeginLock sync.Mutex
 
-// Unsupported signal 'drag-update' for GestureDrag : unsupported parameter offset_x : type gdouble :
+// GestureDragSignalDragBeginCallback is a callback function for a 'drag-begin' signal emitted from a GestureDrag.
+type GestureDragSignalDragBeginCallback func(startX float64, startY float64)
+
+/*
+ConnectDragBegin connects the callback to the 'drag-begin' signal for the GestureDrag.
+
+The returned value represents the connection, and may be passed to DisconnectDragBegin to remove it.
+*/
+func (recv *GestureDrag) ConnectDragBegin(callback GestureDragSignalDragBeginCallback) int {
+	signalGestureDragDragBeginLock.Lock()
+	defer signalGestureDragDragBeginLock.Unlock()
+
+	signalGestureDragDragBeginId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.GestureDrag_signal_connect_drag_begin(instance, C.gpointer(uintptr(signalGestureDragDragBeginId)))
+
+	detail := signalGestureDragDragBeginDetail{callback, handlerID}
+	signalGestureDragDragBeginMap[signalGestureDragDragBeginId] = detail
+
+	return signalGestureDragDragBeginId
+}
+
+/*
+DisconnectDragBegin disconnects a callback from the 'drag-begin' signal for the GestureDrag.
+
+The connectionID should be a value returned from a call to ConnectDragBegin.
+*/
+func (recv *GestureDrag) DisconnectDragBegin(connectionID int) {
+	signalGestureDragDragBeginLock.Lock()
+	defer signalGestureDragDragBeginLock.Unlock()
+
+	detail, exists := signalGestureDragDragBeginMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalGestureDragDragBeginMap, connectionID)
+}
+
+//export gesturedrag_dragBeginHandler
+func gesturedrag_dragBeginHandler(_ *C.GObject, c_start_x C.gdouble, c_start_y C.gdouble, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalGestureDragDragBeginMap[index].callback
+	callback(startX, startY)
+}
+
+type signalGestureDragDragEndDetail struct {
+	callback  GestureDragSignalDragEndCallback
+	handlerID C.gulong
+}
+
+var signalGestureDragDragEndId int
+var signalGestureDragDragEndMap = make(map[int]signalGestureDragDragEndDetail)
+var signalGestureDragDragEndLock sync.Mutex
+
+// GestureDragSignalDragEndCallback is a callback function for a 'drag-end' signal emitted from a GestureDrag.
+type GestureDragSignalDragEndCallback func(offsetX float64, offsetY float64)
+
+/*
+ConnectDragEnd connects the callback to the 'drag-end' signal for the GestureDrag.
+
+The returned value represents the connection, and may be passed to DisconnectDragEnd to remove it.
+*/
+func (recv *GestureDrag) ConnectDragEnd(callback GestureDragSignalDragEndCallback) int {
+	signalGestureDragDragEndLock.Lock()
+	defer signalGestureDragDragEndLock.Unlock()
+
+	signalGestureDragDragEndId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.GestureDrag_signal_connect_drag_end(instance, C.gpointer(uintptr(signalGestureDragDragEndId)))
+
+	detail := signalGestureDragDragEndDetail{callback, handlerID}
+	signalGestureDragDragEndMap[signalGestureDragDragEndId] = detail
+
+	return signalGestureDragDragEndId
+}
+
+/*
+DisconnectDragEnd disconnects a callback from the 'drag-end' signal for the GestureDrag.
+
+The connectionID should be a value returned from a call to ConnectDragEnd.
+*/
+func (recv *GestureDrag) DisconnectDragEnd(connectionID int) {
+	signalGestureDragDragEndLock.Lock()
+	defer signalGestureDragDragEndLock.Unlock()
+
+	detail, exists := signalGestureDragDragEndMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalGestureDragDragEndMap, connectionID)
+}
+
+//export gesturedrag_dragEndHandler
+func gesturedrag_dragEndHandler(_ *C.GObject, c_offset_x C.gdouble, c_offset_y C.gdouble, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalGestureDragDragEndMap[index].callback
+	callback(offsetX, offsetY)
+}
+
+type signalGestureDragDragUpdateDetail struct {
+	callback  GestureDragSignalDragUpdateCallback
+	handlerID C.gulong
+}
+
+var signalGestureDragDragUpdateId int
+var signalGestureDragDragUpdateMap = make(map[int]signalGestureDragDragUpdateDetail)
+var signalGestureDragDragUpdateLock sync.Mutex
+
+// GestureDragSignalDragUpdateCallback is a callback function for a 'drag-update' signal emitted from a GestureDrag.
+type GestureDragSignalDragUpdateCallback func(offsetX float64, offsetY float64)
+
+/*
+ConnectDragUpdate connects the callback to the 'drag-update' signal for the GestureDrag.
+
+The returned value represents the connection, and may be passed to DisconnectDragUpdate to remove it.
+*/
+func (recv *GestureDrag) ConnectDragUpdate(callback GestureDragSignalDragUpdateCallback) int {
+	signalGestureDragDragUpdateLock.Lock()
+	defer signalGestureDragDragUpdateLock.Unlock()
+
+	signalGestureDragDragUpdateId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.GestureDrag_signal_connect_drag_update(instance, C.gpointer(uintptr(signalGestureDragDragUpdateId)))
+
+	detail := signalGestureDragDragUpdateDetail{callback, handlerID}
+	signalGestureDragDragUpdateMap[signalGestureDragDragUpdateId] = detail
+
+	return signalGestureDragDragUpdateId
+}
+
+/*
+DisconnectDragUpdate disconnects a callback from the 'drag-update' signal for the GestureDrag.
+
+The connectionID should be a value returned from a call to ConnectDragUpdate.
+*/
+func (recv *GestureDrag) DisconnectDragUpdate(connectionID int) {
+	signalGestureDragDragUpdateLock.Lock()
+	defer signalGestureDragDragUpdateLock.Unlock()
+
+	detail, exists := signalGestureDragDragUpdateMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalGestureDragDragUpdateMap, connectionID)
+}
+
+//export gesturedrag_dragUpdateHandler
+func gesturedrag_dragUpdateHandler(_ *C.GObject, c_offset_x C.gdouble, c_offset_y C.gdouble, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalGestureDragDragUpdateMap[index].callback
+	callback(offsetX, offsetY)
+}
 
 // GestureDragNew is a wrapper around the C function gtk_gesture_drag_new.
 func GestureDragNew(widget *Widget) *GestureDrag {
@@ -805,7 +1054,63 @@ func gesturelongpress_cancelledHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// Unsupported signal 'pressed' for GestureLongPress : unsupported parameter x : type gdouble :
+type signalGestureLongPressPressedDetail struct {
+	callback  GestureLongPressSignalPressedCallback
+	handlerID C.gulong
+}
+
+var signalGestureLongPressPressedId int
+var signalGestureLongPressPressedMap = make(map[int]signalGestureLongPressPressedDetail)
+var signalGestureLongPressPressedLock sync.Mutex
+
+// GestureLongPressSignalPressedCallback is a callback function for a 'pressed' signal emitted from a GestureLongPress.
+type GestureLongPressSignalPressedCallback func(x float64, y float64)
+
+/*
+ConnectPressed connects the callback to the 'pressed' signal for the GestureLongPress.
+
+The returned value represents the connection, and may be passed to DisconnectPressed to remove it.
+*/
+func (recv *GestureLongPress) ConnectPressed(callback GestureLongPressSignalPressedCallback) int {
+	signalGestureLongPressPressedLock.Lock()
+	defer signalGestureLongPressPressedLock.Unlock()
+
+	signalGestureLongPressPressedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.GestureLongPress_signal_connect_pressed(instance, C.gpointer(uintptr(signalGestureLongPressPressedId)))
+
+	detail := signalGestureLongPressPressedDetail{callback, handlerID}
+	signalGestureLongPressPressedMap[signalGestureLongPressPressedId] = detail
+
+	return signalGestureLongPressPressedId
+}
+
+/*
+DisconnectPressed disconnects a callback from the 'pressed' signal for the GestureLongPress.
+
+The connectionID should be a value returned from a call to ConnectPressed.
+*/
+func (recv *GestureLongPress) DisconnectPressed(connectionID int) {
+	signalGestureLongPressPressedLock.Lock()
+	defer signalGestureLongPressPressedLock.Unlock()
+
+	detail, exists := signalGestureLongPressPressedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalGestureLongPressPressedMap, connectionID)
+}
+
+//export gesturelongpress_pressedHandler
+func gesturelongpress_pressedHandler(_ *C.GObject, c_x C.gdouble, c_y C.gdouble, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalGestureLongPressPressedMap[index].callback
+	callback(x, y)
+}
 
 // GestureLongPressNew is a wrapper around the C function gtk_gesture_long_press_new.
 func GestureLongPressNew(widget *Widget) *GestureLongPress {
@@ -820,9 +1125,121 @@ func GestureLongPressNew(widget *Widget) *GestureLongPress {
 	return retGo
 }
 
-// Unsupported signal 'pressed' for GestureMultiPress : unsupported parameter n_press : type gint :
+type signalGestureMultiPressPressedDetail struct {
+	callback  GestureMultiPressSignalPressedCallback
+	handlerID C.gulong
+}
 
-// Unsupported signal 'released' for GestureMultiPress : unsupported parameter n_press : type gint :
+var signalGestureMultiPressPressedId int
+var signalGestureMultiPressPressedMap = make(map[int]signalGestureMultiPressPressedDetail)
+var signalGestureMultiPressPressedLock sync.Mutex
+
+// GestureMultiPressSignalPressedCallback is a callback function for a 'pressed' signal emitted from a GestureMultiPress.
+type GestureMultiPressSignalPressedCallback func(nPress int32, x float64, y float64)
+
+/*
+ConnectPressed connects the callback to the 'pressed' signal for the GestureMultiPress.
+
+The returned value represents the connection, and may be passed to DisconnectPressed to remove it.
+*/
+func (recv *GestureMultiPress) ConnectPressed(callback GestureMultiPressSignalPressedCallback) int {
+	signalGestureMultiPressPressedLock.Lock()
+	defer signalGestureMultiPressPressedLock.Unlock()
+
+	signalGestureMultiPressPressedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.GestureMultiPress_signal_connect_pressed(instance, C.gpointer(uintptr(signalGestureMultiPressPressedId)))
+
+	detail := signalGestureMultiPressPressedDetail{callback, handlerID}
+	signalGestureMultiPressPressedMap[signalGestureMultiPressPressedId] = detail
+
+	return signalGestureMultiPressPressedId
+}
+
+/*
+DisconnectPressed disconnects a callback from the 'pressed' signal for the GestureMultiPress.
+
+The connectionID should be a value returned from a call to ConnectPressed.
+*/
+func (recv *GestureMultiPress) DisconnectPressed(connectionID int) {
+	signalGestureMultiPressPressedLock.Lock()
+	defer signalGestureMultiPressPressedLock.Unlock()
+
+	detail, exists := signalGestureMultiPressPressedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalGestureMultiPressPressedMap, connectionID)
+}
+
+//export gesturemultipress_pressedHandler
+func gesturemultipress_pressedHandler(_ *C.GObject, c_n_press C.gint, c_x C.gdouble, c_y C.gdouble, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalGestureMultiPressPressedMap[index].callback
+	callback(nPress, x, y)
+}
+
+type signalGestureMultiPressReleasedDetail struct {
+	callback  GestureMultiPressSignalReleasedCallback
+	handlerID C.gulong
+}
+
+var signalGestureMultiPressReleasedId int
+var signalGestureMultiPressReleasedMap = make(map[int]signalGestureMultiPressReleasedDetail)
+var signalGestureMultiPressReleasedLock sync.Mutex
+
+// GestureMultiPressSignalReleasedCallback is a callback function for a 'released' signal emitted from a GestureMultiPress.
+type GestureMultiPressSignalReleasedCallback func(nPress int32, x float64, y float64)
+
+/*
+ConnectReleased connects the callback to the 'released' signal for the GestureMultiPress.
+
+The returned value represents the connection, and may be passed to DisconnectReleased to remove it.
+*/
+func (recv *GestureMultiPress) ConnectReleased(callback GestureMultiPressSignalReleasedCallback) int {
+	signalGestureMultiPressReleasedLock.Lock()
+	defer signalGestureMultiPressReleasedLock.Unlock()
+
+	signalGestureMultiPressReleasedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.GestureMultiPress_signal_connect_released(instance, C.gpointer(uintptr(signalGestureMultiPressReleasedId)))
+
+	detail := signalGestureMultiPressReleasedDetail{callback, handlerID}
+	signalGestureMultiPressReleasedMap[signalGestureMultiPressReleasedId] = detail
+
+	return signalGestureMultiPressReleasedId
+}
+
+/*
+DisconnectReleased disconnects a callback from the 'released' signal for the GestureMultiPress.
+
+The connectionID should be a value returned from a call to ConnectReleased.
+*/
+func (recv *GestureMultiPress) DisconnectReleased(connectionID int) {
+	signalGestureMultiPressReleasedLock.Lock()
+	defer signalGestureMultiPressReleasedLock.Unlock()
+
+	detail, exists := signalGestureMultiPressReleasedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalGestureMultiPressReleasedMap, connectionID)
+}
+
+//export gesturemultipress_releasedHandler
+func gesturemultipress_releasedHandler(_ *C.GObject, c_n_press C.gint, c_x C.gdouble, c_y C.gdouble, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalGestureMultiPressReleasedMap[index].callback
+	callback(nPress, x, y)
+}
 
 type signalGestureMultiPressStoppedDetail struct {
 	callback  GestureMultiPressSignalStoppedCallback
@@ -932,7 +1349,63 @@ func (recv *GesturePan) SetOrientation(orientation Orientation) {
 	return
 }
 
-// Unsupported signal 'angle-changed' for GestureRotate : unsupported parameter angle : type gdouble :
+type signalGestureRotateAngleChangedDetail struct {
+	callback  GestureRotateSignalAngleChangedCallback
+	handlerID C.gulong
+}
+
+var signalGestureRotateAngleChangedId int
+var signalGestureRotateAngleChangedMap = make(map[int]signalGestureRotateAngleChangedDetail)
+var signalGestureRotateAngleChangedLock sync.Mutex
+
+// GestureRotateSignalAngleChangedCallback is a callback function for a 'angle-changed' signal emitted from a GestureRotate.
+type GestureRotateSignalAngleChangedCallback func(angle float64, angleDelta float64)
+
+/*
+ConnectAngleChanged connects the callback to the 'angle-changed' signal for the GestureRotate.
+
+The returned value represents the connection, and may be passed to DisconnectAngleChanged to remove it.
+*/
+func (recv *GestureRotate) ConnectAngleChanged(callback GestureRotateSignalAngleChangedCallback) int {
+	signalGestureRotateAngleChangedLock.Lock()
+	defer signalGestureRotateAngleChangedLock.Unlock()
+
+	signalGestureRotateAngleChangedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.GestureRotate_signal_connect_angle_changed(instance, C.gpointer(uintptr(signalGestureRotateAngleChangedId)))
+
+	detail := signalGestureRotateAngleChangedDetail{callback, handlerID}
+	signalGestureRotateAngleChangedMap[signalGestureRotateAngleChangedId] = detail
+
+	return signalGestureRotateAngleChangedId
+}
+
+/*
+DisconnectAngleChanged disconnects a callback from the 'angle-changed' signal for the GestureRotate.
+
+The connectionID should be a value returned from a call to ConnectAngleChanged.
+*/
+func (recv *GestureRotate) DisconnectAngleChanged(connectionID int) {
+	signalGestureRotateAngleChangedLock.Lock()
+	defer signalGestureRotateAngleChangedLock.Unlock()
+
+	detail, exists := signalGestureRotateAngleChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalGestureRotateAngleChangedMap, connectionID)
+}
+
+//export gesturerotate_angleChangedHandler
+func gesturerotate_angleChangedHandler(_ *C.GObject, c_angle C.gdouble, c_angle_delta C.gdouble, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalGestureRotateAngleChangedMap[index].callback
+	callback(angle, angleDelta)
+}
 
 // GestureRotateNew is a wrapper around the C function gtk_gesture_rotate_new.
 func GestureRotateNew(widget *Widget) *GestureRotate {
@@ -1029,7 +1502,63 @@ func (recv *GestureSingle) SetTouchOnly(touchOnly bool) {
 	return
 }
 
-// Unsupported signal 'swipe' for GestureSwipe : unsupported parameter velocity_x : type gdouble :
+type signalGestureSwipeSwipeDetail struct {
+	callback  GestureSwipeSignalSwipeCallback
+	handlerID C.gulong
+}
+
+var signalGestureSwipeSwipeId int
+var signalGestureSwipeSwipeMap = make(map[int]signalGestureSwipeSwipeDetail)
+var signalGestureSwipeSwipeLock sync.Mutex
+
+// GestureSwipeSignalSwipeCallback is a callback function for a 'swipe' signal emitted from a GestureSwipe.
+type GestureSwipeSignalSwipeCallback func(velocityX float64, velocityY float64)
+
+/*
+ConnectSwipe connects the callback to the 'swipe' signal for the GestureSwipe.
+
+The returned value represents the connection, and may be passed to DisconnectSwipe to remove it.
+*/
+func (recv *GestureSwipe) ConnectSwipe(callback GestureSwipeSignalSwipeCallback) int {
+	signalGestureSwipeSwipeLock.Lock()
+	defer signalGestureSwipeSwipeLock.Unlock()
+
+	signalGestureSwipeSwipeId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.GestureSwipe_signal_connect_swipe(instance, C.gpointer(uintptr(signalGestureSwipeSwipeId)))
+
+	detail := signalGestureSwipeSwipeDetail{callback, handlerID}
+	signalGestureSwipeSwipeMap[signalGestureSwipeSwipeId] = detail
+
+	return signalGestureSwipeSwipeId
+}
+
+/*
+DisconnectSwipe disconnects a callback from the 'swipe' signal for the GestureSwipe.
+
+The connectionID should be a value returned from a call to ConnectSwipe.
+*/
+func (recv *GestureSwipe) DisconnectSwipe(connectionID int) {
+	signalGestureSwipeSwipeLock.Lock()
+	defer signalGestureSwipeSwipeLock.Unlock()
+
+	detail, exists := signalGestureSwipeSwipeMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalGestureSwipeSwipeMap, connectionID)
+}
+
+//export gestureswipe_swipeHandler
+func gestureswipe_swipeHandler(_ *C.GObject, c_velocity_x C.gdouble, c_velocity_y C.gdouble, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalGestureSwipeSwipeMap[index].callback
+	callback(velocityX, velocityY)
+}
 
 // GestureSwipeNew is a wrapper around the C function gtk_gesture_swipe_new.
 func GestureSwipeNew(widget *Widget) *GestureSwipe {
@@ -1060,7 +1589,63 @@ func (recv *GestureSwipe) GetVelocity() (bool, float64, float64) {
 	return retGo, velocityX, velocityY
 }
 
-// Unsupported signal 'scale-changed' for GestureZoom : unsupported parameter scale : type gdouble :
+type signalGestureZoomScaleChangedDetail struct {
+	callback  GestureZoomSignalScaleChangedCallback
+	handlerID C.gulong
+}
+
+var signalGestureZoomScaleChangedId int
+var signalGestureZoomScaleChangedMap = make(map[int]signalGestureZoomScaleChangedDetail)
+var signalGestureZoomScaleChangedLock sync.Mutex
+
+// GestureZoomSignalScaleChangedCallback is a callback function for a 'scale-changed' signal emitted from a GestureZoom.
+type GestureZoomSignalScaleChangedCallback func(scale float64)
+
+/*
+ConnectScaleChanged connects the callback to the 'scale-changed' signal for the GestureZoom.
+
+The returned value represents the connection, and may be passed to DisconnectScaleChanged to remove it.
+*/
+func (recv *GestureZoom) ConnectScaleChanged(callback GestureZoomSignalScaleChangedCallback) int {
+	signalGestureZoomScaleChangedLock.Lock()
+	defer signalGestureZoomScaleChangedLock.Unlock()
+
+	signalGestureZoomScaleChangedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.GestureZoom_signal_connect_scale_changed(instance, C.gpointer(uintptr(signalGestureZoomScaleChangedId)))
+
+	detail := signalGestureZoomScaleChangedDetail{callback, handlerID}
+	signalGestureZoomScaleChangedMap[signalGestureZoomScaleChangedId] = detail
+
+	return signalGestureZoomScaleChangedId
+}
+
+/*
+DisconnectScaleChanged disconnects a callback from the 'scale-changed' signal for the GestureZoom.
+
+The connectionID should be a value returned from a call to ConnectScaleChanged.
+*/
+func (recv *GestureZoom) DisconnectScaleChanged(connectionID int) {
+	signalGestureZoomScaleChangedLock.Lock()
+	defer signalGestureZoomScaleChangedLock.Unlock()
+
+	detail, exists := signalGestureZoomScaleChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalGestureZoomScaleChangedMap, connectionID)
+}
+
+//export gesturezoom_scaleChangedHandler
+func gesturezoom_scaleChangedHandler(_ *C.GObject, c_scale C.gdouble, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalGestureZoomScaleChangedMap[index].callback
+	callback(scale)
+}
 
 // GestureZoomNew is a wrapper around the C function gtk_gesture_zoom_new.
 func GestureZoomNew(widget *Widget) *GestureZoom {

@@ -19,6 +19,10 @@ func (t *TypeGeneratorIgnore) isSupportedAsArrayParam(direction string) (support
 	return false, ""
 }
 
+func (t *TypeGeneratorIgnore) isSupportedAsArrayParamC(direction string) (supported bool, reason string) {
+	return false, ""
+}
+
 func (t *TypeGeneratorIgnore) isSupportedAsParamC() (supported bool, reason string) {
 	return false, ""
 }

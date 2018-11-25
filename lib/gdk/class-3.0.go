@@ -4,13 +4,24 @@
 package gdk
 
 import (
+	cairo "github.com/pekim/gobbi/lib/cairo"
 	glib "github.com/pekim/gobbi/lib/glib"
+	"sync"
 	"unsafe"
 )
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gdk/gdk.h>
 // #include <stdlib.h>
+/*
+
+	cairo_surface_t * window_createSurfaceHandler(GObject *, gint, gint, gpointer);
+
+	static gulong Window_signal_connect_create_surface(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "create-surface", G_CALLBACK(window_createSurfaceHandler), data);
+	}
+
+*/
 import "C"
 
 // GetAssociatedDevice is a wrapper around the C function gdk_device_get_associated_device.
@@ -283,7 +294,66 @@ func (recv *Keymap) GetNumLockState() bool {
 	return retGo
 }
 
-// Unsupported signal 'create-surface' for Window : unsupported parameter width : type gint :
+type signalWindowCreateSurfaceDetail struct {
+	callback  WindowSignalCreateSurfaceCallback
+	handlerID C.gulong
+}
+
+var signalWindowCreateSurfaceId int
+var signalWindowCreateSurfaceMap = make(map[int]signalWindowCreateSurfaceDetail)
+var signalWindowCreateSurfaceLock sync.Mutex
+
+// WindowSignalCreateSurfaceCallback is a callback function for a 'create-surface' signal emitted from a Window.
+type WindowSignalCreateSurfaceCallback func(width int32, height int32) cairo.Surface
+
+/*
+ConnectCreateSurface connects the callback to the 'create-surface' signal for the Window.
+
+The returned value represents the connection, and may be passed to DisconnectCreateSurface to remove it.
+*/
+func (recv *Window) ConnectCreateSurface(callback WindowSignalCreateSurfaceCallback) int {
+	signalWindowCreateSurfaceLock.Lock()
+	defer signalWindowCreateSurfaceLock.Unlock()
+
+	signalWindowCreateSurfaceId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Window_signal_connect_create_surface(instance, C.gpointer(uintptr(signalWindowCreateSurfaceId)))
+
+	detail := signalWindowCreateSurfaceDetail{callback, handlerID}
+	signalWindowCreateSurfaceMap[signalWindowCreateSurfaceId] = detail
+
+	return signalWindowCreateSurfaceId
+}
+
+/*
+DisconnectCreateSurface disconnects a callback from the 'create-surface' signal for the Window.
+
+The connectionID should be a value returned from a call to ConnectCreateSurface.
+*/
+func (recv *Window) DisconnectCreateSurface(connectionID int) {
+	signalWindowCreateSurfaceLock.Lock()
+	defer signalWindowCreateSurfaceLock.Unlock()
+
+	detail, exists := signalWindowCreateSurfaceMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalWindowCreateSurfaceMap, connectionID)
+}
+
+//export window_createSurfaceHandler
+func window_createSurfaceHandler(_ *C.GObject, c_width C.gint, c_height C.gint, data C.gpointer) *C.cairo_surface_t {
+
+	index := int(uintptr(data))
+	callback := signalWindowCreateSurfaceMap[index].callback
+	retGo := callback(width, height)
+	retC :=
+		(*C.cairo_surface_t)(retGo.ToC())
+	return retC
+}
 
 // GetDeviceCursor is a wrapper around the C function gdk_window_get_device_cursor.
 func (recv *Window) GetDeviceCursor(device *Device) *Cursor {

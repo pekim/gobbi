@@ -34,8 +34,12 @@ func (t *TypeGeneratorString) isSupportedAsArrayParam(direction string) (support
 	return false, ""
 }
 
-func (t *TypeGeneratorString) isSupportedAsParamC() (supported bool, reason string) {
+func (t *TypeGeneratorString) isSupportedAsArrayParamC(direction string) (supported bool, reason string) {
 	return false, ""
+}
+
+func (t *TypeGeneratorString) isSupportedAsParamC() (supported bool, reason string) {
+	return true, ""
 }
 
 func (t *TypeGeneratorString) isSupportedAsReturnValue() (supported bool, reason string) {
@@ -64,7 +68,11 @@ func (t *TypeGeneratorString) generateArrayDeclaration(g *jen.Group, goVarName s
 		Do(t.typ.qname.generate)
 }
 
-func (t *TypeGeneratorString) generateDeclarationC(g *jen.Group, goVarName string) {
+func (t *TypeGeneratorString) generateDeclarationC(g *jen.Group, cVarName string) {
+	g.
+		Id(cVarName).
+		Op(strings.Repeat("*", t.typ.indirectLevel-1)).
+		Qual("C", t.typ.cTypeName)
 }
 
 func (t *TypeGeneratorString) generateParamCallArgument(g *jen.Group, cVarName string) {

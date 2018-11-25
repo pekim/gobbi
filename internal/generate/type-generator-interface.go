@@ -45,6 +45,10 @@ func (t *TypeGeneratorInterface) isSupportedAsArrayParam(direction string) (supp
 	return false, ""
 }
 
+func (t *TypeGeneratorInterface) isSupportedAsArrayParamC(direction string) (supported bool, reason string) {
+	return true, ""
+}
+
 func (t *TypeGeneratorInterface) isSupportedAsParamC() (supported bool, reason string) {
 	if t.iface.Blacklist {
 		return false, fmt.Sprintf("Blacklisted interface : %s", t.iface.CType)

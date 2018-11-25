@@ -24,10 +24,28 @@ import (
 */
 /*
 
+	void pixbufloader_areaUpdatedHandler(GObject *, gint, gint, gint, gint, gpointer);
+
+	static gulong PixbufLoader_signal_connect_area_updated(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "area-updated", G_CALLBACK(pixbufloader_areaUpdatedHandler), data);
+	}
+
+*/
+/*
+
 	void pixbufloader_closedHandler(GObject *, gpointer);
 
 	static gulong PixbufLoader_signal_connect_closed(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "closed", G_CALLBACK(pixbufloader_closedHandler), data);
+	}
+
+*/
+/*
+
+	void pixbufloader_sizePreparedHandler(GObject *, gint, gint, gpointer);
+
+	static gulong PixbufLoader_signal_connect_size_prepared(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "size-prepared", G_CALLBACK(pixbufloader_sizePreparedHandler), data);
 	}
 
 */
@@ -727,7 +745,63 @@ func pixbufloader_areaPreparedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// Unsupported signal 'area-updated' for PixbufLoader : unsupported parameter x : type gint :
+type signalPixbufLoaderAreaUpdatedDetail struct {
+	callback  PixbufLoaderSignalAreaUpdatedCallback
+	handlerID C.gulong
+}
+
+var signalPixbufLoaderAreaUpdatedId int
+var signalPixbufLoaderAreaUpdatedMap = make(map[int]signalPixbufLoaderAreaUpdatedDetail)
+var signalPixbufLoaderAreaUpdatedLock sync.Mutex
+
+// PixbufLoaderSignalAreaUpdatedCallback is a callback function for a 'area-updated' signal emitted from a PixbufLoader.
+type PixbufLoaderSignalAreaUpdatedCallback func(x int32, y int32, width int32, height int32)
+
+/*
+ConnectAreaUpdated connects the callback to the 'area-updated' signal for the PixbufLoader.
+
+The returned value represents the connection, and may be passed to DisconnectAreaUpdated to remove it.
+*/
+func (recv *PixbufLoader) ConnectAreaUpdated(callback PixbufLoaderSignalAreaUpdatedCallback) int {
+	signalPixbufLoaderAreaUpdatedLock.Lock()
+	defer signalPixbufLoaderAreaUpdatedLock.Unlock()
+
+	signalPixbufLoaderAreaUpdatedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.PixbufLoader_signal_connect_area_updated(instance, C.gpointer(uintptr(signalPixbufLoaderAreaUpdatedId)))
+
+	detail := signalPixbufLoaderAreaUpdatedDetail{callback, handlerID}
+	signalPixbufLoaderAreaUpdatedMap[signalPixbufLoaderAreaUpdatedId] = detail
+
+	return signalPixbufLoaderAreaUpdatedId
+}
+
+/*
+DisconnectAreaUpdated disconnects a callback from the 'area-updated' signal for the PixbufLoader.
+
+The connectionID should be a value returned from a call to ConnectAreaUpdated.
+*/
+func (recv *PixbufLoader) DisconnectAreaUpdated(connectionID int) {
+	signalPixbufLoaderAreaUpdatedLock.Lock()
+	defer signalPixbufLoaderAreaUpdatedLock.Unlock()
+
+	detail, exists := signalPixbufLoaderAreaUpdatedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalPixbufLoaderAreaUpdatedMap, connectionID)
+}
+
+//export pixbufloader_areaUpdatedHandler
+func pixbufloader_areaUpdatedHandler(_ *C.GObject, c_x C.gint, c_y C.gint, c_width C.gint, c_height C.gint, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalPixbufLoaderAreaUpdatedMap[index].callback
+	callback(x, y, width, height)
+}
 
 type signalPixbufLoaderClosedDetail struct {
 	callback  PixbufLoaderSignalClosedCallback
@@ -786,7 +860,63 @@ func pixbufloader_closedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// Unsupported signal 'size-prepared' for PixbufLoader : unsupported parameter width : type gint :
+type signalPixbufLoaderSizePreparedDetail struct {
+	callback  PixbufLoaderSignalSizePreparedCallback
+	handlerID C.gulong
+}
+
+var signalPixbufLoaderSizePreparedId int
+var signalPixbufLoaderSizePreparedMap = make(map[int]signalPixbufLoaderSizePreparedDetail)
+var signalPixbufLoaderSizePreparedLock sync.Mutex
+
+// PixbufLoaderSignalSizePreparedCallback is a callback function for a 'size-prepared' signal emitted from a PixbufLoader.
+type PixbufLoaderSignalSizePreparedCallback func(width int32, height int32)
+
+/*
+ConnectSizePrepared connects the callback to the 'size-prepared' signal for the PixbufLoader.
+
+The returned value represents the connection, and may be passed to DisconnectSizePrepared to remove it.
+*/
+func (recv *PixbufLoader) ConnectSizePrepared(callback PixbufLoaderSignalSizePreparedCallback) int {
+	signalPixbufLoaderSizePreparedLock.Lock()
+	defer signalPixbufLoaderSizePreparedLock.Unlock()
+
+	signalPixbufLoaderSizePreparedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.PixbufLoader_signal_connect_size_prepared(instance, C.gpointer(uintptr(signalPixbufLoaderSizePreparedId)))
+
+	detail := signalPixbufLoaderSizePreparedDetail{callback, handlerID}
+	signalPixbufLoaderSizePreparedMap[signalPixbufLoaderSizePreparedId] = detail
+
+	return signalPixbufLoaderSizePreparedId
+}
+
+/*
+DisconnectSizePrepared disconnects a callback from the 'size-prepared' signal for the PixbufLoader.
+
+The connectionID should be a value returned from a call to ConnectSizePrepared.
+*/
+func (recv *PixbufLoader) DisconnectSizePrepared(connectionID int) {
+	signalPixbufLoaderSizePreparedLock.Lock()
+	defer signalPixbufLoaderSizePreparedLock.Unlock()
+
+	detail, exists := signalPixbufLoaderSizePreparedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalPixbufLoaderSizePreparedMap, connectionID)
+}
+
+//export pixbufloader_sizePreparedHandler
+func pixbufloader_sizePreparedHandler(_ *C.GObject, c_width C.gint, c_height C.gint, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalPixbufLoaderSizePreparedMap[index].callback
+	callback(width, height)
+}
 
 // PixbufLoaderNew is a wrapper around the C function gdk_pixbuf_loader_new.
 func PixbufLoaderNew() *PixbufLoader {

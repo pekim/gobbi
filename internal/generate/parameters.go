@@ -15,10 +15,20 @@ func (pp Parameters) init(ns *Namespace) {
 	for _, param := range pp {
 		param.init(ns)
 
-		if param.Array != nil && param.Array.Length != nil {
-			// Provide an array length param with a reference to its array param.
-			paramIndex := *param.Array.Length
-			pp[paramIndex].arrayLengthFor = param
+		if param.Array != nil {
+			if param.Array.Type != nil {
+				param.Array.Type.init(ns)
+				if param.Array.Type.generator == nil && param.Name == "files" {
+					fmt.Println(param.Name, param.Array.Type.CType)
+					panic("xxx")
+				}
+			}
+
+			if param.Array.Length != nil {
+				// Provide an array length param with a reference to its array param.
+				paramIndex := *param.Array.Length
+				pp[paramIndex].arrayLengthFor = param
+			}
 		}
 	}
 }

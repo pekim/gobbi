@@ -111,7 +111,11 @@ func (s *Signal) generateCgoPreamble() {
 
 	params := []string{"GObject *"}
 	for _, param := range s.Parameters {
-		params = append(params, s.cTypeDeclaration(param.Type))
+		if param.Array != nil {
+			params = append(params, param.Array.CType)
+		} else {
+			params = append(params, s.cTypeDeclaration(param.Type))
+		}
 	}
 	params = append(params, "gpointer")
 	handlerParams := strings.Join(params, ", ")
@@ -135,6 +139,7 @@ func (s *Signal) generateCgoPreamble() {
 
 func (s *Signal) cTypeDeclaration(typ *Type) string {
 	cDeclaration := typ.CType
+
 	if cDeclaration == "" {
 		qname := QNameNew(s.Namespace, typ.Name)
 		record, found := qname.namespace.recordOrClassRecordForName(qname.name)

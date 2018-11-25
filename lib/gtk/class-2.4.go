@@ -91,6 +91,15 @@ import (
 */
 /*
 
+	void entrycompletion_actionActivatedHandler(GObject *, gint, gpointer);
+
+	static gulong EntryCompletion_signal_connect_action_activated(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "action-activated", G_CALLBACK(entrycompletion_actionActivatedHandler), data);
+	}
+
+*/
+/*
+
 	gboolean entrycompletion_matchSelectedHandler(GObject *, GtkTreeModel *, GtkTreeIter *, gpointer);
 
 	static gulong EntryCompletion_signal_connect_match_selected(gpointer instance, gpointer data) {
@@ -1328,7 +1337,63 @@ func (recv *Entry) SetCompletion(completion *EntryCompletion) {
 	return
 }
 
-// Unsupported signal 'action-activated' for EntryCompletion : unsupported parameter index : type gint :
+type signalEntryCompletionActionActivatedDetail struct {
+	callback  EntryCompletionSignalActionActivatedCallback
+	handlerID C.gulong
+}
+
+var signalEntryCompletionActionActivatedId int
+var signalEntryCompletionActionActivatedMap = make(map[int]signalEntryCompletionActionActivatedDetail)
+var signalEntryCompletionActionActivatedLock sync.Mutex
+
+// EntryCompletionSignalActionActivatedCallback is a callback function for a 'action-activated' signal emitted from a EntryCompletion.
+type EntryCompletionSignalActionActivatedCallback func(index int32)
+
+/*
+ConnectActionActivated connects the callback to the 'action-activated' signal for the EntryCompletion.
+
+The returned value represents the connection, and may be passed to DisconnectActionActivated to remove it.
+*/
+func (recv *EntryCompletion) ConnectActionActivated(callback EntryCompletionSignalActionActivatedCallback) int {
+	signalEntryCompletionActionActivatedLock.Lock()
+	defer signalEntryCompletionActionActivatedLock.Unlock()
+
+	signalEntryCompletionActionActivatedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.EntryCompletion_signal_connect_action_activated(instance, C.gpointer(uintptr(signalEntryCompletionActionActivatedId)))
+
+	detail := signalEntryCompletionActionActivatedDetail{callback, handlerID}
+	signalEntryCompletionActionActivatedMap[signalEntryCompletionActionActivatedId] = detail
+
+	return signalEntryCompletionActionActivatedId
+}
+
+/*
+DisconnectActionActivated disconnects a callback from the 'action-activated' signal for the EntryCompletion.
+
+The connectionID should be a value returned from a call to ConnectActionActivated.
+*/
+func (recv *EntryCompletion) DisconnectActionActivated(connectionID int) {
+	signalEntryCompletionActionActivatedLock.Lock()
+	defer signalEntryCompletionActionActivatedLock.Unlock()
+
+	detail, exists := signalEntryCompletionActionActivatedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalEntryCompletionActionActivatedMap, connectionID)
+}
+
+//export entrycompletion_actionActivatedHandler
+func entrycompletion_actionActivatedHandler(_ *C.GObject, c_index C.gint, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalEntryCompletionActionActivatedMap[index].callback
+	callback(index)
+}
 
 type signalEntryCompletionMatchSelectedDetail struct {
 	callback  EntryCompletionSignalMatchSelectedCallback

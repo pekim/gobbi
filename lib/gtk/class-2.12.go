@@ -55,6 +55,24 @@ import (
 */
 /*
 
+	gboolean menushell_moveSelectedHandler(GObject *, gint, gpointer);
+
+	static gulong MenuShell_signal_connect_move_selected(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "move-selected", G_CALLBACK(menushell_moveSelectedHandler), data);
+	}
+
+*/
+/*
+
+	GtkNotebook * notebook_createWindowHandler(GObject *, GtkWidget *, gint, gint, gpointer);
+
+	static gulong Notebook_signal_connect_create_window(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "create-window", G_CALLBACK(notebook_createWindowHandler), data);
+	}
+
+*/
+/*
+
 	void scalebutton_popdownHandler(GObject *, gpointer);
 
 	static gulong ScaleButton_signal_connect_popdown(gpointer instance, gpointer data) {
@@ -68,6 +86,24 @@ import (
 
 	static gulong ScaleButton_signal_connect_popup(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "popup", G_CALLBACK(scalebutton_popupHandler), data);
+	}
+
+*/
+/*
+
+	void scalebutton_valueChangedHandler(GObject *, gdouble, gpointer);
+
+	static gulong ScaleButton_signal_connect_value_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "value-changed", G_CALLBACK(scalebutton_valueChangedHandler), data);
+	}
+
+*/
+/*
+
+	gboolean widget_queryTooltipHandler(GObject *, gint, gint, gboolean, GtkTooltip *, gpointer);
+
+	static gulong Widget_signal_connect_query_tooltip(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "query-tooltip", G_CALLBACK(widget_queryTooltipHandler), data);
 	}
 
 */
@@ -640,7 +676,66 @@ func (recv *IconView) SetTooltipItem(tooltip *Tooltip, path *TreePath) {
 
 // Unsupported : gtk_list_store_set_valuesv : unsupported parameter values :
 
-// Unsupported signal 'move-selected' for MenuShell : unsupported parameter distance : type gint :
+type signalMenuShellMoveSelectedDetail struct {
+	callback  MenuShellSignalMoveSelectedCallback
+	handlerID C.gulong
+}
+
+var signalMenuShellMoveSelectedId int
+var signalMenuShellMoveSelectedMap = make(map[int]signalMenuShellMoveSelectedDetail)
+var signalMenuShellMoveSelectedLock sync.Mutex
+
+// MenuShellSignalMoveSelectedCallback is a callback function for a 'move-selected' signal emitted from a MenuShell.
+type MenuShellSignalMoveSelectedCallback func(distance int32) bool
+
+/*
+ConnectMoveSelected connects the callback to the 'move-selected' signal for the MenuShell.
+
+The returned value represents the connection, and may be passed to DisconnectMoveSelected to remove it.
+*/
+func (recv *MenuShell) ConnectMoveSelected(callback MenuShellSignalMoveSelectedCallback) int {
+	signalMenuShellMoveSelectedLock.Lock()
+	defer signalMenuShellMoveSelectedLock.Unlock()
+
+	signalMenuShellMoveSelectedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.MenuShell_signal_connect_move_selected(instance, C.gpointer(uintptr(signalMenuShellMoveSelectedId)))
+
+	detail := signalMenuShellMoveSelectedDetail{callback, handlerID}
+	signalMenuShellMoveSelectedMap[signalMenuShellMoveSelectedId] = detail
+
+	return signalMenuShellMoveSelectedId
+}
+
+/*
+DisconnectMoveSelected disconnects a callback from the 'move-selected' signal for the MenuShell.
+
+The connectionID should be a value returned from a call to ConnectMoveSelected.
+*/
+func (recv *MenuShell) DisconnectMoveSelected(connectionID int) {
+	signalMenuShellMoveSelectedLock.Lock()
+	defer signalMenuShellMoveSelectedLock.Unlock()
+
+	detail, exists := signalMenuShellMoveSelectedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalMenuShellMoveSelectedMap, connectionID)
+}
+
+//export menushell_moveSelectedHandler
+func menushell_moveSelectedHandler(_ *C.GObject, c_distance C.gint, data C.gpointer) C.gboolean {
+
+	index := int(uintptr(data))
+	callback := signalMenuShellMoveSelectedMap[index].callback
+	retGo := callback(distance)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
+}
 
 // SetArrowTooltipMarkup is a wrapper around the C function gtk_menu_tool_button_set_arrow_tooltip_markup.
 func (recv *MenuToolButton) SetArrowTooltipMarkup(markup string) {
@@ -662,7 +757,67 @@ func (recv *MenuToolButton) SetArrowTooltipText(text string) {
 	return
 }
 
-// Unsupported signal 'create-window' for Notebook : unsupported parameter x : type gint :
+type signalNotebookCreateWindowDetail struct {
+	callback  NotebookSignalCreateWindowCallback
+	handlerID C.gulong
+}
+
+var signalNotebookCreateWindowId int
+var signalNotebookCreateWindowMap = make(map[int]signalNotebookCreateWindowDetail)
+var signalNotebookCreateWindowLock sync.Mutex
+
+// NotebookSignalCreateWindowCallback is a callback function for a 'create-window' signal emitted from a Notebook.
+type NotebookSignalCreateWindowCallback func(page *Widget, x int32, y int32) Notebook
+
+/*
+ConnectCreateWindow connects the callback to the 'create-window' signal for the Notebook.
+
+The returned value represents the connection, and may be passed to DisconnectCreateWindow to remove it.
+*/
+func (recv *Notebook) ConnectCreateWindow(callback NotebookSignalCreateWindowCallback) int {
+	signalNotebookCreateWindowLock.Lock()
+	defer signalNotebookCreateWindowLock.Unlock()
+
+	signalNotebookCreateWindowId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Notebook_signal_connect_create_window(instance, C.gpointer(uintptr(signalNotebookCreateWindowId)))
+
+	detail := signalNotebookCreateWindowDetail{callback, handlerID}
+	signalNotebookCreateWindowMap[signalNotebookCreateWindowId] = detail
+
+	return signalNotebookCreateWindowId
+}
+
+/*
+DisconnectCreateWindow disconnects a callback from the 'create-window' signal for the Notebook.
+
+The connectionID should be a value returned from a call to ConnectCreateWindow.
+*/
+func (recv *Notebook) DisconnectCreateWindow(connectionID int) {
+	signalNotebookCreateWindowLock.Lock()
+	defer signalNotebookCreateWindowLock.Unlock()
+
+	detail, exists := signalNotebookCreateWindowMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalNotebookCreateWindowMap, connectionID)
+}
+
+//export notebook_createWindowHandler
+func notebook_createWindowHandler(_ *C.GObject, c_page *C.GtkWidget, c_x C.gint, c_y C.gint, data C.gpointer) *C.GtkNotebook {
+	page := WidgetNewFromC(unsafe.Pointer(c_page))
+
+	index := int(uintptr(data))
+	callback := signalNotebookCreateWindowMap[index].callback
+	retGo := callback(page, x, y)
+	retC :=
+		(*C.GtkNotebook)(retGo.ToC())
+	return retC
+}
 
 // PageSetupNewFromFile is a wrapper around the C function gtk_page_setup_new_from_file.
 func PageSetupNewFromFile(fileName string) (*PageSetup, error) {
@@ -1042,7 +1197,63 @@ func scalebutton_popupHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// Unsupported signal 'value-changed' for ScaleButton : unsupported parameter value : type gdouble :
+type signalScaleButtonValueChangedDetail struct {
+	callback  ScaleButtonSignalValueChangedCallback
+	handlerID C.gulong
+}
+
+var signalScaleButtonValueChangedId int
+var signalScaleButtonValueChangedMap = make(map[int]signalScaleButtonValueChangedDetail)
+var signalScaleButtonValueChangedLock sync.Mutex
+
+// ScaleButtonSignalValueChangedCallback is a callback function for a 'value-changed' signal emitted from a ScaleButton.
+type ScaleButtonSignalValueChangedCallback func(value float64)
+
+/*
+ConnectValueChanged connects the callback to the 'value-changed' signal for the ScaleButton.
+
+The returned value represents the connection, and may be passed to DisconnectValueChanged to remove it.
+*/
+func (recv *ScaleButton) ConnectValueChanged(callback ScaleButtonSignalValueChangedCallback) int {
+	signalScaleButtonValueChangedLock.Lock()
+	defer signalScaleButtonValueChangedLock.Unlock()
+
+	signalScaleButtonValueChangedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.ScaleButton_signal_connect_value_changed(instance, C.gpointer(uintptr(signalScaleButtonValueChangedId)))
+
+	detail := signalScaleButtonValueChangedDetail{callback, handlerID}
+	signalScaleButtonValueChangedMap[signalScaleButtonValueChangedId] = detail
+
+	return signalScaleButtonValueChangedId
+}
+
+/*
+DisconnectValueChanged disconnects a callback from the 'value-changed' signal for the ScaleButton.
+
+The connectionID should be a value returned from a call to ConnectValueChanged.
+*/
+func (recv *ScaleButton) DisconnectValueChanged(connectionID int) {
+	signalScaleButtonValueChangedLock.Lock()
+	defer signalScaleButtonValueChangedLock.Unlock()
+
+	detail, exists := signalScaleButtonValueChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalScaleButtonValueChangedMap, connectionID)
+}
+
+//export scalebutton_valueChangedHandler
+func scalebutton_valueChangedHandler(_ *C.GObject, c_value C.gdouble, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalScaleButtonValueChangedMap[index].callback
+	callback(value)
+}
 
 // Unsupported : gtk_scale_button_new : unsupported parameter icons :
 
@@ -1486,7 +1697,70 @@ func VolumeButtonNew() *VolumeButton {
 
 // Unsupported signal 'keynav-failed' for Widget : unsupported parameter direction : type DirectionType :
 
-// Unsupported signal 'query-tooltip' for Widget : unsupported parameter x : type gint :
+type signalWidgetQueryTooltipDetail struct {
+	callback  WidgetSignalQueryTooltipCallback
+	handlerID C.gulong
+}
+
+var signalWidgetQueryTooltipId int
+var signalWidgetQueryTooltipMap = make(map[int]signalWidgetQueryTooltipDetail)
+var signalWidgetQueryTooltipLock sync.Mutex
+
+// WidgetSignalQueryTooltipCallback is a callback function for a 'query-tooltip' signal emitted from a Widget.
+type WidgetSignalQueryTooltipCallback func(x int32, y int32, keyboardMode bool, tooltip *Tooltip) bool
+
+/*
+ConnectQueryTooltip connects the callback to the 'query-tooltip' signal for the Widget.
+
+The returned value represents the connection, and may be passed to DisconnectQueryTooltip to remove it.
+*/
+func (recv *Widget) ConnectQueryTooltip(callback WidgetSignalQueryTooltipCallback) int {
+	signalWidgetQueryTooltipLock.Lock()
+	defer signalWidgetQueryTooltipLock.Unlock()
+
+	signalWidgetQueryTooltipId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Widget_signal_connect_query_tooltip(instance, C.gpointer(uintptr(signalWidgetQueryTooltipId)))
+
+	detail := signalWidgetQueryTooltipDetail{callback, handlerID}
+	signalWidgetQueryTooltipMap[signalWidgetQueryTooltipId] = detail
+
+	return signalWidgetQueryTooltipId
+}
+
+/*
+DisconnectQueryTooltip disconnects a callback from the 'query-tooltip' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectQueryTooltip.
+*/
+func (recv *Widget) DisconnectQueryTooltip(connectionID int) {
+	signalWidgetQueryTooltipLock.Lock()
+	defer signalWidgetQueryTooltipLock.Unlock()
+
+	detail, exists := signalWidgetQueryTooltipMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalWidgetQueryTooltipMap, connectionID)
+}
+
+//export widget_queryTooltipHandler
+func widget_queryTooltipHandler(_ *C.GObject, c_x C.gint, c_y C.gint, c_keyboard_mode C.gboolean, c_tooltip *C.GtkTooltip, data C.gpointer) C.gboolean {
+
+	keyboardMode := c_keyboard_mode == C.TRUE
+
+	tooltip := TooltipNewFromC(unsafe.Pointer(c_tooltip))
+
+	index := int(uintptr(data))
+	callback := signalWidgetQueryTooltipMap[index].callback
+	retGo := callback(x, y, keyboardMode, tooltip)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
+}
 
 // ErrorBell is a wrapper around the C function gtk_widget_error_bell.
 func (recv *Widget) ErrorBell() {

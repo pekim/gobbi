@@ -35,6 +35,15 @@ import (
 */
 /*
 
+	gboolean shortcutssection_changeCurrentPageHandler(GObject *, gint, gpointer);
+
+	static gulong ShortcutsSection_signal_connect_change_current_page(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "change-current-page", G_CALLBACK(shortcutssection_changeCurrentPageHandler), data);
+	}
+
+*/
+/*
+
 	void shortcutswindow_closeHandler(GObject *, gpointer);
 
 	static gulong ShortcutsWindow_signal_connect_close(gpointer instance, gpointer data) {
@@ -646,7 +655,66 @@ func CastToShortcutsSection(object *gobject.Object) *ShortcutsSection {
 	return ShortcutsSectionNewFromC(object.ToC())
 }
 
-// Unsupported signal 'change-current-page' for ShortcutsSection : unsupported parameter object : type gint :
+type signalShortcutsSectionChangeCurrentPageDetail struct {
+	callback  ShortcutsSectionSignalChangeCurrentPageCallback
+	handlerID C.gulong
+}
+
+var signalShortcutsSectionChangeCurrentPageId int
+var signalShortcutsSectionChangeCurrentPageMap = make(map[int]signalShortcutsSectionChangeCurrentPageDetail)
+var signalShortcutsSectionChangeCurrentPageLock sync.Mutex
+
+// ShortcutsSectionSignalChangeCurrentPageCallback is a callback function for a 'change-current-page' signal emitted from a ShortcutsSection.
+type ShortcutsSectionSignalChangeCurrentPageCallback func(object int32) bool
+
+/*
+ConnectChangeCurrentPage connects the callback to the 'change-current-page' signal for the ShortcutsSection.
+
+The returned value represents the connection, and may be passed to DisconnectChangeCurrentPage to remove it.
+*/
+func (recv *ShortcutsSection) ConnectChangeCurrentPage(callback ShortcutsSectionSignalChangeCurrentPageCallback) int {
+	signalShortcutsSectionChangeCurrentPageLock.Lock()
+	defer signalShortcutsSectionChangeCurrentPageLock.Unlock()
+
+	signalShortcutsSectionChangeCurrentPageId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.ShortcutsSection_signal_connect_change_current_page(instance, C.gpointer(uintptr(signalShortcutsSectionChangeCurrentPageId)))
+
+	detail := signalShortcutsSectionChangeCurrentPageDetail{callback, handlerID}
+	signalShortcutsSectionChangeCurrentPageMap[signalShortcutsSectionChangeCurrentPageId] = detail
+
+	return signalShortcutsSectionChangeCurrentPageId
+}
+
+/*
+DisconnectChangeCurrentPage disconnects a callback from the 'change-current-page' signal for the ShortcutsSection.
+
+The connectionID should be a value returned from a call to ConnectChangeCurrentPage.
+*/
+func (recv *ShortcutsSection) DisconnectChangeCurrentPage(connectionID int) {
+	signalShortcutsSectionChangeCurrentPageLock.Lock()
+	defer signalShortcutsSectionChangeCurrentPageLock.Unlock()
+
+	detail, exists := signalShortcutsSectionChangeCurrentPageMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalShortcutsSectionChangeCurrentPageMap, connectionID)
+}
+
+//export shortcutssection_changeCurrentPageHandler
+func shortcutssection_changeCurrentPageHandler(_ *C.GObject, c_object C.gint, data C.gpointer) C.gboolean {
+
+	index := int(uintptr(data))
+	callback := signalShortcutsSectionChangeCurrentPageMap[index].callback
+	retGo := callback(object)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
+}
 
 // ShortcutsShortcut is a wrapper around the C record GtkShortcutsShortcut.
 type ShortcutsShortcut struct {

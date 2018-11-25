@@ -22,6 +22,10 @@ func (t *TypeGeneratorArgcArgv) isSupportedAsArrayParam(direction string) (suppo
 	return false, ""
 }
 
+func (t *TypeGeneratorArgcArgv) isSupportedAsArrayParamC(direction string) (supported bool, reason string) {
+	return false, ""
+}
+
 func (t *TypeGeneratorArgcArgv) isSupportedAsParamC() (supported bool, reason string) {
 	return false, ""
 }

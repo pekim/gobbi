@@ -214,7 +214,7 @@ func application_commandLineHandler(_ *C.GObject, c_command_line *C.GApplication
 	return retC
 }
 
-// Unsupported signal 'open' for Application : unsupported parameter files : no param type
+// Unsupported signal 'open' for Application : unsupported parameter hint : type utf8 :
 
 type signalApplicationShutdownDetail struct {
 	callback  ApplicationSignalShutdownCallback

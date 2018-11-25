@@ -43,6 +43,15 @@ import (
 */
 /*
 
+	void editable_deleteTextHandler(GObject *, gint, gint, gpointer);
+
+	static gulong Editable_signal_connect_delete_text(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "delete-text", G_CALLBACK(editable_deleteTextHandler), data);
+	}
+
+*/
+/*
+
 	void filechooser_currentFolderChangedHandler(GObject *, gpointer);
 
 	static gulong FileChooser_signal_connect_current_folder_changed(gpointer instance, gpointer data) {
@@ -128,6 +137,15 @@ import (
 
 	static gulong TreeModel_signal_connect_row_inserted(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "row-inserted", G_CALLBACK(treemodel_rowInsertedHandler), data);
+	}
+
+*/
+/*
+
+	void treemodel_rowsReorderedHandler(GObject *, GtkTreePath *, GtkTreeIter *, gpointer, gpointer);
+
+	static gulong TreeModel_signal_connect_rows_reordered(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "rows-reordered", G_CALLBACK(treemodel_rowsReorderedHandler), data);
 	}
 
 */
@@ -634,7 +652,63 @@ func editable_changedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// Unsupported signal 'delete-text' for Editable : unsupported parameter start_pos : type gint :
+type signalEditableDeleteTextDetail struct {
+	callback  EditableSignalDeleteTextCallback
+	handlerID C.gulong
+}
+
+var signalEditableDeleteTextId int
+var signalEditableDeleteTextMap = make(map[int]signalEditableDeleteTextDetail)
+var signalEditableDeleteTextLock sync.Mutex
+
+// EditableSignalDeleteTextCallback is a callback function for a 'delete-text' signal emitted from a Editable.
+type EditableSignalDeleteTextCallback func(startPos int32, endPos int32)
+
+/*
+ConnectDeleteText connects the callback to the 'delete-text' signal for the Editable.
+
+The returned value represents the connection, and may be passed to DisconnectDeleteText to remove it.
+*/
+func (recv *Editable) ConnectDeleteText(callback EditableSignalDeleteTextCallback) int {
+	signalEditableDeleteTextLock.Lock()
+	defer signalEditableDeleteTextLock.Unlock()
+
+	signalEditableDeleteTextId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Editable_signal_connect_delete_text(instance, C.gpointer(uintptr(signalEditableDeleteTextId)))
+
+	detail := signalEditableDeleteTextDetail{callback, handlerID}
+	signalEditableDeleteTextMap[signalEditableDeleteTextId] = detail
+
+	return signalEditableDeleteTextId
+}
+
+/*
+DisconnectDeleteText disconnects a callback from the 'delete-text' signal for the Editable.
+
+The connectionID should be a value returned from a call to ConnectDeleteText.
+*/
+func (recv *Editable) DisconnectDeleteText(connectionID int) {
+	signalEditableDeleteTextLock.Lock()
+	defer signalEditableDeleteTextLock.Unlock()
+
+	detail, exists := signalEditableDeleteTextMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalEditableDeleteTextMap, connectionID)
+}
+
+//export editable_deleteTextHandler
+func editable_deleteTextHandler(_ *C.GObject, c_start_pos C.gint, c_end_pos C.gint, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalEditableDeleteTextMap[index].callback
+	callback(startPos, endPos)
+}
 
 // Unsupported signal 'insert-text' for Editable : unsupported parameter new_text : type utf8 :
 
@@ -1677,7 +1751,66 @@ func treemodel_rowInsertedHandler(_ *C.GObject, c_path *C.GtkTreePath, c_iter *C
 	callback(path, iter)
 }
 
-// Unsupported signal 'rows-reordered' for TreeModel : unsupported parameter new_order : type gpointer :
+type signalTreeModelRowsReorderedDetail struct {
+	callback  TreeModelSignalRowsReorderedCallback
+	handlerID C.gulong
+}
+
+var signalTreeModelRowsReorderedId int
+var signalTreeModelRowsReorderedMap = make(map[int]signalTreeModelRowsReorderedDetail)
+var signalTreeModelRowsReorderedLock sync.Mutex
+
+// TreeModelSignalRowsReorderedCallback is a callback function for a 'rows-reordered' signal emitted from a TreeModel.
+type TreeModelSignalRowsReorderedCallback func(path *TreePath, iter *TreeIter, newOrder uintptr)
+
+/*
+ConnectRowsReordered connects the callback to the 'rows-reordered' signal for the TreeModel.
+
+The returned value represents the connection, and may be passed to DisconnectRowsReordered to remove it.
+*/
+func (recv *TreeModel) ConnectRowsReordered(callback TreeModelSignalRowsReorderedCallback) int {
+	signalTreeModelRowsReorderedLock.Lock()
+	defer signalTreeModelRowsReorderedLock.Unlock()
+
+	signalTreeModelRowsReorderedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.TreeModel_signal_connect_rows_reordered(instance, C.gpointer(uintptr(signalTreeModelRowsReorderedId)))
+
+	detail := signalTreeModelRowsReorderedDetail{callback, handlerID}
+	signalTreeModelRowsReorderedMap[signalTreeModelRowsReorderedId] = detail
+
+	return signalTreeModelRowsReorderedId
+}
+
+/*
+DisconnectRowsReordered disconnects a callback from the 'rows-reordered' signal for the TreeModel.
+
+The connectionID should be a value returned from a call to ConnectRowsReordered.
+*/
+func (recv *TreeModel) DisconnectRowsReordered(connectionID int) {
+	signalTreeModelRowsReorderedLock.Lock()
+	defer signalTreeModelRowsReorderedLock.Unlock()
+
+	detail, exists := signalTreeModelRowsReorderedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalTreeModelRowsReorderedMap, connectionID)
+}
+
+//export treemodel_rowsReorderedHandler
+func treemodel_rowsReorderedHandler(_ *C.GObject, c_path *C.GtkTreePath, c_iter *C.GtkTreeIter, c_new_order C.gpointer, data C.gpointer) {
+	path := TreePathNewFromC(unsafe.Pointer(c_path))
+
+	iter := TreeIterNewFromC(unsafe.Pointer(c_iter))
+
+	index := int(uintptr(data))
+	callback := signalTreeModelRowsReorderedMap[index].callback
+	callback(path, iter, newOrder)
+}
 
 // Unsupported : gtk_tree_model_foreach : unsupported parameter func : no type generator for TreeModelForeachFunc (GtkTreeModelForeachFunc) for param func
 

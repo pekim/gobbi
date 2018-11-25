@@ -6,6 +6,7 @@ package gtk
 import (
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gio "github.com/pekim/gobbi/lib/gio"
+	"sync"
 	"unsafe"
 )
 
@@ -14,6 +15,15 @@ import (
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
+/*
+
+	void menu_poppedUpHandler(GObject *, gpointer, gpointer, gboolean, gboolean, gpointer);
+
+	static gulong Menu_signal_connect_popped_up(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "popped-up", G_CALLBACK(menu_poppedUpHandler), data);
+	}
+
+*/
 import "C"
 
 // Unsupported : gtk_clipboard_get_selection : return type : Blacklisted record : GdkAtom
@@ -40,7 +50,67 @@ func (recv *GLArea) SetUseEs(useEs bool) {
 	return
 }
 
-// Unsupported signal 'popped-up' for Menu : unsupported parameter flipped_rect : type gpointer :
+type signalMenuPoppedUpDetail struct {
+	callback  MenuSignalPoppedUpCallback
+	handlerID C.gulong
+}
+
+var signalMenuPoppedUpId int
+var signalMenuPoppedUpMap = make(map[int]signalMenuPoppedUpDetail)
+var signalMenuPoppedUpLock sync.Mutex
+
+// MenuSignalPoppedUpCallback is a callback function for a 'popped-up' signal emitted from a Menu.
+type MenuSignalPoppedUpCallback func(flippedRect uintptr, finalRect uintptr, flippedX bool, flippedY bool)
+
+/*
+ConnectPoppedUp connects the callback to the 'popped-up' signal for the Menu.
+
+The returned value represents the connection, and may be passed to DisconnectPoppedUp to remove it.
+*/
+func (recv *Menu) ConnectPoppedUp(callback MenuSignalPoppedUpCallback) int {
+	signalMenuPoppedUpLock.Lock()
+	defer signalMenuPoppedUpLock.Unlock()
+
+	signalMenuPoppedUpId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Menu_signal_connect_popped_up(instance, C.gpointer(uintptr(signalMenuPoppedUpId)))
+
+	detail := signalMenuPoppedUpDetail{callback, handlerID}
+	signalMenuPoppedUpMap[signalMenuPoppedUpId] = detail
+
+	return signalMenuPoppedUpId
+}
+
+/*
+DisconnectPoppedUp disconnects a callback from the 'popped-up' signal for the Menu.
+
+The connectionID should be a value returned from a call to ConnectPoppedUp.
+*/
+func (recv *Menu) DisconnectPoppedUp(connectionID int) {
+	signalMenuPoppedUpLock.Lock()
+	defer signalMenuPoppedUpLock.Unlock()
+
+	detail, exists := signalMenuPoppedUpMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalMenuPoppedUpMap, connectionID)
+}
+
+//export menu_poppedUpHandler
+func menu_poppedUpHandler(_ *C.GObject, c_flipped_rect C.gpointer, c_final_rect C.gpointer, c_flipped_x C.gboolean, c_flipped_y C.gboolean, data C.gpointer) {
+
+	flippedX := c_flipped_x == C.TRUE
+
+	flippedY := c_flipped_y == C.TRUE
+
+	index := int(uintptr(data))
+	callback := signalMenuPoppedUpMap[index].callback
+	callback(flippedRect, finalRect, flippedX, flippedY)
+}
 
 // PlaceOnMonitor is a wrapper around the C function gtk_menu_place_on_monitor.
 func (recv *Menu) PlaceOnMonitor(monitor *gdk.Monitor) {

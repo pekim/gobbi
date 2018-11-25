@@ -83,18 +83,32 @@ func (p *Parameter) isSupported() (bool, string) {
 }
 
 func (p *Parameter) isSupportedC() (bool, string) {
-	if p.Type == nil {
-		return false, "no param type"
-	}
-	if p.Type.generator == nil {
-		return false, fmt.Sprintf("no type generator for %s, %s", p.Type.Name, p.Type.CType)
+	if p.Type != nil {
+		if p.Type.generator == nil {
+			return false, fmt.Sprintf("no type generator for %s, %s", p.Type.Name, p.Type.CType)
+		}
+
+		if supported, reason := p.Type.generator.isSupportedAsParamC(); !supported {
+			return false, fmt.Sprintf("type %s : %s", p.Type.Name, reason)
+		}
+
+		return true, ""
 	}
 
-	if supported, reason := p.Type.generator.isSupportedAsParamC(); !supported {
-		return false, fmt.Sprintf("type %s : %s", p.Type.Name, reason)
+	if p.Array != nil {
+		if p.Array.Type.generator == nil {
+			return false, fmt.Sprintf("no type generator for %s (%s) for array param %s",
+				p.Array.Type.Name, p.Array.Type.CType, p.Name)
+		}
+
+		if supported, reason := p.Array.Type.generator.isSupportedAsArrayParamC(p.Direction); !supported {
+			return false, reason
+		}
+
+		return true, ""
 	}
 
-	return true, ""
+	return false, "no param type or array"
 }
 
 func (p *Parameter) generateFunctionDeclaration(g *jen.Group) {
@@ -118,6 +132,7 @@ func (p *Parameter) generateFunctionDeclaration(g *jen.Group) {
 }
 
 func (p *Parameter) generateFunctionDeclarationCtype(g *jen.Group) {
+	fmt.Println(p.Name, p.Array)
 	p.Type.generator.generateDeclarationC(g, p.cVarName)
 }
 

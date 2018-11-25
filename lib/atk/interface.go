@@ -49,10 +49,37 @@ import (
 */
 /*
 
+	void hypertext_linkSelectedHandler(GObject *, gint, gpointer);
+
+	static gulong Hypertext_signal_connect_link_selected(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "link-selected", G_CALLBACK(hypertext_linkSelectedHandler), data);
+	}
+
+*/
+/*
+
 	void selection_selectionChangedHandler(GObject *, gpointer);
 
 	static gulong Selection_signal_connect_selection_changed(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "selection-changed", G_CALLBACK(selection_selectionChangedHandler), data);
+	}
+
+*/
+/*
+
+	void table_columnDeletedHandler(GObject *, gint, gint, gpointer);
+
+	static gulong Table_signal_connect_column_deleted(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "column-deleted", G_CALLBACK(table_columnDeletedHandler), data);
+	}
+
+*/
+/*
+
+	void table_columnInsertedHandler(GObject *, gint, gint, gpointer);
+
+	static gulong Table_signal_connect_column_inserted(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "column-inserted", G_CALLBACK(table_columnInsertedHandler), data);
 	}
 
 */
@@ -76,6 +103,24 @@ import (
 */
 /*
 
+	void table_rowDeletedHandler(GObject *, gint, gint, gpointer);
+
+	static gulong Table_signal_connect_row_deleted(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "row-deleted", G_CALLBACK(table_rowDeletedHandler), data);
+	}
+
+*/
+/*
+
+	void table_rowInsertedHandler(GObject *, gint, gint, gpointer);
+
+	static gulong Table_signal_connect_row_inserted(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "row-inserted", G_CALLBACK(table_rowInsertedHandler), data);
+	}
+
+*/
+/*
+
 	void table_rowReorderedHandler(GObject *, gpointer);
 
 	static gulong Table_signal_connect_row_reordered(gpointer instance, gpointer data) {
@@ -89,6 +134,42 @@ import (
 
 	static gulong Text_signal_connect_text_attributes_changed(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "text-attributes-changed", G_CALLBACK(text_textAttributesChangedHandler), data);
+	}
+
+*/
+/*
+
+	void text_textCaretMovedHandler(GObject *, gint, gpointer);
+
+	static gulong Text_signal_connect_text_caret_moved(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "text-caret-moved", G_CALLBACK(text_textCaretMovedHandler), data);
+	}
+
+*/
+/*
+
+	void text_textChangedHandler(GObject *, gint, gint, gpointer);
+
+	static gulong Text_signal_connect_text_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "text-changed", G_CALLBACK(text_textChangedHandler), data);
+	}
+
+*/
+/*
+
+	void text_textInsertHandler(GObject *, gint, gint, gchar*, gpointer);
+
+	static gulong Text_signal_connect_text_insert(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "text-insert", G_CALLBACK(text_textInsertHandler), data);
+	}
+
+*/
+/*
+
+	void text_textRemoveHandler(GObject *, gint, gint, gchar*, gpointer);
+
+	static gulong Text_signal_connect_text_remove(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "text-remove", G_CALLBACK(text_textRemoveHandler), data);
 	}
 
 */
@@ -791,7 +872,63 @@ func (recv *Hypertext) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported signal 'link-selected' for Hypertext : unsupported parameter arg1 : type gint :
+type signalHypertextLinkSelectedDetail struct {
+	callback  HypertextSignalLinkSelectedCallback
+	handlerID C.gulong
+}
+
+var signalHypertextLinkSelectedId int
+var signalHypertextLinkSelectedMap = make(map[int]signalHypertextLinkSelectedDetail)
+var signalHypertextLinkSelectedLock sync.Mutex
+
+// HypertextSignalLinkSelectedCallback is a callback function for a 'link-selected' signal emitted from a Hypertext.
+type HypertextSignalLinkSelectedCallback func(arg1 int32)
+
+/*
+ConnectLinkSelected connects the callback to the 'link-selected' signal for the Hypertext.
+
+The returned value represents the connection, and may be passed to DisconnectLinkSelected to remove it.
+*/
+func (recv *Hypertext) ConnectLinkSelected(callback HypertextSignalLinkSelectedCallback) int {
+	signalHypertextLinkSelectedLock.Lock()
+	defer signalHypertextLinkSelectedLock.Unlock()
+
+	signalHypertextLinkSelectedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Hypertext_signal_connect_link_selected(instance, C.gpointer(uintptr(signalHypertextLinkSelectedId)))
+
+	detail := signalHypertextLinkSelectedDetail{callback, handlerID}
+	signalHypertextLinkSelectedMap[signalHypertextLinkSelectedId] = detail
+
+	return signalHypertextLinkSelectedId
+}
+
+/*
+DisconnectLinkSelected disconnects a callback from the 'link-selected' signal for the Hypertext.
+
+The connectionID should be a value returned from a call to ConnectLinkSelected.
+*/
+func (recv *Hypertext) DisconnectLinkSelected(connectionID int) {
+	signalHypertextLinkSelectedLock.Lock()
+	defer signalHypertextLinkSelectedLock.Unlock()
+
+	detail, exists := signalHypertextLinkSelectedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalHypertextLinkSelectedMap, connectionID)
+}
+
+//export hypertext_linkSelectedHandler
+func hypertext_linkSelectedHandler(_ *C.GObject, c_arg1 C.gint, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalHypertextLinkSelectedMap[index].callback
+	callback(arg1)
+}
 
 // GetLink is a wrapper around the C function atk_hypertext_get_link.
 func (recv *Hypertext) GetLink(linkIndex int32) *Hyperlink {
@@ -1123,9 +1260,121 @@ func (recv *Table) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported signal 'column-deleted' for Table : unsupported parameter arg1 : type gint :
+type signalTableColumnDeletedDetail struct {
+	callback  TableSignalColumnDeletedCallback
+	handlerID C.gulong
+}
 
-// Unsupported signal 'column-inserted' for Table : unsupported parameter arg1 : type gint :
+var signalTableColumnDeletedId int
+var signalTableColumnDeletedMap = make(map[int]signalTableColumnDeletedDetail)
+var signalTableColumnDeletedLock sync.Mutex
+
+// TableSignalColumnDeletedCallback is a callback function for a 'column-deleted' signal emitted from a Table.
+type TableSignalColumnDeletedCallback func(arg1 int32, arg2 int32)
+
+/*
+ConnectColumnDeleted connects the callback to the 'column-deleted' signal for the Table.
+
+The returned value represents the connection, and may be passed to DisconnectColumnDeleted to remove it.
+*/
+func (recv *Table) ConnectColumnDeleted(callback TableSignalColumnDeletedCallback) int {
+	signalTableColumnDeletedLock.Lock()
+	defer signalTableColumnDeletedLock.Unlock()
+
+	signalTableColumnDeletedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Table_signal_connect_column_deleted(instance, C.gpointer(uintptr(signalTableColumnDeletedId)))
+
+	detail := signalTableColumnDeletedDetail{callback, handlerID}
+	signalTableColumnDeletedMap[signalTableColumnDeletedId] = detail
+
+	return signalTableColumnDeletedId
+}
+
+/*
+DisconnectColumnDeleted disconnects a callback from the 'column-deleted' signal for the Table.
+
+The connectionID should be a value returned from a call to ConnectColumnDeleted.
+*/
+func (recv *Table) DisconnectColumnDeleted(connectionID int) {
+	signalTableColumnDeletedLock.Lock()
+	defer signalTableColumnDeletedLock.Unlock()
+
+	detail, exists := signalTableColumnDeletedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalTableColumnDeletedMap, connectionID)
+}
+
+//export table_columnDeletedHandler
+func table_columnDeletedHandler(_ *C.GObject, c_arg1 C.gint, c_arg2 C.gint, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalTableColumnDeletedMap[index].callback
+	callback(arg1, arg2)
+}
+
+type signalTableColumnInsertedDetail struct {
+	callback  TableSignalColumnInsertedCallback
+	handlerID C.gulong
+}
+
+var signalTableColumnInsertedId int
+var signalTableColumnInsertedMap = make(map[int]signalTableColumnInsertedDetail)
+var signalTableColumnInsertedLock sync.Mutex
+
+// TableSignalColumnInsertedCallback is a callback function for a 'column-inserted' signal emitted from a Table.
+type TableSignalColumnInsertedCallback func(arg1 int32, arg2 int32)
+
+/*
+ConnectColumnInserted connects the callback to the 'column-inserted' signal for the Table.
+
+The returned value represents the connection, and may be passed to DisconnectColumnInserted to remove it.
+*/
+func (recv *Table) ConnectColumnInserted(callback TableSignalColumnInsertedCallback) int {
+	signalTableColumnInsertedLock.Lock()
+	defer signalTableColumnInsertedLock.Unlock()
+
+	signalTableColumnInsertedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Table_signal_connect_column_inserted(instance, C.gpointer(uintptr(signalTableColumnInsertedId)))
+
+	detail := signalTableColumnInsertedDetail{callback, handlerID}
+	signalTableColumnInsertedMap[signalTableColumnInsertedId] = detail
+
+	return signalTableColumnInsertedId
+}
+
+/*
+DisconnectColumnInserted disconnects a callback from the 'column-inserted' signal for the Table.
+
+The connectionID should be a value returned from a call to ConnectColumnInserted.
+*/
+func (recv *Table) DisconnectColumnInserted(connectionID int) {
+	signalTableColumnInsertedLock.Lock()
+	defer signalTableColumnInsertedLock.Unlock()
+
+	detail, exists := signalTableColumnInsertedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalTableColumnInsertedMap, connectionID)
+}
+
+//export table_columnInsertedHandler
+func table_columnInsertedHandler(_ *C.GObject, c_arg1 C.gint, c_arg2 C.gint, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalTableColumnInsertedMap[index].callback
+	callback(arg1, arg2)
+}
 
 type signalTableColumnReorderedDetail struct {
 	callback  TableSignalColumnReorderedCallback
@@ -1241,9 +1490,121 @@ func table_modelChangedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// Unsupported signal 'row-deleted' for Table : unsupported parameter arg1 : type gint :
+type signalTableRowDeletedDetail struct {
+	callback  TableSignalRowDeletedCallback
+	handlerID C.gulong
+}
 
-// Unsupported signal 'row-inserted' for Table : unsupported parameter arg1 : type gint :
+var signalTableRowDeletedId int
+var signalTableRowDeletedMap = make(map[int]signalTableRowDeletedDetail)
+var signalTableRowDeletedLock sync.Mutex
+
+// TableSignalRowDeletedCallback is a callback function for a 'row-deleted' signal emitted from a Table.
+type TableSignalRowDeletedCallback func(arg1 int32, arg2 int32)
+
+/*
+ConnectRowDeleted connects the callback to the 'row-deleted' signal for the Table.
+
+The returned value represents the connection, and may be passed to DisconnectRowDeleted to remove it.
+*/
+func (recv *Table) ConnectRowDeleted(callback TableSignalRowDeletedCallback) int {
+	signalTableRowDeletedLock.Lock()
+	defer signalTableRowDeletedLock.Unlock()
+
+	signalTableRowDeletedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Table_signal_connect_row_deleted(instance, C.gpointer(uintptr(signalTableRowDeletedId)))
+
+	detail := signalTableRowDeletedDetail{callback, handlerID}
+	signalTableRowDeletedMap[signalTableRowDeletedId] = detail
+
+	return signalTableRowDeletedId
+}
+
+/*
+DisconnectRowDeleted disconnects a callback from the 'row-deleted' signal for the Table.
+
+The connectionID should be a value returned from a call to ConnectRowDeleted.
+*/
+func (recv *Table) DisconnectRowDeleted(connectionID int) {
+	signalTableRowDeletedLock.Lock()
+	defer signalTableRowDeletedLock.Unlock()
+
+	detail, exists := signalTableRowDeletedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalTableRowDeletedMap, connectionID)
+}
+
+//export table_rowDeletedHandler
+func table_rowDeletedHandler(_ *C.GObject, c_arg1 C.gint, c_arg2 C.gint, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalTableRowDeletedMap[index].callback
+	callback(arg1, arg2)
+}
+
+type signalTableRowInsertedDetail struct {
+	callback  TableSignalRowInsertedCallback
+	handlerID C.gulong
+}
+
+var signalTableRowInsertedId int
+var signalTableRowInsertedMap = make(map[int]signalTableRowInsertedDetail)
+var signalTableRowInsertedLock sync.Mutex
+
+// TableSignalRowInsertedCallback is a callback function for a 'row-inserted' signal emitted from a Table.
+type TableSignalRowInsertedCallback func(arg1 int32, arg2 int32)
+
+/*
+ConnectRowInserted connects the callback to the 'row-inserted' signal for the Table.
+
+The returned value represents the connection, and may be passed to DisconnectRowInserted to remove it.
+*/
+func (recv *Table) ConnectRowInserted(callback TableSignalRowInsertedCallback) int {
+	signalTableRowInsertedLock.Lock()
+	defer signalTableRowInsertedLock.Unlock()
+
+	signalTableRowInsertedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Table_signal_connect_row_inserted(instance, C.gpointer(uintptr(signalTableRowInsertedId)))
+
+	detail := signalTableRowInsertedDetail{callback, handlerID}
+	signalTableRowInsertedMap[signalTableRowInsertedId] = detail
+
+	return signalTableRowInsertedId
+}
+
+/*
+DisconnectRowInserted disconnects a callback from the 'row-inserted' signal for the Table.
+
+The connectionID should be a value returned from a call to ConnectRowInserted.
+*/
+func (recv *Table) DisconnectRowInserted(connectionID int) {
+	signalTableRowInsertedLock.Lock()
+	defer signalTableRowInsertedLock.Unlock()
+
+	detail, exists := signalTableRowInsertedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalTableRowInsertedMap, connectionID)
+}
+
+//export table_rowInsertedHandler
+func table_rowInsertedHandler(_ *C.GObject, c_arg1 C.gint, c_arg2 C.gint, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalTableRowInsertedMap[index].callback
+	callback(arg1, arg2)
+}
 
 type signalTableRowReorderedDetail struct {
 	callback  TableSignalRowReorderedCallback
@@ -1708,13 +2069,237 @@ func text_textAttributesChangedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// Unsupported signal 'text-caret-moved' for Text : unsupported parameter arg1 : type gint :
+type signalTextTextCaretMovedDetail struct {
+	callback  TextSignalTextCaretMovedCallback
+	handlerID C.gulong
+}
 
-// Unsupported signal 'text-changed' for Text : unsupported parameter arg1 : type gint :
+var signalTextTextCaretMovedId int
+var signalTextTextCaretMovedMap = make(map[int]signalTextTextCaretMovedDetail)
+var signalTextTextCaretMovedLock sync.Mutex
 
-// Unsupported signal 'text-insert' for Text : unsupported parameter arg1 : type gint :
+// TextSignalTextCaretMovedCallback is a callback function for a 'text-caret-moved' signal emitted from a Text.
+type TextSignalTextCaretMovedCallback func(arg1 int32)
 
-// Unsupported signal 'text-remove' for Text : unsupported parameter arg1 : type gint :
+/*
+ConnectTextCaretMoved connects the callback to the 'text-caret-moved' signal for the Text.
+
+The returned value represents the connection, and may be passed to DisconnectTextCaretMoved to remove it.
+*/
+func (recv *Text) ConnectTextCaretMoved(callback TextSignalTextCaretMovedCallback) int {
+	signalTextTextCaretMovedLock.Lock()
+	defer signalTextTextCaretMovedLock.Unlock()
+
+	signalTextTextCaretMovedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Text_signal_connect_text_caret_moved(instance, C.gpointer(uintptr(signalTextTextCaretMovedId)))
+
+	detail := signalTextTextCaretMovedDetail{callback, handlerID}
+	signalTextTextCaretMovedMap[signalTextTextCaretMovedId] = detail
+
+	return signalTextTextCaretMovedId
+}
+
+/*
+DisconnectTextCaretMoved disconnects a callback from the 'text-caret-moved' signal for the Text.
+
+The connectionID should be a value returned from a call to ConnectTextCaretMoved.
+*/
+func (recv *Text) DisconnectTextCaretMoved(connectionID int) {
+	signalTextTextCaretMovedLock.Lock()
+	defer signalTextTextCaretMovedLock.Unlock()
+
+	detail, exists := signalTextTextCaretMovedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalTextTextCaretMovedMap, connectionID)
+}
+
+//export text_textCaretMovedHandler
+func text_textCaretMovedHandler(_ *C.GObject, c_arg1 C.gint, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalTextTextCaretMovedMap[index].callback
+	callback(arg1)
+}
+
+type signalTextTextChangedDetail struct {
+	callback  TextSignalTextChangedCallback
+	handlerID C.gulong
+}
+
+var signalTextTextChangedId int
+var signalTextTextChangedMap = make(map[int]signalTextTextChangedDetail)
+var signalTextTextChangedLock sync.Mutex
+
+// TextSignalTextChangedCallback is a callback function for a 'text-changed' signal emitted from a Text.
+type TextSignalTextChangedCallback func(arg1 int32, arg2 int32)
+
+/*
+ConnectTextChanged connects the callback to the 'text-changed' signal for the Text.
+
+The returned value represents the connection, and may be passed to DisconnectTextChanged to remove it.
+*/
+func (recv *Text) ConnectTextChanged(callback TextSignalTextChangedCallback) int {
+	signalTextTextChangedLock.Lock()
+	defer signalTextTextChangedLock.Unlock()
+
+	signalTextTextChangedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Text_signal_connect_text_changed(instance, C.gpointer(uintptr(signalTextTextChangedId)))
+
+	detail := signalTextTextChangedDetail{callback, handlerID}
+	signalTextTextChangedMap[signalTextTextChangedId] = detail
+
+	return signalTextTextChangedId
+}
+
+/*
+DisconnectTextChanged disconnects a callback from the 'text-changed' signal for the Text.
+
+The connectionID should be a value returned from a call to ConnectTextChanged.
+*/
+func (recv *Text) DisconnectTextChanged(connectionID int) {
+	signalTextTextChangedLock.Lock()
+	defer signalTextTextChangedLock.Unlock()
+
+	detail, exists := signalTextTextChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalTextTextChangedMap, connectionID)
+}
+
+//export text_textChangedHandler
+func text_textChangedHandler(_ *C.GObject, c_arg1 C.gint, c_arg2 C.gint, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalTextTextChangedMap[index].callback
+	callback(arg1, arg2)
+}
+
+type signalTextTextInsertDetail struct {
+	callback  TextSignalTextInsertCallback
+	handlerID C.gulong
+}
+
+var signalTextTextInsertId int
+var signalTextTextInsertMap = make(map[int]signalTextTextInsertDetail)
+var signalTextTextInsertLock sync.Mutex
+
+// TextSignalTextInsertCallback is a callback function for a 'text-insert' signal emitted from a Text.
+type TextSignalTextInsertCallback func(arg1 int32, arg2 int32, arg3 string)
+
+/*
+ConnectTextInsert connects the callback to the 'text-insert' signal for the Text.
+
+The returned value represents the connection, and may be passed to DisconnectTextInsert to remove it.
+*/
+func (recv *Text) ConnectTextInsert(callback TextSignalTextInsertCallback) int {
+	signalTextTextInsertLock.Lock()
+	defer signalTextTextInsertLock.Unlock()
+
+	signalTextTextInsertId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Text_signal_connect_text_insert(instance, C.gpointer(uintptr(signalTextTextInsertId)))
+
+	detail := signalTextTextInsertDetail{callback, handlerID}
+	signalTextTextInsertMap[signalTextTextInsertId] = detail
+
+	return signalTextTextInsertId
+}
+
+/*
+DisconnectTextInsert disconnects a callback from the 'text-insert' signal for the Text.
+
+The connectionID should be a value returned from a call to ConnectTextInsert.
+*/
+func (recv *Text) DisconnectTextInsert(connectionID int) {
+	signalTextTextInsertLock.Lock()
+	defer signalTextTextInsertLock.Unlock()
+
+	detail, exists := signalTextTextInsertMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalTextTextInsertMap, connectionID)
+}
+
+//export text_textInsertHandler
+func text_textInsertHandler(_ *C.GObject, c_arg1 C.gint, c_arg2 C.gint, c_arg3 C.gchar, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalTextTextInsertMap[index].callback
+	callback(arg1, arg2, arg3)
+}
+
+type signalTextTextRemoveDetail struct {
+	callback  TextSignalTextRemoveCallback
+	handlerID C.gulong
+}
+
+var signalTextTextRemoveId int
+var signalTextTextRemoveMap = make(map[int]signalTextTextRemoveDetail)
+var signalTextTextRemoveLock sync.Mutex
+
+// TextSignalTextRemoveCallback is a callback function for a 'text-remove' signal emitted from a Text.
+type TextSignalTextRemoveCallback func(arg1 int32, arg2 int32, arg3 string)
+
+/*
+ConnectTextRemove connects the callback to the 'text-remove' signal for the Text.
+
+The returned value represents the connection, and may be passed to DisconnectTextRemove to remove it.
+*/
+func (recv *Text) ConnectTextRemove(callback TextSignalTextRemoveCallback) int {
+	signalTextTextRemoveLock.Lock()
+	defer signalTextTextRemoveLock.Unlock()
+
+	signalTextTextRemoveId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Text_signal_connect_text_remove(instance, C.gpointer(uintptr(signalTextTextRemoveId)))
+
+	detail := signalTextTextRemoveDetail{callback, handlerID}
+	signalTextTextRemoveMap[signalTextTextRemoveId] = detail
+
+	return signalTextTextRemoveId
+}
+
+/*
+DisconnectTextRemove disconnects a callback from the 'text-remove' signal for the Text.
+
+The connectionID should be a value returned from a call to ConnectTextRemove.
+*/
+func (recv *Text) DisconnectTextRemove(connectionID int) {
+	signalTextTextRemoveLock.Lock()
+	defer signalTextTextRemoveLock.Unlock()
+
+	detail, exists := signalTextTextRemoveMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalTextTextRemoveMap, connectionID)
+}
+
+//export text_textRemoveHandler
+func text_textRemoveHandler(_ *C.GObject, c_arg1 C.gint, c_arg2 C.gint, c_arg3 C.gchar, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalTextTextRemoveMap[index].callback
+	callback(arg1, arg2, arg3)
+}
 
 type signalTextTextSelectionChangedDetail struct {
 	callback  TextSignalTextSelectionChangedCallback
