@@ -1306,7 +1306,10 @@ func (recv *PlacesSidebar) DisconnectShowErrorMessage(connectionID int) {
 }
 
 //export placessidebar_showErrorMessageHandler
-func placessidebar_showErrorMessageHandler(_ *C.GObject, c_primary C.gchar, c_secondary C.gchar, data C.gpointer) {
+func placessidebar_showErrorMessageHandler(_ *C.GObject, c_primary *C.gchar, c_secondary *C.gchar, data C.gpointer) {
+	primary := C.GoString(c_primary)
+
+	secondary := C.GoString(c_secondary)
 
 	index := int(uintptr(data))
 	callback := signalPlacesSidebarShowErrorMessageMap[index].callback

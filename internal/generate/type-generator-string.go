@@ -74,7 +74,7 @@ func (t *TypeGeneratorString) generateArrayDeclarationC(g *jen.Group, cVarName s
 func (t *TypeGeneratorString) generateDeclarationC(g *jen.Group, cVarName string) {
 	g.
 		Id(cVarName).
-		Op(strings.Repeat("*", t.typ.indirectLevel-1)).
+		Op(strings.Repeat("*", t.typ.indirectLevel)).
 		Qual("C", t.typ.cTypeName)
 }
 
@@ -110,6 +110,11 @@ func (t *TypeGeneratorString) generateParamCVar(g *jen.Group, cVarName string, g
 }
 
 func (t *TypeGeneratorString) generateParamGoVar(g *jen.Group, goVarName string, cVarName string, pkg string) {
+	g.
+		Id(goVarName).
+		Op(":=").
+		Qual("C", "GoString").
+		Call(jen.Id(cVarName))
 }
 
 func (t *TypeGeneratorString) generateParamOutCVar(g *jen.Group, cVarName string) {

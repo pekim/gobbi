@@ -267,7 +267,8 @@ func (recv *CellRendererCombo) DisconnectChanged(connectionID int) {
 }
 
 //export cellrenderercombo_changedHandler
-func cellrenderercombo_changedHandler(_ *C.GObject, c_path_string C.gchar, c_new_iter *C.GtkTreeIter, data C.gpointer) {
+func cellrenderercombo_changedHandler(_ *C.GObject, c_path_string *C.gchar, c_new_iter *C.GtkTreeIter, data C.gpointer) {
+	pathString := C.GoString(c_path_string)
 
 	newIter := TreeIterNewFromC(unsafe.Pointer(c_new_iter))
 

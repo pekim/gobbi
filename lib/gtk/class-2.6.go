@@ -346,8 +346,10 @@ func (recv *CellRenderer) DisconnectEditingStarted(connectionID int) {
 }
 
 //export cellrenderer_editingStartedHandler
-func cellrenderer_editingStartedHandler(_ *C.GObject, c_editable *C.GtkCellEditable, c_path C.gchar, data C.gpointer) {
+func cellrenderer_editingStartedHandler(_ *C.GObject, c_editable *C.GtkCellEditable, c_path *C.gchar, data C.gpointer) {
 	editable := CellEditableNewFromC(unsafe.Pointer(c_editable))
+
+	path := C.GoString(c_path)
 
 	index := int(uintptr(data))
 	callback := signalCellRendererEditingStartedMap[index].callback
@@ -737,7 +739,8 @@ func (recv *EntryCompletion) DisconnectInsertPrefix(connectionID int) {
 }
 
 //export entrycompletion_insertPrefixHandler
-func entrycompletion_insertPrefixHandler(_ *C.GObject, c_prefix C.gchar, data C.gpointer) C.gboolean {
+func entrycompletion_insertPrefixHandler(_ *C.GObject, c_prefix *C.gchar, data C.gpointer) C.gboolean {
+	prefix := C.GoString(c_prefix)
 
 	index := int(uintptr(data))
 	callback := signalEntryCompletionInsertPrefixMap[index].callback

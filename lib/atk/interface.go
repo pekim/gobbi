@@ -2236,7 +2236,9 @@ func (recv *Text) DisconnectTextInsert(connectionID int) {
 }
 
 //export text_textInsertHandler
-func text_textInsertHandler(_ *C.GObject, c_arg1 C.gint, c_arg2 C.gint, c_arg3 C.gchar, data C.gpointer) {
+func text_textInsertHandler(_ *C.GObject, c_arg1 C.gint, c_arg2 C.gint, c_arg3 *C.gchar, data C.gpointer) {
+
+	arg3 := C.GoString(c_arg3)
 
 	index := int(uintptr(data))
 	callback := signalTextTextInsertMap[index].callback
@@ -2294,7 +2296,9 @@ func (recv *Text) DisconnectTextRemove(connectionID int) {
 }
 
 //export text_textRemoveHandler
-func text_textRemoveHandler(_ *C.GObject, c_arg1 C.gint, c_arg2 C.gint, c_arg3 C.gchar, data C.gpointer) {
+func text_textRemoveHandler(_ *C.GObject, c_arg1 C.gint, c_arg2 C.gint, c_arg3 *C.gchar, data C.gpointer) {
+
+	arg3 := C.GoString(c_arg3)
 
 	index := int(uintptr(data))
 	callback := signalTextTextRemoveMap[index].callback

@@ -130,7 +130,8 @@ func (recv *Entry) DisconnectPreeditChanged(connectionID int) {
 }
 
 //export entry_preeditChangedHandler
-func entry_preeditChangedHandler(_ *C.GObject, c_preedit C.gchar, data C.gpointer) {
+func entry_preeditChangedHandler(_ *C.GObject, c_preedit *C.gchar, data C.gpointer) {
+	preedit := C.GoString(c_preedit)
 
 	index := int(uintptr(data))
 	callback := signalEntryPreeditChangedMap[index].callback
@@ -375,7 +376,8 @@ func (recv *TextView) DisconnectPreeditChanged(connectionID int) {
 }
 
 //export textview_preeditChangedHandler
-func textview_preeditChangedHandler(_ *C.GObject, c_preedit C.gchar, data C.gpointer) {
+func textview_preeditChangedHandler(_ *C.GObject, c_preedit *C.gchar, data C.gpointer) {
+	preedit := C.GoString(c_preedit)
 
 	index := int(uintptr(data))
 	callback := signalTextViewPreeditChangedMap[index].callback

@@ -164,12 +164,12 @@ func (p *Parameter) generateCVarForStringLength(g *jen.Group) {
 }
 
 func (p *Parameter) generateGoVar(g *jen.Group) {
-	typ := p.Type
 	if p.Array != nil {
-		typ = p.Array.Type
+		p.Array.generateParamGoVar(g, p)
+	} else {
+		p.Type.generator.generateParamGoVar(g, p.goVarName, p.cVarName, p.Type.fullGoPackageName())
 	}
 
-	typ.generator.generateParamGoVar(g, p.goVarName, p.cVarName, typ.fullGoPackageName())
 	g.Line()
 }
 

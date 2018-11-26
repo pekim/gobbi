@@ -515,8 +515,10 @@ func (recv *CellArea) DisconnectFocusChanged(connectionID int) {
 }
 
 //export cellarea_focusChangedHandler
-func cellarea_focusChangedHandler(_ *C.GObject, c_renderer *C.GtkCellRenderer, c_path C.gchar, data C.gpointer) {
+func cellarea_focusChangedHandler(_ *C.GObject, c_renderer *C.GtkCellRenderer, c_path *C.gchar, data C.gpointer) {
 	renderer := CellRendererNewFromC(unsafe.Pointer(c_renderer))
+
+	path := C.GoString(c_path)
 
 	index := int(uintptr(data))
 	callback := signalCellAreaFocusChangedMap[index].callback

@@ -773,7 +773,8 @@ func (recv *CellRendererAccel) DisconnectAccelCleared(connectionID int) {
 }
 
 //export cellrendereraccel_accelClearedHandler
-func cellrendereraccel_accelClearedHandler(_ *C.GObject, c_path_string C.gchar, data C.gpointer) {
+func cellrendereraccel_accelClearedHandler(_ *C.GObject, c_path_string *C.gchar, data C.gpointer) {
+	pathString := C.GoString(c_path_string)
 
 	index := int(uintptr(data))
 	callback := signalCellRendererAccelAccelClearedMap[index].callback

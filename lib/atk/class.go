@@ -795,7 +795,8 @@ func (recv *Object) DisconnectStateChange(connectionID int) {
 }
 
 //export object_stateChangeHandler
-func object_stateChangeHandler(_ *C.GObject, c_arg1 C.gchar, c_arg2 C.gboolean, data C.gpointer) {
+func object_stateChangeHandler(_ *C.GObject, c_arg1 *C.gchar, c_arg2 C.gboolean, data C.gpointer) {
+	arg1 := C.GoString(c_arg1)
 
 	arg2 := c_arg2 == C.TRUE
 

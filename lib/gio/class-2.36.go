@@ -84,7 +84,8 @@ func (recv *AppLaunchContext) DisconnectLaunchFailed(connectionID int) {
 }
 
 //export applaunchcontext_launchFailedHandler
-func applaunchcontext_launchFailedHandler(_ *C.GObject, c_startup_notify_id C.gchar, data C.gpointer) {
+func applaunchcontext_launchFailedHandler(_ *C.GObject, c_startup_notify_id *C.gchar, data C.gpointer) {
+	startupNotifyId := C.GoString(c_startup_notify_id)
 
 	index := int(uintptr(data))
 	callback := signalAppLaunchContextLaunchFailedMap[index].callback

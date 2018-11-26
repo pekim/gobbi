@@ -28,6 +28,9 @@ func (pp Parameters) init(ns *Namespace) {
 				// Provide an array length param with a reference to its array param.
 				paramIndex := *param.Array.Length
 				pp[paramIndex].arrayLengthFor = param
+
+				// And the reverse.
+				param.Array.lengthParam = pp[paramIndex]
 			}
 		}
 	}

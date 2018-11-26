@@ -225,7 +225,9 @@ func (recv *Value) DisconnectValueChanged(connectionID int) {
 }
 
 //export value_valueChangedHandler
-func value_valueChangedHandler(_ *C.GObject, c_value C.gdouble, c_text C.gchar, data C.gpointer) {
+func value_valueChangedHandler(_ *C.GObject, c_value C.gdouble, c_text *C.gchar, data C.gpointer) {
+
+	text := C.GoString(c_text)
 
 	index := int(uintptr(data))
 	callback := signalValueValueChangedMap[index].callback

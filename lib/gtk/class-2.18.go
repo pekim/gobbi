@@ -327,7 +327,9 @@ func (recv *EntryBuffer) DisconnectInsertedText(connectionID int) {
 }
 
 //export entrybuffer_insertedTextHandler
-func entrybuffer_insertedTextHandler(_ *C.GObject, c_position C.guint, c_chars C.gchar, c_n_chars C.guint, data C.gpointer) {
+func entrybuffer_insertedTextHandler(_ *C.GObject, c_position C.guint, c_chars *C.gchar, c_n_chars C.guint, data C.gpointer) {
+
+	chars := C.GoString(c_chars)
 
 	index := int(uintptr(data))
 	callback := signalEntryBufferInsertedTextMap[index].callback
@@ -792,7 +794,8 @@ func (recv *Label) DisconnectActivateLink(connectionID int) {
 }
 
 //export label_activateLinkHandler
-func label_activateLinkHandler(_ *C.GObject, c_uri C.gchar, data C.gpointer) C.gboolean {
+func label_activateLinkHandler(_ *C.GObject, c_uri *C.gchar, data C.gpointer) C.gboolean {
+	uri := C.GoString(c_uri)
 
 	index := int(uintptr(data))
 	callback := signalLabelActivateLinkMap[index].callback

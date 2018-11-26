@@ -129,7 +129,8 @@ func (recv *ActionGroup) DisconnectActionAdded(connectionID int) {
 }
 
 //export actiongroup_actionAddedHandler
-func actiongroup_actionAddedHandler(_ *C.GObject, c_action_name C.gchar, data C.gpointer) {
+func actiongroup_actionAddedHandler(_ *C.GObject, c_action_name *C.gchar, data C.gpointer) {
+	actionName := C.GoString(c_action_name)
 
 	index := int(uintptr(data))
 	callback := signalActionGroupActionAddedMap[index].callback
@@ -187,7 +188,8 @@ func (recv *ActionGroup) DisconnectActionEnabledChanged(connectionID int) {
 }
 
 //export actiongroup_actionEnabledChangedHandler
-func actiongroup_actionEnabledChangedHandler(_ *C.GObject, c_action_name C.gchar, c_enabled C.gboolean, data C.gpointer) {
+func actiongroup_actionEnabledChangedHandler(_ *C.GObject, c_action_name *C.gchar, c_enabled C.gboolean, data C.gpointer) {
+	actionName := C.GoString(c_action_name)
 
 	enabled := c_enabled == C.TRUE
 
@@ -247,7 +249,8 @@ func (recv *ActionGroup) DisconnectActionRemoved(connectionID int) {
 }
 
 //export actiongroup_actionRemovedHandler
-func actiongroup_actionRemovedHandler(_ *C.GObject, c_action_name C.gchar, data C.gpointer) {
+func actiongroup_actionRemovedHandler(_ *C.GObject, c_action_name *C.gchar, data C.gpointer) {
+	actionName := C.GoString(c_action_name)
 
 	index := int(uintptr(data))
 	callback := signalActionGroupActionRemovedMap[index].callback

@@ -224,7 +224,8 @@ func (recv *LevelBar) DisconnectOffsetChanged(connectionID int) {
 }
 
 //export levelbar_offsetChangedHandler
-func levelbar_offsetChangedHandler(_ *C.GObject, c_name C.gchar, data C.gpointer) {
+func levelbar_offsetChangedHandler(_ *C.GObject, c_name *C.gchar, data C.gpointer) {
+	name := C.GoString(c_name)
 
 	index := int(uintptr(data))
 	callback := signalLevelBarOffsetChangedMap[index].callback

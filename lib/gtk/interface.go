@@ -779,7 +779,8 @@ func (recv *Editable) DisconnectInsertText(connectionID int) {
 }
 
 //export editable_insertTextHandler
-func editable_insertTextHandler(_ *C.GObject, c_new_text C.gchar, c_new_text_length C.gint, c_position C.gpointer, data C.gpointer) {
+func editable_insertTextHandler(_ *C.GObject, c_new_text *C.gchar, c_new_text_length C.gint, c_position C.gpointer, data C.gpointer) {
+	newText := C.GoString(c_new_text)
 
 	index := int(uintptr(data))
 	callback := signalEditableInsertTextMap[index].callback
@@ -1243,7 +1244,8 @@ func (recv *FontChooser) DisconnectFontActivated(connectionID int) {
 }
 
 //export fontchooser_fontActivatedHandler
-func fontchooser_fontActivatedHandler(_ *C.GObject, c_fontname C.gchar, data C.gpointer) {
+func fontchooser_fontActivatedHandler(_ *C.GObject, c_fontname *C.gchar, data C.gpointer) {
+	fontname := C.GoString(c_fontname)
 
 	index := int(uintptr(data))
 	callback := signalFontChooserFontActivatedMap[index].callback

@@ -270,7 +270,8 @@ func (recv *MountOperation) DisconnectShowUnmountProgress(connectionID int) {
 }
 
 //export mountoperation_showUnmountProgressHandler
-func mountoperation_showUnmountProgressHandler(_ *C.GObject, c_message C.gchar, c_time_left C.gint64, c_bytes_left C.gint64, data C.gpointer) {
+func mountoperation_showUnmountProgressHandler(_ *C.GObject, c_message *C.gchar, c_time_left C.gint64, c_bytes_left C.gint64, data C.gpointer) {
+	message := C.GoString(c_message)
 
 	index := int(uintptr(data))
 	callback := signalMountOperationShowUnmountProgressMap[index].callback

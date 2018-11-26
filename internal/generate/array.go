@@ -13,6 +13,8 @@ type Array struct {
 	FixedSize      *int   `xml:"fixed-size,attr"`
 	Length         *int   `xml:"length,attr"`
 	ZeroTerminated string `xml:"zero-terminated,attr"`
+
+	lengthParam *Parameter
 }
 
 func (a *Array) init(ns *Namespace) {
@@ -52,6 +54,16 @@ func (a *Array) generateArrayLenParamCVar(g *jen.Group, cVarName string, arrayGo
 		Op(":=").
 		Parens(jen.Qual("C", ctype)).
 		Parens(jen.Len(jen.Id(arrayGoVarName)))
+}
+
+func (a *Array) generateParamGoVar(g *jen.Group, param *Parameter) {
+	g.
+		Id(param.goVarName).
+		Op(":=").
+		Make(
+			jen.Index().Op("*").Id(param.Array.Type.qname.name),
+			jen.Id("int").Parens(jen.Id(param.Array.lengthParam.cVarName)),
+			jen.Id("int").Parens(jen.Id(param.Array.lengthParam.cVarName)))
 }
 
 func (a *Array) generateParamCallArgument(g *jen.Group, cVarName string) {

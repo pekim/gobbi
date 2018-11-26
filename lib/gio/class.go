@@ -4434,7 +4434,8 @@ func (recv *Settings) DisconnectChanged(connectionID int) {
 }
 
 //export settings_changedHandler
-func settings_changedHandler(_ *C.GObject, c_key C.gchar, data C.gpointer) {
+func settings_changedHandler(_ *C.GObject, c_key *C.gchar, data C.gpointer) {
+	key := C.GoString(c_key)
 
 	index := int(uintptr(data))
 	callback := signalSettingsChangedMap[index].callback
@@ -4553,7 +4554,8 @@ func (recv *Settings) DisconnectWritableChanged(connectionID int) {
 }
 
 //export settings_writableChangedHandler
-func settings_writableChangedHandler(_ *C.GObject, c_key C.gchar, data C.gpointer) {
+func settings_writableChangedHandler(_ *C.GObject, c_key *C.gchar, data C.gpointer) {
+	key := C.GoString(c_key)
 
 	index := int(uintptr(data))
 	callback := signalSettingsWritableChangedMap[index].callback

@@ -2880,7 +2880,8 @@ func (recv *AppChooserButton) DisconnectCustomItemActivated(connectionID int) {
 }
 
 //export appchooserbutton_customItemActivatedHandler
-func appchooserbutton_customItemActivatedHandler(_ *C.GObject, c_item_name C.gchar, data C.gpointer) {
+func appchooserbutton_customItemActivatedHandler(_ *C.GObject, c_item_name *C.gchar, data C.gpointer) {
+	itemName := C.GoString(c_item_name)
 
 	index := int(uintptr(data))
 	callback := signalAppChooserButtonCustomItemActivatedMap[index].callback
@@ -6051,7 +6052,10 @@ func (recv *CellRendererText) DisconnectEdited(connectionID int) {
 }
 
 //export cellrenderertext_editedHandler
-func cellrenderertext_editedHandler(_ *C.GObject, c_path C.gchar, c_new_text C.gchar, data C.gpointer) {
+func cellrenderertext_editedHandler(_ *C.GObject, c_path *C.gchar, c_new_text *C.gchar, data C.gpointer) {
+	path := C.GoString(c_path)
+
+	newText := C.GoString(c_new_text)
 
 	index := int(uintptr(data))
 	callback := signalCellRendererTextEditedMap[index].callback
@@ -6170,7 +6174,8 @@ func (recv *CellRendererToggle) DisconnectToggled(connectionID int) {
 }
 
 //export cellrenderertoggle_toggledHandler
-func cellrenderertoggle_toggledHandler(_ *C.GObject, c_path C.gchar, data C.gpointer) {
+func cellrenderertoggle_toggledHandler(_ *C.GObject, c_path *C.gchar, data C.gpointer) {
+	path := C.GoString(c_path)
 
 	index := int(uintptr(data))
 	callback := signalCellRendererToggleToggledMap[index].callback
@@ -9114,7 +9119,8 @@ func (recv *Entry) DisconnectInsertAtCursor(connectionID int) {
 }
 
 //export entry_insertAtCursorHandler
-func entry_insertAtCursorHandler(_ *C.GObject, c_string C.gchar, data C.gpointer) {
+func entry_insertAtCursorHandler(_ *C.GObject, c_string *C.gchar, data C.gpointer) {
+	string := C.GoString(c_string)
 
 	index := int(uintptr(data))
 	callback := signalEntryInsertAtCursorMap[index].callback
@@ -10347,7 +10353,8 @@ func (recv *FileChooserWidget) DisconnectLocationPopup(connectionID int) {
 }
 
 //export filechooserwidget_locationPopupHandler
-func filechooserwidget_locationPopupHandler(_ *C.GObject, c_path C.gchar, data C.gpointer) {
+func filechooserwidget_locationPopupHandler(_ *C.GObject, c_path *C.gchar, data C.gpointer) {
+	path := C.GoString(c_path)
 
 	index := int(uintptr(data))
 	callback := signalFileChooserWidgetLocationPopupMap[index].callback
@@ -13874,7 +13881,8 @@ func (recv *IMContext) DisconnectCommit(connectionID int) {
 }
 
 //export imcontext_commitHandler
-func imcontext_commitHandler(_ *C.GObject, c_str C.gchar, data C.gpointer) {
+func imcontext_commitHandler(_ *C.GObject, c_str *C.gchar, data C.gpointer) {
+	str := C.GoString(c_str)
 
 	index := int(uintptr(data))
 	callback := signalIMContextCommitMap[index].callback
@@ -25113,7 +25121,9 @@ func (recv *Statusbar) DisconnectTextPopped(connectionID int) {
 }
 
 //export statusbar_textPoppedHandler
-func statusbar_textPoppedHandler(_ *C.GObject, c_context_id C.guint, c_text C.gchar, data C.gpointer) {
+func statusbar_textPoppedHandler(_ *C.GObject, c_context_id C.guint, c_text *C.gchar, data C.gpointer) {
+
+	text := C.GoString(c_text)
 
 	index := int(uintptr(data))
 	callback := signalStatusbarTextPoppedMap[index].callback
@@ -25171,7 +25181,9 @@ func (recv *Statusbar) DisconnectTextPushed(connectionID int) {
 }
 
 //export statusbar_textPushedHandler
-func statusbar_textPushedHandler(_ *C.GObject, c_context_id C.guint, c_text C.gchar, data C.gpointer) {
+func statusbar_textPushedHandler(_ *C.GObject, c_context_id C.guint, c_text *C.gchar, data C.gpointer) {
+
+	text := C.GoString(c_text)
 
 	index := int(uintptr(data))
 	callback := signalStatusbarTextPushedMap[index].callback
@@ -26633,8 +26645,10 @@ func (recv *TextBuffer) DisconnectInsertText(connectionID int) {
 }
 
 //export textbuffer_insertTextHandler
-func textbuffer_insertTextHandler(_ *C.GObject, c_location *C.GtkTextIter, c_text C.gchar, c_len C.gint, data C.gpointer) {
+func textbuffer_insertTextHandler(_ *C.GObject, c_location *C.GtkTextIter, c_text *C.gchar, c_len C.gint, data C.gpointer) {
 	location := TextIterNewFromC(unsafe.Pointer(c_location))
+
+	text := C.GoString(c_text)
 
 	index := int(uintptr(data))
 	callback := signalTextBufferInsertTextMap[index].callback
@@ -28477,7 +28491,8 @@ func (recv *TextView) DisconnectInsertAtCursor(connectionID int) {
 }
 
 //export textview_insertAtCursorHandler
-func textview_insertAtCursorHandler(_ *C.GObject, c_string C.gchar, data C.gpointer) {
+func textview_insertAtCursorHandler(_ *C.GObject, c_string *C.gchar, data C.gpointer) {
+	string := C.GoString(c_string)
 
 	index := int(uintptr(data))
 	callback := signalTextViewInsertAtCursorMap[index].callback

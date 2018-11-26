@@ -274,8 +274,10 @@ func (recv *Application) DisconnectOpen(connectionID int) {
 }
 
 //export application_openHandler
-func application_openHandler(_ *C.GObject, c_files *C.GFile, c_n_files C.gint, c_hint C.gchar, data C.gpointer) {
-	files := FileNewFromC(unsafe.Pointer(c_files))
+func application_openHandler(_ *C.GObject, c_files *C.GFile, c_n_files C.gint, c_hint *C.gchar, data C.gpointer) {
+	files := make([]*File, int(c_n_files), int(c_n_files))
+
+	hint := C.GoString(c_hint)
 
 	index := int(uintptr(data))
 	callback := signalApplicationOpenMap[index].callback
