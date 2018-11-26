@@ -279,7 +279,7 @@ func application_openHandler(_ *C.GObject, c_files *C.GFile, c_n_files C.gint, c
 
 	index := int(uintptr(data))
 	callback := signalApplicationOpenMap[index].callback
-	callback(files, nFiles, hint)
+	callback(files, hint)
 }
 
 type signalApplicationShutdownDetail struct {

@@ -232,6 +232,10 @@ func (s *Signal) generateHandlerCall(g *jen.Group) {
 
 func (s *Signal) generateHandleCallParams(g *jen.Group) {
 	for _, p := range s.Parameters {
+		if p.arrayLengthFor != nil {
+			continue
+		}
+
 		g.Id(p.goVarName)
 	}
 }
