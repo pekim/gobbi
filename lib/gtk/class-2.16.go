@@ -754,6 +754,9 @@ func (recv *StatusIcon) DisconnectQueryTooltip(connectionID int) {
 
 //export statusicon_queryTooltipHandler
 func statusicon_queryTooltipHandler(_ *C.GObject, c_x C.gint, c_y C.gint, c_keyboard_mode C.gboolean, c_tooltip *C.GtkTooltip, data C.gpointer) C.gboolean {
+	x := int32(c_x)
+
+	y := int32(c_y)
 
 	keyboardMode := c_keyboard_mode == C.TRUE
 

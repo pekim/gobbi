@@ -1003,6 +1003,8 @@ func (recv *Notebook) DisconnectPageAdded(connectionID int) {
 func notebook_pageAddedHandler(_ *C.GObject, c_child *C.GtkWidget, c_page_num C.guint, data C.gpointer) {
 	child := WidgetNewFromC(unsafe.Pointer(c_child))
 
+	pageNum := uint32(c_page_num)
+
 	index := int(uintptr(data))
 	callback := signalNotebookPageAddedMap[index].callback
 	callback(child, pageNum)
@@ -1062,6 +1064,8 @@ func (recv *Notebook) DisconnectPageRemoved(connectionID int) {
 func notebook_pageRemovedHandler(_ *C.GObject, c_child *C.GtkWidget, c_page_num C.guint, data C.gpointer) {
 	child := WidgetNewFromC(unsafe.Pointer(c_child))
 
+	pageNum := uint32(c_page_num)
+
 	index := int(uintptr(data))
 	callback := signalNotebookPageRemovedMap[index].callback
 	callback(child, pageNum)
@@ -1120,6 +1124,8 @@ func (recv *Notebook) DisconnectPageReordered(connectionID int) {
 //export notebook_pageReorderedHandler
 func notebook_pageReorderedHandler(_ *C.GObject, c_child *C.GtkWidget, c_page_num C.guint, data C.gpointer) {
 	child := WidgetNewFromC(unsafe.Pointer(c_child))
+
+	pageNum := uint32(c_page_num)
 
 	index := int(uintptr(data))
 	callback := signalNotebookPageReorderedMap[index].callback
@@ -1693,6 +1699,8 @@ func (recv *PrintOperation) DisconnectDrawPage(connectionID int) {
 func printoperation_drawPageHandler(_ *C.GObject, c_context *C.GtkPrintContext, c_page_nr C.gint, data C.gpointer) {
 	context := PrintContextNewFromC(unsafe.Pointer(c_context))
 
+	pageNr := int32(c_page_nr)
+
 	index := int(uintptr(data))
 	callback := signalPrintOperationDrawPageMap[index].callback
 	callback(context, pageNr)
@@ -1938,6 +1946,8 @@ func (recv *PrintOperation) DisconnectRequestPageSetup(connectionID int) {
 //export printoperation_requestPageSetupHandler
 func printoperation_requestPageSetupHandler(_ *C.GObject, c_context *C.GtkPrintContext, c_page_nr C.gint, c_setup *C.GtkPageSetup, data C.gpointer) {
 	context := PrintContextNewFromC(unsafe.Pointer(c_context))
+
+	pageNr := int32(c_page_nr)
 
 	setup := PageSetupNewFromC(unsafe.Pointer(c_setup))
 
@@ -3340,6 +3350,9 @@ func (recv *StatusIcon) DisconnectPopupMenu(connectionID int) {
 
 //export statusicon_popupMenuHandler
 func statusicon_popupMenuHandler(_ *C.GObject, c_button C.guint, c_activate_time C.guint, data C.gpointer) {
+	button := uint32(c_button)
+
+	activateTime := uint32(c_activate_time)
 
 	index := int(uintptr(data))
 	callback := signalStatusIconPopupMenuMap[index].callback
@@ -3398,6 +3411,7 @@ func (recv *StatusIcon) DisconnectSizeChanged(connectionID int) {
 
 //export statusicon_sizeChangedHandler
 func statusicon_sizeChangedHandler(_ *C.GObject, c_size C.gint, data C.gpointer) C.gboolean {
+	size := int32(c_size)
 
 	index := int(uintptr(data))
 	callback := signalStatusIconSizeChangedMap[index].callback

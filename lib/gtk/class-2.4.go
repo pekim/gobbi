@@ -1389,6 +1389,7 @@ func (recv *EntryCompletion) DisconnectActionActivated(connectionID int) {
 
 //export entrycompletion_actionActivatedHandler
 func entrycompletion_actionActivatedHandler(_ *C.GObject, c_index C.gint, data C.gpointer) {
+	index := int32(c_index)
 
 	index := int(uintptr(data))
 	callback := signalEntryCompletionActionActivatedMap[index].callback

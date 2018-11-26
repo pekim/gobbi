@@ -728,6 +728,7 @@ func (recv *MenuShell) DisconnectMoveSelected(connectionID int) {
 
 //export menushell_moveSelectedHandler
 func menushell_moveSelectedHandler(_ *C.GObject, c_distance C.gint, data C.gpointer) C.gboolean {
+	distance := int32(c_distance)
 
 	index := int(uintptr(data))
 	callback := signalMenuShellMoveSelectedMap[index].callback
@@ -810,6 +811,10 @@ func (recv *Notebook) DisconnectCreateWindow(connectionID int) {
 //export notebook_createWindowHandler
 func notebook_createWindowHandler(_ *C.GObject, c_page *C.GtkWidget, c_x C.gint, c_y C.gint, data C.gpointer) *C.GtkNotebook {
 	page := WidgetNewFromC(unsafe.Pointer(c_page))
+
+	x := int32(c_x)
+
+	y := int32(c_y)
 
 	index := int(uintptr(data))
 	callback := signalNotebookCreateWindowMap[index].callback
@@ -1249,6 +1254,7 @@ func (recv *ScaleButton) DisconnectValueChanged(connectionID int) {
 
 //export scalebutton_valueChangedHandler
 func scalebutton_valueChangedHandler(_ *C.GObject, c_value C.gdouble, data C.gpointer) {
+	value := float64(c_value)
 
 	index := int(uintptr(data))
 	callback := signalScaleButtonValueChangedMap[index].callback
@@ -1749,6 +1755,9 @@ func (recv *Widget) DisconnectQueryTooltip(connectionID int) {
 
 //export widget_queryTooltipHandler
 func widget_queryTooltipHandler(_ *C.GObject, c_x C.gint, c_y C.gint, c_keyboard_mode C.gboolean, c_tooltip *C.GtkTooltip, data C.gpointer) C.gboolean {
+	x := int32(c_x)
+
+	y := int32(c_y)
 
 	keyboardMode := c_keyboard_mode == C.TRUE
 

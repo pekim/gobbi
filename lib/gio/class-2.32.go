@@ -911,6 +911,11 @@ func (recv *MenuModel) DisconnectItemsChanged(connectionID int) {
 
 //export menumodel_itemsChangedHandler
 func menumodel_itemsChangedHandler(_ *C.GObject, c_position C.gint, c_removed C.gint, c_added C.gint, data C.gpointer) {
+	position := int32(c_position)
+
+	removed := int32(c_removed)
+
+	added := int32(c_added)
 
 	index := int(uintptr(data))
 	callback := signalMenuModelItemsChangedMap[index].callback

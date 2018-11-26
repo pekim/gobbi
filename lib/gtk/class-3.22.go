@@ -102,6 +102,9 @@ func (recv *Menu) DisconnectPoppedUp(connectionID int) {
 
 //export menu_poppedUpHandler
 func menu_poppedUpHandler(_ *C.GObject, c_flipped_rect C.gpointer, c_final_rect C.gpointer, c_flipped_x C.gboolean, c_flipped_y C.gboolean, data C.gpointer) {
+	flippedRect := uintptr(c_flipped_rect)
+
+	finalRect := uintptr(c_final_rect)
 
 	flippedX := c_flipped_x == C.TRUE
 

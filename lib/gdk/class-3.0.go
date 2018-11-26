@@ -346,6 +346,9 @@ func (recv *Window) DisconnectCreateSurface(connectionID int) {
 
 //export window_createSurfaceHandler
 func window_createSurfaceHandler(_ *C.GObject, c_width C.gint, c_height C.gint, data C.gpointer) *C.cairo_surface_t {
+	width := int32(c_width)
+
+	height := int32(c_height)
 
 	index := int(uintptr(data))
 	callback := signalWindowCreateSurfaceMap[index].callback

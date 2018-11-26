@@ -722,6 +722,9 @@ func (recv *Editable) DisconnectDeleteText(connectionID int) {
 
 //export editable_deleteTextHandler
 func editable_deleteTextHandler(_ *C.GObject, c_start_pos C.gint, c_end_pos C.gint, data C.gpointer) {
+	startPos := int32(c_start_pos)
+
+	endPos := int32(c_end_pos)
 
 	index := int(uintptr(data))
 	callback := signalEditableDeleteTextMap[index].callback
@@ -781,6 +784,10 @@ func (recv *Editable) DisconnectInsertText(connectionID int) {
 //export editable_insertTextHandler
 func editable_insertTextHandler(_ *C.GObject, c_new_text *C.gchar, c_new_text_length C.gint, c_position C.gpointer, data C.gpointer) {
 	newText := C.GoString(c_new_text)
+
+	newTextLength := int32(c_new_text_length)
+
+	position := uintptr(c_position)
 
 	index := int(uintptr(data))
 	callback := signalEditableInsertTextMap[index].callback
@@ -1938,6 +1945,8 @@ func treemodel_rowsReorderedHandler(_ *C.GObject, c_path *C.GtkTreePath, c_iter 
 	path := TreePathNewFromC(unsafe.Pointer(c_path))
 
 	iter := TreeIterNewFromC(unsafe.Pointer(c_iter))
+
+	newOrder := uintptr(c_new_order)
 
 	index := int(uintptr(data))
 	callback := signalTreeModelRowsReorderedMap[index].callback

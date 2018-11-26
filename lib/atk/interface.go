@@ -924,6 +924,7 @@ func (recv *Hypertext) DisconnectLinkSelected(connectionID int) {
 
 //export hypertext_linkSelectedHandler
 func hypertext_linkSelectedHandler(_ *C.GObject, c_arg1 C.gint, data C.gpointer) {
+	arg1 := int32(c_arg1)
 
 	index := int(uintptr(data))
 	callback := signalHypertextLinkSelectedMap[index].callback
@@ -1312,6 +1313,9 @@ func (recv *Table) DisconnectColumnDeleted(connectionID int) {
 
 //export table_columnDeletedHandler
 func table_columnDeletedHandler(_ *C.GObject, c_arg1 C.gint, c_arg2 C.gint, data C.gpointer) {
+	arg1 := int32(c_arg1)
+
+	arg2 := int32(c_arg2)
 
 	index := int(uintptr(data))
 	callback := signalTableColumnDeletedMap[index].callback
@@ -1370,6 +1374,9 @@ func (recv *Table) DisconnectColumnInserted(connectionID int) {
 
 //export table_columnInsertedHandler
 func table_columnInsertedHandler(_ *C.GObject, c_arg1 C.gint, c_arg2 C.gint, data C.gpointer) {
+	arg1 := int32(c_arg1)
+
+	arg2 := int32(c_arg2)
 
 	index := int(uintptr(data))
 	callback := signalTableColumnInsertedMap[index].callback
@@ -1542,6 +1549,9 @@ func (recv *Table) DisconnectRowDeleted(connectionID int) {
 
 //export table_rowDeletedHandler
 func table_rowDeletedHandler(_ *C.GObject, c_arg1 C.gint, c_arg2 C.gint, data C.gpointer) {
+	arg1 := int32(c_arg1)
+
+	arg2 := int32(c_arg2)
 
 	index := int(uintptr(data))
 	callback := signalTableRowDeletedMap[index].callback
@@ -1600,6 +1610,9 @@ func (recv *Table) DisconnectRowInserted(connectionID int) {
 
 //export table_rowInsertedHandler
 func table_rowInsertedHandler(_ *C.GObject, c_arg1 C.gint, c_arg2 C.gint, data C.gpointer) {
+	arg1 := int32(c_arg1)
+
+	arg2 := int32(c_arg2)
 
 	index := int(uintptr(data))
 	callback := signalTableRowInsertedMap[index].callback
@@ -2121,6 +2134,7 @@ func (recv *Text) DisconnectTextCaretMoved(connectionID int) {
 
 //export text_textCaretMovedHandler
 func text_textCaretMovedHandler(_ *C.GObject, c_arg1 C.gint, data C.gpointer) {
+	arg1 := int32(c_arg1)
 
 	index := int(uintptr(data))
 	callback := signalTextTextCaretMovedMap[index].callback
@@ -2179,6 +2193,9 @@ func (recv *Text) DisconnectTextChanged(connectionID int) {
 
 //export text_textChangedHandler
 func text_textChangedHandler(_ *C.GObject, c_arg1 C.gint, c_arg2 C.gint, data C.gpointer) {
+	arg1 := int32(c_arg1)
+
+	arg2 := int32(c_arg2)
 
 	index := int(uintptr(data))
 	callback := signalTextTextChangedMap[index].callback
@@ -2237,6 +2254,9 @@ func (recv *Text) DisconnectTextInsert(connectionID int) {
 
 //export text_textInsertHandler
 func text_textInsertHandler(_ *C.GObject, c_arg1 C.gint, c_arg2 C.gint, c_arg3 *C.gchar, data C.gpointer) {
+	arg1 := int32(c_arg1)
+
+	arg2 := int32(c_arg2)
 
 	arg3 := C.GoString(c_arg3)
 
@@ -2297,6 +2317,9 @@ func (recv *Text) DisconnectTextRemove(connectionID int) {
 
 //export text_textRemoveHandler
 func text_textRemoveHandler(_ *C.GObject, c_arg1 C.gint, c_arg2 C.gint, c_arg3 *C.gchar, data C.gpointer) {
+	arg1 := int32(c_arg1)
+
+	arg2 := int32(c_arg2)
 
 	arg3 := C.GoString(c_arg3)
 

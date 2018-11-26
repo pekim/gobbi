@@ -797,6 +797,13 @@ func (recv *PixbufLoader) DisconnectAreaUpdated(connectionID int) {
 
 //export pixbufloader_areaUpdatedHandler
 func pixbufloader_areaUpdatedHandler(_ *C.GObject, c_x C.gint, c_y C.gint, c_width C.gint, c_height C.gint, data C.gpointer) {
+	x := int32(c_x)
+
+	y := int32(c_y)
+
+	width := int32(c_width)
+
+	height := int32(c_height)
 
 	index := int(uintptr(data))
 	callback := signalPixbufLoaderAreaUpdatedMap[index].callback
@@ -912,6 +919,9 @@ func (recv *PixbufLoader) DisconnectSizePrepared(connectionID int) {
 
 //export pixbufloader_sizePreparedHandler
 func pixbufloader_sizePreparedHandler(_ *C.GObject, c_width C.gint, c_height C.gint, data C.gpointer) {
+	width := int32(c_width)
+
+	height := int32(c_height)
 
 	index := int(uintptr(data))
 	callback := signalPixbufLoaderSizePreparedMap[index].callback

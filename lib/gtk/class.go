@@ -8639,6 +8639,7 @@ func (recv *Dialog) DisconnectResponse(connectionID int) {
 
 //export dialog_responseHandler
 func dialog_responseHandler(_ *C.GObject, c_response_id C.gint, data C.gpointer) {
+	responseId := int32(c_response_id)
 
 	index := int(uintptr(data))
 	callback := signalDialogResponseMap[index].callback
@@ -10584,6 +10585,7 @@ func (recv *FileChooserWidget) DisconnectQuickBookmark(connectionID int) {
 
 //export filechooserwidget_quickBookmarkHandler
 func filechooserwidget_quickBookmarkHandler(_ *C.GObject, c_bookmark_index C.gint, data C.gpointer) {
+	bookmarkIndex := int32(c_bookmark_index)
 
 	index := int(uintptr(data))
 	callback := signalFileChooserWidgetQuickBookmarkMap[index].callback
@@ -13941,6 +13943,9 @@ func (recv *IMContext) DisconnectDeleteSurrounding(connectionID int) {
 
 //export imcontext_deleteSurroundingHandler
 func imcontext_deleteSurroundingHandler(_ *C.GObject, c_offset C.gint, c_n_chars C.gint, data C.gpointer) C.gboolean {
+	offset := int32(c_offset)
+
+	nChars := int32(c_n_chars)
 
 	index := int(uintptr(data))
 	callback := signalIMContextDeleteSurroundingMap[index].callback
@@ -18368,6 +18373,7 @@ func (recv *MenuItem) DisconnectToggleSizeAllocate(connectionID int) {
 
 //export menuitem_toggleSizeAllocateHandler
 func menuitem_toggleSizeAllocateHandler(_ *C.GObject, c_object C.gint, data C.gpointer) {
+	object := int32(c_object)
 
 	index := int(uintptr(data))
 	callback := signalMenuItemToggleSizeAllocateMap[index].callback
@@ -18426,6 +18432,7 @@ func (recv *MenuItem) DisconnectToggleSizeRequest(connectionID int) {
 
 //export menuitem_toggleSizeRequestHandler
 func menuitem_toggleSizeRequestHandler(_ *C.GObject, c_object C.gpointer, data C.gpointer) {
+	object := uintptr(c_object)
 
 	index := int(uintptr(data))
 	callback := signalMenuItemToggleSizeRequestMap[index].callback
@@ -19609,6 +19616,7 @@ func (recv *Notebook) DisconnectChangeCurrentPage(connectionID int) {
 
 //export notebook_changeCurrentPageHandler
 func notebook_changeCurrentPageHandler(_ *C.GObject, c_object C.gint, data C.gpointer) C.gboolean {
+	object := int32(c_object)
 
 	index := int(uintptr(data))
 	callback := signalNotebookChangeCurrentPageMap[index].callback
@@ -19739,6 +19747,8 @@ func (recv *Notebook) DisconnectSwitchPage(connectionID int) {
 //export notebook_switchPageHandler
 func notebook_switchPageHandler(_ *C.GObject, c_page *C.GtkWidget, c_page_num C.guint, data C.gpointer) {
 	page := WidgetNewFromC(unsafe.Pointer(c_page))
+
+	pageNum := uint32(c_page_num)
 
 	index := int(uintptr(data))
 	callback := signalNotebookSwitchPageMap[index].callback
@@ -22188,6 +22198,7 @@ func (recv *Range) DisconnectAdjustBounds(connectionID int) {
 
 //export range_adjustBoundsHandler
 func range_adjustBoundsHandler(_ *C.GObject, c_value C.gdouble, data C.gpointer) {
+	value := float64(c_value)
 
 	index := int(uintptr(data))
 	callback := signalRangeAdjustBoundsMap[index].callback
@@ -24208,6 +24219,7 @@ func (recv *SpinButton) DisconnectInput(connectionID int) {
 
 //export spinbutton_inputHandler
 func spinbutton_inputHandler(_ *C.GObject, c_new_value C.gpointer, data C.gpointer) C.gint {
+	newValue := uintptr(c_new_value)
 
 	index := int(uintptr(data))
 	callback := signalSpinButtonInputMap[index].callback
@@ -25122,6 +25134,7 @@ func (recv *Statusbar) DisconnectTextPopped(connectionID int) {
 
 //export statusbar_textPoppedHandler
 func statusbar_textPoppedHandler(_ *C.GObject, c_context_id C.guint, c_text *C.gchar, data C.gpointer) {
+	contextId := uint32(c_context_id)
 
 	text := C.GoString(c_text)
 
@@ -25182,6 +25195,7 @@ func (recv *Statusbar) DisconnectTextPushed(connectionID int) {
 
 //export statusbar_textPushedHandler
 func statusbar_textPushedHandler(_ *C.GObject, c_context_id C.guint, c_text *C.gchar, data C.gpointer) {
+	contextId := uint32(c_context_id)
 
 	text := C.GoString(c_text)
 
@@ -26649,6 +26663,8 @@ func textbuffer_insertTextHandler(_ *C.GObject, c_location *C.GtkTextIter, c_tex
 	location := TextIterNewFromC(unsafe.Pointer(c_location))
 
 	text := C.GoString(c_text)
+
+	len := int32(c_len)
 
 	index := int(uintptr(data))
 	callback := signalTextBufferInsertTextMap[index].callback
@@ -30738,6 +30754,11 @@ func (recv *Toolbar) DisconnectPopupContextMenu(connectionID int) {
 
 //export toolbar_popupContextMenuHandler
 func toolbar_popupContextMenuHandler(_ *C.GObject, c_x C.gint, c_y C.gint, c_button C.gint, data C.gpointer) C.gboolean {
+	x := int32(c_x)
+
+	y := int32(c_y)
+
+	button := int32(c_button)
 
 	index := int(uintptr(data))
 	callback := signalToolbarPopupContextMenuMap[index].callback
@@ -34667,6 +34688,7 @@ func (recv *Widget) DisconnectCanActivateAccel(connectionID int) {
 
 //export widget_canActivateAccelHandler
 func widget_canActivateAccelHandler(_ *C.GObject, c_signal_id C.guint, data C.gpointer) C.gboolean {
+	signalId := uint32(c_signal_id)
 
 	index := int(uintptr(data))
 	callback := signalWidgetCanActivateAccelMap[index].callback
@@ -35034,6 +35056,10 @@ func widget_dragDataGetHandler(_ *C.GObject, c_context *C.GdkDragContext, c_data
 
 	data := SelectionDataNewFromC(unsafe.Pointer(c_data))
 
+	info := uint32(c_info)
+
+	time := uint32(c_time)
+
 	index := int(uintptr(data))
 	callback := signalWidgetDragDataGetMap[index].callback
 	callback(context, data, info, time)
@@ -35093,7 +35119,15 @@ func (recv *Widget) DisconnectDragDataReceived(connectionID int) {
 func widget_dragDataReceivedHandler(_ *C.GObject, c_context *C.GdkDragContext, c_x C.gint, c_y C.gint, c_data *C.GtkSelectionData, c_info C.guint, c_time C.guint, data C.gpointer) {
 	context := gdk.DragContextNewFromC(unsafe.Pointer(c_context))
 
+	x := int32(c_x)
+
+	y := int32(c_y)
+
 	data := SelectionDataNewFromC(unsafe.Pointer(c_data))
+
+	info := uint32(c_info)
+
+	time := uint32(c_time)
 
 	index := int(uintptr(data))
 	callback := signalWidgetDragDataReceivedMap[index].callback
@@ -35153,6 +35187,12 @@ func (recv *Widget) DisconnectDragDrop(connectionID int) {
 //export widget_dragDropHandler
 func widget_dragDropHandler(_ *C.GObject, c_context *C.GdkDragContext, c_x C.gint, c_y C.gint, c_time C.guint, data C.gpointer) C.gboolean {
 	context := gdk.DragContextNewFromC(unsafe.Pointer(c_context))
+
+	x := int32(c_x)
+
+	y := int32(c_y)
+
+	time := uint32(c_time)
 
 	index := int(uintptr(data))
 	callback := signalWidgetDragDropMap[index].callback
@@ -35275,6 +35315,8 @@ func (recv *Widget) DisconnectDragLeave(connectionID int) {
 func widget_dragLeaveHandler(_ *C.GObject, c_context *C.GdkDragContext, c_time C.guint, data C.gpointer) {
 	context := gdk.DragContextNewFromC(unsafe.Pointer(c_context))
 
+	time := uint32(c_time)
+
 	index := int(uintptr(data))
 	callback := signalWidgetDragLeaveMap[index].callback
 	callback(context, time)
@@ -35333,6 +35375,12 @@ func (recv *Widget) DisconnectDragMotion(connectionID int) {
 //export widget_dragMotionHandler
 func widget_dragMotionHandler(_ *C.GObject, c_context *C.GdkDragContext, c_x C.gint, c_y C.gint, c_time C.guint, data C.gpointer) C.gboolean {
 	context := gdk.DragContextNewFromC(unsafe.Pointer(c_context))
+
+	x := int32(c_x)
+
+	y := int32(c_y)
+
+	time := uint32(c_time)
 
 	index := int(uintptr(data))
 	callback := signalWidgetDragMotionMap[index].callback
@@ -36796,6 +36844,10 @@ func (recv *Widget) DisconnectSelectionGet(connectionID int) {
 func widget_selectionGetHandler(_ *C.GObject, c_data *C.GtkSelectionData, c_info C.guint, c_time C.guint, data C.gpointer) {
 	data := SelectionDataNewFromC(unsafe.Pointer(c_data))
 
+	info := uint32(c_info)
+
+	time := uint32(c_time)
+
 	index := int(uintptr(data))
 	callback := signalWidgetSelectionGetMap[index].callback
 	callback(data, info, time)
@@ -36916,6 +36968,8 @@ func (recv *Widget) DisconnectSelectionReceived(connectionID int) {
 //export widget_selectionReceivedHandler
 func widget_selectionReceivedHandler(_ *C.GObject, c_data *C.GtkSelectionData, c_time C.guint, data C.gpointer) {
 	data := SelectionDataNewFromC(unsafe.Pointer(c_data))
+
+	time := uint32(c_time)
 
 	index := int(uintptr(data))
 	callback := signalWidgetSelectionReceivedMap[index].callback

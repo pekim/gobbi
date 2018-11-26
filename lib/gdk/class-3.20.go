@@ -305,6 +305,7 @@ func (recv *DragContext) DisconnectDropPerformed(connectionID int) {
 
 //export dragcontext_dropPerformedHandler
 func dragcontext_dropPerformedHandler(_ *C.GObject, c_time C.gint, data C.gpointer) {
+	time := int32(c_time)
 
 	index := int(uintptr(data))
 	callback := signalDragContextDropPerformedMap[index].callback

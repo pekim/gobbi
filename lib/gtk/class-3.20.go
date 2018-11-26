@@ -707,6 +707,7 @@ func (recv *ShortcutsSection) DisconnectChangeCurrentPage(connectionID int) {
 
 //export shortcutssection_changeCurrentPageHandler
 func shortcutssection_changeCurrentPageHandler(_ *C.GObject, c_object C.gint, data C.gpointer) C.gboolean {
+	object := int32(c_object)
 
 	index := int(uintptr(data))
 	callback := signalShortcutsSectionChangeCurrentPageMap[index].callback

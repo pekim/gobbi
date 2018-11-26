@@ -270,6 +270,9 @@ func (recv *EntryBuffer) DisconnectDeletedText(connectionID int) {
 
 //export entrybuffer_deletedTextHandler
 func entrybuffer_deletedTextHandler(_ *C.GObject, c_position C.guint, c_n_chars C.guint, data C.gpointer) {
+	position := uint32(c_position)
+
+	nChars := uint32(c_n_chars)
 
 	index := int(uintptr(data))
 	callback := signalEntryBufferDeletedTextMap[index].callback
@@ -328,8 +331,11 @@ func (recv *EntryBuffer) DisconnectInsertedText(connectionID int) {
 
 //export entrybuffer_insertedTextHandler
 func entrybuffer_insertedTextHandler(_ *C.GObject, c_position C.guint, c_chars *C.gchar, c_n_chars C.guint, data C.gpointer) {
+	position := uint32(c_position)
 
 	chars := C.GoString(c_chars)
+
+	nChars := uint32(c_n_chars)
 
 	index := int(uintptr(data))
 	callback := signalEntryBufferInsertedTextMap[index].callback
@@ -580,6 +586,7 @@ func (recv *InfoBar) DisconnectResponse(connectionID int) {
 
 //export infobar_responseHandler
 func infobar_responseHandler(_ *C.GObject, c_response_id C.gint, data C.gpointer) {
+	responseId := int32(c_response_id)
 
 	index := int(uintptr(data))
 	callback := signalInfoBarResponseMap[index].callback

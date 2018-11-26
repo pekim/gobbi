@@ -563,6 +563,7 @@ func (recv *Object) DisconnectActiveDescendantChanged(connectionID int) {
 
 //export object_activeDescendantChangedHandler
 func object_activeDescendantChangedHandler(_ *C.GObject, c_arg1 C.gpointer, data C.gpointer) {
+	arg1 := uintptr(c_arg1)
 
 	index := int(uintptr(data))
 	callback := signalObjectActiveDescendantChangedMap[index].callback
@@ -621,6 +622,9 @@ func (recv *Object) DisconnectChildrenChanged(connectionID int) {
 
 //export object_childrenChangedHandler
 func object_childrenChangedHandler(_ *C.GObject, c_arg1 C.guint, c_arg2 C.gpointer, data C.gpointer) {
+	arg1 := uint32(c_arg1)
+
+	arg2 := uintptr(c_arg2)
 
 	index := int(uintptr(data))
 	callback := signalObjectChildrenChangedMap[index].callback
@@ -738,6 +742,7 @@ func (recv *Object) DisconnectPropertyChange(connectionID int) {
 
 //export object_propertyChangeHandler
 func object_propertyChangeHandler(_ *C.GObject, c_arg1 C.gpointer, data C.gpointer) {
+	arg1 := uintptr(c_arg1)
 
 	index := int(uintptr(data))
 	callback := signalObjectPropertyChangeMap[index].callback

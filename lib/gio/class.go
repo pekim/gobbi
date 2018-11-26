@@ -4494,6 +4494,7 @@ func (recv *Settings) DisconnectWritableChangeEvent(connectionID int) {
 
 //export settings_writableChangeEventHandler
 func settings_writableChangeEventHandler(_ *C.GObject, c_key C.guint, data C.gpointer) C.gboolean {
+	key := uint32(c_key)
 
 	index := int(uintptr(data))
 	callback := signalSettingsWritableChangeEventMap[index].callback

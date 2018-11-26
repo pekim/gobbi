@@ -444,6 +444,8 @@ func (recv *MenuShell) DisconnectInsert(connectionID int) {
 func menushell_insertHandler(_ *C.GObject, c_child *C.GtkWidget, c_position C.gint, data C.gpointer) {
 	child := WidgetNewFromC(unsafe.Pointer(c_child))
 
+	position := int32(c_position)
+
 	index := int(uintptr(data))
 	callback := signalMenuShellInsertMap[index].callback
 	callback(child, position)

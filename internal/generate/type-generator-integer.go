@@ -99,6 +99,12 @@ func (t *TypeGeneratorInteger) generateParamCVar(g *jen.Group, cVarName string, 
 }
 
 func (t *TypeGeneratorInteger) generateParamGoVar(g *jen.Group, goVarName string, cVarName string, pkg string) {
+	g.
+		Id(goVarName).
+		Op(":=").
+		Id(integerCTypeMap[t.typ.CType]).
+		Call(jen.Id(cVarName))
+
 }
 
 func (t *TypeGeneratorInteger) generateParamOutCVar(g *jen.Group, cVarName string) {

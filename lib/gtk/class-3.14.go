@@ -830,6 +830,9 @@ func (recv *GestureDrag) DisconnectDragBegin(connectionID int) {
 
 //export gesturedrag_dragBeginHandler
 func gesturedrag_dragBeginHandler(_ *C.GObject, c_start_x C.gdouble, c_start_y C.gdouble, data C.gpointer) {
+	startX := float64(c_start_x)
+
+	startY := float64(c_start_y)
 
 	index := int(uintptr(data))
 	callback := signalGestureDragDragBeginMap[index].callback
@@ -888,6 +891,9 @@ func (recv *GestureDrag) DisconnectDragEnd(connectionID int) {
 
 //export gesturedrag_dragEndHandler
 func gesturedrag_dragEndHandler(_ *C.GObject, c_offset_x C.gdouble, c_offset_y C.gdouble, data C.gpointer) {
+	offsetX := float64(c_offset_x)
+
+	offsetY := float64(c_offset_y)
 
 	index := int(uintptr(data))
 	callback := signalGestureDragDragEndMap[index].callback
@@ -946,6 +952,9 @@ func (recv *GestureDrag) DisconnectDragUpdate(connectionID int) {
 
 //export gesturedrag_dragUpdateHandler
 func gesturedrag_dragUpdateHandler(_ *C.GObject, c_offset_x C.gdouble, c_offset_y C.gdouble, data C.gpointer) {
+	offsetX := float64(c_offset_x)
+
+	offsetY := float64(c_offset_y)
 
 	index := int(uintptr(data))
 	callback := signalGestureDragDragUpdateMap[index].callback
@@ -1106,6 +1115,9 @@ func (recv *GestureLongPress) DisconnectPressed(connectionID int) {
 
 //export gesturelongpress_pressedHandler
 func gesturelongpress_pressedHandler(_ *C.GObject, c_x C.gdouble, c_y C.gdouble, data C.gpointer) {
+	x := float64(c_x)
+
+	y := float64(c_y)
 
 	index := int(uintptr(data))
 	callback := signalGestureLongPressPressedMap[index].callback
@@ -1177,6 +1189,11 @@ func (recv *GestureMultiPress) DisconnectPressed(connectionID int) {
 
 //export gesturemultipress_pressedHandler
 func gesturemultipress_pressedHandler(_ *C.GObject, c_n_press C.gint, c_x C.gdouble, c_y C.gdouble, data C.gpointer) {
+	nPress := int32(c_n_press)
+
+	x := float64(c_x)
+
+	y := float64(c_y)
 
 	index := int(uintptr(data))
 	callback := signalGestureMultiPressPressedMap[index].callback
@@ -1235,6 +1252,11 @@ func (recv *GestureMultiPress) DisconnectReleased(connectionID int) {
 
 //export gesturemultipress_releasedHandler
 func gesturemultipress_releasedHandler(_ *C.GObject, c_n_press C.gint, c_x C.gdouble, c_y C.gdouble, data C.gpointer) {
+	nPress := int32(c_n_press)
+
+	x := float64(c_x)
+
+	y := float64(c_y)
 
 	index := int(uintptr(data))
 	callback := signalGestureMultiPressReleasedMap[index].callback
@@ -1401,6 +1423,9 @@ func (recv *GestureRotate) DisconnectAngleChanged(connectionID int) {
 
 //export gesturerotate_angleChangedHandler
 func gesturerotate_angleChangedHandler(_ *C.GObject, c_angle C.gdouble, c_angle_delta C.gdouble, data C.gpointer) {
+	angle := float64(c_angle)
+
+	angleDelta := float64(c_angle_delta)
 
 	index := int(uintptr(data))
 	callback := signalGestureRotateAngleChangedMap[index].callback
@@ -1554,6 +1579,9 @@ func (recv *GestureSwipe) DisconnectSwipe(connectionID int) {
 
 //export gestureswipe_swipeHandler
 func gestureswipe_swipeHandler(_ *C.GObject, c_velocity_x C.gdouble, c_velocity_y C.gdouble, data C.gpointer) {
+	velocityX := float64(c_velocity_x)
+
+	velocityY := float64(c_velocity_y)
 
 	index := int(uintptr(data))
 	callback := signalGestureSwipeSwipeMap[index].callback
@@ -1641,6 +1669,7 @@ func (recv *GestureZoom) DisconnectScaleChanged(connectionID int) {
 
 //export gesturezoom_scaleChangedHandler
 func gesturezoom_scaleChangedHandler(_ *C.GObject, c_scale C.gdouble, data C.gpointer) {
+	scale := float64(c_scale)
 
 	index := int(uintptr(data))
 	callback := signalGestureZoomScaleChangedMap[index].callback

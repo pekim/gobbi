@@ -1058,6 +1058,7 @@ func (recv *PlacesSidebar) DisconnectDragActionAsk(connectionID int) {
 
 //export placessidebar_dragActionAskHandler
 func placessidebar_dragActionAskHandler(_ *C.GObject, c_actions C.gint, data C.gpointer) C.gint {
+	actions := int32(c_actions)
 
 	index := int(uintptr(data))
 	callback := signalPlacesSidebarDragActionAskMap[index].callback
@@ -1123,6 +1124,8 @@ func placessidebar_dragActionRequestedHandler(_ *C.GObject, c_context *C.GdkDrag
 
 	destFile := gio.FileNewFromC(unsafe.Pointer(c_dest_file))
 
+	sourceFileList := uintptr(c_source_file_list)
+
 	index := int(uintptr(data))
 	callback := signalPlacesSidebarDragActionRequestedMap[index].callback
 	retGo := callback(context, destFile, sourceFileList)
@@ -1184,6 +1187,10 @@ func (recv *PlacesSidebar) DisconnectDragPerformDrop(connectionID int) {
 //export placessidebar_dragPerformDropHandler
 func placessidebar_dragPerformDropHandler(_ *C.GObject, c_dest_file *C.GFile, c_source_file_list C.gpointer, c_action C.gint, data C.gpointer) {
 	destFile := gio.FileNewFromC(unsafe.Pointer(c_dest_file))
+
+	sourceFileList := uintptr(c_source_file_list)
+
+	action := int32(c_action)
 
 	index := int(uintptr(data))
 	callback := signalPlacesSidebarDragPerformDropMap[index].callback

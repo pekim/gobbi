@@ -84,6 +84,7 @@ func (recv *Document) DisconnectPageChanged(connectionID int) {
 
 //export document_pageChangedHandler
 func document_pageChangedHandler(_ *C.GObject, c_page_number C.gint, data C.gpointer) {
+	pageNumber := int32(c_page_number)
 
 	index := int(uintptr(data))
 	callback := signalDocumentPageChangedMap[index].callback
@@ -226,6 +227,7 @@ func (recv *Value) DisconnectValueChanged(connectionID int) {
 
 //export value_valueChangedHandler
 func value_valueChangedHandler(_ *C.GObject, c_value C.gdouble, c_text *C.gchar, data C.gpointer) {
+	value := float64(c_value)
 
 	text := C.GoString(c_text)
 

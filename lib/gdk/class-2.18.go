@@ -92,6 +92,13 @@ func (recv *Window) DisconnectFromEmbedder(connectionID int) {
 
 //export window_fromEmbedderHandler
 func window_fromEmbedderHandler(_ *C.GObject, c_embedder_x C.gdouble, c_embedder_y C.gdouble, c_offscreen_x C.gpointer, c_offscreen_y C.gpointer, data C.gpointer) {
+	embedderX := float64(c_embedder_x)
+
+	embedderY := float64(c_embedder_y)
+
+	offscreenX := uintptr(c_offscreen_x)
+
+	offscreenY := uintptr(c_offscreen_y)
 
 	index := int(uintptr(data))
 	callback := signalWindowFromEmbedderMap[index].callback
@@ -150,6 +157,9 @@ func (recv *Window) DisconnectPickEmbeddedChild(connectionID int) {
 
 //export window_pickEmbeddedChildHandler
 func window_pickEmbeddedChildHandler(_ *C.GObject, c_x C.gdouble, c_y C.gdouble, data C.gpointer) *C.GdkWindow {
+	x := float64(c_x)
+
+	y := float64(c_y)
 
 	index := int(uintptr(data))
 	callback := signalWindowPickEmbeddedChildMap[index].callback
@@ -211,6 +221,13 @@ func (recv *Window) DisconnectToEmbedder(connectionID int) {
 
 //export window_toEmbedderHandler
 func window_toEmbedderHandler(_ *C.GObject, c_offscreen_x C.gdouble, c_offscreen_y C.gdouble, c_embedder_x C.gpointer, c_embedder_y C.gpointer, data C.gpointer) {
+	offscreenX := float64(c_offscreen_x)
+
+	offscreenY := float64(c_offscreen_y)
+
+	embedderX := uintptr(c_embedder_x)
+
+	embedderY := uintptr(c_embedder_y)
 
 	index := int(uintptr(data))
 	callback := signalWindowToEmbedderMap[index].callback

@@ -85,6 +85,11 @@ func (recv *ListModel) DisconnectItemsChanged(connectionID int) {
 
 //export listmodel_itemsChangedHandler
 func listmodel_itemsChangedHandler(_ *C.GObject, c_position C.guint, c_removed C.guint, c_added C.guint, data C.gpointer) {
+	position := uint32(c_position)
+
+	removed := uint32(c_removed)
+
+	added := uint32(c_added)
 
 	index := int(uintptr(data))
 	callback := signalListModelItemsChangedMap[index].callback
