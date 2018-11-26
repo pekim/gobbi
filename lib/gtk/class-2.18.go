@@ -25,6 +25,15 @@ import (
 */
 /*
 
+	void entrybuffer_insertedTextHandler(GObject *, guint, gchar*, guint, gpointer);
+
+	static gulong EntryBuffer_signal_connect_inserted_text(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "inserted-text", G_CALLBACK(entrybuffer_insertedTextHandler), data);
+	}
+
+*/
+/*
+
 	void infobar_closeHandler(GObject *, gpointer);
 
 	static gulong InfoBar_signal_connect_close(gpointer instance, gpointer data) {
@@ -47,6 +56,15 @@ import (
 
 	static gulong Label_signal_connect_activate_current_link(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "activate-current-link", G_CALLBACK(label_activateCurrentLinkHandler), data);
+	}
+
+*/
+/*
+
+	gboolean label_activateLinkHandler(GObject *, gchar*, gpointer);
+
+	static gulong Label_signal_connect_activate_link(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "activate-link", G_CALLBACK(label_activateLinkHandler), data);
 	}
 
 */
@@ -258,7 +276,63 @@ func entrybuffer_deletedTextHandler(_ *C.GObject, c_position C.guint, c_n_chars 
 	callback(position, nChars)
 }
 
-// Unsupported signal 'inserted-text' for EntryBuffer : unsupported parameter chars : type utf8 :
+type signalEntryBufferInsertedTextDetail struct {
+	callback  EntryBufferSignalInsertedTextCallback
+	handlerID C.gulong
+}
+
+var signalEntryBufferInsertedTextId int
+var signalEntryBufferInsertedTextMap = make(map[int]signalEntryBufferInsertedTextDetail)
+var signalEntryBufferInsertedTextLock sync.Mutex
+
+// EntryBufferSignalInsertedTextCallback is a callback function for a 'inserted-text' signal emitted from a EntryBuffer.
+type EntryBufferSignalInsertedTextCallback func(position uint32, chars string, nChars uint32)
+
+/*
+ConnectInsertedText connects the callback to the 'inserted-text' signal for the EntryBuffer.
+
+The returned value represents the connection, and may be passed to DisconnectInsertedText to remove it.
+*/
+func (recv *EntryBuffer) ConnectInsertedText(callback EntryBufferSignalInsertedTextCallback) int {
+	signalEntryBufferInsertedTextLock.Lock()
+	defer signalEntryBufferInsertedTextLock.Unlock()
+
+	signalEntryBufferInsertedTextId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.EntryBuffer_signal_connect_inserted_text(instance, C.gpointer(uintptr(signalEntryBufferInsertedTextId)))
+
+	detail := signalEntryBufferInsertedTextDetail{callback, handlerID}
+	signalEntryBufferInsertedTextMap[signalEntryBufferInsertedTextId] = detail
+
+	return signalEntryBufferInsertedTextId
+}
+
+/*
+DisconnectInsertedText disconnects a callback from the 'inserted-text' signal for the EntryBuffer.
+
+The connectionID should be a value returned from a call to ConnectInsertedText.
+*/
+func (recv *EntryBuffer) DisconnectInsertedText(connectionID int) {
+	signalEntryBufferInsertedTextLock.Lock()
+	defer signalEntryBufferInsertedTextLock.Unlock()
+
+	detail, exists := signalEntryBufferInsertedTextMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalEntryBufferInsertedTextMap, connectionID)
+}
+
+//export entrybuffer_insertedTextHandler
+func entrybuffer_insertedTextHandler(_ *C.GObject, c_position C.guint, c_chars C.gchar, c_n_chars C.guint, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalEntryBufferInsertedTextMap[index].callback
+	callback(position, chars, nChars)
+}
 
 // EntryBufferNew is a wrapper around the C function gtk_entry_buffer_new.
 func EntryBufferNew(initialChars string, nInitialChars int32) *EntryBuffer {
@@ -667,7 +741,66 @@ func label_activateCurrentLinkHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// Unsupported signal 'activate-link' for Label : unsupported parameter uri : type utf8 :
+type signalLabelActivateLinkDetail struct {
+	callback  LabelSignalActivateLinkCallback
+	handlerID C.gulong
+}
+
+var signalLabelActivateLinkId int
+var signalLabelActivateLinkMap = make(map[int]signalLabelActivateLinkDetail)
+var signalLabelActivateLinkLock sync.Mutex
+
+// LabelSignalActivateLinkCallback is a callback function for a 'activate-link' signal emitted from a Label.
+type LabelSignalActivateLinkCallback func(uri string) bool
+
+/*
+ConnectActivateLink connects the callback to the 'activate-link' signal for the Label.
+
+The returned value represents the connection, and may be passed to DisconnectActivateLink to remove it.
+*/
+func (recv *Label) ConnectActivateLink(callback LabelSignalActivateLinkCallback) int {
+	signalLabelActivateLinkLock.Lock()
+	defer signalLabelActivateLinkLock.Unlock()
+
+	signalLabelActivateLinkId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Label_signal_connect_activate_link(instance, C.gpointer(uintptr(signalLabelActivateLinkId)))
+
+	detail := signalLabelActivateLinkDetail{callback, handlerID}
+	signalLabelActivateLinkMap[signalLabelActivateLinkId] = detail
+
+	return signalLabelActivateLinkId
+}
+
+/*
+DisconnectActivateLink disconnects a callback from the 'activate-link' signal for the Label.
+
+The connectionID should be a value returned from a call to ConnectActivateLink.
+*/
+func (recv *Label) DisconnectActivateLink(connectionID int) {
+	signalLabelActivateLinkLock.Lock()
+	defer signalLabelActivateLinkLock.Unlock()
+
+	detail, exists := signalLabelActivateLinkMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalLabelActivateLinkMap, connectionID)
+}
+
+//export label_activateLinkHandler
+func label_activateLinkHandler(_ *C.GObject, c_uri C.gchar, data C.gpointer) C.gboolean {
+
+	index := int(uintptr(data))
+	callback := signalLabelActivateLinkMap[index].callback
+	retGo := callback(uri)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
+}
 
 // GetCurrentUri is a wrapper around the C function gtk_label_get_current_uri.
 func (recv *Label) GetCurrentUri() string {

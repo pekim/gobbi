@@ -43,6 +43,15 @@ import (
 */
 /*
 
+	void application_openHandler(GObject *, gpointer, gint, gchar*, gpointer);
+
+	static gulong Application_signal_connect_open(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "open", G_CALLBACK(application_openHandler), data);
+	}
+
+*/
+/*
+
 	void application_shutdownHandler(GObject *, gpointer);
 
 	static gulong Application_signal_connect_shutdown(gpointer instance, gpointer data) {
@@ -214,7 +223,64 @@ func application_commandLineHandler(_ *C.GObject, c_command_line *C.GApplication
 	return retC
 }
 
-// Unsupported signal 'open' for Application : unsupported parameter hint : type utf8 :
+type signalApplicationOpenDetail struct {
+	callback  ApplicationSignalOpenCallback
+	handlerID C.gulong
+}
+
+var signalApplicationOpenId int
+var signalApplicationOpenMap = make(map[int]signalApplicationOpenDetail)
+var signalApplicationOpenLock sync.Mutex
+
+// ApplicationSignalOpenCallback is a callback function for a 'open' signal emitted from a Application.
+type ApplicationSignalOpenCallback func(files []*File, hint string)
+
+/*
+ConnectOpen connects the callback to the 'open' signal for the Application.
+
+The returned value represents the connection, and may be passed to DisconnectOpen to remove it.
+*/
+func (recv *Application) ConnectOpen(callback ApplicationSignalOpenCallback) int {
+	signalApplicationOpenLock.Lock()
+	defer signalApplicationOpenLock.Unlock()
+
+	signalApplicationOpenId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Application_signal_connect_open(instance, C.gpointer(uintptr(signalApplicationOpenId)))
+
+	detail := signalApplicationOpenDetail{callback, handlerID}
+	signalApplicationOpenMap[signalApplicationOpenId] = detail
+
+	return signalApplicationOpenId
+}
+
+/*
+DisconnectOpen disconnects a callback from the 'open' signal for the Application.
+
+The connectionID should be a value returned from a call to ConnectOpen.
+*/
+func (recv *Application) DisconnectOpen(connectionID int) {
+	signalApplicationOpenLock.Lock()
+	defer signalApplicationOpenLock.Unlock()
+
+	detail, exists := signalApplicationOpenMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalApplicationOpenMap, connectionID)
+}
+
+//export application_openHandler
+func application_openHandler(_ *C.GObject, c_files *C.GFile, c_n_files C.gint, c_hint C.gchar, data C.gpointer) {
+	files := FileNewFromC(unsafe.Pointer(c_files))
+
+	index := int(uintptr(data))
+	callback := signalApplicationOpenMap[index].callback
+	callback(files, nFiles, hint)
+}
 
 type signalApplicationShutdownDetail struct {
 	callback  ApplicationSignalShutdownCallback

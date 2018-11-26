@@ -55,6 +55,9 @@ func (t *TypeGeneratorBoolean) generateArrayDeclaration(g *jen.Group, goVarName 
 		Id("bool")
 }
 
+func (t *TypeGeneratorBoolean) generateArrayDeclarationC(g *jen.Group, cVarName string) {
+}
+
 func (t *TypeGeneratorBoolean) generateDeclarationC(g *jen.Group, goVarName string) {
 	g.
 		Id(goVarName).

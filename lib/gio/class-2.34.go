@@ -6,6 +6,7 @@ package gio
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
+	"sync"
 	"unsafe"
 )
 
@@ -22,6 +23,15 @@ import (
 // #include <gio/gunixoutputstream.h>
 // #include <gio/gunixsocketaddress.h>
 // #include <stdlib.h>
+/*
+
+	void mountoperation_showUnmountProgressHandler(GObject *, gchar*, gint64, gint64, gpointer);
+
+	static gulong MountOperation_signal_connect_show_unmount_progress(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "show-unmount-progress", G_CALLBACK(mountoperation_showUnmountProgressHandler), data);
+	}
+
+*/
 import "C"
 
 // GetDbusConnection is a wrapper around the C function g_application_get_dbus_connection.
@@ -209,7 +219,63 @@ func (recv *MenuItem) GetLink(link string) *MenuModel {
 	return retGo
 }
 
-// Unsupported signal 'show-unmount-progress' for MountOperation : unsupported parameter message : type utf8 :
+type signalMountOperationShowUnmountProgressDetail struct {
+	callback  MountOperationSignalShowUnmountProgressCallback
+	handlerID C.gulong
+}
+
+var signalMountOperationShowUnmountProgressId int
+var signalMountOperationShowUnmountProgressMap = make(map[int]signalMountOperationShowUnmountProgressDetail)
+var signalMountOperationShowUnmountProgressLock sync.Mutex
+
+// MountOperationSignalShowUnmountProgressCallback is a callback function for a 'show-unmount-progress' signal emitted from a MountOperation.
+type MountOperationSignalShowUnmountProgressCallback func(message string, timeLeft int64, bytesLeft int64)
+
+/*
+ConnectShowUnmountProgress connects the callback to the 'show-unmount-progress' signal for the MountOperation.
+
+The returned value represents the connection, and may be passed to DisconnectShowUnmountProgress to remove it.
+*/
+func (recv *MountOperation) ConnectShowUnmountProgress(callback MountOperationSignalShowUnmountProgressCallback) int {
+	signalMountOperationShowUnmountProgressLock.Lock()
+	defer signalMountOperationShowUnmountProgressLock.Unlock()
+
+	signalMountOperationShowUnmountProgressId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.MountOperation_signal_connect_show_unmount_progress(instance, C.gpointer(uintptr(signalMountOperationShowUnmountProgressId)))
+
+	detail := signalMountOperationShowUnmountProgressDetail{callback, handlerID}
+	signalMountOperationShowUnmountProgressMap[signalMountOperationShowUnmountProgressId] = detail
+
+	return signalMountOperationShowUnmountProgressId
+}
+
+/*
+DisconnectShowUnmountProgress disconnects a callback from the 'show-unmount-progress' signal for the MountOperation.
+
+The connectionID should be a value returned from a call to ConnectShowUnmountProgress.
+*/
+func (recv *MountOperation) DisconnectShowUnmountProgress(connectionID int) {
+	signalMountOperationShowUnmountProgressLock.Lock()
+	defer signalMountOperationShowUnmountProgressLock.Unlock()
+
+	detail, exists := signalMountOperationShowUnmountProgressMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalMountOperationShowUnmountProgressMap, connectionID)
+}
+
+//export mountoperation_showUnmountProgressHandler
+func mountoperation_showUnmountProgressHandler(_ *C.GObject, c_message C.gchar, c_time_left C.gint64, c_bytes_left C.gint64, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalMountOperationShowUnmountProgressMap[index].callback
+	callback(message, timeLeft, bytesLeft)
+}
 
 // GetDestinationProtocol is a wrapper around the C function g_proxy_address_get_destination_protocol.
 func (recv *ProxyAddress) GetDestinationProtocol() string {

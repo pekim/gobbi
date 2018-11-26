@@ -52,6 +52,15 @@ import (
 */
 /*
 
+	void editable_insertTextHandler(GObject *, gchar*, gint, gpointer, gpointer);
+
+	static gulong Editable_signal_connect_insert_text(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "insert-text", G_CALLBACK(editable_insertTextHandler), data);
+	}
+
+*/
+/*
+
 	void filechooser_currentFolderChangedHandler(GObject *, gpointer);
 
 	static gulong FileChooser_signal_connect_current_folder_changed(gpointer instance, gpointer data) {
@@ -83,6 +92,15 @@ import (
 
 	static gulong FileChooser_signal_connect_update_preview(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "update-preview", G_CALLBACK(filechooser_updatePreviewHandler), data);
+	}
+
+*/
+/*
+
+	void fontchooser_fontActivatedHandler(GObject *, gchar*, gpointer);
+
+	static gulong FontChooser_signal_connect_font_activated(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "font-activated", G_CALLBACK(fontchooser_fontActivatedHandler), data);
 	}
 
 */
@@ -710,7 +728,63 @@ func editable_deleteTextHandler(_ *C.GObject, c_start_pos C.gint, c_end_pos C.gi
 	callback(startPos, endPos)
 }
 
-// Unsupported signal 'insert-text' for Editable : unsupported parameter new_text : type utf8 :
+type signalEditableInsertTextDetail struct {
+	callback  EditableSignalInsertTextCallback
+	handlerID C.gulong
+}
+
+var signalEditableInsertTextId int
+var signalEditableInsertTextMap = make(map[int]signalEditableInsertTextDetail)
+var signalEditableInsertTextLock sync.Mutex
+
+// EditableSignalInsertTextCallback is a callback function for a 'insert-text' signal emitted from a Editable.
+type EditableSignalInsertTextCallback func(newText string, newTextLength int32, position uintptr)
+
+/*
+ConnectInsertText connects the callback to the 'insert-text' signal for the Editable.
+
+The returned value represents the connection, and may be passed to DisconnectInsertText to remove it.
+*/
+func (recv *Editable) ConnectInsertText(callback EditableSignalInsertTextCallback) int {
+	signalEditableInsertTextLock.Lock()
+	defer signalEditableInsertTextLock.Unlock()
+
+	signalEditableInsertTextId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Editable_signal_connect_insert_text(instance, C.gpointer(uintptr(signalEditableInsertTextId)))
+
+	detail := signalEditableInsertTextDetail{callback, handlerID}
+	signalEditableInsertTextMap[signalEditableInsertTextId] = detail
+
+	return signalEditableInsertTextId
+}
+
+/*
+DisconnectInsertText disconnects a callback from the 'insert-text' signal for the Editable.
+
+The connectionID should be a value returned from a call to ConnectInsertText.
+*/
+func (recv *Editable) DisconnectInsertText(connectionID int) {
+	signalEditableInsertTextLock.Lock()
+	defer signalEditableInsertTextLock.Unlock()
+
+	detail, exists := signalEditableInsertTextMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalEditableInsertTextMap, connectionID)
+}
+
+//export editable_insertTextHandler
+func editable_insertTextHandler(_ *C.GObject, c_new_text C.gchar, c_new_text_length C.gint, c_position C.gpointer, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalEditableInsertTextMap[index].callback
+	callback(newText, newTextLength, position)
+}
 
 // CopyClipboard is a wrapper around the C function gtk_editable_copy_clipboard.
 func (recv *Editable) CopyClipboard() {
@@ -1118,7 +1192,63 @@ func (recv *FontChooser) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
-// Unsupported signal 'font-activated' for FontChooser : unsupported parameter fontname : type utf8 :
+type signalFontChooserFontActivatedDetail struct {
+	callback  FontChooserSignalFontActivatedCallback
+	handlerID C.gulong
+}
+
+var signalFontChooserFontActivatedId int
+var signalFontChooserFontActivatedMap = make(map[int]signalFontChooserFontActivatedDetail)
+var signalFontChooserFontActivatedLock sync.Mutex
+
+// FontChooserSignalFontActivatedCallback is a callback function for a 'font-activated' signal emitted from a FontChooser.
+type FontChooserSignalFontActivatedCallback func(fontname string)
+
+/*
+ConnectFontActivated connects the callback to the 'font-activated' signal for the FontChooser.
+
+The returned value represents the connection, and may be passed to DisconnectFontActivated to remove it.
+*/
+func (recv *FontChooser) ConnectFontActivated(callback FontChooserSignalFontActivatedCallback) int {
+	signalFontChooserFontActivatedLock.Lock()
+	defer signalFontChooserFontActivatedLock.Unlock()
+
+	signalFontChooserFontActivatedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.FontChooser_signal_connect_font_activated(instance, C.gpointer(uintptr(signalFontChooserFontActivatedId)))
+
+	detail := signalFontChooserFontActivatedDetail{callback, handlerID}
+	signalFontChooserFontActivatedMap[signalFontChooserFontActivatedId] = detail
+
+	return signalFontChooserFontActivatedId
+}
+
+/*
+DisconnectFontActivated disconnects a callback from the 'font-activated' signal for the FontChooser.
+
+The connectionID should be a value returned from a call to ConnectFontActivated.
+*/
+func (recv *FontChooser) DisconnectFontActivated(connectionID int) {
+	signalFontChooserFontActivatedLock.Lock()
+	defer signalFontChooserFontActivatedLock.Unlock()
+
+	detail, exists := signalFontChooserFontActivatedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalFontChooserFontActivatedMap, connectionID)
+}
+
+//export fontchooser_fontActivatedHandler
+func fontchooser_fontActivatedHandler(_ *C.GObject, c_fontname C.gchar, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalFontChooserFontActivatedMap[index].callback
+	callback(fontname)
+}
 
 // Orientable is a wrapper around the C record GtkOrientable.
 type Orientable struct {

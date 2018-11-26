@@ -84,6 +84,15 @@ import (
 */
 /*
 
+	void placessidebar_showErrorMessageHandler(GObject *, gchar*, gchar*, gpointer);
+
+	static gulong PlacesSidebar_signal_connect_show_error_message(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "show-error-message", G_CALLBACK(placessidebar_showErrorMessageHandler), data);
+	}
+
+*/
+/*
+
 	void searchentry_searchChangedHandler(GObject *, gpointer);
 
 	static gulong SearchEntry_signal_connect_search_changed(gpointer instance, gpointer data) {
@@ -1246,7 +1255,63 @@ func placessidebar_populatePopupHandler(_ *C.GObject, c_container *C.GtkWidget, 
 	callback(container, selectedItem, selectedVolume)
 }
 
-// Unsupported signal 'show-error-message' for PlacesSidebar : unsupported parameter primary : type utf8 :
+type signalPlacesSidebarShowErrorMessageDetail struct {
+	callback  PlacesSidebarSignalShowErrorMessageCallback
+	handlerID C.gulong
+}
+
+var signalPlacesSidebarShowErrorMessageId int
+var signalPlacesSidebarShowErrorMessageMap = make(map[int]signalPlacesSidebarShowErrorMessageDetail)
+var signalPlacesSidebarShowErrorMessageLock sync.Mutex
+
+// PlacesSidebarSignalShowErrorMessageCallback is a callback function for a 'show-error-message' signal emitted from a PlacesSidebar.
+type PlacesSidebarSignalShowErrorMessageCallback func(primary string, secondary string)
+
+/*
+ConnectShowErrorMessage connects the callback to the 'show-error-message' signal for the PlacesSidebar.
+
+The returned value represents the connection, and may be passed to DisconnectShowErrorMessage to remove it.
+*/
+func (recv *PlacesSidebar) ConnectShowErrorMessage(callback PlacesSidebarSignalShowErrorMessageCallback) int {
+	signalPlacesSidebarShowErrorMessageLock.Lock()
+	defer signalPlacesSidebarShowErrorMessageLock.Unlock()
+
+	signalPlacesSidebarShowErrorMessageId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.PlacesSidebar_signal_connect_show_error_message(instance, C.gpointer(uintptr(signalPlacesSidebarShowErrorMessageId)))
+
+	detail := signalPlacesSidebarShowErrorMessageDetail{callback, handlerID}
+	signalPlacesSidebarShowErrorMessageMap[signalPlacesSidebarShowErrorMessageId] = detail
+
+	return signalPlacesSidebarShowErrorMessageId
+}
+
+/*
+DisconnectShowErrorMessage disconnects a callback from the 'show-error-message' signal for the PlacesSidebar.
+
+The connectionID should be a value returned from a call to ConnectShowErrorMessage.
+*/
+func (recv *PlacesSidebar) DisconnectShowErrorMessage(connectionID int) {
+	signalPlacesSidebarShowErrorMessageLock.Lock()
+	defer signalPlacesSidebarShowErrorMessageLock.Unlock()
+
+	detail, exists := signalPlacesSidebarShowErrorMessageMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalPlacesSidebarShowErrorMessageMap, connectionID)
+}
+
+//export placessidebar_showErrorMessageHandler
+func placessidebar_showErrorMessageHandler(_ *C.GObject, c_primary C.gchar, c_secondary C.gchar, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalPlacesSidebarShowErrorMessageMap[index].callback
+	callback(primary, secondary)
+}
 
 // PlacesSidebarNew is a wrapper around the C function gtk_places_sidebar_new.
 func PlacesSidebarNew() *PlacesSidebar {

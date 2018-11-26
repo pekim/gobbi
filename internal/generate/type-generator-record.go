@@ -93,6 +93,9 @@ func (t *TypeGeneratorRecord) generateArrayDeclaration(g *jen.Group, goVarName s
 		Do(t.typ.qname.generate)
 }
 
+func (t *TypeGeneratorRecord) generateArrayDeclarationC(g *jen.Group, cVarName string) {
+}
+
 func (t *TypeGeneratorRecord) generateDeclarationC(g *jen.Group, cVarName string) {
 	g.
 		Id(cVarName).

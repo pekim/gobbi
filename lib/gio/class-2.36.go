@@ -5,6 +5,7 @@ package gio
 
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
+	"sync"
 	"unsafe"
 )
 
@@ -21,9 +22,74 @@ import (
 // #include <gio/gunixoutputstream.h>
 // #include <gio/gunixsocketaddress.h>
 // #include <stdlib.h>
+/*
+
+	void applaunchcontext_launchFailedHandler(GObject *, gchar*, gpointer);
+
+	static gulong AppLaunchContext_signal_connect_launch_failed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "launch-failed", G_CALLBACK(applaunchcontext_launchFailedHandler), data);
+	}
+
+*/
 import "C"
 
-// Unsupported signal 'launch-failed' for AppLaunchContext : unsupported parameter startup_notify_id : type utf8 :
+type signalAppLaunchContextLaunchFailedDetail struct {
+	callback  AppLaunchContextSignalLaunchFailedCallback
+	handlerID C.gulong
+}
+
+var signalAppLaunchContextLaunchFailedId int
+var signalAppLaunchContextLaunchFailedMap = make(map[int]signalAppLaunchContextLaunchFailedDetail)
+var signalAppLaunchContextLaunchFailedLock sync.Mutex
+
+// AppLaunchContextSignalLaunchFailedCallback is a callback function for a 'launch-failed' signal emitted from a AppLaunchContext.
+type AppLaunchContextSignalLaunchFailedCallback func(startupNotifyId string)
+
+/*
+ConnectLaunchFailed connects the callback to the 'launch-failed' signal for the AppLaunchContext.
+
+The returned value represents the connection, and may be passed to DisconnectLaunchFailed to remove it.
+*/
+func (recv *AppLaunchContext) ConnectLaunchFailed(callback AppLaunchContextSignalLaunchFailedCallback) int {
+	signalAppLaunchContextLaunchFailedLock.Lock()
+	defer signalAppLaunchContextLaunchFailedLock.Unlock()
+
+	signalAppLaunchContextLaunchFailedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.AppLaunchContext_signal_connect_launch_failed(instance, C.gpointer(uintptr(signalAppLaunchContextLaunchFailedId)))
+
+	detail := signalAppLaunchContextLaunchFailedDetail{callback, handlerID}
+	signalAppLaunchContextLaunchFailedMap[signalAppLaunchContextLaunchFailedId] = detail
+
+	return signalAppLaunchContextLaunchFailedId
+}
+
+/*
+DisconnectLaunchFailed disconnects a callback from the 'launch-failed' signal for the AppLaunchContext.
+
+The connectionID should be a value returned from a call to ConnectLaunchFailed.
+*/
+func (recv *AppLaunchContext) DisconnectLaunchFailed(connectionID int) {
+	signalAppLaunchContextLaunchFailedLock.Lock()
+	defer signalAppLaunchContextLaunchFailedLock.Unlock()
+
+	detail, exists := signalAppLaunchContextLaunchFailedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalAppLaunchContextLaunchFailedMap, connectionID)
+}
+
+//export applaunchcontext_launchFailedHandler
+func applaunchcontext_launchFailedHandler(_ *C.GObject, c_startup_notify_id C.gchar, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalAppLaunchContextLaunchFailedMap[index].callback
+	callback(startupNotifyId)
+}
 
 // Unsupported signal 'launched' for AppLaunchContext : unsupported parameter platform_data : type GLib.Variant : Blacklisted record : GVariant
 

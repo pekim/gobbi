@@ -55,6 +55,9 @@ func (t *TypeGeneratorArgcArgv) generateDeclarationC(g *jen.Group, goVarName str
 func (t *TypeGeneratorArgcArgv) generateArrayDeclaration(g *jen.Group, goVarName string) {
 }
 
+func (t *TypeGeneratorArgcArgv) generateArrayDeclarationC(g *jen.Group, cVarName string) {
+}
+
 func (t *TypeGeneratorArgcArgv) generateParamCallArgument(g *jen.Group, cVarName string) {
 	if t.typ.indirectLevel > 0 {
 		g.

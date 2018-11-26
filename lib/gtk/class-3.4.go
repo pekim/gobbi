@@ -180,7 +180,7 @@ func ColorChooserWidgetNew() *ColorChooserWidget {
 	return retGo
 }
 
-// Unsupported signal 'format-entry-text' for ComboBox : unsupported parameter path : type utf8 :
+// Unsupported signal 'format-entry-text' for ComboBox : return value utf8 :
 
 // ComputePrefix is a wrapper around the C function gtk_entry_completion_compute_prefix.
 func (recv *EntryCompletion) ComputePrefix(key string) string {

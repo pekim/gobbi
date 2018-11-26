@@ -20,10 +20,28 @@ import (
 // #include <stdlib.h>
 /*
 
+	void cellrenderer_editingStartedHandler(GObject *, GtkCellEditable *, gchar*, gpointer);
+
+	static gulong CellRenderer_signal_connect_editing_started(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "editing-started", G_CALLBACK(cellrenderer_editingStartedHandler), data);
+	}
+
+*/
+/*
+
 	void clipboard_ownerChangeHandler(GObject *, GdkEventOwnerChange *, gpointer);
 
 	static gulong Clipboard_signal_connect_owner_change(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "owner-change", G_CALLBACK(clipboard_ownerChangeHandler), data);
+	}
+
+*/
+/*
+
+	gboolean entrycompletion_insertPrefixHandler(GObject *, gchar*, gpointer);
+
+	static gulong EntryCompletion_signal_connect_insert_prefix(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "insert-prefix", G_CALLBACK(entrycompletion_insertPrefixHandler), data);
 	}
 
 */
@@ -277,7 +295,64 @@ func (recv *Button) SetImage(image *Widget) {
 	return
 }
 
-// Unsupported signal 'editing-started' for CellRenderer : unsupported parameter path : type utf8 :
+type signalCellRendererEditingStartedDetail struct {
+	callback  CellRendererSignalEditingStartedCallback
+	handlerID C.gulong
+}
+
+var signalCellRendererEditingStartedId int
+var signalCellRendererEditingStartedMap = make(map[int]signalCellRendererEditingStartedDetail)
+var signalCellRendererEditingStartedLock sync.Mutex
+
+// CellRendererSignalEditingStartedCallback is a callback function for a 'editing-started' signal emitted from a CellRenderer.
+type CellRendererSignalEditingStartedCallback func(editable *CellEditable, path string)
+
+/*
+ConnectEditingStarted connects the callback to the 'editing-started' signal for the CellRenderer.
+
+The returned value represents the connection, and may be passed to DisconnectEditingStarted to remove it.
+*/
+func (recv *CellRenderer) ConnectEditingStarted(callback CellRendererSignalEditingStartedCallback) int {
+	signalCellRendererEditingStartedLock.Lock()
+	defer signalCellRendererEditingStartedLock.Unlock()
+
+	signalCellRendererEditingStartedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.CellRenderer_signal_connect_editing_started(instance, C.gpointer(uintptr(signalCellRendererEditingStartedId)))
+
+	detail := signalCellRendererEditingStartedDetail{callback, handlerID}
+	signalCellRendererEditingStartedMap[signalCellRendererEditingStartedId] = detail
+
+	return signalCellRendererEditingStartedId
+}
+
+/*
+DisconnectEditingStarted disconnects a callback from the 'editing-started' signal for the CellRenderer.
+
+The connectionID should be a value returned from a call to ConnectEditingStarted.
+*/
+func (recv *CellRenderer) DisconnectEditingStarted(connectionID int) {
+	signalCellRendererEditingStartedLock.Lock()
+	defer signalCellRendererEditingStartedLock.Unlock()
+
+	detail, exists := signalCellRendererEditingStartedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalCellRendererEditingStartedMap, connectionID)
+}
+
+//export cellrenderer_editingStartedHandler
+func cellrenderer_editingStartedHandler(_ *C.GObject, c_editable *C.GtkCellEditable, c_path C.gchar, data C.gpointer) {
+	editable := CellEditableNewFromC(unsafe.Pointer(c_editable))
+
+	index := int(uintptr(data))
+	callback := signalCellRendererEditingStartedMap[index].callback
+	callback(editable, path)
+}
 
 // StopEditing is a wrapper around the C function gtk_cell_renderer_stop_editing.
 func (recv *CellRenderer) StopEditing(canceled bool) {
@@ -611,7 +686,66 @@ func (recv *Dialog) SetAlternativeButtonOrderFromArray(newOrder []int32) {
 	return
 }
 
-// Unsupported signal 'insert-prefix' for EntryCompletion : unsupported parameter prefix : type utf8 :
+type signalEntryCompletionInsertPrefixDetail struct {
+	callback  EntryCompletionSignalInsertPrefixCallback
+	handlerID C.gulong
+}
+
+var signalEntryCompletionInsertPrefixId int
+var signalEntryCompletionInsertPrefixMap = make(map[int]signalEntryCompletionInsertPrefixDetail)
+var signalEntryCompletionInsertPrefixLock sync.Mutex
+
+// EntryCompletionSignalInsertPrefixCallback is a callback function for a 'insert-prefix' signal emitted from a EntryCompletion.
+type EntryCompletionSignalInsertPrefixCallback func(prefix string) bool
+
+/*
+ConnectInsertPrefix connects the callback to the 'insert-prefix' signal for the EntryCompletion.
+
+The returned value represents the connection, and may be passed to DisconnectInsertPrefix to remove it.
+*/
+func (recv *EntryCompletion) ConnectInsertPrefix(callback EntryCompletionSignalInsertPrefixCallback) int {
+	signalEntryCompletionInsertPrefixLock.Lock()
+	defer signalEntryCompletionInsertPrefixLock.Unlock()
+
+	signalEntryCompletionInsertPrefixId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.EntryCompletion_signal_connect_insert_prefix(instance, C.gpointer(uintptr(signalEntryCompletionInsertPrefixId)))
+
+	detail := signalEntryCompletionInsertPrefixDetail{callback, handlerID}
+	signalEntryCompletionInsertPrefixMap[signalEntryCompletionInsertPrefixId] = detail
+
+	return signalEntryCompletionInsertPrefixId
+}
+
+/*
+DisconnectInsertPrefix disconnects a callback from the 'insert-prefix' signal for the EntryCompletion.
+
+The connectionID should be a value returned from a call to ConnectInsertPrefix.
+*/
+func (recv *EntryCompletion) DisconnectInsertPrefix(connectionID int) {
+	signalEntryCompletionInsertPrefixLock.Lock()
+	defer signalEntryCompletionInsertPrefixLock.Unlock()
+
+	detail, exists := signalEntryCompletionInsertPrefixMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalEntryCompletionInsertPrefixMap, connectionID)
+}
+
+//export entrycompletion_insertPrefixHandler
+func entrycompletion_insertPrefixHandler(_ *C.GObject, c_prefix C.gchar, data C.gpointer) C.gboolean {
+
+	index := int(uintptr(data))
+	callback := signalEntryCompletionInsertPrefixMap[index].callback
+	retGo := callback(prefix)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
+}
 
 // GetInlineCompletion is a wrapper around the C function gtk_entry_completion_get_inline_completion.
 func (recv *EntryCompletion) GetInlineCompletion() bool {

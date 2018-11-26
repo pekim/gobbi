@@ -7,6 +7,7 @@ import (
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gio "github.com/pekim/gobbi/lib/gio"
 	pango "github.com/pekim/gobbi/lib/pango"
+	"sync"
 	"unsafe"
 )
 
@@ -15,6 +16,15 @@ import (
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
+/*
+
+	void levelbar_offsetChangedHandler(GObject *, gchar*, gpointer);
+
+	static gulong LevelBar_signal_connect_offset_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "offset-changed", G_CALLBACK(levelbar_offsetChangedHandler), data);
+	}
+
+*/
 import "C"
 
 // SetAccel is a wrapper around the C function gtk_accel_label_set_accel.
@@ -163,7 +173,63 @@ func (recv *Entry) SetInputPurpose(purpose InputPurpose) {
 
 // Unsupported : gtk_icon_view_get_cell_rect : unsupported parameter rect : Blacklisted record : GdkRectangle
 
-// Unsupported signal 'offset-changed' for LevelBar : unsupported parameter name : type utf8 :
+type signalLevelBarOffsetChangedDetail struct {
+	callback  LevelBarSignalOffsetChangedCallback
+	handlerID C.gulong
+}
+
+var signalLevelBarOffsetChangedId int
+var signalLevelBarOffsetChangedMap = make(map[int]signalLevelBarOffsetChangedDetail)
+var signalLevelBarOffsetChangedLock sync.Mutex
+
+// LevelBarSignalOffsetChangedCallback is a callback function for a 'offset-changed' signal emitted from a LevelBar.
+type LevelBarSignalOffsetChangedCallback func(name string)
+
+/*
+ConnectOffsetChanged connects the callback to the 'offset-changed' signal for the LevelBar.
+
+The returned value represents the connection, and may be passed to DisconnectOffsetChanged to remove it.
+*/
+func (recv *LevelBar) ConnectOffsetChanged(callback LevelBarSignalOffsetChangedCallback) int {
+	signalLevelBarOffsetChangedLock.Lock()
+	defer signalLevelBarOffsetChangedLock.Unlock()
+
+	signalLevelBarOffsetChangedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.LevelBar_signal_connect_offset_changed(instance, C.gpointer(uintptr(signalLevelBarOffsetChangedId)))
+
+	detail := signalLevelBarOffsetChangedDetail{callback, handlerID}
+	signalLevelBarOffsetChangedMap[signalLevelBarOffsetChangedId] = detail
+
+	return signalLevelBarOffsetChangedId
+}
+
+/*
+DisconnectOffsetChanged disconnects a callback from the 'offset-changed' signal for the LevelBar.
+
+The connectionID should be a value returned from a call to ConnectOffsetChanged.
+*/
+func (recv *LevelBar) DisconnectOffsetChanged(connectionID int) {
+	signalLevelBarOffsetChangedLock.Lock()
+	defer signalLevelBarOffsetChangedLock.Unlock()
+
+	detail, exists := signalLevelBarOffsetChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalLevelBarOffsetChangedMap, connectionID)
+}
+
+//export levelbar_offsetChangedHandler
+func levelbar_offsetChangedHandler(_ *C.GObject, c_name C.gchar, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalLevelBarOffsetChangedMap[index].callback
+	callback(name)
+}
 
 // LevelBarNew is a wrapper around the C function gtk_level_bar_new.
 func LevelBarNew() *LevelBar {

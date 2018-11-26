@@ -33,6 +33,10 @@ func (a *Array) generateDeclaration(g *jen.Group, goVarName string) {
 	a.Type.generator.generateArrayDeclaration(g, goVarName)
 }
 
+func (a *Array) generateDeclarationC(g *jen.Group, cVarName string) {
+	a.Type.generator.generateArrayDeclarationC(g, cVarName)
+}
+
 func (a *Array) generateParamCVar(g *jen.Group, cVarName string, goVarName string, transferOwnership string) {
 	g.
 		Id(cVarName).

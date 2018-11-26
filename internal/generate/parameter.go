@@ -132,8 +132,11 @@ func (p *Parameter) generateFunctionDeclaration(g *jen.Group) {
 }
 
 func (p *Parameter) generateFunctionDeclarationCtype(g *jen.Group) {
-	fmt.Println(p.Name, p.Array)
-	p.Type.generator.generateDeclarationC(g, p.cVarName)
+	if p.Array != nil {
+		p.Array.generateDeclarationC(g, p.cVarName)
+	} else {
+		p.Type.generator.generateDeclarationC(g, p.cVarName)
+	}
 }
 
 func (p *Parameter) generateCVar(g *jen.Group) {
@@ -161,7 +164,12 @@ func (p *Parameter) generateCVarForStringLength(g *jen.Group) {
 }
 
 func (p *Parameter) generateGoVar(g *jen.Group) {
-	p.Type.generator.generateParamGoVar(g, p.goVarName, p.cVarName, p.Type.fullGoPackageName())
+	typ := p.Type
+	if p.Array != nil {
+		typ = p.Array.Type
+	}
+
+	typ.generator.generateParamGoVar(g, p.goVarName, p.cVarName, typ.fullGoPackageName())
 	g.Line()
 }
 

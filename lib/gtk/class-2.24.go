@@ -3,16 +3,87 @@
 
 package gtk
 
-import "unsafe"
+import (
+	"sync"
+	"unsafe"
+)
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gtk/gtk-a11y.h>
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
+/*
+
+	gboolean aboutdialog_activateLinkHandler(GObject *, gchar*, gpointer);
+
+	static gulong AboutDialog_signal_connect_activate_link(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "activate-link", G_CALLBACK(aboutdialog_activateLinkHandler), data);
+	}
+
+*/
 import "C"
 
-// Unsupported signal 'activate-link' for AboutDialog : unsupported parameter uri : type utf8 :
+type signalAboutDialogActivateLinkDetail struct {
+	callback  AboutDialogSignalActivateLinkCallback
+	handlerID C.gulong
+}
+
+var signalAboutDialogActivateLinkId int
+var signalAboutDialogActivateLinkMap = make(map[int]signalAboutDialogActivateLinkDetail)
+var signalAboutDialogActivateLinkLock sync.Mutex
+
+// AboutDialogSignalActivateLinkCallback is a callback function for a 'activate-link' signal emitted from a AboutDialog.
+type AboutDialogSignalActivateLinkCallback func(uri string) bool
+
+/*
+ConnectActivateLink connects the callback to the 'activate-link' signal for the AboutDialog.
+
+The returned value represents the connection, and may be passed to DisconnectActivateLink to remove it.
+*/
+func (recv *AboutDialog) ConnectActivateLink(callback AboutDialogSignalActivateLinkCallback) int {
+	signalAboutDialogActivateLinkLock.Lock()
+	defer signalAboutDialogActivateLinkLock.Unlock()
+
+	signalAboutDialogActivateLinkId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.AboutDialog_signal_connect_activate_link(instance, C.gpointer(uintptr(signalAboutDialogActivateLinkId)))
+
+	detail := signalAboutDialogActivateLinkDetail{callback, handlerID}
+	signalAboutDialogActivateLinkMap[signalAboutDialogActivateLinkId] = detail
+
+	return signalAboutDialogActivateLinkId
+}
+
+/*
+DisconnectActivateLink disconnects a callback from the 'activate-link' signal for the AboutDialog.
+
+The connectionID should be a value returned from a call to ConnectActivateLink.
+*/
+func (recv *AboutDialog) DisconnectActivateLink(connectionID int) {
+	signalAboutDialogActivateLinkLock.Lock()
+	defer signalAboutDialogActivateLinkLock.Unlock()
+
+	detail, exists := signalAboutDialogActivateLinkMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalAboutDialogActivateLinkMap, connectionID)
+}
+
+//export aboutdialog_activateLinkHandler
+func aboutdialog_activateLinkHandler(_ *C.GObject, c_uri C.gchar, data C.gpointer) C.gboolean {
+
+	index := int(uintptr(data))
+	callback := signalAboutDialogActivateLinkMap[index].callback
+	retGo := callback(uri)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
+}
 
 // ComboBoxNewWithEntry is a wrapper around the C function gtk_combo_box_new_with_entry.
 func ComboBoxNewWithEntry() *ComboBox {

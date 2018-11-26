@@ -67,6 +67,9 @@ func (t *TypeGeneratorInteger) generateArrayDeclaration(g *jen.Group, goVarName 
 		Do(t.typ.qname.generate)
 }
 
+func (t *TypeGeneratorInteger) generateArrayDeclarationC(g *jen.Group, cVarName string) {
+}
+
 func (t *TypeGeneratorInteger) generateDeclarationC(g *jen.Group, cVarName string) {
 	g.Id(cVarName).Qual("C", t.typ.CType)
 }

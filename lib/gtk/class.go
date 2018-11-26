@@ -40,6 +40,15 @@ import (
 */
 /*
 
+	void appchooserbutton_customItemActivatedHandler(GObject *, gchar*, gpointer);
+
+	static gulong AppChooserButton_signal_connect_custom_item_activated(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "custom-item-activated", G_CALLBACK(appchooserbutton_customItemActivatedHandler), data);
+	}
+
+*/
+/*
+
 	void appchooserwidget_applicationActivatedHandler(GObject *, GAppInfo *, gpointer);
 
 	static gulong AppChooserWidget_signal_connect_application_activated(gpointer instance, gpointer data) {
@@ -193,6 +202,24 @@ import (
 */
 /*
 
+	void cellrenderertext_editedHandler(GObject *, gchar*, gchar*, gpointer);
+
+	static gulong CellRendererText_signal_connect_edited(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "edited", G_CALLBACK(cellrenderertext_editedHandler), data);
+	}
+
+*/
+/*
+
+	void cellrenderertoggle_toggledHandler(GObject *, gchar*, gpointer);
+
+	static gulong CellRendererToggle_signal_connect_toggled(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "toggled", G_CALLBACK(cellrenderertoggle_toggledHandler), data);
+	}
+
+*/
+/*
+
 	void checkmenuitem_toggledHandler(GObject *, gpointer);
 
 	static gulong CheckMenuItem_signal_connect_toggled(gpointer instance, gpointer data) {
@@ -310,6 +337,15 @@ import (
 */
 /*
 
+	void entry_insertAtCursorHandler(GObject *, gchar*, gpointer);
+
+	static gulong Entry_signal_connect_insert_at_cursor(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "insert-at-cursor", G_CALLBACK(entry_insertAtCursorHandler), data);
+	}
+
+*/
+/*
+
 	void entry_pasteClipboardHandler(GObject *, gpointer);
 
 	static gulong Entry_signal_connect_paste_clipboard(gpointer instance, gpointer data) {
@@ -368,6 +404,15 @@ import (
 
 	static gulong FileChooserWidget_signal_connect_home_folder(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "home-folder", G_CALLBACK(filechooserwidget_homeFolderHandler), data);
+	}
+
+*/
+/*
+
+	void filechooserwidget_locationPopupHandler(GObject *, gchar*, gpointer);
+
+	static gulong FileChooserWidget_signal_connect_location_popup(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "location-popup", G_CALLBACK(filechooserwidget_locationPopupHandler), data);
 	}
 
 */
@@ -530,6 +575,15 @@ import (
 
 	static gulong HandleBox_signal_connect_child_detached(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "child-detached", G_CALLBACK(handlebox_childDetachedHandler), data);
+	}
+
+*/
+/*
+
+	void imcontext_commitHandler(GObject *, gchar*, gpointer);
+
+	static gulong IMContext_signal_connect_commit(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "commit", G_CALLBACK(imcontext_commitHandler), data);
 	}
 
 */
@@ -895,6 +949,24 @@ import (
 */
 /*
 
+	void statusbar_textPoppedHandler(GObject *, guint, gchar*, gpointer);
+
+	static gulong Statusbar_signal_connect_text_popped(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "text-popped", G_CALLBACK(statusbar_textPoppedHandler), data);
+	}
+
+*/
+/*
+
+	void statusbar_textPushedHandler(GObject *, guint, gchar*, gpointer);
+
+	static gulong Statusbar_signal_connect_text_pushed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "text-pushed", G_CALLBACK(statusbar_textPushedHandler), data);
+	}
+
+*/
+/*
+
 	void switch_activateHandler(GObject *, gpointer);
 
 	static gulong Switch_signal_connect_activate(gpointer instance, gpointer data) {
@@ -962,6 +1034,15 @@ import (
 
 	static gulong TextBuffer_signal_connect_insert_pixbuf(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "insert-pixbuf", G_CALLBACK(textbuffer_insertPixbufHandler), data);
+	}
+
+*/
+/*
+
+	void textbuffer_insertTextHandler(GObject *, GtkTextIter *, gchar*, gint, gpointer);
+
+	static gulong TextBuffer_signal_connect_insert_text(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "insert-text", G_CALLBACK(textbuffer_insertTextHandler), data);
 	}
 
 */
@@ -1052,6 +1133,15 @@ import (
 
 	static gulong TextView_signal_connect_cut_clipboard(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "cut-clipboard", G_CALLBACK(textview_cutClipboardHandler), data);
+	}
+
+*/
+/*
+
+	void textview_insertAtCursorHandler(GObject *, gchar*, gpointer);
+
+	static gulong TextView_signal_connect_insert_at_cursor(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "insert-at-cursor", G_CALLBACK(textview_insertAtCursorHandler), data);
 	}
 
 */
@@ -2739,7 +2829,63 @@ func CastToAppChooserButton(object *gobject.Object) *AppChooserButton {
 	return AppChooserButtonNewFromC(object.ToC())
 }
 
-// Unsupported signal 'custom-item-activated' for AppChooserButton : unsupported parameter item_name : type utf8 :
+type signalAppChooserButtonCustomItemActivatedDetail struct {
+	callback  AppChooserButtonSignalCustomItemActivatedCallback
+	handlerID C.gulong
+}
+
+var signalAppChooserButtonCustomItemActivatedId int
+var signalAppChooserButtonCustomItemActivatedMap = make(map[int]signalAppChooserButtonCustomItemActivatedDetail)
+var signalAppChooserButtonCustomItemActivatedLock sync.Mutex
+
+// AppChooserButtonSignalCustomItemActivatedCallback is a callback function for a 'custom-item-activated' signal emitted from a AppChooserButton.
+type AppChooserButtonSignalCustomItemActivatedCallback func(itemName string)
+
+/*
+ConnectCustomItemActivated connects the callback to the 'custom-item-activated' signal for the AppChooserButton.
+
+The returned value represents the connection, and may be passed to DisconnectCustomItemActivated to remove it.
+*/
+func (recv *AppChooserButton) ConnectCustomItemActivated(callback AppChooserButtonSignalCustomItemActivatedCallback) int {
+	signalAppChooserButtonCustomItemActivatedLock.Lock()
+	defer signalAppChooserButtonCustomItemActivatedLock.Unlock()
+
+	signalAppChooserButtonCustomItemActivatedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.AppChooserButton_signal_connect_custom_item_activated(instance, C.gpointer(uintptr(signalAppChooserButtonCustomItemActivatedId)))
+
+	detail := signalAppChooserButtonCustomItemActivatedDetail{callback, handlerID}
+	signalAppChooserButtonCustomItemActivatedMap[signalAppChooserButtonCustomItemActivatedId] = detail
+
+	return signalAppChooserButtonCustomItemActivatedId
+}
+
+/*
+DisconnectCustomItemActivated disconnects a callback from the 'custom-item-activated' signal for the AppChooserButton.
+
+The connectionID should be a value returned from a call to ConnectCustomItemActivated.
+*/
+func (recv *AppChooserButton) DisconnectCustomItemActivated(connectionID int) {
+	signalAppChooserButtonCustomItemActivatedLock.Lock()
+	defer signalAppChooserButtonCustomItemActivatedLock.Unlock()
+
+	detail, exists := signalAppChooserButtonCustomItemActivatedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalAppChooserButtonCustomItemActivatedMap, connectionID)
+}
+
+//export appchooserbutton_customItemActivatedHandler
+func appchooserbutton_customItemActivatedHandler(_ *C.GObject, c_item_name C.gchar, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalAppChooserButtonCustomItemActivatedMap[index].callback
+	callback(itemName)
+}
 
 // GetHeading is a wrapper around the C function gtk_app_chooser_button_get_heading.
 func (recv *AppChooserButton) GetHeading() string {
@@ -5854,7 +6000,63 @@ func CastToCellRendererText(object *gobject.Object) *CellRendererText {
 	return CellRendererTextNewFromC(object.ToC())
 }
 
-// Unsupported signal 'edited' for CellRendererText : unsupported parameter path : type utf8 :
+type signalCellRendererTextEditedDetail struct {
+	callback  CellRendererTextSignalEditedCallback
+	handlerID C.gulong
+}
+
+var signalCellRendererTextEditedId int
+var signalCellRendererTextEditedMap = make(map[int]signalCellRendererTextEditedDetail)
+var signalCellRendererTextEditedLock sync.Mutex
+
+// CellRendererTextSignalEditedCallback is a callback function for a 'edited' signal emitted from a CellRendererText.
+type CellRendererTextSignalEditedCallback func(path string, newText string)
+
+/*
+ConnectEdited connects the callback to the 'edited' signal for the CellRendererText.
+
+The returned value represents the connection, and may be passed to DisconnectEdited to remove it.
+*/
+func (recv *CellRendererText) ConnectEdited(callback CellRendererTextSignalEditedCallback) int {
+	signalCellRendererTextEditedLock.Lock()
+	defer signalCellRendererTextEditedLock.Unlock()
+
+	signalCellRendererTextEditedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.CellRendererText_signal_connect_edited(instance, C.gpointer(uintptr(signalCellRendererTextEditedId)))
+
+	detail := signalCellRendererTextEditedDetail{callback, handlerID}
+	signalCellRendererTextEditedMap[signalCellRendererTextEditedId] = detail
+
+	return signalCellRendererTextEditedId
+}
+
+/*
+DisconnectEdited disconnects a callback from the 'edited' signal for the CellRendererText.
+
+The connectionID should be a value returned from a call to ConnectEdited.
+*/
+func (recv *CellRendererText) DisconnectEdited(connectionID int) {
+	signalCellRendererTextEditedLock.Lock()
+	defer signalCellRendererTextEditedLock.Unlock()
+
+	detail, exists := signalCellRendererTextEditedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalCellRendererTextEditedMap, connectionID)
+}
+
+//export cellrenderertext_editedHandler
+func cellrenderertext_editedHandler(_ *C.GObject, c_path C.gchar, c_new_text C.gchar, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalCellRendererTextEditedMap[index].callback
+	callback(path, newText)
+}
 
 // CellRendererTextNew is a wrapper around the C function gtk_cell_renderer_text_new.
 func CellRendererTextNew() *CellRendererText {
@@ -5917,7 +6119,63 @@ func CastToCellRendererToggle(object *gobject.Object) *CellRendererToggle {
 	return CellRendererToggleNewFromC(object.ToC())
 }
 
-// Unsupported signal 'toggled' for CellRendererToggle : unsupported parameter path : type utf8 :
+type signalCellRendererToggleToggledDetail struct {
+	callback  CellRendererToggleSignalToggledCallback
+	handlerID C.gulong
+}
+
+var signalCellRendererToggleToggledId int
+var signalCellRendererToggleToggledMap = make(map[int]signalCellRendererToggleToggledDetail)
+var signalCellRendererToggleToggledLock sync.Mutex
+
+// CellRendererToggleSignalToggledCallback is a callback function for a 'toggled' signal emitted from a CellRendererToggle.
+type CellRendererToggleSignalToggledCallback func(path string)
+
+/*
+ConnectToggled connects the callback to the 'toggled' signal for the CellRendererToggle.
+
+The returned value represents the connection, and may be passed to DisconnectToggled to remove it.
+*/
+func (recv *CellRendererToggle) ConnectToggled(callback CellRendererToggleSignalToggledCallback) int {
+	signalCellRendererToggleToggledLock.Lock()
+	defer signalCellRendererToggleToggledLock.Unlock()
+
+	signalCellRendererToggleToggledId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.CellRendererToggle_signal_connect_toggled(instance, C.gpointer(uintptr(signalCellRendererToggleToggledId)))
+
+	detail := signalCellRendererToggleToggledDetail{callback, handlerID}
+	signalCellRendererToggleToggledMap[signalCellRendererToggleToggledId] = detail
+
+	return signalCellRendererToggleToggledId
+}
+
+/*
+DisconnectToggled disconnects a callback from the 'toggled' signal for the CellRendererToggle.
+
+The connectionID should be a value returned from a call to ConnectToggled.
+*/
+func (recv *CellRendererToggle) DisconnectToggled(connectionID int) {
+	signalCellRendererToggleToggledLock.Lock()
+	defer signalCellRendererToggleToggledLock.Unlock()
+
+	detail, exists := signalCellRendererToggleToggledMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalCellRendererToggleToggledMap, connectionID)
+}
+
+//export cellrenderertoggle_toggledHandler
+func cellrenderertoggle_toggledHandler(_ *C.GObject, c_path C.gchar, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalCellRendererToggleToggledMap[index].callback
+	callback(path)
+}
 
 // CellRendererToggleNew is a wrapper around the C function gtk_cell_renderer_toggle_new.
 func CellRendererToggleNew() *CellRendererToggle {
@@ -8805,7 +9063,63 @@ func entry_cutClipboardHandler(_ *C.GObject, data C.gpointer) {
 
 // Unsupported signal 'delete-from-cursor' for Entry : unsupported parameter type : type DeleteType :
 
-// Unsupported signal 'insert-at-cursor' for Entry : unsupported parameter string : type utf8 :
+type signalEntryInsertAtCursorDetail struct {
+	callback  EntrySignalInsertAtCursorCallback
+	handlerID C.gulong
+}
+
+var signalEntryInsertAtCursorId int
+var signalEntryInsertAtCursorMap = make(map[int]signalEntryInsertAtCursorDetail)
+var signalEntryInsertAtCursorLock sync.Mutex
+
+// EntrySignalInsertAtCursorCallback is a callback function for a 'insert-at-cursor' signal emitted from a Entry.
+type EntrySignalInsertAtCursorCallback func(string string)
+
+/*
+ConnectInsertAtCursor connects the callback to the 'insert-at-cursor' signal for the Entry.
+
+The returned value represents the connection, and may be passed to DisconnectInsertAtCursor to remove it.
+*/
+func (recv *Entry) ConnectInsertAtCursor(callback EntrySignalInsertAtCursorCallback) int {
+	signalEntryInsertAtCursorLock.Lock()
+	defer signalEntryInsertAtCursorLock.Unlock()
+
+	signalEntryInsertAtCursorId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Entry_signal_connect_insert_at_cursor(instance, C.gpointer(uintptr(signalEntryInsertAtCursorId)))
+
+	detail := signalEntryInsertAtCursorDetail{callback, handlerID}
+	signalEntryInsertAtCursorMap[signalEntryInsertAtCursorId] = detail
+
+	return signalEntryInsertAtCursorId
+}
+
+/*
+DisconnectInsertAtCursor disconnects a callback from the 'insert-at-cursor' signal for the Entry.
+
+The connectionID should be a value returned from a call to ConnectInsertAtCursor.
+*/
+func (recv *Entry) DisconnectInsertAtCursor(connectionID int) {
+	signalEntryInsertAtCursorLock.Lock()
+	defer signalEntryInsertAtCursorLock.Unlock()
+
+	detail, exists := signalEntryInsertAtCursorMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalEntryInsertAtCursorMap, connectionID)
+}
+
+//export entry_insertAtCursorHandler
+func entry_insertAtCursorHandler(_ *C.GObject, c_string C.gchar, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalEntryInsertAtCursorMap[index].callback
+	callback(string)
+}
 
 // Unsupported signal 'move-cursor' for Entry : unsupported parameter step : type MovementStep :
 
@@ -9982,7 +10296,63 @@ func filechooserwidget_homeFolderHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// Unsupported signal 'location-popup' for FileChooserWidget : unsupported parameter path : type utf8 :
+type signalFileChooserWidgetLocationPopupDetail struct {
+	callback  FileChooserWidgetSignalLocationPopupCallback
+	handlerID C.gulong
+}
+
+var signalFileChooserWidgetLocationPopupId int
+var signalFileChooserWidgetLocationPopupMap = make(map[int]signalFileChooserWidgetLocationPopupDetail)
+var signalFileChooserWidgetLocationPopupLock sync.Mutex
+
+// FileChooserWidgetSignalLocationPopupCallback is a callback function for a 'location-popup' signal emitted from a FileChooserWidget.
+type FileChooserWidgetSignalLocationPopupCallback func(path string)
+
+/*
+ConnectLocationPopup connects the callback to the 'location-popup' signal for the FileChooserWidget.
+
+The returned value represents the connection, and may be passed to DisconnectLocationPopup to remove it.
+*/
+func (recv *FileChooserWidget) ConnectLocationPopup(callback FileChooserWidgetSignalLocationPopupCallback) int {
+	signalFileChooserWidgetLocationPopupLock.Lock()
+	defer signalFileChooserWidgetLocationPopupLock.Unlock()
+
+	signalFileChooserWidgetLocationPopupId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.FileChooserWidget_signal_connect_location_popup(instance, C.gpointer(uintptr(signalFileChooserWidgetLocationPopupId)))
+
+	detail := signalFileChooserWidgetLocationPopupDetail{callback, handlerID}
+	signalFileChooserWidgetLocationPopupMap[signalFileChooserWidgetLocationPopupId] = detail
+
+	return signalFileChooserWidgetLocationPopupId
+}
+
+/*
+DisconnectLocationPopup disconnects a callback from the 'location-popup' signal for the FileChooserWidget.
+
+The connectionID should be a value returned from a call to ConnectLocationPopup.
+*/
+func (recv *FileChooserWidget) DisconnectLocationPopup(connectionID int) {
+	signalFileChooserWidgetLocationPopupLock.Lock()
+	defer signalFileChooserWidgetLocationPopupLock.Unlock()
+
+	detail, exists := signalFileChooserWidgetLocationPopupMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalFileChooserWidgetLocationPopupMap, connectionID)
+}
+
+//export filechooserwidget_locationPopupHandler
+func filechooserwidget_locationPopupHandler(_ *C.GObject, c_path C.gchar, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalFileChooserWidgetLocationPopupMap[index].callback
+	callback(path)
+}
 
 type signalFileChooserWidgetLocationPopupOnPasteDetail struct {
 	callback  FileChooserWidgetSignalLocationPopupOnPasteCallback
@@ -13453,7 +13823,63 @@ func CastToIMContext(object *gobject.Object) *IMContext {
 	return IMContextNewFromC(object.ToC())
 }
 
-// Unsupported signal 'commit' for IMContext : unsupported parameter str : type utf8 :
+type signalIMContextCommitDetail struct {
+	callback  IMContextSignalCommitCallback
+	handlerID C.gulong
+}
+
+var signalIMContextCommitId int
+var signalIMContextCommitMap = make(map[int]signalIMContextCommitDetail)
+var signalIMContextCommitLock sync.Mutex
+
+// IMContextSignalCommitCallback is a callback function for a 'commit' signal emitted from a IMContext.
+type IMContextSignalCommitCallback func(str string)
+
+/*
+ConnectCommit connects the callback to the 'commit' signal for the IMContext.
+
+The returned value represents the connection, and may be passed to DisconnectCommit to remove it.
+*/
+func (recv *IMContext) ConnectCommit(callback IMContextSignalCommitCallback) int {
+	signalIMContextCommitLock.Lock()
+	defer signalIMContextCommitLock.Unlock()
+
+	signalIMContextCommitId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.IMContext_signal_connect_commit(instance, C.gpointer(uintptr(signalIMContextCommitId)))
+
+	detail := signalIMContextCommitDetail{callback, handlerID}
+	signalIMContextCommitMap[signalIMContextCommitId] = detail
+
+	return signalIMContextCommitId
+}
+
+/*
+DisconnectCommit disconnects a callback from the 'commit' signal for the IMContext.
+
+The connectionID should be a value returned from a call to ConnectCommit.
+*/
+func (recv *IMContext) DisconnectCommit(connectionID int) {
+	signalIMContextCommitLock.Lock()
+	defer signalIMContextCommitLock.Unlock()
+
+	detail, exists := signalIMContextCommitMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalIMContextCommitMap, connectionID)
+}
+
+//export imcontext_commitHandler
+func imcontext_commitHandler(_ *C.GObject, c_str C.gchar, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalIMContextCommitMap[index].callback
+	callback(str)
+}
 
 type signalIMContextDeleteSurroundingDetail struct {
 	callback  IMContextSignalDeleteSurroundingCallback
@@ -24636,9 +25062,121 @@ func CastToStatusbar(object *gobject.Object) *Statusbar {
 	return StatusbarNewFromC(object.ToC())
 }
 
-// Unsupported signal 'text-popped' for Statusbar : unsupported parameter text : type utf8 :
+type signalStatusbarTextPoppedDetail struct {
+	callback  StatusbarSignalTextPoppedCallback
+	handlerID C.gulong
+}
 
-// Unsupported signal 'text-pushed' for Statusbar : unsupported parameter text : type utf8 :
+var signalStatusbarTextPoppedId int
+var signalStatusbarTextPoppedMap = make(map[int]signalStatusbarTextPoppedDetail)
+var signalStatusbarTextPoppedLock sync.Mutex
+
+// StatusbarSignalTextPoppedCallback is a callback function for a 'text-popped' signal emitted from a Statusbar.
+type StatusbarSignalTextPoppedCallback func(contextId uint32, text string)
+
+/*
+ConnectTextPopped connects the callback to the 'text-popped' signal for the Statusbar.
+
+The returned value represents the connection, and may be passed to DisconnectTextPopped to remove it.
+*/
+func (recv *Statusbar) ConnectTextPopped(callback StatusbarSignalTextPoppedCallback) int {
+	signalStatusbarTextPoppedLock.Lock()
+	defer signalStatusbarTextPoppedLock.Unlock()
+
+	signalStatusbarTextPoppedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Statusbar_signal_connect_text_popped(instance, C.gpointer(uintptr(signalStatusbarTextPoppedId)))
+
+	detail := signalStatusbarTextPoppedDetail{callback, handlerID}
+	signalStatusbarTextPoppedMap[signalStatusbarTextPoppedId] = detail
+
+	return signalStatusbarTextPoppedId
+}
+
+/*
+DisconnectTextPopped disconnects a callback from the 'text-popped' signal for the Statusbar.
+
+The connectionID should be a value returned from a call to ConnectTextPopped.
+*/
+func (recv *Statusbar) DisconnectTextPopped(connectionID int) {
+	signalStatusbarTextPoppedLock.Lock()
+	defer signalStatusbarTextPoppedLock.Unlock()
+
+	detail, exists := signalStatusbarTextPoppedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalStatusbarTextPoppedMap, connectionID)
+}
+
+//export statusbar_textPoppedHandler
+func statusbar_textPoppedHandler(_ *C.GObject, c_context_id C.guint, c_text C.gchar, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalStatusbarTextPoppedMap[index].callback
+	callback(contextId, text)
+}
+
+type signalStatusbarTextPushedDetail struct {
+	callback  StatusbarSignalTextPushedCallback
+	handlerID C.gulong
+}
+
+var signalStatusbarTextPushedId int
+var signalStatusbarTextPushedMap = make(map[int]signalStatusbarTextPushedDetail)
+var signalStatusbarTextPushedLock sync.Mutex
+
+// StatusbarSignalTextPushedCallback is a callback function for a 'text-pushed' signal emitted from a Statusbar.
+type StatusbarSignalTextPushedCallback func(contextId uint32, text string)
+
+/*
+ConnectTextPushed connects the callback to the 'text-pushed' signal for the Statusbar.
+
+The returned value represents the connection, and may be passed to DisconnectTextPushed to remove it.
+*/
+func (recv *Statusbar) ConnectTextPushed(callback StatusbarSignalTextPushedCallback) int {
+	signalStatusbarTextPushedLock.Lock()
+	defer signalStatusbarTextPushedLock.Unlock()
+
+	signalStatusbarTextPushedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Statusbar_signal_connect_text_pushed(instance, C.gpointer(uintptr(signalStatusbarTextPushedId)))
+
+	detail := signalStatusbarTextPushedDetail{callback, handlerID}
+	signalStatusbarTextPushedMap[signalStatusbarTextPushedId] = detail
+
+	return signalStatusbarTextPushedId
+}
+
+/*
+DisconnectTextPushed disconnects a callback from the 'text-pushed' signal for the Statusbar.
+
+The connectionID should be a value returned from a call to ConnectTextPushed.
+*/
+func (recv *Statusbar) DisconnectTextPushed(connectionID int) {
+	signalStatusbarTextPushedLock.Lock()
+	defer signalStatusbarTextPushedLock.Unlock()
+
+	detail, exists := signalStatusbarTextPushedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalStatusbarTextPushedMap, connectionID)
+}
+
+//export statusbar_textPushedHandler
+func statusbar_textPushedHandler(_ *C.GObject, c_context_id C.guint, c_text C.gchar, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalStatusbarTextPushedMap[index].callback
+	callback(contextId, text)
+}
 
 // StatusbarNew is a wrapper around the C function gtk_statusbar_new.
 func StatusbarNew() *Statusbar {
@@ -26044,7 +26582,64 @@ func textbuffer_insertPixbufHandler(_ *C.GObject, c_location *C.GtkTextIter, c_p
 	callback(location, pixbuf)
 }
 
-// Unsupported signal 'insert-text' for TextBuffer : unsupported parameter text : type utf8 :
+type signalTextBufferInsertTextDetail struct {
+	callback  TextBufferSignalInsertTextCallback
+	handlerID C.gulong
+}
+
+var signalTextBufferInsertTextId int
+var signalTextBufferInsertTextMap = make(map[int]signalTextBufferInsertTextDetail)
+var signalTextBufferInsertTextLock sync.Mutex
+
+// TextBufferSignalInsertTextCallback is a callback function for a 'insert-text' signal emitted from a TextBuffer.
+type TextBufferSignalInsertTextCallback func(location *TextIter, text string, len int32)
+
+/*
+ConnectInsertText connects the callback to the 'insert-text' signal for the TextBuffer.
+
+The returned value represents the connection, and may be passed to DisconnectInsertText to remove it.
+*/
+func (recv *TextBuffer) ConnectInsertText(callback TextBufferSignalInsertTextCallback) int {
+	signalTextBufferInsertTextLock.Lock()
+	defer signalTextBufferInsertTextLock.Unlock()
+
+	signalTextBufferInsertTextId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.TextBuffer_signal_connect_insert_text(instance, C.gpointer(uintptr(signalTextBufferInsertTextId)))
+
+	detail := signalTextBufferInsertTextDetail{callback, handlerID}
+	signalTextBufferInsertTextMap[signalTextBufferInsertTextId] = detail
+
+	return signalTextBufferInsertTextId
+}
+
+/*
+DisconnectInsertText disconnects a callback from the 'insert-text' signal for the TextBuffer.
+
+The connectionID should be a value returned from a call to ConnectInsertText.
+*/
+func (recv *TextBuffer) DisconnectInsertText(connectionID int) {
+	signalTextBufferInsertTextLock.Lock()
+	defer signalTextBufferInsertTextLock.Unlock()
+
+	detail, exists := signalTextBufferInsertTextMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalTextBufferInsertTextMap, connectionID)
+}
+
+//export textbuffer_insertTextHandler
+func textbuffer_insertTextHandler(_ *C.GObject, c_location *C.GtkTextIter, c_text C.gchar, c_len C.gint, data C.gpointer) {
+	location := TextIterNewFromC(unsafe.Pointer(c_location))
+
+	index := int(uintptr(data))
+	callback := signalTextBufferInsertTextMap[index].callback
+	callback(location, text, len)
+}
 
 type signalTextBufferMarkDeletedDetail struct {
 	callback  TextBufferSignalMarkDeletedCallback
@@ -27831,7 +28426,63 @@ func textview_cutClipboardHandler(_ *C.GObject, data C.gpointer) {
 
 // Unsupported signal 'delete-from-cursor' for TextView : unsupported parameter type : type DeleteType :
 
-// Unsupported signal 'insert-at-cursor' for TextView : unsupported parameter string : type utf8 :
+type signalTextViewInsertAtCursorDetail struct {
+	callback  TextViewSignalInsertAtCursorCallback
+	handlerID C.gulong
+}
+
+var signalTextViewInsertAtCursorId int
+var signalTextViewInsertAtCursorMap = make(map[int]signalTextViewInsertAtCursorDetail)
+var signalTextViewInsertAtCursorLock sync.Mutex
+
+// TextViewSignalInsertAtCursorCallback is a callback function for a 'insert-at-cursor' signal emitted from a TextView.
+type TextViewSignalInsertAtCursorCallback func(string string)
+
+/*
+ConnectInsertAtCursor connects the callback to the 'insert-at-cursor' signal for the TextView.
+
+The returned value represents the connection, and may be passed to DisconnectInsertAtCursor to remove it.
+*/
+func (recv *TextView) ConnectInsertAtCursor(callback TextViewSignalInsertAtCursorCallback) int {
+	signalTextViewInsertAtCursorLock.Lock()
+	defer signalTextViewInsertAtCursorLock.Unlock()
+
+	signalTextViewInsertAtCursorId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.TextView_signal_connect_insert_at_cursor(instance, C.gpointer(uintptr(signalTextViewInsertAtCursorId)))
+
+	detail := signalTextViewInsertAtCursorDetail{callback, handlerID}
+	signalTextViewInsertAtCursorMap[signalTextViewInsertAtCursorId] = detail
+
+	return signalTextViewInsertAtCursorId
+}
+
+/*
+DisconnectInsertAtCursor disconnects a callback from the 'insert-at-cursor' signal for the TextView.
+
+The connectionID should be a value returned from a call to ConnectInsertAtCursor.
+*/
+func (recv *TextView) DisconnectInsertAtCursor(connectionID int) {
+	signalTextViewInsertAtCursorLock.Lock()
+	defer signalTextViewInsertAtCursorLock.Unlock()
+
+	detail, exists := signalTextViewInsertAtCursorMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalTextViewInsertAtCursorMap, connectionID)
+}
+
+//export textview_insertAtCursorHandler
+func textview_insertAtCursorHandler(_ *C.GObject, c_string C.gchar, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalTextViewInsertAtCursorMap[index].callback
+	callback(string)
+}
 
 // Unsupported signal 'move-cursor' for TextView : unsupported parameter step : type MovementStep :
 

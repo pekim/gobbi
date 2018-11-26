@@ -6,6 +6,7 @@ package gio
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
+	"sync"
 	"unsafe"
 )
 
@@ -22,6 +23,33 @@ import (
 // #include <gio/gunixoutputstream.h>
 // #include <gio/gunixsocketaddress.h>
 // #include <stdlib.h>
+/*
+
+	void actiongroup_actionAddedHandler(GObject *, gchar*, gpointer);
+
+	static gulong ActionGroup_signal_connect_action_added(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "action-added", G_CALLBACK(actiongroup_actionAddedHandler), data);
+	}
+
+*/
+/*
+
+	void actiongroup_actionEnabledChangedHandler(GObject *, gchar*, gboolean, gpointer);
+
+	static gulong ActionGroup_signal_connect_action_enabled_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "action-enabled-changed", G_CALLBACK(actiongroup_actionEnabledChangedHandler), data);
+	}
+
+*/
+/*
+
+	void actiongroup_actionRemovedHandler(GObject *, gchar*, gpointer);
+
+	static gulong ActionGroup_signal_connect_action_removed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "action-removed", G_CALLBACK(actiongroup_actionRemovedHandler), data);
+	}
+
+*/
 import "C"
 
 // Unsupported : g_action_activate : unsupported parameter parameter : Blacklisted record : GVariant
@@ -50,13 +78,183 @@ func (recv *Action) GetName() string {
 
 // Unsupported : g_action_get_state_type : return type : Blacklisted record : GVariantType
 
-// Unsupported signal 'action-added' for ActionGroup : unsupported parameter action_name : type utf8 :
+type signalActionGroupActionAddedDetail struct {
+	callback  ActionGroupSignalActionAddedCallback
+	handlerID C.gulong
+}
 
-// Unsupported signal 'action-enabled-changed' for ActionGroup : unsupported parameter action_name : type utf8 :
+var signalActionGroupActionAddedId int
+var signalActionGroupActionAddedMap = make(map[int]signalActionGroupActionAddedDetail)
+var signalActionGroupActionAddedLock sync.Mutex
 
-// Unsupported signal 'action-removed' for ActionGroup : unsupported parameter action_name : type utf8 :
+// ActionGroupSignalActionAddedCallback is a callback function for a 'action-added' signal emitted from a ActionGroup.
+type ActionGroupSignalActionAddedCallback func(actionName string)
 
-// Unsupported signal 'action-state-changed' for ActionGroup : unsupported parameter action_name : type utf8 :
+/*
+ConnectActionAdded connects the callback to the 'action-added' signal for the ActionGroup.
+
+The returned value represents the connection, and may be passed to DisconnectActionAdded to remove it.
+*/
+func (recv *ActionGroup) ConnectActionAdded(callback ActionGroupSignalActionAddedCallback) int {
+	signalActionGroupActionAddedLock.Lock()
+	defer signalActionGroupActionAddedLock.Unlock()
+
+	signalActionGroupActionAddedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.ActionGroup_signal_connect_action_added(instance, C.gpointer(uintptr(signalActionGroupActionAddedId)))
+
+	detail := signalActionGroupActionAddedDetail{callback, handlerID}
+	signalActionGroupActionAddedMap[signalActionGroupActionAddedId] = detail
+
+	return signalActionGroupActionAddedId
+}
+
+/*
+DisconnectActionAdded disconnects a callback from the 'action-added' signal for the ActionGroup.
+
+The connectionID should be a value returned from a call to ConnectActionAdded.
+*/
+func (recv *ActionGroup) DisconnectActionAdded(connectionID int) {
+	signalActionGroupActionAddedLock.Lock()
+	defer signalActionGroupActionAddedLock.Unlock()
+
+	detail, exists := signalActionGroupActionAddedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalActionGroupActionAddedMap, connectionID)
+}
+
+//export actiongroup_actionAddedHandler
+func actiongroup_actionAddedHandler(_ *C.GObject, c_action_name C.gchar, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalActionGroupActionAddedMap[index].callback
+	callback(actionName)
+}
+
+type signalActionGroupActionEnabledChangedDetail struct {
+	callback  ActionGroupSignalActionEnabledChangedCallback
+	handlerID C.gulong
+}
+
+var signalActionGroupActionEnabledChangedId int
+var signalActionGroupActionEnabledChangedMap = make(map[int]signalActionGroupActionEnabledChangedDetail)
+var signalActionGroupActionEnabledChangedLock sync.Mutex
+
+// ActionGroupSignalActionEnabledChangedCallback is a callback function for a 'action-enabled-changed' signal emitted from a ActionGroup.
+type ActionGroupSignalActionEnabledChangedCallback func(actionName string, enabled bool)
+
+/*
+ConnectActionEnabledChanged connects the callback to the 'action-enabled-changed' signal for the ActionGroup.
+
+The returned value represents the connection, and may be passed to DisconnectActionEnabledChanged to remove it.
+*/
+func (recv *ActionGroup) ConnectActionEnabledChanged(callback ActionGroupSignalActionEnabledChangedCallback) int {
+	signalActionGroupActionEnabledChangedLock.Lock()
+	defer signalActionGroupActionEnabledChangedLock.Unlock()
+
+	signalActionGroupActionEnabledChangedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.ActionGroup_signal_connect_action_enabled_changed(instance, C.gpointer(uintptr(signalActionGroupActionEnabledChangedId)))
+
+	detail := signalActionGroupActionEnabledChangedDetail{callback, handlerID}
+	signalActionGroupActionEnabledChangedMap[signalActionGroupActionEnabledChangedId] = detail
+
+	return signalActionGroupActionEnabledChangedId
+}
+
+/*
+DisconnectActionEnabledChanged disconnects a callback from the 'action-enabled-changed' signal for the ActionGroup.
+
+The connectionID should be a value returned from a call to ConnectActionEnabledChanged.
+*/
+func (recv *ActionGroup) DisconnectActionEnabledChanged(connectionID int) {
+	signalActionGroupActionEnabledChangedLock.Lock()
+	defer signalActionGroupActionEnabledChangedLock.Unlock()
+
+	detail, exists := signalActionGroupActionEnabledChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalActionGroupActionEnabledChangedMap, connectionID)
+}
+
+//export actiongroup_actionEnabledChangedHandler
+func actiongroup_actionEnabledChangedHandler(_ *C.GObject, c_action_name C.gchar, c_enabled C.gboolean, data C.gpointer) {
+
+	enabled := c_enabled == C.TRUE
+
+	index := int(uintptr(data))
+	callback := signalActionGroupActionEnabledChangedMap[index].callback
+	callback(actionName, enabled)
+}
+
+type signalActionGroupActionRemovedDetail struct {
+	callback  ActionGroupSignalActionRemovedCallback
+	handlerID C.gulong
+}
+
+var signalActionGroupActionRemovedId int
+var signalActionGroupActionRemovedMap = make(map[int]signalActionGroupActionRemovedDetail)
+var signalActionGroupActionRemovedLock sync.Mutex
+
+// ActionGroupSignalActionRemovedCallback is a callback function for a 'action-removed' signal emitted from a ActionGroup.
+type ActionGroupSignalActionRemovedCallback func(actionName string)
+
+/*
+ConnectActionRemoved connects the callback to the 'action-removed' signal for the ActionGroup.
+
+The returned value represents the connection, and may be passed to DisconnectActionRemoved to remove it.
+*/
+func (recv *ActionGroup) ConnectActionRemoved(callback ActionGroupSignalActionRemovedCallback) int {
+	signalActionGroupActionRemovedLock.Lock()
+	defer signalActionGroupActionRemovedLock.Unlock()
+
+	signalActionGroupActionRemovedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.ActionGroup_signal_connect_action_removed(instance, C.gpointer(uintptr(signalActionGroupActionRemovedId)))
+
+	detail := signalActionGroupActionRemovedDetail{callback, handlerID}
+	signalActionGroupActionRemovedMap[signalActionGroupActionRemovedId] = detail
+
+	return signalActionGroupActionRemovedId
+}
+
+/*
+DisconnectActionRemoved disconnects a callback from the 'action-removed' signal for the ActionGroup.
+
+The connectionID should be a value returned from a call to ConnectActionRemoved.
+*/
+func (recv *ActionGroup) DisconnectActionRemoved(connectionID int) {
+	signalActionGroupActionRemovedLock.Lock()
+	defer signalActionGroupActionRemovedLock.Unlock()
+
+	detail, exists := signalActionGroupActionRemovedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalActionGroupActionRemovedMap, connectionID)
+}
+
+//export actiongroup_actionRemovedHandler
+func actiongroup_actionRemovedHandler(_ *C.GObject, c_action_name C.gchar, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalActionGroupActionRemovedMap[index].callback
+	callback(actionName)
+}
+
+// Unsupported signal 'action-state-changed' for ActionGroup : unsupported parameter value : type GLib.Variant : Blacklisted record : GVariant
 
 // ActionAdded is a wrapper around the C function g_action_group_action_added.
 func (recv *ActionGroup) ActionAdded(actionName string) {

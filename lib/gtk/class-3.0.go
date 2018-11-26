@@ -31,6 +31,15 @@ import (
 */
 /*
 
+	void cellarea_focusChangedHandler(GObject *, GtkCellRenderer *, gchar*, gpointer);
+
+	static gulong CellArea_signal_connect_focus_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "focus-changed", G_CALLBACK(cellarea_focusChangedHandler), data);
+	}
+
+*/
+/*
+
 	void cellarea_removeEditableHandler(GObject *, GtkCellRenderer *, GtkCellEditable *, gpointer);
 
 	static gulong CellArea_signal_connect_remove_editable(gpointer instance, gpointer data) {
@@ -455,7 +464,64 @@ func cellarea_applyAttributesHandler(_ *C.GObject, c_model *C.GtkTreeModel, c_it
 	callback(model, iter, isExpander, isExpanded)
 }
 
-// Unsupported signal 'focus-changed' for CellArea : unsupported parameter path : type utf8 :
+type signalCellAreaFocusChangedDetail struct {
+	callback  CellAreaSignalFocusChangedCallback
+	handlerID C.gulong
+}
+
+var signalCellAreaFocusChangedId int
+var signalCellAreaFocusChangedMap = make(map[int]signalCellAreaFocusChangedDetail)
+var signalCellAreaFocusChangedLock sync.Mutex
+
+// CellAreaSignalFocusChangedCallback is a callback function for a 'focus-changed' signal emitted from a CellArea.
+type CellAreaSignalFocusChangedCallback func(renderer *CellRenderer, path string)
+
+/*
+ConnectFocusChanged connects the callback to the 'focus-changed' signal for the CellArea.
+
+The returned value represents the connection, and may be passed to DisconnectFocusChanged to remove it.
+*/
+func (recv *CellArea) ConnectFocusChanged(callback CellAreaSignalFocusChangedCallback) int {
+	signalCellAreaFocusChangedLock.Lock()
+	defer signalCellAreaFocusChangedLock.Unlock()
+
+	signalCellAreaFocusChangedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.CellArea_signal_connect_focus_changed(instance, C.gpointer(uintptr(signalCellAreaFocusChangedId)))
+
+	detail := signalCellAreaFocusChangedDetail{callback, handlerID}
+	signalCellAreaFocusChangedMap[signalCellAreaFocusChangedId] = detail
+
+	return signalCellAreaFocusChangedId
+}
+
+/*
+DisconnectFocusChanged disconnects a callback from the 'focus-changed' signal for the CellArea.
+
+The connectionID should be a value returned from a call to ConnectFocusChanged.
+*/
+func (recv *CellArea) DisconnectFocusChanged(connectionID int) {
+	signalCellAreaFocusChangedLock.Lock()
+	defer signalCellAreaFocusChangedLock.Unlock()
+
+	detail, exists := signalCellAreaFocusChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalCellAreaFocusChangedMap, connectionID)
+}
+
+//export cellarea_focusChangedHandler
+func cellarea_focusChangedHandler(_ *C.GObject, c_renderer *C.GtkCellRenderer, c_path C.gchar, data C.gpointer) {
+	renderer := CellRendererNewFromC(unsafe.Pointer(c_renderer))
+
+	index := int(uintptr(data))
+	callback := signalCellAreaFocusChangedMap[index].callback
+	callback(renderer, path)
+}
 
 type signalCellAreaRemoveEditableDetail struct {
 	callback  CellAreaSignalRemoveEditableCallback

@@ -45,6 +45,9 @@ func (t *TypeGeneratorIgnore) generateDeclaration(g *jen.Group, goVarName string
 func (t *TypeGeneratorIgnore) generateArrayDeclaration(g *jen.Group, goVarName string) {
 }
 
+func (t *TypeGeneratorIgnore) generateArrayDeclarationC(g *jen.Group, cVarName string) {
+}
+
 func (t *TypeGeneratorIgnore) generateDeclarationC(g *jen.Group, goVarName string) {
 }
 

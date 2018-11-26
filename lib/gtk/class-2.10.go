@@ -57,6 +57,15 @@ import (
 */
 /*
 
+	void cellrendereraccel_accelClearedHandler(GObject *, gchar*, gpointer);
+
+	static gulong CellRendererAccel_signal_connect_accel_cleared(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "accel-cleared", G_CALLBACK(cellrendereraccel_accelClearedHandler), data);
+	}
+
+*/
+/*
+
 	void notebook_pageAddedHandler(GObject *, GtkWidget *, guint, gpointer);
 
 	static gulong Notebook_signal_connect_page_added(gpointer instance, gpointer data) {
@@ -713,9 +722,65 @@ func (recv *Button) SetImagePosition(position PositionType) {
 	return
 }
 
-// Unsupported signal 'accel-cleared' for CellRendererAccel : unsupported parameter path_string : type utf8 :
+type signalCellRendererAccelAccelClearedDetail struct {
+	callback  CellRendererAccelSignalAccelClearedCallback
+	handlerID C.gulong
+}
 
-// Unsupported signal 'accel-edited' for CellRendererAccel : unsupported parameter path_string : type utf8 :
+var signalCellRendererAccelAccelClearedId int
+var signalCellRendererAccelAccelClearedMap = make(map[int]signalCellRendererAccelAccelClearedDetail)
+var signalCellRendererAccelAccelClearedLock sync.Mutex
+
+// CellRendererAccelSignalAccelClearedCallback is a callback function for a 'accel-cleared' signal emitted from a CellRendererAccel.
+type CellRendererAccelSignalAccelClearedCallback func(pathString string)
+
+/*
+ConnectAccelCleared connects the callback to the 'accel-cleared' signal for the CellRendererAccel.
+
+The returned value represents the connection, and may be passed to DisconnectAccelCleared to remove it.
+*/
+func (recv *CellRendererAccel) ConnectAccelCleared(callback CellRendererAccelSignalAccelClearedCallback) int {
+	signalCellRendererAccelAccelClearedLock.Lock()
+	defer signalCellRendererAccelAccelClearedLock.Unlock()
+
+	signalCellRendererAccelAccelClearedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.CellRendererAccel_signal_connect_accel_cleared(instance, C.gpointer(uintptr(signalCellRendererAccelAccelClearedId)))
+
+	detail := signalCellRendererAccelAccelClearedDetail{callback, handlerID}
+	signalCellRendererAccelAccelClearedMap[signalCellRendererAccelAccelClearedId] = detail
+
+	return signalCellRendererAccelAccelClearedId
+}
+
+/*
+DisconnectAccelCleared disconnects a callback from the 'accel-cleared' signal for the CellRendererAccel.
+
+The connectionID should be a value returned from a call to ConnectAccelCleared.
+*/
+func (recv *CellRendererAccel) DisconnectAccelCleared(connectionID int) {
+	signalCellRendererAccelAccelClearedLock.Lock()
+	defer signalCellRendererAccelAccelClearedLock.Unlock()
+
+	detail, exists := signalCellRendererAccelAccelClearedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalCellRendererAccelAccelClearedMap, connectionID)
+}
+
+//export cellrendereraccel_accelClearedHandler
+func cellrendereraccel_accelClearedHandler(_ *C.GObject, c_path_string C.gchar, data C.gpointer) {
+
+	index := int(uintptr(data))
+	callback := signalCellRendererAccelAccelClearedMap[index].callback
+	callback(pathString)
+}
+
+// Unsupported signal 'accel-edited' for CellRendererAccel : unsupported parameter accel_mods : type Gdk.ModifierType :
 
 // CellRendererAccelNew is a wrapper around the C function gtk_cell_renderer_accel_new.
 func CellRendererAccelNew() *CellRendererAccel {

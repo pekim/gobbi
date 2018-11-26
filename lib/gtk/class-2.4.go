@@ -208,7 +208,7 @@ import (
 */
 import "C"
 
-// Unsupported signal 'changed' for AccelMap : unsupported parameter accel_path : type utf8 :
+// Unsupported signal 'changed' for AccelMap : unsupported parameter accel_mods : type Gdk.ModifierType :
 
 type signalActionActivateDetail struct {
 	callback  ActionSignalActivateCallback

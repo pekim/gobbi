@@ -18,6 +18,7 @@ type TypeGenerator interface {
 	generateDeclaration(g *jen.Group, goVarName string)
 	generateDeclarationC(g *jen.Group, goVarName string)
 	generateArrayDeclaration(g *jen.Group, goVarName string)
+	generateArrayDeclarationC(g *jen.Group, cVarName string)
 	generateCToGo(pkg string, cVarReference *jen.Statement) *jen.Statement
 	generateGoToC(g *jen.Group, goVarReference *jen.Statement)
 

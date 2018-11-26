@@ -20,6 +20,15 @@ import (
 // #include <stdlib.h>
 /*
 
+	void cellrenderercombo_changedHandler(GObject *, gchar*, GtkTreeIter *, gpointer);
+
+	static gulong CellRendererCombo_signal_connect_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "changed", G_CALLBACK(cellrenderercombo_changedHandler), data);
+	}
+
+*/
+/*
+
 	gboolean statusicon_buttonPressEventHandler(GObject *, GdkEventButton *, gpointer);
 
 	static gulong StatusIcon_signal_connect_button_press_event(gpointer instance, gpointer data) {
@@ -207,7 +216,65 @@ func (recv *Calendar) SetDetailWidthChars(chars int32) {
 	return
 }
 
-// Unsupported signal 'changed' for CellRendererCombo : unsupported parameter path_string : type utf8 :
+type signalCellRendererComboChangedDetail struct {
+	callback  CellRendererComboSignalChangedCallback
+	handlerID C.gulong
+}
+
+var signalCellRendererComboChangedId int
+var signalCellRendererComboChangedMap = make(map[int]signalCellRendererComboChangedDetail)
+var signalCellRendererComboChangedLock sync.Mutex
+
+// CellRendererComboSignalChangedCallback is a callback function for a 'changed' signal emitted from a CellRendererCombo.
+type CellRendererComboSignalChangedCallback func(pathString string, newIter *TreeIter)
+
+/*
+ConnectChanged connects the callback to the 'changed' signal for the CellRendererCombo.
+
+The returned value represents the connection, and may be passed to DisconnectChanged to remove it.
+*/
+func (recv *CellRendererCombo) ConnectChanged(callback CellRendererComboSignalChangedCallback) int {
+	signalCellRendererComboChangedLock.Lock()
+	defer signalCellRendererComboChangedLock.Unlock()
+
+	signalCellRendererComboChangedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.CellRendererCombo_signal_connect_changed(instance, C.gpointer(uintptr(signalCellRendererComboChangedId)))
+
+	detail := signalCellRendererComboChangedDetail{callback, handlerID}
+	signalCellRendererComboChangedMap[signalCellRendererComboChangedId] = detail
+
+	return signalCellRendererComboChangedId
+}
+
+/*
+DisconnectChanged disconnects a callback from the 'changed' signal for the CellRendererCombo.
+
+The connectionID should be a value returned from a call to ConnectChanged.
+*/
+func (recv *CellRendererCombo) DisconnectChanged(connectionID int) {
+	signalCellRendererComboChangedLock.Lock()
+	defer signalCellRendererComboChangedLock.Unlock()
+
+	detail, exists := signalCellRendererComboChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalCellRendererComboChangedMap, connectionID)
+}
+
+//export cellrenderercombo_changedHandler
+func cellrenderercombo_changedHandler(_ *C.GObject, c_path_string C.gchar, c_new_iter *C.GtkTreeIter, data C.gpointer) {
+
+	newIter := TreeIterNewFromC(unsafe.Pointer(c_new_iter))
+
+	index := int(uintptr(data))
+	callback := signalCellRendererComboChangedMap[index].callback
+	callback(pathString, newIter)
+}
 
 // Unsupported : gtk_clipboard_request_uris : unsupported parameter callback : no type generator for ClipboardURIReceivedFunc (GtkClipboardURIReceivedFunc) for param callback
 
