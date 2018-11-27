@@ -36,7 +36,9 @@ func (a *Array) generateDeclaration(g *jen.Group, goVarName string) {
 }
 
 func (a *Array) generateDeclarationC(g *jen.Group, cVarName string) {
-	a.Type.generator.generateArrayDeclarationC(g, cVarName)
+	g.
+		Id(cVarName).
+		Qual("C", "gpointer")
 }
 
 func (a *Array) generateParamCVar(g *jen.Group, cVarName string, goVarName string, transferOwnership string) {
