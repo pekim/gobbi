@@ -164,6 +164,10 @@ func (p *Parameter) generateCVarForStringLength(g *jen.Group) {
 }
 
 func (p *Parameter) generateGoVar(g *jen.Group) {
+	if p.arrayLengthFor != nil {
+		return
+	}
+
 	if p.Array != nil {
 		p.Array.generateParamGoVar(g, p)
 	} else {

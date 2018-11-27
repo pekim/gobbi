@@ -277,8 +277,6 @@ func (recv *Application) DisconnectOpen(connectionID int) {
 func application_openHandler(_ *C.GObject, c_files *C.GFile, c_n_files C.gint, c_hint *C.gchar, data C.gpointer) {
 	files := make([]*File, int(c_n_files), int(c_n_files))
 
-	nFiles := int32(c_n_files)
-
 	hint := C.GoString(c_hint)
 
 	index := int(uintptr(data))
