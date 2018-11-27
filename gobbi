@@ -27,8 +27,8 @@ example () {
 build () {
     generate && \
     echo "" && \
-    docs && \
-    echo "" && \
+    # docs && \
+    # echo "" && \
     test
 }
 
