@@ -1,6 +1,7 @@
 package generate
 
 import (
+	"fmt"
 	"github.com/dave/jennifer/jen"
 	"strings"
 )
@@ -59,6 +60,13 @@ func (a *Array) generateArrayLenParamCVar(g *jen.Group, cVarName string, arrayGo
 }
 
 func (a *Array) generateParamGoVar(g *jen.Group, param *Parameter) {
+	qname := QNameNew(a.Type.Namespace, a.Type.Name)
+	iface, found := qname.namespace.interfaceForName(qname.name)
+	if !found {
+		fmt.Println(qname.namespace.Name, qname.name)
+		panic(fmt.Sprintf("Failed to find record for %s", a.Type.Name))
+	}
+
 	g.
 		Id(param.goVarName).
 		Op(":=").
@@ -66,6 +74,42 @@ func (a *Array) generateParamGoVar(g *jen.Group, param *Parameter) {
 			jen.Index().Op("*").Id(param.Array.Type.qname.name),
 			jen.Id("int").Parens(jen.Id(param.Array.lengthParam.cVarName)),
 			jen.Id("int").Parens(jen.Id(param.Array.lengthParam.cVarName)))
+
+	g.
+		// for i := 0; i < int(c_n_files); i++ {
+		For(
+			jen.Id("i").Op(":=").Lit(0),
+			jen.Id("i").Op("<").Int().Call(jen.Id(param.Array.lengthParam.cVarName)),
+			jen.Id("i").Op("++"),
+		).
+		BlockFunc(func(g *jen.Group) {
+			// _item := FileNewFromC(unsafe.Pointer(*(*C.gpointer)(c_files)))
+			g.
+				Id("_item").
+				Op(":=").
+				Id(iface.newFromCFuncName).
+				Call(jen.Qual("unsafe", "Pointer").Parens(jen.
+					Op("*").
+					Parens(jen.Op("*").Qual("C", "gpointer")).
+					Parens(jen.Id(param.cVarName))))
+
+			// files[i] = _item
+			g.
+				Id(param.goVarName).
+				Index(jen.Id("i")).
+				Op("=").
+				Id("_item")
+
+			// c_files = C.gpointer(uintptr(c_files) + uintptr(C.sizeof_gpointer))
+			g.
+				Id(param.cVarName).
+				Op("=").
+				Qual("C", "gpointer").
+				Parens(jen.
+					Id("uintptr").Parens(jen.Id(param.cVarName)).
+					Op("+").
+					Id("uintptr").Parens(jen.Qual("C", "sizeof_gpointer")))
+		})
 }
 
 func (a *Array) generateParamCallArgument(g *jen.Group, cVarName string) {
