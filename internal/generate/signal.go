@@ -35,6 +35,7 @@ func (s *Signal) init(ns *Namespace, record *Record) {
 	s.Namespace = ns
 	s.record = record
 
+	s.fixParameterNames()
 	s.Parameters.init(ns)
 
 	if s.ReturnValue != nil {
@@ -42,6 +43,16 @@ func (s *Signal) init(ns *Namespace, record *Record) {
 	}
 
 	s.initNames()
+}
+
+// fixParameterNames adjusts some parameter names to avoid a conflict
+// generated vars.
+func (s *Signal) fixParameterNames() {
+	for _, param := range s.Parameters {
+		if param.Name == "index" || param.Name == "data" {
+			param.Name = "_" + param.Name
+		}
+	}
 }
 
 func (s *Signal) initNames() {

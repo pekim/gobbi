@@ -1347,7 +1347,7 @@ var signalEntryCompletionActionActivatedMap = make(map[int]signalEntryCompletion
 var signalEntryCompletionActionActivatedLock sync.Mutex
 
 // EntryCompletionSignalActionActivatedCallback is a callback function for a 'action-activated' signal emitted from a EntryCompletion.
-type EntryCompletionSignalActionActivatedCallback func(index int32)
+type EntryCompletionSignalActionActivatedCallback func(Index int32)
 
 /*
 ConnectActionActivated connects the callback to the 'action-activated' signal for the EntryCompletion.
@@ -1388,12 +1388,12 @@ func (recv *EntryCompletion) DisconnectActionActivated(connectionID int) {
 }
 
 //export entrycompletion_actionActivatedHandler
-func entrycompletion_actionActivatedHandler(_ *C.GObject, c_index C.gint, data C.gpointer) {
-	index := int32(c_index)
+func entrycompletion_actionActivatedHandler(_ *C.GObject, c__index C.gint, data C.gpointer) {
+	Index := int32(c__index)
 
 	index := int(uintptr(data))
 	callback := signalEntryCompletionActionActivatedMap[index].callback
-	callback(index)
+	callback(Index)
 }
 
 type signalEntryCompletionMatchSelectedDetail struct {

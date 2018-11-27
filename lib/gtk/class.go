@@ -34941,7 +34941,7 @@ var signalWidgetDragDataGetMap = make(map[int]signalWidgetDragDataGetDetail)
 var signalWidgetDragDataGetLock sync.Mutex
 
 // WidgetSignalDragDataGetCallback is a callback function for a 'drag-data-get' signal emitted from a Widget.
-type WidgetSignalDragDataGetCallback func(context *gdk.DragContext, data *SelectionData, info uint32, time uint32)
+type WidgetSignalDragDataGetCallback func(context *gdk.DragContext, Data *SelectionData, info uint32, time uint32)
 
 /*
 ConnectDragDataGet connects the callback to the 'drag-data-get' signal for the Widget.
@@ -34982,10 +34982,10 @@ func (recv *Widget) DisconnectDragDataGet(connectionID int) {
 }
 
 //export widget_dragDataGetHandler
-func widget_dragDataGetHandler(_ *C.GObject, c_context *C.GdkDragContext, c_data *C.GtkSelectionData, c_info C.guint, c_time C.guint, data C.gpointer) {
+func widget_dragDataGetHandler(_ *C.GObject, c_context *C.GdkDragContext, c__data *C.GtkSelectionData, c_info C.guint, c_time C.guint, data C.gpointer) {
 	context := gdk.DragContextNewFromC(unsafe.Pointer(c_context))
 
-	data := SelectionDataNewFromC(unsafe.Pointer(c_data))
+	Data := SelectionDataNewFromC(unsafe.Pointer(c__data))
 
 	info := uint32(c_info)
 
@@ -34993,7 +34993,7 @@ func widget_dragDataGetHandler(_ *C.GObject, c_context *C.GdkDragContext, c_data
 
 	index := int(uintptr(data))
 	callback := signalWidgetDragDataGetMap[index].callback
-	callback(context, data, info, time)
+	callback(context, Data, info, time)
 }
 
 type signalWidgetDragDataReceivedDetail struct {
@@ -35006,7 +35006,7 @@ var signalWidgetDragDataReceivedMap = make(map[int]signalWidgetDragDataReceivedD
 var signalWidgetDragDataReceivedLock sync.Mutex
 
 // WidgetSignalDragDataReceivedCallback is a callback function for a 'drag-data-received' signal emitted from a Widget.
-type WidgetSignalDragDataReceivedCallback func(context *gdk.DragContext, x int32, y int32, data *SelectionData, info uint32, time uint32)
+type WidgetSignalDragDataReceivedCallback func(context *gdk.DragContext, x int32, y int32, Data *SelectionData, info uint32, time uint32)
 
 /*
 ConnectDragDataReceived connects the callback to the 'drag-data-received' signal for the Widget.
@@ -35047,14 +35047,14 @@ func (recv *Widget) DisconnectDragDataReceived(connectionID int) {
 }
 
 //export widget_dragDataReceivedHandler
-func widget_dragDataReceivedHandler(_ *C.GObject, c_context *C.GdkDragContext, c_x C.gint, c_y C.gint, c_data *C.GtkSelectionData, c_info C.guint, c_time C.guint, data C.gpointer) {
+func widget_dragDataReceivedHandler(_ *C.GObject, c_context *C.GdkDragContext, c_x C.gint, c_y C.gint, c__data *C.GtkSelectionData, c_info C.guint, c_time C.guint, data C.gpointer) {
 	context := gdk.DragContextNewFromC(unsafe.Pointer(c_context))
 
 	x := int32(c_x)
 
 	y := int32(c_y)
 
-	data := SelectionDataNewFromC(unsafe.Pointer(c_data))
+	Data := SelectionDataNewFromC(unsafe.Pointer(c__data))
 
 	info := uint32(c_info)
 
@@ -35062,7 +35062,7 @@ func widget_dragDataReceivedHandler(_ *C.GObject, c_context *C.GdkDragContext, c
 
 	index := int(uintptr(data))
 	callback := signalWidgetDragDataReceivedMap[index].callback
-	callback(context, x, y, data, info, time)
+	callback(context, x, y, Data, info, time)
 }
 
 type signalWidgetDragDropDetail struct {
@@ -36731,7 +36731,7 @@ var signalWidgetSelectionGetMap = make(map[int]signalWidgetSelectionGetDetail)
 var signalWidgetSelectionGetLock sync.Mutex
 
 // WidgetSignalSelectionGetCallback is a callback function for a 'selection-get' signal emitted from a Widget.
-type WidgetSignalSelectionGetCallback func(data *SelectionData, info uint32, time uint32)
+type WidgetSignalSelectionGetCallback func(Data *SelectionData, info uint32, time uint32)
 
 /*
 ConnectSelectionGet connects the callback to the 'selection-get' signal for the Widget.
@@ -36772,8 +36772,8 @@ func (recv *Widget) DisconnectSelectionGet(connectionID int) {
 }
 
 //export widget_selectionGetHandler
-func widget_selectionGetHandler(_ *C.GObject, c_data *C.GtkSelectionData, c_info C.guint, c_time C.guint, data C.gpointer) {
-	data := SelectionDataNewFromC(unsafe.Pointer(c_data))
+func widget_selectionGetHandler(_ *C.GObject, c__data *C.GtkSelectionData, c_info C.guint, c_time C.guint, data C.gpointer) {
+	Data := SelectionDataNewFromC(unsafe.Pointer(c__data))
 
 	info := uint32(c_info)
 
@@ -36781,7 +36781,7 @@ func widget_selectionGetHandler(_ *C.GObject, c_data *C.GtkSelectionData, c_info
 
 	index := int(uintptr(data))
 	callback := signalWidgetSelectionGetMap[index].callback
-	callback(data, info, time)
+	callback(Data, info, time)
 }
 
 type signalWidgetSelectionNotifyEventDetail struct {
@@ -36856,7 +36856,7 @@ var signalWidgetSelectionReceivedMap = make(map[int]signalWidgetSelectionReceive
 var signalWidgetSelectionReceivedLock sync.Mutex
 
 // WidgetSignalSelectionReceivedCallback is a callback function for a 'selection-received' signal emitted from a Widget.
-type WidgetSignalSelectionReceivedCallback func(data *SelectionData, time uint32)
+type WidgetSignalSelectionReceivedCallback func(Data *SelectionData, time uint32)
 
 /*
 ConnectSelectionReceived connects the callback to the 'selection-received' signal for the Widget.
@@ -36897,14 +36897,14 @@ func (recv *Widget) DisconnectSelectionReceived(connectionID int) {
 }
 
 //export widget_selectionReceivedHandler
-func widget_selectionReceivedHandler(_ *C.GObject, c_data *C.GtkSelectionData, c_time C.guint, data C.gpointer) {
-	data := SelectionDataNewFromC(unsafe.Pointer(c_data))
+func widget_selectionReceivedHandler(_ *C.GObject, c__data *C.GtkSelectionData, c_time C.guint, data C.gpointer) {
+	Data := SelectionDataNewFromC(unsafe.Pointer(c__data))
 
 	time := uint32(c_time)
 
 	index := int(uintptr(data))
 	callback := signalWidgetSelectionReceivedMap[index].callback
-	callback(data, time)
+	callback(Data, time)
 }
 
 type signalWidgetSelectionRequestEventDetail struct {
