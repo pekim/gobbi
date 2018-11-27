@@ -922,15 +922,6 @@ import (
 */
 /*
 
-	gint spinbutton_inputHandler(GObject *, gpointer, gpointer);
-
-	static gulong SpinButton_signal_connect_input(gpointer instance, gpointer data) {
-		return g_signal_connect(instance, "input", G_CALLBACK(spinbutton_inputHandler), data);
-	}
-
-*/
-/*
-
 	gboolean spinbutton_outputHandler(GObject *, gpointer);
 
 	static gulong SpinButton_signal_connect_output(gpointer instance, gpointer data) {
@@ -20482,7 +20473,7 @@ func CastToOverlay(object *gobject.Object) *Overlay {
 	return OverlayNewFromC(object.ToC())
 }
 
-// Unsupported signal 'get-child-position' for Overlay : unsupported parameter allocation : type Gdk.Rectangle : Blacklisted record : GdkRectangle
+// Unsupported signal 'get-child-position' for Overlay : unsupported parameter allocation : direction is 'out'
 
 // ImplementorIface returns the ImplementorIface interface implemented by Overlay
 func (recv *Overlay) ImplementorIface() *atk.ImplementorIface {
@@ -24167,67 +24158,7 @@ func CastToSpinButton(object *gobject.Object) *SpinButton {
 
 // Unsupported signal 'change-value' for SpinButton : unsupported parameter scroll : type ScrollType :
 
-type signalSpinButtonInputDetail struct {
-	callback  SpinButtonSignalInputCallback
-	handlerID C.gulong
-}
-
-var signalSpinButtonInputId int
-var signalSpinButtonInputMap = make(map[int]signalSpinButtonInputDetail)
-var signalSpinButtonInputLock sync.Mutex
-
-// SpinButtonSignalInputCallback is a callback function for a 'input' signal emitted from a SpinButton.
-type SpinButtonSignalInputCallback func() int32
-
-/*
-ConnectInput connects the callback to the 'input' signal for the SpinButton.
-
-The returned value represents the connection, and may be passed to DisconnectInput to remove it.
-*/
-func (recv *SpinButton) ConnectInput(callback SpinButtonSignalInputCallback) int {
-	signalSpinButtonInputLock.Lock()
-	defer signalSpinButtonInputLock.Unlock()
-
-	signalSpinButtonInputId++
-	instance := C.gpointer(recv.native)
-	handlerID := C.SpinButton_signal_connect_input(instance, C.gpointer(uintptr(signalSpinButtonInputId)))
-
-	detail := signalSpinButtonInputDetail{callback, handlerID}
-	signalSpinButtonInputMap[signalSpinButtonInputId] = detail
-
-	return signalSpinButtonInputId
-}
-
-/*
-DisconnectInput disconnects a callback from the 'input' signal for the SpinButton.
-
-The connectionID should be a value returned from a call to ConnectInput.
-*/
-func (recv *SpinButton) DisconnectInput(connectionID int) {
-	signalSpinButtonInputLock.Lock()
-	defer signalSpinButtonInputLock.Unlock()
-
-	detail, exists := signalSpinButtonInputMap[connectionID]
-	if !exists {
-		return
-	}
-
-	instance := C.gpointer(recv.native)
-	C.g_signal_handler_disconnect(instance, detail.handlerID)
-	delete(signalSpinButtonInputMap, connectionID)
-}
-
-//export spinbutton_inputHandler
-func spinbutton_inputHandler(_ *C.GObject, c_new_value C.gpointer, data C.gpointer) C.gint {
-	newValue := uintptr(c_new_value)
-
-	index := int(uintptr(data))
-	callback := signalSpinButtonInputMap[index].callback
-	retGo := callback(newValue)
-	retC :=
-		(C.gint)(retGo)
-	return retC
-}
+// Unsupported signal 'input' for SpinButton : unsupported parameter new_value : direction is 'out'
 
 type signalSpinButtonOutputDetail struct {
 	callback  SpinButtonSignalOutputCallback

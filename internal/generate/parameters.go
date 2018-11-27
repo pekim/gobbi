@@ -145,6 +145,10 @@ func (pp Parameters) allSupported() (bool, string) {
 
 func (pp Parameters) allSupportedC() (bool, string) {
 	for _, p := range pp {
+		if p.Direction == "out" {
+			return false, fmt.Sprintf("unsupported parameter %s : direction is 'out'", p.Name)
+		}
+
 		if supported, reason := p.isSupportedC(); !supported {
 			return supported, fmt.Sprintf("unsupported parameter %s : %s", p.Name, reason)
 		}
