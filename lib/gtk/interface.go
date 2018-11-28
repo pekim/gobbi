@@ -199,6 +199,11 @@ func (recv *Actionable) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Actionable with another Actionable, and returns true if they represent the same GObject.
+func (recv *Actionable) Equals(other *Actionable) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Activatable is a wrapper around the C record GtkActivatable.
 type Activatable struct {
 	native *C.GtkActivatable
@@ -218,6 +223,11 @@ func ActivatableNewFromC(u unsafe.Pointer) *Activatable {
 func (recv *Activatable) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Activatable with another Activatable, and returns true if they represent the same GObject.
+func (recv *Activatable) Equals(other *Activatable) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // AppChooser is a wrapper around the C record GtkAppChooser.
@@ -241,6 +251,11 @@ func (recv *AppChooser) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this AppChooser with another AppChooser, and returns true if they represent the same GObject.
+func (recv *AppChooser) Equals(other *AppChooser) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Buildable is a wrapper around the C record GtkBuildable.
 type Buildable struct {
 	native *C.GtkBuildable
@@ -262,6 +277,11 @@ func (recv *Buildable) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Buildable with another Buildable, and returns true if they represent the same GObject.
+func (recv *Buildable) Equals(other *Buildable) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // CellAccessibleParent is a wrapper around the C record GtkCellAccessibleParent.
 type CellAccessibleParent struct {
 	native *C.GtkCellAccessibleParent
@@ -281,6 +301,11 @@ func CellAccessibleParentNewFromC(u unsafe.Pointer) *CellAccessibleParent {
 func (recv *CellAccessibleParent) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this CellAccessibleParent with another CellAccessibleParent, and returns true if they represent the same GObject.
+func (recv *CellAccessibleParent) Equals(other *CellAccessibleParent) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Activate is a wrapper around the C function gtk_cell_accessible_parent_activate.
@@ -418,6 +443,11 @@ func CellEditableNewFromC(u unsafe.Pointer) *CellEditable {
 func (recv *CellEditable) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this CellEditable with another CellEditable, and returns true if they represent the same GObject.
+func (recv *CellEditable) Equals(other *CellEditable) bool {
+	return other.ToC() == recv.ToC()
 }
 
 type signalCellEditableEditingDoneDetail struct {
@@ -571,6 +601,11 @@ func (recv *CellLayout) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this CellLayout with another CellLayout, and returns true if they represent the same GObject.
+func (recv *CellLayout) Equals(other *CellLayout) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ColorChooser is a wrapper around the C record GtkColorChooser.
 type ColorChooser struct {
 	native *C.GtkColorChooser
@@ -592,6 +627,11 @@ func (recv *ColorChooser) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ColorChooser with another ColorChooser, and returns true if they represent the same GObject.
+func (recv *ColorChooser) Equals(other *ColorChooser) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Editable is a wrapper around the C record GtkEditable.
 type Editable struct {
 	native *C.GtkEditable
@@ -611,6 +651,11 @@ func EditableNewFromC(u unsafe.Pointer) *Editable {
 func (recv *Editable) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Editable with another Editable, and returns true if they represent the same GObject.
+func (recv *Editable) Equals(other *Editable) bool {
+	return other.ToC() == recv.ToC()
 }
 
 type signalEditableChangedDetail struct {
@@ -943,6 +988,11 @@ func (recv *FileChooser) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this FileChooser with another FileChooser, and returns true if they represent the same GObject.
+func (recv *FileChooser) Equals(other *FileChooser) bool {
+	return other.ToC() == recv.ToC()
+}
+
 type signalFileChooserCurrentFolderChangedDetail struct {
 	callback  FileChooserSignalCurrentFolderChangedCallback
 	handlerID C.gulong
@@ -1200,6 +1250,11 @@ func (recv *FontChooser) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this FontChooser with another FontChooser, and returns true if they represent the same GObject.
+func (recv *FontChooser) Equals(other *FontChooser) bool {
+	return other.ToC() == recv.ToC()
+}
+
 type signalFontChooserFontActivatedDetail struct {
 	callback  FontChooserSignalFontActivatedCallback
 	handlerID C.gulong
@@ -1280,6 +1335,11 @@ func (recv *Orientable) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Orientable with another Orientable, and returns true if they represent the same GObject.
+func (recv *Orientable) Equals(other *Orientable) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // PrintOperationPreview is a wrapper around the C record GtkPrintOperationPreview.
 type PrintOperationPreview struct {
 	native *C.GtkPrintOperationPreview
@@ -1299,6 +1359,11 @@ func PrintOperationPreviewNewFromC(u unsafe.Pointer) *PrintOperationPreview {
 func (recv *PrintOperationPreview) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this PrintOperationPreview with another PrintOperationPreview, and returns true if they represent the same GObject.
+func (recv *PrintOperationPreview) Equals(other *PrintOperationPreview) bool {
+	return other.ToC() == recv.ToC()
 }
 
 type signalPrintOperationPreviewGotPageSizeDetail struct {
@@ -1442,6 +1507,11 @@ func (recv *RecentChooser) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this RecentChooser with another RecentChooser, and returns true if they represent the same GObject.
+func (recv *RecentChooser) Equals(other *RecentChooser) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Scrollable is a wrapper around the C record GtkScrollable.
 type Scrollable struct {
 	native *C.GtkScrollable
@@ -1461,6 +1531,11 @@ func ScrollableNewFromC(u unsafe.Pointer) *Scrollable {
 func (recv *Scrollable) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Scrollable with another Scrollable, and returns true if they represent the same GObject.
+func (recv *Scrollable) Equals(other *Scrollable) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // StyleProvider is a wrapper around the C record GtkStyleProvider.
@@ -1484,6 +1559,11 @@ func (recv *StyleProvider) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this StyleProvider with another StyleProvider, and returns true if they represent the same GObject.
+func (recv *StyleProvider) Equals(other *StyleProvider) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ToolShell is a wrapper around the C record GtkToolShell.
 type ToolShell struct {
 	native *C.GtkToolShell
@@ -1505,6 +1585,11 @@ func (recv *ToolShell) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ToolShell with another ToolShell, and returns true if they represent the same GObject.
+func (recv *ToolShell) Equals(other *ToolShell) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // TreeDragDest is a wrapper around the C record GtkTreeDragDest.
 type TreeDragDest struct {
 	native *C.GtkTreeDragDest
@@ -1524,6 +1609,11 @@ func TreeDragDestNewFromC(u unsafe.Pointer) *TreeDragDest {
 func (recv *TreeDragDest) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TreeDragDest with another TreeDragDest, and returns true if they represent the same GObject.
+func (recv *TreeDragDest) Equals(other *TreeDragDest) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // DragDataReceived is a wrapper around the C function gtk_tree_drag_dest_drag_data_received.
@@ -1581,6 +1671,11 @@ func TreeDragSourceNewFromC(u unsafe.Pointer) *TreeDragSource {
 func (recv *TreeDragSource) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TreeDragSource with another TreeDragSource, and returns true if they represent the same GObject.
+func (recv *TreeDragSource) Equals(other *TreeDragSource) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // DragDataDelete is a wrapper around the C function gtk_tree_drag_source_drag_data_delete.
@@ -1646,6 +1741,11 @@ func TreeModelNewFromC(u unsafe.Pointer) *TreeModel {
 func (recv *TreeModel) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TreeModel with another TreeModel, and returns true if they represent the same GObject.
+func (recv *TreeModel) Equals(other *TreeModel) bool {
+	return other.ToC() == recv.ToC()
 }
 
 type signalTreeModelRowChangedDetail struct {
@@ -2285,6 +2385,11 @@ func TreeSortableNewFromC(u unsafe.Pointer) *TreeSortable {
 func (recv *TreeSortable) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TreeSortable with another TreeSortable, and returns true if they represent the same GObject.
+func (recv *TreeSortable) Equals(other *TreeSortable) bool {
+	return other.ToC() == recv.ToC()
 }
 
 type signalTreeSortableSortColumnChangedDetail struct {

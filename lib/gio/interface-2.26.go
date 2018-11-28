@@ -44,6 +44,11 @@ func (recv *Proxy) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Proxy with another Proxy, and returns true if they represent the same GObject.
+func (recv *Proxy) Equals(other *Proxy) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Connect is a wrapper around the C function g_proxy_connect.
 func (recv *Proxy) Connect(connection *IOStream, proxyAddress *ProxyAddress, cancellable *Cancellable) (*IOStream, error) {
 	c_connection := (*C.GIOStream)(C.NULL)
@@ -120,6 +125,11 @@ func ProxyResolverNewFromC(u unsafe.Pointer) *ProxyResolver {
 func (recv *ProxyResolver) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ProxyResolver with another ProxyResolver, and returns true if they represent the same GObject.
+func (recv *ProxyResolver) Equals(other *ProxyResolver) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // IsSupported is a wrapper around the C function g_proxy_resolver_is_supported.

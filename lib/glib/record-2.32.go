@@ -33,6 +33,11 @@ func (recv *Bytes) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Bytes with another Bytes, and returns true if they represent the same GObject.
+func (recv *Bytes) Equals(other *Bytes) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // BytesNew is a wrapper around the C function g_bytes_new.
 func BytesNew(data []uint8) *Bytes {
 	c_data := &data[0]
@@ -225,6 +230,11 @@ func (recv *RWLock) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this RWLock with another RWLock, and returns true if they represent the same GObject.
+func (recv *RWLock) Equals(other *RWLock) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Clear is a wrapper around the C function g_rw_lock_clear.
 func (recv *RWLock) Clear() {
 	C.g_rw_lock_clear((*C.GRWLock)(recv.native))
@@ -304,6 +314,11 @@ func RecMutexNewFromC(u unsafe.Pointer) *RecMutex {
 func (recv *RecMutex) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this RecMutex with another RecMutex, and returns true if they represent the same GObject.
+func (recv *RecMutex) Equals(other *RecMutex) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Clear is a wrapper around the C function g_rec_mutex_clear.

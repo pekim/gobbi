@@ -50,6 +50,11 @@ func (recv *Color) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Color with another Color, and returns true if they represent the same GObject.
+func (recv *Color) Equals(other *Color) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Copy is a wrapper around the C function gdk_color_copy.
 func (recv *Color) Copy() *Color {
 	retC := C.gdk_color_copy((*C.GdkColor)(recv.native))
@@ -118,6 +123,11 @@ func (recv *EventAny) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this EventAny with another EventAny, and returns true if they represent the same GObject.
+func (recv *EventAny) Equals(other *EventAny) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // EventButton is a wrapper around the C record GdkEventButton.
 type EventButton struct {
 	native *C.GdkEventButton
@@ -180,6 +190,11 @@ func (recv *EventButton) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this EventButton with another EventButton, and returns true if they represent the same GObject.
+func (recv *EventButton) Equals(other *EventButton) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // EventConfigure is a wrapper around the C record GdkEventConfigure.
 type EventConfigure struct {
 	native *C.GdkEventConfigure
@@ -226,6 +241,11 @@ func (recv *EventConfigure) ToC() unsafe.Pointer {
 		(C.gint)(recv.Height)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this EventConfigure with another EventConfigure, and returns true if they represent the same GObject.
+func (recv *EventConfigure) Equals(other *EventConfigure) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // EventCrossing is a wrapper around the C record GdkEventCrossing.
@@ -297,6 +317,11 @@ func (recv *EventCrossing) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this EventCrossing with another EventCrossing, and returns true if they represent the same GObject.
+func (recv *EventCrossing) Equals(other *EventCrossing) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // EventDND is a wrapper around the C record GdkEventDND.
 type EventDND struct {
 	native *C.GdkEventDND
@@ -342,6 +367,11 @@ func (recv *EventDND) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this EventDND with another EventDND, and returns true if they represent the same GObject.
+func (recv *EventDND) Equals(other *EventDND) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // EventExpose is a wrapper around the C record GdkEventExpose.
 type EventExpose struct {
 	native *C.GdkEventExpose
@@ -380,6 +410,11 @@ func (recv *EventExpose) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this EventExpose with another EventExpose, and returns true if they represent the same GObject.
+func (recv *EventExpose) Equals(other *EventExpose) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // EventFocus is a wrapper around the C record GdkEventFocus.
 type EventFocus struct {
 	native *C.GdkEventFocus
@@ -414,6 +449,11 @@ func (recv *EventFocus) ToC() unsafe.Pointer {
 		(C.gint16)(recv.In)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this EventFocus with another EventFocus, and returns true if they represent the same GObject.
+func (recv *EventFocus) Equals(other *EventFocus) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // EventKey is a wrapper around the C record GdkEventKey.
@@ -475,6 +515,11 @@ func (recv *EventKey) ToC() unsafe.Pointer {
 		(C.guint8)(recv.Group)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this EventKey with another EventKey, and returns true if they represent the same GObject.
+func (recv *EventKey) Equals(other *EventKey) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // EventMotion is a wrapper around the C record GdkEventMotion.
@@ -539,6 +584,11 @@ func (recv *EventMotion) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this EventMotion with another EventMotion, and returns true if they represent the same GObject.
+func (recv *EventMotion) Equals(other *EventMotion) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // EventProperty is a wrapper around the C record GdkEventProperty.
 type EventProperty struct {
 	native *C.GdkEventProperty
@@ -580,6 +630,11 @@ func (recv *EventProperty) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this EventProperty with another EventProperty, and returns true if they represent the same GObject.
+func (recv *EventProperty) Equals(other *EventProperty) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // EventProximity is a wrapper around the C record GdkEventProximity.
 type EventProximity struct {
 	native *C.GdkEventProximity
@@ -615,6 +670,11 @@ func (recv *EventProximity) ToC() unsafe.Pointer {
 		(C.guint32)(recv.Time)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this EventProximity with another EventProximity, and returns true if they represent the same GObject.
+func (recv *EventProximity) Equals(other *EventProximity) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // EventScroll is a wrapper around the C record GdkEventScroll.
@@ -687,6 +747,11 @@ func (recv *EventScroll) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this EventScroll with another EventScroll, and returns true if they represent the same GObject.
+func (recv *EventScroll) Equals(other *EventScroll) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // EventSelection is a wrapper around the C record GdkEventSelection.
 type EventSelection struct {
 	native *C.GdkEventSelection
@@ -727,6 +792,11 @@ func (recv *EventSelection) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this EventSelection with another EventSelection, and returns true if they represent the same GObject.
+func (recv *EventSelection) Equals(other *EventSelection) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // EventSequence is a wrapper around the C record GdkEventSequence.
 type EventSequence struct {
 	native *C.GdkEventSequence
@@ -746,6 +816,11 @@ func EventSequenceNewFromC(u unsafe.Pointer) *EventSequence {
 func (recv *EventSequence) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this EventSequence with another EventSequence, and returns true if they represent the same GObject.
+func (recv *EventSequence) Equals(other *EventSequence) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // EventSetting is a wrapper around the C record GdkEventSetting.
@@ -786,6 +861,11 @@ func (recv *EventSetting) ToC() unsafe.Pointer {
 		C.CString(recv.Name)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this EventSetting with another EventSetting, and returns true if they represent the same GObject.
+func (recv *EventSetting) Equals(other *EventSetting) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // EventTouch is a wrapper around the C record GdkEventTouch.
@@ -849,6 +929,11 @@ func (recv *EventTouch) ToC() unsafe.Pointer {
 		(C.gdouble)(recv.YRoot)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this EventTouch with another EventTouch, and returns true if they represent the same GObject.
+func (recv *EventTouch) Equals(other *EventTouch) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // EventTouchpadPinch is a wrapper around the C record GdkEventTouchpadPinch.
@@ -931,6 +1016,11 @@ func (recv *EventTouchpadPinch) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this EventTouchpadPinch with another EventTouchpadPinch, and returns true if they represent the same GObject.
+func (recv *EventTouchpadPinch) Equals(other *EventTouchpadPinch) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // EventTouchpadSwipe is a wrapper around the C record GdkEventTouchpadSwipe.
 type EventTouchpadSwipe struct {
 	native *C.GdkEventTouchpadSwipe
@@ -1003,6 +1093,11 @@ func (recv *EventTouchpadSwipe) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this EventTouchpadSwipe with another EventTouchpadSwipe, and returns true if they represent the same GObject.
+func (recv *EventTouchpadSwipe) Equals(other *EventTouchpadSwipe) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // EventVisibility is a wrapper around the C record GdkEventVisibility.
 type EventVisibility struct {
 	native *C.GdkEventVisibility
@@ -1037,6 +1132,11 @@ func (recv *EventVisibility) ToC() unsafe.Pointer {
 		(C.GdkVisibilityState)(recv.State)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this EventVisibility with another EventVisibility, and returns true if they represent the same GObject.
+func (recv *EventVisibility) Equals(other *EventVisibility) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // EventWindowState is a wrapper around the C record GdkEventWindowState.
@@ -1079,6 +1179,11 @@ func (recv *EventWindowState) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this EventWindowState with another EventWindowState, and returns true if they represent the same GObject.
+func (recv *EventWindowState) Equals(other *EventWindowState) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // FrameClockClass is a wrapper around the C record GdkFrameClockClass.
 type FrameClockClass struct {
 	native *C.GdkFrameClockClass
@@ -1098,6 +1203,11 @@ func FrameClockClassNewFromC(u unsafe.Pointer) *FrameClockClass {
 func (recv *FrameClockClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this FrameClockClass with another FrameClockClass, and returns true if they represent the same GObject.
+func (recv *FrameClockClass) Equals(other *FrameClockClass) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // FrameClockPrivate is a wrapper around the C record GdkFrameClockPrivate.
@@ -1121,6 +1231,11 @@ func (recv *FrameClockPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this FrameClockPrivate with another FrameClockPrivate, and returns true if they represent the same GObject.
+func (recv *FrameClockPrivate) Equals(other *FrameClockPrivate) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // FrameTimings is a wrapper around the C record GdkFrameTimings.
 type FrameTimings struct {
 	native *C.GdkFrameTimings
@@ -1140,6 +1255,11 @@ func FrameTimingsNewFromC(u unsafe.Pointer) *FrameTimings {
 func (recv *FrameTimings) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this FrameTimings with another FrameTimings, and returns true if they represent the same GObject.
+func (recv *FrameTimings) Equals(other *FrameTimings) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // GetFrameTime is a wrapper around the C function gdk_frame_timings_get_frame_time.
@@ -1217,6 +1337,11 @@ func (recv *Geometry) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Geometry with another Geometry, and returns true if they represent the same GObject.
+func (recv *Geometry) Equals(other *Geometry) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // KeymapKey is a wrapper around the C record GdkKeymapKey.
 type KeymapKey struct {
 	native  *C.GdkKeymapKey
@@ -1252,6 +1377,11 @@ func (recv *KeymapKey) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this KeymapKey with another KeymapKey, and returns true if they represent the same GObject.
+func (recv *KeymapKey) Equals(other *KeymapKey) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Point is a wrapper around the C record GdkPoint.
 type Point struct {
 	native *C.GdkPoint
@@ -1281,6 +1411,11 @@ func (recv *Point) ToC() unsafe.Pointer {
 		(C.gint)(recv.Y)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Point with another Point, and returns true if they represent the same GObject.
+func (recv *Point) Equals(other *Point) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // RGBA is a wrapper around the C record GdkRGBA.
@@ -1322,6 +1457,11 @@ func (recv *RGBA) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this RGBA with another RGBA, and returns true if they represent the same GObject.
+func (recv *RGBA) Equals(other *RGBA) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Blacklisted : GdkRectangle
 
 // TimeCoord is a wrapper around the C record GdkTimeCoord.
@@ -1350,6 +1490,11 @@ func (recv *TimeCoord) ToC() unsafe.Pointer {
 		(C.guint32)(recv.Time)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TimeCoord with another TimeCoord, and returns true if they represent the same GObject.
+func (recv *TimeCoord) Equals(other *TimeCoord) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // WindowAttr is a wrapper around the C record GdkWindowAttr.
@@ -1425,6 +1570,11 @@ func (recv *WindowAttr) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this WindowAttr with another WindowAttr, and returns true if they represent the same GObject.
+func (recv *WindowAttr) Equals(other *WindowAttr) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // WindowClass is a wrapper around the C record GdkWindowClass.
 type WindowClass struct {
 	native *C.GdkWindowClass
@@ -1459,6 +1609,11 @@ func (recv *WindowClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this WindowClass with another WindowClass, and returns true if they represent the same GObject.
+func (recv *WindowClass) Equals(other *WindowClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // WindowRedirect is a wrapper around the C record GdkWindowRedirect.
 type WindowRedirect struct {
 	native *C.GdkWindowRedirect
@@ -1478,4 +1633,9 @@ func WindowRedirectNewFromC(u unsafe.Pointer) *WindowRedirect {
 func (recv *WindowRedirect) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this WindowRedirect with another WindowRedirect, and returns true if they represent the same GObject.
+func (recv *WindowRedirect) Equals(other *WindowRedirect) bool {
+	return other.ToC() == recv.ToC()
 }

@@ -663,6 +663,11 @@ func (recv *Socket) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Socket with another Socket, and returns true if they represent the same GObject.
+func (recv *Socket) Equals(other *Socket) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *Socket) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -1206,6 +1211,11 @@ func (recv *SocketClient) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this SocketClient with another SocketClient, and returns true if they represent the same GObject.
+func (recv *SocketClient) Equals(other *SocketClient) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *SocketClient) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -1459,6 +1469,11 @@ func (recv *SocketConnection) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this SocketConnection with another SocketConnection, and returns true if they represent the same GObject.
+func (recv *SocketConnection) Equals(other *SocketConnection) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // IOStream upcasts to *IOStream
 func (recv *SocketConnection) IOStream() *IOStream {
 	return IOStreamNewFromC(unsafe.Pointer(recv.native))
@@ -1567,6 +1582,11 @@ func SocketListenerNewFromC(u unsafe.Pointer) *SocketListener {
 func (recv *SocketListener) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this SocketListener with another SocketListener, and returns true if they represent the same GObject.
+func (recv *SocketListener) Equals(other *SocketListener) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -1801,6 +1821,11 @@ func (recv *SocketService) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this SocketService with another SocketService, and returns true if they represent the same GObject.
+func (recv *SocketService) Equals(other *SocketService) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // SocketListener upcasts to *SocketListener
 func (recv *SocketService) SocketListener() *SocketListener {
 	return SocketListenerNewFromC(unsafe.Pointer(recv.native))
@@ -1870,6 +1895,11 @@ func (recv *TcpConnection) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TcpConnection with another TcpConnection, and returns true if they represent the same GObject.
+func (recv *TcpConnection) Equals(other *TcpConnection) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // SocketConnection upcasts to *SocketConnection
 func (recv *TcpConnection) SocketConnection() *SocketConnection {
 	return SocketConnectionNewFromC(unsafe.Pointer(recv.native))
@@ -1930,6 +1960,11 @@ func ThreadedSocketServiceNewFromC(u unsafe.Pointer) *ThreadedSocketService {
 func (recv *ThreadedSocketService) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ThreadedSocketService with another ThreadedSocketService, and returns true if they represent the same GObject.
+func (recv *ThreadedSocketService) Equals(other *ThreadedSocketService) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // SocketService upcasts to *SocketService

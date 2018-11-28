@@ -146,6 +146,11 @@ func (recv *AppLaunchContext) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this AppLaunchContext with another AppLaunchContext, and returns true if they represent the same GObject.
+func (recv *AppLaunchContext) Equals(other *AppLaunchContext) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // AppLaunchContext upcasts to *AppLaunchContext
 func (recv *AppLaunchContext) AppLaunchContext() *gio.AppLaunchContext {
 	return gio.AppLaunchContextNewFromC(unsafe.Pointer(recv.native))
@@ -181,6 +186,11 @@ func CursorNewFromC(u unsafe.Pointer) *Cursor {
 func (recv *Cursor) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Cursor with another Cursor, and returns true if they represent the same GObject.
+func (recv *Cursor) Equals(other *Cursor) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -238,6 +248,11 @@ func DeviceNewFromC(u unsafe.Pointer) *Device {
 func (recv *Device) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Device with another Device, and returns true if they represent the same GObject.
+func (recv *Device) Equals(other *Device) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -394,6 +409,11 @@ func DeviceManagerNewFromC(u unsafe.Pointer) *DeviceManager {
 func (recv *DeviceManager) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this DeviceManager with another DeviceManager, and returns true if they represent the same GObject.
+func (recv *DeviceManager) Equals(other *DeviceManager) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -605,6 +625,11 @@ func (recv *Display) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Display with another Display, and returns true if they represent the same GObject.
+func (recv *Display) Equals(other *Display) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *Display) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -707,6 +732,11 @@ func (recv *DisplayManager) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this DisplayManager with another DisplayManager, and returns true if they represent the same GObject.
+func (recv *DisplayManager) Equals(other *DisplayManager) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *DisplayManager) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -737,6 +767,11 @@ func DragContextNewFromC(u unsafe.Pointer) *DragContext {
 func (recv *DragContext) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this DragContext with another DragContext, and returns true if they represent the same GObject.
+func (recv *DragContext) Equals(other *DragContext) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -789,6 +824,11 @@ func FrameClockNewFromC(u unsafe.Pointer) *FrameClock {
 func (recv *FrameClock) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this FrameClock with another FrameClock, and returns true if they represent the same GObject.
+func (recv *FrameClock) Equals(other *FrameClock) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -1222,6 +1262,11 @@ func (recv *GLContext) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this GLContext with another GLContext, and returns true if they represent the same GObject.
+func (recv *GLContext) Equals(other *GLContext) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *GLContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -1252,6 +1297,11 @@ func KeymapNewFromC(u unsafe.Pointer) *Keymap {
 func (recv *Keymap) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Keymap with another Keymap, and returns true if they represent the same GObject.
+func (recv *Keymap) Equals(other *Keymap) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -1313,6 +1363,11 @@ func (recv *Screen) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Screen with another Screen, and returns true if they represent the same GObject.
+func (recv *Screen) Equals(other *Screen) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *Screen) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -1345,6 +1400,11 @@ func (recv *Visual) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Visual with another Visual, and returns true if they represent the same GObject.
+func (recv *Visual) Equals(other *Visual) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *Visual) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -1375,6 +1435,11 @@ func WindowNewFromC(u unsafe.Pointer) *Window {
 func (recv *Window) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Window with another Window, and returns true if they represent the same GObject.
+func (recv *Window) Equals(other *Window) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object

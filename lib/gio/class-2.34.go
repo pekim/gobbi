@@ -363,6 +363,11 @@ func (recv *TestDBus) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TestDBus with another TestDBus, and returns true if they represent the same GObject.
+func (recv *TestDBus) Equals(other *TestDBus) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *TestDBus) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))

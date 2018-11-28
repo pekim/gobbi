@@ -102,6 +102,11 @@ func (recv *NetworkMonitor) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this NetworkMonitor with another NetworkMonitor, and returns true if they represent the same GObject.
+func (recv *NetworkMonitor) Equals(other *NetworkMonitor) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // CanReach is a wrapper around the C function g_network_monitor_can_reach.
 func (recv *NetworkMonitor) CanReach(connectable *SocketConnectable, cancellable *Cancellable) (bool, error) {
 	c_connectable := (*C.GSocketConnectable)(connectable.ToC())

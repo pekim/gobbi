@@ -30,6 +30,11 @@ func (recv *PixbufFormat) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this PixbufFormat with another PixbufFormat, and returns true if they represent the same GObject.
+func (recv *PixbufFormat) Equals(other *PixbufFormat) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // PixbufLoaderClass is a wrapper around the C record GdkPixbufLoaderClass.
 type PixbufLoaderClass struct {
 	native *C.GdkPixbufLoaderClass
@@ -56,6 +61,11 @@ func (recv *PixbufLoaderClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this PixbufLoaderClass with another PixbufLoaderClass, and returns true if they represent the same GObject.
+func (recv *PixbufLoaderClass) Equals(other *PixbufLoaderClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // PixbufSimpleAnimClass is a wrapper around the C record GdkPixbufSimpleAnimClass.
 type PixbufSimpleAnimClass struct {
 	native *C.GdkPixbufSimpleAnimClass
@@ -75,6 +85,11 @@ func PixbufSimpleAnimClassNewFromC(u unsafe.Pointer) *PixbufSimpleAnimClass {
 func (recv *PixbufSimpleAnimClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this PixbufSimpleAnimClass with another PixbufSimpleAnimClass, and returns true if they represent the same GObject.
+func (recv *PixbufSimpleAnimClass) Equals(other *PixbufSimpleAnimClass) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Blacklisted : GdkPixdata

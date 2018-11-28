@@ -102,6 +102,11 @@ func (recv *DBusInterface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this DBusInterface with another DBusInterface, and returns true if they represent the same GObject.
+func (recv *DBusInterface) Equals(other *DBusInterface) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // GetInfo is a wrapper around the C function g_dbus_interface_get_info.
 func (recv *DBusInterface) GetInfo() *DBusInterfaceInfo {
 	retC := C.g_dbus_interface_get_info((*C.GDBusInterface)(recv.native))
@@ -588,4 +593,9 @@ func TlsFileDatabaseNewFromC(u unsafe.Pointer) *TlsFileDatabase {
 func (recv *TlsFileDatabase) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TlsFileDatabase with another TlsFileDatabase, and returns true if they represent the same GObject.
+func (recv *TlsFileDatabase) Equals(other *TlsFileDatabase) bool {
+	return other.ToC() == recv.ToC()
 }

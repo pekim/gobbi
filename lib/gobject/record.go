@@ -40,6 +40,11 @@ func (recv *CClosure) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this CClosure with another CClosure, and returns true if they represent the same GObject.
+func (recv *CClosure) Equals(other *CClosure) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Closure is a wrapper around the C record GClosure.
 type Closure struct {
 	native *C.GClosure
@@ -72,6 +77,11 @@ func ClosureNewFromC(u unsafe.Pointer) *Closure {
 func (recv *Closure) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Closure with another Closure, and returns true if they represent the same GObject.
+func (recv *Closure) Equals(other *Closure) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ClosureNewObject is a wrapper around the C function g_closure_new_object.
@@ -174,6 +184,11 @@ func (recv *ClosureNotifyData) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ClosureNotifyData with another ClosureNotifyData, and returns true if they represent the same GObject.
+func (recv *ClosureNotifyData) Equals(other *ClosureNotifyData) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // EnumClass is a wrapper around the C record GEnumClass.
 type EnumClass struct {
 	native *C.GEnumClass
@@ -211,6 +226,11 @@ func (recv *EnumClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this EnumClass with another EnumClass, and returns true if they represent the same GObject.
+func (recv *EnumClass) Equals(other *EnumClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // EnumValue is a wrapper around the C record GEnumValue.
 type EnumValue struct {
 	native    *C.GEnumValue
@@ -246,6 +266,11 @@ func (recv *EnumValue) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this EnumValue with another EnumValue, and returns true if they represent the same GObject.
+func (recv *EnumValue) Equals(other *EnumValue) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // FlagsClass is a wrapper around the C record GFlagsClass.
 type FlagsClass struct {
 	native *C.GFlagsClass
@@ -277,6 +302,11 @@ func (recv *FlagsClass) ToC() unsafe.Pointer {
 		(C.guint)(recv.NValues)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this FlagsClass with another FlagsClass, and returns true if they represent the same GObject.
+func (recv *FlagsClass) Equals(other *FlagsClass) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // FlagsValue is a wrapper around the C record GFlagsValue.
@@ -314,6 +344,11 @@ func (recv *FlagsValue) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this FlagsValue with another FlagsValue, and returns true if they represent the same GObject.
+func (recv *FlagsValue) Equals(other *FlagsValue) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // InitiallyUnownedClass is a wrapper around the C record GInitiallyUnownedClass.
 type InitiallyUnownedClass struct {
 	native *C.GInitiallyUnownedClass
@@ -347,6 +382,11 @@ func (recv *InitiallyUnownedClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this InitiallyUnownedClass with another InitiallyUnownedClass, and returns true if they represent the same GObject.
+func (recv *InitiallyUnownedClass) Equals(other *InitiallyUnownedClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // InterfaceInfo is a wrapper around the C record GInterfaceInfo.
 type InterfaceInfo struct {
 	native *C.GInterfaceInfo
@@ -374,6 +414,11 @@ func (recv *InterfaceInfo) ToC() unsafe.Pointer {
 		(C.gpointer)(recv.InterfaceData)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this InterfaceInfo with another InterfaceInfo, and returns true if they represent the same GObject.
+func (recv *InterfaceInfo) Equals(other *InterfaceInfo) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ObjectClass is a wrapper around the C record GObjectClass.
@@ -409,6 +454,11 @@ func (recv *ObjectClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ObjectClass with another ObjectClass, and returns true if they represent the same GObject.
+func (recv *ObjectClass) Equals(other *ObjectClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Unsupported : g_object_class_find_property : return type : Blacklisted record : GParamSpec
 
 // Unsupported : g_object_class_install_property : unsupported parameter pspec : Blacklisted record : GParamSpec
@@ -436,6 +486,11 @@ func ObjectConstructParamNewFromC(u unsafe.Pointer) *ObjectConstructParam {
 func (recv *ObjectConstructParam) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ObjectConstructParam with another ObjectConstructParam, and returns true if they represent the same GObject.
+func (recv *ObjectConstructParam) Equals(other *ObjectConstructParam) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ParamSpecClass is a wrapper around the C record GParamSpecClass.
@@ -471,6 +526,11 @@ func (recv *ParamSpecClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ParamSpecClass with another ParamSpecClass, and returns true if they represent the same GObject.
+func (recv *ParamSpecClass) Equals(other *ParamSpecClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ParamSpecPool is a wrapper around the C record GParamSpecPool.
 type ParamSpecPool struct {
 	native *C.GParamSpecPool
@@ -490,6 +550,11 @@ func ParamSpecPoolNewFromC(u unsafe.Pointer) *ParamSpecPool {
 func (recv *ParamSpecPool) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ParamSpecPool with another ParamSpecPool, and returns true if they represent the same GObject.
+func (recv *ParamSpecPool) Equals(other *ParamSpecPool) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Unsupported : g_param_spec_pool_insert : unsupported parameter pspec : Blacklisted record : GParamSpec
@@ -550,6 +615,11 @@ func (recv *ParamSpecTypeInfo) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ParamSpecTypeInfo with another ParamSpecTypeInfo, and returns true if they represent the same GObject.
+func (recv *ParamSpecTypeInfo) Equals(other *ParamSpecTypeInfo) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Parameter is a wrapper around the C record GParameter.
 type Parameter struct {
 	native *C.GParameter
@@ -576,6 +646,11 @@ func (recv *Parameter) ToC() unsafe.Pointer {
 		C.CString(recv.Name)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Parameter with another Parameter, and returns true if they represent the same GObject.
+func (recv *Parameter) Equals(other *Parameter) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // SignalInvocationHint is a wrapper around the C record GSignalInvocationHint.
@@ -611,6 +686,11 @@ func (recv *SignalInvocationHint) ToC() unsafe.Pointer {
 		(C.GSignalFlags)(recv.RunType)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this SignalInvocationHint with another SignalInvocationHint, and returns true if they represent the same GObject.
+func (recv *SignalInvocationHint) Equals(other *SignalInvocationHint) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // SignalQuery is a wrapper around the C record GSignalQuery.
@@ -661,6 +741,11 @@ func (recv *SignalQuery) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this SignalQuery with another SignalQuery, and returns true if they represent the same GObject.
+func (recv *SignalQuery) Equals(other *SignalQuery) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // TypeClass is a wrapper around the C record GTypeClass.
 type TypeClass struct {
 	native *C.GTypeClass
@@ -681,6 +766,11 @@ func TypeClassNewFromC(u unsafe.Pointer) *TypeClass {
 func (recv *TypeClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TypeClass with another TypeClass, and returns true if they represent the same GObject.
+func (recv *TypeClass) Equals(other *TypeClass) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // GetPrivate is a wrapper around the C function g_type_class_get_private.
@@ -742,6 +832,11 @@ func (recv *TypeFundamentalInfo) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TypeFundamentalInfo with another TypeFundamentalInfo, and returns true if they represent the same GObject.
+func (recv *TypeFundamentalInfo) Equals(other *TypeFundamentalInfo) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // TypeInfo is a wrapper around the C record GTypeInfo.
 type TypeInfo struct {
 	native    *C.GTypeInfo
@@ -787,6 +882,11 @@ func (recv *TypeInfo) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TypeInfo with another TypeInfo, and returns true if they represent the same GObject.
+func (recv *TypeInfo) Equals(other *TypeInfo) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // TypeInstance is a wrapper around the C record GTypeInstance.
 type TypeInstance struct {
 	native *C.GTypeInstance
@@ -807,6 +907,11 @@ func TypeInstanceNewFromC(u unsafe.Pointer) *TypeInstance {
 func (recv *TypeInstance) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TypeInstance with another TypeInstance, and returns true if they represent the same GObject.
+func (recv *TypeInstance) Equals(other *TypeInstance) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // GetPrivate is a wrapper around the C function g_type_instance_get_private.
@@ -840,6 +945,11 @@ func TypeInterfaceNewFromC(u unsafe.Pointer) *TypeInterface {
 func (recv *TypeInterface) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TypeInterface with another TypeInterface, and returns true if they represent the same GObject.
+func (recv *TypeInterface) Equals(other *TypeInterface) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // PeekParent is a wrapper around the C function g_type_interface_peek_parent.
@@ -878,6 +988,11 @@ func (recv *TypeModuleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TypeModuleClass with another TypeModuleClass, and returns true if they represent the same GObject.
+func (recv *TypeModuleClass) Equals(other *TypeModuleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // TypePluginClass is a wrapper around the C record GTypePluginClass.
 type TypePluginClass struct {
 	native *C.GTypePluginClass
@@ -902,6 +1017,11 @@ func TypePluginClassNewFromC(u unsafe.Pointer) *TypePluginClass {
 func (recv *TypePluginClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TypePluginClass with another TypePluginClass, and returns true if they represent the same GObject.
+func (recv *TypePluginClass) Equals(other *TypePluginClass) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // TypeQuery is a wrapper around the C record GTypeQuery.
@@ -943,6 +1063,11 @@ func (recv *TypeQuery) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TypeQuery with another TypeQuery, and returns true if they represent the same GObject.
+func (recv *TypeQuery) Equals(other *TypeQuery) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // TypeValueTable is a wrapper around the C record GTypeValueTable.
 type TypeValueTable struct {
 	native *C.GTypeValueTable
@@ -980,6 +1105,11 @@ func (recv *TypeValueTable) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TypeValueTable with another TypeValueTable, and returns true if they represent the same GObject.
+func (recv *TypeValueTable) Equals(other *TypeValueTable) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Value is a wrapper around the C record GValue.
 type Value struct {
 	native *C.GValue
@@ -1001,6 +1131,11 @@ func ValueNewFromC(u unsafe.Pointer) *Value {
 func (recv *Value) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Value with another Value, and returns true if they represent the same GObject.
+func (recv *Value) Equals(other *Value) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Copy is a wrapper around the C function g_value_copy.
@@ -1478,6 +1613,11 @@ func (recv *ValueArray) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ValueArray with another ValueArray, and returns true if they represent the same GObject.
+func (recv *ValueArray) Equals(other *ValueArray) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ValueArrayNew is a wrapper around the C function g_value_array_new.
 func ValueArrayNew(nPrealloced uint32) *ValueArray {
 	c_n_prealloced := (C.guint)(nPrealloced)
@@ -1587,4 +1727,9 @@ func WeakRefNewFromC(u unsafe.Pointer) *WeakRef {
 func (recv *WeakRef) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this WeakRef with another WeakRef, and returns true if they represent the same GObject.
+func (recv *WeakRef) Equals(other *WeakRef) bool {
+	return other.ToC() == recv.ToC()
 }

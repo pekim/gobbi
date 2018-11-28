@@ -31,6 +31,11 @@ func (recv *Binding) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Binding with another Binding, and returns true if they represent the same GObject.
+func (recv *Binding) Equals(other *Binding) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *Binding) Object() *Object {
 	return ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -155,4 +160,9 @@ func ParamSpecVariantNewFromC(u unsafe.Pointer) *ParamSpecVariant {
 func (recv *ParamSpecVariant) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ParamSpecVariant with another ParamSpecVariant, and returns true if they represent the same GObject.
+func (recv *ParamSpecVariant) Equals(other *ParamSpecVariant) bool {
+	return other.ToC() == recv.ToC()
 }

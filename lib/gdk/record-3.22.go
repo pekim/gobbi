@@ -31,6 +31,11 @@ func (recv *DevicePadInterface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this DevicePadInterface with another DevicePadInterface, and returns true if they represent the same GObject.
+func (recv *DevicePadInterface) Equals(other *DevicePadInterface) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // DrawingContextClass is a wrapper around the C record GdkDrawingContextClass.
 type DrawingContextClass struct {
 	native *C.GdkDrawingContextClass
@@ -50,6 +55,11 @@ func DrawingContextClassNewFromC(u unsafe.Pointer) *DrawingContextClass {
 func (recv *DrawingContextClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this DrawingContextClass with another DrawingContextClass, and returns true if they represent the same GObject.
+func (recv *DrawingContextClass) Equals(other *DrawingContextClass) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // EventPadAxis is a wrapper around the C record GdkEventPadAxis.
@@ -104,6 +114,11 @@ func (recv *EventPadAxis) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this EventPadAxis with another EventPadAxis, and returns true if they represent the same GObject.
+func (recv *EventPadAxis) Equals(other *EventPadAxis) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // EventPadButton is a wrapper around the C record GdkEventPadButton.
 type EventPadButton struct {
 	native *C.GdkEventPadButton
@@ -152,6 +167,11 @@ func (recv *EventPadButton) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this EventPadButton with another EventPadButton, and returns true if they represent the same GObject.
+func (recv *EventPadButton) Equals(other *EventPadButton) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // EventPadGroupMode is a wrapper around the C record GdkEventPadGroupMode.
 type EventPadGroupMode struct {
 	native *C.GdkEventPadGroupMode
@@ -196,6 +216,11 @@ func (recv *EventPadGroupMode) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this EventPadGroupMode with another EventPadGroupMode, and returns true if they represent the same GObject.
+func (recv *EventPadGroupMode) Equals(other *EventPadGroupMode) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // MonitorClass is a wrapper around the C record GdkMonitorClass.
 type MonitorClass struct {
 	native *C.GdkMonitorClass
@@ -215,4 +240,9 @@ func MonitorClassNewFromC(u unsafe.Pointer) *MonitorClass {
 func (recv *MonitorClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this MonitorClass with another MonitorClass, and returns true if they represent the same GObject.
+func (recv *MonitorClass) Equals(other *MonitorClass) bool {
+	return other.ToC() == recv.ToC()
 }

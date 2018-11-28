@@ -209,6 +209,11 @@ func (recv *AppLaunchContext) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this AppLaunchContext with another AppLaunchContext, and returns true if they represent the same GObject.
+func (recv *AppLaunchContext) Equals(other *AppLaunchContext) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *AppLaunchContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -293,6 +298,11 @@ func (recv *ApplicationCommandLine) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ApplicationCommandLine with another ApplicationCommandLine, and returns true if they represent the same GObject.
+func (recv *ApplicationCommandLine) Equals(other *ApplicationCommandLine) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *ApplicationCommandLine) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -325,6 +335,11 @@ func BufferedInputStreamNewFromC(u unsafe.Pointer) *BufferedInputStream {
 func (recv *BufferedInputStream) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this BufferedInputStream with another BufferedInputStream, and returns true if they represent the same GObject.
+func (recv *BufferedInputStream) Equals(other *BufferedInputStream) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // FilterInputStream upcasts to *FilterInputStream
@@ -506,6 +521,11 @@ func (recv *BufferedOutputStream) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this BufferedOutputStream with another BufferedOutputStream, and returns true if they represent the same GObject.
+func (recv *BufferedOutputStream) Equals(other *BufferedOutputStream) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // FilterOutputStream upcasts to *FilterOutputStream
 func (recv *BufferedOutputStream) FilterOutputStream() *FilterOutputStream {
 	return FilterOutputStreamNewFromC(unsafe.Pointer(recv.native))
@@ -616,6 +636,11 @@ func (recv *BytesIcon) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this BytesIcon with another BytesIcon, and returns true if they represent the same GObject.
+func (recv *BytesIcon) Equals(other *BytesIcon) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *BytesIcon) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -658,6 +683,11 @@ func CancellableNewFromC(u unsafe.Pointer) *Cancellable {
 func (recv *Cancellable) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Cancellable with another Cancellable, and returns true if they represent the same GObject.
+func (recv *Cancellable) Equals(other *Cancellable) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -816,6 +846,11 @@ func (recv *CharsetConverter) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this CharsetConverter with another CharsetConverter, and returns true if they represent the same GObject.
+func (recv *CharsetConverter) Equals(other *CharsetConverter) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *CharsetConverter) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -858,6 +893,11 @@ func ConverterInputStreamNewFromC(u unsafe.Pointer) *ConverterInputStream {
 func (recv *ConverterInputStream) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ConverterInputStream with another ConverterInputStream, and returns true if they represent the same GObject.
+func (recv *ConverterInputStream) Equals(other *ConverterInputStream) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // FilterInputStream upcasts to *FilterInputStream
@@ -924,6 +964,11 @@ func (recv *ConverterOutputStream) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ConverterOutputStream with another ConverterOutputStream, and returns true if they represent the same GObject.
+func (recv *ConverterOutputStream) Equals(other *ConverterOutputStream) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // FilterOutputStream upcasts to *FilterOutputStream
 func (recv *ConverterOutputStream) FilterOutputStream() *FilterOutputStream {
 	return FilterOutputStreamNewFromC(unsafe.Pointer(recv.native))
@@ -986,6 +1031,11 @@ func (recv *DBusActionGroup) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this DBusActionGroup with another DBusActionGroup, and returns true if they represent the same GObject.
+func (recv *DBusActionGroup) Equals(other *DBusActionGroup) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *DBusActionGroup) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -1028,6 +1078,11 @@ func (recv *DBusMenuModel) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this DBusMenuModel with another DBusMenuModel, and returns true if they represent the same GObject.
+func (recv *DBusMenuModel) Equals(other *DBusMenuModel) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // MenuModel upcasts to *MenuModel
 func (recv *DBusMenuModel) MenuModel() *MenuModel {
 	return MenuModelNewFromC(unsafe.Pointer(recv.native))
@@ -1065,6 +1120,11 @@ func DataInputStreamNewFromC(u unsafe.Pointer) *DataInputStream {
 func (recv *DataInputStream) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this DataInputStream with another DataInputStream, and returns true if they represent the same GObject.
+func (recv *DataInputStream) Equals(other *DataInputStream) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // BufferedInputStream upcasts to *BufferedInputStream
@@ -1338,6 +1398,11 @@ func (recv *DataOutputStream) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this DataOutputStream with another DataOutputStream, and returns true if they represent the same GObject.
+func (recv *DataOutputStream) Equals(other *DataOutputStream) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // FilterOutputStream upcasts to *FilterOutputStream
 func (recv *DataOutputStream) FilterOutputStream() *FilterOutputStream {
 	return FilterOutputStreamNewFromC(unsafe.Pointer(recv.native))
@@ -1592,6 +1657,11 @@ func (recv *DesktopAppInfo) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this DesktopAppInfo with another DesktopAppInfo, and returns true if they represent the same GObject.
+func (recv *DesktopAppInfo) Equals(other *DesktopAppInfo) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *DesktopAppInfo) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -1677,6 +1747,11 @@ func (recv *Emblem) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Emblem with another Emblem, and returns true if they represent the same GObject.
+func (recv *Emblem) Equals(other *Emblem) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *Emblem) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -1716,6 +1791,11 @@ func (recv *EmblemedIcon) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this EmblemedIcon with another EmblemedIcon, and returns true if they represent the same GObject.
+func (recv *EmblemedIcon) Equals(other *EmblemedIcon) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *EmblemedIcon) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -1753,6 +1833,11 @@ func FileEnumeratorNewFromC(u unsafe.Pointer) *FileEnumerator {
 func (recv *FileEnumerator) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this FileEnumerator with another FileEnumerator, and returns true if they represent the same GObject.
+func (recv *FileEnumerator) Equals(other *FileEnumerator) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -1898,6 +1983,11 @@ func (recv *FileIOStream) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this FileIOStream with another FileIOStream, and returns true if they represent the same GObject.
+func (recv *FileIOStream) Equals(other *FileIOStream) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // IOStream upcasts to *IOStream
 func (recv *FileIOStream) IOStream() *IOStream {
 	return IOStreamNewFromC(unsafe.Pointer(recv.native))
@@ -1938,6 +2028,11 @@ func FileIconNewFromC(u unsafe.Pointer) *FileIcon {
 func (recv *FileIcon) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this FileIcon with another FileIcon, and returns true if they represent the same GObject.
+func (recv *FileIcon) Equals(other *FileIcon) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -1998,6 +2093,11 @@ func FileInfoNewFromC(u unsafe.Pointer) *FileInfo {
 func (recv *FileInfo) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this FileInfo with another FileInfo, and returns true if they represent the same GObject.
+func (recv *FileInfo) Equals(other *FileInfo) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -2586,6 +2686,11 @@ func (recv *FileInputStream) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this FileInputStream with another FileInputStream, and returns true if they represent the same GObject.
+func (recv *FileInputStream) Equals(other *FileInputStream) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // InputStream upcasts to *InputStream
 func (recv *FileInputStream) InputStream() *InputStream {
 	return InputStreamNewFromC(unsafe.Pointer(recv.native))
@@ -2672,6 +2777,11 @@ func (recv *FileMonitor) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this FileMonitor with another FileMonitor, and returns true if they represent the same GObject.
+func (recv *FileMonitor) Equals(other *FileMonitor) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *FileMonitor) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -2744,6 +2854,11 @@ func FileOutputStreamNewFromC(u unsafe.Pointer) *FileOutputStream {
 func (recv *FileOutputStream) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this FileOutputStream with another FileOutputStream, and returns true if they represent the same GObject.
+func (recv *FileOutputStream) Equals(other *FileOutputStream) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // OutputStream upcasts to *OutputStream
@@ -2837,6 +2952,11 @@ func FilenameCompleterNewFromC(u unsafe.Pointer) *FilenameCompleter {
 func (recv *FilenameCompleter) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this FilenameCompleter with another FilenameCompleter, and returns true if they represent the same GObject.
+func (recv *FilenameCompleter) Equals(other *FilenameCompleter) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -2962,6 +3082,11 @@ func (recv *FilterInputStream) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this FilterInputStream with another FilterInputStream, and returns true if they represent the same GObject.
+func (recv *FilterInputStream) Equals(other *FilterInputStream) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // InputStream upcasts to *InputStream
 func (recv *FilterInputStream) InputStream() *InputStream {
 	return InputStreamNewFromC(unsafe.Pointer(recv.native))
@@ -3027,6 +3152,11 @@ func (recv *FilterOutputStream) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this FilterOutputStream with another FilterOutputStream, and returns true if they represent the same GObject.
+func (recv *FilterOutputStream) Equals(other *FilterOutputStream) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // OutputStream upcasts to *OutputStream
 func (recv *FilterOutputStream) OutputStream() *OutputStream {
 	return OutputStreamNewFromC(unsafe.Pointer(recv.native))
@@ -3090,6 +3220,11 @@ func (recv *IOModule) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this IOModule with another IOModule, and returns true if they represent the same GObject.
+func (recv *IOModule) Equals(other *IOModule) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // CastToWidget down casts any arbitary Object to IOModule.
 // Exercise care, as this is a potentially dangerous function if the Object is not a IOModule.
 func CastToIOModule(object *gobject.Object) *IOModule {
@@ -3139,6 +3274,11 @@ func (recv *IOStream) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this IOStream with another IOStream, and returns true if they represent the same GObject.
+func (recv *IOStream) Equals(other *IOStream) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *IOStream) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -3173,6 +3313,11 @@ func (recv *InetAddress) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this InetAddress with another InetAddress, and returns true if they represent the same GObject.
+func (recv *InetAddress) Equals(other *InetAddress) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *InetAddress) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -3205,6 +3350,11 @@ func InetSocketAddressNewFromC(u unsafe.Pointer) *InetSocketAddress {
 func (recv *InetSocketAddress) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this InetSocketAddress with another InetSocketAddress, and returns true if they represent the same GObject.
+func (recv *InetSocketAddress) Equals(other *InetSocketAddress) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // SocketAddress upcasts to *SocketAddress
@@ -3249,6 +3399,11 @@ func InputStreamNewFromC(u unsafe.Pointer) *InputStream {
 func (recv *InputStream) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this InputStream with another InputStream, and returns true if they represent the same GObject.
+func (recv *InputStream) Equals(other *InputStream) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -3472,6 +3627,11 @@ func (recv *ListStore) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ListStore with another ListStore, and returns true if they represent the same GObject.
+func (recv *ListStore) Equals(other *ListStore) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *ListStore) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -3509,6 +3669,11 @@ func MemoryInputStreamNewFromC(u unsafe.Pointer) *MemoryInputStream {
 func (recv *MemoryInputStream) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this MemoryInputStream with another MemoryInputStream, and returns true if they represent the same GObject.
+func (recv *MemoryInputStream) Equals(other *MemoryInputStream) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // InputStream upcasts to *InputStream
@@ -3570,6 +3735,11 @@ func MemoryOutputStreamNewFromC(u unsafe.Pointer) *MemoryOutputStream {
 func (recv *MemoryOutputStream) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this MemoryOutputStream with another MemoryOutputStream, and returns true if they represent the same GObject.
+func (recv *MemoryOutputStream) Equals(other *MemoryOutputStream) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // OutputStream upcasts to *OutputStream
@@ -3637,6 +3807,11 @@ func MountOperationNewFromC(u unsafe.Pointer) *MountOperation {
 func (recv *MountOperation) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this MountOperation with another MountOperation, and returns true if they represent the same GObject.
+func (recv *MountOperation) Equals(other *MountOperation) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -3801,6 +3976,11 @@ func (recv *NativeVolumeMonitor) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this NativeVolumeMonitor with another NativeVolumeMonitor, and returns true if they represent the same GObject.
+func (recv *NativeVolumeMonitor) Equals(other *NativeVolumeMonitor) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // VolumeMonitor upcasts to *VolumeMonitor
 func (recv *NativeVolumeMonitor) VolumeMonitor() *VolumeMonitor {
 	return VolumeMonitorNewFromC(unsafe.Pointer(recv.native))
@@ -3838,6 +4018,11 @@ func NetworkAddressNewFromC(u unsafe.Pointer) *NetworkAddress {
 func (recv *NetworkAddress) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this NetworkAddress with another NetworkAddress, and returns true if they represent the same GObject.
+func (recv *NetworkAddress) Equals(other *NetworkAddress) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -3879,6 +4064,11 @@ func (recv *NetworkService) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this NetworkService with another NetworkService, and returns true if they represent the same GObject.
+func (recv *NetworkService) Equals(other *NetworkService) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *NetworkService) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -3916,6 +4106,11 @@ func OutputStreamNewFromC(u unsafe.Pointer) *OutputStream {
 func (recv *OutputStream) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this OutputStream with another OutputStream, and returns true if they represent the same GObject.
+func (recv *OutputStream) Equals(other *OutputStream) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -4206,6 +4401,11 @@ func (recv *Permission) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Permission with another Permission, and returns true if they represent the same GObject.
+func (recv *Permission) Equals(other *Permission) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *Permission) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -4238,6 +4438,11 @@ func ProxyAddressEnumeratorNewFromC(u unsafe.Pointer) *ProxyAddressEnumerator {
 func (recv *ProxyAddressEnumerator) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ProxyAddressEnumerator with another ProxyAddressEnumerator, and returns true if they represent the same GObject.
+func (recv *ProxyAddressEnumerator) Equals(other *ProxyAddressEnumerator) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // SocketAddressEnumerator upcasts to *SocketAddressEnumerator
@@ -4277,6 +4482,11 @@ func ResolverNewFromC(u unsafe.Pointer) *Resolver {
 func (recv *Resolver) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Resolver with another Resolver, and returns true if they represent the same GObject.
+func (recv *Resolver) Equals(other *Resolver) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -4368,6 +4578,11 @@ func SettingsNewFromC(u unsafe.Pointer) *Settings {
 func (recv *Settings) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Settings with another Settings, and returns true if they represent the same GObject.
+func (recv *Settings) Equals(other *Settings) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -4642,6 +4857,11 @@ func (recv *SettingsBackend) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this SettingsBackend with another SettingsBackend, and returns true if they represent the same GObject.
+func (recv *SettingsBackend) Equals(other *SettingsBackend) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *SettingsBackend) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -4672,6 +4892,11 @@ func SimpleActionNewFromC(u unsafe.Pointer) *SimpleAction {
 func (recv *SimpleAction) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this SimpleAction with another SimpleAction, and returns true if they represent the same GObject.
+func (recv *SimpleAction) Equals(other *SimpleAction) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -4709,6 +4934,11 @@ func SimpleAsyncResultNewFromC(u unsafe.Pointer) *SimpleAsyncResult {
 func (recv *SimpleAsyncResult) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this SimpleAsyncResult with another SimpleAsyncResult, and returns true if they represent the same GObject.
+func (recv *SimpleAsyncResult) Equals(other *SimpleAsyncResult) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -4864,6 +5094,11 @@ func (recv *SimplePermission) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this SimplePermission with another SimplePermission, and returns true if they represent the same GObject.
+func (recv *SimplePermission) Equals(other *SimplePermission) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Permission upcasts to *Permission
 func (recv *SimplePermission) Permission() *Permission {
 	return PermissionNewFromC(unsafe.Pointer(recv.native))
@@ -4901,6 +5136,11 @@ func SimpleProxyResolverNewFromC(u unsafe.Pointer) *SimpleProxyResolver {
 func (recv *SimpleProxyResolver) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this SimpleProxyResolver with another SimpleProxyResolver, and returns true if they represent the same GObject.
+func (recv *SimpleProxyResolver) Equals(other *SimpleProxyResolver) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -4941,6 +5181,11 @@ func (recv *SocketAddress) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this SocketAddress with another SocketAddress, and returns true if they represent the same GObject.
+func (recv *SocketAddress) Equals(other *SocketAddress) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *SocketAddress) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -4977,6 +5222,11 @@ func SocketAddressEnumeratorNewFromC(u unsafe.Pointer) *SocketAddressEnumerator 
 func (recv *SocketAddressEnumerator) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this SocketAddressEnumerator with another SocketAddressEnumerator, and returns true if they represent the same GObject.
+func (recv *SocketAddressEnumerator) Equals(other *SocketAddressEnumerator) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -5052,6 +5302,11 @@ func (recv *SocketControlMessage) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this SocketControlMessage with another SocketControlMessage, and returns true if they represent the same GObject.
+func (recv *SocketControlMessage) Equals(other *SocketControlMessage) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *SocketControlMessage) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -5082,6 +5337,11 @@ func TaskNewFromC(u unsafe.Pointer) *Task {
 func (recv *Task) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Task with another Task, and returns true if they represent the same GObject.
+func (recv *Task) Equals(other *Task) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -5121,6 +5381,11 @@ func TcpWrapperConnectionNewFromC(u unsafe.Pointer) *TcpWrapperConnection {
 func (recv *TcpWrapperConnection) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TcpWrapperConnection with another TcpWrapperConnection, and returns true if they represent the same GObject.
+func (recv *TcpWrapperConnection) Equals(other *TcpWrapperConnection) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // TcpConnection upcasts to *TcpConnection
@@ -5176,6 +5441,11 @@ func ThemedIconNewFromC(u unsafe.Pointer) *ThemedIcon {
 func (recv *ThemedIcon) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ThemedIcon with another ThemedIcon, and returns true if they represent the same GObject.
+func (recv *ThemedIcon) Equals(other *ThemedIcon) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -5253,6 +5523,11 @@ func (recv *UnixConnection) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this UnixConnection with another UnixConnection, and returns true if they represent the same GObject.
+func (recv *UnixConnection) Equals(other *UnixConnection) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // SocketConnection upcasts to *SocketConnection
 func (recv *UnixConnection) SocketConnection() *SocketConnection {
 	return SocketConnectionNewFromC(unsafe.Pointer(recv.native))
@@ -5297,6 +5572,11 @@ func (recv *UnixFDList) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this UnixFDList with another UnixFDList, and returns true if they represent the same GObject.
+func (recv *UnixFDList) Equals(other *UnixFDList) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *UnixFDList) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -5329,6 +5609,11 @@ func UnixFDMessageNewFromC(u unsafe.Pointer) *UnixFDMessage {
 func (recv *UnixFDMessage) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this UnixFDMessage with another UnixFDMessage, and returns true if they represent the same GObject.
+func (recv *UnixFDMessage) Equals(other *UnixFDMessage) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // SocketControlMessage upcasts to *SocketControlMessage
@@ -5368,6 +5653,11 @@ func UnixInputStreamNewFromC(u unsafe.Pointer) *UnixInputStream {
 func (recv *UnixInputStream) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this UnixInputStream with another UnixInputStream, and returns true if they represent the same GObject.
+func (recv *UnixInputStream) Equals(other *UnixInputStream) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // InputStream upcasts to *InputStream
@@ -5428,6 +5718,11 @@ func UnixMountMonitorNewFromC(u unsafe.Pointer) *UnixMountMonitor {
 func (recv *UnixMountMonitor) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this UnixMountMonitor with another UnixMountMonitor, and returns true if they represent the same GObject.
+func (recv *UnixMountMonitor) Equals(other *UnixMountMonitor) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -5586,6 +5881,11 @@ func (recv *UnixOutputStream) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this UnixOutputStream with another UnixOutputStream, and returns true if they represent the same GObject.
+func (recv *UnixOutputStream) Equals(other *UnixOutputStream) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // OutputStream upcasts to *OutputStream
 func (recv *UnixOutputStream) OutputStream() *OutputStream {
 	return OutputStreamNewFromC(unsafe.Pointer(recv.native))
@@ -5648,6 +5948,11 @@ func (recv *UnixSocketAddress) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this UnixSocketAddress with another UnixSocketAddress, and returns true if they represent the same GObject.
+func (recv *UnixSocketAddress) Equals(other *UnixSocketAddress) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // SocketAddress upcasts to *SocketAddress
 func (recv *UnixSocketAddress) SocketAddress() *SocketAddress {
 	return SocketAddressNewFromC(unsafe.Pointer(recv.native))
@@ -5701,6 +6006,11 @@ func VfsNewFromC(u unsafe.Pointer) *Vfs {
 func (recv *Vfs) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Vfs with another Vfs, and returns true if they represent the same GObject.
+func (recv *Vfs) Equals(other *Vfs) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -5778,6 +6088,11 @@ func VolumeMonitorNewFromC(u unsafe.Pointer) *VolumeMonitor {
 func (recv *VolumeMonitor) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this VolumeMonitor with another VolumeMonitor, and returns true if they represent the same GObject.
+func (recv *VolumeMonitor) Equals(other *VolumeMonitor) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -6448,6 +6763,11 @@ func (recv *ZlibCompressor) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ZlibCompressor with another ZlibCompressor, and returns true if they represent the same GObject.
+func (recv *ZlibCompressor) Equals(other *ZlibCompressor) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *ZlibCompressor) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -6483,6 +6803,11 @@ func ZlibDecompressorNewFromC(u unsafe.Pointer) *ZlibDecompressor {
 func (recv *ZlibDecompressor) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ZlibDecompressor with another ZlibDecompressor, and returns true if they represent the same GObject.
+func (recv *ZlibDecompressor) Equals(other *ZlibDecompressor) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object

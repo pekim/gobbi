@@ -38,6 +38,11 @@ func (recv *ActionIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ActionIface with another ActionIface, and returns true if they represent the same GObject.
+func (recv *ActionIface) Equals(other *ActionIface) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Attribute is a wrapper around the C record AtkAttribute.
 type Attribute struct {
 	native *C.AtkAttribute
@@ -67,6 +72,11 @@ func (recv *Attribute) ToC() unsafe.Pointer {
 		C.CString(recv.Value)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Attribute with another Attribute, and returns true if they represent the same GObject.
+func (recv *Attribute) Equals(other *Attribute) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ComponentIface is a wrapper around the C record AtkComponentIface.
@@ -106,6 +116,11 @@ func (recv *ComponentIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ComponentIface with another ComponentIface, and returns true if they represent the same GObject.
+func (recv *ComponentIface) Equals(other *ComponentIface) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // DocumentIface is a wrapper around the C record AtkDocumentIface.
 type DocumentIface struct {
 	native *C.AtkDocumentIface
@@ -134,6 +149,11 @@ func DocumentIfaceNewFromC(u unsafe.Pointer) *DocumentIface {
 func (recv *DocumentIface) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this DocumentIface with another DocumentIface, and returns true if they represent the same GObject.
+func (recv *DocumentIface) Equals(other *DocumentIface) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // EditableTextIface is a wrapper around the C record AtkEditableTextIface.
@@ -165,6 +185,11 @@ func (recv *EditableTextIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this EditableTextIface with another EditableTextIface, and returns true if they represent the same GObject.
+func (recv *EditableTextIface) Equals(other *EditableTextIface) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // GObjectAccessibleClass is a wrapper around the C record AtkGObjectAccessibleClass.
 type GObjectAccessibleClass struct {
 	native *C.AtkGObjectAccessibleClass
@@ -187,6 +212,11 @@ func GObjectAccessibleClassNewFromC(u unsafe.Pointer) *GObjectAccessibleClass {
 func (recv *GObjectAccessibleClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this GObjectAccessibleClass with another GObjectAccessibleClass, and returns true if they represent the same GObject.
+func (recv *GObjectAccessibleClass) Equals(other *GObjectAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // HyperlinkClass is a wrapper around the C record AtkHyperlinkClass.
@@ -221,6 +251,11 @@ func (recv *HyperlinkClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this HyperlinkClass with another HyperlinkClass, and returns true if they represent the same GObject.
+func (recv *HyperlinkClass) Equals(other *HyperlinkClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // HyperlinkImplIface is a wrapper around the C record AtkHyperlinkImplIface.
 type HyperlinkImplIface struct {
 	native *C.AtkHyperlinkImplIface
@@ -242,6 +277,11 @@ func HyperlinkImplIfaceNewFromC(u unsafe.Pointer) *HyperlinkImplIface {
 func (recv *HyperlinkImplIface) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this HyperlinkImplIface with another HyperlinkImplIface, and returns true if they represent the same GObject.
+func (recv *HyperlinkImplIface) Equals(other *HyperlinkImplIface) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // HypertextIface is a wrapper around the C record AtkHypertextIface.
@@ -268,6 +308,11 @@ func HypertextIfaceNewFromC(u unsafe.Pointer) *HypertextIface {
 func (recv *HypertextIface) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this HypertextIface with another HypertextIface, and returns true if they represent the same GObject.
+func (recv *HypertextIface) Equals(other *HypertextIface) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ImageIface is a wrapper around the C record AtkImageIface.
@@ -297,6 +342,11 @@ func (recv *ImageIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ImageIface with another ImageIface, and returns true if they represent the same GObject.
+func (recv *ImageIface) Equals(other *ImageIface) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Implementor is a wrapper around the C record AtkImplementor.
 type Implementor struct {
 	native *C.AtkImplementor
@@ -316,6 +366,11 @@ func ImplementorNewFromC(u unsafe.Pointer) *Implementor {
 func (recv *Implementor) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Implementor with another Implementor, and returns true if they represent the same GObject.
+func (recv *Implementor) Equals(other *Implementor) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // RefAccessible is a wrapper around the C function atk_implementor_ref_accessible.
@@ -377,6 +432,11 @@ func (recv *KeyEventStruct) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this KeyEventStruct with another KeyEventStruct, and returns true if they represent the same GObject.
+func (recv *KeyEventStruct) Equals(other *KeyEventStruct) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // MiscClass is a wrapper around the C record AtkMiscClass.
 type MiscClass struct {
 	native *C.AtkMiscClass
@@ -402,6 +462,11 @@ func (recv *MiscClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this MiscClass with another MiscClass, and returns true if they represent the same GObject.
+func (recv *MiscClass) Equals(other *MiscClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // NoOpObjectClass is a wrapper around the C record AtkNoOpObjectClass.
 type NoOpObjectClass struct {
 	native *C.AtkNoOpObjectClass
@@ -424,6 +489,11 @@ func (recv *NoOpObjectClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this NoOpObjectClass with another NoOpObjectClass, and returns true if they represent the same GObject.
+func (recv *NoOpObjectClass) Equals(other *NoOpObjectClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // NoOpObjectFactoryClass is a wrapper around the C record AtkNoOpObjectFactoryClass.
 type NoOpObjectFactoryClass struct {
 	native *C.AtkNoOpObjectFactoryClass
@@ -444,6 +514,11 @@ func NoOpObjectFactoryClassNewFromC(u unsafe.Pointer) *NoOpObjectFactoryClass {
 func (recv *NoOpObjectFactoryClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this NoOpObjectFactoryClass with another NoOpObjectFactoryClass, and returns true if they represent the same GObject.
+func (recv *NoOpObjectFactoryClass) Equals(other *NoOpObjectFactoryClass) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ObjectClass is a wrapper around the C record AtkObjectClass.
@@ -495,6 +570,11 @@ func (recv *ObjectClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ObjectClass with another ObjectClass, and returns true if they represent the same GObject.
+func (recv *ObjectClass) Equals(other *ObjectClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ObjectFactoryClass is a wrapper around the C record AtkObjectFactoryClass.
 type ObjectFactoryClass struct {
 	native *C.AtkObjectFactoryClass
@@ -522,6 +602,11 @@ func (recv *ObjectFactoryClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ObjectFactoryClass with another ObjectFactoryClass, and returns true if they represent the same GObject.
+func (recv *ObjectFactoryClass) Equals(other *ObjectFactoryClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // PlugClass is a wrapper around the C record AtkPlugClass.
 type PlugClass struct {
 	native *C.AtkPlugClass
@@ -543,6 +628,11 @@ func PlugClassNewFromC(u unsafe.Pointer) *PlugClass {
 func (recv *PlugClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this PlugClass with another PlugClass, and returns true if they represent the same GObject.
+func (recv *PlugClass) Equals(other *PlugClass) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // PropertyValues is a wrapper around the C record AtkPropertyValues.
@@ -574,6 +664,11 @@ func (recv *PropertyValues) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this PropertyValues with another PropertyValues, and returns true if they represent the same GObject.
+func (recv *PropertyValues) Equals(other *PropertyValues) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Range is a wrapper around the C record AtkRange.
 type Range struct {
 	native *C.AtkRange
@@ -593,6 +688,11 @@ func RangeNewFromC(u unsafe.Pointer) *Range {
 func (recv *Range) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Range with another Range, and returns true if they represent the same GObject.
+func (recv *Range) Equals(other *Range) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Rectangle is a wrapper around the C record AtkRectangle.
@@ -634,6 +734,11 @@ func (recv *Rectangle) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Rectangle with another Rectangle, and returns true if they represent the same GObject.
+func (recv *Rectangle) Equals(other *Rectangle) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // RegistryClass is a wrapper around the C record AtkRegistryClass.
 type RegistryClass struct {
 	native *C.AtkRegistryClass
@@ -654,6 +759,11 @@ func RegistryClassNewFromC(u unsafe.Pointer) *RegistryClass {
 func (recv *RegistryClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this RegistryClass with another RegistryClass, and returns true if they represent the same GObject.
+func (recv *RegistryClass) Equals(other *RegistryClass) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // RelationClass is a wrapper around the C record AtkRelationClass.
@@ -678,6 +788,11 @@ func (recv *RelationClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this RelationClass with another RelationClass, and returns true if they represent the same GObject.
+func (recv *RelationClass) Equals(other *RelationClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // RelationSetClass is a wrapper around the C record AtkRelationSetClass.
 type RelationSetClass struct {
 	native *C.AtkRelationSetClass
@@ -700,6 +815,11 @@ func RelationSetClassNewFromC(u unsafe.Pointer) *RelationSetClass {
 func (recv *RelationSetClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this RelationSetClass with another RelationSetClass, and returns true if they represent the same GObject.
+func (recv *RelationSetClass) Equals(other *RelationSetClass) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // SelectionIface is a wrapper around the C record AtkSelectionIface.
@@ -732,6 +852,11 @@ func (recv *SelectionIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this SelectionIface with another SelectionIface, and returns true if they represent the same GObject.
+func (recv *SelectionIface) Equals(other *SelectionIface) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // SocketClass is a wrapper around the C record AtkSocketClass.
 type SocketClass struct {
 	native *C.AtkSocketClass
@@ -755,6 +880,11 @@ func (recv *SocketClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this SocketClass with another SocketClass, and returns true if they represent the same GObject.
+func (recv *SocketClass) Equals(other *SocketClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // StateSetClass is a wrapper around the C record AtkStateSetClass.
 type StateSetClass struct {
 	native *C.AtkStateSetClass
@@ -775,6 +905,11 @@ func StateSetClassNewFromC(u unsafe.Pointer) *StateSetClass {
 func (recv *StateSetClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this StateSetClass with another StateSetClass, and returns true if they represent the same GObject.
+func (recv *StateSetClass) Equals(other *StateSetClass) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // StreamableContentIface is a wrapper around the C record AtkStreamableContentIface.
@@ -806,6 +941,11 @@ func (recv *StreamableContentIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this StreamableContentIface with another StreamableContentIface, and returns true if they represent the same GObject.
+func (recv *StreamableContentIface) Equals(other *StreamableContentIface) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // TableCellIface is a wrapper around the C record AtkTableCellIface.
 type TableCellIface struct {
 	native *C.AtkTableCellIface
@@ -833,6 +973,11 @@ func TableCellIfaceNewFromC(u unsafe.Pointer) *TableCellIface {
 func (recv *TableCellIface) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TableCellIface with another TableCellIface, and returns true if they represent the same GObject.
+func (recv *TableCellIface) Equals(other *TableCellIface) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // TableIface is a wrapper around the C record AtkTableIface.
@@ -893,6 +1038,11 @@ func (recv *TableIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TableIface with another TableIface, and returns true if they represent the same GObject.
+func (recv *TableIface) Equals(other *TableIface) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // TextIface is a wrapper around the C record AtkTextIface.
 type TextIface struct {
 	native *C.AtkTextIface
@@ -939,6 +1089,11 @@ func (recv *TextIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TextIface with another TextIface, and returns true if they represent the same GObject.
+func (recv *TextIface) Equals(other *TextIface) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // TextRange is a wrapper around the C record AtkTextRange.
 type TextRange struct {
 	native *C.AtkTextRange
@@ -973,6 +1128,11 @@ func (recv *TextRange) ToC() unsafe.Pointer {
 		C.CString(recv.Content)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TextRange with another TextRange, and returns true if they represent the same GObject.
+func (recv *TextRange) Equals(other *TextRange) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // TextRectangle is a wrapper around the C record AtkTextRectangle.
@@ -1014,6 +1174,11 @@ func (recv *TextRectangle) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TextRectangle with another TextRectangle, and returns true if they represent the same GObject.
+func (recv *TextRectangle) Equals(other *TextRectangle) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // UtilClass is a wrapper around the C record AtkUtilClass.
 type UtilClass struct {
 	native *C.AtkUtilClass
@@ -1041,6 +1206,11 @@ func UtilClassNewFromC(u unsafe.Pointer) *UtilClass {
 func (recv *UtilClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this UtilClass with another UtilClass, and returns true if they represent the same GObject.
+func (recv *UtilClass) Equals(other *UtilClass) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ValueIface is a wrapper around the C record AtkValueIface.
@@ -1075,6 +1245,11 @@ func (recv *ValueIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ValueIface with another ValueIface, and returns true if they represent the same GObject.
+func (recv *ValueIface) Equals(other *ValueIface) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // WindowIface is a wrapper around the C record AtkWindowIface.
 type WindowIface struct {
 	native *C.AtkWindowIface
@@ -1095,4 +1270,9 @@ func WindowIfaceNewFromC(u unsafe.Pointer) *WindowIface {
 func (recv *WindowIface) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this WindowIface with another WindowIface, and returns true if they represent the same GObject.
+func (recv *WindowIface) Equals(other *WindowIface) bool {
+	return other.ToC() == recv.ToC()
 }

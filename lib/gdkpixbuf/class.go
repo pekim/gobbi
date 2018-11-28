@@ -72,6 +72,11 @@ func (recv *Pixbuf) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Pixbuf with another Pixbuf, and returns true if they represent the same GObject.
+func (recv *Pixbuf) Equals(other *Pixbuf) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *Pixbuf) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -496,6 +501,11 @@ func (recv *PixbufAnimation) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this PixbufAnimation with another PixbufAnimation, and returns true if they represent the same GObject.
+func (recv *PixbufAnimation) Equals(other *PixbufAnimation) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *PixbufAnimation) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -606,6 +616,11 @@ func (recv *PixbufAnimationIter) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this PixbufAnimationIter with another PixbufAnimationIter, and returns true if they represent the same GObject.
+func (recv *PixbufAnimationIter) Equals(other *PixbufAnimationIter) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *PixbufAnimationIter) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -675,6 +690,11 @@ func PixbufLoaderNewFromC(u unsafe.Pointer) *PixbufLoader {
 func (recv *PixbufLoader) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this PixbufLoader with another PixbufLoader, and returns true if they represent the same GObject.
+func (recv *PixbufLoader) Equals(other *PixbufLoader) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -1023,6 +1043,11 @@ func PixbufSimpleAnimNewFromC(u unsafe.Pointer) *PixbufSimpleAnim {
 func (recv *PixbufSimpleAnim) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this PixbufSimpleAnim with another PixbufSimpleAnim, and returns true if they represent the same GObject.
+func (recv *PixbufSimpleAnim) Equals(other *PixbufSimpleAnim) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // PixbufAnimation upcasts to *PixbufAnimation

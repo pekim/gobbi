@@ -38,6 +38,11 @@ func (recv *CssSection) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this CssSection with another CssSection, and returns true if they represent the same GObject.
+func (recv *CssSection) Equals(other *CssSection) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // GetEndLine is a wrapper around the C function gtk_css_section_get_end_line.
 func (recv *CssSection) GetEndLine() uint32 {
 	retC := C.gtk_css_section_get_end_line((*C.GtkCssSection)(recv.native))

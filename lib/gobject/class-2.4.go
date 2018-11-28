@@ -32,3 +32,8 @@ func (recv *ParamSpecOverride) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Equals compares this ParamSpecOverride with another ParamSpecOverride, and returns true if they represent the same GObject.
+func (recv *ParamSpecOverride) Equals(other *ParamSpecOverride) bool {
+	return other.ToC() == recv.ToC()
+}

@@ -53,6 +53,11 @@ func (recv *Renderer) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Renderer with another Renderer, and returns true if they represent the same GObject.
+func (recv *Renderer) Equals(other *Renderer) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *Renderer) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))

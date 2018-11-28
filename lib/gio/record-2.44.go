@@ -45,6 +45,11 @@ func (recv *ListModelInterface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ListModelInterface with another ListModelInterface, and returns true if they represent the same GObject.
+func (recv *ListModelInterface) Equals(other *ListModelInterface) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // OutputMessage is a wrapper around the C record GOutputMessage.
 type OutputMessage struct {
 	native *C.GOutputMessage
@@ -81,6 +86,11 @@ func (recv *OutputMessage) ToC() unsafe.Pointer {
 		(C.guint)(recv.NumControlMessages)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this OutputMessage with another OutputMessage, and returns true if they represent the same GObject.
+func (recv *OutputMessage) Equals(other *OutputMessage) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Unsupported : g_settings_schema_list_children : no return type

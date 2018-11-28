@@ -205,6 +205,11 @@ func (recv *Action) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Action with another Action, and returns true if they represent the same GObject.
+func (recv *Action) Equals(other *Action) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // DoAction is a wrapper around the C function atk_action_do_action.
 func (recv *Action) DoAction(i int32) bool {
 	c_i := (C.gint)(i)
@@ -295,6 +300,11 @@ func ComponentNewFromC(u unsafe.Pointer) *Component {
 func (recv *Component) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Component with another Component, and returns true if they represent the same GObject.
+func (recv *Component) Equals(other *Component) bool {
+	return other.ToC() == recv.ToC()
 }
 
 type signalComponentBoundsChangedDetail struct {
@@ -546,6 +556,11 @@ func (recv *Document) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Document with another Document, and returns true if they represent the same GObject.
+func (recv *Document) Equals(other *Document) bool {
+	return other.ToC() == recv.ToC()
+}
+
 type signalDocumentLoadCompleteDetail struct {
 	callback  DocumentSignalLoadCompleteCallback
 	handlerID C.gulong
@@ -762,6 +777,11 @@ func (recv *EditableText) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this EditableText with another EditableText, and returns true if they represent the same GObject.
+func (recv *EditableText) Equals(other *EditableText) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // CopyText is a wrapper around the C function atk_editable_text_copy_text.
 func (recv *EditableText) CopyText(startPos int32, endPos int32) {
 	c_start_pos := (C.gint)(startPos)
@@ -851,6 +871,11 @@ func (recv *HyperlinkImpl) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this HyperlinkImpl with another HyperlinkImpl, and returns true if they represent the same GObject.
+func (recv *HyperlinkImpl) Equals(other *HyperlinkImpl) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Hypertext is a wrapper around the C record AtkHypertext.
 type Hypertext struct {
 	native *C.AtkHypertext
@@ -870,6 +895,11 @@ func HypertextNewFromC(u unsafe.Pointer) *Hypertext {
 func (recv *Hypertext) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Hypertext with another Hypertext, and returns true if they represent the same GObject.
+func (recv *Hypertext) Equals(other *Hypertext) bool {
+	return other.ToC() == recv.ToC()
 }
 
 type signalHypertextLinkSelectedDetail struct {
@@ -980,6 +1010,11 @@ func (recv *Image) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Image with another Image, and returns true if they represent the same GObject.
+func (recv *Image) Equals(other *Image) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // GetImageDescription is a wrapper around the C function atk_image_get_image_description.
 func (recv *Image) GetImageDescription() string {
 	retC := C.atk_image_get_image_description((*C.AtkImage)(recv.native))
@@ -1052,6 +1087,11 @@ func (recv *ImplementorIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ImplementorIface with another ImplementorIface, and returns true if they represent the same GObject.
+func (recv *ImplementorIface) Equals(other *ImplementorIface) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Selection is a wrapper around the C record AtkSelection.
 type Selection struct {
 	native *C.AtkSelection
@@ -1071,6 +1111,11 @@ func SelectionNewFromC(u unsafe.Pointer) *Selection {
 func (recv *Selection) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Selection with another Selection, and returns true if they represent the same GObject.
+func (recv *Selection) Equals(other *Selection) bool {
+	return other.ToC() == recv.ToC()
 }
 
 type signalSelectionSelectionChangedDetail struct {
@@ -1220,6 +1265,11 @@ func (recv *StreamableContent) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this StreamableContent with another StreamableContent, and returns true if they represent the same GObject.
+func (recv *StreamableContent) Equals(other *StreamableContent) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // GetMimeType is a wrapper around the C function atk_streamable_content_get_mime_type.
 func (recv *StreamableContent) GetMimeType(i int32) string {
 	c_i := (C.gint)(i)
@@ -1259,6 +1309,11 @@ func TableNewFromC(u unsafe.Pointer) *Table {
 func (recv *Table) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Table with another Table, and returns true if they represent the same GObject.
+func (recv *Table) Equals(other *Table) bool {
+	return other.ToC() == recv.ToC()
 }
 
 type signalTableColumnDeletedDetail struct {
@@ -2004,6 +2059,11 @@ func (recv *TableCell) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TableCell with another TableCell, and returns true if they represent the same GObject.
+func (recv *TableCell) Equals(other *TableCell) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Text is a wrapper around the C record AtkText.
 type Text struct {
 	native *C.AtkText
@@ -2023,6 +2083,11 @@ func TextNewFromC(u unsafe.Pointer) *Text {
 func (recv *Text) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Text with another Text, and returns true if they represent the same GObject.
+func (recv *Text) Equals(other *Text) bool {
+	return other.ToC() == recv.ToC()
 }
 
 type signalTextTextAttributesChangedDetail struct {
@@ -2626,6 +2691,11 @@ func (recv *Value) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Value with another Value, and returns true if they represent the same GObject.
+func (recv *Value) Equals(other *Value) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // GetCurrentValue is a wrapper around the C function atk_value_get_current_value.
 func (recv *Value) GetCurrentValue() *gobject.Value {
 	var c_value C.GValue
@@ -2691,4 +2761,9 @@ func WindowNewFromC(u unsafe.Pointer) *Window {
 func (recv *Window) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Window with another Window, and returns true if they represent the same GObject.
+func (recv *Window) Equals(other *Window) bool {
+	return other.ToC() == recv.ToC()
 }

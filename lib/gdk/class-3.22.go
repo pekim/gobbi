@@ -148,6 +148,11 @@ func (recv *DeviceTool) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this DeviceTool with another DeviceTool, and returns true if they represent the same GObject.
+func (recv *DeviceTool) Equals(other *DeviceTool) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *DeviceTool) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -383,6 +388,11 @@ func (recv *DrawingContext) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this DrawingContext with another DrawingContext, and returns true if they represent the same GObject.
+func (recv *DrawingContext) Equals(other *DrawingContext) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *DrawingContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -467,6 +477,11 @@ func MonitorNewFromC(u unsafe.Pointer) *Monitor {
 func (recv *Monitor) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Monitor with another Monitor, and returns true if they represent the same GObject.
+func (recv *Monitor) Equals(other *Monitor) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -633,6 +648,11 @@ func SeatNewFromC(u unsafe.Pointer) *Seat {
 func (recv *Seat) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Seat with another Seat, and returns true if they represent the same GObject.
+func (recv *Seat) Equals(other *Seat) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object

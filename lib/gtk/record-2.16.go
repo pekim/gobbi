@@ -36,4 +36,9 @@ func (recv *ActivatableIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ActivatableIface with another ActivatableIface, and returns true if they represent the same GObject.
+func (recv *ActivatableIface) Equals(other *ActivatableIface) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Unsupported : gtk_selection_data_get_selection : return type : Blacklisted record : GdkAtom

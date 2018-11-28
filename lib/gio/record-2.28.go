@@ -56,6 +56,11 @@ func (recv *ActionGroupInterface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ActionGroupInterface with another ActionGroupInterface, and returns true if they represent the same GObject.
+func (recv *ActionGroupInterface) Equals(other *ActionGroupInterface) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ActionInterface is a wrapper around the C record GActionInterface.
 type ActionInterface struct {
 	native *C.GActionInterface
@@ -84,6 +89,11 @@ func ActionInterfaceNewFromC(u unsafe.Pointer) *ActionInterface {
 func (recv *ActionInterface) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ActionInterface with another ActionInterface, and returns true if they represent the same GObject.
+func (recv *ActionInterface) Equals(other *ActionInterface) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ApplicationClass is a wrapper around the C record GApplicationClass.
@@ -123,6 +133,11 @@ func (recv *ApplicationClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ApplicationClass with another ApplicationClass, and returns true if they represent the same GObject.
+func (recv *ApplicationClass) Equals(other *ApplicationClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ApplicationCommandLineClass is a wrapper around the C record GApplicationCommandLineClass.
 type ApplicationCommandLineClass struct {
 	native *C.GApplicationCommandLineClass
@@ -147,6 +162,11 @@ func ApplicationCommandLineClassNewFromC(u unsafe.Pointer) *ApplicationCommandLi
 func (recv *ApplicationCommandLineClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ApplicationCommandLineClass with another ApplicationCommandLineClass, and returns true if they represent the same GObject.
+func (recv *ApplicationCommandLineClass) Equals(other *ApplicationCommandLineClass) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // PollableInputStreamInterface is a wrapper around the C record GPollableInputStreamInterface.
@@ -175,6 +195,11 @@ func (recv *PollableInputStreamInterface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this PollableInputStreamInterface with another PollableInputStreamInterface, and returns true if they represent the same GObject.
+func (recv *PollableInputStreamInterface) Equals(other *PollableInputStreamInterface) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // PollableOutputStreamInterface is a wrapper around the C record GPollableOutputStreamInterface.
 type PollableOutputStreamInterface struct {
 	native *C.GPollableOutputStreamInterface
@@ -199,6 +224,11 @@ func PollableOutputStreamInterfaceNewFromC(u unsafe.Pointer) *PollableOutputStre
 func (recv *PollableOutputStreamInterface) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this PollableOutputStreamInterface with another PollableOutputStreamInterface, and returns true if they represent the same GObject.
+func (recv *PollableOutputStreamInterface) Equals(other *PollableOutputStreamInterface) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // TlsBackendInterface is a wrapper around the C record GTlsBackendInterface.
@@ -230,4 +260,9 @@ func TlsBackendInterfaceNewFromC(u unsafe.Pointer) *TlsBackendInterface {
 func (recv *TlsBackendInterface) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TlsBackendInterface with another TlsBackendInterface, and returns true if they represent the same GObject.
+func (recv *TlsBackendInterface) Equals(other *TlsBackendInterface) bool {
+	return other.ToC() == recv.ToC()
 }

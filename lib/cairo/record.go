@@ -31,6 +31,11 @@ func (recv *Context) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Context with another Context, and returns true if they represent the same GObject.
+func (recv *Context) Equals(other *Context) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Device is a wrapper around the C record cairo_device_t.
 type Device struct {
 	native *C.cairo_device_t
@@ -50,6 +55,11 @@ func DeviceNewFromC(u unsafe.Pointer) *Device {
 func (recv *Device) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Device with another Device, and returns true if they represent the same GObject.
+func (recv *Device) Equals(other *Device) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Surface is a wrapper around the C record cairo_surface_t.
@@ -73,6 +83,11 @@ func (recv *Surface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Surface with another Surface, and returns true if they represent the same GObject.
+func (recv *Surface) Equals(other *Surface) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Matrix is a wrapper around the C record cairo_matrix_t.
 type Matrix struct {
 	native *C.cairo_matrix_t
@@ -92,6 +107,11 @@ func MatrixNewFromC(u unsafe.Pointer) *Matrix {
 func (recv *Matrix) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Matrix with another Matrix, and returns true if they represent the same GObject.
+func (recv *Matrix) Equals(other *Matrix) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Pattern is a wrapper around the C record cairo_pattern_t.
@@ -115,6 +135,11 @@ func (recv *Pattern) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Pattern with another Pattern, and returns true if they represent the same GObject.
+func (recv *Pattern) Equals(other *Pattern) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Region is a wrapper around the C record cairo_region_t.
 type Region struct {
 	native *C.cairo_region_t
@@ -134,6 +159,11 @@ func RegionNewFromC(u unsafe.Pointer) *Region {
 func (recv *Region) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Region with another Region, and returns true if they represent the same GObject.
+func (recv *Region) Equals(other *Region) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // FontOptions is a wrapper around the C record cairo_font_options_t.
@@ -157,6 +187,11 @@ func (recv *FontOptions) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this FontOptions with another FontOptions, and returns true if they represent the same GObject.
+func (recv *FontOptions) Equals(other *FontOptions) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // FontFace is a wrapper around the C record cairo_font_face_t.
 type FontFace struct {
 	native *C.cairo_font_face_t
@@ -176,6 +211,11 @@ func FontFaceNewFromC(u unsafe.Pointer) *FontFace {
 func (recv *FontFace) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this FontFace with another FontFace, and returns true if they represent the same GObject.
+func (recv *FontFace) Equals(other *FontFace) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ScaledFont is a wrapper around the C record cairo_scaled_font_t.
@@ -199,6 +239,11 @@ func (recv *ScaledFont) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ScaledFont with another ScaledFont, and returns true if they represent the same GObject.
+func (recv *ScaledFont) Equals(other *ScaledFont) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Path is a wrapper around the C record cairo_path_t.
 type Path struct {
 	native *C.cairo_path_t
@@ -218,6 +263,11 @@ func PathNewFromC(u unsafe.Pointer) *Path {
 func (recv *Path) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Path with another Path, and returns true if they represent the same GObject.
+func (recv *Path) Equals(other *Path) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // RectangleInt is a wrapper around the C record cairo_rectangle_int_t.
@@ -257,4 +307,9 @@ func (recv *RectangleInt) ToC() unsafe.Pointer {
 		(C.gint)(recv.Height)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this RectangleInt with another RectangleInt, and returns true if they represent the same GObject.
+func (recv *RectangleInt) Equals(other *RectangleInt) bool {
+	return other.ToC() == recv.ToC()
 }

@@ -46,6 +46,11 @@ func (recv *DBusInterfaceIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this DBusInterfaceIface with another DBusInterfaceIface, and returns true if they represent the same GObject.
+func (recv *DBusInterfaceIface) Equals(other *DBusInterfaceIface) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // CacheBuild is a wrapper around the C function g_dbus_interface_info_cache_build.
 func (recv *DBusInterfaceInfo) CacheBuild() {
 	C.g_dbus_interface_info_cache_build((*C.GDBusInterfaceInfo)(recv.native))
@@ -89,6 +94,11 @@ func (recv *DBusInterfaceSkeletonClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this DBusInterfaceSkeletonClass with another DBusInterfaceSkeletonClass, and returns true if they represent the same GObject.
+func (recv *DBusInterfaceSkeletonClass) Equals(other *DBusInterfaceSkeletonClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // DBusObjectIface is a wrapper around the C record GDBusObjectIface.
 type DBusObjectIface struct {
 	native *C.GDBusObjectIface
@@ -116,6 +126,11 @@ func (recv *DBusObjectIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this DBusObjectIface with another DBusObjectIface, and returns true if they represent the same GObject.
+func (recv *DBusObjectIface) Equals(other *DBusObjectIface) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // DBusObjectManagerClientClass is a wrapper around the C record GDBusObjectManagerClientClass.
 type DBusObjectManagerClientClass struct {
 	native *C.GDBusObjectManagerClientClass
@@ -139,6 +154,11 @@ func DBusObjectManagerClientClassNewFromC(u unsafe.Pointer) *DBusObjectManagerCl
 func (recv *DBusObjectManagerClientClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this DBusObjectManagerClientClass with another DBusObjectManagerClientClass, and returns true if they represent the same GObject.
+func (recv *DBusObjectManagerClientClass) Equals(other *DBusObjectManagerClientClass) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // DBusObjectManagerIface is a wrapper around the C record GDBusObjectManagerIface.
@@ -171,6 +191,11 @@ func (recv *DBusObjectManagerIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this DBusObjectManagerIface with another DBusObjectManagerIface, and returns true if they represent the same GObject.
+func (recv *DBusObjectManagerIface) Equals(other *DBusObjectManagerIface) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // DBusObjectManagerServerClass is a wrapper around the C record GDBusObjectManagerServerClass.
 type DBusObjectManagerServerClass struct {
 	native *C.GDBusObjectManagerServerClass
@@ -194,6 +219,11 @@ func (recv *DBusObjectManagerServerClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this DBusObjectManagerServerClass with another DBusObjectManagerServerClass, and returns true if they represent the same GObject.
+func (recv *DBusObjectManagerServerClass) Equals(other *DBusObjectManagerServerClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // DBusObjectProxyClass is a wrapper around the C record GDBusObjectProxyClass.
 type DBusObjectProxyClass struct {
 	native *C.GDBusObjectProxyClass
@@ -215,6 +245,11 @@ func DBusObjectProxyClassNewFromC(u unsafe.Pointer) *DBusObjectProxyClass {
 func (recv *DBusObjectProxyClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this DBusObjectProxyClass with another DBusObjectProxyClass, and returns true if they represent the same GObject.
+func (recv *DBusObjectProxyClass) Equals(other *DBusObjectProxyClass) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // DBusObjectSkeletonClass is a wrapper around the C record GDBusObjectSkeletonClass.
@@ -241,6 +276,11 @@ func (recv *DBusObjectSkeletonClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this DBusObjectSkeletonClass with another DBusObjectSkeletonClass, and returns true if they represent the same GObject.
+func (recv *DBusObjectSkeletonClass) Equals(other *DBusObjectSkeletonClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // IOModuleScope is a wrapper around the C record GIOModuleScope.
 type IOModuleScope struct {
 	native *C.GIOModuleScope
@@ -260,6 +300,11 @@ func IOModuleScopeNewFromC(u unsafe.Pointer) *IOModuleScope {
 func (recv *IOModuleScope) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this IOModuleScope with another IOModuleScope, and returns true if they represent the same GObject.
+func (recv *IOModuleScope) Equals(other *IOModuleScope) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Block is a wrapper around the C function g_io_module_scope_block.
@@ -315,6 +360,11 @@ func (recv *TlsDatabaseClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TlsDatabaseClass with another TlsDatabaseClass, and returns true if they represent the same GObject.
+func (recv *TlsDatabaseClass) Equals(other *TlsDatabaseClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // TlsInteractionClass is a wrapper around the C record GTlsInteractionClass.
 type TlsInteractionClass struct {
 	native *C.GTlsInteractionClass
@@ -342,4 +392,9 @@ func TlsInteractionClassNewFromC(u unsafe.Pointer) *TlsInteractionClass {
 func (recv *TlsInteractionClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TlsInteractionClass with another TlsInteractionClass, and returns true if they represent the same GObject.
+func (recv *TlsInteractionClass) Equals(other *TlsInteractionClass) bool {
+	return other.ToC() == recv.ToC()
 }

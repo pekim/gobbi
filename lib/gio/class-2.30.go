@@ -53,6 +53,11 @@ func (recv *DBusInterfaceSkeleton) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this DBusInterfaceSkeleton with another DBusInterfaceSkeleton, and returns true if they represent the same GObject.
+func (recv *DBusInterfaceSkeleton) Equals(other *DBusInterfaceSkeleton) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *DBusInterfaceSkeleton) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -189,6 +194,11 @@ func (recv *DBusObjectManagerClient) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this DBusObjectManagerClient with another DBusObjectManagerClient, and returns true if they represent the same GObject.
+func (recv *DBusObjectManagerClient) Equals(other *DBusObjectManagerClient) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *DBusObjectManagerClient) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -294,6 +304,11 @@ func (recv *DBusObjectManagerServer) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this DBusObjectManagerServer with another DBusObjectManagerServer, and returns true if they represent the same GObject.
+func (recv *DBusObjectManagerServer) Equals(other *DBusObjectManagerServer) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *DBusObjectManagerServer) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -394,6 +409,11 @@ func (recv *DBusObjectProxy) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this DBusObjectProxy with another DBusObjectProxy, and returns true if they represent the same GObject.
+func (recv *DBusObjectProxy) Equals(other *DBusObjectProxy) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *DBusObjectProxy) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -450,6 +470,11 @@ func DBusObjectSkeletonNewFromC(u unsafe.Pointer) *DBusObjectSkeleton {
 func (recv *DBusObjectSkeleton) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this DBusObjectSkeleton with another DBusObjectSkeleton, and returns true if they represent the same GObject.
+func (recv *DBusObjectSkeleton) Equals(other *DBusObjectSkeleton) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -701,6 +726,11 @@ func TlsDatabaseNewFromC(u unsafe.Pointer) *TlsDatabase {
 func (recv *TlsDatabase) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TlsDatabase with another TlsDatabase, and returns true if they represent the same GObject.
+func (recv *TlsDatabase) Equals(other *TlsDatabase) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -960,6 +990,11 @@ func (recv *TlsInteraction) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TlsInteraction with another TlsInteraction, and returns true if they represent the same GObject.
+func (recv *TlsInteraction) Equals(other *TlsInteraction) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *TlsInteraction) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -1061,6 +1096,11 @@ func TlsPasswordNewFromC(u unsafe.Pointer) *TlsPassword {
 func (recv *TlsPassword) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TlsPassword with another TlsPassword, and returns true if they represent the same GObject.
+func (recv *TlsPassword) Equals(other *TlsPassword) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object

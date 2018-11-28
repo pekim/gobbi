@@ -212,6 +212,11 @@ func (recv *RecentInfo) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this RecentInfo with another RecentInfo, and returns true if they represent the same GObject.
+func (recv *RecentInfo) Equals(other *RecentInfo) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // CreateAppInfo is a wrapper around the C function gtk_recent_info_create_app_info.
 func (recv *RecentInfo) CreateAppInfo(appName string) (*gio.AppInfo, error) {
 	c_app_name := C.CString(appName)
@@ -428,6 +433,11 @@ func RecentManagerClassNewFromC(u unsafe.Pointer) *RecentManagerClass {
 func (recv *RecentManagerClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this RecentManagerClass with another RecentManagerClass, and returns true if they represent the same GObject.
+func (recv *RecentManagerClass) Equals(other *RecentManagerClass) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // TargetsIncludeRichText is a wrapper around the C function gtk_selection_data_targets_include_rich_text.

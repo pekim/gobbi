@@ -45,6 +45,11 @@ func (recv *DatagramBased) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this DatagramBased with another DatagramBased, and returns true if they represent the same GObject.
+func (recv *DatagramBased) Equals(other *DatagramBased) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ConditionCheck is a wrapper around the C function g_datagram_based_condition_check.
 func (recv *DatagramBased) ConditionCheck(condition glib.IOCondition) glib.IOCondition {
 	c_condition := (C.GIOCondition)(condition)
@@ -119,6 +124,11 @@ func (recv *DtlsClientConnection) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this DtlsClientConnection with another DtlsClientConnection, and returns true if they represent the same GObject.
+func (recv *DtlsClientConnection) Equals(other *DtlsClientConnection) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // GetAcceptedCas is a wrapper around the C function g_dtls_client_connection_get_accepted_cas.
 func (recv *DtlsClientConnection) GetAcceptedCas() *glib.List {
 	retC := C.g_dtls_client_connection_get_accepted_cas((*C.GDtlsClientConnection)(recv.native))
@@ -180,6 +190,11 @@ func DtlsConnectionNewFromC(u unsafe.Pointer) *DtlsConnection {
 func (recv *DtlsConnection) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this DtlsConnection with another DtlsConnection, and returns true if they represent the same GObject.
+func (recv *DtlsConnection) Equals(other *DtlsConnection) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Close is a wrapper around the C function g_dtls_connection_close.
@@ -450,6 +465,11 @@ func DtlsServerConnectionNewFromC(u unsafe.Pointer) *DtlsServerConnection {
 func (recv *DtlsServerConnection) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this DtlsServerConnection with another DtlsServerConnection, and returns true if they represent the same GObject.
+func (recv *DtlsServerConnection) Equals(other *DtlsServerConnection) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ToString is a wrapper around the C function g_socket_connectable_to_string.

@@ -43,3 +43,8 @@ func (recv *ConverterIface) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Equals compares this ConverterIface with another ConverterIface, and returns true if they represent the same GObject.
+func (recv *ConverterIface) Equals(other *ConverterIface) bool {
+	return other.ToC() == recv.ToC()
+}

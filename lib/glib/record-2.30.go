@@ -42,6 +42,11 @@ func (recv *Hmac) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Hmac with another Hmac, and returns true if they represent the same GObject.
+func (recv *Hmac) Equals(other *Hmac) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Copy is a wrapper around the C function g_hmac_copy.
 func (recv *Hmac) Copy() *Hmac {
 	retC := C.g_hmac_copy((*C.GHmac)(recv.native))

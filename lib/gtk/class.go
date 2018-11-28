@@ -1917,6 +1917,11 @@ func (recv *AboutDialog) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this AboutDialog with another AboutDialog, and returns true if they represent the same GObject.
+func (recv *AboutDialog) Equals(other *AboutDialog) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Dialog upcasts to *Dialog
 func (recv *AboutDialog) Dialog() *Dialog {
 	return DialogNewFromC(unsafe.Pointer(recv.native))
@@ -1989,6 +1994,11 @@ func AccelGroupNewFromC(u unsafe.Pointer) *AccelGroup {
 func (recv *AccelGroup) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this AccelGroup with another AccelGroup, and returns true if they represent the same GObject.
+func (recv *AccelGroup) Equals(other *AccelGroup) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -2132,6 +2142,11 @@ func (recv *AccelLabel) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this AccelLabel with another AccelLabel, and returns true if they represent the same GObject.
+func (recv *AccelLabel) Equals(other *AccelLabel) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Label upcasts to *Label
 func (recv *AccelLabel) Label() *Label {
 	return LabelNewFromC(unsafe.Pointer(recv.native))
@@ -2258,6 +2273,11 @@ func (recv *AccelMap) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this AccelMap with another AccelMap, and returns true if they represent the same GObject.
+func (recv *AccelMap) Equals(other *AccelMap) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *AccelMap) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -2290,6 +2310,11 @@ func AccessibleNewFromC(u unsafe.Pointer) *Accessible {
 func (recv *Accessible) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Accessible with another Accessible, and returns true if they represent the same GObject.
+func (recv *Accessible) Equals(other *Accessible) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -2333,6 +2358,11 @@ func (recv *Action) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Action with another Action, and returns true if they represent the same GObject.
+func (recv *Action) Equals(other *Action) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *Action) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -2369,6 +2399,11 @@ func ActionBarNewFromC(u unsafe.Pointer) *ActionBar {
 func (recv *ActionBar) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ActionBar with another ActionBar, and returns true if they represent the same GObject.
+func (recv *ActionBar) Equals(other *ActionBar) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Bin upcasts to *Bin
@@ -2435,6 +2470,11 @@ func (recv *ActionGroup) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ActionGroup with another ActionGroup, and returns true if they represent the same GObject.
+func (recv *ActionGroup) Equals(other *ActionGroup) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *ActionGroup) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -2472,6 +2512,11 @@ func AdjustmentNewFromC(u unsafe.Pointer) *Adjustment {
 func (recv *Adjustment) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Adjustment with another Adjustment, and returns true if they represent the same GObject.
+func (recv *Adjustment) Equals(other *Adjustment) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // InitiallyUnowned upcasts to *InitiallyUnowned
@@ -2689,6 +2734,11 @@ func (recv *Alignment) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Alignment with another Alignment, and returns true if they represent the same GObject.
+func (recv *Alignment) Equals(other *Alignment) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Bin upcasts to *Bin
 func (recv *Alignment) Bin() *Bin {
 	return BinNewFromC(unsafe.Pointer(recv.native))
@@ -2782,6 +2832,11 @@ func AppChooserButtonNewFromC(u unsafe.Pointer) *AppChooserButton {
 func (recv *AppChooserButton) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this AppChooserButton with another AppChooserButton, and returns true if they represent the same GObject.
+func (recv *AppChooserButton) Equals(other *AppChooserButton) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ComboBox upcasts to *ComboBox
@@ -2945,6 +3000,11 @@ func (recv *AppChooserDialog) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this AppChooserDialog with another AppChooserDialog, and returns true if they represent the same GObject.
+func (recv *AppChooserDialog) Equals(other *AppChooserDialog) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Dialog upcasts to *Dialog
 func (recv *AppChooserDialog) Dialog() *Dialog {
 	return DialogNewFromC(unsafe.Pointer(recv.native))
@@ -3040,6 +3100,11 @@ func AppChooserWidgetNewFromC(u unsafe.Pointer) *AppChooserWidget {
 func (recv *AppChooserWidget) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this AppChooserWidget with another AppChooserWidget, and returns true if they represent the same GObject.
+func (recv *AppChooserWidget) Equals(other *AppChooserWidget) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Box upcasts to *Box
@@ -3305,6 +3370,11 @@ func (recv *Application) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Application with another Application, and returns true if they represent the same GObject.
+func (recv *Application) Equals(other *Application) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Application upcasts to *Application
 func (recv *Application) Application() *gio.Application {
 	return gio.ApplicationNewFromC(unsafe.Pointer(recv.native))
@@ -3352,6 +3422,11 @@ func ApplicationWindowNewFromC(u unsafe.Pointer) *ApplicationWindow {
 func (recv *ApplicationWindow) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ApplicationWindow with another ApplicationWindow, and returns true if they represent the same GObject.
+func (recv *ApplicationWindow) Equals(other *ApplicationWindow) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Window upcasts to *Window
@@ -3431,6 +3506,11 @@ func ArrowNewFromC(u unsafe.Pointer) *Arrow {
 func (recv *Arrow) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Arrow with another Arrow, and returns true if they represent the same GObject.
+func (recv *Arrow) Equals(other *Arrow) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Misc upcasts to *Misc
@@ -3515,6 +3595,11 @@ func (recv *ArrowAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ArrowAccessible with another ArrowAccessible, and returns true if they represent the same GObject.
+func (recv *ArrowAccessible) Equals(other *ArrowAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // WidgetAccessible upcasts to *WidgetAccessible
 func (recv *ArrowAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromC(unsafe.Pointer(recv.native))
@@ -3567,6 +3652,11 @@ func AspectFrameNewFromC(u unsafe.Pointer) *AspectFrame {
 func (recv *AspectFrame) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this AspectFrame with another AspectFrame, and returns true if they represent the same GObject.
+func (recv *AspectFrame) Equals(other *AspectFrame) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Frame upcasts to *Frame
@@ -3672,6 +3762,11 @@ func AssistantNewFromC(u unsafe.Pointer) *Assistant {
 func (recv *Assistant) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Assistant with another Assistant, and returns true if they represent the same GObject.
+func (recv *Assistant) Equals(other *Assistant) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Window upcasts to *Window
@@ -3800,6 +3895,11 @@ func (recv *Bin) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Bin with another Bin, and returns true if they represent the same GObject.
+func (recv *Bin) Equals(other *Bin) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Container upcasts to *Container
 func (recv *Bin) Container() *Container {
 	return ContainerNewFromC(unsafe.Pointer(recv.native))
@@ -3872,6 +3972,11 @@ func (recv *BooleanCellAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this BooleanCellAccessible with another BooleanCellAccessible, and returns true if they represent the same GObject.
+func (recv *BooleanCellAccessible) Equals(other *BooleanCellAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // RendererCellAccessible upcasts to *RendererCellAccessible
 func (recv *BooleanCellAccessible) RendererCellAccessible() *RendererCellAccessible {
 	return RendererCellAccessibleNewFromC(unsafe.Pointer(recv.native))
@@ -3929,6 +4034,11 @@ func BoxNewFromC(u unsafe.Pointer) *Box {
 func (recv *Box) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Box with another Box, and returns true if they represent the same GObject.
+func (recv *Box) Equals(other *Box) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Container upcasts to *Container
@@ -4108,6 +4218,11 @@ func (recv *Builder) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Builder with another Builder, and returns true if they represent the same GObject.
+func (recv *Builder) Equals(other *Builder) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *Builder) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -4142,6 +4257,11 @@ func ButtonNewFromC(u unsafe.Pointer) *Button {
 func (recv *Button) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Button with another Button, and returns true if they represent the same GObject.
+func (recv *Button) Equals(other *Button) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Bin upcasts to *Bin
@@ -4707,6 +4827,11 @@ func (recv *ButtonAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ButtonAccessible with another ButtonAccessible, and returns true if they represent the same GObject.
+func (recv *ButtonAccessible) Equals(other *ButtonAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ContainerAccessible upcasts to *ContainerAccessible
 func (recv *ButtonAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
@@ -4769,6 +4894,11 @@ func ButtonBoxNewFromC(u unsafe.Pointer) *ButtonBox {
 func (recv *ButtonBox) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ButtonBox with another ButtonBox, and returns true if they represent the same GObject.
+func (recv *ButtonBox) Equals(other *ButtonBox) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Box upcasts to *Box
@@ -4870,6 +5000,11 @@ func CalendarNewFromC(u unsafe.Pointer) *Calendar {
 func (recv *Calendar) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Calendar with another Calendar, and returns true if they represent the same GObject.
+func (recv *Calendar) Equals(other *Calendar) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Widget upcasts to *Widget
@@ -5397,6 +5532,11 @@ func (recv *CellAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this CellAccessible with another CellAccessible, and returns true if they represent the same GObject.
+func (recv *CellAccessible) Equals(other *CellAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Accessible upcasts to *Accessible
 func (recv *CellAccessible) Accessible() *Accessible {
 	return AccessibleNewFromC(unsafe.Pointer(recv.native))
@@ -5446,6 +5586,11 @@ func (recv *CellArea) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this CellArea with another CellArea, and returns true if they represent the same GObject.
+func (recv *CellArea) Equals(other *CellArea) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *CellArea) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromC(unsafe.Pointer(recv.native))
@@ -5493,6 +5638,11 @@ func CellAreaBoxNewFromC(u unsafe.Pointer) *CellAreaBox {
 func (recv *CellAreaBox) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this CellAreaBox with another CellAreaBox, and returns true if they represent the same GObject.
+func (recv *CellAreaBox) Equals(other *CellAreaBox) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // CellArea upcasts to *CellArea
@@ -5554,6 +5704,11 @@ func (recv *CellAreaContext) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this CellAreaContext with another CellAreaContext, and returns true if they represent the same GObject.
+func (recv *CellAreaContext) Equals(other *CellAreaContext) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *CellAreaContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -5604,6 +5759,11 @@ func CellRendererNewFromC(u unsafe.Pointer) *CellRenderer {
 func (recv *CellRenderer) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this CellRenderer with another CellRenderer, and returns true if they represent the same GObject.
+func (recv *CellRenderer) Equals(other *CellRenderer) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // InitiallyUnowned upcasts to *InitiallyUnowned
@@ -5679,6 +5839,11 @@ func (recv *CellRendererAccel) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this CellRendererAccel with another CellRendererAccel, and returns true if they represent the same GObject.
+func (recv *CellRendererAccel) Equals(other *CellRendererAccel) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // CellRendererText upcasts to *CellRendererText
 func (recv *CellRendererAccel) CellRendererText() *CellRendererText {
 	return CellRendererTextNewFromC(unsafe.Pointer(recv.native))
@@ -5728,6 +5893,11 @@ func (recv *CellRendererCombo) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this CellRendererCombo with another CellRendererCombo, and returns true if they represent the same GObject.
+func (recv *CellRendererCombo) Equals(other *CellRendererCombo) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // CellRendererText upcasts to *CellRendererText
 func (recv *CellRendererCombo) CellRendererText() *CellRendererText {
 	return CellRendererTextNewFromC(unsafe.Pointer(recv.native))
@@ -5775,6 +5945,11 @@ func CellRendererPixbufNewFromC(u unsafe.Pointer) *CellRendererPixbuf {
 func (recv *CellRendererPixbuf) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this CellRendererPixbuf with another CellRendererPixbuf, and returns true if they represent the same GObject.
+func (recv *CellRendererPixbuf) Equals(other *CellRendererPixbuf) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // CellRenderer upcasts to *CellRenderer
@@ -5829,6 +6004,11 @@ func (recv *CellRendererProgress) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this CellRendererProgress with another CellRendererProgress, and returns true if they represent the same GObject.
+func (recv *CellRendererProgress) Equals(other *CellRendererProgress) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // CellRenderer upcasts to *CellRenderer
 func (recv *CellRendererProgress) CellRenderer() *CellRenderer {
 	return CellRendererNewFromC(unsafe.Pointer(recv.native))
@@ -5876,6 +6056,11 @@ func CellRendererSpinNewFromC(u unsafe.Pointer) *CellRendererSpin {
 func (recv *CellRendererSpin) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this CellRendererSpin with another CellRendererSpin, and returns true if they represent the same GObject.
+func (recv *CellRendererSpin) Equals(other *CellRendererSpin) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // CellRendererText upcasts to *CellRendererText
@@ -5927,6 +6112,11 @@ func (recv *CellRendererSpinner) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this CellRendererSpinner with another CellRendererSpinner, and returns true if they represent the same GObject.
+func (recv *CellRendererSpinner) Equals(other *CellRendererSpinner) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // CellRenderer upcasts to *CellRenderer
 func (recv *CellRendererSpinner) CellRenderer() *CellRenderer {
 	return CellRendererNewFromC(unsafe.Pointer(recv.native))
@@ -5969,6 +6159,11 @@ func CellRendererTextNewFromC(u unsafe.Pointer) *CellRendererText {
 func (recv *CellRendererText) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this CellRendererText with another CellRendererText, and returns true if they represent the same GObject.
+func (recv *CellRendererText) Equals(other *CellRendererText) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // CellRenderer upcasts to *CellRenderer
@@ -6091,6 +6286,11 @@ func CellRendererToggleNewFromC(u unsafe.Pointer) *CellRendererToggle {
 func (recv *CellRendererToggle) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this CellRendererToggle with another CellRendererToggle, and returns true if they represent the same GObject.
+func (recv *CellRendererToggle) Equals(other *CellRendererToggle) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // CellRenderer upcasts to *CellRenderer
@@ -6240,6 +6440,11 @@ func (recv *CellView) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this CellView with another CellView, and returns true if they represent the same GObject.
+func (recv *CellView) Equals(other *CellView) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Widget upcasts to *Widget
 func (recv *CellView) Widget() *Widget {
 	return WidgetNewFromC(unsafe.Pointer(recv.native))
@@ -6301,6 +6506,11 @@ func CheckButtonNewFromC(u unsafe.Pointer) *CheckButton {
 func (recv *CheckButton) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this CheckButton with another CheckButton, and returns true if they represent the same GObject.
+func (recv *CheckButton) Equals(other *CheckButton) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ToggleButton upcasts to *ToggleButton
@@ -6415,6 +6625,11 @@ func CheckMenuItemNewFromC(u unsafe.Pointer) *CheckMenuItem {
 func (recv *CheckMenuItem) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this CheckMenuItem with another CheckMenuItem, and returns true if they represent the same GObject.
+func (recv *CheckMenuItem) Equals(other *CheckMenuItem) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // MenuItem upcasts to *MenuItem
@@ -6626,6 +6841,11 @@ func (recv *CheckMenuItemAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this CheckMenuItemAccessible with another CheckMenuItemAccessible, and returns true if they represent the same GObject.
+func (recv *CheckMenuItemAccessible) Equals(other *CheckMenuItemAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // MenuItemAccessible upcasts to *MenuItemAccessible
 func (recv *CheckMenuItemAccessible) MenuItemAccessible() *MenuItemAccessible {
 	return MenuItemAccessibleNewFromC(unsafe.Pointer(recv.native))
@@ -6691,6 +6911,11 @@ func ClipboardNewFromC(u unsafe.Pointer) *Clipboard {
 func (recv *Clipboard) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Clipboard with another Clipboard, and returns true if they represent the same GObject.
+func (recv *Clipboard) Equals(other *Clipboard) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -6786,6 +7011,11 @@ func (recv *ColorButton) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ColorButton with another ColorButton, and returns true if they represent the same GObject.
+func (recv *ColorButton) Equals(other *ColorButton) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Button upcasts to *Button
 func (recv *ColorButton) Button() *Button {
 	return ButtonNewFromC(unsafe.Pointer(recv.native))
@@ -6870,6 +7100,11 @@ func (recv *ColorChooserDialog) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ColorChooserDialog with another ColorChooserDialog, and returns true if they represent the same GObject.
+func (recv *ColorChooserDialog) Equals(other *ColorChooserDialog) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Dialog upcasts to *Dialog
 func (recv *ColorChooserDialog) Dialog() *Dialog {
 	return DialogNewFromC(unsafe.Pointer(recv.native))
@@ -6949,6 +7184,11 @@ func (recv *ColorChooserWidget) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ColorChooserWidget with another ColorChooserWidget, and returns true if they represent the same GObject.
+func (recv *ColorChooserWidget) Equals(other *ColorChooserWidget) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Box upcasts to *Box
 func (recv *ColorChooserWidget) Box() *Box {
 	return BoxNewFromC(unsafe.Pointer(recv.native))
@@ -7021,6 +7261,11 @@ func ColorSelectionNewFromC(u unsafe.Pointer) *ColorSelection {
 func (recv *ColorSelection) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ColorSelection with another ColorSelection, and returns true if they represent the same GObject.
+func (recv *ColorSelection) Equals(other *ColorSelection) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Box upcasts to *Box
@@ -7281,6 +7526,11 @@ func (recv *ColorSelectionDialog) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ColorSelectionDialog with another ColorSelectionDialog, and returns true if they represent the same GObject.
+func (recv *ColorSelectionDialog) Equals(other *ColorSelectionDialog) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Dialog upcasts to *Dialog
 func (recv *ColorSelectionDialog) Dialog() *Dialog {
 	return DialogNewFromC(unsafe.Pointer(recv.native))
@@ -7364,6 +7614,11 @@ func ComboBoxNewFromC(u unsafe.Pointer) *ComboBox {
 func (recv *ComboBox) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ComboBox with another ComboBox, and returns true if they represent the same GObject.
+func (recv *ComboBox) Equals(other *ComboBox) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Bin upcasts to *Bin
@@ -7474,6 +7729,11 @@ func (recv *ComboBoxAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ComboBoxAccessible with another ComboBoxAccessible, and returns true if they represent the same GObject.
+func (recv *ComboBoxAccessible) Equals(other *ComboBoxAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ContainerAccessible upcasts to *ContainerAccessible
 func (recv *ComboBoxAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
@@ -7536,6 +7796,11 @@ func ComboBoxTextNewFromC(u unsafe.Pointer) *ComboBoxText {
 func (recv *ComboBoxText) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ComboBoxText with another ComboBoxText, and returns true if they represent the same GObject.
+func (recv *ComboBoxText) Equals(other *ComboBoxText) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ComboBox upcasts to *ComboBox
@@ -7615,6 +7880,11 @@ func ContainerNewFromC(u unsafe.Pointer) *Container {
 func (recv *Container) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Container with another Container, and returns true if they represent the same GObject.
+func (recv *Container) Equals(other *Container) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Widget upcasts to *Widget
@@ -8180,6 +8450,11 @@ func (recv *ContainerAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ContainerAccessible with another ContainerAccessible, and returns true if they represent the same GObject.
+func (recv *ContainerAccessible) Equals(other *ContainerAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // WidgetAccessible upcasts to *WidgetAccessible
 func (recv *ContainerAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromC(unsafe.Pointer(recv.native))
@@ -8227,6 +8502,11 @@ func ContainerCellAccessibleNewFromC(u unsafe.Pointer) *ContainerCellAccessible 
 func (recv *ContainerCellAccessible) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ContainerCellAccessible with another ContainerCellAccessible, and returns true if they represent the same GObject.
+func (recv *ContainerCellAccessible) Equals(other *ContainerCellAccessible) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // CellAccessible upcasts to *CellAccessible
@@ -8321,6 +8601,11 @@ func CssProviderNewFromC(u unsafe.Pointer) *CssProvider {
 func (recv *CssProvider) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this CssProvider with another CssProvider, and returns true if they represent the same GObject.
+func (recv *CssProvider) Equals(other *CssProvider) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -8483,6 +8768,11 @@ func DialogNewFromC(u unsafe.Pointer) *Dialog {
 func (recv *Dialog) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Dialog with another Dialog, and returns true if they represent the same GObject.
+func (recv *Dialog) Equals(other *Dialog) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Window upcasts to *Window
@@ -8747,6 +9037,11 @@ func (recv *DrawingArea) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this DrawingArea with another DrawingArea, and returns true if they represent the same GObject.
+func (recv *DrawingArea) Equals(other *DrawingArea) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Widget upcasts to *Widget
 func (recv *DrawingArea) Widget() *Widget {
 	return WidgetNewFromC(unsafe.Pointer(recv.native))
@@ -8807,6 +9102,11 @@ func EntryNewFromC(u unsafe.Pointer) *Entry {
 func (recv *Entry) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Entry with another Entry, and returns true if they represent the same GObject.
+func (recv *Entry) Equals(other *Entry) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Widget upcasts to *Widget
@@ -9511,6 +9811,11 @@ func (recv *EntryAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this EntryAccessible with another EntryAccessible, and returns true if they represent the same GObject.
+func (recv *EntryAccessible) Equals(other *EntryAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // WidgetAccessible upcasts to *WidgetAccessible
 func (recv *EntryAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromC(unsafe.Pointer(recv.native))
@@ -9575,6 +9880,11 @@ func (recv *EntryBuffer) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this EntryBuffer with another EntryBuffer, and returns true if they represent the same GObject.
+func (recv *EntryBuffer) Equals(other *EntryBuffer) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *EntryBuffer) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -9607,6 +9917,11 @@ func EntryCompletionNewFromC(u unsafe.Pointer) *EntryCompletion {
 func (recv *EntryCompletion) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this EntryCompletion with another EntryCompletion, and returns true if they represent the same GObject.
+func (recv *EntryCompletion) Equals(other *EntryCompletion) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -9653,6 +9968,11 @@ func EventBoxNewFromC(u unsafe.Pointer) *EventBox {
 func (recv *EventBox) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this EventBox with another EventBox, and returns true if they represent the same GObject.
+func (recv *EventBox) Equals(other *EventBox) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Bin upcasts to *Bin
@@ -9725,6 +10045,11 @@ func (recv *EventController) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this EventController with another EventController, and returns true if they represent the same GObject.
+func (recv *EventController) Equals(other *EventController) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *EventController) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -9757,6 +10082,11 @@ func ExpanderNewFromC(u unsafe.Pointer) *Expander {
 func (recv *Expander) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Expander with another Expander, and returns true if they represent the same GObject.
+func (recv *Expander) Equals(other *Expander) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Bin upcasts to *Bin
@@ -9880,6 +10210,11 @@ func (recv *ExpanderAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ExpanderAccessible with another ExpanderAccessible, and returns true if they represent the same GObject.
+func (recv *ExpanderAccessible) Equals(other *ExpanderAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ContainerAccessible upcasts to *ContainerAccessible
 func (recv *ExpanderAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
@@ -9937,6 +10272,11 @@ func FileChooserButtonNewFromC(u unsafe.Pointer) *FileChooserButton {
 func (recv *FileChooserButton) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this FileChooserButton with another FileChooserButton, and returns true if they represent the same GObject.
+func (recv *FileChooserButton) Equals(other *FileChooserButton) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Box upcasts to *Box
@@ -10011,6 +10351,11 @@ func FileChooserDialogNewFromC(u unsafe.Pointer) *FileChooserDialog {
 func (recv *FileChooserDialog) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this FileChooserDialog with another FileChooserDialog, and returns true if they represent the same GObject.
+func (recv *FileChooserDialog) Equals(other *FileChooserDialog) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Dialog upcasts to *Dialog
@@ -10090,6 +10435,11 @@ func FileChooserWidgetNewFromC(u unsafe.Pointer) *FileChooserWidget {
 func (recv *FileChooserWidget) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this FileChooserWidget with another FileChooserWidget, and returns true if they represent the same GObject.
+func (recv *FileChooserWidget) Equals(other *FileChooserWidget) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Box upcasts to *Box
@@ -10852,6 +11202,11 @@ func (recv *FileFilter) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this FileFilter with another FileFilter, and returns true if they represent the same GObject.
+func (recv *FileFilter) Equals(other *FileFilter) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *FileFilter) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromC(unsafe.Pointer(recv.native))
@@ -10894,6 +11249,11 @@ func FixedNewFromC(u unsafe.Pointer) *Fixed {
 func (recv *Fixed) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Fixed with another Fixed, and returns true if they represent the same GObject.
+func (recv *Fixed) Equals(other *Fixed) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Container upcasts to *Container
@@ -10992,6 +11352,11 @@ func FlowBoxNewFromC(u unsafe.Pointer) *FlowBox {
 func (recv *FlowBox) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this FlowBox with another FlowBox, and returns true if they represent the same GObject.
+func (recv *FlowBox) Equals(other *FlowBox) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Container upcasts to *Container
@@ -11404,6 +11769,11 @@ func (recv *FlowBoxAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this FlowBoxAccessible with another FlowBoxAccessible, and returns true if they represent the same GObject.
+func (recv *FlowBoxAccessible) Equals(other *FlowBoxAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ContainerAccessible upcasts to *ContainerAccessible
 func (recv *FlowBoxAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
@@ -11460,6 +11830,11 @@ func FlowBoxChildNewFromC(u unsafe.Pointer) *FlowBoxChild {
 func (recv *FlowBoxChild) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this FlowBoxChild with another FlowBoxChild, and returns true if they represent the same GObject.
+func (recv *FlowBoxChild) Equals(other *FlowBoxChild) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Bin upcasts to *Bin
@@ -11582,6 +11957,11 @@ func (recv *FlowBoxChildAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this FlowBoxChildAccessible with another FlowBoxChildAccessible, and returns true if they represent the same GObject.
+func (recv *FlowBoxChildAccessible) Equals(other *FlowBoxChildAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ContainerAccessible upcasts to *ContainerAccessible
 func (recv *FlowBoxChildAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
@@ -11634,6 +12014,11 @@ func FontButtonNewFromC(u unsafe.Pointer) *FontButton {
 func (recv *FontButton) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this FontButton with another FontButton, and returns true if they represent the same GObject.
+func (recv *FontButton) Equals(other *FontButton) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Button upcasts to *Button
@@ -11720,6 +12105,11 @@ func (recv *FontChooserDialog) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this FontChooserDialog with another FontChooserDialog, and returns true if they represent the same GObject.
+func (recv *FontChooserDialog) Equals(other *FontChooserDialog) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Dialog upcasts to *Dialog
 func (recv *FontChooserDialog) Dialog() *Dialog {
 	return DialogNewFromC(unsafe.Pointer(recv.native))
@@ -11799,6 +12189,11 @@ func (recv *FontChooserWidget) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this FontChooserWidget with another FontChooserWidget, and returns true if they represent the same GObject.
+func (recv *FontChooserWidget) Equals(other *FontChooserWidget) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Box upcasts to *Box
 func (recv *FontChooserWidget) Box() *Box {
 	return BoxNewFromC(unsafe.Pointer(recv.native))
@@ -11871,6 +12266,11 @@ func FontSelectionNewFromC(u unsafe.Pointer) *FontSelection {
 func (recv *FontSelection) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this FontSelection with another FontSelection, and returns true if they represent the same GObject.
+func (recv *FontSelection) Equals(other *FontSelection) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Box upcasts to *Box
@@ -11986,6 +12386,11 @@ func FontSelectionDialogNewFromC(u unsafe.Pointer) *FontSelectionDialog {
 func (recv *FontSelectionDialog) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this FontSelectionDialog with another FontSelectionDialog, and returns true if they represent the same GObject.
+func (recv *FontSelectionDialog) Equals(other *FontSelectionDialog) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Dialog upcasts to *Dialog
@@ -12109,6 +12514,11 @@ func FrameNewFromC(u unsafe.Pointer) *Frame {
 func (recv *Frame) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Frame with another Frame, and returns true if they represent the same GObject.
+func (recv *Frame) Equals(other *Frame) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Bin upcasts to *Bin
@@ -12272,6 +12682,11 @@ func (recv *FrameAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this FrameAccessible with another FrameAccessible, and returns true if they represent the same GObject.
+func (recv *FrameAccessible) Equals(other *FrameAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ContainerAccessible upcasts to *ContainerAccessible
 func (recv *FrameAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
@@ -12324,6 +12739,11 @@ func (recv *Gesture) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Gesture with another Gesture, and returns true if they represent the same GObject.
+func (recv *Gesture) Equals(other *Gesture) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // EventController upcasts to *EventController
 func (recv *Gesture) EventController() *EventController {
 	return EventControllerNewFromC(unsafe.Pointer(recv.native))
@@ -12361,6 +12781,11 @@ func GestureDragNewFromC(u unsafe.Pointer) *GestureDrag {
 func (recv *GestureDrag) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this GestureDrag with another GestureDrag, and returns true if they represent the same GObject.
+func (recv *GestureDrag) Equals(other *GestureDrag) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // GestureSingle upcasts to *GestureSingle
@@ -12410,6 +12835,11 @@ func (recv *GestureLongPress) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this GestureLongPress with another GestureLongPress, and returns true if they represent the same GObject.
+func (recv *GestureLongPress) Equals(other *GestureLongPress) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // GestureSingle upcasts to *GestureSingle
 func (recv *GestureLongPress) GestureSingle() *GestureSingle {
 	return GestureSingleNewFromC(unsafe.Pointer(recv.native))
@@ -12457,6 +12887,11 @@ func (recv *GestureMultiPress) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this GestureMultiPress with another GestureMultiPress, and returns true if they represent the same GObject.
+func (recv *GestureMultiPress) Equals(other *GestureMultiPress) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // GestureSingle upcasts to *GestureSingle
 func (recv *GestureMultiPress) GestureSingle() *GestureSingle {
 	return GestureSingleNewFromC(unsafe.Pointer(recv.native))
@@ -12502,6 +12937,11 @@ func GesturePanNewFromC(u unsafe.Pointer) *GesturePan {
 func (recv *GesturePan) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this GesturePan with another GesturePan, and returns true if they represent the same GObject.
+func (recv *GesturePan) Equals(other *GesturePan) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // GestureDrag upcasts to *GestureDrag
@@ -12556,6 +12996,11 @@ func (recv *GestureRotate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this GestureRotate with another GestureRotate, and returns true if they represent the same GObject.
+func (recv *GestureRotate) Equals(other *GestureRotate) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Gesture upcasts to *Gesture
 func (recv *GestureRotate) Gesture() *Gesture {
 	return GestureNewFromC(unsafe.Pointer(recv.native))
@@ -12598,6 +13043,11 @@ func (recv *GestureSingle) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this GestureSingle with another GestureSingle, and returns true if they represent the same GObject.
+func (recv *GestureSingle) Equals(other *GestureSingle) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Gesture upcasts to *Gesture
 func (recv *GestureSingle) Gesture() *Gesture {
 	return GestureNewFromC(unsafe.Pointer(recv.native))
@@ -12638,6 +13088,11 @@ func GestureSwipeNewFromC(u unsafe.Pointer) *GestureSwipe {
 func (recv *GestureSwipe) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this GestureSwipe with another GestureSwipe, and returns true if they represent the same GObject.
+func (recv *GestureSwipe) Equals(other *GestureSwipe) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // GestureSingle upcasts to *GestureSingle
@@ -12687,6 +13142,11 @@ func (recv *GestureZoom) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this GestureZoom with another GestureZoom, and returns true if they represent the same GObject.
+func (recv *GestureZoom) Equals(other *GestureZoom) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Gesture upcasts to *Gesture
 func (recv *GestureZoom) Gesture() *Gesture {
 	return GestureNewFromC(unsafe.Pointer(recv.native))
@@ -12729,6 +13189,11 @@ func GridNewFromC(u unsafe.Pointer) *Grid {
 func (recv *Grid) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Grid with another Grid, and returns true if they represent the same GObject.
+func (recv *Grid) Equals(other *Grid) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Container upcasts to *Container
@@ -12915,6 +13380,11 @@ func (recv *HBox) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this HBox with another HBox, and returns true if they represent the same GObject.
+func (recv *HBox) Equals(other *HBox) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Box upcasts to *Box
 func (recv *HBox) Box() *Box {
 	return BoxNewFromC(unsafe.Pointer(recv.native))
@@ -12994,6 +13464,11 @@ func HButtonBoxNewFromC(u unsafe.Pointer) *HButtonBox {
 func (recv *HButtonBox) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this HButtonBox with another HButtonBox, and returns true if they represent the same GObject.
+func (recv *HButtonBox) Equals(other *HButtonBox) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ButtonBox upcasts to *ButtonBox
@@ -13077,6 +13552,11 @@ func (recv *HPaned) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this HPaned with another HPaned, and returns true if they represent the same GObject.
+func (recv *HPaned) Equals(other *HPaned) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Paned upcasts to *Paned
 func (recv *HPaned) Paned() *Paned {
 	return PanedNewFromC(unsafe.Pointer(recv.native))
@@ -13152,6 +13632,11 @@ func HSVNewFromC(u unsafe.Pointer) *HSV {
 func (recv *HSV) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this HSV with another HSV, and returns true if they represent the same GObject.
+func (recv *HSV) Equals(other *HSV) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Widget upcasts to *Widget
@@ -13266,6 +13751,11 @@ func (recv *HScale) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this HScale with another HScale, and returns true if they represent the same GObject.
+func (recv *HScale) Equals(other *HScale) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Scale upcasts to *Scale
 func (recv *HScale) Scale() *Scale {
 	return ScaleNewFromC(unsafe.Pointer(recv.native))
@@ -13361,6 +13851,11 @@ func (recv *HScrollbar) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this HScrollbar with another HScrollbar, and returns true if they represent the same GObject.
+func (recv *HScrollbar) Equals(other *HScrollbar) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Scrollbar upcasts to *Scrollbar
 func (recv *HScrollbar) Scrollbar() *Scrollbar {
 	return ScrollbarNewFromC(unsafe.Pointer(recv.native))
@@ -13442,6 +13937,11 @@ func (recv *HSeparator) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this HSeparator with another HSeparator, and returns true if they represent the same GObject.
+func (recv *HSeparator) Equals(other *HSeparator) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Separator upcasts to *Separator
 func (recv *HSeparator) Separator() *Separator {
 	return SeparatorNewFromC(unsafe.Pointer(recv.native))
@@ -13512,6 +14012,11 @@ func HandleBoxNewFromC(u unsafe.Pointer) *HandleBox {
 func (recv *HandleBox) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this HandleBox with another HandleBox, and returns true if they represent the same GObject.
+func (recv *HandleBox) Equals(other *HandleBox) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Bin upcasts to *Bin
@@ -13754,6 +14259,11 @@ func (recv *HeaderBar) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this HeaderBar with another HeaderBar, and returns true if they represent the same GObject.
+func (recv *HeaderBar) Equals(other *HeaderBar) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Container upcasts to *Container
 func (recv *HeaderBar) Container() *Container {
 	return ContainerNewFromC(unsafe.Pointer(recv.native))
@@ -13810,6 +14320,11 @@ func IMContextNewFromC(u unsafe.Pointer) *IMContext {
 func (recv *IMContext) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this IMContext with another IMContext, and returns true if they represent the same GObject.
+func (recv *IMContext) Equals(other *IMContext) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -14321,6 +14836,11 @@ func (recv *IMContextSimple) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this IMContextSimple with another IMContextSimple, and returns true if they represent the same GObject.
+func (recv *IMContextSimple) Equals(other *IMContextSimple) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // IMContext upcasts to *IMContext
 func (recv *IMContextSimple) IMContext() *IMContext {
 	return IMContextNewFromC(unsafe.Pointer(recv.native))
@@ -14383,6 +14903,11 @@ func (recv *IMMulticontext) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this IMMulticontext with another IMMulticontext, and returns true if they represent the same GObject.
+func (recv *IMMulticontext) Equals(other *IMMulticontext) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // IMContext upcasts to *IMContext
 func (recv *IMMulticontext) IMContext() *IMContext {
 	return IMContextNewFromC(unsafe.Pointer(recv.native))
@@ -14440,6 +14965,11 @@ func IconFactoryNewFromC(u unsafe.Pointer) *IconFactory {
 func (recv *IconFactory) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this IconFactory with another IconFactory, and returns true if they represent the same GObject.
+func (recv *IconFactory) Equals(other *IconFactory) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -14527,6 +15057,11 @@ func (recv *IconInfo) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this IconInfo with another IconInfo, and returns true if they represent the same GObject.
+func (recv *IconInfo) Equals(other *IconInfo) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *IconInfo) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -14559,6 +15094,11 @@ func IconThemeNewFromC(u unsafe.Pointer) *IconTheme {
 func (recv *IconTheme) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this IconTheme with another IconTheme, and returns true if they represent the same GObject.
+func (recv *IconTheme) Equals(other *IconTheme) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -14650,6 +15190,11 @@ func IconViewNewFromC(u unsafe.Pointer) *IconView {
 func (recv *IconView) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this IconView with another IconView, and returns true if they represent the same GObject.
+func (recv *IconView) Equals(other *IconView) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Container upcasts to *Container
@@ -15127,6 +15672,11 @@ func (recv *IconViewAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this IconViewAccessible with another IconViewAccessible, and returns true if they represent the same GObject.
+func (recv *IconViewAccessible) Equals(other *IconViewAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ContainerAccessible upcasts to *ContainerAccessible
 func (recv *IconViewAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
@@ -15184,6 +15734,11 @@ func ImageNewFromC(u unsafe.Pointer) *Image {
 func (recv *Image) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Image with another Image, and returns true if they represent the same GObject.
+func (recv *Image) Equals(other *Image) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Misc upcasts to *Misc
@@ -15426,6 +15981,11 @@ func (recv *ImageAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ImageAccessible with another ImageAccessible, and returns true if they represent the same GObject.
+func (recv *ImageAccessible) Equals(other *ImageAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // WidgetAccessible upcasts to *WidgetAccessible
 func (recv *ImageAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromC(unsafe.Pointer(recv.native))
@@ -15478,6 +16038,11 @@ func ImageCellAccessibleNewFromC(u unsafe.Pointer) *ImageCellAccessible {
 func (recv *ImageCellAccessible) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ImageCellAccessible with another ImageCellAccessible, and returns true if they represent the same GObject.
+func (recv *ImageCellAccessible) Equals(other *ImageCellAccessible) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // RendererCellAccessible upcasts to *RendererCellAccessible
@@ -15542,6 +16107,11 @@ func ImageMenuItemNewFromC(u unsafe.Pointer) *ImageMenuItem {
 func (recv *ImageMenuItem) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ImageMenuItem with another ImageMenuItem, and returns true if they represent the same GObject.
+func (recv *ImageMenuItem) Equals(other *ImageMenuItem) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // MenuItem upcasts to *MenuItem
@@ -15689,6 +16259,11 @@ func (recv *InfoBar) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this InfoBar with another InfoBar, and returns true if they represent the same GObject.
+func (recv *InfoBar) Equals(other *InfoBar) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Box upcasts to *Box
 func (recv *InfoBar) Box() *Box {
 	return BoxNewFromC(unsafe.Pointer(recv.native))
@@ -15760,6 +16335,11 @@ func (recv *Invisible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Invisible with another Invisible, and returns true if they represent the same GObject.
+func (recv *Invisible) Equals(other *Invisible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Widget upcasts to *Widget
 func (recv *Invisible) Widget() *Widget {
 	return WidgetNewFromC(unsafe.Pointer(recv.native))
@@ -15820,6 +16400,11 @@ func LabelNewFromC(u unsafe.Pointer) *Label {
 func (recv *Label) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Label with another Label, and returns true if they represent the same GObject.
+func (recv *Label) Equals(other *Label) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Misc upcasts to *Misc
@@ -16294,6 +16879,11 @@ func (recv *LabelAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this LabelAccessible with another LabelAccessible, and returns true if they represent the same GObject.
+func (recv *LabelAccessible) Equals(other *LabelAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // WidgetAccessible upcasts to *WidgetAccessible
 func (recv *LabelAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromC(unsafe.Pointer(recv.native))
@@ -16351,6 +16941,11 @@ func LayoutNewFromC(u unsafe.Pointer) *Layout {
 func (recv *Layout) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Layout with another Layout, and returns true if they represent the same GObject.
+func (recv *Layout) Equals(other *Layout) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Container upcasts to *Container
@@ -16533,6 +17128,11 @@ func (recv *LevelBar) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this LevelBar with another LevelBar, and returns true if they represent the same GObject.
+func (recv *LevelBar) Equals(other *LevelBar) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Widget upcasts to *Widget
 func (recv *LevelBar) Widget() *Widget {
 	return WidgetNewFromC(unsafe.Pointer(recv.native))
@@ -16592,6 +17192,11 @@ func (recv *LevelBarAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this LevelBarAccessible with another LevelBarAccessible, and returns true if they represent the same GObject.
+func (recv *LevelBarAccessible) Equals(other *LevelBarAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // WidgetAccessible upcasts to *WidgetAccessible
 func (recv *LevelBarAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromC(unsafe.Pointer(recv.native))
@@ -16644,6 +17249,11 @@ func LinkButtonNewFromC(u unsafe.Pointer) *LinkButton {
 func (recv *LinkButton) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this LinkButton with another LinkButton, and returns true if they represent the same GObject.
+func (recv *LinkButton) Equals(other *LinkButton) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Button upcasts to *Button
@@ -16785,6 +17395,11 @@ func (recv *LinkButtonAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this LinkButtonAccessible with another LinkButtonAccessible, and returns true if they represent the same GObject.
+func (recv *LinkButtonAccessible) Equals(other *LinkButtonAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ButtonAccessible upcasts to *ButtonAccessible
 func (recv *LinkButtonAccessible) ButtonAccessible() *ButtonAccessible {
 	return ButtonAccessibleNewFromC(unsafe.Pointer(recv.native))
@@ -16856,6 +17471,11 @@ func ListBoxNewFromC(u unsafe.Pointer) *ListBox {
 func (recv *ListBox) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ListBox with another ListBox, and returns true if they represent the same GObject.
+func (recv *ListBox) Equals(other *ListBox) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Container upcasts to *Container
@@ -17033,6 +17653,11 @@ func (recv *ListBoxAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ListBoxAccessible with another ListBoxAccessible, and returns true if they represent the same GObject.
+func (recv *ListBoxAccessible) Equals(other *ListBoxAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ContainerAccessible upcasts to *ContainerAccessible
 func (recv *ListBoxAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
@@ -17089,6 +17714,11 @@ func ListBoxRowNewFromC(u unsafe.Pointer) *ListBoxRow {
 func (recv *ListBoxRow) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ListBoxRow with another ListBoxRow, and returns true if they represent the same GObject.
+func (recv *ListBoxRow) Equals(other *ListBoxRow) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Bin upcasts to *Bin
@@ -17159,6 +17789,11 @@ func (recv *ListBoxRowAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ListBoxRowAccessible with another ListBoxRowAccessible, and returns true if they represent the same GObject.
+func (recv *ListBoxRowAccessible) Equals(other *ListBoxRowAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ContainerAccessible upcasts to *ContainerAccessible
 func (recv *ListBoxRowAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
@@ -17211,6 +17846,11 @@ func ListStoreNewFromC(u unsafe.Pointer) *ListStore {
 func (recv *ListStore) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ListStore with another ListStore, and returns true if they represent the same GObject.
+func (recv *ListStore) Equals(other *ListStore) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -17407,6 +18047,11 @@ func (recv *LockButton) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this LockButton with another LockButton, and returns true if they represent the same GObject.
+func (recv *LockButton) Equals(other *LockButton) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Button upcasts to *Button
 func (recv *LockButton) Button() *Button {
 	return ButtonNewFromC(unsafe.Pointer(recv.native))
@@ -17486,6 +18131,11 @@ func (recv *LockButtonAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this LockButtonAccessible with another LockButtonAccessible, and returns true if they represent the same GObject.
+func (recv *LockButtonAccessible) Equals(other *LockButtonAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ButtonAccessible upcasts to *ButtonAccessible
 func (recv *LockButtonAccessible) ButtonAccessible() *ButtonAccessible {
 	return ButtonAccessibleNewFromC(unsafe.Pointer(recv.native))
@@ -17553,6 +18203,11 @@ func MenuNewFromC(u unsafe.Pointer) *Menu {
 func (recv *Menu) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Menu with another Menu, and returns true if they represent the same GObject.
+func (recv *Menu) Equals(other *Menu) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // MenuShell upcasts to *MenuShell
@@ -17759,6 +18414,11 @@ func (recv *MenuAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this MenuAccessible with another MenuAccessible, and returns true if they represent the same GObject.
+func (recv *MenuAccessible) Equals(other *MenuAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // MenuShellAccessible upcasts to *MenuShellAccessible
 func (recv *MenuAccessible) MenuShellAccessible() *MenuShellAccessible {
 	return MenuShellAccessibleNewFromC(unsafe.Pointer(recv.native))
@@ -17821,6 +18481,11 @@ func MenuBarNewFromC(u unsafe.Pointer) *MenuBar {
 func (recv *MenuBar) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this MenuBar with another MenuBar, and returns true if they represent the same GObject.
+func (recv *MenuBar) Equals(other *MenuBar) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // MenuShell upcasts to *MenuShell
@@ -17893,6 +18558,11 @@ func MenuButtonNewFromC(u unsafe.Pointer) *MenuButton {
 func (recv *MenuButton) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this MenuButton with another MenuButton, and returns true if they represent the same GObject.
+func (recv *MenuButton) Equals(other *MenuButton) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ToggleButton upcasts to *ToggleButton
@@ -17979,6 +18649,11 @@ func (recv *MenuButtonAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this MenuButtonAccessible with another MenuButtonAccessible, and returns true if they represent the same GObject.
+func (recv *MenuButtonAccessible) Equals(other *MenuButtonAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ToggleButtonAccessible upcasts to *ToggleButtonAccessible
 func (recv *MenuButtonAccessible) ToggleButtonAccessible() *ToggleButtonAccessible {
 	return ToggleButtonAccessibleNewFromC(unsafe.Pointer(recv.native))
@@ -18051,6 +18726,11 @@ func MenuItemNewFromC(u unsafe.Pointer) *MenuItem {
 func (recv *MenuItem) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this MenuItem with another MenuItem, and returns true if they represent the same GObject.
+func (recv *MenuItem) Equals(other *MenuItem) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Bin upcasts to *Bin
@@ -18595,6 +19275,11 @@ func (recv *MenuItemAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this MenuItemAccessible with another MenuItemAccessible, and returns true if they represent the same GObject.
+func (recv *MenuItemAccessible) Equals(other *MenuItemAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ContainerAccessible upcasts to *ContainerAccessible
 func (recv *MenuItemAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
@@ -18657,6 +19342,11 @@ func MenuShellNewFromC(u unsafe.Pointer) *MenuShell {
 func (recv *MenuShell) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this MenuShell with another MenuShell, and returns true if they represent the same GObject.
+func (recv *MenuShell) Equals(other *MenuShell) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Container upcasts to *Container
@@ -19031,6 +19721,11 @@ func (recv *MenuShellAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this MenuShellAccessible with another MenuShellAccessible, and returns true if they represent the same GObject.
+func (recv *MenuShellAccessible) Equals(other *MenuShellAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ContainerAccessible upcasts to *ContainerAccessible
 func (recv *MenuShellAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
@@ -19088,6 +19783,11 @@ func MenuToolButtonNewFromC(u unsafe.Pointer) *MenuToolButton {
 func (recv *MenuToolButton) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this MenuToolButton with another MenuToolButton, and returns true if they represent the same GObject.
+func (recv *MenuToolButton) Equals(other *MenuToolButton) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ToolButton upcasts to *ToolButton
@@ -19231,6 +19931,11 @@ func (recv *MessageDialog) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this MessageDialog with another MessageDialog, and returns true if they represent the same GObject.
+func (recv *MessageDialog) Equals(other *MessageDialog) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Dialog upcasts to *Dialog
 func (recv *MessageDialog) Dialog() *Dialog {
 	return DialogNewFromC(unsafe.Pointer(recv.native))
@@ -19305,6 +20010,11 @@ func MiscNewFromC(u unsafe.Pointer) *Misc {
 func (recv *Misc) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Misc with another Misc, and returns true if they represent the same GObject.
+func (recv *Misc) Equals(other *Misc) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Widget upcasts to *Widget
@@ -19411,6 +20121,11 @@ func (recv *ModelButton) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ModelButton with another ModelButton, and returns true if they represent the same GObject.
+func (recv *ModelButton) Equals(other *ModelButton) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Button upcasts to *Button
 func (recv *ModelButton) Button() *Button {
 	return ButtonNewFromC(unsafe.Pointer(recv.native))
@@ -19490,6 +20205,11 @@ func (recv *MountOperation) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this MountOperation with another MountOperation, and returns true if they represent the same GObject.
+func (recv *MountOperation) Equals(other *MountOperation) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // MountOperation upcasts to *MountOperation
 func (recv *MountOperation) MountOperation() *gio.MountOperation {
 	return gio.MountOperationNewFromC(unsafe.Pointer(recv.native))
@@ -19527,6 +20247,11 @@ func NotebookNewFromC(u unsafe.Pointer) *Notebook {
 func (recv *Notebook) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Notebook with another Notebook, and returns true if they represent the same GObject.
+func (recv *Notebook) Equals(other *Notebook) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Container upcasts to *Container
@@ -20207,6 +20932,11 @@ func (recv *NotebookAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this NotebookAccessible with another NotebookAccessible, and returns true if they represent the same GObject.
+func (recv *NotebookAccessible) Equals(other *NotebookAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ContainerAccessible upcasts to *ContainerAccessible
 func (recv *NotebookAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
@@ -20264,6 +20994,11 @@ func NotebookPageAccessibleNewFromC(u unsafe.Pointer) *NotebookPageAccessible {
 func (recv *NotebookPageAccessible) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this NotebookPageAccessible with another NotebookPageAccessible, and returns true if they represent the same GObject.
+func (recv *NotebookPageAccessible) Equals(other *NotebookPageAccessible) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -20330,6 +21065,11 @@ func (recv *NumerableIcon) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this NumerableIcon with another NumerableIcon, and returns true if they represent the same GObject.
+func (recv *NumerableIcon) Equals(other *NumerableIcon) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // EmblemedIcon upcasts to *EmblemedIcon
 func (recv *NumerableIcon) EmblemedIcon() *gio.EmblemedIcon {
 	return gio.EmblemedIconNewFromC(unsafe.Pointer(recv.native))
@@ -20371,6 +21111,11 @@ func OffscreenWindowNewFromC(u unsafe.Pointer) *OffscreenWindow {
 func (recv *OffscreenWindow) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this OffscreenWindow with another OffscreenWindow, and returns true if they represent the same GObject.
+func (recv *OffscreenWindow) Equals(other *OffscreenWindow) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Window upcasts to *Window
@@ -20442,6 +21187,11 @@ func (recv *Overlay) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Overlay with another Overlay, and returns true if they represent the same GObject.
+func (recv *Overlay) Equals(other *Overlay) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Bin upcasts to *Bin
 func (recv *Overlay) Bin() *Bin {
 	return BinNewFromC(unsafe.Pointer(recv.native))
@@ -20506,6 +21256,11 @@ func (recv *PageSetup) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this PageSetup with another PageSetup, and returns true if they represent the same GObject.
+func (recv *PageSetup) Equals(other *PageSetup) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *PageSetup) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -20538,6 +21293,11 @@ func PanedNewFromC(u unsafe.Pointer) *Paned {
 func (recv *Paned) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Paned with another Paned, and returns true if they represent the same GObject.
+func (recv *Paned) Equals(other *Paned) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Container upcasts to *Container
@@ -20681,6 +21441,11 @@ func (recv *PanedAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this PanedAccessible with another PanedAccessible, and returns true if they represent the same GObject.
+func (recv *PanedAccessible) Equals(other *PanedAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ContainerAccessible upcasts to *ContainerAccessible
 func (recv *PanedAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
@@ -20736,6 +21501,11 @@ func PlacesSidebarNewFromC(u unsafe.Pointer) *PlacesSidebar {
 func (recv *PlacesSidebar) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this PlacesSidebar with another PlacesSidebar, and returns true if they represent the same GObject.
+func (recv *PlacesSidebar) Equals(other *PlacesSidebar) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ScrolledWindow upcasts to *ScrolledWindow
@@ -20874,6 +21644,11 @@ func (recv *Popover) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Popover with another Popover, and returns true if they represent the same GObject.
+func (recv *Popover) Equals(other *Popover) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Bin upcasts to *Bin
 func (recv *Popover) Bin() *Bin {
 	return BinNewFromC(unsafe.Pointer(recv.native))
@@ -21004,6 +21779,11 @@ func (recv *PopoverAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this PopoverAccessible with another PopoverAccessible, and returns true if they represent the same GObject.
+func (recv *PopoverAccessible) Equals(other *PopoverAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ContainerAccessible upcasts to *ContainerAccessible
 func (recv *PopoverAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
@@ -21054,6 +21834,11 @@ func PopoverMenuNewFromC(u unsafe.Pointer) *PopoverMenu {
 func (recv *PopoverMenu) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this PopoverMenu with another PopoverMenu, and returns true if they represent the same GObject.
+func (recv *PopoverMenu) Equals(other *PopoverMenu) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Popover upcasts to *Popover
@@ -21123,6 +21908,11 @@ func (recv *PrintContext) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this PrintContext with another PrintContext, and returns true if they represent the same GObject.
+func (recv *PrintContext) Equals(other *PrintContext) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *PrintContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -21155,6 +21945,11 @@ func PrintOperationNewFromC(u unsafe.Pointer) *PrintOperation {
 func (recv *PrintOperation) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this PrintOperation with another PrintOperation, and returns true if they represent the same GObject.
+func (recv *PrintOperation) Equals(other *PrintOperation) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -21194,6 +21989,11 @@ func (recv *PrintSettings) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this PrintSettings with another PrintSettings, and returns true if they represent the same GObject.
+func (recv *PrintSettings) Equals(other *PrintSettings) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *PrintSettings) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -21226,6 +22026,11 @@ func ProgressBarNewFromC(u unsafe.Pointer) *ProgressBar {
 func (recv *ProgressBar) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ProgressBar with another ProgressBar, and returns true if they represent the same GObject.
+func (recv *ProgressBar) Equals(other *ProgressBar) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Widget upcasts to *Widget
@@ -21372,6 +22177,11 @@ func (recv *ProgressBarAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ProgressBarAccessible with another ProgressBarAccessible, and returns true if they represent the same GObject.
+func (recv *ProgressBarAccessible) Equals(other *ProgressBarAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // WidgetAccessible upcasts to *WidgetAccessible
 func (recv *ProgressBarAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromC(unsafe.Pointer(recv.native))
@@ -21426,6 +22236,11 @@ func (recv *RadioAction) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this RadioAction with another RadioAction, and returns true if they represent the same GObject.
+func (recv *RadioAction) Equals(other *RadioAction) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ToggleAction upcasts to *ToggleAction
 func (recv *RadioAction) ToggleAction() *ToggleAction {
 	return ToggleActionNewFromC(unsafe.Pointer(recv.native))
@@ -21473,6 +22288,11 @@ func RadioButtonNewFromC(u unsafe.Pointer) *RadioButton {
 func (recv *RadioButton) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this RadioButton with another RadioButton, and returns true if they represent the same GObject.
+func (recv *RadioButton) Equals(other *RadioButton) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // CheckButton upcasts to *CheckButton
@@ -21674,6 +22494,11 @@ func (recv *RadioButtonAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this RadioButtonAccessible with another RadioButtonAccessible, and returns true if they represent the same GObject.
+func (recv *RadioButtonAccessible) Equals(other *RadioButtonAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ToggleButtonAccessible upcasts to *ToggleButtonAccessible
 func (recv *RadioButtonAccessible) ToggleButtonAccessible() *ToggleButtonAccessible {
 	return ToggleButtonAccessibleNewFromC(unsafe.Pointer(recv.native))
@@ -21746,6 +22571,11 @@ func RadioMenuItemNewFromC(u unsafe.Pointer) *RadioMenuItem {
 func (recv *RadioMenuItem) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this RadioMenuItem with another RadioMenuItem, and returns true if they represent the same GObject.
+func (recv *RadioMenuItem) Equals(other *RadioMenuItem) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // CheckMenuItem upcasts to *CheckMenuItem
@@ -21954,6 +22784,11 @@ func (recv *RadioMenuItemAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this RadioMenuItemAccessible with another RadioMenuItemAccessible, and returns true if they represent the same GObject.
+func (recv *RadioMenuItemAccessible) Equals(other *RadioMenuItemAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // CheckMenuItemAccessible upcasts to *CheckMenuItemAccessible
 func (recv *RadioMenuItemAccessible) CheckMenuItemAccessible() *CheckMenuItemAccessible {
 	return CheckMenuItemAccessibleNewFromC(unsafe.Pointer(recv.native))
@@ -22025,6 +22860,11 @@ func RadioToolButtonNewFromC(u unsafe.Pointer) *RadioToolButton {
 func (recv *RadioToolButton) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this RadioToolButton with another RadioToolButton, and returns true if they represent the same GObject.
+func (recv *RadioToolButton) Equals(other *RadioToolButton) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ToggleToolButton upcasts to *ToggleToolButton
@@ -22114,6 +22954,11 @@ func RangeNewFromC(u unsafe.Pointer) *Range {
 func (recv *Range) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Range with another Range, and returns true if they represent the same GObject.
+func (recv *Range) Equals(other *Range) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Widget upcasts to *Widget
@@ -22370,6 +23215,11 @@ func (recv *RangeAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this RangeAccessible with another RangeAccessible, and returns true if they represent the same GObject.
+func (recv *RangeAccessible) Equals(other *RangeAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // WidgetAccessible upcasts to *WidgetAccessible
 func (recv *RangeAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromC(unsafe.Pointer(recv.native))
@@ -22448,6 +23298,11 @@ func (recv *RcStyle) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this RcStyle with another RcStyle, and returns true if they represent the same GObject.
+func (recv *RcStyle) Equals(other *RcStyle) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *RcStyle) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -22498,6 +23353,11 @@ func (recv *RecentAction) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this RecentAction with another RecentAction, and returns true if they represent the same GObject.
+func (recv *RecentAction) Equals(other *RecentAction) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Action upcasts to *Action
 func (recv *RecentAction) Action() *Action {
 	return ActionNewFromC(unsafe.Pointer(recv.native))
@@ -22545,6 +23405,11 @@ func RecentChooserDialogNewFromC(u unsafe.Pointer) *RecentChooserDialog {
 func (recv *RecentChooserDialog) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this RecentChooserDialog with another RecentChooserDialog, and returns true if they represent the same GObject.
+func (recv *RecentChooserDialog) Equals(other *RecentChooserDialog) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Dialog upcasts to *Dialog
@@ -22626,6 +23491,11 @@ func (recv *RecentChooserMenu) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this RecentChooserMenu with another RecentChooserMenu, and returns true if they represent the same GObject.
+func (recv *RecentChooserMenu) Equals(other *RecentChooserMenu) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Menu upcasts to *Menu
 func (recv *RecentChooserMenu) Menu() *Menu {
 	return MenuNewFromC(unsafe.Pointer(recv.native))
@@ -22705,6 +23575,11 @@ func (recv *RecentChooserWidget) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this RecentChooserWidget with another RecentChooserWidget, and returns true if they represent the same GObject.
+func (recv *RecentChooserWidget) Equals(other *RecentChooserWidget) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Box upcasts to *Box
 func (recv *RecentChooserWidget) Box() *Box {
 	return BoxNewFromC(unsafe.Pointer(recv.native))
@@ -22777,6 +23652,11 @@ func (recv *RecentFilter) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this RecentFilter with another RecentFilter, and returns true if they represent the same GObject.
+func (recv *RecentFilter) Equals(other *RecentFilter) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // InitiallyUnowned upcasts to *InitiallyUnowned
 func (recv *RecentFilter) InitiallyUnowned() *gobject.InitiallyUnowned {
 	return gobject.InitiallyUnownedNewFromC(unsafe.Pointer(recv.native))
@@ -22819,6 +23699,11 @@ func RendererCellAccessibleNewFromC(u unsafe.Pointer) *RendererCellAccessible {
 func (recv *RendererCellAccessible) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this RendererCellAccessible with another RendererCellAccessible, and returns true if they represent the same GObject.
+func (recv *RendererCellAccessible) Equals(other *RendererCellAccessible) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // CellAccessible upcasts to *CellAccessible
@@ -22887,6 +23772,11 @@ func (recv *Revealer) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Revealer with another Revealer, and returns true if they represent the same GObject.
+func (recv *Revealer) Equals(other *Revealer) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Bin upcasts to *Bin
 func (recv *Revealer) Bin() *Bin {
 	return BinNewFromC(unsafe.Pointer(recv.native))
@@ -22949,6 +23839,11 @@ func ScaleNewFromC(u unsafe.Pointer) *Scale {
 func (recv *Scale) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Scale with another Scale, and returns true if they represent the same GObject.
+func (recv *Scale) Equals(other *Scale) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Range upcasts to *Range
@@ -23069,6 +23964,11 @@ func (recv *ScaleAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ScaleAccessible with another ScaleAccessible, and returns true if they represent the same GObject.
+func (recv *ScaleAccessible) Equals(other *ScaleAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // RangeAccessible upcasts to *RangeAccessible
 func (recv *ScaleAccessible) RangeAccessible() *RangeAccessible {
 	return RangeAccessibleNewFromC(unsafe.Pointer(recv.native))
@@ -23126,6 +24026,11 @@ func ScaleButtonNewFromC(u unsafe.Pointer) *ScaleButton {
 func (recv *ScaleButton) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ScaleButton with another ScaleButton, and returns true if they represent the same GObject.
+func (recv *ScaleButton) Equals(other *ScaleButton) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Button upcasts to *Button
@@ -23212,6 +24117,11 @@ func (recv *ScaleButtonAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ScaleButtonAccessible with another ScaleButtonAccessible, and returns true if they represent the same GObject.
+func (recv *ScaleButtonAccessible) Equals(other *ScaleButtonAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ButtonAccessible upcasts to *ButtonAccessible
 func (recv *ScaleButtonAccessible) ButtonAccessible() *ButtonAccessible {
 	return ButtonAccessibleNewFromC(unsafe.Pointer(recv.native))
@@ -23285,6 +24195,11 @@ func (recv *Scrollbar) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Scrollbar with another Scrollbar, and returns true if they represent the same GObject.
+func (recv *Scrollbar) Equals(other *Scrollbar) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Range upcasts to *Range
 func (recv *Scrollbar) Range() *Range {
 	return RangeNewFromC(unsafe.Pointer(recv.native))
@@ -23347,6 +24262,11 @@ func ScrolledWindowNewFromC(u unsafe.Pointer) *ScrolledWindow {
 func (recv *ScrolledWindow) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ScrolledWindow with another ScrolledWindow, and returns true if they represent the same GObject.
+func (recv *ScrolledWindow) Equals(other *ScrolledWindow) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Bin upcasts to *Bin
@@ -23534,6 +24454,11 @@ func (recv *ScrolledWindowAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ScrolledWindowAccessible with another ScrolledWindowAccessible, and returns true if they represent the same GObject.
+func (recv *ScrolledWindowAccessible) Equals(other *ScrolledWindowAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ContainerAccessible upcasts to *ContainerAccessible
 func (recv *ScrolledWindowAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
@@ -23585,6 +24510,11 @@ func SearchBarNewFromC(u unsafe.Pointer) *SearchBar {
 func (recv *SearchBar) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this SearchBar with another SearchBar, and returns true if they represent the same GObject.
+func (recv *SearchBar) Equals(other *SearchBar) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Bin upcasts to *Bin
@@ -23648,6 +24578,11 @@ func SearchEntryNewFromC(u unsafe.Pointer) *SearchEntry {
 func (recv *SearchEntry) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this SearchEntry with another SearchEntry, and returns true if they represent the same GObject.
+func (recv *SearchEntry) Equals(other *SearchEntry) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Entry upcasts to *Entry
@@ -23719,6 +24654,11 @@ func (recv *Separator) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Separator with another Separator, and returns true if they represent the same GObject.
+func (recv *Separator) Equals(other *Separator) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Widget upcasts to *Widget
 func (recv *Separator) Widget() *Widget {
 	return WidgetNewFromC(unsafe.Pointer(recv.native))
@@ -23775,6 +24715,11 @@ func SeparatorMenuItemNewFromC(u unsafe.Pointer) *SeparatorMenuItem {
 func (recv *SeparatorMenuItem) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this SeparatorMenuItem with another SeparatorMenuItem, and returns true if they represent the same GObject.
+func (recv *SeparatorMenuItem) Equals(other *SeparatorMenuItem) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // MenuItem upcasts to *MenuItem
@@ -23864,6 +24809,11 @@ func (recv *SeparatorToolItem) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this SeparatorToolItem with another SeparatorToolItem, and returns true if they represent the same GObject.
+func (recv *SeparatorToolItem) Equals(other *SeparatorToolItem) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ToolItem upcasts to *ToolItem
 func (recv *SeparatorToolItem) ToolItem() *ToolItem {
 	return ToolItemNewFromC(unsafe.Pointer(recv.native))
@@ -23936,6 +24886,11 @@ func SettingsNewFromC(u unsafe.Pointer) *Settings {
 func (recv *Settings) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Settings with another Settings, and returns true if they represent the same GObject.
+func (recv *Settings) Equals(other *Settings) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -24038,6 +24993,11 @@ func (recv *SizeGroup) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this SizeGroup with another SizeGroup, and returns true if they represent the same GObject.
+func (recv *SizeGroup) Equals(other *SizeGroup) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *SizeGroup) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -24128,6 +25088,11 @@ func SpinButtonNewFromC(u unsafe.Pointer) *SpinButton {
 func (recv *SpinButton) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this SpinButton with another SpinButton, and returns true if they represent the same GObject.
+func (recv *SpinButton) Equals(other *SpinButton) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Entry upcasts to *Entry
@@ -24575,6 +25540,11 @@ func (recv *SpinButtonAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this SpinButtonAccessible with another SpinButtonAccessible, and returns true if they represent the same GObject.
+func (recv *SpinButtonAccessible) Equals(other *SpinButtonAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // EntryAccessible upcasts to *EntryAccessible
 func (recv *SpinButtonAccessible) EntryAccessible() *EntryAccessible {
 	return EntryAccessibleNewFromC(unsafe.Pointer(recv.native))
@@ -24649,6 +25619,11 @@ func (recv *Spinner) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Spinner with another Spinner, and returns true if they represent the same GObject.
+func (recv *Spinner) Equals(other *Spinner) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Widget upcasts to *Widget
 func (recv *Spinner) Widget() *Widget {
 	return WidgetNewFromC(unsafe.Pointer(recv.native))
@@ -24703,6 +25678,11 @@ func (recv *SpinnerAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this SpinnerAccessible with another SpinnerAccessible, and returns true if they represent the same GObject.
+func (recv *SpinnerAccessible) Equals(other *SpinnerAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // WidgetAccessible upcasts to *WidgetAccessible
 func (recv *SpinnerAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromC(unsafe.Pointer(recv.native))
@@ -24754,6 +25734,11 @@ func StackNewFromC(u unsafe.Pointer) *Stack {
 func (recv *Stack) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Stack with another Stack, and returns true if they represent the same GObject.
+func (recv *Stack) Equals(other *Stack) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Container upcasts to *Container
@@ -24814,6 +25799,11 @@ func StackSidebarNewFromC(u unsafe.Pointer) *StackSidebar {
 func (recv *StackSidebar) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this StackSidebar with another StackSidebar, and returns true if they represent the same GObject.
+func (recv *StackSidebar) Equals(other *StackSidebar) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Bin upcasts to *Bin
@@ -24877,6 +25867,11 @@ func StackSwitcherNewFromC(u unsafe.Pointer) *StackSwitcher {
 func (recv *StackSwitcher) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this StackSwitcher with another StackSwitcher, and returns true if they represent the same GObject.
+func (recv *StackSwitcher) Equals(other *StackSwitcher) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Box upcasts to *Box
@@ -24948,6 +25943,11 @@ func (recv *StatusIcon) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this StatusIcon with another StatusIcon, and returns true if they represent the same GObject.
+func (recv *StatusIcon) Equals(other *StatusIcon) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *StatusIcon) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -24980,6 +25980,11 @@ func StatusbarNewFromC(u unsafe.Pointer) *Statusbar {
 func (recv *Statusbar) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Statusbar with another Statusbar, and returns true if they represent the same GObject.
+func (recv *Statusbar) Equals(other *Statusbar) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Box upcasts to *Box
@@ -25225,6 +26230,11 @@ func (recv *StatusbarAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this StatusbarAccessible with another StatusbarAccessible, and returns true if they represent the same GObject.
+func (recv *StatusbarAccessible) Equals(other *StatusbarAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ContainerAccessible upcasts to *ContainerAccessible
 func (recv *StatusbarAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
@@ -25305,6 +26315,11 @@ func (recv *Style) ToC() unsafe.Pointer {
 		(C.gint)(recv.Ythickness)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Style with another Style, and returns true if they represent the same GObject.
+func (recv *Style) Equals(other *Style) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -25456,6 +26471,11 @@ func (recv *StyleContext) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this StyleContext with another StyleContext, and returns true if they represent the same GObject.
+func (recv *StyleContext) Equals(other *StyleContext) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *StyleContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -25568,6 +26588,11 @@ func (recv *StyleProperties) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this StyleProperties with another StyleProperties, and returns true if they represent the same GObject.
+func (recv *StyleProperties) Equals(other *StyleProperties) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *StyleProperties) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -25620,6 +26645,11 @@ func SwitchNewFromC(u unsafe.Pointer) *Switch {
 func (recv *Switch) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Switch with another Switch, and returns true if they represent the same GObject.
+func (recv *Switch) Equals(other *Switch) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Widget upcasts to *Widget
@@ -25743,6 +26773,11 @@ func (recv *SwitchAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this SwitchAccessible with another SwitchAccessible, and returns true if they represent the same GObject.
+func (recv *SwitchAccessible) Equals(other *SwitchAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // WidgetAccessible upcasts to *WidgetAccessible
 func (recv *SwitchAccessible) WidgetAccessible() *WidgetAccessible {
 	return WidgetAccessibleNewFromC(unsafe.Pointer(recv.native))
@@ -25795,6 +26830,11 @@ func TableNewFromC(u unsafe.Pointer) *Table {
 func (recv *Table) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Table with another Table, and returns true if they represent the same GObject.
+func (recv *Table) Equals(other *Table) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Container upcasts to *Container
@@ -26024,6 +27064,11 @@ func (recv *TearoffMenuItem) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TearoffMenuItem with another TearoffMenuItem, and returns true if they represent the same GObject.
+func (recv *TearoffMenuItem) Equals(other *TearoffMenuItem) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // MenuItem upcasts to *MenuItem
 func (recv *TearoffMenuItem) MenuItem() *MenuItem {
 	return MenuItemNewFromC(unsafe.Pointer(recv.native))
@@ -26109,6 +27154,11 @@ func TextBufferNewFromC(u unsafe.Pointer) *TextBuffer {
 func (recv *TextBuffer) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TextBuffer with another TextBuffer, and returns true if they represent the same GObject.
+func (recv *TextBuffer) Equals(other *TextBuffer) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -27639,6 +28689,11 @@ func (recv *TextCellAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TextCellAccessible with another TextCellAccessible, and returns true if they represent the same GObject.
+func (recv *TextCellAccessible) Equals(other *TextCellAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // RendererCellAccessible upcasts to *RendererCellAccessible
 func (recv *TextCellAccessible) RendererCellAccessible() *RendererCellAccessible {
 	return RendererCellAccessibleNewFromC(unsafe.Pointer(recv.native))
@@ -27703,6 +28758,11 @@ func (recv *TextChildAnchor) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TextChildAnchor with another TextChildAnchor, and returns true if they represent the same GObject.
+func (recv *TextChildAnchor) Equals(other *TextChildAnchor) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *TextChildAnchor) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -27759,6 +28819,11 @@ func TextMarkNewFromC(u unsafe.Pointer) *TextMark {
 func (recv *TextMark) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TextMark with another TextMark, and returns true if they represent the same GObject.
+func (recv *TextMark) Equals(other *TextMark) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -27845,6 +28910,11 @@ func (recv *TextTag) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TextTag with another TextTag, and returns true if they represent the same GObject.
+func (recv *TextTag) Equals(other *TextTag) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *TextTag) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -27909,6 +28979,11 @@ func TextTagTableNewFromC(u unsafe.Pointer) *TextTagTable {
 func (recv *TextTagTable) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TextTagTable with another TextTagTable, and returns true if they represent the same GObject.
+func (recv *TextTagTable) Equals(other *TextTagTable) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -28186,6 +29261,11 @@ func TextViewNewFromC(u unsafe.Pointer) *TextView {
 func (recv *TextView) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TextView with another TextView, and returns true if they represent the same GObject.
+func (recv *TextView) Equals(other *TextView) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Container upcasts to *Container
@@ -29434,6 +30514,11 @@ func (recv *TextViewAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TextViewAccessible with another TextViewAccessible, and returns true if they represent the same GObject.
+func (recv *TextViewAccessible) Equals(other *TextViewAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ContainerAccessible upcasts to *ContainerAccessible
 func (recv *TextViewAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
@@ -29503,6 +30588,11 @@ func (recv *ThemingEngine) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ThemingEngine with another ThemingEngine, and returns true if they represent the same GObject.
+func (recv *ThemingEngine) Equals(other *ThemingEngine) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *ThemingEngine) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -29548,6 +30638,11 @@ func ToggleActionNewFromC(u unsafe.Pointer) *ToggleAction {
 func (recv *ToggleAction) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ToggleAction with another ToggleAction, and returns true if they represent the same GObject.
+func (recv *ToggleAction) Equals(other *ToggleAction) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Action upcasts to *Action
@@ -29649,6 +30744,11 @@ func ToggleButtonNewFromC(u unsafe.Pointer) *ToggleButton {
 func (recv *ToggleButton) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ToggleButton with another ToggleButton, and returns true if they represent the same GObject.
+func (recv *ToggleButton) Equals(other *ToggleButton) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Button upcasts to *Button
@@ -29878,6 +30978,11 @@ func (recv *ToggleButtonAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ToggleButtonAccessible with another ToggleButtonAccessible, and returns true if they represent the same GObject.
+func (recv *ToggleButtonAccessible) Equals(other *ToggleButtonAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ButtonAccessible upcasts to *ButtonAccessible
 func (recv *ToggleButtonAccessible) ButtonAccessible() *ButtonAccessible {
 	return ButtonAccessibleNewFromC(unsafe.Pointer(recv.native))
@@ -29945,6 +31050,11 @@ func ToggleToolButtonNewFromC(u unsafe.Pointer) *ToggleToolButton {
 func (recv *ToggleToolButton) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ToggleToolButton with another ToggleToolButton, and returns true if they represent the same GObject.
+func (recv *ToggleToolButton) Equals(other *ToggleToolButton) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ToolButton upcasts to *ToolButton
@@ -30088,6 +31198,11 @@ func (recv *ToolButton) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ToolButton with another ToolButton, and returns true if they represent the same GObject.
+func (recv *ToolButton) Equals(other *ToolButton) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ToolItem upcasts to *ToolItem
 func (recv *ToolButton) ToolItem() *ToolItem {
 	return ToolItemNewFromC(unsafe.Pointer(recv.native))
@@ -30222,6 +31337,11 @@ func ToolItemNewFromC(u unsafe.Pointer) *ToolItem {
 func (recv *ToolItem) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ToolItem with another ToolItem, and returns true if they represent the same GObject.
+func (recv *ToolItem) Equals(other *ToolItem) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Bin upcasts to *Bin
@@ -30410,6 +31530,11 @@ func (recv *ToolItemGroup) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ToolItemGroup with another ToolItemGroup, and returns true if they represent the same GObject.
+func (recv *ToolItemGroup) Equals(other *ToolItemGroup) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Container upcasts to *Container
 func (recv *ToolItemGroup) Container() *Container {
 	return ContainerNewFromC(unsafe.Pointer(recv.native))
@@ -30472,6 +31597,11 @@ func ToolPaletteNewFromC(u unsafe.Pointer) *ToolPalette {
 func (recv *ToolPalette) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ToolPalette with another ToolPalette, and returns true if they represent the same GObject.
+func (recv *ToolPalette) Equals(other *ToolPalette) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Container upcasts to *Container
@@ -30541,6 +31671,11 @@ func ToolbarNewFromC(u unsafe.Pointer) *Toolbar {
 func (recv *Toolbar) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Toolbar with another Toolbar, and returns true if they represent the same GObject.
+func (recv *Toolbar) Equals(other *Toolbar) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Container upcasts to *Container
@@ -30798,6 +31933,11 @@ func (recv *Tooltip) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Tooltip with another Tooltip, and returns true if they represent the same GObject.
+func (recv *Tooltip) Equals(other *Tooltip) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *Tooltip) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -30830,6 +31970,11 @@ func ToplevelAccessibleNewFromC(u unsafe.Pointer) *ToplevelAccessible {
 func (recv *ToplevelAccessible) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ToplevelAccessible with another ToplevelAccessible, and returns true if they represent the same GObject.
+func (recv *ToplevelAccessible) Equals(other *ToplevelAccessible) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -30874,6 +32019,11 @@ func (recv *TreeModelFilter) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TreeModelFilter with another TreeModelFilter, and returns true if they represent the same GObject.
+func (recv *TreeModelFilter) Equals(other *TreeModelFilter) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *TreeModelFilter) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -30916,6 +32066,11 @@ func TreeModelSortNewFromC(u unsafe.Pointer) *TreeModelSort {
 func (recv *TreeModelSort) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TreeModelSort with another TreeModelSort, and returns true if they represent the same GObject.
+func (recv *TreeModelSort) Equals(other *TreeModelSort) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -31056,6 +32211,11 @@ func TreeSelectionNewFromC(u unsafe.Pointer) *TreeSelection {
 func (recv *TreeSelection) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TreeSelection with another TreeSelection, and returns true if they represent the same GObject.
+func (recv *TreeSelection) Equals(other *TreeSelection) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -31307,6 +32467,11 @@ func (recv *TreeStore) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TreeStore with another TreeStore, and returns true if they represent the same GObject.
+func (recv *TreeStore) Equals(other *TreeStore) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *TreeStore) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -31555,6 +32720,11 @@ func TreeViewNewFromC(u unsafe.Pointer) *TreeView {
 func (recv *TreeView) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TreeView with another TreeView, and returns true if they represent the same GObject.
+func (recv *TreeView) Equals(other *TreeView) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Container upcasts to *Container
@@ -33024,6 +34194,11 @@ func (recv *TreeViewAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TreeViewAccessible with another TreeViewAccessible, and returns true if they represent the same GObject.
+func (recv *TreeViewAccessible) Equals(other *TreeViewAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ContainerAccessible upcasts to *ContainerAccessible
 func (recv *TreeViewAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
@@ -33091,6 +34266,11 @@ func TreeViewColumnNewFromC(u unsafe.Pointer) *TreeViewColumn {
 func (recv *TreeViewColumn) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TreeViewColumn with another TreeViewColumn, and returns true if they represent the same GObject.
+func (recv *TreeViewColumn) Equals(other *TreeViewColumn) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // InitiallyUnowned upcasts to *InitiallyUnowned
@@ -33614,6 +34794,11 @@ func (recv *UIManager) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this UIManager with another UIManager, and returns true if they represent the same GObject.
+func (recv *UIManager) Equals(other *UIManager) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *UIManager) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -33650,6 +34835,11 @@ func VBoxNewFromC(u unsafe.Pointer) *VBox {
 func (recv *VBox) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this VBox with another VBox, and returns true if they represent the same GObject.
+func (recv *VBox) Equals(other *VBox) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Box upcasts to *Box
@@ -33733,6 +34923,11 @@ func (recv *VButtonBox) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this VButtonBox with another VButtonBox, and returns true if they represent the same GObject.
+func (recv *VButtonBox) Equals(other *VButtonBox) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ButtonBox upcasts to *ButtonBox
 func (recv *VButtonBox) ButtonBox() *ButtonBox {
 	return ButtonBoxNewFromC(unsafe.Pointer(recv.native))
@@ -33814,6 +35009,11 @@ func (recv *VPaned) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this VPaned with another VPaned, and returns true if they represent the same GObject.
+func (recv *VPaned) Equals(other *VPaned) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Paned upcasts to *Paned
 func (recv *VPaned) Paned() *Paned {
 	return PanedNewFromC(unsafe.Pointer(recv.native))
@@ -33888,6 +35088,11 @@ func VScaleNewFromC(u unsafe.Pointer) *VScale {
 func (recv *VScale) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this VScale with another VScale, and returns true if they represent the same GObject.
+func (recv *VScale) Equals(other *VScale) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Scale upcasts to *Scale
@@ -33985,6 +35190,11 @@ func (recv *VScrollbar) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this VScrollbar with another VScrollbar, and returns true if they represent the same GObject.
+func (recv *VScrollbar) Equals(other *VScrollbar) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Scrollbar upcasts to *Scrollbar
 func (recv *VScrollbar) Scrollbar() *Scrollbar {
 	return ScrollbarNewFromC(unsafe.Pointer(recv.native))
@@ -34066,6 +35276,11 @@ func (recv *VSeparator) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this VSeparator with another VSeparator, and returns true if they represent the same GObject.
+func (recv *VSeparator) Equals(other *VSeparator) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Separator upcasts to *Separator
 func (recv *VSeparator) Separator() *Separator {
 	return SeparatorNewFromC(unsafe.Pointer(recv.native))
@@ -34136,6 +35351,11 @@ func ViewportNewFromC(u unsafe.Pointer) *Viewport {
 func (recv *Viewport) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Viewport with another Viewport, and returns true if they represent the same GObject.
+func (recv *Viewport) Equals(other *Viewport) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Bin upcasts to *Bin
@@ -34281,6 +35501,11 @@ func (recv *VolumeButton) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this VolumeButton with another VolumeButton, and returns true if they represent the same GObject.
+func (recv *VolumeButton) Equals(other *VolumeButton) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ScaleButton upcasts to *ScaleButton
 func (recv *VolumeButton) ScaleButton() *ScaleButton {
 	return ScaleButtonNewFromC(unsafe.Pointer(recv.native))
@@ -34368,6 +35593,11 @@ func WidgetNewFromC(u unsafe.Pointer) *Widget {
 func (recv *Widget) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Widget with another Widget, and returns true if they represent the same GObject.
+func (recv *Widget) Equals(other *Widget) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // InitiallyUnowned upcasts to *InitiallyUnowned
@@ -38620,6 +39850,11 @@ func (recv *WidgetAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this WidgetAccessible with another WidgetAccessible, and returns true if they represent the same GObject.
+func (recv *WidgetAccessible) Equals(other *WidgetAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Accessible upcasts to *Accessible
 func (recv *WidgetAccessible) Accessible() *Accessible {
 	return AccessibleNewFromC(unsafe.Pointer(recv.native))
@@ -38662,6 +39897,11 @@ func WindowNewFromC(u unsafe.Pointer) *Window {
 func (recv *Window) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Window with another Window, and returns true if they represent the same GObject.
+func (recv *Window) Equals(other *Window) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Bin upcasts to *Bin
@@ -39602,6 +40842,11 @@ func (recv *WindowAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this WindowAccessible with another WindowAccessible, and returns true if they represent the same GObject.
+func (recv *WindowAccessible) Equals(other *WindowAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ContainerAccessible upcasts to *ContainerAccessible
 func (recv *WindowAccessible) ContainerAccessible() *ContainerAccessible {
 	return ContainerAccessibleNewFromC(unsafe.Pointer(recv.native))
@@ -39659,6 +40904,11 @@ func WindowGroupNewFromC(u unsafe.Pointer) *WindowGroup {
 func (recv *WindowGroup) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this WindowGroup with another WindowGroup, and returns true if they represent the same GObject.
+func (recv *WindowGroup) Equals(other *WindowGroup) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object

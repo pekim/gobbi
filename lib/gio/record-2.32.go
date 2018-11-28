@@ -48,6 +48,11 @@ func (recv *ActionMapInterface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ActionMapInterface with another ActionMapInterface, and returns true if they represent the same GObject.
+func (recv *ActionMapInterface) Equals(other *ActionMapInterface) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ToString is a wrapper around the C function g_file_attribute_matcher_to_string.
 func (recv *FileAttributeMatcher) ToString() string {
 	retC := C.g_file_attribute_matcher_to_string((*C.GFileAttributeMatcher)(recv.native))
@@ -83,6 +88,11 @@ func (recv *NetworkMonitorInterface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this NetworkMonitorInterface with another NetworkMonitorInterface, and returns true if they represent the same GObject.
+func (recv *NetworkMonitorInterface) Equals(other *NetworkMonitorInterface) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // RemoteActionGroupInterface is a wrapper around the C record GRemoteActionGroupInterface.
 type RemoteActionGroupInterface struct {
 	native *C.GRemoteActionGroupInterface
@@ -107,6 +117,11 @@ func (recv *RemoteActionGroupInterface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this RemoteActionGroupInterface with another RemoteActionGroupInterface, and returns true if they represent the same GObject.
+func (recv *RemoteActionGroupInterface) Equals(other *RemoteActionGroupInterface) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Resource is a wrapper around the C record GResource.
 type Resource struct {
 	native *C.GResource
@@ -126,6 +141,11 @@ func ResourceNewFromC(u unsafe.Pointer) *Resource {
 func (recv *Resource) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Resource with another Resource, and returns true if they represent the same GObject.
+func (recv *Resource) Equals(other *Resource) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ResourceNewFromData is a wrapper around the C function g_resource_new_from_data.
@@ -268,6 +288,11 @@ func (recv *SettingsSchema) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this SettingsSchema with another SettingsSchema, and returns true if they represent the same GObject.
+func (recv *SettingsSchema) Equals(other *SettingsSchema) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // GetId is a wrapper around the C function g_settings_schema_get_id.
 func (recv *SettingsSchema) GetId() string {
 	retC := C.g_settings_schema_get_id((*C.GSettingsSchema)(recv.native))
@@ -318,6 +343,11 @@ func SettingsSchemaSourceNewFromC(u unsafe.Pointer) *SettingsSchemaSource {
 func (recv *SettingsSchemaSource) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this SettingsSchemaSource with another SettingsSchemaSource, and returns true if they represent the same GObject.
+func (recv *SettingsSchemaSource) Equals(other *SettingsSchemaSource) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // SettingsSchemaSourceNewFromDirectory is a wrapper around the C function g_settings_schema_source_new_from_directory.

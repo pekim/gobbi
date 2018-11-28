@@ -213,6 +213,11 @@ func (recv *SimpleIOStream) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this SimpleIOStream with another SimpleIOStream, and returns true if they represent the same GObject.
+func (recv *SimpleIOStream) Equals(other *SimpleIOStream) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // IOStream upcasts to *IOStream
 func (recv *SimpleIOStream) IOStream() *IOStream {
 	return IOStreamNewFromC(unsafe.Pointer(recv.native))

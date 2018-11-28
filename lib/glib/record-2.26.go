@@ -33,6 +33,11 @@ func (recv *DateTime) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this DateTime with another DateTime, and returns true if they represent the same GObject.
+func (recv *DateTime) Equals(other *DateTime) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // DateTimeNew is a wrapper around the C function g_date_time_new.
 func DateTimeNew(tz *TimeZone, year int32, month int32, day int32, hour int32, minute int32, seconds float64) *DateTime {
 	c_tz := (*C.GTimeZone)(C.NULL)
@@ -627,6 +632,11 @@ func TimeZoneNewFromC(u unsafe.Pointer) *TimeZone {
 func (recv *TimeZone) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TimeZone with another TimeZone, and returns true if they represent the same GObject.
+func (recv *TimeZone) Equals(other *TimeZone) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // TimeZoneNew is a wrapper around the C function g_time_zone_new.

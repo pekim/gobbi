@@ -44,6 +44,11 @@ func (recv *AsyncInitableIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this AsyncInitableIface with another AsyncInitableIface, and returns true if they represent the same GObject.
+func (recv *AsyncInitableIface) Equals(other *AsyncInitableIface) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // InitableIface is a wrapper around the C record GInitableIface.
 type InitableIface struct {
 	native *C.GInitableIface
@@ -65,6 +70,11 @@ func InitableIfaceNewFromC(u unsafe.Pointer) *InitableIface {
 func (recv *InitableIface) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this InitableIface with another InitableIface, and returns true if they represent the same GObject.
+func (recv *InitableIface) Equals(other *InitableIface) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // InputVector is a wrapper around the C record GInputVector.
@@ -98,6 +108,11 @@ func (recv *InputVector) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this InputVector with another InputVector, and returns true if they represent the same GObject.
+func (recv *InputVector) Equals(other *InputVector) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // OutputVector is a wrapper around the C record GOutputVector.
 type OutputVector struct {
 	native *C.GOutputVector
@@ -127,6 +142,11 @@ func (recv *OutputVector) ToC() unsafe.Pointer {
 		(C.gsize)(recv.Size)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this OutputVector with another OutputVector, and returns true if they represent the same GObject.
+func (recv *OutputVector) Equals(other *OutputVector) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // SrvTargetNew is a wrapper around the C function g_srv_target_new.

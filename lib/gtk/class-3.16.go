@@ -85,6 +85,11 @@ func (recv *GLArea) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this GLArea with another GLArea, and returns true if they represent the same GObject.
+func (recv *GLArea) Equals(other *GLArea) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Widget upcasts to *Widget
 func (recv *GLArea) Widget() *Widget {
 	return WidgetNewFromC(unsafe.Pointer(recv.native))

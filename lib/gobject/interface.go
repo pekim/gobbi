@@ -30,6 +30,11 @@ func (recv *TypePlugin) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TypePlugin with another TypePlugin, and returns true if they represent the same GObject.
+func (recv *TypePlugin) Equals(other *TypePlugin) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // CompleteInterfaceInfo is a wrapper around the C function g_type_plugin_complete_interface_info.
 func (recv *TypePlugin) CompleteInterfaceInfo(instanceType Type, interfaceType Type, info *InterfaceInfo) {
 	c_instance_type := (C.GType)(instanceType)

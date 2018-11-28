@@ -53,6 +53,11 @@ func (recv *VariantDict) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this VariantDict with another VariantDict, and returns true if they represent the same GObject.
+func (recv *VariantDict) Equals(other *VariantDict) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Unsupported : g_variant_dict_new : unsupported parameter from_asv : Blacklisted record : GVariant
 
 // Clear is a wrapper around the C function g_variant_dict_clear.

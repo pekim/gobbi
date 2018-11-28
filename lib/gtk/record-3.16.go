@@ -38,6 +38,11 @@ func (recv *GLAreaClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this GLAreaClass with another GLAreaClass, and returns true if they represent the same GObject.
+func (recv *GLAreaClass) Equals(other *GLAreaClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // PaperSizeNewFromIpp is a wrapper around the C function gtk_paper_size_new_from_ipp.
 func PaperSizeNewFromIpp(ippName string, width float64, height float64) *PaperSize {
 	c_ipp_name := C.CString(ippName)

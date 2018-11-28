@@ -33,6 +33,11 @@ func (recv *Checksum) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Checksum with another Checksum, and returns true if they represent the same GObject.
+func (recv *Checksum) Equals(other *Checksum) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ChecksumNew is a wrapper around the C function g_checksum_new.
 func ChecksumNew(checksumType ChecksumType) *Checksum {
 	c_checksum_type := (C.GChecksumType)(checksumType)

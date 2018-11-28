@@ -62,6 +62,11 @@ func (recv *GlyphItemIter) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this GlyphItemIter with another GlyphItemIter, and returns true if they represent the same GObject.
+func (recv *GlyphItemIter) Equals(other *GlyphItemIter) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Copy is a wrapper around the C function pango_glyph_item_iter_copy.
 func (recv *GlyphItemIter) Copy() *GlyphItemIter {
 	retC := C.pango_glyph_item_iter_copy((*C.PangoGlyphItemIter)(recv.native))

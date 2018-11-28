@@ -192,6 +192,11 @@ func (recv *InetAddressMask) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this InetAddressMask with another InetAddressMask, and returns true if they represent the same GObject.
+func (recv *InetAddressMask) Equals(other *InetAddressMask) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *InetAddressMask) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -337,6 +342,11 @@ func MenuNewFromC(u unsafe.Pointer) *Menu {
 func (recv *Menu) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Menu with another Menu, and returns true if they represent the same GObject.
+func (recv *Menu) Equals(other *Menu) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // MenuModel upcasts to *MenuModel
@@ -575,6 +585,11 @@ func (recv *MenuAttributeIter) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this MenuAttributeIter with another MenuAttributeIter, and returns true if they represent the same GObject.
+func (recv *MenuAttributeIter) Equals(other *MenuAttributeIter) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *MenuAttributeIter) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -625,6 +640,11 @@ func MenuItemNewFromC(u unsafe.Pointer) *MenuItem {
 func (recv *MenuItem) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this MenuItem with another MenuItem, and returns true if they represent the same GObject.
+func (recv *MenuItem) Equals(other *MenuItem) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -774,6 +794,11 @@ func (recv *MenuLinkIter) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this MenuLinkIter with another MenuLinkIter, and returns true if they represent the same GObject.
+func (recv *MenuLinkIter) Equals(other *MenuLinkIter) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *MenuLinkIter) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -846,6 +871,11 @@ func MenuModelNewFromC(u unsafe.Pointer) *MenuModel {
 func (recv *MenuModel) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this MenuModel with another MenuModel, and returns true if they represent the same GObject.
+func (recv *MenuModel) Equals(other *MenuModel) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object

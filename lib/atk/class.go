@@ -98,6 +98,11 @@ func (recv *GObjectAccessible) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this GObjectAccessible with another GObjectAccessible, and returns true if they represent the same GObject.
+func (recv *GObjectAccessible) Equals(other *GObjectAccessible) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *GObjectAccessible) Object() *Object {
 	return ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -137,6 +142,11 @@ func HyperlinkNewFromC(u unsafe.Pointer) *Hyperlink {
 func (recv *Hyperlink) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Hyperlink with another Hyperlink, and returns true if they represent the same GObject.
+func (recv *Hyperlink) Equals(other *Hyperlink) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -295,6 +305,11 @@ func (recv *Misc) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Misc with another Misc, and returns true if they represent the same GObject.
+func (recv *Misc) Equals(other *Misc) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *Misc) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -326,6 +341,11 @@ func NoOpObjectNewFromC(u unsafe.Pointer) *NoOpObject {
 func (recv *NoOpObject) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this NoOpObject with another NoOpObject, and returns true if they represent the same GObject.
+func (recv *NoOpObject) Equals(other *NoOpObject) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -434,6 +454,11 @@ func (recv *NoOpObjectFactory) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this NoOpObjectFactory with another NoOpObjectFactory, and returns true if they represent the same GObject.
+func (recv *NoOpObjectFactory) Equals(other *NoOpObjectFactory) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ObjectFactory upcasts to *ObjectFactory
 func (recv *NoOpObjectFactory) ObjectFactory() *ObjectFactory {
 	return ObjectFactoryNewFromC(unsafe.Pointer(recv.native))
@@ -498,6 +523,11 @@ func (recv *Object) ToC() unsafe.Pointer {
 		(C.AtkLayer)(recv.Layer)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Object with another Object, and returns true if they represent the same GObject.
+func (recv *Object) Equals(other *Object) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -1090,6 +1120,11 @@ func (recv *ObjectFactory) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ObjectFactory with another ObjectFactory, and returns true if they represent the same GObject.
+func (recv *ObjectFactory) Equals(other *ObjectFactory) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *ObjectFactory) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -1151,6 +1186,11 @@ func (recv *Plug) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Plug with another Plug, and returns true if they represent the same GObject.
+func (recv *Plug) Equals(other *Plug) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *Plug) Object() *Object {
 	return ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -1197,6 +1237,11 @@ func RegistryNewFromC(u unsafe.Pointer) *Registry {
 func (recv *Registry) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Registry with another Registry, and returns true if they represent the same GObject.
+func (recv *Registry) Equals(other *Registry) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -1270,6 +1315,11 @@ func (recv *Relation) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Relation with another Relation, and returns true if they represent the same GObject.
+func (recv *Relation) Equals(other *Relation) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *Relation) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -1327,6 +1377,11 @@ func RelationSetNewFromC(u unsafe.Pointer) *RelationSet {
 func (recv *RelationSet) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this RelationSet with another RelationSet, and returns true if they represent the same GObject.
+func (recv *RelationSet) Equals(other *RelationSet) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -1448,6 +1503,11 @@ func (recv *Socket) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Socket with another Socket, and returns true if they represent the same GObject.
+func (recv *Socket) Equals(other *Socket) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *Socket) Object() *Object {
 	return ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -1492,6 +1552,11 @@ func StateSetNewFromC(u unsafe.Pointer) *StateSet {
 func (recv *StateSet) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this StateSet with another StateSet, and returns true if they represent the same GObject.
+func (recv *StateSet) Equals(other *StateSet) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -1645,6 +1710,11 @@ func UtilNewFromC(u unsafe.Pointer) *Util {
 func (recv *Util) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Util with another Util, and returns true if they represent the same GObject.
+func (recv *Util) Equals(other *Util) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object

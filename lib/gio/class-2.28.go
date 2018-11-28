@@ -93,6 +93,11 @@ func (recv *Application) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Application with another Application, and returns true if they represent the same GObject.
+func (recv *Application) Equals(other *Application) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *Application) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -660,6 +665,11 @@ func (recv *SimpleActionGroup) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this SimpleActionGroup with another SimpleActionGroup, and returns true if they represent the same GObject.
+func (recv *SimpleActionGroup) Equals(other *SimpleActionGroup) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *SimpleActionGroup) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -799,6 +809,11 @@ func (recv *TlsCertificate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TlsCertificate with another TlsCertificate, and returns true if they represent the same GObject.
+func (recv *TlsCertificate) Equals(other *TlsCertificate) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *TlsCertificate) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -913,6 +928,11 @@ func TlsConnectionNewFromC(u unsafe.Pointer) *TlsConnection {
 func (recv *TlsConnection) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TlsConnection with another TlsConnection, and returns true if they represent the same GObject.
+func (recv *TlsConnection) Equals(other *TlsConnection) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // IOStream upcasts to *IOStream

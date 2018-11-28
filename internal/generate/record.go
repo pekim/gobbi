@@ -72,6 +72,7 @@ func (r *Record) generate(g *jen.Group, version *Version) {
 		r.generateType(g)
 		(&RecordNewFromCFunc{r}).generate(g)
 		(&RecordToCFunc{r}).generate(g)
+		(&RecordEqualFunc{r}).generate(g)
 		r.generateUpcasts(g)
 		r.generateDowncast(g)
 	}

@@ -66,6 +66,11 @@ func (recv *Matrix) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Matrix with another Matrix, and returns true if they represent the same GObject.
+func (recv *Matrix) Equals(other *Matrix) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Concat is a wrapper around the C function pango_matrix_concat.
 func (recv *Matrix) Concat(newMatrix *Matrix) {
 	c_new_matrix := (*C.PangoMatrix)(C.NULL)

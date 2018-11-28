@@ -31,6 +31,11 @@ func (recv *DevicePad) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this DevicePad with another DevicePad, and returns true if they represent the same GObject.
+func (recv *DevicePad) Equals(other *DevicePad) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // GetFeatureGroup is a wrapper around the C function gdk_device_pad_get_feature_group.
 func (recv *DevicePad) GetFeatureGroup(feature DevicePadFeature, featureIdx int32) int32 {
 	c_feature := (C.GdkDevicePadFeature)(feature)

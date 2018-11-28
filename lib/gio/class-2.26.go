@@ -45,6 +45,11 @@ func (recv *Credentials) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Credentials with another Credentials, and returns true if they represent the same GObject.
+func (recv *Credentials) Equals(other *Credentials) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *Credentials) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -139,6 +144,11 @@ func (recv *DBusAuthObserver) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this DBusAuthObserver with another DBusAuthObserver, and returns true if they represent the same GObject.
+func (recv *DBusAuthObserver) Equals(other *DBusAuthObserver) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *DBusAuthObserver) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -195,6 +205,11 @@ func DBusConnectionNewFromC(u unsafe.Pointer) *DBusConnection {
 func (recv *DBusConnection) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this DBusConnection with another DBusConnection, and returns true if they represent the same GObject.
+func (recv *DBusConnection) Equals(other *DBusConnection) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -614,6 +629,11 @@ func DBusMessageNewFromC(u unsafe.Pointer) *DBusMessage {
 func (recv *DBusMessage) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this DBusMessage with another DBusMessage, and returns true if they represent the same GObject.
+func (recv *DBusMessage) Equals(other *DBusMessage) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -1064,6 +1084,11 @@ func (recv *DBusMethodInvocation) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this DBusMethodInvocation with another DBusMethodInvocation, and returns true if they represent the same GObject.
+func (recv *DBusMethodInvocation) Equals(other *DBusMethodInvocation) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *DBusMethodInvocation) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -1207,6 +1232,11 @@ func DBusProxyNewFromC(u unsafe.Pointer) *DBusProxy {
 func (recv *DBusProxy) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this DBusProxy with another DBusProxy, and returns true if they represent the same GObject.
+func (recv *DBusProxy) Equals(other *DBusProxy) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -1455,6 +1485,11 @@ func DBusServerNewFromC(u unsafe.Pointer) *DBusServer {
 func (recv *DBusServer) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this DBusServer with another DBusServer, and returns true if they represent the same GObject.
+func (recv *DBusServer) Equals(other *DBusServer) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -1752,6 +1787,11 @@ func ProxyAddressNewFromC(u unsafe.Pointer) *ProxyAddress {
 func (recv *ProxyAddress) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ProxyAddress with another ProxyAddress, and returns true if they represent the same GObject.
+func (recv *ProxyAddress) Equals(other *ProxyAddress) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // InetSocketAddress upcasts to *InetSocketAddress
@@ -2360,6 +2400,11 @@ func UnixCredentialsMessageNewFromC(u unsafe.Pointer) *UnixCredentialsMessage {
 func (recv *UnixCredentialsMessage) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this UnixCredentialsMessage with another UnixCredentialsMessage, and returns true if they represent the same GObject.
+func (recv *UnixCredentialsMessage) Equals(other *UnixCredentialsMessage) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // SocketControlMessage upcasts to *SocketControlMessage

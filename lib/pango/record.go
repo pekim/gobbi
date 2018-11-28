@@ -56,6 +56,11 @@ func (recv *Analysis) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Analysis with another Analysis, and returns true if they represent the same GObject.
+func (recv *Analysis) Equals(other *Analysis) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // AttrClass is a wrapper around the C record PangoAttrClass.
 type AttrClass struct {
 	native *C.PangoAttrClass
@@ -86,6 +91,11 @@ func (recv *AttrClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this AttrClass with another AttrClass, and returns true if they represent the same GObject.
+func (recv *AttrClass) Equals(other *AttrClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // AttrColor is a wrapper around the C record PangoAttrColor.
 type AttrColor struct {
 	native *C.PangoAttrColor
@@ -107,6 +117,11 @@ func AttrColorNewFromC(u unsafe.Pointer) *AttrColor {
 func (recv *AttrColor) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this AttrColor with another AttrColor, and returns true if they represent the same GObject.
+func (recv *AttrColor) Equals(other *AttrColor) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // AttrFloat is a wrapper around the C record PangoAttrFloat.
@@ -137,6 +152,11 @@ func (recv *AttrFloat) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this AttrFloat with another AttrFloat, and returns true if they represent the same GObject.
+func (recv *AttrFloat) Equals(other *AttrFloat) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // AttrFontDesc is a wrapper around the C record PangoAttrFontDesc.
 type AttrFontDesc struct {
 	native *C.PangoAttrFontDesc
@@ -158,6 +178,11 @@ func AttrFontDescNewFromC(u unsafe.Pointer) *AttrFontDesc {
 func (recv *AttrFontDesc) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this AttrFontDesc with another AttrFontDesc, and returns true if they represent the same GObject.
+func (recv *AttrFontDesc) Equals(other *AttrFontDesc) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // AttrInt is a wrapper around the C record PangoAttrInt.
@@ -188,6 +213,11 @@ func (recv *AttrInt) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this AttrInt with another AttrInt, and returns true if they represent the same GObject.
+func (recv *AttrInt) Equals(other *AttrInt) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // AttrIterator is a wrapper around the C record PangoAttrIterator.
 type AttrIterator struct {
 	native *C.PangoAttrIterator
@@ -207,6 +237,11 @@ func AttrIteratorNewFromC(u unsafe.Pointer) *AttrIterator {
 func (recv *AttrIterator) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this AttrIterator with another AttrIterator, and returns true if they represent the same GObject.
+func (recv *AttrIterator) Equals(other *AttrIterator) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Copy is a wrapper around the C function pango_attr_iterator_copy.
@@ -307,6 +342,11 @@ func (recv *AttrLanguage) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this AttrLanguage with another AttrLanguage, and returns true if they represent the same GObject.
+func (recv *AttrLanguage) Equals(other *AttrLanguage) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // AttrList is a wrapper around the C record PangoAttrList.
 type AttrList struct {
 	native *C.PangoAttrList
@@ -326,6 +366,11 @@ func AttrListNewFromC(u unsafe.Pointer) *AttrList {
 func (recv *AttrList) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this AttrList with another AttrList, and returns true if they represent the same GObject.
+func (recv *AttrList) Equals(other *AttrList) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // AttrListNew is a wrapper around the C function pango_attr_list_new.
@@ -448,6 +493,11 @@ func (recv *AttrShape) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this AttrShape with another AttrShape, and returns true if they represent the same GObject.
+func (recv *AttrShape) Equals(other *AttrShape) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // AttrSize is a wrapper around the C record PangoAttrSize.
 type AttrSize struct {
 	native *C.PangoAttrSize
@@ -477,6 +527,11 @@ func (recv *AttrSize) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this AttrSize with another AttrSize, and returns true if they represent the same GObject.
+func (recv *AttrSize) Equals(other *AttrSize) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // AttrString is a wrapper around the C record PangoAttrString.
 type AttrString struct {
 	native *C.PangoAttrString
@@ -503,6 +558,11 @@ func (recv *AttrString) ToC() unsafe.Pointer {
 		C.CString(recv.Value)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this AttrString with another AttrString, and returns true if they represent the same GObject.
+func (recv *AttrString) Equals(other *AttrString) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Attribute is a wrapper around the C record PangoAttribute.
@@ -535,6 +595,11 @@ func (recv *Attribute) ToC() unsafe.Pointer {
 		(C.guint)(recv.EndIndex)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Attribute with another Attribute, and returns true if they represent the same GObject.
+func (recv *Attribute) Equals(other *Attribute) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Copy is a wrapper around the C function pango_attribute_copy.
@@ -600,6 +665,11 @@ func (recv *Color) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Color with another Color, and returns true if they represent the same GObject.
+func (recv *Color) Equals(other *Color) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Copy is a wrapper around the C function pango_color_copy.
 func (recv *Color) Copy() *Color {
 	retC := C.pango_color_copy((*C.PangoColor)(recv.native))
@@ -652,6 +722,11 @@ func (recv *ContextClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ContextClass with another ContextClass, and returns true if they represent the same GObject.
+func (recv *ContextClass) Equals(other *ContextClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Coverage is a wrapper around the C record PangoCoverage.
 type Coverage struct {
 	native *C.PangoCoverage
@@ -671,6 +746,11 @@ func CoverageNewFromC(u unsafe.Pointer) *Coverage {
 func (recv *Coverage) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Coverage with another Coverage, and returns true if they represent the same GObject.
+func (recv *Coverage) Equals(other *Coverage) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Copy is a wrapper around the C function pango_coverage_copy.
@@ -762,6 +842,11 @@ func FontDescriptionNewFromC(u unsafe.Pointer) *FontDescription {
 func (recv *FontDescription) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this FontDescription with another FontDescription, and returns true if they represent the same GObject.
+func (recv *FontDescription) Equals(other *FontDescription) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // FontDescriptionNew is a wrapper around the C function pango_font_description_new.
@@ -1069,6 +1154,11 @@ func (recv *GlyphGeometry) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this GlyphGeometry with another GlyphGeometry, and returns true if they represent the same GObject.
+func (recv *GlyphGeometry) Equals(other *GlyphGeometry) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // GlyphInfo is a wrapper around the C record PangoGlyphInfo.
 type GlyphInfo struct {
 	native *C.PangoGlyphInfo
@@ -1098,6 +1188,11 @@ func (recv *GlyphInfo) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this GlyphInfo with another GlyphInfo, and returns true if they represent the same GObject.
+func (recv *GlyphInfo) Equals(other *GlyphInfo) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // GlyphItem is a wrapper around the C record PangoGlyphItem.
 type GlyphItem struct {
 	native *C.PangoGlyphItem
@@ -1119,6 +1214,11 @@ func GlyphItemNewFromC(u unsafe.Pointer) *GlyphItem {
 func (recv *GlyphItem) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this GlyphItem with another GlyphItem, and returns true if they represent the same GObject.
+func (recv *GlyphItem) Equals(other *GlyphItem) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Blacklisted : PangoGlyphString
@@ -1143,6 +1243,11 @@ func GlyphVisAttrNewFromC(u unsafe.Pointer) *GlyphVisAttr {
 func (recv *GlyphVisAttr) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this GlyphVisAttr with another GlyphVisAttr, and returns true if they represent the same GObject.
+func (recv *GlyphVisAttr) Equals(other *GlyphVisAttr) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Blacklisted : PangoIncludedModule
@@ -1181,6 +1286,11 @@ func (recv *Item) ToC() unsafe.Pointer {
 		(C.gint)(recv.NumChars)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Item with another Item, and returns true if they represent the same GObject.
+func (recv *Item) Equals(other *Item) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ItemNew is a wrapper around the C function pango_item_new.
@@ -1244,6 +1354,11 @@ func (recv *Language) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Language with another Language, and returns true if they represent the same GObject.
+func (recv *Language) Equals(other *Language) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // GetSampleString is a wrapper around the C function pango_language_get_sample_string.
 func (recv *Language) GetSampleString() string {
 	retC := C.pango_language_get_sample_string((*C.PangoLanguage)(recv.native))
@@ -1292,6 +1407,11 @@ func (recv *LayoutClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this LayoutClass with another LayoutClass, and returns true if they represent the same GObject.
+func (recv *LayoutClass) Equals(other *LayoutClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Blacklisted : PangoLayoutIter
 
 // LayoutLine is a wrapper around the C record PangoLayoutLine.
@@ -1327,6 +1447,11 @@ func (recv *LayoutLine) ToC() unsafe.Pointer {
 		(C.gint)(recv.Length)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this LayoutLine with another LayoutLine, and returns true if they represent the same GObject.
+func (recv *LayoutLine) Equals(other *LayoutLine) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // GetExtents is a wrapper around the C function pango_layout_line_get_extents.
@@ -1436,6 +1561,11 @@ func (recv *LogAttr) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this LogAttr with another LogAttr, and returns true if they represent the same GObject.
+func (recv *LogAttr) Equals(other *LogAttr) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Blacklisted : PangoMap
 
 // Blacklisted : PangoMapEntry
@@ -1479,6 +1609,11 @@ func (recv *Rectangle) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Rectangle with another Rectangle, and returns true if they represent the same GObject.
+func (recv *Rectangle) Equals(other *Rectangle) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // RendererPrivate is a wrapper around the C record PangoRendererPrivate.
 type RendererPrivate struct {
 	native *C.PangoRendererPrivate
@@ -1498,6 +1633,11 @@ func RendererPrivateNewFromC(u unsafe.Pointer) *RendererPrivate {
 func (recv *RendererPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this RendererPrivate with another RendererPrivate, and returns true if they represent the same GObject.
+func (recv *RendererPrivate) Equals(other *RendererPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Blacklisted : PangoScriptForLang
@@ -1523,6 +1663,11 @@ func (recv *ScriptIter) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ScriptIter with another ScriptIter, and returns true if they represent the same GObject.
+func (recv *ScriptIter) Equals(other *ScriptIter) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // TabArray is a wrapper around the C record PangoTabArray.
 type TabArray struct {
 	native *C.PangoTabArray
@@ -1542,6 +1687,11 @@ func TabArrayNewFromC(u unsafe.Pointer) *TabArray {
 func (recv *TabArray) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TabArray with another TabArray, and returns true if they represent the same GObject.
+func (recv *TabArray) Equals(other *TabArray) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // TabArrayNew is a wrapper around the C function pango_tab_array_new.

@@ -351,6 +351,11 @@ func (recv *PollableInputStream) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this PollableInputStream with another PollableInputStream, and returns true if they represent the same GObject.
+func (recv *PollableInputStream) Equals(other *PollableInputStream) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // CanPoll is a wrapper around the C function g_pollable_input_stream_can_poll.
 func (recv *PollableInputStream) CanPoll() bool {
 	retC := C.g_pollable_input_stream_can_poll((*C.GPollableInputStream)(recv.native))
@@ -423,6 +428,11 @@ func PollableOutputStreamNewFromC(u unsafe.Pointer) *PollableOutputStream {
 func (recv *PollableOutputStream) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this PollableOutputStream with another PollableOutputStream, and returns true if they represent the same GObject.
+func (recv *PollableOutputStream) Equals(other *PollableOutputStream) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // CanPoll is a wrapper around the C function g_pollable_output_stream_can_poll.
@@ -499,6 +509,11 @@ func (recv *TlsBackend) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TlsBackend with another TlsBackend, and returns true if they represent the same GObject.
+func (recv *TlsBackend) Equals(other *TlsBackend) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // GetCertificateType is a wrapper around the C function g_tls_backend_get_certificate_type.
 func (recv *TlsBackend) GetCertificateType() gobject.Type {
 	retC := C.g_tls_backend_get_certificate_type((*C.GTlsBackend)(recv.native))
@@ -550,6 +565,11 @@ func TlsClientConnectionNewFromC(u unsafe.Pointer) *TlsClientConnection {
 func (recv *TlsClientConnection) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TlsClientConnection with another TlsClientConnection, and returns true if they represent the same GObject.
+func (recv *TlsClientConnection) Equals(other *TlsClientConnection) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // GetAcceptedCas is a wrapper around the C function g_tls_client_connection_get_accepted_cas.
@@ -631,4 +651,9 @@ func TlsServerConnectionNewFromC(u unsafe.Pointer) *TlsServerConnection {
 func (recv *TlsServerConnection) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TlsServerConnection with another TlsServerConnection, and returns true if they represent the same GObject.
+func (recv *TlsServerConnection) Equals(other *TlsServerConnection) bool {
+	return other.ToC() == recv.ToC()
 }

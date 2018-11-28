@@ -209,6 +209,11 @@ func (recv *Regex) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Regex with another Regex, and returns true if they represent the same GObject.
+func (recv *Regex) Equals(other *Regex) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // RegexNew is a wrapper around the C function g_regex_new.
 func RegexNew(pattern string, compileOptions RegexCompileFlags, matchOptions RegexMatchFlags) (*Regex, error) {
 	c_pattern := C.CString(pattern)

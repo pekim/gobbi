@@ -64,6 +64,11 @@ func (recv *AsyncInitable) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this AsyncInitable with another AsyncInitable, and returns true if they represent the same GObject.
+func (recv *AsyncInitable) Equals(other *AsyncInitable) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Unsupported : g_async_initable_init_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
 // InitFinish is a wrapper around the C function g_async_initable_init_finish.
@@ -495,6 +500,11 @@ func InitableNewFromC(u unsafe.Pointer) *Initable {
 func (recv *Initable) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Initable with another Initable, and returns true if they represent the same GObject.
+func (recv *Initable) Equals(other *Initable) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Init is a wrapper around the C function g_initable_init.

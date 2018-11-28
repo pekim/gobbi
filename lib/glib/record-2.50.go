@@ -68,3 +68,8 @@ func (recv *LogField) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Equals compares this LogField with another LogField, and returns true if they represent the same GObject.
+func (recv *LogField) Equals(other *LogField) bool {
+	return other.ToC() == recv.ToC()
+}

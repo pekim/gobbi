@@ -46,6 +46,11 @@ func (recv *AboutDialogClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this AboutDialogClass with another AboutDialogClass, and returns true if they represent the same GObject.
+func (recv *AboutDialogClass) Equals(other *AboutDialogClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // AboutDialogPrivate is a wrapper around the C record GtkAboutDialogPrivate.
 type AboutDialogPrivate struct {
 	native *C.GtkAboutDialogPrivate
@@ -65,6 +70,11 @@ func AboutDialogPrivateNewFromC(u unsafe.Pointer) *AboutDialogPrivate {
 func (recv *AboutDialogPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this AboutDialogPrivate with another AboutDialogPrivate, and returns true if they represent the same GObject.
+func (recv *AboutDialogPrivate) Equals(other *AboutDialogPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // AccelGroupClass is a wrapper around the C record GtkAccelGroupClass.
@@ -92,6 +102,11 @@ func AccelGroupClassNewFromC(u unsafe.Pointer) *AccelGroupClass {
 func (recv *AccelGroupClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this AccelGroupClass with another AccelGroupClass, and returns true if they represent the same GObject.
+func (recv *AccelGroupClass) Equals(other *AccelGroupClass) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // AccelGroupEntry is a wrapper around the C record GtkAccelGroupEntry.
@@ -123,6 +138,11 @@ func (recv *AccelGroupEntry) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this AccelGroupEntry with another AccelGroupEntry, and returns true if they represent the same GObject.
+func (recv *AccelGroupEntry) Equals(other *AccelGroupEntry) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // AccelGroupPrivate is a wrapper around the C record GtkAccelGroupPrivate.
 type AccelGroupPrivate struct {
 	native *C.GtkAccelGroupPrivate
@@ -142,6 +162,11 @@ func AccelGroupPrivateNewFromC(u unsafe.Pointer) *AccelGroupPrivate {
 func (recv *AccelGroupPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this AccelGroupPrivate with another AccelGroupPrivate, and returns true if they represent the same GObject.
+func (recv *AccelGroupPrivate) Equals(other *AccelGroupPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // AccelKey is a wrapper around the C record GtkAccelKey.
@@ -174,6 +199,11 @@ func (recv *AccelKey) ToC() unsafe.Pointer {
 		(C.GdkModifierType)(recv.AccelMods)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this AccelKey with another AccelKey, and returns true if they represent the same GObject.
+func (recv *AccelKey) Equals(other *AccelKey) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // AccelLabelClass is a wrapper around the C record GtkAccelLabelClass.
@@ -228,6 +258,11 @@ func (recv *AccelLabelClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this AccelLabelClass with another AccelLabelClass, and returns true if they represent the same GObject.
+func (recv *AccelLabelClass) Equals(other *AccelLabelClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // AccelLabelPrivate is a wrapper around the C record GtkAccelLabelPrivate.
 type AccelLabelPrivate struct {
 	native *C.GtkAccelLabelPrivate
@@ -249,6 +284,11 @@ func (recv *AccelLabelPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this AccelLabelPrivate with another AccelLabelPrivate, and returns true if they represent the same GObject.
+func (recv *AccelLabelPrivate) Equals(other *AccelLabelPrivate) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // AccelMapClass is a wrapper around the C record GtkAccelMapClass.
 type AccelMapClass struct {
 	native *C.GtkAccelMapClass
@@ -268,6 +308,11 @@ func AccelMapClassNewFromC(u unsafe.Pointer) *AccelMapClass {
 func (recv *AccelMapClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this AccelMapClass with another AccelMapClass, and returns true if they represent the same GObject.
+func (recv *AccelMapClass) Equals(other *AccelMapClass) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // AccessibleClass is a wrapper around the C record GtkAccessibleClass.
@@ -297,6 +342,11 @@ func (recv *AccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this AccessibleClass with another AccessibleClass, and returns true if they represent the same GObject.
+func (recv *AccessibleClass) Equals(other *AccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // AccessiblePrivate is a wrapper around the C record GtkAccessiblePrivate.
 type AccessiblePrivate struct {
 	native *C.GtkAccessiblePrivate
@@ -316,6 +366,11 @@ func AccessiblePrivateNewFromC(u unsafe.Pointer) *AccessiblePrivate {
 func (recv *AccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this AccessiblePrivate with another AccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *AccessiblePrivate) Equals(other *AccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ActionBarClass is a wrapper around the C record GtkActionBarClass.
@@ -344,6 +399,11 @@ func (recv *ActionBarClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ActionBarClass with another ActionBarClass, and returns true if they represent the same GObject.
+func (recv *ActionBarClass) Equals(other *ActionBarClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ActionBarPrivate is a wrapper around the C record GtkActionBarPrivate.
 type ActionBarPrivate struct {
 	native *C.GtkActionBarPrivate
@@ -363,6 +423,11 @@ func ActionBarPrivateNewFromC(u unsafe.Pointer) *ActionBarPrivate {
 func (recv *ActionBarPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ActionBarPrivate with another ActionBarPrivate, and returns true if they represent the same GObject.
+func (recv *ActionBarPrivate) Equals(other *ActionBarPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ActionClass is a wrapper around the C record GtkActionClass.
@@ -397,6 +462,11 @@ func ActionClassNewFromC(u unsafe.Pointer) *ActionClass {
 func (recv *ActionClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ActionClass with another ActionClass, and returns true if they represent the same GObject.
+func (recv *ActionClass) Equals(other *ActionClass) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ActionEntry is a wrapper around the C record GtkActionEntry.
@@ -443,6 +513,11 @@ func (recv *ActionEntry) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ActionEntry with another ActionEntry, and returns true if they represent the same GObject.
+func (recv *ActionEntry) Equals(other *ActionEntry) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ActionGroupClass is a wrapper around the C record GtkActionGroupClass.
 type ActionGroupClass struct {
 	native *C.GtkActionGroupClass
@@ -470,6 +545,11 @@ func (recv *ActionGroupClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ActionGroupClass with another ActionGroupClass, and returns true if they represent the same GObject.
+func (recv *ActionGroupClass) Equals(other *ActionGroupClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ActionGroupPrivate is a wrapper around the C record GtkActionGroupPrivate.
 type ActionGroupPrivate struct {
 	native *C.GtkActionGroupPrivate
@@ -491,6 +571,11 @@ func (recv *ActionGroupPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ActionGroupPrivate with another ActionGroupPrivate, and returns true if they represent the same GObject.
+func (recv *ActionGroupPrivate) Equals(other *ActionGroupPrivate) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ActionPrivate is a wrapper around the C record GtkActionPrivate.
 type ActionPrivate struct {
 	native *C.GtkActionPrivate
@@ -510,6 +595,11 @@ func ActionPrivateNewFromC(u unsafe.Pointer) *ActionPrivate {
 func (recv *ActionPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ActionPrivate with another ActionPrivate, and returns true if they represent the same GObject.
+func (recv *ActionPrivate) Equals(other *ActionPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ActionableInterface is a wrapper around the C record GtkActionableInterface.
@@ -536,6 +626,11 @@ func ActionableInterfaceNewFromC(u unsafe.Pointer) *ActionableInterface {
 func (recv *ActionableInterface) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ActionableInterface with another ActionableInterface, and returns true if they represent the same GObject.
+func (recv *ActionableInterface) Equals(other *ActionableInterface) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // AdjustmentClass is a wrapper around the C record GtkAdjustmentClass.
@@ -566,6 +661,11 @@ func (recv *AdjustmentClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this AdjustmentClass with another AdjustmentClass, and returns true if they represent the same GObject.
+func (recv *AdjustmentClass) Equals(other *AdjustmentClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // AdjustmentPrivate is a wrapper around the C record GtkAdjustmentPrivate.
 type AdjustmentPrivate struct {
 	native *C.GtkAdjustmentPrivate
@@ -585,6 +685,11 @@ func AdjustmentPrivateNewFromC(u unsafe.Pointer) *AdjustmentPrivate {
 func (recv *AdjustmentPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this AdjustmentPrivate with another AdjustmentPrivate, and returns true if they represent the same GObject.
+func (recv *AdjustmentPrivate) Equals(other *AdjustmentPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // AlignmentClass is a wrapper around the C record GtkAlignmentClass.
@@ -613,6 +718,11 @@ func (recv *AlignmentClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this AlignmentClass with another AlignmentClass, and returns true if they represent the same GObject.
+func (recv *AlignmentClass) Equals(other *AlignmentClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // AlignmentPrivate is a wrapper around the C record GtkAlignmentPrivate.
 type AlignmentPrivate struct {
 	native *C.GtkAlignmentPrivate
@@ -632,6 +742,11 @@ func AlignmentPrivateNewFromC(u unsafe.Pointer) *AlignmentPrivate {
 func (recv *AlignmentPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this AlignmentPrivate with another AlignmentPrivate, and returns true if they represent the same GObject.
+func (recv *AlignmentPrivate) Equals(other *AlignmentPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // AppChooserButtonClass is a wrapper around the C record GtkAppChooserButtonClass.
@@ -658,6 +773,11 @@ func (recv *AppChooserButtonClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this AppChooserButtonClass with another AppChooserButtonClass, and returns true if they represent the same GObject.
+func (recv *AppChooserButtonClass) Equals(other *AppChooserButtonClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // AppChooserButtonPrivate is a wrapper around the C record GtkAppChooserButtonPrivate.
 type AppChooserButtonPrivate struct {
 	native *C.GtkAppChooserButtonPrivate
@@ -677,6 +797,11 @@ func AppChooserButtonPrivateNewFromC(u unsafe.Pointer) *AppChooserButtonPrivate 
 func (recv *AppChooserButtonPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this AppChooserButtonPrivate with another AppChooserButtonPrivate, and returns true if they represent the same GObject.
+func (recv *AppChooserButtonPrivate) Equals(other *AppChooserButtonPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // AppChooserDialogClass is a wrapper around the C record GtkAppChooserDialogClass.
@@ -702,6 +827,11 @@ func (recv *AppChooserDialogClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this AppChooserDialogClass with another AppChooserDialogClass, and returns true if they represent the same GObject.
+func (recv *AppChooserDialogClass) Equals(other *AppChooserDialogClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // AppChooserDialogPrivate is a wrapper around the C record GtkAppChooserDialogPrivate.
 type AppChooserDialogPrivate struct {
 	native *C.GtkAppChooserDialogPrivate
@@ -721,6 +851,11 @@ func AppChooserDialogPrivateNewFromC(u unsafe.Pointer) *AppChooserDialogPrivate 
 func (recv *AppChooserDialogPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this AppChooserDialogPrivate with another AppChooserDialogPrivate, and returns true if they represent the same GObject.
+func (recv *AppChooserDialogPrivate) Equals(other *AppChooserDialogPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // AppChooserWidgetClass is a wrapper around the C record GtkAppChooserWidgetClass.
@@ -749,6 +884,11 @@ func (recv *AppChooserWidgetClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this AppChooserWidgetClass with another AppChooserWidgetClass, and returns true if they represent the same GObject.
+func (recv *AppChooserWidgetClass) Equals(other *AppChooserWidgetClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // AppChooserWidgetPrivate is a wrapper around the C record GtkAppChooserWidgetPrivate.
 type AppChooserWidgetPrivate struct {
 	native *C.GtkAppChooserWidgetPrivate
@@ -768,6 +908,11 @@ func AppChooserWidgetPrivateNewFromC(u unsafe.Pointer) *AppChooserWidgetPrivate 
 func (recv *AppChooserWidgetPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this AppChooserWidgetPrivate with another AppChooserWidgetPrivate, and returns true if they represent the same GObject.
+func (recv *AppChooserWidgetPrivate) Equals(other *AppChooserWidgetPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ApplicationClass is a wrapper around the C record GtkApplicationClass.
@@ -795,6 +940,11 @@ func (recv *ApplicationClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ApplicationClass with another ApplicationClass, and returns true if they represent the same GObject.
+func (recv *ApplicationClass) Equals(other *ApplicationClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ApplicationPrivate is a wrapper around the C record GtkApplicationPrivate.
 type ApplicationPrivate struct {
 	native *C.GtkApplicationPrivate
@@ -814,6 +964,11 @@ func ApplicationPrivateNewFromC(u unsafe.Pointer) *ApplicationPrivate {
 func (recv *ApplicationPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ApplicationPrivate with another ApplicationPrivate, and returns true if they represent the same GObject.
+func (recv *ApplicationPrivate) Equals(other *ApplicationPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ApplicationWindowClass is a wrapper around the C record GtkApplicationWindowClass.
@@ -839,6 +994,11 @@ func (recv *ApplicationWindowClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ApplicationWindowClass with another ApplicationWindowClass, and returns true if they represent the same GObject.
+func (recv *ApplicationWindowClass) Equals(other *ApplicationWindowClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ApplicationWindowPrivate is a wrapper around the C record GtkApplicationWindowPrivate.
 type ApplicationWindowPrivate struct {
 	native *C.GtkApplicationWindowPrivate
@@ -858,6 +1018,11 @@ func ApplicationWindowPrivateNewFromC(u unsafe.Pointer) *ApplicationWindowPrivat
 func (recv *ApplicationWindowPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ApplicationWindowPrivate with another ApplicationWindowPrivate, and returns true if they represent the same GObject.
+func (recv *ApplicationWindowPrivate) Equals(other *ApplicationWindowPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ArrowAccessibleClass is a wrapper around the C record GtkArrowAccessibleClass.
@@ -882,6 +1047,11 @@ func (recv *ArrowAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ArrowAccessibleClass with another ArrowAccessibleClass, and returns true if they represent the same GObject.
+func (recv *ArrowAccessibleClass) Equals(other *ArrowAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ArrowAccessiblePrivate is a wrapper around the C record GtkArrowAccessiblePrivate.
 type ArrowAccessiblePrivate struct {
 	native *C.GtkArrowAccessiblePrivate
@@ -901,6 +1071,11 @@ func ArrowAccessiblePrivateNewFromC(u unsafe.Pointer) *ArrowAccessiblePrivate {
 func (recv *ArrowAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ArrowAccessiblePrivate with another ArrowAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *ArrowAccessiblePrivate) Equals(other *ArrowAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ArrowClass is a wrapper around the C record GtkArrowClass.
@@ -929,6 +1104,11 @@ func (recv *ArrowClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ArrowClass with another ArrowClass, and returns true if they represent the same GObject.
+func (recv *ArrowClass) Equals(other *ArrowClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ArrowPrivate is a wrapper around the C record GtkArrowPrivate.
 type ArrowPrivate struct {
 	native *C.GtkArrowPrivate
@@ -948,6 +1128,11 @@ func ArrowPrivateNewFromC(u unsafe.Pointer) *ArrowPrivate {
 func (recv *ArrowPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ArrowPrivate with another ArrowPrivate, and returns true if they represent the same GObject.
+func (recv *ArrowPrivate) Equals(other *ArrowPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // AspectFrameClass is a wrapper around the C record GtkAspectFrameClass.
@@ -976,6 +1161,11 @@ func (recv *AspectFrameClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this AspectFrameClass with another AspectFrameClass, and returns true if they represent the same GObject.
+func (recv *AspectFrameClass) Equals(other *AspectFrameClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // AspectFramePrivate is a wrapper around the C record GtkAspectFramePrivate.
 type AspectFramePrivate struct {
 	native *C.GtkAspectFramePrivate
@@ -995,6 +1185,11 @@ func AspectFramePrivateNewFromC(u unsafe.Pointer) *AspectFramePrivate {
 func (recv *AspectFramePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this AspectFramePrivate with another AspectFramePrivate, and returns true if they represent the same GObject.
+func (recv *AspectFramePrivate) Equals(other *AspectFramePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // AssistantClass is a wrapper around the C record GtkAssistantClass.
@@ -1028,6 +1223,11 @@ func (recv *AssistantClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this AssistantClass with another AssistantClass, and returns true if they represent the same GObject.
+func (recv *AssistantClass) Equals(other *AssistantClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // AssistantPrivate is a wrapper around the C record GtkAssistantPrivate.
 type AssistantPrivate struct {
 	native *C.GtkAssistantPrivate
@@ -1047,6 +1247,11 @@ func AssistantPrivateNewFromC(u unsafe.Pointer) *AssistantPrivate {
 func (recv *AssistantPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this AssistantPrivate with another AssistantPrivate, and returns true if they represent the same GObject.
+func (recv *AssistantPrivate) Equals(other *AssistantPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // BinClass is a wrapper around the C record GtkBinClass.
@@ -1075,6 +1280,11 @@ func (recv *BinClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this BinClass with another BinClass, and returns true if they represent the same GObject.
+func (recv *BinClass) Equals(other *BinClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // BinPrivate is a wrapper around the C record GtkBinPrivate.
 type BinPrivate struct {
 	native *C.GtkBinPrivate
@@ -1094,6 +1304,11 @@ func BinPrivateNewFromC(u unsafe.Pointer) *BinPrivate {
 func (recv *BinPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this BinPrivate with another BinPrivate, and returns true if they represent the same GObject.
+func (recv *BinPrivate) Equals(other *BinPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // BindingArg is a wrapper around the C record GtkBindingArg.
@@ -1121,6 +1336,11 @@ func (recv *BindingArg) ToC() unsafe.Pointer {
 		(C.GType)(recv.ArgType)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this BindingArg with another BindingArg, and returns true if they represent the same GObject.
+func (recv *BindingArg) Equals(other *BindingArg) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // BindingEntry is a wrapper around the C record GtkBindingEntry.
@@ -1161,6 +1381,11 @@ func (recv *BindingEntry) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this BindingEntry with another BindingEntry, and returns true if they represent the same GObject.
+func (recv *BindingEntry) Equals(other *BindingEntry) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // BindingSet is a wrapper around the C record GtkBindingSet.
 type BindingSet struct {
 	native   *C.GtkBindingSet
@@ -1196,6 +1421,11 @@ func (recv *BindingSet) ToC() unsafe.Pointer {
 		(C.gint)(recv.Priority)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this BindingSet with another BindingSet, and returns true if they represent the same GObject.
+func (recv *BindingSet) Equals(other *BindingSet) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Activate is a wrapper around the C function gtk_binding_set_activate.
@@ -1262,6 +1492,11 @@ func (recv *BindingSignal) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this BindingSignal with another BindingSignal, and returns true if they represent the same GObject.
+func (recv *BindingSignal) Equals(other *BindingSignal) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // BooleanCellAccessibleClass is a wrapper around the C record GtkBooleanCellAccessibleClass.
 type BooleanCellAccessibleClass struct {
 	native *C.GtkBooleanCellAccessibleClass
@@ -1284,6 +1519,11 @@ func (recv *BooleanCellAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this BooleanCellAccessibleClass with another BooleanCellAccessibleClass, and returns true if they represent the same GObject.
+func (recv *BooleanCellAccessibleClass) Equals(other *BooleanCellAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // BooleanCellAccessiblePrivate is a wrapper around the C record GtkBooleanCellAccessiblePrivate.
 type BooleanCellAccessiblePrivate struct {
 	native *C.GtkBooleanCellAccessiblePrivate
@@ -1303,6 +1543,11 @@ func BooleanCellAccessiblePrivateNewFromC(u unsafe.Pointer) *BooleanCellAccessib
 func (recv *BooleanCellAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this BooleanCellAccessiblePrivate with another BooleanCellAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *BooleanCellAccessiblePrivate) Equals(other *BooleanCellAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Border is a wrapper around the C record GtkBorder.
@@ -1342,6 +1587,11 @@ func (recv *Border) ToC() unsafe.Pointer {
 		(C.gint16)(recv.Bottom)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Border with another Border, and returns true if they represent the same GObject.
+func (recv *Border) Equals(other *Border) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Copy is a wrapper around the C function gtk_border_copy.
@@ -1385,6 +1635,11 @@ func (recv *BoxClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this BoxClass with another BoxClass, and returns true if they represent the same GObject.
+func (recv *BoxClass) Equals(other *BoxClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // BoxPrivate is a wrapper around the C record GtkBoxPrivate.
 type BoxPrivate struct {
 	native *C.GtkBoxPrivate
@@ -1404,6 +1659,11 @@ func BoxPrivateNewFromC(u unsafe.Pointer) *BoxPrivate {
 func (recv *BoxPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this BoxPrivate with another BoxPrivate, and returns true if they represent the same GObject.
+func (recv *BoxPrivate) Equals(other *BoxPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // BuildableIface is a wrapper around the C record GtkBuildableIface.
@@ -1438,6 +1698,11 @@ func (recv *BuildableIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this BuildableIface with another BuildableIface, and returns true if they represent the same GObject.
+func (recv *BuildableIface) Equals(other *BuildableIface) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // BuilderClass is a wrapper around the C record GtkBuilderClass.
 type BuilderClass struct {
 	native *C.GtkBuilderClass
@@ -1469,6 +1734,11 @@ func (recv *BuilderClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this BuilderClass with another BuilderClass, and returns true if they represent the same GObject.
+func (recv *BuilderClass) Equals(other *BuilderClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // BuilderPrivate is a wrapper around the C record GtkBuilderPrivate.
 type BuilderPrivate struct {
 	native *C.GtkBuilderPrivate
@@ -1488,6 +1758,11 @@ func BuilderPrivateNewFromC(u unsafe.Pointer) *BuilderPrivate {
 func (recv *BuilderPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this BuilderPrivate with another BuilderPrivate, and returns true if they represent the same GObject.
+func (recv *BuilderPrivate) Equals(other *BuilderPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ButtonAccessibleClass is a wrapper around the C record GtkButtonAccessibleClass.
@@ -1512,6 +1787,11 @@ func (recv *ButtonAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ButtonAccessibleClass with another ButtonAccessibleClass, and returns true if they represent the same GObject.
+func (recv *ButtonAccessibleClass) Equals(other *ButtonAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ButtonAccessiblePrivate is a wrapper around the C record GtkButtonAccessiblePrivate.
 type ButtonAccessiblePrivate struct {
 	native *C.GtkButtonAccessiblePrivate
@@ -1531,6 +1811,11 @@ func ButtonAccessiblePrivateNewFromC(u unsafe.Pointer) *ButtonAccessiblePrivate 
 func (recv *ButtonAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ButtonAccessiblePrivate with another ButtonAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *ButtonAccessiblePrivate) Equals(other *ButtonAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ButtonBoxClass is a wrapper around the C record GtkButtonBoxClass.
@@ -1559,6 +1844,11 @@ func (recv *ButtonBoxClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ButtonBoxClass with another ButtonBoxClass, and returns true if they represent the same GObject.
+func (recv *ButtonBoxClass) Equals(other *ButtonBoxClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ButtonBoxPrivate is a wrapper around the C record GtkButtonBoxPrivate.
 type ButtonBoxPrivate struct {
 	native *C.GtkButtonBoxPrivate
@@ -1578,6 +1868,11 @@ func ButtonBoxPrivateNewFromC(u unsafe.Pointer) *ButtonBoxPrivate {
 func (recv *ButtonBoxPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ButtonBoxPrivate with another ButtonBoxPrivate, and returns true if they represent the same GObject.
+func (recv *ButtonBoxPrivate) Equals(other *ButtonBoxPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ButtonClass is a wrapper around the C record GtkButtonClass.
@@ -1612,6 +1907,11 @@ func (recv *ButtonClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ButtonClass with another ButtonClass, and returns true if they represent the same GObject.
+func (recv *ButtonClass) Equals(other *ButtonClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ButtonPrivate is a wrapper around the C record GtkButtonPrivate.
 type ButtonPrivate struct {
 	native *C.GtkButtonPrivate
@@ -1631,6 +1931,11 @@ func ButtonPrivateNewFromC(u unsafe.Pointer) *ButtonPrivate {
 func (recv *ButtonPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ButtonPrivate with another ButtonPrivate, and returns true if they represent the same GObject.
+func (recv *ButtonPrivate) Equals(other *ButtonPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // CalendarClass is a wrapper around the C record GtkCalendarClass.
@@ -1666,6 +1971,11 @@ func (recv *CalendarClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this CalendarClass with another CalendarClass, and returns true if they represent the same GObject.
+func (recv *CalendarClass) Equals(other *CalendarClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // CalendarPrivate is a wrapper around the C record GtkCalendarPrivate.
 type CalendarPrivate struct {
 	native *C.GtkCalendarPrivate
@@ -1685,6 +1995,11 @@ func CalendarPrivateNewFromC(u unsafe.Pointer) *CalendarPrivate {
 func (recv *CalendarPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this CalendarPrivate with another CalendarPrivate, and returns true if they represent the same GObject.
+func (recv *CalendarPrivate) Equals(other *CalendarPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // CellAccessibleClass is a wrapper around the C record GtkCellAccessibleClass.
@@ -1708,6 +2023,11 @@ func CellAccessibleClassNewFromC(u unsafe.Pointer) *CellAccessibleClass {
 func (recv *CellAccessibleClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this CellAccessibleClass with another CellAccessibleClass, and returns true if they represent the same GObject.
+func (recv *CellAccessibleClass) Equals(other *CellAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // CellAccessibleParentIface is a wrapper around the C record GtkCellAccessibleParentIface.
@@ -1741,6 +2061,11 @@ func (recv *CellAccessibleParentIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this CellAccessibleParentIface with another CellAccessibleParentIface, and returns true if they represent the same GObject.
+func (recv *CellAccessibleParentIface) Equals(other *CellAccessibleParentIface) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // CellAccessiblePrivate is a wrapper around the C record GtkCellAccessiblePrivate.
 type CellAccessiblePrivate struct {
 	native *C.GtkCellAccessiblePrivate
@@ -1760,6 +2085,11 @@ func CellAccessiblePrivateNewFromC(u unsafe.Pointer) *CellAccessiblePrivate {
 func (recv *CellAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this CellAccessiblePrivate with another CellAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *CellAccessiblePrivate) Equals(other *CellAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // CellAreaBoxClass is a wrapper around the C record GtkCellAreaBoxClass.
@@ -1788,6 +2118,11 @@ func (recv *CellAreaBoxClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this CellAreaBoxClass with another CellAreaBoxClass, and returns true if they represent the same GObject.
+func (recv *CellAreaBoxClass) Equals(other *CellAreaBoxClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // CellAreaBoxPrivate is a wrapper around the C record GtkCellAreaBoxPrivate.
 type CellAreaBoxPrivate struct {
 	native *C.GtkCellAreaBoxPrivate
@@ -1807,6 +2142,11 @@ func CellAreaBoxPrivateNewFromC(u unsafe.Pointer) *CellAreaBoxPrivate {
 func (recv *CellAreaBoxPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this CellAreaBoxPrivate with another CellAreaBoxPrivate, and returns true if they represent the same GObject.
+func (recv *CellAreaBoxPrivate) Equals(other *CellAreaBoxPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // CellAreaClass is a wrapper around the C record GtkCellAreaClass.
@@ -1858,6 +2198,11 @@ func (recv *CellAreaClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this CellAreaClass with another CellAreaClass, and returns true if they represent the same GObject.
+func (recv *CellAreaClass) Equals(other *CellAreaClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // CellAreaContextClass is a wrapper around the C record GtkCellAreaContextClass.
 type CellAreaContextClass struct {
 	native *C.GtkCellAreaContextClass
@@ -1890,6 +2235,11 @@ func (recv *CellAreaContextClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this CellAreaContextClass with another CellAreaContextClass, and returns true if they represent the same GObject.
+func (recv *CellAreaContextClass) Equals(other *CellAreaContextClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // CellAreaContextPrivate is a wrapper around the C record GtkCellAreaContextPrivate.
 type CellAreaContextPrivate struct {
 	native *C.GtkCellAreaContextPrivate
@@ -1911,6 +2261,11 @@ func (recv *CellAreaContextPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this CellAreaContextPrivate with another CellAreaContextPrivate, and returns true if they represent the same GObject.
+func (recv *CellAreaContextPrivate) Equals(other *CellAreaContextPrivate) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // CellAreaPrivate is a wrapper around the C record GtkCellAreaPrivate.
 type CellAreaPrivate struct {
 	native *C.GtkCellAreaPrivate
@@ -1930,6 +2285,11 @@ func CellAreaPrivateNewFromC(u unsafe.Pointer) *CellAreaPrivate {
 func (recv *CellAreaPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this CellAreaPrivate with another CellAreaPrivate, and returns true if they represent the same GObject.
+func (recv *CellAreaPrivate) Equals(other *CellAreaPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // CellEditableIface is a wrapper around the C record GtkCellEditableIface.
@@ -1955,6 +2315,11 @@ func CellEditableIfaceNewFromC(u unsafe.Pointer) *CellEditableIface {
 func (recv *CellEditableIface) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this CellEditableIface with another CellEditableIface, and returns true if they represent the same GObject.
+func (recv *CellEditableIface) Equals(other *CellEditableIface) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // CellLayoutIface is a wrapper around the C record GtkCellLayoutIface.
@@ -1988,6 +2353,11 @@ func (recv *CellLayoutIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this CellLayoutIface with another CellLayoutIface, and returns true if they represent the same GObject.
+func (recv *CellLayoutIface) Equals(other *CellLayoutIface) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // CellRendererAccelClass is a wrapper around the C record GtkCellRendererAccelClass.
 type CellRendererAccelClass struct {
 	native *C.GtkCellRendererAccelClass
@@ -2017,6 +2387,11 @@ func (recv *CellRendererAccelClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this CellRendererAccelClass with another CellRendererAccelClass, and returns true if they represent the same GObject.
+func (recv *CellRendererAccelClass) Equals(other *CellRendererAccelClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // CellRendererAccelPrivate is a wrapper around the C record GtkCellRendererAccelPrivate.
 type CellRendererAccelPrivate struct {
 	native *C.GtkCellRendererAccelPrivate
@@ -2036,6 +2411,11 @@ func CellRendererAccelPrivateNewFromC(u unsafe.Pointer) *CellRendererAccelPrivat
 func (recv *CellRendererAccelPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this CellRendererAccelPrivate with another CellRendererAccelPrivate, and returns true if they represent the same GObject.
+func (recv *CellRendererAccelPrivate) Equals(other *CellRendererAccelPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // CellRendererClass is a wrapper around the C record GtkCellRendererClass.
@@ -2076,6 +2456,11 @@ func (recv *CellRendererClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this CellRendererClass with another CellRendererClass, and returns true if they represent the same GObject.
+func (recv *CellRendererClass) Equals(other *CellRendererClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // SetAccessibleType is a wrapper around the C function gtk_cell_renderer_class_set_accessible_type.
 func (recv *CellRendererClass) SetAccessibleType(type_ gobject.Type) {
 	c_type := (C.GType)(type_)
@@ -2106,6 +2491,11 @@ func (recv *CellRendererClassPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this CellRendererClassPrivate with another CellRendererClassPrivate, and returns true if they represent the same GObject.
+func (recv *CellRendererClassPrivate) Equals(other *CellRendererClassPrivate) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // CellRendererComboClass is a wrapper around the C record GtkCellRendererComboClass.
 type CellRendererComboClass struct {
 	native *C.GtkCellRendererComboClass
@@ -2132,6 +2522,11 @@ func (recv *CellRendererComboClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this CellRendererComboClass with another CellRendererComboClass, and returns true if they represent the same GObject.
+func (recv *CellRendererComboClass) Equals(other *CellRendererComboClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // CellRendererComboPrivate is a wrapper around the C record GtkCellRendererComboPrivate.
 type CellRendererComboPrivate struct {
 	native *C.GtkCellRendererComboPrivate
@@ -2151,6 +2546,11 @@ func CellRendererComboPrivateNewFromC(u unsafe.Pointer) *CellRendererComboPrivat
 func (recv *CellRendererComboPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this CellRendererComboPrivate with another CellRendererComboPrivate, and returns true if they represent the same GObject.
+func (recv *CellRendererComboPrivate) Equals(other *CellRendererComboPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // CellRendererPixbufClass is a wrapper around the C record GtkCellRendererPixbufClass.
@@ -2179,6 +2579,11 @@ func (recv *CellRendererPixbufClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this CellRendererPixbufClass with another CellRendererPixbufClass, and returns true if they represent the same GObject.
+func (recv *CellRendererPixbufClass) Equals(other *CellRendererPixbufClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // CellRendererPixbufPrivate is a wrapper around the C record GtkCellRendererPixbufPrivate.
 type CellRendererPixbufPrivate struct {
 	native *C.GtkCellRendererPixbufPrivate
@@ -2200,6 +2605,11 @@ func (recv *CellRendererPixbufPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this CellRendererPixbufPrivate with another CellRendererPixbufPrivate, and returns true if they represent the same GObject.
+func (recv *CellRendererPixbufPrivate) Equals(other *CellRendererPixbufPrivate) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // CellRendererPrivate is a wrapper around the C record GtkCellRendererPrivate.
 type CellRendererPrivate struct {
 	native *C.GtkCellRendererPrivate
@@ -2219,6 +2629,11 @@ func CellRendererPrivateNewFromC(u unsafe.Pointer) *CellRendererPrivate {
 func (recv *CellRendererPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this CellRendererPrivate with another CellRendererPrivate, and returns true if they represent the same GObject.
+func (recv *CellRendererPrivate) Equals(other *CellRendererPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // CellRendererProgressClass is a wrapper around the C record GtkCellRendererProgressClass.
@@ -2247,6 +2662,11 @@ func (recv *CellRendererProgressClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this CellRendererProgressClass with another CellRendererProgressClass, and returns true if they represent the same GObject.
+func (recv *CellRendererProgressClass) Equals(other *CellRendererProgressClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // CellRendererProgressPrivate is a wrapper around the C record GtkCellRendererProgressPrivate.
 type CellRendererProgressPrivate struct {
 	native *C.GtkCellRendererProgressPrivate
@@ -2266,6 +2686,11 @@ func CellRendererProgressPrivateNewFromC(u unsafe.Pointer) *CellRendererProgress
 func (recv *CellRendererProgressPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this CellRendererProgressPrivate with another CellRendererProgressPrivate, and returns true if they represent the same GObject.
+func (recv *CellRendererProgressPrivate) Equals(other *CellRendererProgressPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // CellRendererSpinClass is a wrapper around the C record GtkCellRendererSpinClass.
@@ -2294,6 +2719,11 @@ func (recv *CellRendererSpinClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this CellRendererSpinClass with another CellRendererSpinClass, and returns true if they represent the same GObject.
+func (recv *CellRendererSpinClass) Equals(other *CellRendererSpinClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // CellRendererSpinPrivate is a wrapper around the C record GtkCellRendererSpinPrivate.
 type CellRendererSpinPrivate struct {
 	native *C.GtkCellRendererSpinPrivate
@@ -2313,6 +2743,11 @@ func CellRendererSpinPrivateNewFromC(u unsafe.Pointer) *CellRendererSpinPrivate 
 func (recv *CellRendererSpinPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this CellRendererSpinPrivate with another CellRendererSpinPrivate, and returns true if they represent the same GObject.
+func (recv *CellRendererSpinPrivate) Equals(other *CellRendererSpinPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // CellRendererSpinnerClass is a wrapper around the C record GtkCellRendererSpinnerClass.
@@ -2341,6 +2776,11 @@ func (recv *CellRendererSpinnerClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this CellRendererSpinnerClass with another CellRendererSpinnerClass, and returns true if they represent the same GObject.
+func (recv *CellRendererSpinnerClass) Equals(other *CellRendererSpinnerClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // CellRendererSpinnerPrivate is a wrapper around the C record GtkCellRendererSpinnerPrivate.
 type CellRendererSpinnerPrivate struct {
 	native *C.GtkCellRendererSpinnerPrivate
@@ -2360,6 +2800,11 @@ func CellRendererSpinnerPrivateNewFromC(u unsafe.Pointer) *CellRendererSpinnerPr
 func (recv *CellRendererSpinnerPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this CellRendererSpinnerPrivate with another CellRendererSpinnerPrivate, and returns true if they represent the same GObject.
+func (recv *CellRendererSpinnerPrivate) Equals(other *CellRendererSpinnerPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // CellRendererTextClass is a wrapper around the C record GtkCellRendererTextClass.
@@ -2389,6 +2834,11 @@ func (recv *CellRendererTextClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this CellRendererTextClass with another CellRendererTextClass, and returns true if they represent the same GObject.
+func (recv *CellRendererTextClass) Equals(other *CellRendererTextClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // CellRendererTextPrivate is a wrapper around the C record GtkCellRendererTextPrivate.
 type CellRendererTextPrivate struct {
 	native *C.GtkCellRendererTextPrivate
@@ -2408,6 +2858,11 @@ func CellRendererTextPrivateNewFromC(u unsafe.Pointer) *CellRendererTextPrivate 
 func (recv *CellRendererTextPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this CellRendererTextPrivate with another CellRendererTextPrivate, and returns true if they represent the same GObject.
+func (recv *CellRendererTextPrivate) Equals(other *CellRendererTextPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // CellRendererToggleClass is a wrapper around the C record GtkCellRendererToggleClass.
@@ -2437,6 +2892,11 @@ func (recv *CellRendererToggleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this CellRendererToggleClass with another CellRendererToggleClass, and returns true if they represent the same GObject.
+func (recv *CellRendererToggleClass) Equals(other *CellRendererToggleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // CellRendererTogglePrivate is a wrapper around the C record GtkCellRendererTogglePrivate.
 type CellRendererTogglePrivate struct {
 	native *C.GtkCellRendererTogglePrivate
@@ -2456,6 +2916,11 @@ func CellRendererTogglePrivateNewFromC(u unsafe.Pointer) *CellRendererTogglePriv
 func (recv *CellRendererTogglePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this CellRendererTogglePrivate with another CellRendererTogglePrivate, and returns true if they represent the same GObject.
+func (recv *CellRendererTogglePrivate) Equals(other *CellRendererTogglePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // CellViewClass is a wrapper around the C record GtkCellViewClass.
@@ -2484,6 +2949,11 @@ func (recv *CellViewClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this CellViewClass with another CellViewClass, and returns true if they represent the same GObject.
+func (recv *CellViewClass) Equals(other *CellViewClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // CellViewPrivate is a wrapper around the C record GtkCellViewPrivate.
 type CellViewPrivate struct {
 	native *C.GtkCellViewPrivate
@@ -2503,6 +2973,11 @@ func CellViewPrivateNewFromC(u unsafe.Pointer) *CellViewPrivate {
 func (recv *CellViewPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this CellViewPrivate with another CellViewPrivate, and returns true if they represent the same GObject.
+func (recv *CellViewPrivate) Equals(other *CellViewPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // CheckButtonClass is a wrapper around the C record GtkCheckButtonClass.
@@ -2532,6 +3007,11 @@ func (recv *CheckButtonClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this CheckButtonClass with another CheckButtonClass, and returns true if they represent the same GObject.
+func (recv *CheckButtonClass) Equals(other *CheckButtonClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // CheckMenuItemAccessibleClass is a wrapper around the C record GtkCheckMenuItemAccessibleClass.
 type CheckMenuItemAccessibleClass struct {
 	native *C.GtkCheckMenuItemAccessibleClass
@@ -2554,6 +3034,11 @@ func (recv *CheckMenuItemAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this CheckMenuItemAccessibleClass with another CheckMenuItemAccessibleClass, and returns true if they represent the same GObject.
+func (recv *CheckMenuItemAccessibleClass) Equals(other *CheckMenuItemAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // CheckMenuItemAccessiblePrivate is a wrapper around the C record GtkCheckMenuItemAccessiblePrivate.
 type CheckMenuItemAccessiblePrivate struct {
 	native *C.GtkCheckMenuItemAccessiblePrivate
@@ -2573,6 +3058,11 @@ func CheckMenuItemAccessiblePrivateNewFromC(u unsafe.Pointer) *CheckMenuItemAcce
 func (recv *CheckMenuItemAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this CheckMenuItemAccessiblePrivate with another CheckMenuItemAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *CheckMenuItemAccessiblePrivate) Equals(other *CheckMenuItemAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // CheckMenuItemClass is a wrapper around the C record GtkCheckMenuItemClass.
@@ -2603,6 +3093,11 @@ func (recv *CheckMenuItemClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this CheckMenuItemClass with another CheckMenuItemClass, and returns true if they represent the same GObject.
+func (recv *CheckMenuItemClass) Equals(other *CheckMenuItemClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // CheckMenuItemPrivate is a wrapper around the C record GtkCheckMenuItemPrivate.
 type CheckMenuItemPrivate struct {
 	native *C.GtkCheckMenuItemPrivate
@@ -2622,6 +3117,11 @@ func CheckMenuItemPrivateNewFromC(u unsafe.Pointer) *CheckMenuItemPrivate {
 func (recv *CheckMenuItemPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this CheckMenuItemPrivate with another CheckMenuItemPrivate, and returns true if they represent the same GObject.
+func (recv *CheckMenuItemPrivate) Equals(other *CheckMenuItemPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ColorButtonClass is a wrapper around the C record GtkColorButtonClass.
@@ -2651,6 +3151,11 @@ func (recv *ColorButtonClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ColorButtonClass with another ColorButtonClass, and returns true if they represent the same GObject.
+func (recv *ColorButtonClass) Equals(other *ColorButtonClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ColorButtonPrivate is a wrapper around the C record GtkColorButtonPrivate.
 type ColorButtonPrivate struct {
 	native *C.GtkColorButtonPrivate
@@ -2670,6 +3175,11 @@ func ColorButtonPrivateNewFromC(u unsafe.Pointer) *ColorButtonPrivate {
 func (recv *ColorButtonPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ColorButtonPrivate with another ColorButtonPrivate, and returns true if they represent the same GObject.
+func (recv *ColorButtonPrivate) Equals(other *ColorButtonPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ColorChooserDialogClass is a wrapper around the C record GtkColorChooserDialogClass.
@@ -2698,6 +3208,11 @@ func (recv *ColorChooserDialogClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ColorChooserDialogClass with another ColorChooserDialogClass, and returns true if they represent the same GObject.
+func (recv *ColorChooserDialogClass) Equals(other *ColorChooserDialogClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ColorChooserDialogPrivate is a wrapper around the C record GtkColorChooserDialogPrivate.
 type ColorChooserDialogPrivate struct {
 	native *C.GtkColorChooserDialogPrivate
@@ -2717,6 +3232,11 @@ func ColorChooserDialogPrivateNewFromC(u unsafe.Pointer) *ColorChooserDialogPriv
 func (recv *ColorChooserDialogPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ColorChooserDialogPrivate with another ColorChooserDialogPrivate, and returns true if they represent the same GObject.
+func (recv *ColorChooserDialogPrivate) Equals(other *ColorChooserDialogPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ColorChooserInterface is a wrapper around the C record GtkColorChooserInterface.
@@ -2744,6 +3264,11 @@ func ColorChooserInterfaceNewFromC(u unsafe.Pointer) *ColorChooserInterface {
 func (recv *ColorChooserInterface) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ColorChooserInterface with another ColorChooserInterface, and returns true if they represent the same GObject.
+func (recv *ColorChooserInterface) Equals(other *ColorChooserInterface) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ColorChooserWidgetClass is a wrapper around the C record GtkColorChooserWidgetClass.
@@ -2776,6 +3301,11 @@ func (recv *ColorChooserWidgetClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ColorChooserWidgetClass with another ColorChooserWidgetClass, and returns true if they represent the same GObject.
+func (recv *ColorChooserWidgetClass) Equals(other *ColorChooserWidgetClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ColorChooserWidgetPrivate is a wrapper around the C record GtkColorChooserWidgetPrivate.
 type ColorChooserWidgetPrivate struct {
 	native *C.GtkColorChooserWidgetPrivate
@@ -2795,6 +3325,11 @@ func ColorChooserWidgetPrivateNewFromC(u unsafe.Pointer) *ColorChooserWidgetPriv
 func (recv *ColorChooserWidgetPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ColorChooserWidgetPrivate with another ColorChooserWidgetPrivate, and returns true if they represent the same GObject.
+func (recv *ColorChooserWidgetPrivate) Equals(other *ColorChooserWidgetPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ColorSelectionClass is a wrapper around the C record GtkColorSelectionClass.
@@ -2824,6 +3359,11 @@ func (recv *ColorSelectionClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ColorSelectionClass with another ColorSelectionClass, and returns true if they represent the same GObject.
+func (recv *ColorSelectionClass) Equals(other *ColorSelectionClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ColorSelectionDialogClass is a wrapper around the C record GtkColorSelectionDialogClass.
 type ColorSelectionDialogClass struct {
 	native *C.GtkColorSelectionDialogClass
@@ -2850,6 +3390,11 @@ func (recv *ColorSelectionDialogClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ColorSelectionDialogClass with another ColorSelectionDialogClass, and returns true if they represent the same GObject.
+func (recv *ColorSelectionDialogClass) Equals(other *ColorSelectionDialogClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ColorSelectionDialogPrivate is a wrapper around the C record GtkColorSelectionDialogPrivate.
 type ColorSelectionDialogPrivate struct {
 	native *C.GtkColorSelectionDialogPrivate
@@ -2871,6 +3416,11 @@ func (recv *ColorSelectionDialogPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ColorSelectionDialogPrivate with another ColorSelectionDialogPrivate, and returns true if they represent the same GObject.
+func (recv *ColorSelectionDialogPrivate) Equals(other *ColorSelectionDialogPrivate) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ColorSelectionPrivate is a wrapper around the C record GtkColorSelectionPrivate.
 type ColorSelectionPrivate struct {
 	native *C.GtkColorSelectionPrivate
@@ -2890,6 +3440,11 @@ func ColorSelectionPrivateNewFromC(u unsafe.Pointer) *ColorSelectionPrivate {
 func (recv *ColorSelectionPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ColorSelectionPrivate with another ColorSelectionPrivate, and returns true if they represent the same GObject.
+func (recv *ColorSelectionPrivate) Equals(other *ColorSelectionPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ComboBoxAccessibleClass is a wrapper around the C record GtkComboBoxAccessibleClass.
@@ -2914,6 +3469,11 @@ func (recv *ComboBoxAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ComboBoxAccessibleClass with another ComboBoxAccessibleClass, and returns true if they represent the same GObject.
+func (recv *ComboBoxAccessibleClass) Equals(other *ComboBoxAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ComboBoxAccessiblePrivate is a wrapper around the C record GtkComboBoxAccessiblePrivate.
 type ComboBoxAccessiblePrivate struct {
 	native *C.GtkComboBoxAccessiblePrivate
@@ -2933,6 +3493,11 @@ func ComboBoxAccessiblePrivateNewFromC(u unsafe.Pointer) *ComboBoxAccessiblePriv
 func (recv *ComboBoxAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ComboBoxAccessiblePrivate with another ComboBoxAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *ComboBoxAccessiblePrivate) Equals(other *ComboBoxAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ComboBoxClass is a wrapper around the C record GtkComboBoxClass.
@@ -2962,6 +3527,11 @@ func (recv *ComboBoxClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ComboBoxClass with another ComboBoxClass, and returns true if they represent the same GObject.
+func (recv *ComboBoxClass) Equals(other *ComboBoxClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ComboBoxPrivate is a wrapper around the C record GtkComboBoxPrivate.
 type ComboBoxPrivate struct {
 	native *C.GtkComboBoxPrivate
@@ -2981,6 +3551,11 @@ func ComboBoxPrivateNewFromC(u unsafe.Pointer) *ComboBoxPrivate {
 func (recv *ComboBoxPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ComboBoxPrivate with another ComboBoxPrivate, and returns true if they represent the same GObject.
+func (recv *ComboBoxPrivate) Equals(other *ComboBoxPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ComboBoxTextClass is a wrapper around the C record GtkComboBoxTextClass.
@@ -3009,6 +3584,11 @@ func (recv *ComboBoxTextClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ComboBoxTextClass with another ComboBoxTextClass, and returns true if they represent the same GObject.
+func (recv *ComboBoxTextClass) Equals(other *ComboBoxTextClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ComboBoxTextPrivate is a wrapper around the C record GtkComboBoxTextPrivate.
 type ComboBoxTextPrivate struct {
 	native *C.GtkComboBoxTextPrivate
@@ -3028,6 +3608,11 @@ func ComboBoxTextPrivateNewFromC(u unsafe.Pointer) *ComboBoxTextPrivate {
 func (recv *ComboBoxTextPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ComboBoxTextPrivate with another ComboBoxTextPrivate, and returns true if they represent the same GObject.
+func (recv *ComboBoxTextPrivate) Equals(other *ComboBoxTextPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ContainerAccessibleClass is a wrapper around the C record GtkContainerAccessibleClass.
@@ -3054,6 +3639,11 @@ func (recv *ContainerAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ContainerAccessibleClass with another ContainerAccessibleClass, and returns true if they represent the same GObject.
+func (recv *ContainerAccessibleClass) Equals(other *ContainerAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ContainerAccessiblePrivate is a wrapper around the C record GtkContainerAccessiblePrivate.
 type ContainerAccessiblePrivate struct {
 	native *C.GtkContainerAccessiblePrivate
@@ -3073,6 +3663,11 @@ func ContainerAccessiblePrivateNewFromC(u unsafe.Pointer) *ContainerAccessiblePr
 func (recv *ContainerAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ContainerAccessiblePrivate with another ContainerAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *ContainerAccessiblePrivate) Equals(other *ContainerAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ContainerCellAccessibleClass is a wrapper around the C record GtkContainerCellAccessibleClass.
@@ -3097,6 +3692,11 @@ func (recv *ContainerCellAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ContainerCellAccessibleClass with another ContainerCellAccessibleClass, and returns true if they represent the same GObject.
+func (recv *ContainerCellAccessibleClass) Equals(other *ContainerCellAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ContainerCellAccessiblePrivate is a wrapper around the C record GtkContainerCellAccessiblePrivate.
 type ContainerCellAccessiblePrivate struct {
 	native *C.GtkContainerCellAccessiblePrivate
@@ -3116,6 +3716,11 @@ func ContainerCellAccessiblePrivateNewFromC(u unsafe.Pointer) *ContainerCellAcce
 func (recv *ContainerCellAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ContainerCellAccessiblePrivate with another ContainerCellAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *ContainerCellAccessiblePrivate) Equals(other *ContainerCellAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ContainerClass is a wrapper around the C record GtkContainerClass.
@@ -3159,6 +3764,11 @@ func (recv *ContainerClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ContainerClass with another ContainerClass, and returns true if they represent the same GObject.
+func (recv *ContainerClass) Equals(other *ContainerClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Unsupported : gtk_container_class_find_child_property : return type : Blacklisted record : GParamSpec
 
 // HandleBorderWidth is a wrapper around the C function gtk_container_class_handle_border_width.
@@ -3193,6 +3803,11 @@ func (recv *ContainerPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ContainerPrivate with another ContainerPrivate, and returns true if they represent the same GObject.
+func (recv *ContainerPrivate) Equals(other *ContainerPrivate) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // CssProviderClass is a wrapper around the C record GtkCssProviderClass.
 type CssProviderClass struct {
 	native *C.GtkCssProviderClass
@@ -3219,6 +3834,11 @@ func (recv *CssProviderClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this CssProviderClass with another CssProviderClass, and returns true if they represent the same GObject.
+func (recv *CssProviderClass) Equals(other *CssProviderClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // CssProviderPrivate is a wrapper around the C record GtkCssProviderPrivate.
 type CssProviderPrivate struct {
 	native *C.GtkCssProviderPrivate
@@ -3238,6 +3858,11 @@ func CssProviderPrivateNewFromC(u unsafe.Pointer) *CssProviderPrivate {
 func (recv *CssProviderPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this CssProviderPrivate with another CssProviderPrivate, and returns true if they represent the same GObject.
+func (recv *CssProviderPrivate) Equals(other *CssProviderPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // DialogClass is a wrapper around the C record GtkDialogClass.
@@ -3268,6 +3893,11 @@ func (recv *DialogClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this DialogClass with another DialogClass, and returns true if they represent the same GObject.
+func (recv *DialogClass) Equals(other *DialogClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // DialogPrivate is a wrapper around the C record GtkDialogPrivate.
 type DialogPrivate struct {
 	native *C.GtkDialogPrivate
@@ -3287,6 +3917,11 @@ func DialogPrivateNewFromC(u unsafe.Pointer) *DialogPrivate {
 func (recv *DialogPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this DialogPrivate with another DialogPrivate, and returns true if they represent the same GObject.
+func (recv *DialogPrivate) Equals(other *DialogPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // DrawingAreaClass is a wrapper around the C record GtkDrawingAreaClass.
@@ -3313,6 +3948,11 @@ func DrawingAreaClassNewFromC(u unsafe.Pointer) *DrawingAreaClass {
 func (recv *DrawingAreaClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this DrawingAreaClass with another DrawingAreaClass, and returns true if they represent the same GObject.
+func (recv *DrawingAreaClass) Equals(other *DrawingAreaClass) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // EditableInterface is a wrapper around the C record GtkEditableInterface.
@@ -3347,6 +3987,11 @@ func (recv *EditableInterface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this EditableInterface with another EditableInterface, and returns true if they represent the same GObject.
+func (recv *EditableInterface) Equals(other *EditableInterface) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // EntryAccessibleClass is a wrapper around the C record GtkEntryAccessibleClass.
 type EntryAccessibleClass struct {
 	native *C.GtkEntryAccessibleClass
@@ -3369,6 +4014,11 @@ func (recv *EntryAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this EntryAccessibleClass with another EntryAccessibleClass, and returns true if they represent the same GObject.
+func (recv *EntryAccessibleClass) Equals(other *EntryAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // EntryAccessiblePrivate is a wrapper around the C record GtkEntryAccessiblePrivate.
 type EntryAccessiblePrivate struct {
 	native *C.GtkEntryAccessiblePrivate
@@ -3388,6 +4038,11 @@ func EntryAccessiblePrivateNewFromC(u unsafe.Pointer) *EntryAccessiblePrivate {
 func (recv *EntryAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this EntryAccessiblePrivate with another EntryAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *EntryAccessiblePrivate) Equals(other *EntryAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // EntryBufferClass is a wrapper around the C record GtkEntryBufferClass.
@@ -3426,6 +4081,11 @@ func (recv *EntryBufferClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this EntryBufferClass with another EntryBufferClass, and returns true if they represent the same GObject.
+func (recv *EntryBufferClass) Equals(other *EntryBufferClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // EntryBufferPrivate is a wrapper around the C record GtkEntryBufferPrivate.
 type EntryBufferPrivate struct {
 	native *C.GtkEntryBufferPrivate
@@ -3445,6 +4105,11 @@ func EntryBufferPrivateNewFromC(u unsafe.Pointer) *EntryBufferPrivate {
 func (recv *EntryBufferPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this EntryBufferPrivate with another EntryBufferPrivate, and returns true if they represent the same GObject.
+func (recv *EntryBufferPrivate) Equals(other *EntryBufferPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // EntryClass is a wrapper around the C record GtkEntryClass.
@@ -3488,6 +4153,11 @@ func (recv *EntryClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this EntryClass with another EntryClass, and returns true if they represent the same GObject.
+func (recv *EntryClass) Equals(other *EntryClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // EntryCompletionClass is a wrapper around the C record GtkEntryCompletionClass.
 type EntryCompletionClass struct {
 	native *C.GtkEntryCompletionClass
@@ -3518,6 +4188,11 @@ func (recv *EntryCompletionClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this EntryCompletionClass with another EntryCompletionClass, and returns true if they represent the same GObject.
+func (recv *EntryCompletionClass) Equals(other *EntryCompletionClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // EntryCompletionPrivate is a wrapper around the C record GtkEntryCompletionPrivate.
 type EntryCompletionPrivate struct {
 	native *C.GtkEntryCompletionPrivate
@@ -3539,6 +4214,11 @@ func (recv *EntryCompletionPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this EntryCompletionPrivate with another EntryCompletionPrivate, and returns true if they represent the same GObject.
+func (recv *EntryCompletionPrivate) Equals(other *EntryCompletionPrivate) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // EntryPrivate is a wrapper around the C record GtkEntryPrivate.
 type EntryPrivate struct {
 	native *C.GtkEntryPrivate
@@ -3558,6 +4238,11 @@ func EntryPrivateNewFromC(u unsafe.Pointer) *EntryPrivate {
 func (recv *EntryPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this EntryPrivate with another EntryPrivate, and returns true if they represent the same GObject.
+func (recv *EntryPrivate) Equals(other *EntryPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // EventBoxClass is a wrapper around the C record GtkEventBoxClass.
@@ -3586,6 +4271,11 @@ func (recv *EventBoxClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this EventBoxClass with another EventBoxClass, and returns true if they represent the same GObject.
+func (recv *EventBoxClass) Equals(other *EventBoxClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // EventBoxPrivate is a wrapper around the C record GtkEventBoxPrivate.
 type EventBoxPrivate struct {
 	native *C.GtkEventBoxPrivate
@@ -3607,6 +4297,11 @@ func (recv *EventBoxPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this EventBoxPrivate with another EventBoxPrivate, and returns true if they represent the same GObject.
+func (recv *EventBoxPrivate) Equals(other *EventBoxPrivate) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // EventControllerClass is a wrapper around the C record GtkEventControllerClass.
 type EventControllerClass struct {
 	native *C.GtkEventControllerClass
@@ -3626,6 +4321,11 @@ func EventControllerClassNewFromC(u unsafe.Pointer) *EventControllerClass {
 func (recv *EventControllerClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this EventControllerClass with another EventControllerClass, and returns true if they represent the same GObject.
+func (recv *EventControllerClass) Equals(other *EventControllerClass) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ExpanderAccessibleClass is a wrapper around the C record GtkExpanderAccessibleClass.
@@ -3650,6 +4350,11 @@ func (recv *ExpanderAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ExpanderAccessibleClass with another ExpanderAccessibleClass, and returns true if they represent the same GObject.
+func (recv *ExpanderAccessibleClass) Equals(other *ExpanderAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ExpanderAccessiblePrivate is a wrapper around the C record GtkExpanderAccessiblePrivate.
 type ExpanderAccessiblePrivate struct {
 	native *C.GtkExpanderAccessiblePrivate
@@ -3669,6 +4374,11 @@ func ExpanderAccessiblePrivateNewFromC(u unsafe.Pointer) *ExpanderAccessiblePriv
 func (recv *ExpanderAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ExpanderAccessiblePrivate with another ExpanderAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *ExpanderAccessiblePrivate) Equals(other *ExpanderAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ExpanderClass is a wrapper around the C record GtkExpanderClass.
@@ -3698,6 +4408,11 @@ func (recv *ExpanderClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ExpanderClass with another ExpanderClass, and returns true if they represent the same GObject.
+func (recv *ExpanderClass) Equals(other *ExpanderClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ExpanderPrivate is a wrapper around the C record GtkExpanderPrivate.
 type ExpanderPrivate struct {
 	native *C.GtkExpanderPrivate
@@ -3717,6 +4432,11 @@ func ExpanderPrivateNewFromC(u unsafe.Pointer) *ExpanderPrivate {
 func (recv *ExpanderPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ExpanderPrivate with another ExpanderPrivate, and returns true if they represent the same GObject.
+func (recv *ExpanderPrivate) Equals(other *ExpanderPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // FileChooserButtonClass is a wrapper around the C record GtkFileChooserButtonClass.
@@ -3746,6 +4466,11 @@ func (recv *FileChooserButtonClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this FileChooserButtonClass with another FileChooserButtonClass, and returns true if they represent the same GObject.
+func (recv *FileChooserButtonClass) Equals(other *FileChooserButtonClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // FileChooserButtonPrivate is a wrapper around the C record GtkFileChooserButtonPrivate.
 type FileChooserButtonPrivate struct {
 	native *C.GtkFileChooserButtonPrivate
@@ -3765,6 +4490,11 @@ func FileChooserButtonPrivateNewFromC(u unsafe.Pointer) *FileChooserButtonPrivat
 func (recv *FileChooserButtonPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this FileChooserButtonPrivate with another FileChooserButtonPrivate, and returns true if they represent the same GObject.
+func (recv *FileChooserButtonPrivate) Equals(other *FileChooserButtonPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // FileChooserDialogClass is a wrapper around the C record GtkFileChooserDialogClass.
@@ -3793,6 +4523,11 @@ func (recv *FileChooserDialogClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this FileChooserDialogClass with another FileChooserDialogClass, and returns true if they represent the same GObject.
+func (recv *FileChooserDialogClass) Equals(other *FileChooserDialogClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // FileChooserDialogPrivate is a wrapper around the C record GtkFileChooserDialogPrivate.
 type FileChooserDialogPrivate struct {
 	native *C.GtkFileChooserDialogPrivate
@@ -3812,6 +4547,11 @@ func FileChooserDialogPrivateNewFromC(u unsafe.Pointer) *FileChooserDialogPrivat
 func (recv *FileChooserDialogPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this FileChooserDialogPrivate with another FileChooserDialogPrivate, and returns true if they represent the same GObject.
+func (recv *FileChooserDialogPrivate) Equals(other *FileChooserDialogPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // FileChooserWidgetClass is a wrapper around the C record GtkFileChooserWidgetClass.
@@ -3840,6 +4580,11 @@ func (recv *FileChooserWidgetClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this FileChooserWidgetClass with another FileChooserWidgetClass, and returns true if they represent the same GObject.
+func (recv *FileChooserWidgetClass) Equals(other *FileChooserWidgetClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // FileChooserWidgetPrivate is a wrapper around the C record GtkFileChooserWidgetPrivate.
 type FileChooserWidgetPrivate struct {
 	native *C.GtkFileChooserWidgetPrivate
@@ -3859,6 +4604,11 @@ func FileChooserWidgetPrivateNewFromC(u unsafe.Pointer) *FileChooserWidgetPrivat
 func (recv *FileChooserWidgetPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this FileChooserWidgetPrivate with another FileChooserWidgetPrivate, and returns true if they represent the same GObject.
+func (recv *FileChooserWidgetPrivate) Equals(other *FileChooserWidgetPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // FileFilterInfo is a wrapper around the C record GtkFileFilterInfo.
@@ -3904,6 +4654,11 @@ func (recv *FileFilterInfo) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this FileFilterInfo with another FileFilterInfo, and returns true if they represent the same GObject.
+func (recv *FileFilterInfo) Equals(other *FileFilterInfo) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // FixedChild is a wrapper around the C record GtkFixedChild.
 type FixedChild struct {
 	native *C.GtkFixedChild
@@ -3936,6 +4691,11 @@ func (recv *FixedChild) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this FixedChild with another FixedChild, and returns true if they represent the same GObject.
+func (recv *FixedChild) Equals(other *FixedChild) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // FixedClass is a wrapper around the C record GtkFixedClass.
 type FixedClass struct {
 	native *C.GtkFixedClass
@@ -3962,6 +4722,11 @@ func (recv *FixedClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this FixedClass with another FixedClass, and returns true if they represent the same GObject.
+func (recv *FixedClass) Equals(other *FixedClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // FixedPrivate is a wrapper around the C record GtkFixedPrivate.
 type FixedPrivate struct {
 	native *C.GtkFixedPrivate
@@ -3981,6 +4746,11 @@ func FixedPrivateNewFromC(u unsafe.Pointer) *FixedPrivate {
 func (recv *FixedPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this FixedPrivate with another FixedPrivate, and returns true if they represent the same GObject.
+func (recv *FixedPrivate) Equals(other *FixedPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // FlowBoxAccessibleClass is a wrapper around the C record GtkFlowBoxAccessibleClass.
@@ -4005,6 +4775,11 @@ func (recv *FlowBoxAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this FlowBoxAccessibleClass with another FlowBoxAccessibleClass, and returns true if they represent the same GObject.
+func (recv *FlowBoxAccessibleClass) Equals(other *FlowBoxAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // FlowBoxAccessiblePrivate is a wrapper around the C record GtkFlowBoxAccessiblePrivate.
 type FlowBoxAccessiblePrivate struct {
 	native *C.GtkFlowBoxAccessiblePrivate
@@ -4024,6 +4799,11 @@ func FlowBoxAccessiblePrivateNewFromC(u unsafe.Pointer) *FlowBoxAccessiblePrivat
 func (recv *FlowBoxAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this FlowBoxAccessiblePrivate with another FlowBoxAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *FlowBoxAccessiblePrivate) Equals(other *FlowBoxAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // FlowBoxChildAccessibleClass is a wrapper around the C record GtkFlowBoxChildAccessibleClass.
@@ -4046,6 +4826,11 @@ func FlowBoxChildAccessibleClassNewFromC(u unsafe.Pointer) *FlowBoxChildAccessib
 func (recv *FlowBoxChildAccessibleClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this FlowBoxChildAccessibleClass with another FlowBoxChildAccessibleClass, and returns true if they represent the same GObject.
+func (recv *FlowBoxChildAccessibleClass) Equals(other *FlowBoxChildAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // FlowBoxChildClass is a wrapper around the C record GtkFlowBoxChildClass.
@@ -4071,6 +4856,11 @@ func FlowBoxChildClassNewFromC(u unsafe.Pointer) *FlowBoxChildClass {
 func (recv *FlowBoxChildClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this FlowBoxChildClass with another FlowBoxChildClass, and returns true if they represent the same GObject.
+func (recv *FlowBoxChildClass) Equals(other *FlowBoxChildClass) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // FlowBoxClass is a wrapper around the C record GtkFlowBoxClass.
@@ -4108,6 +4898,11 @@ func (recv *FlowBoxClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this FlowBoxClass with another FlowBoxClass, and returns true if they represent the same GObject.
+func (recv *FlowBoxClass) Equals(other *FlowBoxClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // FontButtonClass is a wrapper around the C record GtkFontButtonClass.
 type FontButtonClass struct {
 	native *C.GtkFontButtonClass
@@ -4135,6 +4930,11 @@ func (recv *FontButtonClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this FontButtonClass with another FontButtonClass, and returns true if they represent the same GObject.
+func (recv *FontButtonClass) Equals(other *FontButtonClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // FontButtonPrivate is a wrapper around the C record GtkFontButtonPrivate.
 type FontButtonPrivate struct {
 	native *C.GtkFontButtonPrivate
@@ -4154,6 +4954,11 @@ func FontButtonPrivateNewFromC(u unsafe.Pointer) *FontButtonPrivate {
 func (recv *FontButtonPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this FontButtonPrivate with another FontButtonPrivate, and returns true if they represent the same GObject.
+func (recv *FontButtonPrivate) Equals(other *FontButtonPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // FontChooserDialogClass is a wrapper around the C record GtkFontChooserDialogClass.
@@ -4182,6 +4987,11 @@ func (recv *FontChooserDialogClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this FontChooserDialogClass with another FontChooserDialogClass, and returns true if they represent the same GObject.
+func (recv *FontChooserDialogClass) Equals(other *FontChooserDialogClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // FontChooserDialogPrivate is a wrapper around the C record GtkFontChooserDialogPrivate.
 type FontChooserDialogPrivate struct {
 	native *C.GtkFontChooserDialogPrivate
@@ -4201,6 +5011,11 @@ func FontChooserDialogPrivateNewFromC(u unsafe.Pointer) *FontChooserDialogPrivat
 func (recv *FontChooserDialogPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this FontChooserDialogPrivate with another FontChooserDialogPrivate, and returns true if they represent the same GObject.
+func (recv *FontChooserDialogPrivate) Equals(other *FontChooserDialogPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // FontChooserIface is a wrapper around the C record GtkFontChooserIface.
@@ -4233,6 +5048,11 @@ func (recv *FontChooserIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this FontChooserIface with another FontChooserIface, and returns true if they represent the same GObject.
+func (recv *FontChooserIface) Equals(other *FontChooserIface) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // FontChooserWidgetClass is a wrapper around the C record GtkFontChooserWidgetClass.
 type FontChooserWidgetClass struct {
 	native *C.GtkFontChooserWidgetClass
@@ -4263,6 +5083,11 @@ func (recv *FontChooserWidgetClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this FontChooserWidgetClass with another FontChooserWidgetClass, and returns true if they represent the same GObject.
+func (recv *FontChooserWidgetClass) Equals(other *FontChooserWidgetClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // FontChooserWidgetPrivate is a wrapper around the C record GtkFontChooserWidgetPrivate.
 type FontChooserWidgetPrivate struct {
 	native *C.GtkFontChooserWidgetPrivate
@@ -4282,6 +5107,11 @@ func FontChooserWidgetPrivateNewFromC(u unsafe.Pointer) *FontChooserWidgetPrivat
 func (recv *FontChooserWidgetPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this FontChooserWidgetPrivate with another FontChooserWidgetPrivate, and returns true if they represent the same GObject.
+func (recv *FontChooserWidgetPrivate) Equals(other *FontChooserWidgetPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // FontSelectionClass is a wrapper around the C record GtkFontSelectionClass.
@@ -4310,6 +5140,11 @@ func (recv *FontSelectionClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this FontSelectionClass with another FontSelectionClass, and returns true if they represent the same GObject.
+func (recv *FontSelectionClass) Equals(other *FontSelectionClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // FontSelectionDialogClass is a wrapper around the C record GtkFontSelectionDialogClass.
 type FontSelectionDialogClass struct {
 	native *C.GtkFontSelectionDialogClass
@@ -4336,6 +5171,11 @@ func (recv *FontSelectionDialogClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this FontSelectionDialogClass with another FontSelectionDialogClass, and returns true if they represent the same GObject.
+func (recv *FontSelectionDialogClass) Equals(other *FontSelectionDialogClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // FontSelectionDialogPrivate is a wrapper around the C record GtkFontSelectionDialogPrivate.
 type FontSelectionDialogPrivate struct {
 	native *C.GtkFontSelectionDialogPrivate
@@ -4357,6 +5197,11 @@ func (recv *FontSelectionDialogPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this FontSelectionDialogPrivate with another FontSelectionDialogPrivate, and returns true if they represent the same GObject.
+func (recv *FontSelectionDialogPrivate) Equals(other *FontSelectionDialogPrivate) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // FontSelectionPrivate is a wrapper around the C record GtkFontSelectionPrivate.
 type FontSelectionPrivate struct {
 	native *C.GtkFontSelectionPrivate
@@ -4376,6 +5221,11 @@ func FontSelectionPrivateNewFromC(u unsafe.Pointer) *FontSelectionPrivate {
 func (recv *FontSelectionPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this FontSelectionPrivate with another FontSelectionPrivate, and returns true if they represent the same GObject.
+func (recv *FontSelectionPrivate) Equals(other *FontSelectionPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // FrameAccessibleClass is a wrapper around the C record GtkFrameAccessibleClass.
@@ -4400,6 +5250,11 @@ func (recv *FrameAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this FrameAccessibleClass with another FrameAccessibleClass, and returns true if they represent the same GObject.
+func (recv *FrameAccessibleClass) Equals(other *FrameAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // FrameAccessiblePrivate is a wrapper around the C record GtkFrameAccessiblePrivate.
 type FrameAccessiblePrivate struct {
 	native *C.GtkFrameAccessiblePrivate
@@ -4419,6 +5274,11 @@ func FrameAccessiblePrivateNewFromC(u unsafe.Pointer) *FrameAccessiblePrivate {
 func (recv *FrameAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this FrameAccessiblePrivate with another FrameAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *FrameAccessiblePrivate) Equals(other *FrameAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // FrameClass is a wrapper around the C record GtkFrameClass.
@@ -4448,6 +5308,11 @@ func (recv *FrameClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this FrameClass with another FrameClass, and returns true if they represent the same GObject.
+func (recv *FrameClass) Equals(other *FrameClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // FramePrivate is a wrapper around the C record GtkFramePrivate.
 type FramePrivate struct {
 	native *C.GtkFramePrivate
@@ -4467,6 +5332,11 @@ func FramePrivateNewFromC(u unsafe.Pointer) *FramePrivate {
 func (recv *FramePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this FramePrivate with another FramePrivate, and returns true if they represent the same GObject.
+func (recv *FramePrivate) Equals(other *FramePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // GestureClass is a wrapper around the C record GtkGestureClass.
@@ -4490,6 +5360,11 @@ func (recv *GestureClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this GestureClass with another GestureClass, and returns true if they represent the same GObject.
+func (recv *GestureClass) Equals(other *GestureClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // GestureDragClass is a wrapper around the C record GtkGestureDragClass.
 type GestureDragClass struct {
 	native *C.GtkGestureDragClass
@@ -4509,6 +5384,11 @@ func GestureDragClassNewFromC(u unsafe.Pointer) *GestureDragClass {
 func (recv *GestureDragClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this GestureDragClass with another GestureDragClass, and returns true if they represent the same GObject.
+func (recv *GestureDragClass) Equals(other *GestureDragClass) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // GestureLongPressClass is a wrapper around the C record GtkGestureLongPressClass.
@@ -4532,6 +5412,11 @@ func (recv *GestureLongPressClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this GestureLongPressClass with another GestureLongPressClass, and returns true if they represent the same GObject.
+func (recv *GestureLongPressClass) Equals(other *GestureLongPressClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // GestureMultiPressClass is a wrapper around the C record GtkGestureMultiPressClass.
 type GestureMultiPressClass struct {
 	native *C.GtkGestureMultiPressClass
@@ -4551,6 +5436,11 @@ func GestureMultiPressClassNewFromC(u unsafe.Pointer) *GestureMultiPressClass {
 func (recv *GestureMultiPressClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this GestureMultiPressClass with another GestureMultiPressClass, and returns true if they represent the same GObject.
+func (recv *GestureMultiPressClass) Equals(other *GestureMultiPressClass) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // GesturePanClass is a wrapper around the C record GtkGesturePanClass.
@@ -4574,6 +5464,11 @@ func (recv *GesturePanClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this GesturePanClass with another GesturePanClass, and returns true if they represent the same GObject.
+func (recv *GesturePanClass) Equals(other *GesturePanClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // GestureRotateClass is a wrapper around the C record GtkGestureRotateClass.
 type GestureRotateClass struct {
 	native *C.GtkGestureRotateClass
@@ -4593,6 +5488,11 @@ func GestureRotateClassNewFromC(u unsafe.Pointer) *GestureRotateClass {
 func (recv *GestureRotateClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this GestureRotateClass with another GestureRotateClass, and returns true if they represent the same GObject.
+func (recv *GestureRotateClass) Equals(other *GestureRotateClass) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // GestureSingleClass is a wrapper around the C record GtkGestureSingleClass.
@@ -4616,6 +5516,11 @@ func (recv *GestureSingleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this GestureSingleClass with another GestureSingleClass, and returns true if they represent the same GObject.
+func (recv *GestureSingleClass) Equals(other *GestureSingleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // GestureSwipeClass is a wrapper around the C record GtkGestureSwipeClass.
 type GestureSwipeClass struct {
 	native *C.GtkGestureSwipeClass
@@ -4635,6 +5540,11 @@ func GestureSwipeClassNewFromC(u unsafe.Pointer) *GestureSwipeClass {
 func (recv *GestureSwipeClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this GestureSwipeClass with another GestureSwipeClass, and returns true if they represent the same GObject.
+func (recv *GestureSwipeClass) Equals(other *GestureSwipeClass) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // GestureZoomClass is a wrapper around the C record GtkGestureZoomClass.
@@ -4658,6 +5568,11 @@ func (recv *GestureZoomClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this GestureZoomClass with another GestureZoomClass, and returns true if they represent the same GObject.
+func (recv *GestureZoomClass) Equals(other *GestureZoomClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Gradient is a wrapper around the C record GtkGradient.
 type Gradient struct {
 	native *C.GtkGradient
@@ -4677,6 +5592,11 @@ func GradientNewFromC(u unsafe.Pointer) *Gradient {
 func (recv *Gradient) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Gradient with another Gradient, and returns true if they represent the same GObject.
+func (recv *Gradient) Equals(other *Gradient) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ResolveForContext is a wrapper around the C function gtk_gradient_resolve_for_context.
@@ -4731,6 +5651,11 @@ func (recv *GridClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this GridClass with another GridClass, and returns true if they represent the same GObject.
+func (recv *GridClass) Equals(other *GridClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // GridPrivate is a wrapper around the C record GtkGridPrivate.
 type GridPrivate struct {
 	native *C.GtkGridPrivate
@@ -4750,6 +5675,11 @@ func GridPrivateNewFromC(u unsafe.Pointer) *GridPrivate {
 func (recv *GridPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this GridPrivate with another GridPrivate, and returns true if they represent the same GObject.
+func (recv *GridPrivate) Equals(other *GridPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // HBoxClass is a wrapper around the C record GtkHBoxClass.
@@ -4774,6 +5704,11 @@ func (recv *HBoxClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this HBoxClass with another HBoxClass, and returns true if they represent the same GObject.
+func (recv *HBoxClass) Equals(other *HBoxClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // HButtonBoxClass is a wrapper around the C record GtkHButtonBoxClass.
 type HButtonBoxClass struct {
 	native *C.GtkHButtonBoxClass
@@ -4796,6 +5731,11 @@ func (recv *HButtonBoxClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this HButtonBoxClass with another HButtonBoxClass, and returns true if they represent the same GObject.
+func (recv *HButtonBoxClass) Equals(other *HButtonBoxClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // HPanedClass is a wrapper around the C record GtkHPanedClass.
 type HPanedClass struct {
 	native *C.GtkHPanedClass
@@ -4816,6 +5756,11 @@ func HPanedClassNewFromC(u unsafe.Pointer) *HPanedClass {
 func (recv *HPanedClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this HPanedClass with another HPanedClass, and returns true if they represent the same GObject.
+func (recv *HPanedClass) Equals(other *HPanedClass) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // HSVClass is a wrapper around the C record GtkHSVClass.
@@ -4846,6 +5791,11 @@ func (recv *HSVClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this HSVClass with another HSVClass, and returns true if they represent the same GObject.
+func (recv *HSVClass) Equals(other *HSVClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // HSVPrivate is a wrapper around the C record GtkHSVPrivate.
 type HSVPrivate struct {
 	native *C.GtkHSVPrivate
@@ -4865,6 +5815,11 @@ func HSVPrivateNewFromC(u unsafe.Pointer) *HSVPrivate {
 func (recv *HSVPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this HSVPrivate with another HSVPrivate, and returns true if they represent the same GObject.
+func (recv *HSVPrivate) Equals(other *HSVPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // HScaleClass is a wrapper around the C record GtkHScaleClass.
@@ -4889,6 +5844,11 @@ func (recv *HScaleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this HScaleClass with another HScaleClass, and returns true if they represent the same GObject.
+func (recv *HScaleClass) Equals(other *HScaleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // HScrollbarClass is a wrapper around the C record GtkHScrollbarClass.
 type HScrollbarClass struct {
 	native *C.GtkHScrollbarClass
@@ -4911,6 +5871,11 @@ func (recv *HScrollbarClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this HScrollbarClass with another HScrollbarClass, and returns true if they represent the same GObject.
+func (recv *HScrollbarClass) Equals(other *HScrollbarClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // HSeparatorClass is a wrapper around the C record GtkHSeparatorClass.
 type HSeparatorClass struct {
 	native *C.GtkHSeparatorClass
@@ -4931,6 +5896,11 @@ func HSeparatorClassNewFromC(u unsafe.Pointer) *HSeparatorClass {
 func (recv *HSeparatorClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this HSeparatorClass with another HSeparatorClass, and returns true if they represent the same GObject.
+func (recv *HSeparatorClass) Equals(other *HSeparatorClass) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // HandleBoxClass is a wrapper around the C record GtkHandleBoxClass.
@@ -4961,6 +5931,11 @@ func (recv *HandleBoxClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this HandleBoxClass with another HandleBoxClass, and returns true if they represent the same GObject.
+func (recv *HandleBoxClass) Equals(other *HandleBoxClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // HandleBoxPrivate is a wrapper around the C record GtkHandleBoxPrivate.
 type HandleBoxPrivate struct {
 	native *C.GtkHandleBoxPrivate
@@ -4980,6 +5955,11 @@ func HandleBoxPrivateNewFromC(u unsafe.Pointer) *HandleBoxPrivate {
 func (recv *HandleBoxPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this HandleBoxPrivate with another HandleBoxPrivate, and returns true if they represent the same GObject.
+func (recv *HandleBoxPrivate) Equals(other *HandleBoxPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // HeaderBarClass is a wrapper around the C record GtkHeaderBarClass.
@@ -5008,6 +5988,11 @@ func (recv *HeaderBarClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this HeaderBarClass with another HeaderBarClass, and returns true if they represent the same GObject.
+func (recv *HeaderBarClass) Equals(other *HeaderBarClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // HeaderBarPrivate is a wrapper around the C record GtkHeaderBarPrivate.
 type HeaderBarPrivate struct {
 	native *C.GtkHeaderBarPrivate
@@ -5027,6 +6012,11 @@ func HeaderBarPrivateNewFromC(u unsafe.Pointer) *HeaderBarPrivate {
 func (recv *HeaderBarPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this HeaderBarPrivate with another HeaderBarPrivate, and returns true if they represent the same GObject.
+func (recv *HeaderBarPrivate) Equals(other *HeaderBarPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // IMContextClass is a wrapper around the C record GtkIMContextClass.
@@ -5073,6 +6063,11 @@ func (recv *IMContextClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this IMContextClass with another IMContextClass, and returns true if they represent the same GObject.
+func (recv *IMContextClass) Equals(other *IMContextClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // IMContextInfo is a wrapper around the C record GtkIMContextInfo.
 type IMContextInfo struct {
 	native         *C.GtkIMContextInfo
@@ -5116,6 +6111,11 @@ func (recv *IMContextInfo) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this IMContextInfo with another IMContextInfo, and returns true if they represent the same GObject.
+func (recv *IMContextInfo) Equals(other *IMContextInfo) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // IMContextSimpleClass is a wrapper around the C record GtkIMContextSimpleClass.
 type IMContextSimpleClass struct {
 	native *C.GtkIMContextSimpleClass
@@ -5138,6 +6138,11 @@ func (recv *IMContextSimpleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this IMContextSimpleClass with another IMContextSimpleClass, and returns true if they represent the same GObject.
+func (recv *IMContextSimpleClass) Equals(other *IMContextSimpleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // IMContextSimplePrivate is a wrapper around the C record GtkIMContextSimplePrivate.
 type IMContextSimplePrivate struct {
 	native *C.GtkIMContextSimplePrivate
@@ -5157,6 +6162,11 @@ func IMContextSimplePrivateNewFromC(u unsafe.Pointer) *IMContextSimplePrivate {
 func (recv *IMContextSimplePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this IMContextSimplePrivate with another IMContextSimplePrivate, and returns true if they represent the same GObject.
+func (recv *IMContextSimplePrivate) Equals(other *IMContextSimplePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // IMMulticontextClass is a wrapper around the C record GtkIMMulticontextClass.
@@ -5185,6 +6195,11 @@ func (recv *IMMulticontextClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this IMMulticontextClass with another IMMulticontextClass, and returns true if they represent the same GObject.
+func (recv *IMMulticontextClass) Equals(other *IMMulticontextClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // IMMulticontextPrivate is a wrapper around the C record GtkIMMulticontextPrivate.
 type IMMulticontextPrivate struct {
 	native *C.GtkIMMulticontextPrivate
@@ -5204,6 +6219,11 @@ func IMMulticontextPrivateNewFromC(u unsafe.Pointer) *IMMulticontextPrivate {
 func (recv *IMMulticontextPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this IMMulticontextPrivate with another IMMulticontextPrivate, and returns true if they represent the same GObject.
+func (recv *IMMulticontextPrivate) Equals(other *IMMulticontextPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // IconFactoryClass is a wrapper around the C record GtkIconFactoryClass.
@@ -5232,6 +6252,11 @@ func (recv *IconFactoryClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this IconFactoryClass with another IconFactoryClass, and returns true if they represent the same GObject.
+func (recv *IconFactoryClass) Equals(other *IconFactoryClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // IconFactoryPrivate is a wrapper around the C record GtkIconFactoryPrivate.
 type IconFactoryPrivate struct {
 	native *C.GtkIconFactoryPrivate
@@ -5251,6 +6276,11 @@ func IconFactoryPrivateNewFromC(u unsafe.Pointer) *IconFactoryPrivate {
 func (recv *IconFactoryPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this IconFactoryPrivate with another IconFactoryPrivate, and returns true if they represent the same GObject.
+func (recv *IconFactoryPrivate) Equals(other *IconFactoryPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // IconInfoClass is a wrapper around the C record GtkIconInfoClass.
@@ -5274,6 +6304,11 @@ func (recv *IconInfoClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this IconInfoClass with another IconInfoClass, and returns true if they represent the same GObject.
+func (recv *IconInfoClass) Equals(other *IconInfoClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // IconSet is a wrapper around the C record GtkIconSet.
 type IconSet struct {
 	native *C.GtkIconSet
@@ -5293,6 +6328,11 @@ func IconSetNewFromC(u unsafe.Pointer) *IconSet {
 func (recv *IconSet) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this IconSet with another IconSet, and returns true if they represent the same GObject.
+func (recv *IconSet) Equals(other *IconSet) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // IconSetNew is a wrapper around the C function gtk_icon_set_new.
@@ -5399,6 +6439,11 @@ func IconSourceNewFromC(u unsafe.Pointer) *IconSource {
 func (recv *IconSource) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this IconSource with another IconSource, and returns true if they represent the same GObject.
+func (recv *IconSource) Equals(other *IconSource) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // IconSourceNew is a wrapper around the C function gtk_icon_source_new.
@@ -5612,6 +6657,11 @@ func (recv *IconThemeClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this IconThemeClass with another IconThemeClass, and returns true if they represent the same GObject.
+func (recv *IconThemeClass) Equals(other *IconThemeClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // IconThemePrivate is a wrapper around the C record GtkIconThemePrivate.
 type IconThemePrivate struct {
 	native *C.GtkIconThemePrivate
@@ -5631,6 +6681,11 @@ func IconThemePrivateNewFromC(u unsafe.Pointer) *IconThemePrivate {
 func (recv *IconThemePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this IconThemePrivate with another IconThemePrivate, and returns true if they represent the same GObject.
+func (recv *IconThemePrivate) Equals(other *IconThemePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // IconViewAccessibleClass is a wrapper around the C record GtkIconViewAccessibleClass.
@@ -5655,6 +6710,11 @@ func (recv *IconViewAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this IconViewAccessibleClass with another IconViewAccessibleClass, and returns true if they represent the same GObject.
+func (recv *IconViewAccessibleClass) Equals(other *IconViewAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // IconViewAccessiblePrivate is a wrapper around the C record GtkIconViewAccessiblePrivate.
 type IconViewAccessiblePrivate struct {
 	native *C.GtkIconViewAccessiblePrivate
@@ -5674,6 +6734,11 @@ func IconViewAccessiblePrivateNewFromC(u unsafe.Pointer) *IconViewAccessiblePriv
 func (recv *IconViewAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this IconViewAccessiblePrivate with another IconViewAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *IconViewAccessiblePrivate) Equals(other *IconViewAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // IconViewClass is a wrapper around the C record GtkIconViewClass.
@@ -5710,6 +6775,11 @@ func (recv *IconViewClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this IconViewClass with another IconViewClass, and returns true if they represent the same GObject.
+func (recv *IconViewClass) Equals(other *IconViewClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // IconViewPrivate is a wrapper around the C record GtkIconViewPrivate.
 type IconViewPrivate struct {
 	native *C.GtkIconViewPrivate
@@ -5729,6 +6799,11 @@ func IconViewPrivateNewFromC(u unsafe.Pointer) *IconViewPrivate {
 func (recv *IconViewPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this IconViewPrivate with another IconViewPrivate, and returns true if they represent the same GObject.
+func (recv *IconViewPrivate) Equals(other *IconViewPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ImageAccessibleClass is a wrapper around the C record GtkImageAccessibleClass.
@@ -5753,6 +6828,11 @@ func (recv *ImageAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ImageAccessibleClass with another ImageAccessibleClass, and returns true if they represent the same GObject.
+func (recv *ImageAccessibleClass) Equals(other *ImageAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ImageAccessiblePrivate is a wrapper around the C record GtkImageAccessiblePrivate.
 type ImageAccessiblePrivate struct {
 	native *C.GtkImageAccessiblePrivate
@@ -5772,6 +6852,11 @@ func ImageAccessiblePrivateNewFromC(u unsafe.Pointer) *ImageAccessiblePrivate {
 func (recv *ImageAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ImageAccessiblePrivate with another ImageAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *ImageAccessiblePrivate) Equals(other *ImageAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ImageCellAccessibleClass is a wrapper around the C record GtkImageCellAccessibleClass.
@@ -5796,6 +6881,11 @@ func (recv *ImageCellAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ImageCellAccessibleClass with another ImageCellAccessibleClass, and returns true if they represent the same GObject.
+func (recv *ImageCellAccessibleClass) Equals(other *ImageCellAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ImageCellAccessiblePrivate is a wrapper around the C record GtkImageCellAccessiblePrivate.
 type ImageCellAccessiblePrivate struct {
 	native *C.GtkImageCellAccessiblePrivate
@@ -5815,6 +6905,11 @@ func ImageCellAccessiblePrivateNewFromC(u unsafe.Pointer) *ImageCellAccessiblePr
 func (recv *ImageCellAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ImageCellAccessiblePrivate with another ImageCellAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *ImageCellAccessiblePrivate) Equals(other *ImageCellAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ImageClass is a wrapper around the C record GtkImageClass.
@@ -5843,6 +6938,11 @@ func (recv *ImageClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ImageClass with another ImageClass, and returns true if they represent the same GObject.
+func (recv *ImageClass) Equals(other *ImageClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ImageMenuItemClass is a wrapper around the C record GtkImageMenuItemClass.
 type ImageMenuItemClass struct {
 	native *C.GtkImageMenuItemClass
@@ -5869,6 +6969,11 @@ func (recv *ImageMenuItemClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ImageMenuItemClass with another ImageMenuItemClass, and returns true if they represent the same GObject.
+func (recv *ImageMenuItemClass) Equals(other *ImageMenuItemClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ImageMenuItemPrivate is a wrapper around the C record GtkImageMenuItemPrivate.
 type ImageMenuItemPrivate struct {
 	native *C.GtkImageMenuItemPrivate
@@ -5890,6 +6995,11 @@ func (recv *ImageMenuItemPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ImageMenuItemPrivate with another ImageMenuItemPrivate, and returns true if they represent the same GObject.
+func (recv *ImageMenuItemPrivate) Equals(other *ImageMenuItemPrivate) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ImagePrivate is a wrapper around the C record GtkImagePrivate.
 type ImagePrivate struct {
 	native *C.GtkImagePrivate
@@ -5909,6 +7019,11 @@ func ImagePrivateNewFromC(u unsafe.Pointer) *ImagePrivate {
 func (recv *ImagePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ImagePrivate with another ImagePrivate, and returns true if they represent the same GObject.
+func (recv *ImagePrivate) Equals(other *ImagePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // InfoBarClass is a wrapper around the C record GtkInfoBarClass.
@@ -5939,6 +7054,11 @@ func (recv *InfoBarClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this InfoBarClass with another InfoBarClass, and returns true if they represent the same GObject.
+func (recv *InfoBarClass) Equals(other *InfoBarClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // InfoBarPrivate is a wrapper around the C record GtkInfoBarPrivate.
 type InfoBarPrivate struct {
 	native *C.GtkInfoBarPrivate
@@ -5958,6 +7078,11 @@ func InfoBarPrivateNewFromC(u unsafe.Pointer) *InfoBarPrivate {
 func (recv *InfoBarPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this InfoBarPrivate with another InfoBarPrivate, and returns true if they represent the same GObject.
+func (recv *InfoBarPrivate) Equals(other *InfoBarPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // InvisibleClass is a wrapper around the C record GtkInvisibleClass.
@@ -5986,6 +7111,11 @@ func (recv *InvisibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this InvisibleClass with another InvisibleClass, and returns true if they represent the same GObject.
+func (recv *InvisibleClass) Equals(other *InvisibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // InvisiblePrivate is a wrapper around the C record GtkInvisiblePrivate.
 type InvisiblePrivate struct {
 	native *C.GtkInvisiblePrivate
@@ -6005,6 +7135,11 @@ func InvisiblePrivateNewFromC(u unsafe.Pointer) *InvisiblePrivate {
 func (recv *InvisiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this InvisiblePrivate with another InvisiblePrivate, and returns true if they represent the same GObject.
+func (recv *InvisiblePrivate) Equals(other *InvisiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // LabelAccessibleClass is a wrapper around the C record GtkLabelAccessibleClass.
@@ -6029,6 +7164,11 @@ func (recv *LabelAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this LabelAccessibleClass with another LabelAccessibleClass, and returns true if they represent the same GObject.
+func (recv *LabelAccessibleClass) Equals(other *LabelAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // LabelAccessiblePrivate is a wrapper around the C record GtkLabelAccessiblePrivate.
 type LabelAccessiblePrivate struct {
 	native *C.GtkLabelAccessiblePrivate
@@ -6048,6 +7188,11 @@ func LabelAccessiblePrivateNewFromC(u unsafe.Pointer) *LabelAccessiblePrivate {
 func (recv *LabelAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this LabelAccessiblePrivate with another LabelAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *LabelAccessiblePrivate) Equals(other *LabelAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // LabelClass is a wrapper around the C record GtkLabelClass.
@@ -6084,6 +7229,11 @@ func (recv *LabelClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this LabelClass with another LabelClass, and returns true if they represent the same GObject.
+func (recv *LabelClass) Equals(other *LabelClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // LabelPrivate is a wrapper around the C record GtkLabelPrivate.
 type LabelPrivate struct {
 	native *C.GtkLabelPrivate
@@ -6105,6 +7255,11 @@ func (recv *LabelPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this LabelPrivate with another LabelPrivate, and returns true if they represent the same GObject.
+func (recv *LabelPrivate) Equals(other *LabelPrivate) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // LabelSelectionInfo is a wrapper around the C record GtkLabelSelectionInfo.
 type LabelSelectionInfo struct {
 	native *C.GtkLabelSelectionInfo
@@ -6124,6 +7279,11 @@ func LabelSelectionInfoNewFromC(u unsafe.Pointer) *LabelSelectionInfo {
 func (recv *LabelSelectionInfo) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this LabelSelectionInfo with another LabelSelectionInfo, and returns true if they represent the same GObject.
+func (recv *LabelSelectionInfo) Equals(other *LabelSelectionInfo) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // LayoutClass is a wrapper around the C record GtkLayoutClass.
@@ -6152,6 +7312,11 @@ func (recv *LayoutClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this LayoutClass with another LayoutClass, and returns true if they represent the same GObject.
+func (recv *LayoutClass) Equals(other *LayoutClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // LayoutPrivate is a wrapper around the C record GtkLayoutPrivate.
 type LayoutPrivate struct {
 	native *C.GtkLayoutPrivate
@@ -6171,6 +7336,11 @@ func LayoutPrivateNewFromC(u unsafe.Pointer) *LayoutPrivate {
 func (recv *LayoutPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this LayoutPrivate with another LayoutPrivate, and returns true if they represent the same GObject.
+func (recv *LayoutPrivate) Equals(other *LayoutPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // LevelBarAccessibleClass is a wrapper around the C record GtkLevelBarAccessibleClass.
@@ -6195,6 +7365,11 @@ func (recv *LevelBarAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this LevelBarAccessibleClass with another LevelBarAccessibleClass, and returns true if they represent the same GObject.
+func (recv *LevelBarAccessibleClass) Equals(other *LevelBarAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // LevelBarAccessiblePrivate is a wrapper around the C record GtkLevelBarAccessiblePrivate.
 type LevelBarAccessiblePrivate struct {
 	native *C.GtkLevelBarAccessiblePrivate
@@ -6214,6 +7389,11 @@ func LevelBarAccessiblePrivateNewFromC(u unsafe.Pointer) *LevelBarAccessiblePriv
 func (recv *LevelBarAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this LevelBarAccessiblePrivate with another LevelBarAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *LevelBarAccessiblePrivate) Equals(other *LevelBarAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // LevelBarClass is a wrapper around the C record GtkLevelBarClass.
@@ -6240,6 +7420,11 @@ func (recv *LevelBarClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this LevelBarClass with another LevelBarClass, and returns true if they represent the same GObject.
+func (recv *LevelBarClass) Equals(other *LevelBarClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // LevelBarPrivate is a wrapper around the C record GtkLevelBarPrivate.
 type LevelBarPrivate struct {
 	native *C.GtkLevelBarPrivate
@@ -6259,6 +7444,11 @@ func LevelBarPrivateNewFromC(u unsafe.Pointer) *LevelBarPrivate {
 func (recv *LevelBarPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this LevelBarPrivate with another LevelBarPrivate, and returns true if they represent the same GObject.
+func (recv *LevelBarPrivate) Equals(other *LevelBarPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // LinkButtonAccessibleClass is a wrapper around the C record GtkLinkButtonAccessibleClass.
@@ -6283,6 +7473,11 @@ func (recv *LinkButtonAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this LinkButtonAccessibleClass with another LinkButtonAccessibleClass, and returns true if they represent the same GObject.
+func (recv *LinkButtonAccessibleClass) Equals(other *LinkButtonAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // LinkButtonAccessiblePrivate is a wrapper around the C record GtkLinkButtonAccessiblePrivate.
 type LinkButtonAccessiblePrivate struct {
 	native *C.GtkLinkButtonAccessiblePrivate
@@ -6302,6 +7497,11 @@ func LinkButtonAccessiblePrivateNewFromC(u unsafe.Pointer) *LinkButtonAccessible
 func (recv *LinkButtonAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this LinkButtonAccessiblePrivate with another LinkButtonAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *LinkButtonAccessiblePrivate) Equals(other *LinkButtonAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // LinkButtonClass is a wrapper around the C record GtkLinkButtonClass.
@@ -6331,6 +7531,11 @@ func (recv *LinkButtonClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this LinkButtonClass with another LinkButtonClass, and returns true if they represent the same GObject.
+func (recv *LinkButtonClass) Equals(other *LinkButtonClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // LinkButtonPrivate is a wrapper around the C record GtkLinkButtonPrivate.
 type LinkButtonPrivate struct {
 	native *C.GtkLinkButtonPrivate
@@ -6350,6 +7555,11 @@ func LinkButtonPrivateNewFromC(u unsafe.Pointer) *LinkButtonPrivate {
 func (recv *LinkButtonPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this LinkButtonPrivate with another LinkButtonPrivate, and returns true if they represent the same GObject.
+func (recv *LinkButtonPrivate) Equals(other *LinkButtonPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ListBoxAccessibleClass is a wrapper around the C record GtkListBoxAccessibleClass.
@@ -6374,6 +7584,11 @@ func (recv *ListBoxAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ListBoxAccessibleClass with another ListBoxAccessibleClass, and returns true if they represent the same GObject.
+func (recv *ListBoxAccessibleClass) Equals(other *ListBoxAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ListBoxAccessiblePrivate is a wrapper around the C record GtkListBoxAccessiblePrivate.
 type ListBoxAccessiblePrivate struct {
 	native *C.GtkListBoxAccessiblePrivate
@@ -6393,6 +7608,11 @@ func ListBoxAccessiblePrivateNewFromC(u unsafe.Pointer) *ListBoxAccessiblePrivat
 func (recv *ListBoxAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ListBoxAccessiblePrivate with another ListBoxAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *ListBoxAccessiblePrivate) Equals(other *ListBoxAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ListBoxClass is a wrapper around the C record GtkListBoxClass.
@@ -6428,6 +7648,11 @@ func (recv *ListBoxClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ListBoxClass with another ListBoxClass, and returns true if they represent the same GObject.
+func (recv *ListBoxClass) Equals(other *ListBoxClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ListBoxRowAccessibleClass is a wrapper around the C record GtkListBoxRowAccessibleClass.
 type ListBoxRowAccessibleClass struct {
 	native *C.GtkListBoxRowAccessibleClass
@@ -6448,6 +7673,11 @@ func ListBoxRowAccessibleClassNewFromC(u unsafe.Pointer) *ListBoxRowAccessibleCl
 func (recv *ListBoxRowAccessibleClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ListBoxRowAccessibleClass with another ListBoxRowAccessibleClass, and returns true if they represent the same GObject.
+func (recv *ListBoxRowAccessibleClass) Equals(other *ListBoxRowAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ListBoxRowClass is a wrapper around the C record GtkListBoxRowClass.
@@ -6473,6 +7703,11 @@ func ListBoxRowClassNewFromC(u unsafe.Pointer) *ListBoxRowClass {
 func (recv *ListBoxRowClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ListBoxRowClass with another ListBoxRowClass, and returns true if they represent the same GObject.
+func (recv *ListBoxRowClass) Equals(other *ListBoxRowClass) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ListStoreClass is a wrapper around the C record GtkListStoreClass.
@@ -6501,6 +7736,11 @@ func (recv *ListStoreClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ListStoreClass with another ListStoreClass, and returns true if they represent the same GObject.
+func (recv *ListStoreClass) Equals(other *ListStoreClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ListStorePrivate is a wrapper around the C record GtkListStorePrivate.
 type ListStorePrivate struct {
 	native *C.GtkListStorePrivate
@@ -6520,6 +7760,11 @@ func ListStorePrivateNewFromC(u unsafe.Pointer) *ListStorePrivate {
 func (recv *ListStorePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ListStorePrivate with another ListStorePrivate, and returns true if they represent the same GObject.
+func (recv *ListStorePrivate) Equals(other *ListStorePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // LockButtonAccessibleClass is a wrapper around the C record GtkLockButtonAccessibleClass.
@@ -6544,6 +7789,11 @@ func (recv *LockButtonAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this LockButtonAccessibleClass with another LockButtonAccessibleClass, and returns true if they represent the same GObject.
+func (recv *LockButtonAccessibleClass) Equals(other *LockButtonAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // LockButtonAccessiblePrivate is a wrapper around the C record GtkLockButtonAccessiblePrivate.
 type LockButtonAccessiblePrivate struct {
 	native *C.GtkLockButtonAccessiblePrivate
@@ -6563,6 +7813,11 @@ func LockButtonAccessiblePrivateNewFromC(u unsafe.Pointer) *LockButtonAccessible
 func (recv *LockButtonAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this LockButtonAccessiblePrivate with another LockButtonAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *LockButtonAccessiblePrivate) Equals(other *LockButtonAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // LockButtonClass is a wrapper around the C record GtkLockButtonClass.
@@ -6595,6 +7850,11 @@ func (recv *LockButtonClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this LockButtonClass with another LockButtonClass, and returns true if they represent the same GObject.
+func (recv *LockButtonClass) Equals(other *LockButtonClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // LockButtonPrivate is a wrapper around the C record GtkLockButtonPrivate.
 type LockButtonPrivate struct {
 	native *C.GtkLockButtonPrivate
@@ -6614,6 +7874,11 @@ func LockButtonPrivateNewFromC(u unsafe.Pointer) *LockButtonPrivate {
 func (recv *LockButtonPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this LockButtonPrivate with another LockButtonPrivate, and returns true if they represent the same GObject.
+func (recv *LockButtonPrivate) Equals(other *LockButtonPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // MenuAccessibleClass is a wrapper around the C record GtkMenuAccessibleClass.
@@ -6638,6 +7903,11 @@ func (recv *MenuAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this MenuAccessibleClass with another MenuAccessibleClass, and returns true if they represent the same GObject.
+func (recv *MenuAccessibleClass) Equals(other *MenuAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // MenuAccessiblePrivate is a wrapper around the C record GtkMenuAccessiblePrivate.
 type MenuAccessiblePrivate struct {
 	native *C.GtkMenuAccessiblePrivate
@@ -6657,6 +7927,11 @@ func MenuAccessiblePrivateNewFromC(u unsafe.Pointer) *MenuAccessiblePrivate {
 func (recv *MenuAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this MenuAccessiblePrivate with another MenuAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *MenuAccessiblePrivate) Equals(other *MenuAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // MenuBarClass is a wrapper around the C record GtkMenuBarClass.
@@ -6685,6 +7960,11 @@ func (recv *MenuBarClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this MenuBarClass with another MenuBarClass, and returns true if they represent the same GObject.
+func (recv *MenuBarClass) Equals(other *MenuBarClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // MenuBarPrivate is a wrapper around the C record GtkMenuBarPrivate.
 type MenuBarPrivate struct {
 	native *C.GtkMenuBarPrivate
@@ -6704,6 +7984,11 @@ func MenuBarPrivateNewFromC(u unsafe.Pointer) *MenuBarPrivate {
 func (recv *MenuBarPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this MenuBarPrivate with another MenuBarPrivate, and returns true if they represent the same GObject.
+func (recv *MenuBarPrivate) Equals(other *MenuBarPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // MenuButtonAccessibleClass is a wrapper around the C record GtkMenuButtonAccessibleClass.
@@ -6728,6 +8013,11 @@ func (recv *MenuButtonAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this MenuButtonAccessibleClass with another MenuButtonAccessibleClass, and returns true if they represent the same GObject.
+func (recv *MenuButtonAccessibleClass) Equals(other *MenuButtonAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // MenuButtonAccessiblePrivate is a wrapper around the C record GtkMenuButtonAccessiblePrivate.
 type MenuButtonAccessiblePrivate struct {
 	native *C.GtkMenuButtonAccessiblePrivate
@@ -6747,6 +8037,11 @@ func MenuButtonAccessiblePrivateNewFromC(u unsafe.Pointer) *MenuButtonAccessible
 func (recv *MenuButtonAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this MenuButtonAccessiblePrivate with another MenuButtonAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *MenuButtonAccessiblePrivate) Equals(other *MenuButtonAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // MenuButtonClass is a wrapper around the C record GtkMenuButtonClass.
@@ -6775,6 +8070,11 @@ func (recv *MenuButtonClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this MenuButtonClass with another MenuButtonClass, and returns true if they represent the same GObject.
+func (recv *MenuButtonClass) Equals(other *MenuButtonClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // MenuButtonPrivate is a wrapper around the C record GtkMenuButtonPrivate.
 type MenuButtonPrivate struct {
 	native *C.GtkMenuButtonPrivate
@@ -6794,6 +8094,11 @@ func MenuButtonPrivateNewFromC(u unsafe.Pointer) *MenuButtonPrivate {
 func (recv *MenuButtonPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this MenuButtonPrivate with another MenuButtonPrivate, and returns true if they represent the same GObject.
+func (recv *MenuButtonPrivate) Equals(other *MenuButtonPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // MenuClass is a wrapper around the C record GtkMenuClass.
@@ -6822,6 +8127,11 @@ func (recv *MenuClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this MenuClass with another MenuClass, and returns true if they represent the same GObject.
+func (recv *MenuClass) Equals(other *MenuClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // MenuItemAccessibleClass is a wrapper around the C record GtkMenuItemAccessibleClass.
 type MenuItemAccessibleClass struct {
 	native *C.GtkMenuItemAccessibleClass
@@ -6844,6 +8154,11 @@ func (recv *MenuItemAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this MenuItemAccessibleClass with another MenuItemAccessibleClass, and returns true if they represent the same GObject.
+func (recv *MenuItemAccessibleClass) Equals(other *MenuItemAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // MenuItemAccessiblePrivate is a wrapper around the C record GtkMenuItemAccessiblePrivate.
 type MenuItemAccessiblePrivate struct {
 	native *C.GtkMenuItemAccessiblePrivate
@@ -6863,6 +8178,11 @@ func MenuItemAccessiblePrivateNewFromC(u unsafe.Pointer) *MenuItemAccessiblePriv
 func (recv *MenuItemAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this MenuItemAccessiblePrivate with another MenuItemAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *MenuItemAccessiblePrivate) Equals(other *MenuItemAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // MenuItemClass is a wrapper around the C record GtkMenuItemClass.
@@ -6900,6 +8220,11 @@ func (recv *MenuItemClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this MenuItemClass with another MenuItemClass, and returns true if they represent the same GObject.
+func (recv *MenuItemClass) Equals(other *MenuItemClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // MenuItemPrivate is a wrapper around the C record GtkMenuItemPrivate.
 type MenuItemPrivate struct {
 	native *C.GtkMenuItemPrivate
@@ -6921,6 +8246,11 @@ func (recv *MenuItemPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this MenuItemPrivate with another MenuItemPrivate, and returns true if they represent the same GObject.
+func (recv *MenuItemPrivate) Equals(other *MenuItemPrivate) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // MenuPrivate is a wrapper around the C record GtkMenuPrivate.
 type MenuPrivate struct {
 	native *C.GtkMenuPrivate
@@ -6940,6 +8270,11 @@ func MenuPrivateNewFromC(u unsafe.Pointer) *MenuPrivate {
 func (recv *MenuPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this MenuPrivate with another MenuPrivate, and returns true if they represent the same GObject.
+func (recv *MenuPrivate) Equals(other *MenuPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // MenuShellAccessibleClass is a wrapper around the C record GtkMenuShellAccessibleClass.
@@ -6964,6 +8299,11 @@ func (recv *MenuShellAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this MenuShellAccessibleClass with another MenuShellAccessibleClass, and returns true if they represent the same GObject.
+func (recv *MenuShellAccessibleClass) Equals(other *MenuShellAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // MenuShellAccessiblePrivate is a wrapper around the C record GtkMenuShellAccessiblePrivate.
 type MenuShellAccessiblePrivate struct {
 	native *C.GtkMenuShellAccessiblePrivate
@@ -6983,6 +8323,11 @@ func MenuShellAccessiblePrivateNewFromC(u unsafe.Pointer) *MenuShellAccessiblePr
 func (recv *MenuShellAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this MenuShellAccessiblePrivate with another MenuShellAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *MenuShellAccessiblePrivate) Equals(other *MenuShellAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // MenuShellClass is a wrapper around the C record GtkMenuShellClass.
@@ -7021,6 +8366,11 @@ func (recv *MenuShellClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this MenuShellClass with another MenuShellClass, and returns true if they represent the same GObject.
+func (recv *MenuShellClass) Equals(other *MenuShellClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // MenuShellPrivate is a wrapper around the C record GtkMenuShellPrivate.
 type MenuShellPrivate struct {
 	native *C.GtkMenuShellPrivate
@@ -7040,6 +8390,11 @@ func MenuShellPrivateNewFromC(u unsafe.Pointer) *MenuShellPrivate {
 func (recv *MenuShellPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this MenuShellPrivate with another MenuShellPrivate, and returns true if they represent the same GObject.
+func (recv *MenuShellPrivate) Equals(other *MenuShellPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // MenuToolButtonClass is a wrapper around the C record GtkMenuToolButtonClass.
@@ -7069,6 +8424,11 @@ func (recv *MenuToolButtonClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this MenuToolButtonClass with another MenuToolButtonClass, and returns true if they represent the same GObject.
+func (recv *MenuToolButtonClass) Equals(other *MenuToolButtonClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // MenuToolButtonPrivate is a wrapper around the C record GtkMenuToolButtonPrivate.
 type MenuToolButtonPrivate struct {
 	native *C.GtkMenuToolButtonPrivate
@@ -7088,6 +8448,11 @@ func MenuToolButtonPrivateNewFromC(u unsafe.Pointer) *MenuToolButtonPrivate {
 func (recv *MenuToolButtonPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this MenuToolButtonPrivate with another MenuToolButtonPrivate, and returns true if they represent the same GObject.
+func (recv *MenuToolButtonPrivate) Equals(other *MenuToolButtonPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // MessageDialogClass is a wrapper around the C record GtkMessageDialogClass.
@@ -7116,6 +8481,11 @@ func (recv *MessageDialogClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this MessageDialogClass with another MessageDialogClass, and returns true if they represent the same GObject.
+func (recv *MessageDialogClass) Equals(other *MessageDialogClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // MessageDialogPrivate is a wrapper around the C record GtkMessageDialogPrivate.
 type MessageDialogPrivate struct {
 	native *C.GtkMessageDialogPrivate
@@ -7135,6 +8505,11 @@ func MessageDialogPrivateNewFromC(u unsafe.Pointer) *MessageDialogPrivate {
 func (recv *MessageDialogPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this MessageDialogPrivate with another MessageDialogPrivate, and returns true if they represent the same GObject.
+func (recv *MessageDialogPrivate) Equals(other *MessageDialogPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // MiscClass is a wrapper around the C record GtkMiscClass.
@@ -7163,6 +8538,11 @@ func (recv *MiscClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this MiscClass with another MiscClass, and returns true if they represent the same GObject.
+func (recv *MiscClass) Equals(other *MiscClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // MiscPrivate is a wrapper around the C record GtkMiscPrivate.
 type MiscPrivate struct {
 	native *C.GtkMiscPrivate
@@ -7182,6 +8562,11 @@ func MiscPrivateNewFromC(u unsafe.Pointer) *MiscPrivate {
 func (recv *MiscPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this MiscPrivate with another MiscPrivate, and returns true if they represent the same GObject.
+func (recv *MiscPrivate) Equals(other *MiscPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // MountOperationClass is a wrapper around the C record GtkMountOperationClass.
@@ -7210,6 +8595,11 @@ func (recv *MountOperationClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this MountOperationClass with another MountOperationClass, and returns true if they represent the same GObject.
+func (recv *MountOperationClass) Equals(other *MountOperationClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // MountOperationPrivate is a wrapper around the C record GtkMountOperationPrivate.
 type MountOperationPrivate struct {
 	native *C.GtkMountOperationPrivate
@@ -7229,6 +8619,11 @@ func MountOperationPrivateNewFromC(u unsafe.Pointer) *MountOperationPrivate {
 func (recv *MountOperationPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this MountOperationPrivate with another MountOperationPrivate, and returns true if they represent the same GObject.
+func (recv *MountOperationPrivate) Equals(other *MountOperationPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // NotebookAccessibleClass is a wrapper around the C record GtkNotebookAccessibleClass.
@@ -7253,6 +8648,11 @@ func (recv *NotebookAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this NotebookAccessibleClass with another NotebookAccessibleClass, and returns true if they represent the same GObject.
+func (recv *NotebookAccessibleClass) Equals(other *NotebookAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // NotebookAccessiblePrivate is a wrapper around the C record GtkNotebookAccessiblePrivate.
 type NotebookAccessiblePrivate struct {
 	native *C.GtkNotebookAccessiblePrivate
@@ -7272,6 +8672,11 @@ func NotebookAccessiblePrivateNewFromC(u unsafe.Pointer) *NotebookAccessiblePriv
 func (recv *NotebookAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this NotebookAccessiblePrivate with another NotebookAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *NotebookAccessiblePrivate) Equals(other *NotebookAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // NotebookClass is a wrapper around the C record GtkNotebookClass.
@@ -7315,6 +8720,11 @@ func (recv *NotebookClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this NotebookClass with another NotebookClass, and returns true if they represent the same GObject.
+func (recv *NotebookClass) Equals(other *NotebookClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // NotebookPageAccessibleClass is a wrapper around the C record GtkNotebookPageAccessibleClass.
 type NotebookPageAccessibleClass struct {
 	native *C.GtkNotebookPageAccessibleClass
@@ -7335,6 +8745,11 @@ func NotebookPageAccessibleClassNewFromC(u unsafe.Pointer) *NotebookPageAccessib
 func (recv *NotebookPageAccessibleClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this NotebookPageAccessibleClass with another NotebookPageAccessibleClass, and returns true if they represent the same GObject.
+func (recv *NotebookPageAccessibleClass) Equals(other *NotebookPageAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // NotebookPageAccessiblePrivate is a wrapper around the C record GtkNotebookPageAccessiblePrivate.
@@ -7358,6 +8773,11 @@ func (recv *NotebookPageAccessiblePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this NotebookPageAccessiblePrivate with another NotebookPageAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *NotebookPageAccessiblePrivate) Equals(other *NotebookPageAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // NotebookPrivate is a wrapper around the C record GtkNotebookPrivate.
 type NotebookPrivate struct {
 	native *C.GtkNotebookPrivate
@@ -7377,6 +8797,11 @@ func NotebookPrivateNewFromC(u unsafe.Pointer) *NotebookPrivate {
 func (recv *NotebookPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this NotebookPrivate with another NotebookPrivate, and returns true if they represent the same GObject.
+func (recv *NotebookPrivate) Equals(other *NotebookPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // NumerableIconClass is a wrapper around the C record GtkNumerableIconClass.
@@ -7402,6 +8827,11 @@ func (recv *NumerableIconClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this NumerableIconClass with another NumerableIconClass, and returns true if they represent the same GObject.
+func (recv *NumerableIconClass) Equals(other *NumerableIconClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // NumerableIconPrivate is a wrapper around the C record GtkNumerableIconPrivate.
 type NumerableIconPrivate struct {
 	native *C.GtkNumerableIconPrivate
@@ -7421,6 +8851,11 @@ func NumerableIconPrivateNewFromC(u unsafe.Pointer) *NumerableIconPrivate {
 func (recv *NumerableIconPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this NumerableIconPrivate with another NumerableIconPrivate, and returns true if they represent the same GObject.
+func (recv *NumerableIconPrivate) Equals(other *NumerableIconPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // OffscreenWindowClass is a wrapper around the C record GtkOffscreenWindowClass.
@@ -7449,6 +8884,11 @@ func (recv *OffscreenWindowClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this OffscreenWindowClass with another OffscreenWindowClass, and returns true if they represent the same GObject.
+func (recv *OffscreenWindowClass) Equals(other *OffscreenWindowClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // OrientableIface is a wrapper around the C record GtkOrientableIface.
 type OrientableIface struct {
 	native *C.GtkOrientableIface
@@ -7469,6 +8909,11 @@ func OrientableIfaceNewFromC(u unsafe.Pointer) *OrientableIface {
 func (recv *OrientableIface) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this OrientableIface with another OrientableIface, and returns true if they represent the same GObject.
+func (recv *OrientableIface) Equals(other *OrientableIface) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // OverlayClass is a wrapper around the C record GtkOverlayClass.
@@ -7502,6 +8947,11 @@ func (recv *OverlayClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this OverlayClass with another OverlayClass, and returns true if they represent the same GObject.
+func (recv *OverlayClass) Equals(other *OverlayClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // OverlayPrivate is a wrapper around the C record GtkOverlayPrivate.
 type OverlayPrivate struct {
 	native *C.GtkOverlayPrivate
@@ -7521,6 +8971,11 @@ func OverlayPrivateNewFromC(u unsafe.Pointer) *OverlayPrivate {
 func (recv *OverlayPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this OverlayPrivate with another OverlayPrivate, and returns true if they represent the same GObject.
+func (recv *OverlayPrivate) Equals(other *OverlayPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // PageRange is a wrapper around the C record GtkPageRange.
@@ -7554,6 +9009,11 @@ func (recv *PageRange) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this PageRange with another PageRange, and returns true if they represent the same GObject.
+func (recv *PageRange) Equals(other *PageRange) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // PanedAccessibleClass is a wrapper around the C record GtkPanedAccessibleClass.
 type PanedAccessibleClass struct {
 	native *C.GtkPanedAccessibleClass
@@ -7576,6 +9036,11 @@ func (recv *PanedAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this PanedAccessibleClass with another PanedAccessibleClass, and returns true if they represent the same GObject.
+func (recv *PanedAccessibleClass) Equals(other *PanedAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // PanedAccessiblePrivate is a wrapper around the C record GtkPanedAccessiblePrivate.
 type PanedAccessiblePrivate struct {
 	native *C.GtkPanedAccessiblePrivate
@@ -7595,6 +9060,11 @@ func PanedAccessiblePrivateNewFromC(u unsafe.Pointer) *PanedAccessiblePrivate {
 func (recv *PanedAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this PanedAccessiblePrivate with another PanedAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *PanedAccessiblePrivate) Equals(other *PanedAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // PanedClass is a wrapper around the C record GtkPanedClass.
@@ -7629,6 +9099,11 @@ func (recv *PanedClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this PanedClass with another PanedClass, and returns true if they represent the same GObject.
+func (recv *PanedClass) Equals(other *PanedClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // PanedPrivate is a wrapper around the C record GtkPanedPrivate.
 type PanedPrivate struct {
 	native *C.GtkPanedPrivate
@@ -7650,6 +9125,11 @@ func (recv *PanedPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this PanedPrivate with another PanedPrivate, and returns true if they represent the same GObject.
+func (recv *PanedPrivate) Equals(other *PanedPrivate) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // PaperSize is a wrapper around the C record GtkPaperSize.
 type PaperSize struct {
 	native *C.GtkPaperSize
@@ -7669,6 +9149,11 @@ func PaperSizeNewFromC(u unsafe.Pointer) *PaperSize {
 func (recv *PaperSize) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this PaperSize with another PaperSize, and returns true if they represent the same GObject.
+func (recv *PaperSize) Equals(other *PaperSize) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // IsCustom is a wrapper around the C function gtk_paper_size_is_custom.
@@ -7708,6 +9193,11 @@ func (recv *PlacesSidebarClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this PlacesSidebarClass with another PlacesSidebarClass, and returns true if they represent the same GObject.
+func (recv *PlacesSidebarClass) Equals(other *PlacesSidebarClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // PlugClass is a wrapper around the C record GtkPlugClass.
 type PlugClass struct {
 	native *C.GtkPlugClass
@@ -7735,6 +9225,11 @@ func (recv *PlugClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this PlugClass with another PlugClass, and returns true if they represent the same GObject.
+func (recv *PlugClass) Equals(other *PlugClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // PlugPrivate is a wrapper around the C record GtkPlugPrivate.
 type PlugPrivate struct {
 	native *C.GtkPlugPrivate
@@ -7754,6 +9249,11 @@ func PlugPrivateNewFromC(u unsafe.Pointer) *PlugPrivate {
 func (recv *PlugPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this PlugPrivate with another PlugPrivate, and returns true if they represent the same GObject.
+func (recv *PlugPrivate) Equals(other *PlugPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // PopoverAccessibleClass is a wrapper around the C record GtkPopoverAccessibleClass.
@@ -7776,6 +9276,11 @@ func PopoverAccessibleClassNewFromC(u unsafe.Pointer) *PopoverAccessibleClass {
 func (recv *PopoverAccessibleClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this PopoverAccessibleClass with another PopoverAccessibleClass, and returns true if they represent the same GObject.
+func (recv *PopoverAccessibleClass) Equals(other *PopoverAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // PopoverClass is a wrapper around the C record GtkPopoverClass.
@@ -7802,6 +9307,11 @@ func (recv *PopoverClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this PopoverClass with another PopoverClass, and returns true if they represent the same GObject.
+func (recv *PopoverClass) Equals(other *PopoverClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // PopoverMenuClass is a wrapper around the C record GtkPopoverMenuClass.
 type PopoverMenuClass struct {
 	native *C.GtkPopoverMenuClass
@@ -7825,6 +9335,11 @@ func (recv *PopoverMenuClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this PopoverMenuClass with another PopoverMenuClass, and returns true if they represent the same GObject.
+func (recv *PopoverMenuClass) Equals(other *PopoverMenuClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // PopoverPrivate is a wrapper around the C record GtkPopoverPrivate.
 type PopoverPrivate struct {
 	native *C.GtkPopoverPrivate
@@ -7844,6 +9359,11 @@ func PopoverPrivateNewFromC(u unsafe.Pointer) *PopoverPrivate {
 func (recv *PopoverPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this PopoverPrivate with another PopoverPrivate, and returns true if they represent the same GObject.
+func (recv *PopoverPrivate) Equals(other *PopoverPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // PrintOperationClass is a wrapper around the C record GtkPrintOperationClass.
@@ -7887,6 +9407,11 @@ func (recv *PrintOperationClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this PrintOperationClass with another PrintOperationClass, and returns true if they represent the same GObject.
+func (recv *PrintOperationClass) Equals(other *PrintOperationClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // PrintOperationPreviewIface is a wrapper around the C record GtkPrintOperationPreviewIface.
 type PrintOperationPreviewIface struct {
 	native *C.GtkPrintOperationPreviewIface
@@ -7922,6 +9447,11 @@ func (recv *PrintOperationPreviewIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this PrintOperationPreviewIface with another PrintOperationPreviewIface, and returns true if they represent the same GObject.
+func (recv *PrintOperationPreviewIface) Equals(other *PrintOperationPreviewIface) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // PrintOperationPrivate is a wrapper around the C record GtkPrintOperationPrivate.
 type PrintOperationPrivate struct {
 	native *C.GtkPrintOperationPrivate
@@ -7941,6 +9471,11 @@ func PrintOperationPrivateNewFromC(u unsafe.Pointer) *PrintOperationPrivate {
 func (recv *PrintOperationPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this PrintOperationPrivate with another PrintOperationPrivate, and returns true if they represent the same GObject.
+func (recv *PrintOperationPrivate) Equals(other *PrintOperationPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ProgressBarAccessibleClass is a wrapper around the C record GtkProgressBarAccessibleClass.
@@ -7965,6 +9500,11 @@ func (recv *ProgressBarAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ProgressBarAccessibleClass with another ProgressBarAccessibleClass, and returns true if they represent the same GObject.
+func (recv *ProgressBarAccessibleClass) Equals(other *ProgressBarAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ProgressBarAccessiblePrivate is a wrapper around the C record GtkProgressBarAccessiblePrivate.
 type ProgressBarAccessiblePrivate struct {
 	native *C.GtkProgressBarAccessiblePrivate
@@ -7984,6 +9524,11 @@ func ProgressBarAccessiblePrivateNewFromC(u unsafe.Pointer) *ProgressBarAccessib
 func (recv *ProgressBarAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ProgressBarAccessiblePrivate with another ProgressBarAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *ProgressBarAccessiblePrivate) Equals(other *ProgressBarAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ProgressBarClass is a wrapper around the C record GtkProgressBarClass.
@@ -8012,6 +9557,11 @@ func (recv *ProgressBarClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ProgressBarClass with another ProgressBarClass, and returns true if they represent the same GObject.
+func (recv *ProgressBarClass) Equals(other *ProgressBarClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ProgressBarPrivate is a wrapper around the C record GtkProgressBarPrivate.
 type ProgressBarPrivate struct {
 	native *C.GtkProgressBarPrivate
@@ -8031,6 +9581,11 @@ func ProgressBarPrivateNewFromC(u unsafe.Pointer) *ProgressBarPrivate {
 func (recv *ProgressBarPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ProgressBarPrivate with another ProgressBarPrivate, and returns true if they represent the same GObject.
+func (recv *ProgressBarPrivate) Equals(other *ProgressBarPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // RadioActionClass is a wrapper around the C record GtkRadioActionClass.
@@ -8058,6 +9613,11 @@ func RadioActionClassNewFromC(u unsafe.Pointer) *RadioActionClass {
 func (recv *RadioActionClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this RadioActionClass with another RadioActionClass, and returns true if they represent the same GObject.
+func (recv *RadioActionClass) Equals(other *RadioActionClass) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // RadioActionEntry is a wrapper around the C record GtkRadioActionEntry.
@@ -8107,6 +9667,11 @@ func (recv *RadioActionEntry) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this RadioActionEntry with another RadioActionEntry, and returns true if they represent the same GObject.
+func (recv *RadioActionEntry) Equals(other *RadioActionEntry) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // RadioActionPrivate is a wrapper around the C record GtkRadioActionPrivate.
 type RadioActionPrivate struct {
 	native *C.GtkRadioActionPrivate
@@ -8126,6 +9691,11 @@ func RadioActionPrivateNewFromC(u unsafe.Pointer) *RadioActionPrivate {
 func (recv *RadioActionPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this RadioActionPrivate with another RadioActionPrivate, and returns true if they represent the same GObject.
+func (recv *RadioActionPrivate) Equals(other *RadioActionPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // RadioButtonAccessibleClass is a wrapper around the C record GtkRadioButtonAccessibleClass.
@@ -8150,6 +9720,11 @@ func (recv *RadioButtonAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this RadioButtonAccessibleClass with another RadioButtonAccessibleClass, and returns true if they represent the same GObject.
+func (recv *RadioButtonAccessibleClass) Equals(other *RadioButtonAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // RadioButtonAccessiblePrivate is a wrapper around the C record GtkRadioButtonAccessiblePrivate.
 type RadioButtonAccessiblePrivate struct {
 	native *C.GtkRadioButtonAccessiblePrivate
@@ -8169,6 +9744,11 @@ func RadioButtonAccessiblePrivateNewFromC(u unsafe.Pointer) *RadioButtonAccessib
 func (recv *RadioButtonAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this RadioButtonAccessiblePrivate with another RadioButtonAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *RadioButtonAccessiblePrivate) Equals(other *RadioButtonAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // RadioButtonClass is a wrapper around the C record GtkRadioButtonClass.
@@ -8198,6 +9778,11 @@ func (recv *RadioButtonClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this RadioButtonClass with another RadioButtonClass, and returns true if they represent the same GObject.
+func (recv *RadioButtonClass) Equals(other *RadioButtonClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // RadioButtonPrivate is a wrapper around the C record GtkRadioButtonPrivate.
 type RadioButtonPrivate struct {
 	native *C.GtkRadioButtonPrivate
@@ -8217,6 +9802,11 @@ func RadioButtonPrivateNewFromC(u unsafe.Pointer) *RadioButtonPrivate {
 func (recv *RadioButtonPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this RadioButtonPrivate with another RadioButtonPrivate, and returns true if they represent the same GObject.
+func (recv *RadioButtonPrivate) Equals(other *RadioButtonPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // RadioMenuItemAccessibleClass is a wrapper around the C record GtkRadioMenuItemAccessibleClass.
@@ -8241,6 +9831,11 @@ func (recv *RadioMenuItemAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this RadioMenuItemAccessibleClass with another RadioMenuItemAccessibleClass, and returns true if they represent the same GObject.
+func (recv *RadioMenuItemAccessibleClass) Equals(other *RadioMenuItemAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // RadioMenuItemAccessiblePrivate is a wrapper around the C record GtkRadioMenuItemAccessiblePrivate.
 type RadioMenuItemAccessiblePrivate struct {
 	native *C.GtkRadioMenuItemAccessiblePrivate
@@ -8260,6 +9855,11 @@ func RadioMenuItemAccessiblePrivateNewFromC(u unsafe.Pointer) *RadioMenuItemAcce
 func (recv *RadioMenuItemAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this RadioMenuItemAccessiblePrivate with another RadioMenuItemAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *RadioMenuItemAccessiblePrivate) Equals(other *RadioMenuItemAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // RadioMenuItemClass is a wrapper around the C record GtkRadioMenuItemClass.
@@ -8289,6 +9889,11 @@ func (recv *RadioMenuItemClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this RadioMenuItemClass with another RadioMenuItemClass, and returns true if they represent the same GObject.
+func (recv *RadioMenuItemClass) Equals(other *RadioMenuItemClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // RadioMenuItemPrivate is a wrapper around the C record GtkRadioMenuItemPrivate.
 type RadioMenuItemPrivate struct {
 	native *C.GtkRadioMenuItemPrivate
@@ -8308,6 +9913,11 @@ func RadioMenuItemPrivateNewFromC(u unsafe.Pointer) *RadioMenuItemPrivate {
 func (recv *RadioMenuItemPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this RadioMenuItemPrivate with another RadioMenuItemPrivate, and returns true if they represent the same GObject.
+func (recv *RadioMenuItemPrivate) Equals(other *RadioMenuItemPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // RadioToolButtonClass is a wrapper around the C record GtkRadioToolButtonClass.
@@ -8336,6 +9946,11 @@ func (recv *RadioToolButtonClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this RadioToolButtonClass with another RadioToolButtonClass, and returns true if they represent the same GObject.
+func (recv *RadioToolButtonClass) Equals(other *RadioToolButtonClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // RangeAccessibleClass is a wrapper around the C record GtkRangeAccessibleClass.
 type RangeAccessibleClass struct {
 	native *C.GtkRangeAccessibleClass
@@ -8358,6 +9973,11 @@ func (recv *RangeAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this RangeAccessibleClass with another RangeAccessibleClass, and returns true if they represent the same GObject.
+func (recv *RangeAccessibleClass) Equals(other *RangeAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // RangeAccessiblePrivate is a wrapper around the C record GtkRangeAccessiblePrivate.
 type RangeAccessiblePrivate struct {
 	native *C.GtkRangeAccessiblePrivate
@@ -8377,6 +9997,11 @@ func RangeAccessiblePrivateNewFromC(u unsafe.Pointer) *RangeAccessiblePrivate {
 func (recv *RangeAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this RangeAccessiblePrivate with another RangeAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *RangeAccessiblePrivate) Equals(other *RangeAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // RangeClass is a wrapper around the C record GtkRangeClass.
@@ -8420,6 +10045,11 @@ func (recv *RangeClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this RangeClass with another RangeClass, and returns true if they represent the same GObject.
+func (recv *RangeClass) Equals(other *RangeClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // RangePrivate is a wrapper around the C record GtkRangePrivate.
 type RangePrivate struct {
 	native *C.GtkRangePrivate
@@ -8441,6 +10071,11 @@ func (recv *RangePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this RangePrivate with another RangePrivate, and returns true if they represent the same GObject.
+func (recv *RangePrivate) Equals(other *RangePrivate) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // RcContext is a wrapper around the C record GtkRcContext.
 type RcContext struct {
 	native *C.GtkRcContext
@@ -8460,6 +10095,11 @@ func RcContextNewFromC(u unsafe.Pointer) *RcContext {
 func (recv *RcContext) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this RcContext with another RcContext, and returns true if they represent the same GObject.
+func (recv *RcContext) Equals(other *RcContext) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // RcProperty is a wrapper around the C record GtkRcProperty.
@@ -8498,6 +10138,11 @@ func (recv *RcProperty) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this RcProperty with another RcProperty, and returns true if they represent the same GObject.
+func (recv *RcProperty) Equals(other *RcProperty) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // RcStyleClass is a wrapper around the C record GtkRcStyleClass.
 type RcStyleClass struct {
 	native *C.GtkRcStyleClass
@@ -8528,6 +10173,11 @@ func (recv *RcStyleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this RcStyleClass with another RcStyleClass, and returns true if they represent the same GObject.
+func (recv *RcStyleClass) Equals(other *RcStyleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // RecentActionClass is a wrapper around the C record GtkRecentActionClass.
 type RecentActionClass struct {
 	native *C.GtkRecentActionClass
@@ -8554,6 +10204,11 @@ func (recv *RecentActionClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this RecentActionClass with another RecentActionClass, and returns true if they represent the same GObject.
+func (recv *RecentActionClass) Equals(other *RecentActionClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // RecentActionPrivate is a wrapper around the C record GtkRecentActionPrivate.
 type RecentActionPrivate struct {
 	native *C.GtkRecentActionPrivate
@@ -8573,6 +10228,11 @@ func RecentActionPrivateNewFromC(u unsafe.Pointer) *RecentActionPrivate {
 func (recv *RecentActionPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this RecentActionPrivate with another RecentActionPrivate, and returns true if they represent the same GObject.
+func (recv *RecentActionPrivate) Equals(other *RecentActionPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // RecentChooserDialogClass is a wrapper around the C record GtkRecentChooserDialogClass.
@@ -8601,6 +10261,11 @@ func (recv *RecentChooserDialogClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this RecentChooserDialogClass with another RecentChooserDialogClass, and returns true if they represent the same GObject.
+func (recv *RecentChooserDialogClass) Equals(other *RecentChooserDialogClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // RecentChooserDialogPrivate is a wrapper around the C record GtkRecentChooserDialogPrivate.
 type RecentChooserDialogPrivate struct {
 	native *C.GtkRecentChooserDialogPrivate
@@ -8620,6 +10285,11 @@ func RecentChooserDialogPrivateNewFromC(u unsafe.Pointer) *RecentChooserDialogPr
 func (recv *RecentChooserDialogPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this RecentChooserDialogPrivate with another RecentChooserDialogPrivate, and returns true if they represent the same GObject.
+func (recv *RecentChooserDialogPrivate) Equals(other *RecentChooserDialogPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // RecentChooserIface is a wrapper around the C record GtkRecentChooserIface.
@@ -8658,6 +10328,11 @@ func (recv *RecentChooserIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this RecentChooserIface with another RecentChooserIface, and returns true if they represent the same GObject.
+func (recv *RecentChooserIface) Equals(other *RecentChooserIface) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // RecentChooserMenuClass is a wrapper around the C record GtkRecentChooserMenuClass.
 type RecentChooserMenuClass struct {
 	native *C.GtkRecentChooserMenuClass
@@ -8684,6 +10359,11 @@ func (recv *RecentChooserMenuClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this RecentChooserMenuClass with another RecentChooserMenuClass, and returns true if they represent the same GObject.
+func (recv *RecentChooserMenuClass) Equals(other *RecentChooserMenuClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // RecentChooserMenuPrivate is a wrapper around the C record GtkRecentChooserMenuPrivate.
 type RecentChooserMenuPrivate struct {
 	native *C.GtkRecentChooserMenuPrivate
@@ -8703,6 +10383,11 @@ func RecentChooserMenuPrivateNewFromC(u unsafe.Pointer) *RecentChooserMenuPrivat
 func (recv *RecentChooserMenuPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this RecentChooserMenuPrivate with another RecentChooserMenuPrivate, and returns true if they represent the same GObject.
+func (recv *RecentChooserMenuPrivate) Equals(other *RecentChooserMenuPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // RecentChooserWidgetClass is a wrapper around the C record GtkRecentChooserWidgetClass.
@@ -8731,6 +10416,11 @@ func (recv *RecentChooserWidgetClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this RecentChooserWidgetClass with another RecentChooserWidgetClass, and returns true if they represent the same GObject.
+func (recv *RecentChooserWidgetClass) Equals(other *RecentChooserWidgetClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // RecentChooserWidgetPrivate is a wrapper around the C record GtkRecentChooserWidgetPrivate.
 type RecentChooserWidgetPrivate struct {
 	native *C.GtkRecentChooserWidgetPrivate
@@ -8750,6 +10440,11 @@ func RecentChooserWidgetPrivateNewFromC(u unsafe.Pointer) *RecentChooserWidgetPr
 func (recv *RecentChooserWidgetPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this RecentChooserWidgetPrivate with another RecentChooserWidgetPrivate, and returns true if they represent the same GObject.
+func (recv *RecentChooserWidgetPrivate) Equals(other *RecentChooserWidgetPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // RecentData is a wrapper around the C record GtkRecentData.
@@ -8800,6 +10495,11 @@ func (recv *RecentData) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this RecentData with another RecentData, and returns true if they represent the same GObject.
+func (recv *RecentData) Equals(other *RecentData) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // RecentFilterInfo is a wrapper around the C record GtkRecentFilterInfo.
 type RecentFilterInfo struct {
 	native      *C.GtkRecentFilterInfo
@@ -8845,6 +10545,11 @@ func (recv *RecentFilterInfo) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this RecentFilterInfo with another RecentFilterInfo, and returns true if they represent the same GObject.
+func (recv *RecentFilterInfo) Equals(other *RecentFilterInfo) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // RecentManagerPrivate is a wrapper around the C record GtkRecentManagerPrivate.
 type RecentManagerPrivate struct {
 	native *C.GtkRecentManagerPrivate
@@ -8864,6 +10569,11 @@ func RecentManagerPrivateNewFromC(u unsafe.Pointer) *RecentManagerPrivate {
 func (recv *RecentManagerPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this RecentManagerPrivate with another RecentManagerPrivate, and returns true if they represent the same GObject.
+func (recv *RecentManagerPrivate) Equals(other *RecentManagerPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // RendererCellAccessibleClass is a wrapper around the C record GtkRendererCellAccessibleClass.
@@ -8888,6 +10598,11 @@ func (recv *RendererCellAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this RendererCellAccessibleClass with another RendererCellAccessibleClass, and returns true if they represent the same GObject.
+func (recv *RendererCellAccessibleClass) Equals(other *RendererCellAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // RendererCellAccessiblePrivate is a wrapper around the C record GtkRendererCellAccessiblePrivate.
 type RendererCellAccessiblePrivate struct {
 	native *C.GtkRendererCellAccessiblePrivate
@@ -8907,6 +10622,11 @@ func RendererCellAccessiblePrivateNewFromC(u unsafe.Pointer) *RendererCellAccess
 func (recv *RendererCellAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this RendererCellAccessiblePrivate with another RendererCellAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *RendererCellAccessiblePrivate) Equals(other *RendererCellAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // RequestedSize is a wrapper around the C record GtkRequestedSize.
@@ -8944,6 +10664,11 @@ func (recv *RequestedSize) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this RequestedSize with another RequestedSize, and returns true if they represent the same GObject.
+func (recv *RequestedSize) Equals(other *RequestedSize) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Requisition is a wrapper around the C record GtkRequisition.
 type Requisition struct {
 	native *C.GtkRequisition
@@ -8973,6 +10698,11 @@ func (recv *Requisition) ToC() unsafe.Pointer {
 		(C.gint)(recv.Height)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Requisition with another Requisition, and returns true if they represent the same GObject.
+func (recv *Requisition) Equals(other *Requisition) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Copy is a wrapper around the C function gtk_requisition_copy.
@@ -9012,6 +10742,11 @@ func (recv *RevealerClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this RevealerClass with another RevealerClass, and returns true if they represent the same GObject.
+func (recv *RevealerClass) Equals(other *RevealerClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ScaleAccessibleClass is a wrapper around the C record GtkScaleAccessibleClass.
 type ScaleAccessibleClass struct {
 	native *C.GtkScaleAccessibleClass
@@ -9034,6 +10769,11 @@ func (recv *ScaleAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ScaleAccessibleClass with another ScaleAccessibleClass, and returns true if they represent the same GObject.
+func (recv *ScaleAccessibleClass) Equals(other *ScaleAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ScaleAccessiblePrivate is a wrapper around the C record GtkScaleAccessiblePrivate.
 type ScaleAccessiblePrivate struct {
 	native *C.GtkScaleAccessiblePrivate
@@ -9053,6 +10793,11 @@ func ScaleAccessiblePrivateNewFromC(u unsafe.Pointer) *ScaleAccessiblePrivate {
 func (recv *ScaleAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ScaleAccessiblePrivate with another ScaleAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *ScaleAccessiblePrivate) Equals(other *ScaleAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ScaleButtonAccessibleClass is a wrapper around the C record GtkScaleButtonAccessibleClass.
@@ -9077,6 +10822,11 @@ func (recv *ScaleButtonAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ScaleButtonAccessibleClass with another ScaleButtonAccessibleClass, and returns true if they represent the same GObject.
+func (recv *ScaleButtonAccessibleClass) Equals(other *ScaleButtonAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ScaleButtonAccessiblePrivate is a wrapper around the C record GtkScaleButtonAccessiblePrivate.
 type ScaleButtonAccessiblePrivate struct {
 	native *C.GtkScaleButtonAccessiblePrivate
@@ -9096,6 +10846,11 @@ func ScaleButtonAccessiblePrivateNewFromC(u unsafe.Pointer) *ScaleButtonAccessib
 func (recv *ScaleButtonAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ScaleButtonAccessiblePrivate with another ScaleButtonAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *ScaleButtonAccessiblePrivate) Equals(other *ScaleButtonAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ScaleButtonClass is a wrapper around the C record GtkScaleButtonClass.
@@ -9125,6 +10880,11 @@ func (recv *ScaleButtonClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ScaleButtonClass with another ScaleButtonClass, and returns true if they represent the same GObject.
+func (recv *ScaleButtonClass) Equals(other *ScaleButtonClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ScaleButtonPrivate is a wrapper around the C record GtkScaleButtonPrivate.
 type ScaleButtonPrivate struct {
 	native *C.GtkScaleButtonPrivate
@@ -9144,6 +10904,11 @@ func ScaleButtonPrivateNewFromC(u unsafe.Pointer) *ScaleButtonPrivate {
 func (recv *ScaleButtonPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ScaleButtonPrivate with another ScaleButtonPrivate, and returns true if they represent the same GObject.
+func (recv *ScaleButtonPrivate) Equals(other *ScaleButtonPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ScaleClass is a wrapper around the C record GtkScaleClass.
@@ -9175,6 +10940,11 @@ func (recv *ScaleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ScaleClass with another ScaleClass, and returns true if they represent the same GObject.
+func (recv *ScaleClass) Equals(other *ScaleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ScalePrivate is a wrapper around the C record GtkScalePrivate.
 type ScalePrivate struct {
 	native *C.GtkScalePrivate
@@ -9194,6 +10964,11 @@ func ScalePrivateNewFromC(u unsafe.Pointer) *ScalePrivate {
 func (recv *ScalePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ScalePrivate with another ScalePrivate, and returns true if they represent the same GObject.
+func (recv *ScalePrivate) Equals(other *ScalePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ScrollableInterface is a wrapper around the C record GtkScrollableInterface.
@@ -9217,6 +10992,11 @@ func ScrollableInterfaceNewFromC(u unsafe.Pointer) *ScrollableInterface {
 func (recv *ScrollableInterface) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ScrollableInterface with another ScrollableInterface, and returns true if they represent the same GObject.
+func (recv *ScrollableInterface) Equals(other *ScrollableInterface) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ScrollbarClass is a wrapper around the C record GtkScrollbarClass.
@@ -9245,6 +11025,11 @@ func (recv *ScrollbarClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ScrollbarClass with another ScrollbarClass, and returns true if they represent the same GObject.
+func (recv *ScrollbarClass) Equals(other *ScrollbarClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ScrolledWindowAccessibleClass is a wrapper around the C record GtkScrolledWindowAccessibleClass.
 type ScrolledWindowAccessibleClass struct {
 	native *C.GtkScrolledWindowAccessibleClass
@@ -9267,6 +11052,11 @@ func (recv *ScrolledWindowAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ScrolledWindowAccessibleClass with another ScrolledWindowAccessibleClass, and returns true if they represent the same GObject.
+func (recv *ScrolledWindowAccessibleClass) Equals(other *ScrolledWindowAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ScrolledWindowAccessiblePrivate is a wrapper around the C record GtkScrolledWindowAccessiblePrivate.
 type ScrolledWindowAccessiblePrivate struct {
 	native *C.GtkScrolledWindowAccessiblePrivate
@@ -9286,6 +11076,11 @@ func ScrolledWindowAccessiblePrivateNewFromC(u unsafe.Pointer) *ScrolledWindowAc
 func (recv *ScrolledWindowAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ScrolledWindowAccessiblePrivate with another ScrolledWindowAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *ScrolledWindowAccessiblePrivate) Equals(other *ScrolledWindowAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ScrolledWindowClass is a wrapper around the C record GtkScrolledWindowClass.
@@ -9322,6 +11117,11 @@ func (recv *ScrolledWindowClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ScrolledWindowClass with another ScrolledWindowClass, and returns true if they represent the same GObject.
+func (recv *ScrolledWindowClass) Equals(other *ScrolledWindowClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ScrolledWindowPrivate is a wrapper around the C record GtkScrolledWindowPrivate.
 type ScrolledWindowPrivate struct {
 	native *C.GtkScrolledWindowPrivate
@@ -9341,6 +11141,11 @@ func ScrolledWindowPrivateNewFromC(u unsafe.Pointer) *ScrolledWindowPrivate {
 func (recv *ScrolledWindowPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ScrolledWindowPrivate with another ScrolledWindowPrivate, and returns true if they represent the same GObject.
+func (recv *ScrolledWindowPrivate) Equals(other *ScrolledWindowPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // SearchBarClass is a wrapper around the C record GtkSearchBarClass.
@@ -9369,6 +11174,11 @@ func (recv *SearchBarClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this SearchBarClass with another SearchBarClass, and returns true if they represent the same GObject.
+func (recv *SearchBarClass) Equals(other *SearchBarClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // SearchEntryClass is a wrapper around the C record GtkSearchEntryClass.
 type SearchEntryClass struct {
 	native *C.GtkSearchEntryClass
@@ -9395,6 +11205,11 @@ func (recv *SearchEntryClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this SearchEntryClass with another SearchEntryClass, and returns true if they represent the same GObject.
+func (recv *SearchEntryClass) Equals(other *SearchEntryClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // SelectionData is a wrapper around the C record GtkSelectionData.
 type SelectionData struct {
 	native *C.GtkSelectionData
@@ -9414,6 +11229,11 @@ func SelectionDataNewFromC(u unsafe.Pointer) *SelectionData {
 func (recv *SelectionData) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this SelectionData with another SelectionData, and returns true if they represent the same GObject.
+func (recv *SelectionData) Equals(other *SelectionData) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Copy is a wrapper around the C function gtk_selection_data_copy.
@@ -9484,6 +11304,11 @@ func (recv *SeparatorClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this SeparatorClass with another SeparatorClass, and returns true if they represent the same GObject.
+func (recv *SeparatorClass) Equals(other *SeparatorClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // SeparatorMenuItemClass is a wrapper around the C record GtkSeparatorMenuItemClass.
 type SeparatorMenuItemClass struct {
 	native *C.GtkSeparatorMenuItemClass
@@ -9510,6 +11335,11 @@ func (recv *SeparatorMenuItemClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this SeparatorMenuItemClass with another SeparatorMenuItemClass, and returns true if they represent the same GObject.
+func (recv *SeparatorMenuItemClass) Equals(other *SeparatorMenuItemClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // SeparatorPrivate is a wrapper around the C record GtkSeparatorPrivate.
 type SeparatorPrivate struct {
 	native *C.GtkSeparatorPrivate
@@ -9529,6 +11359,11 @@ func SeparatorPrivateNewFromC(u unsafe.Pointer) *SeparatorPrivate {
 func (recv *SeparatorPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this SeparatorPrivate with another SeparatorPrivate, and returns true if they represent the same GObject.
+func (recv *SeparatorPrivate) Equals(other *SeparatorPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // SeparatorToolItemClass is a wrapper around the C record GtkSeparatorToolItemClass.
@@ -9557,6 +11392,11 @@ func (recv *SeparatorToolItemClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this SeparatorToolItemClass with another SeparatorToolItemClass, and returns true if they represent the same GObject.
+func (recv *SeparatorToolItemClass) Equals(other *SeparatorToolItemClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // SeparatorToolItemPrivate is a wrapper around the C record GtkSeparatorToolItemPrivate.
 type SeparatorToolItemPrivate struct {
 	native *C.GtkSeparatorToolItemPrivate
@@ -9576,6 +11416,11 @@ func SeparatorToolItemPrivateNewFromC(u unsafe.Pointer) *SeparatorToolItemPrivat
 func (recv *SeparatorToolItemPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this SeparatorToolItemPrivate with another SeparatorToolItemPrivate, and returns true if they represent the same GObject.
+func (recv *SeparatorToolItemPrivate) Equals(other *SeparatorToolItemPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // SettingsClass is a wrapper around the C record GtkSettingsClass.
@@ -9604,6 +11449,11 @@ func (recv *SettingsClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this SettingsClass with another SettingsClass, and returns true if they represent the same GObject.
+func (recv *SettingsClass) Equals(other *SettingsClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // SettingsPrivate is a wrapper around the C record GtkSettingsPrivate.
 type SettingsPrivate struct {
 	native *C.GtkSettingsPrivate
@@ -9623,6 +11473,11 @@ func SettingsPrivateNewFromC(u unsafe.Pointer) *SettingsPrivate {
 func (recv *SettingsPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this SettingsPrivate with another SettingsPrivate, and returns true if they represent the same GObject.
+func (recv *SettingsPrivate) Equals(other *SettingsPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // SettingsValue is a wrapper around the C record GtkSettingsValue.
@@ -9653,6 +11508,11 @@ func (recv *SettingsValue) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this SettingsValue with another SettingsValue, and returns true if they represent the same GObject.
+func (recv *SettingsValue) Equals(other *SettingsValue) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // SizeGroupClass is a wrapper around the C record GtkSizeGroupClass.
 type SizeGroupClass struct {
 	native *C.GtkSizeGroupClass
@@ -9679,6 +11539,11 @@ func (recv *SizeGroupClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this SizeGroupClass with another SizeGroupClass, and returns true if they represent the same GObject.
+func (recv *SizeGroupClass) Equals(other *SizeGroupClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // SizeGroupPrivate is a wrapper around the C record GtkSizeGroupPrivate.
 type SizeGroupPrivate struct {
 	native *C.GtkSizeGroupPrivate
@@ -9698,6 +11563,11 @@ func SizeGroupPrivateNewFromC(u unsafe.Pointer) *SizeGroupPrivate {
 func (recv *SizeGroupPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this SizeGroupPrivate with another SizeGroupPrivate, and returns true if they represent the same GObject.
+func (recv *SizeGroupPrivate) Equals(other *SizeGroupPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // SocketClass is a wrapper around the C record GtkSocketClass.
@@ -9728,6 +11598,11 @@ func (recv *SocketClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this SocketClass with another SocketClass, and returns true if they represent the same GObject.
+func (recv *SocketClass) Equals(other *SocketClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // SocketPrivate is a wrapper around the C record GtkSocketPrivate.
 type SocketPrivate struct {
 	native *C.GtkSocketPrivate
@@ -9747,6 +11622,11 @@ func SocketPrivateNewFromC(u unsafe.Pointer) *SocketPrivate {
 func (recv *SocketPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this SocketPrivate with another SocketPrivate, and returns true if they represent the same GObject.
+func (recv *SocketPrivate) Equals(other *SocketPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // SpinButtonAccessibleClass is a wrapper around the C record GtkSpinButtonAccessibleClass.
@@ -9771,6 +11651,11 @@ func (recv *SpinButtonAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this SpinButtonAccessibleClass with another SpinButtonAccessibleClass, and returns true if they represent the same GObject.
+func (recv *SpinButtonAccessibleClass) Equals(other *SpinButtonAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // SpinButtonAccessiblePrivate is a wrapper around the C record GtkSpinButtonAccessiblePrivate.
 type SpinButtonAccessiblePrivate struct {
 	native *C.GtkSpinButtonAccessiblePrivate
@@ -9790,6 +11675,11 @@ func SpinButtonAccessiblePrivateNewFromC(u unsafe.Pointer) *SpinButtonAccessible
 func (recv *SpinButtonAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this SpinButtonAccessiblePrivate with another SpinButtonAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *SpinButtonAccessiblePrivate) Equals(other *SpinButtonAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // SpinButtonClass is a wrapper around the C record GtkSpinButtonClass.
@@ -9823,6 +11713,11 @@ func (recv *SpinButtonClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this SpinButtonClass with another SpinButtonClass, and returns true if they represent the same GObject.
+func (recv *SpinButtonClass) Equals(other *SpinButtonClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // SpinButtonPrivate is a wrapper around the C record GtkSpinButtonPrivate.
 type SpinButtonPrivate struct {
 	native *C.GtkSpinButtonPrivate
@@ -9842,6 +11737,11 @@ func SpinButtonPrivateNewFromC(u unsafe.Pointer) *SpinButtonPrivate {
 func (recv *SpinButtonPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this SpinButtonPrivate with another SpinButtonPrivate, and returns true if they represent the same GObject.
+func (recv *SpinButtonPrivate) Equals(other *SpinButtonPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // SpinnerAccessibleClass is a wrapper around the C record GtkSpinnerAccessibleClass.
@@ -9866,6 +11766,11 @@ func (recv *SpinnerAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this SpinnerAccessibleClass with another SpinnerAccessibleClass, and returns true if they represent the same GObject.
+func (recv *SpinnerAccessibleClass) Equals(other *SpinnerAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // SpinnerAccessiblePrivate is a wrapper around the C record GtkSpinnerAccessiblePrivate.
 type SpinnerAccessiblePrivate struct {
 	native *C.GtkSpinnerAccessiblePrivate
@@ -9885,6 +11790,11 @@ func SpinnerAccessiblePrivateNewFromC(u unsafe.Pointer) *SpinnerAccessiblePrivat
 func (recv *SpinnerAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this SpinnerAccessiblePrivate with another SpinnerAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *SpinnerAccessiblePrivate) Equals(other *SpinnerAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // SpinnerClass is a wrapper around the C record GtkSpinnerClass.
@@ -9913,6 +11823,11 @@ func (recv *SpinnerClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this SpinnerClass with another SpinnerClass, and returns true if they represent the same GObject.
+func (recv *SpinnerClass) Equals(other *SpinnerClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // SpinnerPrivate is a wrapper around the C record GtkSpinnerPrivate.
 type SpinnerPrivate struct {
 	native *C.GtkSpinnerPrivate
@@ -9932,6 +11847,11 @@ func SpinnerPrivateNewFromC(u unsafe.Pointer) *SpinnerPrivate {
 func (recv *SpinnerPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this SpinnerPrivate with another SpinnerPrivate, and returns true if they represent the same GObject.
+func (recv *SpinnerPrivate) Equals(other *SpinnerPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Blacklisted : GtkStackAccessibleClass
@@ -9956,6 +11876,11 @@ func StackClassNewFromC(u unsafe.Pointer) *StackClass {
 func (recv *StackClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this StackClass with another StackClass, and returns true if they represent the same GObject.
+func (recv *StackClass) Equals(other *StackClass) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // StackSidebarClass is a wrapper around the C record GtkStackSidebarClass.
@@ -9984,6 +11909,11 @@ func (recv *StackSidebarClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this StackSidebarClass with another StackSidebarClass, and returns true if they represent the same GObject.
+func (recv *StackSidebarClass) Equals(other *StackSidebarClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // StackSidebarPrivate is a wrapper around the C record GtkStackSidebarPrivate.
 type StackSidebarPrivate struct {
 	native *C.GtkStackSidebarPrivate
@@ -10003,6 +11933,11 @@ func StackSidebarPrivateNewFromC(u unsafe.Pointer) *StackSidebarPrivate {
 func (recv *StackSidebarPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this StackSidebarPrivate with another StackSidebarPrivate, and returns true if they represent the same GObject.
+func (recv *StackSidebarPrivate) Equals(other *StackSidebarPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // StackSwitcherClass is a wrapper around the C record GtkStackSwitcherClass.
@@ -10029,6 +11964,11 @@ func StackSwitcherClassNewFromC(u unsafe.Pointer) *StackSwitcherClass {
 func (recv *StackSwitcherClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this StackSwitcherClass with another StackSwitcherClass, and returns true if they represent the same GObject.
+func (recv *StackSwitcherClass) Equals(other *StackSwitcherClass) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // StatusIconClass is a wrapper around the C record GtkStatusIconClass.
@@ -10064,6 +12004,11 @@ func (recv *StatusIconClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this StatusIconClass with another StatusIconClass, and returns true if they represent the same GObject.
+func (recv *StatusIconClass) Equals(other *StatusIconClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // StatusIconPrivate is a wrapper around the C record GtkStatusIconPrivate.
 type StatusIconPrivate struct {
 	native *C.GtkStatusIconPrivate
@@ -10083,6 +12028,11 @@ func StatusIconPrivateNewFromC(u unsafe.Pointer) *StatusIconPrivate {
 func (recv *StatusIconPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this StatusIconPrivate with another StatusIconPrivate, and returns true if they represent the same GObject.
+func (recv *StatusIconPrivate) Equals(other *StatusIconPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // StatusbarAccessibleClass is a wrapper around the C record GtkStatusbarAccessibleClass.
@@ -10107,6 +12057,11 @@ func (recv *StatusbarAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this StatusbarAccessibleClass with another StatusbarAccessibleClass, and returns true if they represent the same GObject.
+func (recv *StatusbarAccessibleClass) Equals(other *StatusbarAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // StatusbarAccessiblePrivate is a wrapper around the C record GtkStatusbarAccessiblePrivate.
 type StatusbarAccessiblePrivate struct {
 	native *C.GtkStatusbarAccessiblePrivate
@@ -10126,6 +12081,11 @@ func StatusbarAccessiblePrivateNewFromC(u unsafe.Pointer) *StatusbarAccessiblePr
 func (recv *StatusbarAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this StatusbarAccessiblePrivate with another StatusbarAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *StatusbarAccessiblePrivate) Equals(other *StatusbarAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // StatusbarClass is a wrapper around the C record GtkStatusbarClass.
@@ -10162,6 +12122,11 @@ func (recv *StatusbarClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this StatusbarClass with another StatusbarClass, and returns true if they represent the same GObject.
+func (recv *StatusbarClass) Equals(other *StatusbarClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // StatusbarPrivate is a wrapper around the C record GtkStatusbarPrivate.
 type StatusbarPrivate struct {
 	native *C.GtkStatusbarPrivate
@@ -10181,6 +12146,11 @@ func StatusbarPrivateNewFromC(u unsafe.Pointer) *StatusbarPrivate {
 func (recv *StatusbarPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this StatusbarPrivate with another StatusbarPrivate, and returns true if they represent the same GObject.
+func (recv *StatusbarPrivate) Equals(other *StatusbarPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // StockItem is a wrapper around the C record GtkStockItem.
@@ -10224,6 +12194,11 @@ func (recv *StockItem) ToC() unsafe.Pointer {
 		C.CString(recv.TranslationDomain)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this StockItem with another StockItem, and returns true if they represent the same GObject.
+func (recv *StockItem) Equals(other *StockItem) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Copy is a wrapper around the C function gtk_stock_item_copy.
@@ -10301,6 +12276,11 @@ func (recv *StyleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this StyleClass with another StyleClass, and returns true if they represent the same GObject.
+func (recv *StyleClass) Equals(other *StyleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // StyleContextClass is a wrapper around the C record GtkStyleContextClass.
 type StyleContextClass struct {
 	native *C.GtkStyleContextClass
@@ -10328,6 +12308,11 @@ func (recv *StyleContextClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this StyleContextClass with another StyleContextClass, and returns true if they represent the same GObject.
+func (recv *StyleContextClass) Equals(other *StyleContextClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // StyleContextPrivate is a wrapper around the C record GtkStyleContextPrivate.
 type StyleContextPrivate struct {
 	native *C.GtkStyleContextPrivate
@@ -10347,6 +12332,11 @@ func StyleContextPrivateNewFromC(u unsafe.Pointer) *StyleContextPrivate {
 func (recv *StyleContextPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this StyleContextPrivate with another StyleContextPrivate, and returns true if they represent the same GObject.
+func (recv *StyleContextPrivate) Equals(other *StyleContextPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // StylePropertiesClass is a wrapper around the C record GtkStylePropertiesClass.
@@ -10375,6 +12365,11 @@ func (recv *StylePropertiesClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this StylePropertiesClass with another StylePropertiesClass, and returns true if they represent the same GObject.
+func (recv *StylePropertiesClass) Equals(other *StylePropertiesClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // StylePropertiesPrivate is a wrapper around the C record GtkStylePropertiesPrivate.
 type StylePropertiesPrivate struct {
 	native *C.GtkStylePropertiesPrivate
@@ -10394,6 +12389,11 @@ func StylePropertiesPrivateNewFromC(u unsafe.Pointer) *StylePropertiesPrivate {
 func (recv *StylePropertiesPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this StylePropertiesPrivate with another StylePropertiesPrivate, and returns true if they represent the same GObject.
+func (recv *StylePropertiesPrivate) Equals(other *StylePropertiesPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // StyleProviderIface is a wrapper around the C record GtkStyleProviderIface.
@@ -10421,6 +12421,11 @@ func (recv *StyleProviderIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this StyleProviderIface with another StyleProviderIface, and returns true if they represent the same GObject.
+func (recv *StyleProviderIface) Equals(other *StyleProviderIface) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // SwitchAccessibleClass is a wrapper around the C record GtkSwitchAccessibleClass.
 type SwitchAccessibleClass struct {
 	native *C.GtkSwitchAccessibleClass
@@ -10443,6 +12448,11 @@ func (recv *SwitchAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this SwitchAccessibleClass with another SwitchAccessibleClass, and returns true if they represent the same GObject.
+func (recv *SwitchAccessibleClass) Equals(other *SwitchAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // SwitchAccessiblePrivate is a wrapper around the C record GtkSwitchAccessiblePrivate.
 type SwitchAccessiblePrivate struct {
 	native *C.GtkSwitchAccessiblePrivate
@@ -10462,6 +12472,11 @@ func SwitchAccessiblePrivateNewFromC(u unsafe.Pointer) *SwitchAccessiblePrivate 
 func (recv *SwitchAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this SwitchAccessiblePrivate with another SwitchAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *SwitchAccessiblePrivate) Equals(other *SwitchAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // SwitchClass is a wrapper around the C record GtkSwitchClass.
@@ -10493,6 +12508,11 @@ func (recv *SwitchClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this SwitchClass with another SwitchClass, and returns true if they represent the same GObject.
+func (recv *SwitchClass) Equals(other *SwitchClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // SwitchPrivate is a wrapper around the C record GtkSwitchPrivate.
 type SwitchPrivate struct {
 	native *C.GtkSwitchPrivate
@@ -10514,6 +12534,11 @@ func (recv *SwitchPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this SwitchPrivate with another SwitchPrivate, and returns true if they represent the same GObject.
+func (recv *SwitchPrivate) Equals(other *SwitchPrivate) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // SymbolicColor is a wrapper around the C record GtkSymbolicColor.
 type SymbolicColor struct {
 	native *C.GtkSymbolicColor
@@ -10533,6 +12558,11 @@ func SymbolicColorNewFromC(u unsafe.Pointer) *SymbolicColor {
 func (recv *SymbolicColor) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this SymbolicColor with another SymbolicColor, and returns true if they represent the same GObject.
+func (recv *SymbolicColor) Equals(other *SymbolicColor) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ToString is a wrapper around the C function gtk_symbolic_color_to_string.
@@ -10598,6 +12628,11 @@ func (recv *TableChild) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TableChild with another TableChild, and returns true if they represent the same GObject.
+func (recv *TableChild) Equals(other *TableChild) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // TableClass is a wrapper around the C record GtkTableClass.
 type TableClass struct {
 	native *C.GtkTableClass
@@ -10624,6 +12659,11 @@ func (recv *TableClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TableClass with another TableClass, and returns true if they represent the same GObject.
+func (recv *TableClass) Equals(other *TableClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // TablePrivate is a wrapper around the C record GtkTablePrivate.
 type TablePrivate struct {
 	native *C.GtkTablePrivate
@@ -10643,6 +12683,11 @@ func TablePrivateNewFromC(u unsafe.Pointer) *TablePrivate {
 func (recv *TablePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TablePrivate with another TablePrivate, and returns true if they represent the same GObject.
+func (recv *TablePrivate) Equals(other *TablePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // TableRowCol is a wrapper around the C record GtkTableRowCol.
@@ -10685,6 +12730,11 @@ func (recv *TableRowCol) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TableRowCol with another TableRowCol, and returns true if they represent the same GObject.
+func (recv *TableRowCol) Equals(other *TableRowCol) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // TargetEntry is a wrapper around the C record GtkTargetEntry.
 type TargetEntry struct {
 	native *C.GtkTargetEntry
@@ -10718,6 +12768,11 @@ func (recv *TargetEntry) ToC() unsafe.Pointer {
 		(C.guint)(recv.Info)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TargetEntry with another TargetEntry, and returns true if they represent the same GObject.
+func (recv *TargetEntry) Equals(other *TargetEntry) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // TargetEntryNew is a wrapper around the C function gtk_target_entry_new.
@@ -10769,6 +12824,11 @@ func TargetListNewFromC(u unsafe.Pointer) *TargetList {
 func (recv *TargetList) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TargetList with another TargetList, and returns true if they represent the same GObject.
+func (recv *TargetList) Equals(other *TargetList) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Unsupported : gtk_target_list_new : unsupported parameter targets :
@@ -10828,6 +12888,11 @@ func (recv *TargetPair) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TargetPair with another TargetPair, and returns true if they represent the same GObject.
+func (recv *TargetPair) Equals(other *TargetPair) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // TearoffMenuItemClass is a wrapper around the C record GtkTearoffMenuItemClass.
 type TearoffMenuItemClass struct {
 	native *C.GtkTearoffMenuItemClass
@@ -10854,6 +12919,11 @@ func (recv *TearoffMenuItemClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TearoffMenuItemClass with another TearoffMenuItemClass, and returns true if they represent the same GObject.
+func (recv *TearoffMenuItemClass) Equals(other *TearoffMenuItemClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // TearoffMenuItemPrivate is a wrapper around the C record GtkTearoffMenuItemPrivate.
 type TearoffMenuItemPrivate struct {
 	native *C.GtkTearoffMenuItemPrivate
@@ -10873,6 +12943,11 @@ func TearoffMenuItemPrivateNewFromC(u unsafe.Pointer) *TearoffMenuItemPrivate {
 func (recv *TearoffMenuItemPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TearoffMenuItemPrivate with another TearoffMenuItemPrivate, and returns true if they represent the same GObject.
+func (recv *TearoffMenuItemPrivate) Equals(other *TearoffMenuItemPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // TextAppearance is a wrapper around the C record GtkTextAppearance.
@@ -10907,6 +12982,11 @@ func (recv *TextAppearance) ToC() unsafe.Pointer {
 		(C.gint)(recv.Rise)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TextAppearance with another TextAppearance, and returns true if they represent the same GObject.
+func (recv *TextAppearance) Equals(other *TextAppearance) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // TextAttributes is a wrapper around the C record GtkTextAttributes.
@@ -10987,6 +13067,11 @@ func (recv *TextAttributes) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TextAttributes with another TextAttributes, and returns true if they represent the same GObject.
+func (recv *TextAttributes) Equals(other *TextAttributes) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // TextAttributesNew is a wrapper around the C function gtk_text_attributes_new.
 func TextAttributesNew() *TextAttributes {
 	retC := C.gtk_text_attributes_new()
@@ -11051,6 +13136,11 @@ func (recv *TextBTree) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TextBTree with another TextBTree, and returns true if they represent the same GObject.
+func (recv *TextBTree) Equals(other *TextBTree) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // TextBufferClass is a wrapper around the C record GtkTextBufferClass.
 type TextBufferClass struct {
 	native *C.GtkTextBufferClass
@@ -11090,6 +13180,11 @@ func (recv *TextBufferClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TextBufferClass with another TextBufferClass, and returns true if they represent the same GObject.
+func (recv *TextBufferClass) Equals(other *TextBufferClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // TextBufferPrivate is a wrapper around the C record GtkTextBufferPrivate.
 type TextBufferPrivate struct {
 	native *C.GtkTextBufferPrivate
@@ -11109,6 +13204,11 @@ func TextBufferPrivateNewFromC(u unsafe.Pointer) *TextBufferPrivate {
 func (recv *TextBufferPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TextBufferPrivate with another TextBufferPrivate, and returns true if they represent the same GObject.
+func (recv *TextBufferPrivate) Equals(other *TextBufferPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // TextCellAccessibleClass is a wrapper around the C record GtkTextCellAccessibleClass.
@@ -11133,6 +13233,11 @@ func (recv *TextCellAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TextCellAccessibleClass with another TextCellAccessibleClass, and returns true if they represent the same GObject.
+func (recv *TextCellAccessibleClass) Equals(other *TextCellAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // TextCellAccessiblePrivate is a wrapper around the C record GtkTextCellAccessiblePrivate.
 type TextCellAccessiblePrivate struct {
 	native *C.GtkTextCellAccessiblePrivate
@@ -11152,6 +13257,11 @@ func TextCellAccessiblePrivateNewFromC(u unsafe.Pointer) *TextCellAccessiblePriv
 func (recv *TextCellAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TextCellAccessiblePrivate with another TextCellAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *TextCellAccessiblePrivate) Equals(other *TextCellAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // TextChildAnchorClass is a wrapper around the C record GtkTextChildAnchorClass.
@@ -11178,6 +13288,11 @@ func TextChildAnchorClassNewFromC(u unsafe.Pointer) *TextChildAnchorClass {
 func (recv *TextChildAnchorClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TextChildAnchorClass with another TextChildAnchorClass, and returns true if they represent the same GObject.
+func (recv *TextChildAnchorClass) Equals(other *TextChildAnchorClass) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // TextIter is a wrapper around the C record GtkTextIter.
@@ -11213,6 +13328,11 @@ func TextIterNewFromC(u unsafe.Pointer) *TextIter {
 func (recv *TextIter) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TextIter with another TextIter, and returns true if they represent the same GObject.
+func (recv *TextIter) Equals(other *TextIter) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // BackwardChar is a wrapper around the C function gtk_text_iter_backward_char.
@@ -12004,6 +14124,11 @@ func (recv *TextMarkClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TextMarkClass with another TextMarkClass, and returns true if they represent the same GObject.
+func (recv *TextMarkClass) Equals(other *TextMarkClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // TextTagClass is a wrapper around the C record GtkTextTagClass.
 type TextTagClass struct {
 	native *C.GtkTextTagClass
@@ -12031,6 +14156,11 @@ func (recv *TextTagClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TextTagClass with another TextTagClass, and returns true if they represent the same GObject.
+func (recv *TextTagClass) Equals(other *TextTagClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // TextTagPrivate is a wrapper around the C record GtkTextTagPrivate.
 type TextTagPrivate struct {
 	native *C.GtkTextTagPrivate
@@ -12050,6 +14180,11 @@ func TextTagPrivateNewFromC(u unsafe.Pointer) *TextTagPrivate {
 func (recv *TextTagPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TextTagPrivate with another TextTagPrivate, and returns true if they represent the same GObject.
+func (recv *TextTagPrivate) Equals(other *TextTagPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // TextTagTableClass is a wrapper around the C record GtkTextTagTableClass.
@@ -12081,6 +14216,11 @@ func (recv *TextTagTableClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TextTagTableClass with another TextTagTableClass, and returns true if they represent the same GObject.
+func (recv *TextTagTableClass) Equals(other *TextTagTableClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // TextTagTablePrivate is a wrapper around the C record GtkTextTagTablePrivate.
 type TextTagTablePrivate struct {
 	native *C.GtkTextTagTablePrivate
@@ -12100,6 +14240,11 @@ func TextTagTablePrivateNewFromC(u unsafe.Pointer) *TextTagTablePrivate {
 func (recv *TextTagTablePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TextTagTablePrivate with another TextTagTablePrivate, and returns true if they represent the same GObject.
+func (recv *TextTagTablePrivate) Equals(other *TextTagTablePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // TextViewAccessibleClass is a wrapper around the C record GtkTextViewAccessibleClass.
@@ -12124,6 +14269,11 @@ func (recv *TextViewAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TextViewAccessibleClass with another TextViewAccessibleClass, and returns true if they represent the same GObject.
+func (recv *TextViewAccessibleClass) Equals(other *TextViewAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // TextViewAccessiblePrivate is a wrapper around the C record GtkTextViewAccessiblePrivate.
 type TextViewAccessiblePrivate struct {
 	native *C.GtkTextViewAccessiblePrivate
@@ -12143,6 +14293,11 @@ func TextViewAccessiblePrivateNewFromC(u unsafe.Pointer) *TextViewAccessiblePriv
 func (recv *TextViewAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TextViewAccessiblePrivate with another TextViewAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *TextViewAccessiblePrivate) Equals(other *TextViewAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // TextViewClass is a wrapper around the C record GtkTextViewClass.
@@ -12185,6 +14340,11 @@ func (recv *TextViewClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TextViewClass with another TextViewClass, and returns true if they represent the same GObject.
+func (recv *TextViewClass) Equals(other *TextViewClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // TextViewPrivate is a wrapper around the C record GtkTextViewPrivate.
 type TextViewPrivate struct {
 	native *C.GtkTextViewPrivate
@@ -12206,6 +14366,11 @@ func (recv *TextViewPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TextViewPrivate with another TextViewPrivate, and returns true if they represent the same GObject.
+func (recv *TextViewPrivate) Equals(other *TextViewPrivate) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ThemeEngine is a wrapper around the C record GtkThemeEngine.
 type ThemeEngine struct {
 	native *C.GtkThemeEngine
@@ -12225,6 +14390,11 @@ func ThemeEngineNewFromC(u unsafe.Pointer) *ThemeEngine {
 func (recv *ThemeEngine) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ThemeEngine with another ThemeEngine, and returns true if they represent the same GObject.
+func (recv *ThemeEngine) Equals(other *ThemeEngine) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ThemingEngineClass is a wrapper around the C record GtkThemingEngineClass.
@@ -12267,6 +14437,11 @@ func (recv *ThemingEngineClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ThemingEngineClass with another ThemingEngineClass, and returns true if they represent the same GObject.
+func (recv *ThemingEngineClass) Equals(other *ThemingEngineClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ThemingEnginePrivate is a wrapper around the C record GtkThemingEnginePrivate.
 type ThemingEnginePrivate struct {
 	native *C.GtkThemingEnginePrivate
@@ -12286,6 +14461,11 @@ func ThemingEnginePrivateNewFromC(u unsafe.Pointer) *ThemingEnginePrivate {
 func (recv *ThemingEnginePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ThemingEnginePrivate with another ThemingEnginePrivate, and returns true if they represent the same GObject.
+func (recv *ThemingEnginePrivate) Equals(other *ThemingEnginePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ToggleActionClass is a wrapper around the C record GtkToggleActionClass.
@@ -12313,6 +14493,11 @@ func ToggleActionClassNewFromC(u unsafe.Pointer) *ToggleActionClass {
 func (recv *ToggleActionClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ToggleActionClass with another ToggleActionClass, and returns true if they represent the same GObject.
+func (recv *ToggleActionClass) Equals(other *ToggleActionClass) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ToggleActionEntry is a wrapper around the C record GtkToggleActionEntry.
@@ -12363,6 +14548,11 @@ func (recv *ToggleActionEntry) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ToggleActionEntry with another ToggleActionEntry, and returns true if they represent the same GObject.
+func (recv *ToggleActionEntry) Equals(other *ToggleActionEntry) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ToggleActionPrivate is a wrapper around the C record GtkToggleActionPrivate.
 type ToggleActionPrivate struct {
 	native *C.GtkToggleActionPrivate
@@ -12382,6 +14572,11 @@ func ToggleActionPrivateNewFromC(u unsafe.Pointer) *ToggleActionPrivate {
 func (recv *ToggleActionPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ToggleActionPrivate with another ToggleActionPrivate, and returns true if they represent the same GObject.
+func (recv *ToggleActionPrivate) Equals(other *ToggleActionPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ToggleButtonAccessibleClass is a wrapper around the C record GtkToggleButtonAccessibleClass.
@@ -12406,6 +14601,11 @@ func (recv *ToggleButtonAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ToggleButtonAccessibleClass with another ToggleButtonAccessibleClass, and returns true if they represent the same GObject.
+func (recv *ToggleButtonAccessibleClass) Equals(other *ToggleButtonAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ToggleButtonAccessiblePrivate is a wrapper around the C record GtkToggleButtonAccessiblePrivate.
 type ToggleButtonAccessiblePrivate struct {
 	native *C.GtkToggleButtonAccessiblePrivate
@@ -12425,6 +14625,11 @@ func ToggleButtonAccessiblePrivateNewFromC(u unsafe.Pointer) *ToggleButtonAccess
 func (recv *ToggleButtonAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ToggleButtonAccessiblePrivate with another ToggleButtonAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *ToggleButtonAccessiblePrivate) Equals(other *ToggleButtonAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ToggleButtonClass is a wrapper around the C record GtkToggleButtonClass.
@@ -12454,6 +14659,11 @@ func (recv *ToggleButtonClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ToggleButtonClass with another ToggleButtonClass, and returns true if they represent the same GObject.
+func (recv *ToggleButtonClass) Equals(other *ToggleButtonClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ToggleButtonPrivate is a wrapper around the C record GtkToggleButtonPrivate.
 type ToggleButtonPrivate struct {
 	native *C.GtkToggleButtonPrivate
@@ -12473,6 +14683,11 @@ func ToggleButtonPrivateNewFromC(u unsafe.Pointer) *ToggleButtonPrivate {
 func (recv *ToggleButtonPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ToggleButtonPrivate with another ToggleButtonPrivate, and returns true if they represent the same GObject.
+func (recv *ToggleButtonPrivate) Equals(other *ToggleButtonPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ToggleToolButtonClass is a wrapper around the C record GtkToggleToolButtonClass.
@@ -12502,6 +14717,11 @@ func (recv *ToggleToolButtonClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ToggleToolButtonClass with another ToggleToolButtonClass, and returns true if they represent the same GObject.
+func (recv *ToggleToolButtonClass) Equals(other *ToggleToolButtonClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ToggleToolButtonPrivate is a wrapper around the C record GtkToggleToolButtonPrivate.
 type ToggleToolButtonPrivate struct {
 	native *C.GtkToggleToolButtonPrivate
@@ -12521,6 +14741,11 @@ func ToggleToolButtonPrivateNewFromC(u unsafe.Pointer) *ToggleToolButtonPrivate 
 func (recv *ToggleToolButtonPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ToggleToolButtonPrivate with another ToggleToolButtonPrivate, and returns true if they represent the same GObject.
+func (recv *ToggleToolButtonPrivate) Equals(other *ToggleToolButtonPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ToolButtonClass is a wrapper around the C record GtkToolButtonClass.
@@ -12556,6 +14781,11 @@ func (recv *ToolButtonClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ToolButtonClass with another ToolButtonClass, and returns true if they represent the same GObject.
+func (recv *ToolButtonClass) Equals(other *ToolButtonClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ToolButtonPrivate is a wrapper around the C record GtkToolButtonPrivate.
 type ToolButtonPrivate struct {
 	native *C.GtkToolButtonPrivate
@@ -12575,6 +14805,11 @@ func ToolButtonPrivateNewFromC(u unsafe.Pointer) *ToolButtonPrivate {
 func (recv *ToolButtonPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ToolButtonPrivate with another ToolButtonPrivate, and returns true if they represent the same GObject.
+func (recv *ToolButtonPrivate) Equals(other *ToolButtonPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ToolItemClass is a wrapper around the C record GtkToolItemClass.
@@ -12605,6 +14840,11 @@ func (recv *ToolItemClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ToolItemClass with another ToolItemClass, and returns true if they represent the same GObject.
+func (recv *ToolItemClass) Equals(other *ToolItemClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ToolItemGroupClass is a wrapper around the C record GtkToolItemGroupClass.
 type ToolItemGroupClass struct {
 	native *C.GtkToolItemGroupClass
@@ -12631,6 +14871,11 @@ func (recv *ToolItemGroupClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ToolItemGroupClass with another ToolItemGroupClass, and returns true if they represent the same GObject.
+func (recv *ToolItemGroupClass) Equals(other *ToolItemGroupClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ToolItemGroupPrivate is a wrapper around the C record GtkToolItemGroupPrivate.
 type ToolItemGroupPrivate struct {
 	native *C.GtkToolItemGroupPrivate
@@ -12652,6 +14897,11 @@ func (recv *ToolItemGroupPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ToolItemGroupPrivate with another ToolItemGroupPrivate, and returns true if they represent the same GObject.
+func (recv *ToolItemGroupPrivate) Equals(other *ToolItemGroupPrivate) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ToolItemPrivate is a wrapper around the C record GtkToolItemPrivate.
 type ToolItemPrivate struct {
 	native *C.GtkToolItemPrivate
@@ -12671,6 +14921,11 @@ func ToolItemPrivateNewFromC(u unsafe.Pointer) *ToolItemPrivate {
 func (recv *ToolItemPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ToolItemPrivate with another ToolItemPrivate, and returns true if they represent the same GObject.
+func (recv *ToolItemPrivate) Equals(other *ToolItemPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ToolPaletteClass is a wrapper around the C record GtkToolPaletteClass.
@@ -12699,6 +14954,11 @@ func (recv *ToolPaletteClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ToolPaletteClass with another ToolPaletteClass, and returns true if they represent the same GObject.
+func (recv *ToolPaletteClass) Equals(other *ToolPaletteClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ToolPalettePrivate is a wrapper around the C record GtkToolPalettePrivate.
 type ToolPalettePrivate struct {
 	native *C.GtkToolPalettePrivate
@@ -12718,6 +14978,11 @@ func ToolPalettePrivateNewFromC(u unsafe.Pointer) *ToolPalettePrivate {
 func (recv *ToolPalettePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ToolPalettePrivate with another ToolPalettePrivate, and returns true if they represent the same GObject.
+func (recv *ToolPalettePrivate) Equals(other *ToolPalettePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ToolShellIface is a wrapper around the C record GtkToolShellIface.
@@ -12751,6 +15016,11 @@ func (recv *ToolShellIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ToolShellIface with another ToolShellIface, and returns true if they represent the same GObject.
+func (recv *ToolShellIface) Equals(other *ToolShellIface) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ToolbarClass is a wrapper around the C record GtkToolbarClass.
 type ToolbarClass struct {
 	native *C.GtkToolbarClass
@@ -12780,6 +15050,11 @@ func (recv *ToolbarClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ToolbarClass with another ToolbarClass, and returns true if they represent the same GObject.
+func (recv *ToolbarClass) Equals(other *ToolbarClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ToolbarPrivate is a wrapper around the C record GtkToolbarPrivate.
 type ToolbarPrivate struct {
 	native *C.GtkToolbarPrivate
@@ -12799,6 +15074,11 @@ func ToolbarPrivateNewFromC(u unsafe.Pointer) *ToolbarPrivate {
 func (recv *ToolbarPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ToolbarPrivate with another ToolbarPrivate, and returns true if they represent the same GObject.
+func (recv *ToolbarPrivate) Equals(other *ToolbarPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ToplevelAccessibleClass is a wrapper around the C record GtkToplevelAccessibleClass.
@@ -12823,6 +15103,11 @@ func (recv *ToplevelAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ToplevelAccessibleClass with another ToplevelAccessibleClass, and returns true if they represent the same GObject.
+func (recv *ToplevelAccessibleClass) Equals(other *ToplevelAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ToplevelAccessiblePrivate is a wrapper around the C record GtkToplevelAccessiblePrivate.
 type ToplevelAccessiblePrivate struct {
 	native *C.GtkToplevelAccessiblePrivate
@@ -12842,6 +15127,11 @@ func ToplevelAccessiblePrivateNewFromC(u unsafe.Pointer) *ToplevelAccessiblePriv
 func (recv *ToplevelAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ToplevelAccessiblePrivate with another ToplevelAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *ToplevelAccessiblePrivate) Equals(other *ToplevelAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // TreeDragDestIface is a wrapper around the C record GtkTreeDragDestIface.
@@ -12868,6 +15158,11 @@ func (recv *TreeDragDestIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TreeDragDestIface with another TreeDragDestIface, and returns true if they represent the same GObject.
+func (recv *TreeDragDestIface) Equals(other *TreeDragDestIface) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // TreeDragSourceIface is a wrapper around the C record GtkTreeDragSourceIface.
 type TreeDragSourceIface struct {
 	native *C.GtkTreeDragSourceIface
@@ -12891,6 +15186,11 @@ func TreeDragSourceIfaceNewFromC(u unsafe.Pointer) *TreeDragSourceIface {
 func (recv *TreeDragSourceIface) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TreeDragSourceIface with another TreeDragSourceIface, and returns true if they represent the same GObject.
+func (recv *TreeDragSourceIface) Equals(other *TreeDragSourceIface) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // TreeIter is a wrapper around the C record GtkTreeIter.
@@ -12930,6 +15230,11 @@ func (recv *TreeIter) ToC() unsafe.Pointer {
 		(C.gpointer)(recv.UserData3)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TreeIter with another TreeIter, and returns true if they represent the same GObject.
+func (recv *TreeIter) Equals(other *TreeIter) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Copy is a wrapper around the C function gtk_tree_iter_copy.
@@ -12975,6 +15280,11 @@ func (recv *TreeModelFilterClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TreeModelFilterClass with another TreeModelFilterClass, and returns true if they represent the same GObject.
+func (recv *TreeModelFilterClass) Equals(other *TreeModelFilterClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // TreeModelFilterPrivate is a wrapper around the C record GtkTreeModelFilterPrivate.
 type TreeModelFilterPrivate struct {
 	native *C.GtkTreeModelFilterPrivate
@@ -12994,6 +15304,11 @@ func TreeModelFilterPrivateNewFromC(u unsafe.Pointer) *TreeModelFilterPrivate {
 func (recv *TreeModelFilterPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TreeModelFilterPrivate with another TreeModelFilterPrivate, and returns true if they represent the same GObject.
+func (recv *TreeModelFilterPrivate) Equals(other *TreeModelFilterPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // TreeModelIface is a wrapper around the C record GtkTreeModelIface.
@@ -13038,6 +15353,11 @@ func (recv *TreeModelIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TreeModelIface with another TreeModelIface, and returns true if they represent the same GObject.
+func (recv *TreeModelIface) Equals(other *TreeModelIface) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // TreeModelSortClass is a wrapper around the C record GtkTreeModelSortClass.
 type TreeModelSortClass struct {
 	native *C.GtkTreeModelSortClass
@@ -13064,6 +15384,11 @@ func (recv *TreeModelSortClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TreeModelSortClass with another TreeModelSortClass, and returns true if they represent the same GObject.
+func (recv *TreeModelSortClass) Equals(other *TreeModelSortClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // TreeModelSortPrivate is a wrapper around the C record GtkTreeModelSortPrivate.
 type TreeModelSortPrivate struct {
 	native *C.GtkTreeModelSortPrivate
@@ -13085,6 +15410,11 @@ func (recv *TreeModelSortPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TreeModelSortPrivate with another TreeModelSortPrivate, and returns true if they represent the same GObject.
+func (recv *TreeModelSortPrivate) Equals(other *TreeModelSortPrivate) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // TreePath is a wrapper around the C record GtkTreePath.
 type TreePath struct {
 	native *C.GtkTreePath
@@ -13104,6 +15434,11 @@ func TreePathNewFromC(u unsafe.Pointer) *TreePath {
 func (recv *TreePath) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TreePath with another TreePath, and returns true if they represent the same GObject.
+func (recv *TreePath) Equals(other *TreePath) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // TreePathNew is a wrapper around the C function gtk_tree_path_new.
@@ -13275,6 +15610,11 @@ func (recv *TreeRowReference) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TreeRowReference with another TreeRowReference, and returns true if they represent the same GObject.
+func (recv *TreeRowReference) Equals(other *TreeRowReference) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // TreeRowReferenceNew is a wrapper around the C function gtk_tree_row_reference_new.
 func TreeRowReferenceNew(model *TreeModel, path *TreePath) *TreeRowReference {
 	c_model := (*C.GtkTreeModel)(model.ToC())
@@ -13365,6 +15705,11 @@ func (recv *TreeSelectionClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TreeSelectionClass with another TreeSelectionClass, and returns true if they represent the same GObject.
+func (recv *TreeSelectionClass) Equals(other *TreeSelectionClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // TreeSelectionPrivate is a wrapper around the C record GtkTreeSelectionPrivate.
 type TreeSelectionPrivate struct {
 	native *C.GtkTreeSelectionPrivate
@@ -13384,6 +15729,11 @@ func TreeSelectionPrivateNewFromC(u unsafe.Pointer) *TreeSelectionPrivate {
 func (recv *TreeSelectionPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TreeSelectionPrivate with another TreeSelectionPrivate, and returns true if they represent the same GObject.
+func (recv *TreeSelectionPrivate) Equals(other *TreeSelectionPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // TreeSortableIface is a wrapper around the C record GtkTreeSortableIface.
@@ -13414,6 +15764,11 @@ func (recv *TreeSortableIface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TreeSortableIface with another TreeSortableIface, and returns true if they represent the same GObject.
+func (recv *TreeSortableIface) Equals(other *TreeSortableIface) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // TreeStoreClass is a wrapper around the C record GtkTreeStoreClass.
 type TreeStoreClass struct {
 	native *C.GtkTreeStoreClass
@@ -13440,6 +15795,11 @@ func (recv *TreeStoreClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TreeStoreClass with another TreeStoreClass, and returns true if they represent the same GObject.
+func (recv *TreeStoreClass) Equals(other *TreeStoreClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // TreeStorePrivate is a wrapper around the C record GtkTreeStorePrivate.
 type TreeStorePrivate struct {
 	native *C.GtkTreeStorePrivate
@@ -13459,6 +15819,11 @@ func TreeStorePrivateNewFromC(u unsafe.Pointer) *TreeStorePrivate {
 func (recv *TreeStorePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TreeStorePrivate with another TreeStorePrivate, and returns true if they represent the same GObject.
+func (recv *TreeStorePrivate) Equals(other *TreeStorePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // TreeViewAccessibleClass is a wrapper around the C record GtkTreeViewAccessibleClass.
@@ -13483,6 +15848,11 @@ func (recv *TreeViewAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TreeViewAccessibleClass with another TreeViewAccessibleClass, and returns true if they represent the same GObject.
+func (recv *TreeViewAccessibleClass) Equals(other *TreeViewAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // TreeViewAccessiblePrivate is a wrapper around the C record GtkTreeViewAccessiblePrivate.
 type TreeViewAccessiblePrivate struct {
 	native *C.GtkTreeViewAccessiblePrivate
@@ -13502,6 +15872,11 @@ func TreeViewAccessiblePrivateNewFromC(u unsafe.Pointer) *TreeViewAccessiblePriv
 func (recv *TreeViewAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TreeViewAccessiblePrivate with another TreeViewAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *TreeViewAccessiblePrivate) Equals(other *TreeViewAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // TreeViewClass is a wrapper around the C record GtkTreeViewClass.
@@ -13549,6 +15924,11 @@ func (recv *TreeViewClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TreeViewClass with another TreeViewClass, and returns true if they represent the same GObject.
+func (recv *TreeViewClass) Equals(other *TreeViewClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // TreeViewColumnClass is a wrapper around the C record GtkTreeViewColumnClass.
 type TreeViewColumnClass struct {
 	native *C.GtkTreeViewColumnClass
@@ -13576,6 +15956,11 @@ func (recv *TreeViewColumnClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TreeViewColumnClass with another TreeViewColumnClass, and returns true if they represent the same GObject.
+func (recv *TreeViewColumnClass) Equals(other *TreeViewColumnClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // TreeViewColumnPrivate is a wrapper around the C record GtkTreeViewColumnPrivate.
 type TreeViewColumnPrivate struct {
 	native *C.GtkTreeViewColumnPrivate
@@ -13597,6 +15982,11 @@ func (recv *TreeViewColumnPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TreeViewColumnPrivate with another TreeViewColumnPrivate, and returns true if they represent the same GObject.
+func (recv *TreeViewColumnPrivate) Equals(other *TreeViewColumnPrivate) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // TreeViewPrivate is a wrapper around the C record GtkTreeViewPrivate.
 type TreeViewPrivate struct {
 	native *C.GtkTreeViewPrivate
@@ -13616,6 +16006,11 @@ func TreeViewPrivateNewFromC(u unsafe.Pointer) *TreeViewPrivate {
 func (recv *TreeViewPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TreeViewPrivate with another TreeViewPrivate, and returns true if they represent the same GObject.
+func (recv *TreeViewPrivate) Equals(other *TreeViewPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // UIManagerClass is a wrapper around the C record GtkUIManagerClass.
@@ -13652,6 +16047,11 @@ func (recv *UIManagerClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this UIManagerClass with another UIManagerClass, and returns true if they represent the same GObject.
+func (recv *UIManagerClass) Equals(other *UIManagerClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // UIManagerPrivate is a wrapper around the C record GtkUIManagerPrivate.
 type UIManagerPrivate struct {
 	native *C.GtkUIManagerPrivate
@@ -13671,6 +16071,11 @@ func UIManagerPrivateNewFromC(u unsafe.Pointer) *UIManagerPrivate {
 func (recv *UIManagerPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this UIManagerPrivate with another UIManagerPrivate, and returns true if they represent the same GObject.
+func (recv *UIManagerPrivate) Equals(other *UIManagerPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // VBoxClass is a wrapper around the C record GtkVBoxClass.
@@ -13695,6 +16100,11 @@ func (recv *VBoxClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this VBoxClass with another VBoxClass, and returns true if they represent the same GObject.
+func (recv *VBoxClass) Equals(other *VBoxClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // VButtonBoxClass is a wrapper around the C record GtkVButtonBoxClass.
 type VButtonBoxClass struct {
 	native *C.GtkVButtonBoxClass
@@ -13715,6 +16125,11 @@ func VButtonBoxClassNewFromC(u unsafe.Pointer) *VButtonBoxClass {
 func (recv *VButtonBoxClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this VButtonBoxClass with another VButtonBoxClass, and returns true if they represent the same GObject.
+func (recv *VButtonBoxClass) Equals(other *VButtonBoxClass) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // VPanedClass is a wrapper around the C record GtkVPanedClass.
@@ -13739,6 +16154,11 @@ func (recv *VPanedClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this VPanedClass with another VPanedClass, and returns true if they represent the same GObject.
+func (recv *VPanedClass) Equals(other *VPanedClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // VScaleClass is a wrapper around the C record GtkVScaleClass.
 type VScaleClass struct {
 	native *C.GtkVScaleClass
@@ -13759,6 +16179,11 @@ func VScaleClassNewFromC(u unsafe.Pointer) *VScaleClass {
 func (recv *VScaleClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this VScaleClass with another VScaleClass, and returns true if they represent the same GObject.
+func (recv *VScaleClass) Equals(other *VScaleClass) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // VScrollbarClass is a wrapper around the C record GtkVScrollbarClass.
@@ -13783,6 +16208,11 @@ func (recv *VScrollbarClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this VScrollbarClass with another VScrollbarClass, and returns true if they represent the same GObject.
+func (recv *VScrollbarClass) Equals(other *VScrollbarClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // VSeparatorClass is a wrapper around the C record GtkVSeparatorClass.
 type VSeparatorClass struct {
 	native *C.GtkVSeparatorClass
@@ -13803,6 +16233,11 @@ func VSeparatorClassNewFromC(u unsafe.Pointer) *VSeparatorClass {
 func (recv *VSeparatorClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this VSeparatorClass with another VSeparatorClass, and returns true if they represent the same GObject.
+func (recv *VSeparatorClass) Equals(other *VSeparatorClass) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ViewportClass is a wrapper around the C record GtkViewportClass.
@@ -13831,6 +16266,11 @@ func (recv *ViewportClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ViewportClass with another ViewportClass, and returns true if they represent the same GObject.
+func (recv *ViewportClass) Equals(other *ViewportClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ViewportPrivate is a wrapper around the C record GtkViewportPrivate.
 type ViewportPrivate struct {
 	native *C.GtkViewportPrivate
@@ -13850,6 +16290,11 @@ func ViewportPrivateNewFromC(u unsafe.Pointer) *ViewportPrivate {
 func (recv *ViewportPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ViewportPrivate with another ViewportPrivate, and returns true if they represent the same GObject.
+func (recv *ViewportPrivate) Equals(other *ViewportPrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // VolumeButtonClass is a wrapper around the C record GtkVolumeButtonClass.
@@ -13878,6 +16323,11 @@ func (recv *VolumeButtonClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this VolumeButtonClass with another VolumeButtonClass, and returns true if they represent the same GObject.
+func (recv *VolumeButtonClass) Equals(other *VolumeButtonClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // WidgetAccessibleClass is a wrapper around the C record GtkWidgetAccessibleClass.
 type WidgetAccessibleClass struct {
 	native *C.GtkWidgetAccessibleClass
@@ -13901,6 +16351,11 @@ func (recv *WidgetAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this WidgetAccessibleClass with another WidgetAccessibleClass, and returns true if they represent the same GObject.
+func (recv *WidgetAccessibleClass) Equals(other *WidgetAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // WidgetAccessiblePrivate is a wrapper around the C record GtkWidgetAccessiblePrivate.
 type WidgetAccessiblePrivate struct {
 	native *C.GtkWidgetAccessiblePrivate
@@ -13920,6 +16375,11 @@ func WidgetAccessiblePrivateNewFromC(u unsafe.Pointer) *WidgetAccessiblePrivate 
 func (recv *WidgetAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this WidgetAccessiblePrivate with another WidgetAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *WidgetAccessiblePrivate) Equals(other *WidgetAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // WidgetClass is a wrapper around the C record GtkWidgetClass.
@@ -14035,6 +16495,11 @@ func (recv *WidgetClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this WidgetClass with another WidgetClass, and returns true if they represent the same GObject.
+func (recv *WidgetClass) Equals(other *WidgetClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Unsupported : gtk_widget_class_install_style_property : unsupported parameter pspec : Blacklisted record : GParamSpec
 
 // Unsupported : gtk_widget_class_install_style_property_parser : unsupported parameter pspec : Blacklisted record : GParamSpec
@@ -14060,6 +16525,11 @@ func (recv *WidgetClassPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this WidgetClassPrivate with another WidgetClassPrivate, and returns true if they represent the same GObject.
+func (recv *WidgetClassPrivate) Equals(other *WidgetClassPrivate) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // WidgetPath is a wrapper around the C record GtkWidgetPath.
 type WidgetPath struct {
 	native *C.GtkWidgetPath
@@ -14079,6 +16549,11 @@ func WidgetPathNewFromC(u unsafe.Pointer) *WidgetPath {
 func (recv *WidgetPath) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this WidgetPath with another WidgetPath, and returns true if they represent the same GObject.
+func (recv *WidgetPath) Equals(other *WidgetPath) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // IterGetName is a wrapper around the C function gtk_widget_path_iter_get_name.
@@ -14132,6 +16607,11 @@ func (recv *WidgetPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this WidgetPrivate with another WidgetPrivate, and returns true if they represent the same GObject.
+func (recv *WidgetPrivate) Equals(other *WidgetPrivate) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // WindowAccessibleClass is a wrapper around the C record GtkWindowAccessibleClass.
 type WindowAccessibleClass struct {
 	native *C.GtkWindowAccessibleClass
@@ -14154,6 +16634,11 @@ func (recv *WindowAccessibleClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this WindowAccessibleClass with another WindowAccessibleClass, and returns true if they represent the same GObject.
+func (recv *WindowAccessibleClass) Equals(other *WindowAccessibleClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // WindowAccessiblePrivate is a wrapper around the C record GtkWindowAccessiblePrivate.
 type WindowAccessiblePrivate struct {
 	native *C.GtkWindowAccessiblePrivate
@@ -14173,6 +16658,11 @@ func WindowAccessiblePrivateNewFromC(u unsafe.Pointer) *WindowAccessiblePrivate 
 func (recv *WindowAccessiblePrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this WindowAccessiblePrivate with another WindowAccessiblePrivate, and returns true if they represent the same GObject.
+func (recv *WindowAccessiblePrivate) Equals(other *WindowAccessiblePrivate) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // WindowClass is a wrapper around the C record GtkWindowClass.
@@ -14205,6 +16695,11 @@ func (recv *WindowClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this WindowClass with another WindowClass, and returns true if they represent the same GObject.
+func (recv *WindowClass) Equals(other *WindowClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // WindowGeometryInfo is a wrapper around the C record GtkWindowGeometryInfo.
 type WindowGeometryInfo struct {
 	native *C.GtkWindowGeometryInfo
@@ -14224,6 +16719,11 @@ func WindowGeometryInfoNewFromC(u unsafe.Pointer) *WindowGeometryInfo {
 func (recv *WindowGeometryInfo) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this WindowGeometryInfo with another WindowGeometryInfo, and returns true if they represent the same GObject.
+func (recv *WindowGeometryInfo) Equals(other *WindowGeometryInfo) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // WindowGroupClass is a wrapper around the C record GtkWindowGroupClass.
@@ -14252,6 +16752,11 @@ func (recv *WindowGroupClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this WindowGroupClass with another WindowGroupClass, and returns true if they represent the same GObject.
+func (recv *WindowGroupClass) Equals(other *WindowGroupClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // WindowGroupPrivate is a wrapper around the C record GtkWindowGroupPrivate.
 type WindowGroupPrivate struct {
 	native *C.GtkWindowGroupPrivate
@@ -14273,6 +16778,11 @@ func (recv *WindowGroupPrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this WindowGroupPrivate with another WindowGroupPrivate, and returns true if they represent the same GObject.
+func (recv *WindowGroupPrivate) Equals(other *WindowGroupPrivate) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // WindowPrivate is a wrapper around the C record GtkWindowPrivate.
 type WindowPrivate struct {
 	native *C.GtkWindowPrivate
@@ -14292,4 +16802,9 @@ func WindowPrivateNewFromC(u unsafe.Pointer) *WindowPrivate {
 func (recv *WindowPrivate) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this WindowPrivate with another WindowPrivate, and returns true if they represent the same GObject.
+func (recv *WindowPrivate) Equals(other *WindowPrivate) bool {
+	return other.ToC() == recv.ToC()
 }

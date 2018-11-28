@@ -60,3 +60,8 @@ func (recv *ParamSpecGType) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Equals compares this ParamSpecGType with another ParamSpecGType, and returns true if they represent the same GObject.
+func (recv *ParamSpecGType) Equals(other *ParamSpecGType) bool {
+	return other.ToC() == recv.ToC()
+}

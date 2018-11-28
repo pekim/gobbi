@@ -62,3 +62,8 @@ func (recv *RendererClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Equals compares this RendererClass with another RendererClass, and returns true if they represent the same GObject.
+func (recv *RendererClass) Equals(other *RendererClass) bool {
+	return other.ToC() == recv.ToC()
+}

@@ -55,6 +55,11 @@ func (recv *AppInfoMonitor) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this AppInfoMonitor with another AppInfoMonitor, and returns true if they represent the same GObject.
+func (recv *AppInfoMonitor) Equals(other *AppInfoMonitor) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *AppInfoMonitor) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -204,6 +209,11 @@ func (recv *Notification) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Notification with another Notification, and returns true if they represent the same GObject.
+func (recv *Notification) Equals(other *Notification) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *Notification) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -332,6 +342,11 @@ func SubprocessNewFromC(u unsafe.Pointer) *Subprocess {
 func (recv *Subprocess) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Subprocess with another Subprocess, and returns true if they represent the same GObject.
+func (recv *Subprocess) Equals(other *Subprocess) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -664,6 +679,11 @@ func SubprocessLauncherNewFromC(u unsafe.Pointer) *SubprocessLauncher {
 func (recv *SubprocessLauncher) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this SubprocessLauncher with another SubprocessLauncher, and returns true if they represent the same GObject.
+func (recv *SubprocessLauncher) Equals(other *SubprocessLauncher) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object

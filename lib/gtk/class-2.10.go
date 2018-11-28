@@ -3027,6 +3027,11 @@ func (recv *RecentManager) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this RecentManager with another RecentManager, and returns true if they represent the same GObject.
+func (recv *RecentManager) Equals(other *RecentManager) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *RecentManager) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))

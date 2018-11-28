@@ -45,6 +45,11 @@ func (recv *Once) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Once with another Once, and returns true if they represent the same GObject.
+func (recv *Once) Equals(other *Once) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Unsupported : g_once_impl : unsupported parameter func : no type generator for ThreadFunc (GThreadFunc) for param func
 
 // Copy is a wrapper around the C function g_queue_copy.

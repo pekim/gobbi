@@ -108,6 +108,11 @@ func (recv *Action) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Action with another Action, and returns true if they represent the same GObject.
+func (recv *Action) Equals(other *Action) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ActionGroup is a wrapper around the C record GActionGroup.
 type ActionGroup struct {
 	native *C.GActionGroup
@@ -127,6 +132,11 @@ func ActionGroupNewFromC(u unsafe.Pointer) *ActionGroup {
 func (recv *ActionGroup) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ActionGroup with another ActionGroup, and returns true if they represent the same GObject.
+func (recv *ActionGroup) Equals(other *ActionGroup) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ActionMap is a wrapper around the C record GActionMap.
@@ -150,6 +160,11 @@ func (recv *ActionMap) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ActionMap with another ActionMap, and returns true if they represent the same GObject.
+func (recv *ActionMap) Equals(other *ActionMap) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // AppInfo is a wrapper around the C record GAppInfo.
 type AppInfo struct {
 	native *C.GAppInfo
@@ -169,6 +184,11 @@ func AppInfoNewFromC(u unsafe.Pointer) *AppInfo {
 func (recv *AppInfo) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this AppInfo with another AppInfo, and returns true if they represent the same GObject.
+func (recv *AppInfo) Equals(other *AppInfo) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // AddSupportsType is a wrapper around the C function g_app_info_add_supports_type.
@@ -422,6 +442,11 @@ func (recv *AsyncResult) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this AsyncResult with another AsyncResult, and returns true if they represent the same GObject.
+func (recv *AsyncResult) Equals(other *AsyncResult) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // GetSourceObject is a wrapper around the C function g_async_result_get_source_object.
 func (recv *AsyncResult) GetSourceObject() *gobject.Object {
 	retC := C.g_async_result_get_source_object((*C.GAsyncResult)(recv.native))
@@ -464,6 +489,11 @@ func (recv *DBusObject) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this DBusObject with another DBusObject, and returns true if they represent the same GObject.
+func (recv *DBusObject) Equals(other *DBusObject) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // DBusObjectManager is a wrapper around the C record GDBusObjectManager.
 type DBusObjectManager struct {
 	native *C.GDBusObjectManager
@@ -485,6 +515,11 @@ func (recv *DBusObjectManager) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this DBusObjectManager with another DBusObjectManager, and returns true if they represent the same GObject.
+func (recv *DBusObjectManager) Equals(other *DBusObjectManager) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // DesktopAppInfoLookup is a wrapper around the C record GDesktopAppInfoLookup.
 type DesktopAppInfoLookup struct {
 	native *C.GDesktopAppInfoLookup
@@ -504,6 +539,11 @@ func DesktopAppInfoLookupNewFromC(u unsafe.Pointer) *DesktopAppInfoLookup {
 func (recv *DesktopAppInfoLookup) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this DesktopAppInfoLookup with another DesktopAppInfoLookup, and returns true if they represent the same GObject.
+func (recv *DesktopAppInfoLookup) Equals(other *DesktopAppInfoLookup) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // GetDefaultForUriScheme is a wrapper around the C function g_desktop_app_info_lookup_get_default_for_uri_scheme.
@@ -536,6 +576,11 @@ func DriveNewFromC(u unsafe.Pointer) *Drive {
 func (recv *Drive) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Drive with another Drive, and returns true if they represent the same GObject.
+func (recv *Drive) Equals(other *Drive) bool {
+	return other.ToC() == recv.ToC()
 }
 
 type signalDriveChangedDetail struct {
@@ -853,6 +898,11 @@ func FileNewFromC(u unsafe.Pointer) *File {
 func (recv *File) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this File with another File, and returns true if they represent the same GObject.
+func (recv *File) Equals(other *File) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // AppendTo is a wrapper around the C function g_file_append_to.
@@ -2056,6 +2106,11 @@ func (recv *FileDescriptorBased) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this FileDescriptorBased with another FileDescriptorBased, and returns true if they represent the same GObject.
+func (recv *FileDescriptorBased) Equals(other *FileDescriptorBased) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Icon is a wrapper around the C record GIcon.
 type Icon struct {
 	native *C.GIcon
@@ -2075,6 +2130,11 @@ func IconNewFromC(u unsafe.Pointer) *Icon {
 func (recv *Icon) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Icon with another Icon, and returns true if they represent the same GObject.
+func (recv *Icon) Equals(other *Icon) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Equal is a wrapper around the C function g_icon_equal.
@@ -2108,6 +2168,11 @@ func (recv *ListModel) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ListModel with another ListModel, and returns true if they represent the same GObject.
+func (recv *ListModel) Equals(other *ListModel) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // LoadableIcon is a wrapper around the C record GLoadableIcon.
 type LoadableIcon struct {
 	native *C.GLoadableIcon
@@ -2127,6 +2192,11 @@ func LoadableIconNewFromC(u unsafe.Pointer) *LoadableIcon {
 func (recv *LoadableIcon) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this LoadableIcon with another LoadableIcon, and returns true if they represent the same GObject.
+func (recv *LoadableIcon) Equals(other *LoadableIcon) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Load is a wrapper around the C function g_loadable_icon_load.
@@ -2199,6 +2269,11 @@ func MountNewFromC(u unsafe.Pointer) *Mount {
 func (recv *Mount) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Mount with another Mount, and returns true if they represent the same GObject.
+func (recv *Mount) Equals(other *Mount) bool {
+	return other.ToC() == recv.ToC()
 }
 
 type signalMountChangedDetail struct {
@@ -2467,6 +2542,11 @@ func (recv *RemoteActionGroup) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this RemoteActionGroup with another RemoteActionGroup, and returns true if they represent the same GObject.
+func (recv *RemoteActionGroup) Equals(other *RemoteActionGroup) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Seekable is a wrapper around the C record GSeekable.
 type Seekable struct {
 	native *C.GSeekable
@@ -2486,6 +2566,11 @@ func SeekableNewFromC(u unsafe.Pointer) *Seekable {
 func (recv *Seekable) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Seekable with another Seekable, and returns true if they represent the same GObject.
+func (recv *Seekable) Equals(other *Seekable) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // CanSeek is a wrapper around the C function g_seekable_can_seek.
@@ -2579,6 +2664,11 @@ func (recv *SocketConnectable) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this SocketConnectable with another SocketConnectable, and returns true if they represent the same GObject.
+func (recv *SocketConnectable) Equals(other *SocketConnectable) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Volume is a wrapper around the C record GVolume.
 type Volume struct {
 	native *C.GVolume
@@ -2598,6 +2688,11 @@ func VolumeNewFromC(u unsafe.Pointer) *Volume {
 func (recv *Volume) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Volume with another Volume, and returns true if they represent the same GObject.
+func (recv *Volume) Equals(other *Volume) bool {
+	return other.ToC() == recv.ToC()
 }
 
 type signalVolumeChangedDetail struct {

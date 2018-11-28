@@ -44,6 +44,11 @@ func (recv *CredentialsClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this CredentialsClass with another CredentialsClass, and returns true if they represent the same GObject.
+func (recv *CredentialsClass) Equals(other *CredentialsClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // DBusAnnotationInfo is a wrapper around the C record GDBusAnnotationInfo.
 type DBusAnnotationInfo struct {
 	native   *C.GDBusAnnotationInfo
@@ -78,6 +83,11 @@ func (recv *DBusAnnotationInfo) ToC() unsafe.Pointer {
 		C.CString(recv.Value)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this DBusAnnotationInfo with another DBusAnnotationInfo, and returns true if they represent the same GObject.
+func (recv *DBusAnnotationInfo) Equals(other *DBusAnnotationInfo) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Ref is a wrapper around the C function g_dbus_annotation_info_ref.
@@ -131,6 +141,11 @@ func (recv *DBusArgInfo) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this DBusArgInfo with another DBusArgInfo, and returns true if they represent the same GObject.
+func (recv *DBusArgInfo) Equals(other *DBusArgInfo) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Ref is a wrapper around the C function g_dbus_arg_info_ref.
 func (recv *DBusArgInfo) Ref() *DBusArgInfo {
 	retC := C.g_dbus_arg_info_ref((*C.GDBusArgInfo)(recv.native))
@@ -177,6 +192,11 @@ func (recv *DBusErrorEntry) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this DBusErrorEntry with another DBusErrorEntry, and returns true if they represent the same GObject.
+func (recv *DBusErrorEntry) Equals(other *DBusErrorEntry) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // DBusInterfaceInfo is a wrapper around the C record GDBusInterfaceInfo.
 type DBusInterfaceInfo struct {
 	native   *C.GDBusInterfaceInfo
@@ -210,6 +230,11 @@ func (recv *DBusInterfaceInfo) ToC() unsafe.Pointer {
 		C.CString(recv.Name)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this DBusInterfaceInfo with another DBusInterfaceInfo, and returns true if they represent the same GObject.
+func (recv *DBusInterfaceInfo) Equals(other *DBusInterfaceInfo) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // GenerateXml is a wrapper around the C function g_dbus_interface_info_generate_xml.
@@ -299,6 +324,11 @@ func (recv *DBusInterfaceVTable) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this DBusInterfaceVTable with another DBusInterfaceVTable, and returns true if they represent the same GObject.
+func (recv *DBusInterfaceVTable) Equals(other *DBusInterfaceVTable) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // DBusMethodInfo is a wrapper around the C record GDBusMethodInfo.
 type DBusMethodInfo struct {
 	native   *C.GDBusMethodInfo
@@ -331,6 +361,11 @@ func (recv *DBusMethodInfo) ToC() unsafe.Pointer {
 		C.CString(recv.Name)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this DBusMethodInfo with another DBusMethodInfo, and returns true if they represent the same GObject.
+func (recv *DBusMethodInfo) Equals(other *DBusMethodInfo) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Ref is a wrapper around the C function g_dbus_method_info_ref.
@@ -380,6 +415,11 @@ func (recv *DBusNodeInfo) ToC() unsafe.Pointer {
 		C.CString(recv.Path)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this DBusNodeInfo with another DBusNodeInfo, and returns true if they represent the same GObject.
+func (recv *DBusNodeInfo) Equals(other *DBusNodeInfo) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // DBusNodeInfoNewForXml is a wrapper around the C function g_dbus_node_info_new_for_xml.
@@ -480,6 +520,11 @@ func (recv *DBusPropertyInfo) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this DBusPropertyInfo with another DBusPropertyInfo, and returns true if they represent the same GObject.
+func (recv *DBusPropertyInfo) Equals(other *DBusPropertyInfo) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Ref is a wrapper around the C function g_dbus_property_info_ref.
 func (recv *DBusPropertyInfo) Ref() *DBusPropertyInfo {
 	retC := C.g_dbus_property_info_ref((*C.GDBusPropertyInfo)(recv.native))
@@ -520,6 +565,11 @@ func (recv *DBusProxyClass) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this DBusProxyClass with another DBusProxyClass, and returns true if they represent the same GObject.
+func (recv *DBusProxyClass) Equals(other *DBusProxyClass) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // DBusSignalInfo is a wrapper around the C record GDBusSignalInfo.
 type DBusSignalInfo struct {
 	native   *C.GDBusSignalInfo
@@ -551,6 +601,11 @@ func (recv *DBusSignalInfo) ToC() unsafe.Pointer {
 		C.CString(recv.Name)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this DBusSignalInfo with another DBusSignalInfo, and returns true if they represent the same GObject.
+func (recv *DBusSignalInfo) Equals(other *DBusSignalInfo) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Ref is a wrapper around the C function g_dbus_signal_info_ref.
@@ -593,6 +648,11 @@ func (recv *DBusSubtreeVTable) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this DBusSubtreeVTable with another DBusSubtreeVTable, and returns true if they represent the same GObject.
+func (recv *DBusSubtreeVTable) Equals(other *DBusSubtreeVTable) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // ProxyAddressClass is a wrapper around the C record GProxyAddressClass.
 type ProxyAddressClass struct {
 	native *C.GProxyAddressClass
@@ -613,6 +673,11 @@ func ProxyAddressClassNewFromC(u unsafe.Pointer) *ProxyAddressClass {
 func (recv *ProxyAddressClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ProxyAddressClass with another ProxyAddressClass, and returns true if they represent the same GObject.
+func (recv *ProxyAddressClass) Equals(other *ProxyAddressClass) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ProxyInterface is a wrapper around the C record GProxyInterface.
@@ -641,6 +706,11 @@ func (recv *ProxyInterface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ProxyInterface with another ProxyInterface, and returns true if they represent the same GObject.
+func (recv *ProxyInterface) Equals(other *ProxyInterface) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // TlsClientConnectionInterface is a wrapper around the C record GTlsClientConnectionInterface.
 type TlsClientConnectionInterface struct {
 	native *C.GTlsClientConnectionInterface
@@ -662,6 +732,11 @@ func TlsClientConnectionInterfaceNewFromC(u unsafe.Pointer) *TlsClientConnection
 func (recv *TlsClientConnectionInterface) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this TlsClientConnectionInterface with another TlsClientConnectionInterface, and returns true if they represent the same GObject.
+func (recv *TlsClientConnectionInterface) Equals(other *TlsClientConnectionInterface) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // TlsServerConnectionInterface is a wrapper around the C record GTlsServerConnectionInterface.
@@ -686,6 +761,11 @@ func (recv *TlsServerConnectionInterface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TlsServerConnectionInterface with another TlsServerConnectionInterface, and returns true if they represent the same GObject.
+func (recv *TlsServerConnectionInterface) Equals(other *TlsServerConnectionInterface) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // UnixCredentialsMessageClass is a wrapper around the C record GUnixCredentialsMessageClass.
 type UnixCredentialsMessageClass struct {
 	native *C.GUnixCredentialsMessageClass
@@ -708,4 +788,9 @@ func UnixCredentialsMessageClassNewFromC(u unsafe.Pointer) *UnixCredentialsMessa
 func (recv *UnixCredentialsMessageClass) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this UnixCredentialsMessageClass with another UnixCredentialsMessageClass, and returns true if they represent the same GObject.
+func (recv *UnixCredentialsMessageClass) Equals(other *UnixCredentialsMessageClass) bool {
+	return other.ToC() == recv.ToC()
 }

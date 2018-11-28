@@ -42,6 +42,11 @@ func (recv *Array) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Array with another Array, and returns true if they represent the same GObject.
+func (recv *Array) Equals(other *Array) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // AsyncQueue is a wrapper around the C record GAsyncQueue.
 type AsyncQueue struct {
 	native *C.GAsyncQueue
@@ -61,6 +66,11 @@ func AsyncQueueNewFromC(u unsafe.Pointer) *AsyncQueue {
 func (recv *AsyncQueue) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this AsyncQueue with another AsyncQueue, and returns true if they represent the same GObject.
+func (recv *AsyncQueue) Equals(other *AsyncQueue) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Length is a wrapper around the C function g_async_queue_length.
@@ -239,6 +249,11 @@ func (recv *BookmarkFile) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this BookmarkFile with another BookmarkFile, and returns true if they represent the same GObject.
+func (recv *BookmarkFile) Equals(other *BookmarkFile) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Blacklisted : GByteArray
 
 // Cond is a wrapper around the C record GCond.
@@ -262,6 +277,11 @@ func CondNewFromC(u unsafe.Pointer) *Cond {
 func (recv *Cond) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Cond with another Cond, and returns true if they represent the same GObject.
+func (recv *Cond) Equals(other *Cond) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Broadcast is a wrapper around the C function g_cond_broadcast.
@@ -301,6 +321,11 @@ func (recv *Data) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Data with another Data, and returns true if they represent the same GObject.
+func (recv *Data) Equals(other *Data) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Date is a wrapper around the C record GDate.
 type Date struct {
 	native *C.GDate
@@ -326,6 +351,11 @@ func DateNewFromC(u unsafe.Pointer) *Date {
 func (recv *Date) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Date with another Date, and returns true if they represent the same GObject.
+func (recv *Date) Equals(other *Date) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // DateNew is a wrapper around the C function g_date_new.
@@ -674,6 +704,11 @@ func (recv *DebugKey) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this DebugKey with another DebugKey, and returns true if they represent the same GObject.
+func (recv *DebugKey) Equals(other *DebugKey) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Dir is a wrapper around the C record GDir.
 type Dir struct {
 	native *C.GDir
@@ -693,6 +728,11 @@ func DirNewFromC(u unsafe.Pointer) *Dir {
 func (recv *Dir) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Dir with another Dir, and returns true if they represent the same GObject.
+func (recv *Dir) Equals(other *Dir) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Close is a wrapper around the C function g_dir_close.
@@ -750,6 +790,11 @@ func (recv *Error) ToC() unsafe.Pointer {
 		C.CString(recv.Message)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Error with another Error, and returns true if they represent the same GObject.
+func (recv *Error) Equals(other *Error) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Unsupported : g_error_new : unsupported parameter ... : varargs
@@ -817,6 +862,11 @@ func (recv *HashTable) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this HashTable with another HashTable, and returns true if they represent the same GObject.
+func (recv *HashTable) Equals(other *HashTable) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // HashTableIter is a wrapper around the C record GHashTableIter.
 type HashTableIter struct {
 	native *C.GHashTableIter
@@ -842,6 +892,11 @@ func HashTableIterNewFromC(u unsafe.Pointer) *HashTableIter {
 func (recv *HashTableIter) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this HashTableIter with another HashTableIter, and returns true if they represent the same GObject.
+func (recv *HashTableIter) Equals(other *HashTableIter) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Hook is a wrapper around the C record GHook.
@@ -888,6 +943,11 @@ func (recv *Hook) ToC() unsafe.Pointer {
 		(C.gpointer)(recv.Func)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Hook with another Hook, and returns true if they represent the same GObject.
+func (recv *Hook) Equals(other *Hook) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // CompareIds is a wrapper around the C function g_hook_compare_ids.
@@ -937,6 +997,11 @@ func (recv *HookList) ToC() unsafe.Pointer {
 		(C.gpointer)(recv.Dummy3)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this HookList with another HookList, and returns true if they represent the same GObject.
+func (recv *HookList) Equals(other *HookList) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Clear is a wrapper around the C function g_hook_list_clear.
@@ -1012,6 +1077,11 @@ func (recv *IOFuncs) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this IOFuncs with another IOFuncs, and returns true if they represent the same GObject.
+func (recv *IOFuncs) Equals(other *IOFuncs) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // KeyFile is a wrapper around the C record GKeyFile.
 type KeyFile struct {
 	native *C.GKeyFile
@@ -1031,6 +1101,11 @@ func KeyFileNewFromC(u unsafe.Pointer) *KeyFile {
 func (recv *KeyFile) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this KeyFile with another KeyFile, and returns true if they represent the same GObject.
+func (recv *KeyFile) Equals(other *KeyFile) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // List is a wrapper around the C record GList.
@@ -1062,6 +1137,11 @@ func (recv *List) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this List with another List, and returns true if they represent the same GObject.
+func (recv *List) Equals(other *List) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // MainContext is a wrapper around the C record GMainContext.
 type MainContext struct {
 	native *C.GMainContext
@@ -1081,6 +1161,11 @@ func MainContextNewFromC(u unsafe.Pointer) *MainContext {
 func (recv *MainContext) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this MainContext with another MainContext, and returns true if they represent the same GObject.
+func (recv *MainContext) Equals(other *MainContext) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // MainContextNew is a wrapper around the C function g_main_context_new.
@@ -1256,6 +1341,11 @@ func (recv *MainLoop) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this MainLoop with another MainLoop, and returns true if they represent the same GObject.
+func (recv *MainLoop) Equals(other *MainLoop) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // MainLoopNew is a wrapper around the C function g_main_loop_new.
 func MainLoopNew(context *MainContext, isRunning bool) *MainLoop {
 	c_context := (*C.GMainContext)(C.NULL)
@@ -1338,6 +1428,11 @@ func (recv *MappedFile) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this MappedFile with another MappedFile, and returns true if they represent the same GObject.
+func (recv *MappedFile) Equals(other *MappedFile) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Unref is a wrapper around the C function g_mapped_file_unref.
 func (recv *MappedFile) Unref() {
 	C.g_mapped_file_unref((*C.GMappedFile)(recv.native))
@@ -1364,6 +1459,11 @@ func MarkupParseContextNewFromC(u unsafe.Pointer) *MarkupParseContext {
 func (recv *MarkupParseContext) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this MarkupParseContext with another MarkupParseContext, and returns true if they represent the same GObject.
+func (recv *MarkupParseContext) Equals(other *MarkupParseContext) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Unsupported : g_markup_parse_context_new : unsupported parameter user_data_dnotify : no type generator for DestroyNotify (GDestroyNotify) for param user_data_dnotify
@@ -1447,6 +1547,11 @@ func (recv *MarkupParser) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this MarkupParser with another MarkupParser, and returns true if they represent the same GObject.
+func (recv *MarkupParser) Equals(other *MarkupParser) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // MatchInfo is a wrapper around the C record GMatchInfo.
 type MatchInfo struct {
 	native *C.GMatchInfo
@@ -1466,6 +1571,11 @@ func MatchInfoNewFromC(u unsafe.Pointer) *MatchInfo {
 func (recv *MatchInfo) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this MatchInfo with another MatchInfo, and returns true if they represent the same GObject.
+func (recv *MatchInfo) Equals(other *MatchInfo) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // MemVTable is a wrapper around the C record GMemVTable.
@@ -1493,6 +1603,11 @@ func MemVTableNewFromC(u unsafe.Pointer) *MemVTable {
 func (recv *MemVTable) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this MemVTable with another MemVTable, and returns true if they represent the same GObject.
+func (recv *MemVTable) Equals(other *MemVTable) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Node is a wrapper around the C record GNode.
@@ -1524,6 +1639,11 @@ func (recv *Node) ToC() unsafe.Pointer {
 		(C.gpointer)(recv.Data)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Node with another Node, and returns true if they represent the same GObject.
+func (recv *Node) Equals(other *Node) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // ChildIndex is a wrapper around the C function g_node_child_index.
@@ -1782,6 +1902,11 @@ func (recv *OptionContext) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this OptionContext with another OptionContext, and returns true if they represent the same GObject.
+func (recv *OptionContext) Equals(other *OptionContext) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // OptionEntry is a wrapper around the C record GOptionEntry.
 type OptionEntry struct {
 	native         *C.GOptionEntry
@@ -1833,6 +1958,11 @@ func (recv *OptionEntry) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this OptionEntry with another OptionEntry, and returns true if they represent the same GObject.
+func (recv *OptionEntry) Equals(other *OptionEntry) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // OptionGroup is a wrapper around the C record GOptionGroup.
 type OptionGroup struct {
 	native *C.GOptionGroup
@@ -1854,6 +1984,11 @@ func (recv *OptionGroup) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this OptionGroup with another OptionGroup, and returns true if they represent the same GObject.
+func (recv *OptionGroup) Equals(other *OptionGroup) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // PatternSpec is a wrapper around the C record GPatternSpec.
 type PatternSpec struct {
 	native *C.GPatternSpec
@@ -1873,6 +2008,11 @@ func PatternSpecNewFromC(u unsafe.Pointer) *PatternSpec {
 func (recv *PatternSpec) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this PatternSpec with another PatternSpec, and returns true if they represent the same GObject.
+func (recv *PatternSpec) Equals(other *PatternSpec) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Equal is a wrapper around the C function g_pattern_spec_equal.
@@ -1930,6 +2070,11 @@ func (recv *PollFD) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this PollFD with another PollFD, and returns true if they represent the same GObject.
+func (recv *PollFD) Equals(other *PollFD) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Private is a wrapper around the C record GPrivate.
 type Private struct {
 	native *C.GPrivate
@@ -1952,6 +2097,11 @@ func PrivateNewFromC(u unsafe.Pointer) *Private {
 func (recv *Private) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Private with another Private, and returns true if they represent the same GObject.
+func (recv *Private) Equals(other *Private) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Get is a wrapper around the C function g_private_get.
@@ -2000,6 +2150,11 @@ func (recv *Queue) ToC() unsafe.Pointer {
 		(C.guint)(recv.Length)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Queue with another Queue, and returns true if they represent the same GObject.
+func (recv *Queue) Equals(other *Queue) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Free is a wrapper around the C function g_queue_free.
@@ -2128,6 +2283,11 @@ func (recv *Rand) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Rand with another Rand, and returns true if they represent the same GObject.
+func (recv *Rand) Equals(other *Rand) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Double is a wrapper around the C function g_rand_double.
 func (recv *Rand) Double() float64 {
 	retC := C.g_rand_double((*C.GRand)(recv.native))
@@ -2212,6 +2372,11 @@ func (recv *SList) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this SList with another SList, and returns true if they represent the same GObject.
+func (recv *SList) Equals(other *SList) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Scanner is a wrapper around the C record GScanner.
 type Scanner struct {
 	native         *C.GScanner
@@ -2284,6 +2449,11 @@ func (recv *Scanner) ToC() unsafe.Pointer {
 		(C.guint)(recv.NextPosition)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Scanner with another Scanner, and returns true if they represent the same GObject.
+func (recv *Scanner) Equals(other *Scanner) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // CurLine is a wrapper around the C function g_scanner_cur_line.
@@ -2522,6 +2692,11 @@ func (recv *ScannerConfig) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ScannerConfig with another ScannerConfig, and returns true if they represent the same GObject.
+func (recv *ScannerConfig) Equals(other *ScannerConfig) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Sequence is a wrapper around the C record GSequence.
 type Sequence struct {
 	native *C.GSequence
@@ -2543,6 +2718,11 @@ func (recv *Sequence) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Sequence with another Sequence, and returns true if they represent the same GObject.
+func (recv *Sequence) Equals(other *Sequence) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // SequenceIter is a wrapper around the C record GSequenceIter.
 type SequenceIter struct {
 	native *C.GSequenceIter
@@ -2562,6 +2742,11 @@ func SequenceIterNewFromC(u unsafe.Pointer) *SequenceIter {
 func (recv *SequenceIter) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this SequenceIter with another SequenceIter, and returns true if they represent the same GObject.
+func (recv *SequenceIter) Equals(other *SequenceIter) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Source is a wrapper around the C record GSource.
@@ -2596,6 +2781,11 @@ func SourceNewFromC(u unsafe.Pointer) *Source {
 func (recv *Source) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Source with another Source, and returns true if they represent the same GObject.
+func (recv *Source) Equals(other *Source) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // SourceNew is a wrapper around the C function g_source_new.
@@ -2788,6 +2978,11 @@ func (recv *SourceCallbackFuncs) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this SourceCallbackFuncs with another SourceCallbackFuncs, and returns true if they represent the same GObject.
+func (recv *SourceCallbackFuncs) Equals(other *SourceCallbackFuncs) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // SourceFuncs is a wrapper around the C record GSourceFuncs.
 type SourceFuncs struct {
 	native *C.GSourceFuncs
@@ -2815,6 +3010,11 @@ func (recv *SourceFuncs) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this SourceFuncs with another SourceFuncs, and returns true if they represent the same GObject.
+func (recv *SourceFuncs) Equals(other *SourceFuncs) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // SourcePrivate is a wrapper around the C record GSourcePrivate.
 type SourcePrivate struct {
 	native *C.GSourcePrivate
@@ -2836,6 +3036,11 @@ func (recv *SourcePrivate) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this SourcePrivate with another SourcePrivate, and returns true if they represent the same GObject.
+func (recv *SourcePrivate) Equals(other *SourcePrivate) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // StatBuf is a wrapper around the C record GStatBuf.
 type StatBuf struct {
 	native *C.GStatBuf
@@ -2855,6 +3060,11 @@ func StatBufNewFromC(u unsafe.Pointer) *StatBuf {
 func (recv *StatBuf) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this StatBuf with another StatBuf, and returns true if they represent the same GObject.
+func (recv *StatBuf) Equals(other *StatBuf) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // String is a wrapper around the C record GString.
@@ -2890,6 +3100,11 @@ func (recv *String) ToC() unsafe.Pointer {
 		(C.gsize)(recv.AllocatedLen)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this String with another String, and returns true if they represent the same GObject.
+func (recv *String) Equals(other *String) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Append is a wrapper around the C function g_string_append.
@@ -3165,6 +3380,11 @@ func (recv *StringChunk) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this StringChunk with another StringChunk, and returns true if they represent the same GObject.
+func (recv *StringChunk) Equals(other *StringChunk) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Free is a wrapper around the C function g_string_chunk_free.
 func (recv *StringChunk) Free() {
 	C.g_string_chunk_free((*C.GStringChunk)(recv.native))
@@ -3217,6 +3437,11 @@ func (recv *TestCase) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TestCase with another TestCase, and returns true if they represent the same GObject.
+func (recv *TestCase) Equals(other *TestCase) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // TestConfig is a wrapper around the C record GTestConfig.
 type TestConfig struct {
 	native          *C.GTestConfig
@@ -3264,6 +3489,11 @@ func (recv *TestConfig) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TestConfig with another TestConfig, and returns true if they represent the same GObject.
+func (recv *TestConfig) Equals(other *TestConfig) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Blacklisted : GTestLogBuffer
 
 // Blacklisted : GTestLogMsg
@@ -3289,6 +3519,11 @@ func (recv *TestSuite) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TestSuite with another TestSuite, and returns true if they represent the same GObject.
+func (recv *TestSuite) Equals(other *TestSuite) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Thread is a wrapper around the C record GThread.
 type Thread struct {
 	native *C.GThread
@@ -3308,6 +3543,11 @@ func ThreadNewFromC(u unsafe.Pointer) *Thread {
 func (recv *Thread) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Thread with another Thread, and returns true if they represent the same GObject.
+func (recv *Thread) Equals(other *Thread) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Join is a wrapper around the C function g_thread_join.
@@ -3348,6 +3588,11 @@ func (recv *ThreadPool) ToC() unsafe.Pointer {
 		boolToGboolean(recv.Exclusive)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ThreadPool with another ThreadPool, and returns true if they represent the same GObject.
+func (recv *ThreadPool) Equals(other *ThreadPool) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Free is a wrapper around the C function g_thread_pool_free.
@@ -3452,6 +3697,11 @@ func (recv *TimeVal) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TimeVal with another TimeVal, and returns true if they represent the same GObject.
+func (recv *TimeVal) Equals(other *TimeVal) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Add is a wrapper around the C function g_time_val_add.
 func (recv *TimeVal) Add(microseconds int64) {
 	c_microseconds := (C.glong)(microseconds)
@@ -3480,6 +3730,11 @@ func TimerNewFromC(u unsafe.Pointer) *Timer {
 func (recv *Timer) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Timer with another Timer, and returns true if they represent the same GObject.
+func (recv *Timer) Equals(other *Timer) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Destroy is a wrapper around the C function g_timer_destroy.
@@ -3542,6 +3797,11 @@ func (recv *TrashStack) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this TrashStack with another TrashStack, and returns true if they represent the same GObject.
+func (recv *TrashStack) Equals(other *TrashStack) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Tree is a wrapper around the C record GTree.
 type Tree struct {
 	native *C.GTree
@@ -3561,6 +3821,11 @@ func TreeNewFromC(u unsafe.Pointer) *Tree {
 func (recv *Tree) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Tree with another Tree, and returns true if they represent the same GObject.
+func (recv *Tree) Equals(other *Tree) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Destroy is a wrapper around the C function g_tree_destroy.
@@ -3679,6 +3944,11 @@ func (recv *VariantBuilder) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this VariantBuilder with another VariantBuilder, and returns true if they represent the same GObject.
+func (recv *VariantBuilder) Equals(other *VariantBuilder) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // VariantIter is a wrapper around the C record GVariantIter.
 type VariantIter struct {
 	native *C.GVariantIter
@@ -3699,6 +3969,11 @@ func VariantIterNewFromC(u unsafe.Pointer) *VariantIter {
 func (recv *VariantIter) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this VariantIter with another VariantIter, and returns true if they represent the same GObject.
+func (recv *VariantIter) Equals(other *VariantIter) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Blacklisted : GVariantType

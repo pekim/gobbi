@@ -34,6 +34,11 @@ func (recv *Context) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Context with another Context, and returns true if they represent the same GObject.
+func (recv *Context) Equals(other *Context) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *Context) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -191,6 +196,11 @@ func (recv *EngineLang) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this EngineLang with another EngineLang, and returns true if they represent the same GObject.
+func (recv *EngineLang) Equals(other *EngineLang) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // CastToWidget down casts any arbitary Object to EngineLang.
 // Exercise care, as this is a potentially dangerous function if the Object is not a EngineLang.
 func CastToEngineLang(object *gobject.Object) *EngineLang {
@@ -219,6 +229,11 @@ func (recv *EngineShape) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this EngineShape with another EngineShape, and returns true if they represent the same GObject.
+func (recv *EngineShape) Equals(other *EngineShape) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // CastToWidget down casts any arbitary Object to EngineShape.
 // Exercise care, as this is a potentially dangerous function if the Object is not a EngineShape.
 func CastToEngineShape(object *gobject.Object) *EngineShape {
@@ -245,6 +260,11 @@ func FontNewFromC(u unsafe.Pointer) *Font {
 func (recv *Font) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Font with another Font, and returns true if they represent the same GObject.
+func (recv *Font) Equals(other *Font) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -335,6 +355,11 @@ func (recv *FontFace) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this FontFace with another FontFace, and returns true if they represent the same GObject.
+func (recv *FontFace) Equals(other *FontFace) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *FontFace) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -384,6 +409,11 @@ func (recv *FontFamily) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this FontFamily with another FontFamily, and returns true if they represent the same GObject.
+func (recv *FontFamily) Equals(other *FontFamily) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *FontFamily) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -425,6 +455,11 @@ func FontMapNewFromC(u unsafe.Pointer) *FontMap {
 func (recv *FontMap) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this FontMap with another FontMap, and returns true if they represent the same GObject.
+func (recv *FontMap) Equals(other *FontMap) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -513,6 +548,11 @@ func (recv *Fontset) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Fontset with another Fontset, and returns true if they represent the same GObject.
+func (recv *Fontset) Equals(other *Fontset) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *Fontset) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -557,6 +597,11 @@ func LayoutNewFromC(u unsafe.Pointer) *Layout {
 func (recv *Layout) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Layout with another Layout, and returns true if they represent the same GObject.
+func (recv *Layout) Equals(other *Layout) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object

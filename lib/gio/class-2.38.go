@@ -133,6 +133,11 @@ func (recv *PropertyAction) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this PropertyAction with another PropertyAction, and returns true if they represent the same GObject.
+func (recv *PropertyAction) Equals(other *PropertyAction) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *PropertyAction) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))

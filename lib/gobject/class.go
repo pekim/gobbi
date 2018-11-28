@@ -34,6 +34,11 @@ func (recv *InitiallyUnowned) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this InitiallyUnowned with another InitiallyUnowned, and returns true if they represent the same GObject.
+func (recv *InitiallyUnowned) Equals(other *InitiallyUnowned) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Object upcasts to *Object
 func (recv *InitiallyUnowned) Object() *Object {
 	return ObjectNewFromC(unsafe.Pointer(recv.native))
@@ -65,6 +70,11 @@ func ObjectNewFromC(u unsafe.Pointer) *Object {
 func (recv *Object) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Object with another Object, and returns true if they represent the same GObject.
+func (recv *Object) Equals(other *Object) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // CastToWidget down casts any arbitary Object to Object.

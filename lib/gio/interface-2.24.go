@@ -52,6 +52,11 @@ func (recv *Converter) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this Converter with another Converter, and returns true if they represent the same GObject.
+func (recv *Converter) Equals(other *Converter) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Convert is a wrapper around the C function g_converter_convert.
 func (recv *Converter) Convert(inbuf []uint8, outbuf []uint8, flags ConverterFlags) (ConverterResult, uint64, uint64, error) {
 	c_inbuf := &inbuf[0]

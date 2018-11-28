@@ -50,3 +50,8 @@ func (recv *EventGrabBroken) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Equals compares this EventGrabBroken with another EventGrabBroken, and returns true if they represent the same GObject.
+func (recv *EventGrabBroken) Equals(other *EventGrabBroken) bool {
+	return other.ToC() == recv.ToC()
+}

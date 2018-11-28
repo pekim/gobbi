@@ -38,6 +38,11 @@ func (recv *AttrFontFeatures) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this AttrFontFeatures with another AttrFontFeatures, and returns true if they represent the same GObject.
+func (recv *AttrFontFeatures) Equals(other *AttrFontFeatures) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // GetFontScaleFactors is a wrapper around the C function pango_matrix_get_font_scale_factors.
 func (recv *Matrix) GetFontScaleFactors() (float64, float64) {
 	var c_xscale C.double

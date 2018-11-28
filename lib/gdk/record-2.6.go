@@ -55,3 +55,8 @@ func (recv *EventOwnerChange) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
 }
+
+// Equals compares this EventOwnerChange with another EventOwnerChange, and returns true if they represent the same GObject.
+func (recv *EventOwnerChange) Equals(other *EventOwnerChange) bool {
+	return other.ToC() == recv.ToC()
+}

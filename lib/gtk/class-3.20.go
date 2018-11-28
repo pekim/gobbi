@@ -108,6 +108,11 @@ func (recv *FileChooserNative) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this FileChooserNative with another FileChooserNative, and returns true if they represent the same GObject.
+func (recv *FileChooserNative) Equals(other *FileChooserNative) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // NativeDialog upcasts to *NativeDialog
 func (recv *FileChooserNative) NativeDialog() *NativeDialog {
 	return NativeDialogNewFromC(unsafe.Pointer(recv.native))
@@ -204,6 +209,11 @@ func NativeDialogNewFromC(u unsafe.Pointer) *NativeDialog {
 func (recv *NativeDialog) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this NativeDialog with another NativeDialog, and returns true if they represent the same GObject.
+func (recv *NativeDialog) Equals(other *NativeDialog) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Object upcasts to *Object
@@ -334,6 +344,11 @@ func PadControllerNewFromC(u unsafe.Pointer) *PadController {
 func (recv *PadController) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this PadController with another PadController, and returns true if they represent the same GObject.
+func (recv *PadController) Equals(other *PadController) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // EventController upcasts to *EventController
@@ -520,6 +535,11 @@ func (recv *ShortcutLabel) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ShortcutLabel with another ShortcutLabel, and returns true if they represent the same GObject.
+func (recv *ShortcutLabel) Equals(other *ShortcutLabel) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Box upcasts to *Box
 func (recv *ShortcutLabel) Box() *Box {
 	return BoxNewFromC(unsafe.Pointer(recv.native))
@@ -572,6 +592,11 @@ func (recv *ShortcutsGroup) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ShortcutsGroup with another ShortcutsGroup, and returns true if they represent the same GObject.
+func (recv *ShortcutsGroup) Equals(other *ShortcutsGroup) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Box upcasts to *Box
 func (recv *ShortcutsGroup) Box() *Box {
 	return BoxNewFromC(unsafe.Pointer(recv.native))
@@ -622,6 +647,11 @@ func ShortcutsSectionNewFromC(u unsafe.Pointer) *ShortcutsSection {
 func (recv *ShortcutsSection) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ShortcutsSection with another ShortcutsSection, and returns true if they represent the same GObject.
+func (recv *ShortcutsSection) Equals(other *ShortcutsSection) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Box upcasts to *Box
@@ -738,6 +768,11 @@ func (recv *ShortcutsShortcut) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this ShortcutsShortcut with another ShortcutsShortcut, and returns true if they represent the same GObject.
+func (recv *ShortcutsShortcut) Equals(other *ShortcutsShortcut) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // Box upcasts to *Box
 func (recv *ShortcutsShortcut) Box() *Box {
 	return BoxNewFromC(unsafe.Pointer(recv.native))
@@ -789,6 +824,11 @@ func ShortcutsWindowNewFromC(u unsafe.Pointer) *ShortcutsWindow {
 func (recv *ShortcutsWindow) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this ShortcutsWindow with another ShortcutsWindow, and returns true if they represent the same GObject.
+func (recv *ShortcutsWindow) Equals(other *ShortcutsWindow) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // Window upcasts to *Window

@@ -47,6 +47,11 @@ func (recv *DatagramBasedInterface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this DatagramBasedInterface with another DatagramBasedInterface, and returns true if they represent the same GObject.
+func (recv *DatagramBasedInterface) Equals(other *DatagramBasedInterface) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // DtlsClientConnectionInterface is a wrapper around the C record GDtlsClientConnectionInterface.
 type DtlsClientConnectionInterface struct {
 	native *C.GDtlsClientConnectionInterface
@@ -67,6 +72,11 @@ func DtlsClientConnectionInterfaceNewFromC(u unsafe.Pointer) *DtlsClientConnecti
 func (recv *DtlsClientConnectionInterface) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this DtlsClientConnectionInterface with another DtlsClientConnectionInterface, and returns true if they represent the same GObject.
+func (recv *DtlsClientConnectionInterface) Equals(other *DtlsClientConnectionInterface) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // DtlsConnectionInterface is a wrapper around the C record GDtlsConnectionInterface.
@@ -98,6 +108,11 @@ func (recv *DtlsConnectionInterface) ToC() unsafe.Pointer {
 	return (unsafe.Pointer)(recv.native)
 }
 
+// Equals compares this DtlsConnectionInterface with another DtlsConnectionInterface, and returns true if they represent the same GObject.
+func (recv *DtlsConnectionInterface) Equals(other *DtlsConnectionInterface) bool {
+	return other.ToC() == recv.ToC()
+}
+
 // DtlsServerConnectionInterface is a wrapper around the C record GDtlsServerConnectionInterface.
 type DtlsServerConnectionInterface struct {
 	native *C.GDtlsServerConnectionInterface
@@ -118,6 +133,11 @@ func DtlsServerConnectionInterfaceNewFromC(u unsafe.Pointer) *DtlsServerConnecti
 func (recv *DtlsServerConnectionInterface) ToC() unsafe.Pointer {
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this DtlsServerConnectionInterface with another DtlsServerConnectionInterface, and returns true if they represent the same GObject.
+func (recv *DtlsServerConnectionInterface) Equals(other *DtlsServerConnectionInterface) bool {
+	return other.ToC() == recv.ToC()
 }
 
 // InputMessage is a wrapper around the C record GInputMessage.
@@ -157,4 +177,9 @@ func (recv *InputMessage) ToC() unsafe.Pointer {
 		(C.gint)(recv.Flags)
 
 	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this InputMessage with another InputMessage, and returns true if they represent the same GObject.
+func (recv *InputMessage) Equals(other *InputMessage) bool {
+	return other.ToC() == recv.ToC()
 }
