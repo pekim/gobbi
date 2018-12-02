@@ -708,7 +708,7 @@ type signalCancellableCancelledDetail struct {
 
 var signalCancellableCancelledId int
 var signalCancellableCancelledMap = make(map[int]signalCancellableCancelledDetail)
-var signalCancellableCancelledLock sync.Mutex
+var signalCancellableCancelledLock sync.RWMutex
 
 // CancellableSignalCancelledCallback is a callback function for a 'cancelled' signal emitted from a Cancellable.
 type CancellableSignalCancelledCallback func()
@@ -753,6 +753,9 @@ func (recv *Cancellable) DisconnectCancelled(connectionID int) {
 
 //export cancellable_cancelledHandler
 func cancellable_cancelledHandler(_ *C.GObject, data C.gpointer) {
+	signalCancellableCancelledLock.RLock()
+	defer signalCancellableCancelledLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalCancellableCancelledMap[index].callback
 	callback()
@@ -2977,7 +2980,7 @@ type signalFilenameCompleterGotCompletionDataDetail struct {
 
 var signalFilenameCompleterGotCompletionDataId int
 var signalFilenameCompleterGotCompletionDataMap = make(map[int]signalFilenameCompleterGotCompletionDataDetail)
-var signalFilenameCompleterGotCompletionDataLock sync.Mutex
+var signalFilenameCompleterGotCompletionDataLock sync.RWMutex
 
 // FilenameCompleterSignalGotCompletionDataCallback is a callback function for a 'got-completion-data' signal emitted from a FilenameCompleter.
 type FilenameCompleterSignalGotCompletionDataCallback func()
@@ -3022,6 +3025,9 @@ func (recv *FilenameCompleter) DisconnectGotCompletionData(connectionID int) {
 
 //export filenamecompleter_gotCompletionDataHandler
 func filenamecompleter_gotCompletionDataHandler(_ *C.GObject, data C.gpointer) {
+	signalFilenameCompleterGotCompletionDataLock.RLock()
+	defer signalFilenameCompleterGotCompletionDataLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalFilenameCompleterGotCompletionDataMap[index].callback
 	callback()
@@ -4507,7 +4513,7 @@ type signalResolverReloadDetail struct {
 
 var signalResolverReloadId int
 var signalResolverReloadMap = make(map[int]signalResolverReloadDetail)
-var signalResolverReloadLock sync.Mutex
+var signalResolverReloadLock sync.RWMutex
 
 // ResolverSignalReloadCallback is a callback function for a 'reload' signal emitted from a Resolver.
 type ResolverSignalReloadCallback func()
@@ -4552,6 +4558,9 @@ func (recv *Resolver) DisconnectReload(connectionID int) {
 
 //export resolver_reloadHandler
 func resolver_reloadHandler(_ *C.GObject, data C.gpointer) {
+	signalResolverReloadLock.RLock()
+	defer signalResolverReloadLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalResolverReloadMap[index].callback
 	callback()
@@ -4605,7 +4614,7 @@ type signalSettingsChangedDetail struct {
 
 var signalSettingsChangedId int
 var signalSettingsChangedMap = make(map[int]signalSettingsChangedDetail)
-var signalSettingsChangedLock sync.Mutex
+var signalSettingsChangedLock sync.RWMutex
 
 // SettingsSignalChangedCallback is a callback function for a 'changed' signal emitted from a Settings.
 type SettingsSignalChangedCallback func(key string)
@@ -4650,6 +4659,9 @@ func (recv *Settings) DisconnectChanged(connectionID int) {
 
 //export settings_changedHandler
 func settings_changedHandler(_ *C.GObject, c_key *C.gchar, data C.gpointer) {
+	signalSettingsChangedLock.RLock()
+	defer signalSettingsChangedLock.RUnlock()
+
 	key := C.GoString(c_key)
 
 	index := int(uintptr(data))
@@ -4664,7 +4676,7 @@ type signalSettingsWritableChangeEventDetail struct {
 
 var signalSettingsWritableChangeEventId int
 var signalSettingsWritableChangeEventMap = make(map[int]signalSettingsWritableChangeEventDetail)
-var signalSettingsWritableChangeEventLock sync.Mutex
+var signalSettingsWritableChangeEventLock sync.RWMutex
 
 // SettingsSignalWritableChangeEventCallback is a callback function for a 'writable-change-event' signal emitted from a Settings.
 type SettingsSignalWritableChangeEventCallback func(key uint32) bool
@@ -4709,6 +4721,9 @@ func (recv *Settings) DisconnectWritableChangeEvent(connectionID int) {
 
 //export settings_writableChangeEventHandler
 func settings_writableChangeEventHandler(_ *C.GObject, c_key C.guint, data C.gpointer) C.gboolean {
+	signalSettingsWritableChangeEventLock.RLock()
+	defer signalSettingsWritableChangeEventLock.RUnlock()
+
 	key := uint32(c_key)
 
 	index := int(uintptr(data))
@@ -4726,7 +4741,7 @@ type signalSettingsWritableChangedDetail struct {
 
 var signalSettingsWritableChangedId int
 var signalSettingsWritableChangedMap = make(map[int]signalSettingsWritableChangedDetail)
-var signalSettingsWritableChangedLock sync.Mutex
+var signalSettingsWritableChangedLock sync.RWMutex
 
 // SettingsSignalWritableChangedCallback is a callback function for a 'writable-changed' signal emitted from a Settings.
 type SettingsSignalWritableChangedCallback func(key string)
@@ -4771,6 +4786,9 @@ func (recv *Settings) DisconnectWritableChanged(connectionID int) {
 
 //export settings_writableChangedHandler
 func settings_writableChangedHandler(_ *C.GObject, c_key *C.gchar, data C.gpointer) {
+	signalSettingsWritableChangedLock.RLock()
+	defer signalSettingsWritableChangedLock.RUnlock()
+
 	key := C.GoString(c_key)
 
 	index := int(uintptr(data))
@@ -5743,7 +5761,7 @@ type signalUnixMountMonitorMountpointsChangedDetail struct {
 
 var signalUnixMountMonitorMountpointsChangedId int
 var signalUnixMountMonitorMountpointsChangedMap = make(map[int]signalUnixMountMonitorMountpointsChangedDetail)
-var signalUnixMountMonitorMountpointsChangedLock sync.Mutex
+var signalUnixMountMonitorMountpointsChangedLock sync.RWMutex
 
 // UnixMountMonitorSignalMountpointsChangedCallback is a callback function for a 'mountpoints-changed' signal emitted from a UnixMountMonitor.
 type UnixMountMonitorSignalMountpointsChangedCallback func()
@@ -5788,6 +5806,9 @@ func (recv *UnixMountMonitor) DisconnectMountpointsChanged(connectionID int) {
 
 //export unixmountmonitor_mountpointsChangedHandler
 func unixmountmonitor_mountpointsChangedHandler(_ *C.GObject, data C.gpointer) {
+	signalUnixMountMonitorMountpointsChangedLock.RLock()
+	defer signalUnixMountMonitorMountpointsChangedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalUnixMountMonitorMountpointsChangedMap[index].callback
 	callback()
@@ -5800,7 +5821,7 @@ type signalUnixMountMonitorMountsChangedDetail struct {
 
 var signalUnixMountMonitorMountsChangedId int
 var signalUnixMountMonitorMountsChangedMap = make(map[int]signalUnixMountMonitorMountsChangedDetail)
-var signalUnixMountMonitorMountsChangedLock sync.Mutex
+var signalUnixMountMonitorMountsChangedLock sync.RWMutex
 
 // UnixMountMonitorSignalMountsChangedCallback is a callback function for a 'mounts-changed' signal emitted from a UnixMountMonitor.
 type UnixMountMonitorSignalMountsChangedCallback func()
@@ -5845,6 +5866,9 @@ func (recv *UnixMountMonitor) DisconnectMountsChanged(connectionID int) {
 
 //export unixmountmonitor_mountsChangedHandler
 func unixmountmonitor_mountsChangedHandler(_ *C.GObject, data C.gpointer) {
+	signalUnixMountMonitorMountsChangedLock.RLock()
+	defer signalUnixMountMonitorMountsChangedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalUnixMountMonitorMountsChangedMap[index].callback
 	callback()
@@ -6113,7 +6137,7 @@ type signalVolumeMonitorDriveChangedDetail struct {
 
 var signalVolumeMonitorDriveChangedId int
 var signalVolumeMonitorDriveChangedMap = make(map[int]signalVolumeMonitorDriveChangedDetail)
-var signalVolumeMonitorDriveChangedLock sync.Mutex
+var signalVolumeMonitorDriveChangedLock sync.RWMutex
 
 // VolumeMonitorSignalDriveChangedCallback is a callback function for a 'drive-changed' signal emitted from a VolumeMonitor.
 type VolumeMonitorSignalDriveChangedCallback func(drive *Drive)
@@ -6158,6 +6182,9 @@ func (recv *VolumeMonitor) DisconnectDriveChanged(connectionID int) {
 
 //export volumemonitor_driveChangedHandler
 func volumemonitor_driveChangedHandler(_ *C.GObject, c_drive *C.GDrive, data C.gpointer) {
+	signalVolumeMonitorDriveChangedLock.RLock()
+	defer signalVolumeMonitorDriveChangedLock.RUnlock()
+
 	drive := DriveNewFromC(unsafe.Pointer(c_drive))
 
 	index := int(uintptr(data))
@@ -6172,7 +6199,7 @@ type signalVolumeMonitorDriveConnectedDetail struct {
 
 var signalVolumeMonitorDriveConnectedId int
 var signalVolumeMonitorDriveConnectedMap = make(map[int]signalVolumeMonitorDriveConnectedDetail)
-var signalVolumeMonitorDriveConnectedLock sync.Mutex
+var signalVolumeMonitorDriveConnectedLock sync.RWMutex
 
 // VolumeMonitorSignalDriveConnectedCallback is a callback function for a 'drive-connected' signal emitted from a VolumeMonitor.
 type VolumeMonitorSignalDriveConnectedCallback func(drive *Drive)
@@ -6217,6 +6244,9 @@ func (recv *VolumeMonitor) DisconnectDriveConnected(connectionID int) {
 
 //export volumemonitor_driveConnectedHandler
 func volumemonitor_driveConnectedHandler(_ *C.GObject, c_drive *C.GDrive, data C.gpointer) {
+	signalVolumeMonitorDriveConnectedLock.RLock()
+	defer signalVolumeMonitorDriveConnectedLock.RUnlock()
+
 	drive := DriveNewFromC(unsafe.Pointer(c_drive))
 
 	index := int(uintptr(data))
@@ -6231,7 +6261,7 @@ type signalVolumeMonitorDriveDisconnectedDetail struct {
 
 var signalVolumeMonitorDriveDisconnectedId int
 var signalVolumeMonitorDriveDisconnectedMap = make(map[int]signalVolumeMonitorDriveDisconnectedDetail)
-var signalVolumeMonitorDriveDisconnectedLock sync.Mutex
+var signalVolumeMonitorDriveDisconnectedLock sync.RWMutex
 
 // VolumeMonitorSignalDriveDisconnectedCallback is a callback function for a 'drive-disconnected' signal emitted from a VolumeMonitor.
 type VolumeMonitorSignalDriveDisconnectedCallback func(drive *Drive)
@@ -6276,6 +6306,9 @@ func (recv *VolumeMonitor) DisconnectDriveDisconnected(connectionID int) {
 
 //export volumemonitor_driveDisconnectedHandler
 func volumemonitor_driveDisconnectedHandler(_ *C.GObject, c_drive *C.GDrive, data C.gpointer) {
+	signalVolumeMonitorDriveDisconnectedLock.RLock()
+	defer signalVolumeMonitorDriveDisconnectedLock.RUnlock()
+
 	drive := DriveNewFromC(unsafe.Pointer(c_drive))
 
 	index := int(uintptr(data))
@@ -6290,7 +6323,7 @@ type signalVolumeMonitorMountAddedDetail struct {
 
 var signalVolumeMonitorMountAddedId int
 var signalVolumeMonitorMountAddedMap = make(map[int]signalVolumeMonitorMountAddedDetail)
-var signalVolumeMonitorMountAddedLock sync.Mutex
+var signalVolumeMonitorMountAddedLock sync.RWMutex
 
 // VolumeMonitorSignalMountAddedCallback is a callback function for a 'mount-added' signal emitted from a VolumeMonitor.
 type VolumeMonitorSignalMountAddedCallback func(mount *Mount)
@@ -6335,6 +6368,9 @@ func (recv *VolumeMonitor) DisconnectMountAdded(connectionID int) {
 
 //export volumemonitor_mountAddedHandler
 func volumemonitor_mountAddedHandler(_ *C.GObject, c_mount *C.GMount, data C.gpointer) {
+	signalVolumeMonitorMountAddedLock.RLock()
+	defer signalVolumeMonitorMountAddedLock.RUnlock()
+
 	mount := MountNewFromC(unsafe.Pointer(c_mount))
 
 	index := int(uintptr(data))
@@ -6349,7 +6385,7 @@ type signalVolumeMonitorMountChangedDetail struct {
 
 var signalVolumeMonitorMountChangedId int
 var signalVolumeMonitorMountChangedMap = make(map[int]signalVolumeMonitorMountChangedDetail)
-var signalVolumeMonitorMountChangedLock sync.Mutex
+var signalVolumeMonitorMountChangedLock sync.RWMutex
 
 // VolumeMonitorSignalMountChangedCallback is a callback function for a 'mount-changed' signal emitted from a VolumeMonitor.
 type VolumeMonitorSignalMountChangedCallback func(mount *Mount)
@@ -6394,6 +6430,9 @@ func (recv *VolumeMonitor) DisconnectMountChanged(connectionID int) {
 
 //export volumemonitor_mountChangedHandler
 func volumemonitor_mountChangedHandler(_ *C.GObject, c_mount *C.GMount, data C.gpointer) {
+	signalVolumeMonitorMountChangedLock.RLock()
+	defer signalVolumeMonitorMountChangedLock.RUnlock()
+
 	mount := MountNewFromC(unsafe.Pointer(c_mount))
 
 	index := int(uintptr(data))
@@ -6408,7 +6447,7 @@ type signalVolumeMonitorMountPreUnmountDetail struct {
 
 var signalVolumeMonitorMountPreUnmountId int
 var signalVolumeMonitorMountPreUnmountMap = make(map[int]signalVolumeMonitorMountPreUnmountDetail)
-var signalVolumeMonitorMountPreUnmountLock sync.Mutex
+var signalVolumeMonitorMountPreUnmountLock sync.RWMutex
 
 // VolumeMonitorSignalMountPreUnmountCallback is a callback function for a 'mount-pre-unmount' signal emitted from a VolumeMonitor.
 type VolumeMonitorSignalMountPreUnmountCallback func(mount *Mount)
@@ -6453,6 +6492,9 @@ func (recv *VolumeMonitor) DisconnectMountPreUnmount(connectionID int) {
 
 //export volumemonitor_mountPreUnmountHandler
 func volumemonitor_mountPreUnmountHandler(_ *C.GObject, c_mount *C.GMount, data C.gpointer) {
+	signalVolumeMonitorMountPreUnmountLock.RLock()
+	defer signalVolumeMonitorMountPreUnmountLock.RUnlock()
+
 	mount := MountNewFromC(unsafe.Pointer(c_mount))
 
 	index := int(uintptr(data))
@@ -6467,7 +6509,7 @@ type signalVolumeMonitorMountRemovedDetail struct {
 
 var signalVolumeMonitorMountRemovedId int
 var signalVolumeMonitorMountRemovedMap = make(map[int]signalVolumeMonitorMountRemovedDetail)
-var signalVolumeMonitorMountRemovedLock sync.Mutex
+var signalVolumeMonitorMountRemovedLock sync.RWMutex
 
 // VolumeMonitorSignalMountRemovedCallback is a callback function for a 'mount-removed' signal emitted from a VolumeMonitor.
 type VolumeMonitorSignalMountRemovedCallback func(mount *Mount)
@@ -6512,6 +6554,9 @@ func (recv *VolumeMonitor) DisconnectMountRemoved(connectionID int) {
 
 //export volumemonitor_mountRemovedHandler
 func volumemonitor_mountRemovedHandler(_ *C.GObject, c_mount *C.GMount, data C.gpointer) {
+	signalVolumeMonitorMountRemovedLock.RLock()
+	defer signalVolumeMonitorMountRemovedLock.RUnlock()
+
 	mount := MountNewFromC(unsafe.Pointer(c_mount))
 
 	index := int(uintptr(data))
@@ -6526,7 +6571,7 @@ type signalVolumeMonitorVolumeAddedDetail struct {
 
 var signalVolumeMonitorVolumeAddedId int
 var signalVolumeMonitorVolumeAddedMap = make(map[int]signalVolumeMonitorVolumeAddedDetail)
-var signalVolumeMonitorVolumeAddedLock sync.Mutex
+var signalVolumeMonitorVolumeAddedLock sync.RWMutex
 
 // VolumeMonitorSignalVolumeAddedCallback is a callback function for a 'volume-added' signal emitted from a VolumeMonitor.
 type VolumeMonitorSignalVolumeAddedCallback func(volume *Volume)
@@ -6571,6 +6616,9 @@ func (recv *VolumeMonitor) DisconnectVolumeAdded(connectionID int) {
 
 //export volumemonitor_volumeAddedHandler
 func volumemonitor_volumeAddedHandler(_ *C.GObject, c_volume *C.GVolume, data C.gpointer) {
+	signalVolumeMonitorVolumeAddedLock.RLock()
+	defer signalVolumeMonitorVolumeAddedLock.RUnlock()
+
 	volume := VolumeNewFromC(unsafe.Pointer(c_volume))
 
 	index := int(uintptr(data))
@@ -6585,7 +6633,7 @@ type signalVolumeMonitorVolumeChangedDetail struct {
 
 var signalVolumeMonitorVolumeChangedId int
 var signalVolumeMonitorVolumeChangedMap = make(map[int]signalVolumeMonitorVolumeChangedDetail)
-var signalVolumeMonitorVolumeChangedLock sync.Mutex
+var signalVolumeMonitorVolumeChangedLock sync.RWMutex
 
 // VolumeMonitorSignalVolumeChangedCallback is a callback function for a 'volume-changed' signal emitted from a VolumeMonitor.
 type VolumeMonitorSignalVolumeChangedCallback func(volume *Volume)
@@ -6630,6 +6678,9 @@ func (recv *VolumeMonitor) DisconnectVolumeChanged(connectionID int) {
 
 //export volumemonitor_volumeChangedHandler
 func volumemonitor_volumeChangedHandler(_ *C.GObject, c_volume *C.GVolume, data C.gpointer) {
+	signalVolumeMonitorVolumeChangedLock.RLock()
+	defer signalVolumeMonitorVolumeChangedLock.RUnlock()
+
 	volume := VolumeNewFromC(unsafe.Pointer(c_volume))
 
 	index := int(uintptr(data))
@@ -6644,7 +6695,7 @@ type signalVolumeMonitorVolumeRemovedDetail struct {
 
 var signalVolumeMonitorVolumeRemovedId int
 var signalVolumeMonitorVolumeRemovedMap = make(map[int]signalVolumeMonitorVolumeRemovedDetail)
-var signalVolumeMonitorVolumeRemovedLock sync.Mutex
+var signalVolumeMonitorVolumeRemovedLock sync.RWMutex
 
 // VolumeMonitorSignalVolumeRemovedCallback is a callback function for a 'volume-removed' signal emitted from a VolumeMonitor.
 type VolumeMonitorSignalVolumeRemovedCallback func(volume *Volume)
@@ -6689,6 +6740,9 @@ func (recv *VolumeMonitor) DisconnectVolumeRemoved(connectionID int) {
 
 //export volumemonitor_volumeRemovedHandler
 func volumemonitor_volumeRemovedHandler(_ *C.GObject, c_volume *C.GVolume, data C.gpointer) {
+	signalVolumeMonitorVolumeRemovedLock.RLock()
+	defer signalVolumeMonitorVolumeRemovedLock.RUnlock()
+
 	volume := VolumeNewFromC(unsafe.Pointer(c_volume))
 
 	index := int(uintptr(data))

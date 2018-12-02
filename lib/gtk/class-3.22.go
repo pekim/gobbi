@@ -57,7 +57,7 @@ type signalMenuPoppedUpDetail struct {
 
 var signalMenuPoppedUpId int
 var signalMenuPoppedUpMap = make(map[int]signalMenuPoppedUpDetail)
-var signalMenuPoppedUpLock sync.Mutex
+var signalMenuPoppedUpLock sync.RWMutex
 
 // MenuSignalPoppedUpCallback is a callback function for a 'popped-up' signal emitted from a Menu.
 type MenuSignalPoppedUpCallback func(flippedRect uintptr, finalRect uintptr, flippedX bool, flippedY bool)
@@ -102,6 +102,9 @@ func (recv *Menu) DisconnectPoppedUp(connectionID int) {
 
 //export menu_poppedUpHandler
 func menu_poppedUpHandler(_ *C.GObject, c_flipped_rect C.gpointer, c_final_rect C.gpointer, c_flipped_x C.gboolean, c_flipped_y C.gboolean, data C.gpointer) {
+	signalMenuPoppedUpLock.RLock()
+	defer signalMenuPoppedUpLock.RUnlock()
+
 	flippedRect := uintptr(c_flipped_rect)
 
 	finalRect := uintptr(c_final_rect)

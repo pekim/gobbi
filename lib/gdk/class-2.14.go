@@ -99,7 +99,7 @@ type signalScreenMonitorsChangedDetail struct {
 
 var signalScreenMonitorsChangedId int
 var signalScreenMonitorsChangedMap = make(map[int]signalScreenMonitorsChangedDetail)
-var signalScreenMonitorsChangedLock sync.Mutex
+var signalScreenMonitorsChangedLock sync.RWMutex
 
 // ScreenSignalMonitorsChangedCallback is a callback function for a 'monitors-changed' signal emitted from a Screen.
 type ScreenSignalMonitorsChangedCallback func()
@@ -144,6 +144,9 @@ func (recv *Screen) DisconnectMonitorsChanged(connectionID int) {
 
 //export screen_monitorsChangedHandler
 func screen_monitorsChangedHandler(_ *C.GObject, data C.gpointer) {
+	signalScreenMonitorsChangedLock.RLock()
+	defer signalScreenMonitorsChangedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalScreenMonitorsChangedMap[index].callback
 	callback()

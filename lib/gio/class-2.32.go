@@ -896,7 +896,7 @@ type signalMenuModelItemsChangedDetail struct {
 
 var signalMenuModelItemsChangedId int
 var signalMenuModelItemsChangedMap = make(map[int]signalMenuModelItemsChangedDetail)
-var signalMenuModelItemsChangedLock sync.Mutex
+var signalMenuModelItemsChangedLock sync.RWMutex
 
 // MenuModelSignalItemsChangedCallback is a callback function for a 'items-changed' signal emitted from a MenuModel.
 type MenuModelSignalItemsChangedCallback func(position int32, removed int32, added int32)
@@ -941,6 +941,9 @@ func (recv *MenuModel) DisconnectItemsChanged(connectionID int) {
 
 //export menumodel_itemsChangedHandler
 func menumodel_itemsChangedHandler(_ *C.GObject, c_position C.gint, c_removed C.gint, c_added C.gint, data C.gpointer) {
+	signalMenuModelItemsChangedLock.RLock()
+	defer signalMenuModelItemsChangedLock.RUnlock()
+
 	position := int32(c_position)
 
 	removed := int32(c_removed)

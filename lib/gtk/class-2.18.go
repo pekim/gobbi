@@ -225,7 +225,7 @@ type signalEntryBufferDeletedTextDetail struct {
 
 var signalEntryBufferDeletedTextId int
 var signalEntryBufferDeletedTextMap = make(map[int]signalEntryBufferDeletedTextDetail)
-var signalEntryBufferDeletedTextLock sync.Mutex
+var signalEntryBufferDeletedTextLock sync.RWMutex
 
 // EntryBufferSignalDeletedTextCallback is a callback function for a 'deleted-text' signal emitted from a EntryBuffer.
 type EntryBufferSignalDeletedTextCallback func(position uint32, nChars uint32)
@@ -270,6 +270,9 @@ func (recv *EntryBuffer) DisconnectDeletedText(connectionID int) {
 
 //export entrybuffer_deletedTextHandler
 func entrybuffer_deletedTextHandler(_ *C.GObject, c_position C.guint, c_n_chars C.guint, data C.gpointer) {
+	signalEntryBufferDeletedTextLock.RLock()
+	defer signalEntryBufferDeletedTextLock.RUnlock()
+
 	position := uint32(c_position)
 
 	nChars := uint32(c_n_chars)
@@ -286,7 +289,7 @@ type signalEntryBufferInsertedTextDetail struct {
 
 var signalEntryBufferInsertedTextId int
 var signalEntryBufferInsertedTextMap = make(map[int]signalEntryBufferInsertedTextDetail)
-var signalEntryBufferInsertedTextLock sync.Mutex
+var signalEntryBufferInsertedTextLock sync.RWMutex
 
 // EntryBufferSignalInsertedTextCallback is a callback function for a 'inserted-text' signal emitted from a EntryBuffer.
 type EntryBufferSignalInsertedTextCallback func(position uint32, chars string, nChars uint32)
@@ -331,6 +334,9 @@ func (recv *EntryBuffer) DisconnectInsertedText(connectionID int) {
 
 //export entrybuffer_insertedTextHandler
 func entrybuffer_insertedTextHandler(_ *C.GObject, c_position C.guint, c_chars *C.gchar, c_n_chars C.guint, data C.gpointer) {
+	signalEntryBufferInsertedTextLock.RLock()
+	defer signalEntryBufferInsertedTextLock.RUnlock()
+
 	position := uint32(c_position)
 
 	chars := C.GoString(c_chars)
@@ -484,7 +490,7 @@ type signalInfoBarCloseDetail struct {
 
 var signalInfoBarCloseId int
 var signalInfoBarCloseMap = make(map[int]signalInfoBarCloseDetail)
-var signalInfoBarCloseLock sync.Mutex
+var signalInfoBarCloseLock sync.RWMutex
 
 // InfoBarSignalCloseCallback is a callback function for a 'close' signal emitted from a InfoBar.
 type InfoBarSignalCloseCallback func()
@@ -529,6 +535,9 @@ func (recv *InfoBar) DisconnectClose(connectionID int) {
 
 //export infobar_closeHandler
 func infobar_closeHandler(_ *C.GObject, data C.gpointer) {
+	signalInfoBarCloseLock.RLock()
+	defer signalInfoBarCloseLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalInfoBarCloseMap[index].callback
 	callback()
@@ -541,7 +550,7 @@ type signalInfoBarResponseDetail struct {
 
 var signalInfoBarResponseId int
 var signalInfoBarResponseMap = make(map[int]signalInfoBarResponseDetail)
-var signalInfoBarResponseLock sync.Mutex
+var signalInfoBarResponseLock sync.RWMutex
 
 // InfoBarSignalResponseCallback is a callback function for a 'response' signal emitted from a InfoBar.
 type InfoBarSignalResponseCallback func(responseId int32)
@@ -586,6 +595,9 @@ func (recv *InfoBar) DisconnectResponse(connectionID int) {
 
 //export infobar_responseHandler
 func infobar_responseHandler(_ *C.GObject, c_response_id C.gint, data C.gpointer) {
+	signalInfoBarResponseLock.RLock()
+	defer signalInfoBarResponseLock.RUnlock()
+
 	responseId := int32(c_response_id)
 
 	index := int(uintptr(data))
@@ -700,7 +712,7 @@ type signalLabelActivateCurrentLinkDetail struct {
 
 var signalLabelActivateCurrentLinkId int
 var signalLabelActivateCurrentLinkMap = make(map[int]signalLabelActivateCurrentLinkDetail)
-var signalLabelActivateCurrentLinkLock sync.Mutex
+var signalLabelActivateCurrentLinkLock sync.RWMutex
 
 // LabelSignalActivateCurrentLinkCallback is a callback function for a 'activate-current-link' signal emitted from a Label.
 type LabelSignalActivateCurrentLinkCallback func()
@@ -745,6 +757,9 @@ func (recv *Label) DisconnectActivateCurrentLink(connectionID int) {
 
 //export label_activateCurrentLinkHandler
 func label_activateCurrentLinkHandler(_ *C.GObject, data C.gpointer) {
+	signalLabelActivateCurrentLinkLock.RLock()
+	defer signalLabelActivateCurrentLinkLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalLabelActivateCurrentLinkMap[index].callback
 	callback()
@@ -757,7 +772,7 @@ type signalLabelActivateLinkDetail struct {
 
 var signalLabelActivateLinkId int
 var signalLabelActivateLinkMap = make(map[int]signalLabelActivateLinkDetail)
-var signalLabelActivateLinkLock sync.Mutex
+var signalLabelActivateLinkLock sync.RWMutex
 
 // LabelSignalActivateLinkCallback is a callback function for a 'activate-link' signal emitted from a Label.
 type LabelSignalActivateLinkCallback func(uri string) bool
@@ -802,6 +817,9 @@ func (recv *Label) DisconnectActivateLink(connectionID int) {
 
 //export label_activateLinkHandler
 func label_activateLinkHandler(_ *C.GObject, c_uri *C.gchar, data C.gpointer) C.gboolean {
+	signalLabelActivateLinkLock.RLock()
+	defer signalLabelActivateLinkLock.RUnlock()
+
 	uri := C.GoString(c_uri)
 
 	index := int(uintptr(data))
@@ -863,7 +881,7 @@ type signalPrintOperationUpdateCustomWidgetDetail struct {
 
 var signalPrintOperationUpdateCustomWidgetId int
 var signalPrintOperationUpdateCustomWidgetMap = make(map[int]signalPrintOperationUpdateCustomWidgetDetail)
-var signalPrintOperationUpdateCustomWidgetLock sync.Mutex
+var signalPrintOperationUpdateCustomWidgetLock sync.RWMutex
 
 // PrintOperationSignalUpdateCustomWidgetCallback is a callback function for a 'update-custom-widget' signal emitted from a PrintOperation.
 type PrintOperationSignalUpdateCustomWidgetCallback func(widget *Widget, setup *PageSetup, settings *PrintSettings)
@@ -908,6 +926,9 @@ func (recv *PrintOperation) DisconnectUpdateCustomWidget(connectionID int) {
 
 //export printoperation_updateCustomWidgetHandler
 func printoperation_updateCustomWidgetHandler(_ *C.GObject, c_widget *C.GtkWidget, c_setup *C.GtkPageSetup, c_settings *C.GtkPrintSettings, data C.gpointer) {
+	signalPrintOperationUpdateCustomWidgetLock.RLock()
+	defer signalPrintOperationUpdateCustomWidgetLock.RUnlock()
+
 	widget := WidgetNewFromC(unsafe.Pointer(c_widget))
 
 	setup := PageSetupNewFromC(unsafe.Pointer(c_setup))

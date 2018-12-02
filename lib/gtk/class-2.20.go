@@ -86,7 +86,7 @@ type signalEntryPreeditChangedDetail struct {
 
 var signalEntryPreeditChangedId int
 var signalEntryPreeditChangedMap = make(map[int]signalEntryPreeditChangedDetail)
-var signalEntryPreeditChangedLock sync.Mutex
+var signalEntryPreeditChangedLock sync.RWMutex
 
 // EntrySignalPreeditChangedCallback is a callback function for a 'preedit-changed' signal emitted from a Entry.
 type EntrySignalPreeditChangedCallback func(preedit string)
@@ -131,6 +131,9 @@ func (recv *Entry) DisconnectPreeditChanged(connectionID int) {
 
 //export entry_preeditChangedHandler
 func entry_preeditChangedHandler(_ *C.GObject, c_preedit *C.gchar, data C.gpointer) {
+	signalEntryPreeditChangedLock.RLock()
+	defer signalEntryPreeditChangedLock.RUnlock()
+
 	preedit := C.GoString(c_preedit)
 
 	index := int(uintptr(data))
@@ -332,7 +335,7 @@ type signalTextViewPreeditChangedDetail struct {
 
 var signalTextViewPreeditChangedId int
 var signalTextViewPreeditChangedMap = make(map[int]signalTextViewPreeditChangedDetail)
-var signalTextViewPreeditChangedLock sync.Mutex
+var signalTextViewPreeditChangedLock sync.RWMutex
 
 // TextViewSignalPreeditChangedCallback is a callback function for a 'preedit-changed' signal emitted from a TextView.
 type TextViewSignalPreeditChangedCallback func(preedit string)
@@ -377,6 +380,9 @@ func (recv *TextView) DisconnectPreeditChanged(connectionID int) {
 
 //export textview_preeditChangedHandler
 func textview_preeditChangedHandler(_ *C.GObject, c_preedit *C.gchar, data C.gpointer) {
+	signalTextViewPreeditChangedLock.RLock()
+	defer signalTextViewPreeditChangedLock.RUnlock()
+
 	preedit := C.GoString(c_preedit)
 
 	index := int(uintptr(data))

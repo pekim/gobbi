@@ -47,7 +47,7 @@ type signalScreenCompositedChangedDetail struct {
 
 var signalScreenCompositedChangedId int
 var signalScreenCompositedChangedMap = make(map[int]signalScreenCompositedChangedDetail)
-var signalScreenCompositedChangedLock sync.Mutex
+var signalScreenCompositedChangedLock sync.RWMutex
 
 // ScreenSignalCompositedChangedCallback is a callback function for a 'composited-changed' signal emitted from a Screen.
 type ScreenSignalCompositedChangedCallback func()
@@ -92,6 +92,9 @@ func (recv *Screen) DisconnectCompositedChanged(connectionID int) {
 
 //export screen_compositedChangedHandler
 func screen_compositedChangedHandler(_ *C.GObject, data C.gpointer) {
+	signalScreenCompositedChangedLock.RLock()
+	defer signalScreenCompositedChangedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalScreenCompositedChangedMap[index].callback
 	callback()

@@ -374,7 +374,7 @@ type signalPlacesSidebarMountDetail struct {
 
 var signalPlacesSidebarMountId int
 var signalPlacesSidebarMountMap = make(map[int]signalPlacesSidebarMountDetail)
-var signalPlacesSidebarMountLock sync.Mutex
+var signalPlacesSidebarMountLock sync.RWMutex
 
 // PlacesSidebarSignalMountCallback is a callback function for a 'mount' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalMountCallback func(mountOperation *gio.MountOperation)
@@ -419,6 +419,9 @@ func (recv *PlacesSidebar) DisconnectMount(connectionID int) {
 
 //export placessidebar_mountHandler
 func placessidebar_mountHandler(_ *C.GObject, c_mount_operation *C.GMountOperation, data C.gpointer) {
+	signalPlacesSidebarMountLock.RLock()
+	defer signalPlacesSidebarMountLock.RUnlock()
+
 	mountOperation := gio.MountOperationNewFromC(unsafe.Pointer(c_mount_operation))
 
 	index := int(uintptr(data))
@@ -435,7 +438,7 @@ type signalPlacesSidebarUnmountDetail struct {
 
 var signalPlacesSidebarUnmountId int
 var signalPlacesSidebarUnmountMap = make(map[int]signalPlacesSidebarUnmountDetail)
-var signalPlacesSidebarUnmountLock sync.Mutex
+var signalPlacesSidebarUnmountLock sync.RWMutex
 
 // PlacesSidebarSignalUnmountCallback is a callback function for a 'unmount' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalUnmountCallback func(mountOperation *gio.MountOperation)
@@ -480,6 +483,9 @@ func (recv *PlacesSidebar) DisconnectUnmount(connectionID int) {
 
 //export placessidebar_unmountHandler
 func placessidebar_unmountHandler(_ *C.GObject, c_mount_operation *C.GMountOperation, data C.gpointer) {
+	signalPlacesSidebarUnmountLock.RLock()
+	defer signalPlacesSidebarUnmountLock.RUnlock()
+
 	mountOperation := gio.MountOperationNewFromC(unsafe.Pointer(c_mount_operation))
 
 	index := int(uintptr(data))
@@ -692,7 +698,7 @@ type signalShortcutsSectionChangeCurrentPageDetail struct {
 
 var signalShortcutsSectionChangeCurrentPageId int
 var signalShortcutsSectionChangeCurrentPageMap = make(map[int]signalShortcutsSectionChangeCurrentPageDetail)
-var signalShortcutsSectionChangeCurrentPageLock sync.Mutex
+var signalShortcutsSectionChangeCurrentPageLock sync.RWMutex
 
 // ShortcutsSectionSignalChangeCurrentPageCallback is a callback function for a 'change-current-page' signal emitted from a ShortcutsSection.
 type ShortcutsSectionSignalChangeCurrentPageCallback func(object int32) bool
@@ -737,6 +743,9 @@ func (recv *ShortcutsSection) DisconnectChangeCurrentPage(connectionID int) {
 
 //export shortcutssection_changeCurrentPageHandler
 func shortcutssection_changeCurrentPageHandler(_ *C.GObject, c_object C.gint, data C.gpointer) C.gboolean {
+	signalShortcutsSectionChangeCurrentPageLock.RLock()
+	defer signalShortcutsSectionChangeCurrentPageLock.RUnlock()
+
 	object := int32(c_object)
 
 	index := int(uintptr(data))
@@ -874,7 +883,7 @@ type signalShortcutsWindowCloseDetail struct {
 
 var signalShortcutsWindowCloseId int
 var signalShortcutsWindowCloseMap = make(map[int]signalShortcutsWindowCloseDetail)
-var signalShortcutsWindowCloseLock sync.Mutex
+var signalShortcutsWindowCloseLock sync.RWMutex
 
 // ShortcutsWindowSignalCloseCallback is a callback function for a 'close' signal emitted from a ShortcutsWindow.
 type ShortcutsWindowSignalCloseCallback func()
@@ -919,6 +928,9 @@ func (recv *ShortcutsWindow) DisconnectClose(connectionID int) {
 
 //export shortcutswindow_closeHandler
 func shortcutswindow_closeHandler(_ *C.GObject, data C.gpointer) {
+	signalShortcutsWindowCloseLock.RLock()
+	defer signalShortcutsWindowCloseLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalShortcutsWindowCloseMap[index].callback
 	callback()
@@ -931,7 +943,7 @@ type signalShortcutsWindowSearchDetail struct {
 
 var signalShortcutsWindowSearchId int
 var signalShortcutsWindowSearchMap = make(map[int]signalShortcutsWindowSearchDetail)
-var signalShortcutsWindowSearchLock sync.Mutex
+var signalShortcutsWindowSearchLock sync.RWMutex
 
 // ShortcutsWindowSignalSearchCallback is a callback function for a 'search' signal emitted from a ShortcutsWindow.
 type ShortcutsWindowSignalSearchCallback func()
@@ -976,6 +988,9 @@ func (recv *ShortcutsWindow) DisconnectSearch(connectionID int) {
 
 //export shortcutswindow_searchHandler
 func shortcutswindow_searchHandler(_ *C.GObject, data C.gpointer) {
+	signalShortcutsWindowSearchLock.RLock()
+	defer signalShortcutsWindowSearchLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalShortcutsWindowSearchMap[index].callback
 	callback()

@@ -301,7 +301,7 @@ type signalWindowCreateSurfaceDetail struct {
 
 var signalWindowCreateSurfaceId int
 var signalWindowCreateSurfaceMap = make(map[int]signalWindowCreateSurfaceDetail)
-var signalWindowCreateSurfaceLock sync.Mutex
+var signalWindowCreateSurfaceLock sync.RWMutex
 
 // WindowSignalCreateSurfaceCallback is a callback function for a 'create-surface' signal emitted from a Window.
 type WindowSignalCreateSurfaceCallback func(width int32, height int32) cairo.Surface
@@ -346,6 +346,9 @@ func (recv *Window) DisconnectCreateSurface(connectionID int) {
 
 //export window_createSurfaceHandler
 func window_createSurfaceHandler(_ *C.GObject, c_width C.gint, c_height C.gint, data C.gpointer) *C.cairo_surface_t {
+	signalWindowCreateSurfaceLock.RLock()
+	defer signalWindowCreateSurfaceLock.RUnlock()
+
 	width := int32(c_width)
 
 	height := int32(c_height)

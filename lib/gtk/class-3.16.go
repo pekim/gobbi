@@ -410,7 +410,7 @@ type signalSearchEntryNextMatchDetail struct {
 
 var signalSearchEntryNextMatchId int
 var signalSearchEntryNextMatchMap = make(map[int]signalSearchEntryNextMatchDetail)
-var signalSearchEntryNextMatchLock sync.Mutex
+var signalSearchEntryNextMatchLock sync.RWMutex
 
 // SearchEntrySignalNextMatchCallback is a callback function for a 'next-match' signal emitted from a SearchEntry.
 type SearchEntrySignalNextMatchCallback func()
@@ -455,6 +455,9 @@ func (recv *SearchEntry) DisconnectNextMatch(connectionID int) {
 
 //export searchentry_nextMatchHandler
 func searchentry_nextMatchHandler(_ *C.GObject, data C.gpointer) {
+	signalSearchEntryNextMatchLock.RLock()
+	defer signalSearchEntryNextMatchLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalSearchEntryNextMatchMap[index].callback
 	callback()
@@ -467,7 +470,7 @@ type signalSearchEntryPreviousMatchDetail struct {
 
 var signalSearchEntryPreviousMatchId int
 var signalSearchEntryPreviousMatchMap = make(map[int]signalSearchEntryPreviousMatchDetail)
-var signalSearchEntryPreviousMatchLock sync.Mutex
+var signalSearchEntryPreviousMatchLock sync.RWMutex
 
 // SearchEntrySignalPreviousMatchCallback is a callback function for a 'previous-match' signal emitted from a SearchEntry.
 type SearchEntrySignalPreviousMatchCallback func()
@@ -512,6 +515,9 @@ func (recv *SearchEntry) DisconnectPreviousMatch(connectionID int) {
 
 //export searchentry_previousMatchHandler
 func searchentry_previousMatchHandler(_ *C.GObject, data C.gpointer) {
+	signalSearchEntryPreviousMatchLock.RLock()
+	defer signalSearchEntryPreviousMatchLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalSearchEntryPreviousMatchMap[index].callback
 	callback()
@@ -524,7 +530,7 @@ type signalSearchEntryStopSearchDetail struct {
 
 var signalSearchEntryStopSearchId int
 var signalSearchEntryStopSearchMap = make(map[int]signalSearchEntryStopSearchDetail)
-var signalSearchEntryStopSearchLock sync.Mutex
+var signalSearchEntryStopSearchLock sync.RWMutex
 
 // SearchEntrySignalStopSearchCallback is a callback function for a 'stop-search' signal emitted from a SearchEntry.
 type SearchEntrySignalStopSearchCallback func()
@@ -569,6 +575,9 @@ func (recv *SearchEntry) DisconnectStopSearch(connectionID int) {
 
 //export searchentry_stopSearchHandler
 func searchentry_stopSearchHandler(_ *C.GObject, data C.gpointer) {
+	signalSearchEntryStopSearchLock.RLock()
+	defer signalSearchEntryStopSearchLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalSearchEntryStopSearchMap[index].callback
 	callback()

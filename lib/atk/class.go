@@ -167,7 +167,7 @@ type signalHyperlinkLinkActivatedDetail struct {
 
 var signalHyperlinkLinkActivatedId int
 var signalHyperlinkLinkActivatedMap = make(map[int]signalHyperlinkLinkActivatedDetail)
-var signalHyperlinkLinkActivatedLock sync.Mutex
+var signalHyperlinkLinkActivatedLock sync.RWMutex
 
 // HyperlinkSignalLinkActivatedCallback is a callback function for a 'link-activated' signal emitted from a Hyperlink.
 type HyperlinkSignalLinkActivatedCallback func()
@@ -212,6 +212,9 @@ func (recv *Hyperlink) DisconnectLinkActivated(connectionID int) {
 
 //export hyperlink_linkActivatedHandler
 func hyperlink_linkActivatedHandler(_ *C.GObject, data C.gpointer) {
+	signalHyperlinkLinkActivatedLock.RLock()
+	defer signalHyperlinkLinkActivatedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalHyperlinkLinkActivatedMap[index].callback
 	callback()
@@ -548,7 +551,7 @@ type signalObjectActiveDescendantChangedDetail struct {
 
 var signalObjectActiveDescendantChangedId int
 var signalObjectActiveDescendantChangedMap = make(map[int]signalObjectActiveDescendantChangedDetail)
-var signalObjectActiveDescendantChangedLock sync.Mutex
+var signalObjectActiveDescendantChangedLock sync.RWMutex
 
 // ObjectSignalActiveDescendantChangedCallback is a callback function for a 'active-descendant-changed' signal emitted from a Object.
 type ObjectSignalActiveDescendantChangedCallback func(arg1 uintptr)
@@ -593,6 +596,9 @@ func (recv *Object) DisconnectActiveDescendantChanged(connectionID int) {
 
 //export object_activeDescendantChangedHandler
 func object_activeDescendantChangedHandler(_ *C.GObject, c_arg1 C.gpointer, data C.gpointer) {
+	signalObjectActiveDescendantChangedLock.RLock()
+	defer signalObjectActiveDescendantChangedLock.RUnlock()
+
 	arg1 := uintptr(c_arg1)
 
 	index := int(uintptr(data))
@@ -607,7 +613,7 @@ type signalObjectChildrenChangedDetail struct {
 
 var signalObjectChildrenChangedId int
 var signalObjectChildrenChangedMap = make(map[int]signalObjectChildrenChangedDetail)
-var signalObjectChildrenChangedLock sync.Mutex
+var signalObjectChildrenChangedLock sync.RWMutex
 
 // ObjectSignalChildrenChangedCallback is a callback function for a 'children-changed' signal emitted from a Object.
 type ObjectSignalChildrenChangedCallback func(arg1 uint32, arg2 uintptr)
@@ -652,6 +658,9 @@ func (recv *Object) DisconnectChildrenChanged(connectionID int) {
 
 //export object_childrenChangedHandler
 func object_childrenChangedHandler(_ *C.GObject, c_arg1 C.guint, c_arg2 C.gpointer, data C.gpointer) {
+	signalObjectChildrenChangedLock.RLock()
+	defer signalObjectChildrenChangedLock.RUnlock()
+
 	arg1 := uint32(c_arg1)
 
 	arg2 := uintptr(c_arg2)
@@ -668,7 +677,7 @@ type signalObjectFocusEventDetail struct {
 
 var signalObjectFocusEventId int
 var signalObjectFocusEventMap = make(map[int]signalObjectFocusEventDetail)
-var signalObjectFocusEventLock sync.Mutex
+var signalObjectFocusEventLock sync.RWMutex
 
 // ObjectSignalFocusEventCallback is a callback function for a 'focus-event' signal emitted from a Object.
 type ObjectSignalFocusEventCallback func(arg1 bool)
@@ -713,6 +722,9 @@ func (recv *Object) DisconnectFocusEvent(connectionID int) {
 
 //export object_focusEventHandler
 func object_focusEventHandler(_ *C.GObject, c_arg1 C.gboolean, data C.gpointer) {
+	signalObjectFocusEventLock.RLock()
+	defer signalObjectFocusEventLock.RUnlock()
+
 	arg1 := c_arg1 == C.TRUE
 
 	index := int(uintptr(data))
@@ -727,7 +739,7 @@ type signalObjectPropertyChangeDetail struct {
 
 var signalObjectPropertyChangeId int
 var signalObjectPropertyChangeMap = make(map[int]signalObjectPropertyChangeDetail)
-var signalObjectPropertyChangeLock sync.Mutex
+var signalObjectPropertyChangeLock sync.RWMutex
 
 // ObjectSignalPropertyChangeCallback is a callback function for a 'property-change' signal emitted from a Object.
 type ObjectSignalPropertyChangeCallback func(arg1 uintptr)
@@ -772,6 +784,9 @@ func (recv *Object) DisconnectPropertyChange(connectionID int) {
 
 //export object_propertyChangeHandler
 func object_propertyChangeHandler(_ *C.GObject, c_arg1 C.gpointer, data C.gpointer) {
+	signalObjectPropertyChangeLock.RLock()
+	defer signalObjectPropertyChangeLock.RUnlock()
+
 	arg1 := uintptr(c_arg1)
 
 	index := int(uintptr(data))
@@ -786,7 +801,7 @@ type signalObjectStateChangeDetail struct {
 
 var signalObjectStateChangeId int
 var signalObjectStateChangeMap = make(map[int]signalObjectStateChangeDetail)
-var signalObjectStateChangeLock sync.Mutex
+var signalObjectStateChangeLock sync.RWMutex
 
 // ObjectSignalStateChangeCallback is a callback function for a 'state-change' signal emitted from a Object.
 type ObjectSignalStateChangeCallback func(arg1 string, arg2 bool)
@@ -831,6 +846,9 @@ func (recv *Object) DisconnectStateChange(connectionID int) {
 
 //export object_stateChangeHandler
 func object_stateChangeHandler(_ *C.GObject, c_arg1 *C.gchar, c_arg2 C.gboolean, data C.gpointer) {
+	signalObjectStateChangeLock.RLock()
+	defer signalObjectStateChangeLock.RUnlock()
+
 	arg1 := C.GoString(c_arg1)
 
 	arg2 := c_arg2 == C.TRUE
@@ -847,7 +865,7 @@ type signalObjectVisibleDataChangedDetail struct {
 
 var signalObjectVisibleDataChangedId int
 var signalObjectVisibleDataChangedMap = make(map[int]signalObjectVisibleDataChangedDetail)
-var signalObjectVisibleDataChangedLock sync.Mutex
+var signalObjectVisibleDataChangedLock sync.RWMutex
 
 // ObjectSignalVisibleDataChangedCallback is a callback function for a 'visible-data-changed' signal emitted from a Object.
 type ObjectSignalVisibleDataChangedCallback func()
@@ -892,6 +910,9 @@ func (recv *Object) DisconnectVisibleDataChanged(connectionID int) {
 
 //export object_visibleDataChangedHandler
 func object_visibleDataChangedHandler(_ *C.GObject, data C.gpointer) {
+	signalObjectVisibleDataChangedLock.RLock()
+	defer signalObjectVisibleDataChangedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalObjectVisibleDataChangedMap[index].callback
 	callback()

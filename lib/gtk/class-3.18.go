@@ -108,7 +108,7 @@ type signalPlacesSidebarShowOtherLocationsDetail struct {
 
 var signalPlacesSidebarShowOtherLocationsId int
 var signalPlacesSidebarShowOtherLocationsMap = make(map[int]signalPlacesSidebarShowOtherLocationsDetail)
-var signalPlacesSidebarShowOtherLocationsLock sync.Mutex
+var signalPlacesSidebarShowOtherLocationsLock sync.RWMutex
 
 // PlacesSidebarSignalShowOtherLocationsCallback is a callback function for a 'show-other-locations' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalShowOtherLocationsCallback func()
@@ -153,6 +153,9 @@ func (recv *PlacesSidebar) DisconnectShowOtherLocations(connectionID int) {
 
 //export placessidebar_showOtherLocationsHandler
 func placessidebar_showOtherLocationsHandler(_ *C.GObject, data C.gpointer) {
+	signalPlacesSidebarShowOtherLocationsLock.RLock()
+	defer signalPlacesSidebarShowOtherLocationsLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalPlacesSidebarShowOtherLocationsMap[index].callback
 	callback()

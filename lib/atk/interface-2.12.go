@@ -39,7 +39,7 @@ type signalDocumentPageChangedDetail struct {
 
 var signalDocumentPageChangedId int
 var signalDocumentPageChangedMap = make(map[int]signalDocumentPageChangedDetail)
-var signalDocumentPageChangedLock sync.Mutex
+var signalDocumentPageChangedLock sync.RWMutex
 
 // DocumentSignalPageChangedCallback is a callback function for a 'page-changed' signal emitted from a Document.
 type DocumentSignalPageChangedCallback func(pageNumber int32)
@@ -84,6 +84,9 @@ func (recv *Document) DisconnectPageChanged(connectionID int) {
 
 //export document_pageChangedHandler
 func document_pageChangedHandler(_ *C.GObject, c_page_number C.gint, data C.gpointer) {
+	signalDocumentPageChangedLock.RLock()
+	defer signalDocumentPageChangedLock.RUnlock()
+
 	pageNumber := int32(c_page_number)
 
 	index := int(uintptr(data))
@@ -182,7 +185,7 @@ type signalValueValueChangedDetail struct {
 
 var signalValueValueChangedId int
 var signalValueValueChangedMap = make(map[int]signalValueValueChangedDetail)
-var signalValueValueChangedLock sync.Mutex
+var signalValueValueChangedLock sync.RWMutex
 
 // ValueSignalValueChangedCallback is a callback function for a 'value-changed' signal emitted from a Value.
 type ValueSignalValueChangedCallback func(value float64, text string)
@@ -227,6 +230,9 @@ func (recv *Value) DisconnectValueChanged(connectionID int) {
 
 //export value_valueChangedHandler
 func value_valueChangedHandler(_ *C.GObject, c_value C.gdouble, c_text *C.gchar, data C.gpointer) {
+	signalValueValueChangedLock.RLock()
+	defer signalValueValueChangedLock.RUnlock()
+
 	value := float64(c_value)
 
 	text := C.GoString(c_text)

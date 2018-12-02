@@ -273,7 +273,7 @@ type signalDeviceChangedDetail struct {
 
 var signalDeviceChangedId int
 var signalDeviceChangedMap = make(map[int]signalDeviceChangedDetail)
-var signalDeviceChangedLock sync.Mutex
+var signalDeviceChangedLock sync.RWMutex
 
 // DeviceSignalChangedCallback is a callback function for a 'changed' signal emitted from a Device.
 type DeviceSignalChangedCallback func()
@@ -318,6 +318,9 @@ func (recv *Device) DisconnectChanged(connectionID int) {
 
 //export device_changedHandler
 func device_changedHandler(_ *C.GObject, data C.gpointer) {
+	signalDeviceChangedLock.RLock()
+	defer signalDeviceChangedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalDeviceChangedMap[index].callback
 	callback()
@@ -434,7 +437,7 @@ type signalDeviceManagerDeviceAddedDetail struct {
 
 var signalDeviceManagerDeviceAddedId int
 var signalDeviceManagerDeviceAddedMap = make(map[int]signalDeviceManagerDeviceAddedDetail)
-var signalDeviceManagerDeviceAddedLock sync.Mutex
+var signalDeviceManagerDeviceAddedLock sync.RWMutex
 
 // DeviceManagerSignalDeviceAddedCallback is a callback function for a 'device-added' signal emitted from a DeviceManager.
 type DeviceManagerSignalDeviceAddedCallback func(device *Device)
@@ -479,6 +482,9 @@ func (recv *DeviceManager) DisconnectDeviceAdded(connectionID int) {
 
 //export devicemanager_deviceAddedHandler
 func devicemanager_deviceAddedHandler(_ *C.GObject, c_device *C.GdkDevice, data C.gpointer) {
+	signalDeviceManagerDeviceAddedLock.RLock()
+	defer signalDeviceManagerDeviceAddedLock.RUnlock()
+
 	device := DeviceNewFromC(unsafe.Pointer(c_device))
 
 	index := int(uintptr(data))
@@ -493,7 +499,7 @@ type signalDeviceManagerDeviceChangedDetail struct {
 
 var signalDeviceManagerDeviceChangedId int
 var signalDeviceManagerDeviceChangedMap = make(map[int]signalDeviceManagerDeviceChangedDetail)
-var signalDeviceManagerDeviceChangedLock sync.Mutex
+var signalDeviceManagerDeviceChangedLock sync.RWMutex
 
 // DeviceManagerSignalDeviceChangedCallback is a callback function for a 'device-changed' signal emitted from a DeviceManager.
 type DeviceManagerSignalDeviceChangedCallback func(device *Device)
@@ -538,6 +544,9 @@ func (recv *DeviceManager) DisconnectDeviceChanged(connectionID int) {
 
 //export devicemanager_deviceChangedHandler
 func devicemanager_deviceChangedHandler(_ *C.GObject, c_device *C.GdkDevice, data C.gpointer) {
+	signalDeviceManagerDeviceChangedLock.RLock()
+	defer signalDeviceManagerDeviceChangedLock.RUnlock()
+
 	device := DeviceNewFromC(unsafe.Pointer(c_device))
 
 	index := int(uintptr(data))
@@ -552,7 +561,7 @@ type signalDeviceManagerDeviceRemovedDetail struct {
 
 var signalDeviceManagerDeviceRemovedId int
 var signalDeviceManagerDeviceRemovedMap = make(map[int]signalDeviceManagerDeviceRemovedDetail)
-var signalDeviceManagerDeviceRemovedLock sync.Mutex
+var signalDeviceManagerDeviceRemovedLock sync.RWMutex
 
 // DeviceManagerSignalDeviceRemovedCallback is a callback function for a 'device-removed' signal emitted from a DeviceManager.
 type DeviceManagerSignalDeviceRemovedCallback func(device *Device)
@@ -597,6 +606,9 @@ func (recv *DeviceManager) DisconnectDeviceRemoved(connectionID int) {
 
 //export devicemanager_deviceRemovedHandler
 func devicemanager_deviceRemovedHandler(_ *C.GObject, c_device *C.GdkDevice, data C.gpointer) {
+	signalDeviceManagerDeviceRemovedLock.RLock()
+	defer signalDeviceManagerDeviceRemovedLock.RUnlock()
+
 	device := DeviceNewFromC(unsafe.Pointer(c_device))
 
 	index := int(uintptr(data))
@@ -648,7 +660,7 @@ type signalDisplayOpenedDetail struct {
 
 var signalDisplayOpenedId int
 var signalDisplayOpenedMap = make(map[int]signalDisplayOpenedDetail)
-var signalDisplayOpenedLock sync.Mutex
+var signalDisplayOpenedLock sync.RWMutex
 
 // DisplaySignalOpenedCallback is a callback function for a 'opened' signal emitted from a Display.
 type DisplaySignalOpenedCallback func()
@@ -693,6 +705,9 @@ func (recv *Display) DisconnectOpened(connectionID int) {
 
 //export display_openedHandler
 func display_openedHandler(_ *C.GObject, data C.gpointer) {
+	signalDisplayOpenedLock.RLock()
+	defer signalDisplayOpenedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalDisplayOpenedMap[index].callback
 	callback()
@@ -849,7 +864,7 @@ type signalFrameClockAfterPaintDetail struct {
 
 var signalFrameClockAfterPaintId int
 var signalFrameClockAfterPaintMap = make(map[int]signalFrameClockAfterPaintDetail)
-var signalFrameClockAfterPaintLock sync.Mutex
+var signalFrameClockAfterPaintLock sync.RWMutex
 
 // FrameClockSignalAfterPaintCallback is a callback function for a 'after-paint' signal emitted from a FrameClock.
 type FrameClockSignalAfterPaintCallback func()
@@ -894,6 +909,9 @@ func (recv *FrameClock) DisconnectAfterPaint(connectionID int) {
 
 //export frameclock_afterPaintHandler
 func frameclock_afterPaintHandler(_ *C.GObject, data C.gpointer) {
+	signalFrameClockAfterPaintLock.RLock()
+	defer signalFrameClockAfterPaintLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalFrameClockAfterPaintMap[index].callback
 	callback()
@@ -906,7 +924,7 @@ type signalFrameClockBeforePaintDetail struct {
 
 var signalFrameClockBeforePaintId int
 var signalFrameClockBeforePaintMap = make(map[int]signalFrameClockBeforePaintDetail)
-var signalFrameClockBeforePaintLock sync.Mutex
+var signalFrameClockBeforePaintLock sync.RWMutex
 
 // FrameClockSignalBeforePaintCallback is a callback function for a 'before-paint' signal emitted from a FrameClock.
 type FrameClockSignalBeforePaintCallback func()
@@ -951,6 +969,9 @@ func (recv *FrameClock) DisconnectBeforePaint(connectionID int) {
 
 //export frameclock_beforePaintHandler
 func frameclock_beforePaintHandler(_ *C.GObject, data C.gpointer) {
+	signalFrameClockBeforePaintLock.RLock()
+	defer signalFrameClockBeforePaintLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalFrameClockBeforePaintMap[index].callback
 	callback()
@@ -963,7 +984,7 @@ type signalFrameClockFlushEventsDetail struct {
 
 var signalFrameClockFlushEventsId int
 var signalFrameClockFlushEventsMap = make(map[int]signalFrameClockFlushEventsDetail)
-var signalFrameClockFlushEventsLock sync.Mutex
+var signalFrameClockFlushEventsLock sync.RWMutex
 
 // FrameClockSignalFlushEventsCallback is a callback function for a 'flush-events' signal emitted from a FrameClock.
 type FrameClockSignalFlushEventsCallback func()
@@ -1008,6 +1029,9 @@ func (recv *FrameClock) DisconnectFlushEvents(connectionID int) {
 
 //export frameclock_flushEventsHandler
 func frameclock_flushEventsHandler(_ *C.GObject, data C.gpointer) {
+	signalFrameClockFlushEventsLock.RLock()
+	defer signalFrameClockFlushEventsLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalFrameClockFlushEventsMap[index].callback
 	callback()
@@ -1020,7 +1044,7 @@ type signalFrameClockLayoutDetail struct {
 
 var signalFrameClockLayoutId int
 var signalFrameClockLayoutMap = make(map[int]signalFrameClockLayoutDetail)
-var signalFrameClockLayoutLock sync.Mutex
+var signalFrameClockLayoutLock sync.RWMutex
 
 // FrameClockSignalLayoutCallback is a callback function for a 'layout' signal emitted from a FrameClock.
 type FrameClockSignalLayoutCallback func()
@@ -1065,6 +1089,9 @@ func (recv *FrameClock) DisconnectLayout(connectionID int) {
 
 //export frameclock_layoutHandler
 func frameclock_layoutHandler(_ *C.GObject, data C.gpointer) {
+	signalFrameClockLayoutLock.RLock()
+	defer signalFrameClockLayoutLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalFrameClockLayoutMap[index].callback
 	callback()
@@ -1077,7 +1104,7 @@ type signalFrameClockPaintDetail struct {
 
 var signalFrameClockPaintId int
 var signalFrameClockPaintMap = make(map[int]signalFrameClockPaintDetail)
-var signalFrameClockPaintLock sync.Mutex
+var signalFrameClockPaintLock sync.RWMutex
 
 // FrameClockSignalPaintCallback is a callback function for a 'paint' signal emitted from a FrameClock.
 type FrameClockSignalPaintCallback func()
@@ -1122,6 +1149,9 @@ func (recv *FrameClock) DisconnectPaint(connectionID int) {
 
 //export frameclock_paintHandler
 func frameclock_paintHandler(_ *C.GObject, data C.gpointer) {
+	signalFrameClockPaintLock.RLock()
+	defer signalFrameClockPaintLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalFrameClockPaintMap[index].callback
 	callback()
@@ -1134,7 +1164,7 @@ type signalFrameClockResumeEventsDetail struct {
 
 var signalFrameClockResumeEventsId int
 var signalFrameClockResumeEventsMap = make(map[int]signalFrameClockResumeEventsDetail)
-var signalFrameClockResumeEventsLock sync.Mutex
+var signalFrameClockResumeEventsLock sync.RWMutex
 
 // FrameClockSignalResumeEventsCallback is a callback function for a 'resume-events' signal emitted from a FrameClock.
 type FrameClockSignalResumeEventsCallback func()
@@ -1179,6 +1209,9 @@ func (recv *FrameClock) DisconnectResumeEvents(connectionID int) {
 
 //export frameclock_resumeEventsHandler
 func frameclock_resumeEventsHandler(_ *C.GObject, data C.gpointer) {
+	signalFrameClockResumeEventsLock.RLock()
+	defer signalFrameClockResumeEventsLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalFrameClockResumeEventsMap[index].callback
 	callback()
@@ -1191,7 +1224,7 @@ type signalFrameClockUpdateDetail struct {
 
 var signalFrameClockUpdateId int
 var signalFrameClockUpdateMap = make(map[int]signalFrameClockUpdateDetail)
-var signalFrameClockUpdateLock sync.Mutex
+var signalFrameClockUpdateLock sync.RWMutex
 
 // FrameClockSignalUpdateCallback is a callback function for a 'update' signal emitted from a FrameClock.
 type FrameClockSignalUpdateCallback func()
@@ -1236,6 +1269,9 @@ func (recv *FrameClock) DisconnectUpdate(connectionID int) {
 
 //export frameclock_updateHandler
 func frameclock_updateHandler(_ *C.GObject, data C.gpointer) {
+	signalFrameClockUpdateLock.RLock()
+	defer signalFrameClockUpdateLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalFrameClockUpdateMap[index].callback
 	callback()

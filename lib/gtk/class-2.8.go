@@ -401,7 +401,7 @@ type signalWidgetGrabBrokenEventDetail struct {
 
 var signalWidgetGrabBrokenEventId int
 var signalWidgetGrabBrokenEventMap = make(map[int]signalWidgetGrabBrokenEventDetail)
-var signalWidgetGrabBrokenEventLock sync.Mutex
+var signalWidgetGrabBrokenEventLock sync.RWMutex
 
 // WidgetSignalGrabBrokenEventCallback is a callback function for a 'grab-broken-event' signal emitted from a Widget.
 type WidgetSignalGrabBrokenEventCallback func(event *gdk.EventGrabBroken) bool
@@ -446,6 +446,9 @@ func (recv *Widget) DisconnectGrabBrokenEvent(connectionID int) {
 
 //export widget_grabBrokenEventHandler
 func widget_grabBrokenEventHandler(_ *C.GObject, c_event *C.GdkEventGrabBroken, data C.gpointer) C.gboolean {
+	signalWidgetGrabBrokenEventLock.RLock()
+	defer signalWidgetGrabBrokenEventLock.RUnlock()
+
 	event := gdk.EventGrabBrokenNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))

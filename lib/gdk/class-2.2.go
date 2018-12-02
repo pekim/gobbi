@@ -81,7 +81,7 @@ type signalDisplayClosedDetail struct {
 
 var signalDisplayClosedId int
 var signalDisplayClosedMap = make(map[int]signalDisplayClosedDetail)
-var signalDisplayClosedLock sync.Mutex
+var signalDisplayClosedLock sync.RWMutex
 
 // DisplaySignalClosedCallback is a callback function for a 'closed' signal emitted from a Display.
 type DisplaySignalClosedCallback func(isError bool)
@@ -126,6 +126,9 @@ func (recv *Display) DisconnectClosed(connectionID int) {
 
 //export display_closedHandler
 func display_closedHandler(_ *C.GObject, c_is_error C.gboolean, data C.gpointer) {
+	signalDisplayClosedLock.RLock()
+	defer signalDisplayClosedLock.RUnlock()
+
 	isError := c_is_error == C.TRUE
 
 	index := int(uintptr(data))
@@ -267,7 +270,7 @@ type signalDisplayManagerDisplayOpenedDetail struct {
 
 var signalDisplayManagerDisplayOpenedId int
 var signalDisplayManagerDisplayOpenedMap = make(map[int]signalDisplayManagerDisplayOpenedDetail)
-var signalDisplayManagerDisplayOpenedLock sync.Mutex
+var signalDisplayManagerDisplayOpenedLock sync.RWMutex
 
 // DisplayManagerSignalDisplayOpenedCallback is a callback function for a 'display-opened' signal emitted from a DisplayManager.
 type DisplayManagerSignalDisplayOpenedCallback func(display *Display)
@@ -312,6 +315,9 @@ func (recv *DisplayManager) DisconnectDisplayOpened(connectionID int) {
 
 //export displaymanager_displayOpenedHandler
 func displaymanager_displayOpenedHandler(_ *C.GObject, c_display *C.GdkDisplay, data C.gpointer) {
+	signalDisplayManagerDisplayOpenedLock.RLock()
+	defer signalDisplayManagerDisplayOpenedLock.RUnlock()
+
 	display := DisplayNewFromC(unsafe.Pointer(c_display))
 
 	index := int(uintptr(data))
@@ -359,7 +365,7 @@ type signalKeymapKeysChangedDetail struct {
 
 var signalKeymapKeysChangedId int
 var signalKeymapKeysChangedMap = make(map[int]signalKeymapKeysChangedDetail)
-var signalKeymapKeysChangedLock sync.Mutex
+var signalKeymapKeysChangedLock sync.RWMutex
 
 // KeymapSignalKeysChangedCallback is a callback function for a 'keys-changed' signal emitted from a Keymap.
 type KeymapSignalKeysChangedCallback func()
@@ -404,6 +410,9 @@ func (recv *Keymap) DisconnectKeysChanged(connectionID int) {
 
 //export keymap_keysChangedHandler
 func keymap_keysChangedHandler(_ *C.GObject, data C.gpointer) {
+	signalKeymapKeysChangedLock.RLock()
+	defer signalKeymapKeysChangedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalKeymapKeysChangedMap[index].callback
 	callback()
@@ -416,7 +425,7 @@ type signalScreenSizeChangedDetail struct {
 
 var signalScreenSizeChangedId int
 var signalScreenSizeChangedMap = make(map[int]signalScreenSizeChangedDetail)
-var signalScreenSizeChangedLock sync.Mutex
+var signalScreenSizeChangedLock sync.RWMutex
 
 // ScreenSignalSizeChangedCallback is a callback function for a 'size-changed' signal emitted from a Screen.
 type ScreenSignalSizeChangedCallback func()
@@ -461,6 +470,9 @@ func (recv *Screen) DisconnectSizeChanged(connectionID int) {
 
 //export screen_sizeChangedHandler
 func screen_sizeChangedHandler(_ *C.GObject, data C.gpointer) {
+	signalScreenSizeChangedLock.RLock()
+	defer signalScreenSizeChangedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalScreenSizeChangedMap[index].callback
 	callback()

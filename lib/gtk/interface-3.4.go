@@ -66,7 +66,7 @@ type signalColorChooserColorActivatedDetail struct {
 
 var signalColorChooserColorActivatedId int
 var signalColorChooserColorActivatedMap = make(map[int]signalColorChooserColorActivatedDetail)
-var signalColorChooserColorActivatedLock sync.Mutex
+var signalColorChooserColorActivatedLock sync.RWMutex
 
 // ColorChooserSignalColorActivatedCallback is a callback function for a 'color-activated' signal emitted from a ColorChooser.
 type ColorChooserSignalColorActivatedCallback func(color *gdk.RGBA)
@@ -111,6 +111,9 @@ func (recv *ColorChooser) DisconnectColorActivated(connectionID int) {
 
 //export colorchooser_colorActivatedHandler
 func colorchooser_colorActivatedHandler(_ *C.GObject, c_color *C.GdkRGBA, data C.gpointer) {
+	signalColorChooserColorActivatedLock.RLock()
+	defer signalColorChooserColorActivatedLock.RUnlock()
+
 	color := gdk.RGBANewFromC(unsafe.Pointer(c_color))
 
 	index := int(uintptr(data))

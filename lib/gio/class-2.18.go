@@ -169,7 +169,7 @@ type signalVolumeMonitorDriveEjectButtonDetail struct {
 
 var signalVolumeMonitorDriveEjectButtonId int
 var signalVolumeMonitorDriveEjectButtonMap = make(map[int]signalVolumeMonitorDriveEjectButtonDetail)
-var signalVolumeMonitorDriveEjectButtonLock sync.Mutex
+var signalVolumeMonitorDriveEjectButtonLock sync.RWMutex
 
 // VolumeMonitorSignalDriveEjectButtonCallback is a callback function for a 'drive-eject-button' signal emitted from a VolumeMonitor.
 type VolumeMonitorSignalDriveEjectButtonCallback func(drive *Drive)
@@ -214,6 +214,9 @@ func (recv *VolumeMonitor) DisconnectDriveEjectButton(connectionID int) {
 
 //export volumemonitor_driveEjectButtonHandler
 func volumemonitor_driveEjectButtonHandler(_ *C.GObject, c_drive *C.GDrive, data C.gpointer) {
+	signalVolumeMonitorDriveEjectButtonLock.RLock()
+	defer signalVolumeMonitorDriveEjectButtonLock.RUnlock()
+
 	drive := DriveNewFromC(unsafe.Pointer(c_drive))
 
 	index := int(uintptr(data))

@@ -112,7 +112,7 @@ type signalDriveStopButtonDetail struct {
 
 var signalDriveStopButtonId int
 var signalDriveStopButtonMap = make(map[int]signalDriveStopButtonDetail)
-var signalDriveStopButtonLock sync.Mutex
+var signalDriveStopButtonLock sync.RWMutex
 
 // DriveSignalStopButtonCallback is a callback function for a 'stop-button' signal emitted from a Drive.
 type DriveSignalStopButtonCallback func()
@@ -157,6 +157,9 @@ func (recv *Drive) DisconnectStopButton(connectionID int) {
 
 //export drive_stopButtonHandler
 func drive_stopButtonHandler(_ *C.GObject, data C.gpointer) {
+	signalDriveStopButtonLock.RLock()
+	defer signalDriveStopButtonLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalDriveStopButtonMap[index].callback
 	callback()
@@ -534,7 +537,7 @@ type signalMountPreUnmountDetail struct {
 
 var signalMountPreUnmountId int
 var signalMountPreUnmountMap = make(map[int]signalMountPreUnmountDetail)
-var signalMountPreUnmountLock sync.Mutex
+var signalMountPreUnmountLock sync.RWMutex
 
 // MountSignalPreUnmountCallback is a callback function for a 'pre-unmount' signal emitted from a Mount.
 type MountSignalPreUnmountCallback func()
@@ -579,6 +582,9 @@ func (recv *Mount) DisconnectPreUnmount(connectionID int) {
 
 //export mount_preUnmountHandler
 func mount_preUnmountHandler(_ *C.GObject, data C.gpointer) {
+	signalMountPreUnmountLock.RLock()
+	defer signalMountPreUnmountLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalMountPreUnmountMap[index].callback
 	callback()

@@ -593,7 +593,7 @@ type signalListBoxRowActivatedDetail struct {
 
 var signalListBoxRowActivatedId int
 var signalListBoxRowActivatedMap = make(map[int]signalListBoxRowActivatedDetail)
-var signalListBoxRowActivatedLock sync.Mutex
+var signalListBoxRowActivatedLock sync.RWMutex
 
 // ListBoxSignalRowActivatedCallback is a callback function for a 'row-activated' signal emitted from a ListBox.
 type ListBoxSignalRowActivatedCallback func(row *ListBoxRow)
@@ -638,6 +638,9 @@ func (recv *ListBox) DisconnectRowActivated(connectionID int) {
 
 //export listbox_rowActivatedHandler
 func listbox_rowActivatedHandler(_ *C.GObject, c_row *C.GtkListBoxRow, data C.gpointer) {
+	signalListBoxRowActivatedLock.RLock()
+	defer signalListBoxRowActivatedLock.RUnlock()
+
 	row := ListBoxRowNewFromC(unsafe.Pointer(c_row))
 
 	index := int(uintptr(data))
@@ -652,7 +655,7 @@ type signalListBoxRowSelectedDetail struct {
 
 var signalListBoxRowSelectedId int
 var signalListBoxRowSelectedMap = make(map[int]signalListBoxRowSelectedDetail)
-var signalListBoxRowSelectedLock sync.Mutex
+var signalListBoxRowSelectedLock sync.RWMutex
 
 // ListBoxSignalRowSelectedCallback is a callback function for a 'row-selected' signal emitted from a ListBox.
 type ListBoxSignalRowSelectedCallback func(row *ListBoxRow)
@@ -697,6 +700,9 @@ func (recv *ListBox) DisconnectRowSelected(connectionID int) {
 
 //export listbox_rowSelectedHandler
 func listbox_rowSelectedHandler(_ *C.GObject, c_row *C.GtkListBoxRow, data C.gpointer) {
+	signalListBoxRowSelectedLock.RLock()
+	defer signalListBoxRowSelectedLock.RUnlock()
+
 	row := ListBoxRowNewFromC(unsafe.Pointer(c_row))
 
 	index := int(uintptr(data))
@@ -908,7 +914,7 @@ type signalListBoxRowActivateDetail struct {
 
 var signalListBoxRowActivateId int
 var signalListBoxRowActivateMap = make(map[int]signalListBoxRowActivateDetail)
-var signalListBoxRowActivateLock sync.Mutex
+var signalListBoxRowActivateLock sync.RWMutex
 
 // ListBoxRowSignalActivateCallback is a callback function for a 'activate' signal emitted from a ListBoxRow.
 type ListBoxRowSignalActivateCallback func()
@@ -953,6 +959,9 @@ func (recv *ListBoxRow) DisconnectActivate(connectionID int) {
 
 //export listboxrow_activateHandler
 func listboxrow_activateHandler(_ *C.GObject, data C.gpointer) {
+	signalListBoxRowActivateLock.RLock()
+	defer signalListBoxRowActivateLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalListBoxRowActivateMap[index].callback
 	callback()
@@ -1013,7 +1022,7 @@ type signalPlacesSidebarDragActionAskDetail struct {
 
 var signalPlacesSidebarDragActionAskId int
 var signalPlacesSidebarDragActionAskMap = make(map[int]signalPlacesSidebarDragActionAskDetail)
-var signalPlacesSidebarDragActionAskLock sync.Mutex
+var signalPlacesSidebarDragActionAskLock sync.RWMutex
 
 // PlacesSidebarSignalDragActionAskCallback is a callback function for a 'drag-action-ask' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalDragActionAskCallback func(actions int32) int32
@@ -1058,6 +1067,9 @@ func (recv *PlacesSidebar) DisconnectDragActionAsk(connectionID int) {
 
 //export placessidebar_dragActionAskHandler
 func placessidebar_dragActionAskHandler(_ *C.GObject, c_actions C.gint, data C.gpointer) C.gint {
+	signalPlacesSidebarDragActionAskLock.RLock()
+	defer signalPlacesSidebarDragActionAskLock.RUnlock()
+
 	actions := int32(c_actions)
 
 	index := int(uintptr(data))
@@ -1075,7 +1087,7 @@ type signalPlacesSidebarDragActionRequestedDetail struct {
 
 var signalPlacesSidebarDragActionRequestedId int
 var signalPlacesSidebarDragActionRequestedMap = make(map[int]signalPlacesSidebarDragActionRequestedDetail)
-var signalPlacesSidebarDragActionRequestedLock sync.Mutex
+var signalPlacesSidebarDragActionRequestedLock sync.RWMutex
 
 // PlacesSidebarSignalDragActionRequestedCallback is a callback function for a 'drag-action-requested' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalDragActionRequestedCallback func(context *gdk.DragContext, destFile *gio.File, sourceFileList uintptr) int32
@@ -1120,6 +1132,9 @@ func (recv *PlacesSidebar) DisconnectDragActionRequested(connectionID int) {
 
 //export placessidebar_dragActionRequestedHandler
 func placessidebar_dragActionRequestedHandler(_ *C.GObject, c_context *C.GdkDragContext, c_dest_file *C.GFile, c_source_file_list C.gpointer, data C.gpointer) C.gint {
+	signalPlacesSidebarDragActionRequestedLock.RLock()
+	defer signalPlacesSidebarDragActionRequestedLock.RUnlock()
+
 	context := gdk.DragContextNewFromC(unsafe.Pointer(c_context))
 
 	destFile := gio.FileNewFromC(unsafe.Pointer(c_dest_file))
@@ -1141,7 +1156,7 @@ type signalPlacesSidebarDragPerformDropDetail struct {
 
 var signalPlacesSidebarDragPerformDropId int
 var signalPlacesSidebarDragPerformDropMap = make(map[int]signalPlacesSidebarDragPerformDropDetail)
-var signalPlacesSidebarDragPerformDropLock sync.Mutex
+var signalPlacesSidebarDragPerformDropLock sync.RWMutex
 
 // PlacesSidebarSignalDragPerformDropCallback is a callback function for a 'drag-perform-drop' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalDragPerformDropCallback func(destFile *gio.File, sourceFileList uintptr, action int32)
@@ -1186,6 +1201,9 @@ func (recv *PlacesSidebar) DisconnectDragPerformDrop(connectionID int) {
 
 //export placessidebar_dragPerformDropHandler
 func placessidebar_dragPerformDropHandler(_ *C.GObject, c_dest_file *C.GFile, c_source_file_list C.gpointer, c_action C.gint, data C.gpointer) {
+	signalPlacesSidebarDragPerformDropLock.RLock()
+	defer signalPlacesSidebarDragPerformDropLock.RUnlock()
+
 	destFile := gio.FileNewFromC(unsafe.Pointer(c_dest_file))
 
 	sourceFileList := uintptr(c_source_file_list)
@@ -1206,7 +1224,7 @@ type signalPlacesSidebarPopulatePopupDetail struct {
 
 var signalPlacesSidebarPopulatePopupId int
 var signalPlacesSidebarPopulatePopupMap = make(map[int]signalPlacesSidebarPopulatePopupDetail)
-var signalPlacesSidebarPopulatePopupLock sync.Mutex
+var signalPlacesSidebarPopulatePopupLock sync.RWMutex
 
 // PlacesSidebarSignalPopulatePopupCallback is a callback function for a 'populate-popup' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalPopulatePopupCallback func(container *Widget, selectedItem *gio.File, selectedVolume *gio.Volume)
@@ -1251,6 +1269,9 @@ func (recv *PlacesSidebar) DisconnectPopulatePopup(connectionID int) {
 
 //export placessidebar_populatePopupHandler
 func placessidebar_populatePopupHandler(_ *C.GObject, c_container *C.GtkWidget, c_selected_item *C.GFile, c_selected_volume *C.GVolume, data C.gpointer) {
+	signalPlacesSidebarPopulatePopupLock.RLock()
+	defer signalPlacesSidebarPopulatePopupLock.RUnlock()
+
 	container := WidgetNewFromC(unsafe.Pointer(c_container))
 
 	selectedItem := gio.FileNewFromC(unsafe.Pointer(c_selected_item))
@@ -1269,7 +1290,7 @@ type signalPlacesSidebarShowErrorMessageDetail struct {
 
 var signalPlacesSidebarShowErrorMessageId int
 var signalPlacesSidebarShowErrorMessageMap = make(map[int]signalPlacesSidebarShowErrorMessageDetail)
-var signalPlacesSidebarShowErrorMessageLock sync.Mutex
+var signalPlacesSidebarShowErrorMessageLock sync.RWMutex
 
 // PlacesSidebarSignalShowErrorMessageCallback is a callback function for a 'show-error-message' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalShowErrorMessageCallback func(primary string, secondary string)
@@ -1314,6 +1335,9 @@ func (recv *PlacesSidebar) DisconnectShowErrorMessage(connectionID int) {
 
 //export placessidebar_showErrorMessageHandler
 func placessidebar_showErrorMessageHandler(_ *C.GObject, c_primary *C.gchar, c_secondary *C.gchar, data C.gpointer) {
+	signalPlacesSidebarShowErrorMessageLock.RLock()
+	defer signalPlacesSidebarShowErrorMessageLock.RUnlock()
+
 	primary := C.GoString(c_primary)
 
 	secondary := C.GoString(c_secondary)
@@ -1572,7 +1596,7 @@ type signalSearchEntrySearchChangedDetail struct {
 
 var signalSearchEntrySearchChangedId int
 var signalSearchEntrySearchChangedMap = make(map[int]signalSearchEntrySearchChangedDetail)
-var signalSearchEntrySearchChangedLock sync.Mutex
+var signalSearchEntrySearchChangedLock sync.RWMutex
 
 // SearchEntrySignalSearchChangedCallback is a callback function for a 'search-changed' signal emitted from a SearchEntry.
 type SearchEntrySignalSearchChangedCallback func()
@@ -1617,6 +1641,9 @@ func (recv *SearchEntry) DisconnectSearchChanged(connectionID int) {
 
 //export searchentry_searchChangedHandler
 func searchentry_searchChangedHandler(_ *C.GObject, data C.gpointer) {
+	signalSearchEntrySearchChangedLock.RLock()
+	defer signalSearchEntrySearchChangedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalSearchEntrySearchChangedMap[index].callback
 	callback()

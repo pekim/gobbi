@@ -406,7 +406,7 @@ type signalCellAreaApplyAttributesDetail struct {
 
 var signalCellAreaApplyAttributesId int
 var signalCellAreaApplyAttributesMap = make(map[int]signalCellAreaApplyAttributesDetail)
-var signalCellAreaApplyAttributesLock sync.Mutex
+var signalCellAreaApplyAttributesLock sync.RWMutex
 
 // CellAreaSignalApplyAttributesCallback is a callback function for a 'apply-attributes' signal emitted from a CellArea.
 type CellAreaSignalApplyAttributesCallback func(model *TreeModel, iter *TreeIter, isExpander bool, isExpanded bool)
@@ -451,6 +451,9 @@ func (recv *CellArea) DisconnectApplyAttributes(connectionID int) {
 
 //export cellarea_applyAttributesHandler
 func cellarea_applyAttributesHandler(_ *C.GObject, c_model *C.GtkTreeModel, c_iter *C.GtkTreeIter, c_is_expander C.gboolean, c_is_expanded C.gboolean, data C.gpointer) {
+	signalCellAreaApplyAttributesLock.RLock()
+	defer signalCellAreaApplyAttributesLock.RUnlock()
+
 	model := TreeModelNewFromC(unsafe.Pointer(c_model))
 
 	iter := TreeIterNewFromC(unsafe.Pointer(c_iter))
@@ -471,7 +474,7 @@ type signalCellAreaFocusChangedDetail struct {
 
 var signalCellAreaFocusChangedId int
 var signalCellAreaFocusChangedMap = make(map[int]signalCellAreaFocusChangedDetail)
-var signalCellAreaFocusChangedLock sync.Mutex
+var signalCellAreaFocusChangedLock sync.RWMutex
 
 // CellAreaSignalFocusChangedCallback is a callback function for a 'focus-changed' signal emitted from a CellArea.
 type CellAreaSignalFocusChangedCallback func(renderer *CellRenderer, path string)
@@ -516,6 +519,9 @@ func (recv *CellArea) DisconnectFocusChanged(connectionID int) {
 
 //export cellarea_focusChangedHandler
 func cellarea_focusChangedHandler(_ *C.GObject, c_renderer *C.GtkCellRenderer, c_path *C.gchar, data C.gpointer) {
+	signalCellAreaFocusChangedLock.RLock()
+	defer signalCellAreaFocusChangedLock.RUnlock()
+
 	renderer := CellRendererNewFromC(unsafe.Pointer(c_renderer))
 
 	path := C.GoString(c_path)
@@ -532,7 +538,7 @@ type signalCellAreaRemoveEditableDetail struct {
 
 var signalCellAreaRemoveEditableId int
 var signalCellAreaRemoveEditableMap = make(map[int]signalCellAreaRemoveEditableDetail)
-var signalCellAreaRemoveEditableLock sync.Mutex
+var signalCellAreaRemoveEditableLock sync.RWMutex
 
 // CellAreaSignalRemoveEditableCallback is a callback function for a 'remove-editable' signal emitted from a CellArea.
 type CellAreaSignalRemoveEditableCallback func(renderer *CellRenderer, editable *CellEditable)
@@ -577,6 +583,9 @@ func (recv *CellArea) DisconnectRemoveEditable(connectionID int) {
 
 //export cellarea_removeEditableHandler
 func cellarea_removeEditableHandler(_ *C.GObject, c_renderer *C.GtkCellRenderer, c_editable *C.GtkCellEditable, data C.gpointer) {
+	signalCellAreaRemoveEditableLock.RLock()
+	defer signalCellAreaRemoveEditableLock.RUnlock()
+
 	renderer := CellRendererNewFromC(unsafe.Pointer(c_renderer))
 
 	editable := CellEditableNewFromC(unsafe.Pointer(c_editable))
@@ -2003,7 +2012,7 @@ type signalStyleContextChangedDetail struct {
 
 var signalStyleContextChangedId int
 var signalStyleContextChangedMap = make(map[int]signalStyleContextChangedDetail)
-var signalStyleContextChangedLock sync.Mutex
+var signalStyleContextChangedLock sync.RWMutex
 
 // StyleContextSignalChangedCallback is a callback function for a 'changed' signal emitted from a StyleContext.
 type StyleContextSignalChangedCallback func()
@@ -2048,6 +2057,9 @@ func (recv *StyleContext) DisconnectChanged(connectionID int) {
 
 //export stylecontext_changedHandler
 func stylecontext_changedHandler(_ *C.GObject, data C.gpointer) {
+	signalStyleContextChangedLock.RLock()
+	defer signalStyleContextChangedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalStyleContextChangedMap[index].callback
 	callback()
@@ -2825,7 +2837,7 @@ type signalWidgetDrawDetail struct {
 
 var signalWidgetDrawId int
 var signalWidgetDrawMap = make(map[int]signalWidgetDrawDetail)
-var signalWidgetDrawLock sync.Mutex
+var signalWidgetDrawLock sync.RWMutex
 
 // WidgetSignalDrawCallback is a callback function for a 'draw' signal emitted from a Widget.
 type WidgetSignalDrawCallback func(cr *cairo.Context) bool
@@ -2870,6 +2882,9 @@ func (recv *Widget) DisconnectDraw(connectionID int) {
 
 //export widget_drawHandler
 func widget_drawHandler(_ *C.GObject, c_cr *C.cairo_t, data C.gpointer) C.gboolean {
+	signalWidgetDrawLock.RLock()
+	defer signalWidgetDrawLock.RUnlock()
+
 	cr := cairo.ContextNewFromC(unsafe.Pointer(c_cr))
 
 	index := int(uintptr(data))
@@ -2889,7 +2904,7 @@ type signalWidgetStyleUpdatedDetail struct {
 
 var signalWidgetStyleUpdatedId int
 var signalWidgetStyleUpdatedMap = make(map[int]signalWidgetStyleUpdatedDetail)
-var signalWidgetStyleUpdatedLock sync.Mutex
+var signalWidgetStyleUpdatedLock sync.RWMutex
 
 // WidgetSignalStyleUpdatedCallback is a callback function for a 'style-updated' signal emitted from a Widget.
 type WidgetSignalStyleUpdatedCallback func()
@@ -2934,6 +2949,9 @@ func (recv *Widget) DisconnectStyleUpdated(connectionID int) {
 
 //export widget_styleUpdatedHandler
 func widget_styleUpdatedHandler(_ *C.GObject, data C.gpointer) {
+	signalWidgetStyleUpdatedLock.RLock()
+	defer signalWidgetStyleUpdatedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalWidgetStyleUpdatedMap[index].callback
 	callback()

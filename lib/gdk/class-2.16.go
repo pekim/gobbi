@@ -26,7 +26,7 @@ type signalKeymapStateChangedDetail struct {
 
 var signalKeymapStateChangedId int
 var signalKeymapStateChangedMap = make(map[int]signalKeymapStateChangedDetail)
-var signalKeymapStateChangedLock sync.Mutex
+var signalKeymapStateChangedLock sync.RWMutex
 
 // KeymapSignalStateChangedCallback is a callback function for a 'state-changed' signal emitted from a Keymap.
 type KeymapSignalStateChangedCallback func()
@@ -71,6 +71,9 @@ func (recv *Keymap) DisconnectStateChanged(connectionID int) {
 
 //export keymap_stateChangedHandler
 func keymap_stateChangedHandler(_ *C.GObject, data C.gpointer) {
+	signalKeymapStateChangedLock.RLock()
+	defer signalKeymapStateChangedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalKeymapStateChangedMap[index].callback
 	callback()

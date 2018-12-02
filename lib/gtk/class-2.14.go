@@ -223,7 +223,7 @@ type signalCellRendererComboChangedDetail struct {
 
 var signalCellRendererComboChangedId int
 var signalCellRendererComboChangedMap = make(map[int]signalCellRendererComboChangedDetail)
-var signalCellRendererComboChangedLock sync.Mutex
+var signalCellRendererComboChangedLock sync.RWMutex
 
 // CellRendererComboSignalChangedCallback is a callback function for a 'changed' signal emitted from a CellRendererCombo.
 type CellRendererComboSignalChangedCallback func(pathString string, newIter *TreeIter)
@@ -268,6 +268,9 @@ func (recv *CellRendererCombo) DisconnectChanged(connectionID int) {
 
 //export cellrenderercombo_changedHandler
 func cellrenderercombo_changedHandler(_ *C.GObject, c_path_string *C.gchar, c_new_iter *C.GtkTreeIter, data C.gpointer) {
+	signalCellRendererComboChangedLock.RLock()
+	defer signalCellRendererComboChangedLock.RUnlock()
+
 	pathString := C.GoString(c_path_string)
 
 	newIter := TreeIterNewFromC(unsafe.Pointer(c_new_iter))
@@ -842,7 +845,7 @@ type signalStatusIconButtonPressEventDetail struct {
 
 var signalStatusIconButtonPressEventId int
 var signalStatusIconButtonPressEventMap = make(map[int]signalStatusIconButtonPressEventDetail)
-var signalStatusIconButtonPressEventLock sync.Mutex
+var signalStatusIconButtonPressEventLock sync.RWMutex
 
 // StatusIconSignalButtonPressEventCallback is a callback function for a 'button-press-event' signal emitted from a StatusIcon.
 type StatusIconSignalButtonPressEventCallback func(event *gdk.EventButton) bool
@@ -887,6 +890,9 @@ func (recv *StatusIcon) DisconnectButtonPressEvent(connectionID int) {
 
 //export statusicon_buttonPressEventHandler
 func statusicon_buttonPressEventHandler(_ *C.GObject, c_event *C.GdkEventButton, data C.gpointer) C.gboolean {
+	signalStatusIconButtonPressEventLock.RLock()
+	defer signalStatusIconButtonPressEventLock.RUnlock()
+
 	event := gdk.EventButtonNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -904,7 +910,7 @@ type signalStatusIconButtonReleaseEventDetail struct {
 
 var signalStatusIconButtonReleaseEventId int
 var signalStatusIconButtonReleaseEventMap = make(map[int]signalStatusIconButtonReleaseEventDetail)
-var signalStatusIconButtonReleaseEventLock sync.Mutex
+var signalStatusIconButtonReleaseEventLock sync.RWMutex
 
 // StatusIconSignalButtonReleaseEventCallback is a callback function for a 'button-release-event' signal emitted from a StatusIcon.
 type StatusIconSignalButtonReleaseEventCallback func(event *gdk.EventButton) bool
@@ -949,6 +955,9 @@ func (recv *StatusIcon) DisconnectButtonReleaseEvent(connectionID int) {
 
 //export statusicon_buttonReleaseEventHandler
 func statusicon_buttonReleaseEventHandler(_ *C.GObject, c_event *C.GdkEventButton, data C.gpointer) C.gboolean {
+	signalStatusIconButtonReleaseEventLock.RLock()
+	defer signalStatusIconButtonReleaseEventLock.RUnlock()
+
 	event := gdk.EventButtonNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -1027,7 +1036,7 @@ type signalWidgetDamageEventDetail struct {
 
 var signalWidgetDamageEventId int
 var signalWidgetDamageEventMap = make(map[int]signalWidgetDamageEventDetail)
-var signalWidgetDamageEventLock sync.Mutex
+var signalWidgetDamageEventLock sync.RWMutex
 
 // WidgetSignalDamageEventCallback is a callback function for a 'damage-event' signal emitted from a Widget.
 type WidgetSignalDamageEventCallback func(event *gdk.EventExpose) bool
@@ -1072,6 +1081,9 @@ func (recv *Widget) DisconnectDamageEvent(connectionID int) {
 
 //export widget_damageEventHandler
 func widget_damageEventHandler(_ *C.GObject, c_event *C.GdkEventExpose, data C.gpointer) C.gboolean {
+	signalWidgetDamageEventLock.RLock()
+	defer signalWidgetDamageEventLock.RUnlock()
+
 	event := gdk.EventExposeNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))

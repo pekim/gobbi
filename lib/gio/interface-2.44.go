@@ -40,7 +40,7 @@ type signalListModelItemsChangedDetail struct {
 
 var signalListModelItemsChangedId int
 var signalListModelItemsChangedMap = make(map[int]signalListModelItemsChangedDetail)
-var signalListModelItemsChangedLock sync.Mutex
+var signalListModelItemsChangedLock sync.RWMutex
 
 // ListModelSignalItemsChangedCallback is a callback function for a 'items-changed' signal emitted from a ListModel.
 type ListModelSignalItemsChangedCallback func(position uint32, removed uint32, added uint32)
@@ -85,6 +85,9 @@ func (recv *ListModel) DisconnectItemsChanged(connectionID int) {
 
 //export listmodel_itemsChangedHandler
 func listmodel_itemsChangedHandler(_ *C.GObject, c_position C.guint, c_removed C.guint, c_added C.guint, data C.gpointer) {
+	signalListModelItemsChangedLock.RLock()
+	defer signalListModelItemsChangedLock.RUnlock()
+
 	position := uint32(c_position)
 
 	removed := uint32(c_removed)

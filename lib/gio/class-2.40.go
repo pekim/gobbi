@@ -78,7 +78,7 @@ type signalAppInfoMonitorChangedDetail struct {
 
 var signalAppInfoMonitorChangedId int
 var signalAppInfoMonitorChangedMap = make(map[int]signalAppInfoMonitorChangedDetail)
-var signalAppInfoMonitorChangedLock sync.Mutex
+var signalAppInfoMonitorChangedLock sync.RWMutex
 
 // AppInfoMonitorSignalChangedCallback is a callback function for a 'changed' signal emitted from a AppInfoMonitor.
 type AppInfoMonitorSignalChangedCallback func()
@@ -123,6 +123,9 @@ func (recv *AppInfoMonitor) DisconnectChanged(connectionID int) {
 
 //export appinfomonitor_changedHandler
 func appinfomonitor_changedHandler(_ *C.GObject, data C.gpointer) {
+	signalAppInfoMonitorChangedLock.RLock()
+	defer signalAppInfoMonitorChangedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalAppInfoMonitorChangedMap[index].callback
 	callback()

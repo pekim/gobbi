@@ -590,7 +590,7 @@ type signalDriveChangedDetail struct {
 
 var signalDriveChangedId int
 var signalDriveChangedMap = make(map[int]signalDriveChangedDetail)
-var signalDriveChangedLock sync.Mutex
+var signalDriveChangedLock sync.RWMutex
 
 // DriveSignalChangedCallback is a callback function for a 'changed' signal emitted from a Drive.
 type DriveSignalChangedCallback func()
@@ -635,6 +635,9 @@ func (recv *Drive) DisconnectChanged(connectionID int) {
 
 //export drive_changedHandler
 func drive_changedHandler(_ *C.GObject, data C.gpointer) {
+	signalDriveChangedLock.RLock()
+	defer signalDriveChangedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalDriveChangedMap[index].callback
 	callback()
@@ -647,7 +650,7 @@ type signalDriveDisconnectedDetail struct {
 
 var signalDriveDisconnectedId int
 var signalDriveDisconnectedMap = make(map[int]signalDriveDisconnectedDetail)
-var signalDriveDisconnectedLock sync.Mutex
+var signalDriveDisconnectedLock sync.RWMutex
 
 // DriveSignalDisconnectedCallback is a callback function for a 'disconnected' signal emitted from a Drive.
 type DriveSignalDisconnectedCallback func()
@@ -692,6 +695,9 @@ func (recv *Drive) DisconnectDisconnected(connectionID int) {
 
 //export drive_disconnectedHandler
 func drive_disconnectedHandler(_ *C.GObject, data C.gpointer) {
+	signalDriveDisconnectedLock.RLock()
+	defer signalDriveDisconnectedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalDriveDisconnectedMap[index].callback
 	callback()
@@ -704,7 +710,7 @@ type signalDriveEjectButtonDetail struct {
 
 var signalDriveEjectButtonId int
 var signalDriveEjectButtonMap = make(map[int]signalDriveEjectButtonDetail)
-var signalDriveEjectButtonLock sync.Mutex
+var signalDriveEjectButtonLock sync.RWMutex
 
 // DriveSignalEjectButtonCallback is a callback function for a 'eject-button' signal emitted from a Drive.
 type DriveSignalEjectButtonCallback func()
@@ -749,6 +755,9 @@ func (recv *Drive) DisconnectEjectButton(connectionID int) {
 
 //export drive_ejectButtonHandler
 func drive_ejectButtonHandler(_ *C.GObject, data C.gpointer) {
+	signalDriveEjectButtonLock.RLock()
+	defer signalDriveEjectButtonLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalDriveEjectButtonMap[index].callback
 	callback()
@@ -2283,7 +2292,7 @@ type signalMountChangedDetail struct {
 
 var signalMountChangedId int
 var signalMountChangedMap = make(map[int]signalMountChangedDetail)
-var signalMountChangedLock sync.Mutex
+var signalMountChangedLock sync.RWMutex
 
 // MountSignalChangedCallback is a callback function for a 'changed' signal emitted from a Mount.
 type MountSignalChangedCallback func()
@@ -2328,6 +2337,9 @@ func (recv *Mount) DisconnectChanged(connectionID int) {
 
 //export mount_changedHandler
 func mount_changedHandler(_ *C.GObject, data C.gpointer) {
+	signalMountChangedLock.RLock()
+	defer signalMountChangedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalMountChangedMap[index].callback
 	callback()
@@ -2340,7 +2352,7 @@ type signalMountUnmountedDetail struct {
 
 var signalMountUnmountedId int
 var signalMountUnmountedMap = make(map[int]signalMountUnmountedDetail)
-var signalMountUnmountedLock sync.Mutex
+var signalMountUnmountedLock sync.RWMutex
 
 // MountSignalUnmountedCallback is a callback function for a 'unmounted' signal emitted from a Mount.
 type MountSignalUnmountedCallback func()
@@ -2385,6 +2397,9 @@ func (recv *Mount) DisconnectUnmounted(connectionID int) {
 
 //export mount_unmountedHandler
 func mount_unmountedHandler(_ *C.GObject, data C.gpointer) {
+	signalMountUnmountedLock.RLock()
+	defer signalMountUnmountedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalMountUnmountedMap[index].callback
 	callback()
@@ -2702,7 +2717,7 @@ type signalVolumeChangedDetail struct {
 
 var signalVolumeChangedId int
 var signalVolumeChangedMap = make(map[int]signalVolumeChangedDetail)
-var signalVolumeChangedLock sync.Mutex
+var signalVolumeChangedLock sync.RWMutex
 
 // VolumeSignalChangedCallback is a callback function for a 'changed' signal emitted from a Volume.
 type VolumeSignalChangedCallback func()
@@ -2747,6 +2762,9 @@ func (recv *Volume) DisconnectChanged(connectionID int) {
 
 //export volume_changedHandler
 func volume_changedHandler(_ *C.GObject, data C.gpointer) {
+	signalVolumeChangedLock.RLock()
+	defer signalVolumeChangedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalVolumeChangedMap[index].callback
 	callback()
@@ -2759,7 +2777,7 @@ type signalVolumeRemovedDetail struct {
 
 var signalVolumeRemovedId int
 var signalVolumeRemovedMap = make(map[int]signalVolumeRemovedDetail)
-var signalVolumeRemovedLock sync.Mutex
+var signalVolumeRemovedLock sync.RWMutex
 
 // VolumeSignalRemovedCallback is a callback function for a 'removed' signal emitted from a Volume.
 type VolumeSignalRemovedCallback func()
@@ -2804,6 +2822,9 @@ func (recv *Volume) DisconnectRemoved(connectionID int) {
 
 //export volume_removedHandler
 func volume_removedHandler(_ *C.GObject, data C.gpointer) {
+	signalVolumeRemovedLock.RLock()
+	defer signalVolumeRemovedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalVolumeRemovedMap[index].callback
 	callback()

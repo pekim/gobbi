@@ -68,7 +68,7 @@ type signalMountOperationAbortedDetail struct {
 
 var signalMountOperationAbortedId int
 var signalMountOperationAbortedMap = make(map[int]signalMountOperationAbortedDetail)
-var signalMountOperationAbortedLock sync.Mutex
+var signalMountOperationAbortedLock sync.RWMutex
 
 // MountOperationSignalAbortedCallback is a callback function for a 'aborted' signal emitted from a MountOperation.
 type MountOperationSignalAbortedCallback func()
@@ -113,6 +113,9 @@ func (recv *MountOperation) DisconnectAborted(connectionID int) {
 
 //export mountoperation_abortedHandler
 func mountoperation_abortedHandler(_ *C.GObject, data C.gpointer) {
+	signalMountOperationAbortedLock.RLock()
+	defer signalMountOperationAbortedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalMountOperationAbortedMap[index].callback
 	callback()

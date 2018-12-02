@@ -226,7 +226,7 @@ type signalMountOperationShowUnmountProgressDetail struct {
 
 var signalMountOperationShowUnmountProgressId int
 var signalMountOperationShowUnmountProgressMap = make(map[int]signalMountOperationShowUnmountProgressDetail)
-var signalMountOperationShowUnmountProgressLock sync.Mutex
+var signalMountOperationShowUnmountProgressLock sync.RWMutex
 
 // MountOperationSignalShowUnmountProgressCallback is a callback function for a 'show-unmount-progress' signal emitted from a MountOperation.
 type MountOperationSignalShowUnmountProgressCallback func(message string, timeLeft int64, bytesLeft int64)
@@ -271,6 +271,9 @@ func (recv *MountOperation) DisconnectShowUnmountProgress(connectionID int) {
 
 //export mountoperation_showUnmountProgressHandler
 func mountoperation_showUnmountProgressHandler(_ *C.GObject, c_message *C.gchar, c_time_left C.gint64, c_bytes_left C.gint64, data C.gpointer) {
+	signalMountOperationShowUnmountProgressLock.RLock()
+	defer signalMountOperationShowUnmountProgressLock.RUnlock()
+
 	message := C.GoString(c_message)
 
 	timeLeft := int64(c_time_left)

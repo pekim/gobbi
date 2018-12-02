@@ -67,7 +67,7 @@ type signalDeviceToolChangedDetail struct {
 
 var signalDeviceToolChangedId int
 var signalDeviceToolChangedMap = make(map[int]signalDeviceToolChangedDetail)
-var signalDeviceToolChangedLock sync.Mutex
+var signalDeviceToolChangedLock sync.RWMutex
 
 // DeviceSignalToolChangedCallback is a callback function for a 'tool-changed' signal emitted from a Device.
 type DeviceSignalToolChangedCallback func(tool *DeviceTool)
@@ -112,6 +112,9 @@ func (recv *Device) DisconnectToolChanged(connectionID int) {
 
 //export device_toolChangedHandler
 func device_toolChangedHandler(_ *C.GObject, c_tool *C.GdkDeviceTool, data C.gpointer) {
+	signalDeviceToolChangedLock.RLock()
+	defer signalDeviceToolChangedLock.RUnlock()
+
 	tool := DeviceToolNewFromC(unsafe.Pointer(c_tool))
 
 	index := int(uintptr(data))
@@ -195,7 +198,7 @@ type signalDisplayMonitorAddedDetail struct {
 
 var signalDisplayMonitorAddedId int
 var signalDisplayMonitorAddedMap = make(map[int]signalDisplayMonitorAddedDetail)
-var signalDisplayMonitorAddedLock sync.Mutex
+var signalDisplayMonitorAddedLock sync.RWMutex
 
 // DisplaySignalMonitorAddedCallback is a callback function for a 'monitor-added' signal emitted from a Display.
 type DisplaySignalMonitorAddedCallback func(monitor *Monitor)
@@ -240,6 +243,9 @@ func (recv *Display) DisconnectMonitorAdded(connectionID int) {
 
 //export display_monitorAddedHandler
 func display_monitorAddedHandler(_ *C.GObject, c_monitor *C.GdkMonitor, data C.gpointer) {
+	signalDisplayMonitorAddedLock.RLock()
+	defer signalDisplayMonitorAddedLock.RUnlock()
+
 	monitor := MonitorNewFromC(unsafe.Pointer(c_monitor))
 
 	index := int(uintptr(data))
@@ -254,7 +260,7 @@ type signalDisplayMonitorRemovedDetail struct {
 
 var signalDisplayMonitorRemovedId int
 var signalDisplayMonitorRemovedMap = make(map[int]signalDisplayMonitorRemovedDetail)
-var signalDisplayMonitorRemovedLock sync.Mutex
+var signalDisplayMonitorRemovedLock sync.RWMutex
 
 // DisplaySignalMonitorRemovedCallback is a callback function for a 'monitor-removed' signal emitted from a Display.
 type DisplaySignalMonitorRemovedCallback func(monitor *Monitor)
@@ -299,6 +305,9 @@ func (recv *Display) DisconnectMonitorRemoved(connectionID int) {
 
 //export display_monitorRemovedHandler
 func display_monitorRemovedHandler(_ *C.GObject, c_monitor *C.GdkMonitor, data C.gpointer) {
+	signalDisplayMonitorRemovedLock.RLock()
+	defer signalDisplayMonitorRemovedLock.RUnlock()
+
 	monitor := MonitorNewFromC(unsafe.Pointer(c_monitor))
 
 	index := int(uintptr(data))
@@ -502,7 +511,7 @@ type signalMonitorInvalidateDetail struct {
 
 var signalMonitorInvalidateId int
 var signalMonitorInvalidateMap = make(map[int]signalMonitorInvalidateDetail)
-var signalMonitorInvalidateLock sync.Mutex
+var signalMonitorInvalidateLock sync.RWMutex
 
 // MonitorSignalInvalidateCallback is a callback function for a 'invalidate' signal emitted from a Monitor.
 type MonitorSignalInvalidateCallback func()
@@ -547,6 +556,9 @@ func (recv *Monitor) DisconnectInvalidate(connectionID int) {
 
 //export monitor_invalidateHandler
 func monitor_invalidateHandler(_ *C.GObject, data C.gpointer) {
+	signalMonitorInvalidateLock.RLock()
+	defer signalMonitorInvalidateLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalMonitorInvalidateMap[index].callback
 	callback()
@@ -681,7 +693,7 @@ type signalWindowMovedToRectDetail struct {
 
 var signalWindowMovedToRectId int
 var signalWindowMovedToRectMap = make(map[int]signalWindowMovedToRectDetail)
-var signalWindowMovedToRectLock sync.Mutex
+var signalWindowMovedToRectLock sync.RWMutex
 
 // WindowSignalMovedToRectCallback is a callback function for a 'moved-to-rect' signal emitted from a Window.
 type WindowSignalMovedToRectCallback func(flippedRect uintptr, finalRect uintptr, flippedX bool, flippedY bool)
@@ -726,6 +738,9 @@ func (recv *Window) DisconnectMovedToRect(connectionID int) {
 
 //export window_movedToRectHandler
 func window_movedToRectHandler(_ *C.GObject, c_flipped_rect C.gpointer, c_final_rect C.gpointer, c_flipped_x C.gboolean, c_flipped_y C.gboolean, data C.gpointer) {
+	signalWindowMovedToRectLock.RLock()
+	defer signalWindowMovedToRectLock.RUnlock()
+
 	flippedRect := uintptr(c_flipped_rect)
 
 	finalRect := uintptr(c_final_rect)

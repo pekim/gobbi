@@ -280,7 +280,7 @@ type signalComboBoxPopdownDetail struct {
 
 var signalComboBoxPopdownId int
 var signalComboBoxPopdownMap = make(map[int]signalComboBoxPopdownDetail)
-var signalComboBoxPopdownLock sync.Mutex
+var signalComboBoxPopdownLock sync.RWMutex
 
 // ComboBoxSignalPopdownCallback is a callback function for a 'popdown' signal emitted from a ComboBox.
 type ComboBoxSignalPopdownCallback func() bool
@@ -325,6 +325,9 @@ func (recv *ComboBox) DisconnectPopdown(connectionID int) {
 
 //export combobox_popdownHandler
 func combobox_popdownHandler(_ *C.GObject, data C.gpointer) C.gboolean {
+	signalComboBoxPopdownLock.RLock()
+	defer signalComboBoxPopdownLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalComboBoxPopdownMap[index].callback
 	retGo := callback()
@@ -340,7 +343,7 @@ type signalComboBoxPopupDetail struct {
 
 var signalComboBoxPopupId int
 var signalComboBoxPopupMap = make(map[int]signalComboBoxPopupDetail)
-var signalComboBoxPopupLock sync.Mutex
+var signalComboBoxPopupLock sync.RWMutex
 
 // ComboBoxSignalPopupCallback is a callback function for a 'popup' signal emitted from a ComboBox.
 type ComboBoxSignalPopupCallback func()
@@ -385,6 +388,9 @@ func (recv *ComboBox) DisconnectPopup(connectionID int) {
 
 //export combobox_popupHandler
 func combobox_popupHandler(_ *C.GObject, data C.gpointer) {
+	signalComboBoxPopupLock.RLock()
+	defer signalComboBoxPopupLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalComboBoxPopupMap[index].callback
 	callback()
@@ -422,7 +428,7 @@ type signalEntryCompletionCursorOnMatchDetail struct {
 
 var signalEntryCompletionCursorOnMatchId int
 var signalEntryCompletionCursorOnMatchMap = make(map[int]signalEntryCompletionCursorOnMatchDetail)
-var signalEntryCompletionCursorOnMatchLock sync.Mutex
+var signalEntryCompletionCursorOnMatchLock sync.RWMutex
 
 // EntryCompletionSignalCursorOnMatchCallback is a callback function for a 'cursor-on-match' signal emitted from a EntryCompletion.
 type EntryCompletionSignalCursorOnMatchCallback func(model *TreeModel, iter *TreeIter) bool
@@ -467,6 +473,9 @@ func (recv *EntryCompletion) DisconnectCursorOnMatch(connectionID int) {
 
 //export entrycompletion_cursorOnMatchHandler
 func entrycompletion_cursorOnMatchHandler(_ *C.GObject, c_model *C.GtkTreeModel, c_iter *C.GtkTreeIter, data C.gpointer) C.gboolean {
+	signalEntryCompletionCursorOnMatchLock.RLock()
+	defer signalEntryCompletionCursorOnMatchLock.RUnlock()
+
 	model := TreeModelNewFromC(unsafe.Pointer(c_model))
 
 	iter := TreeIterNewFromC(unsafe.Pointer(c_iter))
@@ -512,7 +521,7 @@ type signalFileChooserButtonFileSetDetail struct {
 
 var signalFileChooserButtonFileSetId int
 var signalFileChooserButtonFileSetMap = make(map[int]signalFileChooserButtonFileSetDetail)
-var signalFileChooserButtonFileSetLock sync.Mutex
+var signalFileChooserButtonFileSetLock sync.RWMutex
 
 // FileChooserButtonSignalFileSetCallback is a callback function for a 'file-set' signal emitted from a FileChooserButton.
 type FileChooserButtonSignalFileSetCallback func()
@@ -557,6 +566,9 @@ func (recv *FileChooserButton) DisconnectFileSet(connectionID int) {
 
 //export filechooserbutton_fileSetHandler
 func filechooserbutton_fileSetHandler(_ *C.GObject, data C.gpointer) {
+	signalFileChooserButtonFileSetLock.RLock()
+	defer signalFileChooserButtonFileSetLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalFileChooserButtonFileSetMap[index].callback
 	callback()
@@ -683,7 +695,7 @@ type signalMenuShellMoveSelectedDetail struct {
 
 var signalMenuShellMoveSelectedId int
 var signalMenuShellMoveSelectedMap = make(map[int]signalMenuShellMoveSelectedDetail)
-var signalMenuShellMoveSelectedLock sync.Mutex
+var signalMenuShellMoveSelectedLock sync.RWMutex
 
 // MenuShellSignalMoveSelectedCallback is a callback function for a 'move-selected' signal emitted from a MenuShell.
 type MenuShellSignalMoveSelectedCallback func(distance int32) bool
@@ -728,6 +740,9 @@ func (recv *MenuShell) DisconnectMoveSelected(connectionID int) {
 
 //export menushell_moveSelectedHandler
 func menushell_moveSelectedHandler(_ *C.GObject, c_distance C.gint, data C.gpointer) C.gboolean {
+	signalMenuShellMoveSelectedLock.RLock()
+	defer signalMenuShellMoveSelectedLock.RUnlock()
+
 	distance := int32(c_distance)
 
 	index := int(uintptr(data))
@@ -765,7 +780,7 @@ type signalNotebookCreateWindowDetail struct {
 
 var signalNotebookCreateWindowId int
 var signalNotebookCreateWindowMap = make(map[int]signalNotebookCreateWindowDetail)
-var signalNotebookCreateWindowLock sync.Mutex
+var signalNotebookCreateWindowLock sync.RWMutex
 
 // NotebookSignalCreateWindowCallback is a callback function for a 'create-window' signal emitted from a Notebook.
 type NotebookSignalCreateWindowCallback func(page *Widget, x int32, y int32) Notebook
@@ -810,6 +825,9 @@ func (recv *Notebook) DisconnectCreateWindow(connectionID int) {
 
 //export notebook_createWindowHandler
 func notebook_createWindowHandler(_ *C.GObject, c_page *C.GtkWidget, c_x C.gint, c_y C.gint, data C.gpointer) *C.GtkNotebook {
+	signalNotebookCreateWindowLock.RLock()
+	defer signalNotebookCreateWindowLock.RUnlock()
+
 	page := WidgetNewFromC(unsafe.Pointer(c_page))
 
 	x := int32(c_x)
@@ -1095,7 +1113,7 @@ type signalScaleButtonPopdownDetail struct {
 
 var signalScaleButtonPopdownId int
 var signalScaleButtonPopdownMap = make(map[int]signalScaleButtonPopdownDetail)
-var signalScaleButtonPopdownLock sync.Mutex
+var signalScaleButtonPopdownLock sync.RWMutex
 
 // ScaleButtonSignalPopdownCallback is a callback function for a 'popdown' signal emitted from a ScaleButton.
 type ScaleButtonSignalPopdownCallback func()
@@ -1140,6 +1158,9 @@ func (recv *ScaleButton) DisconnectPopdown(connectionID int) {
 
 //export scalebutton_popdownHandler
 func scalebutton_popdownHandler(_ *C.GObject, data C.gpointer) {
+	signalScaleButtonPopdownLock.RLock()
+	defer signalScaleButtonPopdownLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalScaleButtonPopdownMap[index].callback
 	callback()
@@ -1152,7 +1173,7 @@ type signalScaleButtonPopupDetail struct {
 
 var signalScaleButtonPopupId int
 var signalScaleButtonPopupMap = make(map[int]signalScaleButtonPopupDetail)
-var signalScaleButtonPopupLock sync.Mutex
+var signalScaleButtonPopupLock sync.RWMutex
 
 // ScaleButtonSignalPopupCallback is a callback function for a 'popup' signal emitted from a ScaleButton.
 type ScaleButtonSignalPopupCallback func()
@@ -1197,6 +1218,9 @@ func (recv *ScaleButton) DisconnectPopup(connectionID int) {
 
 //export scalebutton_popupHandler
 func scalebutton_popupHandler(_ *C.GObject, data C.gpointer) {
+	signalScaleButtonPopupLock.RLock()
+	defer signalScaleButtonPopupLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalScaleButtonPopupMap[index].callback
 	callback()
@@ -1209,7 +1233,7 @@ type signalScaleButtonValueChangedDetail struct {
 
 var signalScaleButtonValueChangedId int
 var signalScaleButtonValueChangedMap = make(map[int]signalScaleButtonValueChangedDetail)
-var signalScaleButtonValueChangedLock sync.Mutex
+var signalScaleButtonValueChangedLock sync.RWMutex
 
 // ScaleButtonSignalValueChangedCallback is a callback function for a 'value-changed' signal emitted from a ScaleButton.
 type ScaleButtonSignalValueChangedCallback func(value float64)
@@ -1254,6 +1278,9 @@ func (recv *ScaleButton) DisconnectValueChanged(connectionID int) {
 
 //export scalebutton_valueChangedHandler
 func scalebutton_valueChangedHandler(_ *C.GObject, c_value C.gdouble, data C.gpointer) {
+	signalScaleButtonValueChangedLock.RLock()
+	defer signalScaleButtonValueChangedLock.RUnlock()
+
 	value := float64(c_value)
 
 	index := int(uintptr(data))
@@ -1710,7 +1737,7 @@ type signalWidgetQueryTooltipDetail struct {
 
 var signalWidgetQueryTooltipId int
 var signalWidgetQueryTooltipMap = make(map[int]signalWidgetQueryTooltipDetail)
-var signalWidgetQueryTooltipLock sync.Mutex
+var signalWidgetQueryTooltipLock sync.RWMutex
 
 // WidgetSignalQueryTooltipCallback is a callback function for a 'query-tooltip' signal emitted from a Widget.
 type WidgetSignalQueryTooltipCallback func(x int32, y int32, keyboardMode bool, tooltip *Tooltip) bool
@@ -1755,6 +1782,9 @@ func (recv *Widget) DisconnectQueryTooltip(connectionID int) {
 
 //export widget_queryTooltipHandler
 func widget_queryTooltipHandler(_ *C.GObject, c_x C.gint, c_y C.gint, c_keyboard_mode C.gboolean, c_tooltip *C.GtkTooltip, data C.gpointer) C.gboolean {
+	signalWidgetQueryTooltipLock.RLock()
+	defer signalWidgetQueryTooltipLock.RUnlock()
+
 	x := int32(c_x)
 
 	y := int32(c_y)

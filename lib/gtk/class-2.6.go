@@ -302,7 +302,7 @@ type signalCellRendererEditingStartedDetail struct {
 
 var signalCellRendererEditingStartedId int
 var signalCellRendererEditingStartedMap = make(map[int]signalCellRendererEditingStartedDetail)
-var signalCellRendererEditingStartedLock sync.Mutex
+var signalCellRendererEditingStartedLock sync.RWMutex
 
 // CellRendererSignalEditingStartedCallback is a callback function for a 'editing-started' signal emitted from a CellRenderer.
 type CellRendererSignalEditingStartedCallback func(editable *CellEditable, path string)
@@ -347,6 +347,9 @@ func (recv *CellRenderer) DisconnectEditingStarted(connectionID int) {
 
 //export cellrenderer_editingStartedHandler
 func cellrenderer_editingStartedHandler(_ *C.GObject, c_editable *C.GtkCellEditable, c_path *C.gchar, data C.gpointer) {
+	signalCellRendererEditingStartedLock.RLock()
+	defer signalCellRendererEditingStartedLock.RUnlock()
+
 	editable := CellEditableNewFromC(unsafe.Pointer(c_editable))
 
 	path := C.GoString(c_path)
@@ -513,7 +516,7 @@ type signalClipboardOwnerChangeDetail struct {
 
 var signalClipboardOwnerChangeId int
 var signalClipboardOwnerChangeMap = make(map[int]signalClipboardOwnerChangeDetail)
-var signalClipboardOwnerChangeLock sync.Mutex
+var signalClipboardOwnerChangeLock sync.RWMutex
 
 // ClipboardSignalOwnerChangeCallback is a callback function for a 'owner-change' signal emitted from a Clipboard.
 type ClipboardSignalOwnerChangeCallback func(event *gdk.EventOwnerChange)
@@ -558,6 +561,9 @@ func (recv *Clipboard) DisconnectOwnerChange(connectionID int) {
 
 //export clipboard_ownerChangeHandler
 func clipboard_ownerChangeHandler(_ *C.GObject, c_event *C.GdkEventOwnerChange, data C.gpointer) {
+	signalClipboardOwnerChangeLock.RLock()
+	defer signalClipboardOwnerChangeLock.RUnlock()
+
 	event := gdk.EventOwnerChangeNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -695,7 +701,7 @@ type signalEntryCompletionInsertPrefixDetail struct {
 
 var signalEntryCompletionInsertPrefixId int
 var signalEntryCompletionInsertPrefixMap = make(map[int]signalEntryCompletionInsertPrefixDetail)
-var signalEntryCompletionInsertPrefixLock sync.Mutex
+var signalEntryCompletionInsertPrefixLock sync.RWMutex
 
 // EntryCompletionSignalInsertPrefixCallback is a callback function for a 'insert-prefix' signal emitted from a EntryCompletion.
 type EntryCompletionSignalInsertPrefixCallback func(prefix string) bool
@@ -740,6 +746,9 @@ func (recv *EntryCompletion) DisconnectInsertPrefix(connectionID int) {
 
 //export entrycompletion_insertPrefixHandler
 func entrycompletion_insertPrefixHandler(_ *C.GObject, c_prefix *C.gchar, data C.gpointer) C.gboolean {
+	signalEntryCompletionInsertPrefixLock.RLock()
+	defer signalEntryCompletionInsertPrefixLock.RUnlock()
+
 	prefix := C.GoString(c_prefix)
 
 	index := int(uintptr(data))

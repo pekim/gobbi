@@ -139,7 +139,7 @@ type signalDBusObjectInterfaceAddedDetail struct {
 
 var signalDBusObjectInterfaceAddedId int
 var signalDBusObjectInterfaceAddedMap = make(map[int]signalDBusObjectInterfaceAddedDetail)
-var signalDBusObjectInterfaceAddedLock sync.Mutex
+var signalDBusObjectInterfaceAddedLock sync.RWMutex
 
 // DBusObjectSignalInterfaceAddedCallback is a callback function for a 'interface-added' signal emitted from a DBusObject.
 type DBusObjectSignalInterfaceAddedCallback func(interface_ *DBusInterface)
@@ -184,6 +184,9 @@ func (recv *DBusObject) DisconnectInterfaceAdded(connectionID int) {
 
 //export dbusobject_interfaceAddedHandler
 func dbusobject_interfaceAddedHandler(_ *C.GObject, c_interface *C.GDBusInterface, data C.gpointer) {
+	signalDBusObjectInterfaceAddedLock.RLock()
+	defer signalDBusObjectInterfaceAddedLock.RUnlock()
+
 	interface_ := DBusInterfaceNewFromC(unsafe.Pointer(c_interface))
 
 	index := int(uintptr(data))
@@ -198,7 +201,7 @@ type signalDBusObjectInterfaceRemovedDetail struct {
 
 var signalDBusObjectInterfaceRemovedId int
 var signalDBusObjectInterfaceRemovedMap = make(map[int]signalDBusObjectInterfaceRemovedDetail)
-var signalDBusObjectInterfaceRemovedLock sync.Mutex
+var signalDBusObjectInterfaceRemovedLock sync.RWMutex
 
 // DBusObjectSignalInterfaceRemovedCallback is a callback function for a 'interface-removed' signal emitted from a DBusObject.
 type DBusObjectSignalInterfaceRemovedCallback func(interface_ *DBusInterface)
@@ -243,6 +246,9 @@ func (recv *DBusObject) DisconnectInterfaceRemoved(connectionID int) {
 
 //export dbusobject_interfaceRemovedHandler
 func dbusobject_interfaceRemovedHandler(_ *C.GObject, c_interface *C.GDBusInterface, data C.gpointer) {
+	signalDBusObjectInterfaceRemovedLock.RLock()
+	defer signalDBusObjectInterfaceRemovedLock.RUnlock()
+
 	interface_ := DBusInterfaceNewFromC(unsafe.Pointer(c_interface))
 
 	index := int(uintptr(data))
@@ -284,7 +290,7 @@ type signalDBusObjectManagerInterfaceAddedDetail struct {
 
 var signalDBusObjectManagerInterfaceAddedId int
 var signalDBusObjectManagerInterfaceAddedMap = make(map[int]signalDBusObjectManagerInterfaceAddedDetail)
-var signalDBusObjectManagerInterfaceAddedLock sync.Mutex
+var signalDBusObjectManagerInterfaceAddedLock sync.RWMutex
 
 // DBusObjectManagerSignalInterfaceAddedCallback is a callback function for a 'interface-added' signal emitted from a DBusObjectManager.
 type DBusObjectManagerSignalInterfaceAddedCallback func(object *DBusObject, interface_ *DBusInterface)
@@ -329,6 +335,9 @@ func (recv *DBusObjectManager) DisconnectInterfaceAdded(connectionID int) {
 
 //export dbusobjectmanager_interfaceAddedHandler
 func dbusobjectmanager_interfaceAddedHandler(_ *C.GObject, c_object *C.GDBusObject, c_interface *C.GDBusInterface, data C.gpointer) {
+	signalDBusObjectManagerInterfaceAddedLock.RLock()
+	defer signalDBusObjectManagerInterfaceAddedLock.RUnlock()
+
 	object := DBusObjectNewFromC(unsafe.Pointer(c_object))
 
 	interface_ := DBusInterfaceNewFromC(unsafe.Pointer(c_interface))
@@ -345,7 +354,7 @@ type signalDBusObjectManagerInterfaceRemovedDetail struct {
 
 var signalDBusObjectManagerInterfaceRemovedId int
 var signalDBusObjectManagerInterfaceRemovedMap = make(map[int]signalDBusObjectManagerInterfaceRemovedDetail)
-var signalDBusObjectManagerInterfaceRemovedLock sync.Mutex
+var signalDBusObjectManagerInterfaceRemovedLock sync.RWMutex
 
 // DBusObjectManagerSignalInterfaceRemovedCallback is a callback function for a 'interface-removed' signal emitted from a DBusObjectManager.
 type DBusObjectManagerSignalInterfaceRemovedCallback func(object *DBusObject, interface_ *DBusInterface)
@@ -390,6 +399,9 @@ func (recv *DBusObjectManager) DisconnectInterfaceRemoved(connectionID int) {
 
 //export dbusobjectmanager_interfaceRemovedHandler
 func dbusobjectmanager_interfaceRemovedHandler(_ *C.GObject, c_object *C.GDBusObject, c_interface *C.GDBusInterface, data C.gpointer) {
+	signalDBusObjectManagerInterfaceRemovedLock.RLock()
+	defer signalDBusObjectManagerInterfaceRemovedLock.RUnlock()
+
 	object := DBusObjectNewFromC(unsafe.Pointer(c_object))
 
 	interface_ := DBusInterfaceNewFromC(unsafe.Pointer(c_interface))
@@ -406,7 +418,7 @@ type signalDBusObjectManagerObjectAddedDetail struct {
 
 var signalDBusObjectManagerObjectAddedId int
 var signalDBusObjectManagerObjectAddedMap = make(map[int]signalDBusObjectManagerObjectAddedDetail)
-var signalDBusObjectManagerObjectAddedLock sync.Mutex
+var signalDBusObjectManagerObjectAddedLock sync.RWMutex
 
 // DBusObjectManagerSignalObjectAddedCallback is a callback function for a 'object-added' signal emitted from a DBusObjectManager.
 type DBusObjectManagerSignalObjectAddedCallback func(object *DBusObject)
@@ -451,6 +463,9 @@ func (recv *DBusObjectManager) DisconnectObjectAdded(connectionID int) {
 
 //export dbusobjectmanager_objectAddedHandler
 func dbusobjectmanager_objectAddedHandler(_ *C.GObject, c_object *C.GDBusObject, data C.gpointer) {
+	signalDBusObjectManagerObjectAddedLock.RLock()
+	defer signalDBusObjectManagerObjectAddedLock.RUnlock()
+
 	object := DBusObjectNewFromC(unsafe.Pointer(c_object))
 
 	index := int(uintptr(data))
@@ -465,7 +480,7 @@ type signalDBusObjectManagerObjectRemovedDetail struct {
 
 var signalDBusObjectManagerObjectRemovedId int
 var signalDBusObjectManagerObjectRemovedMap = make(map[int]signalDBusObjectManagerObjectRemovedDetail)
-var signalDBusObjectManagerObjectRemovedLock sync.Mutex
+var signalDBusObjectManagerObjectRemovedLock sync.RWMutex
 
 // DBusObjectManagerSignalObjectRemovedCallback is a callback function for a 'object-removed' signal emitted from a DBusObjectManager.
 type DBusObjectManagerSignalObjectRemovedCallback func(object *DBusObject)
@@ -510,6 +525,9 @@ func (recv *DBusObjectManager) DisconnectObjectRemoved(connectionID int) {
 
 //export dbusobjectmanager_objectRemovedHandler
 func dbusobjectmanager_objectRemovedHandler(_ *C.GObject, c_object *C.GDBusObject, data C.gpointer) {
+	signalDBusObjectManagerObjectRemovedLock.RLock()
+	defer signalDBusObjectManagerObjectRemovedLock.RUnlock()
+
 	object := DBusObjectNewFromC(unsafe.Pointer(c_object))
 
 	index := int(uintptr(data))

@@ -31,7 +31,7 @@ type signalAboutDialogActivateLinkDetail struct {
 
 var signalAboutDialogActivateLinkId int
 var signalAboutDialogActivateLinkMap = make(map[int]signalAboutDialogActivateLinkDetail)
-var signalAboutDialogActivateLinkLock sync.Mutex
+var signalAboutDialogActivateLinkLock sync.RWMutex
 
 // AboutDialogSignalActivateLinkCallback is a callback function for a 'activate-link' signal emitted from a AboutDialog.
 type AboutDialogSignalActivateLinkCallback func(uri string) bool
@@ -76,6 +76,9 @@ func (recv *AboutDialog) DisconnectActivateLink(connectionID int) {
 
 //export aboutdialog_activateLinkHandler
 func aboutdialog_activateLinkHandler(_ *C.GObject, c_uri *C.gchar, data C.gpointer) C.gboolean {
+	signalAboutDialogActivateLinkLock.RLock()
+	defer signalAboutDialogActivateLinkLock.RUnlock()
+
 	uri := C.GoString(c_uri)
 
 	index := int(uintptr(data))

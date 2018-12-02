@@ -2542,7 +2542,7 @@ type signalAdjustmentChangedDetail struct {
 
 var signalAdjustmentChangedId int
 var signalAdjustmentChangedMap = make(map[int]signalAdjustmentChangedDetail)
-var signalAdjustmentChangedLock sync.Mutex
+var signalAdjustmentChangedLock sync.RWMutex
 
 // AdjustmentSignalChangedCallback is a callback function for a 'changed' signal emitted from a Adjustment.
 type AdjustmentSignalChangedCallback func()
@@ -2587,6 +2587,9 @@ func (recv *Adjustment) DisconnectChanged(connectionID int) {
 
 //export adjustment_changedHandler
 func adjustment_changedHandler(_ *C.GObject, data C.gpointer) {
+	signalAdjustmentChangedLock.RLock()
+	defer signalAdjustmentChangedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalAdjustmentChangedMap[index].callback
 	callback()
@@ -2599,7 +2602,7 @@ type signalAdjustmentValueChangedDetail struct {
 
 var signalAdjustmentValueChangedId int
 var signalAdjustmentValueChangedMap = make(map[int]signalAdjustmentValueChangedDetail)
-var signalAdjustmentValueChangedLock sync.Mutex
+var signalAdjustmentValueChangedLock sync.RWMutex
 
 // AdjustmentSignalValueChangedCallback is a callback function for a 'value-changed' signal emitted from a Adjustment.
 type AdjustmentSignalValueChangedCallback func()
@@ -2644,6 +2647,9 @@ func (recv *Adjustment) DisconnectValueChanged(connectionID int) {
 
 //export adjustment_valueChangedHandler
 func adjustment_valueChangedHandler(_ *C.GObject, data C.gpointer) {
+	signalAdjustmentValueChangedLock.RLock()
+	defer signalAdjustmentValueChangedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalAdjustmentValueChangedMap[index].callback
 	callback()
@@ -2882,7 +2888,7 @@ type signalAppChooserButtonCustomItemActivatedDetail struct {
 
 var signalAppChooserButtonCustomItemActivatedId int
 var signalAppChooserButtonCustomItemActivatedMap = make(map[int]signalAppChooserButtonCustomItemActivatedDetail)
-var signalAppChooserButtonCustomItemActivatedLock sync.Mutex
+var signalAppChooserButtonCustomItemActivatedLock sync.RWMutex
 
 // AppChooserButtonSignalCustomItemActivatedCallback is a callback function for a 'custom-item-activated' signal emitted from a AppChooserButton.
 type AppChooserButtonSignalCustomItemActivatedCallback func(itemName string)
@@ -2927,6 +2933,9 @@ func (recv *AppChooserButton) DisconnectCustomItemActivated(connectionID int) {
 
 //export appchooserbutton_customItemActivatedHandler
 func appchooserbutton_customItemActivatedHandler(_ *C.GObject, c_item_name *C.gchar, data C.gpointer) {
+	signalAppChooserButtonCustomItemActivatedLock.RLock()
+	defer signalAppChooserButtonCustomItemActivatedLock.RUnlock()
+
 	itemName := C.GoString(c_item_name)
 
 	index := int(uintptr(data))
@@ -3145,7 +3154,7 @@ type signalAppChooserWidgetApplicationActivatedDetail struct {
 
 var signalAppChooserWidgetApplicationActivatedId int
 var signalAppChooserWidgetApplicationActivatedMap = make(map[int]signalAppChooserWidgetApplicationActivatedDetail)
-var signalAppChooserWidgetApplicationActivatedLock sync.Mutex
+var signalAppChooserWidgetApplicationActivatedLock sync.RWMutex
 
 // AppChooserWidgetSignalApplicationActivatedCallback is a callback function for a 'application-activated' signal emitted from a AppChooserWidget.
 type AppChooserWidgetSignalApplicationActivatedCallback func(application *gio.AppInfo)
@@ -3190,6 +3199,9 @@ func (recv *AppChooserWidget) DisconnectApplicationActivated(connectionID int) {
 
 //export appchooserwidget_applicationActivatedHandler
 func appchooserwidget_applicationActivatedHandler(_ *C.GObject, c_application *C.GAppInfo, data C.gpointer) {
+	signalAppChooserWidgetApplicationActivatedLock.RLock()
+	defer signalAppChooserWidgetApplicationActivatedLock.RUnlock()
+
 	application := gio.AppInfoNewFromC(unsafe.Pointer(c_application))
 
 	index := int(uintptr(data))
@@ -3204,7 +3216,7 @@ type signalAppChooserWidgetApplicationSelectedDetail struct {
 
 var signalAppChooserWidgetApplicationSelectedId int
 var signalAppChooserWidgetApplicationSelectedMap = make(map[int]signalAppChooserWidgetApplicationSelectedDetail)
-var signalAppChooserWidgetApplicationSelectedLock sync.Mutex
+var signalAppChooserWidgetApplicationSelectedLock sync.RWMutex
 
 // AppChooserWidgetSignalApplicationSelectedCallback is a callback function for a 'application-selected' signal emitted from a AppChooserWidget.
 type AppChooserWidgetSignalApplicationSelectedCallback func(application *gio.AppInfo)
@@ -3249,6 +3261,9 @@ func (recv *AppChooserWidget) DisconnectApplicationSelected(connectionID int) {
 
 //export appchooserwidget_applicationSelectedHandler
 func appchooserwidget_applicationSelectedHandler(_ *C.GObject, c_application *C.GAppInfo, data C.gpointer) {
+	signalAppChooserWidgetApplicationSelectedLock.RLock()
+	defer signalAppChooserWidgetApplicationSelectedLock.RUnlock()
+
 	application := gio.AppInfoNewFromC(unsafe.Pointer(c_application))
 
 	index := int(uintptr(data))
@@ -3263,7 +3278,7 @@ type signalAppChooserWidgetPopulatePopupDetail struct {
 
 var signalAppChooserWidgetPopulatePopupId int
 var signalAppChooserWidgetPopulatePopupMap = make(map[int]signalAppChooserWidgetPopulatePopupDetail)
-var signalAppChooserWidgetPopulatePopupLock sync.Mutex
+var signalAppChooserWidgetPopulatePopupLock sync.RWMutex
 
 // AppChooserWidgetSignalPopulatePopupCallback is a callback function for a 'populate-popup' signal emitted from a AppChooserWidget.
 type AppChooserWidgetSignalPopulatePopupCallback func(menu *Menu, application *gio.AppInfo)
@@ -3308,6 +3323,9 @@ func (recv *AppChooserWidget) DisconnectPopulatePopup(connectionID int) {
 
 //export appchooserwidget_populatePopupHandler
 func appchooserwidget_populatePopupHandler(_ *C.GObject, c_menu *C.GtkMenu, c_application *C.GAppInfo, data C.gpointer) {
+	signalAppChooserWidgetPopulatePopupLock.RLock()
+	defer signalAppChooserWidgetPopulatePopupLock.RUnlock()
+
 	menu := MenuNewFromC(unsafe.Pointer(c_menu))
 
 	application := gio.AppInfoNewFromC(unsafe.Pointer(c_application))
@@ -3812,7 +3830,7 @@ type signalAssistantEscapeDetail struct {
 
 var signalAssistantEscapeId int
 var signalAssistantEscapeMap = make(map[int]signalAssistantEscapeDetail)
-var signalAssistantEscapeLock sync.Mutex
+var signalAssistantEscapeLock sync.RWMutex
 
 // AssistantSignalEscapeCallback is a callback function for a 'escape' signal emitted from a Assistant.
 type AssistantSignalEscapeCallback func()
@@ -3857,6 +3875,9 @@ func (recv *Assistant) DisconnectEscape(connectionID int) {
 
 //export assistant_escapeHandler
 func assistant_escapeHandler(_ *C.GObject, data C.gpointer) {
+	signalAssistantEscapeLock.RLock()
+	defer signalAssistantEscapeLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalAssistantEscapeMap[index].callback
 	callback()
@@ -4302,7 +4323,7 @@ type signalButtonActivateDetail struct {
 
 var signalButtonActivateId int
 var signalButtonActivateMap = make(map[int]signalButtonActivateDetail)
-var signalButtonActivateLock sync.Mutex
+var signalButtonActivateLock sync.RWMutex
 
 // ButtonSignalActivateCallback is a callback function for a 'activate' signal emitted from a Button.
 type ButtonSignalActivateCallback func()
@@ -4347,6 +4368,9 @@ func (recv *Button) DisconnectActivate(connectionID int) {
 
 //export button_activateHandler
 func button_activateHandler(_ *C.GObject, data C.gpointer) {
+	signalButtonActivateLock.RLock()
+	defer signalButtonActivateLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalButtonActivateMap[index].callback
 	callback()
@@ -4359,7 +4383,7 @@ type signalButtonClickedDetail struct {
 
 var signalButtonClickedId int
 var signalButtonClickedMap = make(map[int]signalButtonClickedDetail)
-var signalButtonClickedLock sync.Mutex
+var signalButtonClickedLock sync.RWMutex
 
 // ButtonSignalClickedCallback is a callback function for a 'clicked' signal emitted from a Button.
 type ButtonSignalClickedCallback func()
@@ -4404,6 +4428,9 @@ func (recv *Button) DisconnectClicked(connectionID int) {
 
 //export button_clickedHandler
 func button_clickedHandler(_ *C.GObject, data C.gpointer) {
+	signalButtonClickedLock.RLock()
+	defer signalButtonClickedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalButtonClickedMap[index].callback
 	callback()
@@ -4416,7 +4443,7 @@ type signalButtonEnterDetail struct {
 
 var signalButtonEnterId int
 var signalButtonEnterMap = make(map[int]signalButtonEnterDetail)
-var signalButtonEnterLock sync.Mutex
+var signalButtonEnterLock sync.RWMutex
 
 // ButtonSignalEnterCallback is a callback function for a 'enter' signal emitted from a Button.
 type ButtonSignalEnterCallback func()
@@ -4461,6 +4488,9 @@ func (recv *Button) DisconnectEnter(connectionID int) {
 
 //export button_enterHandler
 func button_enterHandler(_ *C.GObject, data C.gpointer) {
+	signalButtonEnterLock.RLock()
+	defer signalButtonEnterLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalButtonEnterMap[index].callback
 	callback()
@@ -4473,7 +4503,7 @@ type signalButtonLeaveDetail struct {
 
 var signalButtonLeaveId int
 var signalButtonLeaveMap = make(map[int]signalButtonLeaveDetail)
-var signalButtonLeaveLock sync.Mutex
+var signalButtonLeaveLock sync.RWMutex
 
 // ButtonSignalLeaveCallback is a callback function for a 'leave' signal emitted from a Button.
 type ButtonSignalLeaveCallback func()
@@ -4518,6 +4548,9 @@ func (recv *Button) DisconnectLeave(connectionID int) {
 
 //export button_leaveHandler
 func button_leaveHandler(_ *C.GObject, data C.gpointer) {
+	signalButtonLeaveLock.RLock()
+	defer signalButtonLeaveLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalButtonLeaveMap[index].callback
 	callback()
@@ -4530,7 +4563,7 @@ type signalButtonPressedDetail struct {
 
 var signalButtonPressedId int
 var signalButtonPressedMap = make(map[int]signalButtonPressedDetail)
-var signalButtonPressedLock sync.Mutex
+var signalButtonPressedLock sync.RWMutex
 
 // ButtonSignalPressedCallback is a callback function for a 'pressed' signal emitted from a Button.
 type ButtonSignalPressedCallback func()
@@ -4575,6 +4608,9 @@ func (recv *Button) DisconnectPressed(connectionID int) {
 
 //export button_pressedHandler
 func button_pressedHandler(_ *C.GObject, data C.gpointer) {
+	signalButtonPressedLock.RLock()
+	defer signalButtonPressedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalButtonPressedMap[index].callback
 	callback()
@@ -4587,7 +4623,7 @@ type signalButtonReleasedDetail struct {
 
 var signalButtonReleasedId int
 var signalButtonReleasedMap = make(map[int]signalButtonReleasedDetail)
-var signalButtonReleasedLock sync.Mutex
+var signalButtonReleasedLock sync.RWMutex
 
 // ButtonSignalReleasedCallback is a callback function for a 'released' signal emitted from a Button.
 type ButtonSignalReleasedCallback func()
@@ -4632,6 +4668,9 @@ func (recv *Button) DisconnectReleased(connectionID int) {
 
 //export button_releasedHandler
 func button_releasedHandler(_ *C.GObject, data C.gpointer) {
+	signalButtonReleasedLock.RLock()
+	defer signalButtonReleasedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalButtonReleasedMap[index].callback
 	callback()
@@ -5035,7 +5074,7 @@ type signalCalendarDaySelectedDetail struct {
 
 var signalCalendarDaySelectedId int
 var signalCalendarDaySelectedMap = make(map[int]signalCalendarDaySelectedDetail)
-var signalCalendarDaySelectedLock sync.Mutex
+var signalCalendarDaySelectedLock sync.RWMutex
 
 // CalendarSignalDaySelectedCallback is a callback function for a 'day-selected' signal emitted from a Calendar.
 type CalendarSignalDaySelectedCallback func()
@@ -5080,6 +5119,9 @@ func (recv *Calendar) DisconnectDaySelected(connectionID int) {
 
 //export calendar_daySelectedHandler
 func calendar_daySelectedHandler(_ *C.GObject, data C.gpointer) {
+	signalCalendarDaySelectedLock.RLock()
+	defer signalCalendarDaySelectedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalCalendarDaySelectedMap[index].callback
 	callback()
@@ -5092,7 +5134,7 @@ type signalCalendarDaySelectedDoubleClickDetail struct {
 
 var signalCalendarDaySelectedDoubleClickId int
 var signalCalendarDaySelectedDoubleClickMap = make(map[int]signalCalendarDaySelectedDoubleClickDetail)
-var signalCalendarDaySelectedDoubleClickLock sync.Mutex
+var signalCalendarDaySelectedDoubleClickLock sync.RWMutex
 
 // CalendarSignalDaySelectedDoubleClickCallback is a callback function for a 'day-selected-double-click' signal emitted from a Calendar.
 type CalendarSignalDaySelectedDoubleClickCallback func()
@@ -5137,6 +5179,9 @@ func (recv *Calendar) DisconnectDaySelectedDoubleClick(connectionID int) {
 
 //export calendar_daySelectedDoubleClickHandler
 func calendar_daySelectedDoubleClickHandler(_ *C.GObject, data C.gpointer) {
+	signalCalendarDaySelectedDoubleClickLock.RLock()
+	defer signalCalendarDaySelectedDoubleClickLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalCalendarDaySelectedDoubleClickMap[index].callback
 	callback()
@@ -5149,7 +5194,7 @@ type signalCalendarMonthChangedDetail struct {
 
 var signalCalendarMonthChangedId int
 var signalCalendarMonthChangedMap = make(map[int]signalCalendarMonthChangedDetail)
-var signalCalendarMonthChangedLock sync.Mutex
+var signalCalendarMonthChangedLock sync.RWMutex
 
 // CalendarSignalMonthChangedCallback is a callback function for a 'month-changed' signal emitted from a Calendar.
 type CalendarSignalMonthChangedCallback func()
@@ -5194,6 +5239,9 @@ func (recv *Calendar) DisconnectMonthChanged(connectionID int) {
 
 //export calendar_monthChangedHandler
 func calendar_monthChangedHandler(_ *C.GObject, data C.gpointer) {
+	signalCalendarMonthChangedLock.RLock()
+	defer signalCalendarMonthChangedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalCalendarMonthChangedMap[index].callback
 	callback()
@@ -5206,7 +5254,7 @@ type signalCalendarNextMonthDetail struct {
 
 var signalCalendarNextMonthId int
 var signalCalendarNextMonthMap = make(map[int]signalCalendarNextMonthDetail)
-var signalCalendarNextMonthLock sync.Mutex
+var signalCalendarNextMonthLock sync.RWMutex
 
 // CalendarSignalNextMonthCallback is a callback function for a 'next-month' signal emitted from a Calendar.
 type CalendarSignalNextMonthCallback func()
@@ -5251,6 +5299,9 @@ func (recv *Calendar) DisconnectNextMonth(connectionID int) {
 
 //export calendar_nextMonthHandler
 func calendar_nextMonthHandler(_ *C.GObject, data C.gpointer) {
+	signalCalendarNextMonthLock.RLock()
+	defer signalCalendarNextMonthLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalCalendarNextMonthMap[index].callback
 	callback()
@@ -5263,7 +5314,7 @@ type signalCalendarNextYearDetail struct {
 
 var signalCalendarNextYearId int
 var signalCalendarNextYearMap = make(map[int]signalCalendarNextYearDetail)
-var signalCalendarNextYearLock sync.Mutex
+var signalCalendarNextYearLock sync.RWMutex
 
 // CalendarSignalNextYearCallback is a callback function for a 'next-year' signal emitted from a Calendar.
 type CalendarSignalNextYearCallback func()
@@ -5308,6 +5359,9 @@ func (recv *Calendar) DisconnectNextYear(connectionID int) {
 
 //export calendar_nextYearHandler
 func calendar_nextYearHandler(_ *C.GObject, data C.gpointer) {
+	signalCalendarNextYearLock.RLock()
+	defer signalCalendarNextYearLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalCalendarNextYearMap[index].callback
 	callback()
@@ -5320,7 +5374,7 @@ type signalCalendarPrevMonthDetail struct {
 
 var signalCalendarPrevMonthId int
 var signalCalendarPrevMonthMap = make(map[int]signalCalendarPrevMonthDetail)
-var signalCalendarPrevMonthLock sync.Mutex
+var signalCalendarPrevMonthLock sync.RWMutex
 
 // CalendarSignalPrevMonthCallback is a callback function for a 'prev-month' signal emitted from a Calendar.
 type CalendarSignalPrevMonthCallback func()
@@ -5365,6 +5419,9 @@ func (recv *Calendar) DisconnectPrevMonth(connectionID int) {
 
 //export calendar_prevMonthHandler
 func calendar_prevMonthHandler(_ *C.GObject, data C.gpointer) {
+	signalCalendarPrevMonthLock.RLock()
+	defer signalCalendarPrevMonthLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalCalendarPrevMonthMap[index].callback
 	callback()
@@ -5377,7 +5434,7 @@ type signalCalendarPrevYearDetail struct {
 
 var signalCalendarPrevYearId int
 var signalCalendarPrevYearMap = make(map[int]signalCalendarPrevYearDetail)
-var signalCalendarPrevYearLock sync.Mutex
+var signalCalendarPrevYearLock sync.RWMutex
 
 // CalendarSignalPrevYearCallback is a callback function for a 'prev-year' signal emitted from a Calendar.
 type CalendarSignalPrevYearCallback func()
@@ -5422,6 +5479,9 @@ func (recv *Calendar) DisconnectPrevYear(connectionID int) {
 
 //export calendar_prevYearHandler
 func calendar_prevYearHandler(_ *C.GObject, data C.gpointer) {
+	signalCalendarPrevYearLock.RLock()
+	defer signalCalendarPrevYearLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalCalendarPrevYearMap[index].callback
 	callback()
@@ -6194,7 +6254,7 @@ type signalCellRendererTextEditedDetail struct {
 
 var signalCellRendererTextEditedId int
 var signalCellRendererTextEditedMap = make(map[int]signalCellRendererTextEditedDetail)
-var signalCellRendererTextEditedLock sync.Mutex
+var signalCellRendererTextEditedLock sync.RWMutex
 
 // CellRendererTextSignalEditedCallback is a callback function for a 'edited' signal emitted from a CellRendererText.
 type CellRendererTextSignalEditedCallback func(path string, newText string)
@@ -6239,6 +6299,9 @@ func (recv *CellRendererText) DisconnectEdited(connectionID int) {
 
 //export cellrenderertext_editedHandler
 func cellrenderertext_editedHandler(_ *C.GObject, c_path *C.gchar, c_new_text *C.gchar, data C.gpointer) {
+	signalCellRendererTextEditedLock.RLock()
+	defer signalCellRendererTextEditedLock.RUnlock()
+
 	path := C.GoString(c_path)
 
 	newText := C.GoString(c_new_text)
@@ -6321,7 +6384,7 @@ type signalCellRendererToggleToggledDetail struct {
 
 var signalCellRendererToggleToggledId int
 var signalCellRendererToggleToggledMap = make(map[int]signalCellRendererToggleToggledDetail)
-var signalCellRendererToggleToggledLock sync.Mutex
+var signalCellRendererToggleToggledLock sync.RWMutex
 
 // CellRendererToggleSignalToggledCallback is a callback function for a 'toggled' signal emitted from a CellRendererToggle.
 type CellRendererToggleSignalToggledCallback func(path string)
@@ -6366,6 +6429,9 @@ func (recv *CellRendererToggle) DisconnectToggled(connectionID int) {
 
 //export cellrenderertoggle_toggledHandler
 func cellrenderertoggle_toggledHandler(_ *C.GObject, c_path *C.gchar, data C.gpointer) {
+	signalCellRendererToggleToggledLock.RLock()
+	defer signalCellRendererToggleToggledLock.RUnlock()
+
 	path := C.GoString(c_path)
 
 	index := int(uintptr(data))
@@ -6675,7 +6741,7 @@ type signalCheckMenuItemToggledDetail struct {
 
 var signalCheckMenuItemToggledId int
 var signalCheckMenuItemToggledMap = make(map[int]signalCheckMenuItemToggledDetail)
-var signalCheckMenuItemToggledLock sync.Mutex
+var signalCheckMenuItemToggledLock sync.RWMutex
 
 // CheckMenuItemSignalToggledCallback is a callback function for a 'toggled' signal emitted from a CheckMenuItem.
 type CheckMenuItemSignalToggledCallback func()
@@ -6720,6 +6786,9 @@ func (recv *CheckMenuItem) DisconnectToggled(connectionID int) {
 
 //export checkmenuitem_toggledHandler
 func checkmenuitem_toggledHandler(_ *C.GObject, data C.gpointer) {
+	signalCheckMenuItemToggledLock.RLock()
+	defer signalCheckMenuItemToggledLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalCheckMenuItemToggledMap[index].callback
 	callback()
@@ -7306,7 +7375,7 @@ type signalColorSelectionColorChangedDetail struct {
 
 var signalColorSelectionColorChangedId int
 var signalColorSelectionColorChangedMap = make(map[int]signalColorSelectionColorChangedDetail)
-var signalColorSelectionColorChangedLock sync.Mutex
+var signalColorSelectionColorChangedLock sync.RWMutex
 
 // ColorSelectionSignalColorChangedCallback is a callback function for a 'color-changed' signal emitted from a ColorSelection.
 type ColorSelectionSignalColorChangedCallback func()
@@ -7351,6 +7420,9 @@ func (recv *ColorSelection) DisconnectColorChanged(connectionID int) {
 
 //export colorselection_colorChangedHandler
 func colorselection_colorChangedHandler(_ *C.GObject, data C.gpointer) {
+	signalColorSelectionColorChangedLock.RLock()
+	defer signalColorSelectionColorChangedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalColorSelectionColorChangedMap[index].callback
 	callback()
@@ -7915,7 +7987,7 @@ type signalContainerAddDetail struct {
 
 var signalContainerAddId int
 var signalContainerAddMap = make(map[int]signalContainerAddDetail)
-var signalContainerAddLock sync.Mutex
+var signalContainerAddLock sync.RWMutex
 
 // ContainerSignalAddCallback is a callback function for a 'add' signal emitted from a Container.
 type ContainerSignalAddCallback func(object *Widget)
@@ -7960,6 +8032,9 @@ func (recv *Container) DisconnectAdd(connectionID int) {
 
 //export container_addHandler
 func container_addHandler(_ *C.GObject, c_object *C.GtkWidget, data C.gpointer) {
+	signalContainerAddLock.RLock()
+	defer signalContainerAddLock.RUnlock()
+
 	object := WidgetNewFromC(unsafe.Pointer(c_object))
 
 	index := int(uintptr(data))
@@ -7974,7 +8049,7 @@ type signalContainerCheckResizeDetail struct {
 
 var signalContainerCheckResizeId int
 var signalContainerCheckResizeMap = make(map[int]signalContainerCheckResizeDetail)
-var signalContainerCheckResizeLock sync.Mutex
+var signalContainerCheckResizeLock sync.RWMutex
 
 // ContainerSignalCheckResizeCallback is a callback function for a 'check-resize' signal emitted from a Container.
 type ContainerSignalCheckResizeCallback func()
@@ -8019,6 +8094,9 @@ func (recv *Container) DisconnectCheckResize(connectionID int) {
 
 //export container_checkResizeHandler
 func container_checkResizeHandler(_ *C.GObject, data C.gpointer) {
+	signalContainerCheckResizeLock.RLock()
+	defer signalContainerCheckResizeLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalContainerCheckResizeMap[index].callback
 	callback()
@@ -8031,7 +8109,7 @@ type signalContainerRemoveDetail struct {
 
 var signalContainerRemoveId int
 var signalContainerRemoveMap = make(map[int]signalContainerRemoveDetail)
-var signalContainerRemoveLock sync.Mutex
+var signalContainerRemoveLock sync.RWMutex
 
 // ContainerSignalRemoveCallback is a callback function for a 'remove' signal emitted from a Container.
 type ContainerSignalRemoveCallback func(object *Widget)
@@ -8076,6 +8154,9 @@ func (recv *Container) DisconnectRemove(connectionID int) {
 
 //export container_removeHandler
 func container_removeHandler(_ *C.GObject, c_object *C.GtkWidget, data C.gpointer) {
+	signalContainerRemoveLock.RLock()
+	defer signalContainerRemoveLock.RUnlock()
+
 	object := WidgetNewFromC(unsafe.Pointer(c_object))
 
 	index := int(uintptr(data))
@@ -8090,7 +8171,7 @@ type signalContainerSetFocusChildDetail struct {
 
 var signalContainerSetFocusChildId int
 var signalContainerSetFocusChildMap = make(map[int]signalContainerSetFocusChildDetail)
-var signalContainerSetFocusChildLock sync.Mutex
+var signalContainerSetFocusChildLock sync.RWMutex
 
 // ContainerSignalSetFocusChildCallback is a callback function for a 'set-focus-child' signal emitted from a Container.
 type ContainerSignalSetFocusChildCallback func(object *Widget)
@@ -8135,6 +8216,9 @@ func (recv *Container) DisconnectSetFocusChild(connectionID int) {
 
 //export container_setFocusChildHandler
 func container_setFocusChildHandler(_ *C.GObject, c_object *C.GtkWidget, data C.gpointer) {
+	signalContainerSetFocusChildLock.RLock()
+	defer signalContainerSetFocusChildLock.RUnlock()
+
 	object := WidgetNewFromC(unsafe.Pointer(c_object))
 
 	index := int(uintptr(data))
@@ -8626,7 +8710,7 @@ type signalCssProviderParsingErrorDetail struct {
 
 var signalCssProviderParsingErrorId int
 var signalCssProviderParsingErrorMap = make(map[int]signalCssProviderParsingErrorDetail)
-var signalCssProviderParsingErrorLock sync.Mutex
+var signalCssProviderParsingErrorLock sync.RWMutex
 
 // CssProviderSignalParsingErrorCallback is a callback function for a 'parsing-error' signal emitted from a CssProvider.
 type CssProviderSignalParsingErrorCallback func(section *CssSection, error *glib.Error)
@@ -8671,6 +8755,9 @@ func (recv *CssProvider) DisconnectParsingError(connectionID int) {
 
 //export cssprovider_parsingErrorHandler
 func cssprovider_parsingErrorHandler(_ *C.GObject, c_section *C.GtkCssSection, c_error *C.GError, data C.gpointer) {
+	signalCssProviderParsingErrorLock.RLock()
+	defer signalCssProviderParsingErrorLock.RUnlock()
+
 	section := CssSectionNewFromC(unsafe.Pointer(c_section))
 
 	error := glib.ErrorNewFromC(unsafe.Pointer(c_error))
@@ -8818,7 +8905,7 @@ type signalDialogCloseDetail struct {
 
 var signalDialogCloseId int
 var signalDialogCloseMap = make(map[int]signalDialogCloseDetail)
-var signalDialogCloseLock sync.Mutex
+var signalDialogCloseLock sync.RWMutex
 
 // DialogSignalCloseCallback is a callback function for a 'close' signal emitted from a Dialog.
 type DialogSignalCloseCallback func()
@@ -8863,6 +8950,9 @@ func (recv *Dialog) DisconnectClose(connectionID int) {
 
 //export dialog_closeHandler
 func dialog_closeHandler(_ *C.GObject, data C.gpointer) {
+	signalDialogCloseLock.RLock()
+	defer signalDialogCloseLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalDialogCloseMap[index].callback
 	callback()
@@ -8875,7 +8965,7 @@ type signalDialogResponseDetail struct {
 
 var signalDialogResponseId int
 var signalDialogResponseMap = make(map[int]signalDialogResponseDetail)
-var signalDialogResponseLock sync.Mutex
+var signalDialogResponseLock sync.RWMutex
 
 // DialogSignalResponseCallback is a callback function for a 'response' signal emitted from a Dialog.
 type DialogSignalResponseCallback func(responseId int32)
@@ -8920,6 +9010,9 @@ func (recv *Dialog) DisconnectResponse(connectionID int) {
 
 //export dialog_responseHandler
 func dialog_responseHandler(_ *C.GObject, c_response_id C.gint, data C.gpointer) {
+	signalDialogResponseLock.RLock()
+	defer signalDialogResponseLock.RUnlock()
+
 	responseId := int32(c_response_id)
 
 	index := int(uintptr(data))
@@ -9137,7 +9230,7 @@ type signalEntryActivateDetail struct {
 
 var signalEntryActivateId int
 var signalEntryActivateMap = make(map[int]signalEntryActivateDetail)
-var signalEntryActivateLock sync.Mutex
+var signalEntryActivateLock sync.RWMutex
 
 // EntrySignalActivateCallback is a callback function for a 'activate' signal emitted from a Entry.
 type EntrySignalActivateCallback func()
@@ -9182,6 +9275,9 @@ func (recv *Entry) DisconnectActivate(connectionID int) {
 
 //export entry_activateHandler
 func entry_activateHandler(_ *C.GObject, data C.gpointer) {
+	signalEntryActivateLock.RLock()
+	defer signalEntryActivateLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalEntryActivateMap[index].callback
 	callback()
@@ -9194,7 +9290,7 @@ type signalEntryBackspaceDetail struct {
 
 var signalEntryBackspaceId int
 var signalEntryBackspaceMap = make(map[int]signalEntryBackspaceDetail)
-var signalEntryBackspaceLock sync.Mutex
+var signalEntryBackspaceLock sync.RWMutex
 
 // EntrySignalBackspaceCallback is a callback function for a 'backspace' signal emitted from a Entry.
 type EntrySignalBackspaceCallback func()
@@ -9239,6 +9335,9 @@ func (recv *Entry) DisconnectBackspace(connectionID int) {
 
 //export entry_backspaceHandler
 func entry_backspaceHandler(_ *C.GObject, data C.gpointer) {
+	signalEntryBackspaceLock.RLock()
+	defer signalEntryBackspaceLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalEntryBackspaceMap[index].callback
 	callback()
@@ -9251,7 +9350,7 @@ type signalEntryCopyClipboardDetail struct {
 
 var signalEntryCopyClipboardId int
 var signalEntryCopyClipboardMap = make(map[int]signalEntryCopyClipboardDetail)
-var signalEntryCopyClipboardLock sync.Mutex
+var signalEntryCopyClipboardLock sync.RWMutex
 
 // EntrySignalCopyClipboardCallback is a callback function for a 'copy-clipboard' signal emitted from a Entry.
 type EntrySignalCopyClipboardCallback func()
@@ -9296,6 +9395,9 @@ func (recv *Entry) DisconnectCopyClipboard(connectionID int) {
 
 //export entry_copyClipboardHandler
 func entry_copyClipboardHandler(_ *C.GObject, data C.gpointer) {
+	signalEntryCopyClipboardLock.RLock()
+	defer signalEntryCopyClipboardLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalEntryCopyClipboardMap[index].callback
 	callback()
@@ -9308,7 +9410,7 @@ type signalEntryCutClipboardDetail struct {
 
 var signalEntryCutClipboardId int
 var signalEntryCutClipboardMap = make(map[int]signalEntryCutClipboardDetail)
-var signalEntryCutClipboardLock sync.Mutex
+var signalEntryCutClipboardLock sync.RWMutex
 
 // EntrySignalCutClipboardCallback is a callback function for a 'cut-clipboard' signal emitted from a Entry.
 type EntrySignalCutClipboardCallback func()
@@ -9353,6 +9455,9 @@ func (recv *Entry) DisconnectCutClipboard(connectionID int) {
 
 //export entry_cutClipboardHandler
 func entry_cutClipboardHandler(_ *C.GObject, data C.gpointer) {
+	signalEntryCutClipboardLock.RLock()
+	defer signalEntryCutClipboardLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalEntryCutClipboardMap[index].callback
 	callback()
@@ -9367,7 +9472,7 @@ type signalEntryInsertAtCursorDetail struct {
 
 var signalEntryInsertAtCursorId int
 var signalEntryInsertAtCursorMap = make(map[int]signalEntryInsertAtCursorDetail)
-var signalEntryInsertAtCursorLock sync.Mutex
+var signalEntryInsertAtCursorLock sync.RWMutex
 
 // EntrySignalInsertAtCursorCallback is a callback function for a 'insert-at-cursor' signal emitted from a Entry.
 type EntrySignalInsertAtCursorCallback func(string string)
@@ -9412,6 +9517,9 @@ func (recv *Entry) DisconnectInsertAtCursor(connectionID int) {
 
 //export entry_insertAtCursorHandler
 func entry_insertAtCursorHandler(_ *C.GObject, c_string *C.gchar, data C.gpointer) {
+	signalEntryInsertAtCursorLock.RLock()
+	defer signalEntryInsertAtCursorLock.RUnlock()
+
 	string := C.GoString(c_string)
 
 	index := int(uintptr(data))
@@ -9428,7 +9536,7 @@ type signalEntryPasteClipboardDetail struct {
 
 var signalEntryPasteClipboardId int
 var signalEntryPasteClipboardMap = make(map[int]signalEntryPasteClipboardDetail)
-var signalEntryPasteClipboardLock sync.Mutex
+var signalEntryPasteClipboardLock sync.RWMutex
 
 // EntrySignalPasteClipboardCallback is a callback function for a 'paste-clipboard' signal emitted from a Entry.
 type EntrySignalPasteClipboardCallback func()
@@ -9473,6 +9581,9 @@ func (recv *Entry) DisconnectPasteClipboard(connectionID int) {
 
 //export entry_pasteClipboardHandler
 func entry_pasteClipboardHandler(_ *C.GObject, data C.gpointer) {
+	signalEntryPasteClipboardLock.RLock()
+	defer signalEntryPasteClipboardLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalEntryPasteClipboardMap[index].callback
 	callback()
@@ -9485,7 +9596,7 @@ type signalEntryPopulatePopupDetail struct {
 
 var signalEntryPopulatePopupId int
 var signalEntryPopulatePopupMap = make(map[int]signalEntryPopulatePopupDetail)
-var signalEntryPopulatePopupLock sync.Mutex
+var signalEntryPopulatePopupLock sync.RWMutex
 
 // EntrySignalPopulatePopupCallback is a callback function for a 'populate-popup' signal emitted from a Entry.
 type EntrySignalPopulatePopupCallback func(widget *Widget)
@@ -9530,6 +9641,9 @@ func (recv *Entry) DisconnectPopulatePopup(connectionID int) {
 
 //export entry_populatePopupHandler
 func entry_populatePopupHandler(_ *C.GObject, c_widget *C.GtkWidget, data C.gpointer) {
+	signalEntryPopulatePopupLock.RLock()
+	defer signalEntryPopulatePopupLock.RUnlock()
+
 	widget := WidgetNewFromC(unsafe.Pointer(c_widget))
 
 	index := int(uintptr(data))
@@ -9544,7 +9658,7 @@ type signalEntryToggleOverwriteDetail struct {
 
 var signalEntryToggleOverwriteId int
 var signalEntryToggleOverwriteMap = make(map[int]signalEntryToggleOverwriteDetail)
-var signalEntryToggleOverwriteLock sync.Mutex
+var signalEntryToggleOverwriteLock sync.RWMutex
 
 // EntrySignalToggleOverwriteCallback is a callback function for a 'toggle-overwrite' signal emitted from a Entry.
 type EntrySignalToggleOverwriteCallback func()
@@ -9589,6 +9703,9 @@ func (recv *Entry) DisconnectToggleOverwrite(connectionID int) {
 
 //export entry_toggleOverwriteHandler
 func entry_toggleOverwriteHandler(_ *C.GObject, data C.gpointer) {
+	signalEntryToggleOverwriteLock.RLock()
+	defer signalEntryToggleOverwriteLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalEntryToggleOverwriteMap[index].callback
 	callback()
@@ -10127,7 +10244,7 @@ type signalExpanderActivateDetail struct {
 
 var signalExpanderActivateId int
 var signalExpanderActivateMap = make(map[int]signalExpanderActivateDetail)
-var signalExpanderActivateLock sync.Mutex
+var signalExpanderActivateLock sync.RWMutex
 
 // ExpanderSignalActivateCallback is a callback function for a 'activate' signal emitted from a Expander.
 type ExpanderSignalActivateCallback func()
@@ -10172,6 +10289,9 @@ func (recv *Expander) DisconnectActivate(connectionID int) {
 
 //export expander_activateHandler
 func expander_activateHandler(_ *C.GObject, data C.gpointer) {
+	signalExpanderActivateLock.RLock()
+	defer signalExpanderActivateLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalExpanderActivateMap[index].callback
 	callback()
@@ -10480,7 +10600,7 @@ type signalFileChooserWidgetDesktopFolderDetail struct {
 
 var signalFileChooserWidgetDesktopFolderId int
 var signalFileChooserWidgetDesktopFolderMap = make(map[int]signalFileChooserWidgetDesktopFolderDetail)
-var signalFileChooserWidgetDesktopFolderLock sync.Mutex
+var signalFileChooserWidgetDesktopFolderLock sync.RWMutex
 
 // FileChooserWidgetSignalDesktopFolderCallback is a callback function for a 'desktop-folder' signal emitted from a FileChooserWidget.
 type FileChooserWidgetSignalDesktopFolderCallback func()
@@ -10525,6 +10645,9 @@ func (recv *FileChooserWidget) DisconnectDesktopFolder(connectionID int) {
 
 //export filechooserwidget_desktopFolderHandler
 func filechooserwidget_desktopFolderHandler(_ *C.GObject, data C.gpointer) {
+	signalFileChooserWidgetDesktopFolderLock.RLock()
+	defer signalFileChooserWidgetDesktopFolderLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalFileChooserWidgetDesktopFolderMap[index].callback
 	callback()
@@ -10537,7 +10660,7 @@ type signalFileChooserWidgetDownFolderDetail struct {
 
 var signalFileChooserWidgetDownFolderId int
 var signalFileChooserWidgetDownFolderMap = make(map[int]signalFileChooserWidgetDownFolderDetail)
-var signalFileChooserWidgetDownFolderLock sync.Mutex
+var signalFileChooserWidgetDownFolderLock sync.RWMutex
 
 // FileChooserWidgetSignalDownFolderCallback is a callback function for a 'down-folder' signal emitted from a FileChooserWidget.
 type FileChooserWidgetSignalDownFolderCallback func()
@@ -10582,6 +10705,9 @@ func (recv *FileChooserWidget) DisconnectDownFolder(connectionID int) {
 
 //export filechooserwidget_downFolderHandler
 func filechooserwidget_downFolderHandler(_ *C.GObject, data C.gpointer) {
+	signalFileChooserWidgetDownFolderLock.RLock()
+	defer signalFileChooserWidgetDownFolderLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalFileChooserWidgetDownFolderMap[index].callback
 	callback()
@@ -10594,7 +10720,7 @@ type signalFileChooserWidgetHomeFolderDetail struct {
 
 var signalFileChooserWidgetHomeFolderId int
 var signalFileChooserWidgetHomeFolderMap = make(map[int]signalFileChooserWidgetHomeFolderDetail)
-var signalFileChooserWidgetHomeFolderLock sync.Mutex
+var signalFileChooserWidgetHomeFolderLock sync.RWMutex
 
 // FileChooserWidgetSignalHomeFolderCallback is a callback function for a 'home-folder' signal emitted from a FileChooserWidget.
 type FileChooserWidgetSignalHomeFolderCallback func()
@@ -10639,6 +10765,9 @@ func (recv *FileChooserWidget) DisconnectHomeFolder(connectionID int) {
 
 //export filechooserwidget_homeFolderHandler
 func filechooserwidget_homeFolderHandler(_ *C.GObject, data C.gpointer) {
+	signalFileChooserWidgetHomeFolderLock.RLock()
+	defer signalFileChooserWidgetHomeFolderLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalFileChooserWidgetHomeFolderMap[index].callback
 	callback()
@@ -10651,7 +10780,7 @@ type signalFileChooserWidgetLocationPopupDetail struct {
 
 var signalFileChooserWidgetLocationPopupId int
 var signalFileChooserWidgetLocationPopupMap = make(map[int]signalFileChooserWidgetLocationPopupDetail)
-var signalFileChooserWidgetLocationPopupLock sync.Mutex
+var signalFileChooserWidgetLocationPopupLock sync.RWMutex
 
 // FileChooserWidgetSignalLocationPopupCallback is a callback function for a 'location-popup' signal emitted from a FileChooserWidget.
 type FileChooserWidgetSignalLocationPopupCallback func(path string)
@@ -10696,6 +10825,9 @@ func (recv *FileChooserWidget) DisconnectLocationPopup(connectionID int) {
 
 //export filechooserwidget_locationPopupHandler
 func filechooserwidget_locationPopupHandler(_ *C.GObject, c_path *C.gchar, data C.gpointer) {
+	signalFileChooserWidgetLocationPopupLock.RLock()
+	defer signalFileChooserWidgetLocationPopupLock.RUnlock()
+
 	path := C.GoString(c_path)
 
 	index := int(uintptr(data))
@@ -10710,7 +10842,7 @@ type signalFileChooserWidgetLocationPopupOnPasteDetail struct {
 
 var signalFileChooserWidgetLocationPopupOnPasteId int
 var signalFileChooserWidgetLocationPopupOnPasteMap = make(map[int]signalFileChooserWidgetLocationPopupOnPasteDetail)
-var signalFileChooserWidgetLocationPopupOnPasteLock sync.Mutex
+var signalFileChooserWidgetLocationPopupOnPasteLock sync.RWMutex
 
 // FileChooserWidgetSignalLocationPopupOnPasteCallback is a callback function for a 'location-popup-on-paste' signal emitted from a FileChooserWidget.
 type FileChooserWidgetSignalLocationPopupOnPasteCallback func()
@@ -10755,6 +10887,9 @@ func (recv *FileChooserWidget) DisconnectLocationPopupOnPaste(connectionID int) 
 
 //export filechooserwidget_locationPopupOnPasteHandler
 func filechooserwidget_locationPopupOnPasteHandler(_ *C.GObject, data C.gpointer) {
+	signalFileChooserWidgetLocationPopupOnPasteLock.RLock()
+	defer signalFileChooserWidgetLocationPopupOnPasteLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalFileChooserWidgetLocationPopupOnPasteMap[index].callback
 	callback()
@@ -10767,7 +10902,7 @@ type signalFileChooserWidgetLocationTogglePopupDetail struct {
 
 var signalFileChooserWidgetLocationTogglePopupId int
 var signalFileChooserWidgetLocationTogglePopupMap = make(map[int]signalFileChooserWidgetLocationTogglePopupDetail)
-var signalFileChooserWidgetLocationTogglePopupLock sync.Mutex
+var signalFileChooserWidgetLocationTogglePopupLock sync.RWMutex
 
 // FileChooserWidgetSignalLocationTogglePopupCallback is a callback function for a 'location-toggle-popup' signal emitted from a FileChooserWidget.
 type FileChooserWidgetSignalLocationTogglePopupCallback func()
@@ -10812,6 +10947,9 @@ func (recv *FileChooserWidget) DisconnectLocationTogglePopup(connectionID int) {
 
 //export filechooserwidget_locationTogglePopupHandler
 func filechooserwidget_locationTogglePopupHandler(_ *C.GObject, data C.gpointer) {
+	signalFileChooserWidgetLocationTogglePopupLock.RLock()
+	defer signalFileChooserWidgetLocationTogglePopupLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalFileChooserWidgetLocationTogglePopupMap[index].callback
 	callback()
@@ -10824,7 +10962,7 @@ type signalFileChooserWidgetPlacesShortcutDetail struct {
 
 var signalFileChooserWidgetPlacesShortcutId int
 var signalFileChooserWidgetPlacesShortcutMap = make(map[int]signalFileChooserWidgetPlacesShortcutDetail)
-var signalFileChooserWidgetPlacesShortcutLock sync.Mutex
+var signalFileChooserWidgetPlacesShortcutLock sync.RWMutex
 
 // FileChooserWidgetSignalPlacesShortcutCallback is a callback function for a 'places-shortcut' signal emitted from a FileChooserWidget.
 type FileChooserWidgetSignalPlacesShortcutCallback func()
@@ -10869,6 +11007,9 @@ func (recv *FileChooserWidget) DisconnectPlacesShortcut(connectionID int) {
 
 //export filechooserwidget_placesShortcutHandler
 func filechooserwidget_placesShortcutHandler(_ *C.GObject, data C.gpointer) {
+	signalFileChooserWidgetPlacesShortcutLock.RLock()
+	defer signalFileChooserWidgetPlacesShortcutLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalFileChooserWidgetPlacesShortcutMap[index].callback
 	callback()
@@ -10881,7 +11022,7 @@ type signalFileChooserWidgetQuickBookmarkDetail struct {
 
 var signalFileChooserWidgetQuickBookmarkId int
 var signalFileChooserWidgetQuickBookmarkMap = make(map[int]signalFileChooserWidgetQuickBookmarkDetail)
-var signalFileChooserWidgetQuickBookmarkLock sync.Mutex
+var signalFileChooserWidgetQuickBookmarkLock sync.RWMutex
 
 // FileChooserWidgetSignalQuickBookmarkCallback is a callback function for a 'quick-bookmark' signal emitted from a FileChooserWidget.
 type FileChooserWidgetSignalQuickBookmarkCallback func(bookmarkIndex int32)
@@ -10926,6 +11067,9 @@ func (recv *FileChooserWidget) DisconnectQuickBookmark(connectionID int) {
 
 //export filechooserwidget_quickBookmarkHandler
 func filechooserwidget_quickBookmarkHandler(_ *C.GObject, c_bookmark_index C.gint, data C.gpointer) {
+	signalFileChooserWidgetQuickBookmarkLock.RLock()
+	defer signalFileChooserWidgetQuickBookmarkLock.RUnlock()
+
 	bookmarkIndex := int32(c_bookmark_index)
 
 	index := int(uintptr(data))
@@ -10940,7 +11084,7 @@ type signalFileChooserWidgetRecentShortcutDetail struct {
 
 var signalFileChooserWidgetRecentShortcutId int
 var signalFileChooserWidgetRecentShortcutMap = make(map[int]signalFileChooserWidgetRecentShortcutDetail)
-var signalFileChooserWidgetRecentShortcutLock sync.Mutex
+var signalFileChooserWidgetRecentShortcutLock sync.RWMutex
 
 // FileChooserWidgetSignalRecentShortcutCallback is a callback function for a 'recent-shortcut' signal emitted from a FileChooserWidget.
 type FileChooserWidgetSignalRecentShortcutCallback func()
@@ -10985,6 +11129,9 @@ func (recv *FileChooserWidget) DisconnectRecentShortcut(connectionID int) {
 
 //export filechooserwidget_recentShortcutHandler
 func filechooserwidget_recentShortcutHandler(_ *C.GObject, data C.gpointer) {
+	signalFileChooserWidgetRecentShortcutLock.RLock()
+	defer signalFileChooserWidgetRecentShortcutLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalFileChooserWidgetRecentShortcutMap[index].callback
 	callback()
@@ -10997,7 +11144,7 @@ type signalFileChooserWidgetSearchShortcutDetail struct {
 
 var signalFileChooserWidgetSearchShortcutId int
 var signalFileChooserWidgetSearchShortcutMap = make(map[int]signalFileChooserWidgetSearchShortcutDetail)
-var signalFileChooserWidgetSearchShortcutLock sync.Mutex
+var signalFileChooserWidgetSearchShortcutLock sync.RWMutex
 
 // FileChooserWidgetSignalSearchShortcutCallback is a callback function for a 'search-shortcut' signal emitted from a FileChooserWidget.
 type FileChooserWidgetSignalSearchShortcutCallback func()
@@ -11042,6 +11189,9 @@ func (recv *FileChooserWidget) DisconnectSearchShortcut(connectionID int) {
 
 //export filechooserwidget_searchShortcutHandler
 func filechooserwidget_searchShortcutHandler(_ *C.GObject, data C.gpointer) {
+	signalFileChooserWidgetSearchShortcutLock.RLock()
+	defer signalFileChooserWidgetSearchShortcutLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalFileChooserWidgetSearchShortcutMap[index].callback
 	callback()
@@ -11054,7 +11204,7 @@ type signalFileChooserWidgetShowHiddenDetail struct {
 
 var signalFileChooserWidgetShowHiddenId int
 var signalFileChooserWidgetShowHiddenMap = make(map[int]signalFileChooserWidgetShowHiddenDetail)
-var signalFileChooserWidgetShowHiddenLock sync.Mutex
+var signalFileChooserWidgetShowHiddenLock sync.RWMutex
 
 // FileChooserWidgetSignalShowHiddenCallback is a callback function for a 'show-hidden' signal emitted from a FileChooserWidget.
 type FileChooserWidgetSignalShowHiddenCallback func()
@@ -11099,6 +11249,9 @@ func (recv *FileChooserWidget) DisconnectShowHidden(connectionID int) {
 
 //export filechooserwidget_showHiddenHandler
 func filechooserwidget_showHiddenHandler(_ *C.GObject, data C.gpointer) {
+	signalFileChooserWidgetShowHiddenLock.RLock()
+	defer signalFileChooserWidgetShowHiddenLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalFileChooserWidgetShowHiddenMap[index].callback
 	callback()
@@ -11111,7 +11264,7 @@ type signalFileChooserWidgetUpFolderDetail struct {
 
 var signalFileChooserWidgetUpFolderId int
 var signalFileChooserWidgetUpFolderMap = make(map[int]signalFileChooserWidgetUpFolderDetail)
-var signalFileChooserWidgetUpFolderLock sync.Mutex
+var signalFileChooserWidgetUpFolderLock sync.RWMutex
 
 // FileChooserWidgetSignalUpFolderCallback is a callback function for a 'up-folder' signal emitted from a FileChooserWidget.
 type FileChooserWidgetSignalUpFolderCallback func()
@@ -11156,6 +11309,9 @@ func (recv *FileChooserWidget) DisconnectUpFolder(connectionID int) {
 
 //export filechooserwidget_upFolderHandler
 func filechooserwidget_upFolderHandler(_ *C.GObject, data C.gpointer) {
+	signalFileChooserWidgetUpFolderLock.RLock()
+	defer signalFileChooserWidgetUpFolderLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalFileChooserWidgetUpFolderMap[index].callback
 	callback()
@@ -11392,7 +11548,7 @@ type signalFlowBoxActivateCursorChildDetail struct {
 
 var signalFlowBoxActivateCursorChildId int
 var signalFlowBoxActivateCursorChildMap = make(map[int]signalFlowBoxActivateCursorChildDetail)
-var signalFlowBoxActivateCursorChildLock sync.Mutex
+var signalFlowBoxActivateCursorChildLock sync.RWMutex
 
 // FlowBoxSignalActivateCursorChildCallback is a callback function for a 'activate-cursor-child' signal emitted from a FlowBox.
 type FlowBoxSignalActivateCursorChildCallback func()
@@ -11437,6 +11593,9 @@ func (recv *FlowBox) DisconnectActivateCursorChild(connectionID int) {
 
 //export flowbox_activateCursorChildHandler
 func flowbox_activateCursorChildHandler(_ *C.GObject, data C.gpointer) {
+	signalFlowBoxActivateCursorChildLock.RLock()
+	defer signalFlowBoxActivateCursorChildLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalFlowBoxActivateCursorChildMap[index].callback
 	callback()
@@ -11449,7 +11608,7 @@ type signalFlowBoxChildActivatedDetail struct {
 
 var signalFlowBoxChildActivatedId int
 var signalFlowBoxChildActivatedMap = make(map[int]signalFlowBoxChildActivatedDetail)
-var signalFlowBoxChildActivatedLock sync.Mutex
+var signalFlowBoxChildActivatedLock sync.RWMutex
 
 // FlowBoxSignalChildActivatedCallback is a callback function for a 'child-activated' signal emitted from a FlowBox.
 type FlowBoxSignalChildActivatedCallback func(child *FlowBoxChild)
@@ -11494,6 +11653,9 @@ func (recv *FlowBox) DisconnectChildActivated(connectionID int) {
 
 //export flowbox_childActivatedHandler
 func flowbox_childActivatedHandler(_ *C.GObject, c_child *C.GtkFlowBoxChild, data C.gpointer) {
+	signalFlowBoxChildActivatedLock.RLock()
+	defer signalFlowBoxChildActivatedLock.RUnlock()
+
 	child := FlowBoxChildNewFromC(unsafe.Pointer(c_child))
 
 	index := int(uintptr(data))
@@ -11510,7 +11672,7 @@ type signalFlowBoxSelectAllDetail struct {
 
 var signalFlowBoxSelectAllId int
 var signalFlowBoxSelectAllMap = make(map[int]signalFlowBoxSelectAllDetail)
-var signalFlowBoxSelectAllLock sync.Mutex
+var signalFlowBoxSelectAllLock sync.RWMutex
 
 // FlowBoxSignalSelectAllCallback is a callback function for a 'select-all' signal emitted from a FlowBox.
 type FlowBoxSignalSelectAllCallback func()
@@ -11555,6 +11717,9 @@ func (recv *FlowBox) DisconnectSelectAll(connectionID int) {
 
 //export flowbox_selectAllHandler
 func flowbox_selectAllHandler(_ *C.GObject, data C.gpointer) {
+	signalFlowBoxSelectAllLock.RLock()
+	defer signalFlowBoxSelectAllLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalFlowBoxSelectAllMap[index].callback
 	callback()
@@ -11567,7 +11732,7 @@ type signalFlowBoxSelectedChildrenChangedDetail struct {
 
 var signalFlowBoxSelectedChildrenChangedId int
 var signalFlowBoxSelectedChildrenChangedMap = make(map[int]signalFlowBoxSelectedChildrenChangedDetail)
-var signalFlowBoxSelectedChildrenChangedLock sync.Mutex
+var signalFlowBoxSelectedChildrenChangedLock sync.RWMutex
 
 // FlowBoxSignalSelectedChildrenChangedCallback is a callback function for a 'selected-children-changed' signal emitted from a FlowBox.
 type FlowBoxSignalSelectedChildrenChangedCallback func()
@@ -11612,6 +11777,9 @@ func (recv *FlowBox) DisconnectSelectedChildrenChanged(connectionID int) {
 
 //export flowbox_selectedChildrenChangedHandler
 func flowbox_selectedChildrenChangedHandler(_ *C.GObject, data C.gpointer) {
+	signalFlowBoxSelectedChildrenChangedLock.RLock()
+	defer signalFlowBoxSelectedChildrenChangedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalFlowBoxSelectedChildrenChangedMap[index].callback
 	callback()
@@ -11624,7 +11792,7 @@ type signalFlowBoxToggleCursorChildDetail struct {
 
 var signalFlowBoxToggleCursorChildId int
 var signalFlowBoxToggleCursorChildMap = make(map[int]signalFlowBoxToggleCursorChildDetail)
-var signalFlowBoxToggleCursorChildLock sync.Mutex
+var signalFlowBoxToggleCursorChildLock sync.RWMutex
 
 // FlowBoxSignalToggleCursorChildCallback is a callback function for a 'toggle-cursor-child' signal emitted from a FlowBox.
 type FlowBoxSignalToggleCursorChildCallback func()
@@ -11669,6 +11837,9 @@ func (recv *FlowBox) DisconnectToggleCursorChild(connectionID int) {
 
 //export flowbox_toggleCursorChildHandler
 func flowbox_toggleCursorChildHandler(_ *C.GObject, data C.gpointer) {
+	signalFlowBoxToggleCursorChildLock.RLock()
+	defer signalFlowBoxToggleCursorChildLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalFlowBoxToggleCursorChildMap[index].callback
 	callback()
@@ -11681,7 +11852,7 @@ type signalFlowBoxUnselectAllDetail struct {
 
 var signalFlowBoxUnselectAllId int
 var signalFlowBoxUnselectAllMap = make(map[int]signalFlowBoxUnselectAllDetail)
-var signalFlowBoxUnselectAllLock sync.Mutex
+var signalFlowBoxUnselectAllLock sync.RWMutex
 
 // FlowBoxSignalUnselectAllCallback is a callback function for a 'unselect-all' signal emitted from a FlowBox.
 type FlowBoxSignalUnselectAllCallback func()
@@ -11726,6 +11897,9 @@ func (recv *FlowBox) DisconnectUnselectAll(connectionID int) {
 
 //export flowbox_unselectAllHandler
 func flowbox_unselectAllHandler(_ *C.GObject, data C.gpointer) {
+	signalFlowBoxUnselectAllLock.RLock()
+	defer signalFlowBoxUnselectAllLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalFlowBoxUnselectAllMap[index].callback
 	callback()
@@ -11875,7 +12049,7 @@ type signalFlowBoxChildActivateDetail struct {
 
 var signalFlowBoxChildActivateId int
 var signalFlowBoxChildActivateMap = make(map[int]signalFlowBoxChildActivateDetail)
-var signalFlowBoxChildActivateLock sync.Mutex
+var signalFlowBoxChildActivateLock sync.RWMutex
 
 // FlowBoxChildSignalActivateCallback is a callback function for a 'activate' signal emitted from a FlowBoxChild.
 type FlowBoxChildSignalActivateCallback func()
@@ -11920,6 +12094,9 @@ func (recv *FlowBoxChild) DisconnectActivate(connectionID int) {
 
 //export flowboxchild_activateHandler
 func flowboxchild_activateHandler(_ *C.GObject, data C.gpointer) {
+	signalFlowBoxChildActivateLock.RLock()
+	defer signalFlowBoxChildActivateLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalFlowBoxChildActivateMap[index].callback
 	callback()
@@ -13667,7 +13844,7 @@ type signalHSVChangedDetail struct {
 
 var signalHSVChangedId int
 var signalHSVChangedMap = make(map[int]signalHSVChangedDetail)
-var signalHSVChangedLock sync.Mutex
+var signalHSVChangedLock sync.RWMutex
 
 // HSVSignalChangedCallback is a callback function for a 'changed' signal emitted from a HSV.
 type HSVSignalChangedCallback func()
@@ -13712,6 +13889,9 @@ func (recv *HSV) DisconnectChanged(connectionID int) {
 
 //export hsv_changedHandler
 func hsv_changedHandler(_ *C.GObject, data C.gpointer) {
+	signalHSVChangedLock.RLock()
+	defer signalHSVChangedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalHSVChangedMap[index].callback
 	callback()
@@ -14057,7 +14237,7 @@ type signalHandleBoxChildAttachedDetail struct {
 
 var signalHandleBoxChildAttachedId int
 var signalHandleBoxChildAttachedMap = make(map[int]signalHandleBoxChildAttachedDetail)
-var signalHandleBoxChildAttachedLock sync.Mutex
+var signalHandleBoxChildAttachedLock sync.RWMutex
 
 // HandleBoxSignalChildAttachedCallback is a callback function for a 'child-attached' signal emitted from a HandleBox.
 type HandleBoxSignalChildAttachedCallback func(widget *Widget)
@@ -14102,6 +14282,9 @@ func (recv *HandleBox) DisconnectChildAttached(connectionID int) {
 
 //export handlebox_childAttachedHandler
 func handlebox_childAttachedHandler(_ *C.GObject, c_widget *C.GtkWidget, data C.gpointer) {
+	signalHandleBoxChildAttachedLock.RLock()
+	defer signalHandleBoxChildAttachedLock.RUnlock()
+
 	widget := WidgetNewFromC(unsafe.Pointer(c_widget))
 
 	index := int(uintptr(data))
@@ -14116,7 +14299,7 @@ type signalHandleBoxChildDetachedDetail struct {
 
 var signalHandleBoxChildDetachedId int
 var signalHandleBoxChildDetachedMap = make(map[int]signalHandleBoxChildDetachedDetail)
-var signalHandleBoxChildDetachedLock sync.Mutex
+var signalHandleBoxChildDetachedLock sync.RWMutex
 
 // HandleBoxSignalChildDetachedCallback is a callback function for a 'child-detached' signal emitted from a HandleBox.
 type HandleBoxSignalChildDetachedCallback func(widget *Widget)
@@ -14161,6 +14344,9 @@ func (recv *HandleBox) DisconnectChildDetached(connectionID int) {
 
 //export handlebox_childDetachedHandler
 func handlebox_childDetachedHandler(_ *C.GObject, c_widget *C.GtkWidget, data C.gpointer) {
+	signalHandleBoxChildDetachedLock.RLock()
+	defer signalHandleBoxChildDetachedLock.RUnlock()
+
 	widget := WidgetNewFromC(unsafe.Pointer(c_widget))
 
 	index := int(uintptr(data))
@@ -14345,7 +14531,7 @@ type signalIMContextCommitDetail struct {
 
 var signalIMContextCommitId int
 var signalIMContextCommitMap = make(map[int]signalIMContextCommitDetail)
-var signalIMContextCommitLock sync.Mutex
+var signalIMContextCommitLock sync.RWMutex
 
 // IMContextSignalCommitCallback is a callback function for a 'commit' signal emitted from a IMContext.
 type IMContextSignalCommitCallback func(str string)
@@ -14390,6 +14576,9 @@ func (recv *IMContext) DisconnectCommit(connectionID int) {
 
 //export imcontext_commitHandler
 func imcontext_commitHandler(_ *C.GObject, c_str *C.gchar, data C.gpointer) {
+	signalIMContextCommitLock.RLock()
+	defer signalIMContextCommitLock.RUnlock()
+
 	str := C.GoString(c_str)
 
 	index := int(uintptr(data))
@@ -14404,7 +14593,7 @@ type signalIMContextDeleteSurroundingDetail struct {
 
 var signalIMContextDeleteSurroundingId int
 var signalIMContextDeleteSurroundingMap = make(map[int]signalIMContextDeleteSurroundingDetail)
-var signalIMContextDeleteSurroundingLock sync.Mutex
+var signalIMContextDeleteSurroundingLock sync.RWMutex
 
 // IMContextSignalDeleteSurroundingCallback is a callback function for a 'delete-surrounding' signal emitted from a IMContext.
 type IMContextSignalDeleteSurroundingCallback func(offset int32, nChars int32) bool
@@ -14449,6 +14638,9 @@ func (recv *IMContext) DisconnectDeleteSurrounding(connectionID int) {
 
 //export imcontext_deleteSurroundingHandler
 func imcontext_deleteSurroundingHandler(_ *C.GObject, c_offset C.gint, c_n_chars C.gint, data C.gpointer) C.gboolean {
+	signalIMContextDeleteSurroundingLock.RLock()
+	defer signalIMContextDeleteSurroundingLock.RUnlock()
+
 	offset := int32(c_offset)
 
 	nChars := int32(c_n_chars)
@@ -14468,7 +14660,7 @@ type signalIMContextPreeditChangedDetail struct {
 
 var signalIMContextPreeditChangedId int
 var signalIMContextPreeditChangedMap = make(map[int]signalIMContextPreeditChangedDetail)
-var signalIMContextPreeditChangedLock sync.Mutex
+var signalIMContextPreeditChangedLock sync.RWMutex
 
 // IMContextSignalPreeditChangedCallback is a callback function for a 'preedit-changed' signal emitted from a IMContext.
 type IMContextSignalPreeditChangedCallback func()
@@ -14513,6 +14705,9 @@ func (recv *IMContext) DisconnectPreeditChanged(connectionID int) {
 
 //export imcontext_preeditChangedHandler
 func imcontext_preeditChangedHandler(_ *C.GObject, data C.gpointer) {
+	signalIMContextPreeditChangedLock.RLock()
+	defer signalIMContextPreeditChangedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalIMContextPreeditChangedMap[index].callback
 	callback()
@@ -14525,7 +14720,7 @@ type signalIMContextPreeditEndDetail struct {
 
 var signalIMContextPreeditEndId int
 var signalIMContextPreeditEndMap = make(map[int]signalIMContextPreeditEndDetail)
-var signalIMContextPreeditEndLock sync.Mutex
+var signalIMContextPreeditEndLock sync.RWMutex
 
 // IMContextSignalPreeditEndCallback is a callback function for a 'preedit-end' signal emitted from a IMContext.
 type IMContextSignalPreeditEndCallback func()
@@ -14570,6 +14765,9 @@ func (recv *IMContext) DisconnectPreeditEnd(connectionID int) {
 
 //export imcontext_preeditEndHandler
 func imcontext_preeditEndHandler(_ *C.GObject, data C.gpointer) {
+	signalIMContextPreeditEndLock.RLock()
+	defer signalIMContextPreeditEndLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalIMContextPreeditEndMap[index].callback
 	callback()
@@ -14582,7 +14780,7 @@ type signalIMContextPreeditStartDetail struct {
 
 var signalIMContextPreeditStartId int
 var signalIMContextPreeditStartMap = make(map[int]signalIMContextPreeditStartDetail)
-var signalIMContextPreeditStartLock sync.Mutex
+var signalIMContextPreeditStartLock sync.RWMutex
 
 // IMContextSignalPreeditStartCallback is a callback function for a 'preedit-start' signal emitted from a IMContext.
 type IMContextSignalPreeditStartCallback func()
@@ -14627,6 +14825,9 @@ func (recv *IMContext) DisconnectPreeditStart(connectionID int) {
 
 //export imcontext_preeditStartHandler
 func imcontext_preeditStartHandler(_ *C.GObject, data C.gpointer) {
+	signalIMContextPreeditStartLock.RLock()
+	defer signalIMContextPreeditStartLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalIMContextPreeditStartMap[index].callback
 	callback()
@@ -14639,7 +14840,7 @@ type signalIMContextRetrieveSurroundingDetail struct {
 
 var signalIMContextRetrieveSurroundingId int
 var signalIMContextRetrieveSurroundingMap = make(map[int]signalIMContextRetrieveSurroundingDetail)
-var signalIMContextRetrieveSurroundingLock sync.Mutex
+var signalIMContextRetrieveSurroundingLock sync.RWMutex
 
 // IMContextSignalRetrieveSurroundingCallback is a callback function for a 'retrieve-surrounding' signal emitted from a IMContext.
 type IMContextSignalRetrieveSurroundingCallback func() bool
@@ -14684,6 +14885,9 @@ func (recv *IMContext) DisconnectRetrieveSurrounding(connectionID int) {
 
 //export imcontext_retrieveSurroundingHandler
 func imcontext_retrieveSurroundingHandler(_ *C.GObject, data C.gpointer) C.gboolean {
+	signalIMContextRetrieveSurroundingLock.RLock()
+	defer signalIMContextRetrieveSurroundingLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalIMContextRetrieveSurroundingMap[index].callback
 	retGo := callback()
@@ -15119,7 +15323,7 @@ type signalIconThemeChangedDetail struct {
 
 var signalIconThemeChangedId int
 var signalIconThemeChangedMap = make(map[int]signalIconThemeChangedDetail)
-var signalIconThemeChangedLock sync.Mutex
+var signalIconThemeChangedLock sync.RWMutex
 
 // IconThemeSignalChangedCallback is a callback function for a 'changed' signal emitted from a IconTheme.
 type IconThemeSignalChangedCallback func()
@@ -15164,6 +15368,9 @@ func (recv *IconTheme) DisconnectChanged(connectionID int) {
 
 //export icontheme_changedHandler
 func icontheme_changedHandler(_ *C.GObject, data C.gpointer) {
+	signalIconThemeChangedLock.RLock()
+	defer signalIconThemeChangedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalIconThemeChangedMap[index].callback
 	callback()
@@ -15230,7 +15437,7 @@ type signalIconViewActivateCursorItemDetail struct {
 
 var signalIconViewActivateCursorItemId int
 var signalIconViewActivateCursorItemMap = make(map[int]signalIconViewActivateCursorItemDetail)
-var signalIconViewActivateCursorItemLock sync.Mutex
+var signalIconViewActivateCursorItemLock sync.RWMutex
 
 // IconViewSignalActivateCursorItemCallback is a callback function for a 'activate-cursor-item' signal emitted from a IconView.
 type IconViewSignalActivateCursorItemCallback func() bool
@@ -15275,6 +15482,9 @@ func (recv *IconView) DisconnectActivateCursorItem(connectionID int) {
 
 //export iconview_activateCursorItemHandler
 func iconview_activateCursorItemHandler(_ *C.GObject, data C.gpointer) C.gboolean {
+	signalIconViewActivateCursorItemLock.RLock()
+	defer signalIconViewActivateCursorItemLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalIconViewActivateCursorItemMap[index].callback
 	retGo := callback()
@@ -15290,7 +15500,7 @@ type signalIconViewItemActivatedDetail struct {
 
 var signalIconViewItemActivatedId int
 var signalIconViewItemActivatedMap = make(map[int]signalIconViewItemActivatedDetail)
-var signalIconViewItemActivatedLock sync.Mutex
+var signalIconViewItemActivatedLock sync.RWMutex
 
 // IconViewSignalItemActivatedCallback is a callback function for a 'item-activated' signal emitted from a IconView.
 type IconViewSignalItemActivatedCallback func(path *TreePath)
@@ -15335,6 +15545,9 @@ func (recv *IconView) DisconnectItemActivated(connectionID int) {
 
 //export iconview_itemActivatedHandler
 func iconview_itemActivatedHandler(_ *C.GObject, c_path *C.GtkTreePath, data C.gpointer) {
+	signalIconViewItemActivatedLock.RLock()
+	defer signalIconViewItemActivatedLock.RUnlock()
+
 	path := TreePathNewFromC(unsafe.Pointer(c_path))
 
 	index := int(uintptr(data))
@@ -15351,7 +15564,7 @@ type signalIconViewSelectAllDetail struct {
 
 var signalIconViewSelectAllId int
 var signalIconViewSelectAllMap = make(map[int]signalIconViewSelectAllDetail)
-var signalIconViewSelectAllLock sync.Mutex
+var signalIconViewSelectAllLock sync.RWMutex
 
 // IconViewSignalSelectAllCallback is a callback function for a 'select-all' signal emitted from a IconView.
 type IconViewSignalSelectAllCallback func()
@@ -15396,6 +15609,9 @@ func (recv *IconView) DisconnectSelectAll(connectionID int) {
 
 //export iconview_selectAllHandler
 func iconview_selectAllHandler(_ *C.GObject, data C.gpointer) {
+	signalIconViewSelectAllLock.RLock()
+	defer signalIconViewSelectAllLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalIconViewSelectAllMap[index].callback
 	callback()
@@ -15408,7 +15624,7 @@ type signalIconViewSelectCursorItemDetail struct {
 
 var signalIconViewSelectCursorItemId int
 var signalIconViewSelectCursorItemMap = make(map[int]signalIconViewSelectCursorItemDetail)
-var signalIconViewSelectCursorItemLock sync.Mutex
+var signalIconViewSelectCursorItemLock sync.RWMutex
 
 // IconViewSignalSelectCursorItemCallback is a callback function for a 'select-cursor-item' signal emitted from a IconView.
 type IconViewSignalSelectCursorItemCallback func()
@@ -15453,6 +15669,9 @@ func (recv *IconView) DisconnectSelectCursorItem(connectionID int) {
 
 //export iconview_selectCursorItemHandler
 func iconview_selectCursorItemHandler(_ *C.GObject, data C.gpointer) {
+	signalIconViewSelectCursorItemLock.RLock()
+	defer signalIconViewSelectCursorItemLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalIconViewSelectCursorItemMap[index].callback
 	callback()
@@ -15465,7 +15684,7 @@ type signalIconViewSelectionChangedDetail struct {
 
 var signalIconViewSelectionChangedId int
 var signalIconViewSelectionChangedMap = make(map[int]signalIconViewSelectionChangedDetail)
-var signalIconViewSelectionChangedLock sync.Mutex
+var signalIconViewSelectionChangedLock sync.RWMutex
 
 // IconViewSignalSelectionChangedCallback is a callback function for a 'selection-changed' signal emitted from a IconView.
 type IconViewSignalSelectionChangedCallback func()
@@ -15510,6 +15729,9 @@ func (recv *IconView) DisconnectSelectionChanged(connectionID int) {
 
 //export iconview_selectionChangedHandler
 func iconview_selectionChangedHandler(_ *C.GObject, data C.gpointer) {
+	signalIconViewSelectionChangedLock.RLock()
+	defer signalIconViewSelectionChangedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalIconViewSelectionChangedMap[index].callback
 	callback()
@@ -15522,7 +15744,7 @@ type signalIconViewToggleCursorItemDetail struct {
 
 var signalIconViewToggleCursorItemId int
 var signalIconViewToggleCursorItemMap = make(map[int]signalIconViewToggleCursorItemDetail)
-var signalIconViewToggleCursorItemLock sync.Mutex
+var signalIconViewToggleCursorItemLock sync.RWMutex
 
 // IconViewSignalToggleCursorItemCallback is a callback function for a 'toggle-cursor-item' signal emitted from a IconView.
 type IconViewSignalToggleCursorItemCallback func()
@@ -15567,6 +15789,9 @@ func (recv *IconView) DisconnectToggleCursorItem(connectionID int) {
 
 //export iconview_toggleCursorItemHandler
 func iconview_toggleCursorItemHandler(_ *C.GObject, data C.gpointer) {
+	signalIconViewToggleCursorItemLock.RLock()
+	defer signalIconViewToggleCursorItemLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalIconViewToggleCursorItemMap[index].callback
 	callback()
@@ -15579,7 +15804,7 @@ type signalIconViewUnselectAllDetail struct {
 
 var signalIconViewUnselectAllId int
 var signalIconViewUnselectAllMap = make(map[int]signalIconViewUnselectAllDetail)
-var signalIconViewUnselectAllLock sync.Mutex
+var signalIconViewUnselectAllLock sync.RWMutex
 
 // IconViewSignalUnselectAllCallback is a callback function for a 'unselect-all' signal emitted from a IconView.
 type IconViewSignalUnselectAllCallback func()
@@ -15624,6 +15849,9 @@ func (recv *IconView) DisconnectUnselectAll(connectionID int) {
 
 //export iconview_unselectAllHandler
 func iconview_unselectAllHandler(_ *C.GObject, data C.gpointer) {
+	signalIconViewUnselectAllLock.RLock()
+	defer signalIconViewUnselectAllLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalIconViewUnselectAllMap[index].callback
 	callback()
@@ -16440,7 +16668,7 @@ type signalLabelCopyClipboardDetail struct {
 
 var signalLabelCopyClipboardId int
 var signalLabelCopyClipboardMap = make(map[int]signalLabelCopyClipboardDetail)
-var signalLabelCopyClipboardLock sync.Mutex
+var signalLabelCopyClipboardLock sync.RWMutex
 
 // LabelSignalCopyClipboardCallback is a callback function for a 'copy-clipboard' signal emitted from a Label.
 type LabelSignalCopyClipboardCallback func()
@@ -16485,6 +16713,9 @@ func (recv *Label) DisconnectCopyClipboard(connectionID int) {
 
 //export label_copyClipboardHandler
 func label_copyClipboardHandler(_ *C.GObject, data C.gpointer) {
+	signalLabelCopyClipboardLock.RLock()
+	defer signalLabelCopyClipboardLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalLabelCopyClipboardMap[index].callback
 	callback()
@@ -16499,7 +16730,7 @@ type signalLabelPopulatePopupDetail struct {
 
 var signalLabelPopulatePopupId int
 var signalLabelPopulatePopupMap = make(map[int]signalLabelPopulatePopupDetail)
-var signalLabelPopulatePopupLock sync.Mutex
+var signalLabelPopulatePopupLock sync.RWMutex
 
 // LabelSignalPopulatePopupCallback is a callback function for a 'populate-popup' signal emitted from a Label.
 type LabelSignalPopulatePopupCallback func(menu *Menu)
@@ -16544,6 +16775,9 @@ func (recv *Label) DisconnectPopulatePopup(connectionID int) {
 
 //export label_populatePopupHandler
 func label_populatePopupHandler(_ *C.GObject, c_menu *C.GtkMenu, data C.gpointer) {
+	signalLabelPopulatePopupLock.RLock()
+	defer signalLabelPopulatePopupLock.RUnlock()
+
 	menu := MenuNewFromC(unsafe.Pointer(c_menu))
 
 	index := int(uintptr(data))
@@ -17299,7 +17533,7 @@ type signalLinkButtonActivateLinkDetail struct {
 
 var signalLinkButtonActivateLinkId int
 var signalLinkButtonActivateLinkMap = make(map[int]signalLinkButtonActivateLinkDetail)
-var signalLinkButtonActivateLinkLock sync.Mutex
+var signalLinkButtonActivateLinkLock sync.RWMutex
 
 // LinkButtonSignalActivateLinkCallback is a callback function for a 'activate-link' signal emitted from a LinkButton.
 type LinkButtonSignalActivateLinkCallback func() bool
@@ -17344,6 +17578,9 @@ func (recv *LinkButton) DisconnectActivateLink(connectionID int) {
 
 //export linkbutton_activateLinkHandler
 func linkbutton_activateLinkHandler(_ *C.GObject, data C.gpointer) C.gboolean {
+	signalLinkButtonActivateLinkLock.RLock()
+	defer signalLinkButtonActivateLinkLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalLinkButtonActivateLinkMap[index].callback
 	retGo := callback()
@@ -17511,7 +17748,7 @@ type signalListBoxActivateCursorRowDetail struct {
 
 var signalListBoxActivateCursorRowId int
 var signalListBoxActivateCursorRowMap = make(map[int]signalListBoxActivateCursorRowDetail)
-var signalListBoxActivateCursorRowLock sync.Mutex
+var signalListBoxActivateCursorRowLock sync.RWMutex
 
 // ListBoxSignalActivateCursorRowCallback is a callback function for a 'activate-cursor-row' signal emitted from a ListBox.
 type ListBoxSignalActivateCursorRowCallback func()
@@ -17556,6 +17793,9 @@ func (recv *ListBox) DisconnectActivateCursorRow(connectionID int) {
 
 //export listbox_activateCursorRowHandler
 func listbox_activateCursorRowHandler(_ *C.GObject, data C.gpointer) {
+	signalListBoxActivateCursorRowLock.RLock()
+	defer signalListBoxActivateCursorRowLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalListBoxActivateCursorRowMap[index].callback
 	callback()
@@ -17570,7 +17810,7 @@ type signalListBoxToggleCursorRowDetail struct {
 
 var signalListBoxToggleCursorRowId int
 var signalListBoxToggleCursorRowMap = make(map[int]signalListBoxToggleCursorRowDetail)
-var signalListBoxToggleCursorRowLock sync.Mutex
+var signalListBoxToggleCursorRowLock sync.RWMutex
 
 // ListBoxSignalToggleCursorRowCallback is a callback function for a 'toggle-cursor-row' signal emitted from a ListBox.
 type ListBoxSignalToggleCursorRowCallback func()
@@ -17615,6 +17855,9 @@ func (recv *ListBox) DisconnectToggleCursorRow(connectionID int) {
 
 //export listbox_toggleCursorRowHandler
 func listbox_toggleCursorRowHandler(_ *C.GObject, data C.gpointer) {
+	signalListBoxToggleCursorRowLock.RLock()
+	defer signalListBoxToggleCursorRowLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalListBoxToggleCursorRowMap[index].callback
 	callback()
@@ -18771,7 +19014,7 @@ type signalMenuItemActivateDetail struct {
 
 var signalMenuItemActivateId int
 var signalMenuItemActivateMap = make(map[int]signalMenuItemActivateDetail)
-var signalMenuItemActivateLock sync.Mutex
+var signalMenuItemActivateLock sync.RWMutex
 
 // MenuItemSignalActivateCallback is a callback function for a 'activate' signal emitted from a MenuItem.
 type MenuItemSignalActivateCallback func()
@@ -18816,6 +19059,9 @@ func (recv *MenuItem) DisconnectActivate(connectionID int) {
 
 //export menuitem_activateHandler
 func menuitem_activateHandler(_ *C.GObject, data C.gpointer) {
+	signalMenuItemActivateLock.RLock()
+	defer signalMenuItemActivateLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalMenuItemActivateMap[index].callback
 	callback()
@@ -18828,7 +19074,7 @@ type signalMenuItemActivateItemDetail struct {
 
 var signalMenuItemActivateItemId int
 var signalMenuItemActivateItemMap = make(map[int]signalMenuItemActivateItemDetail)
-var signalMenuItemActivateItemLock sync.Mutex
+var signalMenuItemActivateItemLock sync.RWMutex
 
 // MenuItemSignalActivateItemCallback is a callback function for a 'activate-item' signal emitted from a MenuItem.
 type MenuItemSignalActivateItemCallback func()
@@ -18873,6 +19119,9 @@ func (recv *MenuItem) DisconnectActivateItem(connectionID int) {
 
 //export menuitem_activateItemHandler
 func menuitem_activateItemHandler(_ *C.GObject, data C.gpointer) {
+	signalMenuItemActivateItemLock.RLock()
+	defer signalMenuItemActivateItemLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalMenuItemActivateItemMap[index].callback
 	callback()
@@ -18885,7 +19134,7 @@ type signalMenuItemDeselectDetail struct {
 
 var signalMenuItemDeselectId int
 var signalMenuItemDeselectMap = make(map[int]signalMenuItemDeselectDetail)
-var signalMenuItemDeselectLock sync.Mutex
+var signalMenuItemDeselectLock sync.RWMutex
 
 // MenuItemSignalDeselectCallback is a callback function for a 'deselect' signal emitted from a MenuItem.
 type MenuItemSignalDeselectCallback func()
@@ -18930,6 +19179,9 @@ func (recv *MenuItem) DisconnectDeselect(connectionID int) {
 
 //export menuitem_deselectHandler
 func menuitem_deselectHandler(_ *C.GObject, data C.gpointer) {
+	signalMenuItemDeselectLock.RLock()
+	defer signalMenuItemDeselectLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalMenuItemDeselectMap[index].callback
 	callback()
@@ -18942,7 +19194,7 @@ type signalMenuItemSelectDetail struct {
 
 var signalMenuItemSelectId int
 var signalMenuItemSelectMap = make(map[int]signalMenuItemSelectDetail)
-var signalMenuItemSelectLock sync.Mutex
+var signalMenuItemSelectLock sync.RWMutex
 
 // MenuItemSignalSelectCallback is a callback function for a 'select' signal emitted from a MenuItem.
 type MenuItemSignalSelectCallback func()
@@ -18987,6 +19239,9 @@ func (recv *MenuItem) DisconnectSelect(connectionID int) {
 
 //export menuitem_selectHandler
 func menuitem_selectHandler(_ *C.GObject, data C.gpointer) {
+	signalMenuItemSelectLock.RLock()
+	defer signalMenuItemSelectLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalMenuItemSelectMap[index].callback
 	callback()
@@ -18999,7 +19254,7 @@ type signalMenuItemToggleSizeAllocateDetail struct {
 
 var signalMenuItemToggleSizeAllocateId int
 var signalMenuItemToggleSizeAllocateMap = make(map[int]signalMenuItemToggleSizeAllocateDetail)
-var signalMenuItemToggleSizeAllocateLock sync.Mutex
+var signalMenuItemToggleSizeAllocateLock sync.RWMutex
 
 // MenuItemSignalToggleSizeAllocateCallback is a callback function for a 'toggle-size-allocate' signal emitted from a MenuItem.
 type MenuItemSignalToggleSizeAllocateCallback func(object int32)
@@ -19044,6 +19299,9 @@ func (recv *MenuItem) DisconnectToggleSizeAllocate(connectionID int) {
 
 //export menuitem_toggleSizeAllocateHandler
 func menuitem_toggleSizeAllocateHandler(_ *C.GObject, c_object C.gint, data C.gpointer) {
+	signalMenuItemToggleSizeAllocateLock.RLock()
+	defer signalMenuItemToggleSizeAllocateLock.RUnlock()
+
 	object := int32(c_object)
 
 	index := int(uintptr(data))
@@ -19058,7 +19316,7 @@ type signalMenuItemToggleSizeRequestDetail struct {
 
 var signalMenuItemToggleSizeRequestId int
 var signalMenuItemToggleSizeRequestMap = make(map[int]signalMenuItemToggleSizeRequestDetail)
-var signalMenuItemToggleSizeRequestLock sync.Mutex
+var signalMenuItemToggleSizeRequestLock sync.RWMutex
 
 // MenuItemSignalToggleSizeRequestCallback is a callback function for a 'toggle-size-request' signal emitted from a MenuItem.
 type MenuItemSignalToggleSizeRequestCallback func(object uintptr)
@@ -19103,6 +19361,9 @@ func (recv *MenuItem) DisconnectToggleSizeRequest(connectionID int) {
 
 //export menuitem_toggleSizeRequestHandler
 func menuitem_toggleSizeRequestHandler(_ *C.GObject, c_object C.gpointer, data C.gpointer) {
+	signalMenuItemToggleSizeRequestLock.RLock()
+	defer signalMenuItemToggleSizeRequestLock.RUnlock()
+
 	object := uintptr(c_object)
 
 	index := int(uintptr(data))
@@ -19382,7 +19643,7 @@ type signalMenuShellActivateCurrentDetail struct {
 
 var signalMenuShellActivateCurrentId int
 var signalMenuShellActivateCurrentMap = make(map[int]signalMenuShellActivateCurrentDetail)
-var signalMenuShellActivateCurrentLock sync.Mutex
+var signalMenuShellActivateCurrentLock sync.RWMutex
 
 // MenuShellSignalActivateCurrentCallback is a callback function for a 'activate-current' signal emitted from a MenuShell.
 type MenuShellSignalActivateCurrentCallback func(forceHide bool)
@@ -19427,6 +19688,9 @@ func (recv *MenuShell) DisconnectActivateCurrent(connectionID int) {
 
 //export menushell_activateCurrentHandler
 func menushell_activateCurrentHandler(_ *C.GObject, c_force_hide C.gboolean, data C.gpointer) {
+	signalMenuShellActivateCurrentLock.RLock()
+	defer signalMenuShellActivateCurrentLock.RUnlock()
+
 	forceHide := c_force_hide == C.TRUE
 
 	index := int(uintptr(data))
@@ -19441,7 +19705,7 @@ type signalMenuShellCancelDetail struct {
 
 var signalMenuShellCancelId int
 var signalMenuShellCancelMap = make(map[int]signalMenuShellCancelDetail)
-var signalMenuShellCancelLock sync.Mutex
+var signalMenuShellCancelLock sync.RWMutex
 
 // MenuShellSignalCancelCallback is a callback function for a 'cancel' signal emitted from a MenuShell.
 type MenuShellSignalCancelCallback func()
@@ -19486,6 +19750,9 @@ func (recv *MenuShell) DisconnectCancel(connectionID int) {
 
 //export menushell_cancelHandler
 func menushell_cancelHandler(_ *C.GObject, data C.gpointer) {
+	signalMenuShellCancelLock.RLock()
+	defer signalMenuShellCancelLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalMenuShellCancelMap[index].callback
 	callback()
@@ -19500,7 +19767,7 @@ type signalMenuShellDeactivateDetail struct {
 
 var signalMenuShellDeactivateId int
 var signalMenuShellDeactivateMap = make(map[int]signalMenuShellDeactivateDetail)
-var signalMenuShellDeactivateLock sync.Mutex
+var signalMenuShellDeactivateLock sync.RWMutex
 
 // MenuShellSignalDeactivateCallback is a callback function for a 'deactivate' signal emitted from a MenuShell.
 type MenuShellSignalDeactivateCallback func()
@@ -19545,6 +19812,9 @@ func (recv *MenuShell) DisconnectDeactivate(connectionID int) {
 
 //export menushell_deactivateHandler
 func menushell_deactivateHandler(_ *C.GObject, data C.gpointer) {
+	signalMenuShellDeactivateLock.RLock()
+	defer signalMenuShellDeactivateLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalMenuShellDeactivateMap[index].callback
 	callback()
@@ -19559,7 +19829,7 @@ type signalMenuShellSelectionDoneDetail struct {
 
 var signalMenuShellSelectionDoneId int
 var signalMenuShellSelectionDoneMap = make(map[int]signalMenuShellSelectionDoneDetail)
-var signalMenuShellSelectionDoneLock sync.Mutex
+var signalMenuShellSelectionDoneLock sync.RWMutex
 
 // MenuShellSignalSelectionDoneCallback is a callback function for a 'selection-done' signal emitted from a MenuShell.
 type MenuShellSignalSelectionDoneCallback func()
@@ -19604,6 +19874,9 @@ func (recv *MenuShell) DisconnectSelectionDone(connectionID int) {
 
 //export menushell_selectionDoneHandler
 func menushell_selectionDoneHandler(_ *C.GObject, data C.gpointer) {
+	signalMenuShellSelectionDoneLock.RLock()
+	defer signalMenuShellSelectionDoneLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalMenuShellSelectionDoneMap[index].callback
 	callback()
@@ -19838,7 +20111,7 @@ type signalMenuToolButtonShowMenuDetail struct {
 
 var signalMenuToolButtonShowMenuId int
 var signalMenuToolButtonShowMenuMap = make(map[int]signalMenuToolButtonShowMenuDetail)
-var signalMenuToolButtonShowMenuLock sync.Mutex
+var signalMenuToolButtonShowMenuLock sync.RWMutex
 
 // MenuToolButtonSignalShowMenuCallback is a callback function for a 'show-menu' signal emitted from a MenuToolButton.
 type MenuToolButtonSignalShowMenuCallback func()
@@ -19883,6 +20156,9 @@ func (recv *MenuToolButton) DisconnectShowMenu(connectionID int) {
 
 //export menutoolbutton_showMenuHandler
 func menutoolbutton_showMenuHandler(_ *C.GObject, data C.gpointer) {
+	signalMenuToolButtonShowMenuLock.RLock()
+	defer signalMenuToolButtonShowMenuLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalMenuToolButtonShowMenuMap[index].callback
 	callback()
@@ -20287,7 +20563,7 @@ type signalNotebookChangeCurrentPageDetail struct {
 
 var signalNotebookChangeCurrentPageId int
 var signalNotebookChangeCurrentPageMap = make(map[int]signalNotebookChangeCurrentPageDetail)
-var signalNotebookChangeCurrentPageLock sync.Mutex
+var signalNotebookChangeCurrentPageLock sync.RWMutex
 
 // NotebookSignalChangeCurrentPageCallback is a callback function for a 'change-current-page' signal emitted from a Notebook.
 type NotebookSignalChangeCurrentPageCallback func(object int32) bool
@@ -20332,6 +20608,9 @@ func (recv *Notebook) DisconnectChangeCurrentPage(connectionID int) {
 
 //export notebook_changeCurrentPageHandler
 func notebook_changeCurrentPageHandler(_ *C.GObject, c_object C.gint, data C.gpointer) C.gboolean {
+	signalNotebookChangeCurrentPageLock.RLock()
+	defer signalNotebookChangeCurrentPageLock.RUnlock()
+
 	object := int32(c_object)
 
 	index := int(uintptr(data))
@@ -20355,7 +20634,7 @@ type signalNotebookSelectPageDetail struct {
 
 var signalNotebookSelectPageId int
 var signalNotebookSelectPageMap = make(map[int]signalNotebookSelectPageDetail)
-var signalNotebookSelectPageLock sync.Mutex
+var signalNotebookSelectPageLock sync.RWMutex
 
 // NotebookSignalSelectPageCallback is a callback function for a 'select-page' signal emitted from a Notebook.
 type NotebookSignalSelectPageCallback func(object bool) bool
@@ -20400,6 +20679,9 @@ func (recv *Notebook) DisconnectSelectPage(connectionID int) {
 
 //export notebook_selectPageHandler
 func notebook_selectPageHandler(_ *C.GObject, c_object C.gboolean, data C.gpointer) C.gboolean {
+	signalNotebookSelectPageLock.RLock()
+	defer signalNotebookSelectPageLock.RUnlock()
+
 	object := c_object == C.TRUE
 
 	index := int(uintptr(data))
@@ -20417,7 +20699,7 @@ type signalNotebookSwitchPageDetail struct {
 
 var signalNotebookSwitchPageId int
 var signalNotebookSwitchPageMap = make(map[int]signalNotebookSwitchPageDetail)
-var signalNotebookSwitchPageLock sync.Mutex
+var signalNotebookSwitchPageLock sync.RWMutex
 
 // NotebookSignalSwitchPageCallback is a callback function for a 'switch-page' signal emitted from a Notebook.
 type NotebookSignalSwitchPageCallback func(page *Widget, pageNum uint32)
@@ -20462,6 +20744,9 @@ func (recv *Notebook) DisconnectSwitchPage(connectionID int) {
 
 //export notebook_switchPageHandler
 func notebook_switchPageHandler(_ *C.GObject, c_page *C.GtkWidget, c_page_num C.guint, data C.gpointer) {
+	signalNotebookSwitchPageLock.RLock()
+	defer signalNotebookSwitchPageLock.RUnlock()
+
 	page := WidgetNewFromC(unsafe.Pointer(c_page))
 
 	pageNum := uint32(c_page_num)
@@ -21551,7 +21836,7 @@ type signalPlacesSidebarShowConnectToServerDetail struct {
 
 var signalPlacesSidebarShowConnectToServerId int
 var signalPlacesSidebarShowConnectToServerMap = make(map[int]signalPlacesSidebarShowConnectToServerDetail)
-var signalPlacesSidebarShowConnectToServerLock sync.Mutex
+var signalPlacesSidebarShowConnectToServerLock sync.RWMutex
 
 // PlacesSidebarSignalShowConnectToServerCallback is a callback function for a 'show-connect-to-server' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalShowConnectToServerCallback func()
@@ -21596,6 +21881,9 @@ func (recv *PlacesSidebar) DisconnectShowConnectToServer(connectionID int) {
 
 //export placessidebar_showConnectToServerHandler
 func placessidebar_showConnectToServerHandler(_ *C.GObject, data C.gpointer) {
+	signalPlacesSidebarShowConnectToServerLock.RLock()
+	defer signalPlacesSidebarShowConnectToServerLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalPlacesSidebarShowConnectToServerMap[index].callback
 	callback()
@@ -21687,7 +21975,7 @@ type signalPopoverClosedDetail struct {
 
 var signalPopoverClosedId int
 var signalPopoverClosedMap = make(map[int]signalPopoverClosedDetail)
-var signalPopoverClosedLock sync.Mutex
+var signalPopoverClosedLock sync.RWMutex
 
 // PopoverSignalClosedCallback is a callback function for a 'closed' signal emitted from a Popover.
 type PopoverSignalClosedCallback func()
@@ -21732,6 +22020,9 @@ func (recv *Popover) DisconnectClosed(connectionID int) {
 
 //export popover_closedHandler
 func popover_closedHandler(_ *C.GObject, data C.gpointer) {
+	signalPopoverClosedLock.RLock()
+	defer signalPopoverClosedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalPopoverClosedMap[index].callback
 	callback()
@@ -22626,7 +22917,7 @@ type signalRadioMenuItemGroupChangedDetail struct {
 
 var signalRadioMenuItemGroupChangedId int
 var signalRadioMenuItemGroupChangedMap = make(map[int]signalRadioMenuItemGroupChangedDetail)
-var signalRadioMenuItemGroupChangedLock sync.Mutex
+var signalRadioMenuItemGroupChangedLock sync.RWMutex
 
 // RadioMenuItemSignalGroupChangedCallback is a callback function for a 'group-changed' signal emitted from a RadioMenuItem.
 type RadioMenuItemSignalGroupChangedCallback func()
@@ -22671,6 +22962,9 @@ func (recv *RadioMenuItem) DisconnectGroupChanged(connectionID int) {
 
 //export radiomenuitem_groupChangedHandler
 func radiomenuitem_groupChangedHandler(_ *C.GObject, data C.gpointer) {
+	signalRadioMenuItemGroupChangedLock.RLock()
+	defer signalRadioMenuItemGroupChangedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalRadioMenuItemGroupChangedMap[index].callback
 	callback()
@@ -22989,7 +23283,7 @@ type signalRangeAdjustBoundsDetail struct {
 
 var signalRangeAdjustBoundsId int
 var signalRangeAdjustBoundsMap = make(map[int]signalRangeAdjustBoundsDetail)
-var signalRangeAdjustBoundsLock sync.Mutex
+var signalRangeAdjustBoundsLock sync.RWMutex
 
 // RangeSignalAdjustBoundsCallback is a callback function for a 'adjust-bounds' signal emitted from a Range.
 type RangeSignalAdjustBoundsCallback func(value float64)
@@ -23034,6 +23328,9 @@ func (recv *Range) DisconnectAdjustBounds(connectionID int) {
 
 //export range_adjustBoundsHandler
 func range_adjustBoundsHandler(_ *C.GObject, c_value C.gdouble, data C.gpointer) {
+	signalRangeAdjustBoundsLock.RLock()
+	defer signalRangeAdjustBoundsLock.RUnlock()
+
 	value := float64(c_value)
 
 	index := int(uintptr(data))
@@ -23050,7 +23347,7 @@ type signalRangeValueChangedDetail struct {
 
 var signalRangeValueChangedId int
 var signalRangeValueChangedMap = make(map[int]signalRangeValueChangedDetail)
-var signalRangeValueChangedLock sync.Mutex
+var signalRangeValueChangedLock sync.RWMutex
 
 // RangeSignalValueChangedCallback is a callback function for a 'value-changed' signal emitted from a Range.
 type RangeSignalValueChangedCallback func()
@@ -23095,6 +23392,9 @@ func (recv *Range) DisconnectValueChanged(connectionID int) {
 
 //export range_valueChangedHandler
 func range_valueChangedHandler(_ *C.GObject, data C.gpointer) {
+	signalRangeValueChangedLock.RLock()
+	defer signalRangeValueChangedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalRangeValueChangedMap[index].callback
 	callback()
@@ -25132,7 +25432,7 @@ type signalSpinButtonOutputDetail struct {
 
 var signalSpinButtonOutputId int
 var signalSpinButtonOutputMap = make(map[int]signalSpinButtonOutputDetail)
-var signalSpinButtonOutputLock sync.Mutex
+var signalSpinButtonOutputLock sync.RWMutex
 
 // SpinButtonSignalOutputCallback is a callback function for a 'output' signal emitted from a SpinButton.
 type SpinButtonSignalOutputCallback func() bool
@@ -25177,6 +25477,9 @@ func (recv *SpinButton) DisconnectOutput(connectionID int) {
 
 //export spinbutton_outputHandler
 func spinbutton_outputHandler(_ *C.GObject, data C.gpointer) C.gboolean {
+	signalSpinButtonOutputLock.RLock()
+	defer signalSpinButtonOutputLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalSpinButtonOutputMap[index].callback
 	retGo := callback()
@@ -25192,7 +25495,7 @@ type signalSpinButtonValueChangedDetail struct {
 
 var signalSpinButtonValueChangedId int
 var signalSpinButtonValueChangedMap = make(map[int]signalSpinButtonValueChangedDetail)
-var signalSpinButtonValueChangedLock sync.Mutex
+var signalSpinButtonValueChangedLock sync.RWMutex
 
 // SpinButtonSignalValueChangedCallback is a callback function for a 'value-changed' signal emitted from a SpinButton.
 type SpinButtonSignalValueChangedCallback func()
@@ -25237,6 +25540,9 @@ func (recv *SpinButton) DisconnectValueChanged(connectionID int) {
 
 //export spinbutton_valueChangedHandler
 func spinbutton_valueChangedHandler(_ *C.GObject, data C.gpointer) {
+	signalSpinButtonValueChangedLock.RLock()
+	defer signalSpinButtonValueChangedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalSpinButtonValueChangedMap[index].callback
 	callback()
@@ -26025,7 +26331,7 @@ type signalStatusbarTextPoppedDetail struct {
 
 var signalStatusbarTextPoppedId int
 var signalStatusbarTextPoppedMap = make(map[int]signalStatusbarTextPoppedDetail)
-var signalStatusbarTextPoppedLock sync.Mutex
+var signalStatusbarTextPoppedLock sync.RWMutex
 
 // StatusbarSignalTextPoppedCallback is a callback function for a 'text-popped' signal emitted from a Statusbar.
 type StatusbarSignalTextPoppedCallback func(contextId uint32, text string)
@@ -26070,6 +26376,9 @@ func (recv *Statusbar) DisconnectTextPopped(connectionID int) {
 
 //export statusbar_textPoppedHandler
 func statusbar_textPoppedHandler(_ *C.GObject, c_context_id C.guint, c_text *C.gchar, data C.gpointer) {
+	signalStatusbarTextPoppedLock.RLock()
+	defer signalStatusbarTextPoppedLock.RUnlock()
+
 	contextId := uint32(c_context_id)
 
 	text := C.GoString(c_text)
@@ -26086,7 +26395,7 @@ type signalStatusbarTextPushedDetail struct {
 
 var signalStatusbarTextPushedId int
 var signalStatusbarTextPushedMap = make(map[int]signalStatusbarTextPushedDetail)
-var signalStatusbarTextPushedLock sync.Mutex
+var signalStatusbarTextPushedLock sync.RWMutex
 
 // StatusbarSignalTextPushedCallback is a callback function for a 'text-pushed' signal emitted from a Statusbar.
 type StatusbarSignalTextPushedCallback func(contextId uint32, text string)
@@ -26131,6 +26440,9 @@ func (recv *Statusbar) DisconnectTextPushed(connectionID int) {
 
 //export statusbar_textPushedHandler
 func statusbar_textPushedHandler(_ *C.GObject, c_context_id C.guint, c_text *C.gchar, data C.gpointer) {
+	signalStatusbarTextPushedLock.RLock()
+	defer signalStatusbarTextPushedLock.RUnlock()
+
 	contextId := uint32(c_context_id)
 
 	text := C.GoString(c_text)
@@ -26680,7 +26992,7 @@ type signalSwitchActivateDetail struct {
 
 var signalSwitchActivateId int
 var signalSwitchActivateMap = make(map[int]signalSwitchActivateDetail)
-var signalSwitchActivateLock sync.Mutex
+var signalSwitchActivateLock sync.RWMutex
 
 // SwitchSignalActivateCallback is a callback function for a 'activate' signal emitted from a Switch.
 type SwitchSignalActivateCallback func()
@@ -26725,6 +27037,9 @@ func (recv *Switch) DisconnectActivate(connectionID int) {
 
 //export switch_activateHandler
 func switch_activateHandler(_ *C.GObject, data C.gpointer) {
+	signalSwitchActivateLock.RLock()
+	defer signalSwitchActivateLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalSwitchActivateMap[index].callback
 	callback()
@@ -27179,7 +27494,7 @@ type signalTextBufferApplyTagDetail struct {
 
 var signalTextBufferApplyTagId int
 var signalTextBufferApplyTagMap = make(map[int]signalTextBufferApplyTagDetail)
-var signalTextBufferApplyTagLock sync.Mutex
+var signalTextBufferApplyTagLock sync.RWMutex
 
 // TextBufferSignalApplyTagCallback is a callback function for a 'apply-tag' signal emitted from a TextBuffer.
 type TextBufferSignalApplyTagCallback func(tag *TextTag, start *TextIter, end *TextIter)
@@ -27224,6 +27539,9 @@ func (recv *TextBuffer) DisconnectApplyTag(connectionID int) {
 
 //export textbuffer_applyTagHandler
 func textbuffer_applyTagHandler(_ *C.GObject, c_tag *C.GtkTextTag, c_start *C.GtkTextIter, c_end *C.GtkTextIter, data C.gpointer) {
+	signalTextBufferApplyTagLock.RLock()
+	defer signalTextBufferApplyTagLock.RUnlock()
+
 	tag := TextTagNewFromC(unsafe.Pointer(c_tag))
 
 	start := TextIterNewFromC(unsafe.Pointer(c_start))
@@ -27242,7 +27560,7 @@ type signalTextBufferBeginUserActionDetail struct {
 
 var signalTextBufferBeginUserActionId int
 var signalTextBufferBeginUserActionMap = make(map[int]signalTextBufferBeginUserActionDetail)
-var signalTextBufferBeginUserActionLock sync.Mutex
+var signalTextBufferBeginUserActionLock sync.RWMutex
 
 // TextBufferSignalBeginUserActionCallback is a callback function for a 'begin-user-action' signal emitted from a TextBuffer.
 type TextBufferSignalBeginUserActionCallback func()
@@ -27287,6 +27605,9 @@ func (recv *TextBuffer) DisconnectBeginUserAction(connectionID int) {
 
 //export textbuffer_beginUserActionHandler
 func textbuffer_beginUserActionHandler(_ *C.GObject, data C.gpointer) {
+	signalTextBufferBeginUserActionLock.RLock()
+	defer signalTextBufferBeginUserActionLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalTextBufferBeginUserActionMap[index].callback
 	callback()
@@ -27299,7 +27620,7 @@ type signalTextBufferChangedDetail struct {
 
 var signalTextBufferChangedId int
 var signalTextBufferChangedMap = make(map[int]signalTextBufferChangedDetail)
-var signalTextBufferChangedLock sync.Mutex
+var signalTextBufferChangedLock sync.RWMutex
 
 // TextBufferSignalChangedCallback is a callback function for a 'changed' signal emitted from a TextBuffer.
 type TextBufferSignalChangedCallback func()
@@ -27344,6 +27665,9 @@ func (recv *TextBuffer) DisconnectChanged(connectionID int) {
 
 //export textbuffer_changedHandler
 func textbuffer_changedHandler(_ *C.GObject, data C.gpointer) {
+	signalTextBufferChangedLock.RLock()
+	defer signalTextBufferChangedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalTextBufferChangedMap[index].callback
 	callback()
@@ -27356,7 +27680,7 @@ type signalTextBufferDeleteRangeDetail struct {
 
 var signalTextBufferDeleteRangeId int
 var signalTextBufferDeleteRangeMap = make(map[int]signalTextBufferDeleteRangeDetail)
-var signalTextBufferDeleteRangeLock sync.Mutex
+var signalTextBufferDeleteRangeLock sync.RWMutex
 
 // TextBufferSignalDeleteRangeCallback is a callback function for a 'delete-range' signal emitted from a TextBuffer.
 type TextBufferSignalDeleteRangeCallback func(start *TextIter, end *TextIter)
@@ -27401,6 +27725,9 @@ func (recv *TextBuffer) DisconnectDeleteRange(connectionID int) {
 
 //export textbuffer_deleteRangeHandler
 func textbuffer_deleteRangeHandler(_ *C.GObject, c_start *C.GtkTextIter, c_end *C.GtkTextIter, data C.gpointer) {
+	signalTextBufferDeleteRangeLock.RLock()
+	defer signalTextBufferDeleteRangeLock.RUnlock()
+
 	start := TextIterNewFromC(unsafe.Pointer(c_start))
 
 	end := TextIterNewFromC(unsafe.Pointer(c_end))
@@ -27417,7 +27744,7 @@ type signalTextBufferEndUserActionDetail struct {
 
 var signalTextBufferEndUserActionId int
 var signalTextBufferEndUserActionMap = make(map[int]signalTextBufferEndUserActionDetail)
-var signalTextBufferEndUserActionLock sync.Mutex
+var signalTextBufferEndUserActionLock sync.RWMutex
 
 // TextBufferSignalEndUserActionCallback is a callback function for a 'end-user-action' signal emitted from a TextBuffer.
 type TextBufferSignalEndUserActionCallback func()
@@ -27462,6 +27789,9 @@ func (recv *TextBuffer) DisconnectEndUserAction(connectionID int) {
 
 //export textbuffer_endUserActionHandler
 func textbuffer_endUserActionHandler(_ *C.GObject, data C.gpointer) {
+	signalTextBufferEndUserActionLock.RLock()
+	defer signalTextBufferEndUserActionLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalTextBufferEndUserActionMap[index].callback
 	callback()
@@ -27474,7 +27804,7 @@ type signalTextBufferInsertChildAnchorDetail struct {
 
 var signalTextBufferInsertChildAnchorId int
 var signalTextBufferInsertChildAnchorMap = make(map[int]signalTextBufferInsertChildAnchorDetail)
-var signalTextBufferInsertChildAnchorLock sync.Mutex
+var signalTextBufferInsertChildAnchorLock sync.RWMutex
 
 // TextBufferSignalInsertChildAnchorCallback is a callback function for a 'insert-child-anchor' signal emitted from a TextBuffer.
 type TextBufferSignalInsertChildAnchorCallback func(location *TextIter, anchor *TextChildAnchor)
@@ -27519,6 +27849,9 @@ func (recv *TextBuffer) DisconnectInsertChildAnchor(connectionID int) {
 
 //export textbuffer_insertChildAnchorHandler
 func textbuffer_insertChildAnchorHandler(_ *C.GObject, c_location *C.GtkTextIter, c_anchor *C.GtkTextChildAnchor, data C.gpointer) {
+	signalTextBufferInsertChildAnchorLock.RLock()
+	defer signalTextBufferInsertChildAnchorLock.RUnlock()
+
 	location := TextIterNewFromC(unsafe.Pointer(c_location))
 
 	anchor := TextChildAnchorNewFromC(unsafe.Pointer(c_anchor))
@@ -27535,7 +27868,7 @@ type signalTextBufferInsertPixbufDetail struct {
 
 var signalTextBufferInsertPixbufId int
 var signalTextBufferInsertPixbufMap = make(map[int]signalTextBufferInsertPixbufDetail)
-var signalTextBufferInsertPixbufLock sync.Mutex
+var signalTextBufferInsertPixbufLock sync.RWMutex
 
 // TextBufferSignalInsertPixbufCallback is a callback function for a 'insert-pixbuf' signal emitted from a TextBuffer.
 type TextBufferSignalInsertPixbufCallback func(location *TextIter, pixbuf *gdkpixbuf.Pixbuf)
@@ -27580,6 +27913,9 @@ func (recv *TextBuffer) DisconnectInsertPixbuf(connectionID int) {
 
 //export textbuffer_insertPixbufHandler
 func textbuffer_insertPixbufHandler(_ *C.GObject, c_location *C.GtkTextIter, c_pixbuf *C.GdkPixbuf, data C.gpointer) {
+	signalTextBufferInsertPixbufLock.RLock()
+	defer signalTextBufferInsertPixbufLock.RUnlock()
+
 	location := TextIterNewFromC(unsafe.Pointer(c_location))
 
 	pixbuf := gdkpixbuf.PixbufNewFromC(unsafe.Pointer(c_pixbuf))
@@ -27596,7 +27932,7 @@ type signalTextBufferInsertTextDetail struct {
 
 var signalTextBufferInsertTextId int
 var signalTextBufferInsertTextMap = make(map[int]signalTextBufferInsertTextDetail)
-var signalTextBufferInsertTextLock sync.Mutex
+var signalTextBufferInsertTextLock sync.RWMutex
 
 // TextBufferSignalInsertTextCallback is a callback function for a 'insert-text' signal emitted from a TextBuffer.
 type TextBufferSignalInsertTextCallback func(location *TextIter, text string, len int32)
@@ -27641,6 +27977,9 @@ func (recv *TextBuffer) DisconnectInsertText(connectionID int) {
 
 //export textbuffer_insertTextHandler
 func textbuffer_insertTextHandler(_ *C.GObject, c_location *C.GtkTextIter, c_text *C.gchar, c_len C.gint, data C.gpointer) {
+	signalTextBufferInsertTextLock.RLock()
+	defer signalTextBufferInsertTextLock.RUnlock()
+
 	location := TextIterNewFromC(unsafe.Pointer(c_location))
 
 	text := C.GoString(c_text)
@@ -27659,7 +27998,7 @@ type signalTextBufferMarkDeletedDetail struct {
 
 var signalTextBufferMarkDeletedId int
 var signalTextBufferMarkDeletedMap = make(map[int]signalTextBufferMarkDeletedDetail)
-var signalTextBufferMarkDeletedLock sync.Mutex
+var signalTextBufferMarkDeletedLock sync.RWMutex
 
 // TextBufferSignalMarkDeletedCallback is a callback function for a 'mark-deleted' signal emitted from a TextBuffer.
 type TextBufferSignalMarkDeletedCallback func(mark *TextMark)
@@ -27704,6 +28043,9 @@ func (recv *TextBuffer) DisconnectMarkDeleted(connectionID int) {
 
 //export textbuffer_markDeletedHandler
 func textbuffer_markDeletedHandler(_ *C.GObject, c_mark *C.GtkTextMark, data C.gpointer) {
+	signalTextBufferMarkDeletedLock.RLock()
+	defer signalTextBufferMarkDeletedLock.RUnlock()
+
 	mark := TextMarkNewFromC(unsafe.Pointer(c_mark))
 
 	index := int(uintptr(data))
@@ -27718,7 +28060,7 @@ type signalTextBufferMarkSetDetail struct {
 
 var signalTextBufferMarkSetId int
 var signalTextBufferMarkSetMap = make(map[int]signalTextBufferMarkSetDetail)
-var signalTextBufferMarkSetLock sync.Mutex
+var signalTextBufferMarkSetLock sync.RWMutex
 
 // TextBufferSignalMarkSetCallback is a callback function for a 'mark-set' signal emitted from a TextBuffer.
 type TextBufferSignalMarkSetCallback func(location *TextIter, mark *TextMark)
@@ -27763,6 +28105,9 @@ func (recv *TextBuffer) DisconnectMarkSet(connectionID int) {
 
 //export textbuffer_markSetHandler
 func textbuffer_markSetHandler(_ *C.GObject, c_location *C.GtkTextIter, c_mark *C.GtkTextMark, data C.gpointer) {
+	signalTextBufferMarkSetLock.RLock()
+	defer signalTextBufferMarkSetLock.RUnlock()
+
 	location := TextIterNewFromC(unsafe.Pointer(c_location))
 
 	mark := TextMarkNewFromC(unsafe.Pointer(c_mark))
@@ -27779,7 +28124,7 @@ type signalTextBufferModifiedChangedDetail struct {
 
 var signalTextBufferModifiedChangedId int
 var signalTextBufferModifiedChangedMap = make(map[int]signalTextBufferModifiedChangedDetail)
-var signalTextBufferModifiedChangedLock sync.Mutex
+var signalTextBufferModifiedChangedLock sync.RWMutex
 
 // TextBufferSignalModifiedChangedCallback is a callback function for a 'modified-changed' signal emitted from a TextBuffer.
 type TextBufferSignalModifiedChangedCallback func()
@@ -27824,6 +28169,9 @@ func (recv *TextBuffer) DisconnectModifiedChanged(connectionID int) {
 
 //export textbuffer_modifiedChangedHandler
 func textbuffer_modifiedChangedHandler(_ *C.GObject, data C.gpointer) {
+	signalTextBufferModifiedChangedLock.RLock()
+	defer signalTextBufferModifiedChangedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalTextBufferModifiedChangedMap[index].callback
 	callback()
@@ -27836,7 +28184,7 @@ type signalTextBufferRemoveTagDetail struct {
 
 var signalTextBufferRemoveTagId int
 var signalTextBufferRemoveTagMap = make(map[int]signalTextBufferRemoveTagDetail)
-var signalTextBufferRemoveTagLock sync.Mutex
+var signalTextBufferRemoveTagLock sync.RWMutex
 
 // TextBufferSignalRemoveTagCallback is a callback function for a 'remove-tag' signal emitted from a TextBuffer.
 type TextBufferSignalRemoveTagCallback func(tag *TextTag, start *TextIter, end *TextIter)
@@ -27881,6 +28229,9 @@ func (recv *TextBuffer) DisconnectRemoveTag(connectionID int) {
 
 //export textbuffer_removeTagHandler
 func textbuffer_removeTagHandler(_ *C.GObject, c_tag *C.GtkTextTag, c_start *C.GtkTextIter, c_end *C.GtkTextIter, data C.gpointer) {
+	signalTextBufferRemoveTagLock.RLock()
+	defer signalTextBufferRemoveTagLock.RUnlock()
+
 	tag := TextTagNewFromC(unsafe.Pointer(c_tag))
 
 	start := TextIterNewFromC(unsafe.Pointer(c_start))
@@ -29004,7 +29355,7 @@ type signalTextTagTableTagAddedDetail struct {
 
 var signalTextTagTableTagAddedId int
 var signalTextTagTableTagAddedMap = make(map[int]signalTextTagTableTagAddedDetail)
-var signalTextTagTableTagAddedLock sync.Mutex
+var signalTextTagTableTagAddedLock sync.RWMutex
 
 // TextTagTableSignalTagAddedCallback is a callback function for a 'tag-added' signal emitted from a TextTagTable.
 type TextTagTableSignalTagAddedCallback func(tag *TextTag)
@@ -29049,6 +29400,9 @@ func (recv *TextTagTable) DisconnectTagAdded(connectionID int) {
 
 //export texttagtable_tagAddedHandler
 func texttagtable_tagAddedHandler(_ *C.GObject, c_tag *C.GtkTextTag, data C.gpointer) {
+	signalTextTagTableTagAddedLock.RLock()
+	defer signalTextTagTableTagAddedLock.RUnlock()
+
 	tag := TextTagNewFromC(unsafe.Pointer(c_tag))
 
 	index := int(uintptr(data))
@@ -29063,7 +29417,7 @@ type signalTextTagTableTagChangedDetail struct {
 
 var signalTextTagTableTagChangedId int
 var signalTextTagTableTagChangedMap = make(map[int]signalTextTagTableTagChangedDetail)
-var signalTextTagTableTagChangedLock sync.Mutex
+var signalTextTagTableTagChangedLock sync.RWMutex
 
 // TextTagTableSignalTagChangedCallback is a callback function for a 'tag-changed' signal emitted from a TextTagTable.
 type TextTagTableSignalTagChangedCallback func(tag *TextTag, sizeChanged bool)
@@ -29108,6 +29462,9 @@ func (recv *TextTagTable) DisconnectTagChanged(connectionID int) {
 
 //export texttagtable_tagChangedHandler
 func texttagtable_tagChangedHandler(_ *C.GObject, c_tag *C.GtkTextTag, c_size_changed C.gboolean, data C.gpointer) {
+	signalTextTagTableTagChangedLock.RLock()
+	defer signalTextTagTableTagChangedLock.RUnlock()
+
 	tag := TextTagNewFromC(unsafe.Pointer(c_tag))
 
 	sizeChanged := c_size_changed == C.TRUE
@@ -29124,7 +29481,7 @@ type signalTextTagTableTagRemovedDetail struct {
 
 var signalTextTagTableTagRemovedId int
 var signalTextTagTableTagRemovedMap = make(map[int]signalTextTagTableTagRemovedDetail)
-var signalTextTagTableTagRemovedLock sync.Mutex
+var signalTextTagTableTagRemovedLock sync.RWMutex
 
 // TextTagTableSignalTagRemovedCallback is a callback function for a 'tag-removed' signal emitted from a TextTagTable.
 type TextTagTableSignalTagRemovedCallback func(tag *TextTag)
@@ -29169,6 +29526,9 @@ func (recv *TextTagTable) DisconnectTagRemoved(connectionID int) {
 
 //export texttagtable_tagRemovedHandler
 func texttagtable_tagRemovedHandler(_ *C.GObject, c_tag *C.GtkTextTag, data C.gpointer) {
+	signalTextTagTableTagRemovedLock.RLock()
+	defer signalTextTagTableTagRemovedLock.RUnlock()
+
 	tag := TextTagNewFromC(unsafe.Pointer(c_tag))
 
 	index := int(uintptr(data))
@@ -29301,7 +29661,7 @@ type signalTextViewBackspaceDetail struct {
 
 var signalTextViewBackspaceId int
 var signalTextViewBackspaceMap = make(map[int]signalTextViewBackspaceDetail)
-var signalTextViewBackspaceLock sync.Mutex
+var signalTextViewBackspaceLock sync.RWMutex
 
 // TextViewSignalBackspaceCallback is a callback function for a 'backspace' signal emitted from a TextView.
 type TextViewSignalBackspaceCallback func()
@@ -29346,6 +29706,9 @@ func (recv *TextView) DisconnectBackspace(connectionID int) {
 
 //export textview_backspaceHandler
 func textview_backspaceHandler(_ *C.GObject, data C.gpointer) {
+	signalTextViewBackspaceLock.RLock()
+	defer signalTextViewBackspaceLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalTextViewBackspaceMap[index].callback
 	callback()
@@ -29358,7 +29721,7 @@ type signalTextViewCopyClipboardDetail struct {
 
 var signalTextViewCopyClipboardId int
 var signalTextViewCopyClipboardMap = make(map[int]signalTextViewCopyClipboardDetail)
-var signalTextViewCopyClipboardLock sync.Mutex
+var signalTextViewCopyClipboardLock sync.RWMutex
 
 // TextViewSignalCopyClipboardCallback is a callback function for a 'copy-clipboard' signal emitted from a TextView.
 type TextViewSignalCopyClipboardCallback func()
@@ -29403,6 +29766,9 @@ func (recv *TextView) DisconnectCopyClipboard(connectionID int) {
 
 //export textview_copyClipboardHandler
 func textview_copyClipboardHandler(_ *C.GObject, data C.gpointer) {
+	signalTextViewCopyClipboardLock.RLock()
+	defer signalTextViewCopyClipboardLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalTextViewCopyClipboardMap[index].callback
 	callback()
@@ -29415,7 +29781,7 @@ type signalTextViewCutClipboardDetail struct {
 
 var signalTextViewCutClipboardId int
 var signalTextViewCutClipboardMap = make(map[int]signalTextViewCutClipboardDetail)
-var signalTextViewCutClipboardLock sync.Mutex
+var signalTextViewCutClipboardLock sync.RWMutex
 
 // TextViewSignalCutClipboardCallback is a callback function for a 'cut-clipboard' signal emitted from a TextView.
 type TextViewSignalCutClipboardCallback func()
@@ -29460,6 +29826,9 @@ func (recv *TextView) DisconnectCutClipboard(connectionID int) {
 
 //export textview_cutClipboardHandler
 func textview_cutClipboardHandler(_ *C.GObject, data C.gpointer) {
+	signalTextViewCutClipboardLock.RLock()
+	defer signalTextViewCutClipboardLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalTextViewCutClipboardMap[index].callback
 	callback()
@@ -29474,7 +29843,7 @@ type signalTextViewInsertAtCursorDetail struct {
 
 var signalTextViewInsertAtCursorId int
 var signalTextViewInsertAtCursorMap = make(map[int]signalTextViewInsertAtCursorDetail)
-var signalTextViewInsertAtCursorLock sync.Mutex
+var signalTextViewInsertAtCursorLock sync.RWMutex
 
 // TextViewSignalInsertAtCursorCallback is a callback function for a 'insert-at-cursor' signal emitted from a TextView.
 type TextViewSignalInsertAtCursorCallback func(string string)
@@ -29519,6 +29888,9 @@ func (recv *TextView) DisconnectInsertAtCursor(connectionID int) {
 
 //export textview_insertAtCursorHandler
 func textview_insertAtCursorHandler(_ *C.GObject, c_string *C.gchar, data C.gpointer) {
+	signalTextViewInsertAtCursorLock.RLock()
+	defer signalTextViewInsertAtCursorLock.RUnlock()
+
 	string := C.GoString(c_string)
 
 	index := int(uintptr(data))
@@ -29537,7 +29909,7 @@ type signalTextViewPasteClipboardDetail struct {
 
 var signalTextViewPasteClipboardId int
 var signalTextViewPasteClipboardMap = make(map[int]signalTextViewPasteClipboardDetail)
-var signalTextViewPasteClipboardLock sync.Mutex
+var signalTextViewPasteClipboardLock sync.RWMutex
 
 // TextViewSignalPasteClipboardCallback is a callback function for a 'paste-clipboard' signal emitted from a TextView.
 type TextViewSignalPasteClipboardCallback func()
@@ -29582,6 +29954,9 @@ func (recv *TextView) DisconnectPasteClipboard(connectionID int) {
 
 //export textview_pasteClipboardHandler
 func textview_pasteClipboardHandler(_ *C.GObject, data C.gpointer) {
+	signalTextViewPasteClipboardLock.RLock()
+	defer signalTextViewPasteClipboardLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalTextViewPasteClipboardMap[index].callback
 	callback()
@@ -29594,7 +29969,7 @@ type signalTextViewPopulatePopupDetail struct {
 
 var signalTextViewPopulatePopupId int
 var signalTextViewPopulatePopupMap = make(map[int]signalTextViewPopulatePopupDetail)
-var signalTextViewPopulatePopupLock sync.Mutex
+var signalTextViewPopulatePopupLock sync.RWMutex
 
 // TextViewSignalPopulatePopupCallback is a callback function for a 'populate-popup' signal emitted from a TextView.
 type TextViewSignalPopulatePopupCallback func(popup *Widget)
@@ -29639,6 +30014,9 @@ func (recv *TextView) DisconnectPopulatePopup(connectionID int) {
 
 //export textview_populatePopupHandler
 func textview_populatePopupHandler(_ *C.GObject, c_popup *C.GtkWidget, data C.gpointer) {
+	signalTextViewPopulatePopupLock.RLock()
+	defer signalTextViewPopulatePopupLock.RUnlock()
+
 	popup := WidgetNewFromC(unsafe.Pointer(c_popup))
 
 	index := int(uintptr(data))
@@ -29653,7 +30031,7 @@ type signalTextViewSelectAllDetail struct {
 
 var signalTextViewSelectAllId int
 var signalTextViewSelectAllMap = make(map[int]signalTextViewSelectAllDetail)
-var signalTextViewSelectAllLock sync.Mutex
+var signalTextViewSelectAllLock sync.RWMutex
 
 // TextViewSignalSelectAllCallback is a callback function for a 'select-all' signal emitted from a TextView.
 type TextViewSignalSelectAllCallback func(select_ bool)
@@ -29698,6 +30076,9 @@ func (recv *TextView) DisconnectSelectAll(connectionID int) {
 
 //export textview_selectAllHandler
 func textview_selectAllHandler(_ *C.GObject, c_select C.gboolean, data C.gpointer) {
+	signalTextViewSelectAllLock.RLock()
+	defer signalTextViewSelectAllLock.RUnlock()
+
 	select_ := c_select == C.TRUE
 
 	index := int(uintptr(data))
@@ -29712,7 +30093,7 @@ type signalTextViewSetAnchorDetail struct {
 
 var signalTextViewSetAnchorId int
 var signalTextViewSetAnchorMap = make(map[int]signalTextViewSetAnchorDetail)
-var signalTextViewSetAnchorLock sync.Mutex
+var signalTextViewSetAnchorLock sync.RWMutex
 
 // TextViewSignalSetAnchorCallback is a callback function for a 'set-anchor' signal emitted from a TextView.
 type TextViewSignalSetAnchorCallback func()
@@ -29757,6 +30138,9 @@ func (recv *TextView) DisconnectSetAnchor(connectionID int) {
 
 //export textview_setAnchorHandler
 func textview_setAnchorHandler(_ *C.GObject, data C.gpointer) {
+	signalTextViewSetAnchorLock.RLock()
+	defer signalTextViewSetAnchorLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalTextViewSetAnchorMap[index].callback
 	callback()
@@ -29769,7 +30153,7 @@ type signalTextViewToggleCursorVisibleDetail struct {
 
 var signalTextViewToggleCursorVisibleId int
 var signalTextViewToggleCursorVisibleMap = make(map[int]signalTextViewToggleCursorVisibleDetail)
-var signalTextViewToggleCursorVisibleLock sync.Mutex
+var signalTextViewToggleCursorVisibleLock sync.RWMutex
 
 // TextViewSignalToggleCursorVisibleCallback is a callback function for a 'toggle-cursor-visible' signal emitted from a TextView.
 type TextViewSignalToggleCursorVisibleCallback func()
@@ -29814,6 +30198,9 @@ func (recv *TextView) DisconnectToggleCursorVisible(connectionID int) {
 
 //export textview_toggleCursorVisibleHandler
 func textview_toggleCursorVisibleHandler(_ *C.GObject, data C.gpointer) {
+	signalTextViewToggleCursorVisibleLock.RLock()
+	defer signalTextViewToggleCursorVisibleLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalTextViewToggleCursorVisibleMap[index].callback
 	callback()
@@ -29826,7 +30213,7 @@ type signalTextViewToggleOverwriteDetail struct {
 
 var signalTextViewToggleOverwriteId int
 var signalTextViewToggleOverwriteMap = make(map[int]signalTextViewToggleOverwriteDetail)
-var signalTextViewToggleOverwriteLock sync.Mutex
+var signalTextViewToggleOverwriteLock sync.RWMutex
 
 // TextViewSignalToggleOverwriteCallback is a callback function for a 'toggle-overwrite' signal emitted from a TextView.
 type TextViewSignalToggleOverwriteCallback func()
@@ -29871,6 +30258,9 @@ func (recv *TextView) DisconnectToggleOverwrite(connectionID int) {
 
 //export textview_toggleOverwriteHandler
 func textview_toggleOverwriteHandler(_ *C.GObject, data C.gpointer) {
+	signalTextViewToggleOverwriteLock.RLock()
+	defer signalTextViewToggleOverwriteLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalTextViewToggleOverwriteMap[index].callback
 	callback()
@@ -30668,7 +31058,7 @@ type signalToggleActionToggledDetail struct {
 
 var signalToggleActionToggledId int
 var signalToggleActionToggledMap = make(map[int]signalToggleActionToggledDetail)
-var signalToggleActionToggledLock sync.Mutex
+var signalToggleActionToggledLock sync.RWMutex
 
 // ToggleActionSignalToggledCallback is a callback function for a 'toggled' signal emitted from a ToggleAction.
 type ToggleActionSignalToggledCallback func()
@@ -30713,6 +31103,9 @@ func (recv *ToggleAction) DisconnectToggled(connectionID int) {
 
 //export toggleaction_toggledHandler
 func toggleaction_toggledHandler(_ *C.GObject, data C.gpointer) {
+	signalToggleActionToggledLock.RLock()
+	defer signalToggleActionToggledLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalToggleActionToggledMap[index].callback
 	callback()
@@ -30794,7 +31187,7 @@ type signalToggleButtonToggledDetail struct {
 
 var signalToggleButtonToggledId int
 var signalToggleButtonToggledMap = make(map[int]signalToggleButtonToggledDetail)
-var signalToggleButtonToggledLock sync.Mutex
+var signalToggleButtonToggledLock sync.RWMutex
 
 // ToggleButtonSignalToggledCallback is a callback function for a 'toggled' signal emitted from a ToggleButton.
 type ToggleButtonSignalToggledCallback func()
@@ -30839,6 +31232,9 @@ func (recv *ToggleButton) DisconnectToggled(connectionID int) {
 
 //export togglebutton_toggledHandler
 func togglebutton_toggledHandler(_ *C.GObject, data C.gpointer) {
+	signalToggleButtonToggledLock.RLock()
+	defer signalToggleButtonToggledLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalToggleButtonToggledMap[index].callback
 	callback()
@@ -31105,7 +31501,7 @@ type signalToggleToolButtonToggledDetail struct {
 
 var signalToggleToolButtonToggledId int
 var signalToggleToolButtonToggledMap = make(map[int]signalToggleToolButtonToggledDetail)
-var signalToggleToolButtonToggledLock sync.Mutex
+var signalToggleToolButtonToggledLock sync.RWMutex
 
 // ToggleToolButtonSignalToggledCallback is a callback function for a 'toggled' signal emitted from a ToggleToolButton.
 type ToggleToolButtonSignalToggledCallback func()
@@ -31150,6 +31546,9 @@ func (recv *ToggleToolButton) DisconnectToggled(connectionID int) {
 
 //export toggletoolbutton_toggledHandler
 func toggletoolbutton_toggledHandler(_ *C.GObject, data C.gpointer) {
+	signalToggleToolButtonToggledLock.RLock()
+	defer signalToggleToolButtonToggledLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalToggleToolButtonToggledMap[index].callback
 	callback()
@@ -31246,7 +31645,7 @@ type signalToolButtonClickedDetail struct {
 
 var signalToolButtonClickedId int
 var signalToolButtonClickedMap = make(map[int]signalToolButtonClickedDetail)
-var signalToolButtonClickedLock sync.Mutex
+var signalToolButtonClickedLock sync.RWMutex
 
 // ToolButtonSignalClickedCallback is a callback function for a 'clicked' signal emitted from a ToolButton.
 type ToolButtonSignalClickedCallback func()
@@ -31291,6 +31690,9 @@ func (recv *ToolButton) DisconnectClicked(connectionID int) {
 
 //export toolbutton_clickedHandler
 func toolbutton_clickedHandler(_ *C.GObject, data C.gpointer) {
+	signalToolButtonClickedLock.RLock()
+	defer signalToolButtonClickedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalToolButtonClickedMap[index].callback
 	callback()
@@ -31382,7 +31784,7 @@ type signalToolItemCreateMenuProxyDetail struct {
 
 var signalToolItemCreateMenuProxyId int
 var signalToolItemCreateMenuProxyMap = make(map[int]signalToolItemCreateMenuProxyDetail)
-var signalToolItemCreateMenuProxyLock sync.Mutex
+var signalToolItemCreateMenuProxyLock sync.RWMutex
 
 // ToolItemSignalCreateMenuProxyCallback is a callback function for a 'create-menu-proxy' signal emitted from a ToolItem.
 type ToolItemSignalCreateMenuProxyCallback func() bool
@@ -31427,6 +31829,9 @@ func (recv *ToolItem) DisconnectCreateMenuProxy(connectionID int) {
 
 //export toolitem_createMenuProxyHandler
 func toolitem_createMenuProxyHandler(_ *C.GObject, data C.gpointer) C.gboolean {
+	signalToolItemCreateMenuProxyLock.RLock()
+	defer signalToolItemCreateMenuProxyLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalToolItemCreateMenuProxyMap[index].callback
 	retGo := callback()
@@ -31442,7 +31847,7 @@ type signalToolItemToolbarReconfiguredDetail struct {
 
 var signalToolItemToolbarReconfiguredId int
 var signalToolItemToolbarReconfiguredMap = make(map[int]signalToolItemToolbarReconfiguredDetail)
-var signalToolItemToolbarReconfiguredLock sync.Mutex
+var signalToolItemToolbarReconfiguredLock sync.RWMutex
 
 // ToolItemSignalToolbarReconfiguredCallback is a callback function for a 'toolbar-reconfigured' signal emitted from a ToolItem.
 type ToolItemSignalToolbarReconfiguredCallback func()
@@ -31487,6 +31892,9 @@ func (recv *ToolItem) DisconnectToolbarReconfigured(connectionID int) {
 
 //export toolitem_toolbarReconfiguredHandler
 func toolitem_toolbarReconfiguredHandler(_ *C.GObject, data C.gpointer) {
+	signalToolItemToolbarReconfiguredLock.RLock()
+	defer signalToolItemToolbarReconfiguredLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalToolItemToolbarReconfiguredMap[index].callback
 	callback()
@@ -31711,7 +32119,7 @@ type signalToolbarFocusHomeOrEndDetail struct {
 
 var signalToolbarFocusHomeOrEndId int
 var signalToolbarFocusHomeOrEndMap = make(map[int]signalToolbarFocusHomeOrEndDetail)
-var signalToolbarFocusHomeOrEndLock sync.Mutex
+var signalToolbarFocusHomeOrEndLock sync.RWMutex
 
 // ToolbarSignalFocusHomeOrEndCallback is a callback function for a 'focus-home-or-end' signal emitted from a Toolbar.
 type ToolbarSignalFocusHomeOrEndCallback func(focusHome bool) bool
@@ -31756,6 +32164,9 @@ func (recv *Toolbar) DisconnectFocusHomeOrEnd(connectionID int) {
 
 //export toolbar_focusHomeOrEndHandler
 func toolbar_focusHomeOrEndHandler(_ *C.GObject, c_focus_home C.gboolean, data C.gpointer) C.gboolean {
+	signalToolbarFocusHomeOrEndLock.RLock()
+	defer signalToolbarFocusHomeOrEndLock.RUnlock()
+
 	focusHome := c_focus_home == C.TRUE
 
 	index := int(uintptr(data))
@@ -31775,7 +32186,7 @@ type signalToolbarPopupContextMenuDetail struct {
 
 var signalToolbarPopupContextMenuId int
 var signalToolbarPopupContextMenuMap = make(map[int]signalToolbarPopupContextMenuDetail)
-var signalToolbarPopupContextMenuLock sync.Mutex
+var signalToolbarPopupContextMenuLock sync.RWMutex
 
 // ToolbarSignalPopupContextMenuCallback is a callback function for a 'popup-context-menu' signal emitted from a Toolbar.
 type ToolbarSignalPopupContextMenuCallback func(x int32, y int32, button int32) bool
@@ -31820,6 +32231,9 @@ func (recv *Toolbar) DisconnectPopupContextMenu(connectionID int) {
 
 //export toolbar_popupContextMenuHandler
 func toolbar_popupContextMenuHandler(_ *C.GObject, c_x C.gint, c_y C.gint, c_button C.gint, data C.gpointer) C.gboolean {
+	signalToolbarPopupContextMenuLock.RLock()
+	defer signalToolbarPopupContextMenuLock.RUnlock()
+
 	x := int32(c_x)
 
 	y := int32(c_y)
@@ -32236,7 +32650,7 @@ type signalTreeSelectionChangedDetail struct {
 
 var signalTreeSelectionChangedId int
 var signalTreeSelectionChangedMap = make(map[int]signalTreeSelectionChangedDetail)
-var signalTreeSelectionChangedLock sync.Mutex
+var signalTreeSelectionChangedLock sync.RWMutex
 
 // TreeSelectionSignalChangedCallback is a callback function for a 'changed' signal emitted from a TreeSelection.
 type TreeSelectionSignalChangedCallback func()
@@ -32281,6 +32695,9 @@ func (recv *TreeSelection) DisconnectChanged(connectionID int) {
 
 //export treeselection_changedHandler
 func treeselection_changedHandler(_ *C.GObject, data C.gpointer) {
+	signalTreeSelectionChangedLock.RLock()
+	defer signalTreeSelectionChangedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalTreeSelectionChangedMap[index].callback
 	callback()
@@ -32760,7 +33177,7 @@ type signalTreeViewColumnsChangedDetail struct {
 
 var signalTreeViewColumnsChangedId int
 var signalTreeViewColumnsChangedMap = make(map[int]signalTreeViewColumnsChangedDetail)
-var signalTreeViewColumnsChangedLock sync.Mutex
+var signalTreeViewColumnsChangedLock sync.RWMutex
 
 // TreeViewSignalColumnsChangedCallback is a callback function for a 'columns-changed' signal emitted from a TreeView.
 type TreeViewSignalColumnsChangedCallback func()
@@ -32805,6 +33222,9 @@ func (recv *TreeView) DisconnectColumnsChanged(connectionID int) {
 
 //export treeview_columnsChangedHandler
 func treeview_columnsChangedHandler(_ *C.GObject, data C.gpointer) {
+	signalTreeViewColumnsChangedLock.RLock()
+	defer signalTreeViewColumnsChangedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalTreeViewColumnsChangedMap[index].callback
 	callback()
@@ -32817,7 +33237,7 @@ type signalTreeViewCursorChangedDetail struct {
 
 var signalTreeViewCursorChangedId int
 var signalTreeViewCursorChangedMap = make(map[int]signalTreeViewCursorChangedDetail)
-var signalTreeViewCursorChangedLock sync.Mutex
+var signalTreeViewCursorChangedLock sync.RWMutex
 
 // TreeViewSignalCursorChangedCallback is a callback function for a 'cursor-changed' signal emitted from a TreeView.
 type TreeViewSignalCursorChangedCallback func()
@@ -32862,6 +33282,9 @@ func (recv *TreeView) DisconnectCursorChanged(connectionID int) {
 
 //export treeview_cursorChangedHandler
 func treeview_cursorChangedHandler(_ *C.GObject, data C.gpointer) {
+	signalTreeViewCursorChangedLock.RLock()
+	defer signalTreeViewCursorChangedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalTreeViewCursorChangedMap[index].callback
 	callback()
@@ -32874,7 +33297,7 @@ type signalTreeViewExpandCollapseCursorRowDetail struct {
 
 var signalTreeViewExpandCollapseCursorRowId int
 var signalTreeViewExpandCollapseCursorRowMap = make(map[int]signalTreeViewExpandCollapseCursorRowDetail)
-var signalTreeViewExpandCollapseCursorRowLock sync.Mutex
+var signalTreeViewExpandCollapseCursorRowLock sync.RWMutex
 
 // TreeViewSignalExpandCollapseCursorRowCallback is a callback function for a 'expand-collapse-cursor-row' signal emitted from a TreeView.
 type TreeViewSignalExpandCollapseCursorRowCallback func(object bool, p0 bool, p1 bool) bool
@@ -32919,6 +33342,9 @@ func (recv *TreeView) DisconnectExpandCollapseCursorRow(connectionID int) {
 
 //export treeview_expandCollapseCursorRowHandler
 func treeview_expandCollapseCursorRowHandler(_ *C.GObject, c_object C.gboolean, c_p0 C.gboolean, c_p1 C.gboolean, data C.gpointer) C.gboolean {
+	signalTreeViewExpandCollapseCursorRowLock.RLock()
+	defer signalTreeViewExpandCollapseCursorRowLock.RUnlock()
+
 	object := c_object == C.TRUE
 
 	p0 := c_p0 == C.TRUE
@@ -32942,7 +33368,7 @@ type signalTreeViewRowActivatedDetail struct {
 
 var signalTreeViewRowActivatedId int
 var signalTreeViewRowActivatedMap = make(map[int]signalTreeViewRowActivatedDetail)
-var signalTreeViewRowActivatedLock sync.Mutex
+var signalTreeViewRowActivatedLock sync.RWMutex
 
 // TreeViewSignalRowActivatedCallback is a callback function for a 'row-activated' signal emitted from a TreeView.
 type TreeViewSignalRowActivatedCallback func(path *TreePath, column *TreeViewColumn)
@@ -32987,6 +33413,9 @@ func (recv *TreeView) DisconnectRowActivated(connectionID int) {
 
 //export treeview_rowActivatedHandler
 func treeview_rowActivatedHandler(_ *C.GObject, c_path *C.GtkTreePath, c_column *C.GtkTreeViewColumn, data C.gpointer) {
+	signalTreeViewRowActivatedLock.RLock()
+	defer signalTreeViewRowActivatedLock.RUnlock()
+
 	path := TreePathNewFromC(unsafe.Pointer(c_path))
 
 	column := TreeViewColumnNewFromC(unsafe.Pointer(c_column))
@@ -33003,7 +33432,7 @@ type signalTreeViewRowCollapsedDetail struct {
 
 var signalTreeViewRowCollapsedId int
 var signalTreeViewRowCollapsedMap = make(map[int]signalTreeViewRowCollapsedDetail)
-var signalTreeViewRowCollapsedLock sync.Mutex
+var signalTreeViewRowCollapsedLock sync.RWMutex
 
 // TreeViewSignalRowCollapsedCallback is a callback function for a 'row-collapsed' signal emitted from a TreeView.
 type TreeViewSignalRowCollapsedCallback func(iter *TreeIter, path *TreePath)
@@ -33048,6 +33477,9 @@ func (recv *TreeView) DisconnectRowCollapsed(connectionID int) {
 
 //export treeview_rowCollapsedHandler
 func treeview_rowCollapsedHandler(_ *C.GObject, c_iter *C.GtkTreeIter, c_path *C.GtkTreePath, data C.gpointer) {
+	signalTreeViewRowCollapsedLock.RLock()
+	defer signalTreeViewRowCollapsedLock.RUnlock()
+
 	iter := TreeIterNewFromC(unsafe.Pointer(c_iter))
 
 	path := TreePathNewFromC(unsafe.Pointer(c_path))
@@ -33064,7 +33496,7 @@ type signalTreeViewRowExpandedDetail struct {
 
 var signalTreeViewRowExpandedId int
 var signalTreeViewRowExpandedMap = make(map[int]signalTreeViewRowExpandedDetail)
-var signalTreeViewRowExpandedLock sync.Mutex
+var signalTreeViewRowExpandedLock sync.RWMutex
 
 // TreeViewSignalRowExpandedCallback is a callback function for a 'row-expanded' signal emitted from a TreeView.
 type TreeViewSignalRowExpandedCallback func(iter *TreeIter, path *TreePath)
@@ -33109,6 +33541,9 @@ func (recv *TreeView) DisconnectRowExpanded(connectionID int) {
 
 //export treeview_rowExpandedHandler
 func treeview_rowExpandedHandler(_ *C.GObject, c_iter *C.GtkTreeIter, c_path *C.GtkTreePath, data C.gpointer) {
+	signalTreeViewRowExpandedLock.RLock()
+	defer signalTreeViewRowExpandedLock.RUnlock()
+
 	iter := TreeIterNewFromC(unsafe.Pointer(c_iter))
 
 	path := TreePathNewFromC(unsafe.Pointer(c_path))
@@ -33125,7 +33560,7 @@ type signalTreeViewSelectAllDetail struct {
 
 var signalTreeViewSelectAllId int
 var signalTreeViewSelectAllMap = make(map[int]signalTreeViewSelectAllDetail)
-var signalTreeViewSelectAllLock sync.Mutex
+var signalTreeViewSelectAllLock sync.RWMutex
 
 // TreeViewSignalSelectAllCallback is a callback function for a 'select-all' signal emitted from a TreeView.
 type TreeViewSignalSelectAllCallback func() bool
@@ -33170,6 +33605,9 @@ func (recv *TreeView) DisconnectSelectAll(connectionID int) {
 
 //export treeview_selectAllHandler
 func treeview_selectAllHandler(_ *C.GObject, data C.gpointer) C.gboolean {
+	signalTreeViewSelectAllLock.RLock()
+	defer signalTreeViewSelectAllLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalTreeViewSelectAllMap[index].callback
 	retGo := callback()
@@ -33185,7 +33623,7 @@ type signalTreeViewSelectCursorParentDetail struct {
 
 var signalTreeViewSelectCursorParentId int
 var signalTreeViewSelectCursorParentMap = make(map[int]signalTreeViewSelectCursorParentDetail)
-var signalTreeViewSelectCursorParentLock sync.Mutex
+var signalTreeViewSelectCursorParentLock sync.RWMutex
 
 // TreeViewSignalSelectCursorParentCallback is a callback function for a 'select-cursor-parent' signal emitted from a TreeView.
 type TreeViewSignalSelectCursorParentCallback func() bool
@@ -33230,6 +33668,9 @@ func (recv *TreeView) DisconnectSelectCursorParent(connectionID int) {
 
 //export treeview_selectCursorParentHandler
 func treeview_selectCursorParentHandler(_ *C.GObject, data C.gpointer) C.gboolean {
+	signalTreeViewSelectCursorParentLock.RLock()
+	defer signalTreeViewSelectCursorParentLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalTreeViewSelectCursorParentMap[index].callback
 	retGo := callback()
@@ -33245,7 +33686,7 @@ type signalTreeViewSelectCursorRowDetail struct {
 
 var signalTreeViewSelectCursorRowId int
 var signalTreeViewSelectCursorRowMap = make(map[int]signalTreeViewSelectCursorRowDetail)
-var signalTreeViewSelectCursorRowLock sync.Mutex
+var signalTreeViewSelectCursorRowLock sync.RWMutex
 
 // TreeViewSignalSelectCursorRowCallback is a callback function for a 'select-cursor-row' signal emitted from a TreeView.
 type TreeViewSignalSelectCursorRowCallback func(object bool) bool
@@ -33290,6 +33731,9 @@ func (recv *TreeView) DisconnectSelectCursorRow(connectionID int) {
 
 //export treeview_selectCursorRowHandler
 func treeview_selectCursorRowHandler(_ *C.GObject, c_object C.gboolean, data C.gpointer) C.gboolean {
+	signalTreeViewSelectCursorRowLock.RLock()
+	defer signalTreeViewSelectCursorRowLock.RUnlock()
+
 	object := c_object == C.TRUE
 
 	index := int(uintptr(data))
@@ -33307,7 +33751,7 @@ type signalTreeViewStartInteractiveSearchDetail struct {
 
 var signalTreeViewStartInteractiveSearchId int
 var signalTreeViewStartInteractiveSearchMap = make(map[int]signalTreeViewStartInteractiveSearchDetail)
-var signalTreeViewStartInteractiveSearchLock sync.Mutex
+var signalTreeViewStartInteractiveSearchLock sync.RWMutex
 
 // TreeViewSignalStartInteractiveSearchCallback is a callback function for a 'start-interactive-search' signal emitted from a TreeView.
 type TreeViewSignalStartInteractiveSearchCallback func() bool
@@ -33352,6 +33796,9 @@ func (recv *TreeView) DisconnectStartInteractiveSearch(connectionID int) {
 
 //export treeview_startInteractiveSearchHandler
 func treeview_startInteractiveSearchHandler(_ *C.GObject, data C.gpointer) C.gboolean {
+	signalTreeViewStartInteractiveSearchLock.RLock()
+	defer signalTreeViewStartInteractiveSearchLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalTreeViewStartInteractiveSearchMap[index].callback
 	retGo := callback()
@@ -33367,7 +33814,7 @@ type signalTreeViewTestCollapseRowDetail struct {
 
 var signalTreeViewTestCollapseRowId int
 var signalTreeViewTestCollapseRowMap = make(map[int]signalTreeViewTestCollapseRowDetail)
-var signalTreeViewTestCollapseRowLock sync.Mutex
+var signalTreeViewTestCollapseRowLock sync.RWMutex
 
 // TreeViewSignalTestCollapseRowCallback is a callback function for a 'test-collapse-row' signal emitted from a TreeView.
 type TreeViewSignalTestCollapseRowCallback func(iter *TreeIter, path *TreePath) bool
@@ -33412,6 +33859,9 @@ func (recv *TreeView) DisconnectTestCollapseRow(connectionID int) {
 
 //export treeview_testCollapseRowHandler
 func treeview_testCollapseRowHandler(_ *C.GObject, c_iter *C.GtkTreeIter, c_path *C.GtkTreePath, data C.gpointer) C.gboolean {
+	signalTreeViewTestCollapseRowLock.RLock()
+	defer signalTreeViewTestCollapseRowLock.RUnlock()
+
 	iter := TreeIterNewFromC(unsafe.Pointer(c_iter))
 
 	path := TreePathNewFromC(unsafe.Pointer(c_path))
@@ -33431,7 +33881,7 @@ type signalTreeViewTestExpandRowDetail struct {
 
 var signalTreeViewTestExpandRowId int
 var signalTreeViewTestExpandRowMap = make(map[int]signalTreeViewTestExpandRowDetail)
-var signalTreeViewTestExpandRowLock sync.Mutex
+var signalTreeViewTestExpandRowLock sync.RWMutex
 
 // TreeViewSignalTestExpandRowCallback is a callback function for a 'test-expand-row' signal emitted from a TreeView.
 type TreeViewSignalTestExpandRowCallback func(iter *TreeIter, path *TreePath) bool
@@ -33476,6 +33926,9 @@ func (recv *TreeView) DisconnectTestExpandRow(connectionID int) {
 
 //export treeview_testExpandRowHandler
 func treeview_testExpandRowHandler(_ *C.GObject, c_iter *C.GtkTreeIter, c_path *C.GtkTreePath, data C.gpointer) C.gboolean {
+	signalTreeViewTestExpandRowLock.RLock()
+	defer signalTreeViewTestExpandRowLock.RUnlock()
+
 	iter := TreeIterNewFromC(unsafe.Pointer(c_iter))
 
 	path := TreePathNewFromC(unsafe.Pointer(c_path))
@@ -33495,7 +33948,7 @@ type signalTreeViewToggleCursorRowDetail struct {
 
 var signalTreeViewToggleCursorRowId int
 var signalTreeViewToggleCursorRowMap = make(map[int]signalTreeViewToggleCursorRowDetail)
-var signalTreeViewToggleCursorRowLock sync.Mutex
+var signalTreeViewToggleCursorRowLock sync.RWMutex
 
 // TreeViewSignalToggleCursorRowCallback is a callback function for a 'toggle-cursor-row' signal emitted from a TreeView.
 type TreeViewSignalToggleCursorRowCallback func() bool
@@ -33540,6 +33993,9 @@ func (recv *TreeView) DisconnectToggleCursorRow(connectionID int) {
 
 //export treeview_toggleCursorRowHandler
 func treeview_toggleCursorRowHandler(_ *C.GObject, data C.gpointer) C.gboolean {
+	signalTreeViewToggleCursorRowLock.RLock()
+	defer signalTreeViewToggleCursorRowLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalTreeViewToggleCursorRowMap[index].callback
 	retGo := callback()
@@ -33555,7 +34011,7 @@ type signalTreeViewUnselectAllDetail struct {
 
 var signalTreeViewUnselectAllId int
 var signalTreeViewUnselectAllMap = make(map[int]signalTreeViewUnselectAllDetail)
-var signalTreeViewUnselectAllLock sync.Mutex
+var signalTreeViewUnselectAllLock sync.RWMutex
 
 // TreeViewSignalUnselectAllCallback is a callback function for a 'unselect-all' signal emitted from a TreeView.
 type TreeViewSignalUnselectAllCallback func() bool
@@ -33600,6 +34056,9 @@ func (recv *TreeView) DisconnectUnselectAll(connectionID int) {
 
 //export treeview_unselectAllHandler
 func treeview_unselectAllHandler(_ *C.GObject, data C.gpointer) C.gboolean {
+	signalTreeViewUnselectAllLock.RLock()
+	defer signalTreeViewUnselectAllLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalTreeViewUnselectAllMap[index].callback
 	retGo := callback()
@@ -34296,7 +34755,7 @@ type signalTreeViewColumnClickedDetail struct {
 
 var signalTreeViewColumnClickedId int
 var signalTreeViewColumnClickedMap = make(map[int]signalTreeViewColumnClickedDetail)
-var signalTreeViewColumnClickedLock sync.Mutex
+var signalTreeViewColumnClickedLock sync.RWMutex
 
 // TreeViewColumnSignalClickedCallback is a callback function for a 'clicked' signal emitted from a TreeViewColumn.
 type TreeViewColumnSignalClickedCallback func()
@@ -34341,6 +34800,9 @@ func (recv *TreeViewColumn) DisconnectClicked(connectionID int) {
 
 //export treeviewcolumn_clickedHandler
 func treeviewcolumn_clickedHandler(_ *C.GObject, data C.gpointer) {
+	signalTreeViewColumnClickedLock.RLock()
+	defer signalTreeViewColumnClickedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalTreeViewColumnClickedMap[index].callback
 	callback()
@@ -35623,7 +36085,7 @@ type signalWidgetAccelClosuresChangedDetail struct {
 
 var signalWidgetAccelClosuresChangedId int
 var signalWidgetAccelClosuresChangedMap = make(map[int]signalWidgetAccelClosuresChangedDetail)
-var signalWidgetAccelClosuresChangedLock sync.Mutex
+var signalWidgetAccelClosuresChangedLock sync.RWMutex
 
 // WidgetSignalAccelClosuresChangedCallback is a callback function for a 'accel-closures-changed' signal emitted from a Widget.
 type WidgetSignalAccelClosuresChangedCallback func()
@@ -35668,6 +36130,9 @@ func (recv *Widget) DisconnectAccelClosuresChanged(connectionID int) {
 
 //export widget_accelClosuresChangedHandler
 func widget_accelClosuresChangedHandler(_ *C.GObject, data C.gpointer) {
+	signalWidgetAccelClosuresChangedLock.RLock()
+	defer signalWidgetAccelClosuresChangedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalWidgetAccelClosuresChangedMap[index].callback
 	callback()
@@ -35680,7 +36145,7 @@ type signalWidgetButtonPressEventDetail struct {
 
 var signalWidgetButtonPressEventId int
 var signalWidgetButtonPressEventMap = make(map[int]signalWidgetButtonPressEventDetail)
-var signalWidgetButtonPressEventLock sync.Mutex
+var signalWidgetButtonPressEventLock sync.RWMutex
 
 // WidgetSignalButtonPressEventCallback is a callback function for a 'button-press-event' signal emitted from a Widget.
 type WidgetSignalButtonPressEventCallback func(event *gdk.EventButton) bool
@@ -35725,6 +36190,9 @@ func (recv *Widget) DisconnectButtonPressEvent(connectionID int) {
 
 //export widget_buttonPressEventHandler
 func widget_buttonPressEventHandler(_ *C.GObject, c_event *C.GdkEventButton, data C.gpointer) C.gboolean {
+	signalWidgetButtonPressEventLock.RLock()
+	defer signalWidgetButtonPressEventLock.RUnlock()
+
 	event := gdk.EventButtonNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -35742,7 +36210,7 @@ type signalWidgetButtonReleaseEventDetail struct {
 
 var signalWidgetButtonReleaseEventId int
 var signalWidgetButtonReleaseEventMap = make(map[int]signalWidgetButtonReleaseEventDetail)
-var signalWidgetButtonReleaseEventLock sync.Mutex
+var signalWidgetButtonReleaseEventLock sync.RWMutex
 
 // WidgetSignalButtonReleaseEventCallback is a callback function for a 'button-release-event' signal emitted from a Widget.
 type WidgetSignalButtonReleaseEventCallback func(event *gdk.EventButton) bool
@@ -35787,6 +36255,9 @@ func (recv *Widget) DisconnectButtonReleaseEvent(connectionID int) {
 
 //export widget_buttonReleaseEventHandler
 func widget_buttonReleaseEventHandler(_ *C.GObject, c_event *C.GdkEventButton, data C.gpointer) C.gboolean {
+	signalWidgetButtonReleaseEventLock.RLock()
+	defer signalWidgetButtonReleaseEventLock.RUnlock()
+
 	event := gdk.EventButtonNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -35804,7 +36275,7 @@ type signalWidgetCanActivateAccelDetail struct {
 
 var signalWidgetCanActivateAccelId int
 var signalWidgetCanActivateAccelMap = make(map[int]signalWidgetCanActivateAccelDetail)
-var signalWidgetCanActivateAccelLock sync.Mutex
+var signalWidgetCanActivateAccelLock sync.RWMutex
 
 // WidgetSignalCanActivateAccelCallback is a callback function for a 'can-activate-accel' signal emitted from a Widget.
 type WidgetSignalCanActivateAccelCallback func(signalId uint32) bool
@@ -35849,6 +36320,9 @@ func (recv *Widget) DisconnectCanActivateAccel(connectionID int) {
 
 //export widget_canActivateAccelHandler
 func widget_canActivateAccelHandler(_ *C.GObject, c_signal_id C.guint, data C.gpointer) C.gboolean {
+	signalWidgetCanActivateAccelLock.RLock()
+	defer signalWidgetCanActivateAccelLock.RUnlock()
+
 	signalId := uint32(c_signal_id)
 
 	index := int(uintptr(data))
@@ -35868,7 +36342,7 @@ type signalWidgetCompositedChangedDetail struct {
 
 var signalWidgetCompositedChangedId int
 var signalWidgetCompositedChangedMap = make(map[int]signalWidgetCompositedChangedDetail)
-var signalWidgetCompositedChangedLock sync.Mutex
+var signalWidgetCompositedChangedLock sync.RWMutex
 
 // WidgetSignalCompositedChangedCallback is a callback function for a 'composited-changed' signal emitted from a Widget.
 type WidgetSignalCompositedChangedCallback func()
@@ -35913,6 +36387,9 @@ func (recv *Widget) DisconnectCompositedChanged(connectionID int) {
 
 //export widget_compositedChangedHandler
 func widget_compositedChangedHandler(_ *C.GObject, data C.gpointer) {
+	signalWidgetCompositedChangedLock.RLock()
+	defer signalWidgetCompositedChangedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalWidgetCompositedChangedMap[index].callback
 	callback()
@@ -35925,7 +36402,7 @@ type signalWidgetConfigureEventDetail struct {
 
 var signalWidgetConfigureEventId int
 var signalWidgetConfigureEventMap = make(map[int]signalWidgetConfigureEventDetail)
-var signalWidgetConfigureEventLock sync.Mutex
+var signalWidgetConfigureEventLock sync.RWMutex
 
 // WidgetSignalConfigureEventCallback is a callback function for a 'configure-event' signal emitted from a Widget.
 type WidgetSignalConfigureEventCallback func(event *gdk.EventConfigure) bool
@@ -35970,6 +36447,9 @@ func (recv *Widget) DisconnectConfigureEvent(connectionID int) {
 
 //export widget_configureEventHandler
 func widget_configureEventHandler(_ *C.GObject, c_event *C.GdkEventConfigure, data C.gpointer) C.gboolean {
+	signalWidgetConfigureEventLock.RLock()
+	defer signalWidgetConfigureEventLock.RUnlock()
+
 	event := gdk.EventConfigureNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -35989,7 +36469,7 @@ type signalWidgetDestroyDetail struct {
 
 var signalWidgetDestroyId int
 var signalWidgetDestroyMap = make(map[int]signalWidgetDestroyDetail)
-var signalWidgetDestroyLock sync.Mutex
+var signalWidgetDestroyLock sync.RWMutex
 
 // WidgetSignalDestroyCallback is a callback function for a 'destroy' signal emitted from a Widget.
 type WidgetSignalDestroyCallback func()
@@ -36034,6 +36514,9 @@ func (recv *Widget) DisconnectDestroy(connectionID int) {
 
 //export widget_destroyHandler
 func widget_destroyHandler(_ *C.GObject, data C.gpointer) {
+	signalWidgetDestroyLock.RLock()
+	defer signalWidgetDestroyLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalWidgetDestroyMap[index].callback
 	callback()
@@ -36050,7 +36533,7 @@ type signalWidgetDragBeginDetail struct {
 
 var signalWidgetDragBeginId int
 var signalWidgetDragBeginMap = make(map[int]signalWidgetDragBeginDetail)
-var signalWidgetDragBeginLock sync.Mutex
+var signalWidgetDragBeginLock sync.RWMutex
 
 // WidgetSignalDragBeginCallback is a callback function for a 'drag-begin' signal emitted from a Widget.
 type WidgetSignalDragBeginCallback func(context *gdk.DragContext)
@@ -36095,6 +36578,9 @@ func (recv *Widget) DisconnectDragBegin(connectionID int) {
 
 //export widget_dragBeginHandler
 func widget_dragBeginHandler(_ *C.GObject, c_context *C.GdkDragContext, data C.gpointer) {
+	signalWidgetDragBeginLock.RLock()
+	defer signalWidgetDragBeginLock.RUnlock()
+
 	context := gdk.DragContextNewFromC(unsafe.Pointer(c_context))
 
 	index := int(uintptr(data))
@@ -36109,7 +36595,7 @@ type signalWidgetDragDataDeleteDetail struct {
 
 var signalWidgetDragDataDeleteId int
 var signalWidgetDragDataDeleteMap = make(map[int]signalWidgetDragDataDeleteDetail)
-var signalWidgetDragDataDeleteLock sync.Mutex
+var signalWidgetDragDataDeleteLock sync.RWMutex
 
 // WidgetSignalDragDataDeleteCallback is a callback function for a 'drag-data-delete' signal emitted from a Widget.
 type WidgetSignalDragDataDeleteCallback func(context *gdk.DragContext)
@@ -36154,6 +36640,9 @@ func (recv *Widget) DisconnectDragDataDelete(connectionID int) {
 
 //export widget_dragDataDeleteHandler
 func widget_dragDataDeleteHandler(_ *C.GObject, c_context *C.GdkDragContext, data C.gpointer) {
+	signalWidgetDragDataDeleteLock.RLock()
+	defer signalWidgetDragDataDeleteLock.RUnlock()
+
 	context := gdk.DragContextNewFromC(unsafe.Pointer(c_context))
 
 	index := int(uintptr(data))
@@ -36168,7 +36657,7 @@ type signalWidgetDragDataGetDetail struct {
 
 var signalWidgetDragDataGetId int
 var signalWidgetDragDataGetMap = make(map[int]signalWidgetDragDataGetDetail)
-var signalWidgetDragDataGetLock sync.Mutex
+var signalWidgetDragDataGetLock sync.RWMutex
 
 // WidgetSignalDragDataGetCallback is a callback function for a 'drag-data-get' signal emitted from a Widget.
 type WidgetSignalDragDataGetCallback func(context *gdk.DragContext, Data *SelectionData, info uint32, time uint32)
@@ -36213,6 +36702,9 @@ func (recv *Widget) DisconnectDragDataGet(connectionID int) {
 
 //export widget_dragDataGetHandler
 func widget_dragDataGetHandler(_ *C.GObject, c_context *C.GdkDragContext, c__data *C.GtkSelectionData, c_info C.guint, c_time C.guint, data C.gpointer) {
+	signalWidgetDragDataGetLock.RLock()
+	defer signalWidgetDragDataGetLock.RUnlock()
+
 	context := gdk.DragContextNewFromC(unsafe.Pointer(c_context))
 
 	Data := SelectionDataNewFromC(unsafe.Pointer(c__data))
@@ -36233,7 +36725,7 @@ type signalWidgetDragDataReceivedDetail struct {
 
 var signalWidgetDragDataReceivedId int
 var signalWidgetDragDataReceivedMap = make(map[int]signalWidgetDragDataReceivedDetail)
-var signalWidgetDragDataReceivedLock sync.Mutex
+var signalWidgetDragDataReceivedLock sync.RWMutex
 
 // WidgetSignalDragDataReceivedCallback is a callback function for a 'drag-data-received' signal emitted from a Widget.
 type WidgetSignalDragDataReceivedCallback func(context *gdk.DragContext, x int32, y int32, Data *SelectionData, info uint32, time uint32)
@@ -36278,6 +36770,9 @@ func (recv *Widget) DisconnectDragDataReceived(connectionID int) {
 
 //export widget_dragDataReceivedHandler
 func widget_dragDataReceivedHandler(_ *C.GObject, c_context *C.GdkDragContext, c_x C.gint, c_y C.gint, c__data *C.GtkSelectionData, c_info C.guint, c_time C.guint, data C.gpointer) {
+	signalWidgetDragDataReceivedLock.RLock()
+	defer signalWidgetDragDataReceivedLock.RUnlock()
+
 	context := gdk.DragContextNewFromC(unsafe.Pointer(c_context))
 
 	x := int32(c_x)
@@ -36302,7 +36797,7 @@ type signalWidgetDragDropDetail struct {
 
 var signalWidgetDragDropId int
 var signalWidgetDragDropMap = make(map[int]signalWidgetDragDropDetail)
-var signalWidgetDragDropLock sync.Mutex
+var signalWidgetDragDropLock sync.RWMutex
 
 // WidgetSignalDragDropCallback is a callback function for a 'drag-drop' signal emitted from a Widget.
 type WidgetSignalDragDropCallback func(context *gdk.DragContext, x int32, y int32, time uint32) bool
@@ -36347,6 +36842,9 @@ func (recv *Widget) DisconnectDragDrop(connectionID int) {
 
 //export widget_dragDropHandler
 func widget_dragDropHandler(_ *C.GObject, c_context *C.GdkDragContext, c_x C.gint, c_y C.gint, c_time C.guint, data C.gpointer) C.gboolean {
+	signalWidgetDragDropLock.RLock()
+	defer signalWidgetDragDropLock.RUnlock()
+
 	context := gdk.DragContextNewFromC(unsafe.Pointer(c_context))
 
 	x := int32(c_x)
@@ -36370,7 +36868,7 @@ type signalWidgetDragEndDetail struct {
 
 var signalWidgetDragEndId int
 var signalWidgetDragEndMap = make(map[int]signalWidgetDragEndDetail)
-var signalWidgetDragEndLock sync.Mutex
+var signalWidgetDragEndLock sync.RWMutex
 
 // WidgetSignalDragEndCallback is a callback function for a 'drag-end' signal emitted from a Widget.
 type WidgetSignalDragEndCallback func(context *gdk.DragContext)
@@ -36415,6 +36913,9 @@ func (recv *Widget) DisconnectDragEnd(connectionID int) {
 
 //export widget_dragEndHandler
 func widget_dragEndHandler(_ *C.GObject, c_context *C.GdkDragContext, data C.gpointer) {
+	signalWidgetDragEndLock.RLock()
+	defer signalWidgetDragEndLock.RUnlock()
+
 	context := gdk.DragContextNewFromC(unsafe.Pointer(c_context))
 
 	index := int(uintptr(data))
@@ -36429,7 +36930,7 @@ type signalWidgetDragLeaveDetail struct {
 
 var signalWidgetDragLeaveId int
 var signalWidgetDragLeaveMap = make(map[int]signalWidgetDragLeaveDetail)
-var signalWidgetDragLeaveLock sync.Mutex
+var signalWidgetDragLeaveLock sync.RWMutex
 
 // WidgetSignalDragLeaveCallback is a callback function for a 'drag-leave' signal emitted from a Widget.
 type WidgetSignalDragLeaveCallback func(context *gdk.DragContext, time uint32)
@@ -36474,6 +36975,9 @@ func (recv *Widget) DisconnectDragLeave(connectionID int) {
 
 //export widget_dragLeaveHandler
 func widget_dragLeaveHandler(_ *C.GObject, c_context *C.GdkDragContext, c_time C.guint, data C.gpointer) {
+	signalWidgetDragLeaveLock.RLock()
+	defer signalWidgetDragLeaveLock.RUnlock()
+
 	context := gdk.DragContextNewFromC(unsafe.Pointer(c_context))
 
 	time := uint32(c_time)
@@ -36490,7 +36994,7 @@ type signalWidgetDragMotionDetail struct {
 
 var signalWidgetDragMotionId int
 var signalWidgetDragMotionMap = make(map[int]signalWidgetDragMotionDetail)
-var signalWidgetDragMotionLock sync.Mutex
+var signalWidgetDragMotionLock sync.RWMutex
 
 // WidgetSignalDragMotionCallback is a callback function for a 'drag-motion' signal emitted from a Widget.
 type WidgetSignalDragMotionCallback func(context *gdk.DragContext, x int32, y int32, time uint32) bool
@@ -36535,6 +37039,9 @@ func (recv *Widget) DisconnectDragMotion(connectionID int) {
 
 //export widget_dragMotionHandler
 func widget_dragMotionHandler(_ *C.GObject, c_context *C.GdkDragContext, c_x C.gint, c_y C.gint, c_time C.guint, data C.gpointer) C.gboolean {
+	signalWidgetDragMotionLock.RLock()
+	defer signalWidgetDragMotionLock.RUnlock()
+
 	context := gdk.DragContextNewFromC(unsafe.Pointer(c_context))
 
 	x := int32(c_x)
@@ -36558,7 +37065,7 @@ type signalWidgetEnterNotifyEventDetail struct {
 
 var signalWidgetEnterNotifyEventId int
 var signalWidgetEnterNotifyEventMap = make(map[int]signalWidgetEnterNotifyEventDetail)
-var signalWidgetEnterNotifyEventLock sync.Mutex
+var signalWidgetEnterNotifyEventLock sync.RWMutex
 
 // WidgetSignalEnterNotifyEventCallback is a callback function for a 'enter-notify-event' signal emitted from a Widget.
 type WidgetSignalEnterNotifyEventCallback func(event *gdk.EventCrossing) bool
@@ -36603,6 +37110,9 @@ func (recv *Widget) DisconnectEnterNotifyEvent(connectionID int) {
 
 //export widget_enterNotifyEventHandler
 func widget_enterNotifyEventHandler(_ *C.GObject, c_event *C.GdkEventCrossing, data C.gpointer) C.gboolean {
+	signalWidgetEnterNotifyEventLock.RLock()
+	defer signalWidgetEnterNotifyEventLock.RUnlock()
+
 	event := gdk.EventCrossingNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -36626,7 +37136,7 @@ type signalWidgetFocusInEventDetail struct {
 
 var signalWidgetFocusInEventId int
 var signalWidgetFocusInEventMap = make(map[int]signalWidgetFocusInEventDetail)
-var signalWidgetFocusInEventLock sync.Mutex
+var signalWidgetFocusInEventLock sync.RWMutex
 
 // WidgetSignalFocusInEventCallback is a callback function for a 'focus-in-event' signal emitted from a Widget.
 type WidgetSignalFocusInEventCallback func(event *gdk.EventFocus) bool
@@ -36671,6 +37181,9 @@ func (recv *Widget) DisconnectFocusInEvent(connectionID int) {
 
 //export widget_focusInEventHandler
 func widget_focusInEventHandler(_ *C.GObject, c_event *C.GdkEventFocus, data C.gpointer) C.gboolean {
+	signalWidgetFocusInEventLock.RLock()
+	defer signalWidgetFocusInEventLock.RUnlock()
+
 	event := gdk.EventFocusNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -36688,7 +37201,7 @@ type signalWidgetFocusOutEventDetail struct {
 
 var signalWidgetFocusOutEventId int
 var signalWidgetFocusOutEventMap = make(map[int]signalWidgetFocusOutEventDetail)
-var signalWidgetFocusOutEventLock sync.Mutex
+var signalWidgetFocusOutEventLock sync.RWMutex
 
 // WidgetSignalFocusOutEventCallback is a callback function for a 'focus-out-event' signal emitted from a Widget.
 type WidgetSignalFocusOutEventCallback func(event *gdk.EventFocus) bool
@@ -36733,6 +37246,9 @@ func (recv *Widget) DisconnectFocusOutEvent(connectionID int) {
 
 //export widget_focusOutEventHandler
 func widget_focusOutEventHandler(_ *C.GObject, c_event *C.GdkEventFocus, data C.gpointer) C.gboolean {
+	signalWidgetFocusOutEventLock.RLock()
+	defer signalWidgetFocusOutEventLock.RUnlock()
+
 	event := gdk.EventFocusNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -36750,7 +37266,7 @@ type signalWidgetGrabFocusDetail struct {
 
 var signalWidgetGrabFocusId int
 var signalWidgetGrabFocusMap = make(map[int]signalWidgetGrabFocusDetail)
-var signalWidgetGrabFocusLock sync.Mutex
+var signalWidgetGrabFocusLock sync.RWMutex
 
 // WidgetSignalGrabFocusCallback is a callback function for a 'grab-focus' signal emitted from a Widget.
 type WidgetSignalGrabFocusCallback func()
@@ -36795,6 +37311,9 @@ func (recv *Widget) DisconnectGrabFocus(connectionID int) {
 
 //export widget_grabFocusHandler
 func widget_grabFocusHandler(_ *C.GObject, data C.gpointer) {
+	signalWidgetGrabFocusLock.RLock()
+	defer signalWidgetGrabFocusLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalWidgetGrabFocusMap[index].callback
 	callback()
@@ -36807,7 +37326,7 @@ type signalWidgetGrabNotifyDetail struct {
 
 var signalWidgetGrabNotifyId int
 var signalWidgetGrabNotifyMap = make(map[int]signalWidgetGrabNotifyDetail)
-var signalWidgetGrabNotifyLock sync.Mutex
+var signalWidgetGrabNotifyLock sync.RWMutex
 
 // WidgetSignalGrabNotifyCallback is a callback function for a 'grab-notify' signal emitted from a Widget.
 type WidgetSignalGrabNotifyCallback func(wasGrabbed bool)
@@ -36852,6 +37371,9 @@ func (recv *Widget) DisconnectGrabNotify(connectionID int) {
 
 //export widget_grabNotifyHandler
 func widget_grabNotifyHandler(_ *C.GObject, c_was_grabbed C.gboolean, data C.gpointer) {
+	signalWidgetGrabNotifyLock.RLock()
+	defer signalWidgetGrabNotifyLock.RUnlock()
+
 	wasGrabbed := c_was_grabbed == C.TRUE
 
 	index := int(uintptr(data))
@@ -36866,7 +37388,7 @@ type signalWidgetHideDetail struct {
 
 var signalWidgetHideId int
 var signalWidgetHideMap = make(map[int]signalWidgetHideDetail)
-var signalWidgetHideLock sync.Mutex
+var signalWidgetHideLock sync.RWMutex
 
 // WidgetSignalHideCallback is a callback function for a 'hide' signal emitted from a Widget.
 type WidgetSignalHideCallback func()
@@ -36911,6 +37433,9 @@ func (recv *Widget) DisconnectHide(connectionID int) {
 
 //export widget_hideHandler
 func widget_hideHandler(_ *C.GObject, data C.gpointer) {
+	signalWidgetHideLock.RLock()
+	defer signalWidgetHideLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalWidgetHideMap[index].callback
 	callback()
@@ -36923,7 +37448,7 @@ type signalWidgetHierarchyChangedDetail struct {
 
 var signalWidgetHierarchyChangedId int
 var signalWidgetHierarchyChangedMap = make(map[int]signalWidgetHierarchyChangedDetail)
-var signalWidgetHierarchyChangedLock sync.Mutex
+var signalWidgetHierarchyChangedLock sync.RWMutex
 
 // WidgetSignalHierarchyChangedCallback is a callback function for a 'hierarchy-changed' signal emitted from a Widget.
 type WidgetSignalHierarchyChangedCallback func(previousToplevel *Widget)
@@ -36968,6 +37493,9 @@ func (recv *Widget) DisconnectHierarchyChanged(connectionID int) {
 
 //export widget_hierarchyChangedHandler
 func widget_hierarchyChangedHandler(_ *C.GObject, c_previous_toplevel *C.GtkWidget, data C.gpointer) {
+	signalWidgetHierarchyChangedLock.RLock()
+	defer signalWidgetHierarchyChangedLock.RUnlock()
+
 	previousToplevel := WidgetNewFromC(unsafe.Pointer(c_previous_toplevel))
 
 	index := int(uintptr(data))
@@ -36982,7 +37510,7 @@ type signalWidgetKeyPressEventDetail struct {
 
 var signalWidgetKeyPressEventId int
 var signalWidgetKeyPressEventMap = make(map[int]signalWidgetKeyPressEventDetail)
-var signalWidgetKeyPressEventLock sync.Mutex
+var signalWidgetKeyPressEventLock sync.RWMutex
 
 // WidgetSignalKeyPressEventCallback is a callback function for a 'key-press-event' signal emitted from a Widget.
 type WidgetSignalKeyPressEventCallback func(event *gdk.EventKey) bool
@@ -37027,6 +37555,9 @@ func (recv *Widget) DisconnectKeyPressEvent(connectionID int) {
 
 //export widget_keyPressEventHandler
 func widget_keyPressEventHandler(_ *C.GObject, c_event *C.GdkEventKey, data C.gpointer) C.gboolean {
+	signalWidgetKeyPressEventLock.RLock()
+	defer signalWidgetKeyPressEventLock.RUnlock()
+
 	event := gdk.EventKeyNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -37044,7 +37575,7 @@ type signalWidgetKeyReleaseEventDetail struct {
 
 var signalWidgetKeyReleaseEventId int
 var signalWidgetKeyReleaseEventMap = make(map[int]signalWidgetKeyReleaseEventDetail)
-var signalWidgetKeyReleaseEventLock sync.Mutex
+var signalWidgetKeyReleaseEventLock sync.RWMutex
 
 // WidgetSignalKeyReleaseEventCallback is a callback function for a 'key-release-event' signal emitted from a Widget.
 type WidgetSignalKeyReleaseEventCallback func(event *gdk.EventKey) bool
@@ -37089,6 +37620,9 @@ func (recv *Widget) DisconnectKeyReleaseEvent(connectionID int) {
 
 //export widget_keyReleaseEventHandler
 func widget_keyReleaseEventHandler(_ *C.GObject, c_event *C.GdkEventKey, data C.gpointer) C.gboolean {
+	signalWidgetKeyReleaseEventLock.RLock()
+	defer signalWidgetKeyReleaseEventLock.RUnlock()
+
 	event := gdk.EventKeyNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -37106,7 +37640,7 @@ type signalWidgetLeaveNotifyEventDetail struct {
 
 var signalWidgetLeaveNotifyEventId int
 var signalWidgetLeaveNotifyEventMap = make(map[int]signalWidgetLeaveNotifyEventDetail)
-var signalWidgetLeaveNotifyEventLock sync.Mutex
+var signalWidgetLeaveNotifyEventLock sync.RWMutex
 
 // WidgetSignalLeaveNotifyEventCallback is a callback function for a 'leave-notify-event' signal emitted from a Widget.
 type WidgetSignalLeaveNotifyEventCallback func(event *gdk.EventCrossing) bool
@@ -37151,6 +37685,9 @@ func (recv *Widget) DisconnectLeaveNotifyEvent(connectionID int) {
 
 //export widget_leaveNotifyEventHandler
 func widget_leaveNotifyEventHandler(_ *C.GObject, c_event *C.GdkEventCrossing, data C.gpointer) C.gboolean {
+	signalWidgetLeaveNotifyEventLock.RLock()
+	defer signalWidgetLeaveNotifyEventLock.RUnlock()
+
 	event := gdk.EventCrossingNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -37168,7 +37705,7 @@ type signalWidgetMapDetail struct {
 
 var signalWidgetMapId int
 var signalWidgetMapMap = make(map[int]signalWidgetMapDetail)
-var signalWidgetMapLock sync.Mutex
+var signalWidgetMapLock sync.RWMutex
 
 // WidgetSignalMapCallback is a callback function for a 'map' signal emitted from a Widget.
 type WidgetSignalMapCallback func()
@@ -37213,6 +37750,9 @@ func (recv *Widget) DisconnectMap(connectionID int) {
 
 //export widget_mapHandler
 func widget_mapHandler(_ *C.GObject, data C.gpointer) {
+	signalWidgetMapLock.RLock()
+	defer signalWidgetMapLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalWidgetMapMap[index].callback
 	callback()
@@ -37225,7 +37765,7 @@ type signalWidgetMapEventDetail struct {
 
 var signalWidgetMapEventId int
 var signalWidgetMapEventMap = make(map[int]signalWidgetMapEventDetail)
-var signalWidgetMapEventLock sync.Mutex
+var signalWidgetMapEventLock sync.RWMutex
 
 // WidgetSignalMapEventCallback is a callback function for a 'map-event' signal emitted from a Widget.
 type WidgetSignalMapEventCallback func(event *gdk.EventAny) bool
@@ -37270,6 +37810,9 @@ func (recv *Widget) DisconnectMapEvent(connectionID int) {
 
 //export widget_mapEventHandler
 func widget_mapEventHandler(_ *C.GObject, c_event *C.GdkEventAny, data C.gpointer) C.gboolean {
+	signalWidgetMapEventLock.RLock()
+	defer signalWidgetMapEventLock.RUnlock()
+
 	event := gdk.EventAnyNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -37287,7 +37830,7 @@ type signalWidgetMnemonicActivateDetail struct {
 
 var signalWidgetMnemonicActivateId int
 var signalWidgetMnemonicActivateMap = make(map[int]signalWidgetMnemonicActivateDetail)
-var signalWidgetMnemonicActivateLock sync.Mutex
+var signalWidgetMnemonicActivateLock sync.RWMutex
 
 // WidgetSignalMnemonicActivateCallback is a callback function for a 'mnemonic-activate' signal emitted from a Widget.
 type WidgetSignalMnemonicActivateCallback func(groupCycling bool) bool
@@ -37332,6 +37875,9 @@ func (recv *Widget) DisconnectMnemonicActivate(connectionID int) {
 
 //export widget_mnemonicActivateHandler
 func widget_mnemonicActivateHandler(_ *C.GObject, c_group_cycling C.gboolean, data C.gpointer) C.gboolean {
+	signalWidgetMnemonicActivateLock.RLock()
+	defer signalWidgetMnemonicActivateLock.RUnlock()
+
 	groupCycling := c_group_cycling == C.TRUE
 
 	index := int(uintptr(data))
@@ -37349,7 +37895,7 @@ type signalWidgetMotionNotifyEventDetail struct {
 
 var signalWidgetMotionNotifyEventId int
 var signalWidgetMotionNotifyEventMap = make(map[int]signalWidgetMotionNotifyEventDetail)
-var signalWidgetMotionNotifyEventLock sync.Mutex
+var signalWidgetMotionNotifyEventLock sync.RWMutex
 
 // WidgetSignalMotionNotifyEventCallback is a callback function for a 'motion-notify-event' signal emitted from a Widget.
 type WidgetSignalMotionNotifyEventCallback func(event *gdk.EventMotion) bool
@@ -37394,6 +37940,9 @@ func (recv *Widget) DisconnectMotionNotifyEvent(connectionID int) {
 
 //export widget_motionNotifyEventHandler
 func widget_motionNotifyEventHandler(_ *C.GObject, c_event *C.GdkEventMotion, data C.gpointer) C.gboolean {
+	signalWidgetMotionNotifyEventLock.RLock()
+	defer signalWidgetMotionNotifyEventLock.RUnlock()
+
 	event := gdk.EventMotionNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -37413,7 +37962,7 @@ type signalWidgetParentSetDetail struct {
 
 var signalWidgetParentSetId int
 var signalWidgetParentSetMap = make(map[int]signalWidgetParentSetDetail)
-var signalWidgetParentSetLock sync.Mutex
+var signalWidgetParentSetLock sync.RWMutex
 
 // WidgetSignalParentSetCallback is a callback function for a 'parent-set' signal emitted from a Widget.
 type WidgetSignalParentSetCallback func(oldParent *Widget)
@@ -37458,6 +38007,9 @@ func (recv *Widget) DisconnectParentSet(connectionID int) {
 
 //export widget_parentSetHandler
 func widget_parentSetHandler(_ *C.GObject, c_old_parent *C.GtkWidget, data C.gpointer) {
+	signalWidgetParentSetLock.RLock()
+	defer signalWidgetParentSetLock.RUnlock()
+
 	oldParent := WidgetNewFromC(unsafe.Pointer(c_old_parent))
 
 	index := int(uintptr(data))
@@ -37472,7 +38024,7 @@ type signalWidgetPopupMenuDetail struct {
 
 var signalWidgetPopupMenuId int
 var signalWidgetPopupMenuMap = make(map[int]signalWidgetPopupMenuDetail)
-var signalWidgetPopupMenuLock sync.Mutex
+var signalWidgetPopupMenuLock sync.RWMutex
 
 // WidgetSignalPopupMenuCallback is a callback function for a 'popup-menu' signal emitted from a Widget.
 type WidgetSignalPopupMenuCallback func() bool
@@ -37517,6 +38069,9 @@ func (recv *Widget) DisconnectPopupMenu(connectionID int) {
 
 //export widget_popupMenuHandler
 func widget_popupMenuHandler(_ *C.GObject, data C.gpointer) C.gboolean {
+	signalWidgetPopupMenuLock.RLock()
+	defer signalWidgetPopupMenuLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalWidgetPopupMenuMap[index].callback
 	retGo := callback()
@@ -37532,7 +38087,7 @@ type signalWidgetPropertyNotifyEventDetail struct {
 
 var signalWidgetPropertyNotifyEventId int
 var signalWidgetPropertyNotifyEventMap = make(map[int]signalWidgetPropertyNotifyEventDetail)
-var signalWidgetPropertyNotifyEventLock sync.Mutex
+var signalWidgetPropertyNotifyEventLock sync.RWMutex
 
 // WidgetSignalPropertyNotifyEventCallback is a callback function for a 'property-notify-event' signal emitted from a Widget.
 type WidgetSignalPropertyNotifyEventCallback func(event *gdk.EventProperty) bool
@@ -37577,6 +38132,9 @@ func (recv *Widget) DisconnectPropertyNotifyEvent(connectionID int) {
 
 //export widget_propertyNotifyEventHandler
 func widget_propertyNotifyEventHandler(_ *C.GObject, c_event *C.GdkEventProperty, data C.gpointer) C.gboolean {
+	signalWidgetPropertyNotifyEventLock.RLock()
+	defer signalWidgetPropertyNotifyEventLock.RUnlock()
+
 	event := gdk.EventPropertyNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -37594,7 +38152,7 @@ type signalWidgetProximityInEventDetail struct {
 
 var signalWidgetProximityInEventId int
 var signalWidgetProximityInEventMap = make(map[int]signalWidgetProximityInEventDetail)
-var signalWidgetProximityInEventLock sync.Mutex
+var signalWidgetProximityInEventLock sync.RWMutex
 
 // WidgetSignalProximityInEventCallback is a callback function for a 'proximity-in-event' signal emitted from a Widget.
 type WidgetSignalProximityInEventCallback func(event *gdk.EventProximity) bool
@@ -37639,6 +38197,9 @@ func (recv *Widget) DisconnectProximityInEvent(connectionID int) {
 
 //export widget_proximityInEventHandler
 func widget_proximityInEventHandler(_ *C.GObject, c_event *C.GdkEventProximity, data C.gpointer) C.gboolean {
+	signalWidgetProximityInEventLock.RLock()
+	defer signalWidgetProximityInEventLock.RUnlock()
+
 	event := gdk.EventProximityNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -37656,7 +38217,7 @@ type signalWidgetProximityOutEventDetail struct {
 
 var signalWidgetProximityOutEventId int
 var signalWidgetProximityOutEventMap = make(map[int]signalWidgetProximityOutEventDetail)
-var signalWidgetProximityOutEventLock sync.Mutex
+var signalWidgetProximityOutEventLock sync.RWMutex
 
 // WidgetSignalProximityOutEventCallback is a callback function for a 'proximity-out-event' signal emitted from a Widget.
 type WidgetSignalProximityOutEventCallback func(event *gdk.EventProximity) bool
@@ -37701,6 +38262,9 @@ func (recv *Widget) DisconnectProximityOutEvent(connectionID int) {
 
 //export widget_proximityOutEventHandler
 func widget_proximityOutEventHandler(_ *C.GObject, c_event *C.GdkEventProximity, data C.gpointer) C.gboolean {
+	signalWidgetProximityOutEventLock.RLock()
+	defer signalWidgetProximityOutEventLock.RUnlock()
+
 	event := gdk.EventProximityNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -37718,7 +38282,7 @@ type signalWidgetRealizeDetail struct {
 
 var signalWidgetRealizeId int
 var signalWidgetRealizeMap = make(map[int]signalWidgetRealizeDetail)
-var signalWidgetRealizeLock sync.Mutex
+var signalWidgetRealizeLock sync.RWMutex
 
 // WidgetSignalRealizeCallback is a callback function for a 'realize' signal emitted from a Widget.
 type WidgetSignalRealizeCallback func()
@@ -37763,6 +38327,9 @@ func (recv *Widget) DisconnectRealize(connectionID int) {
 
 //export widget_realizeHandler
 func widget_realizeHandler(_ *C.GObject, data C.gpointer) {
+	signalWidgetRealizeLock.RLock()
+	defer signalWidgetRealizeLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalWidgetRealizeMap[index].callback
 	callback()
@@ -37775,7 +38342,7 @@ type signalWidgetScreenChangedDetail struct {
 
 var signalWidgetScreenChangedId int
 var signalWidgetScreenChangedMap = make(map[int]signalWidgetScreenChangedDetail)
-var signalWidgetScreenChangedLock sync.Mutex
+var signalWidgetScreenChangedLock sync.RWMutex
 
 // WidgetSignalScreenChangedCallback is a callback function for a 'screen-changed' signal emitted from a Widget.
 type WidgetSignalScreenChangedCallback func(previousScreen *gdk.Screen)
@@ -37820,6 +38387,9 @@ func (recv *Widget) DisconnectScreenChanged(connectionID int) {
 
 //export widget_screenChangedHandler
 func widget_screenChangedHandler(_ *C.GObject, c_previous_screen *C.GdkScreen, data C.gpointer) {
+	signalWidgetScreenChangedLock.RLock()
+	defer signalWidgetScreenChangedLock.RUnlock()
+
 	previousScreen := gdk.ScreenNewFromC(unsafe.Pointer(c_previous_screen))
 
 	index := int(uintptr(data))
@@ -37834,7 +38404,7 @@ type signalWidgetScrollEventDetail struct {
 
 var signalWidgetScrollEventId int
 var signalWidgetScrollEventMap = make(map[int]signalWidgetScrollEventDetail)
-var signalWidgetScrollEventLock sync.Mutex
+var signalWidgetScrollEventLock sync.RWMutex
 
 // WidgetSignalScrollEventCallback is a callback function for a 'scroll-event' signal emitted from a Widget.
 type WidgetSignalScrollEventCallback func(event *gdk.EventScroll) bool
@@ -37879,6 +38449,9 @@ func (recv *Widget) DisconnectScrollEvent(connectionID int) {
 
 //export widget_scrollEventHandler
 func widget_scrollEventHandler(_ *C.GObject, c_event *C.GdkEventScroll, data C.gpointer) C.gboolean {
+	signalWidgetScrollEventLock.RLock()
+	defer signalWidgetScrollEventLock.RUnlock()
+
 	event := gdk.EventScrollNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -37896,7 +38469,7 @@ type signalWidgetSelectionClearEventDetail struct {
 
 var signalWidgetSelectionClearEventId int
 var signalWidgetSelectionClearEventMap = make(map[int]signalWidgetSelectionClearEventDetail)
-var signalWidgetSelectionClearEventLock sync.Mutex
+var signalWidgetSelectionClearEventLock sync.RWMutex
 
 // WidgetSignalSelectionClearEventCallback is a callback function for a 'selection-clear-event' signal emitted from a Widget.
 type WidgetSignalSelectionClearEventCallback func(event *gdk.EventSelection) bool
@@ -37941,6 +38514,9 @@ func (recv *Widget) DisconnectSelectionClearEvent(connectionID int) {
 
 //export widget_selectionClearEventHandler
 func widget_selectionClearEventHandler(_ *C.GObject, c_event *C.GdkEventSelection, data C.gpointer) C.gboolean {
+	signalWidgetSelectionClearEventLock.RLock()
+	defer signalWidgetSelectionClearEventLock.RUnlock()
+
 	event := gdk.EventSelectionNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -37958,7 +38534,7 @@ type signalWidgetSelectionGetDetail struct {
 
 var signalWidgetSelectionGetId int
 var signalWidgetSelectionGetMap = make(map[int]signalWidgetSelectionGetDetail)
-var signalWidgetSelectionGetLock sync.Mutex
+var signalWidgetSelectionGetLock sync.RWMutex
 
 // WidgetSignalSelectionGetCallback is a callback function for a 'selection-get' signal emitted from a Widget.
 type WidgetSignalSelectionGetCallback func(Data *SelectionData, info uint32, time uint32)
@@ -38003,6 +38579,9 @@ func (recv *Widget) DisconnectSelectionGet(connectionID int) {
 
 //export widget_selectionGetHandler
 func widget_selectionGetHandler(_ *C.GObject, c__data *C.GtkSelectionData, c_info C.guint, c_time C.guint, data C.gpointer) {
+	signalWidgetSelectionGetLock.RLock()
+	defer signalWidgetSelectionGetLock.RUnlock()
+
 	Data := SelectionDataNewFromC(unsafe.Pointer(c__data))
 
 	info := uint32(c_info)
@@ -38021,7 +38600,7 @@ type signalWidgetSelectionNotifyEventDetail struct {
 
 var signalWidgetSelectionNotifyEventId int
 var signalWidgetSelectionNotifyEventMap = make(map[int]signalWidgetSelectionNotifyEventDetail)
-var signalWidgetSelectionNotifyEventLock sync.Mutex
+var signalWidgetSelectionNotifyEventLock sync.RWMutex
 
 // WidgetSignalSelectionNotifyEventCallback is a callback function for a 'selection-notify-event' signal emitted from a Widget.
 type WidgetSignalSelectionNotifyEventCallback func(event *gdk.EventSelection) bool
@@ -38066,6 +38645,9 @@ func (recv *Widget) DisconnectSelectionNotifyEvent(connectionID int) {
 
 //export widget_selectionNotifyEventHandler
 func widget_selectionNotifyEventHandler(_ *C.GObject, c_event *C.GdkEventSelection, data C.gpointer) C.gboolean {
+	signalWidgetSelectionNotifyEventLock.RLock()
+	defer signalWidgetSelectionNotifyEventLock.RUnlock()
+
 	event := gdk.EventSelectionNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -38083,7 +38665,7 @@ type signalWidgetSelectionReceivedDetail struct {
 
 var signalWidgetSelectionReceivedId int
 var signalWidgetSelectionReceivedMap = make(map[int]signalWidgetSelectionReceivedDetail)
-var signalWidgetSelectionReceivedLock sync.Mutex
+var signalWidgetSelectionReceivedLock sync.RWMutex
 
 // WidgetSignalSelectionReceivedCallback is a callback function for a 'selection-received' signal emitted from a Widget.
 type WidgetSignalSelectionReceivedCallback func(Data *SelectionData, time uint32)
@@ -38128,6 +38710,9 @@ func (recv *Widget) DisconnectSelectionReceived(connectionID int) {
 
 //export widget_selectionReceivedHandler
 func widget_selectionReceivedHandler(_ *C.GObject, c__data *C.GtkSelectionData, c_time C.guint, data C.gpointer) {
+	signalWidgetSelectionReceivedLock.RLock()
+	defer signalWidgetSelectionReceivedLock.RUnlock()
+
 	Data := SelectionDataNewFromC(unsafe.Pointer(c__data))
 
 	time := uint32(c_time)
@@ -38144,7 +38729,7 @@ type signalWidgetSelectionRequestEventDetail struct {
 
 var signalWidgetSelectionRequestEventId int
 var signalWidgetSelectionRequestEventMap = make(map[int]signalWidgetSelectionRequestEventDetail)
-var signalWidgetSelectionRequestEventLock sync.Mutex
+var signalWidgetSelectionRequestEventLock sync.RWMutex
 
 // WidgetSignalSelectionRequestEventCallback is a callback function for a 'selection-request-event' signal emitted from a Widget.
 type WidgetSignalSelectionRequestEventCallback func(event *gdk.EventSelection) bool
@@ -38189,6 +38774,9 @@ func (recv *Widget) DisconnectSelectionRequestEvent(connectionID int) {
 
 //export widget_selectionRequestEventHandler
 func widget_selectionRequestEventHandler(_ *C.GObject, c_event *C.GdkEventSelection, data C.gpointer) C.gboolean {
+	signalWidgetSelectionRequestEventLock.RLock()
+	defer signalWidgetSelectionRequestEventLock.RUnlock()
+
 	event := gdk.EventSelectionNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -38206,7 +38794,7 @@ type signalWidgetShowDetail struct {
 
 var signalWidgetShowId int
 var signalWidgetShowMap = make(map[int]signalWidgetShowDetail)
-var signalWidgetShowLock sync.Mutex
+var signalWidgetShowLock sync.RWMutex
 
 // WidgetSignalShowCallback is a callback function for a 'show' signal emitted from a Widget.
 type WidgetSignalShowCallback func()
@@ -38251,6 +38839,9 @@ func (recv *Widget) DisconnectShow(connectionID int) {
 
 //export widget_showHandler
 func widget_showHandler(_ *C.GObject, data C.gpointer) {
+	signalWidgetShowLock.RLock()
+	defer signalWidgetShowLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalWidgetShowMap[index].callback
 	callback()
@@ -38269,7 +38860,7 @@ type signalWidgetStyleSetDetail struct {
 
 var signalWidgetStyleSetId int
 var signalWidgetStyleSetMap = make(map[int]signalWidgetStyleSetDetail)
-var signalWidgetStyleSetLock sync.Mutex
+var signalWidgetStyleSetLock sync.RWMutex
 
 // WidgetSignalStyleSetCallback is a callback function for a 'style-set' signal emitted from a Widget.
 type WidgetSignalStyleSetCallback func(previousStyle *Style)
@@ -38314,6 +38905,9 @@ func (recv *Widget) DisconnectStyleSet(connectionID int) {
 
 //export widget_styleSetHandler
 func widget_styleSetHandler(_ *C.GObject, c_previous_style *C.GtkStyle, data C.gpointer) {
+	signalWidgetStyleSetLock.RLock()
+	defer signalWidgetStyleSetLock.RUnlock()
+
 	previousStyle := StyleNewFromC(unsafe.Pointer(c_previous_style))
 
 	index := int(uintptr(data))
@@ -38330,7 +38924,7 @@ type signalWidgetUnmapDetail struct {
 
 var signalWidgetUnmapId int
 var signalWidgetUnmapMap = make(map[int]signalWidgetUnmapDetail)
-var signalWidgetUnmapLock sync.Mutex
+var signalWidgetUnmapLock sync.RWMutex
 
 // WidgetSignalUnmapCallback is a callback function for a 'unmap' signal emitted from a Widget.
 type WidgetSignalUnmapCallback func()
@@ -38375,6 +38969,9 @@ func (recv *Widget) DisconnectUnmap(connectionID int) {
 
 //export widget_unmapHandler
 func widget_unmapHandler(_ *C.GObject, data C.gpointer) {
+	signalWidgetUnmapLock.RLock()
+	defer signalWidgetUnmapLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalWidgetUnmapMap[index].callback
 	callback()
@@ -38387,7 +38984,7 @@ type signalWidgetUnmapEventDetail struct {
 
 var signalWidgetUnmapEventId int
 var signalWidgetUnmapEventMap = make(map[int]signalWidgetUnmapEventDetail)
-var signalWidgetUnmapEventLock sync.Mutex
+var signalWidgetUnmapEventLock sync.RWMutex
 
 // WidgetSignalUnmapEventCallback is a callback function for a 'unmap-event' signal emitted from a Widget.
 type WidgetSignalUnmapEventCallback func(event *gdk.EventAny) bool
@@ -38432,6 +39029,9 @@ func (recv *Widget) DisconnectUnmapEvent(connectionID int) {
 
 //export widget_unmapEventHandler
 func widget_unmapEventHandler(_ *C.GObject, c_event *C.GdkEventAny, data C.gpointer) C.gboolean {
+	signalWidgetUnmapEventLock.RLock()
+	defer signalWidgetUnmapEventLock.RUnlock()
+
 	event := gdk.EventAnyNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -38449,7 +39049,7 @@ type signalWidgetUnrealizeDetail struct {
 
 var signalWidgetUnrealizeId int
 var signalWidgetUnrealizeMap = make(map[int]signalWidgetUnrealizeDetail)
-var signalWidgetUnrealizeLock sync.Mutex
+var signalWidgetUnrealizeLock sync.RWMutex
 
 // WidgetSignalUnrealizeCallback is a callback function for a 'unrealize' signal emitted from a Widget.
 type WidgetSignalUnrealizeCallback func()
@@ -38494,6 +39094,9 @@ func (recv *Widget) DisconnectUnrealize(connectionID int) {
 
 //export widget_unrealizeHandler
 func widget_unrealizeHandler(_ *C.GObject, data C.gpointer) {
+	signalWidgetUnrealizeLock.RLock()
+	defer signalWidgetUnrealizeLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalWidgetUnrealizeMap[index].callback
 	callback()
@@ -38506,7 +39109,7 @@ type signalWidgetVisibilityNotifyEventDetail struct {
 
 var signalWidgetVisibilityNotifyEventId int
 var signalWidgetVisibilityNotifyEventMap = make(map[int]signalWidgetVisibilityNotifyEventDetail)
-var signalWidgetVisibilityNotifyEventLock sync.Mutex
+var signalWidgetVisibilityNotifyEventLock sync.RWMutex
 
 // WidgetSignalVisibilityNotifyEventCallback is a callback function for a 'visibility-notify-event' signal emitted from a Widget.
 type WidgetSignalVisibilityNotifyEventCallback func(event *gdk.EventVisibility) bool
@@ -38551,6 +39154,9 @@ func (recv *Widget) DisconnectVisibilityNotifyEvent(connectionID int) {
 
 //export widget_visibilityNotifyEventHandler
 func widget_visibilityNotifyEventHandler(_ *C.GObject, c_event *C.GdkEventVisibility, data C.gpointer) C.gboolean {
+	signalWidgetVisibilityNotifyEventLock.RLock()
+	defer signalWidgetVisibilityNotifyEventLock.RUnlock()
+
 	event := gdk.EventVisibilityNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -38568,7 +39174,7 @@ type signalWidgetWindowStateEventDetail struct {
 
 var signalWidgetWindowStateEventId int
 var signalWidgetWindowStateEventMap = make(map[int]signalWidgetWindowStateEventDetail)
-var signalWidgetWindowStateEventLock sync.Mutex
+var signalWidgetWindowStateEventLock sync.RWMutex
 
 // WidgetSignalWindowStateEventCallback is a callback function for a 'window-state-event' signal emitted from a Widget.
 type WidgetSignalWindowStateEventCallback func(event *gdk.EventWindowState) bool
@@ -38613,6 +39219,9 @@ func (recv *Widget) DisconnectWindowStateEvent(connectionID int) {
 
 //export widget_windowStateEventHandler
 func widget_windowStateEventHandler(_ *C.GObject, c_event *C.GdkEventWindowState, data C.gpointer) C.gboolean {
+	signalWidgetWindowStateEventLock.RLock()
+	defer signalWidgetWindowStateEventLock.RUnlock()
+
 	event := gdk.EventWindowStateNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -39942,7 +40551,7 @@ type signalWindowActivateDefaultDetail struct {
 
 var signalWindowActivateDefaultId int
 var signalWindowActivateDefaultMap = make(map[int]signalWindowActivateDefaultDetail)
-var signalWindowActivateDefaultLock sync.Mutex
+var signalWindowActivateDefaultLock sync.RWMutex
 
 // WindowSignalActivateDefaultCallback is a callback function for a 'activate-default' signal emitted from a Window.
 type WindowSignalActivateDefaultCallback func()
@@ -39987,6 +40596,9 @@ func (recv *Window) DisconnectActivateDefault(connectionID int) {
 
 //export window_activateDefaultHandler
 func window_activateDefaultHandler(_ *C.GObject, data C.gpointer) {
+	signalWindowActivateDefaultLock.RLock()
+	defer signalWindowActivateDefaultLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalWindowActivateDefaultMap[index].callback
 	callback()
@@ -39999,7 +40611,7 @@ type signalWindowActivateFocusDetail struct {
 
 var signalWindowActivateFocusId int
 var signalWindowActivateFocusMap = make(map[int]signalWindowActivateFocusDetail)
-var signalWindowActivateFocusLock sync.Mutex
+var signalWindowActivateFocusLock sync.RWMutex
 
 // WindowSignalActivateFocusCallback is a callback function for a 'activate-focus' signal emitted from a Window.
 type WindowSignalActivateFocusCallback func()
@@ -40044,6 +40656,9 @@ func (recv *Window) DisconnectActivateFocus(connectionID int) {
 
 //export window_activateFocusHandler
 func window_activateFocusHandler(_ *C.GObject, data C.gpointer) {
+	signalWindowActivateFocusLock.RLock()
+	defer signalWindowActivateFocusLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalWindowActivateFocusMap[index].callback
 	callback()
@@ -40056,7 +40671,7 @@ type signalWindowEnableDebuggingDetail struct {
 
 var signalWindowEnableDebuggingId int
 var signalWindowEnableDebuggingMap = make(map[int]signalWindowEnableDebuggingDetail)
-var signalWindowEnableDebuggingLock sync.Mutex
+var signalWindowEnableDebuggingLock sync.RWMutex
 
 // WindowSignalEnableDebuggingCallback is a callback function for a 'enable-debugging' signal emitted from a Window.
 type WindowSignalEnableDebuggingCallback func(toggle bool) bool
@@ -40101,6 +40716,9 @@ func (recv *Window) DisconnectEnableDebugging(connectionID int) {
 
 //export window_enableDebuggingHandler
 func window_enableDebuggingHandler(_ *C.GObject, c_toggle C.gboolean, data C.gpointer) C.gboolean {
+	signalWindowEnableDebuggingLock.RLock()
+	defer signalWindowEnableDebuggingLock.RUnlock()
+
 	toggle := c_toggle == C.TRUE
 
 	index := int(uintptr(data))
@@ -40118,7 +40736,7 @@ type signalWindowKeysChangedDetail struct {
 
 var signalWindowKeysChangedId int
 var signalWindowKeysChangedMap = make(map[int]signalWindowKeysChangedDetail)
-var signalWindowKeysChangedLock sync.Mutex
+var signalWindowKeysChangedLock sync.RWMutex
 
 // WindowSignalKeysChangedCallback is a callback function for a 'keys-changed' signal emitted from a Window.
 type WindowSignalKeysChangedCallback func()
@@ -40163,6 +40781,9 @@ func (recv *Window) DisconnectKeysChanged(connectionID int) {
 
 //export window_keysChangedHandler
 func window_keysChangedHandler(_ *C.GObject, data C.gpointer) {
+	signalWindowKeysChangedLock.RLock()
+	defer signalWindowKeysChangedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalWindowKeysChangedMap[index].callback
 	callback()
@@ -40175,7 +40796,7 @@ type signalWindowSetFocusDetail struct {
 
 var signalWindowSetFocusId int
 var signalWindowSetFocusMap = make(map[int]signalWindowSetFocusDetail)
-var signalWindowSetFocusLock sync.Mutex
+var signalWindowSetFocusLock sync.RWMutex
 
 // WindowSignalSetFocusCallback is a callback function for a 'set-focus' signal emitted from a Window.
 type WindowSignalSetFocusCallback func(object *Widget)
@@ -40220,6 +40841,9 @@ func (recv *Window) DisconnectSetFocus(connectionID int) {
 
 //export window_setFocusHandler
 func window_setFocusHandler(_ *C.GObject, c_object *C.GtkWidget, data C.gpointer) {
+	signalWindowSetFocusLock.RLock()
+	defer signalWindowSetFocusLock.RUnlock()
+
 	object := WidgetNewFromC(unsafe.Pointer(c_object))
 
 	index := int(uintptr(data))

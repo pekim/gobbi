@@ -65,7 +65,7 @@ type signalDisplaySeatAddedDetail struct {
 
 var signalDisplaySeatAddedId int
 var signalDisplaySeatAddedMap = make(map[int]signalDisplaySeatAddedDetail)
-var signalDisplaySeatAddedLock sync.Mutex
+var signalDisplaySeatAddedLock sync.RWMutex
 
 // DisplaySignalSeatAddedCallback is a callback function for a 'seat-added' signal emitted from a Display.
 type DisplaySignalSeatAddedCallback func(seat *Seat)
@@ -110,6 +110,9 @@ func (recv *Display) DisconnectSeatAdded(connectionID int) {
 
 //export display_seatAddedHandler
 func display_seatAddedHandler(_ *C.GObject, c_seat *C.GdkSeat, data C.gpointer) {
+	signalDisplaySeatAddedLock.RLock()
+	defer signalDisplaySeatAddedLock.RUnlock()
+
 	seat := SeatNewFromC(unsafe.Pointer(c_seat))
 
 	index := int(uintptr(data))
@@ -124,7 +127,7 @@ type signalDisplaySeatRemovedDetail struct {
 
 var signalDisplaySeatRemovedId int
 var signalDisplaySeatRemovedMap = make(map[int]signalDisplaySeatRemovedDetail)
-var signalDisplaySeatRemovedLock sync.Mutex
+var signalDisplaySeatRemovedLock sync.RWMutex
 
 // DisplaySignalSeatRemovedCallback is a callback function for a 'seat-removed' signal emitted from a Display.
 type DisplaySignalSeatRemovedCallback func(seat *Seat)
@@ -169,6 +172,9 @@ func (recv *Display) DisconnectSeatRemoved(connectionID int) {
 
 //export display_seatRemovedHandler
 func display_seatRemovedHandler(_ *C.GObject, c_seat *C.GdkSeat, data C.gpointer) {
+	signalDisplaySeatRemovedLock.RLock()
+	defer signalDisplaySeatRemovedLock.RUnlock()
+
 	seat := SeatNewFromC(unsafe.Pointer(c_seat))
 
 	index := int(uintptr(data))
@@ -203,7 +209,7 @@ type signalDragContextDndFinishedDetail struct {
 
 var signalDragContextDndFinishedId int
 var signalDragContextDndFinishedMap = make(map[int]signalDragContextDndFinishedDetail)
-var signalDragContextDndFinishedLock sync.Mutex
+var signalDragContextDndFinishedLock sync.RWMutex
 
 // DragContextSignalDndFinishedCallback is a callback function for a 'dnd-finished' signal emitted from a DragContext.
 type DragContextSignalDndFinishedCallback func()
@@ -248,6 +254,9 @@ func (recv *DragContext) DisconnectDndFinished(connectionID int) {
 
 //export dragcontext_dndFinishedHandler
 func dragcontext_dndFinishedHandler(_ *C.GObject, data C.gpointer) {
+	signalDragContextDndFinishedLock.RLock()
+	defer signalDragContextDndFinishedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalDragContextDndFinishedMap[index].callback
 	callback()
@@ -260,7 +269,7 @@ type signalDragContextDropPerformedDetail struct {
 
 var signalDragContextDropPerformedId int
 var signalDragContextDropPerformedMap = make(map[int]signalDragContextDropPerformedDetail)
-var signalDragContextDropPerformedLock sync.Mutex
+var signalDragContextDropPerformedLock sync.RWMutex
 
 // DragContextSignalDropPerformedCallback is a callback function for a 'drop-performed' signal emitted from a DragContext.
 type DragContextSignalDropPerformedCallback func(time int32)
@@ -305,6 +314,9 @@ func (recv *DragContext) DisconnectDropPerformed(connectionID int) {
 
 //export dragcontext_dropPerformedHandler
 func dragcontext_dropPerformedHandler(_ *C.GObject, c_time C.gint, data C.gpointer) {
+	signalDragContextDropPerformedLock.RLock()
+	defer signalDragContextDropPerformedLock.RUnlock()
+
 	time := int32(c_time)
 
 	index := int(uintptr(data))

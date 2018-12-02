@@ -457,7 +457,7 @@ type signalCellEditableEditingDoneDetail struct {
 
 var signalCellEditableEditingDoneId int
 var signalCellEditableEditingDoneMap = make(map[int]signalCellEditableEditingDoneDetail)
-var signalCellEditableEditingDoneLock sync.Mutex
+var signalCellEditableEditingDoneLock sync.RWMutex
 
 // CellEditableSignalEditingDoneCallback is a callback function for a 'editing-done' signal emitted from a CellEditable.
 type CellEditableSignalEditingDoneCallback func()
@@ -502,6 +502,9 @@ func (recv *CellEditable) DisconnectEditingDone(connectionID int) {
 
 //export celleditable_editingDoneHandler
 func celleditable_editingDoneHandler(_ *C.GObject, data C.gpointer) {
+	signalCellEditableEditingDoneLock.RLock()
+	defer signalCellEditableEditingDoneLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalCellEditableEditingDoneMap[index].callback
 	callback()
@@ -514,7 +517,7 @@ type signalCellEditableRemoveWidgetDetail struct {
 
 var signalCellEditableRemoveWidgetId int
 var signalCellEditableRemoveWidgetMap = make(map[int]signalCellEditableRemoveWidgetDetail)
-var signalCellEditableRemoveWidgetLock sync.Mutex
+var signalCellEditableRemoveWidgetLock sync.RWMutex
 
 // CellEditableSignalRemoveWidgetCallback is a callback function for a 'remove-widget' signal emitted from a CellEditable.
 type CellEditableSignalRemoveWidgetCallback func()
@@ -559,6 +562,9 @@ func (recv *CellEditable) DisconnectRemoveWidget(connectionID int) {
 
 //export celleditable_removeWidgetHandler
 func celleditable_removeWidgetHandler(_ *C.GObject, data C.gpointer) {
+	signalCellEditableRemoveWidgetLock.RLock()
+	defer signalCellEditableRemoveWidgetLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalCellEditableRemoveWidgetMap[index].callback
 	callback()
@@ -665,7 +671,7 @@ type signalEditableChangedDetail struct {
 
 var signalEditableChangedId int
 var signalEditableChangedMap = make(map[int]signalEditableChangedDetail)
-var signalEditableChangedLock sync.Mutex
+var signalEditableChangedLock sync.RWMutex
 
 // EditableSignalChangedCallback is a callback function for a 'changed' signal emitted from a Editable.
 type EditableSignalChangedCallback func()
@@ -710,6 +716,9 @@ func (recv *Editable) DisconnectChanged(connectionID int) {
 
 //export editable_changedHandler
 func editable_changedHandler(_ *C.GObject, data C.gpointer) {
+	signalEditableChangedLock.RLock()
+	defer signalEditableChangedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalEditableChangedMap[index].callback
 	callback()
@@ -722,7 +731,7 @@ type signalEditableDeleteTextDetail struct {
 
 var signalEditableDeleteTextId int
 var signalEditableDeleteTextMap = make(map[int]signalEditableDeleteTextDetail)
-var signalEditableDeleteTextLock sync.Mutex
+var signalEditableDeleteTextLock sync.RWMutex
 
 // EditableSignalDeleteTextCallback is a callback function for a 'delete-text' signal emitted from a Editable.
 type EditableSignalDeleteTextCallback func(startPos int32, endPos int32)
@@ -767,6 +776,9 @@ func (recv *Editable) DisconnectDeleteText(connectionID int) {
 
 //export editable_deleteTextHandler
 func editable_deleteTextHandler(_ *C.GObject, c_start_pos C.gint, c_end_pos C.gint, data C.gpointer) {
+	signalEditableDeleteTextLock.RLock()
+	defer signalEditableDeleteTextLock.RUnlock()
+
 	startPos := int32(c_start_pos)
 
 	endPos := int32(c_end_pos)
@@ -783,7 +795,7 @@ type signalEditableInsertTextDetail struct {
 
 var signalEditableInsertTextId int
 var signalEditableInsertTextMap = make(map[int]signalEditableInsertTextDetail)
-var signalEditableInsertTextLock sync.Mutex
+var signalEditableInsertTextLock sync.RWMutex
 
 // EditableSignalInsertTextCallback is a callback function for a 'insert-text' signal emitted from a Editable.
 type EditableSignalInsertTextCallback func(newText string, newTextLength int32, position uintptr)
@@ -828,6 +840,9 @@ func (recv *Editable) DisconnectInsertText(connectionID int) {
 
 //export editable_insertTextHandler
 func editable_insertTextHandler(_ *C.GObject, c_new_text *C.gchar, c_new_text_length C.gint, c_position C.gpointer, data C.gpointer) {
+	signalEditableInsertTextLock.RLock()
+	defer signalEditableInsertTextLock.RUnlock()
+
 	newText := C.GoString(c_new_text)
 
 	newTextLength := int32(c_new_text_length)
@@ -1000,7 +1015,7 @@ type signalFileChooserCurrentFolderChangedDetail struct {
 
 var signalFileChooserCurrentFolderChangedId int
 var signalFileChooserCurrentFolderChangedMap = make(map[int]signalFileChooserCurrentFolderChangedDetail)
-var signalFileChooserCurrentFolderChangedLock sync.Mutex
+var signalFileChooserCurrentFolderChangedLock sync.RWMutex
 
 // FileChooserSignalCurrentFolderChangedCallback is a callback function for a 'current-folder-changed' signal emitted from a FileChooser.
 type FileChooserSignalCurrentFolderChangedCallback func()
@@ -1045,6 +1060,9 @@ func (recv *FileChooser) DisconnectCurrentFolderChanged(connectionID int) {
 
 //export filechooser_currentFolderChangedHandler
 func filechooser_currentFolderChangedHandler(_ *C.GObject, data C.gpointer) {
+	signalFileChooserCurrentFolderChangedLock.RLock()
+	defer signalFileChooserCurrentFolderChangedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalFileChooserCurrentFolderChangedMap[index].callback
 	callback()
@@ -1057,7 +1075,7 @@ type signalFileChooserFileActivatedDetail struct {
 
 var signalFileChooserFileActivatedId int
 var signalFileChooserFileActivatedMap = make(map[int]signalFileChooserFileActivatedDetail)
-var signalFileChooserFileActivatedLock sync.Mutex
+var signalFileChooserFileActivatedLock sync.RWMutex
 
 // FileChooserSignalFileActivatedCallback is a callback function for a 'file-activated' signal emitted from a FileChooser.
 type FileChooserSignalFileActivatedCallback func()
@@ -1102,6 +1120,9 @@ func (recv *FileChooser) DisconnectFileActivated(connectionID int) {
 
 //export filechooser_fileActivatedHandler
 func filechooser_fileActivatedHandler(_ *C.GObject, data C.gpointer) {
+	signalFileChooserFileActivatedLock.RLock()
+	defer signalFileChooserFileActivatedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalFileChooserFileActivatedMap[index].callback
 	callback()
@@ -1114,7 +1135,7 @@ type signalFileChooserSelectionChangedDetail struct {
 
 var signalFileChooserSelectionChangedId int
 var signalFileChooserSelectionChangedMap = make(map[int]signalFileChooserSelectionChangedDetail)
-var signalFileChooserSelectionChangedLock sync.Mutex
+var signalFileChooserSelectionChangedLock sync.RWMutex
 
 // FileChooserSignalSelectionChangedCallback is a callback function for a 'selection-changed' signal emitted from a FileChooser.
 type FileChooserSignalSelectionChangedCallback func()
@@ -1159,6 +1180,9 @@ func (recv *FileChooser) DisconnectSelectionChanged(connectionID int) {
 
 //export filechooser_selectionChangedHandler
 func filechooser_selectionChangedHandler(_ *C.GObject, data C.gpointer) {
+	signalFileChooserSelectionChangedLock.RLock()
+	defer signalFileChooserSelectionChangedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalFileChooserSelectionChangedMap[index].callback
 	callback()
@@ -1171,7 +1195,7 @@ type signalFileChooserUpdatePreviewDetail struct {
 
 var signalFileChooserUpdatePreviewId int
 var signalFileChooserUpdatePreviewMap = make(map[int]signalFileChooserUpdatePreviewDetail)
-var signalFileChooserUpdatePreviewLock sync.Mutex
+var signalFileChooserUpdatePreviewLock sync.RWMutex
 
 // FileChooserSignalUpdatePreviewCallback is a callback function for a 'update-preview' signal emitted from a FileChooser.
 type FileChooserSignalUpdatePreviewCallback func()
@@ -1216,6 +1240,9 @@ func (recv *FileChooser) DisconnectUpdatePreview(connectionID int) {
 
 //export filechooser_updatePreviewHandler
 func filechooser_updatePreviewHandler(_ *C.GObject, data C.gpointer) {
+	signalFileChooserUpdatePreviewLock.RLock()
+	defer signalFileChooserUpdatePreviewLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalFileChooserUpdatePreviewMap[index].callback
 	callback()
@@ -1262,7 +1289,7 @@ type signalFontChooserFontActivatedDetail struct {
 
 var signalFontChooserFontActivatedId int
 var signalFontChooserFontActivatedMap = make(map[int]signalFontChooserFontActivatedDetail)
-var signalFontChooserFontActivatedLock sync.Mutex
+var signalFontChooserFontActivatedLock sync.RWMutex
 
 // FontChooserSignalFontActivatedCallback is a callback function for a 'font-activated' signal emitted from a FontChooser.
 type FontChooserSignalFontActivatedCallback func(fontname string)
@@ -1307,6 +1334,9 @@ func (recv *FontChooser) DisconnectFontActivated(connectionID int) {
 
 //export fontchooser_fontActivatedHandler
 func fontchooser_fontActivatedHandler(_ *C.GObject, c_fontname *C.gchar, data C.gpointer) {
+	signalFontChooserFontActivatedLock.RLock()
+	defer signalFontChooserFontActivatedLock.RUnlock()
+
 	fontname := C.GoString(c_fontname)
 
 	index := int(uintptr(data))
@@ -1373,7 +1403,7 @@ type signalPrintOperationPreviewGotPageSizeDetail struct {
 
 var signalPrintOperationPreviewGotPageSizeId int
 var signalPrintOperationPreviewGotPageSizeMap = make(map[int]signalPrintOperationPreviewGotPageSizeDetail)
-var signalPrintOperationPreviewGotPageSizeLock sync.Mutex
+var signalPrintOperationPreviewGotPageSizeLock sync.RWMutex
 
 // PrintOperationPreviewSignalGotPageSizeCallback is a callback function for a 'got-page-size' signal emitted from a PrintOperationPreview.
 type PrintOperationPreviewSignalGotPageSizeCallback func(context *PrintContext, pageSetup *PageSetup)
@@ -1418,6 +1448,9 @@ func (recv *PrintOperationPreview) DisconnectGotPageSize(connectionID int) {
 
 //export printoperationpreview_gotPageSizeHandler
 func printoperationpreview_gotPageSizeHandler(_ *C.GObject, c_context *C.GtkPrintContext, c_page_setup *C.GtkPageSetup, data C.gpointer) {
+	signalPrintOperationPreviewGotPageSizeLock.RLock()
+	defer signalPrintOperationPreviewGotPageSizeLock.RUnlock()
+
 	context := PrintContextNewFromC(unsafe.Pointer(c_context))
 
 	pageSetup := PageSetupNewFromC(unsafe.Pointer(c_page_setup))
@@ -1434,7 +1467,7 @@ type signalPrintOperationPreviewReadyDetail struct {
 
 var signalPrintOperationPreviewReadyId int
 var signalPrintOperationPreviewReadyMap = make(map[int]signalPrintOperationPreviewReadyDetail)
-var signalPrintOperationPreviewReadyLock sync.Mutex
+var signalPrintOperationPreviewReadyLock sync.RWMutex
 
 // PrintOperationPreviewSignalReadyCallback is a callback function for a 'ready' signal emitted from a PrintOperationPreview.
 type PrintOperationPreviewSignalReadyCallback func(context *PrintContext)
@@ -1479,6 +1512,9 @@ func (recv *PrintOperationPreview) DisconnectReady(connectionID int) {
 
 //export printoperationpreview_readyHandler
 func printoperationpreview_readyHandler(_ *C.GObject, c_context *C.GtkPrintContext, data C.gpointer) {
+	signalPrintOperationPreviewReadyLock.RLock()
+	defer signalPrintOperationPreviewReadyLock.RUnlock()
+
 	context := PrintContextNewFromC(unsafe.Pointer(c_context))
 
 	index := int(uintptr(data))
@@ -1755,7 +1791,7 @@ type signalTreeModelRowChangedDetail struct {
 
 var signalTreeModelRowChangedId int
 var signalTreeModelRowChangedMap = make(map[int]signalTreeModelRowChangedDetail)
-var signalTreeModelRowChangedLock sync.Mutex
+var signalTreeModelRowChangedLock sync.RWMutex
 
 // TreeModelSignalRowChangedCallback is a callback function for a 'row-changed' signal emitted from a TreeModel.
 type TreeModelSignalRowChangedCallback func(path *TreePath, iter *TreeIter)
@@ -1800,6 +1836,9 @@ func (recv *TreeModel) DisconnectRowChanged(connectionID int) {
 
 //export treemodel_rowChangedHandler
 func treemodel_rowChangedHandler(_ *C.GObject, c_path *C.GtkTreePath, c_iter *C.GtkTreeIter, data C.gpointer) {
+	signalTreeModelRowChangedLock.RLock()
+	defer signalTreeModelRowChangedLock.RUnlock()
+
 	path := TreePathNewFromC(unsafe.Pointer(c_path))
 
 	iter := TreeIterNewFromC(unsafe.Pointer(c_iter))
@@ -1816,7 +1855,7 @@ type signalTreeModelRowDeletedDetail struct {
 
 var signalTreeModelRowDeletedId int
 var signalTreeModelRowDeletedMap = make(map[int]signalTreeModelRowDeletedDetail)
-var signalTreeModelRowDeletedLock sync.Mutex
+var signalTreeModelRowDeletedLock sync.RWMutex
 
 // TreeModelSignalRowDeletedCallback is a callback function for a 'row-deleted' signal emitted from a TreeModel.
 type TreeModelSignalRowDeletedCallback func(path *TreePath)
@@ -1861,6 +1900,9 @@ func (recv *TreeModel) DisconnectRowDeleted(connectionID int) {
 
 //export treemodel_rowDeletedHandler
 func treemodel_rowDeletedHandler(_ *C.GObject, c_path *C.GtkTreePath, data C.gpointer) {
+	signalTreeModelRowDeletedLock.RLock()
+	defer signalTreeModelRowDeletedLock.RUnlock()
+
 	path := TreePathNewFromC(unsafe.Pointer(c_path))
 
 	index := int(uintptr(data))
@@ -1875,7 +1917,7 @@ type signalTreeModelRowHasChildToggledDetail struct {
 
 var signalTreeModelRowHasChildToggledId int
 var signalTreeModelRowHasChildToggledMap = make(map[int]signalTreeModelRowHasChildToggledDetail)
-var signalTreeModelRowHasChildToggledLock sync.Mutex
+var signalTreeModelRowHasChildToggledLock sync.RWMutex
 
 // TreeModelSignalRowHasChildToggledCallback is a callback function for a 'row-has-child-toggled' signal emitted from a TreeModel.
 type TreeModelSignalRowHasChildToggledCallback func(path *TreePath, iter *TreeIter)
@@ -1920,6 +1962,9 @@ func (recv *TreeModel) DisconnectRowHasChildToggled(connectionID int) {
 
 //export treemodel_rowHasChildToggledHandler
 func treemodel_rowHasChildToggledHandler(_ *C.GObject, c_path *C.GtkTreePath, c_iter *C.GtkTreeIter, data C.gpointer) {
+	signalTreeModelRowHasChildToggledLock.RLock()
+	defer signalTreeModelRowHasChildToggledLock.RUnlock()
+
 	path := TreePathNewFromC(unsafe.Pointer(c_path))
 
 	iter := TreeIterNewFromC(unsafe.Pointer(c_iter))
@@ -1936,7 +1981,7 @@ type signalTreeModelRowInsertedDetail struct {
 
 var signalTreeModelRowInsertedId int
 var signalTreeModelRowInsertedMap = make(map[int]signalTreeModelRowInsertedDetail)
-var signalTreeModelRowInsertedLock sync.Mutex
+var signalTreeModelRowInsertedLock sync.RWMutex
 
 // TreeModelSignalRowInsertedCallback is a callback function for a 'row-inserted' signal emitted from a TreeModel.
 type TreeModelSignalRowInsertedCallback func(path *TreePath, iter *TreeIter)
@@ -1981,6 +2026,9 @@ func (recv *TreeModel) DisconnectRowInserted(connectionID int) {
 
 //export treemodel_rowInsertedHandler
 func treemodel_rowInsertedHandler(_ *C.GObject, c_path *C.GtkTreePath, c_iter *C.GtkTreeIter, data C.gpointer) {
+	signalTreeModelRowInsertedLock.RLock()
+	defer signalTreeModelRowInsertedLock.RUnlock()
+
 	path := TreePathNewFromC(unsafe.Pointer(c_path))
 
 	iter := TreeIterNewFromC(unsafe.Pointer(c_iter))
@@ -1997,7 +2045,7 @@ type signalTreeModelRowsReorderedDetail struct {
 
 var signalTreeModelRowsReorderedId int
 var signalTreeModelRowsReorderedMap = make(map[int]signalTreeModelRowsReorderedDetail)
-var signalTreeModelRowsReorderedLock sync.Mutex
+var signalTreeModelRowsReorderedLock sync.RWMutex
 
 // TreeModelSignalRowsReorderedCallback is a callback function for a 'rows-reordered' signal emitted from a TreeModel.
 type TreeModelSignalRowsReorderedCallback func(path *TreePath, iter *TreeIter, newOrder uintptr)
@@ -2042,6 +2090,9 @@ func (recv *TreeModel) DisconnectRowsReordered(connectionID int) {
 
 //export treemodel_rowsReorderedHandler
 func treemodel_rowsReorderedHandler(_ *C.GObject, c_path *C.GtkTreePath, c_iter *C.GtkTreeIter, c_new_order C.gpointer, data C.gpointer) {
+	signalTreeModelRowsReorderedLock.RLock()
+	defer signalTreeModelRowsReorderedLock.RUnlock()
+
 	path := TreePathNewFromC(unsafe.Pointer(c_path))
 
 	iter := TreeIterNewFromC(unsafe.Pointer(c_iter))
@@ -2399,7 +2450,7 @@ type signalTreeSortableSortColumnChangedDetail struct {
 
 var signalTreeSortableSortColumnChangedId int
 var signalTreeSortableSortColumnChangedMap = make(map[int]signalTreeSortableSortColumnChangedDetail)
-var signalTreeSortableSortColumnChangedLock sync.Mutex
+var signalTreeSortableSortColumnChangedLock sync.RWMutex
 
 // TreeSortableSignalSortColumnChangedCallback is a callback function for a 'sort-column-changed' signal emitted from a TreeSortable.
 type TreeSortableSignalSortColumnChangedCallback func()
@@ -2444,6 +2495,9 @@ func (recv *TreeSortable) DisconnectSortColumnChanged(connectionID int) {
 
 //export treesortable_sortColumnChangedHandler
 func treesortable_sortColumnChangedHandler(_ *C.GObject, data C.gpointer) {
+	signalTreeSortableSortColumnChangedLock.RLock()
+	defer signalTreeSortableSortColumnChangedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalTreeSortableSortColumnChangedMap[index].callback
 	callback()

@@ -85,7 +85,7 @@ type signalActionGroupActionAddedDetail struct {
 
 var signalActionGroupActionAddedId int
 var signalActionGroupActionAddedMap = make(map[int]signalActionGroupActionAddedDetail)
-var signalActionGroupActionAddedLock sync.Mutex
+var signalActionGroupActionAddedLock sync.RWMutex
 
 // ActionGroupSignalActionAddedCallback is a callback function for a 'action-added' signal emitted from a ActionGroup.
 type ActionGroupSignalActionAddedCallback func(actionName string)
@@ -130,6 +130,9 @@ func (recv *ActionGroup) DisconnectActionAdded(connectionID int) {
 
 //export actiongroup_actionAddedHandler
 func actiongroup_actionAddedHandler(_ *C.GObject, c_action_name *C.gchar, data C.gpointer) {
+	signalActionGroupActionAddedLock.RLock()
+	defer signalActionGroupActionAddedLock.RUnlock()
+
 	actionName := C.GoString(c_action_name)
 
 	index := int(uintptr(data))
@@ -144,7 +147,7 @@ type signalActionGroupActionEnabledChangedDetail struct {
 
 var signalActionGroupActionEnabledChangedId int
 var signalActionGroupActionEnabledChangedMap = make(map[int]signalActionGroupActionEnabledChangedDetail)
-var signalActionGroupActionEnabledChangedLock sync.Mutex
+var signalActionGroupActionEnabledChangedLock sync.RWMutex
 
 // ActionGroupSignalActionEnabledChangedCallback is a callback function for a 'action-enabled-changed' signal emitted from a ActionGroup.
 type ActionGroupSignalActionEnabledChangedCallback func(actionName string, enabled bool)
@@ -189,6 +192,9 @@ func (recv *ActionGroup) DisconnectActionEnabledChanged(connectionID int) {
 
 //export actiongroup_actionEnabledChangedHandler
 func actiongroup_actionEnabledChangedHandler(_ *C.GObject, c_action_name *C.gchar, c_enabled C.gboolean, data C.gpointer) {
+	signalActionGroupActionEnabledChangedLock.RLock()
+	defer signalActionGroupActionEnabledChangedLock.RUnlock()
+
 	actionName := C.GoString(c_action_name)
 
 	enabled := c_enabled == C.TRUE
@@ -205,7 +211,7 @@ type signalActionGroupActionRemovedDetail struct {
 
 var signalActionGroupActionRemovedId int
 var signalActionGroupActionRemovedMap = make(map[int]signalActionGroupActionRemovedDetail)
-var signalActionGroupActionRemovedLock sync.Mutex
+var signalActionGroupActionRemovedLock sync.RWMutex
 
 // ActionGroupSignalActionRemovedCallback is a callback function for a 'action-removed' signal emitted from a ActionGroup.
 type ActionGroupSignalActionRemovedCallback func(actionName string)
@@ -250,6 +256,9 @@ func (recv *ActionGroup) DisconnectActionRemoved(connectionID int) {
 
 //export actiongroup_actionRemovedHandler
 func actiongroup_actionRemovedHandler(_ *C.GObject, c_action_name *C.gchar, data C.gpointer) {
+	signalActionGroupActionRemovedLock.RLock()
+	defer signalActionGroupActionRemovedLock.RUnlock()
+
 	actionName := C.GoString(c_action_name)
 
 	index := int(uintptr(data))

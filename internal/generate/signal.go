@@ -177,7 +177,7 @@ func (s *Signal) generateVariables(g *jen.Group) {
 
 	g.Var().Id(s.varNameId).Int()
 	g.Var().Id(s.varNameMap).Op("=").Make(jen.Map(jen.Int()).Id(s.typeStructName))
-	g.Var().Id(s.varNameLock).Qual("sync", "Mutex")
+	g.Var().Id(s.varNameLock).Qual("sync", "RWMutex")
 
 	g.Line()
 }
@@ -211,6 +211,9 @@ func (s *Signal) generateHandlerFunction(g *jen.Group) {
 		ParamsFunc(s.generateHandlerParameters).
 		ParamsFunc(s.ReturnValue.generateFunctionDeclarationCtype).
 		BlockFunc(func(g *jen.Group) {
+			s.generateLockUnlock(g, true)
+			g.Line()
+
 			s.Parameters.generateGoVars(g)
 			s.generateHandlerCall(g)
 			s.generateHandlerReturn(g)
@@ -263,12 +266,19 @@ func (s *Signal) generateHandlerReturn(g *jen.Group) {
 
 }
 
-func (s *Signal) generateLockUnlock(g *jen.Group) {
+func (s *Signal) generateLockUnlock(g *jen.Group, readonly bool) {
+	lockFunction := "Lock"
+	unlockFunction := "Unlock"
+	if readonly {
+		lockFunction = "RLock"
+		unlockFunction = "RUnlock"
+	}
+
 	//	signalKeyPressEventLock.Lock()
-	g.Id(s.varNameLock).Op(".").Id("Lock").Call()
+	g.Id(s.varNameLock).Op(".").Id(lockFunction).Call()
 
 	//	defer signalKeyPressEventLock.Unlock()
-	g.Defer().Id(s.varNameLock).Op(".").Id("Unlock").Call()
+	g.Defer().Id(s.varNameLock).Op(".").Id(unlockFunction).Call()
 }
 
 func (s *Signal) generateConnectFunction(g *jen.Group) {
@@ -288,7 +298,7 @@ The returned value represents the connection, and may be passed to %s to remove 
 		Params(jen.Id("callback").Id(s.callbackTypeName)).
 		Params(jen.Int()).
 		BlockFunc(func(g *jen.Group) {
-			s.generateLockUnlock(g)
+			s.generateLockUnlock(g, false)
 			g.Line()
 
 			//	signalKeyPressEventId++
@@ -345,7 +355,7 @@ The connectionID should be a value returned from a call to %s.`,
 		Params(jen.Id("connectionID").Int()).
 		Params().
 		BlockFunc(func(g *jen.Group) {
-			s.generateLockUnlock(g)
+			s.generateLockUnlock(g, false)
 			g.Line()
 
 			// detail, exists := signalKeyPressEventMap[connectionID]

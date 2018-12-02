@@ -116,7 +116,7 @@ type signalApplicationActivateDetail struct {
 
 var signalApplicationActivateId int
 var signalApplicationActivateMap = make(map[int]signalApplicationActivateDetail)
-var signalApplicationActivateLock sync.Mutex
+var signalApplicationActivateLock sync.RWMutex
 
 // ApplicationSignalActivateCallback is a callback function for a 'activate' signal emitted from a Application.
 type ApplicationSignalActivateCallback func()
@@ -161,6 +161,9 @@ func (recv *Application) DisconnectActivate(connectionID int) {
 
 //export application_activateHandler
 func application_activateHandler(_ *C.GObject, data C.gpointer) {
+	signalApplicationActivateLock.RLock()
+	defer signalApplicationActivateLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalApplicationActivateMap[index].callback
 	callback()
@@ -173,7 +176,7 @@ type signalApplicationCommandLineDetail struct {
 
 var signalApplicationCommandLineId int
 var signalApplicationCommandLineMap = make(map[int]signalApplicationCommandLineDetail)
-var signalApplicationCommandLineLock sync.Mutex
+var signalApplicationCommandLineLock sync.RWMutex
 
 // ApplicationSignalCommandLineCallback is a callback function for a 'command-line' signal emitted from a Application.
 type ApplicationSignalCommandLineCallback func(commandLine *ApplicationCommandLine) int32
@@ -218,6 +221,9 @@ func (recv *Application) DisconnectCommandLine(connectionID int) {
 
 //export application_commandLineHandler
 func application_commandLineHandler(_ *C.GObject, c_command_line *C.GApplicationCommandLine, data C.gpointer) C.gint {
+	signalApplicationCommandLineLock.RLock()
+	defer signalApplicationCommandLineLock.RUnlock()
+
 	commandLine := ApplicationCommandLineNewFromC(unsafe.Pointer(c_command_line))
 
 	index := int(uintptr(data))
@@ -235,7 +241,7 @@ type signalApplicationOpenDetail struct {
 
 var signalApplicationOpenId int
 var signalApplicationOpenMap = make(map[int]signalApplicationOpenDetail)
-var signalApplicationOpenLock sync.Mutex
+var signalApplicationOpenLock sync.RWMutex
 
 // ApplicationSignalOpenCallback is a callback function for a 'open' signal emitted from a Application.
 type ApplicationSignalOpenCallback func(files []*File, hint string)
@@ -280,6 +286,9 @@ func (recv *Application) DisconnectOpen(connectionID int) {
 
 //export application_openHandler
 func application_openHandler(_ *C.GObject, c_files C.gpointer, c_n_files C.gint, c_hint *C.gchar, data C.gpointer) {
+	signalApplicationOpenLock.RLock()
+	defer signalApplicationOpenLock.RUnlock()
+
 	files := make([]*File, int(c_n_files), int(c_n_files))
 	for i := 0; i < int(c_n_files); i++ {
 		_item := FileNewFromC(unsafe.Pointer(*(*C.gpointer)(c_files)))
@@ -301,7 +310,7 @@ type signalApplicationShutdownDetail struct {
 
 var signalApplicationShutdownId int
 var signalApplicationShutdownMap = make(map[int]signalApplicationShutdownDetail)
-var signalApplicationShutdownLock sync.Mutex
+var signalApplicationShutdownLock sync.RWMutex
 
 // ApplicationSignalShutdownCallback is a callback function for a 'shutdown' signal emitted from a Application.
 type ApplicationSignalShutdownCallback func()
@@ -346,6 +355,9 @@ func (recv *Application) DisconnectShutdown(connectionID int) {
 
 //export application_shutdownHandler
 func application_shutdownHandler(_ *C.GObject, data C.gpointer) {
+	signalApplicationShutdownLock.RLock()
+	defer signalApplicationShutdownLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalApplicationShutdownMap[index].callback
 	callback()
@@ -358,7 +370,7 @@ type signalApplicationStartupDetail struct {
 
 var signalApplicationStartupId int
 var signalApplicationStartupMap = make(map[int]signalApplicationStartupDetail)
-var signalApplicationStartupLock sync.Mutex
+var signalApplicationStartupLock sync.RWMutex
 
 // ApplicationSignalStartupCallback is a callback function for a 'startup' signal emitted from a Application.
 type ApplicationSignalStartupCallback func()
@@ -403,6 +415,9 @@ func (recv *Application) DisconnectStartup(connectionID int) {
 
 //export application_startupHandler
 func application_startupHandler(_ *C.GObject, data C.gpointer) {
+	signalApplicationStartupLock.RLock()
+	defer signalApplicationStartupLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalApplicationStartupMap[index].callback
 	callback()

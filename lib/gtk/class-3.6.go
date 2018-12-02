@@ -180,7 +180,7 @@ type signalLevelBarOffsetChangedDetail struct {
 
 var signalLevelBarOffsetChangedId int
 var signalLevelBarOffsetChangedMap = make(map[int]signalLevelBarOffsetChangedDetail)
-var signalLevelBarOffsetChangedLock sync.Mutex
+var signalLevelBarOffsetChangedLock sync.RWMutex
 
 // LevelBarSignalOffsetChangedCallback is a callback function for a 'offset-changed' signal emitted from a LevelBar.
 type LevelBarSignalOffsetChangedCallback func(name string)
@@ -225,6 +225,9 @@ func (recv *LevelBar) DisconnectOffsetChanged(connectionID int) {
 
 //export levelbar_offsetChangedHandler
 func levelbar_offsetChangedHandler(_ *C.GObject, c_name *C.gchar, data C.gpointer) {
+	signalLevelBarOffsetChangedLock.RLock()
+	defer signalLevelBarOffsetChangedLock.RUnlock()
+
 	name := C.GoString(c_name)
 
 	index := int(uintptr(data))

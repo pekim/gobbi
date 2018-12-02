@@ -251,7 +251,7 @@ type signalEntryCompletionNoMatchesDetail struct {
 
 var signalEntryCompletionNoMatchesId int
 var signalEntryCompletionNoMatchesMap = make(map[int]signalEntryCompletionNoMatchesDetail)
-var signalEntryCompletionNoMatchesLock sync.Mutex
+var signalEntryCompletionNoMatchesLock sync.RWMutex
 
 // EntryCompletionSignalNoMatchesCallback is a callback function for a 'no-matches' signal emitted from a EntryCompletion.
 type EntryCompletionSignalNoMatchesCallback func()
@@ -296,6 +296,9 @@ func (recv *EntryCompletion) DisconnectNoMatches(connectionID int) {
 
 //export entrycompletion_noMatchesHandler
 func entrycompletion_noMatchesHandler(_ *C.GObject, data C.gpointer) {
+	signalEntryCompletionNoMatchesLock.RLock()
+	defer signalEntryCompletionNoMatchesLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalEntryCompletionNoMatchesMap[index].callback
 	callback()
@@ -342,7 +345,7 @@ type signalGestureBeginDetail struct {
 
 var signalGestureBeginId int
 var signalGestureBeginMap = make(map[int]signalGestureBeginDetail)
-var signalGestureBeginLock sync.Mutex
+var signalGestureBeginLock sync.RWMutex
 
 // GestureSignalBeginCallback is a callback function for a 'begin' signal emitted from a Gesture.
 type GestureSignalBeginCallback func(sequence *gdk.EventSequence)
@@ -387,6 +390,9 @@ func (recv *Gesture) DisconnectBegin(connectionID int) {
 
 //export gesture_beginHandler
 func gesture_beginHandler(_ *C.GObject, c_sequence *C.GdkEventSequence, data C.gpointer) {
+	signalGestureBeginLock.RLock()
+	defer signalGestureBeginLock.RUnlock()
+
 	sequence := gdk.EventSequenceNewFromC(unsafe.Pointer(c_sequence))
 
 	index := int(uintptr(data))
@@ -401,7 +407,7 @@ type signalGestureCancelDetail struct {
 
 var signalGestureCancelId int
 var signalGestureCancelMap = make(map[int]signalGestureCancelDetail)
-var signalGestureCancelLock sync.Mutex
+var signalGestureCancelLock sync.RWMutex
 
 // GestureSignalCancelCallback is a callback function for a 'cancel' signal emitted from a Gesture.
 type GestureSignalCancelCallback func(sequence *gdk.EventSequence)
@@ -446,6 +452,9 @@ func (recv *Gesture) DisconnectCancel(connectionID int) {
 
 //export gesture_cancelHandler
 func gesture_cancelHandler(_ *C.GObject, c_sequence *C.GdkEventSequence, data C.gpointer) {
+	signalGestureCancelLock.RLock()
+	defer signalGestureCancelLock.RUnlock()
+
 	sequence := gdk.EventSequenceNewFromC(unsafe.Pointer(c_sequence))
 
 	index := int(uintptr(data))
@@ -460,7 +469,7 @@ type signalGestureEndDetail struct {
 
 var signalGestureEndId int
 var signalGestureEndMap = make(map[int]signalGestureEndDetail)
-var signalGestureEndLock sync.Mutex
+var signalGestureEndLock sync.RWMutex
 
 // GestureSignalEndCallback is a callback function for a 'end' signal emitted from a Gesture.
 type GestureSignalEndCallback func(sequence *gdk.EventSequence)
@@ -505,6 +514,9 @@ func (recv *Gesture) DisconnectEnd(connectionID int) {
 
 //export gesture_endHandler
 func gesture_endHandler(_ *C.GObject, c_sequence *C.GdkEventSequence, data C.gpointer) {
+	signalGestureEndLock.RLock()
+	defer signalGestureEndLock.RUnlock()
+
 	sequence := gdk.EventSequenceNewFromC(unsafe.Pointer(c_sequence))
 
 	index := int(uintptr(data))
@@ -521,7 +533,7 @@ type signalGestureUpdateDetail struct {
 
 var signalGestureUpdateId int
 var signalGestureUpdateMap = make(map[int]signalGestureUpdateDetail)
-var signalGestureUpdateLock sync.Mutex
+var signalGestureUpdateLock sync.RWMutex
 
 // GestureSignalUpdateCallback is a callback function for a 'update' signal emitted from a Gesture.
 type GestureSignalUpdateCallback func(sequence *gdk.EventSequence)
@@ -566,6 +578,9 @@ func (recv *Gesture) DisconnectUpdate(connectionID int) {
 
 //export gesture_updateHandler
 func gesture_updateHandler(_ *C.GObject, c_sequence *C.GdkEventSequence, data C.gpointer) {
+	signalGestureUpdateLock.RLock()
+	defer signalGestureUpdateLock.RUnlock()
+
 	sequence := gdk.EventSequenceNewFromC(unsafe.Pointer(c_sequence))
 
 	index := int(uintptr(data))
@@ -785,7 +800,7 @@ type signalGestureDragDragBeginDetail struct {
 
 var signalGestureDragDragBeginId int
 var signalGestureDragDragBeginMap = make(map[int]signalGestureDragDragBeginDetail)
-var signalGestureDragDragBeginLock sync.Mutex
+var signalGestureDragDragBeginLock sync.RWMutex
 
 // GestureDragSignalDragBeginCallback is a callback function for a 'drag-begin' signal emitted from a GestureDrag.
 type GestureDragSignalDragBeginCallback func(startX float64, startY float64)
@@ -830,6 +845,9 @@ func (recv *GestureDrag) DisconnectDragBegin(connectionID int) {
 
 //export gesturedrag_dragBeginHandler
 func gesturedrag_dragBeginHandler(_ *C.GObject, c_start_x C.gdouble, c_start_y C.gdouble, data C.gpointer) {
+	signalGestureDragDragBeginLock.RLock()
+	defer signalGestureDragDragBeginLock.RUnlock()
+
 	startX := float64(c_start_x)
 
 	startY := float64(c_start_y)
@@ -846,7 +864,7 @@ type signalGestureDragDragEndDetail struct {
 
 var signalGestureDragDragEndId int
 var signalGestureDragDragEndMap = make(map[int]signalGestureDragDragEndDetail)
-var signalGestureDragDragEndLock sync.Mutex
+var signalGestureDragDragEndLock sync.RWMutex
 
 // GestureDragSignalDragEndCallback is a callback function for a 'drag-end' signal emitted from a GestureDrag.
 type GestureDragSignalDragEndCallback func(offsetX float64, offsetY float64)
@@ -891,6 +909,9 @@ func (recv *GestureDrag) DisconnectDragEnd(connectionID int) {
 
 //export gesturedrag_dragEndHandler
 func gesturedrag_dragEndHandler(_ *C.GObject, c_offset_x C.gdouble, c_offset_y C.gdouble, data C.gpointer) {
+	signalGestureDragDragEndLock.RLock()
+	defer signalGestureDragDragEndLock.RUnlock()
+
 	offsetX := float64(c_offset_x)
 
 	offsetY := float64(c_offset_y)
@@ -907,7 +928,7 @@ type signalGestureDragDragUpdateDetail struct {
 
 var signalGestureDragDragUpdateId int
 var signalGestureDragDragUpdateMap = make(map[int]signalGestureDragDragUpdateDetail)
-var signalGestureDragDragUpdateLock sync.Mutex
+var signalGestureDragDragUpdateLock sync.RWMutex
 
 // GestureDragSignalDragUpdateCallback is a callback function for a 'drag-update' signal emitted from a GestureDrag.
 type GestureDragSignalDragUpdateCallback func(offsetX float64, offsetY float64)
@@ -952,6 +973,9 @@ func (recv *GestureDrag) DisconnectDragUpdate(connectionID int) {
 
 //export gesturedrag_dragUpdateHandler
 func gesturedrag_dragUpdateHandler(_ *C.GObject, c_offset_x C.gdouble, c_offset_y C.gdouble, data C.gpointer) {
+	signalGestureDragDragUpdateLock.RLock()
+	defer signalGestureDragDragUpdateLock.RUnlock()
+
 	offsetX := float64(c_offset_x)
 
 	offsetY := float64(c_offset_y)
@@ -1013,7 +1037,7 @@ type signalGestureLongPressCancelledDetail struct {
 
 var signalGestureLongPressCancelledId int
 var signalGestureLongPressCancelledMap = make(map[int]signalGestureLongPressCancelledDetail)
-var signalGestureLongPressCancelledLock sync.Mutex
+var signalGestureLongPressCancelledLock sync.RWMutex
 
 // GestureLongPressSignalCancelledCallback is a callback function for a 'cancelled' signal emitted from a GestureLongPress.
 type GestureLongPressSignalCancelledCallback func()
@@ -1058,6 +1082,9 @@ func (recv *GestureLongPress) DisconnectCancelled(connectionID int) {
 
 //export gesturelongpress_cancelledHandler
 func gesturelongpress_cancelledHandler(_ *C.GObject, data C.gpointer) {
+	signalGestureLongPressCancelledLock.RLock()
+	defer signalGestureLongPressCancelledLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalGestureLongPressCancelledMap[index].callback
 	callback()
@@ -1070,7 +1097,7 @@ type signalGestureLongPressPressedDetail struct {
 
 var signalGestureLongPressPressedId int
 var signalGestureLongPressPressedMap = make(map[int]signalGestureLongPressPressedDetail)
-var signalGestureLongPressPressedLock sync.Mutex
+var signalGestureLongPressPressedLock sync.RWMutex
 
 // GestureLongPressSignalPressedCallback is a callback function for a 'pressed' signal emitted from a GestureLongPress.
 type GestureLongPressSignalPressedCallback func(x float64, y float64)
@@ -1115,6 +1142,9 @@ func (recv *GestureLongPress) DisconnectPressed(connectionID int) {
 
 //export gesturelongpress_pressedHandler
 func gesturelongpress_pressedHandler(_ *C.GObject, c_x C.gdouble, c_y C.gdouble, data C.gpointer) {
+	signalGestureLongPressPressedLock.RLock()
+	defer signalGestureLongPressPressedLock.RUnlock()
+
 	x := float64(c_x)
 
 	y := float64(c_y)
@@ -1144,7 +1174,7 @@ type signalGestureMultiPressPressedDetail struct {
 
 var signalGestureMultiPressPressedId int
 var signalGestureMultiPressPressedMap = make(map[int]signalGestureMultiPressPressedDetail)
-var signalGestureMultiPressPressedLock sync.Mutex
+var signalGestureMultiPressPressedLock sync.RWMutex
 
 // GestureMultiPressSignalPressedCallback is a callback function for a 'pressed' signal emitted from a GestureMultiPress.
 type GestureMultiPressSignalPressedCallback func(nPress int32, x float64, y float64)
@@ -1189,6 +1219,9 @@ func (recv *GestureMultiPress) DisconnectPressed(connectionID int) {
 
 //export gesturemultipress_pressedHandler
 func gesturemultipress_pressedHandler(_ *C.GObject, c_n_press C.gint, c_x C.gdouble, c_y C.gdouble, data C.gpointer) {
+	signalGestureMultiPressPressedLock.RLock()
+	defer signalGestureMultiPressPressedLock.RUnlock()
+
 	nPress := int32(c_n_press)
 
 	x := float64(c_x)
@@ -1207,7 +1240,7 @@ type signalGestureMultiPressReleasedDetail struct {
 
 var signalGestureMultiPressReleasedId int
 var signalGestureMultiPressReleasedMap = make(map[int]signalGestureMultiPressReleasedDetail)
-var signalGestureMultiPressReleasedLock sync.Mutex
+var signalGestureMultiPressReleasedLock sync.RWMutex
 
 // GestureMultiPressSignalReleasedCallback is a callback function for a 'released' signal emitted from a GestureMultiPress.
 type GestureMultiPressSignalReleasedCallback func(nPress int32, x float64, y float64)
@@ -1252,6 +1285,9 @@ func (recv *GestureMultiPress) DisconnectReleased(connectionID int) {
 
 //export gesturemultipress_releasedHandler
 func gesturemultipress_releasedHandler(_ *C.GObject, c_n_press C.gint, c_x C.gdouble, c_y C.gdouble, data C.gpointer) {
+	signalGestureMultiPressReleasedLock.RLock()
+	defer signalGestureMultiPressReleasedLock.RUnlock()
+
 	nPress := int32(c_n_press)
 
 	x := float64(c_x)
@@ -1270,7 +1306,7 @@ type signalGestureMultiPressStoppedDetail struct {
 
 var signalGestureMultiPressStoppedId int
 var signalGestureMultiPressStoppedMap = make(map[int]signalGestureMultiPressStoppedDetail)
-var signalGestureMultiPressStoppedLock sync.Mutex
+var signalGestureMultiPressStoppedLock sync.RWMutex
 
 // GestureMultiPressSignalStoppedCallback is a callback function for a 'stopped' signal emitted from a GestureMultiPress.
 type GestureMultiPressSignalStoppedCallback func()
@@ -1315,6 +1351,9 @@ func (recv *GestureMultiPress) DisconnectStopped(connectionID int) {
 
 //export gesturemultipress_stoppedHandler
 func gesturemultipress_stoppedHandler(_ *C.GObject, data C.gpointer) {
+	signalGestureMultiPressStoppedLock.RLock()
+	defer signalGestureMultiPressStoppedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalGestureMultiPressStoppedMap[index].callback
 	callback()
@@ -1378,7 +1417,7 @@ type signalGestureRotateAngleChangedDetail struct {
 
 var signalGestureRotateAngleChangedId int
 var signalGestureRotateAngleChangedMap = make(map[int]signalGestureRotateAngleChangedDetail)
-var signalGestureRotateAngleChangedLock sync.Mutex
+var signalGestureRotateAngleChangedLock sync.RWMutex
 
 // GestureRotateSignalAngleChangedCallback is a callback function for a 'angle-changed' signal emitted from a GestureRotate.
 type GestureRotateSignalAngleChangedCallback func(angle float64, angleDelta float64)
@@ -1423,6 +1462,9 @@ func (recv *GestureRotate) DisconnectAngleChanged(connectionID int) {
 
 //export gesturerotate_angleChangedHandler
 func gesturerotate_angleChangedHandler(_ *C.GObject, c_angle C.gdouble, c_angle_delta C.gdouble, data C.gpointer) {
+	signalGestureRotateAngleChangedLock.RLock()
+	defer signalGestureRotateAngleChangedLock.RUnlock()
+
 	angle := float64(c_angle)
 
 	angleDelta := float64(c_angle_delta)
@@ -1534,7 +1576,7 @@ type signalGestureSwipeSwipeDetail struct {
 
 var signalGestureSwipeSwipeId int
 var signalGestureSwipeSwipeMap = make(map[int]signalGestureSwipeSwipeDetail)
-var signalGestureSwipeSwipeLock sync.Mutex
+var signalGestureSwipeSwipeLock sync.RWMutex
 
 // GestureSwipeSignalSwipeCallback is a callback function for a 'swipe' signal emitted from a GestureSwipe.
 type GestureSwipeSignalSwipeCallback func(velocityX float64, velocityY float64)
@@ -1579,6 +1621,9 @@ func (recv *GestureSwipe) DisconnectSwipe(connectionID int) {
 
 //export gestureswipe_swipeHandler
 func gestureswipe_swipeHandler(_ *C.GObject, c_velocity_x C.gdouble, c_velocity_y C.gdouble, data C.gpointer) {
+	signalGestureSwipeSwipeLock.RLock()
+	defer signalGestureSwipeSwipeLock.RUnlock()
+
 	velocityX := float64(c_velocity_x)
 
 	velocityY := float64(c_velocity_y)
@@ -1624,7 +1669,7 @@ type signalGestureZoomScaleChangedDetail struct {
 
 var signalGestureZoomScaleChangedId int
 var signalGestureZoomScaleChangedMap = make(map[int]signalGestureZoomScaleChangedDetail)
-var signalGestureZoomScaleChangedLock sync.Mutex
+var signalGestureZoomScaleChangedLock sync.RWMutex
 
 // GestureZoomSignalScaleChangedCallback is a callback function for a 'scale-changed' signal emitted from a GestureZoom.
 type GestureZoomSignalScaleChangedCallback func(scale float64)
@@ -1669,6 +1714,9 @@ func (recv *GestureZoom) DisconnectScaleChanged(connectionID int) {
 
 //export gesturezoom_scaleChangedHandler
 func gesturezoom_scaleChangedHandler(_ *C.GObject, c_scale C.gdouble, data C.gpointer) {
+	signalGestureZoomScaleChangedLock.RLock()
+	defer signalGestureZoomScaleChangedLock.RUnlock()
+
 	scale := float64(c_scale)
 
 	index := int(uintptr(data))
@@ -1714,7 +1762,7 @@ type signalListBoxSelectAllDetail struct {
 
 var signalListBoxSelectAllId int
 var signalListBoxSelectAllMap = make(map[int]signalListBoxSelectAllDetail)
-var signalListBoxSelectAllLock sync.Mutex
+var signalListBoxSelectAllLock sync.RWMutex
 
 // ListBoxSignalSelectAllCallback is a callback function for a 'select-all' signal emitted from a ListBox.
 type ListBoxSignalSelectAllCallback func()
@@ -1759,6 +1807,9 @@ func (recv *ListBox) DisconnectSelectAll(connectionID int) {
 
 //export listbox_selectAllHandler
 func listbox_selectAllHandler(_ *C.GObject, data C.gpointer) {
+	signalListBoxSelectAllLock.RLock()
+	defer signalListBoxSelectAllLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalListBoxSelectAllMap[index].callback
 	callback()
@@ -1771,7 +1822,7 @@ type signalListBoxSelectedRowsChangedDetail struct {
 
 var signalListBoxSelectedRowsChangedId int
 var signalListBoxSelectedRowsChangedMap = make(map[int]signalListBoxSelectedRowsChangedDetail)
-var signalListBoxSelectedRowsChangedLock sync.Mutex
+var signalListBoxSelectedRowsChangedLock sync.RWMutex
 
 // ListBoxSignalSelectedRowsChangedCallback is a callback function for a 'selected-rows-changed' signal emitted from a ListBox.
 type ListBoxSignalSelectedRowsChangedCallback func()
@@ -1816,6 +1867,9 @@ func (recv *ListBox) DisconnectSelectedRowsChanged(connectionID int) {
 
 //export listbox_selectedRowsChangedHandler
 func listbox_selectedRowsChangedHandler(_ *C.GObject, data C.gpointer) {
+	signalListBoxSelectedRowsChangedLock.RLock()
+	defer signalListBoxSelectedRowsChangedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalListBoxSelectedRowsChangedMap[index].callback
 	callback()
@@ -1828,7 +1882,7 @@ type signalListBoxUnselectAllDetail struct {
 
 var signalListBoxUnselectAllId int
 var signalListBoxUnselectAllMap = make(map[int]signalListBoxUnselectAllDetail)
-var signalListBoxUnselectAllLock sync.Mutex
+var signalListBoxUnselectAllLock sync.RWMutex
 
 // ListBoxSignalUnselectAllCallback is a callback function for a 'unselect-all' signal emitted from a ListBox.
 type ListBoxSignalUnselectAllCallback func()
@@ -1873,6 +1927,9 @@ func (recv *ListBox) DisconnectUnselectAll(connectionID int) {
 
 //export listbox_unselectAllHandler
 func listbox_unselectAllHandler(_ *C.GObject, data C.gpointer) {
+	signalListBoxUnselectAllLock.RLock()
+	defer signalListBoxUnselectAllLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalListBoxUnselectAllMap[index].callback
 	callback()
@@ -1965,7 +2022,7 @@ type signalPlacesSidebarShowEnterLocationDetail struct {
 
 var signalPlacesSidebarShowEnterLocationId int
 var signalPlacesSidebarShowEnterLocationMap = make(map[int]signalPlacesSidebarShowEnterLocationDetail)
-var signalPlacesSidebarShowEnterLocationLock sync.Mutex
+var signalPlacesSidebarShowEnterLocationLock sync.RWMutex
 
 // PlacesSidebarSignalShowEnterLocationCallback is a callback function for a 'show-enter-location' signal emitted from a PlacesSidebar.
 type PlacesSidebarSignalShowEnterLocationCallback func()
@@ -2010,6 +2067,9 @@ func (recv *PlacesSidebar) DisconnectShowEnterLocation(connectionID int) {
 
 //export placessidebar_showEnterLocationHandler
 func placessidebar_showEnterLocationHandler(_ *C.GObject, data C.gpointer) {
+	signalPlacesSidebarShowEnterLocationLock.RLock()
+	defer signalPlacesSidebarShowEnterLocationLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalPlacesSidebarShowEnterLocationMap[index].callback
 	callback()
@@ -2040,7 +2100,7 @@ type signalSwitchStateSetDetail struct {
 
 var signalSwitchStateSetId int
 var signalSwitchStateSetMap = make(map[int]signalSwitchStateSetDetail)
-var signalSwitchStateSetLock sync.Mutex
+var signalSwitchStateSetLock sync.RWMutex
 
 // SwitchSignalStateSetCallback is a callback function for a 'state-set' signal emitted from a Switch.
 type SwitchSignalStateSetCallback func(state bool) bool
@@ -2085,6 +2145,9 @@ func (recv *Switch) DisconnectStateSet(connectionID int) {
 
 //export switch_stateSetHandler
 func switch_stateSetHandler(_ *C.GObject, c_state C.gboolean, data C.gpointer) C.gboolean {
+	signalSwitchStateSetLock.RLock()
+	defer signalSwitchStateSetLock.RUnlock()
+
 	state := c_state == C.TRUE
 
 	index := int(uintptr(data))

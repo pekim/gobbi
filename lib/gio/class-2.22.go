@@ -1995,7 +1995,7 @@ type signalThreadedSocketServiceRunDetail struct {
 
 var signalThreadedSocketServiceRunId int
 var signalThreadedSocketServiceRunMap = make(map[int]signalThreadedSocketServiceRunDetail)
-var signalThreadedSocketServiceRunLock sync.Mutex
+var signalThreadedSocketServiceRunLock sync.RWMutex
 
 // ThreadedSocketServiceSignalRunCallback is a callback function for a 'run' signal emitted from a ThreadedSocketService.
 type ThreadedSocketServiceSignalRunCallback func(connection *SocketConnection, sourceObject *gobject.Object) bool
@@ -2040,6 +2040,9 @@ func (recv *ThreadedSocketService) DisconnectRun(connectionID int) {
 
 //export threadedsocketservice_runHandler
 func threadedsocketservice_runHandler(_ *C.GObject, c_connection *C.GSocketConnection, c_source_object *C.GObject, data C.gpointer) C.gboolean {
+	signalThreadedSocketServiceRunLock.RLock()
+	defer signalThreadedSocketServiceRunLock.RUnlock()
+
 	connection := SocketConnectionNewFromC(unsafe.Pointer(c_connection))
 
 	sourceObject := gobject.ObjectNewFromC(unsafe.Pointer(c_source_object))
@@ -2173,7 +2176,7 @@ type signalVolumeMonitorDriveStopButtonDetail struct {
 
 var signalVolumeMonitorDriveStopButtonId int
 var signalVolumeMonitorDriveStopButtonMap = make(map[int]signalVolumeMonitorDriveStopButtonDetail)
-var signalVolumeMonitorDriveStopButtonLock sync.Mutex
+var signalVolumeMonitorDriveStopButtonLock sync.RWMutex
 
 // VolumeMonitorSignalDriveStopButtonCallback is a callback function for a 'drive-stop-button' signal emitted from a VolumeMonitor.
 type VolumeMonitorSignalDriveStopButtonCallback func(drive *Drive)
@@ -2218,6 +2221,9 @@ func (recv *VolumeMonitor) DisconnectDriveStopButton(connectionID int) {
 
 //export volumemonitor_driveStopButtonHandler
 func volumemonitor_driveStopButtonHandler(_ *C.GObject, c_drive *C.GDrive, data C.gpointer) {
+	signalVolumeMonitorDriveStopButtonLock.RLock()
+	defer signalVolumeMonitorDriveStopButtonLock.RUnlock()
+
 	drive := DriveNewFromC(unsafe.Pointer(c_drive))
 
 	index := int(uintptr(data))

@@ -67,7 +67,7 @@ type signalRecentChooserItemActivatedDetail struct {
 
 var signalRecentChooserItemActivatedId int
 var signalRecentChooserItemActivatedMap = make(map[int]signalRecentChooserItemActivatedDetail)
-var signalRecentChooserItemActivatedLock sync.Mutex
+var signalRecentChooserItemActivatedLock sync.RWMutex
 
 // RecentChooserSignalItemActivatedCallback is a callback function for a 'item-activated' signal emitted from a RecentChooser.
 type RecentChooserSignalItemActivatedCallback func()
@@ -112,6 +112,9 @@ func (recv *RecentChooser) DisconnectItemActivated(connectionID int) {
 
 //export recentchooser_itemActivatedHandler
 func recentchooser_itemActivatedHandler(_ *C.GObject, data C.gpointer) {
+	signalRecentChooserItemActivatedLock.RLock()
+	defer signalRecentChooserItemActivatedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalRecentChooserItemActivatedMap[index].callback
 	callback()
@@ -124,7 +127,7 @@ type signalRecentChooserSelectionChangedDetail struct {
 
 var signalRecentChooserSelectionChangedId int
 var signalRecentChooserSelectionChangedMap = make(map[int]signalRecentChooserSelectionChangedDetail)
-var signalRecentChooserSelectionChangedLock sync.Mutex
+var signalRecentChooserSelectionChangedLock sync.RWMutex
 
 // RecentChooserSignalSelectionChangedCallback is a callback function for a 'selection-changed' signal emitted from a RecentChooser.
 type RecentChooserSignalSelectionChangedCallback func()
@@ -169,6 +172,9 @@ func (recv *RecentChooser) DisconnectSelectionChanged(connectionID int) {
 
 //export recentchooser_selectionChangedHandler
 func recentchooser_selectionChangedHandler(_ *C.GObject, data C.gpointer) {
+	signalRecentChooserSelectionChangedLock.RLock()
+	defer signalRecentChooserSelectionChangedLock.RUnlock()
+
 	index := int(uintptr(data))
 	callback := signalRecentChooserSelectionChangedMap[index].callback
 	callback()

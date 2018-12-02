@@ -40,7 +40,7 @@ type signalAppLaunchContextLaunchFailedDetail struct {
 
 var signalAppLaunchContextLaunchFailedId int
 var signalAppLaunchContextLaunchFailedMap = make(map[int]signalAppLaunchContextLaunchFailedDetail)
-var signalAppLaunchContextLaunchFailedLock sync.Mutex
+var signalAppLaunchContextLaunchFailedLock sync.RWMutex
 
 // AppLaunchContextSignalLaunchFailedCallback is a callback function for a 'launch-failed' signal emitted from a AppLaunchContext.
 type AppLaunchContextSignalLaunchFailedCallback func(startupNotifyId string)
@@ -85,6 +85,9 @@ func (recv *AppLaunchContext) DisconnectLaunchFailed(connectionID int) {
 
 //export applaunchcontext_launchFailedHandler
 func applaunchcontext_launchFailedHandler(_ *C.GObject, c_startup_notify_id *C.gchar, data C.gpointer) {
+	signalAppLaunchContextLaunchFailedLock.RLock()
+	defer signalAppLaunchContextLaunchFailedLock.RUnlock()
+
 	startupNotifyId := C.GoString(c_startup_notify_id)
 
 	index := int(uintptr(data))

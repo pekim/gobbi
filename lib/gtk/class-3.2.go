@@ -76,7 +76,7 @@ type signalApplicationWindowAddedDetail struct {
 
 var signalApplicationWindowAddedId int
 var signalApplicationWindowAddedMap = make(map[int]signalApplicationWindowAddedDetail)
-var signalApplicationWindowAddedLock sync.Mutex
+var signalApplicationWindowAddedLock sync.RWMutex
 
 // ApplicationSignalWindowAddedCallback is a callback function for a 'window-added' signal emitted from a Application.
 type ApplicationSignalWindowAddedCallback func(window *Window)
@@ -121,6 +121,9 @@ func (recv *Application) DisconnectWindowAdded(connectionID int) {
 
 //export application_windowAddedHandler
 func application_windowAddedHandler(_ *C.GObject, c_window *C.GtkWindow, data C.gpointer) {
+	signalApplicationWindowAddedLock.RLock()
+	defer signalApplicationWindowAddedLock.RUnlock()
+
 	window := WindowNewFromC(unsafe.Pointer(c_window))
 
 	index := int(uintptr(data))
@@ -135,7 +138,7 @@ type signalApplicationWindowRemovedDetail struct {
 
 var signalApplicationWindowRemovedId int
 var signalApplicationWindowRemovedMap = make(map[int]signalApplicationWindowRemovedDetail)
-var signalApplicationWindowRemovedLock sync.Mutex
+var signalApplicationWindowRemovedLock sync.RWMutex
 
 // ApplicationSignalWindowRemovedCallback is a callback function for a 'window-removed' signal emitted from a Application.
 type ApplicationSignalWindowRemovedCallback func(window *Window)
@@ -180,6 +183,9 @@ func (recv *Application) DisconnectWindowRemoved(connectionID int) {
 
 //export application_windowRemovedHandler
 func application_windowRemovedHandler(_ *C.GObject, c_window *C.GtkWindow, data C.gpointer) {
+	signalApplicationWindowRemovedLock.RLock()
+	defer signalApplicationWindowRemovedLock.RUnlock()
+
 	window := WindowNewFromC(unsafe.Pointer(c_window))
 
 	index := int(uintptr(data))
@@ -397,7 +403,7 @@ type signalMenuShellInsertDetail struct {
 
 var signalMenuShellInsertId int
 var signalMenuShellInsertMap = make(map[int]signalMenuShellInsertDetail)
-var signalMenuShellInsertLock sync.Mutex
+var signalMenuShellInsertLock sync.RWMutex
 
 // MenuShellSignalInsertCallback is a callback function for a 'insert' signal emitted from a MenuShell.
 type MenuShellSignalInsertCallback func(child *Widget, position int32)
@@ -442,6 +448,9 @@ func (recv *MenuShell) DisconnectInsert(connectionID int) {
 
 //export menushell_insertHandler
 func menushell_insertHandler(_ *C.GObject, c_child *C.GtkWidget, c_position C.gint, data C.gpointer) {
+	signalMenuShellInsertLock.RLock()
+	defer signalMenuShellInsertLock.RUnlock()
+
 	child := WidgetNewFromC(unsafe.Pointer(c_child))
 
 	position := int32(c_position)

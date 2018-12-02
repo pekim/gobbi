@@ -709,7 +709,7 @@ type signalStatusIconQueryTooltipDetail struct {
 
 var signalStatusIconQueryTooltipId int
 var signalStatusIconQueryTooltipMap = make(map[int]signalStatusIconQueryTooltipDetail)
-var signalStatusIconQueryTooltipLock sync.Mutex
+var signalStatusIconQueryTooltipLock sync.RWMutex
 
 // StatusIconSignalQueryTooltipCallback is a callback function for a 'query-tooltip' signal emitted from a StatusIcon.
 type StatusIconSignalQueryTooltipCallback func(x int32, y int32, keyboardMode bool, tooltip *Tooltip) bool
@@ -754,6 +754,9 @@ func (recv *StatusIcon) DisconnectQueryTooltip(connectionID int) {
 
 //export statusicon_queryTooltipHandler
 func statusicon_queryTooltipHandler(_ *C.GObject, c_x C.gint, c_y C.gint, c_keyboard_mode C.gboolean, c_tooltip *C.GtkTooltip, data C.gpointer) C.gboolean {
+	signalStatusIconQueryTooltipLock.RLock()
+	defer signalStatusIconQueryTooltipLock.RUnlock()
+
 	x := int32(c_x)
 
 	y := int32(c_y)
@@ -777,7 +780,7 @@ type signalStatusIconScrollEventDetail struct {
 
 var signalStatusIconScrollEventId int
 var signalStatusIconScrollEventMap = make(map[int]signalStatusIconScrollEventDetail)
-var signalStatusIconScrollEventLock sync.Mutex
+var signalStatusIconScrollEventLock sync.RWMutex
 
 // StatusIconSignalScrollEventCallback is a callback function for a 'scroll-event' signal emitted from a StatusIcon.
 type StatusIconSignalScrollEventCallback func(event *gdk.EventScroll) bool
@@ -822,6 +825,9 @@ func (recv *StatusIcon) DisconnectScrollEvent(connectionID int) {
 
 //export statusicon_scrollEventHandler
 func statusicon_scrollEventHandler(_ *C.GObject, c_event *C.GdkEventScroll, data C.gpointer) C.gboolean {
+	signalStatusIconScrollEventLock.RLock()
+	defer signalStatusIconScrollEventLock.RUnlock()
+
 	event := gdk.EventScrollNewFromC(unsafe.Pointer(c_event))
 
 	index := int(uintptr(data))
@@ -915,7 +921,7 @@ type signalTextBufferPasteDoneDetail struct {
 
 var signalTextBufferPasteDoneId int
 var signalTextBufferPasteDoneMap = make(map[int]signalTextBufferPasteDoneDetail)
-var signalTextBufferPasteDoneLock sync.Mutex
+var signalTextBufferPasteDoneLock sync.RWMutex
 
 // TextBufferSignalPasteDoneCallback is a callback function for a 'paste-done' signal emitted from a TextBuffer.
 type TextBufferSignalPasteDoneCallback func(clipboard *Clipboard)
@@ -960,6 +966,9 @@ func (recv *TextBuffer) DisconnectPasteDone(connectionID int) {
 
 //export textbuffer_pasteDoneHandler
 func textbuffer_pasteDoneHandler(_ *C.GObject, c_clipboard *C.GtkClipboard, data C.gpointer) {
+	signalTextBufferPasteDoneLock.RLock()
+	defer signalTextBufferPasteDoneLock.RUnlock()
+
 	clipboard := ClipboardNewFromC(unsafe.Pointer(c_clipboard))
 
 	index := int(uintptr(data))

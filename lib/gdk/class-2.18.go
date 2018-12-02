@@ -31,7 +31,7 @@ type signalWindowPickEmbeddedChildDetail struct {
 
 var signalWindowPickEmbeddedChildId int
 var signalWindowPickEmbeddedChildMap = make(map[int]signalWindowPickEmbeddedChildDetail)
-var signalWindowPickEmbeddedChildLock sync.Mutex
+var signalWindowPickEmbeddedChildLock sync.RWMutex
 
 // WindowSignalPickEmbeddedChildCallback is a callback function for a 'pick-embedded-child' signal emitted from a Window.
 type WindowSignalPickEmbeddedChildCallback func(x float64, y float64) Window
@@ -76,6 +76,9 @@ func (recv *Window) DisconnectPickEmbeddedChild(connectionID int) {
 
 //export window_pickEmbeddedChildHandler
 func window_pickEmbeddedChildHandler(_ *C.GObject, c_x C.gdouble, c_y C.gdouble, data C.gpointer) *C.GdkWindow {
+	signalWindowPickEmbeddedChildLock.RLock()
+	defer signalWindowPickEmbeddedChildLock.RUnlock()
+
 	x := float64(c_x)
 
 	y := float64(c_y)
