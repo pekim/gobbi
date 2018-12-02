@@ -3,7 +3,6 @@ package generate
 import (
 	"fmt"
 	"github.com/dave/jennifer/jen"
-	"strings"
 )
 
 type Constant struct {
@@ -77,22 +76,4 @@ func (c *Constant) generate(g *jen.Group, version *Version) {
 		Id(c.goTypeName).
 		Op("=").
 		Qual("C", c.CType)
-}
-
-func (c *Constant) generateDocs(file *DocFile) {
-	doc := ""
-	if c.Doc != nil {
-		doc = c.Doc.Text
-		// escape any '#'s
-		doc = strings.Replace(doc, "\n#", "\n&num;", -1)
-	}
-
-	file.writeLinef("## `%s`", c.Name)
-	file.writeLine("")
-
-	file.writeLine(doc)
-	file.writeLine("")
-
-	file.writeLinef("C - `%s`", c.CType)
-	file.writeLine("")
 }

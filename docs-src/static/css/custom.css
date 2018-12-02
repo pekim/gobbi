@@ -74,30 +74,6 @@ article section.page pre {
     display: none;
 }
 
-.api-heading {
-    font-size: 1.2em;
-    font-weight: bold;
-
-    margin-top: 1.5em;
-}
-
-.api-doc {
-
-}
-
-.api-notes > * {
-    margin: 0em;
-}
-
-.api-ctype {
-    font-size: 0.8em;
-}
-
-.api-since {
-    font-size: 0.9em;
-    font-style: italic;
-}
-
 article section.page table {
     table-layout: auto;
     margin: 1.0em 0;

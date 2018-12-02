@@ -31,6 +31,10 @@
   </url>
   
   <url>
+    <loc>https://pekim.github.io/gobbi/api/</loc>
+  </url>
+  
+  <url>
     <loc>https://pekim.github.io/gobbi/summary-base/</loc>
   </url>
   
@@ -43,10 +47,6 @@
   </url>
   
   <url>
-    <loc>https://pekim.github.io/gobbi/api/</loc>
-  </url>
-  
-  <url>
     <loc>https://pekim.github.io/gobbi/categories/</loc>
     <priority>0</priority>
   </url>
@@ -54,150 +54,6 @@
   <url>
     <loc>https://pekim.github.io/gobbi/tags/</loc>
     <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://pekim.github.io/gobbi/api/atk/</loc>
-  </url>
-  
-  <url>
-    <loc>https://pekim.github.io/gobbi/api/atk/bitfields/</loc>
-  </url>
-  
-  <url>
-    <loc>https://pekim.github.io/gobbi/api/cairo/bitfields/</loc>
-  </url>
-  
-  <url>
-    <loc>https://pekim.github.io/gobbi/api/gdk/bitfields/</loc>
-  </url>
-  
-  <url>
-    <loc>https://pekim.github.io/gobbi/api/gdkpixbuf/bitfields/</loc>
-  </url>
-  
-  <url>
-    <loc>https://pekim.github.io/gobbi/api/gio/bitfields/</loc>
-  </url>
-  
-  <url>
-    <loc>https://pekim.github.io/gobbi/api/glib/bitfields/</loc>
-  </url>
-  
-  <url>
-    <loc>https://pekim.github.io/gobbi/api/gobject/bitfields/</loc>
-  </url>
-  
-  <url>
-    <loc>https://pekim.github.io/gobbi/api/gtk/bitfields/</loc>
-  </url>
-  
-  <url>
-    <loc>https://pekim.github.io/gobbi/api/pango/bitfields/</loc>
-  </url>
-  
-  <url>
-    <loc>https://pekim.github.io/gobbi/api/cairo/</loc>
-  </url>
-  
-  <url>
-    <loc>https://pekim.github.io/gobbi/api/atk/constants/</loc>
-  </url>
-  
-  <url>
-    <loc>https://pekim.github.io/gobbi/api/cairo/constants/</loc>
-  </url>
-  
-  <url>
-    <loc>https://pekim.github.io/gobbi/api/gdk/constants/</loc>
-  </url>
-  
-  <url>
-    <loc>https://pekim.github.io/gobbi/api/gdkpixbuf/constants/</loc>
-  </url>
-  
-  <url>
-    <loc>https://pekim.github.io/gobbi/api/gio/constants/</loc>
-  </url>
-  
-  <url>
-    <loc>https://pekim.github.io/gobbi/api/glib/constants/</loc>
-  </url>
-  
-  <url>
-    <loc>https://pekim.github.io/gobbi/api/gobject/constants/</loc>
-  </url>
-  
-  <url>
-    <loc>https://pekim.github.io/gobbi/api/gtk/constants/</loc>
-  </url>
-  
-  <url>
-    <loc>https://pekim.github.io/gobbi/api/pango/constants/</loc>
-  </url>
-  
-  <url>
-    <loc>https://pekim.github.io/gobbi/api/atk/enums/</loc>
-  </url>
-  
-  <url>
-    <loc>https://pekim.github.io/gobbi/api/cairo/enums/</loc>
-  </url>
-  
-  <url>
-    <loc>https://pekim.github.io/gobbi/api/gdk/enums/</loc>
-  </url>
-  
-  <url>
-    <loc>https://pekim.github.io/gobbi/api/gdkpixbuf/enums/</loc>
-  </url>
-  
-  <url>
-    <loc>https://pekim.github.io/gobbi/api/gio/enums/</loc>
-  </url>
-  
-  <url>
-    <loc>https://pekim.github.io/gobbi/api/glib/enums/</loc>
-  </url>
-  
-  <url>
-    <loc>https://pekim.github.io/gobbi/api/gobject/enums/</loc>
-  </url>
-  
-  <url>
-    <loc>https://pekim.github.io/gobbi/api/gtk/enums/</loc>
-  </url>
-  
-  <url>
-    <loc>https://pekim.github.io/gobbi/api/pango/enums/</loc>
-  </url>
-  
-  <url>
-    <loc>https://pekim.github.io/gobbi/api/gdk/</loc>
-  </url>
-  
-  <url>
-    <loc>https://pekim.github.io/gobbi/api/gdkpixbuf/</loc>
-  </url>
-  
-  <url>
-    <loc>https://pekim.github.io/gobbi/api/gio/</loc>
-  </url>
-  
-  <url>
-    <loc>https://pekim.github.io/gobbi/api/glib/</loc>
-  </url>
-  
-  <url>
-    <loc>https://pekim.github.io/gobbi/api/gobject/</loc>
-  </url>
-  
-  <url>
-    <loc>https://pekim.github.io/gobbi/api/gtk/</loc>
-  </url>
-  
-  <url>
-    <loc>https://pekim.github.io/gobbi/api/pango/</loc>
   </url>
   
 </urlset>

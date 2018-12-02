@@ -54,16 +54,3 @@ func (m *Member) generate(g *jen.Group, goTypeName string) {
 		Op("=").
 		Lit(m.Value)
 }
-
-func (m *Member) generateDocs(file *DocFile) {
-	doc := ""
-	if m.Doc != nil {
-		doc = m.Doc.Text
-		// escape any '#'s
-		doc = strings.Replace(doc, "\n#", "\n&num;", -1)
-	}
-
-	file.writeLinef("### %s = %d", m.name, m.Value)
-	file.writeLine(doc)
-	file.writeLine("")
-}
