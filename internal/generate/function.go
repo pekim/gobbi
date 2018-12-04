@@ -14,6 +14,7 @@ type Function struct {
 	Blacklist         bool         `xml:"blacklist,attr"`
 	GoName            string       `xml:"goname,attr"`
 	Version           string       `xml:"version,attr"`
+	MovedTo           string       `xml:"moved-to,attr"`
 	CIdentifier       string       `xml:"http://www.gtk.org/introspection/c/1.0 identifier,attr"`
 	Deprecated        int          `xml:"deprecated,attr"`
 	DeprecatedVersion string       `xml:"deprecated-version,attr"`
@@ -31,12 +32,13 @@ type Function struct {
 	throwableErrorGoVarName string
 }
 
-func (f *Function) init(ns *Namespace, receiver *Record) {
+func (f *Function) init(ns *Namespace, receiver *Record, namePrefix string) {
 	f.Namespace = ns
 	f.receiver = receiver
 	if f.GoName == "" {
 		f.GoName = makeExportedGoName(f.Name)
 	}
+	f.GoName = namePrefix + f.GoName
 	f.Parameters.init(ns)
 	if f.InstanceParameter != nil {
 		f.InstanceParameter.init(ns)
@@ -98,6 +100,22 @@ func (f *Function) supported() (supported bool, reason string) {
 
 func (f *Function) generate(g *jen.Group, version *Version) {
 	if !supportedByVersion(f, version) {
+		return
+	}
+
+	if f.MovedTo != "" {
+		return
+	}
+
+	supported, reason := f.supported()
+	if !supported {
+		g.Comment(reason)
+		return
+	}
+
+	if blacklisted, detail := f.blacklisted(); blacklisted {
+		g.Commentf("Blacklisted : %s", detail)
+		g.Line()
 		return
 	}
 

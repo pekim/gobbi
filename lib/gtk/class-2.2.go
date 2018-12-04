@@ -16,6 +16,7 @@ import (
 // #include <stdlib.h>
 import "C"
 
+// gtk_clipboard_get_for_display : unsupported parameter selection : Blacklisted record : GdkAtom
 // GetDisplay is a wrapper around the C function gtk_clipboard_get_display.
 func (recv *Clipboard) GetDisplay() *gdk.Display {
 	retC := C.gtk_clipboard_get_display((*C.GtkClipboard)(recv.native))
@@ -24,6 +25,7 @@ func (recv *Clipboard) GetDisplay() *gdk.Display {
 	return retGo
 }
 
+// gtk_color_selection_set_change_palette_with_screen_hook : unsupported parameter func : no type generator for ColorSelectionChangePaletteWithScreenFunc (GtkColorSelectionChangePaletteWithScreenFunc) for param func
 // InvisibleNewForScreen is a wrapper around the C function gtk_invisible_new_for_screen.
 func InvisibleNewForScreen(screen *gdk.Screen) *Invisible {
 	c_screen := (*C.GdkScreen)(C.NULL)
@@ -156,6 +158,19 @@ func (recv *MenuShell) SelectFirst(searchSensitive bool) {
 func (recv *Notebook) GetNPages() int32 {
 	retC := C.gtk_notebook_get_n_pages((*C.GtkNotebook)(recv.native))
 	retGo := (int32)(retC)
+
+	return retGo
+}
+
+// SettingsGetForScreen is a wrapper around the C function gtk_settings_get_for_screen.
+func SettingsGetForScreen(screen *gdk.Screen) *Settings {
+	c_screen := (*C.GdkScreen)(C.NULL)
+	if screen != nil {
+		c_screen = (*C.GdkScreen)(screen.ToC())
+	}
+
+	retC := C.gtk_settings_get_for_screen(c_screen)
+	retGo := SettingsNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -369,6 +384,34 @@ func (recv *Widget) HasScreen() bool {
 	retGo := retC == C.TRUE
 
 	return retGo
+}
+
+// WindowSetAutoStartupNotification is a wrapper around the C function gtk_window_set_auto_startup_notification.
+func WindowSetAutoStartupNotification(setting bool) {
+	c_setting :=
+		boolToGboolean(setting)
+
+	C.gtk_window_set_auto_startup_notification(c_setting)
+
+	return
+}
+
+// WindowSetDefaultIconFromFile is a wrapper around the C function gtk_window_set_default_icon_from_file.
+func WindowSetDefaultIconFromFile(filename string) (bool, error) {
+	c_filename := C.CString(filename)
+	defer C.free(unsafe.Pointer(c_filename))
+
+	var cThrowableError *C.GError
+
+	retC := C.gtk_window_set_default_icon_from_file(c_filename, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
 }
 
 // Fullscreen is a wrapper around the C function gtk_window_fullscreen.

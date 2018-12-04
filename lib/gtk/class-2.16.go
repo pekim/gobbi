@@ -975,3 +975,11 @@ func textbuffer_pasteDoneHandler(_ *C.GObject, c_clipboard *C.GtkClipboard, data
 	callback := signalTextBufferPasteDoneMap[index].callback
 	callback(clipboard)
 }
+
+// WindowGetDefaultIconName is a wrapper around the C function gtk_window_get_default_icon_name.
+func WindowGetDefaultIconName() string {
+	retC := C.gtk_window_get_default_icon_name()
+	retGo := C.GoString(retC)
+
+	return retGo
+}

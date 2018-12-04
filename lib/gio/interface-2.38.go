@@ -23,6 +23,19 @@ import (
 // #include <stdlib.h>
 import "C"
 
+// ActionNameIsValid is a wrapper around the C function g_action_name_is_valid.
+func ActionNameIsValid(actionName string) bool {
+	c_action_name := C.CString(actionName)
+	defer C.free(unsafe.Pointer(c_action_name))
+
+	retC := C.g_action_name_is_valid(c_action_name)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// g_action_parse_detailed_name : unsupported parameter target_value : Blacklisted record : GVariant
+// g_action_print_detailed_name : unsupported parameter target_value : Blacklisted record : GVariant
 // Unsupported : g_file_make_directory_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
 // MakeDirectoryFinish is a wrapper around the C function g_file_make_directory_finish.
@@ -94,4 +107,5 @@ func (recv *File) TrashFinish(result *AsyncResult) (bool, error) {
 	return retGo, goThrowableError
 }
 
+// g_icon_deserialize : unsupported parameter value : Blacklisted record : GVariant
 // Unsupported : g_icon_serialize : return type : Blacklisted record : GVariant

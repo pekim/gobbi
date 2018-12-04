@@ -117,6 +117,7 @@ func (recv *DesktopAppInfo) GetFilename() string {
 	return retGo
 }
 
+// g_io_module_query : no return type
 // IsClosing is a wrapper around the C function g_output_stream_is_closing.
 func (recv *OutputStream) IsClosing() bool {
 	retC := C.g_output_stream_is_closing((*C.GOutputStream)(recv.native))

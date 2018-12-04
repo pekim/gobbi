@@ -168,18 +168,22 @@ func ResourceNewFromData(data *glib.Bytes) (*Resource, error) {
 	return retGo, goThrowableError
 }
 
-// Register is a wrapper around the C function g_resources_register.
-func (recv *Resource) Register() {
-	C.g_resources_register((*C.GResource)(recv.native))
+// ResourceLoad is a wrapper around the C function g_resource_load.
+func ResourceLoad(filename string) (*Resource, error) {
+	c_filename := C.CString(filename)
+	defer C.free(unsafe.Pointer(c_filename))
 
-	return
-}
+	var cThrowableError *C.GError
 
-// Unregister is a wrapper around the C function g_resources_unregister.
-func (recv *Resource) Unregister() {
-	C.g_resources_unregister((*C.GResource)(recv.native))
+	retC := C.g_resource_load(c_filename, &cThrowableError)
+	retGo := ResourceNewFromC(unsafe.Pointer(retC))
 
-	return
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
 }
 
 // Unsupported : g_resource_enumerate_children : no return type
@@ -374,6 +378,19 @@ func SettingsSchemaSourceNewFromDirectory(directory string, parent *SettingsSche
 	}
 
 	return retGo, goThrowableError
+}
+
+// SettingsSchemaSourceGetDefault is a wrapper around the C function g_settings_schema_source_get_default.
+func SettingsSchemaSourceGetDefault() *SettingsSchemaSource {
+	retC := C.g_settings_schema_source_get_default()
+	var retGo (*SettingsSchemaSource)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = SettingsSchemaSourceNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
 }
 
 // Lookup is a wrapper around the C function g_settings_schema_source_lookup.

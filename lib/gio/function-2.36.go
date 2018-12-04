@@ -32,20 +32,6 @@ func DbusAddressEscapeValue(string string) string {
 	return retGo
 }
 
-// FileNewForCommandlineArgAndCwd is a wrapper around the C function g_file_new_for_commandline_arg_and_cwd.
-func FileNewForCommandlineArgAndCwd(arg string, cwd string) *File {
-	c_arg := C.CString(arg)
-	defer C.free(unsafe.Pointer(c_arg))
-
-	c_cwd := C.CString(cwd)
-	defer C.free(unsafe.Pointer(c_cwd))
-
-	retC := C.g_file_new_for_commandline_arg_and_cwd(c_arg, c_cwd)
-	retGo := FileNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // NetworkingInit is a wrapper around the C function g_networking_init.
 func NetworkingInit() {
 	C.g_networking_init()

@@ -3,10 +3,20 @@
 
 package atk
 
+import "unsafe"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <atk/atk.h>
 // #include <stdlib.h>
 import "C"
+
+// MiscGetInstance is a wrapper around the C function atk_misc_get_instance.
+func MiscGetInstance() *Misc {
+	retC := C.atk_misc_get_instance()
+	retGo := MiscNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // ThreadsEnter is a wrapper around the C function atk_misc_threads_enter.
 func (recv *Misc) ThreadsEnter() {

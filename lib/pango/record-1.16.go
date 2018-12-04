@@ -36,6 +36,14 @@ func (recv *FontDescription) SetGravity(gravity Gravity) {
 	return
 }
 
+// LanguageGetDefault is a wrapper around the C function pango_language_get_default.
+func LanguageGetDefault() *Language {
+	retC := C.pango_language_get_default()
+	retGo := LanguageNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // TransformDistance is a wrapper around the C function pango_matrix_transform_distance.
 func (recv *Matrix) TransformDistance(dx float64, dy float64) {
 	c_dx := (C.double)(dx)

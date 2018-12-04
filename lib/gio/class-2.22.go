@@ -440,6 +440,26 @@ func NetworkAddressNew(hostname string, port uint16) *NetworkAddress {
 	return retGo
 }
 
+// NetworkAddressParse is a wrapper around the C function g_network_address_parse.
+func NetworkAddressParse(hostAndPort string, defaultPort uint16) (*NetworkAddress, error) {
+	c_host_and_port := C.CString(hostAndPort)
+	defer C.free(unsafe.Pointer(c_host_and_port))
+
+	c_default_port := (C.guint16)(defaultPort)
+
+	var cThrowableError *C.GError
+
+	retC := C.g_network_address_parse(c_host_and_port, c_default_port, &cThrowableError)
+	retGo := NetworkAddressNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
 // GetHostname is a wrapper around the C function g_network_address_get_hostname.
 func (recv *NetworkAddress) GetHostname() string {
 	retC := C.g_network_address_get_hostname((*C.GNetworkAddress)(recv.native))
@@ -493,6 +513,38 @@ func (recv *NetworkService) GetProtocol() string {
 func (recv *NetworkService) GetService() string {
 	retC := C.g_network_service_get_service((*C.GNetworkService)(recv.native))
 	retGo := C.GoString(retC)
+
+	return retGo
+}
+
+// ResolverFreeAddresses is a wrapper around the C function g_resolver_free_addresses.
+func ResolverFreeAddresses(addresses *glib.List) {
+	c_addresses := (*C.GList)(C.NULL)
+	if addresses != nil {
+		c_addresses = (*C.GList)(addresses.ToC())
+	}
+
+	C.g_resolver_free_addresses(c_addresses)
+
+	return
+}
+
+// ResolverFreeTargets is a wrapper around the C function g_resolver_free_targets.
+func ResolverFreeTargets(targets *glib.List) {
+	c_targets := (*C.GList)(C.NULL)
+	if targets != nil {
+		c_targets = (*C.GList)(targets.ToC())
+	}
+
+	C.g_resolver_free_targets(c_targets)
+
+	return
+}
+
+// ResolverGetDefault is a wrapper around the C function g_resolver_get_default.
+func ResolverGetDefault() *Resolver {
+	retC := C.g_resolver_get_default()
+	retGo := ResolverNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -1490,6 +1542,35 @@ func CastToSocketConnection(object *gobject.Object) *SocketConnection {
 	return SocketConnectionNewFromC(object.ToC())
 }
 
+// SocketConnectionFactoryLookupType is a wrapper around the C function g_socket_connection_factory_lookup_type.
+func SocketConnectionFactoryLookupType(family SocketFamily, type_ SocketType, protocolId int32) gobject.Type {
+	c_family := (C.GSocketFamily)(family)
+
+	c_type := (C.GSocketType)(type_)
+
+	c_protocol_id := (C.gint)(protocolId)
+
+	retC := C.g_socket_connection_factory_lookup_type(c_family, c_type, c_protocol_id)
+	retGo := (gobject.Type)(retC)
+
+	return retGo
+}
+
+// SocketConnectionFactoryRegisterType is a wrapper around the C function g_socket_connection_factory_register_type.
+func SocketConnectionFactoryRegisterType(gType gobject.Type, family SocketFamily, type_ SocketType, protocol int32) {
+	c_g_type := (C.GType)(gType)
+
+	c_family := (C.GSocketFamily)(family)
+
+	c_type := (C.GSocketType)(type_)
+
+	c_protocol := (C.gint)(protocol)
+
+	C.g_socket_connection_factory_register_type(c_g_type, c_family, c_type, c_protocol)
+
+	return
+}
+
 // GetLocalAddress is a wrapper around the C function g_socket_connection_get_local_address.
 func (recv *SocketConnection) GetLocalAddress() (*SocketAddress, error) {
 	var cThrowableError *C.GError
@@ -1524,6 +1605,22 @@ func (recv *SocketConnection) GetRemoteAddress() (*SocketAddress, error) {
 func (recv *SocketConnection) GetSocket() *Socket {
 	retC := C.g_socket_connection_get_socket((*C.GSocketConnection)(recv.native))
 	retGo := SocketNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// SocketControlMessageDeserialize is a wrapper around the C function g_socket_control_message_deserialize.
+func SocketControlMessageDeserialize(level int32, type_ int32, data []uint8) *SocketControlMessage {
+	c_level := (C.int)(level)
+
+	c_type := (C.int)(type_)
+
+	c_size := (C.gsize)(len(data))
+
+	c_data := &data[0]
+
+	retC := C.g_socket_control_message_deserialize(c_level, c_type, c_size, (C.gpointer)(unsafe.Pointer(c_data)))
+	retGo := SocketControlMessageNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -2141,6 +2238,14 @@ func UnixSocketAddressNew(path string) *UnixSocketAddress {
 
 	retC := C.g_unix_socket_address_new(c_path)
 	retGo := UnixSocketAddressNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// UnixSocketAddressAbstractNamesSupported is a wrapper around the C function g_unix_socket_address_abstract_names_supported.
+func UnixSocketAddressAbstractNamesSupported() bool {
+	retC := C.g_unix_socket_address_abstract_names_supported()
+	retGo := retC == C.TRUE
 
 	return retGo
 }

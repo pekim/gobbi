@@ -1331,6 +1331,19 @@ func (recv *Label) SetWidthChars(nChars int32) {
 
 // Unsupported : gtk_list_store_insert_with_valuesv : unsupported parameter values :
 
+// MenuGetForAttachWidget is a wrapper around the C function gtk_menu_get_for_attach_widget.
+func MenuGetForAttachWidget(widget *Widget) *glib.List {
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
+
+	retC := C.gtk_menu_get_for_attach_widget(c_widget)
+	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // MenuToolButtonNew is a wrapper around the C function gtk_menu_tool_button_new.
 func MenuToolButtonNew(iconWidget *Widget, label string) *MenuToolButton {
 	c_icon_widget := (*C.GtkWidget)(C.NULL)
@@ -1542,6 +1555,16 @@ func (recv *Widget) DragSourceAddTextTargets() {
 // DragSourceAddUriTargets is a wrapper around the C function gtk_drag_source_add_uri_targets.
 func (recv *Widget) DragSourceAddUriTargets() {
 	C.gtk_drag_source_add_uri_targets((*C.GtkWidget)(recv.native))
+
+	return
+}
+
+// WindowSetDefaultIconName is a wrapper around the C function gtk_window_set_default_icon_name.
+func WindowSetDefaultIconName(name string) {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	C.gtk_window_set_default_icon_name(c_name)
 
 	return
 }

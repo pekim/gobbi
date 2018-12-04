@@ -57,21 +57,3 @@ func IoModulesScanAllInDirectoryWithScope(dirname string, scope *IOModuleScope) 
 
 	return
 }
-
-// TlsFileDatabaseNew is a wrapper around the C function g_tls_file_database_new.
-func TlsFileDatabaseNew(anchors string) (*TlsFileDatabase, error) {
-	c_anchors := C.CString(anchors)
-	defer C.free(unsafe.Pointer(c_anchors))
-
-	var cThrowableError *C.GError
-
-	retC := C.g_tls_file_database_new(c_anchors, &cThrowableError)
-	retGo := TlsFileDatabaseNewFromC(unsafe.Pointer(retC))
-
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-	if cThrowableError != nil {
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goThrowableError
-}

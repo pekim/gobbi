@@ -12,18 +12,6 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// HashTableUnref is a wrapper around the C function g_hash_table_unref.
-func HashTableUnref(hashTable *HashTable) {
-	c_hash_table := (*C.GHashTable)(C.NULL)
-	if hashTable != nil {
-		c_hash_table = (*C.GHashTable)(hashTable.ToC())
-	}
-
-	C.g_hash_table_unref(c_hash_table)
-
-	return
-}
-
 // InternStaticString is a wrapper around the C function g_intern_static_string.
 func InternStaticString(string string) string {
 	c_string := C.CString(string)
@@ -86,23 +74,6 @@ func SliceFreeChainWithOffset(blockSize uint64, memChain uintptr, nextOffset uin
 	c_next_offset := (C.gsize)(nextOffset)
 
 	C.g_slice_free_chain_with_offset(c_block_size, c_mem_chain, c_next_offset)
-
-	return
-}
-
-// ThreadPoolGetMaxIdleTime is a wrapper around the C function g_thread_pool_get_max_idle_time.
-func ThreadPoolGetMaxIdleTime() uint32 {
-	retC := C.g_thread_pool_get_max_idle_time()
-	retGo := (uint32)(retC)
-
-	return retGo
-}
-
-// ThreadPoolSetMaxIdleTime is a wrapper around the C function g_thread_pool_set_max_idle_time.
-func ThreadPoolSetMaxIdleTime(interval uint32) {
-	c_interval := (C.guint)(interval)
-
-	C.g_thread_pool_set_max_idle_time(c_interval)
 
 	return
 }

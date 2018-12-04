@@ -3,6 +3,8 @@
 
 package pango
 
+import "unsafe"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <pango/pango.h>
 // #include <stdlib.h>
@@ -14,6 +16,19 @@ func (recv *Language) IncludesScript(script Script) bool {
 
 	retC := C.pango_language_includes_script((*C.PangoLanguage)(recv.native), c_script)
 	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// ScriptIterNew is a wrapper around the C function pango_script_iter_new.
+func ScriptIterNew(text string, length int32) *ScriptIter {
+	c_text := C.CString(text)
+	defer C.free(unsafe.Pointer(c_text))
+
+	c_length := (C.int)(length)
+
+	retC := C.pango_script_iter_new(c_text, c_length)
+	retGo := ScriptIterNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

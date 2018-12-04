@@ -3,6 +3,8 @@
 
 package glib
 
+import "unsafe"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <glib.h>
 // #include <glib/gstdio.h>
@@ -32,12 +34,56 @@ func (recv *Date) SetTimeVal(timeval *TimeVal) {
 	return
 }
 
+// HashTableRef is a wrapper around the C function g_hash_table_ref.
+func HashTableRef(hashTable *HashTable) *HashTable {
+	c_hash_table := (*C.GHashTable)(C.NULL)
+	if hashTable != nil {
+		c_hash_table = (*C.GHashTable)(hashTable.ToC())
+	}
+
+	retC := C.g_hash_table_ref(c_hash_table)
+	retGo := HashTableNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// HashTableUnref is a wrapper around the C function g_hash_table_unref.
+func HashTableUnref(hashTable *HashTable) {
+	c_hash_table := (*C.GHashTable)(C.NULL)
+	if hashTable != nil {
+		c_hash_table = (*C.GHashTable)(hashTable.ToC())
+	}
+
+	C.g_hash_table_unref(c_hash_table)
+
+	return
+}
+
+// g_list_insert_sorted_with_data : unsupported parameter func : no type generator for CompareDataFunc (GCompareDataFunc) for param func
 // IsOwner is a wrapper around the C function g_main_context_is_owner.
 func (recv *MainContext) IsOwner() bool {
 	retC := C.g_main_context_is_owner((*C.GMainContext)(recv.native))
 	retGo := retC == C.TRUE
 
 	return retGo
+}
+
+// g_slist_insert_sorted_with_data : unsupported parameter func : no type generator for CompareDataFunc (GCompareDataFunc) for param func
+// ThreadPoolGetMaxIdleTime is a wrapper around the C function g_thread_pool_get_max_idle_time.
+func ThreadPoolGetMaxIdleTime() uint32 {
+	retC := C.g_thread_pool_get_max_idle_time()
+	retGo := (uint32)(retC)
+
+	return retGo
+}
+
+// ThreadPoolSetMaxIdleTime is a wrapper around the C function g_thread_pool_set_max_idle_time.
+func ThreadPoolSetMaxIdleTime(interval uint32) {
+	c_interval := (C.guint)(interval)
+
+	C.g_thread_pool_set_max_idle_time(c_interval)
+
+	return
 }
 
 // Unsupported : g_thread_pool_set_sort_function : unsupported parameter func : no type generator for CompareDataFunc (GCompareDataFunc) for param func

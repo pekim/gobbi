@@ -151,6 +151,7 @@ func PixbufNewFromInline(data []uint8, copyPixels bool) (*Pixbuf, error) {
 
 // Unsupported : gdk_pixbuf_new_from_xpm_data : unsupported parameter data :
 
+// gdk_pixbuf_from_pixdata : unsupported parameter pixdata : Blacklisted record : GdkPixdata
 // AddAlpha is a wrapper around the C function gdk_pixbuf_add_alpha.
 func (recv *Pixbuf) AddAlpha(substituteColor bool, r uint8, g uint8, b uint8) *Pixbuf {
 	c_substitute_color :=

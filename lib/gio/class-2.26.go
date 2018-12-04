@@ -322,6 +322,8 @@ func DBusConnectionNewSync(stream *IOStream, guid string, flags DBusConnectionFl
 	return retGo, goThrowableError
 }
 
+// g_dbus_connection_new : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
+// g_dbus_connection_new_for_address : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 // Unsupported : g_dbus_connection_add_filter : unsupported parameter filter_function : no type generator for DBusMessageFilterFunction (GDBusMessageFilterFunction) for param filter_function
 
 // Unsupported : g_dbus_connection_call : unsupported parameter parameters : Blacklisted record : GVariant
@@ -711,6 +713,25 @@ func DBusMessageNewSignal(path string, interface_ string, signal string) *DBusMe
 	retGo := DBusMessageNewFromC(unsafe.Pointer(retC))
 
 	return retGo
+}
+
+// DBusMessageBytesNeeded is a wrapper around the C function g_dbus_message_bytes_needed.
+func DBusMessageBytesNeeded(blob []uint8) (int64, error) {
+	c_blob := &blob[0]
+
+	c_blob_len := (C.gsize)(len(blob))
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_message_bytes_needed((*C.guchar)(unsafe.Pointer(c_blob)), c_blob_len, &cThrowableError)
+	retGo := (int64)(retC)
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
 }
 
 // Copy is a wrapper around the C function g_dbus_message_copy.
@@ -1363,6 +1384,8 @@ func DBusProxyNewSync(connection *DBusConnection, flags DBusProxyFlags, info *DB
 	return retGo, goThrowableError
 }
 
+// g_dbus_proxy_new : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
+// g_dbus_proxy_new_for_bus : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 // Unsupported : g_dbus_proxy_call : unsupported parameter parameters : Blacklisted record : GVariant
 
 // Unsupported : g_dbus_proxy_call_finish : return type : Blacklisted record : GVariant
@@ -1620,6 +1643,26 @@ func (recv *MemoryOutputStream) StealData() uintptr {
 	retGo := (uintptr)(unsafe.Pointer(retC))
 
 	return retGo
+}
+
+// NetworkAddressParseUri is a wrapper around the C function g_network_address_parse_uri.
+func NetworkAddressParseUri(uri string, defaultPort uint16) (*NetworkAddress, error) {
+	c_uri := C.CString(uri)
+	defer C.free(unsafe.Pointer(c_uri))
+
+	c_default_port := (C.guint16)(defaultPort)
+
+	var cThrowableError *C.GError
+
+	retC := C.g_network_address_parse_uri(c_uri, c_default_port, &cThrowableError)
+	retGo := NetworkAddressNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
 }
 
 // GetScheme is a wrapper around the C function g_network_address_get_scheme.
@@ -1944,6 +1987,19 @@ func SettingsNewWithPath(schemaId string, path string) *Settings {
 	return retGo
 }
 
+// g_settings_list_schemas : no return type
+// SettingsUnbind is a wrapper around the C function g_settings_unbind.
+func SettingsUnbind(object uintptr, property string) {
+	c_object := (C.gpointer)(object)
+
+	c_property := C.CString(property)
+	defer C.free(unsafe.Pointer(c_property))
+
+	C.g_settings_unbind(c_object, c_property)
+
+	return
+}
+
 // Bind is a wrapper around the C function g_settings_bind.
 func (recv *Settings) Bind(key string, object uintptr, property string, flags SettingsBindFlags) {
 	c_key := C.CString(key)
@@ -2151,6 +2207,7 @@ func (recv *Settings) SetString(key string, value string) bool {
 
 // Unsupported : g_settings_set_value : unsupported parameter value : Blacklisted record : GVariant
 
+// g_settings_backend_flatten_tree : unsupported parameter keys : output array param keys
 // Blacklisted : g_settings_backend_changed
 
 // Blacklisted : g_settings_backend_changed_tree
@@ -2440,6 +2497,14 @@ func UnixCredentialsMessageNewWithCredentials(credentials *Credentials) *UnixCre
 
 	retC := C.g_unix_credentials_message_new_with_credentials(c_credentials)
 	retGo := UnixCredentialsMessageNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// UnixCredentialsMessageIsSupported is a wrapper around the C function g_unix_credentials_message_is_supported.
+func UnixCredentialsMessageIsSupported() bool {
+	retC := C.g_unix_credentials_message_is_supported()
+	retGo := retC == C.TRUE
 
 	return retGo
 }

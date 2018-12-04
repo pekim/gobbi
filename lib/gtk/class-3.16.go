@@ -46,6 +46,19 @@ import (
 */
 import "C"
 
+// ClipboardGetDefault is a wrapper around the C function gtk_clipboard_get_default.
+func ClipboardGetDefault(display *gdk.Display) *Clipboard {
+	c_display := (*C.GdkDisplay)(C.NULL)
+	if display != nil {
+		c_display = (*C.GdkDisplay)(display.ToC())
+	}
+
+	retC := C.gtk_clipboard_get_default(c_display)
+	retGo := ClipboardNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // LoadFromResource is a wrapper around the C function gtk_css_provider_load_from_resource.
 func (recv *CssProvider) LoadFromResource(resourcePath string) {
 	c_resource_path := C.CString(resourcePath)

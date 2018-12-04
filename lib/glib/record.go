@@ -47,6 +47,30 @@ func (recv *Array) Equals(other *Array) bool {
 	return other.ToC() == recv.ToC()
 }
 
+// g_array_append_vals : no return type
+// ArrayFree is a wrapper around the C function g_array_free.
+func ArrayFree(array []uintptr, freeSegment bool) string {
+	c_array := &array[0]
+
+	c_free_segment :=
+		boolToGboolean(freeSegment)
+
+	retC := C.g_array_free((*C.GArray)(unsafe.Pointer(c_array)), c_free_segment)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// g_array_insert_vals : no return type
+// g_array_new : no return type
+// g_array_prepend_vals : no return type
+// g_array_remove_index : no return type
+// g_array_remove_index_fast : no return type
+// g_array_set_size : no return type
+// g_array_sized_new : no return type
+// g_array_sort : unsupported parameter compare_func : no type generator for CompareFunc (GCompareFunc) for param compare_func
+// g_array_sort_with_data : unsupported parameter compare_func : no type generator for CompareDataFunc (GCompareDataFunc) for param compare_func
 // AsyncQueue is a wrapper around the C record GAsyncQueue.
 type AsyncQueue struct {
 	native *C.GAsyncQueue
@@ -71,6 +95,14 @@ func (recv *AsyncQueue) ToC() unsafe.Pointer {
 // Equals compares this AsyncQueue with another AsyncQueue, and returns true if they represent the same GObject.
 func (recv *AsyncQueue) Equals(other *AsyncQueue) bool {
 	return other.ToC() == recv.ToC()
+}
+
+// AsyncQueueNew is a wrapper around the C function g_async_queue_new.
+func AsyncQueueNew() *AsyncQueue {
+	retC := C.g_async_queue_new()
+	retGo := AsyncQueueNewFromC(unsafe.Pointer(retC))
+
+	return retGo
 }
 
 // Length is a wrapper around the C function g_async_queue_length.
@@ -254,6 +286,14 @@ func (recv *BookmarkFile) Equals(other *BookmarkFile) bool {
 	return other.ToC() == recv.ToC()
 }
 
+// BookmarkFileErrorQuark is a wrapper around the C function g_bookmark_file_error_quark.
+func BookmarkFileErrorQuark() Quark {
+	retC := C.g_bookmark_file_error_quark()
+	retGo := (Quark)(retC)
+
+	return retGo
+}
+
 // Blacklisted : GByteArray
 
 // Cond is a wrapper around the C record GCond.
@@ -386,6 +426,133 @@ func DateNewJulian(julianDay uint32) *Date {
 
 	retC := C.g_date_new_julian(c_julian_day)
 	retGo := DateNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// DateGetDaysInMonth is a wrapper around the C function g_date_get_days_in_month.
+func DateGetDaysInMonth(month DateMonth, year DateYear) uint8 {
+	c_month := (C.GDateMonth)(month)
+
+	c_year := (C.GDateYear)(year)
+
+	retC := C.g_date_get_days_in_month(c_month, c_year)
+	retGo := (uint8)(retC)
+
+	return retGo
+}
+
+// DateGetMondayWeeksInYear is a wrapper around the C function g_date_get_monday_weeks_in_year.
+func DateGetMondayWeeksInYear(year DateYear) uint8 {
+	c_year := (C.GDateYear)(year)
+
+	retC := C.g_date_get_monday_weeks_in_year(c_year)
+	retGo := (uint8)(retC)
+
+	return retGo
+}
+
+// DateGetSundayWeeksInYear is a wrapper around the C function g_date_get_sunday_weeks_in_year.
+func DateGetSundayWeeksInYear(year DateYear) uint8 {
+	c_year := (C.GDateYear)(year)
+
+	retC := C.g_date_get_sunday_weeks_in_year(c_year)
+	retGo := (uint8)(retC)
+
+	return retGo
+}
+
+// DateIsLeapYear is a wrapper around the C function g_date_is_leap_year.
+func DateIsLeapYear(year DateYear) bool {
+	c_year := (C.GDateYear)(year)
+
+	retC := C.g_date_is_leap_year(c_year)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// DateStrftime is a wrapper around the C function g_date_strftime.
+func DateStrftime(s string, slen uint64, format string, date *Date) uint64 {
+	c_s := C.CString(s)
+	defer C.free(unsafe.Pointer(c_s))
+
+	c_slen := (C.gsize)(slen)
+
+	c_format := C.CString(format)
+	defer C.free(unsafe.Pointer(c_format))
+
+	c_date := (*C.GDate)(C.NULL)
+	if date != nil {
+		c_date = (*C.GDate)(date.ToC())
+	}
+
+	retC := C.g_date_strftime(c_s, c_slen, c_format, c_date)
+	retGo := (uint64)(retC)
+
+	return retGo
+}
+
+// DateValidDay is a wrapper around the C function g_date_valid_day.
+func DateValidDay(day DateDay) bool {
+	c_day := (C.GDateDay)(day)
+
+	retC := C.g_date_valid_day(c_day)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// DateValidDmy is a wrapper around the C function g_date_valid_dmy.
+func DateValidDmy(day DateDay, month DateMonth, year DateYear) bool {
+	c_day := (C.GDateDay)(day)
+
+	c_month := (C.GDateMonth)(month)
+
+	c_year := (C.GDateYear)(year)
+
+	retC := C.g_date_valid_dmy(c_day, c_month, c_year)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// DateValidJulian is a wrapper around the C function g_date_valid_julian.
+func DateValidJulian(julianDate uint32) bool {
+	c_julian_date := (C.guint32)(julianDate)
+
+	retC := C.g_date_valid_julian(c_julian_date)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// DateValidMonth is a wrapper around the C function g_date_valid_month.
+func DateValidMonth(month DateMonth) bool {
+	c_month := (C.GDateMonth)(month)
+
+	retC := C.g_date_valid_month(c_month)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// DateValidWeekday is a wrapper around the C function g_date_valid_weekday.
+func DateValidWeekday(weekday DateWeekday) bool {
+	c_weekday := (C.GDateWeekday)(weekday)
+
+	retC := C.g_date_valid_weekday(c_weekday)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// DateValidYear is a wrapper around the C function g_date_valid_year.
+func DateValidYear(year DateYear) bool {
+	c_year := (C.GDateYear)(year)
+
+	retC := C.g_date_valid_year(c_year)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -735,6 +902,26 @@ func (recv *Dir) Equals(other *Dir) bool {
 	return other.ToC() == recv.ToC()
 }
 
+// DirOpen is a wrapper around the C function g_dir_open.
+func DirOpen(path string, flags uint32) (*Dir, error) {
+	c_path := C.CString(path)
+	defer C.free(unsafe.Pointer(c_path))
+
+	c_flags := (C.guint)(flags)
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dir_open(c_path, c_flags, &cThrowableError)
+	retGo := DirNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
 // Close is a wrapper around the C function g_dir_close.
 func (recv *Dir) Close() {
 	C.g_dir_close((*C.GDir)(recv.native))
@@ -867,6 +1054,138 @@ func (recv *HashTable) Equals(other *HashTable) bool {
 	return other.ToC() == recv.ToC()
 }
 
+// HashTableDestroy is a wrapper around the C function g_hash_table_destroy.
+func HashTableDestroy(hashTable *HashTable) {
+	c_hash_table := (*C.GHashTable)(C.NULL)
+	if hashTable != nil {
+		c_hash_table = (*C.GHashTable)(hashTable.ToC())
+	}
+
+	C.g_hash_table_destroy(c_hash_table)
+
+	return
+}
+
+// g_hash_table_foreach : unsupported parameter func : no type generator for HFunc (GHFunc) for param func
+// g_hash_table_foreach_remove : unsupported parameter func : no type generator for HRFunc (GHRFunc) for param func
+// g_hash_table_foreach_steal : unsupported parameter func : no type generator for HRFunc (GHRFunc) for param func
+// HashTableInsert is a wrapper around the C function g_hash_table_insert.
+func HashTableInsert(hashTable *HashTable, key uintptr, value uintptr) bool {
+	c_hash_table := (*C.GHashTable)(C.NULL)
+	if hashTable != nil {
+		c_hash_table = (*C.GHashTable)(hashTable.ToC())
+	}
+
+	c_key := (C.gpointer)(key)
+
+	c_value := (C.gpointer)(value)
+
+	retC := C.g_hash_table_insert(c_hash_table, c_key, c_value)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// HashTableLookup is a wrapper around the C function g_hash_table_lookup.
+func HashTableLookup(hashTable *HashTable, key uintptr) uintptr {
+	c_hash_table := (*C.GHashTable)(C.NULL)
+	if hashTable != nil {
+		c_hash_table = (*C.GHashTable)(hashTable.ToC())
+	}
+
+	c_key := (C.gconstpointer)(key)
+
+	retC := C.g_hash_table_lookup(c_hash_table, c_key)
+	retGo := (uintptr)(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// HashTableLookupExtended is a wrapper around the C function g_hash_table_lookup_extended.
+func HashTableLookupExtended(hashTable *HashTable, lookupKey uintptr) (bool, uintptr, uintptr) {
+	c_hash_table := (*C.GHashTable)(C.NULL)
+	if hashTable != nil {
+		c_hash_table = (*C.GHashTable)(hashTable.ToC())
+	}
+
+	c_lookup_key := (C.gconstpointer)(lookupKey)
+
+	var c_orig_key C.gpointer
+
+	var c_value C.gpointer
+
+	retC := C.g_hash_table_lookup_extended(c_hash_table, c_lookup_key, &c_orig_key, &c_value)
+	retGo := retC == C.TRUE
+
+	origKey := (uintptr)(unsafe.Pointer(&c_orig_key))
+
+	value := (uintptr)(unsafe.Pointer(&c_value))
+
+	return retGo, origKey, value
+}
+
+// g_hash_table_new : unsupported parameter hash_func : no type generator for HashFunc (GHashFunc) for param hash_func
+// g_hash_table_new_full : unsupported parameter hash_func : no type generator for HashFunc (GHashFunc) for param hash_func
+// HashTableRemove is a wrapper around the C function g_hash_table_remove.
+func HashTableRemove(hashTable *HashTable, key uintptr) bool {
+	c_hash_table := (*C.GHashTable)(C.NULL)
+	if hashTable != nil {
+		c_hash_table = (*C.GHashTable)(hashTable.ToC())
+	}
+
+	c_key := (C.gconstpointer)(key)
+
+	retC := C.g_hash_table_remove(c_hash_table, c_key)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// HashTableReplace is a wrapper around the C function g_hash_table_replace.
+func HashTableReplace(hashTable *HashTable, key uintptr, value uintptr) bool {
+	c_hash_table := (*C.GHashTable)(C.NULL)
+	if hashTable != nil {
+		c_hash_table = (*C.GHashTable)(hashTable.ToC())
+	}
+
+	c_key := (C.gpointer)(key)
+
+	c_value := (C.gpointer)(value)
+
+	retC := C.g_hash_table_replace(c_hash_table, c_key, c_value)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// HashTableSize is a wrapper around the C function g_hash_table_size.
+func HashTableSize(hashTable *HashTable) uint32 {
+	c_hash_table := (*C.GHashTable)(C.NULL)
+	if hashTable != nil {
+		c_hash_table = (*C.GHashTable)(hashTable.ToC())
+	}
+
+	retC := C.g_hash_table_size(c_hash_table)
+	retGo := (uint32)(retC)
+
+	return retGo
+}
+
+// HashTableSteal is a wrapper around the C function g_hash_table_steal.
+func HashTableSteal(hashTable *HashTable, key uintptr) bool {
+	c_hash_table := (*C.GHashTable)(C.NULL)
+	if hashTable != nil {
+		c_hash_table = (*C.GHashTable)(hashTable.ToC())
+	}
+
+	c_key := (C.gconstpointer)(key)
+
+	retC := C.g_hash_table_steal(c_hash_table, c_key)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
 // HashTableIter is a wrapper around the C record GHashTableIter.
 type HashTableIter struct {
 	native *C.GHashTableIter
@@ -948,6 +1267,252 @@ func (recv *Hook) ToC() unsafe.Pointer {
 // Equals compares this Hook with another Hook, and returns true if they represent the same GObject.
 func (recv *Hook) Equals(other *Hook) bool {
 	return other.ToC() == recv.ToC()
+}
+
+// HookAlloc is a wrapper around the C function g_hook_alloc.
+func HookAlloc(hookList *HookList) *Hook {
+	c_hook_list := (*C.GHookList)(C.NULL)
+	if hookList != nil {
+		c_hook_list = (*C.GHookList)(hookList.ToC())
+	}
+
+	retC := C.g_hook_alloc(c_hook_list)
+	retGo := HookNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// HookDestroy is a wrapper around the C function g_hook_destroy.
+func HookDestroy(hookList *HookList, hookId uint64) bool {
+	c_hook_list := (*C.GHookList)(C.NULL)
+	if hookList != nil {
+		c_hook_list = (*C.GHookList)(hookList.ToC())
+	}
+
+	c_hook_id := (C.gulong)(hookId)
+
+	retC := C.g_hook_destroy(c_hook_list, c_hook_id)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// HookDestroyLink is a wrapper around the C function g_hook_destroy_link.
+func HookDestroyLink(hookList *HookList, hook *Hook) {
+	c_hook_list := (*C.GHookList)(C.NULL)
+	if hookList != nil {
+		c_hook_list = (*C.GHookList)(hookList.ToC())
+	}
+
+	c_hook := (*C.GHook)(C.NULL)
+	if hook != nil {
+		c_hook = (*C.GHook)(hook.ToC())
+	}
+
+	C.g_hook_destroy_link(c_hook_list, c_hook)
+
+	return
+}
+
+// g_hook_find : unsupported parameter func : no type generator for HookFindFunc (GHookFindFunc) for param func
+// HookFindData is a wrapper around the C function g_hook_find_data.
+func HookFindData(hookList *HookList, needValids bool, data uintptr) *Hook {
+	c_hook_list := (*C.GHookList)(C.NULL)
+	if hookList != nil {
+		c_hook_list = (*C.GHookList)(hookList.ToC())
+	}
+
+	c_need_valids :=
+		boolToGboolean(needValids)
+
+	c_data := (C.gpointer)(data)
+
+	retC := C.g_hook_find_data(c_hook_list, c_need_valids, c_data)
+	retGo := HookNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// HookFindFunc is a wrapper around the C function g_hook_find_func.
+func HookFindFunc(hookList *HookList, needValids bool, func_ uintptr) *Hook {
+	c_hook_list := (*C.GHookList)(C.NULL)
+	if hookList != nil {
+		c_hook_list = (*C.GHookList)(hookList.ToC())
+	}
+
+	c_need_valids :=
+		boolToGboolean(needValids)
+
+	c_func := (C.gpointer)(func_)
+
+	retC := C.g_hook_find_func(c_hook_list, c_need_valids, c_func)
+	retGo := HookNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// HookFindFuncData is a wrapper around the C function g_hook_find_func_data.
+func HookFindFuncData(hookList *HookList, needValids bool, func_ uintptr, data uintptr) *Hook {
+	c_hook_list := (*C.GHookList)(C.NULL)
+	if hookList != nil {
+		c_hook_list = (*C.GHookList)(hookList.ToC())
+	}
+
+	c_need_valids :=
+		boolToGboolean(needValids)
+
+	c_func := (C.gpointer)(func_)
+
+	c_data := (C.gpointer)(data)
+
+	retC := C.g_hook_find_func_data(c_hook_list, c_need_valids, c_func, c_data)
+	retGo := HookNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// HookFirstValid is a wrapper around the C function g_hook_first_valid.
+func HookFirstValid(hookList *HookList, mayBeInCall bool) *Hook {
+	c_hook_list := (*C.GHookList)(C.NULL)
+	if hookList != nil {
+		c_hook_list = (*C.GHookList)(hookList.ToC())
+	}
+
+	c_may_be_in_call :=
+		boolToGboolean(mayBeInCall)
+
+	retC := C.g_hook_first_valid(c_hook_list, c_may_be_in_call)
+	retGo := HookNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// HookFree is a wrapper around the C function g_hook_free.
+func HookFree(hookList *HookList, hook *Hook) {
+	c_hook_list := (*C.GHookList)(C.NULL)
+	if hookList != nil {
+		c_hook_list = (*C.GHookList)(hookList.ToC())
+	}
+
+	c_hook := (*C.GHook)(C.NULL)
+	if hook != nil {
+		c_hook = (*C.GHook)(hook.ToC())
+	}
+
+	C.g_hook_free(c_hook_list, c_hook)
+
+	return
+}
+
+// HookGet is a wrapper around the C function g_hook_get.
+func HookGet(hookList *HookList, hookId uint64) *Hook {
+	c_hook_list := (*C.GHookList)(C.NULL)
+	if hookList != nil {
+		c_hook_list = (*C.GHookList)(hookList.ToC())
+	}
+
+	c_hook_id := (C.gulong)(hookId)
+
+	retC := C.g_hook_get(c_hook_list, c_hook_id)
+	retGo := HookNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// HookInsertBefore is a wrapper around the C function g_hook_insert_before.
+func HookInsertBefore(hookList *HookList, sibling *Hook, hook *Hook) {
+	c_hook_list := (*C.GHookList)(C.NULL)
+	if hookList != nil {
+		c_hook_list = (*C.GHookList)(hookList.ToC())
+	}
+
+	c_sibling := (*C.GHook)(C.NULL)
+	if sibling != nil {
+		c_sibling = (*C.GHook)(sibling.ToC())
+	}
+
+	c_hook := (*C.GHook)(C.NULL)
+	if hook != nil {
+		c_hook = (*C.GHook)(hook.ToC())
+	}
+
+	C.g_hook_insert_before(c_hook_list, c_sibling, c_hook)
+
+	return
+}
+
+// g_hook_insert_sorted : unsupported parameter func : no type generator for HookCompareFunc (GHookCompareFunc) for param func
+// HookNextValid is a wrapper around the C function g_hook_next_valid.
+func HookNextValid(hookList *HookList, hook *Hook, mayBeInCall bool) *Hook {
+	c_hook_list := (*C.GHookList)(C.NULL)
+	if hookList != nil {
+		c_hook_list = (*C.GHookList)(hookList.ToC())
+	}
+
+	c_hook := (*C.GHook)(C.NULL)
+	if hook != nil {
+		c_hook = (*C.GHook)(hook.ToC())
+	}
+
+	c_may_be_in_call :=
+		boolToGboolean(mayBeInCall)
+
+	retC := C.g_hook_next_valid(c_hook_list, c_hook, c_may_be_in_call)
+	retGo := HookNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// HookPrepend is a wrapper around the C function g_hook_prepend.
+func HookPrepend(hookList *HookList, hook *Hook) {
+	c_hook_list := (*C.GHookList)(C.NULL)
+	if hookList != nil {
+		c_hook_list = (*C.GHookList)(hookList.ToC())
+	}
+
+	c_hook := (*C.GHook)(C.NULL)
+	if hook != nil {
+		c_hook = (*C.GHook)(hook.ToC())
+	}
+
+	C.g_hook_prepend(c_hook_list, c_hook)
+
+	return
+}
+
+// HookRef is a wrapper around the C function g_hook_ref.
+func HookRef(hookList *HookList, hook *Hook) *Hook {
+	c_hook_list := (*C.GHookList)(C.NULL)
+	if hookList != nil {
+		c_hook_list = (*C.GHookList)(hookList.ToC())
+	}
+
+	c_hook := (*C.GHook)(C.NULL)
+	if hook != nil {
+		c_hook = (*C.GHook)(hook.ToC())
+	}
+
+	retC := C.g_hook_ref(c_hook_list, c_hook)
+	retGo := HookNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// HookUnref is a wrapper around the C function g_hook_unref.
+func HookUnref(hookList *HookList, hook *Hook) {
+	c_hook_list := (*C.GHookList)(C.NULL)
+	if hookList != nil {
+		c_hook_list = (*C.GHookList)(hookList.ToC())
+	}
+
+	c_hook := (*C.GHook)(C.NULL)
+	if hook != nil {
+		c_hook = (*C.GHook)(hook.ToC())
+	}
+
+	C.g_hook_unref(c_hook_list, c_hook)
+
+	return
 }
 
 // CompareIds is a wrapper around the C function g_hook_compare_ids.
@@ -1108,6 +1673,14 @@ func (recv *KeyFile) Equals(other *KeyFile) bool {
 	return other.ToC() == recv.ToC()
 }
 
+// KeyFileErrorQuark is a wrapper around the C function g_key_file_error_quark.
+func KeyFileErrorQuark() Quark {
+	retC := C.g_key_file_error_quark()
+	retGo := (Quark)(retC)
+
+	return retGo
+}
+
 // List is a wrapper around the C record GList.
 type List struct {
 	native *C.GList
@@ -1142,6 +1715,352 @@ func (recv *List) Equals(other *List) bool {
 	return other.ToC() == recv.ToC()
 }
 
+// ListAlloc is a wrapper around the C function g_list_alloc.
+func ListAlloc() *List {
+	retC := C.g_list_alloc()
+	retGo := ListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ListAppend is a wrapper around the C function g_list_append.
+func ListAppend(list *List, data uintptr) *List {
+	c_list := (*C.GList)(C.NULL)
+	if list != nil {
+		c_list = (*C.GList)(list.ToC())
+	}
+
+	c_data := (C.gpointer)(data)
+
+	retC := C.g_list_append(c_list, c_data)
+	retGo := ListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ListConcat is a wrapper around the C function g_list_concat.
+func ListConcat(list1 *List, list2 *List) *List {
+	c_list1 := (*C.GList)(C.NULL)
+	if list1 != nil {
+		c_list1 = (*C.GList)(list1.ToC())
+	}
+
+	c_list2 := (*C.GList)(C.NULL)
+	if list2 != nil {
+		c_list2 = (*C.GList)(list2.ToC())
+	}
+
+	retC := C.g_list_concat(c_list1, c_list2)
+	retGo := ListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ListCopy is a wrapper around the C function g_list_copy.
+func ListCopy(list *List) *List {
+	c_list := (*C.GList)(C.NULL)
+	if list != nil {
+		c_list = (*C.GList)(list.ToC())
+	}
+
+	retC := C.g_list_copy(c_list)
+	retGo := ListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ListDeleteLink is a wrapper around the C function g_list_delete_link.
+func ListDeleteLink(list *List, link *List) *List {
+	c_list := (*C.GList)(C.NULL)
+	if list != nil {
+		c_list = (*C.GList)(list.ToC())
+	}
+
+	c_link_ := (*C.GList)(C.NULL)
+	if link != nil {
+		c_link_ = (*C.GList)(link.ToC())
+	}
+
+	retC := C.g_list_delete_link(c_list, c_link_)
+	retGo := ListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ListFind is a wrapper around the C function g_list_find.
+func ListFind(list *List, data uintptr) *List {
+	c_list := (*C.GList)(C.NULL)
+	if list != nil {
+		c_list = (*C.GList)(list.ToC())
+	}
+
+	c_data := (C.gconstpointer)(data)
+
+	retC := C.g_list_find(c_list, c_data)
+	retGo := ListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// g_list_find_custom : unsupported parameter func : no type generator for CompareFunc (GCompareFunc) for param func
+// ListFirst is a wrapper around the C function g_list_first.
+func ListFirst(list *List) *List {
+	c_list := (*C.GList)(C.NULL)
+	if list != nil {
+		c_list = (*C.GList)(list.ToC())
+	}
+
+	retC := C.g_list_first(c_list)
+	retGo := ListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// g_list_foreach : unsupported parameter func : no type generator for Func (GFunc) for param func
+// ListFree is a wrapper around the C function g_list_free.
+func ListFree(list *List) {
+	c_list := (*C.GList)(C.NULL)
+	if list != nil {
+		c_list = (*C.GList)(list.ToC())
+	}
+
+	C.g_list_free(c_list)
+
+	return
+}
+
+// ListFree1 is a wrapper around the C function g_list_free_1.
+func ListFree1(list *List) {
+	c_list := (*C.GList)(C.NULL)
+	if list != nil {
+		c_list = (*C.GList)(list.ToC())
+	}
+
+	C.g_list_free_1(c_list)
+
+	return
+}
+
+// ListIndex is a wrapper around the C function g_list_index.
+func ListIndex(list *List, data uintptr) int32 {
+	c_list := (*C.GList)(C.NULL)
+	if list != nil {
+		c_list = (*C.GList)(list.ToC())
+	}
+
+	c_data := (C.gconstpointer)(data)
+
+	retC := C.g_list_index(c_list, c_data)
+	retGo := (int32)(retC)
+
+	return retGo
+}
+
+// ListInsert is a wrapper around the C function g_list_insert.
+func ListInsert(list *List, data uintptr, position int32) *List {
+	c_list := (*C.GList)(C.NULL)
+	if list != nil {
+		c_list = (*C.GList)(list.ToC())
+	}
+
+	c_data := (C.gpointer)(data)
+
+	c_position := (C.gint)(position)
+
+	retC := C.g_list_insert(c_list, c_data, c_position)
+	retGo := ListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ListInsertBefore is a wrapper around the C function g_list_insert_before.
+func ListInsertBefore(list *List, sibling *List, data uintptr) *List {
+	c_list := (*C.GList)(C.NULL)
+	if list != nil {
+		c_list = (*C.GList)(list.ToC())
+	}
+
+	c_sibling := (*C.GList)(C.NULL)
+	if sibling != nil {
+		c_sibling = (*C.GList)(sibling.ToC())
+	}
+
+	c_data := (C.gpointer)(data)
+
+	retC := C.g_list_insert_before(c_list, c_sibling, c_data)
+	retGo := ListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// g_list_insert_sorted : unsupported parameter func : no type generator for CompareFunc (GCompareFunc) for param func
+// ListLast is a wrapper around the C function g_list_last.
+func ListLast(list *List) *List {
+	c_list := (*C.GList)(C.NULL)
+	if list != nil {
+		c_list = (*C.GList)(list.ToC())
+	}
+
+	retC := C.g_list_last(c_list)
+	retGo := ListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ListLength is a wrapper around the C function g_list_length.
+func ListLength(list *List) uint32 {
+	c_list := (*C.GList)(C.NULL)
+	if list != nil {
+		c_list = (*C.GList)(list.ToC())
+	}
+
+	retC := C.g_list_length(c_list)
+	retGo := (uint32)(retC)
+
+	return retGo
+}
+
+// ListNth is a wrapper around the C function g_list_nth.
+func ListNth(list *List, n uint32) *List {
+	c_list := (*C.GList)(C.NULL)
+	if list != nil {
+		c_list = (*C.GList)(list.ToC())
+	}
+
+	c_n := (C.guint)(n)
+
+	retC := C.g_list_nth(c_list, c_n)
+	retGo := ListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ListNthData is a wrapper around the C function g_list_nth_data.
+func ListNthData(list *List, n uint32) uintptr {
+	c_list := (*C.GList)(C.NULL)
+	if list != nil {
+		c_list = (*C.GList)(list.ToC())
+	}
+
+	c_n := (C.guint)(n)
+
+	retC := C.g_list_nth_data(c_list, c_n)
+	retGo := (uintptr)(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ListNthPrev is a wrapper around the C function g_list_nth_prev.
+func ListNthPrev(list *List, n uint32) *List {
+	c_list := (*C.GList)(C.NULL)
+	if list != nil {
+		c_list = (*C.GList)(list.ToC())
+	}
+
+	c_n := (C.guint)(n)
+
+	retC := C.g_list_nth_prev(c_list, c_n)
+	retGo := ListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ListPosition is a wrapper around the C function g_list_position.
+func ListPosition(list *List, llink *List) int32 {
+	c_list := (*C.GList)(C.NULL)
+	if list != nil {
+		c_list = (*C.GList)(list.ToC())
+	}
+
+	c_llink := (*C.GList)(C.NULL)
+	if llink != nil {
+		c_llink = (*C.GList)(llink.ToC())
+	}
+
+	retC := C.g_list_position(c_list, c_llink)
+	retGo := (int32)(retC)
+
+	return retGo
+}
+
+// ListPrepend is a wrapper around the C function g_list_prepend.
+func ListPrepend(list *List, data uintptr) *List {
+	c_list := (*C.GList)(C.NULL)
+	if list != nil {
+		c_list = (*C.GList)(list.ToC())
+	}
+
+	c_data := (C.gpointer)(data)
+
+	retC := C.g_list_prepend(c_list, c_data)
+	retGo := ListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ListRemove is a wrapper around the C function g_list_remove.
+func ListRemove(list *List, data uintptr) *List {
+	c_list := (*C.GList)(C.NULL)
+	if list != nil {
+		c_list = (*C.GList)(list.ToC())
+	}
+
+	c_data := (C.gconstpointer)(data)
+
+	retC := C.g_list_remove(c_list, c_data)
+	retGo := ListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ListRemoveAll is a wrapper around the C function g_list_remove_all.
+func ListRemoveAll(list *List, data uintptr) *List {
+	c_list := (*C.GList)(C.NULL)
+	if list != nil {
+		c_list = (*C.GList)(list.ToC())
+	}
+
+	c_data := (C.gconstpointer)(data)
+
+	retC := C.g_list_remove_all(c_list, c_data)
+	retGo := ListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ListRemoveLink is a wrapper around the C function g_list_remove_link.
+func ListRemoveLink(list *List, llink *List) *List {
+	c_list := (*C.GList)(C.NULL)
+	if list != nil {
+		c_list = (*C.GList)(list.ToC())
+	}
+
+	c_llink := (*C.GList)(C.NULL)
+	if llink != nil {
+		c_llink = (*C.GList)(llink.ToC())
+	}
+
+	retC := C.g_list_remove_link(c_list, c_llink)
+	retGo := ListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ListReverse is a wrapper around the C function g_list_reverse.
+func ListReverse(list *List) *List {
+	c_list := (*C.GList)(C.NULL)
+	if list != nil {
+		c_list = (*C.GList)(list.ToC())
+	}
+
+	retC := C.g_list_reverse(c_list)
+	retGo := ListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// g_list_sort : unsupported parameter compare_func : no type generator for CompareFunc (GCompareFunc) for param compare_func
+// g_list_sort_with_data : unsupported parameter compare_func : no type generator for CompareDataFunc (GCompareDataFunc) for param compare_func
 // MainContext is a wrapper around the C record GMainContext.
 type MainContext struct {
 	native *C.GMainContext
@@ -1171,6 +2090,14 @@ func (recv *MainContext) Equals(other *MainContext) bool {
 // MainContextNew is a wrapper around the C function g_main_context_new.
 func MainContextNew() *MainContext {
 	retC := C.g_main_context_new()
+	retGo := MainContextNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// MainContextDefault is a wrapper around the C function g_main_context_default.
+func MainContextDefault() *MainContext {
+	retC := C.g_main_context_default()
 	retGo := MainContextNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1646,6 +2573,16 @@ func (recv *Node) Equals(other *Node) bool {
 	return other.ToC() == recv.ToC()
 }
 
+// NodeNew is a wrapper around the C function g_node_new.
+func NodeNew(data uintptr) *Node {
+	c_data := (C.gpointer)(data)
+
+	retC := C.g_node_new(c_data)
+	retGo := NodeNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // ChildIndex is a wrapper around the C function g_node_child_index.
 func (recv *Node) ChildIndex(data uintptr) int32 {
 	c_data := (C.gpointer)(data)
@@ -2015,6 +2952,17 @@ func (recv *PatternSpec) Equals(other *PatternSpec) bool {
 	return other.ToC() == recv.ToC()
 }
 
+// PatternSpecNew is a wrapper around the C function g_pattern_spec_new.
+func PatternSpecNew(pattern string) *PatternSpec {
+	c_pattern := C.CString(pattern)
+	defer C.free(unsafe.Pointer(c_pattern))
+
+	retC := C.g_pattern_spec_new(c_pattern)
+	retGo := PatternSpecNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // Equal is a wrapper around the C function g_pattern_spec_equal.
 func (recv *PatternSpec) Equal(pspec2 *PatternSpec) bool {
 	c_pspec2 := (*C.GPatternSpec)(C.NULL)
@@ -2157,6 +3105,14 @@ func (recv *Queue) Equals(other *Queue) bool {
 	return other.ToC() == recv.ToC()
 }
 
+// QueueNew is a wrapper around the C function g_queue_new.
+func QueueNew() *Queue {
+	retC := C.g_queue_new()
+	retGo := QueueNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // Free is a wrapper around the C function g_queue_free.
 func (recv *Queue) Free() {
 	C.g_queue_free((*C.GQueue)(recv.native))
@@ -2288,6 +3244,24 @@ func (recv *Rand) Equals(other *Rand) bool {
 	return other.ToC() == recv.ToC()
 }
 
+// RandNew is a wrapper around the C function g_rand_new.
+func RandNew() *Rand {
+	retC := C.g_rand_new()
+	retGo := RandNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// RandNewWithSeed is a wrapper around the C function g_rand_new_with_seed.
+func RandNewWithSeed(seed uint32) *Rand {
+	c_seed := (C.guint32)(seed)
+
+	retC := C.g_rand_new_with_seed(c_seed)
+	retGo := RandNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // Double is a wrapper around the C function g_rand_double.
 func (recv *Rand) Double() float64 {
 	retC := C.g_rand_double((*C.GRand)(recv.native))
@@ -2377,6 +3351,324 @@ func (recv *SList) Equals(other *SList) bool {
 	return other.ToC() == recv.ToC()
 }
 
+// SListAlloc is a wrapper around the C function g_slist_alloc.
+func SListAlloc() *SList {
+	retC := C.g_slist_alloc()
+	retGo := SListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// SListAppend is a wrapper around the C function g_slist_append.
+func SListAppend(list *SList, data uintptr) *SList {
+	c_list := (*C.GSList)(C.NULL)
+	if list != nil {
+		c_list = (*C.GSList)(list.ToC())
+	}
+
+	c_data := (C.gpointer)(data)
+
+	retC := C.g_slist_append(c_list, c_data)
+	retGo := SListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// SListConcat is a wrapper around the C function g_slist_concat.
+func SListConcat(list1 *SList, list2 *SList) *SList {
+	c_list1 := (*C.GSList)(C.NULL)
+	if list1 != nil {
+		c_list1 = (*C.GSList)(list1.ToC())
+	}
+
+	c_list2 := (*C.GSList)(C.NULL)
+	if list2 != nil {
+		c_list2 = (*C.GSList)(list2.ToC())
+	}
+
+	retC := C.g_slist_concat(c_list1, c_list2)
+	retGo := SListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// SListCopy is a wrapper around the C function g_slist_copy.
+func SListCopy(list *SList) *SList {
+	c_list := (*C.GSList)(C.NULL)
+	if list != nil {
+		c_list = (*C.GSList)(list.ToC())
+	}
+
+	retC := C.g_slist_copy(c_list)
+	retGo := SListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// SListDeleteLink is a wrapper around the C function g_slist_delete_link.
+func SListDeleteLink(list *SList, link *SList) *SList {
+	c_list := (*C.GSList)(C.NULL)
+	if list != nil {
+		c_list = (*C.GSList)(list.ToC())
+	}
+
+	c_link_ := (*C.GSList)(C.NULL)
+	if link != nil {
+		c_link_ = (*C.GSList)(link.ToC())
+	}
+
+	retC := C.g_slist_delete_link(c_list, c_link_)
+	retGo := SListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// SListFind is a wrapper around the C function g_slist_find.
+func SListFind(list *SList, data uintptr) *SList {
+	c_list := (*C.GSList)(C.NULL)
+	if list != nil {
+		c_list = (*C.GSList)(list.ToC())
+	}
+
+	c_data := (C.gconstpointer)(data)
+
+	retC := C.g_slist_find(c_list, c_data)
+	retGo := SListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// g_slist_find_custom : unsupported parameter func : no type generator for CompareFunc (GCompareFunc) for param func
+// g_slist_foreach : unsupported parameter func : no type generator for Func (GFunc) for param func
+// SListFree is a wrapper around the C function g_slist_free.
+func SListFree(list *SList) {
+	c_list := (*C.GSList)(C.NULL)
+	if list != nil {
+		c_list = (*C.GSList)(list.ToC())
+	}
+
+	C.g_slist_free(c_list)
+
+	return
+}
+
+// SListFree1 is a wrapper around the C function g_slist_free_1.
+func SListFree1(list *SList) {
+	c_list := (*C.GSList)(C.NULL)
+	if list != nil {
+		c_list = (*C.GSList)(list.ToC())
+	}
+
+	C.g_slist_free_1(c_list)
+
+	return
+}
+
+// SListIndex is a wrapper around the C function g_slist_index.
+func SListIndex(list *SList, data uintptr) int32 {
+	c_list := (*C.GSList)(C.NULL)
+	if list != nil {
+		c_list = (*C.GSList)(list.ToC())
+	}
+
+	c_data := (C.gconstpointer)(data)
+
+	retC := C.g_slist_index(c_list, c_data)
+	retGo := (int32)(retC)
+
+	return retGo
+}
+
+// SListInsert is a wrapper around the C function g_slist_insert.
+func SListInsert(list *SList, data uintptr, position int32) *SList {
+	c_list := (*C.GSList)(C.NULL)
+	if list != nil {
+		c_list = (*C.GSList)(list.ToC())
+	}
+
+	c_data := (C.gpointer)(data)
+
+	c_position := (C.gint)(position)
+
+	retC := C.g_slist_insert(c_list, c_data, c_position)
+	retGo := SListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// SListInsertBefore is a wrapper around the C function g_slist_insert_before.
+func SListInsertBefore(slist *SList, sibling *SList, data uintptr) *SList {
+	c_slist := (*C.GSList)(C.NULL)
+	if slist != nil {
+		c_slist = (*C.GSList)(slist.ToC())
+	}
+
+	c_sibling := (*C.GSList)(C.NULL)
+	if sibling != nil {
+		c_sibling = (*C.GSList)(sibling.ToC())
+	}
+
+	c_data := (C.gpointer)(data)
+
+	retC := C.g_slist_insert_before(c_slist, c_sibling, c_data)
+	retGo := SListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// g_slist_insert_sorted : unsupported parameter func : no type generator for CompareFunc (GCompareFunc) for param func
+// SListLast is a wrapper around the C function g_slist_last.
+func SListLast(list *SList) *SList {
+	c_list := (*C.GSList)(C.NULL)
+	if list != nil {
+		c_list = (*C.GSList)(list.ToC())
+	}
+
+	retC := C.g_slist_last(c_list)
+	retGo := SListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// SListLength is a wrapper around the C function g_slist_length.
+func SListLength(list *SList) uint32 {
+	c_list := (*C.GSList)(C.NULL)
+	if list != nil {
+		c_list = (*C.GSList)(list.ToC())
+	}
+
+	retC := C.g_slist_length(c_list)
+	retGo := (uint32)(retC)
+
+	return retGo
+}
+
+// SListNth is a wrapper around the C function g_slist_nth.
+func SListNth(list *SList, n uint32) *SList {
+	c_list := (*C.GSList)(C.NULL)
+	if list != nil {
+		c_list = (*C.GSList)(list.ToC())
+	}
+
+	c_n := (C.guint)(n)
+
+	retC := C.g_slist_nth(c_list, c_n)
+	retGo := SListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// SListNthData is a wrapper around the C function g_slist_nth_data.
+func SListNthData(list *SList, n uint32) uintptr {
+	c_list := (*C.GSList)(C.NULL)
+	if list != nil {
+		c_list = (*C.GSList)(list.ToC())
+	}
+
+	c_n := (C.guint)(n)
+
+	retC := C.g_slist_nth_data(c_list, c_n)
+	retGo := (uintptr)(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// SListPosition is a wrapper around the C function g_slist_position.
+func SListPosition(list *SList, llink *SList) int32 {
+	c_list := (*C.GSList)(C.NULL)
+	if list != nil {
+		c_list = (*C.GSList)(list.ToC())
+	}
+
+	c_llink := (*C.GSList)(C.NULL)
+	if llink != nil {
+		c_llink = (*C.GSList)(llink.ToC())
+	}
+
+	retC := C.g_slist_position(c_list, c_llink)
+	retGo := (int32)(retC)
+
+	return retGo
+}
+
+// SListPrepend is a wrapper around the C function g_slist_prepend.
+func SListPrepend(list *SList, data uintptr) *SList {
+	c_list := (*C.GSList)(C.NULL)
+	if list != nil {
+		c_list = (*C.GSList)(list.ToC())
+	}
+
+	c_data := (C.gpointer)(data)
+
+	retC := C.g_slist_prepend(c_list, c_data)
+	retGo := SListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// SListRemove is a wrapper around the C function g_slist_remove.
+func SListRemove(list *SList, data uintptr) *SList {
+	c_list := (*C.GSList)(C.NULL)
+	if list != nil {
+		c_list = (*C.GSList)(list.ToC())
+	}
+
+	c_data := (C.gconstpointer)(data)
+
+	retC := C.g_slist_remove(c_list, c_data)
+	retGo := SListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// SListRemoveAll is a wrapper around the C function g_slist_remove_all.
+func SListRemoveAll(list *SList, data uintptr) *SList {
+	c_list := (*C.GSList)(C.NULL)
+	if list != nil {
+		c_list = (*C.GSList)(list.ToC())
+	}
+
+	c_data := (C.gconstpointer)(data)
+
+	retC := C.g_slist_remove_all(c_list, c_data)
+	retGo := SListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// SListRemoveLink is a wrapper around the C function g_slist_remove_link.
+func SListRemoveLink(list *SList, link *SList) *SList {
+	c_list := (*C.GSList)(C.NULL)
+	if list != nil {
+		c_list = (*C.GSList)(list.ToC())
+	}
+
+	c_link_ := (*C.GSList)(C.NULL)
+	if link != nil {
+		c_link_ = (*C.GSList)(link.ToC())
+	}
+
+	retC := C.g_slist_remove_link(c_list, c_link_)
+	retGo := SListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// SListReverse is a wrapper around the C function g_slist_reverse.
+func SListReverse(list *SList) *SList {
+	c_list := (*C.GSList)(C.NULL)
+	if list != nil {
+		c_list = (*C.GSList)(list.ToC())
+	}
+
+	retC := C.g_slist_reverse(c_list)
+	retGo := SListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// g_slist_sort : unsupported parameter compare_func : no type generator for CompareFunc (GCompareFunc) for param compare_func
+// g_slist_sort_with_data : unsupported parameter compare_func : no type generator for CompareDataFunc (GCompareDataFunc) for param compare_func
 // Scanner is a wrapper around the C record GScanner.
 type Scanner struct {
 	native         *C.GScanner
@@ -2454,6 +3746,19 @@ func (recv *Scanner) ToC() unsafe.Pointer {
 // Equals compares this Scanner with another Scanner, and returns true if they represent the same GObject.
 func (recv *Scanner) Equals(other *Scanner) bool {
 	return other.ToC() == recv.ToC()
+}
+
+// ScannerNew is a wrapper around the C function g_scanner_new.
+func ScannerNew(configTempl *ScannerConfig) *Scanner {
+	c_config_templ := (*C.GScannerConfig)(C.NULL)
+	if configTempl != nil {
+		c_config_templ = (*C.GScannerConfig)(configTempl.ToC())
+	}
+
+	retC := C.g_scanner_new(c_config_templ)
+	retGo := ScannerNewFromC(unsafe.Pointer(retC))
+
+	return retGo
 }
 
 // CurLine is a wrapper around the C function g_scanner_cur_line.
@@ -2799,6 +4104,41 @@ func SourceNew(sourceFuncs *SourceFuncs, structSize uint32) *Source {
 
 	retC := C.g_source_new(c_source_funcs, c_struct_size)
 	retGo := SourceNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// SourceRemove is a wrapper around the C function g_source_remove.
+func SourceRemove(tag uint32) bool {
+	c_tag := (C.guint)(tag)
+
+	retC := C.g_source_remove(c_tag)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// SourceRemoveByFuncsUserData is a wrapper around the C function g_source_remove_by_funcs_user_data.
+func SourceRemoveByFuncsUserData(funcs *SourceFuncs, userData uintptr) bool {
+	c_funcs := (*C.GSourceFuncs)(C.NULL)
+	if funcs != nil {
+		c_funcs = (*C.GSourceFuncs)(funcs.ToC())
+	}
+
+	c_user_data := (C.gpointer)(userData)
+
+	retC := C.g_source_remove_by_funcs_user_data(c_funcs, c_user_data)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// SourceRemoveByUserData is a wrapper around the C function g_source_remove_by_user_data.
+func SourceRemoveByUserData(userData uintptr) bool {
+	c_user_data := (C.gpointer)(userData)
+
+	retC := C.g_source_remove_by_user_data(c_user_data)
+	retGo := retC == C.TRUE
 
 	return retGo
 }
@@ -3385,6 +4725,16 @@ func (recv *StringChunk) Equals(other *StringChunk) bool {
 	return other.ToC() == recv.ToC()
 }
 
+// StringChunkNew is a wrapper around the C function g_string_chunk_new.
+func StringChunkNew(size uint64) *StringChunk {
+	c_size := (C.gsize)(size)
+
+	retC := C.g_string_chunk_new(c_size)
+	retGo := StringChunkNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // Free is a wrapper around the C function g_string_chunk_free.
 func (recv *StringChunk) Free() {
 	C.g_string_chunk_free((*C.GStringChunk)(recv.native))
@@ -3550,6 +4900,38 @@ func (recv *Thread) Equals(other *Thread) bool {
 	return other.ToC() == recv.ToC()
 }
 
+// ThreadErrorQuark is a wrapper around the C function g_thread_error_quark.
+func ThreadErrorQuark() Quark {
+	retC := C.g_thread_error_quark()
+	retGo := (Quark)(retC)
+
+	return retGo
+}
+
+// ThreadExit is a wrapper around the C function g_thread_exit.
+func ThreadExit(retval uintptr) {
+	c_retval := (C.gpointer)(retval)
+
+	C.g_thread_exit(c_retval)
+
+	return
+}
+
+// ThreadSelf is a wrapper around the C function g_thread_self.
+func ThreadSelf() *Thread {
+	retC := C.g_thread_self()
+	retGo := ThreadNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ThreadYield is a wrapper around the C function g_thread_yield.
+func ThreadYield() {
+	C.g_thread_yield()
+
+	return
+}
+
 // Join is a wrapper around the C function g_thread_join.
 func (recv *Thread) Join() uintptr {
 	retC := C.g_thread_join((*C.GThread)(recv.native))
@@ -3593,6 +4975,39 @@ func (recv *ThreadPool) ToC() unsafe.Pointer {
 // Equals compares this ThreadPool with another ThreadPool, and returns true if they represent the same GObject.
 func (recv *ThreadPool) Equals(other *ThreadPool) bool {
 	return other.ToC() == recv.ToC()
+}
+
+// ThreadPoolGetMaxUnusedThreads is a wrapper around the C function g_thread_pool_get_max_unused_threads.
+func ThreadPoolGetMaxUnusedThreads() int32 {
+	retC := C.g_thread_pool_get_max_unused_threads()
+	retGo := (int32)(retC)
+
+	return retGo
+}
+
+// ThreadPoolGetNumUnusedThreads is a wrapper around the C function g_thread_pool_get_num_unused_threads.
+func ThreadPoolGetNumUnusedThreads() uint32 {
+	retC := C.g_thread_pool_get_num_unused_threads()
+	retGo := (uint32)(retC)
+
+	return retGo
+}
+
+// g_thread_pool_new : unsupported parameter func : no type generator for Func (GFunc) for param func
+// ThreadPoolSetMaxUnusedThreads is a wrapper around the C function g_thread_pool_set_max_unused_threads.
+func ThreadPoolSetMaxUnusedThreads(maxThreads int32) {
+	c_max_threads := (C.gint)(maxThreads)
+
+	C.g_thread_pool_set_max_unused_threads(c_max_threads)
+
+	return
+}
+
+// ThreadPoolStopUnusedThreads is a wrapper around the C function g_thread_pool_stop_unused_threads.
+func ThreadPoolStopUnusedThreads() {
+	C.g_thread_pool_stop_unused_threads()
+
+	return
 }
 
 // Free is a wrapper around the C function g_thread_pool_free.
@@ -3737,6 +5152,14 @@ func (recv *Timer) Equals(other *Timer) bool {
 	return other.ToC() == recv.ToC()
 }
 
+// TimerNew is a wrapper around the C function g_timer_new.
+func TimerNew() *Timer {
+	retC := C.g_timer_new()
+	retGo := TimerNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // Destroy is a wrapper around the C function g_timer_destroy.
 func (recv *Timer) Destroy() {
 	C.g_timer_destroy((*C.GTimer)(recv.native))
@@ -3802,6 +5225,59 @@ func (recv *TrashStack) Equals(other *TrashStack) bool {
 	return other.ToC() == recv.ToC()
 }
 
+// TrashStackHeight is a wrapper around the C function g_trash_stack_height.
+func TrashStackHeight(stackP *TrashStack) uint32 {
+	c_stack_p := (**C.GTrashStack)(C.NULL)
+	if stackP != nil {
+		c_stack_p = (**C.GTrashStack)(stackP.ToC())
+	}
+
+	retC := C.g_trash_stack_height(c_stack_p)
+	retGo := (uint32)(retC)
+
+	return retGo
+}
+
+// TrashStackPeek is a wrapper around the C function g_trash_stack_peek.
+func TrashStackPeek(stackP *TrashStack) uintptr {
+	c_stack_p := (**C.GTrashStack)(C.NULL)
+	if stackP != nil {
+		c_stack_p = (**C.GTrashStack)(stackP.ToC())
+	}
+
+	retC := C.g_trash_stack_peek(c_stack_p)
+	retGo := (uintptr)(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// TrashStackPop is a wrapper around the C function g_trash_stack_pop.
+func TrashStackPop(stackP *TrashStack) uintptr {
+	c_stack_p := (**C.GTrashStack)(C.NULL)
+	if stackP != nil {
+		c_stack_p = (**C.GTrashStack)(stackP.ToC())
+	}
+
+	retC := C.g_trash_stack_pop(c_stack_p)
+	retGo := (uintptr)(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// TrashStackPush is a wrapper around the C function g_trash_stack_push.
+func TrashStackPush(stackP *TrashStack, dataP uintptr) {
+	c_stack_p := (**C.GTrashStack)(C.NULL)
+	if stackP != nil {
+		c_stack_p = (**C.GTrashStack)(stackP.ToC())
+	}
+
+	c_data_p := (C.gpointer)(dataP)
+
+	C.g_trash_stack_push(c_stack_p, c_data_p)
+
+	return
+}
+
 // Tree is a wrapper around the C record GTree.
 type Tree struct {
 	native *C.GTree
@@ -3828,6 +5304,9 @@ func (recv *Tree) Equals(other *Tree) bool {
 	return other.ToC() == recv.ToC()
 }
 
+// g_tree_new : unsupported parameter key_compare_func : no type generator for CompareFunc (GCompareFunc) for param key_compare_func
+// g_tree_new_full : unsupported parameter key_compare_func : no type generator for CompareDataFunc (GCompareDataFunc) for param key_compare_func
+// g_tree_new_with_data : unsupported parameter key_compare_func : no type generator for CompareDataFunc (GCompareDataFunc) for param key_compare_func
 // Destroy is a wrapper around the C function g_tree_destroy.
 func (recv *Tree) Destroy() {
 	C.g_tree_destroy((*C.GTree)(recv.native))

@@ -129,6 +129,25 @@ func (recv *DtlsClientConnection) Equals(other *DtlsClientConnection) bool {
 	return other.ToC() == recv.ToC()
 }
 
+// DtlsClientConnectionNew is a wrapper around the C function g_dtls_client_connection_new.
+func DtlsClientConnectionNew(baseSocket *DatagramBased, serverIdentity *SocketConnectable) (*DtlsClientConnection, error) {
+	c_base_socket := (*C.GDatagramBased)(baseSocket.ToC())
+
+	c_server_identity := (*C.GSocketConnectable)(serverIdentity.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dtls_client_connection_new(c_base_socket, c_server_identity, &cThrowableError)
+	retGo := DtlsClientConnectionNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
 // GetAcceptedCas is a wrapper around the C function g_dtls_client_connection_get_accepted_cas.
 func (recv *DtlsClientConnection) GetAcceptedCas() *glib.List {
 	retC := C.g_dtls_client_connection_get_accepted_cas((*C.GDtlsClientConnection)(recv.native))
@@ -470,6 +489,28 @@ func (recv *DtlsServerConnection) ToC() unsafe.Pointer {
 // Equals compares this DtlsServerConnection with another DtlsServerConnection, and returns true if they represent the same GObject.
 func (recv *DtlsServerConnection) Equals(other *DtlsServerConnection) bool {
 	return other.ToC() == recv.ToC()
+}
+
+// DtlsServerConnectionNew is a wrapper around the C function g_dtls_server_connection_new.
+func DtlsServerConnectionNew(baseSocket *DatagramBased, certificate *TlsCertificate) (*DtlsServerConnection, error) {
+	c_base_socket := (*C.GDatagramBased)(baseSocket.ToC())
+
+	c_certificate := (*C.GTlsCertificate)(C.NULL)
+	if certificate != nil {
+		c_certificate = (*C.GTlsCertificate)(certificate.ToC())
+	}
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dtls_server_connection_new(c_base_socket, c_certificate, &cThrowableError)
+	retGo := DtlsServerConnectionNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
 }
 
 // ToString is a wrapper around the C function g_socket_connectable_to_string.

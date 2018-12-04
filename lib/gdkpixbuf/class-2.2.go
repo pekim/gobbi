@@ -3,12 +3,23 @@
 
 package gdkpixbuf
 
-import "unsafe"
+import (
+	glib "github.com/pekim/gobbi/lib/glib"
+	"unsafe"
+)
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gdk-pixbuf/gdk-pixbuf.h>
 // #include <stdlib.h>
 import "C"
+
+// PixbufGetFormats is a wrapper around the C function gdk_pixbuf_get_formats.
+func PixbufGetFormats() *glib.SList {
+	retC := C.gdk_pixbuf_get_formats()
+	retGo := glib.SListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Blacklisted : gdk_pixbuf_set_option
 

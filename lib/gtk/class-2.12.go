@@ -1400,6 +1400,18 @@ func (recv *ToolItem) SetTooltipText(text string) {
 	return
 }
 
+// TooltipTriggerTooltipQuery is a wrapper around the C function gtk_tooltip_trigger_tooltip_query.
+func TooltipTriggerTooltipQuery(display *gdk.Display) {
+	c_display := (*C.GdkDisplay)(C.NULL)
+	if display != nil {
+		c_display = (*C.GdkDisplay)(display.ToC())
+	}
+
+	C.gtk_tooltip_trigger_tooltip_query(c_display)
+
+	return
+}
+
 // SetCustom is a wrapper around the C function gtk_tooltip_set_custom.
 func (recv *Tooltip) SetCustom(customWidget *Widget) {
 	c_custom_widget := (*C.GtkWidget)(C.NULL)

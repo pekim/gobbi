@@ -331,14 +331,6 @@ func BitStorage(number uint64) uint32 {
 	return retGo
 }
 
-// BookmarkFileErrorQuark is a wrapper around the C function g_bookmark_file_error_quark.
-func BookmarkFileErrorQuark() Quark {
-	retC := C.g_bookmark_file_error_quark()
-	retGo := (Quark)(retC)
-
-	return retGo
-}
-
 // Unsupported : g_build_filename : unsupported parameter ... : varargs
 
 // Unsupported : g_build_path : unsupported parameter ... : varargs
@@ -485,133 +477,6 @@ func DatasetIdRemoveNoNotify(datasetLocation uintptr, keyId Quark) uintptr {
 }
 
 // Unsupported : g_dataset_id_set_data_full : unsupported parameter destroy_func : no type generator for DestroyNotify (GDestroyNotify) for param destroy_func
-
-// DateGetDaysInMonth is a wrapper around the C function g_date_get_days_in_month.
-func DateGetDaysInMonth(month DateMonth, year DateYear) uint8 {
-	c_month := (C.GDateMonth)(month)
-
-	c_year := (C.GDateYear)(year)
-
-	retC := C.g_date_get_days_in_month(c_month, c_year)
-	retGo := (uint8)(retC)
-
-	return retGo
-}
-
-// DateGetMondayWeeksInYear is a wrapper around the C function g_date_get_monday_weeks_in_year.
-func DateGetMondayWeeksInYear(year DateYear) uint8 {
-	c_year := (C.GDateYear)(year)
-
-	retC := C.g_date_get_monday_weeks_in_year(c_year)
-	retGo := (uint8)(retC)
-
-	return retGo
-}
-
-// DateGetSundayWeeksInYear is a wrapper around the C function g_date_get_sunday_weeks_in_year.
-func DateGetSundayWeeksInYear(year DateYear) uint8 {
-	c_year := (C.GDateYear)(year)
-
-	retC := C.g_date_get_sunday_weeks_in_year(c_year)
-	retGo := (uint8)(retC)
-
-	return retGo
-}
-
-// DateIsLeapYear is a wrapper around the C function g_date_is_leap_year.
-func DateIsLeapYear(year DateYear) bool {
-	c_year := (C.GDateYear)(year)
-
-	retC := C.g_date_is_leap_year(c_year)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// DateStrftime is a wrapper around the C function g_date_strftime.
-func DateStrftime(s string, slen uint64, format string, date *Date) uint64 {
-	c_s := C.CString(s)
-	defer C.free(unsafe.Pointer(c_s))
-
-	c_slen := (C.gsize)(slen)
-
-	c_format := C.CString(format)
-	defer C.free(unsafe.Pointer(c_format))
-
-	c_date := (*C.GDate)(C.NULL)
-	if date != nil {
-		c_date = (*C.GDate)(date.ToC())
-	}
-
-	retC := C.g_date_strftime(c_s, c_slen, c_format, c_date)
-	retGo := (uint64)(retC)
-
-	return retGo
-}
-
-// DateValidDay is a wrapper around the C function g_date_valid_day.
-func DateValidDay(day DateDay) bool {
-	c_day := (C.GDateDay)(day)
-
-	retC := C.g_date_valid_day(c_day)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// DateValidDmy is a wrapper around the C function g_date_valid_dmy.
-func DateValidDmy(day DateDay, month DateMonth, year DateYear) bool {
-	c_day := (C.GDateDay)(day)
-
-	c_month := (C.GDateMonth)(month)
-
-	c_year := (C.GDateYear)(year)
-
-	retC := C.g_date_valid_dmy(c_day, c_month, c_year)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// DateValidJulian is a wrapper around the C function g_date_valid_julian.
-func DateValidJulian(julianDate uint32) bool {
-	c_julian_date := (C.guint32)(julianDate)
-
-	retC := C.g_date_valid_julian(c_julian_date)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// DateValidMonth is a wrapper around the C function g_date_valid_month.
-func DateValidMonth(month DateMonth) bool {
-	c_month := (C.GDateMonth)(month)
-
-	retC := C.g_date_valid_month(c_month)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// DateValidWeekday is a wrapper around the C function g_date_valid_weekday.
-func DateValidWeekday(weekday DateWeekday) bool {
-	c_weekday := (C.GDateWeekday)(weekday)
-
-	retC := C.g_date_valid_weekday(c_weekday)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// DateValidYear is a wrapper around the C function g_date_valid_year.
-func DateValidYear(year DateYear) bool {
-	c_year := (C.GDateYear)(year)
-
-	retC := C.g_date_valid_year(c_year)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
 
 // DirectEqual is a wrapper around the C function g_direct_equal.
 func DirectEqual(v1 uintptr, v2 uintptr) bool {
@@ -909,238 +774,6 @@ func Getenv(variable string) string {
 	return retGo
 }
 
-// HashTableDestroy is a wrapper around the C function g_hash_table_destroy.
-func HashTableDestroy(hashTable *HashTable) {
-	c_hash_table := (*C.GHashTable)(C.NULL)
-	if hashTable != nil {
-		c_hash_table = (*C.GHashTable)(hashTable.ToC())
-	}
-
-	C.g_hash_table_destroy(c_hash_table)
-
-	return
-}
-
-// HashTableInsert is a wrapper around the C function g_hash_table_insert.
-func HashTableInsert(hashTable *HashTable, key uintptr, value uintptr) bool {
-	c_hash_table := (*C.GHashTable)(C.NULL)
-	if hashTable != nil {
-		c_hash_table = (*C.GHashTable)(hashTable.ToC())
-	}
-
-	c_key := (C.gpointer)(key)
-
-	c_value := (C.gpointer)(value)
-
-	retC := C.g_hash_table_insert(c_hash_table, c_key, c_value)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// HashTableLookup is a wrapper around the C function g_hash_table_lookup.
-func HashTableLookup(hashTable *HashTable, key uintptr) uintptr {
-	c_hash_table := (*C.GHashTable)(C.NULL)
-	if hashTable != nil {
-		c_hash_table = (*C.GHashTable)(hashTable.ToC())
-	}
-
-	c_key := (C.gconstpointer)(key)
-
-	retC := C.g_hash_table_lookup(c_hash_table, c_key)
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// HashTableLookupExtended is a wrapper around the C function g_hash_table_lookup_extended.
-func HashTableLookupExtended(hashTable *HashTable, lookupKey uintptr) (bool, uintptr, uintptr) {
-	c_hash_table := (*C.GHashTable)(C.NULL)
-	if hashTable != nil {
-		c_hash_table = (*C.GHashTable)(hashTable.ToC())
-	}
-
-	c_lookup_key := (C.gconstpointer)(lookupKey)
-
-	var c_orig_key C.gpointer
-
-	var c_value C.gpointer
-
-	retC := C.g_hash_table_lookup_extended(c_hash_table, c_lookup_key, &c_orig_key, &c_value)
-	retGo := retC == C.TRUE
-
-	origKey := (uintptr)(unsafe.Pointer(&c_orig_key))
-
-	value := (uintptr)(unsafe.Pointer(&c_value))
-
-	return retGo, origKey, value
-}
-
-// HashTableRemove is a wrapper around the C function g_hash_table_remove.
-func HashTableRemove(hashTable *HashTable, key uintptr) bool {
-	c_hash_table := (*C.GHashTable)(C.NULL)
-	if hashTable != nil {
-		c_hash_table = (*C.GHashTable)(hashTable.ToC())
-	}
-
-	c_key := (C.gconstpointer)(key)
-
-	retC := C.g_hash_table_remove(c_hash_table, c_key)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// HashTableReplace is a wrapper around the C function g_hash_table_replace.
-func HashTableReplace(hashTable *HashTable, key uintptr, value uintptr) bool {
-	c_hash_table := (*C.GHashTable)(C.NULL)
-	if hashTable != nil {
-		c_hash_table = (*C.GHashTable)(hashTable.ToC())
-	}
-
-	c_key := (C.gpointer)(key)
-
-	c_value := (C.gpointer)(value)
-
-	retC := C.g_hash_table_replace(c_hash_table, c_key, c_value)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// HashTableSize is a wrapper around the C function g_hash_table_size.
-func HashTableSize(hashTable *HashTable) uint32 {
-	c_hash_table := (*C.GHashTable)(C.NULL)
-	if hashTable != nil {
-		c_hash_table = (*C.GHashTable)(hashTable.ToC())
-	}
-
-	retC := C.g_hash_table_size(c_hash_table)
-	retGo := (uint32)(retC)
-
-	return retGo
-}
-
-// HashTableSteal is a wrapper around the C function g_hash_table_steal.
-func HashTableSteal(hashTable *HashTable, key uintptr) bool {
-	c_hash_table := (*C.GHashTable)(C.NULL)
-	if hashTable != nil {
-		c_hash_table = (*C.GHashTable)(hashTable.ToC())
-	}
-
-	c_key := (C.gconstpointer)(key)
-
-	retC := C.g_hash_table_steal(c_hash_table, c_key)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// HookDestroy is a wrapper around the C function g_hook_destroy.
-func HookDestroy(hookList *HookList, hookId uint64) bool {
-	c_hook_list := (*C.GHookList)(C.NULL)
-	if hookList != nil {
-		c_hook_list = (*C.GHookList)(hookList.ToC())
-	}
-
-	c_hook_id := (C.gulong)(hookId)
-
-	retC := C.g_hook_destroy(c_hook_list, c_hook_id)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// HookDestroyLink is a wrapper around the C function g_hook_destroy_link.
-func HookDestroyLink(hookList *HookList, hook *Hook) {
-	c_hook_list := (*C.GHookList)(C.NULL)
-	if hookList != nil {
-		c_hook_list = (*C.GHookList)(hookList.ToC())
-	}
-
-	c_hook := (*C.GHook)(C.NULL)
-	if hook != nil {
-		c_hook = (*C.GHook)(hook.ToC())
-	}
-
-	C.g_hook_destroy_link(c_hook_list, c_hook)
-
-	return
-}
-
-// HookFree is a wrapper around the C function g_hook_free.
-func HookFree(hookList *HookList, hook *Hook) {
-	c_hook_list := (*C.GHookList)(C.NULL)
-	if hookList != nil {
-		c_hook_list = (*C.GHookList)(hookList.ToC())
-	}
-
-	c_hook := (*C.GHook)(C.NULL)
-	if hook != nil {
-		c_hook = (*C.GHook)(hook.ToC())
-	}
-
-	C.g_hook_free(c_hook_list, c_hook)
-
-	return
-}
-
-// HookInsertBefore is a wrapper around the C function g_hook_insert_before.
-func HookInsertBefore(hookList *HookList, sibling *Hook, hook *Hook) {
-	c_hook_list := (*C.GHookList)(C.NULL)
-	if hookList != nil {
-		c_hook_list = (*C.GHookList)(hookList.ToC())
-	}
-
-	c_sibling := (*C.GHook)(C.NULL)
-	if sibling != nil {
-		c_sibling = (*C.GHook)(sibling.ToC())
-	}
-
-	c_hook := (*C.GHook)(C.NULL)
-	if hook != nil {
-		c_hook = (*C.GHook)(hook.ToC())
-	}
-
-	C.g_hook_insert_before(c_hook_list, c_sibling, c_hook)
-
-	return
-}
-
-// HookPrepend is a wrapper around the C function g_hook_prepend.
-func HookPrepend(hookList *HookList, hook *Hook) {
-	c_hook_list := (*C.GHookList)(C.NULL)
-	if hookList != nil {
-		c_hook_list = (*C.GHookList)(hookList.ToC())
-	}
-
-	c_hook := (*C.GHook)(C.NULL)
-	if hook != nil {
-		c_hook = (*C.GHook)(hook.ToC())
-	}
-
-	C.g_hook_prepend(c_hook_list, c_hook)
-
-	return
-}
-
-// HookUnref is a wrapper around the C function g_hook_unref.
-func HookUnref(hookList *HookList, hook *Hook) {
-	c_hook_list := (*C.GHookList)(C.NULL)
-	if hookList != nil {
-		c_hook_list = (*C.GHookList)(hookList.ToC())
-	}
-
-	c_hook := (*C.GHook)(C.NULL)
-	if hook != nil {
-		c_hook = (*C.GHook)(hook.ToC())
-	}
-
-	C.g_hook_unref(c_hook_list, c_hook)
-
-	return
-}
-
 // Unsupported : g_iconv : unsupported parameter converter : Blacklisted record : GIConv
 
 // Unsupported : g_iconv_open : return type : Blacklisted record : GIConv
@@ -1193,33 +826,7 @@ func IntHash(v uintptr) uint32 {
 
 // Unsupported : g_io_add_watch_full : unsupported parameter channel : Blacklisted record : GIOChannel
 
-// IoChannelErrorFromErrno is a wrapper around the C function g_io_channel_error_from_errno.
-func IoChannelErrorFromErrno(en int32) IOChannelError {
-	c_en := (C.gint)(en)
-
-	retC := C.g_io_channel_error_from_errno(c_en)
-	retGo := (IOChannelError)(retC)
-
-	return retGo
-}
-
-// IoChannelErrorQuark is a wrapper around the C function g_io_channel_error_quark.
-func IoChannelErrorQuark() Quark {
-	retC := C.g_io_channel_error_quark()
-	retGo := (Quark)(retC)
-
-	return retGo
-}
-
 // Unsupported : g_io_create_watch : unsupported parameter channel : Blacklisted record : GIOChannel
-
-// KeyFileErrorQuark is a wrapper around the C function g_key_file_error_quark.
-func KeyFileErrorQuark() Quark {
-	retC := C.g_key_file_error_quark()
-	retGo := (Quark)(retC)
-
-	return retGo
-}
 
 // Unsupported : g_locale_from_utf8 : no return type
 
@@ -1310,14 +917,6 @@ func LogSetFatalMask(logDomain string, fatalMask LogLevelFlags) LogLevelFlags {
 // Unsupported : g_log_structured_standard : unsupported parameter ... : varargs
 
 // Unsupported : g_logv : unsupported parameter args : no type generator for va_list (va_list) for param args
-
-// MainContextDefault is a wrapper around the C function g_main_context_default.
-func MainContextDefault() *MainContext {
-	retC := C.g_main_context_default()
-	retGo := MainContextNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
 
 // MainDepth is a wrapper around the C function g_main_depth.
 func MainDepth() int32 {
@@ -1685,14 +1284,6 @@ func Realloc(mem uintptr, nBytes uint64) uintptr {
 	return retGo
 }
 
-// RegexErrorQuark is a wrapper around the C function g_regex_error_quark.
-func RegexErrorQuark() Quark {
-	retC := C.g_regex_error_quark()
-	retGo := (Quark)(retC)
-
-	return retGo
-}
-
 // ReturnIfFailWarning is a wrapper around the C function g_return_if_fail_warning.
 func ReturnIfFailWarning(logDomain string, prettyFunction string, expression string) {
 	c_log_domain := C.CString(logDomain)
@@ -1790,41 +1381,6 @@ func SliceSetConfig(ckey SliceConfig, value int64) {
 }
 
 // Unsupported : g_snprintf : unsupported parameter ... : varargs
-
-// SourceRemove is a wrapper around the C function g_source_remove.
-func SourceRemove(tag uint32) bool {
-	c_tag := (C.guint)(tag)
-
-	retC := C.g_source_remove(c_tag)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// SourceRemoveByFuncsUserData is a wrapper around the C function g_source_remove_by_funcs_user_data.
-func SourceRemoveByFuncsUserData(funcs *SourceFuncs, userData uintptr) bool {
-	c_funcs := (*C.GSourceFuncs)(C.NULL)
-	if funcs != nil {
-		c_funcs = (*C.GSourceFuncs)(funcs.ToC())
-	}
-
-	c_user_data := (C.gpointer)(userData)
-
-	retC := C.g_source_remove_by_funcs_user_data(c_funcs, c_user_data)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// SourceRemoveByUserData is a wrapper around the C function g_source_remove_by_user_data.
-func SourceRemoveByUserData(userData uintptr) bool {
-	c_user_data := (C.gpointer)(userData)
-
-	retC := C.g_source_remove_by_user_data(c_user_data)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
 
 // SpacedPrimesClosest is a wrapper around the C function g_spaced_primes_closest.
 func SpacedPrimesClosest(num uint32) uint32 {
@@ -2334,70 +1890,6 @@ func TestTrapAssertions(domain string, file string, line int32, func_ string, as
 	return
 }
 
-// ThreadErrorQuark is a wrapper around the C function g_thread_error_quark.
-func ThreadErrorQuark() Quark {
-	retC := C.g_thread_error_quark()
-	retGo := (Quark)(retC)
-
-	return retGo
-}
-
-// ThreadExit is a wrapper around the C function g_thread_exit.
-func ThreadExit(retval uintptr) {
-	c_retval := (C.gpointer)(retval)
-
-	C.g_thread_exit(c_retval)
-
-	return
-}
-
-// ThreadPoolGetMaxUnusedThreads is a wrapper around the C function g_thread_pool_get_max_unused_threads.
-func ThreadPoolGetMaxUnusedThreads() int32 {
-	retC := C.g_thread_pool_get_max_unused_threads()
-	retGo := (int32)(retC)
-
-	return retGo
-}
-
-// ThreadPoolGetNumUnusedThreads is a wrapper around the C function g_thread_pool_get_num_unused_threads.
-func ThreadPoolGetNumUnusedThreads() uint32 {
-	retC := C.g_thread_pool_get_num_unused_threads()
-	retGo := (uint32)(retC)
-
-	return retGo
-}
-
-// ThreadPoolSetMaxUnusedThreads is a wrapper around the C function g_thread_pool_set_max_unused_threads.
-func ThreadPoolSetMaxUnusedThreads(maxThreads int32) {
-	c_max_threads := (C.gint)(maxThreads)
-
-	C.g_thread_pool_set_max_unused_threads(c_max_threads)
-
-	return
-}
-
-// ThreadPoolStopUnusedThreads is a wrapper around the C function g_thread_pool_stop_unused_threads.
-func ThreadPoolStopUnusedThreads() {
-	C.g_thread_pool_stop_unused_threads()
-
-	return
-}
-
-// ThreadSelf is a wrapper around the C function g_thread_self.
-func ThreadSelf() *Thread {
-	retC := C.g_thread_self()
-	retGo := ThreadNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// ThreadYield is a wrapper around the C function g_thread_yield.
-func ThreadYield() {
-	C.g_thread_yield()
-
-	return
-}
-
 // Unsupported : g_timeout_add : unsupported parameter function : no type generator for SourceFunc (GSourceFunc) for param function
 
 // Unsupported : g_timeout_add_full : unsupported parameter function : no type generator for SourceFunc (GSourceFunc) for param function
@@ -2410,59 +1902,6 @@ func TimeoutSourceNew(interval uint32) *Source {
 	retGo := SourceNewFromC(unsafe.Pointer(retC))
 
 	return retGo
-}
-
-// TrashStackHeight is a wrapper around the C function g_trash_stack_height.
-func TrashStackHeight(stackP *TrashStack) uint32 {
-	c_stack_p := (**C.GTrashStack)(C.NULL)
-	if stackP != nil {
-		c_stack_p = (**C.GTrashStack)(stackP.ToC())
-	}
-
-	retC := C.g_trash_stack_height(c_stack_p)
-	retGo := (uint32)(retC)
-
-	return retGo
-}
-
-// TrashStackPeek is a wrapper around the C function g_trash_stack_peek.
-func TrashStackPeek(stackP *TrashStack) uintptr {
-	c_stack_p := (**C.GTrashStack)(C.NULL)
-	if stackP != nil {
-		c_stack_p = (**C.GTrashStack)(stackP.ToC())
-	}
-
-	retC := C.g_trash_stack_peek(c_stack_p)
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// TrashStackPop is a wrapper around the C function g_trash_stack_pop.
-func TrashStackPop(stackP *TrashStack) uintptr {
-	c_stack_p := (**C.GTrashStack)(C.NULL)
-	if stackP != nil {
-		c_stack_p = (**C.GTrashStack)(stackP.ToC())
-	}
-
-	retC := C.g_trash_stack_pop(c_stack_p)
-	retGo := (uintptr)(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// TrashStackPush is a wrapper around the C function g_trash_stack_push.
-func TrashStackPush(stackP *TrashStack, dataP uintptr) {
-	c_stack_p := (**C.GTrashStack)(C.NULL)
-	if stackP != nil {
-		c_stack_p = (**C.GTrashStack)(stackP.ToC())
-	}
-
-	c_data_p := (C.gpointer)(dataP)
-
-	C.g_trash_stack_push(c_stack_p, c_data_p)
-
-	return
 }
 
 // TryMalloc is a wrapper around the C function g_try_malloc.
@@ -3035,34 +2474,7 @@ func Utf8Validate(str []uint8) (bool, string) {
 
 // Unsupported : g_variant_parse : unsupported parameter type : Blacklisted record : GVariantType
 
-// VariantParseErrorQuark is a wrapper around the C function g_variant_parse_error_quark.
-func VariantParseErrorQuark() Quark {
-	retC := C.g_variant_parse_error_quark()
-	retGo := (Quark)(retC)
-
-	return retGo
-}
-
-// VariantParserGetErrorQuark is a wrapper around the C function g_variant_parser_get_error_quark.
-func VariantParserGetErrorQuark() Quark {
-	retC := C.g_variant_parser_get_error_quark()
-	retGo := (Quark)(retC)
-
-	return retGo
-}
-
 // Unsupported : g_variant_type_checked_ : return type : Blacklisted record : GVariantType
-
-// VariantTypeStringIsValid is a wrapper around the C function g_variant_type_string_is_valid.
-func VariantTypeStringIsValid(typeString string) bool {
-	c_type_string := C.CString(typeString)
-	defer C.free(unsafe.Pointer(c_type_string))
-
-	retC := C.g_variant_type_string_is_valid(c_type_string)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
 
 // Unsupported : g_vsnprintf : unsupported parameter args : no type generator for va_list (va_list) for param args
 

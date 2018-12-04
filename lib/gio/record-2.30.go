@@ -307,6 +307,16 @@ func (recv *IOModuleScope) Equals(other *IOModuleScope) bool {
 	return other.ToC() == recv.ToC()
 }
 
+// IOModuleScopeNew is a wrapper around the C function g_io_module_scope_new.
+func IOModuleScopeNew(flags IOModuleScopeFlags) *IOModuleScope {
+	c_flags := (C.GIOModuleScopeFlags)(flags)
+
+	retC := C.g_io_module_scope_new(c_flags)
+	retGo := IOModuleScopeNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // Block is a wrapper around the C function g_io_module_scope_block.
 func (recv *IOModuleScope) Block(basename string) {
 	c_basename := C.CString(basename)

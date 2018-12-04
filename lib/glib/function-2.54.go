@@ -68,20 +68,4 @@ func AsciiStringToUnsigned(str string, base uint32, min uint64, max uint64) (boo
 	return retGo, outNum, goThrowableError
 }
 
-// PtrArrayFind is a wrapper around the C function g_ptr_array_find.
-func PtrArrayFind(haystack []uintptr, needle uintptr) (bool, uint32) {
-	c_haystack := &haystack[0]
-
-	c_needle := (C.gconstpointer)(needle)
-
-	var c_index_ C.guint
-
-	retC := C.g_ptr_array_find((*C.GPtrArray)(unsafe.Pointer(c_haystack)), c_needle, &c_index_)
-	retGo := retC == C.TRUE
-
-	index := (uint32)(c_index_)
-
-	return retGo, index
-}
-
 // Unsupported : g_ptr_array_find_with_equal_func : unsupported parameter equal_func : no type generator for EqualFunc (GEqualFunc) for param equal_func

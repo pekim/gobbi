@@ -22,6 +22,16 @@ func (recv *ObjectClass) OverrideProperty(propertyId uint32, name string) {
 	return
 }
 
+// TypeClassPeekStatic is a wrapper around the C function g_type_class_peek_static.
+func TypeClassPeekStatic(type_ Type) uintptr {
+	c_type := (C.GType)(type_)
+
+	retC := C.g_type_class_peek_static(c_type)
+	retGo := (uintptr)(retC)
+
+	return retGo
+}
+
 // AddPrivate is a wrapper around the C function g_type_class_add_private.
 func (recv *TypeClass) AddPrivate(privateSize uint64) {
 	c_private_size := (C.gsize)(privateSize)

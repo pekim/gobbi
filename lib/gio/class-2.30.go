@@ -248,6 +248,8 @@ func DBusObjectManagerClientNewForBusFinish(res *AsyncResult) (*DBusObjectManage
 
 // Unsupported : g_dbus_object_manager_client_new_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc (GDBusProxyTypeFunc) for param get_proxy_type_func
 
+// g_dbus_object_manager_client_new : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc (GDBusProxyTypeFunc) for param get_proxy_type_func
+// g_dbus_object_manager_client_new_for_bus : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc (GDBusProxyTypeFunc) for param get_proxy_type_func
 // GetConnection is a wrapper around the C function g_dbus_object_manager_client_get_connection.
 func (recv *DBusObjectManagerClient) GetConnection() *DBusConnection {
 	retC := C.g_dbus_object_manager_client_get_connection((*C.GDBusObjectManagerClient)(recv.native))

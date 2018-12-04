@@ -5,7 +5,6 @@ package gtk
 
 import (
 	gdk "github.com/pekim/gobbi/lib/gdk"
-	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 )
 
@@ -30,14 +29,6 @@ func BindingsActivateEvent(object *gobject.Object, event *gdk.EventKey) bool {
 
 	retC := C.gtk_bindings_activate_event(c_object, c_event)
 	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// FileChooserErrorQuark is a wrapper around the C function gtk_file_chooser_error_quark.
-func FileChooserErrorQuark() glib.Quark {
-	retC := C.gtk_file_chooser_error_quark()
-	retGo := (glib.Quark)(retC)
 
 	return retGo
 }

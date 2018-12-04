@@ -16,33 +16,6 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// BindingEntrySkip is a wrapper around the C function gtk_binding_entry_skip.
-func BindingEntrySkip(bindingSet *BindingSet, keyval uint32, modifiers gdk.ModifierType) {
-	c_binding_set := (*C.GtkBindingSet)(C.NULL)
-	if bindingSet != nil {
-		c_binding_set = (*C.GtkBindingSet)(bindingSet.ToC())
-	}
-
-	c_keyval := (C.guint)(keyval)
-
-	c_modifiers := (C.GdkModifierType)(modifiers)
-
-	C.gtk_binding_entry_skip(c_binding_set, c_keyval, c_modifiers)
-
-	return
-}
-
-// PaperSizeGetPaperSizes is a wrapper around the C function gtk_paper_size_get_paper_sizes.
-func PaperSizeGetPaperSizes(includeCustom bool) *glib.List {
-	c_include_custom :=
-		boolToGboolean(includeCustom)
-
-	retC := C.gtk_paper_size_get_paper_sizes(c_include_custom)
-	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // RcParseColorFull is a wrapper around the C function gtk_rc_parse_color_full.
 func RcParseColorFull(scanner *glib.Scanner, style *RcStyle) (uint32, *gdk.Color) {
 	c_scanner := (*C.GScanner)(C.NULL)

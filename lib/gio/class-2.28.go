@@ -635,11 +635,31 @@ func (recv *EmblemedIcon) ClearEmblems() {
 	return
 }
 
+// IOStreamSpliceFinish is a wrapper around the C function g_io_stream_splice_finish.
+func IOStreamSpliceFinish(result *AsyncResult) (bool, error) {
+	c_result := (*C.GAsyncResult)(result.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_io_stream_splice_finish(c_result, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
 // Unsupported : g_io_stream_splice_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
+// g_settings_list_relocatable_schemas : no return type
 // Unsupported : g_settings_get_range : return type : Blacklisted record : GVariant
 
 // Unsupported : g_settings_range_check : unsupported parameter value : Blacklisted record : GVariant
+
+// Blacklisted : g_settings_backend_get_default
 
 // Unsupported signal 'activate' for SimpleAction : unsupported parameter parameter : type GLib.Variant : Blacklisted record : GVariant
 
@@ -890,6 +910,24 @@ func TlsCertificateNewFromPem(data string) (*TlsCertificate, error) {
 
 	retC := C.g_tls_certificate_new_from_pem(c_data, c_length, &cThrowableError)
 	retGo := TlsCertificateNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// TlsCertificateListNewFromFile is a wrapper around the C function g_tls_certificate_list_new_from_file.
+func TlsCertificateListNewFromFile(file string) (*glib.List, error) {
+	c_file := C.CString(file)
+	defer C.free(unsafe.Pointer(c_file))
+
+	var cThrowableError *C.GError
+
+	retC := C.g_tls_certificate_list_new_from_file(c_file, &cThrowableError)
+	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {

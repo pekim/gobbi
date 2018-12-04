@@ -12,15 +12,6 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// ByteArrayUnref is a wrapper around the C function g_byte_array_unref.
-func ByteArrayUnref(array []uint8) {
-	c_array := &array[0]
-
-	C.g_byte_array_unref((*C.GByteArray)(unsafe.Pointer(c_array)))
-
-	return
-}
-
 // DoubleEqual is a wrapper around the C function g_double_equal.
 func DoubleEqual(v1 uintptr, v2 uintptr) bool {
 	c_v1 := (C.gconstpointer)(v1)
@@ -118,14 +109,6 @@ func Int64Hash(v uintptr) uint32 {
 
 	retC := C.g_int64_hash(c_v)
 	retGo := (uint32)(retC)
-
-	return retGo
-}
-
-// MainContextGetThreadDefault is a wrapper around the C function g_main_context_get_thread_default.
-func MainContextGetThreadDefault() *MainContext {
-	retC := C.g_main_context_get_thread_default()
-	retGo := MainContextNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

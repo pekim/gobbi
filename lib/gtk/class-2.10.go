@@ -3102,6 +3102,14 @@ func RecentManagerNew() *RecentManager {
 	return retGo
 }
 
+// RecentManagerGetDefault is a wrapper around the C function gtk_recent_manager_get_default.
+func RecentManagerGetDefault() *RecentManager {
+	retC := C.gtk_recent_manager_get_default()
+	retGo := RecentManagerNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // AddFull is a wrapper around the C function gtk_recent_manager_add_full.
 func (recv *RecentManager) AddFull(uri string, recentData *RecentData) bool {
 	c_uri := C.CString(uri)
@@ -3541,6 +3549,28 @@ func StatusIconNewFromStock(stockId string) *StatusIcon {
 	retGo := StatusIconNewFromC(unsafe.Pointer(retC))
 
 	return retGo
+}
+
+// StatusIconPositionMenu is a wrapper around the C function gtk_status_icon_position_menu.
+func StatusIconPositionMenu(menu *Menu, x int32, y int32, userData uintptr) bool {
+	c_menu := (*C.GtkMenu)(C.NULL)
+	if menu != nil {
+		c_menu = (*C.GtkMenu)(menu.ToC())
+	}
+
+	c_x := (C.gint)(x)
+
+	c_y := (C.gint)(y)
+
+	var c_push_in C.gboolean
+
+	c_user_data := (C.gpointer)(userData)
+
+	C.gtk_status_icon_position_menu(c_menu, &c_x, &c_y, &c_push_in, c_user_data)
+
+	pushIn := c_push_in == C.TRUE
+
+	return pushIn
 }
 
 // Unsupported : gtk_status_icon_get_geometry : unsupported parameter area : Blacklisted record : GdkRectangle

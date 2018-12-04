@@ -12,6 +12,32 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
+// HashTableGetKeys is a wrapper around the C function g_hash_table_get_keys.
+func HashTableGetKeys(hashTable *HashTable) *List {
+	c_hash_table := (*C.GHashTable)(C.NULL)
+	if hashTable != nil {
+		c_hash_table = (*C.GHashTable)(hashTable.ToC())
+	}
+
+	retC := C.g_hash_table_get_keys(c_hash_table)
+	retGo := ListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// HashTableGetValues is a wrapper around the C function g_hash_table_get_values.
+func HashTableGetValues(hashTable *HashTable) *List {
+	c_hash_table := (*C.GHashTable)(C.NULL)
+	if hashTable != nil {
+		c_hash_table = (*C.GHashTable)(hashTable.ToC())
+	}
+
+	retC := C.g_hash_table_get_values(c_hash_table)
+	retGo := ListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // Unsupported : g_key_file_load_from_dirs : unsupported parameter search_dirs :
 
 // ExpandReferences is a wrapper around the C function g_match_info_expand_references.
@@ -157,6 +183,8 @@ func (recv *MatchInfo) Next() (bool, error) {
 	return retGo, goThrowableError
 }
 
+// g_once_init_enter : unsupported parameter location : no type generator for gpointer (void*) for param location
+// g_once_init_leave : unsupported parameter location : no type generator for gpointer (void*) for param location
 // GetHelp is a wrapper around the C function g_option_context_get_help.
 func (recv *OptionContext) GetHelp(mainHelp bool, group *OptionGroup) string {
 	c_main_help :=
@@ -241,6 +269,48 @@ func RegexNew(pattern string, compileOptions RegexCompileFlags, matchOptions Reg
 	return retGo, goThrowableError
 }
 
+// RegexCheckReplacement is a wrapper around the C function g_regex_check_replacement.
+func RegexCheckReplacement(replacement string) (bool, bool, error) {
+	c_replacement := C.CString(replacement)
+	defer C.free(unsafe.Pointer(c_replacement))
+
+	var c_has_references C.gboolean
+
+	var cThrowableError *C.GError
+
+	retC := C.g_regex_check_replacement(c_replacement, &c_has_references, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	hasReferences := c_has_references == C.TRUE
+
+	return retGo, hasReferences, goThrowableError
+}
+
+// g_regex_escape_string : unsupported parameter string :
+// RegexMatchSimple is a wrapper around the C function g_regex_match_simple.
+func RegexMatchSimple(pattern string, string string, compileOptions RegexCompileFlags, matchOptions RegexMatchFlags) bool {
+	c_pattern := C.CString(pattern)
+	defer C.free(unsafe.Pointer(c_pattern))
+
+	c_string := C.CString(string)
+	defer C.free(unsafe.Pointer(c_string))
+
+	c_compile_options := (C.GRegexCompileFlags)(compileOptions)
+
+	c_match_options := (C.GRegexMatchFlags)(matchOptions)
+
+	retC := C.g_regex_match_simple(c_pattern, c_string, c_compile_options, c_match_options)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// g_regex_split_simple : no return type
 // GetCaptureCount is a wrapper around the C function g_regex_get_capture_count.
 func (recv *Regex) GetCaptureCount() int32 {
 	retC := C.g_regex_get_capture_count((*C.GRegex)(recv.native))
@@ -335,6 +405,155 @@ func (recv *Regex) Ref() *Regex {
 // Unref is a wrapper around the C function g_regex_unref.
 func (recv *Regex) Unref() {
 	C.g_regex_unref((*C.GRegex)(recv.native))
+
+	return
+}
+
+// g_sequence_foreach_range : unsupported parameter func : no type generator for Func (GFunc) for param func
+// SequenceGet is a wrapper around the C function g_sequence_get.
+func SequenceGet(iter *SequenceIter) uintptr {
+	c_iter := (*C.GSequenceIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GSequenceIter)(iter.ToC())
+	}
+
+	retC := C.g_sequence_get(c_iter)
+	retGo := (uintptr)(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// SequenceInsertBefore is a wrapper around the C function g_sequence_insert_before.
+func SequenceInsertBefore(iter *SequenceIter, data uintptr) *SequenceIter {
+	c_iter := (*C.GSequenceIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GSequenceIter)(iter.ToC())
+	}
+
+	c_data := (C.gpointer)(data)
+
+	retC := C.g_sequence_insert_before(c_iter, c_data)
+	retGo := SequenceIterNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// SequenceMove is a wrapper around the C function g_sequence_move.
+func SequenceMove(src *SequenceIter, dest *SequenceIter) {
+	c_src := (*C.GSequenceIter)(C.NULL)
+	if src != nil {
+		c_src = (*C.GSequenceIter)(src.ToC())
+	}
+
+	c_dest := (*C.GSequenceIter)(C.NULL)
+	if dest != nil {
+		c_dest = (*C.GSequenceIter)(dest.ToC())
+	}
+
+	C.g_sequence_move(c_src, c_dest)
+
+	return
+}
+
+// SequenceMoveRange is a wrapper around the C function g_sequence_move_range.
+func SequenceMoveRange(dest *SequenceIter, begin *SequenceIter, end *SequenceIter) {
+	c_dest := (*C.GSequenceIter)(C.NULL)
+	if dest != nil {
+		c_dest = (*C.GSequenceIter)(dest.ToC())
+	}
+
+	c_begin := (*C.GSequenceIter)(C.NULL)
+	if begin != nil {
+		c_begin = (*C.GSequenceIter)(begin.ToC())
+	}
+
+	c_end := (*C.GSequenceIter)(C.NULL)
+	if end != nil {
+		c_end = (*C.GSequenceIter)(end.ToC())
+	}
+
+	C.g_sequence_move_range(c_dest, c_begin, c_end)
+
+	return
+}
+
+// g_sequence_new : unsupported parameter data_destroy : no type generator for DestroyNotify (GDestroyNotify) for param data_destroy
+// SequenceRangeGetMidpoint is a wrapper around the C function g_sequence_range_get_midpoint.
+func SequenceRangeGetMidpoint(begin *SequenceIter, end *SequenceIter) *SequenceIter {
+	c_begin := (*C.GSequenceIter)(C.NULL)
+	if begin != nil {
+		c_begin = (*C.GSequenceIter)(begin.ToC())
+	}
+
+	c_end := (*C.GSequenceIter)(C.NULL)
+	if end != nil {
+		c_end = (*C.GSequenceIter)(end.ToC())
+	}
+
+	retC := C.g_sequence_range_get_midpoint(c_begin, c_end)
+	retGo := SequenceIterNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// SequenceRemove is a wrapper around the C function g_sequence_remove.
+func SequenceRemove(iter *SequenceIter) {
+	c_iter := (*C.GSequenceIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GSequenceIter)(iter.ToC())
+	}
+
+	C.g_sequence_remove(c_iter)
+
+	return
+}
+
+// SequenceRemoveRange is a wrapper around the C function g_sequence_remove_range.
+func SequenceRemoveRange(begin *SequenceIter, end *SequenceIter) {
+	c_begin := (*C.GSequenceIter)(C.NULL)
+	if begin != nil {
+		c_begin = (*C.GSequenceIter)(begin.ToC())
+	}
+
+	c_end := (*C.GSequenceIter)(C.NULL)
+	if end != nil {
+		c_end = (*C.GSequenceIter)(end.ToC())
+	}
+
+	C.g_sequence_remove_range(c_begin, c_end)
+
+	return
+}
+
+// SequenceSet is a wrapper around the C function g_sequence_set.
+func SequenceSet(iter *SequenceIter, data uintptr) {
+	c_iter := (*C.GSequenceIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GSequenceIter)(iter.ToC())
+	}
+
+	c_data := (C.gpointer)(data)
+
+	C.g_sequence_set(c_iter, c_data)
+
+	return
+}
+
+// g_sequence_sort_changed : unsupported parameter cmp_func : no type generator for CompareDataFunc (GCompareDataFunc) for param cmp_func
+// g_sequence_sort_changed_iter : unsupported parameter iter_cmp : no type generator for SequenceIterCompareFunc (GSequenceIterCompareFunc) for param iter_cmp
+// SequenceSwap is a wrapper around the C function g_sequence_swap.
+func SequenceSwap(a *SequenceIter, b *SequenceIter) {
+	c_a := (*C.GSequenceIter)(C.NULL)
+	if a != nil {
+		c_a = (*C.GSequenceIter)(a.ToC())
+	}
+
+	c_b := (*C.GSequenceIter)(C.NULL)
+	if b != nil {
+		c_b = (*C.GSequenceIter)(b.ToC())
+	}
+
+	C.g_sequence_swap(c_a, c_b)
 
 	return
 }

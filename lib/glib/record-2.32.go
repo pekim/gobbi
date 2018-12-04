@@ -12,6 +12,7 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
+// g_array_set_clear_func : unsupported parameter clear_func : no type generator for DestroyNotify (GDestroyNotify) for param clear_func
 // Bytes is a wrapper around the C record GBytes.
 type Bytes struct {
 	native *C.GBytes
@@ -161,6 +162,36 @@ func (recv *Cond) Init() {
 
 // Unsupported : g_cond_wait_until : unsupported parameter mutex : no type generator for Mutex (GMutex*) for param mutex
 
+// HashTableAdd is a wrapper around the C function g_hash_table_add.
+func HashTableAdd(hashTable *HashTable, key uintptr) bool {
+	c_hash_table := (*C.GHashTable)(C.NULL)
+	if hashTable != nil {
+		c_hash_table = (*C.GHashTable)(hashTable.ToC())
+	}
+
+	c_key := (C.gpointer)(key)
+
+	retC := C.g_hash_table_add(c_hash_table, c_key)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// HashTableContains is a wrapper around the C function g_hash_table_contains.
+func HashTableContains(hashTable *HashTable, key uintptr) bool {
+	c_hash_table := (*C.GHashTable)(C.NULL)
+	if hashTable != nil {
+		c_hash_table = (*C.GHashTable)(hashTable.ToC())
+	}
+
+	c_key := (C.gconstpointer)(key)
+
+	retC := C.g_hash_table_contains(c_hash_table, c_key)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
 // Ref is a wrapper around the C function g_key_file_ref.
 func (recv *KeyFile) Ref() *KeyFile {
 	retC := C.g_key_file_ref((*C.GKeyFile)(recv.native))
@@ -174,6 +205,14 @@ func (recv *KeyFile) Unref() {
 	C.g_key_file_unref((*C.GKeyFile)(recv.native))
 
 	return
+}
+
+// MainContextRefThreadDefault is a wrapper around the C function g_main_context_ref_thread_default.
+func MainContextRefThreadDefault() *MainContext {
+	retC := C.g_main_context_ref_thread_default()
+	retGo := MainContextNewFromC(unsafe.Pointer(retC))
+
+	return retGo
 }
 
 // MappedFileNewFromFd is a wrapper around the C function g_mapped_file_new_from_fd.

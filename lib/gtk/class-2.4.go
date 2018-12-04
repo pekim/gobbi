@@ -210,6 +210,34 @@ import "C"
 
 // Unsupported signal 'changed' for AccelMap : unsupported parameter accel_mods : type Gdk.ModifierType :
 
+// AccelMapGet is a wrapper around the C function gtk_accel_map_get.
+func AccelMapGet() *AccelMap {
+	retC := C.gtk_accel_map_get()
+	retGo := AccelMapNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// AccelMapLockPath is a wrapper around the C function gtk_accel_map_lock_path.
+func AccelMapLockPath(accelPath string) {
+	c_accel_path := C.CString(accelPath)
+	defer C.free(unsafe.Pointer(c_accel_path))
+
+	C.gtk_accel_map_lock_path(c_accel_path)
+
+	return
+}
+
+// AccelMapUnlockPath is a wrapper around the C function gtk_accel_map_unlock_path.
+func AccelMapUnlockPath(accelPath string) {
+	c_accel_path := C.CString(accelPath)
+	defer C.free(unsafe.Pointer(c_accel_path))
+
+	C.gtk_accel_map_unlock_path(c_accel_path)
+
+	return
+}
+
 type signalActionActivateDetail struct {
 	callback  ActionSignalActivateCallback
 	handlerID C.gulong
@@ -2121,6 +2149,44 @@ func (recv *IconInfo) SetRawCoordinates(rawCoordinates bool) {
 // IconThemeNew is a wrapper around the C function gtk_icon_theme_new.
 func IconThemeNew() *IconTheme {
 	retC := C.gtk_icon_theme_new()
+	retGo := IconThemeNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// IconThemeAddBuiltinIcon is a wrapper around the C function gtk_icon_theme_add_builtin_icon.
+func IconThemeAddBuiltinIcon(iconName string, size int32, pixbuf *gdkpixbuf.Pixbuf) {
+	c_icon_name := C.CString(iconName)
+	defer C.free(unsafe.Pointer(c_icon_name))
+
+	c_size := (C.gint)(size)
+
+	c_pixbuf := (*C.GdkPixbuf)(C.NULL)
+	if pixbuf != nil {
+		c_pixbuf = (*C.GdkPixbuf)(pixbuf.ToC())
+	}
+
+	C.gtk_icon_theme_add_builtin_icon(c_icon_name, c_size, c_pixbuf)
+
+	return
+}
+
+// IconThemeGetDefault is a wrapper around the C function gtk_icon_theme_get_default.
+func IconThemeGetDefault() *IconTheme {
+	retC := C.gtk_icon_theme_get_default()
+	retGo := IconThemeNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// IconThemeGetForScreen is a wrapper around the C function gtk_icon_theme_get_for_screen.
+func IconThemeGetForScreen(screen *gdk.Screen) *IconTheme {
+	c_screen := (*C.GdkScreen)(C.NULL)
+	if screen != nil {
+		c_screen = (*C.GdkScreen)(screen.ToC())
+	}
+
+	retC := C.gtk_icon_theme_get_for_screen(c_screen)
 	retGo := IconThemeNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -4152,6 +4218,18 @@ func (recv *Widget) SetNoShowAll(noShowAll bool) {
 		boolToGboolean(noShowAll)
 
 	C.gtk_widget_set_no_show_all((*C.GtkWidget)(recv.native), c_no_show_all)
+
+	return
+}
+
+// WindowSetDefaultIcon is a wrapper around the C function gtk_window_set_default_icon.
+func WindowSetDefaultIcon(icon *gdkpixbuf.Pixbuf) {
+	c_icon := (*C.GdkPixbuf)(C.NULL)
+	if icon != nil {
+		c_icon = (*C.GdkPixbuf)(icon.ToC())
+	}
+
+	C.gtk_window_set_default_icon(c_icon)
 
 	return
 }

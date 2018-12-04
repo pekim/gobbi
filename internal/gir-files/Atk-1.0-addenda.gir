@@ -23,5 +23,8 @@
 
     <!-- depends on an alias (AttributeSet) to *glib.SList; not supported yet -->
     <function blacklist="true" c:identifier="atk_attribute_set_free" />
+    <record name="Attribute">
+      <function blacklist="true" c:identifier="atk_attribute_set_free" />
+    </record>
   </namespace>
 </repository>

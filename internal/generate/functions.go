@@ -1,10 +1,14 @@
 package generate
 
+import (
+	"github.com/dave/jennifer/jen"
+)
+
 type Functions []*Function
 
-func (ff Functions) init(ns *Namespace) {
+func (ff Functions) init(ns *Namespace, namePrefix string) {
 	for _, function := range ff {
-		function.init(ns, nil)
+		function.init(ns, nil, namePrefix)
 	}
 }
 
@@ -45,6 +49,12 @@ func (ff Functions) mergeAddenda(addenda Functions) {
 		if function := ff.forCIdentifier(addendaFunction.CIdentifier); function != nil {
 			function.mergeAddenda(addendaFunction)
 		}
+	}
+}
+
+func (ff Functions) generate(g *jen.Group, version *Version) {
+	for _, fn := range ff {
+		fn.generate(g, version)
 	}
 }
 

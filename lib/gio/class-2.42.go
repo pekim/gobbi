@@ -3,7 +3,10 @@
 
 package gio
 
-import "unsafe"
+import (
+	glib "github.com/pekim/gobbi/lib/glib"
+	"unsafe"
+)
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gio/gdesktopappinfo.h>
@@ -38,4 +41,15 @@ func (recv *Application) SetResourceBasePath(resourcePath string) {
 	C.g_application_set_resource_base_path((*C.GApplication)(recv.native), c_resource_path)
 
 	return
+}
+
+// DesktopAppInfoGetImplementations is a wrapper around the C function g_desktop_app_info_get_implementations.
+func DesktopAppInfoGetImplementations(interface_ string) *glib.List {
+	c_interface := C.CString(interface_)
+	defer C.free(unsafe.Pointer(c_interface))
+
+	retC := C.g_desktop_app_info_get_implementations(c_interface)
+	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
 }

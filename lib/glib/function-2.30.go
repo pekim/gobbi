@@ -95,25 +95,6 @@ func ComputeHmacForString(digestType ChecksumType, key []uint8, str string) stri
 	return retGo
 }
 
-// DirMakeTmp is a wrapper around the C function g_dir_make_tmp.
-func DirMakeTmp(tmpl string) (string, error) {
-	c_tmpl := C.CString(tmpl)
-	defer C.free(unsafe.Pointer(c_tmpl))
-
-	var cThrowableError *C.GError
-
-	retC := C.g_dir_make_tmp(c_tmpl, &cThrowableError)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
-	if cThrowableError != nil {
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goThrowableError
-}
-
 // FormatSize is a wrapper around the C function g_format_size.
 func FormatSize(size uint64) string {
 	c_size := (C.guint64)(size)
@@ -169,20 +150,6 @@ func MkdtempFull(tmpl string, mode int32) string {
 // Unsupported : g_pointer_bit_trylock : unsupported parameter address : no type generator for gpointer (void*) for param address
 
 // Unsupported : g_pointer_bit_unlock : unsupported parameter address : no type generator for gpointer (void*) for param address
-
-// RegexEscapeNul is a wrapper around the C function g_regex_escape_nul.
-func RegexEscapeNul(string string, length int32) string {
-	c_string := C.CString(string)
-	defer C.free(unsafe.Pointer(c_string))
-
-	c_length := (C.gint)(length)
-
-	retC := C.g_regex_escape_nul(c_string, c_length)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
 
 // TestFail is a wrapper around the C function g_test_fail.
 func TestFail() {

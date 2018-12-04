@@ -79,6 +79,8 @@ func (recv *Attribute) Equals(other *Attribute) bool {
 	return other.ToC() == recv.ToC()
 }
 
+// Blacklisted : atk_attribute_set_free
+
 // ComponentIface is a wrapper around the C record AtkComponentIface.
 type ComponentIface struct {
 	native *C.AtkComponentIface

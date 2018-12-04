@@ -19,6 +19,22 @@ import (
 // #include <stdlib.h>
 import "C"
 
+// BindingEntryAddSignalFromString is a wrapper around the C function gtk_binding_entry_add_signal_from_string.
+func BindingEntryAddSignalFromString(bindingSet *BindingSet, signalDesc string) glib.TokenType {
+	c_binding_set := (*C.GtkBindingSet)(C.NULL)
+	if bindingSet != nil {
+		c_binding_set = (*C.GtkBindingSet)(bindingSet.ToC())
+	}
+
+	c_signal_desc := C.CString(signalDesc)
+	defer C.free(unsafe.Pointer(c_signal_desc))
+
+	retC := C.gtk_binding_entry_add_signal_from_string(c_binding_set, c_signal_desc)
+	retGo := (glib.TokenType)(retC)
+
+	return retGo
+}
+
 // Unsupported : gtk_cell_area_class_find_cell_property : return type : Blacklisted record : GParamSpec
 
 // Unsupported : gtk_cell_area_class_install_cell_property : unsupported parameter pspec : Blacklisted record : GParamSpec

@@ -3,11 +3,6 @@
 
 package gio
 
-import (
-	glib "github.com/pekim/gobbi/lib/glib"
-	"unsafe"
-)
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gio/gdesktopappinfo.h>
 // #include <gio/gfiledescriptorbased.h>
@@ -26,24 +21,3 @@ import "C"
 // Unsupported : g_async_initable_newv_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
 // Unsupported : g_initable_newv : unsupported parameter parameters :
-
-// ResolverErrorQuark is a wrapper around the C function g_resolver_error_quark.
-func ResolverErrorQuark() glib.Quark {
-	retC := C.g_resolver_error_quark()
-	retGo := (glib.Quark)(retC)
-
-	return retGo
-}
-
-// SrvTargetListSort is a wrapper around the C function g_srv_target_list_sort.
-func SrvTargetListSort(targets *glib.List) *glib.List {
-	c_targets := (*C.GList)(C.NULL)
-	if targets != nil {
-		c_targets = (*C.GList)(targets.ToC())
-	}
-
-	retC := C.g_srv_target_list_sort(c_targets)
-	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}

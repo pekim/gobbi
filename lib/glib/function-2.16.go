@@ -12,16 +12,6 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// ChecksumTypeGetLength is a wrapper around the C function g_checksum_type_get_length.
-func ChecksumTypeGetLength(checksumType ChecksumType) int64 {
-	c_checksum_type := (C.GChecksumType)(checksumType)
-
-	retC := C.g_checksum_type_get_length(c_checksum_type)
-	retGo := (int64)(retC)
-
-	return retGo
-}
-
 // ComputeChecksumForData is a wrapper around the C function g_compute_checksum_for_data.
 func ComputeChecksumForData(checksumType ChecksumType, data []uint8) string {
 	c_checksum_type := (C.GChecksumType)(checksumType)

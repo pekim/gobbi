@@ -4,6 +4,7 @@
 package gtk
 
 import (
+	gdk "github.com/pekim/gobbi/lib/gdk"
 	glib "github.com/pekim/gobbi/lib/glib"
 	"unsafe"
 )
@@ -14,6 +15,22 @@ import (
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
 import "C"
+
+// BindingEntrySkip is a wrapper around the C function gtk_binding_entry_skip.
+func BindingEntrySkip(bindingSet *BindingSet, keyval uint32, modifiers gdk.ModifierType) {
+	c_binding_set := (*C.GtkBindingSet)(C.NULL)
+	if bindingSet != nil {
+		c_binding_set = (*C.GtkBindingSet)(bindingSet.ToC())
+	}
+
+	c_keyval := (C.guint)(keyval)
+
+	c_modifiers := (C.GdkModifierType)(modifiers)
+
+	C.gtk_binding_entry_skip(c_binding_set, c_keyval, c_modifiers)
+
+	return
+}
 
 // PaperSizeNewFromKeyFile is a wrapper around the C function gtk_paper_size_new_from_key_file.
 func PaperSizeNewFromKeyFile(keyFile *glib.KeyFile, groupName string) (*PaperSize, error) {
@@ -36,6 +53,17 @@ func PaperSizeNewFromKeyFile(keyFile *glib.KeyFile, groupName string) (*PaperSiz
 	}
 
 	return retGo, goThrowableError
+}
+
+// PaperSizeGetPaperSizes is a wrapper around the C function gtk_paper_size_get_paper_sizes.
+func PaperSizeGetPaperSizes(includeCustom bool) *glib.List {
+	c_include_custom :=
+		boolToGboolean(includeCustom)
+
+	retC := C.gtk_paper_size_get_paper_sizes(c_include_custom)
+	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
 }
 
 // ToKeyFile is a wrapper around the C function gtk_paper_size_to_key_file.

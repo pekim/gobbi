@@ -1386,6 +1386,47 @@ func (recv *BindingEntry) Equals(other *BindingEntry) bool {
 	return other.ToC() == recv.ToC()
 }
 
+// gtk_binding_entry_add_signal : unsupported parameter ... : varargs
+// BindingEntryAddSignall is a wrapper around the C function gtk_binding_entry_add_signall.
+func BindingEntryAddSignall(bindingSet *BindingSet, keyval uint32, modifiers gdk.ModifierType, signalName string, bindingArgs *glib.SList) {
+	c_binding_set := (*C.GtkBindingSet)(C.NULL)
+	if bindingSet != nil {
+		c_binding_set = (*C.GtkBindingSet)(bindingSet.ToC())
+	}
+
+	c_keyval := (C.guint)(keyval)
+
+	c_modifiers := (C.GdkModifierType)(modifiers)
+
+	c_signal_name := C.CString(signalName)
+	defer C.free(unsafe.Pointer(c_signal_name))
+
+	c_binding_args := (*C.GSList)(C.NULL)
+	if bindingArgs != nil {
+		c_binding_args = (*C.GSList)(bindingArgs.ToC())
+	}
+
+	C.gtk_binding_entry_add_signall(c_binding_set, c_keyval, c_modifiers, c_signal_name, c_binding_args)
+
+	return
+}
+
+// BindingEntryRemove is a wrapper around the C function gtk_binding_entry_remove.
+func BindingEntryRemove(bindingSet *BindingSet, keyval uint32, modifiers gdk.ModifierType) {
+	c_binding_set := (*C.GtkBindingSet)(C.NULL)
+	if bindingSet != nil {
+		c_binding_set = (*C.GtkBindingSet)(bindingSet.ToC())
+	}
+
+	c_keyval := (C.guint)(keyval)
+
+	c_modifiers := (C.GdkModifierType)(modifiers)
+
+	C.gtk_binding_entry_remove(c_binding_set, c_keyval, c_modifiers)
+
+	return
+}
+
 // BindingSet is a wrapper around the C record GtkBindingSet.
 type BindingSet struct {
 	native   *C.GtkBindingSet
@@ -1426,6 +1467,43 @@ func (recv *BindingSet) ToC() unsafe.Pointer {
 // Equals compares this BindingSet with another BindingSet, and returns true if they represent the same GObject.
 func (recv *BindingSet) Equals(other *BindingSet) bool {
 	return other.ToC() == recv.ToC()
+}
+
+// BindingSetByClass is a wrapper around the C function gtk_binding_set_by_class.
+func BindingSetByClass(objectClass uintptr) *BindingSet {
+	c_object_class := (C.gpointer)(objectClass)
+
+	retC := C.gtk_binding_set_by_class(c_object_class)
+	retGo := BindingSetNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// BindingSetFind is a wrapper around the C function gtk_binding_set_find.
+func BindingSetFind(setName string) *BindingSet {
+	c_set_name := C.CString(setName)
+	defer C.free(unsafe.Pointer(c_set_name))
+
+	retC := C.gtk_binding_set_find(c_set_name)
+	var retGo (*BindingSet)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = BindingSetNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
+
+// BindingSetNew is a wrapper around the C function gtk_binding_set_new.
+func BindingSetNew(setName string) *BindingSet {
+	c_set_name := C.CString(setName)
+	defer C.free(unsafe.Pointer(c_set_name))
+
+	retC := C.gtk_binding_set_new(c_set_name)
+	retGo := BindingSetNewFromC(unsafe.Pointer(retC))
+
+	return retGo
 }
 
 // Activate is a wrapper around the C function gtk_binding_set_activate.
@@ -10143,6 +10221,11 @@ func (recv *RcProperty) Equals(other *RcProperty) bool {
 	return other.ToC() == recv.ToC()
 }
 
+// gtk_rc_property_parse_border : unsupported parameter pspec : Blacklisted record : GParamSpec
+// gtk_rc_property_parse_color : unsupported parameter pspec : Blacklisted record : GParamSpec
+// gtk_rc_property_parse_enum : unsupported parameter pspec : Blacklisted record : GParamSpec
+// gtk_rc_property_parse_flags : unsupported parameter pspec : Blacklisted record : GParamSpec
+// gtk_rc_property_parse_requisition : unsupported parameter pspec : Blacklisted record : GParamSpec
 // RcStyleClass is a wrapper around the C record GtkRcStyleClass.
 type RcStyleClass struct {
 	native *C.GtkRcStyleClass
@@ -15648,6 +15731,64 @@ func TreeRowReferenceNewProxy(proxy *gobject.Object, model *TreeModel, path *Tre
 	retGo := TreeRowReferenceNewFromC(unsafe.Pointer(retC))
 
 	return retGo
+}
+
+// TreeRowReferenceDeleted is a wrapper around the C function gtk_tree_row_reference_deleted.
+func TreeRowReferenceDeleted(proxy *gobject.Object, path *TreePath) {
+	c_proxy := (*C.GObject)(C.NULL)
+	if proxy != nil {
+		c_proxy = (*C.GObject)(proxy.ToC())
+	}
+
+	c_path := (*C.GtkTreePath)(C.NULL)
+	if path != nil {
+		c_path = (*C.GtkTreePath)(path.ToC())
+	}
+
+	C.gtk_tree_row_reference_deleted(c_proxy, c_path)
+
+	return
+}
+
+// TreeRowReferenceInserted is a wrapper around the C function gtk_tree_row_reference_inserted.
+func TreeRowReferenceInserted(proxy *gobject.Object, path *TreePath) {
+	c_proxy := (*C.GObject)(C.NULL)
+	if proxy != nil {
+		c_proxy = (*C.GObject)(proxy.ToC())
+	}
+
+	c_path := (*C.GtkTreePath)(C.NULL)
+	if path != nil {
+		c_path = (*C.GtkTreePath)(path.ToC())
+	}
+
+	C.gtk_tree_row_reference_inserted(c_proxy, c_path)
+
+	return
+}
+
+// TreeRowReferenceReordered is a wrapper around the C function gtk_tree_row_reference_reordered.
+func TreeRowReferenceReordered(proxy *gobject.Object, path *TreePath, iter *TreeIter, newOrder []int32) {
+	c_proxy := (*C.GObject)(C.NULL)
+	if proxy != nil {
+		c_proxy = (*C.GObject)(proxy.ToC())
+	}
+
+	c_path := (*C.GtkTreePath)(C.NULL)
+	if path != nil {
+		c_path = (*C.GtkTreePath)(path.ToC())
+	}
+
+	c_iter := (*C.GtkTreeIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GtkTreeIter)(iter.ToC())
+	}
+
+	c_new_order := &newOrder[0]
+
+	C.gtk_tree_row_reference_reordered(c_proxy, c_path, c_iter, (*C.gint)(unsafe.Pointer(c_new_order)))
+
+	return
 }
 
 // Free is a wrapper around the C function gtk_tree_row_reference_free.

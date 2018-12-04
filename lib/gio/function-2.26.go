@@ -279,105 +279,7 @@ func DbusAddressGetStreamSync(address string, cancellable *Cancellable) (*IOStre
 
 // Unsupported : g_dbus_annotation_info_lookup : unsupported parameter annotations :
 
-// DbusErrorEncodeGerror is a wrapper around the C function g_dbus_error_encode_gerror.
-func DbusErrorEncodeGerror(error *glib.Error) string {
-	c_error := (*C.GError)(C.NULL)
-	if error != nil {
-		c_error = (*C.GError)(error.ToC())
-	}
-
-	retC := C.g_dbus_error_encode_gerror(c_error)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// DbusErrorGetRemoteError is a wrapper around the C function g_dbus_error_get_remote_error.
-func DbusErrorGetRemoteError(error *glib.Error) string {
-	c_error := (*C.GError)(C.NULL)
-	if error != nil {
-		c_error = (*C.GError)(error.ToC())
-	}
-
-	retC := C.g_dbus_error_get_remote_error(c_error)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// DbusErrorIsRemoteError is a wrapper around the C function g_dbus_error_is_remote_error.
-func DbusErrorIsRemoteError(error *glib.Error) bool {
-	c_error := (*C.GError)(C.NULL)
-	if error != nil {
-		c_error = (*C.GError)(error.ToC())
-	}
-
-	retC := C.g_dbus_error_is_remote_error(c_error)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// DbusErrorNewForDbusError is a wrapper around the C function g_dbus_error_new_for_dbus_error.
-func DbusErrorNewForDbusError(dbusErrorName string, dbusErrorMessage string) *glib.Error {
-	c_dbus_error_name := C.CString(dbusErrorName)
-	defer C.free(unsafe.Pointer(c_dbus_error_name))
-
-	c_dbus_error_message := C.CString(dbusErrorMessage)
-	defer C.free(unsafe.Pointer(c_dbus_error_message))
-
-	retC := C.g_dbus_error_new_for_dbus_error(c_dbus_error_name, c_dbus_error_message)
-	retGo := glib.ErrorNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// DbusErrorRegisterError is a wrapper around the C function g_dbus_error_register_error.
-func DbusErrorRegisterError(errorDomain glib.Quark, errorCode int32, dbusErrorName string) bool {
-	c_error_domain := (C.GQuark)(errorDomain)
-
-	c_error_code := (C.gint)(errorCode)
-
-	c_dbus_error_name := C.CString(dbusErrorName)
-	defer C.free(unsafe.Pointer(c_dbus_error_name))
-
-	retC := C.g_dbus_error_register_error(c_error_domain, c_error_code, c_dbus_error_name)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
 // Unsupported : g_dbus_error_register_error_domain : unsupported parameter entries :
-
-// DbusErrorStripRemoteError is a wrapper around the C function g_dbus_error_strip_remote_error.
-func DbusErrorStripRemoteError(error *glib.Error) bool {
-	c_error := (*C.GError)(C.NULL)
-	if error != nil {
-		c_error = (*C.GError)(error.ToC())
-	}
-
-	retC := C.g_dbus_error_strip_remote_error(c_error)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// DbusErrorUnregisterError is a wrapper around the C function g_dbus_error_unregister_error.
-func DbusErrorUnregisterError(errorDomain glib.Quark, errorCode int32, dbusErrorName string) bool {
-	c_error_domain := (C.GQuark)(errorDomain)
-
-	c_error_code := (C.gint)(errorCode)
-
-	c_dbus_error_name := C.CString(dbusErrorName)
-	defer C.free(unsafe.Pointer(c_dbus_error_name))
-
-	retC := C.g_dbus_error_unregister_error(c_error_domain, c_error_code, c_dbus_error_name)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
 
 // DbusGenerateGuid is a wrapper around the C function g_dbus_generate_guid.
 func DbusGenerateGuid() string {
@@ -468,25 +370,6 @@ func DbusIsUniqueName(string string) bool {
 
 	retC := C.g_dbus_is_unique_name(c_string)
 	retGo := retC == C.TRUE
-
-	return retGo
-}
-
-// ProxyGetDefaultForProtocol is a wrapper around the C function g_proxy_get_default_for_protocol.
-func ProxyGetDefaultForProtocol(protocol string) *Proxy {
-	c_protocol := C.CString(protocol)
-	defer C.free(unsafe.Pointer(c_protocol))
-
-	retC := C.g_proxy_get_default_for_protocol(c_protocol)
-	retGo := ProxyNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// ProxyResolverGetDefault is a wrapper around the C function g_proxy_resolver_get_default.
-func ProxyResolverGetDefault() *ProxyResolver {
-	retC := C.g_proxy_resolver_get_default()
-	retGo := ProxyResolverNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

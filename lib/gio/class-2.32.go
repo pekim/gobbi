@@ -59,6 +59,14 @@ func (recv *AppLaunchContext) Unsetenv(variable string) {
 	return
 }
 
+// ApplicationGetDefault is a wrapper around the C function g_application_get_default.
+func ApplicationGetDefault() *Application {
+	retC := C.g_application_get_default()
+	retGo := ApplicationNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // Quit is a wrapper around the C function g_application_quit.
 func (recv *Application) Quit() {
 	C.g_application_quit((*C.GApplication)(recv.native))
@@ -71,6 +79,25 @@ func (recv *Application) SetDefault() {
 	C.g_application_set_default((*C.GApplication)(recv.native))
 
 	return
+}
+
+// DBusActionGroupGet is a wrapper around the C function g_dbus_action_group_get.
+func DBusActionGroupGet(connection *DBusConnection, busName string, objectPath string) *DBusActionGroup {
+	c_connection := (*C.GDBusConnection)(C.NULL)
+	if connection != nil {
+		c_connection = (*C.GDBusConnection)(connection.ToC())
+	}
+
+	c_bus_name := C.CString(busName)
+	defer C.free(unsafe.Pointer(c_bus_name))
+
+	c_object_path := C.CString(objectPath)
+	defer C.free(unsafe.Pointer(c_object_path))
+
+	retC := C.g_dbus_action_group_get(c_connection, c_bus_name, c_object_path)
+	retGo := DBusActionGroupNewFromC(unsafe.Pointer(retC))
+
+	return retGo
 }
 
 // ExportActionGroup is a wrapper around the C function g_dbus_connection_export_action_group.
@@ -165,6 +192,25 @@ func (recv *DBusInterfaceSkeleton) UnexportFromConnection(connection *DBusConnec
 	C.g_dbus_interface_skeleton_unexport_from_connection((*C.GDBusInterfaceSkeleton)(recv.native), c_connection)
 
 	return
+}
+
+// DBusMenuModelGet is a wrapper around the C function g_dbus_menu_model_get.
+func DBusMenuModelGet(connection *DBusConnection, busName string, objectPath string) *DBusMenuModel {
+	c_connection := (*C.GDBusConnection)(C.NULL)
+	if connection != nil {
+		c_connection = (*C.GDBusConnection)(connection.ToC())
+	}
+
+	c_bus_name := C.CString(busName)
+	defer C.free(unsafe.Pointer(c_bus_name))
+
+	c_object_path := C.CString(objectPath)
+	defer C.free(unsafe.Pointer(c_object_path))
+
+	retC := C.g_dbus_menu_model_get(c_connection, c_bus_name, c_object_path)
+	retGo := DBusMenuModelNewFromC(unsafe.Pointer(retC))
+
+	return retGo
 }
 
 // Unsupported : g_desktop_app_info_get_keywords : no return type

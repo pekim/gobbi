@@ -70,28 +70,3 @@ func ItemizeWithBaseDir(context *Context, baseDir Direction, text string, startI
 }
 
 // Unsupported : pango_log2vis_get_embedding_levels : unsupported parameter pbase_dir : PangoDirection* with indirection level of 1
-
-// ScriptForUnichar is a wrapper around the C function pango_script_for_unichar.
-func ScriptForUnichar(ch rune) Script {
-	c_ch := (C.gunichar)(ch)
-
-	retC := C.pango_script_for_unichar(c_ch)
-	retGo := (Script)(retC)
-
-	return retGo
-}
-
-// ScriptGetSampleLanguage is a wrapper around the C function pango_script_get_sample_language.
-func ScriptGetSampleLanguage(script Script) *Language {
-	c_script := (C.PangoScript)(script)
-
-	retC := C.pango_script_get_sample_language(c_script)
-	var retGo (*Language)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = LanguageNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}

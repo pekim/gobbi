@@ -12,6 +12,7 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
+// g_list_copy_deep : unsupported parameter func : no type generator for CopyFunc (GCopyFunc) for param func
 // GetBytes is a wrapper around the C function g_mapped_file_get_bytes.
 func (recv *MappedFile) GetBytes() *Bytes {
 	retC := C.g_mapped_file_get_bytes((*C.GMappedFile)(recv.native))
@@ -28,6 +29,7 @@ func (recv *Regex) GetHasCrOrLf() bool {
 	return retGo
 }
 
+// g_slist_copy_deep : unsupported parameter func : no type generator for CopyFunc (GCopyFunc) for param func
 // FreeToBytes is a wrapper around the C function g_string_free_to_bytes.
 func (recv *String) FreeToBytes() *Bytes {
 	retC := C.g_string_free_to_bytes((*C.GString)(recv.native))

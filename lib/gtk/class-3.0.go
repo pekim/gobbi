@@ -1755,6 +1755,31 @@ func (recv *MenuShell) GetSelectedItem() *Widget {
 	return retGo
 }
 
+// NumerableIconNew is a wrapper around the C function gtk_numerable_icon_new.
+func NumerableIconNew(baseIcon *gio.Icon) *gio.Icon {
+	c_base_icon := (*C.GIcon)(baseIcon.ToC())
+
+	retC := C.gtk_numerable_icon_new(c_base_icon)
+	retGo := gio.IconNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// NumerableIconNewWithStyleContext is a wrapper around the C function gtk_numerable_icon_new_with_style_context.
+func NumerableIconNewWithStyleContext(baseIcon *gio.Icon, context *StyleContext) *gio.Icon {
+	c_base_icon := (*C.GIcon)(baseIcon.ToC())
+
+	c_context := (*C.GtkStyleContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GtkStyleContext)(context.ToC())
+	}
+
+	retC := C.gtk_numerable_icon_new_with_style_context(c_base_icon, c_context)
+	retGo := gio.IconNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // GetBackgroundGicon is a wrapper around the C function gtk_numerable_icon_get_background_gicon.
 func (recv *NumerableIcon) GetBackgroundGicon() *gio.Icon {
 	retC := C.gtk_numerable_icon_get_background_gicon((*C.GtkNumerableIcon)(recv.native))
@@ -2063,6 +2088,48 @@ func stylecontext_changedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalStyleContextChangedMap[index].callback
 	callback()
+}
+
+// StyleContextAddProviderForScreen is a wrapper around the C function gtk_style_context_add_provider_for_screen.
+func StyleContextAddProviderForScreen(screen *gdk.Screen, provider *StyleProvider, priority uint32) {
+	c_screen := (*C.GdkScreen)(C.NULL)
+	if screen != nil {
+		c_screen = (*C.GdkScreen)(screen.ToC())
+	}
+
+	c_provider := (*C.GtkStyleProvider)(provider.ToC())
+
+	c_priority := (C.guint)(priority)
+
+	C.gtk_style_context_add_provider_for_screen(c_screen, c_provider, c_priority)
+
+	return
+}
+
+// StyleContextRemoveProviderForScreen is a wrapper around the C function gtk_style_context_remove_provider_for_screen.
+func StyleContextRemoveProviderForScreen(screen *gdk.Screen, provider *StyleProvider) {
+	c_screen := (*C.GdkScreen)(C.NULL)
+	if screen != nil {
+		c_screen = (*C.GdkScreen)(screen.ToC())
+	}
+
+	c_provider := (*C.GtkStyleProvider)(provider.ToC())
+
+	C.gtk_style_context_remove_provider_for_screen(c_screen, c_provider)
+
+	return
+}
+
+// StyleContextResetWidgets is a wrapper around the C function gtk_style_context_reset_widgets.
+func StyleContextResetWidgets(screen *gdk.Screen) {
+	c_screen := (*C.GdkScreen)(C.NULL)
+	if screen != nil {
+		c_screen = (*C.GdkScreen)(screen.ToC())
+	}
+
+	C.gtk_style_context_reset_widgets(c_screen)
+
+	return
 }
 
 // AddClass is a wrapper around the C function gtk_style_context_add_class.
@@ -2458,6 +2525,8 @@ func (recv *StyleContext) StateIsRunning(state StateType) (bool, float64) {
 	return retGo, progress
 }
 
+// gtk_style_properties_lookup_property : unsupported parameter parse_func : no type generator for StylePropertyParser (GtkStylePropertyParser*) for param parse_func
+// gtk_style_properties_register_property : unsupported parameter parse_func : no type generator for StylePropertyParser (GtkStylePropertyParser) for param parse_func
 // Unsupported : gtk_style_properties_get : unsupported parameter ... : varargs
 
 // GetProperty is a wrapper around the C function gtk_style_properties_get_property.
@@ -2581,6 +2650,7 @@ func (recv *Switch) SetActive(isActive bool) {
 
 // Unsupported : gtk_text_view_get_cursor_locations : unsupported parameter strong : Blacklisted record : GdkRectangle
 
+// gtk_theming_engine_register_property : unsupported parameter parse_func : no type generator for StylePropertyParser (GtkStylePropertyParser) for param parse_func
 // Unsupported : gtk_theming_engine_get : unsupported parameter ... : varargs
 
 // GetBackgroundColor is a wrapper around the C function gtk_theming_engine_get_background_color.

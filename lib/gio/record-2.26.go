@@ -90,6 +90,7 @@ func (recv *DBusAnnotationInfo) Equals(other *DBusAnnotationInfo) bool {
 	return other.ToC() == recv.ToC()
 }
 
+// g_dbus_annotation_info_lookup : unsupported parameter annotations :
 // Ref is a wrapper around the C function g_dbus_annotation_info_ref.
 func (recv *DBusAnnotationInfo) Ref() *DBusAnnotationInfo {
 	retC := C.g_dbus_annotation_info_ref((*C.GDBusAnnotationInfo)(recv.native))

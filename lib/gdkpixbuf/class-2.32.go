@@ -4,6 +4,7 @@
 package gdkpixbuf
 
 import (
+	gio "github.com/pekim/gobbi/lib/gio"
 	glib "github.com/pekim/gobbi/lib/glib"
 	"unsafe"
 )
@@ -37,6 +38,32 @@ func PixbufNewFromBytes(data *glib.Bytes, colorspace Colorspace, hasAlpha bool, 
 	retGo := PixbufNewFromC(unsafe.Pointer(retC))
 
 	return retGo
+}
+
+// gdk_pixbuf_get_file_info_async : unsupported parameter callback : no type generator for Gio.AsyncReadyCallback (GAsyncReadyCallback) for param callback
+// PixbufGetFileInfoFinish is a wrapper around the C function gdk_pixbuf_get_file_info_finish.
+func PixbufGetFileInfoFinish(asyncResult *gio.AsyncResult) (*PixbufFormat, int32, int32, error) {
+	c_async_result := (*C.GAsyncResult)(asyncResult.ToC())
+
+	var c_width C.gint
+
+	var c_height C.gint
+
+	var cThrowableError *C.GError
+
+	retC := C.gdk_pixbuf_get_file_info_finish(c_async_result, &c_width, &c_height, &cThrowableError)
+	retGo := PixbufFormatNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	width := (int32)(c_width)
+
+	height := (int32)(c_height)
+
+	return retGo, width, height, goThrowableError
 }
 
 // GetOptions is a wrapper around the C function gdk_pixbuf_get_options.

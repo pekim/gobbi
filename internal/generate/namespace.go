@@ -50,7 +50,7 @@ func (ns *Namespace) init(repo *Repository) {
 	ns.Classes.init(ns)
 	ns.Constants.init(ns)
 	ns.Enumerations.init(ns)
-	ns.Functions.init(ns)
+	ns.Functions.init(ns, "")
 	ns.Records.init(ns)
 	ns.Interfaces.init(ns)
 

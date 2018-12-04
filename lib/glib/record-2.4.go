@@ -12,6 +12,8 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
+// g_array_remove_range : no return type
+// g_hash_table_find : unsupported parameter predicate : no type generator for HRFunc (GHRFunc) for param predicate
 // Unsupported : g_node_copy_deep : unsupported parameter copy_func : no type generator for CopyFunc (GCopyFunc) for param copy_func
 
 // Once is a wrapper around the C record GOnce.
@@ -267,6 +269,18 @@ func (recv *Queue) Unlink(link *List) {
 	C.g_queue_unlink((*C.GQueue)(recv.native), c_link_)
 
 	return
+}
+
+// RandNewWithSeedArray is a wrapper around the C function g_rand_new_with_seed_array.
+func RandNewWithSeedArray(seed uint32, seedLength uint32) *Rand {
+	c_seed := (C.guint32)(seed)
+
+	c_seed_length := (C.guint)(seedLength)
+
+	retC := C.g_rand_new_with_seed_array(&c_seed, c_seed_length)
+	retGo := RandNewFromC(unsafe.Pointer(retC))
+
+	return retGo
 }
 
 // Copy is a wrapper around the C function g_rand_copy.

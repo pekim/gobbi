@@ -10,6 +10,17 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
+// pango_attr_shape_new_with_data : unsupported parameter copy_func : no type generator for AttrDataCopyFunc (PangoAttrDataCopyFunc) for param copy_func
+// AttrSizeNewAbsolute is a wrapper around the C function pango_attr_size_new_absolute.
+func AttrSizeNewAbsolute(size int32) *Attribute {
+	c_size := (C.int)(size)
+
+	retC := C.pango_attr_size_new_absolute(c_size)
+	retGo := AttributeNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // GetSizeIsAbsolute is a wrapper around the C function pango_font_description_get_size_is_absolute.
 func (recv *FontDescription) GetSizeIsAbsolute() bool {
 	retC := C.pango_font_description_get_size_is_absolute((*C.PangoFontDescription)(recv.native))

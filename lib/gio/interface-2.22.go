@@ -69,6 +69,9 @@ func (recv *AsyncInitable) Equals(other *AsyncInitable) bool {
 	return other.ToC() == recv.ToC()
 }
 
+// g_async_initable_new_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
+// g_async_initable_new_valist_async : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
+// g_async_initable_newv_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 // Unsupported : g_async_initable_init_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
 // InitFinish is a wrapper around the C function g_async_initable_init_finish.
@@ -510,6 +513,9 @@ func (recv *Initable) Equals(other *Initable) bool {
 	return other.ToC() == recv.ToC()
 }
 
+// g_initable_new : unsupported parameter ... : varargs
+// g_initable_new_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
+// g_initable_newv : unsupported parameter parameters :
 // Init is a wrapper around the C function g_initable_init.
 func (recv *Initable) Init(cancellable *Cancellable) (bool, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)

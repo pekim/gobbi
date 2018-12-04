@@ -12,6 +12,7 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
+// g_async_queue_new_full : unsupported parameter item_free_func : no type generator for DestroyNotify (GDestroyNotify) for param item_free_func
 // Checksum is a wrapper around the C record GChecksum.
 type Checksum struct {
 	native *C.GChecksum
@@ -44,6 +45,16 @@ func ChecksumNew(checksumType ChecksumType) *Checksum {
 
 	retC := C.g_checksum_new(c_checksum_type)
 	retGo := ChecksumNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ChecksumTypeGetLength is a wrapper around the C function g_checksum_type_get_length.
+func ChecksumTypeGetLength(checksumType ChecksumType) int64 {
+	c_checksum_type := (C.GChecksumType)(checksumType)
+
+	retC := C.g_checksum_type_get_length(c_checksum_type)
+	retGo := (int64)(retC)
 
 	return retGo
 }

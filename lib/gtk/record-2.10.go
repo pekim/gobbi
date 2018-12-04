@@ -66,6 +66,14 @@ func PaperSizeNewFromPpd(ppdName string, ppdDisplayName string, width float64, h
 	return retGo
 }
 
+// PaperSizeGetDefault is a wrapper around the C function gtk_paper_size_get_default.
+func PaperSizeGetDefault() string {
+	retC := C.gtk_paper_size_get_default()
+	retGo := C.GoString(retC)
+
+	return retGo
+}
+
 // Copy is a wrapper around the C function gtk_paper_size_copy.
 func (recv *PaperSize) Copy() *PaperSize {
 	retC := C.gtk_paper_size_copy((*C.GtkPaperSize)(recv.native))

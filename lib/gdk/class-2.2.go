@@ -136,6 +136,35 @@ func display_closedHandler(_ *C.GObject, c_is_error C.gboolean, data C.gpointer)
 	callback(isError)
 }
 
+// DisplayGetDefault is a wrapper around the C function gdk_display_get_default.
+func DisplayGetDefault() *Display {
+	retC := C.gdk_display_get_default()
+	var retGo (*Display)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = DisplayNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
+
+// DisplayOpen is a wrapper around the C function gdk_display_open.
+func DisplayOpen(displayName string) *Display {
+	c_display_name := C.CString(displayName)
+	defer C.free(unsafe.Pointer(c_display_name))
+
+	retC := C.gdk_display_open(c_display_name)
+	var retGo (*Display)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = DisplayNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
+
 // Beep is a wrapper around the C function gdk_display_beep.
 func (recv *Display) Beep() {
 	C.gdk_display_beep((*C.GdkDisplay)(recv.native))
@@ -325,6 +354,14 @@ func displaymanager_displayOpenedHandler(_ *C.GObject, c_display *C.GdkDisplay, 
 	callback(display)
 }
 
+// DisplayManagerGet is a wrapper around the C function gdk_display_manager_get.
+func DisplayManagerGet() *DisplayManager {
+	retC := C.gdk_display_manager_get()
+	retGo := DisplayManagerNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // GetDefaultDisplay is a wrapper around the C function gdk_display_manager_get_default_display.
 func (recv *DisplayManager) GetDefaultDisplay() *Display {
 	retC := C.gdk_display_manager_get_default_display((*C.GdkDisplayManager)(recv.native))
@@ -418,6 +455,19 @@ func keymap_keysChangedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
+// KeymapGetForDisplay is a wrapper around the C function gdk_keymap_get_for_display.
+func KeymapGetForDisplay(display *Display) *Keymap {
+	c_display := (*C.GdkDisplay)(C.NULL)
+	if display != nil {
+		c_display = (*C.GdkDisplay)(display.ToC())
+	}
+
+	retC := C.gdk_keymap_get_for_display(c_display)
+	retGo := KeymapNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 type signalScreenSizeChangedDetail struct {
 	callback  ScreenSignalSizeChangedCallback
 	handlerID C.gulong
@@ -476,6 +526,19 @@ func screen_sizeChangedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalScreenSizeChangedMap[index].callback
 	callback()
+}
+
+// ScreenGetDefault is a wrapper around the C function gdk_screen_get_default.
+func ScreenGetDefault() *Screen {
+	retC := C.gdk_screen_get_default()
+	var retGo (*Screen)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = ScreenNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
 }
 
 // GetDisplay is a wrapper around the C function gdk_screen_get_display.

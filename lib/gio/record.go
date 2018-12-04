@@ -1991,6 +1991,46 @@ func (recv *IOExtensionPoint) Equals(other *IOExtensionPoint) bool {
 	return other.ToC() == recv.ToC()
 }
 
+// IOExtensionPointImplement is a wrapper around the C function g_io_extension_point_implement.
+func IOExtensionPointImplement(extensionPointName string, type_ gobject.Type, extensionName string, priority int32) *IOExtension {
+	c_extension_point_name := C.CString(extensionPointName)
+	defer C.free(unsafe.Pointer(c_extension_point_name))
+
+	c_type := (C.GType)(type_)
+
+	c_extension_name := C.CString(extensionName)
+	defer C.free(unsafe.Pointer(c_extension_name))
+
+	c_priority := (C.gint)(priority)
+
+	retC := C.g_io_extension_point_implement(c_extension_point_name, c_type, c_extension_name, c_priority)
+	retGo := IOExtensionNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// IOExtensionPointLookup is a wrapper around the C function g_io_extension_point_lookup.
+func IOExtensionPointLookup(name string) *IOExtensionPoint {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	retC := C.g_io_extension_point_lookup(c_name)
+	retGo := IOExtensionPointNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// IOExtensionPointRegister is a wrapper around the C function g_io_extension_point_register.
+func IOExtensionPointRegister(name string) *IOExtensionPoint {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	retC := C.g_io_extension_point_register(c_name)
+	retGo := IOExtensionPointNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // GetExtensionByName is a wrapper around the C function g_io_extension_point_get_extension_by_name.
 func (recv *IOExtensionPoint) GetExtensionByName(name string) *IOExtension {
 	c_name := C.CString(name)

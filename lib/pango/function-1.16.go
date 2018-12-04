@@ -50,51 +50,6 @@ func ExtentsToPixels(inclusive *Rectangle, nearest *Rectangle) {
 	return
 }
 
-// GravityGetForMatrix is a wrapper around the C function pango_gravity_get_for_matrix.
-func GravityGetForMatrix(matrix *Matrix) Gravity {
-	c_matrix := (*C.PangoMatrix)(C.NULL)
-	if matrix != nil {
-		c_matrix = (*C.PangoMatrix)(matrix.ToC())
-	}
-
-	retC := C.pango_gravity_get_for_matrix(c_matrix)
-	retGo := (Gravity)(retC)
-
-	return retGo
-}
-
-// GravityGetForScript is a wrapper around the C function pango_gravity_get_for_script.
-func GravityGetForScript(script Script, baseGravity Gravity, hint GravityHint) Gravity {
-	c_script := (C.PangoScript)(script)
-
-	c_base_gravity := (C.PangoGravity)(baseGravity)
-
-	c_hint := (C.PangoGravityHint)(hint)
-
-	retC := C.pango_gravity_get_for_script(c_script, c_base_gravity, c_hint)
-	retGo := (Gravity)(retC)
-
-	return retGo
-}
-
-// GravityToRotation is a wrapper around the C function pango_gravity_to_rotation.
-func GravityToRotation(gravity Gravity) float64 {
-	c_gravity := (C.PangoGravity)(gravity)
-
-	retC := C.pango_gravity_to_rotation(c_gravity)
-	retGo := (float64)(retC)
-
-	return retGo
-}
-
-// LanguageGetDefault is a wrapper around the C function pango_language_get_default.
-func LanguageGetDefault() *Language {
-	retC := C.pango_language_get_default()
-	retGo := LanguageNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // ParseEnum is a wrapper around the C function pango_parse_enum.
 func ParseEnum(type_ gobject.Type, str string, warn bool) (bool, int32, string) {
 	c_type := (C.GType)(type_)

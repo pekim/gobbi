@@ -45,6 +45,648 @@ func (recv *CClosure) Equals(other *CClosure) bool {
 	return other.ToC() == recv.ToC()
 }
 
+// CClosureMarshalBooleanBoxedBoxed is a wrapper around the C function g_cclosure_marshal_BOOLEAN__BOXED_BOXED.
+func CClosureMarshalBooleanBoxedBoxed(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
+
+	c_return_value := (*C.GValue)(C.NULL)
+	if returnValue != nil {
+		c_return_value = (*C.GValue)(returnValue.ToC())
+	}
+
+	c_n_param_values := (C.guint)(nParamValues)
+
+	c_param_values := (*C.GValue)(C.NULL)
+	if paramValues != nil {
+		c_param_values = (*C.GValue)(paramValues.ToC())
+	}
+
+	c_invocation_hint := (C.gpointer)(invocationHint)
+
+	c_marshal_data := (C.gpointer)(marshalData)
+
+	C.g_cclosure_marshal_BOOLEAN__BOXED_BOXED(c_closure, c_return_value, c_n_param_values, c_param_values, c_invocation_hint, c_marshal_data)
+
+	return
+}
+
+// g_cclosure_marshal_BOOLEAN__BOXED_BOXEDv : unsupported parameter args : no type generator for va_list (va_list) for param args
+// CClosureMarshalBooleanFlags is a wrapper around the C function g_cclosure_marshal_BOOLEAN__FLAGS.
+func CClosureMarshalBooleanFlags(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
+
+	c_return_value := (*C.GValue)(C.NULL)
+	if returnValue != nil {
+		c_return_value = (*C.GValue)(returnValue.ToC())
+	}
+
+	c_n_param_values := (C.guint)(nParamValues)
+
+	c_param_values := (*C.GValue)(C.NULL)
+	if paramValues != nil {
+		c_param_values = (*C.GValue)(paramValues.ToC())
+	}
+
+	c_invocation_hint := (C.gpointer)(invocationHint)
+
+	c_marshal_data := (C.gpointer)(marshalData)
+
+	C.g_cclosure_marshal_BOOLEAN__FLAGS(c_closure, c_return_value, c_n_param_values, c_param_values, c_invocation_hint, c_marshal_data)
+
+	return
+}
+
+// g_cclosure_marshal_BOOLEAN__FLAGSv : unsupported parameter args : no type generator for va_list (va_list) for param args
+// CClosureMarshalStringObjectPointer is a wrapper around the C function g_cclosure_marshal_STRING__OBJECT_POINTER.
+func CClosureMarshalStringObjectPointer(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
+
+	c_return_value := (*C.GValue)(C.NULL)
+	if returnValue != nil {
+		c_return_value = (*C.GValue)(returnValue.ToC())
+	}
+
+	c_n_param_values := (C.guint)(nParamValues)
+
+	c_param_values := (*C.GValue)(C.NULL)
+	if paramValues != nil {
+		c_param_values = (*C.GValue)(paramValues.ToC())
+	}
+
+	c_invocation_hint := (C.gpointer)(invocationHint)
+
+	c_marshal_data := (C.gpointer)(marshalData)
+
+	C.g_cclosure_marshal_STRING__OBJECT_POINTER(c_closure, c_return_value, c_n_param_values, c_param_values, c_invocation_hint, c_marshal_data)
+
+	return
+}
+
+// g_cclosure_marshal_STRING__OBJECT_POINTERv : unsupported parameter args : no type generator for va_list (va_list) for param args
+// CClosureMarshalVoidBoolean is a wrapper around the C function g_cclosure_marshal_VOID__BOOLEAN.
+func CClosureMarshalVoidBoolean(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
+
+	c_return_value := (*C.GValue)(C.NULL)
+	if returnValue != nil {
+		c_return_value = (*C.GValue)(returnValue.ToC())
+	}
+
+	c_n_param_values := (C.guint)(nParamValues)
+
+	c_param_values := (*C.GValue)(C.NULL)
+	if paramValues != nil {
+		c_param_values = (*C.GValue)(paramValues.ToC())
+	}
+
+	c_invocation_hint := (C.gpointer)(invocationHint)
+
+	c_marshal_data := (C.gpointer)(marshalData)
+
+	C.g_cclosure_marshal_VOID__BOOLEAN(c_closure, c_return_value, c_n_param_values, c_param_values, c_invocation_hint, c_marshal_data)
+
+	return
+}
+
+// g_cclosure_marshal_VOID__BOOLEANv : unsupported parameter args : no type generator for va_list (va_list) for param args
+// CClosureMarshalVoidBoxed is a wrapper around the C function g_cclosure_marshal_VOID__BOXED.
+func CClosureMarshalVoidBoxed(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
+
+	c_return_value := (*C.GValue)(C.NULL)
+	if returnValue != nil {
+		c_return_value = (*C.GValue)(returnValue.ToC())
+	}
+
+	c_n_param_values := (C.guint)(nParamValues)
+
+	c_param_values := (*C.GValue)(C.NULL)
+	if paramValues != nil {
+		c_param_values = (*C.GValue)(paramValues.ToC())
+	}
+
+	c_invocation_hint := (C.gpointer)(invocationHint)
+
+	c_marshal_data := (C.gpointer)(marshalData)
+
+	C.g_cclosure_marshal_VOID__BOXED(c_closure, c_return_value, c_n_param_values, c_param_values, c_invocation_hint, c_marshal_data)
+
+	return
+}
+
+// g_cclosure_marshal_VOID__BOXEDv : unsupported parameter args : no type generator for va_list (va_list) for param args
+// CClosureMarshalVoidChar is a wrapper around the C function g_cclosure_marshal_VOID__CHAR.
+func CClosureMarshalVoidChar(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
+
+	c_return_value := (*C.GValue)(C.NULL)
+	if returnValue != nil {
+		c_return_value = (*C.GValue)(returnValue.ToC())
+	}
+
+	c_n_param_values := (C.guint)(nParamValues)
+
+	c_param_values := (*C.GValue)(C.NULL)
+	if paramValues != nil {
+		c_param_values = (*C.GValue)(paramValues.ToC())
+	}
+
+	c_invocation_hint := (C.gpointer)(invocationHint)
+
+	c_marshal_data := (C.gpointer)(marshalData)
+
+	C.g_cclosure_marshal_VOID__CHAR(c_closure, c_return_value, c_n_param_values, c_param_values, c_invocation_hint, c_marshal_data)
+
+	return
+}
+
+// g_cclosure_marshal_VOID__CHARv : unsupported parameter args : no type generator for va_list (va_list) for param args
+// CClosureMarshalVoidDouble is a wrapper around the C function g_cclosure_marshal_VOID__DOUBLE.
+func CClosureMarshalVoidDouble(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
+
+	c_return_value := (*C.GValue)(C.NULL)
+	if returnValue != nil {
+		c_return_value = (*C.GValue)(returnValue.ToC())
+	}
+
+	c_n_param_values := (C.guint)(nParamValues)
+
+	c_param_values := (*C.GValue)(C.NULL)
+	if paramValues != nil {
+		c_param_values = (*C.GValue)(paramValues.ToC())
+	}
+
+	c_invocation_hint := (C.gpointer)(invocationHint)
+
+	c_marshal_data := (C.gpointer)(marshalData)
+
+	C.g_cclosure_marshal_VOID__DOUBLE(c_closure, c_return_value, c_n_param_values, c_param_values, c_invocation_hint, c_marshal_data)
+
+	return
+}
+
+// g_cclosure_marshal_VOID__DOUBLEv : unsupported parameter args : no type generator for va_list (va_list) for param args
+// CClosureMarshalVoidEnum is a wrapper around the C function g_cclosure_marshal_VOID__ENUM.
+func CClosureMarshalVoidEnum(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
+
+	c_return_value := (*C.GValue)(C.NULL)
+	if returnValue != nil {
+		c_return_value = (*C.GValue)(returnValue.ToC())
+	}
+
+	c_n_param_values := (C.guint)(nParamValues)
+
+	c_param_values := (*C.GValue)(C.NULL)
+	if paramValues != nil {
+		c_param_values = (*C.GValue)(paramValues.ToC())
+	}
+
+	c_invocation_hint := (C.gpointer)(invocationHint)
+
+	c_marshal_data := (C.gpointer)(marshalData)
+
+	C.g_cclosure_marshal_VOID__ENUM(c_closure, c_return_value, c_n_param_values, c_param_values, c_invocation_hint, c_marshal_data)
+
+	return
+}
+
+// g_cclosure_marshal_VOID__ENUMv : unsupported parameter args : no type generator for va_list (va_list) for param args
+// CClosureMarshalVoidFlags is a wrapper around the C function g_cclosure_marshal_VOID__FLAGS.
+func CClosureMarshalVoidFlags(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
+
+	c_return_value := (*C.GValue)(C.NULL)
+	if returnValue != nil {
+		c_return_value = (*C.GValue)(returnValue.ToC())
+	}
+
+	c_n_param_values := (C.guint)(nParamValues)
+
+	c_param_values := (*C.GValue)(C.NULL)
+	if paramValues != nil {
+		c_param_values = (*C.GValue)(paramValues.ToC())
+	}
+
+	c_invocation_hint := (C.gpointer)(invocationHint)
+
+	c_marshal_data := (C.gpointer)(marshalData)
+
+	C.g_cclosure_marshal_VOID__FLAGS(c_closure, c_return_value, c_n_param_values, c_param_values, c_invocation_hint, c_marshal_data)
+
+	return
+}
+
+// g_cclosure_marshal_VOID__FLAGSv : unsupported parameter args : no type generator for va_list (va_list) for param args
+// CClosureMarshalVoidFloat is a wrapper around the C function g_cclosure_marshal_VOID__FLOAT.
+func CClosureMarshalVoidFloat(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
+
+	c_return_value := (*C.GValue)(C.NULL)
+	if returnValue != nil {
+		c_return_value = (*C.GValue)(returnValue.ToC())
+	}
+
+	c_n_param_values := (C.guint)(nParamValues)
+
+	c_param_values := (*C.GValue)(C.NULL)
+	if paramValues != nil {
+		c_param_values = (*C.GValue)(paramValues.ToC())
+	}
+
+	c_invocation_hint := (C.gpointer)(invocationHint)
+
+	c_marshal_data := (C.gpointer)(marshalData)
+
+	C.g_cclosure_marshal_VOID__FLOAT(c_closure, c_return_value, c_n_param_values, c_param_values, c_invocation_hint, c_marshal_data)
+
+	return
+}
+
+// g_cclosure_marshal_VOID__FLOATv : unsupported parameter args : no type generator for va_list (va_list) for param args
+// CClosureMarshalVoidInt is a wrapper around the C function g_cclosure_marshal_VOID__INT.
+func CClosureMarshalVoidInt(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
+
+	c_return_value := (*C.GValue)(C.NULL)
+	if returnValue != nil {
+		c_return_value = (*C.GValue)(returnValue.ToC())
+	}
+
+	c_n_param_values := (C.guint)(nParamValues)
+
+	c_param_values := (*C.GValue)(C.NULL)
+	if paramValues != nil {
+		c_param_values = (*C.GValue)(paramValues.ToC())
+	}
+
+	c_invocation_hint := (C.gpointer)(invocationHint)
+
+	c_marshal_data := (C.gpointer)(marshalData)
+
+	C.g_cclosure_marshal_VOID__INT(c_closure, c_return_value, c_n_param_values, c_param_values, c_invocation_hint, c_marshal_data)
+
+	return
+}
+
+// g_cclosure_marshal_VOID__INTv : unsupported parameter args : no type generator for va_list (va_list) for param args
+// CClosureMarshalVoidLong is a wrapper around the C function g_cclosure_marshal_VOID__LONG.
+func CClosureMarshalVoidLong(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
+
+	c_return_value := (*C.GValue)(C.NULL)
+	if returnValue != nil {
+		c_return_value = (*C.GValue)(returnValue.ToC())
+	}
+
+	c_n_param_values := (C.guint)(nParamValues)
+
+	c_param_values := (*C.GValue)(C.NULL)
+	if paramValues != nil {
+		c_param_values = (*C.GValue)(paramValues.ToC())
+	}
+
+	c_invocation_hint := (C.gpointer)(invocationHint)
+
+	c_marshal_data := (C.gpointer)(marshalData)
+
+	C.g_cclosure_marshal_VOID__LONG(c_closure, c_return_value, c_n_param_values, c_param_values, c_invocation_hint, c_marshal_data)
+
+	return
+}
+
+// g_cclosure_marshal_VOID__LONGv : unsupported parameter args : no type generator for va_list (va_list) for param args
+// CClosureMarshalVoidObject is a wrapper around the C function g_cclosure_marshal_VOID__OBJECT.
+func CClosureMarshalVoidObject(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
+
+	c_return_value := (*C.GValue)(C.NULL)
+	if returnValue != nil {
+		c_return_value = (*C.GValue)(returnValue.ToC())
+	}
+
+	c_n_param_values := (C.guint)(nParamValues)
+
+	c_param_values := (*C.GValue)(C.NULL)
+	if paramValues != nil {
+		c_param_values = (*C.GValue)(paramValues.ToC())
+	}
+
+	c_invocation_hint := (C.gpointer)(invocationHint)
+
+	c_marshal_data := (C.gpointer)(marshalData)
+
+	C.g_cclosure_marshal_VOID__OBJECT(c_closure, c_return_value, c_n_param_values, c_param_values, c_invocation_hint, c_marshal_data)
+
+	return
+}
+
+// g_cclosure_marshal_VOID__OBJECTv : unsupported parameter args : no type generator for va_list (va_list) for param args
+// CClosureMarshalVoidParam is a wrapper around the C function g_cclosure_marshal_VOID__PARAM.
+func CClosureMarshalVoidParam(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
+
+	c_return_value := (*C.GValue)(C.NULL)
+	if returnValue != nil {
+		c_return_value = (*C.GValue)(returnValue.ToC())
+	}
+
+	c_n_param_values := (C.guint)(nParamValues)
+
+	c_param_values := (*C.GValue)(C.NULL)
+	if paramValues != nil {
+		c_param_values = (*C.GValue)(paramValues.ToC())
+	}
+
+	c_invocation_hint := (C.gpointer)(invocationHint)
+
+	c_marshal_data := (C.gpointer)(marshalData)
+
+	C.g_cclosure_marshal_VOID__PARAM(c_closure, c_return_value, c_n_param_values, c_param_values, c_invocation_hint, c_marshal_data)
+
+	return
+}
+
+// g_cclosure_marshal_VOID__PARAMv : unsupported parameter args : no type generator for va_list (va_list) for param args
+// CClosureMarshalVoidPointer is a wrapper around the C function g_cclosure_marshal_VOID__POINTER.
+func CClosureMarshalVoidPointer(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
+
+	c_return_value := (*C.GValue)(C.NULL)
+	if returnValue != nil {
+		c_return_value = (*C.GValue)(returnValue.ToC())
+	}
+
+	c_n_param_values := (C.guint)(nParamValues)
+
+	c_param_values := (*C.GValue)(C.NULL)
+	if paramValues != nil {
+		c_param_values = (*C.GValue)(paramValues.ToC())
+	}
+
+	c_invocation_hint := (C.gpointer)(invocationHint)
+
+	c_marshal_data := (C.gpointer)(marshalData)
+
+	C.g_cclosure_marshal_VOID__POINTER(c_closure, c_return_value, c_n_param_values, c_param_values, c_invocation_hint, c_marshal_data)
+
+	return
+}
+
+// g_cclosure_marshal_VOID__POINTERv : unsupported parameter args : no type generator for va_list (va_list) for param args
+// CClosureMarshalVoidString is a wrapper around the C function g_cclosure_marshal_VOID__STRING.
+func CClosureMarshalVoidString(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
+
+	c_return_value := (*C.GValue)(C.NULL)
+	if returnValue != nil {
+		c_return_value = (*C.GValue)(returnValue.ToC())
+	}
+
+	c_n_param_values := (C.guint)(nParamValues)
+
+	c_param_values := (*C.GValue)(C.NULL)
+	if paramValues != nil {
+		c_param_values = (*C.GValue)(paramValues.ToC())
+	}
+
+	c_invocation_hint := (C.gpointer)(invocationHint)
+
+	c_marshal_data := (C.gpointer)(marshalData)
+
+	C.g_cclosure_marshal_VOID__STRING(c_closure, c_return_value, c_n_param_values, c_param_values, c_invocation_hint, c_marshal_data)
+
+	return
+}
+
+// g_cclosure_marshal_VOID__STRINGv : unsupported parameter args : no type generator for va_list (va_list) for param args
+// CClosureMarshalVoidUchar is a wrapper around the C function g_cclosure_marshal_VOID__UCHAR.
+func CClosureMarshalVoidUchar(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
+
+	c_return_value := (*C.GValue)(C.NULL)
+	if returnValue != nil {
+		c_return_value = (*C.GValue)(returnValue.ToC())
+	}
+
+	c_n_param_values := (C.guint)(nParamValues)
+
+	c_param_values := (*C.GValue)(C.NULL)
+	if paramValues != nil {
+		c_param_values = (*C.GValue)(paramValues.ToC())
+	}
+
+	c_invocation_hint := (C.gpointer)(invocationHint)
+
+	c_marshal_data := (C.gpointer)(marshalData)
+
+	C.g_cclosure_marshal_VOID__UCHAR(c_closure, c_return_value, c_n_param_values, c_param_values, c_invocation_hint, c_marshal_data)
+
+	return
+}
+
+// g_cclosure_marshal_VOID__UCHARv : unsupported parameter args : no type generator for va_list (va_list) for param args
+// CClosureMarshalVoidUint is a wrapper around the C function g_cclosure_marshal_VOID__UINT.
+func CClosureMarshalVoidUint(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
+
+	c_return_value := (*C.GValue)(C.NULL)
+	if returnValue != nil {
+		c_return_value = (*C.GValue)(returnValue.ToC())
+	}
+
+	c_n_param_values := (C.guint)(nParamValues)
+
+	c_param_values := (*C.GValue)(C.NULL)
+	if paramValues != nil {
+		c_param_values = (*C.GValue)(paramValues.ToC())
+	}
+
+	c_invocation_hint := (C.gpointer)(invocationHint)
+
+	c_marshal_data := (C.gpointer)(marshalData)
+
+	C.g_cclosure_marshal_VOID__UINT(c_closure, c_return_value, c_n_param_values, c_param_values, c_invocation_hint, c_marshal_data)
+
+	return
+}
+
+// CClosureMarshalVoidUintPointer is a wrapper around the C function g_cclosure_marshal_VOID__UINT_POINTER.
+func CClosureMarshalVoidUintPointer(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
+
+	c_return_value := (*C.GValue)(C.NULL)
+	if returnValue != nil {
+		c_return_value = (*C.GValue)(returnValue.ToC())
+	}
+
+	c_n_param_values := (C.guint)(nParamValues)
+
+	c_param_values := (*C.GValue)(C.NULL)
+	if paramValues != nil {
+		c_param_values = (*C.GValue)(paramValues.ToC())
+	}
+
+	c_invocation_hint := (C.gpointer)(invocationHint)
+
+	c_marshal_data := (C.gpointer)(marshalData)
+
+	C.g_cclosure_marshal_VOID__UINT_POINTER(c_closure, c_return_value, c_n_param_values, c_param_values, c_invocation_hint, c_marshal_data)
+
+	return
+}
+
+// g_cclosure_marshal_VOID__UINT_POINTERv : unsupported parameter args : no type generator for va_list (va_list) for param args
+// g_cclosure_marshal_VOID__UINTv : unsupported parameter args : no type generator for va_list (va_list) for param args
+// CClosureMarshalVoidUlong is a wrapper around the C function g_cclosure_marshal_VOID__ULONG.
+func CClosureMarshalVoidUlong(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
+
+	c_return_value := (*C.GValue)(C.NULL)
+	if returnValue != nil {
+		c_return_value = (*C.GValue)(returnValue.ToC())
+	}
+
+	c_n_param_values := (C.guint)(nParamValues)
+
+	c_param_values := (*C.GValue)(C.NULL)
+	if paramValues != nil {
+		c_param_values = (*C.GValue)(paramValues.ToC())
+	}
+
+	c_invocation_hint := (C.gpointer)(invocationHint)
+
+	c_marshal_data := (C.gpointer)(marshalData)
+
+	C.g_cclosure_marshal_VOID__ULONG(c_closure, c_return_value, c_n_param_values, c_param_values, c_invocation_hint, c_marshal_data)
+
+	return
+}
+
+// g_cclosure_marshal_VOID__ULONGv : unsupported parameter args : no type generator for va_list (va_list) for param args
+// CClosureMarshalVoidVariant is a wrapper around the C function g_cclosure_marshal_VOID__VARIANT.
+func CClosureMarshalVoidVariant(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
+
+	c_return_value := (*C.GValue)(C.NULL)
+	if returnValue != nil {
+		c_return_value = (*C.GValue)(returnValue.ToC())
+	}
+
+	c_n_param_values := (C.guint)(nParamValues)
+
+	c_param_values := (*C.GValue)(C.NULL)
+	if paramValues != nil {
+		c_param_values = (*C.GValue)(paramValues.ToC())
+	}
+
+	c_invocation_hint := (C.gpointer)(invocationHint)
+
+	c_marshal_data := (C.gpointer)(marshalData)
+
+	C.g_cclosure_marshal_VOID__VARIANT(c_closure, c_return_value, c_n_param_values, c_param_values, c_invocation_hint, c_marshal_data)
+
+	return
+}
+
+// g_cclosure_marshal_VOID__VARIANTv : unsupported parameter args : no type generator for va_list (va_list) for param args
+// CClosureMarshalVoidVoid is a wrapper around the C function g_cclosure_marshal_VOID__VOID.
+func CClosureMarshalVoidVoid(closure *Closure, returnValue *Value, nParamValues uint32, paramValues *Value, invocationHint uintptr, marshalData uintptr) {
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
+
+	c_return_value := (*C.GValue)(C.NULL)
+	if returnValue != nil {
+		c_return_value = (*C.GValue)(returnValue.ToC())
+	}
+
+	c_n_param_values := (C.guint)(nParamValues)
+
+	c_param_values := (*C.GValue)(C.NULL)
+	if paramValues != nil {
+		c_param_values = (*C.GValue)(paramValues.ToC())
+	}
+
+	c_invocation_hint := (C.gpointer)(invocationHint)
+
+	c_marshal_data := (C.gpointer)(marshalData)
+
+	C.g_cclosure_marshal_VOID__VOID(c_closure, c_return_value, c_n_param_values, c_param_values, c_invocation_hint, c_marshal_data)
+
+	return
+}
+
+// g_cclosure_marshal_VOID__VOIDv : unsupported parameter args : no type generator for va_list (va_list) for param args
+// g_cclosure_new : unsupported parameter callback_func : no type generator for Callback (GCallback) for param callback_func
+// g_cclosure_new_object : unsupported parameter callback_func : no type generator for Callback (GCallback) for param callback_func
+// g_cclosure_new_object_swap : unsupported parameter callback_func : no type generator for Callback (GCallback) for param callback_func
+// g_cclosure_new_swap : unsupported parameter callback_func : no type generator for Callback (GCallback) for param callback_func
 // Closure is a wrapper around the C record GClosure.
 type Closure struct {
 	native *C.GClosure
@@ -557,6 +1199,17 @@ func (recv *ParamSpecPool) Equals(other *ParamSpecPool) bool {
 	return other.ToC() == recv.ToC()
 }
 
+// ParamSpecPoolNew is a wrapper around the C function g_param_spec_pool_new.
+func ParamSpecPoolNew(typePrefixing bool) *ParamSpecPool {
+	c_type_prefixing :=
+		boolToGboolean(typePrefixing)
+
+	retC := C.g_param_spec_pool_new(c_type_prefixing)
+	retGo := ParamSpecPoolNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // Unsupported : g_param_spec_pool_insert : unsupported parameter pspec : Blacklisted record : GParamSpec
 
 // Unsupported : g_param_spec_pool_list : no return type
@@ -773,6 +1426,37 @@ func (recv *TypeClass) Equals(other *TypeClass) bool {
 	return other.ToC() == recv.ToC()
 }
 
+// TypeClassAdjustPrivateOffset is a wrapper around the C function g_type_class_adjust_private_offset.
+func TypeClassAdjustPrivateOffset(gClass uintptr, privateSizeOrOffset int32) {
+	c_g_class := (C.gpointer)(gClass)
+
+	c_private_size_or_offset := (C.gint)(privateSizeOrOffset)
+
+	C.g_type_class_adjust_private_offset(c_g_class, &c_private_size_or_offset)
+
+	return
+}
+
+// TypeClassPeek is a wrapper around the C function g_type_class_peek.
+func TypeClassPeek(type_ Type) uintptr {
+	c_type := (C.GType)(type_)
+
+	retC := C.g_type_class_peek(c_type)
+	retGo := (uintptr)(retC)
+
+	return retGo
+}
+
+// TypeClassRef is a wrapper around the C function g_type_class_ref.
+func TypeClassRef(type_ Type) uintptr {
+	c_type := (C.GType)(type_)
+
+	retC := C.g_type_class_ref(c_type)
+	retGo := (uintptr)(retC)
+
+	return retGo
+}
+
 // GetPrivate is a wrapper around the C function g_type_class_get_private.
 func (recv *TypeClass) GetPrivate(privateType Type) uintptr {
 	c_private_type := (C.GType)(privateType)
@@ -952,6 +1636,41 @@ func (recv *TypeInterface) Equals(other *TypeInterface) bool {
 	return other.ToC() == recv.ToC()
 }
 
+// TypeInterfaceAddPrerequisite is a wrapper around the C function g_type_interface_add_prerequisite.
+func TypeInterfaceAddPrerequisite(interfaceType Type, prerequisiteType Type) {
+	c_interface_type := (C.GType)(interfaceType)
+
+	c_prerequisite_type := (C.GType)(prerequisiteType)
+
+	C.g_type_interface_add_prerequisite(c_interface_type, c_prerequisite_type)
+
+	return
+}
+
+// TypeInterfaceGetPlugin is a wrapper around the C function g_type_interface_get_plugin.
+func TypeInterfaceGetPlugin(instanceType Type, interfaceType Type) *TypePlugin {
+	c_instance_type := (C.GType)(instanceType)
+
+	c_interface_type := (C.GType)(interfaceType)
+
+	retC := C.g_type_interface_get_plugin(c_instance_type, c_interface_type)
+	retGo := TypePluginNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// TypeInterfacePeek is a wrapper around the C function g_type_interface_peek.
+func TypeInterfacePeek(instanceClass uintptr, ifaceType Type) uintptr {
+	c_instance_class := (C.gpointer)(instanceClass)
+
+	c_iface_type := (C.GType)(ifaceType)
+
+	retC := C.g_type_interface_peek(c_instance_class, c_iface_type)
+	retGo := (uintptr)(retC)
+
+	return retGo
+}
+
 // PeekParent is a wrapper around the C function g_type_interface_peek_parent.
 func (recv *TypeInterface) PeekParent() uintptr {
 	retC := C.g_type_interface_peek_parent((C.gpointer)(recv.native))
@@ -1110,6 +1829,16 @@ func (recv *TypeValueTable) Equals(other *TypeValueTable) bool {
 	return other.ToC() == recv.ToC()
 }
 
+// TypeValueTablePeek is a wrapper around the C function g_type_value_table_peek.
+func TypeValueTablePeek(type_ Type) *TypeValueTable {
+	c_type := (C.GType)(type_)
+
+	retC := C.g_type_value_table_peek(c_type)
+	retGo := TypeValueTableNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // Value is a wrapper around the C record GValue.
 type Value struct {
 	native *C.GValue
@@ -1136,6 +1865,31 @@ func (recv *Value) ToC() unsafe.Pointer {
 // Equals compares this Value with another Value, and returns true if they represent the same GObject.
 func (recv *Value) Equals(other *Value) bool {
 	return other.ToC() == recv.ToC()
+}
+
+// g_value_register_transform_func : unsupported parameter transform_func : no type generator for ValueTransform (GValueTransform) for param transform_func
+// ValueTypeCompatible is a wrapper around the C function g_value_type_compatible.
+func ValueTypeCompatible(srcType Type, destType Type) bool {
+	c_src_type := (C.GType)(srcType)
+
+	c_dest_type := (C.GType)(destType)
+
+	retC := C.g_value_type_compatible(c_src_type, c_dest_type)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// ValueTypeTransformable is a wrapper around the C function g_value_type_transformable.
+func ValueTypeTransformable(srcType Type, destType Type) bool {
+	c_src_type := (C.GType)(srcType)
+
+	c_dest_type := (C.GType)(destType)
+
+	retC := C.g_value_type_transformable(c_src_type, c_dest_type)
+	retGo := retC == C.TRUE
+
+	return retGo
 }
 
 // Copy is a wrapper around the C function g_value_copy.

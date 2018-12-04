@@ -23,6 +23,7 @@ import (
 // #include <stdlib.h>
 import "C"
 
+// g_file_new_build_filename : unsupported parameter ... : varargs
 // LoadBytes is a wrapper around the C function g_file_load_bytes.
 func (recv *File) LoadBytes(cancellable *Cancellable) (*glib.Bytes, string, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)

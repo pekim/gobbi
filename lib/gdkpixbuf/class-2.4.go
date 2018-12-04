@@ -35,6 +35,30 @@ func PixbufNewFromFileAtSize(filename string, width int32, height int32) (*Pixbu
 	return retGo, goThrowableError
 }
 
+// PixbufGetFileInfo is a wrapper around the C function gdk_pixbuf_get_file_info.
+func PixbufGetFileInfo(filename string) (*PixbufFormat, int32, int32) {
+	c_filename := C.CString(filename)
+	defer C.free(unsafe.Pointer(c_filename))
+
+	var c_width C.gint
+
+	var c_height C.gint
+
+	retC := C.gdk_pixbuf_get_file_info(c_filename, &c_width, &c_height)
+	var retGo (*PixbufFormat)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = PixbufFormatNewFromC(unsafe.Pointer(retC))
+	}
+
+	width := (int32)(c_width)
+
+	height := (int32)(c_height)
+
+	return retGo, width, height
+}
+
 // Unsupported : gdk_pixbuf_save_to_buffer : unsupported parameter buffer : output array param buffer
 
 // Unsupported : gdk_pixbuf_save_to_bufferv : unsupported parameter buffer : output array param buffer

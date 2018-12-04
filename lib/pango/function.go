@@ -102,17 +102,6 @@ func AttrStyleNew(style Style) *Attribute {
 	return retGo
 }
 
-// AttrTypeRegister is a wrapper around the C function pango_attr_type_register.
-func AttrTypeRegister(name string) AttrType {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
-
-	retC := C.pango_attr_type_register(c_name)
-	retGo := (AttrType)(retC)
-
-	return retGo
-}
-
 // AttrUnderlineNew is a wrapper around the C function pango_attr_underline_new.
 func AttrUnderlineNew(underline Underline) *Attribute {
 	c_underline := (C.PangoUnderline)(underline)
@@ -173,17 +162,6 @@ func FindParagraphBoundary(text string, length int32) (int32, int32) {
 	return paragraphDelimiterIndex, nextParagraphStart
 }
 
-// FontDescriptionFromString is a wrapper around the C function pango_font_description_from_string.
-func FontDescriptionFromString(str string) *FontDescription {
-	c_str := C.CString(str)
-	defer C.free(unsafe.Pointer(c_str))
-
-	retC := C.pango_font_description_from_string(c_str)
-	retGo := FontDescriptionNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // Blacklisted : pango_get_lib_subdirectory
 
 // Unsupported : pango_get_log_attrs : unsupported parameter log_attrs :
@@ -228,22 +206,6 @@ func Itemize(context *Context, text string, startIndex int32, length int32, attr
 
 	retC := C.pango_itemize(c_context, c_text, c_start_index, c_length, c_attrs, c_cached_iter)
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// LanguageFromString is a wrapper around the C function pango_language_from_string.
-func LanguageFromString(language string) *Language {
-	c_language := C.CString(language)
-	defer C.free(unsafe.Pointer(c_language))
-
-	retC := C.pango_language_from_string(c_language)
-	var retGo (*Language)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = LanguageNewFromC(unsafe.Pointer(retC))
-	}
 
 	return retGo
 }

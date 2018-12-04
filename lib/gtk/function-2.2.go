@@ -10,27 +10,4 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
-// IconSizeLookupForSettings is a wrapper around the C function gtk_icon_size_lookup_for_settings.
-func IconSizeLookupForSettings(settings *Settings, size IconSize) (bool, int32, int32) {
-	c_settings := (*C.GtkSettings)(C.NULL)
-	if settings != nil {
-		c_settings = (*C.GtkSettings)(settings.ToC())
-	}
-
-	c_size := (C.GtkIconSize)(size)
-
-	var c_width C.gint
-
-	var c_height C.gint
-
-	retC := C.gtk_icon_size_lookup_for_settings(c_settings, c_size, &c_width, &c_height)
-	retGo := retC == C.TRUE
-
-	width := (int32)(c_width)
-
-	height := (int32)(c_height)
-
-	return retGo, width, height
-}
-
 // Unsupported : gtk_selection_owner_set_for_display : unsupported parameter selection : Blacklisted record : GdkAtom

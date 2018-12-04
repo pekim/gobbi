@@ -178,6 +178,40 @@ func DateTimeNewUtc(year int32, month int32, day int32, hour int32, minute int32
 	return retGo
 }
 
+// DateTimeCompare is a wrapper around the C function g_date_time_compare.
+func DateTimeCompare(dt1 uintptr, dt2 uintptr) int32 {
+	c_dt1 := (C.gconstpointer)(dt1)
+
+	c_dt2 := (C.gconstpointer)(dt2)
+
+	retC := C.g_date_time_compare(c_dt1, c_dt2)
+	retGo := (int32)(retC)
+
+	return retGo
+}
+
+// DateTimeEqual is a wrapper around the C function g_date_time_equal.
+func DateTimeEqual(dt1 uintptr, dt2 uintptr) bool {
+	c_dt1 := (C.gconstpointer)(dt1)
+
+	c_dt2 := (C.gconstpointer)(dt2)
+
+	retC := C.g_date_time_equal(c_dt1, c_dt2)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// DateTimeHash is a wrapper around the C function g_date_time_hash.
+func DateTimeHash(datetime uintptr) uint32 {
+	c_datetime := (C.gconstpointer)(datetime)
+
+	retC := C.g_date_time_hash(c_datetime)
+	retGo := (uint32)(retC)
+
+	return retGo
+}
+
 // Add is a wrapper around the C function g_date_time_add.
 func (recv *DateTime) Add(timespan TimeSpan) *DateTime {
 	c_timespan := (C.GTimeSpan)(timespan)
@@ -593,6 +627,18 @@ func (recv *Regex) GetMatchFlags() RegexMatchFlags {
 	retGo := (RegexMatchFlags)(retC)
 
 	return retGo
+}
+
+// SourceSetNameById is a wrapper around the C function g_source_set_name_by_id.
+func SourceSetNameById(tag uint32, name string) {
+	c_tag := (C.guint)(tag)
+
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	C.g_source_set_name_by_id(c_tag, c_name)
+
+	return
 }
 
 // GetName is a wrapper around the C function g_source_get_name.

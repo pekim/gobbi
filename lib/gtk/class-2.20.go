@@ -602,6 +602,22 @@ func ToolPaletteNew() *ToolPalette {
 	return retGo
 }
 
+// ToolPaletteGetDragTargetGroup is a wrapper around the C function gtk_tool_palette_get_drag_target_group.
+func ToolPaletteGetDragTargetGroup() *TargetEntry {
+	retC := C.gtk_tool_palette_get_drag_target_group()
+	retGo := TargetEntryNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ToolPaletteGetDragTargetItem is a wrapper around the C function gtk_tool_palette_get_drag_target_item.
+func ToolPaletteGetDragTargetItem() *TargetEntry {
+	retC := C.gtk_tool_palette_get_drag_target_item()
+	retGo := TargetEntryNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // AddDragDest is a wrapper around the C function gtk_tool_palette_add_drag_dest.
 func (recv *ToolPalette) AddDragDest(widget *Widget, flags DestDefaults, targets ToolPaletteDragTargets, actions gdk.DragAction) {
 	c_widget := (*C.GtkWidget)(C.NULL)

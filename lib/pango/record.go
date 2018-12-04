@@ -185,6 +185,19 @@ func (recv *AttrFontDesc) Equals(other *AttrFontDesc) bool {
 	return other.ToC() == recv.ToC()
 }
 
+// AttrFontDescNew is a wrapper around the C function pango_attr_font_desc_new.
+func AttrFontDescNew(desc *FontDescription) *Attribute {
+	c_desc := (*C.PangoFontDescription)(C.NULL)
+	if desc != nil {
+		c_desc = (*C.PangoFontDescription)(desc.ToC())
+	}
+
+	retC := C.pango_attr_font_desc_new(c_desc)
+	retGo := AttributeNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // AttrInt is a wrapper around the C record PangoAttrInt.
 type AttrInt struct {
 	native *C.PangoAttrInt
@@ -347,6 +360,19 @@ func (recv *AttrLanguage) Equals(other *AttrLanguage) bool {
 	return other.ToC() == recv.ToC()
 }
 
+// AttrLanguageNew is a wrapper around the C function pango_attr_language_new.
+func AttrLanguageNew(language *Language) *Attribute {
+	c_language := (*C.PangoLanguage)(C.NULL)
+	if language != nil {
+		c_language = (*C.PangoLanguage)(language.ToC())
+	}
+
+	retC := C.pango_attr_language_new(c_language)
+	retGo := AttributeNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // AttrList is a wrapper around the C record PangoAttrList.
 type AttrList struct {
 	native *C.PangoAttrList
@@ -498,6 +524,24 @@ func (recv *AttrShape) Equals(other *AttrShape) bool {
 	return other.ToC() == recv.ToC()
 }
 
+// AttrShapeNew is a wrapper around the C function pango_attr_shape_new.
+func AttrShapeNew(inkRect *Rectangle, logicalRect *Rectangle) *Attribute {
+	c_ink_rect := (*C.PangoRectangle)(C.NULL)
+	if inkRect != nil {
+		c_ink_rect = (*C.PangoRectangle)(inkRect.ToC())
+	}
+
+	c_logical_rect := (*C.PangoRectangle)(C.NULL)
+	if logicalRect != nil {
+		c_logical_rect = (*C.PangoRectangle)(logicalRect.ToC())
+	}
+
+	retC := C.pango_attr_shape_new(c_ink_rect, c_logical_rect)
+	retGo := AttributeNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // AttrSize is a wrapper around the C record PangoAttrSize.
 type AttrSize struct {
 	native *C.PangoAttrSize
@@ -530,6 +574,16 @@ func (recv *AttrSize) ToC() unsafe.Pointer {
 // Equals compares this AttrSize with another AttrSize, and returns true if they represent the same GObject.
 func (recv *AttrSize) Equals(other *AttrSize) bool {
 	return other.ToC() == recv.ToC()
+}
+
+// AttrSizeNew is a wrapper around the C function pango_attr_size_new.
+func AttrSizeNew(size int32) *Attribute {
+	c_size := (C.int)(size)
+
+	retC := C.pango_attr_size_new(c_size)
+	retGo := AttributeNewFromC(unsafe.Pointer(retC))
+
+	return retGo
 }
 
 // AttrString is a wrapper around the C record PangoAttrString.
@@ -753,6 +807,31 @@ func (recv *Coverage) Equals(other *Coverage) bool {
 	return other.ToC() == recv.ToC()
 }
 
+// CoverageFromBytes is a wrapper around the C function pango_coverage_from_bytes.
+func CoverageFromBytes(bytes []uint8) *Coverage {
+	c_bytes := &bytes[0]
+
+	c_n_bytes := (C.int)(len(bytes))
+
+	retC := C.pango_coverage_from_bytes((*C.guchar)(unsafe.Pointer(c_bytes)), c_n_bytes)
+	var retGo (*Coverage)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = CoverageNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
+
+// CoverageNew is a wrapper around the C function pango_coverage_new.
+func CoverageNew() *Coverage {
+	retC := C.pango_coverage_new()
+	retGo := CoverageNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // Copy is a wrapper around the C function pango_coverage_copy.
 func (recv *Coverage) Copy() *Coverage {
 	retC := C.pango_coverage_copy((*C.PangoCoverage)(recv.native))
@@ -852,6 +931,17 @@ func (recv *FontDescription) Equals(other *FontDescription) bool {
 // FontDescriptionNew is a wrapper around the C function pango_font_description_new.
 func FontDescriptionNew() *FontDescription {
 	retC := C.pango_font_description_new()
+	retGo := FontDescriptionNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// FontDescriptionFromString is a wrapper around the C function pango_font_description_from_string.
+func FontDescriptionFromString(str string) *FontDescription {
+	c_str := C.CString(str)
+	defer C.free(unsafe.Pointer(c_str))
+
+	retC := C.pango_font_description_from_string(c_str)
 	retGo := FontDescriptionNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1357,6 +1447,22 @@ func (recv *Language) ToC() unsafe.Pointer {
 // Equals compares this Language with another Language, and returns true if they represent the same GObject.
 func (recv *Language) Equals(other *Language) bool {
 	return other.ToC() == recv.ToC()
+}
+
+// LanguageFromString is a wrapper around the C function pango_language_from_string.
+func LanguageFromString(language string) *Language {
+	c_language := C.CString(language)
+	defer C.free(unsafe.Pointer(c_language))
+
+	retC := C.pango_language_from_string(c_language)
+	var retGo (*Language)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = LanguageNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
 }
 
 // GetSampleString is a wrapper around the C function pango_language_get_sample_string.

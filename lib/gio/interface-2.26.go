@@ -49,6 +49,17 @@ func (recv *Proxy) Equals(other *Proxy) bool {
 	return other.ToC() == recv.ToC()
 }
 
+// ProxyGetDefaultForProtocol is a wrapper around the C function g_proxy_get_default_for_protocol.
+func ProxyGetDefaultForProtocol(protocol string) *Proxy {
+	c_protocol := C.CString(protocol)
+	defer C.free(unsafe.Pointer(c_protocol))
+
+	retC := C.g_proxy_get_default_for_protocol(c_protocol)
+	retGo := ProxyNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // Connect is a wrapper around the C function g_proxy_connect.
 func (recv *Proxy) Connect(connection *IOStream, proxyAddress *ProxyAddress, cancellable *Cancellable) (*IOStream, error) {
 	c_connection := (*C.GIOStream)(C.NULL)
@@ -130,6 +141,14 @@ func (recv *ProxyResolver) ToC() unsafe.Pointer {
 // Equals compares this ProxyResolver with another ProxyResolver, and returns true if they represent the same GObject.
 func (recv *ProxyResolver) Equals(other *ProxyResolver) bool {
 	return other.ToC() == recv.ToC()
+}
+
+// ProxyResolverGetDefault is a wrapper around the C function g_proxy_resolver_get_default.
+func ProxyResolverGetDefault() *ProxyResolver {
+	retC := C.g_proxy_resolver_get_default()
+	retGo := ProxyResolverNewFromC(unsafe.Pointer(retC))
+
+	return retGo
 }
 
 // IsSupported is a wrapper around the C function g_proxy_resolver_is_supported.

@@ -278,6 +278,7 @@ func CastToFont(object *gobject.Object) *Font {
 	return FontNewFromC(object.ToC())
 }
 
+// pango_font_descriptions_free : unsupported parameter descs :
 // Describe is a wrapper around the C function pango_font_describe.
 func (recv *Font) Describe() *FontDescription {
 	retC := C.pango_font_describe((*C.PangoFont)(recv.native))

@@ -3,7 +3,10 @@
 
 package gio
 
-import "unsafe"
+import (
+	glib "github.com/pekim/gobbi/lib/glib"
+	"unsafe"
+)
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gio/gdesktopappinfo.h>
@@ -162,6 +165,19 @@ func SrvTargetNew(hostname string, port uint16, priority uint16, weight uint16) 
 
 	retC := C.g_srv_target_new(c_hostname, c_port, c_priority, c_weight)
 	retGo := SrvTargetNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// SrvTargetListSort is a wrapper around the C function g_srv_target_list_sort.
+func SrvTargetListSort(targets *glib.List) *glib.List {
+	c_targets := (*C.GList)(C.NULL)
+	if targets != nil {
+		c_targets = (*C.GList)(targets.ToC())
+	}
+
+	retC := C.g_srv_target_list_sort(c_targets)
+	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

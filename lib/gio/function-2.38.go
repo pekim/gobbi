@@ -3,8 +3,6 @@
 
 package gio
 
-import "unsafe"
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gio/gdesktopappinfo.h>
 // #include <gio/gfiledescriptorbased.h>
@@ -19,17 +17,6 @@ import "unsafe"
 // #include <gio/gunixsocketaddress.h>
 // #include <stdlib.h>
 import "C"
-
-// ActionNameIsValid is a wrapper around the C function g_action_name_is_valid.
-func ActionNameIsValid(actionName string) bool {
-	c_action_name := C.CString(actionName)
-	defer C.free(unsafe.Pointer(c_action_name))
-
-	retC := C.g_action_name_is_valid(c_action_name)
-	retGo := retC == C.TRUE
-
-	return retGo
-}
 
 // Unsupported : g_action_parse_detailed_name : unsupported parameter target_value : Blacklisted record : GVariant
 

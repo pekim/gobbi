@@ -326,6 +326,33 @@ func device_changedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
+// gdk_device_free_history : unsupported parameter events :
+// DeviceGrabInfoLibgtkOnly is a wrapper around the C function gdk_device_grab_info_libgtk_only.
+func DeviceGrabInfoLibgtkOnly(display *Display, device *Device) (bool, *Window, bool) {
+	c_display := (*C.GdkDisplay)(C.NULL)
+	if display != nil {
+		c_display = (*C.GdkDisplay)(display.ToC())
+	}
+
+	c_device := (*C.GdkDevice)(C.NULL)
+	if device != nil {
+		c_device = (*C.GdkDevice)(device.ToC())
+	}
+
+	var c_grab_window *C.GdkWindow
+
+	var c_owner_events C.gboolean
+
+	retC := C.gdk_device_grab_info_libgtk_only(c_display, c_device, &c_grab_window, &c_owner_events)
+	retGo := retC == C.TRUE
+
+	grabWindow := WindowNewFromC(unsafe.Pointer(c_grab_window))
+
+	ownerEvents := c_owner_events == C.TRUE
+
+	return retGo, grabWindow, ownerEvents
+}
+
 // GetAxis is a wrapper around the C function gdk_device_get_axis.
 func (recv *Device) GetAxis(axes []float64, use AxisUse) (bool, float64) {
 	c_axes := &axes[0]
@@ -711,6 +738,19 @@ func display_openedHandler(_ *C.GObject, data C.gpointer) {
 	index := int(uintptr(data))
 	callback := signalDisplayOpenedMap[index].callback
 	callback()
+}
+
+// DisplayOpenDefaultLibgtkOnly is a wrapper around the C function gdk_display_open_default_libgtk_only.
+func DisplayOpenDefaultLibgtkOnly() *Display {
+	retC := C.gdk_display_open_default_libgtk_only()
+	var retGo (*Display)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = DisplayNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
 }
 
 // DeviceIsGrabbed is a wrapper around the C function gdk_display_device_is_grabbed.
@@ -1351,6 +1391,14 @@ func CastToKeymap(object *gobject.Object) *Keymap {
 	return KeymapNewFromC(object.ToC())
 }
 
+// KeymapGetDefault is a wrapper around the C function gdk_keymap_get_default.
+func KeymapGetDefault() *Keymap {
+	retC := C.gdk_keymap_get_default()
+	retGo := KeymapNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // GetDirection is a wrapper around the C function gdk_keymap_get_direction.
 func (recv *Keymap) GetDirection() pango.Direction {
 	retC := C.gdk_keymap_get_direction((*C.GdkKeymap)(recv.native))
@@ -1415,6 +1463,38 @@ func CastToScreen(object *gobject.Object) *Screen {
 	return ScreenNewFromC(object.ToC())
 }
 
+// ScreenHeight is a wrapper around the C function gdk_screen_height.
+func ScreenHeight() int32 {
+	retC := C.gdk_screen_height()
+	retGo := (int32)(retC)
+
+	return retGo
+}
+
+// ScreenHeightMm is a wrapper around the C function gdk_screen_height_mm.
+func ScreenHeightMm() int32 {
+	retC := C.gdk_screen_height_mm()
+	retGo := (int32)(retC)
+
+	return retGo
+}
+
+// ScreenWidth is a wrapper around the C function gdk_screen_width.
+func ScreenWidth() int32 {
+	retC := C.gdk_screen_width()
+	retGo := (int32)(retC)
+
+	return retGo
+}
+
+// ScreenWidthMm is a wrapper around the C function gdk_screen_width_mm.
+func ScreenWidthMm() int32 {
+	retC := C.gdk_screen_width_mm()
+	retGo := (int32)(retC)
+
+	return retGo
+}
+
 // Visual is a wrapper around the C record GdkVisual.
 type Visual struct {
 	native *C.GdkVisual
@@ -1450,6 +1530,75 @@ func (recv *Visual) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a Visual.
 func CastToVisual(object *gobject.Object) *Visual {
 	return VisualNewFromC(object.ToC())
+}
+
+// VisualGetBest is a wrapper around the C function gdk_visual_get_best.
+func VisualGetBest() *Visual {
+	retC := C.gdk_visual_get_best()
+	retGo := VisualNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// VisualGetBestDepth is a wrapper around the C function gdk_visual_get_best_depth.
+func VisualGetBestDepth() int32 {
+	retC := C.gdk_visual_get_best_depth()
+	retGo := (int32)(retC)
+
+	return retGo
+}
+
+// VisualGetBestType is a wrapper around the C function gdk_visual_get_best_type.
+func VisualGetBestType() VisualType {
+	retC := C.gdk_visual_get_best_type()
+	retGo := (VisualType)(retC)
+
+	return retGo
+}
+
+// VisualGetBestWithBoth is a wrapper around the C function gdk_visual_get_best_with_both.
+func VisualGetBestWithBoth(depth int32, visualType VisualType) *Visual {
+	c_depth := (C.gint)(depth)
+
+	c_visual_type := (C.GdkVisualType)(visualType)
+
+	retC := C.gdk_visual_get_best_with_both(c_depth, c_visual_type)
+	var retGo (*Visual)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = VisualNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
+
+// VisualGetBestWithDepth is a wrapper around the C function gdk_visual_get_best_with_depth.
+func VisualGetBestWithDepth(depth int32) *Visual {
+	c_depth := (C.gint)(depth)
+
+	retC := C.gdk_visual_get_best_with_depth(c_depth)
+	retGo := VisualNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// VisualGetBestWithType is a wrapper around the C function gdk_visual_get_best_with_type.
+func VisualGetBestWithType(visualType VisualType) *Visual {
+	c_visual_type := (C.GdkVisualType)(visualType)
+
+	retC := C.gdk_visual_get_best_with_type(c_visual_type)
+	retGo := VisualNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// VisualGetSystem is a wrapper around the C function gdk_visual_get_system.
+func VisualGetSystem() *Visual {
+	retC := C.gdk_visual_get_system()
+	retGo := VisualNewFromC(unsafe.Pointer(retC))
+
+	return retGo
 }
 
 // Window is a wrapper around the C record GdkWindow.
@@ -1507,6 +1656,65 @@ func WindowNew(parent *Window, attributes *WindowAttr, attributesMask int32) *Wi
 	retGo := WindowNewFromC(unsafe.Pointer(retC))
 
 	return retGo
+}
+
+// WindowAtPointer is a wrapper around the C function gdk_window_at_pointer.
+func WindowAtPointer() (*Window, int32, int32) {
+	var c_win_x C.gint
+
+	var c_win_y C.gint
+
+	retC := C.gdk_window_at_pointer(&c_win_x, &c_win_y)
+	retGo := WindowNewFromC(unsafe.Pointer(retC))
+
+	winX := (int32)(c_win_x)
+
+	winY := (int32)(c_win_y)
+
+	return retGo, winX, winY
+}
+
+// WindowConstrainSize is a wrapper around the C function gdk_window_constrain_size.
+func WindowConstrainSize(geometry *Geometry, flags WindowHints, width int32, height int32) (int32, int32) {
+	c_geometry := (*C.GdkGeometry)(C.NULL)
+	if geometry != nil {
+		c_geometry = (*C.GdkGeometry)(geometry.ToC())
+	}
+
+	c_flags := (C.GdkWindowHints)(flags)
+
+	c_width := (C.gint)(width)
+
+	c_height := (C.gint)(height)
+
+	var c_new_width C.gint
+
+	var c_new_height C.gint
+
+	C.gdk_window_constrain_size(c_geometry, c_flags, c_width, c_height, &c_new_width, &c_new_height)
+
+	newWidth := (int32)(c_new_width)
+
+	newHeight := (int32)(c_new_height)
+
+	return newWidth, newHeight
+}
+
+// WindowProcessAllUpdates is a wrapper around the C function gdk_window_process_all_updates.
+func WindowProcessAllUpdates() {
+	C.gdk_window_process_all_updates()
+
+	return
+}
+
+// WindowSetDebugUpdates is a wrapper around the C function gdk_window_set_debug_updates.
+func WindowSetDebugUpdates(setting bool) {
+	c_setting :=
+		boolToGboolean(setting)
+
+	C.gdk_window_set_debug_updates(c_setting)
+
+	return
 }
 
 // Unsupported : gdk_window_add_filter : unsupported parameter function : no type generator for FilterFunc (GdkFilterFunc) for param function

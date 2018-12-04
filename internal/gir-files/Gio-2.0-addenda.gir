@@ -18,6 +18,8 @@
       <method blacklist="true" c:identifier="g_settings_backend_path_changed"/>
       <method blacklist="true" c:identifier="g_settings_backend_path_writable_changed"/>
       <method blacklist="true" c:identifier="g_settings_backend_writable_changed"/>
+
+      <function blacklist="true" c:identifier="g_settings_backend_get_default"/>
     </class>
 
     <!-- needs glib.Bytes, which requires a specific version of glib -->

@@ -521,6 +521,17 @@ func (recv *KeyFile) ToData() (string, uint64, error) {
 	return retGo, length, goThrowableError
 }
 
+// OptionContextNew is a wrapper around the C function g_option_context_new.
+func OptionContextNew(parameterString string) *OptionContext {
+	c_parameter_string := C.CString(parameterString)
+	defer C.free(unsafe.Pointer(c_parameter_string))
+
+	retC := C.g_option_context_new(c_parameter_string)
+	retGo := OptionContextNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // AddGroup is a wrapper around the C function g_option_context_add_group.
 func (recv *OptionContext) AddGroup(group *OptionGroup) {
 	c_group := (*C.GOptionGroup)(C.NULL)

@@ -3,11 +3,6 @@
 
 package gio
 
-import (
-	glib "github.com/pekim/gobbi/lib/glib"
-	"unsafe"
-)
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gio/gdesktopappinfo.h>
 // #include <gio/gfiledescriptorbased.h>
@@ -24,20 +19,3 @@ import (
 import "C"
 
 // Unsupported : g_app_info_launch_default_for_uri_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
-
-// AppInfoLaunchDefaultForUriFinish is a wrapper around the C function g_app_info_launch_default_for_uri_finish.
-func AppInfoLaunchDefaultForUriFinish(result *AsyncResult) (bool, error) {
-	c_result := (*C.GAsyncResult)(result.ToC())
-
-	var cThrowableError *C.GError
-
-	retC := C.g_app_info_launch_default_for_uri_finish(c_result, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-	if cThrowableError != nil {
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goThrowableError
-}

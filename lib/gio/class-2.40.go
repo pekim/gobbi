@@ -131,6 +131,14 @@ func appinfomonitor_changedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
+// AppInfoMonitorGet is a wrapper around the C function g_app_info_monitor_get.
+func AppInfoMonitorGet() *AppInfoMonitor {
+	retC := C.g_app_info_monitor_get()
+	retGo := AppInfoMonitorNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // Unsupported : g_application_add_main_option_entries : unsupported parameter entries :
 
 // AddOptionGroup is a wrapper around the C function g_application_add_option_group.

@@ -56,20 +56,3 @@ func StrToAscii(str string, fromLocale string) string {
 }
 
 // Unsupported : g_str_tokenize_and_fold : unsupported parameter ascii_alternates : output array param ascii_alternates
-
-// VariantParseErrorPrintContext is a wrapper around the C function g_variant_parse_error_print_context.
-func VariantParseErrorPrintContext(error *Error, sourceStr string) string {
-	c_error := (*C.GError)(C.NULL)
-	if error != nil {
-		c_error = (*C.GError)(error.ToC())
-	}
-
-	c_source_str := C.CString(sourceStr)
-	defer C.free(unsafe.Pointer(c_source_str))
-
-	retC := C.g_variant_parse_error_print_context(c_error, c_source_str)
-	retGo := C.GoString(retC)
-	defer C.free(unsafe.Pointer(retC))
-
-	return retGo
-}

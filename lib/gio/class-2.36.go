@@ -173,6 +173,7 @@ func MemoryOutputStreamNewResizable() *MemoryOutputStream {
 	return retGo
 }
 
+// g_simple_proxy_resolver_new : unsupported parameter ignore_hosts : in string with indirection level of 2
 // SetDefaultProxy is a wrapper around the C function g_simple_proxy_resolver_set_default_proxy.
 func (recv *SimpleProxyResolver) SetDefaultProxy(defaultProxy string) {
 	c_default_proxy := C.CString(defaultProxy)
@@ -261,6 +262,20 @@ func (recv *SocketClient) SetProxyResolver(proxyResolver *ProxyResolver) {
 
 // Unsupported : g_task_new : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
+// TaskIsValid is a wrapper around the C function g_task_is_valid.
+func TaskIsValid(result uintptr, sourceObject uintptr) bool {
+	c_result := (C.gpointer)(result)
+
+	c_source_object := (C.gpointer)(sourceObject)
+
+	retC := C.g_task_is_valid(c_result, c_source_object)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// g_task_report_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
+// g_task_report_new_error : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 // Unsupported : g_task_attach_source : unsupported parameter callback : no type generator for GLib.SourceFunc (GSourceFunc) for param callback
 
 // GetCancellable is a wrapper around the C function g_task_get_cancellable.

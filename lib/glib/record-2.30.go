@@ -12,6 +12,25 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
+// DirMakeTmp is a wrapper around the C function g_dir_make_tmp.
+func DirMakeTmp(tmpl string) (string, error) {
+	c_tmpl := C.CString(tmpl)
+	defer C.free(unsafe.Pointer(c_tmpl))
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dir_make_tmp(c_tmpl, &cThrowableError)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
 // Replace is a wrapper around the C function g_hash_table_iter_replace.
 func (recv *HashTableIter) Replace(value uintptr) {
 	c_value := (C.gpointer)(value)
@@ -45,6 +64,20 @@ func (recv *Hmac) ToC() unsafe.Pointer {
 // Equals compares this Hmac with another Hmac, and returns true if they represent the same GObject.
 func (recv *Hmac) Equals(other *Hmac) bool {
 	return other.ToC() == recv.ToC()
+}
+
+// HmacNew is a wrapper around the C function g_hmac_new.
+func HmacNew(digestType ChecksumType, key []uint8) *Hmac {
+	c_digest_type := (C.GChecksumType)(digestType)
+
+	c_key := &key[0]
+
+	c_key_len := (C.gsize)(len(key))
+
+	retC := C.g_hmac_new(c_digest_type, (*C.guchar)(unsafe.Pointer(c_key)), c_key_len)
+	retGo := HmacNewFromC(unsafe.Pointer(retC))
+
+	return retGo
 }
 
 // Copy is a wrapper around the C function g_hmac_copy.
@@ -113,4 +146,18 @@ func (recv *MatchInfo) Unref() {
 	C.g_match_info_unref((*C.GMatchInfo)(recv.native))
 
 	return
+}
+
+// RegexEscapeNul is a wrapper around the C function g_regex_escape_nul.
+func RegexEscapeNul(string string, length int32) string {
+	c_string := C.CString(string)
+	defer C.free(unsafe.Pointer(c_string))
+
+	c_length := (C.gint)(length)
+
+	retC := C.g_regex_escape_nul(c_string, c_length)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
 }

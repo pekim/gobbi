@@ -30,6 +30,26 @@ func (recv *Device) GetVendorId() string {
 	return retGo
 }
 
+// GLContextClearCurrent is a wrapper around the C function gdk_gl_context_clear_current.
+func GLContextClearCurrent() {
+	C.gdk_gl_context_clear_current()
+
+	return
+}
+
+// GLContextGetCurrent is a wrapper around the C function gdk_gl_context_get_current.
+func GLContextGetCurrent() *GLContext {
+	retC := C.gdk_gl_context_get_current()
+	var retGo (*GLContext)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = GLContextNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
+
 // GetDebugEnabled is a wrapper around the C function gdk_gl_context_get_debug_enabled.
 func (recv *GLContext) GetDebugEnabled() bool {
 	retC := C.gdk_gl_context_get_debug_enabled((*C.GdkGLContext)(recv.native))

@@ -12,6 +12,14 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
+// BookmarkFileNew is a wrapper around the C function g_bookmark_file_new.
+func BookmarkFileNew() *BookmarkFile {
+	retC := C.g_bookmark_file_new()
+	retGo := BookmarkFileNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // AddApplication is a wrapper around the C function g_bookmark_file_add_application.
 func (recv *BookmarkFile) AddApplication(uri string, name string, exec string) {
 	c_uri := C.CString(uri)
@@ -465,6 +473,30 @@ func (recv *BookmarkFile) ToFile(filename string) (bool, error) {
 	return retGo, goThrowableError
 }
 
+// HashTableRemoveAll is a wrapper around the C function g_hash_table_remove_all.
+func HashTableRemoveAll(hashTable *HashTable) {
+	c_hash_table := (*C.GHashTable)(C.NULL)
+	if hashTable != nil {
+		c_hash_table = (*C.GHashTable)(hashTable.ToC())
+	}
+
+	C.g_hash_table_remove_all(c_hash_table)
+
+	return
+}
+
+// HashTableStealAll is a wrapper around the C function g_hash_table_steal_all.
+func HashTableStealAll(hashTable *HashTable) {
+	c_hash_table := (*C.GHashTable)(C.NULL)
+	if hashTable != nil {
+		c_hash_table = (*C.GHashTable)(hashTable.ToC())
+	}
+
+	C.g_hash_table_steal_all(c_hash_table)
+
+	return
+}
+
 // GetDouble is a wrapper around the C function g_key_file_get_double.
 func (recv *KeyFile) GetDouble(groupName string, key string) (float64, error) {
 	c_group_name := C.CString(groupName)
@@ -586,6 +618,21 @@ func (recv *Source) SetFuncs(funcs *SourceFuncs) {
 	C.g_source_set_funcs((*C.GSource)(recv.native), c_funcs)
 
 	return
+}
+
+// TimeValFromIso8601 is a wrapper around the C function g_time_val_from_iso8601.
+func TimeValFromIso8601(isoDate string) (bool, *TimeVal) {
+	c_iso_date := C.CString(isoDate)
+	defer C.free(unsafe.Pointer(c_iso_date))
+
+	var c_time_ C.GTimeVal
+
+	retC := C.g_time_val_from_iso8601(c_iso_date, &c_time_)
+	retGo := retC == C.TRUE
+
+	time := TimeValNewFromC(unsafe.Pointer(&c_time_))
+
+	return retGo, time
 }
 
 // ToIso8601 is a wrapper around the C function g_time_val_to_iso8601.

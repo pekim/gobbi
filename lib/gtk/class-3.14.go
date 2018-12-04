@@ -2179,3 +2179,13 @@ func (recv *Switch) SetState(state bool) {
 // Unsupported : gtk_widget_get_clip : unsupported parameter clip : Blacklisted record : GdkRectangle
 
 // Unsupported : gtk_widget_set_clip : unsupported parameter clip : Blacklisted record : GdkRectangle
+
+// WindowSetInteractiveDebugging is a wrapper around the C function gtk_window_set_interactive_debugging.
+func WindowSetInteractiveDebugging(enable bool) {
+	c_enable :=
+		boolToGboolean(enable)
+
+	C.gtk_window_set_interactive_debugging(c_enable)
+
+	return
+}

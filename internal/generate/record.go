@@ -23,6 +23,7 @@ type Record struct {
 	Doc            *Doc         `xml:"doc"`
 	Fields         Fields       `xml:"field"`
 	Constructors   Constructors `xml:"constructor"`
+	Functions      Functions    `xml:"function"`
 	Methods        Methods      `xml:"method"`
 	Signals        Signals      `xml:"http://www.gtk.org/introspection/glib/1.0 signal"`
 
@@ -35,6 +36,7 @@ func (r *Record) init(ns *Namespace) {
 	r.newFromCFuncName = fmt.Sprintf("%sNewFromC", r.Name)
 
 	r.Constructors.init(ns, r)
+	r.Functions.init(ns, r.GoName)
 	r.Methods.init(ns, r)
 	r.Fields.init(ns)
 	r.Signals.init(ns, r)
@@ -64,6 +66,7 @@ func (r *Record) mergeAddenda(addenda *Record) {
 		r.Version = addenda.Version
 	}
 
+	r.Functions.mergeAddenda(addenda.Functions)
 	r.Methods.mergeAddenda(addenda.Methods)
 }
 
@@ -80,6 +83,7 @@ func (r *Record) generate(g *jen.Group, version *Version) {
 	if r.Version == "" || version.GTE(VersionNew(r.Version)) {
 		r.Signals.generate(g, version, r.Version)
 		r.Constructors.generate(g, version)
+		r.Functions.generate(g, version)
 		r.Methods.generate(g, version)
 	}
 }

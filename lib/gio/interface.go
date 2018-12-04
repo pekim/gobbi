@@ -191,6 +191,96 @@ func (recv *AppInfo) Equals(other *AppInfo) bool {
 	return other.ToC() == recv.ToC()
 }
 
+// AppInfoCreateFromCommandline is a wrapper around the C function g_app_info_create_from_commandline.
+func AppInfoCreateFromCommandline(commandline string, applicationName string, flags AppInfoCreateFlags) (*AppInfo, error) {
+	c_commandline := C.CString(commandline)
+	defer C.free(unsafe.Pointer(c_commandline))
+
+	c_application_name := C.CString(applicationName)
+	defer C.free(unsafe.Pointer(c_application_name))
+
+	c_flags := (C.GAppInfoCreateFlags)(flags)
+
+	var cThrowableError *C.GError
+
+	retC := C.g_app_info_create_from_commandline(c_commandline, c_application_name, c_flags, &cThrowableError)
+	retGo := AppInfoNewFromC(unsafe.Pointer(retC))
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
+// AppInfoGetAll is a wrapper around the C function g_app_info_get_all.
+func AppInfoGetAll() *glib.List {
+	retC := C.g_app_info_get_all()
+	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// AppInfoGetAllForType is a wrapper around the C function g_app_info_get_all_for_type.
+func AppInfoGetAllForType(contentType string) *glib.List {
+	c_content_type := C.CString(contentType)
+	defer C.free(unsafe.Pointer(c_content_type))
+
+	retC := C.g_app_info_get_all_for_type(c_content_type)
+	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// AppInfoGetDefaultForType is a wrapper around the C function g_app_info_get_default_for_type.
+func AppInfoGetDefaultForType(contentType string, mustSupportUris bool) *AppInfo {
+	c_content_type := C.CString(contentType)
+	defer C.free(unsafe.Pointer(c_content_type))
+
+	c_must_support_uris :=
+		boolToGboolean(mustSupportUris)
+
+	retC := C.g_app_info_get_default_for_type(c_content_type, c_must_support_uris)
+	retGo := AppInfoNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// AppInfoGetDefaultForUriScheme is a wrapper around the C function g_app_info_get_default_for_uri_scheme.
+func AppInfoGetDefaultForUriScheme(uriScheme string) *AppInfo {
+	c_uri_scheme := C.CString(uriScheme)
+	defer C.free(unsafe.Pointer(c_uri_scheme))
+
+	retC := C.g_app_info_get_default_for_uri_scheme(c_uri_scheme)
+	retGo := AppInfoNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// AppInfoLaunchDefaultForUri is a wrapper around the C function g_app_info_launch_default_for_uri.
+func AppInfoLaunchDefaultForUri(uri string, context *AppLaunchContext) (bool, error) {
+	c_uri := C.CString(uri)
+	defer C.free(unsafe.Pointer(c_uri))
+
+	c_context := (*C.GAppLaunchContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GAppLaunchContext)(context.ToC())
+	}
+
+	var cThrowableError *C.GError
+
+	retC := C.g_app_info_launch_default_for_uri(c_uri, c_context, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	if cThrowableError != nil {
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goThrowableError
+}
+
 // AddSupportsType is a wrapper around the C function g_app_info_add_supports_type.
 func (recv *AppInfo) AddSupportsType(contentType string) (bool, error) {
 	c_content_type := C.CString(contentType)
@@ -912,6 +1002,50 @@ func (recv *File) ToC() unsafe.Pointer {
 // Equals compares this File with another File, and returns true if they represent the same GObject.
 func (recv *File) Equals(other *File) bool {
 	return other.ToC() == recv.ToC()
+}
+
+// FileNewForCommandlineArg is a wrapper around the C function g_file_new_for_commandline_arg.
+func FileNewForCommandlineArg(arg string) *File {
+	c_arg := C.CString(arg)
+	defer C.free(unsafe.Pointer(c_arg))
+
+	retC := C.g_file_new_for_commandline_arg(c_arg)
+	retGo := FileNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// FileNewForPath is a wrapper around the C function g_file_new_for_path.
+func FileNewForPath(path string) *File {
+	c_path := C.CString(path)
+	defer C.free(unsafe.Pointer(c_path))
+
+	retC := C.g_file_new_for_path(c_path)
+	retGo := FileNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// FileNewForUri is a wrapper around the C function g_file_new_for_uri.
+func FileNewForUri(uri string) *File {
+	c_uri := C.CString(uri)
+	defer C.free(unsafe.Pointer(c_uri))
+
+	retC := C.g_file_new_for_uri(c_uri)
+	retGo := FileNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// FileParseName is a wrapper around the C function g_file_parse_name.
+func FileParseName(parseName string) *File {
+	c_parse_name := C.CString(parseName)
+	defer C.free(unsafe.Pointer(c_parse_name))
+
+	retC := C.g_file_parse_name(c_parse_name)
+	retGo := FileNewFromC(unsafe.Pointer(retC))
+
+	return retGo
 }
 
 // AppendTo is a wrapper around the C function g_file_append_to.
@@ -2144,6 +2278,16 @@ func (recv *Icon) ToC() unsafe.Pointer {
 // Equals compares this Icon with another Icon, and returns true if they represent the same GObject.
 func (recv *Icon) Equals(other *Icon) bool {
 	return other.ToC() == recv.ToC()
+}
+
+// IconHash is a wrapper around the C function g_icon_hash.
+func IconHash(icon uintptr) uint32 {
+	c_icon := (C.gconstpointer)(icon)
+
+	retC := C.g_icon_hash(c_icon)
+	retGo := (uint32)(retC)
+
+	return retGo
 }
 
 // Equal is a wrapper around the C function g_icon_equal.

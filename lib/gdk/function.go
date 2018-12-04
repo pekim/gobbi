@@ -274,14 +274,6 @@ func GetShowEvents() bool {
 	return retGo
 }
 
-// GlErrorQuark is a wrapper around the C function gdk_gl_error_quark.
-func GlErrorQuark() glib.Quark {
-	retC := C.gdk_gl_error_quark()
-	retGo := (glib.Quark)(retC)
-
-	return retGo
-}
-
 // Init is a wrapper around the C function gdk_init.
 func Init(args []string) []string {
 	cArgc, cArgv := argsIn(args)

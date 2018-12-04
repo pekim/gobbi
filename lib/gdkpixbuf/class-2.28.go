@@ -73,3 +73,5 @@ func PixbufAnimationNewFromStreamFinish(asyncResult *gio.AsyncResult) (*PixbufAn
 
 	return retGo, goThrowableError
 }
+
+// gdk_pixbuf_animation_new_from_stream_async : unsupported parameter callback : no type generator for Gio.AsyncReadyCallback (GAsyncReadyCallback) for param callback

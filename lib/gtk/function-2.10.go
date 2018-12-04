@@ -3,10 +3,7 @@
 
 package gtk
 
-import (
-	glib "github.com/pekim/gobbi/lib/glib"
-	"unsafe"
-)
+import "unsafe"
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gtk/gtk-a11y.h>
@@ -14,22 +11,6 @@ import (
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
 import "C"
-
-// PaperSizeGetDefault is a wrapper around the C function gtk_paper_size_get_default.
-func PaperSizeGetDefault() string {
-	retC := C.gtk_paper_size_get_default()
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// PrintErrorQuark is a wrapper around the C function gtk_print_error_quark.
-func PrintErrorQuark() glib.Quark {
-	retC := C.gtk_print_error_quark()
-	retGo := (glib.Quark)(retC)
-
-	return retGo
-}
 
 // PrintRunPageSetupDialog is a wrapper around the C function gtk_print_run_page_setup_dialog.
 func PrintRunPageSetupDialog(parent *Window, pageSetup *PageSetup, settings *PrintSettings) *PageSetup {

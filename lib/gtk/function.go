@@ -93,83 +93,6 @@ func AcceleratorValid(keyval uint32, modifiers gdk.ModifierType) bool {
 	return retGo
 }
 
-// BindingEntryAddSignall is a wrapper around the C function gtk_binding_entry_add_signall.
-func BindingEntryAddSignall(bindingSet *BindingSet, keyval uint32, modifiers gdk.ModifierType, signalName string, bindingArgs *glib.SList) {
-	c_binding_set := (*C.GtkBindingSet)(C.NULL)
-	if bindingSet != nil {
-		c_binding_set = (*C.GtkBindingSet)(bindingSet.ToC())
-	}
-
-	c_keyval := (C.guint)(keyval)
-
-	c_modifiers := (C.GdkModifierType)(modifiers)
-
-	c_signal_name := C.CString(signalName)
-	defer C.free(unsafe.Pointer(c_signal_name))
-
-	c_binding_args := (*C.GSList)(C.NULL)
-	if bindingArgs != nil {
-		c_binding_args = (*C.GSList)(bindingArgs.ToC())
-	}
-
-	C.gtk_binding_entry_add_signall(c_binding_set, c_keyval, c_modifiers, c_signal_name, c_binding_args)
-
-	return
-}
-
-// BindingEntryRemove is a wrapper around the C function gtk_binding_entry_remove.
-func BindingEntryRemove(bindingSet *BindingSet, keyval uint32, modifiers gdk.ModifierType) {
-	c_binding_set := (*C.GtkBindingSet)(C.NULL)
-	if bindingSet != nil {
-		c_binding_set = (*C.GtkBindingSet)(bindingSet.ToC())
-	}
-
-	c_keyval := (C.guint)(keyval)
-
-	c_modifiers := (C.GdkModifierType)(modifiers)
-
-	C.gtk_binding_entry_remove(c_binding_set, c_keyval, c_modifiers)
-
-	return
-}
-
-// BindingSetByClass is a wrapper around the C function gtk_binding_set_by_class.
-func BindingSetByClass(objectClass uintptr) *BindingSet {
-	c_object_class := (C.gpointer)(objectClass)
-
-	retC := C.gtk_binding_set_by_class(c_object_class)
-	retGo := BindingSetNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// BindingSetFind is a wrapper around the C function gtk_binding_set_find.
-func BindingSetFind(setName string) *BindingSet {
-	c_set_name := C.CString(setName)
-	defer C.free(unsafe.Pointer(c_set_name))
-
-	retC := C.gtk_binding_set_find(c_set_name)
-	var retGo (*BindingSet)
-	if retC == nil {
-		retGo = nil
-	} else {
-		retGo = BindingSetNewFromC(unsafe.Pointer(retC))
-	}
-
-	return retGo
-}
-
-// BindingSetNew is a wrapper around the C function gtk_binding_set_new.
-func BindingSetNew(setName string) *BindingSet {
-	c_set_name := C.CString(setName)
-	defer C.free(unsafe.Pointer(c_set_name))
-
-	retC := C.gtk_binding_set_new(c_set_name)
-	retGo := BindingSetNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
 // BindingsActivate is a wrapper around the C function gtk_bindings_activate.
 func BindingsActivate(object *gobject.Object, keyval uint32, modifiers gdk.ModifierType) bool {
 	c_object := (*C.GObject)(C.NULL)
@@ -187,14 +110,6 @@ func BindingsActivate(object *gobject.Object, keyval uint32, modifiers gdk.Modif
 	return retGo
 }
 
-// BuilderErrorQuark is a wrapper around the C function gtk_builder_error_quark.
-func BuilderErrorQuark() glib.Quark {
-	retC := C.gtk_builder_error_quark()
-	retGo := (glib.Quark)(retC)
-
-	return retGo
-}
-
 // CheckVersion is a wrapper around the C function gtk_check_version.
 func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint32) string {
 	c_required_major := (C.guint)(requiredMajor)
@@ -205,14 +120,6 @@ func CheckVersion(requiredMajor uint32, requiredMinor uint32, requiredMicro uint
 
 	retC := C.gtk_check_version(c_required_major, c_required_minor, c_required_micro)
 	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// CssProviderErrorQuark is a wrapper around the C function gtk_css_provider_error_quark.
-func CssProviderErrorQuark() glib.Quark {
-	retC := C.gtk_css_provider_error_quark()
-	retGo := (glib.Quark)(retC)
 
 	return retGo
 }
@@ -437,80 +344,6 @@ func GrabGetCurrent() *Widget {
 	} else {
 		retGo = WidgetNewFromC(unsafe.Pointer(retC))
 	}
-
-	return retGo
-}
-
-// IconSizeFromName is a wrapper around the C function gtk_icon_size_from_name.
-func IconSizeFromName(name string) IconSize {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
-
-	retC := C.gtk_icon_size_from_name(c_name)
-	retGo := (IconSize)(retC)
-
-	return retGo
-}
-
-// IconSizeGetName is a wrapper around the C function gtk_icon_size_get_name.
-func IconSizeGetName(size IconSize) string {
-	c_size := (C.GtkIconSize)(size)
-
-	retC := C.gtk_icon_size_get_name(c_size)
-	retGo := C.GoString(retC)
-
-	return retGo
-}
-
-// IconSizeLookup is a wrapper around the C function gtk_icon_size_lookup.
-func IconSizeLookup(size IconSize) (bool, int32, int32) {
-	c_size := (C.GtkIconSize)(size)
-
-	var c_width C.gint
-
-	var c_height C.gint
-
-	retC := C.gtk_icon_size_lookup(c_size, &c_width, &c_height)
-	retGo := retC == C.TRUE
-
-	width := (int32)(c_width)
-
-	height := (int32)(c_height)
-
-	return retGo, width, height
-}
-
-// IconSizeRegister is a wrapper around the C function gtk_icon_size_register.
-func IconSizeRegister(name string, width int32, height int32) IconSize {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
-
-	c_width := (C.gint)(width)
-
-	c_height := (C.gint)(height)
-
-	retC := C.gtk_icon_size_register(c_name, c_width, c_height)
-	retGo := (IconSize)(retC)
-
-	return retGo
-}
-
-// IconSizeRegisterAlias is a wrapper around the C function gtk_icon_size_register_alias.
-func IconSizeRegisterAlias(alias string, target IconSize) {
-	c_alias := C.CString(alias)
-	defer C.free(unsafe.Pointer(c_alias))
-
-	c_target := (C.GtkIconSize)(target)
-
-	C.gtk_icon_size_register_alias(c_alias, c_target)
-
-	return
-}
-
-// IconThemeErrorQuark is a wrapper around the C function gtk_icon_theme_error_quark.
-func IconThemeErrorQuark() glib.Quark {
-	retC := C.gtk_icon_theme_error_quark()
-	retGo := (glib.Quark)(retC)
 
 	return retGo
 }
@@ -1563,22 +1396,6 @@ func RcScannerNew() *glib.Scanner {
 
 // Unsupported : gtk_rc_set_default_files : unsupported parameter filenames :
 
-// RecentChooserErrorQuark is a wrapper around the C function gtk_recent_chooser_error_quark.
-func RecentChooserErrorQuark() glib.Quark {
-	retC := C.gtk_recent_chooser_error_quark()
-	retGo := (glib.Quark)(retC)
-
-	return retGo
-}
-
-// RecentManagerErrorQuark is a wrapper around the C function gtk_recent_manager_error_quark.
-func RecentManagerErrorQuark() glib.Quark {
-	retC := C.gtk_recent_manager_error_quark()
-	retGo := (glib.Quark)(retC)
-
-	return retGo
-}
-
 // Unsupported : gtk_selection_add_target : unsupported parameter selection : Blacklisted record : GdkAtom
 
 // Unsupported : gtk_selection_add_targets : unsupported parameter selection : Blacklisted record : GdkAtom
@@ -1656,64 +1473,6 @@ func TreeGetRowDragData(selectionData *SelectionData) (bool, *TreeModel, *TreePa
 	path := TreePathNewFromC(unsafe.Pointer(c_path))
 
 	return retGo, treeModel, path
-}
-
-// TreeRowReferenceDeleted is a wrapper around the C function gtk_tree_row_reference_deleted.
-func TreeRowReferenceDeleted(proxy *gobject.Object, path *TreePath) {
-	c_proxy := (*C.GObject)(C.NULL)
-	if proxy != nil {
-		c_proxy = (*C.GObject)(proxy.ToC())
-	}
-
-	c_path := (*C.GtkTreePath)(C.NULL)
-	if path != nil {
-		c_path = (*C.GtkTreePath)(path.ToC())
-	}
-
-	C.gtk_tree_row_reference_deleted(c_proxy, c_path)
-
-	return
-}
-
-// TreeRowReferenceInserted is a wrapper around the C function gtk_tree_row_reference_inserted.
-func TreeRowReferenceInserted(proxy *gobject.Object, path *TreePath) {
-	c_proxy := (*C.GObject)(C.NULL)
-	if proxy != nil {
-		c_proxy = (*C.GObject)(proxy.ToC())
-	}
-
-	c_path := (*C.GtkTreePath)(C.NULL)
-	if path != nil {
-		c_path = (*C.GtkTreePath)(path.ToC())
-	}
-
-	C.gtk_tree_row_reference_inserted(c_proxy, c_path)
-
-	return
-}
-
-// TreeRowReferenceReordered is a wrapper around the C function gtk_tree_row_reference_reordered.
-func TreeRowReferenceReordered(proxy *gobject.Object, path *TreePath, iter *TreeIter, newOrder []int32) {
-	c_proxy := (*C.GObject)(C.NULL)
-	if proxy != nil {
-		c_proxy = (*C.GObject)(proxy.ToC())
-	}
-
-	c_path := (*C.GtkTreePath)(C.NULL)
-	if path != nil {
-		c_path = (*C.GtkTreePath)(path.ToC())
-	}
-
-	c_iter := (*C.GtkTreeIter)(C.NULL)
-	if iter != nil {
-		c_iter = (*C.GtkTreeIter)(iter.ToC())
-	}
-
-	c_new_order := &newOrder[0]
-
-	C.gtk_tree_row_reference_reordered(c_proxy, c_path, c_iter, (*C.gint)(unsafe.Pointer(c_new_order)))
-
-	return
 }
 
 // TreeSetRowDragData is a wrapper around the C function gtk_tree_set_row_drag_data.

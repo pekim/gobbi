@@ -261,3 +261,11 @@ func (recv *Task) GetCompleted() bool {
 
 	return retGo
 }
+
+// UnixMountMonitorGet is a wrapper around the C function g_unix_mount_monitor_get.
+func UnixMountMonitorGet() *UnixMountMonitor {
+	retC := C.g_unix_mount_monitor_get()
+	retGo := UnixMountMonitorNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}

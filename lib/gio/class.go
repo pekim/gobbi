@@ -769,6 +769,19 @@ func CancellableNew() *Cancellable {
 	return retGo
 }
 
+// CancellableGetCurrent is a wrapper around the C function g_cancellable_get_current.
+func CancellableGetCurrent() *Cancellable {
+	retC := C.g_cancellable_get_current()
+	var retGo (*Cancellable)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = CancellableNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
+
 // Cancel is a wrapper around the C function g_cancellable_cancel.
 func (recv *Cancellable) Cancel() {
 	C.g_cancellable_cancel((*C.GCancellable)(recv.native))
@@ -1696,6 +1709,17 @@ func DesktopAppInfoNewFromFilename(filename string) *DesktopAppInfo {
 	retGo := DesktopAppInfoNewFromC(unsafe.Pointer(retC))
 
 	return retGo
+}
+
+// g_desktop_app_info_search : no return type
+// DesktopAppInfoSetDesktopEnv is a wrapper around the C function g_desktop_app_info_set_desktop_env.
+func DesktopAppInfoSetDesktopEnv(desktopEnv string) {
+	c_desktop_env := C.CString(desktopEnv)
+	defer C.free(unsafe.Pointer(c_desktop_env))
+
+	C.g_desktop_app_info_set_desktop_env(c_desktop_env)
+
+	return
 }
 
 // GetCategories is a wrapper around the C function g_desktop_app_info_get_categories.
@@ -4796,6 +4820,13 @@ func settings_writableChangedHandler(_ *C.GObject, c_key *C.gchar, data C.gpoint
 	callback(key)
 }
 
+// SettingsSync is a wrapper around the C function g_settings_sync.
+func SettingsSync() {
+	C.g_settings_sync()
+
+	return
+}
+
 // Apply is a wrapper around the C function g_settings_apply.
 func (recv *Settings) Apply() {
 	C.g_settings_apply((*C.GSettings)(recv.native))
@@ -6048,6 +6079,22 @@ func CastToVfs(object *gobject.Object) *Vfs {
 	return VfsNewFromC(object.ToC())
 }
 
+// VfsGetDefault is a wrapper around the C function g_vfs_get_default.
+func VfsGetDefault() *Vfs {
+	retC := C.g_vfs_get_default()
+	retGo := VfsNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// VfsGetLocal is a wrapper around the C function g_vfs_get_local.
+func VfsGetLocal() *Vfs {
+	retC := C.g_vfs_get_local()
+	retGo := VfsNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // GetFileForPath is a wrapper around the C function g_vfs_get_file_for_path.
 func (recv *Vfs) GetFileForPath(path string) *File {
 	c_path := C.CString(path)
@@ -6748,6 +6795,24 @@ func volumemonitor_volumeRemovedHandler(_ *C.GObject, c_volume *C.GVolume, data 
 	index := int(uintptr(data))
 	callback := signalVolumeMonitorVolumeRemovedMap[index].callback
 	callback(volume)
+}
+
+// VolumeMonitorAdoptOrphanMount is a wrapper around the C function g_volume_monitor_adopt_orphan_mount.
+func VolumeMonitorAdoptOrphanMount(mount *Mount) *Volume {
+	c_mount := (*C.GMount)(mount.ToC())
+
+	retC := C.g_volume_monitor_adopt_orphan_mount(c_mount)
+	retGo := VolumeNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// VolumeMonitorGet is a wrapper around the C function g_volume_monitor_get.
+func VolumeMonitorGet() *VolumeMonitor {
+	retC := C.g_volume_monitor_get()
+	retGo := VolumeMonitorNewFromC(unsafe.Pointer(retC))
+
+	return retGo
 }
 
 // GetConnectedDrives is a wrapper around the C function g_volume_monitor_get_connected_drives.

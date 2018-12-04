@@ -55,6 +55,21 @@ func (recv *Color) Equals(other *Color) bool {
 	return other.ToC() == recv.ToC()
 }
 
+// ColorParse is a wrapper around the C function gdk_color_parse.
+func ColorParse(spec string) (bool, *Color) {
+	c_spec := C.CString(spec)
+	defer C.free(unsafe.Pointer(c_spec))
+
+	var c_color C.GdkColor
+
+	retC := C.gdk_color_parse(c_spec, &c_color)
+	retGo := retC == C.TRUE
+
+	color := ColorNewFromC(unsafe.Pointer(&c_color))
+
+	return retGo, color
+}
+
 // Copy is a wrapper around the C function gdk_color_copy.
 func (recv *Color) Copy() *Color {
 	retC := C.gdk_color_copy((*C.GdkColor)(recv.native))

@@ -4,7 +4,6 @@ package gio
 
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
-	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
 
@@ -22,96 +21,6 @@ import (
 // #include <gio/gunixsocketaddress.h>
 // #include <stdlib.h>
 import "C"
-
-// AppInfoCreateFromCommandline is a wrapper around the C function g_app_info_create_from_commandline.
-func AppInfoCreateFromCommandline(commandline string, applicationName string, flags AppInfoCreateFlags) (*AppInfo, error) {
-	c_commandline := C.CString(commandline)
-	defer C.free(unsafe.Pointer(c_commandline))
-
-	c_application_name := C.CString(applicationName)
-	defer C.free(unsafe.Pointer(c_application_name))
-
-	c_flags := (C.GAppInfoCreateFlags)(flags)
-
-	var cThrowableError *C.GError
-
-	retC := C.g_app_info_create_from_commandline(c_commandline, c_application_name, c_flags, &cThrowableError)
-	retGo := AppInfoNewFromC(unsafe.Pointer(retC))
-
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-	if cThrowableError != nil {
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goThrowableError
-}
-
-// AppInfoGetAll is a wrapper around the C function g_app_info_get_all.
-func AppInfoGetAll() *glib.List {
-	retC := C.g_app_info_get_all()
-	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// AppInfoGetAllForType is a wrapper around the C function g_app_info_get_all_for_type.
-func AppInfoGetAllForType(contentType string) *glib.List {
-	c_content_type := C.CString(contentType)
-	defer C.free(unsafe.Pointer(c_content_type))
-
-	retC := C.g_app_info_get_all_for_type(c_content_type)
-	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// AppInfoGetDefaultForType is a wrapper around the C function g_app_info_get_default_for_type.
-func AppInfoGetDefaultForType(contentType string, mustSupportUris bool) *AppInfo {
-	c_content_type := C.CString(contentType)
-	defer C.free(unsafe.Pointer(c_content_type))
-
-	c_must_support_uris :=
-		boolToGboolean(mustSupportUris)
-
-	retC := C.g_app_info_get_default_for_type(c_content_type, c_must_support_uris)
-	retGo := AppInfoNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// AppInfoGetDefaultForUriScheme is a wrapper around the C function g_app_info_get_default_for_uri_scheme.
-func AppInfoGetDefaultForUriScheme(uriScheme string) *AppInfo {
-	c_uri_scheme := C.CString(uriScheme)
-	defer C.free(unsafe.Pointer(c_uri_scheme))
-
-	retC := C.g_app_info_get_default_for_uri_scheme(c_uri_scheme)
-	retGo := AppInfoNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// AppInfoLaunchDefaultForUri is a wrapper around the C function g_app_info_launch_default_for_uri.
-func AppInfoLaunchDefaultForUri(uri string, context *AppLaunchContext) (bool, error) {
-	c_uri := C.CString(uri)
-	defer C.free(unsafe.Pointer(c_uri))
-
-	c_context := (*C.GAppLaunchContext)(C.NULL)
-	if context != nil {
-		c_context = (*C.GAppLaunchContext)(context.ToC())
-	}
-
-	var cThrowableError *C.GError
-
-	retC := C.g_app_info_launch_default_for_uri(c_uri, c_context, &cThrowableError)
-	retGo := retC == C.TRUE
-
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-	if cThrowableError != nil {
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goThrowableError
-}
 
 // ContentTypeCanBeExecutable is a wrapper around the C function g_content_type_can_be_executable.
 func ContentTypeCanBeExecutable(type_ string) bool {
@@ -226,68 +135,6 @@ func ContentTypesGetRegistered() *glib.List {
 	return retGo
 }
 
-// DbusErrorQuark is a wrapper around the C function g_dbus_error_quark.
-func DbusErrorQuark() glib.Quark {
-	retC := C.g_dbus_error_quark()
-	retGo := (glib.Quark)(retC)
-
-	return retGo
-}
-
-// FileNewForCommandlineArg is a wrapper around the C function g_file_new_for_commandline_arg.
-func FileNewForCommandlineArg(arg string) *File {
-	c_arg := C.CString(arg)
-	defer C.free(unsafe.Pointer(c_arg))
-
-	retC := C.g_file_new_for_commandline_arg(c_arg)
-	retGo := FileNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// FileNewForPath is a wrapper around the C function g_file_new_for_path.
-func FileNewForPath(path string) *File {
-	c_path := C.CString(path)
-	defer C.free(unsafe.Pointer(c_path))
-
-	retC := C.g_file_new_for_path(c_path)
-	retGo := FileNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// FileNewForUri is a wrapper around the C function g_file_new_for_uri.
-func FileNewForUri(uri string) *File {
-	c_uri := C.CString(uri)
-	defer C.free(unsafe.Pointer(c_uri))
-
-	retC := C.g_file_new_for_uri(c_uri)
-	retGo := FileNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// FileParseName is a wrapper around the C function g_file_parse_name.
-func FileParseName(parseName string) *File {
-	c_parse_name := C.CString(parseName)
-	defer C.free(unsafe.Pointer(c_parse_name))
-
-	retC := C.g_file_parse_name(c_parse_name)
-	retGo := FileNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// IconHash is a wrapper around the C function g_icon_hash.
-func IconHash(icon uintptr) uint32 {
-	c_icon := (C.gconstpointer)(icon)
-
-	retC := C.g_icon_hash(c_icon)
-	retGo := (uint32)(retC)
-
-	return retGo
-}
-
 // IoErrorFromErrno is a wrapper around the C function g_io_error_from_errno.
 func IoErrorFromErrno(errNo int32) IOErrorEnum {
 	c_err_no := (C.gint)(errNo)
@@ -302,46 +149,6 @@ func IoErrorFromErrno(errNo int32) IOErrorEnum {
 func IoErrorQuark() glib.Quark {
 	retC := C.g_io_error_quark()
 	retGo := (glib.Quark)(retC)
-
-	return retGo
-}
-
-// IoExtensionPointImplement is a wrapper around the C function g_io_extension_point_implement.
-func IoExtensionPointImplement(extensionPointName string, type_ gobject.Type, extensionName string, priority int32) *IOExtension {
-	c_extension_point_name := C.CString(extensionPointName)
-	defer C.free(unsafe.Pointer(c_extension_point_name))
-
-	c_type := (C.GType)(type_)
-
-	c_extension_name := C.CString(extensionName)
-	defer C.free(unsafe.Pointer(c_extension_name))
-
-	c_priority := (C.gint)(priority)
-
-	retC := C.g_io_extension_point_implement(c_extension_point_name, c_type, c_extension_name, c_priority)
-	retGo := IOExtensionNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// IoExtensionPointLookup is a wrapper around the C function g_io_extension_point_lookup.
-func IoExtensionPointLookup(name string) *IOExtensionPoint {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
-
-	retC := C.g_io_extension_point_lookup(c_name)
-	retGo := IOExtensionPointNewFromC(unsafe.Pointer(retC))
-
-	return retGo
-}
-
-// IoExtensionPointRegister is a wrapper around the C function g_io_extension_point_register.
-func IoExtensionPointRegister(name string) *IOExtensionPoint {
-	c_name := C.CString(name)
-	defer C.free(unsafe.Pointer(c_name))
-
-	retC := C.g_io_extension_point_register(c_name)
-	retGo := IOExtensionPointNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }

@@ -10,6 +10,9 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
+// g_object_interface_find_property : return type : Blacklisted record : GParamSpec
+// g_object_interface_install_property : unsupported parameter pspec : Blacklisted record : GParamSpec
+// g_object_interface_list_properties : no return type
 // ParamSpecOverride is a wrapper around the C record GParamSpecOverride.
 type ParamSpecOverride struct {
 	native *C.GParamSpecOverride

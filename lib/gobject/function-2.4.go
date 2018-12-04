@@ -37,16 +37,6 @@ func SignalAccumulatorTrueHandled(ihint *SignalInvocationHint, returnAccu *Value
 
 // Unsupported : g_type_add_interface_check : unsupported parameter check_func : no type generator for TypeInterfaceCheckFunc (GTypeInterfaceCheckFunc) for param check_func
 
-// TypeClassPeekStatic is a wrapper around the C function g_type_class_peek_static.
-func TypeClassPeekStatic(type_ Type) uintptr {
-	c_type := (C.GType)(type_)
-
-	retC := C.g_type_class_peek_static(c_type)
-	retGo := (uintptr)(retC)
-
-	return retGo
-}
-
 // TypeDefaultInterfacePeek is a wrapper around the C function g_type_default_interface_peek.
 func TypeDefaultInterfacePeek(gType Type) uintptr {
 	c_g_type := (C.GType)(gType)

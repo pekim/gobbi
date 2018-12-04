@@ -91,6 +91,18 @@ func CastToObject(object *Object) *Object {
 
 // Unsupported : g_object_newv : unsupported parameter parameters :
 
+// ObjectCompatControl is a wrapper around the C function g_object_compat_control.
+func ObjectCompatControl(what uint64, data uintptr) uint64 {
+	c_what := (C.gsize)(what)
+
+	c_data := (C.gpointer)(data)
+
+	retC := C.g_object_compat_control(c_what, c_data)
+	retGo := (uint64)(retC)
+
+	return retGo
+}
+
 // AddWeakPointer is a wrapper around the C function g_object_add_weak_pointer.
 func (recv *Object) AddWeakPointer(weakPointerLocation uintptr) {
 	c_weak_pointer_location := (C.gpointer)(weakPointerLocation)

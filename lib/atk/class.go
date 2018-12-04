@@ -114,6 +114,19 @@ func CastToGObjectAccessible(object *gobject.Object) *GObjectAccessible {
 	return GObjectAccessibleNewFromC(object.ToC())
 }
 
+// GObjectAccessibleForObject is a wrapper around the C function atk_gobject_accessible_for_object.
+func GObjectAccessibleForObject(obj *gobject.Object) *Object {
+	c_obj := (*C.GObject)(C.NULL)
+	if obj != nil {
+		c_obj = (*C.GObject)(obj.ToC())
+	}
+
+	retC := C.atk_gobject_accessible_for_object(c_obj)
+	retGo := ObjectNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // GetObject is a wrapper around the C function atk_gobject_accessible_get_object.
 func (recv *GObjectAccessible) GetObject() *gobject.Object {
 	retC := C.atk_gobject_accessible_get_object((*C.AtkGObjectAccessible)(recv.native))

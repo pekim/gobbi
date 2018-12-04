@@ -3,11 +3,6 @@
 
 package gio
 
-import (
-	glib "github.com/pekim/gobbi/lib/glib"
-	"unsafe"
-)
-
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gio/gdesktopappinfo.h>
 // #include <gio/gfiledescriptorbased.h>
@@ -22,31 +17,3 @@ import (
 // #include <gio/gunixsocketaddress.h>
 // #include <stdlib.h>
 import "C"
-
-// AppInfoResetTypeAssociations is a wrapper around the C function g_app_info_reset_type_associations.
-func AppInfoResetTypeAssociations(contentType string) {
-	c_content_type := C.CString(contentType)
-	defer C.free(unsafe.Pointer(c_content_type))
-
-	C.g_app_info_reset_type_associations(c_content_type)
-
-	return
-}
-
-// IconNewForString is a wrapper around the C function g_icon_new_for_string.
-func IconNewForString(str string) (*Icon, error) {
-	c_str := C.CString(str)
-	defer C.free(unsafe.Pointer(c_str))
-
-	var cThrowableError *C.GError
-
-	retC := C.g_icon_new_for_string(c_str, &cThrowableError)
-	retGo := IconNewFromC(unsafe.Pointer(retC))
-
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
-	if cThrowableError != nil {
-		C.g_error_free(cThrowableError)
-	}
-
-	return retGo, goThrowableError
-}

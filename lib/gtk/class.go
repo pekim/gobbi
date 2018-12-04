@@ -2024,6 +2024,24 @@ func AccelGroupNew() *AccelGroup {
 	return retGo
 }
 
+// AccelGroupFromAccelClosure is a wrapper around the C function gtk_accel_group_from_accel_closure.
+func AccelGroupFromAccelClosure(closure *gobject.Closure) *AccelGroup {
+	c_closure := (*C.GClosure)(C.NULL)
+	if closure != nil {
+		c_closure = (*C.GClosure)(closure.ToC())
+	}
+
+	retC := C.gtk_accel_group_from_accel_closure(c_closure)
+	var retGo (*AccelGroup)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = AccelGroupNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
+
 // Activate is a wrapper around the C function gtk_accel_group_activate.
 func (recv *AccelGroup) Activate(accelQuark glib.Quark, acceleratable *gobject.Object, accelKey uint32, accelMods gdk.ModifierType) bool {
 	c_accel_quark := (C.GQuark)(accelQuark)
@@ -2287,6 +2305,115 @@ func (recv *AccelMap) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a AccelMap.
 func CastToAccelMap(object *gobject.Object) *AccelMap {
 	return AccelMapNewFromC(object.ToC())
+}
+
+// AccelMapAddEntry is a wrapper around the C function gtk_accel_map_add_entry.
+func AccelMapAddEntry(accelPath string, accelKey uint32, accelMods gdk.ModifierType) {
+	c_accel_path := C.CString(accelPath)
+	defer C.free(unsafe.Pointer(c_accel_path))
+
+	c_accel_key := (C.guint)(accelKey)
+
+	c_accel_mods := (C.GdkModifierType)(accelMods)
+
+	C.gtk_accel_map_add_entry(c_accel_path, c_accel_key, c_accel_mods)
+
+	return
+}
+
+// AccelMapAddFilter is a wrapper around the C function gtk_accel_map_add_filter.
+func AccelMapAddFilter(filterPattern string) {
+	c_filter_pattern := C.CString(filterPattern)
+	defer C.free(unsafe.Pointer(c_filter_pattern))
+
+	C.gtk_accel_map_add_filter(c_filter_pattern)
+
+	return
+}
+
+// AccelMapChangeEntry is a wrapper around the C function gtk_accel_map_change_entry.
+func AccelMapChangeEntry(accelPath string, accelKey uint32, accelMods gdk.ModifierType, replace bool) bool {
+	c_accel_path := C.CString(accelPath)
+	defer C.free(unsafe.Pointer(c_accel_path))
+
+	c_accel_key := (C.guint)(accelKey)
+
+	c_accel_mods := (C.GdkModifierType)(accelMods)
+
+	c_replace :=
+		boolToGboolean(replace)
+
+	retC := C.gtk_accel_map_change_entry(c_accel_path, c_accel_key, c_accel_mods, c_replace)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// gtk_accel_map_foreach : unsupported parameter foreach_func : no type generator for AccelMapForeach (GtkAccelMapForeach) for param foreach_func
+// gtk_accel_map_foreach_unfiltered : unsupported parameter foreach_func : no type generator for AccelMapForeach (GtkAccelMapForeach) for param foreach_func
+// AccelMapLoad is a wrapper around the C function gtk_accel_map_load.
+func AccelMapLoad(fileName string) {
+	c_file_name := C.CString(fileName)
+	defer C.free(unsafe.Pointer(c_file_name))
+
+	C.gtk_accel_map_load(c_file_name)
+
+	return
+}
+
+// AccelMapLoadFd is a wrapper around the C function gtk_accel_map_load_fd.
+func AccelMapLoadFd(fd int32) {
+	c_fd := (C.gint)(fd)
+
+	C.gtk_accel_map_load_fd(c_fd)
+
+	return
+}
+
+// AccelMapLoadScanner is a wrapper around the C function gtk_accel_map_load_scanner.
+func AccelMapLoadScanner(scanner *glib.Scanner) {
+	c_scanner := (*C.GScanner)(C.NULL)
+	if scanner != nil {
+		c_scanner = (*C.GScanner)(scanner.ToC())
+	}
+
+	C.gtk_accel_map_load_scanner(c_scanner)
+
+	return
+}
+
+// AccelMapLookupEntry is a wrapper around the C function gtk_accel_map_lookup_entry.
+func AccelMapLookupEntry(accelPath string) (bool, *AccelKey) {
+	c_accel_path := C.CString(accelPath)
+	defer C.free(unsafe.Pointer(c_accel_path))
+
+	var c_key C.GtkAccelKey
+
+	retC := C.gtk_accel_map_lookup_entry(c_accel_path, &c_key)
+	retGo := retC == C.TRUE
+
+	key := AccelKeyNewFromC(unsafe.Pointer(&c_key))
+
+	return retGo, key
+}
+
+// AccelMapSave is a wrapper around the C function gtk_accel_map_save.
+func AccelMapSave(fileName string) {
+	c_file_name := C.CString(fileName)
+	defer C.free(unsafe.Pointer(c_file_name))
+
+	C.gtk_accel_map_save(c_file_name)
+
+	return
+}
+
+// AccelMapSaveFd is a wrapper around the C function gtk_accel_map_save_fd.
+func AccelMapSaveFd(fd int32) {
+	c_fd := (C.gint)(fd)
+
+	C.gtk_accel_map_save_fd(c_fd)
+
+	return
 }
 
 // Accessible is a wrapper around the C record GtkAccessible.
@@ -6998,6 +7125,7 @@ func CastToClipboard(object *gobject.Object) *Clipboard {
 	return ClipboardNewFromC(object.ToC())
 }
 
+// gtk_clipboard_get : unsupported parameter selection : Blacklisted record : GdkAtom
 // Clear is a wrapper around the C function gtk_clipboard_clear.
 func (recv *Clipboard) Clear() {
 	C.gtk_clipboard_clear((*C.GtkClipboard)(recv.native))
@@ -7436,6 +7564,8 @@ func ColorSelectionNew() *ColorSelection {
 	return retGo
 }
 
+// gtk_color_selection_palette_from_string : unsupported parameter colors : output array param colors
+// gtk_color_selection_palette_to_string : unsupported parameter colors :
 // GetCurrentAlpha is a wrapper around the C function gtk_color_selection_get_current_alpha.
 func (recv *ColorSelection) GetCurrentAlpha() uint16 {
 	retC := C.gtk_color_selection_get_current_alpha((*C.GtkColorSelection)(recv.native))
@@ -8770,6 +8900,28 @@ func cssprovider_parsingErrorHandler(_ *C.GObject, c_section *C.GtkCssSection, c
 // CssProviderNew is a wrapper around the C function gtk_css_provider_new.
 func CssProviderNew() *CssProvider {
 	retC := C.gtk_css_provider_new()
+	retGo := CssProviderNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// CssProviderGetDefault is a wrapper around the C function gtk_css_provider_get_default.
+func CssProviderGetDefault() *CssProvider {
+	retC := C.gtk_css_provider_get_default()
+	retGo := CssProviderNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// CssProviderGetNamed is a wrapper around the C function gtk_css_provider_get_named.
+func CssProviderGetNamed(name string, variant string) *CssProvider {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_variant := C.CString(variant)
+	defer C.free(unsafe.Pointer(c_variant))
+
+	retC := C.gtk_css_provider_get_named(c_name, c_variant)
 	retGo := CssProviderNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -15191,6 +15343,17 @@ func CastToIconFactory(object *gobject.Object) *IconFactory {
 func IconFactoryNew() *IconFactory {
 	retC := C.gtk_icon_factory_new()
 	retGo := IconFactoryNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// IconFactoryLookupDefault is a wrapper around the C function gtk_icon_factory_lookup_default.
+func IconFactoryLookupDefault(stockId string) *IconSet {
+	c_stock_id := C.CString(stockId)
+	defer C.free(unsafe.Pointer(c_stock_id))
+
+	retC := C.gtk_icon_factory_lookup_default(c_stock_id)
+	retGo := IconSetNewFromC(unsafe.Pointer(retC))
 
 	return retGo
 }
@@ -25204,6 +25367,21 @@ func CastToSettings(object *gobject.Object) *Settings {
 	return SettingsNewFromC(object.ToC())
 }
 
+// SettingsGetDefault is a wrapper around the C function gtk_settings_get_default.
+func SettingsGetDefault() *Settings {
+	retC := C.gtk_settings_get_default()
+	var retGo (*Settings)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = SettingsNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
+
+// gtk_settings_install_property : unsupported parameter pspec : Blacklisted record : GParamSpec
+// gtk_settings_install_property_parser : unsupported parameter pspec : Blacklisted record : GParamSpec
 // SetDoubleProperty is a wrapper around the C function gtk_settings_set_double_property.
 func (recv *Settings) SetDoubleProperty(name string, vDouble float64, origin string) {
 	c_name := C.CString(name)
@@ -30992,6 +31170,22 @@ func (recv *ThemingEngine) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a ThemingEngine.
 func CastToThemingEngine(object *gobject.Object) *ThemingEngine {
 	return ThemingEngineNewFromC(object.ToC())
+}
+
+// ThemingEngineLoad is a wrapper around the C function gtk_theming_engine_load.
+func ThemingEngineLoad(name string) *ThemingEngine {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	retC := C.gtk_theming_engine_load(c_name)
+	var retGo (*ThemingEngine)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = ThemingEngineNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
 }
 
 // GetScreen is a wrapper around the C function gtk_theming_engine_get_screen.
@@ -39234,6 +39428,45 @@ func widget_windowStateEventHandler(_ *C.GObject, c_event *C.GdkEventWindowState
 
 // Unsupported : gtk_widget_new : unsupported parameter ... : varargs
 
+// WidgetGetDefaultDirection is a wrapper around the C function gtk_widget_get_default_direction.
+func WidgetGetDefaultDirection() TextDirection {
+	retC := C.gtk_widget_get_default_direction()
+	retGo := (TextDirection)(retC)
+
+	return retGo
+}
+
+// WidgetGetDefaultStyle is a wrapper around the C function gtk_widget_get_default_style.
+func WidgetGetDefaultStyle() *Style {
+	retC := C.gtk_widget_get_default_style()
+	retGo := StyleNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// WidgetPopCompositeChild is a wrapper around the C function gtk_widget_pop_composite_child.
+func WidgetPopCompositeChild() {
+	C.gtk_widget_pop_composite_child()
+
+	return
+}
+
+// WidgetPushCompositeChild is a wrapper around the C function gtk_widget_push_composite_child.
+func WidgetPushCompositeChild() {
+	C.gtk_widget_push_composite_child()
+
+	return
+}
+
+// WidgetSetDefaultDirection is a wrapper around the C function gtk_widget_set_default_direction.
+func WidgetSetDefaultDirection(dir TextDirection) {
+	c_dir := (C.GtkTextDirection)(dir)
+
+	C.gtk_widget_set_default_direction(c_dir)
+
+	return
+}
+
 // Activate is a wrapper around the C function gtk_widget_activate.
 func (recv *Widget) Activate() bool {
 	retC := C.gtk_widget_activate((*C.GtkWidget)(recv.native))
@@ -40859,6 +41092,34 @@ func WindowNew(type_ WindowType) *Window {
 	retGo := WindowNewFromC(unsafe.Pointer(retC))
 
 	return retGo
+}
+
+// WindowGetDefaultIconList is a wrapper around the C function gtk_window_get_default_icon_list.
+func WindowGetDefaultIconList() *glib.List {
+	retC := C.gtk_window_get_default_icon_list()
+	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// WindowListToplevels is a wrapper around the C function gtk_window_list_toplevels.
+func WindowListToplevels() *glib.List {
+	retC := C.gtk_window_list_toplevels()
+	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// WindowSetDefaultIconList is a wrapper around the C function gtk_window_set_default_icon_list.
+func WindowSetDefaultIconList(list *glib.List) {
+	c_list := (*C.GList)(C.NULL)
+	if list != nil {
+		c_list = (*C.GList)(list.ToC())
+	}
+
+	C.gtk_window_set_default_icon_list(c_list)
+
+	return
 }
 
 // ActivateDefault is a wrapper around the C function gtk_window_activate_default.

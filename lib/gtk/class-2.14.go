@@ -460,6 +460,31 @@ func HSVNew() *HSV {
 	return retGo
 }
 
+// HSVToRgb is a wrapper around the C function gtk_hsv_to_rgb.
+func HSVToRgb(h float64, s float64, v float64) (float64, float64, float64) {
+	c_h := (C.gdouble)(h)
+
+	c_s := (C.gdouble)(s)
+
+	c_v := (C.gdouble)(v)
+
+	var c_r C.gdouble
+
+	var c_g C.gdouble
+
+	var c_b C.gdouble
+
+	C.gtk_hsv_to_rgb(c_h, c_s, c_v, &c_r, &c_g, &c_b)
+
+	r := (float64)(c_r)
+
+	g := (float64)(c_g)
+
+	b := (float64)(c_b)
+
+	return r, g, b
+}
+
 // GetColor is a wrapper around the C function gtk_hsv_get_color.
 func (recv *HSV) GetColor() (float64, float64, float64) {
 	var c_h C.gdouble

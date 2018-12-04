@@ -7,7 +7,6 @@ import (
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
-	glib "github.com/pekim/gobbi/lib/glib"
 	pango "github.com/pekim/gobbi/lib/pango"
 	"unsafe"
 )
@@ -18,22 +17,6 @@ import (
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
 import "C"
-
-// BindingEntryAddSignalFromString is a wrapper around the C function gtk_binding_entry_add_signal_from_string.
-func BindingEntryAddSignalFromString(bindingSet *BindingSet, signalDesc string) glib.TokenType {
-	c_binding_set := (*C.GtkBindingSet)(C.NULL)
-	if bindingSet != nil {
-		c_binding_set = (*C.GtkBindingSet)(bindingSet.ToC())
-	}
-
-	c_signal_desc := C.CString(signalDesc)
-	defer C.free(unsafe.Pointer(c_signal_desc))
-
-	retC := C.gtk_binding_entry_add_signal_from_string(c_binding_set, c_signal_desc)
-	retGo := (glib.TokenType)(retC)
-
-	return retGo
-}
 
 // CairoShouldDrawWindow is a wrapper around the C function gtk_cairo_should_draw_window.
 func CairoShouldDrawWindow(cr *cairo.Context, window *gdk.Window) bool {
