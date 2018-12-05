@@ -229,6 +229,7 @@ func InetAddressMaskNewFromC(u unsafe.Pointer) *InetAddressMask {
 	}
 
 	g := &InetAddressMask{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -381,6 +382,7 @@ func MenuNewFromC(u unsafe.Pointer) *Menu {
 	}
 
 	g := &Menu{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -622,6 +624,7 @@ func MenuAttributeIterNewFromC(u unsafe.Pointer) *MenuAttributeIter {
 	}
 
 	g := &MenuAttributeIter{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -679,6 +682,7 @@ func MenuItemNewFromC(u unsafe.Pointer) *MenuItem {
 	}
 
 	g := &MenuItem{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -831,6 +835,7 @@ func MenuLinkIterNewFromC(u unsafe.Pointer) *MenuLinkIter {
 	}
 
 	g := &MenuLinkIter{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -910,6 +915,7 @@ func MenuModelNewFromC(u unsafe.Pointer) *MenuModel {
 	}
 
 	g := &MenuModel{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }

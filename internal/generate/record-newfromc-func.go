@@ -1,6 +1,8 @@
 package generate
 
-import "github.com/dave/jennifer/jen"
+import (
+	"github.com/dave/jennifer/jen"
+)
 
 type RecordNewFromCFunc struct {
 	*Record
@@ -27,6 +29,7 @@ func (r *RecordNewFromCFunc) generate(g *jen.Group) {
 			g.Line()
 
 			r.generateCreateGoStruct(g)
+			r.generateCallObjectTake(g)
 			g.Line()
 
 			g.
@@ -80,18 +83,29 @@ func (r *RecordNewFromCFunc) generateStructValues(d jen.Dict) {
 	}
 }
 
-func (r *RecordNewFromCFunc) generateFinalizeFree(g *jen.Group) {
-	g.Qual("runtime", "SetFinalizer").
-		Call(
-			jen.Id("g"),
-			jen.
-				Func().
-				Params(jen.Id("obj").Id("interface").Op("{}")).
-				BlockFunc(func(g *jen.Group) {
-					g.
-						Qual("C", "g_free").
-						Call(jen.
-							Parens(jen.Qual("C", "gpointer")).
-							Parens(jen.Id("c")))
-				}))
+func (r *RecordNewFromCFunc) generateCallObjectTake(g *jen.Group) {
+	if r.ParentName == "" {
+		return
+	}
+
+	if !(r.root().Name == "Object" && r.root().Namespace.Name == "GObject") {
+		return
+	}
+
+	if r.Name == "Object" {
+		return
+	}
+
+	var s *jen.Statement
+	if r.Namespace.Name == "GObject" {
+		s = g.Id("ObjectNewFromC")
+	} else {
+		s = g.Qual(r.root().Namespace.fullGoPackageName, "ObjectNewFromC")
+	}
+
+	// [gobject.]ObjectNewFromC(unsafe.Pointer(c)).Take()
+	s.
+		Call(jen.Qual("unsafe", "Pointer").Call(jen.Id("c"))).
+		Dot("Take").
+		Call()
 }
