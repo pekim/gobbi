@@ -44,7 +44,6 @@ func DBusInterfaceSkeletonNewFromC(u unsafe.Pointer) *DBusInterfaceSkeleton {
 	}
 
 	g := &DBusInterfaceSkeleton{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -186,7 +185,6 @@ func DBusObjectManagerClientNewFromC(u unsafe.Pointer) *DBusObjectManagerClient 
 	}
 
 	g := &DBusObjectManagerClient{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -219,6 +217,7 @@ func DBusObjectManagerClientNewFinish(res *AsyncResult) (*DBusObjectManagerClien
 	var cThrowableError *C.GError
 
 	retC := C.g_dbus_object_manager_client_new_finish(c_res, &cThrowableError)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := DBusObjectManagerClientNewFromC(unsafe.Pointer(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
@@ -236,6 +235,7 @@ func DBusObjectManagerClientNewForBusFinish(res *AsyncResult) (*DBusObjectManage
 	var cThrowableError *C.GError
 
 	retC := C.g_dbus_object_manager_client_new_for_bus_finish(c_res, &cThrowableError)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := DBusObjectManagerClientNewFromC(unsafe.Pointer(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
@@ -299,7 +299,6 @@ func DBusObjectManagerServerNewFromC(u unsafe.Pointer) *DBusObjectManagerServer 
 	}
 
 	g := &DBusObjectManagerServer{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -331,6 +330,7 @@ func DBusObjectManagerServerNew(objectPath string) *DBusObjectManagerServer {
 	defer C.free(unsafe.Pointer(c_object_path))
 
 	retC := C.g_dbus_object_manager_server_new(c_object_path)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := DBusObjectManagerServerNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -405,7 +405,6 @@ func DBusObjectProxyNewFromC(u unsafe.Pointer) *DBusObjectProxy {
 	}
 
 	g := &DBusObjectProxy{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -442,6 +441,7 @@ func DBusObjectProxyNew(connection *DBusConnection, objectPath string) *DBusObje
 	defer C.free(unsafe.Pointer(c_object_path))
 
 	retC := C.g_dbus_object_proxy_new(c_connection, c_object_path)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := DBusObjectProxyNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -469,7 +469,6 @@ func DBusObjectSkeletonNewFromC(u unsafe.Pointer) *DBusObjectSkeleton {
 	}
 
 	g := &DBusObjectSkeleton{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -501,6 +500,7 @@ func DBusObjectSkeletonNew(objectPath string) *DBusObjectSkeleton {
 	defer C.free(unsafe.Pointer(c_object_path))
 
 	retC := C.g_dbus_object_skeleton_new(c_object_path)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := DBusObjectSkeletonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -726,7 +726,6 @@ func TlsDatabaseNewFromC(u unsafe.Pointer) *TlsDatabase {
 	}
 
 	g := &TlsDatabase{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -989,7 +988,6 @@ func TlsInteractionNewFromC(u unsafe.Pointer) *TlsInteraction {
 	}
 
 	g := &TlsInteraction{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -1098,7 +1096,6 @@ func TlsPasswordNewFromC(u unsafe.Pointer) *TlsPassword {
 	}
 
 	g := &TlsPassword{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -1132,6 +1129,7 @@ func TlsPasswordNew(flags TlsPasswordFlags, description string) *TlsPassword {
 	defer C.free(unsafe.Pointer(c_description))
 
 	retC := C.g_tls_password_new(c_flags, c_description)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := TlsPasswordNewFromC(unsafe.Pointer(retC))
 
 	return retGo

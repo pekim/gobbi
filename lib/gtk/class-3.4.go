@@ -7,6 +7,7 @@ import (
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gio "github.com/pekim/gobbi/lib/gio"
 	glib "github.com/pekim/gobbi/lib/glib"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
 
@@ -113,6 +114,7 @@ func ApplicationWindowNew(application *Application) *ApplicationWindow {
 	}
 
 	retC := C.gtk_application_window_new(c_application)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ApplicationWindowNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -167,6 +169,7 @@ func ColorChooserDialogNew(title string, parent *Window) *ColorChooserDialog {
 	}
 
 	retC := C.gtk_color_chooser_dialog_new(c_title, c_parent)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ColorChooserDialogNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -175,6 +178,7 @@ func ColorChooserDialogNew(title string, parent *Window) *ColorChooserDialog {
 // ColorChooserWidgetNew is a wrapper around the C function gtk_color_chooser_widget_new.
 func ColorChooserWidgetNew() *ColorChooserWidget {
 	retC := C.gtk_color_chooser_widget_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ColorChooserWidgetNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -200,6 +204,7 @@ func ImageNewFromResource(resourcePath string) *Image {
 	defer C.free(unsafe.Pointer(c_resource_path))
 
 	retC := C.gtk_image_new_from_resource(c_resource_path)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ImageNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -213,6 +218,7 @@ func MenuNewFromModel(model *gio.MenuModel) *Menu {
 	}
 
 	retC := C.gtk_menu_new_from_model(c_model)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := MenuNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -226,6 +232,7 @@ func MenuBarNewFromModel(model *gio.MenuModel) *MenuBar {
 	}
 
 	retC := C.gtk_menu_bar_new_from_model(c_model)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := MenuBarNewFromC(unsafe.Pointer(retC))
 
 	return retGo

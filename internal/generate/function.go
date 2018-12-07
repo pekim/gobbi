@@ -25,7 +25,8 @@ type Function struct {
 	Throws            int          `xml:"throws,attr"`
 	Introspectable    string       `xml:"introspectable,attr"`
 
-	receiver *Record
+	receiver         *Record
+	takeReturnObject bool
 
 	throwableErrorType      *Type
 	throwableErrorCVarName  string
@@ -151,6 +152,7 @@ func (f *Function) generateReturnDeclaration(g *jen.Group) {
 func (f *Function) generateBody(g *jen.Group) {
 	f.generateCParameterVars(g)
 	f.generateCall(g)
+	f.generateTake(g)
 
 	f.generateGoReturnVars(g)
 	f.generateOutputParamsGoVars(g)
@@ -181,6 +183,43 @@ func (f *Function) generateCall(g *jen.Group) *jen.Statement {
 			f.Parameters.generateCallArguments(g)
 			f.generateThrowableCallArgument(g)
 		})
+}
+
+func (f *Function) generateTake(g *jen.Group) {
+	if !f.takeReturnObject {
+		return
+	}
+
+	qname := QNameNew(f.ReturnValue.Type.Namespace, f.ReturnValue.Type.Name)
+	r, found := qname.namespace.recordOrClassRecordForName(qname.name)
+	if !found {
+		panic(fmt.Sprintf("record not found for %s %s", f.ReturnValue.Type.Namespace, f.ReturnValue.Type.Name))
+	}
+
+	if r.ParentName == "" {
+		return
+	}
+
+	if !(r.root().Name == "Object" && r.root().Namespace.Name == "GObject") {
+		return
+	}
+
+	if r.Name == "Object" {
+		return
+	}
+
+	var s *jen.Statement
+	if r.Namespace.Name == "GObject" {
+		s = g.Id("ObjectNewFromC")
+	} else {
+		s = g.Qual(r.root().Namespace.fullGoPackageName, "ObjectNewFromC")
+	}
+
+	// [gobject.]ObjectNewFromC(unsafe.Pointer(c)).Take()
+	s.
+		Call(jen.Qual("unsafe", "Pointer").Call(jen.Id("retC"))).
+		Dot("Take").
+		Call()
 }
 
 func (f *Function) generateReceiverArgument(g *jen.Group) {

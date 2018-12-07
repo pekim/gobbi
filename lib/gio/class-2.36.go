@@ -5,6 +5,7 @@ package gio
 
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
 	"unsafe"
 )
@@ -168,6 +169,7 @@ func (recv *FileInfo) GetDeletionDate() *glib.DateTime {
 // MemoryOutputStreamNewResizable is a wrapper around the C function g_memory_output_stream_new_resizable.
 func MemoryOutputStreamNewResizable() *MemoryOutputStream {
 	retC := C.g_memory_output_stream_new_resizable()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := MemoryOutputStreamNewFromC(unsafe.Pointer(retC))
 
 	return retGo

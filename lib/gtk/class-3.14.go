@@ -7,6 +7,7 @@ import (
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gio "github.com/pekim/gobbi/lib/gio"
 	glib "github.com/pekim/gobbi/lib/glib"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
 	"unsafe"
 )
@@ -993,6 +994,7 @@ func GestureDragNew(widget *Widget) *GestureDrag {
 	}
 
 	retC := C.gtk_gesture_drag_new(c_widget)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := GestureDragNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1162,6 +1164,7 @@ func GestureLongPressNew(widget *Widget) *GestureLongPress {
 	}
 
 	retC := C.gtk_gesture_long_press_new(c_widget)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := GestureLongPressNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1367,6 +1370,7 @@ func GestureMultiPressNew(widget *Widget) *GestureMultiPress {
 	}
 
 	retC := C.gtk_gesture_multi_press_new(c_widget)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := GestureMultiPressNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1388,6 +1392,7 @@ func GesturePanNew(widget *Widget, orientation Orientation) *GesturePan {
 	c_orientation := (C.GtkOrientation)(orientation)
 
 	retC := C.gtk_gesture_pan_new(c_widget, c_orientation)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := GesturePanNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1482,6 +1487,7 @@ func GestureRotateNew(widget *Widget) *GestureRotate {
 	}
 
 	retC := C.gtk_gesture_rotate_new(c_widget)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := GestureRotateNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1641,6 +1647,7 @@ func GestureSwipeNew(widget *Widget) *GestureSwipe {
 	}
 
 	retC := C.gtk_gesture_swipe_new(c_widget)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := GestureSwipeNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1732,6 +1739,7 @@ func GestureZoomNew(widget *Widget) *GestureZoom {
 	}
 
 	retC := C.gtk_gesture_zoom_new(c_widget)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := GestureZoomNewFromC(unsafe.Pointer(retC))
 
 	return retGo

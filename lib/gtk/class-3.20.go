@@ -99,7 +99,6 @@ func FileChooserNativeNewFromC(u unsafe.Pointer) *FileChooserNative {
 	}
 
 	g := &FileChooserNative{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -149,6 +148,7 @@ func FileChooserNativeNew(title string, parent *Window, action FileChooserAction
 	defer C.free(unsafe.Pointer(c_cancel_label))
 
 	retC := C.gtk_file_chooser_native_new(c_title, c_parent, c_action, c_accept_label, c_cancel_label)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := FileChooserNativeNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -203,7 +203,6 @@ func NativeDialogNewFromC(u unsafe.Pointer) *NativeDialog {
 	}
 
 	g := &NativeDialog{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -339,7 +338,6 @@ func PadControllerNewFromC(u unsafe.Pointer) *PadController {
 	}
 
 	g := &PadController{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -535,7 +533,6 @@ func ShortcutLabelNewFromC(u unsafe.Pointer) *ShortcutLabel {
 	}
 
 	g := &ShortcutLabel{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -593,7 +590,6 @@ func ShortcutsGroupNewFromC(u unsafe.Pointer) *ShortcutsGroup {
 	}
 
 	g := &ShortcutsGroup{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -651,7 +647,6 @@ func ShortcutsSectionNewFromC(u unsafe.Pointer) *ShortcutsSection {
 	}
 
 	g := &ShortcutsSection{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -774,7 +769,6 @@ func ShortcutsShortcutNewFromC(u unsafe.Pointer) *ShortcutsShortcut {
 	}
 
 	g := &ShortcutsShortcut{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -833,7 +827,6 @@ func ShortcutsWindowNewFromC(u unsafe.Pointer) *ShortcutsWindow {
 	}
 
 	g := &ShortcutsWindow{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }

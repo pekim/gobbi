@@ -63,7 +63,6 @@ func PixbufNewFromC(u unsafe.Pointer) *Pixbuf {
 	}
 
 	g := &Pixbuf{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -103,6 +102,7 @@ func PixbufNew(colorspace Colorspace, hasAlpha bool, bitsPerSample int32, width 
 	c_height := (C.int)(height)
 
 	retC := C.gdk_pixbuf_new(c_colorspace, c_has_alpha, c_bits_per_sample, c_width, c_height)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := PixbufNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -118,6 +118,7 @@ func PixbufNewFromFile(filename string) (*Pixbuf, error) {
 	var cThrowableError *C.GError
 
 	retC := C.gdk_pixbuf_new_from_file(c_filename, &cThrowableError)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := PixbufNewFromC(unsafe.Pointer(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
@@ -140,6 +141,7 @@ func PixbufNewFromInline(data []uint8, copyPixels bool) (*Pixbuf, error) {
 	var cThrowableError *C.GError
 
 	retC := C.gdk_pixbuf_new_from_inline(c_data_length, (*C.guint8)(unsafe.Pointer(c_data)), c_copy_pixels, &cThrowableError)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := PixbufNewFromC(unsafe.Pointer(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
@@ -494,7 +496,6 @@ func PixbufAnimationNewFromC(u unsafe.Pointer) *PixbufAnimation {
 	}
 
 	g := &PixbufAnimation{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -528,6 +529,7 @@ func PixbufAnimationNewFromFile(filename string) (*PixbufAnimation, error) {
 	var cThrowableError *C.GError
 
 	retC := C.gdk_pixbuf_animation_new_from_file(c_filename, &cThrowableError)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := PixbufAnimationNewFromC(unsafe.Pointer(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
@@ -610,7 +612,6 @@ func PixbufAnimationIterNewFromC(u unsafe.Pointer) *PixbufAnimationIter {
 	}
 
 	g := &PixbufAnimationIter{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -687,7 +688,6 @@ func PixbufLoaderNewFromC(u unsafe.Pointer) *PixbufLoader {
 	}
 
 	g := &PixbufLoader{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -968,6 +968,7 @@ func pixbufloader_sizePreparedHandler(_ *C.GObject, c_width C.gint, c_height C.g
 // PixbufLoaderNew is a wrapper around the C function gdk_pixbuf_loader_new.
 func PixbufLoaderNew() *PixbufLoader {
 	retC := C.gdk_pixbuf_loader_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := PixbufLoaderNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -981,6 +982,7 @@ func PixbufLoaderNewWithType(imageType string) (*PixbufLoader, error) {
 	var cThrowableError *C.GError
 
 	retC := C.gdk_pixbuf_loader_new_with_type(c_image_type, &cThrowableError)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := PixbufLoaderNewFromC(unsafe.Pointer(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
@@ -1053,7 +1055,6 @@ func PixbufSimpleAnimNewFromC(u unsafe.Pointer) *PixbufSimpleAnim {
 	}
 
 	g := &PixbufSimpleAnim{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }

@@ -44,7 +44,6 @@ func RendererNewFromC(u unsafe.Pointer) *Renderer {
 	}
 
 	g := &Renderer{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }

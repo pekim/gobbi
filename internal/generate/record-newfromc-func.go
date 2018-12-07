@@ -29,7 +29,6 @@ func (r *RecordNewFromCFunc) generate(g *jen.Group) {
 			g.Line()
 
 			r.generateCreateGoStruct(g)
-			r.generateCallObjectTake(g)
 			g.Line()
 
 			g.
@@ -81,31 +80,4 @@ func (r *RecordNewFromCFunc) generateStructValues(d jen.Dict) {
 		d[jen.Id(f.goVarName)] = f.Type.generator.generateCToGo(
 			f.Namespace.fullGoPackageName, cValue)
 	}
-}
-
-func (r *RecordNewFromCFunc) generateCallObjectTake(g *jen.Group) {
-	if r.ParentName == "" {
-		return
-	}
-
-	if !(r.root().Name == "Object" && r.root().Namespace.Name == "GObject") {
-		return
-	}
-
-	if r.Name == "Object" {
-		return
-	}
-
-	var s *jen.Statement
-	if r.Namespace.Name == "GObject" {
-		s = g.Id("ObjectNewFromC")
-	} else {
-		s = g.Qual(r.root().Namespace.fullGoPackageName, "ObjectNewFromC")
-	}
-
-	// [gobject.]ObjectNewFromC(unsafe.Pointer(c)).Take()
-	s.
-		Call(jen.Qual("unsafe", "Pointer").Call(jen.Id("c"))).
-		Dot("Take").
-		Call()
 }

@@ -455,6 +455,7 @@ func assistant_prepareHandler(_ *C.GObject, c_page *C.GtkWidget, data C.gpointer
 // AssistantNew is a wrapper around the C function gtk_assistant_new.
 func AssistantNew() *Assistant {
 	retC := C.gtk_assistant_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := AssistantNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -801,6 +802,7 @@ func cellrendereraccel_accelClearedHandler(_ *C.GObject, c_path_string *C.gchar,
 // CellRendererAccelNew is a wrapper around the C function gtk_cell_renderer_accel_new.
 func CellRendererAccelNew() *CellRendererAccel {
 	retC := C.gtk_cell_renderer_accel_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := CellRendererAccelNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -809,6 +811,7 @@ func CellRendererAccelNew() *CellRendererAccel {
 // CellRendererSpinNew is a wrapper around the C function gtk_cell_renderer_spin_new.
 func CellRendererSpinNew() *CellRendererSpin {
 	retC := C.gtk_cell_renderer_spin_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := CellRendererSpinNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -915,6 +918,7 @@ func LinkButtonNew(uri string) *LinkButton {
 	defer C.free(unsafe.Pointer(c_uri))
 
 	retC := C.gtk_link_button_new(c_uri)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := LinkButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -929,6 +933,7 @@ func LinkButtonNewWithLabel(uri string, label string) *LinkButton {
 	defer C.free(unsafe.Pointer(c_label))
 
 	retC := C.gtk_link_button_new_with_label(c_uri, c_label)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := LinkButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1215,6 +1220,7 @@ func (recv *Notebook) SetTabReorderable(child *Widget, reorderable bool) {
 // PageSetupNew is a wrapper around the C function gtk_page_setup_new.
 func PageSetupNew() *PageSetup {
 	retC := C.gtk_page_setup_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := PageSetupNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -2067,6 +2073,7 @@ func printoperation_statusChangedHandler(_ *C.GObject, data C.gpointer) {
 // PrintOperationNew is a wrapper around the C function gtk_print_operation_new.
 func PrintOperationNew() *PrintOperation {
 	retC := C.gtk_print_operation_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := PrintOperationNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -2279,6 +2286,7 @@ func (recv *PrintOperation) SetUseFullPage(fullPage bool) {
 // PrintSettingsNew is a wrapper around the C function gtk_print_settings_new.
 func PrintSettingsNew() *PrintSettings {
 	retC := C.gtk_print_settings_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := PrintSettingsNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -2893,6 +2901,7 @@ func (recv *Range) SetUpperStepperSensitivity(sensitivity SensitivityType) {
 // RecentChooserMenuNew is a wrapper around the C function gtk_recent_chooser_menu_new.
 func RecentChooserMenuNew() *RecentChooserMenu {
 	retC := C.gtk_recent_chooser_menu_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := RecentChooserMenuNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -2906,6 +2915,7 @@ func RecentChooserMenuNewForManager(manager *RecentManager) *RecentChooserMenu {
 	}
 
 	retC := C.gtk_recent_chooser_menu_new_for_manager(c_manager)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := RecentChooserMenuNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -2932,6 +2942,7 @@ func (recv *RecentChooserMenu) SetShowNumbers(showNumbers bool) {
 // RecentChooserWidgetNew is a wrapper around the C function gtk_recent_chooser_widget_new.
 func RecentChooserWidgetNew() *RecentChooserWidget {
 	retC := C.gtk_recent_chooser_widget_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := RecentChooserWidgetNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -2945,6 +2956,7 @@ func RecentChooserWidgetNewForManager(manager *RecentManager) *RecentChooserWidg
 	}
 
 	retC := C.gtk_recent_chooser_widget_new_for_manager(c_manager)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := RecentChooserWidgetNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -2953,6 +2965,7 @@ func RecentChooserWidgetNewForManager(manager *RecentManager) *RecentChooserWidg
 // RecentFilterNew is a wrapper around the C function gtk_recent_filter_new.
 func RecentFilterNew() *RecentFilter {
 	retC := C.gtk_recent_filter_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := RecentFilterNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -3069,7 +3082,6 @@ func RecentManagerNewFromC(u unsafe.Pointer) *RecentManager {
 	}
 
 	g := &RecentManager{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -3098,6 +3110,7 @@ func CastToRecentManager(object *gobject.Object) *RecentManager {
 // RecentManagerNew is a wrapper around the C function gtk_recent_manager_new.
 func RecentManagerNew() *RecentManager {
 	retC := C.gtk_recent_manager_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := RecentManagerNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -3501,6 +3514,7 @@ func statusicon_sizeChangedHandler(_ *C.GObject, c_size C.gint, data C.gpointer)
 // StatusIconNew is a wrapper around the C function gtk_status_icon_new.
 func StatusIconNew() *StatusIcon {
 	retC := C.gtk_status_icon_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := StatusIconNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -3512,6 +3526,7 @@ func StatusIconNewFromFile(filename string) *StatusIcon {
 	defer C.free(unsafe.Pointer(c_filename))
 
 	retC := C.gtk_status_icon_new_from_file(c_filename)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := StatusIconNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -3523,6 +3538,7 @@ func StatusIconNewFromIconName(iconName string) *StatusIcon {
 	defer C.free(unsafe.Pointer(c_icon_name))
 
 	retC := C.gtk_status_icon_new_from_icon_name(c_icon_name)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := StatusIconNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -3536,6 +3552,7 @@ func StatusIconNewFromPixbuf(pixbuf *gdkpixbuf.Pixbuf) *StatusIcon {
 	}
 
 	retC := C.gtk_status_icon_new_from_pixbuf(c_pixbuf)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := StatusIconNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -3547,6 +3564,7 @@ func StatusIconNewFromStock(stockId string) *StatusIcon {
 	defer C.free(unsafe.Pointer(c_stock_id))
 
 	retC := C.gtk_status_icon_new_from_stock(c_stock_id)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := StatusIconNewFromC(unsafe.Pointer(retC))
 
 	return retGo

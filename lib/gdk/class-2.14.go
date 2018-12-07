@@ -5,6 +5,7 @@ package gdk
 
 import (
 	gio "github.com/pekim/gobbi/lib/gio"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
 	"unsafe"
 )
@@ -26,6 +27,7 @@ import "C"
 // AppLaunchContextNew is a wrapper around the C function gdk_app_launch_context_new.
 func AppLaunchContextNew() *AppLaunchContext {
 	retC := C.gdk_app_launch_context_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := AppLaunchContextNewFromC(unsafe.Pointer(retC))
 
 	return retGo

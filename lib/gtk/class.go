@@ -1908,7 +1908,6 @@ func AboutDialogNewFromC(u unsafe.Pointer) *AboutDialog {
 	}
 
 	g := &AboutDialog{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -1988,7 +1987,6 @@ func AccelGroupNewFromC(u unsafe.Pointer) *AccelGroup {
 	}
 
 	g := &AccelGroup{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -2021,6 +2019,7 @@ func CastToAccelGroup(object *gobject.Object) *AccelGroup {
 // AccelGroupNew is a wrapper around the C function gtk_accel_group_new.
 func AccelGroupNew() *AccelGroup {
 	retC := C.gtk_accel_group_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := AccelGroupNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -2153,7 +2152,6 @@ func AccelLabelNewFromC(u unsafe.Pointer) *AccelLabel {
 	}
 
 	g := &AccelLabel{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -2205,6 +2203,7 @@ func AccelLabelNew(string string) *AccelLabel {
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.gtk_accel_label_new(c_string)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := AccelLabelNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -2285,7 +2284,6 @@ func AccelMapNewFromC(u unsafe.Pointer) *AccelMap {
 	}
 
 	g := &AccelMap{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -2434,7 +2432,6 @@ func AccessibleNewFromC(u unsafe.Pointer) *Accessible {
 	}
 
 	g := &Accessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -2481,7 +2478,6 @@ func ActionNewFromC(u unsafe.Pointer) *Action {
 	}
 
 	g := &Action{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -2525,7 +2521,6 @@ func ActionBarNewFromC(u unsafe.Pointer) *ActionBar {
 	}
 
 	g := &ActionBar{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -2595,7 +2590,6 @@ func ActionGroupNewFromC(u unsafe.Pointer) *ActionGroup {
 	}
 
 	g := &ActionGroup{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -2640,7 +2634,6 @@ func AdjustmentNewFromC(u unsafe.Pointer) *Adjustment {
 	}
 
 	g := &Adjustment{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -2806,6 +2799,7 @@ func AdjustmentNew(value float64, lower float64, upper float64, stepIncrement fl
 	c_page_size := (C.gdouble)(pageSize)
 
 	retC := C.gtk_adjustment_new(c_value, c_lower, c_upper, c_step_increment, c_page_increment, c_page_size)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := AdjustmentNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -2867,7 +2861,6 @@ func AlignmentNewFromC(u unsafe.Pointer) *Alignment {
 	}
 
 	g := &Alignment{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -2924,6 +2917,7 @@ func AlignmentNew(xalign float32, yalign float32, xscale float32, yscale float32
 	c_yscale := (C.gfloat)(yscale)
 
 	retC := C.gtk_alignment_new(c_xalign, c_yalign, c_xscale, c_yscale)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := AlignmentNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -2968,7 +2962,6 @@ func AppChooserButtonNewFromC(u unsafe.Pointer) *AppChooserButton {
 	}
 
 	g := &AppChooserButton{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -3138,7 +3131,6 @@ func AppChooserDialogNewFromC(u unsafe.Pointer) *AppChooserDialog {
 	}
 
 	g := &AppChooserDialog{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -3241,7 +3233,6 @@ func AppChooserWidgetNewFromC(u unsafe.Pointer) *AppChooserWidget {
 	}
 
 	g := &AppChooserWidget{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -3519,7 +3510,6 @@ func ApplicationNewFromC(u unsafe.Pointer) *Application {
 	}
 
 	g := &Application{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -3574,7 +3564,6 @@ func ApplicationWindowNewFromC(u unsafe.Pointer) *ApplicationWindow {
 	}
 
 	g := &ApplicationWindow{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -3659,7 +3648,6 @@ func ArrowNewFromC(u unsafe.Pointer) *Arrow {
 	}
 
 	g := &Arrow{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -3707,6 +3695,7 @@ func ArrowNew(arrowType ArrowType, shadowType ShadowType) *Arrow {
 	c_shadow_type := (C.GtkShadowType)(shadowType)
 
 	retC := C.gtk_arrow_new(c_arrow_type, c_shadow_type)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ArrowNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -3747,7 +3736,6 @@ func ArrowAccessibleNewFromC(u unsafe.Pointer) *ArrowAccessible {
 	}
 
 	g := &ArrowAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -3807,7 +3795,6 @@ func AspectFrameNewFromC(u unsafe.Pointer) *AspectFrame {
 	}
 
 	g := &AspectFrame{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -3873,6 +3860,7 @@ func AspectFrameNew(label string, xalign float32, yalign float32, ratio float32,
 		boolToGboolean(obeyChild)
 
 	retC := C.gtk_aspect_frame_new(c_label, c_xalign, c_yalign, c_ratio, c_obey_child)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := AspectFrameNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -3918,7 +3906,6 @@ func AssistantNewFromC(u unsafe.Pointer) *Assistant {
 	}
 
 	g := &Assistant{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -4053,7 +4040,6 @@ func BinNewFromC(u unsafe.Pointer) *Bin {
 	}
 
 	g := &Bin{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -4131,7 +4117,6 @@ func BooleanCellAccessibleNewFromC(u unsafe.Pointer) *BooleanCellAccessible {
 	}
 
 	g := &BooleanCellAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -4196,7 +4181,6 @@ func BoxNewFromC(u unsafe.Pointer) *Box {
 	}
 
 	g := &Box{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -4379,7 +4363,6 @@ func BuilderNewFromC(u unsafe.Pointer) *Builder {
 	}
 
 	g := &Builder{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -4421,7 +4404,6 @@ func ButtonNewFromC(u unsafe.Pointer) *Button {
 	}
 
 	g := &Button{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -4830,6 +4812,7 @@ func button_releasedHandler(_ *C.GObject, data C.gpointer) {
 // ButtonNew is a wrapper around the C function gtk_button_new.
 func ButtonNew() *Button {
 	retC := C.gtk_button_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -4841,6 +4824,7 @@ func ButtonNewFromStock(stockId string) *Button {
 	defer C.free(unsafe.Pointer(c_stock_id))
 
 	retC := C.gtk_button_new_from_stock(c_stock_id)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -4852,6 +4836,7 @@ func ButtonNewWithLabel(label string) *Button {
 	defer C.free(unsafe.Pointer(c_label))
 
 	retC := C.gtk_button_new_with_label(c_label)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -4863,6 +4848,7 @@ func ButtonNewWithMnemonic(label string) *Button {
 	defer C.free(unsafe.Pointer(c_label))
 
 	retC := C.gtk_button_new_with_mnemonic(c_label)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -5008,7 +4994,6 @@ func ButtonAccessibleNewFromC(u unsafe.Pointer) *ButtonAccessible {
 	}
 
 	g := &ButtonAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -5078,7 +5063,6 @@ func ButtonBoxNewFromC(u unsafe.Pointer) *ButtonBox {
 	}
 
 	g := &ButtonBox{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -5185,7 +5169,6 @@ func CalendarNewFromC(u unsafe.Pointer) *Calendar {
 	}
 
 	g := &Calendar{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -5644,6 +5627,7 @@ func calendar_prevYearHandler(_ *C.GObject, data C.gpointer) {
 // CalendarNew is a wrapper around the C function gtk_calendar_new.
 func CalendarNew() *Calendar {
 	retC := C.gtk_calendar_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := CalendarNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -5737,7 +5721,6 @@ func CellAccessibleNewFromC(u unsafe.Pointer) *CellAccessible {
 	}
 
 	g := &CellAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -5792,7 +5775,6 @@ func CellAreaNewFromC(u unsafe.Pointer) *CellArea {
 	}
 
 	g := &CellArea{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -5847,7 +5829,6 @@ func CellAreaBoxNewFromC(u unsafe.Pointer) *CellAreaBox {
 	}
 
 	g := &CellAreaBox{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -5912,7 +5893,6 @@ func CellAreaContextNewFromC(u unsafe.Pointer) *CellAreaContext {
 	}
 
 	g := &CellAreaContext{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -5970,7 +5950,6 @@ func CellRendererNewFromC(u unsafe.Pointer) *CellRenderer {
 	}
 
 	g := &CellRenderer{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -6049,7 +6028,6 @@ func CellRendererAccelNewFromC(u unsafe.Pointer) *CellRendererAccel {
 	}
 
 	g := &CellRendererAccel{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -6104,7 +6082,6 @@ func CellRendererComboNewFromC(u unsafe.Pointer) *CellRendererCombo {
 	}
 
 	g := &CellRendererCombo{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -6159,7 +6136,6 @@ func CellRendererPixbufNewFromC(u unsafe.Pointer) *CellRendererPixbuf {
 	}
 
 	g := &CellRendererPixbuf{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -6198,6 +6174,7 @@ func CastToCellRendererPixbuf(object *gobject.Object) *CellRendererPixbuf {
 // CellRendererPixbufNew is a wrapper around the C function gtk_cell_renderer_pixbuf_new.
 func CellRendererPixbufNew() *CellRendererPixbuf {
 	retC := C.gtk_cell_renderer_pixbuf_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := CellRendererPixbufNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -6217,7 +6194,6 @@ func CellRendererProgressNewFromC(u unsafe.Pointer) *CellRendererProgress {
 	}
 
 	g := &CellRendererProgress{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -6272,7 +6248,6 @@ func CellRendererSpinNewFromC(u unsafe.Pointer) *CellRendererSpin {
 	}
 
 	g := &CellRendererSpin{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -6327,7 +6302,6 @@ func CellRendererSpinnerNewFromC(u unsafe.Pointer) *CellRendererSpinner {
 	}
 
 	g := &CellRendererSpinner{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -6377,7 +6351,6 @@ func CellRendererTextNewFromC(u unsafe.Pointer) *CellRendererText {
 	}
 
 	g := &CellRendererText{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -6480,6 +6453,7 @@ func cellrenderertext_editedHandler(_ *C.GObject, c_path *C.gchar, c_new_text *C
 // CellRendererTextNew is a wrapper around the C function gtk_cell_renderer_text_new.
 func CellRendererTextNew() *CellRendererText {
 	retC := C.gtk_cell_renderer_text_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := CellRendererTextNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -6508,7 +6482,6 @@ func CellRendererToggleNewFromC(u unsafe.Pointer) *CellRendererToggle {
 	}
 
 	g := &CellRendererToggle{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -6609,6 +6582,7 @@ func cellrenderertoggle_toggledHandler(_ *C.GObject, c_path *C.gchar, data C.gpo
 // CellRendererToggleNew is a wrapper around the C function gtk_cell_renderer_toggle_new.
 func CellRendererToggleNew() *CellRendererToggle {
 	retC := C.gtk_cell_renderer_toggle_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := CellRendererToggleNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -6664,7 +6638,6 @@ func CellViewNewFromC(u unsafe.Pointer) *CellView {
 	}
 
 	g := &CellView{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -6733,7 +6706,6 @@ func CheckButtonNewFromC(u unsafe.Pointer) *CheckButton {
 	}
 
 	g := &CheckButton{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -6792,6 +6764,7 @@ func CastToCheckButton(object *gobject.Object) *CheckButton {
 // CheckButtonNew is a wrapper around the C function gtk_check_button_new.
 func CheckButtonNew() *CheckButton {
 	retC := C.gtk_check_button_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := CheckButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -6803,6 +6776,7 @@ func CheckButtonNewWithLabel(label string) *CheckButton {
 	defer C.free(unsafe.Pointer(c_label))
 
 	retC := C.gtk_check_button_new_with_label(c_label)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := CheckButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -6814,6 +6788,7 @@ func CheckButtonNewWithMnemonic(label string) *CheckButton {
 	defer C.free(unsafe.Pointer(c_label))
 
 	retC := C.gtk_check_button_new_with_mnemonic(c_label)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := CheckButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -6853,7 +6828,6 @@ func CheckMenuItemNewFromC(u unsafe.Pointer) *CheckMenuItem {
 	}
 
 	g := &CheckMenuItem{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -6967,6 +6941,7 @@ func checkmenuitem_toggledHandler(_ *C.GObject, data C.gpointer) {
 // CheckMenuItemNew is a wrapper around the C function gtk_check_menu_item_new.
 func CheckMenuItemNew() *CheckMenuItem {
 	retC := C.gtk_check_menu_item_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := CheckMenuItemNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -6978,6 +6953,7 @@ func CheckMenuItemNewWithLabel(label string) *CheckMenuItem {
 	defer C.free(unsafe.Pointer(c_label))
 
 	retC := C.gtk_check_menu_item_new_with_label(c_label)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := CheckMenuItemNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -6989,6 +6965,7 @@ func CheckMenuItemNewWithMnemonic(label string) *CheckMenuItem {
 	defer C.free(unsafe.Pointer(c_label))
 
 	retC := C.gtk_check_menu_item_new_with_mnemonic(c_label)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := CheckMenuItemNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -7071,7 +7048,6 @@ func CheckMenuItemAccessibleNewFromC(u unsafe.Pointer) *CheckMenuItemAccessible 
 	}
 
 	g := &CheckMenuItemAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -7144,7 +7120,6 @@ func ClipboardNewFromC(u unsafe.Pointer) *Clipboard {
 	}
 
 	g := &Clipboard{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -7244,7 +7219,6 @@ func ColorButtonNewFromC(u unsafe.Pointer) *ColorButton {
 	}
 
 	g := &ColorButton{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -7334,7 +7308,6 @@ func ColorChooserDialogNewFromC(u unsafe.Pointer) *ColorChooserDialog {
 	}
 
 	g := &ColorChooserDialog{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -7419,7 +7392,6 @@ func ColorChooserWidgetNewFromC(u unsafe.Pointer) *ColorChooserWidget {
 	}
 
 	g := &ColorChooserWidget{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -7499,7 +7471,6 @@ func ColorSelectionNewFromC(u unsafe.Pointer) *ColorSelection {
 	}
 
 	g := &ColorSelection{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -7608,6 +7579,7 @@ func colorselection_colorChangedHandler(_ *C.GObject, data C.gpointer) {
 // ColorSelectionNew is a wrapper around the C function gtk_color_selection_new.
 func ColorSelectionNew() *ColorSelection {
 	retC := C.gtk_color_selection_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ColorSelectionNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -7768,7 +7740,6 @@ func ColorSelectionDialogNewFromC(u unsafe.Pointer) *ColorSelectionDialog {
 	}
 
 	g := &ColorSelectionDialog{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -7830,6 +7801,7 @@ func ColorSelectionDialogNew(title string) *ColorSelectionDialog {
 	defer C.free(unsafe.Pointer(c_title))
 
 	retC := C.gtk_color_selection_dialog_new(c_title)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ColorSelectionDialogNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -7859,7 +7831,6 @@ func ComboBoxNewFromC(u unsafe.Pointer) *ComboBox {
 	}
 
 	g := &ComboBox{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -7913,6 +7884,7 @@ func ComboBoxNewWithArea(area *CellArea) *ComboBox {
 	}
 
 	retC := C.gtk_combo_box_new_with_area(c_area)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ComboBoxNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -7926,6 +7898,7 @@ func ComboBoxNewWithAreaAndEntry(area *CellArea) *ComboBox {
 	}
 
 	retC := C.gtk_combo_box_new_with_area_and_entry(c_area)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ComboBoxNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -7973,7 +7946,6 @@ func ComboBoxAccessibleNewFromC(u unsafe.Pointer) *ComboBoxAccessible {
 	}
 
 	g := &ComboBoxAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -8043,7 +8015,6 @@ func ComboBoxTextNewFromC(u unsafe.Pointer) *ComboBoxText {
 	}
 
 	g := &ComboBoxText{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -8128,7 +8099,6 @@ func ContainerNewFromC(u unsafe.Pointer) *Container {
 	}
 
 	g := &Container{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -8709,7 +8679,6 @@ func ContainerAccessibleNewFromC(u unsafe.Pointer) *ContainerAccessible {
 	}
 
 	g := &ContainerAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -8764,7 +8733,6 @@ func ContainerCellAccessibleNewFromC(u unsafe.Pointer) *ContainerCellAccessible 
 	}
 
 	g := &ContainerCellAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -8803,6 +8771,7 @@ func CastToContainerCellAccessible(object *gobject.Object) *ContainerCellAccessi
 // ContainerCellAccessibleNew is a wrapper around the C function gtk_container_cell_accessible_new.
 func ContainerCellAccessibleNew() *ContainerCellAccessible {
 	retC := C.gtk_container_cell_accessible_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ContainerCellAccessibleNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -8864,7 +8833,6 @@ func CssProviderNewFromC(u unsafe.Pointer) *CssProvider {
 	}
 
 	g := &CssProvider{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -8957,6 +8925,7 @@ func cssprovider_parsingErrorHandler(_ *C.GObject, c_section *C.GtkCssSection, c
 // CssProviderNew is a wrapper around the C function gtk_css_provider_new.
 func CssProviderNew() *CssProvider {
 	retC := C.gtk_css_provider_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := CssProviderNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -9057,7 +9026,6 @@ func DialogNewFromC(u unsafe.Pointer) *Dialog {
 	}
 
 	g := &Dialog{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -9233,6 +9201,7 @@ func dialog_responseHandler(_ *C.GObject, c_response_id C.gint, data C.gpointer)
 // DialogNew is a wrapper around the C function gtk_dialog_new.
 func DialogNew() *Dialog {
 	retC := C.gtk_dialog_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := DialogNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -9331,7 +9300,6 @@ func DrawingAreaNewFromC(u unsafe.Pointer) *DrawingArea {
 	}
 
 	g := &DrawingArea{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -9370,6 +9338,7 @@ func CastToDrawingArea(object *gobject.Object) *DrawingArea {
 // DrawingAreaNew is a wrapper around the C function gtk_drawing_area_new.
 func DrawingAreaNew() *DrawingArea {
 	retC := C.gtk_drawing_area_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := DrawingAreaNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -9399,7 +9368,6 @@ func EntryNewFromC(u unsafe.Pointer) *Entry {
 	}
 
 	g := &Entry{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -9926,6 +9894,7 @@ func entry_toggleOverwriteHandler(_ *C.GObject, data C.gpointer) {
 // EntryNew is a wrapper around the C function gtk_entry_new.
 func EntryNew() *Entry {
 	retC := C.gtk_entry_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := EntryNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -10131,7 +10100,6 @@ func EntryAccessibleNewFromC(u unsafe.Pointer) *EntryAccessible {
 	}
 
 	g := &EntryAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -10201,7 +10169,6 @@ func EntryBufferNewFromC(u unsafe.Pointer) *EntryBuffer {
 	}
 
 	g := &EntryBuffer{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -10241,7 +10208,6 @@ func EntryCompletionNewFromC(u unsafe.Pointer) *EntryCompletion {
 	}
 
 	g := &EntryCompletion{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -10293,7 +10259,6 @@ func EventBoxNewFromC(u unsafe.Pointer) *EventBox {
 	}
 
 	g := &EventBox{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -10342,6 +10307,7 @@ func CastToEventBox(object *gobject.Object) *EventBox {
 // EventBoxNew is a wrapper around the C function gtk_event_box_new.
 func EventBoxNew() *EventBox {
 	retC := C.gtk_event_box_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := EventBoxNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -10369,7 +10335,6 @@ func EventControllerNewFromC(u unsafe.Pointer) *EventController {
 	}
 
 	g := &EventController{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -10409,7 +10374,6 @@ func ExpanderNewFromC(u unsafe.Pointer) *Expander {
 	}
 
 	g := &Expander{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -10539,7 +10503,6 @@ func ExpanderAccessibleNewFromC(u unsafe.Pointer) *ExpanderAccessible {
 	}
 
 	g := &ExpanderAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -10604,7 +10567,6 @@ func FileChooserButtonNewFromC(u unsafe.Pointer) *FileChooserButton {
 	}
 
 	g := &FileChooserButton{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -10684,7 +10646,6 @@ func FileChooserDialogNewFromC(u unsafe.Pointer) *FileChooserDialog {
 	}
 
 	g := &FileChooserDialog{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -10769,7 +10730,6 @@ func FileChooserWidgetNewFromC(u unsafe.Pointer) *FileChooserWidget {
 	}
 
 	g := &FileChooserWidget{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -11571,7 +11531,6 @@ func FileFilterNewFromC(u unsafe.Pointer) *FileFilter {
 	}
 
 	g := &FileFilter{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -11621,7 +11580,6 @@ func FixedNewFromC(u unsafe.Pointer) *Fixed {
 	}
 
 	g := &Fixed{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -11665,6 +11623,7 @@ func CastToFixed(object *gobject.Object) *Fixed {
 // FixedNew is a wrapper around the C function gtk_fixed_new.
 func FixedNew() *Fixed {
 	retC := C.gtk_fixed_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := FixedNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -11725,7 +11684,6 @@ func FlowBoxNewFromC(u unsafe.Pointer) *FlowBox {
 	}
 
 	g := &FlowBox{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -12159,7 +12117,6 @@ func FlowBoxAccessibleNewFromC(u unsafe.Pointer) *FlowBoxAccessible {
 	}
 
 	g := &FlowBoxAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -12223,7 +12180,6 @@ func FlowBoxChildNewFromC(u unsafe.Pointer) *FlowBoxChild {
 	}
 
 	g := &FlowBoxChild{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -12352,7 +12308,6 @@ func FlowBoxChildAccessibleNewFromC(u unsafe.Pointer) *FlowBoxChildAccessible {
 	}
 
 	g := &FlowBoxChildAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -12412,7 +12367,6 @@ func FontButtonNewFromC(u unsafe.Pointer) *FontButton {
 	}
 
 	g := &FontButton{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -12502,7 +12456,6 @@ func FontChooserDialogNewFromC(u unsafe.Pointer) *FontChooserDialog {
 	}
 
 	g := &FontChooserDialog{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -12587,7 +12540,6 @@ func FontChooserWidgetNewFromC(u unsafe.Pointer) *FontChooserWidget {
 	}
 
 	g := &FontChooserWidget{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -12667,7 +12619,6 @@ func FontSelectionNewFromC(u unsafe.Pointer) *FontSelection {
 	}
 
 	g := &FontSelection{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -12716,6 +12667,7 @@ func CastToFontSelection(object *gobject.Object) *FontSelection {
 // FontSelectionNew is a wrapper around the C function gtk_font_selection_new.
 func FontSelectionNew() *FontSelection {
 	retC := C.gtk_font_selection_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := FontSelectionNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -12788,7 +12740,6 @@ func FontSelectionDialogNewFromC(u unsafe.Pointer) *FontSelectionDialog {
 	}
 
 	g := &FontSelectionDialog{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -12850,6 +12801,7 @@ func FontSelectionDialogNew(title string) *FontSelectionDialog {
 	defer C.free(unsafe.Pointer(c_title))
 
 	retC := C.gtk_font_selection_dialog_new(c_title)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := FontSelectionDialogNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -12917,7 +12869,6 @@ func FrameNewFromC(u unsafe.Pointer) *Frame {
 	}
 
 	g := &Frame{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -12969,6 +12920,7 @@ func FrameNew(label string) *Frame {
 	defer C.free(unsafe.Pointer(c_label))
 
 	retC := C.gtk_frame_new(c_label)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := FrameNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -13084,7 +13036,6 @@ func FrameAccessibleNewFromC(u unsafe.Pointer) *FrameAccessible {
 	}
 
 	g := &FrameAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -13142,7 +13093,6 @@ func GestureNewFromC(u unsafe.Pointer) *Gesture {
 	}
 
 	g := &Gesture{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -13187,7 +13137,6 @@ func GestureDragNewFromC(u unsafe.Pointer) *GestureDrag {
 	}
 
 	g := &GestureDrag{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -13240,7 +13189,6 @@ func GestureLongPressNewFromC(u unsafe.Pointer) *GestureLongPress {
 	}
 
 	g := &GestureLongPress{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -13293,7 +13241,6 @@ func GestureMultiPressNewFromC(u unsafe.Pointer) *GestureMultiPress {
 	}
 
 	g := &GestureMultiPress{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -13346,7 +13293,6 @@ func GesturePanNewFromC(u unsafe.Pointer) *GesturePan {
 	}
 
 	g := &GesturePan{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -13404,7 +13350,6 @@ func GestureRotateNewFromC(u unsafe.Pointer) *GestureRotate {
 	}
 
 	g := &GestureRotate{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -13452,7 +13397,6 @@ func GestureSingleNewFromC(u unsafe.Pointer) *GestureSingle {
 	}
 
 	g := &GestureSingle{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -13500,7 +13444,6 @@ func GestureSwipeNewFromC(u unsafe.Pointer) *GestureSwipe {
 	}
 
 	g := &GestureSwipe{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -13553,7 +13496,6 @@ func GestureZoomNewFromC(u unsafe.Pointer) *GestureZoom {
 	}
 
 	g := &GestureZoom{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -13603,7 +13545,6 @@ func GridNewFromC(u unsafe.Pointer) *Grid {
 	}
 
 	g := &Grid{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -13647,6 +13588,7 @@ func CastToGrid(object *gobject.Object) *Grid {
 // GridNew is a wrapper around the C function gtk_grid_new.
 func GridNew() *Grid {
 	retC := C.gtk_grid_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := GridNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -13793,7 +13735,6 @@ func HBoxNewFromC(u unsafe.Pointer) *HBox {
 	}
 
 	g := &HBox{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -13847,6 +13788,7 @@ func HBoxNew(homogeneous bool, spacing int32) *HBox {
 	c_spacing := (C.gint)(spacing)
 
 	retC := C.gtk_hbox_new(c_homogeneous, c_spacing)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := HBoxNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -13880,7 +13822,6 @@ func HButtonBoxNewFromC(u unsafe.Pointer) *HButtonBox {
 	}
 
 	g := &HButtonBox{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -13934,6 +13875,7 @@ func CastToHButtonBox(object *gobject.Object) *HButtonBox {
 // HButtonBoxNew is a wrapper around the C function gtk_hbutton_box_new.
 func HButtonBoxNew() *HButtonBox {
 	retC := C.gtk_hbutton_box_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := HButtonBoxNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -13967,7 +13909,6 @@ func HPanedNewFromC(u unsafe.Pointer) *HPaned {
 	}
 
 	g := &HPaned{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -14016,6 +13957,7 @@ func CastToHPaned(object *gobject.Object) *HPaned {
 // HPanedNew is a wrapper around the C function gtk_hpaned_new.
 func HPanedNew() *HPaned {
 	retC := C.gtk_hpaned_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := HPanedNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -14050,7 +13992,6 @@ func HSVNewFromC(u unsafe.Pointer) *HSV {
 	}
 
 	g := &HSV{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -14171,7 +14112,6 @@ func HScaleNewFromC(u unsafe.Pointer) *HScale {
 	}
 
 	g := &HScale{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -14225,6 +14165,7 @@ func HScaleNew(adjustment *Adjustment) *HScale {
 	}
 
 	retC := C.gtk_hscale_new(c_adjustment)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := HScaleNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -14239,6 +14180,7 @@ func HScaleNewWithRange(min float64, max float64, step float64) *HScale {
 	c_step := (C.gdouble)(step)
 
 	retC := C.gtk_hscale_new_with_range(c_min, c_max, c_step)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := HScaleNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -14272,7 +14214,6 @@ func HScrollbarNewFromC(u unsafe.Pointer) *HScrollbar {
 	}
 
 	g := &HScrollbar{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -14326,6 +14267,7 @@ func HScrollbarNew(adjustment *Adjustment) *HScrollbar {
 	}
 
 	retC := C.gtk_hscrollbar_new(c_adjustment)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := HScrollbarNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -14359,7 +14301,6 @@ func HSeparatorNewFromC(u unsafe.Pointer) *HSeparator {
 	}
 
 	g := &HSeparator{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -14403,6 +14344,7 @@ func CastToHSeparator(object *gobject.Object) *HSeparator {
 // HSeparatorNew is a wrapper around the C function gtk_hseparator_new.
 func HSeparatorNew() *HSeparator {
 	retC := C.gtk_hseparator_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := HSeparatorNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -14437,7 +14379,6 @@ func HandleBoxNewFromC(u unsafe.Pointer) *HandleBox {
 	}
 
 	g := &HandleBox{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -14610,6 +14551,7 @@ func handlebox_childDetachedHandler(_ *C.GObject, c_widget *C.GtkWidget, data C.
 // HandleBoxNew is a wrapper around the C function gtk_handle_box_new.
 func HandleBoxNew() *HandleBox {
 	retC := C.gtk_handle_box_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := HandleBoxNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -14689,7 +14631,6 @@ func HeaderBarNewFromC(u unsafe.Pointer) *HeaderBar {
 	}
 
 	g := &HeaderBar{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -14753,7 +14694,6 @@ func IMContextNewFromC(u unsafe.Pointer) *IMContext {
 	}
 
 	g := &IMContext{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -15286,7 +15226,6 @@ func IMContextSimpleNewFromC(u unsafe.Pointer) *IMContextSimple {
 	}
 
 	g := &IMContextSimple{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -15320,6 +15259,7 @@ func CastToIMContextSimple(object *gobject.Object) *IMContextSimple {
 // IMContextSimpleNew is a wrapper around the C function gtk_im_context_simple_new.
 func IMContextSimpleNew() *IMContextSimple {
 	retC := C.gtk_im_context_simple_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := IMContextSimpleNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -15354,7 +15294,6 @@ func IMMulticontextNewFromC(u unsafe.Pointer) *IMMulticontext {
 	}
 
 	g := &IMMulticontext{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -15388,6 +15327,7 @@ func CastToIMMulticontext(object *gobject.Object) *IMMulticontext {
 // IMMulticontextNew is a wrapper around the C function gtk_im_multicontext_new.
 func IMMulticontextNew() *IMMulticontext {
 	retC := C.gtk_im_multicontext_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := IMMulticontextNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -15419,7 +15359,6 @@ func IconFactoryNewFromC(u unsafe.Pointer) *IconFactory {
 	}
 
 	g := &IconFactory{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -15448,6 +15387,7 @@ func CastToIconFactory(object *gobject.Object) *IconFactory {
 // IconFactoryNew is a wrapper around the C function gtk_icon_factory_new.
 func IconFactoryNew() *IconFactory {
 	retC := C.gtk_icon_factory_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := IconFactoryNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -15521,7 +15461,6 @@ func IconInfoNewFromC(u unsafe.Pointer) *IconInfo {
 	}
 
 	g := &IconInfo{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -15561,7 +15500,6 @@ func IconThemeNewFromC(u unsafe.Pointer) *IconTheme {
 	}
 
 	g := &IconTheme{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -15661,7 +15599,6 @@ func IconViewNewFromC(u unsafe.Pointer) *IconView {
 	}
 
 	g := &IconView{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -16163,7 +16100,6 @@ func IconViewAccessibleNewFromC(u unsafe.Pointer) *IconViewAccessible {
 	}
 
 	g := &IconViewAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -16228,7 +16164,6 @@ func ImageNewFromC(u unsafe.Pointer) *Image {
 	}
 
 	g := &Image{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -16272,6 +16207,7 @@ func CastToImage(object *gobject.Object) *Image {
 // ImageNew is a wrapper around the C function gtk_image_new.
 func ImageNew() *Image {
 	retC := C.gtk_image_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ImageNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -16285,6 +16221,7 @@ func ImageNewFromAnimation(animation *gdkpixbuf.PixbufAnimation) *Image {
 	}
 
 	retC := C.gtk_image_new_from_animation(c_animation)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ImageNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -16296,6 +16233,7 @@ func ImageNewFromFile(filename string) *Image {
 	defer C.free(unsafe.Pointer(c_filename))
 
 	retC := C.gtk_image_new_from_file(c_filename)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ImageNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -16311,6 +16249,7 @@ func ImageNewFromIconSet(iconSet *IconSet, size IconSize) *Image {
 	c_size := (C.GtkIconSize)(size)
 
 	retC := C.gtk_image_new_from_icon_set(c_icon_set, c_size)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ImageNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -16324,6 +16263,7 @@ func ImageNewFromPixbuf(pixbuf *gdkpixbuf.Pixbuf) *Image {
 	}
 
 	retC := C.gtk_image_new_from_pixbuf(c_pixbuf)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ImageNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -16337,6 +16277,7 @@ func ImageNewFromStock(stockId string, size IconSize) *Image {
 	c_size := (C.GtkIconSize)(size)
 
 	retC := C.gtk_image_new_from_stock(c_stock_id, c_size)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ImageNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -16474,7 +16415,6 @@ func ImageAccessibleNewFromC(u unsafe.Pointer) *ImageAccessible {
 	}
 
 	g := &ImageAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -16534,7 +16474,6 @@ func ImageCellAccessibleNewFromC(u unsafe.Pointer) *ImageCellAccessible {
 	}
 
 	g := &ImageCellAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -16604,7 +16543,6 @@ func ImageMenuItemNewFromC(u unsafe.Pointer) *ImageMenuItem {
 	}
 
 	g := &ImageMenuItem{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -16658,6 +16596,7 @@ func CastToImageMenuItem(object *gobject.Object) *ImageMenuItem {
 // ImageMenuItemNew is a wrapper around the C function gtk_image_menu_item_new.
 func ImageMenuItemNew() *ImageMenuItem {
 	retC := C.gtk_image_menu_item_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ImageMenuItemNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -16674,6 +16613,7 @@ func ImageMenuItemNewFromStock(stockId string, accelGroup *AccelGroup) *ImageMen
 	}
 
 	retC := C.gtk_image_menu_item_new_from_stock(c_stock_id, c_accel_group)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ImageMenuItemNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -16685,6 +16625,7 @@ func ImageMenuItemNewWithLabel(label string) *ImageMenuItem {
 	defer C.free(unsafe.Pointer(c_label))
 
 	retC := C.gtk_image_menu_item_new_with_label(c_label)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ImageMenuItemNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -16696,6 +16637,7 @@ func ImageMenuItemNewWithMnemonic(label string) *ImageMenuItem {
 	defer C.free(unsafe.Pointer(c_label))
 
 	retC := C.gtk_image_menu_item_new_with_mnemonic(c_label)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ImageMenuItemNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -16755,7 +16697,6 @@ func InfoBarNewFromC(u unsafe.Pointer) *InfoBar {
 	}
 
 	g := &InfoBar{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -16832,7 +16773,6 @@ func InvisibleNewFromC(u unsafe.Pointer) *Invisible {
 	}
 
 	g := &Invisible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -16871,6 +16811,7 @@ func CastToInvisible(object *gobject.Object) *Invisible {
 // InvisibleNew is a wrapper around the C function gtk_invisible_new.
 func InvisibleNew() *Invisible {
 	retC := C.gtk_invisible_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := InvisibleNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -16900,7 +16841,6 @@ func LabelNewFromC(u unsafe.Pointer) *Label {
 	}
 
 	g := &Label{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -17071,6 +17011,7 @@ func LabelNew(str string) *Label {
 	defer C.free(unsafe.Pointer(c_str))
 
 	retC := C.gtk_label_new(c_str)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := LabelNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -17082,6 +17023,7 @@ func LabelNewWithMnemonic(str string) *Label {
 	defer C.free(unsafe.Pointer(c_str))
 
 	retC := C.gtk_label_new_with_mnemonic(c_str)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := LabelNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -17384,7 +17326,6 @@ func LabelAccessibleNewFromC(u unsafe.Pointer) *LabelAccessible {
 	}
 
 	g := &LabelAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -17449,7 +17390,6 @@ func LayoutNewFromC(u unsafe.Pointer) *Layout {
 	}
 
 	g := &Layout{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -17503,6 +17443,7 @@ func LayoutNew(hadjustment *Adjustment, vadjustment *Adjustment) *Layout {
 	}
 
 	retC := C.gtk_layout_new(c_hadjustment, c_vadjustment)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := LayoutNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -17635,7 +17576,6 @@ func LevelBarNewFromC(u unsafe.Pointer) *LevelBar {
 	}
 
 	g := &LevelBar{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -17700,7 +17640,6 @@ func LevelBarAccessibleNewFromC(u unsafe.Pointer) *LevelBarAccessible {
 	}
 
 	g := &LevelBarAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -17760,7 +17699,6 @@ func LinkButtonNewFromC(u unsafe.Pointer) *LinkButton {
 	}
 
 	g := &LinkButton{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -17908,7 +17846,6 @@ func LinkButtonAccessibleNewFromC(u unsafe.Pointer) *LinkButtonAccessible {
 	}
 
 	g := &LinkButtonAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -17987,7 +17924,6 @@ func ListBoxNewFromC(u unsafe.Pointer) *ListBox {
 	}
 
 	g := &ListBox{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -18174,7 +18110,6 @@ func ListBoxAccessibleNewFromC(u unsafe.Pointer) *ListBoxAccessible {
 	}
 
 	g := &ListBoxAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -18238,7 +18173,6 @@ func ListBoxRowNewFromC(u unsafe.Pointer) *ListBoxRow {
 	}
 
 	g := &ListBoxRow{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -18312,7 +18246,6 @@ func ListBoxRowAccessibleNewFromC(u unsafe.Pointer) *ListBoxRowAccessible {
 	}
 
 	g := &ListBoxRowAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -18372,7 +18305,6 @@ func ListStoreNewFromC(u unsafe.Pointer) *ListStore {
 	}
 
 	g := &ListStore{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -18407,6 +18339,7 @@ func ListStoreNewv(types []gobject.Type) *ListStore {
 	c_types := &types[0]
 
 	retC := C.gtk_list_store_newv(c_n_columns, (*C.GType)(unsafe.Pointer(c_types)))
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ListStoreNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -18572,7 +18505,6 @@ func LockButtonNewFromC(u unsafe.Pointer) *LockButton {
 	}
 
 	g := &LockButton{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -18657,7 +18589,6 @@ func LockButtonAccessibleNewFromC(u unsafe.Pointer) *LockButtonAccessible {
 	}
 
 	g := &LockButtonAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -18732,7 +18663,6 @@ func MenuNewFromC(u unsafe.Pointer) *Menu {
 	}
 
 	g := &Menu{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -18783,6 +18713,7 @@ func CastToMenu(object *gobject.Object) *Menu {
 // MenuNew is a wrapper around the C function gtk_menu_new.
 func MenuNew() *Menu {
 	retC := C.gtk_menu_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := MenuNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -18942,7 +18873,6 @@ func MenuAccessibleNewFromC(u unsafe.Pointer) *MenuAccessible {
 	}
 
 	g := &MenuAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -19012,7 +18942,6 @@ func MenuBarNewFromC(u unsafe.Pointer) *MenuBar {
 	}
 
 	g := &MenuBar{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -19061,6 +18990,7 @@ func CastToMenuBar(object *gobject.Object) *MenuBar {
 // MenuBarNew is a wrapper around the C function gtk_menu_bar_new.
 func MenuBarNew() *MenuBar {
 	retC := C.gtk_menu_bar_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := MenuBarNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -19090,7 +19020,6 @@ func MenuButtonNewFromC(u unsafe.Pointer) *MenuButton {
 	}
 
 	g := &MenuButton{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -19180,7 +19109,6 @@ func MenuButtonAccessibleNewFromC(u unsafe.Pointer) *MenuButtonAccessible {
 	}
 
 	g := &MenuButtonAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -19260,7 +19188,6 @@ func MenuItemNewFromC(u unsafe.Pointer) *MenuItem {
 	}
 
 	g := &MenuItem{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -19673,6 +19600,7 @@ func menuitem_toggleSizeRequestHandler(_ *C.GObject, c_object C.gpointer, data C
 // MenuItemNew is a wrapper around the C function gtk_menu_item_new.
 func MenuItemNew() *MenuItem {
 	retC := C.gtk_menu_item_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := MenuItemNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -19684,6 +19612,7 @@ func MenuItemNewWithLabel(label string) *MenuItem {
 	defer C.free(unsafe.Pointer(c_label))
 
 	retC := C.gtk_menu_item_new_with_label(c_label)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := MenuItemNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -19695,6 +19624,7 @@ func MenuItemNewWithMnemonic(label string) *MenuItem {
 	defer C.free(unsafe.Pointer(c_label))
 
 	retC := C.gtk_menu_item_new_with_mnemonic(c_label)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := MenuItemNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -19826,7 +19756,6 @@ func MenuItemAccessibleNewFromC(u unsafe.Pointer) *MenuItemAccessible {
 	}
 
 	g := &MenuItemAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -19896,7 +19825,6 @@ func MenuShellNewFromC(u unsafe.Pointer) *MenuShell {
 	}
 
 	g := &MenuShell{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -20286,7 +20214,6 @@ func MenuShellAccessibleNewFromC(u unsafe.Pointer) *MenuShellAccessible {
 	}
 
 	g := &MenuShellAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -20351,7 +20278,6 @@ func MenuToolButtonNewFromC(u unsafe.Pointer) *MenuToolButton {
 	}
 
 	g := &MenuToolButton{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -20501,7 +20427,6 @@ func MessageDialogNewFromC(u unsafe.Pointer) *MessageDialog {
 	}
 
 	g := &MessageDialog{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -20583,7 +20508,6 @@ func MiscNewFromC(u unsafe.Pointer) *Misc {
 	}
 
 	g := &Misc{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -20693,7 +20617,6 @@ func ModelButtonNewFromC(u unsafe.Pointer) *ModelButton {
 	}
 
 	g := &ModelButton{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -20778,7 +20701,6 @@ func MountOperationNewFromC(u unsafe.Pointer) *MountOperation {
 	}
 
 	g := &MountOperation{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -20823,7 +20745,6 @@ func NotebookNewFromC(u unsafe.Pointer) *Notebook {
 	}
 
 	g := &Notebook{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -21067,6 +20988,7 @@ func notebook_switchPageHandler(_ *C.GObject, c_page *C.GtkWidget, c_page_num C.
 // NotebookNew is a wrapper around the C function gtk_notebook_new.
 func NotebookNew() *Notebook {
 	retC := C.gtk_notebook_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := NotebookNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -21516,7 +21438,6 @@ func NotebookAccessibleNewFromC(u unsafe.Pointer) *NotebookAccessible {
 	}
 
 	g := &NotebookAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -21581,7 +21502,6 @@ func NotebookPageAccessibleNewFromC(u unsafe.Pointer) *NotebookPageAccessible {
 	}
 
 	g := &NotebookPageAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -21620,6 +21540,7 @@ func NotebookPageAccessibleNew(notebook *NotebookAccessible, child *Widget) *Not
 	}
 
 	retC := C.gtk_notebook_page_accessible_new(c_notebook, c_child)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := NotebookPageAccessibleNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -21651,7 +21572,6 @@ func NumerableIconNewFromC(u unsafe.Pointer) *NumerableIcon {
 	}
 
 	g := &NumerableIcon{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -21700,7 +21620,6 @@ func OffscreenWindowNewFromC(u unsafe.Pointer) *OffscreenWindow {
 	}
 
 	g := &OffscreenWindow{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -21775,7 +21694,6 @@ func OverlayNewFromC(u unsafe.Pointer) *Overlay {
 	}
 
 	g := &Overlay{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -21845,7 +21763,6 @@ func PageSetupNewFromC(u unsafe.Pointer) *PageSetup {
 	}
 
 	g := &PageSetup{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -21885,7 +21802,6 @@ func PanedNewFromC(u unsafe.Pointer) *Paned {
 	}
 
 	g := &Paned{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -22032,7 +21948,6 @@ func PanedAccessibleNewFromC(u unsafe.Pointer) *PanedAccessible {
 	}
 
 	g := &PanedAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -22095,7 +22010,6 @@ func PlacesSidebarNewFromC(u unsafe.Pointer) *PlacesSidebar {
 	}
 
 	g := &PlacesSidebar{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -22240,7 +22154,6 @@ func PopoverNewFromC(u unsafe.Pointer) *Popover {
 	}
 
 	g := &Popover{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -22379,7 +22292,6 @@ func PopoverAccessibleNewFromC(u unsafe.Pointer) *PopoverAccessible {
 	}
 
 	g := &PopoverAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -22437,7 +22349,6 @@ func PopoverMenuNewFromC(u unsafe.Pointer) *PopoverMenu {
 	}
 
 	g := &PopoverMenu{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -22510,7 +22421,6 @@ func PrintContextNewFromC(u unsafe.Pointer) *PrintContext {
 	}
 
 	g := &PrintContext{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -22550,7 +22460,6 @@ func PrintOperationNewFromC(u unsafe.Pointer) *PrintOperation {
 	}
 
 	g := &PrintOperation{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -22593,7 +22502,6 @@ func PrintSettingsNewFromC(u unsafe.Pointer) *PrintSettings {
 	}
 
 	g := &PrintSettings{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -22633,7 +22541,6 @@ func ProgressBarNewFromC(u unsafe.Pointer) *ProgressBar {
 	}
 
 	g := &ProgressBar{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -22672,6 +22579,7 @@ func CastToProgressBar(object *gobject.Object) *ProgressBar {
 // ProgressBarNew is a wrapper around the C function gtk_progress_bar_new.
 func ProgressBarNew() *ProgressBar {
 	retC := C.gtk_progress_bar_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ProgressBarNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -22783,7 +22691,6 @@ func ProgressBarAccessibleNewFromC(u unsafe.Pointer) *ProgressBarAccessible {
 	}
 
 	g := &ProgressBarAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -22843,7 +22750,6 @@ func RadioActionNewFromC(u unsafe.Pointer) *RadioAction {
 	}
 
 	g := &RadioAction{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -22898,7 +22804,6 @@ func RadioButtonNewFromC(u unsafe.Pointer) *RadioButton {
 	}
 
 	g := &RadioButton{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -22967,6 +22872,7 @@ func RadioButtonNew(group *glib.SList) *RadioButton {
 	}
 
 	retC := C.gtk_radio_button_new(c_group)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := RadioButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -22980,6 +22886,7 @@ func RadioButtonNewFromWidget(radioGroupMember *RadioButton) *RadioButton {
 	}
 
 	retC := C.gtk_radio_button_new_from_widget(c_radio_group_member)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := RadioButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -22996,6 +22903,7 @@ func RadioButtonNewWithLabel(group *glib.SList, label string) *RadioButton {
 	defer C.free(unsafe.Pointer(c_label))
 
 	retC := C.gtk_radio_button_new_with_label(c_group, c_label)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := RadioButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -23012,6 +22920,7 @@ func RadioButtonNewWithLabelFromWidget(radioGroupMember *RadioButton, label stri
 	defer C.free(unsafe.Pointer(c_label))
 
 	retC := C.gtk_radio_button_new_with_label_from_widget(c_radio_group_member, c_label)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := RadioButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -23028,6 +22937,7 @@ func RadioButtonNewWithMnemonic(group *glib.SList, label string) *RadioButton {
 	defer C.free(unsafe.Pointer(c_label))
 
 	retC := C.gtk_radio_button_new_with_mnemonic(c_group, c_label)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := RadioButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -23044,6 +22954,7 @@ func RadioButtonNewWithMnemonicFromWidget(radioGroupMember *RadioButton, label s
 	defer C.free(unsafe.Pointer(c_label))
 
 	retC := C.gtk_radio_button_new_with_mnemonic_from_widget(c_radio_group_member, c_label)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := RadioButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -23103,7 +23014,6 @@ func RadioButtonAccessibleNewFromC(u unsafe.Pointer) *RadioButtonAccessible {
 	}
 
 	g := &RadioButtonAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -23183,7 +23093,6 @@ func RadioMenuItemNewFromC(u unsafe.Pointer) *RadioMenuItem {
 	}
 
 	g := &RadioMenuItem{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -23307,6 +23216,7 @@ func RadioMenuItemNew(group *glib.SList) *RadioMenuItem {
 	}
 
 	retC := C.gtk_radio_menu_item_new(c_group)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := RadioMenuItemNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -23323,6 +23233,7 @@ func RadioMenuItemNewWithLabel(group *glib.SList, label string) *RadioMenuItem {
 	defer C.free(unsafe.Pointer(c_label))
 
 	retC := C.gtk_radio_menu_item_new_with_label(c_group, c_label)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := RadioMenuItemNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -23339,6 +23250,7 @@ func RadioMenuItemNewWithMnemonic(group *glib.SList, label string) *RadioMenuIte
 	defer C.free(unsafe.Pointer(c_label))
 
 	retC := C.gtk_radio_menu_item_new_with_mnemonic(c_group, c_label)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := RadioMenuItemNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -23398,7 +23310,6 @@ func RadioMenuItemAccessibleNewFromC(u unsafe.Pointer) *RadioMenuItemAccessible 
 	}
 
 	g := &RadioMenuItemAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -23477,7 +23388,6 @@ func RadioToolButtonNewFromC(u unsafe.Pointer) *RadioToolButton {
 	}
 
 	g := &RadioToolButton{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -23572,7 +23482,6 @@ func RangeNewFromC(u unsafe.Pointer) *Range {
 	}
 
 	g := &Range{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -23838,7 +23747,6 @@ func RangeAccessibleNewFromC(u unsafe.Pointer) *RangeAccessible {
 	}
 
 	g := &RangeAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -23916,7 +23824,6 @@ func RcStyleNewFromC(u unsafe.Pointer) *RcStyle {
 		Ythickness: (int32)(c.ythickness),
 		native:     c,
 	}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -23951,6 +23858,7 @@ func CastToRcStyle(object *gobject.Object) *RcStyle {
 // RcStyleNew is a wrapper around the C function gtk_rc_style_new.
 func RcStyleNew() *RcStyle {
 	retC := C.gtk_rc_style_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := RcStyleNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -23978,7 +23886,6 @@ func RecentActionNewFromC(u unsafe.Pointer) *RecentAction {
 	}
 
 	g := &RecentAction{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -24033,7 +23940,6 @@ func RecentChooserDialogNewFromC(u unsafe.Pointer) *RecentChooserDialog {
 	}
 
 	g := &RecentChooserDialog{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -24118,7 +24024,6 @@ func RecentChooserMenuNewFromC(u unsafe.Pointer) *RecentChooserMenu {
 	}
 
 	g := &RecentChooserMenu{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -24203,7 +24108,6 @@ func RecentChooserWidgetNewFromC(u unsafe.Pointer) *RecentChooserWidget {
 	}
 
 	g := &RecentChooserWidget{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -24281,7 +24185,6 @@ func RecentFilterNewFromC(u unsafe.Pointer) *RecentFilter {
 	}
 
 	g := &RecentFilter{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -24331,7 +24234,6 @@ func RendererCellAccessibleNewFromC(u unsafe.Pointer) *RendererCellAccessible {
 	}
 
 	g := &RendererCellAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -24375,6 +24277,7 @@ func RendererCellAccessibleNew(renderer *CellRenderer) *RendererCellAccessible {
 	}
 
 	retC := C.gtk_renderer_cell_accessible_new(c_renderer)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := RendererCellAccessibleNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -24403,7 +24306,6 @@ func RevealerNewFromC(u unsafe.Pointer) *Revealer {
 	}
 
 	g := &Revealer{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -24473,7 +24375,6 @@ func ScaleNewFromC(u unsafe.Pointer) *Scale {
 	}
 
 	g := &Scale{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -24597,7 +24498,6 @@ func ScaleAccessibleNewFromC(u unsafe.Pointer) *ScaleAccessible {
 	}
 
 	g := &ScaleAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -24662,7 +24562,6 @@ func ScaleButtonNewFromC(u unsafe.Pointer) *ScaleButton {
 	}
 
 	g := &ScaleButton{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -24752,7 +24651,6 @@ func ScaleButtonAccessibleNewFromC(u unsafe.Pointer) *ScaleButtonAccessible {
 	}
 
 	g := &ScaleButtonAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -24831,7 +24729,6 @@ func ScrollbarNewFromC(u unsafe.Pointer) *Scrollbar {
 	}
 
 	g := &Scrollbar{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -24901,7 +24798,6 @@ func ScrolledWindowNewFromC(u unsafe.Pointer) *ScrolledWindow {
 	}
 
 	g := &ScrolledWindow{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -24964,6 +24860,7 @@ func ScrolledWindowNew(hadjustment *Adjustment, vadjustment *Adjustment) *Scroll
 	}
 
 	retC := C.gtk_scrolled_window_new(c_hadjustment, c_vadjustment)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ScrolledWindowNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -25092,7 +24989,6 @@ func ScrolledWindowAccessibleNewFromC(u unsafe.Pointer) *ScrolledWindowAccessibl
 	}
 
 	g := &ScrolledWindowAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -25151,7 +25047,6 @@ func SearchBarNewFromC(u unsafe.Pointer) *SearchBar {
 	}
 
 	g := &SearchBar{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -25220,7 +25115,6 @@ func SearchEntryNewFromC(u unsafe.Pointer) *SearchEntry {
 	}
 
 	g := &SearchEntry{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -25295,7 +25189,6 @@ func SeparatorNewFromC(u unsafe.Pointer) *Separator {
 	}
 
 	g := &Separator{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -25359,7 +25252,6 @@ func SeparatorMenuItemNewFromC(u unsafe.Pointer) *SeparatorMenuItem {
 	}
 
 	g := &SeparatorMenuItem{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -25413,6 +25305,7 @@ func CastToSeparatorMenuItem(object *gobject.Object) *SeparatorMenuItem {
 // SeparatorMenuItemNew is a wrapper around the C function gtk_separator_menu_item_new.
 func SeparatorMenuItemNew() *SeparatorMenuItem {
 	retC := C.gtk_separator_menu_item_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := SeparatorMenuItemNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -25452,7 +25345,6 @@ func SeparatorToolItemNewFromC(u unsafe.Pointer) *SeparatorToolItem {
 	}
 
 	g := &SeparatorToolItem{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -25532,7 +25424,6 @@ func SettingsNewFromC(u unsafe.Pointer) *Settings {
 	}
 
 	g := &Settings{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -25653,7 +25544,6 @@ func SizeGroupNewFromC(u unsafe.Pointer) *SizeGroup {
 	}
 
 	g := &SizeGroup{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -25684,6 +25574,7 @@ func SizeGroupNew(mode SizeGroupMode) *SizeGroup {
 	c_mode := (C.GtkSizeGroupMode)(mode)
 
 	retC := C.gtk_size_group_new(c_mode)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := SizeGroupNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -25751,7 +25642,6 @@ func SpinButtonNewFromC(u unsafe.Pointer) *SpinButton {
 	}
 
 	g := &SpinButton{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -25931,6 +25821,7 @@ func SpinButtonNew(adjustment *Adjustment, climbRate float64, digits uint32) *Sp
 	c_digits := (C.guint)(digits)
 
 	retC := C.gtk_spin_button_new(c_adjustment, c_climb_rate, c_digits)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := SpinButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -25945,6 +25836,7 @@ func SpinButtonNewWithRange(min float64, max float64, step float64) *SpinButton 
 	c_step := (C.gdouble)(step)
 
 	retC := C.gtk_spin_button_new_with_range(c_min, c_max, c_step)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := SpinButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -26208,7 +26100,6 @@ func SpinButtonAccessibleNewFromC(u unsafe.Pointer) *SpinButtonAccessible {
 	}
 
 	g := &SpinButtonAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -26288,7 +26179,6 @@ func SpinnerNewFromC(u unsafe.Pointer) *Spinner {
 	}
 
 	g := &Spinner{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -26348,7 +26238,6 @@ func SpinnerAccessibleNewFromC(u unsafe.Pointer) *SpinnerAccessible {
 	}
 
 	g := &SpinnerAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -26407,7 +26296,6 @@ func StackNewFromC(u unsafe.Pointer) *Stack {
 	}
 
 	g := &Stack{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -26473,7 +26361,6 @@ func StackSidebarNewFromC(u unsafe.Pointer) *StackSidebar {
 	}
 
 	g := &StackSidebar{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -26542,7 +26429,6 @@ func StackSwitcherNewFromC(u unsafe.Pointer) *StackSwitcher {
 	}
 
 	g := &StackSwitcher{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -26617,7 +26503,6 @@ func StatusIconNewFromC(u unsafe.Pointer) *StatusIcon {
 	}
 
 	g := &StatusIcon{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -26657,7 +26542,6 @@ func StatusbarNewFromC(u unsafe.Pointer) *Statusbar {
 	}
 
 	g := &Statusbar{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -26834,6 +26718,7 @@ func statusbar_textPushedHandler(_ *C.GObject, c_context_id C.guint, c_text *C.g
 // StatusbarNew is a wrapper around the C function gtk_statusbar_new.
 func StatusbarNew() *Statusbar {
 	retC := C.gtk_statusbar_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := StatusbarNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -26912,7 +26797,6 @@ func StatusbarAccessibleNewFromC(u unsafe.Pointer) *StatusbarAccessible {
 	}
 
 	g := &StatusbarAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -26996,7 +26880,6 @@ func StyleNewFromC(u unsafe.Pointer) *Style {
 		Ythickness: (int32)(c.ythickness),
 		native:     c,
 	}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -27029,6 +26912,7 @@ func CastToStyle(object *gobject.Object) *Style {
 // StyleNew is a wrapper around the C function gtk_style_new.
 func StyleNew() *Style {
 	retC := C.gtk_style_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := StyleNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -27155,7 +27039,6 @@ func StyleContextNewFromC(u unsafe.Pointer) *StyleContext {
 	}
 
 	g := &StyleContext{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -27184,6 +27067,7 @@ func CastToStyleContext(object *gobject.Object) *StyleContext {
 // StyleContextNew is a wrapper around the C function gtk_style_context_new.
 func StyleContextNew() *StyleContext {
 	retC := C.gtk_style_context_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := StyleContextNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -27273,7 +27157,6 @@ func StylePropertiesNewFromC(u unsafe.Pointer) *StyleProperties {
 	}
 
 	g := &StyleProperties{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -27302,6 +27185,7 @@ func CastToStyleProperties(object *gobject.Object) *StyleProperties {
 // StylePropertiesNew is a wrapper around the C function gtk_style_properties_new.
 func StylePropertiesNew() *StyleProperties {
 	retC := C.gtk_style_properties_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := StylePropertiesNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -27333,7 +27217,6 @@ func SwitchNewFromC(u unsafe.Pointer) *Switch {
 	}
 
 	g := &Switch{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -27463,7 +27346,6 @@ func SwitchAccessibleNewFromC(u unsafe.Pointer) *SwitchAccessible {
 	}
 
 	g := &SwitchAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -27523,7 +27405,6 @@ func TableNewFromC(u unsafe.Pointer) *Table {
 	}
 
 	g := &Table{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -27574,6 +27455,7 @@ func TableNew(rows uint32, columns uint32, homogeneous bool) *Table {
 		boolToGboolean(homogeneous)
 
 	retC := C.gtk_table_new(c_rows, c_columns, c_homogeneous)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := TableNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -27756,7 +27638,6 @@ func TearoffMenuItemNewFromC(u unsafe.Pointer) *TearoffMenuItem {
 	}
 
 	g := &TearoffMenuItem{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -27810,6 +27691,7 @@ func CastToTearoffMenuItem(object *gobject.Object) *TearoffMenuItem {
 // TearoffMenuItemNew is a wrapper around the C function gtk_tearoff_menu_item_new.
 func TearoffMenuItemNew() *TearoffMenuItem {
 	retC := C.gtk_tearoff_menu_item_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := TearoffMenuItemNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -27849,7 +27731,6 @@ func TextBufferNewFromC(u unsafe.Pointer) *TextBuffer {
 	}
 
 	g := &TextBuffer{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -28639,6 +28520,7 @@ func TextBufferNew(table *TextTagTable) *TextBuffer {
 	}
 
 	retC := C.gtk_text_buffer_new(c_table)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := TextBufferNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -29419,7 +29301,6 @@ func TextCellAccessibleNewFromC(u unsafe.Pointer) *TextCellAccessible {
 	}
 
 	g := &TextCellAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -29489,7 +29370,6 @@ func TextChildAnchorNewFromC(u unsafe.Pointer) *TextChildAnchor {
 	}
 
 	g := &TextChildAnchor{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -29518,6 +29398,7 @@ func CastToTextChildAnchor(object *gobject.Object) *TextChildAnchor {
 // TextChildAnchorNew is a wrapper around the C function gtk_text_child_anchor_new.
 func TextChildAnchorNew() *TextChildAnchor {
 	retC := C.gtk_text_child_anchor_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := TextChildAnchorNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -29553,7 +29434,6 @@ func TextMarkNewFromC(u unsafe.Pointer) *TextMark {
 	}
 
 	g := &TextMark{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -29643,7 +29523,6 @@ func TextTagNewFromC(u unsafe.Pointer) *TextTag {
 	}
 
 	g := &TextTag{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -29677,6 +29556,7 @@ func TextTagNew(name string) *TextTag {
 	defer C.free(unsafe.Pointer(c_name))
 
 	retC := C.gtk_text_tag_new(c_name)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := TextTagNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -29715,7 +29595,6 @@ func TextTagTableNewFromC(u unsafe.Pointer) *TextTagTable {
 	}
 
 	g := &TextTagTable{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -29932,6 +29811,7 @@ func texttagtable_tagRemovedHandler(_ *C.GObject, c_tag *C.GtkTextTag, data C.gp
 // TextTagTableNew is a wrapper around the C function gtk_text_tag_table_new.
 func TextTagTableNew() *TextTagTable {
 	retC := C.gtk_text_tag_table_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := TextTagTableNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -30007,7 +29887,6 @@ func TextViewNewFromC(u unsafe.Pointer) *TextView {
 	}
 
 	g := &TextView{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -30663,6 +30542,7 @@ func textview_toggleOverwriteHandler(_ *C.GObject, data C.gpointer) {
 // TextViewNew is a wrapper around the C function gtk_text_view_new.
 func TextViewNew() *TextView {
 	retC := C.gtk_text_view_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := TextViewNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -30676,6 +30556,7 @@ func TextViewNewWithBuffer(buffer *TextBuffer) *TextView {
 	}
 
 	retC := C.gtk_text_view_new_with_buffer(c_buffer)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := TextViewNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -31289,7 +31170,6 @@ func TextViewAccessibleNewFromC(u unsafe.Pointer) *TextViewAccessible {
 	}
 
 	g := &TextViewAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -31364,7 +31244,6 @@ func ThemingEngineNewFromC(u unsafe.Pointer) *ThemingEngine {
 	}
 
 	g := &ThemingEngine{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -31433,7 +31312,6 @@ func ToggleActionNewFromC(u unsafe.Pointer) *ToggleAction {
 	}
 
 	g := &ToggleAction{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -31543,7 +31421,6 @@ func ToggleButtonNewFromC(u unsafe.Pointer) *ToggleButton {
 	}
 
 	g := &ToggleButton{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -31657,6 +31534,7 @@ func togglebutton_toggledHandler(_ *C.GObject, data C.gpointer) {
 // ToggleButtonNew is a wrapper around the C function gtk_toggle_button_new.
 func ToggleButtonNew() *ToggleButton {
 	retC := C.gtk_toggle_button_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ToggleButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -31668,6 +31546,7 @@ func ToggleButtonNewWithLabel(label string) *ToggleButton {
 	defer C.free(unsafe.Pointer(c_label))
 
 	retC := C.gtk_toggle_button_new_with_label(c_label)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ToggleButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -31679,6 +31558,7 @@ func ToggleButtonNewWithMnemonic(label string) *ToggleButton {
 	defer C.free(unsafe.Pointer(c_label))
 
 	retC := C.gtk_toggle_button_new_with_mnemonic(c_label)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ToggleButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -31779,7 +31659,6 @@ func ToggleButtonAccessibleNewFromC(u unsafe.Pointer) *ToggleButtonAccessible {
 	}
 
 	g := &ToggleButtonAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -31854,7 +31733,6 @@ func ToggleToolButtonNewFromC(u unsafe.Pointer) *ToggleToolButton {
 	}
 
 	g := &ToggleToolButton{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -32004,7 +31882,6 @@ func ToolButtonNewFromC(u unsafe.Pointer) *ToolButton {
 	}
 
 	g := &ToolButton{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -32149,7 +32026,6 @@ func ToolItemNewFromC(u unsafe.Pointer) *ToolItem {
 	}
 
 	g := &ToolItem{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -32347,7 +32223,6 @@ func ToolItemGroupNewFromC(u unsafe.Pointer) *ToolItemGroup {
 	}
 
 	g := &ToolItemGroup{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -32417,7 +32292,6 @@ func ToolPaletteNewFromC(u unsafe.Pointer) *ToolPalette {
 	}
 
 	g := &ToolPalette{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -32492,7 +32366,6 @@ func ToolbarNewFromC(u unsafe.Pointer) *Toolbar {
 	}
 
 	g := &Toolbar{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -32674,6 +32547,7 @@ func toolbar_popupContextMenuHandler(_ *C.GObject, c_x C.gint, c_y C.gint, c_but
 // ToolbarNew is a wrapper around the C function gtk_toolbar_new.
 func ToolbarNew() *Toolbar {
 	retC := C.gtk_toolbar_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ToolbarNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -32759,7 +32633,6 @@ func TooltipNewFromC(u unsafe.Pointer) *Tooltip {
 	}
 
 	g := &Tooltip{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -32799,7 +32672,6 @@ func ToplevelAccessibleNewFromC(u unsafe.Pointer) *ToplevelAccessible {
 	}
 
 	g := &ToplevelAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -32847,7 +32719,6 @@ func TreeModelFilterNewFromC(u unsafe.Pointer) *TreeModelFilter {
 	}
 
 	g := &TreeModelFilter{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -32897,7 +32768,6 @@ func TreeModelSortNewFromC(u unsafe.Pointer) *TreeModelSort {
 	}
 
 	g := &TreeModelSort{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -33043,7 +32913,6 @@ func TreeSelectionNewFromC(u unsafe.Pointer) *TreeSelection {
 	}
 
 	g := &TreeSelection{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -33301,7 +33170,6 @@ func TreeStoreNewFromC(u unsafe.Pointer) *TreeStore {
 	}
 
 	g := &TreeStore{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -33336,6 +33204,7 @@ func TreeStoreNewv(types []gobject.Type) *TreeStore {
 	c_types := &types[0]
 
 	retC := C.gtk_tree_store_newv(c_n_columns, (*C.GType)(unsafe.Pointer(c_types)))
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := TreeStoreNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -33557,7 +33426,6 @@ func TreeViewNewFromC(u unsafe.Pointer) *TreeView {
 	}
 
 	g := &TreeView{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -34498,6 +34366,7 @@ func treeview_unselectAllHandler(_ *C.GObject, data C.gpointer) C.gboolean {
 // TreeViewNew is a wrapper around the C function gtk_tree_view_new.
 func TreeViewNew() *TreeView {
 	retC := C.gtk_tree_view_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := TreeViewNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -34508,6 +34377,7 @@ func TreeViewNewWithModel(model *TreeModel) *TreeView {
 	c_model := (*C.GtkTreeModel)(model.ToC())
 
 	retC := C.gtk_tree_view_new_with_model(c_model)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := TreeViewNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -35072,7 +34942,6 @@ func TreeViewAccessibleNewFromC(u unsafe.Pointer) *TreeViewAccessible {
 	}
 
 	g := &TreeViewAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -35147,7 +35016,6 @@ func TreeViewColumnNewFromC(u unsafe.Pointer) *TreeViewColumn {
 	}
 
 	g := &TreeViewColumn{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -35241,6 +35109,7 @@ func treeviewcolumn_clickedHandler(_ *C.GObject, data C.gpointer) {
 // TreeViewColumnNew is a wrapper around the C function gtk_tree_view_column_new.
 func TreeViewColumnNew() *TreeViewColumn {
 	retC := C.gtk_tree_view_column_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := TreeViewColumnNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -35677,7 +35546,6 @@ func UIManagerNewFromC(u unsafe.Pointer) *UIManager {
 	}
 
 	g := &UIManager{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -35721,7 +35589,6 @@ func VBoxNewFromC(u unsafe.Pointer) *VBox {
 	}
 
 	g := &VBox{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -35775,6 +35642,7 @@ func VBoxNew(homogeneous bool, spacing int32) *VBox {
 	c_spacing := (C.gint)(spacing)
 
 	retC := C.gtk_vbox_new(c_homogeneous, c_spacing)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := VBoxNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -35808,7 +35676,6 @@ func VButtonBoxNewFromC(u unsafe.Pointer) *VButtonBox {
 	}
 
 	g := &VButtonBox{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -35862,6 +35729,7 @@ func CastToVButtonBox(object *gobject.Object) *VButtonBox {
 // VButtonBoxNew is a wrapper around the C function gtk_vbutton_box_new.
 func VButtonBoxNew() *VButtonBox {
 	retC := C.gtk_vbutton_box_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := VButtonBoxNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -35895,7 +35763,6 @@ func VPanedNewFromC(u unsafe.Pointer) *VPaned {
 	}
 
 	g := &VPaned{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -35944,6 +35811,7 @@ func CastToVPaned(object *gobject.Object) *VPaned {
 // VPanedNew is a wrapper around the C function gtk_vpaned_new.
 func VPanedNew() *VPaned {
 	retC := C.gtk_vpaned_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := VPanedNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -35977,7 +35845,6 @@ func VScaleNewFromC(u unsafe.Pointer) *VScale {
 	}
 
 	g := &VScale{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -36031,6 +35898,7 @@ func VScaleNew(adjustment *Adjustment) *VScale {
 	}
 
 	retC := C.gtk_vscale_new(c_adjustment)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := VScaleNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -36045,6 +35913,7 @@ func VScaleNewWithRange(min float64, max float64, step float64) *VScale {
 	c_step := (C.gdouble)(step)
 
 	retC := C.gtk_vscale_new_with_range(c_min, c_max, c_step)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := VScaleNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -36078,7 +35947,6 @@ func VScrollbarNewFromC(u unsafe.Pointer) *VScrollbar {
 	}
 
 	g := &VScrollbar{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -36132,6 +36000,7 @@ func VScrollbarNew(adjustment *Adjustment) *VScrollbar {
 	}
 
 	retC := C.gtk_vscrollbar_new(c_adjustment)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := VScrollbarNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -36165,7 +36034,6 @@ func VSeparatorNewFromC(u unsafe.Pointer) *VSeparator {
 	}
 
 	g := &VSeparator{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -36209,6 +36077,7 @@ func CastToVSeparator(object *gobject.Object) *VSeparator {
 // VSeparatorNew is a wrapper around the C function gtk_vseparator_new.
 func VSeparatorNew() *VSeparator {
 	retC := C.gtk_vseparator_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := VSeparatorNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -36243,7 +36112,6 @@ func ViewportNewFromC(u unsafe.Pointer) *Viewport {
 	}
 
 	g := &Viewport{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -36302,6 +36170,7 @@ func ViewportNew(hadjustment *Adjustment, vadjustment *Adjustment) *Viewport {
 	}
 
 	retC := C.gtk_viewport_new(c_hadjustment, c_vadjustment)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ViewportNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -36392,7 +36261,6 @@ func VolumeButtonNewFromC(u unsafe.Pointer) *VolumeButton {
 	}
 
 	g := &VolumeButton{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -36487,7 +36355,6 @@ func WidgetNewFromC(u unsafe.Pointer) *Widget {
 	}
 
 	g := &Widget{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -40929,7 +40796,6 @@ func WidgetAccessibleNewFromC(u unsafe.Pointer) *WidgetAccessible {
 	}
 
 	g := &WidgetAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -40979,7 +40845,6 @@ func WindowNewFromC(u unsafe.Pointer) *Window {
 	}
 
 	g := &Window{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -41337,6 +41202,7 @@ func WindowNew(type_ WindowType) *Window {
 	c_type := (C.GtkWindowType)(type_)
 
 	retC := C.gtk_window_new(c_type)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := WindowNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -41966,7 +41832,6 @@ func WindowAccessibleNewFromC(u unsafe.Pointer) *WindowAccessible {
 	}
 
 	g := &WindowAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -42031,7 +41896,6 @@ func WindowGroupNewFromC(u unsafe.Pointer) *WindowGroup {
 	}
 
 	g := &WindowGroup{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -42060,6 +41924,7 @@ func CastToWindowGroup(object *gobject.Object) *WindowGroup {
 // WindowGroupNew is a wrapper around the C function gtk_window_group_new.
 func WindowGroupNew() *WindowGroup {
 	retC := C.gtk_window_group_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := WindowGroupNewFromC(unsafe.Pointer(retC))
 
 	return retGo

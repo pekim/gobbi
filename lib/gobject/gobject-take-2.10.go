@@ -6,14 +6,36 @@ package gobject
 // #include <glib-object.h>
 // #include <stdlib.h>
 import "C"
-import "runtime"
+import (
+	"fmt"
+	"runtime"
+)
 
 func (recv *Object) Take() {
+	//if recv.IsFloating() {
+	//	fmt.Printf("%p RefSink \n", recv)
+	//	recv.RefSink()
+	//	runtime.SetFinalizer(recv, objectFinalizer)
+	//}
+
+	//if !recv.IsFloating() {
+	//	fmt.Printf("%p Ref \n", recv)
+	//	recv.Ref()
+	//	runtime.SetFinalizer(recv, objectFinalizer)
+	//}
+
 	if recv.IsFloating() {
+		fmt.Printf("%p RefSink\n", recv)
 		recv.RefSink()
 	} else {
+		fmt.Printf("%p Ref\n", recv)
 		recv.Ref()
 	}
 
-	runtime.SetFinalizer(recv, (*Object).Unref)
+	runtime.SetFinalizer(recv, objectFinalizer)
+}
+
+func objectFinalizer(o *Object) {
+	fmt.Printf("%p Unref (in finalizer)\n", o)
+	o.Unref()
 }

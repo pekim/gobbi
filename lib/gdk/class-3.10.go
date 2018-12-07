@@ -6,6 +6,7 @@ package gdk
 import (
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	glib "github.com/pekim/gobbi/lib/glib"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
 
@@ -31,6 +32,7 @@ func CursorNewFromSurface(display *Display, surface *cairo.Surface, x float64, y
 	c_y := (C.gdouble)(y)
 
 	retC := C.gdk_cursor_new_from_surface(c_display, c_surface, c_x, c_y)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := CursorNewFromC(unsafe.Pointer(retC))
 
 	return retGo

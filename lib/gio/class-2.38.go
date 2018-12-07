@@ -46,6 +46,7 @@ func BytesIconNew(bytes *glib.Bytes) *BytesIcon {
 	}
 
 	retC := C.g_bytes_icon_new(c_bytes)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := BytesIconNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -124,7 +125,6 @@ func PropertyActionNewFromC(u unsafe.Pointer) *PropertyAction {
 	}
 
 	g := &PropertyAction{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -161,6 +161,7 @@ func PropertyActionNew(name string, object uintptr, propertyName string) *Proper
 	defer C.free(unsafe.Pointer(c_property_name))
 
 	retC := C.g_property_action_new(c_name, c_object, c_property_name)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := PropertyActionNewFromC(unsafe.Pointer(retC))
 
 	return retGo

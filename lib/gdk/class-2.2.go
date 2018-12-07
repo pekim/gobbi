@@ -61,6 +61,7 @@ func CursorNewForDisplay(display *Display, cursorType CursorType) *Cursor {
 	c_cursor_type := (C.GdkCursorType)(cursorType)
 
 	retC := C.gdk_cursor_new_for_display(c_display, c_cursor_type)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := CursorNewFromC(unsafe.Pointer(retC))
 
 	return retGo

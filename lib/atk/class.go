@@ -89,7 +89,6 @@ func GObjectAccessibleNewFromC(u unsafe.Pointer) *GObjectAccessible {
 	}
 
 	g := &GObjectAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -149,7 +148,6 @@ func HyperlinkNewFromC(u unsafe.Pointer) *Hyperlink {
 	}
 
 	g := &Hyperlink{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -314,7 +312,6 @@ func MiscNewFromC(u unsafe.Pointer) *Misc {
 	}
 
 	g := &Misc{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -353,7 +350,6 @@ func NoOpObjectNewFromC(u unsafe.Pointer) *NoOpObject {
 	}
 
 	g := &NoOpObject{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -387,6 +383,7 @@ func NoOpObjectNew(obj *gobject.Object) *NoOpObject {
 	}
 
 	retC := C.atk_no_op_object_new(c_obj)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := NoOpObjectNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -465,7 +462,6 @@ func NoOpObjectFactoryNewFromC(u unsafe.Pointer) *NoOpObjectFactory {
 	}
 
 	g := &NoOpObjectFactory{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -499,6 +495,7 @@ func CastToNoOpObjectFactory(object *gobject.Object) *NoOpObjectFactory {
 // NoOpObjectFactoryNew is a wrapper around the C function atk_no_op_object_factory_new.
 func NoOpObjectFactoryNew() *NoOpObjectFactory {
 	retC := C.atk_no_op_object_factory_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := NoOpObjectFactoryNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1150,7 +1147,6 @@ func ObjectFactoryNewFromC(u unsafe.Pointer) *ObjectFactory {
 	}
 
 	g := &ObjectFactory{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -1217,7 +1213,6 @@ func PlugNewFromC(u unsafe.Pointer) *Plug {
 	}
 
 	g := &Plug{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -1246,6 +1241,7 @@ func CastToPlug(object *gobject.Object) *Plug {
 // PlugNew is a wrapper around the C function atk_plug_new.
 func PlugNew() *Plug {
 	retC := C.atk_plug_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := PlugNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1271,7 +1267,6 @@ func RegistryNewFromC(u unsafe.Pointer) *Registry {
 	}
 
 	g := &Registry{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -1346,7 +1341,6 @@ func RelationNewFromC(u unsafe.Pointer) *Relation {
 		Relationship: (RelationType)(c.relationship),
 		native:       c,
 	}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -1413,7 +1407,6 @@ func RelationSetNewFromC(u unsafe.Pointer) *RelationSet {
 	}
 
 	g := &RelationSet{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -1442,6 +1435,7 @@ func CastToRelationSet(object *gobject.Object) *RelationSet {
 // RelationSetNew is a wrapper around the C function atk_relation_set_new.
 func RelationSetNew() *RelationSet {
 	retC := C.atk_relation_set_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := RelationSetNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1538,7 +1532,6 @@ func SocketNewFromC(u unsafe.Pointer) *Socket {
 	}
 
 	g := &Socket{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -1567,6 +1560,7 @@ func CastToSocket(object *gobject.Object) *Socket {
 // SocketNew is a wrapper around the C function atk_socket_new.
 func SocketNew() *Socket {
 	retC := C.atk_socket_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := SocketNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1590,7 +1584,6 @@ func StateSetNewFromC(u unsafe.Pointer) *StateSet {
 	}
 
 	g := &StateSet{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -1619,6 +1612,7 @@ func CastToStateSet(object *gobject.Object) *StateSet {
 // StateSetNew is a wrapper around the C function atk_state_set_new.
 func StateSetNew() *StateSet {
 	retC := C.atk_state_set_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := StateSetNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1749,7 +1743,6 @@ func UtilNewFromC(u unsafe.Pointer) *Util {
 	}
 
 	g := &Util{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }

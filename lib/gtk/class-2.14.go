@@ -8,6 +8,7 @@ import (
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
 	gio "github.com/pekim/gobbi/lib/gio"
 	glib "github.com/pekim/gobbi/lib/glib"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	pango "github.com/pekim/gobbi/lib/pango"
 	"sync"
 	"unsafe"
@@ -455,6 +456,7 @@ func (recv *FontSelectionDialog) GetOkButton() *Widget {
 // HSVNew is a wrapper around the C function gtk_hsv_new.
 func HSVNew() *HSV {
 	retC := C.gtk_hsv_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := HSVNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -572,6 +574,7 @@ func IconInfoNewForPixbuf(iconTheme *IconTheme, pixbuf *gdkpixbuf.Pixbuf) *IconI
 	}
 
 	retC := C.gtk_icon_info_new_for_pixbuf(c_icon_theme, c_pixbuf)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := IconInfoNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -603,6 +606,7 @@ func ImageNewFromGicon(icon *gio.Icon, size IconSize) *Image {
 	c_size := (C.GtkIconSize)(size)
 
 	retC := C.gtk_image_new_from_gicon(c_icon, c_size)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ImageNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -687,6 +691,7 @@ func MountOperationNew(parent *Window) *MountOperation {
 	}
 
 	retC := C.gtk_mount_operation_new(c_parent)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := MountOperationNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -998,6 +1003,7 @@ func StatusIconNewFromGicon(icon *gio.Icon) *StatusIcon {
 	c_icon := (*C.GIcon)(icon.ToC())
 
 	retC := C.gtk_status_icon_new_from_gicon(c_icon)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := StatusIconNewFromC(unsafe.Pointer(retC))
 
 	return retGo

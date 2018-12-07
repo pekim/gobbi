@@ -137,7 +137,6 @@ func AppLaunchContextNewFromC(u unsafe.Pointer) *AppLaunchContext {
 	}
 
 	g := &AppLaunchContext{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -180,7 +179,6 @@ func CursorNewFromC(u unsafe.Pointer) *Cursor {
 	}
 
 	g := &Cursor{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -211,6 +209,7 @@ func CursorNew(cursorType CursorType) *Cursor {
 	c_cursor_type := (C.GdkCursorType)(cursorType)
 
 	retC := C.gdk_cursor_new(c_cursor_type)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := CursorNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -243,7 +242,6 @@ func DeviceNewFromC(u unsafe.Pointer) *Device {
 	}
 
 	g := &Device{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -435,7 +433,6 @@ func DeviceManagerNewFromC(u unsafe.Pointer) *DeviceManager {
 	}
 
 	g := &DeviceManager{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -659,7 +656,6 @@ func DisplayNewFromC(u unsafe.Pointer) *Display {
 	}
 
 	g := &Display{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -783,7 +779,6 @@ func DisplayManagerNewFromC(u unsafe.Pointer) *DisplayManager {
 	}
 
 	g := &DisplayManager{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -821,7 +816,6 @@ func DragContextNewFromC(u unsafe.Pointer) *DragContext {
 	}
 
 	g := &DragContext{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -879,7 +873,6 @@ func FrameClockNewFromC(u unsafe.Pointer) *FrameClock {
 	}
 
 	g := &FrameClock{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -1337,7 +1330,6 @@ func GLContextNewFromC(u unsafe.Pointer) *GLContext {
 	}
 
 	g := &GLContext{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -1375,7 +1367,6 @@ func KeymapNewFromC(u unsafe.Pointer) *Keymap {
 	}
 
 	g := &Keymap{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -1448,7 +1439,6 @@ func ScreenNewFromC(u unsafe.Pointer) *Screen {
 	}
 
 	g := &Screen{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -1518,7 +1508,6 @@ func VisualNewFromC(u unsafe.Pointer) *Visual {
 	}
 
 	g := &Visual{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -1625,7 +1614,6 @@ func WindowNewFromC(u unsafe.Pointer) *Window {
 	}
 
 	g := &Window{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -1666,6 +1654,7 @@ func WindowNew(parent *Window, attributes *WindowAttr, attributesMask int32) *Wi
 	c_attributes_mask := (C.gint)(attributesMask)
 
 	retC := C.gdk_window_new(c_parent, c_attributes, c_attributes_mask)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := WindowNewFromC(unsafe.Pointer(retC))
 
 	return retGo

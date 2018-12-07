@@ -22,7 +22,6 @@ func BindingNewFromC(u unsafe.Pointer) *Binding {
 	}
 
 	g := &Binding{native: c}
-	ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }

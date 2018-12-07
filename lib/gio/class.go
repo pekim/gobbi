@@ -200,7 +200,6 @@ func AppLaunchContextNewFromC(u unsafe.Pointer) *AppLaunchContext {
 	}
 
 	g := &AppLaunchContext{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -229,6 +228,7 @@ func CastToAppLaunchContext(object *gobject.Object) *AppLaunchContext {
 // AppLaunchContextNew is a wrapper around the C function g_app_launch_context_new.
 func AppLaunchContextNew() *AppLaunchContext {
 	retC := C.g_app_launch_context_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := AppLaunchContextNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -290,7 +290,6 @@ func ApplicationCommandLineNewFromC(u unsafe.Pointer) *ApplicationCommandLine {
 	}
 
 	g := &ApplicationCommandLine{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -330,7 +329,6 @@ func BufferedInputStreamNewFromC(u unsafe.Pointer) *BufferedInputStream {
 	}
 
 	g := &BufferedInputStream{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -374,6 +372,7 @@ func BufferedInputStreamNew(baseStream *InputStream) *BufferedInputStream {
 	}
 
 	retC := C.g_buffered_input_stream_new(c_base_stream)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := BufferedInputStreamNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -389,6 +388,7 @@ func BufferedInputStreamNewSized(baseStream *InputStream, size uint64) *Buffered
 	c_size := (C.gsize)(size)
 
 	retC := C.g_buffered_input_stream_new_sized(c_base_stream, c_size)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := BufferedInputStreamNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -515,7 +515,6 @@ func BufferedOutputStreamNewFromC(u unsafe.Pointer) *BufferedOutputStream {
 	}
 
 	g := &BufferedOutputStream{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -559,6 +558,7 @@ func BufferedOutputStreamNew(baseStream *OutputStream) *BufferedOutputStream {
 	}
 
 	retC := C.g_buffered_output_stream_new(c_base_stream)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := BufferedOutputStreamNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -574,6 +574,7 @@ func BufferedOutputStreamNewSized(baseStream *OutputStream, size uint64) *Buffer
 	c_size := (C.gsize)(size)
 
 	retC := C.g_buffered_output_stream_new_sized(c_base_stream, c_size)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := BufferedOutputStreamNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -631,7 +632,6 @@ func BytesIconNewFromC(u unsafe.Pointer) *BytesIcon {
 	}
 
 	g := &BytesIcon{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -681,7 +681,6 @@ func CancellableNewFromC(u unsafe.Pointer) *Cancellable {
 	}
 
 	g := &Cancellable{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -770,6 +769,7 @@ func cancellable_cancelledHandler(_ *C.GObject, data C.gpointer) {
 // CancellableNew is a wrapper around the C function g_cancellable_new.
 func CancellableNew() *Cancellable {
 	retC := C.g_cancellable_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := CancellableNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -859,7 +859,6 @@ func CharsetConverterNewFromC(u unsafe.Pointer) *CharsetConverter {
 	}
 
 	g := &CharsetConverter{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -909,7 +908,6 @@ func ConverterInputStreamNewFromC(u unsafe.Pointer) *ConverterInputStream {
 	}
 
 	g := &ConverterInputStream{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -955,6 +953,7 @@ func ConverterInputStreamNew(baseStream *InputStream, converter *Converter) *Con
 	c_converter := (*C.GConverter)(converter.ToC())
 
 	retC := C.g_converter_input_stream_new(c_base_stream, c_converter)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ConverterInputStreamNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -979,7 +978,6 @@ func ConverterOutputStreamNewFromC(u unsafe.Pointer) *ConverterOutputStream {
 	}
 
 	g := &ConverterOutputStream{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -1025,6 +1023,7 @@ func ConverterOutputStreamNew(baseStream *OutputStream, converter *Converter) *C
 	c_converter := (*C.GConverter)(converter.ToC())
 
 	retC := C.g_converter_output_stream_new(c_base_stream, c_converter)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ConverterOutputStreamNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1047,7 +1046,6 @@ func DBusActionGroupNewFromC(u unsafe.Pointer) *DBusActionGroup {
 	}
 
 	g := &DBusActionGroup{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -1095,7 +1093,6 @@ func DBusMenuModelNewFromC(u unsafe.Pointer) *DBusMenuModel {
 	}
 
 	g := &DBusMenuModel{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -1140,7 +1137,6 @@ func DataInputStreamNewFromC(u unsafe.Pointer) *DataInputStream {
 	}
 
 	g := &DataInputStream{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -1189,6 +1185,7 @@ func DataInputStreamNew(baseStream *InputStream) *DataInputStream {
 	}
 
 	retC := C.g_data_input_stream_new(c_base_stream)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := DataInputStreamNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1417,7 +1414,6 @@ func DataOutputStreamNewFromC(u unsafe.Pointer) *DataOutputStream {
 	}
 
 	g := &DataOutputStream{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -1461,6 +1457,7 @@ func DataOutputStreamNew(baseStream *OutputStream) *DataOutputStream {
 	}
 
 	retC := C.g_data_output_stream_new(c_base_stream)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := DataOutputStreamNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1677,7 +1674,6 @@ func DesktopAppInfoNewFromC(u unsafe.Pointer) *DesktopAppInfo {
 	}
 
 	g := &DesktopAppInfo{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -1709,6 +1705,7 @@ func DesktopAppInfoNew(desktopId string) *DesktopAppInfo {
 	defer C.free(unsafe.Pointer(c_desktop_id))
 
 	retC := C.g_desktop_app_info_new(c_desktop_id)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := DesktopAppInfoNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1720,6 +1717,7 @@ func DesktopAppInfoNewFromFilename(filename string) *DesktopAppInfo {
 	defer C.free(unsafe.Pointer(c_filename))
 
 	retC := C.g_desktop_app_info_new_from_filename(c_filename)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := DesktopAppInfoNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1779,7 +1777,6 @@ func EmblemNewFromC(u unsafe.Pointer) *Emblem {
 	}
 
 	g := &Emblem{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -1824,7 +1821,6 @@ func EmblemedIconNewFromC(u unsafe.Pointer) *EmblemedIcon {
 	}
 
 	g := &EmblemedIcon{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -1869,7 +1865,6 @@ func FileEnumeratorNewFromC(u unsafe.Pointer) *FileEnumerator {
 	}
 
 	g := &FileEnumerator{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -2018,7 +2013,6 @@ func FileIOStreamNewFromC(u unsafe.Pointer) *FileIOStream {
 	}
 
 	g := &FileIOStream{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -2066,7 +2060,6 @@ func FileIconNewFromC(u unsafe.Pointer) *FileIcon {
 	}
 
 	g := &FileIcon{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -2097,6 +2090,7 @@ func FileIconNew(file *File) *FileIcon {
 	c_file := (*C.GFile)(file.ToC())
 
 	retC := C.g_file_icon_new(c_file)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := FileIconNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -2132,7 +2126,6 @@ func FileInfoNewFromC(u unsafe.Pointer) *FileInfo {
 	}
 
 	g := &FileInfo{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -2161,6 +2154,7 @@ func CastToFileInfo(object *gobject.Object) *FileInfo {
 // FileInfoNew is a wrapper around the C function g_file_info_new.
 func FileInfoNew() *FileInfo {
 	retC := C.g_file_info_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := FileInfoNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -2724,7 +2718,6 @@ func FileInputStreamNewFromC(u unsafe.Pointer) *FileInputStream {
 	}
 
 	g := &FileInputStream{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -2816,7 +2809,6 @@ func FileMonitorNewFromC(u unsafe.Pointer) *FileMonitor {
 	}
 
 	g := &FileMonitor{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -2896,7 +2888,6 @@ func FileOutputStreamNewFromC(u unsafe.Pointer) *FileOutputStream {
 	}
 
 	g := &FileOutputStream{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -2995,7 +2986,6 @@ func FilenameCompleterNewFromC(u unsafe.Pointer) *FilenameCompleter {
 	}
 
 	g := &FilenameCompleter{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -3084,6 +3074,7 @@ func filenamecompleter_gotCompletionDataHandler(_ *C.GObject, data C.gpointer) {
 // FilenameCompleterNew is a wrapper around the C function g_filename_completer_new.
 func FilenameCompleterNew() *FilenameCompleter {
 	retC := C.g_filename_completer_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := FilenameCompleterNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -3127,7 +3118,6 @@ func FilterInputStreamNewFromC(u unsafe.Pointer) *FilterInputStream {
 	}
 
 	g := &FilterInputStream{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -3198,7 +3188,6 @@ func FilterOutputStreamNewFromC(u unsafe.Pointer) *FilterOutputStream {
 	}
 
 	g := &FilterOutputStream{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -3267,7 +3256,6 @@ func IOModuleNewFromC(u unsafe.Pointer) *IOModule {
 	}
 
 	g := &IOModule{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -3294,6 +3282,7 @@ func IOModuleNew(filename string) *IOModule {
 	defer C.free(unsafe.Pointer(c_filename))
 
 	retC := C.g_io_module_new(c_filename)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := IOModuleNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -3322,7 +3311,6 @@ func IOStreamNewFromC(u unsafe.Pointer) *IOStream {
 	}
 
 	g := &IOStream{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -3362,7 +3350,6 @@ func InetAddressNewFromC(u unsafe.Pointer) *InetAddress {
 	}
 
 	g := &InetAddress{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -3402,7 +3389,6 @@ func InetSocketAddressNewFromC(u unsafe.Pointer) *InetSocketAddress {
 	}
 
 	g := &InetSocketAddress{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -3452,7 +3438,6 @@ func InputStreamNewFromC(u unsafe.Pointer) *InputStream {
 	}
 
 	g := &InputStream{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -3679,7 +3664,6 @@ func ListStoreNewFromC(u unsafe.Pointer) *ListStore {
 	}
 
 	g := &ListStore{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -3724,7 +3708,6 @@ func MemoryInputStreamNewFromC(u unsafe.Pointer) *MemoryInputStream {
 	}
 
 	g := &MemoryInputStream{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -3758,6 +3741,7 @@ func CastToMemoryInputStream(object *gobject.Object) *MemoryInputStream {
 // MemoryInputStreamNew is a wrapper around the C function g_memory_input_stream_new.
 func MemoryInputStreamNew() *MemoryInputStream {
 	retC := C.g_memory_input_stream_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := MemoryInputStreamNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -3791,7 +3775,6 @@ func MemoryOutputStreamNewFromC(u unsafe.Pointer) *MemoryOutputStream {
 	}
 
 	g := &MemoryOutputStream{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -3864,7 +3847,6 @@ func MountOperationNewFromC(u unsafe.Pointer) *MountOperation {
 	}
 
 	g := &MountOperation{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -3899,6 +3881,7 @@ func CastToMountOperation(object *gobject.Object) *MountOperation {
 // MountOperationNew is a wrapper around the C function g_mount_operation_new.
 func MountOperationNew() *MountOperation {
 	retC := C.g_mount_operation_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := MountOperationNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -4032,7 +4015,6 @@ func NativeVolumeMonitorNewFromC(u unsafe.Pointer) *NativeVolumeMonitor {
 	}
 
 	g := &NativeVolumeMonitor{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -4077,7 +4059,6 @@ func NetworkAddressNewFromC(u unsafe.Pointer) *NetworkAddress {
 	}
 
 	g := &NetworkAddress{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -4122,7 +4103,6 @@ func NetworkServiceNewFromC(u unsafe.Pointer) *NetworkService {
 	}
 
 	g := &NetworkService{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -4167,7 +4147,6 @@ func OutputStreamNewFromC(u unsafe.Pointer) *OutputStream {
 	}
 
 	g := &OutputStream{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -4461,7 +4440,6 @@ func PermissionNewFromC(u unsafe.Pointer) *Permission {
 	}
 
 	g := &Permission{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -4501,7 +4479,6 @@ func ProxyAddressEnumeratorNewFromC(u unsafe.Pointer) *ProxyAddressEnumerator {
 	}
 
 	g := &ProxyAddressEnumerator{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -4546,7 +4523,6 @@ func ResolverNewFromC(u unsafe.Pointer) *Resolver {
 	}
 
 	g := &Resolver{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -4646,7 +4622,6 @@ func SettingsNewFromC(u unsafe.Pointer) *Settings {
 	}
 
 	g := &Settings{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -4940,7 +4915,6 @@ func SettingsBackendNewFromC(u unsafe.Pointer) *SettingsBackend {
 	}
 
 	g := &SettingsBackend{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -4978,7 +4952,6 @@ func SimpleActionNewFromC(u unsafe.Pointer) *SimpleAction {
 	}
 
 	g := &SimpleAction{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -5021,7 +4994,6 @@ func SimpleAsyncResultNewFromC(u unsafe.Pointer) *SimpleAsyncResult {
 	}
 
 	g := &SimpleAsyncResult{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -5180,7 +5152,6 @@ func SimplePermissionNewFromC(u unsafe.Pointer) *SimplePermission {
 	}
 
 	g := &SimplePermission{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -5225,7 +5196,6 @@ func SimpleProxyResolverNewFromC(u unsafe.Pointer) *SimpleProxyResolver {
 	}
 
 	g := &SimpleProxyResolver{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -5269,7 +5239,6 @@ func SocketAddressNewFromC(u unsafe.Pointer) *SocketAddress {
 	}
 
 	g := &SocketAddress{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -5313,7 +5282,6 @@ func SocketAddressEnumeratorNewFromC(u unsafe.Pointer) *SocketAddressEnumerator 
 	}
 
 	g := &SocketAddressEnumerator{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -5392,7 +5360,6 @@ func SocketControlMessageNewFromC(u unsafe.Pointer) *SocketControlMessage {
 	}
 
 	g := &SocketControlMessage{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -5430,7 +5397,6 @@ func TaskNewFromC(u unsafe.Pointer) *Task {
 	}
 
 	g := &Task{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -5475,7 +5441,6 @@ func TcpWrapperConnectionNewFromC(u unsafe.Pointer) *TcpWrapperConnection {
 	}
 
 	g := &TcpWrapperConnection{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -5536,7 +5501,6 @@ func ThemedIconNewFromC(u unsafe.Pointer) *ThemedIcon {
 	}
 
 	g := &ThemedIcon{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -5568,6 +5532,7 @@ func ThemedIconNew(iconname string) *ThemedIcon {
 	defer C.free(unsafe.Pointer(c_iconname))
 
 	retC := C.g_themed_icon_new(c_iconname)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ThemedIconNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -5581,6 +5546,7 @@ func ThemedIconNewWithDefaultFallbacks(iconname string) *ThemedIcon {
 	defer C.free(unsafe.Pointer(c_iconname))
 
 	retC := C.g_themed_icon_new_with_default_fallbacks(c_iconname)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ThemedIconNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -5617,7 +5583,6 @@ func UnixConnectionNewFromC(u unsafe.Pointer) *UnixConnection {
 	}
 
 	g := &UnixConnection{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -5667,7 +5632,6 @@ func UnixFDListNewFromC(u unsafe.Pointer) *UnixFDList {
 	}
 
 	g := &UnixFDList{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -5707,7 +5671,6 @@ func UnixFDMessageNewFromC(u unsafe.Pointer) *UnixFDMessage {
 	}
 
 	g := &UnixFDMessage{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -5752,7 +5715,6 @@ func UnixInputStreamNewFromC(u unsafe.Pointer) *UnixInputStream {
 	}
 
 	g := &UnixInputStream{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -5791,6 +5753,7 @@ func UnixInputStreamNew(fd int32, closeFd bool) *UnixInputStream {
 		boolToGboolean(closeFd)
 
 	retC := C.g_unix_input_stream_new(c_fd, c_close_fd)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := UnixInputStreamNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -5818,7 +5781,6 @@ func UnixMountMonitorNewFromC(u unsafe.Pointer) *UnixMountMonitor {
 	}
 
 	g := &UnixMountMonitor{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -5967,6 +5929,7 @@ func unixmountmonitor_mountsChangedHandler(_ *C.GObject, data C.gpointer) {
 // UnixMountMonitorNew is a wrapper around the C function g_unix_mount_monitor_new.
 func UnixMountMonitorNew() *UnixMountMonitor {
 	retC := C.g_unix_mount_monitor_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := UnixMountMonitorNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -5986,7 +5949,6 @@ func UnixOutputStreamNewFromC(u unsafe.Pointer) *UnixOutputStream {
 	}
 
 	g := &UnixOutputStream{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -6025,6 +5987,7 @@ func UnixOutputStreamNew(fd int32, closeFd bool) *UnixOutputStream {
 		boolToGboolean(closeFd)
 
 	retC := C.g_unix_output_stream_new(c_fd, c_close_fd)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := UnixOutputStreamNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -6054,7 +6017,6 @@ func UnixSocketAddressNewFromC(u unsafe.Pointer) *UnixSocketAddress {
 	}
 
 	g := &UnixSocketAddress{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -6092,6 +6054,7 @@ func UnixSocketAddressNewAbstract(path []rune) *UnixSocketAddress {
 	c_path_len := (C.gint)(len(path))
 
 	retC := C.g_unix_socket_address_new_abstract((*C.gchar)(unsafe.Pointer(c_path)), c_path_len)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := UnixSocketAddressNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -6115,7 +6078,6 @@ func VfsNewFromC(u unsafe.Pointer) *Vfs {
 	}
 
 	g := &Vfs{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -6214,7 +6176,6 @@ func VolumeMonitorNewFromC(u unsafe.Pointer) *VolumeMonitor {
 	}
 
 	g := &VolumeMonitor{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -6936,7 +6897,6 @@ func ZlibCompressorNewFromC(u unsafe.Pointer) *ZlibCompressor {
 	}
 
 	g := &ZlibCompressor{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -6979,7 +6939,6 @@ func ZlibDecompressorNewFromC(u unsafe.Pointer) *ZlibDecompressor {
 	}
 
 	g := &ZlibDecompressor{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }

@@ -6,6 +6,7 @@ package gdk
 import (
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
 
@@ -25,6 +26,7 @@ func CursorNewFromName(display *Display, name string) *Cursor {
 	defer C.free(unsafe.Pointer(c_name))
 
 	retC := C.gdk_cursor_new_from_name(c_display, c_name)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	var retGo (*Cursor)
 	if retC == nil {
 		retGo = nil

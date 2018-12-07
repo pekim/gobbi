@@ -25,7 +25,6 @@ func ContextNewFromC(u unsafe.Pointer) *Context {
 	}
 
 	g := &Context{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -54,6 +53,7 @@ func CastToContext(object *gobject.Object) *Context {
 // ContextNew is a wrapper around the C function pango_context_new.
 func ContextNew() *Context {
 	retC := C.pango_context_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ContextNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -188,7 +188,6 @@ func EngineLangNewFromC(u unsafe.Pointer) *EngineLang {
 	}
 
 	g := &EngineLang{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -222,7 +221,6 @@ func EngineShapeNewFromC(u unsafe.Pointer) *EngineShape {
 	}
 
 	g := &EngineShape{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -256,7 +254,6 @@ func FontNewFromC(u unsafe.Pointer) *Font {
 	}
 
 	g := &Font{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -351,7 +348,6 @@ func FontFaceNewFromC(u unsafe.Pointer) *FontFace {
 	}
 
 	g := &FontFace{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -406,7 +402,6 @@ func FontFamilyNewFromC(u unsafe.Pointer) *FontFamily {
 	}
 
 	g := &FontFamily{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -455,7 +450,6 @@ func FontMapNewFromC(u unsafe.Pointer) *FontMap {
 	}
 
 	g := &FontMap{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -547,7 +541,6 @@ func FontsetNewFromC(u unsafe.Pointer) *Fontset {
 	}
 
 	g := &Fontset{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -599,7 +592,6 @@ func LayoutNewFromC(u unsafe.Pointer) *Layout {
 	}
 
 	g := &Layout{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -633,6 +625,7 @@ func LayoutNew(context *Context) *Layout {
 	}
 
 	retC := C.pango_layout_new(c_context)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := LayoutNewFromC(unsafe.Pointer(retC))
 
 	return retGo

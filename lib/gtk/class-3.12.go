@@ -6,6 +6,7 @@ package gtk
 import (
 	gio "github.com/pekim/gobbi/lib/gio"
 	glib "github.com/pekim/gobbi/lib/glib"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
 
@@ -21,6 +22,7 @@ import "C"
 // ActionBarNew is a wrapper around the C function gtk_action_bar_new.
 func ActionBarNew() *ActionBar {
 	retC := C.gtk_action_bar_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ActionBarNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -134,6 +136,7 @@ func (recv *Entry) SetMaxWidthChars(nChars int32) {
 // FlowBoxNew is a wrapper around the C function gtk_flow_box_new.
 func FlowBoxNew() *FlowBox {
 	retC := C.gtk_flow_box_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := FlowBoxNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -382,6 +385,7 @@ func (recv *FlowBox) UnselectChild(child *FlowBoxChild) {
 // FlowBoxChildNew is a wrapper around the C function gtk_flow_box_child_new.
 func FlowBoxChildNew() *FlowBoxChild {
 	retC := C.gtk_flow_box_child_new()
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := FlowBoxChildNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -523,6 +527,7 @@ func PopoverNew(relativeTo *Widget) *Popover {
 	}
 
 	retC := C.gtk_popover_new(c_relative_to)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := PopoverNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -541,6 +546,7 @@ func PopoverNewFromModel(relativeTo *Widget, model *gio.MenuModel) *Popover {
 	}
 
 	retC := C.gtk_popover_new_from_model(c_relative_to, c_model)
+	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := PopoverNewFromC(unsafe.Pointer(retC))
 
 	return retGo
