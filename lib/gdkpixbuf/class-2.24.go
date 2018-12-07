@@ -6,7 +6,6 @@ package gdkpixbuf
 import (
 	gio "github.com/pekim/gobbi/lib/gio"
 	glib "github.com/pekim/gobbi/lib/glib"
-	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
 
@@ -22,7 +21,6 @@ func PixbufNewFromStreamFinish(asyncResult *gio.AsyncResult) (*Pixbuf, error) {
 	var cThrowableError *C.GError
 
 	retC := C.gdk_pixbuf_new_from_stream_finish(c_async_result, &cThrowableError)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := PixbufNewFromC(unsafe.Pointer(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))

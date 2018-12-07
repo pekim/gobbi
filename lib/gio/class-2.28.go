@@ -431,7 +431,6 @@ func ApplicationNew(applicationId string, flags ApplicationFlags) *Application {
 	c_flags := (C.GApplicationFlags)(flags)
 
 	retC := C.g_application_new(c_application_id, c_flags)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ApplicationNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -720,7 +719,6 @@ func CastToSimpleActionGroup(object *gobject.Object) *SimpleActionGroup {
 // SimpleActionGroupNew is a wrapper around the C function g_simple_action_group_new.
 func SimpleActionGroupNew() *SimpleActionGroup {
 	retC := C.g_simple_action_group_new()
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := SimpleActionGroupNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -818,7 +816,6 @@ func TcpWrapperConnectionNew(baseIoStream *IOStream, socket *Socket) *TcpWrapper
 	}
 
 	retC := C.g_tcp_wrapper_connection_new(c_base_io_stream, c_socket)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := TcpWrapperConnectionNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -871,7 +868,6 @@ func TlsCertificateNewFromFile(file string) (*TlsCertificate, error) {
 	var cThrowableError *C.GError
 
 	retC := C.g_tls_certificate_new_from_file(c_file, &cThrowableError)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := TlsCertificateNewFromC(unsafe.Pointer(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
@@ -893,7 +889,6 @@ func TlsCertificateNewFromFiles(certFile string, keyFile string) (*TlsCertificat
 	var cThrowableError *C.GError
 
 	retC := C.g_tls_certificate_new_from_files(c_cert_file, c_key_file, &cThrowableError)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := TlsCertificateNewFromC(unsafe.Pointer(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
@@ -914,7 +909,6 @@ func TlsCertificateNewFromPem(data string) (*TlsCertificate, error) {
 	var cThrowableError *C.GError
 
 	retC := C.g_tls_certificate_new_from_pem(c_data, c_length, &cThrowableError)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := TlsCertificateNewFromC(unsafe.Pointer(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))

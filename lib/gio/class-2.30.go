@@ -217,7 +217,6 @@ func DBusObjectManagerClientNewFinish(res *AsyncResult) (*DBusObjectManagerClien
 	var cThrowableError *C.GError
 
 	retC := C.g_dbus_object_manager_client_new_finish(c_res, &cThrowableError)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := DBusObjectManagerClientNewFromC(unsafe.Pointer(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
@@ -235,7 +234,6 @@ func DBusObjectManagerClientNewForBusFinish(res *AsyncResult) (*DBusObjectManage
 	var cThrowableError *C.GError
 
 	retC := C.g_dbus_object_manager_client_new_for_bus_finish(c_res, &cThrowableError)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := DBusObjectManagerClientNewFromC(unsafe.Pointer(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
@@ -330,7 +328,6 @@ func DBusObjectManagerServerNew(objectPath string) *DBusObjectManagerServer {
 	defer C.free(unsafe.Pointer(c_object_path))
 
 	retC := C.g_dbus_object_manager_server_new(c_object_path)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := DBusObjectManagerServerNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -441,7 +438,6 @@ func DBusObjectProxyNew(connection *DBusConnection, objectPath string) *DBusObje
 	defer C.free(unsafe.Pointer(c_object_path))
 
 	retC := C.g_dbus_object_proxy_new(c_connection, c_object_path)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := DBusObjectProxyNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -500,7 +496,6 @@ func DBusObjectSkeletonNew(objectPath string) *DBusObjectSkeleton {
 	defer C.free(unsafe.Pointer(c_object_path))
 
 	retC := C.g_dbus_object_skeleton_new(c_object_path)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := DBusObjectSkeletonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1129,7 +1124,6 @@ func TlsPasswordNew(flags TlsPasswordFlags, description string) *TlsPassword {
 	defer C.free(unsafe.Pointer(c_description))
 
 	retC := C.g_tls_password_new(c_flags, c_description)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := TlsPasswordNewFromC(unsafe.Pointer(retC))
 
 	return retGo

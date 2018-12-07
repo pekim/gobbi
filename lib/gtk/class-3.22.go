@@ -6,7 +6,6 @@ package gtk
 import (
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gio "github.com/pekim/gobbi/lib/gio"
-	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
 	"unsafe"
 )
@@ -152,7 +151,6 @@ func PadControllerNew(window *Window, group *gio.ActionGroup, pad *gdk.Device) *
 	}
 
 	retC := C.gtk_pad_controller_new(c_window, c_group, c_pad)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := PadControllerNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -277,7 +275,6 @@ func ShortcutLabelNew(accelerator string) *ShortcutLabel {
 	defer C.free(unsafe.Pointer(c_accelerator))
 
 	retC := C.gtk_shortcut_label_new(c_accelerator)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ShortcutLabelNewFromC(unsafe.Pointer(retC))
 
 	return retGo

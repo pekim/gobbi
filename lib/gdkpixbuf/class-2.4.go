@@ -5,7 +5,6 @@ package gdkpixbuf
 
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
-	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
 
@@ -26,7 +25,6 @@ func PixbufNewFromFileAtSize(filename string, width int32, height int32) (*Pixbu
 	var cThrowableError *C.GError
 
 	retC := C.gdk_pixbuf_new_from_file_at_size(c_filename, c_width, c_height, &cThrowableError)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := PixbufNewFromC(unsafe.Pointer(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
@@ -77,7 +75,6 @@ func PixbufLoaderNewWithMimeType(mimeType string) (*PixbufLoader, error) {
 	var cThrowableError *C.GError
 
 	retC := C.gdk_pixbuf_loader_new_with_mime_type(c_mime_type, &cThrowableError)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := PixbufLoaderNewFromC(unsafe.Pointer(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))

@@ -138,7 +138,6 @@ func (recv *Action) CreateMenu() *Widget {
 // BuilderNew is a wrapper around the C function gtk_builder_new.
 func BuilderNew() *Builder {
 	retC := C.gtk_builder_new()
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := BuilderNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -851,7 +850,6 @@ func PageSetupNewFromFile(fileName string) (*PageSetup, error) {
 	var cThrowableError *C.GError
 
 	retC := C.gtk_page_setup_new_from_file(c_file_name, &cThrowableError)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := PageSetupNewFromC(unsafe.Pointer(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
@@ -875,7 +873,6 @@ func PageSetupNewFromKeyFile(keyFile *glib.KeyFile, groupName string) (*PageSetu
 	var cThrowableError *C.GError
 
 	retC := C.gtk_page_setup_new_from_key_file(c_key_file, c_group_name, &cThrowableError)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := PageSetupNewFromC(unsafe.Pointer(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
@@ -927,7 +924,6 @@ func PrintSettingsNewFromFile(fileName string) (*PrintSettings, error) {
 	var cThrowableError *C.GError
 
 	retC := C.gtk_print_settings_new_from_file(c_file_name, &cThrowableError)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := PrintSettingsNewFromC(unsafe.Pointer(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
@@ -951,7 +947,6 @@ func PrintSettingsNewFromKeyFile(keyFile *glib.KeyFile, groupName string) (*Prin
 	var cThrowableError *C.GError
 
 	retC := C.gtk_print_settings_new_from_key_file(c_key_file, c_group_name, &cThrowableError)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := PrintSettingsNewFromC(unsafe.Pointer(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
@@ -1063,7 +1058,6 @@ func RecentActionNew(name string, label string, tooltip string, stockId string) 
 	defer C.free(unsafe.Pointer(c_stock_id))
 
 	retC := C.gtk_recent_action_new(c_name, c_label, c_tooltip, c_stock_id)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := RecentActionNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1089,7 +1083,6 @@ func RecentActionNewForManager(name string, label string, tooltip string, stockI
 	}
 
 	retC := C.gtk_recent_action_new_for_manager(c_name, c_label, c_tooltip, c_stock_id, c_manager)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := RecentActionNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1382,7 +1375,6 @@ func TextMarkNew(name string, leftGravity bool) *TextMark {
 		boolToGboolean(leftGravity)
 
 	retC := C.gtk_text_mark_new(c_name, c_left_gravity)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := TextMarkNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1741,7 +1733,6 @@ func (recv *TreeViewColumn) GetTreeView() *Widget {
 // VolumeButtonNew is a wrapper around the C function gtk_volume_button_new.
 func VolumeButtonNew() *VolumeButton {
 	retC := C.gtk_volume_button_new()
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := VolumeButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo

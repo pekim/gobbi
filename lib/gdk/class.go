@@ -209,7 +209,6 @@ func CursorNew(cursorType CursorType) *Cursor {
 	c_cursor_type := (C.GdkCursorType)(cursorType)
 
 	retC := C.gdk_cursor_new(c_cursor_type)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := CursorNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1654,7 +1653,6 @@ func WindowNew(parent *Window, attributes *WindowAttr, attributesMask int32) *Wi
 	c_attributes_mask := (C.gint)(attributesMask)
 
 	retC := C.gdk_window_new(c_parent, c_attributes, c_attributes_mask)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := WindowNewFromC(unsafe.Pointer(retC))
 
 	return retGo

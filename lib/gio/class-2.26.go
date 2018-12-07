@@ -64,7 +64,6 @@ func CastToCredentials(object *gobject.Object) *Credentials {
 // CredentialsNew is a wrapper around the C function g_credentials_new.
 func CredentialsNew() *Credentials {
 	retC := C.g_credentials_new()
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := CredentialsNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -164,7 +163,6 @@ func CastToDBusAuthObserver(object *gobject.Object) *DBusAuthObserver {
 // DBusAuthObserverNew is a wrapper around the C function g_dbus_auth_observer_new.
 func DBusAuthObserverNew() *DBusAuthObserver {
 	retC := C.g_dbus_auth_observer_new()
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := DBusAuthObserverNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -232,7 +230,6 @@ func DBusConnectionNewFinish(res *AsyncResult) (*DBusConnection, error) {
 	var cThrowableError *C.GError
 
 	retC := C.g_dbus_connection_new_finish(c_res, &cThrowableError)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := DBusConnectionNewFromC(unsafe.Pointer(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
@@ -250,7 +247,6 @@ func DBusConnectionNewForAddressFinish(res *AsyncResult) (*DBusConnection, error
 	var cThrowableError *C.GError
 
 	retC := C.g_dbus_connection_new_for_address_finish(c_res, &cThrowableError)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := DBusConnectionNewFromC(unsafe.Pointer(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
@@ -281,7 +277,6 @@ func DBusConnectionNewForAddressSync(address string, flags DBusConnectionFlags, 
 	var cThrowableError *C.GError
 
 	retC := C.g_dbus_connection_new_for_address_sync(c_address, c_flags, c_observer, c_cancellable, &cThrowableError)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := DBusConnectionNewFromC(unsafe.Pointer(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
@@ -317,7 +312,6 @@ func DBusConnectionNewSync(stream *IOStream, guid string, flags DBusConnectionFl
 	var cThrowableError *C.GError
 
 	retC := C.g_dbus_connection_new_sync(c_stream, c_guid, c_flags, c_observer, c_cancellable, &cThrowableError)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := DBusConnectionNewFromC(unsafe.Pointer(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
@@ -658,7 +652,6 @@ func CastToDBusMessage(object *gobject.Object) *DBusMessage {
 // DBusMessageNew is a wrapper around the C function g_dbus_message_new.
 func DBusMessageNew() *DBusMessage {
 	retC := C.g_dbus_message_new()
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := DBusMessageNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -675,7 +668,6 @@ func DBusMessageNewFromBlob(blob []uint8, capabilities DBusCapabilityFlags) (*DB
 	var cThrowableError *C.GError
 
 	retC := C.g_dbus_message_new_from_blob((*C.guchar)(unsafe.Pointer(c_blob)), c_blob_len, c_capabilities, &cThrowableError)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := DBusMessageNewFromC(unsafe.Pointer(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
@@ -701,7 +693,6 @@ func DBusMessageNewMethodCall(name string, path string, interface_ string, metho
 	defer C.free(unsafe.Pointer(c_method))
 
 	retC := C.g_dbus_message_new_method_call(c_name, c_path, c_interface_, c_method)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := DBusMessageNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -719,7 +710,6 @@ func DBusMessageNewSignal(path string, interface_ string, signal string) *DBusMe
 	defer C.free(unsafe.Pointer(c_signal))
 
 	retC := C.g_dbus_message_new_signal(c_path, c_interface_, c_signal)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := DBusMessageNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1288,7 +1278,6 @@ func DBusProxyNewFinish(res *AsyncResult) (*DBusProxy, error) {
 	var cThrowableError *C.GError
 
 	retC := C.g_dbus_proxy_new_finish(c_res, &cThrowableError)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := DBusProxyNewFromC(unsafe.Pointer(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
@@ -1306,7 +1295,6 @@ func DBusProxyNewForBusFinish(res *AsyncResult) (*DBusProxy, error) {
 	var cThrowableError *C.GError
 
 	retC := C.g_dbus_proxy_new_for_bus_finish(c_res, &cThrowableError)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := DBusProxyNewFromC(unsafe.Pointer(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
@@ -1345,7 +1333,6 @@ func DBusProxyNewForBusSync(busType BusType, flags DBusProxyFlags, info *DBusInt
 	var cThrowableError *C.GError
 
 	retC := C.g_dbus_proxy_new_for_bus_sync(c_bus_type, c_flags, c_info, c_name, c_object_path, c_interface_name, c_cancellable, &cThrowableError)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := DBusProxyNewFromC(unsafe.Pointer(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
@@ -1387,7 +1374,6 @@ func DBusProxyNewSync(connection *DBusConnection, flags DBusProxyFlags, info *DB
 	var cThrowableError *C.GError
 
 	retC := C.g_dbus_proxy_new_sync(c_connection, c_flags, c_info, c_name, c_object_path, c_interface_name, c_cancellable, &cThrowableError)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := DBusProxyNewFromC(unsafe.Pointer(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
@@ -1563,7 +1549,6 @@ func DBusServerNewSync(address string, flags DBusServerFlags, guid string, obser
 	var cThrowableError *C.GError
 
 	retC := C.g_dbus_server_new_sync(c_address, c_flags, c_guid, c_observer, c_cancellable, &cThrowableError)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := DBusServerNewFromC(unsafe.Pointer(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
@@ -1897,7 +1882,6 @@ func ProxyAddressNew(inetaddr *InetAddress, port uint16, protocol string, destHo
 	defer C.free(unsafe.Pointer(c_password))
 
 	retC := C.g_proxy_address_new(c_inetaddr, c_port, c_protocol, c_dest_hostname, c_dest_port, c_username, c_password)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ProxyAddressNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1949,7 +1933,6 @@ func SettingsNew(schemaId string) *Settings {
 	defer C.free(unsafe.Pointer(c_schema_id))
 
 	retC := C.g_settings_new(c_schema_id)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := SettingsNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1966,7 +1949,6 @@ func SettingsNewWithBackend(schemaId string, backend *SettingsBackend) *Settings
 	}
 
 	retC := C.g_settings_new_with_backend(c_schema_id, c_backend)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := SettingsNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1986,7 +1968,6 @@ func SettingsNewWithBackendAndPath(schemaId string, backend *SettingsBackend, pa
 	defer C.free(unsafe.Pointer(c_path))
 
 	retC := C.g_settings_new_with_backend_and_path(c_schema_id, c_backend, c_path)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := SettingsNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -2001,7 +1982,6 @@ func SettingsNewWithPath(schemaId string, path string) *Settings {
 	defer C.free(unsafe.Pointer(c_path))
 
 	retC := C.g_settings_new_with_path(c_schema_id, c_path)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := SettingsNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -2246,7 +2226,6 @@ func SimplePermissionNew(allowed bool) *SimplePermission {
 		boolToGboolean(allowed)
 
 	retC := C.g_simple_permission_new(c_allowed)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := SimplePermissionNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -2504,7 +2483,6 @@ func CastToUnixCredentialsMessage(object *gobject.Object) *UnixCredentialsMessag
 // UnixCredentialsMessageNew is a wrapper around the C function g_unix_credentials_message_new.
 func UnixCredentialsMessageNew() *UnixCredentialsMessage {
 	retC := C.g_unix_credentials_message_new()
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := UnixCredentialsMessageNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -2518,7 +2496,6 @@ func UnixCredentialsMessageNewWithCredentials(credentials *Credentials) *UnixCre
 	}
 
 	retC := C.g_unix_credentials_message_new_with_credentials(c_credentials)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := UnixCredentialsMessageNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -2549,7 +2526,6 @@ func UnixSocketAddressNewWithType(path []rune, type_ UnixSocketAddressType) *Uni
 	c_type := (C.GUnixSocketAddressType)(type_)
 
 	retC := C.g_unix_socket_address_new_with_type((*C.gchar)(unsafe.Pointer(c_path)), c_path_len, c_type)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := UnixSocketAddressNewFromC(unsafe.Pointer(retC))
 
 	return retGo

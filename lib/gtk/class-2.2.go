@@ -6,7 +6,6 @@ package gtk
 import (
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	glib "github.com/pekim/gobbi/lib/glib"
-	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
 
@@ -35,7 +34,6 @@ func InvisibleNewForScreen(screen *gdk.Screen) *Invisible {
 	}
 
 	retC := C.gtk_invisible_new_for_screen(c_screen)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := InvisibleNewFromC(unsafe.Pointer(retC))
 
 	return retGo

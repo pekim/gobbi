@@ -6,7 +6,6 @@ package gdkpixbuf
 import (
 	gio "github.com/pekim/gobbi/lib/gio"
 	glib "github.com/pekim/gobbi/lib/glib"
-	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
 
@@ -23,7 +22,6 @@ func PixbufAnimationNewFromResource(resourcePath string) (*PixbufAnimation, erro
 	var cThrowableError *C.GError
 
 	retC := C.gdk_pixbuf_animation_new_from_resource(c_resource_path, &cThrowableError)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := PixbufAnimationNewFromC(unsafe.Pointer(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
@@ -49,7 +47,6 @@ func PixbufAnimationNewFromStream(stream *gio.InputStream, cancellable *gio.Canc
 	var cThrowableError *C.GError
 
 	retC := C.gdk_pixbuf_animation_new_from_stream(c_stream, c_cancellable, &cThrowableError)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := PixbufAnimationNewFromC(unsafe.Pointer(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
@@ -67,7 +64,6 @@ func PixbufAnimationNewFromStreamFinish(asyncResult *gio.AsyncResult) (*PixbufAn
 	var cThrowableError *C.GError
 
 	retC := C.gdk_pixbuf_animation_new_from_stream_finish(c_async_result, &cThrowableError)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := PixbufAnimationNewFromC(unsafe.Pointer(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))

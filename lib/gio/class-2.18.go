@@ -5,7 +5,6 @@ package gio
 
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
-	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
 	"unsafe"
 )
@@ -42,7 +41,6 @@ func DesktopAppInfoNewFromKeyfile(keyFile *glib.KeyFile) *DesktopAppInfo {
 	}
 
 	retC := C.g_desktop_app_info_new_from_keyfile(c_key_file)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := DesktopAppInfoNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -53,7 +51,6 @@ func EmblemNew(icon *Icon) *Emblem {
 	c_icon := (*C.GIcon)(icon.ToC())
 
 	retC := C.g_emblem_new(c_icon)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := EmblemNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -66,7 +63,6 @@ func EmblemNewWithOrigin(icon *Icon, origin EmblemOrigin) *Emblem {
 	c_origin := (C.GEmblemOrigin)(origin)
 
 	retC := C.g_emblem_new_with_origin(c_icon, c_origin)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := EmblemNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -98,7 +94,6 @@ func EmblemedIconNew(icon *Icon, emblem *Emblem) *EmblemedIcon {
 	}
 
 	retC := C.g_emblemed_icon_new(c_icon, c_emblem)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := EmblemedIconNewFromC(unsafe.Pointer(retC))
 
 	return retGo

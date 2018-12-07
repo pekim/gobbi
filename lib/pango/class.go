@@ -53,7 +53,6 @@ func CastToContext(object *gobject.Object) *Context {
 // ContextNew is a wrapper around the C function pango_context_new.
 func ContextNew() *Context {
 	retC := C.pango_context_new()
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ContextNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -625,7 +624,6 @@ func LayoutNew(context *Context) *Layout {
 	}
 
 	retC := C.pango_layout_new(c_context)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := LayoutNewFromC(unsafe.Pointer(retC))
 
 	return retGo

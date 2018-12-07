@@ -164,7 +164,6 @@ func MemoryInputStreamNewFromBytes(bytes *glib.Bytes) *MemoryInputStream {
 	}
 
 	retC := C.g_memory_input_stream_new_from_bytes(c_bytes)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := MemoryInputStreamNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -200,7 +199,6 @@ func MenuItemNewFromModel(model *MenuModel, itemIndex int32) *MenuItem {
 	c_item_index := (C.gint)(itemIndex)
 
 	retC := C.g_menu_item_new_from_model(c_model, c_item_index)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := MenuItemNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -389,7 +387,6 @@ func TestDBusNew(flags TestDBusFlags) *TestDBus {
 	c_flags := (C.GTestDBusFlags)(flags)
 
 	retC := C.g_test_dbus_new(c_flags)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := TestDBusNewFromC(unsafe.Pointer(retC))
 
 	return retGo

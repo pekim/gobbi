@@ -266,7 +266,6 @@ func InetAddressMaskNew(addr *InetAddress, length uint32) (*InetAddressMask, err
 	var cThrowableError *C.GError
 
 	retC := C.g_inet_address_mask_new(c_addr, c_length, &cThrowableError)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := InetAddressMaskNewFromC(unsafe.Pointer(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
@@ -285,7 +284,6 @@ func InetAddressMaskNewFromString(maskString string) (*InetAddressMask, error) {
 	var cThrowableError *C.GError
 
 	retC := C.g_inet_address_mask_new_from_string(c_mask_string, &cThrowableError)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := InetAddressMaskNewFromC(unsafe.Pointer(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
@@ -416,7 +414,6 @@ func CastToMenu(object *gobject.Object) *Menu {
 // MenuNew is a wrapper around the C function g_menu_new.
 func MenuNew() *Menu {
 	retC := C.g_menu_new()
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := MenuNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -716,7 +713,6 @@ func MenuItemNew(label string, detailedAction string) *MenuItem {
 	defer C.free(unsafe.Pointer(c_detailed_action))
 
 	retC := C.g_menu_item_new(c_label, c_detailed_action)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := MenuItemNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -733,7 +729,6 @@ func MenuItemNewSection(label string, section *MenuModel) *MenuItem {
 	}
 
 	retC := C.g_menu_item_new_section(c_label, c_section)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := MenuItemNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -750,7 +745,6 @@ func MenuItemNewSubmenu(label string, submenu *MenuModel) *MenuItem {
 	}
 
 	retC := C.g_menu_item_new_submenu(c_label, c_submenu)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := MenuItemNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1089,7 +1083,6 @@ func SettingsNewFull(schema *SettingsSchema, backend *SettingsBackend, path stri
 	defer C.free(unsafe.Pointer(c_path))
 
 	retC := C.g_settings_new_full(c_schema, c_backend, c_path)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := SettingsNewFromC(unsafe.Pointer(retC))
 
 	return retGo

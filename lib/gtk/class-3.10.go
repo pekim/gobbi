@@ -9,7 +9,6 @@ import (
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
 	gio "github.com/pekim/gobbi/lib/gio"
 	glib "github.com/pekim/gobbi/lib/glib"
-	gobject "github.com/pekim/gobbi/lib/gobject"
 	pango "github.com/pekim/gobbi/lib/pango"
 	"sync"
 	"unsafe"
@@ -126,7 +125,6 @@ func BuilderNewFromFile(filename string) *Builder {
 	defer C.free(unsafe.Pointer(c_filename))
 
 	retC := C.gtk_builder_new_from_file(c_filename)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := BuilderNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -138,7 +136,6 @@ func BuilderNewFromResource(resourcePath string) *Builder {
 	defer C.free(unsafe.Pointer(c_resource_path))
 
 	retC := C.gtk_builder_new_from_resource(c_resource_path)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := BuilderNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -152,7 +149,6 @@ func BuilderNewFromString(string string) *Builder {
 	c_length := (C.gssize)(len(string))
 
 	retC := C.gtk_builder_new_from_string(c_string, c_length)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := BuilderNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -197,7 +193,6 @@ func ButtonNewFromIconName(iconName string, size IconSize) *Button {
 	c_size := (C.GtkIconSize)(size)
 
 	retC := C.gtk_button_new_from_icon_name(c_icon_name, c_size)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -287,7 +282,6 @@ func (recv *Grid) SetRowBaselinePosition(row int32, pos BaselinePosition) {
 // HeaderBarNew is a wrapper around the C function gtk_header_bar_new.
 func HeaderBarNew() *HeaderBar {
 	retC := C.gtk_header_bar_new()
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := HeaderBarNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -540,7 +534,6 @@ func ImageNewFromSurface(surface *cairo.Surface) *Image {
 	}
 
 	retC := C.gtk_image_new_from_surface(c_surface)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ImageNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -720,7 +713,6 @@ func listbox_rowSelectedHandler(_ *C.GObject, c_row *C.GtkListBoxRow, data C.gpo
 // ListBoxNew is a wrapper around the C function gtk_list_box_new.
 func ListBoxNew() *ListBox {
 	retC := C.gtk_list_box_new()
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ListBoxNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -978,7 +970,6 @@ func listboxrow_activateHandler(_ *C.GObject, data C.gpointer) {
 // ListBoxRowNew is a wrapper around the C function gtk_list_box_row_new.
 func ListBoxRowNew() *ListBoxRow {
 	retC := C.gtk_list_box_row_new()
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ListBoxRowNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1359,7 +1350,6 @@ func placessidebar_showErrorMessageHandler(_ *C.GObject, c_primary *C.gchar, c_s
 // PlacesSidebarNew is a wrapper around the C function gtk_places_sidebar_new.
 func PlacesSidebarNew() *PlacesSidebar {
 	retC := C.gtk_places_sidebar_new()
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := PlacesSidebarNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1476,7 +1466,6 @@ func (recv *PlacesSidebar) SetShowDesktop(showDesktop bool) {
 // RevealerNew is a wrapper around the C function gtk_revealer_new.
 func RevealerNew() *Revealer {
 	retC := C.gtk_revealer_new()
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := RevealerNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1545,7 +1534,6 @@ func (recv *Revealer) SetTransitionType(transition RevealerTransitionType) {
 // SearchBarNew is a wrapper around the C function gtk_search_bar_new.
 func SearchBarNew() *SearchBar {
 	retC := C.gtk_search_bar_new()
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := SearchBarNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1664,7 +1652,6 @@ func searchentry_searchChangedHandler(_ *C.GObject, data C.gpointer) {
 // StackNew is a wrapper around the C function gtk_stack_new.
 func StackNew() *Stack {
 	retC := C.gtk_stack_new()
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := StackNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1813,7 +1800,6 @@ func (recv *Stack) SetVisibleChildName(name string) {
 // StackSwitcherNew is a wrapper around the C function gtk_stack_switcher_new.
 func StackSwitcherNew() *StackSwitcher {
 	retC := C.gtk_stack_switcher_new()
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := StackSwitcherNewFromC(unsafe.Pointer(retC))
 
 	return retGo

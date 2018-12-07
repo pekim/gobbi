@@ -148,7 +148,6 @@ func FileChooserNativeNew(title string, parent *Window, action FileChooserAction
 	defer C.free(unsafe.Pointer(c_cancel_label))
 
 	retC := C.gtk_file_chooser_native_new(c_title, c_parent, c_action, c_accept_label, c_cancel_label)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := FileChooserNativeNewFromC(unsafe.Pointer(retC))
 
 	return retGo

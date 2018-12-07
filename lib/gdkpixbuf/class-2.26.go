@@ -5,7 +5,6 @@ package gdkpixbuf
 
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
-	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
 
@@ -22,7 +21,6 @@ func PixbufNewFromResource(resourcePath string) (*Pixbuf, error) {
 	var cThrowableError *C.GError
 
 	retC := C.gdk_pixbuf_new_from_resource(c_resource_path, &cThrowableError)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := PixbufNewFromC(unsafe.Pointer(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
@@ -48,7 +46,6 @@ func PixbufNewFromResourceAtScale(resourcePath string, width int32, height int32
 	var cThrowableError *C.GError
 
 	retC := C.gdk_pixbuf_new_from_resource_at_scale(c_resource_path, c_width, c_height, c_preserve_aspect_ratio, &cThrowableError)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := PixbufNewFromC(unsafe.Pointer(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))

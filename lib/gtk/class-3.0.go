@@ -99,7 +99,6 @@ func AppChooserButtonNew(contentType string) *AppChooserButton {
 	defer C.free(unsafe.Pointer(c_content_type))
 
 	retC := C.gtk_app_chooser_button_new(c_content_type)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := AppChooserButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -167,7 +166,6 @@ func AppChooserDialogNew(parent *Window, flags DialogFlags, file *gio.File) *App
 	c_file := (*C.GFile)(file.ToC())
 
 	retC := C.gtk_app_chooser_dialog_new(c_parent, c_flags, c_file)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := AppChooserDialogNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -186,7 +184,6 @@ func AppChooserDialogNewForContentType(parent *Window, flags DialogFlags, conten
 	defer C.free(unsafe.Pointer(c_content_type))
 
 	retC := C.gtk_app_chooser_dialog_new_for_content_type(c_parent, c_flags, c_content_type)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := AppChooserDialogNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -206,7 +203,6 @@ func AppChooserWidgetNew(contentType string) *AppChooserWidget {
 	defer C.free(unsafe.Pointer(c_content_type))
 
 	retC := C.gtk_app_chooser_widget_new(c_content_type)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := AppChooserWidgetNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -318,7 +314,6 @@ func ApplicationNew(applicationId string, flags gio.ApplicationFlags) *Applicati
 	c_flags := (C.GApplicationFlags)(flags)
 
 	retC := C.gtk_application_new(c_application_id, c_flags)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ApplicationNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -377,7 +372,6 @@ func BoxNew(orientation Orientation, spacing int32) *Box {
 	c_spacing := (C.gint)(spacing)
 
 	retC := C.gtk_box_new(c_orientation, c_spacing)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := BoxNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -388,7 +382,6 @@ func ButtonBoxNew(orientation Orientation) *ButtonBox {
 	c_orientation := (C.GtkOrientation)(orientation)
 
 	retC := C.gtk_button_box_new(c_orientation)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ButtonBoxNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1079,7 +1072,6 @@ func (recv *CellArea) StopEditing(canceled bool) {
 // CellAreaBoxNew is a wrapper around the C function gtk_cell_area_box_new.
 func CellAreaBoxNew() *CellAreaBox {
 	retC := C.gtk_cell_area_box_new()
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := CellAreaBoxNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1446,7 +1438,6 @@ func ColorButtonNewWithRgba(rgba *gdk.RGBA) *ColorButton {
 	}
 
 	retC := C.gtk_color_button_new_with_rgba(c_rgba)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ColorButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1621,7 +1612,6 @@ func EntryCompletionNewWithArea(area *CellArea) *EntryCompletion {
 	}
 
 	retC := C.gtk_entry_completion_new_with_area(c_area)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := EntryCompletionNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1724,7 +1714,6 @@ func IconViewNewWithArea(area *CellArea) *IconView {
 	}
 
 	retC := C.gtk_icon_view_new_with_area(c_area)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := IconViewNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1896,7 +1885,6 @@ func PanedNew(orientation Orientation) *Paned {
 	c_orientation := (C.GtkOrientation)(orientation)
 
 	retC := C.gtk_paned_new(c_orientation)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := PanedNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1954,7 +1942,6 @@ func ScaleNew(orientation Orientation, adjustment *Adjustment) *Scale {
 	}
 
 	retC := C.gtk_scale_new(c_orientation, c_adjustment)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ScaleNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1971,7 +1958,6 @@ func ScaleNewWithRange(orientation Orientation, min float64, max float64, step f
 	c_step := (C.gdouble)(step)
 
 	retC := C.gtk_scale_new_with_range(c_orientation, c_min, c_max, c_step)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ScaleNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1987,7 +1973,6 @@ func ScrollbarNew(orientation Orientation, adjustment *Adjustment) *Scrollbar {
 	}
 
 	retC := C.gtk_scrollbar_new(c_orientation, c_adjustment)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ScrollbarNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -2032,7 +2017,6 @@ func SeparatorNew(orientation Orientation) *Separator {
 	c_orientation := (C.GtkOrientation)(orientation)
 
 	retC := C.gtk_separator_new(c_orientation)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := SeparatorNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -2641,7 +2625,6 @@ func (recv *StyleProperties) UnsetProperty(property string, state StateFlags) {
 // SwitchNew is a wrapper around the C function gtk_switch_new.
 func SwitchNew() *Switch {
 	retC := C.gtk_switch_new()
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := SwitchNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -2904,7 +2887,6 @@ func TreeViewColumnNewWithArea(area *CellArea) *TreeViewColumn {
 	}
 
 	retC := C.gtk_tree_view_column_new_with_area(c_area)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := TreeViewColumnNewFromC(unsafe.Pointer(retC))
 
 	return retGo

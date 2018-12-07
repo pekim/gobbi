@@ -127,7 +127,6 @@ func CastToGLArea(object *gobject.Object) *GLArea {
 // GLAreaNew is a wrapper around the C function gtk_gl_area_new.
 func GLAreaNew() *GLArea {
 	retC := C.gtk_gl_area_new()
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := GLAreaNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -324,7 +323,6 @@ func (recv *Label) SetYalign(yalign float32) {
 // ModelButtonNew is a wrapper around the C function gtk_model_button_new.
 func ModelButtonNew() *ModelButton {
 	retC := C.gtk_model_button_new()
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ModelButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -381,7 +379,6 @@ func (recv *Popover) SetTransitionsEnabled(transitionsEnabled bool) {
 // PopoverMenuNew is a wrapper around the C function gtk_popover_menu_new.
 func PopoverMenuNew() *PopoverMenu {
 	retC := C.gtk_popover_menu_new()
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := PopoverMenuNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -640,7 +637,6 @@ func (recv *Stack) SetVhomogeneous(vhomogeneous bool) {
 // StackSidebarNew is a wrapper around the C function gtk_stack_sidebar_new.
 func StackSidebarNew() *StackSidebar {
 	retC := C.gtk_stack_sidebar_new()
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := StackSidebarNewFromC(unsafe.Pointer(retC))
 
 	return retGo

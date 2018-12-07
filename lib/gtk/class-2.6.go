@@ -8,7 +8,6 @@ import (
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
 	glib "github.com/pekim/gobbi/lib/glib"
-	gobject "github.com/pekim/gobbi/lib/gobject"
 	pango "github.com/pekim/gobbi/lib/pango"
 	"sync"
 	"unsafe"
@@ -51,7 +50,6 @@ import "C"
 // AboutDialogNew is a wrapper around the C function gtk_about_dialog_new.
 func AboutDialogNew() *AboutDialog {
 	retC := C.gtk_about_dialog_new()
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := AboutDialogNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -374,7 +372,6 @@ func (recv *CellRenderer) StopEditing(canceled bool) {
 // CellRendererComboNew is a wrapper around the C function gtk_cell_renderer_combo_new.
 func CellRendererComboNew() *CellRendererCombo {
 	retC := C.gtk_cell_renderer_combo_new()
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := CellRendererComboNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -383,7 +380,6 @@ func CellRendererComboNew() *CellRendererCombo {
 // CellRendererProgressNew is a wrapper around the C function gtk_cell_renderer_progress_new.
 func CellRendererProgressNew() *CellRendererProgress {
 	retC := C.gtk_cell_renderer_progress_new()
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := CellRendererProgressNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -392,7 +388,6 @@ func CellRendererProgressNew() *CellRendererProgress {
 // CellViewNew is a wrapper around the C function gtk_cell_view_new.
 func CellViewNew() *CellView {
 	retC := C.gtk_cell_view_new()
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := CellViewNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -411,7 +406,6 @@ func CellViewNewWithContext(area *CellArea, context *CellAreaContext) *CellView 
 	}
 
 	retC := C.gtk_cell_view_new_with_context(c_area, c_context)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := CellViewNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -423,7 +417,6 @@ func CellViewNewWithMarkup(markup string) *CellView {
 	defer C.free(unsafe.Pointer(c_markup))
 
 	retC := C.gtk_cell_view_new_with_markup(c_markup)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := CellViewNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -437,7 +430,6 @@ func CellViewNewWithPixbuf(pixbuf *gdkpixbuf.Pixbuf) *CellView {
 	}
 
 	retC := C.gtk_cell_view_new_with_pixbuf(c_pixbuf)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := CellViewNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -449,7 +441,6 @@ func CellViewNewWithText(text string) *CellView {
 	defer C.free(unsafe.Pointer(c_text))
 
 	retC := C.gtk_cell_view_new_with_text(c_text)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := CellViewNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -827,7 +818,6 @@ func FileChooserButtonNew(title string, action FileChooserAction) *FileChooserBu
 	c_action := (C.GtkFileChooserAction)(action)
 
 	retC := C.gtk_file_chooser_button_new(c_title, c_action)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := FileChooserButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -841,7 +831,6 @@ func FileChooserButtonNewWithDialog(dialog *Dialog) *FileChooserButton {
 	}
 
 	retC := C.gtk_file_chooser_button_new_with_dialog(c_dialog)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := FileChooserButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -894,7 +883,6 @@ func (recv *FileFilter) AddPixbufFormats() {
 // IconViewNew is a wrapper around the C function gtk_icon_view_new.
 func IconViewNew() *IconView {
 	retC := C.gtk_icon_view_new()
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := IconViewNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -905,7 +893,6 @@ func IconViewNewWithModel(model *TreeModel) *IconView {
 	c_model := (*C.GtkTreeModel)(model.ToC())
 
 	retC := C.gtk_icon_view_new_with_model(c_model)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := IconViewNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1218,7 +1205,6 @@ func ImageNewFromIconName(iconName string, size IconSize) *Image {
 	c_size := (C.GtkIconSize)(size)
 
 	retC := C.gtk_image_new_from_icon_name(c_icon_name, c_size)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ImageNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1369,7 +1355,6 @@ func MenuToolButtonNew(iconWidget *Widget, label string) *MenuToolButton {
 	defer C.free(unsafe.Pointer(c_label))
 
 	retC := C.gtk_menu_tool_button_new(c_icon_widget, c_label)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := MenuToolButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1381,7 +1366,6 @@ func MenuToolButtonNewFromStock(stockId string) *MenuToolButton {
 	defer C.free(unsafe.Pointer(c_stock_id))
 
 	retC := C.gtk_menu_tool_button_new_from_stock(c_stock_id)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := MenuToolButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo

@@ -5,7 +5,6 @@ package gtk
 
 import (
 	gio "github.com/pekim/gobbi/lib/gio"
-	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
 	"unsafe"
 )
@@ -302,7 +301,6 @@ func FontChooserDialogNew(title string, parent *Window) *FontChooserDialog {
 	}
 
 	retC := C.gtk_font_chooser_dialog_new(c_title, c_parent)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := FontChooserDialogNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -311,7 +309,6 @@ func FontChooserDialogNew(title string, parent *Window) *FontChooserDialog {
 // FontChooserWidgetNew is a wrapper around the C function gtk_font_chooser_widget_new.
 func FontChooserWidgetNew() *FontChooserWidget {
 	retC := C.gtk_font_chooser_widget_new()
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := FontChooserWidgetNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -374,7 +371,6 @@ func LockButtonNew(permission *gio.Permission) *LockButton {
 	}
 
 	retC := C.gtk_lock_button_new(c_permission)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := LockButtonNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -467,7 +463,6 @@ func menushell_insertHandler(_ *C.GObject, c_child *C.GtkWidget, c_position C.gi
 // OverlayNew is a wrapper around the C function gtk_overlay_new.
 func OverlayNew() *Overlay {
 	retC := C.gtk_overlay_new()
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := OverlayNewFromC(unsafe.Pointer(retC))
 
 	return retGo

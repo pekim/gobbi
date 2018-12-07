@@ -5,7 +5,6 @@ package gdk
 
 import (
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
-	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
 
@@ -31,7 +30,6 @@ func CursorNewFromPixbuf(display *Display, pixbuf *gdkpixbuf.Pixbuf, x int32, y 
 	c_y := (C.gint)(y)
 
 	retC := C.gdk_cursor_new_from_pixbuf(c_display, c_pixbuf, c_x, c_y)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := CursorNewFromC(unsafe.Pointer(retC))
 
 	return retGo

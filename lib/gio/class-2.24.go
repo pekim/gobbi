@@ -35,7 +35,6 @@ func CharsetConverterNew(toCharset string, fromCharset string) (*CharsetConverte
 	var cThrowableError *C.GError
 
 	retC := C.g_charset_converter_new(c_to_charset, c_from_charset, &cThrowableError)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := CharsetConverterNewFromC(unsafe.Pointer(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
@@ -150,7 +149,6 @@ func (recv *SocketListener) AddAnyInetPort(sourceObject *gobject.Object) (uint16
 // UnixFDListNew is a wrapper around the C function g_unix_fd_list_new.
 func UnixFDListNew() *UnixFDList {
 	retC := C.g_unix_fd_list_new()
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := UnixFDListNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -163,7 +161,6 @@ func UnixFDListNewFromArray(fds []int32) *UnixFDList {
 	c_n_fds := (C.gint)(len(fds))
 
 	retC := C.g_unix_fd_list_new_from_array((*C.gint)(unsafe.Pointer(c_fds)), c_n_fds)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := UnixFDListNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -223,7 +220,6 @@ func UnixFDMessageNewWithFdList(fdList *UnixFDList) *UnixFDMessage {
 	}
 
 	retC := C.g_unix_fd_message_new_with_fd_list(c_fd_list)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := UnixFDMessageNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -244,7 +240,6 @@ func ZlibCompressorNew(format ZlibCompressorFormat, level int32) *ZlibCompressor
 	c_level := (C.int)(level)
 
 	retC := C.g_zlib_compressor_new(c_format, c_level)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ZlibCompressorNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -255,7 +250,6 @@ func ZlibDecompressorNew(format ZlibCompressorFormat) *ZlibDecompressor {
 	c_format := (C.GZlibCompressorFormat)(format)
 
 	retC := C.g_zlib_decompressor_new(c_format)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ZlibDecompressorNewFromC(unsafe.Pointer(retC))
 
 	return retGo

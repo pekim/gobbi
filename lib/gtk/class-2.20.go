@@ -8,7 +8,6 @@ import (
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
 	gio "github.com/pekim/gobbi/lib/gio"
-	gobject "github.com/pekim/gobbi/lib/gobject"
 	pango "github.com/pekim/gobbi/lib/pango"
 	"sync"
 	"unsafe"
@@ -60,7 +59,6 @@ func (recv *Action) SetAlwaysShowImage(alwaysShow bool) {
 // CellRendererSpinnerNew is a wrapper around the C function gtk_cell_renderer_spinner_new.
 func CellRendererSpinnerNew() *CellRendererSpinner {
 	retC := C.gtk_cell_renderer_spinner_new()
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := CellRendererSpinnerNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -175,7 +173,6 @@ func (recv *Notebook) SetActionWidget(widget *Widget, packType PackType) {
 // OffscreenWindowNew is a wrapper around the C function gtk_offscreen_window_new.
 func OffscreenWindowNew() *OffscreenWindow {
 	retC := C.gtk_offscreen_window_new()
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := OffscreenWindowNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -294,7 +291,6 @@ func (recv *Range) SetSliderSizeFixed(sizeFixed bool) {
 // SpinnerNew is a wrapper around the C function gtk_spinner_new.
 func SpinnerNew() *Spinner {
 	retC := C.gtk_spinner_new()
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := SpinnerNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -432,7 +428,6 @@ func ToolItemGroupNew(label string) *ToolItemGroup {
 	defer C.free(unsafe.Pointer(c_label))
 
 	retC := C.gtk_tool_item_group_new(c_label)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ToolItemGroupNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -602,7 +597,6 @@ func (recv *ToolItemGroup) SetLabelWidget(labelWidget *Widget) {
 // ToolPaletteNew is a wrapper around the C function gtk_tool_palette_new.
 func ToolPaletteNew() *ToolPalette {
 	retC := C.gtk_tool_palette_new()
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := ToolPaletteNewFromC(unsafe.Pointer(retC))
 
 	return retGo

@@ -383,7 +383,6 @@ func NoOpObjectNew(obj *gobject.Object) *NoOpObject {
 	}
 
 	retC := C.atk_no_op_object_new(c_obj)
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := NoOpObjectNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -495,7 +494,6 @@ func CastToNoOpObjectFactory(object *gobject.Object) *NoOpObjectFactory {
 // NoOpObjectFactoryNew is a wrapper around the C function atk_no_op_object_factory_new.
 func NoOpObjectFactoryNew() *NoOpObjectFactory {
 	retC := C.atk_no_op_object_factory_new()
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := NoOpObjectFactoryNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1241,7 +1239,6 @@ func CastToPlug(object *gobject.Object) *Plug {
 // PlugNew is a wrapper around the C function atk_plug_new.
 func PlugNew() *Plug {
 	retC := C.atk_plug_new()
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := PlugNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1435,7 +1432,6 @@ func CastToRelationSet(object *gobject.Object) *RelationSet {
 // RelationSetNew is a wrapper around the C function atk_relation_set_new.
 func RelationSetNew() *RelationSet {
 	retC := C.atk_relation_set_new()
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := RelationSetNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1560,7 +1556,6 @@ func CastToSocket(object *gobject.Object) *Socket {
 // SocketNew is a wrapper around the C function atk_socket_new.
 func SocketNew() *Socket {
 	retC := C.atk_socket_new()
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := SocketNewFromC(unsafe.Pointer(retC))
 
 	return retGo
@@ -1612,7 +1607,6 @@ func CastToStateSet(object *gobject.Object) *StateSet {
 // StateSetNew is a wrapper around the C function atk_state_set_new.
 func StateSetNew() *StateSet {
 	retC := C.atk_state_set_new()
-	gobject.ObjectNewFromC(unsafe.Pointer(retC)).Take()
 	retGo := StateSetNewFromC(unsafe.Pointer(retC))
 
 	return retGo
