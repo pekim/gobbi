@@ -16,12 +16,19 @@ func init() {
 	runtime.LockOSThread()
 }
 
-func main() {
-	gtk.Init(os.Args)
+var stats0 runtime.MemStats
+var stats1 runtime.MemStats
+var stats2 runtime.MemStats
+var stats3 runtime.MemStats
 
-	var stats0 runtime.MemStats
+var mi0 C.struct_mallinfo
+var mi1 C.struct_mallinfo
+var mi2 C.struct_mallinfo
+var mi3 C.struct_mallinfo
+
+func doSomeGtkStuff() {
 	runtime.ReadMemStats(&stats0)
-	mi0 := C.mallinfo()
+	mi0 = C.mallinfo()
 
 	windows := []*gtk.Window{}
 
@@ -37,44 +44,65 @@ func main() {
 
 		window.Container().Add(container.Widget())
 
-		window.Widget().ConnectDestroy(gtk.MainQuit)
+		//window.Widget().ConnectDestroy(gtk.MainQuit)
 		//window.Widget().ShowAll()
 
 		windows = append(windows, window)
 	}
 
-	var stats2 runtime.MemStats
-	runtime.ReadMemStats(&stats2)
-	mi2 := C.mallinfo()
+	runtime.ReadMemStats(&stats1)
+	mi1 = C.mallinfo()
 
-	glib.IdleAdd(func() bool {
-		for _, w := range windows {
-			w.Widget().Destroy()
-		}
-		return false
+	time.AfterFunc(time.Second/2, func() {
+		glib.IdleAdd(func() bool {
+			for _, w := range windows {
+				w.Widget().Destroy()
+			}
+
+			gtk.MainQuit()
+
+			return false
+		})
 	})
 
 	gtk.Main()
 
-	windows = []*gtk.Window{}
-
-	for g := 100; g < 1; g++ {
-		runtime.GC()
-	}
-	time.Sleep(time.Second / 10)
-
-	var stats3 runtime.MemStats
-	runtime.ReadMemStats(&stats3)
-	mi3 := C.mallinfo()
-
-	fmt.Println(
-		stats0.HeapAlloc,
-		stats2.HeapAlloc,
-		stats3.HeapAlloc,
-	)
-
-	//fmt.Println(mi0.ordblks, mi2.ordblks, mi3.ordblks)
-	fmt.Println(mi0.uordblks, mi2.uordblks, mi3.uordblks)
+	runtime.ReadMemStats(&stats2)
+	mi2 = C.mallinfo()
 }
 
-//fmt.Println(mi.ordblks, mi.uordblks)
+func main() {
+	gtk.Init(os.Args)
+	doSomeGtkStuff()
+
+	for i := 0; i < 10; i++ {
+		for g := 100; g < 1; g++ {
+			runtime.GC()
+		}
+		time.Sleep(time.Second / 10)
+
+		runtime.ReadMemStats(&stats3)
+		mi3 = C.mallinfo()
+
+		fmt.Println(
+			stats0.HeapAlloc,
+			stats1.HeapAlloc,
+			stats2.HeapAlloc,
+			stats3.HeapAlloc,
+		)
+
+		fmt.Println(
+			stats0.HeapObjects,
+			stats1.HeapObjects,
+			stats2.HeapObjects,
+			stats3.HeapObjects,
+		)
+
+		fmt.Println(
+			mi0.uordblks,
+			mi1.uordblks,
+			mi2.uordblks,
+			mi3.uordblks,
+		)
+	}
+}
