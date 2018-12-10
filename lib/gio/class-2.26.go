@@ -36,6 +36,7 @@ func CredentialsNewFromC(u unsafe.Pointer) *Credentials {
 	}
 
 	g := &Credentials{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -135,6 +136,7 @@ func DBusAuthObserverNewFromC(u unsafe.Pointer) *DBusAuthObserver {
 	}
 
 	g := &DBusAuthObserver{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -198,6 +200,7 @@ func DBusConnectionNewFromC(u unsafe.Pointer) *DBusConnection {
 	}
 
 	g := &DBusConnection{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -624,6 +627,7 @@ func DBusMessageNewFromC(u unsafe.Pointer) *DBusMessage {
 	}
 
 	g := &DBusMessage{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -1096,6 +1100,7 @@ func DBusMethodInvocationNewFromC(u unsafe.Pointer) *DBusMethodInvocation {
 	}
 
 	g := &DBusMethodInvocation{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -1246,6 +1251,7 @@ func DBusProxyNewFromC(u unsafe.Pointer) *DBusProxy {
 	}
 
 	g := &DBusProxy{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -1501,6 +1507,7 @@ func DBusServerNewFromC(u unsafe.Pointer) *DBusServer {
 	}
 
 	g := &DBusServer{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -1823,6 +1830,7 @@ func ProxyAddressNewFromC(u unsafe.Pointer) *ProxyAddress {
 	}
 
 	g := &ProxyAddress{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -2450,6 +2458,7 @@ func UnixCredentialsMessageNewFromC(u unsafe.Pointer) *UnixCredentialsMessage {
 	}
 
 	g := &UnixCredentialsMessage{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }

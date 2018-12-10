@@ -137,6 +137,7 @@ func AppLaunchContextNewFromC(u unsafe.Pointer) *AppLaunchContext {
 	}
 
 	g := &AppLaunchContext{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -179,6 +180,7 @@ func CursorNewFromC(u unsafe.Pointer) *Cursor {
 	}
 
 	g := &Cursor{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -241,6 +243,7 @@ func DeviceNewFromC(u unsafe.Pointer) *Device {
 	}
 
 	g := &Device{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -432,6 +435,7 @@ func DeviceManagerNewFromC(u unsafe.Pointer) *DeviceManager {
 	}
 
 	g := &DeviceManager{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -655,6 +659,7 @@ func DisplayNewFromC(u unsafe.Pointer) *Display {
 	}
 
 	g := &Display{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -778,6 +783,7 @@ func DisplayManagerNewFromC(u unsafe.Pointer) *DisplayManager {
 	}
 
 	g := &DisplayManager{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -815,6 +821,7 @@ func DragContextNewFromC(u unsafe.Pointer) *DragContext {
 	}
 
 	g := &DragContext{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -872,6 +879,7 @@ func FrameClockNewFromC(u unsafe.Pointer) *FrameClock {
 	}
 
 	g := &FrameClock{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -1329,6 +1337,7 @@ func GLContextNewFromC(u unsafe.Pointer) *GLContext {
 	}
 
 	g := &GLContext{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -1366,6 +1375,7 @@ func KeymapNewFromC(u unsafe.Pointer) *Keymap {
 	}
 
 	g := &Keymap{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -1438,6 +1448,7 @@ func ScreenNewFromC(u unsafe.Pointer) *Screen {
 	}
 
 	g := &Screen{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -1507,6 +1518,7 @@ func VisualNewFromC(u unsafe.Pointer) *Visual {
 	}
 
 	g := &Visual{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -1613,6 +1625,7 @@ func WindowNewFromC(u unsafe.Pointer) *Window {
 	}
 
 	g := &Window{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }

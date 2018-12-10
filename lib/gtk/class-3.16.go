@@ -89,6 +89,7 @@ func GLAreaNewFromC(u unsafe.Pointer) *GLArea {
 	}
 
 	g := &GLArea{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }

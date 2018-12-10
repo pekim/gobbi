@@ -44,6 +44,7 @@ func DBusInterfaceSkeletonNewFromC(u unsafe.Pointer) *DBusInterfaceSkeleton {
 	}
 
 	g := &DBusInterfaceSkeleton{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -185,6 +186,7 @@ func DBusObjectManagerClientNewFromC(u unsafe.Pointer) *DBusObjectManagerClient 
 	}
 
 	g := &DBusObjectManagerClient{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -297,6 +299,7 @@ func DBusObjectManagerServerNewFromC(u unsafe.Pointer) *DBusObjectManagerServer 
 	}
 
 	g := &DBusObjectManagerServer{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -402,6 +405,7 @@ func DBusObjectProxyNewFromC(u unsafe.Pointer) *DBusObjectProxy {
 	}
 
 	g := &DBusObjectProxy{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -465,6 +469,7 @@ func DBusObjectSkeletonNewFromC(u unsafe.Pointer) *DBusObjectSkeleton {
 	}
 
 	g := &DBusObjectSkeleton{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -721,6 +726,7 @@ func TlsDatabaseNewFromC(u unsafe.Pointer) *TlsDatabase {
 	}
 
 	g := &TlsDatabase{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -983,6 +989,7 @@ func TlsInteractionNewFromC(u unsafe.Pointer) *TlsInteraction {
 	}
 
 	g := &TlsInteraction{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -1091,6 +1098,7 @@ func TlsPasswordNewFromC(u unsafe.Pointer) *TlsPassword {
 	}
 
 	g := &TlsPassword{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }

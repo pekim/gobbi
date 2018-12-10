@@ -357,6 +357,7 @@ func TestDBusNewFromC(u unsafe.Pointer) *TestDBus {
 	}
 
 	g := &TestDBus{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }

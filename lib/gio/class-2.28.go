@@ -84,6 +84,7 @@ func ApplicationNewFromC(u unsafe.Pointer) *Application {
 	}
 
 	g := &Application{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -691,6 +692,7 @@ func SimpleActionGroupNewFromC(u unsafe.Pointer) *SimpleActionGroup {
 	}
 
 	g := &SimpleActionGroup{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -835,6 +837,7 @@ func TlsCertificateNewFromC(u unsafe.Pointer) *TlsCertificate {
 	}
 
 	g := &TlsCertificate{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -974,6 +977,7 @@ func TlsConnectionNewFromC(u unsafe.Pointer) *TlsConnection {
 	}
 
 	g := &TlsConnection{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }

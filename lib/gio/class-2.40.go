@@ -46,6 +46,7 @@ func AppInfoMonitorNewFromC(u unsafe.Pointer) *AppInfoMonitor {
 	}
 
 	g := &AppInfoMonitor{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -211,6 +212,7 @@ func NotificationNewFromC(u unsafe.Pointer) *Notification {
 	}
 
 	g := &Notification{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -346,6 +348,7 @@ func SubprocessNewFromC(u unsafe.Pointer) *Subprocess {
 	}
 
 	g := &Subprocess{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
@@ -683,6 +686,7 @@ func SubprocessLauncherNewFromC(u unsafe.Pointer) *SubprocessLauncher {
 	}
 
 	g := &SubprocessLauncher{native: c}
+	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
 
 	return g
 }
