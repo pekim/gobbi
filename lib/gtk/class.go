@@ -1908,7 +1908,7 @@ func AboutDialogNewFromC(u unsafe.Pointer) *AboutDialog {
 	}
 
 	g := &AboutDialog{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -1988,7 +1988,7 @@ func AccelGroupNewFromC(u unsafe.Pointer) *AccelGroup {
 	}
 
 	g := &AccelGroup{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -2153,7 +2153,7 @@ func AccelLabelNewFromC(u unsafe.Pointer) *AccelLabel {
 	}
 
 	g := &AccelLabel{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -2285,7 +2285,7 @@ func AccelMapNewFromC(u unsafe.Pointer) *AccelMap {
 	}
 
 	g := &AccelMap{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -2434,7 +2434,7 @@ func AccessibleNewFromC(u unsafe.Pointer) *Accessible {
 	}
 
 	g := &Accessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -2481,7 +2481,7 @@ func ActionNewFromC(u unsafe.Pointer) *Action {
 	}
 
 	g := &Action{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -2525,7 +2525,7 @@ func ActionBarNewFromC(u unsafe.Pointer) *ActionBar {
 	}
 
 	g := &ActionBar{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -2595,7 +2595,7 @@ func ActionGroupNewFromC(u unsafe.Pointer) *ActionGroup {
 	}
 
 	g := &ActionGroup{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -2640,7 +2640,7 @@ func AdjustmentNewFromC(u unsafe.Pointer) *Adjustment {
 	}
 
 	g := &Adjustment{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -2867,7 +2867,7 @@ func AlignmentNewFromC(u unsafe.Pointer) *Alignment {
 	}
 
 	g := &Alignment{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -2968,7 +2968,7 @@ func AppChooserButtonNewFromC(u unsafe.Pointer) *AppChooserButton {
 	}
 
 	g := &AppChooserButton{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -3138,7 +3138,7 @@ func AppChooserDialogNewFromC(u unsafe.Pointer) *AppChooserDialog {
 	}
 
 	g := &AppChooserDialog{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -3241,7 +3241,7 @@ func AppChooserWidgetNewFromC(u unsafe.Pointer) *AppChooserWidget {
 	}
 
 	g := &AppChooserWidget{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -3519,7 +3519,7 @@ func ApplicationNewFromC(u unsafe.Pointer) *Application {
 	}
 
 	g := &Application{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -3574,7 +3574,7 @@ func ApplicationWindowNewFromC(u unsafe.Pointer) *ApplicationWindow {
 	}
 
 	g := &ApplicationWindow{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -3659,7 +3659,7 @@ func ArrowNewFromC(u unsafe.Pointer) *Arrow {
 	}
 
 	g := &Arrow{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -3747,7 +3747,7 @@ func ArrowAccessibleNewFromC(u unsafe.Pointer) *ArrowAccessible {
 	}
 
 	g := &ArrowAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -3807,7 +3807,7 @@ func AspectFrameNewFromC(u unsafe.Pointer) *AspectFrame {
 	}
 
 	g := &AspectFrame{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -3918,7 +3918,7 @@ func AssistantNewFromC(u unsafe.Pointer) *Assistant {
 	}
 
 	g := &Assistant{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -4053,7 +4053,7 @@ func BinNewFromC(u unsafe.Pointer) *Bin {
 	}
 
 	g := &Bin{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -4131,7 +4131,7 @@ func BooleanCellAccessibleNewFromC(u unsafe.Pointer) *BooleanCellAccessible {
 	}
 
 	g := &BooleanCellAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -4196,7 +4196,7 @@ func BoxNewFromC(u unsafe.Pointer) *Box {
 	}
 
 	g := &Box{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -4379,7 +4379,7 @@ func BuilderNewFromC(u unsafe.Pointer) *Builder {
 	}
 
 	g := &Builder{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -4421,7 +4421,7 @@ func ButtonNewFromC(u unsafe.Pointer) *Button {
 	}
 
 	g := &Button{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -5008,7 +5008,7 @@ func ButtonAccessibleNewFromC(u unsafe.Pointer) *ButtonAccessible {
 	}
 
 	g := &ButtonAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -5078,7 +5078,7 @@ func ButtonBoxNewFromC(u unsafe.Pointer) *ButtonBox {
 	}
 
 	g := &ButtonBox{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -5185,7 +5185,7 @@ func CalendarNewFromC(u unsafe.Pointer) *Calendar {
 	}
 
 	g := &Calendar{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -5737,7 +5737,7 @@ func CellAccessibleNewFromC(u unsafe.Pointer) *CellAccessible {
 	}
 
 	g := &CellAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -5792,7 +5792,7 @@ func CellAreaNewFromC(u unsafe.Pointer) *CellArea {
 	}
 
 	g := &CellArea{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -5847,7 +5847,7 @@ func CellAreaBoxNewFromC(u unsafe.Pointer) *CellAreaBox {
 	}
 
 	g := &CellAreaBox{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -5912,7 +5912,7 @@ func CellAreaContextNewFromC(u unsafe.Pointer) *CellAreaContext {
 	}
 
 	g := &CellAreaContext{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -5970,7 +5970,7 @@ func CellRendererNewFromC(u unsafe.Pointer) *CellRenderer {
 	}
 
 	g := &CellRenderer{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -6049,7 +6049,7 @@ func CellRendererAccelNewFromC(u unsafe.Pointer) *CellRendererAccel {
 	}
 
 	g := &CellRendererAccel{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -6104,7 +6104,7 @@ func CellRendererComboNewFromC(u unsafe.Pointer) *CellRendererCombo {
 	}
 
 	g := &CellRendererCombo{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -6159,7 +6159,7 @@ func CellRendererPixbufNewFromC(u unsafe.Pointer) *CellRendererPixbuf {
 	}
 
 	g := &CellRendererPixbuf{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -6217,7 +6217,7 @@ func CellRendererProgressNewFromC(u unsafe.Pointer) *CellRendererProgress {
 	}
 
 	g := &CellRendererProgress{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -6272,7 +6272,7 @@ func CellRendererSpinNewFromC(u unsafe.Pointer) *CellRendererSpin {
 	}
 
 	g := &CellRendererSpin{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -6327,7 +6327,7 @@ func CellRendererSpinnerNewFromC(u unsafe.Pointer) *CellRendererSpinner {
 	}
 
 	g := &CellRendererSpinner{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -6377,7 +6377,7 @@ func CellRendererTextNewFromC(u unsafe.Pointer) *CellRendererText {
 	}
 
 	g := &CellRendererText{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -6508,7 +6508,7 @@ func CellRendererToggleNewFromC(u unsafe.Pointer) *CellRendererToggle {
 	}
 
 	g := &CellRendererToggle{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -6664,7 +6664,7 @@ func CellViewNewFromC(u unsafe.Pointer) *CellView {
 	}
 
 	g := &CellView{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -6733,7 +6733,7 @@ func CheckButtonNewFromC(u unsafe.Pointer) *CheckButton {
 	}
 
 	g := &CheckButton{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -6853,7 +6853,7 @@ func CheckMenuItemNewFromC(u unsafe.Pointer) *CheckMenuItem {
 	}
 
 	g := &CheckMenuItem{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -7071,7 +7071,7 @@ func CheckMenuItemAccessibleNewFromC(u unsafe.Pointer) *CheckMenuItemAccessible 
 	}
 
 	g := &CheckMenuItemAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -7144,7 +7144,7 @@ func ClipboardNewFromC(u unsafe.Pointer) *Clipboard {
 	}
 
 	g := &Clipboard{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -7244,7 +7244,7 @@ func ColorButtonNewFromC(u unsafe.Pointer) *ColorButton {
 	}
 
 	g := &ColorButton{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -7334,7 +7334,7 @@ func ColorChooserDialogNewFromC(u unsafe.Pointer) *ColorChooserDialog {
 	}
 
 	g := &ColorChooserDialog{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -7419,7 +7419,7 @@ func ColorChooserWidgetNewFromC(u unsafe.Pointer) *ColorChooserWidget {
 	}
 
 	g := &ColorChooserWidget{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -7499,7 +7499,7 @@ func ColorSelectionNewFromC(u unsafe.Pointer) *ColorSelection {
 	}
 
 	g := &ColorSelection{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -7768,7 +7768,7 @@ func ColorSelectionDialogNewFromC(u unsafe.Pointer) *ColorSelectionDialog {
 	}
 
 	g := &ColorSelectionDialog{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -7859,7 +7859,7 @@ func ComboBoxNewFromC(u unsafe.Pointer) *ComboBox {
 	}
 
 	g := &ComboBox{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -7973,7 +7973,7 @@ func ComboBoxAccessibleNewFromC(u unsafe.Pointer) *ComboBoxAccessible {
 	}
 
 	g := &ComboBoxAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -8043,7 +8043,7 @@ func ComboBoxTextNewFromC(u unsafe.Pointer) *ComboBoxText {
 	}
 
 	g := &ComboBoxText{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -8128,7 +8128,7 @@ func ContainerNewFromC(u unsafe.Pointer) *Container {
 	}
 
 	g := &Container{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -8709,7 +8709,7 @@ func ContainerAccessibleNewFromC(u unsafe.Pointer) *ContainerAccessible {
 	}
 
 	g := &ContainerAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -8764,7 +8764,7 @@ func ContainerCellAccessibleNewFromC(u unsafe.Pointer) *ContainerCellAccessible 
 	}
 
 	g := &ContainerCellAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -8864,7 +8864,7 @@ func CssProviderNewFromC(u unsafe.Pointer) *CssProvider {
 	}
 
 	g := &CssProvider{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -9057,7 +9057,7 @@ func DialogNewFromC(u unsafe.Pointer) *Dialog {
 	}
 
 	g := &Dialog{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -9331,7 +9331,7 @@ func DrawingAreaNewFromC(u unsafe.Pointer) *DrawingArea {
 	}
 
 	g := &DrawingArea{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -9399,7 +9399,7 @@ func EntryNewFromC(u unsafe.Pointer) *Entry {
 	}
 
 	g := &Entry{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -10131,7 +10131,7 @@ func EntryAccessibleNewFromC(u unsafe.Pointer) *EntryAccessible {
 	}
 
 	g := &EntryAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -10201,7 +10201,7 @@ func EntryBufferNewFromC(u unsafe.Pointer) *EntryBuffer {
 	}
 
 	g := &EntryBuffer{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -10241,7 +10241,7 @@ func EntryCompletionNewFromC(u unsafe.Pointer) *EntryCompletion {
 	}
 
 	g := &EntryCompletion{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -10293,7 +10293,7 @@ func EventBoxNewFromC(u unsafe.Pointer) *EventBox {
 	}
 
 	g := &EventBox{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -10369,7 +10369,7 @@ func EventControllerNewFromC(u unsafe.Pointer) *EventController {
 	}
 
 	g := &EventController{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -10409,7 +10409,7 @@ func ExpanderNewFromC(u unsafe.Pointer) *Expander {
 	}
 
 	g := &Expander{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -10539,7 +10539,7 @@ func ExpanderAccessibleNewFromC(u unsafe.Pointer) *ExpanderAccessible {
 	}
 
 	g := &ExpanderAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -10604,7 +10604,7 @@ func FileChooserButtonNewFromC(u unsafe.Pointer) *FileChooserButton {
 	}
 
 	g := &FileChooserButton{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -10684,7 +10684,7 @@ func FileChooserDialogNewFromC(u unsafe.Pointer) *FileChooserDialog {
 	}
 
 	g := &FileChooserDialog{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -10769,7 +10769,7 @@ func FileChooserWidgetNewFromC(u unsafe.Pointer) *FileChooserWidget {
 	}
 
 	g := &FileChooserWidget{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -11571,7 +11571,7 @@ func FileFilterNewFromC(u unsafe.Pointer) *FileFilter {
 	}
 
 	g := &FileFilter{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -11621,7 +11621,7 @@ func FixedNewFromC(u unsafe.Pointer) *Fixed {
 	}
 
 	g := &Fixed{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -11725,7 +11725,7 @@ func FlowBoxNewFromC(u unsafe.Pointer) *FlowBox {
 	}
 
 	g := &FlowBox{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -12159,7 +12159,7 @@ func FlowBoxAccessibleNewFromC(u unsafe.Pointer) *FlowBoxAccessible {
 	}
 
 	g := &FlowBoxAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -12223,7 +12223,7 @@ func FlowBoxChildNewFromC(u unsafe.Pointer) *FlowBoxChild {
 	}
 
 	g := &FlowBoxChild{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -12352,7 +12352,7 @@ func FlowBoxChildAccessibleNewFromC(u unsafe.Pointer) *FlowBoxChildAccessible {
 	}
 
 	g := &FlowBoxChildAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -12412,7 +12412,7 @@ func FontButtonNewFromC(u unsafe.Pointer) *FontButton {
 	}
 
 	g := &FontButton{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -12502,7 +12502,7 @@ func FontChooserDialogNewFromC(u unsafe.Pointer) *FontChooserDialog {
 	}
 
 	g := &FontChooserDialog{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -12587,7 +12587,7 @@ func FontChooserWidgetNewFromC(u unsafe.Pointer) *FontChooserWidget {
 	}
 
 	g := &FontChooserWidget{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -12667,7 +12667,7 @@ func FontSelectionNewFromC(u unsafe.Pointer) *FontSelection {
 	}
 
 	g := &FontSelection{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -12788,7 +12788,7 @@ func FontSelectionDialogNewFromC(u unsafe.Pointer) *FontSelectionDialog {
 	}
 
 	g := &FontSelectionDialog{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -12917,7 +12917,7 @@ func FrameNewFromC(u unsafe.Pointer) *Frame {
 	}
 
 	g := &Frame{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -13084,7 +13084,7 @@ func FrameAccessibleNewFromC(u unsafe.Pointer) *FrameAccessible {
 	}
 
 	g := &FrameAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -13142,7 +13142,7 @@ func GestureNewFromC(u unsafe.Pointer) *Gesture {
 	}
 
 	g := &Gesture{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -13187,7 +13187,7 @@ func GestureDragNewFromC(u unsafe.Pointer) *GestureDrag {
 	}
 
 	g := &GestureDrag{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -13240,7 +13240,7 @@ func GestureLongPressNewFromC(u unsafe.Pointer) *GestureLongPress {
 	}
 
 	g := &GestureLongPress{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -13293,7 +13293,7 @@ func GestureMultiPressNewFromC(u unsafe.Pointer) *GestureMultiPress {
 	}
 
 	g := &GestureMultiPress{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -13346,7 +13346,7 @@ func GesturePanNewFromC(u unsafe.Pointer) *GesturePan {
 	}
 
 	g := &GesturePan{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -13404,7 +13404,7 @@ func GestureRotateNewFromC(u unsafe.Pointer) *GestureRotate {
 	}
 
 	g := &GestureRotate{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -13452,7 +13452,7 @@ func GestureSingleNewFromC(u unsafe.Pointer) *GestureSingle {
 	}
 
 	g := &GestureSingle{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -13500,7 +13500,7 @@ func GestureSwipeNewFromC(u unsafe.Pointer) *GestureSwipe {
 	}
 
 	g := &GestureSwipe{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -13553,7 +13553,7 @@ func GestureZoomNewFromC(u unsafe.Pointer) *GestureZoom {
 	}
 
 	g := &GestureZoom{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -13603,7 +13603,7 @@ func GridNewFromC(u unsafe.Pointer) *Grid {
 	}
 
 	g := &Grid{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -13793,7 +13793,7 @@ func HBoxNewFromC(u unsafe.Pointer) *HBox {
 	}
 
 	g := &HBox{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -13880,7 +13880,7 @@ func HButtonBoxNewFromC(u unsafe.Pointer) *HButtonBox {
 	}
 
 	g := &HButtonBox{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -13967,7 +13967,7 @@ func HPanedNewFromC(u unsafe.Pointer) *HPaned {
 	}
 
 	g := &HPaned{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -14050,7 +14050,7 @@ func HSVNewFromC(u unsafe.Pointer) *HSV {
 	}
 
 	g := &HSV{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -14171,7 +14171,7 @@ func HScaleNewFromC(u unsafe.Pointer) *HScale {
 	}
 
 	g := &HScale{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -14272,7 +14272,7 @@ func HScrollbarNewFromC(u unsafe.Pointer) *HScrollbar {
 	}
 
 	g := &HScrollbar{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -14359,7 +14359,7 @@ func HSeparatorNewFromC(u unsafe.Pointer) *HSeparator {
 	}
 
 	g := &HSeparator{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -14437,7 +14437,7 @@ func HandleBoxNewFromC(u unsafe.Pointer) *HandleBox {
 	}
 
 	g := &HandleBox{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -14689,7 +14689,7 @@ func HeaderBarNewFromC(u unsafe.Pointer) *HeaderBar {
 	}
 
 	g := &HeaderBar{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -14753,7 +14753,7 @@ func IMContextNewFromC(u unsafe.Pointer) *IMContext {
 	}
 
 	g := &IMContext{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -15286,7 +15286,7 @@ func IMContextSimpleNewFromC(u unsafe.Pointer) *IMContextSimple {
 	}
 
 	g := &IMContextSimple{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -15354,7 +15354,7 @@ func IMMulticontextNewFromC(u unsafe.Pointer) *IMMulticontext {
 	}
 
 	g := &IMMulticontext{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -15419,7 +15419,7 @@ func IconFactoryNewFromC(u unsafe.Pointer) *IconFactory {
 	}
 
 	g := &IconFactory{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -15521,7 +15521,7 @@ func IconInfoNewFromC(u unsafe.Pointer) *IconInfo {
 	}
 
 	g := &IconInfo{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -15561,7 +15561,7 @@ func IconThemeNewFromC(u unsafe.Pointer) *IconTheme {
 	}
 
 	g := &IconTheme{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -15661,7 +15661,7 @@ func IconViewNewFromC(u unsafe.Pointer) *IconView {
 	}
 
 	g := &IconView{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -16163,7 +16163,7 @@ func IconViewAccessibleNewFromC(u unsafe.Pointer) *IconViewAccessible {
 	}
 
 	g := &IconViewAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -16228,7 +16228,7 @@ func ImageNewFromC(u unsafe.Pointer) *Image {
 	}
 
 	g := &Image{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -16474,7 +16474,7 @@ func ImageAccessibleNewFromC(u unsafe.Pointer) *ImageAccessible {
 	}
 
 	g := &ImageAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -16534,7 +16534,7 @@ func ImageCellAccessibleNewFromC(u unsafe.Pointer) *ImageCellAccessible {
 	}
 
 	g := &ImageCellAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -16604,7 +16604,7 @@ func ImageMenuItemNewFromC(u unsafe.Pointer) *ImageMenuItem {
 	}
 
 	g := &ImageMenuItem{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -16755,7 +16755,7 @@ func InfoBarNewFromC(u unsafe.Pointer) *InfoBar {
 	}
 
 	g := &InfoBar{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -16832,7 +16832,7 @@ func InvisibleNewFromC(u unsafe.Pointer) *Invisible {
 	}
 
 	g := &Invisible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -16900,7 +16900,7 @@ func LabelNewFromC(u unsafe.Pointer) *Label {
 	}
 
 	g := &Label{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -17384,7 +17384,7 @@ func LabelAccessibleNewFromC(u unsafe.Pointer) *LabelAccessible {
 	}
 
 	g := &LabelAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -17449,7 +17449,7 @@ func LayoutNewFromC(u unsafe.Pointer) *Layout {
 	}
 
 	g := &Layout{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -17635,7 +17635,7 @@ func LevelBarNewFromC(u unsafe.Pointer) *LevelBar {
 	}
 
 	g := &LevelBar{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -17700,7 +17700,7 @@ func LevelBarAccessibleNewFromC(u unsafe.Pointer) *LevelBarAccessible {
 	}
 
 	g := &LevelBarAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -17760,7 +17760,7 @@ func LinkButtonNewFromC(u unsafe.Pointer) *LinkButton {
 	}
 
 	g := &LinkButton{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -17908,7 +17908,7 @@ func LinkButtonAccessibleNewFromC(u unsafe.Pointer) *LinkButtonAccessible {
 	}
 
 	g := &LinkButtonAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -17987,7 +17987,7 @@ func ListBoxNewFromC(u unsafe.Pointer) *ListBox {
 	}
 
 	g := &ListBox{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -18174,7 +18174,7 @@ func ListBoxAccessibleNewFromC(u unsafe.Pointer) *ListBoxAccessible {
 	}
 
 	g := &ListBoxAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -18238,7 +18238,7 @@ func ListBoxRowNewFromC(u unsafe.Pointer) *ListBoxRow {
 	}
 
 	g := &ListBoxRow{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -18312,7 +18312,7 @@ func ListBoxRowAccessibleNewFromC(u unsafe.Pointer) *ListBoxRowAccessible {
 	}
 
 	g := &ListBoxRowAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -18372,7 +18372,7 @@ func ListStoreNewFromC(u unsafe.Pointer) *ListStore {
 	}
 
 	g := &ListStore{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -18572,7 +18572,7 @@ func LockButtonNewFromC(u unsafe.Pointer) *LockButton {
 	}
 
 	g := &LockButton{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -18657,7 +18657,7 @@ func LockButtonAccessibleNewFromC(u unsafe.Pointer) *LockButtonAccessible {
 	}
 
 	g := &LockButtonAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -18732,7 +18732,7 @@ func MenuNewFromC(u unsafe.Pointer) *Menu {
 	}
 
 	g := &Menu{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -18942,7 +18942,7 @@ func MenuAccessibleNewFromC(u unsafe.Pointer) *MenuAccessible {
 	}
 
 	g := &MenuAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -19012,7 +19012,7 @@ func MenuBarNewFromC(u unsafe.Pointer) *MenuBar {
 	}
 
 	g := &MenuBar{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -19090,7 +19090,7 @@ func MenuButtonNewFromC(u unsafe.Pointer) *MenuButton {
 	}
 
 	g := &MenuButton{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -19180,7 +19180,7 @@ func MenuButtonAccessibleNewFromC(u unsafe.Pointer) *MenuButtonAccessible {
 	}
 
 	g := &MenuButtonAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -19260,7 +19260,7 @@ func MenuItemNewFromC(u unsafe.Pointer) *MenuItem {
 	}
 
 	g := &MenuItem{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -19826,7 +19826,7 @@ func MenuItemAccessibleNewFromC(u unsafe.Pointer) *MenuItemAccessible {
 	}
 
 	g := &MenuItemAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -19896,7 +19896,7 @@ func MenuShellNewFromC(u unsafe.Pointer) *MenuShell {
 	}
 
 	g := &MenuShell{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -20286,7 +20286,7 @@ func MenuShellAccessibleNewFromC(u unsafe.Pointer) *MenuShellAccessible {
 	}
 
 	g := &MenuShellAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -20351,7 +20351,7 @@ func MenuToolButtonNewFromC(u unsafe.Pointer) *MenuToolButton {
 	}
 
 	g := &MenuToolButton{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -20501,7 +20501,7 @@ func MessageDialogNewFromC(u unsafe.Pointer) *MessageDialog {
 	}
 
 	g := &MessageDialog{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -20583,7 +20583,7 @@ func MiscNewFromC(u unsafe.Pointer) *Misc {
 	}
 
 	g := &Misc{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -20693,7 +20693,7 @@ func ModelButtonNewFromC(u unsafe.Pointer) *ModelButton {
 	}
 
 	g := &ModelButton{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -20778,7 +20778,7 @@ func MountOperationNewFromC(u unsafe.Pointer) *MountOperation {
 	}
 
 	g := &MountOperation{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -20823,7 +20823,7 @@ func NotebookNewFromC(u unsafe.Pointer) *Notebook {
 	}
 
 	g := &Notebook{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -21516,7 +21516,7 @@ func NotebookAccessibleNewFromC(u unsafe.Pointer) *NotebookAccessible {
 	}
 
 	g := &NotebookAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -21581,7 +21581,7 @@ func NotebookPageAccessibleNewFromC(u unsafe.Pointer) *NotebookPageAccessible {
 	}
 
 	g := &NotebookPageAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -21651,7 +21651,7 @@ func NumerableIconNewFromC(u unsafe.Pointer) *NumerableIcon {
 	}
 
 	g := &NumerableIcon{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -21700,7 +21700,7 @@ func OffscreenWindowNewFromC(u unsafe.Pointer) *OffscreenWindow {
 	}
 
 	g := &OffscreenWindow{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -21775,7 +21775,7 @@ func OverlayNewFromC(u unsafe.Pointer) *Overlay {
 	}
 
 	g := &Overlay{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -21845,7 +21845,7 @@ func PageSetupNewFromC(u unsafe.Pointer) *PageSetup {
 	}
 
 	g := &PageSetup{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -21885,7 +21885,7 @@ func PanedNewFromC(u unsafe.Pointer) *Paned {
 	}
 
 	g := &Paned{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -22032,7 +22032,7 @@ func PanedAccessibleNewFromC(u unsafe.Pointer) *PanedAccessible {
 	}
 
 	g := &PanedAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -22095,7 +22095,7 @@ func PlacesSidebarNewFromC(u unsafe.Pointer) *PlacesSidebar {
 	}
 
 	g := &PlacesSidebar{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -22240,7 +22240,7 @@ func PopoverNewFromC(u unsafe.Pointer) *Popover {
 	}
 
 	g := &Popover{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -22379,7 +22379,7 @@ func PopoverAccessibleNewFromC(u unsafe.Pointer) *PopoverAccessible {
 	}
 
 	g := &PopoverAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -22437,7 +22437,7 @@ func PopoverMenuNewFromC(u unsafe.Pointer) *PopoverMenu {
 	}
 
 	g := &PopoverMenu{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -22510,7 +22510,7 @@ func PrintContextNewFromC(u unsafe.Pointer) *PrintContext {
 	}
 
 	g := &PrintContext{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -22550,7 +22550,7 @@ func PrintOperationNewFromC(u unsafe.Pointer) *PrintOperation {
 	}
 
 	g := &PrintOperation{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -22593,7 +22593,7 @@ func PrintSettingsNewFromC(u unsafe.Pointer) *PrintSettings {
 	}
 
 	g := &PrintSettings{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -22633,7 +22633,7 @@ func ProgressBarNewFromC(u unsafe.Pointer) *ProgressBar {
 	}
 
 	g := &ProgressBar{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -22783,7 +22783,7 @@ func ProgressBarAccessibleNewFromC(u unsafe.Pointer) *ProgressBarAccessible {
 	}
 
 	g := &ProgressBarAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -22843,7 +22843,7 @@ func RadioActionNewFromC(u unsafe.Pointer) *RadioAction {
 	}
 
 	g := &RadioAction{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -22898,7 +22898,7 @@ func RadioButtonNewFromC(u unsafe.Pointer) *RadioButton {
 	}
 
 	g := &RadioButton{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -23103,7 +23103,7 @@ func RadioButtonAccessibleNewFromC(u unsafe.Pointer) *RadioButtonAccessible {
 	}
 
 	g := &RadioButtonAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -23183,7 +23183,7 @@ func RadioMenuItemNewFromC(u unsafe.Pointer) *RadioMenuItem {
 	}
 
 	g := &RadioMenuItem{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -23398,7 +23398,7 @@ func RadioMenuItemAccessibleNewFromC(u unsafe.Pointer) *RadioMenuItemAccessible 
 	}
 
 	g := &RadioMenuItemAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -23477,7 +23477,7 @@ func RadioToolButtonNewFromC(u unsafe.Pointer) *RadioToolButton {
 	}
 
 	g := &RadioToolButton{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -23572,7 +23572,7 @@ func RangeNewFromC(u unsafe.Pointer) *Range {
 	}
 
 	g := &Range{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -23838,7 +23838,7 @@ func RangeAccessibleNewFromC(u unsafe.Pointer) *RangeAccessible {
 	}
 
 	g := &RangeAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -23916,7 +23916,7 @@ func RcStyleNewFromC(u unsafe.Pointer) *RcStyle {
 		Ythickness: (int32)(c.ythickness),
 		native:     c,
 	}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -23978,7 +23978,7 @@ func RecentActionNewFromC(u unsafe.Pointer) *RecentAction {
 	}
 
 	g := &RecentAction{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -24033,7 +24033,7 @@ func RecentChooserDialogNewFromC(u unsafe.Pointer) *RecentChooserDialog {
 	}
 
 	g := &RecentChooserDialog{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -24118,7 +24118,7 @@ func RecentChooserMenuNewFromC(u unsafe.Pointer) *RecentChooserMenu {
 	}
 
 	g := &RecentChooserMenu{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -24203,7 +24203,7 @@ func RecentChooserWidgetNewFromC(u unsafe.Pointer) *RecentChooserWidget {
 	}
 
 	g := &RecentChooserWidget{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -24281,7 +24281,7 @@ func RecentFilterNewFromC(u unsafe.Pointer) *RecentFilter {
 	}
 
 	g := &RecentFilter{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -24331,7 +24331,7 @@ func RendererCellAccessibleNewFromC(u unsafe.Pointer) *RendererCellAccessible {
 	}
 
 	g := &RendererCellAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -24403,7 +24403,7 @@ func RevealerNewFromC(u unsafe.Pointer) *Revealer {
 	}
 
 	g := &Revealer{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -24473,7 +24473,7 @@ func ScaleNewFromC(u unsafe.Pointer) *Scale {
 	}
 
 	g := &Scale{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -24597,7 +24597,7 @@ func ScaleAccessibleNewFromC(u unsafe.Pointer) *ScaleAccessible {
 	}
 
 	g := &ScaleAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -24662,7 +24662,7 @@ func ScaleButtonNewFromC(u unsafe.Pointer) *ScaleButton {
 	}
 
 	g := &ScaleButton{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -24752,7 +24752,7 @@ func ScaleButtonAccessibleNewFromC(u unsafe.Pointer) *ScaleButtonAccessible {
 	}
 
 	g := &ScaleButtonAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -24831,7 +24831,7 @@ func ScrollbarNewFromC(u unsafe.Pointer) *Scrollbar {
 	}
 
 	g := &Scrollbar{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -24901,7 +24901,7 @@ func ScrolledWindowNewFromC(u unsafe.Pointer) *ScrolledWindow {
 	}
 
 	g := &ScrolledWindow{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -25092,7 +25092,7 @@ func ScrolledWindowAccessibleNewFromC(u unsafe.Pointer) *ScrolledWindowAccessibl
 	}
 
 	g := &ScrolledWindowAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -25151,7 +25151,7 @@ func SearchBarNewFromC(u unsafe.Pointer) *SearchBar {
 	}
 
 	g := &SearchBar{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -25220,7 +25220,7 @@ func SearchEntryNewFromC(u unsafe.Pointer) *SearchEntry {
 	}
 
 	g := &SearchEntry{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -25295,7 +25295,7 @@ func SeparatorNewFromC(u unsafe.Pointer) *Separator {
 	}
 
 	g := &Separator{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -25359,7 +25359,7 @@ func SeparatorMenuItemNewFromC(u unsafe.Pointer) *SeparatorMenuItem {
 	}
 
 	g := &SeparatorMenuItem{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -25452,7 +25452,7 @@ func SeparatorToolItemNewFromC(u unsafe.Pointer) *SeparatorToolItem {
 	}
 
 	g := &SeparatorToolItem{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -25532,7 +25532,7 @@ func SettingsNewFromC(u unsafe.Pointer) *Settings {
 	}
 
 	g := &Settings{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -25653,7 +25653,7 @@ func SizeGroupNewFromC(u unsafe.Pointer) *SizeGroup {
 	}
 
 	g := &SizeGroup{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -25751,7 +25751,7 @@ func SpinButtonNewFromC(u unsafe.Pointer) *SpinButton {
 	}
 
 	g := &SpinButton{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -26208,7 +26208,7 @@ func SpinButtonAccessibleNewFromC(u unsafe.Pointer) *SpinButtonAccessible {
 	}
 
 	g := &SpinButtonAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -26288,7 +26288,7 @@ func SpinnerNewFromC(u unsafe.Pointer) *Spinner {
 	}
 
 	g := &Spinner{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -26348,7 +26348,7 @@ func SpinnerAccessibleNewFromC(u unsafe.Pointer) *SpinnerAccessible {
 	}
 
 	g := &SpinnerAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -26407,7 +26407,7 @@ func StackNewFromC(u unsafe.Pointer) *Stack {
 	}
 
 	g := &Stack{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -26473,7 +26473,7 @@ func StackSidebarNewFromC(u unsafe.Pointer) *StackSidebar {
 	}
 
 	g := &StackSidebar{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -26542,7 +26542,7 @@ func StackSwitcherNewFromC(u unsafe.Pointer) *StackSwitcher {
 	}
 
 	g := &StackSwitcher{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -26617,7 +26617,7 @@ func StatusIconNewFromC(u unsafe.Pointer) *StatusIcon {
 	}
 
 	g := &StatusIcon{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -26657,7 +26657,7 @@ func StatusbarNewFromC(u unsafe.Pointer) *Statusbar {
 	}
 
 	g := &Statusbar{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -26912,7 +26912,7 @@ func StatusbarAccessibleNewFromC(u unsafe.Pointer) *StatusbarAccessible {
 	}
 
 	g := &StatusbarAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -26996,7 +26996,7 @@ func StyleNewFromC(u unsafe.Pointer) *Style {
 		Ythickness: (int32)(c.ythickness),
 		native:     c,
 	}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -27155,7 +27155,7 @@ func StyleContextNewFromC(u unsafe.Pointer) *StyleContext {
 	}
 
 	g := &StyleContext{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -27273,7 +27273,7 @@ func StylePropertiesNewFromC(u unsafe.Pointer) *StyleProperties {
 	}
 
 	g := &StyleProperties{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -27333,7 +27333,7 @@ func SwitchNewFromC(u unsafe.Pointer) *Switch {
 	}
 
 	g := &Switch{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -27463,7 +27463,7 @@ func SwitchAccessibleNewFromC(u unsafe.Pointer) *SwitchAccessible {
 	}
 
 	g := &SwitchAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -27523,7 +27523,7 @@ func TableNewFromC(u unsafe.Pointer) *Table {
 	}
 
 	g := &Table{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -27756,7 +27756,7 @@ func TearoffMenuItemNewFromC(u unsafe.Pointer) *TearoffMenuItem {
 	}
 
 	g := &TearoffMenuItem{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -27849,7 +27849,7 @@ func TextBufferNewFromC(u unsafe.Pointer) *TextBuffer {
 	}
 
 	g := &TextBuffer{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -29419,7 +29419,7 @@ func TextCellAccessibleNewFromC(u unsafe.Pointer) *TextCellAccessible {
 	}
 
 	g := &TextCellAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -29489,7 +29489,7 @@ func TextChildAnchorNewFromC(u unsafe.Pointer) *TextChildAnchor {
 	}
 
 	g := &TextChildAnchor{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -29553,7 +29553,7 @@ func TextMarkNewFromC(u unsafe.Pointer) *TextMark {
 	}
 
 	g := &TextMark{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -29643,7 +29643,7 @@ func TextTagNewFromC(u unsafe.Pointer) *TextTag {
 	}
 
 	g := &TextTag{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -29715,7 +29715,7 @@ func TextTagTableNewFromC(u unsafe.Pointer) *TextTagTable {
 	}
 
 	g := &TextTagTable{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -30007,7 +30007,7 @@ func TextViewNewFromC(u unsafe.Pointer) *TextView {
 	}
 
 	g := &TextView{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -31289,7 +31289,7 @@ func TextViewAccessibleNewFromC(u unsafe.Pointer) *TextViewAccessible {
 	}
 
 	g := &TextViewAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -31364,7 +31364,7 @@ func ThemingEngineNewFromC(u unsafe.Pointer) *ThemingEngine {
 	}
 
 	g := &ThemingEngine{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -31433,7 +31433,7 @@ func ToggleActionNewFromC(u unsafe.Pointer) *ToggleAction {
 	}
 
 	g := &ToggleAction{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -31543,7 +31543,7 @@ func ToggleButtonNewFromC(u unsafe.Pointer) *ToggleButton {
 	}
 
 	g := &ToggleButton{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -31779,7 +31779,7 @@ func ToggleButtonAccessibleNewFromC(u unsafe.Pointer) *ToggleButtonAccessible {
 	}
 
 	g := &ToggleButtonAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -31854,7 +31854,7 @@ func ToggleToolButtonNewFromC(u unsafe.Pointer) *ToggleToolButton {
 	}
 
 	g := &ToggleToolButton{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -32004,7 +32004,7 @@ func ToolButtonNewFromC(u unsafe.Pointer) *ToolButton {
 	}
 
 	g := &ToolButton{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -32149,7 +32149,7 @@ func ToolItemNewFromC(u unsafe.Pointer) *ToolItem {
 	}
 
 	g := &ToolItem{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -32347,7 +32347,7 @@ func ToolItemGroupNewFromC(u unsafe.Pointer) *ToolItemGroup {
 	}
 
 	g := &ToolItemGroup{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -32417,7 +32417,7 @@ func ToolPaletteNewFromC(u unsafe.Pointer) *ToolPalette {
 	}
 
 	g := &ToolPalette{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -32492,7 +32492,7 @@ func ToolbarNewFromC(u unsafe.Pointer) *Toolbar {
 	}
 
 	g := &Toolbar{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -32759,7 +32759,7 @@ func TooltipNewFromC(u unsafe.Pointer) *Tooltip {
 	}
 
 	g := &Tooltip{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -32799,7 +32799,7 @@ func ToplevelAccessibleNewFromC(u unsafe.Pointer) *ToplevelAccessible {
 	}
 
 	g := &ToplevelAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -32847,7 +32847,7 @@ func TreeModelFilterNewFromC(u unsafe.Pointer) *TreeModelFilter {
 	}
 
 	g := &TreeModelFilter{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -32897,7 +32897,7 @@ func TreeModelSortNewFromC(u unsafe.Pointer) *TreeModelSort {
 	}
 
 	g := &TreeModelSort{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -33043,7 +33043,7 @@ func TreeSelectionNewFromC(u unsafe.Pointer) *TreeSelection {
 	}
 
 	g := &TreeSelection{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -33301,7 +33301,7 @@ func TreeStoreNewFromC(u unsafe.Pointer) *TreeStore {
 	}
 
 	g := &TreeStore{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -33557,7 +33557,7 @@ func TreeViewNewFromC(u unsafe.Pointer) *TreeView {
 	}
 
 	g := &TreeView{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -35072,7 +35072,7 @@ func TreeViewAccessibleNewFromC(u unsafe.Pointer) *TreeViewAccessible {
 	}
 
 	g := &TreeViewAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -35147,7 +35147,7 @@ func TreeViewColumnNewFromC(u unsafe.Pointer) *TreeViewColumn {
 	}
 
 	g := &TreeViewColumn{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -35677,7 +35677,7 @@ func UIManagerNewFromC(u unsafe.Pointer) *UIManager {
 	}
 
 	g := &UIManager{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -35721,7 +35721,7 @@ func VBoxNewFromC(u unsafe.Pointer) *VBox {
 	}
 
 	g := &VBox{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -35808,7 +35808,7 @@ func VButtonBoxNewFromC(u unsafe.Pointer) *VButtonBox {
 	}
 
 	g := &VButtonBox{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -35895,7 +35895,7 @@ func VPanedNewFromC(u unsafe.Pointer) *VPaned {
 	}
 
 	g := &VPaned{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -35977,7 +35977,7 @@ func VScaleNewFromC(u unsafe.Pointer) *VScale {
 	}
 
 	g := &VScale{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -36078,7 +36078,7 @@ func VScrollbarNewFromC(u unsafe.Pointer) *VScrollbar {
 	}
 
 	g := &VScrollbar{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -36165,7 +36165,7 @@ func VSeparatorNewFromC(u unsafe.Pointer) *VSeparator {
 	}
 
 	g := &VSeparator{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -36243,7 +36243,7 @@ func ViewportNewFromC(u unsafe.Pointer) *Viewport {
 	}
 
 	g := &Viewport{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -36392,7 +36392,7 @@ func VolumeButtonNewFromC(u unsafe.Pointer) *VolumeButton {
 	}
 
 	g := &VolumeButton{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -36487,7 +36487,7 @@ func WidgetNewFromC(u unsafe.Pointer) *Widget {
 	}
 
 	g := &Widget{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -40929,7 +40929,7 @@ func WidgetAccessibleNewFromC(u unsafe.Pointer) *WidgetAccessible {
 	}
 
 	g := &WidgetAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -40979,7 +40979,7 @@ func WindowNewFromC(u unsafe.Pointer) *Window {
 	}
 
 	g := &Window{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -41966,7 +41966,7 @@ func WindowAccessibleNewFromC(u unsafe.Pointer) *WindowAccessible {
 	}
 
 	g := &WindowAccessible{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -42031,7 +42031,7 @@ func WindowGroupNewFromC(u unsafe.Pointer) *WindowGroup {
 	}
 
 	g := &WindowGroup{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }

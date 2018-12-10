@@ -96,16 +96,18 @@ func (r *RecordNewFromCFunc) generateCallObjectTake(g *jen.Group) {
 		return
 	}
 
+	// qualify TakeRef if package is not gobject
 	var s *jen.Statement
 	if r.Namespace.Name == "GObject" {
-		s = g.Id("ObjectNewFromC")
+		s = g.Id("TakeRef")
 	} else {
-		s = g.Qual(r.root().Namespace.fullGoPackageName, "ObjectNewFromC")
+		s = g.Qual(r.root().Namespace.fullGoPackageName, "TakeRef")
 	}
 
-	// [gobject.]ObjectNewFromC(unsafe.Pointer(c)).Take()
+	// [gobject.]TakeRef(g, c)
 	s.
-		Call(jen.Qual("unsafe", "Pointer").Call(jen.Id("c"))).
-		Dot("Take").
-		Call()
+		Call(
+			jen.Id("g"),
+			jen.Qual("unsafe", "Pointer").Parens(jen.Id("c")),
+		)
 }

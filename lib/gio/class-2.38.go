@@ -124,7 +124,7 @@ func PropertyActionNewFromC(u unsafe.Pointer) *PropertyAction {
 	}
 
 	g := &PropertyAction{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }

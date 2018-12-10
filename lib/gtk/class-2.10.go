@@ -3069,7 +3069,7 @@ func RecentManagerNewFromC(u unsafe.Pointer) *RecentManager {
 	}
 
 	g := &RecentManager{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }

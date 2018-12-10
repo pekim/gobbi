@@ -63,7 +63,7 @@ func PixbufNewFromC(u unsafe.Pointer) *Pixbuf {
 	}
 
 	g := &Pixbuf{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -494,7 +494,7 @@ func PixbufAnimationNewFromC(u unsafe.Pointer) *PixbufAnimation {
 	}
 
 	g := &PixbufAnimation{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -610,7 +610,7 @@ func PixbufAnimationIterNewFromC(u unsafe.Pointer) *PixbufAnimationIter {
 	}
 
 	g := &PixbufAnimationIter{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -687,7 +687,7 @@ func PixbufLoaderNewFromC(u unsafe.Pointer) *PixbufLoader {
 	}
 
 	g := &PixbufLoader{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -1053,7 +1053,7 @@ func PixbufSimpleAnimNewFromC(u unsafe.Pointer) *PixbufSimpleAnim {
 	}
 
 	g := &PixbufSimpleAnim{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }

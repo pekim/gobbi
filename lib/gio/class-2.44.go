@@ -204,7 +204,7 @@ func SimpleIOStreamNewFromC(u unsafe.Pointer) *SimpleIOStream {
 	}
 
 	g := &SimpleIOStream{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }

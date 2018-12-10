@@ -200,7 +200,7 @@ func AppLaunchContextNewFromC(u unsafe.Pointer) *AppLaunchContext {
 	}
 
 	g := &AppLaunchContext{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -290,7 +290,7 @@ func ApplicationCommandLineNewFromC(u unsafe.Pointer) *ApplicationCommandLine {
 	}
 
 	g := &ApplicationCommandLine{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -330,7 +330,7 @@ func BufferedInputStreamNewFromC(u unsafe.Pointer) *BufferedInputStream {
 	}
 
 	g := &BufferedInputStream{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -515,7 +515,7 @@ func BufferedOutputStreamNewFromC(u unsafe.Pointer) *BufferedOutputStream {
 	}
 
 	g := &BufferedOutputStream{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -631,7 +631,7 @@ func BytesIconNewFromC(u unsafe.Pointer) *BytesIcon {
 	}
 
 	g := &BytesIcon{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -681,7 +681,7 @@ func CancellableNewFromC(u unsafe.Pointer) *Cancellable {
 	}
 
 	g := &Cancellable{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -859,7 +859,7 @@ func CharsetConverterNewFromC(u unsafe.Pointer) *CharsetConverter {
 	}
 
 	g := &CharsetConverter{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -909,7 +909,7 @@ func ConverterInputStreamNewFromC(u unsafe.Pointer) *ConverterInputStream {
 	}
 
 	g := &ConverterInputStream{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -979,7 +979,7 @@ func ConverterOutputStreamNewFromC(u unsafe.Pointer) *ConverterOutputStream {
 	}
 
 	g := &ConverterOutputStream{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -1047,7 +1047,7 @@ func DBusActionGroupNewFromC(u unsafe.Pointer) *DBusActionGroup {
 	}
 
 	g := &DBusActionGroup{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -1095,7 +1095,7 @@ func DBusMenuModelNewFromC(u unsafe.Pointer) *DBusMenuModel {
 	}
 
 	g := &DBusMenuModel{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -1140,7 +1140,7 @@ func DataInputStreamNewFromC(u unsafe.Pointer) *DataInputStream {
 	}
 
 	g := &DataInputStream{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -1417,7 +1417,7 @@ func DataOutputStreamNewFromC(u unsafe.Pointer) *DataOutputStream {
 	}
 
 	g := &DataOutputStream{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -1677,7 +1677,7 @@ func DesktopAppInfoNewFromC(u unsafe.Pointer) *DesktopAppInfo {
 	}
 
 	g := &DesktopAppInfo{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -1779,7 +1779,7 @@ func EmblemNewFromC(u unsafe.Pointer) *Emblem {
 	}
 
 	g := &Emblem{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -1824,7 +1824,7 @@ func EmblemedIconNewFromC(u unsafe.Pointer) *EmblemedIcon {
 	}
 
 	g := &EmblemedIcon{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -1869,7 +1869,7 @@ func FileEnumeratorNewFromC(u unsafe.Pointer) *FileEnumerator {
 	}
 
 	g := &FileEnumerator{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -2018,7 +2018,7 @@ func FileIOStreamNewFromC(u unsafe.Pointer) *FileIOStream {
 	}
 
 	g := &FileIOStream{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -2066,7 +2066,7 @@ func FileIconNewFromC(u unsafe.Pointer) *FileIcon {
 	}
 
 	g := &FileIcon{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -2132,7 +2132,7 @@ func FileInfoNewFromC(u unsafe.Pointer) *FileInfo {
 	}
 
 	g := &FileInfo{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -2724,7 +2724,7 @@ func FileInputStreamNewFromC(u unsafe.Pointer) *FileInputStream {
 	}
 
 	g := &FileInputStream{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -2816,7 +2816,7 @@ func FileMonitorNewFromC(u unsafe.Pointer) *FileMonitor {
 	}
 
 	g := &FileMonitor{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -2896,7 +2896,7 @@ func FileOutputStreamNewFromC(u unsafe.Pointer) *FileOutputStream {
 	}
 
 	g := &FileOutputStream{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -2995,7 +2995,7 @@ func FilenameCompleterNewFromC(u unsafe.Pointer) *FilenameCompleter {
 	}
 
 	g := &FilenameCompleter{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -3127,7 +3127,7 @@ func FilterInputStreamNewFromC(u unsafe.Pointer) *FilterInputStream {
 	}
 
 	g := &FilterInputStream{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -3198,7 +3198,7 @@ func FilterOutputStreamNewFromC(u unsafe.Pointer) *FilterOutputStream {
 	}
 
 	g := &FilterOutputStream{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -3267,7 +3267,7 @@ func IOModuleNewFromC(u unsafe.Pointer) *IOModule {
 	}
 
 	g := &IOModule{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -3322,7 +3322,7 @@ func IOStreamNewFromC(u unsafe.Pointer) *IOStream {
 	}
 
 	g := &IOStream{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -3362,7 +3362,7 @@ func InetAddressNewFromC(u unsafe.Pointer) *InetAddress {
 	}
 
 	g := &InetAddress{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -3402,7 +3402,7 @@ func InetSocketAddressNewFromC(u unsafe.Pointer) *InetSocketAddress {
 	}
 
 	g := &InetSocketAddress{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -3452,7 +3452,7 @@ func InputStreamNewFromC(u unsafe.Pointer) *InputStream {
 	}
 
 	g := &InputStream{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -3679,7 +3679,7 @@ func ListStoreNewFromC(u unsafe.Pointer) *ListStore {
 	}
 
 	g := &ListStore{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -3724,7 +3724,7 @@ func MemoryInputStreamNewFromC(u unsafe.Pointer) *MemoryInputStream {
 	}
 
 	g := &MemoryInputStream{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -3791,7 +3791,7 @@ func MemoryOutputStreamNewFromC(u unsafe.Pointer) *MemoryOutputStream {
 	}
 
 	g := &MemoryOutputStream{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -3864,7 +3864,7 @@ func MountOperationNewFromC(u unsafe.Pointer) *MountOperation {
 	}
 
 	g := &MountOperation{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -4032,7 +4032,7 @@ func NativeVolumeMonitorNewFromC(u unsafe.Pointer) *NativeVolumeMonitor {
 	}
 
 	g := &NativeVolumeMonitor{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -4077,7 +4077,7 @@ func NetworkAddressNewFromC(u unsafe.Pointer) *NetworkAddress {
 	}
 
 	g := &NetworkAddress{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -4122,7 +4122,7 @@ func NetworkServiceNewFromC(u unsafe.Pointer) *NetworkService {
 	}
 
 	g := &NetworkService{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -4167,7 +4167,7 @@ func OutputStreamNewFromC(u unsafe.Pointer) *OutputStream {
 	}
 
 	g := &OutputStream{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -4461,7 +4461,7 @@ func PermissionNewFromC(u unsafe.Pointer) *Permission {
 	}
 
 	g := &Permission{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -4501,7 +4501,7 @@ func ProxyAddressEnumeratorNewFromC(u unsafe.Pointer) *ProxyAddressEnumerator {
 	}
 
 	g := &ProxyAddressEnumerator{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -4546,7 +4546,7 @@ func ResolverNewFromC(u unsafe.Pointer) *Resolver {
 	}
 
 	g := &Resolver{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -4646,7 +4646,7 @@ func SettingsNewFromC(u unsafe.Pointer) *Settings {
 	}
 
 	g := &Settings{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -4940,7 +4940,7 @@ func SettingsBackendNewFromC(u unsafe.Pointer) *SettingsBackend {
 	}
 
 	g := &SettingsBackend{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -4978,7 +4978,7 @@ func SimpleActionNewFromC(u unsafe.Pointer) *SimpleAction {
 	}
 
 	g := &SimpleAction{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -5021,7 +5021,7 @@ func SimpleAsyncResultNewFromC(u unsafe.Pointer) *SimpleAsyncResult {
 	}
 
 	g := &SimpleAsyncResult{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -5180,7 +5180,7 @@ func SimplePermissionNewFromC(u unsafe.Pointer) *SimplePermission {
 	}
 
 	g := &SimplePermission{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -5225,7 +5225,7 @@ func SimpleProxyResolverNewFromC(u unsafe.Pointer) *SimpleProxyResolver {
 	}
 
 	g := &SimpleProxyResolver{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -5269,7 +5269,7 @@ func SocketAddressNewFromC(u unsafe.Pointer) *SocketAddress {
 	}
 
 	g := &SocketAddress{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -5313,7 +5313,7 @@ func SocketAddressEnumeratorNewFromC(u unsafe.Pointer) *SocketAddressEnumerator 
 	}
 
 	g := &SocketAddressEnumerator{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -5392,7 +5392,7 @@ func SocketControlMessageNewFromC(u unsafe.Pointer) *SocketControlMessage {
 	}
 
 	g := &SocketControlMessage{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -5430,7 +5430,7 @@ func TaskNewFromC(u unsafe.Pointer) *Task {
 	}
 
 	g := &Task{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -5475,7 +5475,7 @@ func TcpWrapperConnectionNewFromC(u unsafe.Pointer) *TcpWrapperConnection {
 	}
 
 	g := &TcpWrapperConnection{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -5536,7 +5536,7 @@ func ThemedIconNewFromC(u unsafe.Pointer) *ThemedIcon {
 	}
 
 	g := &ThemedIcon{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -5617,7 +5617,7 @@ func UnixConnectionNewFromC(u unsafe.Pointer) *UnixConnection {
 	}
 
 	g := &UnixConnection{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -5667,7 +5667,7 @@ func UnixFDListNewFromC(u unsafe.Pointer) *UnixFDList {
 	}
 
 	g := &UnixFDList{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -5707,7 +5707,7 @@ func UnixFDMessageNewFromC(u unsafe.Pointer) *UnixFDMessage {
 	}
 
 	g := &UnixFDMessage{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -5752,7 +5752,7 @@ func UnixInputStreamNewFromC(u unsafe.Pointer) *UnixInputStream {
 	}
 
 	g := &UnixInputStream{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -5818,7 +5818,7 @@ func UnixMountMonitorNewFromC(u unsafe.Pointer) *UnixMountMonitor {
 	}
 
 	g := &UnixMountMonitor{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -5986,7 +5986,7 @@ func UnixOutputStreamNewFromC(u unsafe.Pointer) *UnixOutputStream {
 	}
 
 	g := &UnixOutputStream{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -6054,7 +6054,7 @@ func UnixSocketAddressNewFromC(u unsafe.Pointer) *UnixSocketAddress {
 	}
 
 	g := &UnixSocketAddress{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -6115,7 +6115,7 @@ func VfsNewFromC(u unsafe.Pointer) *Vfs {
 	}
 
 	g := &Vfs{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -6214,7 +6214,7 @@ func VolumeMonitorNewFromC(u unsafe.Pointer) *VolumeMonitor {
 	}
 
 	g := &VolumeMonitor{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -6936,7 +6936,7 @@ func ZlibCompressorNewFromC(u unsafe.Pointer) *ZlibCompressor {
 	}
 
 	g := &ZlibCompressor{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -6979,7 +6979,7 @@ func ZlibDecompressorNewFromC(u unsafe.Pointer) *ZlibDecompressor {
 	}
 
 	g := &ZlibDecompressor{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }

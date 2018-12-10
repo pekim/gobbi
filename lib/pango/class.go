@@ -25,7 +25,7 @@ func ContextNewFromC(u unsafe.Pointer) *Context {
 	}
 
 	g := &Context{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -188,7 +188,7 @@ func EngineLangNewFromC(u unsafe.Pointer) *EngineLang {
 	}
 
 	g := &EngineLang{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -222,7 +222,7 @@ func EngineShapeNewFromC(u unsafe.Pointer) *EngineShape {
 	}
 
 	g := &EngineShape{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -256,7 +256,7 @@ func FontNewFromC(u unsafe.Pointer) *Font {
 	}
 
 	g := &Font{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -351,7 +351,7 @@ func FontFaceNewFromC(u unsafe.Pointer) *FontFace {
 	}
 
 	g := &FontFace{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -406,7 +406,7 @@ func FontFamilyNewFromC(u unsafe.Pointer) *FontFamily {
 	}
 
 	g := &FontFamily{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -455,7 +455,7 @@ func FontMapNewFromC(u unsafe.Pointer) *FontMap {
 	}
 
 	g := &FontMap{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -547,7 +547,7 @@ func FontsetNewFromC(u unsafe.Pointer) *Fontset {
 	}
 
 	g := &Fontset{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -599,7 +599,7 @@ func LayoutNewFromC(u unsafe.Pointer) *Layout {
 	}
 
 	g := &Layout{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }

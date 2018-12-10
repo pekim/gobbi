@@ -25,7 +25,7 @@ func InitiallyUnownedNewFromC(u unsafe.Pointer) *InitiallyUnowned {
 	}
 
 	g := &InitiallyUnowned{native: c}
-	ObjectNewFromC(unsafe.Pointer(c)).Take()
+	TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }

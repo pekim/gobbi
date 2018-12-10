@@ -142,7 +142,7 @@ func DeviceToolNewFromC(u unsafe.Pointer) *DeviceTool {
 	}
 
 	g := &DeviceTool{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -389,7 +389,7 @@ func DrawingContextNewFromC(u unsafe.Pointer) *DrawingContext {
 	}
 
 	g := &DrawingContext{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -481,7 +481,7 @@ func MonitorNewFromC(u unsafe.Pointer) *Monitor {
 	}
 
 	g := &Monitor{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -656,7 +656,7 @@ func SeatNewFromC(u unsafe.Pointer) *Seat {
 	}
 
 	g := &Seat{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }

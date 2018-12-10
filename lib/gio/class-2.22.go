@@ -706,7 +706,7 @@ func SocketNewFromC(u unsafe.Pointer) *Socket {
 	}
 
 	g := &Socket{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -1255,7 +1255,7 @@ func SocketClientNewFromC(u unsafe.Pointer) *SocketClient {
 	}
 
 	g := &SocketClient{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -1514,7 +1514,7 @@ func SocketConnectionNewFromC(u unsafe.Pointer) *SocketConnection {
 	}
 
 	g := &SocketConnection{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -1675,7 +1675,7 @@ func SocketListenerNewFromC(u unsafe.Pointer) *SocketListener {
 	}
 
 	g := &SocketListener{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -1913,7 +1913,7 @@ func SocketServiceNewFromC(u unsafe.Pointer) *SocketService {
 	}
 
 	g := &SocketService{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -1988,7 +1988,7 @@ func TcpConnectionNewFromC(u unsafe.Pointer) *TcpConnection {
 	}
 
 	g := &TcpConnection{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }
@@ -2056,7 +2056,7 @@ func ThreadedSocketServiceNewFromC(u unsafe.Pointer) *ThreadedSocketService {
 	}
 
 	g := &ThreadedSocketService{native: c}
-	gobject.ObjectNewFromC(unsafe.Pointer(c)).Take()
+	gobject.TakeRef(g, unsafe.Pointer(c))
 
 	return g
 }

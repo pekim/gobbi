@@ -6,14 +6,21 @@ package gobject
 // #include <glib-object.h>
 // #include <stdlib.h>
 import "C"
-import "runtime"
+import (
+	"runtime"
+	"unsafe"
+)
 
-func (recv *Object) Take() {
-	if recv.IsFloating() {
-		recv.RefSink()
+func TakeRef(goObj interface{}, cPointer unsafe.Pointer) {
+	gpointer := C.gpointer(cPointer)
+
+	if C.g_object_is_floating(gpointer) == C.TRUE {
+		C.g_object_ref_sink(gpointer)
 	} else {
-		recv.Ref()
+		C.g_object_ref(gpointer)
 	}
 
-	runtime.SetFinalizer(recv, (*Object).Unref)
+	runtime.SetFinalizer(goObj, func(o interface{}) {
+		C.g_object_unref(gpointer)
+	})
 }
