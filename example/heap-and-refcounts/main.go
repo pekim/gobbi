@@ -84,25 +84,31 @@ func main() {
 		runtime.ReadMemStats(&stats3)
 		mi3 = C.mallinfo()
 
-		fmt.Println(
-			stats0.HeapAlloc,
-			stats1.HeapAlloc,
-			stats2.HeapAlloc,
-			stats3.HeapAlloc,
+		fmt.Printf("%v %v %v %v \n",
+			bToMb(stats0.HeapAlloc),
+			bToMb(stats1.HeapAlloc),
+			bToMb(stats2.HeapAlloc),
+			bToMb(stats3.HeapAlloc),
 		)
 
-		fmt.Println(
-			stats0.HeapObjects,
-			stats1.HeapObjects,
-			stats2.HeapObjects,
-			stats3.HeapObjects,
+		fmt.Printf("%v %v %v %v \n",
+			bToMb(stats0.HeapObjects),
+			bToMb(stats1.HeapObjects),
+			bToMb(stats2.HeapObjects),
+			bToMb(stats3.HeapObjects),
 		)
 
-		fmt.Println(
-			mi0.uordblks,
-			mi1.uordblks,
-			mi2.uordblks,
-			mi3.uordblks,
+		fmt.Printf("%v %v %v %v \n",
+			bToMb(uint64(mi0.uordblks)),
+			bToMb(uint64(mi1.uordblks)),
+			bToMb(uint64(mi2.uordblks)),
+			bToMb(uint64(mi3.uordblks)),
 		)
+
+		fmt.Println()
 	}
+}
+
+func bToMb(b uint64) uint64 {
+	return b / 1024
 }
