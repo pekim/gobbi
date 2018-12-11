@@ -1,5 +1,6 @@
 package generate
 
+import "C"
 import (
 	"github.com/dave/jennifer/jen"
 )
@@ -29,7 +30,7 @@ func (r *RecordNewFromCFunc) generate(g *jen.Group) {
 			g.Line()
 
 			r.generateCreateGoStruct(g)
-			r.generateCallObjectTake(g)
+			r.generateObjectRefManagement(g)
 			g.Line()
 
 			g.
@@ -83,7 +84,7 @@ func (r *RecordNewFromCFunc) generateStructValues(d jen.Dict) {
 	}
 }
 
-func (r *RecordNewFromCFunc) generateCallObjectTake(g *jen.Group) {
+func (r *RecordNewFromCFunc) generateObjectRefManagement(g *jen.Group) {
 	if r.ParentName == "" {
 		return
 	}
@@ -96,18 +97,57 @@ func (r *RecordNewFromCFunc) generateCallObjectTake(g *jen.Group) {
 		return
 	}
 
-	// qualify TakeRef if package is not gobject
-	var s *jen.Statement
-	if r.Namespace.Name == "GObject" {
-		s = g.Id("TakeRef")
-	} else {
-		s = g.Qual(r.root().Namespace.fullGoPackageName, "TakeRef")
-	}
+	g.Line()
 
-	// [gobject.]TakeRef(g, c)
-	s.
+	g.
+		// ug := (C.gpointer)(u)
+		Id("ug").
+		Op(":=").
+		Parens(jen.Qual("C", "gpointer")).
+		Parens(jen.Id("u"))
+
+	g.
+		//if C.g_object_is_floating(ug) == C.TRUE {
+		If(jen.
+			Qual("C", "g_object_is_floating").
+			Call(jen.Id("ug")).
+			Op("==").
+			Qual("C", "TRUE")).
+		BlockFunc(func(g *jen.Group) {
+			//	C.g_object_ref_sink(ug)
+			g.
+				Qual("C", "g_object_ref_sink").
+				Call(jen.Id("ug"))
+		}).
+		Else().
+		BlockFunc(func(g *jen.Group) {
+			//	C.g_object_ref(ug)
+			g.
+				Qual("C", "g_object_ref").
+				Call(jen.Id("ug"))
+		})
+
+	g.
+		//runtime.SetFinalizer(
+		Qual("runtime", "SetFinalizer").
 		Call(
+			// g, func(o *SomeGoType) {
 			jen.Id("g"),
-			jen.Qual("unsafe", "Pointer").Parens(jen.Id("c")),
+			jen.
+				Func().
+				Params(jen.Id("o").Op("*").Id(r.GoName)).
+				BlockFunc(func(g *jen.Group) {
+					//g.
+					//	Qual("fmt", "Println").
+					//	Call(jen.Lit("finalizer run"), jen.Lit(r.GoName))
+
+					//	C.g_object_unref(o.native)
+					g.
+						Qual("C", "g_object_unref").
+						Call(jen.
+							Parens(jen.Qual("C", "gpointer")).
+							Parens(jen.Id("o").Dot("native")))
+
+				}),
 		)
 }

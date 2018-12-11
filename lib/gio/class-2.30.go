@@ -6,6 +6,7 @@ package gio
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
+	"runtime"
 	"unsafe"
 )
 
@@ -44,7 +45,16 @@ func DBusInterfaceSkeletonNewFromC(u unsafe.Pointer) *DBusInterfaceSkeleton {
 	}
 
 	g := &DBusInterfaceSkeleton{native: c}
-	gobject.TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *DBusInterfaceSkeleton) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }
@@ -186,7 +196,16 @@ func DBusObjectManagerClientNewFromC(u unsafe.Pointer) *DBusObjectManagerClient 
 	}
 
 	g := &DBusObjectManagerClient{native: c}
-	gobject.TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *DBusObjectManagerClient) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }
@@ -299,7 +318,16 @@ func DBusObjectManagerServerNewFromC(u unsafe.Pointer) *DBusObjectManagerServer 
 	}
 
 	g := &DBusObjectManagerServer{native: c}
-	gobject.TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *DBusObjectManagerServer) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }
@@ -405,7 +433,16 @@ func DBusObjectProxyNewFromC(u unsafe.Pointer) *DBusObjectProxy {
 	}
 
 	g := &DBusObjectProxy{native: c}
-	gobject.TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *DBusObjectProxy) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }
@@ -469,7 +506,16 @@ func DBusObjectSkeletonNewFromC(u unsafe.Pointer) *DBusObjectSkeleton {
 	}
 
 	g := &DBusObjectSkeleton{native: c}
-	gobject.TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *DBusObjectSkeleton) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }
@@ -726,7 +772,16 @@ func TlsDatabaseNewFromC(u unsafe.Pointer) *TlsDatabase {
 	}
 
 	g := &TlsDatabase{native: c}
-	gobject.TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *TlsDatabase) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }
@@ -989,7 +1044,16 @@ func TlsInteractionNewFromC(u unsafe.Pointer) *TlsInteraction {
 	}
 
 	g := &TlsInteraction{native: c}
-	gobject.TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *TlsInteraction) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }
@@ -1098,7 +1162,16 @@ func TlsPasswordNewFromC(u unsafe.Pointer) *TlsPassword {
 	}
 
 	g := &TlsPassword{native: c}
-	gobject.TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *TlsPassword) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }

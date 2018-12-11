@@ -6,6 +6,7 @@ package gio
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
+	"runtime"
 	"sync"
 	"unsafe"
 )
@@ -46,7 +47,16 @@ func AppInfoMonitorNewFromC(u unsafe.Pointer) *AppInfoMonitor {
 	}
 
 	g := &AppInfoMonitor{native: c}
-	gobject.TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *AppInfoMonitor) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }
@@ -212,7 +222,16 @@ func NotificationNewFromC(u unsafe.Pointer) *Notification {
 	}
 
 	g := &Notification{native: c}
-	gobject.TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *Notification) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }
@@ -348,7 +367,16 @@ func SubprocessNewFromC(u unsafe.Pointer) *Subprocess {
 	}
 
 	g := &Subprocess{native: c}
-	gobject.TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *Subprocess) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }
@@ -686,7 +714,16 @@ func SubprocessLauncherNewFromC(u unsafe.Pointer) *SubprocessLauncher {
 	}
 
 	g := &SubprocessLauncher{native: c}
-	gobject.TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *SubprocessLauncher) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }

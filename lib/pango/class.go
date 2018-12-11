@@ -5,6 +5,7 @@ package pango
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
+	"runtime"
 	"unsafe"
 )
 
@@ -25,7 +26,16 @@ func ContextNewFromC(u unsafe.Pointer) *Context {
 	}
 
 	g := &Context{native: c}
-	gobject.TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *Context) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }
@@ -188,7 +198,16 @@ func EngineLangNewFromC(u unsafe.Pointer) *EngineLang {
 	}
 
 	g := &EngineLang{native: c}
-	gobject.TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *EngineLang) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }
@@ -222,7 +241,16 @@ func EngineShapeNewFromC(u unsafe.Pointer) *EngineShape {
 	}
 
 	g := &EngineShape{native: c}
-	gobject.TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *EngineShape) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }
@@ -256,7 +284,16 @@ func FontNewFromC(u unsafe.Pointer) *Font {
 	}
 
 	g := &Font{native: c}
-	gobject.TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *Font) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }
@@ -351,7 +388,16 @@ func FontFaceNewFromC(u unsafe.Pointer) *FontFace {
 	}
 
 	g := &FontFace{native: c}
-	gobject.TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *FontFace) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }
@@ -406,7 +452,16 @@ func FontFamilyNewFromC(u unsafe.Pointer) *FontFamily {
 	}
 
 	g := &FontFamily{native: c}
-	gobject.TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *FontFamily) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }
@@ -455,7 +510,16 @@ func FontMapNewFromC(u unsafe.Pointer) *FontMap {
 	}
 
 	g := &FontMap{native: c}
-	gobject.TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *FontMap) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }
@@ -547,7 +611,16 @@ func FontsetNewFromC(u unsafe.Pointer) *Fontset {
 	}
 
 	g := &Fontset{native: c}
-	gobject.TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *Fontset) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }
@@ -599,7 +672,16 @@ func LayoutNewFromC(u unsafe.Pointer) *Layout {
 	}
 
 	g := &Layout{native: c}
-	gobject.TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *Layout) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }

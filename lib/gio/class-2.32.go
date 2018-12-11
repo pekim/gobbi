@@ -6,6 +6,7 @@ package gio
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
+	"runtime"
 	"sync"
 	"unsafe"
 )
@@ -229,7 +230,16 @@ func InetAddressMaskNewFromC(u unsafe.Pointer) *InetAddressMask {
 	}
 
 	g := &InetAddressMask{native: c}
-	gobject.TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *InetAddressMask) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }
@@ -382,7 +392,16 @@ func MenuNewFromC(u unsafe.Pointer) *Menu {
 	}
 
 	g := &Menu{native: c}
-	gobject.TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *Menu) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }
@@ -624,7 +643,16 @@ func MenuAttributeIterNewFromC(u unsafe.Pointer) *MenuAttributeIter {
 	}
 
 	g := &MenuAttributeIter{native: c}
-	gobject.TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *MenuAttributeIter) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }
@@ -682,7 +710,16 @@ func MenuItemNewFromC(u unsafe.Pointer) *MenuItem {
 	}
 
 	g := &MenuItem{native: c}
-	gobject.TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *MenuItem) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }
@@ -835,7 +872,16 @@ func MenuLinkIterNewFromC(u unsafe.Pointer) *MenuLinkIter {
 	}
 
 	g := &MenuLinkIter{native: c}
-	gobject.TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *MenuLinkIter) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }
@@ -915,7 +961,16 @@ func MenuModelNewFromC(u unsafe.Pointer) *MenuModel {
 	}
 
 	g := &MenuModel{native: c}
-	gobject.TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *MenuModel) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }

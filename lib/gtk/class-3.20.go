@@ -6,6 +6,7 @@ package gtk
 import (
 	gio "github.com/pekim/gobbi/lib/gio"
 	gobject "github.com/pekim/gobbi/lib/gobject"
+	"runtime"
 	"sync"
 	"unsafe"
 )
@@ -99,7 +100,16 @@ func FileChooserNativeNewFromC(u unsafe.Pointer) *FileChooserNative {
 	}
 
 	g := &FileChooserNative{native: c}
-	gobject.TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *FileChooserNative) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }
@@ -203,7 +213,16 @@ func NativeDialogNewFromC(u unsafe.Pointer) *NativeDialog {
 	}
 
 	g := &NativeDialog{native: c}
-	gobject.TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *NativeDialog) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }
@@ -339,7 +358,16 @@ func PadControllerNewFromC(u unsafe.Pointer) *PadController {
 	}
 
 	g := &PadController{native: c}
-	gobject.TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *PadController) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }
@@ -535,7 +563,16 @@ func ShortcutLabelNewFromC(u unsafe.Pointer) *ShortcutLabel {
 	}
 
 	g := &ShortcutLabel{native: c}
-	gobject.TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *ShortcutLabel) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }
@@ -593,7 +630,16 @@ func ShortcutsGroupNewFromC(u unsafe.Pointer) *ShortcutsGroup {
 	}
 
 	g := &ShortcutsGroup{native: c}
-	gobject.TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *ShortcutsGroup) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }
@@ -651,7 +697,16 @@ func ShortcutsSectionNewFromC(u unsafe.Pointer) *ShortcutsSection {
 	}
 
 	g := &ShortcutsSection{native: c}
-	gobject.TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *ShortcutsSection) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }
@@ -774,7 +829,16 @@ func ShortcutsShortcutNewFromC(u unsafe.Pointer) *ShortcutsShortcut {
 	}
 
 	g := &ShortcutsShortcut{native: c}
-	gobject.TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *ShortcutsShortcut) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }
@@ -833,7 +897,16 @@ func ShortcutsWindowNewFromC(u unsafe.Pointer) *ShortcutsWindow {
 	}
 
 	g := &ShortcutsWindow{native: c}
-	gobject.TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *ShortcutsWindow) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }

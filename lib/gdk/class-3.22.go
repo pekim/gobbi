@@ -6,6 +6,7 @@ package gdk
 import (
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	gobject "github.com/pekim/gobbi/lib/gobject"
+	"runtime"
 	"sync"
 	"unsafe"
 )
@@ -142,7 +143,16 @@ func DeviceToolNewFromC(u unsafe.Pointer) *DeviceTool {
 	}
 
 	g := &DeviceTool{native: c}
-	gobject.TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *DeviceTool) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }
@@ -389,7 +399,16 @@ func DrawingContextNewFromC(u unsafe.Pointer) *DrawingContext {
 	}
 
 	g := &DrawingContext{native: c}
-	gobject.TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *DrawingContext) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }
@@ -481,7 +500,16 @@ func MonitorNewFromC(u unsafe.Pointer) *Monitor {
 	}
 
 	g := &Monitor{native: c}
-	gobject.TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *Monitor) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }
@@ -656,7 +684,16 @@ func SeatNewFromC(u unsafe.Pointer) *Seat {
 	}
 
 	g := &Seat{native: c}
-	gobject.TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *Seat) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }

@@ -3,7 +3,10 @@
 
 package gobject
 
-import "unsafe"
+import (
+	"runtime"
+	"unsafe"
+)
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <glib-object.h>
@@ -22,7 +25,16 @@ func BindingNewFromC(u unsafe.Pointer) *Binding {
 	}
 
 	g := &Binding{native: c}
-	TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *Binding) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }

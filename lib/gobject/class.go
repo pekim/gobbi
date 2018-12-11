@@ -4,6 +4,7 @@ package gobject
 
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
+	"runtime"
 	"unsafe"
 )
 
@@ -25,7 +26,16 @@ func InitiallyUnownedNewFromC(u unsafe.Pointer) *InitiallyUnowned {
 	}
 
 	g := &InitiallyUnowned{native: c}
-	TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *InitiallyUnowned) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }

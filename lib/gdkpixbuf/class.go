@@ -6,6 +6,7 @@ import (
 	gio "github.com/pekim/gobbi/lib/gio"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
+	"runtime"
 	"sync"
 	"unsafe"
 )
@@ -63,7 +64,16 @@ func PixbufNewFromC(u unsafe.Pointer) *Pixbuf {
 	}
 
 	g := &Pixbuf{native: c}
-	gobject.TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *Pixbuf) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }
@@ -494,7 +504,16 @@ func PixbufAnimationNewFromC(u unsafe.Pointer) *PixbufAnimation {
 	}
 
 	g := &PixbufAnimation{native: c}
-	gobject.TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *PixbufAnimation) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }
@@ -610,7 +629,16 @@ func PixbufAnimationIterNewFromC(u unsafe.Pointer) *PixbufAnimationIter {
 	}
 
 	g := &PixbufAnimationIter{native: c}
-	gobject.TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *PixbufAnimationIter) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }
@@ -687,7 +715,16 @@ func PixbufLoaderNewFromC(u unsafe.Pointer) *PixbufLoader {
 	}
 
 	g := &PixbufLoader{native: c}
-	gobject.TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *PixbufLoader) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }
@@ -1053,7 +1090,16 @@ func PixbufSimpleAnimNewFromC(u unsafe.Pointer) *PixbufSimpleAnim {
 	}
 
 	g := &PixbufSimpleAnim{native: c}
-	gobject.TakeRef(g, unsafe.Pointer(c))
+
+	ug := (C.gpointer)(u)
+	if C.g_object_is_floating(ug) == C.TRUE {
+		C.g_object_ref_sink(ug)
+	} else {
+		C.g_object_ref(ug)
+	}
+	runtime.SetFinalizer(g, func(o *PixbufSimpleAnim) {
+		C.g_object_unref((C.gpointer)(o.native))
+	})
 
 	return g
 }
