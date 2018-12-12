@@ -41,7 +41,13 @@ func DesktopAppInfoNewFromKeyfile(keyFile *glib.KeyFile) *DesktopAppInfo {
 	}
 
 	retC := C.g_desktop_app_info_new_from_keyfile(c_key_file)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := DesktopAppInfoNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -51,7 +57,13 @@ func EmblemNew(icon *Icon) *Emblem {
 	c_icon := (*C.GIcon)(icon.ToC())
 
 	retC := C.g_emblem_new(c_icon)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := EmblemNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -63,7 +75,13 @@ func EmblemNewWithOrigin(icon *Icon, origin EmblemOrigin) *Emblem {
 	c_origin := (C.GEmblemOrigin)(origin)
 
 	retC := C.g_emblem_new_with_origin(c_icon, c_origin)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := EmblemNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -94,7 +112,13 @@ func EmblemedIconNew(icon *Icon, emblem *Emblem) *EmblemedIcon {
 	}
 
 	retC := C.g_emblemed_icon_new(c_icon, c_emblem)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := EmblemedIconNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }

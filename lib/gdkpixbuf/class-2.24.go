@@ -21,7 +21,13 @@ func PixbufNewFromStreamFinish(asyncResult *gio.AsyncResult) (*Pixbuf, error) {
 	var cThrowableError *C.GError
 
 	retC := C.gdk_pixbuf_new_from_stream_finish(c_async_result, &cThrowableError)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := PixbufNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {

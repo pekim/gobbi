@@ -47,7 +47,13 @@ func BytesIconNew(bytes *glib.Bytes) *BytesIcon {
 	}
 
 	retC := C.g_bytes_icon_new(c_bytes)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := BytesIconNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -171,7 +177,13 @@ func PropertyActionNew(name string, object uintptr, propertyName string) *Proper
 	defer C.free(unsafe.Pointer(c_property_name))
 
 	retC := C.g_property_action_new(c_name, c_object, c_property_name)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := PropertyActionNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }

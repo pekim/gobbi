@@ -64,7 +64,13 @@ func CastToContext(object *gobject.Object) *Context {
 // ContextNew is a wrapper around the C function pango_context_new.
 func ContextNew() *Context {
 	retC := C.pango_context_new()
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := ContextNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -715,7 +721,13 @@ func LayoutNew(context *Context) *Layout {
 	}
 
 	retC := C.pango_layout_new(c_context)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := LayoutNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }

@@ -230,7 +230,13 @@ func CursorNew(cursorType CursorType) *Cursor {
 	c_cursor_type := (C.GdkCursorType)(cursorType)
 
 	retC := C.gdk_cursor_new(c_cursor_type)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := CursorNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -1784,7 +1790,13 @@ func WindowNew(parent *Window, attributes *WindowAttr, attributesMask int32) *Wi
 	c_attributes_mask := (C.gint)(attributesMask)
 
 	retC := C.gdk_window_new(c_parent, c_attributes, c_attributes_mask)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := WindowNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }

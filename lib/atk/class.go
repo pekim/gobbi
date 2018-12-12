@@ -424,7 +424,13 @@ func NoOpObjectNew(obj *gobject.Object) *NoOpObject {
 	}
 
 	retC := C.atk_no_op_object_new(c_obj)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := NoOpObjectNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -545,7 +551,13 @@ func CastToNoOpObjectFactory(object *gobject.Object) *NoOpObjectFactory {
 // NoOpObjectFactoryNew is a wrapper around the C function atk_no_op_object_factory_new.
 func NoOpObjectFactoryNew() *NoOpObjectFactory {
 	retC := C.atk_no_op_object_factory_new()
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := NoOpObjectFactoryNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -1310,7 +1322,13 @@ func CastToPlug(object *gobject.Object) *Plug {
 // PlugNew is a wrapper around the C function atk_plug_new.
 func PlugNew() *Plug {
 	retC := C.atk_plug_new()
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := PlugNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -1533,7 +1551,13 @@ func CastToRelationSet(object *gobject.Object) *RelationSet {
 // RelationSetNew is a wrapper around the C function atk_relation_set_new.
 func RelationSetNew() *RelationSet {
 	retC := C.atk_relation_set_new()
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := RelationSetNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -1667,7 +1691,13 @@ func CastToSocket(object *gobject.Object) *Socket {
 // SocketNew is a wrapper around the C function atk_socket_new.
 func SocketNew() *Socket {
 	retC := C.atk_socket_new()
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := SocketNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -1728,7 +1758,13 @@ func CastToStateSet(object *gobject.Object) *StateSet {
 // StateSetNew is a wrapper around the C function atk_state_set_new.
 func StateSetNew() *StateSet {
 	retC := C.atk_state_set_new()
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := StateSetNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }

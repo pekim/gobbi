@@ -18,6 +18,7 @@ func (c *Constructor) init(ns *Namespace, record *Record) {
 
 	c.Function.init(ns, nil, "")
 	c.GoName = record.GoName + makeExportedGoName(c.Name)
+	c.Function.ctorRecord = record
 
 	if record.Version != "" && c.Version == "" {
 		c.Version = record.Version

@@ -250,7 +250,13 @@ func InetAddressNewAny(family SocketFamily) *InetAddress {
 	c_family := (C.GSocketFamily)(family)
 
 	retC := C.g_inet_address_new_any(c_family)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := InetAddressNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -262,7 +268,13 @@ func InetAddressNewFromBytes(bytes []uint8, family SocketFamily) *InetAddress {
 	c_family := (C.GSocketFamily)(family)
 
 	retC := C.g_inet_address_new_from_bytes((*C.guint8)(unsafe.Pointer(c_bytes)), c_family)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := InetAddressNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -273,7 +285,13 @@ func InetAddressNewFromString(string string) *InetAddress {
 	defer C.free(unsafe.Pointer(c_string))
 
 	retC := C.g_inet_address_new_from_string(c_string)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := InetAddressNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -283,7 +301,13 @@ func InetAddressNewLoopback(family SocketFamily) *InetAddress {
 	c_family := (C.GSocketFamily)(family)
 
 	retC := C.g_inet_address_new_loopback(c_family)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := InetAddressNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -405,7 +429,13 @@ func InetSocketAddressNew(address *InetAddress, port uint16) *InetSocketAddress 
 	c_port := (C.guint16)(port)
 
 	retC := C.g_inet_socket_address_new(c_address, c_port)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := InetSocketAddressNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -436,7 +466,13 @@ func NetworkAddressNew(hostname string, port uint16) *NetworkAddress {
 	c_port := (C.guint16)(port)
 
 	retC := C.g_network_address_new(c_hostname, c_port)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := NetworkAddressNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -489,7 +525,13 @@ func NetworkServiceNew(service string, protocol string, domain string) *NetworkS
 	defer C.free(unsafe.Pointer(c_domain))
 
 	retC := C.g_network_service_new(c_service, c_protocol, c_domain)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := NetworkServiceNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -753,7 +795,13 @@ func SocketNew(family SocketFamily, type_ SocketType, protocol SocketProtocol) (
 	var cThrowableError *C.GError
 
 	retC := C.g_socket_new(c_family, c_type, c_protocol, &cThrowableError)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := SocketNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -770,7 +818,13 @@ func SocketNewFromFd(fd int32) (*Socket, error) {
 	var cThrowableError *C.GError
 
 	retC := C.g_socket_new_from_fd(c_fd, &cThrowableError)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := SocketNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -1211,7 +1265,13 @@ func SocketAddressNewFromNative(native uintptr, len uint64) *SocketAddress {
 	c_len := (C.gsize)(len)
 
 	retC := C.g_socket_address_new_from_native(c_native, c_len)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := SocketAddressNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -1303,7 +1363,13 @@ func CastToSocketClient(object *gobject.Object) *SocketClient {
 // SocketClientNew is a wrapper around the C function g_socket_client_new.
 func SocketClientNew() *SocketClient {
 	retC := C.g_socket_client_new()
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := SocketClientNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -1741,7 +1807,13 @@ func CastToSocketListener(object *gobject.Object) *SocketListener {
 // SocketListenerNew is a wrapper around the C function g_socket_listener_new.
 func SocketListenerNew() *SocketListener {
 	retC := C.g_socket_listener_new()
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := SocketListenerNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -1993,7 +2065,13 @@ func CastToSocketService(object *gobject.Object) *SocketService {
 // SocketServiceNew is a wrapper around the C function g_socket_service_new.
 func SocketServiceNew() *SocketService {
 	retC := C.g_socket_service_new()
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := SocketServiceNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -2228,7 +2306,13 @@ func ThreadedSocketServiceNew(maxThreads int32) *ThreadedSocketService {
 	c_max_threads := (C.int)(maxThreads)
 
 	retC := C.g_threaded_socket_service_new(c_max_threads)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := ThreadedSocketServiceNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -2278,7 +2362,13 @@ func (recv *UnixConnection) SendFd(fd int32, cancellable *Cancellable) (bool, er
 // UnixFDMessageNew is a wrapper around the C function g_unix_fd_message_new.
 func UnixFDMessageNew() *UnixFDMessage {
 	retC := C.g_unix_fd_message_new()
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := UnixFDMessageNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -2308,7 +2398,13 @@ func UnixSocketAddressNew(path string) *UnixSocketAddress {
 	defer C.free(unsafe.Pointer(c_path))
 
 	retC := C.g_unix_socket_address_new(c_path)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := UnixSocketAddressNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }

@@ -238,7 +238,13 @@ func levelbar_offsetChangedHandler(_ *C.GObject, c_name *C.gchar, data C.gpointe
 // LevelBarNew is a wrapper around the C function gtk_level_bar_new.
 func LevelBarNew() *LevelBar {
 	retC := C.gtk_level_bar_new()
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := LevelBarNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -250,7 +256,13 @@ func LevelBarNewForInterval(minValue float64, maxValue float64) *LevelBar {
 	c_max_value := (C.gdouble)(maxValue)
 
 	retC := C.gtk_level_bar_new_for_interval(c_min_value, c_max_value)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := LevelBarNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -363,7 +375,13 @@ func (recv *LevelBar) SetValue(value float64) {
 // MenuButtonNew is a wrapper around the C function gtk_menu_button_new.
 func MenuButtonNew() *MenuButton {
 	retC := C.gtk_menu_button_new()
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := MenuButtonNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -481,7 +499,13 @@ func (recv *MenuShell) BindModel(model *gio.MenuModel, actionNamespace string, w
 // SearchEntryNew is a wrapper around the C function gtk_search_entry_new.
 func SearchEntryNew() *SearchEntry {
 	retC := C.gtk_search_entry_new()
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := SearchEntryNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }

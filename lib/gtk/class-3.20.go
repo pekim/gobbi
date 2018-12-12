@@ -159,7 +159,13 @@ func FileChooserNativeNew(title string, parent *Window, action FileChooserAction
 	defer C.free(unsafe.Pointer(c_cancel_label))
 
 	retC := C.gtk_file_chooser_native_new(c_title, c_parent, c_action, c_accept_label, c_cancel_label)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := FileChooserNativeNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }

@@ -442,7 +442,13 @@ func ApplicationNew(applicationId string, flags ApplicationFlags) *Application {
 	c_flags := (C.GApplicationFlags)(flags)
 
 	retC := C.g_application_new(c_application_id, c_flags)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := ApplicationNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -740,7 +746,13 @@ func CastToSimpleActionGroup(object *gobject.Object) *SimpleActionGroup {
 // SimpleActionGroupNew is a wrapper around the C function g_simple_action_group_new.
 func SimpleActionGroupNew() *SimpleActionGroup {
 	retC := C.g_simple_action_group_new()
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := SimpleActionGroupNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -837,7 +849,13 @@ func TcpWrapperConnectionNew(baseIoStream *IOStream, socket *Socket) *TcpWrapper
 	}
 
 	retC := C.g_tcp_wrapper_connection_new(c_base_io_stream, c_socket)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := TcpWrapperConnectionNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -899,7 +917,13 @@ func TlsCertificateNewFromFile(file string) (*TlsCertificate, error) {
 	var cThrowableError *C.GError
 
 	retC := C.g_tls_certificate_new_from_file(c_file, &cThrowableError)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := TlsCertificateNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -920,7 +944,13 @@ func TlsCertificateNewFromFiles(certFile string, keyFile string) (*TlsCertificat
 	var cThrowableError *C.GError
 
 	retC := C.g_tls_certificate_new_from_files(c_cert_file, c_key_file, &cThrowableError)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := TlsCertificateNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -940,7 +970,13 @@ func TlsCertificateNewFromPem(data string) (*TlsCertificate, error) {
 	var cThrowableError *C.GError
 
 	retC := C.g_tls_certificate_new_from_pem(c_data, c_length, &cThrowableError)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := TlsCertificateNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {

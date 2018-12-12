@@ -277,7 +277,13 @@ func InetAddressMaskNew(addr *InetAddress, length uint32) (*InetAddressMask, err
 	var cThrowableError *C.GError
 
 	retC := C.g_inet_address_mask_new(c_addr, c_length, &cThrowableError)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := InetAddressMaskNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -295,7 +301,13 @@ func InetAddressMaskNewFromString(maskString string) (*InetAddressMask, error) {
 	var cThrowableError *C.GError
 
 	retC := C.g_inet_address_mask_new_from_string(c_mask_string, &cThrowableError)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := InetAddressMaskNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -435,7 +447,13 @@ func CastToMenu(object *gobject.Object) *Menu {
 // MenuNew is a wrapper around the C function g_menu_new.
 func MenuNew() *Menu {
 	retC := C.g_menu_new()
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := MenuNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -754,7 +772,13 @@ func MenuItemNew(label string, detailedAction string) *MenuItem {
 	defer C.free(unsafe.Pointer(c_detailed_action))
 
 	retC := C.g_menu_item_new(c_label, c_detailed_action)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := MenuItemNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -770,7 +794,13 @@ func MenuItemNewSection(label string, section *MenuModel) *MenuItem {
 	}
 
 	retC := C.g_menu_item_new_section(c_label, c_section)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := MenuItemNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -786,7 +816,13 @@ func MenuItemNewSubmenu(label string, submenu *MenuModel) *MenuItem {
 	}
 
 	retC := C.g_menu_item_new_submenu(c_label, c_submenu)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := MenuItemNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -1144,7 +1180,13 @@ func SettingsNewFull(schema *SettingsSchema, backend *SettingsBackend, path stri
 	defer C.free(unsafe.Pointer(c_path))
 
 	retC := C.g_settings_new_full(c_schema, c_backend, c_path)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := SettingsNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }

@@ -238,7 +238,13 @@ func DBusObjectManagerClientNewFinish(res *AsyncResult) (*DBusObjectManagerClien
 	var cThrowableError *C.GError
 
 	retC := C.g_dbus_object_manager_client_new_finish(c_res, &cThrowableError)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := DBusObjectManagerClientNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -255,7 +261,13 @@ func DBusObjectManagerClientNewForBusFinish(res *AsyncResult) (*DBusObjectManage
 	var cThrowableError *C.GError
 
 	retC := C.g_dbus_object_manager_client_new_for_bus_finish(c_res, &cThrowableError)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := DBusObjectManagerClientNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -359,7 +371,13 @@ func DBusObjectManagerServerNew(objectPath string) *DBusObjectManagerServer {
 	defer C.free(unsafe.Pointer(c_object_path))
 
 	retC := C.g_dbus_object_manager_server_new(c_object_path)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := DBusObjectManagerServerNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -479,7 +497,13 @@ func DBusObjectProxyNew(connection *DBusConnection, objectPath string) *DBusObje
 	defer C.free(unsafe.Pointer(c_object_path))
 
 	retC := C.g_dbus_object_proxy_new(c_connection, c_object_path)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := DBusObjectProxyNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -547,7 +571,13 @@ func DBusObjectSkeletonNew(objectPath string) *DBusObjectSkeleton {
 	defer C.free(unsafe.Pointer(c_object_path))
 
 	retC := C.g_dbus_object_skeleton_new(c_object_path)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := DBusObjectSkeletonNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -1205,7 +1235,13 @@ func TlsPasswordNew(flags TlsPasswordFlags, description string) *TlsPassword {
 	defer C.free(unsafe.Pointer(c_description))
 
 	retC := C.g_tls_password_new(c_flags, c_description)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := TlsPasswordNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }

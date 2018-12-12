@@ -239,7 +239,13 @@ func CastToAppLaunchContext(object *gobject.Object) *AppLaunchContext {
 // AppLaunchContextNew is a wrapper around the C function g_app_launch_context_new.
 func AppLaunchContextNew() *AppLaunchContext {
 	retC := C.g_app_launch_context_new()
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := AppLaunchContextNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -402,7 +408,13 @@ func BufferedInputStreamNew(baseStream *InputStream) *BufferedInputStream {
 	}
 
 	retC := C.g_buffered_input_stream_new(c_base_stream)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := BufferedInputStreamNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -417,7 +429,13 @@ func BufferedInputStreamNewSized(baseStream *InputStream, size uint64) *Buffered
 	c_size := (C.gsize)(size)
 
 	retC := C.g_buffered_input_stream_new_sized(c_base_stream, c_size)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := BufferedInputStreamNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -596,7 +614,13 @@ func BufferedOutputStreamNew(baseStream *OutputStream) *BufferedOutputStream {
 	}
 
 	retC := C.g_buffered_output_stream_new(c_base_stream)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := BufferedOutputStreamNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -611,7 +635,13 @@ func BufferedOutputStreamNewSized(baseStream *OutputStream, size uint64) *Buffer
 	c_size := (C.gsize)(size)
 
 	retC := C.g_buffered_output_stream_new_sized(c_base_stream, c_size)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := BufferedOutputStreamNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -825,7 +855,13 @@ func cancellable_cancelledHandler(_ *C.GObject, data C.gpointer) {
 // CancellableNew is a wrapper around the C function g_cancellable_new.
 func CancellableNew() *Cancellable {
 	retC := C.g_cancellable_new()
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := CancellableNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -1028,7 +1064,13 @@ func ConverterInputStreamNew(baseStream *InputStream, converter *Converter) *Con
 	c_converter := (*C.GConverter)(converter.ToC())
 
 	retC := C.g_converter_input_stream_new(c_base_stream, c_converter)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := ConverterInputStreamNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -1107,7 +1149,13 @@ func ConverterOutputStreamNew(baseStream *OutputStream, converter *Converter) *C
 	c_converter := (*C.GConverter)(converter.ToC())
 
 	retC := C.g_converter_output_stream_new(c_base_stream, c_converter)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := ConverterOutputStreamNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -1298,7 +1346,13 @@ func DataInputStreamNew(baseStream *InputStream) *DataInputStream {
 	}
 
 	retC := C.g_data_input_stream_new(c_base_stream)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := DataInputStreamNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -1579,7 +1633,13 @@ func DataOutputStreamNew(baseStream *OutputStream) *DataOutputStream {
 	}
 
 	retC := C.g_data_output_stream_new(c_base_stream)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := DataOutputStreamNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -1836,7 +1896,13 @@ func DesktopAppInfoNew(desktopId string) *DesktopAppInfo {
 	defer C.free(unsafe.Pointer(c_desktop_id))
 
 	retC := C.g_desktop_app_info_new(c_desktop_id)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := DesktopAppInfoNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -1847,7 +1913,13 @@ func DesktopAppInfoNewFromFilename(filename string) *DesktopAppInfo {
 	defer C.free(unsafe.Pointer(c_filename))
 
 	retC := C.g_desktop_app_info_new_from_filename(c_filename)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := DesktopAppInfoNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -2269,7 +2341,13 @@ func FileIconNew(file *File) *FileIcon {
 	c_file := (*C.GFile)(file.ToC())
 
 	retC := C.g_file_icon_new(c_file)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := FileIconNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -2342,7 +2420,13 @@ func CastToFileInfo(object *gobject.Object) *FileInfo {
 // FileInfoNew is a wrapper around the C function g_file_info_new.
 func FileInfoNew() *FileInfo {
 	retC := C.g_file_info_new()
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := FileInfoNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -3301,7 +3385,13 @@ func filenamecompleter_gotCompletionDataHandler(_ *C.GObject, data C.gpointer) {
 // FilenameCompleterNew is a wrapper around the C function g_filename_completer_new.
 func FilenameCompleterNew() *FilenameCompleter {
 	retC := C.g_filename_completer_new()
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := FilenameCompleterNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -3538,7 +3628,13 @@ func IOModuleNew(filename string) *IOModule {
 	defer C.free(unsafe.Pointer(c_filename))
 
 	retC := C.g_io_module_new(c_filename)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := IOModuleNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -4056,7 +4152,13 @@ func CastToMemoryInputStream(object *gobject.Object) *MemoryInputStream {
 // MemoryInputStreamNew is a wrapper around the C function g_memory_input_stream_new.
 func MemoryInputStreamNew() *MemoryInputStream {
 	retC := C.g_memory_input_stream_new()
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := MemoryInputStreamNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -4215,7 +4317,13 @@ func CastToMountOperation(object *gobject.Object) *MountOperation {
 // MountOperationNew is a wrapper around the C function g_mount_operation_new.
 func MountOperationNew() *MountOperation {
 	retC := C.g_mount_operation_new()
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := MountOperationNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -6055,7 +6163,13 @@ func ThemedIconNew(iconname string) *ThemedIcon {
 	defer C.free(unsafe.Pointer(c_iconname))
 
 	retC := C.g_themed_icon_new(c_iconname)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := ThemedIconNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -6068,7 +6182,13 @@ func ThemedIconNewWithDefaultFallbacks(iconname string) *ThemedIcon {
 	defer C.free(unsafe.Pointer(c_iconname))
 
 	retC := C.g_themed_icon_new_with_default_fallbacks(c_iconname)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := ThemedIconNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -6314,7 +6434,13 @@ func UnixInputStreamNew(fd int32, closeFd bool) *UnixInputStream {
 		boolToGboolean(closeFd)
 
 	retC := C.g_unix_input_stream_new(c_fd, c_close_fd)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := UnixInputStreamNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -6499,7 +6625,13 @@ func unixmountmonitor_mountsChangedHandler(_ *C.GObject, data C.gpointer) {
 // UnixMountMonitorNew is a wrapper around the C function g_unix_mount_monitor_new.
 func UnixMountMonitorNew() *UnixMountMonitor {
 	retC := C.g_unix_mount_monitor_new()
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := UnixMountMonitorNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -6566,7 +6698,13 @@ func UnixOutputStreamNew(fd int32, closeFd bool) *UnixOutputStream {
 		boolToGboolean(closeFd)
 
 	retC := C.g_unix_output_stream_new(c_fd, c_close_fd)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := UnixOutputStreamNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -6642,7 +6780,13 @@ func UnixSocketAddressNewAbstract(path []rune) *UnixSocketAddress {
 	c_path_len := (C.gint)(len(path))
 
 	retC := C.g_unix_socket_address_new_abstract((*C.gchar)(unsafe.Pointer(c_path)), c_path_len)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := UnixSocketAddressNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }

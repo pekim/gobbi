@@ -165,7 +165,13 @@ func MemoryInputStreamNewFromBytes(bytes *glib.Bytes) *MemoryInputStream {
 	}
 
 	retC := C.g_memory_input_stream_new_from_bytes(c_bytes)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := MemoryInputStreamNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -200,7 +206,13 @@ func MenuItemNewFromModel(model *MenuModel, itemIndex int32) *MenuItem {
 	c_item_index := (C.gint)(itemIndex)
 
 	retC := C.g_menu_item_new_from_model(c_model, c_item_index)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := MenuItemNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -398,7 +410,13 @@ func TestDBusNew(flags TestDBusFlags) *TestDBus {
 	c_flags := (C.GTestDBusFlags)(flags)
 
 	retC := C.g_test_dbus_new(c_flags)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := TestDBusNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }

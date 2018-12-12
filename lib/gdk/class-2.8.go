@@ -25,11 +25,17 @@ func CursorNewFromName(display *Display, name string) *Cursor {
 	defer C.free(unsafe.Pointer(c_name))
 
 	retC := C.gdk_cursor_new_from_name(c_display, c_name)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	var retGo (*Cursor)
 	if retC == nil {
 		retGo = nil
 	} else {
 		retGo = CursorNewFromC(unsafe.Pointer(retC))
+	}
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
 	}
 
 	return retGo

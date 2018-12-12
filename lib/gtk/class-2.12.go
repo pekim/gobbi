@@ -138,7 +138,13 @@ func (recv *Action) CreateMenu() *Widget {
 // BuilderNew is a wrapper around the C function gtk_builder_new.
 func BuilderNew() *Builder {
 	retC := C.gtk_builder_new()
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := BuilderNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -850,7 +856,13 @@ func PageSetupNewFromFile(fileName string) (*PageSetup, error) {
 	var cThrowableError *C.GError
 
 	retC := C.gtk_page_setup_new_from_file(c_file_name, &cThrowableError)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := PageSetupNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -873,7 +885,13 @@ func PageSetupNewFromKeyFile(keyFile *glib.KeyFile, groupName string) (*PageSetu
 	var cThrowableError *C.GError
 
 	retC := C.gtk_page_setup_new_from_key_file(c_key_file, c_group_name, &cThrowableError)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := PageSetupNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -924,7 +942,13 @@ func PrintSettingsNewFromFile(fileName string) (*PrintSettings, error) {
 	var cThrowableError *C.GError
 
 	retC := C.gtk_print_settings_new_from_file(c_file_name, &cThrowableError)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := PrintSettingsNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -947,7 +971,13 @@ func PrintSettingsNewFromKeyFile(keyFile *glib.KeyFile, groupName string) (*Prin
 	var cThrowableError *C.GError
 
 	retC := C.gtk_print_settings_new_from_key_file(c_key_file, c_group_name, &cThrowableError)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := PrintSettingsNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -1058,7 +1088,13 @@ func RecentActionNew(name string, label string, tooltip string, stockId string) 
 	defer C.free(unsafe.Pointer(c_stock_id))
 
 	retC := C.gtk_recent_action_new(c_name, c_label, c_tooltip, c_stock_id)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := RecentActionNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -1083,7 +1119,13 @@ func RecentActionNewForManager(name string, label string, tooltip string, stockI
 	}
 
 	retC := C.gtk_recent_action_new_for_manager(c_name, c_label, c_tooltip, c_stock_id, c_manager)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := RecentActionNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -1375,7 +1417,13 @@ func TextMarkNew(name string, leftGravity bool) *TextMark {
 		boolToGboolean(leftGravity)
 
 	retC := C.gtk_text_mark_new(c_name, c_left_gravity)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := TextMarkNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -1733,7 +1781,13 @@ func (recv *TreeViewColumn) GetTreeView() *Widget {
 // VolumeButtonNew is a wrapper around the C function gtk_volume_button_new.
 func VolumeButtonNew() *VolumeButton {
 	retC := C.gtk_volume_button_new()
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := VolumeButtonNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }

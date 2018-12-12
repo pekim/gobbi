@@ -113,7 +113,13 @@ func ApplicationWindowNew(application *Application) *ApplicationWindow {
 	}
 
 	retC := C.gtk_application_window_new(c_application)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := ApplicationWindowNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -167,7 +173,13 @@ func ColorChooserDialogNew(title string, parent *Window) *ColorChooserDialog {
 	}
 
 	retC := C.gtk_color_chooser_dialog_new(c_title, c_parent)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := ColorChooserDialogNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -175,7 +187,13 @@ func ColorChooserDialogNew(title string, parent *Window) *ColorChooserDialog {
 // ColorChooserWidgetNew is a wrapper around the C function gtk_color_chooser_widget_new.
 func ColorChooserWidgetNew() *ColorChooserWidget {
 	retC := C.gtk_color_chooser_widget_new()
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := ColorChooserWidgetNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -200,7 +218,13 @@ func ImageNewFromResource(resourcePath string) *Image {
 	defer C.free(unsafe.Pointer(c_resource_path))
 
 	retC := C.gtk_image_new_from_resource(c_resource_path)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := ImageNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -213,7 +237,13 @@ func MenuNewFromModel(model *gio.MenuModel) *Menu {
 	}
 
 	retC := C.gtk_menu_new_from_model(c_model)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := MenuNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -226,7 +256,13 @@ func MenuBarNewFromModel(model *gio.MenuModel) *MenuBar {
 	}
 
 	retC := C.gtk_menu_bar_new_from_model(c_model)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := MenuBarNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }

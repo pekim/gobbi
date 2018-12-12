@@ -993,7 +993,13 @@ func GestureDragNew(widget *Widget) *GestureDrag {
 	}
 
 	retC := C.gtk_gesture_drag_new(c_widget)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := GestureDragNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -1162,7 +1168,13 @@ func GestureLongPressNew(widget *Widget) *GestureLongPress {
 	}
 
 	retC := C.gtk_gesture_long_press_new(c_widget)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := GestureLongPressNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -1367,7 +1379,13 @@ func GestureMultiPressNew(widget *Widget) *GestureMultiPress {
 	}
 
 	retC := C.gtk_gesture_multi_press_new(c_widget)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := GestureMultiPressNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -1388,7 +1406,13 @@ func GesturePanNew(widget *Widget, orientation Orientation) *GesturePan {
 	c_orientation := (C.GtkOrientation)(orientation)
 
 	retC := C.gtk_gesture_pan_new(c_widget, c_orientation)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := GesturePanNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -1482,7 +1506,13 @@ func GestureRotateNew(widget *Widget) *GestureRotate {
 	}
 
 	retC := C.gtk_gesture_rotate_new(c_widget)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := GestureRotateNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -1641,7 +1671,13 @@ func GestureSwipeNew(widget *Widget) *GestureSwipe {
 	}
 
 	retC := C.gtk_gesture_swipe_new(c_widget)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := GestureSwipeNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -1732,7 +1768,13 @@ func GestureZoomNew(widget *Widget) *GestureZoom {
 	}
 
 	retC := C.gtk_gesture_zoom_new(c_widget)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := GestureZoomNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }

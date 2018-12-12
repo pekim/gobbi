@@ -313,7 +313,13 @@ func ActionNew(name string, label string, tooltip string, stockId string) *Actio
 	defer C.free(unsafe.Pointer(c_stock_id))
 
 	retC := C.gtk_action_new(c_name, c_label, c_tooltip, c_stock_id)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := ActionNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -693,7 +699,13 @@ func ActionGroupNew(name string) *ActionGroup {
 	defer C.free(unsafe.Pointer(c_name))
 
 	retC := C.gtk_action_group_new(c_name)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := ActionGroupNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -1081,7 +1093,13 @@ func colorbutton_colorSetHandler(_ *C.GObject, data C.gpointer) {
 // ColorButtonNew is a wrapper around the C function gtk_color_button_new.
 func ColorButtonNew() *ColorButton {
 	retC := C.gtk_color_button_new()
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := ColorButtonNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -1094,7 +1112,13 @@ func ColorButtonNewWithColor(color *gdk.Color) *ColorButton {
 	}
 
 	retC := C.gtk_color_button_new_with_color(c_color)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := ColorButtonNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -1238,7 +1262,13 @@ func combobox_changedHandler(_ *C.GObject, data C.gpointer) {
 // ComboBoxNew is a wrapper around the C function gtk_combo_box_new.
 func ComboBoxNew() *ComboBox {
 	retC := C.gtk_combo_box_new()
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := ComboBoxNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -1248,7 +1278,13 @@ func ComboBoxNewWithModel(model *TreeModel) *ComboBox {
 	c_model := (*C.GtkTreeModel)(model.ToC())
 
 	retC := C.gtk_combo_box_new_with_model(c_model)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := ComboBoxNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -1521,7 +1557,13 @@ func entrycompletion_matchSelectedHandler(_ *C.GObject, c_model *C.GtkTreeModel,
 // EntryCompletionNew is a wrapper around the C function gtk_entry_completion_new.
 func EntryCompletionNew() *EntryCompletion {
 	retC := C.gtk_entry_completion_new()
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := EntryCompletionNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -1666,7 +1708,13 @@ func ExpanderNew(label string) *Expander {
 	defer C.free(unsafe.Pointer(c_label))
 
 	retC := C.gtk_expander_new(c_label)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := ExpanderNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -1677,7 +1725,13 @@ func ExpanderNewWithMnemonic(label string) *Expander {
 	defer C.free(unsafe.Pointer(c_label))
 
 	retC := C.gtk_expander_new_with_mnemonic(c_label)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := ExpanderNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -1803,7 +1857,13 @@ func FileChooserWidgetNew(action FileChooserAction) *FileChooserWidget {
 	c_action := (C.GtkFileChooserAction)(action)
 
 	retC := C.gtk_file_chooser_widget_new(c_action)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := FileChooserWidgetNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -1811,7 +1871,13 @@ func FileChooserWidgetNew(action FileChooserAction) *FileChooserWidget {
 // FileFilterNew is a wrapper around the C function gtk_file_filter_new.
 func FileFilterNew() *FileFilter {
 	retC := C.gtk_file_filter_new()
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := FileFilterNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -1940,7 +2006,13 @@ func fontbutton_fontSetHandler(_ *C.GObject, data C.gpointer) {
 // FontButtonNew is a wrapper around the C function gtk_font_button_new.
 func FontButtonNew() *FontButton {
 	retC := C.gtk_font_button_new()
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := FontButtonNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -1951,7 +2023,13 @@ func FontButtonNewWithFont(fontname string) *FontButton {
 	defer C.free(unsafe.Pointer(c_fontname))
 
 	retC := C.gtk_font_button_new_with_font(c_fontname)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := FontButtonNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -2149,7 +2227,13 @@ func (recv *IconInfo) SetRawCoordinates(rawCoordinates bool) {
 // IconThemeNew is a wrapper around the C function gtk_icon_theme_new.
 func IconThemeNew() *IconTheme {
 	retC := C.gtk_icon_theme_new()
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := IconThemeNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -2477,7 +2561,13 @@ func RadioActionNew(name string, label string, tooltip string, stockId string, v
 	c_value := (C.gint)(value)
 
 	retC := C.gtk_radio_action_new(c_name, c_label, c_tooltip, c_stock_id, c_value)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := RadioActionNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -2578,7 +2668,13 @@ func RadioMenuItemNewFromWidget(group *RadioMenuItem) *RadioMenuItem {
 	}
 
 	retC := C.gtk_radio_menu_item_new_from_widget(c_group)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := RadioMenuItemNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -2594,7 +2690,13 @@ func RadioMenuItemNewWithLabelFromWidget(group *RadioMenuItem, label string) *Ra
 	defer C.free(unsafe.Pointer(c_label))
 
 	retC := C.gtk_radio_menu_item_new_with_label_from_widget(c_group, c_label)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := RadioMenuItemNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -2610,7 +2712,13 @@ func RadioMenuItemNewWithMnemonicFromWidget(group *RadioMenuItem, label string) 
 	defer C.free(unsafe.Pointer(c_label))
 
 	retC := C.gtk_radio_menu_item_new_with_mnemonic_from_widget(c_group, c_label)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := RadioMenuItemNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -2623,7 +2731,13 @@ func RadioToolButtonNew(group *glib.SList) *RadioToolButton {
 	}
 
 	retC := C.gtk_radio_tool_button_new(c_group)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := RadioToolButtonNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -2639,7 +2753,13 @@ func RadioToolButtonNewFromStock(group *glib.SList, stockId string) *RadioToolBu
 	defer C.free(unsafe.Pointer(c_stock_id))
 
 	retC := C.gtk_radio_tool_button_new_from_stock(c_group, c_stock_id)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := RadioToolButtonNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -2652,7 +2772,13 @@ func RadioToolButtonNewFromWidget(group *RadioToolButton) *RadioToolButton {
 	}
 
 	retC := C.gtk_radio_tool_button_new_from_widget(c_group)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := RadioToolButtonNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -2668,7 +2794,13 @@ func RadioToolButtonNewWithStockFromWidget(group *RadioToolButton, stockId strin
 	defer C.free(unsafe.Pointer(c_stock_id))
 
 	retC := C.gtk_radio_tool_button_new_with_stock_from_widget(c_group, c_stock_id)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := RadioToolButtonNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -2724,7 +2856,13 @@ func (recv *Scale) GetLayoutOffsets() (int32, int32) {
 // SeparatorToolItemNew is a wrapper around the C function gtk_separator_tool_item_new.
 func SeparatorToolItemNew() *SeparatorToolItem {
 	retC := C.gtk_separator_tool_item_new()
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := SeparatorToolItemNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -2935,7 +3073,13 @@ func ToggleActionNew(name string, label string, tooltip string, stockId string) 
 	defer C.free(unsafe.Pointer(c_stock_id))
 
 	retC := C.gtk_toggle_action_new(c_name, c_label, c_tooltip, c_stock_id)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := ToggleActionNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -2986,7 +3130,13 @@ func (recv *ToggleAction) Toggled() {
 // ToggleToolButtonNew is a wrapper around the C function gtk_toggle_tool_button_new.
 func ToggleToolButtonNew() *ToggleToolButton {
 	retC := C.gtk_toggle_tool_button_new()
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := ToggleToolButtonNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -2997,7 +3147,13 @@ func ToggleToolButtonNewFromStock(stockId string) *ToggleToolButton {
 	defer C.free(unsafe.Pointer(c_stock_id))
 
 	retC := C.gtk_toggle_tool_button_new_from_stock(c_stock_id)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := ToggleToolButtonNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -3031,7 +3187,13 @@ func ToolButtonNew(iconWidget *Widget, label string) *ToolButton {
 	defer C.free(unsafe.Pointer(c_label))
 
 	retC := C.gtk_tool_button_new(c_icon_widget, c_label)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := ToolButtonNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -3042,7 +3204,13 @@ func ToolButtonNewFromStock(stockId string) *ToolButton {
 	defer C.free(unsafe.Pointer(c_stock_id))
 
 	retC := C.gtk_tool_button_new_from_stock(c_stock_id)
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := ToolButtonNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -3154,7 +3322,13 @@ func (recv *ToolButton) SetUseUnderline(useUnderline bool) {
 // ToolItemNew is a wrapper around the C function gtk_tool_item_new.
 func ToolItemNew() *ToolItem {
 	retC := C.gtk_tool_item_new()
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := ToolItemNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
@@ -3939,7 +4113,13 @@ func uimanager_preActivateHandler(_ *C.GObject, c_action *C.GtkAction, data C.gp
 // UIManagerNew is a wrapper around the C function gtk_ui_manager_new.
 func UIManagerNew() *UIManager {
 	retC := C.gtk_ui_manager_new()
+	retGPointer := (C.gpointer)(retC)
+	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := UIManagerNewFromC(unsafe.Pointer(retC))
+
+	if nonFloatingRef {
+		C.g_object_unref(retGPointer)
+	}
 
 	return retGo
 }
