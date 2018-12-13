@@ -85,11 +85,7 @@ func (r *RecordNewFromCFunc) generateStructValues(d jen.Dict) {
 }
 
 func (r *RecordNewFromCFunc) generateObjectRefManagement(g *jen.Group) {
-	if r.ParentName == "" {
-		return
-	}
-
-	if !(r.root().Name == "Object" && r.root().Namespace.Name == "GObject") {
+	if !r.isDerivedFrom("gobject", "Object") {
 		return
 	}
 
