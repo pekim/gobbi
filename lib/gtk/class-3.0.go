@@ -99,13 +99,7 @@ func AppChooserButtonNew(contentType string) *AppChooserButton {
 	defer C.free(unsafe.Pointer(c_content_type))
 
 	retC := C.gtk_app_chooser_button_new(c_content_type)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := AppChooserButtonNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -172,13 +166,7 @@ func AppChooserDialogNew(parent *Window, flags DialogFlags, file *gio.File) *App
 	c_file := (*C.GFile)(file.ToC())
 
 	retC := C.gtk_app_chooser_dialog_new(c_parent, c_flags, c_file)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := AppChooserDialogNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -196,13 +184,7 @@ func AppChooserDialogNewForContentType(parent *Window, flags DialogFlags, conten
 	defer C.free(unsafe.Pointer(c_content_type))
 
 	retC := C.gtk_app_chooser_dialog_new_for_content_type(c_parent, c_flags, c_content_type)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := AppChooserDialogNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -221,13 +203,7 @@ func AppChooserWidgetNew(contentType string) *AppChooserWidget {
 	defer C.free(unsafe.Pointer(c_content_type))
 
 	retC := C.gtk_app_chooser_widget_new(c_content_type)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := AppChooserWidgetNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -338,13 +314,9 @@ func ApplicationNew(applicationId string, flags gio.ApplicationFlags) *Applicati
 	c_flags := (C.GApplicationFlags)(flags)
 
 	retC := C.gtk_application_new(c_application_id, c_flags)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := ApplicationNewFromC(unsafe.Pointer(retC))
 
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
+	C.g_object_unref((C.gpointer)(retC))
 
 	return retGo
 }
@@ -402,13 +374,7 @@ func BoxNew(orientation Orientation, spacing int32) *Box {
 	c_spacing := (C.gint)(spacing)
 
 	retC := C.gtk_box_new(c_orientation, c_spacing)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := BoxNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -418,13 +384,7 @@ func ButtonBoxNew(orientation Orientation) *ButtonBox {
 	c_orientation := (C.GtkOrientation)(orientation)
 
 	retC := C.gtk_button_box_new(c_orientation)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := ButtonBoxNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -1114,13 +1074,7 @@ func (recv *CellArea) StopEditing(canceled bool) {
 // CellAreaBoxNew is a wrapper around the C function gtk_cell_area_box_new.
 func CellAreaBoxNew() *CellAreaBox {
 	retC := C.gtk_cell_area_box_new()
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := CellAreaBoxNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -1486,13 +1440,7 @@ func ColorButtonNewWithRgba(rgba *gdk.RGBA) *ColorButton {
 	}
 
 	retC := C.gtk_color_button_new_with_rgba(c_rgba)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := ColorButtonNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -1666,13 +1614,9 @@ func EntryCompletionNewWithArea(area *CellArea) *EntryCompletion {
 	}
 
 	retC := C.gtk_entry_completion_new_with_area(c_area)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := EntryCompletionNewFromC(unsafe.Pointer(retC))
 
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
+	C.g_object_unref((C.gpointer)(retC))
 
 	return retGo
 }
@@ -1774,13 +1718,7 @@ func IconViewNewWithArea(area *CellArea) *IconView {
 	}
 
 	retC := C.gtk_icon_view_new_with_area(c_area)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := IconViewNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -1951,13 +1889,7 @@ func PanedNew(orientation Orientation) *Paned {
 	c_orientation := (C.GtkOrientation)(orientation)
 
 	retC := C.gtk_paned_new(c_orientation)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := PanedNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -2014,13 +1946,7 @@ func ScaleNew(orientation Orientation, adjustment *Adjustment) *Scale {
 	}
 
 	retC := C.gtk_scale_new(c_orientation, c_adjustment)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := ScaleNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -2036,13 +1962,7 @@ func ScaleNewWithRange(orientation Orientation, min float64, max float64, step f
 	c_step := (C.gdouble)(step)
 
 	retC := C.gtk_scale_new_with_range(c_orientation, c_min, c_max, c_step)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := ScaleNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -2057,13 +1977,7 @@ func ScrollbarNew(orientation Orientation, adjustment *Adjustment) *Scrollbar {
 	}
 
 	retC := C.gtk_scrollbar_new(c_orientation, c_adjustment)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := ScrollbarNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -2107,13 +2021,7 @@ func SeparatorNew(orientation Orientation) *Separator {
 	c_orientation := (C.GtkOrientation)(orientation)
 
 	retC := C.gtk_separator_new(c_orientation)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := SeparatorNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -2721,13 +2629,7 @@ func (recv *StyleProperties) UnsetProperty(property string, state StateFlags) {
 // SwitchNew is a wrapper around the C function gtk_switch_new.
 func SwitchNew() *Switch {
 	retC := C.gtk_switch_new()
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := SwitchNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -2989,13 +2891,7 @@ func TreeViewColumnNewWithArea(area *CellArea) *TreeViewColumn {
 	}
 
 	retC := C.gtk_tree_view_column_new_with_area(c_area)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := TreeViewColumnNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }

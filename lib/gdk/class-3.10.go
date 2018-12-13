@@ -31,13 +31,9 @@ func CursorNewFromSurface(display *Display, surface *cairo.Surface, x float64, y
 	c_y := (C.gdouble)(y)
 
 	retC := C.gdk_cursor_new_from_surface(c_display, c_surface, c_x, c_y)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := CursorNewFromC(unsafe.Pointer(retC))
 
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
+	C.g_object_unref((C.gpointer)(retC))
 
 	return retGo
 }

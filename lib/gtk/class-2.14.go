@@ -455,13 +455,7 @@ func (recv *FontSelectionDialog) GetOkButton() *Widget {
 // HSVNew is a wrapper around the C function gtk_hsv_new.
 func HSVNew() *HSV {
 	retC := C.gtk_hsv_new()
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := HSVNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -578,13 +572,9 @@ func IconInfoNewForPixbuf(iconTheme *IconTheme, pixbuf *gdkpixbuf.Pixbuf) *IconI
 	}
 
 	retC := C.gtk_icon_info_new_for_pixbuf(c_icon_theme, c_pixbuf)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := IconInfoNewFromC(unsafe.Pointer(retC))
 
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
+	C.g_object_unref((C.gpointer)(retC))
 
 	return retGo
 }
@@ -615,13 +605,7 @@ func ImageNewFromGicon(icon *gio.Icon, size IconSize) *Image {
 	c_size := (C.GtkIconSize)(size)
 
 	retC := C.gtk_image_new_from_gicon(c_icon, c_size)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := ImageNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -705,13 +689,9 @@ func MountOperationNew(parent *Window) *MountOperation {
 	}
 
 	retC := C.gtk_mount_operation_new(c_parent)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := MountOperationNewFromC(unsafe.Pointer(retC))
 
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
+	C.g_object_unref((C.gpointer)(retC))
 
 	return retGo
 }
@@ -1022,13 +1002,9 @@ func StatusIconNewFromGicon(icon *gio.Icon) *StatusIcon {
 	c_icon := (*C.GIcon)(icon.ToC())
 
 	retC := C.gtk_status_icon_new_from_gicon(c_icon)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := StatusIconNewFromC(unsafe.Pointer(retC))
 
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
+	C.g_object_unref((C.gpointer)(retC))
 
 	return retGo
 }

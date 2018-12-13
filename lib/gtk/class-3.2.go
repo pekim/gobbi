@@ -301,13 +301,7 @@ func FontChooserDialogNew(title string, parent *Window) *FontChooserDialog {
 	}
 
 	retC := C.gtk_font_chooser_dialog_new(c_title, c_parent)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := FontChooserDialogNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -315,13 +309,7 @@ func FontChooserDialogNew(title string, parent *Window) *FontChooserDialog {
 // FontChooserWidgetNew is a wrapper around the C function gtk_font_chooser_widget_new.
 func FontChooserWidgetNew() *FontChooserWidget {
 	retC := C.gtk_font_chooser_widget_new()
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := FontChooserWidgetNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -383,13 +371,7 @@ func LockButtonNew(permission *gio.Permission) *LockButton {
 	}
 
 	retC := C.gtk_lock_button_new(c_permission)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := LockButtonNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -481,13 +463,7 @@ func menushell_insertHandler(_ *C.GObject, c_child *C.GtkWidget, c_position C.gi
 // OverlayNew is a wrapper around the C function gtk_overlay_new.
 func OverlayNew() *Overlay {
 	retC := C.gtk_overlay_new()
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := OverlayNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }

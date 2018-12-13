@@ -50,13 +50,7 @@ import "C"
 // AboutDialogNew is a wrapper around the C function gtk_about_dialog_new.
 func AboutDialogNew() *AboutDialog {
 	retC := C.gtk_about_dialog_new()
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := AboutDialogNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -378,13 +372,7 @@ func (recv *CellRenderer) StopEditing(canceled bool) {
 // CellRendererComboNew is a wrapper around the C function gtk_cell_renderer_combo_new.
 func CellRendererComboNew() *CellRendererCombo {
 	retC := C.gtk_cell_renderer_combo_new()
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := CellRendererComboNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -392,13 +380,7 @@ func CellRendererComboNew() *CellRendererCombo {
 // CellRendererProgressNew is a wrapper around the C function gtk_cell_renderer_progress_new.
 func CellRendererProgressNew() *CellRendererProgress {
 	retC := C.gtk_cell_renderer_progress_new()
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := CellRendererProgressNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -406,13 +388,7 @@ func CellRendererProgressNew() *CellRendererProgress {
 // CellViewNew is a wrapper around the C function gtk_cell_view_new.
 func CellViewNew() *CellView {
 	retC := C.gtk_cell_view_new()
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := CellViewNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -430,13 +406,7 @@ func CellViewNewWithContext(area *CellArea, context *CellAreaContext) *CellView 
 	}
 
 	retC := C.gtk_cell_view_new_with_context(c_area, c_context)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := CellViewNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -447,13 +417,7 @@ func CellViewNewWithMarkup(markup string) *CellView {
 	defer C.free(unsafe.Pointer(c_markup))
 
 	retC := C.gtk_cell_view_new_with_markup(c_markup)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := CellViewNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -466,13 +430,7 @@ func CellViewNewWithPixbuf(pixbuf *gdkpixbuf.Pixbuf) *CellView {
 	}
 
 	retC := C.gtk_cell_view_new_with_pixbuf(c_pixbuf)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := CellViewNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -483,13 +441,7 @@ func CellViewNewWithText(text string) *CellView {
 	defer C.free(unsafe.Pointer(c_text))
 
 	retC := C.gtk_cell_view_new_with_text(c_text)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := CellViewNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -866,13 +818,7 @@ func FileChooserButtonNew(title string, action FileChooserAction) *FileChooserBu
 	c_action := (C.GtkFileChooserAction)(action)
 
 	retC := C.gtk_file_chooser_button_new(c_title, c_action)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := FileChooserButtonNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -885,13 +831,7 @@ func FileChooserButtonNewWithDialog(dialog *Dialog) *FileChooserButton {
 	}
 
 	retC := C.gtk_file_chooser_button_new_with_dialog(c_dialog)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := FileChooserButtonNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -943,13 +883,7 @@ func (recv *FileFilter) AddPixbufFormats() {
 // IconViewNew is a wrapper around the C function gtk_icon_view_new.
 func IconViewNew() *IconView {
 	retC := C.gtk_icon_view_new()
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := IconViewNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -959,13 +893,7 @@ func IconViewNewWithModel(model *TreeModel) *IconView {
 	c_model := (*C.GtkTreeModel)(model.ToC())
 
 	retC := C.gtk_icon_view_new_with_model(c_model)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := IconViewNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -1277,13 +1205,7 @@ func ImageNewFromIconName(iconName string, size IconSize) *Image {
 	c_size := (C.GtkIconSize)(size)
 
 	retC := C.gtk_image_new_from_icon_name(c_icon_name, c_size)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := ImageNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -1433,13 +1355,7 @@ func MenuToolButtonNew(iconWidget *Widget, label string) *MenuToolButton {
 	defer C.free(unsafe.Pointer(c_label))
 
 	retC := C.gtk_menu_tool_button_new(c_icon_widget, c_label)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := MenuToolButtonNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -1450,13 +1366,7 @@ func MenuToolButtonNewFromStock(stockId string) *MenuToolButton {
 	defer C.free(unsafe.Pointer(c_stock_id))
 
 	retC := C.gtk_menu_tool_button_new_from_stock(c_stock_id)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := MenuToolButtonNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }

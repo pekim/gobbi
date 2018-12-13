@@ -25,13 +25,9 @@ func PixbufNewFromFileAtSize(filename string, width int32, height int32) (*Pixbu
 	var cThrowableError *C.GError
 
 	retC := C.gdk_pixbuf_new_from_file_at_size(c_filename, c_width, c_height, &cThrowableError)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := PixbufNewFromC(unsafe.Pointer(retC))
 
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
+	C.g_object_unref((C.gpointer)(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -81,13 +77,9 @@ func PixbufLoaderNewWithMimeType(mimeType string) (*PixbufLoader, error) {
 	var cThrowableError *C.GError
 
 	retC := C.gdk_pixbuf_loader_new_with_mime_type(c_mime_type, &cThrowableError)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := PixbufLoaderNewFromC(unsafe.Pointer(retC))
 
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
+	C.g_object_unref((C.gpointer)(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {

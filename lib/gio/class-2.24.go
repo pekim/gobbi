@@ -35,13 +35,9 @@ func CharsetConverterNew(toCharset string, fromCharset string) (*CharsetConverte
 	var cThrowableError *C.GError
 
 	retC := C.g_charset_converter_new(c_to_charset, c_from_charset, &cThrowableError)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := CharsetConverterNewFromC(unsafe.Pointer(retC))
 
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
+	C.g_object_unref((C.gpointer)(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -155,13 +151,9 @@ func (recv *SocketListener) AddAnyInetPort(sourceObject *gobject.Object) (uint16
 // UnixFDListNew is a wrapper around the C function g_unix_fd_list_new.
 func UnixFDListNew() *UnixFDList {
 	retC := C.g_unix_fd_list_new()
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := UnixFDListNewFromC(unsafe.Pointer(retC))
 
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
+	C.g_object_unref((C.gpointer)(retC))
 
 	return retGo
 }
@@ -173,13 +165,9 @@ func UnixFDListNewFromArray(fds []int32) *UnixFDList {
 	c_n_fds := (C.gint)(len(fds))
 
 	retC := C.g_unix_fd_list_new_from_array((*C.gint)(unsafe.Pointer(c_fds)), c_n_fds)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := UnixFDListNewFromC(unsafe.Pointer(retC))
 
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
+	C.g_object_unref((C.gpointer)(retC))
 
 	return retGo
 }
@@ -238,13 +226,9 @@ func UnixFDMessageNewWithFdList(fdList *UnixFDList) *UnixFDMessage {
 	}
 
 	retC := C.g_unix_fd_message_new_with_fd_list(c_fd_list)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := UnixFDMessageNewFromC(unsafe.Pointer(retC))
 
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
+	C.g_object_unref((C.gpointer)(retC))
 
 	return retGo
 }
@@ -264,13 +248,9 @@ func ZlibCompressorNew(format ZlibCompressorFormat, level int32) *ZlibCompressor
 	c_level := (C.int)(level)
 
 	retC := C.g_zlib_compressor_new(c_format, c_level)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := ZlibCompressorNewFromC(unsafe.Pointer(retC))
 
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
+	C.g_object_unref((C.gpointer)(retC))
 
 	return retGo
 }
@@ -280,13 +260,9 @@ func ZlibDecompressorNew(format ZlibCompressorFormat) *ZlibDecompressor {
 	c_format := (C.GZlibCompressorFormat)(format)
 
 	retC := C.g_zlib_decompressor_new(c_format)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := ZlibDecompressorNewFromC(unsafe.Pointer(retC))
 
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
+	C.g_object_unref((C.gpointer)(retC))
 
 	return retGo
 }

@@ -168,13 +168,9 @@ func (recv *FileInfo) GetDeletionDate() *glib.DateTime {
 // MemoryOutputStreamNewResizable is a wrapper around the C function g_memory_output_stream_new_resizable.
 func MemoryOutputStreamNewResizable() *MemoryOutputStream {
 	retC := C.g_memory_output_stream_new_resizable()
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := MemoryOutputStreamNewFromC(unsafe.Pointer(retC))
 
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
+	C.g_object_unref((C.gpointer)(retC))
 
 	return retGo
 }

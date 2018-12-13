@@ -193,13 +193,7 @@ func EntryNewWithBuffer(buffer *EntryBuffer) *Entry {
 	}
 
 	retC := C.gtk_entry_new_with_buffer(c_buffer)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := EntryNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -362,13 +356,9 @@ func EntryBufferNew(initialChars string, nInitialChars int32) *EntryBuffer {
 	c_n_initial_chars := (C.gint)(nInitialChars)
 
 	retC := C.gtk_entry_buffer_new(c_initial_chars, c_n_initial_chars)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := EntryBufferNewFromC(unsafe.Pointer(retC))
 
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
+	C.g_object_unref((C.gpointer)(retC))
 
 	return retGo
 }
@@ -620,13 +610,7 @@ func infobar_responseHandler(_ *C.GObject, c_response_id C.gint, data C.gpointer
 // InfoBarNew is a wrapper around the C function gtk_info_bar_new.
 func InfoBarNew() *InfoBar {
 	retC := C.gtk_info_bar_new()
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := InfoBarNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }

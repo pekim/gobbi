@@ -121,3 +121,25 @@ func (r *Record) root() *Record {
 	}
 	return parent.root()
 }
+
+func (r *Record) isDerivedFrom(goPackageName, goTypeName string) bool {
+	rec := r
+
+	for {
+		if rec.Namespace.goPackageName == goPackageName && rec.GoName == goTypeName {
+			return true
+		}
+
+		if rec.ParentName == "" {
+			return false
+		}
+
+		qname := QNameNew(rec.Namespace, rec.ParentName)
+		parent, found := qname.namespace.recordOrClassRecordForName(qname.name)
+		if !found {
+			panic(fmt.Sprintf("Failed to find parent %s for %s", rec.ParentName, rec.Name))
+		}
+
+		rec = parent
+	}
+}

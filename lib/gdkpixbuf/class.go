@@ -113,13 +113,9 @@ func PixbufNew(colorspace Colorspace, hasAlpha bool, bitsPerSample int32, width 
 	c_height := (C.int)(height)
 
 	retC := C.gdk_pixbuf_new(c_colorspace, c_has_alpha, c_bits_per_sample, c_width, c_height)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := PixbufNewFromC(unsafe.Pointer(retC))
 
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
+	C.g_object_unref((C.gpointer)(retC))
 
 	return retGo
 }
@@ -134,13 +130,9 @@ func PixbufNewFromFile(filename string) (*Pixbuf, error) {
 	var cThrowableError *C.GError
 
 	retC := C.gdk_pixbuf_new_from_file(c_filename, &cThrowableError)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := PixbufNewFromC(unsafe.Pointer(retC))
 
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
+	C.g_object_unref((C.gpointer)(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -162,13 +154,9 @@ func PixbufNewFromInline(data []uint8, copyPixels bool) (*Pixbuf, error) {
 	var cThrowableError *C.GError
 
 	retC := C.gdk_pixbuf_new_from_inline(c_data_length, (*C.guint8)(unsafe.Pointer(c_data)), c_copy_pixels, &cThrowableError)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := PixbufNewFromC(unsafe.Pointer(retC))
 
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
+	C.g_object_unref((C.gpointer)(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -565,13 +553,9 @@ func PixbufAnimationNewFromFile(filename string) (*PixbufAnimation, error) {
 	var cThrowableError *C.GError
 
 	retC := C.gdk_pixbuf_animation_new_from_file(c_filename, &cThrowableError)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := PixbufAnimationNewFromC(unsafe.Pointer(retC))
 
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
+	C.g_object_unref((C.gpointer)(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -1029,13 +1013,9 @@ func pixbufloader_sizePreparedHandler(_ *C.GObject, c_width C.gint, c_height C.g
 // PixbufLoaderNew is a wrapper around the C function gdk_pixbuf_loader_new.
 func PixbufLoaderNew() *PixbufLoader {
 	retC := C.gdk_pixbuf_loader_new()
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := PixbufLoaderNewFromC(unsafe.Pointer(retC))
 
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
+	C.g_object_unref((C.gpointer)(retC))
 
 	return retGo
 }
@@ -1048,13 +1028,9 @@ func PixbufLoaderNewWithType(imageType string) (*PixbufLoader, error) {
 	var cThrowableError *C.GError
 
 	retC := C.gdk_pixbuf_loader_new_with_type(c_image_type, &cThrowableError)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := PixbufLoaderNewFromC(unsafe.Pointer(retC))
 
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
+	C.g_object_unref((C.gpointer)(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {

@@ -61,13 +61,9 @@ func CursorNewForDisplay(display *Display, cursorType CursorType) *Cursor {
 	c_cursor_type := (C.GdkCursorType)(cursorType)
 
 	retC := C.gdk_cursor_new_for_display(c_display, c_cursor_type)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := CursorNewFromC(unsafe.Pointer(retC))
 
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
+	C.g_object_unref((C.gpointer)(retC))
 
 	return retGo
 }

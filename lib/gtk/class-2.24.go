@@ -92,13 +92,7 @@ func aboutdialog_activateLinkHandler(_ *C.GObject, c_uri *C.gchar, data C.gpoint
 // ComboBoxNewWithEntry is a wrapper around the C function gtk_combo_box_new_with_entry.
 func ComboBoxNewWithEntry() *ComboBox {
 	retC := C.gtk_combo_box_new_with_entry()
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := ComboBoxNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -108,13 +102,7 @@ func ComboBoxNewWithModelAndEntry(model *TreeModel) *ComboBox {
 	c_model := (*C.GtkTreeModel)(model.ToC())
 
 	retC := C.gtk_combo_box_new_with_model_and_entry(c_model)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := ComboBoxNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -147,13 +135,7 @@ func (recv *ComboBox) SetEntryTextColumn(textColumn int32) {
 // ComboBoxTextNew is a wrapper around the C function gtk_combo_box_text_new.
 func ComboBoxTextNew() *ComboBoxText {
 	retC := C.gtk_combo_box_text_new()
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := ComboBoxTextNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -161,13 +143,7 @@ func ComboBoxTextNew() *ComboBoxText {
 // ComboBoxTextNewWithEntry is a wrapper around the C function gtk_combo_box_text_new_with_entry.
 func ComboBoxTextNewWithEntry() *ComboBoxText {
 	retC := C.gtk_combo_box_text_new_with_entry()
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := ComboBoxTextNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }

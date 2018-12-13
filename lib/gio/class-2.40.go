@@ -205,13 +205,9 @@ func InetSocketAddressNewFromString(address string, port uint32) *InetSocketAddr
 	c_port := (C.guint)(port)
 
 	retC := C.g_inet_socket_address_new_from_string(c_address, c_port)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := InetSocketAddressNewFromC(unsafe.Pointer(retC))
 
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
+	C.g_object_unref((C.gpointer)(retC))
 
 	return retGo
 }
@@ -269,13 +265,9 @@ func NotificationNew(title string) *Notification {
 	defer C.free(unsafe.Pointer(c_title))
 
 	retC := C.g_notification_new(c_title)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := NotificationNewFromC(unsafe.Pointer(retC))
 
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
+	C.g_object_unref((C.gpointer)(retC))
 
 	return retGo
 }
@@ -766,13 +758,9 @@ func SubprocessLauncherNew(flags SubprocessFlags) *SubprocessLauncher {
 	c_flags := (C.GSubprocessFlags)(flags)
 
 	retC := C.g_subprocess_launcher_new(c_flags)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := SubprocessLauncherNewFromC(unsafe.Pointer(retC))
 
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
+	C.g_object_unref((C.gpointer)(retC))
 
 	return retGo
 }

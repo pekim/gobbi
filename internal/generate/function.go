@@ -223,51 +223,22 @@ func (f *Function) generateReturn(g *jen.Group) {
 
 func (f *Function) generateReturnGoVar(g *jen.Group) {
 	if f.ReturnValue.Type.Name != "none" {
-		r := f.ctorRecord
-		isCtorForObject := f.ctorRecord != nil
-		if isCtorForObject {
-			if r.ParentName == "" {
-				isCtorForObject = false
-			}
-
-			if !(r.root().Name == "Object" && r.root().Namespace.Name == "GObject") {
-				isCtorForObject = false
-			}
-
-			if r.Name == "Object" {
-				isCtorForObject = false
-			}
-		}
-
-		if isCtorForObject {
-			g.
-				// retGPtr := (C.gpointer)(retC)
-				Id("retGPointer").
-				Op(":=").
-				Parens(jen.Qual("C", "gpointer")).
-				Parens(jen.Id("retC"))
-
-			g.
-				Id("nonFloatingRef").
-				Op(":=").
-				Qual("C", "g_object_is_floating").
-				Call(jen.Id("retGPointer")).
-				Op("==").
-				Qual("C", "FALSE")
-		}
-
 		f.ReturnValue.generateCToGo(g, "retC", "retGo")
 
-		if isCtorForObject {
+		r := f.ctorRecord
+		if f.ctorRecord != nil &&
+			r.isDerivedFrom("gobject", "Object") &&
+			!r.isDerivedFrom("gobject", "InitiallyUnowned") {
+
 			g.Line()
 
+			// A call to a ...NewFromC function will have incremented the ref
+			// count (to 2). So decrement it back to 1.
 			g.
-				If(jen.Id("nonFloatingRef")).
-				BlockFunc(func(g *jen.Group) {
-					g.
-						Qual("C", "g_object_unref").
-						Call(jen.Id("retGPointer"))
-				})
+				Qual("C", "g_object_unref").
+				Call(jen.
+					Parens(jen.Qual("C", "gpointer")).
+					Parens(jen.Id("retC")))
 		}
 	}
 	g.Line()

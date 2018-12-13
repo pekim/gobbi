@@ -59,13 +59,7 @@ func (recv *Action) SetAlwaysShowImage(alwaysShow bool) {
 // CellRendererSpinnerNew is a wrapper around the C function gtk_cell_renderer_spinner_new.
 func CellRendererSpinnerNew() *CellRendererSpinner {
 	retC := C.gtk_cell_renderer_spinner_new()
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := CellRendererSpinnerNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -179,13 +173,7 @@ func (recv *Notebook) SetActionWidget(widget *Widget, packType PackType) {
 // OffscreenWindowNew is a wrapper around the C function gtk_offscreen_window_new.
 func OffscreenWindowNew() *OffscreenWindow {
 	retC := C.gtk_offscreen_window_new()
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := OffscreenWindowNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -303,13 +291,7 @@ func (recv *Range) SetSliderSizeFixed(sizeFixed bool) {
 // SpinnerNew is a wrapper around the C function gtk_spinner_new.
 func SpinnerNew() *Spinner {
 	retC := C.gtk_spinner_new()
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := SpinnerNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -446,13 +428,7 @@ func ToolItemGroupNew(label string) *ToolItemGroup {
 	defer C.free(unsafe.Pointer(c_label))
 
 	retC := C.gtk_tool_item_group_new(c_label)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := ToolItemGroupNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -621,13 +597,7 @@ func (recv *ToolItemGroup) SetLabelWidget(labelWidget *Widget) {
 // ToolPaletteNew is a wrapper around the C function gtk_tool_palette_new.
 func ToolPaletteNew() *ToolPalette {
 	retC := C.gtk_tool_palette_new()
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := ToolPaletteNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }

@@ -151,13 +151,9 @@ func PadControllerNew(window *Window, group *gio.ActionGroup, pad *gdk.Device) *
 	}
 
 	retC := C.gtk_pad_controller_new(c_window, c_group, c_pad)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := PadControllerNewFromC(unsafe.Pointer(retC))
 
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
+	C.g_object_unref((C.gpointer)(retC))
 
 	return retGo
 }
@@ -281,13 +277,7 @@ func ShortcutLabelNew(accelerator string) *ShortcutLabel {
 	defer C.free(unsafe.Pointer(c_accelerator))
 
 	retC := C.gtk_shortcut_label_new(c_accelerator)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := ShortcutLabelNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }

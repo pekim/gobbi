@@ -26,13 +26,9 @@ import "C"
 // AppLaunchContextNew is a wrapper around the C function gdk_app_launch_context_new.
 func AppLaunchContextNew() *AppLaunchContext {
 	retC := C.gdk_app_launch_context_new()
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := AppLaunchContextNewFromC(unsafe.Pointer(retC))
 
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
+	C.g_object_unref((C.gpointer)(retC))
 
 	return retGo
 }

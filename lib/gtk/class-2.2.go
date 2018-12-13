@@ -34,13 +34,7 @@ func InvisibleNewForScreen(screen *gdk.Screen) *Invisible {
 	}
 
 	retC := C.gtk_invisible_new_for_screen(c_screen)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := InvisibleNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }

@@ -22,13 +22,9 @@ func PixbufAnimationNewFromResource(resourcePath string) (*PixbufAnimation, erro
 	var cThrowableError *C.GError
 
 	retC := C.gdk_pixbuf_animation_new_from_resource(c_resource_path, &cThrowableError)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := PixbufAnimationNewFromC(unsafe.Pointer(retC))
 
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
+	C.g_object_unref((C.gpointer)(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -53,13 +49,9 @@ func PixbufAnimationNewFromStream(stream *gio.InputStream, cancellable *gio.Canc
 	var cThrowableError *C.GError
 
 	retC := C.gdk_pixbuf_animation_new_from_stream(c_stream, c_cancellable, &cThrowableError)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := PixbufAnimationNewFromC(unsafe.Pointer(retC))
 
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
+	C.g_object_unref((C.gpointer)(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -76,13 +68,9 @@ func PixbufAnimationNewFromStreamFinish(asyncResult *gio.AsyncResult) (*PixbufAn
 	var cThrowableError *C.GError
 
 	retC := C.gdk_pixbuf_animation_new_from_stream_finish(c_async_result, &cThrowableError)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := PixbufAnimationNewFromC(unsafe.Pointer(retC))
 
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
+	C.g_object_unref((C.gpointer)(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {

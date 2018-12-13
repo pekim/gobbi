@@ -113,13 +113,9 @@ func ListStoreNew(itemType gobject.Type) *ListStore {
 	c_item_type := (C.GType)(itemType)
 
 	retC := C.g_list_store_new(c_item_type)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := ListStoreNewFromC(unsafe.Pointer(retC))
 
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
+	C.g_object_unref((C.gpointer)(retC))
 
 	return retGo
 }
@@ -169,13 +165,9 @@ func NetworkAddressNewLoopback(port uint16) *NetworkAddress {
 	c_port := (C.guint16)(port)
 
 	retC := C.g_network_address_new_loopback(c_port)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := NetworkAddressNewFromC(unsafe.Pointer(retC))
 
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
+	C.g_object_unref((C.gpointer)(retC))
 
 	return retGo
 }
@@ -270,13 +262,9 @@ func SimpleIOStreamNew(inputStream *InputStream, outputStream *OutputStream) *Si
 	}
 
 	retC := C.g_simple_io_stream_new(c_input_stream, c_output_stream)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := SimpleIOStreamNewFromC(unsafe.Pointer(retC))
 
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
+	C.g_object_unref((C.gpointer)(retC))
 
 	return retGo
 }

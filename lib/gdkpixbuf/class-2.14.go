@@ -29,13 +29,9 @@ func PixbufNewFromStream(stream *gio.InputStream, cancellable *gio.Cancellable) 
 	var cThrowableError *C.GError
 
 	retC := C.gdk_pixbuf_new_from_stream(c_stream, c_cancellable, &cThrowableError)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := PixbufNewFromC(unsafe.Pointer(retC))
 
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
+	C.g_object_unref((C.gpointer)(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -67,13 +63,9 @@ func PixbufNewFromStreamAtScale(stream *gio.InputStream, width int32, height int
 	var cThrowableError *C.GError
 
 	retC := C.gdk_pixbuf_new_from_stream_at_scale(c_stream, c_width, c_height, c_preserve_aspect_ratio, c_cancellable, &cThrowableError)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := PixbufNewFromC(unsafe.Pointer(retC))
 
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
+	C.g_object_unref((C.gpointer)(retC))
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {

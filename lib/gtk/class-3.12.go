@@ -21,13 +21,7 @@ import "C"
 // ActionBarNew is a wrapper around the C function gtk_action_bar_new.
 func ActionBarNew() *ActionBar {
 	retC := C.gtk_action_bar_new()
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := ActionBarNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -140,13 +134,7 @@ func (recv *Entry) SetMaxWidthChars(nChars int32) {
 // FlowBoxNew is a wrapper around the C function gtk_flow_box_new.
 func FlowBoxNew() *FlowBox {
 	retC := C.gtk_flow_box_new()
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := FlowBoxNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -394,13 +382,7 @@ func (recv *FlowBox) UnselectChild(child *FlowBoxChild) {
 // FlowBoxChildNew is a wrapper around the C function gtk_flow_box_child_new.
 func FlowBoxChildNew() *FlowBoxChild {
 	retC := C.gtk_flow_box_child_new()
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := FlowBoxChildNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -541,13 +523,7 @@ func PopoverNew(relativeTo *Widget) *Popover {
 	}
 
 	retC := C.gtk_popover_new(c_relative_to)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := PopoverNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
@@ -565,13 +541,7 @@ func PopoverNewFromModel(relativeTo *Widget, model *gio.MenuModel) *Popover {
 	}
 
 	retC := C.gtk_popover_new_from_model(c_relative_to, c_model)
-	retGPointer := (C.gpointer)(retC)
-	nonFloatingRef := C.g_object_is_floating(retGPointer) == C.FALSE
 	retGo := PopoverNewFromC(unsafe.Pointer(retC))
-
-	if nonFloatingRef {
-		C.g_object_unref(retGPointer)
-	}
 
 	return retGo
 }
