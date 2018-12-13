@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/pekim/gobbi/lib/glib"
+	"github.com/pekim/gobbi/lib/gobject"
 	"github.com/pekim/gobbi/lib/gtk"
 	"os"
 	"runtime"
@@ -46,6 +47,13 @@ func doSomeGtkStuff() {
 
 		//window.Widget().ConnectDestroy(gtk.MainQuit)
 		//window.Widget().ShowAll()
+
+		for i := 0; i < 1000; i++ {
+			store := gtk.ListStoreNewv([]gobject.Type{gobject.TYPE_BOOLEAN, gobject.TYPE_INT})
+			if store == nil {
+				panic("nil")
+			}
+		}
 
 		windows = append(windows, window)
 	}
