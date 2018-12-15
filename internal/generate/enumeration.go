@@ -7,15 +7,16 @@ import (
 type Enumeration struct {
 	Namespace *Namespace
 
-	Name         string  `xml:"name,attr"`
-	Blacklist    bool    `xml:"blacklist,attr"`
-	GoTypeName   string  `xml:"goname,attr"` // used in addenda files
-	Version      string  `xml:"version,attr"`
-	CType        string  `xml:"http://www.gtk.org/introspection/c/1.0 type,attr"`
-	GlibTypeName string  `xml:"http://www.gtk.org/introspection/glib/1.0 type-name,attr"`
-	GlibGetType  string  `xml:"http://www.gtk.org/introspection/glib/1.0 get-type,attr"`
-	Doc          *Doc    `xml:"doc"`
-	Members      Members `xml:"member"`
+	Name         string    `xml:"name,attr"`
+	Blacklist    bool      `xml:"blacklist,attr"`
+	GoTypeName   string    `xml:"goname,attr"` // used in addenda files
+	Version      string    `xml:"version,attr"`
+	CType        string    `xml:"http://www.gtk.org/introspection/c/1.0 type,attr"`
+	GlibTypeName string    `xml:"http://www.gtk.org/introspection/glib/1.0 type-name,attr"`
+	GlibGetType  string    `xml:"http://www.gtk.org/introspection/glib/1.0 get-type,attr"`
+	Doc          *Doc      `xml:"doc"`
+	Members      Members   `xml:"member"`
+	Functions    Functions `xml:"function"`
 
 	goTypeName string
 }
@@ -32,6 +33,8 @@ func (e *Enumeration) init(ns *Namespace) {
 	for _, member := range e.Members {
 		member.init(ns, memberNamePrefix)
 	}
+
+	e.Functions.init(ns, e.Name)
 }
 
 func (e *Enumeration) version() string {
@@ -48,6 +51,7 @@ func (e *Enumeration) mergeAddenda(addenda *Enumeration) {
 		e.Version = addenda.Version
 	}
 	e.Members.mergeAddenda(addenda.Members)
+	e.Functions.mergeAddenda(addenda.Functions)
 }
 
 func (e *Enumeration) blacklisted() (bool, string) {
@@ -75,4 +79,6 @@ func (e *Enumeration) generate(g *jen.Group, version *Version) {
 			member.generate(g, e.goTypeName)
 		}
 	})
+
+	e.Functions.generate(g, version)
 }

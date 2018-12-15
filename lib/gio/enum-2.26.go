@@ -3,6 +3,11 @@
 
 package gio
 
+import (
+	glib "github.com/pekim/gobbi/lib/glib"
+	"unsafe"
+)
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gio/gdesktopappinfo.h>
 // #include <gio/gfiledescriptorbased.h>
@@ -87,6 +92,107 @@ const (
 	DBUS_ERROR_UNKNOWN_PROPERTY                 DBusError = 43
 	DBUS_ERROR_PROPERTY_READ_ONLY               DBusError = 44
 )
+
+// DBusErrorEncodeGerror is a wrapper around the C function g_dbus_error_encode_gerror.
+func DBusErrorEncodeGerror(error *glib.Error) string {
+	c_error := (*C.GError)(C.NULL)
+	if error != nil {
+		c_error = (*C.GError)(error.ToC())
+	}
+
+	retC := C.g_dbus_error_encode_gerror(c_error)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// DBusErrorGetRemoteError is a wrapper around the C function g_dbus_error_get_remote_error.
+func DBusErrorGetRemoteError(error *glib.Error) string {
+	c_error := (*C.GError)(C.NULL)
+	if error != nil {
+		c_error = (*C.GError)(error.ToC())
+	}
+
+	retC := C.g_dbus_error_get_remote_error(c_error)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// DBusErrorIsRemoteError is a wrapper around the C function g_dbus_error_is_remote_error.
+func DBusErrorIsRemoteError(error *glib.Error) bool {
+	c_error := (*C.GError)(C.NULL)
+	if error != nil {
+		c_error = (*C.GError)(error.ToC())
+	}
+
+	retC := C.g_dbus_error_is_remote_error(c_error)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// DBusErrorNewForDbusError is a wrapper around the C function g_dbus_error_new_for_dbus_error.
+func DBusErrorNewForDbusError(dbusErrorName string, dbusErrorMessage string) *glib.Error {
+	c_dbus_error_name := C.CString(dbusErrorName)
+	defer C.free(unsafe.Pointer(c_dbus_error_name))
+
+	c_dbus_error_message := C.CString(dbusErrorMessage)
+	defer C.free(unsafe.Pointer(c_dbus_error_message))
+
+	retC := C.g_dbus_error_new_for_dbus_error(c_dbus_error_name, c_dbus_error_message)
+	retGo := glib.ErrorNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// DBusErrorRegisterError is a wrapper around the C function g_dbus_error_register_error.
+func DBusErrorRegisterError(errorDomain glib.Quark, errorCode int32, dbusErrorName string) bool {
+	c_error_domain := (C.GQuark)(errorDomain)
+
+	c_error_code := (C.gint)(errorCode)
+
+	c_dbus_error_name := C.CString(dbusErrorName)
+	defer C.free(unsafe.Pointer(c_dbus_error_name))
+
+	retC := C.g_dbus_error_register_error(c_error_domain, c_error_code, c_dbus_error_name)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// g_dbus_error_register_error_domain : unsupported parameter entries :
+// g_dbus_error_set_dbus_error : unsupported parameter ... : varargs
+// g_dbus_error_set_dbus_error_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
+// DBusErrorStripRemoteError is a wrapper around the C function g_dbus_error_strip_remote_error.
+func DBusErrorStripRemoteError(error *glib.Error) bool {
+	c_error := (*C.GError)(C.NULL)
+	if error != nil {
+		c_error = (*C.GError)(error.ToC())
+	}
+
+	retC := C.g_dbus_error_strip_remote_error(c_error)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// DBusErrorUnregisterError is a wrapper around the C function g_dbus_error_unregister_error.
+func DBusErrorUnregisterError(errorDomain glib.Quark, errorCode int32, dbusErrorName string) bool {
+	c_error_domain := (C.GQuark)(errorDomain)
+
+	c_error_code := (C.gint)(errorCode)
+
+	c_dbus_error_name := C.CString(dbusErrorName)
+	defer C.free(unsafe.Pointer(c_dbus_error_name))
+
+	retC := C.g_dbus_error_unregister_error(c_error_domain, c_error_code, c_dbus_error_name)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
 
 type DBusMessageByteOrder C.GDBusMessageByteOrder
 

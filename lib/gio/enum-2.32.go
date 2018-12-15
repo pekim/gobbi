@@ -3,6 +3,8 @@
 
 package gio
 
+import glib "github.com/pekim/gobbi/lib/glib"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gio/gdesktopappinfo.h>
 // #include <gio/gfiledescriptorbased.h>
@@ -24,6 +26,14 @@ const (
 	RESOURCE_ERROR_NOT_FOUND ResourceError = 0
 	RESOURCE_ERROR_INTERNAL  ResourceError = 1
 )
+
+// ResourceErrorQuark is a wrapper around the C function g_resource_error_quark.
+func ResourceErrorQuark() glib.Quark {
+	retC := C.g_resource_error_quark()
+	retGo := (glib.Quark)(retC)
+
+	return retGo
+}
 
 type SocketClientEvent C.GSocketClientEvent
 

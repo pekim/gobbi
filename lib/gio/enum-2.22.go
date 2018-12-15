@@ -3,6 +3,8 @@
 
 package gio
 
+import glib "github.com/pekim/gobbi/lib/glib"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gio/gdesktopappinfo.h>
 // #include <gio/gfiledescriptorbased.h>
@@ -35,6 +37,14 @@ const (
 	RESOLVER_ERROR_TEMPORARY_FAILURE ResolverError = 1
 	RESOLVER_ERROR_INTERNAL          ResolverError = 2
 )
+
+// ResolverErrorQuark is a wrapper around the C function g_resolver_error_quark.
+func ResolverErrorQuark() glib.Quark {
+	retC := C.g_resolver_error_quark()
+	retGo := (glib.Quark)(retC)
+
+	return retGo
+}
 
 type SocketFamily C.GSocketFamily
 

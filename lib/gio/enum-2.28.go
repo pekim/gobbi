@@ -3,6 +3,8 @@
 
 package gio
 
+import glib "github.com/pekim/gobbi/lib/glib"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <gio/gdesktopappinfo.h>
 // #include <gio/gfiledescriptorbased.h>
@@ -37,6 +39,14 @@ const (
 	TLS_ERROR_CERTIFICATE_REQUIRED TlsError = 5
 	TLS_ERROR_EOF                  TlsError = 6
 )
+
+// TlsErrorQuark is a wrapper around the C function g_tls_error_quark.
+func TlsErrorQuark() glib.Quark {
+	retC := C.g_tls_error_quark()
+	retGo := (glib.Quark)(retC)
+
+	return retGo
+}
 
 type TlsRehandshakeMode C.GTlsRehandshakeMode
 
