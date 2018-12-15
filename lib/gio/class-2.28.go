@@ -444,7 +444,9 @@ func ApplicationNew(applicationId string, flags ApplicationFlags) *Application {
 	retC := C.g_application_new(c_application_id, c_flags)
 	retGo := ApplicationNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -744,7 +746,9 @@ func SimpleActionGroupNew() *SimpleActionGroup {
 	retC := C.g_simple_action_group_new()
 	retGo := SimpleActionGroupNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -843,7 +847,9 @@ func TcpWrapperConnectionNew(baseIoStream *IOStream, socket *Socket) *TcpWrapper
 	retC := C.g_tcp_wrapper_connection_new(c_base_io_stream, c_socket)
 	retGo := TcpWrapperConnectionNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -907,7 +913,9 @@ func TlsCertificateNewFromFile(file string) (*TlsCertificate, error) {
 	retC := C.g_tls_certificate_new_from_file(c_file, &cThrowableError)
 	retGo := TlsCertificateNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -930,7 +938,9 @@ func TlsCertificateNewFromFiles(certFile string, keyFile string) (*TlsCertificat
 	retC := C.g_tls_certificate_new_from_files(c_cert_file, c_key_file, &cThrowableError)
 	retGo := TlsCertificateNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -952,7 +962,9 @@ func TlsCertificateNewFromPem(data string) (*TlsCertificate, error) {
 	retC := C.g_tls_certificate_new_from_pem(c_data, c_length, &cThrowableError)
 	retGo := TlsCertificateNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {

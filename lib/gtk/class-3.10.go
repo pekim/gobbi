@@ -127,7 +127,9 @@ func BuilderNewFromFile(filename string) *Builder {
 	retC := C.gtk_builder_new_from_file(c_filename)
 	retGo := BuilderNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -140,7 +142,9 @@ func BuilderNewFromResource(resourcePath string) *Builder {
 	retC := C.gtk_builder_new_from_resource(c_resource_path)
 	retGo := BuilderNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -155,7 +159,9 @@ func BuilderNewFromString(string string) *Builder {
 	retC := C.gtk_builder_new_from_string(c_string, c_length)
 	retGo := BuilderNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }

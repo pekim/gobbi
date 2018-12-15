@@ -37,7 +37,9 @@ func PixbufNewFromBytes(data *glib.Bytes, colorspace Colorspace, hasAlpha bool, 
 	retC := C.gdk_pixbuf_new_from_bytes(c_data, c_colorspace, c_has_alpha, c_bits_per_sample, c_width, c_height, c_rowstride)
 	retGo := PixbufNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }

@@ -21,7 +21,9 @@ func PixbufSimpleAnimNew(width int32, height int32, rate float32) *PixbufSimpleA
 	retC := C.gdk_pixbuf_simple_anim_new(c_width, c_height, c_rate)
 	retGo := PixbufSimpleAnimNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }

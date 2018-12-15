@@ -23,7 +23,9 @@ func PixbufNewFromResource(resourcePath string) (*Pixbuf, error) {
 	retC := C.gdk_pixbuf_new_from_resource(c_resource_path, &cThrowableError)
 	retGo := PixbufNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -50,7 +52,9 @@ func PixbufNewFromResourceAtScale(resourcePath string, width int32, height int32
 	retC := C.gdk_pixbuf_new_from_resource_at_scale(c_resource_path, c_width, c_height, c_preserve_aspect_ratio, &cThrowableError)
 	retGo := PixbufNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {

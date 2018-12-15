@@ -63,7 +63,9 @@ func CursorNewForDisplay(display *Display, cursorType CursorType) *Cursor {
 	retC := C.gdk_cursor_new_for_display(c_display, c_cursor_type)
 	retGo := CursorNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }

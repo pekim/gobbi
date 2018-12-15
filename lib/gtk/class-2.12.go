@@ -140,7 +140,9 @@ func BuilderNew() *Builder {
 	retC := C.gtk_builder_new()
 	retGo := BuilderNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -854,7 +856,9 @@ func PageSetupNewFromFile(fileName string) (*PageSetup, error) {
 	retC := C.gtk_page_setup_new_from_file(c_file_name, &cThrowableError)
 	retGo := PageSetupNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -879,7 +883,9 @@ func PageSetupNewFromKeyFile(keyFile *glib.KeyFile, groupName string) (*PageSetu
 	retC := C.gtk_page_setup_new_from_key_file(c_key_file, c_group_name, &cThrowableError)
 	retGo := PageSetupNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -932,7 +938,9 @@ func PrintSettingsNewFromFile(fileName string) (*PrintSettings, error) {
 	retC := C.gtk_print_settings_new_from_file(c_file_name, &cThrowableError)
 	retGo := PrintSettingsNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -957,7 +965,9 @@ func PrintSettingsNewFromKeyFile(keyFile *glib.KeyFile, groupName string) (*Prin
 	retC := C.gtk_print_settings_new_from_key_file(c_key_file, c_group_name, &cThrowableError)
 	retGo := PrintSettingsNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -1070,7 +1080,9 @@ func RecentActionNew(name string, label string, tooltip string, stockId string) 
 	retC := C.gtk_recent_action_new(c_name, c_label, c_tooltip, c_stock_id)
 	retGo := RecentActionNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -1097,7 +1109,9 @@ func RecentActionNewForManager(name string, label string, tooltip string, stockI
 	retC := C.gtk_recent_action_new_for_manager(c_name, c_label, c_tooltip, c_stock_id, c_manager)
 	retGo := RecentActionNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -1391,7 +1405,9 @@ func TextMarkNew(name string, leftGravity bool) *TextMark {
 	retC := C.gtk_text_mark_new(c_name, c_left_gravity)
 	retGo := TextMarkNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }

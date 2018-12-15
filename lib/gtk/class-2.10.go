@@ -1218,7 +1218,9 @@ func PageSetupNew() *PageSetup {
 	retC := C.gtk_page_setup_new()
 	retGo := PageSetupNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -2072,7 +2074,9 @@ func PrintOperationNew() *PrintOperation {
 	retC := C.gtk_print_operation_new()
 	retGo := PrintOperationNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -2286,7 +2290,9 @@ func PrintSettingsNew() *PrintSettings {
 	retC := C.gtk_print_settings_new()
 	retGo := PrintSettingsNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -3116,7 +3122,9 @@ func RecentManagerNew() *RecentManager {
 	retC := C.gtk_recent_manager_new()
 	retGo := RecentManagerNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -3521,7 +3529,9 @@ func StatusIconNew() *StatusIcon {
 	retC := C.gtk_status_icon_new()
 	retGo := StatusIconNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -3534,7 +3544,9 @@ func StatusIconNewFromFile(filename string) *StatusIcon {
 	retC := C.gtk_status_icon_new_from_file(c_filename)
 	retGo := StatusIconNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -3547,7 +3559,9 @@ func StatusIconNewFromIconName(iconName string) *StatusIcon {
 	retC := C.gtk_status_icon_new_from_icon_name(c_icon_name)
 	retGo := StatusIconNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -3562,7 +3576,9 @@ func StatusIconNewFromPixbuf(pixbuf *gdkpixbuf.Pixbuf) *StatusIcon {
 	retC := C.gtk_status_icon_new_from_pixbuf(c_pixbuf)
 	retGo := StatusIconNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -3575,7 +3591,9 @@ func StatusIconNewFromStock(stockId string) *StatusIcon {
 	retC := C.gtk_status_icon_new_from_stock(c_stock_id)
 	retGo := StatusIconNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }

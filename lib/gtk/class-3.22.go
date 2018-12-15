@@ -153,7 +153,9 @@ func PadControllerNew(window *Window, group *gio.ActionGroup, pad *gdk.Device) *
 	retC := C.gtk_pad_controller_new(c_window, c_group, c_pad)
 	retGo := PadControllerNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }

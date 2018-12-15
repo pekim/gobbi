@@ -426,7 +426,9 @@ func NoOpObjectNew(obj *gobject.Object) *NoOpObject {
 	retC := C.atk_no_op_object_new(c_obj)
 	retGo := NoOpObjectNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -549,7 +551,9 @@ func NoOpObjectFactoryNew() *NoOpObjectFactory {
 	retC := C.atk_no_op_object_factory_new()
 	retGo := NoOpObjectFactoryNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -1316,7 +1320,9 @@ func PlugNew() *Plug {
 	retC := C.atk_plug_new()
 	retGo := PlugNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -1541,7 +1547,9 @@ func RelationSetNew() *RelationSet {
 	retC := C.atk_relation_set_new()
 	retGo := RelationSetNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -1677,7 +1685,9 @@ func SocketNew() *Socket {
 	retC := C.atk_socket_new()
 	retGo := SocketNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -1740,7 +1750,9 @@ func StateSetNew() *StateSet {
 	retC := C.atk_state_set_new()
 	retGo := StateSetNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }

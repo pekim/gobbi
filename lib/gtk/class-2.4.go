@@ -315,7 +315,9 @@ func ActionNew(name string, label string, tooltip string, stockId string) *Actio
 	retC := C.gtk_action_new(c_name, c_label, c_tooltip, c_stock_id)
 	retGo := ActionNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -697,7 +699,9 @@ func ActionGroupNew(name string) *ActionGroup {
 	retC := C.gtk_action_group_new(c_name)
 	retGo := ActionGroupNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -1527,7 +1531,9 @@ func EntryCompletionNew() *EntryCompletion {
 	retC := C.gtk_entry_completion_new()
 	retGo := EntryCompletionNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -2157,7 +2163,9 @@ func IconThemeNew() *IconTheme {
 	retC := C.gtk_icon_theme_new()
 	retGo := IconThemeNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -2487,7 +2495,9 @@ func RadioActionNew(name string, label string, tooltip string, stockId string, v
 	retC := C.gtk_radio_action_new(c_name, c_label, c_tooltip, c_stock_id, c_value)
 	retGo := RadioActionNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -2947,7 +2957,9 @@ func ToggleActionNew(name string, label string, tooltip string, stockId string) 
 	retC := C.gtk_toggle_action_new(c_name, c_label, c_tooltip, c_stock_id)
 	retGo := ToggleActionNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -3953,7 +3965,9 @@ func UIManagerNew() *UIManager {
 	retC := C.gtk_ui_manager_new()
 	retGo := UIManagerNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }

@@ -232,7 +232,9 @@ func CursorNew(cursorType CursorType) *Cursor {
 	retC := C.gdk_cursor_new(c_cursor_type)
 	retGo := CursorNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -1788,7 +1790,9 @@ func WindowNew(parent *Window, attributes *WindowAttr, attributesMask int32) *Wi
 	retC := C.gdk_window_new(c_parent, c_attributes, c_attributes_mask)
 	retGo := WindowNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }

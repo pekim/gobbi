@@ -241,7 +241,9 @@ func AppLaunchContextNew() *AppLaunchContext {
 	retC := C.g_app_launch_context_new()
 	retGo := AppLaunchContextNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -406,7 +408,9 @@ func BufferedInputStreamNew(baseStream *InputStream) *BufferedInputStream {
 	retC := C.g_buffered_input_stream_new(c_base_stream)
 	retGo := BufferedInputStreamNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -423,7 +427,9 @@ func BufferedInputStreamNewSized(baseStream *InputStream, size uint64) *Buffered
 	retC := C.g_buffered_input_stream_new_sized(c_base_stream, c_size)
 	retGo := BufferedInputStreamNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -604,7 +610,9 @@ func BufferedOutputStreamNew(baseStream *OutputStream) *BufferedOutputStream {
 	retC := C.g_buffered_output_stream_new(c_base_stream)
 	retGo := BufferedOutputStreamNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -621,7 +629,9 @@ func BufferedOutputStreamNewSized(baseStream *OutputStream, size uint64) *Buffer
 	retC := C.g_buffered_output_stream_new_sized(c_base_stream, c_size)
 	retGo := BufferedOutputStreamNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -837,7 +847,9 @@ func CancellableNew() *Cancellable {
 	retC := C.g_cancellable_new()
 	retGo := CancellableNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -1042,7 +1054,9 @@ func ConverterInputStreamNew(baseStream *InputStream, converter *Converter) *Con
 	retC := C.g_converter_input_stream_new(c_base_stream, c_converter)
 	retGo := ConverterInputStreamNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -1123,7 +1137,9 @@ func ConverterOutputStreamNew(baseStream *OutputStream, converter *Converter) *C
 	retC := C.g_converter_output_stream_new(c_base_stream, c_converter)
 	retGo := ConverterOutputStreamNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -1316,7 +1332,9 @@ func DataInputStreamNew(baseStream *InputStream) *DataInputStream {
 	retC := C.g_data_input_stream_new(c_base_stream)
 	retGo := DataInputStreamNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -1599,7 +1617,9 @@ func DataOutputStreamNew(baseStream *OutputStream) *DataOutputStream {
 	retC := C.g_data_output_stream_new(c_base_stream)
 	retGo := DataOutputStreamNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -1858,7 +1878,9 @@ func DesktopAppInfoNew(desktopId string) *DesktopAppInfo {
 	retC := C.g_desktop_app_info_new(c_desktop_id)
 	retGo := DesktopAppInfoNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -1871,7 +1893,9 @@ func DesktopAppInfoNewFromFilename(filename string) *DesktopAppInfo {
 	retC := C.g_desktop_app_info_new_from_filename(c_filename)
 	retGo := DesktopAppInfoNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -2295,7 +2319,9 @@ func FileIconNew(file *File) *FileIcon {
 	retC := C.g_file_icon_new(c_file)
 	retGo := FileIconNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -2370,7 +2396,9 @@ func FileInfoNew() *FileInfo {
 	retC := C.g_file_info_new()
 	retGo := FileInfoNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -3331,7 +3359,9 @@ func FilenameCompleterNew() *FilenameCompleter {
 	retC := C.g_filename_completer_new()
 	retGo := FilenameCompleterNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -3570,7 +3600,9 @@ func IOModuleNew(filename string) *IOModule {
 	retC := C.g_io_module_new(c_filename)
 	retGo := IOModuleNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -4090,7 +4122,9 @@ func MemoryInputStreamNew() *MemoryInputStream {
 	retC := C.g_memory_input_stream_new()
 	retGo := MemoryInputStreamNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -4251,7 +4285,9 @@ func MountOperationNew() *MountOperation {
 	retC := C.g_mount_operation_new()
 	retGo := MountOperationNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -6093,7 +6129,9 @@ func ThemedIconNew(iconname string) *ThemedIcon {
 	retC := C.g_themed_icon_new(c_iconname)
 	retGo := ThemedIconNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -6108,7 +6146,9 @@ func ThemedIconNewWithDefaultFallbacks(iconname string) *ThemedIcon {
 	retC := C.g_themed_icon_new_with_default_fallbacks(c_iconname)
 	retGo := ThemedIconNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -6356,7 +6396,9 @@ func UnixInputStreamNew(fd int32, closeFd bool) *UnixInputStream {
 	retC := C.g_unix_input_stream_new(c_fd, c_close_fd)
 	retGo := UnixInputStreamNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -6543,7 +6585,9 @@ func UnixMountMonitorNew() *UnixMountMonitor {
 	retC := C.g_unix_mount_monitor_new()
 	retGo := UnixMountMonitorNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -6612,7 +6656,9 @@ func UnixOutputStreamNew(fd int32, closeFd bool) *UnixOutputStream {
 	retC := C.g_unix_output_stream_new(c_fd, c_close_fd)
 	retGo := UnixOutputStreamNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -6690,7 +6736,9 @@ func UnixSocketAddressNewAbstract(path []rune) *UnixSocketAddress {
 	retC := C.g_unix_socket_address_new_abstract((*C.gchar)(unsafe.Pointer(c_path)), c_path_len)
 	retGo := UnixSocketAddressNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }

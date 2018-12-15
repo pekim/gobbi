@@ -316,7 +316,9 @@ func ApplicationNew(applicationId string, flags gio.ApplicationFlags) *Applicati
 	retC := C.gtk_application_new(c_application_id, c_flags)
 	retGo := ApplicationNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -1616,7 +1618,9 @@ func EntryCompletionNewWithArea(area *CellArea) *EntryCompletion {
 	retC := C.gtk_entry_completion_new_with_area(c_area)
 	retGo := EntryCompletionNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }

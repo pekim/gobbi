@@ -28,7 +28,9 @@ func AppLaunchContextNew() *AppLaunchContext {
 	retC := C.gdk_app_launch_context_new()
 	retGo := AppLaunchContextNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }

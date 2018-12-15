@@ -235,10 +235,12 @@ func (f *Function) generateReturnGoVar(g *jen.Group) {
 			// A call to a ...NewFromC function will have incremented the ref
 			// count (to 2). So decrement it back to 1.
 			g.
-				Qual("C", "g_object_unref").
-				Call(jen.
-					Parens(jen.Qual("C", "gpointer")).
-					Parens(jen.Id("retC")))
+				If(jen.Id("retC").Op("!=").Nil()).
+				Block(jen.
+					Qual("C", "g_object_unref").
+					Call(jen.
+						Parens(jen.Qual("C", "gpointer")).
+						Parens(jen.Id("retC"))))
 		}
 	}
 	g.Line()

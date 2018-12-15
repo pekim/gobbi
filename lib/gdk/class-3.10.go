@@ -33,7 +33,9 @@ func CursorNewFromSurface(display *Display, surface *cairo.Surface, x float64, y
 	retC := C.gdk_cursor_new_from_surface(c_display, c_surface, c_x, c_y)
 	retGo := CursorNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }

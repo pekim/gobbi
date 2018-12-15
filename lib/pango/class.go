@@ -66,7 +66,9 @@ func ContextNew() *Context {
 	retC := C.pango_context_new()
 	retGo := ContextNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -719,7 +721,9 @@ func LayoutNew(context *Context) *Layout {
 	retC := C.pango_layout_new(c_context)
 	retGo := LayoutNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }

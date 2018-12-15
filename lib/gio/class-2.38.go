@@ -49,7 +49,9 @@ func BytesIconNew(bytes *glib.Bytes) *BytesIcon {
 	retC := C.g_bytes_icon_new(c_bytes)
 	retGo := BytesIconNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -175,7 +177,9 @@ func PropertyActionNew(name string, object uintptr, propertyName string) *Proper
 	retC := C.g_property_action_new(c_name, c_object, c_property_name)
 	retGo := PropertyActionNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }

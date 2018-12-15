@@ -32,7 +32,9 @@ func CursorNewFromPixbuf(display *Display, pixbuf *gdkpixbuf.Pixbuf, x int32, y 
 	retC := C.gdk_cursor_new_from_pixbuf(c_display, c_pixbuf, c_x, c_y)
 	retGo := CursorNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }

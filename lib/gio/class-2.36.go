@@ -170,7 +170,9 @@ func MemoryOutputStreamNewResizable() *MemoryOutputStream {
 	retC := C.g_memory_output_stream_new_resizable()
 	retGo := MemoryOutputStreamNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }

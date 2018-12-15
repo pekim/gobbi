@@ -995,7 +995,9 @@ func GestureDragNew(widget *Widget) *GestureDrag {
 	retC := C.gtk_gesture_drag_new(c_widget)
 	retGo := GestureDragNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -1166,7 +1168,9 @@ func GestureLongPressNew(widget *Widget) *GestureLongPress {
 	retC := C.gtk_gesture_long_press_new(c_widget)
 	retGo := GestureLongPressNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -1373,7 +1377,9 @@ func GestureMultiPressNew(widget *Widget) *GestureMultiPress {
 	retC := C.gtk_gesture_multi_press_new(c_widget)
 	retGo := GestureMultiPressNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -1396,7 +1402,9 @@ func GesturePanNew(widget *Widget, orientation Orientation) *GesturePan {
 	retC := C.gtk_gesture_pan_new(c_widget, c_orientation)
 	retGo := GesturePanNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -1492,7 +1500,9 @@ func GestureRotateNew(widget *Widget) *GestureRotate {
 	retC := C.gtk_gesture_rotate_new(c_widget)
 	retGo := GestureRotateNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -1653,7 +1663,9 @@ func GestureSwipeNew(widget *Widget) *GestureSwipe {
 	retC := C.gtk_gesture_swipe_new(c_widget)
 	retGo := GestureSwipeNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -1746,7 +1758,9 @@ func GestureZoomNew(widget *Widget) *GestureZoom {
 	retC := C.gtk_gesture_zoom_new(c_widget)
 	retGo := GestureZoomNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }

@@ -358,7 +358,9 @@ func EntryBufferNew(initialChars string, nInitialChars int32) *EntryBuffer {
 	retC := C.gtk_entry_buffer_new(c_initial_chars, c_n_initial_chars)
 	retGo := EntryBufferNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }

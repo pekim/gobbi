@@ -574,7 +574,9 @@ func IconInfoNewForPixbuf(iconTheme *IconTheme, pixbuf *gdkpixbuf.Pixbuf) *IconI
 	retC := C.gtk_icon_info_new_for_pixbuf(c_icon_theme, c_pixbuf)
 	retGo := IconInfoNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -691,7 +693,9 @@ func MountOperationNew(parent *Window) *MountOperation {
 	retC := C.gtk_mount_operation_new(c_parent)
 	retGo := MountOperationNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -1004,7 +1008,9 @@ func StatusIconNewFromGicon(icon *gio.Icon) *StatusIcon {
 	retC := C.gtk_status_icon_new_from_gicon(c_icon)
 	retGo := StatusIconNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }

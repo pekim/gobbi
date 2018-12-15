@@ -240,7 +240,9 @@ func DBusObjectManagerClientNewFinish(res *AsyncResult) (*DBusObjectManagerClien
 	retC := C.g_dbus_object_manager_client_new_finish(c_res, &cThrowableError)
 	retGo := DBusObjectManagerClientNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -259,7 +261,9 @@ func DBusObjectManagerClientNewForBusFinish(res *AsyncResult) (*DBusObjectManage
 	retC := C.g_dbus_object_manager_client_new_for_bus_finish(c_res, &cThrowableError)
 	retGo := DBusObjectManagerClientNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -365,7 +369,9 @@ func DBusObjectManagerServerNew(objectPath string) *DBusObjectManagerServer {
 	retC := C.g_dbus_object_manager_server_new(c_object_path)
 	retGo := DBusObjectManagerServerNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -487,7 +493,9 @@ func DBusObjectProxyNew(connection *DBusConnection, objectPath string) *DBusObje
 	retC := C.g_dbus_object_proxy_new(c_connection, c_object_path)
 	retGo := DBusObjectProxyNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -557,7 +565,9 @@ func DBusObjectSkeletonNew(objectPath string) *DBusObjectSkeleton {
 	retC := C.g_dbus_object_skeleton_new(c_object_path)
 	retGo := DBusObjectSkeletonNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -1217,7 +1227,9 @@ func TlsPasswordNew(flags TlsPasswordFlags, description string) *TlsPassword {
 	retC := C.g_tls_password_new(c_flags, c_description)
 	retGo := TlsPasswordNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }

@@ -279,7 +279,9 @@ func InetAddressMaskNew(addr *InetAddress, length uint32) (*InetAddressMask, err
 	retC := C.g_inet_address_mask_new(c_addr, c_length, &cThrowableError)
 	retGo := InetAddressMaskNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -299,7 +301,9 @@ func InetAddressMaskNewFromString(maskString string) (*InetAddressMask, error) {
 	retC := C.g_inet_address_mask_new_from_string(c_mask_string, &cThrowableError)
 	retGo := InetAddressMaskNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -441,7 +445,9 @@ func MenuNew() *Menu {
 	retC := C.g_menu_new()
 	retGo := MenuNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -762,7 +768,9 @@ func MenuItemNew(label string, detailedAction string) *MenuItem {
 	retC := C.g_menu_item_new(c_label, c_detailed_action)
 	retGo := MenuItemNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -780,7 +788,9 @@ func MenuItemNewSection(label string, section *MenuModel) *MenuItem {
 	retC := C.g_menu_item_new_section(c_label, c_section)
 	retGo := MenuItemNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -798,7 +808,9 @@ func MenuItemNewSubmenu(label string, submenu *MenuModel) *MenuItem {
 	retC := C.g_menu_item_new_submenu(c_label, c_submenu)
 	retGo := MenuItemNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -1158,7 +1170,9 @@ func SettingsNewFull(schema *SettingsSchema, backend *SettingsBackend, path stri
 	retC := C.g_settings_new_full(c_schema, c_backend, c_path)
 	retGo := SettingsNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }

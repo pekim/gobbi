@@ -207,7 +207,9 @@ func InetSocketAddressNewFromString(address string, port uint32) *InetSocketAddr
 	retC := C.g_inet_socket_address_new_from_string(c_address, c_port)
 	retGo := InetSocketAddressNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -267,7 +269,9 @@ func NotificationNew(title string) *Notification {
 	retC := C.g_notification_new(c_title)
 	retGo := NotificationNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -760,7 +764,9 @@ func SubprocessLauncherNew(flags SubprocessFlags) *SubprocessLauncher {
 	retC := C.g_subprocess_launcher_new(c_flags)
 	retGo := SubprocessLauncherNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }

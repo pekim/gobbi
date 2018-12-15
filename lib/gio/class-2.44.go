@@ -115,7 +115,9 @@ func ListStoreNew(itemType gobject.Type) *ListStore {
 	retC := C.g_list_store_new(c_item_type)
 	retGo := ListStoreNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -167,7 +169,9 @@ func NetworkAddressNewLoopback(port uint16) *NetworkAddress {
 	retC := C.g_network_address_new_loopback(c_port)
 	retGo := NetworkAddressNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -264,7 +268,9 @@ func SimpleIOStreamNew(inputStream *InputStream, outputStream *OutputStream) *Si
 	retC := C.g_simple_io_stream_new(c_input_stream, c_output_stream)
 	retGo := SimpleIOStreamNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }

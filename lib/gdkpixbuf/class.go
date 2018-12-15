@@ -115,7 +115,9 @@ func PixbufNew(colorspace Colorspace, hasAlpha bool, bitsPerSample int32, width 
 	retC := C.gdk_pixbuf_new(c_colorspace, c_has_alpha, c_bits_per_sample, c_width, c_height)
 	retGo := PixbufNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -132,7 +134,9 @@ func PixbufNewFromFile(filename string) (*Pixbuf, error) {
 	retC := C.gdk_pixbuf_new_from_file(c_filename, &cThrowableError)
 	retGo := PixbufNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -156,7 +160,9 @@ func PixbufNewFromInline(data []uint8, copyPixels bool) (*Pixbuf, error) {
 	retC := C.gdk_pixbuf_new_from_inline(c_data_length, (*C.guint8)(unsafe.Pointer(c_data)), c_copy_pixels, &cThrowableError)
 	retGo := PixbufNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -555,7 +561,9 @@ func PixbufAnimationNewFromFile(filename string) (*PixbufAnimation, error) {
 	retC := C.gdk_pixbuf_animation_new_from_file(c_filename, &cThrowableError)
 	retGo := PixbufAnimationNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -1015,7 +1023,9 @@ func PixbufLoaderNew() *PixbufLoader {
 	retC := C.gdk_pixbuf_loader_new()
 	retGo := PixbufLoaderNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -1030,7 +1040,9 @@ func PixbufLoaderNewWithType(imageType string) (*PixbufLoader, error) {
 	retC := C.gdk_pixbuf_loader_new_with_type(c_image_type, &cThrowableError)
 	retGo := PixbufLoaderNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {

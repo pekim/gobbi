@@ -2042,7 +2042,9 @@ func AccelGroupNew() *AccelGroup {
 	retC := C.gtk_accel_group_new()
 	retGo := AccelGroupNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -9312,7 +9314,9 @@ func ContainerCellAccessibleNew() *ContainerCellAccessible {
 	retC := C.gtk_container_cell_accessible_new()
 	retGo := ContainerCellAccessibleNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -9477,7 +9481,9 @@ func CssProviderNew() *CssProvider {
 	retC := C.gtk_css_provider_new()
 	retGo := CssProviderNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -16265,7 +16271,9 @@ func IMContextSimpleNew() *IMContextSimple {
 	retC := C.gtk_im_context_simple_new()
 	retGo := IMContextSimpleNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -16344,7 +16352,9 @@ func IMMulticontextNew() *IMMulticontext {
 	retC := C.gtk_im_multicontext_new()
 	retGo := IMMulticontextNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -16415,7 +16425,9 @@ func IconFactoryNew() *IconFactory {
 	retC := C.gtk_icon_factory_new()
 	retGo := IconFactoryNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -19574,7 +19586,9 @@ func ListStoreNewv(types []gobject.Type) *ListStore {
 	retC := C.gtk_list_store_newv(c_n_columns, (*C.GType)(unsafe.Pointer(c_types)))
 	retGo := ListStoreNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -22960,7 +22974,9 @@ func NotebookPageAccessibleNew(notebook *NotebookAccessible, child *Widget) *Not
 	retC := C.gtk_notebook_page_accessible_new(c_notebook, c_child)
 	retGo := NotebookPageAccessibleNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -25509,7 +25525,9 @@ func RcStyleNew() *RcStyle {
 	retC := C.gtk_rc_style_new()
 	retGo := RcStyleNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -25989,7 +26007,9 @@ func RendererCellAccessibleNew(renderer *CellRenderer) *RendererCellAccessible {
 	retC := C.gtk_renderer_cell_accessible_new(c_renderer)
 	retGo := RendererCellAccessibleNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -27435,7 +27455,9 @@ func SizeGroupNew(mode SizeGroupMode) *SizeGroup {
 	retC := C.gtk_size_group_new(c_mode)
 	retGo := SizeGroupNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -28881,7 +28903,9 @@ func StyleNew() *Style {
 	retC := C.gtk_style_new()
 	retGo := StyleNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -29047,7 +29071,9 @@ func StyleContextNew() *StyleContext {
 	retC := C.gtk_style_context_new()
 	retGo := StyleContextNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -29176,7 +29202,9 @@ func StylePropertiesNew() *StyleProperties {
 	retC := C.gtk_style_properties_new()
 	retGo := StylePropertiesNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -30560,7 +30588,9 @@ func TextBufferNew(table *TextTagTable) *TextBuffer {
 	retC := C.gtk_text_buffer_new(c_table)
 	retGo := TextBufferNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -31459,7 +31489,9 @@ func TextChildAnchorNew() *TextChildAnchor {
 	retC := C.gtk_text_child_anchor_new()
 	retGo := TextChildAnchorNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -31638,7 +31670,9 @@ func TextTagNew(name string) *TextTag {
 	retC := C.gtk_text_tag_new(c_name)
 	retGo := TextTagNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -31904,7 +31938,9 @@ func TextTagTableNew() *TextTagTable {
 	retC := C.gtk_text_tag_table_new()
 	retGo := TextTagTableNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -35472,7 +35508,9 @@ func TreeStoreNewv(types []gobject.Type) *TreeStore {
 	retC := C.gtk_tree_store_newv(c_n_columns, (*C.GType)(unsafe.Pointer(c_types)))
 	retGo := TreeStoreNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -44351,7 +44389,9 @@ func WindowGroupNew() *WindowGroup {
 	retC := C.gtk_window_group_new()
 	retGo := WindowGroupNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }

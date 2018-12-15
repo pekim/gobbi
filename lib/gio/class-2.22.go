@@ -252,7 +252,9 @@ func InetAddressNewAny(family SocketFamily) *InetAddress {
 	retC := C.g_inet_address_new_any(c_family)
 	retGo := InetAddressNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -266,7 +268,9 @@ func InetAddressNewFromBytes(bytes []uint8, family SocketFamily) *InetAddress {
 	retC := C.g_inet_address_new_from_bytes((*C.guint8)(unsafe.Pointer(c_bytes)), c_family)
 	retGo := InetAddressNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -279,7 +283,9 @@ func InetAddressNewFromString(string string) *InetAddress {
 	retC := C.g_inet_address_new_from_string(c_string)
 	retGo := InetAddressNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -291,7 +297,9 @@ func InetAddressNewLoopback(family SocketFamily) *InetAddress {
 	retC := C.g_inet_address_new_loopback(c_family)
 	retGo := InetAddressNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -415,7 +423,9 @@ func InetSocketAddressNew(address *InetAddress, port uint16) *InetSocketAddress 
 	retC := C.g_inet_socket_address_new(c_address, c_port)
 	retGo := InetSocketAddressNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -448,7 +458,9 @@ func NetworkAddressNew(hostname string, port uint16) *NetworkAddress {
 	retC := C.g_network_address_new(c_hostname, c_port)
 	retGo := NetworkAddressNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -503,7 +515,9 @@ func NetworkServiceNew(service string, protocol string, domain string) *NetworkS
 	retC := C.g_network_service_new(c_service, c_protocol, c_domain)
 	retGo := NetworkServiceNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -769,7 +783,9 @@ func SocketNew(family SocketFamily, type_ SocketType, protocol SocketProtocol) (
 	retC := C.g_socket_new(c_family, c_type, c_protocol, &cThrowableError)
 	retGo := SocketNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -788,7 +804,9 @@ func SocketNewFromFd(fd int32) (*Socket, error) {
 	retC := C.g_socket_new_from_fd(c_fd, &cThrowableError)
 	retGo := SocketNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
 	if cThrowableError != nil {
@@ -1231,7 +1249,9 @@ func SocketAddressNewFromNative(native uintptr, len uint64) *SocketAddress {
 	retC := C.g_socket_address_new_from_native(c_native, c_len)
 	retGo := SocketAddressNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -1325,7 +1345,9 @@ func SocketClientNew() *SocketClient {
 	retC := C.g_socket_client_new()
 	retGo := SocketClientNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -1765,7 +1787,9 @@ func SocketListenerNew() *SocketListener {
 	retC := C.g_socket_listener_new()
 	retGo := SocketListenerNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -2019,7 +2043,9 @@ func SocketServiceNew() *SocketService {
 	retC := C.g_socket_service_new()
 	retGo := SocketServiceNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -2256,7 +2282,9 @@ func ThreadedSocketServiceNew(maxThreads int32) *ThreadedSocketService {
 	retC := C.g_threaded_socket_service_new(c_max_threads)
 	retGo := ThreadedSocketServiceNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -2308,7 +2336,9 @@ func UnixFDMessageNew() *UnixFDMessage {
 	retC := C.g_unix_fd_message_new()
 	retGo := UnixFDMessageNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
@@ -2340,7 +2370,9 @@ func UnixSocketAddressNew(path string) *UnixSocketAddress {
 	retC := C.g_unix_socket_address_new(c_path)
 	retGo := UnixSocketAddressNewFromC(unsafe.Pointer(retC))
 
-	C.g_object_unref((C.gpointer)(retC))
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
 
 	return retGo
 }
