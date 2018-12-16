@@ -113,12 +113,15 @@ func (recv *DBusConnection) ExportActionGroup(objectPath string, actionGroup *Ac
 	retC := C.g_dbus_connection_export_action_group((*C.GDBusConnection)(recv.native), c_object_path, c_action_group, &cThrowableError)
 	retGo := (uint32)(retC)
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // ExportMenuModel is a wrapper around the C function g_dbus_connection_export_menu_model.
@@ -136,12 +139,15 @@ func (recv *DBusConnection) ExportMenuModel(objectPath string, menu *MenuModel) 
 	retC := C.g_dbus_connection_export_menu_model((*C.GDBusConnection)(recv.native), c_object_path, c_menu, &cThrowableError)
 	retGo := (uint32)(retC)
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // UnexportActionGroup is a wrapper around the C function g_dbus_connection_unexport_action_group.
@@ -283,12 +289,15 @@ func InetAddressMaskNew(addr *InetAddress, length uint32) (*InetAddressMask, err
 		C.g_object_unref((C.gpointer)(retC))
 	}
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // InetAddressMaskNewFromString is a wrapper around the C function g_inet_address_mask_new_from_string.
@@ -305,12 +314,15 @@ func InetAddressMaskNewFromString(maskString string) (*InetAddressMask, error) {
 		C.g_object_unref((C.gpointer)(retC))
 	}
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Equal is a wrapper around the C function g_inet_address_mask_equal.
@@ -1216,12 +1228,15 @@ func (recv *Socket) ConditionTimedWait(condition glib.IOCondition, timeout int64
 	retC := C.g_socket_condition_timed_wait((*C.GSocket)(recv.native), c_condition, c_timeout, c_cancellable, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // GetAvailableBytes is a wrapper around the C function g_socket_get_available_bytes.
@@ -1282,12 +1297,15 @@ func (recv *Socket) JoinMulticastGroup(group *InetAddress, sourceSpecific bool, 
 	retC := C.g_socket_join_multicast_group((*C.GSocket)(recv.native), c_group, c_source_specific, c_iface, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // LeaveMulticastGroup is a wrapper around the C function g_socket_leave_multicast_group.
@@ -1308,12 +1326,15 @@ func (recv *Socket) LeaveMulticastGroup(group *InetAddress, sourceSpecific bool,
 	retC := C.g_socket_leave_multicast_group((*C.GSocket)(recv.native), c_group, c_source_specific, c_iface, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // SetBroadcast is a wrapper around the C function g_socket_set_broadcast.
@@ -1371,12 +1392,15 @@ func (recv *SocketConnection) Connect(address *SocketAddress, cancellable *Cance
 	retC := C.g_socket_connection_connect((*C.GSocketConnection)(recv.native), c_address, c_cancellable, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : g_socket_connection_connect_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
@@ -1390,12 +1414,15 @@ func (recv *SocketConnection) ConnectFinish(result *AsyncResult) (bool, error) {
 	retC := C.g_socket_connection_connect_finish((*C.GSocketConnection)(recv.native), c_result, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // IsConnected is a wrapper around the C function g_socket_connection_is_connected.
@@ -1417,12 +1444,15 @@ func (recv *UnixConnection) ReceiveCredentialsFinish(result *AsyncResult) (*Cred
 	retC := C.g_unix_connection_receive_credentials_finish((*C.GUnixConnection)(recv.native), c_result, &cThrowableError)
 	retGo := CredentialsNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : g_unix_connection_send_credentials_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
@@ -1436,10 +1466,13 @@ func (recv *UnixConnection) SendCredentialsFinish(result *AsyncResult) (bool, er
 	retC := C.g_unix_connection_send_credentials_finish((*C.GUnixConnection)(recv.native), c_result, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }

@@ -9521,12 +9521,15 @@ func (recv *CssProvider) LoadFromData(data []uint8) (bool, error) {
 	retC := C.gtk_css_provider_load_from_data((*C.GtkCssProvider)(recv.native), (*C.gchar)(unsafe.Pointer(c_data)), c_length, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // LoadFromFile is a wrapper around the C function gtk_css_provider_load_from_file.
@@ -9538,12 +9541,15 @@ func (recv *CssProvider) LoadFromFile(file *gio.File) (bool, error) {
 	retC := C.gtk_css_provider_load_from_file((*C.GtkCssProvider)(recv.native), c_file, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // LoadFromPath is a wrapper around the C function gtk_css_provider_load_from_path.
@@ -9556,12 +9562,15 @@ func (recv *CssProvider) LoadFromPath(path string) (bool, error) {
 	retC := C.gtk_css_provider_load_from_path((*C.GtkCssProvider)(recv.native), c_path, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // StyleProvider returns the StyleProvider interface implemented by CssProvider

@@ -2140,12 +2140,15 @@ func (recv *IconInfo) LoadIcon() (*gdkpixbuf.Pixbuf, error) {
 	retC := C.gtk_icon_info_load_icon((*C.GtkIconInfo)(recv.native), &cThrowableError)
 	retGo := gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // SetRawCoordinates is a wrapper around the C function gtk_icon_info_set_raw_coordinates.
@@ -2270,12 +2273,15 @@ func (recv *IconTheme) LoadIcon(iconName string, size int32, flags IconLookupFla
 		retGo = gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
 	}
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // LookupIcon is a wrapper around the C function gtk_icon_theme_lookup_icon.
@@ -4005,12 +4011,15 @@ func (recv *UIManager) AddUiFromFile(filename string) (uint32, error) {
 	retC := C.gtk_ui_manager_add_ui_from_file((*C.GtkUIManager)(recv.native), c_filename, &cThrowableError)
 	retGo := (uint32)(retC)
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // AddUiFromString is a wrapper around the C function gtk_ui_manager_add_ui_from_string.
@@ -4025,12 +4034,15 @@ func (recv *UIManager) AddUiFromString(buffer string) (uint32, error) {
 	retC := C.gtk_ui_manager_add_ui_from_string((*C.GtkUIManager)(recv.native), c_buffer, c_length, &cThrowableError)
 	retGo := (uint32)(retC)
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // EnsureUpdate is a wrapper around the C function gtk_ui_manager_ensure_update.

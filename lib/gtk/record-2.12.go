@@ -47,12 +47,15 @@ func PaperSizeNewFromKeyFile(keyFile *glib.KeyFile, groupName string) (*PaperSiz
 	retC := C.gtk_paper_size_new_from_key_file(c_key_file, c_group_name, &cThrowableError)
 	retGo := PaperSizeNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // PaperSizeGetPaperSizes is a wrapper around the C function gtk_paper_size_get_paper_sizes.

@@ -433,12 +433,15 @@ func DBusNodeInfoNewForXml(xmlData string) (*DBusNodeInfo, error) {
 	retC := C.g_dbus_node_info_new_for_xml(c_xml_data, &cThrowableError)
 	retGo := DBusNodeInfoNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // GenerateXml is a wrapper around the C function g_dbus_node_info_generate_xml.

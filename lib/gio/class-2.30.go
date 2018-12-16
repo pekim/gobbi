@@ -95,12 +95,15 @@ func (recv *DBusInterfaceSkeleton) Export(connection *DBusConnection, objectPath
 	retC := C.g_dbus_interface_skeleton_export((*C.GDBusInterfaceSkeleton)(recv.native), c_connection, c_object_path, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Flush is a wrapper around the C function g_dbus_interface_skeleton_flush.
@@ -244,12 +247,15 @@ func DBusObjectManagerClientNewFinish(res *AsyncResult) (*DBusObjectManagerClien
 		C.g_object_unref((C.gpointer)(retC))
 	}
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // DBusObjectManagerClientNewForBusFinish is a wrapper around the C function g_dbus_object_manager_client_new_for_bus_finish.
@@ -265,12 +271,15 @@ func DBusObjectManagerClientNewForBusFinish(res *AsyncResult) (*DBusObjectManage
 		C.g_object_unref((C.gpointer)(retC))
 	}
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : g_dbus_object_manager_client_new_for_bus_sync : unsupported parameter get_proxy_type_func : no type generator for DBusProxyTypeFunc (GDBusProxyTypeFunc) for param get_proxy_type_func
@@ -641,14 +650,17 @@ func (recv *DataInputStream) ReadLineFinishUtf8(result *AsyncResult) (string, ui
 	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
 	length := (uint64)(c_length)
 
-	return retGo, length, goThrowableError
+	return retGo, length, goError
 }
 
 // ReadLineUtf8 is a wrapper around the C function g_data_input_stream_read_line_utf8.
@@ -666,14 +678,17 @@ func (recv *DataInputStream) ReadLineUtf8(cancellable *Cancellable) (string, uin
 	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
 	length := (uint64)(c_length)
 
-	return retGo, length, goThrowableError
+	return retGo, length, goError
 }
 
 // GetNodisplay is a wrapper around the C function g_desktop_app_info_get_nodisplay.
@@ -868,12 +883,15 @@ func (recv *TlsDatabase) LookupCertificateForHandle(handle string, interaction *
 		retGo = TlsCertificateNewFromC(unsafe.Pointer(retC))
 	}
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : g_tls_database_lookup_certificate_for_handle_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
@@ -887,12 +905,15 @@ func (recv *TlsDatabase) LookupCertificateForHandleFinish(result *AsyncResult) (
 	retC := C.g_tls_database_lookup_certificate_for_handle_finish((*C.GTlsDatabase)(recv.native), c_result, &cThrowableError)
 	retGo := TlsCertificateNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // LookupCertificateIssuer is a wrapper around the C function g_tls_database_lookup_certificate_issuer.
@@ -919,12 +940,15 @@ func (recv *TlsDatabase) LookupCertificateIssuer(certificate *TlsCertificate, in
 	retC := C.g_tls_database_lookup_certificate_issuer((*C.GTlsDatabase)(recv.native), c_certificate, c_interaction, c_flags, c_cancellable, &cThrowableError)
 	retGo := TlsCertificateNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : g_tls_database_lookup_certificate_issuer_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
@@ -938,12 +962,15 @@ func (recv *TlsDatabase) LookupCertificateIssuerFinish(result *AsyncResult) (*Tl
 	retC := C.g_tls_database_lookup_certificate_issuer_finish((*C.GTlsDatabase)(recv.native), c_result, &cThrowableError)
 	retGo := TlsCertificateNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // LookupCertificatesIssuedBy is a wrapper around the C function g_tls_database_lookup_certificates_issued_by.
@@ -967,12 +994,15 @@ func (recv *TlsDatabase) LookupCertificatesIssuedBy(issuerRawDn []uint8, interac
 	retC := C.g_tls_database_lookup_certificates_issued_by((*C.GTlsDatabase)(recv.native), (*C.GByteArray)(unsafe.Pointer(c_issuer_raw_dn)), c_interaction, c_flags, c_cancellable, &cThrowableError)
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : g_tls_database_lookup_certificates_issued_by_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
@@ -986,12 +1016,15 @@ func (recv *TlsDatabase) LookupCertificatesIssuedByFinish(result *AsyncResult) (
 	retC := C.g_tls_database_lookup_certificates_issued_by_finish((*C.GTlsDatabase)(recv.native), c_result, &cThrowableError)
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // VerifyChain is a wrapper around the C function g_tls_database_verify_chain.
@@ -1023,12 +1056,15 @@ func (recv *TlsDatabase) VerifyChain(chain *TlsCertificate, purpose string, iden
 	retC := C.g_tls_database_verify_chain((*C.GTlsDatabase)(recv.native), c_chain, c_purpose, c_identity, c_interaction, c_flags, c_cancellable, &cThrowableError)
 	retGo := (TlsCertificateFlags)(retC)
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : g_tls_database_verify_chain_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
@@ -1042,12 +1078,15 @@ func (recv *TlsDatabase) VerifyChainFinish(result *AsyncResult) (TlsCertificateF
 	retC := C.g_tls_database_verify_chain_finish((*C.GTlsDatabase)(recv.native), c_result, &cThrowableError)
 	retGo := (TlsCertificateFlags)(retC)
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // TlsInteraction is a wrapper around the C record GTlsInteraction.
@@ -1116,12 +1155,15 @@ func (recv *TlsInteraction) AskPassword(password *TlsPassword, cancellable *Canc
 	retC := C.g_tls_interaction_ask_password((*C.GTlsInteraction)(recv.native), c_password, c_cancellable, &cThrowableError)
 	retGo := (TlsInteractionResult)(retC)
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : g_tls_interaction_ask_password_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
@@ -1135,12 +1177,15 @@ func (recv *TlsInteraction) AskPasswordFinish(result *AsyncResult) (TlsInteracti
 	retC := C.g_tls_interaction_ask_password_finish((*C.GTlsInteraction)(recv.native), c_result, &cThrowableError)
 	retGo := (TlsInteractionResult)(retC)
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // InvokeAskPassword is a wrapper around the C function g_tls_interaction_invoke_ask_password.
@@ -1160,12 +1205,15 @@ func (recv *TlsInteraction) InvokeAskPassword(password *TlsPassword, cancellable
 	retC := C.g_tls_interaction_invoke_ask_password((*C.GTlsInteraction)(recv.native), c_password, c_cancellable, &cThrowableError)
 	retGo := (TlsInteractionResult)(retC)
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // TlsPassword is a wrapper around the C record GTlsPassword.

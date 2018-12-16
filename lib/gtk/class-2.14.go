@@ -758,12 +758,15 @@ func (recv *PageSetup) LoadFile(fileName string) (bool, error) {
 	retC := C.gtk_page_setup_load_file((*C.GtkPageSetup)(recv.native), c_file_name, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // LoadKeyFile is a wrapper around the C function gtk_page_setup_load_key_file.
@@ -781,12 +784,15 @@ func (recv *PageSetup) LoadKeyFile(keyFile *glib.KeyFile, groupName string) (boo
 	retC := C.gtk_page_setup_load_key_file((*C.GtkPageSetup)(recv.native), c_key_file, c_group_name, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // GetNumberUpLayout is a wrapper around the C function gtk_print_settings_get_number_up_layout.
@@ -807,12 +813,15 @@ func (recv *PrintSettings) LoadFile(fileName string) (bool, error) {
 	retC := C.gtk_print_settings_load_file((*C.GtkPrintSettings)(recv.native), c_file_name, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // LoadKeyFile is a wrapper around the C function gtk_print_settings_load_key_file.
@@ -830,12 +839,15 @@ func (recv *PrintSettings) LoadKeyFile(keyFile *glib.KeyFile, groupName string) 
 	retC := C.gtk_print_settings_load_key_file((*C.GtkPrintSettings)(recv.native), c_key_file, c_group_name, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // SetNumberUpLayout is a wrapper around the C function gtk_print_settings_set_number_up_layout.

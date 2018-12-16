@@ -35,12 +35,15 @@ func PixbufNewFromStream(stream *gio.InputStream, cancellable *gio.Cancellable) 
 		C.g_object_unref((C.gpointer)(retC))
 	}
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // PixbufNewFromStreamAtScale is a wrapper around the C function gdk_pixbuf_new_from_stream_at_scale.
@@ -71,12 +74,15 @@ func PixbufNewFromStreamAtScale(stream *gio.InputStream, width int32, height int
 		C.g_object_unref((C.gpointer)(retC))
 	}
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : gdk_pixbuf_save_to_stream : unsupported parameter ... : varargs

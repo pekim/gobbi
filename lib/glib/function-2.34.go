@@ -43,12 +43,15 @@ func SpawnCheckExitStatus(exitStatus int32) (bool, error) {
 	retC := C.g_spawn_check_exit_status(c_exit_status, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : g_test_add_data_func_full : unsupported parameter test_func : no type generator for TestDataFunc (GTestDataFunc) for param test_func

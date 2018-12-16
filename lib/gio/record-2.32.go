@@ -160,12 +160,15 @@ func ResourceNewFromData(data *glib.Bytes) (*Resource, error) {
 	retC := C.g_resource_new_from_data(c_data, &cThrowableError)
 	retGo := ResourceNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // ResourceLoad is a wrapper around the C function g_resource_load.
@@ -178,12 +181,15 @@ func ResourceLoad(filename string) (*Resource, error) {
 	retC := C.g_resource_load(c_filename, &cThrowableError)
 	retGo := ResourceNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : g_resource_enumerate_children : no return type
@@ -204,8 +210,11 @@ func (recv *Resource) GetInfo(path string, lookupFlags ResourceLookupFlags) (boo
 	retC := C.g_resource_get_info((*C.GResource)(recv.native), c_path, c_lookup_flags, &c_size, &c_flags, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
@@ -213,7 +222,7 @@ func (recv *Resource) GetInfo(path string, lookupFlags ResourceLookupFlags) (boo
 
 	flags := (uint32)(c_flags)
 
-	return retGo, size, flags, goThrowableError
+	return retGo, size, flags, goError
 }
 
 // LookupData is a wrapper around the C function g_resource_lookup_data.
@@ -228,12 +237,15 @@ func (recv *Resource) LookupData(path string, lookupFlags ResourceLookupFlags) (
 	retC := C.g_resource_lookup_data((*C.GResource)(recv.native), c_path, c_lookup_flags, &cThrowableError)
 	retGo := glib.BytesNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // OpenStream is a wrapper around the C function g_resource_open_stream.
@@ -248,12 +260,15 @@ func (recv *Resource) OpenStream(path string, lookupFlags ResourceLookupFlags) (
 	retC := C.g_resource_open_stream((*C.GResource)(recv.native), c_path, c_lookup_flags, &cThrowableError)
 	retGo := InputStreamNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Ref is a wrapper around the C function g_resource_ref.
@@ -372,12 +387,15 @@ func SettingsSchemaSourceNewFromDirectory(directory string, parent *SettingsSche
 	retC := C.g_settings_schema_source_new_from_directory(c_directory, c_parent, c_trusted, &cThrowableError)
 	retGo := SettingsSchemaSourceNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // SettingsSchemaSourceGetDefault is a wrapper around the C function g_settings_schema_source_get_default.

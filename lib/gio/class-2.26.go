@@ -108,12 +108,15 @@ func (recv *Credentials) IsSameUser(otherCredentials *Credentials) (bool, error)
 	retC := C.g_credentials_is_same_user((*C.GCredentials)(recv.native), c_other_credentials, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // SetNative is a wrapper around the C function g_credentials_set_native.
@@ -275,12 +278,15 @@ func DBusConnectionNewFinish(res *AsyncResult) (*DBusConnection, error) {
 		C.g_object_unref((C.gpointer)(retC))
 	}
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // DBusConnectionNewForAddressFinish is a wrapper around the C function g_dbus_connection_new_for_address_finish.
@@ -296,12 +302,15 @@ func DBusConnectionNewForAddressFinish(res *AsyncResult) (*DBusConnection, error
 		C.g_object_unref((C.gpointer)(retC))
 	}
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // DBusConnectionNewForAddressSync is a wrapper around the C function g_dbus_connection_new_for_address_sync.
@@ -330,12 +339,15 @@ func DBusConnectionNewForAddressSync(address string, flags DBusConnectionFlags, 
 		C.g_object_unref((C.gpointer)(retC))
 	}
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // DBusConnectionNewSync is a wrapper around the C function g_dbus_connection_new_sync.
@@ -369,12 +381,15 @@ func DBusConnectionNewSync(stream *IOStream, guid string, flags DBusConnectionFl
 		C.g_object_unref((C.gpointer)(retC))
 	}
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // g_dbus_connection_new : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
@@ -398,12 +413,15 @@ func (recv *DBusConnection) CloseFinish(res *AsyncResult) (bool, error) {
 	retC := C.g_dbus_connection_close_finish((*C.GDBusConnection)(recv.native), c_res, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // CloseSync is a wrapper around the C function g_dbus_connection_close_sync.
@@ -418,12 +436,15 @@ func (recv *DBusConnection) CloseSync(cancellable *Cancellable) (bool, error) {
 	retC := C.g_dbus_connection_close_sync((*C.GDBusConnection)(recv.native), c_cancellable, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : g_dbus_connection_emit_signal : unsupported parameter parameters : Blacklisted record : GVariant
@@ -439,12 +460,15 @@ func (recv *DBusConnection) FlushFinish(res *AsyncResult) (bool, error) {
 	retC := C.g_dbus_connection_flush_finish((*C.GDBusConnection)(recv.native), c_res, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // FlushSync is a wrapper around the C function g_dbus_connection_flush_sync.
@@ -459,12 +483,15 @@ func (recv *DBusConnection) FlushSync(cancellable *Cancellable) (bool, error) {
 	retC := C.g_dbus_connection_flush_sync((*C.GDBusConnection)(recv.native), c_cancellable, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // GetCapabilities is a wrapper around the C function g_dbus_connection_get_capabilities.
@@ -557,14 +584,17 @@ func (recv *DBusConnection) SendMessage(message *DBusMessage, flags DBusSendMess
 	retC := C.g_dbus_connection_send_message((*C.GDBusConnection)(recv.native), c_message, c_flags, &c_out_serial, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
 	outSerial := (uint32)(c_out_serial)
 
-	return retGo, outSerial, goThrowableError
+	return retGo, outSerial, goError
 }
 
 // Unsupported : g_dbus_connection_send_message_with_reply : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
@@ -578,12 +608,15 @@ func (recv *DBusConnection) SendMessageWithReplyFinish(res *AsyncResult) (*DBusM
 	retC := C.g_dbus_connection_send_message_with_reply_finish((*C.GDBusConnection)(recv.native), c_res, &cThrowableError)
 	retGo := DBusMessageNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // SendMessageWithReplySync is a wrapper around the C function g_dbus_connection_send_message_with_reply_sync.
@@ -609,14 +642,17 @@ func (recv *DBusConnection) SendMessageWithReplySync(message *DBusMessage, flags
 	retC := C.g_dbus_connection_send_message_with_reply_sync((*C.GDBusConnection)(recv.native), c_message, c_flags, c_timeout_msec, &c_out_serial, c_cancellable, &cThrowableError)
 	retGo := DBusMessageNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
 	outSerial := (uint32)(c_out_serial)
 
-	return retGo, outSerial, goThrowableError
+	return retGo, outSerial, goError
 }
 
 // SetExitOnClose is a wrapper around the C function g_dbus_connection_set_exit_on_close.
@@ -743,12 +779,15 @@ func DBusMessageNewFromBlob(blob []uint8, capabilities DBusCapabilityFlags) (*DB
 		C.g_object_unref((C.gpointer)(retC))
 	}
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // DBusMessageNewMethodCall is a wrapper around the C function g_dbus_message_new_method_call.
@@ -807,12 +846,15 @@ func DBusMessageBytesNeeded(blob []uint8) (int64, error) {
 	retC := C.g_dbus_message_bytes_needed((*C.guchar)(unsafe.Pointer(c_blob)), c_blob_len, &cThrowableError)
 	retGo := (int64)(retC)
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Copy is a wrapper around the C function g_dbus_message_copy.
@@ -822,12 +864,15 @@ func (recv *DBusMessage) Copy() (*DBusMessage, error) {
 	retC := C.g_dbus_message_copy((*C.GDBusMessage)(recv.native), &cThrowableError)
 	retGo := DBusMessageNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // GetArg0 is a wrapper around the C function g_dbus_message_get_arg0.
@@ -1157,12 +1202,15 @@ func (recv *DBusMessage) ToGerror() (bool, error) {
 	retC := C.g_dbus_message_to_gerror((*C.GDBusMessage)(recv.native), &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // DBusMethodInvocation is a wrapper around the C record GDBusMethodInvocation.
@@ -1385,12 +1433,15 @@ func DBusProxyNewFinish(res *AsyncResult) (*DBusProxy, error) {
 		C.g_object_unref((C.gpointer)(retC))
 	}
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // DBusProxyNewForBusFinish is a wrapper around the C function g_dbus_proxy_new_for_bus_finish.
@@ -1406,12 +1457,15 @@ func DBusProxyNewForBusFinish(res *AsyncResult) (*DBusProxy, error) {
 		C.g_object_unref((C.gpointer)(retC))
 	}
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // DBusProxyNewForBusSync is a wrapper around the C function g_dbus_proxy_new_for_bus_sync.
@@ -1448,12 +1502,15 @@ func DBusProxyNewForBusSync(busType BusType, flags DBusProxyFlags, info *DBusInt
 		C.g_object_unref((C.gpointer)(retC))
 	}
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // DBusProxyNewSync is a wrapper around the C function g_dbus_proxy_new_sync.
@@ -1493,12 +1550,15 @@ func DBusProxyNewSync(connection *DBusConnection, flags DBusProxyFlags, info *DB
 		C.g_object_unref((C.gpointer)(retC))
 	}
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // g_dbus_proxy_new : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
@@ -1682,12 +1742,15 @@ func DBusServerNewSync(address string, flags DBusServerFlags, guid string, obser
 		C.g_object_unref((C.gpointer)(retC))
 	}
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // GetClientAddress is a wrapper around the C function g_dbus_server_get_client_address.
@@ -1756,14 +1819,17 @@ func (recv *DataInputStream) ReadUpto(stopChars string, stopCharsLen int64, canc
 	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
 	length := (uint64)(c_length)
 
-	return retGo, length, goThrowableError
+	return retGo, length, goError
 }
 
 // Unsupported : g_data_input_stream_read_upto_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
@@ -1788,12 +1854,15 @@ func NetworkAddressParseUri(uri string, defaultPort uint16) (*NetworkAddress, er
 	retC := C.g_network_address_parse_uri(c_uri, c_default_port, &cThrowableError)
 	retGo := NetworkAddressNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // GetScheme is a wrapper around the C function g_network_address_get_scheme.
@@ -1834,12 +1903,15 @@ func (recv *Permission) Acquire(cancellable *Cancellable) (bool, error) {
 	retC := C.g_permission_acquire((*C.GPermission)(recv.native), c_cancellable, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : g_permission_acquire_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
@@ -1853,12 +1925,15 @@ func (recv *Permission) AcquireFinish(result *AsyncResult) (bool, error) {
 	retC := C.g_permission_acquire_finish((*C.GPermission)(recv.native), c_result, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // GetAllowed is a wrapper around the C function g_permission_get_allowed.
@@ -1913,12 +1988,15 @@ func (recv *Permission) Release(cancellable *Cancellable) (bool, error) {
 	retC := C.g_permission_release((*C.GPermission)(recv.native), c_cancellable, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : g_permission_release_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
@@ -1932,12 +2010,15 @@ func (recv *Permission) ReleaseFinish(result *AsyncResult) (bool, error) {
 	retC := C.g_permission_release_finish((*C.GPermission)(recv.native), c_result, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // ProxyAddress is a wrapper around the C record GProxyAddress.
@@ -2403,12 +2484,15 @@ func (recv *Socket) GetCredentials() (*Credentials, error) {
 	retC := C.g_socket_get_credentials((*C.GSocket)(recv.native), &cThrowableError)
 	retGo := CredentialsNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // GetTimeout is a wrapper around the C function g_socket_get_timeout.
@@ -2438,12 +2522,15 @@ func (recv *Socket) ReceiveWithBlocking(buffer []uint8, blocking bool, cancellab
 	retC := C.g_socket_receive_with_blocking((*C.GSocket)(recv.native), (*C.gchar)(unsafe.Pointer(c_buffer)), c_size, c_blocking, c_cancellable, &cThrowableError)
 	retGo := (int64)(retC)
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // SendWithBlocking is a wrapper around the C function g_socket_send_with_blocking.
@@ -2465,12 +2552,15 @@ func (recv *Socket) SendWithBlocking(buffer []uint8, blocking bool, cancellable 
 	retC := C.g_socket_send_with_blocking((*C.GSocket)(recv.native), (*C.gchar)(unsafe.Pointer(c_buffer)), c_size, c_blocking, c_cancellable, &cThrowableError)
 	retGo := (int64)(retC)
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // SetTimeout is a wrapper around the C function g_socket_set_timeout.
@@ -2499,12 +2589,15 @@ func (recv *SocketClient) ConnectToUri(uri string, defaultPort uint16, cancellab
 	retC := C.g_socket_client_connect_to_uri((*C.GSocketClient)(recv.native), c_uri, c_default_port, c_cancellable, &cThrowableError)
 	retGo := SocketConnectionNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : g_socket_client_connect_to_uri_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
@@ -2518,12 +2611,15 @@ func (recv *SocketClient) ConnectToUriFinish(result *AsyncResult) (*SocketConnec
 	retC := C.g_socket_client_connect_to_uri_finish((*C.GSocketClient)(recv.native), c_result, &cThrowableError)
 	retGo := SocketConnectionNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // GetEnableProxy is a wrapper around the C function g_socket_client_get_enable_proxy.
@@ -2573,12 +2669,15 @@ func (recv *UnixConnection) ReceiveCredentials(cancellable *Cancellable) (*Crede
 	retC := C.g_unix_connection_receive_credentials((*C.GUnixConnection)(recv.native), c_cancellable, &cThrowableError)
 	retGo := CredentialsNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // SendCredentials is a wrapper around the C function g_unix_connection_send_credentials.
@@ -2593,12 +2692,15 @@ func (recv *UnixConnection) SendCredentials(cancellable *Cancellable) (bool, err
 	retC := C.g_unix_connection_send_credentials((*C.GUnixConnection)(recv.native), c_cancellable, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // UnixCredentialsMessage is a wrapper around the C record GUnixCredentialsMessage.

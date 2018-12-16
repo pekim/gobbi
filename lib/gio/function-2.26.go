@@ -35,12 +35,15 @@ func BusGetFinish(res *AsyncResult) (*DBusConnection, error) {
 	retC := C.g_bus_get_finish(c_res, &cThrowableError)
 	retGo := DBusConnectionNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // BusGetSync is a wrapper around the C function g_bus_get_sync.
@@ -57,12 +60,15 @@ func BusGetSync(busType BusType, cancellable *Cancellable) (*DBusConnection, err
 	retC := C.g_bus_get_sync(c_bus_type, c_cancellable, &cThrowableError)
 	retGo := DBusConnectionNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : g_bus_own_name : unsupported parameter bus_acquired_handler : no type generator for BusAcquiredCallback (GBusAcquiredCallback) for param bus_acquired_handler
@@ -217,12 +223,15 @@ func DbusAddressGetForBusSync(busType BusType, cancellable *Cancellable) (string
 	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : g_dbus_address_get_stream : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
@@ -238,15 +247,18 @@ func DbusAddressGetStreamFinish(res *AsyncResult) (*IOStream, string, error) {
 	retC := C.g_dbus_address_get_stream_finish(c_res, &c_out_guid, &cThrowableError)
 	retGo := IOStreamNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
 	outGuid := C.GoString(c_out_guid)
 	defer C.free(unsafe.Pointer(c_out_guid))
 
-	return retGo, outGuid, goThrowableError
+	return retGo, outGuid, goError
 }
 
 // DbusAddressGetStreamSync is a wrapper around the C function g_dbus_address_get_stream_sync.
@@ -266,15 +278,18 @@ func DbusAddressGetStreamSync(address string, cancellable *Cancellable) (*IOStre
 	retC := C.g_dbus_address_get_stream_sync(c_address, &c_out_guid, c_cancellable, &cThrowableError)
 	retGo := IOStreamNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
 	outGuid := C.GoString(c_out_guid)
 	defer C.free(unsafe.Pointer(c_out_guid))
 
-	return retGo, outGuid, goThrowableError
+	return retGo, outGuid, goError
 }
 
 // Unsupported : g_dbus_annotation_info_lookup : unsupported parameter annotations :
@@ -355,12 +370,15 @@ func DbusIsSupportedAddress(string string) (bool, error) {
 	retC := C.g_dbus_is_supported_address(c_string, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // DbusIsUniqueName is a wrapper around the C function g_dbus_is_unique_name.

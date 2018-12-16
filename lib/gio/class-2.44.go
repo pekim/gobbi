@@ -73,8 +73,11 @@ func (recv *FileEnumerator) Iterate(cancellable *Cancellable) (bool, *FileInfo, 
 	retC := C.g_file_enumerator_iterate((*C.GFileEnumerator)(recv.native), &c_out_info, &c_out_child, c_cancellable, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
@@ -82,7 +85,7 @@ func (recv *FileEnumerator) Iterate(cancellable *Cancellable) (bool, *FileInfo, 
 
 	outChild := FileNewFromC(unsafe.Pointer(c_out_child))
 
-	return retGo, outInfo, outChild, goThrowableError
+	return retGo, outInfo, outChild, goError
 }
 
 // Unsupported : g_input_stream_read_all_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
@@ -98,14 +101,17 @@ func (recv *InputStream) ReadAllFinish(result *AsyncResult) (bool, uint64, error
 	retC := C.g_input_stream_read_all_finish((*C.GInputStream)(recv.native), c_result, &c_bytes_read, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
 	bytesRead := (uint64)(c_bytes_read)
 
-	return retGo, bytesRead, goThrowableError
+	return retGo, bytesRead, goError
 }
 
 // ListStoreNew is a wrapper around the C function g_list_store_new.
@@ -189,14 +195,17 @@ func (recv *OutputStream) WriteAllFinish(result *AsyncResult) (bool, uint64, err
 	retC := C.g_output_stream_write_all_finish((*C.GOutputStream)(recv.native), c_result, &c_bytes_written, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
 	bytesWritten := (uint64)(c_bytes_written)
 
-	return retGo, bytesWritten, goThrowableError
+	return retGo, bytesWritten, goError
 }
 
 // Unsupported : g_simple_action_set_state_hint : unsupported parameter state_hint : Blacklisted record : GVariant

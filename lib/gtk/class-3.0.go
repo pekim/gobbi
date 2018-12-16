@@ -1654,14 +1654,17 @@ func (recv *IconInfo) LoadSymbolic(fg *gdk.RGBA, successColor *gdk.RGBA, warning
 	retC := C.gtk_icon_info_load_symbolic((*C.GtkIconInfo)(recv.native), c_fg, c_success_color, c_warning_color, c_error_color, &c_was_symbolic, &cThrowableError)
 	retGo := gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
 	wasSymbolic := c_was_symbolic == C.TRUE
 
-	return retGo, wasSymbolic, goThrowableError
+	return retGo, wasSymbolic, goError
 }
 
 // LoadSymbolicForContext is a wrapper around the C function gtk_icon_info_load_symbolic_for_context.
@@ -1678,14 +1681,17 @@ func (recv *IconInfo) LoadSymbolicForContext(context *StyleContext) (*gdkpixbuf.
 	retC := C.gtk_icon_info_load_symbolic_for_context((*C.GtkIconInfo)(recv.native), c_context, &c_was_symbolic, &cThrowableError)
 	retGo := gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
 	wasSymbolic := c_was_symbolic == C.TRUE
 
-	return retGo, wasSymbolic, goThrowableError
+	return retGo, wasSymbolic, goError
 }
 
 // LoadSymbolicForStyle is a wrapper around the C function gtk_icon_info_load_symbolic_for_style.
@@ -1704,14 +1710,17 @@ func (recv *IconInfo) LoadSymbolicForStyle(style *Style, state StateType) (*gdkp
 	retC := C.gtk_icon_info_load_symbolic_for_style((*C.GtkIconInfo)(recv.native), c_style, c_state, &c_was_symbolic, &cThrowableError)
 	retGo := gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
 	wasSymbolic := c_was_symbolic == C.TRUE
 
-	return retGo, wasSymbolic, goThrowableError
+	return retGo, wasSymbolic, goError
 }
 
 // IconViewNewWithArea is a wrapper around the C function gtk_icon_view_new_with_area.

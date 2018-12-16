@@ -157,12 +157,15 @@ func (recv *Builder) AddFromFile(filename string) (uint32, error) {
 	retC := C.gtk_builder_add_from_file((*C.GtkBuilder)(recv.native), c_filename, &cThrowableError)
 	retGo := (uint32)(retC)
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // AddFromString is a wrapper around the C function gtk_builder_add_from_string.
@@ -177,12 +180,15 @@ func (recv *Builder) AddFromString(buffer string, length uint64) (uint32, error)
 	retC := C.gtk_builder_add_from_string((*C.GtkBuilder)(recv.native), c_buffer, c_length, &cThrowableError)
 	retGo := (uint32)(retC)
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // ConnectSignals is a wrapper around the C function gtk_builder_connect_signals.
@@ -265,14 +271,17 @@ func (recv *Builder) ValueFromStringType(type_ gobject.Type, string string) (boo
 	retC := C.gtk_builder_value_from_string_type((*C.GtkBuilder)(recv.native), c_type, c_string, &c_value, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
 	value := gobject.ValueNewFromC(unsafe.Pointer(&c_value))
 
-	return retGo, value, goThrowableError
+	return retGo, value, goError
 }
 
 // Unsupported signal 'move-active' for ComboBox : unsupported parameter scroll_type : type ScrollType :
@@ -860,12 +869,15 @@ func PageSetupNewFromFile(fileName string) (*PageSetup, error) {
 		C.g_object_unref((C.gpointer)(retC))
 	}
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // PageSetupNewFromKeyFile is a wrapper around the C function gtk_page_setup_new_from_key_file.
@@ -887,12 +899,15 @@ func PageSetupNewFromKeyFile(keyFile *glib.KeyFile, groupName string) (*PageSetu
 		C.g_object_unref((C.gpointer)(retC))
 	}
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // ToFile is a wrapper around the C function gtk_page_setup_to_file.
@@ -905,12 +920,15 @@ func (recv *PageSetup) ToFile(fileName string) (bool, error) {
 	retC := C.gtk_page_setup_to_file((*C.GtkPageSetup)(recv.native), c_file_name, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // ToKeyFile is a wrapper around the C function gtk_page_setup_to_key_file.
@@ -942,12 +960,15 @@ func PrintSettingsNewFromFile(fileName string) (*PrintSettings, error) {
 		C.g_object_unref((C.gpointer)(retC))
 	}
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // PrintSettingsNewFromKeyFile is a wrapper around the C function gtk_print_settings_new_from_key_file.
@@ -969,12 +990,15 @@ func PrintSettingsNewFromKeyFile(keyFile *glib.KeyFile, groupName string) (*Prin
 		C.g_object_unref((C.gpointer)(retC))
 	}
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // ToFile is a wrapper around the C function gtk_print_settings_to_file.
@@ -987,12 +1011,15 @@ func (recv *PrintSettings) ToFile(fileName string) (bool, error) {
 	retC := C.gtk_print_settings_to_file((*C.GtkPrintSettings)(recv.native), c_file_name, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // ToKeyFile is a wrapper around the C function gtk_print_settings_to_key_file.

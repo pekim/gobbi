@@ -45,12 +45,15 @@ func (recv *IconInfo) LoadIconFinish(res *gio.AsyncResult) (*gdkpixbuf.Pixbuf, e
 	retC := C.gtk_icon_info_load_icon_finish((*C.GtkIconInfo)(recv.native), c_res, &cThrowableError)
 	retGo := gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : gtk_icon_info_load_symbolic_async : unsupported parameter callback : no type generator for Gio.AsyncReadyCallback (GAsyncReadyCallback) for param callback
@@ -66,14 +69,17 @@ func (recv *IconInfo) LoadSymbolicFinish(res *gio.AsyncResult) (*gdkpixbuf.Pixbu
 	retC := C.gtk_icon_info_load_symbolic_finish((*C.GtkIconInfo)(recv.native), c_res, &c_was_symbolic, &cThrowableError)
 	retGo := gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
 	wasSymbolic := c_was_symbolic == C.TRUE
 
-	return retGo, wasSymbolic, goThrowableError
+	return retGo, wasSymbolic, goError
 }
 
 // Unsupported : gtk_icon_info_load_symbolic_for_context_async : unsupported parameter callback : no type generator for Gio.AsyncReadyCallback (GAsyncReadyCallback) for param callback
@@ -89,14 +95,17 @@ func (recv *IconInfo) LoadSymbolicForContextFinish(res *gio.AsyncResult) (*gdkpi
 	retC := C.gtk_icon_info_load_symbolic_for_context_finish((*C.GtkIconInfo)(recv.native), c_res, &c_was_symbolic, &cThrowableError)
 	retGo := gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
 	wasSymbolic := c_was_symbolic == C.TRUE
 
-	return retGo, wasSymbolic, goThrowableError
+	return retGo, wasSymbolic, goError
 }
 
 // GetActivateOnSingleClick is a wrapper around the C function gtk_icon_view_get_activate_on_single_click.

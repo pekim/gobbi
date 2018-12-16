@@ -914,12 +914,15 @@ func DirOpen(path string, flags uint32) (*Dir, error) {
 	retC := C.g_dir_open(c_path, c_flags, &cThrowableError)
 	retGo := DirNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Close is a wrapper around the C function g_dir_close.
@@ -2402,12 +2405,15 @@ func (recv *MarkupParseContext) EndParse() (bool, error) {
 	retC := C.g_markup_parse_context_end_parse((*C.GMarkupParseContext)(recv.native), &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Free is a wrapper around the C function g_markup_parse_context_free.
@@ -2440,12 +2446,15 @@ func (recv *MarkupParseContext) Parse(text string, textLen int64) (bool, error) 
 	retC := C.g_markup_parse_context_parse((*C.GMarkupParseContext)(recv.native), c_text, c_text_len, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // MarkupParser is a wrapper around the C record GMarkupParser.
@@ -5048,12 +5057,15 @@ func (recv *ThreadPool) Push(data uintptr) (bool, error) {
 	retC := C.g_thread_pool_push((*C.GThreadPool)(recv.native), c_data, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // SetMaxThreads is a wrapper around the C function g_thread_pool_set_max_threads.
@@ -5065,12 +5077,15 @@ func (recv *ThreadPool) SetMaxThreads(maxThreads int32) (bool, error) {
 	retC := C.g_thread_pool_set_max_threads((*C.GThreadPool)(recv.native), c_max_threads, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unprocessed is a wrapper around the C function g_thread_pool_unprocessed.

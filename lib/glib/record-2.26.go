@@ -554,12 +554,15 @@ func (recv *KeyFile) GetInt64(groupName string, key string) (int64, error) {
 	retC := C.g_key_file_get_int64((*C.GKeyFile)(recv.native), c_group_name, c_key, &cThrowableError)
 	retGo := (int64)(retC)
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // GetUint64 is a wrapper around the C function g_key_file_get_uint64.
@@ -575,12 +578,15 @@ func (recv *KeyFile) GetUint64(groupName string, key string) (uint64, error) {
 	retC := C.g_key_file_get_uint64((*C.GKeyFile)(recv.native), c_group_name, c_key, &cThrowableError)
 	retGo := (uint64)(retC)
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // SetInt64 is a wrapper around the C function g_key_file_set_int64.

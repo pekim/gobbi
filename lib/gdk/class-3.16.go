@@ -149,12 +149,15 @@ func (recv *GLContext) Realize() (bool, error) {
 	retC := C.gdk_gl_context_realize((*C.GdkGLContext)(recv.native), &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // SetDebugEnabled is a wrapper around the C function gdk_gl_context_set_debug_enabled.
@@ -195,12 +198,15 @@ func (recv *Window) CreateGlContext() (*GLContext, error) {
 	retC := C.gdk_window_create_gl_context((*C.GdkWindow)(recv.native), &cThrowableError)
 	retGo := GLContextNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // MarkPaintFromClip is a wrapper around the C function gdk_window_mark_paint_from_clip.

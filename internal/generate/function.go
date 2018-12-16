@@ -259,7 +259,7 @@ func (f *Function) generateThrowableReturn(g *jen.Group) {
 		return
 	}
 
-	g.Id(f.throwableErrorGoVarName)
+	g.Id("goError")
 }
 
 func (f *Function) generateThrowableReturnGoVar(g *jen.Group) {
@@ -267,20 +267,32 @@ func (f *Function) generateThrowableReturnGoVar(g *jen.Group) {
 		return
 	}
 
-	pkg := ""
-	if f.Namespace.Name != "GLib" {
-		pkg = f.Namespace.get("GLib").fullGoPackageName
-	}
+	// The returned error should be of type error, not just a type that implements error.
+	// So make this explicit, and initially nil.
+	//
+	// see https://golang.org/doc/faq#nil_error
+	g.Var().Id("goError").Id("error").Op("=").Nil()
 
-	f.throwableErrorType.generator.generateReturnCToGo(g, false,
-		f.throwableErrorCVarName, f.throwableErrorGoVarName,
-		pkg, "", false)
+	g.
+		If(jen.Id(f.throwableErrorCVarName).Op("!=").Id("nil")).
+		BlockFunc(func(g *jen.Group) {
+			pkg := ""
+			if f.Namespace.Name != "GLib" {
+				pkg = f.Namespace.get("GLib").fullGoPackageName
+			}
+			// Create the error as an instance of glib.Error.
+			f.throwableErrorType.generator.generateReturnCToGo(g, false,
+				f.throwableErrorCVarName, f.throwableErrorGoVarName,
+				pkg, "", false)
 
-	// If there is an error, free it.
-	g.If(jen.Id(f.throwableErrorCVarName).Op("!=").Id("nil")).
-		Block(jen.
-			Qual("C", "g_error_free").
-			Call(jen.Id(f.throwableErrorCVarName)))
+			g.Id("goError").Op("=").Id(f.throwableErrorGoVarName)
+
+			// Free the error.
+			g.Line()
+			g.
+				Qual("C", "g_error_free").
+				Call(jen.Id(f.throwableErrorCVarName))
+		})
 
 	g.Line()
 }

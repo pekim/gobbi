@@ -41,8 +41,11 @@ func ResourcesGetInfo(path string, lookupFlags ResourceLookupFlags) (bool, uint6
 	retC := C.g_resources_get_info(c_path, c_lookup_flags, &c_size, &c_flags, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
@@ -50,7 +53,7 @@ func ResourcesGetInfo(path string, lookupFlags ResourceLookupFlags) (bool, uint6
 
 	flags := (uint32)(c_flags)
 
-	return retGo, size, flags, goThrowableError
+	return retGo, size, flags, goError
 }
 
 // ResourcesLookupData is a wrapper around the C function g_resources_lookup_data.
@@ -65,12 +68,15 @@ func ResourcesLookupData(path string, lookupFlags ResourceLookupFlags) (*glib.By
 	retC := C.g_resources_lookup_data(c_path, c_lookup_flags, &cThrowableError)
 	retGo := glib.BytesNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // ResourcesOpenStream is a wrapper around the C function g_resources_open_stream.
@@ -85,12 +91,15 @@ func ResourcesOpenStream(path string, lookupFlags ResourceLookupFlags) (*InputSt
 	retC := C.g_resources_open_stream(c_path, c_lookup_flags, &cThrowableError)
 	retGo := InputStreamNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // ResourcesRegister is a wrapper around the C function g_resources_register.

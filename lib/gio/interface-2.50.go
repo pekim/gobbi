@@ -33,12 +33,15 @@ func AppInfoLaunchDefaultForUriFinish(result *AsyncResult) (bool, error) {
 	retC := C.g_app_info_launch_default_for_uri_finish(c_result, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // IsRemovable is a wrapper around the C function g_drive_is_removable.

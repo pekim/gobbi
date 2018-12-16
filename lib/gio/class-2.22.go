@@ -99,12 +99,15 @@ func (recv *FileIOStream) QueryInfo(attributes string, cancellable *Cancellable)
 	retC := C.g_file_io_stream_query_info((*C.GFileIOStream)(recv.native), c_attributes, c_cancellable, &cThrowableError)
 	retGo := FileInfoNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : g_file_io_stream_query_info_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
@@ -118,12 +121,15 @@ func (recv *FileIOStream) QueryInfoFinish(result *AsyncResult) (*FileInfo, error
 	retC := C.g_file_io_stream_query_info_finish((*C.GFileIOStream)(recv.native), c_result, &cThrowableError)
 	retGo := FileInfoNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : g_file_info_get_attribute_stringv : no return type
@@ -171,12 +177,15 @@ func (recv *IOStream) Close(cancellable *Cancellable) (bool, error) {
 	retC := C.g_io_stream_close((*C.GIOStream)(recv.native), c_cancellable, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : g_io_stream_close_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
@@ -190,12 +199,15 @@ func (recv *IOStream) CloseFinish(result *AsyncResult) (bool, error) {
 	retC := C.g_io_stream_close_finish((*C.GIOStream)(recv.native), c_result, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // GetInputStream is a wrapper around the C function g_io_stream_get_input_stream.
@@ -237,12 +249,15 @@ func (recv *IOStream) SetPending() (bool, error) {
 	retC := C.g_io_stream_set_pending((*C.GIOStream)(recv.native), &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // InetAddressNewAny is a wrapper around the C function g_inet_address_new_any.
@@ -477,12 +492,15 @@ func NetworkAddressParse(hostAndPort string, defaultPort uint16) (*NetworkAddres
 	retC := C.g_network_address_parse(c_host_and_port, c_default_port, &cThrowableError)
 	retGo := NetworkAddressNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // GetHostname is a wrapper around the C function g_network_address_get_hostname.
@@ -596,12 +614,15 @@ func (recv *Resolver) LookupByAddress(address *InetAddress, cancellable *Cancell
 	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : g_resolver_lookup_by_address_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
@@ -616,12 +637,15 @@ func (recv *Resolver) LookupByAddressFinish(result *AsyncResult) (string, error)
 	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // LookupByName is a wrapper around the C function g_resolver_lookup_by_name.
@@ -639,12 +663,15 @@ func (recv *Resolver) LookupByName(hostname string, cancellable *Cancellable) (*
 	retC := C.g_resolver_lookup_by_name((*C.GResolver)(recv.native), c_hostname, c_cancellable, &cThrowableError)
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : g_resolver_lookup_by_name_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
@@ -658,12 +685,15 @@ func (recv *Resolver) LookupByNameFinish(result *AsyncResult) (*glib.List, error
 	retC := C.g_resolver_lookup_by_name_finish((*C.GResolver)(recv.native), c_result, &cThrowableError)
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // LookupService is a wrapper around the C function g_resolver_lookup_service.
@@ -687,12 +717,15 @@ func (recv *Resolver) LookupService(service string, protocol string, domain stri
 	retC := C.g_resolver_lookup_service((*C.GResolver)(recv.native), c_service, c_protocol, c_domain, c_cancellable, &cThrowableError)
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : g_resolver_lookup_service_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
@@ -706,12 +739,15 @@ func (recv *Resolver) LookupServiceFinish(result *AsyncResult) (*glib.List, erro
 	retC := C.g_resolver_lookup_service_finish((*C.GResolver)(recv.native), c_result, &cThrowableError)
 	retGo := glib.ListNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // SetDefault is a wrapper around the C function g_resolver_set_default.
@@ -787,12 +823,15 @@ func SocketNew(family SocketFamily, type_ SocketType, protocol SocketProtocol) (
 		C.g_object_unref((C.gpointer)(retC))
 	}
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // SocketNewFromFd is a wrapper around the C function g_socket_new_from_fd.
@@ -808,12 +847,15 @@ func SocketNewFromFd(fd int32) (*Socket, error) {
 		C.g_object_unref((C.gpointer)(retC))
 	}
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Accept is a wrapper around the C function g_socket_accept.
@@ -828,12 +870,15 @@ func (recv *Socket) Accept(cancellable *Cancellable) (*Socket, error) {
 	retC := C.g_socket_accept((*C.GSocket)(recv.native), c_cancellable, &cThrowableError)
 	retGo := SocketNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Bind is a wrapper around the C function g_socket_bind.
@@ -851,12 +896,15 @@ func (recv *Socket) Bind(address *SocketAddress, allowReuse bool) (bool, error) 
 	retC := C.g_socket_bind((*C.GSocket)(recv.native), c_address, c_allow_reuse, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // CheckConnectResult is a wrapper around the C function g_socket_check_connect_result.
@@ -866,12 +914,15 @@ func (recv *Socket) CheckConnectResult() (bool, error) {
 	retC := C.g_socket_check_connect_result((*C.GSocket)(recv.native), &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Close is a wrapper around the C function g_socket_close.
@@ -881,12 +932,15 @@ func (recv *Socket) Close() (bool, error) {
 	retC := C.g_socket_close((*C.GSocket)(recv.native), &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // ConditionCheck is a wrapper around the C function g_socket_condition_check.
@@ -913,12 +967,15 @@ func (recv *Socket) ConditionWait(condition glib.IOCondition, cancellable *Cance
 	retC := C.g_socket_condition_wait((*C.GSocket)(recv.native), c_condition, c_cancellable, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Connect is a wrapper around the C function g_socket_connect.
@@ -938,12 +995,15 @@ func (recv *Socket) Connect(address *SocketAddress, cancellable *Cancellable) (b
 	retC := C.g_socket_connect((*C.GSocket)(recv.native), c_address, c_cancellable, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // ConnectionFactoryCreateConnection is a wrapper around the C function g_socket_connection_factory_create_connection.
@@ -1026,12 +1086,15 @@ func (recv *Socket) GetRemoteAddress() (*SocketAddress, error) {
 	retC := C.g_socket_get_remote_address((*C.GSocket)(recv.native), &cThrowableError)
 	retGo := SocketAddressNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // GetSocketType is a wrapper around the C function g_socket_get_socket_type.
@@ -1065,12 +1128,15 @@ func (recv *Socket) Listen() (bool, error) {
 	retC := C.g_socket_listen((*C.GSocket)(recv.native), &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Receive is a wrapper around the C function g_socket_receive.
@@ -1089,12 +1155,15 @@ func (recv *Socket) Receive(buffer []uint8, cancellable *Cancellable) (int64, er
 	retC := C.g_socket_receive((*C.GSocket)(recv.native), (*C.gchar)(unsafe.Pointer(c_buffer)), c_size, c_cancellable, &cThrowableError)
 	retGo := (int64)(retC)
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // ReceiveFrom is a wrapper around the C function g_socket_receive_from.
@@ -1115,14 +1184,17 @@ func (recv *Socket) ReceiveFrom(buffer []uint8, cancellable *Cancellable) (int64
 	retC := C.g_socket_receive_from((*C.GSocket)(recv.native), &c_address, (*C.gchar)(unsafe.Pointer(c_buffer)), c_size, c_cancellable, &cThrowableError)
 	retGo := (int64)(retC)
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
 	address := SocketAddressNewFromC(unsafe.Pointer(c_address))
 
-	return retGo, address, goThrowableError
+	return retGo, address, goError
 }
 
 // Unsupported : g_socket_receive_message : unsupported parameter vectors :
@@ -1143,12 +1215,15 @@ func (recv *Socket) Send(buffer []uint8, cancellable *Cancellable) (int64, error
 	retC := C.g_socket_send((*C.GSocket)(recv.native), (*C.gchar)(unsafe.Pointer(c_buffer)), c_size, c_cancellable, &cThrowableError)
 	retGo := (int64)(retC)
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : g_socket_send_message : unsupported parameter vectors :
@@ -1174,12 +1249,15 @@ func (recv *Socket) SendTo(address *SocketAddress, buffer []uint8, cancellable *
 	retC := C.g_socket_send_to((*C.GSocket)(recv.native), c_address, (*C.gchar)(unsafe.Pointer(c_buffer)), c_size, c_cancellable, &cThrowableError)
 	retGo := (int64)(retC)
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // SetBlocking is a wrapper around the C function g_socket_set_blocking.
@@ -1224,12 +1302,15 @@ func (recv *Socket) Shutdown(shutdownRead bool, shutdownWrite bool) (bool, error
 	retC := C.g_socket_shutdown((*C.GSocket)(recv.native), c_shutdown_read, c_shutdown_write, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // SpeaksIpv4 is a wrapper around the C function g_socket_speaks_ipv4.
@@ -1283,12 +1364,15 @@ func (recv *SocketAddress) ToNative(dest uintptr, destlen uint64) (bool, error) 
 	retC := C.g_socket_address_to_native((*C.GSocketAddress)(recv.native), c_dest, c_destlen, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // SocketClient is a wrapper around the C record GSocketClient.
@@ -1376,12 +1460,15 @@ func (recv *SocketClient) Connect(connectable *SocketConnectable, cancellable *C
 	retC := C.g_socket_client_connect((*C.GSocketClient)(recv.native), c_connectable, c_cancellable, &cThrowableError)
 	retGo := SocketConnectionNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : g_socket_client_connect_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
@@ -1395,12 +1482,15 @@ func (recv *SocketClient) ConnectFinish(result *AsyncResult) (*SocketConnection,
 	retC := C.g_socket_client_connect_finish((*C.GSocketClient)(recv.native), c_result, &cThrowableError)
 	retGo := SocketConnectionNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // ConnectToHost is a wrapper around the C function g_socket_client_connect_to_host.
@@ -1420,12 +1510,15 @@ func (recv *SocketClient) ConnectToHost(hostAndPort string, defaultPort uint16, 
 	retC := C.g_socket_client_connect_to_host((*C.GSocketClient)(recv.native), c_host_and_port, c_default_port, c_cancellable, &cThrowableError)
 	retGo := SocketConnectionNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : g_socket_client_connect_to_host_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
@@ -1439,12 +1532,15 @@ func (recv *SocketClient) ConnectToHostFinish(result *AsyncResult) (*SocketConne
 	retC := C.g_socket_client_connect_to_host_finish((*C.GSocketClient)(recv.native), c_result, &cThrowableError)
 	retGo := SocketConnectionNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // ConnectToService is a wrapper around the C function g_socket_client_connect_to_service.
@@ -1465,12 +1561,15 @@ func (recv *SocketClient) ConnectToService(domain string, service string, cancel
 	retC := C.g_socket_client_connect_to_service((*C.GSocketClient)(recv.native), c_domain, c_service, c_cancellable, &cThrowableError)
 	retGo := SocketConnectionNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : g_socket_client_connect_to_service_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
@@ -1484,12 +1583,15 @@ func (recv *SocketClient) ConnectToServiceFinish(result *AsyncResult) (*SocketCo
 	retC := C.g_socket_client_connect_to_service_finish((*C.GSocketClient)(recv.native), c_result, &cThrowableError)
 	retGo := SocketConnectionNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // GetFamily is a wrapper around the C function g_socket_client_get_family.
@@ -1653,12 +1755,15 @@ func (recv *SocketConnection) GetLocalAddress() (*SocketAddress, error) {
 	retC := C.g_socket_connection_get_local_address((*C.GSocketConnection)(recv.native), &cThrowableError)
 	retGo := SocketAddressNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // GetRemoteAddress is a wrapper around the C function g_socket_connection_get_remote_address.
@@ -1668,12 +1773,15 @@ func (recv *SocketConnection) GetRemoteAddress() (*SocketAddress, error) {
 	retC := C.g_socket_connection_get_remote_address((*C.GSocketConnection)(recv.native), &cThrowableError)
 	retGo := SocketAddressNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // GetSocket is a wrapper around the C function g_socket_connection_get_socket.
@@ -1808,14 +1916,17 @@ func (recv *SocketListener) Accept(cancellable *Cancellable) (*SocketConnection,
 	retC := C.g_socket_listener_accept((*C.GSocketListener)(recv.native), &c_source_object, c_cancellable, &cThrowableError)
 	retGo := SocketConnectionNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
 	sourceObject := gobject.ObjectNewFromC(unsafe.Pointer(c_source_object))
 
-	return retGo, sourceObject, goThrowableError
+	return retGo, sourceObject, goError
 }
 
 // Unsupported : g_socket_listener_accept_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
@@ -1831,14 +1942,17 @@ func (recv *SocketListener) AcceptFinish(result *AsyncResult) (*SocketConnection
 	retC := C.g_socket_listener_accept_finish((*C.GSocketListener)(recv.native), c_result, &c_source_object, &cThrowableError)
 	retGo := SocketConnectionNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
 	sourceObject := gobject.ObjectNewFromC(unsafe.Pointer(c_source_object))
 
-	return retGo, sourceObject, goThrowableError
+	return retGo, sourceObject, goError
 }
 
 // AcceptSocket is a wrapper around the C function g_socket_listener_accept_socket.
@@ -1855,14 +1969,17 @@ func (recv *SocketListener) AcceptSocket(cancellable *Cancellable) (*Socket, *go
 	retC := C.g_socket_listener_accept_socket((*C.GSocketListener)(recv.native), &c_source_object, c_cancellable, &cThrowableError)
 	retGo := SocketNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
 	sourceObject := gobject.ObjectNewFromC(unsafe.Pointer(c_source_object))
 
-	return retGo, sourceObject, goThrowableError
+	return retGo, sourceObject, goError
 }
 
 // Unsupported : g_socket_listener_accept_socket_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
@@ -1878,14 +1995,17 @@ func (recv *SocketListener) AcceptSocketFinish(result *AsyncResult) (*Socket, *g
 	retC := C.g_socket_listener_accept_socket_finish((*C.GSocketListener)(recv.native), c_result, &c_source_object, &cThrowableError)
 	retGo := SocketNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
 	sourceObject := gobject.ObjectNewFromC(unsafe.Pointer(c_source_object))
 
-	return retGo, sourceObject, goThrowableError
+	return retGo, sourceObject, goError
 }
 
 // AddAddress is a wrapper around the C function g_socket_listener_add_address.
@@ -1911,14 +2031,17 @@ func (recv *SocketListener) AddAddress(address *SocketAddress, type_ SocketType,
 	retC := C.g_socket_listener_add_address((*C.GSocketListener)(recv.native), c_address, c_type, c_protocol, c_source_object, &c_effective_address, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
 	effectiveAddress := SocketAddressNewFromC(unsafe.Pointer(c_effective_address))
 
-	return retGo, effectiveAddress, goThrowableError
+	return retGo, effectiveAddress, goError
 }
 
 // AddInetPort is a wrapper around the C function g_socket_listener_add_inet_port.
@@ -1935,12 +2058,15 @@ func (recv *SocketListener) AddInetPort(port uint16, sourceObject *gobject.Objec
 	retC := C.g_socket_listener_add_inet_port((*C.GSocketListener)(recv.native), c_port, c_source_object, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // AddSocket is a wrapper around the C function g_socket_listener_add_socket.
@@ -1960,12 +2086,15 @@ func (recv *SocketListener) AddSocket(socket *Socket, sourceObject *gobject.Obje
 	retC := C.g_socket_listener_add_socket((*C.GSocketListener)(recv.native), c_socket, c_source_object, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Close is a wrapper around the C function g_socket_listener_close.
@@ -2301,12 +2430,15 @@ func (recv *UnixConnection) ReceiveFd(cancellable *Cancellable) (int32, error) {
 	retC := C.g_unix_connection_receive_fd((*C.GUnixConnection)(recv.native), c_cancellable, &cThrowableError)
 	retGo := (int32)(retC)
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // SendFd is a wrapper around the C function g_unix_connection_send_fd.
@@ -2323,12 +2455,15 @@ func (recv *UnixConnection) SendFd(fd int32, cancellable *Cancellable) (bool, er
 	retC := C.g_unix_connection_send_fd((*C.GUnixConnection)(recv.native), c_fd, c_cancellable, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // UnixFDMessageNew is a wrapper around the C function g_unix_fd_message_new.
@@ -2352,12 +2487,15 @@ func (recv *UnixFDMessage) AppendFd(fd int32) (bool, error) {
 	retC := C.g_unix_fd_message_append_fd((*C.GUnixFDMessage)(recv.native), c_fd, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : g_unix_fd_message_steal_fds : no return type

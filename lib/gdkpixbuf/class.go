@@ -138,12 +138,15 @@ func PixbufNewFromFile(filename string) (*Pixbuf, error) {
 		C.g_object_unref((C.gpointer)(retC))
 	}
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // PixbufNewFromInline is a wrapper around the C function gdk_pixbuf_new_from_inline.
@@ -164,12 +167,15 @@ func PixbufNewFromInline(data []uint8, copyPixels bool) (*Pixbuf, error) {
 		C.g_object_unref((C.gpointer)(retC))
 	}
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : gdk_pixbuf_new_from_xpm_data : unsupported parameter data :
@@ -565,12 +571,15 @@ func PixbufAnimationNewFromFile(filename string) (*PixbufAnimation, error) {
 		C.g_object_unref((C.gpointer)(retC))
 	}
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // GetHeight is a wrapper around the C function gdk_pixbuf_animation_get_height.
@@ -1044,12 +1053,15 @@ func PixbufLoaderNewWithType(imageType string) (*PixbufLoader, error) {
 		C.g_object_unref((C.gpointer)(retC))
 	}
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Close is a wrapper around the C function gdk_pixbuf_loader_close.
@@ -1059,12 +1071,15 @@ func (recv *PixbufLoader) Close() (bool, error) {
 	retC := C.gdk_pixbuf_loader_close((*C.GdkPixbufLoader)(recv.native), &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // GetAnimation is a wrapper around the C function gdk_pixbuf_loader_get_animation.
@@ -1094,12 +1109,15 @@ func (recv *PixbufLoader) Write(buf []uint8) (bool, error) {
 	retC := C.gdk_pixbuf_loader_write((*C.GdkPixbufLoader)(recv.native), (*C.guchar)(unsafe.Pointer(c_buf)), c_count, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // PixbufSimpleAnim is a wrapper around the C record GdkPixbufSimpleAnim.

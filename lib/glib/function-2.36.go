@@ -21,12 +21,15 @@ func Close(fd int32) (bool, error) {
 	retC := C.g_close(c_fd, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // GetNumProcessors is a wrapper around the C function g_get_num_processors.

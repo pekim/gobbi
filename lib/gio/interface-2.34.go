@@ -42,12 +42,15 @@ func (recv *AsyncResult) LegacyPropagateError() (bool, error) {
 	retC := C.g_async_result_legacy_propagate_error((*C.GAsyncResult)(recv.native), &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // GetSymbolicIcon is a wrapper around the C function g_drive_get_symbolic_icon.
@@ -69,12 +72,15 @@ func (recv *File) DeleteFinish(result *AsyncResult) (bool, error) {
 	retC := C.g_file_delete_finish((*C.GFile)(recv.native), c_result, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // GetSymbolicIcon is a wrapper around the C function g_mount_get_symbolic_icon.

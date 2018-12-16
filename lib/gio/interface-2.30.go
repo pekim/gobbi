@@ -628,10 +628,13 @@ func TlsFileDatabaseNew(anchors string) (*TlsFileDatabase, error) {
 	retC := C.g_tls_file_database_new(c_anchors, &cThrowableError)
 	retGo := TlsFileDatabaseNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }

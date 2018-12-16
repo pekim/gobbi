@@ -30,14 +30,17 @@ func AsciiStringToSigned(str string, base uint32, min int64, max int64) (bool, i
 	retC := C.g_ascii_string_to_signed(c_str, c_base, c_min, c_max, &c_out_num, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
 	outNum := (int64)(c_out_num)
 
-	return retGo, outNum, goThrowableError
+	return retGo, outNum, goError
 }
 
 // AsciiStringToUnsigned is a wrapper around the C function g_ascii_string_to_unsigned.
@@ -58,14 +61,17 @@ func AsciiStringToUnsigned(str string, base uint32, min uint64, max uint64) (boo
 	retC := C.g_ascii_string_to_unsigned(c_str, c_base, c_min, c_max, &c_out_num, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
 	outNum := (uint64)(c_out_num)
 
-	return retGo, outNum, goThrowableError
+	return retGo, outNum, goError
 }
 
 // Unsupported : g_ptr_array_find_with_equal_func : unsupported parameter equal_func : no type generator for EqualFunc (GEqualFunc) for param equal_func

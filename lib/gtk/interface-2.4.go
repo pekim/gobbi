@@ -121,12 +121,15 @@ func (recv *FileChooser) AddShortcutFolder(folder string) (bool, error) {
 	retC := C.gtk_file_chooser_add_shortcut_folder((*C.GtkFileChooser)(recv.native), c_folder, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // AddShortcutFolderUri is a wrapper around the C function gtk_file_chooser_add_shortcut_folder_uri.
@@ -139,12 +142,15 @@ func (recv *FileChooser) AddShortcutFolderUri(uri string) (bool, error) {
 	retC := C.gtk_file_chooser_add_shortcut_folder_uri((*C.GtkFileChooser)(recv.native), c_uri, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // GetAction is a wrapper around the C function gtk_file_chooser_get_action.
@@ -344,12 +350,15 @@ func (recv *FileChooser) RemoveShortcutFolder(folder string) (bool, error) {
 	retC := C.gtk_file_chooser_remove_shortcut_folder((*C.GtkFileChooser)(recv.native), c_folder, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // RemoveShortcutFolderUri is a wrapper around the C function gtk_file_chooser_remove_shortcut_folder_uri.
@@ -362,12 +371,15 @@ func (recv *FileChooser) RemoveShortcutFolderUri(uri string) (bool, error) {
 	retC := C.gtk_file_chooser_remove_shortcut_folder_uri((*C.GtkFileChooser)(recv.native), c_uri, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // SelectAll is a wrapper around the C function gtk_file_chooser_select_all.

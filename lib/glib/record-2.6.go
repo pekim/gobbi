@@ -48,12 +48,15 @@ func (recv *KeyFile) GetBoolean(groupName string, key string) (bool, error) {
 	retC := C.g_key_file_get_boolean((*C.GKeyFile)(recv.native), c_group_name, c_key, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : g_key_file_get_boolean_list : no return type
@@ -72,12 +75,15 @@ func (recv *KeyFile) GetComment(groupName string, key string) (string, error) {
 	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : g_key_file_get_groups : no return type
@@ -95,12 +101,15 @@ func (recv *KeyFile) GetInteger(groupName string, key string) (int32, error) {
 	retC := C.g_key_file_get_integer((*C.GKeyFile)(recv.native), c_group_name, c_key, &cThrowableError)
 	retGo := (int32)(retC)
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : g_key_file_get_integer_list : no return type
@@ -124,12 +133,15 @@ func (recv *KeyFile) GetLocaleString(groupName string, key string, locale string
 	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : g_key_file_get_locale_string_list : no return type
@@ -157,12 +169,15 @@ func (recv *KeyFile) GetString(groupName string, key string) (string, error) {
 	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : g_key_file_get_string_list : no return type
@@ -181,12 +196,15 @@ func (recv *KeyFile) GetValue(groupName string, key string) (string, error) {
 	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // HasGroup is a wrapper around the C function g_key_file_has_group.
@@ -213,12 +231,15 @@ func (recv *KeyFile) HasKey(groupName string, key string) (bool, error) {
 	retC := C.g_key_file_has_key((*C.GKeyFile)(recv.native), c_group_name, c_key, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // LoadFromData is a wrapper around the C function g_key_file_load_from_data.
@@ -235,12 +256,15 @@ func (recv *KeyFile) LoadFromData(data string, length uint64, flags KeyFileFlags
 	retC := C.g_key_file_load_from_data((*C.GKeyFile)(recv.native), c_data, c_length, c_flags, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // LoadFromDataDirs is a wrapper around the C function g_key_file_load_from_data_dirs.
@@ -257,15 +281,18 @@ func (recv *KeyFile) LoadFromDataDirs(file string, flags KeyFileFlags) (bool, st
 	retC := C.g_key_file_load_from_data_dirs((*C.GKeyFile)(recv.native), c_file, &c_full_path, c_flags, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
 	fullPath := C.GoString(c_full_path)
 	defer C.free(unsafe.Pointer(c_full_path))
 
-	return retGo, fullPath, goThrowableError
+	return retGo, fullPath, goError
 }
 
 // LoadFromFile is a wrapper around the C function g_key_file_load_from_file.
@@ -280,12 +307,15 @@ func (recv *KeyFile) LoadFromFile(file string, flags KeyFileFlags) (bool, error)
 	retC := C.g_key_file_load_from_file((*C.GKeyFile)(recv.native), c_file, c_flags, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // RemoveComment is a wrapper around the C function g_key_file_remove_comment.
@@ -301,12 +331,15 @@ func (recv *KeyFile) RemoveComment(groupName string, key string) (bool, error) {
 	retC := C.g_key_file_remove_comment((*C.GKeyFile)(recv.native), c_group_name, c_key, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // RemoveGroup is a wrapper around the C function g_key_file_remove_group.
@@ -319,12 +352,15 @@ func (recv *KeyFile) RemoveGroup(groupName string) (bool, error) {
 	retC := C.g_key_file_remove_group((*C.GKeyFile)(recv.native), c_group_name, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // RemoveKey is a wrapper around the C function g_key_file_remove_key.
@@ -340,12 +376,15 @@ func (recv *KeyFile) RemoveKey(groupName string, key string) (bool, error) {
 	retC := C.g_key_file_remove_key((*C.GKeyFile)(recv.native), c_group_name, c_key, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // SetBoolean is a wrapper around the C function g_key_file_set_boolean.
@@ -397,12 +436,15 @@ func (recv *KeyFile) SetComment(groupName string, key string, comment string) (b
 	retC := C.g_key_file_set_comment((*C.GKeyFile)(recv.native), c_group_name, c_key, c_comment, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // SetInteger is a wrapper around the C function g_key_file_set_integer.
@@ -511,14 +553,17 @@ func (recv *KeyFile) ToData() (string, uint64, error) {
 	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
 	length := (uint64)(c_length)
 
-	return retGo, length, goThrowableError
+	return retGo, length, goError
 }
 
 // OptionContextNew is a wrapper around the C function g_option_context_new.
@@ -599,14 +644,17 @@ func (recv *OptionContext) Parse(args []string) (bool, []string, error) {
 	retC := C.g_option_context_parse((*C.GOptionContext)(recv.native), &cArgc, &cArgv, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
 	args = argsOut(cArgc, cArgv)
 
-	return retGo, args, goThrowableError
+	return retGo, args, goError
 }
 
 // SetHelpEnabled is a wrapper around the C function g_option_context_set_help_enabled.

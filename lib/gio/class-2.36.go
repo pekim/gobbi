@@ -216,14 +216,17 @@ func (recv *Socket) GetOption(level int32, optname int32) (bool, int32, error) {
 	retC := C.g_socket_get_option((*C.GSocket)(recv.native), c_level, c_optname, &c_value, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
 	value := (int32)(c_value)
 
-	return retGo, value, goThrowableError
+	return retGo, value, goError
 }
 
 // SetOption is a wrapper around the C function g_socket_set_option.
@@ -239,12 +242,15 @@ func (recv *Socket) SetOption(level int32, optname int32, value int32) (bool, er
 	retC := C.g_socket_set_option((*C.GSocket)(recv.native), c_level, c_optname, c_value, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // GetProxyResolver is a wrapper around the C function g_socket_client_get_proxy_resolver.
@@ -361,12 +367,15 @@ func (recv *Task) PropagateBoolean() (bool, error) {
 	retC := C.g_task_propagate_boolean((*C.GTask)(recv.native), &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // PropagateInt is a wrapper around the C function g_task_propagate_int.
@@ -376,12 +385,15 @@ func (recv *Task) PropagateInt() (int64, error) {
 	retC := C.g_task_propagate_int((*C.GTask)(recv.native), &cThrowableError)
 	retGo := (int64)(retC)
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // PropagatePointer is a wrapper around the C function g_task_propagate_pointer.
@@ -391,12 +403,15 @@ func (recv *Task) PropagatePointer() (uintptr, error) {
 	retC := C.g_task_propagate_pointer((*C.GTask)(recv.native), &cThrowableError)
 	retGo := (uintptr)(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // ReturnBoolean is a wrapper around the C function g_task_return_boolean.

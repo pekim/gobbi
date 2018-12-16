@@ -234,12 +234,15 @@ func UnixOpenPipe(fds int32, flags int32) (bool, error) {
 	retC := C.g_unix_open_pipe(&c_fds, c_flags, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // UnixSetFdNonblocking is a wrapper around the C function g_unix_set_fd_nonblocking.
@@ -254,12 +257,15 @@ func UnixSetFdNonblocking(fd int32, nonblock bool) (bool, error) {
 	retC := C.g_unix_set_fd_nonblocking(c_fd, c_nonblock, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : g_unix_signal_add : unsupported parameter handler : no type generator for SourceFunc (GSourceFunc) for param handler

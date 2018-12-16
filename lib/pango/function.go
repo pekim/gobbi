@@ -234,8 +234,11 @@ func ParseMarkup(markupText string, length int32, accelMarker rune) (bool, *Attr
 	retC := C.pango_parse_markup(c_markup_text, c_length, c_accel_marker, &c_attr_list, &c_text, &c_accel_char, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
@@ -246,7 +249,7 @@ func ParseMarkup(markupText string, length int32, accelMarker rune) (bool, *Attr
 
 	accelChar := (rune)(c_accel_char)
 
-	return retGo, attrList, text, accelChar, goThrowableError
+	return retGo, attrList, text, accelChar, goError
 }
 
 // Unsupported : pango_parse_stretch : unsupported parameter stretch : PangoStretch* with indirection level of 1

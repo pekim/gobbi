@@ -432,12 +432,15 @@ func (recv *PollableInputStream) ReadNonblocking(buffer []uint8, cancellable *Ca
 	retC := C.g_pollable_input_stream_read_nonblocking((*C.GPollableInputStream)(recv.native), (unsafe.Pointer(c_buffer)), c_count, c_cancellable, &cThrowableError)
 	retGo := (int64)(retC)
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // PollableOutputStream is a wrapper around the C record GPollableOutputStream.
@@ -511,12 +514,15 @@ func (recv *PollableOutputStream) WriteNonblocking(buffer []uint8, cancellable *
 	retC := C.g_pollable_output_stream_write_nonblocking((*C.GPollableOutputStream)(recv.native), (unsafe.Pointer(c_buffer)), c_count, c_cancellable, &cThrowableError)
 	retGo := (int64)(retC)
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // TlsBackend is a wrapper around the C record GTlsBackend.
@@ -625,12 +631,15 @@ func TlsClientConnectionNew(baseIoStream *IOStream, serverIdentity *SocketConnec
 	retC := C.g_tls_client_connection_new(c_base_io_stream, c_server_identity, &cThrowableError)
 	retGo := TlsClientConnectionNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // GetAcceptedCas is a wrapper around the C function g_tls_client_connection_get_accepted_cas.
@@ -736,10 +745,13 @@ func TlsServerConnectionNew(baseIoStream *IOStream, certificate *TlsCertificate)
 	retC := C.g_tls_server_connection_new(c_base_io_stream, c_certificate, &cThrowableError)
 	retGo := TlsServerConnectionNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }

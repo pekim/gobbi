@@ -76,12 +76,15 @@ func (recv *DatagramBased) ConditionWait(condition glib.IOCondition, timeout int
 	retC := C.g_datagram_based_condition_wait((*C.GDatagramBased)(recv.native), c_condition, c_timeout, c_cancellable, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // CreateSource is a wrapper around the C function g_datagram_based_create_source.
@@ -140,12 +143,15 @@ func DtlsClientConnectionNew(baseSocket *DatagramBased, serverIdentity *SocketCo
 	retC := C.g_dtls_client_connection_new(c_base_socket, c_server_identity, &cThrowableError)
 	retGo := DtlsClientConnectionNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // GetAcceptedCas is a wrapper around the C function g_dtls_client_connection_get_accepted_cas.
@@ -228,12 +234,15 @@ func (recv *DtlsConnection) Close(cancellable *Cancellable) (bool, error) {
 	retC := C.g_dtls_connection_close((*C.GDtlsConnection)(recv.native), c_cancellable, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : g_dtls_connection_close_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
@@ -247,12 +256,15 @@ func (recv *DtlsConnection) CloseFinish(result *AsyncResult) (bool, error) {
 	retC := C.g_dtls_connection_close_finish((*C.GDtlsConnection)(recv.native), c_result, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // EmitAcceptCertificate is a wrapper around the C function g_dtls_connection_emit_accept_certificate.
@@ -338,12 +350,15 @@ func (recv *DtlsConnection) Handshake(cancellable *Cancellable) (bool, error) {
 	retC := C.g_dtls_connection_handshake((*C.GDtlsConnection)(recv.native), c_cancellable, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : g_dtls_connection_handshake_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
@@ -357,12 +372,15 @@ func (recv *DtlsConnection) HandshakeFinish(result *AsyncResult) (bool, error) {
 	retC := C.g_dtls_connection_handshake_finish((*C.GDtlsConnection)(recv.native), c_result, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // SetCertificate is a wrapper around the C function g_dtls_connection_set_certificate.
@@ -438,12 +456,15 @@ func (recv *DtlsConnection) Shutdown(shutdownRead bool, shutdownWrite bool, canc
 	retC := C.g_dtls_connection_shutdown((*C.GDtlsConnection)(recv.native), c_shutdown_read, c_shutdown_write, c_cancellable, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : g_dtls_connection_shutdown_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
@@ -457,12 +478,15 @@ func (recv *DtlsConnection) ShutdownFinish(result *AsyncResult) (bool, error) {
 	retC := C.g_dtls_connection_shutdown_finish((*C.GDtlsConnection)(recv.native), c_result, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // DtlsServerConnection is a wrapper around the C record GDtlsServerConnection.
@@ -505,12 +529,15 @@ func DtlsServerConnectionNew(baseSocket *DatagramBased, certificate *TlsCertific
 	retC := C.g_dtls_server_connection_new(c_base_socket, c_certificate, &cThrowableError)
 	retGo := DtlsServerConnectionNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // ToString is a wrapper around the C function g_socket_connectable_to_string.

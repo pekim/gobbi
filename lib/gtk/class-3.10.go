@@ -422,12 +422,15 @@ func (recv *IconInfo) LoadSurface(forWindow *gdk.Window) (*cairo.Surface, error)
 	retC := C.gtk_icon_info_load_surface((*C.GtkIconInfo)(recv.native), c_for_window, &cThrowableError)
 	retGo := cairo.SurfaceNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : gtk_icon_theme_choose_icon_for_scale : unsupported parameter icon_names :
@@ -453,12 +456,15 @@ func (recv *IconTheme) LoadIconForScale(iconName string, size int32, scale int32
 		retGo = gdkpixbuf.PixbufNewFromC(unsafe.Pointer(retC))
 	}
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // LoadSurface is a wrapper around the C function gtk_icon_theme_load_surface.
@@ -487,12 +493,15 @@ func (recv *IconTheme) LoadSurface(iconName string, size int32, scale int32, for
 		retGo = cairo.SurfaceNewFromC(unsafe.Pointer(retC))
 	}
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // LookupByGiconForScale is a wrapper around the C function gtk_icon_theme_lookup_by_gicon_for_scale.

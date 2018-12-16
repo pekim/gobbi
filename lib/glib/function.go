@@ -345,12 +345,15 @@ func ClearError() error {
 
 	C.g_clear_error(&cThrowableError)
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return goThrowableError
+	return goError
 }
 
 // Unsupported : g_convert : no return type
@@ -532,15 +535,18 @@ func FileOpenTmp(tmpl string) (int32, string, error) {
 	retC := C.g_file_open_tmp(c_tmpl, &c_name_used, &cThrowableError)
 	retGo := (int32)(retC)
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
 	nameUsed := C.GoString(c_name_used)
 	defer C.free(unsafe.Pointer(c_name_used))
 
-	return retGo, nameUsed, goThrowableError
+	return retGo, nameUsed, goError
 }
 
 // FileTest is a wrapper around the C function g_file_test.
@@ -569,15 +575,18 @@ func FilenameFromUri(uri string) (string, string, error) {
 	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
 	hostname := C.GoString(c_hostname)
 	defer C.free(unsafe.Pointer(c_hostname))
 
-	return retGo, hostname, goThrowableError
+	return retGo, hostname, goError
 }
 
 // FilenameFromUtf8 is a wrapper around the C function g_filename_from_utf8.
@@ -597,8 +606,11 @@ func FilenameFromUtf8(utf8string string, len int64) (string, uint64, uint64, err
 	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
@@ -606,7 +618,7 @@ func FilenameFromUtf8(utf8string string, len int64) (string, uint64, uint64, err
 
 	bytesWritten := (uint64)(c_bytes_written)
 
-	return retGo, bytesRead, bytesWritten, goThrowableError
+	return retGo, bytesRead, bytesWritten, goError
 }
 
 // FilenameToUri is a wrapper around the C function g_filename_to_uri.
@@ -623,12 +635,15 @@ func FilenameToUri(filename string, hostname string) (string, error) {
 	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // FilenameToUtf8 is a wrapper around the C function g_filename_to_utf8.
@@ -648,8 +663,11 @@ func FilenameToUtf8(opsysstring string, len int64) (string, uint64, uint64, erro
 	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
@@ -657,7 +675,7 @@ func FilenameToUtf8(opsysstring string, len int64) (string, uint64, uint64, erro
 
 	bytesWritten := (uint64)(c_bytes_written)
 
-	return retGo, bytesRead, bytesWritten, goThrowableError
+	return retGo, bytesRead, bytesWritten, goError
 }
 
 // FindProgramInPath is a wrapper around the C function g_find_program_in_path.
@@ -846,8 +864,11 @@ func LocaleToUtf8(opsysstring []uint8) (string, uint64, uint64, error) {
 	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
@@ -855,7 +876,7 @@ func LocaleToUtf8(opsysstring []uint8) (string, uint64, uint64, error) {
 
 	bytesWritten := (uint64)(c_bytes_written)
 
-	return retGo, bytesRead, bytesWritten, goThrowableError
+	return retGo, bytesRead, bytesWritten, goError
 }
 
 // Unsupported : g_log : unsupported parameter ... : varargs
@@ -1349,12 +1370,15 @@ func ShellUnquote(quotedString string) (string, error) {
 	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // SliceGetConfig is a wrapper around the C function g_slice_get_config.
@@ -1415,12 +1439,15 @@ func SpawnCommandLineAsync(commandLine string) (bool, error) {
 	retC := C.g_spawn_command_line_async(c_command_line, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : g_spawn_command_line_sync : unsupported parameter standard_output : output array param standard_output
@@ -1944,8 +1971,11 @@ func Ucs4ToUtf8(str rune, len int64) (string, int64, int64, error) {
 	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
@@ -1953,7 +1983,7 @@ func Ucs4ToUtf8(str rune, len int64) (string, int64, int64, error) {
 
 	itemsWritten := (int64)(c_items_written)
 
-	return retGo, itemsRead, itemsWritten, goThrowableError
+	return retGo, itemsRead, itemsWritten, goError
 }
 
 // UnicharBreakType is a wrapper around the C function g_unichar_break_type.

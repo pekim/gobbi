@@ -35,12 +35,15 @@ func (recv *File) MakeDirectoryWithParents(cancellable *Cancellable) (bool, erro
 	retC := C.g_file_make_directory_with_parents((*C.GFile)(recv.native), c_cancellable, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Monitor is a wrapper around the C function g_file_monitor.
@@ -57,12 +60,15 @@ func (recv *File) Monitor(flags FileMonitorFlags, cancellable *Cancellable) (*Fi
 	retC := C.g_file_monitor((*C.GFile)(recv.native), c_flags, c_cancellable, &cThrowableError)
 	retGo := FileMonitorNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // QueryFileType is a wrapper around the C function g_file_query_file_type.

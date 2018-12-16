@@ -41,12 +41,15 @@ func CharsetConverterNew(toCharset string, fromCharset string) (*CharsetConverte
 		C.g_object_unref((C.gpointer)(retC))
 	}
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // GetNumFallbacks is a wrapper around the C function g_charset_converter_get_num_fallbacks.
@@ -103,14 +106,17 @@ func (recv *DataInputStream) ReadUptoFinish(result *AsyncResult) (string, uint64
 	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
 	length := (uint64)(c_length)
 
-	return retGo, length, goThrowableError
+	return retGo, length, goError
 }
 
 // GetFilename is a wrapper around the C function g_desktop_app_info_get_filename.
@@ -142,12 +148,15 @@ func (recv *SocketListener) AddAnyInetPort(sourceObject *gobject.Object) (uint16
 	retC := C.g_socket_listener_add_any_inet_port((*C.GSocketListener)(recv.native), c_source_object, &cThrowableError)
 	retGo := (uint16)(retC)
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // UnixFDListNew is a wrapper around the C function g_unix_fd_list_new.
@@ -187,12 +196,15 @@ func (recv *UnixFDList) Append(fd int32) (int32, error) {
 	retC := C.g_unix_fd_list_append((*C.GUnixFDList)(recv.native), c_fd, &cThrowableError)
 	retGo := (int32)(retC)
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Get is a wrapper around the C function g_unix_fd_list_get.
@@ -204,12 +216,15 @@ func (recv *UnixFDList) Get(index int32) (int32, error) {
 	retC := C.g_unix_fd_list_get((*C.GUnixFDList)(recv.native), c_index_, &cThrowableError)
 	retGo := (int32)(retC)
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // GetLength is a wrapper around the C function g_unix_fd_list_get_length.

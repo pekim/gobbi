@@ -90,12 +90,15 @@ func PollableStreamRead(stream *InputStream, buffer []uint8, blocking bool, canc
 	retC := C.g_pollable_stream_read(c_stream, (unsafe.Pointer(c_buffer)), c_count, c_blocking, c_cancellable, &cThrowableError)
 	retGo := (int64)(retC)
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // PollableStreamWrite is a wrapper around the C function g_pollable_stream_write.
@@ -122,12 +125,15 @@ func PollableStreamWrite(stream *OutputStream, buffer []uint8, blocking bool, ca
 	retC := C.g_pollable_stream_write(c_stream, (unsafe.Pointer(c_buffer)), c_count, c_blocking, c_cancellable, &cThrowableError)
 	retGo := (int64)(retC)
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // PollableStreamWriteAll is a wrapper around the C function g_pollable_stream_write_all.
@@ -156,14 +162,17 @@ func PollableStreamWriteAll(stream *OutputStream, buffer []uint8, blocking bool,
 	retC := C.g_pollable_stream_write_all(c_stream, (unsafe.Pointer(c_buffer)), c_count, c_blocking, &c_bytes_written, c_cancellable, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
 	bytesWritten := (uint64)(c_bytes_written)
 
-	return retGo, bytesWritten, goThrowableError
+	return retGo, bytesWritten, goError
 }
 
 // UnixMountGuessSymbolicIcon is a wrapper around the C function g_unix_mount_guess_symbolic_icon.

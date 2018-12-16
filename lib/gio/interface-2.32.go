@@ -85,14 +85,17 @@ func FileNewTmp(tmpl string) (*File, *FileIOStream, error) {
 	retC := C.g_file_new_tmp(c_tmpl, &c_iostream, &cThrowableError)
 	retGo := FileNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
 	iostream := FileIOStreamNewFromC(unsafe.Pointer(c_iostream))
 
-	return retGo, iostream, goThrowableError
+	return retGo, iostream, goError
 }
 
 // GetSortKey is a wrapper around the C function g_mount_get_sort_key.
@@ -151,12 +154,15 @@ func (recv *NetworkMonitor) CanReach(connectable *SocketConnectable, cancellable
 	retC := C.g_network_monitor_can_reach((*C.GNetworkMonitor)(recv.native), c_connectable, c_cancellable, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : g_network_monitor_can_reach_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
@@ -170,12 +176,15 @@ func (recv *NetworkMonitor) CanReachFinish(result *AsyncResult) (bool, error) {
 	retC := C.g_network_monitor_can_reach_finish((*C.GNetworkMonitor)(recv.native), c_result, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // GetNetworkAvailable is a wrapper around the C function g_network_monitor_get_network_available.

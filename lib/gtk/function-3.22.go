@@ -32,10 +32,13 @@ func ShowUriOnWindow(parent *Window, uri string, timestamp uint32) (bool, error)
 	retC := C.gtk_show_uri_on_window(c_parent, c_uri, c_timestamp, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }

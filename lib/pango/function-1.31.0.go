@@ -31,8 +31,11 @@ func MarkupParserFinish(context *glib.MarkupParseContext) (bool, *AttrList, stri
 	retC := C.pango_markup_parser_finish(c_context, &c_attr_list, &c_text, &c_accel_char, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
@@ -43,7 +46,7 @@ func MarkupParserFinish(context *glib.MarkupParseContext) (bool, *AttrList, stri
 
 	accelChar := (rune)(c_accel_char)
 
-	return retGo, attrList, text, accelChar, goThrowableError
+	return retGo, attrList, text, accelChar, goError
 }
 
 // MarkupParserNew is a wrapper around the C function pango_markup_parser_new.

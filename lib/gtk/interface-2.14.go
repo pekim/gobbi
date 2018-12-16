@@ -62,12 +62,15 @@ func (recv *FileChooser) SelectFile(file *gio.File) (bool, error) {
 	retC := C.gtk_file_chooser_select_file((*C.GtkFileChooser)(recv.native), c_file, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // SetCurrentFolderFile is a wrapper around the C function gtk_file_chooser_set_current_folder_file.
@@ -79,12 +82,15 @@ func (recv *FileChooser) SetCurrentFolderFile(file *gio.File) (bool, error) {
 	retC := C.gtk_file_chooser_set_current_folder_file((*C.GtkFileChooser)(recv.native), c_file, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // SetFile is a wrapper around the C function gtk_file_chooser_set_file.
@@ -96,12 +102,15 @@ func (recv *FileChooser) SetFile(file *gio.File) (bool, error) {
 	retC := C.gtk_file_chooser_set_file((*C.GtkFileChooser)(recv.native), c_file, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // UnselectFile is a wrapper around the C function gtk_file_chooser_unselect_file.

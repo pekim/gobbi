@@ -38,15 +38,18 @@ func (recv *File) LoadBytes(cancellable *Cancellable) (*glib.Bytes, string, erro
 	retC := C.g_file_load_bytes((*C.GFile)(recv.native), c_cancellable, &c_etag_out, &cThrowableError)
 	retGo := glib.BytesNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
 	etagOut := C.GoString(c_etag_out)
 	defer C.free(unsafe.Pointer(c_etag_out))
 
-	return retGo, etagOut, goThrowableError
+	return retGo, etagOut, goError
 }
 
 // Unsupported : g_file_load_bytes_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
@@ -62,15 +65,18 @@ func (recv *File) LoadBytesFinish(result *AsyncResult) (*glib.Bytes, string, err
 	retC := C.g_file_load_bytes_finish((*C.GFile)(recv.native), c_result, &c_etag_out, &cThrowableError)
 	retGo := glib.BytesNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
 	etagOut := C.GoString(c_etag_out)
 	defer C.free(unsafe.Pointer(c_etag_out))
 
-	return retGo, etagOut, goThrowableError
+	return retGo, etagOut, goError
 }
 
 // PeekPath is a wrapper around the C function g_file_peek_path.

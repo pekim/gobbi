@@ -95,12 +95,15 @@ func FileSetContents(filename string, contents []uint8) (bool, error) {
 	retC := C.g_file_set_contents(c_filename, (*C.gchar)(unsafe.Pointer(c_contents)), c_length, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // GetHostName is a wrapper around the C function g_get_host_name.

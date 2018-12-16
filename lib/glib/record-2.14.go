@@ -51,12 +51,15 @@ func (recv *MatchInfo) ExpandReferences(stringToExpand string) (string, error) {
 	retGo := C.GoString(retC)
 	defer C.free(unsafe.Pointer(retC))
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Fetch is a wrapper around the C function g_match_info_fetch.
@@ -175,12 +178,15 @@ func (recv *MatchInfo) Next() (bool, error) {
 	retC := C.g_match_info_next((*C.GMatchInfo)(recv.native), &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // g_once_init_enter : unsupported parameter location : no type generator for gpointer (void*) for param location
@@ -261,12 +267,15 @@ func RegexNew(pattern string, compileOptions RegexCompileFlags, matchOptions Reg
 		retGo = RegexNewFromC(unsafe.Pointer(retC))
 	}
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // RegexCheckReplacement is a wrapper around the C function g_regex_check_replacement.
@@ -281,14 +290,17 @@ func RegexCheckReplacement(replacement string) (bool, bool, error) {
 	retC := C.g_regex_check_replacement(c_replacement, &c_has_references, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
 	hasReferences := c_has_references == C.TRUE
 
-	return retGo, hasReferences, goThrowableError
+	return retGo, hasReferences, goError
 }
 
 // g_regex_escape_string : unsupported parameter string :

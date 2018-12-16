@@ -435,8 +435,11 @@ func (recv *Subprocess) Communicate(stdinBuf *glib.Bytes, cancellable *Cancellab
 	retC := C.g_subprocess_communicate((*C.GSubprocess)(recv.native), c_stdin_buf, c_cancellable, &c_stdout_buf, &c_stderr_buf, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
@@ -444,7 +447,7 @@ func (recv *Subprocess) Communicate(stdinBuf *glib.Bytes, cancellable *Cancellab
 
 	stderrBuf := glib.BytesNewFromC(unsafe.Pointer(c_stderr_buf))
 
-	return retGo, stdoutBuf, stderrBuf, goThrowableError
+	return retGo, stdoutBuf, stderrBuf, goError
 }
 
 // Unsupported : g_subprocess_communicate_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
@@ -462,8 +465,11 @@ func (recv *Subprocess) CommunicateFinish(result *AsyncResult) (bool, *glib.Byte
 	retC := C.g_subprocess_communicate_finish((*C.GSubprocess)(recv.native), c_result, &c_stdout_buf, &c_stderr_buf, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
@@ -471,7 +477,7 @@ func (recv *Subprocess) CommunicateFinish(result *AsyncResult) (bool, *glib.Byte
 
 	stderrBuf := glib.BytesNewFromC(unsafe.Pointer(c_stderr_buf))
 
-	return retGo, stdoutBuf, stderrBuf, goThrowableError
+	return retGo, stdoutBuf, stderrBuf, goError
 }
 
 // CommunicateUtf8 is a wrapper around the C function g_subprocess_communicate_utf8.
@@ -493,8 +499,11 @@ func (recv *Subprocess) CommunicateUtf8(stdinBuf string, cancellable *Cancellabl
 	retC := C.g_subprocess_communicate_utf8((*C.GSubprocess)(recv.native), c_stdin_buf, c_cancellable, &c_stdout_buf, &c_stderr_buf, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
@@ -504,7 +513,7 @@ func (recv *Subprocess) CommunicateUtf8(stdinBuf string, cancellable *Cancellabl
 	stderrBuf := C.GoString(c_stderr_buf)
 	defer C.free(unsafe.Pointer(c_stderr_buf))
 
-	return retGo, stdoutBuf, stderrBuf, goThrowableError
+	return retGo, stdoutBuf, stderrBuf, goError
 }
 
 // Unsupported : g_subprocess_communicate_utf8_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
@@ -522,8 +531,11 @@ func (recv *Subprocess) CommunicateUtf8Finish(result *AsyncResult) (bool, string
 	retC := C.g_subprocess_communicate_utf8_finish((*C.GSubprocess)(recv.native), c_result, &c_stdout_buf, &c_stderr_buf, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
@@ -533,7 +545,7 @@ func (recv *Subprocess) CommunicateUtf8Finish(result *AsyncResult) (bool, string
 	stderrBuf := C.GoString(c_stderr_buf)
 	defer C.free(unsafe.Pointer(c_stderr_buf))
 
-	return retGo, stdoutBuf, stderrBuf, goThrowableError
+	return retGo, stdoutBuf, stderrBuf, goError
 }
 
 // ForceExit is a wrapper around the C function g_subprocess_force_exit.
@@ -644,12 +656,15 @@ func (recv *Subprocess) Wait(cancellable *Cancellable) (bool, error) {
 	retC := C.g_subprocess_wait((*C.GSubprocess)(recv.native), c_cancellable, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : g_subprocess_wait_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
@@ -666,12 +681,15 @@ func (recv *Subprocess) WaitCheck(cancellable *Cancellable) (bool, error) {
 	retC := C.g_subprocess_wait_check((*C.GSubprocess)(recv.native), c_cancellable, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : g_subprocess_wait_check_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
@@ -685,12 +703,15 @@ func (recv *Subprocess) WaitCheckFinish(result *AsyncResult) (bool, error) {
 	retC := C.g_subprocess_wait_check_finish((*C.GSubprocess)(recv.native), c_result, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // WaitFinish is a wrapper around the C function g_subprocess_wait_finish.
@@ -702,12 +723,15 @@ func (recv *Subprocess) WaitFinish(result *AsyncResult) (bool, error) {
 	retC := C.g_subprocess_wait_finish((*C.GSubprocess)(recv.native), c_result, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // SubprocessLauncher is a wrapper around the C record GSubprocessLauncher.
@@ -922,12 +946,15 @@ func (recv *TlsInteraction) InvokeRequestCertificate(connection *TlsConnection, 
 	retC := C.g_tls_interaction_invoke_request_certificate((*C.GTlsInteraction)(recv.native), c_connection, c_flags, c_cancellable, &cThrowableError)
 	retGo := (TlsInteractionResult)(retC)
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // RequestCertificate is a wrapper around the C function g_tls_interaction_request_certificate.
@@ -949,12 +976,15 @@ func (recv *TlsInteraction) RequestCertificate(connection *TlsConnection, flags 
 	retC := C.g_tls_interaction_request_certificate((*C.GTlsInteraction)(recv.native), c_connection, c_flags, c_cancellable, &cThrowableError)
 	retGo := (TlsInteractionResult)(retC)
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Unsupported : g_tls_interaction_request_certificate_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
@@ -968,10 +998,13 @@ func (recv *TlsInteraction) RequestCertificateFinish(result *AsyncResult) (TlsIn
 	retC := C.g_tls_interaction_request_certificate_finish((*C.GTlsInteraction)(recv.native), c_result, &cThrowableError)
 	retGo := (TlsInteractionResult)(retC)
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }

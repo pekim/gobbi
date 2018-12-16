@@ -328,12 +328,15 @@ func (recv *RecentChooser) SelectUri(uri string) (bool, error) {
 	retC := C.gtk_recent_chooser_select_uri((*C.GtkRecentChooser)(recv.native), c_uri, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // SetCurrentUri is a wrapper around the C function gtk_recent_chooser_set_current_uri.
@@ -346,12 +349,15 @@ func (recv *RecentChooser) SetCurrentUri(uri string) (bool, error) {
 	retC := C.gtk_recent_chooser_set_current_uri((*C.GtkRecentChooser)(recv.native), c_uri, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // SetFilter is a wrapper around the C function gtk_recent_chooser_set_filter.

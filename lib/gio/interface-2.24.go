@@ -78,8 +78,11 @@ func (recv *Converter) Convert(inbuf []uint8, outbuf []uint8, flags ConverterFla
 	retC := C.g_converter_convert((*C.GConverter)(recv.native), (unsafe.Pointer(c_inbuf)), c_inbuf_size, (unsafe.Pointer(c_outbuf)), c_outbuf_size, c_flags, &c_bytes_read, &c_bytes_written, &cThrowableError)
 	retGo := (ConverterResult)(retC)
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
@@ -87,7 +90,7 @@ func (recv *Converter) Convert(inbuf []uint8, outbuf []uint8, flags ConverterFla
 
 	bytesWritten := (uint64)(c_bytes_written)
 
-	return retGo, bytesRead, bytesWritten, goThrowableError
+	return retGo, bytesRead, bytesWritten, goError
 }
 
 // Reset is a wrapper around the C function g_converter_reset.

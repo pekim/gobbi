@@ -2102,12 +2102,15 @@ func (recv *PrintOperation) GetError() error {
 
 	C.gtk_print_operation_get_error((*C.GtkPrintOperation)(recv.native), &cThrowableError)
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return goThrowableError
+	return goError
 }
 
 // GetPrintSettings is a wrapper around the C function gtk_print_operation_get_print_settings.
@@ -2156,12 +2159,15 @@ func (recv *PrintOperation) Run(action PrintOperationAction, parent *Window) (Pr
 	retC := C.gtk_print_operation_run((*C.GtkPrintOperation)(recv.native), c_action, c_parent, &cThrowableError)
 	retGo := (PrintOperationResult)(retC)
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // SetAllowAsync is a wrapper around the C function gtk_print_operation_set_allow_async.
@@ -3198,12 +3204,15 @@ func (recv *RecentManager) LookupItem(uri string) (*RecentInfo, error) {
 		retGo = RecentInfoNewFromC(unsafe.Pointer(retC))
 	}
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // MoveItem is a wrapper around the C function gtk_recent_manager_move_item.
@@ -3219,12 +3228,15 @@ func (recv *RecentManager) MoveItem(uri string, newUri string) (bool, error) {
 	retC := C.gtk_recent_manager_move_item((*C.GtkRecentManager)(recv.native), c_uri, c_new_uri, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // PurgeItems is a wrapper around the C function gtk_recent_manager_purge_items.
@@ -3234,12 +3246,15 @@ func (recv *RecentManager) PurgeItems() (int32, error) {
 	retC := C.gtk_recent_manager_purge_items((*C.GtkRecentManager)(recv.native), &cThrowableError)
 	retGo := (int32)(retC)
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // RemoveItem is a wrapper around the C function gtk_recent_manager_remove_item.
@@ -3252,12 +3267,15 @@ func (recv *RecentManager) RemoveItem(uri string) (bool, error) {
 	retC := C.gtk_recent_manager_remove_item((*C.GtkRecentManager)(recv.native), c_uri, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // UnsetPlacement is a wrapper around the C function gtk_scrolled_window_unset_placement.

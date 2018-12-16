@@ -59,12 +59,15 @@ func ShowUri(screen *gdk.Screen, uri string, timestamp uint32) (bool, error) {
 	retC := C.gtk_show_uri(c_screen, c_uri, c_timestamp, &cThrowableError)
 	retGo := retC == C.TRUE
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // TestCreateSimpleWindow is a wrapper around the C function gtk_test_create_simple_window.

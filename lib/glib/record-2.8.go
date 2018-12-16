@@ -25,12 +25,15 @@ func MappedFileNew(filename string, writable bool) (*MappedFile, error) {
 	retC := C.g_mapped_file_new(c_filename, c_writable, &cThrowableError)
 	retGo := MappedFileNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
-	return retGo, goThrowableError
+	return retGo, goError
 }
 
 // Free is a wrapper around the C function g_mapped_file_free.

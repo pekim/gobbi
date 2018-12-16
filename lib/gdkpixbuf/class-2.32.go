@@ -58,8 +58,11 @@ func PixbufGetFileInfoFinish(asyncResult *gio.AsyncResult) (*PixbufFormat, int32
 	retC := C.gdk_pixbuf_get_file_info_finish(c_async_result, &c_width, &c_height, &cThrowableError)
 	retGo := PixbufFormatNewFromC(unsafe.Pointer(retC))
 
-	goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+	var goError error = nil
 	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
 		C.g_error_free(cThrowableError)
 	}
 
@@ -67,7 +70,7 @@ func PixbufGetFileInfoFinish(asyncResult *gio.AsyncResult) (*PixbufFormat, int32
 
 	height := (int32)(c_height)
 
-	return retGo, width, height, goThrowableError
+	return retGo, width, height, goError
 }
 
 // GetOptions is a wrapper around the C function gdk_pixbuf_get_options.
