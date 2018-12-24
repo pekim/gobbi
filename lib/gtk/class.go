@@ -3,6 +3,7 @@
 package gtk
 
 import (
+	"fmt"
 	atk "github.com/pekim/gobbi/lib/atk"
 	cairo "github.com/pekim/gobbi/lib/cairo"
 	gdk "github.com/pekim/gobbi/lib/gdk"
@@ -17,6 +18,8 @@ import (
 )
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
+// #cgo CFLAGS: -Wno-format-security
+// #cgo CFLAGS: -Wno-incompatible-pointer-types
 // #include <gtk/gtk-a11y.h>
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
@@ -848,6 +851,12 @@ import (
 		return g_signal_connect(instance, "show-menu", G_CALLBACK(menutoolbutton_showMenuHandler), data);
 	}
 
+*/
+/*
+
+	static GtkMessageDialog* _gtk_message_dialog_new(GtkWindow* parent, GtkDialogFlags flags, GtkMessageType type, GtkButtonsType buttons, const gchar* message_format) {
+		return gtk_message_dialog_new(parent, flags, type, buttons, message_format);
+    }
 */
 /*
 
@@ -21864,7 +21873,28 @@ func CastToMessageDialog(object *gobject.Object) *MessageDialog {
 	return MessageDialogNewFromC(object.ToC())
 }
 
-// Unsupported : gtk_message_dialog_new : unsupported parameter ... : varargs
+// MessageDialogNew is a wrapper around the C function gtk_message_dialog_new.
+func MessageDialogNew(parent *Window, flags DialogFlags, type_ MessageType, buttons ButtonsType, messageFormat string, args ...interface{}) *MessageDialog {
+	c_parent := (*C.GtkWindow)(C.NULL)
+	if parent != nil {
+		c_parent = (*C.GtkWindow)(parent.ToC())
+	}
+
+	c_flags := (C.GtkDialogFlags)(flags)
+
+	c_type := (C.GtkMessageType)(type_)
+
+	c_buttons := (C.GtkButtonsType)(buttons)
+
+	goFormattedString := fmt.Sprintf(messageFormat, args...)
+	c_message_format := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_message_format))
+
+	retC := C._gtk_message_dialog_new(c_parent, c_flags, c_type, c_buttons, c_message_format)
+	retGo := MessageDialogNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // ImplementorIface returns the ImplementorIface interface implemented by MessageDialog
 func (recv *MessageDialog) ImplementorIface() *atk.ImplementorIface {

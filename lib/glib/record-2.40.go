@@ -3,13 +3,30 @@
 
 package glib
 
-import "unsafe"
+import (
+	"fmt"
+	"unsafe"
+)
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
+// #cgo CFLAGS: -Wno-format-security
+// #cgo CFLAGS: -Wno-incompatible-pointer-types
 // #include <glib.h>
 // #include <glib/gstdio.h>
 // #include <glib-unix.h>
 // #include <stdlib.h>
+/*
+
+	static void _g_variant_dict_insert(GVariantDict* dict, const gchar* key, const gchar* format_string) {
+		return g_variant_dict_insert(dict, key, format_string);
+    }
+*/
+/*
+
+	static gboolean _g_variant_dict_lookup(GVariantDict* dict, const gchar* key, const gchar* format_string) {
+		return g_variant_dict_lookup(dict, key, format_string);
+    }
+*/
 import "C"
 
 // g_hash_table_get_keys_as_array : no return type
@@ -86,11 +103,36 @@ func (recv *VariantDict) Contains(key string) bool {
 
 // Unsupported : g_variant_dict_init : unsupported parameter from_asv : Blacklisted record : GVariant
 
-// Unsupported : g_variant_dict_insert : unsupported parameter ... : varargs
+// Insert is a wrapper around the C function g_variant_dict_insert.
+func (recv *VariantDict) Insert(key string, formatString string, args ...interface{}) {
+	c_key := C.CString(key)
+	defer C.free(unsafe.Pointer(c_key))
+
+	goFormattedString := fmt.Sprintf(formatString, args...)
+	c_format_string := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_format_string))
+
+	C._g_variant_dict_insert((*C.GVariantDict)(recv.native), c_key, c_format_string)
+
+	return
+}
 
 // Unsupported : g_variant_dict_insert_value : unsupported parameter value : Blacklisted record : GVariant
 
-// Unsupported : g_variant_dict_lookup : unsupported parameter ... : varargs
+// Lookup is a wrapper around the C function g_variant_dict_lookup.
+func (recv *VariantDict) Lookup(key string, formatString string, args ...interface{}) bool {
+	c_key := C.CString(key)
+	defer C.free(unsafe.Pointer(c_key))
+
+	goFormattedString := fmt.Sprintf(formatString, args...)
+	c_format_string := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_format_string))
+
+	retC := C._g_variant_dict_lookup((*C.GVariantDict)(recv.native), c_key, c_format_string)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
 
 // Unsupported : g_variant_dict_lookup_value : unsupported parameter expected_type : Blacklisted record : GVariantType
 

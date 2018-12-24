@@ -4,6 +4,7 @@
 package gio
 
 import (
+	"fmt"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"
@@ -12,6 +13,8 @@ import (
 )
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
+// #cgo CFLAGS: -Wno-format-security
+// #cgo CFLAGS: -Wno-incompatible-pointer-types
 // #include <gio/gdesktopappinfo.h>
 // #include <gio/gfiledescriptorbased.h>
 // #include <gio/gio.h>
@@ -26,12 +29,30 @@ import (
 // #include <stdlib.h>
 /*
 
+	static void _g_menu_item_set_action_and_target(GMenuItem* menu_item, const gchar* action, const gchar* format_string) {
+		return g_menu_item_set_action_and_target(menu_item, action, format_string);
+    }
+*/
+/*
+
+	static void _g_menu_item_set_attribute(GMenuItem* menu_item, const gchar* attribute, const gchar* format_string) {
+		return g_menu_item_set_attribute(menu_item, attribute, format_string);
+    }
+*/
+/*
+
 	void menumodel_itemsChangedHandler(GObject *, gint, gint, gint, gpointer);
 
 	static gulong MenuModel_signal_connect_items_changed(gpointer instance, gpointer data) {
 		return g_signal_connect(instance, "items-changed", G_CALLBACK(menumodel_itemsChangedHandler), data);
 	}
 
+*/
+/*
+
+	static gboolean _g_menu_model_get_item_attribute(GMenuModel* model, gint item_index, const gchar* attribute, const gchar* format_string) {
+		return g_menu_model_get_item_attribute(model, item_index, attribute, format_string);
+    }
 */
 import "C"
 
@@ -827,11 +848,35 @@ func MenuItemNewSubmenu(label string, submenu *MenuModel) *MenuItem {
 	return retGo
 }
 
-// Unsupported : g_menu_item_set_action_and_target : unsupported parameter ... : varargs
+// SetActionAndTarget is a wrapper around the C function g_menu_item_set_action_and_target.
+func (recv *MenuItem) SetActionAndTarget(action string, formatString string, args ...interface{}) {
+	c_action := C.CString(action)
+	defer C.free(unsafe.Pointer(c_action))
+
+	goFormattedString := fmt.Sprintf(formatString, args...)
+	c_format_string := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_format_string))
+
+	C._g_menu_item_set_action_and_target((*C.GMenuItem)(recv.native), c_action, c_format_string)
+
+	return
+}
 
 // Unsupported : g_menu_item_set_action_and_target_value : unsupported parameter target_value : Blacklisted record : GVariant
 
-// Unsupported : g_menu_item_set_attribute : unsupported parameter ... : varargs
+// SetAttribute is a wrapper around the C function g_menu_item_set_attribute.
+func (recv *MenuItem) SetAttribute(attribute string, formatString string, args ...interface{}) {
+	c_attribute := C.CString(attribute)
+	defer C.free(unsafe.Pointer(c_attribute))
+
+	goFormattedString := fmt.Sprintf(formatString, args...)
+	c_format_string := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_format_string))
+
+	C._g_menu_item_set_attribute((*C.GMenuItem)(recv.native), c_attribute, c_format_string)
+
+	return
+}
 
 // Unsupported : g_menu_item_set_attribute_value : unsupported parameter value : Blacklisted record : GVariant
 
@@ -1098,7 +1143,22 @@ func menumodel_itemsChangedHandler(_ *C.GObject, c_position C.gint, c_removed C.
 	callback(position, removed, added)
 }
 
-// Unsupported : g_menu_model_get_item_attribute : unsupported parameter ... : varargs
+// GetItemAttribute is a wrapper around the C function g_menu_model_get_item_attribute.
+func (recv *MenuModel) GetItemAttribute(itemIndex int32, attribute string, formatString string, args ...interface{}) bool {
+	c_item_index := (C.gint)(itemIndex)
+
+	c_attribute := C.CString(attribute)
+	defer C.free(unsafe.Pointer(c_attribute))
+
+	goFormattedString := fmt.Sprintf(formatString, args...)
+	c_format_string := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_format_string))
+
+	retC := C._g_menu_model_get_item_attribute((*C.GMenuModel)(recv.native), c_item_index, c_attribute, c_format_string)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
 
 // Unsupported : g_menu_model_get_item_attribute_value : unsupported parameter expected_type : Blacklisted record : GVariantType
 

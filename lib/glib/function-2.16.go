@@ -3,13 +3,48 @@
 
 package glib
 
-import "unsafe"
+import (
+	"fmt"
+	"unsafe"
+)
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
+// #cgo CFLAGS: -Wno-format-security
+// #cgo CFLAGS: -Wno-incompatible-pointer-types
 // #include <glib.h>
 // #include <glib/gstdio.h>
 // #include <glib-unix.h>
 // #include <stdlib.h>
+/*
+
+	static void _g_prefix_error(GError** err, const gchar* format) {
+		return g_prefix_error(err, format);
+    }
+*/
+/*
+
+	static void _g_propagate_prefixed_error(GError** dest, GError* src, const gchar* format) {
+		return g_propagate_prefixed_error(dest, src, format);
+    }
+*/
+/*
+
+	static void _g_test_maximized_result(double maximized_quantity, const char* format) {
+		return g_test_maximized_result(maximized_quantity, format);
+    }
+*/
+/*
+
+	static void _g_test_message(const char* format) {
+		return g_test_message(format);
+    }
+*/
+/*
+
+	static void _g_test_minimized_result(double minimized_quantity, const char* format) {
+		return g_test_minimized_result(minimized_quantity, format);
+    }
+*/
 import "C"
 
 // ComputeChecksumForData is a wrapper around the C function g_compute_checksum_for_data.
@@ -72,9 +107,42 @@ func FormatSizeForDisplay(size uint64) string {
 
 // Unsupported : g_markup_collect_attributes : unsupported parameter attribute_names : in string with indirection level of 2
 
-// Unsupported : g_prefix_error : unsupported parameter ... : varargs
+// PrefixError is a wrapper around the C function g_prefix_error.
+func PrefixError(err *Error, format string, args ...interface{}) {
+	c_err := (**C.GError)(C.NULL)
+	if err != nil {
+		c_err = (**C.GError)(err.ToC())
+	}
 
-// Unsupported : g_propagate_prefixed_error : unsupported parameter ... : varargs
+	goFormattedString := fmt.Sprintf(format, args...)
+	c_format := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_format))
+
+	C._g_prefix_error(c_err, c_format)
+
+	return
+}
+
+// PropagatePrefixedError is a wrapper around the C function g_propagate_prefixed_error.
+func PropagatePrefixedError(dest *Error, src *Error, format string, args ...interface{}) {
+	c_dest := (**C.GError)(C.NULL)
+	if dest != nil {
+		c_dest = (**C.GError)(dest.ToC())
+	}
+
+	c_src := (*C.GError)(C.NULL)
+	if src != nil {
+		c_src = (*C.GError)(src.ToC())
+	}
+
+	goFormattedString := fmt.Sprintf(format, args...)
+	c_format := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_format))
+
+	C._g_propagate_prefixed_error(c_dest, c_src, c_format)
+
+	return
+}
 
 // Strcmp0 is a wrapper around the C function g_strcmp0.
 func Strcmp0(str1 string, str2 string) int32 {
@@ -137,11 +205,42 @@ func TestGetRoot() *TestSuite {
 
 // Unsupported : g_test_init : unsupported parameter ... : varargs
 
-// Unsupported : g_test_maximized_result : unsupported parameter ... : varargs
+// TestMaximizedResult is a wrapper around the C function g_test_maximized_result.
+func TestMaximizedResult(maximizedQuantity float64, format string, args ...interface{}) {
+	c_maximized_quantity := (C.double)(maximizedQuantity)
 
-// Unsupported : g_test_message : unsupported parameter ... : varargs
+	goFormattedString := fmt.Sprintf(format, args...)
+	c_format := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_format))
 
-// Unsupported : g_test_minimized_result : unsupported parameter ... : varargs
+	C._g_test_maximized_result(c_maximized_quantity, c_format)
+
+	return
+}
+
+// TestMessage is a wrapper around the C function g_test_message.
+func TestMessage(format string, args ...interface{}) {
+	goFormattedString := fmt.Sprintf(format, args...)
+	c_format := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_format))
+
+	C._g_test_message(c_format)
+
+	return
+}
+
+// TestMinimizedResult is a wrapper around the C function g_test_minimized_result.
+func TestMinimizedResult(minimizedQuantity float64, format string, args ...interface{}) {
+	c_minimized_quantity := (C.double)(minimizedQuantity)
+
+	goFormattedString := fmt.Sprintf(format, args...)
+	c_format := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_format))
+
+	C._g_test_minimized_result(c_minimized_quantity, c_format)
+
+	return
+}
 
 // Unsupported : g_test_queue_destroy : unsupported parameter destroy_func : no type generator for DestroyNotify (GDestroyNotify) for param destroy_func
 

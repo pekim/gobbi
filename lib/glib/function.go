@@ -2,13 +2,54 @@
 
 package glib
 
-import "unsafe"
+import (
+	"fmt"
+	"unsafe"
+)
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
+// #cgo CFLAGS: -Wno-format-security
+// #cgo CFLAGS: -Wno-incompatible-pointer-types
 // #include <glib.h>
 // #include <glib/gstdio.h>
 // #include <glib-unix.h>
 // #include <stdlib.h>
+/*
+
+	static void _g_log(const gchar* log_domain, GLogLevelFlags log_level, const gchar* format) {
+		return g_log(log_domain, log_level, format);
+    }
+*/
+/*
+
+	static void _g_print(const gchar* format) {
+		return g_print(format);
+    }
+*/
+/*
+
+	static void _g_printerr(const gchar* format) {
+		return g_printerr(format);
+    }
+*/
+/*
+
+	static void _g_set_error(GError** err, GQuark domain, gint code, const gchar* format) {
+		return g_set_error(err, domain, code, format);
+    }
+*/
+/*
+
+	static gint _g_snprintf(gchar* string, gulong n, const gchar* format) {
+		return g_snprintf(string, n, format);
+    }
+*/
+/*
+
+	static gchar* _g_strdup_printf(const gchar* format) {
+		return g_strdup_printf(format);
+    }
+*/
 import "C"
 
 // AsciiDigitValue is a wrapper around the C function g_ascii_digit_value.
@@ -879,7 +920,21 @@ func LocaleToUtf8(opsysstring []uint8) (string, uint64, uint64, error) {
 	return retGo, bytesRead, bytesWritten, goError
 }
 
-// Unsupported : g_log : unsupported parameter ... : varargs
+// Log is a wrapper around the C function g_log.
+func Log(logDomain string, logLevel LogLevelFlags, format string, args ...interface{}) {
+	c_log_domain := C.CString(logDomain)
+	defer C.free(unsafe.Pointer(c_log_domain))
+
+	c_log_level := (C.GLogLevelFlags)(logLevel)
+
+	goFormattedString := fmt.Sprintf(format, args...)
+	c_format := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_format))
+
+	C._g_log(c_log_domain, c_log_level, c_format)
+
+	return
+}
 
 // LogDefaultHandler is a wrapper around the C function g_log_default_handler.
 func LogDefaultHandler(logDomain string, logLevel LogLevelFlags, message string, unusedData uintptr) {
@@ -935,7 +990,7 @@ func LogSetFatalMask(logDomain string, fatalMask LogLevelFlags) LogLevelFlags {
 
 // Unsupported : g_log_set_handler : unsupported parameter log_func : no type generator for LogFunc (GLogFunc) for param log_func
 
-// Unsupported : g_log_structured_standard : unsupported parameter ... : varargs
+// Blacklisted : g_log_structured_standard
 
 // Unsupported : g_logv : unsupported parameter args : no type generator for va_list (va_list) for param args
 
@@ -1177,9 +1232,27 @@ func PatternMatchString(pspec *PatternSpec, string string) bool {
 	return retGo
 }
 
-// Unsupported : g_print : unsupported parameter ... : varargs
+// Print is a wrapper around the C function g_print.
+func Print(format string, args ...interface{}) {
+	goFormattedString := fmt.Sprintf(format, args...)
+	c_format := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_format))
 
-// Unsupported : g_printerr : unsupported parameter ... : varargs
+	C._g_print(c_format)
+
+	return
+}
+
+// Printerr is a wrapper around the C function g_printerr.
+func Printerr(format string, args ...interface{}) {
+	goFormattedString := fmt.Sprintf(format, args...)
+	c_format := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_format))
+
+	C._g_printerr(c_format)
+
+	return
+}
 
 // Unsupported : g_printf_string_upper_bound : unsupported parameter args : no type generator for va_list (va_list) for param args
 
@@ -1321,7 +1394,24 @@ func ReturnIfFailWarning(logDomain string, prettyFunction string, expression str
 	return
 }
 
-// Unsupported : g_set_error : unsupported parameter ... : varargs
+// SetError is a wrapper around the C function g_set_error.
+func SetError(domain Quark, code int32, format string, args ...interface{}) *Error {
+	var c_err *C.GError
+
+	c_domain := (C.GQuark)(domain)
+
+	c_code := (C.gint)(code)
+
+	goFormattedString := fmt.Sprintf(format, args...)
+	c_format := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_format))
+
+	C._g_set_error(&c_err, c_domain, c_code, c_format)
+
+	err := ErrorNewFromC(unsafe.Pointer(c_err))
+
+	return err
+}
 
 // SetPrgname is a wrapper around the C function g_set_prgname.
 func SetPrgname(prgname string) {
@@ -1404,7 +1494,22 @@ func SliceSetConfig(ckey SliceConfig, value int64) {
 	return
 }
 
-// Unsupported : g_snprintf : unsupported parameter ... : varargs
+// Snprintf is a wrapper around the C function g_snprintf.
+func Snprintf(string string, n uint64, format string, args ...interface{}) int32 {
+	c_string := C.CString(string)
+	defer C.free(unsafe.Pointer(c_string))
+
+	c_n := (C.gulong)(n)
+
+	goFormattedString := fmt.Sprintf(format, args...)
+	c_format := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_format))
+
+	retC := C._g_snprintf(c_string, c_n, c_format)
+	retGo := (int32)(retC)
+
+	return retGo
+}
 
 // SpacedPrimesClosest is a wrapper around the C function g_spaced_primes_closest.
 func SpacedPrimesClosest(num uint32) uint32 {
@@ -1617,7 +1722,18 @@ func Strdup(str string) string {
 	return retGo
 }
 
-// Unsupported : g_strdup_printf : unsupported parameter ... : varargs
+// StrdupPrintf is a wrapper around the C function g_strdup_printf.
+func StrdupPrintf(format string, args ...interface{}) string {
+	goFormattedString := fmt.Sprintf(format, args...)
+	c_format := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_format))
+
+	retC := C._g_strdup_printf(c_format)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_strdup_vprintf : unsupported parameter args : no type generator for va_list (va_list) for param args
 

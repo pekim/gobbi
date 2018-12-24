@@ -62,6 +62,7 @@
     <function blacklist="true" c:identifier="g_strv_get_type"/>
     <function blacklist="true" c:identifier="g_unix_error_quark"/>
     <function blacklist="true" c:identifier="g_variant_get_gtype"/>
+    <function blacklist="true" c:identifier="g_log_structured_standard"/>
 
     <!-- dependent on a callback available since a version -->
     <function version="2.28" c:identifier="g_test_add_vtable"/>

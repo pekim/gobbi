@@ -3,13 +3,24 @@
 
 package glib
 
-import "unsafe"
+import (
+	"fmt"
+	"unsafe"
+)
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
+// #cgo CFLAGS: -Wno-format-security
+// #cgo CFLAGS: -Wno-incompatible-pointer-types
 // #include <glib.h>
 // #include <glib/gstdio.h>
 // #include <glib-unix.h>
 // #include <stdlib.h>
+/*
+
+	static gchar* _g_markup_printf_escaped(const char* format) {
+		return g_markup_printf_escaped(format);
+    }
+*/
 import "C"
 
 // Blacklisted : g_atomic_int_add
@@ -68,7 +79,18 @@ func FileReadLink(filename string) (string, error) {
 	return retGo, goError
 }
 
-// Unsupported : g_markup_printf_escaped : unsupported parameter ... : varargs
+// MarkupPrintfEscaped is a wrapper around the C function g_markup_printf_escaped.
+func MarkupPrintfEscaped(format string, args ...interface{}) string {
+	goFormattedString := fmt.Sprintf(format, args...)
+	c_format := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_format))
+
+	retC := C._g_markup_printf_escaped(c_format)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_markup_vprintf_escaped : unsupported parameter args : no type generator for va_list (va_list) for param args
 

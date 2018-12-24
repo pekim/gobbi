@@ -4,6 +4,7 @@
 package gio
 
 import (
+	"fmt"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"
@@ -11,6 +12,8 @@ import (
 )
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
+// #cgo CFLAGS: -Wno-format-security
+// #cgo CFLAGS: -Wno-incompatible-pointer-types
 // #include <gio/gdesktopappinfo.h>
 // #include <gio/gfiledescriptorbased.h>
 // #include <gio/gio.h>
@@ -23,6 +26,30 @@ import (
 // #include <gio/gunixoutputstream.h>
 // #include <gio/gunixsocketaddress.h>
 // #include <stdlib.h>
+/*
+
+	static GDBusMessage* _g_dbus_message_new_method_error(GDBusMessage* method_call_message, const gchar* error_name, const gchar* error_message_format) {
+		return g_dbus_message_new_method_error(method_call_message, error_name, error_message_format);
+    }
+*/
+/*
+
+	static void _g_dbus_method_invocation_return_error(GDBusMethodInvocation* invocation, GQuark domain, gint code, const gchar* format) {
+		return g_dbus_method_invocation_return_error(invocation, domain, code, format);
+    }
+*/
+/*
+
+	static void _g_settings_get(GSettings* settings, const gchar* key, const gchar* format) {
+		return g_settings_get(settings, key, format);
+    }
+*/
+/*
+
+	static gboolean _g_settings_set(GSettings* settings, const gchar* key, const gchar* format) {
+		return g_settings_set(settings, key, format);
+    }
+*/
 import "C"
 
 // Credentials is a wrapper around the C record GCredentials.
@@ -1016,7 +1043,20 @@ func (recv *DBusMessage) Lock() {
 	return
 }
 
-// Unsupported : g_dbus_message_new_method_error : unsupported parameter ... : varargs
+// NewMethodError is a wrapper around the C function g_dbus_message_new_method_error.
+func (recv *DBusMessage) NewMethodError(errorName string, errorMessageFormat string, args ...interface{}) *DBusMessage {
+	c_error_name := C.CString(errorName)
+	defer C.free(unsafe.Pointer(c_error_name))
+
+	goFormattedString := fmt.Sprintf(errorMessageFormat, args...)
+	c_error_message_format := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_error_message_format))
+
+	retC := C._g_dbus_message_new_method_error((*C.GDBusMessage)(recv.native), c_error_name, c_error_message_format)
+	retGo := DBusMessageNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // NewMethodErrorLiteral is a wrapper around the C function g_dbus_message_new_method_error_literal.
 func (recv *DBusMessage) NewMethodErrorLiteral(errorName string, errorMessage string) *DBusMessage {
@@ -1339,7 +1379,20 @@ func (recv *DBusMethodInvocation) ReturnDbusError(errorName string, errorMessage
 	return
 }
 
-// Unsupported : g_dbus_method_invocation_return_error : unsupported parameter ... : varargs
+// ReturnError is a wrapper around the C function g_dbus_method_invocation_return_error.
+func (recv *DBusMethodInvocation) ReturnError(domain glib.Quark, code int32, format string, args ...interface{}) {
+	c_domain := (C.GQuark)(domain)
+
+	c_code := (C.gint)(code)
+
+	goFormattedString := fmt.Sprintf(format, args...)
+	c_format := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_format))
+
+	C._g_dbus_method_invocation_return_error((*C.GDBusMethodInvocation)(recv.native), c_domain, c_code, c_format)
+
+	return
+}
 
 // ReturnErrorLiteral is a wrapper around the C function g_dbus_method_invocation_return_error_literal.
 func (recv *DBusMethodInvocation) ReturnErrorLiteral(domain glib.Quark, code int32, message string) {
@@ -2286,7 +2339,19 @@ func (recv *Settings) Delay() {
 	return
 }
 
-// Unsupported : g_settings_get : unsupported parameter ... : varargs
+// Get is a wrapper around the C function g_settings_get.
+func (recv *Settings) Get(key string, format string, args ...interface{}) {
+	c_key := C.CString(key)
+	defer C.free(unsafe.Pointer(c_key))
+
+	goFormattedString := fmt.Sprintf(format, args...)
+	c_format := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_format))
+
+	C._g_settings_get((*C.GSettings)(recv.native), c_key, c_format)
+
+	return
+}
 
 // GetBoolean is a wrapper around the C function g_settings_get_boolean.
 func (recv *Settings) GetBoolean(key string) bool {
@@ -2389,7 +2454,20 @@ func (recv *Settings) IsWritable(name string) bool {
 	return retGo
 }
 
-// Unsupported : g_settings_set : unsupported parameter ... : varargs
+// Set is a wrapper around the C function g_settings_set.
+func (recv *Settings) Set(key string, format string, args ...interface{}) bool {
+	c_key := C.CString(key)
+	defer C.free(unsafe.Pointer(c_key))
+
+	goFormattedString := fmt.Sprintf(format, args...)
+	c_format := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_format))
+
+	retC := C._g_settings_set((*C.GSettings)(recv.native), c_key, c_format)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
 
 // SetBoolean is a wrapper around the C function g_settings_set_boolean.
 func (recv *Settings) SetBoolean(key string, value bool) bool {

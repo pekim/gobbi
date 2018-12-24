@@ -4,6 +4,7 @@
 package gtk
 
 import (
+	"fmt"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
 	glib "github.com/pekim/gobbi/lib/glib"
@@ -13,6 +14,8 @@ import (
 )
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
+// #cgo CFLAGS: -Wno-format-security
+// #cgo CFLAGS: -Wno-incompatible-pointer-types
 // #include <gtk/gtk-a11y.h>
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
@@ -115,6 +118,12 @@ import (
 		return g_signal_connect(instance, "font-set", G_CALLBACK(fontbutton_fontSetHandler), data);
 	}
 
+*/
+/*
+
+	static GtkMessageDialog* _gtk_message_dialog_new_with_markup(GtkWindow* parent, GtkDialogFlags flags, GtkMessageType type, GtkButtonsType buttons, const gchar* message_format) {
+		return gtk_message_dialog_new_with_markup(parent, flags, type, buttons, message_format);
+    }
 */
 /*
 
@@ -2382,7 +2391,28 @@ func (recv *MenuShell) Cancel() {
 	return
 }
 
-// Unsupported : gtk_message_dialog_new_with_markup : unsupported parameter ... : varargs
+// MessageDialogNewWithMarkup is a wrapper around the C function gtk_message_dialog_new_with_markup.
+func MessageDialogNewWithMarkup(parent *Window, flags DialogFlags, type_ MessageType, buttons ButtonsType, messageFormat string, args ...interface{}) *MessageDialog {
+	c_parent := (*C.GtkWindow)(C.NULL)
+	if parent != nil {
+		c_parent = (*C.GtkWindow)(parent.ToC())
+	}
+
+	c_flags := (C.GtkDialogFlags)(flags)
+
+	c_type := (C.GtkMessageType)(type_)
+
+	c_buttons := (C.GtkButtonsType)(buttons)
+
+	goFormattedString := fmt.Sprintf(messageFormat, args...)
+	c_message_format := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_message_format))
+
+	retC := C._gtk_message_dialog_new_with_markup(c_parent, c_flags, c_type, c_buttons, c_message_format)
+	retGo := MessageDialogNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // SetMarkup is a wrapper around the C function gtk_message_dialog_set_markup.
 func (recv *MessageDialog) SetMarkup(str string) {

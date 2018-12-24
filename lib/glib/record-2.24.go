@@ -3,20 +3,52 @@
 
 package glib
 
-import "unsafe"
+import (
+	"fmt"
+	"unsafe"
+)
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
+// #cgo CFLAGS: -Wno-format-security
+// #cgo CFLAGS: -Wno-incompatible-pointer-types
 // #include <glib.h>
 // #include <glib/gstdio.h>
 // #include <glib-unix.h>
 // #include <stdlib.h>
+/*
+
+	static void _g_variant_builder_add(GVariantBuilder* builder, const gchar* format_string) {
+		return g_variant_builder_add(builder, format_string);
+    }
+*/
+/*
+
+	static gboolean _g_variant_iter_loop(GVariantIter* iter, const gchar* format_string) {
+		return g_variant_iter_loop(iter, format_string);
+    }
+*/
+/*
+
+	static gboolean _g_variant_iter_next(GVariantIter* iter, const gchar* format_string) {
+		return g_variant_iter_next(iter, format_string);
+    }
+*/
 import "C"
 
 // Blacklisted : GVariant
 
 // Unsupported : g_variant_builder_new : unsupported parameter type : Blacklisted record : GVariantType
 
-// Unsupported : g_variant_builder_add : unsupported parameter ... : varargs
+// Add is a wrapper around the C function g_variant_builder_add.
+func (recv *VariantBuilder) Add(formatString string, args ...interface{}) {
+	goFormattedString := fmt.Sprintf(formatString, args...)
+	c_format_string := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_format_string))
+
+	C._g_variant_builder_add((*C.GVariantBuilder)(recv.native), c_format_string)
+
+	return
+}
 
 // Unsupported : g_variant_builder_add_value : unsupported parameter value : Blacklisted record : GVariant
 
@@ -72,7 +104,17 @@ func (recv *VariantIter) Free() {
 
 // Unsupported : g_variant_iter_init : unsupported parameter value : Blacklisted record : GVariant
 
-// Unsupported : g_variant_iter_loop : unsupported parameter ... : varargs
+// Loop is a wrapper around the C function g_variant_iter_loop.
+func (recv *VariantIter) Loop(formatString string, args ...interface{}) bool {
+	goFormattedString := fmt.Sprintf(formatString, args...)
+	c_format_string := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_format_string))
+
+	retC := C._g_variant_iter_loop((*C.GVariantIter)(recv.native), c_format_string)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
 
 // NChildren is a wrapper around the C function g_variant_iter_n_children.
 func (recv *VariantIter) NChildren() uint64 {
@@ -82,6 +124,16 @@ func (recv *VariantIter) NChildren() uint64 {
 	return retGo
 }
 
-// Unsupported : g_variant_iter_next : unsupported parameter ... : varargs
+// Next is a wrapper around the C function g_variant_iter_next.
+func (recv *VariantIter) Next(formatString string, args ...interface{}) bool {
+	goFormattedString := fmt.Sprintf(formatString, args...)
+	c_format_string := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_format_string))
+
+	retC := C._g_variant_iter_next((*C.GVariantIter)(recv.native), c_format_string)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
 
 // Unsupported : g_variant_iter_next_value : return type : Blacklisted record : GVariant

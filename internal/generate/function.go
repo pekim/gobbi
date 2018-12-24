@@ -120,6 +120,10 @@ func (f *Function) generate(g *jen.Group, version *Version) {
 		return
 	}
 
+	if f.Parameters.hasFormatArgs() {
+		f.generateFormatArgsCWrapper()
+	}
+
 	g.Commentf("%s is a wrapper around the C function %s.", f.GoName, f.CIdentifier)
 
 	g.
@@ -130,6 +134,47 @@ func (f *Function) generate(g *jen.Group, version *Version) {
 		ParamsFunc(f.generateReturnDeclaration).              // returns
 		BlockFunc(f.generateBody).                            // body
 		Line()
+}
+
+func (f *Function) generateFormatArgsCWrapper() {
+	paramsDeclaration := ""
+	params := ""
+
+	if f.InstanceParameter != nil {
+		paramsDeclaration += fmt.Sprintf("%s %s", f.InstanceParameter.Type.CType, f.InstanceParameter.Name)
+		params += f.InstanceParameter.Name
+
+		if len(f.Parameters) > 0 {
+			paramsDeclaration += ", "
+			params += ", "
+		}
+	}
+
+	for p, param := range f.Parameters {
+		if param.formatArgs {
+			continue
+		}
+
+		paramsDeclaration += fmt.Sprintf("%s %s", param.Type.CType, param.Name)
+		params += param.Name
+
+		if p < len(f.Parameters)-2 {
+			paramsDeclaration += ", "
+			params += ", "
+		}
+	}
+
+	f.Namespace.jenFile.CgoPreamble(
+		fmt.Sprintf(`
+	static %s _%s(%s) {
+		return %s(%s);
+    }
+`,
+			f.ReturnValue.Type.CType,
+			f.CIdentifier,
+			paramsDeclaration,
+			f.CIdentifier,
+			params))
 }
 
 func (f *Function) generateReceiverDeclaration(s *jen.Statement) {
@@ -164,6 +209,11 @@ func (f *Function) generateCParameterVars(g *jen.Group) {
 }
 
 func (f *Function) generateCall(g *jen.Group) *jen.Statement {
+	cIdentifier := f.CIdentifier
+	if f.Parameters.hasFormatArgs() {
+		cIdentifier = "_" + f.CIdentifier
+	}
+
 	return g.
 		Do(func(s *jen.Statement) {
 			if f.ReturnValue.Type.Name != "none" {
@@ -172,7 +222,7 @@ func (f *Function) generateCall(g *jen.Group) *jen.Statement {
 					Op(":=")
 			}
 		}).
-		Qual("C", f.CIdentifier).
+		Qual("C", cIdentifier).
 		CallFunc(func(g *jen.Group) {
 			// Assumption that receiver is always first agumment.
 			// If turns out not to be true, will need to look at

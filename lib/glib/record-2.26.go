@@ -3,13 +3,24 @@
 
 package glib
 
-import "unsafe"
+import (
+	"fmt"
+	"unsafe"
+)
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
+// #cgo CFLAGS: -Wno-format-security
+// #cgo CFLAGS: -Wno-incompatible-pointer-types
 // #include <glib.h>
 // #include <glib/gstdio.h>
 // #include <glib-unix.h>
 // #include <stdlib.h>
+/*
+
+	static void _g_variant_builder_add_parsed(GVariantBuilder* builder, const gchar* format) {
+		return g_variant_builder_add_parsed(builder, format);
+    }
+*/
 import "C"
 
 // DateTime is a wrapper around the C record GDateTime.
@@ -787,4 +798,13 @@ func (recv *TimeZone) Unref() {
 	return
 }
 
-// Unsupported : g_variant_builder_add_parsed : unsupported parameter ... : varargs
+// AddParsed is a wrapper around the C function g_variant_builder_add_parsed.
+func (recv *VariantBuilder) AddParsed(format string, args ...interface{}) {
+	goFormattedString := fmt.Sprintf(format, args...)
+	c_format := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_format))
+
+	C._g_variant_builder_add_parsed((*C.GVariantBuilder)(recv.native), c_format)
+
+	return
+}

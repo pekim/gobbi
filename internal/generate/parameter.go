@@ -23,6 +23,9 @@ type Parameter struct {
 	cVarName        string
 	arrayLengthFor  *Parameter
 	stringLengthFor *Parameter
+
+	formatString bool
+	formatArgs   bool
 }
 
 func (p *Parameter) init(ns *Namespace) {
@@ -40,6 +43,10 @@ func (p *Parameter) init(ns *Namespace) {
 }
 
 func (p *Parameter) isSupported() (bool, string) {
+	if p.formatString || p.formatArgs {
+		return true, ""
+	}
+
 	if p.Varargs != nil {
 		return false, "varargs"
 	}
@@ -120,6 +127,15 @@ func (p *Parameter) generateFunctionDeclaration(g *jen.Group) {
 		return
 	}
 
+	if p.Varargs != nil {
+		g.
+			Id("args").
+			Op("...").
+			Interface()
+
+		return
+	}
+
 	if p.Array != nil {
 		p.Array.generateDeclaration(g, p.goVarName)
 	} else {
@@ -148,11 +164,28 @@ func (p *Parameter) generateCVar(g *jen.Group) {
 		p.Array.generateArrayLenParamCVar(g, p.cVarName, p.arrayLengthFor.goVarName, p.Type.CType)
 	} else if p.stringLengthFor != nil {
 		p.generateCVarForStringLength(g)
+	} else if p.formatArgs {
+		// Already handled with the paired formatString argument.
+	} else if p.formatString {
+		p.generateFormattedStringCVar(g)
+		p.Type.generator.generateParamCVar(g, p.cVarName, "goFormattedString", p.TransferOwnership)
 	} else {
 		p.Type.generator.generateParamCVar(g, p.cVarName, p.goVarName, p.TransferOwnership)
 	}
 
 	g.Line()
+}
+
+func (p *Parameter) generateFormattedStringCVar(g *jen.Group) {
+	// 	goFormattedString := fmt.Sprintf(format, a...)
+
+	g.
+		Id("goFormattedString").
+		Op(":=").
+		Qual("fmt", "Sprintf").
+		Call(
+			jen.Id(p.goVarName),
+			jen.Id("args").Op("..."))
 }
 
 func (p *Parameter) generateCVarForStringLength(g *jen.Group) {
@@ -183,6 +216,8 @@ func (p *Parameter) generateCallArgument(g *jen.Group) {
 	} else {
 		if p.Array != nil {
 			p.Array.generateParamCallArgument(g, p.cVarName)
+		} else if p.formatArgs {
+			// Already formatted in to paired formatString argument.
 		} else {
 			p.Type.generator.generateParamCallArgument(g, p.cVarName)
 		}

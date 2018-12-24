@@ -73,6 +73,10 @@ func (ns *Namespace) cgoPreambleHeaders(file *jen.File) {
 	 */
 	file.CgoPreamble("#cgo CFLAGS: -Wno-deprecated-declarations")
 
+	// Suppress C compiler warnings from format function wrappers.
+	file.CgoPreamble("#cgo CFLAGS: -Wno-format-security")
+	file.CgoPreamble("#cgo CFLAGS: -Wno-incompatible-pointer-types")
+
 	ns.repo.CIncludes.generate(file)
 
 	file.CgoPreamble("#include <stdlib.h>")

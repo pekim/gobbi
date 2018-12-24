@@ -3,13 +3,30 @@
 
 package glib
 
-import "unsafe"
+import (
+	"fmt"
+	"unsafe"
+)
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
+// #cgo CFLAGS: -Wno-format-security
+// #cgo CFLAGS: -Wno-incompatible-pointer-types
 // #include <glib.h>
 // #include <glib/gstdio.h>
 // #include <glib-unix.h>
 // #include <stdlib.h>
+/*
+
+	static gint _g_printf(const gchar* format) {
+		return g_printf(format);
+    }
+*/
+/*
+
+	static gint _g_sprintf(gchar* string, const gchar* format) {
+		return g_sprintf(string, format);
+    }
+*/
 import "C"
 
 // AsciiStrtoull is a wrapper around the C function g_ascii_strtoull.
@@ -39,7 +56,17 @@ func GetApplicationName() string {
 	return retGo
 }
 
-// Unsupported : g_printf : unsupported parameter ... : varargs
+// Printf is a wrapper around the C function g_printf.
+func Printf(format string, args ...interface{}) int32 {
+	goFormattedString := fmt.Sprintf(format, args...)
+	c_format := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_format))
+
+	retC := C._g_printf(c_format)
+	retGo := (int32)(retC)
+
+	return retGo
+}
 
 // SetApplicationName is a wrapper around the C function g_set_application_name.
 func SetApplicationName(applicationName string) {
@@ -51,7 +78,20 @@ func SetApplicationName(applicationName string) {
 	return
 }
 
-// Unsupported : g_sprintf : unsupported parameter ... : varargs
+// Sprintf is a wrapper around the C function g_sprintf.
+func Sprintf(string string, format string, args ...interface{}) int32 {
+	c_string := C.CString(string)
+	defer C.free(unsafe.Pointer(c_string))
+
+	goFormattedString := fmt.Sprintf(format, args...)
+	c_format := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_format))
+
+	retC := C._g_sprintf(c_string, c_format)
+	retGo := (int32)(retC)
+
+	return retGo
+}
 
 // StrHasPrefix is a wrapper around the C function g_str_has_prefix.
 func StrHasPrefix(str string, prefix string) bool {

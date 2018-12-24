@@ -4,6 +4,7 @@
 package gio
 
 import (
+	"fmt"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"
@@ -12,6 +13,8 @@ import (
 )
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
+// #cgo CFLAGS: -Wno-format-security
+// #cgo CFLAGS: -Wno-incompatible-pointer-types
 // #include <gio/gdesktopappinfo.h>
 // #include <gio/gfiledescriptorbased.h>
 // #include <gio/gio.h>
@@ -24,6 +27,12 @@ import (
 // #include <gio/gunixoutputstream.h>
 // #include <gio/gunixsocketaddress.h>
 // #include <stdlib.h>
+/*
+
+	static gboolean _g_menu_item_get_attribute(GMenuItem* menu_item, const gchar* attribute, const gchar* format_string) {
+		return g_menu_item_get_attribute(menu_item, attribute, format_string);
+    }
+*/
 /*
 
 	void mountoperation_showUnmountProgressHandler(GObject *, gchar*, gint64, gint64, gpointer);
@@ -219,7 +228,20 @@ func MenuItemNewFromModel(model *MenuModel, itemIndex int32) *MenuItem {
 	return retGo
 }
 
-// Unsupported : g_menu_item_get_attribute : unsupported parameter ... : varargs
+// GetAttribute is a wrapper around the C function g_menu_item_get_attribute.
+func (recv *MenuItem) GetAttribute(attribute string, formatString string, args ...interface{}) bool {
+	c_attribute := C.CString(attribute)
+	defer C.free(unsafe.Pointer(c_attribute))
+
+	goFormattedString := fmt.Sprintf(formatString, args...)
+	c_format_string := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_format_string))
+
+	retC := C._g_menu_item_get_attribute((*C.GMenuItem)(recv.native), c_attribute, c_format_string)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
 
 // Unsupported : g_menu_item_get_attribute_value : unsupported parameter expected_type : Blacklisted record : GVariantType
 

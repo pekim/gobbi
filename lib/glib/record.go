@@ -2,13 +2,48 @@
 
 package glib
 
-import "unsafe"
+import (
+	"fmt"
+	"unsafe"
+)
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
+// #cgo CFLAGS: -Wno-format-security
+// #cgo CFLAGS: -Wno-incompatible-pointer-types
 // #include <glib.h>
 // #include <glib/gstdio.h>
 // #include <glib-unix.h>
 // #include <stdlib.h>
+/*
+
+	static GError* _g_error_new(GQuark domain, gint code, const gchar* format) {
+		return g_error_new(domain, code, format);
+    }
+*/
+/*
+
+	static void _g_scanner_error(GScanner* scanner, const gchar* format) {
+		return g_scanner_error(scanner, format);
+    }
+*/
+/*
+
+	static void _g_scanner_warn(GScanner* scanner, const gchar* format) {
+		return g_scanner_warn(scanner, format);
+    }
+*/
+/*
+
+	static void _g_string_append_printf(GString* string, const gchar* format) {
+		return g_string_append_printf(string, format);
+    }
+*/
+/*
+
+	static void _g_string_printf(GString* string, const gchar* format) {
+		return g_string_printf(string, format);
+    }
+*/
 import "C"
 
 // Array is a wrapper around the C record GArray.
@@ -987,7 +1022,21 @@ func (recv *Error) Equals(other *Error) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// Unsupported : g_error_new : unsupported parameter ... : varargs
+// ErrorNew is a wrapper around the C function g_error_new.
+func ErrorNew(domain Quark, code int32, format string, args ...interface{}) *Error {
+	c_domain := (C.GQuark)(domain)
+
+	c_code := (C.gint)(code)
+
+	goFormattedString := fmt.Sprintf(format, args...)
+	c_format := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_format))
+
+	retC := C._g_error_new(c_domain, c_code, c_format)
+	retGo := ErrorNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // ErrorNewLiteral is a wrapper around the C function g_error_new_literal.
 func ErrorNewLiteral(domain Quark, code int32, message string) *Error {
@@ -3811,7 +3860,16 @@ func (recv *Scanner) Eof() bool {
 	return retGo
 }
 
-// Unsupported : g_scanner_error : unsupported parameter ... : varargs
+// Error is a wrapper around the C function g_scanner_error.
+func (recv *Scanner) Error(format string, args ...interface{}) {
+	goFormattedString := fmt.Sprintf(format, args...)
+	c_format := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_format))
+
+	C._g_scanner_error((*C.GScanner)(recv.native), c_format)
+
+	return
+}
 
 // GetNextToken is a wrapper around the C function g_scanner_get_next_token.
 func (recv *Scanner) GetNextToken() TokenType {
@@ -3942,7 +4000,16 @@ func (recv *Scanner) UnexpToken(expectedToken TokenType, identifierSpec string, 
 	return
 }
 
-// Unsupported : g_scanner_warn : unsupported parameter ... : varargs
+// Warn is a wrapper around the C function g_scanner_warn.
+func (recv *Scanner) Warn(format string, args ...interface{}) {
+	goFormattedString := fmt.Sprintf(format, args...)
+	c_format := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_format))
+
+	C._g_scanner_warn((*C.GScanner)(recv.native), c_format)
+
+	return
+}
 
 // ScannerConfig is a wrapper around the C record GScannerConfig.
 type ScannerConfig struct {
@@ -4490,7 +4557,16 @@ func (recv *String) AppendLen(val string, len int64) *String {
 	return retGo
 }
 
-// Unsupported : g_string_append_printf : unsupported parameter ... : varargs
+// AppendPrintf is a wrapper around the C function g_string_append_printf.
+func (recv *String) AppendPrintf(format string, args ...interface{}) {
+	goFormattedString := fmt.Sprintf(format, args...)
+	c_format := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_format))
+
+	C._g_string_append_printf((*C.GString)(recv.native), c_format)
+
+	return
+}
 
 // AppendUnichar is a wrapper around the C function g_string_append_unichar.
 func (recv *String) AppendUnichar(wc rune) *String {
@@ -4678,7 +4754,16 @@ func (recv *String) PrependUnichar(wc rune) *String {
 	return retGo
 }
 
-// Unsupported : g_string_printf : unsupported parameter ... : varargs
+// Printf is a wrapper around the C function g_string_printf.
+func (recv *String) Printf(format string, args ...interface{}) {
+	goFormattedString := fmt.Sprintf(format, args...)
+	c_format := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_format))
+
+	C._g_string_printf((*C.GString)(recv.native), c_format)
+
+	return
+}
 
 // SetSize is a wrapper around the C function g_string_set_size.
 func (recv *String) SetSize(len uint64) *String {

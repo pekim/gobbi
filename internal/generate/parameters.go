@@ -2,6 +2,7 @@ package generate
 
 import (
 	"fmt"
+	"strings"
 
 	"github.com/dave/jennifer/jen"
 )
@@ -11,6 +12,7 @@ type Parameters []*Parameter
 func (pp Parameters) init(ns *Namespace) {
 	pp.fixupArgcArgv()
 	pp.fixupStringLengthParams()
+	pp.fixupFormatArgs()
 
 	for _, param := range pp {
 		param.init(ns)
@@ -83,6 +85,42 @@ func (pp Parameters) replaceArgcArgv(index int) {
 	p2.Type = &Type{
 		Name: "ignore",
 	}
+}
+
+func (pp Parameters) hasFormatArgs() bool {
+	if len(pp) < 2 {
+		return false
+	}
+
+	paramFormatString := pp[len(pp)-2]
+	paramArgs := pp[len(pp)-1]
+
+	if !strings.HasPrefix(paramFormatString.Name, "format") &&
+		!strings.HasSuffix(paramFormatString.Name, "format") {
+		return false
+	}
+
+	if paramFormatString.Type == nil || paramFormatString.Type.Name != "utf8" {
+		return false
+	}
+
+	if paramArgs.Varargs == nil {
+		return false
+	}
+
+	return true
+}
+
+func (pp Parameters) fixupFormatArgs() {
+	if !pp.hasFormatArgs() {
+		return
+	}
+
+	paramFormatString := pp[len(pp)-2]
+	paramArgs := pp[len(pp)-1]
+
+	paramFormatString.formatString = true
+	paramArgs.formatArgs = true
 }
 
 func (pp Parameters) generateFunctionDeclaration(g *jen.Group) {

@@ -4,12 +4,15 @@
 package gio
 
 import (
+	"fmt"
 	glib "github.com/pekim/gobbi/lib/glib"
 	"sync"
 	"unsafe"
 )
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
+// #cgo CFLAGS: -Wno-format-security
+// #cgo CFLAGS: -Wno-incompatible-pointer-types
 // #include <gio/gdesktopappinfo.h>
 // #include <gio/gfiledescriptorbased.h>
 // #include <gio/gio.h>
@@ -30,6 +33,12 @@ import (
 		return g_signal_connect(instance, "launch-failed", G_CALLBACK(applaunchcontext_launchFailedHandler), data);
 	}
 
+*/
+/*
+
+	static void _g_task_return_new_error(GTask* task, GQuark domain, gint code, const char* format) {
+		return g_task_return_new_error(task, domain, code, format);
+    }
 */
 import "C"
 
@@ -453,7 +462,20 @@ func (recv *Task) ReturnInt(result int64) {
 	return
 }
 
-// Unsupported : g_task_return_new_error : unsupported parameter ... : varargs
+// ReturnNewError is a wrapper around the C function g_task_return_new_error.
+func (recv *Task) ReturnNewError(domain glib.Quark, code int32, format string, args ...interface{}) {
+	c_domain := (C.GQuark)(domain)
+
+	c_code := (C.gint)(code)
+
+	goFormattedString := fmt.Sprintf(format, args...)
+	c_format := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_format))
+
+	C._g_task_return_new_error((*C.GTask)(recv.native), c_domain, c_code, c_format)
+
+	return
+}
 
 // Unsupported : g_task_return_pointer : unsupported parameter result_destroy : no type generator for GLib.DestroyNotify (GDestroyNotify) for param result_destroy
 

@@ -4,6 +4,7 @@
 package gio
 
 import (
+	"fmt"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"
@@ -12,6 +13,8 @@ import (
 )
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
+// #cgo CFLAGS: -Wno-format-security
+// #cgo CFLAGS: -Wno-incompatible-pointer-types
 // #include <gio/gdesktopappinfo.h>
 // #include <gio/gfiledescriptorbased.h>
 // #include <gio/gio.h>
@@ -68,6 +71,18 @@ import (
 		return g_signal_connect(instance, "startup", G_CALLBACK(application_startupHandler), data);
 	}
 
+*/
+/*
+
+	static void _g_application_command_line_print(GApplicationCommandLine* cmdline, const gchar* format) {
+		return g_application_command_line_print(cmdline, format);
+    }
+*/
+/*
+
+	static void _g_application_command_line_printerr(GApplicationCommandLine* cmdline, const gchar* format) {
+		return g_application_command_line_printerr(cmdline, format);
+    }
 */
 import "C"
 
@@ -625,9 +640,27 @@ func (recv *ApplicationCommandLine) Getenv(name string) string {
 	return retGo
 }
 
-// Unsupported : g_application_command_line_print : unsupported parameter ... : varargs
+// Print is a wrapper around the C function g_application_command_line_print.
+func (recv *ApplicationCommandLine) Print(format string, args ...interface{}) {
+	goFormattedString := fmt.Sprintf(format, args...)
+	c_format := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_format))
 
-// Unsupported : g_application_command_line_printerr : unsupported parameter ... : varargs
+	C._g_application_command_line_print((*C.GApplicationCommandLine)(recv.native), c_format)
+
+	return
+}
+
+// Printerr is a wrapper around the C function g_application_command_line_printerr.
+func (recv *ApplicationCommandLine) Printerr(format string, args ...interface{}) {
+	goFormattedString := fmt.Sprintf(format, args...)
+	c_format := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_format))
+
+	C._g_application_command_line_printerr((*C.GApplicationCommandLine)(recv.native), c_format)
+
+	return
+}
 
 // SetExitStatus is a wrapper around the C function g_application_command_line_set_exit_status.
 func (recv *ApplicationCommandLine) SetExitStatus(exitStatus int32) {

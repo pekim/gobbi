@@ -4,6 +4,7 @@
 package gtk
 
 import (
+	"fmt"
 	atk "github.com/pekim/gobbi/lib/atk"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gdkpixbuf "github.com/pekim/gobbi/lib/gdkpixbuf"
@@ -14,6 +15,8 @@ import (
 )
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
+// #cgo CFLAGS: -Wno-format-security
+// #cgo CFLAGS: -Wno-incompatible-pointer-types
 // #include <gtk/gtk-a11y.h>
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
@@ -44,6 +47,18 @@ import (
 		return g_signal_connect(instance, "insert-prefix", G_CALLBACK(entrycompletion_insertPrefixHandler), data);
 	}
 
+*/
+/*
+
+	static void _gtk_message_dialog_format_secondary_markup(GtkMessageDialog* message_dialog, const gchar* message_format) {
+		return gtk_message_dialog_format_secondary_markup(message_dialog, message_format);
+    }
+*/
+/*
+
+	static void _gtk_message_dialog_format_secondary_text(GtkMessageDialog* message_dialog, const gchar* message_format) {
+		return gtk_message_dialog_format_secondary_text(message_dialog, message_format);
+    }
 */
 import "C"
 
@@ -1391,9 +1406,27 @@ func (recv *MenuToolButton) SetMenu(menu *Widget) {
 	return
 }
 
-// Unsupported : gtk_message_dialog_format_secondary_markup : unsupported parameter ... : varargs
+// FormatSecondaryMarkup is a wrapper around the C function gtk_message_dialog_format_secondary_markup.
+func (recv *MessageDialog) FormatSecondaryMarkup(messageFormat string, args ...interface{}) {
+	goFormattedString := fmt.Sprintf(messageFormat, args...)
+	c_message_format := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_message_format))
 
-// Unsupported : gtk_message_dialog_format_secondary_text : unsupported parameter ... : varargs
+	C._gtk_message_dialog_format_secondary_markup((*C.GtkMessageDialog)(recv.native), c_message_format)
+
+	return
+}
+
+// FormatSecondaryText is a wrapper around the C function gtk_message_dialog_format_secondary_text.
+func (recv *MessageDialog) FormatSecondaryText(messageFormat string, args ...interface{}) {
+	goFormattedString := fmt.Sprintf(messageFormat, args...)
+	c_message_format := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_message_format))
+
+	C._gtk_message_dialog_format_secondary_text((*C.GtkMessageDialog)(recv.native), c_message_format)
+
+	return
+}
 
 // GetEllipsize is a wrapper around the C function gtk_progress_bar_get_ellipsize.
 func (recv *ProgressBar) GetEllipsize() pango.EllipsizeMode {

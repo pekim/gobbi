@@ -69,3 +69,8 @@ func TestRecordReceivers(t *testing.T) {
 	assert.Equal(t, glib.DateYear(1962), date.GetYear())
 	assert.Equal(t, uint32(153), date.GetDayOfYear())
 }
+
+func TestFormatStringFunction(t *testing.T) {
+	formattedLength := glib.Printf("%d %s", 42, "qaz")
+	assert.Equal(t, int32(6), formattedLength)
+}

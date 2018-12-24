@@ -4,16 +4,25 @@
 package gtk
 
 import (
+	"fmt"
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	"sync"
 	"unsafe"
 )
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
+// #cgo CFLAGS: -Wno-format-security
+// #cgo CFLAGS: -Wno-incompatible-pointer-types
 // #include <gtk/gtk-a11y.h>
 // #include <gtk/gtk.h>
 // #include <gtk/gtkx.h>
 // #include <stdlib.h>
+/*
+
+	static void _gtk_actionable_set_action_target(GtkActionable* actionable, const gchar* format_string) {
+		return gtk_actionable_set_action_target(actionable, format_string);
+    }
+*/
 /*
 
 	void colorchooser_colorActivatedHandler(GObject *, GdkRGBA *, gpointer);
@@ -45,7 +54,16 @@ func (recv *Actionable) SetActionName(actionName string) {
 	return
 }
 
-// Unsupported : gtk_actionable_set_action_target : unsupported parameter ... : varargs
+// SetActionTarget is a wrapper around the C function gtk_actionable_set_action_target.
+func (recv *Actionable) SetActionTarget(formatString string, args ...interface{}) {
+	goFormattedString := fmt.Sprintf(formatString, args...)
+	c_format_string := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_format_string))
+
+	C._gtk_actionable_set_action_target((*C.GtkActionable)(recv.native), c_format_string)
+
+	return
+}
 
 // Unsupported : gtk_actionable_set_action_target_value : unsupported parameter target_value : Blacklisted record : GVariant
 

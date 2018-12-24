@@ -3,6 +3,7 @@
 package gio
 
 import (
+	"fmt"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"
@@ -11,6 +12,8 @@ import (
 )
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
+// #cgo CFLAGS: -Wno-format-security
+// #cgo CFLAGS: -Wno-incompatible-pointer-types
 // #include <gio/gdesktopappinfo.h>
 // #include <gio/gfiledescriptorbased.h>
 // #include <gio/gio.h>
@@ -76,6 +79,12 @@ import (
 		return g_signal_connect(instance, "writable-changed", G_CALLBACK(settings_writableChangedHandler), data);
 	}
 
+*/
+/*
+
+	static void _g_simple_async_result_set_error(GSimpleAsyncResult* simple, GQuark domain, gint code, const char* format) {
+		return g_simple_async_result_set_error(simple, domain, code, format);
+    }
 */
 /*
 
@@ -5747,7 +5756,20 @@ func (recv *SimpleAsyncResult) PropagateError() (bool, error) {
 
 // Unsupported : g_simple_async_result_run_in_thread : unsupported parameter func : no type generator for SimpleAsyncThreadFunc (GSimpleAsyncThreadFunc) for param func
 
-// Unsupported : g_simple_async_result_set_error : unsupported parameter ... : varargs
+// SetError is a wrapper around the C function g_simple_async_result_set_error.
+func (recv *SimpleAsyncResult) SetError(domain glib.Quark, code int32, format string, args ...interface{}) {
+	c_domain := (C.GQuark)(domain)
+
+	c_code := (C.gint)(code)
+
+	goFormattedString := fmt.Sprintf(format, args...)
+	c_format := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_format))
+
+	C._g_simple_async_result_set_error((*C.GSimpleAsyncResult)(recv.native), c_domain, c_code, c_format)
+
+	return
+}
 
 // Unsupported : g_simple_async_result_set_error_va : unsupported parameter args : no type generator for va_list (va_list) for param args
 

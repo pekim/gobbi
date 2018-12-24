@@ -4,6 +4,7 @@
 package gio
 
 import (
+	"fmt"
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"
@@ -12,6 +13,8 @@ import (
 )
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
+// #cgo CFLAGS: -Wno-format-security
+// #cgo CFLAGS: -Wno-incompatible-pointer-types
 // #include <gio/gdesktopappinfo.h>
 // #include <gio/gfiledescriptorbased.h>
 // #include <gio/gio.h>
@@ -32,6 +35,24 @@ import (
 		return g_signal_connect(instance, "changed", G_CALLBACK(appinfomonitor_changedHandler), data);
 	}
 
+*/
+/*
+
+	static void _g_notification_add_button_with_target(GNotification* notification, const gchar* label, const gchar* action, const gchar* target_format) {
+		return g_notification_add_button_with_target(notification, label, action, target_format);
+    }
+*/
+/*
+
+	static void _g_notification_set_default_action_and_target(GNotification* notification, const gchar* action, const gchar* target_format) {
+		return g_notification_set_default_action_and_target(notification, action, target_format);
+    }
+*/
+/*
+
+	static gboolean _g_output_stream_printf(GOutputStream* stream, gsize* bytes_written, GCancellable* cancellable, GError** error, const gchar* format) {
+		return g_output_stream_printf(stream, bytes_written, cancellable, error, format);
+    }
 */
 import "C"
 
@@ -289,7 +310,22 @@ func (recv *Notification) AddButton(label string, detailedAction string) {
 	return
 }
 
-// Unsupported : g_notification_add_button_with_target : unsupported parameter ... : varargs
+// AddButtonWithTarget is a wrapper around the C function g_notification_add_button_with_target.
+func (recv *Notification) AddButtonWithTarget(label string, action string, targetFormat string, args ...interface{}) {
+	c_label := C.CString(label)
+	defer C.free(unsafe.Pointer(c_label))
+
+	c_action := C.CString(action)
+	defer C.free(unsafe.Pointer(c_action))
+
+	goFormattedString := fmt.Sprintf(targetFormat, args...)
+	c_target_format := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_target_format))
+
+	C._g_notification_add_button_with_target((*C.GNotification)(recv.native), c_label, c_action, c_target_format)
+
+	return
+}
 
 // Unsupported : g_notification_add_button_with_target_value : unsupported parameter target : Blacklisted record : GVariant
 
@@ -313,7 +349,19 @@ func (recv *Notification) SetDefaultAction(detailedAction string) {
 	return
 }
 
-// Unsupported : g_notification_set_default_action_and_target : unsupported parameter ... : varargs
+// SetDefaultActionAndTarget is a wrapper around the C function g_notification_set_default_action_and_target.
+func (recv *Notification) SetDefaultActionAndTarget(action string, targetFormat string, args ...interface{}) {
+	c_action := C.CString(action)
+	defer C.free(unsafe.Pointer(c_action))
+
+	goFormattedString := fmt.Sprintf(targetFormat, args...)
+	c_target_format := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_target_format))
+
+	C._g_notification_set_default_action_and_target((*C.GNotification)(recv.native), c_action, c_target_format)
+
+	return
+}
 
 // Unsupported : g_notification_set_default_action_and_target_value : unsupported parameter target : Blacklisted record : GVariant
 
@@ -355,7 +403,31 @@ func (recv *Notification) SetUrgent(urgent bool) {
 	return
 }
 
-// Unsupported : g_output_stream_printf : unsupported parameter ... : varargs
+// Printf is a wrapper around the C function g_output_stream_printf.
+func (recv *OutputStream) Printf(cancellable *Cancellable, error *glib.Error, format string, args ...interface{}) (bool, uint64) {
+	var c_bytes_written C.gsize
+
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
+
+	c_error := (**C.GError)(C.NULL)
+	if error != nil {
+		c_error = (**C.GError)(error.ToC())
+	}
+
+	goFormattedString := fmt.Sprintf(format, args...)
+	c_format := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_format))
+
+	retC := C._g_output_stream_printf((*C.GOutputStream)(recv.native), &c_bytes_written, c_cancellable, c_error, c_format)
+	retGo := retC == C.TRUE
+
+	bytesWritten := (uint64)(c_bytes_written)
+
+	return retGo, bytesWritten
+}
 
 // Unsupported : g_output_stream_vprintf : unsupported parameter args : no type generator for va_list (va_list) for param args
 

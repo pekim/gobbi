@@ -4,11 +4,14 @@
 package gio
 
 import (
+	"fmt"
 	glib "github.com/pekim/gobbi/lib/glib"
 	"unsafe"
 )
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
+// #cgo CFLAGS: -Wno-format-security
+// #cgo CFLAGS: -Wno-incompatible-pointer-types
 // #include <gio/gdesktopappinfo.h>
 // #include <gio/gfiledescriptorbased.h>
 // #include <gio/gio.h>
@@ -21,6 +24,12 @@ import (
 // #include <gio/gunixoutputstream.h>
 // #include <gio/gunixsocketaddress.h>
 // #include <stdlib.h>
+/*
+
+	static void _g_dbus_error_set_dbus_error(GError** error, const gchar* dbus_error_name, const gchar* dbus_error_message, const gchar* format) {
+		return g_dbus_error_set_dbus_error(error, dbus_error_name, dbus_error_message, format);
+    }
+*/
 import "C"
 
 type BusType C.GBusType
@@ -164,7 +173,28 @@ func DBusErrorRegisterError(errorDomain glib.Quark, errorCode int32, dbusErrorNa
 }
 
 // g_dbus_error_register_error_domain : unsupported parameter entries :
-// g_dbus_error_set_dbus_error : unsupported parameter ... : varargs
+// DBusErrorSetDbusError is a wrapper around the C function g_dbus_error_set_dbus_error.
+func DBusErrorSetDbusError(error *glib.Error, dbusErrorName string, dbusErrorMessage string, format string, args ...interface{}) {
+	c_error := (**C.GError)(C.NULL)
+	if error != nil {
+		c_error = (**C.GError)(error.ToC())
+	}
+
+	c_dbus_error_name := C.CString(dbusErrorName)
+	defer C.free(unsafe.Pointer(c_dbus_error_name))
+
+	c_dbus_error_message := C.CString(dbusErrorMessage)
+	defer C.free(unsafe.Pointer(c_dbus_error_message))
+
+	goFormattedString := fmt.Sprintf(format, args...)
+	c_format := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_format))
+
+	C._g_dbus_error_set_dbus_error(c_error, c_dbus_error_name, c_dbus_error_message, c_format)
+
+	return
+}
+
 // g_dbus_error_set_dbus_error_valist : unsupported parameter var_args : no type generator for va_list (va_list) for param var_args
 // DBusErrorStripRemoteError is a wrapper around the C function g_dbus_error_strip_remote_error.
 func DBusErrorStripRemoteError(error *glib.Error) bool {
