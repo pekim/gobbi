@@ -63,6 +63,13 @@
 	"content": "Some C library variadic functions accept trailing arguments that include a printf style format string followed by arguments to insert in to the format string. gtk_message_dialog_new is an example of such a function.\nThe equivalent functions in gobbi accept fmt package compatible arguments. This is because fmt.Sprint is used to format a string before passing it as the last argument to the wrapped C function.\nA much simplified representation of such a function might help to make this clearer.\nfunc SomeRepresentativeFunction( a string, b int, format string, args ...interface{}, ) { c_a := C.String(a) c_b := C.int(b) formattedString := fmt.Sprintf(format, args...) c_formattedString := C.String(formattedString) C.some_representative_function(c_a, c_b, c_formattedString) }"
 },
 {
+	"uri": "https://pekim.github.io/gobbi/reference-counting/",
+	"title": "Reference counting",
+	"tags": [],
+	"description": "",
+	"content": " The gobject library implements Object memory management, including reference counting, for GObject derived classes. When gobbi creates such an object and a Go object referencing it, it will increment the reference count on the object. When the Go object is finalized, gobbi will decrement the GObject\u0026rsquo;s reference count.\nThe behaviour is slightly different between objects that are initially owned and those that are initially unowned. In both cases gobbi attempts to do the right thing with regard to reference counting.\nCopying gobbi objects Unless there is a compelling reason, gobbi created objects should not be copied or cloned directly by applications, as this would result in references to GObjects without the necessary reference count.\nIf a copy of a gobbi Object derived class is required, it can be achieved as a side effect of a suitable cast like this. As the new object is gobbi managed is will be reference counted correctly.\nlabel1 := gtk.LabelNew(\u0026#34;some text\u0026#34;) label2 := gtk.CastToLabel(label1.Object()) However in most cases even that will not be required, and passing around the pointer to the gobbi object will be sufficient for an application.\n"
+},
+{
 	"uri": "https://pekim.github.io/gobbi/api/",
 	"title": "API Docs",
 	"tags": [],
