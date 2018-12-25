@@ -189,7 +189,7 @@ access members of an object&rsquo;s ancestor class.</p>
 this will not work.</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75af00">window</span> <span style="color:#f92672">:=</span> <span style="color:#75af00">gtk</span><span style="color:#111">.</span><span style="color:#75af00">WindowNew</span><span style="color:#111">(</span><span style="color:#75af00">gtk</span><span style="color:#111">.</span><span style="color:#75af00">GTK_WINDOW_TOPLEVEL</span><span style="color:#111">)</span>
 <span style="color:#75af00">label</span> <span style="color:#f92672">:=</span> <span style="color:#75af00">gtk</span><span style="color:#111">.</span><span style="color:#75af00">LabelNew</span><span style="color:#111">(</span><span style="color:#d88200">&#34;a label&#34;</span><span style="color:#111">)</span>
-<span style="color:#75af00">window</span><span style="color:#111">.</span><span style="color:#75af00">Add</span><span style="color:#111">(</span><span style="color:#75af00">label</span><span style="color:#111">)</span></code></pre></div>
+<span style="color:#75af00">window</span><span style="color:#111">.</span><span style="color:#75af00">Add</span><span style="color:#111">(</span><span style="color:#75af00">label</span><span style="color:#111">)</span>   <span style="color:#f92672">//</span> <span style="color:#f92672">&lt;--</span> <span style="color:#75af00">ERROR</span></code></pre></div>
 <p><code>gtk.Window</code> does not directly have a <code>Add</code> method.
 The <code>Add</code> method is a member of <code>gtk.Container</code>,
 which is an ancestor of <code>gtk.Window</code>.</p>
@@ -198,10 +198,18 @@ which is an ancestor of <code>gtk.Window</code>.</p>
 the <code>Container()</code> method.</p>
 
 <p>And as the <code>Add</code> method expects a <code>gtk.Widget</code>,
-the <code>gtk.Label</code>&rsquo;s <code>Widget</code> method is called.</p>
+the <code>gtk.Label</code>&rsquo;s <code>Widget</code> method is called
+to cast to a <code>gtk.Widget</code>.</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75af00">window</span> <span style="color:#f92672">:=</span> <span style="color:#75af00">gtk</span><span style="color:#111">.</span><span style="color:#75af00">WindowNew</span><span style="color:#111">(</span><span style="color:#75af00">gtk</span><span style="color:#111">.</span><span style="color:#75af00">GTK_WINDOW_TOPLEVEL</span><span style="color:#111">)</span>
 <span style="color:#75af00">label</span> <span style="color:#f92672">:=</span> <span style="color:#75af00">gtk</span><span style="color:#111">.</span><span style="color:#75af00">LabelNew</span><span style="color:#111">(</span><span style="color:#d88200">&#34;a label&#34;</span><span style="color:#111">)</span>
 <span style="color:#75af00">window</span><span style="color:#111">.</span><span style="color:#75af00">Container</span><span style="color:#111">().</span><span style="color:#75af00">Add</span><span style="color:#111">(</span><span style="color:#75af00">label</span><span style="color:#111">.</span><span style="color:#75af00">Widget</span><span style="color:#111">())</span></code></pre></div>
+<p>All derived classes have receiver functions for directly
+casting to all ancestor types.</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75715e">// This will work, but is unnecessary.
+</span><span style="color:#75715e"></span><span style="color:#75af00">widget1</span> <span style="color:#f92672">:=</span> <span style="color:#75af00">gtk</span><span style="color:#111">.</span><span style="color:#75af00">WindowNew</span><span style="color:#111">().</span><span style="color:#75af00">Bin</span><span style="color:#111">().</span><span style="color:#75af00">Container</span><span style="color:#111">().</span><span style="color:#75af00">Widget</span><span style="color:#111">()</span>
+
+<span style="color:#75715e">// This will achieve the same end result.
+</span><span style="color:#75715e"></span><span style="color:#75af00">widget2</span> <span style="color:#f92672">:=</span> <span style="color:#75af00">gtk</span><span style="color:#111">.</span><span style="color:#75af00">WindowNew</span><span style="color:#111">().</span><span style="color:#75af00">Widget</span><span style="color:#111">()</span></code></pre></div>
 <h1 id="downcasting">downcasting</h1>
 
 <p>Downcasting operates in the other direction,
@@ -213,7 +221,7 @@ it very easy to assert that a widget is something
 that it is not.</p>
 
 <p>To downcast an instance,
-call one of its <code>CastTo...</code> methods.</p>
+call one of the <code>CastTo...</code> methods.</p>
 
 <p>A typically use is when obtaining an object from a builder.</p>
 <div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#75af00">builder</span> <span style="color:#f92672">:=</span> <span style="color:#75af00">gtk</span><span style="color:#111">.</span><span style="color:#75af00">BuilderNewFromString</span><span style="color:#111">(</span><span style="color:#f92672">...</span><span style="color:#111">)</span>

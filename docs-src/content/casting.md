@@ -24,7 +24,7 @@ this will not work.
 ```go
 window := gtk.WindowNew(gtk.GTK_WINDOW_TOPLEVEL)
 label := gtk.LabelNew("a label")
-window.Add(label)
+window.Add(label)   // <-- ERROR
 ``` 
 
 `gtk.Window` does not directly have a `Add` method.
@@ -35,12 +35,23 @@ The `gtk.Window`'s `Container` may be obtained by calling
 the `Container()` method.
 
 And as the `Add` method expects a `gtk.Widget`,
-the `gtk.Label`'s `Widget` method is called.
+the `gtk.Label`'s `Widget` method is called
+to cast to a `gtk.Widget`.
 
 ```go
 window := gtk.WindowNew(gtk.GTK_WINDOW_TOPLEVEL)
 label := gtk.LabelNew("a label")
 window.Container().Add(label.Widget())
+``` 
+
+All derived classes have receiver functions for directly
+casting to all ancestor types.
+```go
+// This will work, but is unnecessary.
+widget1 := gtk.WindowNew().Bin().Container().Widget()
+
+// This will achieve the same end result.
+widget2 := gtk.WindowNew().Widget()
 ``` 
 
 # downcasting
@@ -53,7 +64,7 @@ it very easy to assert that a widget is something
 that it is not.
 
 To downcast an instance,
-call one of its `CastTo...` methods.
+call one of the `CastTo...` methods.
 
 A typically use is when obtaining an object from a builder.
 
