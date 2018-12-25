@@ -49,6 +49,13 @@
 	"content": " connecting To connect an object to a signal that it emits, call one of the object\u0026rsquo;s Connect... methods.\nThe connect methods all accept a handler argument that is a function with a specific signature. Some handlers have no parameters, others have one or more parameters that provide event-specific information.\nbutton := gtk.ButtonNewWithLabel(\u0026#34;a button\u0026#34;) button.Widget().SetEvents(int32(gdk.GDK_POINTER_MOTION_MASK)) button.Widget().ConnectMotionNotifyEvent( func(event *gdk.EventMotion) bool { fmt.Println(event.Y, event.Y) return false }) Remember that it may be necessary to upcast to access the desired connect method.\ndisconnecting All of the Connect... methods return a handler id. The id may be used later to disconnect the handler.\nconnectId := button.ConnectClicked(func() { ... }) ... button.DisconnectClicked(connectId)"
 },
 {
+	"uri": "https://pekim.github.io/gobbi/format-functions/",
+	"title": "Format functions",
+	"tags": [],
+	"description": "",
+	"content": "Some C library variadic functions accept trailing arguments that include a printf style format string followed by arguments to insert in to the format string. gtk_message_dialog_new is an example of such a function.\nThe equivalent functions in gobbi accept fmt package compatible arguments. This is because fmt.Sprint is used to format a string before passing it as the last argument to the wrapped C function.\nA much simplified representation of such a function might help to make this clearer.\nfunc SomeRepresentativeFunction( a string, b int, format string, args ...interface{}, ) { c_a := C.String(a) c_b := C.int(b) formattedString := fmt.Sprintf(format, args...) c_formattedString := C.String(formattedString) C.some_representative_function(c_a, c_b, c_formattedString) }"
+},
+{
 	"uri": "https://pekim.github.io/gobbi/api/",
 	"title": "API Docs",
 	"tags": [],

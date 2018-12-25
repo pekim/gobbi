@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-	<meta name="generator" content="Hugo 0.51" />
     <title>gobbi</title>
     
       <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>Introduction :: gobbi</title>
+<title>Format functions :: gobbi</title>
 <link rel="shortcut icon" href="/gobbi/images/favicon.png" type="image/x-icon" />
 <link href="/gobbi/css/font-awesome.min.css" rel="stylesheet">
 <link href="/gobbi/css/nucleus.css" rel="stylesheet">
@@ -22,7 +21,7 @@
 
     
   </head>
-  <body data-url="/gobbi/">
+  <body data-url="/gobbi/format-functions/">
     
       <header>
   <div class="logo">
@@ -49,7 +48,7 @@
     <ul class="menu">
 
 
-    <li class="dd-item  active">
+    <li class="dd-item ">
         <div>
             <a href="/gobbi/">
                 <span>Introduction</span>
@@ -105,7 +104,7 @@
         </div>
     </li>
 
-    <li class="dd-item ">
+    <li class="dd-item  active">
         <div>
             <a href="/gobbi/format-functions/">
                 <span>Format functions</span>
@@ -157,34 +156,36 @@
       </div>
     
 
+    <h1>Format functions</h1>
     
     
     
-    
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fa fa-bars"></i> navigation</a>
-</span>
- 
+    <p>Some C library variadic functions accept trailing arguments
+that include a printf style format string followed by
+arguments to insert in to the format string.
+<a href="https://developer.gnome.org/gtk3/stable/GtkMessageDialog.html#gtk-message-dialog-new">gtk_message_dialog_new</a>
+is an example of such a function.</p>
 
+<p>The equivalent functions in gobbi accept
+<a href="https://golang.org/pkg/fmt/">fmt</a> package compatible arguments.
+This is because <code>fmt.Sprint</code> is used to format a string
+before passing it as the last argument
+to the wrapped C function.</p>
 
-<h1 id="gobbi">gobbi</h1>
+<p>A much simplified representation of such a function might
+help to make this clearer.</p>
+<div class="highlight"><pre style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#00a8c8">func</span> <span style="color:#75af00">SomeRepresentativeFunction</span><span style="color:#111">(</span>
+	<span style="color:#75af00">a</span> <span style="color:#00a8c8">string</span><span style="color:#111">,</span> <span style="color:#75af00">b</span> <span style="color:#00a8c8">int</span><span style="color:#111">,</span>
+	<span style="color:#75af00">format</span> <span style="color:#00a8c8">string</span><span style="color:#111">,</span> <span style="color:#75af00">args</span> <span style="color:#f92672">...</span><span style="color:#00a8c8">interface</span><span style="color:#111">{},</span>
+<span style="color:#111">)</span> <span style="color:#111">{</span>
+	<span style="color:#75af00">c_a</span> <span style="color:#f92672">:=</span> <span style="color:#75af00">C</span><span style="color:#111">.</span><span style="color:#75af00">String</span><span style="color:#111">(</span><span style="color:#75af00">a</span><span style="color:#111">)</span>
+	<span style="color:#75af00">c_b</span> <span style="color:#f92672">:=</span> <span style="color:#75af00">C</span><span style="color:#111">.</span><span style="color:#111">int</span><span style="color:#111">(</span><span style="color:#75af00">b</span><span style="color:#111">)</span>
 
-<p><strong>gob</strong>ject <strong>bi</strong>ndings</p>
+	<span style="color:#75af00">formattedString</span> <span style="color:#f92672">:=</span> <span style="color:#75af00">fmt</span><span style="color:#111">.</span><span style="color:#75af00">Sprintf</span><span style="color:#111">(</span><span style="color:#75af00">format</span><span style="color:#111">,</span> <span style="color:#75af00">args</span><span style="color:#f92672">...</span><span style="color:#111">)</span>
+	<span style="color:#75af00">c_formattedString</span> <span style="color:#f92672">:=</span> <span style="color:#75af00">C</span><span style="color:#111">.</span><span style="color:#75af00">String</span><span style="color:#111">(</span><span style="color:#75af00">formattedString</span><span style="color:#111">)</span>
 
-<p>gobbi is a set of generated Go bindings for gobject based libraries.
-There are bindings, with varying degrees of completeness,
-for gtk, gdk, gdkpixbuf, gio, gobject, and glib.</p>
-
-<p>The intention is to provide the bindings required
-for writing gtk applications.
-So the focus is on supporting functions in the higher level
-libraries such as gtk, gdk, gdkpixbuf and gio.
-Much of the functionality provided by the lower level
-libraries, such as glib and gobject, is adequately supported
-in Go core packages.</p>
-
-
-
+	<span style="color:#75af00">C</span><span style="color:#111">.</span><span style="color:#75af00">some_representative_function</span><span style="color:#111">(</span><span style="color:#75af00">c_a</span><span style="color:#111">,</span> <span style="color:#75af00">c_b</span><span style="color:#111">,</span> <span style="color:#75af00">c_formattedString</span><span style="color:#111">)</span>
+<span style="color:#111">}</span></code></pre></div>
 
     
     
