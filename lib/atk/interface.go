@@ -3,6 +3,7 @@
 package atk
 
 import (
+	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
 	"unsafe"
@@ -1308,7 +1309,16 @@ func (recv *StreamableContent) GetNMimeTypes() int32 {
 	return retGo
 }
 
-// Unsupported : atk_streamable_content_get_stream : return type : Blacklisted record : GIOChannel
+// GetStream is a wrapper around the C function atk_streamable_content_get_stream.
+func (recv *StreamableContent) GetStream(mimeType string) *glib.IOChannel {
+	c_mime_type := C.CString(mimeType)
+	defer C.free(unsafe.Pointer(c_mime_type))
+
+	retC := C.atk_streamable_content_get_stream((*C.AtkStreamableContent)(recv.native), c_mime_type)
+	retGo := glib.IOChannelNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Table is a wrapper around the C record AtkTable.
 type Table struct {

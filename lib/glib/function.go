@@ -881,11 +881,24 @@ func IntHash(v uintptr) uint32 {
 	return retGo
 }
 
-// Unsupported : g_io_add_watch : unsupported parameter channel : Blacklisted record : GIOChannel
+// Unsupported : g_io_add_watch : unsupported parameter func : no type generator for IOFunc (GIOFunc) for param func
 
-// Unsupported : g_io_add_watch_full : unsupported parameter channel : Blacklisted record : GIOChannel
+// Unsupported : g_io_add_watch_full : unsupported parameter func : no type generator for IOFunc (GIOFunc) for param func
 
-// Unsupported : g_io_create_watch : unsupported parameter channel : Blacklisted record : GIOChannel
+// IoCreateWatch is a wrapper around the C function g_io_create_watch.
+func IoCreateWatch(channel *IOChannel, condition IOCondition) *Source {
+	c_channel := (*C.GIOChannel)(C.NULL)
+	if channel != nil {
+		c_channel = (*C.GIOChannel)(channel.ToC())
+	}
+
+	c_condition := (C.GIOCondition)(condition)
+
+	retC := C.g_io_create_watch(c_channel, c_condition)
+	retGo := SourceNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_locale_from_utf8 : no return type
 

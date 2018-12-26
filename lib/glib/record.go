@@ -1663,7 +1663,511 @@ func (recv *HookList) InvokeCheck(mayRecurse bool) {
 
 // Blacklisted : GIConv
 
-// Blacklisted : GIOChannel
+// IOChannel is a wrapper around the C record GIOChannel.
+type IOChannel struct {
+	native *C.GIOChannel
+	// Private : ref_count
+	// Private : funcs
+	// Private : encoding
+	// Private : read_cd
+	// Private : write_cd
+	// Private : line_term
+	// Private : line_term_len
+	// Private : buf_size
+	// Private : read_buf
+	// Private : encoded_read_buf
+	// Private : write_buf
+	// Private : partial_write_buf
+	// Private : use_buffer
+	// Private : do_encode
+	// Private : close_on_unref
+	// Private : is_readable
+	// Private : is_writeable
+	// Private : is_seekable
+	// Private : reserved1
+	// Private : reserved2
+}
+
+func IOChannelNewFromC(u unsafe.Pointer) *IOChannel {
+	c := (*C.GIOChannel)(u)
+	if c == nil {
+		return nil
+	}
+
+	g := &IOChannel{native: c}
+
+	return g
+}
+
+func (recv *IOChannel) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this IOChannel with another IOChannel, and returns true if they represent the same GObject.
+func (recv *IOChannel) Equals(other *IOChannel) bool {
+	return other.ToC() == recv.ToC()
+}
+
+// IOChannelNewFile is a wrapper around the C function g_io_channel_new_file.
+func IOChannelNewFile(filename string, mode string) (*IOChannel, error) {
+	c_filename := C.CString(filename)
+	defer C.free(unsafe.Pointer(c_filename))
+
+	c_mode := C.CString(mode)
+	defer C.free(unsafe.Pointer(c_mode))
+
+	var cThrowableError *C.GError
+
+	retC := C.g_io_channel_new_file(c_filename, c_mode, &cThrowableError)
+	retGo := IOChannelNewFromC(unsafe.Pointer(retC))
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
+
+// IOChannelUnixNew is a wrapper around the C function g_io_channel_unix_new.
+func IOChannelUnixNew(fd int32) *IOChannel {
+	c_fd := (C.int)(fd)
+
+	retC := C.g_io_channel_unix_new(c_fd)
+	retGo := IOChannelNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// IOChannelErrorFromErrno is a wrapper around the C function g_io_channel_error_from_errno.
+func IOChannelErrorFromErrno(en int32) IOChannelError {
+	c_en := (C.gint)(en)
+
+	retC := C.g_io_channel_error_from_errno(c_en)
+	retGo := (IOChannelError)(retC)
+
+	return retGo
+}
+
+// IOChannelErrorQuark is a wrapper around the C function g_io_channel_error_quark.
+func IOChannelErrorQuark() Quark {
+	retC := C.g_io_channel_error_quark()
+	retGo := (Quark)(retC)
+
+	return retGo
+}
+
+// Close is a wrapper around the C function g_io_channel_close.
+func (recv *IOChannel) Close() {
+	C.g_io_channel_close((*C.GIOChannel)(recv.native))
+
+	return
+}
+
+// Flush is a wrapper around the C function g_io_channel_flush.
+func (recv *IOChannel) Flush() (IOStatus, error) {
+	var cThrowableError *C.GError
+
+	retC := C.g_io_channel_flush((*C.GIOChannel)(recv.native), &cThrowableError)
+	retGo := (IOStatus)(retC)
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
+
+// GetBufferCondition is a wrapper around the C function g_io_channel_get_buffer_condition.
+func (recv *IOChannel) GetBufferCondition() IOCondition {
+	retC := C.g_io_channel_get_buffer_condition((*C.GIOChannel)(recv.native))
+	retGo := (IOCondition)(retC)
+
+	return retGo
+}
+
+// GetBufferSize is a wrapper around the C function g_io_channel_get_buffer_size.
+func (recv *IOChannel) GetBufferSize() uint64 {
+	retC := C.g_io_channel_get_buffer_size((*C.GIOChannel)(recv.native))
+	retGo := (uint64)(retC)
+
+	return retGo
+}
+
+// GetBuffered is a wrapper around the C function g_io_channel_get_buffered.
+func (recv *IOChannel) GetBuffered() bool {
+	retC := C.g_io_channel_get_buffered((*C.GIOChannel)(recv.native))
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// GetCloseOnUnref is a wrapper around the C function g_io_channel_get_close_on_unref.
+func (recv *IOChannel) GetCloseOnUnref() bool {
+	retC := C.g_io_channel_get_close_on_unref((*C.GIOChannel)(recv.native))
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// GetEncoding is a wrapper around the C function g_io_channel_get_encoding.
+func (recv *IOChannel) GetEncoding() string {
+	retC := C.g_io_channel_get_encoding((*C.GIOChannel)(recv.native))
+	retGo := C.GoString(retC)
+
+	return retGo
+}
+
+// GetFlags is a wrapper around the C function g_io_channel_get_flags.
+func (recv *IOChannel) GetFlags() IOFlags {
+	retC := C.g_io_channel_get_flags((*C.GIOChannel)(recv.native))
+	retGo := (IOFlags)(retC)
+
+	return retGo
+}
+
+// GetLineTerm is a wrapper around the C function g_io_channel_get_line_term.
+func (recv *IOChannel) GetLineTerm(length int32) string {
+	c_length := (C.gint)(length)
+
+	retC := C.g_io_channel_get_line_term((*C.GIOChannel)(recv.native), &c_length)
+	retGo := C.GoString(retC)
+
+	return retGo
+}
+
+// Init is a wrapper around the C function g_io_channel_init.
+func (recv *IOChannel) Init() {
+	C.g_io_channel_init((*C.GIOChannel)(recv.native))
+
+	return
+}
+
+// Read is a wrapper around the C function g_io_channel_read.
+func (recv *IOChannel) Read(buf string, count uint64, bytesRead uint64) IOError {
+	c_buf := C.CString(buf)
+	defer C.free(unsafe.Pointer(c_buf))
+
+	c_count := (C.gsize)(count)
+
+	c_bytes_read := (C.gsize)(bytesRead)
+
+	retC := C.g_io_channel_read((*C.GIOChannel)(recv.native), c_buf, c_count, &c_bytes_read)
+	retGo := (IOError)(retC)
+
+	return retGo
+}
+
+// Unsupported : g_io_channel_read_chars : unsupported parameter buf : output array param buf
+
+// ReadLine is a wrapper around the C function g_io_channel_read_line.
+func (recv *IOChannel) ReadLine() (IOStatus, string, uint64, uint64, error) {
+	var c_str_return *C.gchar
+
+	var c_length C.gsize
+
+	var c_terminator_pos C.gsize
+
+	var cThrowableError *C.GError
+
+	retC := C.g_io_channel_read_line((*C.GIOChannel)(recv.native), &c_str_return, &c_length, &c_terminator_pos, &cThrowableError)
+	retGo := (IOStatus)(retC)
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	strReturn := C.GoString(c_str_return)
+	defer C.free(unsafe.Pointer(c_str_return))
+
+	length := (uint64)(c_length)
+
+	terminatorPos := (uint64)(c_terminator_pos)
+
+	return retGo, strReturn, length, terminatorPos, goError
+}
+
+// ReadLineString is a wrapper around the C function g_io_channel_read_line_string.
+func (recv *IOChannel) ReadLineString(buffer *String, terminatorPos uint64) (IOStatus, error) {
+	c_buffer := (*C.GString)(C.NULL)
+	if buffer != nil {
+		c_buffer = (*C.GString)(buffer.ToC())
+	}
+
+	c_terminator_pos := (C.gsize)(terminatorPos)
+
+	var cThrowableError *C.GError
+
+	retC := C.g_io_channel_read_line_string((*C.GIOChannel)(recv.native), c_buffer, &c_terminator_pos, &cThrowableError)
+	retGo := (IOStatus)(retC)
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
+
+// Unsupported : g_io_channel_read_to_end : unsupported parameter str_return : output array param str_return
+
+// ReadUnichar is a wrapper around the C function g_io_channel_read_unichar.
+func (recv *IOChannel) ReadUnichar() (IOStatus, rune, error) {
+	var c_thechar C.gunichar
+
+	var cThrowableError *C.GError
+
+	retC := C.g_io_channel_read_unichar((*C.GIOChannel)(recv.native), &c_thechar, &cThrowableError)
+	retGo := (IOStatus)(retC)
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	thechar := (rune)(c_thechar)
+
+	return retGo, thechar, goError
+}
+
+// Ref is a wrapper around the C function g_io_channel_ref.
+func (recv *IOChannel) Ref() *IOChannel {
+	retC := C.g_io_channel_ref((*C.GIOChannel)(recv.native))
+	retGo := IOChannelNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// Seek is a wrapper around the C function g_io_channel_seek.
+func (recv *IOChannel) Seek(offset int64, type_ SeekType) IOError {
+	c_offset := (C.gint64)(offset)
+
+	c_type := (C.GSeekType)(type_)
+
+	retC := C.g_io_channel_seek((*C.GIOChannel)(recv.native), c_offset, c_type)
+	retGo := (IOError)(retC)
+
+	return retGo
+}
+
+// SeekPosition is a wrapper around the C function g_io_channel_seek_position.
+func (recv *IOChannel) SeekPosition(offset int64, type_ SeekType) (IOStatus, error) {
+	c_offset := (C.gint64)(offset)
+
+	c_type := (C.GSeekType)(type_)
+
+	var cThrowableError *C.GError
+
+	retC := C.g_io_channel_seek_position((*C.GIOChannel)(recv.native), c_offset, c_type, &cThrowableError)
+	retGo := (IOStatus)(retC)
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
+
+// SetBufferSize is a wrapper around the C function g_io_channel_set_buffer_size.
+func (recv *IOChannel) SetBufferSize(size uint64) {
+	c_size := (C.gsize)(size)
+
+	C.g_io_channel_set_buffer_size((*C.GIOChannel)(recv.native), c_size)
+
+	return
+}
+
+// SetBuffered is a wrapper around the C function g_io_channel_set_buffered.
+func (recv *IOChannel) SetBuffered(buffered bool) {
+	c_buffered :=
+		boolToGboolean(buffered)
+
+	C.g_io_channel_set_buffered((*C.GIOChannel)(recv.native), c_buffered)
+
+	return
+}
+
+// SetCloseOnUnref is a wrapper around the C function g_io_channel_set_close_on_unref.
+func (recv *IOChannel) SetCloseOnUnref(doClose bool) {
+	c_do_close :=
+		boolToGboolean(doClose)
+
+	C.g_io_channel_set_close_on_unref((*C.GIOChannel)(recv.native), c_do_close)
+
+	return
+}
+
+// SetEncoding is a wrapper around the C function g_io_channel_set_encoding.
+func (recv *IOChannel) SetEncoding(encoding string) (IOStatus, error) {
+	c_encoding := C.CString(encoding)
+	defer C.free(unsafe.Pointer(c_encoding))
+
+	var cThrowableError *C.GError
+
+	retC := C.g_io_channel_set_encoding((*C.GIOChannel)(recv.native), c_encoding, &cThrowableError)
+	retGo := (IOStatus)(retC)
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
+
+// SetFlags is a wrapper around the C function g_io_channel_set_flags.
+func (recv *IOChannel) SetFlags(flags IOFlags) (IOStatus, error) {
+	c_flags := (C.GIOFlags)(flags)
+
+	var cThrowableError *C.GError
+
+	retC := C.g_io_channel_set_flags((*C.GIOChannel)(recv.native), c_flags, &cThrowableError)
+	retGo := (IOStatus)(retC)
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
+
+// SetLineTerm is a wrapper around the C function g_io_channel_set_line_term.
+func (recv *IOChannel) SetLineTerm(lineTerm string, length int32) {
+	c_line_term := C.CString(lineTerm)
+	defer C.free(unsafe.Pointer(c_line_term))
+
+	c_length := (C.gint)(length)
+
+	C.g_io_channel_set_line_term((*C.GIOChannel)(recv.native), c_line_term, c_length)
+
+	return
+}
+
+// Shutdown is a wrapper around the C function g_io_channel_shutdown.
+func (recv *IOChannel) Shutdown(flush bool) (IOStatus, error) {
+	c_flush :=
+		boolToGboolean(flush)
+
+	var cThrowableError *C.GError
+
+	retC := C.g_io_channel_shutdown((*C.GIOChannel)(recv.native), c_flush, &cThrowableError)
+	retGo := (IOStatus)(retC)
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
+
+// UnixGetFd is a wrapper around the C function g_io_channel_unix_get_fd.
+func (recv *IOChannel) UnixGetFd() int32 {
+	retC := C.g_io_channel_unix_get_fd((*C.GIOChannel)(recv.native))
+	retGo := (int32)(retC)
+
+	return retGo
+}
+
+// Unref is a wrapper around the C function g_io_channel_unref.
+func (recv *IOChannel) Unref() {
+	C.g_io_channel_unref((*C.GIOChannel)(recv.native))
+
+	return
+}
+
+// Write is a wrapper around the C function g_io_channel_write.
+func (recv *IOChannel) Write(buf string, count uint64, bytesWritten uint64) IOError {
+	c_buf := C.CString(buf)
+	defer C.free(unsafe.Pointer(c_buf))
+
+	c_count := (C.gsize)(count)
+
+	c_bytes_written := (C.gsize)(bytesWritten)
+
+	retC := C.g_io_channel_write((*C.GIOChannel)(recv.native), c_buf, c_count, &c_bytes_written)
+	retGo := (IOError)(retC)
+
+	return retGo
+}
+
+// WriteChars is a wrapper around the C function g_io_channel_write_chars.
+func (recv *IOChannel) WriteChars(buf []uint8, count int64) (IOStatus, uint64, error) {
+	c_buf := &buf[0]
+
+	c_count := (C.gssize)(count)
+
+	var c_bytes_written C.gsize
+
+	var cThrowableError *C.GError
+
+	retC := C.g_io_channel_write_chars((*C.GIOChannel)(recv.native), (*C.gchar)(unsafe.Pointer(c_buf)), c_count, &c_bytes_written, &cThrowableError)
+	retGo := (IOStatus)(retC)
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	bytesWritten := (uint64)(c_bytes_written)
+
+	return retGo, bytesWritten, goError
+}
+
+// WriteUnichar is a wrapper around the C function g_io_channel_write_unichar.
+func (recv *IOChannel) WriteUnichar(thechar rune) (IOStatus, error) {
+	c_thechar := (C.gunichar)(thechar)
+
+	var cThrowableError *C.GError
+
+	retC := C.g_io_channel_write_unichar((*C.GIOChannel)(recv.native), c_thechar, &cThrowableError)
+	retGo := (IOStatus)(retC)
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
 
 // IOFuncs is a wrapper around the C record GIOFuncs.
 type IOFuncs struct {
