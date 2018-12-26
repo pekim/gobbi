@@ -79,3 +79,13 @@ func (recv *Source) SetReadyTime(readyTime int64) {
 
 	return
 }
+
+// Unsupported : g_variant_new_from_bytes : unsupported parameter type : Blacklisted record : GVariantType
+
+// GetDataAsBytes is a wrapper around the C function g_variant_get_data_as_bytes.
+func (recv *Variant) GetDataAsBytes() *Bytes {
+	retC := C.g_variant_get_data_as_bytes((*C.GVariant)(recv.native))
+	retGo := BytesNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}

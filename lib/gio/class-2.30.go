@@ -7,6 +7,7 @@ import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"
+	"sync"
 	"unsafe"
 )
 
@@ -25,13 +26,44 @@ import (
 // #include <gio/gunixoutputstream.h>
 // #include <gio/gunixsocketaddress.h>
 // #include <stdlib.h>
+/*
+
+	void simpleaction_changeStateHandler(GObject *, GVariant *, gpointer);
+
+	static gulong SimpleAction_signal_connect_change_state(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "change-state", G_CALLBACK(simpleaction_changeStateHandler), data);
+	}
+
+*/
 import "C"
 
-// Unsupported : g_dbus_connection_call_with_unix_fd_list : unsupported parameter parameters : Blacklisted record : GVariant
+// Unsupported : g_dbus_connection_call_with_unix_fd_list : unsupported parameter reply_type : Blacklisted record : GVariantType
 
-// Unsupported : g_dbus_connection_call_with_unix_fd_list_finish : return type : Blacklisted record : GVariant
+// CallWithUnixFdListFinish is a wrapper around the C function g_dbus_connection_call_with_unix_fd_list_finish.
+func (recv *DBusConnection) CallWithUnixFdListFinish(res *AsyncResult) (*glib.Variant, *UnixFDList, error) {
+	var c_out_fd_list *C.GUnixFDList
 
-// Unsupported : g_dbus_connection_call_with_unix_fd_list_sync : unsupported parameter parameters : Blacklisted record : GVariant
+	c_res := (*C.GAsyncResult)(res.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_connection_call_with_unix_fd_list_finish((*C.GDBusConnection)(recv.native), &c_out_fd_list, c_res, &cThrowableError)
+	retGo := glib.VariantNewFromC(unsafe.Pointer(retC))
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	outFdList := UnixFDListNewFromC(unsafe.Pointer(c_out_fd_list))
+
+	return retGo, outFdList, goError
+}
+
+// Unsupported : g_dbus_connection_call_with_unix_fd_list_sync : unsupported parameter reply_type : Blacklisted record : GVariantType
 
 // DBusInterfaceSkeleton is a wrapper around the C record GDBusInterfaceSkeleton.
 type DBusInterfaceSkeleton struct {
@@ -147,7 +179,13 @@ func (recv *DBusInterfaceSkeleton) GetObjectPath() string {
 	return retGo
 }
 
-// Unsupported : g_dbus_interface_skeleton_get_properties : return type : Blacklisted record : GVariant
+// GetProperties is a wrapper around the C function g_dbus_interface_skeleton_get_properties.
+func (recv *DBusInterfaceSkeleton) GetProperties() *glib.Variant {
+	retC := C.g_dbus_interface_skeleton_get_properties((*C.GDBusInterfaceSkeleton)(recv.native))
+	retGo := glib.VariantNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetVtable is a wrapper around the C function g_dbus_interface_skeleton_get_vtable.
 func (recv *DBusInterfaceSkeleton) GetVtable() *DBusInterfaceVTable {
@@ -173,7 +211,22 @@ func (recv *DBusInterfaceSkeleton) Unexport() {
 	return
 }
 
-// Unsupported : g_dbus_method_invocation_return_value_with_unix_fd_list : unsupported parameter parameters : Blacklisted record : GVariant
+// ReturnValueWithUnixFdList is a wrapper around the C function g_dbus_method_invocation_return_value_with_unix_fd_list.
+func (recv *DBusMethodInvocation) ReturnValueWithUnixFdList(parameters *glib.Variant, fdList *UnixFDList) {
+	c_parameters := (*C.GVariant)(C.NULL)
+	if parameters != nil {
+		c_parameters = (*C.GVariant)(parameters.ToC())
+	}
+
+	c_fd_list := (*C.GUnixFDList)(C.NULL)
+	if fdList != nil {
+		c_fd_list = (*C.GUnixFDList)(fdList.ToC())
+	}
+
+	C.g_dbus_method_invocation_return_value_with_unix_fd_list((*C.GDBusMethodInvocation)(recv.native), c_parameters, c_fd_list)
+
+	return
+}
 
 // TakeError is a wrapper around the C function g_dbus_method_invocation_take_error.
 func (recv *DBusMethodInvocation) TakeError(error *glib.Error) {
@@ -634,11 +687,75 @@ func (recv *DBusObjectSkeleton) SetObjectPath(objectPath string) {
 	return
 }
 
-// Unsupported : g_dbus_proxy_call_with_unix_fd_list : unsupported parameter parameters : Blacklisted record : GVariant
+// Unsupported : g_dbus_proxy_call_with_unix_fd_list : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_dbus_proxy_call_with_unix_fd_list_finish : return type : Blacklisted record : GVariant
+// CallWithUnixFdListFinish is a wrapper around the C function g_dbus_proxy_call_with_unix_fd_list_finish.
+func (recv *DBusProxy) CallWithUnixFdListFinish(res *AsyncResult) (*glib.Variant, *UnixFDList, error) {
+	var c_out_fd_list *C.GUnixFDList
 
-// Unsupported : g_dbus_proxy_call_with_unix_fd_list_sync : unsupported parameter parameters : Blacklisted record : GVariant
+	c_res := (*C.GAsyncResult)(res.ToC())
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_proxy_call_with_unix_fd_list_finish((*C.GDBusProxy)(recv.native), &c_out_fd_list, c_res, &cThrowableError)
+	retGo := glib.VariantNewFromC(unsafe.Pointer(retC))
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	outFdList := UnixFDListNewFromC(unsafe.Pointer(c_out_fd_list))
+
+	return retGo, outFdList, goError
+}
+
+// CallWithUnixFdListSync is a wrapper around the C function g_dbus_proxy_call_with_unix_fd_list_sync.
+func (recv *DBusProxy) CallWithUnixFdListSync(methodName string, parameters *glib.Variant, flags DBusCallFlags, timeoutMsec int32, fdList *UnixFDList, cancellable *Cancellable) (*glib.Variant, *UnixFDList, error) {
+	c_method_name := C.CString(methodName)
+	defer C.free(unsafe.Pointer(c_method_name))
+
+	c_parameters := (*C.GVariant)(C.NULL)
+	if parameters != nil {
+		c_parameters = (*C.GVariant)(parameters.ToC())
+	}
+
+	c_flags := (C.GDBusCallFlags)(flags)
+
+	c_timeout_msec := (C.gint)(timeoutMsec)
+
+	c_fd_list := (*C.GUnixFDList)(C.NULL)
+	if fdList != nil {
+		c_fd_list = (*C.GUnixFDList)(fdList.ToC())
+	}
+
+	var c_out_fd_list *C.GUnixFDList
+
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_proxy_call_with_unix_fd_list_sync((*C.GDBusProxy)(recv.native), c_method_name, c_parameters, c_flags, c_timeout_msec, c_fd_list, &c_out_fd_list, c_cancellable, &cThrowableError)
+	retGo := glib.VariantNewFromC(unsafe.Pointer(retC))
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	outFdList := UnixFDListNewFromC(unsafe.Pointer(c_out_fd_list))
+
+	return retGo, outFdList, goError
+}
 
 // ReadLineFinishUtf8 is a wrapper around the C function g_data_input_stream_read_line_finish_utf8.
 func (recv *DataInputStream) ReadLineFinishUtf8(result *AsyncResult) (string, uint64, error) {
@@ -749,9 +866,79 @@ func (recv *Settings) SetUint(key string, value uint32) bool {
 	return retGo
 }
 
-// Unsupported signal 'change-state' for SimpleAction : unsupported parameter value : type GLib.Variant : Blacklisted record : GVariant
+type signalSimpleActionChangeStateDetail struct {
+	callback  SimpleActionSignalChangeStateCallback
+	handlerID C.gulong
+}
 
-// Unsupported : g_simple_action_set_state : unsupported parameter value : Blacklisted record : GVariant
+var signalSimpleActionChangeStateId int
+var signalSimpleActionChangeStateMap = make(map[int]signalSimpleActionChangeStateDetail)
+var signalSimpleActionChangeStateLock sync.RWMutex
+
+// SimpleActionSignalChangeStateCallback is a callback function for a 'change-state' signal emitted from a SimpleAction.
+type SimpleActionSignalChangeStateCallback func(value *glib.Variant)
+
+/*
+ConnectChangeState connects the callback to the 'change-state' signal for the SimpleAction.
+
+The returned value represents the connection, and may be passed to DisconnectChangeState to remove it.
+*/
+func (recv *SimpleAction) ConnectChangeState(callback SimpleActionSignalChangeStateCallback) int {
+	signalSimpleActionChangeStateLock.Lock()
+	defer signalSimpleActionChangeStateLock.Unlock()
+
+	signalSimpleActionChangeStateId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.SimpleAction_signal_connect_change_state(instance, C.gpointer(uintptr(signalSimpleActionChangeStateId)))
+
+	detail := signalSimpleActionChangeStateDetail{callback, handlerID}
+	signalSimpleActionChangeStateMap[signalSimpleActionChangeStateId] = detail
+
+	return signalSimpleActionChangeStateId
+}
+
+/*
+DisconnectChangeState disconnects a callback from the 'change-state' signal for the SimpleAction.
+
+The connectionID should be a value returned from a call to ConnectChangeState.
+*/
+func (recv *SimpleAction) DisconnectChangeState(connectionID int) {
+	signalSimpleActionChangeStateLock.Lock()
+	defer signalSimpleActionChangeStateLock.Unlock()
+
+	detail, exists := signalSimpleActionChangeStateMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalSimpleActionChangeStateMap, connectionID)
+}
+
+//export simpleaction_changeStateHandler
+func simpleaction_changeStateHandler(_ *C.GObject, c_value *C.GVariant, data C.gpointer) {
+	signalSimpleActionChangeStateLock.RLock()
+	defer signalSimpleActionChangeStateLock.RUnlock()
+
+	value := glib.VariantNewFromC(unsafe.Pointer(c_value))
+
+	index := int(uintptr(data))
+	callback := signalSimpleActionChangeStateMap[index].callback
+	callback(value)
+}
+
+// SetState is a wrapper around the C function g_simple_action_set_state.
+func (recv *SimpleAction) SetState(value *glib.Variant) {
+	c_value := (*C.GVariant)(C.NULL)
+	if value != nil {
+		c_value = (*C.GVariant)(value.ToC())
+	}
+
+	C.g_simple_action_set_state((*C.GSimpleAction)(recv.native), c_value)
+
+	return
+}
 
 // Unsupported : g_simple_action_group_add_entries : unsupported parameter entries :
 

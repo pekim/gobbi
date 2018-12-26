@@ -3,6 +3,11 @@
 
 package gobject
 
+import (
+	glib "github.com/pekim/gobbi/lib/glib"
+	"unsafe"
+)
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -12,10 +17,52 @@ import "C"
 
 // Unsupported : g_object_class_install_properties : unsupported parameter pspecs :
 
-// Unsupported : g_value_dup_variant : return type : Blacklisted record : GVariant
+// DupVariant is a wrapper around the C function g_value_dup_variant.
+func (recv *Value) DupVariant() *glib.Variant {
+	retC := C.g_value_dup_variant((*C.GValue)(recv.native))
+	var retGo (*glib.Variant)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = glib.VariantNewFromC(unsafe.Pointer(retC))
+	}
 
-// Unsupported : g_value_get_variant : return type : Blacklisted record : GVariant
+	return retGo
+}
 
-// Unsupported : g_value_set_variant : unsupported parameter variant : Blacklisted record : GVariant
+// GetVariant is a wrapper around the C function g_value_get_variant.
+func (recv *Value) GetVariant() *glib.Variant {
+	retC := C.g_value_get_variant((*C.GValue)(recv.native))
+	var retGo (*glib.Variant)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = glib.VariantNewFromC(unsafe.Pointer(retC))
+	}
 
-// Unsupported : g_value_take_variant : unsupported parameter variant : Blacklisted record : GVariant
+	return retGo
+}
+
+// SetVariant is a wrapper around the C function g_value_set_variant.
+func (recv *Value) SetVariant(variant *glib.Variant) {
+	c_variant := (*C.GVariant)(C.NULL)
+	if variant != nil {
+		c_variant = (*C.GVariant)(variant.ToC())
+	}
+
+	C.g_value_set_variant((*C.GValue)(recv.native), c_variant)
+
+	return
+}
+
+// TakeVariant is a wrapper around the C function g_value_take_variant.
+func (recv *Value) TakeVariant(variant *glib.Variant) {
+	c_variant := (*C.GVariant)(C.NULL)
+	if variant != nil {
+		c_variant = (*C.GVariant)(variant.ToC())
+	}
+
+	C.g_value_take_variant((*C.GValue)(recv.native), c_variant)
+
+	return
+}

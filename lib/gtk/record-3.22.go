@@ -3,6 +3,11 @@
 
 package gtk
 
+import (
+	glib "github.com/pekim/gobbi/lib/glib"
+	"unsafe"
+)
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -12,6 +17,23 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : gtk_paper_size_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
+// PaperSizeNewFromGvariant is a wrapper around the C function gtk_paper_size_new_from_gvariant.
+func PaperSizeNewFromGvariant(variant *glib.Variant) *PaperSize {
+	c_variant := (*C.GVariant)(C.NULL)
+	if variant != nil {
+		c_variant = (*C.GVariant)(variant.ToC())
+	}
 
-// Unsupported : gtk_paper_size_to_gvariant : return type : Blacklisted record : GVariant
+	retC := C.gtk_paper_size_new_from_gvariant(c_variant)
+	retGo := PaperSizeNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ToGvariant is a wrapper around the C function gtk_paper_size_to_gvariant.
+func (recv *PaperSize) ToGvariant() *glib.Variant {
+	retC := C.gtk_paper_size_to_gvariant((*C.GtkPaperSize)(recv.native))
+	retGo := glib.VariantNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}

@@ -39,3 +39,17 @@ func (recv *String) FreeToBytes() *Bytes {
 
 	return retGo
 }
+
+// CheckFormatString is a wrapper around the C function g_variant_check_format_string.
+func (recv *Variant) CheckFormatString(formatString string, copyOnly bool) bool {
+	c_format_string := C.CString(formatString)
+	defer C.free(unsafe.Pointer(c_format_string))
+
+	c_copy_only :=
+		boolToGboolean(copyOnly)
+
+	retC := C.g_variant_check_format_string((*C.GVariant)(recv.native), c_format_string, c_copy_only)
+	retGo := retC == C.TRUE
+
+	return retGo
+}

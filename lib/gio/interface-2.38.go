@@ -36,8 +36,53 @@ func ActionNameIsValid(actionName string) bool {
 	return retGo
 }
 
-// g_action_parse_detailed_name : unsupported parameter target_value : Blacklisted record : GVariant
-// g_action_print_detailed_name : unsupported parameter target_value : Blacklisted record : GVariant
+// ActionParseDetailedName is a wrapper around the C function g_action_parse_detailed_name.
+func ActionParseDetailedName(detailedName string) (bool, string, *glib.Variant, error) {
+	c_detailed_name := C.CString(detailedName)
+	defer C.free(unsafe.Pointer(c_detailed_name))
+
+	var c_action_name *C.gchar
+
+	var c_target_value *C.GVariant
+
+	var cThrowableError *C.GError
+
+	retC := C.g_action_parse_detailed_name(c_detailed_name, &c_action_name, &c_target_value, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	actionName := C.GoString(c_action_name)
+	defer C.free(unsafe.Pointer(c_action_name))
+
+	targetValue := glib.VariantNewFromC(unsafe.Pointer(c_target_value))
+
+	return retGo, actionName, targetValue, goError
+}
+
+// ActionPrintDetailedName is a wrapper around the C function g_action_print_detailed_name.
+func ActionPrintDetailedName(actionName string, targetValue *glib.Variant) string {
+	c_action_name := C.CString(actionName)
+	defer C.free(unsafe.Pointer(c_action_name))
+
+	c_target_value := (*C.GVariant)(C.NULL)
+	if targetValue != nil {
+		c_target_value = (*C.GVariant)(targetValue.ToC())
+	}
+
+	retC := C.g_action_print_detailed_name(c_action_name, c_target_value)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // Unsupported : g_file_make_directory_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
 // MakeDirectoryFinish is a wrapper around the C function g_file_make_directory_finish.
@@ -118,5 +163,23 @@ func (recv *File) TrashFinish(result *AsyncResult) (bool, error) {
 	return retGo, goError
 }
 
-// g_icon_deserialize : unsupported parameter value : Blacklisted record : GVariant
-// Unsupported : g_icon_serialize : return type : Blacklisted record : GVariant
+// IconDeserialize is a wrapper around the C function g_icon_deserialize.
+func IconDeserialize(value *glib.Variant) *Icon {
+	c_value := (*C.GVariant)(C.NULL)
+	if value != nil {
+		c_value = (*C.GVariant)(value.ToC())
+	}
+
+	retC := C.g_icon_deserialize(c_value)
+	retGo := IconNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// Serialize is a wrapper around the C function g_icon_serialize.
+func (recv *Icon) Serialize() *glib.Variant {
+	retC := C.g_icon_serialize((*C.GIcon)(recv.native))
+	retGo := glib.VariantNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}

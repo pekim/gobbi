@@ -52,9 +52,28 @@ import (
 	}
 
 */
+/*
+
+	void actiongroup_actionStateChangedHandler(GObject *, gchar*, GVariant *, gpointer);
+
+	static gulong ActionGroup_signal_connect_action_state_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "action-state-changed", G_CALLBACK(actiongroup_actionStateChangedHandler), data);
+	}
+
+*/
 import "C"
 
-// Unsupported : g_action_activate : unsupported parameter parameter : Blacklisted record : GVariant
+// Activate is a wrapper around the C function g_action_activate.
+func (recv *Action) Activate(parameter *glib.Variant) {
+	c_parameter := (*C.GVariant)(C.NULL)
+	if parameter != nil {
+		c_parameter = (*C.GVariant)(parameter.ToC())
+	}
+
+	C.g_action_activate((*C.GAction)(recv.native), c_parameter)
+
+	return
+}
 
 // GetEnabled is a wrapper around the C function g_action_get_enabled.
 func (recv *Action) GetEnabled() bool {
@@ -74,9 +93,26 @@ func (recv *Action) GetName() string {
 
 // Unsupported : g_action_get_parameter_type : return type : Blacklisted record : GVariantType
 
-// Unsupported : g_action_get_state : return type : Blacklisted record : GVariant
+// GetState is a wrapper around the C function g_action_get_state.
+func (recv *Action) GetState() *glib.Variant {
+	retC := C.g_action_get_state((*C.GAction)(recv.native))
+	retGo := glib.VariantNewFromC(unsafe.Pointer(retC))
 
-// Unsupported : g_action_get_state_hint : return type : Blacklisted record : GVariant
+	return retGo
+}
+
+// GetStateHint is a wrapper around the C function g_action_get_state_hint.
+func (recv *Action) GetStateHint() *glib.Variant {
+	retC := C.g_action_get_state_hint((*C.GAction)(recv.native))
+	var retGo (*glib.Variant)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = glib.VariantNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
 
 // Unsupported : g_action_get_state_type : return type : Blacklisted record : GVariantType
 
@@ -268,7 +304,69 @@ func actiongroup_actionRemovedHandler(_ *C.GObject, c_action_name *C.gchar, data
 	callback(actionName)
 }
 
-// Unsupported signal 'action-state-changed' for ActionGroup : unsupported parameter value : type GLib.Variant : Blacklisted record : GVariant
+type signalActionGroupActionStateChangedDetail struct {
+	callback  ActionGroupSignalActionStateChangedCallback
+	handlerID C.gulong
+}
+
+var signalActionGroupActionStateChangedId int
+var signalActionGroupActionStateChangedMap = make(map[int]signalActionGroupActionStateChangedDetail)
+var signalActionGroupActionStateChangedLock sync.RWMutex
+
+// ActionGroupSignalActionStateChangedCallback is a callback function for a 'action-state-changed' signal emitted from a ActionGroup.
+type ActionGroupSignalActionStateChangedCallback func(actionName string, value *glib.Variant)
+
+/*
+ConnectActionStateChanged connects the callback to the 'action-state-changed' signal for the ActionGroup.
+
+The returned value represents the connection, and may be passed to DisconnectActionStateChanged to remove it.
+*/
+func (recv *ActionGroup) ConnectActionStateChanged(callback ActionGroupSignalActionStateChangedCallback) int {
+	signalActionGroupActionStateChangedLock.Lock()
+	defer signalActionGroupActionStateChangedLock.Unlock()
+
+	signalActionGroupActionStateChangedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.ActionGroup_signal_connect_action_state_changed(instance, C.gpointer(uintptr(signalActionGroupActionStateChangedId)))
+
+	detail := signalActionGroupActionStateChangedDetail{callback, handlerID}
+	signalActionGroupActionStateChangedMap[signalActionGroupActionStateChangedId] = detail
+
+	return signalActionGroupActionStateChangedId
+}
+
+/*
+DisconnectActionStateChanged disconnects a callback from the 'action-state-changed' signal for the ActionGroup.
+
+The connectionID should be a value returned from a call to ConnectActionStateChanged.
+*/
+func (recv *ActionGroup) DisconnectActionStateChanged(connectionID int) {
+	signalActionGroupActionStateChangedLock.Lock()
+	defer signalActionGroupActionStateChangedLock.Unlock()
+
+	detail, exists := signalActionGroupActionStateChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalActionGroupActionStateChangedMap, connectionID)
+}
+
+//export actiongroup_actionStateChangedHandler
+func actiongroup_actionStateChangedHandler(_ *C.GObject, c_action_name *C.gchar, c_value *C.GVariant, data C.gpointer) {
+	signalActionGroupActionStateChangedLock.RLock()
+	defer signalActionGroupActionStateChangedLock.RUnlock()
+
+	actionName := C.GoString(c_action_name)
+
+	value := glib.VariantNewFromC(unsafe.Pointer(c_value))
+
+	index := int(uintptr(data))
+	callback := signalActionGroupActionStateChangedMap[index].callback
+	callback(actionName, value)
+}
 
 // ActionAdded is a wrapper around the C function g_action_group_action_added.
 func (recv *ActionGroup) ActionAdded(actionName string) {
@@ -303,11 +401,50 @@ func (recv *ActionGroup) ActionRemoved(actionName string) {
 	return
 }
 
-// Unsupported : g_action_group_action_state_changed : unsupported parameter state : Blacklisted record : GVariant
+// ActionStateChanged is a wrapper around the C function g_action_group_action_state_changed.
+func (recv *ActionGroup) ActionStateChanged(actionName string, state *glib.Variant) {
+	c_action_name := C.CString(actionName)
+	defer C.free(unsafe.Pointer(c_action_name))
 
-// Unsupported : g_action_group_activate_action : unsupported parameter parameter : Blacklisted record : GVariant
+	c_state := (*C.GVariant)(C.NULL)
+	if state != nil {
+		c_state = (*C.GVariant)(state.ToC())
+	}
 
-// Unsupported : g_action_group_change_action_state : unsupported parameter value : Blacklisted record : GVariant
+	C.g_action_group_action_state_changed((*C.GActionGroup)(recv.native), c_action_name, c_state)
+
+	return
+}
+
+// ActivateAction is a wrapper around the C function g_action_group_activate_action.
+func (recv *ActionGroup) ActivateAction(actionName string, parameter *glib.Variant) {
+	c_action_name := C.CString(actionName)
+	defer C.free(unsafe.Pointer(c_action_name))
+
+	c_parameter := (*C.GVariant)(C.NULL)
+	if parameter != nil {
+		c_parameter = (*C.GVariant)(parameter.ToC())
+	}
+
+	C.g_action_group_activate_action((*C.GActionGroup)(recv.native), c_action_name, c_parameter)
+
+	return
+}
+
+// ChangeActionState is a wrapper around the C function g_action_group_change_action_state.
+func (recv *ActionGroup) ChangeActionState(actionName string, value *glib.Variant) {
+	c_action_name := C.CString(actionName)
+	defer C.free(unsafe.Pointer(c_action_name))
+
+	c_value := (*C.GVariant)(C.NULL)
+	if value != nil {
+		c_value = (*C.GVariant)(value.ToC())
+	}
+
+	C.g_action_group_change_action_state((*C.GActionGroup)(recv.native), c_action_name, c_value)
+
+	return
+}
 
 // GetActionEnabled is a wrapper around the C function g_action_group_get_action_enabled.
 func (recv *ActionGroup) GetActionEnabled(actionName string) bool {
@@ -322,9 +459,37 @@ func (recv *ActionGroup) GetActionEnabled(actionName string) bool {
 
 // Unsupported : g_action_group_get_action_parameter_type : return type : Blacklisted record : GVariantType
 
-// Unsupported : g_action_group_get_action_state : return type : Blacklisted record : GVariant
+// GetActionState is a wrapper around the C function g_action_group_get_action_state.
+func (recv *ActionGroup) GetActionState(actionName string) *glib.Variant {
+	c_action_name := C.CString(actionName)
+	defer C.free(unsafe.Pointer(c_action_name))
 
-// Unsupported : g_action_group_get_action_state_hint : return type : Blacklisted record : GVariant
+	retC := C.g_action_group_get_action_state((*C.GActionGroup)(recv.native), c_action_name)
+	var retGo (*glib.Variant)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = glib.VariantNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
+
+// GetActionStateHint is a wrapper around the C function g_action_group_get_action_state_hint.
+func (recv *ActionGroup) GetActionStateHint(actionName string) *glib.Variant {
+	c_action_name := C.CString(actionName)
+	defer C.free(unsafe.Pointer(c_action_name))
+
+	retC := C.g_action_group_get_action_state_hint((*C.GActionGroup)(recv.native), c_action_name)
+	var retGo (*glib.Variant)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = glib.VariantNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
 
 // Unsupported : g_action_group_get_action_state_type : return type : Blacklisted record : GVariantType
 

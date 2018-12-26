@@ -41,7 +41,22 @@ func ComputeHmacForBytes(digestType ChecksumType, key *Bytes, data *Bytes) strin
 
 // Unsupported : g_log_structured_array : unsupported parameter fields :
 
-// Unsupported : g_log_variant : unsupported parameter fields : Blacklisted record : GVariant
+// LogVariant is a wrapper around the C function g_log_variant.
+func LogVariant(logDomain string, logLevel LogLevelFlags, fields *Variant) {
+	c_log_domain := C.CString(logDomain)
+	defer C.free(unsafe.Pointer(c_log_domain))
+
+	c_log_level := (C.GLogLevelFlags)(logLevel)
+
+	c_fields := (*C.GVariant)(C.NULL)
+	if fields != nil {
+		c_fields = (*C.GVariant)(fields.ToC())
+	}
+
+	C.g_log_variant(c_log_domain, c_log_level, c_fields)
+
+	return
+}
 
 // Unsupported : g_log_writer_default : unsupported parameter fields :
 

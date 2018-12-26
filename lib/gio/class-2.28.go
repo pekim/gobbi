@@ -84,6 +84,15 @@ import (
 		return g_application_command_line_printerr(cmdline, format);
     }
 */
+/*
+
+	void simpleaction_activateHandler(GObject *, GVariant *, gpointer);
+
+	static gulong SimpleAction_signal_connect_activate(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "activate", G_CALLBACK(simpleaction_activateHandler), data);
+	}
+
+*/
 import "C"
 
 // Application is a wrapper around the C record GApplication.
@@ -627,7 +636,18 @@ func (recv *ApplicationCommandLine) GetIsRemote() bool {
 	return retGo
 }
 
-// Unsupported : g_application_command_line_get_platform_data : return type : Blacklisted record : GVariant
+// GetPlatformData is a wrapper around the C function g_application_command_line_get_platform_data.
+func (recv *ApplicationCommandLine) GetPlatformData() *glib.Variant {
+	retC := C.g_application_command_line_get_platform_data((*C.GApplicationCommandLine)(recv.native))
+	var retGo (*glib.Variant)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = glib.VariantNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
 
 // Getenv is a wrapper around the C function g_application_command_line_getenv.
 func (recv *ApplicationCommandLine) Getenv(name string) string {
@@ -709,13 +729,96 @@ func IOStreamSpliceFinish(result *AsyncResult) (bool, error) {
 // Unsupported : g_io_stream_splice_async : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
 // g_settings_list_relocatable_schemas : no return type
-// Unsupported : g_settings_get_range : return type : Blacklisted record : GVariant
+// GetRange is a wrapper around the C function g_settings_get_range.
+func (recv *Settings) GetRange(key string) *glib.Variant {
+	c_key := C.CString(key)
+	defer C.free(unsafe.Pointer(c_key))
 
-// Unsupported : g_settings_range_check : unsupported parameter value : Blacklisted record : GVariant
+	retC := C.g_settings_get_range((*C.GSettings)(recv.native), c_key)
+	retGo := glib.VariantNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// RangeCheck is a wrapper around the C function g_settings_range_check.
+func (recv *Settings) RangeCheck(key string, value *glib.Variant) bool {
+	c_key := C.CString(key)
+	defer C.free(unsafe.Pointer(c_key))
+
+	c_value := (*C.GVariant)(C.NULL)
+	if value != nil {
+		c_value = (*C.GVariant)(value.ToC())
+	}
+
+	retC := C.g_settings_range_check((*C.GSettings)(recv.native), c_key, c_value)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
 
 // Blacklisted : g_settings_backend_get_default
 
-// Unsupported signal 'activate' for SimpleAction : unsupported parameter parameter : type GLib.Variant : Blacklisted record : GVariant
+type signalSimpleActionActivateDetail struct {
+	callback  SimpleActionSignalActivateCallback
+	handlerID C.gulong
+}
+
+var signalSimpleActionActivateId int
+var signalSimpleActionActivateMap = make(map[int]signalSimpleActionActivateDetail)
+var signalSimpleActionActivateLock sync.RWMutex
+
+// SimpleActionSignalActivateCallback is a callback function for a 'activate' signal emitted from a SimpleAction.
+type SimpleActionSignalActivateCallback func(parameter *glib.Variant)
+
+/*
+ConnectActivate connects the callback to the 'activate' signal for the SimpleAction.
+
+The returned value represents the connection, and may be passed to DisconnectActivate to remove it.
+*/
+func (recv *SimpleAction) ConnectActivate(callback SimpleActionSignalActivateCallback) int {
+	signalSimpleActionActivateLock.Lock()
+	defer signalSimpleActionActivateLock.Unlock()
+
+	signalSimpleActionActivateId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.SimpleAction_signal_connect_activate(instance, C.gpointer(uintptr(signalSimpleActionActivateId)))
+
+	detail := signalSimpleActionActivateDetail{callback, handlerID}
+	signalSimpleActionActivateMap[signalSimpleActionActivateId] = detail
+
+	return signalSimpleActionActivateId
+}
+
+/*
+DisconnectActivate disconnects a callback from the 'activate' signal for the SimpleAction.
+
+The connectionID should be a value returned from a call to ConnectActivate.
+*/
+func (recv *SimpleAction) DisconnectActivate(connectionID int) {
+	signalSimpleActionActivateLock.Lock()
+	defer signalSimpleActionActivateLock.Unlock()
+
+	detail, exists := signalSimpleActionActivateMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalSimpleActionActivateMap, connectionID)
+}
+
+//export simpleaction_activateHandler
+func simpleaction_activateHandler(_ *C.GObject, c_parameter *C.GVariant, data C.gpointer) {
+	signalSimpleActionActivateLock.RLock()
+	defer signalSimpleActionActivateLock.RUnlock()
+
+	parameter := glib.VariantNewFromC(unsafe.Pointer(c_parameter))
+
+	index := int(uintptr(data))
+	callback := signalSimpleActionActivateMap[index].callback
+	callback(parameter)
+}
 
 // Unsupported : g_simple_action_new : unsupported parameter parameter_type : Blacklisted record : GVariantType
 

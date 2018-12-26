@@ -19,9 +19,3 @@ package gio
 // #include <gio/gunixsocketaddress.h>
 // #include <stdlib.h>
 import "C"
-
-// Unsupported : g_action_parse_detailed_name : unsupported parameter target_value : Blacklisted record : GVariant
-
-// Unsupported : g_action_print_detailed_name : unsupported parameter target_value : Blacklisted record : GVariant
-
-// Unsupported : g_icon_deserialize : unsupported parameter value : Blacklisted record : GVariant

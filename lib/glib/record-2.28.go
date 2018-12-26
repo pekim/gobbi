@@ -3,6 +3,11 @@
 
 package glib
 
+import (
+	"fmt"
+	"unsafe"
+)
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -10,6 +15,12 @@ package glib
 // #include <glib/gstdio.h>
 // #include <glib-unix.h>
 // #include <stdlib.h>
+/*
+
+	static gboolean _g_variant_lookup(GVariant* dictionary, const gchar* key, const gchar* format_string) {
+		return g_variant_lookup(dictionary, key, format_string);
+    }
+*/
 import "C"
 
 // g_list_free_full : unsupported parameter free_func : no type generator for DestroyNotify (GDestroyNotify) for param free_func
@@ -53,3 +64,20 @@ func (recv *Source) RemoveChildSource(childSource *Source) {
 
 	return
 }
+
+// Lookup is a wrapper around the C function g_variant_lookup.
+func (recv *Variant) Lookup(key string, formatString string, args ...interface{}) bool {
+	c_key := C.CString(key)
+	defer C.free(unsafe.Pointer(c_key))
+
+	goFormattedString := fmt.Sprintf(formatString, args...)
+	c_format_string := C.CString(goFormattedString)
+	defer C.free(unsafe.Pointer(c_format_string))
+
+	retC := C._g_variant_lookup((*C.GVariant)(recv.native), c_key, c_format_string)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// Unsupported : g_variant_lookup_value : unsupported parameter expected_type : Blacklisted record : GVariantType

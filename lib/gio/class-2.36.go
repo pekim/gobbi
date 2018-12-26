@@ -36,6 +36,15 @@ import (
 */
 /*
 
+	void applaunchcontext_launchedHandler(GObject *, GAppInfo *, GVariant *, gpointer);
+
+	static gulong AppLaunchContext_signal_connect_launched(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "launched", G_CALLBACK(applaunchcontext_launchedHandler), data);
+	}
+
+*/
+/*
+
 	static void _g_task_return_new_error(GTask* task, GQuark domain, gint code, const char* format) {
 		return g_task_return_new_error(task, domain, code, format);
     }
@@ -104,7 +113,69 @@ func applaunchcontext_launchFailedHandler(_ *C.GObject, c_startup_notify_id *C.g
 	callback(startupNotifyId)
 }
 
-// Unsupported signal 'launched' for AppLaunchContext : unsupported parameter platform_data : type GLib.Variant : Blacklisted record : GVariant
+type signalAppLaunchContextLaunchedDetail struct {
+	callback  AppLaunchContextSignalLaunchedCallback
+	handlerID C.gulong
+}
+
+var signalAppLaunchContextLaunchedId int
+var signalAppLaunchContextLaunchedMap = make(map[int]signalAppLaunchContextLaunchedDetail)
+var signalAppLaunchContextLaunchedLock sync.RWMutex
+
+// AppLaunchContextSignalLaunchedCallback is a callback function for a 'launched' signal emitted from a AppLaunchContext.
+type AppLaunchContextSignalLaunchedCallback func(info *AppInfo, platformData *glib.Variant)
+
+/*
+ConnectLaunched connects the callback to the 'launched' signal for the AppLaunchContext.
+
+The returned value represents the connection, and may be passed to DisconnectLaunched to remove it.
+*/
+func (recv *AppLaunchContext) ConnectLaunched(callback AppLaunchContextSignalLaunchedCallback) int {
+	signalAppLaunchContextLaunchedLock.Lock()
+	defer signalAppLaunchContextLaunchedLock.Unlock()
+
+	signalAppLaunchContextLaunchedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.AppLaunchContext_signal_connect_launched(instance, C.gpointer(uintptr(signalAppLaunchContextLaunchedId)))
+
+	detail := signalAppLaunchContextLaunchedDetail{callback, handlerID}
+	signalAppLaunchContextLaunchedMap[signalAppLaunchContextLaunchedId] = detail
+
+	return signalAppLaunchContextLaunchedId
+}
+
+/*
+DisconnectLaunched disconnects a callback from the 'launched' signal for the AppLaunchContext.
+
+The connectionID should be a value returned from a call to ConnectLaunched.
+*/
+func (recv *AppLaunchContext) DisconnectLaunched(connectionID int) {
+	signalAppLaunchContextLaunchedLock.Lock()
+	defer signalAppLaunchContextLaunchedLock.Unlock()
+
+	detail, exists := signalAppLaunchContextLaunchedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalAppLaunchContextLaunchedMap, connectionID)
+}
+
+//export applaunchcontext_launchedHandler
+func applaunchcontext_launchedHandler(_ *C.GObject, c_info *C.GAppInfo, c_platform_data *C.GVariant, data C.gpointer) {
+	signalAppLaunchContextLaunchedLock.RLock()
+	defer signalAppLaunchContextLaunchedLock.RUnlock()
+
+	info := AppInfoNewFromC(unsafe.Pointer(c_info))
+
+	platformData := glib.VariantNewFromC(unsafe.Pointer(c_platform_data))
+
+	index := int(uintptr(data))
+	callback := signalAppLaunchContextLaunchedMap[index].callback
+	callback(info, platformData)
+}
 
 // CreateFileForArg is a wrapper around the C function g_application_command_line_create_file_for_arg.
 func (recv *ApplicationCommandLine) CreateFileForArg(arg string) *File {

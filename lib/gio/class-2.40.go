@@ -327,7 +327,23 @@ func (recv *Notification) AddButtonWithTarget(label string, action string, targe
 	return
 }
 
-// Unsupported : g_notification_add_button_with_target_value : unsupported parameter target : Blacklisted record : GVariant
+// AddButtonWithTargetValue is a wrapper around the C function g_notification_add_button_with_target_value.
+func (recv *Notification) AddButtonWithTargetValue(label string, action string, target *glib.Variant) {
+	c_label := C.CString(label)
+	defer C.free(unsafe.Pointer(c_label))
+
+	c_action := C.CString(action)
+	defer C.free(unsafe.Pointer(c_action))
+
+	c_target := (*C.GVariant)(C.NULL)
+	if target != nil {
+		c_target = (*C.GVariant)(target.ToC())
+	}
+
+	C.g_notification_add_button_with_target_value((*C.GNotification)(recv.native), c_label, c_action, c_target)
+
+	return
+}
 
 // SetBody is a wrapper around the C function g_notification_set_body.
 func (recv *Notification) SetBody(body string) {
@@ -363,7 +379,20 @@ func (recv *Notification) SetDefaultActionAndTarget(action string, targetFormat 
 	return
 }
 
-// Unsupported : g_notification_set_default_action_and_target_value : unsupported parameter target : Blacklisted record : GVariant
+// SetDefaultActionAndTargetValue is a wrapper around the C function g_notification_set_default_action_and_target_value.
+func (recv *Notification) SetDefaultActionAndTargetValue(action string, target *glib.Variant) {
+	c_action := C.CString(action)
+	defer C.free(unsafe.Pointer(c_action))
+
+	c_target := (*C.GVariant)(C.NULL)
+	if target != nil {
+		c_target = (*C.GVariant)(target.ToC())
+	}
+
+	C.g_notification_set_default_action_and_target_value((*C.GNotification)(recv.native), c_action, c_target)
+
+	return
+}
 
 // SetIcon is a wrapper around the C function g_notification_set_icon.
 func (recv *Notification) SetIcon(icon *Icon) {
@@ -431,9 +460,37 @@ func (recv *OutputStream) Printf(cancellable *Cancellable, error *glib.Error, fo
 
 // Unsupported : g_output_stream_vprintf : unsupported parameter args : no type generator for va_list (va_list) for param args
 
-// Unsupported : g_settings_get_default_value : return type : Blacklisted record : GVariant
+// GetDefaultValue is a wrapper around the C function g_settings_get_default_value.
+func (recv *Settings) GetDefaultValue(key string) *glib.Variant {
+	c_key := C.CString(key)
+	defer C.free(unsafe.Pointer(c_key))
 
-// Unsupported : g_settings_get_user_value : return type : Blacklisted record : GVariant
+	retC := C.g_settings_get_default_value((*C.GSettings)(recv.native), c_key)
+	var retGo (*glib.Variant)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = glib.VariantNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
+
+// GetUserValue is a wrapper around the C function g_settings_get_user_value.
+func (recv *Settings) GetUserValue(key string) *glib.Variant {
+	c_key := C.CString(key)
+	defer C.free(unsafe.Pointer(c_key))
+
+	retC := C.g_settings_get_user_value((*C.GSettings)(recv.native), c_key)
+	var retGo (*glib.Variant)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = glib.VariantNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
 
 // Subprocess is a wrapper around the C record GSubprocess.
 type Subprocess struct {

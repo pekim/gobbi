@@ -6,6 +6,7 @@ package gtk
 import (
 	gdk "github.com/pekim/gobbi/lib/gdk"
 	gio "github.com/pekim/gobbi/lib/gio"
+	glib "github.com/pekim/gobbi/lib/glib"
 	"sync"
 	"unsafe"
 )
@@ -30,9 +31,26 @@ import "C"
 
 // Unsupported : gtk_clipboard_get_selection : return type : Blacklisted record : GdkAtom
 
-// Unsupported : gtk_file_filter_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
+// FileFilterNewFromGvariant is a wrapper around the C function gtk_file_filter_new_from_gvariant.
+func FileFilterNewFromGvariant(variant *glib.Variant) *FileFilter {
+	c_variant := (*C.GVariant)(C.NULL)
+	if variant != nil {
+		c_variant = (*C.GVariant)(variant.ToC())
+	}
 
-// Unsupported : gtk_file_filter_to_gvariant : return type : Blacklisted record : GVariant
+	retC := C.gtk_file_filter_new_from_gvariant(c_variant)
+	retGo := FileFilterNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// ToGvariant is a wrapper around the C function gtk_file_filter_to_gvariant.
+func (recv *FileFilter) ToGvariant() *glib.Variant {
+	retC := C.gtk_file_filter_to_gvariant((*C.GtkFileFilter)(recv.native))
+	retGo := glib.VariantNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetUseEs is a wrapper around the C function gtk_gl_area_get_use_es.
 func (recv *GLArea) GetUseEs() bool {
@@ -183,9 +201,30 @@ func (recv *PadController) SetAction(type_ PadActionType, index int32, mode int3
 
 // Unsupported : gtk_pad_controller_set_action_entries : unsupported parameter entries :
 
-// Unsupported : gtk_page_setup_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
+// PageSetupNewFromGvariant is a wrapper around the C function gtk_page_setup_new_from_gvariant.
+func PageSetupNewFromGvariant(variant *glib.Variant) *PageSetup {
+	c_variant := (*C.GVariant)(C.NULL)
+	if variant != nil {
+		c_variant = (*C.GVariant)(variant.ToC())
+	}
 
-// Unsupported : gtk_page_setup_to_gvariant : return type : Blacklisted record : GVariant
+	retC := C.gtk_page_setup_new_from_gvariant(c_variant)
+	retGo := PageSetupNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
+}
+
+// ToGvariant is a wrapper around the C function gtk_page_setup_to_gvariant.
+func (recv *PageSetup) ToGvariant() *glib.Variant {
+	retC := C.gtk_page_setup_to_gvariant((*C.GtkPageSetup)(recv.native))
+	retGo := glib.VariantNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Popdown is a wrapper around the C function gtk_popover_popdown.
 func (recv *Popover) Popdown() {
@@ -201,9 +240,30 @@ func (recv *Popover) Popup() {
 	return
 }
 
-// Unsupported : gtk_print_settings_new_from_gvariant : unsupported parameter variant : Blacklisted record : GVariant
+// PrintSettingsNewFromGvariant is a wrapper around the C function gtk_print_settings_new_from_gvariant.
+func PrintSettingsNewFromGvariant(variant *glib.Variant) *PrintSettings {
+	c_variant := (*C.GVariant)(C.NULL)
+	if variant != nil {
+		c_variant = (*C.GVariant)(variant.ToC())
+	}
 
-// Unsupported : gtk_print_settings_to_gvariant : return type : Blacklisted record : GVariant
+	retC := C.gtk_print_settings_new_from_gvariant(c_variant)
+	retGo := PrintSettingsNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
+}
+
+// ToGvariant is a wrapper around the C function gtk_print_settings_to_gvariant.
+func (recv *PrintSettings) ToGvariant() *glib.Variant {
+	retC := C.gtk_print_settings_to_gvariant((*C.GtkPrintSettings)(recv.native))
+	retGo := glib.VariantNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetMaxContentHeight is a wrapper around the C function gtk_scrolled_window_get_max_content_height.
 func (recv *ScrolledWindow) GetMaxContentHeight() int32 {

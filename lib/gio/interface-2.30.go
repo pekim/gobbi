@@ -81,7 +81,17 @@ import (
 */
 import "C"
 
-// Unsupported : g_action_change_state : unsupported parameter value : Blacklisted record : GVariant
+// ChangeState is a wrapper around the C function g_action_change_state.
+func (recv *Action) ChangeState(value *glib.Variant) {
+	c_value := (*C.GVariant)(C.NULL)
+	if value != nil {
+		c_value = (*C.GVariant)(value.ToC())
+	}
+
+	C.g_action_change_state((*C.GAction)(recv.native), c_value)
+
+	return
+}
 
 // DBusInterface is a wrapper around the C record GDBusInterface.
 type DBusInterface struct {

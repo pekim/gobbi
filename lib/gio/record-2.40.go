@@ -3,7 +3,10 @@
 
 package gio
 
-import "unsafe"
+import (
+	glib "github.com/pekim/gobbi/lib/glib"
+	"unsafe"
+)
 
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
@@ -44,13 +47,36 @@ func (recv *SettingsSchema) HasKey(name string) bool {
 	return retGo
 }
 
-// Unsupported : g_settings_schema_key_get_default_value : return type : Blacklisted record : GVariant
+// GetDefaultValue is a wrapper around the C function g_settings_schema_key_get_default_value.
+func (recv *SettingsSchemaKey) GetDefaultValue() *glib.Variant {
+	retC := C.g_settings_schema_key_get_default_value((*C.GSettingsSchemaKey)(recv.native))
+	retGo := glib.VariantNewFromC(unsafe.Pointer(retC))
 
-// Unsupported : g_settings_schema_key_get_range : return type : Blacklisted record : GVariant
+	return retGo
+}
+
+// GetRange is a wrapper around the C function g_settings_schema_key_get_range.
+func (recv *SettingsSchemaKey) GetRange() *glib.Variant {
+	retC := C.g_settings_schema_key_get_range((*C.GSettingsSchemaKey)(recv.native))
+	retGo := glib.VariantNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_settings_schema_key_get_value_type : return type : Blacklisted record : GVariantType
 
-// Unsupported : g_settings_schema_key_range_check : unsupported parameter value : Blacklisted record : GVariant
+// RangeCheck is a wrapper around the C function g_settings_schema_key_range_check.
+func (recv *SettingsSchemaKey) RangeCheck(value *glib.Variant) bool {
+	c_value := (*C.GVariant)(C.NULL)
+	if value != nil {
+		c_value = (*C.GVariant)(value.ToC())
+	}
+
+	retC := C.g_settings_schema_key_range_check((*C.GSettingsSchemaKey)(recv.native), c_value)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
 
 // Ref is a wrapper around the C function g_settings_schema_key_ref.
 func (recv *SettingsSchemaKey) Ref() *SettingsSchemaKey {

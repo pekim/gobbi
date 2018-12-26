@@ -53,6 +53,23 @@ func (recv *KeyFile) SaveToFile(filename string) (bool, error) {
 
 // Unsupported : g_option_context_parse_strv : unsupported parameter arguments :
 
+// VariantParseErrorPrintContext is a wrapper around the C function g_variant_parse_error_print_context.
+func VariantParseErrorPrintContext(error *Error, sourceStr string) string {
+	c_error := (*C.GError)(C.NULL)
+	if error != nil {
+		c_error = (*C.GError)(error.ToC())
+	}
+
+	c_source_str := C.CString(sourceStr)
+	defer C.free(unsafe.Pointer(c_source_str))
+
+	retC := C.g_variant_parse_error_print_context(c_error, c_source_str)
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // VariantDict is a wrapper around the C record GVariantDict.
 type VariantDict struct {
 	native *C.GVariantDict
@@ -79,7 +96,18 @@ func (recv *VariantDict) Equals(other *VariantDict) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// Unsupported : g_variant_dict_new : unsupported parameter from_asv : Blacklisted record : GVariant
+// VariantDictNew is a wrapper around the C function g_variant_dict_new.
+func VariantDictNew(fromAsv *Variant) *VariantDict {
+	c_from_asv := (*C.GVariant)(C.NULL)
+	if fromAsv != nil {
+		c_from_asv = (*C.GVariant)(fromAsv.ToC())
+	}
+
+	retC := C.g_variant_dict_new(c_from_asv)
+	retGo := VariantDictNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Clear is a wrapper around the C function g_variant_dict_clear.
 func (recv *VariantDict) Clear() {
@@ -99,9 +127,25 @@ func (recv *VariantDict) Contains(key string) bool {
 	return retGo
 }
 
-// Unsupported : g_variant_dict_end : return type : Blacklisted record : GVariant
+// End is a wrapper around the C function g_variant_dict_end.
+func (recv *VariantDict) End() *Variant {
+	retC := C.g_variant_dict_end((*C.GVariantDict)(recv.native))
+	retGo := VariantNewFromC(unsafe.Pointer(retC))
 
-// Unsupported : g_variant_dict_init : unsupported parameter from_asv : Blacklisted record : GVariant
+	return retGo
+}
+
+// Init is a wrapper around the C function g_variant_dict_init.
+func (recv *VariantDict) Init(fromAsv *Variant) {
+	c_from_asv := (*C.GVariant)(C.NULL)
+	if fromAsv != nil {
+		c_from_asv = (*C.GVariant)(fromAsv.ToC())
+	}
+
+	C.g_variant_dict_init((*C.GVariantDict)(recv.native), c_from_asv)
+
+	return
+}
 
 // Insert is a wrapper around the C function g_variant_dict_insert.
 func (recv *VariantDict) Insert(key string, formatString string, args ...interface{}) {
@@ -117,7 +161,20 @@ func (recv *VariantDict) Insert(key string, formatString string, args ...interfa
 	return
 }
 
-// Unsupported : g_variant_dict_insert_value : unsupported parameter value : Blacklisted record : GVariant
+// InsertValue is a wrapper around the C function g_variant_dict_insert_value.
+func (recv *VariantDict) InsertValue(key string, value *Variant) {
+	c_key := C.CString(key)
+	defer C.free(unsafe.Pointer(c_key))
+
+	c_value := (*C.GVariant)(C.NULL)
+	if value != nil {
+		c_value = (*C.GVariant)(value.ToC())
+	}
+
+	C.g_variant_dict_insert_value((*C.GVariantDict)(recv.native), c_key, c_value)
+
+	return
+}
 
 // Lookup is a wrapper around the C function g_variant_dict_lookup.
 func (recv *VariantDict) Lookup(key string, formatString string, args ...interface{}) bool {

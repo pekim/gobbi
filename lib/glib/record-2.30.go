@@ -166,3 +166,9 @@ func RegexEscapeNul(string string, length int32) string {
 
 	return retGo
 }
+
+// Unsupported : g_variant_new_objv : unsupported parameter strv :
+
+// Unsupported : g_variant_dup_objv : no return type
+
+// Unsupported : g_variant_get_objv : no return type

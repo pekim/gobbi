@@ -210,7 +210,17 @@ func (recv *OutputStream) WriteAllFinish(result *AsyncResult) (bool, uint64, err
 	return retGo, bytesWritten, goError
 }
 
-// Unsupported : g_simple_action_set_state_hint : unsupported parameter state_hint : Blacklisted record : GVariant
+// SetStateHint is a wrapper around the C function g_simple_action_set_state_hint.
+func (recv *SimpleAction) SetStateHint(stateHint *glib.Variant) {
+	c_state_hint := (*C.GVariant)(C.NULL)
+	if stateHint != nil {
+		c_state_hint = (*C.GVariant)(stateHint.ToC())
+	}
+
+	C.g_simple_action_set_state_hint((*C.GSimpleAction)(recv.native), c_state_hint)
+
+	return
+}
 
 // SimpleIOStream is a wrapper around the C record GSimpleIOStream.
 type SimpleIOStream struct {

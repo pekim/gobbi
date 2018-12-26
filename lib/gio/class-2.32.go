@@ -731,9 +731,29 @@ func (recv *MenuAttributeIter) GetName() string {
 	return retGo
 }
 
-// Unsupported : g_menu_attribute_iter_get_next : unsupported parameter value : Blacklisted record : GVariant
+// GetNext is a wrapper around the C function g_menu_attribute_iter_get_next.
+func (recv *MenuAttributeIter) GetNext() (bool, string, *glib.Variant) {
+	var c_out_name *C.gchar
 
-// Unsupported : g_menu_attribute_iter_get_value : return type : Blacklisted record : GVariant
+	var c_value *C.GVariant
+
+	retC := C.g_menu_attribute_iter_get_next((*C.GMenuAttributeIter)(recv.native), &c_out_name, &c_value)
+	retGo := retC == C.TRUE
+
+	outName := C.GoString(c_out_name)
+
+	value := glib.VariantNewFromC(unsafe.Pointer(c_value))
+
+	return retGo, outName, value
+}
+
+// GetValue is a wrapper around the C function g_menu_attribute_iter_get_value.
+func (recv *MenuAttributeIter) GetValue() *glib.Variant {
+	retC := C.g_menu_attribute_iter_get_value((*C.GMenuAttributeIter)(recv.native))
+	retGo := glib.VariantNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Next is a wrapper around the C function g_menu_attribute_iter_next.
 func (recv *MenuAttributeIter) Next() bool {
@@ -862,7 +882,20 @@ func (recv *MenuItem) SetActionAndTarget(action string, formatString string, arg
 	return
 }
 
-// Unsupported : g_menu_item_set_action_and_target_value : unsupported parameter target_value : Blacklisted record : GVariant
+// SetActionAndTargetValue is a wrapper around the C function g_menu_item_set_action_and_target_value.
+func (recv *MenuItem) SetActionAndTargetValue(action string, targetValue *glib.Variant) {
+	c_action := C.CString(action)
+	defer C.free(unsafe.Pointer(c_action))
+
+	c_target_value := (*C.GVariant)(C.NULL)
+	if targetValue != nil {
+		c_target_value = (*C.GVariant)(targetValue.ToC())
+	}
+
+	C.g_menu_item_set_action_and_target_value((*C.GMenuItem)(recv.native), c_action, c_target_value)
+
+	return
+}
 
 // SetAttribute is a wrapper around the C function g_menu_item_set_attribute.
 func (recv *MenuItem) SetAttribute(attribute string, formatString string, args ...interface{}) {
@@ -878,7 +911,20 @@ func (recv *MenuItem) SetAttribute(attribute string, formatString string, args .
 	return
 }
 
-// Unsupported : g_menu_item_set_attribute_value : unsupported parameter value : Blacklisted record : GVariant
+// SetAttributeValue is a wrapper around the C function g_menu_item_set_attribute_value.
+func (recv *MenuItem) SetAttributeValue(attribute string, value *glib.Variant) {
+	c_attribute := C.CString(attribute)
+	defer C.free(unsafe.Pointer(c_attribute))
+
+	c_value := (*C.GVariant)(C.NULL)
+	if value != nil {
+		c_value = (*C.GVariant)(value.ToC())
+	}
+
+	C.g_menu_item_set_attribute_value((*C.GMenuItem)(recv.native), c_attribute, c_value)
+
+	return
+}
 
 // SetDetailedAction is a wrapper around the C function g_menu_item_set_detailed_action.
 func (recv *MenuItem) SetDetailedAction(detailedAction string) {

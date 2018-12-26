@@ -21,7 +21,23 @@ import "C"
 
 // Unsupported : gtk_about_dialog_add_credit_section : unsupported parameter people :
 
-// Unsupported : gtk_application_add_accelerator : unsupported parameter parameter : Blacklisted record : GVariant
+// AddAccelerator is a wrapper around the C function gtk_application_add_accelerator.
+func (recv *Application) AddAccelerator(accelerator string, actionName string, parameter *glib.Variant) {
+	c_accelerator := C.CString(accelerator)
+	defer C.free(unsafe.Pointer(c_accelerator))
+
+	c_action_name := C.CString(actionName)
+	defer C.free(unsafe.Pointer(c_action_name))
+
+	c_parameter := (*C.GVariant)(C.NULL)
+	if parameter != nil {
+		c_parameter = (*C.GVariant)(parameter.ToC())
+	}
+
+	C.gtk_application_add_accelerator((*C.GtkApplication)(recv.native), c_accelerator, c_action_name, c_parameter)
+
+	return
+}
 
 // GetAppMenu is a wrapper around the C function gtk_application_get_app_menu.
 func (recv *Application) GetAppMenu() *gio.MenuModel {
@@ -72,7 +88,20 @@ func (recv *Application) IsInhibited(flags ApplicationInhibitFlags) bool {
 	return retGo
 }
 
-// Unsupported : gtk_application_remove_accelerator : unsupported parameter parameter : Blacklisted record : GVariant
+// RemoveAccelerator is a wrapper around the C function gtk_application_remove_accelerator.
+func (recv *Application) RemoveAccelerator(actionName string, parameter *glib.Variant) {
+	c_action_name := C.CString(actionName)
+	defer C.free(unsafe.Pointer(c_action_name))
+
+	c_parameter := (*C.GVariant)(C.NULL)
+	if parameter != nil {
+		c_parameter = (*C.GVariant)(parameter.ToC())
+	}
+
+	C.gtk_application_remove_accelerator((*C.GtkApplication)(recv.native), c_action_name, c_parameter)
+
+	return
+}
 
 // SetAppMenu is a wrapper around the C function gtk_application_set_app_menu.
 func (recv *Application) SetAppMenu(appMenu *gio.MenuModel) {

@@ -6,6 +6,7 @@ package gtk
 import (
 	"fmt"
 	gdk "github.com/pekim/gobbi/lib/gdk"
+	glib "github.com/pekim/gobbi/lib/glib"
 	"sync"
 	"unsafe"
 )
@@ -42,7 +43,13 @@ func (recv *Actionable) GetActionName() string {
 	return retGo
 }
 
-// Unsupported : gtk_actionable_get_action_target_value : return type : Blacklisted record : GVariant
+// GetActionTargetValue is a wrapper around the C function gtk_actionable_get_action_target_value.
+func (recv *Actionable) GetActionTargetValue() *glib.Variant {
+	retC := C.gtk_actionable_get_action_target_value((*C.GtkActionable)(recv.native))
+	retGo := glib.VariantNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // SetActionName is a wrapper around the C function gtk_actionable_set_action_name.
 func (recv *Actionable) SetActionName(actionName string) {
@@ -65,7 +72,17 @@ func (recv *Actionable) SetActionTarget(formatString string, args ...interface{}
 	return
 }
 
-// Unsupported : gtk_actionable_set_action_target_value : unsupported parameter target_value : Blacklisted record : GVariant
+// SetActionTargetValue is a wrapper around the C function gtk_actionable_set_action_target_value.
+func (recv *Actionable) SetActionTargetValue(targetValue *glib.Variant) {
+	c_target_value := (*C.GVariant)(C.NULL)
+	if targetValue != nil {
+		c_target_value = (*C.GVariant)(targetValue.ToC())
+	}
+
+	C.gtk_actionable_set_action_target_value((*C.GtkActionable)(recv.native), c_target_value)
+
+	return
+}
 
 // SetDetailedActionName is a wrapper around the C function gtk_actionable_set_detailed_action_name.
 func (recv *Actionable) SetDetailedActionName(detailedActionName string) {

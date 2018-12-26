@@ -419,3 +419,5 @@ func (recv *Thread) Unref() {
 
 	return
 }
+
+// Unsupported : g_variant_new_fixed_array : unsupported parameter element_type : Blacklisted record : GVariantType

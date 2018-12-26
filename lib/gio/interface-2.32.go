@@ -197,9 +197,45 @@ func (recv *NetworkMonitor) GetNetworkAvailable() bool {
 	return retGo
 }
 
-// Unsupported : g_remote_action_group_activate_action_full : unsupported parameter parameter : Blacklisted record : GVariant
+// ActivateActionFull is a wrapper around the C function g_remote_action_group_activate_action_full.
+func (recv *RemoteActionGroup) ActivateActionFull(actionName string, parameter *glib.Variant, platformData *glib.Variant) {
+	c_action_name := C.CString(actionName)
+	defer C.free(unsafe.Pointer(c_action_name))
 
-// Unsupported : g_remote_action_group_change_action_state_full : unsupported parameter value : Blacklisted record : GVariant
+	c_parameter := (*C.GVariant)(C.NULL)
+	if parameter != nil {
+		c_parameter = (*C.GVariant)(parameter.ToC())
+	}
+
+	c_platform_data := (*C.GVariant)(C.NULL)
+	if platformData != nil {
+		c_platform_data = (*C.GVariant)(platformData.ToC())
+	}
+
+	C.g_remote_action_group_activate_action_full((*C.GRemoteActionGroup)(recv.native), c_action_name, c_parameter, c_platform_data)
+
+	return
+}
+
+// ChangeActionStateFull is a wrapper around the C function g_remote_action_group_change_action_state_full.
+func (recv *RemoteActionGroup) ChangeActionStateFull(actionName string, value *glib.Variant, platformData *glib.Variant) {
+	c_action_name := C.CString(actionName)
+	defer C.free(unsafe.Pointer(c_action_name))
+
+	c_value := (*C.GVariant)(C.NULL)
+	if value != nil {
+		c_value = (*C.GVariant)(value.ToC())
+	}
+
+	c_platform_data := (*C.GVariant)(C.NULL)
+	if platformData != nil {
+		c_platform_data = (*C.GVariant)(platformData.ToC())
+	}
+
+	C.g_remote_action_group_change_action_state_full((*C.GRemoteActionGroup)(recv.native), c_action_name, c_value, c_platform_data)
+
+	return
+}
 
 // GetSortKey is a wrapper around the C function g_volume_get_sort_key.
 func (recv *Volume) GetSortKey() string {

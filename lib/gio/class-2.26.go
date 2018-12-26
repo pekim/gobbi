@@ -423,11 +423,29 @@ func DBusConnectionNewSync(stream *IOStream, guid string, flags DBusConnectionFl
 // g_dbus_connection_new_for_address : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 // Unsupported : g_dbus_connection_add_filter : unsupported parameter filter_function : no type generator for DBusMessageFilterFunction (GDBusMessageFilterFunction) for param filter_function
 
-// Unsupported : g_dbus_connection_call : unsupported parameter parameters : Blacklisted record : GVariant
+// Unsupported : g_dbus_connection_call : unsupported parameter reply_type : Blacklisted record : GVariantType
 
-// Unsupported : g_dbus_connection_call_finish : return type : Blacklisted record : GVariant
+// CallFinish is a wrapper around the C function g_dbus_connection_call_finish.
+func (recv *DBusConnection) CallFinish(res *AsyncResult) (*glib.Variant, error) {
+	c_res := (*C.GAsyncResult)(res.ToC())
 
-// Unsupported : g_dbus_connection_call_sync : unsupported parameter parameters : Blacklisted record : GVariant
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_connection_call_finish((*C.GDBusConnection)(recv.native), c_res, &cThrowableError)
+	retGo := glib.VariantNewFromC(unsafe.Pointer(retC))
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
+
+// Unsupported : g_dbus_connection_call_sync : unsupported parameter reply_type : Blacklisted record : GVariantType
 
 // Unsupported : g_dbus_connection_close : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
@@ -474,7 +492,40 @@ func (recv *DBusConnection) CloseSync(cancellable *Cancellable) (bool, error) {
 	return retGo, goError
 }
 
-// Unsupported : g_dbus_connection_emit_signal : unsupported parameter parameters : Blacklisted record : GVariant
+// EmitSignal is a wrapper around the C function g_dbus_connection_emit_signal.
+func (recv *DBusConnection) EmitSignal(destinationBusName string, objectPath string, interfaceName string, signalName string, parameters *glib.Variant) (bool, error) {
+	c_destination_bus_name := C.CString(destinationBusName)
+	defer C.free(unsafe.Pointer(c_destination_bus_name))
+
+	c_object_path := C.CString(objectPath)
+	defer C.free(unsafe.Pointer(c_object_path))
+
+	c_interface_name := C.CString(interfaceName)
+	defer C.free(unsafe.Pointer(c_interface_name))
+
+	c_signal_name := C.CString(signalName)
+	defer C.free(unsafe.Pointer(c_signal_name))
+
+	c_parameters := (*C.GVariant)(C.NULL)
+	if parameters != nil {
+		c_parameters = (*C.GVariant)(parameters.ToC())
+	}
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_connection_emit_signal((*C.GDBusConnection)(recv.native), c_destination_bus_name, c_object_path, c_interface_name, c_signal_name, c_parameters, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
 
 // Unsupported : g_dbus_connection_flush : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
@@ -910,7 +961,13 @@ func (recv *DBusMessage) GetArg0() string {
 	return retGo
 }
 
-// Unsupported : g_dbus_message_get_body : return type : Blacklisted record : GVariant
+// GetBody is a wrapper around the C function g_dbus_message_get_body.
+func (recv *DBusMessage) GetBody() *glib.Variant {
+	retC := C.g_dbus_message_get_body((*C.GDBusMessage)(recv.native))
+	retGo := glib.VariantNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetByteOrder is a wrapper around the C function g_dbus_message_get_byte_order.
 func (recv *DBusMessage) GetByteOrder() DBusMessageByteOrder {
@@ -944,7 +1001,15 @@ func (recv *DBusMessage) GetFlags() DBusMessageFlags {
 	return retGo
 }
 
-// Unsupported : g_dbus_message_get_header : return type : Blacklisted record : GVariant
+// GetHeader is a wrapper around the C function g_dbus_message_get_header.
+func (recv *DBusMessage) GetHeader(headerField DBusMessageHeaderField) *glib.Variant {
+	c_header_field := (C.GDBusMessageHeaderField)(headerField)
+
+	retC := C.g_dbus_message_get_header((*C.GDBusMessage)(recv.native), c_header_field)
+	retGo := glib.VariantNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : g_dbus_message_get_header_fields : no return type
 
@@ -1093,7 +1158,17 @@ func (recv *DBusMessage) Print(indent uint32) string {
 	return retGo
 }
 
-// Unsupported : g_dbus_message_set_body : unsupported parameter body : Blacklisted record : GVariant
+// SetBody is a wrapper around the C function g_dbus_message_set_body.
+func (recv *DBusMessage) SetBody(body *glib.Variant) {
+	c_body := (*C.GVariant)(C.NULL)
+	if body != nil {
+		c_body = (*C.GVariant)(body.ToC())
+	}
+
+	C.g_dbus_message_set_body((*C.GDBusMessage)(recv.native), c_body)
+
+	return
+}
 
 // SetByteOrder is a wrapper around the C function g_dbus_message_set_byte_order.
 func (recv *DBusMessage) SetByteOrder(byteOrder DBusMessageByteOrder) {
@@ -1133,7 +1208,19 @@ func (recv *DBusMessage) SetFlags(flags DBusMessageFlags) {
 	return
 }
 
-// Unsupported : g_dbus_message_set_header : unsupported parameter value : Blacklisted record : GVariant
+// SetHeader is a wrapper around the C function g_dbus_message_set_header.
+func (recv *DBusMessage) SetHeader(headerField DBusMessageHeaderField, value *glib.Variant) {
+	c_header_field := (C.GDBusMessageHeaderField)(headerField)
+
+	c_value := (*C.GVariant)(C.NULL)
+	if value != nil {
+		c_value = (*C.GVariant)(value.ToC())
+	}
+
+	C.g_dbus_message_set_header((*C.GDBusMessage)(recv.native), c_header_field, c_value)
+
+	return
+}
 
 // SetInterface is a wrapper around the C function g_dbus_message_set_interface.
 func (recv *DBusMessage) SetInterface(value string) {
@@ -1348,7 +1435,13 @@ func (recv *DBusMethodInvocation) GetObjectPath() string {
 	return retGo
 }
 
-// Unsupported : g_dbus_method_invocation_get_parameters : return type : Blacklisted record : GVariant
+// GetParameters is a wrapper around the C function g_dbus_method_invocation_get_parameters.
+func (recv *DBusMethodInvocation) GetParameters() *glib.Variant {
+	retC := C.g_dbus_method_invocation_get_parameters((*C.GDBusMethodInvocation)(recv.native))
+	retGo := glib.VariantNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetSender is a wrapper around the C function g_dbus_method_invocation_get_sender.
 func (recv *DBusMethodInvocation) GetSender() string {
@@ -1422,7 +1515,17 @@ func (recv *DBusMethodInvocation) ReturnGerror(error *glib.Error) {
 	return
 }
 
-// Unsupported : g_dbus_method_invocation_return_value : unsupported parameter parameters : Blacklisted record : GVariant
+// ReturnValue is a wrapper around the C function g_dbus_method_invocation_return_value.
+func (recv *DBusMethodInvocation) ReturnValue(parameters *glib.Variant) {
+	c_parameters := (*C.GVariant)(C.NULL)
+	if parameters != nil {
+		c_parameters = (*C.GVariant)(parameters.ToC())
+	}
+
+	C.g_dbus_method_invocation_return_value((*C.GDBusMethodInvocation)(recv.native), c_parameters)
+
+	return
+}
 
 // DBusProxy is a wrapper around the C record GDBusProxy.
 type DBusProxy struct {
@@ -1616,13 +1719,78 @@ func DBusProxyNewSync(connection *DBusConnection, flags DBusProxyFlags, info *DB
 
 // g_dbus_proxy_new : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 // g_dbus_proxy_new_for_bus : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
-// Unsupported : g_dbus_proxy_call : unsupported parameter parameters : Blacklisted record : GVariant
+// Unsupported : g_dbus_proxy_call : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
-// Unsupported : g_dbus_proxy_call_finish : return type : Blacklisted record : GVariant
+// CallFinish is a wrapper around the C function g_dbus_proxy_call_finish.
+func (recv *DBusProxy) CallFinish(res *AsyncResult) (*glib.Variant, error) {
+	c_res := (*C.GAsyncResult)(res.ToC())
 
-// Unsupported : g_dbus_proxy_call_sync : unsupported parameter parameters : Blacklisted record : GVariant
+	var cThrowableError *C.GError
 
-// Unsupported : g_dbus_proxy_get_cached_property : return type : Blacklisted record : GVariant
+	retC := C.g_dbus_proxy_call_finish((*C.GDBusProxy)(recv.native), c_res, &cThrowableError)
+	retGo := glib.VariantNewFromC(unsafe.Pointer(retC))
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
+
+// CallSync is a wrapper around the C function g_dbus_proxy_call_sync.
+func (recv *DBusProxy) CallSync(methodName string, parameters *glib.Variant, flags DBusCallFlags, timeoutMsec int32, cancellable *Cancellable) (*glib.Variant, error) {
+	c_method_name := C.CString(methodName)
+	defer C.free(unsafe.Pointer(c_method_name))
+
+	c_parameters := (*C.GVariant)(C.NULL)
+	if parameters != nil {
+		c_parameters = (*C.GVariant)(parameters.ToC())
+	}
+
+	c_flags := (C.GDBusCallFlags)(flags)
+
+	c_timeout_msec := (C.gint)(timeoutMsec)
+
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_proxy_call_sync((*C.GDBusProxy)(recv.native), c_method_name, c_parameters, c_flags, c_timeout_msec, c_cancellable, &cThrowableError)
+	retGo := glib.VariantNewFromC(unsafe.Pointer(retC))
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
+
+// GetCachedProperty is a wrapper around the C function g_dbus_proxy_get_cached_property.
+func (recv *DBusProxy) GetCachedProperty(propertyName string) *glib.Variant {
+	c_property_name := C.CString(propertyName)
+	defer C.free(unsafe.Pointer(c_property_name))
+
+	retC := C.g_dbus_proxy_get_cached_property((*C.GDBusProxy)(recv.native), c_property_name)
+	var retGo (*glib.Variant)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = glib.VariantNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
 
 // Unsupported : g_dbus_proxy_get_cached_property_names : no return type
 
@@ -1696,7 +1864,20 @@ func (recv *DBusProxy) GetObjectPath() string {
 	return retGo
 }
 
-// Unsupported : g_dbus_proxy_set_cached_property : unsupported parameter value : Blacklisted record : GVariant
+// SetCachedProperty is a wrapper around the C function g_dbus_proxy_set_cached_property.
+func (recv *DBusProxy) SetCachedProperty(propertyName string, value *glib.Variant) {
+	c_property_name := C.CString(propertyName)
+	defer C.free(unsafe.Pointer(c_property_name))
+
+	c_value := (*C.GVariant)(C.NULL)
+	if value != nil {
+		c_value = (*C.GVariant)(value.ToC())
+	}
+
+	C.g_dbus_proxy_set_cached_property((*C.GDBusProxy)(recv.native), c_property_name, c_value)
+
+	return
+}
 
 // SetDefaultTimeout is a wrapper around the C function g_dbus_proxy_set_default_timeout.
 func (recv *DBusProxy) SetDefaultTimeout(timeoutMsec int32) {
@@ -2441,7 +2622,16 @@ func (recv *Settings) GetString(key string) string {
 
 // Unsupported : g_settings_get_strv : no return type
 
-// Unsupported : g_settings_get_value : return type : Blacklisted record : GVariant
+// GetValue is a wrapper around the C function g_settings_get_value.
+func (recv *Settings) GetValue(key string) *glib.Variant {
+	c_key := C.CString(key)
+	defer C.free(unsafe.Pointer(c_key))
+
+	retC := C.g_settings_get_value((*C.GSettings)(recv.native), c_key)
+	retGo := glib.VariantNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // IsWritable is a wrapper around the C function g_settings_is_writable.
 func (recv *Settings) IsWritable(name string) bool {
@@ -2525,7 +2715,21 @@ func (recv *Settings) SetString(key string, value string) bool {
 
 // Unsupported : g_settings_set_strv : unsupported parameter value :
 
-// Unsupported : g_settings_set_value : unsupported parameter value : Blacklisted record : GVariant
+// SetValue is a wrapper around the C function g_settings_set_value.
+func (recv *Settings) SetValue(key string, value *glib.Variant) bool {
+	c_key := C.CString(key)
+	defer C.free(unsafe.Pointer(c_key))
+
+	c_value := (*C.GVariant)(C.NULL)
+	if value != nil {
+		c_value = (*C.GVariant)(value.ToC())
+	}
+
+	retC := C.g_settings_set_value((*C.GSettings)(recv.native), c_key, c_value)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
 
 // g_settings_backend_flatten_tree : unsupported parameter keys : output array param keys
 // Blacklisted : g_settings_backend_changed

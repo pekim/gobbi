@@ -5,6 +5,7 @@ package gio
 
 import (
 	glib "github.com/pekim/gobbi/lib/glib"
+	gobject "github.com/pekim/gobbi/lib/gobject"
 	"unsafe"
 )
 
@@ -27,7 +28,21 @@ import "C"
 
 // Unsupported : g_dbus_gvalue_to_gvariant : unsupported parameter type : Blacklisted record : GVariantType
 
-// Unsupported : g_dbus_gvariant_to_gvalue : unsupported parameter value : Blacklisted record : GVariant
+// DbusGvariantToGvalue is a wrapper around the C function g_dbus_gvariant_to_gvalue.
+func DbusGvariantToGvalue(value *glib.Variant) *gobject.Value {
+	c_value := (*C.GVariant)(C.NULL)
+	if value != nil {
+		c_value = (*C.GVariant)(value.ToC())
+	}
+
+	var c_out_gvalue C.GValue
+
+	C.g_dbus_gvariant_to_gvalue(c_value, &c_out_gvalue)
+
+	outGvalue := gobject.ValueNewFromC(unsafe.Pointer(&c_out_gvalue))
+
+	return outGvalue
+}
 
 // IoModulesLoadAllInDirectoryWithScope is a wrapper around the C function g_io_modules_load_all_in_directory_with_scope.
 func IoModulesLoadAllInDirectoryWithScope(dirname string, scope *IOModuleScope) *glib.List {

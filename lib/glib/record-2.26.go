@@ -798,6 +798,44 @@ func (recv *TimeZone) Unref() {
 	return
 }
 
+// VariantNewBytestring is a wrapper around the C function g_variant_new_bytestring.
+func VariantNewBytestring(string []uint8) *Variant {
+	c_string := &string[0]
+
+	retC := C.g_variant_new_bytestring((*C.gchar)(unsafe.Pointer(c_string)))
+	retGo := VariantNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// Unsupported : g_variant_new_bytestring_array : unsupported parameter strv :
+
+// Compare is a wrapper around the C function g_variant_compare.
+func (recv *Variant) Compare(two uintptr) int32 {
+	c_two := (C.gconstpointer)(two)
+
+	retC := C.g_variant_compare((C.gconstpointer)(recv.native), c_two)
+	retGo := (int32)(retC)
+
+	return retGo
+}
+
+// Unsupported : g_variant_dup_bytestring : no return type
+
+// Unsupported : g_variant_dup_bytestring_array : no return type
+
+// Unsupported : g_variant_get_bytestring : no return type
+
+// Unsupported : g_variant_get_bytestring_array : no return type
+
+// IsFloating is a wrapper around the C function g_variant_is_floating.
+func (recv *Variant) IsFloating() bool {
+	retC := C.g_variant_is_floating((*C.GVariant)(recv.native))
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
 // AddParsed is a wrapper around the C function g_variant_builder_add_parsed.
 func (recv *VariantBuilder) AddParsed(format string, args ...interface{}) {
 	goFormattedString := fmt.Sprintf(format, args...)
