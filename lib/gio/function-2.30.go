@@ -26,7 +26,23 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_dbus_gvalue_to_gvariant : unsupported parameter type : Blacklisted record : GVariantType
+// DbusGvalueToGvariant is a wrapper around the C function g_dbus_gvalue_to_gvariant.
+func DbusGvalueToGvariant(gvalue *gobject.Value, type_ *glib.VariantType) *glib.Variant {
+	c_gvalue := (*C.GValue)(C.NULL)
+	if gvalue != nil {
+		c_gvalue = (*C.GValue)(gvalue.ToC())
+	}
+
+	c_type := (*C.GVariantType)(C.NULL)
+	if type_ != nil {
+		c_type = (*C.GVariantType)(type_.ToC())
+	}
+
+	retC := C.g_dbus_gvalue_to_gvariant(c_gvalue, c_type)
+	retGo := glib.VariantNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // DbusGvariantToGvalue is a wrapper around the C function g_dbus_gvariant_to_gvalue.
 func DbusGvariantToGvalue(value *glib.Variant) *gobject.Value {

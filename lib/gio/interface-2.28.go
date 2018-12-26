@@ -91,7 +91,18 @@ func (recv *Action) GetName() string {
 	return retGo
 }
 
-// Unsupported : g_action_get_parameter_type : return type : Blacklisted record : GVariantType
+// GetParameterType is a wrapper around the C function g_action_get_parameter_type.
+func (recv *Action) GetParameterType() *glib.VariantType {
+	retC := C.g_action_get_parameter_type((*C.GAction)(recv.native))
+	var retGo (*glib.VariantType)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = glib.VariantTypeNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
 
 // GetState is a wrapper around the C function g_action_get_state.
 func (recv *Action) GetState() *glib.Variant {
@@ -114,7 +125,18 @@ func (recv *Action) GetStateHint() *glib.Variant {
 	return retGo
 }
 
-// Unsupported : g_action_get_state_type : return type : Blacklisted record : GVariantType
+// GetStateType is a wrapper around the C function g_action_get_state_type.
+func (recv *Action) GetStateType() *glib.VariantType {
+	retC := C.g_action_get_state_type((*C.GAction)(recv.native))
+	var retGo (*glib.VariantType)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = glib.VariantTypeNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
 
 type signalActionGroupActionAddedDetail struct {
 	callback  ActionGroupSignalActionAddedCallback
@@ -457,7 +479,21 @@ func (recv *ActionGroup) GetActionEnabled(actionName string) bool {
 	return retGo
 }
 
-// Unsupported : g_action_group_get_action_parameter_type : return type : Blacklisted record : GVariantType
+// GetActionParameterType is a wrapper around the C function g_action_group_get_action_parameter_type.
+func (recv *ActionGroup) GetActionParameterType(actionName string) *glib.VariantType {
+	c_action_name := C.CString(actionName)
+	defer C.free(unsafe.Pointer(c_action_name))
+
+	retC := C.g_action_group_get_action_parameter_type((*C.GActionGroup)(recv.native), c_action_name)
+	var retGo (*glib.VariantType)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = glib.VariantTypeNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
 
 // GetActionState is a wrapper around the C function g_action_group_get_action_state.
 func (recv *ActionGroup) GetActionState(actionName string) *glib.Variant {
@@ -491,7 +527,21 @@ func (recv *ActionGroup) GetActionStateHint(actionName string) *glib.Variant {
 	return retGo
 }
 
-// Unsupported : g_action_group_get_action_state_type : return type : Blacklisted record : GVariantType
+// GetActionStateType is a wrapper around the C function g_action_group_get_action_state_type.
+func (recv *ActionGroup) GetActionStateType(actionName string) *glib.VariantType {
+	c_action_name := C.CString(actionName)
+	defer C.free(unsafe.Pointer(c_action_name))
+
+	retC := C.g_action_group_get_action_state_type((*C.GActionGroup)(recv.native), c_action_name)
+	var retGo (*glib.VariantType)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = glib.VariantTypeNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
 
 // HasAction is a wrapper around the C function g_action_group_has_action.
 func (recv *ActionGroup) HasAction(actionName string) bool {

@@ -25,7 +25,36 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_action_group_query_action : unsupported parameter parameter_type : Blacklisted record : GVariantType
+// QueryAction is a wrapper around the C function g_action_group_query_action.
+func (recv *ActionGroup) QueryAction(actionName string) (bool, bool, *glib.VariantType, *glib.VariantType, *glib.Variant, *glib.Variant) {
+	c_action_name := C.CString(actionName)
+	defer C.free(unsafe.Pointer(c_action_name))
+
+	var c_enabled C.gboolean
+
+	var c_parameter_type *C.GVariantType
+
+	var c_state_type *C.GVariantType
+
+	var c_state_hint *C.GVariant
+
+	var c_state *C.GVariant
+
+	retC := C.g_action_group_query_action((*C.GActionGroup)(recv.native), c_action_name, &c_enabled, &c_parameter_type, &c_state_type, &c_state_hint, &c_state)
+	retGo := retC == C.TRUE
+
+	enabled := c_enabled == C.TRUE
+
+	parameterType := glib.VariantTypeNewFromC(unsafe.Pointer(c_parameter_type))
+
+	stateType := glib.VariantTypeNewFromC(unsafe.Pointer(c_state_type))
+
+	stateHint := glib.VariantNewFromC(unsafe.Pointer(c_state_hint))
+
+	state := glib.VariantNewFromC(unsafe.Pointer(c_state))
+
+	return retGo, enabled, parameterType, stateType, stateHint, state
+}
 
 // AddAction is a wrapper around the C function g_action_map_add_action.
 func (recv *ActionMap) AddAction(action *Action) {

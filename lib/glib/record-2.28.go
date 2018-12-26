@@ -80,4 +80,18 @@ func (recv *Variant) Lookup(key string, formatString string, args ...interface{}
 	return retGo
 }
 
-// Unsupported : g_variant_lookup_value : unsupported parameter expected_type : Blacklisted record : GVariantType
+// LookupValue is a wrapper around the C function g_variant_lookup_value.
+func (recv *Variant) LookupValue(key string, expectedType *VariantType) *Variant {
+	c_key := C.CString(key)
+	defer C.free(unsafe.Pointer(c_key))
+
+	c_expected_type := (*C.GVariantType)(C.NULL)
+	if expectedType != nil {
+		c_expected_type = (*C.GVariantType)(expectedType.ToC())
+	}
+
+	retC := C.g_variant_lookup_value((*C.GVariant)(recv.native), c_key, c_expected_type)
+	retGo := VariantNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}

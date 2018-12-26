@@ -2618,9 +2618,7 @@ func Utf8Validate(str []uint8) (bool, string) {
 
 // Blacklisted : g_variant_get_gtype
 
-// Unsupported : g_variant_parse : unsupported parameter type : Blacklisted record : GVariantType
-
-// Unsupported : g_variant_type_checked_ : return type : Blacklisted record : GVariantType
+// Unsupported : g_variant_parse : unsupported parameter endptr : in string with indirection level of 2
 
 // Unsupported : g_vsnprintf : unsupported parameter args : no type generator for va_list (va_list) for param args
 

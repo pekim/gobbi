@@ -420,4 +420,21 @@ func (recv *Thread) Unref() {
 	return
 }
 
-// Unsupported : g_variant_new_fixed_array : unsupported parameter element_type : Blacklisted record : GVariantType
+// VariantNewFixedArray is a wrapper around the C function g_variant_new_fixed_array.
+func VariantNewFixedArray(elementType *VariantType, elements uintptr, nElements uint64, elementSize uint64) *Variant {
+	c_element_type := (*C.GVariantType)(C.NULL)
+	if elementType != nil {
+		c_element_type = (*C.GVariantType)(elementType.ToC())
+	}
+
+	c_elements := (C.gconstpointer)(elements)
+
+	c_n_elements := (C.gsize)(nElements)
+
+	c_element_size := (C.gsize)(elementSize)
+
+	retC := C.g_variant_new_fixed_array(c_element_type, c_elements, c_n_elements, c_element_size)
+	retGo := VariantNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}

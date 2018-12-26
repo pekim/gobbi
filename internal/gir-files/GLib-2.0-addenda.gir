@@ -121,6 +121,5 @@
     <!-- the types in some method do not appear to match the data in gir file -->
     <record blacklist="true" name="IConv"/>
     <record blacklist="true" name="IOChannel"/>
-    <record blacklist="true" name="VariantType"/>
   </namespace>
 </repository>

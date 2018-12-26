@@ -5555,4 +5555,279 @@ func (recv *VariantIter) Equals(other *VariantIter) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// Blacklisted : GVariantType
+// VariantType is a wrapper around the C record GVariantType.
+type VariantType struct {
+	native *C.GVariantType
+}
+
+func VariantTypeNewFromC(u unsafe.Pointer) *VariantType {
+	c := (*C.GVariantType)(u)
+	if c == nil {
+		return nil
+	}
+
+	g := &VariantType{native: c}
+
+	return g
+}
+
+func (recv *VariantType) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this VariantType with another VariantType, and returns true if they represent the same GObject.
+func (recv *VariantType) Equals(other *VariantType) bool {
+	return other.ToC() == recv.ToC()
+}
+
+// VariantTypeNewArray is a wrapper around the C function g_variant_type_new_array.
+func VariantTypeNewArray(element *VariantType) *VariantType {
+	c_element := (*C.GVariantType)(C.NULL)
+	if element != nil {
+		c_element = (*C.GVariantType)(element.ToC())
+	}
+
+	retC := C.g_variant_type_new_array(c_element)
+	retGo := VariantTypeNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// VariantTypeNewDictEntry is a wrapper around the C function g_variant_type_new_dict_entry.
+func VariantTypeNewDictEntry(key *VariantType, value *VariantType) *VariantType {
+	c_key := (*C.GVariantType)(C.NULL)
+	if key != nil {
+		c_key = (*C.GVariantType)(key.ToC())
+	}
+
+	c_value := (*C.GVariantType)(C.NULL)
+	if value != nil {
+		c_value = (*C.GVariantType)(value.ToC())
+	}
+
+	retC := C.g_variant_type_new_dict_entry(c_key, c_value)
+	retGo := VariantTypeNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// VariantTypeNewMaybe is a wrapper around the C function g_variant_type_new_maybe.
+func VariantTypeNewMaybe(element *VariantType) *VariantType {
+	c_element := (*C.GVariantType)(C.NULL)
+	if element != nil {
+		c_element = (*C.GVariantType)(element.ToC())
+	}
+
+	retC := C.g_variant_type_new_maybe(c_element)
+	retGo := VariantTypeNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// Unsupported : g_variant_type_new_tuple : unsupported parameter items :
+
+// VariantTypeChecked is a wrapper around the C function g_variant_type_checked_.
+func VariantTypeChecked(arg0 string) *VariantType {
+	c_arg0 := C.CString(arg0)
+	defer C.free(unsafe.Pointer(c_arg0))
+
+	retC := C.g_variant_type_checked_(c_arg0)
+	retGo := VariantTypeNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// VariantTypeStringIsValid is a wrapper around the C function g_variant_type_string_is_valid.
+func VariantTypeStringIsValid(typeString string) bool {
+	c_type_string := C.CString(typeString)
+	defer C.free(unsafe.Pointer(c_type_string))
+
+	retC := C.g_variant_type_string_is_valid(c_type_string)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// Copy is a wrapper around the C function g_variant_type_copy.
+func (recv *VariantType) Copy() *VariantType {
+	retC := C.g_variant_type_copy((*C.GVariantType)(recv.native))
+	retGo := VariantTypeNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// DupString is a wrapper around the C function g_variant_type_dup_string.
+func (recv *VariantType) DupString() string {
+	retC := C.g_variant_type_dup_string((*C.GVariantType)(recv.native))
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// Element is a wrapper around the C function g_variant_type_element.
+func (recv *VariantType) Element() *VariantType {
+	retC := C.g_variant_type_element((*C.GVariantType)(recv.native))
+	retGo := VariantTypeNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// Equal is a wrapper around the C function g_variant_type_equal.
+func (recv *VariantType) Equal(type2 uintptr) bool {
+	c_type2 := (C.gconstpointer)(type2)
+
+	retC := C.g_variant_type_equal((C.gconstpointer)(recv.native), c_type2)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// First is a wrapper around the C function g_variant_type_first.
+func (recv *VariantType) First() *VariantType {
+	retC := C.g_variant_type_first((*C.GVariantType)(recv.native))
+	retGo := VariantTypeNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// Free is a wrapper around the C function g_variant_type_free.
+func (recv *VariantType) Free() {
+	C.g_variant_type_free((*C.GVariantType)(recv.native))
+
+	return
+}
+
+// GetStringLength is a wrapper around the C function g_variant_type_get_string_length.
+func (recv *VariantType) GetStringLength() uint64 {
+	retC := C.g_variant_type_get_string_length((*C.GVariantType)(recv.native))
+	retGo := (uint64)(retC)
+
+	return retGo
+}
+
+// Hash is a wrapper around the C function g_variant_type_hash.
+func (recv *VariantType) Hash() uint32 {
+	retC := C.g_variant_type_hash((C.gconstpointer)(recv.native))
+	retGo := (uint32)(retC)
+
+	return retGo
+}
+
+// IsArray is a wrapper around the C function g_variant_type_is_array.
+func (recv *VariantType) IsArray() bool {
+	retC := C.g_variant_type_is_array((*C.GVariantType)(recv.native))
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// IsBasic is a wrapper around the C function g_variant_type_is_basic.
+func (recv *VariantType) IsBasic() bool {
+	retC := C.g_variant_type_is_basic((*C.GVariantType)(recv.native))
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// IsContainer is a wrapper around the C function g_variant_type_is_container.
+func (recv *VariantType) IsContainer() bool {
+	retC := C.g_variant_type_is_container((*C.GVariantType)(recv.native))
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// IsDefinite is a wrapper around the C function g_variant_type_is_definite.
+func (recv *VariantType) IsDefinite() bool {
+	retC := C.g_variant_type_is_definite((*C.GVariantType)(recv.native))
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// IsDictEntry is a wrapper around the C function g_variant_type_is_dict_entry.
+func (recv *VariantType) IsDictEntry() bool {
+	retC := C.g_variant_type_is_dict_entry((*C.GVariantType)(recv.native))
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// IsMaybe is a wrapper around the C function g_variant_type_is_maybe.
+func (recv *VariantType) IsMaybe() bool {
+	retC := C.g_variant_type_is_maybe((*C.GVariantType)(recv.native))
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// IsSubtypeOf is a wrapper around the C function g_variant_type_is_subtype_of.
+func (recv *VariantType) IsSubtypeOf(supertype *VariantType) bool {
+	c_supertype := (*C.GVariantType)(C.NULL)
+	if supertype != nil {
+		c_supertype = (*C.GVariantType)(supertype.ToC())
+	}
+
+	retC := C.g_variant_type_is_subtype_of((*C.GVariantType)(recv.native), c_supertype)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// IsTuple is a wrapper around the C function g_variant_type_is_tuple.
+func (recv *VariantType) IsTuple() bool {
+	retC := C.g_variant_type_is_tuple((*C.GVariantType)(recv.native))
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// IsVariant is a wrapper around the C function g_variant_type_is_variant.
+func (recv *VariantType) IsVariant() bool {
+	retC := C.g_variant_type_is_variant((*C.GVariantType)(recv.native))
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// Key is a wrapper around the C function g_variant_type_key.
+func (recv *VariantType) Key() *VariantType {
+	retC := C.g_variant_type_key((*C.GVariantType)(recv.native))
+	retGo := VariantTypeNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// NItems is a wrapper around the C function g_variant_type_n_items.
+func (recv *VariantType) NItems() uint64 {
+	retC := C.g_variant_type_n_items((*C.GVariantType)(recv.native))
+	retGo := (uint64)(retC)
+
+	return retGo
+}
+
+// Next is a wrapper around the C function g_variant_type_next.
+func (recv *VariantType) Next() *VariantType {
+	retC := C.g_variant_type_next((*C.GVariantType)(recv.native))
+	retGo := VariantTypeNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// PeekString is a wrapper around the C function g_variant_type_peek_string.
+func (recv *VariantType) PeekString() string {
+	retC := C.g_variant_type_peek_string((*C.GVariantType)(recv.native))
+	retGo := C.GoString(retC)
+
+	return retGo
+}
+
+// Value is a wrapper around the C function g_variant_type_value.
+func (recv *VariantType) Value() *VariantType {
+	retC := C.g_variant_type_value((*C.GVariantType)(recv.native))
+	retGo := VariantTypeNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}

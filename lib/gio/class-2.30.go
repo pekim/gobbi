@@ -37,7 +37,7 @@ import (
 */
 import "C"
 
-// Unsupported : g_dbus_connection_call_with_unix_fd_list : unsupported parameter reply_type : Blacklisted record : GVariantType
+// Unsupported : g_dbus_connection_call_with_unix_fd_list : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
 // CallWithUnixFdListFinish is a wrapper around the C function g_dbus_connection_call_with_unix_fd_list_finish.
 func (recv *DBusConnection) CallWithUnixFdListFinish(res *AsyncResult) (*glib.Variant, *UnixFDList, error) {
@@ -63,7 +63,63 @@ func (recv *DBusConnection) CallWithUnixFdListFinish(res *AsyncResult) (*glib.Va
 	return retGo, outFdList, goError
 }
 
-// Unsupported : g_dbus_connection_call_with_unix_fd_list_sync : unsupported parameter reply_type : Blacklisted record : GVariantType
+// CallWithUnixFdListSync is a wrapper around the C function g_dbus_connection_call_with_unix_fd_list_sync.
+func (recv *DBusConnection) CallWithUnixFdListSync(busName string, objectPath string, interfaceName string, methodName string, parameters *glib.Variant, replyType *glib.VariantType, flags DBusCallFlags, timeoutMsec int32, fdList *UnixFDList, cancellable *Cancellable) (*glib.Variant, *UnixFDList, error) {
+	c_bus_name := C.CString(busName)
+	defer C.free(unsafe.Pointer(c_bus_name))
+
+	c_object_path := C.CString(objectPath)
+	defer C.free(unsafe.Pointer(c_object_path))
+
+	c_interface_name := C.CString(interfaceName)
+	defer C.free(unsafe.Pointer(c_interface_name))
+
+	c_method_name := C.CString(methodName)
+	defer C.free(unsafe.Pointer(c_method_name))
+
+	c_parameters := (*C.GVariant)(C.NULL)
+	if parameters != nil {
+		c_parameters = (*C.GVariant)(parameters.ToC())
+	}
+
+	c_reply_type := (*C.GVariantType)(C.NULL)
+	if replyType != nil {
+		c_reply_type = (*C.GVariantType)(replyType.ToC())
+	}
+
+	c_flags := (C.GDBusCallFlags)(flags)
+
+	c_timeout_msec := (C.gint)(timeoutMsec)
+
+	c_fd_list := (*C.GUnixFDList)(C.NULL)
+	if fdList != nil {
+		c_fd_list = (*C.GUnixFDList)(fdList.ToC())
+	}
+
+	var c_out_fd_list *C.GUnixFDList
+
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_connection_call_with_unix_fd_list_sync((*C.GDBusConnection)(recv.native), c_bus_name, c_object_path, c_interface_name, c_method_name, c_parameters, c_reply_type, c_flags, c_timeout_msec, c_fd_list, &c_out_fd_list, c_cancellable, &cThrowableError)
+	retGo := glib.VariantNewFromC(unsafe.Pointer(retC))
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	outFdList := UnixFDListNewFromC(unsafe.Pointer(c_out_fd_list))
+
+	return retGo, outFdList, goError
+}
 
 // DBusInterfaceSkeleton is a wrapper around the C record GDBusInterfaceSkeleton.
 type DBusInterfaceSkeleton struct {

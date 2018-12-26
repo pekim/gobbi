@@ -820,9 +820,50 @@ func simpleaction_activateHandler(_ *C.GObject, c_parameter *C.GVariant, data C.
 	callback(parameter)
 }
 
-// Unsupported : g_simple_action_new : unsupported parameter parameter_type : Blacklisted record : GVariantType
+// SimpleActionNew is a wrapper around the C function g_simple_action_new.
+func SimpleActionNew(name string, parameterType *glib.VariantType) *SimpleAction {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
 
-// Unsupported : g_simple_action_new_stateful : unsupported parameter parameter_type : Blacklisted record : GVariantType
+	c_parameter_type := (*C.GVariantType)(C.NULL)
+	if parameterType != nil {
+		c_parameter_type = (*C.GVariantType)(parameterType.ToC())
+	}
+
+	retC := C.g_simple_action_new(c_name, c_parameter_type)
+	retGo := SimpleActionNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
+}
+
+// SimpleActionNewStateful is a wrapper around the C function g_simple_action_new_stateful.
+func SimpleActionNewStateful(name string, parameterType *glib.VariantType, state *glib.Variant) *SimpleAction {
+	c_name := C.CString(name)
+	defer C.free(unsafe.Pointer(c_name))
+
+	c_parameter_type := (*C.GVariantType)(C.NULL)
+	if parameterType != nil {
+		c_parameter_type = (*C.GVariantType)(parameterType.ToC())
+	}
+
+	c_state := (*C.GVariant)(C.NULL)
+	if state != nil {
+		c_state = (*C.GVariant)(state.ToC())
+	}
+
+	retC := C.g_simple_action_new_stateful(c_name, c_parameter_type, c_state)
+	retGo := SimpleActionNewFromC(unsafe.Pointer(retC))
+
+	if retC != nil {
+		C.g_object_unref((C.gpointer)(retC))
+	}
+
+	return retGo
+}
 
 // SetEnabled is a wrapper around the C function g_simple_action_set_enabled.
 func (recv *SimpleAction) SetEnabled(enabled bool) {

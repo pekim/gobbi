@@ -243,7 +243,21 @@ func (recv *MenuItem) GetAttribute(attribute string, formatString string, args .
 	return retGo
 }
 
-// Unsupported : g_menu_item_get_attribute_value : unsupported parameter expected_type : Blacklisted record : GVariantType
+// GetAttributeValue is a wrapper around the C function g_menu_item_get_attribute_value.
+func (recv *MenuItem) GetAttributeValue(attribute string, expectedType *glib.VariantType) *glib.Variant {
+	c_attribute := C.CString(attribute)
+	defer C.free(unsafe.Pointer(c_attribute))
+
+	c_expected_type := (*C.GVariantType)(C.NULL)
+	if expectedType != nil {
+		c_expected_type = (*C.GVariantType)(expectedType.ToC())
+	}
+
+	retC := C.g_menu_item_get_attribute_value((*C.GMenuItem)(recv.native), c_attribute, c_expected_type)
+	retGo := glib.VariantNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetLink is a wrapper around the C function g_menu_item_get_link.
 func (recv *MenuItem) GetLink(link string) *MenuModel {

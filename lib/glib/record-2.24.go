@@ -97,7 +97,7 @@ func VariantNew(formatString string, args ...interface{}) *Variant {
 	return retGo
 }
 
-// Unsupported : g_variant_new_array : unsupported parameter child_type : Blacklisted record : GVariantType
+// Unsupported : g_variant_new_array : unsupported parameter children :
 
 // VariantNewBoolean is a wrapper around the C function g_variant_new_boolean.
 func VariantNewBoolean(value bool) *Variant {
@@ -148,7 +148,7 @@ func VariantNewDouble(value float64) *Variant {
 	return retGo
 }
 
-// Unsupported : g_variant_new_from_data : unsupported parameter type : Blacklisted record : GVariantType
+// Unsupported : g_variant_new_from_data : unsupported parameter notify : no type generator for DestroyNotify (GDestroyNotify) for param notify
 
 // VariantNewHandle is a wrapper around the C function g_variant_new_handle.
 func VariantNewHandle(value int32) *Variant {
@@ -190,7 +190,23 @@ func VariantNewInt64(value int64) *Variant {
 	return retGo
 }
 
-// Unsupported : g_variant_new_maybe : unsupported parameter child_type : Blacklisted record : GVariantType
+// VariantNewMaybe is a wrapper around the C function g_variant_new_maybe.
+func VariantNewMaybe(childType *VariantType, child *Variant) *Variant {
+	c_child_type := (*C.GVariantType)(C.NULL)
+	if childType != nil {
+		c_child_type = (*C.GVariantType)(childType.ToC())
+	}
+
+	c_child := (*C.GVariant)(C.NULL)
+	if child != nil {
+		c_child = (*C.GVariant)(child.ToC())
+	}
+
+	retC := C.g_variant_new_maybe(c_child_type, c_child)
+	retGo := VariantNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // VariantNewObjectPath is a wrapper around the C function g_variant_new_object_path.
 func VariantNewObjectPath(objectPath string) *Variant {
@@ -494,7 +510,13 @@ func (recv *Variant) GetString() (string, uint64) {
 
 // Unsupported : g_variant_get_strv : no return type
 
-// Unsupported : g_variant_get_type : return type : Blacklisted record : GVariantType
+// GetType is a wrapper around the C function g_variant_get_type.
+func (recv *Variant) GetType() *VariantType {
+	retC := C.g_variant_get_type((*C.GVariant)(recv.native))
+	retGo := VariantTypeNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetTypeString is a wrapper around the C function g_variant_get_type_string.
 func (recv *Variant) GetTypeString() string {
@@ -562,7 +584,18 @@ func (recv *Variant) IsNormalForm() bool {
 	return retGo
 }
 
-// Unsupported : g_variant_is_of_type : unsupported parameter type : Blacklisted record : GVariantType
+// IsOfType is a wrapper around the C function g_variant_is_of_type.
+func (recv *Variant) IsOfType(type_ *VariantType) bool {
+	c_type := (*C.GVariantType)(C.NULL)
+	if type_ != nil {
+		c_type = (*C.GVariantType)(type_.ToC())
+	}
+
+	retC := C.g_variant_is_of_type((*C.GVariant)(recv.native), c_type)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
 
 // IterNew is a wrapper around the C function g_variant_iter_new.
 func (recv *Variant) IterNew() *VariantIter {
@@ -648,7 +681,18 @@ func (recv *Variant) Unref() {
 	return
 }
 
-// Unsupported : g_variant_builder_new : unsupported parameter type : Blacklisted record : GVariantType
+// VariantBuilderNew is a wrapper around the C function g_variant_builder_new.
+func VariantBuilderNew(type_ *VariantType) *VariantBuilder {
+	c_type := (*C.GVariantType)(C.NULL)
+	if type_ != nil {
+		c_type = (*C.GVariantType)(type_.ToC())
+	}
+
+	retC := C.g_variant_builder_new(c_type)
+	retGo := VariantBuilderNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Add is a wrapper around the C function g_variant_builder_add.
 func (recv *VariantBuilder) Add(formatString string, args ...interface{}) {
@@ -695,9 +739,29 @@ func (recv *VariantBuilder) End() *Variant {
 	return retGo
 }
 
-// Unsupported : g_variant_builder_init : unsupported parameter type : Blacklisted record : GVariantType
+// Init is a wrapper around the C function g_variant_builder_init.
+func (recv *VariantBuilder) Init(type_ *VariantType) {
+	c_type := (*C.GVariantType)(C.NULL)
+	if type_ != nil {
+		c_type = (*C.GVariantType)(type_.ToC())
+	}
 
-// Unsupported : g_variant_builder_open : unsupported parameter type : Blacklisted record : GVariantType
+	C.g_variant_builder_init((*C.GVariantBuilder)(recv.native), c_type)
+
+	return
+}
+
+// Open is a wrapper around the C function g_variant_builder_open.
+func (recv *VariantBuilder) Open(type_ *VariantType) {
+	c_type := (*C.GVariantType)(C.NULL)
+	if type_ != nil {
+		c_type = (*C.GVariantType)(type_.ToC())
+	}
+
+	C.g_variant_builder_open((*C.GVariantBuilder)(recv.native), c_type)
+
+	return
+}
 
 // Ref is a wrapper around the C function g_variant_builder_ref.
 func (recv *VariantBuilder) Ref() *VariantBuilder {
@@ -785,4 +849,34 @@ func (recv *VariantIter) NextValue() *Variant {
 	}
 
 	return retGo
+}
+
+// VariantTypeNew is a wrapper around the C function g_variant_type_new.
+func VariantTypeNew(typeString string) *VariantType {
+	c_type_string := C.CString(typeString)
+	defer C.free(unsafe.Pointer(c_type_string))
+
+	retC := C.g_variant_type_new(c_type_string)
+	retGo := VariantTypeNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// VariantTypeStringScan is a wrapper around the C function g_variant_type_string_scan.
+func VariantTypeStringScan(string string, limit string) (bool, string) {
+	c_string := C.CString(string)
+	defer C.free(unsafe.Pointer(c_string))
+
+	c_limit := C.CString(limit)
+	defer C.free(unsafe.Pointer(c_limit))
+
+	var c_endptr *C.gchar
+
+	retC := C.g_variant_type_string_scan(c_string, c_limit, &c_endptr)
+	retGo := retC == C.TRUE
+
+	endptr := C.GoString(c_endptr)
+	defer C.free(unsafe.Pointer(c_endptr))
+
+	return retGo, endptr
 }

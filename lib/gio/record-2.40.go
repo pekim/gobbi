@@ -63,7 +63,13 @@ func (recv *SettingsSchemaKey) GetRange() *glib.Variant {
 	return retGo
 }
 
-// Unsupported : g_settings_schema_key_get_value_type : return type : Blacklisted record : GVariantType
+// GetValueType is a wrapper around the C function g_settings_schema_key_get_value_type.
+func (recv *SettingsSchemaKey) GetValueType() *glib.VariantType {
+	retC := C.g_settings_schema_key_get_value_type((*C.GSettingsSchemaKey)(recv.native))
+	retGo := glib.VariantTypeNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // RangeCheck is a wrapper around the C function g_settings_schema_key_range_check.
 func (recv *SettingsSchemaKey) RangeCheck(value *glib.Variant) bool {

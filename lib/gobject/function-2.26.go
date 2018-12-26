@@ -10,4 +10,4 @@ package gobject
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : g_param_spec_variant : unsupported parameter type : Blacklisted record : GVariantType
+// Unsupported : g_param_spec_variant : return type : Blacklisted record : GParamSpec

@@ -423,7 +423,7 @@ func DBusConnectionNewSync(stream *IOStream, guid string, flags DBusConnectionFl
 // g_dbus_connection_new_for_address : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 // Unsupported : g_dbus_connection_add_filter : unsupported parameter filter_function : no type generator for DBusMessageFilterFunction (GDBusMessageFilterFunction) for param filter_function
 
-// Unsupported : g_dbus_connection_call : unsupported parameter reply_type : Blacklisted record : GVariantType
+// Unsupported : g_dbus_connection_call : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 
 // CallFinish is a wrapper around the C function g_dbus_connection_call_finish.
 func (recv *DBusConnection) CallFinish(res *AsyncResult) (*glib.Variant, error) {
@@ -445,7 +445,54 @@ func (recv *DBusConnection) CallFinish(res *AsyncResult) (*glib.Variant, error) 
 	return retGo, goError
 }
 
-// Unsupported : g_dbus_connection_call_sync : unsupported parameter reply_type : Blacklisted record : GVariantType
+// CallSync is a wrapper around the C function g_dbus_connection_call_sync.
+func (recv *DBusConnection) CallSync(busName string, objectPath string, interfaceName string, methodName string, parameters *glib.Variant, replyType *glib.VariantType, flags DBusCallFlags, timeoutMsec int32, cancellable *Cancellable) (*glib.Variant, error) {
+	c_bus_name := C.CString(busName)
+	defer C.free(unsafe.Pointer(c_bus_name))
+
+	c_object_path := C.CString(objectPath)
+	defer C.free(unsafe.Pointer(c_object_path))
+
+	c_interface_name := C.CString(interfaceName)
+	defer C.free(unsafe.Pointer(c_interface_name))
+
+	c_method_name := C.CString(methodName)
+	defer C.free(unsafe.Pointer(c_method_name))
+
+	c_parameters := (*C.GVariant)(C.NULL)
+	if parameters != nil {
+		c_parameters = (*C.GVariant)(parameters.ToC())
+	}
+
+	c_reply_type := (*C.GVariantType)(C.NULL)
+	if replyType != nil {
+		c_reply_type = (*C.GVariantType)(replyType.ToC())
+	}
+
+	c_flags := (C.GDBusCallFlags)(flags)
+
+	c_timeout_msec := (C.gint)(timeoutMsec)
+
+	c_cancellable := (*C.GCancellable)(C.NULL)
+	if cancellable != nil {
+		c_cancellable = (*C.GCancellable)(cancellable.ToC())
+	}
+
+	var cThrowableError *C.GError
+
+	retC := C.g_dbus_connection_call_sync((*C.GDBusConnection)(recv.native), c_bus_name, c_object_path, c_interface_name, c_method_name, c_parameters, c_reply_type, c_flags, c_timeout_msec, c_cancellable, &cThrowableError)
+	retGo := glib.VariantNewFromC(unsafe.Pointer(retC))
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
 
 // Unsupported : g_dbus_connection_close : unsupported parameter callback : no type generator for AsyncReadyCallback (GAsyncReadyCallback) for param callback
 

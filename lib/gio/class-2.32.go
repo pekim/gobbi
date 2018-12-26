@@ -1206,7 +1206,23 @@ func (recv *MenuModel) GetItemAttribute(itemIndex int32, attribute string, forma
 	return retGo
 }
 
-// Unsupported : g_menu_model_get_item_attribute_value : unsupported parameter expected_type : Blacklisted record : GVariantType
+// GetItemAttributeValue is a wrapper around the C function g_menu_model_get_item_attribute_value.
+func (recv *MenuModel) GetItemAttributeValue(itemIndex int32, attribute string, expectedType *glib.VariantType) *glib.Variant {
+	c_item_index := (C.gint)(itemIndex)
+
+	c_attribute := C.CString(attribute)
+	defer C.free(unsafe.Pointer(c_attribute))
+
+	c_expected_type := (*C.GVariantType)(C.NULL)
+	if expectedType != nil {
+		c_expected_type = (*C.GVariantType)(expectedType.ToC())
+	}
+
+	retC := C.g_menu_model_get_item_attribute_value((*C.GMenuModel)(recv.native), c_item_index, c_attribute, c_expected_type)
+	retGo := glib.VariantNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetItemLink is a wrapper around the C function g_menu_model_get_item_link.
 func (recv *MenuModel) GetItemLink(itemIndex int32, link string) *MenuModel {
