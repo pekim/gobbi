@@ -29,7 +29,7 @@ weight="2"
 
 Run `./gobbi examples` for a list of the available examples.
 
-## use in a application
+## use in an application
 Using gobbi in an application in no different to using
 most other libraries.
 
