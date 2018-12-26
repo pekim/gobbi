@@ -9,9 +9,6 @@
   <c:include name="glib-unix.h"/>
 
   <namespace>
-    <!-- a little obscure, and not worth the effort to support -->
-    <alias blacklist="true" name="Type"/>
-
     <!-- avoid a name clash with the function file_test (go name FileTest) -->
     <bitfield name="FileTest" goname="GFileTest"/>
 

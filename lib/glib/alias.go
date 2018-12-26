@@ -34,4 +34,5 @@ type Time int32
 // TimeSpan is a representation of the C alias GTimeSpan.
 type TimeSpan int64
 
-// Blacklisted : GType
+// Type is a representation of the C alias GType.
+type Type uint64
