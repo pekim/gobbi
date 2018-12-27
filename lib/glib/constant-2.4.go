@@ -15,21 +15,12 @@ import "C"
 const GINT16_MODIFIER string = C.G_GINT16_MODIFIER
 const GINT32_MODIFIER string = C.G_GINT32_MODIFIER
 const GINT64_MODIFIER string = C.G_GINT64_MODIFIER
-
-// Unsupported : type gint16 for MAXINT16
-
-// Unsupported : type gint32 for MAXINT32
-
-// Unsupported : type gint8 for MAXINT8
-
-// Unsupported : type guint16 for MAXUINT16
-
-// Unsupported : type guint32 for MAXUINT32
-
-// Unsupported : type guint8 for MAXUINT8
-
-// Unsupported : type gint16 for MININT16
-
-// Unsupported : type gint32 for MININT32
-
-// Unsupported : type gint8 for MININT8
+const MAXINT16 int16 = C.G_MAXINT16
+const MAXINT32 int32 = C.G_MAXINT32
+const MAXINT8 int8 = C.G_MAXINT8
+const MAXUINT16 uint16 = C.G_MAXUINT16
+const MAXUINT32 uint32 = C.G_MAXUINT32
+const MAXUINT8 uint8 = C.G_MAXUINT8
+const MININT16 int16 = C.G_MININT16
+const MININT32 int32 = C.G_MININT32
+const MININT8 int8 = C.G_MININT8

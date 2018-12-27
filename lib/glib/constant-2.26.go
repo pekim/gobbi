@@ -12,12 +12,8 @@ package glib
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : type gint64 for TIME_SPAN_DAY
-
-// Unsupported : type gint64 for TIME_SPAN_HOUR
-
-// Unsupported : type gint64 for TIME_SPAN_MILLISECOND
-
-// Unsupported : type gint64 for TIME_SPAN_MINUTE
-
-// Unsupported : type gint64 for TIME_SPAN_SECOND
+const TIME_SPAN_DAY int64 = C.G_TIME_SPAN_DAY
+const TIME_SPAN_HOUR int64 = C.G_TIME_SPAN_HOUR
+const TIME_SPAN_MILLISECOND int64 = C.G_TIME_SPAN_MILLISECOND
+const TIME_SPAN_MINUTE int64 = C.G_TIME_SPAN_MINUTE
+const TIME_SPAN_SECOND int64 = C.G_TIME_SPAN_SECOND

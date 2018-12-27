@@ -25,10 +25,12 @@ func (c *Constant) init(ns *Namespace) {
 	switch c.Type.Name {
 	case "gboolean":
 		c.goTypeName = "bool"
-	case "gint":
-		c.goTypeName = "int"
 	case "utf8":
 		c.goTypeName = "string"
+	default:
+		if goTypeName, found := integerCTypeMap[c.Type.Name]; found {
+			c.goTypeName = goTypeName
+		}
 	}
 }
 
@@ -45,10 +47,9 @@ func (c *Constant) blacklisted() (bool, string) {
 }
 
 func (c *Constant) supported() (supported bool, reason string) {
-	switch c.Type.Name {
-	case "gboolean", "gint", "utf8":
+	if c.goTypeName != "" {
 		return true, ""
-	default:
+	} else {
 		return false, fmt.Sprintf("type %s for %s", c.Type.Name, c.Name)
 	}
 }
