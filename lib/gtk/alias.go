@@ -2,6 +2,8 @@
 
 package gtk
 
+import gdk "github.com/pekim/gobbi/lib/gdk"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -11,7 +13,8 @@ package gtk
 // #include <stdlib.h>
 import "C"
 
-// Blacklisted : GtkAllocation
+// Allocation is a representation of the C alias GtkAllocation.
+type Allocation *gdk.Rectangle
 
 // Stock is a representation of the C alias GtkStock.
 type Stock string

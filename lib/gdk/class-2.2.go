@@ -596,7 +596,18 @@ func (recv *Screen) GetMonitorAtWindow(window *Window) int32 {
 	return retGo
 }
 
-// Unsupported : gdk_screen_get_monitor_geometry : unsupported parameter dest : Blacklisted record : GdkRectangle
+// GetMonitorGeometry is a wrapper around the C function gdk_screen_get_monitor_geometry.
+func (recv *Screen) GetMonitorGeometry(monitorNum int32) *Rectangle {
+	c_monitor_num := (C.gint)(monitorNum)
+
+	var c_dest C.GdkRectangle
+
+	C.gdk_screen_get_monitor_geometry((*C.GdkScreen)(recv.native), c_monitor_num, &c_dest)
+
+	dest := RectangleNewFromC(unsafe.Pointer(&c_dest))
+
+	return dest
+}
 
 // GetNMonitors is a wrapper around the C function gdk_screen_get_n_monitors.
 func (recv *Screen) GetNMonitors() int32 {

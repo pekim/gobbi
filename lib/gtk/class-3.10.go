@@ -1928,7 +1928,19 @@ func (recv *Widget) InitTemplate() {
 	return
 }
 
-// Unsupported : gtk_widget_size_allocate_with_baseline : unsupported parameter allocation : Blacklisted record : GdkRectangle
+// SizeAllocateWithBaseline is a wrapper around the C function gtk_widget_size_allocate_with_baseline.
+func (recv *Widget) SizeAllocateWithBaseline(allocation *gdk.Rectangle, baseline int32) {
+	c_allocation := (*C.GdkRectangle)(C.NULL)
+	if allocation != nil {
+		c_allocation = (*C.GdkRectangle)(allocation.ToC())
+	}
+
+	c_baseline := (C.gint)(baseline)
+
+	C.gtk_widget_size_allocate_with_baseline((*C.GtkWidget)(recv.native), c_allocation, c_baseline)
+
+	return
+}
 
 // Close is a wrapper around the C function gtk_window_close.
 func (recv *Window) Close() {

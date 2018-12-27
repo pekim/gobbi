@@ -152,7 +152,7 @@ func (recv *Menu) PlaceOnMonitor(monitor *gdk.Monitor) {
 
 // Unsupported : gtk_menu_popup_at_pointer : unsupported parameter trigger_event : no type generator for Gdk.Event (const GdkEvent*) for param trigger_event
 
-// Unsupported : gtk_menu_popup_at_rect : unsupported parameter rect : Blacklisted record : GdkRectangle
+// Unsupported : gtk_menu_popup_at_rect : unsupported parameter trigger_event : no type generator for Gdk.Event (const GdkEvent*) for param trigger_event
 
 // Unsupported : gtk_menu_popup_at_widget : unsupported parameter trigger_event : no type generator for Gdk.Event (const GdkEvent*) for param trigger_event
 

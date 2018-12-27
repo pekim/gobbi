@@ -173,7 +173,27 @@ func (recv *Entry) SetInputPurpose(purpose InputPurpose) {
 	return
 }
 
-// Unsupported : gtk_icon_view_get_cell_rect : unsupported parameter rect : Blacklisted record : GdkRectangle
+// GetCellRect is a wrapper around the C function gtk_icon_view_get_cell_rect.
+func (recv *IconView) GetCellRect(path *TreePath, cell *CellRenderer) (bool, *gdk.Rectangle) {
+	c_path := (*C.GtkTreePath)(C.NULL)
+	if path != nil {
+		c_path = (*C.GtkTreePath)(path.ToC())
+	}
+
+	c_cell := (*C.GtkCellRenderer)(C.NULL)
+	if cell != nil {
+		c_cell = (*C.GtkCellRenderer)(cell.ToC())
+	}
+
+	var c_rect C.GdkRectangle
+
+	retC := C.gtk_icon_view_get_cell_rect((*C.GtkIconView)(recv.native), c_path, c_cell, &c_rect)
+	retGo := retC == C.TRUE
+
+	rect := gdk.RectangleNewFromC(unsafe.Pointer(&c_rect))
+
+	return retGo, rect
+}
 
 type signalLevelBarOffsetChangedDetail struct {
 	callback  LevelBarSignalOffsetChangedCallback

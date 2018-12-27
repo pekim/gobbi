@@ -97,7 +97,35 @@ func DeviceGrabRemove(widget *Widget, device *gdk.Device) {
 	return
 }
 
-// Unsupported : gtk_draw_insertion_cursor : unsupported parameter location : Blacklisted record : GdkRectangle
+// DrawInsertionCursor is a wrapper around the C function gtk_draw_insertion_cursor.
+func DrawInsertionCursor(widget *Widget, cr *cairo.Context, location *gdk.Rectangle, isPrimary bool, direction TextDirection, drawArrow bool) {
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
+
+	c_cr := (*C.cairo_t)(C.NULL)
+	if cr != nil {
+		c_cr = (*C.cairo_t)(cr.ToC())
+	}
+
+	c_location := (*C.GdkRectangle)(C.NULL)
+	if location != nil {
+		c_location = (*C.GdkRectangle)(location.ToC())
+	}
+
+	c_is_primary :=
+		boolToGboolean(isPrimary)
+
+	c_direction := (C.GtkTextDirection)(direction)
+
+	c_draw_arrow :=
+		boolToGboolean(drawArrow)
+
+	C.gtk_draw_insertion_cursor(c_widget, c_cr, c_location, c_is_primary, c_direction, c_draw_arrow)
+
+	return
+}
 
 // GetBinaryAge is a wrapper around the C function gtk_get_binary_age.
 func GetBinaryAge() uint32 {

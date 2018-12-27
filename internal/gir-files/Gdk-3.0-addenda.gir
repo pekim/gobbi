@@ -26,7 +26,6 @@
       <function blacklist="true" c:identifier="gdk_window_destroy_notify"/>
 
       <record blacklist="true" name="Atom"/>
-      <record blacklist="true" name="Rectangle"/>
 
       <record version="3.22" name="DevicePadInterface"/>
       <record version="3.22" name="DrawingContextClass"/>

@@ -3,6 +3,8 @@
 
 package gdk
 
+import "unsafe"
+
 // #cgo CFLAGS: -Wno-deprecated-declarations
 // #cgo CFLAGS: -Wno-format-security
 // #cgo CFLAGS: -Wno-incompatible-pointer-types
@@ -28,7 +30,18 @@ func (recv *Keymap) GetModifierState() uint32 {
 	return retGo
 }
 
-// Unsupported : gdk_screen_get_monitor_workarea : unsupported parameter dest : Blacklisted record : GdkRectangle
+// GetMonitorWorkarea is a wrapper around the C function gdk_screen_get_monitor_workarea.
+func (recv *Screen) GetMonitorWorkarea(monitorNum int32) *Rectangle {
+	c_monitor_num := (C.gint)(monitorNum)
+
+	var c_dest C.GdkRectangle
+
+	C.gdk_screen_get_monitor_workarea((*C.GdkScreen)(recv.native), c_monitor_num, &c_dest)
+
+	dest := RectangleNewFromC(unsafe.Pointer(&c_dest))
+
+	return dest
+}
 
 // BeginMoveDragForDevice is a wrapper around the C function gdk_window_begin_move_drag_for_device.
 func (recv *Window) BeginMoveDragForDevice(device *Device, button int32, rootX int32, rootY int32, timestamp uint32) {

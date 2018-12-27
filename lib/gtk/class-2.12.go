@@ -1529,7 +1529,17 @@ func (recv *Tooltip) SetText(text string) {
 	return
 }
 
-// Unsupported : gtk_tooltip_set_tip_area : unsupported parameter rect : Blacklisted record : GdkRectangle
+// SetTipArea is a wrapper around the C function gtk_tooltip_set_tip_area.
+func (recv *Tooltip) SetTipArea(rect *gdk.Rectangle) {
+	c_rect := (*C.GdkRectangle)(C.NULL)
+	if rect != nil {
+		c_rect = (*C.GdkRectangle)(rect.ToC())
+	}
+
+	C.gtk_tooltip_set_tip_area((*C.GtkTooltip)(recv.native), c_rect)
+
+	return
+}
 
 // Unsupported : gtk_tree_store_set_valuesv : unsupported parameter values :
 

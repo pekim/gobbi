@@ -4,6 +4,7 @@
 package gtk
 
 import (
+	gdk "github.com/pekim/gobbi/lib/gdk"
 	gio "github.com/pekim/gobbi/lib/gio"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"
@@ -1111,7 +1112,20 @@ func (recv *TextView) ResetCursorBlink() {
 	return
 }
 
-// Unsupported : gtk_widget_get_allocated_size : unsupported parameter allocation : Blacklisted record : GdkRectangle
+// GetAllocatedSize is a wrapper around the C function gtk_widget_get_allocated_size.
+func (recv *Widget) GetAllocatedSize() (*gdk.Rectangle, int32) {
+	var c_allocation C.GdkRectangle
+
+	var c_baseline C.int
+
+	C.gtk_widget_get_allocated_size((*C.GtkWidget)(recv.native), &c_allocation, &c_baseline)
+
+	allocation := gdk.RectangleNewFromC(unsafe.Pointer(&c_allocation))
+
+	baseline := (int32)(c_baseline)
+
+	return allocation, baseline
+}
 
 // GetFocusOnClick is a wrapper around the C function gtk_widget_get_focus_on_click.
 func (recv *Widget) GetFocusOnClick() bool {

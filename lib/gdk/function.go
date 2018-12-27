@@ -39,7 +39,7 @@ func Beep() {
 	return
 }
 
-// Unsupported : gdk_cairo_get_clip_rectangle : unsupported parameter rect : Blacklisted record : GdkRectangle
+// Blacklisted : gdk_cairo_get_clip_rectangle
 
 // CairoRegionCreateFromSurface is a wrapper around the C function gdk_cairo_region_create_from_surface.
 func CairoRegionCreateFromSurface(surface *cairo.Surface) *cairo.Region {

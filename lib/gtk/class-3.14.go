@@ -590,7 +590,17 @@ func gesture_updateHandler(_ *C.GObject, c_sequence *C.GdkEventSequence, data C.
 	callback(sequence)
 }
 
-// Unsupported : gtk_gesture_get_bounding_box : unsupported parameter rect : Blacklisted record : GdkRectangle
+// GetBoundingBox is a wrapper around the C function gtk_gesture_get_bounding_box.
+func (recv *Gesture) GetBoundingBox() (bool, *gdk.Rectangle) {
+	var c_rect C.GdkRectangle
+
+	retC := C.gtk_gesture_get_bounding_box((*C.GtkGesture)(recv.native), &c_rect)
+	retGo := retC == C.TRUE
+
+	rect := gdk.RectangleNewFromC(unsafe.Pointer(&c_rect))
+
+	return retGo, rect
+}
 
 // GetBoundingBoxCenter is a wrapper around the C function gtk_gesture_get_bounding_box_center.
 func (recv *Gesture) GetBoundingBoxCenter() (bool, float64, float64) {
@@ -1386,9 +1396,29 @@ func GestureMultiPressNew(widget *Widget) *GestureMultiPress {
 	return retGo
 }
 
-// Unsupported : gtk_gesture_multi_press_get_area : unsupported parameter rect : Blacklisted record : GdkRectangle
+// GetArea is a wrapper around the C function gtk_gesture_multi_press_get_area.
+func (recv *GestureMultiPress) GetArea() (bool, *gdk.Rectangle) {
+	var c_rect C.GdkRectangle
 
-// Unsupported : gtk_gesture_multi_press_set_area : unsupported parameter rect : Blacklisted record : GdkRectangle
+	retC := C.gtk_gesture_multi_press_get_area((*C.GtkGestureMultiPress)(recv.native), &c_rect)
+	retGo := retC == C.TRUE
+
+	rect := gdk.RectangleNewFromC(unsafe.Pointer(&c_rect))
+
+	return retGo, rect
+}
+
+// SetArea is a wrapper around the C function gtk_gesture_multi_press_set_area.
+func (recv *GestureMultiPress) SetArea(rect *gdk.Rectangle) {
+	c_rect := (*C.GdkRectangle)(C.NULL)
+	if rect != nil {
+		c_rect = (*C.GdkRectangle)(rect.ToC())
+	}
+
+	C.gtk_gesture_multi_press_set_area((*C.GtkGestureMultiPress)(recv.native), c_rect)
+
+	return
+}
 
 // Unsupported signal 'pan' for GesturePan : unsupported parameter direction : type PanDirection :
 
@@ -2206,9 +2236,28 @@ func (recv *Switch) SetState(state bool) {
 	return
 }
 
-// Unsupported : gtk_widget_get_clip : unsupported parameter clip : Blacklisted record : GdkRectangle
+// GetClip is a wrapper around the C function gtk_widget_get_clip.
+func (recv *Widget) GetClip() *gdk.Rectangle {
+	var c_clip C.GdkRectangle
 
-// Unsupported : gtk_widget_set_clip : unsupported parameter clip : Blacklisted record : GdkRectangle
+	C.gtk_widget_get_clip((*C.GtkWidget)(recv.native), &c_clip)
+
+	clip := gdk.RectangleNewFromC(unsafe.Pointer(&c_clip))
+
+	return clip
+}
+
+// SetClip is a wrapper around the C function gtk_widget_set_clip.
+func (recv *Widget) SetClip(clip *gdk.Rectangle) {
+	c_clip := (*C.GdkRectangle)(C.NULL)
+	if clip != nil {
+		c_clip = (*C.GdkRectangle)(clip.ToC())
+	}
+
+	C.gtk_widget_set_clip((*C.GtkWidget)(recv.native), c_clip)
+
+	return
+}
 
 // WindowSetInteractiveDebugging is a wrapper around the C function gtk_window_set_interactive_debugging.
 func WindowSetInteractiveDebugging(enable bool) {

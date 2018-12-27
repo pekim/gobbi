@@ -29,7 +29,22 @@ func CairoCreate(window *Window) *cairo.Context {
 	return retGo
 }
 
-// Unsupported : gdk_cairo_rectangle : unsupported parameter rectangle : Blacklisted record : GdkRectangle
+// CairoRectangle is a wrapper around the C function gdk_cairo_rectangle.
+func CairoRectangle(cr *cairo.Context, rectangle *Rectangle) {
+	c_cr := (*C.cairo_t)(C.NULL)
+	if cr != nil {
+		c_cr = (*C.cairo_t)(cr.ToC())
+	}
+
+	c_rectangle := (*C.GdkRectangle)(C.NULL)
+	if rectangle != nil {
+		c_rectangle = (*C.GdkRectangle)(rectangle.ToC())
+	}
+
+	C.gdk_cairo_rectangle(c_cr, c_rectangle)
+
+	return
+}
 
 // CairoRegion is a wrapper around the C function gdk_cairo_region.
 func CairoRegion(cr *cairo.Context, region *cairo.Region) {

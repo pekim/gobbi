@@ -3640,7 +3640,7 @@ func StatusIconPositionMenu(menu *Menu, x int32, y int32, userData uintptr) bool
 	return pushIn
 }
 
-// Unsupported : gtk_status_icon_get_geometry : unsupported parameter area : Blacklisted record : GdkRectangle
+// Unsupported : gtk_status_icon_get_geometry : unsupported parameter orientation : GtkOrientation* with indirection level of 1
 
 // GetIconName is a wrapper around the C function gtk_status_icon_get_icon_name.
 func (recv *StatusIcon) GetIconName() string {

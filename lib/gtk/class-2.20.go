@@ -246,7 +246,16 @@ func (recv *Range) GetMinSliderSize() int32 {
 	return retGo
 }
 
-// Unsupported : gtk_range_get_range_rect : unsupported parameter range_rect : Blacklisted record : GdkRectangle
+// GetRangeRect is a wrapper around the C function gtk_range_get_range_rect.
+func (recv *Range) GetRangeRect() *gdk.Rectangle {
+	var c_range_rect C.GdkRectangle
+
+	C.gtk_range_get_range_rect((*C.GtkRange)(recv.native), &c_range_rect)
+
+	rangeRect := gdk.RectangleNewFromC(unsafe.Pointer(&c_range_rect))
+
+	return rangeRect
+}
 
 // GetSliderRange is a wrapper around the C function gtk_range_get_slider_range.
 func (recv *Range) GetSliderRange() (int32, int32) {

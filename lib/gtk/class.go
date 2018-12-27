@@ -1805,6 +1805,15 @@ import (
 */
 /*
 
+	void widget_sizeAllocateHandler(GObject *, GdkRectangle *, gpointer);
+
+	static gulong Widget_signal_connect_size_allocate(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "size-allocate", G_CALLBACK(widget_sizeAllocateHandler), data);
+	}
+
+*/
+/*
+
 	void widget_styleSetHandler(GObject *, GtkStyle *, gpointer);
 
 	static gulong Widget_signal_connect_style_set(gpointer instance, gpointer data) {
@@ -6320,9 +6329,67 @@ func (recv *CellRenderer) GetFixedSize() (int32, int32) {
 	return width, height
 }
 
-// Unsupported : gtk_cell_renderer_get_size : unsupported parameter cell_area : Blacklisted record : GdkRectangle
+// GetSize is a wrapper around the C function gtk_cell_renderer_get_size.
+func (recv *CellRenderer) GetSize(widget *Widget, cellArea *gdk.Rectangle) (int32, int32, int32, int32) {
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
 
-// Unsupported : gtk_cell_renderer_render : unsupported parameter background_area : Blacklisted record : GdkRectangle
+	c_cell_area := (*C.GdkRectangle)(C.NULL)
+	if cellArea != nil {
+		c_cell_area = (*C.GdkRectangle)(cellArea.ToC())
+	}
+
+	var c_x_offset C.gint
+
+	var c_y_offset C.gint
+
+	var c_width C.gint
+
+	var c_height C.gint
+
+	C.gtk_cell_renderer_get_size((*C.GtkCellRenderer)(recv.native), c_widget, c_cell_area, &c_x_offset, &c_y_offset, &c_width, &c_height)
+
+	xOffset := (int32)(c_x_offset)
+
+	yOffset := (int32)(c_y_offset)
+
+	width := (int32)(c_width)
+
+	height := (int32)(c_height)
+
+	return xOffset, yOffset, width, height
+}
+
+// Render is a wrapper around the C function gtk_cell_renderer_render.
+func (recv *CellRenderer) Render(cr *cairo.Context, widget *Widget, backgroundArea *gdk.Rectangle, cellArea *gdk.Rectangle, flags CellRendererState) {
+	c_cr := (*C.cairo_t)(C.NULL)
+	if cr != nil {
+		c_cr = (*C.cairo_t)(cr.ToC())
+	}
+
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
+
+	c_background_area := (*C.GdkRectangle)(C.NULL)
+	if backgroundArea != nil {
+		c_background_area = (*C.GdkRectangle)(backgroundArea.ToC())
+	}
+
+	c_cell_area := (*C.GdkRectangle)(C.NULL)
+	if cellArea != nil {
+		c_cell_area = (*C.GdkRectangle)(cellArea.ToC())
+	}
+
+	c_flags := (C.GtkCellRendererState)(flags)
+
+	C.gtk_cell_renderer_render((*C.GtkCellRenderer)(recv.native), c_cr, c_widget, c_background_area, c_cell_area, c_flags)
+
+	return
+}
 
 // SetFixedSize is a wrapper around the C function gtk_cell_renderer_set_fixed_size.
 func (recv *CellRenderer) SetFixedSize(width int32, height int32) {
@@ -16204,7 +16271,17 @@ func (recv *IMContext) SetClientWindow(window *gdk.Window) {
 	return
 }
 
-// Unsupported : gtk_im_context_set_cursor_location : unsupported parameter area : Blacklisted record : GdkRectangle
+// SetCursorLocation is a wrapper around the C function gtk_im_context_set_cursor_location.
+func (recv *IMContext) SetCursorLocation(area *gdk.Rectangle) {
+	c_area := (*C.GdkRectangle)(C.NULL)
+	if area != nil {
+		c_area = (*C.GdkRectangle)(area.ToC())
+	}
+
+	C.gtk_im_context_set_cursor_location((*C.GtkIMContext)(recv.native), c_area)
+
+	return
+}
 
 // SetSurrounding is a wrapper around the C function gtk_im_context_set_surrounding.
 func (recv *IMContext) SetSurrounding(text string, len int32, cursorIndex int32) {
@@ -23813,7 +23890,17 @@ func popover_closedHandler(_ *C.GObject, data C.gpointer) {
 	callback()
 }
 
-// Unsupported : gtk_popover_get_pointing_to : unsupported parameter rect : Blacklisted record : GdkRectangle
+// GetPointingTo is a wrapper around the C function gtk_popover_get_pointing_to.
+func (recv *Popover) GetPointingTo() (bool, *gdk.Rectangle) {
+	var c_rect C.GdkRectangle
+
+	retC := C.gtk_popover_get_pointing_to((*C.GtkPopover)(recv.native), &c_rect)
+	retGo := retC == C.TRUE
+
+	rect := gdk.RectangleNewFromC(unsafe.Pointer(&c_rect))
+
+	return retGo, rect
+}
 
 // GetPosition is a wrapper around the C function gtk_popover_get_position.
 func (recv *Popover) GetPosition() PositionType {
@@ -32910,7 +32997,21 @@ func (recv *TextView) GetIterAtLocation(x int32, y int32) *TextIter {
 	return iter
 }
 
-// Unsupported : gtk_text_view_get_iter_location : unsupported parameter location : Blacklisted record : GdkRectangle
+// GetIterLocation is a wrapper around the C function gtk_text_view_get_iter_location.
+func (recv *TextView) GetIterLocation(iter *TextIter) *gdk.Rectangle {
+	c_iter := (*C.GtkTextIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GtkTextIter)(iter.ToC())
+	}
+
+	var c_location C.GdkRectangle
+
+	C.gtk_text_view_get_iter_location((*C.GtkTextView)(recv.native), c_iter, &c_location)
+
+	location := gdk.RectangleNewFromC(unsafe.Pointer(&c_location))
+
+	return location
+}
 
 // GetJustification is a wrapper around the C function gtk_text_view_get_justification.
 func (recv *TextView) GetJustification() Justification {
@@ -33010,7 +33111,16 @@ func (recv *TextView) GetTabs() *pango.TabArray {
 	return retGo
 }
 
-// Unsupported : gtk_text_view_get_visible_rect : unsupported parameter visible_rect : Blacklisted record : GdkRectangle
+// GetVisibleRect is a wrapper around the C function gtk_text_view_get_visible_rect.
+func (recv *TextView) GetVisibleRect() *gdk.Rectangle {
+	var c_visible_rect C.GdkRectangle
+
+	C.gtk_text_view_get_visible_rect((*C.GtkTextView)(recv.native), &c_visible_rect)
+
+	visibleRect := gdk.RectangleNewFromC(unsafe.Pointer(&c_visible_rect))
+
+	return visibleRect
+}
 
 // GetWindow is a wrapper around the C function gtk_text_view_get_window.
 func (recv *TextView) GetWindow(win TextWindowType) *gdk.Window {
@@ -36815,7 +36925,26 @@ func (recv *TreeView) ExpandRow(path *TreePath, openAll bool) bool {
 	return retGo
 }
 
-// Unsupported : gtk_tree_view_get_background_area : unsupported parameter rect : Blacklisted record : GdkRectangle
+// GetBackgroundArea is a wrapper around the C function gtk_tree_view_get_background_area.
+func (recv *TreeView) GetBackgroundArea(path *TreePath, column *TreeViewColumn) *gdk.Rectangle {
+	c_path := (*C.GtkTreePath)(C.NULL)
+	if path != nil {
+		c_path = (*C.GtkTreePath)(path.ToC())
+	}
+
+	c_column := (*C.GtkTreeViewColumn)(C.NULL)
+	if column != nil {
+		c_column = (*C.GtkTreeViewColumn)(column.ToC())
+	}
+
+	var c_rect C.GdkRectangle
+
+	C.gtk_tree_view_get_background_area((*C.GtkTreeView)(recv.native), c_path, c_column, &c_rect)
+
+	rect := gdk.RectangleNewFromC(unsafe.Pointer(&c_rect))
+
+	return rect
+}
 
 // GetBinWindow is a wrapper around the C function gtk_tree_view_get_bin_window.
 func (recv *TreeView) GetBinWindow() *gdk.Window {
@@ -36830,7 +36959,26 @@ func (recv *TreeView) GetBinWindow() *gdk.Window {
 	return retGo
 }
 
-// Unsupported : gtk_tree_view_get_cell_area : unsupported parameter rect : Blacklisted record : GdkRectangle
+// GetCellArea is a wrapper around the C function gtk_tree_view_get_cell_area.
+func (recv *TreeView) GetCellArea(path *TreePath, column *TreeViewColumn) *gdk.Rectangle {
+	c_path := (*C.GtkTreePath)(C.NULL)
+	if path != nil {
+		c_path = (*C.GtkTreePath)(path.ToC())
+	}
+
+	c_column := (*C.GtkTreeViewColumn)(C.NULL)
+	if column != nil {
+		c_column = (*C.GtkTreeViewColumn)(column.ToC())
+	}
+
+	var c_rect C.GdkRectangle
+
+	C.gtk_tree_view_get_cell_area((*C.GtkTreeView)(recv.native), c_path, c_column, &c_rect)
+
+	rect := gdk.RectangleNewFromC(unsafe.Pointer(&c_rect))
+
+	return rect
+}
 
 // GetColumn is a wrapper around the C function gtk_tree_view_get_column.
 func (recv *TreeView) GetColumn(n int32) *TreeViewColumn {
@@ -36989,7 +37137,16 @@ func (recv *TreeView) GetVadjustment() *Adjustment {
 	return retGo
 }
 
-// Unsupported : gtk_tree_view_get_visible_rect : unsupported parameter visible_rect : Blacklisted record : GdkRectangle
+// GetVisibleRect is a wrapper around the C function gtk_tree_view_get_visible_rect.
+func (recv *TreeView) GetVisibleRect() *gdk.Rectangle {
+	var c_visible_rect C.GdkRectangle
+
+	C.gtk_tree_view_get_visible_rect((*C.GtkTreeView)(recv.native), &c_visible_rect)
+
+	visibleRect := gdk.RectangleNewFromC(unsafe.Pointer(&c_visible_rect))
+
+	return visibleRect
+}
 
 // InsertColumn is a wrapper around the C function gtk_tree_view_insert_column.
 func (recv *TreeView) InsertColumn(column *TreeViewColumn, position int32) int32 {
@@ -37526,7 +37683,33 @@ func (recv *TreeViewColumn) CellGetPosition(cellRenderer *CellRenderer) (bool, i
 	return retGo, xOffset, width
 }
 
-// Unsupported : gtk_tree_view_column_cell_get_size : unsupported parameter cell_area : Blacklisted record : GdkRectangle
+// CellGetSize is a wrapper around the C function gtk_tree_view_column_cell_get_size.
+func (recv *TreeViewColumn) CellGetSize(cellArea *gdk.Rectangle) (int32, int32, int32, int32) {
+	c_cell_area := (*C.GdkRectangle)(C.NULL)
+	if cellArea != nil {
+		c_cell_area = (*C.GdkRectangle)(cellArea.ToC())
+	}
+
+	var c_x_offset C.gint
+
+	var c_y_offset C.gint
+
+	var c_width C.gint
+
+	var c_height C.gint
+
+	C.gtk_tree_view_column_cell_get_size((*C.GtkTreeViewColumn)(recv.native), c_cell_area, &c_x_offset, &c_y_offset, &c_width, &c_height)
+
+	xOffset := (int32)(c_x_offset)
+
+	yOffset := (int32)(c_y_offset)
+
+	width := (int32)(c_width)
+
+	height := (int32)(c_height)
+
+	return xOffset, yOffset, width, height
+}
 
 // CellIsVisible is a wrapper around the C function gtk_tree_view_column_cell_is_visible.
 func (recv *TreeViewColumn) CellIsVisible() bool {
@@ -41619,7 +41802,67 @@ func widget_showHandler(_ *C.GObject, data C.gpointer) {
 
 // Unsupported signal 'show-help' for Widget : unsupported parameter help_type : type WidgetHelpType :
 
-// Unsupported signal 'size-allocate' for Widget : unsupported parameter allocation : type Allocation : Blacklisted record : GdkRectangle
+type signalWidgetSizeAllocateDetail struct {
+	callback  WidgetSignalSizeAllocateCallback
+	handlerID C.gulong
+}
+
+var signalWidgetSizeAllocateId int
+var signalWidgetSizeAllocateMap = make(map[int]signalWidgetSizeAllocateDetail)
+var signalWidgetSizeAllocateLock sync.RWMutex
+
+// WidgetSignalSizeAllocateCallback is a callback function for a 'size-allocate' signal emitted from a Widget.
+type WidgetSignalSizeAllocateCallback func(allocation *gdk.Rectangle)
+
+/*
+ConnectSizeAllocate connects the callback to the 'size-allocate' signal for the Widget.
+
+The returned value represents the connection, and may be passed to DisconnectSizeAllocate to remove it.
+*/
+func (recv *Widget) ConnectSizeAllocate(callback WidgetSignalSizeAllocateCallback) int {
+	signalWidgetSizeAllocateLock.Lock()
+	defer signalWidgetSizeAllocateLock.Unlock()
+
+	signalWidgetSizeAllocateId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Widget_signal_connect_size_allocate(instance, C.gpointer(uintptr(signalWidgetSizeAllocateId)))
+
+	detail := signalWidgetSizeAllocateDetail{callback, handlerID}
+	signalWidgetSizeAllocateMap[signalWidgetSizeAllocateId] = detail
+
+	return signalWidgetSizeAllocateId
+}
+
+/*
+DisconnectSizeAllocate disconnects a callback from the 'size-allocate' signal for the Widget.
+
+The connectionID should be a value returned from a call to ConnectSizeAllocate.
+*/
+func (recv *Widget) DisconnectSizeAllocate(connectionID int) {
+	signalWidgetSizeAllocateLock.Lock()
+	defer signalWidgetSizeAllocateLock.Unlock()
+
+	detail, exists := signalWidgetSizeAllocateMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalWidgetSizeAllocateMap, connectionID)
+}
+
+//export widget_sizeAllocateHandler
+func widget_sizeAllocateHandler(_ *C.GObject, c_allocation *C.GdkRectangle, data C.gpointer) {
+	signalWidgetSizeAllocateLock.RLock()
+	defer signalWidgetSizeAllocateLock.RUnlock()
+
+	allocation := gdk.RectangleNewFromC(unsafe.Pointer(c_allocation))
+
+	index := int(uintptr(data))
+	callback := signalWidgetSizeAllocateMap[index].callback
+	callback(allocation)
+}
 
 // Unsupported signal 'state-changed' for Widget : unsupported parameter state : type StateType :
 
@@ -42635,7 +42878,22 @@ func (recv *Widget) InDestruction() bool {
 	return retGo
 }
 
-// Unsupported : gtk_widget_intersect : unsupported parameter area : Blacklisted record : GdkRectangle
+// Intersect is a wrapper around the C function gtk_widget_intersect.
+func (recv *Widget) Intersect(area *gdk.Rectangle) (bool, *gdk.Rectangle) {
+	c_area := (*C.GdkRectangle)(C.NULL)
+	if area != nil {
+		c_area = (*C.GdkRectangle)(area.ToC())
+	}
+
+	var c_intersection C.GdkRectangle
+
+	retC := C.gtk_widget_intersect((*C.GtkWidget)(recv.native), c_area, &c_intersection)
+	retGo := retC == C.TRUE
+
+	intersection := gdk.RectangleNewFromC(unsafe.Pointer(&c_intersection))
+
+	return retGo, intersection
+}
 
 // IsAncestor is a wrapper around the C function gtk_widget_is_ancestor.
 func (recv *Widget) IsAncestor(ancestor *Widget) bool {
@@ -43150,7 +43408,17 @@ func (recv *Widget) ShowNow() {
 	return
 }
 
-// Unsupported : gtk_widget_size_allocate : unsupported parameter allocation : Blacklisted record : GdkRectangle
+// SizeAllocate is a wrapper around the C function gtk_widget_size_allocate.
+func (recv *Widget) SizeAllocate(allocation *gdk.Rectangle) {
+	c_allocation := (*C.GdkRectangle)(C.NULL)
+	if allocation != nil {
+		c_allocation = (*C.GdkRectangle)(allocation.ToC())
+	}
+
+	C.gtk_widget_size_allocate((*C.GtkWidget)(recv.native), c_allocation)
+
+	return
+}
 
 // SizeRequest is a wrapper around the C function gtk_widget_size_request.
 func (recv *Widget) SizeRequest() *Requisition {

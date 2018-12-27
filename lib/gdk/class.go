@@ -1875,7 +1875,17 @@ func (recv *Window) BeginMoveDrag(button int32, rootX int32, rootY int32, timest
 	return
 }
 
-// Unsupported : gdk_window_begin_paint_rect : unsupported parameter rectangle : Blacklisted record : GdkRectangle
+// BeginPaintRect is a wrapper around the C function gdk_window_begin_paint_rect.
+func (recv *Window) BeginPaintRect(rectangle *Rectangle) {
+	c_rectangle := (*C.GdkRectangle)(C.NULL)
+	if rectangle != nil {
+		c_rectangle = (*C.GdkRectangle)(rectangle.ToC())
+	}
+
+	C.gdk_window_begin_paint_rect((*C.GdkWindow)(recv.native), c_rectangle)
+
+	return
+}
 
 // BeginPaintRegion is a wrapper around the C function gdk_window_begin_paint_region.
 func (recv *Window) BeginPaintRegion(region *cairo.Region) {
@@ -1987,7 +1997,16 @@ func (recv *Window) GetEvents() EventMask {
 	return retGo
 }
 
-// Unsupported : gdk_window_get_frame_extents : unsupported parameter rect : Blacklisted record : GdkRectangle
+// GetFrameExtents is a wrapper around the C function gdk_window_get_frame_extents.
+func (recv *Window) GetFrameExtents() *Rectangle {
+	var c_rect C.GdkRectangle
+
+	C.gdk_window_get_frame_extents((*C.GdkWindow)(recv.native), &c_rect)
+
+	rect := RectangleNewFromC(unsafe.Pointer(&c_rect))
+
+	return rect
+}
 
 // GetGeometry is a wrapper around the C function gdk_window_get_geometry.
 func (recv *Window) GetGeometry() (int32, int32, int32, int32) {
@@ -2145,7 +2164,20 @@ func (recv *Window) Iconify() {
 
 // Unsupported : gdk_window_invalidate_maybe_recurse : unsupported parameter child_func : no type generator for WindowChildFunc (GdkWindowChildFunc) for param child_func
 
-// Unsupported : gdk_window_invalidate_rect : unsupported parameter rect : Blacklisted record : GdkRectangle
+// InvalidateRect is a wrapper around the C function gdk_window_invalidate_rect.
+func (recv *Window) InvalidateRect(rect *Rectangle, invalidateChildren bool) {
+	c_rect := (*C.GdkRectangle)(C.NULL)
+	if rect != nil {
+		c_rect = (*C.GdkRectangle)(rect.ToC())
+	}
+
+	c_invalidate_children :=
+		boolToGboolean(invalidateChildren)
+
+	C.gdk_window_invalidate_rect((*C.GdkWindow)(recv.native), c_rect, c_invalidate_children)
+
+	return
+}
 
 // InvalidateRegion is a wrapper around the C function gdk_window_invalidate_region.
 func (recv *Window) InvalidateRegion(region *cairo.Region, invalidateChildren bool) {

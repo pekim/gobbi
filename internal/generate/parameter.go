@@ -34,11 +34,36 @@ func (p *Parameter) init(ns *Namespace) {
 	p.cVarName = "c_" + p.Name
 
 	if p.Type != nil {
+		// If the parameter's type is an alias, replace it with the aliased type
+		alias, found := ns.aliasForName(p.Type.Name)
+		if found {
+			p.initAlias(ns, alias)
+		}
+
 		p.Type.init(ns)
 	}
 
 	if p.Array != nil && p.Array.Type != nil {
 		p.Array.init(ns)
+	}
+}
+
+func (p *Parameter) initAlias(ns *Namespace, alias *Alias) {
+	qname := QNameNew(ns, alias.Type.Name)
+	record, found := qname.namespace.recordOrClassRecordForName(qname.name)
+	if found {
+		bareName := strings.TrimRight(p.Type.CType, "*")
+		asterisks := p.Type.CType[len(bareName):]
+
+		ctype := ""
+		if p.Type.CType != "" {
+			ctype = record.CType + asterisks
+		}
+
+		p.Type = &Type{
+			Name:  qname.namespace.Name + "." + record.Name,
+			CType: ctype,
+		}
 	}
 }
 

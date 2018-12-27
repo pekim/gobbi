@@ -4,6 +4,7 @@
 package gtk
 
 import (
+	gdk "github.com/pekim/gobbi/lib/gdk"
 	gio "github.com/pekim/gobbi/lib/gio"
 	glib "github.com/pekim/gobbi/lib/glib"
 	"unsafe"
@@ -589,7 +590,17 @@ func (recv *Popover) SetModal(modal bool) {
 	return
 }
 
-// Unsupported : gtk_popover_set_pointing_to : unsupported parameter rect : Blacklisted record : GdkRectangle
+// SetPointingTo is a wrapper around the C function gtk_popover_set_pointing_to.
+func (recv *Popover) SetPointingTo(rect *gdk.Rectangle) {
+	c_rect := (*C.GdkRectangle)(C.NULL)
+	if rect != nil {
+		c_rect = (*C.GdkRectangle)(rect.ToC())
+	}
+
+	C.gtk_popover_set_pointing_to((*C.GtkPopover)(recv.native), c_rect)
+
+	return
+}
 
 // SetPosition is a wrapper around the C function gtk_popover_set_position.
 func (recv *Popover) SetPosition(position PositionType) {

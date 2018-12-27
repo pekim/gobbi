@@ -4,6 +4,7 @@ package gtk
 
 import (
 	atk "github.com/pekim/gobbi/lib/atk"
+	gdk "github.com/pekim/gobbi/lib/gdk"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"sync"
 	"unsafe"
@@ -346,7 +347,22 @@ func (recv *CellAccessibleParent) ExpandCollapse(cell *CellAccessible) {
 	return
 }
 
-// Unsupported : gtk_cell_accessible_parent_get_cell_area : unsupported parameter cell_rect : Blacklisted record : GdkRectangle
+// GetCellArea is a wrapper around the C function gtk_cell_accessible_parent_get_cell_area.
+func (recv *CellAccessibleParent) GetCellArea(cell *CellAccessible, cellRect *gdk.Rectangle) {
+	c_cell := (*C.GtkCellAccessible)(C.NULL)
+	if cell != nil {
+		c_cell = (*C.GtkCellAccessible)(cell.ToC())
+	}
+
+	c_cell_rect := (*C.GdkRectangle)(C.NULL)
+	if cellRect != nil {
+		c_cell_rect = (*C.GdkRectangle)(cellRect.ToC())
+	}
+
+	C.gtk_cell_accessible_parent_get_cell_area((*C.GtkCellAccessibleParent)(recv.native), c_cell, c_cell_rect)
+
+	return
+}
 
 // GetCellExtents is a wrapper around the C function gtk_cell_accessible_parent_get_cell_extents.
 func (recv *CellAccessibleParent) GetCellExtents(cell *CellAccessible, x int32, y int32, width int32, height int32, coordType atk.CoordType) {

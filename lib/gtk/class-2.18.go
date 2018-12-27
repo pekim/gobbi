@@ -1044,7 +1044,16 @@ func (recv *StatusIcon) SetTitle(title string) {
 	return
 }
 
-// Unsupported : gtk_widget_get_allocation : unsupported parameter allocation : Blacklisted record : GdkRectangle
+// GetAllocation is a wrapper around the C function gtk_widget_get_allocation.
+func (recv *Widget) GetAllocation() *gdk.Rectangle {
+	var c_allocation C.GdkRectangle
+
+	C.gtk_widget_get_allocation((*C.GtkWidget)(recv.native), &c_allocation)
+
+	allocation := gdk.RectangleNewFromC(unsafe.Pointer(&c_allocation))
+
+	return allocation
+}
 
 // GetAppPaintable is a wrapper around the C function gtk_widget_get_app_paintable.
 func (recv *Widget) GetAppPaintable() bool {
@@ -1166,7 +1175,17 @@ func (recv *Widget) IsToplevel() bool {
 	return retGo
 }
 
-// Unsupported : gtk_widget_set_allocation : unsupported parameter allocation : Blacklisted record : GdkRectangle
+// SetAllocation is a wrapper around the C function gtk_widget_set_allocation.
+func (recv *Widget) SetAllocation(allocation *gdk.Rectangle) {
+	c_allocation := (*C.GdkRectangle)(C.NULL)
+	if allocation != nil {
+		c_allocation = (*C.GdkRectangle)(allocation.ToC())
+	}
+
+	C.gtk_widget_set_allocation((*C.GtkWidget)(recv.native), c_allocation)
+
+	return
+}
 
 // SetCanDefault is a wrapper around the C function gtk_widget_set_can_default.
 func (recv *Widget) SetCanDefault(canDefault bool) {

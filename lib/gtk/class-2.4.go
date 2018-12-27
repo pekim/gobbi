@@ -2132,7 +2132,17 @@ func (recv *IconInfo) GetDisplayName() string {
 	return retGo
 }
 
-// Unsupported : gtk_icon_info_get_embedded_rect : unsupported parameter rectangle : Blacklisted record : GdkRectangle
+// GetEmbeddedRect is a wrapper around the C function gtk_icon_info_get_embedded_rect.
+func (recv *IconInfo) GetEmbeddedRect() (bool, *gdk.Rectangle) {
+	var c_rectangle C.GdkRectangle
+
+	retC := C.gtk_icon_info_get_embedded_rect((*C.GtkIconInfo)(recv.native), &c_rectangle)
+	retGo := retC == C.TRUE
+
+	rectangle := gdk.RectangleNewFromC(unsafe.Pointer(&c_rectangle))
+
+	return retGo, rectangle
+}
 
 // GetFilename is a wrapper around the C function gtk_icon_info_get_filename.
 func (recv *IconInfo) GetFilename() string {

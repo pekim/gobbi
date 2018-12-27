@@ -5,8 +5,6 @@
             xmlns:glib="http://www.gtk.org/introspection/glib/1.0"
 >
   <namespace>
-    <alias blacklist="true" name="Allocation"/>
-
     <bitfield name="StyleContextPrintFlags" version="3.20"/>
 
     <constant blacklist="true" name="STOCK_ABOUT"/>

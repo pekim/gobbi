@@ -24,6 +24,15 @@ import (
 // #include <stdlib.h>
 /*
 
+	void cellarea_addEditableHandler(GObject *, GtkCellRenderer *, GtkCellEditable *, GdkRectangle *, gchar*, gpointer);
+
+	static gulong CellArea_signal_connect_add_editable(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "add-editable", G_CALLBACK(cellarea_addEditableHandler), data);
+	}
+
+*/
+/*
+
 	void cellarea_applyAttributesHandler(GObject *, GtkTreeModel *, GtkTreeIter *, gboolean, gboolean, gpointer);
 
 	static gulong CellArea_signal_connect_apply_attributes(gpointer instance, gpointer data) {
@@ -403,7 +412,73 @@ func (recv *Calendar) GetDayIsMarked(day uint32) bool {
 	return retGo
 }
 
-// Unsupported signal 'add-editable' for CellArea : unsupported parameter cell_area : type Gdk.Rectangle : Blacklisted record : GdkRectangle
+type signalCellAreaAddEditableDetail struct {
+	callback  CellAreaSignalAddEditableCallback
+	handlerID C.gulong
+}
+
+var signalCellAreaAddEditableId int
+var signalCellAreaAddEditableMap = make(map[int]signalCellAreaAddEditableDetail)
+var signalCellAreaAddEditableLock sync.RWMutex
+
+// CellAreaSignalAddEditableCallback is a callback function for a 'add-editable' signal emitted from a CellArea.
+type CellAreaSignalAddEditableCallback func(renderer *CellRenderer, editable *CellEditable, cellArea *gdk.Rectangle, path string)
+
+/*
+ConnectAddEditable connects the callback to the 'add-editable' signal for the CellArea.
+
+The returned value represents the connection, and may be passed to DisconnectAddEditable to remove it.
+*/
+func (recv *CellArea) ConnectAddEditable(callback CellAreaSignalAddEditableCallback) int {
+	signalCellAreaAddEditableLock.Lock()
+	defer signalCellAreaAddEditableLock.Unlock()
+
+	signalCellAreaAddEditableId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.CellArea_signal_connect_add_editable(instance, C.gpointer(uintptr(signalCellAreaAddEditableId)))
+
+	detail := signalCellAreaAddEditableDetail{callback, handlerID}
+	signalCellAreaAddEditableMap[signalCellAreaAddEditableId] = detail
+
+	return signalCellAreaAddEditableId
+}
+
+/*
+DisconnectAddEditable disconnects a callback from the 'add-editable' signal for the CellArea.
+
+The connectionID should be a value returned from a call to ConnectAddEditable.
+*/
+func (recv *CellArea) DisconnectAddEditable(connectionID int) {
+	signalCellAreaAddEditableLock.Lock()
+	defer signalCellAreaAddEditableLock.Unlock()
+
+	detail, exists := signalCellAreaAddEditableMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalCellAreaAddEditableMap, connectionID)
+}
+
+//export cellarea_addEditableHandler
+func cellarea_addEditableHandler(_ *C.GObject, c_renderer *C.GtkCellRenderer, c_editable *C.GtkCellEditable, c_cell_area *C.GdkRectangle, c_path *C.gchar, data C.gpointer) {
+	signalCellAreaAddEditableLock.RLock()
+	defer signalCellAreaAddEditableLock.RUnlock()
+
+	renderer := CellRendererNewFromC(unsafe.Pointer(c_renderer))
+
+	editable := CellEditableNewFromC(unsafe.Pointer(c_editable))
+
+	cellArea := gdk.RectangleNewFromC(unsafe.Pointer(c_cell_area))
+
+	path := C.GoString(c_path)
+
+	index := int(uintptr(data))
+	callback := signalCellAreaAddEditableMap[index].callback
+	callback(renderer, editable, cellArea, path)
+}
 
 type signalCellAreaApplyAttributesDetail struct {
 	callback  CellAreaSignalApplyAttributesCallback
@@ -601,7 +676,33 @@ func cellarea_removeEditableHandler(_ *C.GObject, c_renderer *C.GtkCellRenderer,
 	callback(renderer, editable)
 }
 
-// Unsupported : gtk_cell_area_activate : unsupported parameter cell_area : Blacklisted record : GdkRectangle
+// Activate is a wrapper around the C function gtk_cell_area_activate.
+func (recv *CellArea) Activate(context *CellAreaContext, widget *Widget, cellArea *gdk.Rectangle, flags CellRendererState, editOnly bool) bool {
+	c_context := (*C.GtkCellAreaContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GtkCellAreaContext)(context.ToC())
+	}
+
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
+
+	c_cell_area := (*C.GdkRectangle)(C.NULL)
+	if cellArea != nil {
+		c_cell_area = (*C.GdkRectangle)(cellArea.ToC())
+	}
+
+	c_flags := (C.GtkCellRendererState)(flags)
+
+	c_edit_only :=
+		boolToGboolean(editOnly)
+
+	retC := C.gtk_cell_area_activate((*C.GtkCellArea)(recv.native), c_context, c_widget, c_cell_area, c_flags, c_edit_only)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
 
 // Unsupported : gtk_cell_area_activate_cell : unsupported parameter event : no type generator for Gdk.Event (GdkEvent*) for param event
 
@@ -771,11 +872,69 @@ func (recv *CellArea) Focus(direction DirectionType) bool {
 
 // Unsupported : gtk_cell_area_foreach : unsupported parameter callback : no type generator for CellCallback (GtkCellCallback) for param callback
 
-// Unsupported : gtk_cell_area_foreach_alloc : unsupported parameter cell_area : Blacklisted record : GdkRectangle
+// Unsupported : gtk_cell_area_foreach_alloc : unsupported parameter callback : no type generator for CellAllocCallback (GtkCellAllocCallback) for param callback
 
-// Unsupported : gtk_cell_area_get_cell_allocation : unsupported parameter cell_area : Blacklisted record : GdkRectangle
+// GetCellAllocation is a wrapper around the C function gtk_cell_area_get_cell_allocation.
+func (recv *CellArea) GetCellAllocation(context *CellAreaContext, widget *Widget, renderer *CellRenderer, cellArea *gdk.Rectangle) *gdk.Rectangle {
+	c_context := (*C.GtkCellAreaContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GtkCellAreaContext)(context.ToC())
+	}
 
-// Unsupported : gtk_cell_area_get_cell_at_position : unsupported parameter cell_area : Blacklisted record : GdkRectangle
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
+
+	c_renderer := (*C.GtkCellRenderer)(C.NULL)
+	if renderer != nil {
+		c_renderer = (*C.GtkCellRenderer)(renderer.ToC())
+	}
+
+	c_cell_area := (*C.GdkRectangle)(C.NULL)
+	if cellArea != nil {
+		c_cell_area = (*C.GdkRectangle)(cellArea.ToC())
+	}
+
+	var c_allocation C.GdkRectangle
+
+	C.gtk_cell_area_get_cell_allocation((*C.GtkCellArea)(recv.native), c_context, c_widget, c_renderer, c_cell_area, &c_allocation)
+
+	allocation := gdk.RectangleNewFromC(unsafe.Pointer(&c_allocation))
+
+	return allocation
+}
+
+// GetCellAtPosition is a wrapper around the C function gtk_cell_area_get_cell_at_position.
+func (recv *CellArea) GetCellAtPosition(context *CellAreaContext, widget *Widget, cellArea *gdk.Rectangle, x int32, y int32) (*CellRenderer, *gdk.Rectangle) {
+	c_context := (*C.GtkCellAreaContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GtkCellAreaContext)(context.ToC())
+	}
+
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
+
+	c_cell_area := (*C.GdkRectangle)(C.NULL)
+	if cellArea != nil {
+		c_cell_area = (*C.GdkRectangle)(cellArea.ToC())
+	}
+
+	c_x := (C.gint)(x)
+
+	c_y := (C.gint)(y)
+
+	var c_alloc_area C.GdkRectangle
+
+	retC := C.gtk_cell_area_get_cell_at_position((*C.GtkCellArea)(recv.native), c_context, c_widget, c_cell_area, c_x, c_y, &c_alloc_area)
+	retGo := CellRendererNewFromC(unsafe.Pointer(retC))
+
+	allocArea := gdk.RectangleNewFromC(unsafe.Pointer(&c_alloc_area))
+
+	return retGo, allocArea
+}
 
 // GetCurrentPathString is a wrapper around the C function gtk_cell_area_get_current_path_string.
 func (recv *CellArea) GetCurrentPathString() string {
@@ -965,7 +1124,26 @@ func (recv *CellArea) HasRenderer(renderer *CellRenderer) bool {
 	return retGo
 }
 
-// Unsupported : gtk_cell_area_inner_cell_area : unsupported parameter cell_area : Blacklisted record : GdkRectangle
+// InnerCellArea is a wrapper around the C function gtk_cell_area_inner_cell_area.
+func (recv *CellArea) InnerCellArea(widget *Widget, cellArea *gdk.Rectangle) *gdk.Rectangle {
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
+
+	c_cell_area := (*C.GdkRectangle)(C.NULL)
+	if cellArea != nil {
+		c_cell_area = (*C.GdkRectangle)(cellArea.ToC())
+	}
+
+	var c_inner_area C.GdkRectangle
+
+	C.gtk_cell_area_inner_cell_area((*C.GtkCellArea)(recv.native), c_widget, c_cell_area, &c_inner_area)
+
+	innerArea := gdk.RectangleNewFromC(unsafe.Pointer(&c_inner_area))
+
+	return innerArea
+}
 
 // IsActivatable is a wrapper around the C function gtk_cell_area_is_activatable.
 func (recv *CellArea) IsActivatable() bool {
@@ -1022,7 +1200,42 @@ func (recv *CellArea) RemoveFocusSibling(renderer *CellRenderer, sibling *CellRe
 	return
 }
 
-// Unsupported : gtk_cell_area_render : unsupported parameter background_area : Blacklisted record : GdkRectangle
+// Render is a wrapper around the C function gtk_cell_area_render.
+func (recv *CellArea) Render(context *CellAreaContext, widget *Widget, cr *cairo.Context, backgroundArea *gdk.Rectangle, cellArea *gdk.Rectangle, flags CellRendererState, paintFocus bool) {
+	c_context := (*C.GtkCellAreaContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GtkCellAreaContext)(context.ToC())
+	}
+
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
+
+	c_cr := (*C.cairo_t)(C.NULL)
+	if cr != nil {
+		c_cr = (*C.cairo_t)(cr.ToC())
+	}
+
+	c_background_area := (*C.GdkRectangle)(C.NULL)
+	if backgroundArea != nil {
+		c_background_area = (*C.GdkRectangle)(backgroundArea.ToC())
+	}
+
+	c_cell_area := (*C.GdkRectangle)(C.NULL)
+	if cellArea != nil {
+		c_cell_area = (*C.GdkRectangle)(cellArea.ToC())
+	}
+
+	c_flags := (C.GtkCellRendererState)(flags)
+
+	c_paint_focus :=
+		boolToGboolean(paintFocus)
+
+	C.gtk_cell_area_render((*C.GtkCellArea)(recv.native), c_context, c_widget, c_cr, c_background_area, c_cell_area, c_flags, c_paint_focus)
+
+	return
+}
 
 // RequestRenderer is a wrapper around the C function gtk_cell_area_request_renderer.
 func (recv *CellArea) RequestRenderer(renderer *CellRenderer, orientation Orientation, widget *Widget, forSize int32) (int32, int32) {
@@ -1251,7 +1464,28 @@ func (recv *CellAreaContext) PushPreferredWidth(minimumWidth int32, naturalWidth
 	return
 }
 
-// Unsupported : gtk_cell_renderer_get_aligned_area : unsupported parameter cell_area : Blacklisted record : GdkRectangle
+// GetAlignedArea is a wrapper around the C function gtk_cell_renderer_get_aligned_area.
+func (recv *CellRenderer) GetAlignedArea(widget *Widget, flags CellRendererState, cellArea *gdk.Rectangle) *gdk.Rectangle {
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
+
+	c_flags := (C.GtkCellRendererState)(flags)
+
+	c_cell_area := (*C.GdkRectangle)(C.NULL)
+	if cellArea != nil {
+		c_cell_area = (*C.GdkRectangle)(cellArea.ToC())
+	}
+
+	var c_aligned_area C.GdkRectangle
+
+	C.gtk_cell_renderer_get_aligned_area((*C.GtkCellRenderer)(recv.native), c_widget, c_flags, c_cell_area, &c_aligned_area)
+
+	alignedArea := gdk.RectangleNewFromC(unsafe.Pointer(&c_aligned_area))
+
+	return alignedArea
+}
 
 // GetPreferredHeight is a wrapper around the C function gtk_cell_renderer_get_preferred_height.
 func (recv *CellRenderer) GetPreferredHeight(widget *Widget) (int32, int32) {
@@ -1606,9 +1840,29 @@ func (recv *ComboBoxText) RemoveAll() {
 	return
 }
 
-// Unsupported : gtk_entry_get_icon_area : unsupported parameter icon_area : Blacklisted record : GdkRectangle
+// GetIconArea is a wrapper around the C function gtk_entry_get_icon_area.
+func (recv *Entry) GetIconArea(iconPos EntryIconPosition) *gdk.Rectangle {
+	c_icon_pos := (C.GtkEntryIconPosition)(iconPos)
 
-// Unsupported : gtk_entry_get_text_area : unsupported parameter text_area : Blacklisted record : GdkRectangle
+	var c_icon_area C.GdkRectangle
+
+	C.gtk_entry_get_icon_area((*C.GtkEntry)(recv.native), c_icon_pos, &c_icon_area)
+
+	iconArea := gdk.RectangleNewFromC(unsafe.Pointer(&c_icon_area))
+
+	return iconArea
+}
+
+// GetTextArea is a wrapper around the C function gtk_entry_get_text_area.
+func (recv *Entry) GetTextArea() *gdk.Rectangle {
+	var c_text_area C.GdkRectangle
+
+	C.gtk_entry_get_text_area((*C.GtkEntry)(recv.native), &c_text_area)
+
+	textArea := gdk.RectangleNewFromC(unsafe.Pointer(&c_text_area))
+
+	return textArea
+}
 
 // EntryCompletionNewWithArea is a wrapper around the C function gtk_entry_completion_new_with_area.
 func EntryCompletionNewWithArea(area *CellArea) *EntryCompletion {
@@ -2667,7 +2921,25 @@ func (recv *Switch) SetActive(isActive bool) {
 	return
 }
 
-// Unsupported : gtk_text_view_get_cursor_locations : unsupported parameter strong : Blacklisted record : GdkRectangle
+// GetCursorLocations is a wrapper around the C function gtk_text_view_get_cursor_locations.
+func (recv *TextView) GetCursorLocations(iter *TextIter) (*gdk.Rectangle, *gdk.Rectangle) {
+	c_iter := (*C.GtkTextIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GtkTextIter)(iter.ToC())
+	}
+
+	var c_strong C.GdkRectangle
+
+	var c_weak C.GdkRectangle
+
+	C.gtk_text_view_get_cursor_locations((*C.GtkTextView)(recv.native), c_iter, &c_strong, &c_weak)
+
+	strong := gdk.RectangleNewFromC(unsafe.Pointer(&c_strong))
+
+	weak := gdk.RectangleNewFromC(unsafe.Pointer(&c_weak))
+
+	return strong, weak
+}
 
 // gtk_theming_engine_register_property : unsupported parameter parse_func : no type generator for StylePropertyParser (GtkStylePropertyParser) for param parse_func
 // Unsupported : gtk_theming_engine_get : unsupported parameter ... : varargs
@@ -3488,7 +3760,17 @@ func (recv *Window) GetHasResizeGrip() bool {
 	return retGo
 }
 
-// Unsupported : gtk_window_get_resize_grip_area : unsupported parameter rect : Blacklisted record : GdkRectangle
+// GetResizeGripArea is a wrapper around the C function gtk_window_get_resize_grip_area.
+func (recv *Window) GetResizeGripArea() (bool, *gdk.Rectangle) {
+	var c_rect C.GdkRectangle
+
+	retC := C.gtk_window_get_resize_grip_area((*C.GtkWindow)(recv.native), &c_rect)
+	retGo := retC == C.TRUE
+
+	rect := gdk.RectangleNewFromC(unsafe.Pointer(&c_rect))
+
+	return retGo, rect
+}
 
 // ResizeGripIsVisible is a wrapper around the C function gtk_window_resize_grip_is_visible.
 func (recv *Window) ResizeGripIsVisible() bool {

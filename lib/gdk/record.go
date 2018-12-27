@@ -1479,7 +1479,82 @@ func (recv *RGBA) Equals(other *RGBA) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// Blacklisted : GdkRectangle
+// Rectangle is a wrapper around the C record GdkRectangle.
+type Rectangle struct {
+	native *C.GdkRectangle
+	X      int32
+	Y      int32
+	Width  int32
+	Height int32
+}
+
+func RectangleNewFromC(u unsafe.Pointer) *Rectangle {
+	c := (*C.GdkRectangle)(u)
+	if c == nil {
+		return nil
+	}
+
+	g := &Rectangle{
+		Height: (int32)(c.height),
+		Width:  (int32)(c.width),
+		X:      (int32)(c.x),
+		Y:      (int32)(c.y),
+		native: c,
+	}
+
+	return g
+}
+
+func (recv *Rectangle) ToC() unsafe.Pointer {
+	recv.native.x =
+		(C.int)(recv.X)
+	recv.native.y =
+		(C.int)(recv.Y)
+	recv.native.width =
+		(C.int)(recv.Width)
+	recv.native.height =
+		(C.int)(recv.Height)
+
+	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Rectangle with another Rectangle, and returns true if they represent the same GObject.
+func (recv *Rectangle) Equals(other *Rectangle) bool {
+	return other.ToC() == recv.ToC()
+}
+
+// Intersect is a wrapper around the C function gdk_rectangle_intersect.
+func (recv *Rectangle) Intersect(src2 *Rectangle) (bool, *Rectangle) {
+	c_src2 := (*C.GdkRectangle)(C.NULL)
+	if src2 != nil {
+		c_src2 = (*C.GdkRectangle)(src2.ToC())
+	}
+
+	var c_dest C.GdkRectangle
+
+	retC := C.gdk_rectangle_intersect((*C.GdkRectangle)(recv.native), c_src2, &c_dest)
+	retGo := retC == C.TRUE
+
+	dest := RectangleNewFromC(unsafe.Pointer(&c_dest))
+
+	return retGo, dest
+}
+
+// Union is a wrapper around the C function gdk_rectangle_union.
+func (recv *Rectangle) Union(src2 *Rectangle) *Rectangle {
+	c_src2 := (*C.GdkRectangle)(C.NULL)
+	if src2 != nil {
+		c_src2 = (*C.GdkRectangle)(src2.ToC())
+	}
+
+	var c_dest C.GdkRectangle
+
+	C.gdk_rectangle_union((*C.GdkRectangle)(recv.native), c_src2, &c_dest)
+
+	dest := RectangleNewFromC(unsafe.Pointer(&c_dest))
+
+	return dest
+}
 
 // TimeCoord is a wrapper around the C record GdkTimeCoord.
 type TimeCoord struct {

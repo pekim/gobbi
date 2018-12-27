@@ -605,7 +605,16 @@ func (recv *Monitor) GetDisplay() *Display {
 	return retGo
 }
 
-// Unsupported : gdk_monitor_get_geometry : unsupported parameter geometry : Blacklisted record : GdkRectangle
+// GetGeometry is a wrapper around the C function gdk_monitor_get_geometry.
+func (recv *Monitor) GetGeometry() *Rectangle {
+	var c_geometry C.GdkRectangle
+
+	C.gdk_monitor_get_geometry((*C.GdkMonitor)(recv.native), &c_geometry)
+
+	geometry := RectangleNewFromC(unsafe.Pointer(&c_geometry))
+
+	return geometry
+}
 
 // GetHeightMm is a wrapper around the C function gdk_monitor_get_height_mm.
 func (recv *Monitor) GetHeightMm() int32 {
@@ -663,7 +672,16 @@ func (recv *Monitor) GetWidthMm() int32 {
 	return retGo
 }
 
-// Unsupported : gdk_monitor_get_workarea : unsupported parameter workarea : Blacklisted record : GdkRectangle
+// GetWorkarea is a wrapper around the C function gdk_monitor_get_workarea.
+func (recv *Monitor) GetWorkarea() *Rectangle {
+	var c_workarea C.GdkRectangle
+
+	C.gdk_monitor_get_workarea((*C.GdkMonitor)(recv.native), &c_workarea)
+
+	workarea := RectangleNewFromC(unsafe.Pointer(&c_workarea))
+
+	return workarea
+}
 
 // IsPrimary is a wrapper around the C function gdk_monitor_is_primary.
 func (recv *Monitor) IsPrimary() bool {
