@@ -25,7 +25,10 @@
     <function blacklist="true" c:identifier="pango_default_break"/>
     <function blacklist="true" c:identifier="pango_get_lib_subdirectory"/>
     <function blacklist="true" c:identifier="pango_get_sysconf_subdirectory"/>
-    <!--<function blacklist="true" c:identifier="pango_font_metrics_new"/>-->
+
+    <record name="FontMetrics">
+      <constructor blacklist="true" c:identifier="pango_font_metrics_new"/>
+    </record>
 
     <record blacklist="true" name="EngineClass"/>
     <record blacklist="true" name="EngineInfo"/>
@@ -38,7 +41,6 @@
     <record blacklist="true" name="FontMapClass"/>
     <record blacklist="true" name="FontsetClass"/>
     <record blacklist="true" name="FontsetSimpleClass"/>
-    <record blacklist="true" name="FontMetrics"/>
     <record blacklist="true" name="IncludedModule"/>
     <record blacklist="true" name="Map"/>
     <record blacklist="true" name="MapEntry"/>

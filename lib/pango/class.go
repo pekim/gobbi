@@ -99,7 +99,23 @@ func (recv *Context) GetLanguage() *Language {
 	return retGo
 }
 
-// Unsupported : pango_context_get_metrics : return type : Blacklisted record : PangoFontMetrics
+// GetMetrics is a wrapper around the C function pango_context_get_metrics.
+func (recv *Context) GetMetrics(desc *FontDescription, language *Language) *FontMetrics {
+	c_desc := (*C.PangoFontDescription)(C.NULL)
+	if desc != nil {
+		c_desc = (*C.PangoFontDescription)(desc.ToC())
+	}
+
+	c_language := (*C.PangoLanguage)(C.NULL)
+	if language != nil {
+		c_language = (*C.PangoLanguage)(language.ToC())
+	}
+
+	retC := C.pango_context_get_metrics((*C.PangoContext)(recv.native), c_desc, c_language)
+	retGo := FontMetricsNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : pango_context_list_families : unsupported parameter families : output array param families
 
@@ -379,7 +395,18 @@ func (recv *Font) GetGlyphExtents(glyph Glyph) (*Rectangle, *Rectangle) {
 	return inkRect, logicalRect
 }
 
-// Unsupported : pango_font_get_metrics : return type : Blacklisted record : PangoFontMetrics
+// GetMetrics is a wrapper around the C function pango_font_get_metrics.
+func (recv *Font) GetMetrics(language *Language) *FontMetrics {
+	c_language := (*C.PangoLanguage)(C.NULL)
+	if language != nil {
+		c_language = (*C.PangoLanguage)(language.ToC())
+	}
+
+	retC := C.pango_font_get_metrics((*C.PangoFont)(recv.native), c_language)
+	retGo := FontMetricsNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // FontFace is a wrapper around the C record PangoFontFace.
 type FontFace struct {
@@ -662,7 +689,13 @@ func (recv *Fontset) GetFont(wc uint32) *Font {
 	return retGo
 }
 
-// Unsupported : pango_fontset_get_metrics : return type : Blacklisted record : PangoFontMetrics
+// GetMetrics is a wrapper around the C function pango_fontset_get_metrics.
+func (recv *Fontset) GetMetrics() *FontMetrics {
+	retC := C.pango_fontset_get_metrics((*C.PangoFontset)(recv.native))
+	retGo := FontMetricsNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Blacklisted : PangoFontsetSimple
 

@@ -12,6 +12,38 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
+// GetStrikethroughPosition is a wrapper around the C function pango_font_metrics_get_strikethrough_position.
+func (recv *FontMetrics) GetStrikethroughPosition() int32 {
+	retC := C.pango_font_metrics_get_strikethrough_position((*C.PangoFontMetrics)(recv.native))
+	retGo := (int32)(retC)
+
+	return retGo
+}
+
+// GetStrikethroughThickness is a wrapper around the C function pango_font_metrics_get_strikethrough_thickness.
+func (recv *FontMetrics) GetStrikethroughThickness() int32 {
+	retC := C.pango_font_metrics_get_strikethrough_thickness((*C.PangoFontMetrics)(recv.native))
+	retGo := (int32)(retC)
+
+	return retGo
+}
+
+// GetUnderlinePosition is a wrapper around the C function pango_font_metrics_get_underline_position.
+func (recv *FontMetrics) GetUnderlinePosition() int32 {
+	retC := C.pango_font_metrics_get_underline_position((*C.PangoFontMetrics)(recv.native))
+	retGo := (int32)(retC)
+
+	return retGo
+}
+
+// GetUnderlineThickness is a wrapper around the C function pango_font_metrics_get_underline_thickness.
+func (recv *FontMetrics) GetUnderlineThickness() int32 {
+	retC := C.pango_font_metrics_get_underline_thickness((*C.PangoFontMetrics)(recv.native))
+	retGo := (int32)(retC)
+
+	return retGo
+}
+
 // Free is a wrapper around the C function pango_glyph_item_free.
 func (recv *GlyphItem) Free() {
 	C.pango_glyph_item_free((*C.PangoGlyphItem)(recv.native))

@@ -1205,7 +1205,94 @@ func (recv *FontDescription) UnsetFields(toUnset FontMask) {
 
 // Blacklisted : PangoFontMapClass
 
-// Blacklisted : PangoFontMetrics
+// FontMetrics is a wrapper around the C record PangoFontMetrics.
+type FontMetrics struct {
+	native *C.PangoFontMetrics
+	// Private : ref_count
+	// Private : ascent
+	// Private : descent
+	// Private : approximate_char_width
+	// Private : approximate_digit_width
+	// Private : underline_position
+	// Private : underline_thickness
+	// Private : strikethrough_position
+	// Private : strikethrough_thickness
+}
+
+func FontMetricsNewFromC(u unsafe.Pointer) *FontMetrics {
+	c := (*C.PangoFontMetrics)(u)
+	if c == nil {
+		return nil
+	}
+
+	g := &FontMetrics{native: c}
+
+	return g
+}
+
+func (recv *FontMetrics) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this FontMetrics with another FontMetrics, and returns true if they represent the same GObject.
+func (recv *FontMetrics) Equals(other *FontMetrics) bool {
+	return other.ToC() == recv.ToC()
+}
+
+// Blacklisted : pango_font_metrics_new
+
+// GetApproximateCharWidth is a wrapper around the C function pango_font_metrics_get_approximate_char_width.
+func (recv *FontMetrics) GetApproximateCharWidth() int32 {
+	retC := C.pango_font_metrics_get_approximate_char_width((*C.PangoFontMetrics)(recv.native))
+	retGo := (int32)(retC)
+
+	return retGo
+}
+
+// GetApproximateDigitWidth is a wrapper around the C function pango_font_metrics_get_approximate_digit_width.
+func (recv *FontMetrics) GetApproximateDigitWidth() int32 {
+	retC := C.pango_font_metrics_get_approximate_digit_width((*C.PangoFontMetrics)(recv.native))
+	retGo := (int32)(retC)
+
+	return retGo
+}
+
+// GetAscent is a wrapper around the C function pango_font_metrics_get_ascent.
+func (recv *FontMetrics) GetAscent() int32 {
+	retC := C.pango_font_metrics_get_ascent((*C.PangoFontMetrics)(recv.native))
+	retGo := (int32)(retC)
+
+	return retGo
+}
+
+// GetDescent is a wrapper around the C function pango_font_metrics_get_descent.
+func (recv *FontMetrics) GetDescent() int32 {
+	retC := C.pango_font_metrics_get_descent((*C.PangoFontMetrics)(recv.native))
+	retGo := (int32)(retC)
+
+	return retGo
+}
+
+// Ref is a wrapper around the C function pango_font_metrics_ref.
+func (recv *FontMetrics) Ref() *FontMetrics {
+	retC := C.pango_font_metrics_ref((*C.PangoFontMetrics)(recv.native))
+	var retGo (*FontMetrics)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = FontMetricsNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
+
+// Unref is a wrapper around the C function pango_font_metrics_unref.
+func (recv *FontMetrics) Unref() {
+	C.pango_font_metrics_unref((*C.PangoFontMetrics)(recv.native))
+
+	return
+}
 
 // Blacklisted : PangoFontsetClass
 

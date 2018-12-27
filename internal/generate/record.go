@@ -66,6 +66,7 @@ func (r *Record) mergeAddenda(addenda *Record) {
 		r.Version = addenda.Version
 	}
 
+	r.Constructors.mergeAddenda(addenda.Constructors)
 	r.Functions.mergeAddenda(addenda.Functions)
 	r.Methods.mergeAddenda(addenda.Methods)
 }
