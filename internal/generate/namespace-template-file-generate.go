@@ -17,7 +17,7 @@ func (ns *Namespace) generateTemplatedFiles() {
 
 	for _, fileInfo := range fileInfos {
 		if fileInfo.IsDir() {
-			panic(fmt.Sprintf("Unexpected template dir, %", fileInfo.Name()))
+			panic(fmt.Sprintf("Unexpected template dir, %s", fileInfo.Name()))
 		}
 
 		// read template file
