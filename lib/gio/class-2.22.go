@@ -802,7 +802,7 @@ func (recv *Socket) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to Socket.
+// CastToWidget down casts any arbitrary Object to Socket.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Socket.
 func CastToSocket(object *gobject.Object) *Socket {
 	return SocketNewFromC(object.ToC())
@@ -1420,7 +1420,7 @@ func (recv *SocketClient) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to SocketClient.
+// CastToWidget down casts any arbitrary Object to SocketClient.
 // Exercise care, as this is a potentially dangerous function if the Object is not a SocketClient.
 func CastToSocketClient(object *gobject.Object) *SocketClient {
 	return SocketClientNewFromC(object.ToC())
@@ -1715,7 +1715,7 @@ func (recv *SocketConnection) Object() *gobject.Object {
 	return recv.IOStream().Object()
 }
 
-// CastToWidget down casts any arbitary Object to SocketConnection.
+// CastToWidget down casts any arbitrary Object to SocketConnection.
 // Exercise care, as this is a potentially dangerous function if the Object is not a SocketConnection.
 func CastToSocketConnection(object *gobject.Object) *SocketConnection {
 	return SocketConnectionNewFromC(object.ToC())
@@ -1886,7 +1886,7 @@ func (recv *SocketListener) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to SocketListener.
+// CastToWidget down casts any arbitrary Object to SocketListener.
 // Exercise care, as this is a potentially dangerous function if the Object is not a SocketListener.
 func CastToSocketListener(object *gobject.Object) *SocketListener {
 	return SocketListenerNewFromC(object.ToC())
@@ -2163,7 +2163,7 @@ func (recv *SocketService) Object() *gobject.Object {
 	return recv.SocketListener().Object()
 }
 
-// CastToWidget down casts any arbitary Object to SocketService.
+// CastToWidget down casts any arbitrary Object to SocketService.
 // Exercise care, as this is a potentially dangerous function if the Object is not a SocketService.
 func CastToSocketService(object *gobject.Object) *SocketService {
 	return SocketServiceNewFromC(object.ToC())
@@ -2256,7 +2256,7 @@ func (recv *TcpConnection) Object() *gobject.Object {
 	return recv.SocketConnection().Object()
 }
 
-// CastToWidget down casts any arbitary Object to TcpConnection.
+// CastToWidget down casts any arbitrary Object to TcpConnection.
 // Exercise care, as this is a potentially dangerous function if the Object is not a TcpConnection.
 func CastToTcpConnection(object *gobject.Object) *TcpConnection {
 	return TcpConnectionNewFromC(object.ToC())
@@ -2333,7 +2333,7 @@ func (recv *ThreadedSocketService) Object() *gobject.Object {
 	return recv.SocketService().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ThreadedSocketService.
+// CastToWidget down casts any arbitrary Object to ThreadedSocketService.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ThreadedSocketService.
 func CastToThreadedSocketService(object *gobject.Object) *ThreadedSocketService {
 	return ThreadedSocketServiceNewFromC(object.ToC())

@@ -57,7 +57,7 @@ func (recv *Context) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to Context.
+// CastToWidget down casts any arbitrary Object to Context.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Context.
 func CastToContext(object *gobject.Object) *Context {
 	return ContextNewFromC(object.ToC())
@@ -228,7 +228,7 @@ func (recv *EngineLang) Equals(other *EngineLang) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// CastToWidget down casts any arbitary Object to EngineLang.
+// CastToWidget down casts any arbitrary Object to EngineLang.
 // Exercise care, as this is a potentially dangerous function if the Object is not a EngineLang.
 func CastToEngineLang(object *gobject.Object) *EngineLang {
 	return EngineLangNewFromC(object.ToC())
@@ -271,7 +271,7 @@ func (recv *EngineShape) Equals(other *EngineShape) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// CastToWidget down casts any arbitary Object to EngineShape.
+// CastToWidget down casts any arbitrary Object to EngineShape.
 // Exercise care, as this is a potentially dangerous function if the Object is not a EngineShape.
 func CastToEngineShape(object *gobject.Object) *EngineShape {
 	return EngineShapeNewFromC(object.ToC())
@@ -319,7 +319,7 @@ func (recv *Font) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to Font.
+// CastToWidget down casts any arbitrary Object to Font.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Font.
 func CastToFont(object *gobject.Object) *Font {
 	return FontNewFromC(object.ToC())
@@ -423,7 +423,7 @@ func (recv *FontFace) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to FontFace.
+// CastToWidget down casts any arbitrary Object to FontFace.
 // Exercise care, as this is a potentially dangerous function if the Object is not a FontFace.
 func CastToFontFace(object *gobject.Object) *FontFace {
 	return FontFaceNewFromC(object.ToC())
@@ -487,7 +487,7 @@ func (recv *FontFamily) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to FontFamily.
+// CastToWidget down casts any arbitrary Object to FontFamily.
 // Exercise care, as this is a potentially dangerous function if the Object is not a FontFamily.
 func CastToFontFamily(object *gobject.Object) *FontFamily {
 	return FontFamilyNewFromC(object.ToC())
@@ -545,7 +545,7 @@ func (recv *FontMap) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to FontMap.
+// CastToWidget down casts any arbitrary Object to FontMap.
 // Exercise care, as this is a potentially dangerous function if the Object is not a FontMap.
 func CastToFontMap(object *gobject.Object) *FontMap {
 	return FontMapNewFromC(object.ToC())
@@ -646,7 +646,7 @@ func (recv *Fontset) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to Fontset.
+// CastToWidget down casts any arbitrary Object to Fontset.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Fontset.
 func CastToFontset(object *gobject.Object) *Fontset {
 	return FontsetNewFromC(object.ToC())
@@ -707,7 +707,7 @@ func (recv *Layout) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to Layout.
+// CastToWidget down casts any arbitrary Object to Layout.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Layout.
 func CastToLayout(object *gobject.Object) *Layout {
 	return LayoutNewFromC(object.ToC())

@@ -160,7 +160,7 @@ func (recv *PropertyAction) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to PropertyAction.
+// CastToWidget down casts any arbitrary Object to PropertyAction.
 // Exercise care, as this is a potentially dangerous function if the Object is not a PropertyAction.
 func CastToPropertyAction(object *gobject.Object) *PropertyAction {
 	return PropertyActionNewFromC(object.ToC())

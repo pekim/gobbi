@@ -76,7 +76,7 @@ func (recv *Renderer) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to Renderer.
+// CastToWidget down casts any arbitrary Object to Renderer.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Renderer.
 func CastToRenderer(object *gobject.Object) *Renderer {
 	return RendererNewFromC(object.ToC())

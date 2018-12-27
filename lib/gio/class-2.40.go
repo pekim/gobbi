@@ -97,7 +97,7 @@ func (recv *AppInfoMonitor) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to AppInfoMonitor.
+// CastToWidget down casts any arbitrary Object to AppInfoMonitor.
 // Exercise care, as this is a potentially dangerous function if the Object is not a AppInfoMonitor.
 func CastToAppInfoMonitor(object *gobject.Object) *AppInfoMonitor {
 	return AppInfoMonitorNewFromC(object.ToC())
@@ -276,7 +276,7 @@ func (recv *Notification) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to Notification.
+// CastToWidget down casts any arbitrary Object to Notification.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Notification.
 func CastToNotification(object *gobject.Object) *Notification {
 	return NotificationNewFromC(object.ToC())
@@ -533,7 +533,7 @@ func (recv *Subprocess) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to Subprocess.
+// CastToWidget down casts any arbitrary Object to Subprocess.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Subprocess.
 func CastToSubprocess(object *gobject.Object) *Subprocess {
 	return SubprocessNewFromC(object.ToC())
@@ -904,7 +904,7 @@ func (recv *SubprocessLauncher) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to SubprocessLauncher.
+// CastToWidget down casts any arbitrary Object to SubprocessLauncher.
 // Exercise care, as this is a potentially dangerous function if the Object is not a SubprocessLauncher.
 func CastToSubprocessLauncher(object *gobject.Object) *SubprocessLauncher {
 	return SubprocessLauncherNewFromC(object.ToC())

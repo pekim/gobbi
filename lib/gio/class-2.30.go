@@ -164,7 +164,7 @@ func (recv *DBusInterfaceSkeleton) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to DBusInterfaceSkeleton.
+// CastToWidget down casts any arbitrary Object to DBusInterfaceSkeleton.
 // Exercise care, as this is a potentially dangerous function if the Object is not a DBusInterfaceSkeleton.
 func CastToDBusInterfaceSkeleton(object *gobject.Object) *DBusInterfaceSkeleton {
 	return DBusInterfaceSkeletonNewFromC(object.ToC())
@@ -339,7 +339,7 @@ func (recv *DBusObjectManagerClient) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to DBusObjectManagerClient.
+// CastToWidget down casts any arbitrary Object to DBusObjectManagerClient.
 // Exercise care, as this is a potentially dangerous function if the Object is not a DBusObjectManagerClient.
 func CastToDBusObjectManagerClient(object *gobject.Object) *DBusObjectManagerClient {
 	return DBusObjectManagerClientNewFromC(object.ToC())
@@ -475,7 +475,7 @@ func (recv *DBusObjectManagerServer) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to DBusObjectManagerServer.
+// CastToWidget down casts any arbitrary Object to DBusObjectManagerServer.
 // Exercise care, as this is a potentially dangerous function if the Object is not a DBusObjectManagerServer.
 func CastToDBusObjectManagerServer(object *gobject.Object) *DBusObjectManagerServer {
 	return DBusObjectManagerServerNewFromC(object.ToC())
@@ -594,7 +594,7 @@ func (recv *DBusObjectProxy) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to DBusObjectProxy.
+// CastToWidget down casts any arbitrary Object to DBusObjectProxy.
 // Exercise care, as this is a potentially dangerous function if the Object is not a DBusObjectProxy.
 func CastToDBusObjectProxy(object *gobject.Object) *DBusObjectProxy {
 	return DBusObjectProxyNewFromC(object.ToC())
@@ -671,7 +671,7 @@ func (recv *DBusObjectSkeleton) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to DBusObjectSkeleton.
+// CastToWidget down casts any arbitrary Object to DBusObjectSkeleton.
 // Exercise care, as this is a potentially dangerous function if the Object is not a DBusObjectSkeleton.
 func CastToDBusObjectSkeleton(object *gobject.Object) *DBusObjectSkeleton {
 	return DBusObjectSkeletonNewFromC(object.ToC())
@@ -1081,7 +1081,7 @@ func (recv *TlsDatabase) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to TlsDatabase.
+// CastToWidget down casts any arbitrary Object to TlsDatabase.
 // Exercise care, as this is a potentially dangerous function if the Object is not a TlsDatabase.
 func CastToTlsDatabase(object *gobject.Object) *TlsDatabase {
 	return TlsDatabaseNewFromC(object.ToC())
@@ -1377,7 +1377,7 @@ func (recv *TlsInteraction) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to TlsInteraction.
+// CastToWidget down casts any arbitrary Object to TlsInteraction.
 // Exercise care, as this is a potentially dangerous function if the Object is not a TlsInteraction.
 func CastToTlsInteraction(object *gobject.Object) *TlsInteraction {
 	return TlsInteractionNewFromC(object.ToC())
@@ -1504,7 +1504,7 @@ func (recv *TlsPassword) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to TlsPassword.
+// CastToWidget down casts any arbitrary Object to TlsPassword.
 // Exercise care, as this is a potentially dangerous function if the Object is not a TlsPassword.
 func CastToTlsPassword(object *gobject.Object) *TlsPassword {
 	return TlsPasswordNewFromC(object.ToC())

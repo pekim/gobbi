@@ -174,7 +174,7 @@ func (recv *DeviceTool) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to DeviceTool.
+// CastToWidget down casts any arbitrary Object to DeviceTool.
 // Exercise care, as this is a potentially dangerous function if the Object is not a DeviceTool.
 func CastToDeviceTool(object *gobject.Object) *DeviceTool {
 	return DeviceToolNewFromC(object.ToC())
@@ -430,7 +430,7 @@ func (recv *DrawingContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to DrawingContext.
+// CastToWidget down casts any arbitrary Object to DrawingContext.
 // Exercise care, as this is a potentially dangerous function if the Object is not a DrawingContext.
 func CastToDrawingContext(object *gobject.Object) *DrawingContext {
 	return DrawingContextNewFromC(object.ToC())
@@ -531,7 +531,7 @@ func (recv *Monitor) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to Monitor.
+// CastToWidget down casts any arbitrary Object to Monitor.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Monitor.
 func CastToMonitor(object *gobject.Object) *Monitor {
 	return MonitorNewFromC(object.ToC())
@@ -715,7 +715,7 @@ func (recv *Seat) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to Seat.
+// CastToWidget down casts any arbitrary Object to Seat.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Seat.
 func CastToSeat(object *gobject.Object) *Seat {
 	return SeatNewFromC(object.ToC())

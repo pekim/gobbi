@@ -138,7 +138,7 @@ func (recv *Application) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to Application.
+// CastToWidget down casts any arbitrary Object to Application.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Application.
 func CastToApplication(object *gobject.Object) *Application {
 	return ApplicationNewFromC(object.ToC())
@@ -918,7 +918,7 @@ func (recv *SimpleActionGroup) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to SimpleActionGroup.
+// CastToWidget down casts any arbitrary Object to SimpleActionGroup.
 // Exercise care, as this is a potentially dangerous function if the Object is not a SimpleActionGroup.
 func CastToSimpleActionGroup(object *gobject.Object) *SimpleActionGroup {
 	return SimpleActionGroupNewFromC(object.ToC())
@@ -1080,7 +1080,7 @@ func (recv *TlsCertificate) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to TlsCertificate.
+// CastToWidget down casts any arbitrary Object to TlsCertificate.
 // Exercise care, as this is a potentially dangerous function if the Object is not a TlsCertificate.
 func CastToTlsCertificate(object *gobject.Object) *TlsCertificate {
 	return TlsCertificateNewFromC(object.ToC())
@@ -1258,7 +1258,7 @@ func (recv *TlsConnection) Object() *gobject.Object {
 	return recv.IOStream().Object()
 }
 
-// CastToWidget down casts any arbitary Object to TlsConnection.
+// CastToWidget down casts any arbitrary Object to TlsConnection.
 // Exercise care, as this is a potentially dangerous function if the Object is not a TlsConnection.
 func CastToTlsConnection(object *gobject.Object) *TlsConnection {
 	return TlsConnectionNewFromC(object.ToC())

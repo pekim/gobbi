@@ -121,7 +121,7 @@ func (recv *GObjectAccessible) Object() *Object {
 	return ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to GObjectAccessible.
+// CastToWidget down casts any arbitrary Object to GObjectAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a GObjectAccessible.
 func CastToGObjectAccessible(object *gobject.Object) *GObjectAccessible {
 	return GObjectAccessibleNewFromC(object.ToC())
@@ -190,7 +190,7 @@ func (recv *Hyperlink) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to Hyperlink.
+// CastToWidget down casts any arbitrary Object to Hyperlink.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Hyperlink.
 func CastToHyperlink(object *gobject.Object) *Hyperlink {
 	return HyperlinkNewFromC(object.ToC())
@@ -364,7 +364,7 @@ func (recv *Misc) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to Misc.
+// CastToWidget down casts any arbitrary Object to Misc.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Misc.
 func CastToMisc(object *gobject.Object) *Misc {
 	return MiscNewFromC(object.ToC())
@@ -412,7 +412,7 @@ func (recv *NoOpObject) Object() *Object {
 	return ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to NoOpObject.
+// CastToWidget down casts any arbitrary Object to NoOpObject.
 // Exercise care, as this is a potentially dangerous function if the Object is not a NoOpObject.
 func CastToNoOpObject(object *gobject.Object) *NoOpObject {
 	return NoOpObjectNewFromC(object.ToC())
@@ -542,7 +542,7 @@ func (recv *NoOpObjectFactory) Object() *gobject.Object {
 	return recv.ObjectFactory().Object()
 }
 
-// CastToWidget down casts any arbitary Object to NoOpObjectFactory.
+// CastToWidget down casts any arbitrary Object to NoOpObjectFactory.
 // Exercise care, as this is a potentially dangerous function if the Object is not a NoOpObjectFactory.
 func CastToNoOpObjectFactory(object *gobject.Object) *NoOpObjectFactory {
 	return NoOpObjectFactoryNewFromC(object.ToC())
@@ -612,7 +612,7 @@ func (recv *Object) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to Object.
+// CastToWidget down casts any arbitrary Object to Object.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Object.
 func CastToObject(object *gobject.Object) *Object {
 	return ObjectNewFromC(object.ToC())
@@ -1235,7 +1235,7 @@ func (recv *ObjectFactory) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to ObjectFactory.
+// CastToWidget down casts any arbitrary Object to ObjectFactory.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ObjectFactory.
 func CastToObjectFactory(object *gobject.Object) *ObjectFactory {
 	return ObjectFactoryNewFromC(object.ToC())
@@ -1311,7 +1311,7 @@ func (recv *Plug) Object() *Object {
 	return ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to Plug.
+// CastToWidget down casts any arbitrary Object to Plug.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Plug.
 func CastToPlug(object *gobject.Object) *Plug {
 	return PlugNewFromC(object.ToC())
@@ -1378,7 +1378,7 @@ func (recv *Registry) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to Registry.
+// CastToWidget down casts any arbitrary Object to Registry.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Registry.
 func CastToRegistry(object *gobject.Object) *Registry {
 	return RegistryNewFromC(object.ToC())
@@ -1464,7 +1464,7 @@ func (recv *Relation) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to Relation.
+// CastToWidget down casts any arbitrary Object to Relation.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Relation.
 func CastToRelation(object *gobject.Object) *Relation {
 	return RelationNewFromC(object.ToC())
@@ -1538,7 +1538,7 @@ func (recv *RelationSet) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to RelationSet.
+// CastToWidget down casts any arbitrary Object to RelationSet.
 // Exercise care, as this is a potentially dangerous function if the Object is not a RelationSet.
 func CastToRelationSet(object *gobject.Object) *RelationSet {
 	return RelationSetNewFromC(object.ToC())
@@ -1676,7 +1676,7 @@ func (recv *Socket) Object() *Object {
 	return ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to Socket.
+// CastToWidget down casts any arbitrary Object to Socket.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Socket.
 func CastToSocket(object *gobject.Object) *Socket {
 	return SocketNewFromC(object.ToC())
@@ -1741,7 +1741,7 @@ func (recv *StateSet) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to StateSet.
+// CastToWidget down casts any arbitrary Object to StateSet.
 // Exercise care, as this is a potentially dangerous function if the Object is not a StateSet.
 func CastToStateSet(object *gobject.Object) *StateSet {
 	return StateSetNewFromC(object.ToC())
@@ -1913,7 +1913,7 @@ func (recv *Util) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to Util.
+// CastToWidget down casts any arbitrary Object to Util.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Util.
 func CastToUtil(object *gobject.Object) *Util {
 	return UtilNewFromC(object.ToC())

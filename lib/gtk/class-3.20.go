@@ -136,7 +136,7 @@ func (recv *FileChooserNative) Object() *gobject.Object {
 	return recv.NativeDialog().Object()
 }
 
-// CastToWidget down casts any arbitary Object to FileChooserNative.
+// CastToWidget down casts any arbitrary Object to FileChooserNative.
 // Exercise care, as this is a potentially dangerous function if the Object is not a FileChooserNative.
 func CastToFileChooserNative(object *gobject.Object) *FileChooserNative {
 	return FileChooserNativeNewFromC(object.ToC())
@@ -248,7 +248,7 @@ func (recv *NativeDialog) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to NativeDialog.
+// CastToWidget down casts any arbitrary Object to NativeDialog.
 // Exercise care, as this is a potentially dangerous function if the Object is not a NativeDialog.
 func CastToNativeDialog(object *gobject.Object) *NativeDialog {
 	return NativeDialogNewFromC(object.ToC())
@@ -398,7 +398,7 @@ func (recv *PadController) Object() *gobject.Object {
 	return recv.EventController().Object()
 }
 
-// CastToWidget down casts any arbitary Object to PadController.
+// CastToWidget down casts any arbitrary Object to PadController.
 // Exercise care, as this is a potentially dangerous function if the Object is not a PadController.
 func CastToPadController(object *gobject.Object) *PadController {
 	return PadControllerNewFromC(object.ToC())
@@ -618,7 +618,7 @@ func (recv *ShortcutLabel) Object() *gobject.Object {
 	return recv.Box().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ShortcutLabel.
+// CastToWidget down casts any arbitrary Object to ShortcutLabel.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ShortcutLabel.
 func CastToShortcutLabel(object *gobject.Object) *ShortcutLabel {
 	return ShortcutLabelNewFromC(object.ToC())
@@ -685,7 +685,7 @@ func (recv *ShortcutsGroup) Object() *gobject.Object {
 	return recv.Box().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ShortcutsGroup.
+// CastToWidget down casts any arbitrary Object to ShortcutsGroup.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ShortcutsGroup.
 func CastToShortcutsGroup(object *gobject.Object) *ShortcutsGroup {
 	return ShortcutsGroupNewFromC(object.ToC())
@@ -752,7 +752,7 @@ func (recv *ShortcutsSection) Object() *gobject.Object {
 	return recv.Box().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ShortcutsSection.
+// CastToWidget down casts any arbitrary Object to ShortcutsSection.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ShortcutsSection.
 func CastToShortcutsSection(object *gobject.Object) *ShortcutsSection {
 	return ShortcutsSectionNewFromC(object.ToC())
@@ -884,7 +884,7 @@ func (recv *ShortcutsShortcut) Object() *gobject.Object {
 	return recv.Box().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ShortcutsShortcut.
+// CastToWidget down casts any arbitrary Object to ShortcutsShortcut.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ShortcutsShortcut.
 func CastToShortcutsShortcut(object *gobject.Object) *ShortcutsShortcut {
 	return ShortcutsShortcutNewFromC(object.ToC())
@@ -957,7 +957,7 @@ func (recv *ShortcutsWindow) Object() *gobject.Object {
 	return recv.Window().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ShortcutsWindow.
+// CastToWidget down casts any arbitrary Object to ShortcutsWindow.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ShortcutsWindow.
 func CastToShortcutsWindow(object *gobject.Object) *ShortcutsWindow {
 	return ShortcutsWindowNewFromC(object.ToC())

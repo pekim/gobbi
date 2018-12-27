@@ -239,7 +239,7 @@ func (recv *AppLaunchContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to AppLaunchContext.
+// CastToWidget down casts any arbitrary Object to AppLaunchContext.
 // Exercise care, as this is a potentially dangerous function if the Object is not a AppLaunchContext.
 func CastToAppLaunchContext(object *gobject.Object) *AppLaunchContext {
 	return AppLaunchContextNewFromC(object.ToC())
@@ -342,7 +342,7 @@ func (recv *ApplicationCommandLine) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to ApplicationCommandLine.
+// CastToWidget down casts any arbitrary Object to ApplicationCommandLine.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ApplicationCommandLine.
 func CastToApplicationCommandLine(object *gobject.Object) *ApplicationCommandLine {
 	return ApplicationCommandLineNewFromC(object.ToC())
@@ -401,7 +401,7 @@ func (recv *BufferedInputStream) Object() *gobject.Object {
 	return recv.FilterInputStream().Object()
 }
 
-// CastToWidget down casts any arbitary Object to BufferedInputStream.
+// CastToWidget down casts any arbitrary Object to BufferedInputStream.
 // Exercise care, as this is a potentially dangerous function if the Object is not a BufferedInputStream.
 func CastToBufferedInputStream(object *gobject.Object) *BufferedInputStream {
 	return BufferedInputStreamNewFromC(object.ToC())
@@ -612,7 +612,7 @@ func (recv *BufferedOutputStream) Object() *gobject.Object {
 	return recv.FilterOutputStream().Object()
 }
 
-// CastToWidget down casts any arbitary Object to BufferedOutputStream.
+// CastToWidget down casts any arbitrary Object to BufferedOutputStream.
 // Exercise care, as this is a potentially dangerous function if the Object is not a BufferedOutputStream.
 func CastToBufferedOutputStream(object *gobject.Object) *BufferedOutputStream {
 	return BufferedOutputStreamNewFromC(object.ToC())
@@ -735,7 +735,7 @@ func (recv *BytesIcon) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to BytesIcon.
+// CastToWidget down casts any arbitrary Object to BytesIcon.
 // Exercise care, as this is a potentially dangerous function if the Object is not a BytesIcon.
 func CastToBytesIcon(object *gobject.Object) *BytesIcon {
 	return BytesIconNewFromC(object.ToC())
@@ -794,7 +794,7 @@ func (recv *Cancellable) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to Cancellable.
+// CastToWidget down casts any arbitrary Object to Cancellable.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Cancellable.
 func CastToCancellable(object *gobject.Object) *Cancellable {
 	return CancellableNewFromC(object.ToC())
@@ -988,7 +988,7 @@ func (recv *CharsetConverter) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to CharsetConverter.
+// CastToWidget down casts any arbitrary Object to CharsetConverter.
 // Exercise care, as this is a potentially dangerous function if the Object is not a CharsetConverter.
 func CastToCharsetConverter(object *gobject.Object) *CharsetConverter {
 	return CharsetConverterNewFromC(object.ToC())
@@ -1057,7 +1057,7 @@ func (recv *ConverterInputStream) Object() *gobject.Object {
 	return recv.FilterInputStream().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ConverterInputStream.
+// CastToWidget down casts any arbitrary Object to ConverterInputStream.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ConverterInputStream.
 func CastToConverterInputStream(object *gobject.Object) *ConverterInputStream {
 	return ConverterInputStreamNewFromC(object.ToC())
@@ -1140,7 +1140,7 @@ func (recv *ConverterOutputStream) Object() *gobject.Object {
 	return recv.FilterOutputStream().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ConverterOutputStream.
+// CastToWidget down casts any arbitrary Object to ConverterOutputStream.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ConverterOutputStream.
 func CastToConverterOutputStream(object *gobject.Object) *ConverterOutputStream {
 	return ConverterOutputStreamNewFromC(object.ToC())
@@ -1211,7 +1211,7 @@ func (recv *DBusActionGroup) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to DBusActionGroup.
+// CastToWidget down casts any arbitrary Object to DBusActionGroup.
 // Exercise care, as this is a potentially dangerous function if the Object is not a DBusActionGroup.
 func CastToDBusActionGroup(object *gobject.Object) *DBusActionGroup {
 	return DBusActionGroupNewFromC(object.ToC())
@@ -1273,7 +1273,7 @@ func (recv *DBusMenuModel) Object() *gobject.Object {
 	return recv.MenuModel().Object()
 }
 
-// CastToWidget down casts any arbitary Object to DBusMenuModel.
+// CastToWidget down casts any arbitrary Object to DBusMenuModel.
 // Exercise care, as this is a potentially dangerous function if the Object is not a DBusMenuModel.
 func CastToDBusMenuModel(object *gobject.Object) *DBusMenuModel {
 	return DBusMenuModelNewFromC(object.ToC())
@@ -1337,7 +1337,7 @@ func (recv *DataInputStream) Object() *gobject.Object {
 	return recv.BufferedInputStream().Object()
 }
 
-// CastToWidget down casts any arbitary Object to DataInputStream.
+// CastToWidget down casts any arbitrary Object to DataInputStream.
 // Exercise care, as this is a potentially dangerous function if the Object is not a DataInputStream.
 func CastToDataInputStream(object *gobject.Object) *DataInputStream {
 	return DataInputStreamNewFromC(object.ToC())
@@ -1646,7 +1646,7 @@ func (recv *DataOutputStream) Object() *gobject.Object {
 	return recv.FilterOutputStream().Object()
 }
 
-// CastToWidget down casts any arbitary Object to DataOutputStream.
+// CastToWidget down casts any arbitrary Object to DataOutputStream.
 // Exercise care, as this is a potentially dangerous function if the Object is not a DataOutputStream.
 func CastToDataOutputStream(object *gobject.Object) *DataOutputStream {
 	return DataOutputStreamNewFromC(object.ToC())
@@ -1933,7 +1933,7 @@ func (recv *DesktopAppInfo) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to DesktopAppInfo.
+// CastToWidget down casts any arbitrary Object to DesktopAppInfo.
 // Exercise care, as this is a potentially dangerous function if the Object is not a DesktopAppInfo.
 func CastToDesktopAppInfo(object *gobject.Object) *DesktopAppInfo {
 	return DesktopAppInfoNewFromC(object.ToC())
@@ -2052,7 +2052,7 @@ func (recv *Emblem) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to Emblem.
+// CastToWidget down casts any arbitrary Object to Emblem.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Emblem.
 func CastToEmblem(object *gobject.Object) *Emblem {
 	return EmblemNewFromC(object.ToC())
@@ -2106,7 +2106,7 @@ func (recv *EmblemedIcon) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to EmblemedIcon.
+// CastToWidget down casts any arbitrary Object to EmblemedIcon.
 // Exercise care, as this is a potentially dangerous function if the Object is not a EmblemedIcon.
 func CastToEmblemedIcon(object *gobject.Object) *EmblemedIcon {
 	return EmblemedIconNewFromC(object.ToC())
@@ -2160,7 +2160,7 @@ func (recv *FileEnumerator) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to FileEnumerator.
+// CastToWidget down casts any arbitrary Object to FileEnumerator.
 // Exercise care, as this is a potentially dangerous function if the Object is not a FileEnumerator.
 func CastToFileEnumerator(object *gobject.Object) *FileEnumerator {
 	return FileEnumeratorNewFromC(object.ToC())
@@ -2335,7 +2335,7 @@ func (recv *FileIOStream) Object() *gobject.Object {
 	return recv.IOStream().Object()
 }
 
-// CastToWidget down casts any arbitary Object to FileIOStream.
+// CastToWidget down casts any arbitrary Object to FileIOStream.
 // Exercise care, as this is a potentially dangerous function if the Object is not a FileIOStream.
 func CastToFileIOStream(object *gobject.Object) *FileIOStream {
 	return FileIOStreamNewFromC(object.ToC())
@@ -2387,7 +2387,7 @@ func (recv *FileIcon) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to FileIcon.
+// CastToWidget down casts any arbitrary Object to FileIcon.
 // Exercise care, as this is a potentially dangerous function if the Object is not a FileIcon.
 func CastToFileIcon(object *gobject.Object) *FileIcon {
 	return FileIconNewFromC(object.ToC())
@@ -2466,7 +2466,7 @@ func (recv *FileInfo) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to FileInfo.
+// CastToWidget down casts any arbitrary Object to FileInfo.
 // Exercise care, as this is a potentially dangerous function if the Object is not a FileInfo.
 func CastToFileInfo(object *gobject.Object) *FileInfo {
 	return FileInfoNewFromC(object.ToC())
@@ -3076,7 +3076,7 @@ func (recv *FileInputStream) Object() *gobject.Object {
 	return recv.InputStream().Object()
 }
 
-// CastToWidget down casts any arbitary Object to FileInputStream.
+// CastToWidget down casts any arbitrary Object to FileInputStream.
 // Exercise care, as this is a potentially dangerous function if the Object is not a FileInputStream.
 func CastToFileInputStream(object *gobject.Object) *FileInputStream {
 	return FileInputStreamNewFromC(object.ToC())
@@ -3178,7 +3178,7 @@ func (recv *FileMonitor) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to FileMonitor.
+// CastToWidget down casts any arbitrary Object to FileMonitor.
 // Exercise care, as this is a potentially dangerous function if the Object is not a FileMonitor.
 func CastToFileMonitor(object *gobject.Object) *FileMonitor {
 	return FileMonitorNewFromC(object.ToC())
@@ -3272,7 +3272,7 @@ func (recv *FileOutputStream) Object() *gobject.Object {
 	return recv.OutputStream().Object()
 }
 
-// CastToWidget down casts any arbitary Object to FileOutputStream.
+// CastToWidget down casts any arbitrary Object to FileOutputStream.
 // Exercise care, as this is a potentially dangerous function if the Object is not a FileOutputStream.
 func CastToFileOutputStream(object *gobject.Object) *FileOutputStream {
 	return FileOutputStreamNewFromC(object.ToC())
@@ -3381,7 +3381,7 @@ func (recv *FilenameCompleter) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to FilenameCompleter.
+// CastToWidget down casts any arbitrary Object to FilenameCompleter.
 // Exercise care, as this is a potentially dangerous function if the Object is not a FilenameCompleter.
 func CastToFilenameCompleter(object *gobject.Object) *FilenameCompleter {
 	return FilenameCompleterNewFromC(object.ToC())
@@ -3531,7 +3531,7 @@ func (recv *FilterInputStream) Object() *gobject.Object {
 	return recv.InputStream().Object()
 }
 
-// CastToWidget down casts any arbitary Object to FilterInputStream.
+// CastToWidget down casts any arbitrary Object to FilterInputStream.
 // Exercise care, as this is a potentially dangerous function if the Object is not a FilterInputStream.
 func CastToFilterInputStream(object *gobject.Object) *FilterInputStream {
 	return FilterInputStreamNewFromC(object.ToC())
@@ -3611,7 +3611,7 @@ func (recv *FilterOutputStream) Object() *gobject.Object {
 	return recv.OutputStream().Object()
 }
 
-// CastToWidget down casts any arbitary Object to FilterOutputStream.
+// CastToWidget down casts any arbitrary Object to FilterOutputStream.
 // Exercise care, as this is a potentially dangerous function if the Object is not a FilterOutputStream.
 func CastToFilterOutputStream(object *gobject.Object) *FilterOutputStream {
 	return FilterOutputStreamNewFromC(object.ToC())
@@ -3679,7 +3679,7 @@ func (recv *IOModule) Equals(other *IOModule) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// CastToWidget down casts any arbitary Object to IOModule.
+// CastToWidget down casts any arbitrary Object to IOModule.
 // Exercise care, as this is a potentially dangerous function if the Object is not a IOModule.
 func CastToIOModule(object *gobject.Object) *IOModule {
 	return IOModuleNewFromC(object.ToC())
@@ -3752,7 +3752,7 @@ func (recv *IOStream) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to IOStream.
+// CastToWidget down casts any arbitrary Object to IOStream.
 // Exercise care, as this is a potentially dangerous function if the Object is not a IOStream.
 func CastToIOStream(object *gobject.Object) *IOStream {
 	return IOStreamNewFromC(object.ToC())
@@ -3801,7 +3801,7 @@ func (recv *InetAddress) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to InetAddress.
+// CastToWidget down casts any arbitrary Object to InetAddress.
 // Exercise care, as this is a potentially dangerous function if the Object is not a InetAddress.
 func CastToInetAddress(object *gobject.Object) *InetAddress {
 	return InetAddressNewFromC(object.ToC())
@@ -3855,7 +3855,7 @@ func (recv *InetSocketAddress) Object() *gobject.Object {
 	return recv.SocketAddress().Object()
 }
 
-// CastToWidget down casts any arbitary Object to InetSocketAddress.
+// CastToWidget down casts any arbitrary Object to InetSocketAddress.
 // Exercise care, as this is a potentially dangerous function if the Object is not a InetSocketAddress.
 func CastToInetSocketAddress(object *gobject.Object) *InetSocketAddress {
 	return InetSocketAddressNewFromC(object.ToC())
@@ -3909,7 +3909,7 @@ func (recv *InputStream) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to InputStream.
+// CastToWidget down casts any arbitrary Object to InputStream.
 // Exercise care, as this is a potentially dangerous function if the Object is not a InputStream.
 func CastToInputStream(object *gobject.Object) *InputStream {
 	return InputStreamNewFromC(object.ToC())
@@ -4169,7 +4169,7 @@ func (recv *ListStore) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to ListStore.
+// CastToWidget down casts any arbitrary Object to ListStore.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ListStore.
 func CastToListStore(object *gobject.Object) *ListStore {
 	return ListStoreNewFromC(object.ToC())
@@ -4228,7 +4228,7 @@ func (recv *MemoryInputStream) Object() *gobject.Object {
 	return recv.InputStream().Object()
 }
 
-// CastToWidget down casts any arbitary Object to MemoryInputStream.
+// CastToWidget down casts any arbitrary Object to MemoryInputStream.
 // Exercise care, as this is a potentially dangerous function if the Object is not a MemoryInputStream.
 func CastToMemoryInputStream(object *gobject.Object) *MemoryInputStream {
 	return MemoryInputStreamNewFromC(object.ToC())
@@ -4308,7 +4308,7 @@ func (recv *MemoryOutputStream) Object() *gobject.Object {
 	return recv.OutputStream().Object()
 }
 
-// CastToWidget down casts any arbitary Object to MemoryOutputStream.
+// CastToWidget down casts any arbitrary Object to MemoryOutputStream.
 // Exercise care, as this is a potentially dangerous function if the Object is not a MemoryOutputStream.
 func CastToMemoryOutputStream(object *gobject.Object) *MemoryOutputStream {
 	return MemoryOutputStreamNewFromC(object.ToC())
@@ -4385,7 +4385,7 @@ func (recv *MountOperation) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to MountOperation.
+// CastToWidget down casts any arbitrary Object to MountOperation.
 // Exercise care, as this is a potentially dangerous function if the Object is not a MountOperation.
 func CastToMountOperation(object *gobject.Object) *MountOperation {
 	return MountOperationNewFromC(object.ToC())
@@ -4571,7 +4571,7 @@ func (recv *NativeVolumeMonitor) Object() *gobject.Object {
 	return recv.VolumeMonitor().Object()
 }
 
-// CastToWidget down casts any arbitary Object to NativeVolumeMonitor.
+// CastToWidget down casts any arbitrary Object to NativeVolumeMonitor.
 // Exercise care, as this is a potentially dangerous function if the Object is not a NativeVolumeMonitor.
 func CastToNativeVolumeMonitor(object *gobject.Object) *NativeVolumeMonitor {
 	return NativeVolumeMonitorNewFromC(object.ToC())
@@ -4620,7 +4620,7 @@ func (recv *NetworkAddress) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to NetworkAddress.
+// CastToWidget down casts any arbitrary Object to NetworkAddress.
 // Exercise care, as this is a potentially dangerous function if the Object is not a NetworkAddress.
 func CastToNetworkAddress(object *gobject.Object) *NetworkAddress {
 	return NetworkAddressNewFromC(object.ToC())
@@ -4674,7 +4674,7 @@ func (recv *NetworkService) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to NetworkService.
+// CastToWidget down casts any arbitrary Object to NetworkService.
 // Exercise care, as this is a potentially dangerous function if the Object is not a NetworkService.
 func CastToNetworkService(object *gobject.Object) *NetworkService {
 	return NetworkServiceNewFromC(object.ToC())
@@ -4728,7 +4728,7 @@ func (recv *OutputStream) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to OutputStream.
+// CastToWidget down casts any arbitrary Object to OutputStream.
 // Exercise care, as this is a potentially dangerous function if the Object is not a OutputStream.
 func CastToOutputStream(object *gobject.Object) *OutputStream {
 	return OutputStreamNewFromC(object.ToC())
@@ -5064,7 +5064,7 @@ func (recv *Permission) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to Permission.
+// CastToWidget down casts any arbitrary Object to Permission.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Permission.
 func CastToPermission(object *gobject.Object) *Permission {
 	return PermissionNewFromC(object.ToC())
@@ -5118,7 +5118,7 @@ func (recv *ProxyAddressEnumerator) Object() *gobject.Object {
 	return recv.SocketAddressEnumerator().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ProxyAddressEnumerator.
+// CastToWidget down casts any arbitrary Object to ProxyAddressEnumerator.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ProxyAddressEnumerator.
 func CastToProxyAddressEnumerator(object *gobject.Object) *ProxyAddressEnumerator {
 	return ProxyAddressEnumeratorNewFromC(object.ToC())
@@ -5167,7 +5167,7 @@ func (recv *Resolver) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to Resolver.
+// CastToWidget down casts any arbitrary Object to Resolver.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Resolver.
 func CastToResolver(object *gobject.Object) *Resolver {
 	return ResolverNewFromC(object.ToC())
@@ -5276,7 +5276,7 @@ func (recv *Settings) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to Settings.
+// CastToWidget down casts any arbitrary Object to Settings.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Settings.
 func CastToSettings(object *gobject.Object) *Settings {
 	return SettingsNewFromC(object.ToC())
@@ -5579,7 +5579,7 @@ func (recv *SettingsBackend) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to SettingsBackend.
+// CastToWidget down casts any arbitrary Object to SettingsBackend.
 // Exercise care, as this is a potentially dangerous function if the Object is not a SettingsBackend.
 func CastToSettingsBackend(object *gobject.Object) *SettingsBackend {
 	return SettingsBackendNewFromC(object.ToC())
@@ -5626,7 +5626,7 @@ func (recv *SimpleAction) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to SimpleAction.
+// CastToWidget down casts any arbitrary Object to SimpleAction.
 // Exercise care, as this is a potentially dangerous function if the Object is not a SimpleAction.
 func CastToSimpleAction(object *gobject.Object) *SimpleAction {
 	return SimpleActionNewFromC(object.ToC())
@@ -5678,7 +5678,7 @@ func (recv *SimpleAsyncResult) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to SimpleAsyncResult.
+// CastToWidget down casts any arbitrary Object to SimpleAsyncResult.
 // Exercise care, as this is a potentially dangerous function if the Object is not a SimpleAsyncResult.
 func CastToSimpleAsyncResult(object *gobject.Object) *SimpleAsyncResult {
 	return SimpleAsyncResultNewFromC(object.ToC())
@@ -5867,7 +5867,7 @@ func (recv *SimplePermission) Object() *gobject.Object {
 	return recv.Permission().Object()
 }
 
-// CastToWidget down casts any arbitary Object to SimplePermission.
+// CastToWidget down casts any arbitrary Object to SimplePermission.
 // Exercise care, as this is a potentially dangerous function if the Object is not a SimplePermission.
 func CastToSimplePermission(object *gobject.Object) *SimplePermission {
 	return SimplePermissionNewFromC(object.ToC())
@@ -5916,7 +5916,7 @@ func (recv *SimpleProxyResolver) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to SimpleProxyResolver.
+// CastToWidget down casts any arbitrary Object to SimpleProxyResolver.
 // Exercise care, as this is a potentially dangerous function if the Object is not a SimpleProxyResolver.
 func CastToSimpleProxyResolver(object *gobject.Object) *SimpleProxyResolver {
 	return SimpleProxyResolverNewFromC(object.ToC())
@@ -5969,7 +5969,7 @@ func (recv *SocketAddress) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to SocketAddress.
+// CastToWidget down casts any arbitrary Object to SocketAddress.
 // Exercise care, as this is a potentially dangerous function if the Object is not a SocketAddress.
 func CastToSocketAddress(object *gobject.Object) *SocketAddress {
 	return SocketAddressNewFromC(object.ToC())
@@ -6022,7 +6022,7 @@ func (recv *SocketAddressEnumerator) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to SocketAddressEnumerator.
+// CastToWidget down casts any arbitrary Object to SocketAddressEnumerator.
 // Exercise care, as this is a potentially dangerous function if the Object is not a SocketAddressEnumerator.
 func CastToSocketAddressEnumerator(object *gobject.Object) *SocketAddressEnumerator {
 	return SocketAddressEnumeratorNewFromC(object.ToC())
@@ -6116,7 +6116,7 @@ func (recv *SocketControlMessage) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to SocketControlMessage.
+// CastToWidget down casts any arbitrary Object to SocketControlMessage.
 // Exercise care, as this is a potentially dangerous function if the Object is not a SocketControlMessage.
 func CastToSocketControlMessage(object *gobject.Object) *SocketControlMessage {
 	return SocketControlMessageNewFromC(object.ToC())
@@ -6163,7 +6163,7 @@ func (recv *Task) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to Task.
+// CastToWidget down casts any arbitrary Object to Task.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Task.
 func CastToTask(object *gobject.Object) *Task {
 	return TaskNewFromC(object.ToC())
@@ -6232,7 +6232,7 @@ func (recv *TcpWrapperConnection) Object() *gobject.Object {
 	return recv.TcpConnection().Object()
 }
 
-// CastToWidget down casts any arbitary Object to TcpWrapperConnection.
+// CastToWidget down casts any arbitrary Object to TcpWrapperConnection.
 // Exercise care, as this is a potentially dangerous function if the Object is not a TcpWrapperConnection.
 func CastToTcpWrapperConnection(object *gobject.Object) *TcpWrapperConnection {
 	return TcpWrapperConnectionNewFromC(object.ToC())
@@ -6287,7 +6287,7 @@ func (recv *ThemedIcon) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to ThemedIcon.
+// CastToWidget down casts any arbitrary Object to ThemedIcon.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ThemedIcon.
 func CastToThemedIcon(object *gobject.Object) *ThemedIcon {
 	return ThemedIconNewFromC(object.ToC())
@@ -6395,7 +6395,7 @@ func (recv *UnixConnection) Object() *gobject.Object {
 	return recv.SocketConnection().Object()
 }
 
-// CastToWidget down casts any arbitary Object to UnixConnection.
+// CastToWidget down casts any arbitrary Object to UnixConnection.
 // Exercise care, as this is a potentially dangerous function if the Object is not a UnixConnection.
 func CastToUnixConnection(object *gobject.Object) *UnixConnection {
 	return UnixConnectionNewFromC(object.ToC())
@@ -6444,7 +6444,7 @@ func (recv *UnixFDList) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to UnixFDList.
+// CastToWidget down casts any arbitrary Object to UnixFDList.
 // Exercise care, as this is a potentially dangerous function if the Object is not a UnixFDList.
 func CastToUnixFDList(object *gobject.Object) *UnixFDList {
 	return UnixFDListNewFromC(object.ToC())
@@ -6498,7 +6498,7 @@ func (recv *UnixFDMessage) Object() *gobject.Object {
 	return recv.SocketControlMessage().Object()
 }
 
-// CastToWidget down casts any arbitary Object to UnixFDMessage.
+// CastToWidget down casts any arbitrary Object to UnixFDMessage.
 // Exercise care, as this is a potentially dangerous function if the Object is not a UnixFDMessage.
 func CastToUnixFDMessage(object *gobject.Object) *UnixFDMessage {
 	return UnixFDMessageNewFromC(object.ToC())
@@ -6552,7 +6552,7 @@ func (recv *UnixInputStream) Object() *gobject.Object {
 	return recv.InputStream().Object()
 }
 
-// CastToWidget down casts any arbitary Object to UnixInputStream.
+// CastToWidget down casts any arbitrary Object to UnixInputStream.
 // Exercise care, as this is a potentially dangerous function if the Object is not a UnixInputStream.
 func CastToUnixInputStream(object *gobject.Object) *UnixInputStream {
 	return UnixInputStreamNewFromC(object.ToC())
@@ -6626,7 +6626,7 @@ func (recv *UnixMountMonitor) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to UnixMountMonitor.
+// CastToWidget down casts any arbitrary Object to UnixMountMonitor.
 // Exercise care, as this is a potentially dangerous function if the Object is not a UnixMountMonitor.
 func CastToUnixMountMonitor(object *gobject.Object) *UnixMountMonitor {
 	return UnixMountMonitorNewFromC(object.ToC())
@@ -6812,7 +6812,7 @@ func (recv *UnixOutputStream) Object() *gobject.Object {
 	return recv.OutputStream().Object()
 }
 
-// CastToWidget down casts any arbitary Object to UnixOutputStream.
+// CastToWidget down casts any arbitrary Object to UnixOutputStream.
 // Exercise care, as this is a potentially dangerous function if the Object is not a UnixOutputStream.
 func CastToUnixOutputStream(object *gobject.Object) *UnixOutputStream {
 	return UnixOutputStreamNewFromC(object.ToC())
@@ -6893,7 +6893,7 @@ func (recv *UnixSocketAddress) Object() *gobject.Object {
 	return recv.SocketAddress().Object()
 }
 
-// CastToWidget down casts any arbitary Object to UnixSocketAddress.
+// CastToWidget down casts any arbitrary Object to UnixSocketAddress.
 // Exercise care, as this is a potentially dangerous function if the Object is not a UnixSocketAddress.
 func CastToUnixSocketAddress(object *gobject.Object) *UnixSocketAddress {
 	return UnixSocketAddressNewFromC(object.ToC())
@@ -6962,7 +6962,7 @@ func (recv *Vfs) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to Vfs.
+// CastToWidget down casts any arbitrary Object to Vfs.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Vfs.
 func CastToVfs(object *gobject.Object) *Vfs {
 	return VfsNewFromC(object.ToC())
@@ -7070,7 +7070,7 @@ func (recv *VolumeMonitor) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to VolumeMonitor.
+// CastToWidget down casts any arbitrary Object to VolumeMonitor.
 // Exercise care, as this is a potentially dangerous function if the Object is not a VolumeMonitor.
 func CastToVolumeMonitor(object *gobject.Object) *VolumeMonitor {
 	return VolumeMonitorNewFromC(object.ToC())
@@ -7801,7 +7801,7 @@ func (recv *ZlibCompressor) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to ZlibCompressor.
+// CastToWidget down casts any arbitrary Object to ZlibCompressor.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ZlibCompressor.
 func CastToZlibCompressor(object *gobject.Object) *ZlibCompressor {
 	return ZlibCompressorNewFromC(object.ToC())
@@ -7853,7 +7853,7 @@ func (recv *ZlibDecompressor) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to ZlibDecompressor.
+// CastToWidget down casts any arbitrary Object to ZlibDecompressor.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ZlibDecompressor.
 func CastToZlibDecompressor(object *gobject.Object) *ZlibDecompressor {
 	return ZlibDecompressorNewFromC(object.ToC())

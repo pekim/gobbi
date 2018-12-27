@@ -125,7 +125,7 @@ func (r *Record) generateDowncast(g *jen.Group) {
 		return
 	}
 
-	g.Commentf("CastToWidget down casts any arbitary Object to %s.", r.Name)
+	g.Commentf("CastToWidget down casts any arbitrary Object to %s.", r.Name)
 	g.Commentf("Exercise care, as this is a potentially dangerous function if the Object is not a %s.", r.Name)
 
 	g.

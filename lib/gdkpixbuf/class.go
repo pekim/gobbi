@@ -95,7 +95,7 @@ func (recv *Pixbuf) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to Pixbuf.
+// CastToWidget down casts any arbitrary Object to Pixbuf.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Pixbuf.
 func CastToPixbuf(object *gobject.Object) *Pixbuf {
 	return PixbufNewFromC(object.ToC())
@@ -553,7 +553,7 @@ func (recv *PixbufAnimation) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to PixbufAnimation.
+// CastToWidget down casts any arbitrary Object to PixbufAnimation.
 // Exercise care, as this is a potentially dangerous function if the Object is not a PixbufAnimation.
 func CastToPixbufAnimation(object *gobject.Object) *PixbufAnimation {
 	return PixbufAnimationNewFromC(object.ToC())
@@ -685,7 +685,7 @@ func (recv *PixbufAnimationIter) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to PixbufAnimationIter.
+// CastToWidget down casts any arbitrary Object to PixbufAnimationIter.
 // Exercise care, as this is a potentially dangerous function if the Object is not a PixbufAnimationIter.
 func CastToPixbufAnimationIter(object *gobject.Object) *PixbufAnimationIter {
 	return PixbufAnimationIterNewFromC(object.ToC())
@@ -771,7 +771,7 @@ func (recv *PixbufLoader) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to PixbufLoader.
+// CastToWidget down casts any arbitrary Object to PixbufLoader.
 // Exercise care, as this is a potentially dangerous function if the Object is not a PixbufLoader.
 func CastToPixbufLoader(object *gobject.Object) *PixbufLoader {
 	return PixbufLoaderNewFromC(object.ToC())
@@ -1168,7 +1168,7 @@ func (recv *PixbufSimpleAnim) Object() *gobject.Object {
 	return recv.PixbufAnimation().Object()
 }
 
-// CastToWidget down casts any arbitary Object to PixbufSimpleAnim.
+// CastToWidget down casts any arbitrary Object to PixbufSimpleAnim.
 // Exercise care, as this is a potentially dangerous function if the Object is not a PixbufSimpleAnim.
 func CastToPixbufSimpleAnim(object *gobject.Object) *PixbufSimpleAnim {
 	return PixbufSimpleAnimNewFromC(object.ToC())

@@ -57,7 +57,7 @@ func (recv *InitiallyUnowned) Object() *Object {
 	return ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to InitiallyUnowned.
+// CastToWidget down casts any arbitrary Object to InitiallyUnowned.
 // Exercise care, as this is a potentially dangerous function if the Object is not a InitiallyUnowned.
 func CastToInitiallyUnowned(object *Object) *InitiallyUnowned {
 	return InitiallyUnownedNewFromC(object.ToC())
@@ -90,7 +90,7 @@ func (recv *Object) Equals(other *Object) bool {
 	return other.ToC() == recv.ToC()
 }
 
-// CastToWidget down casts any arbitary Object to Object.
+// CastToWidget down casts any arbitrary Object to Object.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Object.
 func CastToObject(object *Object) *Object {
 	return ObjectNewFromC(object.ToC())

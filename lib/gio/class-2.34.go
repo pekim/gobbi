@@ -443,7 +443,7 @@ func (recv *TestDBus) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to TestDBus.
+// CastToWidget down casts any arbitrary Object to TestDBus.
 // Exercise care, as this is a potentially dangerous function if the Object is not a TestDBus.
 func CastToTestDBus(object *gobject.Object) *TestDBus {
 	return TestDBusNewFromC(object.ToC())

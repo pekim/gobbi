@@ -3119,7 +3119,7 @@ func (recv *RecentManager) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to RecentManager.
+// CastToWidget down casts any arbitrary Object to RecentManager.
 // Exercise care, as this is a potentially dangerous function if the Object is not a RecentManager.
 func CastToRecentManager(object *gobject.Object) *RecentManager {
 	return RecentManagerNewFromC(object.ToC())

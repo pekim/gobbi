@@ -56,7 +56,7 @@ func (recv *Binding) Object() *Object {
 	return ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to Binding.
+// CastToWidget down casts any arbitrary Object to Binding.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Binding.
 func CastToBinding(object *Object) *Binding {
 	return BindingNewFromC(object.ToC())

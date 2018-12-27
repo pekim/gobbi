@@ -174,7 +174,7 @@ func (recv *AppLaunchContext) Object() *gobject.Object {
 	return recv.AppLaunchContext().Object()
 }
 
-// CastToWidget down casts any arbitary Object to AppLaunchContext.
+// CastToWidget down casts any arbitrary Object to AppLaunchContext.
 // Exercise care, as this is a potentially dangerous function if the Object is not a AppLaunchContext.
 func CastToAppLaunchContext(object *gobject.Object) *AppLaunchContext {
 	return AppLaunchContextNewFromC(object.ToC())
@@ -221,7 +221,7 @@ func (recv *Cursor) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to Cursor.
+// CastToWidget down casts any arbitrary Object to Cursor.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Cursor.
 func CastToCursor(object *gobject.Object) *Cursor {
 	return CursorNewFromC(object.ToC())
@@ -297,7 +297,7 @@ func (recv *Device) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to Device.
+// CastToWidget down casts any arbitrary Object to Device.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Device.
 func CastToDevice(object *gobject.Object) *Device {
 	return DeviceNewFromC(object.ToC())
@@ -498,7 +498,7 @@ func (recv *DeviceManager) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to DeviceManager.
+// CastToWidget down casts any arbitrary Object to DeviceManager.
 // Exercise care, as this is a potentially dangerous function if the Object is not a DeviceManager.
 func CastToDeviceManager(object *gobject.Object) *DeviceManager {
 	return DeviceManagerNewFromC(object.ToC())
@@ -731,7 +731,7 @@ func (recv *Display) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to Display.
+// CastToWidget down casts any arbitrary Object to Display.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Display.
 func CastToDisplay(object *gobject.Object) *Display {
 	return DisplayNewFromC(object.ToC())
@@ -864,7 +864,7 @@ func (recv *DisplayManager) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to DisplayManager.
+// CastToWidget down casts any arbitrary Object to DisplayManager.
 // Exercise care, as this is a potentially dangerous function if the Object is not a DisplayManager.
 func CastToDisplayManager(object *gobject.Object) *DisplayManager {
 	return DisplayManagerNewFromC(object.ToC())
@@ -911,7 +911,7 @@ func (recv *DragContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to DragContext.
+// CastToWidget down casts any arbitrary Object to DragContext.
 // Exercise care, as this is a potentially dangerous function if the Object is not a DragContext.
 func CastToDragContext(object *gobject.Object) *DragContext {
 	return DragContextNewFromC(object.ToC())
@@ -978,7 +978,7 @@ func (recv *FrameClock) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to FrameClock.
+// CastToWidget down casts any arbitrary Object to FrameClock.
 // Exercise care, as this is a potentially dangerous function if the Object is not a FrameClock.
 func CastToFrameClock(object *gobject.Object) *FrameClock {
 	return FrameClockNewFromC(object.ToC())
@@ -1445,7 +1445,7 @@ func (recv *GLContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to GLContext.
+// CastToWidget down casts any arbitrary Object to GLContext.
 // Exercise care, as this is a potentially dangerous function if the Object is not a GLContext.
 func CastToGLContext(object *gobject.Object) *GLContext {
 	return GLContextNewFromC(object.ToC())
@@ -1492,7 +1492,7 @@ func (recv *Keymap) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to Keymap.
+// CastToWidget down casts any arbitrary Object to Keymap.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Keymap.
 func CastToKeymap(object *gobject.Object) *Keymap {
 	return KeymapNewFromC(object.ToC())
@@ -1574,7 +1574,7 @@ func (recv *Screen) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to Screen.
+// CastToWidget down casts any arbitrary Object to Screen.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Screen.
 func CastToScreen(object *gobject.Object) *Screen {
 	return ScreenNewFromC(object.ToC())
@@ -1653,7 +1653,7 @@ func (recv *Visual) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to Visual.
+// CastToWidget down casts any arbitrary Object to Visual.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Visual.
 func CastToVisual(object *gobject.Object) *Visual {
 	return VisualNewFromC(object.ToC())
@@ -1769,7 +1769,7 @@ func (recv *Window) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to Window.
+// CastToWidget down casts any arbitrary Object to Window.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Window.
 func CastToWindow(object *gobject.Object) *Window {
 	return WindowNewFromC(object.ToC())

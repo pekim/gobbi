@@ -131,7 +131,7 @@ func (recv *GLArea) Object() *gobject.Object {
 	return recv.Widget().Object()
 }
 
-// CastToWidget down casts any arbitary Object to GLArea.
+// CastToWidget down casts any arbitrary Object to GLArea.
 // Exercise care, as this is a potentially dangerous function if the Object is not a GLArea.
 func CastToGLArea(object *gobject.Object) *GLArea {
 	return GLAreaNewFromC(object.ToC())

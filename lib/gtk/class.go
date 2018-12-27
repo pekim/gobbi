@@ -1977,7 +1977,7 @@ func (recv *AboutDialog) Object() *gobject.Object {
 	return recv.Dialog().Object()
 }
 
-// CastToWidget down casts any arbitary Object to AboutDialog.
+// CastToWidget down casts any arbitrary Object to AboutDialog.
 // Exercise care, as this is a potentially dangerous function if the Object is not a AboutDialog.
 func CastToAboutDialog(object *gobject.Object) *AboutDialog {
 	return AboutDialogNewFromC(object.ToC())
@@ -2036,7 +2036,7 @@ func (recv *AccelGroup) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to AccelGroup.
+// CastToWidget down casts any arbitrary Object to AccelGroup.
 // Exercise care, as this is a potentially dangerous function if the Object is not a AccelGroup.
 func CastToAccelGroup(object *gobject.Object) *AccelGroup {
 	return AccelGroupNewFromC(object.ToC())
@@ -2234,7 +2234,7 @@ func (recv *AccelLabel) Object() *gobject.Object {
 	return recv.Label().Object()
 }
 
-// CastToWidget down casts any arbitary Object to AccelLabel.
+// CastToWidget down casts any arbitrary Object to AccelLabel.
 // Exercise care, as this is a potentially dangerous function if the Object is not a AccelLabel.
 func CastToAccelLabel(object *gobject.Object) *AccelLabel {
 	return AccelLabelNewFromC(object.ToC())
@@ -2355,7 +2355,7 @@ func (recv *AccelMap) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to AccelMap.
+// CastToWidget down casts any arbitrary Object to AccelMap.
 // Exercise care, as this is a potentially dangerous function if the Object is not a AccelMap.
 func CastToAccelMap(object *gobject.Object) *AccelMap {
 	return AccelMapNewFromC(object.ToC())
@@ -2513,7 +2513,7 @@ func (recv *Accessible) Object() *atk.Object {
 	return atk.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to Accessible.
+// CastToWidget down casts any arbitrary Object to Accessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Accessible.
 func CastToAccessible(object *gobject.Object) *Accessible {
 	return AccessibleNewFromC(object.ToC())
@@ -2569,7 +2569,7 @@ func (recv *Action) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to Action.
+// CastToWidget down casts any arbitrary Object to Action.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Action.
 func CastToAction(object *gobject.Object) *Action {
 	return ActionNewFromC(object.ToC())
@@ -2642,7 +2642,7 @@ func (recv *ActionBar) Object() *gobject.Object {
 	return recv.Bin().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ActionBar.
+// CastToWidget down casts any arbitrary Object to ActionBar.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ActionBar.
 func CastToActionBar(object *gobject.Object) *ActionBar {
 	return ActionBarNewFromC(object.ToC())
@@ -2701,7 +2701,7 @@ func (recv *ActionGroup) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to ActionGroup.
+// CastToWidget down casts any arbitrary Object to ActionGroup.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ActionGroup.
 func CastToActionGroup(object *gobject.Object) *ActionGroup {
 	return ActionGroupNewFromC(object.ToC())
@@ -2760,7 +2760,7 @@ func (recv *Adjustment) Object() *gobject.Object {
 	return recv.InitiallyUnowned().Object()
 }
 
-// CastToWidget down casts any arbitary Object to Adjustment.
+// CastToWidget down casts any arbitrary Object to Adjustment.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Adjustment.
 func CastToAdjustment(object *gobject.Object) *Adjustment {
 	return AdjustmentNewFromC(object.ToC())
@@ -3011,7 +3011,7 @@ func (recv *Alignment) Object() *gobject.Object {
 	return recv.Bin().Object()
 }
 
-// CastToWidget down casts any arbitary Object to Alignment.
+// CastToWidget down casts any arbitrary Object to Alignment.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Alignment.
 func CastToAlignment(object *gobject.Object) *Alignment {
 	return AlignmentNewFromC(object.ToC())
@@ -3126,7 +3126,7 @@ func (recv *AppChooserButton) Object() *gobject.Object {
 	return recv.ComboBox().Object()
 }
 
-// CastToWidget down casts any arbitary Object to AppChooserButton.
+// CastToWidget down casts any arbitrary Object to AppChooserButton.
 // Exercise care, as this is a potentially dangerous function if the Object is not a AppChooserButton.
 func CastToAppChooserButton(object *gobject.Object) *AppChooserButton {
 	return AppChooserButtonNewFromC(object.ToC())
@@ -3310,7 +3310,7 @@ func (recv *AppChooserDialog) Object() *gobject.Object {
 	return recv.Dialog().Object()
 }
 
-// CastToWidget down casts any arbitary Object to AppChooserDialog.
+// CastToWidget down casts any arbitrary Object to AppChooserDialog.
 // Exercise care, as this is a potentially dangerous function if the Object is not a AppChooserDialog.
 func CastToAppChooserDialog(object *gobject.Object) *AppChooserDialog {
 	return AppChooserDialogNewFromC(object.ToC())
@@ -3412,7 +3412,7 @@ func (recv *AppChooserWidget) Object() *gobject.Object {
 	return recv.Box().Object()
 }
 
-// CastToWidget down casts any arbitary Object to AppChooserWidget.
+// CastToWidget down casts any arbitrary Object to AppChooserWidget.
 // Exercise care, as this is a potentially dangerous function if the Object is not a AppChooserWidget.
 func CastToAppChooserWidget(object *gobject.Object) *AppChooserWidget {
 	return AppChooserWidgetNewFromC(object.ToC())
@@ -3684,7 +3684,7 @@ func (recv *Application) Object() *gobject.Object {
 	return recv.Application().Object()
 }
 
-// CastToWidget down casts any arbitary Object to Application.
+// CastToWidget down casts any arbitrary Object to Application.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Application.
 func CastToApplication(object *gobject.Object) *Application {
 	return ApplicationNewFromC(object.ToC())
@@ -3768,7 +3768,7 @@ func (recv *ApplicationWindow) Object() *gobject.Object {
 	return recv.Window().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ApplicationWindow.
+// CastToWidget down casts any arbitrary Object to ApplicationWindow.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ApplicationWindow.
 func CastToApplicationWindow(object *gobject.Object) *ApplicationWindow {
 	return ApplicationWindowNewFromC(object.ToC())
@@ -3852,7 +3852,7 @@ func (recv *Arrow) Object() *gobject.Object {
 	return recv.Misc().Object()
 }
 
-// CastToWidget down casts any arbitary Object to Arrow.
+// CastToWidget down casts any arbitrary Object to Arrow.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Arrow.
 func CastToArrow(object *gobject.Object) *Arrow {
 	return ArrowNewFromC(object.ToC())
@@ -3944,7 +3944,7 @@ func (recv *ArrowAccessible) Object() *atk.Object {
 	return recv.WidgetAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ArrowAccessible.
+// CastToWidget down casts any arbitrary Object to ArrowAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ArrowAccessible.
 func CastToArrowAccessible(object *gobject.Object) *ArrowAccessible {
 	return ArrowAccessibleNewFromC(object.ToC())
@@ -4028,7 +4028,7 @@ func (recv *AspectFrame) Object() *gobject.Object {
 	return recv.Frame().Object()
 }
 
-// CastToWidget down casts any arbitary Object to AspectFrame.
+// CastToWidget down casts any arbitrary Object to AspectFrame.
 // Exercise care, as this is a potentially dangerous function if the Object is not a AspectFrame.
 func CastToAspectFrame(object *gobject.Object) *AspectFrame {
 	return AspectFrameNewFromC(object.ToC())
@@ -4148,7 +4148,7 @@ func (recv *Assistant) Object() *gobject.Object {
 	return recv.Window().Object()
 }
 
-// CastToWidget down casts any arbitary Object to Assistant.
+// CastToWidget down casts any arbitrary Object to Assistant.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Assistant.
 func CastToAssistant(object *gobject.Object) *Assistant {
 	return AssistantNewFromC(object.ToC())
@@ -4282,7 +4282,7 @@ func (recv *Bin) Object() *gobject.Object {
 	return recv.Container().Object()
 }
 
-// CastToWidget down casts any arbitary Object to Bin.
+// CastToWidget down casts any arbitrary Object to Bin.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Bin.
 func CastToBin(object *gobject.Object) *Bin {
 	return BinNewFromC(object.ToC())
@@ -4369,7 +4369,7 @@ func (recv *BooleanCellAccessible) Object() *atk.Object {
 	return recv.RendererCellAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to BooleanCellAccessible.
+// CastToWidget down casts any arbitrary Object to BooleanCellAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a BooleanCellAccessible.
 func CastToBooleanCellAccessible(object *gobject.Object) *BooleanCellAccessible {
 	return BooleanCellAccessibleNewFromC(object.ToC())
@@ -4443,7 +4443,7 @@ func (recv *Box) Object() *gobject.Object {
 	return recv.Container().Object()
 }
 
-// CastToWidget down casts any arbitary Object to Box.
+// CastToWidget down casts any arbitrary Object to Box.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Box.
 func CastToBox(object *gobject.Object) *Box {
 	return BoxNewFromC(object.ToC())
@@ -4620,7 +4620,7 @@ func (recv *Builder) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to Builder.
+// CastToWidget down casts any arbitrary Object to Builder.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Builder.
 func CastToBuilder(object *gobject.Object) *Builder {
 	return BuilderNewFromC(object.ToC())
@@ -4691,7 +4691,7 @@ func (recv *Button) Object() *gobject.Object {
 	return recv.Bin().Object()
 }
 
-// CastToWidget down casts any arbitary Object to Button.
+// CastToWidget down casts any arbitrary Object to Button.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Button.
 func CastToButton(object *gobject.Object) *Button {
 	return ButtonNewFromC(object.ToC())
@@ -5282,7 +5282,7 @@ func (recv *ButtonAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ButtonAccessible.
+// CastToWidget down casts any arbitrary Object to ButtonAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ButtonAccessible.
 func CastToButtonAccessible(object *gobject.Object) *ButtonAccessible {
 	return ButtonAccessibleNewFromC(object.ToC())
@@ -5366,7 +5366,7 @@ func (recv *ButtonBox) Object() *gobject.Object {
 	return recv.Box().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ButtonBox.
+// CastToWidget down casts any arbitrary Object to ButtonBox.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ButtonBox.
 func CastToButtonBox(object *gobject.Object) *ButtonBox {
 	return ButtonBoxNewFromC(object.ToC())
@@ -5472,7 +5472,7 @@ func (recv *Calendar) Object() *gobject.Object {
 	return recv.Widget().Object()
 }
 
-// CastToWidget down casts any arbitary Object to Calendar.
+// CastToWidget down casts any arbitrary Object to Calendar.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Calendar.
 func CastToCalendar(object *gobject.Object) *Calendar {
 	return CalendarNewFromC(object.ToC())
@@ -6028,7 +6028,7 @@ func (recv *CellAccessible) Object() *atk.Object {
 	return recv.Accessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to CellAccessible.
+// CastToWidget down casts any arbitrary Object to CellAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a CellAccessible.
 func CastToCellAccessible(object *gobject.Object) *CellAccessible {
 	return CellAccessibleNewFromC(object.ToC())
@@ -6092,7 +6092,7 @@ func (recv *CellArea) Object() *gobject.Object {
 	return recv.InitiallyUnowned().Object()
 }
 
-// CastToWidget down casts any arbitary Object to CellArea.
+// CastToWidget down casts any arbitrary Object to CellArea.
 // Exercise care, as this is a potentially dangerous function if the Object is not a CellArea.
 func CastToCellArea(object *gobject.Object) *CellArea {
 	return CellAreaNewFromC(object.ToC())
@@ -6161,7 +6161,7 @@ func (recv *CellAreaBox) Object() *gobject.Object {
 	return recv.CellArea().Object()
 }
 
-// CastToWidget down casts any arbitary Object to CellAreaBox.
+// CastToWidget down casts any arbitrary Object to CellAreaBox.
 // Exercise care, as this is a potentially dangerous function if the Object is not a CellAreaBox.
 func CastToCellAreaBox(object *gobject.Object) *CellAreaBox {
 	return CellAreaBoxNewFromC(object.ToC())
@@ -6225,7 +6225,7 @@ func (recv *CellAreaContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to CellAreaContext.
+// CastToWidget down casts any arbitrary Object to CellAreaContext.
 // Exercise care, as this is a potentially dangerous function if the Object is not a CellAreaContext.
 func CastToCellAreaContext(object *gobject.Object) *CellAreaContext {
 	return CellAreaContextNewFromC(object.ToC())
@@ -6297,7 +6297,7 @@ func (recv *CellRenderer) Object() *gobject.Object {
 	return recv.InitiallyUnowned().Object()
 }
 
-// CastToWidget down casts any arbitary Object to CellRenderer.
+// CastToWidget down casts any arbitrary Object to CellRenderer.
 // Exercise care, as this is a potentially dangerous function if the Object is not a CellRenderer.
 func CastToCellRenderer(object *gobject.Object) *CellRenderer {
 	return CellRendererNewFromC(object.ToC())
@@ -6395,7 +6395,7 @@ func (recv *CellRendererAccel) Object() *gobject.Object {
 	return recv.CellRendererText().Object()
 }
 
-// CastToWidget down casts any arbitary Object to CellRendererAccel.
+// CastToWidget down casts any arbitrary Object to CellRendererAccel.
 // Exercise care, as this is a potentially dangerous function if the Object is not a CellRendererAccel.
 func CastToCellRendererAccel(object *gobject.Object) *CellRendererAccel {
 	return CellRendererAccelNewFromC(object.ToC())
@@ -6459,7 +6459,7 @@ func (recv *CellRendererCombo) Object() *gobject.Object {
 	return recv.CellRendererText().Object()
 }
 
-// CastToWidget down casts any arbitary Object to CellRendererCombo.
+// CastToWidget down casts any arbitrary Object to CellRendererCombo.
 // Exercise care, as this is a potentially dangerous function if the Object is not a CellRendererCombo.
 func CastToCellRendererCombo(object *gobject.Object) *CellRendererCombo {
 	return CellRendererComboNewFromC(object.ToC())
@@ -6518,7 +6518,7 @@ func (recv *CellRendererPixbuf) Object() *gobject.Object {
 	return recv.CellRenderer().Object()
 }
 
-// CastToWidget down casts any arbitary Object to CellRendererPixbuf.
+// CastToWidget down casts any arbitrary Object to CellRendererPixbuf.
 // Exercise care, as this is a potentially dangerous function if the Object is not a CellRendererPixbuf.
 func CastToCellRendererPixbuf(object *gobject.Object) *CellRendererPixbuf {
 	return CellRendererPixbufNewFromC(object.ToC())
@@ -6585,7 +6585,7 @@ func (recv *CellRendererProgress) Object() *gobject.Object {
 	return recv.CellRenderer().Object()
 }
 
-// CastToWidget down casts any arbitary Object to CellRendererProgress.
+// CastToWidget down casts any arbitrary Object to CellRendererProgress.
 // Exercise care, as this is a potentially dangerous function if the Object is not a CellRendererProgress.
 func CastToCellRendererProgress(object *gobject.Object) *CellRendererProgress {
 	return CellRendererProgressNewFromC(object.ToC())
@@ -6654,7 +6654,7 @@ func (recv *CellRendererSpin) Object() *gobject.Object {
 	return recv.CellRendererText().Object()
 }
 
-// CastToWidget down casts any arbitary Object to CellRendererSpin.
+// CastToWidget down casts any arbitrary Object to CellRendererSpin.
 // Exercise care, as this is a potentially dangerous function if the Object is not a CellRendererSpin.
 func CastToCellRendererSpin(object *gobject.Object) *CellRendererSpin {
 	return CellRendererSpinNewFromC(object.ToC())
@@ -6713,7 +6713,7 @@ func (recv *CellRendererSpinner) Object() *gobject.Object {
 	return recv.CellRenderer().Object()
 }
 
-// CastToWidget down casts any arbitary Object to CellRendererSpinner.
+// CastToWidget down casts any arbitrary Object to CellRendererSpinner.
 // Exercise care, as this is a potentially dangerous function if the Object is not a CellRendererSpinner.
 func CastToCellRendererSpinner(object *gobject.Object) *CellRendererSpinner {
 	return CellRendererSpinnerNewFromC(object.ToC())
@@ -6772,7 +6772,7 @@ func (recv *CellRendererText) Object() *gobject.Object {
 	return recv.CellRenderer().Object()
 }
 
-// CastToWidget down casts any arbitary Object to CellRendererText.
+// CastToWidget down casts any arbitrary Object to CellRendererText.
 // Exercise care, as this is a potentially dangerous function if the Object is not a CellRendererText.
 func CastToCellRendererText(object *gobject.Object) *CellRendererText {
 	return CellRendererTextNewFromC(object.ToC())
@@ -6912,7 +6912,7 @@ func (recv *CellRendererToggle) Object() *gobject.Object {
 	return recv.CellRenderer().Object()
 }
 
-// CastToWidget down casts any arbitary Object to CellRendererToggle.
+// CastToWidget down casts any arbitrary Object to CellRendererToggle.
 // Exercise care, as this is a potentially dangerous function if the Object is not a CellRendererToggle.
 func CastToCellRendererToggle(object *gobject.Object) *CellRendererToggle {
 	return CellRendererToggleNewFromC(object.ToC())
@@ -7077,7 +7077,7 @@ func (recv *CellView) Object() *gobject.Object {
 	return recv.Widget().Object()
 }
 
-// CastToWidget down casts any arbitary Object to CellView.
+// CastToWidget down casts any arbitrary Object to CellView.
 // Exercise care, as this is a potentially dangerous function if the Object is not a CellView.
 func CastToCellView(object *gobject.Object) *CellView {
 	return CellViewNewFromC(object.ToC())
@@ -7175,7 +7175,7 @@ func (recv *CheckButton) Object() *gobject.Object {
 	return recv.ToggleButton().Object()
 }
 
-// CastToWidget down casts any arbitary Object to CheckButton.
+// CastToWidget down casts any arbitrary Object to CheckButton.
 // Exercise care, as this is a potentially dangerous function if the Object is not a CheckButton.
 func CastToCheckButton(object *gobject.Object) *CheckButton {
 	return CheckButtonNewFromC(object.ToC())
@@ -7299,7 +7299,7 @@ func (recv *CheckMenuItem) Object() *gobject.Object {
 	return recv.MenuItem().Object()
 }
 
-// CastToWidget down casts any arbitary Object to CheckMenuItem.
+// CastToWidget down casts any arbitrary Object to CheckMenuItem.
 // Exercise care, as this is a potentially dangerous function if the Object is not a CheckMenuItem.
 func CastToCheckMenuItem(object *gobject.Object) *CheckMenuItem {
 	return CheckMenuItemNewFromC(object.ToC())
@@ -7521,7 +7521,7 @@ func (recv *CheckMenuItemAccessible) Object() *atk.Object {
 	return recv.MenuItemAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to CheckMenuItemAccessible.
+// CastToWidget down casts any arbitrary Object to CheckMenuItemAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a CheckMenuItemAccessible.
 func CastToCheckMenuItemAccessible(object *gobject.Object) *CheckMenuItemAccessible {
 	return CheckMenuItemAccessibleNewFromC(object.ToC())
@@ -7583,7 +7583,7 @@ func (recv *Clipboard) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to Clipboard.
+// CastToWidget down casts any arbitrary Object to Clipboard.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Clipboard.
 func CastToClipboard(object *gobject.Object) *Clipboard {
 	return ClipboardNewFromC(object.ToC())
@@ -7717,7 +7717,7 @@ func (recv *ColorButton) Object() *gobject.Object {
 	return recv.Button().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ColorButton.
+// CastToWidget down casts any arbitrary Object to ColorButton.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ColorButton.
 func CastToColorButton(object *gobject.Object) *ColorButton {
 	return ColorButtonNewFromC(object.ToC())
@@ -7821,7 +7821,7 @@ func (recv *ColorChooserDialog) Object() *gobject.Object {
 	return recv.Dialog().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ColorChooserDialog.
+// CastToWidget down casts any arbitrary Object to ColorChooserDialog.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ColorChooserDialog.
 func CastToColorChooserDialog(object *gobject.Object) *ColorChooserDialog {
 	return ColorChooserDialogNewFromC(object.ToC())
@@ -7905,7 +7905,7 @@ func (recv *ColorChooserWidget) Object() *gobject.Object {
 	return recv.Box().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ColorChooserWidget.
+// CastToWidget down casts any arbitrary Object to ColorChooserWidget.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ColorChooserWidget.
 func CastToColorChooserWidget(object *gobject.Object) *ColorChooserWidget {
 	return ColorChooserWidgetNewFromC(object.ToC())
@@ -7994,7 +7994,7 @@ func (recv *ColorSelection) Object() *gobject.Object {
 	return recv.Box().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ColorSelection.
+// CastToWidget down casts any arbitrary Object to ColorSelection.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ColorSelection.
 func CastToColorSelection(object *gobject.Object) *ColorSelection {
 	return ColorSelectionNewFromC(object.ToC())
@@ -8282,7 +8282,7 @@ func (recv *ColorSelectionDialog) Object() *gobject.Object {
 	return recv.Dialog().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ColorSelectionDialog.
+// CastToWidget down casts any arbitrary Object to ColorSelectionDialog.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ColorSelectionDialog.
 func CastToColorSelectionDialog(object *gobject.Object) *ColorSelectionDialog {
 	return ColorSelectionDialogNewFromC(object.ToC())
@@ -8372,7 +8372,7 @@ func (recv *ComboBox) Object() *gobject.Object {
 	return recv.Bin().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ComboBox.
+// CastToWidget down casts any arbitrary Object to ComboBox.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ComboBox.
 func CastToComboBox(object *gobject.Object) *ComboBox {
 	return ComboBoxNewFromC(object.ToC())
@@ -8490,7 +8490,7 @@ func (recv *ComboBoxAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ComboBoxAccessible.
+// CastToWidget down casts any arbitrary Object to ComboBoxAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ComboBoxAccessible.
 func CastToComboBoxAccessible(object *gobject.Object) *ComboBoxAccessible {
 	return ComboBoxAccessibleNewFromC(object.ToC())
@@ -8579,7 +8579,7 @@ func (recv *ComboBoxText) Object() *gobject.Object {
 	return recv.ComboBox().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ComboBoxText.
+// CastToWidget down casts any arbitrary Object to ComboBoxText.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ComboBoxText.
 func CastToComboBoxText(object *gobject.Object) *ComboBoxText {
 	return ComboBoxTextNewFromC(object.ToC())
@@ -8658,7 +8658,7 @@ func (recv *Container) Object() *gobject.Object {
 	return recv.Widget().Object()
 }
 
-// CastToWidget down casts any arbitary Object to Container.
+// CastToWidget down casts any arbitrary Object to Container.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Container.
 func CastToContainer(object *gobject.Object) *Container {
 	return ContainerNewFromC(object.ToC())
@@ -9248,7 +9248,7 @@ func (recv *ContainerAccessible) Object() *atk.Object {
 	return recv.WidgetAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ContainerAccessible.
+// CastToWidget down casts any arbitrary Object to ContainerAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ContainerAccessible.
 func CastToContainerAccessible(object *gobject.Object) *ContainerAccessible {
 	return ContainerAccessibleNewFromC(object.ToC())
@@ -9312,7 +9312,7 @@ func (recv *ContainerCellAccessible) Object() *atk.Object {
 	return recv.CellAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ContainerCellAccessible.
+// CastToWidget down casts any arbitrary Object to ContainerCellAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ContainerCellAccessible.
 func CastToContainerCellAccessible(object *gobject.Object) *ContainerCellAccessible {
 	return ContainerCellAccessibleNewFromC(object.ToC())
@@ -9415,7 +9415,7 @@ func (recv *CssProvider) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to CssProvider.
+// CastToWidget down casts any arbitrary Object to CssProvider.
 // Exercise care, as this is a potentially dangerous function if the Object is not a CssProvider.
 func CastToCssProvider(object *gobject.Object) *CssProvider {
 	return CssProviderNewFromC(object.ToC())
@@ -9655,7 +9655,7 @@ func (recv *Dialog) Object() *gobject.Object {
 	return recv.Window().Object()
 }
 
-// CastToWidget down casts any arbitary Object to Dialog.
+// CastToWidget down casts any arbitrary Object to Dialog.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Dialog.
 func CastToDialog(object *gobject.Object) *Dialog {
 	return DialogNewFromC(object.ToC())
@@ -9923,7 +9923,7 @@ func (recv *DrawingArea) Object() *gobject.Object {
 	return recv.Widget().Object()
 }
 
-// CastToWidget down casts any arbitary Object to DrawingArea.
+// CastToWidget down casts any arbitrary Object to DrawingArea.
 // Exercise care, as this is a potentially dangerous function if the Object is not a DrawingArea.
 func CastToDrawingArea(object *gobject.Object) *DrawingArea {
 	return DrawingAreaNewFromC(object.ToC())
@@ -10000,7 +10000,7 @@ func (recv *Entry) Object() *gobject.Object {
 	return recv.Widget().Object()
 }
 
-// CastToWidget down casts any arbitary Object to Entry.
+// CastToWidget down casts any arbitrary Object to Entry.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Entry.
 func CastToEntry(object *gobject.Object) *Entry {
 	return EntryNewFromC(object.ToC())
@@ -10741,7 +10741,7 @@ func (recv *EntryAccessible) Object() *atk.Object {
 	return recv.WidgetAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to EntryAccessible.
+// CastToWidget down casts any arbitrary Object to EntryAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a EntryAccessible.
 func CastToEntryAccessible(object *gobject.Object) *EntryAccessible {
 	return EntryAccessibleNewFromC(object.ToC())
@@ -10810,7 +10810,7 @@ func (recv *EntryBuffer) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to EntryBuffer.
+// CastToWidget down casts any arbitrary Object to EntryBuffer.
 // Exercise care, as this is a potentially dangerous function if the Object is not a EntryBuffer.
 func CastToEntryBuffer(object *gobject.Object) *EntryBuffer {
 	return EntryBufferNewFromC(object.ToC())
@@ -10859,7 +10859,7 @@ func (recv *EntryCompletion) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to EntryCompletion.
+// CastToWidget down casts any arbitrary Object to EntryCompletion.
 // Exercise care, as this is a potentially dangerous function if the Object is not a EntryCompletion.
 func CastToEntryCompletion(object *gobject.Object) *EntryCompletion {
 	return EntryCompletionNewFromC(object.ToC())
@@ -10940,7 +10940,7 @@ func (recv *EventBox) Object() *gobject.Object {
 	return recv.Bin().Object()
 }
 
-// CastToWidget down casts any arbitary Object to EventBox.
+// CastToWidget down casts any arbitrary Object to EventBox.
 // Exercise care, as this is a potentially dangerous function if the Object is not a EventBox.
 func CastToEventBox(object *gobject.Object) *EventBox {
 	return EventBoxNewFromC(object.ToC())
@@ -11005,7 +11005,7 @@ func (recv *EventController) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to EventController.
+// CastToWidget down casts any arbitrary Object to EventController.
 // Exercise care, as this is a potentially dangerous function if the Object is not a EventController.
 func CastToEventController(object *gobject.Object) *EventController {
 	return EventControllerNewFromC(object.ToC())
@@ -11074,7 +11074,7 @@ func (recv *Expander) Object() *gobject.Object {
 	return recv.Bin().Object()
 }
 
-// CastToWidget down casts any arbitary Object to Expander.
+// CastToWidget down casts any arbitrary Object to Expander.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Expander.
 func CastToExpander(object *gobject.Object) *Expander {
 	return ExpanderNewFromC(object.ToC())
@@ -11208,7 +11208,7 @@ func (recv *ExpanderAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ExpanderAccessible.
+// CastToWidget down casts any arbitrary Object to ExpanderAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ExpanderAccessible.
 func CastToExpanderAccessible(object *gobject.Object) *ExpanderAccessible {
 	return ExpanderAccessibleNewFromC(object.ToC())
@@ -11287,7 +11287,7 @@ func (recv *FileChooserButton) Object() *gobject.Object {
 	return recv.Box().Object()
 }
 
-// CastToWidget down casts any arbitary Object to FileChooserButton.
+// CastToWidget down casts any arbitrary Object to FileChooserButton.
 // Exercise care, as this is a potentially dangerous function if the Object is not a FileChooserButton.
 func CastToFileChooserButton(object *gobject.Object) *FileChooserButton {
 	return FileChooserButtonNewFromC(object.ToC())
@@ -11386,7 +11386,7 @@ func (recv *FileChooserDialog) Object() *gobject.Object {
 	return recv.Dialog().Object()
 }
 
-// CastToWidget down casts any arbitary Object to FileChooserDialog.
+// CastToWidget down casts any arbitrary Object to FileChooserDialog.
 // Exercise care, as this is a potentially dangerous function if the Object is not a FileChooserDialog.
 func CastToFileChooserDialog(object *gobject.Object) *FileChooserDialog {
 	return FileChooserDialogNewFromC(object.ToC())
@@ -11470,7 +11470,7 @@ func (recv *FileChooserWidget) Object() *gobject.Object {
 	return recv.Box().Object()
 }
 
-// CastToWidget down casts any arbitary Object to FileChooserWidget.
+// CastToWidget down casts any arbitrary Object to FileChooserWidget.
 // Exercise care, as this is a potentially dangerous function if the Object is not a FileChooserWidget.
 func CastToFileChooserWidget(object *gobject.Object) *FileChooserWidget {
 	return FileChooserWidgetNewFromC(object.ToC())
@@ -12266,7 +12266,7 @@ func (recv *FileFilter) Object() *gobject.Object {
 	return recv.InitiallyUnowned().Object()
 }
 
-// CastToWidget down casts any arbitary Object to FileFilter.
+// CastToWidget down casts any arbitrary Object to FileFilter.
 // Exercise care, as this is a potentially dangerous function if the Object is not a FileFilter.
 func CastToFileFilter(object *gobject.Object) *FileFilter {
 	return FileFilterNewFromC(object.ToC())
@@ -12335,7 +12335,7 @@ func (recv *Fixed) Object() *gobject.Object {
 	return recv.Container().Object()
 }
 
-// CastToWidget down casts any arbitary Object to Fixed.
+// CastToWidget down casts any arbitrary Object to Fixed.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Fixed.
 func CastToFixed(object *gobject.Object) *Fixed {
 	return FixedNewFromC(object.ToC())
@@ -12448,7 +12448,7 @@ func (recv *FlowBox) Object() *gobject.Object {
 	return recv.Container().Object()
 }
 
-// CastToWidget down casts any arbitary Object to FlowBox.
+// CastToWidget down casts any arbitrary Object to FlowBox.
 // Exercise care, as this is a potentially dangerous function if the Object is not a FlowBox.
 func CastToFlowBox(object *gobject.Object) *FlowBox {
 	return FlowBoxNewFromC(object.ToC())
@@ -12891,7 +12891,7 @@ func (recv *FlowBoxAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to FlowBoxAccessible.
+// CastToWidget down casts any arbitrary Object to FlowBoxAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a FlowBoxAccessible.
 func CastToFlowBoxAccessible(object *gobject.Object) *FlowBoxAccessible {
 	return FlowBoxAccessibleNewFromC(object.ToC())
@@ -12969,7 +12969,7 @@ func (recv *FlowBoxChild) Object() *gobject.Object {
 	return recv.Bin().Object()
 }
 
-// CastToWidget down casts any arbitary Object to FlowBoxChild.
+// CastToWidget down casts any arbitrary Object to FlowBoxChild.
 // Exercise care, as this is a potentially dangerous function if the Object is not a FlowBoxChild.
 func CastToFlowBoxChild(object *gobject.Object) *FlowBoxChild {
 	return FlowBoxChildNewFromC(object.ToC())
@@ -13102,7 +13102,7 @@ func (recv *FlowBoxChildAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to FlowBoxChildAccessible.
+// CastToWidget down casts any arbitrary Object to FlowBoxChildAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a FlowBoxChildAccessible.
 func CastToFlowBoxChildAccessible(object *gobject.Object) *FlowBoxChildAccessible {
 	return FlowBoxChildAccessibleNewFromC(object.ToC())
@@ -13181,7 +13181,7 @@ func (recv *FontButton) Object() *gobject.Object {
 	return recv.Button().Object()
 }
 
-// CastToWidget down casts any arbitary Object to FontButton.
+// CastToWidget down casts any arbitrary Object to FontButton.
 // Exercise care, as this is a potentially dangerous function if the Object is not a FontButton.
 func CastToFontButton(object *gobject.Object) *FontButton {
 	return FontButtonNewFromC(object.ToC())
@@ -13285,7 +13285,7 @@ func (recv *FontChooserDialog) Object() *gobject.Object {
 	return recv.Dialog().Object()
 }
 
-// CastToWidget down casts any arbitary Object to FontChooserDialog.
+// CastToWidget down casts any arbitrary Object to FontChooserDialog.
 // Exercise care, as this is a potentially dangerous function if the Object is not a FontChooserDialog.
 func CastToFontChooserDialog(object *gobject.Object) *FontChooserDialog {
 	return FontChooserDialogNewFromC(object.ToC())
@@ -13369,7 +13369,7 @@ func (recv *FontChooserWidget) Object() *gobject.Object {
 	return recv.Box().Object()
 }
 
-// CastToWidget down casts any arbitary Object to FontChooserWidget.
+// CastToWidget down casts any arbitrary Object to FontChooserWidget.
 // Exercise care, as this is a potentially dangerous function if the Object is not a FontChooserWidget.
 func CastToFontChooserWidget(object *gobject.Object) *FontChooserWidget {
 	return FontChooserWidgetNewFromC(object.ToC())
@@ -13458,7 +13458,7 @@ func (recv *FontSelection) Object() *gobject.Object {
 	return recv.Box().Object()
 }
 
-// CastToWidget down casts any arbitary Object to FontSelection.
+// CastToWidget down casts any arbitrary Object to FontSelection.
 // Exercise care, as this is a potentially dangerous function if the Object is not a FontSelection.
 func CastToFontSelection(object *gobject.Object) *FontSelection {
 	return FontSelectionNewFromC(object.ToC())
@@ -13598,7 +13598,7 @@ func (recv *FontSelectionDialog) Object() *gobject.Object {
 	return recv.Dialog().Object()
 }
 
-// CastToWidget down casts any arbitary Object to FontSelectionDialog.
+// CastToWidget down casts any arbitrary Object to FontSelectionDialog.
 // Exercise care, as this is a potentially dangerous function if the Object is not a FontSelectionDialog.
 func CastToFontSelectionDialog(object *gobject.Object) *FontSelectionDialog {
 	return FontSelectionDialogNewFromC(object.ToC())
@@ -13726,7 +13726,7 @@ func (recv *Frame) Object() *gobject.Object {
 	return recv.Bin().Object()
 }
 
-// CastToWidget down casts any arbitary Object to Frame.
+// CastToWidget down casts any arbitrary Object to Frame.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Frame.
 func CastToFrame(object *gobject.Object) *Frame {
 	return FrameNewFromC(object.ToC())
@@ -13897,7 +13897,7 @@ func (recv *FrameAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to FrameAccessible.
+// CastToWidget down casts any arbitrary Object to FrameAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a FrameAccessible.
 func CastToFrameAccessible(object *gobject.Object) *FrameAccessible {
 	return FrameAccessibleNewFromC(object.ToC())
@@ -13954,7 +13954,7 @@ func (recv *Gesture) Object() *gobject.Object {
 	return recv.EventController().Object()
 }
 
-// CastToWidget down casts any arbitary Object to Gesture.
+// CastToWidget down casts any arbitrary Object to Gesture.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Gesture.
 func CastToGesture(object *gobject.Object) *Gesture {
 	return GestureNewFromC(object.ToC())
@@ -14018,7 +14018,7 @@ func (recv *GestureDrag) Object() *gobject.Object {
 	return recv.GestureSingle().Object()
 }
 
-// CastToWidget down casts any arbitary Object to GestureDrag.
+// CastToWidget down casts any arbitrary Object to GestureDrag.
 // Exercise care, as this is a potentially dangerous function if the Object is not a GestureDrag.
 func CastToGestureDrag(object *gobject.Object) *GestureDrag {
 	return GestureDragNewFromC(object.ToC())
@@ -14080,7 +14080,7 @@ func (recv *GestureLongPress) Object() *gobject.Object {
 	return recv.GestureSingle().Object()
 }
 
-// CastToWidget down casts any arbitary Object to GestureLongPress.
+// CastToWidget down casts any arbitrary Object to GestureLongPress.
 // Exercise care, as this is a potentially dangerous function if the Object is not a GestureLongPress.
 func CastToGestureLongPress(object *gobject.Object) *GestureLongPress {
 	return GestureLongPressNewFromC(object.ToC())
@@ -14142,7 +14142,7 @@ func (recv *GestureMultiPress) Object() *gobject.Object {
 	return recv.GestureSingle().Object()
 }
 
-// CastToWidget down casts any arbitary Object to GestureMultiPress.
+// CastToWidget down casts any arbitrary Object to GestureMultiPress.
 // Exercise care, as this is a potentially dangerous function if the Object is not a GestureMultiPress.
 func CastToGestureMultiPress(object *gobject.Object) *GestureMultiPress {
 	return GestureMultiPressNewFromC(object.ToC())
@@ -14209,7 +14209,7 @@ func (recv *GesturePan) Object() *gobject.Object {
 	return recv.GestureDrag().Object()
 }
 
-// CastToWidget down casts any arbitary Object to GesturePan.
+// CastToWidget down casts any arbitrary Object to GesturePan.
 // Exercise care, as this is a potentially dangerous function if the Object is not a GesturePan.
 func CastToGesturePan(object *gobject.Object) *GesturePan {
 	return GesturePanNewFromC(object.ToC())
@@ -14266,7 +14266,7 @@ func (recv *GestureRotate) Object() *gobject.Object {
 	return recv.Gesture().Object()
 }
 
-// CastToWidget down casts any arbitary Object to GestureRotate.
+// CastToWidget down casts any arbitrary Object to GestureRotate.
 // Exercise care, as this is a potentially dangerous function if the Object is not a GestureRotate.
 func CastToGestureRotate(object *gobject.Object) *GestureRotate {
 	return GestureRotateNewFromC(object.ToC())
@@ -14323,7 +14323,7 @@ func (recv *GestureSingle) Object() *gobject.Object {
 	return recv.Gesture().Object()
 }
 
-// CastToWidget down casts any arbitary Object to GestureSingle.
+// CastToWidget down casts any arbitrary Object to GestureSingle.
 // Exercise care, as this is a potentially dangerous function if the Object is not a GestureSingle.
 func CastToGestureSingle(object *gobject.Object) *GestureSingle {
 	return GestureSingleNewFromC(object.ToC())
@@ -14385,7 +14385,7 @@ func (recv *GestureSwipe) Object() *gobject.Object {
 	return recv.GestureSingle().Object()
 }
 
-// CastToWidget down casts any arbitary Object to GestureSwipe.
+// CastToWidget down casts any arbitrary Object to GestureSwipe.
 // Exercise care, as this is a potentially dangerous function if the Object is not a GestureSwipe.
 func CastToGestureSwipe(object *gobject.Object) *GestureSwipe {
 	return GestureSwipeNewFromC(object.ToC())
@@ -14442,7 +14442,7 @@ func (recv *GestureZoom) Object() *gobject.Object {
 	return recv.Gesture().Object()
 }
 
-// CastToWidget down casts any arbitary Object to GestureZoom.
+// CastToWidget down casts any arbitrary Object to GestureZoom.
 // Exercise care, as this is a potentially dangerous function if the Object is not a GestureZoom.
 func CastToGestureZoom(object *gobject.Object) *GestureZoom {
 	return GestureZoomNewFromC(object.ToC())
@@ -14506,7 +14506,7 @@ func (recv *Grid) Object() *gobject.Object {
 	return recv.Container().Object()
 }
 
-// CastToWidget down casts any arbitary Object to Grid.
+// CastToWidget down casts any arbitrary Object to Grid.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Grid.
 func CastToGrid(object *gobject.Object) *Grid {
 	return GridNewFromC(object.ToC())
@@ -14710,7 +14710,7 @@ func (recv *HBox) Object() *gobject.Object {
 	return recv.Box().Object()
 }
 
-// CastToWidget down casts any arbitary Object to HBox.
+// CastToWidget down casts any arbitrary Object to HBox.
 // Exercise care, as this is a potentially dangerous function if the Object is not a HBox.
 func CastToHBox(object *gobject.Object) *HBox {
 	return HBoxNewFromC(object.ToC())
@@ -14811,7 +14811,7 @@ func (recv *HButtonBox) Object() *gobject.Object {
 	return recv.ButtonBox().Object()
 }
 
-// CastToWidget down casts any arbitary Object to HButtonBox.
+// CastToWidget down casts any arbitrary Object to HButtonBox.
 // Exercise care, as this is a potentially dangerous function if the Object is not a HButtonBox.
 func CastToHButtonBox(object *gobject.Object) *HButtonBox {
 	return HButtonBoxNewFromC(object.ToC())
@@ -14902,7 +14902,7 @@ func (recv *HPaned) Object() *gobject.Object {
 	return recv.Paned().Object()
 }
 
-// CastToWidget down casts any arbitary Object to HPaned.
+// CastToWidget down casts any arbitrary Object to HPaned.
 // Exercise care, as this is a potentially dangerous function if the Object is not a HPaned.
 func CastToHPaned(object *gobject.Object) *HPaned {
 	return HPanedNewFromC(object.ToC())
@@ -14984,7 +14984,7 @@ func (recv *HSV) Object() *gobject.Object {
 	return recv.Widget().Object()
 }
 
-// CastToWidget down casts any arbitary Object to HSV.
+// CastToWidget down casts any arbitrary Object to HSV.
 // Exercise care, as this is a potentially dangerous function if the Object is not a HSV.
 func CastToHSV(object *gobject.Object) *HSV {
 	return HSVNewFromC(object.ToC())
@@ -15124,7 +15124,7 @@ func (recv *HScale) Object() *gobject.Object {
 	return recv.Scale().Object()
 }
 
-// CastToWidget down casts any arbitary Object to HScale.
+// CastToWidget down casts any arbitrary Object to HScale.
 // Exercise care, as this is a potentially dangerous function if the Object is not a HScale.
 func CastToHScale(object *gobject.Object) *HScale {
 	return HScaleNewFromC(object.ToC())
@@ -15234,7 +15234,7 @@ func (recv *HScrollbar) Object() *gobject.Object {
 	return recv.Scrollbar().Object()
 }
 
-// CastToWidget down casts any arbitary Object to HScrollbar.
+// CastToWidget down casts any arbitrary Object to HScrollbar.
 // Exercise care, as this is a potentially dangerous function if the Object is not a HScrollbar.
 func CastToHScrollbar(object *gobject.Object) *HScrollbar {
 	return HScrollbarNewFromC(object.ToC())
@@ -15325,7 +15325,7 @@ func (recv *HSeparator) Object() *gobject.Object {
 	return recv.Separator().Object()
 }
 
-// CastToWidget down casts any arbitary Object to HSeparator.
+// CastToWidget down casts any arbitrary Object to HSeparator.
 // Exercise care, as this is a potentially dangerous function if the Object is not a HSeparator.
 func CastToHSeparator(object *gobject.Object) *HSeparator {
 	return HSeparatorNewFromC(object.ToC())
@@ -15417,7 +15417,7 @@ func (recv *HandleBox) Object() *gobject.Object {
 	return recv.Bin().Object()
 }
 
-// CastToWidget down casts any arbitary Object to HandleBox.
+// CastToWidget down casts any arbitrary Object to HandleBox.
 // Exercise care, as this is a potentially dangerous function if the Object is not a HandleBox.
 func CastToHandleBox(object *gobject.Object) *HandleBox {
 	return HandleBoxNewFromC(object.ToC())
@@ -15673,7 +15673,7 @@ func (recv *HeaderBar) Object() *gobject.Object {
 	return recv.Container().Object()
 }
 
-// CastToWidget down casts any arbitary Object to HeaderBar.
+// CastToWidget down casts any arbitrary Object to HeaderBar.
 // Exercise care, as this is a potentially dangerous function if the Object is not a HeaderBar.
 func CastToHeaderBar(object *gobject.Object) *HeaderBar {
 	return HeaderBarNewFromC(object.ToC())
@@ -15731,7 +15731,7 @@ func (recv *IMContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to IMContext.
+// CastToWidget down casts any arbitrary Object to IMContext.
 // Exercise care, as this is a potentially dangerous function if the Object is not a IMContext.
 func CastToIMContext(object *gobject.Object) *IMContext {
 	return IMContextNewFromC(object.ToC())
@@ -16278,7 +16278,7 @@ func (recv *IMContextSimple) Object() *gobject.Object {
 	return recv.IMContext().Object()
 }
 
-// CastToWidget down casts any arbitary Object to IMContextSimple.
+// CastToWidget down casts any arbitrary Object to IMContextSimple.
 // Exercise care, as this is a potentially dangerous function if the Object is not a IMContextSimple.
 func CastToIMContextSimple(object *gobject.Object) *IMContextSimple {
 	return IMContextSimpleNewFromC(object.ToC())
@@ -16359,7 +16359,7 @@ func (recv *IMMulticontext) Object() *gobject.Object {
 	return recv.IMContext().Object()
 }
 
-// CastToWidget down casts any arbitary Object to IMMulticontext.
+// CastToWidget down casts any arbitrary Object to IMMulticontext.
 // Exercise care, as this is a potentially dangerous function if the Object is not a IMMulticontext.
 func CastToIMMulticontext(object *gobject.Object) *IMMulticontext {
 	return IMMulticontextNewFromC(object.ToC())
@@ -16432,7 +16432,7 @@ func (recv *IconFactory) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to IconFactory.
+// CastToWidget down casts any arbitrary Object to IconFactory.
 // Exercise care, as this is a potentially dangerous function if the Object is not a IconFactory.
 func CastToIconFactory(object *gobject.Object) *IconFactory {
 	return IconFactoryNewFromC(object.ToC())
@@ -16547,7 +16547,7 @@ func (recv *IconInfo) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to IconInfo.
+// CastToWidget down casts any arbitrary Object to IconInfo.
 // Exercise care, as this is a potentially dangerous function if the Object is not a IconInfo.
 func CastToIconInfo(object *gobject.Object) *IconInfo {
 	return IconInfoNewFromC(object.ToC())
@@ -16596,7 +16596,7 @@ func (recv *IconTheme) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to IconTheme.
+// CastToWidget down casts any arbitrary Object to IconTheme.
 // Exercise care, as this is a potentially dangerous function if the Object is not a IconTheme.
 func CastToIconTheme(object *gobject.Object) *IconTheme {
 	return IconThemeNewFromC(object.ToC())
@@ -16720,7 +16720,7 @@ func (recv *IconView) Object() *gobject.Object {
 	return recv.Container().Object()
 }
 
-// CastToWidget down casts any arbitary Object to IconView.
+// CastToWidget down casts any arbitrary Object to IconView.
 // Exercise care, as this is a potentially dangerous function if the Object is not a IconView.
 func CastToIconView(object *gobject.Object) *IconView {
 	return IconViewNewFromC(object.ToC())
@@ -17231,7 +17231,7 @@ func (recv *IconViewAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to IconViewAccessible.
+// CastToWidget down casts any arbitrary Object to IconViewAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a IconViewAccessible.
 func CastToIconViewAccessible(object *gobject.Object) *IconViewAccessible {
 	return IconViewAccessibleNewFromC(object.ToC())
@@ -17305,7 +17305,7 @@ func (recv *Image) Object() *gobject.Object {
 	return recv.Misc().Object()
 }
 
-// CastToWidget down casts any arbitary Object to Image.
+// CastToWidget down casts any arbitrary Object to Image.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Image.
 func CastToImage(object *gobject.Object) *Image {
 	return ImageNewFromC(object.ToC())
@@ -17555,7 +17555,7 @@ func (recv *ImageAccessible) Object() *atk.Object {
 	return recv.WidgetAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ImageAccessible.
+// CastToWidget down casts any arbitrary Object to ImageAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ImageAccessible.
 func CastToImageAccessible(object *gobject.Object) *ImageAccessible {
 	return ImageAccessibleNewFromC(object.ToC())
@@ -17629,7 +17629,7 @@ func (recv *ImageCellAccessible) Object() *atk.Object {
 	return recv.RendererCellAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ImageCellAccessible.
+// CastToWidget down casts any arbitrary Object to ImageCellAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ImageCellAccessible.
 func CastToImageCellAccessible(object *gobject.Object) *ImageCellAccessible {
 	return ImageCellAccessibleNewFromC(object.ToC())
@@ -17718,7 +17718,7 @@ func (recv *ImageMenuItem) Object() *gobject.Object {
 	return recv.MenuItem().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ImageMenuItem.
+// CastToWidget down casts any arbitrary Object to ImageMenuItem.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ImageMenuItem.
 func CastToImageMenuItem(object *gobject.Object) *ImageMenuItem {
 	return ImageMenuItemNewFromC(object.ToC())
@@ -17873,7 +17873,7 @@ func (recv *InfoBar) Object() *gobject.Object {
 	return recv.Box().Object()
 }
 
-// CastToWidget down casts any arbitary Object to InfoBar.
+// CastToWidget down casts any arbitrary Object to InfoBar.
 // Exercise care, as this is a potentially dangerous function if the Object is not a InfoBar.
 func CastToInfoBar(object *gobject.Object) *InfoBar {
 	return InfoBarNewFromC(object.ToC())
@@ -17949,7 +17949,7 @@ func (recv *Invisible) Object() *gobject.Object {
 	return recv.Widget().Object()
 }
 
-// CastToWidget down casts any arbitary Object to Invisible.
+// CastToWidget down casts any arbitrary Object to Invisible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Invisible.
 func CastToInvisible(object *gobject.Object) *Invisible {
 	return InvisibleNewFromC(object.ToC())
@@ -18031,7 +18031,7 @@ func (recv *Label) Object() *gobject.Object {
 	return recv.Misc().Object()
 }
 
-// CastToWidget down casts any arbitary Object to Label.
+// CastToWidget down casts any arbitrary Object to Label.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Label.
 func CastToLabel(object *gobject.Object) *Label {
 	return LabelNewFromC(object.ToC())
@@ -18519,7 +18519,7 @@ func (recv *LabelAccessible) Object() *atk.Object {
 	return recv.WidgetAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to LabelAccessible.
+// CastToWidget down casts any arbitrary Object to LabelAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a LabelAccessible.
 func CastToLabelAccessible(object *gobject.Object) *LabelAccessible {
 	return LabelAccessibleNewFromC(object.ToC())
@@ -18598,7 +18598,7 @@ func (recv *Layout) Object() *gobject.Object {
 	return recv.Container().Object()
 }
 
-// CastToWidget down casts any arbitary Object to Layout.
+// CastToWidget down casts any arbitrary Object to Layout.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Layout.
 func CastToLayout(object *gobject.Object) *Layout {
 	return LayoutNewFromC(object.ToC())
@@ -18788,7 +18788,7 @@ func (recv *LevelBar) Object() *gobject.Object {
 	return recv.Widget().Object()
 }
 
-// CastToWidget down casts any arbitary Object to LevelBar.
+// CastToWidget down casts any arbitrary Object to LevelBar.
 // Exercise care, as this is a potentially dangerous function if the Object is not a LevelBar.
 func CastToLevelBar(object *gobject.Object) *LevelBar {
 	return LevelBarNewFromC(object.ToC())
@@ -18862,7 +18862,7 @@ func (recv *LevelBarAccessible) Object() *atk.Object {
 	return recv.WidgetAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to LevelBarAccessible.
+// CastToWidget down casts any arbitrary Object to LevelBarAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a LevelBarAccessible.
 func CastToLevelBarAccessible(object *gobject.Object) *LevelBarAccessible {
 	return LevelBarAccessibleNewFromC(object.ToC())
@@ -18946,7 +18946,7 @@ func (recv *LinkButton) Object() *gobject.Object {
 	return recv.Button().Object()
 }
 
-// CastToWidget down casts any arbitary Object to LinkButton.
+// CastToWidget down casts any arbitrary Object to LinkButton.
 // Exercise care, as this is a potentially dangerous function if the Object is not a LinkButton.
 func CastToLinkButton(object *gobject.Object) *LinkButton {
 	return LinkButtonNewFromC(object.ToC())
@@ -19098,7 +19098,7 @@ func (recv *LinkButtonAccessible) Object() *atk.Object {
 	return recv.ButtonAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to LinkButtonAccessible.
+// CastToWidget down casts any arbitrary Object to LinkButtonAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a LinkButtonAccessible.
 func CastToLinkButtonAccessible(object *gobject.Object) *LinkButtonAccessible {
 	return LinkButtonAccessibleNewFromC(object.ToC())
@@ -19181,7 +19181,7 @@ func (recv *ListBox) Object() *gobject.Object {
 	return recv.Container().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ListBox.
+// CastToWidget down casts any arbitrary Object to ListBox.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ListBox.
 func CastToListBox(object *gobject.Object) *ListBox {
 	return ListBoxNewFromC(object.ToC())
@@ -19377,7 +19377,7 @@ func (recv *ListBoxAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ListBoxAccessible.
+// CastToWidget down casts any arbitrary Object to ListBoxAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ListBoxAccessible.
 func CastToListBoxAccessible(object *gobject.Object) *ListBoxAccessible {
 	return ListBoxAccessibleNewFromC(object.ToC())
@@ -19455,7 +19455,7 @@ func (recv *ListBoxRow) Object() *gobject.Object {
 	return recv.Bin().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ListBoxRow.
+// CastToWidget down casts any arbitrary Object to ListBoxRow.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ListBoxRow.
 func CastToListBoxRow(object *gobject.Object) *ListBoxRow {
 	return ListBoxRowNewFromC(object.ToC())
@@ -19533,7 +19533,7 @@ func (recv *ListBoxRowAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ListBoxRowAccessible.
+// CastToWidget down casts any arbitrary Object to ListBoxRowAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ListBoxRowAccessible.
 func CastToListBoxRowAccessible(object *gobject.Object) *ListBoxRowAccessible {
 	return ListBoxRowAccessibleNewFromC(object.ToC())
@@ -19587,7 +19587,7 @@ func (recv *ListStore) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to ListStore.
+// CastToWidget down casts any arbitrary Object to ListStore.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ListStore.
 func CastToListStore(object *gobject.Object) *ListStore {
 	return ListStoreNewFromC(object.ToC())
@@ -19825,7 +19825,7 @@ func (recv *LockButton) Object() *gobject.Object {
 	return recv.Button().Object()
 }
 
-// CastToWidget down casts any arbitary Object to LockButton.
+// CastToWidget down casts any arbitrary Object to LockButton.
 // Exercise care, as this is a potentially dangerous function if the Object is not a LockButton.
 func CastToLockButton(object *gobject.Object) *LockButton {
 	return LockButtonNewFromC(object.ToC())
@@ -19914,7 +19914,7 @@ func (recv *LockButtonAccessible) Object() *atk.Object {
 	return recv.ButtonAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to LockButtonAccessible.
+// CastToWidget down casts any arbitrary Object to LockButtonAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a LockButtonAccessible.
 func CastToLockButtonAccessible(object *gobject.Object) *LockButtonAccessible {
 	return LockButtonAccessibleNewFromC(object.ToC())
@@ -19998,7 +19998,7 @@ func (recv *Menu) Object() *gobject.Object {
 	return recv.MenuShell().Object()
 }
 
-// CastToWidget down casts any arbitary Object to Menu.
+// CastToWidget down casts any arbitrary Object to Menu.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Menu.
 func CastToMenu(object *gobject.Object) *Menu {
 	return MenuNewFromC(object.ToC())
@@ -20217,7 +20217,7 @@ func (recv *MenuAccessible) Object() *atk.Object {
 	return recv.MenuShellAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to MenuAccessible.
+// CastToWidget down casts any arbitrary Object to MenuAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a MenuAccessible.
 func CastToMenuAccessible(object *gobject.Object) *MenuAccessible {
 	return MenuAccessibleNewFromC(object.ToC())
@@ -20296,7 +20296,7 @@ func (recv *MenuBar) Object() *gobject.Object {
 	return recv.MenuShell().Object()
 }
 
-// CastToWidget down casts any arbitary Object to MenuBar.
+// CastToWidget down casts any arbitrary Object to MenuBar.
 // Exercise care, as this is a potentially dangerous function if the Object is not a MenuBar.
 func CastToMenuBar(object *gobject.Object) *MenuBar {
 	return MenuBarNewFromC(object.ToC())
@@ -20393,7 +20393,7 @@ func (recv *MenuButton) Object() *gobject.Object {
 	return recv.ToggleButton().Object()
 }
 
-// CastToWidget down casts any arbitary Object to MenuButton.
+// CastToWidget down casts any arbitrary Object to MenuButton.
 // Exercise care, as this is a potentially dangerous function if the Object is not a MenuButton.
 func CastToMenuButton(object *gobject.Object) *MenuButton {
 	return MenuButtonNewFromC(object.ToC())
@@ -20487,7 +20487,7 @@ func (recv *MenuButtonAccessible) Object() *atk.Object {
 	return recv.ToggleButtonAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to MenuButtonAccessible.
+// CastToWidget down casts any arbitrary Object to MenuButtonAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a MenuButtonAccessible.
 func CastToMenuButtonAccessible(object *gobject.Object) *MenuButtonAccessible {
 	return MenuButtonAccessibleNewFromC(object.ToC())
@@ -20571,7 +20571,7 @@ func (recv *MenuItem) Object() *gobject.Object {
 	return recv.Bin().Object()
 }
 
-// CastToWidget down casts any arbitary Object to MenuItem.
+// CastToWidget down casts any arbitrary Object to MenuItem.
 // Exercise care, as this is a potentially dangerous function if the Object is not a MenuItem.
 func CastToMenuItem(object *gobject.Object) *MenuItem {
 	return MenuItemNewFromC(object.ToC())
@@ -21141,7 +21141,7 @@ func (recv *MenuItemAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to MenuItemAccessible.
+// CastToWidget down casts any arbitrary Object to MenuItemAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a MenuItemAccessible.
 func CastToMenuItemAccessible(object *gobject.Object) *MenuItemAccessible {
 	return MenuItemAccessibleNewFromC(object.ToC())
@@ -21220,7 +21220,7 @@ func (recv *MenuShell) Object() *gobject.Object {
 	return recv.Container().Object()
 }
 
-// CastToWidget down casts any arbitary Object to MenuShell.
+// CastToWidget down casts any arbitrary Object to MenuShell.
 // Exercise care, as this is a potentially dangerous function if the Object is not a MenuShell.
 func CastToMenuShell(object *gobject.Object) *MenuShell {
 	return MenuShellNewFromC(object.ToC())
@@ -21619,7 +21619,7 @@ func (recv *MenuShellAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to MenuShellAccessible.
+// CastToWidget down casts any arbitrary Object to MenuShellAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a MenuShellAccessible.
 func CastToMenuShellAccessible(object *gobject.Object) *MenuShellAccessible {
 	return MenuShellAccessibleNewFromC(object.ToC())
@@ -21708,7 +21708,7 @@ func (recv *MenuToolButton) Object() *gobject.Object {
 	return recv.ToolButton().Object()
 }
 
-// CastToWidget down casts any arbitary Object to MenuToolButton.
+// CastToWidget down casts any arbitrary Object to MenuToolButton.
 // Exercise care, as this is a potentially dangerous function if the Object is not a MenuToolButton.
 func CastToMenuToolButton(object *gobject.Object) *MenuToolButton {
 	return MenuToolButtonNewFromC(object.ToC())
@@ -21867,7 +21867,7 @@ func (recv *MessageDialog) Object() *gobject.Object {
 	return recv.Dialog().Object()
 }
 
-// CastToWidget down casts any arbitary Object to MessageDialog.
+// CastToWidget down casts any arbitrary Object to MessageDialog.
 // Exercise care, as this is a potentially dangerous function if the Object is not a MessageDialog.
 func CastToMessageDialog(object *gobject.Object) *MessageDialog {
 	return MessageDialogNewFromC(object.ToC())
@@ -21959,7 +21959,7 @@ func (recv *Misc) Object() *gobject.Object {
 	return recv.Widget().Object()
 }
 
-// CastToWidget down casts any arbitary Object to Misc.
+// CastToWidget down casts any arbitrary Object to Misc.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Misc.
 func CastToMisc(object *gobject.Object) *Misc {
 	return MiscNewFromC(object.ToC())
@@ -22093,7 +22093,7 @@ func (recv *ModelButton) Object() *gobject.Object {
 	return recv.Button().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ModelButton.
+// CastToWidget down casts any arbitrary Object to ModelButton.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ModelButton.
 func CastToModelButton(object *gobject.Object) *ModelButton {
 	return ModelButtonNewFromC(object.ToC())
@@ -22167,7 +22167,7 @@ func (recv *MountOperation) Object() *gobject.Object {
 	return recv.MountOperation().Object()
 }
 
-// CastToWidget down casts any arbitary Object to MountOperation.
+// CastToWidget down casts any arbitrary Object to MountOperation.
 // Exercise care, as this is a potentially dangerous function if the Object is not a MountOperation.
 func CastToMountOperation(object *gobject.Object) *MountOperation {
 	return MountOperationNewFromC(object.ToC())
@@ -22231,7 +22231,7 @@ func (recv *Notebook) Object() *gobject.Object {
 	return recv.Container().Object()
 }
 
-// CastToWidget down casts any arbitary Object to Notebook.
+// CastToWidget down casts any arbitrary Object to Notebook.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Notebook.
 func CastToNotebook(object *gobject.Object) *Notebook {
 	return NotebookNewFromC(object.ToC())
@@ -22933,7 +22933,7 @@ func (recv *NotebookAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to NotebookAccessible.
+// CastToWidget down casts any arbitrary Object to NotebookAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a NotebookAccessible.
 func CastToNotebookAccessible(object *gobject.Object) *NotebookAccessible {
 	return NotebookAccessibleNewFromC(object.ToC())
@@ -22992,7 +22992,7 @@ func (recv *NotebookPageAccessible) Object() *atk.Object {
 	return atk.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to NotebookPageAccessible.
+// CastToWidget down casts any arbitrary Object to NotebookPageAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a NotebookPageAccessible.
 func CastToNotebookPageAccessible(object *gobject.Object) *NotebookPageAccessible {
 	return NotebookPageAccessibleNewFromC(object.ToC())
@@ -23080,7 +23080,7 @@ func (recv *NumerableIcon) Object() *gobject.Object {
 	return recv.EmblemedIcon().Object()
 }
 
-// CastToWidget down casts any arbitary Object to NumerableIcon.
+// CastToWidget down casts any arbitrary Object to NumerableIcon.
 // Exercise care, as this is a potentially dangerous function if the Object is not a NumerableIcon.
 func CastToNumerableIcon(object *gobject.Object) *NumerableIcon {
 	return NumerableIconNewFromC(object.ToC())
@@ -23158,7 +23158,7 @@ func (recv *OffscreenWindow) Object() *gobject.Object {
 	return recv.Window().Object()
 }
 
-// CastToWidget down casts any arbitary Object to OffscreenWindow.
+// CastToWidget down casts any arbitrary Object to OffscreenWindow.
 // Exercise care, as this is a potentially dangerous function if the Object is not a OffscreenWindow.
 func CastToOffscreenWindow(object *gobject.Object) *OffscreenWindow {
 	return OffscreenWindowNewFromC(object.ToC())
@@ -23237,7 +23237,7 @@ func (recv *Overlay) Object() *gobject.Object {
 	return recv.Bin().Object()
 }
 
-// CastToWidget down casts any arbitary Object to Overlay.
+// CastToWidget down casts any arbitrary Object to Overlay.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Overlay.
 func CastToOverlay(object *gobject.Object) *Overlay {
 	return OverlayNewFromC(object.ToC())
@@ -23296,7 +23296,7 @@ func (recv *PageSetup) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to PageSetup.
+// CastToWidget down casts any arbitrary Object to PageSetup.
 // Exercise care, as this is a potentially dangerous function if the Object is not a PageSetup.
 func CastToPageSetup(object *gobject.Object) *PageSetup {
 	return PageSetupNewFromC(object.ToC())
@@ -23360,7 +23360,7 @@ func (recv *Paned) Object() *gobject.Object {
 	return recv.Container().Object()
 }
 
-// CastToWidget down casts any arbitary Object to Paned.
+// CastToWidget down casts any arbitrary Object to Paned.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Paned.
 func CastToPaned(object *gobject.Object) *Paned {
 	return PanedNewFromC(object.ToC())
@@ -23516,7 +23516,7 @@ func (recv *PanedAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to PanedAccessible.
+// CastToWidget down casts any arbitrary Object to PanedAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a PanedAccessible.
 func CastToPanedAccessible(object *gobject.Object) *PanedAccessible {
 	return PanedAccessibleNewFromC(object.ToC())
@@ -23598,7 +23598,7 @@ func (recv *PlacesSidebar) Object() *gobject.Object {
 	return recv.ScrolledWindow().Object()
 }
 
-// CastToWidget down casts any arbitary Object to PlacesSidebar.
+// CastToWidget down casts any arbitrary Object to PlacesSidebar.
 // Exercise care, as this is a potentially dangerous function if the Object is not a PlacesSidebar.
 func CastToPlacesSidebar(object *gobject.Object) *PlacesSidebar {
 	return PlacesSidebarNewFromC(object.ToC())
@@ -23747,7 +23747,7 @@ func (recv *Popover) Object() *gobject.Object {
 	return recv.Bin().Object()
 }
 
-// CastToWidget down casts any arbitary Object to Popover.
+// CastToWidget down casts any arbitrary Object to Popover.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Popover.
 func CastToPopover(object *gobject.Object) *Popover {
 	return PopoverNewFromC(object.ToC())
@@ -23890,7 +23890,7 @@ func (recv *PopoverAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to PopoverAccessible.
+// CastToWidget down casts any arbitrary Object to PopoverAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a PopoverAccessible.
 func CastToPopoverAccessible(object *gobject.Object) *PopoverAccessible {
 	return PopoverAccessibleNewFromC(object.ToC())
@@ -23967,7 +23967,7 @@ func (recv *PopoverMenu) Object() *gobject.Object {
 	return recv.Popover().Object()
 }
 
-// CastToWidget down casts any arbitary Object to PopoverMenu.
+// CastToWidget down casts any arbitrary Object to PopoverMenu.
 // Exercise care, as this is a potentially dangerous function if the Object is not a PopoverMenu.
 func CastToPopoverMenu(object *gobject.Object) *PopoverMenu {
 	return PopoverMenuNewFromC(object.ToC())
@@ -24024,7 +24024,7 @@ func (recv *PrintContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to PrintContext.
+// CastToWidget down casts any arbitrary Object to PrintContext.
 // Exercise care, as this is a potentially dangerous function if the Object is not a PrintContext.
 func CastToPrintContext(object *gobject.Object) *PrintContext {
 	return PrintContextNewFromC(object.ToC())
@@ -24073,7 +24073,7 @@ func (recv *PrintOperation) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to PrintOperation.
+// CastToWidget down casts any arbitrary Object to PrintOperation.
 // Exercise care, as this is a potentially dangerous function if the Object is not a PrintOperation.
 func CastToPrintOperation(object *gobject.Object) *PrintOperation {
 	return PrintOperationNewFromC(object.ToC())
@@ -24125,7 +24125,7 @@ func (recv *PrintSettings) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to PrintSettings.
+// CastToWidget down casts any arbitrary Object to PrintSettings.
 // Exercise care, as this is a potentially dangerous function if the Object is not a PrintSettings.
 func CastToPrintSettings(object *gobject.Object) *PrintSettings {
 	return PrintSettingsNewFromC(object.ToC())
@@ -24184,7 +24184,7 @@ func (recv *ProgressBar) Object() *gobject.Object {
 	return recv.Widget().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ProgressBar.
+// CastToWidget down casts any arbitrary Object to ProgressBar.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ProgressBar.
 func CastToProgressBar(object *gobject.Object) *ProgressBar {
 	return ProgressBarNewFromC(object.ToC())
@@ -24343,7 +24343,7 @@ func (recv *ProgressBarAccessible) Object() *atk.Object {
 	return recv.WidgetAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ProgressBarAccessible.
+// CastToWidget down casts any arbitrary Object to ProgressBarAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ProgressBarAccessible.
 func CastToProgressBarAccessible(object *gobject.Object) *ProgressBarAccessible {
 	return ProgressBarAccessibleNewFromC(object.ToC())
@@ -24412,7 +24412,7 @@ func (recv *RadioAction) Object() *gobject.Object {
 	return recv.ToggleAction().Object()
 }
 
-// CastToWidget down casts any arbitary Object to RadioAction.
+// CastToWidget down casts any arbitrary Object to RadioAction.
 // Exercise care, as this is a potentially dangerous function if the Object is not a RadioAction.
 func CastToRadioAction(object *gobject.Object) *RadioAction {
 	return RadioActionNewFromC(object.ToC())
@@ -24501,7 +24501,7 @@ func (recv *RadioButton) Object() *gobject.Object {
 	return recv.CheckButton().Object()
 }
 
-// CastToWidget down casts any arbitary Object to RadioButton.
+// CastToWidget down casts any arbitrary Object to RadioButton.
 // Exercise care, as this is a potentially dangerous function if the Object is not a RadioButton.
 func CastToRadioButton(object *gobject.Object) *RadioButton {
 	return RadioButtonNewFromC(object.ToC())
@@ -24705,7 +24705,7 @@ func (recv *RadioButtonAccessible) Object() *atk.Object {
 	return recv.ToggleButtonAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to RadioButtonAccessible.
+// CastToWidget down casts any arbitrary Object to RadioButtonAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a RadioButtonAccessible.
 func CastToRadioButtonAccessible(object *gobject.Object) *RadioButtonAccessible {
 	return RadioButtonAccessibleNewFromC(object.ToC())
@@ -24799,7 +24799,7 @@ func (recv *RadioMenuItem) Object() *gobject.Object {
 	return recv.CheckMenuItem().Object()
 }
 
-// CastToWidget down casts any arbitary Object to RadioMenuItem.
+// CastToWidget down casts any arbitrary Object to RadioMenuItem.
 // Exercise care, as this is a potentially dangerous function if the Object is not a RadioMenuItem.
 func CastToRadioMenuItem(object *gobject.Object) *RadioMenuItem {
 	return RadioMenuItemNewFromC(object.ToC())
@@ -25018,7 +25018,7 @@ func (recv *RadioMenuItemAccessible) Object() *atk.Object {
 	return recv.CheckMenuItemAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to RadioMenuItemAccessible.
+// CastToWidget down casts any arbitrary Object to RadioMenuItemAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a RadioMenuItemAccessible.
 func CastToRadioMenuItemAccessible(object *gobject.Object) *RadioMenuItemAccessible {
 	return RadioMenuItemAccessibleNewFromC(object.ToC())
@@ -25116,7 +25116,7 @@ func (recv *RadioToolButton) Object() *gobject.Object {
 	return recv.ToggleToolButton().Object()
 }
 
-// CastToWidget down casts any arbitary Object to RadioToolButton.
+// CastToWidget down casts any arbitrary Object to RadioToolButton.
 // Exercise care, as this is a potentially dangerous function if the Object is not a RadioToolButton.
 func CastToRadioToolButton(object *gobject.Object) *RadioToolButton {
 	return RadioToolButtonNewFromC(object.ToC())
@@ -25195,7 +25195,7 @@ func (recv *Range) Object() *gobject.Object {
 	return recv.Widget().Object()
 }
 
-// CastToWidget down casts any arbitary Object to Range.
+// CastToWidget down casts any arbitrary Object to Range.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Range.
 func CastToRange(object *gobject.Object) *Range {
 	return RangeNewFromC(object.ToC())
@@ -25470,7 +25470,7 @@ func (recv *RangeAccessible) Object() *atk.Object {
 	return recv.WidgetAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to RangeAccessible.
+// CastToWidget down casts any arbitrary Object to RangeAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a RangeAccessible.
 func CastToRangeAccessible(object *gobject.Object) *RangeAccessible {
 	return RangeAccessibleNewFromC(object.ToC())
@@ -25553,7 +25553,7 @@ func (recv *RcStyle) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to RcStyle.
+// CastToWidget down casts any arbitrary Object to RcStyle.
 // Exercise care, as this is a potentially dangerous function if the Object is not a RcStyle.
 func CastToRcStyle(object *gobject.Object) *RcStyle {
 	return RcStyleNewFromC(object.ToC())
@@ -25627,7 +25627,7 @@ func (recv *RecentAction) Object() *gobject.Object {
 	return recv.Action().Object()
 }
 
-// CastToWidget down casts any arbitary Object to RecentAction.
+// CastToWidget down casts any arbitrary Object to RecentAction.
 // Exercise care, as this is a potentially dangerous function if the Object is not a RecentAction.
 func CastToRecentAction(object *gobject.Object) *RecentAction {
 	return RecentActionNewFromC(object.ToC())
@@ -25716,7 +25716,7 @@ func (recv *RecentChooserDialog) Object() *gobject.Object {
 	return recv.Dialog().Object()
 }
 
-// CastToWidget down casts any arbitary Object to RecentChooserDialog.
+// CastToWidget down casts any arbitrary Object to RecentChooserDialog.
 // Exercise care, as this is a potentially dangerous function if the Object is not a RecentChooserDialog.
 func CastToRecentChooserDialog(object *gobject.Object) *RecentChooserDialog {
 	return RecentChooserDialogNewFromC(object.ToC())
@@ -25805,7 +25805,7 @@ func (recv *RecentChooserMenu) Object() *gobject.Object {
 	return recv.Menu().Object()
 }
 
-// CastToWidget down casts any arbitary Object to RecentChooserMenu.
+// CastToWidget down casts any arbitrary Object to RecentChooserMenu.
 // Exercise care, as this is a potentially dangerous function if the Object is not a RecentChooserMenu.
 func CastToRecentChooserMenu(object *gobject.Object) *RecentChooserMenu {
 	return RecentChooserMenuNewFromC(object.ToC())
@@ -25894,7 +25894,7 @@ func (recv *RecentChooserWidget) Object() *gobject.Object {
 	return recv.Box().Object()
 }
 
-// CastToWidget down casts any arbitary Object to RecentChooserWidget.
+// CastToWidget down casts any arbitrary Object to RecentChooserWidget.
 // Exercise care, as this is a potentially dangerous function if the Object is not a RecentChooserWidget.
 func CastToRecentChooserWidget(object *gobject.Object) *RecentChooserWidget {
 	return RecentChooserWidgetNewFromC(object.ToC())
@@ -25966,7 +25966,7 @@ func (recv *RecentFilter) Object() *gobject.Object {
 	return recv.InitiallyUnowned().Object()
 }
 
-// CastToWidget down casts any arbitary Object to RecentFilter.
+// CastToWidget down casts any arbitrary Object to RecentFilter.
 // Exercise care, as this is a potentially dangerous function if the Object is not a RecentFilter.
 func CastToRecentFilter(object *gobject.Object) *RecentFilter {
 	return RecentFilterNewFromC(object.ToC())
@@ -26030,7 +26030,7 @@ func (recv *RendererCellAccessible) Object() *atk.Object {
 	return recv.CellAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to RendererCellAccessible.
+// CastToWidget down casts any arbitrary Object to RendererCellAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a RendererCellAccessible.
 func CastToRendererCellAccessible(object *gobject.Object) *RendererCellAccessible {
 	return RendererCellAccessibleNewFromC(object.ToC())
@@ -26125,7 +26125,7 @@ func (recv *Revealer) Object() *gobject.Object {
 	return recv.Bin().Object()
 }
 
-// CastToWidget down casts any arbitary Object to Revealer.
+// CastToWidget down casts any arbitrary Object to Revealer.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Revealer.
 func CastToRevealer(object *gobject.Object) *Revealer {
 	return RevealerNewFromC(object.ToC())
@@ -26199,7 +26199,7 @@ func (recv *Scale) Object() *gobject.Object {
 	return recv.Range().Object()
 }
 
-// CastToWidget down casts any arbitary Object to Scale.
+// CastToWidget down casts any arbitrary Object to Scale.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Scale.
 func CastToScale(object *gobject.Object) *Scale {
 	return ScaleNewFromC(object.ToC())
@@ -26332,7 +26332,7 @@ func (recv *ScaleAccessible) Object() *atk.Object {
 	return recv.RangeAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ScaleAccessible.
+// CastToWidget down casts any arbitrary Object to ScaleAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ScaleAccessible.
 func CastToScaleAccessible(object *gobject.Object) *ScaleAccessible {
 	return ScaleAccessibleNewFromC(object.ToC())
@@ -26416,7 +26416,7 @@ func (recv *ScaleButton) Object() *gobject.Object {
 	return recv.Button().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ScaleButton.
+// CastToWidget down casts any arbitrary Object to ScaleButton.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ScaleButton.
 func CastToScaleButton(object *gobject.Object) *ScaleButton {
 	return ScaleButtonNewFromC(object.ToC())
@@ -26510,7 +26510,7 @@ func (recv *ScaleButtonAccessible) Object() *atk.Object {
 	return recv.ButtonAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ScaleButtonAccessible.
+// CastToWidget down casts any arbitrary Object to ScaleButtonAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ScaleButtonAccessible.
 func CastToScaleButtonAccessible(object *gobject.Object) *ScaleButtonAccessible {
 	return ScaleButtonAccessibleNewFromC(object.ToC())
@@ -26593,7 +26593,7 @@ func (recv *Scrollbar) Object() *gobject.Object {
 	return recv.Range().Object()
 }
 
-// CastToWidget down casts any arbitary Object to Scrollbar.
+// CastToWidget down casts any arbitrary Object to Scrollbar.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Scrollbar.
 func CastToScrollbar(object *gobject.Object) *Scrollbar {
 	return ScrollbarNewFromC(object.ToC())
@@ -26677,7 +26677,7 @@ func (recv *ScrolledWindow) Object() *gobject.Object {
 	return recv.Bin().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ScrolledWindow.
+// CastToWidget down casts any arbitrary Object to ScrolledWindow.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ScrolledWindow.
 func CastToScrolledWindow(object *gobject.Object) *ScrolledWindow {
 	return ScrolledWindowNewFromC(object.ToC())
@@ -26872,7 +26872,7 @@ func (recv *ScrolledWindowAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ScrolledWindowAccessible.
+// CastToWidget down casts any arbitrary Object to ScrolledWindowAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ScrolledWindowAccessible.
 func CastToScrolledWindowAccessible(object *gobject.Object) *ScrolledWindowAccessible {
 	return ScrolledWindowAccessibleNewFromC(object.ToC())
@@ -26945,7 +26945,7 @@ func (recv *SearchBar) Object() *gobject.Object {
 	return recv.Bin().Object()
 }
 
-// CastToWidget down casts any arbitary Object to SearchBar.
+// CastToWidget down casts any arbitrary Object to SearchBar.
 // Exercise care, as this is a potentially dangerous function if the Object is not a SearchBar.
 func CastToSearchBar(object *gobject.Object) *SearchBar {
 	return SearchBarNewFromC(object.ToC())
@@ -27018,7 +27018,7 @@ func (recv *SearchEntry) Object() *gobject.Object {
 	return recv.Entry().Object()
 }
 
-// CastToWidget down casts any arbitary Object to SearchEntry.
+// CastToWidget down casts any arbitrary Object to SearchEntry.
 // Exercise care, as this is a potentially dangerous function if the Object is not a SearchEntry.
 func CastToSearchEntry(object *gobject.Object) *SearchEntry {
 	return SearchEntryNewFromC(object.ToC())
@@ -27097,7 +27097,7 @@ func (recv *Separator) Object() *gobject.Object {
 	return recv.Widget().Object()
 }
 
-// CastToWidget down casts any arbitary Object to Separator.
+// CastToWidget down casts any arbitrary Object to Separator.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Separator.
 func CastToSeparator(object *gobject.Object) *Separator {
 	return SeparatorNewFromC(object.ToC())
@@ -27185,7 +27185,7 @@ func (recv *SeparatorMenuItem) Object() *gobject.Object {
 	return recv.MenuItem().Object()
 }
 
-// CastToWidget down casts any arbitary Object to SeparatorMenuItem.
+// CastToWidget down casts any arbitrary Object to SeparatorMenuItem.
 // Exercise care, as this is a potentially dangerous function if the Object is not a SeparatorMenuItem.
 func CastToSeparatorMenuItem(object *gobject.Object) *SeparatorMenuItem {
 	return SeparatorMenuItemNewFromC(object.ToC())
@@ -27287,7 +27287,7 @@ func (recv *SeparatorToolItem) Object() *gobject.Object {
 	return recv.ToolItem().Object()
 }
 
-// CastToWidget down casts any arbitary Object to SeparatorToolItem.
+// CastToWidget down casts any arbitrary Object to SeparatorToolItem.
 // Exercise care, as this is a potentially dangerous function if the Object is not a SeparatorToolItem.
 func CastToSeparatorToolItem(object *gobject.Object) *SeparatorToolItem {
 	return SeparatorToolItemNewFromC(object.ToC())
@@ -27351,7 +27351,7 @@ func (recv *Settings) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to Settings.
+// CastToWidget down casts any arbitrary Object to Settings.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Settings.
 func CastToSettings(object *gobject.Object) *Settings {
 	return SettingsNewFromC(object.ToC())
@@ -27481,7 +27481,7 @@ func (recv *SizeGroup) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to SizeGroup.
+// CastToWidget down casts any arbitrary Object to SizeGroup.
 // Exercise care, as this is a potentially dangerous function if the Object is not a SizeGroup.
 func CastToSizeGroup(object *gobject.Object) *SizeGroup {
 	return SizeGroupNewFromC(object.ToC())
@@ -27607,7 +27607,7 @@ func (recv *SpinButton) Object() *gobject.Object {
 	return recv.Entry().Object()
 }
 
-// CastToWidget down casts any arbitary Object to SpinButton.
+// CastToWidget down casts any arbitrary Object to SpinButton.
 // Exercise care, as this is a potentially dangerous function if the Object is not a SpinButton.
 func CastToSpinButton(object *gobject.Object) *SpinButton {
 	return SpinButtonNewFromC(object.ToC())
@@ -28073,7 +28073,7 @@ func (recv *SpinButtonAccessible) Object() *atk.Object {
 	return recv.EntryAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to SpinButtonAccessible.
+// CastToWidget down casts any arbitrary Object to SpinButtonAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a SpinButtonAccessible.
 func CastToSpinButtonAccessible(object *gobject.Object) *SpinButtonAccessible {
 	return SpinButtonAccessibleNewFromC(object.ToC())
@@ -28157,7 +28157,7 @@ func (recv *Spinner) Object() *gobject.Object {
 	return recv.Widget().Object()
 }
 
-// CastToWidget down casts any arbitary Object to Spinner.
+// CastToWidget down casts any arbitrary Object to Spinner.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Spinner.
 func CastToSpinner(object *gobject.Object) *Spinner {
 	return SpinnerNewFromC(object.ToC())
@@ -28226,7 +28226,7 @@ func (recv *SpinnerAccessible) Object() *atk.Object {
 	return recv.WidgetAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to SpinnerAccessible.
+// CastToWidget down casts any arbitrary Object to SpinnerAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a SpinnerAccessible.
 func CastToSpinnerAccessible(object *gobject.Object) *SpinnerAccessible {
 	return SpinnerAccessibleNewFromC(object.ToC())
@@ -28299,7 +28299,7 @@ func (recv *Stack) Object() *gobject.Object {
 	return recv.Container().Object()
 }
 
-// CastToWidget down casts any arbitary Object to Stack.
+// CastToWidget down casts any arbitrary Object to Stack.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Stack.
 func CastToStack(object *gobject.Object) *Stack {
 	return StackNewFromC(object.ToC())
@@ -28379,7 +28379,7 @@ func (recv *StackSidebar) Object() *gobject.Object {
 	return recv.Bin().Object()
 }
 
-// CastToWidget down casts any arbitary Object to StackSidebar.
+// CastToWidget down casts any arbitrary Object to StackSidebar.
 // Exercise care, as this is a potentially dangerous function if the Object is not a StackSidebar.
 func CastToStackSidebar(object *gobject.Object) *StackSidebar {
 	return StackSidebarNewFromC(object.ToC())
@@ -28457,7 +28457,7 @@ func (recv *StackSwitcher) Object() *gobject.Object {
 	return recv.Box().Object()
 }
 
-// CastToWidget down casts any arbitary Object to StackSwitcher.
+// CastToWidget down casts any arbitrary Object to StackSwitcher.
 // Exercise care, as this is a potentially dangerous function if the Object is not a StackSwitcher.
 func CastToStackSwitcher(object *gobject.Object) *StackSwitcher {
 	return StackSwitcherNewFromC(object.ToC())
@@ -28521,7 +28521,7 @@ func (recv *StatusIcon) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to StatusIcon.
+// CastToWidget down casts any arbitrary Object to StatusIcon.
 // Exercise care, as this is a potentially dangerous function if the Object is not a StatusIcon.
 func CastToStatusIcon(object *gobject.Object) *StatusIcon {
 	return StatusIconNewFromC(object.ToC())
@@ -28590,7 +28590,7 @@ func (recv *Statusbar) Object() *gobject.Object {
 	return recv.Box().Object()
 }
 
-// CastToWidget down casts any arbitary Object to Statusbar.
+// CastToWidget down casts any arbitrary Object to Statusbar.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Statusbar.
 func CastToStatusbar(object *gobject.Object) *Statusbar {
 	return StatusbarNewFromC(object.ToC())
@@ -28849,7 +28849,7 @@ func (recv *StatusbarAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to StatusbarAccessible.
+// CastToWidget down casts any arbitrary Object to StatusbarAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a StatusbarAccessible.
 func CastToStatusbarAccessible(object *gobject.Object) *StatusbarAccessible {
 	return StatusbarAccessibleNewFromC(object.ToC())
@@ -28931,7 +28931,7 @@ func (recv *Style) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to Style.
+// CastToWidget down casts any arbitrary Object to Style.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Style.
 func CastToStyle(object *gobject.Object) *Style {
 	return StyleNewFromC(object.ToC())
@@ -29099,7 +29099,7 @@ func (recv *StyleContext) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to StyleContext.
+// CastToWidget down casts any arbitrary Object to StyleContext.
 // Exercise care, as this is a potentially dangerous function if the Object is not a StyleContext.
 func CastToStyleContext(object *gobject.Object) *StyleContext {
 	return StyleContextNewFromC(object.ToC())
@@ -29230,7 +29230,7 @@ func (recv *StyleProperties) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to StyleProperties.
+// CastToWidget down casts any arbitrary Object to StyleProperties.
 // Exercise care, as this is a potentially dangerous function if the Object is not a StyleProperties.
 func CastToStyleProperties(object *gobject.Object) *StyleProperties {
 	return StylePropertiesNewFromC(object.ToC())
@@ -29313,7 +29313,7 @@ func (recv *Switch) Object() *gobject.Object {
 	return recv.Widget().Object()
 }
 
-// CastToWidget down casts any arbitary Object to Switch.
+// CastToWidget down casts any arbitrary Object to Switch.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Switch.
 func CastToSwitch(object *gobject.Object) *Switch {
 	return SwitchNewFromC(object.ToC())
@@ -29452,7 +29452,7 @@ func (recv *SwitchAccessible) Object() *atk.Object {
 	return recv.WidgetAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to SwitchAccessible.
+// CastToWidget down casts any arbitrary Object to SwitchAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a SwitchAccessible.
 func CastToSwitchAccessible(object *gobject.Object) *SwitchAccessible {
 	return SwitchAccessibleNewFromC(object.ToC())
@@ -29526,7 +29526,7 @@ func (recv *Table) Object() *gobject.Object {
 	return recv.Container().Object()
 }
 
-// CastToWidget down casts any arbitary Object to Table.
+// CastToWidget down casts any arbitrary Object to Table.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Table.
 func CastToTable(object *gobject.Object) *Table {
 	return TableNewFromC(object.ToC())
@@ -29778,7 +29778,7 @@ func (recv *TearoffMenuItem) Object() *gobject.Object {
 	return recv.MenuItem().Object()
 }
 
-// CastToWidget down casts any arbitary Object to TearoffMenuItem.
+// CastToWidget down casts any arbitrary Object to TearoffMenuItem.
 // Exercise care, as this is a potentially dangerous function if the Object is not a TearoffMenuItem.
 func CastToTearoffMenuItem(object *gobject.Object) *TearoffMenuItem {
 	return TearoffMenuItemNewFromC(object.ToC())
@@ -29855,7 +29855,7 @@ func (recv *TextBuffer) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to TextBuffer.
+// CastToWidget down casts any arbitrary Object to TextBuffer.
 // Exercise care, as this is a potentially dangerous function if the Object is not a TextBuffer.
 func CastToTextBuffer(object *gobject.Object) *TextBuffer {
 	return TextBufferNewFromC(object.ToC())
@@ -31453,7 +31453,7 @@ func (recv *TextCellAccessible) Object() *atk.Object {
 	return recv.RendererCellAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to TextCellAccessible.
+// CastToWidget down casts any arbitrary Object to TextCellAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a TextCellAccessible.
 func CastToTextCellAccessible(object *gobject.Object) *TextCellAccessible {
 	return TextCellAccessibleNewFromC(object.ToC())
@@ -31517,7 +31517,7 @@ func (recv *TextChildAnchor) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to TextChildAnchor.
+// CastToWidget down casts any arbitrary Object to TextChildAnchor.
 // Exercise care, as this is a potentially dangerous function if the Object is not a TextChildAnchor.
 func CastToTextChildAnchor(object *gobject.Object) *TextChildAnchor {
 	return TextChildAnchorNewFromC(object.ToC())
@@ -31594,7 +31594,7 @@ func (recv *TextMark) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to TextMark.
+// CastToWidget down casts any arbitrary Object to TextMark.
 // Exercise care, as this is a potentially dangerous function if the Object is not a TextMark.
 func CastToTextMark(object *gobject.Object) *TextMark {
 	return TextMarkNewFromC(object.ToC())
@@ -31693,7 +31693,7 @@ func (recv *TextTag) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to TextTag.
+// CastToWidget down casts any arbitrary Object to TextTag.
 // Exercise care, as this is a potentially dangerous function if the Object is not a TextTag.
 func CastToTextTag(object *gobject.Object) *TextTag {
 	return TextTagNewFromC(object.ToC())
@@ -31778,7 +31778,7 @@ func (recv *TextTagTable) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to TextTagTable.
+// CastToWidget down casts any arbitrary Object to TextTagTable.
 // Exercise care, as this is a potentially dangerous function if the Object is not a TextTagTable.
 func CastToTextTagTable(object *gobject.Object) *TextTagTable {
 	return TextTagTableNewFromC(object.ToC())
@@ -32098,7 +32098,7 @@ func (recv *TextView) Object() *gobject.Object {
 	return recv.Container().Object()
 }
 
-// CastToWidget down casts any arbitary Object to TextView.
+// CastToWidget down casts any arbitrary Object to TextView.
 // Exercise care, as this is a potentially dangerous function if the Object is not a TextView.
 func CastToTextView(object *gobject.Object) *TextView {
 	return TextViewNewFromC(object.ToC())
@@ -33389,7 +33389,7 @@ func (recv *TextViewAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to TextViewAccessible.
+// CastToWidget down casts any arbitrary Object to TextViewAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a TextViewAccessible.
 func CastToTextViewAccessible(object *gobject.Object) *TextViewAccessible {
 	return TextViewAccessibleNewFromC(object.ToC())
@@ -33458,7 +33458,7 @@ func (recv *ThemingEngine) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to ThemingEngine.
+// CastToWidget down casts any arbitrary Object to ThemingEngine.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ThemingEngine.
 func CastToThemingEngine(object *gobject.Object) *ThemingEngine {
 	return ThemingEngineNewFromC(object.ToC())
@@ -33541,7 +33541,7 @@ func (recv *ToggleAction) Object() *gobject.Object {
 	return recv.Action().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ToggleAction.
+// CastToWidget down casts any arbitrary Object to ToggleAction.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ToggleAction.
 func CastToToggleAction(object *gobject.Object) *ToggleAction {
 	return ToggleActionNewFromC(object.ToC())
@@ -33680,7 +33680,7 @@ func (recv *ToggleButton) Object() *gobject.Object {
 	return recv.Button().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ToggleButton.
+// CastToWidget down casts any arbitrary Object to ToggleButton.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ToggleButton.
 func CastToToggleButton(object *gobject.Object) *ToggleButton {
 	return ToggleButtonNewFromC(object.ToC())
@@ -33920,7 +33920,7 @@ func (recv *ToggleButtonAccessible) Object() *atk.Object {
 	return recv.ButtonAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ToggleButtonAccessible.
+// CastToWidget down casts any arbitrary Object to ToggleButtonAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ToggleButtonAccessible.
 func CastToToggleButtonAccessible(object *gobject.Object) *ToggleButtonAccessible {
 	return ToggleButtonAccessibleNewFromC(object.ToC())
@@ -34014,7 +34014,7 @@ func (recv *ToggleToolButton) Object() *gobject.Object {
 	return recv.ToolButton().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ToggleToolButton.
+// CastToWidget down casts any arbitrary Object to ToggleToolButton.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ToggleToolButton.
 func CastToToggleToolButton(object *gobject.Object) *ToggleToolButton {
 	return ToggleToolButtonNewFromC(object.ToC())
@@ -34168,7 +34168,7 @@ func (recv *ToolButton) Object() *gobject.Object {
 	return recv.ToolItem().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ToolButton.
+// CastToWidget down casts any arbitrary Object to ToolButton.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ToolButton.
 func CastToToolButton(object *gobject.Object) *ToolButton {
 	return ToolButtonNewFromC(object.ToC())
@@ -34317,7 +34317,7 @@ func (recv *ToolItem) Object() *gobject.Object {
 	return recv.Bin().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ToolItem.
+// CastToWidget down casts any arbitrary Object to ToolItem.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ToolItem.
 func CastToToolItem(object *gobject.Object) *ToolItem {
 	return ToolItemNewFromC(object.ToC())
@@ -34519,7 +34519,7 @@ func (recv *ToolItemGroup) Object() *gobject.Object {
 	return recv.Container().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ToolItemGroup.
+// CastToWidget down casts any arbitrary Object to ToolItemGroup.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ToolItemGroup.
 func CastToToolItemGroup(object *gobject.Object) *ToolItemGroup {
 	return ToolItemGroupNewFromC(object.ToC())
@@ -34598,7 +34598,7 @@ func (recv *ToolPalette) Object() *gobject.Object {
 	return recv.Container().Object()
 }
 
-// CastToWidget down casts any arbitary Object to ToolPalette.
+// CastToWidget down casts any arbitrary Object to ToolPalette.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ToolPalette.
 func CastToToolPalette(object *gobject.Object) *ToolPalette {
 	return ToolPaletteNewFromC(object.ToC())
@@ -34682,7 +34682,7 @@ func (recv *Toolbar) Object() *gobject.Object {
 	return recv.Container().Object()
 }
 
-// CastToWidget down casts any arbitary Object to Toolbar.
+// CastToWidget down casts any arbitrary Object to Toolbar.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Toolbar.
 func CastToToolbar(object *gobject.Object) *Toolbar {
 	return ToolbarNewFromC(object.ToC())
@@ -34943,7 +34943,7 @@ func (recv *Tooltip) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to Tooltip.
+// CastToWidget down casts any arbitrary Object to Tooltip.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Tooltip.
 func CastToTooltip(object *gobject.Object) *Tooltip {
 	return TooltipNewFromC(object.ToC())
@@ -34992,7 +34992,7 @@ func (recv *ToplevelAccessible) Object() *atk.Object {
 	return atk.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to ToplevelAccessible.
+// CastToWidget down casts any arbitrary Object to ToplevelAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a ToplevelAccessible.
 func CastToToplevelAccessible(object *gobject.Object) *ToplevelAccessible {
 	return ToplevelAccessibleNewFromC(object.ToC())
@@ -35049,7 +35049,7 @@ func (recv *TreeModelFilter) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to TreeModelFilter.
+// CastToWidget down casts any arbitrary Object to TreeModelFilter.
 // Exercise care, as this is a potentially dangerous function if the Object is not a TreeModelFilter.
 func CastToTreeModelFilter(object *gobject.Object) *TreeModelFilter {
 	return TreeModelFilterNewFromC(object.ToC())
@@ -35108,7 +35108,7 @@ func (recv *TreeModelSort) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to TreeModelSort.
+// CastToWidget down casts any arbitrary Object to TreeModelSort.
 // Exercise care, as this is a potentially dangerous function if the Object is not a TreeModelSort.
 func CastToTreeModelSort(object *gobject.Object) *TreeModelSort {
 	return TreeModelSortNewFromC(object.ToC())
@@ -35263,7 +35263,7 @@ func (recv *TreeSelection) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to TreeSelection.
+// CastToWidget down casts any arbitrary Object to TreeSelection.
 // Exercise care, as this is a potentially dangerous function if the Object is not a TreeSelection.
 func CastToTreeSelection(object *gobject.Object) *TreeSelection {
 	return TreeSelectionNewFromC(object.ToC())
@@ -35530,7 +35530,7 @@ func (recv *TreeStore) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to TreeStore.
+// CastToWidget down casts any arbitrary Object to TreeStore.
 // Exercise care, as this is a potentially dangerous function if the Object is not a TreeStore.
 func CastToTreeStore(object *gobject.Object) *TreeStore {
 	return TreeStoreNewFromC(object.ToC())
@@ -35814,7 +35814,7 @@ func (recv *TreeView) Object() *gobject.Object {
 	return recv.Container().Object()
 }
 
-// CastToWidget down casts any arbitary Object to TreeView.
+// CastToWidget down casts any arbitrary Object to TreeView.
 // Exercise care, as this is a potentially dangerous function if the Object is not a TreeView.
 func CastToTreeView(object *gobject.Object) *TreeView {
 	return TreeViewNewFromC(object.ToC())
@@ -37338,7 +37338,7 @@ func (recv *TreeViewAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to TreeViewAccessible.
+// CastToWidget down casts any arbitrary Object to TreeViewAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a TreeViewAccessible.
 func CastToTreeViewAccessible(object *gobject.Object) *TreeViewAccessible {
 	return TreeViewAccessibleNewFromC(object.ToC())
@@ -37412,7 +37412,7 @@ func (recv *TreeViewColumn) Object() *gobject.Object {
 	return recv.InitiallyUnowned().Object()
 }
 
-// CastToWidget down casts any arbitary Object to TreeViewColumn.
+// CastToWidget down casts any arbitrary Object to TreeViewColumn.
 // Exercise care, as this is a potentially dangerous function if the Object is not a TreeViewColumn.
 func CastToTreeViewColumn(object *gobject.Object) *TreeViewColumn {
 	return TreeViewColumnNewFromC(object.ToC())
@@ -37946,7 +37946,7 @@ func (recv *UIManager) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to UIManager.
+// CastToWidget down casts any arbitrary Object to UIManager.
 // Exercise care, as this is a potentially dangerous function if the Object is not a UIManager.
 func CastToUIManager(object *gobject.Object) *UIManager {
 	return UIManagerNewFromC(object.ToC())
@@ -38019,7 +38019,7 @@ func (recv *VBox) Object() *gobject.Object {
 	return recv.Box().Object()
 }
 
-// CastToWidget down casts any arbitary Object to VBox.
+// CastToWidget down casts any arbitrary Object to VBox.
 // Exercise care, as this is a potentially dangerous function if the Object is not a VBox.
 func CastToVBox(object *gobject.Object) *VBox {
 	return VBoxNewFromC(object.ToC())
@@ -38120,7 +38120,7 @@ func (recv *VButtonBox) Object() *gobject.Object {
 	return recv.ButtonBox().Object()
 }
 
-// CastToWidget down casts any arbitary Object to VButtonBox.
+// CastToWidget down casts any arbitrary Object to VButtonBox.
 // Exercise care, as this is a potentially dangerous function if the Object is not a VButtonBox.
 func CastToVButtonBox(object *gobject.Object) *VButtonBox {
 	return VButtonBoxNewFromC(object.ToC())
@@ -38211,7 +38211,7 @@ func (recv *VPaned) Object() *gobject.Object {
 	return recv.Paned().Object()
 }
 
-// CastToWidget down casts any arbitary Object to VPaned.
+// CastToWidget down casts any arbitrary Object to VPaned.
 // Exercise care, as this is a potentially dangerous function if the Object is not a VPaned.
 func CastToVPaned(object *gobject.Object) *VPaned {
 	return VPanedNewFromC(object.ToC())
@@ -38302,7 +38302,7 @@ func (recv *VScale) Object() *gobject.Object {
 	return recv.Scale().Object()
 }
 
-// CastToWidget down casts any arbitary Object to VScale.
+// CastToWidget down casts any arbitrary Object to VScale.
 // Exercise care, as this is a potentially dangerous function if the Object is not a VScale.
 func CastToVScale(object *gobject.Object) *VScale {
 	return VScaleNewFromC(object.ToC())
@@ -38412,7 +38412,7 @@ func (recv *VScrollbar) Object() *gobject.Object {
 	return recv.Scrollbar().Object()
 }
 
-// CastToWidget down casts any arbitary Object to VScrollbar.
+// CastToWidget down casts any arbitrary Object to VScrollbar.
 // Exercise care, as this is a potentially dangerous function if the Object is not a VScrollbar.
 func CastToVScrollbar(object *gobject.Object) *VScrollbar {
 	return VScrollbarNewFromC(object.ToC())
@@ -38503,7 +38503,7 @@ func (recv *VSeparator) Object() *gobject.Object {
 	return recv.Separator().Object()
 }
 
-// CastToWidget down casts any arbitary Object to VSeparator.
+// CastToWidget down casts any arbitrary Object to VSeparator.
 // Exercise care, as this is a potentially dangerous function if the Object is not a VSeparator.
 func CastToVSeparator(object *gobject.Object) *VSeparator {
 	return VSeparatorNewFromC(object.ToC())
@@ -38595,7 +38595,7 @@ func (recv *Viewport) Object() *gobject.Object {
 	return recv.Bin().Object()
 }
 
-// CastToWidget down casts any arbitary Object to Viewport.
+// CastToWidget down casts any arbitrary Object to Viewport.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Viewport.
 func CastToViewport(object *gobject.Object) *Viewport {
 	return ViewportNewFromC(object.ToC())
@@ -38763,7 +38763,7 @@ func (recv *VolumeButton) Object() *gobject.Object {
 	return recv.ScaleButton().Object()
 }
 
-// CastToWidget down casts any arbitary Object to VolumeButton.
+// CastToWidget down casts any arbitrary Object to VolumeButton.
 // Exercise care, as this is a potentially dangerous function if the Object is not a VolumeButton.
 func CastToVolumeButton(object *gobject.Object) *VolumeButton {
 	return VolumeButtonNewFromC(object.ToC())
@@ -38842,7 +38842,7 @@ func (recv *Widget) Object() *gobject.Object {
 	return recv.InitiallyUnowned().Object()
 }
 
-// CastToWidget down casts any arbitary Object to Widget.
+// CastToWidget down casts any arbitrary Object to Widget.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Widget.
 func CastToWidget(object *gobject.Object) *Widget {
 	return WidgetNewFromC(object.ToC())
@@ -43293,7 +43293,7 @@ func (recv *WidgetAccessible) Object() *atk.Object {
 	return recv.Accessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to WidgetAccessible.
+// CastToWidget down casts any arbitrary Object to WidgetAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a WidgetAccessible.
 func CastToWidgetAccessible(object *gobject.Object) *WidgetAccessible {
 	return WidgetAccessibleNewFromC(object.ToC())
@@ -43367,7 +43367,7 @@ func (recv *Window) Object() *gobject.Object {
 	return recv.Bin().Object()
 }
 
-// CastToWidget down casts any arbitary Object to Window.
+// CastToWidget down casts any arbitrary Object to Window.
 // Exercise care, as this is a potentially dangerous function if the Object is not a Window.
 func CastToWindow(object *gobject.Object) *Window {
 	return WindowNewFromC(object.ToC())
@@ -44358,7 +44358,7 @@ func (recv *WindowAccessible) Object() *atk.Object {
 	return recv.ContainerAccessible().Object()
 }
 
-// CastToWidget down casts any arbitary Object to WindowAccessible.
+// CastToWidget down casts any arbitrary Object to WindowAccessible.
 // Exercise care, as this is a potentially dangerous function if the Object is not a WindowAccessible.
 func CastToWindowAccessible(object *gobject.Object) *WindowAccessible {
 	return WindowAccessibleNewFromC(object.ToC())
@@ -44417,7 +44417,7 @@ func (recv *WindowGroup) Object() *gobject.Object {
 	return gobject.ObjectNewFromC(unsafe.Pointer(recv.native))
 }
 
-// CastToWidget down casts any arbitary Object to WindowGroup.
+// CastToWidget down casts any arbitrary Object to WindowGroup.
 // Exercise care, as this is a potentially dangerous function if the Object is not a WindowGroup.
 func CastToWindowGroup(object *gobject.Object) *WindowGroup {
 	return WindowGroupNewFromC(object.ToC())
