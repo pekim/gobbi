@@ -26,7 +26,7 @@ func VersionNew(value string) Version {
 
 	version, err := semver.ParseTolerant(value)
 	if err != nil {
-		panic(fmt.Sprintf("Failed to parse verison '%s' : %s", value, err))
+		panic(fmt.Sprintf("Failed to parse version '%s' : %s", value, err))
 	}
 
 	return Version{
