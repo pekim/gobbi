@@ -11340,7 +11340,23 @@ func (recv *SelectionData) Free() {
 
 // Blacklisted : gtk_selection_data_get_text
 
-// Unsupported : gtk_selection_data_set : unsupported parameter type : Blacklisted record : GdkAtom
+// Set is a wrapper around the C function gtk_selection_data_set.
+func (recv *SelectionData) Set(type_ *gdk.Atom, format int32, data []uint8) {
+	c_type := (C.GdkAtom)(C.NULL)
+	if type_ != nil {
+		c_type = (C.GdkAtom)(type_.ToC())
+	}
+
+	c_format := (C.gint)(format)
+
+	c_data := &data[0]
+
+	c_length := (C.gint)(len(data))
+
+	C.gtk_selection_data_set((*C.GtkSelectionData)(recv.native), c_type, c_format, (*C.guchar)(unsafe.Pointer(c_data)), c_length)
+
+	return
+}
 
 // SetText is a wrapper around the C function gtk_selection_data_set_text.
 func (recv *SelectionData) SetText(str string, len int32) bool {
@@ -12918,11 +12934,40 @@ func (recv *TargetList) Equals(other *TargetList) bool {
 
 // Unsupported : gtk_target_list_new : unsupported parameter targets :
 
-// Unsupported : gtk_target_list_add : unsupported parameter target : Blacklisted record : GdkAtom
+// Add is a wrapper around the C function gtk_target_list_add.
+func (recv *TargetList) Add(target *gdk.Atom, flags uint32, info uint32) {
+	c_target := (C.GdkAtom)(C.NULL)
+	if target != nil {
+		c_target = (C.GdkAtom)(target.ToC())
+	}
+
+	c_flags := (C.guint)(flags)
+
+	c_info := (C.guint)(info)
+
+	C.gtk_target_list_add((*C.GtkTargetList)(recv.native), c_target, c_flags, c_info)
+
+	return
+}
 
 // Unsupported : gtk_target_list_add_table : unsupported parameter targets :
 
-// Unsupported : gtk_target_list_find : unsupported parameter target : Blacklisted record : GdkAtom
+// Find is a wrapper around the C function gtk_target_list_find.
+func (recv *TargetList) Find(target *gdk.Atom) (bool, uint32) {
+	c_target := (C.GdkAtom)(C.NULL)
+	if target != nil {
+		c_target = (C.GdkAtom)(target.ToC())
+	}
+
+	var c_info C.guint
+
+	retC := C.gtk_target_list_find((*C.GtkTargetList)(recv.native), c_target, &c_info)
+	retGo := retC == C.TRUE
+
+	info := (uint32)(c_info)
+
+	return retGo, info
+}
 
 // Ref is a wrapper around the C function gtk_target_list_ref.
 func (recv *TargetList) Ref() *TargetList {
@@ -12932,7 +12977,17 @@ func (recv *TargetList) Ref() *TargetList {
 	return retGo
 }
 
-// Unsupported : gtk_target_list_remove : unsupported parameter target : Blacklisted record : GdkAtom
+// Remove is a wrapper around the C function gtk_target_list_remove.
+func (recv *TargetList) Remove(target *gdk.Atom) {
+	c_target := (C.GdkAtom)(C.NULL)
+	if target != nil {
+		c_target = (C.GdkAtom)(target.ToC())
+	}
+
+	C.gtk_target_list_remove((*C.GtkTargetList)(recv.native), c_target)
+
+	return
+}
 
 // Unref is a wrapper around the C function gtk_target_list_unref.
 func (recv *TargetList) Unref() {

@@ -1398,15 +1398,93 @@ func RcScannerNew() *glib.Scanner {
 
 // Unsupported : gtk_rc_set_default_files : unsupported parameter filenames :
 
-// Unsupported : gtk_selection_add_target : unsupported parameter selection : Blacklisted record : GdkAtom
+// SelectionAddTarget is a wrapper around the C function gtk_selection_add_target.
+func SelectionAddTarget(widget *Widget, selection *gdk.Atom, target *gdk.Atom, info uint32) {
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
 
-// Unsupported : gtk_selection_add_targets : unsupported parameter selection : Blacklisted record : GdkAtom
+	c_selection := (C.GdkAtom)(C.NULL)
+	if selection != nil {
+		c_selection = (C.GdkAtom)(selection.ToC())
+	}
 
-// Unsupported : gtk_selection_clear_targets : unsupported parameter selection : Blacklisted record : GdkAtom
+	c_target := (C.GdkAtom)(C.NULL)
+	if target != nil {
+		c_target = (C.GdkAtom)(target.ToC())
+	}
 
-// Unsupported : gtk_selection_convert : unsupported parameter selection : Blacklisted record : GdkAtom
+	c_info := (C.guint)(info)
 
-// Unsupported : gtk_selection_owner_set : unsupported parameter selection : Blacklisted record : GdkAtom
+	C.gtk_selection_add_target(c_widget, c_selection, c_target, c_info)
+
+	return
+}
+
+// Unsupported : gtk_selection_add_targets : unsupported parameter targets :
+
+// SelectionClearTargets is a wrapper around the C function gtk_selection_clear_targets.
+func SelectionClearTargets(widget *Widget, selection *gdk.Atom) {
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
+
+	c_selection := (C.GdkAtom)(C.NULL)
+	if selection != nil {
+		c_selection = (C.GdkAtom)(selection.ToC())
+	}
+
+	C.gtk_selection_clear_targets(c_widget, c_selection)
+
+	return
+}
+
+// SelectionConvert is a wrapper around the C function gtk_selection_convert.
+func SelectionConvert(widget *Widget, selection *gdk.Atom, target *gdk.Atom, time uint32) bool {
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
+
+	c_selection := (C.GdkAtom)(C.NULL)
+	if selection != nil {
+		c_selection = (C.GdkAtom)(selection.ToC())
+	}
+
+	c_target := (C.GdkAtom)(C.NULL)
+	if target != nil {
+		c_target = (C.GdkAtom)(target.ToC())
+	}
+
+	c_time_ := (C.guint32)(time)
+
+	retC := C.gtk_selection_convert(c_widget, c_selection, c_target, c_time_)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// SelectionOwnerSet is a wrapper around the C function gtk_selection_owner_set.
+func SelectionOwnerSet(widget *Widget, selection *gdk.Atom, time uint32) bool {
+	c_widget := (*C.GtkWidget)(C.NULL)
+	if widget != nil {
+		c_widget = (*C.GtkWidget)(widget.ToC())
+	}
+
+	c_selection := (C.GdkAtom)(C.NULL)
+	if selection != nil {
+		c_selection = (C.GdkAtom)(selection.ToC())
+	}
+
+	c_time_ := (C.guint32)(time)
+
+	retC := C.gtk_selection_owner_set(c_widget, c_selection, c_time_)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
 
 // SelectionRemoveAll is a wrapper around the C function gtk_selection_remove_all.
 func SelectionRemoveAll(widget *Widget) {

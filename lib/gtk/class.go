@@ -7656,7 +7656,19 @@ func CastToClipboard(object *gobject.Object) *Clipboard {
 	return ClipboardNewFromC(object.ToC())
 }
 
-// gtk_clipboard_get : unsupported parameter selection : Blacklisted record : GdkAtom
+// ClipboardGet is a wrapper around the C function gtk_clipboard_get.
+func ClipboardGet(selection *gdk.Atom) *Clipboard {
+	c_selection := (C.GdkAtom)(C.NULL)
+	if selection != nil {
+		c_selection = (C.GdkAtom)(selection.ToC())
+	}
+
+	retC := C.gtk_clipboard_get(c_selection)
+	retGo := ClipboardNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // Clear is a wrapper around the C function gtk_clipboard_clear.
 func (recv *Clipboard) Clear() {
 	C.gtk_clipboard_clear((*C.GtkClipboard)(recv.native))
@@ -7677,7 +7689,7 @@ func (recv *Clipboard) GetOwner() *gobject.Object {
 	return retGo
 }
 
-// Unsupported : gtk_clipboard_request_contents : unsupported parameter target : Blacklisted record : GdkAtom
+// Unsupported : gtk_clipboard_request_contents : unsupported parameter callback : no type generator for ClipboardReceivedFunc (GtkClipboardReceivedFunc) for param callback
 
 // Unsupported : gtk_clipboard_request_text : unsupported parameter callback : no type generator for ClipboardTextReceivedFunc (GtkClipboardTextReceivedFunc) for param callback
 
@@ -7697,7 +7709,23 @@ func (recv *Clipboard) SetText(text string, len int32) {
 
 // Unsupported : gtk_clipboard_set_with_owner : unsupported parameter targets :
 
-// Unsupported : gtk_clipboard_wait_for_contents : unsupported parameter target : Blacklisted record : GdkAtom
+// WaitForContents is a wrapper around the C function gtk_clipboard_wait_for_contents.
+func (recv *Clipboard) WaitForContents(target *gdk.Atom) *SelectionData {
+	c_target := (C.GdkAtom)(C.NULL)
+	if target != nil {
+		c_target = (C.GdkAtom)(target.ToC())
+	}
+
+	retC := C.gtk_clipboard_wait_for_contents((*C.GtkClipboard)(recv.native), c_target)
+	var retGo (*SelectionData)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = SelectionDataNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
 
 // WaitForText is a wrapper around the C function gtk_clipboard_wait_for_text.
 func (recv *Clipboard) WaitForText() string {
@@ -42431,7 +42459,23 @@ func (recv *Widget) DragCheckThreshold(startX int32, startY int32, currentX int3
 	return retGo
 }
 
-// Unsupported : gtk_drag_dest_find_target : return type : Blacklisted record : GdkAtom
+// DragDestFindTarget is a wrapper around the C function gtk_drag_dest_find_target.
+func (recv *Widget) DragDestFindTarget(context *gdk.DragContext, targetList *TargetList) gdk.Atom {
+	c_context := (*C.GdkDragContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GdkDragContext)(context.ToC())
+	}
+
+	c_target_list := (*C.GtkTargetList)(C.NULL)
+	if targetList != nil {
+		c_target_list = (*C.GtkTargetList)(targetList.ToC())
+	}
+
+	retC := C.gtk_drag_dest_find_target((*C.GtkWidget)(recv.native), c_context, c_target_list)
+	retGo := *gdk.AtomNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // DragDestGetTargetList is a wrapper around the C function gtk_drag_dest_get_target_list.
 func (recv *Widget) DragDestGetTargetList() *TargetList {
@@ -42484,7 +42528,24 @@ func (recv *Widget) DragDestUnset() {
 	return
 }
 
-// Unsupported : gtk_drag_get_data : unsupported parameter target : Blacklisted record : GdkAtom
+// DragGetData is a wrapper around the C function gtk_drag_get_data.
+func (recv *Widget) DragGetData(context *gdk.DragContext, target *gdk.Atom, time uint32) {
+	c_context := (*C.GdkDragContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GdkDragContext)(context.ToC())
+	}
+
+	c_target := (C.GdkAtom)(C.NULL)
+	if target != nil {
+		c_target = (C.GdkAtom)(target.ToC())
+	}
+
+	c_time_ := (C.guint32)(time)
+
+	C.gtk_drag_get_data((*C.GtkWidget)(recv.native), c_context, c_target, c_time_)
+
+	return
+}
 
 // DragHighlight is a wrapper around the C function gtk_drag_highlight.
 func (recv *Widget) DragHighlight() {

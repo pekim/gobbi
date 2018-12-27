@@ -29,7 +29,13 @@ import (
 */
 import "C"
 
-// Unsupported : gtk_clipboard_get_selection : return type : Blacklisted record : GdkAtom
+// GetSelection is a wrapper around the C function gtk_clipboard_get_selection.
+func (recv *Clipboard) GetSelection() gdk.Atom {
+	retC := C.gtk_clipboard_get_selection((*C.GtkClipboard)(recv.native))
+	retGo := *gdk.AtomNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // FileFilterNewFromGvariant is a wrapper around the C function gtk_file_filter_new_from_gvariant.
 func FileFilterNewFromGvariant(variant *glib.Variant) *FileFilter {

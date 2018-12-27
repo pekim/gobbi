@@ -630,7 +630,18 @@ func (recv *Clipboard) WaitIsImageAvailable() bool {
 	return retGo
 }
 
-// Unsupported : gtk_clipboard_wait_is_target_available : unsupported parameter target : Blacklisted record : GdkAtom
+// WaitIsTargetAvailable is a wrapper around the C function gtk_clipboard_wait_is_target_available.
+func (recv *Clipboard) WaitIsTargetAvailable(target *gdk.Atom) bool {
+	c_target := (C.GdkAtom)(C.NULL)
+	if target != nil {
+		c_target = (C.GdkAtom)(target.ToC())
+	}
+
+	retC := C.gtk_clipboard_wait_is_target_available((*C.GtkClipboard)(recv.native), c_target)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
 
 // GetColumnSpanColumn is a wrapper around the C function gtk_combo_box_get_column_span_column.
 func (recv *ComboBox) GetColumnSpanColumn() int32 {

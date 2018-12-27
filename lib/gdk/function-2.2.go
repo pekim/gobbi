@@ -56,10 +56,89 @@ func ParseArgs(args []string) []string {
 	return args
 }
 
-// Unsupported : gdk_selection_owner_get_for_display : unsupported parameter selection : Blacklisted record : GdkAtom
+// SelectionOwnerGetForDisplay is a wrapper around the C function gdk_selection_owner_get_for_display.
+func SelectionOwnerGetForDisplay(display *Display, selection *Atom) *Window {
+	c_display := (*C.GdkDisplay)(C.NULL)
+	if display != nil {
+		c_display = (*C.GdkDisplay)(display.ToC())
+	}
 
-// Unsupported : gdk_selection_owner_set_for_display : unsupported parameter selection : Blacklisted record : GdkAtom
+	c_selection := (C.GdkAtom)(C.NULL)
+	if selection != nil {
+		c_selection = (C.GdkAtom)(selection.ToC())
+	}
 
-// Unsupported : gdk_selection_send_notify_for_display : unsupported parameter selection : Blacklisted record : GdkAtom
+	retC := C.gdk_selection_owner_get_for_display(c_display, c_selection)
+	var retGo (*Window)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WindowNewFromC(unsafe.Pointer(retC))
+	}
 
-// Unsupported : gdk_text_property_to_utf8_list_for_display : unsupported parameter encoding : Blacklisted record : GdkAtom
+	return retGo
+}
+
+// SelectionOwnerSetForDisplay is a wrapper around the C function gdk_selection_owner_set_for_display.
+func SelectionOwnerSetForDisplay(display *Display, owner *Window, selection *Atom, time uint32, sendEvent bool) bool {
+	c_display := (*C.GdkDisplay)(C.NULL)
+	if display != nil {
+		c_display = (*C.GdkDisplay)(display.ToC())
+	}
+
+	c_owner := (*C.GdkWindow)(C.NULL)
+	if owner != nil {
+		c_owner = (*C.GdkWindow)(owner.ToC())
+	}
+
+	c_selection := (C.GdkAtom)(C.NULL)
+	if selection != nil {
+		c_selection = (C.GdkAtom)(selection.ToC())
+	}
+
+	c_time_ := (C.guint32)(time)
+
+	c_send_event :=
+		boolToGboolean(sendEvent)
+
+	retC := C.gdk_selection_owner_set_for_display(c_display, c_owner, c_selection, c_time_, c_send_event)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// SelectionSendNotifyForDisplay is a wrapper around the C function gdk_selection_send_notify_for_display.
+func SelectionSendNotifyForDisplay(display *Display, requestor *Window, selection *Atom, target *Atom, property *Atom, time uint32) {
+	c_display := (*C.GdkDisplay)(C.NULL)
+	if display != nil {
+		c_display = (*C.GdkDisplay)(display.ToC())
+	}
+
+	c_requestor := (*C.GdkWindow)(C.NULL)
+	if requestor != nil {
+		c_requestor = (*C.GdkWindow)(requestor.ToC())
+	}
+
+	c_selection := (C.GdkAtom)(C.NULL)
+	if selection != nil {
+		c_selection = (C.GdkAtom)(selection.ToC())
+	}
+
+	c_target := (C.GdkAtom)(C.NULL)
+	if target != nil {
+		c_target = (C.GdkAtom)(target.ToC())
+	}
+
+	c_property := (C.GdkAtom)(C.NULL)
+	if property != nil {
+		c_property = (C.GdkAtom)(property.ToC())
+	}
+
+	c_time_ := (C.guint32)(time)
+
+	C.gdk_selection_send_notify_for_display(c_display, c_requestor, c_selection, c_target, c_property, c_time_)
+
+	return
+}
+
+// Unsupported : gdk_text_property_to_utf8_list_for_display : unsupported parameter list : output array param list

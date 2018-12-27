@@ -224,7 +224,7 @@ func (f *Function) generateCall(g *jen.Group) *jen.Statement {
 		}).
 		Qual("C", cIdentifier).
 		CallFunc(func(g *jen.Group) {
-			// Assumption that receiver is always first agumment.
+			// Assumption that receiver is always first argument.
 			// If turns out not to be true, will need to look at
 			// using <InstanceParameter> position.
 			f.generateReceiverArgument(g)
@@ -241,11 +241,17 @@ func (f *Function) generateReceiverArgument(g *jen.Group) {
 
 	typ := f.InstanceParameter.Type
 
+	dereferenceAsterisks := ""
+	if !strings.HasSuffix(typ.cTypeName, "pointer") && typ.indirectLevel == 0 {
+		dereferenceAsterisks = "*"
+	}
+
 	g.
 		Parens(jen.
 			Op(strings.Repeat("*", typ.indirectLevel)).
 			Qual("C", typ.cTypeName)).
 		Parens(jen.
+			Op(dereferenceAsterisks).
 			Id("recv").
 			Op(".").
 			Id("native"))

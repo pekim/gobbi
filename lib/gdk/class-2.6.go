@@ -10,7 +10,18 @@ package gdk
 // #include <stdlib.h>
 import "C"
 
-// Unsupported : gdk_display_request_selection_notification : unsupported parameter selection : Blacklisted record : GdkAtom
+// RequestSelectionNotification is a wrapper around the C function gdk_display_request_selection_notification.
+func (recv *Display) RequestSelectionNotification(selection *Atom) bool {
+	c_selection := (C.GdkAtom)(C.NULL)
+	if selection != nil {
+		c_selection = (C.GdkAtom)(selection.ToC())
+	}
+
+	retC := C.gdk_display_request_selection_notification((*C.GdkDisplay)(recv.native), c_selection)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
 
 // Unsupported : gdk_display_store_clipboard : unsupported parameter targets :
 

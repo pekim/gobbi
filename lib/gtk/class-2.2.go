@@ -18,7 +18,24 @@ import (
 // #include <stdlib.h>
 import "C"
 
-// gtk_clipboard_get_for_display : unsupported parameter selection : Blacklisted record : GdkAtom
+// ClipboardGetForDisplay is a wrapper around the C function gtk_clipboard_get_for_display.
+func ClipboardGetForDisplay(display *gdk.Display, selection *gdk.Atom) *Clipboard {
+	c_display := (*C.GdkDisplay)(C.NULL)
+	if display != nil {
+		c_display = (*C.GdkDisplay)(display.ToC())
+	}
+
+	c_selection := (C.GdkAtom)(C.NULL)
+	if selection != nil {
+		c_selection = (C.GdkAtom)(selection.ToC())
+	}
+
+	retC := C.gtk_clipboard_get_for_display(c_display, c_selection)
+	retGo := ClipboardNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
 // GetDisplay is a wrapper around the C function gtk_clipboard_get_display.
 func (recv *Clipboard) GetDisplay() *gdk.Display {
 	retC := C.gtk_clipboard_get_display((*C.GtkClipboard)(recv.native))
@@ -354,7 +371,18 @@ func (recv *TreeViewColumn) FocusCell(cell *CellRenderer) {
 	return
 }
 
-// Unsupported : gtk_widget_get_clipboard : unsupported parameter selection : Blacklisted record : GdkAtom
+// GetClipboard is a wrapper around the C function gtk_widget_get_clipboard.
+func (recv *Widget) GetClipboard(selection *gdk.Atom) *Clipboard {
+	c_selection := (C.GdkAtom)(C.NULL)
+	if selection != nil {
+		c_selection = (C.GdkAtom)(selection.ToC())
+	}
+
+	retC := C.gtk_widget_get_clipboard((*C.GtkWidget)(recv.native), c_selection)
+	retGo := ClipboardNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetDisplay is a wrapper around the C function gtk_widget_get_display.
 func (recv *Widget) GetDisplay() *gdk.Display {

@@ -9,5 +9,3 @@ package gdk
 // #include <gdk/gdk.h>
 // #include <stdlib.h>
 import "C"
-
-// Unsupported : gdk_atom_intern_static_string : return type : Blacklisted record : GdkAtom

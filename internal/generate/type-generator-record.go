@@ -223,6 +223,11 @@ func (t *TypeGeneratorRecord) generateReturnCToGo(g *jen.Group, isParam bool,
 			Id(goVarName).
 			Op(":=").
 			Do(func(s *jen.Statement) {
+				if t.typ.indirectLevel == 0 {
+					s.Op("*")
+				}
+			}).
+			Do(func(s *jen.Statement) {
 				if pkg != "" {
 					s.Qual(pkg, t.record.newFromCFuncName)
 				} else {

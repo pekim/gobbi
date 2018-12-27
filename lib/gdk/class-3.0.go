@@ -39,7 +39,24 @@ func (recv *Device) GetAssociatedDevice() *Device {
 	return retGo
 }
 
-// Unsupported : gdk_device_get_axis_value : unsupported parameter axis_label : Blacklisted record : GdkAtom
+// GetAxisValue is a wrapper around the C function gdk_device_get_axis_value.
+func (recv *Device) GetAxisValue(axes []float64, axisLabel *Atom) (bool, float64) {
+	c_axes := &axes[0]
+
+	c_axis_label := (C.GdkAtom)(C.NULL)
+	if axisLabel != nil {
+		c_axis_label = (C.GdkAtom)(axisLabel.ToC())
+	}
+
+	var c_value C.gdouble
+
+	retC := C.gdk_device_get_axis_value((*C.GdkDevice)(recv.native), (*C.gdouble)(unsafe.Pointer(c_axes)), c_axis_label, &c_value)
+	retGo := retC == C.TRUE
+
+	value := (float64)(c_value)
+
+	return retGo, value
+}
 
 // GetDeviceType is a wrapper around the C function gdk_device_get_device_type.
 func (recv *Device) GetDeviceType() DeviceType {

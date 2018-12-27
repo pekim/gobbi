@@ -27,7 +27,13 @@ func BorderNew() *Border {
 
 // Unsupported : gtk_selection_data_get_data : no return type
 
-// Unsupported : gtk_selection_data_get_data_type : return type : Blacklisted record : GdkAtom
+// GetDataType is a wrapper around the C function gtk_selection_data_get_data_type.
+func (recv *SelectionData) GetDataType() gdk.Atom {
+	retC := C.gtk_selection_data_get_data_type((*C.GtkSelectionData)(recv.native))
+	retGo := *gdk.AtomNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // GetDisplay is a wrapper around the C function gtk_selection_data_get_display.
 func (recv *SelectionData) GetDisplay() *gdk.Display {
@@ -53,4 +59,10 @@ func (recv *SelectionData) GetLength() int32 {
 	return retGo
 }
 
-// Unsupported : gtk_selection_data_get_target : return type : Blacklisted record : GdkAtom
+// GetTarget is a wrapper around the C function gtk_selection_data_get_target.
+func (recv *SelectionData) GetTarget() gdk.Atom {
+	retC := C.gtk_selection_data_get_target((*C.GtkSelectionData)(recv.native))
+	retGo := *gdk.AtomNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}

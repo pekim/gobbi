@@ -30,7 +30,7 @@ func AddOptionEntriesLibgtkOnly(group *glib.OptionGroup) {
 	return
 }
 
-// Unsupported : gdk_atom_intern : return type : Blacklisted record : GdkAtom
+// Blacklisted : gdk_atom_intern
 
 // Beep is a wrapper around the C function gdk_beep.
 func Beep() {
@@ -125,7 +125,18 @@ func DragDrop(context *DragContext, time uint32) {
 	return
 }
 
-// Unsupported : gdk_drag_get_selection : return type : Blacklisted record : GdkAtom
+// DragGetSelection is a wrapper around the C function gdk_drag_get_selection.
+func DragGetSelection(context *DragContext) Atom {
+	c_context := (*C.GdkDragContext)(C.NULL)
+	if context != nil {
+		c_context = (*C.GdkDragContext)(context.ToC())
+	}
+
+	retC := C.gdk_drag_get_selection(c_context)
+	retGo := *AtomNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // DragMotion is a wrapper around the C function gdk_drag_motion.
 func DragMotion(context *DragContext, destWindow *Window, protocol DragProtocol, xRoot int32, yRoot int32, suggestedAction DragAction, possibleActions DragAction, time uint32) bool {
@@ -596,25 +607,154 @@ func PreParseLibgtkOnly() {
 	return
 }
 
-// Unsupported : gdk_property_change : unsupported parameter property : Blacklisted record : GdkAtom
+// PropertyChange is a wrapper around the C function gdk_property_change.
+func PropertyChange(window *Window, property *Atom, type_ *Atom, format int32, mode PropMode, data uint8, nelements int32) {
+	c_window := (*C.GdkWindow)(C.NULL)
+	if window != nil {
+		c_window = (*C.GdkWindow)(window.ToC())
+	}
 
-// Unsupported : gdk_property_delete : unsupported parameter property : Blacklisted record : GdkAtom
+	c_property := (C.GdkAtom)(C.NULL)
+	if property != nil {
+		c_property = (C.GdkAtom)(property.ToC())
+	}
 
-// Unsupported : gdk_property_get : unsupported parameter property : Blacklisted record : GdkAtom
+	c_type := (C.GdkAtom)(C.NULL)
+	if type_ != nil {
+		c_type = (C.GdkAtom)(type_.ToC())
+	}
+
+	c_format := (C.gint)(format)
+
+	c_mode := (C.GdkPropMode)(mode)
+
+	c_data := (C.guchar)(data)
+
+	c_nelements := (C.gint)(nelements)
+
+	C.gdk_property_change(c_window, c_property, c_type, c_format, c_mode, &c_data, c_nelements)
+
+	return
+}
+
+// PropertyDelete is a wrapper around the C function gdk_property_delete.
+func PropertyDelete(window *Window, property *Atom) {
+	c_window := (*C.GdkWindow)(C.NULL)
+	if window != nil {
+		c_window = (*C.GdkWindow)(window.ToC())
+	}
+
+	c_property := (C.GdkAtom)(C.NULL)
+	if property != nil {
+		c_property = (C.GdkAtom)(property.ToC())
+	}
+
+	C.gdk_property_delete(c_window, c_property)
+
+	return
+}
+
+// Unsupported : gdk_property_get : unsupported parameter actual_length : array length param actual_length is pointer (gint*)
 
 // Unsupported : gdk_query_depths : unsupported parameter depths : output array param depths
 
 // Unsupported : gdk_query_visual_types : unsupported parameter visual_types : output array param visual_types
 
-// Unsupported : gdk_selection_convert : unsupported parameter selection : Blacklisted record : GdkAtom
+// SelectionConvert is a wrapper around the C function gdk_selection_convert.
+func SelectionConvert(requestor *Window, selection *Atom, target *Atom, time uint32) {
+	c_requestor := (*C.GdkWindow)(C.NULL)
+	if requestor != nil {
+		c_requestor = (*C.GdkWindow)(requestor.ToC())
+	}
 
-// Unsupported : gdk_selection_owner_get : unsupported parameter selection : Blacklisted record : GdkAtom
+	c_selection := (C.GdkAtom)(C.NULL)
+	if selection != nil {
+		c_selection = (C.GdkAtom)(selection.ToC())
+	}
 
-// Unsupported : gdk_selection_owner_set : unsupported parameter selection : Blacklisted record : GdkAtom
+	c_target := (C.GdkAtom)(C.NULL)
+	if target != nil {
+		c_target = (C.GdkAtom)(target.ToC())
+	}
+
+	c_time_ := (C.guint32)(time)
+
+	C.gdk_selection_convert(c_requestor, c_selection, c_target, c_time_)
+
+	return
+}
+
+// SelectionOwnerGet is a wrapper around the C function gdk_selection_owner_get.
+func SelectionOwnerGet(selection *Atom) *Window {
+	c_selection := (C.GdkAtom)(C.NULL)
+	if selection != nil {
+		c_selection = (C.GdkAtom)(selection.ToC())
+	}
+
+	retC := C.gdk_selection_owner_get(c_selection)
+	var retGo (*Window)
+	if retC == nil {
+		retGo = nil
+	} else {
+		retGo = WindowNewFromC(unsafe.Pointer(retC))
+	}
+
+	return retGo
+}
+
+// SelectionOwnerSet is a wrapper around the C function gdk_selection_owner_set.
+func SelectionOwnerSet(owner *Window, selection *Atom, time uint32, sendEvent bool) bool {
+	c_owner := (*C.GdkWindow)(C.NULL)
+	if owner != nil {
+		c_owner = (*C.GdkWindow)(owner.ToC())
+	}
+
+	c_selection := (C.GdkAtom)(C.NULL)
+	if selection != nil {
+		c_selection = (C.GdkAtom)(selection.ToC())
+	}
+
+	c_time_ := (C.guint32)(time)
+
+	c_send_event :=
+		boolToGboolean(sendEvent)
+
+	retC := C.gdk_selection_owner_set(c_owner, c_selection, c_time_, c_send_event)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
 
 // Unsupported : gdk_selection_property_get : unsupported parameter data : guchar** with indirection level of 2
 
-// Unsupported : gdk_selection_send_notify : unsupported parameter selection : Blacklisted record : GdkAtom
+// SelectionSendNotify is a wrapper around the C function gdk_selection_send_notify.
+func SelectionSendNotify(requestor *Window, selection *Atom, target *Atom, property *Atom, time uint32) {
+	c_requestor := (*C.GdkWindow)(C.NULL)
+	if requestor != nil {
+		c_requestor = (*C.GdkWindow)(requestor.ToC())
+	}
+
+	c_selection := (C.GdkAtom)(C.NULL)
+	if selection != nil {
+		c_selection = (C.GdkAtom)(selection.ToC())
+	}
+
+	c_target := (C.GdkAtom)(C.NULL)
+	if target != nil {
+		c_target = (C.GdkAtom)(target.ToC())
+	}
+
+	c_property := (C.GdkAtom)(C.NULL)
+	if property != nil {
+		c_property = (C.GdkAtom)(property.ToC())
+	}
+
+	c_time_ := (C.guint32)(time)
+
+	C.gdk_selection_send_notify(c_requestor, c_selection, c_target, c_property, c_time_)
+
+	return
+}
 
 // SetDoubleClickTime is a wrapper around the C function gdk_set_double_click_time.
 func SetDoubleClickTime(msec uint32) {

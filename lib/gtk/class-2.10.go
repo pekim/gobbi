@@ -819,7 +819,7 @@ func CellRendererSpinNew() *CellRendererSpin {
 
 // Unsupported : gtk_clipboard_request_rich_text : unsupported parameter callback : no type generator for ClipboardRichTextReceivedFunc (GtkClipboardRichTextReceivedFunc) for param callback
 
-// Unsupported : gtk_clipboard_wait_for_rich_text : unsupported parameter format : Blacklisted record : GdkAtom
+// Unsupported : gtk_clipboard_wait_for_rich_text : no return type
 
 // WaitIsRichTextAvailable is a wrapper around the C function gtk_clipboard_wait_is_rich_text_available.
 func (recv *Clipboard) WaitIsRichTextAvailable(buffer *TextBuffer) bool {
@@ -3770,11 +3770,70 @@ func (recv *Style) LookupColor(colorName string) (bool, *gdk.Color) {
 	return retGo, color
 }
 
-// Unsupported : gtk_text_buffer_deserialize : unsupported parameter format : Blacklisted record : GdkAtom
+// Deserialize is a wrapper around the C function gtk_text_buffer_deserialize.
+func (recv *TextBuffer) Deserialize(contentBuffer *TextBuffer, format *gdk.Atom, iter *TextIter, data []uint8) (bool, error) {
+	c_content_buffer := (*C.GtkTextBuffer)(C.NULL)
+	if contentBuffer != nil {
+		c_content_buffer = (*C.GtkTextBuffer)(contentBuffer.ToC())
+	}
 
-// Unsupported : gtk_text_buffer_deserialize_get_can_create_tags : unsupported parameter format : Blacklisted record : GdkAtom
+	c_format := (C.GdkAtom)(C.NULL)
+	if format != nil {
+		c_format = (C.GdkAtom)(format.ToC())
+	}
 
-// Unsupported : gtk_text_buffer_deserialize_set_can_create_tags : unsupported parameter format : Blacklisted record : GdkAtom
+	c_iter := (*C.GtkTextIter)(C.NULL)
+	if iter != nil {
+		c_iter = (*C.GtkTextIter)(iter.ToC())
+	}
+
+	c_data := &data[0]
+
+	c_length := (C.gsize)(len(data))
+
+	var cThrowableError *C.GError
+
+	retC := C.gtk_text_buffer_deserialize((*C.GtkTextBuffer)(recv.native), c_content_buffer, c_format, c_iter, (*C.guint8)(unsafe.Pointer(c_data)), c_length, &cThrowableError)
+	retGo := retC == C.TRUE
+
+	var goError error = nil
+	if cThrowableError != nil {
+		goThrowableError := glib.ErrorNewFromC(unsafe.Pointer(cThrowableError))
+		goError = goThrowableError
+
+		C.g_error_free(cThrowableError)
+	}
+
+	return retGo, goError
+}
+
+// DeserializeGetCanCreateTags is a wrapper around the C function gtk_text_buffer_deserialize_get_can_create_tags.
+func (recv *TextBuffer) DeserializeGetCanCreateTags(format *gdk.Atom) bool {
+	c_format := (C.GdkAtom)(C.NULL)
+	if format != nil {
+		c_format = (C.GdkAtom)(format.ToC())
+	}
+
+	retC := C.gtk_text_buffer_deserialize_get_can_create_tags((*C.GtkTextBuffer)(recv.native), c_format)
+	retGo := retC == C.TRUE
+
+	return retGo
+}
+
+// DeserializeSetCanCreateTags is a wrapper around the C function gtk_text_buffer_deserialize_set_can_create_tags.
+func (recv *TextBuffer) DeserializeSetCanCreateTags(format *gdk.Atom, canCreateTags bool) {
+	c_format := (C.GdkAtom)(C.NULL)
+	if format != nil {
+		c_format = (C.GdkAtom)(format.ToC())
+	}
+
+	c_can_create_tags :=
+		boolToGboolean(canCreateTags)
+
+	C.gtk_text_buffer_deserialize_set_can_create_tags((*C.GtkTextBuffer)(recv.native), c_format, c_can_create_tags)
+
+	return
+}
 
 // GetCopyTargetList is a wrapper around the C function gtk_text_buffer_get_copy_target_list.
 func (recv *TextBuffer) GetCopyTargetList() *TargetList {
@@ -3806,17 +3865,55 @@ func (recv *TextBuffer) GetPasteTargetList() *TargetList {
 
 // Unsupported : gtk_text_buffer_register_deserialize_format : unsupported parameter function : no type generator for TextBufferDeserializeFunc (GtkTextBufferDeserializeFunc) for param function
 
-// Unsupported : gtk_text_buffer_register_deserialize_tagset : return type : Blacklisted record : GdkAtom
+// RegisterDeserializeTagset is a wrapper around the C function gtk_text_buffer_register_deserialize_tagset.
+func (recv *TextBuffer) RegisterDeserializeTagset(tagsetName string) gdk.Atom {
+	c_tagset_name := C.CString(tagsetName)
+	defer C.free(unsafe.Pointer(c_tagset_name))
+
+	retC := C.gtk_text_buffer_register_deserialize_tagset((*C.GtkTextBuffer)(recv.native), c_tagset_name)
+	retGo := *gdk.AtomNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Unsupported : gtk_text_buffer_register_serialize_format : unsupported parameter function : no type generator for TextBufferSerializeFunc (GtkTextBufferSerializeFunc) for param function
 
-// Unsupported : gtk_text_buffer_register_serialize_tagset : return type : Blacklisted record : GdkAtom
+// RegisterSerializeTagset is a wrapper around the C function gtk_text_buffer_register_serialize_tagset.
+func (recv *TextBuffer) RegisterSerializeTagset(tagsetName string) gdk.Atom {
+	c_tagset_name := C.CString(tagsetName)
+	defer C.free(unsafe.Pointer(c_tagset_name))
 
-// Unsupported : gtk_text_buffer_serialize : unsupported parameter format : Blacklisted record : GdkAtom
+	retC := C.gtk_text_buffer_register_serialize_tagset((*C.GtkTextBuffer)(recv.native), c_tagset_name)
+	retGo := *gdk.AtomNewFromC(unsafe.Pointer(retC))
 
-// Unsupported : gtk_text_buffer_unregister_deserialize_format : unsupported parameter format : Blacklisted record : GdkAtom
+	return retGo
+}
 
-// Unsupported : gtk_text_buffer_unregister_serialize_format : unsupported parameter format : Blacklisted record : GdkAtom
+// Unsupported : gtk_text_buffer_serialize : no return type
+
+// UnregisterDeserializeFormat is a wrapper around the C function gtk_text_buffer_unregister_deserialize_format.
+func (recv *TextBuffer) UnregisterDeserializeFormat(format *gdk.Atom) {
+	c_format := (C.GdkAtom)(C.NULL)
+	if format != nil {
+		c_format = (C.GdkAtom)(format.ToC())
+	}
+
+	C.gtk_text_buffer_unregister_deserialize_format((*C.GtkTextBuffer)(recv.native), c_format)
+
+	return
+}
+
+// UnregisterSerializeFormat is a wrapper around the C function gtk_text_buffer_unregister_serialize_format.
+func (recv *TextBuffer) UnregisterSerializeFormat(format *gdk.Atom) {
+	c_format := (C.GdkAtom)(C.NULL)
+	if format != nil {
+		c_format = (C.GdkAtom)(format.ToC())
+	}
+
+	C.gtk_text_buffer_unregister_serialize_format((*C.GtkTextBuffer)(recv.native), c_format)
+
+	return
+}
 
 // Unsupported : gtk_tree_store_insert_with_values : unsupported parameter ... : varargs
 

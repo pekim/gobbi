@@ -11,7 +11,54 @@ import "unsafe"
 // #include <stdlib.h>
 import "C"
 
-// Blacklisted : GdkAtom
+// Atom is a wrapper around the C record GdkAtom.
+type Atom struct {
+	native *C.GdkAtom
+}
+
+func AtomNewFromC(u unsafe.Pointer) *Atom {
+	c := (*C.GdkAtom)(u)
+	if c == nil {
+		return nil
+	}
+
+	g := &Atom{native: c}
+
+	return g
+}
+
+func (recv *Atom) ToC() unsafe.Pointer {
+
+	return (unsafe.Pointer)(recv.native)
+}
+
+// Equals compares this Atom with another Atom, and returns true if they represent the same GObject.
+func (recv *Atom) Equals(other *Atom) bool {
+	return other.ToC() == recv.ToC()
+}
+
+// AtomIntern is a wrapper around the C function gdk_atom_intern.
+func AtomIntern(atomName string, onlyIfExists bool) Atom {
+	c_atom_name := C.CString(atomName)
+	defer C.free(unsafe.Pointer(c_atom_name))
+
+	c_only_if_exists :=
+		boolToGboolean(onlyIfExists)
+
+	retC := C.gdk_atom_intern(c_atom_name, c_only_if_exists)
+	retGo := *AtomNewFromC(unsafe.Pointer(retC))
+
+	return retGo
+}
+
+// Name is a wrapper around the C function gdk_atom_name.
+func (recv *Atom) Name() string {
+	retC := C.gdk_atom_name((C.GdkAtom)(*recv.native))
+	retGo := C.GoString(retC)
+	defer C.free(unsafe.Pointer(retC))
+
+	return retGo
+}
 
 // Color is a wrapper around the C record GdkColor.
 type Color struct {
