@@ -177,6 +177,15 @@ import (
 */
 /*
 
+	void recentmanager_changedHandler(GObject *, gpointer);
+
+	static gulong RecentManager_signal_connect_changed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "changed", G_CALLBACK(recentmanager_changedHandler), data);
+	}
+
+*/
+/*
+
 	void spinbutton_wrappedHandler(GObject *, gpointer);
 
 	static gulong SpinButton_signal_connect_wrapped(gpointer instance, gpointer data) {
@@ -3123,6 +3132,66 @@ func (recv *RecentManager) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a RecentManager.
 func CastToRecentManager(object *gobject.Object) *RecentManager {
 	return RecentManagerNewFromC(object.ToC())
+}
+
+type signalRecentManagerChangedDetail struct {
+	callback  RecentManagerSignalChangedCallback
+	handlerID C.gulong
+}
+
+var signalRecentManagerChangedId int
+var signalRecentManagerChangedMap = make(map[int]signalRecentManagerChangedDetail)
+var signalRecentManagerChangedLock sync.RWMutex
+
+// RecentManagerSignalChangedCallback is a callback function for a 'changed' signal emitted from a RecentManager.
+type RecentManagerSignalChangedCallback func()
+
+/*
+ConnectChanged connects the callback to the 'changed' signal for the RecentManager.
+
+The returned value represents the connection, and may be passed to DisconnectChanged to remove it.
+*/
+func (recv *RecentManager) ConnectChanged(callback RecentManagerSignalChangedCallback) int {
+	signalRecentManagerChangedLock.Lock()
+	defer signalRecentManagerChangedLock.Unlock()
+
+	signalRecentManagerChangedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.RecentManager_signal_connect_changed(instance, C.gpointer(uintptr(signalRecentManagerChangedId)))
+
+	detail := signalRecentManagerChangedDetail{callback, handlerID}
+	signalRecentManagerChangedMap[signalRecentManagerChangedId] = detail
+
+	return signalRecentManagerChangedId
+}
+
+/*
+DisconnectChanged disconnects a callback from the 'changed' signal for the RecentManager.
+
+The connectionID should be a value returned from a call to ConnectChanged.
+*/
+func (recv *RecentManager) DisconnectChanged(connectionID int) {
+	signalRecentManagerChangedLock.Lock()
+	defer signalRecentManagerChangedLock.Unlock()
+
+	detail, exists := signalRecentManagerChangedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalRecentManagerChangedMap, connectionID)
+}
+
+//export recentmanager_changedHandler
+func recentmanager_changedHandler(_ *C.GObject, data C.gpointer) {
+	signalRecentManagerChangedLock.RLock()
+	defer signalRecentManagerChangedLock.RUnlock()
+
+	index := int(uintptr(data))
+	callback := signalRecentManagerChangedMap[index].callback
+	callback()
 }
 
 // RecentManagerNew is a wrapper around the C function gtk_recent_manager_new.

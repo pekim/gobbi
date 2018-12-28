@@ -68,3 +68,5 @@ func (recv *DBusConnection) RegisterObjectWithClosures(objectPath string, interf
 }
 
 // Unsupported : g_list_store_sort : unsupported parameter compare_func : no type generator for GLib.CompareDataFunc (GCompareDataFunc) for param compare_func
+
+// Unsupported signal 'event' for SocketListener : unsupported parameter event : type SocketListenerEvent :

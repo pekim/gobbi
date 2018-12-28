@@ -21,6 +21,15 @@ import (
 // #include <stdlib.h>
 /*
 
+	void nativedialog_responseHandler(GObject *, gint, gpointer);
+
+	static gulong NativeDialog_signal_connect_response(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "response", G_CALLBACK(nativedialog_responseHandler), data);
+	}
+
+*/
+/*
+
 	void placessidebar_mountHandler(GObject *, GMountOperation *, gpointer);
 
 	static gulong PlacesSidebar_signal_connect_mount(gpointer instance, gpointer data) {
@@ -253,6 +262,68 @@ func (recv *NativeDialog) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a NativeDialog.
 func CastToNativeDialog(object *gobject.Object) *NativeDialog {
 	return NativeDialogNewFromC(object.ToC())
+}
+
+type signalNativeDialogResponseDetail struct {
+	callback  NativeDialogSignalResponseCallback
+	handlerID C.gulong
+}
+
+var signalNativeDialogResponseId int
+var signalNativeDialogResponseMap = make(map[int]signalNativeDialogResponseDetail)
+var signalNativeDialogResponseLock sync.RWMutex
+
+// NativeDialogSignalResponseCallback is a callback function for a 'response' signal emitted from a NativeDialog.
+type NativeDialogSignalResponseCallback func(responseId int32)
+
+/*
+ConnectResponse connects the callback to the 'response' signal for the NativeDialog.
+
+The returned value represents the connection, and may be passed to DisconnectResponse to remove it.
+*/
+func (recv *NativeDialog) ConnectResponse(callback NativeDialogSignalResponseCallback) int {
+	signalNativeDialogResponseLock.Lock()
+	defer signalNativeDialogResponseLock.Unlock()
+
+	signalNativeDialogResponseId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.NativeDialog_signal_connect_response(instance, C.gpointer(uintptr(signalNativeDialogResponseId)))
+
+	detail := signalNativeDialogResponseDetail{callback, handlerID}
+	signalNativeDialogResponseMap[signalNativeDialogResponseId] = detail
+
+	return signalNativeDialogResponseId
+}
+
+/*
+DisconnectResponse disconnects a callback from the 'response' signal for the NativeDialog.
+
+The connectionID should be a value returned from a call to ConnectResponse.
+*/
+func (recv *NativeDialog) DisconnectResponse(connectionID int) {
+	signalNativeDialogResponseLock.Lock()
+	defer signalNativeDialogResponseLock.Unlock()
+
+	detail, exists := signalNativeDialogResponseMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalNativeDialogResponseMap, connectionID)
+}
+
+//export nativedialog_responseHandler
+func nativedialog_responseHandler(_ *C.GObject, c_response_id C.gint, data C.gpointer) {
+	signalNativeDialogResponseLock.RLock()
+	defer signalNativeDialogResponseLock.RUnlock()
+
+	responseId := int32(c_response_id)
+
+	index := int(uintptr(data))
+	callback := signalNativeDialogResponseMap[index].callback
+	callback(responseId)
 }
 
 // Destroy is a wrapper around the C function gtk_native_dialog_destroy.

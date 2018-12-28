@@ -22,6 +22,33 @@ import (
 // #include <stdlib.h>
 /*
 
+	GdkGLContext * glarea_createContextHandler(GObject *, gpointer);
+
+	static gulong GLArea_signal_connect_create_context(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "create-context", G_CALLBACK(glarea_createContextHandler), data);
+	}
+
+*/
+/*
+
+	gboolean glarea_renderHandler(GObject *, GdkGLContext *, gpointer);
+
+	static gulong GLArea_signal_connect_render(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "render", G_CALLBACK(glarea_renderHandler), data);
+	}
+
+*/
+/*
+
+	void glarea_resizeHandler(GObject *, gint, gint, gpointer);
+
+	static gulong GLArea_signal_connect_resize(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "resize", G_CALLBACK(glarea_resizeHandler), data);
+	}
+
+*/
+/*
+
 	void searchentry_nextMatchHandler(GObject *, gpointer);
 
 	static gulong SearchEntry_signal_connect_next_match(gpointer instance, gpointer data) {
@@ -135,6 +162,198 @@ func (recv *GLArea) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a GLArea.
 func CastToGLArea(object *gobject.Object) *GLArea {
 	return GLAreaNewFromC(object.ToC())
+}
+
+type signalGLAreaCreateContextDetail struct {
+	callback  GLAreaSignalCreateContextCallback
+	handlerID C.gulong
+}
+
+var signalGLAreaCreateContextId int
+var signalGLAreaCreateContextMap = make(map[int]signalGLAreaCreateContextDetail)
+var signalGLAreaCreateContextLock sync.RWMutex
+
+// GLAreaSignalCreateContextCallback is a callback function for a 'create-context' signal emitted from a GLArea.
+type GLAreaSignalCreateContextCallback func() gdk.GLContext
+
+/*
+ConnectCreateContext connects the callback to the 'create-context' signal for the GLArea.
+
+The returned value represents the connection, and may be passed to DisconnectCreateContext to remove it.
+*/
+func (recv *GLArea) ConnectCreateContext(callback GLAreaSignalCreateContextCallback) int {
+	signalGLAreaCreateContextLock.Lock()
+	defer signalGLAreaCreateContextLock.Unlock()
+
+	signalGLAreaCreateContextId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.GLArea_signal_connect_create_context(instance, C.gpointer(uintptr(signalGLAreaCreateContextId)))
+
+	detail := signalGLAreaCreateContextDetail{callback, handlerID}
+	signalGLAreaCreateContextMap[signalGLAreaCreateContextId] = detail
+
+	return signalGLAreaCreateContextId
+}
+
+/*
+DisconnectCreateContext disconnects a callback from the 'create-context' signal for the GLArea.
+
+The connectionID should be a value returned from a call to ConnectCreateContext.
+*/
+func (recv *GLArea) DisconnectCreateContext(connectionID int) {
+	signalGLAreaCreateContextLock.Lock()
+	defer signalGLAreaCreateContextLock.Unlock()
+
+	detail, exists := signalGLAreaCreateContextMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalGLAreaCreateContextMap, connectionID)
+}
+
+//export glarea_createContextHandler
+func glarea_createContextHandler(_ *C.GObject, data C.gpointer) *C.GdkGLContext {
+	signalGLAreaCreateContextLock.RLock()
+	defer signalGLAreaCreateContextLock.RUnlock()
+
+	index := int(uintptr(data))
+	callback := signalGLAreaCreateContextMap[index].callback
+	retGo := callback()
+	retC :=
+		(*C.GdkGLContext)(retGo.ToC())
+	return retC
+}
+
+type signalGLAreaRenderDetail struct {
+	callback  GLAreaSignalRenderCallback
+	handlerID C.gulong
+}
+
+var signalGLAreaRenderId int
+var signalGLAreaRenderMap = make(map[int]signalGLAreaRenderDetail)
+var signalGLAreaRenderLock sync.RWMutex
+
+// GLAreaSignalRenderCallback is a callback function for a 'render' signal emitted from a GLArea.
+type GLAreaSignalRenderCallback func(context *gdk.GLContext) bool
+
+/*
+ConnectRender connects the callback to the 'render' signal for the GLArea.
+
+The returned value represents the connection, and may be passed to DisconnectRender to remove it.
+*/
+func (recv *GLArea) ConnectRender(callback GLAreaSignalRenderCallback) int {
+	signalGLAreaRenderLock.Lock()
+	defer signalGLAreaRenderLock.Unlock()
+
+	signalGLAreaRenderId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.GLArea_signal_connect_render(instance, C.gpointer(uintptr(signalGLAreaRenderId)))
+
+	detail := signalGLAreaRenderDetail{callback, handlerID}
+	signalGLAreaRenderMap[signalGLAreaRenderId] = detail
+
+	return signalGLAreaRenderId
+}
+
+/*
+DisconnectRender disconnects a callback from the 'render' signal for the GLArea.
+
+The connectionID should be a value returned from a call to ConnectRender.
+*/
+func (recv *GLArea) DisconnectRender(connectionID int) {
+	signalGLAreaRenderLock.Lock()
+	defer signalGLAreaRenderLock.Unlock()
+
+	detail, exists := signalGLAreaRenderMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalGLAreaRenderMap, connectionID)
+}
+
+//export glarea_renderHandler
+func glarea_renderHandler(_ *C.GObject, c_context *C.GdkGLContext, data C.gpointer) C.gboolean {
+	signalGLAreaRenderLock.RLock()
+	defer signalGLAreaRenderLock.RUnlock()
+
+	context := gdk.GLContextNewFromC(unsafe.Pointer(c_context))
+
+	index := int(uintptr(data))
+	callback := signalGLAreaRenderMap[index].callback
+	retGo := callback(context)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
+}
+
+type signalGLAreaResizeDetail struct {
+	callback  GLAreaSignalResizeCallback
+	handlerID C.gulong
+}
+
+var signalGLAreaResizeId int
+var signalGLAreaResizeMap = make(map[int]signalGLAreaResizeDetail)
+var signalGLAreaResizeLock sync.RWMutex
+
+// GLAreaSignalResizeCallback is a callback function for a 'resize' signal emitted from a GLArea.
+type GLAreaSignalResizeCallback func(width int32, height int32)
+
+/*
+ConnectResize connects the callback to the 'resize' signal for the GLArea.
+
+The returned value represents the connection, and may be passed to DisconnectResize to remove it.
+*/
+func (recv *GLArea) ConnectResize(callback GLAreaSignalResizeCallback) int {
+	signalGLAreaResizeLock.Lock()
+	defer signalGLAreaResizeLock.Unlock()
+
+	signalGLAreaResizeId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.GLArea_signal_connect_resize(instance, C.gpointer(uintptr(signalGLAreaResizeId)))
+
+	detail := signalGLAreaResizeDetail{callback, handlerID}
+	signalGLAreaResizeMap[signalGLAreaResizeId] = detail
+
+	return signalGLAreaResizeId
+}
+
+/*
+DisconnectResize disconnects a callback from the 'resize' signal for the GLArea.
+
+The connectionID should be a value returned from a call to ConnectResize.
+*/
+func (recv *GLArea) DisconnectResize(connectionID int) {
+	signalGLAreaResizeLock.Lock()
+	defer signalGLAreaResizeLock.Unlock()
+
+	detail, exists := signalGLAreaResizeMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalGLAreaResizeMap, connectionID)
+}
+
+//export glarea_resizeHandler
+func glarea_resizeHandler(_ *C.GObject, c_width C.gint, c_height C.gint, data C.gpointer) {
+	signalGLAreaResizeLock.RLock()
+	defer signalGLAreaResizeLock.RUnlock()
+
+	width := int32(c_width)
+
+	height := int32(c_height)
+
+	index := int(uintptr(data))
+	callback := signalGLAreaResizeMap[index].callback
+	callback(width, height)
 }
 
 // GLAreaNew is a wrapper around the C function gtk_gl_area_new.

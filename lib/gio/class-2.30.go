@@ -28,6 +28,33 @@ import (
 // #include <stdlib.h>
 /*
 
+	gboolean dbusinterfaceskeleton_gAuthorizeMethodHandler(GObject *, GDBusMethodInvocation *, gpointer);
+
+	static gulong DBusInterfaceSkeleton_signal_connect_g_authorize_method(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "g-authorize-method", G_CALLBACK(dbusinterfaceskeleton_gAuthorizeMethodHandler), data);
+	}
+
+*/
+/*
+
+	void dbusobjectmanagerclient_interfaceProxySignalHandler(GObject *, GDBusObjectProxy *, GDBusProxy *, gchar*, gchar*, GVariant *, gpointer);
+
+	static gulong DBusObjectManagerClient_signal_connect_interface_proxy_signal(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "interface-proxy-signal", G_CALLBACK(dbusobjectmanagerclient_interfaceProxySignalHandler), data);
+	}
+
+*/
+/*
+
+	gboolean dbusobjectskeleton_authorizeMethodHandler(GObject *, GDBusInterfaceSkeleton *, GDBusMethodInvocation *, gpointer);
+
+	static gulong DBusObjectSkeleton_signal_connect_authorize_method(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "authorize-method", G_CALLBACK(dbusobjectskeleton_authorizeMethodHandler), data);
+	}
+
+*/
+/*
+
 	void simpleaction_changeStateHandler(GObject *, GVariant *, gpointer);
 
 	static gulong SimpleAction_signal_connect_change_state(gpointer instance, gpointer data) {
@@ -168,6 +195,71 @@ func (recv *DBusInterfaceSkeleton) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a DBusInterfaceSkeleton.
 func CastToDBusInterfaceSkeleton(object *gobject.Object) *DBusInterfaceSkeleton {
 	return DBusInterfaceSkeletonNewFromC(object.ToC())
+}
+
+type signalDBusInterfaceSkeletonGAuthorizeMethodDetail struct {
+	callback  DBusInterfaceSkeletonSignalGAuthorizeMethodCallback
+	handlerID C.gulong
+}
+
+var signalDBusInterfaceSkeletonGAuthorizeMethodId int
+var signalDBusInterfaceSkeletonGAuthorizeMethodMap = make(map[int]signalDBusInterfaceSkeletonGAuthorizeMethodDetail)
+var signalDBusInterfaceSkeletonGAuthorizeMethodLock sync.RWMutex
+
+// DBusInterfaceSkeletonSignalGAuthorizeMethodCallback is a callback function for a 'g-authorize-method' signal emitted from a DBusInterfaceSkeleton.
+type DBusInterfaceSkeletonSignalGAuthorizeMethodCallback func(invocation *DBusMethodInvocation) bool
+
+/*
+ConnectGAuthorizeMethod connects the callback to the 'g-authorize-method' signal for the DBusInterfaceSkeleton.
+
+The returned value represents the connection, and may be passed to DisconnectGAuthorizeMethod to remove it.
+*/
+func (recv *DBusInterfaceSkeleton) ConnectGAuthorizeMethod(callback DBusInterfaceSkeletonSignalGAuthorizeMethodCallback) int {
+	signalDBusInterfaceSkeletonGAuthorizeMethodLock.Lock()
+	defer signalDBusInterfaceSkeletonGAuthorizeMethodLock.Unlock()
+
+	signalDBusInterfaceSkeletonGAuthorizeMethodId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.DBusInterfaceSkeleton_signal_connect_g_authorize_method(instance, C.gpointer(uintptr(signalDBusInterfaceSkeletonGAuthorizeMethodId)))
+
+	detail := signalDBusInterfaceSkeletonGAuthorizeMethodDetail{callback, handlerID}
+	signalDBusInterfaceSkeletonGAuthorizeMethodMap[signalDBusInterfaceSkeletonGAuthorizeMethodId] = detail
+
+	return signalDBusInterfaceSkeletonGAuthorizeMethodId
+}
+
+/*
+DisconnectGAuthorizeMethod disconnects a callback from the 'g-authorize-method' signal for the DBusInterfaceSkeleton.
+
+The connectionID should be a value returned from a call to ConnectGAuthorizeMethod.
+*/
+func (recv *DBusInterfaceSkeleton) DisconnectGAuthorizeMethod(connectionID int) {
+	signalDBusInterfaceSkeletonGAuthorizeMethodLock.Lock()
+	defer signalDBusInterfaceSkeletonGAuthorizeMethodLock.Unlock()
+
+	detail, exists := signalDBusInterfaceSkeletonGAuthorizeMethodMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalDBusInterfaceSkeletonGAuthorizeMethodMap, connectionID)
+}
+
+//export dbusinterfaceskeleton_gAuthorizeMethodHandler
+func dbusinterfaceskeleton_gAuthorizeMethodHandler(_ *C.GObject, c_invocation *C.GDBusMethodInvocation, data C.gpointer) C.gboolean {
+	signalDBusInterfaceSkeletonGAuthorizeMethodLock.RLock()
+	defer signalDBusInterfaceSkeletonGAuthorizeMethodLock.RUnlock()
+
+	invocation := DBusMethodInvocationNewFromC(unsafe.Pointer(c_invocation))
+
+	index := int(uintptr(data))
+	callback := signalDBusInterfaceSkeletonGAuthorizeMethodMap[index].callback
+	retGo := callback(invocation)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 // Export is a wrapper around the C function g_dbus_interface_skeleton_export.
@@ -343,6 +435,78 @@ func (recv *DBusObjectManagerClient) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a DBusObjectManagerClient.
 func CastToDBusObjectManagerClient(object *gobject.Object) *DBusObjectManagerClient {
 	return DBusObjectManagerClientNewFromC(object.ToC())
+}
+
+// Unsupported signal 'interface-proxy-properties-changed' for DBusObjectManagerClient : unsupported parameter invalidated_properties :
+
+type signalDBusObjectManagerClientInterfaceProxySignalDetail struct {
+	callback  DBusObjectManagerClientSignalInterfaceProxySignalCallback
+	handlerID C.gulong
+}
+
+var signalDBusObjectManagerClientInterfaceProxySignalId int
+var signalDBusObjectManagerClientInterfaceProxySignalMap = make(map[int]signalDBusObjectManagerClientInterfaceProxySignalDetail)
+var signalDBusObjectManagerClientInterfaceProxySignalLock sync.RWMutex
+
+// DBusObjectManagerClientSignalInterfaceProxySignalCallback is a callback function for a 'interface-proxy-signal' signal emitted from a DBusObjectManagerClient.
+type DBusObjectManagerClientSignalInterfaceProxySignalCallback func(objectProxy *DBusObjectProxy, interfaceProxy *DBusProxy, senderName string, signalName string, parameters *glib.Variant)
+
+/*
+ConnectInterfaceProxySignal connects the callback to the 'interface-proxy-signal' signal for the DBusObjectManagerClient.
+
+The returned value represents the connection, and may be passed to DisconnectInterfaceProxySignal to remove it.
+*/
+func (recv *DBusObjectManagerClient) ConnectInterfaceProxySignal(callback DBusObjectManagerClientSignalInterfaceProxySignalCallback) int {
+	signalDBusObjectManagerClientInterfaceProxySignalLock.Lock()
+	defer signalDBusObjectManagerClientInterfaceProxySignalLock.Unlock()
+
+	signalDBusObjectManagerClientInterfaceProxySignalId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.DBusObjectManagerClient_signal_connect_interface_proxy_signal(instance, C.gpointer(uintptr(signalDBusObjectManagerClientInterfaceProxySignalId)))
+
+	detail := signalDBusObjectManagerClientInterfaceProxySignalDetail{callback, handlerID}
+	signalDBusObjectManagerClientInterfaceProxySignalMap[signalDBusObjectManagerClientInterfaceProxySignalId] = detail
+
+	return signalDBusObjectManagerClientInterfaceProxySignalId
+}
+
+/*
+DisconnectInterfaceProxySignal disconnects a callback from the 'interface-proxy-signal' signal for the DBusObjectManagerClient.
+
+The connectionID should be a value returned from a call to ConnectInterfaceProxySignal.
+*/
+func (recv *DBusObjectManagerClient) DisconnectInterfaceProxySignal(connectionID int) {
+	signalDBusObjectManagerClientInterfaceProxySignalLock.Lock()
+	defer signalDBusObjectManagerClientInterfaceProxySignalLock.Unlock()
+
+	detail, exists := signalDBusObjectManagerClientInterfaceProxySignalMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalDBusObjectManagerClientInterfaceProxySignalMap, connectionID)
+}
+
+//export dbusobjectmanagerclient_interfaceProxySignalHandler
+func dbusobjectmanagerclient_interfaceProxySignalHandler(_ *C.GObject, c_object_proxy *C.GDBusObjectProxy, c_interface_proxy *C.GDBusProxy, c_sender_name *C.gchar, c_signal_name *C.gchar, c_parameters *C.GVariant, data C.gpointer) {
+	signalDBusObjectManagerClientInterfaceProxySignalLock.RLock()
+	defer signalDBusObjectManagerClientInterfaceProxySignalLock.RUnlock()
+
+	objectProxy := DBusObjectProxyNewFromC(unsafe.Pointer(c_object_proxy))
+
+	interfaceProxy := DBusProxyNewFromC(unsafe.Pointer(c_interface_proxy))
+
+	senderName := C.GoString(c_sender_name)
+
+	signalName := C.GoString(c_signal_name)
+
+	parameters := glib.VariantNewFromC(unsafe.Pointer(c_parameters))
+
+	index := int(uintptr(data))
+	callback := signalDBusObjectManagerClientInterfaceProxySignalMap[index].callback
+	callback(objectProxy, interfaceProxy, senderName, signalName, parameters)
 }
 
 // DBusObjectManagerClientNewFinish is a wrapper around the C function g_dbus_object_manager_client_new_finish.
@@ -675,6 +839,73 @@ func (recv *DBusObjectSkeleton) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a DBusObjectSkeleton.
 func CastToDBusObjectSkeleton(object *gobject.Object) *DBusObjectSkeleton {
 	return DBusObjectSkeletonNewFromC(object.ToC())
+}
+
+type signalDBusObjectSkeletonAuthorizeMethodDetail struct {
+	callback  DBusObjectSkeletonSignalAuthorizeMethodCallback
+	handlerID C.gulong
+}
+
+var signalDBusObjectSkeletonAuthorizeMethodId int
+var signalDBusObjectSkeletonAuthorizeMethodMap = make(map[int]signalDBusObjectSkeletonAuthorizeMethodDetail)
+var signalDBusObjectSkeletonAuthorizeMethodLock sync.RWMutex
+
+// DBusObjectSkeletonSignalAuthorizeMethodCallback is a callback function for a 'authorize-method' signal emitted from a DBusObjectSkeleton.
+type DBusObjectSkeletonSignalAuthorizeMethodCallback func(interface_ *DBusInterfaceSkeleton, invocation *DBusMethodInvocation) bool
+
+/*
+ConnectAuthorizeMethod connects the callback to the 'authorize-method' signal for the DBusObjectSkeleton.
+
+The returned value represents the connection, and may be passed to DisconnectAuthorizeMethod to remove it.
+*/
+func (recv *DBusObjectSkeleton) ConnectAuthorizeMethod(callback DBusObjectSkeletonSignalAuthorizeMethodCallback) int {
+	signalDBusObjectSkeletonAuthorizeMethodLock.Lock()
+	defer signalDBusObjectSkeletonAuthorizeMethodLock.Unlock()
+
+	signalDBusObjectSkeletonAuthorizeMethodId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.DBusObjectSkeleton_signal_connect_authorize_method(instance, C.gpointer(uintptr(signalDBusObjectSkeletonAuthorizeMethodId)))
+
+	detail := signalDBusObjectSkeletonAuthorizeMethodDetail{callback, handlerID}
+	signalDBusObjectSkeletonAuthorizeMethodMap[signalDBusObjectSkeletonAuthorizeMethodId] = detail
+
+	return signalDBusObjectSkeletonAuthorizeMethodId
+}
+
+/*
+DisconnectAuthorizeMethod disconnects a callback from the 'authorize-method' signal for the DBusObjectSkeleton.
+
+The connectionID should be a value returned from a call to ConnectAuthorizeMethod.
+*/
+func (recv *DBusObjectSkeleton) DisconnectAuthorizeMethod(connectionID int) {
+	signalDBusObjectSkeletonAuthorizeMethodLock.Lock()
+	defer signalDBusObjectSkeletonAuthorizeMethodLock.Unlock()
+
+	detail, exists := signalDBusObjectSkeletonAuthorizeMethodMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalDBusObjectSkeletonAuthorizeMethodMap, connectionID)
+}
+
+//export dbusobjectskeleton_authorizeMethodHandler
+func dbusobjectskeleton_authorizeMethodHandler(_ *C.GObject, c_interface *C.GDBusInterfaceSkeleton, c_invocation *C.GDBusMethodInvocation, data C.gpointer) C.gboolean {
+	signalDBusObjectSkeletonAuthorizeMethodLock.RLock()
+	defer signalDBusObjectSkeletonAuthorizeMethodLock.RUnlock()
+
+	interface_ := DBusInterfaceSkeletonNewFromC(unsafe.Pointer(c_interface))
+
+	invocation := DBusMethodInvocationNewFromC(unsafe.Pointer(c_invocation))
+
+	index := int(uintptr(data))
+	callback := signalDBusObjectSkeletonAuthorizeMethodMap[index].callback
+	retGo := callback(interface_, invocation)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 // DBusObjectSkeletonNew is a wrapper around the C function g_dbus_object_skeleton_new.

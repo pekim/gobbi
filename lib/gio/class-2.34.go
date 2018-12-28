@@ -29,6 +29,15 @@ import (
 // #include <stdlib.h>
 /*
 
+	gboolean dbusauthobserver_allowMechanismHandler(GObject *, gchar*, gpointer);
+
+	static gulong DBusAuthObserver_signal_connect_allow_mechanism(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "allow-mechanism", G_CALLBACK(dbusauthobserver_allowMechanismHandler), data);
+	}
+
+*/
+/*
+
 	static gboolean _g_menu_item_get_attribute(GMenuItem* menu_item, const gchar* attribute, const gchar* format_string) {
 		return g_menu_item_get_attribute(menu_item, attribute, format_string);
     }
@@ -66,6 +75,71 @@ func (recv *ApplicationCommandLine) GetStdin() *InputStream {
 	retGo := InputStreamNewFromC(unsafe.Pointer(retC))
 
 	return retGo
+}
+
+type signalDBusAuthObserverAllowMechanismDetail struct {
+	callback  DBusAuthObserverSignalAllowMechanismCallback
+	handlerID C.gulong
+}
+
+var signalDBusAuthObserverAllowMechanismId int
+var signalDBusAuthObserverAllowMechanismMap = make(map[int]signalDBusAuthObserverAllowMechanismDetail)
+var signalDBusAuthObserverAllowMechanismLock sync.RWMutex
+
+// DBusAuthObserverSignalAllowMechanismCallback is a callback function for a 'allow-mechanism' signal emitted from a DBusAuthObserver.
+type DBusAuthObserverSignalAllowMechanismCallback func(mechanism string) bool
+
+/*
+ConnectAllowMechanism connects the callback to the 'allow-mechanism' signal for the DBusAuthObserver.
+
+The returned value represents the connection, and may be passed to DisconnectAllowMechanism to remove it.
+*/
+func (recv *DBusAuthObserver) ConnectAllowMechanism(callback DBusAuthObserverSignalAllowMechanismCallback) int {
+	signalDBusAuthObserverAllowMechanismLock.Lock()
+	defer signalDBusAuthObserverAllowMechanismLock.Unlock()
+
+	signalDBusAuthObserverAllowMechanismId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.DBusAuthObserver_signal_connect_allow_mechanism(instance, C.gpointer(uintptr(signalDBusAuthObserverAllowMechanismId)))
+
+	detail := signalDBusAuthObserverAllowMechanismDetail{callback, handlerID}
+	signalDBusAuthObserverAllowMechanismMap[signalDBusAuthObserverAllowMechanismId] = detail
+
+	return signalDBusAuthObserverAllowMechanismId
+}
+
+/*
+DisconnectAllowMechanism disconnects a callback from the 'allow-mechanism' signal for the DBusAuthObserver.
+
+The connectionID should be a value returned from a call to ConnectAllowMechanism.
+*/
+func (recv *DBusAuthObserver) DisconnectAllowMechanism(connectionID int) {
+	signalDBusAuthObserverAllowMechanismLock.Lock()
+	defer signalDBusAuthObserverAllowMechanismLock.Unlock()
+
+	detail, exists := signalDBusAuthObserverAllowMechanismMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalDBusAuthObserverAllowMechanismMap, connectionID)
+}
+
+//export dbusauthobserver_allowMechanismHandler
+func dbusauthobserver_allowMechanismHandler(_ *C.GObject, c_mechanism *C.gchar, data C.gpointer) C.gboolean {
+	signalDBusAuthObserverAllowMechanismLock.RLock()
+	defer signalDBusAuthObserverAllowMechanismLock.RUnlock()
+
+	mechanism := C.GoString(c_mechanism)
+
+	index := int(uintptr(data))
+	callback := signalDBusAuthObserverAllowMechanismMap[index].callback
+	retGo := callback(mechanism)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 // AllowMechanism is a wrapper around the C function g_dbus_auth_observer_allow_mechanism.

@@ -28,6 +28,15 @@ import (
 // #include <stdlib.h>
 /*
 
+	gboolean socketservice_incomingHandler(GObject *, GSocketConnection *, GObject *, gpointer);
+
+	static gulong SocketService_signal_connect_incoming(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "incoming", G_CALLBACK(socketservice_incomingHandler), data);
+	}
+
+*/
+/*
+
 	gboolean threadedsocketservice_runHandler(GObject *, GSocketConnection *, GObject *, gpointer);
 
 	static gulong ThreadedSocketService_signal_connect_run(gpointer instance, gpointer data) {
@@ -2167,6 +2176,73 @@ func (recv *SocketService) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a SocketService.
 func CastToSocketService(object *gobject.Object) *SocketService {
 	return SocketServiceNewFromC(object.ToC())
+}
+
+type signalSocketServiceIncomingDetail struct {
+	callback  SocketServiceSignalIncomingCallback
+	handlerID C.gulong
+}
+
+var signalSocketServiceIncomingId int
+var signalSocketServiceIncomingMap = make(map[int]signalSocketServiceIncomingDetail)
+var signalSocketServiceIncomingLock sync.RWMutex
+
+// SocketServiceSignalIncomingCallback is a callback function for a 'incoming' signal emitted from a SocketService.
+type SocketServiceSignalIncomingCallback func(connection *SocketConnection, sourceObject *gobject.Object) bool
+
+/*
+ConnectIncoming connects the callback to the 'incoming' signal for the SocketService.
+
+The returned value represents the connection, and may be passed to DisconnectIncoming to remove it.
+*/
+func (recv *SocketService) ConnectIncoming(callback SocketServiceSignalIncomingCallback) int {
+	signalSocketServiceIncomingLock.Lock()
+	defer signalSocketServiceIncomingLock.Unlock()
+
+	signalSocketServiceIncomingId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.SocketService_signal_connect_incoming(instance, C.gpointer(uintptr(signalSocketServiceIncomingId)))
+
+	detail := signalSocketServiceIncomingDetail{callback, handlerID}
+	signalSocketServiceIncomingMap[signalSocketServiceIncomingId] = detail
+
+	return signalSocketServiceIncomingId
+}
+
+/*
+DisconnectIncoming disconnects a callback from the 'incoming' signal for the SocketService.
+
+The connectionID should be a value returned from a call to ConnectIncoming.
+*/
+func (recv *SocketService) DisconnectIncoming(connectionID int) {
+	signalSocketServiceIncomingLock.Lock()
+	defer signalSocketServiceIncomingLock.Unlock()
+
+	detail, exists := signalSocketServiceIncomingMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalSocketServiceIncomingMap, connectionID)
+}
+
+//export socketservice_incomingHandler
+func socketservice_incomingHandler(_ *C.GObject, c_connection *C.GSocketConnection, c_source_object *C.GObject, data C.gpointer) C.gboolean {
+	signalSocketServiceIncomingLock.RLock()
+	defer signalSocketServiceIncomingLock.RUnlock()
+
+	connection := SocketConnectionNewFromC(unsafe.Pointer(c_connection))
+
+	sourceObject := gobject.ObjectNewFromC(unsafe.Pointer(c_source_object))
+
+	index := int(uintptr(data))
+	callback := signalSocketServiceIncomingMap[index].callback
+	retGo := callback(connection, sourceObject)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 // SocketServiceNew is a wrapper around the C function g_socket_service_new.

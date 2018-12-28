@@ -99,7 +99,8 @@ func (s *Signal) supported() (bool, string) {
 
 func (s *Signal) generate(g *jen.Group, version *Version, parentVersion string) {
 	if !((parentVersion == "" && s.Version == version.value) ||
-		(parentVersion != "" && (s.Version == "" && parentVersion == version.value))) {
+		(parentVersion != "" && (s.Version == "" && parentVersion == version.value)) ||
+		(s.Version == version.value)) {
 		return
 	}
 

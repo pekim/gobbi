@@ -224,6 +224,8 @@ func (recv *DtlsConnection) Equals(other *DtlsConnection) bool {
 	return other.ToC() == recv.ToC()
 }
 
+// Unsupported signal 'accept-certificate' for DtlsConnection : unsupported parameter errors : type TlsCertificateFlags :
+
 // Close is a wrapper around the C function g_dtls_connection_close.
 func (recv *DtlsConnection) Close(cancellable *Cancellable) (bool, error) {
 	c_cancellable := (*C.GCancellable)(C.NULL)

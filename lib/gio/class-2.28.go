@@ -1264,6 +1264,8 @@ func CastToTlsConnection(object *gobject.Object) *TlsConnection {
 	return TlsConnectionNewFromC(object.ToC())
 }
 
+// Unsupported signal 'accept-certificate' for TlsConnection : unsupported parameter errors : type TlsCertificateFlags :
+
 // EmitAcceptCertificate is a wrapper around the C function g_tls_connection_emit_accept_certificate.
 func (recv *TlsConnection) EmitAcceptCertificate(peerCert *TlsCertificate, errors TlsCertificateFlags) bool {
 	c_peer_cert := (*C.GTlsCertificate)(C.NULL)

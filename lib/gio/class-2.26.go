@@ -8,6 +8,7 @@ import (
 	glib "github.com/pekim/gobbi/lib/glib"
 	gobject "github.com/pekim/gobbi/lib/gobject"
 	"runtime"
+	"sync"
 	"unsafe"
 )
 
@@ -28,6 +29,24 @@ import (
 // #include <stdlib.h>
 /*
 
+	gboolean dbusauthobserver_authorizeAuthenticatedPeerHandler(GObject *, GIOStream *, GCredentials *, gpointer);
+
+	static gulong DBusAuthObserver_signal_connect_authorize_authenticated_peer(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "authorize-authenticated-peer", G_CALLBACK(dbusauthobserver_authorizeAuthenticatedPeerHandler), data);
+	}
+
+*/
+/*
+
+	void dbusconnection_closedHandler(GObject *, gboolean, GError *, gpointer);
+
+	static gulong DBusConnection_signal_connect_closed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "closed", G_CALLBACK(dbusconnection_closedHandler), data);
+	}
+
+*/
+/*
+
 	static GDBusMessage* _g_dbus_message_new_method_error(GDBusMessage* method_call_message, const gchar* error_name, const gchar* error_message_format) {
 		return g_dbus_message_new_method_error(method_call_message, error_name, error_message_format);
     }
@@ -37,6 +56,24 @@ import (
 	static void _g_dbus_method_invocation_return_error(GDBusMethodInvocation* invocation, GQuark domain, gint code, const gchar* format) {
 		return g_dbus_method_invocation_return_error(invocation, domain, code, format);
     }
+*/
+/*
+
+	void dbusproxy_gSignalHandler(GObject *, gchar*, gchar*, GVariant *, gpointer);
+
+	static gulong DBusProxy_signal_connect_g_signal(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "g-signal", G_CALLBACK(dbusproxy_gSignalHandler), data);
+	}
+
+*/
+/*
+
+	gboolean dbusserver_newConnectionHandler(GObject *, GDBusConnection *, gpointer);
+
+	static gulong DBusServer_signal_connect_new_connection(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "new-connection", G_CALLBACK(dbusserver_newConnectionHandler), data);
+	}
+
 */
 /*
 
@@ -215,6 +252,73 @@ func CastToDBusAuthObserver(object *gobject.Object) *DBusAuthObserver {
 	return DBusAuthObserverNewFromC(object.ToC())
 }
 
+type signalDBusAuthObserverAuthorizeAuthenticatedPeerDetail struct {
+	callback  DBusAuthObserverSignalAuthorizeAuthenticatedPeerCallback
+	handlerID C.gulong
+}
+
+var signalDBusAuthObserverAuthorizeAuthenticatedPeerId int
+var signalDBusAuthObserverAuthorizeAuthenticatedPeerMap = make(map[int]signalDBusAuthObserverAuthorizeAuthenticatedPeerDetail)
+var signalDBusAuthObserverAuthorizeAuthenticatedPeerLock sync.RWMutex
+
+// DBusAuthObserverSignalAuthorizeAuthenticatedPeerCallback is a callback function for a 'authorize-authenticated-peer' signal emitted from a DBusAuthObserver.
+type DBusAuthObserverSignalAuthorizeAuthenticatedPeerCallback func(stream *IOStream, credentials *Credentials) bool
+
+/*
+ConnectAuthorizeAuthenticatedPeer connects the callback to the 'authorize-authenticated-peer' signal for the DBusAuthObserver.
+
+The returned value represents the connection, and may be passed to DisconnectAuthorizeAuthenticatedPeer to remove it.
+*/
+func (recv *DBusAuthObserver) ConnectAuthorizeAuthenticatedPeer(callback DBusAuthObserverSignalAuthorizeAuthenticatedPeerCallback) int {
+	signalDBusAuthObserverAuthorizeAuthenticatedPeerLock.Lock()
+	defer signalDBusAuthObserverAuthorizeAuthenticatedPeerLock.Unlock()
+
+	signalDBusAuthObserverAuthorizeAuthenticatedPeerId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.DBusAuthObserver_signal_connect_authorize_authenticated_peer(instance, C.gpointer(uintptr(signalDBusAuthObserverAuthorizeAuthenticatedPeerId)))
+
+	detail := signalDBusAuthObserverAuthorizeAuthenticatedPeerDetail{callback, handlerID}
+	signalDBusAuthObserverAuthorizeAuthenticatedPeerMap[signalDBusAuthObserverAuthorizeAuthenticatedPeerId] = detail
+
+	return signalDBusAuthObserverAuthorizeAuthenticatedPeerId
+}
+
+/*
+DisconnectAuthorizeAuthenticatedPeer disconnects a callback from the 'authorize-authenticated-peer' signal for the DBusAuthObserver.
+
+The connectionID should be a value returned from a call to ConnectAuthorizeAuthenticatedPeer.
+*/
+func (recv *DBusAuthObserver) DisconnectAuthorizeAuthenticatedPeer(connectionID int) {
+	signalDBusAuthObserverAuthorizeAuthenticatedPeerLock.Lock()
+	defer signalDBusAuthObserverAuthorizeAuthenticatedPeerLock.Unlock()
+
+	detail, exists := signalDBusAuthObserverAuthorizeAuthenticatedPeerMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalDBusAuthObserverAuthorizeAuthenticatedPeerMap, connectionID)
+}
+
+//export dbusauthobserver_authorizeAuthenticatedPeerHandler
+func dbusauthobserver_authorizeAuthenticatedPeerHandler(_ *C.GObject, c_stream *C.GIOStream, c_credentials *C.GCredentials, data C.gpointer) C.gboolean {
+	signalDBusAuthObserverAuthorizeAuthenticatedPeerLock.RLock()
+	defer signalDBusAuthObserverAuthorizeAuthenticatedPeerLock.RUnlock()
+
+	stream := IOStreamNewFromC(unsafe.Pointer(c_stream))
+
+	credentials := CredentialsNewFromC(unsafe.Pointer(c_credentials))
+
+	index := int(uintptr(data))
+	callback := signalDBusAuthObserverAuthorizeAuthenticatedPeerMap[index].callback
+	retGo := callback(stream, credentials)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
+}
+
 // DBusAuthObserverNew is a wrapper around the C function g_dbus_auth_observer_new.
 func DBusAuthObserverNew() *DBusAuthObserver {
 	retC := C.g_dbus_auth_observer_new()
@@ -290,6 +394,70 @@ func (recv *DBusConnection) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a DBusConnection.
 func CastToDBusConnection(object *gobject.Object) *DBusConnection {
 	return DBusConnectionNewFromC(object.ToC())
+}
+
+type signalDBusConnectionClosedDetail struct {
+	callback  DBusConnectionSignalClosedCallback
+	handlerID C.gulong
+}
+
+var signalDBusConnectionClosedId int
+var signalDBusConnectionClosedMap = make(map[int]signalDBusConnectionClosedDetail)
+var signalDBusConnectionClosedLock sync.RWMutex
+
+// DBusConnectionSignalClosedCallback is a callback function for a 'closed' signal emitted from a DBusConnection.
+type DBusConnectionSignalClosedCallback func(remotePeerVanished bool, error *glib.Error)
+
+/*
+ConnectClosed connects the callback to the 'closed' signal for the DBusConnection.
+
+The returned value represents the connection, and may be passed to DisconnectClosed to remove it.
+*/
+func (recv *DBusConnection) ConnectClosed(callback DBusConnectionSignalClosedCallback) int {
+	signalDBusConnectionClosedLock.Lock()
+	defer signalDBusConnectionClosedLock.Unlock()
+
+	signalDBusConnectionClosedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.DBusConnection_signal_connect_closed(instance, C.gpointer(uintptr(signalDBusConnectionClosedId)))
+
+	detail := signalDBusConnectionClosedDetail{callback, handlerID}
+	signalDBusConnectionClosedMap[signalDBusConnectionClosedId] = detail
+
+	return signalDBusConnectionClosedId
+}
+
+/*
+DisconnectClosed disconnects a callback from the 'closed' signal for the DBusConnection.
+
+The connectionID should be a value returned from a call to ConnectClosed.
+*/
+func (recv *DBusConnection) DisconnectClosed(connectionID int) {
+	signalDBusConnectionClosedLock.Lock()
+	defer signalDBusConnectionClosedLock.Unlock()
+
+	detail, exists := signalDBusConnectionClosedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalDBusConnectionClosedMap, connectionID)
+}
+
+//export dbusconnection_closedHandler
+func dbusconnection_closedHandler(_ *C.GObject, c_remote_peer_vanished C.gboolean, c_error *C.GError, data C.gpointer) {
+	signalDBusConnectionClosedLock.RLock()
+	defer signalDBusConnectionClosedLock.RUnlock()
+
+	remotePeerVanished := c_remote_peer_vanished == C.TRUE
+
+	error := glib.ErrorNewFromC(unsafe.Pointer(c_error))
+
+	index := int(uintptr(data))
+	callback := signalDBusConnectionClosedMap[index].callback
+	callback(remotePeerVanished, error)
 }
 
 // DBusConnectionNewFinish is a wrapper around the C function g_dbus_connection_new_finish.
@@ -1623,6 +1791,74 @@ func CastToDBusProxy(object *gobject.Object) *DBusProxy {
 	return DBusProxyNewFromC(object.ToC())
 }
 
+// Unsupported signal 'g-properties-changed' for DBusProxy : unsupported parameter invalidated_properties :
+
+type signalDBusProxyGSignalDetail struct {
+	callback  DBusProxySignalGSignalCallback
+	handlerID C.gulong
+}
+
+var signalDBusProxyGSignalId int
+var signalDBusProxyGSignalMap = make(map[int]signalDBusProxyGSignalDetail)
+var signalDBusProxyGSignalLock sync.RWMutex
+
+// DBusProxySignalGSignalCallback is a callback function for a 'g-signal' signal emitted from a DBusProxy.
+type DBusProxySignalGSignalCallback func(senderName string, signalName string, parameters *glib.Variant)
+
+/*
+ConnectGSignal connects the callback to the 'g-signal' signal for the DBusProxy.
+
+The returned value represents the connection, and may be passed to DisconnectGSignal to remove it.
+*/
+func (recv *DBusProxy) ConnectGSignal(callback DBusProxySignalGSignalCallback) int {
+	signalDBusProxyGSignalLock.Lock()
+	defer signalDBusProxyGSignalLock.Unlock()
+
+	signalDBusProxyGSignalId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.DBusProxy_signal_connect_g_signal(instance, C.gpointer(uintptr(signalDBusProxyGSignalId)))
+
+	detail := signalDBusProxyGSignalDetail{callback, handlerID}
+	signalDBusProxyGSignalMap[signalDBusProxyGSignalId] = detail
+
+	return signalDBusProxyGSignalId
+}
+
+/*
+DisconnectGSignal disconnects a callback from the 'g-signal' signal for the DBusProxy.
+
+The connectionID should be a value returned from a call to ConnectGSignal.
+*/
+func (recv *DBusProxy) DisconnectGSignal(connectionID int) {
+	signalDBusProxyGSignalLock.Lock()
+	defer signalDBusProxyGSignalLock.Unlock()
+
+	detail, exists := signalDBusProxyGSignalMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalDBusProxyGSignalMap, connectionID)
+}
+
+//export dbusproxy_gSignalHandler
+func dbusproxy_gSignalHandler(_ *C.GObject, c_sender_name *C.gchar, c_signal_name *C.gchar, c_parameters *C.GVariant, data C.gpointer) {
+	signalDBusProxyGSignalLock.RLock()
+	defer signalDBusProxyGSignalLock.RUnlock()
+
+	senderName := C.GoString(c_sender_name)
+
+	signalName := C.GoString(c_signal_name)
+
+	parameters := glib.VariantNewFromC(unsafe.Pointer(c_parameters))
+
+	index := int(uintptr(data))
+	callback := signalDBusProxyGSignalMap[index].callback
+	callback(senderName, signalName, parameters)
+}
+
 // DBusProxyNewFinish is a wrapper around the C function g_dbus_proxy_new_finish.
 func DBusProxyNewFinish(res *AsyncResult) (*DBusProxy, error) {
 	c_res := (*C.GAsyncResult)(res.ToC())
@@ -1992,6 +2228,71 @@ func (recv *DBusServer) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a DBusServer.
 func CastToDBusServer(object *gobject.Object) *DBusServer {
 	return DBusServerNewFromC(object.ToC())
+}
+
+type signalDBusServerNewConnectionDetail struct {
+	callback  DBusServerSignalNewConnectionCallback
+	handlerID C.gulong
+}
+
+var signalDBusServerNewConnectionId int
+var signalDBusServerNewConnectionMap = make(map[int]signalDBusServerNewConnectionDetail)
+var signalDBusServerNewConnectionLock sync.RWMutex
+
+// DBusServerSignalNewConnectionCallback is a callback function for a 'new-connection' signal emitted from a DBusServer.
+type DBusServerSignalNewConnectionCallback func(connection *DBusConnection) bool
+
+/*
+ConnectNewConnection connects the callback to the 'new-connection' signal for the DBusServer.
+
+The returned value represents the connection, and may be passed to DisconnectNewConnection to remove it.
+*/
+func (recv *DBusServer) ConnectNewConnection(callback DBusServerSignalNewConnectionCallback) int {
+	signalDBusServerNewConnectionLock.Lock()
+	defer signalDBusServerNewConnectionLock.Unlock()
+
+	signalDBusServerNewConnectionId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.DBusServer_signal_connect_new_connection(instance, C.gpointer(uintptr(signalDBusServerNewConnectionId)))
+
+	detail := signalDBusServerNewConnectionDetail{callback, handlerID}
+	signalDBusServerNewConnectionMap[signalDBusServerNewConnectionId] = detail
+
+	return signalDBusServerNewConnectionId
+}
+
+/*
+DisconnectNewConnection disconnects a callback from the 'new-connection' signal for the DBusServer.
+
+The connectionID should be a value returned from a call to ConnectNewConnection.
+*/
+func (recv *DBusServer) DisconnectNewConnection(connectionID int) {
+	signalDBusServerNewConnectionLock.Lock()
+	defer signalDBusServerNewConnectionLock.Unlock()
+
+	detail, exists := signalDBusServerNewConnectionMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalDBusServerNewConnectionMap, connectionID)
+}
+
+//export dbusserver_newConnectionHandler
+func dbusserver_newConnectionHandler(_ *C.GObject, c_connection *C.GDBusConnection, data C.gpointer) C.gboolean {
+	signalDBusServerNewConnectionLock.RLock()
+	defer signalDBusServerNewConnectionLock.RUnlock()
+
+	connection := DBusConnectionNewFromC(unsafe.Pointer(c_connection))
+
+	index := int(uintptr(data))
+	callback := signalDBusServerNewConnectionMap[index].callback
+	retGo := callback(connection)
+	retC :=
+		boolToGboolean(retGo)
+	return retC
 }
 
 // DBusServerNewSync is a wrapper around the C function g_dbus_server_new_sync.

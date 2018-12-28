@@ -54,6 +54,24 @@ import (
 */
 /*
 
+	void seat_toolAddedHandler(GObject *, GdkDeviceTool *, gpointer);
+
+	static gulong Seat_signal_connect_tool_added(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "tool-added", G_CALLBACK(seat_toolAddedHandler), data);
+	}
+
+*/
+/*
+
+	void seat_toolRemovedHandler(GObject *, GdkDeviceTool *, gpointer);
+
+	static gulong Seat_signal_connect_tool_removed(gpointer instance, gpointer data) {
+		return g_signal_connect(instance, "tool-removed", G_CALLBACK(seat_toolRemovedHandler), data);
+	}
+
+*/
+/*
+
 	void window_movedToRectHandler(GObject *, gpointer, gpointer, gboolean, gboolean, gpointer);
 
 	static gulong Window_signal_connect_moved_to_rect(gpointer instance, gpointer data) {
@@ -737,6 +755,130 @@ func (recv *Seat) Object() *gobject.Object {
 // Exercise care, as this is a potentially dangerous function if the Object is not a Seat.
 func CastToSeat(object *gobject.Object) *Seat {
 	return SeatNewFromC(object.ToC())
+}
+
+type signalSeatToolAddedDetail struct {
+	callback  SeatSignalToolAddedCallback
+	handlerID C.gulong
+}
+
+var signalSeatToolAddedId int
+var signalSeatToolAddedMap = make(map[int]signalSeatToolAddedDetail)
+var signalSeatToolAddedLock sync.RWMutex
+
+// SeatSignalToolAddedCallback is a callback function for a 'tool-added' signal emitted from a Seat.
+type SeatSignalToolAddedCallback func(tool *DeviceTool)
+
+/*
+ConnectToolAdded connects the callback to the 'tool-added' signal for the Seat.
+
+The returned value represents the connection, and may be passed to DisconnectToolAdded to remove it.
+*/
+func (recv *Seat) ConnectToolAdded(callback SeatSignalToolAddedCallback) int {
+	signalSeatToolAddedLock.Lock()
+	defer signalSeatToolAddedLock.Unlock()
+
+	signalSeatToolAddedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Seat_signal_connect_tool_added(instance, C.gpointer(uintptr(signalSeatToolAddedId)))
+
+	detail := signalSeatToolAddedDetail{callback, handlerID}
+	signalSeatToolAddedMap[signalSeatToolAddedId] = detail
+
+	return signalSeatToolAddedId
+}
+
+/*
+DisconnectToolAdded disconnects a callback from the 'tool-added' signal for the Seat.
+
+The connectionID should be a value returned from a call to ConnectToolAdded.
+*/
+func (recv *Seat) DisconnectToolAdded(connectionID int) {
+	signalSeatToolAddedLock.Lock()
+	defer signalSeatToolAddedLock.Unlock()
+
+	detail, exists := signalSeatToolAddedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalSeatToolAddedMap, connectionID)
+}
+
+//export seat_toolAddedHandler
+func seat_toolAddedHandler(_ *C.GObject, c_tool *C.GdkDeviceTool, data C.gpointer) {
+	signalSeatToolAddedLock.RLock()
+	defer signalSeatToolAddedLock.RUnlock()
+
+	tool := DeviceToolNewFromC(unsafe.Pointer(c_tool))
+
+	index := int(uintptr(data))
+	callback := signalSeatToolAddedMap[index].callback
+	callback(tool)
+}
+
+type signalSeatToolRemovedDetail struct {
+	callback  SeatSignalToolRemovedCallback
+	handlerID C.gulong
+}
+
+var signalSeatToolRemovedId int
+var signalSeatToolRemovedMap = make(map[int]signalSeatToolRemovedDetail)
+var signalSeatToolRemovedLock sync.RWMutex
+
+// SeatSignalToolRemovedCallback is a callback function for a 'tool-removed' signal emitted from a Seat.
+type SeatSignalToolRemovedCallback func(tool *DeviceTool)
+
+/*
+ConnectToolRemoved connects the callback to the 'tool-removed' signal for the Seat.
+
+The returned value represents the connection, and may be passed to DisconnectToolRemoved to remove it.
+*/
+func (recv *Seat) ConnectToolRemoved(callback SeatSignalToolRemovedCallback) int {
+	signalSeatToolRemovedLock.Lock()
+	defer signalSeatToolRemovedLock.Unlock()
+
+	signalSeatToolRemovedId++
+	instance := C.gpointer(recv.native)
+	handlerID := C.Seat_signal_connect_tool_removed(instance, C.gpointer(uintptr(signalSeatToolRemovedId)))
+
+	detail := signalSeatToolRemovedDetail{callback, handlerID}
+	signalSeatToolRemovedMap[signalSeatToolRemovedId] = detail
+
+	return signalSeatToolRemovedId
+}
+
+/*
+DisconnectToolRemoved disconnects a callback from the 'tool-removed' signal for the Seat.
+
+The connectionID should be a value returned from a call to ConnectToolRemoved.
+*/
+func (recv *Seat) DisconnectToolRemoved(connectionID int) {
+	signalSeatToolRemovedLock.Lock()
+	defer signalSeatToolRemovedLock.Unlock()
+
+	detail, exists := signalSeatToolRemovedMap[connectionID]
+	if !exists {
+		return
+	}
+
+	instance := C.gpointer(recv.native)
+	C.g_signal_handler_disconnect(instance, detail.handlerID)
+	delete(signalSeatToolRemovedMap, connectionID)
+}
+
+//export seat_toolRemovedHandler
+func seat_toolRemovedHandler(_ *C.GObject, c_tool *C.GdkDeviceTool, data C.gpointer) {
+	signalSeatToolRemovedLock.RLock()
+	defer signalSeatToolRemovedLock.RUnlock()
+
+	tool := DeviceToolNewFromC(unsafe.Pointer(c_tool))
+
+	index := int(uintptr(data))
+	callback := signalSeatToolRemovedMap[index].callback
+	callback(tool)
 }
 
 // GetDisplay is a wrapper around the C function gdk_seat_get_display.

@@ -1497,6 +1497,8 @@ func (recv *Socket) SetTtl(ttl uint32) {
 	return
 }
 
+// Unsupported signal 'event' for SocketClient : unsupported parameter event : type SocketClientEvent :
+
 // Connect is a wrapper around the C function g_socket_connection_connect.
 func (recv *SocketConnection) Connect(address *SocketAddress, cancellable *Cancellable) (bool, error) {
 	c_address := (*C.GSocketAddress)(C.NULL)
